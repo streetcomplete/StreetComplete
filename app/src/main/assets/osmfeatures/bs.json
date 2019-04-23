@@ -1,1323 +1,1323 @@
 {
     "presets": {
-        "address": {
-            "name": "Adresa",
-            "terms": "adresa,prebivali\u0161te"
+        "office/administrative": {
+            "name": "Administrativni ured"
         },
-        "aerialway/gondola": {
-            "name": "Gondola"
+        "historic/boundary_stone": {
+            "name": "Granični kamen",
+            "terms": "granični kamen,međaš"
         },
-        "aeroway": {
-            "name": "Avio-put"
-        },
-        "aeroway/aerodrome": {
-            "name": "Aerodrom",
-            "terms": "aerodrom,zra\u010dna luka"
-        },
-        "aeroway/apron": {
-            "name": "Stajanka",
-            "terms": "stajanka,betonirani teren aerodroma"
-        },
-        "aeroway/hangar": {
-            "name": "Hangar",
-            "terms": "hangar"
-        },
-        "aeroway/helipad": {
-            "name": "Heliodrom",
-            "terms": "heliodrom,sleti\u0161te/uzleti\u0161te za helikopter"
-        },
-        "aeroway/runway": {
-            "name": "Pista",
-            "terms": "pista,sleti\u0161te/uzleti\u0161te za avione"
-        },
-        "aeroway/taxiway": {
-            "name": "Staza za vo\u017enju",
-            "terms": "rulna staza,staza za vo\u017enju aviona"
-        },
-        "amenity": {
-            "name": "Pogodnost"
-        },
-        "amenity/arts_centre": {
-            "name": "Centar za umjetnost",
-            "terms": "centar za umjetnost,umjetni\u010dki centar,art centar"
-        },
-        "amenity/atm": {
-            "name": "Bankomat",
-            "terms": "bankomat,bankovni automat za novac"
-        },
-        "amenity/bank": {
-            "name": "Banka",
-            "terms": "banka"
-        },
-        "amenity/bar": {
-            "name": "Bar",
-            "terms": "bar,gostionica,pivnica"
-        },
-        "amenity/bench": {
-            "name": "Klupa",
-            "terms": "klupa,klupica"
-        },
-        "amenity/bicycle_parking": {
-            "name": "Parking bicikala",
-            "terms": "parking bicikala,mjesto za parkiranje bicikla"
-        },
-        "amenity/bicycle_rental": {
-            "name": "Iznajmljivanje bicikala",
-            "terms": "iznajmljivanje bicikala,najam bicikla"
-        },
-        "amenity/boat_rental": {
-            "name": "Iznajmljivanje plovila",
-            "terms": "iznajmljivanje \u010damaca,iznajmljivanje brodova,iznajmljivanje plovila"
-        },
-        "amenity/cafe": {
-            "name": "Kafe",
-            "terms": "kafe,kafana,kafe-bar"
+        "leisure/park": {
+            "name": "Park",
+            "terms": "park,održavana zelena površina"
         },
         "amenity/car_rental": {
             "name": "Rent-a-car",
             "terms": "Iznajmljivanje automobila,najam automobila,rent-a-car"
         },
-        "amenity/car_sharing": {
-            "name": "\"Car Sharing\"",
-            "terms": "razmjena automobila,dijeljenje automobila"
-        },
-        "amenity/car_wash": {
-            "name": "Autopraonica",
-            "terms": "autopraonica,samouslu\u017ena autopraonica,praonica automobila"
-        },
-        "amenity/cinema": {
-            "name": "Kino",
-            "terms": "kino,kino dvorana,multipleks"
-        },
-        "amenity/clinic": {
-            "name": "Klinika"
-        },
-        "amenity/courthouse": {
-            "name": "Sudnica",
-            "terms": "sudnica,zgrada suda"
-        },
-        "amenity/dentist": {
-            "name": "Zubar",
-            "terms": "zubar,stomatolog"
-        },
-        "amenity/drinking_water": {
-            "name": "Voda za pi\u0107e",
-            "terms": "voda za pi\u0107e,pitka voda"
-        },
-        "amenity/embassy": {
-            "name": "Ambasada",
-            "terms": "ambasada,konzulat,predstavni\u0161tvo strane zemlje"
-        },
-        "amenity/fast_food": {
-            "name": "Fast Food",
-            "terms": "fast food,restoran brze hrane"
-        },
-        "amenity/fire_station": {
-            "name": "Vatrogasna stanica",
-            "terms": "vatrogasna stanica,zgrada vatrogasne slu\u017ebe"
-        },
-        "amenity/fountain": {
-            "name": "Fontana",
-            "terms": "fontana,\u010desma,vodoskok"
-        },
-        "amenity/fuel": {
-            "name": "Benzinska pumpa",
-            "terms": "benzinska pumpa,pumpa za gorivo"
-        },
-        "amenity/grave_yard": {
-            "name": "Groblje",
-            "terms": "groblje,greblje,mezarje"
-        },
-        "amenity/library": {
-            "name": "Biblioteka",
-            "terms": "biblioteka,knji\u017enica"
-        },
-        "amenity/marketplace": {
-            "name": "Tr\u017enica",
-            "terms": "tr\u017enica,pijaca"
-        },
-        "amenity/place_of_worship": {
-            "name": "Bogomolja",
-            "terms": "Bo\u017eja ku\u0107a,bogomolja,mjesto za molitvu,hram"
-        },
-        "amenity/place_of_worship/buddhist": {
-            "name": "Budisti\u010dki hram",
-            "terms": "budisti\u010dki hram,budisti\u010dka bogomolja"
-        },
-        "amenity/police": {
-            "name": "Policija",
-            "terms": "policija,milicija,organi reda"
-        },
-        "amenity/post_box": {
-            "name": "Po\u0161tansko_sandu\u010de",
-            "terms": "po\u0161tansko sandu\u010de,po\u0161tanski sandu\u010di\u0107"
-        },
-        "amenity/post_office": {
-            "name": "Po\u0161ta",
-            "terms": "po\u0161ta,po\u0161tanski ured,ispostava po\u0161te"
-        },
-        "amenity/pub": {
-            "name": "Pub",
-            "terms": "pub,kafana,pivnica"
-        },
-        "amenity/ranger_station": {
-            "name": "Stanica rend\u017eerske slu\u017ebe",
-            "terms": "rend\u017eerska slu\u017eba,stanica rend\u017eerske slu\u017ebe,rend\u017eerska stanica"
-        },
-        "amenity/restaurant": {
-            "name": "Restoran",
-            "terms": "restoran,gostionica"
-        },
-        "amenity/shelter": {
-            "name": "Skloni\u0161te",
-            "terms": "skloni\u0161te,zaklon"
-        },
-        "amenity/studio": {
-            "name": "Studio"
-        },
-        "amenity/swimming_pool": {
-            "name": "Bazen"
-        },
-        "amenity/taxi": {
-            "name": "Taxi stajali\u0161te",
-            "terms": "taxi \u0161tand,taxi stajali\u0161te"
-        },
-        "amenity/telephone": {
-            "name": "Telefon",
-            "terms": "telefon,telefonska govornica"
-        },
-        "amenity/theatre": {
-            "name": "Pozori\u0161te",
-            "terms": "teatar,pozori\u0161te"
-        },
-        "amenity/toilets": {
-            "name": "Toaleti",
-            "terms": "kupatila,toaleti,wc-i"
-        },
-        "amenity/townhall": {
-            "name": "Gradska vije\u0107nica",
-            "terms": "gradska vije\u0107nica,vije\u0107nica"
-        },
-        "amenity/waste_basket": {
-            "name": "Kanta za otpatke",
-            "terms": "kanta za otpatke,posuda za otpatke,kanta za sme\u0107e"
-        },
-        "area": {
-            "name": "Podru\u010dje",
-            "terms": "podru\u010dje,zona,oblast"
-        },
-        "barrier": {
-            "name": "Barijera",
-            "terms": "barijera,prepreka,pregrada"
-        },
-        "barrier/block": {
-            "name": "Blok",
-            "terms": "blok"
-        },
-        "barrier/bollard": {
-            "name": "Bitva",
-            "terms": "bitva,ormari\u0107 s priklju\u010dcima"
-        },
-        "barrier/cattle_grid": {
-            "name": "Re\u0161etke za stoku",
-            "terms": "re\u0161etke za stoku,ograda za stoku"
-        },
-        "barrier/city_wall": {
-            "name": "Gradski zid",
-            "terms": "zid grada,gradski zid"
-        },
-        "barrier/cycle_barrier": {
-            "name": "Biciklisti\u010dka prepreka",
-            "terms": "barijera za bicikle,prepreka za bicikle"
-        },
-        "barrier/entrance": {
-            "name": "Ulaz"
-        },
-        "barrier/fence": {
-            "name": "Ograda",
-            "terms": "ograda,plot"
-        },
-        "barrier/gate": {
-            "name": "Kapija",
-            "terms": "vrata,kapija"
-        },
-        "barrier/hedge": {
-            "name": "\u017diva ograda",
-            "terms": "ograda,\u017eivica"
-        },
-        "barrier/kissing_gate": {
-            "name": "Kapija (sa dvoje vrata)",
-            "terms": "kapija sa dvoje vrata"
-        },
-        "barrier/lift_gate": {
-            "name": "Kapija (koja se podi\u017ee)",
-            "terms": "kapija koja se podi\u017ee,podi\u017eu\u0107a kapija"
-        },
-        "barrier/retaining_wall": {
-            "name": "Potporni zid",
-            "terms": "potporni zid,zid za zadr\u017eavanje"
-        },
-        "barrier/stile": {
-            "name": "Prelaz preko ograde",
-            "terms": "prelaz,prelaz preko ograde"
-        },
-        "barrier/toll_booth": {
-            "name": "Naplatna rampa",
-            "terms": "naplatna rampa,naplatna ku\u0107ica"
-        },
-        "barrier/wall": {
-            "name": "Zid",
-            "terms": "zid,zidi\u0107,bedem"
-        },
-        "boundary/administrative": {
-            "name": "Admninistrativna granica",
-            "terms": "administrativna granica, administrativna linija"
+        "place/city": {
+            "name": "Grad",
+            "terms": "grad,urbano naselje"
         },
         "building": {
-            "name": "Gra\u0111evina",
-            "terms": "zgrada,gra\u0111evina,ku\u0107a"
-        },
-        "building/commercial": {
-            "name": "Poslovna zgrada",
-            "terms": "poslovna zgrada,zgrada firme"
-        },
-        "building/garage": {
-            "name": "Gara\u017ea",
-            "terms": "gara\u017ea"
-        },
-        "building/house": {
-            "name": "Ku\u0107a",
-            "terms": "ku\u0107a,dom"
-        },
-        "building/hut": {
-            "name": "Koliba",
-            "terms": "koliba,brvnara"
-        },
-        "building/industrial": {
-            "name": "Industrijska gra\u0111evina",
-            "terms": "industrijska gra\u0111evina,pogon"
-        },
-        "building/residential": {
-            "name": "Stambena zgrada",
-            "terms": "stambena zgrada,zgrada za stanovanje"
-        },
-        "craft/beekeeper": {
-            "name": "P\u010delar"
-        },
-        "craft/blacksmith": {
-            "name": "Kova\u010d"
-        },
-        "craft/boatbuilder": {
-            "name": "Brodograditelj"
-        },
-        "craft/bookbinder": {
-            "name": "Knjigovezac"
-        },
-        "craft/brewery": {
-            "name": "Pivara"
-        },
-        "craft/carpenter": {
-            "name": "Stolar"
-        },
-        "craft/caterer": {
-            "name": "Ugostitelj"
-        },
-        "craft/clockmaker": {
-            "name": "Proizvo\u0111a\u010d satova"
-        },
-        "craft/dressmaker": {
-            "name": "Izrada haljina"
-        },
-        "craft/electrician": {
-            "name": "Elektri\u010dar"
-        },
-        "craft/gardener": {
-            "name": "Vrtlar"
-        },
-        "craft/hvac": {
-            "name": "HVAC"
-        },
-        "craft/insulator": {
-            "name": "Izolator"
-        },
-        "craft/jeweler": {
-            "name": "Zlatar"
-        },
-        "craft/key_cutter": {
-            "name": "Izrada klju\u010deva"
-        },
-        "craft/locksmith": {
-            "name": "Bravar"
-        },
-        "craft/metal_construction": {
-            "name": "Metalne konstrukcije"
-        },
-        "craft/optician": {
-            "name": "Opti\u010dar"
-        },
-        "craft/photographer": {
-            "name": "Fotograf"
-        },
-        "craft/plumber": {
-            "name": "Vodoinstalater"
-        },
-        "craft/pottery": {
-            "name": "Grn\u010darija"
-        },
-        "craft/roofer": {
-            "name": "Krovopokriva\u010d"
-        },
-        "craft/saddler": {
-            "name": "Sedlar"
-        },
-        "craft/stonemason": {
-            "name": "Klesar"
-        },
-        "craft/tailor": {
-            "name": "Kroja\u010d"
-        },
-        "craft/window_construction": {
-            "name": "Izrada prozora"
-        },
-        "embankment": {
-            "name": "Nasip"
-        },
-        "emergency/ambulance_station": {
-            "name": "Stanica hitne pomo\u0107i",
-            "terms": "stanica hitne pomo\u0107i,hitna pomo\u0107,hitna medicinska pomo\u0107"
-        },
-        "emergency/fire_hydrant": {
-            "name": "Hidrant za po\u017ear",
-            "terms": "hidrant,hidrant za po\u017ear"
-        },
-        "emergency/phone": {
-            "name": "Telefon za hitne slu\u010dajeve",
-            "terms": "telefon za hitne slu\u010dajeve,hitna telefonska linija"
-        },
-        "golf/bunker": {
-            "name": "Pje\u0161\u010dana zamka",
-            "terms": "pje\u0161\u010dana zamka,pje\u0161\u010dana klopka,bunker"
-        },
-        "golf/fairway": {
-            "name": "Fairway",
-            "terms": "osnovni dio golf terena, glavni teren za golf"
-        },
-        "golf/green": {
-            "name": "Putting Green",
-            "terms": "podru\u010dje golf terena najbli\u017ee rupi"
-        },
-        "golf/hole": {
-            "name": "Rupa za golf",
-            "terms": "golf rupa,rupa za golf loptice"
-        },
-        "golf/rough": {
-            "name": "Rough",
-            "terms": "podru\u010dje \"divlje\" trave van igre,trava van golf terena"
-        },
-        "golf/tee": {
-            "name": "Tee Box",
-            "terms": "\"Tee\" kutija,kutija podru\u010dja na po\u010detku rupe"
-        },
-        "highway": {
-            "name": "Put"
-        },
-        "highway/bridleway": {
-            "name": "Konjska staza",
-            "terms": "konjska staza,konji\u010dka staza,konjski trag"
-        },
-        "highway/cycleway": {
-            "name": "Biciklisti\u010dka staza",
-            "terms": "biciklisti\u010dka staza,staza za bicikle"
-        },
-        "highway/footway": {
-            "name": "Pje\u0161a\u010dka staza",
-            "terms": "pje\u0161a\u010dka staza,staza,uga\u017eena staza"
-        },
-        "highway/living_street": {
-            "name": "Stambena ulica",
-            "terms": "ulica u stambenom naselju"
-        },
-        "highway/mini_roundabout": {
-            "name": "Mini kru\u017eni tok",
-            "terms": "mali kru\u017eni tok,mini kru\u017eni tok"
-        },
-        "highway/motorway": {
-            "name": "Autoput",
-            "terms": "autoput,autocesta"
-        },
-        "highway/motorway_link": {
-            "name": "Poveznica na autoput",
-            "terms": "poveznica na autoput,poveznica na autocestu"
-        },
-        "highway/path": {
-            "name": "Staza",
-            "terms": "staza,puteljak"
-        },
-        "highway/primary": {
-            "name": "Primarna cesta",
-            "terms": "glavna cesta,cesta od glavnog zna\u010daja"
-        },
-        "highway/primary_link": {
-            "name": "Primarna poveznica",
-            "terms": "primarna poveznica,poveznica na primarnu cestu"
-        },
-        "highway/residential": {
-            "name": "Rezidencijalna cesta",
-            "terms": "rezidencijalna cesta,cesta kroz naselje"
-        },
-        "highway/road": {
-            "name": "Nepoznata cesta",
-            "terms": "nepoznata cesta,nepoznat put"
-        },
-        "highway/secondary": {
-            "name": "Sekundarna cesta",
-            "terms": "sekundarna cesta,cesta od sekundarnog zna\u010daja"
-        },
-        "highway/secondary_link": {
-            "name": "Sekundarna poveznica",
-            "terms": "poveznica na sekundarnu cestu,poveznica na cestu sekundarnog zna\u010daja"
-        },
-        "highway/service": {
-            "name": "Servisna cesta",
-            "terms": "servisna cesta,cesta za opslu\u017eivanje"
-        },
-        "highway/service/alley": {
-            "name": "Uska ulica",
-            "terms": "uska ulica,uli\u010dica"
-        },
-        "highway/service/drive-through": {
-            "name": "Drive-in",
-            "terms": "drive-in,usluge za voza\u010de"
-        },
-        "highway/service/driveway": {
-            "name": "Prilaz",
-            "terms": "prilaz,pristupna cesta"
-        },
-        "highway/service/emergency_access": {
-            "name": "Pristup za hitne slu\u010dajeve",
-            "terms": "pristup za hitne slu\u010dajeve,prilaz u slu\u010daju nu\u017ede"
-        },
-        "highway/service/parking_aisle": {
-            "name": "Prolaz kroz parking",
-            "terms": "prolaz kroz parking,parkirali\u0161te"
-        },
-        "highway/steps": {
-            "name": "Stepenice",
-            "terms": "stepenice,stube"
-        },
-        "highway/stop": {
-            "name": "Znak stop",
-            "terms": "znak stop,saobra\u0107ajni znak stop,saobra\u0107ajni znak zaustavljanja"
-        },
-        "highway/tertiary": {
-            "name": "Tercijarna cesta",
-            "terms": "tercijarna cesta,cesta od tercijarnog zna\u010daja"
-        },
-        "highway/tertiary_link": {
-            "name": "Tercijarna poveznica",
-            "terms": "poveznica na tercijarnu cestu,poveznica na cestu od tercijarnog zna\u010daja"
-        },
-        "highway/traffic_signals": {
-            "name": "Saobra\u0107ajna signalizacija",
-            "terms": "saobra\u0107ajna signalizacija,semafori,saobra\u0107ajni znakovi"
-        },
-        "highway/trunk": {
-            "name": "Brza cesta",
-            "terms": "brza cesta,dr\u017eavna cesta"
-        },
-        "highway/trunk_link": {
-            "name": "Poveznica na brzu cestu",
-            "terms": "poveznica na brzu cestu,poveznica na dr\u017eavnu cestu"
-        },
-        "highway/turning_circle": {
-            "name": "Krug za okretanje",
-            "terms": "krug za okretanje,polukru\u017eno okretanje"
-        },
-        "historic": {
-            "name": "Historijsko mjesto",
-            "terms": "historijsko nalazi\u0161te,historijsko podru\u010dje"
-        },
-        "historic/archaeological_site": {
-            "name": "Arheolo\u0161ko podru\u010dje",
-            "terms": "arheolo\u0161ko nalazi\u0161te,arheolo\u0161ko podru\u010dje"
-        },
-        "historic/boundary_stone": {
-            "name": "Grani\u010dni kamen",
-            "terms": "grani\u010dni kamen,me\u0111a\u0161"
-        },
-        "historic/castle": {
-            "name": "Dvorac",
-            "terms": "dvorac,zamak"
+            "name": "Građevina",
+            "terms": "zgrada,građevina,kuća"
+        },
+        "leisure/garden": {
+            "name": "Vrt",
+            "terms": "vrt,bašta"
         },
         "historic/memorial": {
             "name": "Memorijal",
             "terms": "memorijalni spomenik,memorijal"
         },
-        "historic/monument": {
-            "name": "Spomenik",
-            "terms": "spomenik"
+        "craft/dressmaker": {
+            "name": "Izrada haljina"
         },
-        "historic/ruins": {
-            "name": "Ru\u0161evine",
-            "terms": "ru\u0161evine,historijske ru\u0161evine"
-        },
-        "historic/wayside_cross": {
-            "name": "Krajputa\u0161 ili ste\u0107ak",
-            "terms": "krajputa\u0161,ste\u0107ak,krst kraj puta"
-        },
-        "historic/wayside_shrine": {
-            "name": "Hram pored puta",
-            "terms": "znamenje kraj puta,kapelica"
-        },
-        "landuse/basin": {
-            "name": "Sliv"
-        },
-        "landuse/cemetery": {
-            "name": "Groblje",
-            "terms": "groblje,greblje,mezarje"
-        },
-        "landuse/construction": {
-            "name": "Gra\u0111evinsko podru\u010dje",
-            "terms": "gra\u0111evinsko podru\u010dje,podru\u010dje gradnje"
-        },
-        "landuse/farmyard": {
-            "name": "Seosko dvori\u0161te",
-            "terms": "seosko dvori\u0161te,dvori\u0161te imanja"
-        },
-        "landuse/grass": {
-            "name": "Travnjak",
-            "terms": "trava,travnjak"
-        },
-        "landuse/meadow": {
-            "name": "Livada",
-            "terms": "livada,prirodni travnjak"
-        },
-        "landuse/orchard": {
-            "name": "Vo\u0107njak",
-            "terms": "vo\u0107njak,uzgoj vo\u0107a"
-        },
-        "landuse/quarry": {
-            "name": "Rudnik",
-            "terms": "kamenolom,va\u0111enje kamena"
-        },
-        "landuse/vineyard": {
-            "name": "Vinograd",
-            "terms": "vinograd,uzgoj gro\u017e\u0111a"
-        },
-        "leisure": {
-            "name": "Rekreacija"
-        },
-        "leisure/common": {
-            "name": "Uobi\u010dajeno",
-            "terms": "uobi\u010dajeno,uobi\u010dajeno ime,uobi\u010dajeni naziv"
-        },
-        "leisure/dog_park": {
-            "name": "Igrali\u0161te za pse",
-            "terms": "igrali\u0161te za pse,park za pse"
-        },
-        "leisure/garden": {
-            "name": "Vrt",
-            "terms": "vrt,ba\u0161ta"
-        },
-        "leisure/golf_course": {
-            "name": "Golf teren",
-            "terms": "golf teren,igrali\u0161te za golf"
-        },
-        "leisure/marina": {
-            "name": "Marina",
-            "terms": "marina,vrsta pristani\u0161ta"
-        },
-        "leisure/park": {
-            "name": "Park",
-            "terms": "park,odr\u017eavana zelena povr\u0161ina"
-        },
-        "leisure/pitch": {
-            "name": "Sportsko igrali\u0161te",
-            "terms": "sportsko igrali\u0161te,sportski teren"
-        },
-        "leisure/pitch/american_football": {
-            "name": "Polje za ameri\u010dki fudbal",
-            "terms": "Polje za ameri\u010dki fudbal,igrali\u0161te za ameri\u010dki fudbal"
-        },
-        "leisure/pitch/basketball": {
-            "name": "Ko\u0161arka\u0161ki teren",
-            "terms": "ko\u0161arka\u0161ki teren,igrali\u0161te za ko\u0161arku"
-        },
-        "leisure/pitch/skateboard": {
-            "name": "Poligon za skateboard",
-            "terms": "poligon za skateboard,park za skateboard,poligon za klizanje"
-        },
-        "leisure/pitch/soccer": {
-            "name": "Fudbalski teren",
-            "terms": "fudbalski teren,igrali\u0161te za fudbal"
-        },
-        "leisure/pitch/tennis": {
-            "name": "Teniski teren",
-            "terms": "teniski teren,igrali\u0161te za tenis"
-        },
-        "leisure/pitch/volleyball": {
-            "name": "Odbojka\u0161ki teren",
-            "terms": "odbojka\u0161ki teren,igrali\u0161te za odbojku"
-        },
-        "leisure/playground": {
-            "name": "Igrali\u0161te",
-            "terms": "igrali\u0161te,dje\u010dje igrali\u0161te"
-        },
-        "leisure/slipway": {
-            "name": "Navoz",
-            "terms": "navoz,navoz na \u0161ine"
-        },
-        "leisure/stadium": {
-            "name": "Stadion",
-            "terms": "stadion,sportsko borili\u0161te"
+        "barrier/lift_gate": {
+            "name": "Kapija (koja se podiže)",
+            "terms": "kapija koja se podiže,podižuća kapija"
         },
         "leisure/swimming_pool": {
             "name": "Bazen",
-            "terms": "bazen,bazen za plivanje,pliva\u010dki bazen"
-        },
-        "line": {
-            "name": "Linija",
-            "terms": "linija"
-        },
-        "man_made": {
-            "name": "Napravljeno ljudskom rukom"
-        },
-        "man_made/breakwater": {
-            "name": "Lukobran",
-            "terms": "lukobran,valolom,utvrda obale"
-        },
-        "man_made/cutline": {
-            "name": "Prosjek",
-            "terms": "\u0161umski prosjek,prosjek kroz \u0161umu"
-        },
-        "man_made/embankment": {
-            "name": "Nasip"
-        },
-        "man_made/flagpole": {
-            "name": "Jarbol",
-            "terms": "jarbol,jarbol za zastavu"
-        },
-        "man_made/lighthouse": {
-            "name": "Svjetionik",
-            "terms": "svjetionik,toranj za svjetlosnu navigaciju"
-        },
-        "man_made/pier": {
-            "name": "Pristani\u0161te",
-            "terms": "pristani\u0161te,mol"
-        },
-        "man_made/pipeline": {
-            "name": "Cjevovod",
-            "terms": "cjevovod,sistem cijevi za prenos materijala"
-        },
-        "man_made/survey_point": {
-            "name": "Izvi\u0111a\u010dnica",
-            "terms": "izvi\u0111a\u010dnica,ta\u010dka izvi\u0111anja"
-        },
-        "man_made/tower": {
-            "name": "Toranj",
-            "terms": "toranj,kula"
-        },
-        "man_made/wastewater_plant": {
-            "name": "Postrojenje za obradu otpadnih voda",
-            "terms": "postrojenje za obradu otpadnih voda,prerada otpadnih voda"
-        },
-        "man_made/water_tower": {
-            "name": "Vodo-toranj",
-            "terms": "vodo-toranj,vodeni toranj"
-        },
-        "man_made/water_works": {
-            "name": "Vodosnadbjevanje",
-            "terms": "vodosnadbjevanje,snadbjevanje vodom"
-        },
-        "natural": {
-            "name": "Prirodno podru\u010dje"
-        },
-        "natural/bay": {
-            "name": "Zaliv",
-            "terms": "zaliv,vodena povr\u0161ina okru\u017eena kopnom sa tri strane"
-        },
-        "natural/beach": {
-            "name": "Pla\u017ea",
-            "terms": "pla\u017ea,obala za kupanje"
-        },
-        "natural/cliff": {
-            "name": "Litica",
-            "terms": "litica,hrid,stijena"
-        },
-        "natural/coastline": {
-            "name": "Obala",
-            "terms": "obala,obalno podru\u010dje"
-        },
-        "natural/fell": {
-            "name": "Planinska golet",
-            "terms": "nekultivirana zemlja na visokim nadmorskim visinama,neobra\u0111ena zemlja,visoki pa\u0161njak"
-        },
-        "natural/glacier": {
-            "name": "Gle\u010der",
-            "terms": "gle\u010der,ledenjak"
-        },
-        "natural/grassland": {
-            "name": "Pa\u0161njak",
-            "terms": "pa\u0161njak,prirodni travnjak"
-        },
-        "natural/heath": {
-            "name": "Vrijes",
-            "terms": "vrijes,vrijesi\u0161te"
-        },
-        "natural/peak": {
-            "name": "Vrh",
-            "terms": "vrh,kota"
-        },
-        "natural/scree": {
-            "name": "Osulina",
-            "terms": "sipar,sipina,osulina,nakupina osutog o\u0161trobridnog materijala"
-        },
-        "natural/scrub": {
-            "name": "Gusti\u0161",
-            "terms": "gusti\u0161,\u0161ipra\u017eje,nisko raslinje"
-        },
-        "natural/spring": {
-            "name": "Izvor",
-            "terms": "izvor,po\u010detak vodenog toka"
-        },
-        "natural/tree": {
-            "name": "Drvo",
-            "terms": "drvo,stablo"
-        },
-        "natural/water": {
-            "name": "Voda",
-            "terms": "voda"
-        },
-        "natural/water/lake": {
-            "name": "Jezero",
-            "terms": "jezero,vodom ispunjena kopnena depresija"
-        },
-        "natural/water/pond": {
-            "name": "Ribnjak",
-            "terms": "ribnjak,bara,plitka vodena masa"
-        },
-        "natural/water/reservoir": {
-            "name": "Rezervoar",
-            "terms": "rezervoar,spremi\u0161te vode"
-        },
-        "natural/wetland": {
-            "name": "Mo\u010dvara",
-            "terms": "mo\u010dvara,treseti\u0161te,mrtvaja"
-        },
-        "natural/wood": {
-            "name": "\u0160uma",
-            "terms": "\u0161uma,drvo"
-        },
-        "office": {
-            "name": "Ured",
-            "terms": "ured,uslu\u017eni ured"
-        },
-        "office/administrative": {
-            "name": "Administrativni ured"
-        },
-        "office/educational_institution": {
-            "name": "Obrazovna institucija",
-            "terms": "obrazovna institucija,institucija obrazovanja,institucija za obrazovanje"
-        },
-        "office/employment_agency": {
-            "name": "Agencija za zapo\u0161ljavanje",
-            "terms": "agencija za zapo\u0161ljavanje,ured za zapo\u0161ljavanje,agencija za posredovanje u zapo\u0161ljavanju"
-        },
-        "office/estate_agent": {
-            "name": "Agencija za nekretnine",
-            "terms": "agencija za nekretnine,agencija za posredovanje u prodaji nekretnina"
-        },
-        "office/financial": {
-            "name": "Finansijski ured",
-            "terms": "finansijski ured,ured za finansije"
-        },
-        "office/government": {
-            "name": "Vladin ured",
-            "terms": "ured vlade,vladin ured"
-        },
-        "office/insurance": {
-            "name": "Ured za osiguranje",
-            "terms": "ured za osiguranje,kancelarija za osiguranje"
-        },
-        "office/lawyer": {
-            "name": "Pravni ured",
-            "terms": "pravni ured,pravna kancelarija"
-        },
-        "office/ngo": {
-            "name": "Ured NVO",
-            "terms": "Nevladin ured,ured NVO,NVO kancelarija"
-        },
-        "office/physician": {
-            "name": "Ljekar"
-        },
-        "office/political_party": {
-            "name": "Politi\u010dka stranka",
-            "terms": "politi\u010dka stranka,politi\u010dka partija,ured politi\u010dke partije"
-        },
-        "office/research": {
-            "name": "Ured za istra\u017eivanje",
-            "terms": "ured za istra\u017eivanje,istra\u017eiva\u010dki ured,istra\u017eiva\u010dka kancelarija"
-        },
-        "office/telecommunication": {
-            "name": "Ured telekoma",
-            "terms": "ured telekoma,ured telekom operatera,kancelarija telekom operatera"
-        },
-        "office/travel_agent": {
-            "name": "Putni\u010dka agencija"
-        },
-        "place": {
-            "name": "Mjesto"
-        },
-        "place/city": {
-            "name": "Grad",
-            "terms": "grad,urbano naselje"
-        },
-        "place/hamlet": {
-            "name": "Zaselak",
-            "terms": "seoce,malo selo,zaselak"
-        },
-        "place/island": {
-            "name": "Ostrvo",
-            "terms": "ostrvo,kopno okru\u017eeno vodom"
-        },
-        "place/isolated_dwelling": {
-            "name": "Izolirano stanovanje",
-            "terms": "izolirano stanovanje,udaljene ku\u0107e"
-        },
-        "place/locality": {
-            "name": "Lokalitet",
-            "terms": "lokalitet,specifi\u010dno mjesto"
-        },
-        "place/town": {
-            "name": "Gradi\u0107",
-            "terms": "gradi\u0107,mali grad,manje urbano podru\u010dje"
-        },
-        "place/village": {
-            "name": "Selo",
-            "terms": "selo, ve\u0107e selo"
-        },
-        "point": {
-            "name": "Ta\u010dka",
-            "terms": "ta\u010dka"
-        },
-        "power": {
-            "name": "Energija"
-        },
-        "power/generator": {
-            "name": "Generator elektri\u010dne energije",
-            "terms": "generator el. energije,generator"
-        },
-        "power/line": {
-            "name": "Energetski vod",
-            "terms": "energetski vod,naponski vod,elektroenergetska linija"
-        },
-        "power/minor_line": {
-            "name": "Manji energetski vod",
-            "terms": "manji energetski vod,mali energetski vod"
-        },
-        "power/pole": {
-            "name": "Naponski stub",
-            "terms": "naponski stub,stub el. napajanja"
-        },
-        "power/sub_station": {
-            "name": "Trafo stanica"
-        },
-        "power/tower": {
-            "name": "Visokonaponski dalekovod",
-            "terms": "visokonaponski dalekovod,visokonaponski toranj"
-        },
-        "power/transformer": {
-            "name": "Transformator",
-            "terms": "transformator,transformator el. energije"
-        },
-        "railway": {
-            "name": "\u017deljezni\u010dka pruga"
-        },
-        "railway/abandoned": {
-            "name": "Napu\u0161tena \u017eeljeznica",
-            "terms": "napu\u0161tena \u017eeljezni\u010dka pruga,napu\u0161tena \u017eeljeznica"
-        },
-        "railway/disused": {
-            "name": "Nekori\u0161tena \u017eeljeznica",
-            "terms": "nekori\u0161tena \u017eeljezni\u010dka pruga,nekori\u0161tena \u017eeljeznica"
-        },
-        "railway/monorail": {
-            "name": "Pruga sa jednim kolosijekom",
-            "terms": "pruga sa jednim kolosijekom,jedno\u0161inska pruga"
-        },
-        "railway/rail": {
-            "name": "\u0160ina",
-            "terms": "\u0161ine,\u0161inski put"
-        },
-        "railway/subway": {
-            "name": "Podzemna \u017eeljeznica",
-            "terms": "podzemna \u017eeljeznica,metro"
-        },
-        "railway/subway_entrance": {
-            "name": "Ulaz u podzemnu \u017eeljeznicu",
-            "terms": "ulaz u podzemnu \u017eeljeznicu, ulaz podzemne \u017eeljeznice"
-        },
-        "railway/tram": {
-            "name": "Tramvaj",
-            "terms": "tramvaj,elektri\u010dni tramvaj"
-        },
-        "relation": {
-            "name": "Relacija",
-            "terms": "relacija,odnos objekata u skupu"
-        },
-        "route/ferry": {
-            "name": "Trajektna ruta",
-            "terms": "trajektna ruta,ruta trajekta"
-        },
-        "shop": {
-            "name": "Prodavnica",
-            "terms": "prodavnica,mjesto za prodaju roba i usluga"
-        },
-        "shop/alcohol": {
-            "name": "Prodavnica alkoholnih pi\u0107a",
-            "terms": "prodavnica alkohola,prodavnica alkoholnih pi\u0107a"
-        },
-        "shop/bakery": {
-            "name": "Pekara",
-            "terms": "pekara,proizvodnja i prodaja pekarskih proizvoda"
-        },
-        "shop/beauty": {
-            "name": "Salon ljepote",
-            "terms": "salon ljepote,kozmeti\u010dki salon"
-        },
-        "shop/beverages": {
-            "name": "Prodavnica pi\u0107a",
-            "terms": "prodavnica pi\u0107a,radnja za prodaju pi\u0107a"
-        },
-        "shop/bicycle": {
-            "name": "Prodavnica bicikala",
-            "terms": "prodavnica bicikala,radnja za prodaju bicikala"
-        },
-        "shop/boutique": {
-            "name": "Butik",
-            "terms": "butik,radnja za prodaju odje\u0107e"
-        },
-        "shop/butcher": {
-            "name": "Mesar",
-            "terms": "mesar,radnja za prodaju mesa"
-        },
-        "shop/car": {
-            "name": "Salon automobila",
-            "terms": "salon automobila,dileri za prodaju automobila"
-        },
-        "shop/car_parts": {
-            "name": "Prodavnica auto dijelova",
-            "terms": "radnja za prodaju autodijelova,prodaja dijelova za automobile"
-        },
-        "shop/car_repair": {
-            "name": "Auto servis",
-            "terms": "auto servis,radnja za popravku automobila"
-        },
-        "shop/clothes": {
-            "name": "Prodavnica odje\u0107e",
-            "terms": "prodavnica odje\u0107e,radnja za prodaju odje\u0107e"
-        },
-        "shop/computer": {
-            "name": "Prodavnica ra\u010dunara",
-            "terms": "radnja za prodaju ra\u010dunara,prodaja ra\u010dunara i ra\u010dunarske opreme"
-        },
-        "shop/convenience": {
-            "name": "Bakalnica",
-            "terms": "bakalnica,dragstor,prodavnica,granap"
-        },
-        "shop/deli": {
-            "name": "Delikatese",
-            "terms": "delikatese,prodavnica delikatesa"
-        },
-        "shop/department_store": {
-            "name": "Robna ku\u0107a",
-            "terms": "robna ku\u0107a,prodajni centar"
-        },
-        "shop/doityourself": {
-            "name": "Sve za ku\u0107u",
-            "terms": "sve za ku\u0107u,prodaja dijelova za \"uradi sam\" radove"
-        },
-        "shop/electronics": {
-            "name": "Prodavnica elektronike",
-            "terms": "prodavnica elektronike,radnja za prodaju elektronskih ure\u0111aja"
-        },
-        "shop/farm": {
-            "name": "\u0160tand proizvodnje",
-            "terms": "\u0161tand proizvodnje,\u0161tand proizvo\u0111a\u010da"
-        },
-        "shop/fishmonger": {
-            "name": "Ribarnica"
-        },
-        "shop/florist": {
-            "name": "Cvje\u0107ar",
-            "terms": "cvje\u0107ara,radnja za prodaju cvije\u0107a"
-        },
-        "shop/furniture": {
-            "name": "Salon namje\u0161taja",
-            "terms": "prodavnica namje\u0161taja,radnja za prodaju namje\u0161taja"
-        },
-        "shop/garden_centre": {
-            "name": "Centar za ba\u0161tovanstvo",
-            "terms": "centar za ba\u0161tovanstvo,centar za vrtlarstvo"
-        },
-        "shop/gift": {
-            "name": "Prodavnica suvenira",
-            "terms": "prodavnica suvenira,prodavnica poklona"
-        },
-        "shop/greengrocer": {
-            "name": "Zelenara",
-            "terms": "zelenara,radnja za prodaju zeleni"
-        },
-        "shop/hairdresser": {
-            "name": "Frizer",
-            "terms": "frizer,frizerski salon"
-        },
-        "shop/hardware": {
-            "name": "Prodavnica \u017eeljezarije",
-            "terms": "prodavnica \u017eeljezarije,gvo\u017e\u0111ara"
-        },
-        "shop/hifi": {
-            "name": "HiFi prodavnica",
-            "terms": "HiFi prodavnica,radnja za prodaju HiFi ure\u0111aja"
-        },
-        "shop/laundry": {
-            "name": "Praonica",
-            "terms": "praonica,servis za pranje rublja"
-        },
-        "shop/locksmith": {
-            "name": "Bravar",
-            "terms": "bravar,kopiranje klju\u010deva,bravarija"
-        },
-        "shop/mall": {
-            "name": "Tr\u017eni centar",
-            "terms": "tr\u017eni centar,supermarket,hipermarket"
-        },
-        "shop/mobile_phone": {
-            "name": "Prodavnica mobilnih ure\u0111aja",
-            "terms": "prodavnica mobilnih ure\u0111aja,radnja za prodaju mobitela"
-        },
-        "shop/motorcycle": {
-            "name": "Salon motocikala",
-            "terms": "salon motocikala,radnja za prodaju motocikala"
-        },
-        "shop/music": {
-            "name": "Muzi\u010dka prodavnica",
-            "terms": "muzi\u010dka prodavnica,prodaja muzi\u010dke opreme i muzike"
-        },
-        "shop/optician": {
-            "name": "Opti\u010dar",
-            "terms": "opti\u010dar,opti\u010darska radnja"
-        },
-        "shop/pet": {
-            "name": "Prodavnica ku\u0107nih ljubnimaca",
-            "terms": "prodavnica ku\u0107nih ljubimaca,prodaja hrane za ku\u0107ne ljubimce"
-        },
-        "shop/photo": {
-            "name": "Fotografska radnja",
-            "terms": "fotografska radnja,fotograf,izrada fotografija"
-        },
-        "shop/shoes": {
-            "name": "Prodavnica obu\u0107e",
-            "terms": "prodavnica obu\u0107e,salon obu\u0107e,prodavnica cipela"
-        },
-        "shop/sports": {
-            "name": "Prodavnica sportske opreme",
-            "terms": "prodavnica sportske opreme,radnja za prodaju sportske opreme"
-        },
-        "shop/stationery": {
-            "name": "Prodavnica kancelarijske opreme",
-            "terms": "prodaja kancelarijske opreme,radnja za prodaju kancelarijskog materijala"
-        },
-        "shop/supermarket": {
-            "name": "Supermarket",
-            "terms": "supermarket,prodaja robe \u0161iroke potro\u0161nje"
-        },
-        "shop/toys": {
-            "name": "Prodavnica igra\u010daka",
-            "terms": "prodavnica igra\u010daka, radnja za prodaju igra\u010daka"
-        },
-        "shop/travel_agency": {
-            "name": "Putni\u010dka agencija",
-            "terms": "putni\u010dka agencija,turisti\u010dka agencija"
-        },
-        "shop/tyres": {
-            "name": "Prodavnica guma",
-            "terms": "prodavnica guma, radnja za prodaju auto-guma"
-        },
-        "shop/vacant": {
-            "name": "Prodavnica za iznajmljivanje"
-        },
-        "shop/variety_store": {
-            "name": "Prodavnica mje\u0161ovite robe",
-            "terms": "prodavnica mje\u0161ovite robe,radnja za prodaju mje\u0161ovite robe"
-        },
-        "shop/video": {
-            "name": "Video klub",
-            "terms": "videoklub,videoteka"
-        },
-        "tourism": {
-            "name": "Turizam"
-        },
-        "tourism/alpine_hut": {
-            "name": "Planinski dom",
-            "terms": "alpska koliba,planinarski dom,planinarska ku\u0107a"
-        },
-        "tourism/artwork": {
-            "name": "Umjetni\u010dko djelo",
-            "terms": "umjetni\u010dko djelo,umjetnina"
-        },
-        "tourism/attraction": {
-            "name": "Turisti\u010dka atrakcija",
-            "terms": "turisti\u010dka atrakcija,spomenici kulture i prirode"
-        },
-        "tourism/caravan_site": {
-            "name": "Kamp park",
-            "terms": "kamp park,autokamp"
-        },
-        "tourism/guest_house": {
-            "name": "Gostinjska ku\u0107a",
-            "terms": "gostinjska ku\u0107a,gostinjski dom"
-        },
-        "tourism/hostel": {
-            "name": "Hostel",
-            "terms": "hostel,preno\u0107i\u0161te"
-        },
-        "tourism/hotel": {
-            "name": "Hotel",
-            "terms": "hotel,svrati\u0161te"
-        },
-        "tourism/information": {
-            "name": "Informacije",
-            "terms": "informacije,turisti\u010dke informacije"
-        },
-        "tourism/motel": {
-            "name": "Motel",
-            "terms": "motel,motor hotel"
-        },
-        "tourism/museum": {
-            "name": "Muzej",
-            "terms": "muzej,ustanova za \u010duvanje i izlaganje starina"
-        },
-        "tourism/picnic_site": {
-            "name": "Izleti\u0161te",
-            "terms": "izleti\u0161te,mjesto za piknik"
-        },
-        "tourism/theme_park": {
-            "name": "Tematski park",
-            "terms": "tematski park,park sa posebnim sadr\u017eajima"
-        },
-        "tourism/viewpoint": {
-            "name": "Vidikovac",
-            "terms": "vidikovac,pogled"
-        },
-        "tourism/zoo": {
-            "name": "Zoolo\u0161ki vrt",
-            "terms": "zoolo\u0161ki vrt,zoo vrt"
-        },
-        "type/boundary": {
-            "name": "Granica",
-            "terms": "granica,linija,linija razgrani\u010denja"
-        },
-        "type/boundary/administrative": {
-            "name": "Admninistrativna granica",
-            "terms": "administrativna granica,administrativna linija"
-        },
-        "type/multipolygon": {
-            "name": "Multipoligon"
-        },
-        "type/restriction": {
-            "name": "Zabrana",
-            "terms": "zabrana,zabrana za vozila"
-        },
-        "type/route": {
-            "name": "Ruta",
-            "terms": "ruta,trasa,mar\u0161ruta"
-        },
-        "type/route/bicycle": {
-            "name": "Biciklisti\u010dka ruta",
-            "terms": "biciklisti\u010dka trasa,biciklisti\u010dka ruta"
-        },
-        "type/route/bus": {
-            "name": "Bus ruta",
-            "terms": "autobuska trasa,autobuska ruta"
-        },
-        "type/route/detour": {
-            "name": "Ruta zaobilaznice",
-            "terms": "zaobilazna trasa,zaobilazna ruta"
-        },
-        "type/route/ferry": {
-            "name": "Trajektna ruta",
-            "terms": "trajektna trasa,trajektna ruta"
-        },
-        "type/route/foot": {
-            "name": "Pje\u0161a\u010dka ruta",
-            "terms": "pje\u0161a\u010dka trasa,pje\u0161a\u010dka ruta"
-        },
-        "type/route/hiking": {
-            "name": "Planinarska ruta",
-            "terms": "planinarska ruta,pje\u0161a\u010dka ruta,ruta za \u0161etnju"
-        },
-        "type/route/pipeline": {
-            "name": "Cjevovodna ruta",
-            "terms": "cjevovodna trasa,cjevovodna ruta"
-        },
-        "type/route/power": {
-            "name": "Energetska ruta",
-            "terms": "trasa napajanja,ruta napajanja"
-        },
-        "type/route/road": {
-            "name": "Cestovna ruta",
-            "terms": "cestovna trasa,cestovna ruta"
-        },
-        "type/route/train": {
-            "name": "\u017deljezni\u010dka ruta",
-            "terms": "\u017eeljezni\u010dka trasa,\u017eeljezni\u010dka ruta,trasa voza"
-        },
-        "type/route/tram": {
-            "name": "Tramvajska ruta",
-            "terms": "tramvajska trasa,tramvajska ruta"
-        },
-        "type/route_master": {
-            "name": "Informacije o rutama",
-            "terms": "informacije o rutama,informacije o trasama"
-        },
-        "vertex": {
-            "name": "Drugo",
-            "terms": "ostalo,drugo"
-        },
-        "waterway": {
-            "name": "Vodotok"
-        },
-        "waterway/canal": {
-            "name": "Kanal",
-            "terms": "kanal,prokop"
-        },
-        "waterway/dam": {
-            "name": "Brana",
-            "terms": "brana,ustava,nasip"
-        },
-        "waterway/ditch": {
-            "name": "Jarak",
-            "terms": "jarak,rov,prokop"
-        },
-        "waterway/drain": {
-            "name": "Odvod",
-            "terms": "odvod,slivnik"
-        },
-        "waterway/river": {
-            "name": "Rijeka",
-            "terms": "rijeka,rije\u010dni tok"
-        },
-        "waterway/riverbank": {
-            "name": "Rije\u010dno korito"
+            "terms": "bazen,bazen za plivanje,plivački bazen"
         },
         "waterway/stream": {
             "name": "Potok",
             "terms": "potok,manji vodotok"
         },
+        "railway": {
+            "name": "Željeznička pruga"
+        },
+        "amenity/library": {
+            "name": "Biblioteka",
+            "terms": "biblioteka,knjižnica"
+        },
+        "shop/stationery": {
+            "name": "Prodavnica kancelarijske opreme",
+            "terms": "prodaja kancelarijske opreme,radnja za prodaju kancelarijskog materijala"
+        },
+        "highway/secondary_link": {
+            "name": "Sekundarna poveznica",
+            "terms": "poveznica na sekundarnu cestu,poveznica na cestu sekundarnog značaja"
+        },
+        "highway/living_street": {
+            "name": "Stambena ulica",
+            "terms": "ulica u stambenom naselju"
+        },
+        "power/sub_station": {
+            "name": "Trafo stanica"
+        },
+        "highway/motorway": {
+            "name": "Autoput",
+            "terms": "autoput,autocesta"
+        },
+        "natural/bay": {
+            "name": "Zaliv",
+            "terms": "zaliv,vodena površina okružena kopnom sa tri strane"
+        },
+        "aeroway/runway": {
+            "name": "Pista",
+            "terms": "pista,sletište/uzletište za avione"
+        },
+        "railway/monorail": {
+            "name": "Pruga sa jednim kolosijekom",
+            "terms": "pruga sa jednim kolosijekom,jednošinska pruga"
+        },
+        "amenity/studio": {
+            "name": "Studio"
+        },
+        "office/physician": {
+            "name": "Ljekar"
+        },
+        "shop/bicycle": {
+            "name": "Prodavnica bicikala",
+            "terms": "prodavnica bicikala,radnja za prodaju bicikala"
+        },
+        "barrier/city_wall": {
+            "name": "Gradski zid",
+            "terms": "zid grada,gradski zid"
+        },
+        "office/employment_agency": {
+            "name": "Agencija za zapošljavanje",
+            "terms": "agencija za zapošljavanje,ured za zapošljavanje,agencija za posredovanje u zapošljavanju"
+        },
+        "tourism/guest_house": {
+            "name": "Gostinjska kuća",
+            "terms": "gostinjska kuća,gostinjski dom"
+        },
+        "boundary/administrative": {
+            "name": "Admninistrativna granica",
+            "terms": "administrativna granica, administrativna linija"
+        },
+        "amenity": {
+            "name": "Pogodnost"
+        },
+        "amenity/fuel": {
+            "name": "Benzinska pumpa",
+            "terms": "benzinska pumpa,pumpa za gorivo"
+        },
+        "type/route/tram": {
+            "name": "Tramvajska ruta",
+            "terms": "tramvajska trasa,tramvajska ruta"
+        },
+        "leisure/pitch/american_football": {
+            "name": "Polje za američki fudbal",
+            "terms": "Polje za američki fudbal,igralište za američki fudbal"
+        },
+        "place/island": {
+            "name": "Ostrvo",
+            "terms": "ostrvo,kopno okruženo vodom"
+        },
+        "craft/carpenter": {
+            "name": "Stolar"
+        },
+        "man_made/pier": {
+            "name": "Pristanište",
+            "terms": "pristanište,mol"
+        },
+        "shop/farm": {
+            "name": "Štand proizvodnje",
+            "terms": "štand proizvodnje,štand proizvođača"
+        },
+        "highway/road": {
+            "name": "Nepoznata cesta",
+            "terms": "nepoznata cesta,nepoznat put"
+        },
+        "address": {
+            "name": "Adresa",
+            "terms": "adresa,prebivalište"
+        },
+        "highway/primary_link": {
+            "name": "Primarna poveznica",
+            "terms": "primarna poveznica,poveznica na primarnu cestu"
+        },
+        "man_made/water_works": {
+            "name": "Vodosnadbjevanje",
+            "terms": "vodosnadbjevanje,snadbjevanje vodom"
+        },
+        "shop/greengrocer": {
+            "name": "Zelenara",
+            "terms": "zelenara,radnja za prodaju zeleni"
+        },
+        "amenity/pub": {
+            "name": "Pub",
+            "terms": "pub,kafana,pivnica"
+        },
+        "golf/rough": {
+            "name": "Rough",
+            "terms": "područje "divlje" trave van igre,trava van golf terena"
+        },
+        "man_made/breakwater": {
+            "name": "Lukobran",
+            "terms": "lukobran,valolom,utvrda obale"
+        },
+        "shop/shoes": {
+            "name": "Prodavnica obuće",
+            "terms": "prodavnica obuće,salon obuće,prodavnica cipela"
+        },
+        "type/route/road": {
+            "name": "Cestovna ruta",
+            "terms": "cestovna trasa,cestovna ruta"
+        },
+        "amenity/ranger_station": {
+            "name": "Stanica rendžerske službe",
+            "terms": "rendžerska služba,stanica rendžerske službe,rendžerska stanica"
+        },
+        "office/financial": {
+            "name": "Finansijski ured",
+            "terms": "finansijski ured,ured za finansije"
+        },
+        "shop/hairdresser": {
+            "name": "Frizer",
+            "terms": "frizer,frizerski salon"
+        },
+        "amenity/swimming_pool": {
+            "name": "Bazen"
+        },
+        "man_made/tower": {
+            "name": "Toranj",
+            "terms": "toranj,kula"
+        },
+        "shop/florist": {
+            "name": "Cvjećar",
+            "terms": "cvjećara,radnja za prodaju cvijeća"
+        },
+        "type/route/ferry": {
+            "name": "Trajektna ruta",
+            "terms": "trajektna trasa,trajektna ruta"
+        },
+        "amenity/atm": {
+            "name": "Bankomat",
+            "terms": "bankomat,bankovni automat za novac"
+        },
+        "place/locality": {
+            "name": "Lokalitet",
+            "terms": "lokalitet,specifično mjesto"
+        },
+        "type/route/hiking": {
+            "name": "Planinarska ruta",
+            "terms": "planinarska ruta,pješačka ruta,ruta za šetnju"
+        },
+        "amenity/courthouse": {
+            "name": "Sudnica",
+            "terms": "sudnica,zgrada suda"
+        },
+        "tourism/hostel": {
+            "name": "Hostel",
+            "terms": "hostel,prenoćište"
+        },
+        "leisure/pitch/volleyball": {
+            "name": "Odbojkaški teren",
+            "terms": "odbojkaški teren,igralište za odbojku"
+        },
+        "place/hamlet": {
+            "name": "Zaselak",
+            "terms": "seoce,malo selo,zaselak"
+        },
+        "craft/pottery": {
+            "name": "Grnčarija"
+        },
+        "craft/roofer": {
+            "name": "Krovopokrivač"
+        },
+        "highway": {
+            "name": "Put"
+        },
+        "area": {
+            "name": "Područje",
+            "terms": "područje,zona,oblast"
+        },
+        "amenity/theatre": {
+            "name": "Pozorište",
+            "terms": "teatar,pozorište"
+        },
+        "man_made/lighthouse": {
+            "name": "Svjetionik",
+            "terms": "svjetionik,toranj za svjetlosnu navigaciju"
+        },
+        "type/route/train": {
+            "name": "Željeznička ruta",
+            "terms": "željeznička trasa,željeznička ruta,trasa voza"
+        },
+        "barrier/fence": {
+            "name": "Ograda",
+            "terms": "ograda,plot"
+        },
+        "landuse/cemetery": {
+            "name": "Groblje",
+            "terms": "groblje,greblje,mezarje"
+        },
+        "railway/rail": {
+            "name": "Šina",
+            "terms": "šine,šinski put"
+        },
+        "natural/scree": {
+            "name": "Osulina",
+            "terms": "sipar,sipina,osulina,nakupina osutog oštrobridnog materijala"
+        },
+        "office/government": {
+            "name": "Vladin ured",
+            "terms": "ured vlade,vladin ured"
+        },
+        "amenity/fountain": {
+            "name": "Fontana",
+            "terms": "fontana,česma,vodoskok"
+        },
+        "railway/disused": {
+            "name": "Nekorištena željeznica",
+            "terms": "nekorištena željeznička pruga,nekorištena željeznica"
+        },
+        "shop/doityourself": {
+            "name": "Sve za kuću",
+            "terms": "sve za kuću,prodaja dijelova za "uradi sam" radove"
+        },
+        "amenity/taxi": {
+            "name": "Taxi stajalište",
+            "terms": "taxi štand,taxi stajalište"
+        },
+        "amenity/grave_yard": {
+            "name": "Groblje",
+            "terms": "groblje,greblje,mezarje"
+        },
+        "man_made/water_tower": {
+            "name": "Vodo-toranj",
+            "terms": "vodo-toranj,vodeni toranj"
+        },
+        "railway/subway_entrance": {
+            "name": "Ulaz u podzemnu željeznicu",
+            "terms": "ulaz u podzemnu željeznicu, ulaz podzemne željeznice"
+        },
+        "man_made/cutline": {
+            "name": "Prosjek",
+            "terms": "šumski prosjek,prosjek kroz šumu"
+        },
+        "tourism/caravan_site": {
+            "name": "Kamp park",
+            "terms": "kamp park,autokamp"
+        },
+        "craft/clockmaker": {
+            "name": "Proizvođač satova"
+        },
+        "shop/locksmith": {
+            "name": "Bravar",
+            "terms": "bravar,kopiranje ključeva,bravarija"
+        },
+        "office/insurance": {
+            "name": "Ured za osiguranje",
+            "terms": "ured za osiguranje,kancelarija za osiguranje"
+        },
+        "shop/furniture": {
+            "name": "Salon namještaja",
+            "terms": "prodavnica namještaja,radnja za prodaju namještaja"
+        },
+        "leisure/pitch": {
+            "name": "Sportsko igralište",
+            "terms": "sportsko igralište,sportski teren"
+        },
+        "tourism/hotel": {
+            "name": "Hotel",
+            "terms": "hotel,svratište"
+        },
+        "shop/bakery": {
+            "name": "Pekara",
+            "terms": "pekara,proizvodnja i prodaja pekarskih proizvoda"
+        },
+        "historic/monument": {
+            "name": "Spomenik",
+            "terms": "spomenik"
+        },
+        "emergency/phone": {
+            "name": "Telefon za hitne slučajeve",
+            "terms": "telefon za hitne slučajeve,hitna telefonska linija"
+        },
+        "type/route/bicycle": {
+            "name": "Biciklistička ruta",
+            "terms": "biciklistička trasa,biciklistička ruta"
+        },
+        "golf/bunker": {
+            "name": "Pješčana zamka",
+            "terms": "pješčana zamka,pješčana klopka,bunker"
+        },
+        "leisure/pitch/soccer": {
+            "name": "Fudbalski teren",
+            "terms": "fudbalski teren,igralište za fudbal"
+        },
+        "type/multipolygon": {
+            "name": "Multipoligon"
+        },
+        "shop/vacant": {
+            "name": "Prodavnica za iznajmljivanje"
+        },
+        "historic": {
+            "name": "Historijsko mjesto",
+            "terms": "historijsko nalazište,historijsko područje"
+        },
+        "leisure/playground": {
+            "name": "Igralište",
+            "terms": "igralište,dječje igralište"
+        },
+        "amenity/telephone": {
+            "name": "Telefon",
+            "terms": "telefon,telefonska govornica"
+        },
+        "craft/blacksmith": {
+            "name": "Kovač"
+        },
+        "leisure/stadium": {
+            "name": "Stadion",
+            "terms": "stadion,sportsko borilište"
+        },
+        "amenity/drinking_water": {
+            "name": "Voda za piće",
+            "terms": "voda za piće,pitka voda"
+        },
+        "highway/mini_roundabout": {
+            "name": "Mini kružni tok",
+            "terms": "mali kružni tok,mini kružni tok"
+        },
+        "barrier/kissing_gate": {
+            "name": "Kapija (sa dvoje vrata)",
+            "terms": "kapija sa dvoje vrata"
+        },
+        "amenity/townhall": {
+            "name": "Gradska vijećnica",
+            "terms": "gradska vijećnica,vijećnica"
+        },
+        "highway/service/parking_aisle": {
+            "name": "Prolaz kroz parking",
+            "terms": "prolaz kroz parking,parkiralište"
+        },
+        "natural/water": {
+            "name": "Voda",
+            "terms": "voda"
+        },
+        "barrier/cycle_barrier": {
+            "name": "Biciklistička prepreka",
+            "terms": "barijera za bicikle,prepreka za bicikle"
+        },
+        "embankment": {
+            "name": "Nasip"
+        },
+        "shop/sports": {
+            "name": "Prodavnica sportske opreme",
+            "terms": "prodavnica sportske opreme,radnja za prodaju sportske opreme"
+        },
+        "power/line": {
+            "name": "Energetski vod",
+            "terms": "energetski vod,naponski vod,elektroenergetska linija"
+        },
+        "power/pole": {
+            "name": "Naponski stub",
+            "terms": "naponski stub,stub el. napajanja"
+        },
+        "shop/laundry": {
+            "name": "Praonica",
+            "terms": "praonica,servis za pranje rublja"
+        },
+        "natural/peak": {
+            "name": "Vrh",
+            "terms": "vrh,kota"
+        },
+        "highway/tertiary": {
+            "name": "Tercijarna cesta",
+            "terms": "tercijarna cesta,cesta od tercijarnog značaja"
+        },
+        "tourism/artwork": {
+            "name": "Umjetničko djelo",
+            "terms": "umjetničko djelo,umjetnina"
+        },
+        "amenity/bank": {
+            "name": "Banka",
+            "terms": "banka"
+        },
+        "craft/key_cutter": {
+            "name": "Izrada ključeva"
+        },
+        "amenity/arts_centre": {
+            "name": "Centar za umjetnost",
+            "terms": "centar za umjetnost,umjetnički centar,art centar"
+        },
+        "shop/travel_agency": {
+            "name": "Putnička agencija",
+            "terms": "putnička agencija,turistička agencija"
+        },
+        "amenity/restaurant": {
+            "name": "Restoran",
+            "terms": "restoran,gostionica"
+        },
+        "type/route/detour": {
+            "name": "Ruta zaobilaznice",
+            "terms": "zaobilazna trasa,zaobilazna ruta"
+        },
+        "amenity/police": {
+            "name": "Policija",
+            "terms": "policija,milicija,organi reda"
+        },
+        "highway/service/driveway": {
+            "name": "Prilaz",
+            "terms": "prilaz,pristupna cesta"
+        },
+        "leisure/pitch/basketball": {
+            "name": "Košarkaški teren",
+            "terms": "košarkaški teren,igralište za košarku"
+        },
+        "building/residential": {
+            "name": "Stambena zgrada",
+            "terms": "stambena zgrada,zgrada za stanovanje"
+        },
+        "shop/tyres": {
+            "name": "Prodavnica guma",
+            "terms": "prodavnica guma, radnja za prodaju auto-guma"
+        },
+        "leisure": {
+            "name": "Rekreacija"
+        },
+        "amenity/post_office": {
+            "name": "Pošta",
+            "terms": "pošta,poštanski ured,ispostava pošte"
+        },
+        "aerialway/gondola": {
+            "name": "Gondola"
+        },
+        "amenity/bar": {
+            "name": "Bar",
+            "terms": "bar,gostionica,pivnica"
+        },
+        "tourism/museum": {
+            "name": "Muzej",
+            "terms": "muzej,ustanova za čuvanje i izlaganje starina"
+        },
+        "barrier/stile": {
+            "name": "Prelaz preko ograde",
+            "terms": "prelaz,prelaz preko ograde"
+        },
+        "shop/boutique": {
+            "name": "Butik",
+            "terms": "butik,radnja za prodaju odjeće"
+        },
+        "leisure/pitch/tennis": {
+            "name": "Teniski teren",
+            "terms": "teniski teren,igralište za tenis"
+        },
+        "highway/trunk": {
+            "name": "Brza cesta",
+            "terms": "brza cesta,državna cesta"
+        },
+        "golf/tee": {
+            "name": "Tee Box",
+            "terms": ""Tee" kutija,kutija područja na početku rupe"
+        },
+        "office": {
+            "name": "Ured",
+            "terms": "ured,uslužni ured"
+        },
+        "amenity/fire_station": {
+            "name": "Vatrogasna stanica",
+            "terms": "vatrogasna stanica,zgrada vatrogasne službe"
+        },
+        "barrier/entrance": {
+            "name": "Ulaz"
+        },
+        "emergency/fire_hydrant": {
+            "name": "Hidrant za požar",
+            "terms": "hidrant,hidrant za požar"
+        },
+        "natural/water/pond": {
+            "name": "Ribnjak",
+            "terms": "ribnjak,bara,plitka vodena masa"
+        },
+        "craft/bookbinder": {
+            "name": "Knjigovezac"
+        },
+        "shop/beverages": {
+            "name": "Prodavnica pića",
+            "terms": "prodavnica pića,radnja za prodaju pića"
+        },
+        "amenity/marketplace": {
+            "name": "Tržnica",
+            "terms": "tržnica,pijaca"
+        },
+        "building/industrial": {
+            "name": "Industrijska građevina",
+            "terms": "industrijska građevina,pogon"
+        },
+        "power/tower": {
+            "name": "Visokonaponski dalekovod",
+            "terms": "visokonaponski dalekovod,visokonaponski toranj"
+        },
+        "craft/boatbuilder": {
+            "name": "Brodograditelj"
+        },
+        "office/estate_agent": {
+            "name": "Agencija za nekretnine",
+            "terms": "agencija za nekretnine,agencija za posredovanje u prodaji nekretnina"
+        },
+        "shop/toys": {
+            "name": "Prodavnica igračaka",
+            "terms": "prodavnica igračaka, radnja za prodaju igračaka"
+        },
+        "craft/gardener": {
+            "name": "Vrtlar"
+        },
+        "amenity/cafe": {
+            "name": "Kafe",
+            "terms": "kafe,kafana,kafe-bar"
+        },
+        "highway/service/emergency_access": {
+            "name": "Pristup za hitne slučajeve",
+            "terms": "pristup za hitne slučajeve,prilaz u slučaju nužde"
+        },
+        "power/transformer": {
+            "name": "Transformator",
+            "terms": "transformator,transformator el. energije"
+        },
+        "power/generator": {
+            "name": "Generator električne energije",
+            "terms": "generator el. energije,generator"
+        },
+        "shop/pet": {
+            "name": "Prodavnica kućnih ljubnimaca",
+            "terms": "prodavnica kućnih ljubimaca,prodaja hrane za kućne ljubimce"
+        },
+        "natural/wetland": {
+            "name": "Močvara",
+            "terms": "močvara,tresetište,mrtvaja"
+        },
+        "man_made/survey_point": {
+            "name": "Izviđačnica",
+            "terms": "izviđačnica,tačka izviđanja"
+        },
+        "type/route/power": {
+            "name": "Energetska ruta",
+            "terms": "trasa napajanja,ruta napajanja"
+        },
+        "highway/service/alley": {
+            "name": "Uska ulica",
+            "terms": "uska ulica,uličica"
+        },
+        "shop/department_store": {
+            "name": "Robna kuća",
+            "terms": "robna kuća,prodajni centar"
+        },
+        "historic/wayside_cross": {
+            "name": "Krajputaš ili stećak",
+            "terms": "krajputaš,stećak,krst kraj puta"
+        },
+        "natural/cliff": {
+            "name": "Litica",
+            "terms": "litica,hrid,stijena"
+        },
+        "building/garage": {
+            "name": "Garaža",
+            "terms": "garaža"
+        },
+        "highway/footway": {
+            "name": "Pješačka staza",
+            "terms": "pješačka staza,staza,ugažena staza"
+        },
+        "natural/coastline": {
+            "name": "Obala",
+            "terms": "obala,obalno područje"
+        },
+        "natural/glacier": {
+            "name": "Glečer",
+            "terms": "glečer,ledenjak"
+        },
+        "route/ferry": {
+            "name": "Trajektna ruta",
+            "terms": "trajektna ruta,ruta trajekta"
+        },
+        "highway/steps": {
+            "name": "Stepenice",
+            "terms": "stepenice,stube"
+        },
+        "amenity/fast_food": {
+            "name": "Fast Food",
+            "terms": "fast food,restoran brze hrane"
+        },
+        "highway/primary": {
+            "name": "Primarna cesta",
+            "terms": "glavna cesta,cesta od glavnog značaja"
+        },
+        "type/route/pipeline": {
+            "name": "Cjevovodna ruta",
+            "terms": "cjevovodna trasa,cjevovodna ruta"
+        },
+        "barrier/cattle_grid": {
+            "name": "Rešetke za stoku",
+            "terms": "rešetke za stoku,ograda za stoku"
+        },
+        "tourism/motel": {
+            "name": "Motel",
+            "terms": "motel,motor hotel"
+        },
+        "aeroway/helipad": {
+            "name": "Heliodrom",
+            "terms": "heliodrom,sletište/uzletište za helikopter"
+        },
+        "leisure/slipway": {
+            "name": "Navoz",
+            "terms": "navoz,navoz na šine"
+        },
+        "amenity/dentist": {
+            "name": "Zubar",
+            "terms": "zubar,stomatolog"
+        },
+        "craft/caterer": {
+            "name": "Ugostitelj"
+        },
+        "office/research": {
+            "name": "Ured za istraživanje",
+            "terms": "ured za istraživanje,istraživački ured,istraživačka kancelarija"
+        },
+        "office/travel_agent": {
+            "name": "Putnička agencija"
+        },
+        "craft/jeweler": {
+            "name": "Zlatar"
+        },
+        "office/telecommunication": {
+            "name": "Ured telekoma",
+            "terms": "ured telekoma,ured telekom operatera,kancelarija telekom operatera"
+        },
+        "shop/supermarket": {
+            "name": "Supermarket",
+            "terms": "supermarket,prodaja robe široke potrošnje"
+        },
+        "office/political_party": {
+            "name": "Politička stranka",
+            "terms": "politička stranka,politička partija,ured političke partije"
+        },
+        "shop/garden_centre": {
+            "name": "Centar za baštovanstvo",
+            "terms": "centar za baštovanstvo,centar za vrtlarstvo"
+        },
+        "barrier/hedge": {
+            "name": "Živa ograda",
+            "terms": "ograda,živica"
+        },
+        "shop/beauty": {
+            "name": "Salon ljepote",
+            "terms": "salon ljepote,kozmetički salon"
+        },
+        "building/hut": {
+            "name": "Koliba",
+            "terms": "koliba,brvnara"
+        },
+        "waterway/canal": {
+            "name": "Kanal",
+            "terms": "kanal,prokop"
+        },
+        "leisure/common": {
+            "name": "Uobičajeno",
+            "terms": "uobičajeno,uobičajeno ime,uobičajeni naziv"
+        },
+        "shop/fishmonger": {
+            "name": "Ribarnica"
+        },
+        "landuse/orchard": {
+            "name": "Voćnjak",
+            "terms": "voćnjak,uzgoj voća"
+        },
+        "shop/car": {
+            "name": "Salon automobila",
+            "terms": "salon automobila,dileri za prodaju automobila"
+        },
+        "golf/hole": {
+            "name": "Rupa za golf",
+            "terms": "golf rupa,rupa za golf loptice"
+        },
+        "railway/abandoned": {
+            "name": "Napuštena željeznica",
+            "terms": "napuštena željeznička pruga,napuštena željeznica"
+        },
+        "type/restriction": {
+            "name": "Zabrana",
+            "terms": "zabrana,zabrana za vozila"
+        },
+        "shop/mall": {
+            "name": "Tržni centar",
+            "terms": "tržni centar,supermarket,hipermarket"
+        },
+        "barrier/wall": {
+            "name": "Zid",
+            "terms": "zid,zidić,bedem"
+        },
+        "natural/beach": {
+            "name": "Plaža",
+            "terms": "plaža,obala za kupanje"
+        },
+        "craft/insulator": {
+            "name": "Izolator"
+        },
+        "landuse/vineyard": {
+            "name": "Vinograd",
+            "terms": "vinograd,uzgoj grožđa"
+        },
+        "vertex": {
+            "name": "Drugo",
+            "terms": "ostalo,drugo"
+        },
+        "type/boundary": {
+            "name": "Granica",
+            "terms": "granica,linija,linija razgraničenja"
+        },
+        "aeroway/taxiway": {
+            "name": "Staza za vožnju",
+            "terms": "rulna staza,staza za vožnju aviona"
+        },
+        "craft/optician": {
+            "name": "Optičar"
+        },
+        "type/route": {
+            "name": "Ruta",
+            "terms": "ruta,trasa,maršruta"
+        },
+        "man_made/embankment": {
+            "name": "Nasip"
+        },
+        "aeroway/hangar": {
+            "name": "Hangar",
+            "terms": "hangar"
+        },
+        "man_made/wastewater_plant": {
+            "name": "Postrojenje za obradu otpadnih voda",
+            "terms": "postrojenje za obradu otpadnih voda,prerada otpadnih voda"
+        },
+        "highway/motorway_link": {
+            "name": "Poveznica na autoput",
+            "terms": "poveznica na autoput,poveznica na autocestu"
+        },
+        "natural/water/reservoir": {
+            "name": "Rezervoar",
+            "terms": "rezervoar,spremište vode"
+        },
+        "place/isolated_dwelling": {
+            "name": "Izolirano stanovanje",
+            "terms": "izolirano stanovanje,udaljene kuće"
+        },
+        "craft/saddler": {
+            "name": "Sedlar"
+        },
+        "landuse/quarry": {
+            "name": "Rudnik",
+            "terms": "kamenolom,vađenje kamena"
+        },
+        "landuse/basin": {
+            "name": "Sliv"
+        },
+        "historic/ruins": {
+            "name": "Ruševine",
+            "terms": "ruševine,historijske ruševine"
+        },
+        "natural/scrub": {
+            "name": "Gustiš",
+            "terms": "gustiš,šipražje,nisko raslinje"
+        },
+        "craft/photographer": {
+            "name": "Fotograf"
+        },
+        "highway/secondary": {
+            "name": "Sekundarna cesta",
+            "terms": "sekundarna cesta,cesta od sekundarnog značaja"
+        },
+        "natural/fell": {
+            "name": "Planinska golet",
+            "terms": "nekultivirana zemlja na visokim nadmorskim visinama,neobrađena zemlja,visoki pašnjak"
+        },
+        "shop": {
+            "name": "Prodavnica",
+            "terms": "prodavnica,mjesto za prodaju roba i usluga"
+        },
+        "natural/heath": {
+            "name": "Vrijes",
+            "terms": "vrijes,vrijesište"
+        },
+        "natural/spring": {
+            "name": "Izvor",
+            "terms": "izvor,početak vodenog toka"
+        },
+        "man_made/pipeline": {
+            "name": "Cjevovod",
+            "terms": "cjevovod,sistem cijevi za prenos materijala"
+        },
+        "building/commercial": {
+            "name": "Poslovna zgrada",
+            "terms": "poslovna zgrada,zgrada firme"
+        },
+        "office/educational_institution": {
+            "name": "Obrazovna institucija",
+            "terms": "obrazovna institucija,institucija obrazovanja,institucija za obrazovanje"
+        },
+        "amenity/bicycle_parking": {
+            "name": "Parking bicikala",
+            "terms": "parking bicikala,mjesto za parkiranje bicikla"
+        },
+        "shop/deli": {
+            "name": "Delikatese",
+            "terms": "delikatese,prodavnica delikatesa"
+        },
+        "waterway/ditch": {
+            "name": "Jarak",
+            "terms": "jarak,rov,prokop"
+        },
+        "highway/service/drive-through": {
+            "name": "Drive-in",
+            "terms": "drive-in,usluge za vozače"
+        },
+        "shop/electronics": {
+            "name": "Prodavnica elektronike",
+            "terms": "prodavnica elektronike,radnja za prodaju elektronskih uređaja"
+        },
+        "waterway": {
+            "name": "Vodotok"
+        },
+        "amenity/clinic": {
+            "name": "Klinika"
+        },
+        "amenity/place_of_worship/buddhist": {
+            "name": "Budistički hram",
+            "terms": "budistički hram,budistička bogomolja"
+        },
+        "amenity/cinema": {
+            "name": "Kino",
+            "terms": "kino,kino dvorana,multipleks"
+        },
+        "type/route/bus": {
+            "name": "Bus ruta",
+            "terms": "autobuska trasa,autobuska ruta"
+        },
+        "type/route_master": {
+            "name": "Informacije o rutama",
+            "terms": "informacije o rutama,informacije o trasama"
+        },
+        "natural/wood": {
+            "name": "Šuma",
+            "terms": "šuma,drvo"
+        },
+        "amenity/waste_basket": {
+            "name": "Kanta za otpatke",
+            "terms": "kanta za otpatke,posuda za otpatke,kanta za smeće"
+        },
+        "aeroway/apron": {
+            "name": "Stajanka",
+            "terms": "stajanka,betonirani teren aerodroma"
+        },
+        "shop/optician": {
+            "name": "Optičar",
+            "terms": "optičar,optičarska radnja"
+        },
+        "type/route/foot": {
+            "name": "Pješačka ruta",
+            "terms": "pješačka trasa,pješačka ruta"
+        },
+        "barrier/block": {
+            "name": "Blok",
+            "terms": "blok"
+        },
+        "shop/hifi": {
+            "name": "HiFi prodavnica",
+            "terms": "HiFi prodavnica,radnja za prodaju HiFi uređaja"
+        },
+        "craft/window_construction": {
+            "name": "Izrada prozora"
+        },
+        "relation": {
+            "name": "Relacija",
+            "terms": "relacija,odnos objekata u skupu"
+        },
+        "golf/green": {
+            "name": "Putting Green",
+            "terms": "područje golf terena najbliže rupi"
+        },
+        "shop/mobile_phone": {
+            "name": "Prodavnica mobilnih uređaja",
+            "terms": "prodavnica mobilnih uređaja,radnja za prodaju mobitela"
+        },
+        "place/town": {
+            "name": "Gradić",
+            "terms": "gradić,mali grad,manje urbano područje"
+        },
+        "highway/tertiary_link": {
+            "name": "Tercijarna poveznica",
+            "terms": "poveznica na tercijarnu cestu,poveznica na cestu od tercijarnog značaja"
+        },
+        "tourism/information": {
+            "name": "Informacije",
+            "terms": "informacije,turističke informacije"
+        },
+        "natural": {
+            "name": "Prirodno područje"
+        },
+        "amenity/post_box": {
+            "name": "Poštansko_sanduče",
+            "terms": "poštansko sanduče,poštanski sandučić"
+        },
+        "natural/water/lake": {
+            "name": "Jezero",
+            "terms": "jezero,vodom ispunjena kopnena depresija"
+        },
+        "shop/video": {
+            "name": "Video klub",
+            "terms": "videoklub,videoteka"
+        },
+        "railway/tram": {
+            "name": "Tramvaj",
+            "terms": "tramvaj,električni tramvaj"
+        },
+        "power/minor_line": {
+            "name": "Manji energetski vod",
+            "terms": "manji energetski vod,mali energetski vod"
+        },
+        "landuse/farmyard": {
+            "name": "Seosko dvorište",
+            "terms": "seosko dvorište,dvorište imanja"
+        },
+        "craft/plumber": {
+            "name": "Vodoinstalater"
+        },
+        "highway/cycleway": {
+            "name": "Biciklistička staza",
+            "terms": "biciklistička staza,staza za bicikle"
+        },
+        "shop/hardware": {
+            "name": "Prodavnica željezarije",
+            "terms": "prodavnica željezarije,gvožđara"
+        },
+        "amenity/car_sharing": {
+            "name": ""Car Sharing"",
+            "terms": "razmjena automobila,dijeljenje automobila"
+        },
+        "tourism/zoo": {
+            "name": "Zoološki vrt",
+            "terms": "zoološki vrt,zoo vrt"
+        },
+        "shop/computer": {
+            "name": "Prodavnica računara",
+            "terms": "radnja za prodaju računara,prodaja računara i računarske opreme"
+        },
+        "landuse/grass": {
+            "name": "Travnjak",
+            "terms": "trava,travnjak"
+        },
+        "natural/grassland": {
+            "name": "Pašnjak",
+            "terms": "pašnjak,prirodni travnjak"
+        },
+        "highway/stop": {
+            "name": "Znak stop",
+            "terms": "znak stop,saobraćajni znak stop,saobraćajni znak zaustavljanja"
+        },
+        "craft/brewery": {
+            "name": "Pivara"
+        },
+        "highway/turning_circle": {
+            "name": "Krug za okretanje",
+            "terms": "krug za okretanje,polukružno okretanje"
+        },
+        "tourism": {
+            "name": "Turizam"
+        },
+        "amenity/car_wash": {
+            "name": "Autopraonica",
+            "terms": "autopraonica,samouslužna autopraonica,praonica automobila"
+        },
+        "shop/clothes": {
+            "name": "Prodavnica odjeće",
+            "terms": "prodavnica odjeće,radnja za prodaju odjeće"
+        },
+        "tourism/theme_park": {
+            "name": "Tematski park",
+            "terms": "tematski park,park sa posebnim sadržajima"
+        },
+        "aeroway/aerodrome": {
+            "name": "Aerodrom",
+            "terms": "aerodrom,zračna luka"
+        },
+        "amenity/bicycle_rental": {
+            "name": "Iznajmljivanje bicikala",
+            "terms": "iznajmljivanje bicikala,najam bicikla"
+        },
+        "shop/gift": {
+            "name": "Prodavnica suvenira",
+            "terms": "prodavnica suvenira,prodavnica poklona"
+        },
+        "craft/locksmith": {
+            "name": "Bravar"
+        },
+        "waterway/riverbank": {
+            "name": "Riječno korito"
+        },
+        "place": {
+            "name": "Mjesto"
+        },
+        "power": {
+            "name": "Energija"
+        },
+        "shop/music": {
+            "name": "Muzička prodavnica",
+            "terms": "muzička prodavnica,prodaja muzičke opreme i muzike"
+        },
+        "barrier/toll_booth": {
+            "name": "Naplatna rampa",
+            "terms": "naplatna rampa,naplatna kućica"
+        },
+        "building/house": {
+            "name": "Kuća",
+            "terms": "kuća,dom"
+        },
+        "leisure/marina": {
+            "name": "Marina",
+            "terms": "marina,vrsta pristaništa"
+        },
+        "craft/stonemason": {
+            "name": "Klesar"
+        },
+        "craft/tailor": {
+            "name": "Krojač"
+        },
+        "waterway/dam": {
+            "name": "Brana",
+            "terms": "brana,ustava,nasip"
+        },
+        "shop/photo": {
+            "name": "Fotografska radnja",
+            "terms": "fotografska radnja,fotograf,izrada fotografija"
+        },
+        "barrier/gate": {
+            "name": "Kapija",
+            "terms": "vrata,kapija"
+        },
+        "leisure/pitch/skateboard": {
+            "name": "Poligon za skateboard",
+            "terms": "poligon za skateboard,park za skateboard,poligon za klizanje"
+        },
+        "highway/bridleway": {
+            "name": "Konjska staza",
+            "terms": "konjska staza,konjička staza,konjski trag"
+        },
+        "shop/motorcycle": {
+            "name": "Salon motocikala",
+            "terms": "salon motocikala,radnja za prodaju motocikala"
+        },
+        "shop/variety_store": {
+            "name": "Prodavnica mješovite robe",
+            "terms": "prodavnica mješovite robe,radnja za prodaju mješovite robe"
+        },
+        "waterway/river": {
+            "name": "Rijeka",
+            "terms": "rijeka,riječni tok"
+        },
+        "railway/subway": {
+            "name": "Podzemna željeznica",
+            "terms": "podzemna željeznica,metro"
+        },
+        "shop/butcher": {
+            "name": "Mesar",
+            "terms": "mesar,radnja za prodaju mesa"
+        },
+        "barrier/bollard": {
+            "name": "Bitva",
+            "terms": "bitva,ormarić s priključcima"
+        },
+        "amenity/shelter": {
+            "name": "Sklonište",
+            "terms": "sklonište,zaklon"
+        },
+        "tourism/picnic_site": {
+            "name": "Izletište",
+            "terms": "izletište,mjesto za piknik"
+        },
+        "leisure/golf_course": {
+            "name": "Golf teren",
+            "terms": "golf teren,igralište za golf"
+        },
+        "barrier": {
+            "name": "Barijera",
+            "terms": "barijera,prepreka,pregrada"
+        },
+        "historic/castle": {
+            "name": "Dvorac",
+            "terms": "dvorac,zamak"
+        },
+        "craft/electrician": {
+            "name": "Električar"
+        },
+        "shop/car_repair": {
+            "name": "Auto servis",
+            "terms": "auto servis,radnja za popravku automobila"
+        },
+        "craft/hvac": {
+            "name": "HVAC"
+        },
+        "highway/path": {
+            "name": "Staza",
+            "terms": "staza,puteljak"
+        },
+        "historic/archaeological_site": {
+            "name": "Arheološko područje",
+            "terms": "arheološko nalazište,arheološko područje"
+        },
+        "amenity/bench": {
+            "name": "Klupa",
+            "terms": "klupa,klupica"
+        },
+        "craft/beekeeper": {
+            "name": "Pčelar"
+        },
+        "landuse/meadow": {
+            "name": "Livada",
+            "terms": "livada,prirodni travnjak"
+        },
+        "shop/convenience": {
+            "name": "Bakalnica",
+            "terms": "bakalnica,dragstor,prodavnica,granap"
+        },
+        "amenity/toilets": {
+            "name": "Toaleti",
+            "terms": "kupatila,toaleti,wc-i"
+        },
+        "highway/service": {
+            "name": "Servisna cesta",
+            "terms": "servisna cesta,cesta za opsluživanje"
+        },
+        "waterway/drain": {
+            "name": "Odvod",
+            "terms": "odvod,slivnik"
+        },
+        "highway/residential": {
+            "name": "Rezidencijalna cesta",
+            "terms": "rezidencijalna cesta,cesta kroz naselje"
+        },
+        "amenity/place_of_worship": {
+            "name": "Bogomolja",
+            "terms": "Božja kuća,bogomolja,mjesto za molitvu,hram"
+        },
+        "historic/wayside_shrine": {
+            "name": "Hram pored puta",
+            "terms": "znamenje kraj puta,kapelica"
+        },
+        "barrier/retaining_wall": {
+            "name": "Potporni zid",
+            "terms": "potporni zid,zid za zadržavanje"
+        },
+        "type/boundary/administrative": {
+            "name": "Admninistrativna granica",
+            "terms": "administrativna granica,administrativna linija"
+        },
+        "highway/traffic_signals": {
+            "name": "Saobraćajna signalizacija",
+            "terms": "saobraćajna signalizacija,semafori,saobraćajni znakovi"
+        },
+        "amenity/embassy": {
+            "name": "Ambasada",
+            "terms": "ambasada,konzulat,predstavništvo strane zemlje"
+        },
+        "emergency/ambulance_station": {
+            "name": "Stanica hitne pomoći",
+            "terms": "stanica hitne pomoći,hitna pomoć,hitna medicinska pomoć"
+        },
+        "place/village": {
+            "name": "Selo",
+            "terms": "selo, veće selo"
+        },
+        "line": {
+            "name": "Linija",
+            "terms": "linija"
+        },
+        "leisure/dog_park": {
+            "name": "Igralište za pse",
+            "terms": "igralište za pse,park za pse"
+        },
+        "point": {
+            "name": "Tačka",
+            "terms": "tačka"
+        },
+        "amenity/boat_rental": {
+            "name": "Iznajmljivanje plovila",
+            "terms": "iznajmljivanje čamaca,iznajmljivanje brodova,iznajmljivanje plovila"
+        },
         "waterway/weir": {
             "name": "Ustava",
             "terms": "ustava,barijera preko rijeke"
+        },
+        "craft/metal_construction": {
+            "name": "Metalne konstrukcije"
+        },
+        "office/ngo": {
+            "name": "Ured NVO",
+            "terms": "Nevladin ured,ured NVO,NVO kancelarija"
+        },
+        "man_made/flagpole": {
+            "name": "Jarbol",
+            "terms": "jarbol,jarbol za zastavu"
+        },
+        "natural/tree": {
+            "name": "Drvo",
+            "terms": "drvo,stablo"
+        },
+        "tourism/attraction": {
+            "name": "Turistička atrakcija",
+            "terms": "turistička atrakcija,spomenici kulture i prirode"
+        },
+        "man_made": {
+            "name": "Napravljeno ljudskom rukom"
+        },
+        "golf/fairway": {
+            "name": "Fairway",
+            "terms": "osnovni dio golf terena, glavni teren za golf"
+        },
+        "shop/car_parts": {
+            "name": "Prodavnica auto dijelova",
+            "terms": "radnja za prodaju autodijelova,prodaja dijelova za automobile"
+        },
+        "tourism/alpine_hut": {
+            "name": "Planinski dom",
+            "terms": "alpska koliba,planinarski dom,planinarska kuća"
+        },
+        "shop/alcohol": {
+            "name": "Prodavnica alkoholnih pića",
+            "terms": "prodavnica alkohola,prodavnica alkoholnih pića"
+        },
+        "tourism/viewpoint": {
+            "name": "Vidikovac",
+            "terms": "vidikovac,pogled"
+        },
+        "office/lawyer": {
+            "name": "Pravni ured",
+            "terms": "pravni ured,pravna kancelarija"
+        },
+        "landuse/construction": {
+            "name": "Građevinsko područje",
+            "terms": "građevinsko područje,područje gradnje"
+        },
+        "highway/trunk_link": {
+            "name": "Poveznica na brzu cestu",
+            "terms": "poveznica na brzu cestu,poveznica na državnu cestu"
+        },
+        "aeroway": {
+            "name": "Avio-put"
         }
     }
 }

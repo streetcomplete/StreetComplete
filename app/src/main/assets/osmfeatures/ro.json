@@ -1,1482 +1,1482 @@
 {
     "presets": {
-        "address": {
-            "name": "Adres\u0103"
-        },
-        "advertising/billboard": {
-            "name": "Billboard"
-        },
-        "aerialway/gondola": {
-            "name": "Gondol\u0103"
-        },
-        "aerialway/mixed_lift": {
-            "name": "Lift Mixat"
-        },
-        "aeroway": {
-            "name": "Aeroway"
-        },
-        "aeroway/aerodrome": {
-            "name": "Aeroport"
-        },
-        "amenity/arts_centre": {
-            "name": "Centru de Art\u0103"
-        },
-        "amenity/atm": {
-            "name": "Bancomat"
-        },
-        "amenity/bank": {
-            "name": "Banca"
-        },
-        "amenity/bar": {
-            "name": "Bar"
-        },
-        "amenity/bench": {
-            "name": "Banc\u0103"
-        },
-        "amenity/bicycle_parking": {
-            "name": "Parcare biciclete"
-        },
-        "amenity/bicycle_rental": {
-            "name": "\u00cenchiriere biciclete"
-        },
-        "amenity/boat_rental": {
-            "name": "\u00cenchiriere Barc\u0103"
-        },
-        "amenity/bureau_de_change": {
-            "name": "Schimbare Valut\u0103"
-        },
-        "amenity/cafe": {
-            "name": "Cafenea"
-        },
-        "amenity/car_rental": {
-            "name": "\u00cenchiriere Ma\u0219ini"
-        },
-        "amenity/car_sharing": {
-            "name": "Car Sharing"
-        },
-        "amenity/car_wash": {
-            "name": "Sp\u0103l\u0103torie Auto"
-        },
-        "amenity/casino": {
-            "name": "Cazino"
-        },
-        "amenity/charging_station": {
-            "name": "Benzin\u0103rie"
-        },
-        "amenity/childcare": {
-            "name": "Gr\u0103dini\u021b\u0103"
-        },
-        "amenity/cinema": {
-            "name": "Cinema"
-        },
-        "amenity/clinic": {
-            "name": "Clinic\u0103"
-        },
-        "amenity/clock": {
-            "name": "Ceas"
-        },
-        "amenity/community_centre": {
-            "name": "Centru Comunitar"
-        },
-        "amenity/compressed_air": {
-            "name": "Aer Comprimat"
-        },
-        "amenity/courthouse": {
-            "name": "Tribunal"
-        },
-        "amenity/crematorium": {
-            "name": "Crematoriu"
-        },
-        "amenity/dentist": {
-            "name": "Dentist"
-        },
-        "amenity/doctors": {
-            "name": "Doctor"
-        },
-        "amenity/drinking_water": {
-            "name": "Ap\u0103 de B\u0103ut"
-        },
-        "amenity/driving_school": {
-            "name": "\u0218coal\u0103 de \u0218oferi"
-        },
-        "amenity/embassy": {
-            "name": "Ambasad\u0103"
-        },
-        "amenity/fast_food": {
-            "name": "Fast Food"
-        },
-        "amenity/fire_station": {
-            "name": "Pompieri"
-        },
-        "amenity/fountain": {
-            "name": "F\u00e2nt\u00e2n\u0103"
-        },
-        "amenity/fuel": {
-            "name": "Benzin\u0103rie"
-        },
-        "amenity/grave_yard": {
-            "name": "Cimitir"
-        },
-        "amenity/hospital": {
-            "name": "Spital"
-        },
-        "amenity/hunting_stand": {
-            "name": "Stand de V\u00e2n\u0103toare"
-        },
-        "amenity/ice_cream": {
-            "name": "Magazin de \u00cenghe\u021bat\u0103"
-        },
-        "amenity/internet_cafe": {
-            "name": "Internet Cafe"
-        },
-        "amenity/kindergarten": {
-            "name": "Pre\u0219coal\u0103/Gr\u0103dini\u021b\u0103"
-        },
-        "amenity/library": {
-            "name": "Libr\u0103rie"
-        },
-        "amenity/marketplace": {
-            "name": "Pia\u021b\u0103"
-        },
-        "amenity/motorcycle_parking": {
-            "name": "Parcare de Motociclete"
-        },
-        "amenity/nightclub": {
-            "name": "Club de Noapte"
-        },
-        "amenity/parking_entrance": {
-            "name": "Intrare/Ie\u0219ire Garaj"
-        },
-        "amenity/parking_space": {
-            "name": "Loc de Parcare"
-        },
-        "amenity/place_of_worship": {
-            "name": "Loc de Rug\u0103ciune"
-        },
-        "amenity/place_of_worship/buddhist": {
-            "name": "Templu Budist"
-        },
-        "amenity/place_of_worship/hindu": {
-            "name": "Templu Hinduist"
-        },
-        "amenity/place_of_worship/shinto": {
-            "name": "Altar Shinto"
-        },
-        "amenity/place_of_worship/sikh": {
-            "name": "Templu Sikh"
-        },
-        "amenity/place_of_worship/taoist": {
-            "name": "Templu Taoist"
-        },
-        "amenity/planetarium": {
-            "name": "Planetariu"
-        },
-        "amenity/police": {
-            "name": "Poli\u021bie"
-        },
-        "amenity/post_box": {
-            "name": "Cutie Po\u0219tal\u0103"
-        },
-        "amenity/post_office": {
-            "name": "Oficiul Po\u0219tal"
-        },
-        "amenity/prison": {
-            "name": "\u00cenchisoare"
-        },
-        "amenity/pub": {
-            "name": "Pub"
-        },
-        "amenity/public_bath": {
-            "name": "Baie Public\u0103"
-        },
-        "amenity/recycling_centre": {
-            "name": "Centru de Reciclare"
-        },
-        "amenity/register_office": {
-            "name": "Oficiu de Registrare"
-        },
-        "amenity/restaurant": {
-            "name": "Restaurant"
-        },
-        "amenity/school": {
-            "name": "\u0218coal\u0103"
-        },
-        "amenity/social_facility": {
-            "name": "Facilitate Social\u0103"
-        },
-        "amenity/studio": {
-            "name": "Studio"
-        },
-        "amenity/swimming_pool": {
-            "name": "Piscin\u0103"
-        },
-        "amenity/taxi": {
-            "name": "Stand de Taxi"
-        },
-        "amenity/telephone": {
-            "name": "Telefon"
-        },
-        "amenity/theatre": {
-            "name": "Teatru"
-        },
-        "amenity/toilets": {
-            "name": "Toalet\u0103"
-        },
-        "amenity/townhall": {
-            "name": "Prim\u0103rie"
-        },
-        "amenity/university": {
-            "name": "Universitate"
-        },
-        "amenity/veterinary": {
-            "name": "Medic Veterinar"
-        },
-        "amenity/waste_disposal": {
-            "name": "Container de Gunoi"
-        },
-        "area": {
-            "name": "Suprafa\u021b\u0103"
-        },
-        "barrier": {
-            "name": "Barier\u0103"
-        },
-        "barrier/block": {
-            "name": "Blocaj"
-        },
-        "barrier/city_wall": {
-            "name": "Zid de Ora\u0219"
-        },
-        "barrier/entrance": {
-            "name": "Intrare"
-        },
-        "barrier/fence": {
-            "name": "Gard"
-        },
-        "barrier/gate": {
-            "name": "Poart\u0103"
-        },
-        "barrier/wall": {
-            "name": "Zid"
-        },
-        "boundary/administrative": {
-            "name": "Grani\u021b\u0103 Administrativ\u0103"
-        },
-        "building": {
-            "name": "Cl\u0103dire"
-        },
-        "building/barn": {
-            "name": "Grajd"
-        },
-        "building/bunker": {
-            "name": "Bunker"
-        },
-        "building/cabin": {
-            "name": "Cabin\u0103"
-        },
-        "building/cathedral": {
-            "name": "Catedral\u0103"
-        },
-        "building/chapel": {
-            "name": "Capel\u0103"
-        },
-        "building/church": {
-            "name": "Biseric\u0103"
-        },
-        "building/college": {
-            "name": "Colegiu"
-        },
-        "building/commercial": {
-            "name": "Cl\u0103dire Comercial\u0103"
-        },
-        "building/construction": {
-            "name": "Cl\u0103dire \u00een Construc\u021bie"
-        },
-        "building/detached": {
-            "name": "Cas\u0103 Deta\u0219at\u0103"
-        },
-        "building/dormitory": {
-            "name": "Dormitoriu"
-        },
-        "building/entrance": {
-            "name": "Intrare/Ie\u0219ire"
-        },
-        "building/garage": {
-            "name": "Garaj"
-        },
-        "building/garages": {
-            "name": "Garaje"
-        },
-        "building/greenhouse": {
-            "name": "Ser\u0103"
-        },
-        "building/hospital": {
-            "name": "Spital"
-        },
-        "building/hotel": {
-            "name": "Hotel"
-        },
-        "building/house": {
-            "name": "Cas\u0103"
-        },
-        "building/hut": {
-            "name": "Colib\u0103"
-        },
-        "building/industrial": {
-            "name": "Cl\u0103dire Industrial\u0103"
-        },
-        "building/kindergarten": {
-            "name": "Pre\u0219coal\u0103/Gr\u0103dini\u021b\u0103"
-        },
-        "building/public": {
-            "name": "Cl\u0103dire Public\u0103"
-        },
-        "building/residential": {
-            "name": "Cl\u0103dire Reziden\u021bial\u0103"
-        },
-        "building/retail": {
-            "name": "Cl\u0103dire de Retail"
-        },
-        "building/roof": {
-            "name": "Acoperi\u0219"
-        },
-        "building/school": {
-            "name": "\u0218coal\u0103"
-        },
-        "building/semidetached_house": {
-            "name": "Cas\u0103 Semi-deta\u0219at\u0103"
-        },
-        "building/static_caravan": {
-            "name": "Cas\u0103 Mobil\u0103 Static\u0103"
-        },
-        "building/terrace": {
-            "name": "Case \u00een R\u00e2nd"
-        },
-        "building/university": {
-            "name": "Universitate"
-        },
-        "building/warehouse": {
-            "name": "Depozit"
-        },
-        "club": {
-            "name": "Club"
-        },
-        "craft/brewery": {
-            "name": "Ber\u0103rie"
-        },
-        "craft/electrician": {
-            "name": "Electrician"
-        },
-        "craft/gardener": {
-            "name": "Gr\u0103dinar"
-        },
-        "craft/handicraft": {
-            "name": "Manufactur\u0103"
-        },
-        "craft/insulator": {
-            "name": "Insulator"
-        },
-        "craft/jeweler": {
-            "name": "Giuvaer"
-        },
-        "craft/metal_construction": {
-            "name": "Construc\u021bie de Metal"
-        },
-        "craft/optician": {
-            "name": "Optician"
-        },
-        "craft/painter": {
-            "name": "Pictor"
-        },
-        "craft/photographer": {
-            "name": "Fotograf"
-        },
-        "craft/photographic_laboratory": {
-            "name": "Laborator de Fotografie"
-        },
-        "craft/saddler": {
-            "name": "\u0218elar"
-        },
-        "craft/shoemaker": {
-            "name": "Cizmar"
-        },
-        "craft/window_construction": {
-            "name": "Geamgiu"
-        },
-        "craft/winery": {
-            "name": "Vin\u0103rie"
-        },
-        "embankment": {
-            "name": "Chei"
-        },
-        "emergency/ambulance_station": {
-            "name": "Sta\u021bie de Ambulan\u021b\u0103"
-        },
-        "emergency/defibrillator": {
-            "name": "Defibrilator"
-        },
-        "entrance": {
-            "name": "Intrare/Ie\u0219ire"
-        },
-        "ford": {
-            "name": "Vad"
-        },
-        "golf/fairway": {
-            "name": "Drum Maritim"
-        },
-        "golf/tee": {
-            "name": "Casa de Ceai"
-        },
-        "healthcare/blood_donation": {
-            "name": "Centru de Dona\u021bie de S\u00e2nge"
-        },
-        "highway": {
-            "name": "Autostrad\u0103"
-        },
-        "highway/corridor": {
-            "name": "Coridor Interior"
-        },
-        "highway/cycleway": {
-            "name": "Pist\u0103 biciclete"
-        },
-        "highway/elevator": {
-            "name": "Lift"
-        },
-        "highway/footway": {
-            "name": "Potec\u0103"
-        },
-        "highway/motorway": {
-            "name": "Autostrad\u0103"
-        },
-        "highway/motorway_junction": {
-            "name": "Junc\u021bie de Autostrad\u0103 / Ie\u0219ire"
-        },
-        "highway/motorway_link": {
-            "name": "Intrare \u00een Autostrad\u0103"
-        },
-        "highway/path": {
-            "name": "Potec\u0103"
-        },
-        "highway/primary": {
-            "name": "Drum principal"
-        },
-        "highway/primary_link": {
-            "name": "Intrare \u00een Drum Principal"
-        },
-        "highway/residential": {
-            "name": "Drum reziden\u021bial"
-        },
-        "highway/road": {
-            "name": "Strad\u0103 Necunoscut\u0103"
-        },
-        "highway/secondary": {
-            "name": "Drum secundar"
-        },
-        "highway/secondary_link": {
-            "name": "Intrare \u00een Strad\u0103 Secundar\u0103"
-        },
-        "highway/service": {
-            "name": "Strad\u0103 de Serviciu"
-        },
-        "highway/service/alley": {
-            "name": "Alee"
-        },
-        "highway/service/emergency_access": {
-            "name": "Acces de Urgen\u021be"
-        },
-        "highway/service/parking_aisle": {
-            "name": "Drum de Parcare"
-        },
-        "highway/services": {
-            "name": "Zon\u0103 de Serviciu"
-        },
-        "highway/steps": {
-            "name": "Sc\u0103ri"
-        },
-        "highway/stop": {
-            "name": "Semn de Oprire"
-        },
-        "highway/street_lamp": {
-            "name": "Lamp\u0103 Stradal\u0103"
-        },
-        "highway/tertiary": {
-            "name": "Strad\u0103 Ter\u021biar\u0103"
-        },
-        "highway/tertiary_link": {
-            "name": "Intrare \u00een Strad\u0103 Ter\u021biar\u0103"
-        },
-        "highway/traffic_mirror": {
-            "name": "Oglind\u0103 de Trafic"
-        },
-        "highway/traffic_signals": {
-            "name": "Semnale de Trafic"
-        },
-        "highway/trunk": {
-            "name": "Drum Expres"
-        },
-        "highway/trunk_link": {
-            "name": "Intrare \u00een Drum Expres"
-        },
-        "highway/turning_circle": {
-            "name": "Cerc de Cotitur\u0103"
-        },
-        "highway/unclassified": {
-            "name": "Strad\u0103 Minor\u0103/Neclasificat\u0103"
-        },
-        "historic": {
-            "name": "Sit Istoric"
-        },
-        "historic/archaeological_site": {
-            "name": "Sit Arheologic"
+        "office/administrative": {
+            "name": "Oficiu Administrativ"
         },
         "historic/boundary_stone": {
-            "name": "Piatr\u0103 de Grani\u021b\u0103"
-        },
-        "historic/castle": {
-            "name": "Castel"
-        },
-        "historic/memorial": {
-            "name": "Memorial"
-        },
-        "historic/monument": {
-            "name": "Monument"
-        },
-        "historic/ruins": {
-            "name": "Ruine"
-        },
-        "historic/tomb": {
-            "name": "Morm\u00e2nt"
-        },
-        "junction": {
-            "name": "Junc\u021bie"
-        },
-        "landuse": {
-            "name": "Utilizare Teren"
-        },
-        "landuse/allotments": {
-            "name": "Gr\u0103din\u0103 Comunitar\u0103"
-        },
-        "landuse/aquaculture": {
-            "name": "Acvacultur\u0103"
-        },
-        "landuse/basin": {
-            "name": "Bazin"
-        },
-        "landuse/cemetery": {
-            "name": "Cimitir"
-        },
-        "landuse/churchyard": {
-            "name": "Curte de Biseric\u0103"
-        },
-        "landuse/commercial": {
-            "name": "Zon\u0103 Comercial\u0103"
-        },
-        "landuse/construction": {
-            "name": "Construc\u021bie"
-        },
-        "landuse/farm": {
-            "name": "Teren Agricol"
-        },
-        "landuse/farmland": {
-            "name": "Teren Agricol"
-        },
-        "landuse/farmyard": {
-            "name": "Curte Agricol\u0103"
-        },
-        "landuse/grass": {
-            "name": "Iarb\u0103"
-        },
-        "landuse/harbour": {
-            "name": "Port"
-        },
-        "landuse/industrial": {
-            "name": "Zon\u0103 Industrial\u0103"
-        },
-        "landuse/meadow": {
-            "name": "Paji\u0219te"
-        },
-        "landuse/military": {
-            "name": "Zon\u0103 Militar\u0103"
-        },
-        "landuse/military/airfield": {
-            "name": "Aeroport Militar"
-        },
-        "landuse/military/barracks": {
-            "name": "Baraci"
-        },
-        "landuse/military/bunker": {
-            "name": "Munker Militar"
-        },
-        "landuse/military/checkpoint": {
-            "name": "Punct de Control"
-        },
-        "landuse/military/danger_area": {
-            "name": "Zon\u0103 de Pericol"
-        },
-        "landuse/military/naval_base": {
-            "name": "Baz\u0103 Naval\u0103"
-        },
-        "landuse/military/nuclear_explosion_site": {
-            "name": "Sit de Explozie Nuclear\u0103"
-        },
-        "landuse/military/obstacle_course": {
-            "name": "Curs cu Obstacole"
-        },
-        "landuse/military/office": {
-            "name": "Oficiu Militar"
-        },
-        "landuse/military/range": {
-            "name": "Gam\u0103 Militar\u0103"
-        },
-        "landuse/military/training_area": {
-            "name": "Zon\u0103 de Training"
-        },
-        "landuse/residential": {
-            "name": "Zon\u0103 Reziden\u021bial\u0103"
-        },
-        "landuse/retail": {
-            "name": "Zon\u0103 de Retail"
-        },
-        "landuse/vineyard": {
-            "name": "Curte de Vin"
-        },
-        "leisure/bowling_alley": {
-            "name": "Alee de Bowling"
-        },
-        "leisure/common": {
-            "name": "Comun"
-        },
-        "leisure/dance": {
-            "name": "Sal\u0103 de Dans"
-        },
-        "leisure/dog_park": {
-            "name": "Parc de C\u00e2ini"
-        },
-        "leisure/fitness_centre": {
-            "name": "Centru Fitness"
-        },
-        "leisure/fitness_centre/yoga": {
-            "name": "Studio Yoga"
-        },
-        "leisure/fitness_station": {
-            "name": "Sta\u021bie de Fitness \u00een Aer Liber"
-        },
-        "leisure/garden": {
-            "name": "Gr\u0103din\u0103"
-        },
-        "leisure/golf_course": {
-            "name": "Curs de Golf"
-        },
-        "leisure/horse_riding": {
-            "name": "Facilitate de C\u0103l\u0103rie"
-        },
-        "leisure/miniature_golf": {
-            "name": "Minigolf"
-        },
-        "leisure/nature_reserve": {
-            "name": "Rezervat Natural"
+            "name": "Piatră de Graniță"
         },
         "leisure/park": {
             "name": "Parc"
         },
-        "leisure/picnic_table": {
-            "name": "Mas\u0103 de Picnic"
-        },
-        "leisure/pitch": {
-            "name": "Teren de Sport"
-        },
-        "leisure/pitch/american_football": {
-            "name": "Teren de Fotbal American"
-        },
-        "leisure/pitch/basketball": {
-            "name": "Teren de Basket"
-        },
-        "leisure/pitch/beachvolleyball": {
-            "name": "Teren de Volley de Plaj\u0103"
-        },
-        "leisure/pitch/cricket": {
-            "name": "Teren de Cricket"
-        },
-        "leisure/pitch/equestrian": {
-            "name": "Teren de C\u0103l\u0103rit"
-        },
-        "leisure/pitch/rugby_league": {
-            "name": "Teren de Rugby"
-        },
-        "leisure/pitch/skateboard": {
-            "name": "Park de Skate"
-        },
-        "leisure/pitch/soccer": {
-            "name": "Teren de Fotbal"
-        },
-        "leisure/pitch/table_tennis": {
-            "name": "Mas\u0103 de Ping Pong"
-        },
-        "leisure/pitch/tennis": {
-            "name": "Teren de Tenis"
-        },
-        "leisure/pitch/volleyball": {
-            "name": "Teren de Voley"
-        },
-        "leisure/playground": {
-            "name": "Loc de Joac\u0103"
-        },
-        "leisure/resort": {
-            "name": "Resort"
-        },
-        "leisure/sports_centre": {
-            "name": "Centru / Complex de Sport"
-        },
-        "leisure/sports_centre/swimming": {
-            "name": "Facilitate de \u00cennot"
-        },
-        "leisure/stadium": {
-            "name": "Stadion"
-        },
-        "leisure/swimming_pool": {
-            "name": "Piscin\u0103"
-        },
-        "leisure/water_park": {
-            "name": "Parc Acvatic"
-        },
-        "line": {
-            "name": "Linie"
-        },
-        "man_made/bridge": {
-            "name": "Pod"
-        },
-        "man_made/chimney": {
-            "name": "\u0218emineu"
-        },
-        "man_made/embankment": {
-            "name": "\u00cembarcare"
-        },
-        "man_made/lighthouse": {
-            "name": "Far"
-        },
-        "man_made/pier": {
-            "name": "Chei"
-        },
-        "man_made/pipeline": {
-            "name": "Condunct\u0103"
-        },
-        "man_made/pumping_station": {
-            "name": "Sta\u021bie de Pompare"
-        },
-        "man_made/silo": {
-            "name": "Siloz"
-        },
-        "man_made/storage_tank": {
-            "name": "Rezervor de Stocare"
-        },
-        "man_made/surveillance": {
-            "name": "Supraveghere"
-        },
-        "man_made/tower": {
-            "name": "Turn"
-        },
-        "man_made/wastewater_plant": {
-            "name": "Sta'ie de Epurare"
-        },
-        "man_made/water_tower": {
-            "name": "Turn de Ap\u0103"
-        },
-        "man_made/water_well": {
-            "name": "F\u00e2nt\u00e2n\u0103"
-        },
-        "man_made/watermill": {
-            "name": "Moar\u0103 de Ap\u0103"
-        },
-        "man_made/windmill": {
-            "name": "Moar\u0103 de V\u00e2nt"
-        },
-        "man_made/works": {
-            "name": "Fabric\u0103"
-        },
-        "natural": {
-            "name": "Natural"
-        },
-        "natural/bare_rock": {
-            "name": "St\u00e2nc\u0103"
-        },
-        "natural/bay": {
-            "name": "Golf"
-        },
-        "natural/beach": {
-            "name": "Plaj\u0103"
-        },
-        "natural/cave_entrance": {
-            "name": "Intrare de Pe\u0219ter\u0103"
-        },
-        "natural/cliff": {
-            "name": "Falez\u0103"
-        },
-        "natural/coastline": {
-            "name": "Linie de Coast\u0103"
-        },
-        "natural/glacier": {
-            "name": "Ghe\u021bar"
-        },
-        "natural/grassland": {
-            "name": "Iarb\u0103"
-        },
-        "natural/heath": {
-            "name": "Land\u0103"
-        },
-        "natural/peak": {
-            "name": "V\u00e2rf"
-        },
-        "natural/ridge": {
-            "name": "Creast\u0103"
-        },
-        "natural/sand": {
-            "name": "Nisip"
-        },
-        "natural/scree": {
-            "name": "Pietri\u0219"
-        },
-        "natural/tree": {
-            "name": "Copac"
-        },
-        "natural/volcano": {
-            "name": "Vulcan"
-        },
-        "natural/water": {
-            "name": "Ap\u0103"
-        },
-        "natural/water/lake": {
-            "name": "Lac"
-        },
-        "natural/water/pond": {
-            "name": "Iaz"
-        },
-        "natural/water/reservoir": {
-            "name": "Rezervor"
-        },
-        "natural/wetland": {
-            "name": "Zon\u0103 Umed\u0103"
-        },
-        "natural/wood": {
-            "name": "P\u0103dure"
-        },
-        "noexit/yes": {
-            "name": "F\u0103r\u0103 Ie\u0219ire"
-        },
-        "office": {
-            "name": "Oficiu"
-        },
-        "office/administrative": {
-            "name": "Oficiu Administrativ"
-        },
-        "office/educational_institution": {
-            "name": "Institu\u021bie Educa\u021bional\u0103"
-        },
-        "office/employment_agency": {
-            "name": "Agen\u021bie de Munc\u0103"
-        },
-        "office/estate_agent": {
-            "name": "Oficiu de Proprietate Imobiliar\u0103"
-        },
-        "office/financial": {
-            "name": "Oficiu Financiar"
-        },
-        "office/government": {
-            "name": "Oficiu de Guvern"
-        },
-        "office/government/register_office": {
-            "name": "Oficiu de Registru"
-        },
-        "office/insurance": {
-            "name": "Oficiu de Asigurare"
-        },
-        "office/lawyer": {
-            "name": "Cabinet de Avocatur\u0103"
-        },
-        "office/lawyer/notary": {
-            "name": "Notar"
-        },
-        "office/ngo": {
-            "name": "Oficiu NGO"
-        },
-        "office/physician": {
-            "name": "Fizician"
-        },
-        "office/political_party": {
-            "name": "Partid Politic"
-        },
-        "office/research": {
-            "name": "Birou de Cercetare"
-        },
-        "office/telecommunication": {
-            "name": "Oficiu Telecom"
-        },
-        "office/travel_agent": {
-            "name": "Agen\u021bie de C\u0103l\u0103torii"
-        },
-        "place": {
-            "name": "Loc"
+        "amenity/car_rental": {
+            "name": "Închiriere Mașini"
+        },
+        "amenity/internet_cafe": {
+            "name": "Internet Cafe"
         },
         "place/city": {
-            "name": "Ora\u0219"
+            "name": "Oraș"
         },
-        "place/farm": {
-            "name": "Ferm\u0103"
+        "building": {
+            "name": "Clădire"
         },
-        "place/hamlet": {
-            "name": "C\u0103tun"
+        "leisure/garden": {
+            "name": "Grădină"
         },
-        "place/island": {
-            "name": "Insul\u0103"
-        },
-        "place/locality": {
-            "name": "Localitate"
-        },
-        "place/neighbourhood": {
-            "name": "Cartier"
-        },
-        "place/quarter": {
-            "name": "Cartier"
-        },
-        "place/square": {
-            "name": "Pia\u021b\u0103"
-        },
-        "place/suburb": {
-            "name": "Suburbie"
-        },
-        "place/town": {
-            "name": "Ora\u0219"
-        },
-        "place/village": {
-            "name": "Sat"
-        },
-        "point": {
-            "name": "Punct"
-        },
-        "power": {
-            "name": "Energie"
-        },
-        "power/generator": {
-            "name": "Generator de Energie"
-        },
-        "power/line": {
-            "name": "Linie de Alimentare"
-        },
-        "power/minor_line": {
-            "name": "Linie de Alimentare Minor\u0103"
-        },
-        "power/pole": {
-            "name": "St\u00e2lp de Energie"
-        },
-        "power/sub_station": {
-            "name": "SubSta\u021bie"
-        },
-        "power/substation": {
-            "name": "Substa\u021bie"
-        },
-        "power/tower": {
-            "name": "Turn de \u00cenalt\u0103 Tensiune"
-        },
-        "power/transformer": {
-            "name": "Transformator"
-        },
-        "railway": {
-            "name": "Cale Ferat\u0103"
-        },
-        "railway/abandoned": {
-            "name": "Cale Ferat\u0103 Abandonat\u0103"
-        },
-        "railway/crossing": {
-            "name": "Traversare de C\u0103i Ferate (Potec\u0103)"
-        },
-        "railway/disused": {
-            "name": "Cale Ferat\u0103 \u00cenvechit\u0103"
-        },
-        "railway/funicular": {
-            "name": "Fr\u00e2nghie"
-        },
-        "railway/level_crossing": {
-            "name": "Traversare de Cale Ferat\u0103 (Strad\u0103)"
-        },
-        "railway/monorail": {
-            "name": "Mono\u0219in\u0103"
-        },
-        "railway/narrow_gauge": {
-            "name": "Cale Ferat\u0103 \u00cengust\u0103"
-        },
-        "railway/rail": {
-            "name": "\u0218in\u0103"
-        },
-        "railway/subway": {
-            "name": "Metrou"
-        },
-        "railway/subway_entrance": {
-            "name": "Intrare Metrou"
-        },
-        "railway/tram": {
-            "name": "Tranvai"
-        },
-        "relation": {
-            "name": "Rela\u021bie"
-        },
-        "roundabout": {
-            "name": "Sens Giratoriu"
-        },
-        "route/ferry": {
-            "name": "Rut\u0103 de Bac"
-        },
-        "shop": {
-            "name": "Magazin"
-        },
-        "shop/alcohol": {
-            "name": "Magazin de B\u0103uturi Alcoolice",
-            "terms": "G"
-        },
-        "shop/anime": {
-            "name": "Magazin Anime"
-        },
-        "shop/antiques": {
-            "name": "Anticariat"
-        },
-        "shop/appliance": {
-            "name": "Magazin de Electrocasnice"
-        },
-        "shop/art": {
-            "name": "Magazin de Art\u0103"
-        },
-        "shop/baby_goods": {
-            "name": "Magazin de Produse pentru Bebelu\u0219i"
-        },
-        "shop/bag": {
-            "name": "Magazin de Bagaje"
-        },
-        "shop/bakery": {
-            "name": "Brut\u0103rie"
-        },
-        "shop/bathroom_furnishing": {
-            "name": "Magazin de Mobilier pentru B\u0103i"
-        },
-        "shop/beauty": {
-            "name": "Magazin Beauty"
-        },
-        "shop/beauty/nails": {
-            "name": "Salon de Unghii"
-        },
-        "shop/beauty/tanning": {
-            "name": "Salon de Bronzat"
-        },
-        "shop/bed": {
-            "name": "Magazin de Saltele"
-        },
-        "shop/beverages": {
-            "name": "Magazin de B\u0103uturi"
-        },
-        "shop/bicycle": {
-            "name": "Magazin de Biciclete"
-        },
-        "shop/bookmaker": {
-            "name": "Atelier de C\u0103r\u021bi"
-        },
-        "shop/books": {
-            "name": "Magazin de C\u0103r\u021bi"
-        },
-        "shop/boutique": {
-            "name": "Boutique"
-        },
-        "shop/butcher": {
-            "name": "M\u0103cel\u0103rie"
-        },
-        "shop/candles": {
-            "name": "Magazin de Lum\u00e2n\u0103ri"
-        },
-        "shop/car": {
-            "name": "Magazin de Ma\u0219ini"
-        },
-        "shop/car_repair": {
-            "name": "Vulcanizare"
-        },
-        "shop/carpet": {
-            "name": "Magazin de Covoare"
-        },
-        "shop/charity": {
-            "name": "Magazin de Caritate"
-        },
-        "shop/cheese": {
-            "name": "Magazin de Br\u00e2nzeturi"
-        },
-        "shop/chemist": {
-            "name": "Drog\u0103rie"
-        },
-        "shop/chocolate": {
-            "name": "Magazin de Ciocolat\u0103"
-        },
-        "shop/clothes": {
-            "name": "Magazin de Haine"
-        },
-        "shop/coffee": {
-            "name": "Magazin de Cafea"
-        },
-        "shop/computer": {
-            "name": "Magazin de Calculatoare"
-        },
-        "shop/confectionery": {
-            "name": "Magazin de Dulciuri"
-        },
-        "shop/convenience": {
-            "name": "Magazin Universal"
-        },
-        "shop/copyshop": {
-            "name": "Atelier de Copiere"
+        "historic/memorial": {
+            "name": "Memorial"
         },
         "shop/cosmetics": {
             "name": "osmetic"
         },
-        "shop/curtain": {
-            "name": "Magazin de Perdele"
-        },
-        "shop/dairy": {
-            "name": "Magazin de Lactate"
-        },
-        "shop/department_store": {
-            "name": "Magazin Universal"
-        },
-        "shop/doityourself": {
-            "name": "Magazin DIY"
-        },
-        "shop/dry_cleaning": {
-            "name": "Usc\u0103tor"
-        },
-        "shop/e-cigarette": {
-            "name": "Magazin de \u021aigarete Electrice"
-        },
-        "shop/electronics": {
-            "name": "Magazin de Electronice"
-        },
-        "shop/erotic": {
-            "name": "Magazin Erotic"
-        },
-        "shop/fabric": {
-            "name": "Magazin de Materiale"
-        },
-        "shop/fashion": {
-            "name": "Magazin de Mod\u0103"
-        },
-        "shop/florist": {
-            "name": "Flor\u0103rie"
-        },
-        "shop/funeral_directors": {
-            "name": "Cas\u0103 Funeral\u0103"
-        },
-        "shop/furniture": {
-            "name": "Magazin de Mobil\u0103"
-        },
-        "shop/garden_centre": {
-            "name": "Magazin de Gr\u0103din\u0103rit"
-        },
-        "shop/gift": {
-            "name": "Magazin de Cadouri"
-        },
-        "shop/hairdresser": {
-            "name": "Frizer"
-        },
-        "shop/interior_decoration": {
-            "name": "Magazin de Decora\u021bii Interioare"
-        },
-        "shop/kitchen": {
-            "name": "Magazin de Buc\u0103t\u0103rie"
-        },
-        "shop/laundry": {
-            "name": "Sp\u0103l\u0103torie"
-        },
-        "shop/lottery": {
-            "name": "Loterie"
-        },
-        "shop/mall": {
-            "name": "Mall"
-        },
-        "shop/massage": {
-            "name": "Masaj"
-        },
-        "shop/medical_supply": {
-            "name": "Magazin Alimentar Medical"
-        },
-        "shop/mobile_phone": {
-            "name": "Magazin de Telefoane Mobile"
-        },
-        "shop/money_lender": {
-            "name": "Creditor de Bani"
-        },
-        "shop/motorcycle": {
-            "name": "Magazin de Motociclete"
-        },
-        "shop/music": {
-            "name": "Magazin de Muzic\u0103"
-        },
-        "shop/musical_instrument": {
-            "name": "Magazin de Instrumente Muzicale"
-        },
-        "shop/newsagent": {
-            "name": "Magazin de Ziare"
-        },
-        "shop/nutrition_supplements": {
-            "name": "Magazin de Suplimente Nutritive"
-        },
-        "shop/optician": {
-            "name": "Optician"
-        },
-        "shop/organic": {
-            "name": "Magazin de Bunuri Organice"
-        },
-        "shop/outdoor": {
-            "name": "Magazin \u00een Aer Liber"
-        },
-        "shop/paint": {
-            "name": "Magazin de Pictur\u0103"
-        },
-        "shop/perfumery": {
-            "name": "Magazin de Parfum"
-        },
-        "shop/pet": {
-            "name": "Magazin de Animale"
-        },
-        "shop/photo": {
-            "name": "Magazin de Fotografie"
-        },
-        "shop/pyrotechnics": {
-            "name": "Magazin de Artificii"
-        },
-        "shop/religion": {
-            "name": "Magazin Religios"
-        },
-        "shop/scuba_diving": {
-            "name": "Magazin de Scufund\u0103ri"
-        },
-        "shop/seafood": {
-            "name": "Magazin de Fructe de Mare"
-        },
-        "shop/second_hand": {
-            "name": "Magazin de Depozite"
-        },
-        "shop/shoes": {
-            "name": "Magazin de Ghete"
-        },
-        "shop/sports": {
-            "name": "Magazin de Haine de Sport"
-        },
-        "shop/supermarket": {
-            "name": "Supermarket"
-        },
-        "shop/tattoo": {
-            "name": "Artist de Tatuaje"
-        },
-        "shop/tea": {
-            "name": "Magazin de Ceaiuri"
-        },
-        "shop/ticket": {
-            "name": "V\u00e2nz\u0103tor de Bilete"
-        },
-        "shop/tobacco": {
-            "name": "T\u0103b\u0103c\u0103rie"
-        },
-        "shop/toys": {
-            "name": "Magazin de Juc\u0103rii"
-        },
-        "shop/travel_agency": {
-            "name": "Agen\u021bie de C\u0103l\u0103torii"
-        },
-        "shop/tyres": {
-            "name": "Magazin de Ro\u021bi"
-        },
-        "shop/vacant": {
-            "name": "Magazin Vacant"
-        },
-        "shop/vacuum_cleaner": {
-            "name": "Magazin de Aspiratoare"
-        },
-        "shop/variety_store": {
-            "name": "Magazin de Variet\u0103\u021bi"
-        },
-        "shop/video": {
-            "name": "Magazin Video"
-        },
-        "shop/video_games": {
-            "name": "Magazin de Jocuri de Calculator"
-        },
-        "shop/watches": {
-            "name": "Magazin de Ceasuri"
-        },
-        "shop/weapons": {
-            "name": "Magazin de Arme"
-        },
-        "shop/wine": {
-            "name": "Magazin de Vinuri"
-        },
-        "tourism": {
-            "name": "Turism"
-        },
-        "tourism/alpine_hut": {
-            "name": "Caban\u0103"
-        },
-        "tourism/apartment": {
-            "name": "Apartament de \u00cenchiriat"
-        },
-        "tourism/aquarium": {
-            "name": "Acvariu"
-        },
-        "tourism/attraction": {
-            "name": "Atrac\u021bie Turistic\u0103"
-        },
-        "tourism/camp_site": {
-            "name": "Teren de Camping"
-        },
-        "tourism/gallery": {
-            "name": "Galerie de Art\u0103"
-        },
-        "tourism/guest_house": {
-            "name": "Cas\u0103 de Oaspe\u021bi"
-        },
-        "tourism/hostel": {
-            "name": "Hostel"
-        },
-        "tourism/hotel": {
-            "name": "Hotel"
-        },
-        "tourism/information": {
-            "name": "Informa\u021bii"
-        },
-        "tourism/information/board": {
-            "name": "Panou de Informa\u021bii"
-        },
-        "tourism/information/map": {
-            "name": "Hart\u0103"
-        },
-        "tourism/information/office": {
-            "name": "Oficiu de Informare Turistic\u0103"
-        },
-        "tourism/motel": {
-            "name": "Motel"
-        },
-        "tourism/museum": {
-            "name": "Muzeu"
-        },
-        "tourism/picnic_site": {
-            "name": "Picnic"
-        },
-        "tourism/theme_park": {
-            "name": "Parc de Distrac\u021bii"
-        },
-        "tourism/viewpoint": {
-            "name": "Punct de Vedere"
-        },
-        "tourism/zoo": {
-            "name": "Gr\u0103din\u0103 Zoologic\u0103"
-        },
-        "traffic_calming/bump": {
-            "name": "Cucui de Vitez\u0103"
-        },
-        "traffic_calming/cushion": {
-            "terms": "g"
-        },
-        "traffic_calming/hump": {
-            "name": "Cucui de Vitez\u0103"
-        },
-        "traffic_calming/island": {
-            "name": "Insul\u0103 de Trafic"
-        },
-        "type/boundary": {
-            "name": "Grani\u021b\u0103"
-        },
-        "type/boundary/administrative": {
-            "name": "Grani\u021b\u0103 Administrativ\u0103"
-        },
-        "type/multipolygon": {
-            "name": "Multipoligon"
-        },
-        "type/restriction": {
-            "name": "Restric\u021bie"
-        },
-        "type/restriction/no_left_turn": {
-            "name": "F\u0103r\u0103 \u00centoarcere la St\u00e2nga"
-        },
-        "type/restriction/no_right_turn": {
-            "name": "F\u0103r\u0103 \u00centoarcere la Dreapta"
-        },
-        "type/restriction/no_straight_on": {
-            "name": "F\u0103r\u0103 Drum Continuu"
-        },
-        "type/restriction/no_u_turn": {
-            "name": "F\u0103r\u0103 \u00centoarcere"
-        },
-        "type/route": {
-            "name": "Rut\u0103"
-        },
-        "type/route/bicycle": {
-            "name": "Rut\u0103 de Biciclete"
-        },
-        "type/route/bus": {
-            "name": "Traseu Autobuz"
-        },
-        "type/route/detour": {
-            "name": "Rut\u0103 Detur"
-        },
-        "type/route/ferry": {
-            "name": "Rut\u0103 de Bac"
-        },
-        "type/route/foot": {
-            "name": "Rut\u0103 pe Jos"
-        },
-        "type/route/hiking": {
-            "name": "Rut\u0103 de Drume\u021bie"
-        },
-        "type/route/horse": {
-            "name": "Rut\u0103 de C\u0103l\u0103rit"
-        },
-        "type/route/pipeline": {
-            "name": "Rut\u0103 de Conducte"
-        },
-        "type/route/power": {
-            "name": "Rut\u0103 de Energie"
-        },
-        "type/route/road": {
-            "name": "Rut\u0103 de Stad\u0103"
-        },
-        "type/route/train": {
-            "name": "Rut\u0103 de Tren"
-        },
-        "type/route/tram": {
-            "name": "Rut\u0103 de Tranvai"
-        },
-        "type/site": {
-            "name": "Sit"
-        },
-        "vertex": {
-            "name": "Altele"
-        },
-        "waterway": {
-            "name": "Drum Marin"
-        },
-        "waterway/boatyard": {
-            "name": "Curte de B\u0103rci"
-        },
-        "waterway/canal": {
-            "name": "Canal"
-        },
-        "waterway/dam": {
-            "name": "Baraj"
-        },
-        "waterway/drain": {
-            "name": "P\u00e2r\u00e2u"
-        },
-        "waterway/river": {
-            "name": "R\u00e2u"
-        },
-        "waterway/riverbank": {
-            "name": "Mal"
+        "leisure/swimming_pool": {
+            "name": "Piscină"
         },
         "waterway/stream": {
             "name": "Fluviu",
             "terms": "q"
         },
+        "railway": {
+            "name": "Cale Ferată"
+        },
+        "building/university": {
+            "name": "Universitate"
+        },
+        "amenity/library": {
+            "name": "Librărie"
+        },
+        "highway/secondary_link": {
+            "name": "Intrare în Stradă Secundară"
+        },
+        "amenity/waste_disposal": {
+            "name": "Container de Gunoi"
+        },
+        "landuse/military/bunker": {
+            "name": "Munker Militar"
+        },
+        "power/sub_station": {
+            "name": "SubStație"
+        },
+        "shop/copyshop": {
+            "name": "Atelier de Copiere"
+        },
+        "highway/motorway": {
+            "name": "Autostradă"
+        },
+        "natural/bay": {
+            "name": "Golf"
+        },
+        "building/terrace": {
+            "name": "Case în Rând"
+        },
+        "man_made/bridge": {
+            "name": "Pod"
+        },
+        "railway/monorail": {
+            "name": "Monoșină"
+        },
+        "amenity/studio": {
+            "name": "Studio"
+        },
+        "landuse/military": {
+            "name": "Zonă Militară"
+        },
+        "office/physician": {
+            "name": "Fizician"
+        },
+        "shop/bicycle": {
+            "name": "Magazin de Biciclete"
+        },
+        "shop/seafood": {
+            "name": "Magazin de Fructe de Mare"
+        },
+        "barrier/city_wall": {
+            "name": "Zid de Oraș"
+        },
+        "office/employment_agency": {
+            "name": "Agenție de Muncă"
+        },
+        "tourism/apartment": {
+            "name": "Apartament de Închiriat"
+        },
+        "amenity/hunting_stand": {
+            "name": "Stand de Vânătoare"
+        },
+        "tourism/guest_house": {
+            "name": "Casă de Oaspeți"
+        },
+        "office/government/register_office": {
+            "name": "Oficiu de Registru"
+        },
+        "boundary/administrative": {
+            "name": "Graniță Administrativă"
+        },
+        "landuse/aquaculture": {
+            "name": "Acvacultură"
+        },
+        "man_made/surveillance": {
+            "name": "Supraveghere"
+        },
+        "tourism/gallery": {
+            "name": "Galerie de Artă"
+        },
+        "amenity/fuel": {
+            "name": "Benzinărie"
+        },
+        "type/route/tram": {
+            "name": "Rută de Tranvai"
+        },
+        "leisure/pitch/american_football": {
+            "name": "Teren de Fotbal American"
+        },
+        "shop/second_hand": {
+            "name": "Magazin de Depozite"
+        },
+        "traffic_calming/bump": {
+            "name": "Cucui de Viteză"
+        },
+        "place/island": {
+            "name": "Insulă"
+        },
+        "railway/level_crossing": {
+            "name": "Traversare de Cale Ferată (Stradă)"
+        },
+        "place/suburb": {
+            "name": "Suburbie"
+        },
+        "man_made/pier": {
+            "name": "Chei"
+        },
+        "highway/road": {
+            "name": "Stradă Necunoscută"
+        },
+        "address": {
+            "name": "Adresă"
+        },
+        "highway/primary_link": {
+            "name": "Intrare în Drum Principal"
+        },
+        "amenity/pub": {
+            "name": "Pub"
+        },
+        "building/entrance": {
+            "name": "Intrare/Ieșire"
+        },
+        "highway/traffic_mirror": {
+            "name": "Oglindă de Trafic"
+        },
+        "shop/religion": {
+            "name": "Magazin Religios"
+        },
+        "shop/shoes": {
+            "name": "Magazin de Ghete"
+        },
+        "shop/dairy": {
+            "name": "Magazin de Lactate"
+        },
+        "type/route/road": {
+            "name": "Rută de Stadă"
+        },
+        "amenity/planetarium": {
+            "name": "Planetariu"
+        },
+        "office/financial": {
+            "name": "Oficiu Financiar"
+        },
+        "amenity/place_of_worship/hindu": {
+            "name": "Templu Hinduist"
+        },
+        "shop/wine": {
+            "name": "Magazin de Vinuri"
+        },
+        "shop/hairdresser": {
+            "name": "Frizer"
+        },
+        "amenity/swimming_pool": {
+            "name": "Piscină"
+        },
+        "man_made/tower": {
+            "name": "Turn"
+        },
+        "shop/florist": {
+            "name": "Florărie"
+        },
+        "type/route/ferry": {
+            "name": "Rută de Bac"
+        },
+        "building/school": {
+            "name": "Școală"
+        },
+        "amenity/atm": {
+            "name": "Bancomat"
+        },
+        "tourism/information/board": {
+            "name": "Panou de Informații"
+        },
+        "ford": {
+            "name": "Vad"
+        },
+        "landuse/industrial": {
+            "name": "Zonă Industrială"
+        },
+        "natural/sand": {
+            "name": "Nisip"
+        },
+        "place/locality": {
+            "name": "Localitate"
+        },
+        "type/route/hiking": {
+            "name": "Rută de Drumeție"
+        },
+        "amenity/courthouse": {
+            "name": "Tribunal"
+        },
+        "shop/art": {
+            "name": "Magazin de Artă"
+        },
+        "tourism/hostel": {
+            "name": "Hostel"
+        },
+        "leisure/pitch/volleyball": {
+            "name": "Teren de Voley"
+        },
+        "amenity/veterinary": {
+            "name": "Medic Veterinar"
+        },
+        "place/hamlet": {
+            "name": "Cătun"
+        },
+        "amenity/recycling_centre": {
+            "name": "Centru de Reciclare"
+        },
+        "club": {
+            "name": "Club"
+        },
+        "highway": {
+            "name": "Autostradă"
+        },
+        "shop/massage": {
+            "name": "Masaj"
+        },
+        "area": {
+            "name": "Suprafață"
+        },
+        "amenity/theatre": {
+            "name": "Teatru"
+        },
+        "landuse/military/checkpoint": {
+            "name": "Punct de Control"
+        },
+        "man_made/lighthouse": {
+            "name": "Far"
+        },
+        "type/route/train": {
+            "name": "Rută de Tren"
+        },
+        "barrier/fence": {
+            "name": "Gard"
+        },
+        "tourism/aquarium": {
+            "name": "Acvariu"
+        },
+        "landuse/cemetery": {
+            "name": "Cimitir"
+        },
+        "railway/rail": {
+            "name": "Șină"
+        },
+        "type/site": {
+            "name": "Sit"
+        },
+        "natural/scree": {
+            "name": "Pietriș"
+        },
+        "office/government": {
+            "name": "Oficiu de Guvern"
+        },
+        "amenity/fountain": {
+            "name": "Fântână"
+        },
+        "railway/disused": {
+            "name": "Cale Ferată Învechită"
+        },
+        "shop/doityourself": {
+            "name": "Magazin DIY"
+        },
+        "amenity/taxi": {
+            "name": "Stand de Taxi"
+        },
+        "amenity/grave_yard": {
+            "name": "Cimitir"
+        },
+        "office/lawyer/notary": {
+            "name": "Notar"
+        },
+        "leisure/fitness_station": {
+            "name": "Stație de Fitness în Aer Liber"
+        },
+        "man_made/water_tower": {
+            "name": "Turn de Apă"
+        },
+        "railway/subway_entrance": {
+            "name": "Intrare Metrou"
+        },
+        "shop/dry_cleaning": {
+            "name": "Uscător"
+        },
+        "leisure/picnic_table": {
+            "name": "Masă de Picnic"
+        },
+        "office/insurance": {
+            "name": "Oficiu de Asigurare"
+        },
+        "shop/furniture": {
+            "name": "Magazin de Mobilă"
+        },
+        "leisure/pitch": {
+            "name": "Teren de Sport"
+        },
+        "tourism/hotel": {
+            "name": "Hotel"
+        },
+        "advertising/billboard": {
+            "name": "Billboard"
+        },
+        "shop/bakery": {
+            "name": "Brutărie"
+        },
+        "historic/monument": {
+            "name": "Monument"
+        },
+        "type/route/bicycle": {
+            "name": "Rută de Biciclete"
+        },
+        "amenity/place_of_worship/shinto": {
+            "name": "Altar Shinto"
+        },
+        "leisure/pitch/soccer": {
+            "name": "Teren de Fotbal"
+        },
+        "type/multipolygon": {
+            "name": "Multipoligon"
+        },
+        "shop/vacant": {
+            "name": "Magazin Vacant"
+        },
+        "historic": {
+            "name": "Sit Istoric"
+        },
+        "leisure/miniature_golf": {
+            "name": "Minigolf"
+        },
+        "building/kindergarten": {
+            "name": "Preșcoală/Grădiniță"
+        },
+        "amenity/hospital": {
+            "name": "Spital"
+        },
+        "leisure/playground": {
+            "name": "Loc de Joacă"
+        },
+        "amenity/telephone": {
+            "name": "Telefon"
+        },
+        "building/dormitory": {
+            "name": "Dormitoriu"
+        },
+        "landuse/residential": {
+            "name": "Zonă Rezidențială"
+        },
+        "shop/erotic": {
+            "name": "Magazin Erotic"
+        },
+        "leisure/stadium": {
+            "name": "Stadion"
+        },
+        "amenity/drinking_water": {
+            "name": "Apă de Băut"
+        },
+        "type/restriction/no_u_turn": {
+            "name": "Fără Întoarcere"
+        },
+        "amenity/townhall": {
+            "name": "Primărie"
+        },
+        "highway/service/parking_aisle": {
+            "name": "Drum de Parcare"
+        },
+        "natural/water": {
+            "name": "Apă"
+        },
+        "embankment": {
+            "name": "Chei"
+        },
+        "shop/sports": {
+            "name": "Magazin de Haine de Sport"
+        },
+        "waterway/boatyard": {
+            "name": "Curte de Bărci"
+        },
+        "power/line": {
+            "name": "Linie de Alimentare"
+        },
+        "amenity/ice_cream": {
+            "name": "Magazin de Înghețată"
+        },
+        "leisure/horse_riding": {
+            "name": "Facilitate de Călărie"
+        },
+        "power/pole": {
+            "name": "Stâlp de Energie"
+        },
+        "craft/winery": {
+            "name": "Vinărie"
+        },
+        "shop/laundry": {
+            "name": "Spălătorie"
+        },
+        "natural/peak": {
+            "name": "Vârf"
+        },
+        "highway/tertiary": {
+            "name": "Stradă Terțiară"
+        },
+        "shop/beauty/nails": {
+            "name": "Salon de Unghii"
+        },
+        "amenity/bank": {
+            "name": "Banca"
+        },
+        "landuse/retail": {
+            "name": "Zonă de Retail"
+        },
+        "leisure/resort": {
+            "name": "Resort"
+        },
+        "shop/pyrotechnics": {
+            "name": "Magazin de Artificii"
+        },
+        "leisure/pitch/cricket": {
+            "name": "Teren de Cricket"
+        },
+        "amenity/prison": {
+            "name": "Închisoare"
+        },
+        "amenity/arts_centre": {
+            "name": "Centru de Artă"
+        },
+        "railway/crossing": {
+            "name": "Traversare de Căi Ferate (Potecă)"
+        },
+        "shop/travel_agency": {
+            "name": "Agenție de Călătorii"
+        },
+        "amenity/restaurant": {
+            "name": "Restaurant"
+        },
+        "type/route/detour": {
+            "name": "Rută Detur"
+        },
+        "amenity/police": {
+            "name": "Poliție"
+        },
+        "place/farm": {
+            "name": "Fermă"
+        },
+        "leisure/pitch/basketball": {
+            "name": "Teren de Basket"
+        },
+        "shop/newsagent": {
+            "name": "Magazin de Ziare"
+        },
+        "building/residential": {
+            "name": "Clădire Rezidențială"
+        },
+        "highway/services": {
+            "name": "Zonă de Serviciu"
+        },
+        "amenity/community_centre": {
+            "name": "Centru Comunitar"
+        },
+        "amenity/bureau_de_change": {
+            "name": "Schimbare Valută"
+        },
+        "shop/tyres": {
+            "name": "Magazin de Roți"
+        },
+        "landuse/military/nuclear_explosion_site": {
+            "name": "Sit de Explozie Nucleară"
+        },
+        "amenity/post_office": {
+            "name": "Oficiul Poștal"
+        },
+        "traffic_calming/island": {
+            "name": "Insulă de Trafic"
+        },
+        "natural/volcano": {
+            "name": "Vulcan"
+        },
+        "aerialway/gondola": {
+            "name": "Gondolă"
+        },
+        "landuse/military/barracks": {
+            "name": "Baraci"
+        },
+        "amenity/bar": {
+            "name": "Bar"
+        },
+        "traffic_calming/cushion": {
+            "terms": "g"
+        },
+        "amenity/casino": {
+            "name": "Cazino"
+        },
+        "tourism/museum": {
+            "name": "Muzeu"
+        },
+        "shop/boutique": {
+            "name": "Boutique"
+        },
+        "railway/narrow_gauge": {
+            "name": "Cale Ferată Îngustă"
+        },
+        "shop/curtain": {
+            "name": "Magazin de Perdele"
+        },
+        "leisure/pitch/tennis": {
+            "name": "Teren de Tenis"
+        },
+        "shop/weapons": {
+            "name": "Magazin de Arme"
+        },
+        "highway/trunk": {
+            "name": "Drum Expres"
+        },
+        "leisure/fitness_centre": {
+            "name": "Centru Fitness"
+        },
+        "golf/tee": {
+            "name": "Casa de Ceai"
+        },
+        "office": {
+            "name": "Oficiu"
+        },
+        "highway/corridor": {
+            "name": "Coridor Interior"
+        },
+        "amenity/fire_station": {
+            "name": "Pompieri"
+        },
+        "barrier/entrance": {
+            "name": "Intrare"
+        },
+        "noexit/yes": {
+            "name": "Fără Ieșire"
+        },
+        "shop/scuba_diving": {
+            "name": "Magazin de Scufundări"
+        },
+        "natural/water/pond": {
+            "name": "Iaz"
+        },
+        "shop/beverages": {
+            "name": "Magazin de Băuturi"
+        },
+        "shop/vacuum_cleaner": {
+            "name": "Magazin de Aspiratoare"
+        },
+        "entrance": {
+            "name": "Intrare/Ieșire"
+        },
+        "shop/chemist": {
+            "name": "Drogărie"
+        },
+        "tourism/information/map": {
+            "name": "Hartă"
+        },
+        "building/hospital": {
+            "name": "Spital"
+        },
+        "amenity/marketplace": {
+            "name": "Piață"
+        },
+        "building/industrial": {
+            "name": "Clădire Industrială"
+        },
+        "power/tower": {
+            "name": "Turn de Înaltă Tensiune"
+        },
+        "amenity/university": {
+            "name": "Universitate"
+        },
+        "building/public": {
+            "name": "Clădire Publică"
+        },
+        "landuse/military/airfield": {
+            "name": "Aeroport Militar"
+        },
+        "craft/shoemaker": {
+            "name": "Cizmar"
+        },
+        "office/estate_agent": {
+            "name": "Oficiu de Proprietate Imobiliară"
+        },
+        "man_made/watermill": {
+            "name": "Moară de Apă"
+        },
+        "shop/interior_decoration": {
+            "name": "Magazin de Decorații Interioare"
+        },
+        "shop/toys": {
+            "name": "Magazin de Jucării"
+        },
+        "type/restriction/no_straight_on": {
+            "name": "Fără Drum Continuu"
+        },
+        "leisure/pitch/table_tennis": {
+            "name": "Masă de Ping Pong"
+        },
+        "landuse/allotments": {
+            "name": "Grădină Comunitară"
+        },
+        "amenity/place_of_worship/sikh": {
+            "name": "Templu Sikh"
+        },
+        "shop/nutrition_supplements": {
+            "name": "Magazin de Suplimente Nutritive"
+        },
+        "craft/gardener": {
+            "name": "Grădinar"
+        },
+        "building/church": {
+            "name": "Biserică"
+        },
+        "amenity/cafe": {
+            "name": "Cafenea"
+        },
+        "shop/video_games": {
+            "name": "Magazin de Jocuri de Calculator"
+        },
+        "highway/service/emergency_access": {
+            "name": "Acces de Urgențe"
+        },
+        "amenity/parking_space": {
+            "name": "Loc de Parcare"
+        },
+        "building/greenhouse": {
+            "name": "Seră"
+        },
+        "railway/funicular": {
+            "name": "Frânghie"
+        },
+        "landuse/harbour": {
+            "name": "Port"
+        },
+        "power/transformer": {
+            "name": "Transformator"
+        },
+        "power/generator": {
+            "name": "Generator de Energie"
+        },
+        "shop/pet": {
+            "name": "Magazin de Animale"
+        },
+        "natural/wetland": {
+            "name": "Zonă Umedă"
+        },
+        "roundabout": {
+            "name": "Sens Giratoriu"
+        },
+        "landuse/military/naval_base": {
+            "name": "Bază Navală"
+        },
+        "type/route/power": {
+            "name": "Rută de Energie"
+        },
+        "highway/service/alley": {
+            "name": "Alee"
+        },
+        "shop/department_store": {
+            "name": "Magazin Universal"
+        },
+        "natural/cliff": {
+            "name": "Faleză"
+        },
+        "amenity/clock": {
+            "name": "Ceas"
+        },
+        "building/garage": {
+            "name": "Garaj"
+        },
+        "highway/footway": {
+            "name": "Potecă"
+        },
+        "natural/coastline": {
+            "name": "Linie de Coastă"
+        },
+        "building/roof": {
+            "name": "Acoperiș"
+        },
+        "natural/glacier": {
+            "name": "Ghețar"
+        },
+        "building/hotel": {
+            "name": "Hotel"
+        },
+        "shop/anime": {
+            "name": "Magazin Anime"
+        },
+        "route/ferry": {
+            "name": "Rută de Bac"
+        },
+        "shop/outdoor": {
+            "name": "Magazin în Aer Liber"
+        },
+        "shop/fashion": {
+            "name": "Magazin de Modă"
+        },
+        "power/substation": {
+            "name": "Substație"
+        },
+        "highway/steps": {
+            "name": "Scări"
+        },
+        "amenity/fast_food": {
+            "name": "Fast Food"
+        },
+        "highway/primary": {
+            "name": "Drum principal"
+        },
+        "type/route/pipeline": {
+            "name": "Rută de Conducte"
+        },
+        "tourism/motel": {
+            "name": "Motel"
+        },
+        "shop/chocolate": {
+            "name": "Magazin de Ciocolată"
+        },
+        "building/cathedral": {
+            "name": "Catedrală"
+        },
+        "man_made/pumping_station": {
+            "name": "Stație de Pompare"
+        },
+        "building/bunker": {
+            "name": "Bunker"
+        },
+        "emergency/defibrillator": {
+            "name": "Defibrilator"
+        },
+        "craft/photographic_laboratory": {
+            "name": "Laborator de Fotografie"
+        },
+        "leisure/dance": {
+            "name": "Sală de Dans"
+        },
+        "traffic_calming/hump": {
+            "name": "Cucui de Viteză"
+        },
+        "amenity/dentist": {
+            "name": "Dentist"
+        },
+        "building/chapel": {
+            "name": "Capelă"
+        },
+        "office/research": {
+            "name": "Birou de Cercetare"
+        },
+        "shop/tea": {
+            "name": "Magazin de Ceaiuri"
+        },
+        "office/travel_agent": {
+            "name": "Agenție de Călătorii"
+        },
+        "craft/jeweler": {
+            "name": "Giuvaer"
+        },
+        "office/telecommunication": {
+            "name": "Oficiu Telecom"
+        },
+        "shop/bag": {
+            "name": "Magazin de Bagaje"
+        },
+        "shop/supermarket": {
+            "name": "Supermarket"
+        },
+        "historic/tomb": {
+            "name": "Mormânt"
+        },
+        "office/political_party": {
+            "name": "Partid Politic"
+        },
+        "shop/garden_centre": {
+            "name": "Magazin de Grădinărit"
+        },
+        "leisure/sports_centre/swimming": {
+            "name": "Facilitate de Înnot"
+        },
+        "shop/kitchen": {
+            "name": "Magazin de Bucătărie"
+        },
+        "landuse/military/range": {
+            "name": "Gamă Militară"
+        },
+        "man_made/silo": {
+            "name": "Siloz"
+        },
+        "building/garages": {
+            "name": "Garaje"
+        },
+        "leisure/pitch/rugby_league": {
+            "name": "Teren de Rugby"
+        },
+        "shop/beauty": {
+            "name": "Magazin Beauty"
+        },
+        "building/hut": {
+            "name": "Colibă"
+        },
+        "shop/candles": {
+            "name": "Magazin de Lumânări"
+        },
+        "amenity/charging_station": {
+            "name": "Benzinărie"
+        },
+        "waterway/canal": {
+            "name": "Canal"
+        },
+        "leisure/common": {
+            "name": "Comun"
+        },
+        "type/route/horse": {
+            "name": "Rută de Călărit"
+        },
+        "landuse/farmland": {
+            "name": "Teren Agricol"
+        },
+        "shop/baby_goods": {
+            "name": "Magazin de Produse pentru Bebeluși"
+        },
+        "type/restriction/no_right_turn": {
+            "name": "Fără Întoarcere la Dreapta"
+        },
+        "shop/car": {
+            "name": "Magazin de Mașini"
+        },
+        "place/square": {
+            "name": "Piață"
+        },
+        "man_made/storage_tank": {
+            "name": "Rezervor de Stocare"
+        },
+        "place/neighbourhood": {
+            "name": "Cartier"
+        },
+        "tourism/camp_site": {
+            "name": "Teren de Camping"
+        },
+        "leisure/pitch/beachvolleyball": {
+            "name": "Teren de Volley de Plajă"
+        },
+        "building/semidetached_house": {
+            "name": "Casă Semi-detașată"
+        },
+        "railway/abandoned": {
+            "name": "Cale Ferată Abandonată"
+        },
+        "type/restriction": {
+            "name": "Restricție"
+        },
+        "shop/bathroom_furnishing": {
+            "name": "Magazin de Mobilier pentru Băi"
+        },
+        "shop/beauty/tanning": {
+            "name": "Salon de Bronzat"
+        },
+        "man_made/chimney": {
+            "name": "Șemineu"
+        },
+        "shop/mall": {
+            "name": "Mall"
+        },
+        "barrier/wall": {
+            "name": "Zid"
+        },
+        "natural/beach": {
+            "name": "Plajă"
+        },
+        "junction": {
+            "name": "Juncție"
+        },
+        "craft/insulator": {
+            "name": "Insulator"
+        },
+        "landuse/vineyard": {
+            "name": "Curte de Vin"
+        },
+        "vertex": {
+            "name": "Altele"
+        },
+        "type/boundary": {
+            "name": "Graniță"
+        },
+        "craft/optician": {
+            "name": "Optician"
+        },
         "waterway/waterfall": {
-            "name": "Cascad\u0103"
+            "name": "Cascadă"
+        },
+        "type/route": {
+            "name": "Rută"
+        },
+        "man_made/embankment": {
+            "name": "Îmbarcare"
+        },
+        "shop/tobacco": {
+            "name": "Tăbăcărie"
+        },
+        "building/detached": {
+            "name": "Casă Detașată"
+        },
+        "shop/charity": {
+            "name": "Magazin de Caritate"
+        },
+        "shop/musical_instrument": {
+            "name": "Magazin de Instrumente Muzicale"
+        },
+        "man_made/wastewater_plant": {
+            "name": "Sta'ie de Epurare"
+        },
+        "shop/money_lender": {
+            "name": "Creditor de Bani"
+        },
+        "building/college": {
+            "name": "Colegiu"
+        },
+        "building/retail": {
+            "name": "Clădire de Retail"
+        },
+        "shop/ticket": {
+            "name": "Vânzător de Bilete"
+        },
+        "highway/motorway_link": {
+            "name": "Intrare în Autostradă"
+        },
+        "natural/water/reservoir": {
+            "name": "Rezervor"
+        },
+        "craft/saddler": {
+            "name": "Șelar"
+        },
+        "shop/bed": {
+            "name": "Magazin de Saltele"
+        },
+        "landuse/basin": {
+            "name": "Bazin"
+        },
+        "aerialway/mixed_lift": {
+            "name": "Lift Mixat"
+        },
+        "shop/paint": {
+            "name": "Magazin de Pictură"
+        },
+        "historic/ruins": {
+            "name": "Ruine"
+        },
+        "craft/photographer": {
+            "name": "Fotograf"
+        },
+        "highway/secondary": {
+            "name": "Drum secundar"
+        },
+        "shop": {
+            "name": "Magazin"
+        },
+        "natural/heath": {
+            "name": "Landă"
+        },
+        "landuse/military/obstacle_course": {
+            "name": "Curs cu Obstacole"
+        },
+        "man_made/pipeline": {
+            "name": "Condunctă"
+        },
+        "building/commercial": {
+            "name": "Clădire Comercială"
+        },
+        "amenity/childcare": {
+            "name": "Grădiniță"
+        },
+        "office/educational_institution": {
+            "name": "Instituție Educațională"
+        },
+        "amenity/bicycle_parking": {
+            "name": "Parcare biciclete"
+        },
+        "amenity/compressed_air": {
+            "name": "Aer Comprimat"
+        },
+        "leisure/pitch/equestrian": {
+            "name": "Teren de Călărit"
+        },
+        "man_made/water_well": {
+            "name": "Fântână"
+        },
+        "place/quarter": {
+            "name": "Cartier"
+        },
+        "shop/organic": {
+            "name": "Magazin de Bunuri Organice"
+        },
+        "shop/perfumery": {
+            "name": "Magazin de Parfum"
+        },
+        "landuse/military/danger_area": {
+            "name": "Zonă de Pericol"
+        },
+        "shop/confectionery": {
+            "name": "Magazin de Dulciuri"
+        },
+        "shop/electronics": {
+            "name": "Magazin de Electronice"
+        },
+        "waterway": {
+            "name": "Drum Marin"
+        },
+        "amenity/clinic": {
+            "name": "Clinică"
+        },
+        "amenity/place_of_worship/buddhist": {
+            "name": "Templu Budist"
+        },
+        "amenity/cinema": {
+            "name": "Cinema"
+        },
+        "natural/bare_rock": {
+            "name": "Stâncă"
+        },
+        "type/route/bus": {
+            "name": "Traseu Autobuz"
+        },
+        "landuse/farm": {
+            "name": "Teren Agricol"
+        },
+        "amenity/crematorium": {
+            "name": "Crematoriu"
+        },
+        "natural/wood": {
+            "name": "Pădure"
+        },
+        "building/construction": {
+            "name": "Clădire în Construcție"
+        },
+        "highway/unclassified": {
+            "name": "Stradă Minoră/Neclasificată"
+        },
+        "shop/tattoo": {
+            "name": "Artist de Tatuaje"
+        },
+        "shop/optician": {
+            "name": "Optician"
+        },
+        "amenity/social_facility": {
+            "name": "Facilitate Socială"
+        },
+        "type/route/foot": {
+            "name": "Rută pe Jos"
+        },
+        "barrier/block": {
+            "name": "Blocaj"
+        },
+        "craft/window_construction": {
+            "name": "Geamgiu"
+        },
+        "shop/appliance": {
+            "name": "Magazin de Electrocasnice"
+        },
+        "relation": {
+            "name": "Relație"
+        },
+        "shop/medical_supply": {
+            "name": "Magazin Alimentar Medical"
+        },
+        "man_made/windmill": {
+            "name": "Moară de Vânt"
+        },
+        "shop/mobile_phone": {
+            "name": "Magazin de Telefoane Mobile"
+        },
+        "place/town": {
+            "name": "Oraș"
+        },
+        "landuse/commercial": {
+            "name": "Zonă Comercială"
+        },
+        "highway/tertiary_link": {
+            "name": "Intrare în Stradă Terțiară"
+        },
+        "tourism/information": {
+            "name": "Informații"
+        },
+        "natural/ridge": {
+            "name": "Creastă"
+        },
+        "natural": {
+            "name": "Natural"
+        },
+        "amenity/post_box": {
+            "name": "Cutie Poștală"
+        },
+        "landuse/military/training_area": {
+            "name": "Zonă de Training"
+        },
+        "natural/water/lake": {
+            "name": "Lac"
+        },
+        "shop/video": {
+            "name": "Magazin Video"
+        },
+        "building/warehouse": {
+            "name": "Depozit"
+        },
+        "leisure/bowling_alley": {
+            "name": "Alee de Bowling"
+        },
+        "railway/tram": {
+            "name": "Tranvai"
+        },
+        "power/minor_line": {
+            "name": "Linie de Alimentare Minoră"
+        },
+        "landuse/farmyard": {
+            "name": "Curte Agricolă"
+        },
+        "man_made/works": {
+            "name": "Fabrică"
+        },
+        "highway/cycleway": {
+            "name": "Pistă biciclete"
+        },
+        "amenity/car_sharing": {
+            "name": "Car Sharing"
+        },
+        "leisure/nature_reserve": {
+            "name": "Rezervat Natural"
+        },
+        "shop/antiques": {
+            "name": "Anticariat"
+        },
+        "shop/funeral_directors": {
+            "name": "Casă Funerală"
+        },
+        "tourism/zoo": {
+            "name": "Grădină Zoologică"
+        },
+        "shop/computer": {
+            "name": "Magazin de Calculatoare"
+        },
+        "landuse/grass": {
+            "name": "Iarbă"
+        },
+        "natural/grassland": {
+            "name": "Iarbă"
+        },
+        "shop/fabric": {
+            "name": "Magazin de Materiale"
+        },
+        "highway/stop": {
+            "name": "Semn de Oprire"
+        },
+        "craft/brewery": {
+            "name": "Berărie"
+        },
+        "highway/turning_circle": {
+            "name": "Cerc de Cotitură"
+        },
+        "shop/coffee": {
+            "name": "Magazin de Cafea"
+        },
+        "shop/e-cigarette": {
+            "name": "Magazin de Țigarete Electrice"
+        },
+        "tourism": {
+            "name": "Turism"
+        },
+        "amenity/public_bath": {
+            "name": "Baie Publică"
+        },
+        "amenity/car_wash": {
+            "name": "Spălătorie Auto"
+        },
+        "highway/street_lamp": {
+            "name": "Lampă Stradală"
+        },
+        "shop/clothes": {
+            "name": "Magazin de Haine"
+        },
+        "tourism/theme_park": {
+            "name": "Parc de Distracții"
+        },
+        "aeroway/aerodrome": {
+            "name": "Aeroport"
+        },
+        "amenity/bicycle_rental": {
+            "name": "Închiriere biciclete"
+        },
+        "shop/watches": {
+            "name": "Magazin de Ceasuri"
+        },
+        "amenity/parking_entrance": {
+            "name": "Intrare/Ieșire Garaj"
+        },
+        "landuse": {
+            "name": "Utilizare Teren"
+        },
+        "shop/gift": {
+            "name": "Magazin de Cadouri"
+        },
+        "waterway/riverbank": {
+            "name": "Mal"
+        },
+        "leisure/sports_centre": {
+            "name": "Centru / Complex de Sport"
+        },
+        "place": {
+            "name": "Loc"
+        },
+        "power": {
+            "name": "Energie"
+        },
+        "shop/music": {
+            "name": "Magazin de Muzică"
+        },
+        "building/house": {
+            "name": "Casă"
+        },
+        "amenity/nightclub": {
+            "name": "Club de Noapte"
+        },
+        "waterway/dam": {
+            "name": "Baraj"
+        },
+        "amenity/school": {
+            "name": "Școală"
+        },
+        "shop/photo": {
+            "name": "Magazin de Fotografie"
+        },
+        "building/static_caravan": {
+            "name": "Casă Mobilă Statică"
+        },
+        "barrier/gate": {
+            "name": "Poartă"
+        },
+        "leisure/pitch/skateboard": {
+            "name": "Park de Skate"
+        },
+        "shop/motorcycle": {
+            "name": "Magazin de Motociclete"
+        },
+        "shop/variety_store": {
+            "name": "Magazin de Varietăți"
+        },
+        "waterway/river": {
+            "name": "Râu"
+        },
+        "amenity/doctors": {
+            "name": "Doctor"
+        },
+        "railway/subway": {
+            "name": "Metrou"
+        },
+        "highway/elevator": {
+            "name": "Lift"
+        },
+        "shop/carpet": {
+            "name": "Magazin de Covoare"
+        },
+        "landuse/churchyard": {
+            "name": "Curte de Biserică"
+        },
+        "shop/butcher": {
+            "name": "Măcelărie"
+        },
+        "tourism/picnic_site": {
+            "name": "Picnic"
+        },
+        "leisure/golf_course": {
+            "name": "Curs de Golf"
+        },
+        "barrier": {
+            "name": "Barieră"
+        },
+        "historic/castle": {
+            "name": "Castel"
+        },
+        "craft/electrician": {
+            "name": "Electrician"
+        },
+        "shop/car_repair": {
+            "name": "Vulcanizare"
+        },
+        "highway/path": {
+            "name": "Potecă"
+        },
+        "historic/archaeological_site": {
+            "name": "Sit Arheologic"
+        },
+        "leisure/water_park": {
+            "name": "Parc Acvatic"
+        },
+        "amenity/driving_school": {
+            "name": "Școală de Șoferi"
+        },
+        "building/barn": {
+            "name": "Grajd"
+        },
+        "amenity/bench": {
+            "name": "Bancă"
+        },
+        "landuse/meadow": {
+            "name": "Pajiște"
+        },
+        "shop/convenience": {
+            "name": "Magazin Universal"
+        },
+        "amenity/toilets": {
+            "name": "Toaletă"
+        },
+        "shop/books": {
+            "name": "Magazin de Cărți"
+        },
+        "highway/service": {
+            "name": "Stradă de Serviciu"
+        },
+        "waterway/drain": {
+            "name": "Pârâu"
+        },
+        "highway/residential": {
+            "name": "Drum rezidențial"
+        },
+        "amenity/place_of_worship": {
+            "name": "Loc de Rugăciune"
+        },
+        "type/boundary/administrative": {
+            "name": "Graniță Administrativă"
+        },
+        "landuse/military/office": {
+            "name": "Oficiu Militar"
+        },
+        "highway/traffic_signals": {
+            "name": "Semnale de Trafic"
+        },
+        "amenity/embassy": {
+            "name": "Ambasadă"
+        },
+        "type/restriction/no_left_turn": {
+            "name": "Fără Întoarcere la Stânga"
+        },
+        "healthcare/blood_donation": {
+            "name": "Centru de Donație de Sânge"
+        },
+        "emergency/ambulance_station": {
+            "name": "Stație de Ambulanță"
+        },
+        "place/village": {
+            "name": "Sat"
+        },
+        "amenity/motorcycle_parking": {
+            "name": "Parcare de Motociclete"
+        },
+        "line": {
+            "name": "Linie"
+        },
+        "shop/lottery": {
+            "name": "Loterie"
+        },
+        "amenity/kindergarten": {
+            "name": "Preșcoală/Grădiniță"
+        },
+        "leisure/dog_park": {
+            "name": "Parc de Câini"
+        },
+        "natural/cave_entrance": {
+            "name": "Intrare de Peșteră"
+        },
+        "point": {
+            "name": "Punct"
+        },
+        "shop/cheese": {
+            "name": "Magazin de Brânzeturi"
+        },
+        "amenity/boat_rental": {
+            "name": "Închiriere Barcă"
+        },
+        "amenity/place_of_worship/taoist": {
+            "name": "Templu Taoist"
+        },
+        "building/cabin": {
+            "name": "Cabină"
+        },
+        "craft/metal_construction": {
+            "name": "Construcție de Metal"
+        },
+        "craft/painter": {
+            "name": "Pictor"
+        },
+        "office/ngo": {
+            "name": "Oficiu NGO"
+        },
+        "highway/motorway_junction": {
+            "name": "Juncție de Autostradă / Ieșire"
+        },
+        "natural/tree": {
+            "name": "Copac"
+        },
+        "tourism/attraction": {
+            "name": "Atracție Turistică"
+        },
+        "amenity/register_office": {
+            "name": "Oficiu de Registrare"
+        },
+        "golf/fairway": {
+            "name": "Drum Maritim"
+        },
+        "tourism/alpine_hut": {
+            "name": "Cabană"
+        },
+        "tourism/information/office": {
+            "name": "Oficiu de Informare Turistică"
+        },
+        "shop/alcohol": {
+            "name": "Magazin de Băuturi Alcoolice",
+            "terms": "G"
+        },
+        "tourism/viewpoint": {
+            "name": "Punct de Vedere"
+        },
+        "craft/handicraft": {
+            "name": "Manufactură"
+        },
+        "office/lawyer": {
+            "name": "Cabinet de Avocatură"
+        },
+        "landuse/construction": {
+            "name": "Construcție"
+        },
+        "highway/trunk_link": {
+            "name": "Intrare în Drum Expres"
+        },
+        "shop/bookmaker": {
+            "name": "Atelier de Cărți"
+        },
+        "leisure/fitness_centre/yoga": {
+            "name": "Studio Yoga"
+        },
+        "aeroway": {
+            "name": "Aeroway"
         }
     }
 }

@@ -1,826 +1,826 @@
 {
     "presets": {
-        "address": {
-            "name": "\u0410\u0434\u0440\u0435\u0441"
-        },
-        "aeroway": {
-            "name": "\u0412\u044a\u0437\u0434\u0443\u0445\u043e\u043f\u043b\u0430\u0432\u0430\u043d\u0435"
-        },
-        "aeroway/aerodrome": {
-            "name": "\u041b\u0435\u0442\u0438\u0449\u0435"
-        },
-        "aeroway/apron": {
-            "name": "\u0421\u0442\u043e\u044f\u043d\u043a\u0430 \u0437\u0430 \u0441\u0430\u043c\u043e\u043b\u0435\u0442\u0438"
-        },
-        "aeroway/hangar": {
-            "name": "\u0425\u0430\u043d\u0433\u0430\u0440"
-        },
-        "aeroway/helipad": {
-            "name": "\u0425\u0435\u043b\u0438\u043a\u043e\u043f\u0442\u0435\u0440\u043d\u0430 \u043f\u043b\u043e\u0449\u0430\u0434\u043a\u0430"
-        },
-        "aeroway/runway": {
-            "name": "\u041b\u0435\u0442\u0430\u0442\u0435\u043b\u043d\u0430 \u043f\u0438\u0441\u0442\u0430"
-        },
-        "aeroway/taxiway": {
-            "name": "\u0420\u043e\u043b\u044c\u043e\u0436\u043a\u0430"
-        },
-        "amenity": {
-            "name": "\u0423\u0441\u043b\u0443\u0433\u0438"
-        },
-        "amenity/atm": {
-            "name": "\u0411\u0430\u043d\u043a\u043e\u043c\u0430\u0442"
-        },
-        "amenity/bank": {
-            "name": "\u0411\u0430\u043d\u043a\u0430"
-        },
-        "amenity/bar": {
-            "name": "\u0411\u0430\u0440"
-        },
-        "amenity/bench": {
-            "name": "\u041f\u0435\u0439\u043a\u0430"
-        },
-        "amenity/bicycle_parking": {
-            "name": "\u041f\u0430\u0440\u043a\u0438\u043d\u0433 \u0437\u0430 \u0432\u0435\u043b\u043e\u0441\u0438\u043f\u0435\u0434\u0438"
-        },
-        "amenity/bicycle_rental": {
-            "name": "\u041d\u0430\u0435\u043c \u043d\u0430 \u0432\u0435\u043b\u043e\u0441\u0438\u043f\u0435\u0434\u0438"
-        },
-        "amenity/cafe": {
-            "name": "\u041a\u0430\u0444\u0435\u043d\u0435"
-        },
-        "amenity/car_rental": {
-            "name": "\u041a\u043e\u043b\u0438 \u043f\u043e\u0434 \u043d\u0430\u0435\u043c"
-        },
-        "amenity/car_sharing": {
-            "name": "\u0421\u043f\u043e\u0434\u0435\u043b\u044f\u043d\u0435 \u043d\u0430 \u043a\u043e\u043b\u0438"
-        },
-        "amenity/car_wash": {
-            "name": "\u0410\u0432\u0442\u043e\u043c\u0438\u0432\u043a\u0430"
-        },
-        "amenity/cinema": {
-            "name": "\u041a\u0438\u043d\u043e"
-        },
-        "amenity/courthouse": {
-            "name": "\u0421\u044a\u0434"
-        },
-        "amenity/drinking_water": {
-            "name": "\u0427\u0435\u0448\u043c\u0430"
-        },
-        "amenity/embassy": {
-            "name": "\u041f\u043e\u0441\u043e\u043b\u0441\u0442\u0432\u043e"
-        },
-        "amenity/fast_food": {
-            "name": "\u0411\u044a\u0440\u0437\u0430 \u0437\u0430\u043a\u0443\u0441\u043a\u0430"
-        },
-        "amenity/fire_station": {
-            "name": "\u041f\u043e\u0436\u0430\u0440\u043d\u0430"
-        },
-        "amenity/fountain": {
-            "name": "\u0424\u043e\u043d\u0442\u0430\u043d"
-        },
-        "amenity/fuel": {
-            "name": "\u0411\u0435\u043d\u0437\u0438\u043d\u043e\u0441\u0442\u0430\u043d\u0446\u0438\u044f"
-        },
-        "amenity/grave_yard": {
-            "name": "\u0413\u0440\u043e\u0431\u0438\u0449\u0435"
-        },
-        "amenity/library": {
-            "name": "\u0411\u0438\u0431\u043b\u0438\u043e\u0442\u0435\u043a\u0430"
-        },
-        "amenity/marketplace": {
-            "name": "\u041f\u0430\u0437\u0430\u0440"
-        },
-        "amenity/place_of_worship": {
-            "name": "\u0420\u0435\u043b\u0438\u0433\u0438\u043e\u0437\u0435\u043d \u0445\u0440\u0430\u043c"
-        },
-        "amenity/place_of_worship/buddhist": {
-            "name": "\u0411\u0443\u0434\u0438\u0441\u0442\u043a\u0438 \u0445\u0440\u0430\u043c"
-        },
-        "amenity/police": {
-            "name": "\u041f\u043e\u043b\u0438\u0446\u0438\u044f"
-        },
-        "amenity/post_box": {
-            "name": "\u041f\u043e\u0449\u0435\u043d\u0441\u043a\u0430 \u043a\u0443\u0442\u0438\u044f"
-        },
-        "amenity/post_office": {
-            "name": "\u041f\u043e\u0449\u0430"
-        },
-        "amenity/pub": {
-            "name": "\u041f\u044a\u0431"
-        },
-        "amenity/restaurant": {
-            "name": "\u0420\u0435\u0441\u0442\u043e\u0440\u0430\u043d\u0442"
-        },
-        "amenity/swimming_pool": {
-            "name": "\u041f\u043b\u0443\u0432\u0435\u043d \u0431\u0430\u0441\u0435\u0439\u043d"
-        },
-        "amenity/taxi": {
-            "name": "\u0422\u0430\u043a\u0441\u0438 \u0441\u0442\u043e\u044f\u043d\u043a\u0430"
-        },
-        "amenity/telephone": {
-            "name": "\u0422\u0435\u043b\u0435\u0444\u043e\u043d"
-        },
-        "amenity/theatre": {
-            "name": "\u0422\u0435\u0430\u0442\u044a\u0440"
-        },
-        "amenity/toilets": {
-            "name": "\u0422\u043e\u0430\u043b\u0435\u0442\u043d\u0430"
-        },
-        "amenity/townhall": {
-            "name": "\u041a\u043c\u0435\u0442\u0441\u0442\u0432\u043e"
-        },
-        "amenity/waste_basket": {
-            "name": "\u041a\u043e\u0448 \u0437\u0430 \u0431\u043e\u043a\u043b\u0443\u043a"
-        },
-        "area": {
-            "name": "\u041f\u043b\u043e\u0449"
-        },
-        "barrier": {
-            "name": "\u041f\u0440\u0435\u0433\u0440\u0430\u0434\u0430"
-        },
-        "barrier/block": {
-            "name": "\u0411\u0435\u0442\u043e\u043d\u0435\u043d \u0431\u043b\u043e\u043a"
-        },
-        "barrier/bollard": {
-            "name": "\u041a\u043e\u043b\u0447\u0435"
-        },
-        "barrier/cattle_grid": {
-            "name": "\u0422\u0435\u043a\u0441\u0430\u0441\u043a\u0430 \u043c\u0440\u0435\u0436\u0430"
-        },
-        "barrier/city_wall": {
-            "name": "\u0413\u0440\u0430\u0434\u0441\u043a\u0430 \u0441\u0442\u0435\u043d\u0430"
-        },
-        "barrier/cycle_barrier": {
-            "name": "\u0412\u0435\u043b\u043e\u0441\u0438\u043f\u0435\u0434\u043d\u0430 \u043f\u0440\u0435\u0433\u0440\u0430\u0434\u0430"
-        },
-        "barrier/entrance": {
-            "name": "\u0412\u0445\u043e\u0434"
-        },
-        "barrier/fence": {
-            "name": "\u041e\u0433\u0440\u0430\u0434\u0430"
-        },
-        "barrier/gate": {
-            "name": "\u041f\u043e\u0440\u0442\u0430\u043b"
-        },
-        "barrier/hedge": {
-            "name": "\u0416\u0438\u0432 \u043f\u043b\u0435\u0442"
-        },
-        "barrier/kissing_gate": {
-            "name": "\u041f\u0440\u0435\u043f\u044f\u0442\u0441\u0442\u0432\u0438\u0435 \u0437\u0430 \u0436\u0438\u0432\u043e\u0442\u043d\u0438"
-        },
-        "barrier/lift_gate": {
-            "name": "\u0411\u0430\u0440\u0438\u0435\u0440\u0430"
-        },
-        "barrier/retaining_wall": {
-            "name": "\u041f\u043e\u0434\u043f\u043e\u0440\u043d\u0430 \u0441\u0442\u0435\u043d\u0430"
-        },
-        "barrier/stile": {
-            "name": "\u0421\u0442\u044a\u043b\u0431\u0438 \u0437\u0430 \u043f\u0440\u0435\u043c\u0438\u043d\u0430\u0432\u0430\u043d\u0435 \u043f\u0440\u0435\u0437 \u043e\u0433\u0440\u0430\u0434\u0430"
-        },
-        "barrier/toll_booth": {
-            "name": "\u0411\u0443\u0434\u043a\u0430 \u0437\u0430 \u0442\u043e\u043b \u0442\u0430\u043a\u0441\u0430"
-        },
-        "barrier/wall": {
-            "name": "\u0421\u0442\u0435\u043d\u0430"
-        },
-        "boundary/administrative": {
-            "name": "\u0410\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u0438\u0432\u043d\u0430 \u0433\u0440\u0430\u043d\u0438\u0446\u0430"
-        },
-        "building": {
-            "name": "\u0421\u0433\u0440\u0430\u0434\u0430"
-        },
-        "building/house": {
-            "name": "\u041a\u044a\u0449\u0430"
-        },
-        "emergency/phone": {
-            "name": "\u0422\u0435\u043b\u0435\u0444\u043e\u043d \u0437\u0430 \u0441\u043f\u0435\u0448\u043d\u0430 \u043f\u043e\u043c\u043e\u0449"
-        },
-        "highway": {
-            "name": "\u041f\u044a\u0442"
-        },
-        "highway/bridleway": {
-            "name": "\u041a\u043e\u043d\u0441\u043a\u0430 \u043f\u044a\u0442\u0435\u043a\u0430"
-        },
-        "highway/cycleway": {
-            "name": "\u0412\u0435\u043b\u043e\u0430\u043b\u0435\u044f"
-        },
-        "highway/footway": {
-            "name": "\u041f\u0435\u0448\u0435\u0445\u043e\u0434\u043d\u0430 \u0430\u043b\u0435\u044f"
-        },
-        "highway/living_street": {
-            "name": "\u0416\u0438\u043b\u0438\u0449\u043d\u0430 \u0443\u043b\u0438\u0446\u0430"
-        },
-        "highway/mini_roundabout": {
-            "name": "\u041c\u0430\u043b\u043a\u043e \u043a\u0440\u044a\u0433\u043e\u0432\u043e \u043a\u0440\u044a\u0441\u0442\u043e\u0432\u0438\u0449\u0435"
-        },
-        "highway/motorway": {
-            "name": "\u0410\u0432\u0442\u043e\u043c\u0430\u0433\u0438\u0441\u0442\u0440\u0430\u043b\u0430"
-        },
-        "highway/motorway_link": {
-            "name": "\u0410\u0432\u0442\u043e\u043c\u0430\u0433\u0438\u0441\u0442\u0440\u0430\u043b\u043d\u0430 \u0432\u0440\u044a\u0437\u043a\u0430"
-        },
-        "highway/path": {
-            "name": "\u041f\u044a\u0442\u0435\u043a\u0430"
-        },
-        "highway/primary": {
-            "name": "\u041f\u044a\u0440\u0432\u043e\u043a\u043b\u0430\u0441\u0435\u043d \u043f\u044a\u0442"
-        },
-        "highway/primary_link": {
-            "name": "\u0412\u0440\u044a\u0437\u043a\u0430 \u0441 \u043f\u044a\u0440\u0432\u043e\u043a\u043b\u0430\u0441\u0435\u043d \u043f\u044a\u0442"
-        },
-        "highway/residential": {
-            "name": "\u0423\u043b\u0438\u0446\u0430"
-        },
-        "highway/road": {
-            "name": "\u041d\u0435\u043f\u0440\u043e\u0443\u0447\u0435\u043d \u043f\u044a\u0442"
-        },
-        "highway/secondary": {
-            "name": "\u0412\u0442\u043e\u0440\u043e\u043a\u043b\u0430\u0441\u0435\u043d \u043f\u044a\u0442"
-        },
-        "highway/secondary_link": {
-            "name": "\u0412\u0440\u044a\u0437\u043a\u0430 \u0441 \u0432\u0442\u043e\u0440\u043e\u043a\u043b\u0430\u0441\u0435\u043d \u043f\u044a\u0442"
-        },
-        "highway/service": {
-            "name": "\u0421\u0435\u0440\u0432\u0438\u0437\u043d\u0430 \u0443\u043b\u0438\u0446\u0430"
-        },
-        "highway/service/alley": {
-            "name": "\u0422\u044f\u0441\u043d\u0430 \u0443\u043b\u0438\u0447\u043a\u0430 \u043c\u0435\u0436\u0434\u0443 \u0438\u043c\u043e\u0442\u0438"
-        },
-        "highway/service/drive-through": {
-            "name": "\u041e\u0431\u0441\u043b\u0443\u0436\u0432\u0430\u043d\u0435 \u0431\u0435\u0437 \u043d\u0430\u043f\u0443\u0441\u043a\u0430\u043d\u0435 \u043d\u0430 \u0430\u0432\u0442\u043e\u043c\u043e\u0431\u0438\u043b\u0430"
-        },
-        "highway/service/driveway": {
-            "name": "\u0410\u043b\u0435\u044f \u0437\u0430 \u043a\u043e\u043b\u0438 \u043a\u044a\u043c \u0436\u0438\u043b\u0438\u0449\u0435"
-        },
-        "highway/service/emergency_access": {
-            "name": "\u0417\u0430 \u0434\u043e\u0441\u0442\u044a\u043f \u043f\u0440\u0438 \u0441\u043f\u0435\u0448\u043d\u0438 \u0441\u043b\u0443\u0447\u0430\u0438"
-        },
-        "highway/service/parking_aisle": {
-            "name": "\u041f\u044a\u0442 \u0432 \u043f\u0430\u0440\u043a\u0438\u043d\u0433"
+        "route/ferry": {
+            "name": "Фериботна връзка"
         },
         "highway/steps": {
-            "name": "\u0421\u0442\u044a\u043f\u0430\u043b\u0430"
-        },
-        "highway/street_lamp": {
-            "name": "\u0423\u043b\u0438\u0447\u043d\u0430 \u043b\u0430\u043c\u043f\u0430"
-        },
-        "highway/tertiary": {
-            "name": "\u0422\u0440\u0435\u0442\u043e\u043a\u043b\u0430\u0441\u0435\u043d \u043f\u044a\u0442"
-        },
-        "highway/tertiary_link": {
-            "name": "\u0412\u0440\u044a\u0437\u043a\u0430 \u0441 \u0442\u0440\u0435\u0442\u043e\u043a\u043b\u0430\u0441\u0435\u043d \u043f\u044a\u0442"
-        },
-        "highway/traffic_signals": {
-            "name": "\u0421\u0432\u0435\u0442\u043e\u0444\u0430\u0440\u0438"
-        },
-        "highway/trunk": {
-            "name": "\u0421\u043a\u043e\u0440\u043e\u0441\u0442\u0435\u043d \u043f\u044a\u0442"
-        },
-        "highway/trunk_link": {
-            "name": "\u0412\u0440\u044a\u0437\u043a\u0430 \u0441\u044a\u0441 \u0441\u043a\u043e\u0440\u043e\u0441\u0442\u0435\u043d \u043f\u044a\u0442"
-        },
-        "highway/turning_circle": {
-            "name": "\u041c\u044f\u0441\u0442\u043e \u0437\u0430 \u043e\u0431\u0440\u044a\u0449\u0430\u043d\u0435"
-        },
-        "historic": {
-            "name": "\u041c\u044f\u0441\u0442\u043e \u0441 \u0438\u0441\u0442\u043e\u0440\u0438\u0447\u0435\u0441\u043a\u043e \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435"
-        },
-        "historic/archaeological_site": {
-            "name": "\u0410\u0440\u0445\u0435\u043e\u043b\u043e\u0433\u0438\u0447\u0435\u0441\u043a\u0438 \u043e\u0431\u0435\u043a\u0442"
+            "name": "Стъпала"
         },
         "historic/boundary_stone": {
-            "name": "\u0413\u0440\u0430\u043d\u0438\u0447\u0435\u043d \u043a\u0430\u043c\u044a\u043a"
-        },
-        "historic/castle": {
-            "name": "\u0417\u0430\u043c\u044a\u043a"
-        },
-        "historic/memorial": {
-            "name": "\u041c\u0435\u043c\u043e\u0440\u0438\u0430\u043b\u043d\u0430 \u043f\u043b\u043e\u0447\u0430"
-        },
-        "historic/monument": {
-            "name": "\u041f\u0430\u043c\u0435\u0442\u043d\u0438\u043a"
-        },
-        "historic/ruins": {
-            "name": "\u0420\u0443\u0438\u043d\u0438"
-        },
-        "historic/wayside_cross": {
-            "name": "\u041a\u0440\u0430\u0439\u043f\u044a\u0442\u0435\u043d \u043a\u0440\u044a\u0441\u0442"
-        },
-        "historic/wayside_shrine": {
-            "name": "\u041a\u0440\u0430\u0439\u043f\u044a\u0442\u0435\u043d \u043f\u0430\u0440\u0430\u043a\u043b\u0438\u0441"
-        },
-        "landuse/basin": {
-            "name": "\u0411\u0430\u0441\u0435\u0439\u043d"
-        },
-        "landuse/cemetery": {
-            "name": "\u0413\u0440\u043e\u0431\u0438\u0449\u0435\u043d \u043f\u0430\u0440\u043a"
-        },
-        "landuse/construction": {
-            "name": "\u0421\u0442\u0440\u043e\u0435\u0436"
-        },
-        "landuse/farmyard": {
-            "name": "\u0421\u0435\u043b\u0441\u043a\u043e\u0441\u0442\u043e\u043f\u0430\u043d\u0441\u043a\u0438 \u0434\u0432\u043e\u0440"
-        },
-        "landuse/grass": {
-            "name": "\u0422\u0440\u0435\u0432\u0430"
-        },
-        "landuse/meadow": {
-            "name": "\u041f\u0430\u0441\u0438\u0449\u0435"
-        },
-        "landuse/orchard": {
-            "name": "\u041e\u0432\u043e\u0449\u043d\u0430 \u0433\u0440\u0430\u0434\u0438\u043d\u0430 "
-        },
-        "landuse/quarry": {
-            "name": "\u041a\u0430\u0440\u0438\u0435\u0440\u0430"
-        },
-        "landuse/vineyard": {
-            "name": "\u041b\u043e\u0437\u0435"
-        },
-        "leisure": {
-            "name": "\u041e\u0442\u0434\u0438\u0445"
-        },
-        "leisure/garden": {
-            "name": "\u0413\u0440\u0430\u0434\u0438\u043d\u0430"
-        },
-        "leisure/golf_course": {
-            "name": "\u0413\u043e\u043b\u0444 \u0438\u0433\u0440\u0438\u0449\u0435"
-        },
-        "leisure/marina": {
-            "name": "\u042f\u0445\u0442 \u043a\u043b\u0443\u0431"
+            "name": "Граничен камък"
         },
         "leisure/park": {
-            "name": "\u041f\u0430\u0440\u043a"
+            "name": "Парк"
         },
-        "leisure/pitch": {
-            "name": "\u0421\u043f\u043e\u0440\u0442\u043d\u043e \u0438\u0433\u0440\u0438\u0449\u0435"
-        },
-        "leisure/pitch/american_football": {
-            "name": "\u0418\u0433\u0440\u0438\u0449\u0435 \u0437\u0430 \u0430\u043c\u0435\u0440\u0438\u043a\u0430\u043d\u0441\u043a\u0438 \u0444\u0443\u0442\u0431\u043e\u043b"
-        },
-        "leisure/pitch/basketball": {
-            "name": "\u0411\u0430\u0441\u043a\u0435\u0442\u0431\u043e\u043b\u043d\u043e \u0438\u0433\u0440\u0438\u0449\u0435"
-        },
-        "leisure/pitch/soccer": {
-            "name": "\u0424\u0443\u0442\u0431\u043e\u043b\u043d\u043e \u0438\u0433\u0440\u0438\u0449\u0435"
-        },
-        "leisure/pitch/tennis": {
-            "name": "\u0422\u0435\u043d\u0438\u0441 \u043a\u043e\u0440\u0442"
-        },
-        "leisure/pitch/volleyball": {
-            "name": "\u0412\u043e\u043b\u0435\u0439\u0431\u043e\u043b\u043d\u043e \u0438\u0433\u0440\u0438\u0449\u0435"
-        },
-        "leisure/playground": {
-            "name": "\u0414\u0435\u0442\u0441\u043a\u0430 \u043f\u043b\u043e\u0449\u0430\u0434\u043a\u0430"
-        },
-        "leisure/slipway": {
-            "name": "\u0425\u0435\u043b\u0438\u043d\u0433"
-        },
-        "leisure/stadium": {
-            "name": "\u0421\u0442\u0430\u0434\u0438\u043e\u043d"
-        },
-        "leisure/swimming_pool": {
-            "name": "\u041f\u043b\u0443\u0432\u0435\u043d \u0431\u0430\u0441\u0435\u0439\u043d"
-        },
-        "line": {
-            "name": "\u041b\u0438\u043d\u0438\u044f"
-        },
-        "man_made": {
-            "name": "\u0421\u044a\u043e\u0440\u044a\u0436\u0435\u043d\u0438\u044f"
-        },
-        "man_made/breakwater": {
-            "name": "\u0412\u044a\u043b\u043d\u043e\u043b\u043e\u043c"
-        },
-        "man_made/cutline": {
-            "name": "\u041f\u0440\u043e\u0441\u0435\u043a\u0430"
-        },
-        "man_made/lighthouse": {
-            "name": "\u041c\u043e\u0440\u0441\u043a\u0438 \u0444\u0430\u0440"
-        },
-        "man_made/pier": {
-            "name": "\u041a\u0435\u0439"
-        },
-        "man_made/pipeline": {
-            "name": "\u0422\u0440\u044a\u0431\u043e\u043f\u0440\u043e\u0432\u043e\u0434"
-        },
-        "man_made/survey_point": {
-            "name": "\u0413\u0435\u043e\u0434\u0435\u0437\u0438\u0447\u0435\u0441\u043a\u0430 \u0442\u043e\u0447\u043a\u0430"
-        },
-        "man_made/tower": {
-            "name": "\u041a\u0443\u043b\u0430"
-        },
-        "man_made/wastewater_plant": {
-            "name": "\u041f\u0440\u0435\u0447\u0438\u0441\u0442\u0432\u0430\u0442\u0435\u043b\u043d\u0430 \u0441\u0442\u0430\u043d\u0446\u0438\u044f"
-        },
-        "man_made/water_tower": {
-            "name": "\u0412\u043e\u0434\u043d\u0430 \u043a\u0443\u043b\u0430"
-        },
-        "man_made/water_works": {
-            "name": "\u041f\u043e\u043c\u043f\u0435\u043d\u0430 \u0441\u0442\u0430\u043d\u0446\u0438\u044f"
-        },
-        "natural": {
-            "name": "\u041f\u0440\u0438\u0440\u043e\u0434\u0430"
-        },
-        "natural/bay": {
-            "name": "\u0417\u0430\u043b\u0438\u0432"
-        },
-        "natural/beach": {
-            "name": "\u041f\u043b\u0430\u0436"
-        },
-        "natural/cliff": {
-            "name": "\u0421\u043a\u0430\u043b\u0430"
-        },
-        "natural/coastline": {
-            "name": "\u0411\u0440\u0435\u0433\u043e\u0432\u0430 \u043b\u0438\u043d\u0438\u044f"
-        },
-        "natural/glacier": {
-            "name": "\u041b\u0435\u0434\u043d\u0438\u043a"
-        },
-        "natural/grassland": {
-            "name": "\u0421\u0442\u0435\u043f"
-        },
-        "natural/heath": {
-            "name": "\u041c\u0430\u043b\u043a\u0438 \u0445\u0440\u0430\u0441\u0442\u0438"
-        },
-        "natural/peak": {
-            "name": "\u0412\u0440\u044a\u0445"
-        },
-        "natural/scrub": {
-            "name": "\u0428\u0443\u0431\u0440\u0430\u043a"
-        },
-        "natural/spring": {
-            "name": "\u0418\u0437\u0432\u043e\u0440"
-        },
-        "natural/tree": {
-            "name": "\u0414\u044a\u0440\u0432\u043e"
-        },
-        "natural/water": {
-            "name": "\u0412\u043e\u0434\u043d\u0430 \u043f\u043b\u043e\u0449"
-        },
-        "natural/water/lake": {
-            "name": "\u0415\u0437\u0435\u0440\u043e"
-        },
-        "natural/water/pond": {
-            "name": "\u041c\u0430\u043b\u043a\u043e \u0435\u0437\u0435\u0440\u043e"
-        },
-        "natural/water/reservoir": {
-            "name": "\u042f\u0437\u043e\u0432\u0438\u0440"
-        },
-        "natural/wetland": {
-            "name": "\u0411\u043b\u0430\u0442\u0438\u0441\u0442\u0430 \u0437\u043e\u043d\u0430"
-        },
-        "natural/wood": {
-            "name": "\u0413\u043e\u0440\u0430"
-        },
-        "office": {
-            "name": "\u041e\u0444\u0438\u0441"
-        },
-        "place": {
-            "name": "\u041d\u0430\u0441\u0435\u043b\u0435\u043d\u0438 \u043c\u0435\u0441\u0442\u0430"
+        "amenity/car_rental": {
+            "name": "Коли под наем"
         },
         "place/city": {
-            "name": "\u0413\u0440\u0430\u0434 \u043d\u0430\u0434 100 000"
+            "name": "Град над 100 000"
         },
-        "place/hamlet": {
-            "name": "\u041c\u0430\u0445\u0430\u043b\u0430"
+        "amenity/fast_food": {
+            "name": "Бърза закуска"
         },
-        "place/island": {
-            "name": "\u041e\u0441\u0442\u0440\u043e\u0432"
-        },
-        "place/isolated_dwelling": {
-            "name": "\u0418\u0437\u043e\u043b\u0438\u0440\u0430\u043d\u043e \u0436\u0438\u043b\u0438\u0449\u0435"
-        },
-        "place/locality": {
-            "name": "\u041c\u0435\u0441\u0442\u043d\u043e\u0441\u0442"
-        },
-        "place/town": {
-            "name": "\u0413\u0440\u0430\u0434 \u043f\u043e\u0434 100 000"
-        },
-        "place/village": {
-            "name": "\u0421\u0435\u043b\u043e"
-        },
-        "point": {
-            "name": "\u0422\u043e\u0447\u043a\u0430"
-        },
-        "power": {
-            "name": "\u0415\u043d\u0435\u0440\u0433\u0435\u0442\u0438\u043a\u0430"
-        },
-        "power/line": {
-            "name": "\u0415\u043b\u0435\u043a\u0442\u0440\u043e\u043f\u0440\u043e\u0432\u043e\u0434"
-        },
-        "power/pole": {
-            "name": "\u0415\u043b\u0435\u043a\u0442\u0440\u0438\u0447\u0435\u0441\u043a\u0438 \u0441\u0442\u044a\u043b\u0431"
-        },
-        "power/sub_station": {
-            "name": "\u041f\u043e\u0434\u0441\u0442\u0430\u043d\u0446\u0438\u044f"
-        },
-        "power/tower": {
-            "name": "\u0416\u0435\u0440\u0435"
-        },
-        "power/transformer": {
-            "name": "\u0422\u0440\u0430\u043d\u0441\u0444\u043e\u0440\u043c\u0430\u0442\u043e\u0440"
-        },
-        "railway": {
-            "name": "\u0416\u041f \u0442\u0440\u0430\u043d\u0441\u043f\u043e\u0440\u0442"
-        },
-        "railway/abandoned": {
-            "name": "\u0418\u0437\u043e\u0441\u0442\u0430\u0432\u0435\u043d\u0430 \u0436\u0435\u043b\u0435\u0437\u043e\u043f\u044a\u0442\u043d\u0430 \u043b\u0438\u043d\u0438\u044f"
-        },
-        "railway/disused": {
-            "name": "\u0417\u0430\u043a\u0440\u0438\u0442\u0430 \u0436\u0435\u043b\u0435\u0437\u043e\u043f\u044a\u0442\u043d\u0430 \u043b\u0438\u043d\u0438\u044f"
-        },
-        "railway/monorail": {
-            "name": "\u041c\u043e\u043d\u043e\u0440\u0435\u043b\u0441\u043e\u0432 \u043f\u044a\u0442"
-        },
-        "railway/rail": {
-            "name": "\u0416\u041f \u043b\u0438\u043d\u0438\u044f"
-        },
-        "railway/subway": {
-            "name": "\u041c\u0435\u0442\u0440\u043e"
-        },
-        "railway/subway_entrance": {
-            "name": "\u0412\u0445\u043e\u0434 \u043d\u0430 \u043c\u0435\u0442\u0440\u043e\u0441\u0442\u0430\u043d\u0446\u0438\u044f"
-        },
-        "railway/tram": {
-            "name": "\u0422\u0440\u0430\u043c\u0432\u0430\u0439\u043d\u0438 \u0440\u0435\u043b\u0441\u0438"
-        },
-        "relation": {
-            "name": "\u0420\u0435\u043b\u0430\u0446\u0438\u044f"
-        },
-        "route/ferry": {
-            "name": "\u0424\u0435\u0440\u0438\u0431\u043e\u0442\u043d\u0430 \u0432\u0440\u044a\u0437\u043a\u0430"
-        },
-        "shop": {
-            "name": "\u041c\u0430\u0433\u0430\u0437\u0438\u043d"
-        },
-        "shop/alcohol": {
-            "name": "\u041c\u0430\u0433\u0430\u0437\u0438\u043d \u0437\u0430 \u0430\u043b\u043a\u043e\u0445\u043e\u043b"
-        },
-        "shop/bakery": {
-            "name": "\u041f\u0435\u043a\u0430\u0440\u043d\u0430"
-        },
-        "shop/beauty": {
-            "name": "\u041a\u043e\u0437\u043c\u0435\u0442\u0438\u043a"
-        },
-        "shop/beverages": {
-            "name": "\u041c\u0430\u0433\u0430\u0437\u0438\u043d \u0437\u0430 \u0430\u043b\u043a\u043e\u0445\u043e\u043b \u0438 \u0446\u0438\u0433\u0430\u0440\u0438"
-        },
-        "shop/bicycle": {
-            "name": "\u041c\u0430\u0433\u0430\u0437\u0438\u043d \u0437\u0430 \u0432\u0435\u043b\u043e\u0441\u0438\u043f\u0435\u0434\u0438"
-        },
-        "shop/boutique": {
-            "name": "\u0411\u0443\u0442\u0438\u043a"
-        },
-        "shop/butcher": {
-            "name": "\u041a\u043e\u043b\u0431\u0430\u0441\u0438"
-        },
-        "shop/car": {
-            "name": "\u0410\u0432\u0442\u043e\u043c\u043e\u0431\u0438\u043b\u0438"
-        },
-        "shop/car_parts": {
-            "name": "\u0410\u0432\u0442\u043e\u0447\u0430\u0441\u0442\u0438"
-        },
-        "shop/car_repair": {
-            "name": "\u0421\u0435\u0440\u0432\u0438\u0437 \u0430\u0432\u0442\u043e\u043c\u043e\u0431\u0438\u043b\u0438"
-        },
-        "shop/chemist": {
-            "name": "\u0414\u0440\u043e\u0433\u0435\u0440\u0438\u044f"
-        },
-        "shop/clothes": {
-            "name": "\u041c\u0430\u0433\u0430\u0437\u0438\u043d \u0437\u0430 \u0434\u0440\u0435\u0445\u0438"
-        },
-        "shop/computer": {
-            "name": "\u041a\u043e\u043c\u043f\u044e\u0442\u044a\u0440\u0435\u043d \u043c\u0430\u0433\u0430\u0437\u0438\u043d"
-        },
-        "shop/convenience": {
-            "name": "\u041c\u0430\u0433\u0430\u0437\u0438\u043d \u0437\u0430 \u0445\u0440\u0430\u043d\u0438\u0442\u0435\u043b\u043d\u0438 \u0441\u0442\u043e\u043a\u0438"
-        },
-        "shop/deli": {
-            "name": "\u041c\u0430\u0433\u0430\u0437\u0438\u043d \u0437\u0430 \u0434\u0435\u043b\u0438\u043a\u0430\u0442\u0435\u0441\u0438"
-        },
-        "shop/department_store": {
-            "name": "\u0423\u043d\u0438\u0432\u0435\u0440\u0441\u0430\u043b\u0435\u043d \u043c\u0430\u0433\u0430\u0437\u0438\u043d"
-        },
-        "shop/doityourself": {
-            "name": "\u041c\u0430\u0433\u0430\u0437\u0438\u043d \"\u041d\u0430\u043f\u0440\u0430\u0432\u0438 \u0441\u0438 \u0441\u0430\u043c\""
-        },
-        "shop/electronics": {
-            "name": "\u041c\u0430\u0433\u0430\u0437\u0438\u043d \u0437\u0430 \u0435\u043b\u0435\u043a\u0442\u0440\u043e\u043d\u0438\u043a\u0430"
-        },
-        "shop/farm": {
-            "name": "\u0429\u0430\u043d\u0434 \u0437\u0430 \u043f\u043b\u043e\u0434\u043e\u0432\u0435 \u0438 \u0437\u0435\u043b\u0435\u043d\u0447\u0443\u0446\u0438"
-        },
-        "shop/fishmonger": {
-            "name": "\u041c\u0430\u0433\u0430\u0437\u0438\u043d \u0437\u0430 \u0440\u0438\u0431\u0430"
-        },
-        "shop/florist": {
-            "name": "\u041c\u0430\u0433\u0430\u0437\u0438\u043d \u0437\u0430 \u0446\u0432\u0435\u0442\u044f"
-        },
-        "shop/furniture": {
-            "name": "\u041c\u0435\u0431\u0435\u043b\u0435\u043d \u043c\u0430\u0433\u0430\u0437\u0438\u043d"
-        },
-        "shop/garden_centre": {
-            "name": "\u0413\u0440\u0430\u0434\u0438\u043d\u0441\u043a\u0438 \u0446\u0435\u043d\u0442\u044a\u0440"
-        },
-        "shop/gift": {
-            "name": "\u041c\u0430\u0433\u0430\u0437\u0438\u043d \u0437\u0430 \u043f\u043e\u0434\u0430\u0440\u044a\u0446\u0438"
-        },
-        "shop/greengrocer": {
-            "name": "\u041f\u043b\u043e\u0434-\u0437\u0435\u043b\u0435\u043d\u0447\u0443\u043a"
-        },
-        "shop/hairdresser": {
-            "name": "\u0424\u0440\u0438\u0437\u044c\u043e\u0440\u0441\u043a\u0438 \u0441\u0430\u043b\u043e\u043d"
-        },
-        "shop/hardware": {
-            "name": "\u0416\u0435\u043b\u0435\u0437\u0430\u0440\u0438\u044f"
-        },
-        "shop/hifi": {
-            "name": "\u041c\u0430\u0433\u0430\u0437\u0438\u043d \u0437\u0430 \u0430\u0443\u0434\u0438\u043e\u0442\u0435\u0445\u043d\u0438\u043a\u0430"
-        },
-        "shop/houseware": {
-            "name": "\u0414\u043e\u043c\u0430\u0448\u043d\u0438 \u043f\u043e\u0442\u0440\u0435\u0431\u0438"
-        },
-        "shop/laundry": {
-            "name": "\u041f\u0435\u0440\u0430\u043b\u043d\u044f"
-        },
-        "shop/lottery": {
-            "name": "\u041b\u043e\u0442\u0430\u0440\u0438\u0439\u043d\u0438 \u0431\u0438\u043b\u0435\u0442\u0438"
-        },
-        "shop/mall": {
-            "name": "\u041c\u043e\u043b"
-        },
-        "shop/mobile_phone": {
-            "name": "\u041c\u0430\u0433\u0430\u0437\u0438\u043d \u0437\u0430 \u043c\u043e\u0431\u0438\u043b\u043d\u0438 \u0442\u0435\u043b\u0435\u0444\u043e\u043d\u0438"
-        },
-        "shop/motorcycle": {
-            "name": "\u041c\u0430\u0433\u0430\u0437\u0438\u043d \u0437\u0430 \u043c\u043e\u0442\u043e\u0446\u0438\u043a\u043b\u0435\u0442\u0438"
-        },
-        "shop/music": {
-            "name": "\u041c\u0443\u0437\u0438\u043a\u0430\u043b\u0435\u043d \u043c\u0430\u0433\u0430\u0437\u0438\u043d"
-        },
-        "shop/optician": {
-            "name": "\u041e\u043f\u0442\u0438\u043a\u0430"
-        },
-        "shop/pet": {
-            "name": "\u0417\u043e\u043e \u043c\u0430\u0433\u0430\u0437\u0438\u043d"
-        },
-        "shop/shoes": {
-            "name": "\u041c\u0430\u0433\u0430\u0437\u0438\u043d \u0437\u0430 \u043e\u0431\u0443\u0432\u043a\u0438"
-        },
-        "shop/sports": {
-            "name": "\u0421\u043f\u043e\u0440\u0442\u0435\u043d \u043c\u0430\u0433\u0430\u0437\u0438\u043d"
-        },
-        "shop/stationery": {
-            "name": "\u041c\u0430\u0433\u0430\u0437\u0438\u043d \u0437\u0430 \u043a\u0430\u043d\u0446\u0435\u043b\u0430\u0440\u0441\u043a\u0438 \u0441\u0442\u043e\u043a\u0438"
-        },
-        "shop/supermarket": {
-            "name": "\u0421\u0443\u043f\u0435\u0440\u043c\u0430\u0440\u043a\u0435\u0442"
-        },
-        "shop/toys": {
-            "name": "\u041c\u0430\u0433\u0430\u0437\u0438\u043d \u0437\u0430 \u0438\u0433\u0440\u0430\u0447\u043a\u0438"
-        },
-        "shop/travel_agency": {
-            "name": "\u0422\u0443\u0440\u0438\u0441\u0442\u0438\u0447\u0435\u0441\u043a\u0430 \u0430\u0433\u0435\u043d\u0446\u0438\u044f"
-        },
-        "shop/tyres": {
-            "name": "\u041c\u0430\u0433\u0430\u0437\u0438\u043d \u0437\u0430 \u0430\u0432\u0442\u043e\u043c\u043e\u0431\u0438\u043b\u043d\u0438 \u0433\u0443\u043c\u0438"
-        },
-        "shop/vacant": {
-            "name": "\u0421\u0432\u043e\u0431\u043e\u0434\u043d\u0430 \u0442\u044a\u0440\u0433\u043e\u0432\u0441\u043a\u0430 \u043f\u043b\u043e\u0449"
-        },
-        "shop/variety_store": {
-            "name": "\u0421\u043c\u0435\u0441\u0435\u043d \u043c\u0430\u0433\u0430\u0437\u0438\u043d"
-        },
-        "shop/video": {
-            "name": "\u0412\u0438\u0434\u0435\u043e\u0442\u0435\u043a\u0430"
-        },
-        "tourism": {
-            "name": "\u0422\u0443\u0440\u0438\u0437\u044a\u043c"
-        },
-        "tourism/alpine_hut": {
-            "name": "\u0425\u0438\u0436\u0430"
-        },
-        "tourism/artwork": {
-            "name": "\u041f\u0440\u043e\u0438\u0437\u0432\u0435\u0434\u0435\u043d\u0438\u0435 \u043d\u0430 \u0438\u0437\u043a\u0443\u0441\u0442\u0432\u043e\u0442\u043e"
-        },
-        "tourism/attraction": {
-            "name": "\u0422\u0443\u0440\u0438\u0441\u0442\u0438\u0447\u0435\u0441\u043a\u0430 \u0430\u0442\u0440\u0430\u043a\u0446\u0438\u044f"
-        },
-        "tourism/caravan_site": {
-            "name": "\u041f\u0430\u0440\u043a\u0438\u043d\u0433 \u0437\u0430 \u043a\u0430\u0440\u0430\u0432\u0430\u043d\u0438"
-        },
-        "tourism/guest_house": {
-            "name": "\u041a\u044a\u0449\u0430 \u0437\u0430 \u0433\u043e\u0441\u0442\u0438"
-        },
-        "tourism/hostel": {
-            "name": "\u0425\u043e\u0441\u0442\u0435\u043b"
-        },
-        "tourism/hotel": {
-            "name": "\u0425\u043e\u0442\u0435\u043b"
-        },
-        "tourism/information": {
-            "name": "\u0418\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u044f"
-        },
-        "tourism/motel": {
-            "name": "\u041c\u043e\u0442\u0435\u043b"
-        },
-        "tourism/museum": {
-            "name": "\u041c\u0443\u0437\u0435\u0439"
-        },
-        "tourism/picnic_site": {
-            "name": "\u041c\u044f\u0441\u0442\u043e \u0437\u0430 \u043f\u0438\u043a\u043d\u0438\u043a"
-        },
-        "tourism/theme_park": {
-            "name": "\u0423\u0432\u0435\u0441\u0435\u043b\u0438\u0442\u0435\u043b\u0435\u043d \u043f\u0430\u0440\u043a"
-        },
-        "tourism/viewpoint": {
-            "name": "\u0422\u043e\u0447\u043a\u0430 \u0441 \u0445\u0443\u0431\u0430\u0432\u0430 \u0433\u043b\u0435\u0434\u043a\u0430"
-        },
-        "tourism/zoo": {
-            "name": "\u0417\u043e\u043e\u043b\u043e\u0433\u0438\u0447\u0435\u0441\u043a\u0430 \u0433\u0440\u0430\u0434\u0438\u043d\u0430"
-        },
-        "type/boundary": {
-            "name": "\u0413\u0440\u0430\u043d\u0438\u0446\u0430"
-        },
-        "type/boundary/administrative": {
-            "name": "\u0410\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u0438\u0432\u043d\u0430 \u0433\u0440\u0430\u043d\u0438\u0446\u0430"
-        },
-        "type/multipolygon": {
-            "name": "\u041c\u0443\u043b\u0442\u0438\u043f\u043e\u043b\u0438\u0433\u043e\u043d"
-        },
-        "type/restriction": {
-            "name": "\u041e\u0433\u0440\u0430\u043d\u0438\u0447\u0435\u043d\u0438\u0435"
-        },
-        "type/restriction/no_right_turn": {
-            "name": "\u0411\u0435\u0437 \u0434\u0435\u0441\u0435\u043d \u0437\u0430\u0432\u043e\u0439"
-        },
-        "type/restriction/no_u_turn": {
-            "name": "\u0411\u0435\u0437 \u043e\u0431\u0440\u0430\u0442\u0435\u043d \u0437\u0430\u0432\u043e\u0439"
-        },
-        "type/route": {
-            "name": "\u041c\u0430\u0440\u0448\u0440\u0443\u0442"
-        },
-        "type/route/bicycle": {
-            "name": "\u0412\u0435\u043b\u043e\u0441\u0438\u043f\u0435\u0434\u0435\u043d \u043c\u0430\u0440\u0448\u0440\u0443\u0442"
-        },
-        "type/route/bus": {
-            "name": "\u0410\u0432\u0442\u043e\u0431\u0443\u0441\u0435\u043d \u043c\u0430\u0440\u0448\u0440\u0443\u0442"
-        },
-        "type/route/detour": {
-            "name": "\u041e\u0431\u0445\u043e\u0434\u0435\u043d \u043c\u0430\u0440\u0448\u0440\u0443\u0442"
-        },
-        "type/route/ferry": {
-            "name": "\u0424\u0435\u0440\u0438\u0431\u043e\u0442\u043d\u0430 \u0432\u0440\u044a\u0437\u043a\u0430"
-        },
-        "type/route/foot": {
-            "name": "\u041f\u0435\u0448\u0435\u0445\u043e\u0434\u0435\u043d \u043c\u0430\u0440\u0448\u0440\u0443\u0442"
+        "highway/primary": {
+            "name": "Първокласен път"
         },
         "type/route/pipeline": {
-            "name": "\u0422\u0440\u0430\u0441\u0435 \u043d\u0430 \u0442\u0440\u044a\u0431\u043e\u043f\u0440\u043e\u0432\u043e\u0434"
+            "name": "Трасе на тръбопровод"
         },
-        "type/route/power": {
-            "name": "\u0422\u0440\u0430\u0441\u0435 \u043d\u0430 \u0435\u043b\u0435\u043a\u0442\u0440\u043e\u043f\u0440\u043e\u0432\u043e\u0434"
+        "building": {
+            "name": "Сграда"
         },
-        "type/route/road": {
-            "name": "\u041f\u044a\u0442"
+        "leisure/garden": {
+            "name": "Градина"
         },
-        "type/route/train": {
-            "name": "\u0416\u0435\u043b\u0435\u0437\u043e\u043f\u044a\u0442\u0435\u043d \u043c\u0430\u0440\u0448\u0440\u0443\u0442"
+        "historic/memorial": {
+            "name": "Мемориална плоча"
         },
-        "type/route/tram": {
-            "name": "\u0422\u0440\u0430\u043c\u0432\u0430\u0435\u043d \u043c\u0430\u0440\u0448\u0440\u0443\u0442"
+        "barrier/cattle_grid": {
+            "name": "Тексаска мрежа"
         },
-        "type/route_master": {
-            "name": "\u041c\u0430\u0440\u0448\u0440\u0443\u0442\u043d\u0430 \u0441\u0445\u0435\u043c\u0430"
+        "tourism/motel": {
+            "name": "Мотел"
         },
-        "vertex": {
-            "name": "\u0414\u0440\u0443\u0433"
+        "barrier/lift_gate": {
+            "name": "Бариера"
         },
-        "waterway": {
-            "name": "\u0412\u043e\u0434\u0438"
-        },
-        "waterway/canal": {
-            "name": "\u041a\u0430\u043d\u0430\u043b"
-        },
-        "waterway/dam": {
-            "name": "\u042f\u0437\u043e\u0432\u0438\u0440\u043d\u0430 \u0441\u0442\u0435\u043d\u0430"
-        },
-        "waterway/ditch": {
-            "name": "\u041a\u0430\u043d\u0430\u0432\u043a\u0430"
-        },
-        "waterway/drain": {
-            "name": "\u041e\u0442\u0432\u043e\u0434\u043d\u0438\u0442\u0435\u043b\u0435\u043d \u043a\u0430\u043d\u0430\u043b"
-        },
-        "waterway/river": {
-            "name": "\u0420\u0435\u043a\u0430"
-        },
-        "waterway/riverbank": {
-            "name": "\u0420\u0435\u0447\u0435\u043d \u0431\u0440\u044f\u0433"
+        "leisure/swimming_pool": {
+            "name": "Плувен басейн"
         },
         "waterway/stream": {
-            "name": "\u041f\u043e\u0442\u043e\u043a"
+            "name": "Поток"
+        },
+        "railway": {
+            "name": "ЖП транспорт"
+        },
+        "amenity/library": {
+            "name": "Библиотека"
+        },
+        "shop/stationery": {
+            "name": "Магазин за канцеларски стоки"
+        },
+        "highway/secondary_link": {
+            "name": "Връзка с второкласен път"
+        },
+        "aeroway/helipad": {
+            "name": "Хеликоптерна площадка"
+        },
+        "leisure/slipway": {
+            "name": "Хелинг"
+        },
+        "highway/living_street": {
+            "name": "Жилищна улица"
+        },
+        "power/sub_station": {
+            "name": "Подстанция"
+        },
+        "highway/motorway": {
+            "name": "Автомагистрала"
+        },
+        "natural/bay": {
+            "name": "Залив"
+        },
+        "aeroway/runway": {
+            "name": "Летателна писта"
+        },
+        "railway/monorail": {
+            "name": "Монорелсов път"
+        },
+        "shop/supermarket": {
+            "name": "Супермаркет"
+        },
+        "shop/bicycle": {
+            "name": "Магазин за велосипеди"
+        },
+        "barrier/city_wall": {
+            "name": "Градска стена"
+        },
+        "tourism/guest_house": {
+            "name": "Къща за гости"
+        },
+        "shop/garden_centre": {
+            "name": "Градински център"
+        },
+        "barrier/hedge": {
+            "name": "Жив плет"
+        },
+        "boundary/administrative": {
+            "name": "Административна граница"
+        },
+        "amenity": {
+            "name": "Услуги"
+        },
+        "shop/beauty": {
+            "name": "Козметик"
+        },
+        "amenity/fuel": {
+            "name": "Бензиностанция"
+        },
+        "type/route/tram": {
+            "name": "Трамваен маршрут"
+        },
+        "leisure/pitch/american_football": {
+            "name": "Игрище за американски футбол"
+        },
+        "waterway/canal": {
+            "name": "Канал"
+        },
+        "place/island": {
+            "name": "Остров"
+        },
+        "shop/fishmonger": {
+            "name": "Магазин за риба"
+        },
+        "man_made/pier": {
+            "name": "Кей"
+        },
+        "landuse/orchard": {
+            "name": "Овощна градина "
+        },
+        "shop/farm": {
+            "name": "Щанд за плодове и зеленчуци"
+        },
+        "type/restriction/no_right_turn": {
+            "name": "Без десен завой"
+        },
+        "shop/car": {
+            "name": "Автомобили"
+        },
+        "highway/road": {
+            "name": "Непроучен път"
+        },
+        "address": {
+            "name": "Адрес"
+        },
+        "highway/primary_link": {
+            "name": "Връзка с първокласен път"
+        },
+        "man_made/water_works": {
+            "name": "Помпена станция"
+        },
+        "shop/greengrocer": {
+            "name": "Плод-зеленчук"
+        },
+        "amenity/pub": {
+            "name": "Пъб"
+        },
+        "man_made/breakwater": {
+            "name": "Вълнолом"
+        },
+        "railway/abandoned": {
+            "name": "Изоставена железопътна линия"
+        },
+        "shop/shoes": {
+            "name": "Магазин за обувки"
+        },
+        "type/restriction": {
+            "name": "Ограничение"
+        },
+        "type/route/road": {
+            "name": "Път"
+        },
+        "shop/hairdresser": {
+            "name": "Фризьорски салон"
+        },
+        "shop/mall": {
+            "name": "Мол"
+        },
+        "amenity/swimming_pool": {
+            "name": "Плувен басейн"
+        },
+        "barrier/wall": {
+            "name": "Стена"
+        },
+        "natural/beach": {
+            "name": "Плаж"
+        },
+        "landuse/vineyard": {
+            "name": "Лозе"
+        },
+        "man_made/tower": {
+            "name": "Кула"
+        },
+        "vertex": {
+            "name": "Друг"
+        },
+        "shop/florist": {
+            "name": "Магазин за цветя"
+        },
+        "type/boundary": {
+            "name": "Граница"
+        },
+        "type/route/ferry": {
+            "name": "Фериботна връзка"
+        },
+        "amenity/atm": {
+            "name": "Банкомат"
+        },
+        "aeroway/taxiway": {
+            "name": "Рольожка"
+        },
+        "place/locality": {
+            "name": "Местност"
+        },
+        "amenity/courthouse": {
+            "name": "Съд"
+        },
+        "tourism/hostel": {
+            "name": "Хостел"
+        },
+        "leisure/pitch/volleyball": {
+            "name": "Волейболно игрище"
+        },
+        "place/hamlet": {
+            "name": "Махала"
+        },
+        "type/route": {
+            "name": "Маршрут"
+        },
+        "highway": {
+            "name": "Път"
+        },
+        "area": {
+            "name": "Площ"
+        },
+        "aeroway/hangar": {
+            "name": "Хангар"
+        },
+        "man_made/wastewater_plant": {
+            "name": "Пречиствателна станция"
+        },
+        "amenity/theatre": {
+            "name": "Театър"
+        },
+        "man_made/lighthouse": {
+            "name": "Морски фар"
+        },
+        "type/route/train": {
+            "name": "Железопътен маршрут"
+        },
+        "barrier/fence": {
+            "name": "Ограда"
+        },
+        "landuse/cemetery": {
+            "name": "Гробищен парк"
+        },
+        "railway/rail": {
+            "name": "ЖП линия"
+        },
+        "highway/motorway_link": {
+            "name": "Автомагистрална връзка"
+        },
+        "natural/water/reservoir": {
+            "name": "Язовир"
+        },
+        "amenity/fountain": {
+            "name": "Фонтан"
+        },
+        "place/isolated_dwelling": {
+            "name": "Изолирано жилище"
+        },
+        "railway/disused": {
+            "name": "Закрита железопътна линия"
+        },
+        "shop/doityourself": {
+            "name": "Магазин "Направи си сам""
+        },
+        "amenity/taxi": {
+            "name": "Такси стоянка"
+        },
+        "landuse/quarry": {
+            "name": "Кариера"
+        },
+        "landuse/basin": {
+            "name": "Басейн"
+        },
+        "amenity/grave_yard": {
+            "name": "Гробище"
+        },
+        "historic/ruins": {
+            "name": "Руини"
+        },
+        "natural/scrub": {
+            "name": "Шубрак"
+        },
+        "man_made/water_tower": {
+            "name": "Водна кула"
+        },
+        "highway/secondary": {
+            "name": "Второкласен път"
+        },
+        "railway/subway_entrance": {
+            "name": "Вход на метростанция"
+        },
+        "man_made/cutline": {
+            "name": "Просека"
+        },
+        "shop": {
+            "name": "Магазин"
+        },
+        "natural/heath": {
+            "name": "Малки храсти"
+        },
+        "tourism/caravan_site": {
+            "name": "Паркинг за каравани"
+        },
+        "natural/spring": {
+            "name": "Извор"
+        },
+        "man_made/pipeline": {
+            "name": "Тръбопровод"
+        },
+        "shop/furniture": {
+            "name": "Мебелен магазин"
+        },
+        "leisure/pitch": {
+            "name": "Спортно игрище"
+        },
+        "tourism/hotel": {
+            "name": "Хотел"
+        },
+        "shop/bakery": {
+            "name": "Пекарна"
+        },
+        "historic/monument": {
+            "name": "Паметник"
+        },
+        "emergency/phone": {
+            "name": "Телефон за спешна помощ"
+        },
+        "amenity/bicycle_parking": {
+            "name": "Паркинг за велосипеди"
+        },
+        "shop/deli": {
+            "name": "Магазин за деликатеси"
+        },
+        "type/route/bicycle": {
+            "name": "Велосипеден маршрут"
+        },
+        "waterway/ditch": {
+            "name": "Канавка"
+        },
+        "shop/houseware": {
+            "name": "Домашни потреби"
+        },
+        "leisure/pitch/soccer": {
+            "name": "Футболно игрище"
+        },
+        "type/multipolygon": {
+            "name": "Мултиполигон"
+        },
+        "highway/service/drive-through": {
+            "name": "Обслужване без напускане на автомобила"
+        },
+        "shop/vacant": {
+            "name": "Свободна търговска площ"
+        },
+        "historic": {
+            "name": "Място с историческо значение"
+        },
+        "shop/electronics": {
+            "name": "Магазин за електроника"
+        },
+        "waterway": {
+            "name": "Води"
+        },
+        "amenity/place_of_worship/buddhist": {
+            "name": "Будистки храм"
+        },
+        "amenity/cinema": {
+            "name": "Кино"
+        },
+        "type/route/bus": {
+            "name": "Автобусен маршрут"
+        },
+        "type/route_master": {
+            "name": "Маршрутна схема"
+        },
+        "natural/wood": {
+            "name": "Гора"
+        },
+        "amenity/waste_basket": {
+            "name": "Кош за боклук"
+        },
+        "leisure/playground": {
+            "name": "Детска площадка"
+        },
+        "amenity/telephone": {
+            "name": "Телефон"
+        },
+        "aeroway/apron": {
+            "name": "Стоянка за самолети"
+        },
+        "leisure/stadium": {
+            "name": "Стадион"
+        },
+        "shop/optician": {
+            "name": "Оптика"
+        },
+        "amenity/drinking_water": {
+            "name": "Чешма"
+        },
+        "highway/mini_roundabout": {
+            "name": "Малко кръгово кръстовище"
+        },
+        "type/route/foot": {
+            "name": "Пешеходен маршрут"
+        },
+        "barrier/block": {
+            "name": "Бетонен блок"
+        },
+        "barrier/kissing_gate": {
+            "name": "Препятствие за животни"
+        },
+        "shop/hifi": {
+            "name": "Магазин за аудиотехника"
+        },
+        "type/restriction/no_u_turn": {
+            "name": "Без обратен завой"
+        },
+        "amenity/townhall": {
+            "name": "Кметство"
+        },
+        "relation": {
+            "name": "Релация"
+        },
+        "highway/service/parking_aisle": {
+            "name": "Път в паркинг"
+        },
+        "natural/water": {
+            "name": "Водна площ"
+        },
+        "shop/mobile_phone": {
+            "name": "Магазин за мобилни телефони"
+        },
+        "barrier/cycle_barrier": {
+            "name": "Велосипедна преграда"
+        },
+        "shop/sports": {
+            "name": "Спортен магазин"
+        },
+        "place/town": {
+            "name": "Град под 100 000"
+        },
+        "power/line": {
+            "name": "Електропровод"
+        },
+        "power/pole": {
+            "name": "Електрически стълб"
+        },
+        "highway/tertiary_link": {
+            "name": "Връзка с третокласен път"
+        },
+        "tourism/information": {
+            "name": "Информация"
+        },
+        "natural": {
+            "name": "Природа"
+        },
+        "amenity/post_box": {
+            "name": "Пощенска кутия"
+        },
+        "shop/laundry": {
+            "name": "Пералня"
+        },
+        "natural/peak": {
+            "name": "Връх"
+        },
+        "highway/tertiary": {
+            "name": "Третокласен път"
+        },
+        "natural/water/lake": {
+            "name": "Езеро"
+        },
+        "shop/video": {
+            "name": "Видеотека"
+        },
+        "tourism/artwork": {
+            "name": "Произведение на изкуството"
+        },
+        "amenity/bank": {
+            "name": "Банка"
+        },
+        "railway/tram": {
+            "name": "Трамвайни релси"
+        },
+        "landuse/farmyard": {
+            "name": "Селскостопански двор"
+        },
+        "highway/cycleway": {
+            "name": "Велоалея"
+        },
+        "shop/hardware": {
+            "name": "Железария"
+        },
+        "amenity/car_sharing": {
+            "name": "Споделяне на коли"
+        },
+        "shop/travel_agency": {
+            "name": "Туристическа агенция"
+        },
+        "tourism/zoo": {
+            "name": "Зоологическа градина"
+        },
+        "shop/computer": {
+            "name": "Компютърен магазин"
+        },
+        "amenity/restaurant": {
+            "name": "Ресторант"
+        },
+        "landuse/grass": {
+            "name": "Трева"
+        },
+        "natural/grassland": {
+            "name": "Степ"
+        },
+        "type/route/detour": {
+            "name": "Обходен маршрут"
+        },
+        "amenity/police": {
+            "name": "Полиция"
+        },
+        "highway/turning_circle": {
+            "name": "Място за обръщане"
+        },
+        "highway/service/driveway": {
+            "name": "Алея за коли към жилище"
+        },
+        "leisure/pitch/basketball": {
+            "name": "Баскетболно игрище"
+        },
+        "tourism": {
+            "name": "Туризъм"
+        },
+        "amenity/car_wash": {
+            "name": "Автомивка"
+        },
+        "highway/street_lamp": {
+            "name": "Улична лампа"
+        },
+        "shop/clothes": {
+            "name": "Магазин за дрехи"
+        },
+        "shop/tyres": {
+            "name": "Магазин за автомобилни гуми"
+        },
+        "tourism/theme_park": {
+            "name": "Увеселителен парк"
+        },
+        "aeroway/aerodrome": {
+            "name": "Летище"
+        },
+        "amenity/bicycle_rental": {
+            "name": "Наем на велосипеди"
+        },
+        "shop/gift": {
+            "name": "Магазин за подаръци"
+        },
+        "waterway/riverbank": {
+            "name": "Речен бряг"
+        },
+        "place": {
+            "name": "Населени места"
+        },
+        "power": {
+            "name": "Енергетика"
+        },
+        "leisure": {
+            "name": "Отдих"
+        },
+        "shop/music": {
+            "name": "Музикален магазин"
+        },
+        "amenity/post_office": {
+            "name": "Поща"
+        },
+        "barrier/toll_booth": {
+            "name": "Будка за тол такса"
+        },
+        "building/house": {
+            "name": "Къща"
+        },
+        "leisure/marina": {
+            "name": "Яхт клуб"
+        },
+        "waterway/dam": {
+            "name": "Язовирна стена"
+        },
+        "amenity/bar": {
+            "name": "Бар"
+        },
+        "barrier/gate": {
+            "name": "Портал"
+        },
+        "tourism/museum": {
+            "name": "Музей"
+        },
+        "barrier/stile": {
+            "name": "Стълби за преминаване през ограда"
+        },
+        "highway/bridleway": {
+            "name": "Конска пътека"
+        },
+        "shop/boutique": {
+            "name": "Бутик"
+        },
+        "shop/motorcycle": {
+            "name": "Магазин за мотоциклети"
+        },
+        "shop/variety_store": {
+            "name": "Смесен магазин"
+        },
+        "leisure/pitch/tennis": {
+            "name": "Тенис корт"
+        },
+        "waterway/river": {
+            "name": "Река"
+        },
+        "highway/trunk": {
+            "name": "Скоростен път"
+        },
+        "railway/subway": {
+            "name": "Метро"
+        },
+        "shop/butcher": {
+            "name": "Колбаси"
+        },
+        "barrier/bollard": {
+            "name": "Колче"
+        },
+        "office": {
+            "name": "Офис"
+        },
+        "tourism/picnic_site": {
+            "name": "Място за пикник"
+        },
+        "leisure/golf_course": {
+            "name": "Голф игрище"
+        },
+        "amenity/fire_station": {
+            "name": "Пожарна"
+        },
+        "barrier": {
+            "name": "Преграда"
+        },
+        "barrier/entrance": {
+            "name": "Вход"
+        },
+        "historic/castle": {
+            "name": "Замък"
+        },
+        "natural/water/pond": {
+            "name": "Малко езеро"
+        },
+        "shop/car_repair": {
+            "name": "Сервиз автомобили"
+        },
+        "highway/path": {
+            "name": "Пътека"
+        },
+        "historic/archaeological_site": {
+            "name": "Археологически обект"
+        },
+        "shop/beverages": {
+            "name": "Магазин за алкохол и цигари"
+        },
+        "amenity/bench": {
+            "name": "Пейка"
+        },
+        "shop/chemist": {
+            "name": "Дрогерия"
+        },
+        "landuse/meadow": {
+            "name": "Пасище"
+        },
+        "shop/convenience": {
+            "name": "Магазин за хранителни стоки"
+        },
+        "amenity/marketplace": {
+            "name": "Пазар"
+        },
+        "power/tower": {
+            "name": "Жере"
+        },
+        "amenity/toilets": {
+            "name": "Тоалетна"
+        },
+        "highway/service": {
+            "name": "Сервизна улица"
+        },
+        "waterway/drain": {
+            "name": "Отводнителен канал"
+        },
+        "highway/residential": {
+            "name": "Улица"
+        },
+        "amenity/place_of_worship": {
+            "name": "Религиозен храм"
+        },
+        "historic/wayside_shrine": {
+            "name": "Крайпътен параклис"
+        },
+        "barrier/retaining_wall": {
+            "name": "Подпорна стена"
+        },
+        "type/boundary/administrative": {
+            "name": "Административна граница"
+        },
+        "highway/traffic_signals": {
+            "name": "Светофари"
+        },
+        "amenity/embassy": {
+            "name": "Посолство"
+        },
+        "shop/toys": {
+            "name": "Магазин за играчки"
+        },
+        "place/village": {
+            "name": "Село"
+        },
+        "line": {
+            "name": "Линия"
+        },
+        "shop/lottery": {
+            "name": "Лотарийни билети"
+        },
+        "amenity/cafe": {
+            "name": "Кафене"
+        },
+        "point": {
+            "name": "Точка"
+        },
+        "highway/service/emergency_access": {
+            "name": "За достъп при спешни случаи"
         },
         "waterway/weir": {
-            "name": "\u041f\u0440\u0435\u043b\u0438\u0432\u043d\u0438\u043a"
+            "name": "Преливник"
+        },
+        "power/transformer": {
+            "name": "Трансформатор"
+        },
+        "shop/pet": {
+            "name": "Зоо магазин"
+        },
+        "natural/wetland": {
+            "name": "Блатиста зона"
+        },
+        "man_made/survey_point": {
+            "name": "Геодезическа точка"
+        },
+        "natural/tree": {
+            "name": "Дърво"
+        },
+        "type/route/power": {
+            "name": "Трасе на електропровод"
+        },
+        "tourism/attraction": {
+            "name": "Туристическа атракция"
+        },
+        "highway/service/alley": {
+            "name": "Тясна уличка между имоти"
+        },
+        "shop/department_store": {
+            "name": "Универсален магазин"
+        },
+        "historic/wayside_cross": {
+            "name": "Крайпътен кръст"
+        },
+        "man_made": {
+            "name": "Съоръжения"
+        },
+        "shop/car_parts": {
+            "name": "Авточасти"
+        },
+        "tourism/alpine_hut": {
+            "name": "Хижа"
+        },
+        "natural/cliff": {
+            "name": "Скала"
+        },
+        "shop/alcohol": {
+            "name": "Магазин за алкохол"
+        },
+        "tourism/viewpoint": {
+            "name": "Точка с хубава гледка"
+        },
+        "landuse/construction": {
+            "name": "Строеж"
+        },
+        "highway/trunk_link": {
+            "name": "Връзка със скоростен път"
+        },
+        "highway/footway": {
+            "name": "Пешеходна алея"
+        },
+        "natural/coastline": {
+            "name": "Брегова линия"
+        },
+        "natural/glacier": {
+            "name": "Ледник"
+        },
+        "aeroway": {
+            "name": "Въздухоплаване"
         }
     }
 }

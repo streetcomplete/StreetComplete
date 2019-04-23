@@ -1,1919 +1,1919 @@
 {
     "presets": {
-        "address": {
-            "name": "\u0410\u0434\u0440\u0435\u0441\u0430"
-        },
-        "advertising/billboard": {
-            "name": "\u0420\u0435\u043a\u043b\u0430\u043c\u043d\u0430 \u0442\u0430\u0431\u043b\u0430"
-        },
-        "aerialway": {
-            "name": "\u0416\u0438\u0447\u043d\u0438\u0446\u0430"
-        },
-        "aerialway/cable_car": {
-            "name": "\u0416\u0438\u0447\u043d\u0438\u0447\u043a\u0430 \u043a\u0430\u0431\u0438\u043d\u0430"
-        },
-        "aerialway/chair_lift": {
-            "name": "\u0416\u0438\u0447\u043d\u0438\u0447\u043a\u0430 \u043a\u043b\u0443\u043f\u0430"
-        },
-        "aerialway/gondola": {
-            "name": "\u0413\u043e\u043d\u0434\u043e\u043b\u0430"
-        },
-        "aerialway/magic_carpet": {
-            "name": "\u0412\u043e\u043b\u0448\u0435\u0431\u0435\u043d \u043a\u0438\u043b\u0438\u043c"
-        },
-        "aerialway/platter": {
-            "name": "\u0421\u043a\u0438\u0458\u0430\u0447\u043a\u0438 \u0432\u043b\u0435\u043a\u0430\u0447"
-        },
-        "aerialway/pylon": {
-            "name": "\u0416\u0438\u0447\u043d\u0438\u0447\u043a\u0438 \u0434\u0430\u043b\u0435\u043a\u0443\u0432\u043e\u0434"
-        },
-        "aerialway/rope_tow": {
-            "name": "\u0412\u043b\u0435\u043a\u0430\u0447 \u0441\u043e \u043f\u043e\u0458\u0430\u0441"
-        },
-        "aerialway/station": {
-            "name": "\u0416\u0438\u0447\u043d\u0438\u0447\u043a\u0430 \u0441\u0442\u0430\u043d\u0438\u0446\u0430"
+        "office/administrative": {
+            "name": "Администрација"
         },
         "aerialway/t-bar": {
-            "name": "\u0412\u043b\u0435\u043a\u0430\u0447 \u201e\u0422\u201c"
-        },
-        "aeroway": {
-            "name": "\u0412\u043e\u0437\u0434\u0443\u0445\u043e\u043f\u043b\u043e\u0432\u043d\u0430 \u043f\u043e\u0441\u0442\u0440\u043e\u0458\u043a\u0430"
-        },
-        "aeroway/aerodrome": {
-            "name": "\u0410\u0435\u0440\u043e\u0434\u0440\u043e\u043c"
-        },
-        "aeroway/apron": {
-            "name": "\u0412\u043e\u0437\u0434\u0443\u0445\u043f\u043b\u043e\u0432\u0435\u043d \u043f\u0435\u0440\u043e\u043d"
-        },
-        "aeroway/hangar": {
-            "name": "\u0425\u0430\u043d\u0433\u0430\u0440"
-        },
-        "aeroway/helipad": {
-            "name": "\u0425\u0435\u043b\u0438\u043a\u043e\u043f\u0442\u0435\u0440\u0441\u043a\u043e \u0441\u043b\u0435\u0442\u0443\u0432\u0430\u043b\u0438\u0448\u0442\u0435"
-        },
-        "aeroway/runway": {
-            "name": "\u041f\u0438\u0441\u0442\u0430"
-        },
-        "aeroway/taxiway": {
-            "name": "\u0412\u043e\u0437\u0434\u0443\u0445\u043e\u043f\u043b\u043e\u0432\u0435\u043d \u043f\u0440\u0438\u043e\u0434"
-        },
-        "amenity": {
-            "name": "\u0423\u0441\u043b\u0443\u0436\u043d\u0438 \u043e\u0431\u0458\u0435\u043a\u0442\u0438"
-        },
-        "amenity/arts_centre": {
-            "name": "\u0414\u043e\u043c \u043d\u0430 \u0443\u043c\u0435\u0442\u043d\u043e\u0441\u0442\u0430"
-        },
-        "amenity/atm": {
-            "name": "\u0411\u0430\u043d\u043a\u043e\u043c\u0430\u0442"
-        },
-        "amenity/bank": {
-            "name": "\u0411\u0430\u043d\u043a\u0430"
-        },
-        "amenity/bar": {
-            "name": "\u0411\u0430\u0440"
-        },
-        "amenity/bbq": {
-            "name": "\u0421\u043a\u0430\u0440\u0430"
-        },
-        "amenity/bench": {
-            "name": "\u041a\u043b\u0443\u043f\u0430"
-        },
-        "amenity/bicycle_parking": {
-            "name": "\u0412\u0435\u043b\u043e\u0441\u0438\u043f\u0435\u0434\u0441\u043a\u043e \u043f\u0430\u0440\u043a\u0438\u0440\u0430\u043b\u0438\u0448\u0442\u0435"
-        },
-        "amenity/bicycle_rental": {
-            "name": "\u0418\u0437\u043d\u0430\u0458\u043c\u0443\u0432\u0430\u045a\u0435 \u0432\u0435\u043b\u043e\u0441\u0438\u043f\u0435\u0434\u0438"
-        },
-        "amenity/bicycle_repair_station": {
-            "name": "\u0414\u0440\u0436\u0430\u0447 \u0437\u0430 \u043f\u043e\u043f\u0440\u0430\u0432\u043a\u0430 \u043d\u0430 \u0432\u0435\u043b\u043e\u0441\u0438\u043f\u0435\u0434\u0438"
-        },
-        "amenity/boat_rental": {
-            "name": "\u0418\u0437\u043d\u0430\u0458\u043c\u0443\u0432\u0430\u045a\u0435 \u0447\u0430\u043c\u0446\u0438"
-        },
-        "amenity/bureau_de_change": {
-            "name": "\u041c\u0435\u043d\u0443\u0432\u0430\u0447\u043d\u0438\u0446\u0430"
-        },
-        "amenity/cafe": {
-            "name": "\u041a\u0430\u0444\u0435\u0442\u0435\u0440\u0438\u0458\u0430"
-        },
-        "amenity/car_rental": {
-            "name": "\u0418\u0437\u043d\u0430\u0458\u043c\u0443\u0432\u0430\u045a\u0435 \u0430\u0432\u0442\u043e\u043c\u043e\u0431\u0438\u043b\u0438"
-        },
-        "amenity/car_sharing": {
-            "name": "\u041a\u0440\u0430\u0442\u043a\u043e\u0440\u043e\u0447\u043d\u043e \u0438\u0437\u043d\u0430\u0458\u043c\u0443\u0432\u0430\u045a\u0435 \u043d\u0430 \u0430\u0432\u0442\u043e\u043c\u043e\u0431\u0438\u043b\u0438"
-        },
-        "amenity/car_wash": {
-            "name": "\u0410\u0432\u0442\u043e\u043f\u0435\u0440\u0430\u043b\u043d\u0430"
-        },
-        "amenity/casino": {
-            "name": "\u041a\u043e\u0446\u043a\u0430\u0440\u043d\u0438\u0446\u0430"
-        },
-        "amenity/charging_station": {
-            "name": "\u0410\u043a\u0443\u043c\u0443\u043b\u0430\u0442\u043e\u0440\u0441\u043a\u0430 \u0441\u0442\u0430\u043d\u0438\u0446\u0430"
-        },
-        "amenity/childcare": {
-            "name": "\u0414\u0435\u0442\u0441\u043a\u0430 \u0433\u0440\u0430\u0434\u0438\u043d\u043a\u0430"
-        },
-        "amenity/cinema": {
-            "name": "\u041a\u0438\u043d\u043e"
-        },
-        "amenity/clinic": {
-            "name": "\u041a\u043b\u0438\u043d\u0438\u043a\u0430"
-        },
-        "amenity/clock": {
-            "name": "\u0427\u0430\u0441\u043e\u0432\u043d\u0438\u043a"
-        },
-        "amenity/college": {
-            "name": "\u0421\u0440\u0435\u0434\u043d\u043e\u0448\u043a\u043e\u043b\u0441\u043a\u0438 \u0434\u0432\u043e\u0440"
-        },
-        "amenity/community_centre": {
-            "name": "\u041c\u0435\u0441\u043d\u0430 \u0437\u0430\u0435\u0434\u043d\u0438\u0446\u0430"
-        },
-        "amenity/compressed_air": {
-            "name": "\u041a\u043e\u043c\u043f\u0440\u0435\u0441\u043e\u0440"
-        },
-        "amenity/courthouse": {
-            "name": "\u0421\u0443\u0434"
-        },
-        "amenity/crematorium": {
-            "name": "\u041a\u0440\u0435\u043c\u0430\u0442\u043e\u0440\u0438\u0443\u043c"
-        },
-        "amenity/dentist": {
-            "name": "\u0417\u0430\u0431\u0430\u0440"
-        },
-        "amenity/doctors": {
-            "name": "\u041b\u0435\u043a\u0430\u0440"
-        },
-        "amenity/dojo": {
-            "name": "\u0423\u0447\u0438\u043b\u0438\u0448\u0442\u0435 \u0437\u0430 \u0431\u043e\u0440\u0435\u0447\u043a\u0438 \u0432\u0435\u0448\u0442\u0438\u043d\u0438"
-        },
-        "amenity/drinking_water": {
-            "name": "\u041f\u0438\u0432\u043a\u0430 \u0432\u043e\u0434\u0430"
-        },
-        "amenity/embassy": {
-            "name": "\u0410\u043c\u0431\u0430\u0441\u0430\u0434\u0430"
-        },
-        "amenity/fast_food": {
-            "name": "\u0411\u0440\u0437\u0430 \u0445\u0440\u0430\u043d\u0430"
-        },
-        "amenity/fire_station": {
-            "name": "\u041f\u0440\u043e\u0442\u0438\u0432\u043f\u043e\u0436\u0430\u0440\u043d\u0430 \u0441\u0442\u0430\u043d\u0438\u0446\u0430"
-        },
-        "amenity/food_court": {
-            "name": "\u0421\u0430\u043b\u0430 \u0437\u0430 \u0431\u0440\u0437\u0430 \u0445\u0440\u0430\u043d\u0430"
-        },
-        "amenity/fountain": {
-            "name": "\u0427\u0435\u0448\u043c\u0430"
-        },
-        "amenity/fuel": {
-            "name": "\u0411\u0435\u043d\u0437\u0438\u043d\u0441\u043a\u0430 \u043f\u0443\u043c\u043f\u0430"
-        },
-        "amenity/grave_yard": {
-            "name": "\u0413\u0440\u043e\u0431\u0438\u0448\u0442\u0430"
-        },
-        "amenity/grit_bin": {
-            "name": "\u041a\u0443\u0442\u0438\u0458\u0430 \u0437\u0430 \u043f\u043e\u043f\u0435\u0441\u043a\u0443\u0432\u0430\u045a\u0435"
-        },
-        "amenity/hospital": {
-            "name": "\u0411\u043e\u043b\u043d\u0438\u0447\u043a\u0438 \u0434\u0432\u043e\u0440"
-        },
-        "amenity/hunting_stand": {
-            "name": "\u041b\u043e\u0432\u0435\u043d \u0432\u0438\u0434\u0438\u043a\u043e\u0432\u0435\u0446"
-        },
-        "amenity/ice_cream": {
-            "name": "\u0421\u043b\u0430\u0434\u043e\u043b\u0435\u0434\u045f\u0438\u043b\u043d\u0438\u0446\u0430"
-        },
-        "amenity/internet_cafe": {
-            "name": "\u0418\u043d\u0442\u0435\u0440\u043d\u0435\u0442-\u043a\u0430\u0444\u0443\u043b\u0435"
-        },
-        "amenity/kindergarten": {
-            "name": "\u0414\u0432\u043e\u0440 \u043d\u0430 \u0434\u0435\u0442\u0441\u043a\u0430 \u0433\u0440\u0430\u0434\u0438\u043d\u043a\u0430"
-        },
-        "amenity/library": {
-            "name": "\u0411\u0438\u0431\u043b\u0438\u043e\u0442\u0435\u043a\u0430"
-        },
-        "amenity/marketplace": {
-            "name": "\u041f\u0430\u0437\u0430\u0440"
-        },
-        "amenity/motorcycle_parking": {
-            "name": "\u041f\u0430\u0440\u043a\u0438\u0440\u0430\u043b\u0438\u0448\u0442\u0435 \u0437\u0430 \u043c\u043e\u0442\u043e\u0446\u0438\u043a\u043b\u0438"
-        },
-        "amenity/nightclub": {
-            "name": "\u041d\u043e\u045c\u0435\u043d \u043a\u043b\u0443\u0431"
-        },
-        "amenity/parking_entrance": {
-            "name": "\u0412\u043b\u0435\u0437/\u0438\u0437\u043b\u0435\u0437 \u043d\u0430 \u043f\u043e\u043a\u0440\u0438\u0435\u043d\u043e \u043f\u0430\u0440\u043a\u0438\u0440\u0430\u043b\u0438\u0448\u0442\u0435"
-        },
-        "amenity/parking_space": {
-            "name": "\u041f\u0430\u0440\u043a\u0438\u043d\u0433-\u043c\u0435\u0441\u0442\u043e"
-        },
-        "amenity/place_of_worship": {
-            "name": "\u0412\u0435\u0440\u0441\u043a\u0438 \u043e\u0431\u0458\u0435\u043a\u0442"
-        },
-        "amenity/place_of_worship/buddhist": {
-            "name": "\u0411\u0443\u0434\u0438\u0441\u0442\u0438\u0447\u043a\u0438 \u0445\u0440\u0430\u043c"
-        },
-        "amenity/planetarium": {
-            "name": "\u041f\u043b\u0430\u043d\u0435\u0442\u0430\u0440\u0438\u0443\u043c"
-        },
-        "amenity/police": {
-            "name": "\u041f\u043e\u043b\u0438\u0446\u0438\u0458\u0430"
-        },
-        "amenity/post_box": {
-            "name": "\u041f\u043e\u0448\u0442\u0435\u043d\u0441\u043a\u043e \u0441\u0430\u043d\u0434\u0430\u0447\u0435"
-        },
-        "amenity/post_office": {
-            "name": "\u041f\u043e\u0448\u0442\u0430"
-        },
-        "amenity/prison": {
-            "name": "\u0417\u0430\u0442\u0432\u043e\u0440\u0441\u043a\u0438 \u0434\u0432\u043e\u0440"
-        },
-        "amenity/pub": {
-            "name": "\u041f\u0430\u0431"
-        },
-        "amenity/public_bath": {
-            "name": "\u0408\u0430\u0432\u043d\u0430 \u0431\u0430\u045a\u0430"
-        },
-        "amenity/public_bookcase": {
-            "name": "\u0408\u0430\u0432\u0435\u043d \u0448\u043a\u0430\u0444 \u0437\u0430 \u043a\u043d\u0438\u0433\u0438"
-        },
-        "amenity/ranger_station": {
-            "name": "\u0428\u0443\u043c\u0430\u0440\u0441\u043a\u0430 \u043a\u0443\u045c\u0430\u0440\u043a\u0430"
-        },
-        "amenity/recycling_centre": {
-            "name": "\u0420\u0435\u0446\u0438\u043a\u043b\u0430\u0440\u043d\u0438\u0446\u0430"
-        },
-        "amenity/register_office": {
-            "name": "\u041c\u0430\u0442\u0438\u0447\u043d\u0430 \u0441\u043b\u0443\u0436\u0431\u0430"
-        },
-        "amenity/restaurant": {
-            "name": "\u0420\u0435\u0441\u0442\u043e\u0440\u0430\u043d"
-        },
-        "amenity/sanitary_dump_station": {
-            "name": "\u0418\u0441\u0444\u0440\u043b\u0430\u045a\u0435 \u0442\u0440\u0430\u0458\u043b\u0435\u0440\u0441\u043a\u0438 \u0444\u0435\u043a\u0430\u043b\u0438\u0438"
-        },
-        "amenity/school": {
-            "name": "\u0423\u0447\u0438\u043b\u0438\u0448\u0442\u0435\u043d \u0434\u0432\u043e\u0440"
-        },
-        "amenity/shelter": {
-            "name": "\u0417\u0430\u0441\u043e\u043b\u043d\u0438\u0448\u0442\u0435"
-        },
-        "amenity/social_facility": {
-            "name": "\u0421\u043e\u0446\u0438\u0458\u0430\u043b\u043d\u0430 \u0441\u043b\u0443\u0436\u0431\u0430"
-        },
-        "amenity/social_facility/food_bank": {
-            "name": "\u0411\u0430\u043d\u043a\u0430 \u043d\u0430 \u0445\u0440\u0430\u043d\u0430"
-        },
-        "amenity/social_facility/group_home": {
-            "name": "\u0421\u0442\u0430\u0440\u0435\u0447\u043a\u0438 \u0434\u043e\u043c"
-        },
-        "amenity/social_facility/homeless_shelter": {
-            "name": "\u0417\u0430\u0441\u043e\u043b\u043d\u0438\u0448\u0442\u0435 \u0437\u0430 \u0431\u0435\u0437\u0434\u043e\u043c\u043d\u0438\u0446\u0438"
-        },
-        "amenity/studio": {
-            "name": "\u0421\u0442\u0443\u0434\u0438\u043e"
-        },
-        "amenity/swimming_pool": {
-            "name": "\u0411\u0430\u0437\u0435\u043d"
-        },
-        "amenity/taxi": {
-            "name": "\u0422\u0430\u043a\u0441\u0438-\u043f\u043e\u0441\u0442\u043e\u0458\u043a\u0430"
-        },
-        "amenity/telephone": {
-            "name": "\u0422\u0435\u043b\u0435\u0444\u043e\u043d"
-        },
-        "amenity/theatre": {
-            "name": "\u0422\u0435\u0430\u0442\u0430\u0440"
-        },
-        "amenity/toilets": {
-            "name": "\u0422\u043e\u0430\u043b\u0435\u0442"
-        },
-        "amenity/townhall": {
-            "name": "\u0413\u0440\u0430\u0434\u0441\u043a\u0438 \u0434\u043e\u043c"
-        },
-        "amenity/university": {
-            "name": "\u0423\u043d\u0438\u0432\u0435\u0440\u0437\u0438\u0442\u0435\u0442\u0441\u043a\u0438 \u0434\u0432\u043e\u0440"
-        },
-        "amenity/vending_machine/cigarettes": {
-            "name": "\u0410\u0432\u0442\u043e\u043c\u0430\u0442 \u0437\u0430 \u0446\u0438\u0433\u0430\u0440\u0438"
-        },
-        "amenity/vending_machine/condoms": {
-            "name": "<\u043f\u0440\u0435\u0432\u0435\u0434\u0435\u0442\u0435 \u0441\u043e \u0438\u0441\u0442\u043e\u0437\u043d\u0430\u0447\u043d\u0438\u0446\u0438 \u0438\u043b\u0438 \u0441\u0440\u043e\u0434\u043d\u0438 \u043f\u043e\u0438\u043c\u0438 \u043d\u0430 \u201e\u0410\u0432\u0442\u043e\u043c\u0430\u0442 \u0437\u0430 \u043a\u043e\u043d\u0434\u043e\u043c\u0438\u201c, \u043e\u0434\u0434\u0435\u043b\u0435\u043d\u0438 \u0441\u043e \u0437\u0430\u043f\u0438\u0440\u043a\u0438>"
-        },
-        "amenity/vending_machine/drinks": {
-            "name": "\u0410\u0432\u0442\u043e\u043f\u0430\u0442 \u0437\u0430 \u043f\u0438\u0458\u0430\u043b\u0430\u0446\u0438"
-        },
-        "amenity/vending_machine/news_papers": {
-            "name": "<\u043f\u0440\u0435\u0432\u0435\u0434\u0435\u0442\u0435 \u0441\u043e \u0438\u0441\u0442\u043e\u0437\u043d\u0430\u0447\u043d\u0438\u0446\u0438 \u0438\u043b\u0438 \u0441\u0440\u043e\u0434\u043d\u0438 \u043f\u043e\u0438\u043c\u0438 \u043d\u0430 \u201e\u0410\u0432\u0442\u043e\u043c\u0430\u0442 \u0437\u0430 \u0432\u0435\u0441\u043d\u0438\u0446\u0438\u201c, \u043e\u0434\u0434\u0435\u043b\u0435\u043d\u0438 \u0441\u043e \u0437\u0430\u043f\u0438\u0440\u043a\u0438>"
-        },
-        "amenity/vending_machine/parking_tickets": {
-            "name": "\u041f\u0430\u0440\u043a\u0438\u043d\u0433-\u0430\u0432\u0442\u043e\u043c\u0430\u0442"
-        },
-        "amenity/vending_machine/public_transport_tickets": {
-            "name": "\u0410\u0432\u0442\u043e\u043c\u0430\u0442 \u0437\u0430 \u043f\u0440\u0435\u043e\u0434\u043d\u0438 \u0431\u0438\u043b\u0435\u0442\u0438"
-        },
-        "amenity/vending_machine/sweets": {
-            "name": "\u0410\u0432\u0442\u043e\u043c\u0430\u0442 \u0437\u0430 \u0443\u0436\u0438\u043d\u043a\u0438"
-        },
-        "amenity/veterinary": {
-            "name": "\u0412\u0435\u0442\u0435\u0440\u0438\u043d\u0430\u0440"
-        },
-        "amenity/waste_basket": {
-            "name": "\u041a\u043e\u0440\u043f\u0430 \u0437\u0430 \u043e\u0442\u043f\u0430\u0434\u043e\u0446\u0438"
-        },
-        "amenity/waste_disposal": {
-            "name": "\u041a\u043e\u043d\u0442\u0435\u0458\u043d\u0435\u0440"
-        },
-        "amenity/waste_transfer_station": {
-            "name": "\u041f\u0440\u0435\u0442\u043e\u0432\u0430\u0440\u043d\u0430 \u043e\u0442\u043f\u0430\u0434\u043d\u0430 \u0441\u0442\u0430\u043d\u0438\u0446\u0430"
-        },
-        "amenity/water_point": {
-            "name": "\u041f\u0438\u0432\u043a\u0430 \u0432\u043e\u0434\u0430 \u0437\u0430 \u0442\u0440\u0430\u0458\u043b\u0435\u0440\u0438"
-        },
-        "area": {
-            "name": "\u041f\u043e\u0434\u0440\u0430\u0447\u0458\u0435"
-        },
-        "area/highway": {
-            "name": "\u041f\u0430\u0442\u043d\u0430 \u043f\u043e\u0432\u0440\u0448\u0438\u043d\u0430"
-        },
-        "barrier": {
-            "name": "\u041f\u0440\u0435\u043f\u0440\u0435\u043a\u0430"
-        },
-        "barrier/block": {
-            "name": "\u0411\u043b\u043e\u043a"
-        },
-        "barrier/bollard": {
-            "name": "\u0414\u0438\u0440\u0435\u043a"
-        },
-        "barrier/cattle_grid": {
-            "name": "\u0420\u0435\u0448\u0435\u0442\u043a\u0430 \u0437\u0430 \u0434\u043e\u0431\u0438\u0442\u043e\u043a"
-        },
-        "barrier/city_wall": {
-            "name": "\u0413\u0440\u0430\u0434\u0441\u043a\u0438 \u0455\u0438\u0434"
-        },
-        "barrier/cycle_barrier": {
-            "name": "\u0412\u0435\u043b\u043e\u0441\u0438\u043f\u0435\u0434\u0441\u043a\u0430 \u043f\u0440\u0435\u043f\u0440\u0435\u043a\u0430"
-        },
-        "barrier/ditch": {
-            "name": "\u0420\u043e\u0432"
-        },
-        "barrier/entrance": {
-            "name": "\u0412\u043b\u0435\u0437"
-        },
-        "barrier/fence": {
-            "name": "\u041e\u0433\u0440\u0430\u0434\u0430"
-        },
-        "barrier/gate": {
-            "name": "\u041f\u043e\u0440\u0442\u0430"
-        },
-        "barrier/hedge": {
-            "name": "\u0416\u0438\u0432\u0430 \u043e\u0433\u0440\u0430\u0434\u0430"
-        },
-        "barrier/kissing_gate": {
-            "name": "\u0421\u0442\u043e\u043a\u043e\u043d\u0435\u043f\u0440\u043e\u043f\u0443\u0441\u043d\u0430 \u043f\u043e\u0440\u0442\u0430"
-        },
-        "barrier/lift_gate": {
-            "name": "\u041f\u043e\u0440\u0442\u0430 \u0441\u043e \u0434\u0438\u0433\u0430\u043b\u043a\u0430"
-        },
-        "barrier/retaining_wall": {
-            "name": "\u041f\u043e\u0442\u043f\u043e\u0440\u0435\u043d \u0455\u0438\u0434"
-        },
-        "barrier/stile": {
-            "name": "\u041e\u0433\u0440\u0430\u0434\u043d\u0438 \u0441\u043a\u0430\u043b\u0438\u043b\u0430"
-        },
-        "barrier/toll_booth": {
-            "name": "\u041f\u0430\u0442\u0430\u0440\u0438\u043d\u0430"
-        },
-        "barrier/wall": {
-            "name": "\u0405\u0438\u0434"
-        },
-        "boundary/administrative": {
-            "name": "\u0410\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u0438\u0432\u043d\u0430 \u0433\u0440\u0430\u043d\u0438\u0446\u0430"
-        },
-        "building": {
-            "name": "\u0413\u0440\u0430\u0434\u0431\u0430"
-        },
-        "building/barn": {
-            "name": "\u0410\u043c\u0431\u0430\u0440"
-        },
-        "building/bunker": {
-            "name": "\u0411\u0443\u043d\u043a\u0435\u0440"
-        },
-        "building/cabin": {
-            "name": "\u041a\u0443\u045c\u0438\u0447\u043a\u0430"
-        },
-        "building/cathedral": {
-            "name": "\u0421\u043e\u0431\u043e\u0440\u0435\u043d \u0445\u0440\u0430\u043c"
-        },
-        "building/chapel": {
-            "name": "\u041a\u0430\u043f\u0435\u043b\u0430"
-        },
-        "building/church": {
-            "name": "\u0426\u0440\u043a\u0432\u0430"
-        },
-        "building/college": {
-            "name": "\u0421\u0440\u0435\u0434\u043d\u043e \u0443\u0447\u0438\u043b\u0438\u0448\u0442\u0435"
-        },
-        "building/commercial": {
-            "name": "\u0414\u0435\u043b\u043e\u0432\u0435\u043d \u043e\u0431\u0458\u0435\u043a\u0442"
-        },
-        "building/construction": {
-            "name": "\u0413\u0440\u0430\u0434\u0438\u043b\u0438\u0448\u0442\u0435"
-        },
-        "building/detached": {
-            "name": "\u0421\u0430\u043c\u043e\u0441\u0442\u043e\u0458\u043d\u0430 \u043a\u0443\u045c\u0430"
-        },
-        "building/dormitory": {
-            "name": "\u0421\u0442\u0443\u0434\u0435\u043d\u0442\u0441\u043a\u0438 \u0434\u043e\u043c"
-        },
-        "building/entrance": {
-            "name": "\u0412\u043b\u0435\u0437/\u0438\u0437\u043b\u0435\u0437"
-        },
-        "building/garage": {
-            "name": "\u0413\u0430\u0440\u0430\u0436\u0430"
-        },
-        "building/garages": {
-            "name": "\u0413\u0430\u0440\u0430\u0436\u0438"
-        },
-        "building/greenhouse": {
-            "name": "\u0421\u0442\u0430\u043a\u043b\u0435\u043d\u0438\u043a"
-        },
-        "building/hospital": {
-            "name": "\u0411\u043e\u043b\u043d\u0438\u0446\u0430"
-        },
-        "building/hotel": {
-            "name": "\u0425\u043e\u0442\u0435\u043b"
-        },
-        "building/house": {
-            "name": "\u041a\u0443\u045c\u0430"
-        },
-        "building/hut": {
-            "name": "\u041a\u043e\u043b\u0438\u0431\u0430"
-        },
-        "building/industrial": {
-            "name": "\u0418\u043d\u0434\u0443\u0441\u0442\u0440\u0438\u0441\u043a\u0438 \u043e\u0431\u0458\u0435\u043a\u0442"
-        },
-        "building/kindergarten": {
-            "name": "\u0414\u0435\u0442\u0441\u043a\u0430 \u0433\u0440\u0430\u0434\u0438\u043d\u043a\u0430"
-        },
-        "building/public": {
-            "name": "\u041e\u043f\u0448\u0442\u0435\u0441\u0442\u0432\u0435\u043d \u043e\u0431\u0458\u0435\u043a\u0442"
-        },
-        "building/residential": {
-            "name": "\u0421\u0442\u0430\u043d\u0431\u0435\u043d \u043e\u0431\u0458\u0435\u043a\u0442"
-        },
-        "building/retail": {
-            "name": "\u041f\u0440\u043e\u0434\u0436\u0435\u043d \u043e\u0431\u0458\u0435\u043a\u0442"
-        },
-        "building/roof": {
-            "name": "\u041f\u043e\u043a\u0440\u0438\u0432"
-        },
-        "building/school": {
-            "name": "\u0423\u0447\u0438\u043b\u0438\u0448\u0442\u0435"
-        },
-        "building/semidetached_house": {
-            "name": "\u0414\u0432\u043e\u0458\u043d\u0430 \u043a\u0443\u045c\u0430"
-        },
-        "building/shed": {
-            "name": "\u0428\u0443\u043f\u0430"
-        },
-        "building/stable": {
-            "name": "\u0428\u0442\u0430\u043b\u0430"
-        },
-        "building/static_caravan": {
-            "name": "\u041d\u0435\u0434\u0432\u0438\u0436\u0435\u0447\u043a\u0438 \u043f\u043e\u0434\u0432\u0438\u0436\u0435\u043d \u0434\u043e\u043c"
-        },
-        "building/terrace": {
-            "name": "\u041d\u0430\u043d\u0438\u0436\u0430\u043d\u0438 \u043a\u0443\u045c\u0438"
-        },
-        "building/university": {
-            "name": "\u0423\u043d\u0438\u0432\u0435\u0440\u0437\u0438\u0442\u0435\u0442"
-        },
-        "building/warehouse": {
-            "name": "\u0421\u043a\u043b\u0430\u0434"
-        },
-        "camp_site/camp_pitch": {
-            "name": "\u041a\u0430\u043c\u043f-\u0442\u0435\u0440\u0435\u043d"
-        },
-        "craft": {
-            "name": "\u0417\u0430\u043d\u0430\u0435\u0442"
-        },
-        "craft/basket_maker": {
-            "name": "\u041a\u043e\u0448\u043d\u0438\u0447\u0430\u0440"
-        },
-        "craft/beekeeper": {
-            "name": "\u041f\u0447\u0435\u043b\u0430\u0440"
-        },
-        "craft/blacksmith": {
-            "name": "\u041a\u043e\u0432\u0430\u0447"
-        },
-        "craft/boatbuilder": {
-            "name": "\u0411\u0440\u043e\u0434\u043e\u0433\u0440\u0430\u0434\u0438\u0442\u0435\u043b"
-        },
-        "craft/bookbinder": {
-            "name": "\u041a\u043d\u0438\u0433\u043e\u0432\u0435\u0437\u0435\u0446"
-        },
-        "craft/brewery": {
-            "name": "\u041f\u0438\u0432\u0430\u0440\u043d\u0438\u0446\u0430"
-        },
-        "craft/carpenter": {
-            "name": "\u0421\u0442\u043e\u043b\u0430\u0440"
-        },
-        "craft/carpet_layer": {
-            "name": "\u0422\u0435\u043f\u0438\u0445\u043e\u043f\u0440\u0435\u043a\u0440\u0438\u0432\u0430\u0447"
-        },
-        "craft/caterer": {
-            "name": "\u0414\u043e\u0441\u0442\u0430\u0432\u0435\u043d \u0443\u0433\u043e\u0441\u0442\u0438\u0442\u0435\u043b"
-        },
-        "craft/clockmaker": {
-            "name": "\u0427\u0430\u0441\u043e\u0432\u043d\u0438\u0447\u0430\u0440"
-        },
-        "craft/dressmaker": {
-            "name": "\u0414\u0430\u043c\u0441\u043a\u0438 \u043a\u0440\u043e\u0458\u0430\u0447"
-        },
-        "craft/electrician": {
-            "name": "\u0415\u043b\u0435\u043a\u0442\u0440\u0438\u0447\u0430\u0440"
-        },
-        "craft/gardener": {
-            "name": "\u0413\u0440\u0430\u0434\u0438\u043d\u0430\u0440"
-        },
-        "craft/glaziery": {
-            "name": "\u0421\u0442\u0430\u043a\u043b\u0430\u0440"
-        },
-        "craft/handicraft": {
-            "name": "\u0420\u0430\u043a\u043e\u0442\u0432\u043e\u0440\u0431\u0438"
-        },
-        "craft/hvac": {
-            "name": "\u041a\u043b\u0438\u043c\u0430\u0442\u0438\u0437\u0430\u0446\u0438\u0458\u0430 \u0438 \u0432\u0435\u043d\u0442\u0438\u043b\u0430\u0446\u0438\u0458\u0430"
-        },
-        "craft/insulator": {
-            "name": "\u0418\u0437\u043e\u043b\u0430\u0442\u043e\u0440"
-        },
-        "craft/jeweler": {
-            "name": "\u0417\u043b\u0430\u0442\u0430\u0440"
-        },
-        "craft/key_cutter": {
-            "name": "\u041a\u043b\u0443\u0447\u0430\u0440"
-        },
-        "craft/locksmith": {
-            "name": "\u0411\u0440\u0430\u0432\u0430\u0440"
-        },
-        "craft/metal_construction": {
-            "name": "\u041c\u0435\u0442\u0430\u043b\u043e\u0433\u0440\u0430\u0434\u0438\u0442\u0435\u043b"
-        },
-        "craft/optician": {
-            "name": "\u041e\u043f\u0442\u0438\u0447\u0430\u0440"
-        },
-        "craft/painter": {
-            "name": "\u041c\u043e\u043b\u0435\u0440\u043e\u0444\u0430\u0440\u0431\u0430\u0440"
-        },
-        "craft/photographer": {
-            "name": "\u0424\u043e\u0442\u043e\u0433\u0440\u0430\u0444"
-        },
-        "craft/photographic_laboratory": {
-            "name": "\u0424\u043e\u0442\u043e\u0433\u0440\u0430\u0444\u0441\u043a\u0430 \u043b\u0430\u0431\u043e\u0440\u0430\u0442\u043e\u0440\u0438\u0458\u0430"
-        },
-        "craft/plasterer": {
-            "name": "\u0413\u0438\u043f\u0441\u0430\u0440"
-        },
-        "craft/plumber": {
-            "name": "\u0412\u043e\u0434\u043e\u0432\u043e\u0434\u045f\u0438\u0458\u0430"
-        },
-        "craft/pottery": {
-            "name": "<\u043f\u0440\u0435\u0432\u0435\u0434\u0435\u0442\u0435 \u0441\u043e \u0438\u0441\u0442\u043e\u0437\u043d\u0430\u0447\u043d\u0438\u0446\u0438 \u0438\u043b\u0438 \u0441\u0440\u043e\u0434\u043d\u0438 \u043f\u043e\u0438\u043c\u0438 \u043d\u0430 \u201e\u0413\u0440\u043d\u0447\u0430\u0440\u201c, \u043e\u0434\u0434\u0435\u043b\u0435\u043d\u0438 \u0441\u043e \u0437\u0430\u043f\u0438\u0440\u043a\u0438>"
-        },
-        "craft/rigger": {
-            "name": "\u041f\u043e\u0434\u0438\u0433\u0430\u0447"
-        },
-        "craft/roofer": {
-            "name": "\u041f\u043e\u043a\u0440\u0438\u0432\u0430\u0440"
-        },
-        "craft/saddler": {
-            "name": "\u0421\u0435\u0434\u043b\u0430\u0440"
-        },
-        "craft/sailmaker": {
-            "name": "\u0415\u0434\u0440\u0430\u0440"
-        },
-        "craft/sawmill": {
-            "name": "\u041f\u0438\u043b\u0430\u043d\u0430"
-        },
-        "craft/scaffolder": {
-            "name": "\u0421\u043a\u0435\u043b\u0430\u0440"
-        },
-        "craft/shoemaker": {
-            "name": "\u0427\u0435\u0432\u043b\u0430\u0440"
-        },
-        "craft/stonemason": {
-            "name": "\u041a\u0430\u043c\u0435\u043d\u043e\u0440\u0435\u0437\u0435\u0446"
-        },
-        "craft/tailor": {
-            "name": "\u041a\u0440\u043e\u0458\u0430\u0447"
-        },
-        "craft/tiler": {
-            "name": "\u041f\u043b\u043e\u0447\u043a\u0430\u0440"
-        },
-        "craft/tinsmith": {
-            "name": "\u041a\u0430\u043b\u0430\u0458\u045f\u0438\u0458\u0430"
-        },
-        "craft/upholsterer": {
-            "name": "\u0422\u0430\u043f\u0435\u0442\u0430\u0440"
-        },
-        "craft/watchmaker": {
-            "name": "\u0427\u0430\u0441\u043e\u0432\u043d\u0438\u0447\u0430\u0440"
-        },
-        "craft/window_construction": {
-            "name": "\u0418\u0437\u0440\u0430\u0431\u043e\u0442\u043a\u0430 \u043d\u0430 \u043f\u0440\u043e\u0437\u043e\u0440\u0446\u0438"
-        },
-        "craft/winery": {
-            "name": "\u0412\u0438\u043d\u0430\u0440\u0438\u0458\u0430"
-        },
-        "embankment": {
-            "name": "\u041a\u0435\u0458"
-        },
-        "emergency/ambulance_station": {
-            "name": "\u0410\u043c\u0431\u0443\u043b\u0430\u043d\u0442\u0430"
-        },
-        "emergency/defibrillator": {
-            "name": "\u0414\u0435\u0444\u0438\u0431\u0440\u0438\u043b\u0430\u0442\u043e\u0440"
-        },
-        "emergency/designated": {
-            "name": "\u041e\u0437\u043d\u0430\u0447\u0435\u043d \u0438\u0442\u0435\u043d \u043f\u0440\u0438\u0441\u0442\u0430\u043f"
-        },
-        "emergency/destination": {
-            "name": "\u0418\u0442\u043d\u043e \u043e\u0434\u0440\u0435\u0434\u0438\u0448\u0442\u0435"
-        },
-        "emergency/fire_hydrant": {
-            "name": "\u0425\u0438\u0434\u0440\u0430\u043d\u0442"
-        },
-        "emergency/no": {
-            "name": "\u0418\u0442\u0435\u043d \u043f\u0440\u0438\u0441\u0442\u0430\u043f \u0431\u0440."
-        },
-        "emergency/official": {
-            "name": "\u0418\u0442\u0435\u043d \u043f\u0440\u0438\u0441\u0442\u0430\u043f \u0437\u0430 \u0441\u043b\u0443\u0436\u0431\u0435\u043d\u0438 \u043b\u0438\u0446\u0430"
-        },
-        "emergency/phone": {
-            "name": "\u0418\u0442\u0435\u043d \u0442\u0435\u043b\u0435\u0444\u043e\u043d"
-        },
-        "emergency/private": {
-            "name": "\u041f\u0440\u0438\u0432\u0430\u0442\u0435\u043d \u0438\u0442\u0435\u043d \u043f\u0440\u0438\u0441\u0442\u0430\u043f"
-        },
-        "emergency/yes": {
-            "name": "\u0418\u043c\u0430 \u0438\u0442\u0435\u043d \u043f\u0440\u0438\u0441\u0442\u0430\u043f"
-        },
-        "entrance": {
-            "name": "\u0412\u043b\u0435\u0437/\u0438\u0437\u043b\u0435\u0437"
-        },
-        "ford": {
-            "name": "\u0411\u0440\u043e\u0434"
-        },
-        "golf/bunker": {
-            "name": "\u041f\u0435\u0441\u043e\u0447\u043d\u0430 \u0431\u0440\u0430\u0437\u0434\u0430"
-        },
-        "golf/fairway": {
-            "name": "\u0420\u0430\u043c\u043d\u043e \u043f\u043e\u043b\u0435"
-        },
-        "golf/green": {
-            "name": "\u0412\u043c\u0435\u0442\u043d\u0443\u0432\u0430\u043b\u0438\u0448\u0442\u0435"
-        },
-        "golf/hole": {
-            "name": "\u0414\u0443\u043f\u043a\u0430 \u0437\u0430 \u0433\u043e\u043b\u0444"
-        },
-        "golf/rough": {
-            "name": "\u041d\u0435\u0440\u0430\u043c\u043d\u043e \u043f\u043e\u043b\u0435"
-        },
-        "golf/tee": {
-            "name": "\u041f\u043e\u0447\u0435\u0442\u043d\u0430 \u0440\u0430\u043c\u043d\u0438\u043d\u043a\u0430"
-        },
-        "healthcare/blood_donation": {
-            "name": "\u041a\u0440\u0432\u043e\u0434\u0430\u0440\u0438\u0442\u0435\u043b\u0441\u043a\u0438 \u0446\u0435\u043d\u0442\u0430\u0440"
-        },
-        "highway": {
-            "name": "\u0410\u0432\u0442\u043e\u043f\u0430\u0442"
-        },
-        "highway/bridleway": {
-            "name": "\u0408\u0430\u0432\u0430\u0447\u043a\u0430 \u043f\u0430\u0442\u0435\u043a\u0430"
-        },
-        "highway/corridor": {
-            "name": "\u041f\u043e\u043a\u0440\u0438\u0435\u043d \u043f\u0440\u0435\u043c\u0438\u043d"
-        },
-        "highway/cycleway": {
-            "name": "\u0412\u0435\u043b\u043e\u0441\u0438\u043f\u0435\u0434\u0441\u043a\u0430 \u043f\u0430\u0442\u0435\u043a\u0430"
-        },
-        "highway/footway": {
-            "name": "\u041f\u0435\u0448\u0430\u0447\u043a\u0430 \u043f\u0430\u0442\u0435\u043a\u0430"
-        },
-        "highway/give_way": {
-            "name": "\u0417\u043d\u0430\u043a \u0437\u0430 \u043f\u0440\u0435\u0434\u043d\u043e\u0441\u0442"
-        },
-        "highway/living_street": {
-            "name": "\u041c\u0430\u0430\u043b\u0441\u043a\u0430 \u0443\u043b\u0438\u0446\u0430"
-        },
-        "highway/mini_roundabout": {
-            "name": "\u041c\u0438\u043d\u0438-\u043a\u0440\u0443\u0436\u0435\u043d \u0442\u0435\u043a"
-        },
-        "highway/motorway": {
-            "name": "\u0410\u0432\u0442\u043e\u043f\u0430\u0442"
-        },
-        "highway/motorway_junction": {
-            "name": "\u0410\u0432\u0442\u043e\u043f\u0430\u0442\u043d\u0430 \u043a\u043b\u0443\u0447\u043a\u0430 / \u0438\u0437\u043b\u0435\u0437"
-        },
-        "highway/motorway_link": {
-            "name": "\u0410\u0432\u0442\u043e\u043f\u0430\u0442\u0435\u043d \u043f\u0440\u0438\u043e\u0434"
-        },
-        "highway/path": {
-            "name": "\u041f\u0430\u0442\u0435\u043a\u0430"
-        },
-        "highway/primary": {
-            "name": "\u0413\u043b\u0430\u0432\u0435\u043d \u043f\u0430\u0442"
-        },
-        "highway/primary_link": {
-            "name": "\u0413\u043b\u0430\u0432\u0435\u043d \u043f\u0440\u0438\u043e\u0434"
-        },
-        "highway/residential": {
-            "name": "\u0421\u0442\u0430\u043d\u0431\u0435\u043d \u043f\u0430\u0442\u0435\u043d"
-        },
-        "highway/rest_area": {
-            "name": "\u041a\u0440\u0430\u0458\u043f\u0430\u0442\u043d\u043e \u043e\u0434\u043c\u043e\u0440\u0438\u0448\u0442\u0435"
-        },
-        "highway/road": {
-            "name": "\u041d\u0435\u043f\u043e\u0437\u043d\u0430\u0442 \u043f\u0430\u0442"
-        },
-        "highway/secondary": {
-            "name": "\u0412\u0442\u043e\u0440\u043e\u0441\u0442\u0435\u043f\u0435\u043d \u043f\u0430\u0442"
-        },
-        "highway/secondary_link": {
-            "name": "\u0412\u0442\u043e\u0440\u043e\u0441\u0442\u0435\u043f\u0435\u043d \u043f\u0440\u0438\u043e\u0434"
-        },
-        "highway/service": {
-            "name": "\u041e\u043f\u0441\u043b\u0443\u0436\u0435\u043d \u043f\u0430\u0442"
-        },
-        "highway/service/alley": {
-            "name": "\u0421\u043e\u043a\u0430\u043a"
-        },
-        "highway/service/drive-through": {
-            "name": "\u0423\u0441\u043b\u0443\u0436\u043d\u0430 \u043f\u0430\u0442\u0435\u043a\u0430"
-        },
-        "highway/service/driveway": {
-            "name": "\u041c\u043e\u0442\u043e\u0440\u043d\u0430 \u043f\u0430\u0442\u0435\u043a\u0430"
-        },
-        "highway/service/emergency_access": {
-            "name": "\u0418\u0442\u0435\u043d \u043f\u0440\u0438\u0441\u0442\u0430\u043f"
-        },
-        "highway/service/parking_aisle": {
-            "name": "\u041f\u0430\u0440\u043a\u0438\u043d\u0433-\u043c\u0438\u043d\u0443\u0432\u0430\u043b\u0438\u0448\u0442\u0435"
-        },
-        "highway/services": {
-            "name": "\u041e\u043f\u0441\u043b\u0443\u0436\u043d\u043e \u043f\u043e\u0434\u0440\u0430\u0447\u0458\u0435"
-        },
-        "highway/steps": {
-            "name": "\u0421\u043a\u0430\u043b\u0438\u043b\u0430"
-        },
-        "highway/stop": {
-            "name": "\u0417\u043d\u0430\u043a \u0437\u0430 \u0437\u0430\u043f\u0438\u0440\u0430\u045a\u0435"
-        },
-        "highway/street_lamp": {
-            "name": "\u0423\u043b\u0438\u0447\u043d\u0430 \u0441\u0432\u0435\u0442\u0438\u043b\u043a\u0430"
-        },
-        "highway/tertiary": {
-            "name": "\u0422\u0440\u0435\u0442\u043e\u0441\u0442\u0435\u043f\u0435\u043d \u043f\u0430\u0442"
-        },
-        "highway/tertiary_link": {
-            "name": "<\u043f\u0440\u0435\u0432\u0435\u0434\u0435\u0442\u0435 \u0441\u043e \u0438\u0441\u0442\u043e\u0437\u043d\u0430\u0447\u043d\u0438\u0446\u0438 \u0438\u043b\u0438 \u0441\u0440\u043e\u0434\u043d\u0438 \u043f\u043e\u0438\u043c\u0438 \u043d\u0430 \u201e\u0422\u0440\u0435\u0442\u043e\u0441\u0442\u0435\u043f\u0435\u043d \u043f\u0440\u0438\u043e\u0434\u201c, \u043e\u0434\u0434\u0435\u043b\u0435\u043d\u0438 \u0441\u043e \u0437\u0430\u043f\u0438\u0440\u043a\u0438>"
-        },
-        "highway/track": {
-            "name": "\u041d\u0435\u043e\u0434\u0440\u0436\u0443\u0432\u0430\u043d \u043d\u0435\u0430\u0441\u0444\u0430\u043b\u0442\u0438\u0440\u0430\u043d \u043f\u0430\u0442"
-        },
-        "highway/traffic_mirror": {
-            "name": "\u0421\u043e\u043e\u0431\u0440\u0430\u045c\u0430\u0458\u043d\u043e \u043e\u0433\u043b\u0435\u0434\u0430\u043b\u043e"
-        },
-        "highway/traffic_signals": {
-            "name": "\u0421\u043e\u043e\u0431\u0440\u0430\u045c\u0430\u0458\u043d\u0438 \u0441\u0438\u0433\u043d\u0430\u043b\u0438"
-        },
-        "highway/trunk": {
-            "name": "\u041c\u0430\u0433\u0438\u0441\u0442\u0440\u0430\u043b\u0435\u043d \u043f\u0430\u0442"
-        },
-        "highway/trunk_link": {
-            "name": "\u041f\u0440\u0438\u043e\u0434 \u043a\u043e\u043d \u043c\u0430\u0433\u0438\u0441\u0442\u0440\u0430\u043b\u0430"
-        },
-        "highway/turning_circle": {
-            "name": "\u041a\u0440\u0443\u0436\u0435\u043d \u0442\u0435\u043a"
-        },
-        "highway/turning_loop": {
-            "name": "\u0421\u0432\u0440\u0442\u0438\u043b\u0438\u0448\u0442\u0435 (\u043e\u0441\u0442\u0440\u043e\u0432)"
-        },
-        "highway/unclassified": {
-            "name": "\u041c\u0435\u0441\u0435\u043d/\u043d\u0435\u043a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u0437\u0438\u0440\u0430\u043d \u043f\u0430\u0442"
-        },
-        "historic": {
-            "name": "\u0418\u0441\u0442\u043e\u0440\u0438\u0441\u043a\u0430 \u043c\u0435\u0441\u043d\u043e\u0441\u0442"
-        },
-        "historic/archaeological_site": {
-            "name": "\u0410\u0440\u0445\u0435\u043e\u043b\u043e\u0448\u043a\u043e \u043d\u0430\u043e\u0453\u0430\u043b\u0438\u0448\u0442\u0435"
+            "name": "Влекач „Т“"
         },
         "historic/boundary_stone": {
-            "name": "\u041c\u0435\u0453\u043d\u0438\u043a"
-        },
-        "historic/castle": {
-            "name": "\u0417\u0430\u043c\u043e\u043a"
-        },
-        "historic/memorial": {
-            "name": "\u041f\u0430\u043c\u0435\u0442\u043d\u0438\u043a"
-        },
-        "historic/monument": {
-            "name": "\u0421\u043f\u043e\u043c\u0435\u043d\u0438\u043a"
-        },
-        "historic/ruins": {
-            "name": "\u0420\u0443\u0448\u0435\u0432\u0438\u043d\u0438"
-        },
-        "historic/wayside_cross": {
-            "name": "\u041a\u0440\u0430\u0458\u043f\u0430\u0442\u0435\u043d \u043a\u0440\u0441\u0442"
-        },
-        "historic/wayside_shrine": {
-            "name": "\u041a\u0440\u0430\u0458\u043f\u0430\u0442\u0435\u043d \u043f\u0430\u0440\u0430\u043a\u043b\u0438\u0441"
-        },
-        "junction": {
-            "name": "\u0420\u0430\u0441\u043a\u0440\u0441\u043d\u0438\u0446\u0430"
-        },
-        "landuse": {
-            "name": "\u0412\u0438\u0434\u043e\u0432\u0438 \u0437\u0435\u043c\u0458\u0438\u0448\u0442\u0435"
-        },
-        "landuse/allotments": {
-            "name": "\u0417\u0430\u0435\u0434\u043d\u0438\u0447\u043a\u0430 \u0433\u0440\u0430\u0434\u0438\u043d\u0430"
-        },
-        "landuse/basin": {
-            "name": "\u0421\u043b\u0438\u0432"
-        },
-        "landuse/cemetery": {
-            "name": "\u0413\u0440\u043e\u0431\u0438\u0448\u0442\u0430"
-        },
-        "landuse/churchyard": {
-            "name": "\u0426\u0440\u043a\u043e\u0432\u0435\u043d \u0434\u0432\u043e\u0440"
-        },
-        "landuse/commercial": {
-            "name": "\u0421\u0442\u043e\u043f\u0430\u043d\u0441\u043a\u043e \u043f\u043e\u0434\u0440\u0430\u0447\u0458\u0435"
-        },
-        "landuse/construction": {
-            "name": "\u0418\u0437\u0433\u0440\u0430\u0434\u0431\u0430"
-        },
-        "landuse/farm": {
-            "name": "\u0417\u0435\u043c\u0458\u043e\u0434\u0435\u043b\u0441\u043a\u0430 \u043f\u043e\u0432\u0440\u0448\u0438\u043d\u0430"
-        },
-        "landuse/farmland": {
-            "name": "\u0417\u0435\u043c\u0458\u043e\u0434\u0435\u043b\u0441\u043a\u0430 \u043f\u043e\u0432\u0440\u0448\u0438\u043d\u0430"
-        },
-        "landuse/farmyard": {
-            "name": "\u0421\u0435\u043b\u0441\u043a\u0438 \u0434\u0432\u043e\u0440"
-        },
-        "landuse/grass": {
-            "name": "\u0422\u0440\u0435\u0432\u0430"
-        },
-        "landuse/industrial": {
-            "name": "\u0418\u043d\u0434\u0443\u0441\u0442\u0440\u0438\u0441\u043a\u043e \u043f\u043e\u0434\u0440\u0430\u0447\u0458\u0435"
-        },
-        "landuse/landfill": {
-            "name": "\u0414\u0435\u043f\u043e\u043d\u0438\u0458\u0430"
-        },
-        "landuse/meadow": {
-            "name": "\u041b\u0438\u0432\u0430\u0434\u0430"
-        },
-        "landuse/military": {
-            "name": "\u0412\u043e\u0435\u043d\u043e \u043f\u043e\u0434\u0440\u0430\u0447\u0458\u0435"
-        },
-        "landuse/military/airfield": {
-            "name": "\u0412\u043e\u0435\u043d \u0430\u0435\u0440\u043e\u0434\u0440\u043e\u043c"
-        },
-        "landuse/military/barracks": {
-            "name": "\u041a\u0430\u0441\u0430\u0440\u043d\u0430"
-        },
-        "landuse/military/bunker": {
-            "name": "\u0411\u0443\u043d\u043a\u0435\u0440"
-        },
-        "landuse/military/checkpoint": {
-            "name": "\u041a\u043e\u043d\u0442\u0440\u043e\u043b\u0435\u043d \u043f\u0443\u043d\u043a\u0442"
-        },
-        "landuse/military/danger_area": {
-            "name": "\u041e\u043f\u0430\u0441\u043d\u043e \u043f\u043e\u0434\u0440\u0430\u0447\u0458\u0435"
-        },
-        "landuse/military/naval_base": {
-            "name": "\u041f\u043e\u043c\u043e\u0440\u0441\u043a\u0430 \u0431\u0430\u0437\u0430"
-        },
-        "landuse/military/nuclear_explosion_site": {
-            "name": "\u041c\u0435\u0441\u0442\u043e \u043d\u0430 \u043d\u0443\u043a\u043b\u0435\u0430\u0440\u043d\u0430 \u0435\u043a\u0441\u043f\u043b\u043e\u0437\u0438\u0458\u0430"
-        },
-        "landuse/military/obstacle_course": {
-            "name": "\u0412\u0435\u0436\u0431\u0430\u043b\u0438\u0448\u0442\u0435 \u0441\u043e \u043f\u0440\u0435\u043f\u0440\u0435\u043a\u0438"
-        },
-        "landuse/military/office": {
-            "name": "\u0412\u043e\u0435\u043d\u0430 \u0441\u043b\u0443\u0436\u0431\u0430"
-        },
-        "landuse/military/range": {
-            "name": "\u0412\u043e\u0435\u043d\u043e \u0441\u0442\u0440\u0435\u043b\u0438\u0448\u0442\u0435"
-        },
-        "landuse/military/training_area": {
-            "name": "\u0412\u043e\u0435\u043d \u043f\u043e\u043b\u0438\u0433\u043e\u043d"
-        },
-        "landuse/orchard": {
-            "name": "\u041e\u0432\u043e\u0448\u0442\u0430\u0440\u043d\u0438\u043a"
-        },
-        "landuse/plant_nursery": {
-            "name": "\u0420\u0430\u0441\u0430\u0434\u043d\u0438\u043a"
-        },
-        "landuse/quarry": {
-            "name": "\u041a\u0430\u043c\u0435\u043d\u043e\u043b\u043e\u043c"
-        },
-        "landuse/recreation_ground": {
-            "name": "\u0420\u0435\u043a\u0440\u0435\u0430\u0442\u0438\u0432\u0435\u043d \u0442\u0435\u0440\u0435\u043d"
-        },
-        "landuse/residential": {
-            "name": "\u0421\u0442\u0430\u043d\u0431\u0435\u043d\u043e \u043f\u043e\u0434\u0440\u0430\u0447\u0458\u0435"
-        },
-        "landuse/retail": {
-            "name": "\u041f\u0440\u043e\u0434\u0430\u0436\u043d\u043e \u043f\u043e\u0434\u0440\u0430\u0447\u0458\u0435"
-        },
-        "landuse/vineyard": {
-            "name": "\u041b\u043e\u0437\u0458\u0435"
-        },
-        "leisure": {
-            "name": "\u0420\u0430\u0437\u043e\u043d\u043e\u0434\u0430"
-        },
-        "leisure/adult_gaming_centre": {
-            "name": "\u0418\u0433\u0440\u043e\u0442\u0435\u043a\u0430 \u0437\u0430 \u0432\u043e\u0437\u0440\u0430\u0441\u043d\u0438"
-        },
-        "leisure/bird_hide": {
-            "name": "\u041f\u0442\u0438\u0446\u043e\u043d\u0430\u0431\u0459\u0443\u0434\u0443\u0432\u0430\u0447\u043d\u0438\u0446\u0430"
-        },
-        "leisure/bowling_alley": {
-            "name": "\u041a\u0443\u0433\u043b\u0430\u0440\u043d\u0438\u0446\u0430"
-        },
-        "leisure/common": {
-            "name": "\u0408\u0430\u0432\u043d\u043e \u0437\u0435\u043b\u0435\u043d\u0438\u043b\u043e"
-        },
-        "leisure/dance": {
-            "name": "\u0421\u0430\u043b\u0430 \u0437\u0430 \u0438\u0433\u0440\u0430\u043d\u043a\u0438"
-        },
-        "leisure/dog_park": {
-            "name": "\u041a\u0443\u0447\u0435\u0448\u043a\u0438 \u043f\u0430\u0440\u043a"
-        },
-        "leisure/firepit": {
-            "name": "\u041e\u0433\u043d\u0438\u0448\u0442\u0435"
-        },
-        "leisure/fitness_centre": {
-            "name": "\u0412\u0435\u0436\u0431\u0430\u043b\u043d\u0438\u0446\u0430"
-        },
-        "leisure/fitness_centre/yoga": {
-            "name": "\u0408\u043e\u0433\u0430"
-        },
-        "leisure/fitness_station": {
-            "name": "\u0412\u0435\u0436\u0431\u0430\u043b\u043d\u0438\u0446\u0430 \u043d\u0430 \u043e\u0442\u0432\u043e\u0440\u0435\u043d\u043e"
-        },
-        "leisure/garden": {
-            "name": "\u0413\u0440\u0430\u0434\u0438\u043d\u0430"
-        },
-        "leisure/golf_course": {
-            "name": "\u0422\u0435\u0440\u0435\u043d \u0437\u0430 \u0433\u043e\u043b\u0444"
-        },
-        "leisure/ice_rink": {
-            "name": "\u041b\u0438\u0437\u0433\u0430\u043b\u0438\u0448\u0442\u0435"
-        },
-        "leisure/marina": {
-            "name": "\u0421\u0438\u0434\u0440\u0438\u0448\u0442\u0435"
-        },
-        "leisure/miniature_golf": {
-            "name": "\u041c\u0438\u043d\u0438\u0433\u043e\u043b\u0444"
-        },
-        "leisure/nature_reserve": {
-            "name": "\u041f\u0440\u0438\u0440\u043e\u0434\u0435\u043d \u0440\u0435\u0437\u0435\u0440\u0432\u0430\u0442"
+            "name": "Меѓник"
         },
         "leisure/park": {
-            "name": "\u041f\u0430\u0440\u043a"
+            "name": "Парк"
         },
-        "leisure/picnic_table": {
-            "name": "\u0418\u0437\u043b\u0435\u0442\u043d\u0438\u0447\u043a\u0430 \u043c\u0430\u0441\u0430"
+        "amenity/car_rental": {
+            "name": "Изнајмување автомобили"
         },
-        "leisure/pitch": {
-            "name": "\u0421\u043f\u043e\u0440\u0442\u0441\u043a\u043e \u0438\u0433\u0440\u0430\u043b\u0438\u0448\u0442\u0435"
-        },
-        "leisure/pitch/american_football": {
-            "name": "\u0418\u0433\u0440\u0430\u043b\u0438\u0448\u0442\u0435 \u0437\u0430 \u0430\u043c\u0435\u0440\u0438\u043a\u0430\u043d\u0441\u043a\u0438 \u0444\u0443\u0434\u0431\u0430\u043b"
-        },
-        "leisure/pitch/basketball": {
-            "name": "\u041a\u043e\u0448\u0430\u0440\u043a\u0430\u0440\u0441\u043a\u043e \u0438\u0433\u0440\u0430\u043b\u0438\u0448\u0442\u0435"
-        },
-        "leisure/pitch/bowls": {
-            "name": "\u0422\u0435\u0440\u0435\u043d \u0437\u0430 \u0431\u043e\u045c\u0430\u045a\u0435"
-        },
-        "leisure/pitch/rugby_league": {
-            "name": "\u0418\u0433\u0440\u0430\u043b\u0438\u0448\u0442\u0435 \u0437\u0430 \u0440\u0430\u0433\u0431\u0438-\u043b\u0438\u0433\u0430"
-        },
-        "leisure/pitch/rugby_union": {
-            "name": "\u0418\u0433\u0440\u0430\u043b\u0438\u0448\u0442\u0435 \u0437\u0430 \u0440\u0430\u0433\u0431\u0438 - \u0441\u043e\u0458\u0443\u0437\u043d\u043e"
-        },
-        "leisure/pitch/skateboard": {
-            "name": "\u0421\u043a\u0435\u0458\u0442\u043f\u0430\u0440\u043a"
-        },
-        "leisure/pitch/soccer": {
-            "name": "\u0424\u0443\u0434\u0431\u0430\u043b\u0441\u043a\u043e \u0438\u0433\u0440\u0430\u043b\u0438\u0448\u0442\u0435"
-        },
-        "leisure/pitch/tennis": {
-            "name": "\u0422\u0435\u043d\u0438\u0441\u043a\u043e \u0438\u0433\u0440\u0430\u043b\u0438\u0448\u0442\u0435"
-        },
-        "leisure/pitch/volleyball": {
-            "name": "\u041e\u0434\u0431\u043e\u0458\u043a\u0430\u0440\u0441\u043a\u043e \u0438\u0433\u0440\u0430\u043b\u0438\u0448\u0442\u0435"
-        },
-        "leisure/playground": {
-            "name": "\u0418\u0433\u0440\u0430\u043b\u0438\u0448\u0442\u0435"
-        },
-        "leisure/resort": {
-            "name": "\u041e\u0434\u043c\u043e\u0440\u0430\u043b\u0438\u0448\u0442\u0435"
-        },
-        "leisure/slipway": {
-            "name": "\u0418\u0441\u043f\u0443\u0441\u0442 \u0437\u0430 \u043f\u043b\u043e\u0432\u0438\u043b\u0430"
-        },
-        "leisure/sports_centre": {
-            "name": "\u0421\u043f\u043e\u0440\u0442\u0441\u043a\u0438 \u0446\u0435\u043d\u0442\u0430\u0440 / \u043a\u043e\u043c\u043f\u043b\u0435\u043a\u0441"
-        },
-        "leisure/sports_centre/swimming": {
-            "name": "\u0411\u0430\u0437\u0435\u043d\u0441\u043a\u0438 \u043e\u0431\u0458\u0435\u043a\u0442"
-        },
-        "leisure/stadium": {
-            "name": "\u0421\u0442\u0430\u0434\u0438\u043e\u043d"
-        },
-        "leisure/swimming_pool": {
-            "name": "\u0411\u0430\u0437\u0435\u043d"
-        },
-        "leisure/water_park": {
-            "name": "\u0412\u043e\u0434\u0435\u043d \u043f\u0430\u0440\u043a"
-        },
-        "line": {
-            "name": "\u041b\u0438\u043d\u0438\u0458\u0430"
-        },
-        "man_made": {
-            "name": "\u0412\u0435\u0448\u0442\u0430\u0447\u043a\u043e"
-        },
-        "man_made/adit": {
-            "name": "\u0425\u043e\u0440\u0438\u0437\u043e\u043d\u0442\u0430\u043b\u0435\u043d \u043e\u0442\u0432\u043e\u0440"
-        },
-        "man_made/breakwater": {
-            "name": "\u0411\u0440\u0430\u043d\u043e\u0431\u0440\u0430\u043d"
-        },
-        "man_made/bridge": {
-            "name": "\u041c\u043e\u0441\u0442"
-        },
-        "man_made/chimney": {
-            "name": "\u041e\u045f\u0430\u043a"
-        },
-        "man_made/cutline": {
-            "name": "\u0417\u0430\u0441\u0435\u0447\u0435\u043d\u0430 \u043b\u0438\u043d\u0438\u0458\u0430"
-        },
-        "man_made/embankment": {
-            "name": "\u041a\u0435\u0458"
-        },
-        "man_made/flagpole": {
-            "name": "\u0408\u0430\u0440\u0431\u043e\u043b \u0437\u0430 \u0437\u043d\u0430\u043c\u0435"
-        },
-        "man_made/gasometer": {
-            "name": "\u0413\u0430\u0441\u043e\u043c\u0435\u0440"
-        },
-        "man_made/groyne": {
-            "name": "\u0411\u0440\u0435\u0436\u043d\u0430 \u043f\u0440\u0435\u043f\u0440\u0435\u043a\u0430"
-        },
-        "man_made/lighthouse": {
-            "name": "\u0421\u0432\u0435\u0442\u0438\u043b\u043d\u0438\u043a"
-        },
-        "man_made/petroleum_well": {
-            "name": "\u041d\u0430\u0444\u0442\u0435\u043d \u0438\u0437\u0432\u043e\u0440"
-        },
-        "man_made/pier": {
-            "name": "\u041f\u0440\u0438\u0441\u0442\u0430\u043d\u0438\u0448\u0435\u043d \u043c\u043e\u0441\u0442"
-        },
-        "man_made/pipeline": {
-            "name": "\u0426\u0435\u0432\u043a\u043e\u0432\u043e\u0434"
-        },
-        "man_made/pumping_station": {
-            "name": "\u041f\u0443\u043c\u043f\u0430\u0440\u043d\u0438\u0446\u0430"
-        },
-        "man_made/silo": {
-            "name": "\u0421\u0438\u043b\u043e\u0441"
-        },
-        "man_made/storage_tank": {
-            "name": "\u0420\u0435\u0437\u0435\u0440\u0432\u043e\u0430\u0440"
-        },
-        "man_made/surveillance": {
-            "name": "\u041d\u0430\u0434\u0437\u043e\u0440"
-        },
-        "man_made/survey_point": {
-            "name": "\u041d\u0430\u0434\u0437\u043e\u0440\u043d\u043e \u043c\u0435\u0441\u0442\u043e"
-        },
-        "man_made/tower": {
-            "name": "\u041a\u0443\u043b\u0430"
-        },
-        "man_made/wastewater_plant": {
-            "name": "\u041a\u0430\u043d\u0430\u043b\u0438\u0437\u0430\u0446\u0438\u0441\u043a\u0430 \u0441\u0442\u0430\u043d\u0438\u0446\u0430"
-        },
-        "man_made/water_tower": {
-            "name": "\u0412\u043e\u0434\u043d\u0430 \u043a\u0443\u043b\u0430"
-        },
-        "man_made/water_well": {
-            "name": "\u0411\u0443\u043d\u0430\u0440"
-        },
-        "man_made/water_works": {
-            "name": "\u0412\u043e\u0434\u043e\u0441\u043d\u0430\u0431\u0434\u0443\u0432\u0430\u045a\u0435"
-        },
-        "man_made/works": {
-            "name": "\u0424\u0430\u0431\u0440\u0438\u043a\u0430"
-        },
-        "natural": {
-            "name": "\u041f\u0440\u0438\u0440\u043e\u0434\u043d\u043e"
-        },
-        "natural/bare_rock": {
-            "name": "\u0413\u043e\u043b\u0430 \u043a\u0430\u0440\u043f\u0430"
-        },
-        "natural/bay": {
-            "name": "\u0417\u0430\u043b\u0438\u0432"
-        },
-        "natural/beach": {
-            "name": "\u041f\u043b\u0430\u0436\u0430"
-        },
-        "natural/cave_entrance": {
-            "name": "\u041f\u0435\u0448\u0442\u0435\u0440\u0441\u043a\u0438 \u043e\u0442\u0432\u043e\u0440"
-        },
-        "natural/cliff": {
-            "name": "\u0421\u043f\u0438\u043b\u0430"
-        },
-        "natural/coastline": {
-            "name": "\u0411\u0440\u0435\u0433"
-        },
-        "natural/fell": {
-            "name": "\u0424\u0458\u0430\u043b"
-        },
-        "natural/glacier": {
-            "name": "\u041b\u0435\u0434\u043d\u0438\u043a"
-        },
-        "natural/grassland": {
-            "name": "\u041f\u0430\u0441\u0438\u0448\u0442\u0435"
-        },
-        "natural/heath": {
-            "name": "\u0412\u0440\u0435\u0441\u0438\u0448\u0442\u0435"
-        },
-        "natural/peak": {
-            "name": "\u0412\u0440\u0432"
-        },
-        "natural/ridge": {
-            "name": "\u0421\u0440\u0442"
-        },
-        "natural/saddle": {
-            "name": "\u0421\u0435\u0434\u043b\u043e"
-        },
-        "natural/sand": {
-            "name": "\u041f\u0435\u0441\u043e"
-        },
-        "natural/scree": {
-            "name": "\u0421\u0438\u043f"
-        },
-        "natural/scrub": {
-            "name": "\u0427\u0435\u0441\u0442\u0430\u043a"
-        },
-        "natural/spring": {
-            "name": "\u0418\u0437\u0432\u043e\u0440"
-        },
-        "natural/tree": {
-            "name": "\u0414\u0440\u0432\u043e"
-        },
-        "natural/volcano": {
-            "name": "\u0412\u0443\u043b\u043a\u0430\u043d"
-        },
-        "natural/water": {
-            "name": "\u0412\u043e\u0434\u0430"
-        },
-        "natural/water/lake": {
-            "name": "\u0415\u0437\u0435\u0440\u043e"
-        },
-        "natural/water/pond": {
-            "name": "\u0415\u0437\u0435\u0440\u0446\u0435"
-        },
-        "natural/water/reservoir": {
-            "name": "\u0412\u0435\u0448\u0442\u0430\u0447\u043a\u043e \u0435\u0437\u0435\u0440\u043e"
-        },
-        "natural/wetland": {
-            "name": "\u041c\u043e\u0447\u0443\u0440\u0438\u0448\u0442\u0435"
-        },
-        "natural/wood": {
-            "name": "\u0428\u0443\u043c\u0430"
-        },
-        "office": {
-            "name": "\u041a\u0430\u043d\u0446\u0435\u043b\u0430\u0440\u0438\u0458\u0430"
-        },
-        "office/administrative": {
-            "name": "\u0410\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u0458\u0430"
-        },
-        "office/educational_institution": {
-            "name": "\u041e\u0431\u0440\u0430\u0437\u043e\u0432\u043d\u0430 \u0443\u0441\u0442\u0430\u043d\u043e\u0432\u0430"
-        },
-        "office/employment_agency": {
-            "name": "\u0410\u0433\u0435\u043d\u0446\u0438\u0458\u0430 \u0437\u0430 \u0432\u0440\u0430\u0431\u043e\u0442\u0443\u0432\u0430\u045a\u0435"
-        },
-        "office/estate_agent": {
-            "name": "\u0410\u0433\u0435\u043d\u0446\u0438\u0458\u0430 \u0437\u0430 \u043d\u0435\u0434\u0432\u0438\u0436\u043d\u043e\u0441\u0442\u0438"
-        },
-        "office/financial": {
-            "name": "\u0424\u0438\u043d\u0430\u043d\u0441\u0438\u0441\u043a\u0430 \u0441\u043b\u0443\u0436\u0431\u0430"
-        },
-        "office/government": {
-            "name": "\u0423\u043f\u0440\u0430\u0432\u043d\u0430 \u0441\u043b\u0443\u0436\u0431\u0430"
-        },
-        "office/government/register_office": {
-            "name": "\u041c\u0430\u0442\u0438\u0447\u043d\u0430 \u0441\u043b\u0443\u0436\u0431\u0430"
-        },
-        "office/insurance": {
-            "name": "\u041e\u0441\u0438\u0433\u0443\u0440\u0438\u0442\u0435\u043b\u043d\u043e \u0434\u0440\u0443\u0448\u0442\u0432\u043e"
-        },
-        "office/lawyer": {
-            "name": "\u041f\u0440\u0430\u0432\u043d\u0438\u043a"
-        },
-        "office/ngo": {
-            "name": "\u041d\u0412\u041e"
-        },
-        "office/physician": {
-            "name": "\u041b\u0435\u043a\u0430\u0440"
-        },
-        "office/political_party": {
-            "name": "\u041f\u0430\u0440\u0442\u0438\u0458\u0430"
-        },
-        "office/research": {
-            "name": "\u0418\u0441\u0442\u0440\u0430\u0436\u0443\u0432\u0430\u0447\u043a\u0430 \u0441\u043b\u0443\u0436\u0431\u0430"
-        },
-        "office/telecommunication": {
-            "name": "\u0422\u0435\u043b\u0435\u043a\u043e\u043c\u0443\u043d\u0438\u043a\u0430\u0446\u0438\u0441\u043a\u0430 \u0441\u043b\u0443\u0436\u0431\u0430"
-        },
-        "office/travel_agent": {
-            "name": "\u0422\u0443\u0440\u0438\u0441\u0442\u0438\u0447\u043a\u0430 \u0430\u0433\u0435\u043d\u0446\u0438\u0458\u0430"
-        },
-        "place": {
-            "name": "\u041c\u0435\u0441\u0442\u043e"
+        "amenity/internet_cafe": {
+            "name": "Интернет-кафуле"
         },
         "place/city": {
-            "name": "\u0413\u0440\u0430\u0434"
+            "name": "Град"
         },
-        "place/farm": {
-            "name": "\u0424\u0430\u0440\u043c\u0430"
+        "building": {
+            "name": "Градба"
         },
-        "place/hamlet": {
-            "name": "\u0417\u0430\u0441\u0435\u043b\u043e\u043a"
+        "leisure/garden": {
+            "name": "Градина"
         },
-        "place/island": {
-            "name": "\u041e\u0441\u0442\u0440\u043e\u0432"
+        "historic/memorial": {
+            "name": "Паметник"
         },
-        "place/isolated_dwelling": {
-            "name": "\u041e\u0434\u0434\u0430\u043b\u0435\u0447\u0435\u043d\u043e \u0436\u0438\u0432\u0435\u0430\u043b\u0438\u0448\u0442\u0435"
-        },
-        "place/locality": {
-            "name": "\u041c\u0435\u0441\u043d\u043e\u0441\u0442"
-        },
-        "place/neighbourhood": {
-            "name": "\u041d\u0430\u0441\u0435\u043b\u0431\u0430"
-        },
-        "place/town": {
-            "name": "\u041f\u043e\u043c\u0430\u043b \u0433\u0440\u0430\u0434"
-        },
-        "place/village": {
-            "name": "\u0421\u0435\u043b\u043e"
-        },
-        "point": {
-            "name": "\u0422\u043e\u0447\u043a\u0430"
-        },
-        "power": {
-            "name": "\u0415\u043b\u0435\u043a\u0442\u0440\u043e\u0434\u0438\u0441\u0442\u0440\u0438\u0431\u0443\u0446\u0438\u0458\u0430"
-        },
-        "power/generator": {
-            "name": "\u0413\u0435\u043d\u0435\u0440\u0430\u0442\u043e\u0440"
-        },
-        "power/line": {
-            "name": "\u0414\u0430\u043b\u043d\u043e\u0432\u043e\u0434"
-        },
-        "power/minor_line": {
-            "name": "\u041f\u043e\u043c\u0430\u043b \u0441\u0442\u0440\u0443\u0458\u043e\u0432\u043e\u0434"
-        },
-        "power/plant": {
-            "name": "\u0415\u043b\u0435\u043a\u0442\u0440\u0430\u043d\u0430"
-        },
-        "power/pole": {
-            "name": "\u0411\u0430\u043d\u0434\u0435\u0440\u0430"
-        },
-        "power/sub_station": {
-            "name": "\u0422\u0440\u0430\u0444\u043e\u0441\u0442\u0430\u043d\u0438\u0446\u0430"
-        },
-        "power/substation": {
-            "name": "\u0422\u0440\u0430\u0444\u043e\u0441\u0442\u0430\u043d\u0438\u0446\u0430"
-        },
-        "power/tower": {
-            "name": "\u0412\u0438\u0441\u043e\u043a\u043e\u043d\u0430\u043f\u043e\u043d\u0441\u043a\u0438 \u0434\u0430\u043b\u043d\u043e\u0432\u043e\u0434"
-        },
-        "power/transformer": {
-            "name": "\u0422\u0440\u0430\u043d\u0441\u0444\u043e\u0440\u043c\u0430\u0442\u043e\u0440"
-        },
-        "railway": {
-            "name": "\u041f\u0440\u0443\u0433\u0430"
-        },
-        "railway/abandoned": {
-            "name": "\u041d\u0430\u043f\u0443\u0448\u0442\u0435\u043d\u0430 \u043f\u0440\u0443\u0433\u0430"
-        },
-        "railway/crossing": {
-            "name": "\u041f\u0440\u0435\u043c\u0438\u043d \u043f\u0440\u0435\u043a\u0443 \u043f\u0440\u0443\u0433\u0430 (\u043f\u0430\u0442\u0435\u043a\u0430)"
-        },
-        "railway/disused": {
-            "name": "\u041d\u0435\u0443\u043f\u043e\u0442\u0440\u0435\u0431\u0443\u0432\u0430\u043d\u0430 \u043f\u0440\u0443\u0433\u0430"
-        },
-        "railway/funicular": {
-            "name": "\u0418\u0441\u043a\u0430\u0447\u043d\u0438\u0446\u0430"
-        },
-        "railway/level_crossing": {
-            "name": "\u041f\u0440\u0435\u043c\u0438\u043d \u043f\u0440\u0435\u043a\u0443 \u043f\u0440\u0443\u0433\u0430 (\u043f\u0430\u0442)"
-        },
-        "railway/monorail": {
-            "name": "\u0415\u0434\u043d\u043e\u0448\u0438\u043d\u0441\u043a\u0430 \u043f\u0440\u0443\u0433\u0430"
-        },
-        "railway/narrow_gauge": {
-            "name": "\u0422\u0435\u0441\u043d\u043e\u043b\u0438\u043d\u0435\u0458\u043a\u0430"
-        },
-        "railway/rail": {
-            "name": "\u0428\u0438\u043d\u0438"
-        },
-        "railway/subway": {
-            "name": "\u041f\u043e\u0434\u0437\u0435\u043c\u043d\u0430 \u0436\u0435\u043b\u0435\u0437\u043d\u0438\u0446\u0430"
-        },
-        "railway/subway_entrance": {
-            "name": "\u0412\u043b\u0435\u0437 \u0432\u043e \u043f\u043e\u0434\u0437\u0435\u043c\u043d\u0430 \u0436\u0435\u043b\u0435\u0437\u043d\u0438\u0446\u0430"
-        },
-        "railway/tram": {
-            "name": "\u0422\u0440\u0430\u043c\u0432\u0430\u0458"
-        },
-        "relation": {
-            "name": "\u041e\u0434\u043d\u043e\u0441"
-        },
-        "roundabout": {
-            "name": "\u041a\u0440\u0443\u0436\u0435\u043d \u0442\u0435\u043a"
-        },
-        "route/ferry": {
-            "name": "\u0422\u0440\u0430\u0435\u043a\u0442\u0435\u043d \u043f\u0440\u0430\u0432\u0435\u0446"
-        },
-        "shop": {
-            "name": "\u0414\u0443\u045c\u0430\u043d"
-        },
-        "shop/alcohol": {
-            "name": "\u041f\u0440\u043e\u0434\u0430\u0432\u043d\u0438\u0446\u0430 \u0437\u0430 \u0430\u043b\u043a\u043e\u0445\u043e\u043b\u043d\u0438 \u043f\u0438\u0458\u0430\u043b\u0430\u0446\u0438"
-        },
-        "shop/anime": {
-            "name": "\u041f\u0440\u043e\u0434\u0430\u0432\u043d\u0438\u0446\u0430 \u0437\u0430 \u0430\u043d\u0438\u043c\u0435"
-        },
-        "shop/antiques": {
-            "name": "\u0421\u0442\u0430\u0440\u0438\u043d\u0430\u0440\u043d\u0438\u0446\u0430"
-        },
-        "shop/art": {
-            "name": "\u041f\u0440\u043e\u0434\u0430\u0432\u043d\u0438\u0446\u0430 \u0437\u0430 \u0443\u043c\u0435\u0442\u043d\u0438\u0447\u043a\u0438 \u0434\u0435\u043b\u0430"
-        },
-        "shop/baby_goods": {
-            "name": "\u041f\u0440\u043e\u0434\u0430\u0432\u043d\u0438\u0446\u0430 \u0437\u0430 \u0431\u0435\u0431\u0435\u0448\u043a\u0430 \u043e\u043f\u0440\u0435\u043c\u0430"
-        },
-        "shop/bag": {
-            "name": "\u041f\u0440\u043e\u0434\u0430\u0432\u043d\u0438\u0446\u0430 \u0437\u0430 \u0447\u0430\u043d\u0442\u0438, \u0442\u043e\u0440\u0431\u0438 \u0438 \u043a\u0443\u0444\u0435\u0440\u0438"
-        },
-        "shop/bakery": {
-            "name": "\u041f\u0435\u043a\u0430\u0440\u043d\u0438\u0446\u0430"
-        },
-        "shop/bathroom_furnishing": {
-            "name": "\u041f\u0440\u043e\u0434\u0430\u0432\u043d\u0438\u0446\u0430 \u0437\u0430 \u0441\u0430\u043d\u0438\u0442\u0430\u0440\u0438\u0438"
-        },
-        "shop/beauty": {
-            "name": "\u0421\u0430\u043b\u043e\u043d \u0437\u0430 \u0443\u0431\u0430\u0432\u0438\u043d\u0430"
-        },
-        "shop/beauty/nails": {
-            "name": "\u041c\u0430\u043d\u0438\u043a\u0438\u0440/\u043f\u0435\u0434\u0438\u043a\u0438\u0440"
-        },
-        "shop/beauty/tanning": {
-            "name": "\u0421\u043e\u043b\u0430\u0440\u0438\u0443\u043c"
-        },
-        "shop/bed": {
-            "name": "\u041f\u0440\u043e\u0434\u0430\u0432\u043d\u0438\u0446\u0430 \u0437\u0430 \u043a\u0440\u0435\u0432\u0435\u0442\u0438 \u0438 \u043f\u043e\u0441\u0442\u0435\u043b\u043d\u0438\u043d\u0430"
-        },
-        "shop/beverages": {
-            "name": "\u041f\u0440\u043e\u0434\u0430\u0432\u043d\u0438\u0446\u0430 \u0437\u0430 \u043f\u0438\u0458\u0430\u043b\u0430\u0446\u0438"
-        },
-        "shop/bicycle": {
-            "name": "\u041f\u0440\u043e\u0434\u0430\u0432\u043d\u0438\u0446\u0430 \u0437\u0430 \u0432\u0435\u043b\u043e\u0441\u0438\u043f\u0435\u0434\u0438"
-        },
-        "shop/bookmaker": {
-            "name": "\u041e\u0431\u043b\u043e\u0436\u0443\u0432\u0430\u043b\u043d\u0438\u0446\u0430"
-        },
-        "shop/books": {
-            "name": "\u041a\u043d\u0438\u0436\u0430\u0440\u043d\u0438\u0446\u0430"
-        },
-        "shop/boutique": {
-            "name": "\u0411\u0443\u0442\u0438\u043a"
-        },
-        "shop/butcher": {
-            "name": "\u041c\u0435\u0441\u0430\u0440\u043d\u0438\u0446\u0430"
-        },
-        "shop/candles": {
-            "name": "\u0421\u0432\u0435\u045c\u0430\u0440\u043d\u0438\u0446\u0430"
-        },
-        "shop/car": {
-            "name": "\u0410\u0432\u0442\u043e\u0441\u0430\u043b\u043e\u043d"
-        },
-        "shop/car_parts": {
-            "name": "\u041f\u0440\u043e\u0434\u0430\u0432\u043d\u0438\u0446\u0430 \u0437\u0430 \u0430\u0432\u0442\u043e\u0434\u0435\u043b\u043e\u0432\u0438"
-        },
-        "shop/car_repair": {
-            "name": "\u0410\u0432\u0442\u043e\u0441\u0435\u0440\u0432\u0438\u0441"
-        },
-        "shop/carpet": {
-            "name": "\u041f\u0440\u043e\u0434\u0430\u0432\u043d\u0438\u0446\u0430 \u0437\u0430 \u0442\u0435\u043f\u0438\u0441\u0438"
-        },
-        "shop/charity": {
-            "name": "\u0414\u043e\u0431\u0440\u043e\u0442\u0432\u043e\u0440\u043d\u0430 \u043f\u0440\u043e\u0434\u0430\u0432\u043d\u0438\u0446\u0430"
-        },
-        "shop/cheese": {
-            "name": "\u0421\u0438\u0440\u0435\u045a\u0430\u0440\u043d\u0438\u0446\u0430"
-        },
-        "shop/chemist": {
-            "name": "\u0410\u043f\u0442\u0435\u043a\u0430"
-        },
-        "shop/chocolate": {
-            "name": "\u041f\u0440\u043e\u0434\u0430\u0432\u043d\u0438\u0446\u0430 \u0437\u0430 \u0447\u043e\u043a\u043e\u043b\u0430\u0434\u0438"
-        },
-        "shop/clothes": {
-            "name": "\u041f\u0440\u043e\u0434\u0430\u0432\u043d\u0438\u0446\u0430 \u0437\u0430 \u043e\u0431\u043b\u0435\u043a\u0430"
-        },
-        "shop/coffee": {
-            "name": "\u041f\u0440\u043e\u0434\u0430\u0432\u043d\u0438\u0446\u0430 \u0437\u0430 \u043a\u0430\u0444\u0435"
-        },
-        "shop/computer": {
-            "name": "\u041f\u0440\u043e\u0434\u0430\u0432\u043d\u0438\u0446\u0430 \u0437\u0430 \u0441\u043c\u0435\u0442\u0430\u0447\u0438"
-        },
-        "shop/confectionery": {
-            "name": "\u0411\u043e\u043d\u0431\u043e\u043d\u0438\u0435\u0440\u0430"
-        },
-        "shop/convenience": {
-            "name": "\u0414\u0440\u0430\u0433\u0441\u0442\u043e\u0440"
-        },
-        "shop/copyshop": {
-            "name": "\u041a\u043e\u043f\u0438\u0440\u043d\u0438\u0446\u0430"
+        "craft/dressmaker": {
+            "name": "Дамски кројач"
         },
         "shop/cosmetics": {
-            "name": "\u041f\u0440\u043e\u0434\u0430\u0432\u043d\u0438\u0446\u0430 \u0437\u0430 \u043a\u043e\u0437\u043c\u0435\u0442\u0438\u043a\u0430"
+            "name": "Продавница за козметика"
         },
-        "shop/craft": {
-            "name": "\u041f\u0440\u043e\u0434\u0430\u0432\u043d\u0438\u0446\u0430 \u0437\u0430 \u0443\u043c\u0435\u0442\u043d\u0438\u0447\u043a\u0438 \u0440\u0430\u043a\u043e\u0442\u0432\u043e\u0440\u0431\u0438"
+        "barrier/lift_gate": {
+            "name": "Порта со дигалка"
         },
-        "shop/curtain": {
-            "name": "\u041f\u0440\u043e\u0434\u0430\u0432\u043d\u0438\u0446\u0430 \u0437\u0430 \u0437\u0430\u0432\u0435\u0441\u0438"
-        },
-        "shop/dairy": {
-            "name": "\u0411\u0430\u043a\u0430\u043b\u043d\u0438\u0446\u0430"
-        },
-        "shop/deli": {
-            "name": "\u041f\u0440\u043e\u0434\u0430\u0432\u043d\u0438\u0446\u0430 \u0437\u0430 \u0434\u0435\u043b\u0438\u043a\u0430\u0442\u0435\u0441\u0438"
-        },
-        "shop/department_store": {
-            "name": "\u0421\u0442\u043e\u043a\u043e\u0432\u043d\u0430 \u043a\u0443\u045c\u0430"
-        },
-        "shop/doityourself": {
-            "name": "\u041f\u0440\u043e\u0434\u0430\u0432\u043d\u0438\u0446\u0430 \u0437\u0430 \u043c\u0430\u0458\u0441\u0442\u043e\u0440\u0438\u0441\u0443\u0432\u0430\u045a\u0435"
-        },
-        "shop/dry_cleaning": {
-            "name": "\u0425\u0435\u043c\u0438\u0441\u043a\u043e \u0447\u0438\u0441\u0442\u0435\u045a\u0435"
-        },
-        "shop/e-cigarette": {
-            "name": "\u041f\u0440\u043e\u0434\u0430\u0432\u043d\u0438\u0446\u0430 \u0437\u0430 \u0435-\u0446\u0438\u0433\u0430\u0440\u0438"
-        },
-        "shop/electronics": {
-            "name": "\u041f\u0440\u043e\u0434\u0430\u0432\u043d\u0438\u0446\u0430 \u0437\u0430 \u0435\u043b\u0435\u043a\u0442\u0440\u043e\u043d\u0441\u043a\u0430 \u0440\u043e\u0431\u0430"
-        },
-        "shop/erotic": {
-            "name": "\u0415\u0440\u043e\u0442\u0441\u043a\u0430 \u043f\u0440\u043e\u0434\u0430\u0432\u043d\u0438\u0446\u0430"
-        },
-        "shop/fabric": {
-            "name": "\u041f\u0440\u043e\u0434\u0430\u0432\u043d\u0438\u0446\u0430 \u0437\u0430 \u0442\u043a\u0430\u0435\u043d\u0438\u043d\u0438"
-        },
-        "shop/farm": {
-            "name": "\u041f\u0438\u043b\u0458\u0430\u0440\u0441\u043a\u0430 \u0442\u0435\u0437\u0433\u0430"
-        },
-        "shop/fashion": {
-            "name": "\u041c\u043e\u0434\u043d\u0430 \u043f\u0440\u043e\u0434\u0430\u0432\u043d\u0438\u0446\u0430"
-        },
-        "shop/fishmonger": {
-            "name": "\u0420\u0438\u0431\u0430\u0440\u043d\u0438\u0446\u0430"
-        },
-        "shop/florist": {
-            "name": "\u0426\u0432\u0435\u045c\u0430\u0440\u043d\u0438\u0446\u0430"
-        },
-        "shop/frame": {
-            "name": "\u0412\u0440\u0430\u043c\u0443\u0432\u0430\u0447\u043d\u0438\u0446\u0430"
-        },
-        "shop/funeral_directors": {
-            "name": "\u041f\u043e\u0433\u0440\u0435\u0431\u0430\u043b\u043d\u043e \u0434\u0440\u0443\u0448\u0442\u0432\u043e"
-        },
-        "shop/furnace": {
-            "name": "\u041f\u0440\u043e\u0434\u0430\u0432\u043d\u0438\u0446\u0430 \u0437\u0430 \u043f\u0435\u0447\u043a\u0438"
-        },
-        "shop/furniture": {
-            "name": "\u0421\u0430\u043b\u043e\u043d \u0437\u0430 \u043c\u0435\u0431\u0435\u043b"
-        },
-        "shop/garden_centre": {
-            "name": "\u0413\u0440\u0430\u0434\u0438\u043d\u0430\u0440\u0441\u043a\u0438 \u0446\u0435\u043d\u0442\u0430\u0440"
-        },
-        "shop/gift": {
-            "name": "\u041f\u0440\u043e\u0434\u0430\u0432\u043d\u0438\u0446\u0430 \u0437\u0430 \u043f\u043e\u0434\u0430\u0440\u043e\u0446\u0438"
-        },
-        "shop/greengrocer": {
-            "name": "\u041f\u0438\u043b\u0458\u0430\u0440\u043d\u0438\u0446\u0430"
-        },
-        "shop/hairdresser": {
-            "name": "\u0424\u0440\u0438\u0437\u0435\u0440\u0441\u043a\u0438 \u0441\u0430\u043b\u043e\u043d"
-        },
-        "shop/hardware": {
-            "name": "\u041f\u0440\u043e\u0434\u0430\u0432\u043d\u0438\u0446\u0430 \u0437\u0430 \u0430\u043b\u0430\u0442 \u0438 \u043e\u043f\u0440\u0435\u043c\u0430"
-        },
-        "shop/hearing_aids": {
-            "name": "\u041f\u0440\u043e\u0434\u0430\u0432\u043d\u0438\u0446\u0430 \u0437\u0430 \u0441\u043b\u0443\u0448\u043d\u0438 \u043f\u043e\u043c\u0430\u0433\u0430\u043b\u0430"
-        },
-        "shop/herbalist": {
-            "name": "\u0411\u0438\u043b\u043d\u0430 \u0430\u043f\u0442\u0435\u043a\u0430"
-        },
-        "shop/hifi": {
-            "name": "\u041f\u0440\u043e\u0434\u0430\u0432\u043d\u0438\u0446\u0430 \u0437\u0430 \u0430\u0443\u0434\u0438\u043e\u043e\u043f\u0440\u0435\u043c\u0430"
-        },
-        "shop/houseware": {
-            "name": "\u041f\u0440\u043e\u0434\u0430\u0432\u043d\u0438\u0446\u0430 \u0437\u0430 \u0434\u043e\u043c\u043e\u0442"
-        },
-        "shop/interior_decoration": {
-            "name": "\u041f\u0440\u043e\u0434\u0430\u0432\u043d\u0438\u0446\u0430 \u0437\u0430 \u0432\u043d\u0430\u0442\u0440\u0435\u0448\u043d\u043e \u0443\u0440\u0435\u0434\u0443\u0432\u0430\u045a\u0435"
-        },
-        "shop/kitchen": {
-            "name": "\u041a\u0443\u0458\u043d\u0438 \u0438 \u0435\u043b\u0435\u043c\u0435\u043d\u0442\u0438"
-        },
-        "shop/laundry": {
-            "name": "\u041f\u0435\u0440\u0430\u0447\u043d\u0438\u0446\u0430"
-        },
-        "shop/leather": {
-            "name": "\u041a\u043e\u0436\u043d\u0430 \u0433\u0430\u043b\u0430\u043d\u0442\u0435\u0440\u0438\u0458\u0430"
-        },
-        "shop/locksmith": {
-            "name": "\u0411\u0440\u0430\u0432\u0430\u0440"
-        },
-        "shop/lottery": {
-            "name": "<\u043f\u0440\u0435\u0432\u0435\u0434\u0435\u0442\u0435 \u0441\u043e \u0438\u0441\u0442\u043e\u0437\u043d\u0430\u0447\u043d\u0438\u0446\u0438 \u0438\u043b\u0438 \u0441\u0440\u043e\u0434\u043d\u0438 \u043f\u043e\u0438\u043c\u0438 \u043d\u0430 \u201e\u041b\u043e\u0442\u0430\u0440\u0438\u0458\u0430\u201c, \u043e\u0434\u0434\u0435\u043b\u0435\u043d\u0438 \u0441\u043e \u0437\u0430\u043f\u0438\u0440\u043a\u0438>"
-        },
-        "shop/mall": {
-            "name": "\u0422\u0440\u0433\u043e\u0432\u0441\u043a\u0438 \u0446\u0435\u043d\u0442\u0430\u0440"
-        },
-        "shop/massage": {
-            "name": "\u041c\u0430\u0441\u0430\u0436\u0430"
-        },
-        "shop/medical_supply": {
-            "name": "\u041c\u0435\u0434\u0438\u0446\u0438\u043d\u0441\u043a\u0430 \u043e\u043f\u0440\u0435\u043c\u0430 \u0438 \u0437\u0430\u043b\u0438\u0445\u0438"
-        },
-        "shop/mobile_phone": {
-            "name": "\u041c\u043e\u0431\u0438\u043b\u0430\u0440\u0430",
-            "terms": "<\u043f\u0440\u0435\u0432\u0435\u0434\u0435\u0442\u0435 \u0441\u043e \u0438\u0441\u0442\u043e\u0437\u043d\u0430\u0447\u043d\u0438\u0446\u0438 \u0438\u043b\u0438 \u0441\u0440\u043e\u0434\u043d\u0438 \u043f\u043e\u0438\u043c\u0438 \u043d\u0430 \u201e\u041c\u043e\u0431\u0438\u043b\u0430\u0440\u0430\n\u201c, \u043e\u0434\u0434\u0435\u043b\u0435\u043d\u0438 \u0441\u043e \u0437\u0430\u043f\u0438\u0440\u043a\u0438>"
-        },
-        "shop/money_lender": {
-            "name": "\u0417\u0430\u0458\u043c\u0443\u0432\u0430\u045a\u0435 \u043f\u0430\u0440\u0438"
-        },
-        "shop/motorcycle": {
-            "name": "\u0421\u0430\u043b\u043e\u043d \u0437\u0430 \u043c\u043e\u0442\u043e\u0446\u0438\u043a\u043b\u0438"
-        },
-        "shop/music": {
-            "name": "\u041f\u0440\u043e\u0434\u0430\u0432\u043d\u0438\u0446\u0430 \u0437\u0430 \u043c\u0443\u0437\u0438\u043a\u0430"
-        },
-        "shop/musical_instrument": {
-            "name": "\u041f\u0440\u043e\u0434\u0430\u0432\u043d\u0438\u0446\u0430 \u0437\u0430 \u043c\u0443\u0437\u0438\u0447\u043a\u0438 \u0438\u043d\u0441\u0442\u0440\u0443\u043c\u0435\u043d\u0442\u0438"
-        },
-        "shop/newsagent": {
-            "name": "\u0412\u0435\u0441\u043d\u0438\u043a\u0430\u0440\u043d\u0438\u0446\u0430"
-        },
-        "shop/nutrition_supplements": {
-            "name": "\u041f\u0440\u043e\u0434\u0430\u0432\u043d\u0438\u0446\u0430 \u0437\u0430 \u043f\u0440\u0435\u0445\u0440\u0430\u043d\u0431\u0435\u043d\u0438 \u0434\u043e\u0434\u0430\u0442\u043e\u0446\u0438"
-        },
-        "shop/optician": {
-            "name": "\u041e\u043f\u0442\u0438\u0447\u0430\u0440"
-        },
-        "shop/organic": {
-            "name": "\u041f\u0440\u043e\u0434\u0430\u0432\u043d\u0438\u0446\u0430 \u0437\u0430 \u043e\u0440\u0433\u0430\u043d\u0441\u043a\u0438 \u043f\u0440\u043e\u0438\u0437\u0432\u043e\u0434\u0438"
-        },
-        "shop/outdoor": {
-            "name": "\u041f\u0440\u043e\u0434\u0430\u0432\u043d\u0438\u0446\u0430 \u0437\u0430 \u0440\u0435\u043a\u0440\u0435\u0430\u0442\u0438\u0432\u043d\u0430 \u043e\u043f\u0440\u0435\u043c\u0430"
-        },
-        "shop/paint": {
-            "name": "\u0411\u043e\u0438 \u0438 \u043b\u0430\u043a\u043e\u0432\u0438"
-        },
-        "shop/pastry": {
-            "name": "\u0411\u0435\u043b\u0438 \u043f\u0435\u0447\u0438\u0432\u0430"
-        },
-        "shop/pawnbroker": {
-            "name": "\u0417\u0430\u043b\u043e\u0436\u0438\u043b\u043d\u0438\u0446\u0430"
-        },
-        "shop/pet": {
-            "name": "\u041f\u0440\u043e\u0434\u0430\u0432\u043d\u0438\u0446\u0430 \u0437\u0430 \u0434\u043e\u043c\u0430\u0448\u043d\u0438 \u043c\u0438\u043b\u0435\u043d\u0438\u0446\u0438"
-        },
-        "shop/photo": {
-            "name": "\u0424\u043e\u0442\u043e\u0433\u0440\u0430\u0444\u0441\u043a\u0438 \u0434\u0443\u045c\u0430\u043d"
-        },
-        "shop/pyrotechnics": {
-            "name": "\u041f\u0440\u043e\u0434\u0430\u0432\u043d\u0438\u0446\u0430 \u0437\u0430 \u043e\u0433\u043d\u043e\u043c\u0435\u0442"
-        },
-        "shop/radiotechnics": {
-            "name": "\u041f\u0440\u043e\u0434\u0430\u0432\u043d\u0438\u0446\u0430 \u0437\u0430 \u0435\u043b\u0435\u043a\u0442\u0440\u0438\u0447\u043d\u0438 \u0434\u0435\u043b\u043e\u0432\u0438"
-        },
-        "shop/religion": {
-            "name": "\u0412\u0435\u0440\u0441\u043a\u0430 \u043f\u0440\u043e\u0434\u0430\u0432\u043d\u0438\u0446\u0430"
-        },
-        "shop/scuba_diving": {
-            "name": "\u041f\u0440\u043e\u0434\u0430\u0432\u043d\u0438\u0446\u0430 \u0437\u0430 \u043d\u0443\u0440\u043a\u0430\u0447\u043a\u0430 \u043e\u043f\u0440\u0435\u043c\u0430"
-        },
-        "shop/seafood": {
-            "name": "\u041f\u0440\u043e\u0434\u0430\u0432\u043d\u0438\u0446\u0430 \u0437\u0430 \u043c\u043e\u0440\u0441\u043a\u0430 \u0445\u0440\u0430\u043d\u0430"
-        },
-        "shop/second_hand": {
-            "name": "\u041f\u0440\u043e\u0434\u0430\u0432\u043d\u0438\u0446\u0430 \u0437\u0430 \u043f\u043e\u043b\u043e\u0432\u043d\u0438 \u0440\u0430\u0431\u043e\u0442\u0438"
-        },
-        "shop/shoes": {
-            "name": "\u041f\u0440\u043e\u0434\u0430\u0432\u043d\u0438\u0446\u0430 \u0437\u0430 \u043e\u0431\u0443\u0432\u043a\u0438"
-        },
-        "shop/sports": {
-            "name": "\u041f\u0440\u043e\u0434\u0430\u0432\u043d\u0438\u0446\u0430 \u0437\u0430 \u0441\u043f\u043e\u0440\u0442\u0441\u043a\u0430 \u043e\u043f\u0440\u0435\u043c\u0430"
-        },
-        "shop/stationery": {
-            "name": "\u041a\u0430\u043d\u0446\u0435\u043b\u0430\u0440\u0438\u0441\u043a\u0438 \u043c\u0430\u0442\u0435\u0440\u0438\u0458\u0430\u043b\u0438"
-        },
-        "shop/storage_rental": {
-            "name": "\u0418\u0437\u043d\u0430\u043c\u0458\u0443\u0432\u0430\u045a\u0435 \u0441\u043a\u043b\u0430\u0434\u0438\u0448\u0435\u043d \u043f\u0440\u043e\u0441\u0442\u043e\u0440"
-        },
-        "shop/supermarket": {
-            "name": "\u0421\u0443\u043f\u0435\u0440\u043c\u0430\u0440\u043a\u0435\u0442"
-        },
-        "shop/tailor": {
-            "name": "\u041a\u0440\u043e\u0458\u0430\u0447"
-        },
-        "shop/tattoo": {
-            "name": "\u0422\u0435\u0442\u043e\u0432\u0430\u0436\u0438"
-        },
-        "shop/tea": {
-            "name": "\u041f\u0440\u043e\u0434\u0430\u0432\u043d\u0438\u0446\u0430 \u0437\u0430 \u0447\u0430\u0458"
-        },
-        "shop/ticket": {
-            "name": "\u0411\u0438\u043b\u0435\u0442\u0430\u0440\u043d\u0438\u0446\u0430"
-        },
-        "shop/tobacco": {
-            "name": "\u041f\u0440\u043e\u0434\u0430\u0432\u043d\u0438\u0446\u0430 \u0437\u0430 \u0442\u0443\u0442\u0443\u043d"
-        },
-        "shop/toys": {
-            "name": "\u041f\u0440\u043e\u0434\u0430\u0432\u043d\u0438\u0446\u0430 \u0437\u0430 \u0438\u0433\u0440\u0430\u0447\u043a\u0438"
-        },
-        "shop/travel_agency": {
-            "name": "\u0422\u0443\u0440\u0438\u0441\u0442\u0438\u0447\u043a\u0430 \u0430\u0433\u0435\u043d\u0446\u0438\u0458\u0430"
-        },
-        "shop/tyres": {
-            "name": "\u041f\u0440\u043e\u0434\u0430\u0432\u043d\u0438\u0446\u0430 \u0437\u0430 \u0430\u0432\u0442\u043e\u0433\u0443\u043c\u0438"
-        },
-        "shop/vacant": {
-            "name": "\u041f\u0440\u0430\u0437\u043d\u0430 \u043f\u0440\u043e\u0434\u0430\u0432\u043d\u0438\u0446\u0430"
-        },
-        "shop/vacuum_cleaner": {
-            "name": "\u041f\u0440\u043e\u0434\u0430\u0432\u043d\u0438\u0446\u0430 \u0437\u0430 \u043f\u0440\u0430\u0432\u043e\u0441\u043c\u0443\u043a\u0430\u043b\u043a\u0438"
-        },
-        "shop/variety_store": {
-            "name": "\u041f\u0440\u043e\u0434\u0430\u0432\u043d\u0438\u0446\u0430 \u0437\u0430 \u0440\u0430\u0437\u043d\u043e\u0432\u0438\u0434\u043d\u0430 \u0440\u043e\u0431\u0430"
-        },
-        "shop/video": {
-            "name": "\u0412\u0438\u0434\u0435\u043e\u0442\u0435\u043a\u0430"
-        },
-        "shop/video_games": {
-            "name": "\u041f\u0440\u043e\u0434\u0430\u0432\u043d\u0438\u0446\u0430 \u0437\u0430 \u0432\u0438\u0434\u0435\u043e\u0438\u0433\u0440\u0438"
-        },
-        "shop/water_sports": {
-            "name": "\u041e\u043f\u0440\u0435\u043c\u0430 \u0437\u0430 \u043a\u0430\u043f\u0435\u045a\u0435/\u0432\u043e\u0434\u0435\u043d\u0438 \u0441\u043f\u043e\u0440\u0442\u043e\u0432\u0438"
-        },
-        "shop/weapons": {
-            "name": "\u041f\u0440\u043e\u0434\u0430\u0432\u043d\u0438\u0446\u0430 \u0437\u0430 \u043e\u0440\u0443\u0436\u0458\u0435"
-        },
-        "shop/window_blind": {
-            "name": "\u041f\u0440\u043e\u0434\u0430\u0432\u043d\u0438\u0446\u0430 \u0437\u0430 \u0437\u0430\u0432\u0435\u0441\u0438 \u0438 \u0440\u043e\u043b\u0435\u0442\u043d\u0438"
-        },
-        "shop/wine": {
-            "name": "\u0412\u0438\u043d\u043e\u0442\u0435\u043a\u0430"
-        },
-        "tourism": {
-            "name": "\u0422\u0443\u0440\u0438\u0437\u0430\u043c"
-        },
-        "tourism/alpine_hut": {
-            "name": "\u041f\u043b\u0430\u043d\u0438\u043d\u0430\u0440\u0441\u043a\u0438 \u0434\u043e\u043c"
-        },
-        "tourism/apartment": {
-            "name": "\u041f\u0430\u043d\u0441\u0438\u043e\u043d"
-        },
-        "tourism/aquarium": {
-            "name": "\u0410\u043a\u0432\u0430\u0440\u0438\u0443\u043c"
-        },
-        "tourism/artwork": {
-            "name": "\u0423\u043c\u0435\u0442\u043d\u0438\u0447\u043a\u043e \u0434\u0435\u043b\u043e"
-        },
-        "tourism/attraction": {
-            "name": "\u0422\u0443\u0440\u0438\u0441\u0442\u0438\u0447\u043a\u0430 \u0430\u0442\u0440\u0430\u043a\u0446\u0438\u0458\u0430"
-        },
-        "tourism/camp_site": {
-            "name": "\u041a\u0430\u043c\u043f"
-        },
-        "tourism/caravan_site": {
-            "name": "\u0422\u0440\u0430\u0458\u043b\u0435\u0440\u0441\u043a\u0438 \u043a\u0430\u043c\u043f"
-        },
-        "tourism/gallery": {
-            "name": "\u0423\u043c\u0435\u0442\u043d\u0438\u0447\u043a\u0430 \u0433\u0430\u043b\u0435\u0440\u0438\u0458\u0430"
-        },
-        "tourism/guest_house": {
-            "name": "\u041f\u0430\u043d\u0441\u0438\u043e"
-        },
-        "tourism/hostel": {
-            "name": "\u0425\u043e\u0441\u0442\u0435\u043b"
-        },
-        "tourism/hotel": {
-            "name": "\u0425\u043e\u0442\u0435\u043b"
-        },
-        "tourism/information": {
-            "name": "\u0418\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u0438"
-        },
-        "tourism/information/board": {
-            "name": "\u0418\u043d\u0444\u043e\u0440\u043c\u0430\u0442\u0438\u0432\u043d\u0430 \u0442\u0430\u0431\u043b\u0430"
-        },
-        "tourism/information/guidepost": {
-            "name": "\u041f\u0430\u0442\u043e\u043a\u0430\u0437"
-        },
-        "tourism/information/map": {
-            "name": "\u041a\u0430\u0440\u0442\u0430"
-        },
-        "tourism/information/office": {
-            "name": "\u0422\u0443\u0440\u0438\u0441\u0442\u0438\u0447\u043a\u043e \u0431\u0438\u0440\u043e"
-        },
-        "tourism/motel": {
-            "name": "\u041c\u043e\u0442\u0435\u043b"
-        },
-        "tourism/museum": {
-            "name": "\u041c\u0443\u0437\u0435\u0458"
-        },
-        "tourism/picnic_site": {
-            "name": "\u0418\u0437\u043b\u0435\u0442\u043d\u0438\u0447\u043a\u043e \u043c\u0435\u0441\u0442\u043e"
-        },
-        "tourism/theme_park": {
-            "name": "\u0417\u0430\u0431\u0430\u0432\u0435\u043d \u043f\u0430\u0440\u043a"
-        },
-        "tourism/viewpoint": {
-            "name": "\u0412\u0438\u0434\u0438\u043a\u043e\u0432\u0435\u0446"
-        },
-        "tourism/zoo": {
-            "name": "\u0417\u043e\u043e\u043b\u043e\u0448\u043a\u0430 \u0433\u0440\u0430\u0434\u0438\u043d\u0430"
-        },
-        "traffic_calming": {
-            "name": "\u041d\u0430\u043c\u0430\u043b\u0443\u0432\u0430\u045a\u0435 \u043d\u0430 \u0441\u043e\u043e\u0431\u0440\u0430\u045c\u0430\u0458\u043e\u0442"
-        },
-        "traffic_calming/bump": {
-            "name": "\u041b\u0435\u0436\u0435\u0447\u043a\u0438 \u043f\u043e\u043b\u0438\u0446\u0430\u0435\u0446"
-        },
-        "traffic_calming/chicane": {
-            "name": "\u041a\u0440\u0438\u0432\u0443\u043b\u0438\u0446\u0430"
-        },
-        "traffic_calming/choker": {
-            "name": "\u041f\u0440\u0438\u0442\u0435\u0441\u043d\u0443\u0432\u0430\u0447"
-        },
-        "traffic_calming/cushion": {
-            "name": "\u0423\u043b\u0438\u0447\u043d\u0430 \u043f\u0435\u0440\u043d\u0438\u0446\u0430"
-        },
-        "traffic_calming/dip": {
-            "name": "\u0423\u043b\u0438\u0447\u043d\u0430 \u0431\u0440\u0430\u0437\u0434\u0430"
-        },
-        "traffic_calming/hump": {
-            "name": "\u0428\u0438\u0440\u043e\u043a \u043b\u0435\u0436\u0435\u0447\u043a\u0438 \u043f\u043e\u043b\u0438\u0446\u0430\u0435\u0446"
-        },
-        "traffic_calming/island": {
-            "name": "\u0421\u043e\u043e\u0431\u0440\u0430\u045c\u0430\u0435\u043d \u043e\u0441\u0442\u0440\u043e\u0432"
-        },
-        "traffic_calming/rumble_strip": {
-            "name": "\u0411\u0443\u0447\u043d\u0430 \u043b\u0438\u043d\u0438\u0458\u0430"
-        },
-        "type/boundary": {
-            "name": "\u0413\u0440\u0430\u043d\u0438\u0446\u0430"
-        },
-        "type/boundary/administrative": {
-            "name": "\u0410\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u0438\u0432\u043d\u0430 \u0433\u0440\u0430\u043d\u0438\u0446\u0430"
-        },
-        "type/multipolygon": {
-            "name": "\u041f\u043e\u0432\u0435\u045c\u0435\u043c\u043d\u043e\u0433\u0443\u0430\u0433\u043e\u043b\u043d\u0438\u043a"
-        },
-        "type/restriction": {
-            "name": "\u0417\u0430\u0431\u0440\u0430\u043d\u0430"
-        },
-        "type/restriction/no_left_turn": {
-            "name": "\u0417\u0430\u0431\u0440\u0430\u043d\u0435\u0442\u043e \u0432\u0440\u0442\u0435\u045a\u0435 \u043b\u0435\u0432\u043e"
-        },
-        "type/restriction/no_right_turn": {
-            "name": "\u0417\u0430\u0431\u0440\u0430\u043d\u0435\u0442\u043e \u0432\u0440\u0442\u0435\u045a\u0435 \u0434\u0435\u0441\u043d\u043e"
-        },
-        "type/restriction/no_straight_on": {
-            "name": "\u0417\u0430\u0431\u0440\u0430\u043d\u0435\u0442\u043e \u043e\u0434\u0435\u045a\u0435 \u043f\u0440\u0430\u0432\u043e"
-        },
-        "type/restriction/no_u_turn": {
-            "name": "\u0417\u0430\u0431\u0440\u0430\u043d\u0435\u0442 \u043f\u0440\u0435\u0441\u0432\u0440\u0442"
-        },
-        "type/route": {
-            "name": "\u041f\u0440\u0430\u0432\u0435\u0446"
-        },
-        "type/route/bicycle": {
-            "name": "\u0412\u0435\u043b\u043e\u0441\u0438\u043f\u0435\u0434\u0441\u043a\u0438 \u043f\u0440\u0430\u0432\u0435\u0446"
-        },
-        "type/route/bus": {
-            "name": "\u0410\u0432\u0442\u043e\u0431\u0443\u0441\u043a\u0438 \u043f\u0440\u0430\u0432\u0435\u0446"
-        },
-        "type/route/detour": {
-            "name": "\u0417\u0430\u043e\u0431\u0438\u043a\u043e\u043b\u0435\u043d \u043f\u0440\u0430\u0432\u0435\u0446"
-        },
-        "type/route/ferry": {
-            "name": "\u0422\u0440\u0430\u0435\u043a\u0442\u0435\u043d \u043f\u0440\u0430\u0432\u0435\u0446"
-        },
-        "type/route/foot": {
-            "name": "\u041f\u0435\u0448\u0430\u0447\u043a\u0438 \u043f\u0440\u0430\u0432\u0435\u0446"
-        },
-        "type/route/hiking": {
-            "name": "\u041f\u043b\u0430\u043d\u0438\u043d\u0430\u0440\u0441\u043a\u0438 \u043f\u0440\u0430\u0432\u0435\u0446"
-        },
-        "type/route/horse": {
-            "name": "\u0408\u0430\u0432\u0430\u0447\u043a\u0438 \u043f\u0440\u0430\u0432\u0435\u0446"
-        },
-        "type/route/pipeline": {
-            "name": "\u0426\u0435\u0432\u043a\u043e\u0432\u043e\u0434\u0435\u043d \u043f\u0440\u0430\u0432\u0435\u0446"
-        },
-        "type/route/power": {
-            "name": "\u0421\u0442\u0440\u0443\u0458\u043e\u0432\u043e\u0434\u0435\u043d \u043f\u0440\u0430\u0432\u0435\u0446"
-        },
-        "type/route/road": {
-            "name": "\u041f\u0430\u0442\u0435\u043d \u043f\u0440\u0430\u0432\u0435\u0446"
-        },
-        "type/route/train": {
-            "name": "\u0416\u0435\u043b\u0435\u0437\u043d\u0438\u0447\u043a\u0438 \u043f\u0440\u0430\u0432\u0435\u0446"
-        },
-        "type/route/tram": {
-            "name": "\u0422\u0440\u0430\u043c\u0432\u0430\u0458\u0441\u043a\u0438 \u043f\u0440\u0430\u0432\u0435\u0446"
-        },
-        "type/route_master": {
-            "name": "\u0414\u0432\u043e\u043a\u0430\u0442\u0435\u043d \u0430\u0432\u0442\u043e\u0431\u0443\u0441"
-        },
-        "type/site": {
-            "name": "\u041c\u0435\u0441\u043d\u043e\u0441\u0442"
-        },
-        "vertex": {
-            "name": "\u0414\u0440\u0443\u0433\u043e"
-        },
-        "waterway": {
-            "name": "\u0412\u043e\u0434\u0435\u043d \u043f\u0430\u0442"
-        },
-        "waterway/boatyard": {
-            "name": "\u0411\u0440\u043e\u0434\u043e\u0433\u0440\u0430\u0434\u0438\u043b\u0438\u0448\u0442\u0435"
-        },
-        "waterway/canal": {
-            "name": "\u041a\u0430\u043d\u0430\u043b"
-        },
-        "waterway/dam": {
-            "name": "\u0411\u0440\u0430\u043d\u0430"
-        },
-        "waterway/ditch": {
-            "name": "\u0420\u043e\u0432"
-        },
-        "waterway/dock": {
-            "name": "\u041c\u043e\u043a\u0430\u0440 \u0434\u043e\u043a / \u0421\u0443\u0432 \u0434\u043e\u043a"
-        },
-        "waterway/drain": {
-            "name": "\u041e\u0434\u0432\u043e\u0434"
-        },
-        "waterway/fuel": {
-            "name": "\u0411\u0435\u043d\u0437\u0438\u0441\u043a\u0430 \u0441\u0442\u0430\u043d\u0438\u0446\u0430 \u0437\u0430 \u043f\u043b\u043e\u0432\u0438\u043b\u0430"
-        },
-        "waterway/river": {
-            "name": "\u0420\u0435\u043a\u0430"
-        },
-        "waterway/riverbank": {
-            "name": "\u0420\u0435\u0447\u0435\u043d \u0431\u0440\u0435\u0433"
-        },
-        "waterway/sanitary_dump_station": {
-            "name": "\u0418\u0444\u0440\u043b\u0430\u045a\u0435 \u0444\u0435\u043a\u0430\u043b\u0438\u0438 \u043e\u0434 \u043f\u043b\u043e\u0432\u0438\u043b\u0430"
+        "leisure/swimming_pool": {
+            "name": "Базен"
         },
         "waterway/stream": {
-            "name": "\u041f\u043e\u0442\u043e\u043a"
+            "name": "Поток"
+        },
+        "railway": {
+            "name": "Пруга"
+        },
+        "building/university": {
+            "name": "Универзитет"
+        },
+        "amenity/library": {
+            "name": "Библиотека"
+        },
+        "shop/stationery": {
+            "name": "Канцелариски материјали"
+        },
+        "highway/secondary_link": {
+            "name": "Второстепен приод"
+        },
+        "amenity/waste_disposal": {
+            "name": "Контејнер"
+        },
+        "highway/living_street": {
+            "name": "Маалска улица"
+        },
+        "craft/sawmill": {
+            "name": "Пилана"
+        },
+        "emergency/yes": {
+            "name": "Има итен пристап"
+        },
+        "landuse/military/bunker": {
+            "name": "Бункер"
+        },
+        "power/sub_station": {
+            "name": "Трафостаница"
+        },
+        "shop/copyshop": {
+            "name": "Копирница"
+        },
+        "highway/motorway": {
+            "name": "Автопат"
+        },
+        "natural/bay": {
+            "name": "Залив"
+        },
+        "leisure/firepit": {
+            "name": "Огниште"
+        },
+        "building/terrace": {
+            "name": "Нанижани куќи"
+        },
+        "man_made/bridge": {
+            "name": "Мост"
+        },
+        "aeroway/runway": {
+            "name": "Писта"
+        },
+        "railway/monorail": {
+            "name": "Едношинска пруга"
+        },
+        "amenity/studio": {
+            "name": "Студио"
+        },
+        "landuse/military": {
+            "name": "Воено подрачје"
+        },
+        "office/physician": {
+            "name": "Лекар"
+        },
+        "shop/bicycle": {
+            "name": "Продавница за велосипеди"
+        },
+        "shop/seafood": {
+            "name": "Продавница за морска храна"
+        },
+        "waterway/sanitary_dump_station": {
+            "name": "Ифрлање фекалии од пловила"
+        },
+        "barrier/city_wall": {
+            "name": "Градски ѕид"
+        },
+        "office/employment_agency": {
+            "name": "Агенција за вработување"
+        },
+        "tourism/apartment": {
+            "name": "Пансион"
+        },
+        "amenity/hunting_stand": {
+            "name": "Ловен видиковец"
+        },
+        "tourism/guest_house": {
+            "name": "Пансио"
+        },
+        "office/government/register_office": {
+            "name": "Матична служба"
+        },
+        "amenity/waste_transfer_station": {
+            "name": "Претоварна отпадна станица"
+        },
+        "power/plant": {
+            "name": "Електрана"
+        },
+        "boundary/administrative": {
+            "name": "Административна граница"
+        },
+        "man_made/surveillance": {
+            "name": "Надзор"
+        },
+        "amenity": {
+            "name": "Услужни објекти"
+        },
+        "tourism/gallery": {
+            "name": "Уметничка галерија"
+        },
+        "amenity/fuel": {
+            "name": "Бензинска пумпа"
+        },
+        "type/route/tram": {
+            "name": "Трамвајски правец"
+        },
+        "leisure/pitch/american_football": {
+            "name": "Игралиште за американски фудбал"
+        },
+        "shop/second_hand": {
+            "name": "Продавница за половни работи"
+        },
+        "traffic_calming/bump": {
+            "name": "Лежечки полицаец"
+        },
+        "place/island": {
+            "name": "Остров"
+        },
+        "craft/carpenter": {
+            "name": "Столар"
+        },
+        "railway/level_crossing": {
+            "name": "Премин преку пруга (пат)"
+        },
+        "man_made/pier": {
+            "name": "Пристанишен мост"
+        },
+        "shop/farm": {
+            "name": "Пилјарска тезга"
+        },
+        "highway/road": {
+            "name": "Непознат пат"
+        },
+        "address": {
+            "name": "Адреса"
+        },
+        "craft/rigger": {
+            "name": "Подигач"
+        },
+        "highway/primary_link": {
+            "name": "Главен приод"
+        },
+        "man_made/water_works": {
+            "name": "Водоснабдување"
+        },
+        "shop/greengrocer": {
+            "name": "Пилјарница"
+        },
+        "amenity/pub": {
+            "name": "Паб"
+        },
+        "building/entrance": {
+            "name": "Влез/излез"
+        },
+        "highway/traffic_mirror": {
+            "name": "Сообраќајно огледало"
+        },
+        "shop/religion": {
+            "name": "Верска продавница"
+        },
+        "golf/rough": {
+            "name": "Нерамно поле"
+        },
+        "man_made/breakwater": {
+            "name": "Бранобран"
+        },
+        "shop/shoes": {
+            "name": "Продавница за обувки"
+        },
+        "aerialway/rope_tow": {
+            "name": "Влекач со појас"
+        },
+        "shop/dairy": {
+            "name": "Бакалница"
+        },
+        "type/route/road": {
+            "name": "Патен правец"
+        },
+        "amenity/ranger_station": {
+            "name": "Шумарска куќарка"
+        },
+        "amenity/planetarium": {
+            "name": "Планетариум"
+        },
+        "office/financial": {
+            "name": "Финансиска служба"
+        },
+        "highway/track": {
+            "name": "Неодржуван неасфалтиран пат"
+        },
+        "shop/wine": {
+            "name": "Винотека"
+        },
+        "shop/hairdresser": {
+            "name": "Фризерски салон"
+        },
+        "aerialway/platter": {
+            "name": "Скијачки влекач"
+        },
+        "amenity/swimming_pool": {
+            "name": "Базен"
+        },
+        "amenity/vending_machine/condoms": {
+            "name": "<преведете со истозначници или сродни поими на „Автомат за кондоми“, одделени со запирки>"
+        },
+        "man_made/adit": {
+            "name": "Хоризонтален отвор"
+        },
+        "man_made/tower": {
+            "name": "Кула"
+        },
+        "shop/florist": {
+            "name": "Цвеќарница"
+        },
+        "type/route/ferry": {
+            "name": "Траектен правец"
+        },
+        "building/school": {
+            "name": "Училиште"
+        },
+        "amenity/atm": {
+            "name": "Банкомат"
+        },
+        "tourism/information/board": {
+            "name": "Информативна табла"
+        },
+        "ford": {
+            "name": "Брод"
+        },
+        "shop/furnace": {
+            "name": "Продавница за печки"
+        },
+        "landuse/industrial": {
+            "name": "Индустриско подрачје"
+        },
+        "natural/sand": {
+            "name": "Песо"
+        },
+        "place/locality": {
+            "name": "Месност"
+        },
+        "type/route/hiking": {
+            "name": "Планинарски правец"
+        },
+        "amenity/courthouse": {
+            "name": "Суд"
+        },
+        "shop/art": {
+            "name": "Продавница за уметнички дела"
+        },
+        "tourism/hostel": {
+            "name": "Хостел"
+        },
+        "leisure/pitch/volleyball": {
+            "name": "Одбојкарско игралиште"
+        },
+        "amenity/veterinary": {
+            "name": "Ветеринар"
+        },
+        "place/hamlet": {
+            "name": "Заселок"
+        },
+        "amenity/recycling_centre": {
+            "name": "Рецикларница"
+        },
+        "craft/pottery": {
+            "name": "<преведете со истозначници или сродни поими на „Грнчар“, одделени со запирки>"
+        },
+        "craft/roofer": {
+            "name": "Покривар"
+        },
+        "waterway/fuel": {
+            "name": "Бензиска станица за пловила"
+        },
+        "highway": {
+            "name": "Автопат"
+        },
+        "shop/massage": {
+            "name": "Масажа"
+        },
+        "area": {
+            "name": "Подрачје"
+        },
+        "shop/pastry": {
+            "name": "Бели печива"
+        },
+        "landuse/landfill": {
+            "name": "Депонија"
+        },
+        "amenity/theatre": {
+            "name": "Театар"
+        },
+        "landuse/military/checkpoint": {
+            "name": "Контролен пункт"
+        },
+        "man_made/lighthouse": {
+            "name": "Светилник"
+        },
+        "type/route/train": {
+            "name": "Железнички правец"
+        },
+        "barrier/fence": {
+            "name": "Ограда"
+        },
+        "tourism/aquarium": {
+            "name": "Аквариум"
+        },
+        "landuse/cemetery": {
+            "name": "Гробишта"
+        },
+        "railway/rail": {
+            "name": "Шини"
+        },
+        "type/site": {
+            "name": "Месност"
+        },
+        "natural/scree": {
+            "name": "Сип"
+        },
+        "office/government": {
+            "name": "Управна служба"
+        },
+        "amenity/fountain": {
+            "name": "Чешма"
+        },
+        "railway/disused": {
+            "name": "Неупотребувана пруга"
+        },
+        "shop/doityourself": {
+            "name": "Продавница за мајсторисување"
+        },
+        "amenity/taxi": {
+            "name": "Такси-постојка"
+        },
+        "amenity/grave_yard": {
+            "name": "Гробишта"
+        },
+        "leisure/fitness_station": {
+            "name": "Вежбалница на отворено"
+        },
+        "man_made/water_tower": {
+            "name": "Водна кула"
+        },
+        "railway/subway_entrance": {
+            "name": "Влез во подземна железница"
+        },
+        "shop/dry_cleaning": {
+            "name": "Хемиско чистење"
+        },
+        "leisure/picnic_table": {
+            "name": "Излетничка маса"
+        },
+        "man_made/cutline": {
+            "name": "Засечена линија"
+        },
+        "craft/scaffolder": {
+            "name": "Скелар"
+        },
+        "tourism/caravan_site": {
+            "name": "Трајлерски камп"
+        },
+        "craft/clockmaker": {
+            "name": "Часовничар"
+        },
+        "shop/locksmith": {
+            "name": "Бравар"
+        },
+        "office/insurance": {
+            "name": "Осигурително друштво"
+        },
+        "shop/furniture": {
+            "name": "Салон за мебел"
+        },
+        "leisure/pitch": {
+            "name": "Спортско игралиште"
+        },
+        "tourism/hotel": {
+            "name": "Хотел"
+        },
+        "advertising/billboard": {
+            "name": "Рекламна табла"
+        },
+        "shop/bakery": {
+            "name": "Пекарница"
+        },
+        "historic/monument": {
+            "name": "Споменик"
+        },
+        "emergency/phone": {
+            "name": "Итен телефон"
+        },
+        "type/route/bicycle": {
+            "name": "Велосипедски правец"
+        },
+        "highway/give_way": {
+            "name": "Знак за предност"
+        },
+        "golf/bunker": {
+            "name": "Песочна бразда"
+        },
+        "shop/houseware": {
+            "name": "Продавница за домот"
+        },
+        "leisure/pitch/soccer": {
+            "name": "Фудбалско игралиште"
+        },
+        "type/multipolygon": {
+            "name": "Повеќемногуаголник"
+        },
+        "shop/vacant": {
+            "name": "Празна продавница"
+        },
+        "amenity/social_facility/homeless_shelter": {
+            "name": "Засолниште за бездомници"
+        },
+        "highway/turning_loop": {
+            "name": "Свртилиште (остров)"
+        },
+        "historic": {
+            "name": "Историска месност"
+        },
+        "leisure/miniature_golf": {
+            "name": "Миниголф"
+        },
+        "building/kindergarten": {
+            "name": "Детска градинка"
+        },
+        "amenity/hospital": {
+            "name": "Болнички двор"
+        },
+        "leisure/playground": {
+            "name": "Игралиште"
+        },
+        "amenity/telephone": {
+            "name": "Телефон"
+        },
+        "building/dormitory": {
+            "name": "Студентски дом"
+        },
+        "craft/blacksmith": {
+            "name": "Ковач"
+        },
+        "landuse/residential": {
+            "name": "Станбено подрачје"
+        },
+        "shop/erotic": {
+            "name": "Еротска продавница"
+        },
+        "leisure/stadium": {
+            "name": "Стадион"
+        },
+        "amenity/drinking_water": {
+            "name": "Пивка вода"
+        },
+        "highway/mini_roundabout": {
+            "name": "Мини-кружен тек"
+        },
+        "barrier/kissing_gate": {
+            "name": "Стоконепропусна порта"
+        },
+        "landuse/recreation_ground": {
+            "name": "Рекреативен терен"
+        },
+        "type/restriction/no_u_turn": {
+            "name": "Забранет пресврт"
+        },
+        "amenity/townhall": {
+            "name": "Градски дом"
+        },
+        "highway/service/parking_aisle": {
+            "name": "Паркинг-минувалиште"
+        },
+        "amenity/bbq": {
+            "name": "Скара"
+        },
+        "natural/water": {
+            "name": "Вода"
+        },
+        "barrier/cycle_barrier": {
+            "name": "Велосипедска препрека"
+        },
+        "waterway/dock": {
+            "name": "Мокар док / Сув док"
+        },
+        "embankment": {
+            "name": "Кеј"
+        },
+        "shop/sports": {
+            "name": "Продавница за спортска опрема"
+        },
+        "waterway/boatyard": {
+            "name": "Бродоградилиште"
+        },
+        "power/line": {
+            "name": "Далновод"
+        },
+        "amenity/ice_cream": {
+            "name": "Сладоледџилница"
+        },
+        "power/pole": {
+            "name": "Бандера"
+        },
+        "emergency/destination": {
+            "name": "Итно одредиште"
+        },
+        "craft/winery": {
+            "name": "Винарија"
+        },
+        "shop/laundry": {
+            "name": "Перачница"
+        },
+        "natural/peak": {
+            "name": "Врв"
+        },
+        "highway/tertiary": {
+            "name": "Третостепен пат"
+        },
+        "shop/beauty/nails": {
+            "name": "Маникир/педикир"
+        },
+        "tourism/artwork": {
+            "name": "Уметничко дело"
+        },
+        "amenity/grit_bin": {
+            "name": "Кутија за попескување"
+        },
+        "amenity/bank": {
+            "name": "Банка"
+        },
+        "amenity/vending_machine/sweets": {
+            "name": "Автомат за ужинки"
+        },
+        "landuse/retail": {
+            "name": "Продажно подрачје"
+        },
+        "craft/key_cutter": {
+            "name": "Клучар"
+        },
+        "leisure/resort": {
+            "name": "Одморалиште"
+        },
+        "shop/pyrotechnics": {
+            "name": "Продавница за огномет"
+        },
+        "amenity/prison": {
+            "name": "Затворски двор"
+        },
+        "amenity/arts_centre": {
+            "name": "Дом на уметноста"
+        },
+        "railway/crossing": {
+            "name": "Премин преку пруга (патека)"
+        },
+        "shop/travel_agency": {
+            "name": "Туристичка агенција"
+        },
+        "amenity/restaurant": {
+            "name": "Ресторан"
+        },
+        "type/route/detour": {
+            "name": "Заобиколен правец"
+        },
+        "amenity/police": {
+            "name": "Полиција"
+        },
+        "place/farm": {
+            "name": "Фарма"
+        },
+        "amenity/bicycle_repair_station": {
+            "name": "Држач за поправка на велосипеди"
+        },
+        "highway/service/driveway": {
+            "name": "Моторна патека"
+        },
+        "leisure/pitch/basketball": {
+            "name": "Кошаркарско игралиште"
+        },
+        "shop/newsagent": {
+            "name": "Весникарница"
+        },
+        "building/residential": {
+            "name": "Станбен објект"
+        },
+        "highway/services": {
+            "name": "Опслужно подрачје"
+        },
+        "amenity/community_centre": {
+            "name": "Месна заедница"
+        },
+        "amenity/bureau_de_change": {
+            "name": "Менувачница"
+        },
+        "shop/tyres": {
+            "name": "Продавница за автогуми"
+        },
+        "landuse/military/nuclear_explosion_site": {
+            "name": "Место на нуклеарна експлозија"
+        },
+        "leisure": {
+            "name": "Разонода"
+        },
+        "amenity/post_office": {
+            "name": "Пошта"
+        },
+        "traffic_calming/island": {
+            "name": "Сообраќаен остров"
+        },
+        "natural/volcano": {
+            "name": "Вулкан"
+        },
+        "aerialway/gondola": {
+            "name": "Гондола"
+        },
+        "shop/window_blind": {
+            "name": "Продавница за завеси и ролетни"
+        },
+        "landuse/military/barracks": {
+            "name": "Касарна"
+        },
+        "amenity/bar": {
+            "name": "Бар"
+        },
+        "traffic_calming/cushion": {
+            "name": "Улична перница"
+        },
+        "amenity/casino": {
+            "name": "Коцкарница"
+        },
+        "tourism/museum": {
+            "name": "Музеј"
+        },
+        "traffic_calming": {
+            "name": "Намалување на сообраќајот"
+        },
+        "barrier/stile": {
+            "name": "Оградни скалила"
+        },
+        "shop/boutique": {
+            "name": "Бутик"
+        },
+        "aerialway/pylon": {
+            "name": "Жичнички далекувод"
+        },
+        "railway/narrow_gauge": {
+            "name": "Теснолинејка"
+        },
+        "shop/curtain": {
+            "name": "Продавница за завеси"
+        },
+        "area/highway": {
+            "name": "Патна површина"
+        },
+        "amenity/vending_machine/parking_tickets": {
+            "name": "Паркинг-автомат"
+        },
+        "leisure/pitch/tennis": {
+            "name": "Тениско игралиште"
+        },
+        "shop/weapons": {
+            "name": "Продавница за оружје"
+        },
+        "highway/trunk": {
+            "name": "Магистрален пат"
+        },
+        "craft/watchmaker": {
+            "name": "Часовничар"
+        },
+        "leisure/fitness_centre": {
+            "name": "Вежбалница"
+        },
+        "golf/tee": {
+            "name": "Почетна рамнинка"
+        },
+        "office": {
+            "name": "Канцеларија"
+        },
+        "highway/corridor": {
+            "name": "Покриен премин"
+        },
+        "amenity/fire_station": {
+            "name": "Противпожарна станица"
+        },
+        "barrier/entrance": {
+            "name": "Влез"
+        },
+        "emergency/fire_hydrant": {
+            "name": "Хидрант"
+        },
+        "shop/scuba_diving": {
+            "name": "Продавница за нуркачка опрема"
+        },
+        "natural/water/pond": {
+            "name": "Езерце"
+        },
+        "craft/bookbinder": {
+            "name": "Книговезец"
+        },
+        "man_made/groyne": {
+            "name": "Брежна препрека"
+        },
+        "shop/pawnbroker": {
+            "name": "Заложилница"
+        },
+        "shop/beverages": {
+            "name": "Продавница за пијалаци"
+        },
+        "shop/vacuum_cleaner": {
+            "name": "Продавница за правосмукалки"
+        },
+        "entrance": {
+            "name": "Влез/излез"
+        },
+        "shop/chemist": {
+            "name": "Аптека"
+        },
+        "tourism/information/map": {
+            "name": "Карта"
+        },
+        "building/hospital": {
+            "name": "Болница"
+        },
+        "amenity/marketplace": {
+            "name": "Пазар"
+        },
+        "building/industrial": {
+            "name": "Индустриски објект"
+        },
+        "power/tower": {
+            "name": "Високонапонски далновод"
+        },
+        "aerialway/cable_car": {
+            "name": "Жичничка кабина"
+        },
+        "amenity/university": {
+            "name": "Универзитетски двор"
+        },
+        "building/public": {
+            "name": "Општествен објект"
+        },
+        "landuse/military/airfield": {
+            "name": "Воен аеродром"
+        },
+        "craft/boatbuilder": {
+            "name": "Бродоградител"
+        },
+        "craft/shoemaker": {
+            "name": "Чевлар"
+        },
+        "office/estate_agent": {
+            "name": "Агенција за недвижности"
+        },
+        "shop/interior_decoration": {
+            "name": "Продавница за внатрешно уредување"
+        },
+        "amenity/college": {
+            "name": "Средношколски двор"
+        },
+        "shop/toys": {
+            "name": "Продавница за играчки"
+        },
+        "type/restriction/no_straight_on": {
+            "name": "Забрането одење право"
+        },
+        "landuse/allotments": {
+            "name": "Заедничка градина"
+        },
+        "amenity/social_facility/food_bank": {
+            "name": "Банка на храна"
+        },
+        "shop/nutrition_supplements": {
+            "name": "Продавница за прехранбени додатоци"
+        },
+        "craft/gardener": {
+            "name": "Градинар"
+        },
+        "building/church": {
+            "name": "Црква"
+        },
+        "amenity/cafe": {
+            "name": "Кафетерија"
+        },
+        "leisure/pitch/bowls": {
+            "name": "Терен за боќање"
+        },
+        "shop/video_games": {
+            "name": "Продавница за видеоигри"
+        },
+        "highway/service/emergency_access": {
+            "name": "Итен пристап"
+        },
+        "traffic_calming/dip": {
+            "name": "Улична бразда"
+        },
+        "craft/plasterer": {
+            "name": "Гипсар"
+        },
+        "amenity/parking_space": {
+            "name": "Паркинг-место"
+        },
+        "traffic_calming/choker": {
+            "name": "Притеснувач"
+        },
+        "building/greenhouse": {
+            "name": "Стакленик"
+        },
+        "railway/funicular": {
+            "name": "Искачница"
+        },
+        "power/transformer": {
+            "name": "Трансформатор"
+        },
+        "power/generator": {
+            "name": "Генератор"
+        },
+        "shop/pet": {
+            "name": "Продавница за домашни миленици"
+        },
+        "natural/wetland": {
+            "name": "Мочуриште"
+        },
+        "man_made/survey_point": {
+            "name": "Надзорно место"
+        },
+        "roundabout": {
+            "name": "Кружен тек"
+        },
+        "landuse/military/naval_base": {
+            "name": "Поморска база"
+        },
+        "type/route/power": {
+            "name": "Струјоводен правец"
+        },
+        "highway/service/alley": {
+            "name": "Сокак"
+        },
+        "shop/department_store": {
+            "name": "Стоковна куќа"
+        },
+        "historic/wayside_cross": {
+            "name": "Крајпатен крст"
+        },
+        "man_made/petroleum_well": {
+            "name": "Нафтен извор"
+        },
+        "shop/tailor": {
+            "name": "Кројач"
+        },
+        "natural/cliff": {
+            "name": "Спила"
+        },
+        "amenity/clock": {
+            "name": "Часовник"
+        },
+        "building/garage": {
+            "name": "Гаража"
+        },
+        "highway/footway": {
+            "name": "Пешачка патека"
+        },
+        "natural/coastline": {
+            "name": "Брег"
+        },
+        "building/roof": {
+            "name": "Покрив"
+        },
+        "craft/upholsterer": {
+            "name": "Тапетар"
+        },
+        "natural/glacier": {
+            "name": "Ледник"
+        },
+        "shop/storage_rental": {
+            "name": "Изнамјување складишен простор"
+        },
+        "building/hotel": {
+            "name": "Хотел"
+        },
+        "shop/anime": {
+            "name": "Продавница за аниме"
+        },
+        "route/ferry": {
+            "name": "Траектен правец"
+        },
+        "shop/outdoor": {
+            "name": "Продавница за рекреативна опрема"
+        },
+        "shop/fashion": {
+            "name": "Модна продавница"
+        },
+        "emergency/designated": {
+            "name": "Означен итен пристап"
+        },
+        "power/substation": {
+            "name": "Трафостаница"
+        },
+        "highway/steps": {
+            "name": "Скалила"
+        },
+        "amenity/vending_machine/drinks": {
+            "name": "Автопат за пијалаци"
+        },
+        "amenity/fast_food": {
+            "name": "Брза храна"
+        },
+        "highway/primary": {
+            "name": "Главен пат"
+        },
+        "type/route/pipeline": {
+            "name": "Цевководен правец"
+        },
+        "barrier/cattle_grid": {
+            "name": "Решетка за добиток"
+        },
+        "tourism/motel": {
+            "name": "Мотел"
+        },
+        "shop/chocolate": {
+            "name": "Продавница за чоколади"
+        },
+        "building/cathedral": {
+            "name": "Соборен храм"
+        },
+        "man_made/pumping_station": {
+            "name": "Пумпарница"
+        },
+        "building/bunker": {
+            "name": "Бункер"
+        },
+        "emergency/defibrillator": {
+            "name": "Дефибрилатор"
+        },
+        "craft/photographic_laboratory": {
+            "name": "Фотографска лабораторија"
+        },
+        "aeroway/helipad": {
+            "name": "Хеликоптерско слетувалиште"
+        },
+        "leisure/slipway": {
+            "name": "Испуст за пловила"
+        },
+        "leisure/dance": {
+            "name": "Сала за игранки"
+        },
+        "traffic_calming/hump": {
+            "name": "Широк лежечки полицаец"
+        },
+        "amenity/dentist": {
+            "name": "Забар"
+        },
+        "building/chapel": {
+            "name": "Капела"
+        },
+        "craft/caterer": {
+            "name": "Доставен угостител"
+        },
+        "office/research": {
+            "name": "Истражувачка служба"
+        },
+        "shop/tea": {
+            "name": "Продавница за чај"
+        },
+        "office/travel_agent": {
+            "name": "Туристичка агенција"
+        },
+        "aerialway/chair_lift": {
+            "name": "Жичничка клупа"
+        },
+        "craft/jeweler": {
+            "name": "Златар"
+        },
+        "office/telecommunication": {
+            "name": "Телекомуникациска служба"
+        },
+        "shop/bag": {
+            "name": "Продавница за чанти, торби и куфери"
+        },
+        "shop/supermarket": {
+            "name": "Супермаркет"
+        },
+        "office/political_party": {
+            "name": "Партија"
         },
         "waterway/water_point": {
-            "name": "\u041f\u0438\u0432\u043a\u0430 \u0432\u043e\u0434\u0430 \u0437\u0430 \u043f\u043b\u043e\u0432\u0438\u043b\u0430"
+            "name": "Пивка вода за пловила"
+        },
+        "shop/garden_centre": {
+            "name": "Градинарски центар"
+        },
+        "leisure/sports_centre/swimming": {
+            "name": "Базенски објект"
+        },
+        "barrier/hedge": {
+            "name": "Жива ограда"
+        },
+        "shop/kitchen": {
+            "name": "Кујни и елементи"
+        },
+        "landuse/military/range": {
+            "name": "Воено стрелиште"
+        },
+        "man_made/silo": {
+            "name": "Силос"
+        },
+        "building/garages": {
+            "name": "Гаражи"
+        },
+        "leisure/pitch/rugby_league": {
+            "name": "Игралиште за рагби-лига"
+        },
+        "shop/beauty": {
+            "name": "Салон за убавина"
+        },
+        "building/hut": {
+            "name": "Колиба"
+        },
+        "shop/candles": {
+            "name": "Свеќарница"
+        },
+        "natural/saddle": {
+            "name": "Седло"
+        },
+        "amenity/charging_station": {
+            "name": "Акумулаторска станица"
+        },
+        "waterway/canal": {
+            "name": "Канал"
+        },
+        "leisure/common": {
+            "name": "Јавно зеленило"
+        },
+        "type/route/horse": {
+            "name": "Јавачки правец"
+        },
+        "amenity/dojo": {
+            "name": "Училиште за боречки вештини"
+        },
+        "landuse/farmland": {
+            "name": "Земјоделска површина"
+        },
+        "shop/baby_goods": {
+            "name": "Продавница за бебешка опрема"
+        },
+        "shop/fishmonger": {
+            "name": "Рибарница"
+        },
+        "landuse/orchard": {
+            "name": "Овоштарник"
+        },
+        "type/restriction/no_right_turn": {
+            "name": "Забрането вртење десно"
+        },
+        "shop/car": {
+            "name": "Автосалон"
+        },
+        "building/stable": {
+            "name": "Штала"
+        },
+        "man_made/storage_tank": {
+            "name": "Резервоар"
+        },
+        "place/neighbourhood": {
+            "name": "Населба"
+        },
+        "amenity/public_bookcase": {
+            "name": "Јавен шкаф за книги"
+        },
+        "tourism/camp_site": {
+            "name": "Камп"
+        },
+        "golf/hole": {
+            "name": "Дупка за голф"
+        },
+        "building/semidetached_house": {
+            "name": "Двојна куќа"
+        },
+        "railway/abandoned": {
+            "name": "Напуштена пруга"
+        },
+        "type/restriction": {
+            "name": "Забрана"
+        },
+        "shop/bathroom_furnishing": {
+            "name": "Продавница за санитарии"
+        },
+        "shop/beauty/tanning": {
+            "name": "Солариум"
+        },
+        "amenity/water_point": {
+            "name": "Пивка вода за трајлери"
+        },
+        "man_made/chimney": {
+            "name": "Оџак"
+        },
+        "amenity/food_court": {
+            "name": "Сала за брза храна"
+        },
+        "shop/mall": {
+            "name": "Трговски центар"
+        },
+        "barrier/wall": {
+            "name": "Ѕид"
+        },
+        "natural/beach": {
+            "name": "Плажа"
+        },
+        "junction": {
+            "name": "Раскрсница"
+        },
+        "craft/insulator": {
+            "name": "Изолатор"
+        },
+        "shop/herbalist": {
+            "name": "Билна аптека"
+        },
+        "landuse/vineyard": {
+            "name": "Лозје"
+        },
+        "vertex": {
+            "name": "Друго"
+        },
+        "type/boundary": {
+            "name": "Граница"
+        },
+        "aeroway/taxiway": {
+            "name": "Воздухопловен приод"
+        },
+        "traffic_calming/rumble_strip": {
+            "name": "Бучна линија"
+        },
+        "craft/optician": {
+            "name": "Оптичар"
         },
         "waterway/waterfall": {
-            "name": "\u0412\u043e\u0434\u043e\u043f\u0430\u0434"
+            "name": "Водопад"
+        },
+        "type/route": {
+            "name": "Правец"
+        },
+        "amenity/vending_machine/public_transport_tickets": {
+            "name": "Автомат за преодни билети"
+        },
+        "man_made/embankment": {
+            "name": "Кеј"
+        },
+        "shop/tobacco": {
+            "name": "Продавница за тутун"
+        },
+        "building/shed": {
+            "name": "Шупа"
+        },
+        "building/detached": {
+            "name": "Самостојна куќа"
+        },
+        "shop/charity": {
+            "name": "Добротворна продавница"
+        },
+        "shop/musical_instrument": {
+            "name": "Продавница за музички инструменти"
+        },
+        "aeroway/hangar": {
+            "name": "Хангар"
+        },
+        "man_made/wastewater_plant": {
+            "name": "Канализациска станица"
+        },
+        "landuse/plant_nursery": {
+            "name": "Расадник"
+        },
+        "shop/money_lender": {
+            "name": "Зајмување пари"
+        },
+        "shop/radiotechnics": {
+            "name": "Продавница за електрични делови"
+        },
+        "building/college": {
+            "name": "Средно училиште"
+        },
+        "building/retail": {
+            "name": "Проджен објект"
+        },
+        "shop/ticket": {
+            "name": "Билетарница"
+        },
+        "amenity/social_facility/group_home": {
+            "name": "Старечки дом"
+        },
+        "highway/motorway_link": {
+            "name": "Автопатен приод"
+        },
+        "natural/water/reservoir": {
+            "name": "Вештачко езеро"
+        },
+        "place/isolated_dwelling": {
+            "name": "Оддалечено живеалиште"
+        },
+        "craft/saddler": {
+            "name": "Седлар"
+        },
+        "landuse/quarry": {
+            "name": "Каменолом"
+        },
+        "shop/bed": {
+            "name": "Продавница за кревети и постелнина"
+        },
+        "landuse/basin": {
+            "name": "Слив"
+        },
+        "shop/paint": {
+            "name": "Бои и лакови"
+        },
+        "historic/ruins": {
+            "name": "Рушевини"
+        },
+        "natural/scrub": {
+            "name": "Честак"
+        },
+        "craft/photographer": {
+            "name": "Фотограф"
+        },
+        "highway/secondary": {
+            "name": "Второстепен пат"
+        },
+        "natural/fell": {
+            "name": "Фјал"
+        },
+        "shop": {
+            "name": "Дуќан"
+        },
+        "natural/heath": {
+            "name": "Вресиште"
+        },
+        "landuse/military/obstacle_course": {
+            "name": "Вежбалиште со препреки"
+        },
+        "natural/spring": {
+            "name": "Извор"
+        },
+        "man_made/pipeline": {
+            "name": "Цевковод"
+        },
+        "shop/leather": {
+            "name": "Кожна галантерија"
+        },
+        "building/commercial": {
+            "name": "Деловен објект"
+        },
+        "amenity/childcare": {
+            "name": "Детска градинка"
+        },
+        "office/educational_institution": {
+            "name": "Образовна установа"
+        },
+        "amenity/bicycle_parking": {
+            "name": "Велосипедско паркиралиште"
+        },
+        "amenity/compressed_air": {
+            "name": "Компресор"
+        },
+        "shop/deli": {
+            "name": "Продавница за деликатеси"
+        },
+        "man_made/water_well": {
+            "name": "Бунар"
+        },
+        "shop/organic": {
+            "name": "Продавница за органски производи"
+        },
+        "waterway/ditch": {
+            "name": "Ров"
+        },
+        "highway/service/drive-through": {
+            "name": "Услужна патека"
+        },
+        "landuse/military/danger_area": {
+            "name": "Опасно подрачје"
+        },
+        "shop/confectionery": {
+            "name": "Бонбониера"
+        },
+        "tourism/information/guidepost": {
+            "name": "Патоказ"
+        },
+        "shop/electronics": {
+            "name": "Продавница за електронска роба"
+        },
+        "waterway": {
+            "name": "Воден пат"
+        },
+        "amenity/clinic": {
+            "name": "Клиника"
+        },
+        "amenity/place_of_worship/buddhist": {
+            "name": "Будистички храм"
+        },
+        "amenity/cinema": {
+            "name": "Кино"
+        },
+        "natural/bare_rock": {
+            "name": "Гола карпа"
+        },
+        "type/route/bus": {
+            "name": "Автобуски правец"
+        },
+        "type/route_master": {
+            "name": "Двокатен автобус"
+        },
+        "landuse/farm": {
+            "name": "Земјоделска површина"
+        },
+        "amenity/crematorium": {
+            "name": "Крематориум"
+        },
+        "natural/wood": {
+            "name": "Шума"
+        },
+        "amenity/waste_basket": {
+            "name": "Корпа за отпадоци"
+        },
+        "building/construction": {
+            "name": "Градилиште"
+        },
+        "highway/unclassified": {
+            "name": "Месен/некатегоризиран пат"
+        },
+        "leisure/pitch/rugby_union": {
+            "name": "Игралиште за рагби - сојузно"
+        },
+        "aeroway/apron": {
+            "name": "Воздухпловен перон"
+        },
+        "shop/tattoo": {
+            "name": "Тетоважи"
+        },
+        "shop/optician": {
+            "name": "Оптичар"
+        },
+        "amenity/social_facility": {
+            "name": "Социјална служба"
+        },
+        "type/route/foot": {
+            "name": "Пешачки правец"
+        },
+        "barrier/block": {
+            "name": "Блок"
+        },
+        "shop/hifi": {
+            "name": "Продавница за аудиоопрема"
+        },
+        "craft/window_construction": {
+            "name": "Изработка на прозорци"
+        },
+        "craft/tinsmith": {
+            "name": "Калајџија"
+        },
+        "relation": {
+            "name": "Однос"
+        },
+        "golf/green": {
+            "name": "Вметнувалиште"
+        },
+        "shop/medical_supply": {
+            "name": "Медицинска опрема и залихи"
+        },
+        "shop/mobile_phone": {
+            "name": "Мобилара",
+            "terms": "<преведете со истозначници или сродни поими на „Мобилараn“, одделени со запирки>"
+        },
+        "craft/basket_maker": {
+            "name": "Кошничар"
+        },
+        "camp_site/camp_pitch": {
+            "name": "Камп-терен"
+        },
+        "place/town": {
+            "name": "Помал град"
+        },
+        "landuse/commercial": {
+            "name": "Стопанско подрачје"
+        },
+        "highway/tertiary_link": {
+            "name": "<преведете со истозначници или сродни поими на „Третостепен приод“, одделени со запирки>"
+        },
+        "tourism/information": {
+            "name": "Информации"
+        },
+        "natural/ridge": {
+            "name": "Срт"
+        },
+        "natural": {
+            "name": "Природно"
+        },
+        "aerialway/magic_carpet": {
+            "name": "Волшебен килим"
+        },
+        "amenity/post_box": {
+            "name": "Поштенско сандаче"
+        },
+        "landuse/military/training_area": {
+            "name": "Воен полигон"
+        },
+        "emergency/official": {
+            "name": "Итен пристап за службени лица"
+        },
+        "natural/water/lake": {
+            "name": "Езеро"
+        },
+        "shop/video": {
+            "name": "Видеотека"
+        },
+        "building/warehouse": {
+            "name": "Склад"
+        },
+        "leisure/bowling_alley": {
+            "name": "Кугларница"
+        },
+        "railway/tram": {
+            "name": "Трамвај"
+        },
+        "leisure/bird_hide": {
+            "name": "Птицонабљудувачница"
+        },
+        "power/minor_line": {
+            "name": "Помал струјовод"
+        },
+        "amenity/vending_machine/cigarettes": {
+            "name": "Автомат за цигари"
+        },
+        "craft/tiler": {
+            "name": "Плочкар"
+        },
+        "landuse/farmyard": {
+            "name": "Селски двор"
+        },
+        "man_made/works": {
+            "name": "Фабрика"
+        },
+        "craft/plumber": {
+            "name": "Водоводџија"
+        },
+        "shop/frame": {
+            "name": "Врамувачница"
+        },
+        "highway/cycleway": {
+            "name": "Велосипедска патека"
+        },
+        "man_made/gasometer": {
+            "name": "Гасомер"
+        },
+        "shop/hardware": {
+            "name": "Продавница за алат и опрема"
+        },
+        "amenity/car_sharing": {
+            "name": "Краткорочно изнајмување на автомобили"
+        },
+        "leisure/nature_reserve": {
+            "name": "Природен резерват"
+        },
+        "shop/antiques": {
+            "name": "Старинарница"
+        },
+        "shop/funeral_directors": {
+            "name": "Погребално друштво"
+        },
+        "tourism/zoo": {
+            "name": "Зоолошка градина"
+        },
+        "shop/computer": {
+            "name": "Продавница за сметачи"
+        },
+        "landuse/grass": {
+            "name": "Трева"
+        },
+        "natural/grassland": {
+            "name": "Пасиште"
+        },
+        "shop/fabric": {
+            "name": "Продавница за ткаенини"
+        },
+        "highway/stop": {
+            "name": "Знак за запирање"
+        },
+        "craft/brewery": {
+            "name": "Пиварница"
+        },
+        "highway/turning_circle": {
+            "name": "Кружен тек"
+        },
+        "shop/coffee": {
+            "name": "Продавница за кафе"
+        },
+        "emergency/no": {
+            "name": "Итен пристап бр."
+        },
+        "shop/e-cigarette": {
+            "name": "Продавница за е-цигари"
+        },
+        "tourism": {
+            "name": "Туризам"
+        },
+        "amenity/public_bath": {
+            "name": "Јавна бања"
+        },
+        "amenity/car_wash": {
+            "name": "Автоперална"
+        },
+        "highway/street_lamp": {
+            "name": "Улична светилка"
+        },
+        "shop/clothes": {
+            "name": "Продавница за облека"
+        },
+        "tourism/theme_park": {
+            "name": "Забавен парк"
+        },
+        "aeroway/aerodrome": {
+            "name": "Аеродром"
+        },
+        "amenity/bicycle_rental": {
+            "name": "Изнајмување велосипеди"
+        },
+        "amenity/parking_entrance": {
+            "name": "Влез/излез на покриено паркиралиште"
+        },
+        "landuse": {
+            "name": "Видови земјиште"
+        },
+        "shop/gift": {
+            "name": "Продавница за подароци"
+        },
+        "craft/locksmith": {
+            "name": "Бравар"
+        },
+        "waterway/riverbank": {
+            "name": "Речен брег"
+        },
+        "leisure/sports_centre": {
+            "name": "Спортски центар / комплекс"
+        },
+        "place": {
+            "name": "Место"
+        },
+        "power": {
+            "name": "Електродистрибуција"
+        },
+        "shop/music": {
+            "name": "Продавница за музика"
+        },
+        "barrier/toll_booth": {
+            "name": "Патарина"
+        },
+        "aerialway/station": {
+            "name": "Жичничка станица"
+        },
+        "building/house": {
+            "name": "Куќа"
+        },
+        "leisure/marina": {
+            "name": "Сидриште"
+        },
+        "craft/stonemason": {
+            "name": "Каменорезец"
+        },
+        "aerialway": {
+            "name": "Жичница"
+        },
+        "craft/tailor": {
+            "name": "Кројач"
+        },
+        "amenity/nightclub": {
+            "name": "Ноќен клуб"
+        },
+        "waterway/dam": {
+            "name": "Брана"
+        },
+        "amenity/school": {
+            "name": "Училиштен двор"
+        },
+        "shop/photo": {
+            "name": "Фотографски дуќан"
+        },
+        "building/static_caravan": {
+            "name": "Недвижечки подвижен дом"
+        },
+        "barrier/gate": {
+            "name": "Порта"
+        },
+        "leisure/pitch/skateboard": {
+            "name": "Скејтпарк"
+        },
+        "highway/bridleway": {
+            "name": "Јавачка патека"
+        },
+        "shop/motorcycle": {
+            "name": "Салон за мотоцикли"
+        },
+        "shop/variety_store": {
+            "name": "Продавница за разновидна роба"
+        },
+        "waterway/river": {
+            "name": "Река"
+        },
+        "amenity/doctors": {
+            "name": "Лекар"
+        },
+        "railway/subway": {
+            "name": "Подземна железница"
+        },
+        "barrier/ditch": {
+            "name": "Ров"
+        },
+        "shop/carpet": {
+            "name": "Продавница за теписи"
+        },
+        "craft": {
+            "name": "Занает"
+        },
+        "landuse/churchyard": {
+            "name": "Црковен двор"
+        },
+        "traffic_calming/chicane": {
+            "name": "Кривулица"
+        },
+        "shop/butcher": {
+            "name": "Месарница"
+        },
+        "barrier/bollard": {
+            "name": "Дирек"
+        },
+        "amenity/shelter": {
+            "name": "Засолниште"
+        },
+        "tourism/picnic_site": {
+            "name": "Излетничко место"
+        },
+        "highway/rest_area": {
+            "name": "Крајпатно одмориште"
+        },
+        "leisure/golf_course": {
+            "name": "Терен за голф"
+        },
+        "barrier": {
+            "name": "Препрека"
+        },
+        "historic/castle": {
+            "name": "Замок"
+        },
+        "craft/electrician": {
+            "name": "Електричар"
+        },
+        "shop/car_repair": {
+            "name": "Автосервис"
+        },
+        "craft/hvac": {
+            "name": "Климатизација и вентилација"
+        },
+        "highway/path": {
+            "name": "Патека"
+        },
+        "historic/archaeological_site": {
+            "name": "Археолошко наоѓалиште"
+        },
+        "leisure/water_park": {
+            "name": "Воден парк"
+        },
+        "building/barn": {
+            "name": "Амбар"
+        },
+        "amenity/bench": {
+            "name": "Клупа"
+        },
+        "craft/beekeeper": {
+            "name": "Пчелар"
+        },
+        "landuse/meadow": {
+            "name": "Ливада"
+        },
+        "shop/convenience": {
+            "name": "Драгстор"
+        },
+        "amenity/toilets": {
+            "name": "Тоалет"
+        },
+        "shop/books": {
+            "name": "Книжарница"
+        },
+        "highway/service": {
+            "name": "Опслужен пат"
+        },
+        "waterway/drain": {
+            "name": "Одвод"
+        },
+        "amenity/sanitary_dump_station": {
+            "name": "Исфрлање трајлерски фекалии"
+        },
+        "shop/hearing_aids": {
+            "name": "Продавница за слушни помагала"
+        },
+        "highway/residential": {
+            "name": "Станбен патен"
+        },
+        "amenity/place_of_worship": {
+            "name": "Верски објект"
+        },
+        "historic/wayside_shrine": {
+            "name": "Крајпатен параклис"
+        },
+        "barrier/retaining_wall": {
+            "name": "Потпорен ѕид"
+        },
+        "type/boundary/administrative": {
+            "name": "Административна граница"
+        },
+        "landuse/military/office": {
+            "name": "Воена служба"
+        },
+        "highway/traffic_signals": {
+            "name": "Сообраќајни сигнали"
+        },
+        "amenity/embassy": {
+            "name": "Амбасада"
+        },
+        "type/restriction/no_left_turn": {
+            "name": "Забрането вртење лево"
+        },
+        "leisure/ice_rink": {
+            "name": "Лизгалиште"
+        },
+        "healthcare/blood_donation": {
+            "name": "Крводарителски центар"
+        },
+        "emergency/ambulance_station": {
+            "name": "Амбуланта"
+        },
+        "place/village": {
+            "name": "Село"
+        },
+        "shop/water_sports": {
+            "name": "Опрема за капење/водени спортови"
+        },
+        "amenity/motorcycle_parking": {
+            "name": "Паркиралиште за мотоцикли"
+        },
+        "shop/craft": {
+            "name": "Продавница за уметнички ракотворби"
+        },
+        "line": {
+            "name": "Линија"
+        },
+        "shop/lottery": {
+            "name": "<преведете со истозначници или сродни поими на „Лотарија“, одделени со запирки>"
+        },
+        "amenity/kindergarten": {
+            "name": "Двор на детска градинка"
+        },
+        "leisure/dog_park": {
+            "name": "Кучешки парк"
+        },
+        "natural/cave_entrance": {
+            "name": "Пештерски отвор"
+        },
+        "point": {
+            "name": "Точка"
+        },
+        "shop/cheese": {
+            "name": "Сирењарница"
+        },
+        "amenity/boat_rental": {
+            "name": "Изнајмување чамци"
         },
         "waterway/weir": {
-            "name": "\u0408\u0430\u0437"
+            "name": "Јаз"
+        },
+        "building/cabin": {
+            "name": "Куќичка"
+        },
+        "craft/metal_construction": {
+            "name": "Металоградител"
+        },
+        "craft/painter": {
+            "name": "Молерофарбар"
+        },
+        "emergency/private": {
+            "name": "Приватен итен пристап"
+        },
+        "craft/sailmaker": {
+            "name": "Едрар"
+        },
+        "office/ngo": {
+            "name": "НВО"
+        },
+        "craft/glaziery": {
+            "name": "Стаклар"
+        },
+        "craft/carpet_layer": {
+            "name": "Тепихопрекривач"
+        },
+        "man_made/flagpole": {
+            "name": "Јарбол за знаме"
+        },
+        "highway/motorway_junction": {
+            "name": "Автопатна клучка / излез"
+        },
+        "natural/tree": {
+            "name": "Дрво"
+        },
+        "tourism/attraction": {
+            "name": "Туристичка атракција"
+        },
+        "amenity/register_office": {
+            "name": "Матична служба"
+        },
+        "man_made": {
+            "name": "Вештачко"
+        },
+        "golf/fairway": {
+            "name": "Рамно поле"
+        },
+        "leisure/adult_gaming_centre": {
+            "name": "Игротека за возрасни"
+        },
+        "shop/car_parts": {
+            "name": "Продавница за автоделови"
+        },
+        "tourism/alpine_hut": {
+            "name": "Планинарски дом"
+        },
+        "tourism/information/office": {
+            "name": "Туристичко биро"
+        },
+        "shop/alcohol": {
+            "name": "Продавница за алкохолни пијалаци"
+        },
+        "tourism/viewpoint": {
+            "name": "Видиковец"
+        },
+        "craft/handicraft": {
+            "name": "Ракотворби"
+        },
+        "office/lawyer": {
+            "name": "Правник"
+        },
+        "landuse/construction": {
+            "name": "Изградба"
+        },
+        "highway/trunk_link": {
+            "name": "Приод кон магистрала"
+        },
+        "amenity/vending_machine/news_papers": {
+            "name": "<преведете со истозначници или сродни поими на „Автомат за весници“, одделени со запирки>"
+        },
+        "shop/bookmaker": {
+            "name": "Обложувалница"
+        },
+        "leisure/fitness_centre/yoga": {
+            "name": "Јога"
+        },
+        "aeroway": {
+            "name": "Воздухопловна постројка"
         }
     }
 }

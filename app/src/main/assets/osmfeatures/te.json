@@ -1,190 +1,190 @@
 {
     "presets": {
-        "address": {
-            "name": "\u0c1a\u0c3f\u0c30\u0c41\u0c28\u0c3e\u0c2e\u0c3e",
-            "terms": "\u0c1a\u0c3f\u0c30\u0c41\u0c28\u0c3e\u0c2e\u0c3e"
-        },
-        "aeroway/aerodrome": {
-            "name": "\u0c35\u0c3f\u0c2e\u0c3e\u0c28\u0c3e\u0c36\u0c4d\u0c30\u0c2f\u0c02",
-            "terms": "\u0c35\u0c3f\u0c2e\u0c3e\u0c28\u0c3e\u0c36\u0c4d\u0c30\u0c2f\u0c02"
-        },
-        "amenity/bank": {
-            "name": "\u0c2c\u0c4d\u0c2f\u0c3e\u0c02\u0c15\u0c41",
-            "terms": "\u0c2c\u0c4d\u0c2f\u0c3e\u0c02\u0c15\u0c41"
-        },
-        "amenity/cinema": {
-            "name": "\u0c38\u0c3f\u0c28\u0c3f\u0c2e\u0c3e \u0c39\u0c3e\u0c32\u0c41"
-        },
-        "amenity/drinking_water": {
-            "name": "\u0c24\u0c3e\u0c17\u0c47 \u0c28\u0c40\u0c30\u0c41"
-        },
-        "amenity/grave_yard": {
-            "name": "\u0c38\u0c4d\u0c2e\u0c36\u0c3e\u0c28\u0c02"
-        },
-        "amenity/library": {
-            "name": "\u0c17\u0c4d\u0c30\u0c02\u0c25\u0c3e\u0c32\u0c2f\u0c02"
-        },
-        "amenity/place_of_worship/buddhist": {
-            "name": "\u0c2c\u0c4c\u0c26\u0c4d\u0c27 \u0c06\u0c32\u0c2f\u0c02"
-        },
-        "amenity/police": {
-            "name": "\u0c2a\u0c4b\u0c32\u0c40\u0c38\u0c41"
-        },
-        "amenity/post_office": {
-            "name": "\u0c24\u0c2a\u0c3e\u0c32\u0c3e \u0c15\u0c3e\u0c30\u0c4d\u0c2f\u0c3e\u0c32\u0c2f\u0c02"
-        },
-        "amenity/pub": {
-            "name": "\u0c2a\u0c2c\u0c4d"
-        },
-        "amenity/restaurant": {
-            "name": "\u0c30\u0c46\u0c38\u0c4d\u0c1f\u0c3e\u0c30\u0c46\u0c02\u0c1f\u0c4d"
-        },
-        "amenity/swimming_pool": {
-            "name": "\u0c08\u0c24 \u0c15\u0c4a\u0c32\u0c28\u0c41"
-        },
-        "amenity/toilets": {
-            "name": "\u0c2e\u0c30\u0c41\u0c17\u0c41\u0c26\u0c4a\u0c21\u0c4d\u0c32\u0c41"
-        },
-        "barrier/fence": {
-            "name": "\u0c15\u0c02\u0c1a\u0c46"
-        },
-        "barrier/wall": {
-            "name": "\u0c17\u0c4b\u0c21"
-        },
-        "building": {
-            "name": "\u0c15\u0c1f\u0c4d\u0c1f\u0c21\u0c02"
-        },
-        "building/house": {
-            "name": "\u0c07\u0c32\u0c4d\u0c32\u0c41"
-        },
-        "building/hut": {
-            "name": "\u0c17\u0c41\u0c21\u0c3f\u0c38\u0c46"
-        },
-        "highway/footway": {
-            "name": "\u0c15\u0c3e\u0c32\u0c4d\u0c26\u0c3e\u0c30\u0c3f"
-        },
-        "highway/path": {
-            "name": "\u0c26\u0c3e\u0c30\u0c3f"
-        },
-        "highway/primary_link": {
-            "name": "\u0c2e\u0c41\u0c16\u0c4d\u0c2f \u0c32\u0c02\u0c15\u0c46"
+        "vertex": {
+            "name": "ఇతర"
         },
         "highway/steps": {
-            "name": "\u0c2e\u0c46\u0c1f\u0c4d\u0c32\u0c41"
+            "name": "మెట్లు"
         },
-        "highway/traffic_signals": {
-            "name": "\u0c1f\u0c4d\u0c30\u0c3e\u0c2b\u0c3f\u0c15\u0c4d \u0c38\u0c3f\u0c17\u0c4d\u0c28\u0c33\u0c4d\u0c33\u0c41"
-        },
-        "historic": {
-            "name": "\u0c1a\u0c3e\u0c30\u0c3f\u0c24\u0c4d\u0c30\u0c15 \u0c2a\u0c4d\u0c30\u0c26\u0c47\u0c36\u0c02"
-        },
-        "landuse/grass": {
-            "name": "\u0c2a\u0c1a\u0c4d\u0c1a\u0c3f\u0c15"
-        },
-        "leisure/garden": {
-            "name": "\u0c24\u0c4b\u0c1f"
+        "amenity/drinking_water": {
+            "name": "తాగే నీరు"
         },
         "leisure/park": {
-            "name": "\u0c2a\u0c3e\u0c30\u0c4d\u0c15\u0c41"
-        },
-        "leisure/pitch/tennis": {
-            "name": "\u0c1f\u0c46\u0c28\u0c4d\u0c28\u0c3f\u0c38\u0c4d \u0c15\u0c4b\u0c30\u0c4d\u0c1f\u0c41"
-        },
-        "leisure/playground": {
-            "name": "\u0c06\u0c1f\u0c2e\u0c48\u0c26\u0c3e\u0c28\u0c02"
-        },
-        "leisure/swimming_pool": {
-            "name": "\u0c08\u0c24 \u0c15\u0c4a\u0c32\u0c28\u0c41"
-        },
-        "line": {
-            "name": "\u0c17\u0c40\u0c24"
-        },
-        "natural/tree": {
-            "name": "\u0c1a\u0c46\u0c1f\u0c4d\u0c1f\u0c41"
-        },
-        "natural/water": {
-            "name": "\u0c28\u0c40\u0c33\u0c4d\u0c33\u0c41"
-        },
-        "natural/water/lake": {
-            "name": "\u0c1a\u0c46\u0c30\u0c41\u0c35\u0c41"
-        },
-        "natural/water/pond": {
-            "name": "\u0c38\u0c30\u0c38\u0c4d\u0c38\u0c41"
-        },
-        "natural/wetland": {
-            "name": "\u0c24\u0c21\u0c3f\u0c28\u0c47\u0c32"
-        },
-        "office": {
-            "name": "\u0c15\u0c3e\u0c30\u0c4d\u0c2f\u0c3e\u0c32\u0c2f\u0c02"
+            "name": "పార్కు"
         },
         "place/city": {
-            "name": "\u0c28\u0c17\u0c30\u0c02"
-        },
-        "place/town": {
-            "name": "\u0c2a\u0c1f\u0c4d\u0c1f\u0c23\u0c02"
-        },
-        "place/village": {
-            "name": "\u0c17\u0c4d\u0c30\u0c3e\u0c2e\u0c02"
-        },
-        "point": {
-            "name": "\u0c2c\u0c3f\u0c02\u0c26\u0c41\u0c35\u0c41"
-        },
-        "power/pole": {
-            "name": "\u0c15\u0c30\u0c46\u0c02\u0c1f\u0c41 \u0c38\u0c4d\u0c24\u0c02\u0c2d\u0c02"
-        },
-        "railway": {
-            "name": "\u0c30\u0c48\u0c32\u0c4d\u0c35\u0c47"
-        },
-        "relation": {
-            "name": "\u0c38\u0c02\u0c2c\u0c02\u0c27\u0c02"
-        },
-        "shop/supermarket": {
-            "name": "\u0c38\u0c41\u0c2a\u0c30\u0c4d \u0c2e\u0c3e\u0c30\u0c4d\u0c15\u0c46\u0c1f\u0c4d"
-        },
-        "shop/toys": {
-            "name": "\u0c2c\u0c4a\u0c2e\u0c4d\u0c2e\u0c32 \u0c15\u0c4a\u0c1f\u0c4d\u0c1f\u0c41"
-        },
-        "shop/vacant": {
-            "name": "\u0c16\u0c3e\u0c33\u0c40 \u0c26\u0c41\u0c15\u0c3e\u0c23\u0c02"
-        },
-        "tourism/hotel": {
-            "name": "\u0c39\u0c4b\u0c1f\u0c46\u0c32\u0c4d"
-        },
-        "tourism/information": {
-            "name": "\u0c38\u0c2e\u0c3e\u0c1a\u0c3e\u0c30\u0c02"
-        },
-        "tourism/museum": {
-            "name": "\u0c2e\u0c4d\u0c2f\u0c42\u0c1c\u0c3f\u0c2f\u0c02"
-        },
-        "tourism/zoo": {
-            "name": "\u0c1c\u0c42"
-        },
-        "type/boundary/administrative": {
-            "name": "\u0c2a\u0c30\u0c3f\u0c2a\u0c3e\u0c32\u0c28\u0c3e \u0c38\u0c30\u0c3f\u0c39\u0c26\u0c4d\u0c26\u0c41"
+            "name": "నగరం"
         },
         "type/route/foot": {
-            "name": "\u0c15\u0c3e\u0c32\u0c3f \u0c2c\u0c3e\u0c1f"
+            "name": "కాలి బాట"
         },
-        "vertex": {
-            "name": "\u0c07\u0c24\u0c30"
+        "office": {
+            "name": "కార్యాలయం"
         },
-        "waterway/canal": {
-            "name": "\u0c15\u0c3e\u0c32\u0c41\u0c35",
-            "terms": "\u0c15\u0c3e\u0c32\u0c41\u0c35"
+        "building": {
+            "name": "కట్టడం"
         },
-        "waterway/dam": {
-            "name": "\u0c06\u0c28\u0c15\u0c1f\u0c4d\u0c1f",
-            "terms": "\u0c06\u0c28\u0c15\u0c1f\u0c4d\u0c1f"
+        "leisure/garden": {
+            "name": "తోట"
         },
-        "waterway/river": {
-            "name": "\u0c28\u0c26\u0c3f",
-            "terms": "\u0c28\u0c26\u0c3f"
+        "relation": {
+            "name": "సంబంధం"
         },
-        "waterway/riverbank": {
-            "name": "\u0c28\u0c26\u0c3f \u0c12\u0c21\u0c4d\u0c21\u0c41"
+        "natural/water/pond": {
+            "name": "సరస్సు"
+        },
+        "highway/path": {
+            "name": "దారి"
+        },
+        "leisure/swimming_pool": {
+            "name": "ఈత కొలను"
+        },
+        "natural/water": {
+            "name": "నీళ్ళు"
         },
         "waterway/stream": {
-            "name": "\u0c15\u0c3e\u0c32\u0c41\u0c35"
+            "name": "కాలువ"
+        },
+        "place/town": {
+            "name": "పట్టణం"
+        },
+        "railway": {
+            "name": "రైల్వే"
+        },
+        "amenity/library": {
+            "name": "గ్రంథాలయం"
+        },
+        "power/pole": {
+            "name": "కరెంటు స్తంభం"
+        },
+        "tourism/information": {
+            "name": "సమాచారం"
+        },
+        "amenity/toilets": {
+            "name": "మరుగుదొడ్లు"
+        },
+        "natural/water/lake": {
+            "name": "చెరువు"
+        },
+        "barrier/fence": {
+            "name": "కంచె"
+        },
+        "amenity/bank": {
+            "name": "బ్యాంకు",
+            "terms": "బ్యాంకు"
+        },
+        "shop/supermarket": {
+            "name": "సుపర్ మార్కెట్"
+        },
+        "type/boundary/administrative": {
+            "name": "పరిపాలనా సరిహద్దు"
+        },
+        "amenity/grave_yard": {
+            "name": "స్మశానం"
+        },
+        "highway/traffic_signals": {
+            "name": "ట్రాఫిక్ సిగ్నళ్ళు"
+        },
+        "shop/toys": {
+            "name": "బొమ్మల కొట్టు"
+        },
+        "place/village": {
+            "name": "గ్రామం"
+        },
+        "tourism/zoo": {
+            "name": "జూ"
+        },
+        "amenity/restaurant": {
+            "name": "రెస్టారెంట్"
+        },
+        "landuse/grass": {
+            "name": "పచ్చిక"
+        },
+        "amenity/police": {
+            "name": "పోలీసు"
+        },
+        "line": {
+            "name": "గీత"
+        },
+        "building/hut": {
+            "name": "గుడిసె"
+        },
+        "point": {
+            "name": "బిందువు"
+        },
+        "waterway/canal": {
+            "name": "కాలువ",
+            "terms": "కాలువ"
+        },
+        "tourism/hotel": {
+            "name": "హోటెల్"
+        },
+        "aeroway/aerodrome": {
+            "name": "విమానాశ్రయం",
+            "terms": "విమానాశ్రయం"
+        },
+        "waterway/riverbank": {
+            "name": "నది ఒడ్డు"
+        },
+        "natural/wetland": {
+            "name": "తడినేల"
+        },
+        "amenity/post_office": {
+            "name": "తపాలా కార్యాలయం"
+        },
+        "shop/vacant": {
+            "name": "ఖాళీ దుకాణం"
+        },
+        "natural/tree": {
+            "name": "చెట్టు"
+        },
+        "building/house": {
+            "name": "ఇల్లు"
+        },
+        "address": {
+            "name": "చిరునామా",
+            "terms": "చిరునామా"
+        },
+        "historic": {
+            "name": "చారిత్రక ప్రదేశం"
+        },
+        "highway/primary_link": {
+            "name": "ముఖ్య లంకె"
+        },
+        "amenity/place_of_worship/buddhist": {
+            "name": "బౌద్ధ ఆలయం"
+        },
+        "amenity/pub": {
+            "name": "పబ్"
+        },
+        "amenity/cinema": {
+            "name": "సినిమా హాలు"
+        },
+        "waterway/dam": {
+            "name": "ఆనకట్ట",
+            "terms": "ఆనకట్ట"
+        },
+        "tourism/museum": {
+            "name": "మ్యూజియం"
+        },
+        "highway/footway": {
+            "name": "కాల్దారి"
+        },
+        "leisure/playground": {
+            "name": "ఆటమైదానం"
+        },
+        "leisure/pitch/tennis": {
+            "name": "టెన్నిస్ కోర్టు"
+        },
+        "waterway/river": {
+            "name": "నది",
+            "terms": "నది"
+        },
+        "amenity/swimming_pool": {
+            "name": "ఈత కొలను"
+        },
+        "barrier/wall": {
+            "name": "గోడ"
         }
     }
 }

@@ -1,356 +1,356 @@
 {
     "presets": {
-        "address": {
-            "name": "\u0cb5\u0cbf\u0cb3\u0cbe\u0cb8"
-        },
-        "aeroway/aerodrome": {
-            "name": "\u0cb5\u0cbf\u0cae\u0cbe\u0ca8 \u0ca8\u0cbf\u0cb2\u0ccd\u0ca6\u0cbe\u0ca3"
-        },
-        "aeroway/runway": {
-            "name": "\u0c93\u0ca1\u0cc1\u0ca6\u0cbe\u0cb0\u0cbf"
-        },
-        "amenity": {
-            "name": "\u0cb8\u0ccc\u0c95\u0cb0\u0ccd\u0caf"
-        },
-        "amenity/atm": {
-            "name": "\u0c8e\u0c9f\u0cbf\u0c8e\u0cae\u0ccd "
-        },
-        "amenity/bank": {
-            "name": "\u0cac\u0ccd\u0caf\u0cbe\u0c82\u0c95\u0ccd"
-        },
-        "amenity/bench": {
-            "name": " \u0ca8\u0ccd\u0caf\u0cbe\u0caf\u0caa\u0cc0\u0ca0"
-        },
-        "amenity/cinema": {
-            "name": "\u0cb8\u0cbf\u0ca8\u0cbf\u0cae\u0cbe"
-        },
-        "amenity/clinic": {
-            "name": "\u0c9a\u0cbf\u0c95\u0cbf\u0ca4\u0ccd\u0cb8\u0cbe\u0cb2\u0caf"
-        },
-        "amenity/clock": {
-            "name": "\u0c97\u0ca1\u0cbf\u0caf\u0cbe\u0cb0"
-        },
-        "amenity/dentist": {
-            "name": "\u0ca6\u0c82\u0ca4\u0cb5\u0cc8\u0ca6\u0ccd\u0caf"
-        },
-        "amenity/doctors": {
-            "name": "\u0cb5\u0cc6\u0cd6\u0ca6\u0ccd\u0caf\u0cb0\u0cc1"
-        },
-        "amenity/embassy": {
-            "name": "\u0cb0\u0cbe\u0caf\u0cad\u0cbe\u0cb0"
-        },
-        "amenity/fire_station": {
-            "name": "\u0c85\u0c97\u0ccd\u0ca8\u0cbf\u0cb6\u0cbe\u0cae\u0c95 \u0c95\u0cc6\u0cd5\u0c82\u0ca6\u0ccd\u0cb0"
-        },
-        "amenity/fountain": {
-            "name": "\u0cac\u0cc1\u0c97\u0ccd\u0c97\u0cc6"
-        },
-        "amenity/grave_yard": {
-            "name": "\u0cb6\u0ccd\u0cae\u0cb6\u0cbe\u0ca8"
-        },
-        "amenity/ice_cream": {
-            "name": "\u0c90\u0cb8\u0ccd \u0c95\u0ccd\u0cb0\u0cc0\u0cae\u0ccd \u0c85\u0c82\u0c97"
-        },
-        "amenity/library": {
-            "name": "\u0c97\u0ccd\u0cb0\u0c82\u0ca5\u0cbe\u0cb2\u0caf"
-        },
-        "amenity/planetarium": {
-            "name": "\u0ca4\u0cbe\u0cb0\u0cbe\u0cb2\u0caf"
-        },
-        "amenity/police": {
-            "name": "\u0caa\u0cca\u0cb2\u0cc0\u0cb8\u0cc1"
-        },
-        "amenity/post_box": {
-            "name": "\u0c85\u0c82\u0c9a\u0cc6\u0caa\u0cc6\u0c9f\u0ccd\u0c9f\u0cbf\u0c97\u0cc6"
-        },
-        "amenity/post_office": {
-            "name": "\u0c85\u0c82\u0c9a\u0cc6 \u0c95\u0c9a\u0cc7\u0cb0\u0cbf"
-        },
-        "amenity/prison": {
-            "name": "\u0cac\u0c82\u0ca6\u0cc0\u0c96\u0cbe\u0ca8\u0cc6 \u0cae\u0cc8\u0ca6\u0cbe\u0ca8"
-        },
-        "amenity/restaurant": {
-            "name": " \u0c89\u0caa\u0cbe\u0cb9\u0cbe\u0cb0 \u0c97\u0cc3\u0cb9"
-        },
-        "amenity/shelter": {
-            "name": "\u0c85\u0ca1\u0cc6"
-        },
-        "amenity/swimming_pool": {
-            "name": "\u0c88\u0c9c\u0cc1\u0c95\u0cca\u0cb3"
-        },
-        "amenity/taxi": {
-            "name": "\u200d\u0c95\u0cbe\u0cb0\u0cc1 \u0ca8\u0cbf\u0cb2\u0ccd\u0ca1\u0cbe\u0ca3 "
-        },
-        "amenity/telephone": {
-            "name": "\u0ca6\u0cc1\u0cb0\u0cb5\u0cbe\u0ca3\u0cbf"
-        },
-        "amenity/theatre": {
-            "name": "\u0c9a\u0cbf\u0ca4\u0ccd\u0cb0\u0cae\u0c82\u0ca6\u0cbf\u0cb0"
-        },
-        "amenity/toilets": {
-            "name": "\u0cb6\u0ccc\u0c9a\u0cbe\u0cb2\u0caf"
-        },
-        "amenity/veterinary": {
-            "name": "\u0caa\u0cb6\u0cc1\u0cb5\u0cc8\u0ca6\u0ccd\u0caf\u0c95\u0cc0\u0caf"
-        },
-        "area": {
-            "name": "\u0cb8\u0cc0\u0cae\u0cc6"
-        },
-        "barrier/entrance": {
-            "name": " \u0caa\u0ccd\u0cb0\u0cb5\u0cc7\u0cb6"
-        },
-        "barrier/gate": {
-            "name": "\u0cb9\u0cca\u0cb0\u0cac\u0cbe\u0c97\u0cbf\u0cb2\u0cc1"
-        },
-        "barrier/wall": {
-            "name": "\u200d\u0c97\u0ccb\u0ca1\u0cc6"
-        },
-        "building": {
-            "name": "\u200d\u0c95\u0c9f\u0ccd\u0c9f\u0ca1"
-        },
-        "building/entrance": {
-            "name": "\u0c86\u0c97\u0cae\u0ca8/\u0ca8\u0cbf\u0cb0\u0ccd\u0c97\u0cae\u0ca8"
-        },
-        "building/garage": {
-            "name": "\u0cae\u0ccb\u0c9f\u0cbe\u0cb0\u0cc1\u0c96\u0cbe\u0ca8\u0cc6"
-        },
-        "building/garages": {
-            "name": "\u0cae\u0ccb\u0c9f\u0cbe\u0cb0\u0cc1\u0c96\u0cbe\u0ca8\u0cc6\u200d\u0c97\u0cb3\u0ccd"
-        },
-        "building/greenhouse": {
-            "name": "\u0cb9\u0cb8\u0cbf\u0cb0\u0cc1\u0cae\u0ca8\u0cc6"
-        },
-        "building/hospital": {
-            "name": "\u0c86\u0cb8\u0ccd\u0caa\u0ca4\u0ccd\u0cb0\u0cc6 \u0c95\u0c9f\u0ccd\u0c9f\u0ca1"
-        },
-        "building/house": {
-            "name": "\u0cae\u0ca8\u0cc6"
-        },
-        "building/hut": {
-            "name": "\u0c97\u0cc1\u0ca1\u0cbf\u0cb8\u0cb2\u0cc1"
-        },
-        "building/industrial": {
-            "name": "\u0c95\u0cc8\u0c97\u0cbe\u0cb0\u0cbf\u0c95\u0cbe \u0c95\u0c9f\u0ccd\u0c9f\u0ca1"
-        },
-        "building/kindergarten": {
-            "name": "\u0cb6\u0cbf\u0cb6\u0cc1\u0cb5\u0cbf\u0cb9\u0cbe\u0cb0/\u0cac\u0cbe\u0cb2\u0cb5\u0cbe\u0ca1\u0cbf \u0c95\u0c9f\u0ccd\u0c9f\u0ca1"
-        },
-        "building/public": {
-            "name": "\u0cb8\u0cbe\u0cb0\u0ccd\u0cb5\u0c9c\u0ca8\u0cbf\u0c95 \u0c95\u0c9f\u0ccd\u0c9f\u0ca1"
-        },
-        "building/residential": {
-            "name": "\u0cb5\u0cbe\u0cb8\u0caf\u0ccb\u0c97\u0ccd\u0caf \u0c95\u0c9f\u0ccd\u0c9f\u0ca1"
-        },
-        "building/roof": {
-            "name": "\u0c9b\u0cbe\u0cb5\u0ca3\u0cbf"
-        },
-        "building/school": {
-            "name": "\u0cb6\u0cbe\u0cb2\u0cbe \u0c95\u0c9f\u0ccd\u0c9f\u0ca1"
-        },
-        "building/terrace": {
-            "name": "\u0cb8\u0cbe\u0cb2\u0cc1 \u0cae\u0ca8\u0cc6\u0c97\u0cb3\u0cc1"
-        },
-        "building/university": {
-            "name": "\u0cb5\u0cbf\u0cb6\u0ccd\u0cb5\u0cb5\u0cbf\u0ca6\u0ccd\u0caf\u0cbe\u0cb2\u0caf \u0c95\u0c9f\u0ccd\u0c9f\u0ca1"
-        },
-        "building/warehouse": {
-            "name": "\u0c97\u0ccb\u0ca6\u0cbe\u0cae\u0cc1",
-            "terms": "\u0ca6\u0cbe\u0cb8\u0ccd\u0ca4\u0cbe\u0ca8\u0cc1 \u0c95\u0c9f\u0ccd\u0c9f\u0ca1"
-        },
-        "craft": {
-            "name": "\u0c95\u0cc1\u0cb6\u0cb2 \u0c95\u0cb2\u0cc6"
-        },
-        "craft/basket_maker": {
-            "name": "\u0cac\u0cc1\u0c9f\u0ccd\u0c9f\u0cbf \u0cae\u0cbe\u0ca1\u0cc1\u0cb5\u0cbe\u0ca4"
-        },
-        "craft/blacksmith": {
-            "name": "\u0c95\u0cae\u0ccd\u0cae\u0cbe\u0cb0"
-        },
-        "craft/boatbuilder": {
-            "name": "\u0ca6\u0ccb\u0ca3\u0cbf \u0c95\u0c9f\u0ccd\u0c9f\u0cc1\u0cb5\u0cb5"
-        },
-        "craft/clockmaker": {
-            "name": "\u0c97\u0ca1\u0cbf\u0caf\u0cbe\u0cb0 \u0cae\u0cbe\u0ca1\u0cc1\u0cb5\u0cb5"
-        },
-        "craft/gardener": {
-            "name": "\u0ca4\u0ccb\u0c9f\u0ca6 \u0cae\u0cbe\u0cb2\u0cbf"
-        },
-        "craft/handicraft": {
-            "name": "\u0c95\u0cb0\u0c95\u0cc1\u0cb6\u0cb2 \u0cb5\u0cb8\u0ccd\u0ca4\u0cc1"
-        },
-        "craft/optician": {
-            "name": "\u0ca8\u0cc7\u0ca4\u0ccd\u0cb0 \u0ca4\u0c9c\u0ccd\u0c9e"
-        },
-        "craft/shoemaker": {
-            "name": "\u0c9a\u0cae\u0ccd\u0cae\u0cbe\u0cb0"
-        },
-        "craft/stonemason": {
-            "name": "\u0c95\u0cb2\u0ccd\u0cb2\u0cc1 \u0c95\u0cc6\u0cb2\u0cb8\u0c97\u0cbe\u0cb0"
-        },
-        "craft/tailor": {
-            "name": "\u0ca6\u0cb0\u0ccd\u0c9c\u0cbf"
-        },
-        "ford": {
-            "name": "\u200d\u0c95\u0cbe\u0cb2\u0ccd\u0c97\u0ca1"
-        },
-        "highway/steps": {
-            "name": "\u0cae\u0cc6\u0c9f\u0ccd\u0c9f\u0cbf\u0cb2\u0cc1"
-        },
-        "landuse/cemetery": {
-            "name": " \u0cb8\u0ccd\u0cae\u0cb6\u0cbe\u0ca8"
-        },
-        "landuse/grass": {
-            "name": "\u0cb9\u0cc1\u0cb2\u0ccd\u0cb2\u0cc1"
-        },
-        "landuse/industrial": {
-            "name": "\u0c95\u0cc8\u0c97\u0cbe\u0cb0\u0cbf\u0c95\u0cbe \u0caa\u0ccd\u0cb0\u0ca6\u0cc7\u0cb6"
-        },
-        "landuse/military": {
-            "name": "\u0cb8\u0cc7\u0ca8\u0cbe \u0caa\u0ccd\u0cb0\u0ca6\u0cc7\u0cb6"
-        },
-        "landuse/orchard": {
-            "name": "\u0ca4\u0ccb\u0c9f"
-        },
-        "landuse/recreation_ground": {
-            "name": "\u0c86\u0c9f\u0ca6 \u0cae\u0cc8\u0ca6\u0cbe\u0ca8"
-        },
-        "leisure/garden": {
-            "name": "\u0c95\u0cc8\u0ca4\u0ccb\u0c9f"
-        },
-        "leisure/park": {
-            "name": "\u0c89\u0ca6\u0ccd\u0caf\u0cbe\u0ca8\u0cb5\u0ca8"
-        },
         "leisure/stadium": {
-            "name": "\u0c95\u0ccd\u0cb0\u0cc0\u0ca1\u0cbe\u0c82\u0c97\u0ca3"
-        },
-        "leisure/swimming_pool": {
-            "name": "\u0c88\u0c9c\u0cc1\u0c95\u0cca\u0cb3"
-        },
-        "man_made/petroleum_well": {
-            "name": "\u0ca4\u0cc8\u0cb2 \u0cac\u0cbe\u0cb5\u0cbf"
-        },
-        "natural": {
-            "name": "\u0ca8\u0cc8\u0cb8\u0cb0\u0ccd\u0c97\u0cbf\u0c95"
-        },
-        "natural/beach": {
-            "name": "\u0c95\u0ca1\u0cb2 \u0ca4\u0cc0\u0cb0"
-        },
-        "natural/glacier": {
-            "name": "\u0ca8\u0cc0\u0cb0\u0ccd\u0c97\u0cb2\u0ccd\u0cb2\u0cc1"
-        },
-        "natural/grassland": {
-            "name": "\u0cb9\u0cc1\u0cb2\u0ccd\u0cb2\u0cc1\u0c97\u0cbe\u0cb5\u0cb2\u0cc1"
-        },
-        "natural/tree": {
-            "name": "\u0cae\u0cb0"
-        },
-        "natural/volcano": {
-            "name": "\u0c9c\u0ccd\u0cb5\u0cbe\u0cb2\u0cbe\u0cae\u0cc1\u0c96\u0cbf"
-        },
-        "natural/water": {
-            "name": "\u0ca8\u0cc0\u0cb0\u0cc1"
-        },
-        "natural/water/lake": {
-            "name": " \u0c95\u0cc6\u0cb0\u0cc6"
-        },
-        "natural/water/pond": {
-            "name": "\u0c95\u0cca\u0cb3"
-        },
-        "office": {
-            "name": "\u0c95\u0c9a\u0cc7\u0cb0\u0cbf"
-        },
-        "office/physician": {
-            "name": "\u0cb5\u0cc8\u0ca6\u0ccd\u0caf"
-        },
-        "office/research": {
-            "name": "\u0cb8\u0c82\u0cb6\u0ccb\u0ca7\u0ca8\u0cbe \u0c95\u0c9b\u0cc7\u0cb0\u0cbf"
-        },
-        "place": {
-            "name": "\u0c8a\u0cb0\u0cc1"
-        },
-        "place/city": {
-            "name": "\u0ca8\u0c97\u0cb0"
-        },
-        "place/farm": {
-            "name": "\u0ca4\u0ccb\u0c9f"
-        },
-        "place/island": {
-            "name": "\u0ca6\u0ccd\u0cb5\u0cc0\u0caa"
-        },
-        "place/locality": {
-            "name": "\u0cb8\u0ccd\u0ca5\u0cb3"
-        },
-        "place/town": {
-            "name": "\u0caa\u0c9f\u0ccd\u0c9f\u0ca3"
-        },
-        "place/village": {
-            "name": "\u0cb9\u0cb3\u0ccd\u0cb3\u0cbf"
-        },
-        "shop": {
-            "name": "\u0c85\u0c82\u0c97\u0ca1\u0cbf"
-        },
-        "shop/alcohol": {
-            "name": " \u0cb8\u0cbe\u0cb0\u0cbe\u0caf\u0cbf \u0c85\u0c82\u0c97\u0ca1\u0cbf"
-        },
-        "shop/bakery": {
-            "name": "\u0c85\u0c9f\u0ccd\u0c9f\u0c82\u0c97\u0ca1\u0cbf"
-        },
-        "shop/computer": {
-            "name": "\u0c97\u0ca3\u0c95\u0caf\u0c82\u0ca4\u0ccd\u0cb0\u0ca6 \u0c85\u0c82\u0c97\u0ca1\u0cbf"
-        },
-        "shop/department_store": {
-            "name": "\u0c95\u0cbf\u0cb0\u0cbe\u0ca3\u0cbf \u0c85\u0c82\u0c97\u0ca1\u0cbf"
-        },
-        "shop/florist": {
-            "name": "\u0cb9\u0cc2\u0cb5\u0cbf\u0ca8 \u0cb5\u0ccd\u0caf\u0cbe\u0caa\u0cbe\u0cb0\u0cbf"
-        },
-        "shop/funeral_directors": {
-            "name": "\u0cb6\u0cb5\u0cb8\u0c82\u0cb8\u0ccd\u0c95\u0cbe\u0cb0\u0ca6 \u0ca8\u0cc6\u0cb2\u0cc6"
-        },
-        "shop/furniture": {
-            "name": "\u0caa\u0cbf\u0c9f\u0cc6\u0cc2\u0cd5\u0caa\u0c95\u0cb0\u0ca3\u0c97\u0cb3 \u0c85\u0c82\u0c97\u0ca1\u0cbf"
-        },
-        "shop/gift": {
-            "name": "\u0c89\u0ca1\u0cc1\u0c97\u0cc6\u0cc2\u0cb0\u0cc6\u0caf \u0c85\u0c82\u0c97\u0ca1\u0cbf"
-        },
-        "shop/laundry": {
-            "name": "\u0ca7\u0ccb\u0cac\u0cbf\u0c96\u0cbe\u0ca8\u0cc6"
+            "name": "ಕ್ರೀಡಾಂಗಣ"
         },
         "shop/optician": {
-            "name": "\u0ca8\u0cc7\u0ca4\u0ccd\u0cb0 \u0ca4\u0c9c\u0ccd\u0c9e"
+            "name": "ನೇತ್ರ ತಜ್ಞ"
         },
-        "shop/shoes": {
-            "name": "\u0cae\u0cc6\u0c9f\u0ccd\u0c9f\u0cc1 \u0c85\u0c82\u0c97\u0ca1\u0cbf"
+        "highway/steps": {
+            "name": "ಮೆಟ್ಟಿಲು"
         },
-        "shop/tailor": {
-            "name": "\u0ca6\u0cb0\u0ccd\u0c9c\u0cbf"
+        "leisure/park": {
+            "name": "ಉದ್ಯಾನವನ"
         },
-        "tourism/gallery": {
-            "name": "\u0c95\u0cb2\u0cbe\u0cae\u0c82\u0ca6\u0cbf\u0cb0"
+        "place/city": {
+            "name": "ನಗರ"
         },
-        "tourism/hotel": {
-            "name": "\u0cad\u0ccb\u0c9c\u0ca8\u0cbe\u0cb2\u0caf"
+        "landuse/recreation_ground": {
+            "name": "ಆಟದ ಮೈದಾನ"
+        },
+        "building": {
+            "name": "‍ಕಟ್ಟಡ"
+        },
+        "leisure/garden": {
+            "name": "ಕೈತೋಟ"
+        },
+        "leisure/swimming_pool": {
+            "name": "ಈಜುಕೊಳ"
+        },
+        "natural/water": {
+            "name": "ನೀರು"
+        },
+        "craft/basket_maker": {
+            "name": "ಬುಟ್ಟಿ ಮಾಡುವಾತ"
+        },
+        "place/town": {
+            "name": "ಪಟ್ಟಣ"
+        },
+        "building/university": {
+            "name": "ವಿಶ್ವವಿದ್ಯಾಲಯ ಕಟ್ಟಡ"
+        },
+        "amenity/ice_cream": {
+            "name": "ಐಸ್ ಕ್ರೀಮ್ ಅಂಗ"
+        },
+        "amenity/library": {
+            "name": "ಗ್ರಂಥಾಲಯ"
         },
         "tourism/information": {
-            "name": "\u0cae\u0cbe\u0cb9\u0cbf\u0ca4\u0cbf"
+            "name": "ಮಾಹಿತಿ"
         },
-        "tourism/museum": {
-            "name": "\u0c92\u0ca1\u0cb5\u0cc6\u0cae\u0ca8\u0cc6"
+        "natural": {
+            "name": "ನೈಸರ್ಗಿಕ"
         },
-        "type/route/bicycle": {
-            "name": "\u0cb8\u0cc6\u0cd6\u0c95\u0cb2\u0ccd \u0cae\u0cbe\u0cb0\u0ccd\u0c97"
+        "amenity/post_box": {
+            "name": "ಅಂಚೆಪೆಟ್ಟಿಗೆ"
         },
-        "type/route/bus": {
-            "name": "\u0cac\u0cb8\u0ccd \u0cae\u0cbe\u0cb0\u0ccd\u0c97"
+        "shop/laundry": {
+            "name": "ಧೋಬಿಖಾನೆ"
+        },
+        "amenity/dentist": {
+            "name": "ದಂತವೈದ್ಯ"
+        },
+        "natural/water/lake": {
+            "name": " ಕೆರೆ"
+        },
+        "amenity/bank": {
+            "name": "ಬ್ಯಾಂಕ್"
+        },
+        "building/warehouse": {
+            "name": "ಗೋದಾಮು",
+            "terms": "ದಾಸ್ತಾನು ಕಟ್ಟಡ"
+        },
+        "office/research": {
+            "name": "ಸಂಶೋಧನಾ ಕಛೇರಿ"
+        },
+        "building/terrace": {
+            "name": "ಸಾಲು ಮನೆಗಳು"
+        },
+        "aeroway/runway": {
+            "name": "ಓಡುದಾರಿ"
+        },
+        "landuse/military": {
+            "name": "ಸೇನಾ ಪ್ರದೇಶ"
+        },
+        "office/physician": {
+            "name": "ವೈದ್ಯ"
+        },
+        "amenity/prison": {
+            "name": "ಬಂದೀಖಾನೆ ಮೈದಾನ"
+        },
+        "shop/funeral_directors": {
+            "name": "ಶವಸಂಸ್ಕಾರದ ನೆಲೆ"
+        },
+        "shop/computer": {
+            "name": "ಗಣಕಯಂತ್ರದ ಅಂಗಡಿ"
+        },
+        "amenity/restaurant": {
+            "name": " ಉಪಾಹಾರ ಗೃಹ"
+        },
+        "landuse/grass": {
+            "name": "ಹುಲ್ಲು"
+        },
+        "natural/grassland": {
+            "name": "ಹುಲ್ಲುಗಾವಲು"
+        },
+        "amenity/police": {
+            "name": "ಪೊಲೀಸು"
+        },
+        "place/farm": {
+            "name": "ತೋಟ"
+        },
+        "amenity": {
+            "name": "ಸೌಕರ್ಯ"
+        },
+        "building/garages": {
+            "name": "ಮೋಟಾರುಖಾನೆ‍ಗಳ್"
+        },
+        "tourism/gallery": {
+            "name": "ಕಲಾಮಂದಿರ"
+        },
+        "building/hut": {
+            "name": "ಗುಡಿಸಲು"
+        },
+        "building/residential": {
+            "name": "ವಾಸಯೋಗ್ಯ ಕಟ್ಟಡ"
         },
         "waterway/canal": {
-            "name": "\u0ca8\u0cbe\u0cb2\u0cc6"
+            "name": "ನಾಲೆ"
+        },
+        "place/island": {
+            "name": "ದ್ವೀಪ"
+        },
+        "aeroway/aerodrome": {
+            "name": "ವಿಮಾನ ನಿಲ್ದಾಣ"
+        },
+        "shop/gift": {
+            "name": "ಉಡುಗೊರೆಯ ಅಂಗಡಿ"
+        },
+        "place": {
+            "name": "ಊರು"
+        },
+        "amenity/post_office": {
+            "name": "ಅಂಚೆ ಕಚೇರಿ"
+        },
+        "landuse/orchard": {
+            "name": "ತೋಟ"
+        },
+        "building/house": {
+            "name": "ಮನೆ"
+        },
+        "address": {
+            "name": "ವಿಳಾಸ"
+        },
+        "craft/stonemason": {
+            "name": "ಕಲ್ಲು ಕೆಲಸಗಾರ"
+        },
+        "natural/volcano": {
+            "name": "ಜ್ವಾಲಾಮುಖಿ"
+        },
+        "craft/tailor": {
+            "name": "ದರ್ಜಿ"
+        },
+        "building/entrance": {
+            "name": "ಆಗಮನ/ನಿರ್ಗಮನ"
         },
         "waterway/dam": {
-            "name": "\u0c85\u0ca3\u0cc6\u0c95\u0c9f\u0ccd\u0c9f\u0cc1"
+            "name": "ಅಣೆಕಟ್ಟು"
+        },
+        "shop/shoes": {
+            "name": "ಮೆಟ್ಟು ಅಂಗಡಿ"
+        },
+        "barrier/gate": {
+            "name": "ಹೊರಬಾಗಿಲು"
+        },
+        "amenity/planetarium": {
+            "name": "ತಾರಾಲಯ"
+        },
+        "tourism/museum": {
+            "name": "ಒಡವೆಮನೆ"
         },
         "waterway/river": {
-            "name": "\u0ca8\u0ca6\u0cbf"
+            "name": "ನದಿ"
+        },
+        "amenity/swimming_pool": {
+            "name": "ಈಜುಕೊಳ"
+        },
+        "barrier/wall": {
+            "name": "‍ಗೋಡೆ"
+        },
+        "natural/beach": {
+            "name": "ಕಡಲ ತೀರ"
+        },
+        "amenity/doctors": {
+            "name": "ವೈದ್ಯರು"
+        },
+        "shop/florist": {
+            "name": "ಹೂವಿನ ವ್ಯಾಪಾರಿ"
+        },
+        "building/school": {
+            "name": "ಶಾಲಾ ಕಟ್ಟಡ"
+        },
+        "craft": {
+            "name": "ಕುಶಲ ಕಲೆ"
+        },
+        "amenity/atm": {
+            "name": "ಎಟಿಎಮ್ "
+        },
+        "ford": {
+            "name": "‍ಕಾಲ್ಗಡ"
+        },
+        "office": {
+            "name": "ಕಚೇರಿ"
+        },
+        "amenity/shelter": {
+            "name": "ಅಡೆ"
+        },
+        "landuse/industrial": {
+            "name": "ಕೈಗಾರಿಕಾ ಪ್ರದೇಶ"
+        },
+        "place/locality": {
+            "name": "ಸ್ಥಳ"
+        },
+        "amenity/fire_station": {
+            "name": "ಅಗ್ನಿಶಾಮಕ ಕೇಂದ್ರ"
+        },
+        "craft/optician": {
+            "name": "ನೇತ್ರ ತಜ್ಞ"
+        },
+        "amenity/veterinary": {
+            "name": "ಪಶುವೈದ್ಯಕೀಯ"
+        },
+        "barrier/entrance": {
+            "name": " ಪ್ರವೇಶ"
+        },
+        "natural/water/pond": {
+            "name": "ಕೊಳ"
+        },
+        "amenity/bench": {
+            "name": " ನ್ಯಾಯಪೀಠ"
+        },
+        "area": {
+            "name": "ಸೀಮೆ"
+        },
+        "building/hospital": {
+            "name": "ಆಸ್ಪತ್ರೆ ಕಟ್ಟಡ"
+        },
+        "building/industrial": {
+            "name": "ಕೈಗಾರಿಕಾ ಕಟ್ಟಡ"
+        },
+        "amenity/toilets": {
+            "name": "ಶೌಚಾಲಯ"
+        },
+        "amenity/theatre": {
+            "name": "ಚಿತ್ರಮಂದಿರ"
+        },
+        "building/public": {
+            "name": "ಸಾರ್ವಜನಿಕ ಕಟ್ಟಡ"
+        },
+        "landuse/cemetery": {
+            "name": " ಸ್ಮಶಾನ"
+        },
+        "craft/boatbuilder": {
+            "name": "ದೋಣಿ ಕಟ್ಟುವವ"
+        },
+        "amenity/fountain": {
+            "name": "ಬುಗ್ಗೆ"
+        },
+        "craft/shoemaker": {
+            "name": "ಚಮ್ಮಾರ"
+        },
+        "amenity/taxi": {
+            "name": "‍ಕಾರು ನಿಲ್ಡಾಣ "
+        },
+        "amenity/grave_yard": {
+            "name": "ಶ್ಮಶಾನ"
+        },
+        "amenity/embassy": {
+            "name": "ರಾಯಭಾರ"
+        },
+        "place/village": {
+            "name": "ಹಳ್ಳಿ"
+        },
+        "craft/gardener": {
+            "name": "ತೋಟದ ಮಾಲಿ"
+        },
+        "shop": {
+            "name": "ಅಂಗಡಿ"
+        },
+        "craft/clockmaker": {
+            "name": "ಗಡಿಯಾರ ಮಾಡುವವ"
+        },
+        "shop/furniture": {
+            "name": "ಪಿಟೋಪಕರಣಗಳ ಅಂಗಡಿ"
+        },
+        "tourism/hotel": {
+            "name": "ಭೋಜನಾಲಯ"
+        },
+        "shop/bakery": {
+            "name": "ಅಟ್ಟಂಗಡಿ"
+        },
+        "building/greenhouse": {
+            "name": "ಹಸಿರುಮನೆ"
+        },
+        "type/route/bicycle": {
+            "name": "ಸೈಕಲ್ ಮಾರ್ಗ"
+        },
+        "natural/tree": {
+            "name": "ಮರ"
+        },
+        "shop/department_store": {
+            "name": "ಕಿರಾಣಿ ಅಂಗಡಿ"
+        },
+        "amenity/clinic": {
+            "name": "ಚಿಕಿತ್ಸಾಲಯ"
+        },
+        "man_made/petroleum_well": {
+            "name": "ತೈಲ ಬಾವಿ"
+        },
+        "amenity/cinema": {
+            "name": "ಸಿನಿಮಾ"
+        },
+        "type/route/bus": {
+            "name": "ಬಸ್ ಮಾರ್ಗ"
+        },
+        "shop/tailor": {
+            "name": "ದರ್ಜಿ"
+        },
+        "amenity/clock": {
+            "name": "ಗಡಿಯಾರ"
+        },
+        "shop/alcohol": {
+            "name": " ಸಾರಾಯಿ ಅಂಗಡಿ"
+        },
+        "craft/handicraft": {
+            "name": "ಕರಕುಶಲ ವಸ್ತು"
+        },
+        "building/kindergarten": {
+            "name": "ಶಿಶುವಿಹಾರ/ಬಾಲವಾಡಿ ಕಟ್ಟಡ"
+        },
+        "building/garage": {
+            "name": "ಮೋಟಾರುಖಾನೆ"
+        },
+        "building/roof": {
+            "name": "ಛಾವಣಿ"
+        },
+        "amenity/telephone": {
+            "name": "ದುರವಾಣಿ"
+        },
+        "natural/glacier": {
+            "name": "ನೀರ್ಗಲ್ಲು"
+        },
+        "craft/blacksmith": {
+            "name": "ಕಮ್ಮಾರ"
         }
     }
 }

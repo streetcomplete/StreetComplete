@@ -1,91 +1,91 @@
 {
     "presets": {
-        "amenity/bus_station": {
-            "name": "Stacioni i Autobusave"
+        "shop": {
+            "name": "Dyqan"
         },
-        "building/college": {
-            "name": "Nd\u00ebrtesa e Kollegjit"
+        "shop/kitchen": {
+            "name": "Dyqan për Aredim të Kuzhinës"
         },
-        "highway": {
-            "name": "Hekurudh\u00eb"
-        },
-        "highway/cycleway": {
-            "name": "Rrug\u00eb bi\u00e7ikletash"
+        "shop/optician": {
+            "name": "Okulist"
         },
         "highway/elevator": {
             "name": "Ashensor"
         },
-        "highway/footway": {
-            "name": "Rrug\u00eb k\u00ebmb\u00ebsor\u00ebsh"
-        },
-        "highway/secondary": {
-            "name": "Rrug\u00eb Dyt\u00ebsore"
+        "tourism": {
+            "name": "Turizëm"
         },
         "place/city": {
             "name": "Qytet"
+        },
+        "waterway/canal": {
+            "name": "Kanal"
+        },
+        "tourism/hotel": {
+            "name": "Hotel"
+        },
+        "waterway/waterfall": {
+            "name": "Ujëvarë"
+        },
+        "shop/bakery": {
+            "name": "Furrë buke"
+        },
+        "shop/clothes": {
+            "name": "Dyqan Veshjesh"
         },
         "power/transformer": {
             "name": "Transformator"
         },
         "railway": {
-            "name": "Hekurudh\u00eb"
+            "name": "Hekurudhë"
         },
-        "railway/abandoned": {
-            "name": "Hekurudh\u00eb E Braktisur"
+        "highway": {
+            "name": "Hekurudhë"
         },
-        "shop": {
-            "name": "Dyqan"
-        },
-        "shop/bakery": {
-            "name": "Furr\u00eb buke"
-        },
-        "shop/clothes": {
-            "name": "Dyqan Veshjesh"
-        },
-        "shop/copyshop": {
-            "name": "Fotokopje"
-        },
-        "shop/dry_cleaning": {
-            "name": "Pastrim Kimik"
+        "tourism/information/map": {
+            "name": "Hartë"
         },
         "shop/kiosk": {
-            "name": "Kiosk\u00eb"
+            "name": "Kioskë"
         },
-        "shop/kitchen": {
-            "name": "Dyqan p\u00ebr Aredim t\u00eb Kuzhin\u00ebs"
-        },
-        "shop/laundry": {
-            "name": "Lavanderi"
-        },
-        "shop/optician": {
-            "name": "Okulist"
-        },
-        "shop/supermarket": {
-            "name": "Supermarket"
-        },
-        "tourism": {
-            "name": "Turiz\u00ebm"
-        },
-        "tourism/hotel": {
-            "name": "Hotel"
+        "amenity/bus_station": {
+            "name": "Stacioni i Autobusave"
         },
         "tourism/information": {
             "name": "Informacion"
         },
-        "tourism/information/map": {
-            "name": "Hart\u00eb"
+        "shop/laundry": {
+            "name": "Lavanderi"
+        },
+        "building/college": {
+            "name": "Ndërtesa e Kollegjit"
+        },
+        "shop/copyshop": {
+            "name": "Fotokopje"
+        },
+        "railway/abandoned": {
+            "name": "Hekurudhë E Braktisur"
+        },
+        "shop/supermarket": {
+            "name": "Supermarket"
         },
         "type/boundary/administrative": {
             "name": "Kufi Administrativ"
         },
-        "waterway/canal": {
-            "name": "Kanal"
+        "highway/footway": {
+            "name": "Rrugë këmbësorësh"
+        },
+        "highway/cycleway": {
+            "name": "Rrugë biçikletash"
+        },
+        "highway/secondary": {
+            "name": "Rrugë Dytësore"
+        },
+        "shop/dry_cleaning": {
+            "name": "Pastrim Kimik"
         },
         "waterway/river": {
-            "name": "Lum\u00eb"
-        },
-        "waterway/waterfall": {
-            "name": "Uj\u00ebvar\u00eb"
+            "name": "Lumë"
         }
     }
 }

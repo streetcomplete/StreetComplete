@@ -1,2971 +1,2971 @@
 {
     "presets": {
-        "address": {
-            "name": "Heimilisfang"
-        },
-        "advertising/billboard": {
-            "name": "Augl\u00fdsingaspjald"
-        },
-        "aerialway": {
-            "name": "V\u00edralyfta"
-        },
-        "aerialway/cable_car": {
-            "name": "Kl\u00e1fur"
-        },
-        "aerialway/chair_lift": {
-            "name": "St\u00f3lalyfta"
-        },
-        "aerialway/drag_lift": {
-            "name": "Toglyfta"
-        },
-        "aerialway/gondola": {
-            "name": "Eggjalyfta"
-        },
-        "aerialway/goods": {
-            "name": "V\u00f6ruv\u00edralyfta"
-        },
-        "aerialway/magic_carpet": {
-            "name": "T\u00f6frateppi"
-        },
-        "aerialway/mixed_lift": {
-            "name": "Bl\u00f6ndu\u00f0 ger\u00f0 v\u00edralyftu"
-        },
-        "aerialway/platter": {
-            "name": "Diskalyfta"
-        },
-        "aerialway/pylon": {
-            "name": "Lyftumastur"
-        },
-        "aerialway/rope_tow": {
-            "name": "Ka\u00f0allyfta"
-        },
-        "aerialway/station": {
-            "name": "Lyftust\u00f6\u00f0"
-        },
-        "aerialway/t-bar": {
-            "name": "T-lyfta"
-        },
-        "aeroway": {
-            "name": "Loftl\u00edna"
-        },
-        "aeroway/aerodrome": {
-            "name": "Flugv\u00f6llur"
-        },
-        "aeroway/apron": {
-            "name": "Flughla\u00f0"
-        },
-        "aeroway/gate": {
-            "name": "Flugvallarhli\u00f0"
-        },
-        "aeroway/hangar": {
-            "name": "Flugsk\u00fdli"
-        },
-        "aeroway/helipad": {
-            "name": "\u00deyrlupallur",
-            "terms": "lendingarpallur"
-        },
-        "aeroway/runway": {
-            "name": "Flugbraut"
-        },
-        "aeroway/taxiway": {
-            "name": "Akbraut flugv\u00e9la",
-            "terms": "flugrein,f\u00e6rslubraut"
-        },
-        "aeroway/terminal": {
-            "name": "Flugst\u00f6\u00f0"
-        },
-        "allotments/plot": {
-            "name": "Samf\u00e9lagsgar\u00f0skikar"
-        },
-        "amenity": {
-            "name": "\u00dej\u00f3nusta"
-        },
-        "amenity/animal_boarding": {
-            "name": "D\u00fdrah\u00f3tel"
-        },
-        "amenity/animal_breeding": {
-            "name": "D\u00fdrar\u00e6ktun"
-        },
-        "amenity/animal_shelter": {
-            "name": "D\u00fdraathvarf"
-        },
-        "amenity/arts_centre": {
-            "name": "Listami\u00f0st\u00f6\u00f0"
-        },
-        "amenity/atm": {
-            "name": "Hra\u00f0banki"
-        },
-        "amenity/bank": {
-            "name": "Banki",
-            "terms": "fj\u00e1rm\u00e1lastofnun"
-        },
-        "amenity/bar": {
-            "name": "Kn\u00e6pa"
-        },
-        "amenity/bbq": {
-            "name": "Grill"
-        },
-        "amenity/bench": {
-            "name": "Bekkur"
-        },
-        "amenity/bicycle_parking": {
-            "name": "Hj\u00f3last\u00e6\u00f0i"
-        },
-        "amenity/bicycle_rental": {
-            "name": "Hj\u00f3laleiga"
-        },
-        "amenity/bicycle_repair_station": {
-            "name": "Hj\u00f3lavi\u00f0ger\u00f0astandur"
-        },
-        "amenity/biergarten": {
-            "name": "Bj\u00f3rgar\u00f0ur"
-        },
-        "amenity/boat_rental": {
-            "name": "B\u00e1taleiga"
-        },
-        "amenity/bureau_de_change": {
-            "name": "Gjaldmi\u00f0laskipti"
-        },
-        "amenity/bus_station": {
-            "name": "Str\u00e6tisvagnast\u00f6\u00f0 / Umfer\u00f0armi\u00f0st\u00f6\u00f0"
-        },
-        "amenity/cafe": {
-            "name": "Kaffih\u00fas",
-            "terms": "teh\u00fas"
-        },
-        "amenity/car_pooling": {
-            "name": "B\u00edlasamn\u00fdting"
+        "office/administrative": {
+            "name": "Stjórnsýsluskrifstofa"
         },
         "amenity/car_rental": {
-            "name": "B\u00edlaleiga"
-        },
-        "amenity/car_sharing": {
-            "name": "B\u00edladeiling"
-        },
-        "amenity/car_wash": {
-            "name": "B\u00edla\u00fevottur"
-        },
-        "amenity/casino": {
-            "name": "Spilav\u00edti"
-        },
-        "amenity/charging_station": {
-            "name": "Hle\u00f0slust\u00f6\u00f0"
-        },
-        "amenity/childcare": {
-            "name": "Barnag\u00e6sla/dagvistun"
-        },
-        "amenity/cinema": {
-            "name": "Kvikmyndah\u00fas",
-            "terms": "b\u00ed\u00f3"
-        },
-        "amenity/clinic": {
-            "name": "L\u00e6knastofa"
-        },
-        "amenity/clinic/abortion": {
-            "name": "F\u00f3sturey\u00f0ingastofa"
-        },
-        "amenity/clinic/fertility": {
-            "name": "Frj\u00f3semiskl\u00ednik"
-        },
-        "amenity/clock": {
-            "name": "Klukka"
-        },
-        "amenity/college": {
-            "name": "Framhaldsk\u00f3lal\u00f3\u00f0"
-        },
-        "amenity/community_centre": {
-            "name": "Samf\u00e9lagsmi\u00f0st\u00f6\u00f0"
-        },
-        "amenity/compressed_air": {
-            "name": "Loftd\u00e6la"
-        },
-        "amenity/courthouse": {
-            "name": "D\u00f3mh\u00fas"
-        },
-        "amenity/coworking_space": {
-            "name": "Sameiginlegt vinnur\u00fdmi"
-        },
-        "amenity/crematorium": {
-            "name": "L\u00edkbrennsla"
-        },
-        "amenity/dentist": {
-            "name": "Tannl\u00e6knir"
-        },
-        "amenity/dive_centre": {
-            "name": "K\u00f6funarmi\u00f0st\u00f6\u00f0"
-        },
-        "amenity/doctors": {
-            "name": "L\u00e6knir"
-        },
-        "amenity/dojo": {
-            "name": "Dojo / Bardaga\u00ed\u00fer\u00f3ttir"
-        },
-        "amenity/drinking_water": {
-            "name": "Drykkjarvatn"
-        },
-        "amenity/driving_school": {
-            "name": "\u00d6kusk\u00f3li"
-        },
-        "amenity/embassy": {
-            "name": "Sendir\u00e1\u00f0"
-        },
-        "amenity/fast_food": {
-            "name": "Skyndibiti"
-        },
-        "amenity/fast_food/burger": {
-            "name": "Skyndibiti, hamborgarar"
-        },
-        "amenity/fast_food/chicken": {
-            "name": "Skyndibiti, kj\u00faklingar"
-        },
-        "amenity/fast_food/fish_and_chips": {
-            "name": "Skyndibiti, fiskur og franskar"
-        },
-        "amenity/fast_food/kebab": {
-            "name": "Skyndibiti, kebab"
-        },
-        "amenity/fast_food/pizza": {
-            "name": "Skyndibiti, flatb\u00f6kur"
-        },
-        "amenity/fast_food/sandwich": {
-            "name": "Skyndibiti, samlokur"
-        },
-        "amenity/ferry_terminal": {
-            "name": "Ferjust\u00f6\u00f0 / Umfer\u00f0armi\u00f0st\u00f6\u00f0"
-        },
-        "amenity/fire_station": {
-            "name": "Sl\u00f6kkvist\u00f6\u00f0"
-        },
-        "amenity/food_court": {
-            "name": "Matarmarka\u00f0ur"
-        },
-        "amenity/fountain": {
-            "name": "Gosbrunnur"
-        },
-        "amenity/fuel": {
-            "name": "Bens\u00ednst\u00f6\u00f0"
-        },
-        "amenity/grave_yard": {
-            "name": "Grafreitur"
-        },
-        "amenity/grit_bin": {
-            "name": "Sandkista"
-        },
-        "amenity/hospital": {
-            "name": "Sp\u00edtalal\u00f3\u00f0"
-        },
-        "amenity/hunting_stand": {
-            "name": "Skotv\u00f6llur"
-        },
-        "amenity/ice_cream": {
-            "name": "\u00cdsb\u00fa\u00f0"
-        },
-        "amenity/internet_cafe": {
-            "name": "Netkaffih\u00fas"
-        },
-        "amenity/kindergarten": {
-            "name": "Forsk\u00f3la-/Leiksk\u00f3lal\u00f3\u00f0"
-        },
-        "amenity/language_school": {
-            "name": "Tungum\u00e1lask\u00f3li"
-        },
-        "amenity/library": {
-            "name": "B\u00f3kasafn"
-        },
-        "amenity/love_hotel": {
-            "name": "\u00c1starh\u00f3tel"
-        },
-        "amenity/marketplace": {
-            "name": "Marka\u00f0ur"
-        },
-        "amenity/monastery": {
-            "name": "Klausturl\u00f3\u00f0"
-        },
-        "amenity/motorcycle_parking": {
-            "name": "M\u00f3torhj\u00f3last\u00e6\u00f0i"
-        },
-        "amenity/music_school": {
-            "name": "T\u00f3nlistarsk\u00f3li"
-        },
-        "amenity/nightclub": {
-            "name": "N\u00e6turkl\u00fabbur"
-        },
-        "amenity/nursing_home": {
-            "name": "Hj\u00fakrunarheimili"
-        },
-        "amenity/parking": {
-            "name": "B\u00edlast\u00e6\u00f0asv\u00e6\u00f0i"
-        },
-        "amenity/parking/multi-storey": {
-            "name": "B\u00edlast\u00e6\u00f0ah\u00fas \u00e1 m\u00f6rgum h\u00e6\u00f0um"
-        },
-        "amenity/parking_entrance": {
-            "name": "Inngangur/\u00datgangur b\u00edlast\u00e6\u00f0ah\u00fass"
-        },
-        "amenity/parking_space": {
-            "name": "B\u00edlast\u00e6\u00f0ar\u00fdmi"
-        },
-        "amenity/place_of_worship": {
-            "name": "Tilbei\u00f0sluh\u00fas",
-            "terms": "musteri, kirkja, kapella, b\u00e6nah\u00fas"
-        },
-        "amenity/place_of_worship/buddhist": {
-            "name": "B\u00faddistamusteri"
-        },
-        "amenity/place_of_worship/hindu": {
-            "name": "Hind\u00fa-musteri"
-        },
-        "amenity/place_of_worship/shinto": {
-            "name": "Shinto-skr\u00edn"
-        },
-        "amenity/place_of_worship/sikh": {
-            "name": "Sikh-musteri"
-        },
-        "amenity/place_of_worship/taoist": {
-            "name": "Ta\u00f3istamusteri"
-        },
-        "amenity/planetarium": {
-            "name": "Stj\u00f6rnuver"
-        },
-        "amenity/police": {
-            "name": "L\u00f6gregla",
-            "terms": "l\u00f6ggan"
-        },
-        "amenity/post_box": {
-            "name": "P\u00f3stkassi"
-        },
-        "amenity/post_office": {
-            "name": "P\u00f3sth\u00fas"
-        },
-        "amenity/prison": {
-            "name": "Fangelsisl\u00f3\u00f0"
-        },
-        "amenity/pub": {
-            "name": "Kr\u00e1"
-        },
-        "amenity/public_bath": {
-            "name": "Almenningsb\u00f6\u00f0"
-        },
-        "amenity/public_bookcase": {
-            "name": "Almenningsb\u00f3kakassi"
-        },
-        "amenity/ranger_station": {
-            "name": "Landvar\u00f0ast\u00f6\u00f0"
-        },
-        "amenity/recycling": {
-            "name": "Endurvinnsla"
-        },
-        "amenity/recycling_centre": {
-            "name": "Endurvinnslumi\u00f0st\u00f6\u00f0"
-        },
-        "amenity/recycling_container": {
-            "name": "Endurvinnslug\u00e1mur"
-        },
-        "amenity/register_office": {
-            "name": "Skr\u00e1ningarskrifstofa"
-        },
-        "amenity/restaurant": {
-            "name": "Veitingah\u00fas"
-        },
-        "amenity/restaurant/american": {
-            "name": "Amer\u00edskt veitingah\u00fas"
-        },
-        "amenity/restaurant/asian": {
-            "name": "As\u00edskt veitingah\u00fas"
-        },
-        "amenity/restaurant/chinese": {
-            "name": "K\u00ednverskt veitingah\u00fas"
-        },
-        "amenity/restaurant/french": {
-            "name": "Franskt veitingah\u00fas"
-        },
-        "amenity/restaurant/german": {
-            "name": "\u00de\u00fdskt veitingah\u00fas"
-        },
-        "amenity/restaurant/greek": {
-            "name": "Gr\u00edskt veitingah\u00fas"
-        },
-        "amenity/restaurant/indian": {
-            "name": "Indverskt veitingah\u00fas"
-        },
-        "amenity/restaurant/italian": {
-            "name": "\u00cdtalskt veitingah\u00fas"
-        },
-        "amenity/restaurant/japanese": {
-            "name": "Japanskt veitingah\u00fas"
-        },
-        "amenity/restaurant/mexican": {
-            "name": "Mex\u00edk\u00f3skt veitingah\u00fas"
-        },
-        "amenity/restaurant/noodle": {
-            "name": "N\u00fa\u00f0luveitingah\u00fas"
-        },
-        "amenity/restaurant/pizza": {
-            "name": "Flatb\u00f6kuveitingah\u00fas"
-        },
-        "amenity/restaurant/seafood": {
-            "name": "Sj\u00e1varr\u00e9ttaveitingah\u00fas"
-        },
-        "amenity/restaurant/steakhouse": {
-            "name": "Steikh\u00fas"
-        },
-        "amenity/restaurant/sushi": {
-            "name": "Sushi-veitingah\u00fas"
-        },
-        "amenity/restaurant/thai": {
-            "name": "T\u00e6lenskt veitingah\u00fas"
-        },
-        "amenity/restaurant/turkish": {
-            "name": "Tyrkneskt veitingah\u00fas"
-        },
-        "amenity/restaurant/vietnamese": {
-            "name": "V\u00edetnamskt veitingah\u00fas"
-        },
-        "amenity/sanitary_dump_station": {
-            "name": "Salernishreinsun fyrir b\u00edla"
-        },
-        "amenity/school": {
-            "name": "Sk\u00f3lal\u00f3\u00f0"
-        },
-        "amenity/scrapyard": {
-            "name": "Brotaj\u00e1rnshaugur"
-        },
-        "amenity/shelter": {
-            "name": "Sk\u00fdli"
-        },
-        "amenity/shelter/picnic_shelter": {
-            "name": "\u00c1ningarsk\u00fdli"
-        },
-        "amenity/shower": {
-            "name": "Steypiba\u00f0"
-        },
-        "amenity/smoking_area": {
-            "name": "Reykingasv\u00e6\u00f0i"
-        },
-        "amenity/social_facility": {
-            "name": "F\u00e9lags\u00fej\u00f3nusta"
-        },
-        "amenity/social_facility/food_bank": {
-            "name": "Matara\u00f0sto\u00f0"
-        },
-        "amenity/social_facility/group_home": {
-            "name": "Samb\u00fdli eldri borgara"
-        },
-        "amenity/social_facility/homeless_shelter": {
-            "name": "Athvarf heimilislausra"
-        },
-        "amenity/social_facility/nursing_home": {
-            "name": "Hj\u00fakrunarheimili"
-        },
-        "amenity/studio": {
-            "name": "Uppt\u00f6kust\u00fad\u00ed\u00f3"
-        },
-        "amenity/swimming_pool": {
-            "name": "Sundlaug"
-        },
-        "amenity/taxi": {
-            "name": "Leigub\u00edlast\u00e6\u00f0i"
-        },
-        "amenity/telephone": {
-            "name": "S\u00edmi"
-        },
-        "amenity/theatre": {
-            "name": "Leikh\u00fas"
-        },
-        "amenity/toilets": {
-            "name": "Salerni"
-        },
-        "amenity/townhall": {
-            "name": "R\u00e1\u00f0h\u00fas"
-        },
-        "amenity/university": {
-            "name": "H\u00e1sk\u00f3lal\u00f3\u00f0"
-        },
-        "amenity/vehicle_inspection": {
-            "name": "Sko\u00f0un farart\u00e6kja"
-        },
-        "amenity/vending_machine": {
-            "name": "Sj\u00e1lfsali"
-        },
-        "amenity/vending_machine/cigarettes": {
-            "name": "S\u00edgarettusj\u00e1lfsali"
-        },
-        "amenity/vending_machine/coffee": {
-            "name": "Kaffisj\u00e1lfsali"
-        },
-        "amenity/vending_machine/condoms": {
-            "name": "Smokkasj\u00e1lfsali"
-        },
-        "amenity/vending_machine/drinks": {
-            "name": "Drykkjasj\u00e1lfsali"
-        },
-        "amenity/vending_machine/electronics": {
-            "name": "Rafeindat\u00e6kjasj\u00e1lfsali"
-        },
-        "amenity/vending_machine/elongated_coin": {
-            "name": "Sj\u00e1lfsali fyrir flatta/stimpla\u00f0a mynt"
-        },
-        "amenity/vending_machine/feminine_hygiene": {
-            "name": "Sj\u00e1lfsali me\u00f0 d\u00f6musnyrtiv\u00f6rum"
-        },
-        "amenity/vending_machine/food": {
-            "name": "Matarsj\u00e1lfsali"
-        },
-        "amenity/vending_machine/fuel": {
-            "name": "Eldsneytisd\u00e6la"
-        },
-        "amenity/vending_machine/ice_cream": {
-            "name": "\u00cdssj\u00e1lfsali"
-        },
-        "amenity/vending_machine/news_papers": {
-            "name": "Dagbla\u00f0asj\u00e1lfsali"
-        },
-        "amenity/vending_machine/newspapers": {
-            "name": "Dagbla\u00f0asj\u00e1lfsali"
-        },
-        "amenity/vending_machine/parking_tickets": {
-            "name": "B\u00edlast\u00e6\u00f0ami\u00f0asj\u00e1lfsali"
-        },
-        "amenity/vending_machine/public_transport_tickets": {
-            "name": "Mi\u00f0asj\u00e1lfsali \u00ed almenningssamg\u00f6ngur"
-        },
-        "amenity/vending_machine/stamps": {
-            "name": "P\u00f3stsj\u00e1lfsali"
-        },
-        "amenity/vending_machine/sweets": {
-            "name": "Snakksj\u00e1lfsali"
-        },
-        "amenity/veterinary": {
-            "name": "D\u00fdral\u00e6knir"
-        },
-        "amenity/waste/dog_excrement": {
-            "name": "Fata undir hundask\u00edt"
-        },
-        "amenity/waste_basket": {
-            "name": "Ruslafata"
-        },
-        "amenity/waste_disposal": {
-            "name": "Ruslag\u00e1mur"
-        },
-        "amenity/waste_transfer_station": {
-            "name": "Sorpflokkunarst\u00f6\u00f0"
-        },
-        "amenity/water_point": {
-            "name": "Drykkjarvatn fyrir b\u00edla"
-        },
-        "amenity/watering_place": {
-            "name": "Brynning fyrir d\u00fdr"
-        },
-        "area": {
-            "name": "Sv\u00e6\u00f0i"
-        },
-        "area/highway": {
-            "name": "Yfirbor\u00f0 vegar"
-        },
-        "attraction/amusement_ride": {
-            "name": "Skemmtit\u00e6ki"
-        },
-        "attraction/animal": {
-            "name": "D\u00fdr"
-        },
-        "attraction/big_wheel": {
-            "name": "Par\u00edsarhj\u00f3l"
-        },
-        "attraction/bumper_car": {
-            "name": "\u00c1keyrslub\u00edlar"
-        },
-        "attraction/bungee_jumping": {
-            "name": "Teygjust\u00f6kk"
-        },
-        "attraction/carousel": {
-            "name": "Hringekja"
-        },
-        "attraction/dark_ride": {
-            "name": "Draugah\u00fas"
-        },
-        "attraction/drop_tower": {
-            "name": "Fallturn"
-        },
-        "attraction/maze": {
-            "name": "V\u00f6lundarh\u00fas"
-        },
-        "attraction/pirate_ship": {
-            "name": "Sj\u00f3r\u00e6ningjaskip"
-        },
-        "attraction/river_rafting": {
-            "name": "Fl\u00fa\u00f0asiglingar"
-        },
-        "attraction/roller_coaster": {
-            "name": "R\u00fass\u00edbani"
-        },
-        "attraction/train": {
-            "name": "Fer\u00f0amannalest"
-        },
-        "attraction/water_slide": {
-            "name": "Vatnsrennibraut"
-        },
-        "barrier": {
-            "name": "Hindrun"
-        },
-        "barrier/block": {
-            "name": "T\u00e1lmi"
-        },
-        "barrier/bollard": {
-            "name": "Pollar / t\u00e1lmar"
-        },
-        "barrier/border_control": {
-            "name": "Landam\u00e6raeftirlit"
-        },
-        "barrier/cattle_grid": {
-            "name": "Vegrist"
-        },
-        "barrier/city_wall": {
-            "name": "Borgarm\u00farar"
-        },
-        "barrier/cycle_barrier": {
-            "name": "Hj\u00f3lahindrun"
-        },
-        "barrier/ditch": {
-            "name": "Skur\u00f0ur"
-        },
-        "barrier/entrance": {
-            "name": "Inngangur"
-        },
-        "barrier/fence": {
-            "name": "Gir\u00f0ing"
-        },
-        "barrier/gate": {
-            "name": "Hli\u00f0"
-        },
-        "barrier/hedge": {
-            "name": "Limger\u00f0i"
-        },
-        "barrier/kerb": {
-            "name": "Kantsteinn"
-        },
-        "barrier/kerb/lowered": {
-            "name": "L\u00e1gur kantur"
-        },
-        "barrier/kissing_gate": {
-            "name": "Sj\u00e1lflokandi hli\u00f0"
-        },
-        "barrier/lift_gate": {
-            "name": "Lyftuhli\u00f0"
-        },
-        "barrier/retaining_wall": {
-            "name": "Hallaveggur"
-        },
-        "barrier/stile": {
-            "name": "Pr\u00edla"
-        },
-        "barrier/toll_booth": {
-            "name": "Gjaldhli\u00f0"
-        },
-        "barrier/wall": {
-            "name": "Veggur"
-        },
-        "boundary/administrative": {
-            "name": "Stj\u00f3rns\u00fdslum\u00f6rk"
-        },
-        "bridge/support": {
-            "name": "Undirsta\u00f0a br\u00faar"
-        },
-        "bridge/support/pier": {
-            "name": "Br\u00faarst\u00f3lpi"
-        },
-        "building": {
-            "name": "Bygging"
-        },
-        "building/barn": {
-            "name": "Hla\u00f0a"
-        },
-        "building/boathouse": {
-            "name": "B\u00e1task\u00fdli"
-        },
-        "building/bungalow": {
-            "name": "Sumarb\u00fasta\u00f0ur"
-        },
-        "building/bunker": {
-            "name": "Byrgi"
-        },
-        "building/cabin": {
-            "name": "Kofi",
-            "terms": "Sumarb\u00fasta\u00f0ur, kofi"
-        },
-        "building/carport": {
-            "name": "B\u00edlsk\u00fdli"
-        },
-        "building/cathedral": {
-            "name": "D\u00f3mkirkjubygging"
-        },
-        "building/chapel": {
-            "name": "Kapellubygging"
-        },
-        "building/church": {
-            "name": "Kirkjubygging"
-        },
-        "building/civic": {
-            "name": "Borgaraleg bygging"
-        },
-        "building/college": {
-            "name": "Framhaldsk\u00f3labygging"
-        },
-        "building/commercial": {
-            "name": "Atvinnuh\u00fasn\u00e6\u00f0i"
-        },
-        "building/construction": {
-            "name": "\u00c1 byggingarstigi"
-        },
-        "building/detached": {
-            "name": "A\u00f0skilin bygging"
-        },
-        "building/dormitory": {
-            "name": "Heimavist"
-        },
-        "building/entrance": {
-            "name": "Inngangur/\u00datgangur"
-        },
-        "building/farm": {
-            "name": "\u00cdb\u00fa\u00f0arh\u00fas \u00e1 b\u00fdli"
-        },
-        "building/farm_auxiliary": {
-            "name": "Landb\u00fana\u00f0arbygging"
-        },
-        "building/garage": {
-            "name": "B\u00edlsk\u00far"
-        },
-        "building/garages": {
-            "name": "B\u00edlsk\u00farar"
-        },
-        "building/greenhouse": {
-            "name": "Gr\u00f3\u00f0urh\u00fas"
-        },
-        "building/hospital": {
-            "name": "Sj\u00fakrah\u00fasbygging"
-        },
-        "building/hotel": {
-            "name": "H\u00f3telbygging"
-        },
-        "building/house": {
-            "name": "Einb\u00fdlish\u00fas"
-        },
-        "building/hut": {
-            "name": "Fjallakofi"
-        },
-        "building/industrial": {
-            "name": "I\u00f0na\u00f0arh\u00fasn\u00e6\u00f0i"
-        },
-        "building/kindergarten": {
-            "name": "Forsk\u00f3la-/Leiksk\u00f3labygging"
-        },
-        "building/mosque": {
-            "name": "Moskubygging"
-        },
-        "building/public": {
-            "name": "Opinber bygging"
-        },
-        "building/residential": {
-            "name": "\u00cdb\u00fa\u00f0arh\u00fasn\u00e6\u00f0i"
-        },
-        "building/retail": {
-            "name": "Verslunarh\u00fasn\u00e6\u00f0i"
-        },
-        "building/roof": {
-            "name": "\u00deak"
-        },
-        "building/ruins": {
-            "name": "Byggingar\u00fastir"
-        },
-        "building/school": {
-            "name": "Sk\u00f3labygging"
-        },
-        "building/semidetached_house": {
-            "name": "H\u00e1lf-a\u00f0skilin bygging"
-        },
-        "building/service": {
-            "name": "\u00dej\u00f3nustubygging"
-        },
-        "building/shed": {
-            "name": "Sk\u00far",
-            "terms": "gar\u00f0sk\u00e1li"
-        },
-        "building/stable": {
-            "name": "Hesth\u00fas"
-        },
-        "building/stadium": {
-            "name": "\u00cd\u00fer\u00f3ttaleikvangur"
-        },
-        "building/static_caravan": {
-            "name": "Sta\u00f0fast hj\u00f3lh\u00fdsi"
-        },
-        "building/temple": {
-            "name": "Musterisbygging"
-        },
-        "building/terrace": {
-            "name": "Ra\u00f0h\u00fas"
-        },
-        "building/transportation": {
-            "name": "Samg\u00f6ngubygging"
-        },
-        "building/university": {
-            "name": "H\u00e1sk\u00f3labygging"
-        },
-        "building/warehouse": {
-            "name": "V\u00f6ruh\u00fas"
-        },
-        "camp_site/camp_pitch": {
-            "name": "Tjaldst\u00e6\u00f0ish\u00f3lf"
-        },
-        "circular": {
-            "name": "Hringakstur"
-        },
-        "club": {
-            "name": "Kl\u00fabbur"
-        },
-        "craft": {
-            "name": "Handverk"
-        },
-        "craft/basket_maker": {
-            "name": "K\u00f6rfuger\u00f0"
-        },
-        "craft/beekeeper": {
-            "name": "B\u00fdflugnahir\u00f0ir"
-        },
-        "craft/blacksmith": {
-            "name": "J\u00e1rnsmi\u00f0ur"
-        },
-        "craft/boatbuilder": {
-            "name": "B\u00e1tasmi\u00f0ur"
-        },
-        "craft/bookbinder": {
-            "name": "B\u00f3kbindari"
-        },
-        "craft/brewery": {
-            "name": "Bruggari"
-        },
-        "craft/carpenter": {
-            "name": "Tr\u00e9smi\u00f0ur"
-        },
-        "craft/carpet_layer": {
-            "name": "Teppalagning"
-        },
-        "craft/caterer": {
-            "name": "Veislu\u00fej\u00f3nusta"
-        },
-        "craft/chimney_sweeper": {
-            "name": "S\u00f3tari"
-        },
-        "craft/clockmaker": {
-            "name": "Klukkusmi\u00f0ur"
-        },
-        "craft/confectionery": {
-            "name": "S\u00e6lg\u00e6tisger\u00f0"
-        },
-        "craft/distillery": {
-            "name": "Eimingarh\u00fas"
-        },
-        "craft/dressmaker": {
-            "name": "Kj\u00f3lasaumari"
-        },
-        "craft/electrician": {
-            "name": "Rafvirki"
-        },
-        "craft/electronics_repair": {
-            "name": "Rafeindat\u00e6kjaverkst\u00e6\u00f0i"
-        },
-        "craft/gardener": {
-            "name": "Gar\u00f0yrkjuma\u00f0ur"
-        },
-        "craft/glaziery": {
-            "name": "Glerskur\u00f0ur"
-        },
-        "craft/handicraft": {
-            "name": "Handverk"
-        },
-        "craft/hvac": {
-            "name": "Loftr\u00e6sting, upphitun og loftk\u00e6ling"
-        },
-        "craft/insulator": {
-            "name": "Einangrun"
-        },
-        "craft/jeweler": {
-            "name": "Skartgripasali"
-        },
-        "craft/key_cutter": {
-            "name": "Lykla\u00fej\u00f3nusta"
-        },
-        "craft/locksmith": {
-            "name": "Lyklasmi\u00f0ur"
-        },
-        "craft/metal_construction": {
-            "name": "M\u00e1lmsm\u00ed\u00f0i (byggingar)"
-        },
-        "craft/optician": {
-            "name": "Gleraugnasali"
-        },
-        "craft/painter": {
-            "name": "M\u00e1lari"
-        },
-        "craft/photographer": {
-            "name": "Lj\u00f3smyndari"
-        },
-        "craft/photographic_laboratory": {
-            "name": "Lj\u00f3smyndavinnustofa"
-        },
-        "craft/plasterer": {
-            "name": "Gifslagningar"
-        },
-        "craft/plumber": {
-            "name": "P\u00edpari"
-        },
-        "craft/pottery": {
-            "name": "Leirkerager\u00f0"
-        },
-        "craft/rigger": {
-            "name": "Stagari (rigger)"
-        },
-        "craft/roofer": {
-            "name": "\u00deaksm\u00ed\u00f0i"
-        },
-        "craft/saddler": {
-            "name": "S\u00f6\u00f0lasmi\u00f0ur"
-        },
-        "craft/sailmaker": {
-            "name": "Seglager\u00f0"
-        },
-        "craft/sawmill": {
-            "name": "S\u00f6gunarmylla"
-        },
-        "craft/scaffolder": {
-            "name": "Vinnupallasm\u00ed\u00f0i"
-        },
-        "craft/sculptor": {
-            "name": "Myndh\u00f6ggvari"
-        },
-        "craft/shoemaker": {
-            "name": "Sk\u00f3smi\u00f0ur"
-        },
-        "craft/stonemason": {
-            "name": "Steinsmi\u00f0ur"
-        },
-        "craft/tailor": {
-            "name": "Skraddari"
-        },
-        "craft/tiler": {
-            "name": "Fl\u00edsaleggjari"
-        },
-        "craft/tinsmith": {
-            "name": "Tinsmi\u00f0ur"
-        },
-        "craft/upholsterer": {
-            "name": "B\u00f3lstrari"
-        },
-        "craft/watchmaker": {
-            "name": "\u00darsmi\u00f0ur"
-        },
-        "craft/window_construction": {
-            "name": "Gluggasm\u00ed\u00f0i"
-        },
-        "craft/winery": {
-            "name": "V\u00ednger\u00f0"
-        },
-        "embankment": {
-            "name": "Stallur"
-        },
-        "emergency/ambulance_station": {
-            "name": "Sj\u00fakrab\u00edlast\u00f6\u00f0"
-        },
-        "emergency/defibrillator": {
-            "name": "Hjartastu\u00f0t\u00e6ki"
-        },
-        "emergency/designated": {
-            "name": "\u00c6tla\u00f0 sem ney\u00f0ara\u00f0gangur"
-        },
-        "emergency/destination": {
-            "name": "Ney\u00f0ara\u00f0gangur ef \u00ed fararlei\u00f0"
-        },
-        "emergency/fire_extinguisher": {
-            "name": "Sl\u00f6kkvit\u00e6ki"
-        },
-        "emergency/fire_hydrant": {
-            "name": "Brunahani"
-        },
-        "emergency/first_aid_kit": {
-            "name": "Skyndihj\u00e1lparkassi"
-        },
-        "emergency/life_ring": {
-            "name": "Bjarghringur"
-        },
-        "emergency/no": {
-            "name": "Ekki ney\u00f0ara\u00f0gangur"
-        },
-        "emergency/official": {
-            "name": "Opinber ney\u00f0ara\u00f0gangur"
-        },
-        "emergency/phone": {
-            "name": "Ney\u00f0ars\u00edmi"
-        },
-        "emergency/private": {
-            "name": "Einka ney\u00f0ara\u00f0gangur"
-        },
-        "emergency/siren": {
-            "name": "S\u00edrena"
-        },
-        "emergency/water_tank": {
-            "name": "Ney\u00f0arvatnstankur"
-        },
-        "emergency/yes": {
-            "name": "Ney\u00f0ara\u00f0gangur: J\u00e1"
-        },
-        "entrance": {
-            "name": "Inngangur/\u00datgangur"
-        },
-        "ford": {
-            "name": "Va\u00f0"
-        },
-        "golf/bunker": {
-            "name": "Glompa"
-        },
-        "golf/fairway": {
-            "name": "Braut"
-        },
-        "golf/green": {
-            "name": "P\u00fattfl\u00f6t"
-        },
-        "golf/hole": {
-            "name": "Golfhola"
-        },
-        "golf/rough": {
-            "name": "Kargi"
-        },
-        "golf/tee": {
-            "name": "Teigur"
-        },
-        "healthcare": {
-            "name": "Heilsug\u00e6slua\u00f0sta\u00f0a"
-        },
-        "healthcare/alternative": {
-            "name": "\u00d3hef\u00f0bundnar l\u00e6kningar"
-        },
-        "healthcare/alternative/chiropractic": {
-            "name": "Hnykkjal\u00e6knir"
-        },
-        "healthcare/audiologist": {
-            "name": "Heyrnart\u00e6kjafr\u00e6\u00f0ingur"
-        },
-        "healthcare/birthing_center": {
-            "name": "F\u00e6\u00f0ingarheimili"
-        },
-        "healthcare/blood_donation": {
-            "name": "Bl\u00f3\u00f0banki"
-        },
-        "healthcare/hospice": {
-            "name": "L\u00edknarsel"
-        },
-        "healthcare/midwife": {
-            "name": "Lj\u00f3sm\u00f3\u00f0ir"
-        },
-        "healthcare/occupational_therapist": {
-            "name": "I\u00f0ju\u00fej\u00e1lfi"
-        },
-        "healthcare/optometrist": {
-            "name": "Sj\u00f3nt\u00e6kjafr\u00e6\u00f0ingur"
-        },
-        "healthcare/physiotherapist": {
-            "name": "Sj\u00fakra\u00fej\u00e1lfari"
-        },
-        "healthcare/podiatrist": {
-            "name": "F\u00f3taa\u00f0ger\u00f0afr\u00e6\u00f0ingur"
-        },
-        "healthcare/psychotherapist": {
-            "name": "S\u00e1lme\u00f0fer\u00f0arfr\u00e6\u00f0ingur"
-        },
-        "healthcare/rehabilitation": {
-            "name": "Endurh\u00e6fingara\u00f0sta\u00f0a"
-        },
-        "healthcare/speech_therapist": {
-            "name": "Talmeinafr\u00e6\u00f0ingur"
-        },
-        "highway": {
-            "name": "\u00dej\u00f3\u00f0vegur"
-        },
-        "highway/bridleway": {
-            "name": "Rei\u00f0lei\u00f0"
-        },
-        "highway/bus_guideway": {
-            "name": "Str\u00e6t\u00f3lei\u00f0sagnarbraut"
-        },
-        "highway/bus_stop": {
-            "name": "Str\u00e6t\u00f3stoppist\u00f6\u00f0 / Bi\u00f0sv\u00e6\u00f0i"
-        },
-        "highway/corridor": {
-            "name": "Gangur innanh\u00fass"
-        },
-        "highway/crossing/marked": {
-            "name": "Merkt gangbraut"
-        },
-        "highway/crossing/marked-raised": {
-            "name": "Merkt gangbraut (upph\u00e6kku\u00f0)"
-        },
-        "highway/crossing/unmarked": {
-            "name": "\u00d3merkt gangbraut"
-        },
-        "highway/crossing/unmarked-raised": {
-            "name": "\u00d3merkt gangbraut (upph\u00e6kku\u00f0)"
-        },
-        "highway/crossing/zebra": {
-            "name": "Merkt gangbraut"
-        },
-        "highway/crossing/zebra-raised": {
-            "name": "Merkt gangbraut (upph\u00e6kku\u00f0)"
-        },
-        "highway/cycleway": {
-            "name": "Hj\u00f3last\u00edgur"
-        },
-        "highway/elevator": {
-            "name": "Lyfta"
-        },
-        "highway/footway": {
-            "name": "G\u00f6ngust\u00edgur"
-        },
-        "highway/footway/marked": {
-            "name": "Merkt gangbraut"
-        },
-        "highway/footway/marked-raised": {
-            "name": "Merkt gangbraut (upph\u00e6kku\u00f0)"
-        },
-        "highway/footway/sidewalk": {
-            "name": "Gangst\u00e9tt"
-        },
-        "highway/footway/unmarked": {
-            "name": "\u00d3merkt gangbraut"
-        },
-        "highway/footway/unmarked-raised": {
-            "name": "\u00d3merkt gangbraut (upph\u00e6kku\u00f0)"
-        },
-        "highway/footway/zebra": {
-            "name": "Merkt gangbraut"
-        },
-        "highway/footway/zebra-raised": {
-            "name": "Merkt gangbraut (upph\u00e6kku\u00f0)"
-        },
-        "highway/give_way": {
-            "name": "Bi\u00f0skyldumerki"
-        },
-        "highway/living_street": {
-            "name": "Vistgata"
-        },
-        "highway/milestone": {
-            "name": "Vegalengdarmerki"
-        },
-        "highway/mini_roundabout": {
-            "name": "L\u00edti\u00f0 hringtorg"
-        },
-        "highway/motorway": {
-            "name": "Hra\u00f0braut"
-        },
-        "highway/motorway_junction": {
-            "name": "Hra\u00f0brautartenging / \u00datafakstur"
-        },
-        "highway/motorway_link": {
-            "name": "Hra\u00f0brautarrein"
-        },
-        "highway/passing_place": {
-            "name": "Fram\u00farakstur"
-        },
-        "highway/path": {
-            "name": "St\u00edgur"
-        },
-        "highway/pedestrian_area": {
-            "name": "Sv\u00e6\u00f0i fyrir f\u00f3tgangandi"
-        },
-        "highway/pedestrian_line": {
-            "name": "G\u00f6ngugata"
-        },
-        "highway/primary": {
-            "name": "Stofnbraut"
-        },
-        "highway/primary_link": {
-            "name": "Stofnrein"
-        },
-        "highway/raceway": {
-            "name": "Keppnisbraut (m\u00f3torsport)"
-        },
-        "highway/residential": {
-            "name": "\u00cdb\u00fa\u00f0agata"
-        },
-        "highway/rest_area": {
-            "name": "Hv\u00edldarsv\u00e6\u00f0i"
-        },
-        "highway/road": {
-            "name": "\u00d3\u00feekktur vegur"
-        },
-        "highway/secondary": {
-            "name": "Tengibraut"
-        },
-        "highway/secondary_link": {
-            "name": "Tengibrautarrein"
-        },
-        "highway/service": {
-            "name": "\u00dej\u00f3nustugata"
-        },
-        "highway/service/alley": {
-            "name": "Sund"
-        },
-        "highway/service/drive-through": {
-            "name": "Afgrei\u00f0slul\u00faga"
-        },
-        "highway/service/driveway": {
-            "name": "Innkeyrsla",
-            "terms": "Heimrei\u00f0"
-        },
-        "highway/service/emergency_access": {
-            "name": "Ney\u00f0ara\u00f0gangur"
-        },
-        "highway/service/parking_aisle": {
-            "name": "B\u00edlast\u00e6\u00f0agangur"
-        },
-        "highway/services": {
-            "name": "\u00dej\u00f3nustusv\u00e6\u00f0i"
-        },
-        "highway/speed_camera": {
-            "name": "Hra\u00f0amyndav\u00e9l"
-        },
-        "highway/steps": {
-            "name": "Tr\u00f6ppur"
-        },
-        "highway/steps/conveying": {
-            "name": "R\u00fallustigi"
-        },
-        "highway/stop": {
-            "name": "St\u00f6\u00f0vunarskyldumerki"
-        },
-        "highway/street_lamp": {
-            "name": "Lj\u00f3sastaur"
-        },
-        "highway/tertiary": {
-            "name": "Safnbraut"
-        },
-        "highway/tertiary_link": {
-            "name": "Safnbrautarrein"
-        },
-        "highway/track": {
-            "name": "Vegsl\u00f3\u00f0i \u00e1n vi\u00f0halds"
-        },
-        "highway/traffic_mirror": {
-            "name": "Umfer\u00f0arspegill"
-        },
-        "highway/traffic_signals": {
-            "name": "Umfer\u00f0arlj\u00f3s"
-        },
-        "highway/trunk": {
-            "name": "Umfer\u00f0ar\u00e6\u00f0"
-        },
-        "highway/trunk_link": {
-            "name": "Umfer\u00f0ar\u00e6\u00f0arrein"
-        },
-        "highway/turning_circle": {
-            "name": "Beygjuhringur"
-        },
-        "highway/turning_loop": {
-            "name": "Vi\u00f0sn\u00faningstorg (eyja)"
-        },
-        "highway/unclassified": {
-            "name": "Minni/\u00d3flokka\u00f0ur vegur"
-        },
-        "historic": {
-            "name": "S\u00f6gulegur sta\u00f0ur"
-        },
-        "historic/archaeological_site": {
-            "name": "Fornleifar"
-        },
-        "historic/boundary_stone": {
-            "name": "Landamerkjasteinn"
-        },
-        "historic/castle": {
-            "name": "Kastali"
-        },
-        "historic/memorial": {
-            "name": "Minnismerki"
-        },
-        "historic/monument": {
-            "name": "Minnisvar\u00f0i"
-        },
-        "historic/ruins": {
-            "name": "R\u00fastir"
-        },
-        "historic/tomb": {
-            "name": "Gr\u00f6f"
-        },
-        "historic/wayside_cross": {
-            "name": "Tilbei\u00f0slukross"
-        },
-        "historic/wayside_shrine": {
-            "name": "Tilbei\u00f0sluskr\u00edn"
-        },
-        "historic/wreck": {
-            "name": "Skipsflak"
-        },
-        "internet_access/wlan": {
-            "name": "Wi-Fi a\u00f0gangspunktur"
-        },
-        "junction": {
-            "name": "Tenging"
-        },
-        "landuse": {
-            "name": "Landnotkun"
-        },
-        "landuse/allotments": {
-            "name": "Samf\u00e9lagsgar\u00f0ur"
-        },
-        "landuse/aquaculture": {
-            "name": "Vatnseldi"
-        },
-        "landuse/basin": {
-            "name": "L\u00e6g\u00f0"
-        },
-        "landuse/brownfield": {
-            "name": "Byggingarsv\u00e6\u00f0i"
-        },
-        "landuse/cemetery": {
-            "name": "Kirkjugar\u00f0ur"
-        },
-        "landuse/churchyard": {
-            "name": "Kirkjul\u00f3\u00f0"
-        },
-        "landuse/commercial": {
-            "name": "Atvinnusv\u00e6\u00f0i"
-        },
-        "landuse/construction": {
-            "name": "Byggingarframkv\u00e6mdir"
-        },
-        "landuse/farm": {
-            "name": "Akurlendi"
-        },
-        "landuse/farmland": {
-            "name": "Akurlendi"
-        },
-        "landuse/farmyard": {
-            "name": "B\u00f3ndab\u00fdli"
-        },
-        "landuse/garages": {
-            "name": "Landnotkun fyrir verkst\u00e6\u00f0i"
-        },
-        "landuse/grass": {
-            "name": "Gras"
-        },
-        "landuse/greenfield": {
-            "name": "N\u00fdbyggingarsv\u00e6\u00f0i"
-        },
-        "landuse/greenhouse_horticulture": {
-            "name": "Bl\u00f3magr\u00f3\u00f0urh\u00fas"
-        },
-        "landuse/harbour": {
-            "name": "H\u00f6fn"
-        },
-        "landuse/industrial": {
-            "name": "I\u00f0na\u00f0arsv\u00e6\u00f0i"
-        },
-        "landuse/industrial/scrap_yard": {
-            "name": "Brotaj\u00e1rnshaugur"
-        },
-        "landuse/industrial/slaughterhouse": {
-            "name": "Sl\u00e1turh\u00fas"
-        },
-        "landuse/landfill": {
-            "name": "Landfylling"
-        },
-        "landuse/meadow": {
-            "name": "Engi"
-        },
-        "landuse/military": {
-            "name": "Hersv\u00e6\u00f0i"
-        },
-        "landuse/military/airfield": {
-            "name": "Herflugv\u00f6llur"
-        },
-        "landuse/military/barracks": {
-            "name": "Herb\u00fa\u00f0ir"
-        },
-        "landuse/military/bunker": {
-            "name": "Herna\u00f0arsprengjubyrgi"
-        },
-        "landuse/military/checkpoint": {
-            "name": "Var\u00f0st\u00f6\u00f0"
-        },
-        "landuse/military/danger_area": {
-            "name": "H\u00e6ttusv\u00e6\u00f0i"
-        },
-        "landuse/military/naval_base": {
-            "name": "Flotast\u00f6\u00f0"
-        },
-        "landuse/military/nuclear_explosion_site": {
-            "name": "Kjarnorkusprengisv\u00e6\u00f0i"
-        },
-        "landuse/military/obstacle_course": {
-            "name": "Hindrunarhlaupabraut"
-        },
-        "landuse/military/office": {
-            "name": "Herm\u00e1laskrifstofa"
-        },
-        "landuse/military/range": {
-            "name": "Hersv\u00e6\u00f0i"
-        },
-        "landuse/military/training_area": {
-            "name": "\u00c6fingasv\u00e6\u00f0i"
-        },
-        "landuse/orchard": {
-            "name": "Aldingar\u00f0ur"
-        },
-        "landuse/plant_nursery": {
-            "name": "Uppeldi plantna"
-        },
-        "landuse/quarry": {
-            "name": "N\u00e1ma"
-        },
-        "landuse/railway": {
-            "name": "J\u00e1rnbrautargangur"
-        },
-        "landuse/recreation_ground": {
-            "name": "Leikv\u00f6llur"
-        },
-        "landuse/religious": {
-            "name": "Sv\u00e6\u00f0i fyrir tr\u00faarathafnir"
-        },
-        "landuse/residential": {
-            "name": "\u00cdb\u00fa\u00f0ahverfi"
-        },
-        "landuse/retail": {
-            "name": "Sv\u00e6\u00f0i fyrir verslun og \u00fej\u00f3nustu"
-        },
-        "landuse/vineyard": {
-            "name": "V\u00ednekra"
-        },
-        "leisure": {
-            "name": "Skemmtun"
-        },
-        "leisure/adult_gaming_centre": {
-            "name": "Fj\u00e1rh\u00e6ttuspilasalur"
-        },
-        "leisure/amusement_arcade": {
-            "name": "Spilasalur"
-        },
-        "leisure/bandstand": {
-            "name": "Hlj\u00f3msveitapallur"
-        },
-        "leisure/beach_resort": {
-            "name": "Strandb\u00e6r"
-        },
-        "leisure/bird_hide": {
-            "name": "Fuglasko\u00f0unarsk\u00fdli"
-        },
-        "leisure/bowling_alley": {
-            "name": "Keiluh\u00f6ll"
-        },
-        "leisure/common": {
-            "name": "Almenningur"
-        },
-        "leisure/dance": {
-            "name": "Danssalur"
-        },
-        "leisure/dancing_school": {
-            "name": "Danssk\u00f3li"
-        },
-        "leisure/dog_park": {
-            "name": "Hundagar\u00f0ur"
-        },
-        "leisure/firepit": {
-            "name": "Eldst\u00e6\u00f0i"
-        },
-        "leisure/fishing": {
-            "name": "Vei\u00f0ista\u00f0ur"
-        },
-        "leisure/fitness_centre": {
-            "name": "L\u00edkamsr\u00e6ktarmi\u00f0st\u00f6\u00f0"
-        },
-        "leisure/fitness_centre/yoga": {
-            "name": "J\u00f3gast\u00fad\u00ed\u00f3"
-        },
-        "leisure/fitness_station": {
-            "name": "L\u00edkams\u00fej\u00e1lfunarst\u00f6\u00f0 utandyra"
-        },
-        "leisure/fitness_station/balance_beam": {
-            "name": "Jafnv\u00e6gissl\u00e1"
-        },
-        "leisure/fitness_station/box": {
-            "name": "\u00c6fingakassi"
-        },
-        "leisure/fitness_station/horizontal_bar": {
-            "name": "\u00deversl\u00e1"
-        },
-        "leisure/fitness_station/horizontal_ladder": {
-            "name": "Hangstigi"
-        },
-        "leisure/fitness_station/hyperextension": {
-            "name": "Ofurteygingast\u00f6\u00f0"
-        },
-        "leisure/fitness_station/parallel_bars": {
-            "name": "Samhli\u00f0asl\u00e1r"
-        },
-        "leisure/fitness_station/push-up": {
-            "name": "Armbeygjust\u00f6\u00f0"
-        },
-        "leisure/fitness_station/rings": {
-            "name": "\u00c6fingahringir"
-        },
-        "leisure/fitness_station/sign": {
-            "name": "Merki me\u00f0 \u00e6fingalei\u00f0beiningum"
-        },
-        "leisure/fitness_station/sit-up": {
-            "name": "Uppsetust\u00f6\u00f0"
-        },
-        "leisure/fitness_station/stairs": {
-            "name": "\u00c6fingastigar"
-        },
-        "leisure/garden": {
-            "name": "Gar\u00f0ur"
-        },
-        "leisure/golf_course": {
-            "name": "Golfv\u00f6llur"
-        },
-        "leisure/hackerspace": {
-            "name": "Hakkaraathvarf"
-        },
-        "leisure/horse_riding": {
-            "name": "A\u00f0sta\u00f0a fyrir rei\u00f0mennsku"
-        },
-        "leisure/ice_rink": {
-            "name": "Skautasvell"
-        },
-        "leisure/marina": {
-            "name": "B\u00e1tah\u00f6fn"
-        },
-        "leisure/miniature_golf": {
-            "name": "M\u00edn\u00edgolf"
-        },
-        "leisure/nature_reserve": {
-            "name": "Fri\u00f0land"
-        },
-        "leisure/outdoor_seating": {
-            "name": "Sv\u00e6\u00f0i fyrir s\u00e6ti utandyra"
-        },
-        "leisure/park": {
-            "name": "Gar\u00f0ur"
-        },
-        "leisure/picnic_table": {
-            "name": "Nestisbor\u00f0"
-        },
-        "leisure/pitch": {
-            "name": "\u00cd\u00fer\u00f3ttav\u00f6llur"
-        },
-        "leisure/pitch/american_football": {
-            "name": "F\u00f3tboltav\u00f6llur (amer\u00edskur)"
-        },
-        "leisure/pitch/badminton": {
-            "name": "Badmintonv\u00f6llur"
-        },
-        "leisure/pitch/baseball": {
-            "name": "Hafnaboltav\u00f6llur"
-        },
-        "leisure/pitch/basketball": {
-            "name": "K\u00f6rfuboltav\u00f6llur"
-        },
-        "leisure/pitch/beachvolleyball": {
-            "name": "Strandblakv\u00f6llur"
-        },
-        "leisure/pitch/boules": {
-            "name": "K\u00faluspilsv\u00f6llur (boules/bocce)"
-        },
-        "leisure/pitch/bowls": {
-            "name": "K\u00faluspilsfl\u00f6t"
-        },
-        "leisure/pitch/cricket": {
-            "name": "Krikketv\u00f6llur"
-        },
-        "leisure/pitch/equestrian": {
-            "name": "Rei\u00f0sv\u00e6\u00f0i"
-        },
-        "leisure/pitch/rugby_league": {
-            "name": "R\u00fagb\u00fdv\u00f6llur (league)"
-        },
-        "leisure/pitch/rugby_union": {
-            "name": "R\u00fagb\u00fdv\u00f6llur (union)"
-        },
-        "leisure/pitch/skateboard": {
-            "name": "Skautagar\u00f0ur"
-        },
-        "leisure/pitch/soccer": {
-            "name": "Knattspyrnuv\u00f6llur"
-        },
-        "leisure/pitch/softball": {
-            "name": "Mj\u00fakboltav\u00f6llur"
-        },
-        "leisure/pitch/table_tennis": {
-            "name": "Bor\u00f0tennisbor\u00f0"
-        },
-        "leisure/pitch/tennis": {
-            "name": "Tennisv\u00f6llur"
-        },
-        "leisure/pitch/volleyball": {
-            "name": "Blakv\u00f6llur"
-        },
-        "leisure/playground": {
-            "name": "Leikv\u00f6llur"
-        },
-        "leisure/resort": {
-            "name": "Af\u00fereyingar\u00feorp"
-        },
-        "leisure/sauna": {
-            "name": "Gufuba\u00f0"
-        },
-        "leisure/slipway": {
-            "name": "Dr\u00e1ttarbraut"
-        },
-        "leisure/sports_centre": {
-            "name": "\u00cd\u00fer\u00f3ttami\u00f0st\u00f6\u00f0"
-        },
-        "leisure/sports_centre/swimming": {
-            "name": "Sundlaugara\u00f0sta\u00f0a"
-        },
-        "leisure/stadium": {
-            "name": "Leikvangur"
-        },
-        "leisure/swimming_pool": {
-            "name": "Sundlaug"
-        },
-        "leisure/track": {
-            "name": "Keppnisbraut (ekki m\u00f3torsport)"
-        },
-        "leisure/water_park": {
-            "name": "Vatnagar\u00f0ur"
-        },
-        "line": {
-            "name": "L\u00edna"
-        },
-        "man_made": {
-            "name": "Manngert"
-        },
-        "man_made/adit": {
-            "name": "N\u00e1muinngangur"
-        },
-        "man_made/antenna": {
-            "name": "Loftnet"
-        },
-        "man_made/breakwater": {
-            "name": "Sj\u00f3varnargar\u00f0ur"
-        },
-        "man_made/bridge": {
-            "name": "Br\u00fa"
-        },
-        "man_made/chimney": {
-            "name": "Skorsteinn"
-        },
-        "man_made/crane": {
-            "name": "Krani"
-        },
-        "man_made/cutline": {
-            "name": "Cut line"
-        },
-        "man_made/embankment": {
-            "name": "Stallur"
-        },
-        "man_made/flagpole": {
-            "name": "F\u00e1nast\u00f6ng"
-        },
-        "man_made/gasometer": {
-            "name": "Gasm\u00e6lir"
-        },
-        "man_made/groyne": {
-            "name": "\u00d6ldubrj\u00f3tur"
-        },
-        "man_made/lighthouse": {
-            "name": "Viti"
-        },
-        "man_made/mast": {
-            "name": "Mastur"
-        },
-        "man_made/monitoring_station": {
-            "name": "V\u00f6ktunarst\u00f6\u00f0"
-        },
-        "man_made/observatory": {
-            "name": "Sko\u00f0unarst\u00f6\u00f0"
-        },
-        "man_made/petroleum_well": {
-            "name": "Ol\u00edulind"
-        },
-        "man_made/pier": {
-            "name": "Bryggja"
-        },
-        "man_made/pipeline": {
-            "name": "R\u00f6ralei\u00f0sla"
-        },
-        "man_made/pumping_station": {
-            "name": "D\u00e6lust\u00f6\u00f0"
-        },
-        "man_made/silo": {
-            "name": "S\u00edl\u00f3"
-        },
-        "man_made/storage_tank": {
-            "name": "Geymslutankur"
-        },
-        "man_made/surveillance": {
-            "name": "Eftirlit"
-        },
-        "man_made/survey_point": {
-            "name": "\u00dats\u00fdnissta\u00f0ur"
-        },
-        "man_made/tower": {
-            "name": "Turn"
-        },
-        "man_made/wastewater_plant": {
-            "name": "Sk\u00f3lphreinsist\u00f6\u00f0"
-        },
-        "man_made/water_tower": {
-            "name": "Vatnsturn"
-        },
-        "man_made/water_well": {
-            "name": "Brunnur"
-        },
-        "man_made/water_works": {
-            "name": "Vatnsveita"
-        },
-        "man_made/watermill": {
-            "name": "Vatnsmylla"
-        },
-        "man_made/windmill": {
-            "name": "Vindmylla"
-        },
-        "man_made/works": {
-            "name": "Verksmi\u00f0ja"
-        },
-        "manhole": {
-            "name": "Mannop"
-        },
-        "manhole/drain": {
-            "name": "Yfirfall"
-        },
-        "manhole/telecom": {
-            "name": "Mannop fyrir fjarskipti"
-        },
-        "natural": {
-            "name": "N\u00e1tt\u00farulegt"
-        },
-        "natural/bare_rock": {
-            "name": "Berar klappir"
-        },
-        "natural/bay": {
-            "name": "Fl\u00f3i"
-        },
-        "natural/beach": {
-            "name": "Str\u00f6nd"
-        },
-        "natural/cave_entrance": {
-            "name": "Inngangur \u00ed helli",
-            "terms": "hellir,sk\u00fati,sk\u00fdli"
-        },
-        "natural/cliff": {
-            "name": "Klettur"
-        },
-        "natural/coastline": {
-            "name": "Strandlengja"
-        },
-        "natural/fell": {
-            "name": "Fell"
-        },
-        "natural/glacier": {
-            "name": "J\u00f6kull"
-        },
-        "natural/grassland": {
-            "name": "Graslendi"
-        },
-        "natural/heath": {
-            "name": "M\u00f3i"
-        },
-        "natural/mud": {
-            "name": "Le\u00f0ja"
-        },
-        "natural/peak": {
-            "name": "Tindur"
-        },
-        "natural/reef": {
-            "name": "Rif"
-        },
-        "natural/ridge": {
-            "name": "Hryggur"
-        },
-        "natural/saddle": {
-            "name": "R\u00f6\u00f0ull"
-        },
-        "natural/sand": {
-            "name": "Sandur"
-        },
-        "natural/scree": {
-            "name": "Skri\u00f0a"
-        },
-        "natural/scrub": {
-            "name": "Kjarr"
-        },
-        "natural/spring": {
-            "name": "Uppspretta"
-        },
-        "natural/tree": {
-            "name": "Tr\u00e9"
-        },
-        "natural/tree_row": {
-            "name": "Trj\u00e1r\u00f6\u00f0"
-        },
-        "natural/volcano": {
-            "name": "Eldst\u00f6\u00f0"
-        },
-        "natural/water": {
-            "name": "Vatn"
-        },
-        "natural/water/lake": {
-            "name": "St\u00f6\u00f0uvatn"
-        },
-        "natural/water/pond": {
-            "name": "Tj\u00f6rn"
-        },
-        "natural/water/reservoir": {
-            "name": "L\u00f3n"
-        },
-        "natural/wetland": {
-            "name": "Votlendi"
-        },
-        "natural/wood": {
-            "name": "Sk\u00f3gur"
-        },
-        "noexit/yes": {
-            "name": "Enginn \u00fatgangur"
-        },
-        "office": {
-            "name": "Skrifstofa"
-        },
-        "office/accountant": {
-            "name": "B\u00f3khaldsskrifstofa"
-        },
-        "office/administrative": {
-            "name": "Stj\u00f3rns\u00fdsluskrifstofa"
-        },
-        "office/adoption_agency": {
-            "name": "\u00c6ttlei\u00f0ingaskrifstofa"
-        },
-        "office/advertising_agency": {
-            "name": "Augl\u00fdsingastofa"
-        },
-        "office/architect": {
-            "name": "Arkitektastofa"
-        },
-        "office/association": {
-            "name": "Skrifstofa frj\u00e1lsra f\u00e9lagasamtaka"
-        },
-        "office/charity": {
-            "name": "Skrifstofa g\u00f3\u00f0ger\u00f0asamtaka"
-        },
-        "office/company": {
-            "name": "Skrifstofa fyrirt\u00e6kis"
-        },
-        "office/coworking": {
-            "name": "Sameiginlegt vinnur\u00fdmi"
-        },
-        "office/educational_institution": {
-            "name": "Menntastofnun"
-        },
-        "office/employment_agency": {
-            "name": "Atvinnumi\u00f0lun"
-        },
-        "office/energy_supplier": {
-            "name": "Orkus\u00f6luskrifstofa"
-        },
-        "office/estate_agent": {
-            "name": "Fasteignas\u00f6luskrifstofa"
-        },
-        "office/financial": {
-            "name": "Fj\u00e1rm\u00e1lafyrirt\u00e6ki"
-        },
-        "office/forestry": {
-            "name": "Skrifstofa sk\u00f3garvar\u00f0a"
-        },
-        "office/foundation": {
-            "name": "Skrifstofa sj\u00e1lfseignarstofnunar"
-        },
-        "office/government": {
-            "name": "Opinber stofnun"
-        },
-        "office/government/register_office": {
-            "name": "Skr\u00e1ningarskrifstofa"
-        },
-        "office/government/tax": {
-            "name": "Skattstofa"
-        },
-        "office/guide": {
-            "name": "Skrifstofa lei\u00f0s\u00f6gumanna"
-        },
-        "office/insurance": {
-            "name": "Tryggingaskrifstofa"
-        },
-        "office/it": {
-            "name": "Uppl\u00fdsingat\u00e6kniskrifstofa"
-        },
-        "office/lawyer": {
-            "name": "L\u00f6gmannaskrifstofa"
-        },
-        "office/lawyer/notary": {
-            "name": "Skrifstofa l\u00f6gb\u00f3kanda"
-        },
-        "office/moving_company": {
-            "name": "Skrifstofa flutningafyrirt\u00e6kis"
-        },
-        "office/newspaper": {
-            "name": "Skrifstofur fr\u00e9ttabla\u00f0s"
-        },
-        "office/ngo": {
-            "name": "Skrifstofa frj\u00e1lsra f\u00e9lagasamtaka"
-        },
-        "office/notary": {
-            "name": "Skrifstofa l\u00f6gb\u00f3kanda"
-        },
-        "office/physician": {
-            "name": "L\u00e6knir"
-        },
-        "office/political_party": {
-            "name": "Stj\u00f3rnm\u00e1laflokkur"
-        },
-        "office/private_investigator": {
-            "name": "Einkasp\u00e6jaraskrifstofa"
-        },
-        "office/quango": {
-            "name": "F\u00e9lagasamt\u00f6k \u00ed samstarfi vi\u00f0 hi\u00f0 opinbera (quango)"
-        },
-        "office/research": {
-            "name": "Ranns\u00f3knarstofa"
-        },
-        "office/surveyor": {
-            "name": "Landm\u00e6lingaskrifstofa"
-        },
-        "office/tax_advisor": {
-            "name": "Skattar\u00e1\u00f0gjafarskrifstofa"
-        },
-        "office/telecommunication": {
-            "name": "Samskiptaskrifstofa"
-        },
-        "office/therapist": {
-            "name": "Me\u00f0fer\u00f0arstofa"
-        },
-        "office/travel_agent": {
-            "name": "Fer\u00f0askrifstofa"
-        },
-        "office/water_utility": {
-            "name": "Skrifstofa vatnsveitu"
-        },
-        "piste/downhill": {
-            "name": "Rennslis/g\u00f6ngusk\u00ed\u00f0alei\u00f0"
-        },
-        "piste/hike": {
-            "name": "Snj\u00f3\u00fer\u00fagu e\u00f0a vetrarg\u00f6ngulei\u00f0"
-        },
-        "piste/ice_skate": {
-            "name": "Skautabraut"
-        },
-        "piste/nordic": {
-            "name": "G\u00f6ngusk\u00ed\u00f0alei\u00f0"
-        },
-        "piste/piste": {
-            "name": "Vetrar\u00ed\u00fer\u00f3ttalei\u00f0ir"
-        },
-        "piste/skitour": {
-            "name": "Fer\u00f0ask\u00ed\u00f0alei\u00f0"
-        },
-        "piste/sled": {
-            "name": "Sle\u00f0abraut"
-        },
-        "piste/sleigh": {
-            "name": "Sle\u00f0abraut"
-        },
-        "place": {
-            "name": "Sta\u00f0ur"
+            "name": "Bílaleiga"
         },
         "place/city": {
             "name": "Borg"
         },
-        "place/city_block": {
-            "name": "Byggingareitur"
+        "building": {
+            "name": "Bygging"
         },
-        "place/farm": {
-            "name": "B\u00fdli"
+        "amenity/restaurant/indian": {
+            "name": "Indverskt veitingahús"
         },
-        "place/hamlet": {
-            "name": "\u00de\u00e9ttb\u00fdliskjarni"
+        "craft/dressmaker": {
+            "name": "Kjólasaumari"
         },
-        "place/island": {
-            "name": "Eyja"
-        },
-        "place/islet": {
-            "name": "H\u00f3lmi"
-        },
-        "place/isolated_dwelling": {
-            "name": "Ein\u00f6ngru\u00f0 b\u00faseta"
-        },
-        "place/locality": {
-            "name": "Sta\u00f0festi"
-        },
-        "place/neighbourhood": {
-            "name": "Hverfi"
-        },
-        "place/plot": {
-            "name": "Skiki"
-        },
-        "place/quarter": {
-            "name": "\u00dathverfishluti / Hverfi"
-        },
-        "place/square": {
-            "name": "Torg"
-        },
-        "place/suburb": {
-            "name": "Ja\u00f0arbygg\u00f0 / \u00dathverfi"
-        },
-        "place/town": {
-            "name": "B\u00e6r"
-        },
-        "place/village": {
-            "name": "\u00deorp"
-        },
-        "playground/balance_beam": {
-            "name": "Jafnv\u00e6gissl\u00e1"
-        },
-        "playground/basket_spinner": {
-            "name": "K\u00f6rfuhringr\u00f3la"
-        },
-        "playground/basket_swing": {
-            "name": "K\u00f6rfur\u00f3la"
-        },
-        "playground/climbing_frame": {
-            "name": "Klifurgrind"
-        },
-        "playground/cushion": {
-            "name": "Hoppkoddi"
-        },
-        "playground/horizontal_bar": {
-            "name": "Leik\u00feversl\u00e1"
-        },
-        "playground/rocker": {
-            "name": "Rugguhestur"
-        },
-        "playground/roundabout": {
-            "name": "Leikhringekja"
-        },
-        "playground/sandpit": {
-            "name": "Sandkassi"
-        },
-        "playground/seesaw": {
-            "name": "Vegasalt"
-        },
-        "playground/slide": {
-            "name": "Rennibraut"
-        },
-        "playground/structure": {
-            "name": "Leikjagrind"
-        },
-        "playground/swing": {
-            "name": "R\u00f3la"
-        },
-        "playground/zipwire": {
-            "name": "Apar\u00f3la"
-        },
-        "point": {
-            "name": "Punktur"
-        },
-        "power": {
-            "name": "Orka"
-        },
-        "power/cable/underground": {
-            "name": "Jar\u00f0strengur"
-        },
-        "power/generator": {
-            "name": "Aflst\u00f6\u00f0"
-        },
-        "power/generator/method/photovoltaic": {
-            "name": "S\u00f3larpanell"
-        },
-        "power/generator/source/nuclear": {
-            "name": "Kjarnaofn"
-        },
-        "power/generator/source/wind": {
-            "name": "Vindt\u00farb\u00edna"
-        },
-        "power/line": {
-            "name": "Rafl\u00edna"
-        },
-        "power/minor_line": {
-            "name": "Minni rafl\u00edna"
-        },
-        "power/plant": {
-            "name": "Orkuversl\u00f3\u00f0"
-        },
-        "power/pole": {
-            "name": "Rafmagnsstaur"
-        },
-        "power/sub_station": {
-            "name": "Undirst\u00f6\u00f0"
-        },
-        "power/substation": {
-            "name": "Undirst\u00f6\u00f0"
-        },
-        "power/switch": {
-            "name": "Spennivirki"
-        },
-        "power/tower": {
-            "name": "H\u00e1spennuturn"
-        },
-        "power/transformer": {
-            "name": "Straumbreytir"
-        },
-        "public_transport/platform": {
-            "name": "Bi\u00f0st\u00f6\u00f0 / Bi\u00f0sv\u00e6\u00f0i",
-            "terms": "almenningssamg\u00f6ngur,str\u00e6t\u00f3,samg\u00f6ngur,stoppist\u00f6\u00f0"
-        },
-        "public_transport/platform_aerialway": {
-            "name": "Lyftust\u00f6\u00f0 / Bi\u00f0sv\u00e6\u00f0i"
-        },
-        "public_transport/platform_bus": {
-            "name": "Str\u00e6t\u00f3stoppist\u00f6\u00f0 / Bi\u00f0sv\u00e6\u00f0i"
-        },
-        "public_transport/platform_ferry": {
-            "name": "Ferjust\u00f6\u00f0 / Bi\u00f0sv\u00e6\u00f0i"
-        },
-        "public_transport/platform_light_rail": {
-            "name": "L\u00e9ttlestarstoppist\u00f6\u00f0 / Bi\u00f0sv\u00e6\u00f0i"
-        },
-        "public_transport/platform_monorail": {
-            "name": "Einteinungsstoppist\u00f6\u00f0 / Bi\u00f0sv\u00e6\u00f0i"
-        },
-        "public_transport/platform_subway": {
-            "name": "Ne\u00f0anjar\u00f0arlestarpallur"
-        },
-        "public_transport/platform_train": {
-            "name": "Lestarpallur"
-        },
-        "public_transport/platform_tram": {
-            "name": "Sporvagnastoppist\u00f6\u00f0 / Bi\u00f0sv\u00e6\u00f0i"
-        },
-        "public_transport/platform_trolleybus": {
-            "name": "Str\u00e6t\u00f3stoppist\u00f6\u00f0 / Bi\u00f0sv\u00e6\u00f0i"
-        },
-        "public_transport/station": {
-            "name": "Umfer\u00f0armi\u00f0st\u00f6\u00f0",
-            "terms": "almenningssamg\u00f6ngur,str\u00e6t\u00f3,r\u00fata,samg\u00f6ngur,skiptist\u00f6\u00f0"
-        },
-        "public_transport/station_aerialway": {
-            "name": "Lyftust\u00f6\u00f0"
-        },
-        "public_transport/station_bus": {
-            "name": "Str\u00e6tisvagnast\u00f6\u00f0 / Umfer\u00f0armi\u00f0st\u00f6\u00f0"
-        },
-        "public_transport/station_ferry": {
-            "name": "Ferjust\u00f6\u00f0 / Umfer\u00f0armi\u00f0st\u00f6\u00f0"
-        },
-        "public_transport/station_light_rail": {
-            "name": "L\u00e9ttlestarst\u00f6\u00f0"
-        },
-        "public_transport/station_monorail": {
-            "name": "Einteinungsst\u00f6\u00f0"
-        },
-        "public_transport/station_subway": {
-            "name": "Ne\u00f0anjar\u00f0arlestarst\u00f6\u00f0"
-        },
-        "public_transport/station_train": {
-            "name": "Lestarst\u00f6\u00f0"
-        },
-        "public_transport/station_train_halt": {
-            "name": "Lestarst\u00f6\u00f0 (st\u00f6\u00f0vun / bei\u00f0ni)"
-        },
-        "public_transport/station_tram": {
-            "name": "Sporvagnast\u00f6\u00f0"
-        },
-        "public_transport/station_trolleybus": {
-            "name": "Str\u00e6tisvagnast\u00f6\u00f0 / Umfer\u00f0armi\u00f0st\u00f6\u00f0"
-        },
-        "public_transport/stop_area": {
-            "name": "Bi\u00f0st\u00f6\u00f0varsv\u00e6\u00f0i"
-        },
-        "public_transport/stop_position": {
-            "name": "Sta\u00f0setning st\u00f6\u00f0vunar almenningssamgangna"
-        },
-        "public_transport/stop_position_aerialway": {
-            "name": "Sta\u00f0setning st\u00f6\u00f0vunar v\u00edralyftu"
-        },
-        "public_transport/stop_position_bus": {
-            "name": "Sta\u00f0setning st\u00f6\u00f0vunar str\u00e6tisvagna"
-        },
-        "public_transport/stop_position_ferry": {
-            "name": "Sta\u00f0setning st\u00f6\u00f0vunar ferju"
-        },
-        "public_transport/stop_position_light_rail": {
-            "name": "Sta\u00f0setning st\u00f6\u00f0vunar l\u00e9ttlestar"
-        },
-        "public_transport/stop_position_monorail": {
-            "name": "Sta\u00f0setning st\u00f6\u00f0vunar einteinungs"
-        },
-        "public_transport/stop_position_subway": {
-            "name": "Sta\u00f0setning st\u00f6\u00f0vunar ne\u00f0anjar\u00f0arlestar"
-        },
-        "public_transport/stop_position_train": {
-            "name": "Sta\u00f0setning st\u00f6\u00f0vunar j\u00e1rnbrautarlestar"
-        },
-        "public_transport/stop_position_tram": {
-            "name": "Sta\u00f0setning st\u00f6\u00f0vunar sporvagna"
-        },
-        "public_transport/stop_position_trolleybus": {
-            "name": "Sta\u00f0setning st\u00f6\u00f0vunar rafkn\u00fainna str\u00e6tisvagna"
-        },
-        "railway": {
-            "name": "Lest"
-        },
-        "railway/abandoned": {
-            "name": "Yfirgefnir lestarteinar"
-        },
-        "railway/buffer_stop": {
-            "name": "J\u00e1rnbrautarstu\u00f0p\u00fa\u00f0i"
-        },
-        "railway/crossing": {
-            "name": "\u00deverun j\u00e1rnbrautar (st\u00edgur)"
-        },
-        "railway/derail": {
-            "name": "J\u00e1rnbrautarspors\u00fevinga",
-            "terms": "til a\u00f0 setja \u00fat af spori"
-        },
-        "railway/disused": {
-            "name": "\u00d3nota\u00f0ir lestarteinar"
-        },
-        "railway/funicular": {
-            "name": "Toglest"
+        "barrier/lift_gate": {
+            "name": "Lyftuhlið"
         },
         "railway/halt": {
-            "name": "Lestarst\u00f6\u00f0 (st\u00f6\u00f0vun / bei\u00f0ni)"
-        },
-        "railway/level_crossing": {
-            "name": "\u00deverun j\u00e1rnbrautar (vegur)"
-        },
-        "railway/light_rail": {
-            "name": "L\u00e9ttlest"
-        },
-        "railway/milestone": {
-            "name": "Vegalengdarmerki j\u00e1rnbrautar"
-        },
-        "railway/miniature": {
-            "name": "Sm\u00e1j\u00e1rnbraut"
-        },
-        "railway/monorail": {
-            "name": "Einteinungur"
-        },
-        "railway/narrow_gauge": {
-            "name": "Mj\u00f3tt lestarspor"
-        },
-        "railway/platform": {
-            "name": "Lestarpallur"
-        },
-        "railway/rail": {
-            "name": "Lestarteinar"
-        },
-        "railway/signal": {
-            "name": "Lestarmerki"
-        },
-        "railway/station": {
-            "name": "Lestarst\u00f6\u00f0"
-        },
-        "railway/subway": {
-            "name": "Ne\u00f0anjar\u00f0arlest"
-        },
-        "railway/subway_entrance": {
-            "name": "Inngangur a\u00f0 ne\u00f0anjar\u00f0arlest"
-        },
-        "railway/switch": {
-            "name": "Lestarteinaskiptir"
-        },
-        "railway/train_wash": {
-            "name": "Lestarvagna\u00fevottur"
-        },
-        "railway/tram": {
-            "name": "Sporvagn"
-        },
-        "railway/tram_stop": {
-            "name": "Sta\u00f0setning st\u00f6\u00f0vunar sporvagna"
-        },
-        "relation": {
-            "name": "Tengsl"
-        },
-        "roundabout": {
-            "name": "Hringtorg"
-        },
-        "route/ferry": {
-            "name": "Ferjulei\u00f0"
-        },
-        "seamark": {
-            "name": "Sj\u00f3merki"
-        },
-        "seamark/beacon_isolated_danger": {
-            "name": "H\u00e6ttuviti"
-        },
-        "seamark/beacon_lateral": {
-            "name": "Stefnuviti"
-        },
-        "seamark/buoy_lateral": {
-            "name": "Lei\u00f0arbauja"
-        },
-        "seamark/buoy_lateral/green": {
-            "name": "Gr\u00e6n bauja"
-        },
-        "seamark/buoy_lateral/red": {
-            "name": "Rau\u00f0 bauja"
-        },
-        "seamark/mooring": {
-            "name": "Skipal\u00e6gi"
-        },
-        "shop": {
-            "name": "Verslun"
+            "name": "Lestarstöð (stöðvun / beiðni)"
         },
         "shop/agrarian": {
-            "name": "Landb\u00fana\u00f0arv\u00f6ruverslun"
+            "name": "Landbúnaðarvöruverslun"
         },
-        "shop/alcohol": {
-            "name": "V\u00ednb\u00fa\u00f0"
+        "landuse/garages": {
+            "name": "Landnotkun fyrir verkstæði"
         },
-        "shop/anime": {
-            "name": "Anime-b\u00fa\u00f0"
+        "internet_access/wlan": {
+            "name": "Wi-Fi aðgangspunktur"
         },
-        "shop/antiques": {
-            "name": "Ant\u00edkverslun"
+        "building/farm": {
+            "name": "Íbúðarhús á býli"
         },
-        "shop/appliance": {
-            "name": "Raft\u00e6kjaverslun"
+        "amenity/waste_disposal": {
+            "name": "Ruslagámur"
         },
-        "shop/art": {
-            "name": "Listmunaverslun"
+        "type/restriction/only_right_turn": {
+            "name": "Aðeins hægri beygja"
         },
-        "shop/baby_goods": {
-            "name": "Barnav\u00f6ruverslun"
+        "attraction/carousel": {
+            "name": "Hringekja"
         },
-        "shop/bag": {
-            "name": "T\u00f6skub\u00fa\u00f0"
+        "craft/sawmill": {
+            "name": "Sögunarmylla"
         },
-        "shop/bakery": {
-            "name": "Bakar\u00ed"
+        "emergency/yes": {
+            "name": "Neyðaraðgangur: Já"
         },
-        "shop/bathroom_furnishing": {
-            "name": "Ba\u00f0innr\u00e9ttingaverslun"
+        "circular": {
+            "name": "Hringakstur"
         },
-        "shop/beauty": {
-            "name": "Fegrunarstofa"
+        "healthcare/audiologist": {
+            "name": "Heyrnartækjafræðingur"
         },
-        "shop/beauty/nails": {
-            "name": "Naglasnyrtingastofa"
+        "highway/motorway": {
+            "name": "Hraðbraut"
         },
-        "shop/beauty/tanning": {
-            "name": "S\u00f3lba\u00f0sstofa"
+        "natural/bay": {
+            "name": "Flói"
         },
-        "shop/bed": {
-            "name": "R\u00fam/D\u00fdnuverslun"
+        "building/bungalow": {
+            "name": "Sumarbústaður"
         },
-        "shop/beverages": {
-            "name": "Drykkjarb\u00fa\u00f0"
+        "building/terrace": {
+            "name": "Raðhús"
         },
-        "shop/bicycle": {
-            "name": "Hj\u00f3lab\u00fa\u00f0"
+        "aeroway/runway": {
+            "name": "Flugbraut"
         },
-        "shop/bookmaker": {
-            "name": "Ve\u00f0mangari"
+        "amenity/studio": {
+            "name": "Upptökustúdíó"
         },
-        "shop/books": {
-            "name": "B\u00f3kab\u00fa\u00f0"
-        },
-        "shop/boutique": {
-            "name": "B\u00fa\u00f0"
-        },
-        "shop/butcher": {
-            "name": "Sl\u00e1trari"
-        },
-        "shop/candles": {
-            "name": "Kertab\u00fa\u00f0"
-        },
-        "shop/car": {
-            "name": "B\u00edlab\u00fa\u00f0"
-        },
-        "shop/car_parts": {
-            "name": "B\u00edlavarahlutaverslun"
-        },
-        "shop/car_repair": {
-            "name": "B\u00edlaverkst\u00e6\u00f0i"
-        },
-        "shop/carpet": {
-            "name": "G\u00f3lfteppaverslun"
-        },
-        "shop/charity": {
-            "name": "G\u00f3\u00f0ger\u00f0averslun"
-        },
-        "shop/cheese": {
-            "name": "Ostab\u00fa\u00f0"
-        },
-        "shop/chemist": {
-            "name": "Hreinl\u00e6tisv\u00f6ruverslun"
-        },
-        "shop/chocolate": {
-            "name": "S\u00fakkula\u00f0ib\u00fa\u00f0"
-        },
-        "shop/clothes": {
-            "name": "Fataverslun"
-        },
-        "shop/coffee": {
-            "name": "Kaffib\u00fa\u00f0"
-        },
-        "shop/computer": {
-            "name": "T\u00f6lvuverslun"
-        },
-        "shop/confectionery": {
-            "name": "Nammib\u00fa\u00f0"
-        },
-        "shop/convenience": {
-            "name": "Kj\u00f6rb\u00fa\u00f0"
-        },
-        "shop/copyshop": {
-            "name": "Lj\u00f3sritunarstofa"
-        },
-        "shop/cosmetics": {
-            "name": "Snyrtiv\u00f6ruverslun"
-        },
-        "shop/craft": {
-            "name": "Handverksverslun"
-        },
-        "shop/curtain": {
-            "name": "Gluggatjaldaverslun"
-        },
-        "shop/dairy": {
-            "name": "Mj\u00f3lkurb\u00fa\u00f0"
-        },
-        "shop/deli": {
-            "name": "Deli"
-        },
-        "shop/department_store": {
-            "name": "St\u00f3rverslun"
-        },
-        "shop/doityourself": {
-            "name": "Handlaginna verslun"
-        },
-        "shop/dry_cleaning": {
-            "name": "\u00deurrhreinsun"
-        },
-        "shop/e-cigarette": {
-            "name": "Rafrettub\u00fa\u00f0"
-        },
-        "shop/electronics": {
-            "name": "Rafeindat\u00e6kjaverslun"
-        },
-        "shop/erotic": {
-            "name": "Hj\u00e1lpart\u00e6ki \u00e1starl\u00edfsins"
-        },
-        "shop/fabric": {
-            "name": "\u00c1lnav\u00f6ruverslun"
-        },
-        "shop/farm": {
-            "name": "V\u00f6rub\u00e1s"
-        },
-        "shop/fashion": {
-            "name": "T\u00edskuverslun"
-        },
-        "shop/fishmonger": {
-            "name": "Fisksali"
-        },
-        "shop/florist": {
-            "name": "Bl\u00f3mab\u00fa\u00f0"
-        },
-        "shop/frame": {
-            "name": "Innr\u00f6mmun"
-        },
-        "shop/funeral_directors": {
-            "name": "\u00datfararheimili"
-        },
-        "shop/furnace": {
-            "name": "Arinv\u00f6ruverslun"
-        },
-        "shop/furniture": {
-            "name": "H\u00fasgagnaverslun"
-        },
-        "shop/garden_centre": {
-            "name": "Gar\u00f0averslun"
-        },
-        "shop/gas": {
-            "name": "Verslun me\u00f0 fl\u00f6skugas"
-        },
-        "shop/gift": {
-            "name": "Gjafav\u00f6rub\u00fa\u00f0"
-        },
-        "shop/greengrocer": {
-            "name": "Gr\u00e6nmetissali"
-        },
-        "shop/hairdresser": {
-            "name": "H\u00e1rstofa"
-        },
-        "shop/hardware": {
-            "name": "Byggingav\u00f6ruverslun"
-        },
-        "shop/health_food": {
-            "name": "Verslun me\u00f0 heilsuv\u00f6rur"
-        },
-        "shop/hearing_aids": {
-            "name": "Heyrnart\u00e6kjaverslun"
-        },
-        "shop/herbalist": {
-            "name": "Grasal\u00e6knir"
-        },
-        "shop/hifi": {
-            "name": "Hlj\u00f3mverslun"
-        },
-        "shop/houseware": {
-            "name": "B\u00fas\u00e1haldaverslun"
-        },
-        "shop/interior_decoration": {
-            "name": "Innanh\u00fash\u00f6nnunarverslun"
-        },
-        "shop/kiosk": {
-            "name": "Bla\u00f0astandur"
-        },
-        "shop/kitchen": {
-            "name": "Eldh\u00fash\u00f6nnunarverslun"
-        },
-        "shop/laundry": {
-            "name": "\u00devottur"
-        },
-        "shop/leather": {
-            "name": "Le\u00f0urv\u00f6ruverslun"
-        },
-        "shop/locksmith": {
-            "name": "L\u00e1sasmi\u00f0ur"
-        },
-        "shop/lottery": {
-            "name": "Lott\u00f3sjoppa"
-        },
-        "shop/mall": {
-            "name": "Verslunarmi\u00f0st\u00f6\u00f0"
-        },
-        "shop/massage": {
-            "name": "Nuddstofa"
-        },
-        "shop/medical_supply": {
-            "name": "L\u00e6kningav\u00f6ruverslun"
-        },
-        "shop/mobile_phone": {
-            "name": "Fars\u00edmaverslun"
-        },
-        "shop/money_lender": {
-            "name": "Peninga\u00fatl\u00e1n"
-        },
-        "shop/motorcycle": {
-            "name": "M\u00f3torhj\u00f3laverslun"
-        },
-        "shop/motorcycle_repair": {
-            "name": "M\u00f3torhj\u00f3lavi\u00f0ger\u00f0averslun"
-        },
-        "shop/music": {
-            "name": "T\u00f3nlistarb\u00fa\u00f0"
-        },
-        "shop/musical_instrument": {
-            "name": "Hlj\u00f3\u00f0f\u00e6raverslun"
-        },
-        "shop/newsagent": {
-            "name": "Dagbla\u00f0a/t\u00edmaritasala"
-        },
-        "shop/nutrition_supplements": {
-            "name": "Verslun me\u00f0 f\u00e6\u00f0ub\u00f3tarefni"
-        },
-        "shop/optician": {
-            "name": "Gleraugnaverslun"
-        },
-        "shop/organic": {
-            "name": "Verslun me\u00f0 l\u00edfr\u00e6nar v\u00f6rur"
-        },
-        "shop/outdoor": {
-            "name": "\u00dativistarb\u00fa\u00f0"
-        },
-        "shop/paint": {
-            "name": "M\u00e1lningarv\u00f6ruverslun"
-        },
-        "shop/pastry": {
-            "name": "K\u00f6kub\u00fa\u00f0"
-        },
-        "shop/pawnbroker": {
-            "name": "Ve\u00f0l\u00e1nari"
-        },
-        "shop/perfumery": {
-            "name": "Ilmvatnsb\u00fa\u00f0"
-        },
-        "shop/pet": {
-            "name": "D\u00fdrab\u00fa\u00f0"
-        },
-        "shop/pet_grooming": {
-            "name": "D\u00fdrasnyrtiverslun"
-        },
-        "shop/photo": {
-            "name": "Lj\u00f3smyndav\u00f6ruverslun"
-        },
-        "shop/pyrotechnics": {
-            "name": "Flugeldaverslun"
-        },
-        "shop/radiotechnics": {
-            "name": "Raf\u00edhlutaverslun"
-        },
-        "shop/religion": {
-            "name": "Verslun me\u00f0 tr\u00faartengdar v\u00f6rur"
-        },
-        "shop/scuba_diving": {
-            "name": "Verslun me\u00f0 k\u00f6funarv\u00f6rur"
+        "landuse/military": {
+            "name": "Hersvæði"
         },
         "shop/seafood": {
             "name": "Fiskverslun",
-            "terms": "verslun me\u00f0 sj\u00e1varfang"
+            "terms": "verslun með sjávarfang"
         },
-        "shop/second_hand": {
-            "name": "Nota\u00f0 og n\u00fdtt"
+        "railway/milestone": {
+            "name": "Vegalengdarmerki járnbrautar"
         },
-        "shop/sewing": {
-            "name": "Saumav\u00f6ruverslun"
+        "waterway/sanitary_dump_station": {
+            "name": "Salernishreinsun fyrir báta"
         },
-        "shop/shoes": {
-            "name": "Sk\u00f3b\u00fa\u00f0"
+        "barrier/city_wall": {
+            "name": "Borgarmúrar"
         },
-        "shop/sports": {
-            "name": "\u00cd\u00fer\u00f3ttaverslun"
+        "office/employment_agency": {
+            "name": "Atvinnumiðlun"
         },
-        "shop/stationery": {
-            "name": "Skriffangaverslun"
+        "craft/sculptor": {
+            "name": "Myndhöggvari"
         },
-        "shop/storage_rental": {
-            "name": "Geymsluleiga"
+        "office/government/register_office": {
+            "name": "Skráningarskrifstofa"
         },
-        "shop/supermarket": {
-            "name": "St\u00f3rmarka\u00f0ur"
+        "amenity/waste_transfer_station": {
+            "name": "Sorpflokkunarstöð"
         },
-        "shop/tailor": {
-            "name": "Skraddari"
+        "boundary/administrative": {
+            "name": "Stjórnsýslumörk"
         },
-        "shop/tattoo": {
-            "name": "H\u00fa\u00f0fl\u00farstofa"
+        "man_made/surveillance": {
+            "name": "Eftirlit"
         },
-        "shop/tea": {
-            "name": "Teverslun"
+        "building/ruins": {
+            "name": "Byggingarústir"
         },
-        "shop/ticket": {
-            "name": "Mi\u00f0asala"
+        "leisure/pitch/american_football": {
+            "name": "Fótboltavöllur (amerískur)"
         },
-        "shop/tiles": {
-            "name": "Fl\u00edsaverslun"
+        "leisure/fitness_station/horizontal_ladder": {
+            "name": "Hangstigi"
         },
-        "shop/tobacco": {
-            "name": "T\u00f3baksverslun"
+        "traffic_calming/bump": {
+            "name": "Hraðahindrunarójafna"
         },
-        "shop/toys": {
-            "name": "D\u00f3tab\u00fa\u00f0"
+        "craft/carpenter": {
+            "name": "Trésmiður"
         },
-        "shop/trade": {
-            "name": "I\u00f0na\u00f0arv\u00f6rusala"
+        "railway/level_crossing": {
+            "name": "Þverun járnbrautar (vegur)"
         },
-        "shop/travel_agency": {
-            "name": "Fer\u00f0askrifstofa"
+        "amenity/restaurant/greek": {
+            "name": "Grískt veitingahús"
         },
-        "shop/tyres": {
-            "name": "Dekkjab\u00fa\u00f0"
+        "attraction/amusement_ride": {
+            "name": "Skemmtitæki"
         },
-        "shop/vacant": {
-            "name": "T\u00f3m verslun"
+        "place/suburb": {
+            "name": "Jaðarbyggð / Úthverfi"
         },
-        "shop/vacuum_cleaner": {
-            "name": "Verslun me\u00f0 ryksugur"
+        "man_made/pier": {
+            "name": "Bryggja"
         },
-        "shop/variety_store": {
-            "name": "Allrahandaverslun"
+        "shop/farm": {
+            "name": "Vörubás"
         },
-        "shop/video": {
-            "name": "Myndbandaverslun"
+        "waterway/stream_intermittent": {
+            "name": "Tímabundið straumvatn"
         },
-        "shop/video_games": {
-            "name": "T\u00f6lvuleikjaverslun"
+        "highway/road": {
+            "name": "Óþekktur vegur"
         },
-        "shop/watches": {
-            "name": "\u00daraverslun"
+        "address": {
+            "name": "Heimilisfang"
         },
-        "shop/water_sports": {
-            "name": "Verslun me\u00f0 sund/vatna\u00ed\u00fer\u00f3ttav\u00f6rur"
+        "highway/primary_link": {
+            "name": "Stofnrein"
         },
-        "shop/weapons": {
-            "name": "Vopnaverslun"
+        "shop/greengrocer": {
+            "name": "Grænmetissali"
         },
-        "shop/wholesale": {
-            "name": "Heildverslun"
+        "highway/traffic_mirror": {
+            "name": "Umferðarspegill"
         },
-        "shop/window_blind": {
-            "name": "Verslun me\u00f0 rimlagluggatj\u00f6ld"
+        "railway/station": {
+            "name": "Lestarstöð"
+        },
+        "aerialway/rope_tow": {
+            "name": "Kaðallyfta"
+        },
+        "office/therapist": {
+            "name": "Meðferðarstofa"
+        },
+        "office/company": {
+            "name": "Skrifstofa fyrirtækis"
+        },
+        "shop/dairy": {
+            "name": "Mjólkurbúð"
+        },
+        "type/route/road": {
+            "name": "Vegaleið"
+        },
+        "amenity/planetarium": {
+            "name": "Stjörnuver"
+        },
+        "office/financial": {
+            "name": "Fjármálafyrirtæki"
+        },
+        "highway/track": {
+            "name": "Vegslóði án viðhalds"
+        },
+        "attraction/dark_ride": {
+            "name": "Draugahús"
         },
         "shop/wine": {
-            "name": "V\u00ednb\u00fa\u00f0"
+            "name": "Vínbúð"
         },
-        "tourism": {
-            "name": "Fer\u00f0a\u00fej\u00f3nusta"
+        "shop/hairdresser": {
+            "name": "Hárstofa"
         },
-        "tourism/alpine_hut": {
-            "name": "Fjallakofi"
+        "building/school": {
+            "name": "Skólabygging"
         },
-        "tourism/apartment": {
-            "name": "Gesta\u00edb\u00fa\u00f0"
+        "tourism/information/board": {
+            "name": "Upplýsingatafla"
         },
-        "tourism/aquarium": {
-            "name": "S\u00e6d\u00fdrasafn"
+        "amenity/restaurant/french": {
+            "name": "Franskt veitingahús"
         },
-        "tourism/artwork": {
-            "name": "Listaverk"
+        "amenity/ferry_terminal": {
+            "name": "Ferjustöð / Umferðarmiðstöð"
         },
-        "tourism/artwork/mural": {
-            "name": "Veggmynd"
+        "shop/furnace": {
+            "name": "Arinvöruverslun"
         },
-        "tourism/artwork/sculpture": {
-            "name": "H\u00f6ggmynd"
+        "landuse/industrial": {
+            "name": "Iðnaðarsvæði"
         },
-        "tourism/artwork/statue": {
-            "name": "Stytta"
-        },
-        "tourism/attraction": {
-            "name": "Fer\u00f0amannagildra"
-        },
-        "tourism/camp_site": {
-            "name": "Tjaldsv\u00e6\u00f0i"
-        },
-        "tourism/caravan_site": {
-            "name": "Hj\u00f3lh\u00fdsagar\u00f0ur"
-        },
-        "tourism/chalet": {
-            "name": "Fr\u00edstundah\u00fas"
-        },
-        "tourism/gallery": {
-            "name": "Listagaller\u00ed"
-        },
-        "tourism/guest_house": {
-            "name": "Gestah\u00fas"
+        "type/route/hiking": {
+            "name": "Gönguleið"
         },
         "tourism/hostel": {
             "name": "Farfuglaheimili"
         },
-        "tourism/hotel": {
-            "name": "H\u00f3tel"
+        "leisure/pitch/volleyball": {
+            "name": "Blakvöllur"
         },
-        "tourism/information": {
-            "name": "Uppl\u00fdsingar"
+        "amenity/veterinary": {
+            "name": "Dýralæknir"
         },
-        "tourism/information/board": {
-            "name": "Uppl\u00fdsingatafla"
+        "leisure/amusement_arcade": {
+            "name": "Spilasalur"
         },
-        "tourism/information/guidepost": {
-            "name": "Uppl\u00fdsingaskilti"
+        "craft/pottery": {
+            "name": "Leirkeragerð"
         },
-        "tourism/information/map": {
-            "name": "Kort"
+        "craft/roofer": {
+            "name": "Þaksmíði"
         },
-        "tourism/information/office": {
-            "name": "Uppl\u00fdsingaskrifstofa fer\u00f0amanna"
+        "amenity/restaurant/mexican": {
+            "name": "Mexíkóskt veitingahús"
         },
-        "tourism/motel": {
-            "name": "M\u00f3tel"
+        "shop/massage": {
+            "name": "Nuddstofa"
         },
-        "tourism/museum": {
-            "name": "Safn"
+        "area": {
+            "name": "Svæði"
         },
-        "tourism/picnic_site": {
-            "name": "\u00c1ningarsta\u00f0ur"
+        "landuse/landfill": {
+            "name": "Landfylling"
         },
-        "tourism/theme_park": {
-            "name": "Skemmtigar\u00f0ur"
+        "allotments/plot": {
+            "name": "Samfélagsgarðskikar"
         },
-        "tourism/viewpoint": {
-            "name": "\u00dats\u00fdnissta\u00f0ur"
+        "tourism/aquarium": {
+            "name": "Sædýrasafn"
         },
-        "tourism/wilderness_hut": {
-            "name": "\u00d3bygg\u00f0akofi"
+        "type/site": {
+            "name": "Stæði"
         },
-        "tourism/zoo": {
-            "name": "D\u00fdragar\u00f0ur"
+        "type/route/subway": {
+            "name": "Leið neðanjarðarlestar"
         },
-        "traffic_calming": {
-            "name": "Hra\u00f0ahindrun"
+        "amenity/fast_food/burger": {
+            "name": "Skyndibiti, hamborgarar"
         },
-        "traffic_calming/bump": {
-            "name": "Hra\u00f0ahindrunar\u00f3jafna"
+        "amenity/vending_machine/fuel": {
+            "name": "Eldsneytisdæla"
         },
-        "traffic_calming/chicane": {
-            "name": "Umfer\u00f0arhli\u00f0run"
+        "amenity/fountain": {
+            "name": "Gosbrunnur"
         },
-        "traffic_calming/choker": {
-            "name": "Umfer\u00f0ar\u00ferenging"
+        "shop/doityourself": {
+            "name": "Handlaginna verslun"
         },
-        "traffic_calming/cushion": {
-            "name": "Hra\u00f0ahindrunarkoddi"
+        "amenity/taxi": {
+            "name": "Leigubílastæði"
         },
-        "traffic_calming/dip": {
-            "name": "Hra\u00f0ahindrunardokk"
+        "amenity/smoking_area": {
+            "name": "Reykingasvæði"
         },
-        "traffic_calming/hump": {
-            "name": "Hra\u00f0ahindrunaralda"
+        "man_made/water_tower": {
+            "name": "Vatnsturn"
         },
-        "traffic_calming/island": {
-            "name": "Umfer\u00f0areyja"
+        "railway/train_wash": {
+            "name": "Lestarvagnaþvottur"
         },
-        "traffic_calming/rumble_strip": {
-            "name": "Hvinrendur"
+        "shop/dry_cleaning": {
+            "name": "Þurrhreinsun"
         },
-        "traffic_calming/table": {
-            "name": "Hra\u00f0ahindrunarpallur"
+        "tourism/caravan_site": {
+            "name": "Hjólhýsagarður"
         },
-        "traffic_sign": {
-            "name": "Umfer\u00f0armerki"
+        "craft/clockmaker": {
+            "name": "Klukkusmiður"
         },
-        "type/boundary": {
-            "name": "Sv\u00e6\u00f0am\u00f6rk"
+        "leisure/pitch/softball": {
+            "name": "Mjúkboltavöllur"
         },
-        "type/boundary/administrative": {
-            "name": "Stj\u00f3rns\u00fdslum\u00f6rk"
+        "shop/furniture": {
+            "name": "Húsgagnaverslun"
+        },
+        "public_transport/platform_ferry": {
+            "name": "Ferjustöð / Biðsvæði"
+        },
+        "advertising/billboard": {
+            "name": "Auglýsingaspjald"
+        },
+        "shop/bakery": {
+            "name": "Bakarí"
+        },
+        "emergency/phone": {
+            "name": "Neyðarsími"
+        },
+        "golf/bunker": {
+            "name": "Glompa"
+        },
+        "shop/houseware": {
+            "name": "Búsáhaldaverslun"
+        },
+        "leisure/pitch/soccer": {
+            "name": "Knattspyrnuvöllur"
         },
         "type/multipolygon": {
-            "name": "Fj\u00f6lhyrningur"
+            "name": "Fjölhyrningur"
         },
-        "type/restriction": {
-            "name": "Takm\u00f6rkun"
+        "shop/vacant": {
+            "name": "Tóm verslun"
         },
-        "type/restriction/no_left_turn": {
-            "name": "Engin vinstri beygja"
+        "amenity/social_facility/homeless_shelter": {
+            "name": "Athvarf heimilislausra"
         },
-        "type/restriction/no_right_turn": {
-            "name": "Engin h\u00e6gri beygja"
+        "highway/turning_loop": {
+            "name": "Viðsnúningstorg (eyja)"
         },
-        "type/restriction/no_straight_on": {
-            "name": "Ekki beint \u00e1fram"
+        "leisure/miniature_golf": {
+            "name": "Mínígolf"
+        },
+        "amenity/vending_machine/ice_cream": {
+            "name": "Íssjálfsali"
+        },
+        "amenity/hospital": {
+            "name": "Spítalalóð"
+        },
+        "public_transport/stop_position_monorail": {
+            "name": "Staðsetning stöðvunar einteinungs"
+        },
+        "amenity/telephone": {
+            "name": "Sími"
+        },
+        "building/dormitory": {
+            "name": "Heimavist"
+        },
+        "craft/blacksmith": {
+            "name": "Járnsmiður"
+        },
+        "landuse/residential": {
+            "name": "Íbúðahverfi"
+        },
+        "leisure/stadium": {
+            "name": "Leikvangur"
+        },
+        "highway/speed_camera": {
+            "name": "Hraðamyndavél"
+        },
+        "public_transport/station_monorail": {
+            "name": "Einteinungsstöð"
+        },
+        "amenity/drinking_water": {
+            "name": "Drykkjarvatn"
+        },
+        "barrier/kissing_gate": {
+            "name": "Sjálflokandi hlið"
+        },
+        "landuse/recreation_ground": {
+            "name": "Leikvöllur"
+        },
+        "office/newspaper": {
+            "name": "Skrifstofur fréttablaðs"
         },
         "type/restriction/no_u_turn": {
             "name": "Engin U-beygja"
         },
-        "type/restriction/only_left_turn": {
-            "name": "A\u00f0eins vinstri beygja"
+        "amenity/townhall": {
+            "name": "Ráðhús"
         },
-        "type/restriction/only_right_turn": {
-            "name": "A\u00f0eins h\u00e6gri beygja"
+        "public_transport/stop_position_bus": {
+            "name": "Staðsetning stöðvunar strætisvagna"
         },
-        "type/restriction/only_straight_on": {
-            "name": "A\u00f0eins beint \u00e1fram"
+        "natural/water": {
+            "name": "Vatn"
         },
-        "type/restriction/only_u_turn": {
-            "name": "A\u00f0eins U-beygja"
+        "barrier/cycle_barrier": {
+            "name": "Hjólahindrun"
         },
-        "type/route": {
-            "name": "Lei\u00f0"
+        "embankment": {
+            "name": "Stallur"
         },
-        "type/route/bicycle": {
-            "name": "Hj\u00f3lalei\u00f0"
+        "shop/sports": {
+            "name": "Íþróttaverslun"
         },
-        "type/route/bus": {
-            "name": "Str\u00e6t\u00f3lei\u00f0"
+        "amenity/biergarten": {
+            "name": "Bjórgarður"
         },
-        "type/route/detour": {
-            "name": "Hj\u00e1lei\u00f0"
-        },
-        "type/route/ferry": {
-            "name": "Ferjulei\u00f0"
-        },
-        "type/route/foot": {
-            "name": "Lei\u00f0 fyrir f\u00f3tgangandi"
-        },
-        "type/route/hiking": {
-            "name": "G\u00f6ngulei\u00f0"
-        },
-        "type/route/horse": {
-            "name": "Rei\u00f0lei\u00f0"
-        },
-        "type/route/light_rail": {
-            "name": "L\u00e9ttlestarlei\u00f0"
-        },
-        "type/route/pipeline": {
-            "name": "R\u00f6ralei\u00f0"
-        },
-        "type/route/piste": {
-            "name": "Sk\u00ed\u00f0a/g\u00f6ngubraut"
-        },
-        "type/route/power": {
-            "name": "Orkuflutningslei\u00f0"
-        },
-        "type/route/road": {
-            "name": "Vegalei\u00f0"
-        },
-        "type/route/subway": {
-            "name": "Lei\u00f0 ne\u00f0anjar\u00f0arlestar"
-        },
-        "type/route/train": {
-            "name": "Lestarlei\u00f0"
-        },
-        "type/route/tram": {
-            "name": "Sporvagnalei\u00f0"
-        },
-        "type/route_master": {
-            "name": "Lei\u00f0astj\u00f3ri"
-        },
-        "type/site": {
-            "name": "St\u00e6\u00f0i"
+        "amenity/vending_machine/elongated_coin": {
+            "name": "Sjálfsali fyrir flatta/stimplaða mynt"
         },
         "type/waterway": {
-            "name": "Siglingalei\u00f0"
+            "name": "Siglingaleið"
         },
-        "vertex": {
-            "name": "Anna\u00f0"
+        "emergency/destination": {
+            "name": "Neyðaraðgangur ef í fararleið"
         },
-        "waterway": {
-            "name": "Siglingalei\u00f0"
+        "craft/winery": {
+            "name": "Víngerð"
         },
-        "waterway/boatyard": {
-            "name": "B\u00e1tal\u00e6gi"
+        "public_transport/stop_position_train": {
+            "name": "Staðsetning stöðvunar járnbrautarlestar"
+        },
+        "shop/laundry": {
+            "name": "Þvottur"
+        },
+        "amenity/grit_bin": {
+            "name": "Sandkista"
+        },
+        "amenity/bank": {
+            "name": "Banki",
+            "terms": "fjármálastofnun"
+        },
+        "amenity/prison": {
+            "name": "Fangelsislóð"
+        },
+        "leisure/fishing": {
+            "name": "Veiðistaður"
+        },
+        "building/boathouse": {
+            "name": "Bátaskýli"
+        },
+        "amenity/police": {
+            "name": "Lögregla",
+            "terms": "löggan"
+        },
+        "place/farm": {
+            "name": "Býli"
+        },
+        "highway/service/driveway": {
+            "name": "Innkeyrsla",
+            "terms": "Heimreið"
+        },
+        "leisure/pitch/basketball": {
+            "name": "Körfuboltavöllur"
+        },
+        "seamark/buoy_lateral": {
+            "name": "Leiðarbauja"
+        },
+        "shop/newsagent": {
+            "name": "Dagblaða/tímaritasala"
+        },
+        "building/residential": {
+            "name": "Íbúðarhúsnæði"
+        },
+        "landuse/greenhouse_horticulture": {
+            "name": "Blómagróðurhús"
+        },
+        "healthcare": {
+            "name": "Heilsugæsluaðstaða"
+        },
+        "amenity/community_centre": {
+            "name": "Samfélagsmiðstöð"
+        },
+        "shop/tyres": {
+            "name": "Dekkjabúð"
+        },
+        "aeroway/gate": {
+            "name": "Flugvallarhlið"
+        },
+        "seamark/beacon_lateral": {
+            "name": "Stefnuviti"
+        },
+        "manhole/drain": {
+            "name": "Yfirfall"
+        },
+        "traffic_calming/island": {
+            "name": "Umferðareyja"
+        },
+        "playground/cushion": {
+            "name": "Hoppkoddi"
+        },
+        "aerialway/gondola": {
+            "name": "Eggjalyfta"
+        },
+        "shop/window_blind": {
+            "name": "Verslun með rimlagluggatjöld"
+        },
+        "amenity/restaurant/italian": {
+            "name": "Ítalskt veitingahús"
+        },
+        "building/temple": {
+            "name": "Musterisbygging"
+        },
+        "landuse/military/barracks": {
+            "name": "Herbúðir"
+        },
+        "amenity/casino": {
+            "name": "Spilavíti"
+        },
+        "amenity/coworking_space": {
+            "name": "Sameiginlegt vinnurými"
+        },
+        "tourism/museum": {
+            "name": "Safn"
+        },
+        "railway/buffer_stop": {
+            "name": "Járnbrautarstuðpúði"
+        },
+        "aerialway/pylon": {
+            "name": "Lyftumastur"
+        },
+        "craft/chimney_sweeper": {
+            "name": "Sótari"
+        },
+        "railway/narrow_gauge": {
+            "name": "Mjótt lestarspor"
+        },
+        "shop/curtain": {
+            "name": "Gluggatjaldaverslun"
+        },
+        "amenity/recycling_container": {
+            "name": "Endurvinnslugámur"
+        },
+        "healthcare/hospice": {
+            "name": "Líknarsel"
+        },
+        "leisure/pitch/tennis": {
+            "name": "Tennisvöllur"
+        },
+        "amenity/clinic/abortion": {
+            "name": "Fóstureyðingastofa"
+        },
+        "craft/watchmaker": {
+            "name": "Úrsmiður"
+        },
+        "highway/footway/marked": {
+            "name": "Merkt gangbraut"
+        },
+        "leisure/fitness_centre": {
+            "name": "Líkamsræktarmiðstöð"
+        },
+        "highway/corridor": {
+            "name": "Gangur innanhúss"
+        },
+        "attraction/animal": {
+            "name": "Dýr"
+        },
+        "amenity/restaurant/asian": {
+            "name": "Asískt veitingahús"
+        },
+        "craft/bookbinder": {
+            "name": "Bókbindari"
+        },
+        "man_made/groyne": {
+            "name": "Öldubrjótur"
+        },
+        "shop/pawnbroker": {
+            "name": "Veðlánari"
+        },
+        "shop/beverages": {
+            "name": "Drykkjarbúð"
+        },
+        "public_transport/platform_bus": {
+            "name": "Strætóstoppistöð / Biðsvæði"
+        },
+        "entrance": {
+            "name": "Inngangur/Útgangur"
+        },
+        "power/tower": {
+            "name": "Háspennuturn"
+        },
+        "aerialway/cable_car": {
+            "name": "Kláfur"
+        },
+        "landuse/military/airfield": {
+            "name": "Herflugvöllur"
+        },
+        "craft/boatbuilder": {
+            "name": "Bátasmiður"
+        },
+        "craft/shoemaker": {
+            "name": "Skósmiður"
+        },
+        "shop/interior_decoration": {
+            "name": "Innanhúshönnunarverslun"
+        },
+        "man_made/crane": {
+            "name": "Krani"
+        },
+        "seamark/buoy_lateral/green": {
+            "name": "Græn bauja"
+        },
+        "leisure/pitch/table_tennis": {
+            "name": "Borðtennisborð"
+        },
+        "attraction/maze": {
+            "name": "Völundarhús"
+        },
+        "amenity/place_of_worship/sikh": {
+            "name": "Sikh-musteri"
+        },
+        "amenity/social_facility/food_bank": {
+            "name": "Mataraðstoð"
+        },
+        "shop/nutrition_supplements": {
+            "name": "Verslun með fæðubótarefni"
+        },
+        "craft/gardener": {
+            "name": "Garðyrkjumaður"
+        },
+        "building/church": {
+            "name": "Kirkjubygging"
+        },
+        "shop/video_games": {
+            "name": "Tölvuleikjaverslun"
+        },
+        "traffic_calming/dip": {
+            "name": "Hraðahindrunardokk"
+        },
+        "traffic_calming/choker": {
+            "name": "Umferðarþrenging"
+        },
+        "railway/funicular": {
+            "name": "Toglest"
+        },
+        "power/transformer": {
+            "name": "Straumbreytir"
+        },
+        "power/generator": {
+            "name": "Aflstöð"
+        },
+        "natural/wetland": {
+            "name": "Votlendi"
+        },
+        "landuse/military/naval_base": {
+            "name": "Flotastöð"
+        },
+        "shop/department_store": {
+            "name": "Stórverslun"
+        },
+        "historic/wayside_cross": {
+            "name": "Tilbeiðslukross"
+        },
+        "man_made/petroleum_well": {
+            "name": "Olíulind"
+        },
+        "healthcare/alternative": {
+            "name": "Óhefðbundnar lækningar"
+        },
+        "leisure/fitness_station/parallel_bars": {
+            "name": "Samhliðaslár"
+        },
+        "highway/footway": {
+            "name": "Göngustígur"
+        },
+        "building/roof": {
+            "name": "Þak"
+        },
+        "natural/tree_row": {
+            "name": "Trjáröð"
+        },
+        "craft/upholsterer": {
+            "name": "Bólstrari"
+        },
+        "natural/glacier": {
+            "name": "Jökull"
+        },
+        "shop/storage_rental": {
+            "name": "Geymsluleiga"
+        },
+        "shop/fashion": {
+            "name": "Tískuverslun"
+        },
+        "power/substation": {
+            "name": "Undirstöð"
+        },
+        "amenity/fast_food": {
+            "name": "Skyndibiti"
+        },
+        "type/route/pipeline": {
+            "name": "Röraleið"
+        },
+        "landuse/religious": {
+            "name": "Svæði fyrir trúarathafnir"
+        },
+        "barrier/cattle_grid": {
+            "name": "Vegrist"
+        },
+        "tourism/motel": {
+            "name": "Mótel"
+        },
+        "building/cathedral": {
+            "name": "Dómkirkjubygging"
+        },
+        "office/notary": {
+            "name": "Skrifstofa lögbókanda"
+        },
+        "natural/reef": {
+            "name": "Rif"
+        },
+        "craft/photographic_laboratory": {
+            "name": "Ljósmyndavinnustofa"
+        },
+        "amenity/waste/dog_excrement": {
+            "name": "Fata undir hundaskít"
+        },
+        "leisure/slipway": {
+            "name": "Dráttarbraut"
+        },
+        "leisure/dance": {
+            "name": "Danssalur"
+        },
+        "traffic_calming/hump": {
+            "name": "Hraðahindrunaralda"
+        },
+        "building/chapel": {
+            "name": "Kapellubygging"
+        },
+        "craft/caterer": {
+            "name": "Veisluþjónusta"
+        },
+        "office/research": {
+            "name": "Rannsóknarstofa"
+        },
+        "office/travel_agent": {
+            "name": "Ferðaskrifstofa"
+        },
+        "piste/downhill": {
+            "name": "Rennslis/gönguskíðaleið"
+        },
+        "highway/footway/unmarked-raised": {
+            "name": "Ómerkt gangbraut (upphækkuð)"
+        },
+        "craft/jeweler": {
+            "name": "Skartgripasali"
+        },
+        "landuse/industrial/slaughterhouse": {
+            "name": "Sláturhús"
+        },
+        "office/telecommunication": {
+            "name": "Samskiptaskrifstofa"
+        },
+        "shop/bag": {
+            "name": "Töskubúð"
+        },
+        "historic/tomb": {
+            "name": "Gröf"
+        },
+        "amenity/vending_machine/electronics": {
+            "name": "Rafeindatækjasjálfsali"
+        },
+        "waterway/water_point": {
+            "name": "Drykkjarvatn fyrir báta"
+        },
+        "shop/garden_centre": {
+            "name": "Garðaverslun"
+        },
+        "leisure/sports_centre/swimming": {
+            "name": "Sundlaugaraðstaða"
+        },
+        "barrier/hedge": {
+            "name": "Limgerði"
+        },
+        "shop/kitchen": {
+            "name": "Eldhúshönnunarverslun"
+        },
+        "building/garages": {
+            "name": "Bílskúrar"
+        },
+        "leisure/pitch/rugby_league": {
+            "name": "Rúgbývöllur (league)"
+        },
+        "shop/beauty": {
+            "name": "Fegrunarstofa"
+        },
+        "amenity/charging_station": {
+            "name": "Hleðslustöð"
+        },
+        "amenity/music_school": {
+            "name": "Tónlistarskóli"
+        },
+        "man_made/antenna": {
+            "name": "Loftnet"
         },
         "waterway/canal": {
-            "name": "S\u00edki"
+            "name": "Síki"
         },
-        "waterway/dam": {
-            "name": "St\u00edfla"
+        "leisure/common": {
+            "name": "Almenningur"
         },
-        "waterway/ditch": {
-            "name": "Skur\u00f0ur"
+        "type/route/horse": {
+            "name": "Reiðleið"
         },
-        "waterway/dock": {
-            "name": "Flotkv\u00ed / Slippur"
+        "amenity/dojo": {
+            "name": "Dojo / Bardagaíþróttir"
         },
-        "waterway/drain": {
-            "name": "Fr\u00e1rennsli"
+        "landuse/farmland": {
+            "name": "Akurlendi"
         },
-        "waterway/fuel": {
-            "name": "Eldsneytisst\u00f6\u00f0 fyrir b\u00e1ta"
+        "shop/baby_goods": {
+            "name": "Barnavöruverslun"
         },
-        "waterway/river": {
-            "name": "\u00c1"
+        "shop/fishmonger": {
+            "name": "Fisksali"
+        },
+        "place/square": {
+            "name": "Torg"
+        },
+        "man_made/storage_tank": {
+            "name": "Geymslutankur"
+        },
+        "place/neighbourhood": {
+            "name": "Hverfi"
+        },
+        "amenity/fast_food/chicken": {
+            "name": "Skyndibiti, kjúklingar"
+        },
+        "playground/slide": {
+            "name": "Rennibraut"
+        },
+        "leisure/pitch/beachvolleyball": {
+            "name": "Strandblakvöllur"
+        },
+        "playground/basket_swing": {
+            "name": "Körfuróla"
+        },
+        "highway/footway/marked-raised": {
+            "name": "Merkt gangbraut (upphækkuð)"
+        },
+        "public_transport/stop_position_aerialway": {
+            "name": "Staðsetning stöðvunar víralyftu"
+        },
+        "playground/climbing_frame": {
+            "name": "Klifurgrind"
+        },
+        "tourism/artwork/mural": {
+            "name": "Veggmynd"
+        },
+        "man_made/chimney": {
+            "name": "Skorsteinn"
+        },
+        "shop/mall": {
+            "name": "Verslunarmiðstöð"
+        },
+        "barrier/wall": {
+            "name": "Veggur"
+        },
+        "craft/insulator": {
+            "name": "Einangrun"
+        },
+        "shop/herbalist": {
+            "name": "Grasalæknir"
+        },
+        "landuse/vineyard": {
+            "name": "Vínekra"
+        },
+        "traffic_calming/rumble_strip": {
+            "name": "Hvinrendur"
+        },
+        "leisure/pitch/badminton": {
+            "name": "Badmintonvöllur"
+        },
+        "office/tax_advisor": {
+            "name": "Skattaráðgjafarskrifstofa"
+        },
+        "aerialway/drag_lift": {
+            "name": "Toglyfta"
+        },
+        "bridge/support/pier": {
+            "name": "Brúarstólpi"
+        },
+        "healthcare/midwife": {
+            "name": "Ljósmóðir"
+        },
+        "aeroway/hangar": {
+            "name": "Flugskýli"
+        },
+        "healthcare/psychotherapist": {
+            "name": "Sálmeðferðarfræðingur"
+        },
+        "building/retail": {
+            "name": "Verslunarhúsnæði"
+        },
+        "highway/motorway_link": {
+            "name": "Hraðbrautarrein"
+        },
+        "amenity/car_pooling": {
+            "name": "Bílasamnýting"
+        },
+        "place/isolated_dwelling": {
+            "name": "Einöngruð búseta"
+        },
+        "shop/bed": {
+            "name": "Rúm/Dýnuverslun"
+        },
+        "natural/scrub": {
+            "name": "Kjarr"
+        },
+        "craft/photographer": {
+            "name": "Ljósmyndari"
+        },
+        "shop": {
+            "name": "Verslun"
+        },
+        "attraction/big_wheel": {
+            "name": "Parísarhjól"
+        },
+        "landuse/military/obstacle_course": {
+            "name": "Hindrunarhlaupabraut"
+        },
+        "natural/spring": {
+            "name": "Uppspretta"
+        },
+        "man_made/pipeline": {
+            "name": "Röraleiðsla"
+        },
+        "man_made/observatory": {
+            "name": "Skoðunarstöð"
+        },
+        "attraction/pirate_ship": {
+            "name": "Sjóræningjaskip"
+        },
+        "healthcare/alternative/chiropractic": {
+            "name": "Hnykkjalæknir"
+        },
+        "amenity/childcare": {
+            "name": "Barnagæsla/dagvistun"
+        },
+        "office/educational_institution": {
+            "name": "Menntastofnun"
+        },
+        "shop/deli": {
+            "name": "Deli"
+        },
+        "leisure/pitch/equestrian": {
+            "name": "Reiðsvæði"
+        },
+        "place/quarter": {
+            "name": "Úthverfishluti / Hverfi"
+        },
+        "healthcare/rehabilitation": {
+            "name": "Endurhæfingaraðstaða"
+        },
+        "shop/perfumery": {
+            "name": "Ilmvatnsbúð"
+        },
+        "amenity/restaurant/vietnamese": {
+            "name": "Víetnamskt veitingahús"
+        },
+        "highway/service/drive-through": {
+            "name": "Afgreiðslulúga"
+        },
+        "shop/kiosk": {
+            "name": "Blaðastandur"
+        },
+        "landuse/military/danger_area": {
+            "name": "Hættusvæði"
+        },
+        "shop/confectionery": {
+            "name": "Nammibúð"
+        },
+        "tourism/information/guidepost": {
+            "name": "Upplýsingaskilti"
+        },
+        "shop/electronics": {
+            "name": "Rafeindatækjaverslun"
+        },
+        "waterway": {
+            "name": "Siglingaleið"
+        },
+        "amenity/clinic": {
+            "name": "Læknastofa"
+        },
+        "public_transport/stop_position_light_rail": {
+            "name": "Staðsetning stöðvunar léttlestar"
+        },
+        "amenity/place_of_worship/buddhist": {
+            "name": "Búddistamusteri"
+        },
+        "natural/bare_rock": {
+            "name": "Berar klappir"
+        },
+        "amenity/language_school": {
+            "name": "Tungumálaskóli"
+        },
+        "amenity/crematorium": {
+            "name": "Líkbrennsla"
+        },
+        "building/farm_auxiliary": {
+            "name": "Landbúnaðarbygging"
+        },
+        "power/switch": {
+            "name": "Spennivirki"
+        },
+        "amenity/waste_basket": {
+            "name": "Ruslafata"
+        },
+        "building/construction": {
+            "name": "Á byggingarstigi"
+        },
+        "highway/unclassified": {
+            "name": "Minni/Óflokkaður vegur"
+        },
+        "office/charity": {
+            "name": "Skrifstofa góðgerðasamtaka"
+        },
+        "office/foundation": {
+            "name": "Skrifstofa sjálfseignarstofnunar"
+        },
+        "amenity/social_facility": {
+            "name": "Félagsþjónusta"
+        },
+        "shop/hifi": {
+            "name": "Hljómverslun"
+        },
+        "craft/window_construction": {
+            "name": "Gluggasmíði"
+        },
+        "shop/appliance": {
+            "name": "Raftækjaverslun"
+        },
+        "craft/tinsmith": {
+            "name": "Tinsmiður"
+        },
+        "golf/green": {
+            "name": "Púttflöt"
+        },
+        "man_made/windmill": {
+            "name": "Vindmylla"
+        },
+        "shop/mobile_phone": {
+            "name": "Farsímaverslun"
+        },
+        "craft/basket_maker": {
+            "name": "Körfugerð"
+        },
+        "building/service": {
+            "name": "Þjónustubygging"
+        },
+        "place/town": {
+            "name": "Bær"
+        },
+        "highway/tertiary_link": {
+            "name": "Safnbrautarrein"
+        },
+        "tourism/information": {
+            "name": "Upplýsingar"
+        },
+        "amenity/vending_machine/coffee": {
+            "name": "Kaffisjálfsali"
+        },
+        "landuse/military/training_area": {
+            "name": "Æfingasvæði"
+        },
+        "playground/horizontal_bar": {
+            "name": "Leikþverslá"
+        },
+        "natural/water/lake": {
+            "name": "Stöðuvatn"
+        },
+        "shop/video": {
+            "name": "Myndbandaverslun"
+        },
+        "amenity/animal_breeding": {
+            "name": "Dýraræktun"
+        },
+        "building/warehouse": {
+            "name": "Vöruhús"
+        },
+        "railway/tram": {
+            "name": "Sporvagn"
+        },
+        "power/minor_line": {
+            "name": "Minni raflína"
+        },
+        "amenity/social_facility/nursing_home": {
+            "name": "Hjúkrunarheimili"
+        },
+        "amenity/restaurant/thai": {
+            "name": "Tælenskt veitingahús"
+        },
+        "public_transport/station_light_rail": {
+            "name": "Léttlestarstöð"
+        },
+        "landuse/farmyard": {
+            "name": "Bóndabýli"
+        },
+        "man_made/works": {
+            "name": "Verksmiðja"
+        },
+        "craft/plumber": {
+            "name": "Pípari"
+        },
+        "highway/cycleway": {
+            "name": "Hjólastígur"
+        },
+        "man_made/gasometer": {
+            "name": "Gasmælir"
+        },
+        "shop/hardware": {
+            "name": "Byggingavöruverslun"
+        },
+        "amenity/car_sharing": {
+            "name": "Bíladeiling"
+        },
+        "shop/funeral_directors": {
+            "name": "Útfararheimili"
+        },
+        "tourism/zoo": {
+            "name": "Dýragarður"
+        },
+        "shop/computer": {
+            "name": "Tölvuverslun"
+        },
+        "landuse/grass": {
+            "name": "Gras"
+        },
+        "natural/grassland": {
+            "name": "Graslendi"
+        },
+        "amenity/animal_boarding": {
+            "name": "Dýrahótel"
+        },
+        "highway/stop": {
+            "name": "Stöðvunarskyldumerki"
+        },
+        "emergency/no": {
+            "name": "Ekki neyðaraðgangur"
+        },
+        "public_transport/stop_position_ferry": {
+            "name": "Staðsetning stöðvunar ferju"
+        },
+        "tourism": {
+            "name": "Ferðaþjónusta"
+        },
+        "traffic_sign": {
+            "name": "Umferðarmerki"
+        },
+        "amenity/public_bath": {
+            "name": "Almenningsböð"
+        },
+        "amenity/car_wash": {
+            "name": "Bílaþvottur"
+        },
+        "highway/street_lamp": {
+            "name": "Ljósastaur"
+        },
+        "playground/zipwire": {
+            "name": "Aparóla"
+        },
+        "tourism/theme_park": {
+            "name": "Skemmtigarður"
+        },
+        "emergency/siren": {
+            "name": "Sírena"
+        },
+        "shop/watches": {
+            "name": "Úraverslun"
+        },
+        "amenity/parking_entrance": {
+            "name": "Inngangur/Útgangur bílastæðahúss"
+        },
+        "landuse": {
+            "name": "Landnotkun"
         },
         "waterway/riverbank": {
-            "name": "\u00c1rbakki"
+            "name": "Árbakki"
         },
-        "waterway/sanitary_dump_station": {
-            "name": "Salernishreinsun fyrir b\u00e1ta"
+        "type/route/light_rail": {
+            "name": "Léttlestarleið"
+        },
+        "shop/music": {
+            "name": "Tónlistarbúð"
+        },
+        "amenity/fast_food/fish_and_chips": {
+            "name": "Skyndibiti, fiskur og franskar"
+        },
+        "barrier/toll_booth": {
+            "name": "Gjaldhlið"
+        },
+        "highway/crossing/unmarked": {
+            "name": "Ómerkt gangbraut"
+        },
+        "craft/stonemason": {
+            "name": "Steinsmiður"
+        },
+        "aerialway": {
+            "name": "Víralyfta"
+        },
+        "amenity/nightclub": {
+            "name": "Næturklúbbur"
+        },
+        "waterway/dam": {
+            "name": "Stífla"
+        },
+        "amenity/school": {
+            "name": "Skólalóð"
+        },
+        "public_transport/stop_position_tram": {
+            "name": "Staðsetning stöðvunar sporvagna"
+        },
+        "shop/photo": {
+            "name": "Ljósmyndavöruverslun"
+        },
+        "office/forestry": {
+            "name": "Skrifstofa skógarvarða"
+        },
+        "building/static_caravan": {
+            "name": "Staðfast hjólhýsi"
+        },
+        "playground/rocker": {
+            "name": "Rugguhestur"
+        },
+        "leisure/pitch/skateboard": {
+            "name": "Skautagarður"
+        },
+        "office/government/tax": {
+            "name": "Skattstofa"
+        },
+        "office/moving_company": {
+            "name": "Skrifstofa flutningafyrirtækis"
+        },
+        "highway/bridleway": {
+            "name": "Reiðleið"
+        },
+        "shop/variety_store": {
+            "name": "Allrahandaverslun"
+        },
+        "amenity/parking/multi-storey": {
+            "name": "Bílastæðahús á mörgum hæðum"
+        },
+        "amenity/doctors": {
+            "name": "Læknir"
+        },
+        "barrier/ditch": {
+            "name": "Skurður"
+        },
+        "landuse/churchyard": {
+            "name": "Kirkjulóð"
+        },
+        "amenity/shelter": {
+            "name": "Skýli"
+        },
+        "tourism/picnic_site": {
+            "name": "Áningarstaður"
+        },
+        "highway/rest_area": {
+            "name": "Hvíldarsvæði"
+        },
+        "amenity/vending_machine/stamps": {
+            "name": "Póstsjálfsali"
+        },
+        "public_transport/station_aerialway": {
+            "name": "Lyftustöð"
+        },
+        "playground/swing": {
+            "name": "Róla"
+        },
+        "craft/electrician": {
+            "name": "Rafvirki"
+        },
+        "manhole/telecom": {
+            "name": "Mannop fyrir fjarskipti"
+        },
+        "attraction/drop_tower": {
+            "name": "Fallturn"
+        },
+        "historic/archaeological_site": {
+            "name": "Fornleifar"
+        },
+        "amenity/driving_school": {
+            "name": "Ökuskóli"
+        },
+        "building/barn": {
+            "name": "Hlaða"
+        },
+        "amenity/bench": {
+            "name": "Bekkur"
+        },
+        "craft/beekeeper": {
+            "name": "Býflugnahirðir"
+        },
+        "amenity/toilets": {
+            "name": "Salerni"
+        },
+        "leisure/fitness_station/box": {
+            "name": "Æfingakassi"
+        },
+        "amenity/sanitary_dump_station": {
+            "name": "Salernishreinsun fyrir bíla"
+        },
+        "shop/hearing_aids": {
+            "name": "Heyrnartækjaverslun"
+        },
+        "public_transport/platform": {
+            "name": "Biðstöð / Biðsvæði",
+            "terms": "almenningssamgöngur,strætó,samgöngur,stoppistöð"
+        },
+        "craft/confectionery": {
+            "name": "Sælgætisgerð"
+        },
+        "amenity/place_of_worship": {
+            "name": "Tilbeiðsluhús",
+            "terms": "musteri, kirkja, kapella, bænahús"
+        },
+        "aerialway/goods": {
+            "name": "Vöruvíralyfta"
+        },
+        "railway/platform": {
+            "name": "Lestarpallur"
+        },
+        "barrier/retaining_wall": {
+            "name": "Hallaveggur"
+        },
+        "amenity/love_hotel": {
+            "name": "Ástarhótel"
+        },
+        "office/adoption_agency": {
+            "name": "Ættleiðingaskrifstofa"
+        },
+        "highway/traffic_signals": {
+            "name": "Umferðarljós"
+        },
+        "amenity/embassy": {
+            "name": "Sendiráð"
+        },
+        "place/islet": {
+            "name": "Hólmi"
+        },
+        "type/restriction/no_left_turn": {
+            "name": "Engin vinstri beygja"
+        },
+        "leisure/ice_rink": {
+            "name": "Skautasvell"
+        },
+        "healthcare/blood_donation": {
+            "name": "Blóðbanki"
+        },
+        "place/village": {
+            "name": "Þorp"
+        },
+        "shop/water_sports": {
+            "name": "Verslun með sund/vatnaíþróttavörur"
+        },
+        "shop/lottery": {
+            "name": "Lottósjoppa"
+        },
+        "leisure/dog_park": {
+            "name": "Hundagarður"
+        },
+        "natural/cave_entrance": {
+            "name": "Inngangur í helli",
+            "terms": "hellir,skúti,skýli"
+        },
+        "point": {
+            "name": "Punktur"
+        },
+        "shop/cheese": {
+            "name": "Ostabúð"
+        },
+        "amenity/boat_rental": {
+            "name": "Bátaleiga"
+        },
+        "amenity/place_of_worship/taoist": {
+            "name": "Taóistamusteri"
+        },
+        "building/mosque": {
+            "name": "Moskubygging"
+        },
+        "building/cabin": {
+            "name": "Kofi",
+            "terms": "Sumarbústaður, kofi"
+        },
+        "highway/bus_guideway": {
+            "name": "Strætóleiðsagnarbraut"
+        },
+        "highway/footway/sidewalk": {
+            "name": "Gangstétt"
+        },
+        "amenity/animal_shelter": {
+            "name": "Dýraathvarf"
+        },
+        "emergency/private": {
+            "name": "Einka neyðaraðgangur"
+        },
+        "craft/sailmaker": {
+            "name": "Seglagerð"
+        },
+        "office/ngo": {
+            "name": "Skrifstofa frjálsra félagasamtaka"
+        },
+        "craft/glaziery": {
+            "name": "Glerskurður"
+        },
+        "highway/footway/unmarked": {
+            "name": "Ómerkt gangbraut"
+        },
+        "highway/motorway_junction": {
+            "name": "Hraðbrautartenging / Útafakstur"
+        },
+        "natural/tree": {
+            "name": "Tré"
+        },
+        "amenity/register_office": {
+            "name": "Skráningarskrifstofa"
+        },
+        "highway/crossing/marked-raised": {
+            "name": "Merkt gangbraut (upphækkuð)"
+        },
+        "leisure/adult_gaming_centre": {
+            "name": "Fjárhættuspilasalur"
+        },
+        "shop/car_parts": {
+            "name": "Bílavarahlutaverslun"
+        },
+        "leisure/outdoor_seating": {
+            "name": "Svæði fyrir sæti utandyra"
+        },
+        "office/lawyer": {
+            "name": "Lögmannaskrifstofa"
+        },
+        "highway/trunk_link": {
+            "name": "Umferðaræðarrein"
+        },
+        "amenity/vending_machine/news_papers": {
+            "name": "Dagblaðasjálfsali"
+        },
+        "shop/bookmaker": {
+            "name": "Veðmangari"
+        },
+        "leisure/fitness_centre/yoga": {
+            "name": "Jógastúdíó"
+        },
+        "aerialway/t-bar": {
+            "name": "T-lyfta"
+        },
+        "public_transport/platform_aerialway": {
+            "name": "Lyftustöð / Biðsvæði"
+        },
+        "historic/boundary_stone": {
+            "name": "Landamerkjasteinn"
+        },
+        "leisure/park": {
+            "name": "Garður"
+        },
+        "amenity/internet_cafe": {
+            "name": "Netkaffihús"
+        },
+        "leisure/garden": {
+            "name": "Garður"
+        },
+        "historic/memorial": {
+            "name": "Minnismerki"
+        },
+        "shop/cosmetics": {
+            "name": "Snyrtivöruverslun"
+        },
+        "type/restriction/only_u_turn": {
+            "name": "Aðeins U-beygja"
+        },
+        "leisure/swimming_pool": {
+            "name": "Sundlaug"
         },
         "waterway/stream": {
             "name": "Straumvatn"
         },
-        "waterway/stream_intermittent": {
-            "name": "T\u00edmabundi\u00f0 straumvatn"
+        "railway": {
+            "name": "Lest"
         },
-        "waterway/water_point": {
-            "name": "Drykkjarvatn fyrir b\u00e1ta"
+        "building/university": {
+            "name": "Háskólabygging"
+        },
+        "amenity/library": {
+            "name": "Bókasafn"
+        },
+        "shop/stationery": {
+            "name": "Skriffangaverslun"
+        },
+        "highway/secondary_link": {
+            "name": "Tengibrautarrein"
+        },
+        "office/advertising_agency": {
+            "name": "Auglýsingastofa"
+        },
+        "highway/living_street": {
+            "name": "Vistgata"
+        },
+        "landuse/military/bunker": {
+            "name": "Hernaðarsprengjubyrgi"
+        },
+        "attraction/bumper_car": {
+            "name": "Ákeyrslubílar"
+        },
+        "attraction/roller_coaster": {
+            "name": "Rússíbani"
+        },
+        "power/sub_station": {
+            "name": "Undirstöð"
+        },
+        "shop/copyshop": {
+            "name": "Ljósritunarstofa"
+        },
+        "leisure/firepit": {
+            "name": "Eldstæði"
+        },
+        "public_transport/station_ferry": {
+            "name": "Ferjustöð / Umferðarmiðstöð"
+        },
+        "leisure/pitch/baseball": {
+            "name": "Hafnaboltavöllur"
+        },
+        "man_made/bridge": {
+            "name": "Brú"
+        },
+        "railway/monorail": {
+            "name": "Einteinungur"
+        },
+        "office/physician": {
+            "name": "Læknir"
+        },
+        "shop/bicycle": {
+            "name": "Hjólabúð"
+        },
+        "public_transport/stop_position_subway": {
+            "name": "Staðsetning stöðvunar neðanjarðarlestar"
+        },
+        "tourism/apartment": {
+            "name": "Gestaíbúð"
+        },
+        "amenity/hunting_stand": {
+            "name": "Skotvöllur"
+        },
+        "tourism/guest_house": {
+            "name": "Gestahús"
+        },
+        "power/plant": {
+            "name": "Orkuverslóð"
+        },
+        "landuse/aquaculture": {
+            "name": "Vatnseldi"
+        },
+        "amenity": {
+            "name": "Þjónusta"
+        },
+        "seamark/buoy_lateral/red": {
+            "name": "Rauð bauja"
+        },
+        "tourism/gallery": {
+            "name": "Listagallerí"
+        },
+        "amenity/fuel": {
+            "name": "Bensínstöð"
+        },
+        "type/route/tram": {
+            "name": "Sporvagnaleið"
+        },
+        "shop/second_hand": {
+            "name": "Notað og nýtt"
+        },
+        "place/island": {
+            "name": "Eyja"
+        },
+        "public_transport/platform_tram": {
+            "name": "Sporvagnastoppistöð / Biðsvæði"
+        },
+        "attraction/bungee_jumping": {
+            "name": "Teygjustökk"
+        },
+        "piste/piste": {
+            "name": "Vetraríþróttaleiðir"
+        },
+        "railway/signal": {
+            "name": "Lestarmerki"
+        },
+        "craft/rigger": {
+            "name": "Stagari (rigger)"
+        },
+        "man_made/water_works": {
+            "name": "Vatnsveita"
+        },
+        "amenity/pub": {
+            "name": "Krá"
+        },
+        "building/entrance": {
+            "name": "Inngangur/Útgangur"
+        },
+        "playground/structure": {
+            "name": "Leikjagrind"
+        },
+        "shop/religion": {
+            "name": "Verslun með trúartengdar vörur"
+        },
+        "golf/rough": {
+            "name": "Kargi"
+        },
+        "man_made/breakwater": {
+            "name": "Sjóvarnargarður"
+        },
+        "shop/shoes": {
+            "name": "Skóbúð"
+        },
+        "amenity/ranger_station": {
+            "name": "Landvarðastöð"
+        },
+        "office/quango": {
+            "name": "Félagasamtök í samstarfi við hið opinbera (quango)"
+        },
+        "amenity/parking": {
+            "name": "Bílastæðasvæði"
+        },
+        "highway/bus_stop": {
+            "name": "Strætóstoppistöð / Biðsvæði"
+        },
+        "office/energy_supplier": {
+            "name": "Orkusöluskrifstofa"
+        },
+        "amenity/place_of_worship/hindu": {
+            "name": "Hindú-musteri"
+        },
+        "aerialway/platter": {
+            "name": "Diskalyfta"
+        },
+        "amenity/swimming_pool": {
+            "name": "Sundlaug"
+        },
+        "amenity/vending_machine/condoms": {
+            "name": "Smokkasjálfsali"
+        },
+        "craft/electronics_repair": {
+            "name": "Rafeindatækjaverkstæði"
+        },
+        "man_made/adit": {
+            "name": "Námuinngangur"
+        },
+        "man_made/tower": {
+            "name": "Turn"
+        },
+        "shop/florist": {
+            "name": "Blómabúð"
+        },
+        "type/route/ferry": {
+            "name": "Ferjuleið"
+        },
+        "highway/crossing/marked": {
+            "name": "Merkt gangbraut"
+        },
+        "amenity/atm": {
+            "name": "Hraðbanki"
+        },
+        "ford": {
+            "name": "Vað"
+        },
+        "natural/sand": {
+            "name": "Sandur"
+        },
+        "place/locality": {
+            "name": "Staðfesti"
+        },
+        "traffic_calming/table": {
+            "name": "Hraðahindrunarpallur"
+        },
+        "amenity/courthouse": {
+            "name": "Dómhús"
+        },
+        "shop/art": {
+            "name": "Listmunaverslun"
+        },
+        "place/hamlet": {
+            "name": "Þéttbýliskjarni"
+        },
+        "amenity/recycling_centre": {
+            "name": "Endurvinnslumiðstöð"
+        },
+        "club": {
+            "name": "Klúbbur"
+        },
+        "office/private_investigator": {
+            "name": "Einkaspæjaraskrifstofa"
+        },
+        "waterway/fuel": {
+            "name": "Eldsneytisstöð fyrir báta"
+        },
+        "highway": {
+            "name": "Þjóðvegur"
+        },
+        "shop/pastry": {
+            "name": "Kökubúð"
+        },
+        "amenity/theatre": {
+            "name": "Leikhús"
+        },
+        "highway/pedestrian_line": {
+            "name": "Göngugata"
+        },
+        "landuse/military/checkpoint": {
+            "name": "Varðstöð"
+        },
+        "man_made/lighthouse": {
+            "name": "Viti"
+        },
+        "type/route/train": {
+            "name": "Lestarleið"
+        },
+        "barrier/fence": {
+            "name": "Girðing"
+        },
+        "landuse/cemetery": {
+            "name": "Kirkjugarður"
+        },
+        "railway/rail": {
+            "name": "Lestarteinar"
+        },
+        "natural/scree": {
+            "name": "Skriða"
+        },
+        "office/government": {
+            "name": "Opinber stofnun"
+        },
+        "office/it": {
+            "name": "Upplýsingatækniskrifstofa"
+        },
+        "railway/disused": {
+            "name": "Ónotaðir lestarteinar"
+        },
+        "amenity/grave_yard": {
+            "name": "Grafreitur"
+        },
+        "railway/light_rail": {
+            "name": "Léttlest"
+        },
+        "office/lawyer/notary": {
+            "name": "Skrifstofa lögbókanda"
+        },
+        "amenity/clinic/fertility": {
+            "name": "Frjósemisklínik"
+        },
+        "leisure/fitness_station": {
+            "name": "Líkamsþjálfunarstöð utandyra"
+        },
+        "amenity/vending_machine/newspapers": {
+            "name": "Dagblaðasjálfsali"
+        },
+        "railway/subway_entrance": {
+            "name": "Inngangur að neðanjarðarlest"
+        },
+        "emergency/fire_extinguisher": {
+            "name": "Slökkvitæki"
+        },
+        "healthcare/speech_therapist": {
+            "name": "Talmeinafræðingur"
+        },
+        "leisure/picnic_table": {
+            "name": "Nestisborð"
+        },
+        "man_made/cutline": {
+            "name": "Cut line"
+        },
+        "craft/scaffolder": {
+            "name": "Vinnupallasmíði"
+        },
+        "shop/locksmith": {
+            "name": "Lásasmiður"
+        },
+        "office/insurance": {
+            "name": "Tryggingaskrifstofa"
+        },
+        "leisure/pitch": {
+            "name": "Íþróttavöllur"
+        },
+        "public_transport/stop_position_trolleybus": {
+            "name": "Staðsetning stöðvunar rafknúinna strætisvagna"
+        },
+        "tourism/hotel": {
+            "name": "Hótel"
+        },
+        "historic/monument": {
+            "name": "Minnisvarði"
+        },
+        "manhole": {
+            "name": "Mannop"
+        },
+        "type/route/bicycle": {
+            "name": "Hjólaleið"
+        },
+        "highway/give_way": {
+            "name": "Biðskyldumerki"
+        },
+        "amenity/place_of_worship/shinto": {
+            "name": "Shinto-skrín"
+        },
+        "leisure/fitness_station/horizontal_bar": {
+            "name": "Þverslá"
+        },
+        "historic": {
+            "name": "Sögulegur staður"
+        },
+        "railway/switch": {
+            "name": "Lestarteinaskiptir"
+        },
+        "amenity/restaurant/sushi": {
+            "name": "Sushi-veitingahús"
+        },
+        "piste/skitour": {
+            "name": "Ferðaskíðaleið"
+        },
+        "healthcare/optometrist": {
+            "name": "Sjóntækjafræðingur"
+        },
+        "building/kindergarten": {
+            "name": "Forskóla-/Leikskólabygging"
+        },
+        "leisure/playground": {
+            "name": "Leikvöllur"
+        },
+        "emergency/water_tank": {
+            "name": "Neyðarvatnstankur"
+        },
+        "shop/erotic": {
+            "name": "Hjálpartæki ástarlífsins"
+        },
+        "type/restriction/only_left_turn": {
+            "name": "Aðeins vinstri beygja"
+        },
+        "leisure/fitness_station/rings": {
+            "name": "Æfingahringir"
+        },
+        "highway/mini_roundabout": {
+            "name": "Lítið hringtorg"
+        },
+        "public_transport/platform_monorail": {
+            "name": "Einteinungsstoppistöð / Biðsvæði"
+        },
+        "amenity/monastery": {
+            "name": "Klausturlóð"
+        },
+        "highway/service/parking_aisle": {
+            "name": "Bílastæðagangur"
+        },
+        "amenity/bbq": {
+            "name": "Grill"
+        },
+        "waterway/dock": {
+            "name": "Flotkví / Slippur"
+        },
+        "waterway/boatyard": {
+            "name": "Bátalægi"
+        },
+        "power/line": {
+            "name": "Raflína"
+        },
+        "amenity/ice_cream": {
+            "name": "Ísbúð"
+        },
+        "leisure/horse_riding": {
+            "name": "Aðstaða fyrir reiðmennsku"
+        },
+        "power/pole": {
+            "name": "Rafmagnsstaur"
+        },
+        "natural/peak": {
+            "name": "Tindur"
+        },
+        "highway/tertiary": {
+            "name": "Safnbraut"
+        },
+        "amenity/restaurant/steakhouse": {
+            "name": "Steikhús"
+        },
+        "shop/beauty/nails": {
+            "name": "Naglasnyrtingastofa"
+        },
+        "tourism/artwork": {
+            "name": "Listaverk"
+        },
+        "amenity/vending_machine/sweets": {
+            "name": "Snakksjálfsali"
+        },
+        "landuse/retail": {
+            "name": "Svæði fyrir verslun og þjónustu"
+        },
+        "leisure/sauna": {
+            "name": "Gufubað"
+        },
+        "craft/key_cutter": {
+            "name": "Lyklaþjónusta"
+        },
+        "leisure/fitness_station/sign": {
+            "name": "Merki með æfingaleiðbeiningum"
+        },
+        "leisure/resort": {
+            "name": "Afþreyingarþorp"
+        },
+        "shop/pyrotechnics": {
+            "name": "Flugeldaverslun"
+        },
+        "leisure/pitch/cricket": {
+            "name": "Krikketvöllur"
+        },
+        "public_transport/platform_trolleybus": {
+            "name": "Strætóstoppistöð / Biðsvæði"
+        },
+        "amenity/arts_centre": {
+            "name": "Listamiðstöð"
+        },
+        "shop/pet_grooming": {
+            "name": "Dýrasnyrtiverslun"
+        },
+        "railway/crossing": {
+            "name": "Þverun járnbrautar (stígur)"
+        },
+        "shop/travel_agency": {
+            "name": "Ferðaskrifstofa"
+        },
+        "tourism/artwork/statue": {
+            "name": "Stytta"
+        },
+        "amenity/restaurant": {
+            "name": "Veitingahús"
+        },
+        "amenity/restaurant/pizza": {
+            "name": "Flatbökuveitingahús"
+        },
+        "type/route/detour": {
+            "name": "Hjáleið"
+        },
+        "amenity/bicycle_repair_station": {
+            "name": "Hjólaviðgerðastandur"
+        },
+        "office/association": {
+            "name": "Skrifstofa frjálsra félagasamtaka"
+        },
+        "highway/services": {
+            "name": "Þjónustusvæði"
+        },
+        "amenity/bureau_de_change": {
+            "name": "Gjaldmiðlaskipti"
+        },
+        "tourism/chalet": {
+            "name": "Frístundahús"
+        },
+        "landuse/military/nuclear_explosion_site": {
+            "name": "Kjarnorkusprengisvæði"
+        },
+        "leisure/dancing_school": {
+            "name": "Dansskóli"
+        },
+        "public_transport/station_trolleybus": {
+            "name": "Strætisvagnastöð / Umferðarmiðstöð"
+        },
+        "leisure": {
+            "name": "Skemmtun"
+        },
+        "amenity/post_office": {
+            "name": "Pósthús"
+        },
+        "public_transport/stop_position": {
+            "name": "Staðsetning stöðvunar almenningssamgangna"
+        },
+        "natural/volcano": {
+            "name": "Eldstöð"
+        },
+        "amenity/fast_food/pizza": {
+            "name": "Skyndibiti, flatbökur"
+        },
+        "amenity/vending_machine": {
+            "name": "Sjálfsali"
+        },
+        "highway/milestone": {
+            "name": "Vegalengdarmerki"
+        },
+        "amenity/bar": {
+            "name": "Knæpa"
+        },
+        "traffic_calming/cushion": {
+            "name": "Hraðahindrunarkoddi"
+        },
+        "power/generator/source/nuclear": {
+            "name": "Kjarnaofn"
+        },
+        "leisure/fitness_station/balance_beam": {
+            "name": "Jafnvægisslá"
+        },
+        "traffic_calming": {
+            "name": "Hraðahindrun"
+        },
+        "barrier/stile": {
+            "name": "Príla"
+        },
+        "type/route/piste": {
+            "name": "Skíða/göngubraut"
+        },
+        "shop/boutique": {
+            "name": "Búð"
+        },
+        "area/highway": {
+            "name": "Yfirborð vegar"
+        },
+        "amenity/vending_machine/parking_tickets": {
+            "name": "Bílastæðamiðasjálfsali"
+        },
+        "shop/weapons": {
+            "name": "Vopnaverslun"
+        },
+        "healthcare/physiotherapist": {
+            "name": "Sjúkraþjálfari"
+        },
+        "bridge/support": {
+            "name": "Undirstaða brúar"
+        },
+        "highway/trunk": {
+            "name": "Umferðaræð"
+        },
+        "leisure/pitch/boules": {
+            "name": "Kúluspilsvöllur (boules/bocce)"
+        },
+        "power/cable/underground": {
+            "name": "Jarðstrengur"
+        },
+        "golf/tee": {
+            "name": "Teigur"
+        },
+        "office": {
+            "name": "Skrifstofa"
+        },
+        "amenity/fire_station": {
+            "name": "Slökkvistöð"
+        },
+        "barrier/entrance": {
+            "name": "Inngangur"
+        },
+        "emergency/fire_hydrant": {
+            "name": "Brunahani"
+        },
+        "noexit/yes": {
+            "name": "Enginn útgangur"
+        },
+        "shop/scuba_diving": {
+            "name": "Verslun með köfunarvörur"
+        },
+        "natural/water/pond": {
+            "name": "Tjörn"
+        },
+        "place/plot": {
+            "name": "Skiki"
+        },
+        "attraction/water_slide": {
+            "name": "Vatnsrennibraut"
+        },
+        "shop/vacuum_cleaner": {
+            "name": "Verslun með ryksugur"
+        },
+        "shop/chemist": {
+            "name": "Hreinlætisvöruverslun"
+        },
+        "tourism/information/map": {
+            "name": "Kort"
+        },
+        "building/hospital": {
+            "name": "Sjúkrahúsbygging"
+        },
+        "amenity/marketplace": {
+            "name": "Markaður"
+        },
+        "building/industrial": {
+            "name": "Iðnaðarhúsnæði"
+        },
+        "amenity/restaurant/german": {
+            "name": "Þýskt veitingahús"
+        },
+        "amenity/university": {
+            "name": "Háskólalóð"
+        },
+        "building/public": {
+            "name": "Opinber bygging"
+        },
+        "highway/crossing/zebra-raised": {
+            "name": "Merkt gangbraut (upphækkuð)"
+        },
+        "emergency/first_aid_kit": {
+            "name": "Skyndihjálparkassi"
+        },
+        "amenity/shower": {
+            "name": "Steypibað"
+        },
+        "office/estate_agent": {
+            "name": "Fasteignasöluskrifstofa"
+        },
+        "man_made/watermill": {
+            "name": "Vatnsmylla"
+        },
+        "amenity/college": {
+            "name": "Framhaldskólalóð"
+        },
+        "shop/toys": {
+            "name": "Dótabúð"
+        },
+        "type/restriction/no_straight_on": {
+            "name": "Ekki beint áfram"
+        },
+        "landuse/allotments": {
+            "name": "Samfélagsgarður"
+        },
+        "office/water_utility": {
+            "name": "Skrifstofa vatnsveitu"
+        },
+        "railway/tram_stop": {
+            "name": "Staðsetning stöðvunar sporvagna"
+        },
+        "highway/passing_place": {
+            "name": "Framúrakstur"
+        },
+        "shop/tiles": {
+            "name": "Flísaverslun"
+        },
+        "highway/pedestrian_area": {
+            "name": "Svæði fyrir fótgangandi"
+        },
+        "amenity/vending_machine/food": {
+            "name": "Matarsjálfsali"
+        },
+        "amenity/cafe": {
+            "name": "Kaffihús",
+            "terms": "tehús"
+        },
+        "leisure/pitch/bowls": {
+            "name": "Kúluspilsflöt"
+        },
+        "highway/service/emergency_access": {
+            "name": "Neyðaraðgangur"
+        },
+        "natural/mud": {
+            "name": "Leðja"
+        },
+        "building/civic": {
+            "name": "Borgaraleg bygging"
+        },
+        "craft/plasterer": {
+            "name": "Gifslagningar"
+        },
+        "piste/hike": {
+            "name": "Snjóþrúgu eða vetrargönguleið"
+        },
+        "amenity/parking_space": {
+            "name": "Bílastæðarými"
+        },
+        "healthcare/birthing_center": {
+            "name": "Fæðingarheimili"
+        },
+        "building/greenhouse": {
+            "name": "Gróðurhús"
+        },
+        "landuse/harbour": {
+            "name": "Höfn"
+        },
+        "shop/pet": {
+            "name": "Dýrabúð"
+        },
+        "amenity/scrapyard": {
+            "name": "Brotajárnshaugur"
+        },
+        "man_made/survey_point": {
+            "name": "Útsýnisstaður"
+        },
+        "roundabout": {
+            "name": "Hringtorg"
+        },
+        "type/route/power": {
+            "name": "Orkuflutningsleið"
+        },
+        "highway/service/alley": {
+            "name": "Sund"
+        },
+        "amenity/restaurant/seafood": {
+            "name": "Sjávarréttaveitingahús"
+        },
+        "public_transport/station_train": {
+            "name": "Lestarstöð"
+        },
+        "shop/tailor": {
+            "name": "Skraddari"
+        },
+        "landuse/brownfield": {
+            "name": "Byggingarsvæði"
+        },
+        "natural/cliff": {
+            "name": "Klettur"
+        },
+        "amenity/clock": {
+            "name": "Klukka"
+        },
+        "building/garage": {
+            "name": "Bílskúr"
+        },
+        "natural/coastline": {
+            "name": "Strandlengja"
+        },
+        "building/carport": {
+            "name": "Bílskýli"
+        },
+        "building/hotel": {
+            "name": "Hótelbygging"
+        },
+        "shop/anime": {
+            "name": "Anime-búð"
+        },
+        "route/ferry": {
+            "name": "Ferjuleið"
+        },
+        "shop/outdoor": {
+            "name": "Útivistarbúð"
+        },
+        "highway/raceway": {
+            "name": "Keppnisbraut (mótorsport)"
+        },
+        "emergency/designated": {
+            "name": "Ætlað sem neyðaraðgangur"
+        },
+        "highway/steps": {
+            "name": "Tröppur"
+        },
+        "leisure/fitness_station/hyperextension": {
+            "name": "Ofurteygingastöð"
+        },
+        "tourism/artwork/sculpture": {
+            "name": "Höggmynd"
+        },
+        "leisure/beach_resort": {
+            "name": "Strandbær"
+        },
+        "amenity/vending_machine/drinks": {
+            "name": "Drykkjasjálfsali"
+        },
+        "highway/primary": {
+            "name": "Stofnbraut"
+        },
+        "highway/footway/zebra": {
+            "name": "Merkt gangbraut"
+        },
+        "amenity/shelter/picnic_shelter": {
+            "name": "Áningarskýli"
+        },
+        "shop/chocolate": {
+            "name": "Súkkulaðibúð"
+        },
+        "man_made/pumping_station": {
+            "name": "Dælustöð"
+        },
+        "building/bunker": {
+            "name": "Byrgi"
+        },
+        "emergency/defibrillator": {
+            "name": "Hjartastuðtæki"
+        },
+        "aeroway/helipad": {
+            "name": "Þyrlupallur",
+            "terms": "lendingarpallur"
+        },
+        "amenity/dentist": {
+            "name": "Tannlæknir"
+        },
+        "highway/footway/zebra-raised": {
+            "name": "Merkt gangbraut (upphækkuð)"
+        },
+        "shop/tea": {
+            "name": "Teverslun"
+        },
+        "aerialway/chair_lift": {
+            "name": "Stólalyfta"
+        },
+        "shop/supermarket": {
+            "name": "Stórmarkaður"
+        },
+        "office/political_party": {
+            "name": "Stjórnmálaflokkur"
+        },
+        "shop/wholesale": {
+            "name": "Heildverslun"
+        },
+        "building/stadium": {
+            "name": "Íþróttaleikvangur"
+        },
+        "landuse/military/range": {
+            "name": "Hersvæði"
+        },
+        "man_made/silo": {
+            "name": "Síló"
+        },
+        "building/hut": {
+            "name": "Fjallakofi"
+        },
+        "shop/candles": {
+            "name": "Kertabúð"
+        },
+        "natural/saddle": {
+            "name": "Röðull"
+        },
+        "building/transportation": {
+            "name": "Samgöngubygging"
+        },
+        "landuse/orchard": {
+            "name": "Aldingarður"
+        },
+        "type/restriction/no_right_turn": {
+            "name": "Engin hægri beygja"
+        },
+        "shop/car": {
+            "name": "Bílabúð"
+        },
+        "building/stable": {
+            "name": "Hesthús"
+        },
+        "amenity/public_bookcase": {
+            "name": "Almenningsbókakassi"
+        },
+        "tourism/camp_site": {
+            "name": "Tjaldsvæði"
+        },
+        "golf/hole": {
+            "name": "Golfhola"
+        },
+        "building/semidetached_house": {
+            "name": "Hálf-aðskilin bygging"
+        },
+        "railway/abandoned": {
+            "name": "Yfirgefnir lestarteinar"
+        },
+        "type/restriction": {
+            "name": "Takmörkun"
+        },
+        "playground/seesaw": {
+            "name": "Vegasalt"
+        },
+        "shop/bathroom_furnishing": {
+            "name": "Baðinnréttingaverslun"
+        },
+        "shop/beauty/tanning": {
+            "name": "Sólbaðsstofa"
+        },
+        "amenity/water_point": {
+            "name": "Drykkjarvatn fyrir bíla"
+        },
+        "public_transport/station": {
+            "name": "Umferðarmiðstöð",
+            "terms": "almenningssamgöngur,strætó,rúta,samgöngur,skiptistöð"
+        },
+        "playground/balance_beam": {
+            "name": "Jafnvægisslá"
+        },
+        "leisure/hackerspace": {
+            "name": "Hakkaraathvarf"
+        },
+        "leisure/bandstand": {
+            "name": "Hljómsveitapallur"
+        },
+        "amenity/food_court": {
+            "name": "Matarmarkaður"
+        },
+        "natural/beach": {
+            "name": "Strönd"
+        },
+        "junction": {
+            "name": "Tenging"
+        },
+        "office/coworking": {
+            "name": "Sameiginlegt vinnurými"
+        },
+        "vertex": {
+            "name": "Annað"
+        },
+        "type/boundary": {
+            "name": "Svæðamörk"
+        },
+        "man_made/monitoring_station": {
+            "name": "Vöktunarstöð"
+        },
+        "aeroway/taxiway": {
+            "name": "Akbraut flugvéla",
+            "terms": "flugrein,færslubraut"
+        },
+        "craft/optician": {
+            "name": "Gleraugnasali"
+        },
+        "seamark/beacon_isolated_danger": {
+            "name": "Hættuviti"
         },
         "waterway/waterfall": {
             "name": "Foss"
         },
+        "office/guide": {
+            "name": "Skrifstofa leiðsögumanna"
+        },
+        "type/route": {
+            "name": "Leið"
+        },
+        "amenity/vending_machine/public_transport_tickets": {
+            "name": "Miðasjálfsali í almenningssamgöngur"
+        },
+        "man_made/embankment": {
+            "name": "Stallur"
+        },
+        "shop/tobacco": {
+            "name": "Tóbaksverslun"
+        },
+        "building/shed": {
+            "name": "Skúr",
+            "terms": "garðskáli"
+        },
+        "building/detached": {
+            "name": "Aðskilin bygging"
+        },
+        "shop/charity": {
+            "name": "Góðgerðaverslun"
+        },
+        "healthcare/occupational_therapist": {
+            "name": "Iðjuþjálfi"
+        },
+        "shop/musical_instrument": {
+            "name": "Hljóðfæraverslun"
+        },
+        "man_made/wastewater_plant": {
+            "name": "Skólphreinsistöð"
+        },
+        "landuse/plant_nursery": {
+            "name": "Uppeldi plantna"
+        },
+        "shop/money_lender": {
+            "name": "Peningaútlán"
+        },
+        "shop/radiotechnics": {
+            "name": "Rafíhlutaverslun"
+        },
+        "building/college": {
+            "name": "Framhaldskólabygging"
+        },
+        "amenity/nursing_home": {
+            "name": "Hjúkrunarheimili"
+        },
+        "shop/ticket": {
+            "name": "Miðasala"
+        },
+        "amenity/social_facility/group_home": {
+            "name": "Sambýli eldri borgara"
+        },
+        "natural/water/reservoir": {
+            "name": "Lón"
+        },
+        "craft/saddler": {
+            "name": "Söðlasmiður"
+        },
+        "landuse/quarry": {
+            "name": "Náma"
+        },
+        "barrier/border_control": {
+            "name": "Landamæraeftirlit"
+        },
+        "landuse/basin": {
+            "name": "Lægð"
+        },
+        "leisure/track": {
+            "name": "Keppnisbraut (ekki mótorsport)"
+        },
+        "aerialway/mixed_lift": {
+            "name": "Blönduð gerð víralyftu"
+        },
+        "piste/nordic": {
+            "name": "Gönguskíðaleið"
+        },
+        "shop/paint": {
+            "name": "Málningarvöruverslun"
+        },
+        "historic/ruins": {
+            "name": "Rústir"
+        },
+        "highway/secondary": {
+            "name": "Tengibraut"
+        },
+        "natural/fell": {
+            "name": "Fell"
+        },
+        "amenity/fast_food/sandwich": {
+            "name": "Skyndibiti, samlokur"
+        },
+        "amenity/restaurant/japanese": {
+            "name": "Japanskt veitingahús"
+        },
+        "natural/heath": {
+            "name": "Mói"
+        },
+        "amenity/fast_food/kebab": {
+            "name": "Skyndibiti, kebab"
+        },
+        "landuse/greenfield": {
+            "name": "Nýbyggingarsvæði"
+        },
+        "office/accountant": {
+            "name": "Bókhaldsskrifstofa"
+        },
+        "seamark": {
+            "name": "Sjómerki"
+        },
+        "shop/leather": {
+            "name": "Leðurvöruverslun"
+        },
+        "building/commercial": {
+            "name": "Atvinnuhúsnæði"
+        },
+        "historic/wreck": {
+            "name": "Skipsflak"
+        },
+        "amenity/bicycle_parking": {
+            "name": "Hjólastæði"
+        },
+        "amenity/compressed_air": {
+            "name": "Loftdæla"
+        },
+        "man_made/water_well": {
+            "name": "Brunnur"
+        },
+        "shop/organic": {
+            "name": "Verslun með lífrænar vörur"
+        },
+        "waterway/ditch": {
+            "name": "Skurður"
+        },
+        "power/generator/source/wind": {
+            "name": "Vindtúrbína"
+        },
+        "leisure/fitness_station/stairs": {
+            "name": "Æfingastigar"
+        },
+        "landuse/railway": {
+            "name": "Járnbrautargangur"
+        },
+        "amenity/cinema": {
+            "name": "Kvikmyndahús",
+            "terms": "bíó"
+        },
+        "type/route/bus": {
+            "name": "Strætóleið"
+        },
+        "type/route_master": {
+            "name": "Leiðastjóri"
+        },
+        "landuse/farm": {
+            "name": "Akurlendi"
+        },
+        "place/city_block": {
+            "name": "Byggingareitur"
+        },
+        "public_transport/platform_subway": {
+            "name": "Neðanjarðarlestarpallur"
+        },
+        "natural/wood": {
+            "name": "Skógur"
+        },
+        "amenity/restaurant/chinese": {
+            "name": "Kínverskt veitingahús"
+        },
+        "leisure/pitch/rugby_union": {
+            "name": "Rúgbývöllur (union)"
+        },
+        "craft/distillery": {
+            "name": "Eimingarhús"
+        },
+        "aeroway/apron": {
+            "name": "Flughlað"
+        },
+        "shop/tattoo": {
+            "name": "Húðflúrstofa"
+        },
+        "shop/health_food": {
+            "name": "Verslun með heilsuvörur"
+        },
+        "playground/roundabout": {
+            "name": "Leikhringekja"
+        },
+        "power/generator/method/photovoltaic": {
+            "name": "Sólarpanell"
+        },
+        "shop/optician": {
+            "name": "Gleraugnaverslun"
+        },
+        "public_transport/platform_light_rail": {
+            "name": "Léttlestarstoppistöð / Biðsvæði"
+        },
+        "type/route/foot": {
+            "name": "Leið fyrir fótgangandi"
+        },
+        "barrier/block": {
+            "name": "Tálmi"
+        },
+        "relation": {
+            "name": "Tengsl"
+        },
+        "shop/medical_supply": {
+            "name": "Lækningavöruverslun"
+        },
+        "type/restriction/only_straight_on": {
+            "name": "Aðeins beint áfram"
+        },
+        "landuse/industrial/scrap_yard": {
+            "name": "Brotajárnshaugur"
+        },
+        "amenity/recycling": {
+            "name": "Endurvinnsla"
+        },
+        "camp_site/camp_pitch": {
+            "name": "Tjaldstæðishólf"
+        },
+        "shop/gas": {
+            "name": "Verslun með flöskugas"
+        },
+        "landuse/commercial": {
+            "name": "Atvinnusvæði"
+        },
+        "seamark/mooring": {
+            "name": "Skipalægi"
+        },
+        "natural/ridge": {
+            "name": "Hryggur"
+        },
+        "natural": {
+            "name": "Náttúrulegt"
+        },
+        "aerialway/magic_carpet": {
+            "name": "Töfrateppi"
+        },
+        "amenity/post_box": {
+            "name": "Póstkassi"
+        },
+        "public_transport/station_tram": {
+            "name": "Sporvagnastöð"
+        },
+        "emergency/official": {
+            "name": "Opinber neyðaraðgangur"
+        },
+        "playground/sandpit": {
+            "name": "Sandkassi"
+        },
+        "railway/derail": {
+            "name": "Járnbrautarsporsþvinga",
+            "terms": "til að setja út af spori"
+        },
+        "leisure/bowling_alley": {
+            "name": "Keiluhöll"
+        },
+        "man_made/mast": {
+            "name": "Mastur"
+        },
+        "attraction/river_rafting": {
+            "name": "Flúðasiglingar"
+        },
+        "leisure/bird_hide": {
+            "name": "Fuglaskoðunarskýli"
+        },
+        "amenity/vending_machine/cigarettes": {
+            "name": "Sígarettusjálfsali"
+        },
+        "craft/tiler": {
+            "name": "Flísaleggjari"
+        },
+        "shop/frame": {
+            "name": "Innrömmun"
+        },
+        "barrier/kerb": {
+            "name": "Kantsteinn"
+        },
+        "leisure/nature_reserve": {
+            "name": "Friðland"
+        },
+        "shop/antiques": {
+            "name": "Antíkverslun"
+        },
+        "playground/basket_spinner": {
+            "name": "Körfuhringróla"
+        },
+        "shop/fabric": {
+            "name": "Álnavöruverslun"
+        },
+        "craft/brewery": {
+            "name": "Bruggari"
+        },
+        "highway/turning_circle": {
+            "name": "Beygjuhringur"
+        },
+        "shop/coffee": {
+            "name": "Kaffibúð"
+        },
+        "shop/e-cigarette": {
+            "name": "Rafrettubúð"
+        },
+        "tourism/wilderness_hut": {
+            "name": "Óbyggðakofi"
+        },
+        "amenity/dive_centre": {
+            "name": "Köfunarmiðstöð"
+        },
+        "amenity/vending_machine/feminine_hygiene": {
+            "name": "Sjálfsali með dömusnyrtivörum"
+        },
+        "shop/clothes": {
+            "name": "Fataverslun"
+        },
+        "amenity/restaurant/noodle": {
+            "name": "Núðluveitingahús"
+        },
+        "aeroway/aerodrome": {
+            "name": "Flugvöllur"
+        },
+        "amenity/bicycle_rental": {
+            "name": "Hjólaleiga"
+        },
+        "shop/gift": {
+            "name": "Gjafavörubúð"
+        },
+        "craft/locksmith": {
+            "name": "Lyklasmiður"
+        },
+        "leisure/sports_centre": {
+            "name": "Íþróttamiðstöð"
+        },
+        "place": {
+            "name": "Staður"
+        },
+        "power": {
+            "name": "Orka"
+        },
+        "public_transport/platform_train": {
+            "name": "Lestarpallur"
+        },
+        "leisure/fitness_station/push-up": {
+            "name": "Armbeygjustöð"
+        },
+        "aerialway/station": {
+            "name": "Lyftustöð"
+        },
+        "building/house": {
+            "name": "Einbýlishús"
+        },
+        "piste/sleigh": {
+            "name": "Sleðabraut"
+        },
+        "leisure/marina": {
+            "name": "Bátahöfn"
+        },
+        "craft/tailor": {
+            "name": "Skraddari"
+        },
+        "amenity/restaurant/american": {
+            "name": "Amerískt veitingahús"
+        },
+        "piste/sled": {
+            "name": "Sleðabraut"
+        },
+        "barrier/gate": {
+            "name": "Hlið"
+        },
+        "shop/motorcycle": {
+            "name": "Mótorhjólaverslun"
+        },
+        "waterway/river": {
+            "name": "Á"
+        },
+        "office/architect": {
+            "name": "Arkitektastofa"
+        },
+        "railway/subway": {
+            "name": "Neðanjarðarlest"
+        },
+        "highway/elevator": {
+            "name": "Lyfta"
+        },
+        "railway/miniature": {
+            "name": "Smájárnbraut"
+        },
+        "shop/carpet": {
+            "name": "Gólfteppaverslun"
+        },
+        "craft": {
+            "name": "Handverk"
+        },
+        "traffic_calming/chicane": {
+            "name": "Umferðarhliðrun"
+        },
+        "public_transport/station_bus": {
+            "name": "Strætisvagnastöð / Umferðarmiðstöð"
+        },
+        "shop/butcher": {
+            "name": "Slátrari"
+        },
+        "barrier/bollard": {
+            "name": "Pollar / tálmar"
+        },
+        "leisure/golf_course": {
+            "name": "Golfvöllur"
+        },
+        "barrier": {
+            "name": "Hindrun"
+        },
+        "historic/castle": {
+            "name": "Kastali"
+        },
+        "office/surveyor": {
+            "name": "Landmælingaskrifstofa"
+        },
+        "shop/car_repair": {
+            "name": "Bílaverkstæði"
+        },
+        "craft/hvac": {
+            "name": "Loftræsting, upphitun og loftkæling"
+        },
+        "highway/path": {
+            "name": "Stígur"
+        },
+        "leisure/water_park": {
+            "name": "Vatnagarður"
+        },
+        "shop/sewing": {
+            "name": "Saumavöruverslun"
+        },
+        "attraction/train": {
+            "name": "Ferðamannalest"
+        },
+        "landuse/meadow": {
+            "name": "Engi"
+        },
+        "shop/convenience": {
+            "name": "Kjörbúð"
+        },
+        "amenity/bus_station": {
+            "name": "Strætisvagnastöð / Umferðarmiðstöð"
+        },
+        "highway/crossing/zebra": {
+            "name": "Merkt gangbraut"
+        },
+        "highway/steps/conveying": {
+            "name": "Rúllustigi"
+        },
+        "shop/books": {
+            "name": "Bókabúð"
+        },
+        "highway/service": {
+            "name": "Þjónustugata"
+        },
+        "piste/ice_skate": {
+            "name": "Skautabraut"
+        },
+        "waterway/drain": {
+            "name": "Frárennsli"
+        },
+        "highway/residential": {
+            "name": "Íbúðagata"
+        },
+        "historic/wayside_shrine": {
+            "name": "Tilbeiðsluskrín"
+        },
+        "amenity/restaurant/turkish": {
+            "name": "Tyrkneskt veitingahús"
+        },
+        "type/boundary/administrative": {
+            "name": "Stjórnsýslumörk"
+        },
+        "landuse/military/office": {
+            "name": "Hermálaskrifstofa"
+        },
+        "amenity/watering_place": {
+            "name": "Brynning fyrir dýr"
+        },
+        "public_transport/station_train_halt": {
+            "name": "Lestarstöð (stöðvun / beiðni)"
+        },
+        "emergency/ambulance_station": {
+            "name": "Sjúkrabílastöð"
+        },
+        "healthcare/podiatrist": {
+            "name": "Fótaaðgerðafræðingur"
+        },
+        "amenity/motorcycle_parking": {
+            "name": "Mótorhjólastæði"
+        },
+        "shop/craft": {
+            "name": "Handverksverslun"
+        },
+        "line": {
+            "name": "Lína"
+        },
+        "amenity/vehicle_inspection": {
+            "name": "Skoðun farartækja"
+        },
+        "amenity/kindergarten": {
+            "name": "Forskóla-/Leikskólalóð"
+        },
         "waterway/weir": {
             "name": "Yfirfall"
+        },
+        "craft/metal_construction": {
+            "name": "Málmsmíði (byggingar)"
+        },
+        "craft/painter": {
+            "name": "Málari"
+        },
+        "public_transport/stop_area": {
+            "name": "Biðstöðvarsvæði"
+        },
+        "craft/carpet_layer": {
+            "name": "Teppalagning"
+        },
+        "man_made/flagpole": {
+            "name": "Fánastöng"
+        },
+        "highway/crossing/unmarked-raised": {
+            "name": "Ómerkt gangbraut (upphækkuð)"
+        },
+        "tourism/attraction": {
+            "name": "Ferðamannagildra"
+        },
+        "man_made": {
+            "name": "Manngert"
+        },
+        "barrier/kerb/lowered": {
+            "name": "Lágur kantur"
+        },
+        "golf/fairway": {
+            "name": "Braut"
+        },
+        "leisure/fitness_station/sit-up": {
+            "name": "Uppsetustöð"
+        },
+        "public_transport/station_subway": {
+            "name": "Neðanjarðarlestarstöð"
+        },
+        "tourism/alpine_hut": {
+            "name": "Fjallakofi"
+        },
+        "tourism/information/office": {
+            "name": "Upplýsingaskrifstofa ferðamanna"
+        },
+        "shop/alcohol": {
+            "name": "Vínbúð"
+        },
+        "tourism/viewpoint": {
+            "name": "Útsýnisstaður"
+        },
+        "craft/handicraft": {
+            "name": "Handverk"
+        },
+        "landuse/construction": {
+            "name": "Byggingarframkvæmdir"
+        },
+        "shop/trade": {
+            "name": "Iðnaðarvörusala"
+        },
+        "shop/motorcycle_repair": {
+            "name": "Mótorhjólaviðgerðaverslun"
+        },
+        "aeroway": {
+            "name": "Loftlína"
+        },
+        "aeroway/terminal": {
+            "name": "Flugstöð"
+        },
+        "emergency/life_ring": {
+            "name": "Bjarghringur"
         }
     }
 }

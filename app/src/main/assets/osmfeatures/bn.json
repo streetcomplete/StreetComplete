@@ -1,544 +1,544 @@
 {
     "presets": {
-        "address": {
-            "name": "\u09a0\u09bf\u0995\u09be\u09a8\u09be"
-        },
-        "aeroway/aerodrome": {
-            "name": "\u09ac\u09bf\u09ae\u09be\u09a8\u09ac\u09a8\u09cd\u09a6\u09b0"
-        },
-        "aeroway/helipad": {
-            "name": "\u09b9\u09c7\u09b2\u09bf\u09aa\u09cd\u09af\u09be\u09a1"
-        },
-        "amenity": {
-            "name": "\u0986\u09ae\u09c7\u09a8\u09bf\u099f\u09bf"
-        },
-        "amenity/arts_centre": {
-            "name": "\u09b6\u09bf\u09b2\u09cd\u09aa \u0995\u09c7\u09a8\u09cd\u09a6\u09cd\u09b0"
-        },
-        "amenity/atm": {
-            "name": "\u098f\u099f\u09bf\u098f\u09ae"
-        },
-        "amenity/bank": {
-            "name": "\u09ac\u09cd\u09af\u09be\u0982\u0995"
-        },
-        "amenity/bar": {
-            "name": "\u09aa\u09be\u09a8\u09b6\u09be\u09b2\u09be"
-        },
-        "amenity/bench": {
-            "name": "\u09ac\u09c7\u099e\u09cd\u099a"
-        },
-        "amenity/bicycle_parking": {
-            "name": "\u09b8\u09be\u0987\u0995\u09c7\u09b2 \u09aa\u09be\u09b0\u09cd\u0995 \u0995\u09b0\u09be\u09b0 \u099c\u09be\u09df\u0997\u09be"
-        },
-        "amenity/bicycle_rental": {
-            "name": "\u09b8\u09be\u0987\u0995\u09c7\u09b2 \u09ad\u09be\u09dc\u09be \u09a8\u09c7\u09df\u09be"
-        },
-        "amenity/cafe": {
-            "name": "\u0995\u09cd\u09af\u09be\u09ab\u09c7"
-        },
-        "amenity/car_rental": {
-            "name": "\u0997\u09be\u09dc\u09bf \u09ad\u09be\u09dc\u09be"
-        },
-        "amenity/cinema": {
-            "name": "\u09b8\u09bf\u09a8\u09c7\u09ae\u09be"
-        },
-        "amenity/drinking_water": {
-            "name": "\u09aa\u09be\u09a8\u09c0\u09df \u099c\u09b2"
-        },
-        "amenity/embassy": {
-            "name": "\u09a6\u09c1\u09a4\u09be\u09ac\u09be\u09b8"
-        },
-        "amenity/fast_food": {
-            "name": "\u09ab\u09be\u09b8\u09cd\u099f\u09ab\u09c1\u09a1"
-        },
-        "amenity/fire_station": {
-            "name": "\u09a6\u09ae\u0995\u09b2"
-        },
-        "amenity/fountain": {
-            "name": "\u099d\u09b0\u09cd\u09a8\u09be"
-        },
-        "amenity/fuel": {
-            "name": "\u0997\u09cd\u09af\u09be\u09b8 \u09b8\u09cd\u099f\u09c7\u09b6\u09a8"
-        },
-        "amenity/grave_yard": {
-            "name": "\u0995\u09ac\u09b0\u0996\u09be\u09a8\u09be"
-        },
-        "amenity/library": {
-            "name": "\u09aa\u09be\u09a0\u09be\u0997\u09be\u09b0"
-        },
-        "amenity/marketplace": {
-            "name": "\u09ac\u09be\u099c\u09be\u09b0"
-        },
-        "amenity/place_of_worship": {
-            "name": "\u09aa\u09cd\u09b0\u09be\u09b0\u09cd\u09a5\u09a8\u09be\u09b8\u09cd\u09a5\u09b2"
-        },
-        "amenity/place_of_worship/buddhist": {
-            "name": "\u09ac\u09cc\u09a6\u09cd\u09a7 \u09ae\u09a8\u09cd\u09a6\u09bf\u09b0"
-        },
-        "amenity/police": {
-            "name": "\u09aa\u09c1\u09b2\u09bf\u09b6"
-        },
-        "amenity/post_box": {
-            "name": "\u09a1\u09be\u0995\u09ac\u09be\u0995\u09cd\u09b8"
-        },
-        "amenity/post_office": {
-            "name": "\u09a1\u09be\u0995\u0998\u09b0"
-        },
-        "amenity/pub": {
-            "name": "\u09b8\u09b0\u09be\u0987\u0996\u09be\u09a8\u09be"
-        },
-        "amenity/restaurant": {
-            "name": "\u09b0\u09c7\u09b8\u09cd\u09a4\u09cb\u09b0\u09be\u0981"
-        },
-        "amenity/swimming_pool": {
-            "name": "\u09b8\u09be\u0981\u09a4\u09be\u09b0 \u0995\u09be\u099f\u09be\u09b0 \u09aa\u09c1\u0995\u09c1\u09b0"
-        },
-        "amenity/telephone": {
-            "name": "\u099f\u09c7\u09b2\u09bf\u09ab\u09cb\u09a8"
-        },
-        "amenity/theatre": {
-            "name": "\u09a5\u09bf\u09df\u09c7\u099f\u09be\u09b0"
-        },
-        "amenity/toilets": {
-            "name": "\u09b6\u09cc\u099a\u09be\u0997\u09be\u09b0"
-        },
-        "amenity/townhall": {
-            "name": "\u099f\u09be\u0989\u09a8 \u09b9\u09b2"
-        },
-        "area": {
-            "name": "\u098f\u09b2\u09be\u0995\u09be"
-        },
-        "barrier/entrance": {
-            "name": "\u09a6\u09cd\u09ac\u09be\u09b0"
-        },
-        "barrier/fence": {
-            "name": "\u09ac\u09c7\u09dc\u09be"
-        },
-        "barrier/gate": {
-            "name": "\u09ab\u099f\u0995"
-        },
-        "barrier/wall": {
-            "name": "\u09a6\u09c7\u09df\u09be\u09b2"
-        },
-        "boundary/administrative": {
-            "name": "\u09aa\u09cd\u09b0\u09b6\u09be\u09b8\u09a8\u09bf\u0995 \u09b8\u09c0\u09ae\u09be\u09a8\u09be"
-        },
-        "building": {
-            "name": "\u09a6\u09be\u09b2\u09be\u09a8"
-        },
-        "building/commercial": {
-            "name": "\u09ac\u09be\u09a8\u09bf\u099c\u09cd\u09af\u09bf\u0995 \u09ad\u09ac\u09a8"
-        },
-        "building/garage": {
-            "name": "\u0997\u09cd\u09af\u09be\u09b0\u09c7\u099c"
-        },
-        "building/house": {
-            "name": "\u09ac\u09be\u09dc\u09bf"
-        },
-        "building/hut": {
-            "name": "\u0995\u09c1\u09dc\u09c7\u0998\u09b0"
-        },
-        "building/industrial": {
-            "name": "\u09b6\u09bf\u09b2\u09cd\u09aa\u09be\u09df\u09bf\u09a4 \u09ad\u09ac\u09a8"
-        },
-        "building/residential": {
-            "name": "\u0985\u09be\u09ac\u09be\u09b8\u09bf\u0995 \u09ad\u09ac\u09a8"
-        },
-        "emergency/phone": {
-            "name": "\u0985\u09be\u09aa\u09a6\u0995\u09be\u09b2\u09c0\u09a8 \u09a6\u09c1\u09b0\u09ad\u09be\u09b7"
-        },
-        "highway": {
-            "name": "\u09b0\u09be\u099c\u09aa\u09a5"
-        },
-        "highway/cycleway": {
-            "name": "\u09b8\u09be\u0987\u0995\u09c7\u09b2\u09c7\u09b0 \u09b0\u09be\u09b8\u09cd\u09a4\u09be"
-        },
-        "highway/footway": {
-            "name": "\u09ab\u09c1\u099f\u09aa\u09be\u09a4"
-        },
-        "highway/motorway": {
-            "name": "\u09ae\u09cb\u099f\u09b0\u0993\u09df\u09c7"
-        },
-        "highway/path": {
-            "name": "\u09aa\u09a5"
-        },
-        "highway/primary": {
-            "name": "\u09aa\u09cd\u09b0\u09be\u09a5\u09ae\u09bf\u0995 \u09b0\u09be\u09b8\u09cd\u09a4\u09be"
-        },
-        "highway/residential": {
-            "name": "\u0985\u09be\u09ac\u09be\u09b8\u09bf\u0995 \u09b0\u09be\u09b8\u09cd\u09a4\u09be"
-        },
-        "highway/road": {
-            "name": "\u0985\u099c\u09be\u09a8\u09be \u09b0\u09be\u09b8\u09cd\u09a4\u09be"
-        },
-        "highway/secondary": {
-            "name": "\u09a6\u09cd\u09ac\u09bf\u09a4\u09c0\u09df \u09b8\u09cd\u09a4\u09b0\u09c7\u09b0 \u09b0\u09be\u09b8\u09cd\u09a4\u09be"
-        },
-        "highway/service": {
-            "name": "\u09b8\u09be\u09b0\u09cd\u09ad\u09bf\u09b8 \u09b0\u09cb\u09a1"
-        },
-        "highway/service/alley": {
-            "name": "\u0997\u09b2\u09bf"
-        },
         "highway/steps": {
-            "name": "\u09b8\u09bf\u0981\u09a1\u09bc\u09bf"
-        },
-        "highway/tertiary": {
-            "name": "\u09aa\u09cd\u09b0\u09b6\u09be\u0996\u09be \u09b0\u09be\u09b8\u09cd\u09a4\u09be"
-        },
-        "highway/traffic_signals": {
-            "name": "\u099f\u09cd\u09b0\u09be\u09ab\u09bf\u0995 \u09b8\u0982\u0995\u09c7\u09a4"
-        },
-        "highway/trunk": {
-            "name": "\u099f\u09cd\u09b0\u09be\u0999\u09cd\u0995 \u09b0\u09cb\u09a1"
-        },
-        "historic": {
-            "name": "\u0990\u09a4\u09bf\u09b9\u09be\u09b8\u09bf\u0995 \u099c\u09be\u09df\u0997\u09be"
-        },
-        "historic/castle": {
-            "name": "\u09aa\u09cd\u09b0\u09be\u09b8\u09be\u09a6"
-        },
-        "historic/memorial": {
-            "name": "\u09b8\u09cd\u09ae\u09b0\u09a3\u099a\u09bf\u09b9\u09cd\u09a8"
-        },
-        "historic/monument": {
-            "name": "\u09b8\u09cd\u09ae\u09c3\u09a4\u09bf\u09b8\u09cd\u09a4\u09ae\u09cd\u09ad"
-        },
-        "historic/ruins": {
-            "name": "\u09a7\u09cd\u09ac\u0982\u09b8\u09be\u09ac\u09b6\u09c7\u09b7"
-        },
-        "landuse/cemetery": {
-            "name": "\u0995\u09ac\u09b0\u0996\u09be\u09a8\u09be"
-        },
-        "landuse/construction": {
-            "name": "\u09ae\u09c7\u09b0\u09be\u09ae\u09a4"
-        },
-        "landuse/farmyard": {
-            "name": "\u0996\u09be\u09ae\u09be\u09b0"
-        },
-        "landuse/grass": {
-            "name": "\u0998\u09be\u09b8"
-        },
-        "landuse/meadow": {
-            "name": "\u09a4\u09c3\u09a3\u0995\u09cd\u09b7\u09c7\u09a4\u09cd\u09b0"
-        },
-        "landuse/orchard": {
-            "name": "\u09ab\u09b2\u09c7\u09b0 \u09ac\u09be\u0997\u09be\u09a8"
-        },
-        "landuse/quarry": {
-            "name": "\u0996\u09a8\u09bf"
-        },
-        "landuse/vineyard": {
-            "name": "\u0985\u09be\u0999\u09c1\u09b0\u0996\u09c7\u09a4"
-        },
-        "leisure": {
-            "name": "\u0985\u09ac\u09b8\u09b0"
-        },
-        "leisure/garden": {
-            "name": "\u09ac\u09be\u0997\u09be\u09a8"
-        },
-        "leisure/golf_course": {
-            "name": "\u0997\u09b2\u09cd\u09ab \u09ae\u09be\u09a0"
+            "name": "সিঁড়ি"
         },
         "leisure/park": {
-            "name": "\u0989\u09a6\u09cd\u09af\u09be\u09a8"
+            "name": "উদ্যান"
         },
-        "leisure/pitch/american_football": {
-            "name": "\u0985\u09be\u09ae\u09c7\u09b0\u09bf\u0995\u09be\u09a8 \u09ab\u09c1\u099f\u09ac\u09b2 \u09ae\u09be\u09a0"
-        },
-        "leisure/pitch/basketball": {
-            "name": "\u09ac\u09be\u09b8\u09cd\u0995\u09c7\u099f\u09ac\u09b2 \u0995\u09cb\u09b0\u09cd\u099f"
-        },
-        "leisure/pitch/soccer": {
-            "name": "\u09ab\u09c1\u099f\u09ac\u09b2 \u09ae\u09be\u09a0"
-        },
-        "leisure/pitch/tennis": {
-            "name": "\u099f\u09c7\u09a8\u09bf\u09b8 \u0995\u09cb\u09b0\u09cd\u099f"
-        },
-        "leisure/pitch/volleyball": {
-            "name": "\u09ad\u09b2\u09bf\u09ac\u09b2 \u09ae\u09be\u09a0"
-        },
-        "leisure/playground": {
-            "name": "\u0996\u09c7\u09b2\u09be\u09b0 \u09ae\u09be\u09a0"
-        },
-        "leisure/stadium": {
-            "name": "\u09b8\u09cd\u099f\u09c7\u09a1\u09bf\u09df\u09be\u09ae"
-        },
-        "leisure/swimming_pool": {
-            "name": "\u09b8\u09c1\u0987\u09ae\u09bf\u0982 \u09aa\u09c1\u09b2"
-        },
-        "line": {
-            "name": "\u09b0\u09c7\u0996\u09be"
-        },
-        "man_made": {
-            "name": "\u09ae\u09be\u09a8\u09c1\u09b7 \u09a8\u09bf\u09b0\u09cd\u09ae\u09bf\u09a4"
-        },
-        "man_made/lighthouse": {
-            "name": "\u09ac\u09be\u09a4\u09bf\u0998\u09b0"
-        },
-        "man_made/pier": {
-            "name": "\u099c\u09be\u09b9\u09be\u099c\u0998\u09be\u099f\u09be"
-        },
-        "man_made/pipeline": {
-            "name": "\u09a8\u09b2"
-        },
-        "man_made/tower": {
-            "name": "\u09ae\u09bf\u09a8\u09be\u09b0"
-        },
-        "man_made/water_tower": {
-            "name": "\u099c\u09b2 \u09b8\u09cd\u09a4\u09ae\u09cd\u09ad"
-        },
-        "natural": {
-            "name": "\u09aa\u09cd\u09b0\u09be\u0995\u09c3\u09a4\u09bf\u0995"
-        },
-        "natural/bay": {
-            "name": "\u0989\u09aa\u09b8\u09be\u0997\u09b0"
-        },
-        "natural/beach": {
-            "name": "\u09b8\u09c8\u0995\u09a4"
-        },
-        "natural/coastline": {
-            "name": "\u09a4\u099f\u09b0\u09c7\u0996\u09be"
-        },
-        "natural/glacier": {
-            "name": "\u09b9\u09bf\u09ae\u09ac\u09be\u09b9"
-        },
-        "natural/grassland": {
-            "name": "\u09a4\u09c3\u09a3\u09ad\u09c1\u09ae\u09bf"
-        },
-        "natural/heath": {
-            "name": "\u09b8\u09cd\u09ac\u09be\u09b8\u09cd\u09a5\u09cd\u09af"
-        },
-        "natural/peak": {
-            "name": "\u099a\u09c2\u09dc\u09be"
-        },
-        "natural/spring": {
-            "name": "\u09ac\u09b8\u09a8\u09cd\u09a4"
-        },
-        "natural/tree": {
-            "name": "\u0997\u09be\u099b"
-        },
-        "natural/water": {
-            "name": "\u099c\u09b2"
-        },
-        "natural/water/lake": {
-            "name": "\u09b9\u09cd\u09b0\u09a6"
-        },
-        "natural/water/pond": {
-            "name": "\u09aa\u09c1\u0995\u09c1\u09b0"
-        },
-        "natural/water/reservoir": {
-            "name": "\u099c\u09b2\u09be\u09a7\u09be\u09b0"
-        },
-        "natural/wetland": {
-            "name": "\u099c\u09b2\u09be\u099c\u09ae\u09bf"
-        },
-        "natural/wood": {
-            "name": "\u0985\u09b0\u09a8\u09cd\u09af"
-        },
-        "office": {
-            "name": "\u0995\u09be\u09b0\u09cd\u09af\u09be\u09b2\u09df"
-        },
-        "office/ngo": {
-            "name": "\u098f\u09a8\u099c\u09bf\u0993 \u0985\u09ab\u09bf\u09b8"
-        },
-        "office/physician": {
-            "name": "\u099a\u09bf\u0995\u09bf\u09a4\u09cd\u09b8\u0995"
-        },
-        "office/political_party": {
-            "name": "\u09b0\u09be\u099c\u09a8\u09c8\u09a4\u09bf\u0995 \u09a6\u09b2"
-        },
-        "office/telecommunication": {
-            "name": "\u099f\u09c7\u09b2\u09bf\u0995\u09ae \u0985\u09ab\u09bf\u09b8"
-        },
-        "place": {
-            "name": "\u099c\u09be\u09df\u0997\u09be"
+        "amenity/car_rental": {
+            "name": "গাড়ি ভাড়া"
         },
         "place/city": {
-            "name": "\u09b6\u09b9\u09b0"
+            "name": "শহর"
         },
-        "place/island": {
-            "name": "\u09a6\u09cd\u09ac\u09c0\u09aa"
+        "amenity/fast_food": {
+            "name": "ফাস্টফুড"
         },
-        "place/locality": {
-            "name": "\u0985\u099e\u09cd\u099a\u09b2"
+        "highway/primary": {
+            "name": "প্রাথমিক রাস্তা"
         },
-        "place/town": {
-            "name": "\u0989\u09aa\u09a8\u0997\u09b0"
+        "building": {
+            "name": "দালান"
         },
-        "place/village": {
-            "name": "\u0997\u09cd\u09b0\u09be\u09ae"
+        "leisure/garden": {
+            "name": "বাগান"
         },
-        "point": {
-            "name": "\u09ac\u09bf\u09a8\u09cd\u09a6\u09c1"
-        },
-        "railway": {
-            "name": "\u09b0\u09c7\u09b2\u09aa\u09a5"
-        },
-        "railway/abandoned": {
-            "name": "\u09aa\u09b0\u09bf\u09a4\u09cd\u09af\u0995\u09cd\u09a4 \u09b0\u09c7\u09b2\u09aa\u09a5"
-        },
-        "railway/disused": {
-            "name": "\u0985\u09ac\u09cd\u09af\u09ac\u09b9\u09c3\u09a4 \u09b0\u09c7\u09b2\u09aa\u09a5"
-        },
-        "railway/monorail": {
-            "name": "\u09ae\u09a8\u09cb\u09b0\u09c7\u09b2"
-        },
-        "railway/rail": {
-            "name": "\u09b0\u09c7\u09b2"
-        },
-        "railway/subway": {
-            "name": "\u09ad\u09c2\u09a4\u09b2\u09aa\u09a5"
-        },
-        "railway/subway_entrance": {
-            "name": "\u09ad\u09c2\u09a4\u09b2\u09aa\u09a5 \u09a6\u09cd\u09ac\u09be\u09b0"
-        },
-        "railway/tram": {
-            "name": "\u099f\u09cd\u09b0\u09be\u09ae"
-        },
-        "relation": {
-            "name": "\u09b8\u09ae\u09cd\u09aa\u09b0\u09cd\u0995"
-        },
-        "shop": {
-            "name": "\u09a6\u09cb\u0995\u09be\u09a8"
-        },
-        "shop/bakery": {
-            "name": "\u09ac\u09c7\u0995\u09be\u09b0\u09bf"
-        },
-        "shop/bicycle": {
-            "name": "\u09b8\u09be\u0987\u0995\u09c7\u09b2\u09c7\u09b0 \u09a6\u09cb\u0995\u09be\u09a8"
-        },
-        "shop/boutique": {
-            "name": "\u09ac\u09c1\u099f\u09bf\u0995"
-        },
-        "shop/butcher": {
-            "name": "\u0995\u09b8\u09be\u0987"
-        },
-        "shop/car": {
-            "name": "\u0997\u09be\u09dc\u09bf\u09b0 \u09a1\u09bf\u09b2\u09be\u09b0\u09b6\u09bf\u09aa"
-        },
-        "shop/car_parts": {
-            "name": "\u0997\u09be\u09dc\u09bf\u09b0 \u09af\u09a8\u09cd\u09a4\u09cd\u09b0\u09be\u0982\u09b6\u09c7\u09b0 \u09a6\u09cb\u0995\u09be\u09a8"
-        },
-        "shop/car_repair": {
-            "name": "\u0997\u09be\u09dc\u09bf \u09ae\u09c7\u09b0\u09be\u09ae\u09a4\u09c7\u09b0 \u09a6\u09cb\u0995\u09be\u09a8"
-        },
-        "shop/clothes": {
-            "name": "\u099c\u09be\u09ae\u09be\u0995\u09be\u09aa\u09dc\u09c7\u09b0 \u09a6\u09cb\u0995\u09be\u09a8"
-        },
-        "shop/computer": {
-            "name": "\u0995\u09ae\u09cd\u09aa\u09bf\u0989\u099f\u09be\u09b0\u09c7\u09b0 \u09a6\u09cb\u0995\u09be\u09a8"
-        },
-        "shop/department_store": {
-            "name": "\u09a1\u09bf\u09aa\u09be\u09b0\u09cd\u099f\u09ae\u09c7\u09a8\u09cd\u099f \u09b8\u09cd\u099f\u09cb\u09b0"
-        },
-        "shop/doityourself": {
-            "name": "\u09a8\u09bf\u099c\u09c7 \u0995\u09b0\u09c1\u09a8 \u09b8\u09cd\u099f\u09cb\u09b0"
-        },
-        "shop/electronics": {
-            "name": "\u0987\u09b2\u09c7\u0995\u099f\u09cd\u09b0\u09a8\u09bf\u0995\u09cd\u09b8-\u098f\u09b0 \u09a6\u09cb\u0995\u09be\u09a8"
-        },
-        "shop/fishmonger": {
-            "name": "\u09ae\u09ce\u09b8\u09cd\u09af \u09ac\u09cd\u09af\u09ac\u09b8\u09be\u09df\u09c0"
-        },
-        "shop/florist": {
-            "name": "\u09ab\u09c1\u09b2 \u09ac\u09cd\u09af\u09ac\u09b8\u09be\u09df\u09c0"
-        },
-        "shop/furniture": {
-            "name": "\u0985\u09be\u09b8\u09ac\u09be\u09ac\u09aa\u09a4\u09cd\u09b0\u09c7\u09b0 \u09a6\u09cb\u0995\u09be\u09a8"
-        },
-        "shop/gift": {
-            "name": "\u0989\u09aa\u09b9\u09be\u09b0\u09c7\u09b0 \u09a6\u09cb\u0995\u09be\u09a8"
-        },
-        "shop/mall": {
-            "name": "\u09ae\u09b2"
-        },
-        "shop/mobile_phone": {
-            "name": "\u09ae\u09cb\u09ac\u09be\u0987\u09b2 \u09ab\u09cb\u09a8-\u098f\u09b0 \u09a6\u09cb\u0995\u09be\u09a8"
-        },
-        "shop/music": {
-            "name": "\u09b8\u0999\u09cd\u0997\u09c0\u09a4\u09c7\u09b0 \u09a6\u09cb\u0995\u09be\u09a8"
-        },
-        "shop/optician": {
-            "name": "\u099a\u0995\u09cd\u09b7\u09c1\u09b0\u09c7\u09be\u0997\u09c7\u09b0 \u099a\u09bf\u0995\u09bf\u09a4\u09cd\u09b8\u0995"
-        },
-        "shop/shoes": {
-            "name": "\u099c\u09c1\u09a4\u09cb\u09b0 \u09a6\u09cb\u0995\u09be\u09a8"
-        },
-        "shop/sports": {
-            "name": "\u0996\u09c7\u09b2\u09be\u09b0 \u09b8\u09be\u09ae\u0997\u09cd\u09b0\u09bf\u09b0 \u09a6\u09cb\u0995\u09be\u09a8"
-        },
-        "shop/supermarket": {
-            "name": "\u09b8\u09c1\u09aa\u09be\u09b0\u09ae\u09be\u09b0\u09cd\u0995\u09c7\u099f"
-        },
-        "shop/toys": {
-            "name": "\u0996\u09c7\u09b2\u09a8\u09be\u09b0 \u09a6\u09cb\u0995\u09be\u09a8"
-        },
-        "tourism": {
-            "name": "\u09aa\u09b0\u09cd\u09af\u099f\u09a8"
-        },
-        "tourism/attraction": {
-            "name": "\u09aa\u09b0\u09cd\u09af\u099f\u0995 \u0986\u0995\u09b0\u09cd\u09b7\u09a3"
-        },
-        "tourism/guest_house": {
-            "name": "\u0985\u09a4\u09bf\u09a5\u09bf\u09b6\u09be\u09b2\u09be"
-        },
-        "tourism/hostel": {
-            "name": "\u099b\u09be\u09a4\u09cd\u09b0\u09be\u09ac\u09be\u09b8"
-        },
-        "tourism/hotel": {
-            "name": "\u09b9\u09cb\u099f\u09c7\u09b2"
-        },
-        "tourism/information": {
-            "name": "\u09a4\u09a5\u09cd\u09af"
+        "historic/memorial": {
+            "name": "স্মরণচিহ্ন"
         },
         "tourism/motel": {
-            "name": "\u09ae\u09cb\u099f\u09c7\u09b2"
+            "name": "মোটেল"
         },
-        "tourism/museum": {
-            "name": "\u09aa\u09cd\u09b0\u09a6\u09b0\u09cd\u09b6\u09a8\u09b6\u09be\u09b2\u09be"
-        },
-        "tourism/picnic_site": {
-            "name": "\u09aa\u09bf\u0995\u09a8\u09bf\u0995-\u098f\u09b0 \u099c\u09be\u09df\u0997\u09be"
-        },
-        "tourism/theme_park": {
-            "name": "\u09a5\u09bf\u09ae \u09aa\u09be\u09b0\u09cd\u0995"
-        },
-        "tourism/zoo": {
-            "name": "\u099a\u09bf\u09dc\u09bf\u09df\u09be\u0996\u09be\u09a8\u09be"
-        },
-        "type/boundary": {
-            "name": "\u09b8\u09c0\u09ae\u09be\u09a8\u09be"
-        },
-        "type/boundary/administrative": {
-            "name": "\u09aa\u09cd\u09b0\u09b6\u09be\u09b8\u09a8\u09bf\u0995 \u09b8\u09c0\u09ae\u09be\u09a8\u09be"
-        },
-        "type/route/bicycle": {
-            "name": "\u09b8\u09be\u0987\u0995\u09c7\u09b2\u09c7\u09b0 \u09b0\u09be\u09b8\u09cd\u09a4\u09be"
-        },
-        "vertex": {
-            "name": "\u0985\u09a8\u09cd\u09af\u09be\u09a8\u09cd\u09af"
-        },
-        "waterway": {
-            "name": "\u09aa\u09be\u09a8\u09bf\u09aa\u09a5"
-        },
-        "waterway/canal": {
-            "name": "\u0996\u09be\u09b2"
-        },
-        "waterway/dam": {
-            "name": "\u09ac\u09be\u0981\u09a7"
-        },
-        "waterway/drain": {
-            "name": "\u09a8\u09be\u09b2\u09be"
-        },
-        "waterway/river": {
-            "name": "\u09a8\u09a6\u09c0"
-        },
-        "waterway/riverbank": {
-            "name": "\u09a8\u09a6\u09c0\u09a4\u09c0\u09b0"
+        "leisure/swimming_pool": {
+            "name": "সুইমিং পুল"
         },
         "waterway/stream": {
-            "name": "\u09aa\u09be\u09a8\u09bf\u09b8\u09cd\u09b0\u09cb\u09a4"
+            "name": "পানিস্রোত"
+        },
+        "railway": {
+            "name": "রেলপথ"
+        },
+        "amenity/library": {
+            "name": "পাঠাগার"
+        },
+        "aeroway/helipad": {
+            "name": "হেলিপ্যাড"
+        },
+        "highway/motorway": {
+            "name": "মোটরওয়ে"
+        },
+        "natural/bay": {
+            "name": "উপসাগর"
+        },
+        "office/telecommunication": {
+            "name": "টেলিকম অফিস"
+        },
+        "railway/monorail": {
+            "name": "মনোরেল"
+        },
+        "shop/supermarket": {
+            "name": "সুপারমার্কেট"
+        },
+        "office/physician": {
+            "name": "চিকিত্সক"
+        },
+        "shop/bicycle": {
+            "name": "সাইকেলের দোকান"
+        },
+        "tourism/guest_house": {
+            "name": "অতিথিশালা"
+        },
+        "office/political_party": {
+            "name": "রাজনৈতিক দল"
+        },
+        "boundary/administrative": {
+            "name": "প্রশাসনিক সীমানা"
+        },
+        "amenity": {
+            "name": "আমেনিটি"
+        },
+        "amenity/fuel": {
+            "name": "গ্যাস স্টেশন"
+        },
+        "building/hut": {
+            "name": "কুড়েঘর"
+        },
+        "leisure/pitch/american_football": {
+            "name": "অামেরিকান ফুটবল মাঠ"
+        },
+        "waterway/canal": {
+            "name": "খাল"
+        },
+        "place/island": {
+            "name": "দ্বীপ"
+        },
+        "shop/fishmonger": {
+            "name": "মৎস্য ব্যবসায়ী"
+        },
+        "man_made/pier": {
+            "name": "জাহাজঘাটা"
+        },
+        "landuse/orchard": {
+            "name": "ফলের বাগান"
+        },
+        "shop/car": {
+            "name": "গাড়ির ডিলারশিপ"
+        },
+        "highway/road": {
+            "name": "অজানা রাস্তা"
+        },
+        "address": {
+            "name": "ঠিকানা"
+        },
+        "amenity/pub": {
+            "name": "সরাইখানা"
+        },
+        "railway/abandoned": {
+            "name": "পরিত্যক্ত রেলপথ"
+        },
+        "shop/shoes": {
+            "name": "জুতোর দোকান"
+        },
+        "shop/mall": {
+            "name": "মল"
+        },
+        "amenity/swimming_pool": {
+            "name": "সাঁতার কাটার পুকুর"
+        },
+        "barrier/wall": {
+            "name": "দেয়াল"
+        },
+        "natural/beach": {
+            "name": "সৈকত"
+        },
+        "landuse/vineyard": {
+            "name": "অাঙুরখেত"
+        },
+        "man_made/tower": {
+            "name": "মিনার"
+        },
+        "vertex": {
+            "name": "অন্যান্য"
+        },
+        "shop/florist": {
+            "name": "ফুল ব্যবসায়ী"
+        },
+        "type/boundary": {
+            "name": "সীমানা"
+        },
+        "amenity/atm": {
+            "name": "এটিএম"
+        },
+        "place/locality": {
+            "name": "অঞ্চল"
+        },
+        "tourism/hostel": {
+            "name": "ছাত্রাবাস"
+        },
+        "leisure/pitch/volleyball": {
+            "name": "ভলিবল মাঠ"
+        },
+        "highway": {
+            "name": "রাজপথ"
+        },
+        "area": {
+            "name": "এলাকা"
+        },
+        "amenity/theatre": {
+            "name": "থিয়েটার"
+        },
+        "man_made/lighthouse": {
+            "name": "বাতিঘর"
+        },
+        "barrier/fence": {
+            "name": "বেড়া"
+        },
+        "landuse/cemetery": {
+            "name": "কবরখানা"
+        },
+        "railway/rail": {
+            "name": "রেল"
+        },
+        "natural/water/reservoir": {
+            "name": "জলাধার"
+        },
+        "amenity/fountain": {
+            "name": "ঝর্না"
+        },
+        "railway/disused": {
+            "name": "অব্যবহৃত রেলপথ"
+        },
+        "shop/doityourself": {
+            "name": "নিজে করুন স্টোর"
+        },
+        "landuse/quarry": {
+            "name": "খনি"
+        },
+        "amenity/grave_yard": {
+            "name": "কবরখানা"
+        },
+        "historic/ruins": {
+            "name": "ধ্বংসাবশেষ"
+        },
+        "man_made/water_tower": {
+            "name": "জল স্তম্ভ"
+        },
+        "highway/secondary": {
+            "name": "দ্বিতীয় স্তরের রাস্তা"
+        },
+        "railway/subway_entrance": {
+            "name": "ভূতলপথ দ্বার"
+        },
+        "shop": {
+            "name": "দোকান"
+        },
+        "natural/heath": {
+            "name": "স্বাস্থ্য"
+        },
+        "natural/spring": {
+            "name": "বসন্ত"
+        },
+        "man_made/pipeline": {
+            "name": "নল"
+        },
+        "shop/furniture": {
+            "name": "অাসবাবপত্রের দোকান"
+        },
+        "building/commercial": {
+            "name": "বানিজ্যিক ভবন"
+        },
+        "tourism/hotel": {
+            "name": "হোটেল"
+        },
+        "shop/bakery": {
+            "name": "বেকারি"
+        },
+        "historic/monument": {
+            "name": "স্মৃতিস্তম্ভ"
+        },
+        "emergency/phone": {
+            "name": "অাপদকালীন দুরভাষ"
+        },
+        "amenity/bicycle_parking": {
+            "name": "সাইকেল পার্ক করার জায়গা"
+        },
+        "type/route/bicycle": {
+            "name": "সাইকেলের রাস্তা"
+        },
+        "leisure/pitch/soccer": {
+            "name": "ফুটবল মাঠ"
+        },
+        "historic": {
+            "name": "ঐতিহাসিক জায়গা"
+        },
+        "shop/electronics": {
+            "name": "ইলেকট্রনিক্স-এর দোকান"
+        },
+        "waterway": {
+            "name": "পানিপথ"
+        },
+        "amenity/place_of_worship/buddhist": {
+            "name": "বৌদ্ধ মন্দির"
+        },
+        "amenity/cinema": {
+            "name": "সিনেমা"
+        },
+        "natural/wood": {
+            "name": "অরন্য"
+        },
+        "leisure/playground": {
+            "name": "খেলার মাঠ"
+        },
+        "amenity/telephone": {
+            "name": "টেলিফোন"
+        },
+        "leisure/stadium": {
+            "name": "স্টেডিয়াম"
+        },
+        "shop/optician": {
+            "name": "চক্ষুরোগের চিকিত্সক"
+        },
+        "amenity/drinking_water": {
+            "name": "পানীয় জল"
+        },
+        "amenity/townhall": {
+            "name": "টাউন হল"
+        },
+        "relation": {
+            "name": "সম্পর্ক"
+        },
+        "natural/water": {
+            "name": "জল"
+        },
+        "shop/mobile_phone": {
+            "name": "মোবাইল ফোন-এর দোকান"
+        },
+        "shop/sports": {
+            "name": "খেলার সামগ্রির দোকান"
+        },
+        "place/town": {
+            "name": "উপনগর"
+        },
+        "tourism/information": {
+            "name": "তথ্য"
+        },
+        "natural": {
+            "name": "প্রাকৃতিক"
+        },
+        "amenity/post_box": {
+            "name": "ডাকবাক্স"
+        },
+        "natural/peak": {
+            "name": "চূড়া"
+        },
+        "highway/tertiary": {
+            "name": "প্রশাখা রাস্তা"
+        },
+        "natural/water/lake": {
+            "name": "হ্রদ"
+        },
+        "amenity/bank": {
+            "name": "ব্যাংক"
+        },
+        "railway/tram": {
+            "name": "ট্রাম"
+        },
+        "landuse/farmyard": {
+            "name": "খামার"
+        },
+        "highway/cycleway": {
+            "name": "সাইকেলের রাস্তা"
+        },
+        "amenity/arts_centre": {
+            "name": "শিল্প কেন্দ্র"
+        },
+        "tourism/zoo": {
+            "name": "চিড়িয়াখানা"
+        },
+        "shop/computer": {
+            "name": "কম্পিউটারের দোকান"
+        },
+        "amenity/restaurant": {
+            "name": "রেস্তোরাঁ"
+        },
+        "landuse/grass": {
+            "name": "ঘাস"
+        },
+        "natural/grassland": {
+            "name": "তৃণভুমি"
+        },
+        "amenity/police": {
+            "name": "পুলিশ"
+        },
+        "leisure/pitch/basketball": {
+            "name": "বাস্কেটবল কোর্ট"
+        },
+        "tourism": {
+            "name": "পর্যটন"
+        },
+        "building/residential": {
+            "name": "অাবাসিক ভবন"
+        },
+        "shop/clothes": {
+            "name": "জামাকাপড়ের দোকান"
+        },
+        "tourism/theme_park": {
+            "name": "থিম পার্ক"
+        },
+        "aeroway/aerodrome": {
+            "name": "বিমানবন্দর"
+        },
+        "amenity/bicycle_rental": {
+            "name": "সাইকেল ভাড়া নেয়া"
+        },
+        "shop/gift": {
+            "name": "উপহারের দোকান"
+        },
+        "waterway/riverbank": {
+            "name": "নদীতীর"
+        },
+        "place": {
+            "name": "জায়গা"
+        },
+        "leisure": {
+            "name": "অবসর"
+        },
+        "shop/music": {
+            "name": "সঙ্গীতের দোকান"
+        },
+        "amenity/post_office": {
+            "name": "ডাকঘর"
+        },
+        "building/house": {
+            "name": "বাড়ি"
+        },
+        "waterway/dam": {
+            "name": "বাঁধ"
+        },
+        "amenity/bar": {
+            "name": "পানশালা"
+        },
+        "barrier/gate": {
+            "name": "ফটক"
+        },
+        "tourism/museum": {
+            "name": "প্রদর্শনশালা"
+        },
+        "shop/boutique": {
+            "name": "বুটিক"
+        },
+        "leisure/pitch/tennis": {
+            "name": "টেনিস কোর্ট"
+        },
+        "waterway/river": {
+            "name": "নদী"
+        },
+        "highway/trunk": {
+            "name": "ট্রাঙ্ক রোড"
+        },
+        "railway/subway": {
+            "name": "ভূতলপথ"
+        },
+        "shop/butcher": {
+            "name": "কসাই"
+        },
+        "office": {
+            "name": "কার্যালয়"
+        },
+        "tourism/picnic_site": {
+            "name": "পিকনিক-এর জায়গা"
+        },
+        "leisure/golf_course": {
+            "name": "গল্ফ মাঠ"
+        },
+        "amenity/fire_station": {
+            "name": "দমকল"
+        },
+        "barrier/entrance": {
+            "name": "দ্বার"
+        },
+        "historic/castle": {
+            "name": "প্রাসাদ"
+        },
+        "natural/water/pond": {
+            "name": "পুকুর"
+        },
+        "shop/car_repair": {
+            "name": "গাড়ি মেরামতের দোকান"
+        },
+        "highway/path": {
+            "name": "পথ"
+        },
+        "amenity/bench": {
+            "name": "বেঞ্চ"
+        },
+        "landuse/meadow": {
+            "name": "তৃণক্ষেত্র"
+        },
+        "amenity/marketplace": {
+            "name": "বাজার"
+        },
+        "building/industrial": {
+            "name": "শিল্পায়িত ভবন"
+        },
+        "amenity/toilets": {
+            "name": "শৌচাগার"
+        },
+        "highway/service": {
+            "name": "সার্ভিস রোড"
+        },
+        "waterway/drain": {
+            "name": "নালা"
+        },
+        "highway/residential": {
+            "name": "অাবাসিক রাস্তা"
+        },
+        "amenity/place_of_worship": {
+            "name": "প্রার্থনাস্থল"
+        },
+        "type/boundary/administrative": {
+            "name": "প্রশাসনিক সীমানা"
+        },
+        "highway/traffic_signals": {
+            "name": "ট্রাফিক সংকেত"
+        },
+        "amenity/embassy": {
+            "name": "দুতাবাস"
+        },
+        "shop/toys": {
+            "name": "খেলনার দোকান"
+        },
+        "place/village": {
+            "name": "গ্রাম"
+        },
+        "line": {
+            "name": "রেখা"
+        },
+        "amenity/cafe": {
+            "name": "ক্যাফে"
+        },
+        "point": {
+            "name": "বিন্দু"
+        },
+        "office/ngo": {
+            "name": "এনজিও অফিস"
+        },
+        "natural/wetland": {
+            "name": "জলাজমি"
+        },
+        "natural/tree": {
+            "name": "গাছ"
+        },
+        "tourism/attraction": {
+            "name": "পর্যটক আকর্ষণ"
+        },
+        "highway/service/alley": {
+            "name": "গলি"
+        },
+        "shop/department_store": {
+            "name": "ডিপার্টমেন্ট স্টোর"
+        },
+        "man_made": {
+            "name": "মানুষ নির্মিত"
+        },
+        "shop/car_parts": {
+            "name": "গাড়ির যন্ত্রাংশের দোকান"
+        },
+        "landuse/construction": {
+            "name": "মেরামত"
+        },
+        "building/garage": {
+            "name": "গ্যারেজ"
+        },
+        "highway/footway": {
+            "name": "ফুটপাত"
+        },
+        "natural/coastline": {
+            "name": "তটরেখা"
+        },
+        "natural/glacier": {
+            "name": "হিমবাহ"
         }
     }
 }

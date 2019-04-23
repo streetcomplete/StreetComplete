@@ -1,1410 +1,1410 @@
 {
     "presets": {
-        "address": {
-            "name": "\u5730\u57d7",
-            "terms": "Address,\u5730\u5740,\u5730\u57d7,\u5740"
-        },
-        "aerialway": {
-            "name": "\u540a\u9053"
-        },
-        "aerialway/cable_car": {
-            "name": "\u540a\u8eca",
-            "terms": "Cable Car,\u540a\u8eca,\u432b\u8eca"
-        },
-        "aerialway/chair_lift": {
-            "name": "\u540a\u6ac8",
-            "terms": "Chair Lift,\u540a\u6ac8"
-        },
-        "aerialway/gondola": {
-            "name": "\u540a\u8239",
-            "terms": "Gondola,\u540a\u8239"
-        },
-        "aerialway/magic_carpet": {
-            "name": "\u8f38\u9001\u5e36",
-            "terms": "Magic Carpet Lift,\u8f38\u9001\u5e36"
-        },
-        "aerialway/platter": {
-            "name": "\u540a\u76e4",
-            "terms": "Platter Lift,\u540a\u76e4"
-        },
-        "aerialway/pylon": {
-            "name": "\u540a\u8eca\u5854",
-            "terms": "Areialway Pylon,\u540a\u8eca\u5854,\u7e9c\u8eca\u7e9c\u5854"
-        },
-        "aeroway": {
-            "name": "\u822a\u7a7a\u8a2d\u65bd"
-        },
-        "aeroway/aerodrome": {
-            "name": "\u98db\u6a5f\u5834",
-            "terms": "Airport,\u6a5f\u5834,\u98db\u6a5f,\u98db\u6a5f\u5834"
-        },
-        "aeroway/apron": {
-            "name": "\u505c\u6a5f\u576a",
-            "terms": "Apron,\u505c\u6a5f\u576a"
-        },
-        "aeroway/hangar": {
-            "name": "\u98db\u6a5f\u5eab",
-            "terms": "Hangar,\u6a5f\u5eab,\u98db\u6a5f\u5eab"
-        },
-        "aeroway/helipad": {
-            "name": "\u76f4\u5347\u6a5f\u576a",
-            "terms": "Helipad,\u76f4\u5347\u6a5f\u576a,\u76f4\u5347\u6a5f\u5834,\u76f4\u6607\u6a5f\u576a,\u76f4\u6607\u6a5f\u5834"
-        },
-        "aeroway/runway": {
-            "name": "\u8dd1\u9053",
-            "terms": "Runway,\u8dd1\u9053"
-        },
-        "aeroway/taxiway": {
-            "name": "\u6ed1\u884c\u9053",
-            "terms": "Taxiway,\u6ed1\u884c\u9053"
-        },
-        "amenity": {
-            "name": "\u4fbf\u5229\u8a2d\u65bd"
-        },
-        "amenity/arts_centre": {
-            "name": "\u7f8e\u8853\u9928",
-            "terms": "Arts Center,\u7f8e\u8853\u4e2d\u5fc3,\u7f8e\u8853\u9928,\u85dd\u8853\u4e2d\u5fc3,\u85dd\u8853\u9928"
-        },
-        "amenity/atm": {
-            "name": "\u63d0\u6b3e\u6a5f",
-            "terms": "ATM,\u63d0\u6b3e\u6a5f,\u6ac3\u54e1\u6a5f,\u81ea\u52d5\u63d0\u6b3e\u6a5f,\u81ea\u52d5\u6ac3\u54e1\u6a5f"
-        },
-        "amenity/bank": {
-            "name": "\u9280\u884c",
-            "terms": "Bank,\u9280\u865f,\u9280\u884c"
-        },
-        "amenity/bar": {
-            "name": "\u9152\u5427",
-            "terms": "Bar,\u5427,\u9152\u5427"
-        },
-        "amenity/bench": {
-            "name": "\u9577\u6905",
-            "terms": "Bench,\u9577\u51f3,\u9577\u6905,\u9577\u6ac8"
-        },
-        "amenity/bicycle_parking": {
-            "name": "\u6cca\u55ae\u8eca\u8655",
-            "terms": "Bicycle Parking,\u55ae\u8eca\u505c\u653e\u8eca,\u55ae\u8eca\u505c\u6cca\u8655,\u6cca\u55ae\u8eca,\u6cca\u55ae\u8eca\u8655,\u81ea\u884c\u8eca\u505c\u653e\u8655"
-        },
-        "amenity/bicycle_rental": {
-            "name": "\u79df\u55ae\u8eca\u8216",
-            "terms": "Bicycle Rental,\u55ae\u8eca\u79df\u8cc3,\u79df\u55ae\u8eca,\u79df\u55ae\u8eca\u8216,\u79df\u55ae\u8eca\u8655,\u81ea\u884c\u8eca\u79df\u8cc3\u8655"
-        },
-        "amenity/boat_rental": {
-            "name": "\u79df\u8247",
-            "terms": "Boat Rental,\u79df\u8247,\u8239\u8236\u79df\u8cc3\u8655"
-        },
-        "amenity/cafe": {
-            "name": "\u8336\u5ea7",
-            "terms": "Cafe,\u35ce\u5561\u5ba4,\u35ce\u5561\u5ef3,\u5496\u5561,\u5496\u5561\u5ba4,\u5496\u5561\u5ef3,\u8336\u5ea7,\u837c\u5ea7"
-        },
-        "amenity/car_rental": {
-            "name": "\u79df\u8eca\u8216",
-            "terms": "Car Rental,\u6c7d\u8eca\u79df\u8cc3,\u6c7d\u8eca\u79df\u8cc3\u8655,\u79df\u8eca,\u79df\u8eca\u5e97,\u79df\u8eca\u8216"
-        },
-        "amenity/car_sharing": {
-            "name": "\u5171\u7528\u8eca\u8655",
-            "terms": "Car Sharing,\u516c\u7528\u8eca\u8655,\u5171\u7528\u8eca,\u5171\u7528\u8eca\u8655,\u6c7d\u8eca\u5171\u4eab\u7ad9"
-        },
-        "amenity/car_wash": {
-            "name": "\u6d17\u8eca\u8216",
-            "terms": "Car Wash,\u6d17\u8eca,\u6d17\u8eca\u5e97,\u6d17\u8eca\u8216"
-        },
-        "amenity/cinema": {
-            "name": "\u96fb\u5f71\u6232\u9662",
-            "terms": "Cinema,\u6232\u9662,\u96fb\u5f71,\u96fb\u5f71\u6232\u9662,\u96fb\u5f71\u9662"
-        },
-        "amenity/courthouse": {
-            "name": "\u6cd5\u5ead",
-            "terms": "Courthouse,\u6cd5\u5ead,\u6cd5\u9662,\u81ec\u7f72,\u88c1\u5224\u7f72"
-        },
-        "amenity/dentist": {
-            "name": "\u7259\u91ab",
-            "terms": "Dentist,\u7259\u91ab"
-        },
-        "amenity/doctors": {
-            "name": "\u91ab\u751f",
-            "terms": "Doctor,\u91ab\u751f"
-        },
-        "amenity/drinking_water": {
-            "name": "\u98f2\u6c34\u8655",
-            "terms": "Drinking Water,\u6c34\u6e90,\u6d3b\u6c34,\u98f2\u6c34,\u98f2\u6c34\u8655,\u98f2\u7528\u6c34"
-        },
-        "amenity/embassy": {
-            "name": "\u5927\u4f7f\u9928",
-            "terms": "Embassy,\u4f7f\u9928,\u5927\u4f7f\u9928,\u9818\u4e8b\u9928"
-        },
-        "amenity/fast_food": {
-            "name": "\u5feb\u9910\u5e97",
-            "terms": "Fast Food,\u5feb\u9910\u5e97"
-        },
-        "amenity/fire_station": {
-            "name": "\u6ec5\u706b\u5c40",
-            "terms": "Fire Station,\u6ec5\u706b\u5c40,\u6c34\u8eca\u9928,\u6d88\u9632\u5c40,\u6d88\u9632\u7ad9,\u6551\u706b\u5c40"
-        },
-        "amenity/fountain": {
-            "name": "\u5674\u6c34\u6c60",
-            "terms": "Fountain,\u5674\u6c34\u6c60,\u5674\u6cc9,\u6c34\u666f"
-        },
-        "amenity/fuel": {
-            "name": "\u6cb9\u7ad9",
-            "terms": "Gas Station,\u52a0\u6c23\u7ad9,\u52a0\u6c7d\u7ad9,\u52a0\u6cb9\u7ad9,\u6cb9\u7ad9"
-        },
-        "amenity/grave_yard": {
-            "name": "\u58b3\u5730",
-            "terms": "Graveyard,\u5893\u5730,\u58b3\u5730,\u58b3\u5834"
-        },
-        "amenity/hospital": {
-            "name": "\u91ab\u9662\u5730"
-        },
-        "amenity/library": {
-            "name": "\u5716\u66f8\u9928",
-            "terms": "Library,\u5716\u66f8\u9928,\u62c9\u8a18"
-        },
-        "amenity/marketplace": {
-            "name": "\u8857\u5e02",
-            "terms": "Marketplace,\u5e02\u5834,\u83dc\u5e02\u5834,\u8857\u5e02"
-        },
-        "amenity/place_of_worship": {
-            "name": "\u62dc\u795e\u4e4b\u6240",
-            "terms": "Place of Worship,Worship,\u5b97\u6559\u795f\u62dc\u5834\u6240,\u5b97\u6559\u79ae\u62dc\u8655,\u5d07\u62dc\u8655,\u62dc\u795e\u4e4b\u6240,\u79ae\u62dc\u5834\u6240"
-        },
-        "amenity/place_of_worship/buddhist": {
-            "name": "\u4f5b\u5bfa",
-            "terms": "Buddhist Temple,\u4f5b\u5802,\u4f5b\u5bfa,\u4f5b\u5edf,\u548c\u5c1a\u5bfa,\u5bf6\u6bbf,\u5bfa,\u5bfa\u5edf,\u5c3c\u59d1\u5eb5,\u5c3c\u5eb5,\u5eb5\u5802,\u5edf,\u7cbe\u820d,\u95a3,\u975c\u9662"
-        },
-        "amenity/police": {
-            "name": "\u5dee\u9928",
-            "terms": "Police,\u5dee\u9928,\u6d3e\u51fa\u6240,\u8b66\u5bdf\u5c40,\u8b66\u5c40,\u8b66\u7f72"
-        },
-        "amenity/post_box": {
-            "name": "\u90f5\u7b52",
-            "terms": "Mailbox,Post,Post Box,\u90f5\u7b52,\u90f5\u7bb1"
-        },
-        "amenity/post_office": {
-            "name": "\u90f5\u653f\u5c40",
-            "terms": "Post Office,\u66f8\u4fe1\u9928,\u90f5\u5c40,\u90f5\u653f\u5c40"
-        },
-        "amenity/pub": {
-            "name": "\u9152\u9928",
-            "terms": "Pub,\u9152\u9928"
-        },
-        "amenity/ranger_station": {
-            "name": "\u90ca\u91ce\u8a2a\u5ba2\u8655",
-            "terms": "Ranger Station,\u90ca\u91ce\u8a2a\u5ba2\u8655,\u91ce\u90ca\u8a2a\u5ba2\u8655"
-        },
-        "amenity/restaurant": {
-            "name": "\u9910\u5ef3",
-            "terms": "Restaurant,\u8336\u6a13,\u9152\u5bb6,\u9152\u6a13,\u98ef\u5e97,\u98ef\u9928,\u9910\u5ef3,\u9910\u9928"
-        },
-        "amenity/shelter": {
-            "name": "\u5929\u906e\u6216\u4ead",
-            "terms": "Shelter,\u4ead,\u5929\u906e,\u84cb,\u907f\u96e3,\u907f\u96e3\u6240"
-        },
-        "amenity/swimming_pool": {
-            "name": "\u6e38\u6c34\u6c60"
-        },
-        "amenity/taxi": {
-            "name": "\u7684\u58eb\u7ad9",
-            "terms": "Taxi Stand,\u51fa\u79df\u8eca\u7ad9,\u7684\u58eb\u7ad9,\u8a08\u7a0b\u8eca\u7ad9"
-        },
-        "amenity/telephone": {
-            "name": "\u96fb\u8a71",
-            "terms": "Telephone,\u96fb\u8a71"
-        },
-        "amenity/theatre": {
-            "name": "\u821e\u81fa\u6232\u9662",
-            "terms": "Theater,\u5287\u5834,\u5287\u9662,\u6232\u9662,\u821e\u81fa\u6232\u9662,\u96fb\u5f71\u9662"
-        },
-        "amenity/toilets": {
-            "name": "\u5ec1\u6240",
-            "terms": "Toilets,\u4fbf\u6240,\u516c\u53a0,\u516c\u5ec1,\u53a0\u6240,\u5ec1\u6240,\u65b9\u4fbf,\u6d17\u624b\u9593,\u76e5\u6d17\u5ba4"
-        },
-        "amenity/townhall": {
-            "name": "\u5927\u6703\u5802",
-            "terms": "Town Hall,\u5927\u6703\u5802,\u5e02\u653f\u5e9c,\u5e02\u653f\u5ef3"
-        },
-        "amenity/waste_basket": {
-            "name": "\u5783\u573e\u6876",
-            "terms": "Waste Basket,\u5783\u573e\u6876,\u5783\u573e\u7bb1,\u5ee2\u7269\u7bb1"
-        },
-        "area": {
-            "name": "\u7bc4\u570d",
-            "terms": "Area,\u5340\u57df,\u7bc4\u570d"
-        },
-        "area/highway": {
-            "name": "\u9053\u9762"
-        },
-        "barrier": {
-            "name": "\u5c4f\u969c",
-            "terms": "Barrier,\u5c4f\u969c,\u963b\u64cb,\u969c\u7919,\u969c\u7919\u7269"
-        },
-        "barrier/block": {
-            "name": "\u8def\u969c",
-            "terms": "Block,\u8def\u969c,\u969c\u7919\u7269"
-        },
-        "barrier/bollard": {
-            "name": "\u8b77\u67f1",
-            "terms": "Bollard,\u8b77\u67f1"
-        },
-        "barrier/cattle_grid": {
-            "name": "\u6514\u755c\u6e9d\u67f5",
-            "terms": "Cattle Grid,\u5bb6\u755c\u67f5\u6b04,\u6514\u755c\u6e9d\u67f5"
-        },
-        "barrier/city_wall": {
-            "name": "\u57ce\u7246",
-            "terms": "City Wall,\u57ce\u58bb,\u57ce\u7246"
-        },
-        "barrier/cycle_barrier": {
-            "name": "\u55ae\u8eca\u6e1b\u901f\u6b04",
-            "terms": "Cycle Barrier,\u55ae\u8eca\u6e1b\u901f\u6b04,\u55ae\u8eca\u77ee\u6b04"
-        },
-        "barrier/ditch": {
-            "name": "\u5751"
-        },
-        "barrier/entrance": {
-            "name": "\u5165\u53e3"
-        },
-        "barrier/fence": {
-            "name": "\u6b04",
-            "terms": "Fence,\u6b04,\u6b04\u67f5,\u7c6c,\u7c6c\u7b06"
-        },
-        "barrier/gate": {
-            "name": "\u9598",
-            "terms": "Gate,\u53e3,\u9580,\u9598"
-        },
-        "barrier/hedge": {
-            "name": "\u6a39\u7c6c",
-            "terms": "Hedge,\u6a39\u7c6c"
-        },
-        "barrier/kissing_gate": {
-            "name": "\u55ae\u4eba\u8f49\u9580 ",
-            "terms": "Kissing Gate,\u55ae\u4eba\u8f49\u9580"
-        },
-        "barrier/lift_gate": {
-            "name": "\u9053\u9598",
-            "terms": "Lift Gate,\u64cb\u8eca\u5668,\u9053\u9598"
-        },
-        "barrier/retaining_wall": {
-            "name": "\u8b77\u571f\u7246",
-            "terms": "Retaining Wall,\u64cb\u571f\u58bb,\u8b77\u571f\u7246"
-        },
-        "barrier/stile": {
-            "name": "\u68af\u6883",
-            "terms": "Stile,\u68af\u6883,\u68af\u78f4"
-        },
-        "barrier/toll_booth": {
-            "name": "\u6536\u8cbb\u4ead",
-            "terms": "Toll Booth,\u6536\u8cbb\u4ead,\u6536\u8cbb\u7ad9"
-        },
-        "barrier/wall": {
-            "name": "\u7246",
-            "terms": "Wall,\u58bb,\u7246"
-        },
-        "boundary/administrative": {
-            "name": "\u884c\u653f\u754c",
-            "terms": "Administrative Boundary,\u884c\u653f\u5340\u57df\u754c\u7dda,\u884c\u653f\u5340\u754c,\u884c\u653f\u754c,\u884c\u653f\u754c\u7dda,\u884c\u653f\u908a\u754c"
-        },
-        "building": {
-            "name": "\u5c4b\u5b87",
-            "terms": "Building,\u5c4b\u5b87,\u5efa\u7bc9\u7269"
-        },
-        "building/commercial": {
-            "name": "\u5546\u696d\u6a13\u5b87",
-            "terms": "Commercial Building,\u5546\u696d\u5efa\u7bc9\u7269,\u5546\u696d\u6a13\u5b87"
-        },
-        "building/garage": {
-            "name": "\u8eca\u5eab",
-            "terms": "Garage,\u8eca\u5eab"
-        },
-        "building/house": {
-            "name": "\u5c4b",
-            "terms": "House,\u5c4b,\u623f\u5c4b,\u6d0b\u623f"
-        },
-        "building/hut": {
-            "name": "\u5c4b\u4ed4",
-            "terms": "Hut,\u5c4b\u4ed4,\u68da\u5c4b"
-        },
-        "building/industrial": {
-            "name": "\u5de5\u696d\u6a13\u5b87",
-            "terms": "Industrial Building,\u5de5\u696d\u5efa\u7bc9\u7269,\u5de5\u696d\u6a13\u5b87"
-        },
-        "building/residential": {
-            "name": "\u4f4f\u5b85\u6a13\u5b87",
-            "terms": "Residential Building,\u4f4f\u5b85\u5efa\u7bc9\u7269,\u4f4f\u5b85\u6a13\u5b87"
-        },
-        "building/retail": {
-            "name": "\u8216\u5c4b\u5b87"
-        },
-        "craft/watchmaker": {
-            "name": "\u9418\u9336\u5320",
-            "terms": "Watchmaker,\u9418\u9336\u5320"
-        },
-        "craft/window_construction": {
-            "name": "\u9020\u7a97",
-            "terms": "Window Construction,\u9020\u7a97"
-        },
-        "embankment": {
-            "name": "\u57fa\u5824"
-        },
-        "emergency/ambulance_station": {
-            "name": "\u6551\u8b77\u7ad9",
-            "terms": "Ambulance Station,\u5341\u5b57\u8eca,\u6551\u50b7\u8eca,\u6551\u8b77\u7ad9,\u6551\u8b77\u8eca"
-        },
-        "emergency/fire_hydrant": {
-            "name": "\u6d88\u9632\u6c34\u9f8d\u982d",
-            "terms": "Fire Hydrant,\u6d88\u9632\u6813,\u6d88\u9632\u6c34\u9f8d\u982d"
-        },
-        "emergency/phone": {
-            "name": "\u6c42\u52a9\u96fb\u8a71",
-            "terms": "Emergency Phone,\u6c42\u52a9\u96fb\u8a71,\u7dca\u6025\u96fb\u8a71"
-        },
-        "golf/bunker": {
-            "name": "\u6c99\u5751",
-            "terms": "Sand Trap,\u6c99\u5751"
-        },
-        "golf/fairway": {
-            "name": "\u7403\u9053",
-            "terms": "Fairway,\u7403\u9053"
-        },
-        "golf/green": {
-            "name": "\u83d3\u5dba",
-            "terms": "Putting Green,\u679c\u5dba,\u83d3\u5dba"
-        },
-        "golf/hole": {
-            "name": "\u6b4c\u592b\u7403\u6d1e",
-            "terms": "Golf Hole,\u6b4c\u592b\u7403\u6d1e"
-        },
-        "golf/rough": {
-            "name": "\u6df1\u8349\u5340",
-            "terms": "Rough,\u6df1\u8349\u5340"
-        },
-        "golf/tee": {
-            "name": "\u767c\u7403\u5340",
-            "terms": "Tee Box,\u767c\u7403\u5340,\u958b\u7403\u5340"
-        },
-        "highway": {
-            "name": "\u516c\u8def"
-        },
-        "highway/bridleway": {
-            "name": "\u99ac\u5f91",
-            "terms": "Bridle Path,\u99ac\u5f91,\u99ac\u9053"
-        },
-        "highway/cycleway": {
-            "name": "\u55ae\u8eca\u5f91",
-            "terms": "Cycle Path,\u55ae\u8eca\u5f91,\u81ea\u884c\u8eca\u9053"
-        },
-        "highway/footway": {
-            "name": "\u884c\u4eba\u5f91",
-            "terms": "Foot Path,\u6b65\u884c\u5f91,\u884c\u4eba\u5f91"
-        },
-        "highway/living_street": {
-            "name": "\u5c45\u4f4f\u8857\u9053",
-            "terms": "Living Street,\u5c45\u4f4f\u8857\u9053,\u751f\u6d3b\u8857\u9053"
-        },
-        "highway/mini_roundabout": {
-            "name": "\u7d30\u8ff4\u65cb\u8655",
-            "terms": "Mini-Roundabout,\u5c0f\u578b\u74b0\u5cf6,\u5c0f\u578b\u8ff4\u65cb\u8655,\u7d30\u8ff4\u65cb\u8655"
-        },
-        "highway/motorway": {
-            "name": "\u9ad8\u901f\u516c\u8def",
-            "terms": "Motorway,\u9ad8\u901f\u516c\u8def"
-        },
-        "highway/motorway_link": {
-            "name": "\u9ad8\u901f\u516c\u8def\u99c1\u8def",
-            "terms": "Motorway Link,\u9ad8\u901f\u516c\u8def\u531d\u9053,\u9ad8\u901f\u516c\u8def\u5f15\u9053,\u9ad8\u901f\u516c\u8def\u99c1\u8def"
-        },
-        "highway/path": {
-            "name": "\u5f91",
-            "terms": "Path,\u5f91,\u8def\u5f91"
-        },
-        "highway/pedestrian_area": {
-            "name": "\u884c\u4eba\u5730"
-        },
-        "highway/pedestrian_line": {
-            "name": "\u884c\u4eba\u8857"
-        },
-        "highway/primary": {
-            "name": "\u5927\u9053",
-            "terms": "Primary Road,\u4e3b\u8981\u9053\u8def,\u5927\u8def"
-        },
-        "highway/primary_link": {
-            "name": "\u5927\u8def\u99c1\u8def",
-            "terms": "Primary Link,\u4e3b\u8981\u9053\u8def\u531d\u9053,\u4e3b\u8981\u9053\u8def\u9023\u63a5\u8def,\u5927\u8def\u99c1\u8def"
-        },
-        "highway/residential": {
-            "name": "\u4f4f\u5b85\u9053",
-            "terms": "Residential Road,\u4f4f\u5b85\u5340\u9053\u8def,\u4f4f\u5b85\u8def"
-        },
-        "highway/road": {
-            "name": "\u672a\u660e\u9053",
-            "terms": "Unknown Road,\u4e0d\u660e\u8def,\u4e0d\u77e5\u8def,\u672a\u660e\u8def,\u672a\u77e5\u5605\u8def,\u672a\u77e5\u7a2e\u985e\u7684\u9053\u8def,\u672a\u77e5\u7a2e\u985e\u9053\u8def"
-        },
-        "highway/secondary": {
-            "name": "\u4e2d\u9053",
-            "terms": "Secondary Road,\u4e2d\u8def,\u6b21\u8981\u9053\u8def"
-        },
-        "highway/secondary_link": {
-            "name": "\u4e2d\u8def\u99c1\u8def",
-            "terms": "Secondary Link,\u4e2d\u8def\u99c1\u8def,\u6b21\u7d1a\u9053\u8def\u9023\u63a5\u8def,\u6b21\u8981\u9053\u8def\u531d\u9053"
-        },
-        "highway/service": {
-            "name": "\u652f\u9053",
-            "terms": "Service Road,\u652f\u8def,\u8f14\u52a9\u9053\u8def"
-        },
-        "highway/service/alley": {
-            "name": "\u5df7",
-            "terms": "Alley,\u5df7,\u5f8c\u5df7,\u6a6b\u5df7,\u7a84\u5df7,\u80e1\u540c"
-        },
-        "highway/service/drive-through": {
-            "name": "\u8eca\u4e0a\u53d6\u9910",
-            "terms": "Drive-Through,\u514d\u4e0b\u8eca,\u514d\u4e0b\u8eca\u9280\u884c,\u514d\u4e0b\u8eca\u9910\u9928,\u8eca\u4e0a\u53d6\u9910,\u8eca\u4e0a\u7528\u9910,\u99d5\u99db\u901a\u904e\u4ee5\u7372\u53d6\u670d\u52d9"
-        },
-        "highway/service/driveway": {
-            "name": "\u5b85\u5916\u8eca\u9053",
-            "terms": "Driveway,\u5b85\u5916\u8eca\u9053,\u8eca\u7dda,\u8eca\u9053"
-        },
-        "highway/service/emergency_access": {
-            "name": "\u7dca\u6025\u901a\u9053",
-            "terms": "Emergency Access,\u7dca\u6025\u901a\u9053"
-        },
-        "highway/service/parking_aisle": {
-            "name": "\u6cca\u8eca\u901a\u9053",
-            "terms": "Parking Aisle,\u505c\u8eca\u5834\u901a\u9053,\u6cca\u8eca\u901a\u9053"
-        },
-        "highway/steps": {
-            "name": "\u68af",
-            "terms": "Steps,\u68af,\u6a13\u68af,\u77f3\u968e,\u968e\u68af"
-        },
-        "highway/stop": {
-            "name": "\u505c\u8eca\u6a19\u8a8c",
-            "terms": "Stop Sign,\u505c\u5b57\u6a19\u8a8c,\u505c\u8eca\u6a19\u8a8c,\u505c\u8eca\u8def\u724c"
-        },
-        "highway/street_lamp": {
-            "name": "\u8857\u71c8",
-            "terms": "Street Lamp,\u8857\u71c8,\u8def\u71c8,\u9053\u71c8"
-        },
-        "highway/tertiary": {
-            "name": "\u7d30\u9053",
-            "terms": "Tertiary Road,\u4e09\u7d1a\u9053\u8def,\u7d30\u8def"
-        },
-        "highway/tertiary_link": {
-            "name": "\u7d30\u8def\u99c1\u8def",
-            "terms": "Tertiary Link,\u4e09\u7d1a\u9053\u8def\u531d\u9053,\u4e09\u7d1a\u9053\u8def\u9023\u63a5\u8def,\u7d30\u8def\u99c1\u8def"
-        },
-        "highway/track": {
-            "name": "\u7121\u4fee\u9053"
-        },
-        "highway/traffic_signals": {
-            "name": "\u7d05\u7da0\u71c8",
-            "terms": "Traffic Signals,\u4ea4\u901a\u71c8,\u7d05\u7da0\u71c8"
-        },
-        "highway/trunk": {
-            "name": "\u5e79\u9053",
-            "terms": "Trunk Road,\u5e79\u7dda\u9053\u8def,\u5e79\u8def,\u5e79\u9053"
-        },
-        "highway/trunk_link": {
-            "name": "\u5e79\u9053\u99c1\u8def",
-            "terms": "Trunk Link,\u5e79\u7dda\u9053\u8def\u531d\u9053,\u5e79\u9053\u9023\u63a5\u8def,\u5e79\u9053\u99c1\u8def"
-        },
-        "highway/turning_circle": {
-            "name": "\u8ff4\u65cb\u8655",
-            "terms": "Turning Circle,\u56de\u8f49\u5708,\u5efb\u65cb\u8655,\u74b0\u5cf6,\u8ff4\u65cb\u8655"
-        },
-        "highway/unclassified": {
-            "name": "\u9053\u4ed4\uff0f\u7121\u985e\u9053"
-        },
-        "historic": {
-            "name": "\u53f2\u8e5f",
-            "terms": "Historic Site,\u53f2\u8de1,\u53f2\u8e5f,\u6b77\u53f2\u907a\u5740,\u6b77\u53f2\u907a\u8de1"
-        },
-        "historic/archaeological_site": {
-            "name": "\u8003\u53e4\u5730",
-            "terms": "Archaeological Site,\u8003\u53e4\u5730,\u8003\u53e4\u5730\u9ede,\u8003\u53e4\u907a\u5740"
+        "office/administrative": {
+            "name": "行政樓"
         },
         "historic/boundary_stone": {
-            "name": "\u754c\u77f3",
-            "terms": "Boundary Stone,\u754c\u6a01,\u754c\u77f3"
-        },
-        "historic/castle": {
-            "name": "\u5be8",
-            "terms": "Castle,\u57ce\u5821,\u5be8"
-        },
-        "historic/memorial": {
-            "name": "\u7d30\u7d00\u5ff5\u7891",
-            "terms": "Memorial,\u7891,\u7d00\u5ff5\u7891,\u7d00\u5ff5\u9928,\u7d30\u7d00\u5ff5\u7891"
-        },
-        "historic/monument": {
-            "name": "\u5927\u7d00\u5ff5\u7891",
-            "terms": "Monument,\u53e4\u8de1,\u53e4\u8e5f,\u5927\u7d00\u5ff5\u7891,\u7891,\u7d00\u5ff5\u7891"
-        },
-        "historic/ruins": {
-            "name": "\u5ee2\u589f",
-            "terms": "Ruins,\u5ee2\u589f"
-        },
-        "historic/wayside_cross": {
-            "name": "\u8def\u908a\u5341\u5b57\u67b6",
-            "terms": "Wayside Cross,\u8def\u908a\u5341\u5b57\u67b6"
-        },
-        "historic/wayside_shrine": {
-            "name": "\u8def\u908a\u795e\u7960",
-            "terms": "Wayside Shrine,\u8def\u908a\u795e\u793e,\u8def\u908a\u795e\u7960"
-        },
-        "landuse/aquaculture": {
-            "name": "\u6c34\u7522"
-        },
-        "landuse/basin": {
-            "name": "\u76c6\u5730"
-        },
-        "landuse/cemetery": {
-            "name": "\u58b3\u5834",
-            "terms": "Cemetery,\u5893\u5730,\u58b3\u5834"
-        },
-        "landuse/commercial": {
-            "name": "\u5546\u5730"
-        },
-        "landuse/construction": {
-            "name": "\u5730\u76e4",
-            "terms": "Construction,\u5730\u76e4,\u5efa\u7bc9\u5de5\u7a0b,\u5efa\u7bc9\u7269"
-        },
-        "landuse/farm": {
-            "name": "\u7530\u5730"
-        },
-        "landuse/farmland": {
-            "name": "\u7530\u5730"
-        },
-        "landuse/farmyard": {
-            "name": "\u5730\u5802",
-            "terms": "Farmyard,\u5730\u5802,\u8fb2\u838a"
-        },
-        "landuse/grass": {
-            "name": "\u8349\u5730",
-            "terms": "Grass,\u8349\u5730"
-        },
-        "landuse/industrial": {
-            "name": "\u5de5\u5730"
-        },
-        "landuse/meadow": {
-            "name": "\u7267\u5730",
-            "terms": "Meadow,\u7267\u5730,\u7267\u5834"
-        },
-        "landuse/military": {
-            "name": "\u8ecd\u5730"
-        },
-        "landuse/military/airfield": {
-            "name": "\u8ecd\u7528\u6a5f\u5834"
-        },
-        "landuse/orchard": {
-            "name": "\u83d3\u5712",
-            "terms": "Orchard,\u679c\u5712,\u83d3\u5712"
-        },
-        "landuse/quarry": {
-            "name": "\u77f3\u5858",
-            "terms": "Quarry,\u77f3\u5858,\u77f3\u7926\u5834,\u7926\u5834"
-        },
-        "landuse/religious": {
-            "name": "\u62dc\u795e\u5730"
-        },
-        "landuse/residential": {
-            "name": "\u4f4f\u5730"
-        },
-        "landuse/retail": {
-            "name": "\u8216\u5730"
-        },
-        "landuse/vineyard": {
-            "name": "\u8461\u8404\u5712",
-            "terms": "Vineyard,\u8461\u8404\u5712,\u9152\u838a"
-        },
-        "leisure": {
-            "name": "\u6d88\u9592"
-        },
-        "leisure/common": {
-            "name": "\u516c\u5730",
-            "terms": "Common,\u516c\u5171\u7528\u5730,\u516c\u5730"
-        },
-        "leisure/dog_park": {
-            "name": "\u72d7\u516c\u5712",
-            "terms": "Dog Park,\u72d7\u516c\u5712"
-        },
-        "leisure/garden": {
-            "name": "\u82b1\u5712",
-            "terms": "Garden,\u516c\u5712,\u679c\u5712,\u690d\u7269\u5712,\u82b1\u5712,\u83dc\u5712"
-        },
-        "leisure/golf_course": {
-            "name": "\u54e5\u592b\u7403\u5834",
-            "terms": "Golf Course,\u54e5\u592b\u7403\u5834,\u9ad8\u723e\u592b\u7403\u5834"
-        },
-        "leisure/marina": {
-            "name": "\u904a\u8247\u78bc\u982d",
-            "terms": "Marina,\u78bc\u982d,\u904a\u8247\u78bc\u982d"
+            "name": "界石",
+            "terms": "Boundary Stone,界樁,界石"
         },
         "leisure/park": {
-            "name": "\u5712",
-            "terms": "Park,\u516c\u5712,\u5712"
-        },
-        "leisure/pitch": {
-            "name": "\u904b\u52d5\u5834",
-            "terms": "Sport Pitch,\u904b\u52d5\u5834,\u904b\u52d5\u5834\u5730,\u904b\u52d5\u5834\u6240"
-        },
-        "leisure/pitch/american_football": {
-            "name": "\u7f8e\u5f0f\u8db3\u7403\u5834",
-            "terms": "American Football Field,\u7f8e\u5f0f\u8db3\u7403\u5834"
-        },
-        "leisure/pitch/basketball": {
-            "name": "\u7c43\u7403\u5834",
-            "terms": "Basketball Court,\u7403\u5834,\u7c43\u7403\u5834"
-        },
-        "leisure/pitch/skateboard": {
-            "name": "\u6ed1\u677f\u5834",
-            "terms": "Skate Park,\u6ed1\u677f\u5834"
-        },
-        "leisure/pitch/soccer": {
-            "name": "\u8db3\u7403\u5834",
-            "terms": "Soccer Field,\u8db3\u7403\u5834"
-        },
-        "leisure/pitch/tennis": {
-            "name": "\u7db2\u7403\u5834",
-            "terms": "Tennis Court,\u7db2\u7403\u5834"
-        },
-        "leisure/pitch/volleyball": {
-            "name": "\u6392\u7403\u5834",
-            "terms": "Volleyball Court,\u6392\u7403\u5834"
-        },
-        "leisure/playground": {
-            "name": "\u904a\u6a02\u5834",
-            "terms": "Playground,\u904a\u6a02\u5834"
-        },
-        "leisure/slipway": {
-            "name": "\u8239\u6392",
-            "terms": "Slipway,\u8239\u6392,\u8239\u67b6\u6ed1\u9053,\u8239\u81fa"
-        },
-        "leisure/stadium": {
-            "name": "\u5927\u9ad4\u80b2\u9928",
-            "terms": "Stadium,\u5927\u9ad4\u80b2\u9928,\u9ad4\u80b2,\u9ad4\u80b2\u5834"
-        },
-        "leisure/swimming_pool": {
-            "name": "\u6e38\u6c34\u6c60",
-            "terms": "Swimming Pool,\u6e38\u6c34\u6c60,\u6e38\u6cf3\u6c60,\u904a\u6cf3\u6c60"
-        },
-        "line": {
-            "name": "\u7dab",
-            "terms": "Line,\u7dab,\u7dda"
-        },
-        "man_made": {
-            "name": "\u4eba\u9020"
-        },
-        "man_made/breakwater": {
-            "name": "\u9632\u6ce2\u5824",
-            "terms": "Breakwater,\u9632\u6ce2\u5824"
-        },
-        "man_made/cutline": {
-            "name": "\u5206\u5272\u7dab",
-            "terms": "Cut line,\u5206\u5272\u7dab,\u5206\u754c\u7dda,\u5c71\u6797\u5206\u754c\u7dda"
-        },
-        "man_made/embankment": {
-            "name": "\u57fa\u5824"
-        },
-        "man_made/flagpole": {
-            "name": "\u65d7\u6746",
-            "terms": "Flagpole,\u65d7\u6746,\u65d7\u7aff"
-        },
-        "man_made/lighthouse": {
-            "name": "\u71c8\u5854",
-            "terms": "Lighthouse,\u71c8\u5854"
-        },
-        "man_made/pier": {
-            "name": "\u57d7\u982d",
-            "terms": "Pier,\u57d7\u982d,\u78bc\u982d"
-        },
-        "man_made/pipeline": {
-            "name": "\u6c34\u7ba1",
-            "terms": "Pipeline,\u6c34\u7ba1,\u7ba1\u9053"
-        },
-        "man_made/survey_point": {
-            "name": "\u6e2c\u91cf\u9ede",
-            "terms": "Survey Point,\u6e2c\u91cf\u9ede"
-        },
-        "man_made/tower": {
-            "name": "\u5854",
-            "terms": "Tower,\u5854"
-        },
-        "man_made/wastewater_plant": {
-            "name": "\u5ee2\u6c34\u5ee0",
-            "terms": "Wastewater Plant,\u5ee2\u6c34\u5ee0,\u6c59\u6c34\u8655\u7406\u5ee0,\u6c61\u6c34\u8655\u7406\u5ee0"
-        },
-        "man_made/water_tower": {
-            "name": "\u6c34\u5854",
-            "terms": "Water Tower,\u6c34\u5854"
-        },
-        "man_made/water_works": {
-            "name": "\u4f9b\u6c34\u5ee0",
-            "terms": "Water Works,\u4f9b\u6c34\u5ee0,\u6c34\u52d9\u8a2d\u65bd"
-        },
-        "natural": {
-            "name": "\u5929\u7136"
-        },
-        "natural/bare_rock": {
-            "name": "\u77f3\u5730"
-        },
-        "natural/bay": {
-            "name": "\u7063",
-            "terms": "Bay,\u6d77\u7063,\u7063"
-        },
-        "natural/beach": {
-            "name": "\u7058",
-            "terms": "Beach,\u6c99\u7058,\u6d77\u7058,\u7058"
-        },
-        "natural/cave_entrance": {
-            "name": "\u6d1e\u53e3"
-        },
-        "natural/cliff": {
-            "name": "\u5d16",
-            "terms": "Cliff,\u5d16,\u61f8\u5d16"
-        },
-        "natural/coastline": {
-            "name": "\u6d77\u5cb8\u7dab",
-            "terms": "Coastline,\u6d77\u5cb8\u7dab,\u6d77\u5cb8\u7dda"
-        },
-        "natural/fell": {
-            "name": "\u9ad8\u539f\u8352\u91ce",
-            "terms": "Fell,\u9ad8\u539f\u8352\u539f,\u9ad8\u539f\u8352\u91ce,\u9ad8\u5730\u8352\u539f"
-        },
-        "natural/glacier": {
-            "name": "\u51b0\u5ddd",
-            "terms": "Glacier,\u51b0\u5ddd,\u51b0\u6cb3"
-        },
-        "natural/grassland": {
-            "name": "\u8349\u539f",
-            "terms": "Grassland,\u8349\u539f"
-        },
-        "natural/heath": {
-            "name": "\u8352\u91ce",
-            "terms": "Heath,\u8352\u5730,\u8352\u91ce"
-        },
-        "natural/peak": {
-            "name": "\u5cef",
-            "terms": "Peak,\u5c71\u5cf0,\u5c71\u9802,\u5cef"
-        },
-        "natural/sand": {
-            "name": "\u7802"
-        },
-        "natural/scree": {
-            "name": "\u788e\u77f3\u5761",
-            "terms": "Scree,\u788e\u77f3\u5761"
-        },
-        "natural/scrub": {
-            "name": "\u704c\u6728",
-            "terms": "Scrub,\u704c\u6728,\u704c\u6728\u53e2"
-        },
-        "natural/spring": {
-            "name": "\u6cc9",
-            "terms": "Spring,\u5674\u6cc9,\u6cc9,\u6cc9\u6c34,\u6e67\u6cc9,\u6eab\u6cc9"
-        },
-        "natural/tree": {
-            "name": "\u6a39",
-            "terms": "Tree,\u6728,\u6a39"
-        },
-        "natural/volcano": {
-            "name": "\u706b\u5c71",
-            "terms": "Volcano,\u706b\u5c71"
-        },
-        "natural/water": {
-            "name": "\u6c34",
-            "terms": "Water,\u6c34"
-        },
-        "natural/water/lake": {
-            "name": "\u6e56",
-            "terms": "Lake,\u6e56,\u6e56\u6cca"
-        },
-        "natural/water/pond": {
-            "name": "\u5858",
-            "terms": "Pond,\u5858,\u6c34\u6c60,\u6c60,\u6c60\u5858"
-        },
-        "natural/water/reservoir": {
-            "name": "\u6c34\u5858",
-            "terms": "Reservoir,\u6c34\u5858,\u6c34\u5eab"
-        },
-        "natural/wetland": {
-            "name": "\u6fa4",
-            "terms": "Wetland,\u6f6e\u9593\u5e36,\u6fa4,\u6fd5\u5730"
-        },
-        "natural/wood": {
-            "name": "\u6797",
-            "terms": "Wood,\u6797,\u6a39\u6797"
-        },
-        "office": {
-            "name": "\u5beb\u5b57\u6a13",
-            "terms": "Office,\u5beb\u5b57\u6a13,\u8fa6\u516c\u5ba4"
-        },
-        "office/administrative": {
-            "name": "\u884c\u653f\u6a13"
-        },
-        "office/educational_institution": {
-            "name": "\u654e\u80b2\u6a5f\u69cb",
-            "terms": "Educational Institution,\u654e\u80b2\u6a5f\u69cb,\u6559\u80b2\u6a5f\u69cb"
-        },
-        "office/employment_agency": {
-            "name": "\u85a6\u4eba\u9928",
-            "terms": "Employment Agency,\u5c31\u696d\u6a5f\u69cb,\u8077\u696d\u4ecb\u7d39\u6240,\u85a6\u4eba\u9928"
-        },
-        "office/estate_agent": {
-            "name": "\u7ba1\u696d\u8655",
-            "terms": "Real Estate Office,\u5730\u7522\u4ee3\u7406,\u7ba1\u696d\u8655"
-        },
-        "office/financial": {
-            "name": "\u8ca1\u52d9\u90e8\u5beb\u5b57\u6a13",
-            "terms": "Financial Office,\u8ca1\u52d9\u90e8\u5beb\u5b57\u6a13"
-        },
-        "office/government": {
-            "name": "\u8859\u9580",
-            "terms": "Government Office,\u516c\u7f72,\u653f\u5e9c\u5408\u7f72,\u653f\u5e9c\u6a13,\u7f72,\u8859\u9580"
-        },
-        "office/insurance": {
-            "name": "\u4fdd\u96aa\u516c\u53f8\u5beb\u5b57\u6a13",
-            "terms": "Insurance Office,\u4fdd\u96aa\u516c\u53f8,\u4fdd\u96aa\u516c\u53f8\u5beb\u5b57\u6a13"
-        },
-        "office/lawyer": {
-            "name": "\u5f8b\u5e2b\u4e8b\u52d9\u6240",
-            "terms": "Law Office,\u5f8b\u5e2b\u4e8b\u52d9\u6240"
-        },
-        "office/ngo": {
-            "name": "\u5fd7\u9860\u6a5f\u69cb\u5beb\u5b57\u6a13",
-            "terms": "NGO Office,\u5fd7\u9860\u6a5f\u69cb\u5beb\u5b57\u6a13,\u975e\u653f\u5e9c\u7d44\u7e54"
-        },
-        "office/physician": {
-            "name": "\u91ab\u751f"
-        },
-        "office/political_party": {
-            "name": "\u653f\u9ee8",
-            "terms": "Political Party,\u653f\u9ee8"
-        },
-        "office/research": {
-            "name": "\u7814\u7a76\u6240",
-            "terms": "Research Office,\u7814\u7a76\u6240"
-        },
-        "office/surveyor": {
-            "name": "\u91cf\u5730\u5b98\u5beb\u5b57\u6a13"
-        },
-        "office/telecommunication": {
-            "name": "\u96fb\u8a71\u516c\u53f8\u5beb\u5b57\u6a13",
-            "terms": "Telecom Office,\u96fb\u4fe1\u516c\u53f8,\u96fb\u8a71\u516c\u53f8\u5beb\u5b57\u6a13"
-        },
-        "office/travel_agent": {
-            "name": "\u65c5\u884c\u793e"
-        },
-        "place": {
-            "name": "\u5730"
+            "name": "園",
+            "terms": "Park,公園,園"
+        },
+        "amenity/car_rental": {
+            "name": "租車舖",
+            "terms": "Car Rental,汽車租賃,汽車租賃處,租車,租車店,租車舖"
         },
         "place/city": {
-            "name": "\u57ce",
-            "terms": "City,\u57ce,\u57ce\u5e02"
-        },
-        "place/farm": {
-            "name": "\u8fb2\u5834"
-        },
-        "place/hamlet": {
-            "name": "\u6751\u4ed4",
-            "terms": "Hamlet,\u6751\u4ed4,\u6751\u838a"
-        },
-        "place/island": {
-            "name": "\u6d32",
-            "terms": "Island,\u6d32,\u5cf6,\u5cf6\u5dbc"
-        },
-        "place/islet": {
-            "name": "\u6d32\u4ed4"
-        },
-        "place/isolated_dwelling": {
-            "name": "\u5b64\u96e2\u5c45\u6240",
-            "terms": "Isolated Dwelling,\u5b64\u7acb\u5c45\u6240,\u5b64\u7acb\u6c11\u5c45,\u5b64\u96e2\u5c45\u6240"
-        },
-        "place/locality": {
-            "name": "\u5730\u65b9",
-            "terms": "Locality,\u5730\u65b9,\u5730\u9ede,\u5730\u9ede\uff08\u7121\u4eba\u5b9a\u5c45\uff09"
-        },
-        "place/square": {
-            "name": "\u524d\u5730"
-        },
-        "place/town": {
-            "name": "\u93ae",
-            "terms": "Town,\u57ce\u93ae,\u5e02\u93ae,\u93ae"
-        },
-        "place/village": {
-            "name": "\u6751",
-            "terms": "Village,\u6751,\u6751\u838a,\u6751\u93ae"
-        },
-        "playground/sandpit": {
-            "name": "\u7802\u6c60"
-        },
-        "point": {
-            "name": "\u9ede",
-            "terms": "Point,\u9ede"
-        },
-        "power": {
-            "name": "\u767c\u96fb\u5ee0"
-        },
-        "power/generator": {
-            "name": "\u767c\u96fb\u6a5f",
-            "terms": "Power Generator,\u767c\u96fb\u6a5f"
-        },
-        "power/line": {
-            "name": "\u4f9b\u96fb\u7dab",
-            "terms": "Power Line,\u4f9b\u96fb\u7dab,\u4f9b\u96fb\u7dda,\u96fb\u7dda"
-        },
-        "power/minor_line": {
-            "name": "\u7d30\u4f9b\u96fb\u7dab",
-            "terms": "Minor Power Line,\u5c0f\u4f9b\u96fb\u7dda,\u7d30\u4f9b\u96fb\u7dab"
-        },
-        "power/pole": {
-            "name": "\u96fb\u7dab\u6746",
-            "terms": "Power Pole,\u96fb\u7dab\u6746,\u96fb\u7dda\u687f"
-        },
-        "power/sub_station": {
-            "name": "\u914d\u96fb\u7ad9"
-        },
-        "power/tower": {
-            "name": "\u9ad8\u58d3\u96fb\u5854",
-            "terms": "High-Voltage Tower,\u9ad8\u58d3\u8f38\u96fb\u5854,\u9ad8\u58d3\u96fb\u5854"
-        },
-        "power/transformer": {
-            "name": "\u706b\u725b\u623f",
-            "terms": "Transformer,\u706b\u725b\u623f,\u8b8a\u96fb\u6240"
-        },
-        "railway": {
-            "name": "\u9435\u8def"
-        },
-        "railway/abandoned": {
-            "name": "\u5ee2\u9435\u8def",
-            "terms": "Abandoned Railway,\u5ee2\u68c4\u7684\u9435\u8def,\u5ee2\u9435\u8def,\u9435\u8def\u8def\u7dda\u8de1"
-        },
-        "railway/disused": {
-            "name": "\u505c\u7528\u9435\u8def",
-            "terms": "Disused Railway,\u505c\u7528\u9435\u8def,\u5ee2\u68c4\u7684\u9435\u8def"
-        },
-        "railway/level_crossing": {
-            "name": "\u9435\u9053\u53e3\uff08\u8eca\u9053\uff09"
-        },
-        "railway/monorail": {
-            "name": "\u55ae\u8ecc",
-            "terms": "Monorail,\u55ae\u8ecc,\u55ae\u8ecc\u9435\u8def,\u55ae\u8ecc\u96fb\u8eca"
-        },
-        "railway/narrow_gauge": {
-            "name": "\u7a84\u8ecc\u706b\u8eca",
-            "terms": "Narrow Gauge Rails,\u7a84\u8ecc\u706b\u8eca,\u7a84\u8ecc,\u7a84\u8ecc\u9435\u8def"
-        },
-        "railway/rail": {
-            "name": "\u8def\u8ecc",
-            "terms": "Rail,\u706b\u8eca\u8ecc,\u8def\u8ecc,\u8ecc,\u9435\u8ecc"
-        },
-        "railway/subway": {
-            "name": "\u5730\u4e0b\u9435\u8def",
-            "terms": "MTR,Mass Transit Railway,Subway,\u5730\u4e0b\u9435,\u5730\u4e0b\u9435\u8def,\u5730\u9435"
-        },
-        "railway/subway_entrance": {
-            "name": "\u5730\u4e0b\u9435\u8def\u5165\u53e3",
-            "terms": "Subway Entrance,\u5730\u4e0b\u9435\u8def\u5165\u53e3,\u5730\u9435\u5165\u53e3,\u5730\u9435\u53e3"
-        },
-        "railway/tram": {
-            "name": "\u96fb\u8eca",
-            "terms": "Tram,\u96fb\u8eca"
-        },
-        "relation": {
-            "name": "\u95dc\u4fc2",
-            "terms": "Relation,\u95dc\u4fc2,\u95dc\u7cfb"
-        },
-        "route/ferry": {
-            "name": "\u822a\u7dab",
-            "terms": "Ferry Route,\u6e21\u8f2a\u822a\u7dda,\u822a\u7dab,\u822a\u7dda"
-        },
-        "shop": {
-            "name": "\u8216",
-            "terms": "Shop,\u5546\u5e97,\u8216"
-        },
-        "shop/alcohol": {
-            "name": "\u9152\u838a",
-            "terms": "Liquor Store,\u9152\u5e97,\u9152\u838a,\u9152\u985e\u5546\u5e97"
-        },
-        "shop/bakery": {
-            "name": "\u9eaa\u98fd\u8216\u540c\u9905\u5bb6",
-            "terms": "Bakery,\u9905\u5bb6,\u9905\u5e97,\u9905\u8216,\u9eaa\u5305\u8216,\u9eaa\u98fd\u5e97,\u9eaa\u98fd\u8216,\u9eb5\u5305\u5e97,\u9eb5\u5305\u8216,\u9eb5\u98fd\u5e97"
-        },
-        "shop/beauty": {
-            "name": "\u7f8e\u5bb9\u9662",
-            "terms": "Beauty Shop,\u6307\u7532\u7f8e\u5bb9,\u7406\u5bb9\u9662,\u7f8e\u599d\u5e97,\u7f8e\u5bb9\u5e97,\u7f8e\u5bb9\u9662,\u8b77\u819a\u4e2d\u5fc3"
-        },
-        "shop/beverages": {
-            "name": "\u98f2\u54c1\u8216",
-            "terms": "Beverage Store,\u98f2\u54c1\u5e97,\u98f2\u54c1\u8216"
-        },
-        "shop/bicycle": {
-            "name": "\u55ae\u8eca\u8216",
-            "terms": "Bicycle Shop,\u55ae\u8eca\u5e97,\u55ae\u8eca\u8216,\u81ea\u884c\u8eca\u5e97"
-        },
-        "shop/boutique": {
-            "name": "\u6642\u88dd\u5e97",
-            "terms": "Boutique,\u6642\u88dd\u5e97,\u670d\u98fe\u5e97,\u7cbe\u54c1\u5e97"
-        },
-        "shop/butcher": {
-            "name": "\u8089\u8216",
-            "terms": "Butcher,\u8089\u8216,\u8089\u8ca9,\u8089\u92ea"
-        },
-        "shop/car": {
-            "name": "\u8eca\u884c",
-            "terms": "Car Dealership,\u8eca\u884c"
-        },
-        "shop/car_parts": {
-            "name": "\u6c7d\u8eca\u96f6\u4ef6\u8216",
-            "terms": "Car Parts Store,\u6c7d\u8eca\u914d\u4ef6\u5e97,\u6c7d\u8eca\u96f6\u4ef6\u5e97,\u6c7d\u8eca\u96f6\u4ef6\u8216"
-        },
-        "shop/car_repair": {
-            "name": "\u8eca\u623f",
-            "terms": "Car Repair Shop,\u6c7d\u8eca\u4fee\u7406\u5e97,\u6c7d\u8eca\u7dad\u4fee\u5e97,\u8eca\u623f"
-        },
-        "shop/clothes": {
-            "name": "\u886b\u8216",
-            "terms": "Clothing Store,\u670d\u88dd\u5e97,\u670d\u98fe\u5e97,\u886b\u8216"
-        },
-        "shop/computer": {
-            "name": "\u96fb\u8166\u8216",
-            "terms": "Computer Store,\u96fb\u8166\u5e97,\u96fb\u8166\u8216"
-        },
-        "shop/convenience": {
-            "name": "\u4fbf\u5229\u5e97",
-            "terms": "Convenience Store,\u4fbf\u5229\u5e97"
-        },
-        "shop/deli": {
-            "name": "\u7f8e\u98df\u8216",
-            "terms": "Deli,Delicatessen,\u7f8e\u98df\u8216,\u719f\u98df\u8216,\u719f\u98df\u5e97,\u7f8e\u98df\u5e97"
-        },
-        "shop/department_store": {
-            "name": "\u767e\u8ca8\u516c\u53f8",
-            "terms": "Department Store,\u767e\u8ca8\u516c\u53f8,\u767e\u8ca8\u5e97"
-        },
-        "shop/doityourself": {
-            "name": "\u81ea\u7d44\u8216",
-            "terms": "DIY Store,DIY\u5546\u5e97,\u81ea\u7d44\u8216"
-        },
-        "shop/electronics": {
-            "name": "\u96fb\u5668\u8216",
-            "terms": "Electronics Store,\u96fb\u5668\u8216,\u96fb\u5668\u5e97,\u96fb\u5b50\u7522\u54c1\u8216"
-        },
-        "shop/farm": {
-            "name": "\u6a94",
-            "terms": "Produce Stand,\u6a94,\u6c34\u679c\u6524,\u8fb2\u5834"
-        },
-        "shop/fishmonger": {
-            "name": "\u9b5a\u6a94"
-        },
-        "shop/florist": {
-            "name": "\u82b1\u8216",
-            "terms": "Florist,\u82b1\u5e97,\u82b1\u8216"
-        },
-        "shop/funeral_directors": {
-            "name": "\u6baf\u5100\u9928",
-            "terms": "Funeral Home,\u6baf\u5100\u9928"
-        },
-        "shop/furniture": {
-            "name": "\u50a2\u4fec\u8216",
-            "terms": "Furniture Store,\u50a2\u4fec\u8216,\u50a2\u5177\u5e97,\u5bb6\u5177\u5e97"
-        },
-        "shop/garden_centre": {
-            "name": "\u5712\u85dd\u8216",
-            "terms": "Garden Center,\u5712\u85dd\u4e2d\u5fc3,\u5712\u85dd\u8216,\u82b1\u5e97"
-        },
-        "shop/gift": {
-            "name": "\u79ae\u54c1\u8216",
-            "terms": "Gift Shop,\u79ae\u54c1\u5e97,\u79ae\u54c1\u8216,\u79ae\u7269\u5e97"
-        },
-        "shop/greengrocer": {
-            "name": "\u83dc\u6a94",
-            "terms": "Greengrocer,\u679c\u852c\u5e97,\u83dc\u6a94,\u852c\u679c\u5e97"
-        },
-        "shop/hairdresser": {
-            "name": "\u98db\u9aee\u8216",
-            "terms": "Hairdresser,\u7406\u9aee\u5e97,\u98db\u9aee\u8216"
-        },
-        "shop/hardware": {
-            "name": "\u4e94\u91d1\u8216",
-            "terms": "Hardware Store,\u4e94\u91d1\u5e97,\u4e94\u91d1\u8216"
-        },
-        "shop/hifi": {
-            "name": "\u97f3\u97ff\u8216",
-            "terms": "Hifi Store,\u97f3\u97ff\u5e97,\u97f3\u97ff\u8216"
-        },
-        "shop/laundry": {
-            "name": "\u6d17\u8863\u8216",
-            "terms": "Laundry,\u6d17\u8863\u5e97,\u6d17\u8863\u8216"
-        },
-        "shop/locksmith": {
-            "name": "\u9396\u5320",
-            "terms": "Locksmith,\u9396\u5320,\u9396\u5320\u92ea,\u958b\u9396\u4f6c"
-        },
-        "shop/mall": {
-            "name": "\u5927\u5546\u5834",
-            "terms": "Mall,\u5546\u5834,\u5927\u5546\u5834"
-        },
-        "shop/mobile_phone": {
-            "name": "\u96fb\u8a71\u8216",
-            "terms": "Mobile Phone Store,\u624b\u6a5f\u5e97,\u884c\u52d5\u96fb\u8a71\u5e97,\u96fb\u8a71\u8216"
-        },
-        "shop/motorcycle": {
-            "name": "\u96fb\u55ae\u8eca\u884c",
-            "terms": "Motorcycle Dealership,\u6469\u6258\u8eca\u884c,\u96fb\u55ae\u8eca\u884c"
-        },
-        "shop/music": {
-            "name": "\u5531\u7247\u8216",
-            "terms": "Music Store,\u5531\u7247\u8216,\u97f3\u6a02\u5e97"
-        },
-        "shop/optician": {
-            "name": "\u773c\u93e1\u92ea",
-            "terms": "Optician,\u773c\u93e1\u5e97,\u773c\u93e1\u884c,\u773c\u93e1\u92ea"
-        },
-        "shop/pet": {
-            "name": "\u5bf5\u7269\u8216",
-            "terms": "Pet Store,\u5bf5\u7269\u5e97,\u5bf5\u7269\u8216"
-        },
-        "shop/photo": {
-            "name": "\u5f71\u76f8\u8216",
-            "terms": "Photography Store,\u5f71\u76f8\u8216,\u7167\u76f8\u9928"
-        },
-        "shop/pyrotechnics": {
-            "name": "\u7159\u82b1\u8216"
-        },
-        "shop/radiotechnics": {
-            "name": "\u7121\u7dab\u96fb\uff0f\u96fb\u5b50\u96f6\u4ef6\u8216",
-            "terms": "Radio Component Store,Electronic Component Store,\u7121\u7dda\u96fb\u96f6\u4ef6\u8216,\u7121\u7dab\u96fb\u96f6\u4ef6\u8216,\u96fb\u5b50\u96f6\u4ef6\u8216"
-        },
-        "shop/religion": {
-            "name": "\u5b97\u6559\u8216"
-        },
-        "shop/shoes": {
-            "name": "\u978b\u8216",
-            "terms": "Shoe Store,\u978b\u5e97,\u978b\u8216"
-        },
-        "shop/sports": {
-            "name": "\u904b\u52d5\u8216",
-            "terms": "Sporting Goods Store,\u904b\u52d5\u7528\u54c1\u5e97,\u904b\u52d5\u8216,\u9ad4\u80b2,\u9ad4\u80b2\u7528\u54c1\u5e97"
-        },
-        "shop/stationery": {
-            "name": "\u6587\u5177\u8216",
-            "terms": "Stationery Store,\u6587\u5177\u5e97,\u6587\u5177\u8216"
-        },
-        "shop/supermarket": {
-            "name": "\u8d85\u7d1a\u5e02\u5834",
-            "terms": "Supermarket,\u8d85\u7d1a\u5e02\u5834"
-        },
-        "shop/toys": {
-            "name": "\u73a9\u5177\u8216",
-            "terms": "Toy Store,\u73a9\u5177\u5e97,\u73a9\u5177\u8216"
-        },
-        "shop/travel_agency": {
-            "name": "\u65c5\u884c\u793e",
-            "terms": "Travel Agency,\u65c5\u884c\u793e"
-        },
-        "shop/tyres": {
-            "name": "\u8eda\u8216",
-            "terms": "Tire Store,\u8eda\u8216,\u8f2a\u80ce\u5e97"
-        },
-        "shop/vacant": {
-            "name": "\u5409\u8216"
-        },
-        "shop/variety_store": {
-            "name": "\u96dc\u8ca8\u8216",
-            "terms": "Variety Store,\u96dc\u8ca8\u5e97,\u96dc\u8ca8\u8216"
-        },
-        "shop/video": {
-            "name": "\u5f71\u8996\u5e97",
-            "terms": "Video Store,\u5f71\u50cf\u5e97,\u5f71\u789f\u5e97,\u5f71\u8996\u5e97"
-        },
-        "shop/wine": {
-            "name": "\u9152\u8216",
-            "terms": "Wine Shop,\u9152\u8216"
-        },
-        "tourism": {
-            "name": "\u65c5\u884c"
-        },
-        "tourism/alpine_hut": {
-            "name": "\u9ad8\u5c71\u5c4b\u4ed4",
-            "terms": "Alpine Hut,\u9ad8\u5c71\u5c0f\u5c4b,\u9ad8\u5c71\u5c4b\u4ed4"
-        },
-        "tourism/artwork": {
-            "name": "\u85dd\u8853\u54c1",
-            "terms": "Artwork,\u85dd\u8853\u54c1"
-        },
-        "tourism/attraction": {
-            "name": "\u65c5\u884c\u540d\u52dd",
-            "terms": "Tourist Attraction,\u65c5\u884c\u540d\u52dd,\u65c5\u904a\u540d\u52dd,\u89c0\u5149\u9ede"
-        },
-        "tourism/caravan_site": {
-            "name": "\u9732\u71df\u8eca\u71df\u5730",
-            "terms": "RV Park,\u623f\u8eca\u71df\u5730,\u9732\u71df\u8eca\u505c\u8eca\u5834,\u9732\u71df\u8eca\u71df\u5730"
-        },
-        "tourism/guest_house": {
-            "name": "\u8cd3\u9928",
-            "terms": "Guest House,\u8cd3\u9928"
-        },
-        "tourism/hostel": {
-            "name": "\u65c5\u820d",
-            "terms": "Hostel,\u62db\u5f85\u6240,\u65c5\u820d"
-        },
-        "tourism/hotel": {
-            "name": "\u9152\u5e97",
-            "terms": "Hotel,\u9152\u5e97"
-        },
-        "tourism/information": {
-            "name": "\u8cc7\u8a0a\u8655",
-            "terms": "Information,\u8cc7\u8a0a,\u8cc7\u8a0a\u8655"
-        },
-        "tourism/motel": {
-            "name": "\u6c7d\u8eca\u9152\u5e97",
-            "terms": "Motel,\u6c7d\u8eca\u65c5\u9928,\u6c7d\u8eca\u9152\u5e97"
-        },
-        "tourism/museum": {
-            "name": "\u535a\u7269\u9928",
-            "terms": "Museum,\u535a\u7269\u9928"
-        },
-        "tourism/picnic_site": {
-            "name": "\u90ca\u904a\u5730\u9ede",
-            "terms": "Picnic Site,\u90ca\u904a\u5730\u9ede,\u91ce\u9910\u5730\u9ede"
-        },
-        "tourism/theme_park": {
-            "name": "\u4e3b\u984c\u516c\u5712",
-            "terms": "Theme Park,\u4e3b\u984c\u516c\u5712"
-        },
-        "tourism/viewpoint": {
-            "name": "\u89c0\u666f\u81fa",
-            "terms": "Viewpoint,\u666f\u9ede,\u773a\u671b,\u77ad\u671b\u53f0,\u77ad\u671b\u81fa,\u89c0\u666f\u53f0,\u89c0\u666f\u81fa,\u89c0\u666f\u9ede"
-        },
-        "tourism/zoo": {
-            "name": "\u52d5\u7269\u5712",
-            "terms": "Zoo,\u52d5\u7269\u5712"
-        },
-        "type/boundary": {
-            "name": "\u754c",
-            "terms": "Boundary,\u754c,\u908a\u754c"
-        },
-        "type/boundary/administrative": {
-            "name": "\u884c\u653f\u908a\u754c",
-            "terms": "Administrative Boundary,\u884c\u653f\u754c\u7dda,\u884c\u653f\u908a\u754c"
-        },
-        "type/multipolygon": {
-            "name": "\u5e7e\u591a\u908a\u5f62"
-        },
-        "type/restriction": {
-            "name": "\u9650\u5236",
-            "terms": "Restriction,\u9650\u5236"
-        },
-        "type/restriction/no_left_turn": {
-            "name": "\u4e0d\u5f97\u5de6\u8f49"
-        },
-        "type/restriction/no_right_turn": {
-            "name": "\u4e0d\u5f97\u53f3\u8f49"
-        },
-        "type/restriction/no_straight_on": {
-            "name": "\u4e0d\u5f97\u76f4\u884c"
-        },
-        "type/restriction/no_u_turn": {
-            "name": "\u4e0d\u5f97\u5012\u982d"
-        },
-        "type/restriction/only_left_turn": {
-            "name": "\u53ea\u80fd\u5de6\u8f49"
-        },
-        "type/restriction/only_right_turn": {
-            "name": "\u53ea\u80fd\u53f3\u8f49"
-        },
-        "type/restriction/only_straight_on": {
-            "name": "\u53ea\u80fd\u76f4\u884c"
+            "name": "城",
+            "terms": "City,城,城市"
+        },
+        "building": {
+            "name": "屋宇",
+            "terms": "Building,屋宇,建築物"
+        },
+        "leisure/garden": {
+            "name": "花園",
+            "terms": "Garden,公園,果園,植物園,花園,菜園"
+        },
+        "historic/memorial": {
+            "name": "細紀念碑",
+            "terms": "Memorial,碑,紀念碑,紀念館,細紀念碑"
         },
         "type/restriction/only_u_turn": {
-            "name": "\u53ea\u80fd\u5012\u982d"
+            "name": "只能倒頭"
         },
-        "type/route": {
-            "name": "\u8def\u7dab",
-            "terms": "Route,\u8def\u7dab,\u8def\u7dda"
+        "barrier/lift_gate": {
+            "name": "道閘",
+            "terms": "Lift Gate,擋車器,道閘"
         },
-        "type/route/bicycle": {
-            "name": "\u55ae\u8eca\u8def\u7dab",
-            "terms": "Cycle Route,\u55ae\u8eca\u8def\u7dab,\u55ae\u8eca\u8def\u7dda"
-        },
-        "type/route/bus": {
-            "name": "\u5df4\u58eb\u8def\u7dab",
-            "terms": "Bus Route,\u516c\u5171\u6c7d\u8eca\u8def\u7dda,\u5df4\u58eb\u8def\u7dab"
-        },
-        "type/route/detour": {
-            "name": "\u7e5e\u9053\u8def\u7dab",
-            "terms": "Detour Route,\u5de1\u904a\u8def\u7dab,\u5de1\u904a\u8def\u7dda,\u7e5e\u9053,\u7e5e\u9053\u8def\u7dab,\u7e5e\u9053\u8def\u7dda"
-        },
-        "type/route/ferry": {
-            "name": "\u822a\u7dab",
-            "terms": "Ferry Route,\u6e21\u8f2a\u822a\u7dda,\u822a\u7dab"
-        },
-        "type/route/foot": {
-            "name": "\u884c\u4eba\u8def\u7dab",
-            "terms": "Foot Route,\u6b65\u884c\u8def\u7dda,\u884c\u4eba\u8def\u7dab,\u884c\u4eba\u8def\u7dda"
-        },
-        "type/route/hiking": {
-            "name": "\u884c\u5c71\u8def\u7dab",
-            "terms": "Hiking Route,\u884c\u5c71\u8def\u7dab,\u884c\u5c71\u8def\u7dda"
-        },
-        "type/route/pipeline": {
-            "name": "\u4f9b\u6c34\u8def\u7dab",
-            "terms": "Pipeline Route,\u4f9b\u6c34\u8def\u7dab,\u4f9b\u6c34\u8def\u7dda,\u6c34\u7ba1\u8def\u7dab,\u7ba1\u9053\u8def\u7dda"
-        },
-        "type/route/power": {
-            "name": "\u4f9b\u96fb\u8def\u7dab",
-            "terms": "Power Route,\u4f9b\u96fb\u8def\u7dab,\u4f9b\u96fb\u8def\u7dda"
-        },
-        "type/route/road": {
-            "name": "\u884c\u8eca\u8def\u7dab",
-            "terms": "Road Route,\u884c\u8eca\u8def\u7dab,\u884c\u8eca\u8def\u7dda,\u9053\u8def\u8def\u7dda"
-        },
-        "type/route/train": {
-            "name": "\u706b\u8eca\u8def\u7dab",
-            "terms": "Train Route,\u706b\u8eca\u7dab,\u706b\u8eca\u7dda,\u706b\u8eca\u8def\u7dab,\u9435\u8def\u7dab,\u9435\u8def\u7dda,\u9435\u8def\u8def\u7dab,\u9435\u8def\u8def\u7dda"
-        },
-        "type/route/tram": {
-            "name": "\u96fb\u8eca\u8def\u7dab",
-            "terms": "Tram Route,\u96fb\u8eca\u8def\u7dab,\u96fb\u8eca\u8def\u7dda"
-        },
-        "type/route_master": {
-            "name": "\u8def\u7dab\u7e3d\u7ba1",
-            "terms": "Route Master,\u7dda\u8def\u7e3d\u7ba1,\u8def\u7dab\u7e3d\u7ba1,\u8def\u7dda\u7e3d\u76ee"
-        },
-        "vertex": {
-            "name": "\u5176\u4ed6",
-            "terms": "Other,\u5176\u4ed6,\u5176\u5b83"
-        },
-        "waterway": {
-            "name": "\u6c34\u8def"
-        },
-        "waterway/canal": {
-            "name": "\u6c34\u9053",
-            "terms": "Canal,\u6c34\u9053,\u904b\u6cb3"
-        },
-        "waterway/dam": {
-            "name": "\u58e9",
-            "terms": "Dam,\u5824\u58e9,\u58e9,\u6c34\u58e9"
-        },
-        "waterway/ditch": {
-            "name": "\u6e9d",
-            "terms": "Ditch,\u6e20,\u6e9d,\u6e9d\u6e20"
-        },
-        "waterway/drain": {
-            "name": "\u6392\u6c34\u9053",
-            "terms": "Drain,\u4e0b\u6c34\u9053,\u6392\u6c34\u9053,\u6e20,\u6e9d"
-        },
-        "waterway/river": {
-            "name": "\u6c5f",
-            "terms": "River,\u6c5f,\u6c5f\u6cb3,\u6cb3,\u6cb3\u6d41"
-        },
-        "waterway/riverbank": {
-            "name": "\u6c5f\u5cb8"
+        "leisure/swimming_pool": {
+            "name": "游水池",
+            "terms": "Swimming Pool,游水池,游泳池,遊泳池"
         },
         "waterway/stream": {
-            "name": "\u6d8c",
-            "terms": "Stream,\u5c0f\u6cb3,\u5c0f\u6eaa,\u6d8c,\u6eaa,\u6eaa\u6d41"
+            "name": "涌",
+            "terms": "Stream,小河,小溪,涌,溪,溪流"
+        },
+        "railway": {
+            "name": "鐵路"
+        },
+        "amenity/library": {
+            "name": "圖書館",
+            "terms": "Library,圖書館,拉記"
+        },
+        "shop/stationery": {
+            "name": "文具舖",
+            "terms": "Stationery Store,文具店,文具舖"
+        },
+        "highway/secondary_link": {
+            "name": "中路駁路",
+            "terms": "Secondary Link,中路駁路,次級道路連接路,次要道路匝道"
+        },
+        "highway/living_street": {
+            "name": "居住街道",
+            "terms": "Living Street,居住街道,生活街道"
+        },
+        "type/restriction/only_right_turn": {
+            "name": "只能右轉"
+        },
+        "power/sub_station": {
+            "name": "配電站"
+        },
+        "highway/motorway": {
+            "name": "高速公路",
+            "terms": "Motorway,高速公路"
+        },
+        "natural/bay": {
+            "name": "灣",
+            "terms": "Bay,海灣,灣"
+        },
+        "aeroway/runway": {
+            "name": "跑道",
+            "terms": "Runway,跑道"
+        },
+        "railway/monorail": {
+            "name": "單軌",
+            "terms": "Monorail,單軌,單軌鐵路,單軌電車"
+        },
+        "landuse/military": {
+            "name": "軍地"
+        },
+        "office/physician": {
+            "name": "醫生"
+        },
+        "shop/bicycle": {
+            "name": "單車舖",
+            "terms": "Bicycle Shop,單車店,單車舖,自行車店"
+        },
+        "barrier/city_wall": {
+            "name": "城牆",
+            "terms": "City Wall,城墻,城牆"
+        },
+        "office/employment_agency": {
+            "name": "薦人館",
+            "terms": "Employment Agency,就業機構,職業介紹所,薦人館"
+        },
+        "tourism/guest_house": {
+            "name": "賓館",
+            "terms": "Guest House,賓館"
+        },
+        "boundary/administrative": {
+            "name": "行政界",
+            "terms": "Administrative Boundary,行政區域界線,行政區界,行政界,行政界線,行政邊界"
+        },
+        "landuse/aquaculture": {
+            "name": "水產"
+        },
+        "amenity": {
+            "name": "便利設施"
+        },
+        "amenity/fuel": {
+            "name": "油站",
+            "terms": "Gas Station,加氣站,加汽站,加油站,油站"
+        },
+        "type/route/tram": {
+            "name": "電車路綫",
+            "terms": "Tram Route,電車路綫,電車路線"
+        },
+        "leisure/pitch/american_football": {
+            "name": "美式足球場",
+            "terms": "American Football Field,美式足球場"
+        },
+        "place/island": {
+            "name": "洲",
+            "terms": "Island,洲,島,島嶼"
+        },
+        "railway/level_crossing": {
+            "name": "鐵道口（車道）"
+        },
+        "man_made/pier": {
+            "name": "埗頭",
+            "terms": "Pier,埗頭,碼頭"
+        },
+        "shop/farm": {
+            "name": "檔",
+            "terms": "Produce Stand,檔,水果攤,農場"
+        },
+        "highway/road": {
+            "name": "未明道",
+            "terms": "Unknown Road,不明路,不知路,未明路,未知嘅路,未知種類的道路,未知種類道路"
+        },
+        "address": {
+            "name": "地埗",
+            "terms": "Address,地址,地埗,址"
+        },
+        "highway/primary_link": {
+            "name": "大路駁路",
+            "terms": "Primary Link,主要道路匝道,主要道路連接路,大路駁路"
+        },
+        "man_made/water_works": {
+            "name": "供水廠",
+            "terms": "Water Works,供水廠,水務設施"
+        },
+        "shop/greengrocer": {
+            "name": "菜檔",
+            "terms": "Greengrocer,果蔬店,菜檔,蔬果店"
+        },
+        "amenity/pub": {
+            "name": "酒館",
+            "terms": "Pub,酒館"
+        },
+        "shop/religion": {
+            "name": "宗教舖"
+        },
+        "golf/rough": {
+            "name": "深草區",
+            "terms": "Rough,深草區"
+        },
+        "man_made/breakwater": {
+            "name": "防波堤",
+            "terms": "Breakwater,防波堤"
+        },
+        "shop/shoes": {
+            "name": "鞋舖",
+            "terms": "Shoe Store,鞋店,鞋舖"
+        },
+        "type/route/road": {
+            "name": "行車路綫",
+            "terms": "Road Route,行車路綫,行車路線,道路路線"
+        },
+        "amenity/ranger_station": {
+            "name": "郊野訪客處",
+            "terms": "Ranger Station,郊野訪客處,野郊訪客處"
+        },
+        "office/financial": {
+            "name": "財務部寫字樓",
+            "terms": "Financial Office,財務部寫字樓"
+        },
+        "highway/track": {
+            "name": "無修道"
+        },
+        "shop/wine": {
+            "name": "酒舖",
+            "terms": "Wine Shop,酒舖"
+        },
+        "shop/hairdresser": {
+            "name": "飛髮舖",
+            "terms": "Hairdresser,理髮店,飛髮舖"
+        },
+        "aerialway/platter": {
+            "name": "吊盤",
+            "terms": "Platter Lift,吊盤"
+        },
+        "amenity/swimming_pool": {
+            "name": "游水池"
+        },
+        "man_made/tower": {
+            "name": "塔",
+            "terms": "Tower,塔"
+        },
+        "shop/florist": {
+            "name": "花舖",
+            "terms": "Florist,花店,花舖"
+        },
+        "type/route/ferry": {
+            "name": "航綫",
+            "terms": "Ferry Route,渡輪航線,航綫"
+        },
+        "amenity/atm": {
+            "name": "提款機",
+            "terms": "ATM,提款機,櫃員機,自動提款機,自動櫃員機"
+        },
+        "landuse/industrial": {
+            "name": "工地"
+        },
+        "natural/sand": {
+            "name": "砂"
+        },
+        "place/locality": {
+            "name": "地方",
+            "terms": "Locality,地方,地點,地點（無人定居）"
+        },
+        "type/route/hiking": {
+            "name": "行山路綫",
+            "terms": "Hiking Route,行山路綫,行山路線"
+        },
+        "amenity/courthouse": {
+            "name": "法庭",
+            "terms": "Courthouse,法庭,法院,臬署,裁判署"
+        },
+        "tourism/hostel": {
+            "name": "旅舍",
+            "terms": "Hostel,招待所,旅舍"
+        },
+        "leisure/pitch/volleyball": {
+            "name": "排球場",
+            "terms": "Volleyball Court,排球場"
+        },
+        "place/hamlet": {
+            "name": "村仔",
+            "terms": "Hamlet,村仔,村莊"
+        },
+        "highway": {
+            "name": "公路"
+        },
+        "area": {
+            "name": "範圍",
+            "terms": "Area,區域,範圍"
+        },
+        "amenity/theatre": {
+            "name": "舞臺戲院",
+            "terms": "Theater,劇場,劇院,戲院,舞臺戲院,電影院"
+        },
+        "highway/pedestrian_line": {
+            "name": "行人街"
+        },
+        "man_made/lighthouse": {
+            "name": "燈塔",
+            "terms": "Lighthouse,燈塔"
+        },
+        "type/route/train": {
+            "name": "火車路綫",
+            "terms": "Train Route,火車綫,火車線,火車路綫,鐵路綫,鐵路線,鐵路路綫,鐵路路線"
+        },
+        "barrier/fence": {
+            "name": "欄",
+            "terms": "Fence,欄,欄柵,籬,籬笆"
+        },
+        "landuse/cemetery": {
+            "name": "墳場",
+            "terms": "Cemetery,墓地,墳場"
+        },
+        "railway/rail": {
+            "name": "路軌",
+            "terms": "Rail,火車軌,路軌,軌,鐵軌"
+        },
+        "natural/scree": {
+            "name": "碎石坡",
+            "terms": "Scree,碎石坡"
+        },
+        "office/government": {
+            "name": "衙門",
+            "terms": "Government Office,公署,政府合署,政府樓,署,衙門"
+        },
+        "amenity/fountain": {
+            "name": "噴水池",
+            "terms": "Fountain,噴水池,噴泉,水景"
+        },
+        "railway/disused": {
+            "name": "停用鐵路",
+            "terms": "Disused Railway,停用鐵路,廢棄的鐵路"
+        },
+        "shop/doityourself": {
+            "name": "自組舖",
+            "terms": "DIY Store,DIY商店,自組舖"
+        },
+        "amenity/taxi": {
+            "name": "的士站",
+            "terms": "Taxi Stand,出租車站,的士站,計程車站"
+        },
+        "amenity/grave_yard": {
+            "name": "墳地",
+            "terms": "Graveyard,墓地,墳地,墳場"
+        },
+        "man_made/water_tower": {
+            "name": "水塔",
+            "terms": "Water Tower,水塔"
+        },
+        "railway/subway_entrance": {
+            "name": "地下鐵路入口",
+            "terms": "Subway Entrance,地下鐵路入口,地鐵入口,地鐵口"
+        },
+        "man_made/cutline": {
+            "name": "分割綫",
+            "terms": "Cut line,分割綫,分界線,山林分界線"
+        },
+        "tourism/caravan_site": {
+            "name": "露營車營地",
+            "terms": "RV Park,房車營地,露營車停車場,露營車營地"
+        },
+        "shop/locksmith": {
+            "name": "鎖匠",
+            "terms": "Locksmith,鎖匠,鎖匠鋪,開鎖佬"
+        },
+        "office/insurance": {
+            "name": "保險公司寫字樓",
+            "terms": "Insurance Office,保險公司,保險公司寫字樓"
+        },
+        "shop/furniture": {
+            "name": "傢俬舖",
+            "terms": "Furniture Store,傢俬舖,傢具店,家具店"
+        },
+        "leisure/pitch": {
+            "name": "運動場",
+            "terms": "Sport Pitch,運動場,運動場地,運動場所"
+        },
+        "tourism/hotel": {
+            "name": "酒店",
+            "terms": "Hotel,酒店"
+        },
+        "shop/bakery": {
+            "name": "麪飽舖同餅家",
+            "terms": "Bakery,餅家,餅店,餅舖,麪包舖,麪飽店,麪飽舖,麵包店,麵包舖,麵飽店"
+        },
+        "historic/monument": {
+            "name": "大紀念碑",
+            "terms": "Monument,古跡,古蹟,大紀念碑,碑,紀念碑"
+        },
+        "emergency/phone": {
+            "name": "求助電話",
+            "terms": "Emergency Phone,求助電話,緊急電話"
+        },
+        "type/route/bicycle": {
+            "name": "單車路綫",
+            "terms": "Cycle Route,單車路綫,單車路線"
+        },
+        "golf/bunker": {
+            "name": "沙坑",
+            "terms": "Sand Trap,沙坑"
+        },
+        "leisure/pitch/soccer": {
+            "name": "足球場",
+            "terms": "Soccer Field,足球場"
+        },
+        "type/multipolygon": {
+            "name": "幾多邊形"
+        },
+        "shop/vacant": {
+            "name": "吉舖"
+        },
+        "historic": {
+            "name": "史蹟",
+            "terms": "Historic Site,史跡,史蹟,歷史遺址,歷史遺跡"
+        },
+        "amenity/hospital": {
+            "name": "醫院地"
+        },
+        "leisure/playground": {
+            "name": "遊樂場",
+            "terms": "Playground,遊樂場"
+        },
+        "amenity/telephone": {
+            "name": "電話",
+            "terms": "Telephone,電話"
+        },
+        "landuse/residential": {
+            "name": "住地"
+        },
+        "type/restriction/only_left_turn": {
+            "name": "只能左轉"
+        },
+        "leisure/stadium": {
+            "name": "大體育館",
+            "terms": "Stadium,大體育館,體育,體育場"
+        },
+        "amenity/drinking_water": {
+            "name": "飲水處",
+            "terms": "Drinking Water,水源,活水,飲水,飲水處,飲用水"
+        },
+        "highway/mini_roundabout": {
+            "name": "細迴旋處",
+            "terms": "Mini-Roundabout,小型環島,小型迴旋處,細迴旋處"
+        },
+        "barrier/kissing_gate": {
+            "name": "單人轉門 ",
+            "terms": "Kissing Gate,單人轉門"
+        },
+        "type/restriction/no_u_turn": {
+            "name": "不得倒頭"
+        },
+        "amenity/townhall": {
+            "name": "大會堂",
+            "terms": "Town Hall,大會堂,市政府,市政廳"
+        },
+        "highway/service/parking_aisle": {
+            "name": "泊車通道",
+            "terms": "Parking Aisle,停車場通道,泊車通道"
+        },
+        "natural/water": {
+            "name": "水",
+            "terms": "Water,水"
+        },
+        "barrier/cycle_barrier": {
+            "name": "單車減速欄",
+            "terms": "Cycle Barrier,單車減速欄,單車矮欄"
+        },
+        "embankment": {
+            "name": "基堤"
+        },
+        "shop/sports": {
+            "name": "運動舖",
+            "terms": "Sporting Goods Store,運動用品店,運動舖,體育,體育用品店"
+        },
+        "power/line": {
+            "name": "供電綫",
+            "terms": "Power Line,供電綫,供電線,電線"
+        },
+        "power/pole": {
+            "name": "電綫杆",
+            "terms": "Power Pole,電綫杆,電線桿"
+        },
+        "shop/laundry": {
+            "name": "洗衣舖",
+            "terms": "Laundry,洗衣店,洗衣舖"
+        },
+        "natural/peak": {
+            "name": "峯",
+            "terms": "Peak,山峰,山頂,峯"
+        },
+        "highway/tertiary": {
+            "name": "細道",
+            "terms": "Tertiary Road,三級道路,細路"
+        },
+        "tourism/artwork": {
+            "name": "藝術品",
+            "terms": "Artwork,藝術品"
+        },
+        "amenity/bank": {
+            "name": "銀行",
+            "terms": "Bank,銀號,銀行"
+        },
+        "landuse/retail": {
+            "name": "舖地"
+        },
+        "shop/pyrotechnics": {
+            "name": "煙花舖"
+        },
+        "amenity/arts_centre": {
+            "name": "美術館",
+            "terms": "Arts Center,美術中心,美術館,藝術中心,藝術館"
+        },
+        "shop/travel_agency": {
+            "name": "旅行社",
+            "terms": "Travel Agency,旅行社"
+        },
+        "amenity/restaurant": {
+            "name": "餐廳",
+            "terms": "Restaurant,茶樓,酒家,酒樓,飯店,飯館,餐廳,餐館"
+        },
+        "type/route/detour": {
+            "name": "繞道路綫",
+            "terms": "Detour Route,巡遊路綫,巡遊路線,繞道,繞道路綫,繞道路線"
+        },
+        "amenity/police": {
+            "name": "差館",
+            "terms": "Police,差館,派出所,警察局,警局,警署"
+        },
+        "place/farm": {
+            "name": "農場"
+        },
+        "highway/service/driveway": {
+            "name": "宅外車道",
+            "terms": "Driveway,宅外車道,車線,車道"
+        },
+        "leisure/pitch/basketball": {
+            "name": "籃球場",
+            "terms": "Basketball Court,球場,籃球場"
+        },
+        "building/residential": {
+            "name": "住宅樓宇",
+            "terms": "Residential Building,住宅建築物,住宅樓宇"
+        },
+        "shop/tyres": {
+            "name": "軚舖",
+            "terms": "Tire Store,軚舖,輪胎店"
+        },
+        "leisure": {
+            "name": "消閒"
+        },
+        "amenity/post_office": {
+            "name": "郵政局",
+            "terms": "Post Office,書信館,郵局,郵政局"
+        },
+        "natural/volcano": {
+            "name": "火山",
+            "terms": "Volcano,火山"
+        },
+        "aerialway/gondola": {
+            "name": "吊船",
+            "terms": "Gondola,吊船"
+        },
+        "amenity/bar": {
+            "name": "酒吧",
+            "terms": "Bar,吧,酒吧"
+        },
+        "tourism/museum": {
+            "name": "博物館",
+            "terms": "Museum,博物館"
+        },
+        "barrier/stile": {
+            "name": "梯梃",
+            "terms": "Stile,梯梃,梯磴"
+        },
+        "shop/boutique": {
+            "name": "時裝店",
+            "terms": "Boutique,時裝店,服飾店,精品店"
+        },
+        "aerialway/pylon": {
+            "name": "吊車塔",
+            "terms": "Areialway Pylon,吊車塔,纜車纜塔"
+        },
+        "railway/narrow_gauge": {
+            "name": "窄軌火車",
+            "terms": "Narrow Gauge Rails,窄軌火車,窄軌,窄軌鐵路"
+        },
+        "area/highway": {
+            "name": "道面"
+        },
+        "leisure/pitch/tennis": {
+            "name": "網球場",
+            "terms": "Tennis Court,網球場"
+        },
+        "highway/trunk": {
+            "name": "幹道",
+            "terms": "Trunk Road,幹線道路,幹路,幹道"
+        },
+        "craft/watchmaker": {
+            "name": "鐘錶匠",
+            "terms": "Watchmaker,鐘錶匠"
+        },
+        "golf/tee": {
+            "name": "發球區",
+            "terms": "Tee Box,發球區,開球區"
+        },
+        "office": {
+            "name": "寫字樓",
+            "terms": "Office,寫字樓,辦公室"
+        },
+        "amenity/fire_station": {
+            "name": "滅火局",
+            "terms": "Fire Station,滅火局,水車館,消防局,消防站,救火局"
+        },
+        "barrier/entrance": {
+            "name": "入口"
+        },
+        "emergency/fire_hydrant": {
+            "name": "消防水龍頭",
+            "terms": "Fire Hydrant,消防栓,消防水龍頭"
+        },
+        "natural/water/pond": {
+            "name": "塘",
+            "terms": "Pond,塘,水池,池,池塘"
+        },
+        "shop/beverages": {
+            "name": "飲品舖",
+            "terms": "Beverage Store,飲品店,飲品舖"
+        },
+        "amenity/marketplace": {
+            "name": "街市",
+            "terms": "Marketplace,市場,菜市場,街市"
+        },
+        "building/industrial": {
+            "name": "工業樓宇",
+            "terms": "Industrial Building,工業建築物,工業樓宇"
+        },
+        "power/tower": {
+            "name": "高壓電塔",
+            "terms": "High-Voltage Tower,高壓輸電塔,高壓電塔"
+        },
+        "aerialway/cable_car": {
+            "name": "吊車",
+            "terms": "Cable Car,吊車,䌫車"
+        },
+        "landuse/military/airfield": {
+            "name": "軍用機場"
+        },
+        "office/estate_agent": {
+            "name": "管業處",
+            "terms": "Real Estate Office,地產代理,管業處"
+        },
+        "shop/toys": {
+            "name": "玩具舖",
+            "terms": "Toy Store,玩具店,玩具舖"
+        },
+        "type/restriction/no_straight_on": {
+            "name": "不得直行"
+        },
+        "highway/pedestrian_area": {
+            "name": "行人地"
+        },
+        "amenity/cafe": {
+            "name": "茶座",
+            "terms": "Cafe,㗎啡室,㗎啡廳,咖啡,咖啡室,咖啡廳,茶座,荼座"
+        },
+        "highway/service/emergency_access": {
+            "name": "緊急通道",
+            "terms": "Emergency Access,緊急通道"
+        },
+        "power/transformer": {
+            "name": "火牛房",
+            "terms": "Transformer,火牛房,變電所"
+        },
+        "power/generator": {
+            "name": "發電機",
+            "terms": "Power Generator,發電機"
+        },
+        "shop/pet": {
+            "name": "寵物舖",
+            "terms": "Pet Store,寵物店,寵物舖"
+        },
+        "natural/wetland": {
+            "name": "澤",
+            "terms": "Wetland,潮間帶,澤,濕地"
+        },
+        "man_made/survey_point": {
+            "name": "測量點",
+            "terms": "Survey Point,測量點"
+        },
+        "type/route/power": {
+            "name": "供電路綫",
+            "terms": "Power Route,供電路綫,供電路線"
+        },
+        "highway/service/alley": {
+            "name": "巷",
+            "terms": "Alley,巷,後巷,橫巷,窄巷,胡同"
+        },
+        "shop/department_store": {
+            "name": "百貨公司",
+            "terms": "Department Store,百貨公司,百貨店"
+        },
+        "historic/wayside_cross": {
+            "name": "路邊十字架",
+            "terms": "Wayside Cross,路邊十字架"
+        },
+        "natural/cliff": {
+            "name": "崖",
+            "terms": "Cliff,崖,懸崖"
+        },
+        "building/garage": {
+            "name": "車庫",
+            "terms": "Garage,車庫"
+        },
+        "highway/footway": {
+            "name": "行人徑",
+            "terms": "Foot Path,步行徑,行人徑"
+        },
+        "natural/coastline": {
+            "name": "海岸綫",
+            "terms": "Coastline,海岸綫,海岸線"
+        },
+        "natural/glacier": {
+            "name": "冰川",
+            "terms": "Glacier,冰川,冰河"
+        },
+        "route/ferry": {
+            "name": "航綫",
+            "terms": "Ferry Route,渡輪航線,航綫,航線"
+        },
+        "highway/steps": {
+            "name": "梯",
+            "terms": "Steps,梯,樓梯,石階,階梯"
+        },
+        "amenity/fast_food": {
+            "name": "快餐店",
+            "terms": "Fast Food,快餐店"
+        },
+        "highway/primary": {
+            "name": "大道",
+            "terms": "Primary Road,主要道路,大路"
+        },
+        "type/route/pipeline": {
+            "name": "供水路綫",
+            "terms": "Pipeline Route,供水路綫,供水路線,水管路綫,管道路線"
+        },
+        "landuse/religious": {
+            "name": "拜神地"
+        },
+        "barrier/cattle_grid": {
+            "name": "攔畜溝柵",
+            "terms": "Cattle Grid,家畜柵欄,攔畜溝柵"
+        },
+        "tourism/motel": {
+            "name": "汽車酒店",
+            "terms": "Motel,汽車旅館,汽車酒店"
+        },
+        "aeroway/helipad": {
+            "name": "直升機坪",
+            "terms": "Helipad,直升機坪,直升機場,直昇機坪,直昇機場"
+        },
+        "leisure/slipway": {
+            "name": "船排",
+            "terms": "Slipway,船排,船架滑道,船臺"
+        },
+        "amenity/dentist": {
+            "name": "牙醫",
+            "terms": "Dentist,牙醫"
+        },
+        "office/research": {
+            "name": "研究所",
+            "terms": "Research Office,研究所"
+        },
+        "office/travel_agent": {
+            "name": "旅行社"
+        },
+        "aerialway/chair_lift": {
+            "name": "吊櫈",
+            "terms": "Chair Lift,吊櫈"
+        },
+        "office/telecommunication": {
+            "name": "電話公司寫字樓",
+            "terms": "Telecom Office,電信公司,電話公司寫字樓"
+        },
+        "shop/supermarket": {
+            "name": "超級市場",
+            "terms": "Supermarket,超級市場"
+        },
+        "office/political_party": {
+            "name": "政黨",
+            "terms": "Political Party,政黨"
+        },
+        "shop/garden_centre": {
+            "name": "園藝舖",
+            "terms": "Garden Center,園藝中心,園藝舖,花店"
+        },
+        "barrier/hedge": {
+            "name": "樹籬",
+            "terms": "Hedge,樹籬"
+        },
+        "shop/beauty": {
+            "name": "美容院",
+            "terms": "Beauty Shop,指甲美容,理容院,美妝店,美容店,美容院,護膚中心"
+        },
+        "building/hut": {
+            "name": "屋仔",
+            "terms": "Hut,屋仔,棚屋"
+        },
+        "waterway/canal": {
+            "name": "水道",
+            "terms": "Canal,水道,運河"
+        },
+        "leisure/common": {
+            "name": "公地",
+            "terms": "Common,公共用地,公地"
+        },
+        "landuse/farmland": {
+            "name": "田地"
+        },
+        "shop/fishmonger": {
+            "name": "魚檔"
+        },
+        "landuse/orchard": {
+            "name": "菓園",
+            "terms": "Orchard,果園,菓園"
+        },
+        "type/restriction/no_right_turn": {
+            "name": "不得右轉"
+        },
+        "shop/car": {
+            "name": "車行",
+            "terms": "Car Dealership,車行"
+        },
+        "place/square": {
+            "name": "前地"
+        },
+        "golf/hole": {
+            "name": "歌夫球洞",
+            "terms": "Golf Hole,歌夫球洞"
+        },
+        "railway/abandoned": {
+            "name": "廢鐵路",
+            "terms": "Abandoned Railway,廢棄的鐵路,廢鐵路,鐵路路線跡"
+        },
+        "type/restriction": {
+            "name": "限制",
+            "terms": "Restriction,限制"
+        },
+        "shop/mall": {
+            "name": "大商場",
+            "terms": "Mall,商場,大商場"
+        },
+        "barrier/wall": {
+            "name": "牆",
+            "terms": "Wall,墻,牆"
+        },
+        "natural/beach": {
+            "name": "灘",
+            "terms": "Beach,沙灘,海灘,灘"
+        },
+        "landuse/vineyard": {
+            "name": "葡萄園",
+            "terms": "Vineyard,葡萄園,酒莊"
+        },
+        "vertex": {
+            "name": "其他",
+            "terms": "Other,其他,其它"
+        },
+        "type/boundary": {
+            "name": "界",
+            "terms": "Boundary,界,邊界"
+        },
+        "aeroway/taxiway": {
+            "name": "滑行道",
+            "terms": "Taxiway,滑行道"
+        },
+        "type/route": {
+            "name": "路綫",
+            "terms": "Route,路綫,路線"
+        },
+        "man_made/embankment": {
+            "name": "基堤"
+        },
+        "aeroway/hangar": {
+            "name": "飛機庫",
+            "terms": "Hangar,機庫,飛機庫"
+        },
+        "man_made/wastewater_plant": {
+            "name": "廢水廠",
+            "terms": "Wastewater Plant,廢水廠,汙水處理廠,污水處理廠"
+        },
+        "shop/radiotechnics": {
+            "name": "無綫電／電子零件舖",
+            "terms": "Radio Component Store,Electronic Component Store,無線電零件舖,無綫電零件舖,電子零件舖"
+        },
+        "building/retail": {
+            "name": "舖屋宇"
+        },
+        "highway/motorway_link": {
+            "name": "高速公路駁路",
+            "terms": "Motorway Link,高速公路匝道,高速公路引道,高速公路駁路"
+        },
+        "natural/water/reservoir": {
+            "name": "水塘",
+            "terms": "Reservoir,水塘,水庫"
+        },
+        "place/isolated_dwelling": {
+            "name": "孤離居所",
+            "terms": "Isolated Dwelling,孤立居所,孤立民居,孤離居所"
+        },
+        "landuse/quarry": {
+            "name": "石塘",
+            "terms": "Quarry,石塘,石礦場,礦場"
+        },
+        "landuse/basin": {
+            "name": "盆地"
+        },
+        "historic/ruins": {
+            "name": "廢墟",
+            "terms": "Ruins,廢墟"
+        },
+        "natural/scrub": {
+            "name": "灌木",
+            "terms": "Scrub,灌木,灌木叢"
+        },
+        "highway/secondary": {
+            "name": "中道",
+            "terms": "Secondary Road,中路,次要道路"
+        },
+        "natural/fell": {
+            "name": "高原荒野",
+            "terms": "Fell,高原荒原,高原荒野,高地荒原"
+        },
+        "shop": {
+            "name": "舖",
+            "terms": "Shop,商店,舖"
+        },
+        "natural/heath": {
+            "name": "荒野",
+            "terms": "Heath,荒地,荒野"
+        },
+        "natural/spring": {
+            "name": "泉",
+            "terms": "Spring,噴泉,泉,泉水,湧泉,溫泉"
+        },
+        "man_made/pipeline": {
+            "name": "水管",
+            "terms": "Pipeline,水管,管道"
+        },
+        "building/commercial": {
+            "name": "商業樓宇",
+            "terms": "Commercial Building,商業建築物,商業樓宇"
+        },
+        "office/educational_institution": {
+            "name": "敎育機構",
+            "terms": "Educational Institution,敎育機構,教育機構"
+        },
+        "amenity/bicycle_parking": {
+            "name": "泊單車處",
+            "terms": "Bicycle Parking,單車停放車,單車停泊處,泊單車,泊單車處,自行車停放處"
+        },
+        "shop/deli": {
+            "name": "美食舖",
+            "terms": "Deli,Delicatessen,美食舖,熟食舖,熟食店,美食店"
+        },
+        "waterway/ditch": {
+            "name": "溝",
+            "terms": "Ditch,渠,溝,溝渠"
+        },
+        "highway/service/drive-through": {
+            "name": "車上取餐",
+            "terms": "Drive-Through,免下車,免下車銀行,免下車餐館,車上取餐,車上用餐,駕駛通過以獲取服務"
+        },
+        "shop/electronics": {
+            "name": "電器舖",
+            "terms": "Electronics Store,電器舖,電器店,電子產品舖"
+        },
+        "waterway": {
+            "name": "水路"
+        },
+        "amenity/place_of_worship/buddhist": {
+            "name": "佛寺",
+            "terms": "Buddhist Temple,佛堂,佛寺,佛廟,和尚寺,寶殿,寺,寺廟,尼姑庵,尼庵,庵堂,廟,精舍,閣,靜院"
+        },
+        "amenity/cinema": {
+            "name": "電影戲院",
+            "terms": "Cinema,戲院,電影,電影戲院,電影院"
+        },
+        "natural/bare_rock": {
+            "name": "石地"
+        },
+        "type/route/bus": {
+            "name": "巴士路綫",
+            "terms": "Bus Route,公共汽車路線,巴士路綫"
+        },
+        "type/route_master": {
+            "name": "路綫總管",
+            "terms": "Route Master,線路總管,路綫總管,路線總目"
+        },
+        "landuse/farm": {
+            "name": "田地"
+        },
+        "natural/wood": {
+            "name": "林",
+            "terms": "Wood,林,樹林"
+        },
+        "amenity/waste_basket": {
+            "name": "垃圾桶",
+            "terms": "Waste Basket,垃圾桶,垃圾箱,廢物箱"
+        },
+        "highway/unclassified": {
+            "name": "道仔／無類道"
+        },
+        "aeroway/apron": {
+            "name": "停機坪",
+            "terms": "Apron,停機坪"
+        },
+        "shop/optician": {
+            "name": "眼鏡鋪",
+            "terms": "Optician,眼鏡店,眼鏡行,眼鏡鋪"
+        },
+        "type/route/foot": {
+            "name": "行人路綫",
+            "terms": "Foot Route,步行路線,行人路綫,行人路線"
+        },
+        "barrier/block": {
+            "name": "路障",
+            "terms": "Block,路障,障礙物"
+        },
+        "shop/hifi": {
+            "name": "音響舖",
+            "terms": "Hifi Store,音響店,音響舖"
+        },
+        "craft/window_construction": {
+            "name": "造窗",
+            "terms": "Window Construction,造窗"
+        },
+        "relation": {
+            "name": "關係",
+            "terms": "Relation,關係,關系"
+        },
+        "golf/green": {
+            "name": "菓嶺",
+            "terms": "Putting Green,果嶺,菓嶺"
+        },
+        "type/restriction/only_straight_on": {
+            "name": "只能直行"
+        },
+        "shop/mobile_phone": {
+            "name": "電話舖",
+            "terms": "Mobile Phone Store,手機店,行動電話店,電話舖"
+        },
+        "place/town": {
+            "name": "鎮",
+            "terms": "Town,城鎮,市鎮,鎮"
+        },
+        "landuse/commercial": {
+            "name": "商地"
+        },
+        "highway/tertiary_link": {
+            "name": "細路駁路",
+            "terms": "Tertiary Link,三級道路匝道,三級道路連接路,細路駁路"
+        },
+        "tourism/information": {
+            "name": "資訊處",
+            "terms": "Information,資訊,資訊處"
+        },
+        "natural": {
+            "name": "天然"
+        },
+        "aerialway/magic_carpet": {
+            "name": "輸送帶",
+            "terms": "Magic Carpet Lift,輸送帶"
+        },
+        "amenity/post_box": {
+            "name": "郵筒",
+            "terms": "Mailbox,Post,Post Box,郵筒,郵箱"
+        },
+        "natural/water/lake": {
+            "name": "湖",
+            "terms": "Lake,湖,湖泊"
+        },
+        "shop/video": {
+            "name": "影視店",
+            "terms": "Video Store,影像店,影碟店,影視店"
+        },
+        "playground/sandpit": {
+            "name": "砂池"
+        },
+        "railway/tram": {
+            "name": "電車",
+            "terms": "Tram,電車"
+        },
+        "power/minor_line": {
+            "name": "細供電綫",
+            "terms": "Minor Power Line,小供電線,細供電綫"
+        },
+        "landuse/farmyard": {
+            "name": "地堂",
+            "terms": "Farmyard,地堂,農莊"
+        },
+        "highway/cycleway": {
+            "name": "單車徑",
+            "terms": "Cycle Path,單車徑,自行車道"
+        },
+        "shop/hardware": {
+            "name": "五金舖",
+            "terms": "Hardware Store,五金店,五金舖"
+        },
+        "amenity/car_sharing": {
+            "name": "共用車處",
+            "terms": "Car Sharing,公用車處,共用車,共用車處,汽車共享站"
+        },
+        "shop/funeral_directors": {
+            "name": "殯儀館",
+            "terms": "Funeral Home,殯儀館"
+        },
+        "tourism/zoo": {
+            "name": "動物園",
+            "terms": "Zoo,動物園"
+        },
+        "shop/computer": {
+            "name": "電腦舖",
+            "terms": "Computer Store,電腦店,電腦舖"
+        },
+        "landuse/grass": {
+            "name": "草地",
+            "terms": "Grass,草地"
+        },
+        "natural/grassland": {
+            "name": "草原",
+            "terms": "Grassland,草原"
+        },
+        "highway/stop": {
+            "name": "停車標誌",
+            "terms": "Stop Sign,停字標誌,停車標誌,停車路牌"
+        },
+        "highway/turning_circle": {
+            "name": "迴旋處",
+            "terms": "Turning Circle,回轉圈,廻旋處,環島,迴旋處"
+        },
+        "tourism": {
+            "name": "旅行"
+        },
+        "amenity/car_wash": {
+            "name": "洗車舖",
+            "terms": "Car Wash,洗車,洗車店,洗車舖"
+        },
+        "highway/street_lamp": {
+            "name": "街燈",
+            "terms": "Street Lamp,街燈,路燈,道燈"
+        },
+        "shop/clothes": {
+            "name": "衫舖",
+            "terms": "Clothing Store,服裝店,服飾店,衫舖"
+        },
+        "tourism/theme_park": {
+            "name": "主題公園",
+            "terms": "Theme Park,主題公園"
+        },
+        "aeroway/aerodrome": {
+            "name": "飛機場",
+            "terms": "Airport,機場,飛機,飛機場"
+        },
+        "amenity/bicycle_rental": {
+            "name": "租單車舖",
+            "terms": "Bicycle Rental,單車租賃,租單車,租單車舖,租單車處,自行車租賃處"
+        },
+        "shop/gift": {
+            "name": "禮品舖",
+            "terms": "Gift Shop,禮品店,禮品舖,禮物店"
+        },
+        "waterway/riverbank": {
+            "name": "江岸"
+        },
+        "place": {
+            "name": "地"
+        },
+        "power": {
+            "name": "發電廠"
+        },
+        "shop/music": {
+            "name": "唱片舖",
+            "terms": "Music Store,唱片舖,音樂店"
+        },
+        "barrier/toll_booth": {
+            "name": "收費亭",
+            "terms": "Toll Booth,收費亭,收費站"
+        },
+        "building/house": {
+            "name": "屋",
+            "terms": "House,屋,房屋,洋房"
+        },
+        "leisure/marina": {
+            "name": "遊艇碼頭",
+            "terms": "Marina,碼頭,遊艇碼頭"
+        },
+        "aerialway": {
+            "name": "吊道"
+        },
+        "waterway/dam": {
+            "name": "壩",
+            "terms": "Dam,堤壩,壩,水壩"
+        },
+        "shop/photo": {
+            "name": "影相舖",
+            "terms": "Photography Store,影相舖,照相館"
+        },
+        "barrier/gate": {
+            "name": "閘",
+            "terms": "Gate,口,門,閘"
+        },
+        "leisure/pitch/skateboard": {
+            "name": "滑板場",
+            "terms": "Skate Park,滑板場"
+        },
+        "highway/bridleway": {
+            "name": "馬徑",
+            "terms": "Bridle Path,馬徑,馬道"
+        },
+        "shop/motorcycle": {
+            "name": "電單車行",
+            "terms": "Motorcycle Dealership,摩托車行,電單車行"
+        },
+        "shop/variety_store": {
+            "name": "雜貨舖",
+            "terms": "Variety Store,雜貨店,雜貨舖"
+        },
+        "waterway/river": {
+            "name": "江",
+            "terms": "River,江,江河,河,河流"
+        },
+        "amenity/doctors": {
+            "name": "醫生",
+            "terms": "Doctor,醫生"
+        },
+        "railway/subway": {
+            "name": "地下鐵路",
+            "terms": "MTR,Mass Transit Railway,Subway,地下鐵,地下鐵路,地鐵"
+        },
+        "barrier/ditch": {
+            "name": "坑"
+        },
+        "shop/butcher": {
+            "name": "肉舖",
+            "terms": "Butcher,肉舖,肉販,肉鋪"
+        },
+        "barrier/bollard": {
+            "name": "護柱",
+            "terms": "Bollard,護柱"
+        },
+        "amenity/shelter": {
+            "name": "天遮或亭",
+            "terms": "Shelter,亭,天遮,蓋,避難,避難所"
+        },
+        "tourism/picnic_site": {
+            "name": "郊遊地點",
+            "terms": "Picnic Site,郊遊地點,野餐地點"
+        },
+        "leisure/golf_course": {
+            "name": "哥夫球場",
+            "terms": "Golf Course,哥夫球場,高爾夫球場"
+        },
+        "barrier": {
+            "name": "屏障",
+            "terms": "Barrier,屏障,阻擋,障礙,障礙物"
+        },
+        "historic/castle": {
+            "name": "寨",
+            "terms": "Castle,城堡,寨"
+        },
+        "office/surveyor": {
+            "name": "量地官寫字樓"
+        },
+        "shop/car_repair": {
+            "name": "車房",
+            "terms": "Car Repair Shop,汽車修理店,汽車維修店,車房"
+        },
+        "highway/path": {
+            "name": "徑",
+            "terms": "Path,徑,路徑"
+        },
+        "historic/archaeological_site": {
+            "name": "考古地",
+            "terms": "Archaeological Site,考古地,考古地點,考古遺址"
+        },
+        "amenity/bench": {
+            "name": "長椅",
+            "terms": "Bench,長凳,長椅,長櫈"
+        },
+        "landuse/meadow": {
+            "name": "牧地",
+            "terms": "Meadow,牧地,牧場"
+        },
+        "shop/convenience": {
+            "name": "便利店",
+            "terms": "Convenience Store,便利店"
+        },
+        "amenity/toilets": {
+            "name": "廁所",
+            "terms": "Toilets,便所,公厠,公廁,厠所,廁所,方便,洗手間,盥洗室"
+        },
+        "highway/service": {
+            "name": "支道",
+            "terms": "Service Road,支路,輔助道路"
+        },
+        "waterway/drain": {
+            "name": "排水道",
+            "terms": "Drain,下水道,排水道,渠,溝"
+        },
+        "highway/residential": {
+            "name": "住宅道",
+            "terms": "Residential Road,住宅區道路,住宅路"
+        },
+        "amenity/place_of_worship": {
+            "name": "拜神之所",
+            "terms": "Place of Worship,Worship,宗教祟拜場所,宗教禮拜處,崇拜處,拜神之所,禮拜場所"
+        },
+        "historic/wayside_shrine": {
+            "name": "路邊神祠",
+            "terms": "Wayside Shrine,路邊神社,路邊神祠"
+        },
+        "barrier/retaining_wall": {
+            "name": "護土牆",
+            "terms": "Retaining Wall,擋土墻,護土牆"
+        },
+        "type/boundary/administrative": {
+            "name": "行政邊界",
+            "terms": "Administrative Boundary,行政界線,行政邊界"
+        },
+        "highway/traffic_signals": {
+            "name": "紅綠燈",
+            "terms": "Traffic Signals,交通燈,紅綠燈"
+        },
+        "amenity/embassy": {
+            "name": "大使館",
+            "terms": "Embassy,使館,大使館,領事館"
+        },
+        "place/islet": {
+            "name": "洲仔"
+        },
+        "type/restriction/no_left_turn": {
+            "name": "不得左轉"
+        },
+        "emergency/ambulance_station": {
+            "name": "救護站",
+            "terms": "Ambulance Station,十字車,救傷車,救護站,救護車"
+        },
+        "place/village": {
+            "name": "村",
+            "terms": "Village,村,村莊,村鎮"
+        },
+        "line": {
+            "name": "綫",
+            "terms": "Line,綫,線"
+        },
+        "leisure/dog_park": {
+            "name": "狗公園",
+            "terms": "Dog Park,狗公園"
+        },
+        "natural/cave_entrance": {
+            "name": "洞口"
+        },
+        "point": {
+            "name": "點",
+            "terms": "Point,點"
+        },
+        "amenity/boat_rental": {
+            "name": "租艇",
+            "terms": "Boat Rental,租艇,船舶租賃處"
         },
         "waterway/weir": {
-            "name": "\u5830",
-            "terms": "Weir,\u5824\u5830,\u5824\u58e9,\u5830,\u58e9,\u58c6"
+            "name": "堰",
+            "terms": "Weir,堤堰,堤壩,堰,壩,壆"
+        },
+        "office/ngo": {
+            "name": "志顠機構寫字樓",
+            "terms": "NGO Office,志顠機構寫字樓,非政府組織"
+        },
+        "man_made/flagpole": {
+            "name": "旗杆",
+            "terms": "Flagpole,旗杆,旗竿"
+        },
+        "natural/tree": {
+            "name": "樹",
+            "terms": "Tree,木,樹"
+        },
+        "tourism/attraction": {
+            "name": "旅行名勝",
+            "terms": "Tourist Attraction,旅行名勝,旅遊名勝,觀光點"
+        },
+        "man_made": {
+            "name": "人造"
+        },
+        "golf/fairway": {
+            "name": "球道",
+            "terms": "Fairway,球道"
+        },
+        "shop/car_parts": {
+            "name": "汽車零件舖",
+            "terms": "Car Parts Store,汽車配件店,汽車零件店,汽車零件舖"
+        },
+        "tourism/alpine_hut": {
+            "name": "高山屋仔",
+            "terms": "Alpine Hut,高山小屋,高山屋仔"
+        },
+        "shop/alcohol": {
+            "name": "酒莊",
+            "terms": "Liquor Store,酒店,酒莊,酒類商店"
+        },
+        "tourism/viewpoint": {
+            "name": "觀景臺",
+            "terms": "Viewpoint,景點,眺望,瞭望台,瞭望臺,觀景台,觀景臺,觀景點"
+        },
+        "office/lawyer": {
+            "name": "律師事務所",
+            "terms": "Law Office,律師事務所"
+        },
+        "landuse/construction": {
+            "name": "地盤",
+            "terms": "Construction,地盤,建築工程,建築物"
+        },
+        "highway/trunk_link": {
+            "name": "幹道駁路",
+            "terms": "Trunk Link,幹線道路匝道,幹道連接路,幹道駁路"
+        },
+        "aeroway": {
+            "name": "航空設施"
         }
     }
 }
