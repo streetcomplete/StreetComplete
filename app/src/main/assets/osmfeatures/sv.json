@@ -1536,7 +1536,7 @@
         },
         "amenity/social_facility/nursing_home": {
             "name": "Seniorboende",
-            "terms": "Vårdhem, ålderdomshem, assistansboende, npensionärshem, servicehus, servicehem, hem för gamla, äldreboende, hem för vård och boende, HVB-hem, seniorboende, pensionär, senior"
+            "terms": "Vårdhem, ålderdomshem, assistansboende, \npensionärshem, servicehus, servicehem, hem för gamla, äldreboende, hem för vård och boende, HVB-hem, seniorboende, pensionär, senior"
         },
         "building/train_station": {
             "name": "Tågstationsbyggnad"
@@ -2197,7 +2197,7 @@
         },
         "tourism/gallery": {
             "name": "Konstgalleri",
-            "terms": "Konstaffär, konst, konsthandlare, konstgalleri, galleri, konstverk, tavlor,nstatyer, kulturer, konstutställning"
+            "terms": "Konstaffär, konst, konsthandlare, konstgalleri, galleri, konstverk, tavlor,\nstatyer, kulturer, konstutställning"
         },
         "amenity/fuel": {
             "name": "Bensinstation",
@@ -2241,7 +2241,7 @@
         },
         "man_made/water_works": {
             "name": "Vattenverk",
-            "terms": "Vattenverk, vattenreningsanläggning, vattenreningsverk,nvattenanläggning, vatten"
+            "terms": "Vattenverk, vattenreningsanläggning, vattenreningsverk,\nvattenanläggning, vatten"
         },
         "amenity/pub": {
             "name": "Pub",
@@ -2358,7 +2358,7 @@
         },
         "shop/art": {
             "name": "Konstaffär",
-            "terms": "Konstaffär, konst, konsthandlare, konstgalleri, galleri, konstverk, tavlor,nstatyer, kulturer, konstutställning"
+            "terms": "Konstaffär, konst, konsthandlare, konstgalleri, galleri, konstverk, tavlor,\nstatyer, kulturer, konstutställning"
         },
         "place/hamlet": {
             "name": "By",

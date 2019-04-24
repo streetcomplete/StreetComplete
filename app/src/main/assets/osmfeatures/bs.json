@@ -166,7 +166,7 @@
         },
         "golf/rough": {
             "name": "Rough",
-            "terms": "područje "divlje" trave van igre,trava van golf terena"
+            "terms": "područje \"divlje\" trave van igre,trava van golf terena"
         },
         "man_made/breakwater": {
             "name": "Lukobran",
@@ -290,7 +290,7 @@
         },
         "shop/doityourself": {
             "name": "Sve za kuću",
-            "terms": "sve za kuću,prodaja dijelova za "uradi sam" radove"
+            "terms": "sve za kuću,prodaja dijelova za \"uradi sam\" radove"
         },
         "amenity/taxi": {
             "name": "Taxi stajalište",
@@ -526,7 +526,7 @@
         },
         "golf/tee": {
             "name": "Tee Box",
-            "terms": ""Tee" kutija,kutija područja na početku rupe"
+            "terms": "\"Tee\" kutija,kutija područja na početku rupe"
         },
         "office": {
             "name": "Ured",
@@ -1006,7 +1006,7 @@
             "terms": "prodavnica željezarije,gvožđara"
         },
         "amenity/car_sharing": {
-            "name": ""Car Sharing"",
+            "name": "\"Car Sharing\"",
             "terms": "razmjena automobila,dijeljenje automobila"
         },
         "tourism/zoo": {

@@ -1836,7 +1836,7 @@
             "terms": "مسار دراجات; مسار; طريق"
         },
         "highway/give_way": {
-            "name": "إشارة "أفسح الطريق"",
+            "name": "إشارة \"أفسح الطريق\"",
             "terms": "أفسح الطريق"
         },
         "amenity/place_of_worship/shinto": {

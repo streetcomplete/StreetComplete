@@ -1218,7 +1218,7 @@
             "name": "Ristorante vietnamita"
         },
         "highway/service/drive-through": {
-            "name": "Accesso al servizio "consegna in auto"",
+            "name": "Accesso al servizio \"consegna in auto\"",
             "terms": "drive-through,drive,drive-it,consegna al volo,consegna al volante"
         },
         "shop/kiosk": {
@@ -1565,7 +1565,7 @@
         },
         "shop/variety_store": {
             "name": "Negozio a Prezzo Fisso",
-            "terms": "Articoli a basso costo ("tutto a ...")"
+            "terms": "Articoli a basso costo (\"tutto a ...\")"
         },
         "amenity/doctors": {
             "name": "Medico di base",

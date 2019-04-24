@@ -2582,7 +2582,7 @@
         },
         "building/kindergarten": {
             "name": "Edifício de jardim infantil / infantário",
-            "terms": "preschool, kindergarten, grounds, pré-escola, pré escola, creche, jardimn de infância, jardim-de-infância, jardim infantil, pré-escola, npré-escolar, infantário, edifício"
+            "terms": "preschool, kindergarten, grounds, pré-escola, pré escola, creche, jardim\n de infância, jardim-de-infância, jardim infantil, pré-escola, \npré-escolar, infantário, edifício"
         },
         "leisure/playground": {
             "name": "Parque infantil",

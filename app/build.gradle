@@ -199,7 +199,10 @@ static def unescapeUnicode(String str) {
         } else if (hadSlash) {
             hadSlash = false
             if (ch == ('u' as char)) inUnicode = true
-            else out.write(ch)
+            else {
+                out.write(92)
+                out.write(ch)
+            }
         } else if (ch == ('\\' as char)) {
             hadSlash = true
         } else {

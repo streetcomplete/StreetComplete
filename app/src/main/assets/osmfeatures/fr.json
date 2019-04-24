@@ -273,7 +273,7 @@
         },
         "building/school": {
             "name": "Bâtiment scolaire - élémentaire ou secondaire",
-            "terms": "école élémentaire, école primaire, collège, lycée, ncycles primaires et secondaires, enseignements élémentaire et secondaire, nenseignement élémentaire, enseignement secondaire, nétablissement d'enseignement élémentaire, établissement d'enseignement secondaire, nécole, écoliers, CP-CE1-CE2-CM1-CM2, college, lycee, school"
+            "terms": "école élémentaire, école primaire, collège, lycée, \ncycles primaires et secondaires, enseignements élémentaire et secondaire, \nenseignement élémentaire, enseignement secondaire, \nétablissement d'enseignement élémentaire, établissement d'enseignement secondaire, \nécole, écoliers, CP-CE1-CE2-CM1-CM2, college, lycee, school"
         },
         "tourism/information/board": {
             "name": "Panneau d'information",
@@ -553,7 +553,7 @@
         },
         "barrier/cycle_barrier": {
             "name": "Barrière à vélos",
-            "terms": "chicane vélos, barrière vélos, barrières vélos, passage vélos,nchicane bicyclettes, barrière bicyclettes, barrières bicyclettes, passage bicyclettes,nchicane à vélos, barrière à vélos, barrières à vélos, passage à vélos,nchicane à bicyclettes, barrière à bicyclettes, barrières à bicyclettes, passage à bicyclettes,nbarrière pour vélos, barrières pour vélos, passage pour vélos,nbarrière pour bicyclettes, barrières pour bicyclettes, passage pour bicyclettes,nchicane, barrières, barrieres, passage, rétrécissement, goulot, portillon à chicane, vélos, bicyclettes, cycle barrier, traffic calming"
+            "terms": "chicane vélos, barrière vélos, barrières vélos, passage vélos,\nchicane bicyclettes, barrière bicyclettes, barrières bicyclettes, passage bicyclettes,\nchicane à vélos, barrière à vélos, barrières à vélos, passage à vélos,\nchicane à bicyclettes, barrière à bicyclettes, barrières à bicyclettes, passage à bicyclettes,\nbarrière pour vélos, barrières pour vélos, passage pour vélos,\nbarrière pour bicyclettes, barrières pour bicyclettes, passage pour bicyclettes,\nchicane, barrières, barrieres, passage, rétrécissement, goulot, portillon à chicane, vélos, bicyclettes, cycle barrier, traffic calming"
         },
         "embankment": {
             "name": "Terre-plein"
@@ -884,7 +884,7 @@
         },
         "building/church": {
             "name": "Église - bâtiment",
-            "terms": "Église, église, eglise, bâtiment religieux, lieu de culte, édifice religieux,néglise catholique, église primatiale, basilique, église basilique, collégiale, église collégiale, église décanale, paroisses, église paroissiale, abbatiale, église abbatiale, église priorale,néglise orthodoxe, métropole, catholicon, katholikon, kyriakon,nchristianisme, catholicisme, orthodoxie, chrétienne, chrétiens, catholique, orthodoxe, prêtre, religion, clergé, prière, messe, church"
+            "terms": "Église, église, eglise, bâtiment religieux, lieu de culte, édifice religieux,\néglise catholique, église primatiale, basilique, église basilique, collégiale, église collégiale, église décanale, paroisses, église paroissiale, abbatiale, église abbatiale, église priorale,\néglise orthodoxe, métropole, catholicon, katholikon, kyriakon,\nchristianisme, catholicisme, orthodoxie, chrétienne, chrétiens, catholique, orthodoxe, prêtre, religion, clergé, prière, messe, church"
         },
         "man_made/tower/bell_tower": {
             "name": "Clocher",
@@ -1004,7 +1004,7 @@
         },
         "building/cathedral": {
             "name": "Cathédrale - bâtiment",
-            "terms": "cathédrale, bâtiment religieux, lieu de culte, édifice religieux, catédrale, cathedrale, évêque, cathèdre, diocèse, siège, cocathédrale, archiprêtre,néglise catholique, église primatiale, basilique, église basilique,néglise orthodoxe, métropole, christianisme, catholicisme, orthodoxie, chrétienne, chrétiens, catholique, orthodoxe, église, eglise, prêtre, religion, clergé, prière, messe, cathedral, church"
+            "terms": "cathédrale, bâtiment religieux, lieu de culte, édifice religieux, catédrale, cathedrale, évêque, cathèdre, diocèse, siège, cocathédrale, archiprêtre,\néglise catholique, église primatiale, basilique, église basilique,\néglise orthodoxe, métropole, christianisme, catholicisme, orthodoxie, chrétienne, chrétiens, catholique, orthodoxe, église, eglise, prêtre, religion, clergé, prière, messe, cathedral, church"
         },
         "office/notary": {
             "name": "Notaire",
@@ -1480,7 +1480,7 @@
         },
         "shop/appliance": {
             "name": "Magasin d'électroménager",
-            "terms": "magasin d'électroménager, électroménager, appareil électroménager, petit électroménager, gros électroménager, shop appliance, appliances, nbouilloire, centrifugeuse, cuiseur, cuit vapeur, fouet électrique, grille-pain, machine à pain, mixeur, pierrade, presse-agrumes, robot de cuisine, robot multifonctions, pèse-personne, épilateur, rasoir électrique, cafetière, moulin à café, aspirateur, cireuse, nettoyeur à vapeur, tondeuse, repassage, centrale vapeur, fer à repasser, cuisinière, four micro-ondes, four traditionnel, four à vapeur, cuisinière à gaz, hotte aspirante, plaque de cuisson, lave-linge, lave-vaisselle, sèche-linge, cave à vin, congélateur, réfrigérateur, climatiseur"
+            "terms": "magasin d'électroménager, électroménager, appareil électroménager, petit électroménager, gros électroménager, shop appliance, appliances, \nbouilloire, centrifugeuse, cuiseur, cuit vapeur, fouet électrique, grille-pain, machine à pain, mixeur, pierrade, presse-agrumes, robot de cuisine, robot multifonctions, pèse-personne, épilateur, rasoir électrique, cafetière, moulin à café, aspirateur, cireuse, nettoyeur à vapeur, tondeuse, repassage, centrale vapeur, fer à repasser, cuisinière, four micro-ondes, four traditionnel, four à vapeur, cuisinière à gaz, hotte aspirante, plaque de cuisson, lave-linge, lave-vaisselle, sèche-linge, cave à vin, congélateur, réfrigérateur, climatiseur"
         },
         "craft/tinsmith": {
             "name": "Ferblantier",
@@ -1718,7 +1718,7 @@
         },
         "amenity/school": {
             "name": "École élémentaire ou secondaire",
-            "terms": "école élémentaire, école primaire, école secondaire, collège, lycée, ncycles primaires et secondaires, enseignements élémentaire et secondaire, nenseignement élémentaire, enseignement secondaire, nétablissement d'enseignement élémentaire, établissement d'enseignement secondaire,nécole, écoliers, CP-CE1-CE2-CM1-CM2, ecole, college, lycee, school"
+            "terms": "école élémentaire, école primaire, école secondaire, collège, lycée, \ncycles primaires et secondaires, enseignements élémentaire et secondaire, \nenseignement élémentaire, enseignement secondaire, \nétablissement d'enseignement élémentaire, établissement d'enseignement secondaire,\nécole, écoliers, CP-CE1-CE2-CM1-CM2, ecole, college, lycee, school"
         },
         "public_transport/stop_position_tram": {
             "name": "Emplacement où s'arrête le tramway",
