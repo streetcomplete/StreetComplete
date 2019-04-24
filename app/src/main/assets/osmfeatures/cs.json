@@ -1,0 +1,3657 @@
+{
+    "presets": {
+        "office/administrative": {
+            "name": "Místní úřad"
+        },
+        "amenity/car_rental": {
+            "name": "Půjčovna aut",
+            "terms": "půjčovna aut,autopůjčovna"
+        },
+        "place/city": {
+            "name": "Velkoměsto",
+            "terms": "velkoměsto,město,city"
+        },
+        "building": {
+            "name": "Budova",
+            "terms": "budova"
+        },
+        "amenity/restaurant/indian": {
+            "name": "Indická restaurace"
+        },
+        "craft/dressmaker": {
+            "name": "Švadlena",
+            "terms": "švadlena,krejčí,krejčová,šaty,dámská krejčová"
+        },
+        "barrier/lift_gate": {
+            "name": "Závora",
+            "terms": "závora"
+        },
+        "railway/halt": {
+            "name": "Vlakové nádraží (zastávka / na znamení)"
+        },
+        "shop/agrarian": {
+            "name": "Farmářská prodejna"
+        },
+        "landuse/garages": {
+            "name": "Garáže"
+        },
+        "internet_access/wlan": {
+            "name": "Wi-Fi hotspot"
+        },
+        "building/farm": {
+            "name": "Zemědělský dům"
+        },
+        "shop/hunting": {
+            "name": "Lovecké potřeby"
+        },
+        "amenity/waste_disposal": {
+            "name": "Kontejner na směsný odpad",
+            "terms": "kontejner,popelnice,odpad,odpadky"
+        },
+        "type/restriction/only_right_turn": {
+            "name": "Pouze vpravo"
+        },
+        "attraction/carousel": {
+            "name": "Kolotoč"
+        },
+        "craft/sawmill": {
+            "name": "Pila",
+            "terms": "pila,pilař,dřevař,dřevařský,pilařský"
+        },
+        "emergency/yes": {
+            "name": "Vjezd záchranných vozidel povolen"
+        },
+        "circular": {
+            "name": "Kruhový objezd"
+        },
+        "healthcare/audiologist": {
+            "name": "Ušní"
+        },
+        "highway/motorway": {
+            "name": "Dálnice",
+            "terms": "dálnice"
+        },
+        "natural/bay": {
+            "name": "Záliv",
+            "terms": "záliv, zátoka"
+        },
+        "amenity/fast_food/mexican": {
+            "name": "Mexické rychlé občerstvení"
+        },
+        "building/bungalow": {
+            "name": "Bungalov"
+        },
+        "building/terrace": {
+            "name": "Řada řadových domů",
+            "terms": "řadový dům,řadové domy,řadovka,řadovky"
+        },
+        "aeroway/runway": {
+            "name": "Vzletová a přistávací dráha",
+            "terms": "runway,ranvej,přistávací dráha,vzletová dráha,přistávací plocha"
+        },
+        "amenity/studio": {
+            "name": "Studio",
+            "terms": "studio,nahrávací studio,rozhlasové studio,rádiové studio,radiové studio,televizní studio,filmové studio,trikové studio,dabingové studio"
+        },
+        "landuse/military": {
+            "name": "Vojenský prostor",
+            "terms": "vojenský prostor,újezd,výcvikový prostor,kasárna,kasárny"
+        },
+        "shop/seafood": {
+            "name": "Rybárna",
+            "terms": "rybárna,rybářství,ryby,ryba,plody moře,seafood,mořské potvory"
+        },
+        "railway/milestone": {
+            "name": "Železniční kilometrovník"
+        },
+        "waterway/sanitary_dump_station": {
+            "name": "Výlevka pro lodě",
+            "terms": "záchod,kanalizace,výlevka,žumpa,odpadní voda,wc,toaleta,loď,jachta,hausbót"
+        },
+        "barrier/city_wall": {
+            "name": "Hradby",
+            "terms": "hradby"
+        },
+        "office/employment_agency": {
+            "name": "Úřad práce",
+            "terms": "úřad práce,pracovní úřad,zaměstnání,nezaměstnaní,nabídka práce"
+        },
+        "craft/sculptor": {
+            "name": "Sochař"
+        },
+        "office/government/register_office": {
+            "name": "Matriční úřad",
+            "terms": "matriční úřad,matrika,registr,rejstřík,obecní úřad"
+        },
+        "amenity/waste_transfer_station": {
+            "name": "Překládací stanice odpadu",
+            "terms": "skládka,odpad,recyklace,smetí,šrot,odpadky"
+        },
+        "boundary/administrative": {
+            "name": "Administrativní hranice",
+            "terms": "administrativní hranice,stát,kraj,okres"
+        },
+        "man_made/surveillance": {
+            "name": "Ostraha, kamera",
+            "terms": "kamera,bezpečtnostní kamera,dohled,ostraha"
+        },
+        "building/ruins": {
+            "name": "Zřícená budova"
+        },
+        "leisure/pitch/american_football": {
+            "name": "Hřiště pro americký fotbal",
+            "terms": "hřiště amerického fotbalu,americký fotbal"
+        },
+        "traffic_calming/bump": {
+            "name": "Úzký příčný práh",
+            "terms": "úzký příčný práh,příčný práh,retardér,zpomalovací práh,ležící policajt"
+        },
+        "craft/carpenter": {
+            "name": "Tesař",
+            "terms": "tesařství,tesař,dřevo"
+        },
+        "railway/level_crossing": {
+            "name": "Železniční přejezd (přes silnici)",
+            "terms": "přejezd,přechod,železnice,železniční přejezd,železniční přechod"
+        },
+        "amenity/restaurant/greek": {
+            "name": "Řecká restaurace"
+        },
+        "attraction/amusement_ride": {
+            "name": "Zábavní jízda"
+        },
+        "place/suburb": {
+            "name": "Čtvrť / předměstí",
+            "terms": "samosprávné město,samosprávný městský obvod,městská čtvrť"
+        },
+        "man_made/pier": {
+            "name": "Molo",
+            "terms": "molo,sloupy,pilíř,vlnolam,hráz,kotva,kotvení,ukotvení,lodě,promenáda,lávka,promenáda a přístaviště,přístavní hráz"
+        },
+        "shop/farm": {
+            "name": "Stánek s ovocem, zeleninou",
+            "terms": "stánek,ovoce,zelenina,trh,tržiště,farmářský trh,farmářské tržiště,farma"
+        },
+        "waterway/stream_intermittent": {
+            "name": "Vysychající/přerušovaný tok"
+        },
+        "highway/road": {
+            "name": "Silnice neznámého typu",
+            "terms": "neznámá komunikace"
+        },
+        "address": {
+            "name": "Adresa",
+            "terms": "adresa,PSČ,ulice"
+        },
+        "highway/primary_link": {
+            "name": "Silnice 1. třídy - nájezd",
+            "terms": "nájezd,sjezd,výjezd,příjezd,rampa,exit"
+        },
+        "shop/greengrocer": {
+            "name": "Ovoce a zelenina",
+            "terms": "zelinář,zelinářství,prodejna zeleniny,zelenina,ovoce,ovoce a zelenina"
+        },
+        "highway/traffic_mirror": {
+            "name": "Dopravní zrcadlo",
+            "terms": "slepý úhel,konvexní,roh,zakřivený,zahnutý,kulatý,bezpečnostní,viditelnost"
+        },
+        "railway/station": {
+            "name": "Železniční stanice"
+        },
+        "aerialway/rope_tow": {
+            "name": "Vlek - kotvičkový",
+            "terms": "lyžařský vlek,vlek,kotva,kotvička,lanový vlek"
+        },
+        "office/therapist": {
+            "name": "Terapeutická kancelář"
+        },
+        "office/company": {
+            "name": "Kancelář korporace"
+        },
+        "shop/dairy": {
+            "name": "Mléčné výrobky",
+            "terms": "mléčné výrobky,mlékařství,mléko,mléčné produkty,sýr,jogurt,smetana"
+        },
+        "type/route/road": {
+            "name": "Silniční trasa",
+            "terms": "silnice,silniční trasa,trasa silnice,trasa dálnice,dálnice"
+        },
+        "amenity/planetarium": {
+            "name": "Planetárium",
+            "terms": "planetárium,hvězdárna,astronomie"
+        },
+        "office/financial": {
+            "name": "Finanční úřad",
+            "terms": "finanční úřad,daňový úřad,berní úřad,celní správa"
+        },
+        "highway/track": {
+            "name": "Lesní, polní cesta",
+            "terms": "polní cesta, lesní cesta, cesta, polní a lesní cesta, polňačka"
+        },
+        "shop/wine": {
+            "name": "Vinotéka",
+            "terms": "vinotéka,víno,vinárna,vinařství,vino"
+        },
+        "shop/hairdresser": {
+            "name": "Kadeřnictví",
+            "terms": "kadeřník,holič,vizážista,kadeřnictví"
+        },
+        "building/school": {
+            "name": "Budova školy",
+            "terms": "škola,základní škola,střední škola,obecná škola,gymnázium,gymnasium,střední odborná škola,učiliště,odborné učiliště,střední odborné učiliště,školní,školský"
+        },
+        "tourism/information/board": {
+            "name": "Informační tabule",
+            "terms": "Informační tabule"
+        },
+        "amenity/restaurant/french": {
+            "name": "Francouzská restaurace"
+        },
+        "amenity/ferry_terminal": {
+            "name": "Přístaviště / terminál trajektu či přívozu"
+        },
+        "shop/furnace": {
+            "name": "Trouby a pece"
+        },
+        "landuse/industrial": {
+            "name": "Průmyslová oblast",
+            "terms": "průmysl,průmyslová,průmyslové,průmyslový,industriální,továrna,továrny,fabrika,fabriky"
+        },
+        "type/route/hiking": {
+            "name": "Turistická trasa",
+            "terms": "pěší trasa,trasa pro pěší,turistická značka,turistická trasa,značka pro pěší,klub českých turistů,kčt"
+        },
+        "amenity/place_of_worship/christian": {
+            "name": "Křesťanský kostel"
+        },
+        "tourism/hostel": {
+            "name": "Hostel",
+            "terms": "hostel,noclehárna,ubytovna,ubytování"
+        },
+        "leisure/pitch/volleyball": {
+            "name": "Volejbalové hřiště",
+            "terms": "volejbalové hřiště,volejbal"
+        },
+        "amenity/veterinary": {
+            "name": "Veterina",
+            "terms": "veterina,veterinář,zvíře"
+        },
+        "leisure/amusement_arcade": {
+            "name": "Herna"
+        },
+        "craft/pottery": {
+            "name": "Hrnčíř",
+            "terms": "hrnčíř,hrnčířství,keramika"
+        },
+        "craft/roofer": {
+            "name": "Pokrývač",
+            "terms": "pokrývač,pokrývačství"
+        },
+        "amenity/photo_booth": {
+            "name": "Foto budka"
+        },
+        "amenity/restaurant/mexican": {
+            "name": "Mexická restaurace"
+        },
+        "shop/massage": {
+            "name": "Masáže",
+            "terms": "masáž,masáže,masér,masérka,masírování,masírovat,massage"
+        },
+        "area": {
+            "name": "Plocha",
+            "terms": "území,oblast,plocha,prostor"
+        },
+        "landuse/landfill": {
+            "name": "Skládka",
+            "terms": "skládka,skládka odpadu,smetiště"
+        },
+        "tourism/aquarium": {
+            "name": "Akvárium",
+            "terms": "akvárko,ryba,ryby,moře,voda"
+        },
+        "type/site": {
+            "name": "Uskupení",
+            "terms": "site,uskupení,seskupení,skupina,seznam,místo"
+        },
+        "type/route/subway": {
+            "name": "Trasa metra"
+        },
+        "amenity/fast_food/burger": {
+            "name": "Burger rychlé občerstvení"
+        },
+        "amenity/vending_machine/fuel": {
+            "name": "Pumpa na plyn"
+        },
+        "amenity/fountain": {
+            "name": "Fontána, vodotrysk",
+            "terms": "vodotrysk,fontána,fontánka,kašna"
+        },
+        "shop/doityourself": {
+            "name": "Obchod pro kutily",
+            "terms": "obchod pro kutily,stavební materiál,stavebniny,staviva,potřeby pro kutily,zahradní potřeby,železářství,kutil,hobby"
+        },
+        "amenity/taxi": {
+            "name": "Stanoviště taxi",
+            "terms": "taxi,taxi stání,drožka"
+        },
+        "amenity/smoking_area": {
+            "name": "Kuřárna"
+        },
+        "man_made/water_tower": {
+            "name": "Vodárenská věž",
+            "terms": "vodojem,věž s vodojemem,věž,vodárenská věž"
+        },
+        "railway/train_wash": {
+            "name": "Myčka vlaků"
+        },
+        "shop/dry_cleaning": {
+            "name": "Čistírna",
+            "terms": "čistírna,čistírna oděvů,prádelna,praní"
+        },
+        "tourism/caravan_site": {
+            "name": "Místo pro karavany",
+            "terms": "místo pro karavany,kemp,camp,camping,karavan"
+        },
+        "craft/clockmaker": {
+            "name": "Hodinář (ne hodinky)",
+            "terms": "hodinářství,hodinář,hodiny"
+        },
+        "leisure/pitch/softball": {
+            "name": "Softballové hřiště"
+        },
+        "shop/furniture": {
+            "name": "Nábytek",
+            "terms": "obchod s nábytkem,nábytek,domácnost"
+        },
+        "public_transport/platform_ferry": {
+            "name": "Nástupiště trajektu / přívozu"
+        },
+        "advertising/billboard": {
+            "name": "Reklamní poutač",
+            "terms": "reklama,billboard,plakát"
+        },
+        "shop/bakery": {
+            "name": "Pekařství",
+            "terms": "Pekařství"
+        },
+        "emergency/phone": {
+            "name": "Tísňový telefon",
+            "terms": "nouzový telefon,SOS,tísňová linka"
+        },
+        "golf/bunker": {
+            "name": "Pískový bunker",
+            "terms": "pískový bunker,písková překážka,písečná překážka,bunker,hazard"
+        },
+        "shop/houseware": {
+            "name": "Domácí potřeby",
+            "terms": "domácí potřeby,kuchyňské potřeby,potřeby pro domácnost,nádobí"
+        },
+        "leisure/pitch/soccer": {
+            "name": "Fotbalové hřiště",
+            "terms": "fotbalové hřiště,fotbal"
+        },
+        "natural/water/river": {
+            "name": "Řeka"
+        },
+        "type/multipolygon": {
+            "name": "Multipolygon"
+        },
+        "shop/vacant": {
+            "name": "Neobsazený obchod"
+        },
+        "amenity/social_facility/homeless_shelter": {
+            "name": "Noclehárna pro bezdomovce",
+            "terms": "bezdomovec,noclehárna,útulek,armáda spásy,naděje,azylový dům"
+        },
+        "highway/turning_loop": {
+            "name": "Obratiště s ostrůvkem",
+            "terms": "obratiště,smyčka,ostrůvek"
+        },
+        "leisure/miniature_golf": {
+            "name": "Minigolf",
+            "terms": "minigolf,golf,miniaturgolf,filcgolf,fungolf,sterngolf"
+        },
+        "amenity/vending_machine/ice_cream": {
+            "name": "Automat na zmrzlinu"
+        },
+        "amenity/hospital": {
+            "name": "Prostor nemocnice",
+            "terms": "nemocnice,klinika,špitál,středisko,hospic,LDN,sanatorium,nemocniční,lazaret,ambulance,poliklinika,pohotovost"
+        },
+        "public_transport/stop_position_monorail": {
+            "name": "Místo zastavení jednokolejky"
+        },
+        "amenity/telephone": {
+            "name": "Telefon",
+            "terms": "telefon,telefonní budka,veřejný telefon,veřejná telefonní stanice"
+        },
+        "building/dormitory": {
+            "name": "Kolej / internát",
+            "terms": "kolej,koleje,studentská kolej,studentské koleje,vysokoškolská kolej,vysokoškolské koleje,internát,ubytovna,domov mládeže"
+        },
+        "craft/blacksmith": {
+            "name": "Kovář",
+            "terms": "kovář,kovářství"
+        },
+        "landuse/residential": {
+            "name": "Rezidenční oblast",
+            "terms": "obytná oblast,rezidenční oblast,byty,domy,bydlení,obytné,sídelní"
+        },
+        "leisure/stadium": {
+            "name": "Stadion",
+            "terms": "stadion,fotbal,fotbalový stadión,hřiště"
+        },
+        "highway/speed_camera": {
+            "name": "Rychlostní kamera",
+            "terms": "Rychlostní kamera"
+        },
+        "public_transport/station_monorail": {
+            "name": "Stanice jednokolejky"
+        },
+        "amenity/drinking_water": {
+            "name": "Pitná voda",
+            "terms": "pítko,fontána,fontánka"
+        },
+        "amenity/pharmacy": {
+            "name": "Okénko/přepážka lékárny"
+        },
+        "barrier/kissing_gate": {
+            "name": "Turniket",
+            "terms": "Zábrana pro dobytek,krávy"
+        },
+        "landuse/recreation_ground": {
+            "name": "Rekreační území",
+            "terms": "rekreace,prostranství pro rekreaci,náves,hřiště,obecní zeleň"
+        },
+        "office/newspaper": {
+            "name": "Novinářská redakce"
+        },
+        "type/restriction/no_u_turn": {
+            "name": "Zákaz otáčení",
+            "terms": "otáčení,otočit,u-turn"
+        },
+        "amenity/townhall": {
+            "name": "Radnice",
+            "terms": "radnice,místní správa,obecní správa,obecní úřad"
+        },
+        "public_transport/stop_position_bus": {
+            "name": "Místo zastavení autobusu"
+        },
+        "traffic_sign/city_limit_vertex": {
+            "name": "Značka začátek/konec obce"
+        },
+        "shop/hairdresser_supply": {
+            "name": "Kadeřnické potřeby"
+        },
+        "natural/water": {
+            "name": "Vodní plocha",
+            "terms": "voda,vodstvo,vodní"
+        },
+        "barrier/cycle_barrier": {
+            "name": "Zábrana proti kolům",
+            "terms": "zábrana pro cyklisty"
+        },
+        "embankment": {
+            "name": "Násyp"
+        },
+        "shop/sports": {
+            "name": "Sportovní potřeby",
+            "terms": "sport,obchod se sportovními potřebami,sportovní potřeby,vybavení pro sport"
+        },
+        "amenity/biergarten": {
+            "name": "Pivní zahrada"
+        },
+        "amenity/vending_machine/elongated_coin": {
+            "name": "Prodejní automat na mince"
+        },
+        "type/waterway": {
+            "name": "Vodní tok"
+        },
+        "emergency/destination": {
+            "name": "Vjezd záchranným vozidlům jen do místa"
+        },
+        "craft/winery": {
+            "name": "Vinař",
+            "terms": "vinař,vinařství,víno"
+        },
+        "public_transport/stop_position_train": {
+            "name": "Místo zastavení vlaku"
+        },
+        "shop/laundry": {
+            "name": "Prádelna",
+            "terms": "prádelna,čistírna,prádlo"
+        },
+        "golf/driving_range": {
+            "name": "Dojezd"
+        },
+        "amenity/grit_bin": {
+            "name": "Zásobník na posypový materiál",
+            "terms": "zásobník na posypový materiál,kontejner na posypový materiál,nádoba na posypový materiál,kontejner,nádoba,štěrk,sůl,posyp"
+        },
+        "amenity/bank": {
+            "name": "Banka",
+            "terms": "banka,spořitelna,kampelička,záložna,směnárna,bankomat,bank,depozit"
+        },
+        "amenity/prison": {
+            "name": "Prostor věznice",
+            "terms": "věznice,vězení,káznice,šatlava,žalář,detence"
+        },
+        "leisure/fishing": {
+            "name": "Místo pro rybolov"
+        },
+        "building/boathouse": {
+            "name": "Přístřešek pro loď"
+        },
+        "amenity/police": {
+            "name": "Policie",
+            "terms": "policie,strážníci,stráž,hlídka,městská policie,státní policie,vojenská policie,esenbé,esenbáci,SNB,veřejná bezpečnost,šerif,policista,interpol"
+        },
+        "place/farm": {
+            "name": "Zemědělská usedlost"
+        },
+        "highway/service/driveway": {
+            "name": "Příjezdová cesta",
+            "terms": "příjezdová cesta, příjezd"
+        },
+        "leisure/pitch/basketball": {
+            "name": "Basketbalové hřiště",
+            "terms": "basketbalové hřiště,basketbal"
+        },
+        "shop/newsagent": {
+            "name": "Trafika",
+            "terms": "trafika,trafikant,trafikantka,tabák,tisk,kiosek,noviny,stánek"
+        },
+        "building/residential": {
+            "name": "Obytná budova",
+            "terms": "obytná budova,ubytování,bývání,byt"
+        },
+        "healthcare": {
+            "name": "Zdravotní zařízení"
+        },
+        "amenity/community_centre": {
+            "name": "Komunitní centrum",
+            "terms": "komunitní centrum,kulturní centrum,sociální centrum,komunitní dům,dům dětí,dům mládeže,dům dětí a mládeže,klub"
+        },
+        "shop/tyres": {
+            "name": "Pneuservis",
+            "terms": "prodejna pneumatik,pneumatiky,pneuservis"
+        },
+        "aeroway/gate": {
+            "name": "Letištní gate",
+            "terms": "gate,brána"
+        },
+        "man_made/mast/communication/mobile_phone": {
+            "name": "Mobilní telefonní vysílač"
+        },
+        "manhole/drain": {
+            "name": "Kanalizační vpusť"
+        },
+        "traffic_calming/island": {
+            "name": "Ostrůvek",
+            "terms": "kruhák,kruháč,kulaťák,kruhový objezd,pomalu,zpomalit"
+        },
+        "highway/footway/conveying": {
+            "name": "Pohyblivý pás"
+        },
+        "aerialway/gondola": {
+            "name": "Kabinková lanovka",
+            "terms": "gondola,gondolová lanovka,kabinková lanovka,kabinová lanovka,kabinová lanová dráha,kabinková lanová dráha"
+        },
+        "shop/window_blind": {
+            "name": "Obchod s roletami",
+            "terms": "roleta,rolety,žaluzie,okenice"
+        },
+        "advertising/column": {
+            "name": "Reklamní sloup"
+        },
+        "amenity/restaurant/italian": {
+            "name": "Italská restaurace"
+        },
+        "building/temple": {
+            "name": "Budova chrámu"
+        },
+        "landuse/military/barracks": {
+            "name": "Kasárna",
+            "terms": "letectvo,armáda,základna,boj,námořnictvo,válka"
+        },
+        "amenity/casino": {
+            "name": "Kasino",
+            "terms": "kasino,ruleta,blackjack,herna,hazard,gambling"
+        },
+        "amenity/coworking_space": {
+            "name": "Sdílený pracovní prostor"
+        },
+        "tourism/museum": {
+            "name": "Muzeum",
+            "terms": "knihovna,galerie,výstavní,muzeum,repozitář,depozitář,archiv,sklad,lapidárium"
+        },
+        "railway/buffer_stop": {
+            "name": "Zarážedlo"
+        },
+        "aerialway/pylon": {
+            "name": "Sloup lanovky",
+            "terms": "sloup lanovky,stožár lanovky"
+        },
+        "craft/chimney_sweeper": {
+            "name": "Kominík"
+        },
+        "railway/narrow_gauge": {
+            "name": "Úzkorozchodná dráha",
+            "terms": "úzkorozchodná dráha,úzkokolejná dráha,úzkokolejka"
+        },
+        "shop/curtain": {
+            "name": "Obchod se závěsy",
+            "terms": "závěs,závěsy,potah,potahy,ubrus,ubrusy"
+        },
+        "amenity/recycling_container": {
+            "name": "Recyklační kontejner"
+        },
+        "healthcare/hospice": {
+            "name": "Hospic"
+        },
+        "leisure/pitch/tennis": {
+            "name": "Tenisové kurty",
+            "terms": "tenisové hřiště,tenis,kurt,dvorec"
+        },
+        "amenity/clinic/abortion": {
+            "name": "Potratová klinika"
+        },
+        "craft/watchmaker": {
+            "name": "Hodinář",
+            "terms": "hodinářství,hodinky"
+        },
+        "highway/footway/marked": {
+            "name": "Označený přechod pro chodce"
+        },
+        "leisure/fitness_centre": {
+            "name": "Tělocvična / Fitness centrum",
+            "terms": "tělocvična, posilovna, fitness, fitness centrum, fitko"
+        },
+        "highway/corridor": {
+            "name": "Chodba",
+            "terms": "chodba,koridor"
+        },
+        "traffic_sign/maxspeed_vertex": {
+            "name": "Značka omezení rychlosti"
+        },
+        "attraction/animal": {
+            "name": "Zvíře"
+        },
+        "amenity/restaurant/asian": {
+            "name": "Asijská restaurace"
+        },
+        "craft/bookbinder": {
+            "name": "Knihař",
+            "terms": "knihařství,knihař,vazba knih,vazač,vazačství"
+        },
+        "man_made/groyne": {
+            "name": "Krátká pobřežní hráz",
+            "terms": "pobřežní hráz,vlnolam,groyne"
+        },
+        "shop/pawnbroker": {
+            "name": "Zastavárna",
+            "terms": "zastavárna,zástava,lichva,lichvář,lichvářství,pawn shop"
+        },
+        "shop/beverages": {
+            "name": "Prodejna nápojů",
+            "terms": "prodejna nápojů,obchod s nápoji,nápoje,pití,malinovka,kofola,občerstvení,nealkoholické nápoje"
+        },
+        "public_transport/platform_bus": {
+            "name": "Nástupiště autobusu"
+        },
+        "entrance": {
+            "name": "Vchod/východ",
+            "terms": "vchod,východ,vjezd,výjezd,vlez,výlez,vstup"
+        },
+        "emergency/fire_alarm": {
+            "name": "Ohlašovna požárů"
+        },
+        "amenity/place_of_worship/jewish": {
+            "name": "Židovská synagoga"
+        },
+        "highway/construction": {
+            "name": "Uzavřená silnice (výstavba)"
+        },
+        "power/tower": {
+            "name": "Elektrický stožár",
+            "terms": "sloup vysokého napětí,vysoké napětí"
+        },
+        "aerialway/cable_car": {
+            "name": "Kabinová lanovka",
+            "terms": "kabinková lanovka,kabinová lanovka,kabinková lanová dráha,kabinová lanová dráha"
+        },
+        "landuse/military/airfield": {
+            "name": "Vojenské letiště",
+            "terms": "letectvo,armáda,základna,bomba,boj,heli*,stíhačka,letadlo,vojenské"
+        },
+        "craft/boatbuilder": {
+            "name": "Loďař",
+            "terms": "loďařství,loďař,stavba lodí,stavba člunů"
+        },
+        "craft/shoemaker": {
+            "name": "Švec",
+            "terms": "švec,ševcovství,obuvník,obuvnictví"
+        },
+        "shop/interior_decoration": {
+            "name": "Obchod s bytovými doplňky",
+            "terms": "bytový doplněk,bytové doplňky,bytové dekorace,bytová dekorace,dekorace,dekorativní doplněk,doplněk do bytu,dekorace do bytu"
+        },
+        "man_made/crane": {
+            "name": "Jeřáb"
+        },
+        "seamark/buoy_lateral/green": {
+            "name": "Zelená bóje"
+        },
+        "leisure/pitch/table_tennis": {
+            "name": "Pingpongový stůl",
+            "terms": "stolní tenis,ping pong"
+        },
+        "attraction/maze": {
+            "name": "Bludiště"
+        },
+        "amenity/place_of_worship/sikh": {
+            "name": "Sikhský chrám"
+        },
+        "amenity/social_facility/food_bank": {
+            "name": "Potravinová banka",
+            "terms": "potravinová banka,zásoby jídla,charita"
+        },
+        "shop/nutrition_supplements": {
+            "name": "Obchod s potravními doplňky",
+            "terms": "doplňky stravy,potravní doplňky,doplňky potravy,potravinové doplňky,doplňky výživy,výživové doplňky,nutraceutika,supplementy,vitamíny,minerály,léky"
+        },
+        "craft/gardener": {
+            "name": "Zahradník",
+            "terms": "zahradník,zahradnictví,zahradní architekt"
+        },
+        "building/church": {
+            "name": "Budova kostela",
+            "terms": "kostel,chrám,kostelík,katedrála"
+        },
+        "man_made/tower/bell_tower": {
+            "name": "Zvonice"
+        },
+        "shop/video_games": {
+            "name": "Obchod s videohrami",
+            "terms": "videohry,video hry,video hra,videohra,herní konzole,počítačové hry,game,games"
+        },
+        "traffic_calming/dip": {
+            "name": "Prohlubeň",
+            "terms": "pomalu,rychlost,zpomalit"
+        },
+        "traffic_calming/choker": {
+            "name": "Zúžení silnice",
+            "terms": "rychlost,pomalu,zpomalit"
+        },
+        "railway/funicular": {
+            "name": "Lanová dráha",
+            "terms": "lanovka"
+        },
+        "power/transformer": {
+            "name": "Transformátor",
+            "terms": "transformátor,transformátorová stanice,elektrická stanice,adaptér"
+        },
+        "power/generator": {
+            "name": "Generátor",
+            "terms": "generátor,elektrický generátor,elektrárna,zdroj proudu"
+        },
+        "natural/wetland": {
+            "name": "Mokřad",
+            "terms": "mokřad,mokřina,rašeliniště,slatiniště,slatina,bažina,slanisko,slať,slatě,mangrovy"
+        },
+        "landuse/military/naval_base": {
+            "name": "Námořní základna",
+            "terms": "základna,boj,námořnictvo,loď,ponorka,válka"
+        },
+        "shop/department_store": {
+            "name": "Obchodní dům",
+            "terms": "obchodní dům,nákupní středisko,obchodní středisko,nákupní centrum"
+        },
+        "historic/wayside_cross": {
+            "name": "Kříž",
+            "terms": "boží muka,křesťanský,kříž při cestě,krucifix"
+        },
+        "man_made/petroleum_well": {
+            "name": "Ropný vrt",
+            "terms": "ropa,těžba,těžební,ropný,vrt"
+        },
+        "healthcare/alternative": {
+            "name": "Alternativní medicína"
+        },
+        "highway/footway": {
+            "name": "Chodník",
+            "terms": "cesta,silnice,ulice,ulička,chodník,třída,bulvár,avenue,pasáž,stezka,trasa,trať,magistrála,radiála,pěšina"
+        },
+        "building/roof": {
+            "name": "Střecha",
+            "terms": "střecha,přístřešek,čekárna,pumpa,benzinka,benzínka"
+        },
+        "natural/tree_row": {
+            "name": "Stromořadí"
+        },
+        "craft/upholsterer": {
+            "name": "Čalouník",
+            "terms": "čalouník,čalounictví"
+        },
+        "natural/glacier": {
+            "name": "Ledovec",
+            "terms": "ledovec"
+        },
+        "shop/storage_rental": {
+            "name": "Skladovací prostor",
+            "terms": "skladiště,skladování,skladovací prostor,uskladnění,parkování,pronájem,nájem"
+        },
+        "shop/fashion": {
+            "name": "Módní zboží",
+            "terms": "móda,módní,módní oděvy,módní zboží,módní doplňky,módní oblečení"
+        },
+        "natural/water/canal": {
+            "name": "Vodní kanál"
+        },
+        "power/substation": {
+            "name": "Transformátorová stanice",
+            "terms": "transformátorová stanice,transformátor,transformační stanice,napětí"
+        },
+        "amenity/fast_food": {
+            "name": "Rychlé občerstvení",
+            "terms": "rychlé občerstvení"
+        },
+        "type/route/pipeline": {
+            "name": "Potrubní trasa",
+            "terms": "potrubí,potrubní trasa,roura,roury,transport,vodovod,ropovod,produktovod,plynovod,kanál,rozvod"
+        },
+        "landuse/religious": {
+            "name": "Posvátné území"
+        },
+        "traffic_sign/city_limit": {
+            "name": "Značka začátek/konec obce"
+        },
+        "barrier/cattle_grid": {
+            "name": "Přejezdový rošt",
+            "terms": "Mříž proti pohybu dobytka,mříž,příkop,krávy"
+        },
+        "tourism/motel": {
+            "name": "Motel",
+            "terms": "motel,hotel,penzion,ubytování"
+        },
+        "building/cathedral": {
+            "name": "Budova katedrály",
+            "terms": "katedrála,kostel,diecéze,biskup"
+        },
+        "office/notary": {
+            "name": "Notářství"
+        },
+        "natural/reef": {
+            "name": "Útes"
+        },
+        "craft/photographic_laboratory": {
+            "name": "Fotografická laboratoř",
+            "terms": "fotografická laboratoř,laboratoř,fotolaboratoř,fotografická dílna,temná komora,tisk fotografií"
+        },
+        "man_made/tower/minaret": {
+            "name": "Minaret"
+        },
+        "amenity/waste/dog_excrement": {
+            "name": "Koš na psí výkaly"
+        },
+        "leisure/slipway": {
+            "name": "Vodní skluz",
+            "terms": "spouštění lodi,dok,loděnice,skluz v loděnici,skluzavka"
+        },
+        "leisure/dance": {
+            "name": "Tančírna",
+            "terms": "taneční sál,tančírna,jive,džajv,swing,tango,waltz,valčík,polka"
+        },
+        "traffic_calming/hump": {
+            "name": "Široký příčný práh",
+            "terms": "široký příčný práh,příčný práh,retardér,zpomalovací práh,ležící policajt"
+        },
+        "man_made/clearcut": {
+            "name": "paseka"
+        },
+        "building/chapel": {
+            "name": "Budova kaple",
+            "terms": "kaple,kaplička,modlitebna,kostel"
+        },
+        "craft/caterer": {
+            "name": "Catering",
+            "terms": "catering,dodavatel občerstvení,dodavatelství občerstvení"
+        },
+        "office/research": {
+            "name": "Výzkumný ústav",
+            "terms": "výzkumný ústav,akademie věd,akademie,ústav,vědecký ústav,vědecká instituce,věda,výzkum,vývoj,vědecké pracoviště,výzkumné pracoviště"
+        },
+        "office/travel_agent": {
+            "name": "Cestovní kancelář"
+        },
+        "piste/downhill": {
+            "name": "Sjezdovka"
+        },
+        "highway/footway/unmarked-raised": {
+            "name": "Neoznačený přechod (zvýšený)"
+        },
+        "craft/jeweler": {
+            "name": "Klenotník"
+        },
+        "landuse/industrial/slaughterhouse": {
+            "name": "Jatka",
+            "terms": "jatka,hovězí,řezník,tele,telecí,kuře,kuřecí,slepice,kráva,maso,vepř,vepřové,drůbež,bourání"
+        },
+        "office/telecommunication": {
+            "name": "Telekomunikační společnost",
+            "terms": "telekomunikační společnost,telekomunikace,spoje,mobilní operátor,mobil,radiotelekomunikace"
+        },
+        "shop/bag": {
+            "name": "Obchod se zavazadly",
+            "terms": "zavazadlo,zavazadla,kufr,kufry,batoh,batohy,brašna,brašny,brašnář,cestovní"
+        },
+        "historic/tomb": {
+            "name": "Hrob",
+            "terms": "Hrobka"
+        },
+        "amenity/vending_machine/electronics": {
+            "name": "Elektronický prodejní automat"
+        },
+        "waterway/water_point": {
+            "name": "Pitná voda pro lodě",
+            "terms": "pitná voda,lodě"
+        },
+        "shop/garden_centre": {
+            "name": "Zahradnictví",
+            "terms": "zahradnictví,zahradní centrum,zahradnické středisko,zahradnické centrum"
+        },
+        "leisure/sports_centre/swimming": {
+            "name": "Areál plaveckého bazénu",
+            "terms": "bazén,plavecký bazén,koupaliště,plavání"
+        },
+        "barrier/hedge": {
+            "name": "Živý plot",
+            "terms": "živý plot,keříky,křoví,okrasný plot"
+        },
+        "shop/kitchen": {
+            "name": "Kuchyňské studio",
+            "terms": "kuchyně,kuchyňský,kuchyňské linky,kuchyně na míru"
+        },
+        "building/garages": {
+            "name": "Budova garáží",
+            "terms": "garáž,garáže,parkování,kryté parkování"
+        },
+        "leisure/pitch/rugby_league": {
+            "name": "Hřiště pro třináctkové ragby (rugby league)",
+            "terms": "ragby,rugby,rugby league,třináctka,třináctkové ragby"
+        },
+        "shop/beauty": {
+            "name": "Kosmetický salón",
+            "terms": "kosmetický salón,kadeřnictví,vizážista,kosmetika,salón krásy,nehty,kosmetika,depilace"
+        },
+        "amenity/charging_station": {
+            "name": "Nabíjecí stanice",
+            "terms": "nabíjecí stanice,dobíjecí stanice,nabíječka,dobíječka,elektromobil"
+        },
+        "amenity/music_school": {
+            "name": "Hudební škola"
+        },
+        "man_made/antenna": {
+            "name": "Anténa"
+        },
+        "waterway/canal": {
+            "name": "Vodní kanál",
+            "terms": "vodní kanál,kanál,přivaděč,náhon,průplav,závlaha"
+        },
+        "leisure/common": {
+            "name": "Volně přístupný prostor",
+            "terms": "volně přístupný prostor,volně přístupné,veřejně přístupné"
+        },
+        "type/route/horse": {
+            "name": "Jezdecká trasa",
+            "terms": "jezdecká trasa,koňská trasa,jezdecká stezka,koňská stezka,kůň,koně,jezdec,jezdce"
+        },
+        "amenity/dojo": {
+            "name": "Škola bojových umění",
+            "terms": "škola bojových umění,akademie bojových umění,bojové umění,bojová umění,dojo"
+        },
+        "landuse/farmland": {
+            "name": "Zemědělská půda",
+            "terms": "pole,farma,dobytek,zahrady,pěstitelská plocha"
+        },
+        "shop/baby_goods": {
+            "name": "Potřeby pro děti",
+            "terms": "děti,dítě,miminko,mimino,plína,plíny,plínka,plínky,kojenecké potřeby,dětská výživa"
+        },
+        "shop/fishmonger": {
+            "name": "Rybárna"
+        },
+        "place/square": {
+            "name": "Náměstí",
+            "terms": "Náměstí"
+        },
+        "amenity/shelter/gazebo": {
+            "name": "Altánek"
+        },
+        "man_made/storage_tank": {
+            "name": "Zásobník",
+            "terms": "zásobník,nádrž"
+        },
+        "place/neighbourhood": {
+            "name": "Část obce",
+            "terms": "část obce,část města,sousedství"
+        },
+        "amenity/fast_food/chicken": {
+            "name": "Kuřecí rychlé občerstvení"
+        },
+        "playground/slide": {
+            "name": "Skluzavka"
+        },
+        "leisure/pitch/beachvolleyball": {
+            "name": "Hřiště na plážový volejbal",
+            "terms": "Hřiště na beachvolejbal"
+        },
+        "playground/basket_swing": {
+            "name": "Houpačka"
+        },
+        "highway/footway/marked-raised": {
+            "name": "Označený přechod (zvýšený)"
+        },
+        "public_transport/stop_position_aerialway": {
+            "name": "Místo zastavení lanovky"
+        },
+        "playground/climbing_frame": {
+            "name": "Prolézačka"
+        },
+        "tourism/artwork/mural": {
+            "name": "Nástěnná malba"
+        },
+        "man_made/chimney": {
+            "name": "Komín",
+            "terms": "komín"
+        },
+        "shop/mall": {
+            "name": "Obchodní centrum",
+            "terms": "nákupní středisko,obchodní středisko,obchody,nákupní centrum"
+        },
+        "barrier/wall": {
+            "name": "Zeď",
+            "terms": "zděný plot, zeď"
+        },
+        "craft/insulator": {
+            "name": "Firma na izolace",
+            "terms": "zateplování,zateplení,izolace"
+        },
+        "shop/herbalist": {
+            "name": "Bylinkářství",
+            "terms": "bylinkář,bylinkářka,bylinář,bylinářka,bylinkářství,bylinářství,kořenář,kořenářka,kořenářství,herbalista,bylinky,byliny,bylinka,bylina"
+        },
+        "landuse/vineyard": {
+            "name": "Vinice",
+            "terms": "vinice,vinohrad,hrozny,víno"
+        },
+        "traffic_calming/rumble_strip": {
+            "name": "Opticko-akustická brzda",
+            "terms": "opticko-akustická brzda,spotflex,zpomalovací práh,optická brzda,akustická brzda"
+        },
+        "leisure/pitch/badminton": {
+            "name": "Badmintonový kurt"
+        },
+        "office/tax_advisor": {
+            "name": "Kancelář daňového poradce"
+        },
+        "aerialway/drag_lift": {
+            "name": "Lyžařský vlek",
+            "terms": "lyžařský vlek"
+        },
+        "bridge/support/pier": {
+            "name": "Mostní pilíř"
+        },
+        "healthcare/midwife": {
+            "name": "Porodní bába",
+            "terms": "dítě,porod,těhotenství"
+        },
+        "aeroway/hangar": {
+            "name": "Hangár",
+            "terms": "hangár,garáž,letadlo,letiště"
+        },
+        "healthcare/psychotherapist": {
+            "name": "Psychoterapeut"
+        },
+        "building/retail": {
+            "name": "Budova s obchody",
+            "terms": "obchod,obchody,obchodní dům,obchodní budova,obchodní centrum,nákupní centrum,shop,shopping"
+        },
+        "highway/motorway_link": {
+            "name": "Dálnice - nájezd",
+            "terms": "nájezd,sjezd,výjezd,příjezd,rampa,exit"
+        },
+        "amenity/car_pooling": {
+            "name": "Autocamping"
+        },
+        "place/isolated_dwelling": {
+            "name": "Samota",
+            "terms": "samota,vesnička,obec"
+        },
+        "shop/bed": {
+            "name": "Prodejna postelí",
+            "terms": "postel,postele,matrace,lůžko,lůžka,spaní,spánek"
+        },
+        "natural/scrub": {
+            "name": "Křoví",
+            "terms": "křoviny, křoví"
+        },
+        "craft/photographer": {
+            "name": "Fotograf",
+            "terms": "fotograf,fotografie,ateliér"
+        },
+        "building/pavilion": {
+            "name": "Pavilón"
+        },
+        "shop": {
+            "name": "Obchod",
+            "terms": "obchod,prodej,nákup,stánek,market,obchodní,nákupní"
+        },
+        "attraction/big_wheel": {
+            "name": "Ruské kolo"
+        },
+        "office/religion": {
+            "name": "Náboženská kancelář"
+        },
+        "landuse/military/obstacle_course": {
+            "name": "Překážková dráha",
+            "terms": "letectvo,armáda,námořnictvo,válka,základna,válka"
+        },
+        "natural/spring": {
+            "name": "Pramen",
+            "terms": "pramen,vodní pramen,studánka,studna"
+        },
+        "man_made/pipeline": {
+            "name": "Dálkové potrubí",
+            "terms": "roura,roury,transport,vodovod,ropovod,plynovod,kanál,rozvod"
+        },
+        "man_made/observatory": {
+            "name": "Observatoř"
+        },
+        "attraction/pirate_ship": {
+            "name": "Pirátská loď"
+        },
+        "healthcare/alternative/chiropractic": {
+            "name": "Chiropraktik"
+        },
+        "attraction/summer_toboggan": {
+            "name": "Letní tobogán"
+        },
+        "amenity/childcare": {
+            "name": "Předškolní a mimoškolní péče",
+            "terms": "předškolní,mimoškolní,mateřská školka,školka,jesle,dětské jesle,dětská skupina,mateřské centrum,lesní školka,kroužek,zájmový kroužek,družina,zájmový oddíl"
+        },
+        "office/educational_institution": {
+            "name": "Vzdělávací instituce",
+            "terms": "škola,kancelář,vzdělání,výuka,univerzita"
+        },
+        "shop/deli": {
+            "name": "Lahůdkářství",
+            "terms": "lahůdky,lahůdkářství,delikatesy,delikatesa,deli"
+        },
+        "leisure/pitch/equestrian": {
+            "name": "Jízdní aréna",
+            "terms": "drezúra,jízda na koni,kůň,koně,jízda,jezdit,aréna"
+        },
+        "place/quarter": {
+            "name": "Městská čtvrť",
+            "terms": "samosprávné město,samosprávný městský obvod,městská čtvrť"
+        },
+        "healthcare/rehabilitation": {
+            "name": "Rehabilitační středisko"
+        },
+        "shop/perfumery": {
+            "name": "Parfumerie",
+            "terms": "parfumerie,parfémy"
+        },
+        "amenity/restaurant/vietnamese": {
+            "name": "Vietnamská restaurace"
+        },
+        "highway/service/drive-through": {
+            "name": "Drive-through",
+            "terms": "okénko pro řidiče,pult pro řidiče,obsluha řidiče,obsluha do auta,drive through"
+        },
+        "shop/kiosk": {
+            "name": "Kiosek"
+        },
+        "landuse/military/danger_area": {
+            "name": "Nebezpečné území",
+            "terms": "letectvo,armáda,námořnictvo,válka,výbuch,exploze"
+        },
+        "shop/confectionery": {
+            "name": "Cukrovinky",
+            "terms": "cukrovinky,cukrovinka,cukrář,cukrářství"
+        },
+        "tourism/information/guidepost": {
+            "name": "Rozcestník",
+            "terms": "Rozcestník"
+        },
+        "shop/electronics": {
+            "name": "Elektro",
+            "terms": "Elektronika"
+        },
+        "waterway": {
+            "name": "Vodní tok"
+        },
+        "amenity/clinic": {
+            "name": "Poliklinika",
+            "terms": "poliklinika,klinika,nemocnice,ambulance,špitál"
+        },
+        "public_transport/stop_position_light_rail": {
+            "name": "Místo zastavení lehké dráhy"
+        },
+        "amenity/place_of_worship/buddhist": {
+            "name": "Buddhistický chrám",
+            "terms": "stúpa,vihara,klášter,chrám,pagoda,zendo,dojo"
+        },
+        "natural/bare_rock": {
+            "name": "Plochy jednolité skály",
+            "terms": "skála"
+        },
+        "amenity/language_school": {
+            "name": "Jazyková škola"
+        },
+        "amenity/crematorium": {
+            "name": "Krematorium",
+            "terms": "krematorium,spalovna,pohřeb"
+        },
+        "building/farm_auxiliary": {
+            "name": "Zemědělská budova"
+        },
+        "power/switch": {
+            "name": "Odpojovač",
+            "terms": "spínač,vypínač"
+        },
+        "amenity/waste_basket": {
+            "name": "Odpadkový koš",
+            "terms": "popelnice,kontejner,odpadkový koš,odpadky"
+        },
+        "building/construction": {
+            "name": "Budova ve výstavbě",
+            "terms": "stavba,výstavba,konstrukce"
+        },
+        "highway/unclassified": {
+            "name": "Silnice bez klasifikace",
+            "terms": "silnice bez klasifikace,neklasifikovaná silnice,místní komunikace"
+        },
+        "office/charity": {
+            "name": "Kancelář charity"
+        },
+        "amenity/social_facility": {
+            "name": "Zařízení sociálních služeb",
+            "terms": "sociální služby,sociální zařízení,sociální pomoc,sociální služba,azylový dům,dům na půl cesty,denní stacionář,nízkoprahové centrum,noclehárna,chudobinec"
+        },
+        "shop/hifi": {
+            "name": "Hifi elektronika",
+            "terms": "obchod se zvukovými systémy,obchod s ozvučením,ozvučení,hifi"
+        },
+        "craft/window_construction": {
+            "name": "Výroba oken",
+            "terms": "sklenář,sklenářství,výroba oken,okenářství"
+        },
+        "shop/appliance": {
+            "name": "Prodejna spotřební elektroniky",
+            "terms": "Prodejna bílého zboží,Prodej spotřební elektroniky"
+        },
+        "craft/tinsmith": {
+            "name": "Klempíř",
+            "terms": "klempíř,klempířství,plech"
+        },
+        "golf/green": {
+            "name": "Jamkoviště",
+            "terms": "jamkoviště,green"
+        },
+        "man_made/windmill": {
+            "name": "Větrný mlýn"
+        },
+        "shop/mobile_phone": {
+            "name": "Obchod s mobily",
+            "terms": "obchod s mobilními telefony,přenosné telefony,mobil,telefon"
+        },
+        "craft/basket_maker": {
+            "name": "Košíkář",
+            "terms": "košíkář,košíkářství,proutěný,pletení"
+        },
+        "building/service": {
+            "name": "Účelová budova"
+        },
+        "place/town": {
+            "name": "Město",
+            "terms": "město,městys,městečko,velkoměsto,obec"
+        },
+        "highway/tertiary_link": {
+            "name": "Silnice 3. třídy - nájezd",
+            "terms": "nájezd,sjezd,výjezd,příjezd,rampa,exit"
+        },
+        "tourism/information": {
+            "name": "Informace",
+            "terms": "informace,údaje,údaj,cedule,tabule"
+        },
+        "amenity/vending_machine/coffee": {
+            "name": "Automat na kávu"
+        },
+        "landuse/military/training_area": {
+            "name": "Vojenský výcvikový prostor",
+            "terms": "letectvo,armáda,námořnictvo,válka,základna,zbraň,zbraně,střílet,trénovat,civčit,cvičák,cvičiště"
+        },
+        "natural/water/lake": {
+            "name": "Jezero",
+            "terms": "jezero,jezírko,pleso,oko,tůň"
+        },
+        "shop/video": {
+            "name": "Video obchod",
+            "terms": "videopůjčovna,videokazety,videokazeta,dvd"
+        },
+        "amenity/animal_breeding": {
+            "name": "Chovná stanice",
+            "terms": "chovná stanice,množírna,býk,kočka,kocour,kráva,pes,kůň,fena,štěně,kotě,had"
+        },
+        "building/warehouse": {
+            "name": "Skladiště",
+            "terms": "skladiště,sklad,překladiště,hala,silo,repozitář"
+        },
+        "railway/tram": {
+            "name": "Tramvaj",
+            "terms": "tramvaj,tranvaj,šalina,šmirgl,tramvajka,elektrika,električka,tram"
+        },
+        "power/minor_line": {
+            "name": "Elektrické vedení nižšího napětí (pod 50 kV)",
+            "terms": "elektrické vedení,nízké napětí,vysoké napětí,přenosová soustava,elektrický kabel,energetika"
+        },
+        "amenity/social_facility/nursing_home": {
+            "name": "Domov pro seniory",
+            "terms": "senior,senioři,živobytí,starý,důchodce,důchodci"
+        },
+        "amenity/restaurant/thai": {
+            "name": "Thajská restaurace"
+        },
+        "public_transport/station_light_rail": {
+            "name": "Stanice lehké dráhy"
+        },
+        "landuse/farmyard": {
+            "name": "Statek",
+            "terms": "statek,farma,zemědělství,usedlost,JZD,družstvo"
+        },
+        "man_made/works": {
+            "name": "Továrna",
+            "terms": "montáž,výroba,pivovar,auto,závod,továrna,zpracování,rafinerie"
+        },
+        "craft/plumber": {
+            "name": "Instalatér",
+            "terms": "instalatér,instalatérství,vodoinstalatér"
+        },
+        "highway/cycleway": {
+            "name": "Cyklostezka",
+            "terms": "cyklotrasa"
+        },
+        "man_made/gasometer": {
+            "name": "Plynojem",
+            "terms": "plynojem,zásobník na plyn,kontejner na plyn"
+        },
+        "shop/hardware": {
+            "name": "Železářství",
+            "terms": "Železářství"
+        },
+        "amenity/car_sharing": {
+            "name": "Sdílení aut",
+            "terms": "sdílení aut,car sharing"
+        },
+        "shop/funeral_directors": {
+            "name": "Pohřební služba",
+            "terms": "pohřební služba,pohřební služba,pohřebák,hřbitovní služby,hřbitovní služba,hrobař"
+        },
+        "tourism/zoo": {
+            "name": "ZOO",
+            "terms": "zoo"
+        },
+        "shop/computer": {
+            "name": "Počítače",
+            "terms": "obchod s výpočetní technikou,počítače,elektro,elektronika,výpočetní technika"
+        },
+        "landuse/grass": {
+            "name": "Tráva",
+            "terms": "tráva"
+        },
+        "natural/grassland": {
+            "name": "Travnatá plocha",
+            "terms": "travnatá plocha,louka,traviny,travina,trávník"
+        },
+        "amenity/animal_boarding": {
+            "name": "Hotel pro zvířata",
+            "terms": "hotel pro zvířata, hotel pro domácí mazlíčky,kočka,pes,kotě,mazlíček,mazlík,štěně,had"
+        },
+        "highway/stop": {
+            "name": "Stopka",
+            "terms": "stopka,stop,stůj,dej přednost v jízdě,přednost,značka,dopravní značka"
+        },
+        "emergency/no": {
+            "name": "Vjezd záchranných vozidel zakázán"
+        },
+        "public_transport/stop_position_ferry": {
+            "name": "Místo zastavení trajektu/přívozu"
+        },
+        "tourism": {
+            "name": "Turismus"
+        },
+        "traffic_sign": {
+            "name": "Dopravní značka"
+        },
+        "amenity/public_bath": {
+            "name": "Veřejné lázně",
+            "terms": "veřejné lázně,onsen,koupel nohou,horký pramen,horké pramen"
+        },
+        "amenity/car_wash": {
+            "name": "Automyčka",
+            "terms": "myčka,automyčka,mytí,čistění,umývání,čistírna"
+        },
+        "highway/street_lamp": {
+            "name": "Pouliční lampa",
+            "terms": "pouliční lampa,pouliční osvětlení,lampa,osvětlení,veřejné osvětlení,svítidlo"
+        },
+        "playground/zipwire": {
+            "name": "Lanový skluz"
+        },
+        "tourism/theme_park": {
+            "name": "Zábavní park",
+            "terms": "zábavní park,pouť,lunapark,atrakce,kolotoč"
+        },
+        "emergency/siren": {
+            "name": "Siréna"
+        },
+        "shop/watches": {
+            "name": "Hodinářství",
+            "terms": "Hodinářství"
+        },
+        "amenity/parking_entrance": {
+            "name": "Vjezd do/výjezd z garáží",
+            "terms": "parkoviště,parking,parkování,stání,garáž,garáže,vjezd,výjezd"
+        },
+        "landuse": {
+            "name": "Využití krajiny"
+        },
+        "waterway/riverbank": {
+            "name": "Břeh řeky"
+        },
+        "type/route/light_rail": {
+            "name": "Trasa lehké dráhy"
+        },
+        "shop/music": {
+            "name": "Obchod s hudbou",
+            "terms": "hudební obchod,obchod s hudbou,cd,lp"
+        },
+        "amenity/fast_food/fish_and_chips": {
+            "name": "Fish & Chips Rychlé občerstvení"
+        },
+        "barrier/toll_booth": {
+            "name": "Mýtná brána",
+            "terms": "budka pro výběr mýta,mýtnice,výběr mýta,mýto,myto,poplatek,vstupné,kasa,pokladna"
+        },
+        "highway/crossing/unmarked": {
+            "name": "Neoznačený přechod"
+        },
+        "craft/stonemason": {
+            "name": "Kameník",
+            "terms": "kameník,kamenictví"
+        },
+        "aerialway": {
+            "name": "Lanovka/vlek"
+        },
+        "amenity/nightclub": {
+            "name": "Diskotéka",
+            "terms": "diskotéka,disko,disco,noční klub,klub,taneční klub,dýza,rychta"
+        },
+        "waterway/dam": {
+            "name": "Hráz",
+            "terms": "přehrada"
+        },
+        "amenity/school": {
+            "name": "Prostor školy",
+            "terms": "škola,základní škola,střední škola,obecná škola,gymnázium,gymnasium,střední odborná škola,učiliště,odborné učiliště,střední odborné učiliště,školní,školský"
+        },
+        "public_transport/stop_position_tram": {
+            "name": "Místo zastavení tramvaje"
+        },
+        "shop/photo": {
+            "name": "Fotografický obchod",
+            "terms": "fotografie,fotografický obchod,foto,fotoobchod,video,vyvolávání,tisk,film,filmy,fotostudio,studio,fotoaparát,digitální,digitál,střih,ateliér,objektiv"
+        },
+        "office/forestry": {
+            "name": "Kancelář lesní správy"
+        },
+        "building/static_caravan": {
+            "name": "Karavan nastálo",
+            "terms": "karavan,přívěs,obytný přívěs,obytný vůz,maringotka,obytná buňka,kontejner"
+        },
+        "playground/rocker": {
+            "name": "Koník na pružině"
+        },
+        "waterway/milestone": {
+            "name": "Milník vodní cesty"
+        },
+        "leisure/pitch/skateboard": {
+            "name": "Skatepark",
+            "terms": "skatepark,skate park,skateboard,bmx,inline,brusle"
+        },
+        "office/government/tax": {
+            "name": "Finanční úřad"
+        },
+        "office/moving_company": {
+            "name": "Kancelář stěhovací služby"
+        },
+        "highway/bridleway": {
+            "name": "Jezdecká stezka",
+            "terms": "jezdecká stezka,jezdecká trasa,stezka pro jezdce,stezka pro koně,koňská stezka"
+        },
+        "shop/variety_store": {
+            "name": "Laciné zboží",
+            "terms": "laciné zboží,levné zboží,sleva,slevy,krach,výprodej,za babku,všechno pod,smíšené zboží,retail,variety"
+        },
+        "amenity/parking/multi-storey": {
+            "name": "Vícepatrové garáže"
+        },
+        "amenity/doctors": {
+            "name": "Lékař",
+            "terms": "lékař,doktor,ordinace,lékařská ordinace,praktický lékař,praktický doktor"
+        },
+        "barrier/ditch": {
+            "name": "Příkop",
+            "terms": "příkop,zákop"
+        },
+        "landuse/churchyard": {
+            "name": "Prostor kolem kostela",
+            "terms": "kostel,kaple,kaplička,hřbitov,krchov,krematorium"
+        },
+        "amenity/shelter": {
+            "name": "Přístřešek",
+            "terms": "přístřešek,střecha,budka,bouda,čekárna"
+        },
+        "tourism/picnic_site": {
+            "name": "Místo pro piknik",
+            "terms": "piknik,místo pro piknik,tábořiště,ohniště,stůl,lavička,lavice,gril"
+        },
+        "highway/rest_area": {
+            "name": "Odpočívadlo",
+            "terms": "odpočívadlo,místo k zastavení,odpočívka,dálniční odpočívadlo"
+        },
+        "amenity/vending_machine/stamps": {
+            "name": "Poštovní automat"
+        },
+        "public_transport/station_aerialway": {
+            "name": "Stanice lanovky"
+        },
+        "playground/swing": {
+            "name": "Houpačka"
+        },
+        "craft/electrician": {
+            "name": "Elektrikář",
+            "terms": "elektrikář,elektrikářství"
+        },
+        "manhole/telecom": {
+            "name": "Telekomunikační šachta"
+        },
+        "attraction/drop_tower": {
+            "name": "padací věž"
+        },
+        "historic/archaeological_site": {
+            "name": "Archeologické naleziště",
+            "terms": "archeologické naleziště,vykopávky,archeologický průzkum"
+        },
+        "amenity/driving_school": {
+            "name": "Autoškola",
+            "terms": "autoškola"
+        },
+        "building/barn": {
+            "name": "Stodola",
+            "terms": "stodola,seník,sýpka"
+        },
+        "amenity/bench": {
+            "name": "Lavička",
+            "terms": "lavička,sezení"
+        },
+        "craft/beekeeper": {
+            "name": "Včelař",
+            "terms": "včelař,včely,úl,med,prodej medu,včelařství"
+        },
+        "leisure/track/horse_racing": {
+            "name": "Závodní trať (koně)"
+        },
+        "amenity/toilets": {
+            "name": "Toalety",
+            "terms": "toalety,toaleta,záchod,záchodky,WC"
+        },
+        "amenity/sanitary_dump_station": {
+            "name": "Výlevka pro karavany",
+            "terms": "záchod,kanalizace,výlevka,žumpa,odpadní voda,wc,toaleta,karavan,kemp,obytný vůz"
+        },
+        "shop/hearing_aids": {
+            "name": "Obchod s naslouchátky",
+            "terms": "naslouchátko,naslouchátka,naslouchadlo,naslouchadla,neslyšící,nedoslýchavý,nedoslýchavost"
+        },
+        "shop/water": {
+            "name": "Obchod s pitnou vodou"
+        },
+        "public_transport/platform": {
+            "name": "Nástupiště"
+        },
+        "craft/confectionery": {
+            "name": "Cukrář"
+        },
+        "amenity/place_of_worship": {
+            "name": "Chrám",
+            "terms": "křesťanský,křesťanství,kostel,kostelík,chrám,bazilika,katedrála,kaple,kaplička,chrám páně,rotunda,farnost,diecéze,mešita,minaret,synagoga,pagoda,stúpa,oratorium,modlitebna,náboženský,náboženská,náboženské,sakrální,svatyně"
+        },
+        "aerialway/goods": {
+            "name": "Nákladní lanovka",
+            "terms": "nákladní lanovka"
+        },
+        "railway/platform": {
+            "name": "Železniční nástupiště"
+        },
+        "barrier/retaining_wall": {
+            "name": "Opěrná zeď",
+            "terms": "opěrná zeď"
+        },
+        "amenity/love_hotel": {
+            "name": "Hodinový hotel"
+        },
+        "office/adoption_agency": {
+            "name": "Adopční agentura"
+        },
+        "highway/traffic_signals": {
+            "name": "Semafory",
+            "terms": "světla,semafor,dopravní signalizace"
+        },
+        "amenity/embassy": {
+            "name": "Velvyslanectví",
+            "terms": "velvyslanectví,vyslanectví,ambasáda,zastupitelství"
+        },
+        "place/islet": {
+            "name": "Ostrůvek"
+        },
+        "type/restriction/no_left_turn": {
+            "name": "Zákaz odbočování vlevo",
+            "terms": "odbočování vlevo,odbočení vlevo,odbočit vlevo,zatočení vlevo,zatočit vlevo"
+        },
+        "leisure/ice_rink": {
+            "name": "Kluziště",
+            "terms": "kluziště,zimní stadion,led,ledová plocha"
+        },
+        "healthcare/blood_donation": {
+            "name": "Odběr krve",
+            "terms": "odběr krve,darování krve,transfúze,transfúzní stanice"
+        },
+        "place/village": {
+            "name": "Vesnice",
+            "terms": "vesnice"
+        },
+        "shop/water_sports": {
+            "name": "Plavecké potřeby",
+            "terms": "plavecké potřeby,plavání,plavec,plavce,plavky,plavecké,plavecký"
+        },
+        "shop/lottery": {
+            "name": "Prodejna losů",
+            "terms": "los,losy,loterie,sázky,sázení,sportka"
+        },
+        "leisure/dog_park": {
+            "name": "Psí park",
+            "terms": "park pro psy,psí park"
+        },
+        "natural/cave_entrance": {
+            "name": "Vstup do jeskyně",
+            "terms": "jeskyně,vstup do jeskyně, jeskynní komplex,kaverna,kras,díra,propast,speleologie"
+        },
+        "point": {
+            "name": "Uzel",
+            "terms": "uzel,bod,vrchol,tečka,puntík"
+        },
+        "shop/cheese": {
+            "name": "Prodejna sýrů",
+            "terms": "sýrařství,sýrař,sýry,sýr"
+        },
+        "amenity/boat_rental": {
+            "name": "Půjčovna lodí",
+            "terms": "půjčovna lodí,půjčovna loděk,půjčovna člunů"
+        },
+        "amenity/place_of_worship/taoist": {
+            "name": "Taoistický chrám"
+        },
+        "building/mosque": {
+            "name": "Budova mešity",
+            "terms": "Teroristická buňka"
+        },
+        "building/cabin": {
+            "name": "Dřevěná stavba",
+            "terms": "chata,chalupa,srub,roubenka,chatrč,roubená stavba,dřevěná stavba"
+        },
+        "highway/footway/sidewalk": {
+            "name": "Chodník"
+        },
+        "amenity/animal_shelter": {
+            "name": "Zvířecí útulek",
+            "terms": "útulek pro zvířata,útulek pro domácí mazlíčky,adopce,kočka,kocour,kotě,pes,fena,záchrana mazlíčků,dravec,dravci,záchrana,ochrana"
+        },
+        "emergency/private": {
+            "name": "Vjezd záchranným vozidlům jen s povolením"
+        },
+        "craft/sailmaker": {
+            "name": "Výroba plachet",
+            "terms": "plachty,plachtář,výroba plachet"
+        },
+        "office/ngo": {
+            "name": "Nezisková organizace",
+            "terms": "nezisková organizace,neziskovka,nevládní organizace"
+        },
+        "craft/glaziery": {
+            "name": "Práce se sklem",
+            "terms": "sklenář,sklenářství,sklo,práce se sklem"
+        },
+        "highway/footway/unmarked": {
+            "name": "Neoznačený přechod"
+        },
+        "highway/motorway_junction": {
+            "name": "Dálniční křižovatka/sjezd",
+            "terms": "dálniční nájezd,dálniční výjezd,dálniční exit,dálniční křižovatka,křížení dálnic,nájezd,exit"
+        },
+        "natural/tree": {
+            "name": "Strom",
+            "terms": "strom"
+        },
+        "amenity/register_office": {
+            "name": "Matriční úřad"
+        },
+        "highway/crossing/marked-raised": {
+            "name": "Označený přechod (zvýšený)"
+        },
+        "leisure/adult_gaming_centre": {
+            "name": "Herna (hrací automaty)",
+            "terms": "herna,automaty,hazard,hrací automaty,výherní hrací automaty,gambling"
+        },
+        "shop/car_parts": {
+            "name": "Náhradní díly pro auta",
+            "terms": "prodejna autodílů,autodíly,automobilový,auto"
+        },
+        "leisure/outdoor_seating": {
+            "name": "Venkovní posezení"
+        },
+        "office/lawyer": {
+            "name": "Právní kancelář",
+            "terms": "právní kancelář,právník,právní zástupce,advokátní kancelář,advokát"
+        },
+        "building/apartments": {
+            "name": "Budova s byty"
+        },
+        "highway/trunk_link": {
+            "name": "Víceproudá silnice - nájezd",
+            "terms": "nájezd,sjezd,výjezd,příjezd,rampa,exit"
+        },
+        "amenity/vending_machine/news_papers": {
+            "name": "Automat na noviny"
+        },
+        "shop/bookmaker": {
+            "name": "Sázková kancelář",
+            "terms": "sázková kancelář,sázky,sázení,kurzové sázení,bookmaker,sazka,tipsport,fortuna"
+        },
+        "leisure/fitness_centre/yoga": {
+            "name": "Yoga studio",
+            "terms": "studio"
+        },
+        "leisure/track/running": {
+            "name": "Závodní trať (běh)"
+        },
+        "aerialway/t-bar": {
+            "name": "Vlek - dvojmístná kotva",
+            "terms": "vlek,lyžařský vlek,kotva,dvojmístná kotva,dvoumístná kotva"
+        },
+        "public_transport/platform_aerialway": {
+            "name": "Nástupiště lanovky"
+        },
+        "historic/boundary_stone": {
+            "name": "Hraniční kámen",
+            "terms": "hraniční kámen,hranice,značka"
+        },
+        "leisure/park": {
+            "name": "Park",
+            "terms": "les,prales,louka,trávník,park,hřiště,parčík,zeleň,lesní,strom,křoví"
+        },
+        "amenity/internet_cafe": {
+            "name": "Internetová kavárna",
+            "terms": "internetová kavárna,kyberkavárna,kavárna,káva"
+        },
+        "landuse/reservoir": {
+            "name": "Přehrada"
+        },
+        "leisure/garden": {
+            "name": "Zahrada",
+            "terms": "zahrada"
+        },
+        "historic/memorial": {
+            "name": "Památník",
+            "terms": "pamětihodnost,památník,pomník,hrdina"
+        },
+        "shop/cosmetics": {
+            "name": "Obchod s kosmetikou",
+            "terms": "kosmetika,kosmetický,makeup,parfém,parfumerie"
+        },
+        "type/restriction/only_u_turn": {
+            "name": "Pouze otáčení"
+        },
+        "leisure/swimming_pool": {
+            "name": "Plavecký bazén",
+            "terms": "plovárna,koupaliště"
+        },
+        "waterway/stream": {
+            "name": "Potok",
+            "terms": "potok,potůček,strouha,tok,říčka,přítok,koryto,řeka,proud,vír,odtok,příliv,odliv"
+        },
+        "railway": {
+            "name": "Železnice"
+        },
+        "building/university": {
+            "name": "Budova vysoké školy",
+            "terms": "vysoká škola,univerzita,universita,vysoké učení"
+        },
+        "amenity/library": {
+            "name": "Knihovna",
+            "terms": "knihovna"
+        },
+        "shop/stationery": {
+            "name": "Kancelářské potřeby",
+            "terms": "papírnictví,papír,kancelářské potřeby,papírnické zboží,psací potřeby"
+        },
+        "highway/secondary_link": {
+            "name": "Silnice 2. třídy - nájezd",
+            "terms": "nájezd,sjezd,výjezd,příjezd,rampa,exit"
+        },
+        "office/advertising_agency": {
+            "name": "Reklamní agentura"
+        },
+        "highway/living_street": {
+            "name": "Obytná zóna",
+            "terms": "obytná zóna"
+        },
+        "landuse/military/bunker": {
+            "name": "Vojenský bunkr",
+            "terms": "letectvo,armáda,základna,námořnictvo,válka,válečný"
+        },
+        "attraction/bumper_car": {
+            "name": "Autodrom"
+        },
+        "attraction/roller_coaster": {
+            "name": "Horská dráha"
+        },
+        "power/sub_station": {
+            "name": "Transformátorová stanice"
+        },
+        "shop/copyshop": {
+            "name": "Kopírování",
+            "terms": "kopírování,kopírka,kopírky,copy centrum,copy studio,kopírovací centrum,kopírárna,xerox"
+        },
+        "leisure/firepit": {
+            "name": "Ohniště",
+            "terms": "ohniště,oheň,táborák,krb,topeniště"
+        },
+        "public_transport/station_ferry": {
+            "name": "Přístaviště / terminál trajektu či přívozu"
+        },
+        "leisure/pitch/baseball": {
+            "name": "Basebalové hřiště"
+        },
+        "man_made/bridge": {
+            "name": "Most",
+            "terms": "most,lávka,viadukt,akvadukt,ekodukt"
+        },
+        "railway/monorail": {
+            "name": "Jednokolejka",
+            "terms": "jednokolejka,monorail,jednokolejná trať"
+        },
+        "office/physician": {
+            "name": "Praktický lékař"
+        },
+        "shop/bicycle": {
+            "name": "Cykloprodejna",
+            "terms": "obchod s koly,kola,horská kola,jízdní kola,cyklistika,cykloprodejna"
+        },
+        "public_transport/stop_position_subway": {
+            "name": "Místo zastavení metra"
+        },
+        "tourism/apartment": {
+            "name": "Byt/apartmán k pronájmu",
+            "terms": "Prazdninový byt"
+        },
+        "amenity/hunting_stand": {
+            "name": "Posed",
+            "terms": "posed,pozorovatelna,kazatelna"
+        },
+        "tourism/guest_house": {
+            "name": "Penzion",
+            "terms": "B&B,Bed & Breakfast,Bed and Breakfast"
+        },
+        "healthcare/laboratory": {
+            "name": "Zdravotnická laboratoř"
+        },
+        "power/plant": {
+            "name": "Pozemek elektrárny",
+            "terms": "uhlí,plyn,generátor,vodní,nukleární,jaderná,elektrárna,tepelná"
+        },
+        "landuse/aquaculture": {
+            "name": "Akvakultura",
+            "terms": "rybí farma,pěstování ryb,řasa,korýš,kreveta,krevety,ústřice"
+        },
+        "amenity": {
+            "name": "Zařízení"
+        },
+        "seamark/buoy_lateral/red": {
+            "name": "Červená bóje"
+        },
+        "tourism/gallery": {
+            "name": "Galerie umění",
+            "terms": "muzeum umění,galerie umění,umělecká galerie,umělecké muzeum,galerie"
+        },
+        "amenity/fuel": {
+            "name": "Čerpací stanice",
+            "terms": "benzinová pumpa,čerpací stanice,pumpa"
+        },
+        "type/route/tram": {
+            "name": "Tramvajová trasa",
+            "terms": "tramvajová trasa,tramvajová linka,kolej,koleje,tramvaj,linka tramvaje"
+        },
+        "man_made/mast/communication/television": {
+            "name": "TV vysílací stožár"
+        },
+        "shop/second_hand": {
+            "name": "Second hand",
+            "terms": "second hand,druhá ruka,z druhé ruky,bazar,bazarový,thrift"
+        },
+        "place/island": {
+            "name": "Ostrov",
+            "terms": "ostrov,ostrůvek,souostroví,archipel,atol,útes"
+        },
+        "public_transport/platform_tram": {
+            "name": "Nástupiště tramvaje"
+        },
+        "attraction/bungee_jumping": {
+            "name": "Bungee jumping"
+        },
+        "piste/piste": {
+            "name": "Zimní sportovní stezky"
+        },
+        "railway/signal": {
+            "name": "Proměnné návěstidlo",
+            "terms": "semafor,světlo"
+        },
+        "craft/rigger": {
+            "name": "Výroba takeláže",
+            "terms": "výroba takeláže,takeláž,plachtoví,ráhnoví,lanoví,stěžně"
+        },
+        "man_made/water_works": {
+            "name": "Vodárna",
+            "terms": "vodárna,úpravna vody"
+        },
+        "amenity/pub": {
+            "name": "Hospoda",
+            "terms": "hospoda,hostinec,hospůdka,pivnice,výčep,lokál"
+        },
+        "building/entrance": {
+            "name": "Vchod/východ (zastaralý tag)"
+        },
+        "shop/religion": {
+            "name": "Náboženské předměty",
+            "terms": "náboženství,náboženský,duchovní,křesťanský,katolický"
+        },
+        "golf/rough": {
+            "name": "Rough",
+            "terms": "rough,vysoká tráva"
+        },
+        "man_made/breakwater": {
+            "name": "Vlnolam",
+            "terms": "pobřežní hráz,násep,kameny,molo,zábrana"
+        },
+        "shop/shoes": {
+            "name": "Obuvnictví",
+            "terms": "dům obuvi,boty,obuvnictví,obuvník,švec"
+        },
+        "amenity/ranger_station": {
+            "name": "Návštěvnické centrum",
+            "terms": "návštěvnické centrum, návštěvní centrum"
+        },
+        "amenity/parking": {
+            "name": "Parkoviště"
+        },
+        "highway/bus_stop": {
+            "name": "Zastávka autobusu"
+        },
+        "office/energy_supplier": {
+            "name": "Kancelář dodavatele elektřiny"
+        },
+        "amenity/place_of_worship/hindu": {
+            "name": "Hinduistický chrám"
+        },
+        "traffic_sign_vertex": {
+            "name": "Dopravní značka"
+        },
+        "aerialway/platter": {
+            "name": "Vlek - talíř (poma)",
+            "terms": "talířový vlek,talířový teleskopický vlek,poma,lyžařský vlek"
+        },
+        "amenity/swimming_pool": {
+            "name": "Plavecký bazén"
+        },
+        "amenity/vending_machine/condoms": {
+            "name": "Automat na kondomy",
+            "terms": "automat,prodejní automat,kondom,prezervativ"
+        },
+        "craft/electronics_repair": {
+            "name": "Opravna elektroniky",
+            "terms": "Opravy elektroniky,Opravna elektroniky"
+        },
+        "man_made/adit": {
+            "name": "Štola",
+            "terms": "štola,důl,vstup do dolu,důlní,horní,tunel"
+        },
+        "man_made/tower": {
+            "name": "Věž",
+            "terms": "věž,sloup,stožár,bašta,pevnost,hrad"
+        },
+        "shop/florist": {
+            "name": "Květinářství",
+            "terms": "květinář,květinářství,květy,květiny,kytice"
+        },
+        "type/route/ferry": {
+            "name": "Trajektová trasa",
+            "terms": "trajekt,trasa,linka,loď,trasa trajektu"
+        },
+        "highway/crossing/marked": {
+            "name": "Označený přechod"
+        },
+        "amenity/atm": {
+            "name": "Bankomat",
+            "terms": "bankomat,ATM,automat,banka,výběr"
+        },
+        "ford": {
+            "name": "Brod",
+            "terms": "brod,přejezd vody,ford"
+        },
+        "natural/sand": {
+            "name": "Písek",
+            "terms": "poušť"
+        },
+        "place/locality": {
+            "name": "Neobydlené místo",
+            "terms": "neobydlené místo,místo,lokalita"
+        },
+        "traffic_calming/table": {
+            "name": "Zvýšená plocha pro zpomalení",
+            "terms": "zpomalovací stůl,rychlostní stůl"
+        },
+        "amenity/courthouse": {
+            "name": "Soud",
+            "terms": "soud,soudní budova,soudní dvůr"
+        },
+        "shop/art": {
+            "name": "Obchod s uměním",
+            "terms": "obchod s uměním,umění,galerie,umělecká galerie,prodejní galerie"
+        },
+        "place/hamlet": {
+            "name": "Osada",
+            "terms": "osada,vesnička,vesnice,obec,lhota"
+        },
+        "amenity/recycling_centre": {
+            "name": "Recyklační centrum",
+            "terms": "recyklace,centrum,kontejner,láhev,plechovka,skládka,odpad,smetí,šrot"
+        },
+        "club": {
+            "name": "Klub",
+            "terms": "sociální"
+        },
+        "office/private_investigator": {
+            "name": "Soukromá detektivní kancelář"
+        },
+        "waterway/fuel": {
+            "name": "Lodní čerpací stanice",
+            "terms": "lodní pumpa,pumpa,čerpací stanice,loď,jachta,hausbót"
+        },
+        "highway": {
+            "name": "Pozemní komunikace"
+        },
+        "shop/pastry": {
+            "name": "Cukrárna",
+            "terms": "cukrářství,dorty"
+        },
+        "amenity/theatre": {
+            "name": "Divadlo",
+            "terms": "divadlo,divadelní,představení,muzikál"
+        },
+        "highway/pedestrian_line": {
+            "name": "Pěší zóna"
+        },
+        "landuse/military/checkpoint": {
+            "name": "Kontrolní stanoviště",
+            "terms": "letectvo,armáda,námořnictvo,válka"
+        },
+        "man_made/lighthouse": {
+            "name": "Maják",
+            "terms": "maják,světlo"
+        },
+        "type/route/train": {
+            "name": "Železniční trasa",
+            "terms": "železniční trasa,vlaková trasa,železniční linka,vlaková linka,kolej,koleje,železnice,dráhy,dráha,železniční cesta,železniční cesty,drážní"
+        },
+        "barrier/fence": {
+            "name": "Plot",
+            "terms": "plot,oplocení"
+        },
+        "landuse/cemetery": {
+            "name": "Hřbitov",
+            "terms": "hřbitov,pohřebiště"
+        },
+        "railway/rail": {
+            "name": "Kolej",
+            "terms": "koleje,železnice,vlak,trať"
+        },
+        "natural/scree": {
+            "name": "Suťoviště",
+            "terms": "suť,suťoviště,kámen,kameny"
+        },
+        "office/government": {
+            "name": "Státní úřad",
+            "terms": "státní úřad,státní instituce,ministerstvo"
+        },
+        "office/it": {
+            "name": "Kancelář informačních technologií"
+        },
+        "railway/disused": {
+            "name": "Nepoužívaná železnice",
+            "terms": "nepoužívaná železnice, nepoužívaná železniční dráha"
+        },
+        "amenity/grave_yard": {
+            "name": "Pohřebiště",
+            "terms": "hřbitov,pohřebiště"
+        },
+        "railway/light_rail": {
+            "name": "Lehká dráha"
+        },
+        "office/lawyer/notary": {
+            "name": "Kancelář notáře"
+        },
+        "amenity/clinic/fertility": {
+            "name": "Klinika plodnosti"
+        },
+        "leisure/fitness_station": {
+            "name": "Venkovní tělocvična",
+            "terms": "fitko,fitness,tělocvična"
+        },
+        "amenity/vending_machine/newspapers": {
+            "name": "Automat na noviny",
+            "terms": "automat,prodejní automat,noviny,časopisy"
+        },
+        "railway/subway_entrance": {
+            "name": "Vstup do metra",
+            "terms": "vstup do metra,vchod do metra,vlez do metra,vestibul,metro"
+        },
+        "emergency/fire_extinguisher": {
+            "name": "Hasící přístroj"
+        },
+        "healthcare/speech_therapist": {
+            "name": "Logoped"
+        },
+        "leisure/picnic_table": {
+            "name": "Stůl na piknik",
+            "terms": "stůl na piknik,stůl,piknik,piknikový stůl,lavička"
+        },
+        "man_made/cutline": {
+            "name": "Průsek",
+            "terms": "lesní průsek,holina"
+        },
+        "craft/scaffolder": {
+            "name": "Lešenář",
+            "terms": "lešenář,lešenářství,lešení"
+        },
+        "shop/locksmith": {
+            "name": "Zámečnictví",
+            "terms": "zámečnictví,zámečník,klíč,zámek"
+        },
+        "office/insurance": {
+            "name": "Pojišťovna",
+            "terms": "pojišťovna,pojištění,zajišťovna"
+        },
+        "leisure/pitch": {
+            "name": "Hřiště",
+            "terms": "sportovní kurt,hřiště,dvorec,kurt,stadion"
+        },
+        "public_transport/stop_position_trolleybus": {
+            "name": "Místo zastavení trolejbusu"
+        },
+        "tourism/hotel": {
+            "name": "Hotel",
+            "terms": "hotel,ubytování"
+        },
+        "historic/monument": {
+            "name": "Monument",
+            "terms": "pamětihodnost,památník,pomník,hrdina"
+        },
+        "manhole": {
+            "name": "Šachta"
+        },
+        "type/route/bicycle": {
+            "name": "Cyklotrasa",
+            "terms": "cyklotrasa,cyklistická trasa,cyklistická značka"
+        },
+        "highway/give_way": {
+            "name": "Značka Dej přednost",
+            "terms": "dej přednost v jízdě,dej přednost,značka přednosti v jízdě,vedlejší silnice,vedlejší ulice"
+        },
+        "man_made/mast/communication": {
+            "name": "Komunikační stožár"
+        },
+        "amenity/place_of_worship/shinto": {
+            "name": "Džindža (šintoistická svatyně)"
+        },
+        "historic": {
+            "name": "Památné místo",
+            "terms": "historické místo"
+        },
+        "railway/switch": {
+            "name": "Výhybka"
+        },
+        "man_made/tower/communication": {
+            "name": "Komunikační věž"
+        },
+        "amenity/restaurant/sushi": {
+            "name": "Sushi restaurace"
+        },
+        "healthcare/optometrist": {
+            "name": "Optik",
+            "terms": "oko,oči,brýle,lasik,čočky,zrak"
+        },
+        "building/kindergarten": {
+            "name": "Budova školky/jeslí",
+            "terms": "jesle,školka,kindergarten,předškolní,mateřská školka"
+        },
+        "leisure/playground": {
+            "name": "Dětské hřiště",
+            "terms": "hřiště,dětské hřiště,prolézačky,prolézačka,pískoviště,houpačky,houpačka,skluzavky,skluzavka"
+        },
+        "emergency/water_tank": {
+            "name": "Nouzový zásobník vody"
+        },
+        "shop/erotic": {
+            "name": "Sex shop",
+            "terms": "sex shop,sexshop,erotické zboží,erotické pomůcky,erotické prádlo"
+        },
+        "type/restriction/only_left_turn": {
+            "name": "Pouze vlevo"
+        },
+        "highway/mini_roundabout": {
+            "name": "Malý kruhový objezd",
+            "terms": "malý kruhový objezd,kruháč"
+        },
+        "public_transport/platform_monorail": {
+            "name": "Nástupiště jednokolejky"
+        },
+        "amenity/monastery": {
+            "name": "Klášterní pozemky"
+        },
+        "highway/service/parking_aisle": {
+            "name": "Parkovací ulička",
+            "terms": "jízdní pruh na parkovišti"
+        },
+        "amenity/bbq": {
+            "name": "Gril",
+            "terms": "gril,grilování,barbecue,bbq,opékání"
+        },
+        "waterway/dock": {
+            "name": "Doky",
+            "terms": "doky,dok,výroba lodí,oprava lodí,údržba lodí,loděnice"
+        },
+        "waterway/boatyard": {
+            "name": "Loděnice",
+            "terms": "loděnice,dok,suchý dok,doky,suché doky"
+        },
+        "power/line": {
+            "name": "Elektrické vedení vyššího napětí (nad 50 kV)",
+            "terms": "elektrické vedení,velmi vysoké napětí,zvláště vysoké napětí,přenosová soustava,energetika"
+        },
+        "amenity/ice_cream": {
+            "name": "Zmrzlina",
+            "terms": "zmrzlina,prodejna zmrzliny,zmrzlinářství,nanuk,mražený jogurt,gelato,sorbet"
+        },
+        "leisure/horse_riding": {
+            "name": "Jezdecký areál",
+            "terms": "jízda na koni,stáje"
+        },
+        "power/pole": {
+            "name": "Sloup elektrického vedení",
+            "terms": "sloup el.vedení,elektrický sloup,sloup elektrického vedení,sloupový stožár"
+        },
+        "barrier/guard_rail": {
+            "name": "Zábradlí"
+        },
+        "natural/peak": {
+            "name": "Vrchol",
+            "terms": "hora,vrch,vrchol,vrcholek,kopec,kopeček,kóta,mont,mount,pik"
+        },
+        "highway/tertiary": {
+            "name": "Silnice 3. třídy",
+            "terms": "silnice III. třídy"
+        },
+        "amenity/restaurant/steakhouse": {
+            "name": "Steakhouse"
+        },
+        "shop/beauty/nails": {
+            "name": "Nehtový salón",
+            "terms": "manikúra,pedikúra"
+        },
+        "tourism/artwork": {
+            "name": "Umělecké dílo",
+            "terms": "umělecké dílo,socha,sousoší,plastika,obraz,architektonické dílo,malba,freska,mozaika"
+        },
+        "amenity/vending_machine/sweets": {
+            "name": "Automat na drobné občerstvení",
+            "terms": "automat,prodejní automat,spirálový automat,jídlo,potraviny,sušenky,bagety"
+        },
+        "landuse/retail": {
+            "name": "Nákupní zóna",
+            "terms": "nákupní,obchod,maloobchodní,nákup"
+        },
+        "leisure/picnic_table/chess": {
+            "name": "Šachový stůl"
+        },
+        "leisure/sauna": {
+            "name": "Sauna"
+        },
+        "craft/key_cutter": {
+            "name": "Výroba klíčů",
+            "terms": "klíče,klíčník,výroba klíčů,zámečník,zámečnictví"
+        },
+        "leisure/resort": {
+            "name": "Letovisko",
+            "terms": "Turistický resort"
+        },
+        "shop/pyrotechnics": {
+            "name": "Obchod s pyrotechnikou",
+            "terms": "pyrotechnika,zábavní pyrotechnika,zábavná pyrotechnika,ohňostroj,dělbuch"
+        },
+        "leisure/pitch/cricket": {
+            "name": "Kriketové hřiště",
+            "terms": "Kriketové hřiště"
+        },
+        "public_transport/platform_trolleybus": {
+            "name": "Nástupiště trolejbusu"
+        },
+        "amenity/arts_centre": {
+            "name": "Umělecké centrum",
+            "terms": "umělecké centrum, kulturní centrum, kulturní dům, umělecké středisko"
+        },
+        "railway/crossing": {
+            "name": "Železniční přejezd (přes cestu)",
+            "terms": "přejezd,přechod,železnice,železniční přejezd,železniční přechod"
+        },
+        "shop/travel_agency": {
+            "name": "Cestovní kancelář",
+            "terms": "cestovní kancelář,cestovka,cestování,dovolená"
+        },
+        "tourism/artwork/statue": {
+            "name": "Pomník"
+        },
+        "amenity/restaurant": {
+            "name": "Restaurace",
+            "terms": "bar,jídelna,kantýna,bistro,bufet,rychlé občerstvení,fast food,hamburger,restaurace,restaurant,hostinec,pohostinství,krčma,gastronomie,občerstvení,stánek,jídlo,obědy,gril,pizzeria,čína,kebab"
+        },
+        "amenity/restaurant/pizza": {
+            "name": "Pizza restaurace"
+        },
+        "type/route/detour": {
+            "name": "Trasa objížďky",
+            "terms": "objížďka,trasa objížďky,náhradní trasa"
+        },
+        "amenity/bicycle_repair_station": {
+            "name": "Montážní stojan na kola",
+            "terms": "stojan,kolo,stojan na kolo,montážní stojan,opravna kol,cykloopravna,samoobslužná opravna kol"
+        },
+        "amenity/vending_machine/parcel_pickup": {
+            "name": "Schránka na vyzvednutí zásilky"
+        },
+        "office/association": {
+            "name": "Kancelář neziskové organizace"
+        },
+        "highway/services": {
+            "name": "Odpočívadlo se službami",
+            "terms": "odpočívadlo,odpočívadlo se službami,odpočívka,čerpací stanice,dálniční odpočívadlo"
+        },
+        "amenity/bureau_de_change": {
+            "name": "Směnárna",
+            "terms": "směnárna,směna peněz,výměna peněz,exchange,valuty,valuta"
+        },
+        "tourism/chalet": {
+            "name": "Prázdninová vesnice"
+        },
+        "landuse/military/nuclear_explosion_site": {
+            "name": "Místo jaderného výbuchu",
+            "terms": "atomový,atomová,výbuch,bomba,detonace,atomovka,oblast,testovací,testování"
+        },
+        "leisure/dancing_school": {
+            "name": "Taneční škola"
+        },
+        "public_transport/station_trolleybus": {
+            "name": "Trolejbusová stanice/terminál"
+        },
+        "leisure": {
+            "name": "Volný čas"
+        },
+        "amenity/post_office": {
+            "name": "Pošta",
+            "terms": "pošta,poštovní úřad,hlavní pošta"
+        },
+        "tourism/trail_riding_station": {
+            "name": "Stanice jízdy na koni"
+        },
+        "public_transport/stop_position": {
+            "name": "Místo zastavení veřejné dopravy"
+        },
+        "natural/volcano": {
+            "name": "Sopka",
+            "terms": "sopka,vulkán,štítová sopka,stratovulkán"
+        },
+        "amenity/fast_food/pizza": {
+            "name": "Pizza rychlé občerstvení"
+        },
+        "amenity/vending_machine": {
+            "name": "Prodejní automat",
+            "terms": "automat,prodejní automat,výdejní automat"
+        },
+        "highway/milestone": {
+            "name": "Milník dálnice"
+        },
+        "amenity/bar": {
+            "name": "Bar",
+            "terms": "bar,klub,hospoda"
+        },
+        "traffic_calming/cushion": {
+            "name": "Zpomalovací polštář",
+            "terms": "hrbol,hrb,pomalu,rychlost,zpomalit"
+        },
+        "power/generator/source/nuclear": {
+            "name": "Jaderný reaktor"
+        },
+        "traffic_calming": {
+            "name": "Zklidňování dopravy",
+            "terms": "hrbol,hrb,pomalu,rychlost,zpomalit"
+        },
+        "barrier/stile": {
+            "name": "Schůdky přes ohradu",
+            "terms": "schůdky,žebřík"
+        },
+        "type/route/piste": {
+            "name": "Trasa sjezdovky"
+        },
+        "shop/boutique": {
+            "name": "Módní butik",
+            "terms": "oblečení,šaty,oděv,oděvy,butik,móda,módní"
+        },
+        "area/highway": {
+            "name": "Plocha silnice",
+            "terms": "plocha silnice,povrch silnice,plocha cesty,povrch cesty"
+        },
+        "amenity/vending_machine/parcel_pickup_dropoff": {
+            "name": "Schránka na vyzvednutí / zanechání zásilky"
+        },
+        "amenity/vending_machine/parking_tickets": {
+            "name": "Parkovací automat",
+            "terms": "automat,prodejní automat,parkování,parking"
+        },
+        "shop/weapons": {
+            "name": "Zbraně a střelivo",
+            "terms": "zbraně,střelivo,pistole,pušky,puška,nůž,nože,army"
+        },
+        "healthcare/physiotherapist": {
+            "name": "Fyzioterapeut"
+        },
+        "highway/trunk": {
+            "name": "Víceproudá silnice",
+            "terms": "rychlostní komunikace, vícepruhá komunikace"
+        },
+        "leisure/pitch/boules": {
+            "name": "Hřiště na Petanque"
+        },
+        "power/cable/underground": {
+            "name": "Elektrický kabel pod zemí"
+        },
+        "golf/tee": {
+            "name": "Odpaliště",
+            "terms": "odpaliště,tee,týčko,tee box"
+        },
+        "office": {
+            "name": "Kanceláře",
+            "terms": "kancelář,kancelářský,úřad,úřadovna,administrativa,office,sídlo"
+        },
+        "amenity/fire_station": {
+            "name": "Hasiči",
+            "terms": "požární stanice,hasičská stanice"
+        },
+        "barrier/entrance": {
+            "name": "Vchod/východ"
+        },
+        "emergency/fire_hydrant": {
+            "name": "Požární hydrant",
+            "terms": "požární hydrant, hasičský hydrant, pumpa"
+        },
+        "noexit/yes": {
+            "name": "Konec cesty",
+            "terms": "slepá ulice,konec ulice,konec silnice,slepá silnice"
+        },
+        "shop/scuba_diving": {
+            "name": "Potřeby pro potápěče",
+            "terms": "potápění,potápěč,scuba,potapěč,šnorchl"
+        },
+        "natural/water/pond": {
+            "name": "Rybník",
+            "terms": "rybník,rybníček,louže,tůň,hráz,přehrada"
+        },
+        "place/plot": {
+            "name": "Parcela"
+        },
+        "golf/path": {
+            "name": "Golfová pěší stezka"
+        },
+        "attraction/water_slide": {
+            "name": "Vodní skluzavka"
+        },
+        "shop/vacuum_cleaner": {
+            "name": "Obchod s vysavači",
+            "terms": "vysavač,vysavače,vysávat,lux,luxovat"
+        },
+        "shop/chemist": {
+            "name": "Drogerie",
+            "terms": "drogerie,parfumerie,kosmetika,hygiena,čisticí prostředky,lékárna,léky"
+        },
+        "tourism/information/map": {
+            "name": "Mapa",
+            "terms": "Informační map"
+        },
+        "building/hospital": {
+            "name": "Budova nemocnice",
+            "terms": "nemocnice,klinika,špitál,středisko,hospic,LDN,sanatorium,nemocniční,lazaret,ambulance,poliklinika,pohotovost"
+        },
+        "amenity/marketplace": {
+            "name": "Tržiště",
+            "terms": "tržiště,trh"
+        },
+        "building/industrial": {
+            "name": "Průmyslová budova",
+            "terms": "průmyslová budova,industriální,výroba"
+        },
+        "amenity/restaurant/german": {
+            "name": "Německá restaurace"
+        },
+        "amenity/university": {
+            "name": "Prostor vysoké školy",
+            "terms": "vysoká škola,univerzita,universita,vysoké učení"
+        },
+        "building/public": {
+            "name": "Veřejná budova",
+            "terms": "veřejná budova,státní budova,federální budova,radnice,policie,soud"
+        },
+        "highway/crossing/zebra-raised": {
+            "name": "Označený přechod (zvýšený)"
+        },
+        "emergency/first_aid_kit": {
+            "name": "Lékárnička první pomoci"
+        },
+        "amenity/shower": {
+            "name": "Sprchy"
+        },
+        "office/estate_agent": {
+            "name": "Realitní kancelář",
+            "terms": "realitní kancelář,realitka,nemovitost"
+        },
+        "traffic_sign/maxspeed": {
+            "name": "Značka omezení rychlosti"
+        },
+        "man_made/watermill": {
+            "name": "Vodní mlýn",
+            "terms": "Větrný mlýn"
+        },
+        "amenity/college": {
+            "name": "Prostor vyšší odborné školy/college",
+            "terms": "vyšší odborná škola,college,terciární vzdělávání,pomaturitní studium"
+        },
+        "shop/toys": {
+            "name": "Hračkářství",
+            "terms": "Hračkářství"
+        },
+        "type/restriction/no_straight_on": {
+            "name": "Zákaz jízdy přímo",
+            "terms": "zákaz jízdy rovně,zákaz jízdy přímo,zakázáno jet rovně,zakázáno jet přímo,přikázaný směr jízdy vlevo a vpravo,přikázaný směr jízdy vpravo a vlevo,přikázáno odbočit,přikázáno odbočení"
+        },
+        "landuse/allotments": {
+            "name": "Zahrádky",
+            "terms": "zahrádkářská osada,zahrádky,zahrady,zahrádkářská kolonie"
+        },
+        "railway/tram_stop": {
+            "name": "Zastávka tramvaje"
+        },
+        "highway/passing_place": {
+            "name": "Místo k vyhýbání",
+            "terms": "vyhýbací záliv"
+        },
+        "shop/tiles": {
+            "name": "Obchod s obklady"
+        },
+        "highway/pedestrian_area": {
+            "name": "Pěší zóna"
+        },
+        "amenity/vending_machine/food": {
+            "name": "Jídelní automat"
+        },
+        "amenity/cafe": {
+            "name": "Kavárna",
+            "terms": "káva,kafe,kavárna,čaj,čajovna"
+        },
+        "leisure/pitch/bowls": {
+            "name": "Bowlingový trávník"
+        },
+        "highway/service/emergency_access": {
+            "name": "Nouzový vjezd",
+            "terms": "přístup záchranářů"
+        },
+        "natural/mud": {
+            "name": "Bahno"
+        },
+        "building/civic": {
+            "name": "Budova občanské vybavenosti"
+        },
+        "craft/plasterer": {
+            "name": "Štukatér",
+            "terms": "štukatér,štukatérství,štuky"
+        },
+        "amenity/parking_space": {
+            "name": "Parkovací místo",
+            "terms": "místo k parkování,parkoviště"
+        },
+        "healthcare/birthing_center": {
+            "name": "Porodnice"
+        },
+        "building/greenhouse": {
+            "name": "Skleník",
+            "terms": "skleník,fóliovník,pařeniště"
+        },
+        "landuse/harbour": {
+            "name": "Přístav",
+            "terms": "loď"
+        },
+        "shop/pet": {
+            "name": "Chovatelské potřeby",
+            "terms": "obchod pro domácí zvířata,obchod pro domácí mazlíčky,zverimex"
+        },
+        "amenity/scrapyard": {
+            "name": "Vrakoviště"
+        },
+        "man_made/survey_point": {
+            "name": "Triangulační bod",
+            "terms": "triangulační bod,nivelizační bod,nivelace,referenční bod"
+        },
+        "roundabout": {
+            "name": "Kruhový objezd"
+        },
+        "type/route/power": {
+            "name": "Elektrická trasa",
+            "terms": "trasa elektrického vedení,elektrické vedení,elektrika,napětí,vysoké napětí,drát,dráty,kabel,kabely"
+        },
+        "highway/service/alley": {
+            "name": "Ulička",
+            "terms": "ulička"
+        },
+        "man_made/mast/communication/radio": {
+            "name": "Radiotelekomunikační antena"
+        },
+        "amenity/restaurant/seafood": {
+            "name": "Restaurace s mořskými rybami"
+        },
+        "public_transport/station_train": {
+            "name": "Železniční stanice"
+        },
+        "shop/tailor": {
+            "name": "Krejčovství",
+            "terms": "krejčí,krejčířství,krejčovství,krejčová,švadlena,švadlenka"
+        },
+        "landuse/brownfield": {
+            "name": "Deprimující zóna"
+        },
+        "natural/cliff": {
+            "name": "Útes, sráz",
+            "terms": "útes"
+        },
+        "amenity/clock": {
+            "name": "Hodiny",
+            "terms": "hodiny,orloj,hodinky,chronometr,ciferník,čas,ukazatel času"
+        },
+        "building/garage": {
+            "name": "Garáž",
+            "terms": "garáž,garáže,parkování,kryté parkování"
+        },
+        "natural/coastline": {
+            "name": "Pobřeží",
+            "terms": "pobřeží,břeh,nábřeží"
+        },
+        "building/carport": {
+            "name": "Zastřešené stání pro auto"
+        },
+        "building/hotel": {
+            "name": "Budova hotelu",
+            "terms": "hotel,ubytování,motel,penzion,hostel"
+        },
+        "shop/anime": {
+            "name": "Prodejna anime",
+            "terms": "anime,manga,cosplay"
+        },
+        "route/ferry": {
+            "name": "Trasa trajektu",
+            "terms": "trajekt,trasa,linka,loď,trasa trajektu"
+        },
+        "shop/outdoor": {
+            "name": "Outdoorové zboží",
+            "terms": "outdoor,outdoorový,outdoorová,outdoorové,kempování,kempingové,horolezecký,horolezecké,sport,sportovní,příroda,přírody"
+        },
+        "highway/raceway": {
+            "name": "Závodní dráha (motorsport)",
+            "terms": "auto*,formule jedna,motokára,motokros,závod*,dráha"
+        },
+        "emergency/designated": {
+            "name": "Vyhrazeno pro záchranná vozidla"
+        },
+        "highway/steps": {
+            "name": "Schody",
+            "terms": "schody,schodiště"
+        },
+        "tourism/artwork/sculpture": {
+            "name": "Socha"
+        },
+        "amenity/vending_machine/drinks": {
+            "name": "Automat na nápoje",
+            "terms": "automat,prodejní automat,nápoj,nápoje,pití,plechovky,lahve,limonáda,kafe,káva,pivo"
+        },
+        "highway/primary": {
+            "name": "Silnice 1. třídy",
+            "terms": "silnice I. třídy"
+        },
+        "highway/footway/zebra": {
+            "name": "Označený přechod pro chodce"
+        },
+        "amenity/shelter/picnic_shelter": {
+            "name": "Kryté odpočívadlo"
+        },
+        "shop/chocolate": {
+            "name": "Prodejna čokolády",
+            "terms": "čokoláda,čokolády,čokoládovna,cukrářství,cukrář"
+        },
+        "man_made/pumping_station": {
+            "name": "Čerpací stanice",
+            "terms": "Přečerpávací stanice"
+        },
+        "building/bunker": {
+            "name": "Bunkr"
+        },
+        "emergency/defibrillator": {
+            "name": "Defibrilátor",
+            "terms": "defibrilátor,AED,resuscitace"
+        },
+        "aeroway/helipad": {
+            "name": "Heliport",
+            "terms": "vrtulník,helikoptéra,heliport"
+        },
+        "amenity/dentist": {
+            "name": "Zubař",
+            "terms": "zubař,dentista,zubařská ordinace,ordinace"
+        },
+        "highway/footway/zebra-raised": {
+            "name": "Označený přechod (zvýšený)"
+        },
+        "landuse/residential/apartments": {
+            "name": "Obytný dům"
+        },
+        "amenity/place_of_worship/muslim": {
+            "name": "Islámská mešita"
+        },
+        "shop/tea": {
+            "name": "Obchod s čajem",
+            "terms": "čaj,čaje,čajovna,čajírna"
+        },
+        "aerialway/chair_lift": {
+            "name": "Sedačková lanovka",
+            "terms": "sedačková lanovka,sedačková lanová dráha,lyžařská lanovka,visutý vlek"
+        },
+        "landuse/pond": {
+            "name": "Rybník"
+        },
+        "shop/supermarket": {
+            "name": "Supermarket",
+            "terms": "obchod,market,supermarket,butik,bazar,řetězec,hypermarket,diskont,diskontní,bleší trh,trh,tržiště,outlet,obchodní,centrum,nákupní,obchodní dům,večerka,prodejní"
+        },
+        "office/political_party": {
+            "name": "Politická strana",
+            "terms": "politická strana,strana,politická organizace"
+        },
+        "shop/wholesale": {
+            "name": "Velkoobchodní sklad"
+        },
+        "building/stadium": {
+            "name": "Budova stadionu"
+        },
+        "landuse/military/range": {
+            "name": "Vojenská střelnice",
+            "terms": "letectvo,armáda,námořnictvo,válka,palba,zbraň,základna,střílet,střelnice,střelba,střelby"
+        },
+        "man_made/silo": {
+            "name": "Silo",
+            "terms": "silo,zásobník,silážní,sýpka,špýchar,špejchar"
+        },
+        "man_made/surveillance/camera": {
+            "name": "Sledovací kamera"
+        },
+        "building/hut": {
+            "name": "Chatička",
+            "terms": "chatička,chatka,chata,bouda,dřevěnice,kůlna,dřevník"
+        },
+        "shop/candles": {
+            "name": "Obchod se svíčkami",
+            "terms": "svíčky,svíčka,svícen,svícny,lampa,lampy,lampičky"
+        },
+        "natural/saddle": {
+            "name": "Sedlo",
+            "terms": "sedlo,průsmyk,rozsedlina,horské sedlo,klíčové sedlo"
+        },
+        "building/transportation": {
+            "name": "Dopravní budova"
+        },
+        "landuse/orchard": {
+            "name": "Sad",
+            "terms": "sad,stromy,ovoce,ovocné stromy,ovocný sad"
+        },
+        "type/restriction/no_right_turn": {
+            "name": "Zákaz odbočování vpravo",
+            "terms": "odbočování vpravo,odbočit vpravo,odbočit vpravo,odbočení vpravo,zatočit vpravo,zatočení vpravo"
+        },
+        "shop/car": {
+            "name": "Prodejna aut",
+            "terms": "prodejna aut,autosalón,autobazar"
+        },
+        "building/stable": {
+            "name": "Stáj",
+            "terms": "stáj,konírna,hřebčín,hříbárna,maštal,chlév,chlív,chlívek,vepřín,kravín,ovčín,drůbežárna,teletín"
+        },
+        "amenity/public_bookcase": {
+            "name": "Veřejná knihovnička",
+            "terms": "knihovna,knihovnička,knihobudka,budka,miniknihovna,mikroknihovna"
+        },
+        "tourism/camp_site": {
+            "name": "Tábořiště",
+            "terms": "stan,tábor,tábořiště,obytný vůz,karavan,karavany"
+        },
+        "barrier/fence/railing": {
+            "name": "Zábradlí"
+        },
+        "golf/hole": {
+            "name": "Dráha do jamky",
+            "terms": "jamka,dráha od odpaliště,dráha do jamkoviště,dráha"
+        },
+        "building/semidetached_house": {
+            "name": "Polovina dvojdomku",
+            "terms": "dvojdomek,půldomek,dvojdům,půldům,polovina"
+        },
+        "railway/abandoned": {
+            "name": "Opuštěná železnice",
+            "terms": "opuštěná železnice,opuštěná trať,nepoužívaná"
+        },
+        "type/restriction": {
+            "name": "Omezení",
+            "terms": "omezení,dopravní omezení"
+        },
+        "playground/seesaw": {
+            "name": "Houpačka"
+        },
+        "shop/bathroom_furnishing": {
+            "name": "Vybavení koupelen",
+            "terms": "koupelna,koupelny,vybavení koupelen"
+        },
+        "shop/beauty/tanning": {
+            "name": "Solarium",
+            "terms": "Solární studio"
+        },
+        "amenity/water_point": {
+            "name": "Pitná voda pro karavany",
+            "terms": "pitná voda,karavan,obytný vůz"
+        },
+        "public_transport/station": {
+            "name": "Stanice veřejné dopravy"
+        },
+        "leisure/bandstand": {
+            "name": "Kryté pódium"
+        },
+        "amenity/food_court": {
+            "name": "Společná jídelní plocha více restaurací",
+            "terms": "jídelna,food court,fast food,restaurace,jídlo"
+        },
+        "natural/beach": {
+            "name": "Pláž",
+            "terms": "pláž"
+        },
+        "junction": {
+            "name": "Křižovatka",
+            "terms": "křižovatka,křížení,odbočka,kruhový objezd"
+        },
+        "office/coworking": {
+            "name": "Místo pro spolupráci",
+            "terms": "spolupráce,kancelář"
+        },
+        "vertex": {
+            "name": "Jiné",
+            "terms": "další,ostatní,jiné,jiná,jiný,jinak"
+        },
+        "type/boundary": {
+            "name": "Hranice",
+            "terms": "hranice,hraniční,čára"
+        },
+        "man_made/monitoring_station": {
+            "name": "Monitorovací stanice"
+        },
+        "aeroway/taxiway": {
+            "name": "Pojezdová dráha",
+            "terms": "pojezdová dráha,taxiway,letiště"
+        },
+        "craft/optician": {
+            "name": "Optika"
+        },
+        "seamark/beacon_isolated_danger": {
+            "name": "Maják značící nebezpečí"
+        },
+        "waterway/waterfall": {
+            "name": "Vodopád",
+            "terms": "padat,pád"
+        },
+        "office/guide": {
+            "name": "Kancelář turistického průvodce"
+        },
+        "type/route": {
+            "name": "Trasa",
+            "terms": "trasa,cesta,linka,stopa,značka,spojení"
+        },
+        "amenity/vending_machine/public_transport_tickets": {
+            "name": "Automat na jízdenky",
+            "terms": "automat,prodejní automat,jízdenky,lístky,jízdenka,lístek,MHD,metro,vlak,tramvaj,šalina,autobus,trolejbus"
+        },
+        "man_made/embankment": {
+            "name": "Násyp"
+        },
+        "shop/tobacco": {
+            "name": "Kuřácké potřeby",
+            "terms": "kuřácké potřeby,potřeby pro kuřáky,kuřák,kuřáci,kouření,tabák,doutník,dýmky,dýmka,cigarety,cigareta"
+        },
+        "building/shed": {
+            "name": "Kůlna",
+            "terms": "kůlna,bouda,přístřešek,kolna,šupna,šopa"
+        },
+        "building/detached": {
+            "name": "Samostatný rodinný dům",
+            "terms": "rodinný dům,rodinný domek,vila,bungalov"
+        },
+        "shop/charity": {
+            "name": "Charitativní obchod",
+            "terms": "charitativní obchod,dobročinný obchod,charita"
+        },
+        "shop/musical_instrument": {
+            "name": "Obchod s hudebními nástroji",
+            "terms": "hudba,hudební nástroj,hudební nástroje,hudebnina,hudebniny,muzika,hudebník,muzikant"
+        },
+        "man_made/wastewater_plant": {
+            "name": "Čistírna odpadních vod",
+            "terms": "čistírna,čistička,čistírna odpadních vod,ČOV,čovka"
+        },
+        "landuse/plant_nursery": {
+            "name": "Pěstitelská školka",
+            "terms": "školka,pěstitelská školka,lesní školka,sazenice"
+        },
+        "shop/money_lender": {
+            "name": "Nebankovní půjčky",
+            "terms": "lichvář,lichvářství,lichva,úžera,půjčka,půjčky,úvěr,úvěry"
+        },
+        "shop/radiotechnics": {
+            "name": "Obchod s elektronickými součástkami",
+            "terms": "elektrotechnika,elektronický,elektrický,elektro,radiotechnika,radioamatér"
+        },
+        "building/college": {
+            "name": "Budova vyšší odborné školy/college",
+            "terms": "vyšší odborná škola,college,terciární vzdělávání,pomaturitní studium"
+        },
+        "amenity/nursing_home": {
+            "name": "Domov pro seniory/pečovatelský ústav"
+        },
+        "shop/ticket": {
+            "name": "Prodejna vstupenek",
+            "terms": "vstupenka,vstupenky,vstupenek,předprodej,lístek,lístky,jízdenka,jízdenky"
+        },
+        "amenity/social_facility/group_home": {
+            "name": "Domov pro seniory či jiné skupiny obyvatel",
+            "terms": "domov pro seniory,domov důchodců,domov pro postižené,sirotčinec"
+        },
+        "natural/water/reservoir": {
+            "name": "Přehrada",
+            "terms": "nádrž,vodní nádrž,tank"
+        },
+        "craft/saddler": {
+            "name": "Sedlář",
+            "terms": "sedlář,sedlářství"
+        },
+        "landuse/quarry": {
+            "name": "Lom",
+            "terms": "kamenolom,lom,důl,skála,kameny,štěrk"
+        },
+        "barrier/border_control": {
+            "name": "Hraniční kontrola",
+            "terms": "Hraniční kontrola"
+        },
+        "landuse/basin": {
+            "name": "Umělá vodní plocha"
+        },
+        "leisure/track": {
+            "name": "Závodní dráha (ne pro motorsport)",
+            "terms": "jezdit na kole,pes,chrt,kůň,koně,chrti,chrtů,závod*,dráha"
+        },
+        "aerialway/mixed_lift": {
+            "name": "Smíšený vlek",
+            "terms": "smíšený vlek"
+        },
+        "shop/paint": {
+            "name": "Barvy a laky",
+            "terms": "barva,barvy,nátěr,nátěry,lak,laky"
+        },
+        "historic/ruins": {
+            "name": "Zřícenina, ruiny",
+            "terms": "zříceniny,zřícenina"
+        },
+        "highway/secondary": {
+            "name": "Silnice 2. třídy",
+            "terms": "silnice II. třídy"
+        },
+        "natural/fell": {
+            "name": "Horská louka",
+            "terms": "horská louka,louka,mýtina,paseka,pastvina"
+        },
+        "amenity/fast_food/sandwich": {
+            "name": "Sandwichové rychlé občerstvení"
+        },
+        "amenity/restaurant/japanese": {
+            "name": "Japonská restaurace"
+        },
+        "natural/heath": {
+            "name": "Vřesoviště",
+            "terms": "vřesoviště,vřes"
+        },
+        "amenity/fast_food/kebab": {
+            "name": "Kebab rychlé občerstvení"
+        },
+        "landuse/greenfield": {
+            "name": "Zelená louka"
+        },
+        "office/accountant": {
+            "name": "Účetnictví"
+        },
+        "seamark": {
+            "name": "mořská bóje"
+        },
+        "shop/leather": {
+            "name": "Kožené zboží",
+            "terms": "kožený,kožená,kožené,kůže,useň,usňový,usňová,usňové"
+        },
+        "building/commercial": {
+            "name": "Obchodní budova",
+            "terms": "obchody,firmy,firma,prodej,podnik,podniky,kanceláře"
+        },
+        "historic/wreck": {
+            "name": "Vrak lodi"
+        },
+        "amenity/bicycle_parking": {
+            "name": "Parkování kol",
+            "terms": "stojan,kolo,stojan na kolo,parkoviště na kolo,cyklostojan"
+        },
+        "amenity/compressed_air": {
+            "name": "Stlačený vzduch",
+            "terms": "vzduchová pumpa,pumpa,pumpička,stlačený vzduch,kompresor,hustilka"
+        },
+        "man_made/water_well": {
+            "name": "Studna",
+            "terms": "studna,studánka,čerpadlo,vodní zdroj,pramen"
+        },
+        "shop/organic": {
+            "name": "Biopotraviny",
+            "terms": "biopotraviny,bio potraviny,bioobchod,bio obchod,organický,organické"
+        },
+        "waterway/ditch": {
+            "name": "Příkop / strouha",
+            "terms": "příkop, strouha, škarpa"
+        },
+        "shop/fuel": {
+            "name": "Obchod s palivem"
+        },
+        "power/generator/source/wind": {
+            "name": "Větrná turbína"
+        },
+        "leisure/fitness_station/stairs": {
+            "name": "cvičební schodiště"
+        },
+        "landuse/railway": {
+            "name": "Železniční koridor",
+            "terms": "vlak,železnice,koleje,kolejnice"
+        },
+        "amenity/cinema": {
+            "name": "Kino",
+            "terms": "kino,film,cinema,multikino,bio,biograf,kinematograf"
+        },
+        "type/route/bus": {
+            "name": "Autobusová trasa",
+            "terms": "autobusová trasa,autobusová linka,autobus,bus,autobusové spojení,autobusový spoj"
+        },
+        "natural/water/stream": {
+            "name": "Potok"
+        },
+        "type/route_master": {
+            "name": "Řídící relace trasy",
+            "terms": "řídící relace trasy,route master,hlavní relace,nadrelace,master"
+        },
+        "landuse/farm": {
+            "name": "Zemědělská půda (zastaralý tag)"
+        },
+        "place/city_block": {
+            "name": "Městský blok"
+        },
+        "public_transport/platform_subway": {
+            "name": "Nástupiště metra"
+        },
+        "natural/wood": {
+            "name": "Prales",
+            "terms": "prales,přírodní les,neudržovaný les,nehospodářský les"
+        },
+        "amenity/restaurant/chinese": {
+            "name": "Čínská restaurace"
+        },
+        "leisure/pitch/rugby_union": {
+            "name": "Hřiště pro patnáctkové ragby (rugby union)",
+            "terms": "ragby,rugby,rugby union,patnáctka,patnáctkové ragby"
+        },
+        "craft/distillery": {
+            "name": "Lihovar"
+        },
+        "aeroway/apron": {
+            "name": "Odbavovací plocha",
+            "terms": "apron,stojánka,odbavovací plocha"
+        },
+        "shop/tattoo": {
+            "name": "Tetovací salón",
+            "terms": "tattoo,tatér,tatérka,tatérství,tetování,kérka,kérky,kérkař,piercing,pírsing"
+        },
+        "shop/health_food": {
+            "name": "Obchod zdravé výživy"
+        },
+        "power/generator/method/photovoltaic": {
+            "name": "Solární kolektor"
+        },
+        "amenity/shelter/public_transport": {
+            "name": "Krytá zastávka"
+        },
+        "shop/optician": {
+            "name": "Optika",
+            "terms": "optik,optika,brýle,zrak,kontaktní čočky,čočky"
+        },
+        "public_transport/platform_light_rail": {
+            "name": "Nástupiště lehké dráhy"
+        },
+        "type/route/foot": {
+            "name": "Pěší trasa",
+            "terms": "pěší trasa,trasa pro pěší,turistická značka,turistická trasa,značka pro pěší,klub českých turistů,kčt"
+        },
+        "barrier/block": {
+            "name": "Masivní blok",
+            "terms": "betonový blok,beton,zátaras,překážka"
+        },
+        "amenity/theatre/type/amphi": {
+            "name": "Amfiteátr"
+        },
+        "relation": {
+            "name": "Relace",
+            "terms": "relace,vztah,seznam,objekt"
+        },
+        "shop/medical_supply": {
+            "name": "Zdravotnické potřeby",
+            "terms": "zdravotnické potřeby,zdravotní potřeby,ortopedické pomůcky"
+        },
+        "type/restriction/only_straight_on": {
+            "name": "Jen přímo"
+        },
+        "landuse/industrial/scrap_yard": {
+            "name": "Vrakoviště"
+        },
+        "amenity/recycling": {
+            "name": "Recyklace"
+        },
+        "camp_site/camp_pitch": {
+            "name": "Stanoviště v kempu",
+            "terms": "stan,karavan,karavany"
+        },
+        "shop/gas": {
+            "name": "Obchod s lahvovým plynem",
+            "terms": "CNG,LPG,svítiplyn,zemní plyn,propan,butan,doplnit,zásobník"
+        },
+        "landuse/commercial": {
+            "name": "Oblast kanceláří, podniků",
+            "terms": "kancelář,kancelářský,kancelářská,podnikový,podnik,komerční"
+        },
+        "seamark/mooring": {
+            "name": "Kotviště"
+        },
+        "natural/ridge": {
+            "name": "Horský hřbet",
+            "terms": "hřeben"
+        },
+        "natural": {
+            "name": "Přírodní objekt"
+        },
+        "aerialway/magic_carpet": {
+            "name": "Pojízdný koberec",
+            "terms": "pojízdný koberec,pásový dopravník,lyžařský vlek,vlek,lanovka na pásu,pohyblivý pás,eskalátor"
+        },
+        "amenity/post_box": {
+            "name": "Poštovní schránka",
+            "terms": "schránka,poštovní schránka,schránka na dopisy"
+        },
+        "public_transport/station_tram": {
+            "name": "Tramvajová stanice"
+        },
+        "emergency/official": {
+            "name": "Vjezd záchranných vozidel oficiálně povolen"
+        },
+        "playground/sandpit": {
+            "name": "Pískoviště"
+        },
+        "railway/derail": {
+            "name": "Výkolejka"
+        },
+        "leisure/bowling_alley": {
+            "name": "Bowlingová dráha",
+            "terms": "bowlingová herna,kuželková dráha,kuželková herna,kuželna"
+        },
+        "man_made/mast": {
+            "name": "Stožár",
+            "terms": "anténa,vysílací věž,BTS,BTSka,mobilní vysílač,vysílač GSM,televizní vysílač,rozhlasový vysílač"
+        },
+        "attraction/river_rafting": {
+            "name": "Říční rafting"
+        },
+        "amenity/payment_terminal": {
+            "name": "Platební terminál"
+        },
+        "leisure/bird_hide": {
+            "name": "Pozorovatelna zvěře",
+            "terms": "pozorovatelna zvěře,pozorovatelna ptáků,ptačí zástěna,machan"
+        },
+        "shop/fishing": {
+            "name": "Rybářské potřeby"
+        },
+        "amenity/vending_machine/cigarettes": {
+            "name": "Automat na cigarety",
+            "terms": "automat,cigarety,prodejní automat"
+        },
+        "craft/tiler": {
+            "name": "Obkladač",
+            "terms": "obkladač,obkladačství,pokladač,pokladačství,dlaždič,dlaždičství"
+        },
+        "shop/frame": {
+            "name": "Rámařství",
+            "terms": "rámař,rámařství,rám,rámy,rámování,rámeček,rámečky"
+        },
+        "barrier/kerb": {
+            "name": "Obrubník"
+        },
+        "leisure/nature_reserve": {
+            "name": "Přírodní rezervace",
+            "terms": "přírodní rezervace,národní přírodní rezervace,přírodní památka,národní přírodní památka,chráněné území,přírodní park"
+        },
+        "shop/antiques": {
+            "name": "Starožitnictví",
+            "terms": "starožitnost,starožitnosti,starožitnictví,antikvář,antikvity,antikvita,antikvariát"
+        },
+        "shop/fabric": {
+            "name": "Obchod s textilem",
+            "terms": "textil,textilní,látka,látky,bytový textil,metrový textil"
+        },
+        "craft/brewery": {
+            "name": "Pivovar",
+            "terms": "pivovar,pivo,minipivovar"
+        },
+        "highway/turning_circle": {
+            "name": "Obratiště",
+            "terms": "místo k otočení"
+        },
+        "shop/coffee": {
+            "name": "Obchod kávou",
+            "terms": "káva,obchod kávou,obchod s kávou,pražírna"
+        },
+        "shop/e-cigarette": {
+            "name": "Obchod s e-cigaretami",
+            "terms": "obchod s elektronickými cigaretami, obchod s el. cigaretami"
+        },
+        "tourism/wilderness_hut": {
+            "name": "Chata v divočině"
+        },
+        "amenity/dive_centre": {
+            "name": "Centrum potápění"
+        },
+        "amenity/vending_machine/feminine_hygiene": {
+            "name": "Automat dámské hygieny"
+        },
+        "shop/clothes": {
+            "name": "Oblečení",
+            "terms": "oděvy,oděv,šaty,oblečení,obchod s oblečením,móda,módní"
+        },
+        "amenity/restaurant/noodle": {
+            "name": "Nudlová restaurace"
+        },
+        "aeroway/aerodrome": {
+            "name": "Letiště",
+            "terms": "letadlo,letiště,přistávací dráha"
+        },
+        "amenity/bicycle_rental": {
+            "name": "Půjčovna kol",
+            "terms": "půjčovna kol,cyklopůjčovna"
+        },
+        "shop/gift": {
+            "name": "Dárky, suvenýry",
+            "terms": "obchod s dárky,suvenýry"
+        },
+        "craft/locksmith": {
+            "name": "Zámečník"
+        },
+        "leisure/sports_centre": {
+            "name": "Sportovní centrum",
+            "terms": "Sportovní centrum"
+        },
+        "place": {
+            "name": "Místo"
+        },
+        "power": {
+            "name": "Energetika"
+        },
+        "public_transport/platform_train": {
+            "name": "Nástupiště vlaku"
+        },
+        "aerialway/station": {
+            "name": "Stanice lanovky"
+        },
+        "building/house": {
+            "name": "Rodinný dům",
+            "terms": "dům,rodinný dům,řadový dům,domek"
+        },
+        "piste/sleigh": {
+            "name": "Sáňková dráha"
+        },
+        "leisure/marina": {
+            "name": "Přístaviště",
+            "terms": "přístav,jachta,jachty,loď"
+        },
+        "craft/tailor": {
+            "name": "Krejčí"
+        },
+        "amenity/restaurant/american": {
+            "name": "Americká restaurace"
+        },
+        "piste/sled": {
+            "name": "Bobová dráha"
+        },
+        "barrier/gate": {
+            "name": "Brána",
+            "terms": "brána"
+        },
+        "shop/motorcycle": {
+            "name": "Obchod s motocykly",
+            "terms": "prodejna motocyklů,prodejna motorek,motocykly,motorky"
+        },
+        "waterway/river": {
+            "name": "Řeka",
+            "terms": "potok,potůček,strouha,říčka,přítok,koryto"
+        },
+        "office/architect": {
+            "name": "Kancelář architekta"
+        },
+        "railway/subway": {
+            "name": "Metro",
+            "terms": "metro"
+        },
+        "highway/elevator": {
+            "name": "Výtah",
+            "terms": "Výtah"
+        },
+        "railway/miniature": {
+            "name": "Modelová železnice"
+        },
+        "shop/carpet": {
+            "name": "Prodejna koberců",
+            "terms": "koberce,koberec,podlahové,podlahový,krytina,krytiny"
+        },
+        "craft": {
+            "name": "Řemeslník",
+            "terms": "řemeslník,řemeslo,ruční výroba"
+        },
+        "traffic_calming/chicane": {
+            "name": "Šikana",
+            "terms": "příjezd,nájezd,rychlost,pomalu,zpomalit"
+        },
+        "public_transport/station_bus": {
+            "name": "Autobusové nádraží / terminál"
+        },
+        "shop/butcher": {
+            "name": "Řeznictví",
+            "terms": "Řezník"
+        },
+        "barrier/bollard": {
+            "name": "Sloupek",
+            "terms": "patník,sloupek"
+        },
+        "leisure/golf_course": {
+            "name": "Golfové hřiště",
+            "terms": "golfové hřiště,golf"
+        },
+        "barrier": {
+            "name": "Zábrana",
+            "terms": "zábrana,ohrada,bariéra"
+        },
+        "historic/castle": {
+            "name": "Hrad, zámek",
+            "terms": "hradiště,zámek,král,sídlo,ruina,zřícenina"
+        },
+        "shop/car_repair": {
+            "name": "Autoopravna",
+            "terms": "opravna aut,autoservis,servis,pneuservis,opravna"
+        },
+        "craft/hvac": {
+            "name": "Topenář, vzduchotechnik",
+            "terms": "topenář,topení,klimatizace,vzduchotechnika"
+        },
+        "highway/path": {
+            "name": "Pěšina",
+            "terms": "cesta"
+        },
+        "leisure/water_park": {
+            "name": "Akvapark",
+            "terms": "akvapark,aquapark,vodní zábavní park,bazén,koupaliště,tobogán"
+        },
+        "shop/sewing": {
+            "name": "Šicí potřeby, galanterie"
+        },
+        "attraction/train": {
+            "name": "Turistický vláček"
+        },
+        "landuse/meadow": {
+            "name": "Louka",
+            "terms": "louka,pastviny,tráva"
+        },
+        "shop/convenience": {
+            "name": "Smíšené zboží",
+            "terms": "smíšené zboží,krám,obchod,potraviny,večerka"
+        },
+        "amenity/bus_station": {
+            "name": "Autobusové nádraží / terminál"
+        },
+        "highway/crossing/zebra": {
+            "name": "Označený přechod"
+        },
+        "highway/steps/conveying": {
+            "name": "Jezdící schody"
+        },
+        "shop/books": {
+            "name": "Knihkupectví",
+            "terms": "knihkupectví,knihy,kniha,knižní dům,antikvariát,knihovna"
+        },
+        "highway/service": {
+            "name": "Účelová komunikace, příjezd",
+            "terms": "účelová komunikace"
+        },
+        "waterway/drain": {
+            "name": "Odvodňovací strouha",
+            "terms": "odvodňovací strouha,strouha,odvodňovací kanál,odvaděč"
+        },
+        "highway/residential": {
+            "name": "Ulice",
+            "terms": "obytná zóna"
+        },
+        "historic/wayside_shrine": {
+            "name": "Boží muka",
+            "terms": "svatostánek u cesty,svatyně,svatostánek,kaplička"
+        },
+        "amenity/restaurant/turkish": {
+            "name": "Turecká restaurace"
+        },
+        "type/boundary/administrative": {
+            "name": "Administrativní hranice",
+            "terms": "administrativní hranice,správní hranice,hranice správní oblasti,hranice kraje,hranice oblasti,hranice regionu"
+        },
+        "landuse/military/office": {
+            "name": "Vojenská kancelář",
+            "terms": "letectvo,armáda,námořnictvo,válka,přihlásit se,rekrut"
+        },
+        "amenity/watering_place": {
+            "name": "Napajedlo pro zvířata",
+            "terms": "Napajedlo pro zvířata"
+        },
+        "public_transport/station_train_halt": {
+            "name": "Vlakové nádraží (zastávka / na znamení)"
+        },
+        "emergency/ambulance_station": {
+            "name": "Stanice záchranné služby",
+            "terms": "ambulance,pohotovost,zdravotní pohotovost,pohotovostní stanice,záchranná služba,služba"
+        },
+        "healthcare/podiatrist": {
+            "name": "Pedikér",
+            "terms": "noha,nohy,nehty"
+        },
+        "amenity/motorcycle_parking": {
+            "name": "Parkování pro motorky",
+            "terms": "parking,parkování,garáž,motorka,motocykl"
+        },
+        "shop/craft": {
+            "name": "Výtvarné potřeby",
+            "terms": "kreslení,malování,řezbářství,umění,umělecký"
+        },
+        "line": {
+            "name": "Linie",
+            "terms": "čára,cesta,trať,kanál,trasa"
+        },
+        "amenity/vehicle_inspection": {
+            "name": "Kontrola vozidel"
+        },
+        "amenity/kindergarten": {
+            "name": "Prostor školky/jeslí",
+            "terms": "jesle,školka,kindergarten,předškolní,mateřská školka"
+        },
+        "man_made/tower/observation": {
+            "name": "Vyhlídková věž"
+        },
+        "waterway/weir": {
+            "name": "Jez",
+            "terms": "jez, splav"
+        },
+        "craft/metal_construction": {
+            "name": "Kovovýroba",
+            "terms": "kovovýroba,výroba z kovu,práce s kovem"
+        },
+        "craft/painter": {
+            "name": "Malíř",
+            "terms": "malíř,malířství"
+        },
+        "public_transport/stop_area": {
+            "name": "Oblast zastávky"
+        },
+        "craft/carpet_layer": {
+            "name": "Pokladač koberců",
+            "terms": "pokladač koberců,pokladačství koberců,koberce"
+        },
+        "man_made/flagpole": {
+            "name": "Vlajka",
+            "terms": "prapor,vlajka,stožár,vlajkový stožár"
+        },
+        "highway/crossing/unmarked-raised": {
+            "name": "Neoznačený přechod (zvýšený)"
+        },
+        "tourism/attraction": {
+            "name": "Pamětihodnost",
+            "terms": "pamětihodnost,turistická atrakce,turistická zajímavost,turistické lákadlo,atrakce,zajímavost,lákadlo"
+        },
+        "man_made": {
+            "name": "Umělý objekt"
+        },
+        "barrier/kerb/lowered": {
+            "name": "Snížený obrubník"
+        },
+        "golf/fairway": {
+            "name": "Fairway",
+            "terms": "fairway,nízká tráva"
+        },
+        "public_transport/station_subway": {
+            "name": "Stanice metra"
+        },
+        "tourism/alpine_hut": {
+            "name": "Horská chata",
+            "terms": "horská chata,alpská chata,chata,noclehárna,horská bouda,bouda,alpská chata"
+        },
+        "tourism/information/office": {
+            "name": "Kancelář turistických informací",
+            "terms": "Turistické informační centrum"
+        },
+        "shop/alcohol": {
+            "name": "Prodejna alkoholu",
+            "terms": "alkohol,alkoholický"
+        },
+        "tourism/viewpoint": {
+            "name": "Výhled",
+            "terms": "výhled,rozhledna,rozhled"
+        },
+        "craft/handicraft": {
+            "name": "Řemeslník",
+            "terms": "řemeslník,řemeslo,řemeslná výroba,ruční výroba,rukodělný,rukodělná"
+        },
+        "landuse/construction": {
+            "name": "Výstavba",
+            "terms": "stavba,konstrukce,výstavba"
+        },
+        "shop/motorcycle_repair": {
+            "name": "Opravna motocyklů"
+        },
+        "aeroway": {
+            "name": "Přistávací dráha"
+        },
+        "aeroway/terminal": {
+            "name": "Letištní terminál",
+            "terms": "letištní terminál"
+        },
+        "emergency/life_ring": {
+            "name": "Kruh života"
+        }
+    }
+}

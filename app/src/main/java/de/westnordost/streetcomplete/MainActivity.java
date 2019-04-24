@@ -49,6 +49,7 @@ import android.widget.Toast;
 import java.util.Collection;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.FutureTask;
 
 import javax.inject.Inject;
 
@@ -59,6 +60,7 @@ import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.osmapi.map.data.OsmElement;
+import de.westnordost.osmfeatures.FeatureDictionary;
 import de.westnordost.streetcomplete.about.AboutFragment;
 import de.westnordost.streetcomplete.data.Quest;
 import de.westnordost.streetcomplete.data.QuestAutoSyncer;
@@ -116,6 +118,8 @@ public class MainActivity extends AppCompatActivity implements
 	@Inject AnswersCounter answersCounter;
 
 	@Inject SoundFx soundFx;
+
+	@Inject FutureTask<FeatureDictionary> featureDictionaryFutureTask;
 
 	private final Random random = new Random();
 
@@ -372,7 +376,7 @@ public class MainActivity extends AppCompatActivity implements
 		icon.setImageResource(quest.getType().getIcon());
 		TextView text = inner.findViewById(R.id.text);
 
-		text.setText(QuestUtilKt.getHtmlQuestTitle(getResources(), quest.getType(), element));
+		text.setText(QuestUtilKt.getHtmlQuestTitle(getResources(), quest.getType(), element, featureDictionaryFutureTask));
 
 		new AlertDialog.Builder(this)
 			.setTitle(R.string.undo_confirm_title)

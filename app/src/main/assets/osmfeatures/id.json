@@ -1,0 +1,1521 @@
+{
+    "presets": {
+        "office/administrative": {
+            "name": "Kantor Administrasi"
+        },
+        "historic/boundary_stone": {
+            "name": "Patok Perbatasan",
+            "terms": "Patok Perbatasan"
+        },
+        "leisure/park": {
+            "name": "Taman",
+            "terms": "Kebun"
+        },
+        "amenity/car_rental": {
+            "name": "Penyewaan Mobil",
+            "terms": "Penyewaan Mobil"
+        },
+        "place/city": {
+            "name": "Kota"
+        },
+        "building": {
+            "name": "Bangunan"
+        },
+        "leisure/garden": {
+            "name": "Kebun",
+            "terms": "Kebun"
+        },
+        "historic/memorial": {
+            "name": "Tugu Peringatan",
+            "terms": "Tugu Peringatan"
+        },
+        "craft/dressmaker": {
+            "name": "Penjahit Pakaian Wanita"
+        },
+        "shop/cosmetics": {
+            "name": "Toko Kosmetik"
+        },
+        "barrier/lift_gate": {
+            "name": "Gerbang lif"
+        },
+        "leisure/swimming_pool": {
+            "name": "Kolam Renang",
+            "terms": "Kolam Renang"
+        },
+        "waterway/stream": {
+            "name": "Aliran"
+        },
+        "railway": {
+            "name": "Jalur Rel"
+        },
+        "building/university": {
+            "name": "Bangunan Universitas",
+            "terms": "Universitas, Kampus"
+        },
+        "amenity/library": {
+            "name": "Perpustakaan",
+            "terms": "Perpustakaan"
+        },
+        "shop/stationery": {
+            "name": "Toko Alat Tulis"
+        },
+        "highway/secondary_link": {
+            "name": "Jalan Penghubung Sekunder",
+            "terms": "Jalan Penghubung Sekunder"
+        },
+        "highway/living_street": {
+            "name": "Jalan Tinggal"
+        },
+        "power/sub_station": {
+            "name": "Terminal"
+        },
+        "shop/copyshop": {
+            "name": "Tempat Fotokopi"
+        },
+        "highway/motorway": {
+            "name": "Jalan Tol",
+            "terms": "Jalan bebas hambatan"
+        },
+        "natural/bay": {
+            "name": "Teluk"
+        },
+        "leisure/firepit": {
+            "name": "Api Unggun"
+        },
+        "aeroway/runway": {
+            "name": "Landas pacu"
+        },
+        "railway/monorail": {
+            "name": "Monorel"
+        },
+        "amenity/studio": {
+            "name": "Studio"
+        },
+        "landuse/military": {
+            "name": "Daerah Militer",
+            "terms": "Area Militer, Kawasan Militer"
+        },
+        "shop/bicycle": {
+            "name": "Toko Sepeda"
+        },
+        "shop/seafood": {
+            "name": "Toko HIdangan Laut"
+        },
+        "barrier/city_wall": {
+            "name": "Dinding Kota"
+        },
+        "office/employment_agency": {
+            "name": "Agen Tenaga Kerja"
+        },
+        "tourism/guest_house": {
+            "name": "Rumah Tamu"
+        },
+        "boundary/administrative": {
+            "name": "Batas Administrasi"
+        },
+        "amenity": {
+            "name": "Keramahan"
+        },
+        "amenity/fuel": {
+            "name": "Pom Bensin",
+            "terms": "SPBU, Pom Bensin,"
+        },
+        "type/route/tram": {
+            "name": "Rute Trem"
+        },
+        "leisure/pitch/american_football": {
+            "name": "Lapangan Rugby",
+            "terms": "Lapangan Sepak Bola Amerika"
+        },
+        "shop/second_hand": {
+            "name": "Jual Titip/Pasar Loak",
+            "terms": "Konsinyasi/Toko Barang Bekas"
+        },
+        "traffic_calming/bump": {
+            "name": "Polisi Tidur"
+        },
+        "place/island": {
+            "name": "Pulau",
+            "terms": "Tanah, Daratan"
+        },
+        "craft/carpenter": {
+            "name": "Tukang Kayu"
+        },
+        "man_made/pier": {
+            "name": "Dermaga"
+        },
+        "highway/road": {
+            "name": "Jalan Tak Diketahui"
+        },
+        "address": {
+            "name": "Alamat",
+            "terms": "Alamat"
+        },
+        "highway/primary_link": {
+            "name": "Jalan Penghubung Primer",
+            "terms": "Jalan Penghubung Primer"
+        },
+        "shop/greengrocer": {
+            "name": "Toko Buah dan Sayuran"
+        },
+        "amenity/pub": {
+            "name": "Pub"
+        },
+        "building/entrance": {
+            "name": "Pintu Masuk/Keluar"
+        },
+        "shop/religion": {
+            "name": "Toko Agamawi"
+        },
+        "man_made/breakwater": {
+            "name": "Pemecah Gelombang",
+            "terms": "Pemecah Ombak, Tembok Laut"
+        },
+        "shop/shoes": {
+            "name": "Toko Sepatu"
+        },
+        "shop/dairy": {
+            "name": "Toko Susu"
+        },
+        "type/route/road": {
+            "name": "Rute Jalan"
+        },
+        "office/financial": {
+            "name": "Kantor Keuangan"
+        },
+        "shop/wine": {
+            "name": "Toko Anggur",
+            "terms": "Alkohol, Minum, Minuman Beralkohol"
+        },
+        "shop/hairdresser": {
+            "name": "Salon"
+        },
+        "amenity/swimming_pool": {
+            "name": "Kolam Renang"
+        },
+        "man_made/tower": {
+            "name": "Menara"
+        },
+        "shop/florist": {
+            "name": "Toko Bunga"
+        },
+        "type/route/ferry": {
+            "name": "Rute Feri"
+        },
+        "building/school": {
+            "name": "Bangunan Sekolah"
+        },
+        "amenity/atm": {
+            "name": "ATM"
+        },
+        "ford": {
+            "name": "Ford"
+        },
+        "shop/furnace": {
+            "name": "Toko Perapian"
+        },
+        "landuse/industrial": {
+            "name": "Kawasan Industri",
+            "terms": "Kawasan Industri"
+        },
+        "place/locality": {
+            "name": "Daerah Sekitar"
+        },
+        "type/route/hiking": {
+            "name": "Rute Pendakian"
+        },
+        "amenity/courthouse": {
+            "name": "Pengadilan",
+            "terms": "Hukum"
+        },
+        "tourism/hostel": {
+            "name": "Hostel"
+        },
+        "leisure/pitch/volleyball": {
+            "name": "Lapangan Voli",
+            "terms": "Lapangan Voli"
+        },
+        "amenity/veterinary": {
+            "name": "Dokter Hewan"
+        },
+        "place/hamlet": {
+            "name": "Dusun"
+        },
+        "craft/pottery": {
+            "name": "Tembikar",
+            "terms": "Tanah Liat"
+        },
+        "craft/roofer": {
+            "name": "Tukang Atap"
+        },
+        "highway": {
+            "name": "Jalan Raya"
+        },
+        "shop/massage": {
+            "name": "Panti Pijat"
+        },
+        "area": {
+            "name": "Area",
+            "terms": "Daerah, Kawasan, Wilayah"
+        },
+        "landuse/landfill": {
+            "name": "Tempat Pembuangan Akhir",
+            "terms": "TPA, Sampah"
+        },
+        "amenity/theatre": {
+            "name": "Teater",
+            "terms": "Teater"
+        },
+        "man_made/lighthouse": {
+            "name": "Mercusuar"
+        },
+        "type/route/train": {
+            "name": "Rute Kereta"
+        },
+        "barrier/fence": {
+            "name": "Pagar"
+        },
+        "landuse/cemetery": {
+            "name": "Pemakaman",
+            "terms": "Kuburan, Makam, TPU, Tempat Pemakaman Umum"
+        },
+        "railway/rail": {
+            "name": "Rel Kereta"
+        },
+        "office/government": {
+            "name": "Kantor Pemerintah"
+        },
+        "amenity/fountain": {
+            "name": "Air Mancur"
+        },
+        "railway/disused": {
+            "name": "Rel Tidak Terpakai"
+        },
+        "shop/doityourself": {
+            "name": "Toko Swakriya",
+            "terms": "Lakukan Sendiri, DIY"
+        },
+        "amenity/taxi": {
+            "name": "Tempat Tunggu Taksi"
+        },
+        "amenity/grave_yard": {
+            "name": "Kuburan",
+            "terms": "Makam, Pemakaman, TPU"
+        },
+        "man_made/water_tower": {
+            "name": "Menara Air"
+        },
+        "railway/subway_entrance": {
+            "name": "Pintu Terowongan"
+        },
+        "shop/dry_cleaning": {
+            "name": "Jasa Cuci Kering",
+            "terms": "Dry Clean"
+        },
+        "leisure/picnic_table": {
+            "name": "Meja Piknik",
+            "terms": "Meja Piknik"
+        },
+        "craft/scaffolder": {
+            "name": "Perancah"
+        },
+        "craft/clockmaker": {
+            "name": "Pembuat Jam"
+        },
+        "shop/locksmith": {
+            "name": "Ahli Kunci"
+        },
+        "office/insurance": {
+            "name": "Kantor Asuransi"
+        },
+        "shop/furniture": {
+            "name": "Toko Furnitur"
+        },
+        "leisure/pitch": {
+            "name": "Lapangan Olahraga",
+            "terms": "Lapangan Olahraga"
+        },
+        "tourism/hotel": {
+            "name": "Hotel"
+        },
+        "shop/bakery": {
+            "name": "Toko Roti"
+        },
+        "historic/monument": {
+            "name": "Monumen",
+            "terms": "Monumen"
+        },
+        "emergency/phone": {
+            "name": "Telepon Darurat"
+        },
+        "type/route/bicycle": {
+            "name": "Rute Sepeda"
+        },
+        "leisure/pitch/soccer": {
+            "name": "Lapangan Bola",
+            "terms": "Lapangan Sepak Bola"
+        },
+        "type/multipolygon": {
+            "name": "Multipoligon"
+        },
+        "amenity/social_facility/homeless_shelter": {
+            "name": "Tempat Penampungan Tunawisma"
+        },
+        "historic": {
+            "name": "Situs Bersejarah",
+            "terms": "Situs Sejarah"
+        },
+        "building/kindergarten": {
+            "name": "Bangunan Prasekolah/Taman Kanak-kanak"
+        },
+        "amenity/hospital": {
+            "name": "Lingkungan Rumah Sakit"
+        },
+        "leisure/playground": {
+            "name": "Lapangan Bermain",
+            "terms": "Tempat Bermain"
+        },
+        "amenity/telephone": {
+            "name": "Telepon",
+            "terms": "Telepon"
+        },
+        "building/dormitory": {
+            "name": "Asrama"
+        },
+        "craft/blacksmith": {
+            "name": "Pandai Besi"
+        },
+        "landuse/residential": {
+            "name": "Daerah Permukiman",
+            "terms": "Perumahan, Pemukiman"
+        },
+        "leisure/stadium": {
+            "name": "Stadion",
+            "terms": "Stadion"
+        },
+        "amenity/drinking_water": {
+            "name": "Air Minum"
+        },
+        "highway/mini_roundabout": {
+            "name": "Bundaran Kecil"
+        },
+        "barrier/kissing_gate": {
+            "name": "Gerbang pertemuan"
+        },
+        "type/restriction/no_u_turn": {
+            "name": "Dilarang Putar Balik"
+        },
+        "amenity/townhall": {
+            "name": "Balai Kota",
+            "terms": "Balai Kota,"
+        },
+        "highway/service/parking_aisle": {
+            "name": "Jalan Parkir",
+            "terms": "Jalan Parkiran"
+        },
+        "amenity/bbq": {
+            "name": "Barbekyu/Pemanggang"
+        },
+        "natural/water": {
+            "name": "Air"
+        },
+        "shop/sports": {
+            "name": "Toko Olahraga"
+        },
+        "power/line": {
+            "name": "Kabel Listrik"
+        },
+        "power/pole": {
+            "name": "Tiang Listrik"
+        },
+        "craft/winery": {
+            "name": "Penghasil Anggur",
+            "terms": "Minuman Keras, Miras, Alkohol"
+        },
+        "shop/laundry": {
+            "name": "Penatu",
+            "terms": "Binatu, Laundry, Cuci Baju"
+        },
+        "natural/peak": {
+            "name": "Puncak",
+            "terms": "Gunung"
+        },
+        "highway/tertiary": {
+            "name": "Jalan Kota",
+            "terms": "Jalan Tersier"
+        },
+        "tourism/artwork": {
+            "name": "Karya Seni"
+        },
+        "amenity/bank": {
+            "name": "Bank",
+            "terms": "Uang, Keuangan"
+        },
+        "landuse/retail": {
+            "name": "Daerah Pertokoan",
+            "terms": "Belanja, Berbelanja, Eceran"
+        },
+        "craft/key_cutter": {
+            "name": "Duplikat Kunci"
+        },
+        "shop/pyrotechnics": {
+            "name": "Toko Kembang Api"
+        },
+        "amenity/arts_centre": {
+            "name": "Pusat Kesenian"
+        },
+        "shop/travel_agency": {
+            "name": "Biro Perjalanan"
+        },
+        "amenity/restaurant": {
+            "name": "Restoran",
+            "terms": "Rumah Makan"
+        },
+        "amenity/police": {
+            "name": "Polisi",
+            "terms": "Polisi"
+        },
+        "place/farm": {
+            "name": "Peternakan"
+        },
+        "leisure/pitch/basketball": {
+            "name": "Lapangan Basket",
+            "terms": "Lapangan Basket"
+        },
+        "shop/newsagent": {
+            "name": "Toko Majalah/Koran"
+        },
+        "building/residential": {
+            "name": "Bangunan Perumahan"
+        },
+        "highway/services": {
+            "name": "Area layanan"
+        },
+        "amenity/bureau_de_change": {
+            "name": "Penukaran Mata Uang"
+        },
+        "shop/tyres": {
+            "name": "Toko Ban"
+        },
+        "leisure": {
+            "name": "Rekreasi"
+        },
+        "amenity/post_office": {
+            "name": "Kantor Pos",
+            "terms": "Surat"
+        },
+        "natural/volcano": {
+            "name": "Gunung Api",
+            "terms": "Gunung Berapi"
+        },
+        "aerialway/gondola": {
+            "name": "Gondola"
+        },
+        "shop/window_blind": {
+            "name": "Toko Kerai",
+            "terms": "Jendela, Krey, Bidai, Tirai"
+        },
+        "amenity/bar": {
+            "name": "Bar"
+        },
+        "amenity/casino": {
+            "name": "Kasino"
+        },
+        "tourism/museum": {
+            "name": "Museum",
+            "terms": "Gedung Bersejarah, Sejarah, Prasejarah, Kuno"
+        },
+        "shop/boutique": {
+            "name": "Butik",
+            "terms": "Toko Baju, Pakaian"
+        },
+        "railway/narrow_gauge": {
+            "name": "Sepur Sempit",
+            "terms": "Narrow Gauge Rail, Trek, Trak, Lebar Jalur Kereta Api"
+        },
+        "shop/curtain": {
+            "name": "Toko Gorden",
+            "terms": "Toko Tirai"
+        },
+        "area/highway": {
+            "name": "Permukaan Jalan"
+        },
+        "leisure/pitch/tennis": {
+            "name": "Lapangan Tenis",
+            "terms": "Lapangan Tenis"
+        },
+        "shop/weapons": {
+            "name": "Toko Senjata"
+        },
+        "highway/trunk": {
+            "name": "Jalan Nasional",
+            "terms": "Jalan Raya"
+        },
+        "craft/watchmaker": {
+            "name": "Ahli Arloji",
+            "terms": "Tukang Jam Tangan"
+        },
+        "office": {
+            "name": "Kantor",
+            "terms": "Balai"
+        },
+        "highway/corridor": {
+            "name": "Lorong dalam"
+        },
+        "amenity/fire_station": {
+            "name": "Kantor Pemadam Kebakaran",
+            "terms": "Kantor Pemadam Kebakaran"
+        },
+        "barrier/entrance": {
+            "name": "Pintu Masuk"
+        },
+        "emergency/fire_hydrant": {
+            "name": "Keran Pemadam Kebakaran",
+            "terms": "Hidran, Pompa Air"
+        },
+        "shop/scuba_diving": {
+            "name": "Toko Perlengkapan Menyelam"
+        },
+        "natural/water/pond": {
+            "name": "Empang",
+            "terms": "Air"
+        },
+        "craft/bookbinder": {
+            "name": "Tukang Jilid",
+            "terms": "Penjilid Buku, Binder Buku"
+        },
+        "shop/pawnbroker": {
+            "name": "Pegadaian"
+        },
+        "shop/beverages": {
+            "name": "Toko Minuman"
+        },
+        "shop/vacuum_cleaner": {
+            "name": "Toko Pengisap Debu"
+        },
+        "entrance": {
+            "name": "Pintu Masuk/Keluar"
+        },
+        "building/hospital": {
+            "name": "Bangunan Rumah Sakit"
+        },
+        "amenity/marketplace": {
+            "name": "Pasar"
+        },
+        "building/industrial": {
+            "name": "Bangunan Industri"
+        },
+        "power/tower": {
+            "name": "Menara Tegangan Tinggi"
+        },
+        "aerialway/cable_car": {
+            "name": "Kereta Gantung"
+        },
+        "amenity/university": {
+            "name": "Lingkungan Universitas",
+            "terms": "Universitas, Kampus"
+        },
+        "building/public": {
+            "name": "Bangunan Umum"
+        },
+        "craft/boatbuilder": {
+            "name": "Pembuat Kapal"
+        },
+        "craft/shoemaker": {
+            "name": "Pembuat Sepatu"
+        },
+        "office/estate_agent": {
+            "name": "Kantor Real Estate"
+        },
+        "shop/interior_decoration": {
+            "name": "Toko Dekorasi Interior",
+            "terms": "Hiasan, Rumah"
+        },
+        "amenity/college": {
+            "name": "Lapangan Kampus"
+        },
+        "shop/toys": {
+            "name": "Toko Mainan"
+        },
+        "type/restriction/no_straight_on": {
+            "name": "Tidak Boleh Lurus"
+        },
+        "amenity/social_facility/food_bank": {
+            "name": "Bank Makanan"
+        },
+        "craft/gardener": {
+            "name": "Tukang Kebun"
+        },
+        "amenity/cafe": {
+            "name": "Kafe",
+            "terms": "Warung Kopi"
+        },
+        "shop/video_games": {
+            "name": "Toko Permainan Video",
+            "terms": "Video Game"
+        },
+        "highway/service/emergency_access": {
+            "name": "Akses Darurat",
+            "terms": "Akses Darurat"
+        },
+        "building/greenhouse": {
+            "name": "Rumah Kaca"
+        },
+        "power/transformer": {
+            "name": "Trafo"
+        },
+        "power/generator": {
+            "name": "Generator Listrik"
+        },
+        "shop/pet": {
+            "name": "Toko Peliharaan"
+        },
+        "natural/wetland": {
+            "name": "Lahan Basah"
+        },
+        "man_made/survey_point": {
+            "name": "Titik Survei"
+        },
+        "roundabout": {
+            "name": "Bundaran"
+        },
+        "type/route/power": {
+            "name": "Rute Energi Listrik"
+        },
+        "highway/service/alley": {
+            "name": "Gang",
+            "terms": "Gang"
+        },
+        "shop/department_store": {
+            "name": "Pasar Swalayan"
+        },
+        "historic/wayside_cross": {
+            "name": "Salib Pinggir Jalan",
+            "terms": "Salib Pinggir Jalan"
+        },
+        "man_made/petroleum_well": {
+            "name": "Sumur Minyak"
+        },
+        "shop/tailor": {
+            "name": "Tukang Jahit"
+        },
+        "natural/cliff": {
+            "name": "Jurang"
+        },
+        "amenity/clock": {
+            "name": "Jam"
+        },
+        "building/garage": {
+            "name": "Garasi tunggal"
+        },
+        "highway/footway": {
+            "name": "Jalur Pejalan Kaki",
+            "terms": "Pejalan Kaki"
+        },
+        "natural/coastline": {
+            "name": "Garis Pantai",
+            "terms": "Laut, Batas"
+        },
+        "building/roof": {
+            "name": "Atap"
+        },
+        "natural/glacier": {
+            "name": "Gletser",
+            "terms": "Sungai Es"
+        },
+        "building/hotel": {
+            "name": "Bangunan Hotel"
+        },
+        "shop/anime": {
+            "name": "Toko Anime",
+            "terms": "Manga, Komik"
+        },
+        "route/ferry": {
+            "name": "Rute Feri",
+            "terms": "Kapal, Laut"
+        },
+        "shop/outdoor": {
+            "name": "Toko Perlengkapan Outdoor"
+        },
+        "shop/fashion": {
+            "name": "Toko Mode",
+            "terms": "Fashion, Fesyen"
+        },
+        "power/substation": {
+            "name": "Terminal"
+        },
+        "highway/steps": {
+            "name": "Tangga"
+        },
+        "amenity/fast_food": {
+            "name": "Makanan Cepat Saji",
+            "terms": "Makanan Cepatsaji"
+        },
+        "highway/primary": {
+            "name": "Jalan Provinsi",
+            "terms": "Jalan Primer, Jalan Utama"
+        },
+        "type/route/pipeline": {
+            "name": "Rute Pipa"
+        },
+        "tourism/motel": {
+            "name": "Motel"
+        },
+        "shop/chocolate": {
+            "name": "Toko Cokelat"
+        },
+        "building/bunker": {
+            "name": "Tempat berlindung"
+        },
+        "craft/photographic_laboratory": {
+            "name": "Laboratorium Fotografi",
+            "terms": "Lab Fotografi"
+        },
+        "aeroway/helipad": {
+            "name": "Helipad",
+            "terms": "Helikopter, Pendaratan Helikopter, Bandar Helikopter"
+        },
+        "amenity/dentist": {
+            "name": "Dokter Gigi"
+        },
+        "craft/caterer": {
+            "name": "Jasa Boga",
+            "terms": "Katering, Pejasaboga"
+        },
+        "office/research": {
+            "name": "Kantor Riset"
+        },
+        "shop/tea": {
+            "name": "Toko Teh"
+        },
+        "office/travel_agent": {
+            "name": "Biro Perjalanan"
+        },
+        "craft/jeweler": {
+            "name": "Berlian"
+        },
+        "office/telecommunication": {
+            "name": "Kantor Telekomunikasi"
+        },
+        "shop/bag": {
+            "name": "Toko Tas/Koper"
+        },
+        "shop/supermarket": {
+            "name": "Supermarket",
+            "terms": "Pasar Swalayan"
+        },
+        "office/political_party": {
+            "name": "Partai Politik"
+        },
+        "shop/garden_centre": {
+            "name": "Toko Tanaman",
+            "terms": "Bunga, Tanaman Hias, Kebun, Taman"
+        },
+        "shop/kitchen": {
+            "name": "Toko Desain Interior Dapur"
+        },
+        "building/garages": {
+            "name": "Garasi jamak"
+        },
+        "shop/beauty": {
+            "name": "Salon Kecantikan"
+        },
+        "building/hut": {
+            "name": "Gubuk"
+        },
+        "shop/candles": {
+            "name": "Toko Lilin"
+        },
+        "waterway/canal": {
+            "name": "Kanal"
+        },
+        "leisure/common": {
+            "name": "Perintah"
+        },
+        "amenity/dojo": {
+            "name": "Sasana Bela Diri"
+        },
+        "landuse/farmland": {
+            "name": "Pertanian",
+            "terms": "Pertanian"
+        },
+        "shop/baby_goods": {
+            "name": "Toko Perlengkapan Bayi"
+        },
+        "shop/fishmonger": {
+            "name": "Penjual Ikan"
+        },
+        "landuse/orchard": {
+            "name": "Kebun Buah"
+        },
+        "type/restriction/no_right_turn": {
+            "name": "Dilarang Berbelok ke Kanan"
+        },
+        "shop/car": {
+            "name": "Dealer Mobil"
+        },
+        "building/stable": {
+            "name": "Kandang Kuda"
+        },
+        "man_made/storage_tank": {
+            "name": "Tangki Penyimpanan"
+        },
+        "place/neighbourhood": {
+            "name": "Tetangga"
+        },
+        "golf/hole": {
+            "name": "Lubang golf"
+        },
+        "railway/abandoned": {
+            "name": "Rel Terhapus"
+        },
+        "type/restriction": {
+            "name": "Larangan"
+        },
+        "shop/bathroom_furnishing": {
+            "name": "Toko Perlengkapan Kamar Mandi"
+        },
+        "shop/mall": {
+            "name": "Mal"
+        },
+        "barrier/wall": {
+            "name": "Dinding"
+        },
+        "natural/beach": {
+            "name": "Pantai"
+        },
+        "junction": {
+            "name": "Persimpangan",
+            "terms": "Pertigaan, Perempatan"
+        },
+        "craft/insulator": {
+            "name": "Isolator"
+        },
+        "landuse/vineyard": {
+            "name": "Kebun Anggur",
+            "terms": "Kebun Anggur"
+        },
+        "vertex": {
+            "name": "Lainnya"
+        },
+        "type/boundary": {
+            "name": "Batas"
+        },
+        "aeroway/taxiway": {
+            "name": "Landas hubung",
+            "terms": "Landas gelinding, Jalan rayap, Landas ancang"
+        },
+        "traffic_calming/rumble_strip": {
+            "name": "Pita Kejut",
+            "terms": "Marka Kejut, Pita Penggaduh, Garis Kejut, Rumble Strip"
+        },
+        "type/route": {
+            "name": "Rute"
+        },
+        "shop/tobacco": {
+            "name": "Toko Tembakau",
+            "terms": "Rokok"
+        },
+        "shop/musical_instrument": {
+            "name": "Toko Alat Musik"
+        },
+        "aeroway/hangar": {
+            "name": "Hanggar"
+        },
+        "man_made/wastewater_plant": {
+            "name": "Pabrik Air Limbah",
+            "terms": "Limbah, Limbah Cair"
+        },
+        "shop/money_lender": {
+            "name": "Peminjaman Uang",
+            "terms": "Lintah Darat"
+        },
+        "shop/radiotechnics": {
+            "name": "Toko Komponen Radio/Elektronik"
+        },
+        "building/college": {
+            "name": "Bangunan Kampus"
+        },
+        "building/retail": {
+            "name": "Bangunan Pertokoan",
+            "terms": "Toko, Ruko"
+        },
+        "shop/ticket": {
+            "name": "Penjual Tiket"
+        },
+        "highway/motorway_link": {
+            "name": "Jalan Tol",
+            "terms": "Jalan penghubung bebas hambatan"
+        },
+        "natural/water/reservoir": {
+            "name": "Waduk",
+            "terms": "Reservoir, Air, Danau"
+        },
+        "landuse/quarry": {
+            "name": "Pertambangan",
+            "terms": "Tambang"
+        },
+        "shop/bed": {
+            "name": "Toko Selimut/Matras",
+            "terms": "Tempat Tidur, Sprei, Seprai, Ranjang, Kamar Tidur"
+        },
+        "landuse/basin": {
+            "name": "Cekungan"
+        },
+        "shop/paint": {
+            "name": "Toko Cat"
+        },
+        "historic/ruins": {
+            "name": "Reruntuhan",
+            "terms": "Reruntuhan"
+        },
+        "natural/scrub": {
+            "name": "Belukar"
+        },
+        "craft/photographer": {
+            "name": "Fotografer"
+        },
+        "highway/secondary": {
+            "name": "Jalan Kabupaten",
+            "terms": "Jalan Sekunder"
+        },
+        "natural/fell": {
+            "name": "jatuh"
+        },
+        "shop": {
+            "name": "Toko"
+        },
+        "natural/heath": {
+            "name": "Tanah kosong"
+        },
+        "natural/spring": {
+            "name": "Mata air"
+        },
+        "man_made/pipeline": {
+            "name": "Jalur Pipa",
+            "terms": "Pipa Gas"
+        },
+        "shop/leather": {
+            "name": "Toko Kulit"
+        },
+        "building/commercial": {
+            "name": "Bangunan Komersial"
+        },
+        "amenity/childcare": {
+            "name": "Tempat Penitipan Anak"
+        },
+        "office/educational_institution": {
+            "name": "Institusi Pendidikan"
+        },
+        "amenity/bicycle_parking": {
+            "name": "Parkir Sepeda",
+            "terms": "Parkir Sepeda"
+        },
+        "amenity/compressed_air": {
+            "name": "Pompa Ban",
+            "terms": "Tempat Isi Angin Ban"
+        },
+        "man_made/water_well": {
+            "name": "Sumur",
+            "terms": "Perigi"
+        },
+        "shop/organic": {
+            "name": "Toko Barang Organik"
+        },
+        "waterway/ditch": {
+            "name": "Selokan"
+        },
+        "shop/confectionery": {
+            "name": "Toko Permen"
+        },
+        "shop/electronics": {
+            "name": "Toko Elektronik"
+        },
+        "waterway": {
+            "name": "Jalur Air"
+        },
+        "amenity/clinic": {
+            "name": "Klinik"
+        },
+        "amenity/place_of_worship/buddhist": {
+            "name": "Kuil Buddha",
+            "terms": "Wihara"
+        },
+        "amenity/cinema": {
+            "name": "Bioskop",
+            "terms": "Sinema"
+        },
+        "type/route/bus": {
+            "name": "Rute Bus"
+        },
+        "landuse/farm": {
+            "name": "Pertanian"
+        },
+        "natural/wood": {
+            "name": "Hutan"
+        },
+        "amenity/waste_basket": {
+            "name": "Tong Sampah"
+        },
+        "building/construction": {
+            "name": "Bangunan sedang dalam konstruksi"
+        },
+        "aeroway/apron": {
+            "name": "Pelataran pesawat",
+            "terms": "Apron, Parkir Pesawat"
+        },
+        "shop/tattoo": {
+            "name": "Jasa Pembuatan Tato"
+        },
+        "shop/optician": {
+            "name": "Optik",
+            "terms": "Mata"
+        },
+        "amenity/social_facility": {
+            "name": "Fasilitas Sosial"
+        },
+        "type/route/foot": {
+            "name": "Rute Jalan Kaki"
+        },
+        "barrier/block": {
+            "name": "Blok"
+        },
+        "shop/hifi": {
+            "name": "Toko Hifi"
+        },
+        "craft/window_construction": {
+            "name": "Konstruksi Jendela"
+        },
+        "craft/tinsmith": {
+            "name": "Pandai Timah"
+        },
+        "relation": {
+            "name": "Relasi"
+        },
+        "shop/medical_supply": {
+            "name": "Toko Peralatan Medis"
+        },
+        "shop/mobile_phone": {
+            "name": "Toko Handphone",
+            "terms": "HP, Smartphone, Ponsel"
+        },
+        "craft/basket_maker": {
+            "name": "Pembuat Keranjang"
+        },
+        "place/town": {
+            "name": "Kota"
+        },
+        "landuse/commercial": {
+            "name": "Daerah Komersial",
+            "terms": "Area Komersial, Daerah Komersial, Perkantoran"
+        },
+        "highway/tertiary_link": {
+            "name": "Jalan Penghubung Tersier",
+            "terms": "Jalan Penghubung Tersier"
+        },
+        "tourism/information": {
+            "name": "Informasi"
+        },
+        "natural": {
+            "name": "Alami"
+        },
+        "amenity/post_box": {
+            "name": "Kotak Surat",
+            "terms": "Kotak Pos"
+        },
+        "natural/water/lake": {
+            "name": "Danau",
+            "terms": "Situ"
+        },
+        "shop/video": {
+            "name": "Toko Video",
+            "terms": "CD, DVD, Sewa"
+        },
+        "building/warehouse": {
+            "name": "Gudang"
+        },
+        "leisure/bowling_alley": {
+            "name": "Tempat Boling",
+            "terms": "Bowling"
+        },
+        "railway/tram": {
+            "name": "Tram"
+        },
+        "power/minor_line": {
+            "name": "Jalur listrik lainya"
+        },
+        "landuse/farmyard": {
+            "name": "Peternakan"
+        },
+        "craft/plumber": {
+            "name": "Tukang Ledeng",
+            "terms": "Tukang Leding, Tukang Pipa"
+        },
+        "shop/frame": {
+            "name": "Toko Bingkai"
+        },
+        "highway/cycleway": {
+            "name": "Jalur Sepeda"
+        },
+        "shop/hardware": {
+            "name": "Toko Perkakas"
+        },
+        "leisure/nature_reserve": {
+            "name": "Cagar Alam",
+            "terms": "Cagar Alam"
+        },
+        "shop/antiques": {
+            "name": "Toko Barang Antik"
+        },
+        "shop/funeral_directors": {
+            "name": "Rumah Pemakaman"
+        },
+        "tourism/zoo": {
+            "name": "Kebun Binatang"
+        },
+        "shop/computer": {
+            "name": "Toko Komputer"
+        },
+        "landuse/grass": {
+            "name": "Rumput",
+            "terms": "Rerumputan"
+        },
+        "natural/grassland": {
+            "name": "Padang Rumput"
+        },
+        "shop/fabric": {
+            "name": "Toko Kain"
+        },
+        "highway/stop": {
+            "name": "Rambu Berhenti",
+            "terms": "Tanda Stop"
+        },
+        "craft/brewery": {
+            "name": "Perusahaan Bir"
+        },
+        "highway/turning_circle": {
+            "name": "Putaran",
+            "terms": "Putar Balik"
+        },
+        "tourism": {
+            "name": "Pariwisata"
+        },
+        "amenity/car_wash": {
+            "name": "Pencucian Mobil",
+            "terms": "Cuci Mobil"
+        },
+        "highway/street_lamp": {
+            "name": "Lampu Jalan"
+        },
+        "shop/clothes": {
+            "name": "Toko Baju"
+        },
+        "tourism/theme_park": {
+            "name": "Taman Rekreasi"
+        },
+        "aeroway/aerodrome": {
+            "name": "Bandar udara",
+            "terms": "Bandara,Lapangan Terbang,"
+        },
+        "amenity/bicycle_rental": {
+            "name": "Penyewaan Sepeda",
+            "terms": "Penyewaan Sepeda"
+        },
+        "amenity/parking_entrance": {
+            "name": "Pintu Masuk/Keluar Area Parkir"
+        },
+        "landuse": {
+            "name": "Guna Lahan"
+        },
+        "shop/gift": {
+            "name": "Toko Hadiah",
+            "terms": "Suvenir, Cenderamata, Cinderamata"
+        },
+        "craft/locksmith": {
+            "name": "Ahli Kunci"
+        },
+        "waterway/riverbank": {
+            "name": "Tepi Sungai"
+        },
+        "place": {
+            "name": "Tempat"
+        },
+        "power": {
+            "name": "Listrik"
+        },
+        "shop/music": {
+            "name": "Toko Musik"
+        },
+        "barrier/toll_booth": {
+            "name": "Gerbang Tol"
+        },
+        "building/house": {
+            "name": "Rumah"
+        },
+        "leisure/marina": {
+            "name": "Marina",
+            "terms": "Marina"
+        },
+        "craft/tailor": {
+            "name": "Penjahit Pakaian Pria"
+        },
+        "amenity/nightclub": {
+            "name": "Kelab Malam"
+        },
+        "waterway/dam": {
+            "name": "Bendungan"
+        },
+        "amenity/school": {
+            "name": "Lingkungan Sekolah"
+        },
+        "shop/photo": {
+            "name": "Toko Fotografi"
+        },
+        "barrier/gate": {
+            "name": "Gerbang"
+        },
+        "leisure/pitch/skateboard": {
+            "name": "Arena Papan Seluncur",
+            "terms": "Skating, Skateboarding"
+        },
+        "shop/motorcycle": {
+            "name": "Dealer Motor"
+        },
+        "shop/variety_store": {
+            "name": "Toserba"
+        },
+        "waterway/river": {
+            "name": "Sungai",
+            "terms": "Kali"
+        },
+        "railway/subway": {
+            "name": "Jalur Bawah Tanah"
+        },
+        "shop/carpet": {
+            "name": "Toko Karpet"
+        },
+        "craft": {
+            "name": "Pengrajin"
+        },
+        "landuse/churchyard": {
+            "name": "Halaman Gereja",
+            "terms": "Lahan Gereja"
+        },
+        "shop/butcher": {
+            "name": "Penjagalan"
+        },
+        "tourism/picnic_site": {
+            "name": "Tempat Piknik"
+        },
+        "highway/rest_area": {
+            "name": "Tempat Peristirahatan",
+            "terms": "Rest Area"
+        },
+        "leisure/golf_course": {
+            "name": "Lapangan Golf",
+            "terms": "Lapangan Golf"
+        },
+        "barrier": {
+            "name": "Penghalang"
+        },
+        "historic/castle": {
+            "name": "Istana",
+            "terms": "Kastil, Benteng, Kastel"
+        },
+        "craft/electrician": {
+            "name": "Tukang Listrik"
+        },
+        "shop/car_repair": {
+            "name": "Bengkel Mobil"
+        },
+        "craft/hvac": {
+            "name": "HVAC"
+        },
+        "highway/path": {
+            "name": "Jalur"
+        },
+        "historic/archaeological_site": {
+            "name": "Situs Arkeologi",
+            "terms": "Situs Purbakala"
+        },
+        "building/barn": {
+            "name": "Lumbung"
+        },
+        "amenity/bench": {
+            "name": "Bangku",
+            "terms": "Tempat Duduk"
+        },
+        "craft/beekeeper": {
+            "name": "Pemelihara Lebah"
+        },
+        "landuse/meadow": {
+            "name": "Padang Rumput"
+        },
+        "shop/convenience": {
+            "name": "Toko Kelontong"
+        },
+        "amenity/toilets": {
+            "name": "Toilet",
+            "terms": "Kamar Kecil, WC"
+        },
+        "shop/books": {
+            "name": "Toko Buku"
+        },
+        "highway/service": {
+            "name": "Jalan Layanan"
+        },
+        "waterway/drain": {
+            "name": "Saluran"
+        },
+        "shop/hearing_aids": {
+            "name": "Toko Alat Bantu Dengar",
+            "terms": "Bantuan Pendengaran"
+        },
+        "highway/residential": {
+            "name": "Jalan Perumahan",
+            "terms": "Jalan Permukiman, Jalan Pemukiman"
+        },
+        "amenity/place_of_worship": {
+            "name": "Tempat Beribadah",
+            "terms": "Rumah Ibadah"
+        },
+        "historic/wayside_shrine": {
+            "name": "Kuil Pinggir Jalan",
+            "terms": "Kuil Pinggir Jalan"
+        },
+        "barrier/retaining_wall": {
+            "name": "Dinding penahan"
+        },
+        "type/boundary/administrative": {
+            "name": "Batas Administrasi"
+        },
+        "highway/traffic_signals": {
+            "name": "Lampu Lalu lintas",
+            "terms": "Lampu Merah"
+        },
+        "amenity/embassy": {
+            "name": "Kedutaan besar",
+            "terms": "Kedutaan"
+        },
+        "type/restriction/no_left_turn": {
+            "name": "Dilarang Berbelok ke Kiri"
+        },
+        "leisure/ice_rink": {
+            "name": "Arena Seluncur Es",
+            "terms": "Ice Skating"
+        },
+        "emergency/ambulance_station": {
+            "name": "Pos Ambulans",
+            "terms": "Ambulan"
+        },
+        "place/village": {
+            "name": "Desa"
+        },
+        "shop/water_sports": {
+            "name": "Toko Renang/Olahraga Air"
+        },
+        "amenity/motorcycle_parking": {
+            "name": "Parkir Motor"
+        },
+        "shop/craft": {
+            "name": "Toko Kesenian dan Kerajinan Tangan"
+        },
+        "line": {
+            "name": "Garis",
+            "terms": "Garis"
+        },
+        "shop/lottery": {
+            "name": "Toko Lotre"
+        },
+        "amenity/kindergarten": {
+            "name": "Lingkungan Prasekolah/Taman Kanak-kanak"
+        },
+        "leisure/dog_park": {
+            "name": "Taman Anjing"
+        },
+        "natural/cave_entrance": {
+            "name": "Pintu Gua"
+        },
+        "point": {
+            "name": "Titik"
+        },
+        "shop/cheese": {
+            "name": "Toko Keju"
+        },
+        "amenity/boat_rental": {
+            "name": "Penyewaan Perahu Boat"
+        },
+        "waterway/weir": {
+            "name": "Tanggul",
+            "terms": "Sungai, Bendung"
+        },
+        "building/cabin": {
+            "name": "Kabin"
+        },
+        "craft/metal_construction": {
+            "name": "Konstruksi Metal"
+        },
+        "craft/painter": {
+            "name": "Tukang Cat"
+        },
+        "office/ngo": {
+            "name": "Kantor LSM"
+        },
+        "man_made/flagpole": {
+            "name": "Tiang Bendera"
+        },
+        "highway/motorway_junction": {
+            "name": "Jalan Keluar Tol",
+            "terms": "Simpang susun / Jalan keluar"
+        },
+        "natural/tree": {
+            "name": "Pohon"
+        },
+        "tourism/attraction": {
+            "name": "Objek Wisata",
+            "terms": "Atraksi Wisata"
+        },
+        "amenity/register_office": {
+            "name": "Dinas Catatan Sipil"
+        },
+        "man_made": {
+            "name": "Buatan manusia"
+        },
+        "golf/fairway": {
+            "name": "Jalan damai"
+        },
+        "leisure/adult_gaming_centre": {
+            "name": "Pusat permainan dewasa"
+        },
+        "shop/car_parts": {
+            "name": "Toko Peralatan Mobil"
+        },
+        "shop/alcohol": {
+            "name": "Toko Minuman"
+        },
+        "tourism/viewpoint": {
+            "name": "Titik Pandang"
+        },
+        "craft/handicraft": {
+            "name": "Kerajinan Tangan"
+        },
+        "office/lawyer": {
+            "name": "Kantor Hukum"
+        },
+        "landuse/construction": {
+            "name": "Konstruksi",
+            "terms": "Sedang Dibangun"
+        },
+        "highway/trunk_link": {
+            "name": "Jalan Raya Penghubung",
+            "terms": "Jalan Raya Penghubung"
+        },
+        "shop/bookmaker": {
+            "name": "Juru Taruh",
+            "terms": "Tukang Taruh, Taruhan, Judi"
+        },
+        "aeroway": {
+            "name": "Aeroway"
+        }
+    }
+}

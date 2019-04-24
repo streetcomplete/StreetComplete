@@ -18,4 +18,5 @@ It's [GPL v3](https://www.gnu.org/licenses/gpl.html) for code and mixed Creative
 Check
 * [res/authors.txt](res/authors.txt) and
 * [app/src/main/res/authors.txt](app/src/main/res/authors.txt)
+* [app/src/main/assets/authors.txt](app/src/main/assets/authors.txt)
 to see sources and authors of the single resources in detail. 

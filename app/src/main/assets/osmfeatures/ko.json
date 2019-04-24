@@ -1,0 +1,3743 @@
+{
+    "presets": {
+        "shop/caravan": {
+            "name": "RV 대리점"
+        },
+        "office/administrative": {
+            "name": "관리 사무소"
+        },
+        "amenity/car_rental": {
+            "name": "자동차 대여",
+            "terms": "자동차 대여소,자동차 렌탈"
+        },
+        "place/city": {
+            "name": "시",
+            "terms": "도시"
+        },
+        "building": {
+            "name": "건물",
+            "terms": "빌딩"
+        },
+        "amenity/restaurant/indian": {
+            "name": "인도 음식점"
+        },
+        "craft/dressmaker": {
+            "name": "여성복 재단사",
+            "terms": "양장점"
+        },
+        "barrier/lift_gate": {
+            "name": "리프트 문",
+            "terms": "내리닫이 문"
+        },
+        "railway/halt": {
+            "name": "기차역 (간이역)"
+        },
+        "shop/agrarian": {
+            "name": "농업 용품 가게",
+            "terms": "농기계,씨앗,종자,농약,살충제,비료,농기구"
+        },
+        "landuse/garages": {
+            "name": "차고 부지"
+        },
+        "internet_access/wlan": {
+            "name": "와이파이 핫스팟"
+        },
+        "amenity/shelter/lean_to": {
+            "name": "달개"
+        },
+        "building/farm": {
+            "name": "농가"
+        },
+        "shop/hunting": {
+            "name": "사냥 가게"
+        },
+        "amenity/waste_disposal": {
+            "name": "쓰레기통",
+            "terms": "쓰레기통"
+        },
+        "type/restriction/only_right_turn": {
+            "name": "우회전 전용"
+        },
+        "attraction/carousel": {
+            "name": "회전목마",
+            "terms": "회전목마"
+        },
+        "craft/sawmill": {
+            "name": "제재소",
+            "terms": "제재소"
+        },
+        "emergency/yes": {
+            "name": "비상시 접근 가능"
+        },
+        "circular": {
+            "name": "로터리"
+        },
+        "healthcare/audiologist": {
+            "name": "청능사",
+            "terms": "귀,청력,소리"
+        },
+        "highway/motorway": {
+            "name": "고속도로",
+            "terms": "고속도로"
+        },
+        "natural/bay": {
+            "name": "만",
+            "terms": "만"
+        },
+        "amenity/fast_food/mexican": {
+            "name": "멕시코 패스트푸드"
+        },
+        "building/bungalow": {
+            "name": "방갈로"
+        },
+        "building/terrace": {
+            "name": "연립주택",
+            "terms": "테라스 하우스"
+        },
+        "aeroway/runway": {
+            "name": "활주로",
+            "terms": "활주로"
+        },
+        "amenity/studio": {
+            "name": "스튜디오",
+            "terms": "스튜디오,촬영장"
+        },
+        "landuse/military": {
+            "name": "군사 지역",
+            "terms": "군사 지역"
+        },
+        "shop/seafood": {
+            "name": "해산물 가게",
+            "terms": "해산물 가게"
+        },
+        "railway/milestone": {
+            "name": "철도 거리표"
+        },
+        "waterway/sanitary_dump_station": {
+            "name": "해양 화장실 처리장",
+            "terms": "해양 화장실 처리"
+        },
+        "barrier/city_wall": {
+            "name": "성벽",
+            "terms": "장벽"
+        },
+        "office/employment_agency": {
+            "name": "직업 소개소",
+            "terms": "직업 소개소"
+        },
+        "craft/sculptor": {
+            "name": "조각가",
+            "terms": "조각사,조공"
+        },
+        "office/government/register_office": {
+            "name": "등기소",
+            "terms": "등기소"
+        },
+        "amenity/waste_transfer_station": {
+            "name": "쓰레기 운반장",
+            "terms": "폐기물 이송 스테이션"
+        },
+        "boundary/administrative": {
+            "name": "행정 경계",
+            "terms": "행정 경계"
+        },
+        "man_made/surveillance": {
+            "name": "감시",
+            "terms": "감시"
+        },
+        "building/ruins": {
+            "name": "건물 폐허"
+        },
+        "leisure/pitch/american_football": {
+            "name": "미식축구 경기장",
+            "terms": "미식 축구장"
+        },
+        "traffic_calming/bump": {
+            "name": "과속방지턱",
+            "terms": "과속방지턱"
+        },
+        "craft/carpenter": {
+            "name": "목수",
+            "terms": "목수"
+        },
+        "railway/level_crossing": {
+            "name": "철도 건널목 (도로)",
+            "terms": "철도 건널목 (도로)"
+        },
+        "amenity/restaurant/greek": {
+            "name": "그리스 음식점"
+        },
+        "attraction/amusement_ride": {
+            "name": "놀이기구",
+            "terms": "놀이기구"
+        },
+        "place/suburb": {
+            "name": "자치구 / 근교",
+            "terms": "자치구 / 교외"
+        },
+        "man_made/pier": {
+            "name": "부두",
+            "terms": "선창"
+        },
+        "shop/farm": {
+            "name": "산지 직매",
+            "terms": "산지 직매"
+        },
+        "waterway/stream_intermittent": {
+            "name": "간헐 하천",
+            "terms": "간헐 하천"
+        },
+        "highway/road": {
+            "name": "알 수 없는 도로",
+            "terms": "알 수 없는 도로, 미확인 도로"
+        },
+        "address": {
+            "name": "주소",
+            "terms": "주소, 번지"
+        },
+        "highway/primary_link": {
+            "name": "1차 도로 연결로",
+            "terms": "1차 도로 연결로"
+        },
+        "shop/greengrocer": {
+            "name": "청과상",
+            "terms": "과일,채소,야채"
+        },
+        "highway/traffic_mirror": {
+            "name": "차량 거울",
+            "terms": "차량 거울"
+        },
+        "railway/station": {
+            "name": "기차역"
+        },
+        "aerialway/rope_tow": {
+            "name": "로프 견인 리프트",
+            "terms": "로프 견인 리프트"
+        },
+        "office/therapist": {
+            "name": "치료사 사무소"
+        },
+        "office/company": {
+            "name": "기업 사무소"
+        },
+        "shop/dairy": {
+            "name": "유제품 가게",
+            "terms": "우유,달걀,계란,치즈"
+        },
+        "type/route/road": {
+            "name": "도로 노선",
+            "terms": "길 경로"
+        },
+        "amenity/planetarium": {
+            "name": "천체투영관",
+            "terms": "플라네타륨, 천체 관측기"
+        },
+        "office/financial": {
+            "name": "금융 사무소",
+            "terms": "금융 사무실"
+        },
+        "highway/track": {
+            "name": "농·임도",
+            "terms": "농·임도"
+        },
+        "attraction/dark_ride": {
+            "name": "어두운 라이드",
+            "terms": "어두운 라이드"
+        },
+        "shop/wine": {
+            "name": "와인 가게",
+            "terms": "포도주 가게"
+        },
+        "shop/hairdresser": {
+            "name": "미용실",
+            "terms": "이발소,미장원"
+        },
+        "building/school": {
+            "name": "학교 건물",
+            "terms": "초등학교,중학교,고등학교"
+        },
+        "tourism/information/board": {
+            "name": "안내판"
+        },
+        "amenity/restaurant/french": {
+            "name": "프랑스 음식점"
+        },
+        "amenity/ferry_terminal": {
+            "name": "페리 터미널"
+        },
+        "shop/furnace": {
+            "name": "벽난로 가게"
+        },
+        "landuse/industrial": {
+            "name": "산업 지역",
+            "terms": "산업 지역"
+        },
+        "type/route/hiking": {
+            "name": "하이킹 노선"
+        },
+        "amenity/place_of_worship/christian": {
+            "name": "기독교 교회",
+            "terms": "성당"
+        },
+        "tourism/hostel": {
+            "name": "호스텔"
+        },
+        "leisure/pitch/volleyball": {
+            "name": "배구장",
+            "terms": "배구 코트"
+        },
+        "amenity/veterinary": {
+            "name": "동물병원",
+            "terms": "수의사"
+        },
+        "leisure/amusement_arcade": {
+            "name": "오락실"
+        },
+        "craft/pottery": {
+            "name": "도예가",
+            "terms": "도자기공"
+        },
+        "craft/roofer": {
+            "name": "지붕 시공자",
+            "terms": "지붕 시공자"
+        },
+        "amenity/restaurant/mexican": {
+            "name": "멕시코 음식점"
+        },
+        "shop/massage": {
+            "name": "마사지 가게"
+        },
+        "area": {
+            "name": "지역",
+            "terms": "장소, 공간"
+        },
+        "landuse/landfill": {
+            "name": "쓰레기 매립지",
+            "terms": "쓰레기 매립지"
+        },
+        "allotments/plot": {
+            "name": "지역 공원 부지"
+        },
+        "tourism/aquarium": {
+            "name": "아쿠아리움",
+            "terms": "수족관"
+        },
+        "type/site": {
+            "name": "터",
+            "terms": "장소, 현장"
+        },
+        "type/route/subway": {
+            "name": "지하철 노선"
+        },
+        "amenity/fast_food/burger": {
+            "name": "햄버거 패스트푸드"
+        },
+        "amenity/vending_machine/fuel": {
+            "name": "가스 펌프"
+        },
+        "amenity/fountain": {
+            "name": "분수대",
+            "terms": "분수대"
+        },
+        "shop/doityourself": {
+            "name": "DIY 상점",
+            "terms": "DIY 상점"
+        },
+        "amenity/taxi": {
+            "name": "택시 승차장",
+            "terms": "택시 정류장,택시 타는 곳"
+        },
+        "amenity/smoking_area": {
+            "name": "흡연 구역"
+        },
+        "man_made/water_tower": {
+            "name": "급수탑",
+            "terms": "급수탑"
+        },
+        "railway/train_wash": {
+            "name": "기차 차량 세척"
+        },
+        "shop/dry_cleaning": {
+            "name": "드라이클리닝",
+            "terms": "세탁소"
+        },
+        "tourism/caravan_site": {
+            "name": "RV 공원"
+        },
+        "craft/clockmaker": {
+            "name": "시계공",
+            "terms": "시계 제작자"
+        },
+        "leisure/pitch/softball": {
+            "name": "소프트볼 경기장"
+        },
+        "shop/furniture": {
+            "name": "가구점",
+            "terms": "의자,소파,식탁,탁자,책상"
+        },
+        "public_transport/platform_ferry": {
+            "name": "페리 정거장 / 승강장",
+            "terms": "배,보트,부두,페리,잔교,플랫폼,대중교통"
+        },
+        "advertising/billboard": {
+            "name": "광고판",
+            "terms": "간판"
+        },
+        "shop/bakery": {
+            "name": "제과점",
+            "terms": "빵집"
+        },
+        "emergency/phone": {
+            "name": "긴급 전화",
+            "terms": "긴급 전화, 비상 전화"
+        },
+        "golf/bunker": {
+            "name": "벙커",
+            "terms": "벙커,샌드 트랩"
+        },
+        "shop/houseware": {
+            "name": "가정용품 가게"
+        },
+        "leisure/pitch/soccer": {
+            "name": "축구장",
+            "terms": "축구장"
+        },
+        "natural/water/river": {
+            "name": "강"
+        },
+        "type/multipolygon": {
+            "name": "다중 다각형"
+        },
+        "shop/vacant": {
+            "name": "빈 가게"
+        },
+        "amenity/social_facility/homeless_shelter": {
+            "name": "노숙인 보호 시설",
+            "terms": "이재민 대피소, 이재민 피난소"
+        },
+        "highway/turning_loop": {
+            "name": "루프선 (교통섬)",
+            "terms": "루프선 (교통섬)"
+        },
+        "leisure/miniature_golf": {
+            "name": "미니 골프",
+            "terms": "미니 골프"
+        },
+        "amenity/vending_machine/ice_cream": {
+            "name": "아이스크림 자판기"
+        },
+        "amenity/hospital": {
+            "name": "병원 부지",
+            "terms": "병원 부지"
+        },
+        "public_transport/stop_position_monorail": {
+            "name": "모노레일 정차 위치",
+            "terms": "모노레일,대중교통,철도"
+        },
+        "amenity/telephone": {
+            "name": "전화",
+            "terms": "전화, 공중전화"
+        },
+        "building/dormitory": {
+            "name": "기숙사",
+            "terms": "기숙사"
+        },
+        "craft/blacksmith": {
+            "name": "대장장이",
+            "terms": "대장장이"
+        },
+        "landuse/residential": {
+            "name": "주거 지역",
+            "terms": "주거 지역"
+        },
+        "leisure/stadium": {
+            "name": "경기장",
+            "terms": "경기장"
+        },
+        "highway/speed_camera": {
+            "name": "과속단속 카메라",
+            "terms": "과속 카메라,속도 카메라"
+        },
+        "public_transport/station_monorail": {
+            "name": "모노레일 역",
+            "terms": "모노레일,대중교통,철도,역,터미널"
+        },
+        "amenity/drinking_water": {
+            "name": "식수대",
+            "terms": "급수대"
+        },
+        "amenity/pharmacy": {
+            "name": "약국"
+        },
+        "barrier/kissing_gate": {
+            "name": "목장 문",
+            "terms": "좁게 열리는 문"
+        },
+        "landuse/recreation_ground": {
+            "name": "휴양지",
+            "terms": "레크리에이션 지역"
+        },
+        "office/newspaper": {
+            "name": "신문사 사무소"
+        },
+        "type/restriction/no_u_turn": {
+            "name": "유턴 금지",
+            "terms": "유턴 금지"
+        },
+        "amenity/townhall": {
+            "name": "읍사무소",
+            "terms": "마을회관,주민센터,동사무소"
+        },
+        "public_transport/stop_position_bus": {
+            "name": "버스 정차 위치",
+            "terms": "버스,대중교통"
+        },
+        "traffic_sign/city_limit_vertex": {
+            "name": "시 경계 표지판"
+        },
+        "shop/hairdresser_supply": {
+            "name": "미용실 용품 가게"
+        },
+        "natural/water": {
+            "name": "물",
+            "terms": "물"
+        },
+        "barrier/cycle_barrier": {
+            "name": "자전거 방벽",
+            "terms": "자전거 방벽"
+        },
+        "embankment": {
+            "name": "둑"
+        },
+        "shop/sports": {
+            "name": "스포츠 용품 가게"
+        },
+        "amenity/biergarten": {
+            "name": "옥외 식탁",
+            "terms": "옥외 식탁,야외 식탁"
+        },
+        "amenity/vending_machine/elongated_coin": {
+            "name": "기념품 동전 자판기"
+        },
+        "type/waterway": {
+            "name": "물길",
+            "terms": "수로"
+        },
+        "emergency/destination": {
+            "name": "비상시 접근 도착지"
+        },
+        "craft/winery": {
+            "name": "포도주 양조장",
+            "terms": "와이너리"
+        },
+        "public_transport/stop_position_train": {
+            "name": "기차 정차 위치",
+            "terms": "대중교통,철도,선로,기차"
+        },
+        "shop/laundry": {
+            "name": "세탁소"
+        },
+        "amenity/grit_bin": {
+            "name": "염화칼슘 보관소",
+            "terms": "염화칼슘 보관소, 염화칼슘 보관대"
+        },
+        "amenity/bank": {
+            "name": "은행",
+            "terms": "은행"
+        },
+        "amenity/prison": {
+            "name": "교도소 부지",
+            "terms": "교도소 부지, 감옥 부지"
+        },
+        "leisure/fishing": {
+            "name": "낚시터"
+        },
+        "building/boathouse": {
+            "name": "보트하우스"
+        },
+        "amenity/police": {
+            "name": "경찰서",
+            "terms": "경찰서, 파출소"
+        },
+        "place/farm": {
+            "name": "농장"
+        },
+        "highway/service/driveway": {
+            "name": "차도",
+            "terms": "진입로"
+        },
+        "leisure/pitch/basketball": {
+            "name": "농구장",
+            "terms": "농구 코트"
+        },
+        "seamark/buoy_lateral": {
+            "name": "해협 부표"
+        },
+        "shop/newsagent": {
+            "name": "신문/잡지 가게"
+        },
+        "building/residential": {
+            "name": "주거 건물",
+            "terms": "주거 건물"
+        },
+        "landuse/greenhouse_horticulture": {
+            "name": "온실 원예",
+            "terms": "꽃,화초,온실,비닐하우스,원예"
+        },
+        "healthcare": {
+            "name": "의료 시설",
+            "terms": "치료소,의원,병원,의사,질병,건강,기관,수술"
+        },
+        "amenity/community_centre": {
+            "name": "커뮤니티 센터",
+            "terms": "커뮤니티 센터"
+        },
+        "shop/tyres": {
+            "name": "타이어 상점",
+            "terms": "타이어 수리점"
+        },
+        "aeroway/gate": {
+            "name": "공항 게이트",
+            "terms": "공항 게이트"
+        },
+        "seamark/beacon_lateral": {
+            "name": "해협 신호등"
+        },
+        "manhole/drain": {
+            "name": "우수관",
+            "terms": "빗물 배수관"
+        },
+        "traffic_calming/island": {
+            "name": "교통섬",
+            "terms": "교통섬"
+        },
+        "highway/footway/conveying": {
+            "name": "무빙워크"
+        },
+        "aerialway/gondola": {
+            "name": "곤돌라",
+            "terms": "곤돌라"
+        },
+        "shop/window_blind": {
+            "name": "창문 블라인드 가게"
+        },
+        "advertising/column": {
+            "name": "광고란",
+            "terms": "광고란,광고 게시판,게시판"
+        },
+        "amenity/restaurant/italian": {
+            "name": "이탈리아 음식점"
+        },
+        "building/temple": {
+            "name": "사원 건물"
+        },
+        "landuse/military/barracks": {
+            "name": "막사",
+            "terms": "막사"
+        },
+        "amenity/casino": {
+            "name": "카지노",
+            "terms": "도박장,도박,노름,크랩스,포커,블랙잭"
+        },
+        "amenity/coworking_space": {
+            "name": "공동 작업 공간"
+        },
+        "tourism/museum": {
+            "name": "박물관",
+            "terms": "박물관"
+        },
+        "railway/buffer_stop": {
+            "name": "차막이"
+        },
+        "aerialway/pylon": {
+            "name": "공중 이동로 철탑",
+            "terms": "공중 이동로 철탑"
+        },
+        "craft/chimney_sweeper": {
+            "name": "굴뚝 청소부"
+        },
+        "railway/narrow_gauge": {
+            "name": "협궤 철로",
+            "terms": "협궤 철로"
+        },
+        "shop/curtain": {
+            "name": "커튼 가게",
+            "terms": "커튼 가게"
+        },
+        "amenity/recycling_container": {
+            "name": "재활용 용기"
+        },
+        "healthcare/hospice": {
+            "name": "호스피스"
+        },
+        "leisure/pitch/tennis": {
+            "name": "테니스장",
+            "terms": "테니스 코트"
+        },
+        "amenity/clinic/abortion": {
+            "name": "낙태 클리닉",
+            "terms": "미숙아 클리닉"
+        },
+        "craft/watchmaker": {
+            "name": "시계 제조공",
+            "terms": "시계 제조공"
+        },
+        "highway/footway/marked": {
+            "name": "횡단보도"
+        },
+        "leisure/fitness_centre": {
+            "name": "체육관 / 피트니스 센터",
+            "terms": "체육관 / 피트니스 센터, 헬스장"
+        },
+        "highway/corridor": {
+            "name": "실내 복도",
+            "terms": "복도"
+        },
+        "traffic_sign/maxspeed_vertex": {
+            "name": "제한 속도 표지판"
+        },
+        "attraction/animal": {
+            "name": "동물",
+            "terms": "동물"
+        },
+        "amenity/restaurant/asian": {
+            "name": "아시아 음식점"
+        },
+        "craft/bookbinder": {
+            "name": "제본공",
+            "terms": "바인더"
+        },
+        "man_made/groyne": {
+            "name": "작은 제방",
+            "terms": "작은 제방"
+        },
+        "shop/pawnbroker": {
+            "name": "전당포"
+        },
+        "shop/beverages": {
+            "name": "음료 가게",
+            "terms": "음료 가게"
+        },
+        "public_transport/platform_bus": {
+            "name": "버스 정류장",
+            "terms": "버스,정류소,정거장,대중교통"
+        },
+        "entrance": {
+            "name": "입구/출구",
+            "terms": "입구/출구, 출입구"
+        },
+        "emergency/fire_alarm": {
+            "name": "화재경보기"
+        },
+        "amenity/place_of_worship/jewish": {
+            "name": "유대교 시너고그"
+        },
+        "highway/construction": {
+            "name": "폐쇄된 도로"
+        },
+        "power/tower": {
+            "name": "송전탑",
+            "terms": "송전탑"
+        },
+        "aerialway/cable_car": {
+            "name": "케이블카",
+            "terms": "케이블카"
+        },
+        "landuse/military/airfield": {
+            "name": "군용 비행장",
+            "terms": "군용 비행장"
+        },
+        "craft/boatbuilder": {
+            "name": "보트 제조소",
+            "terms": "보트 제조소"
+        },
+        "craft/shoemaker": {
+            "name": "제화공",
+            "terms": "화공"
+        },
+        "shop/interior_decoration": {
+            "name": "실내장식 가게"
+        },
+        "man_made/crane": {
+            "name": "크레인",
+            "terms": "기중기"
+        },
+        "seamark/buoy_lateral/green": {
+            "name": "녹색 부표"
+        },
+        "leisure/pitch/table_tennis": {
+            "name": "탁구대",
+            "terms": "탁구테이블"
+        },
+        "attraction/maze": {
+            "name": "미로"
+        },
+        "amenity/place_of_worship/sikh": {
+            "name": "시크교 사원",
+            "terms": "구루드와라"
+        },
+        "amenity/social_facility/food_bank": {
+            "name": "푸드 뱅크",
+            "terms": "푸드 뱅크"
+        },
+        "shop/nutrition_supplements": {
+            "name": "영양 보조 식품 가게"
+        },
+        "craft/gardener": {
+            "name": "정원사",
+            "terms": "정원사"
+        },
+        "building/church": {
+            "name": "교회 건물",
+            "terms": "교회 건물"
+        },
+        "man_made/tower/bell_tower": {
+            "name": "종탑"
+        },
+        "shop/video_games": {
+            "name": "비디오 게임 가게"
+        },
+        "traffic_calming/dip": {
+            "name": "딥"
+        },
+        "traffic_calming/choker": {
+            "name": "차로폭 좁힘"
+        },
+        "railway/funicular": {
+            "name": "강삭 철도",
+            "terms": "강삭 철도"
+        },
+        "power/transformer": {
+            "name": "변압 시설",
+            "terms": "변압 시설"
+        },
+        "power/generator": {
+            "name": "발전소",
+            "terms": "발전소"
+        },
+        "natural/wetland": {
+            "name": "습지",
+            "terms": "늪,갈대밭,갯벌,간석지"
+        },
+        "landuse/military/naval_base": {
+            "name": "해군 기지",
+            "terms": "해군 기지"
+        },
+        "shop/department_store": {
+            "name": "백화점",
+            "terms": "백화점"
+        },
+        "historic/wayside_cross": {
+            "name": "도로변의 십자가",
+            "terms": "도로변의 십자가"
+        },
+        "man_made/petroleum_well": {
+            "name": "유정",
+            "terms": "유정"
+        },
+        "healthcare/alternative": {
+            "name": "대체의학"
+        },
+        "leisure/fitness_station/parallel_bars": {
+            "name": "평행봉"
+        },
+        "highway/footway": {
+            "name": "보도",
+            "terms": "보도"
+        },
+        "building/roof": {
+            "name": "지붕",
+            "terms": "지붕"
+        },
+        "natural/tree_row": {
+            "name": "나무 열"
+        },
+        "craft/upholsterer": {
+            "name": "실내 장식업",
+            "terms": "실내 장식업"
+        },
+        "natural/glacier": {
+            "name": "빙하",
+            "terms": "빙하"
+        },
+        "shop/storage_rental": {
+            "name": "저장공간 대여소"
+        },
+        "shop/fashion": {
+            "name": "패션 가게",
+            "terms": "패션 가게"
+        },
+        "natural/water/canal": {
+            "name": "운하"
+        },
+        "power/substation": {
+            "name": "변전소",
+            "terms": "변전소"
+        },
+        "amenity/fast_food": {
+            "name": "패스트푸드",
+            "terms": "패스트푸드"
+        },
+        "type/route/pipeline": {
+            "name": "파이프라인 노선",
+            "terms": "관로 노선,도관 노선"
+        },
+        "landuse/religious": {
+            "name": "종교 지역"
+        },
+        "traffic_sign/city_limit": {
+            "name": "시 경계 표지판"
+        },
+        "barrier/cattle_grid": {
+            "name": "캐틀 그리드",
+            "terms": "캐틀 그리드"
+        },
+        "tourism/motel": {
+            "name": "모텔",
+            "terms": "모텔"
+        },
+        "building/cathedral": {
+            "name": "대성당 건물",
+            "terms": "대성당 건물"
+        },
+        "office/notary": {
+            "name": "공증사무소",
+            "terms": "공증인"
+        },
+        "natural/reef": {
+            "name": "암초"
+        },
+        "craft/photographic_laboratory": {
+            "name": "현상소",
+            "terms": "현상소"
+        },
+        "man_made/tower/minaret": {
+            "name": "미너렛"
+        },
+        "amenity/waste/dog_excrement": {
+            "name": "개 배설물 쓰레기통"
+        },
+        "leisure/slipway": {
+            "name": "선가대",
+            "terms": "선양장, 슬립웨이"
+        },
+        "leisure/dance": {
+            "name": "댄스 홀",
+            "terms": "댄스 홀"
+        },
+        "traffic_calming/hump": {
+            "name": "과속방지턱",
+            "terms": "스피드 험프"
+        },
+        "man_made/clearcut": {
+            "name": "개벌지"
+        },
+        "building/chapel": {
+            "name": "예배당 건물",
+            "terms": "예배당 건물"
+        },
+        "craft/caterer": {
+            "name": "요리 조달자",
+            "terms": "요리 조달자"
+        },
+        "office/research": {
+            "name": "연구 사무소",
+            "terms": "연구 사무실"
+        },
+        "office/travel_agent": {
+            "name": "여행사"
+        },
+        "highway/footway/unmarked-raised": {
+            "name": "표시되지 않은 고원식 횡단보도"
+        },
+        "craft/jeweler": {
+            "name": "보석 공예"
+        },
+        "landuse/industrial/slaughterhouse": {
+            "name": "도축장",
+            "terms": "도살장"
+        },
+        "office/telecommunication": {
+            "name": "통신 사무소",
+            "terms": "통신 사무소,통신 지사,전화국"
+        },
+        "shop/bag": {
+            "name": "가방/여행가방 가게",
+            "terms": "핸드백,손가방"
+        },
+        "historic/tomb": {
+            "name": "무덤",
+            "terms": "무덤"
+        },
+        "amenity/vending_machine/electronics": {
+            "name": "전자 제품 자판기"
+        },
+        "leisure/pitch/netball": {
+            "name": "네트볼 코트"
+        },
+        "waterway/water_point": {
+            "name": "해양 식수",
+            "terms": "해양 식수"
+        },
+        "shop/garden_centre": {
+            "name": "원예 용품점",
+            "terms": "원예 용품점"
+        },
+        "leisure/sports_centre/swimming": {
+            "name": "수영장 시설",
+            "terms": "수영장 시설"
+        },
+        "barrier/hedge": {
+            "name": "산 울타리",
+            "terms": "산울타리"
+        },
+        "shop/kitchen": {
+            "name": "주방 디자인 가게",
+            "terms": "주방 인테리어 가게"
+        },
+        "building/garages": {
+            "name": "차고들",
+            "terms": "차고들"
+        },
+        "leisure/pitch/rugby_league": {
+            "name": "프로 럭비장 부지",
+            "terms": "럭비 경기장"
+        },
+        "shop/beauty": {
+            "name": "뷰티 샵",
+            "terms": "스파,살롱,태닝"
+        },
+        "amenity/charging_station": {
+            "name": "충전소",
+            "terms": "전기차"
+        },
+        "amenity/music_school": {
+            "name": "음악 학교"
+        },
+        "man_made/antenna": {
+            "name": "안테나"
+        },
+        "waterway/canal": {
+            "name": "운하",
+            "terms": "운하"
+        },
+        "leisure/common": {
+            "name": "일반",
+            "terms": "일반, 공통"
+        },
+        "type/route/horse": {
+            "name": "승마 노선"
+        },
+        "amenity/dojo": {
+            "name": "도장 / 무술 학원",
+            "terms": "도장 / 무술 학원"
+        },
+        "landuse/farmland": {
+            "name": "농토",
+            "terms": "농토"
+        },
+        "shop/baby_goods": {
+            "name": "유아 용품 가게",
+            "terms": "유아 용품 가게"
+        },
+        "shop/fishmonger": {
+            "name": "생선 가게"
+        },
+        "place/square": {
+            "name": "광장",
+            "terms": "광장"
+        },
+        "amenity/shelter/gazebo": {
+            "name": "정자"
+        },
+        "man_made/storage_tank": {
+            "name": "저장 창고",
+            "terms": "저장 창고"
+        },
+        "place/neighbourhood": {
+            "name": "동",
+            "terms": "동"
+        },
+        "amenity/fast_food/chicken": {
+            "name": "치킨 패스트푸드"
+        },
+        "playground/slide": {
+            "name": "미끄럼틀"
+        },
+        "leisure/pitch/beachvolleyball": {
+            "name": "비치발리볼 코트",
+            "terms": "비치발리볼 코트"
+        },
+        "highway/footway/marked-raised": {
+            "name": "고원식 횡단보도"
+        },
+        "public_transport/stop_position_aerialway": {
+            "name": "삭도 정차 위치",
+            "terms": "가공삭도,공중삭도,로프웨이,케이블카,대중교통"
+        },
+        "playground/climbing_frame": {
+            "name": "정글짐"
+        },
+        "tourism/artwork/mural": {
+            "name": "벽화"
+        },
+        "man_made/chimney": {
+            "name": "굴뚝",
+            "terms": "굴뚝"
+        },
+        "shop/mall": {
+            "name": "쇼핑몰"
+        },
+        "barrier/wall": {
+            "name": "벽",
+            "terms": "벽"
+        },
+        "craft/insulator": {
+            "name": "절연체",
+            "terms": "절연체"
+        },
+        "shop/herbalist": {
+            "name": "약초 가게"
+        },
+        "landuse/vineyard": {
+            "name": "포도밭",
+            "terms": "포도원,포도주,와인"
+        },
+        "building/grandstand": {
+            "name": "그랜드스탠드"
+        },
+        "traffic_calming/rumble_strip": {
+            "name": "노면요철",
+            "terms": "럼블스트립"
+        },
+        "leisure/pitch/badminton": {
+            "name": "배드민턴 코트"
+        },
+        "office/tax_advisor": {
+            "name": "세무사 사무소",
+            "terms": "세금,조세"
+        },
+        "aerialway/drag_lift": {
+            "name": "드래그 리프트",
+            "terms": "드래그 리프트"
+        },
+        "bridge/support/pier": {
+            "name": "교각"
+        },
+        "healthcare/midwife": {
+            "name": "조산사",
+            "terms": "산파"
+        },
+        "aeroway/hangar": {
+            "name": "격납고",
+            "terms": "격납고"
+        },
+        "healthcare/psychotherapist": {
+            "name": "심리치료사",
+            "terms": "임상심리사,상담심리사,불안,상담사,우울증,정신 건강,마음,자살"
+        },
+        "building/retail": {
+            "name": "소매 건물",
+            "terms": "소매 건물, 판매 건물"
+        },
+        "golf/lateral_water_hazard": {
+            "name": "래터럴 워터 해저드"
+        },
+        "highway/motorway_link": {
+            "name": "고속도로 연결로",
+            "terms": "고속도로 연결로"
+        },
+        "amenity/car_pooling": {
+            "name": "카풀",
+            "terms": "카풀,차량 공유"
+        },
+        "place/isolated_dwelling": {
+            "name": "독립 주택",
+            "terms": "독립 주택"
+        },
+        "shop/bed": {
+            "name": "침구/매트리스 판매점",
+            "terms": "침구/매트리스 판매점"
+        },
+        "natural/scrub": {
+            "name": "우거진 숲",
+            "terms": "우거진 숲"
+        },
+        "craft/photographer": {
+            "name": "사진가",
+            "terms": "사진작가"
+        },
+        "shop": {
+            "name": "상점",
+            "terms": "가게"
+        },
+        "attraction/big_wheel": {
+            "name": "대관람차",
+            "terms": "대관람차"
+        },
+        "office/religion": {
+            "name": "종교 사무소"
+        },
+        "landuse/military/obstacle_course": {
+            "name": "장애물 코스",
+            "terms": "장애물 코스"
+        },
+        "natural/spring": {
+            "name": "샘",
+            "terms": "샘"
+        },
+        "man_made/pipeline": {
+            "name": "파이프라인",
+            "terms": "관로,도관"
+        },
+        "man_made/observatory": {
+            "name": "관측소",
+            "terms": "천문대,기상대"
+        },
+        "attraction/pirate_ship": {
+            "name": "바이킹",
+            "terms": "바이킹"
+        },
+        "healthcare/alternative/chiropractic": {
+            "name": "카이로프랙틱",
+            "terms": "허리,요통,척추"
+        },
+        "amenity/childcare": {
+            "name": "보육/육아",
+            "terms": "탁아소,고아원,보육원"
+        },
+        "barrier/kerb/flush": {
+            "name": "턱 없는 연석"
+        },
+        "office/educational_institution": {
+            "name": "교육 기관",
+            "terms": "교육 기관"
+        },
+        "shop/deli": {
+            "name": "델리",
+            "terms": "점심,고기,샌드위치"
+        },
+        "leisure/pitch/equestrian": {
+            "name": "승마 경기장",
+            "terms": "승마 경기장"
+        },
+        "place/quarter": {
+            "name": "하위 자치구 / 지구",
+            "terms": "하위 자치구 / 지구"
+        },
+        "healthcare/rehabilitation": {
+            "name": "재활 시설"
+        },
+        "shop/perfumery": {
+            "name": "향수 상점"
+        },
+        "amenity/restaurant/vietnamese": {
+            "name": "베트남 음식점"
+        },
+        "highway/service/drive-through": {
+            "name": "드라이브 스루",
+            "terms": "드라이브 스루"
+        },
+        "shop/kiosk": {
+            "name": "가판대"
+        },
+        "landuse/military/danger_area": {
+            "name": "위험 지역",
+            "terms": "위험 지역"
+        },
+        "shop/confectionery": {
+            "name": "사탕 가게",
+            "terms": "사탕 가게"
+        },
+        "tourism/information/guidepost": {
+            "name": "안내 표지"
+        },
+        "shop/electronics": {
+            "name": "전자 제품 가게",
+            "terms": "기기,오디오,블루레이,카메라,사진기,컴퓨터,DVD,라디오,스피커,TV,텔레비전,비디오"
+        },
+        "waterway": {
+            "name": "수로"
+        },
+        "amenity/clinic": {
+            "name": "클리닉",
+            "terms": "진료소, 클리닉"
+        },
+        "public_transport/stop_position_light_rail": {
+            "name": "경전철 정차 위치",
+            "terms": "전기,경전철,라이트 레일,대중교통,철도,선로,트롤리"
+        },
+        "amenity/place_of_worship/buddhist": {
+            "name": "사찰",
+            "terms": "사찰, 절"
+        },
+        "natural/bare_rock": {
+            "name": "노출된 암반",
+            "terms": "바위,암석,기반암"
+        },
+        "leisure/pitch/australian_football": {
+            "name": "오스트레일리아식 축구장"
+        },
+        "amenity/language_school": {
+            "name": "언어 학원",
+            "terms": "언어 학원,국어 학원,영어 학원"
+        },
+        "amenity/crematorium": {
+            "name": "화장장",
+            "terms": "화장장,화장터,장례"
+        },
+        "building/farm_auxiliary": {
+            "name": "농장 건물"
+        },
+        "power/switch": {
+            "name": "전원 스위치"
+        },
+        "amenity/waste_basket": {
+            "name": "휴지통",
+            "terms": "휴지통"
+        },
+        "building/construction": {
+            "name": "공사 중인 건물",
+            "terms": "공사 중인 건물, 미완공 건물"
+        },
+        "highway/unclassified": {
+            "name": "비주요/미분류 도로",
+            "terms": "비주요/미분류 도로"
+        },
+        "office/charity": {
+            "name": "자선 단체 사무소"
+        },
+        "office/foundation": {
+            "name": "재단 사무소"
+        },
+        "amenity/social_facility": {
+            "name": "사회 복지 시설",
+            "terms": "사회시설"
+        },
+        "shop/hifi": {
+            "name": "고급 오디오 상점",
+            "terms": "스테레오,비디오"
+        },
+        "craft/window_construction": {
+            "name": "창문 공사",
+            "terms": "창문 공사"
+        },
+        "shop/appliance": {
+            "name": "가전 제품 가게",
+            "terms": "에어컨,기기,식기세척기,건조기,냉장고,그릴,석쇠,주방,부엌,오븐,난로,세탁기"
+        },
+        "craft/tinsmith": {
+            "name": "양철공",
+            "terms": "양철공"
+        },
+        "golf/green": {
+            "name": "퍼팅 그린",
+            "terms": "그린"
+        },
+        "man_made/windmill": {
+            "name": "풍차",
+            "terms": "풍차"
+        },
+        "shop/mobile_phone": {
+            "name": "휴대폰 가게",
+            "terms": "휴대폰 가게, 휴대폰 대리점"
+        },
+        "craft/basket_maker": {
+            "name": "바구니 세공사",
+            "terms": "바구니 제조기"
+        },
+        "building/service": {
+            "name": "서비스 건물"
+        },
+        "place/town": {
+            "name": "읍·면·동·로동자구",
+            "terms": "마을"
+        },
+        "highway/tertiary_link": {
+            "name": "3차 도로 연결로",
+            "terms": "3차 도로 연결로"
+        },
+        "tourism/information": {
+            "name": "안내"
+        },
+        "amenity/vending_machine/coffee": {
+            "name": "커피 자판기"
+        },
+        "landuse/military/training_area": {
+            "name": "훈련 구역",
+            "terms": "훈련 지역"
+        },
+        "playground/horizontal_bar": {
+            "name": "놀이용 철봉"
+        },
+        "natural/water/lake": {
+            "name": "호수",
+            "terms": "호수"
+        },
+        "shop/video": {
+            "name": "비디오 가게",
+            "terms": "DVD"
+        },
+        "amenity/animal_breeding": {
+            "name": "동물 사육 시설",
+            "terms": "동물 사육 시설"
+        },
+        "building/warehouse": {
+            "name": "창고",
+            "terms": "창고"
+        },
+        "railway/tram": {
+            "name": "노면전차",
+            "terms": "트램"
+        },
+        "power/minor_line": {
+            "name": "보조 송전선",
+            "terms": "보조 송전선"
+        },
+        "amenity/social_facility/nursing_home": {
+            "name": "요양원",
+            "terms": "요양원"
+        },
+        "amenity/restaurant/thai": {
+            "name": "태국 음식점"
+        },
+        "public_transport/station_light_rail": {
+            "name": "경전철역",
+            "terms": "전기,경전철,라이트 레일,대중교통,철도,선로,역,터미널,트롤리"
+        },
+        "landuse/farmyard": {
+            "name": "농지",
+            "terms": "농지"
+        },
+        "man_made/works": {
+            "name": "공장",
+            "terms": "공장"
+        },
+        "craft/plumber": {
+            "name": "배관공",
+            "terms": "배관공"
+        },
+        "highway/cycleway": {
+            "name": "자전거 도로",
+            "terms": "자전거 도로"
+        },
+        "man_made/gasometer": {
+            "name": "가스 계량기",
+            "terms": "가스 계량기"
+        },
+        "shop/hardware": {
+            "name": "철물점",
+            "terms": "철물점"
+        },
+        "amenity/car_sharing": {
+            "name": "카 셰어링",
+            "terms": "자동차 셰어링,자동차 공유"
+        },
+        "shop/funeral_directors": {
+            "name": "장례식장",
+            "terms": "장의사"
+        },
+        "tourism/zoo": {
+            "name": "동물원",
+            "terms": "동물원"
+        },
+        "shop/computer": {
+            "name": "컴퓨터 상점",
+            "terms": "컴퓨터 판매점"
+        },
+        "landuse/grass": {
+            "name": "잔디",
+            "terms": "잔디"
+        },
+        "natural/grassland": {
+            "name": "초원",
+            "terms": "사바나"
+        },
+        "amenity/animal_boarding": {
+            "name": "동물 기숙 시설",
+            "terms": "동물 시설,동물 기숙 시설"
+        },
+        "highway/stop": {
+            "name": "정지 표지판",
+            "terms": "정지 신호, 멈춤 신호"
+        },
+        "emergency/no": {
+            "name": "비상시 접근 금지"
+        },
+        "public_transport/stop_position_ferry": {
+            "name": "페리 정차 위치",
+            "terms": "배,보트,부두,페리,잔교,대중교통"
+        },
+        "tourism": {
+            "name": "관광"
+        },
+        "traffic_sign": {
+            "name": "교통 표지판"
+        },
+        "amenity/public_bath": {
+            "name": "대중 목욕탕",
+            "terms": "목욕탕, 찜질방"
+        },
+        "amenity/car_wash": {
+            "name": "세차장",
+            "terms": "세차장"
+        },
+        "highway/street_lamp": {
+            "name": "가로등",
+            "terms": "가로등"
+        },
+        "playground/zipwire": {
+            "name": "도르래 줄"
+        },
+        "tourism/theme_park": {
+            "name": "놀이공원",
+            "terms": "테마파크, 놀이동산"
+        },
+        "emergency/siren": {
+            "name": "사이렌",
+            "terms": "사이렌,경고"
+        },
+        "shop/watches": {
+            "name": "손목시계 가게"
+        },
+        "amenity/parking_entrance": {
+            "name": "주차장 입구/출구",
+            "terms": "주차장 입구/출구, 주차장 출입구"
+        },
+        "landuse": {
+            "name": "토지 이용"
+        },
+        "waterway/riverbank": {
+            "name": "강둑"
+        },
+        "type/route/light_rail": {
+            "name": "경전철 노선"
+        },
+        "shop/music": {
+            "name": "음반 가게",
+            "terms": "CD,레코드판"
+        },
+        "amenity/fast_food/fish_and_chips": {
+            "name": "피시앤칩스 패스트푸드"
+        },
+        "barrier/toll_booth": {
+            "name": "요금소",
+            "terms": "톨게이트, TG"
+        },
+        "highway/crossing/unmarked": {
+            "name": "표시되지 않은 횡단보도"
+        },
+        "craft/stonemason": {
+            "name": "석공",
+            "terms": "석공"
+        },
+        "aerialway": {
+            "name": "공중 이동로"
+        },
+        "amenity/nightclub": {
+            "name": "나이트클럽",
+            "terms": "나이트 클럽"
+        },
+        "waterway/dam": {
+            "name": "댐",
+            "terms": "댐"
+        },
+        "amenity/school": {
+            "name": "학교 부지",
+            "terms": "학교 부지"
+        },
+        "public_transport/stop_position_tram": {
+            "name": "전차 정차 위치",
+            "terms": "전기,대중교통,철도,선로,전차,트롤리"
+        },
+        "shop/photo": {
+            "name": "사진 가게",
+            "terms": "카메라,사진기,필름"
+        },
+        "office/forestry": {
+            "name": "삼림 관리 사무소",
+            "terms": "숲,레인저"
+        },
+        "building/static_caravan": {
+            "name": "고정형 이동식 주택",
+            "terms": "이동 주택"
+        },
+        "waterway/milestone": {
+            "name": "수로 거리표"
+        },
+        "leisure/pitch/skateboard": {
+            "name": "스케이트 공원",
+            "terms": "스케이트 공원"
+        },
+        "office/government/tax": {
+            "name": "세무서"
+        },
+        "office/moving_company": {
+            "name": "이삿짐센터",
+            "terms": "이사"
+        },
+        "highway/bridleway": {
+            "name": "승마 도로",
+            "terms": "승마 도로"
+        },
+        "shop/variety_store": {
+            "name": "잡화점"
+        },
+        "amenity/parking/multi-storey": {
+            "name": "입체 주차장"
+        },
+        "amenity/doctors": {
+            "name": "의원",
+            "terms": "의원"
+        },
+        "barrier/ditch": {
+            "name": "도랑",
+            "terms": "도랑"
+        },
+        "landuse/churchyard": {
+            "name": "묘지",
+            "terms": "묘지"
+        },
+        "amenity/shelter": {
+            "name": "대피소",
+            "terms": "대피소, 피난소"
+        },
+        "tourism/picnic_site": {
+            "name": "유원지"
+        },
+        "highway/rest_area": {
+            "name": "휴게소",
+            "terms": "졸음쉼터"
+        },
+        "amenity/vending_machine/stamps": {
+            "name": "우표 자판기"
+        },
+        "public_transport/station_aerialway": {
+            "name": "삭도 역",
+            "terms": "가공삭도,공중삭도,로프웨이,케이블카,대중교통,역,터미널"
+        },
+        "playground/swing": {
+            "name": "그네"
+        },
+        "craft/electrician": {
+            "name": "전기공",
+            "terms": "전기공"
+        },
+        "manhole/telecom": {
+            "name": "전기 통신 맨홀",
+            "terms": "뚜껑,전화,구멍,텔레콤"
+        },
+        "attraction/drop_tower": {
+            "name": "자이로드롭",
+            "terms": "자이로드롭"
+        },
+        "historic/archaeological_site": {
+            "name": "유적",
+            "terms": "유적"
+        },
+        "amenity/driving_school": {
+            "name": "운전학원",
+            "terms": "운전학교"
+        },
+        "building/barn": {
+            "name": "외양간",
+            "terms": "헛간"
+        },
+        "amenity/bench": {
+            "name": "좌석",
+            "terms": "벤치"
+        },
+        "craft/beekeeper": {
+            "name": "양봉가",
+            "terms": "양봉가"
+        },
+        "leisure/track/horse_racing": {
+            "name": "경주로(경마)"
+        },
+        "amenity/toilets": {
+            "name": "화장실",
+            "terms": "화장실, 아름자리"
+        },
+        "amenity/sanitary_dump_station": {
+            "name": "RV 화장실 처리장",
+            "terms": "RV 화장실 처리"
+        },
+        "shop/hearing_aids": {
+            "name": "보청기 가게"
+        },
+        "shop/water": {
+            "name": "식수 가게"
+        },
+        "public_transport/platform": {
+            "name": "대중교통 정거장 / 승강장",
+            "terms": "플랫폼,대중교통"
+        },
+        "craft/confectionery": {
+            "name": "제과 공장",
+            "terms": "사탕 제조기"
+        },
+        "amenity/place_of_worship": {
+            "name": "종교 시설",
+            "terms": "종교 시설"
+        },
+        "aerialway/goods": {
+            "name": "화물 항공로",
+            "terms": "화물 항공 운송"
+        },
+        "railway/platform": {
+            "name": "기차 정거장 / 승강장"
+        },
+        "barrier/retaining_wall": {
+            "name": "옹벽",
+            "terms": "옹벽"
+        },
+        "amenity/love_hotel": {
+            "name": "러브 호텔"
+        },
+        "office/adoption_agency": {
+            "name": "입양기관"
+        },
+        "highway/traffic_signals": {
+            "name": "신호등",
+            "terms": "교통신호"
+        },
+        "amenity/embassy": {
+            "name": "대사관",
+            "terms": "대사관"
+        },
+        "place/islet": {
+            "name": "작은 섬"
+        },
+        "type/restriction/no_left_turn": {
+            "name": "좌회전 금지",
+            "terms": "좌회전 금지"
+        },
+        "leisure/ice_rink": {
+            "name": "아이스 링크",
+            "terms": "아이스하키,스케이팅,컬링"
+        },
+        "healthcare/blood_donation": {
+            "name": "헌혈의 집",
+            "terms": "헌혈의 집, 헌혈 센터"
+        },
+        "place/village": {
+            "name": "리·통",
+            "terms": "촌"
+        },
+        "shop/water_sports": {
+            "name": "수상 스포츠/수영 가게"
+        },
+        "shop/lottery": {
+            "name": "복권 가게",
+            "terms": "복권 가게"
+        },
+        "leisure/dog_park": {
+            "name": "개 공원",
+            "terms": "개 공원"
+        },
+        "natural/cave_entrance": {
+            "name": "동굴 입구",
+            "terms": "동굴 입구"
+        },
+        "point": {
+            "name": "점",
+            "terms": "점"
+        },
+        "shop/cheese": {
+            "name": "치즈 가게",
+            "terms": "치즈 가게"
+        },
+        "amenity/boat_rental": {
+            "name": "보트 대여소",
+            "terms": "보트 대여소,보트 렌탈"
+        },
+        "amenity/place_of_worship/taoist": {
+            "name": "도관",
+            "terms": "도교 사원,궁관"
+        },
+        "building/mosque": {
+            "name": "모스크 건물"
+        },
+        "building/cabin": {
+            "name": "오두막",
+            "terms": "오두막집"
+        },
+        "highway/bus_guideway": {
+            "name": "독립된 버스전용차로",
+            "terms": "BRT"
+        },
+        "highway/footway/sidewalk": {
+            "name": "인도",
+            "terms": "보도,보행로"
+        },
+        "amenity/animal_shelter": {
+            "name": "동물 보호소",
+            "terms": "입양,고양이,개,말,애완동물,강아지,맹금,파충류,구조"
+        },
+        "emergency/private": {
+            "name": "민간 비상시 접근지"
+        },
+        "craft/sailmaker": {
+            "name": "돛 제작자",
+            "terms": "돛 제작자"
+        },
+        "office/ngo": {
+            "name": "NGO 사무소",
+            "terms": "비정부 기구 사무소"
+        },
+        "craft/glaziery": {
+            "name": "유리 시공",
+            "terms": "유리장이"
+        },
+        "highway/footway/unmarked": {
+            "name": "표시되지 않은 횡단보도"
+        },
+        "highway/motorway_junction": {
+            "name": "고속도로 분기점 / 출구",
+            "terms": "고속도로 분기점 / 출구, 고속도로 IC / JC"
+        },
+        "natural/tree": {
+            "name": "나무",
+            "terms": "나무"
+        },
+        "amenity/register_office": {
+            "name": "등기소"
+        },
+        "highway/crossing/marked-raised": {
+            "name": "고원식 횡단보도"
+        },
+        "leisure/adult_gaming_centre": {
+            "name": "성인용 게임방",
+            "terms": "도박,노름,슬롯머신"
+        },
+        "shop/car_parts": {
+            "name": "자동차 부품점",
+            "terms": "자동차 부품점"
+        },
+        "leisure/outdoor_seating": {
+            "name": "야외 좌석 구역"
+        },
+        "office/lawyer": {
+            "name": "법률 사무소",
+            "terms": "법률 사무실"
+        },
+        "building/apartments": {
+            "name": "아파트 건물",
+            "terms": "아파트, 아파트먼트"
+        },
+        "highway/trunk_link": {
+            "name": "고속화도로 연결로",
+            "terms": "고속화도로 연결로"
+        },
+        "emergency/lifeguard": {
+            "name": "구조요원"
+        },
+        "amenity/vending_machine/news_papers": {
+            "name": "신문 자동판매기"
+        },
+        "shop/bookmaker": {
+            "name": "마권업자",
+            "terms": "마권업자"
+        },
+        "leisure/fitness_centre/yoga": {
+            "name": "요가 스튜디오",
+            "terms": "요가 스튜디오"
+        },
+        "leisure/track/running": {
+            "name": "육상 트랙(달리기)"
+        },
+        "aerialway/t-bar": {
+            "name": "T-바 리프트",
+            "terms": "T-바 리프트"
+        },
+        "public_transport/platform_aerialway": {
+            "name": "삭도 정거장 / 승강장",
+            "terms": "가공삭도,공중삭도,로프웨이,케이블카,플랫폼,대중교통"
+        },
+        "historic/boundary_stone": {
+            "name": "경계석",
+            "terms": "경계석"
+        },
+        "leisure/park": {
+            "name": "공원",
+            "terms": "공원"
+        },
+        "amenity/internet_cafe": {
+            "name": "PC방",
+            "terms": "PC방"
+        },
+        "landuse/reservoir": {
+            "name": "저수지"
+        },
+        "leisure/garden": {
+            "name": "정원",
+            "terms": "정원"
+        },
+        "historic/memorial": {
+            "name": "기념관",
+            "terms": "기념관"
+        },
+        "golf/water_hazard": {
+            "name": "워터 해저드"
+        },
+        "shop/cosmetics": {
+            "name": "화장품 가게",
+            "terms": "화장품 가게"
+        },
+        "type/restriction/only_u_turn": {
+            "name": "유턴 전용"
+        },
+        "leisure/swimming_pool": {
+            "name": "수영장",
+            "terms": "수영장"
+        },
+        "waterway/stream": {
+            "name": "개울",
+            "terms": "개천,시내,하천,물줄기"
+        },
+        "railway": {
+            "name": "철도"
+        },
+        "building/university": {
+            "name": "대학 건물",
+            "terms": "대학교 건물"
+        },
+        "amenity/library": {
+            "name": "도서관",
+            "terms": "도서관, 문고"
+        },
+        "shop/stationery": {
+            "name": "문구점",
+            "terms": "문방구,카드,종이"
+        },
+        "highway/secondary_link": {
+            "name": "2차 도로 연결로",
+            "terms": "2차 도로 연결로"
+        },
+        "office/advertising_agency": {
+            "name": "광고 대행사",
+            "terms": "광고,선전,마케팅"
+        },
+        "highway/living_street": {
+            "name": "주택가 거리",
+            "terms": "주택가 거리"
+        },
+        "landuse/military/bunker": {
+            "name": "군사 벙커",
+            "terms": "군사 벙커"
+        },
+        "attraction/bumper_car": {
+            "name": "범퍼카",
+            "terms": "범퍼카"
+        },
+        "attraction/roller_coaster": {
+            "name": "롤러코스터",
+            "terms": "롤러코스터, 청룡열차"
+        },
+        "power/sub_station": {
+            "name": "변전소"
+        },
+        "shop/copyshop": {
+            "name": "복사집",
+            "terms": "복사 가게"
+        },
+        "leisure/firepit": {
+            "name": "불구덩이",
+            "terms": "캠프파이어,모닥불"
+        },
+        "public_transport/station_ferry": {
+            "name": "페리 터미널",
+            "terms": "배,보트,부두,페리,잔교,대중교통,역,터미널"
+        },
+        "leisure/pitch/baseball": {
+            "name": "야구장"
+        },
+        "man_made/bridge": {
+            "name": "다리",
+            "terms": "교량"
+        },
+        "railway/monorail": {
+            "name": "모노레일",
+            "terms": "모노레일"
+        },
+        "office/physician": {
+            "name": "내과의원"
+        },
+        "shop/bicycle": {
+            "name": "자전거 가게",
+            "terms": "자전거 가게"
+        },
+        "public_transport/stop_position_subway": {
+            "name": "지하철 정차 위치",
+            "terms": "지하철,대중교통,철도,선로,지하"
+        },
+        "tourism/apartment": {
+            "name": "게스트 아파트 / 콘도",
+            "terms": "게스트 아파트 / 콘도"
+        },
+        "amenity/hunting_stand": {
+            "name": "사냥 스탠드",
+            "terms": "사냥 스탠드, 나무대"
+        },
+        "tourism/guest_house": {
+            "name": "민박",
+            "terms": "B&B,게스트하우스"
+        },
+        "healthcare/laboratory": {
+            "name": "의학 연구소"
+        },
+        "shop/party": {
+            "name": "파티 용품 가게"
+        },
+        "power/plant": {
+            "name": "발전소 부지",
+            "terms": "발전소 부지"
+        },
+        "landuse/aquaculture": {
+            "name": "양식장",
+            "terms": "양어장,갑각류,조류,새우,굴"
+        },
+        "amenity": {
+            "name": "시설"
+        },
+        "seamark/buoy_lateral/red": {
+            "name": "적색 부표"
+        },
+        "tourism/gallery": {
+            "name": "미술관",
+            "terms": "예술,전시,그림,회화,사진,조각"
+        },
+        "amenity/fuel": {
+            "name": "주유소",
+            "terms": "휘발유,연료,가솔린,프로페인,경유,LNG,CNG,바이오디젤"
+        },
+        "type/route/tram": {
+            "name": "노면전차 노선",
+            "terms": "트램 노선"
+        },
+        "man_made/mast/communication/television": {
+            "name": "텔레비전 송신탑"
+        },
+        "shop/second_hand": {
+            "name": "위탁/중고품 할인 매장"
+        },
+        "place/island": {
+            "name": "섬",
+            "terms": "섬"
+        },
+        "public_transport/platform_tram": {
+            "name": "전차 정거장 / 승강장",
+            "terms": "전기,플랫폼,대중교통,철도,선로,전차,트롤리"
+        },
+        "attraction/bungee_jumping": {
+            "name": "번지점프",
+            "terms": "번지점프"
+        },
+        "railway/signal": {
+            "name": "철도신호"
+        },
+        "craft/rigger": {
+            "name": "의장자",
+            "terms": "의장차"
+        },
+        "man_made/water_works": {
+            "name": "상수도 시설",
+            "terms": "상수도 시설"
+        },
+        "amenity/pub": {
+            "name": "주점",
+            "terms": "주점, 술집"
+        },
+        "building/entrance": {
+            "name": "입구/출구"
+        },
+        "playground/structure": {
+            "name": "놀이용 구조물"
+        },
+        "shop/religion": {
+            "name": "종교 상점"
+        },
+        "golf/rough": {
+            "name": "러프",
+            "terms": "러프"
+        },
+        "man_made/breakwater": {
+            "name": "방파제",
+            "terms": "방파제"
+        },
+        "shop/shoes": {
+            "name": "신발 가게"
+        },
+        "amenity/ranger_station": {
+            "name": "관리소",
+            "terms": "관리소, 레인저 스테이션"
+        },
+        "office/quango": {
+            "name": "준정부조직 사무소"
+        },
+        "amenity/parking": {
+            "name": "주차장"
+        },
+        "highway/bus_stop": {
+            "name": "버스 정류장"
+        },
+        "office/energy_supplier": {
+            "name": "에너지 공급자 사무소",
+            "terms": "전기,에너지,가스"
+        },
+        "amenity/place_of_worship/hindu": {
+            "name": "힌두교 사원",
+            "terms": "만디르"
+        },
+        "traffic_sign_vertex": {
+            "name": "교통 표지판"
+        },
+        "aerialway/platter": {
+            "name": "플래터 리프트",
+            "terms": "플래터 리프트"
+        },
+        "amenity/swimming_pool": {
+            "name": "수영장"
+        },
+        "amenity/vending_machine/condoms": {
+            "name": "콘돔 자판기",
+            "terms": "콘돔 자판기, 콘돔 자동 판매기"
+        },
+        "craft/electronics_repair": {
+            "name": "전자 제품 수리점",
+            "terms": "전자 제품 수리점"
+        },
+        "man_made/adit": {
+            "name": "수평갱",
+            "terms": "횡갱"
+        },
+        "man_made/tower": {
+            "name": "탑",
+            "terms": "타워"
+        },
+        "shop/florist": {
+            "name": "꽃집",
+            "terms": "꽃집"
+        },
+        "type/route/ferry": {
+            "name": "페리 노선"
+        },
+        "highway/crossing/marked": {
+            "name": "횡단보도"
+        },
+        "amenity/atm": {
+            "name": "ATM",
+            "terms": "ATM, 입출금기"
+        },
+        "ford": {
+            "name": "여울",
+            "terms": "여울"
+        },
+        "natural/sand": {
+            "name": "모래",
+            "terms": "사막"
+        },
+        "place/locality": {
+            "name": "소재지명",
+            "terms": "소재지명"
+        },
+        "traffic_calming/table": {
+            "name": "속도 표"
+        },
+        "amenity/courthouse": {
+            "name": "법원",
+            "terms": "법원"
+        },
+        "shop/art": {
+            "name": "미술품 가게",
+            "terms": "미술품 가게"
+        },
+        "place/hamlet": {
+            "name": "반",
+            "terms": "작은 마을"
+        },
+        "amenity/recycling_centre": {
+            "name": "재활용 센터",
+            "terms": "재활용 센터"
+        },
+        "club": {
+            "name": "클럽",
+            "terms": "클럽"
+        },
+        "office/private_investigator": {
+            "name": "사설탐정 사무소",
+            "terms": "민간조사원"
+        },
+        "waterway/fuel": {
+            "name": "해양 주유소",
+            "terms": "해양 주유소"
+        },
+        "highway": {
+            "name": "도로"
+        },
+        "shop/pastry": {
+            "name": "과자 가게"
+        },
+        "amenity/theatre": {
+            "name": "극장",
+            "terms": "공연,연극,뮤지컬"
+        },
+        "highway/pedestrian_line": {
+            "name": "보행자 거리"
+        },
+        "landuse/military/checkpoint": {
+            "name": "검문소",
+            "terms": "체크포인트"
+        },
+        "man_made/lighthouse": {
+            "name": "등대",
+            "terms": "등대"
+        },
+        "type/route/train": {
+            "name": "철도 노선",
+            "terms": "열차 노선"
+        },
+        "barrier/fence": {
+            "name": "울타리",
+            "terms": "울타리"
+        },
+        "landuse/cemetery": {
+            "name": "묘지",
+            "terms": "묘지"
+        },
+        "railway/rail": {
+            "name": "철로",
+            "terms": "철도"
+        },
+        "natural/scree": {
+            "name": "급사면",
+            "terms": "급사면"
+        },
+        "office/government": {
+            "name": "관청",
+            "terms": "관공서,정부 청사"
+        },
+        "office/it": {
+            "name": "IT 사무소",
+            "terms": "컴퓨터,정보,소프트웨어,기술"
+        },
+        "railway/disused": {
+            "name": "폐선된 철도",
+            "terms": "폐선된 철도"
+        },
+        "amenity/grave_yard": {
+            "name": "묘지",
+            "terms": "묘지"
+        },
+        "railway/light_rail": {
+            "name": "경전철",
+            "terms": "경전철,라이트 레일,트롤리"
+        },
+        "office/lawyer/notary": {
+            "name": "공증인 사무소"
+        },
+        "amenity/clinic/fertility": {
+            "name": "불임 클리닉",
+            "terms": "불임 클리닉"
+        },
+        "leisure/fitness_station": {
+            "name": "야외 신체단련소",
+            "terms": "야외 피트니스 장소"
+        },
+        "amenity/vending_machine/newspapers": {
+            "name": "신문 자동판매기",
+            "terms": "신문 자동판매기"
+        },
+        "railway/subway_entrance": {
+            "name": "지하철 입구",
+            "terms": "지하철역 입구"
+        },
+        "emergency/fire_extinguisher": {
+            "name": "소화기"
+        },
+        "healthcare/speech_therapist": {
+            "name": "언어치료사"
+        },
+        "leisure/picnic_table": {
+            "name": "피크닉 테이블",
+            "terms": "피크닉 테이블"
+        },
+        "man_made/cutline": {
+            "name": "숲 경계선",
+            "terms": "숲 경계선"
+        },
+        "craft/scaffolder": {
+            "name": "비계공",
+            "terms": "비계 설치자"
+        },
+        "shop/locksmith": {
+            "name": "열쇠 제조공",
+            "terms": "자물쇠 제조공"
+        },
+        "office/insurance": {
+            "name": "보험 사무소",
+            "terms": "보험 사무실"
+        },
+        "leisure/pitch": {
+            "name": "운동장",
+            "terms": "운동장"
+        },
+        "public_transport/stop_position_trolleybus": {
+            "name": "트롤리버스 정차 위치",
+            "terms": "버스,전기,대중교통,무궤도,전차,트롤리"
+        },
+        "tourism/hotel": {
+            "name": "호텔"
+        },
+        "historic/monument": {
+            "name": "기념물",
+            "terms": "기념물"
+        },
+        "manhole": {
+            "name": "맨홀",
+            "terms": "맨홀"
+        },
+        "type/route/bicycle": {
+            "name": "자전거 노선"
+        },
+        "highway/give_way": {
+            "name": "양보 표지판",
+            "terms": "양보 표지"
+        },
+        "amenity/place_of_worship/shinto": {
+            "name": "신사",
+            "terms": "신사"
+        },
+        "leisure/fitness_station/horizontal_bar": {
+            "name": "운동용 철봉"
+        },
+        "historic": {
+            "name": "사적지",
+            "terms": "사적지"
+        },
+        "type/enforcement": {
+            "name": "단속"
+        },
+        "railway/switch": {
+            "name": "철도 스위치"
+        },
+        "man_made/tower/communication": {
+            "name": "통신 탑"
+        },
+        "amenity/restaurant/sushi": {
+            "name": "초밥 음식점"
+        },
+        "healthcare/optometrist": {
+            "name": "검안사",
+            "terms": "눈,안경,라식,렌즈,시력"
+        },
+        "building/kindergarten": {
+            "name": "유치원 건물",
+            "terms": "어린이집/유치원 건물"
+        },
+        "leisure/playground": {
+            "name": "놀이터",
+            "terms": "놀이터"
+        },
+        "emergency/water_tank": {
+            "name": "비상 물탱크"
+        },
+        "shop/erotic": {
+            "name": "성인용품 가게",
+            "terms": "성인용품 가게"
+        },
+        "type/restriction/only_left_turn": {
+            "name": "좌회전 전용"
+        },
+        "highway/mini_roundabout": {
+            "name": "소형 회전교차로",
+            "terms": "소형 회전교차로"
+        },
+        "public_transport/platform_monorail": {
+            "name": "모노레일 정거장 / 승강장",
+            "terms": "모노레일,플랫폼,대중교통,철도"
+        },
+        "amenity/monastery": {
+            "name": "수도원 부지"
+        },
+        "highway/service/parking_aisle": {
+            "name": "주차장 통로",
+            "terms": "주차장 통로"
+        },
+        "amenity/bbq": {
+            "name": "바비큐/그릴",
+            "terms": "바베큐/그릴"
+        },
+        "waterway/dock": {
+            "name": "습식 도크 / 건식 도크",
+            "terms": "습식 도크 / 건식 도크"
+        },
+        "waterway/boatyard": {
+            "name": "보트 선착장",
+            "terms": "조선소"
+        },
+        "power/line": {
+            "name": "송전선",
+            "terms": "송전선"
+        },
+        "amenity/ice_cream": {
+            "name": "아이스크림 가게",
+            "terms": "아이스크림 가게"
+        },
+        "leisure/horse_riding": {
+            "name": "승마 시설",
+            "terms": "승마 시설"
+        },
+        "power/pole": {
+            "name": "전봇대",
+            "terms": "전봇대"
+        },
+        "barrier/guard_rail": {
+            "name": "가드레일"
+        },
+        "natural/peak": {
+            "name": "정상",
+            "terms": "봉우리,산꼭대기,정점,첨봉,언덕,산"
+        },
+        "highway/tertiary": {
+            "name": "3차 도로",
+            "terms": "3차 도로"
+        },
+        "amenity/restaurant/steakhouse": {
+            "name": "스테이크하우스"
+        },
+        "shop/beauty/nails": {
+            "name": "네일 살롱",
+            "terms": "매니큐어,페디큐어"
+        },
+        "tourism/artwork": {
+            "name": "예술품",
+            "terms": "예술 작품, 아트워크"
+        },
+        "amenity/vending_machine/sweets": {
+            "name": "간식 자판기",
+            "terms": "간식 자판기, 과자 자판기"
+        },
+        "landuse/retail": {
+            "name": "소매 지역",
+            "terms": "상업 지역"
+        },
+        "leisure/sauna": {
+            "name": "사우나"
+        },
+        "craft/key_cutter": {
+            "name": "열쇠 따는 사람",
+            "terms": "키 커터"
+        },
+        "leisure/fitness_station/sign": {
+            "name": "운동 안내판"
+        },
+        "leisure/resort": {
+            "name": "리조트",
+            "terms": "리조트"
+        },
+        "shop/pyrotechnics": {
+            "name": "불꽃놀이 상점"
+        },
+        "leisure/pitch/cricket": {
+            "name": "크리켓장",
+            "terms": "크리켓 경기장"
+        },
+        "public_transport/platform_trolleybus": {
+            "name": "트롤리버스 정류장",
+            "terms": "버스,전기,정류소,정거장,대중교통,무궤도,전차,트롤리"
+        },
+        "amenity/arts_centre": {
+            "name": "아트 센터",
+            "terms": "예술 회관, 미술관"
+        },
+        "shop/pet_grooming": {
+            "name": "애완동물 용품 가게"
+        },
+        "railway/crossing": {
+            "name": "철도 건널목 (인도)",
+            "terms": "철도 건널목 (인도)"
+        },
+        "shop/travel_agency": {
+            "name": "여행사"
+        },
+        "tourism/artwork/statue": {
+            "name": "동상"
+        },
+        "amenity/restaurant": {
+            "name": "음식점",
+            "terms": "레스토랑,식당"
+        },
+        "amenity/restaurant/pizza": {
+            "name": "피자 음식점"
+        },
+        "type/route/detour": {
+            "name": "우회 노선"
+        },
+        "amenity/bicycle_repair_station": {
+            "name": "자전거 수리 도구",
+            "terms": "자전거 수리 도구 스탠드"
+        },
+        "amenity/vending_machine/parcel_pickup": {
+            "name": "무인 택배 보관함"
+        },
+        "office/association": {
+            "name": "비영리 단체 사무소",
+            "terms": "비영리조직,비영리기관"
+        },
+        "highway/services": {
+            "name": "서비스 지역",
+            "terms": "휴게소"
+        },
+        "amenity/bureau_de_change": {
+            "name": "환전소",
+            "terms": "환전소"
+        },
+        "tourism/chalet": {
+            "name": "별장"
+        },
+        "landuse/military/nuclear_explosion_site": {
+            "name": "핵 폭발 지역",
+            "terms": "핵 폭발 지역"
+        },
+        "leisure/dancing_school": {
+            "name": "댄스 학원"
+        },
+        "public_transport/station_trolleybus": {
+            "name": "트롤리버스 터미널",
+            "terms": "버스,전기,대중교통,정거장,터미널,무궤도,전차,트롤리"
+        },
+        "leisure": {
+            "name": "여가"
+        },
+        "amenity/post_office": {
+            "name": "우체국",
+            "terms": "우체국, 우편취급국"
+        },
+        "public_transport/stop_position": {
+            "name": "대중교통 정차 위치",
+            "terms": "대중교통"
+        },
+        "natural/volcano": {
+            "name": "화산",
+            "terms": "산,크레이터,분화구"
+        },
+        "amenity/fast_food/pizza": {
+            "name": "피자 패스트푸드"
+        },
+        "amenity/vending_machine": {
+            "name": "자동판매기",
+            "terms": "자판기"
+        },
+        "highway/milestone": {
+            "name": "도로 거리표"
+        },
+        "leisure/bleachers": {
+            "name": "관중석"
+        },
+        "amenity/bar": {
+            "name": "바",
+            "terms": "주점,술집"
+        },
+        "traffic_calming/cushion": {
+            "name": "과속방지받침"
+        },
+        "power/generator/source/nuclear": {
+            "name": "원자로"
+        },
+        "leisure/fitness_station/balance_beam": {
+            "name": "운동용 평균대"
+        },
+        "traffic_calming": {
+            "name": "교통정온화"
+        },
+        "barrier/stile": {
+            "name": "회전문",
+            "terms": "회전문"
+        },
+        "type/route/piste": {
+            "name": "피스트/스키 노선"
+        },
+        "shop/boutique": {
+            "name": "부티크",
+            "terms": "부티크"
+        },
+        "area/highway": {
+            "name": "노면",
+            "terms": "도로 표면"
+        },
+        "amenity/vending_machine/parking_tickets": {
+            "name": "주차권 발권기",
+            "terms": "주차권 발권기"
+        },
+        "shop/weapons": {
+            "name": "무기 가게",
+            "terms": "탄약,총,칼,나이프"
+        },
+        "healthcare/physiotherapist": {
+            "name": "물리치료사"
+        },
+        "bridge/support": {
+            "name": "교량 지지물"
+        },
+        "highway/trunk": {
+            "name": "고속화도로",
+            "terms": "고속화도로"
+        },
+        "amenity/clock/sundial": {
+            "name": "해시계",
+            "terms": "해시계"
+        },
+        "leisure/pitch/boules": {
+            "name": "불/보체 코트",
+            "terms": "보체,리오네즈,페탕크"
+        },
+        "power/cable/underground": {
+            "name": "지하 전력 케이블"
+        },
+        "golf/tee": {
+            "name": "티 박스",
+            "terms": "티 박스"
+        },
+        "office": {
+            "name": "사무소",
+            "terms": "사무실"
+        },
+        "amenity/fire_station": {
+            "name": "소방서",
+            "terms": "소방서"
+        },
+        "barrier/entrance": {
+            "name": "입구"
+        },
+        "emergency/fire_hydrant": {
+            "name": "소화전",
+            "terms": "소화전"
+        },
+        "noexit/yes": {
+            "name": "출구 없음",
+            "terms": "출구 없음"
+        },
+        "shop/scuba_diving": {
+            "name": "스쿠버 다이빙 가게"
+        },
+        "natural/water/pond": {
+            "name": "연못",
+            "terms": "연못"
+        },
+        "place/plot": {
+            "name": "필지"
+        },
+        "attraction/water_slide": {
+            "name": "워터슬라이드",
+            "terms": "워터슬라이드"
+        },
+        "shop/vacuum_cleaner": {
+            "name": "진공청소기 가게"
+        },
+        "shop/chemist": {
+            "name": "드러그스토어",
+            "terms": "약국"
+        },
+        "tourism/information/map": {
+            "name": "지도",
+            "terms": "지도"
+        },
+        "building/hospital": {
+            "name": "병원 건물",
+            "terms": "병원 건물"
+        },
+        "amenity/marketplace": {
+            "name": "시장",
+            "terms": "시장"
+        },
+        "building/industrial": {
+            "name": "산업 건물",
+            "terms": "산업 건물"
+        },
+        "amenity/restaurant/german": {
+            "name": "독일 음식점"
+        },
+        "amenity/university": {
+            "name": "대학 부지",
+            "terms": "대학교 부지"
+        },
+        "building/public": {
+            "name": "공공 건물",
+            "terms": "공공 건물"
+        },
+        "highway/crossing/zebra-raised": {
+            "name": "고원식 횡단보도"
+        },
+        "emergency/first_aid_kit": {
+            "name": "구급상자"
+        },
+        "amenity/shower": {
+            "name": "샤워실"
+        },
+        "office/estate_agent": {
+            "name": "부동산 사무소",
+            "terms": "부동산 사무실,부동산 중개"
+        },
+        "traffic_sign/maxspeed": {
+            "name": "제한 속도 표지판"
+        },
+        "man_made/watermill": {
+            "name": "물레방아",
+            "terms": "물레방아"
+        },
+        "amenity/college": {
+            "name": "전문대학 부지",
+            "terms": "직업전문학교 부지"
+        },
+        "shop/toys": {
+            "name": "완구점",
+            "terms": "장난감"
+        },
+        "type/restriction/no_straight_on": {
+            "name": "직진 금지",
+            "terms": "직진 금지"
+        },
+        "landuse/allotments": {
+            "name": "텃밭",
+            "terms": "텃밭"
+        },
+        "office/water_utility": {
+            "name": "수도사업소"
+        },
+        "railway/tram_stop": {
+            "name": "전차 정차 위치"
+        },
+        "highway/passing_place": {
+            "name": "통행을 위한 여분 공간"
+        },
+        "shop/tiles": {
+            "name": "타일 가게"
+        },
+        "highway/pedestrian_area": {
+            "name": "보행자 지역"
+        },
+        "amenity/vending_machine/food": {
+            "name": "식품 자판기"
+        },
+        "amenity/cafe": {
+            "name": "카페",
+            "terms": "비스트로,커피,차"
+        },
+        "leisure/pitch/bowls": {
+            "name": "잔디 볼링장",
+            "terms": "잔디 볼링장"
+        },
+        "highway/service/emergency_access": {
+            "name": "비상시 접근",
+            "terms": "비상 액세스"
+        },
+        "natural/mud": {
+            "name": "진흙"
+        },
+        "building/civic": {
+            "name": "시 빌딩"
+        },
+        "craft/plasterer": {
+            "name": "미장공",
+            "terms": "도벽사"
+        },
+        "amenity/parking_space": {
+            "name": "주차 공간",
+            "terms": "주차 공간"
+        },
+        "healthcare/birthing_center": {
+            "name": "산원",
+            "terms": "아기,출산,분만,진통,임신"
+        },
+        "building/greenhouse": {
+            "name": "온실",
+            "terms": "비닐하우스"
+        },
+        "landuse/harbour": {
+            "name": "항구",
+            "terms": "항구"
+        },
+        "shop/pet": {
+            "name": "애완동물 가게",
+            "terms": "동물,고양이,개,물고기,강아지,파충류"
+        },
+        "amenity/scrapyard": {
+            "name": "폐차장"
+        },
+        "man_made/survey_point": {
+            "name": "조사/관측 지점",
+            "terms": "조사/관측 지점"
+        },
+        "roundabout": {
+            "name": "회전교차로"
+        },
+        "type/route/power": {
+            "name": "전력 노선"
+        },
+        "highway/service/alley": {
+            "name": "골목",
+            "terms": "골목"
+        },
+        "man_made/mast/communication/radio": {
+            "name": "라디오 송신탑"
+        },
+        "amenity/restaurant/seafood": {
+            "name": "해산물 음식점"
+        },
+        "public_transport/station_train": {
+            "name": "기차역",
+            "terms": "대중교통,철도,선로,역,터미널,기차"
+        },
+        "shop/tailor": {
+            "name": "양복점",
+            "terms": "양복상,양복전,양복집,옷,정장,슈트"
+        },
+        "landuse/brownfield": {
+            "name": "재개발 부지"
+        },
+        "natural/cliff": {
+            "name": "절벽",
+            "terms": "벼랑,낭떠러지,급경사면"
+        },
+        "amenity/clock": {
+            "name": "시계방",
+            "terms": "시계방"
+        },
+        "building/garage": {
+            "name": "차고",
+            "terms": "차고"
+        },
+        "natural/coastline": {
+            "name": "해안선",
+            "terms": "해안선"
+        },
+        "building/carport": {
+            "name": "간이 차고"
+        },
+        "building/hotel": {
+            "name": "호텔 건물",
+            "terms": "호텔 건물"
+        },
+        "shop/anime": {
+            "name": "애니메이션 가게",
+            "terms": "만화,일본,코스프레,피규어"
+        },
+        "route/ferry": {
+            "name": "페리 노선",
+            "terms": "페리 노선"
+        },
+        "shop/outdoor": {
+            "name": "아웃도어 상점",
+            "terms": "캠핑,야영,등산,등반,하이킹"
+        },
+        "highway/raceway": {
+            "name": "경주로(모터스포츠)",
+            "terms": "경주로 (모터 스포즈)"
+        },
+        "emergency/designated": {
+            "name": "비상시 접근으로 지정됨"
+        },
+        "highway/steps": {
+            "name": "계단",
+            "terms": "계단"
+        },
+        "tourism/artwork/sculpture": {
+            "name": "조각"
+        },
+        "leisure/beach_resort": {
+            "name": "해변 리조트"
+        },
+        "amenity/vending_machine/drinks": {
+            "name": "음료 자판기",
+            "terms": "음료 자판기, 음료 자동 판매기"
+        },
+        "highway/primary": {
+            "name": "1차 도로",
+            "terms": "1차 도로"
+        },
+        "highway/footway/zebra": {
+            "name": "횡단보도"
+        },
+        "shop/chocolate": {
+            "name": "초콜릿 가게",
+            "terms": "초콜릿 가게"
+        },
+        "man_made/pumping_station": {
+            "name": "펌프장",
+            "terms": "펌프장"
+        },
+        "building/bunker": {
+            "name": "벙커"
+        },
+        "emergency/defibrillator": {
+            "name": "제세동기",
+            "terms": "제세동기, 심장 압박기"
+        },
+        "aeroway/helipad": {
+            "name": "헬기 착륙장",
+            "terms": "헬리콥터,헬리포트"
+        },
+        "amenity/dentist": {
+            "name": "치과 의원",
+            "terms": "치과 의원, 치과"
+        },
+        "highway/footway/zebra-raised": {
+            "name": "고원식 횡단보도"
+        },
+        "landuse/residential/apartments": {
+            "name": "아파트 단지",
+            "terms": "아파트 단지, 아파트먼트 단지"
+        },
+        "amenity/place_of_worship/muslim": {
+            "name": "이슬람교 모스크"
+        },
+        "shop/tea": {
+            "name": "차 가게"
+        },
+        "aerialway/chair_lift": {
+            "name": "체어 리프트",
+            "terms": "체어 리프트"
+        },
+        "landuse/pond": {
+            "name": "연못"
+        },
+        "shop/supermarket": {
+            "name": "슈퍼마켓",
+            "terms": "수퍼마켓, 슈퍼마켓"
+        },
+        "office/political_party": {
+            "name": "정당",
+            "terms": "정당"
+        },
+        "shop/wholesale": {
+            "name": "도매상"
+        },
+        "building/stadium": {
+            "name": "경기장 건물"
+        },
+        "landuse/military/range": {
+            "name": "군사 범위",
+            "terms": "군사 지역"
+        },
+        "man_made/silo": {
+            "name": "저장탑",
+            "terms": "사일로"
+        },
+        "man_made/surveillance/camera": {
+            "name": "감시 카메라"
+        },
+        "building/hut": {
+            "name": "오두막",
+            "terms": "오두막"
+        },
+        "shop/candles": {
+            "name": "양초 가게",
+            "terms": "양초 가게"
+        },
+        "natural/saddle": {
+            "name": "안부",
+            "terms": "콜,고개,재,영"
+        },
+        "building/transportation": {
+            "name": "대중교통 건물"
+        },
+        "landuse/orchard": {
+            "name": "과수원",
+            "terms": "과일"
+        },
+        "type/restriction/no_right_turn": {
+            "name": "우회전 금지",
+            "terms": "우회전 금지"
+        },
+        "shop/car": {
+            "name": "자동차 대리점",
+            "terms": "자동차 대리점"
+        },
+        "building/stable": {
+            "name": "마구간",
+            "terms": "마구간"
+        },
+        "amenity/public_bookcase": {
+            "name": "공공 책장",
+            "terms": "공공 책장"
+        },
+        "tourism/camp_site": {
+            "name": "캠핑장",
+            "terms": "텐트,천막,RV"
+        },
+        "barrier/fence/railing": {
+            "name": "난간"
+        },
+        "golf/hole": {
+            "name": "골프 홀",
+            "terms": "골프 구멍"
+        },
+        "building/semidetached_house": {
+            "name": "반분리된 주택",
+            "terms": "반분리된 주택"
+        },
+        "railway/abandoned": {
+            "name": "버려진 철도",
+            "terms": "버려진 철도"
+        },
+        "type/restriction": {
+            "name": "제한",
+            "terms": "제한"
+        },
+        "playground/seesaw": {
+            "name": "시소"
+        },
+        "shop/bathroom_furnishing": {
+            "name": "화장실 기구 판매점",
+            "terms": "화장실 기구 판매점"
+        },
+        "shop/beauty/tanning": {
+            "name": "일광 살롱",
+            "terms": "일광 살롱"
+        },
+        "amenity/water_point": {
+            "name": "RV 식수대",
+            "terms": "RV 식수대"
+        },
+        "public_transport/station": {
+            "name": "대중교통 역 / 터미널",
+            "terms": "대중교통,역,터미널"
+        },
+        "playground/balance_beam": {
+            "name": "놀이용 평균대"
+        },
+        "leisure/hackerspace": {
+            "name": "해커스페이스",
+            "terms": "메이커스페이스"
+        },
+        "leisure/bandstand": {
+            "name": "연주 무대"
+        },
+        "amenity/food_court": {
+            "name": "푸드코트",
+            "terms": "푸트코트"
+        },
+        "natural/beach": {
+            "name": "해변",
+            "terms": "바닷가,연안,해안"
+        },
+        "junction": {
+            "name": "교차로",
+            "terms": "삼거리,사거리,오거리"
+        },
+        "office/coworking": {
+            "name": "공동 작업 공간",
+            "terms": "공동 작업 공간"
+        },
+        "vertex": {
+            "name": "기타",
+            "terms": "기타"
+        },
+        "type/boundary": {
+            "name": "경계",
+            "terms": "경계"
+        },
+        "man_made/monitoring_station": {
+            "name": "관측소",
+            "terms": "날씨,기상,지진,대기,미세먼지,GPS"
+        },
+        "aeroway/taxiway": {
+            "name": "유도로",
+            "terms": "유도로"
+        },
+        "craft/optician": {
+            "name": "안경점"
+        },
+        "seamark/beacon_isolated_danger": {
+            "name": "위험 신호등"
+        },
+        "waterway/waterfall": {
+            "name": "폭포",
+            "terms": "폭포"
+        },
+        "office/guide": {
+            "name": "여행 가이드 사무소"
+        },
+        "type/route": {
+            "name": "노선",
+            "terms": "경로, 노선"
+        },
+        "amenity/vending_machine/public_transport_tickets": {
+            "name": "대중교통 승차권 발매기",
+            "terms": "대중교통 승차권 발매기,1회용 승차권 발매기"
+        },
+        "man_made/embankment": {
+            "name": "둑"
+        },
+        "shop/tobacco": {
+            "name": "담배 가게",
+            "terms": "담배 판매업소"
+        },
+        "building/shed": {
+            "name": "오두막",
+            "terms": "헛간"
+        },
+        "building/detached": {
+            "name": "단독 주택",
+            "terms": "단독 주택"
+        },
+        "shop/charity": {
+            "name": "자선 쇼핑몰",
+            "terms": "자선 쇼핑몰, 아름다운가게"
+        },
+        "healthcare/occupational_therapist": {
+            "name": "작업치료사"
+        },
+        "shop/musical_instrument": {
+            "name": "악기 상점",
+            "terms": "기타"
+        },
+        "man_made/wastewater_plant": {
+            "name": "하수 처리장",
+            "terms": "하수처리 시설"
+        },
+        "landuse/plant_nursery": {
+            "name": "식물 양식장",
+            "terms": "식물 종묘장"
+        },
+        "shop/money_lender": {
+            "name": "대출"
+        },
+        "shop/radiotechnics": {
+            "name": "라디오/전자 부품 가게"
+        },
+        "building/college": {
+            "name": "전문대학 건물",
+            "terms": "직업전문학교 건물"
+        },
+        "amenity/nursing_home": {
+            "name": "요양원"
+        },
+        "shop/ticket": {
+            "name": "티켓 판매소"
+        },
+        "amenity/social_facility/group_home": {
+            "name": "경로당",
+            "terms": "경로당, 양로원"
+        },
+        "natural/water/reservoir": {
+            "name": "저수지",
+            "terms": "저수지"
+        },
+        "craft/saddler": {
+            "name": "안부",
+            "terms": "안부"
+        },
+        "landuse/quarry": {
+            "name": "채석장",
+            "terms": "채석장"
+        },
+        "barrier/border_control": {
+            "name": "국경 통계",
+            "terms": "출입국 관리"
+        },
+        "landuse/basin": {
+            "name": "웅덩이"
+        },
+        "leisure/track": {
+            "name": "경주로(비모터스포츠)",
+            "terms": "경마장 (비 자동차 스포츠)"
+        },
+        "aerialway/mixed_lift": {
+            "name": "혼합 리프트",
+            "terms": "혼합 리프트"
+        },
+        "shop/paint": {
+            "name": "페인트 가게"
+        },
+        "historic/ruins": {
+            "name": "폐허",
+            "terms": "폐허"
+        },
+        "highway/secondary": {
+            "name": "2차 도로",
+            "terms": "2차 도로"
+        },
+        "natural/fell": {
+            "name": "황야",
+            "terms": "황야"
+        },
+        "amenity/fast_food/sandwich": {
+            "name": "샌드위치 패스트푸드"
+        },
+        "amenity/restaurant/japanese": {
+            "name": "일본 음식점"
+        },
+        "natural/heath": {
+            "name": "황무지",
+            "terms": "황무지"
+        },
+        "amenity/fast_food/kebab": {
+            "name": "케밥 패스트푸드"
+        },
+        "landuse/greenfield": {
+            "name": "미개발 부지"
+        },
+        "office/accountant": {
+            "name": "회계사 사무소"
+        },
+        "seamark": {
+            "name": "항해 표지"
+        },
+        "shop/leather": {
+            "name": "가죽 가게"
+        },
+        "building/commercial": {
+            "name": "상업 건물",
+            "terms": "상업 건물"
+        },
+        "historic/wreck": {
+            "name": "난파선"
+        },
+        "amenity/bicycle_parking": {
+            "name": "자전거 주차장",
+            "terms": "자전거 주차"
+        },
+        "amenity/compressed_air": {
+            "name": "압축된 공기",
+            "terms": "압축 공기"
+        },
+        "man_made/water_well": {
+            "name": "우물",
+            "terms": "우물"
+        },
+        "shop/organic": {
+            "name": "유기농 상품 가게"
+        },
+        "waterway/ditch": {
+            "name": "구거",
+            "terms": "도랑"
+        },
+        "shop/fuel": {
+            "name": "연료 가게"
+        },
+        "power/generator/source/wind": {
+            "name": "풍력 발전기"
+        },
+        "leisure/fitness_station/stairs": {
+            "name": "운동용 계단"
+        },
+        "landuse/railway": {
+            "name": "철도 부지",
+            "terms": "철도 부지"
+        },
+        "amenity/cinema": {
+            "name": "영화관",
+            "terms": "영화관, 시네마"
+        },
+        "type/route/bus": {
+            "name": "버스 노선",
+            "terms": "버스 노선"
+        },
+        "natural/water/stream": {
+            "name": "개울"
+        },
+        "type/route_master": {
+            "name": "노선 마스터",
+            "terms": "노선 마스터"
+        },
+        "landuse/farm": {
+            "name": "농토"
+        },
+        "place/city_block": {
+            "name": "도시 블록"
+        },
+        "public_transport/platform_subway": {
+            "name": "지하철 정거장 / 승강장",
+            "terms": "지하철,플랫폼,대중교통,철도,선로,지하"
+        },
+        "natural/wood": {
+            "name": "삼림",
+            "terms": "숲,산림,나무"
+        },
+        "amenity/restaurant/chinese": {
+            "name": "중국 음식점",
+            "terms": "중국집"
+        },
+        "leisure/pitch/rugby_union": {
+            "name": "사회인 럭비장 부지",
+            "terms": "사회인 럭비장 부지"
+        },
+        "craft/distillery": {
+            "name": "증류소",
+            "terms": "증류소"
+        },
+        "aeroway/apron": {
+            "name": "계류장",
+            "terms": "주기장, 에이프런"
+        },
+        "shop/tattoo": {
+            "name": "문신 가게"
+        },
+        "shop/health_food": {
+            "name": "건강식품 가게"
+        },
+        "power/generator/method/photovoltaic": {
+            "name": "태양 전지판"
+        },
+        "shop/optician": {
+            "name": "안경점",
+            "terms": "눈,안경"
+        },
+        "public_transport/platform_light_rail": {
+            "name": "경전철 정거장 / 승강장",
+            "terms": "전기,경전철,라이트 레일,플랫폼,대중교통,철도,선로,트롤리"
+        },
+        "type/route/foot": {
+            "name": "도보 노선"
+        },
+        "barrier/block": {
+            "name": "벽돌",
+            "terms": "블럭"
+        },
+        "amenity/theatre/type/amphi": {
+            "name": "원형극장"
+        },
+        "relation": {
+            "name": "관계",
+            "terms": "관계"
+        },
+        "shop/medical_supply": {
+            "name": "의료 용품점"
+        },
+        "type/restriction/only_straight_on": {
+            "name": "직진 전용"
+        },
+        "landuse/industrial/scrap_yard": {
+            "name": "폐차장",
+            "terms": "자동차,폐품,금속,고철,차량"
+        },
+        "amenity/recycling": {
+            "name": "재활용"
+        },
+        "camp_site/camp_pitch": {
+            "name": "캠핑장",
+            "terms": "캠핑장"
+        },
+        "shop/gas": {
+            "name": "가스통 가게",
+            "terms": "가스통 가게"
+        },
+        "landuse/commercial": {
+            "name": "상업 지역",
+            "terms": "상업 지역"
+        },
+        "seamark/mooring": {
+            "name": "계류장"
+        },
+        "natural/ridge": {
+            "name": "산등성이",
+            "terms": "산등성이"
+        },
+        "natural": {
+            "name": "자연"
+        },
+        "aerialway/magic_carpet": {
+            "name": "매직 카펫 리프트",
+            "terms": "매직 카펫 리프트"
+        },
+        "amenity/post_box": {
+            "name": "우체통",
+            "terms": "우체통"
+        },
+        "public_transport/station_tram": {
+            "name": "전차 역",
+            "terms": "전기,대중교통,철도,선로,역,터미널,전차,트롤리"
+        },
+        "emergency/official": {
+            "name": "공식 비상시 접근지"
+        },
+        "playground/sandpit": {
+            "name": "모래밭"
+        },
+        "railway/derail": {
+            "name": "탈선기"
+        },
+        "leisure/bowling_alley": {
+            "name": "볼링장",
+            "terms": "볼링장"
+        },
+        "man_made/mast": {
+            "name": "안테나 기둥",
+            "terms": "안테나,방송탑,송신탑,기지국"
+        },
+        "leisure/bird_hide": {
+            "name": "탐조대",
+            "terms": "감시대,전망대,조망대,새,조류"
+        },
+        "shop/fishing": {
+            "name": "낚시 가게"
+        },
+        "amenity/vending_machine/cigarettes": {
+            "name": "담배 자판기",
+            "terms": "담배 자판기, 담배 자동 판매기"
+        },
+        "craft/tiler": {
+            "name": "타일 시공자",
+            "terms": "타일 시공자"
+        },
+        "shop/frame": {
+            "name": "액자 가게",
+            "terms": "프레이밍 가게"
+        },
+        "barrier/kerb": {
+            "name": "연석"
+        },
+        "leisure/nature_reserve": {
+            "name": "자연 보호 구역",
+            "terms": "자연 보호 구역, 개발 제한 구역"
+        },
+        "shop/antiques": {
+            "name": "골동품 가게",
+            "terms": "골동품 가게"
+        },
+        "shop/fabric": {
+            "name": "직물 가게",
+            "terms": "천,옷감,바느질"
+        },
+        "craft/brewery": {
+            "name": "맥주 양조장",
+            "terms": "양조공, 양조장"
+        },
+        "highway/turning_circle": {
+            "name": "선회권",
+            "terms": "선회권"
+        },
+        "shop/coffee": {
+            "name": "커피 가게",
+            "terms": "커피 전문점"
+        },
+        "shop/e-cigarette": {
+            "name": "전자 담배 가게",
+            "terms": "전자 담배 가게"
+        },
+        "tourism/wilderness_hut": {
+            "name": "황야 막사"
+        },
+        "amenity/dive_centre": {
+            "name": "다이브 센터",
+            "terms": "다이브 센터"
+        },
+        "shop/clothes": {
+            "name": "옷 가게",
+            "terms": "옷 가게"
+        },
+        "amenity/restaurant/noodle": {
+            "name": "국숫집",
+            "terms": "면옥"
+        },
+        "aeroway/aerodrome": {
+            "name": "공항",
+            "terms": "공항"
+        },
+        "amenity/bicycle_rental": {
+            "name": "자전거 대여",
+            "terms": "자전거 대여소,자전거 렌탈"
+        },
+        "shop/gift": {
+            "name": "선물 가게",
+            "terms": "기프트샵, 기념품점"
+        },
+        "craft/locksmith": {
+            "name": "열쇠 제조공"
+        },
+        "leisure/sports_centre": {
+            "name": "스포츠 센터 / 단지",
+            "terms": "스포츠 센터/복합 시설"
+        },
+        "place": {
+            "name": "장소"
+        },
+        "power": {
+            "name": "전력"
+        },
+        "public_transport/platform_train": {
+            "name": "기차 정거장 / 승강장",
+            "terms": "플랫폼,대중교통,철도,선로,기차"
+        },
+        "aerialway/station": {
+            "name": "공중 이동로 승강장"
+        },
+        "building/house": {
+            "name": "주택",
+            "terms": "주택, 집"
+        },
+        "leisure/marina": {
+            "name": "마리나",
+            "terms": "항구, 선착장"
+        },
+        "craft/tailor": {
+            "name": "남성복 재단사"
+        },
+        "amenity/restaurant/american": {
+            "name": "미국 음식점"
+        },
+        "barrier/gate": {
+            "name": "문",
+            "terms": "문"
+        },
+        "shop/motorcycle": {
+            "name": "오토바이 대리점",
+            "terms": "모터사이클 대리점"
+        },
+        "waterway/river": {
+            "name": "강",
+            "terms": "강"
+        },
+        "office/architect": {
+            "name": "건축가 사무소"
+        },
+        "railway/subway": {
+            "name": "지하철",
+            "terms": "지하철"
+        },
+        "amenity/money_transfer": {
+            "name": "환전소"
+        },
+        "highway/elevator": {
+            "name": "엘리베이터",
+            "terms": "엘리베이터, 승강기"
+        },
+        "railway/miniature": {
+            "name": "미니어처 철도",
+            "terms": "장난감 철도,장난감 철로,미니어처 철로,장난감 기찻길"
+        },
+        "shop/carpet": {
+            "name": "카펫 가게",
+            "terms": "융단,양탄자,깔개"
+        },
+        "craft": {
+            "name": "공예",
+            "terms": "공작소"
+        },
+        "traffic_calming/chicane": {
+            "name": "급커브길"
+        },
+        "public_transport/station_bus": {
+            "name": "버스 터미널",
+            "terms": "버스,대중교통,정거장,터미널"
+        },
+        "shop/butcher": {
+            "name": "정육점",
+            "terms": "정육점"
+        },
+        "barrier/bollard": {
+            "name": "보호 기둥",
+            "terms": "보호 기둥"
+        },
+        "leisure/golf_course": {
+            "name": "골프장",
+            "terms": "골프장"
+        },
+        "barrier": {
+            "name": "방벽",
+            "terms": "방벽, 장벽"
+        },
+        "historic/castle": {
+            "name": "성",
+            "terms": "성"
+        },
+        "office/surveyor": {
+            "name": "측량기사 사무실"
+        },
+        "shop/car_repair": {
+            "name": "자동차 수리점",
+            "terms": "자동차 정비소"
+        },
+        "craft/hvac": {
+            "name": "난방·환기·공기조화",
+            "terms": "공조 시스템, HVAC"
+        },
+        "highway/path": {
+            "name": "경로",
+            "terms": "경로"
+        },
+        "leisure/water_park": {
+            "name": "워터파크",
+            "terms": "물놀이장"
+        },
+        "shop/sewing": {
+            "name": "바느질 용품 가게"
+        },
+        "attraction/train": {
+            "name": "관광 기차",
+            "terms": "관광 기차"
+        },
+        "landuse/meadow": {
+            "name": "목초지",
+            "terms": "목초지"
+        },
+        "shop/convenience": {
+            "name": "편의점",
+            "terms": "편의점"
+        },
+        "amenity/bus_station": {
+            "name": "버스 터미널"
+        },
+        "highway/crossing/zebra": {
+            "name": "횡단보도"
+        },
+        "highway/steps/conveying": {
+            "name": "에스컬레이터"
+        },
+        "shop/books": {
+            "name": "서점",
+            "terms": "책방"
+        },
+        "highway/service": {
+            "name": "접근 도로",
+            "terms": "접근 도로"
+        },
+        "waterway/drain": {
+            "name": "배수로",
+            "terms": "배수로"
+        },
+        "highway/residential": {
+            "name": "주거 도로",
+            "terms": "주거 도로, 골목길"
+        },
+        "historic/wayside_shrine": {
+            "name": "길가의 신사",
+            "terms": "길가의 신사"
+        },
+        "amenity/restaurant/turkish": {
+            "name": "터키 음식점"
+        },
+        "type/boundary/administrative": {
+            "name": "행정 경계",
+            "terms": "행정 경계"
+        },
+        "landuse/military/office": {
+            "name": "군사 사무소",
+            "terms": "군사 사무실"
+        },
+        "amenity/watering_place": {
+            "name": "동물 급수 장소",
+            "terms": "동물 음수대"
+        },
+        "public_transport/station_train_halt": {
+            "name": "기차역 (간이역)"
+        },
+        "emergency/ambulance_station": {
+            "name": "구급차 스테이션",
+            "terms": "구급차 스테이션, 앰뷸런스 스테이션"
+        },
+        "healthcare/podiatrist": {
+            "name": "족부의사",
+            "terms": "발,발톱"
+        },
+        "amenity/motorcycle_parking": {
+            "name": "오토바이 주차장",
+            "terms": "모터사이클 주차장"
+        },
+        "shop/craft": {
+            "name": "미술 공예 가게",
+            "terms": "미술 공예 가게"
+        },
+        "line": {
+            "name": "선",
+            "terms": "선"
+        },
+        "amenity/vehicle_inspection": {
+            "name": "차량 점검",
+            "terms": "자동차 점검"
+        },
+        "amenity/kindergarten": {
+            "name": "유치원 부지",
+            "terms": "유치원 부지, 어린이집 부지"
+        },
+        "man_made/tower/observation": {
+            "name": "관측 탑"
+        },
+        "waterway/weir": {
+            "name": "어량",
+            "terms": "둑"
+        },
+        "craft/metal_construction": {
+            "name": "금속 구조물",
+            "terms": "건축용 금속재"
+        },
+        "craft/painter": {
+            "name": "화가",
+            "terms": "화가"
+        },
+        "public_transport/stop_area": {
+            "name": "대중교통 정차 구역"
+        },
+        "craft/carpet_layer": {
+            "name": "카펫 레이어",
+            "terms": "카펫 레이어"
+        },
+        "man_made/flagpole": {
+            "name": "깃대",
+            "terms": "깃대"
+        },
+        "highway/crossing/unmarked-raised": {
+            "name": "표시되지 않은 고원식 횡단보도"
+        },
+        "tourism/attraction": {
+            "name": "관광 명소"
+        },
+        "man_made": {
+            "name": "인공물"
+        },
+        "barrier/kerb/lowered": {
+            "name": "턱 낮은 연석"
+        },
+        "golf/fairway": {
+            "name": "페어웨이",
+            "terms": "페어웨이"
+        },
+        "public_transport/station_subway": {
+            "name": "지하철역",
+            "terms": "지하철,대중교통,철도,선로,역,터미널,지하"
+        },
+        "tourism/alpine_hut": {
+            "name": "고산장"
+        },
+        "tourism/information/office": {
+            "name": "관광안내소"
+        },
+        "shop/alcohol": {
+            "name": "주류상",
+            "terms": "알코올,술,맥주,와인,포도주"
+        },
+        "shop/fireplace": {
+            "name": "벽난로 가게"
+        },
+        "tourism/viewpoint": {
+            "name": "경승지"
+        },
+        "craft/handicraft": {
+            "name": "수공예",
+            "terms": "수공예"
+        },
+        "landuse/construction": {
+            "name": "공사 중",
+            "terms": "공사 중"
+        },
+        "shop/trade": {
+            "name": "무역 가게"
+        },
+        "shop/motorcycle_repair": {
+            "name": "오토바이 수리점"
+        },
+        "aeroway": {
+            "name": "항공 시설"
+        },
+        "aeroway/terminal": {
+            "name": "공항 터미널",
+            "terms": "공항 터미널"
+        },
+        "emergency/life_ring": {
+            "name": "구명부환",
+            "terms": "구명부표"
+        }
+    }
+}

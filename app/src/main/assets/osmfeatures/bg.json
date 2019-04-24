@@ -1,0 +1,826 @@
+{
+    "presets": {
+        "route/ferry": {
+            "name": "Фериботна връзка"
+        },
+        "highway/steps": {
+            "name": "Стъпала"
+        },
+        "historic/boundary_stone": {
+            "name": "Граничен камък"
+        },
+        "leisure/park": {
+            "name": "Парк"
+        },
+        "amenity/car_rental": {
+            "name": "Коли под наем"
+        },
+        "place/city": {
+            "name": "Град над 100 000"
+        },
+        "amenity/fast_food": {
+            "name": "Бърза закуска"
+        },
+        "highway/primary": {
+            "name": "Първокласен път"
+        },
+        "type/route/pipeline": {
+            "name": "Трасе на тръбопровод"
+        },
+        "building": {
+            "name": "Сграда"
+        },
+        "leisure/garden": {
+            "name": "Градина"
+        },
+        "historic/memorial": {
+            "name": "Мемориална плоча"
+        },
+        "barrier/cattle_grid": {
+            "name": "Тексаска мрежа"
+        },
+        "tourism/motel": {
+            "name": "Мотел"
+        },
+        "barrier/lift_gate": {
+            "name": "Бариера"
+        },
+        "leisure/swimming_pool": {
+            "name": "Плувен басейн"
+        },
+        "waterway/stream": {
+            "name": "Поток"
+        },
+        "railway": {
+            "name": "ЖП транспорт"
+        },
+        "amenity/library": {
+            "name": "Библиотека"
+        },
+        "shop/stationery": {
+            "name": "Магазин за канцеларски стоки"
+        },
+        "highway/secondary_link": {
+            "name": "Връзка с второкласен път"
+        },
+        "aeroway/helipad": {
+            "name": "Хеликоптерна площадка"
+        },
+        "leisure/slipway": {
+            "name": "Хелинг"
+        },
+        "highway/living_street": {
+            "name": "Жилищна улица"
+        },
+        "power/sub_station": {
+            "name": "Подстанция"
+        },
+        "highway/motorway": {
+            "name": "Автомагистрала"
+        },
+        "natural/bay": {
+            "name": "Залив"
+        },
+        "aeroway/runway": {
+            "name": "Летателна писта"
+        },
+        "railway/monorail": {
+            "name": "Монорелсов път"
+        },
+        "shop/supermarket": {
+            "name": "Супермаркет"
+        },
+        "shop/bicycle": {
+            "name": "Магазин за велосипеди"
+        },
+        "barrier/city_wall": {
+            "name": "Градска стена"
+        },
+        "tourism/guest_house": {
+            "name": "Къща за гости"
+        },
+        "shop/garden_centre": {
+            "name": "Градински център"
+        },
+        "barrier/hedge": {
+            "name": "Жив плет"
+        },
+        "boundary/administrative": {
+            "name": "Административна граница"
+        },
+        "amenity": {
+            "name": "Услуги"
+        },
+        "shop/beauty": {
+            "name": "Козметик"
+        },
+        "amenity/fuel": {
+            "name": "Бензиностанция"
+        },
+        "type/route/tram": {
+            "name": "Трамваен маршрут"
+        },
+        "leisure/pitch/american_football": {
+            "name": "Игрище за американски футбол"
+        },
+        "waterway/canal": {
+            "name": "Канал"
+        },
+        "place/island": {
+            "name": "Остров"
+        },
+        "shop/fishmonger": {
+            "name": "Магазин за риба"
+        },
+        "man_made/pier": {
+            "name": "Кей"
+        },
+        "landuse/orchard": {
+            "name": "Овощна градина "
+        },
+        "shop/farm": {
+            "name": "Щанд за плодове и зеленчуци"
+        },
+        "type/restriction/no_right_turn": {
+            "name": "Без десен завой"
+        },
+        "shop/car": {
+            "name": "Автомобили"
+        },
+        "highway/road": {
+            "name": "Непроучен път"
+        },
+        "address": {
+            "name": "Адрес"
+        },
+        "highway/primary_link": {
+            "name": "Връзка с първокласен път"
+        },
+        "man_made/water_works": {
+            "name": "Помпена станция"
+        },
+        "shop/greengrocer": {
+            "name": "Плод-зеленчук"
+        },
+        "amenity/pub": {
+            "name": "Пъб"
+        },
+        "man_made/breakwater": {
+            "name": "Вълнолом"
+        },
+        "railway/abandoned": {
+            "name": "Изоставена железопътна линия"
+        },
+        "shop/shoes": {
+            "name": "Магазин за обувки"
+        },
+        "type/restriction": {
+            "name": "Ограничение"
+        },
+        "type/route/road": {
+            "name": "Път"
+        },
+        "shop/hairdresser": {
+            "name": "Фризьорски салон"
+        },
+        "shop/mall": {
+            "name": "Мол"
+        },
+        "amenity/swimming_pool": {
+            "name": "Плувен басейн"
+        },
+        "barrier/wall": {
+            "name": "Стена"
+        },
+        "natural/beach": {
+            "name": "Плаж"
+        },
+        "landuse/vineyard": {
+            "name": "Лозе"
+        },
+        "man_made/tower": {
+            "name": "Кула"
+        },
+        "vertex": {
+            "name": "Друг"
+        },
+        "shop/florist": {
+            "name": "Магазин за цветя"
+        },
+        "type/boundary": {
+            "name": "Граница"
+        },
+        "type/route/ferry": {
+            "name": "Фериботна връзка"
+        },
+        "amenity/atm": {
+            "name": "Банкомат"
+        },
+        "aeroway/taxiway": {
+            "name": "Рольожка"
+        },
+        "place/locality": {
+            "name": "Местност"
+        },
+        "amenity/courthouse": {
+            "name": "Съд"
+        },
+        "tourism/hostel": {
+            "name": "Хостел"
+        },
+        "leisure/pitch/volleyball": {
+            "name": "Волейболно игрище"
+        },
+        "place/hamlet": {
+            "name": "Махала"
+        },
+        "type/route": {
+            "name": "Маршрут"
+        },
+        "highway": {
+            "name": "Път"
+        },
+        "area": {
+            "name": "Площ"
+        },
+        "aeroway/hangar": {
+            "name": "Хангар"
+        },
+        "man_made/wastewater_plant": {
+            "name": "Пречиствателна станция"
+        },
+        "amenity/theatre": {
+            "name": "Театър"
+        },
+        "man_made/lighthouse": {
+            "name": "Морски фар"
+        },
+        "type/route/train": {
+            "name": "Железопътен маршрут"
+        },
+        "barrier/fence": {
+            "name": "Ограда"
+        },
+        "landuse/cemetery": {
+            "name": "Гробищен парк"
+        },
+        "railway/rail": {
+            "name": "ЖП линия"
+        },
+        "highway/motorway_link": {
+            "name": "Автомагистрална връзка"
+        },
+        "natural/water/reservoir": {
+            "name": "Язовир"
+        },
+        "amenity/fountain": {
+            "name": "Фонтан"
+        },
+        "place/isolated_dwelling": {
+            "name": "Изолирано жилище"
+        },
+        "railway/disused": {
+            "name": "Закрита железопътна линия"
+        },
+        "shop/doityourself": {
+            "name": "Магазин "Направи си сам""
+        },
+        "amenity/taxi": {
+            "name": "Такси стоянка"
+        },
+        "landuse/quarry": {
+            "name": "Кариера"
+        },
+        "landuse/basin": {
+            "name": "Басейн"
+        },
+        "amenity/grave_yard": {
+            "name": "Гробище"
+        },
+        "historic/ruins": {
+            "name": "Руини"
+        },
+        "natural/scrub": {
+            "name": "Шубрак"
+        },
+        "man_made/water_tower": {
+            "name": "Водна кула"
+        },
+        "highway/secondary": {
+            "name": "Второкласен път"
+        },
+        "railway/subway_entrance": {
+            "name": "Вход на метростанция"
+        },
+        "man_made/cutline": {
+            "name": "Просека"
+        },
+        "shop": {
+            "name": "Магазин"
+        },
+        "natural/heath": {
+            "name": "Малки храсти"
+        },
+        "tourism/caravan_site": {
+            "name": "Паркинг за каравани"
+        },
+        "natural/spring": {
+            "name": "Извор"
+        },
+        "man_made/pipeline": {
+            "name": "Тръбопровод"
+        },
+        "shop/furniture": {
+            "name": "Мебелен магазин"
+        },
+        "leisure/pitch": {
+            "name": "Спортно игрище"
+        },
+        "tourism/hotel": {
+            "name": "Хотел"
+        },
+        "shop/bakery": {
+            "name": "Пекарна"
+        },
+        "historic/monument": {
+            "name": "Паметник"
+        },
+        "emergency/phone": {
+            "name": "Телефон за спешна помощ"
+        },
+        "amenity/bicycle_parking": {
+            "name": "Паркинг за велосипеди"
+        },
+        "shop/deli": {
+            "name": "Магазин за деликатеси"
+        },
+        "type/route/bicycle": {
+            "name": "Велосипеден маршрут"
+        },
+        "waterway/ditch": {
+            "name": "Канавка"
+        },
+        "shop/houseware": {
+            "name": "Домашни потреби"
+        },
+        "leisure/pitch/soccer": {
+            "name": "Футболно игрище"
+        },
+        "type/multipolygon": {
+            "name": "Мултиполигон"
+        },
+        "highway/service/drive-through": {
+            "name": "Обслужване без напускане на автомобила"
+        },
+        "shop/vacant": {
+            "name": "Свободна търговска площ"
+        },
+        "historic": {
+            "name": "Място с историческо значение"
+        },
+        "shop/electronics": {
+            "name": "Магазин за електроника"
+        },
+        "waterway": {
+            "name": "Води"
+        },
+        "amenity/place_of_worship/buddhist": {
+            "name": "Будистки храм"
+        },
+        "amenity/cinema": {
+            "name": "Кино"
+        },
+        "type/route/bus": {
+            "name": "Автобусен маршрут"
+        },
+        "type/route_master": {
+            "name": "Маршрутна схема"
+        },
+        "natural/wood": {
+            "name": "Гора"
+        },
+        "amenity/waste_basket": {
+            "name": "Кош за боклук"
+        },
+        "leisure/playground": {
+            "name": "Детска площадка"
+        },
+        "amenity/telephone": {
+            "name": "Телефон"
+        },
+        "aeroway/apron": {
+            "name": "Стоянка за самолети"
+        },
+        "leisure/stadium": {
+            "name": "Стадион"
+        },
+        "shop/optician": {
+            "name": "Оптика"
+        },
+        "amenity/drinking_water": {
+            "name": "Чешма"
+        },
+        "highway/mini_roundabout": {
+            "name": "Малко кръгово кръстовище"
+        },
+        "type/route/foot": {
+            "name": "Пешеходен маршрут"
+        },
+        "barrier/block": {
+            "name": "Бетонен блок"
+        },
+        "barrier/kissing_gate": {
+            "name": "Препятствие за животни"
+        },
+        "shop/hifi": {
+            "name": "Магазин за аудиотехника"
+        },
+        "type/restriction/no_u_turn": {
+            "name": "Без обратен завой"
+        },
+        "amenity/townhall": {
+            "name": "Кметство"
+        },
+        "relation": {
+            "name": "Релация"
+        },
+        "highway/service/parking_aisle": {
+            "name": "Път в паркинг"
+        },
+        "natural/water": {
+            "name": "Водна площ"
+        },
+        "shop/mobile_phone": {
+            "name": "Магазин за мобилни телефони"
+        },
+        "barrier/cycle_barrier": {
+            "name": "Велосипедна преграда"
+        },
+        "shop/sports": {
+            "name": "Спортен магазин"
+        },
+        "place/town": {
+            "name": "Град под 100 000"
+        },
+        "power/line": {
+            "name": "Електропровод"
+        },
+        "power/pole": {
+            "name": "Електрически стълб"
+        },
+        "highway/tertiary_link": {
+            "name": "Връзка с третокласен път"
+        },
+        "tourism/information": {
+            "name": "Информация"
+        },
+        "natural": {
+            "name": "Природа"
+        },
+        "amenity/post_box": {
+            "name": "Пощенска кутия"
+        },
+        "shop/laundry": {
+            "name": "Пералня"
+        },
+        "natural/peak": {
+            "name": "Връх"
+        },
+        "highway/tertiary": {
+            "name": "Третокласен път"
+        },
+        "natural/water/lake": {
+            "name": "Езеро"
+        },
+        "shop/video": {
+            "name": "Видеотека"
+        },
+        "tourism/artwork": {
+            "name": "Произведение на изкуството"
+        },
+        "amenity/bank": {
+            "name": "Банка"
+        },
+        "railway/tram": {
+            "name": "Трамвайни релси"
+        },
+        "landuse/farmyard": {
+            "name": "Селскостопански двор"
+        },
+        "highway/cycleway": {
+            "name": "Велоалея"
+        },
+        "shop/hardware": {
+            "name": "Железария"
+        },
+        "amenity/car_sharing": {
+            "name": "Споделяне на коли"
+        },
+        "shop/travel_agency": {
+            "name": "Туристическа агенция"
+        },
+        "tourism/zoo": {
+            "name": "Зоологическа градина"
+        },
+        "shop/computer": {
+            "name": "Компютърен магазин"
+        },
+        "amenity/restaurant": {
+            "name": "Ресторант"
+        },
+        "landuse/grass": {
+            "name": "Трева"
+        },
+        "natural/grassland": {
+            "name": "Степ"
+        },
+        "type/route/detour": {
+            "name": "Обходен маршрут"
+        },
+        "amenity/police": {
+            "name": "Полиция"
+        },
+        "highway/turning_circle": {
+            "name": "Място за обръщане"
+        },
+        "highway/service/driveway": {
+            "name": "Алея за коли към жилище"
+        },
+        "leisure/pitch/basketball": {
+            "name": "Баскетболно игрище"
+        },
+        "tourism": {
+            "name": "Туризъм"
+        },
+        "amenity/car_wash": {
+            "name": "Автомивка"
+        },
+        "highway/street_lamp": {
+            "name": "Улична лампа"
+        },
+        "shop/clothes": {
+            "name": "Магазин за дрехи"
+        },
+        "shop/tyres": {
+            "name": "Магазин за автомобилни гуми"
+        },
+        "tourism/theme_park": {
+            "name": "Увеселителен парк"
+        },
+        "aeroway/aerodrome": {
+            "name": "Летище"
+        },
+        "amenity/bicycle_rental": {
+            "name": "Наем на велосипеди"
+        },
+        "shop/gift": {
+            "name": "Магазин за подаръци"
+        },
+        "waterway/riverbank": {
+            "name": "Речен бряг"
+        },
+        "place": {
+            "name": "Населени места"
+        },
+        "power": {
+            "name": "Енергетика"
+        },
+        "leisure": {
+            "name": "Отдих"
+        },
+        "shop/music": {
+            "name": "Музикален магазин"
+        },
+        "amenity/post_office": {
+            "name": "Поща"
+        },
+        "barrier/toll_booth": {
+            "name": "Будка за тол такса"
+        },
+        "building/house": {
+            "name": "Къща"
+        },
+        "leisure/marina": {
+            "name": "Яхт клуб"
+        },
+        "waterway/dam": {
+            "name": "Язовирна стена"
+        },
+        "amenity/bar": {
+            "name": "Бар"
+        },
+        "barrier/gate": {
+            "name": "Портал"
+        },
+        "tourism/museum": {
+            "name": "Музей"
+        },
+        "barrier/stile": {
+            "name": "Стълби за преминаване през ограда"
+        },
+        "highway/bridleway": {
+            "name": "Конска пътека"
+        },
+        "shop/boutique": {
+            "name": "Бутик"
+        },
+        "shop/motorcycle": {
+            "name": "Магазин за мотоциклети"
+        },
+        "shop/variety_store": {
+            "name": "Смесен магазин"
+        },
+        "leisure/pitch/tennis": {
+            "name": "Тенис корт"
+        },
+        "waterway/river": {
+            "name": "Река"
+        },
+        "highway/trunk": {
+            "name": "Скоростен път"
+        },
+        "railway/subway": {
+            "name": "Метро"
+        },
+        "shop/butcher": {
+            "name": "Колбаси"
+        },
+        "barrier/bollard": {
+            "name": "Колче"
+        },
+        "office": {
+            "name": "Офис"
+        },
+        "tourism/picnic_site": {
+            "name": "Място за пикник"
+        },
+        "leisure/golf_course": {
+            "name": "Голф игрище"
+        },
+        "amenity/fire_station": {
+            "name": "Пожарна"
+        },
+        "barrier": {
+            "name": "Преграда"
+        },
+        "barrier/entrance": {
+            "name": "Вход"
+        },
+        "historic/castle": {
+            "name": "Замък"
+        },
+        "natural/water/pond": {
+            "name": "Малко езеро"
+        },
+        "shop/car_repair": {
+            "name": "Сервиз автомобили"
+        },
+        "highway/path": {
+            "name": "Пътека"
+        },
+        "historic/archaeological_site": {
+            "name": "Археологически обект"
+        },
+        "shop/beverages": {
+            "name": "Магазин за алкохол и цигари"
+        },
+        "amenity/bench": {
+            "name": "Пейка"
+        },
+        "shop/chemist": {
+            "name": "Дрогерия"
+        },
+        "landuse/meadow": {
+            "name": "Пасище"
+        },
+        "shop/convenience": {
+            "name": "Магазин за хранителни стоки"
+        },
+        "amenity/marketplace": {
+            "name": "Пазар"
+        },
+        "power/tower": {
+            "name": "Жере"
+        },
+        "amenity/toilets": {
+            "name": "Тоалетна"
+        },
+        "highway/service": {
+            "name": "Сервизна улица"
+        },
+        "waterway/drain": {
+            "name": "Отводнителен канал"
+        },
+        "highway/residential": {
+            "name": "Улица"
+        },
+        "amenity/place_of_worship": {
+            "name": "Религиозен храм"
+        },
+        "historic/wayside_shrine": {
+            "name": "Крайпътен параклис"
+        },
+        "barrier/retaining_wall": {
+            "name": "Подпорна стена"
+        },
+        "type/boundary/administrative": {
+            "name": "Административна граница"
+        },
+        "highway/traffic_signals": {
+            "name": "Светофари"
+        },
+        "amenity/embassy": {
+            "name": "Посолство"
+        },
+        "shop/toys": {
+            "name": "Магазин за играчки"
+        },
+        "place/village": {
+            "name": "Село"
+        },
+        "line": {
+            "name": "Линия"
+        },
+        "shop/lottery": {
+            "name": "Лотарийни билети"
+        },
+        "amenity/cafe": {
+            "name": "Кафене"
+        },
+        "point": {
+            "name": "Точка"
+        },
+        "highway/service/emergency_access": {
+            "name": "За достъп при спешни случаи"
+        },
+        "waterway/weir": {
+            "name": "Преливник"
+        },
+        "power/transformer": {
+            "name": "Трансформатор"
+        },
+        "shop/pet": {
+            "name": "Зоо магазин"
+        },
+        "natural/wetland": {
+            "name": "Блатиста зона"
+        },
+        "man_made/survey_point": {
+            "name": "Геодезическа точка"
+        },
+        "natural/tree": {
+            "name": "Дърво"
+        },
+        "type/route/power": {
+            "name": "Трасе на електропровод"
+        },
+        "tourism/attraction": {
+            "name": "Туристическа атракция"
+        },
+        "highway/service/alley": {
+            "name": "Тясна уличка между имоти"
+        },
+        "shop/department_store": {
+            "name": "Универсален магазин"
+        },
+        "historic/wayside_cross": {
+            "name": "Крайпътен кръст"
+        },
+        "man_made": {
+            "name": "Съоръжения"
+        },
+        "shop/car_parts": {
+            "name": "Авточасти"
+        },
+        "tourism/alpine_hut": {
+            "name": "Хижа"
+        },
+        "natural/cliff": {
+            "name": "Скала"
+        },
+        "shop/alcohol": {
+            "name": "Магазин за алкохол"
+        },
+        "tourism/viewpoint": {
+            "name": "Точка с хубава гледка"
+        },
+        "landuse/construction": {
+            "name": "Строеж"
+        },
+        "highway/trunk_link": {
+            "name": "Връзка със скоростен път"
+        },
+        "highway/footway": {
+            "name": "Пешеходна алея"
+        },
+        "natural/coastline": {
+            "name": "Брегова линия"
+        },
+        "natural/glacier": {
+            "name": "Ледник"
+        },
+        "aeroway": {
+            "name": "Въздухоплаване"
+        }
+    }
+}

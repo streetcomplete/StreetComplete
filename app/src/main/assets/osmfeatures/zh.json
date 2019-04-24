@@ -1,0 +1,784 @@
+{
+    "presets": {
+        "route/ferry": {
+            "name": "渡轮航线"
+        },
+        "highway/steps": {
+            "name": "楼梯"
+        },
+        "historic/boundary_stone": {
+            "name": "界桩"
+        },
+        "leisure/park": {
+            "name": "公园"
+        },
+        "place/city": {
+            "name": "城市"
+        },
+        "amenity/fast_food": {
+            "name": "快餐"
+        },
+        "highway/primary": {
+            "name": "主要道路"
+        },
+        "type/route/pipeline": {
+            "name": "管道路线"
+        },
+        "building": {
+            "name": "建筑物"
+        },
+        "leisure/garden": {
+            "name": "花园"
+        },
+        "historic/memorial": {
+            "name": "纪念馆"
+        },
+        "barrier/cattle_grid": {
+            "name": "家畜栅栏"
+        },
+        "tourism/motel": {
+            "name": "汽车旅馆"
+        },
+        "barrier/lift_gate": {
+            "name": "电梯门"
+        },
+        "leisure/swimming_pool": {
+            "name": "游泳池"
+        },
+        "waterway/stream": {
+            "name": "溪流"
+        },
+        "railway": {
+            "name": "铁路"
+        },
+        "amenity/library": {
+            "name": "图书馆"
+        },
+        "shop/stationery": {
+            "name": "文化用品店"
+        },
+        "highway/secondary_link": {
+            "name": "次要道路匝道"
+        },
+        "aeroway/helipad": {
+            "name": "直升机场"
+        },
+        "leisure/slipway": {
+            "name": "船架滑道"
+        },
+        "highway/living_street": {
+            "name": "生活街道"
+        },
+        "power/sub_station": {
+            "name": "变电站"
+        },
+        "highway/motorway": {
+            "name": "高速公路"
+        },
+        "natural/bay": {
+            "name": "海湾"
+        },
+        "aeroway/runway": {
+            "name": "跑道"
+        },
+        "railway/monorail": {
+            "name": "单轨铁路"
+        },
+        "shop/supermarket": {
+            "name": "超级市场"
+        },
+        "shop/bicycle": {
+            "name": "自行车店"
+        },
+        "barrier/city_wall": {
+            "name": "城墙"
+        },
+        "tourism/guest_house": {
+            "name": "宾馆"
+        },
+        "shop/garden_centre": {
+            "name": "花店"
+        },
+        "barrier/hedge": {
+            "name": "树篱"
+        },
+        "boundary/administrative": {
+            "name": "行政区域界线"
+        },
+        "amenity": {
+            "name": "便利设施"
+        },
+        "shop/beauty": {
+            "name": "美容店"
+        },
+        "amenity/fuel": {
+            "name": "加油站"
+        },
+        "type/route/tram": {
+            "name": "电车路线"
+        },
+        "leisure/pitch/american_football": {
+            "name": "美式足球场"
+        },
+        "waterway/canal": {
+            "name": "运河"
+        },
+        "place/island": {
+            "name": "岛屿"
+        },
+        "shop/fishmonger": {
+            "name": "海产店"
+        },
+        "man_made/pier": {
+            "name": "码头"
+        },
+        "landuse/orchard": {
+            "name": "果园"
+        },
+        "shop/car": {
+            "name": "车行"
+        },
+        "highway/road": {
+            "name": "未知种类道路"
+        },
+        "address": {
+            "name": "地址"
+        },
+        "highway/primary_link": {
+            "name": "主要道路匝道"
+        },
+        "man_made/water_works": {
+            "name": "水务设施"
+        },
+        "shop/greengrocer": {
+            "name": "果蔬店"
+        },
+        "amenity/pub": {
+            "name": "酒馆"
+        },
+        "man_made/breakwater": {
+            "name": "防波堤"
+        },
+        "railway/abandoned": {
+            "name": "废弃的铁路"
+        },
+        "shop/shoes": {
+            "name": "鞋店"
+        },
+        "type/restriction": {
+            "name": "限制"
+        },
+        "type/route/road": {
+            "name": "道路路线"
+        },
+        "shop/hairdresser": {
+            "name": "理发点"
+        },
+        "shop/mall": {
+            "name": "商场"
+        },
+        "amenity/swimming_pool": {
+            "name": "游泳池"
+        },
+        "barrier/wall": {
+            "name": "墙"
+        },
+        "natural/beach": {
+            "name": "海滩"
+        },
+        "landuse/vineyard": {
+            "name": "酒庄"
+        },
+        "man_made/tower": {
+            "name": "塔"
+        },
+        "vertex": {
+            "name": "其他"
+        },
+        "shop/florist": {
+            "name": "花店"
+        },
+        "type/boundary": {
+            "name": "边界"
+        },
+        "type/route/ferry": {
+            "name": "渡轮航线"
+        },
+        "amenity/atm": {
+            "name": "自动柜员机（ATM）。"
+        },
+        "aeroway/taxiway": {
+            "name": "滑行道"
+        },
+        "place/locality": {
+            "name": "地点（无人定居）"
+        },
+        "amenity/courthouse": {
+            "name": "法院"
+        },
+        "tourism/hostel": {
+            "name": "招待所"
+        },
+        "leisure/pitch/volleyball": {
+            "name": "排球场"
+        },
+        "place/hamlet": {
+            "name": "村庄"
+        },
+        "type/route": {
+            "name": "路线"
+        },
+        "highway": {
+            "name": "公路"
+        },
+        "area": {
+            "name": "面"
+        },
+        "aeroway/hangar": {
+            "name": "机库"
+        },
+        "man_made/wastewater_plant": {
+            "name": "废水处理厂"
+        },
+        "amenity/theatre": {
+            "name": "剧院"
+        },
+        "man_made/lighthouse": {
+            "name": "灯塔"
+        },
+        "type/route/train": {
+            "name": "铁路路线"
+        },
+        "barrier/fence": {
+            "name": "篱笆"
+        },
+        "landuse/cemetery": {
+            "name": "墓地"
+        },
+        "railway/rail": {
+            "name": "铁轨"
+        },
+        "highway/motorway_link": {
+            "name": "高速公路匝道"
+        },
+        "natural/water/reservoir": {
+            "name": "水库"
+        },
+        "amenity/fountain": {
+            "name": "喷泉"
+        },
+        "place/isolated_dwelling": {
+            "name": "孤立的民房"
+        },
+        "railway/disused": {
+            "name": "废弃的铁路"
+        },
+        "shop/doityourself": {
+            "name": "DIY商店"
+        },
+        "landuse/quarry": {
+            "name": "矿场"
+        },
+        "landuse/basin": {
+            "name": "水池"
+        },
+        "amenity/grave_yard": {
+            "name": "墓地"
+        },
+        "historic/ruins": {
+            "name": "废墟"
+        },
+        "natural/scrub": {
+            "name": "灌木丛"
+        },
+        "man_made/water_tower": {
+            "name": "水塔"
+        },
+        "highway/secondary": {
+            "name": "次要道路"
+        },
+        "railway/subway_entrance": {
+            "name": "地铁口"
+        },
+        "man_made/cutline": {
+            "name": "山林分界线"
+        },
+        "shop": {
+            "name": "商店"
+        },
+        "natural/heath": {
+            "name": "荒野"
+        },
+        "tourism/caravan_site": {
+            "name": "房车营地"
+        },
+        "natural/spring": {
+            "name": "泉水"
+        },
+        "man_made/pipeline": {
+            "name": "管道"
+        },
+        "shop/furniture": {
+            "name": "家具店"
+        },
+        "leisure/pitch": {
+            "name": "运动场所"
+        },
+        "tourism/hotel": {
+            "name": "旅馆"
+        },
+        "shop/bakery": {
+            "name": "面包店"
+        },
+        "historic/monument": {
+            "name": "古迹"
+        },
+        "emergency/phone": {
+            "name": "紧急电话"
+        },
+        "amenity/bicycle_parking": {
+            "name": "自行车停放处"
+        },
+        "shop/deli": {
+            "name": "熟食店"
+        },
+        "type/route/bicycle": {
+            "name": "单车路线"
+        },
+        "waterway/ditch": {
+            "name": "沟渠"
+        },
+        "leisure/pitch/soccer": {
+            "name": "足球场"
+        },
+        "type/multipolygon": {
+            "name": "复线段多边形"
+        },
+        "highway/service/drive-through": {
+            "name": "驾驶通过以获取服务"
+        },
+        "shop/vacant": {
+            "name": "空置铺位"
+        },
+        "historic": {
+            "name": "历史遗迹"
+        },
+        "shop/electronics": {
+            "name": "电器店"
+        },
+        "waterway": {
+            "name": "航道"
+        },
+        "amenity/cinema": {
+            "name": "电影院"
+        },
+        "type/route/bus": {
+            "name": "公共汽车路线"
+        },
+        "natural/wood": {
+            "name": "树林"
+        },
+        "amenity/waste_basket": {
+            "name": "垃圾箱"
+        },
+        "leisure/playground": {
+            "name": "游乐场"
+        },
+        "amenity/telephone": {
+            "name": "电话"
+        },
+        "aeroway/apron": {
+            "name": "停机坪"
+        },
+        "leisure/stadium": {
+            "name": "体育场"
+        },
+        "shop/optician": {
+            "name": "眼镜店"
+        },
+        "highway/mini_roundabout": {
+            "name": "迷你环岛"
+        },
+        "type/route/foot": {
+            "name": "步行路线"
+        },
+        "barrier/block": {
+            "name": "障碍物"
+        },
+        "barrier/kissing_gate": {
+            "name": "单人转门"
+        },
+        "shop/hifi": {
+            "name": "音响店"
+        },
+        "amenity/townhall": {
+            "name": "市政府"
+        },
+        "relation": {
+            "name": "关系"
+        },
+        "highway/service/parking_aisle": {
+            "name": "停车场通道"
+        },
+        "natural/water": {
+            "name": "水"
+        },
+        "shop/mobile_phone": {
+            "name": "手机店"
+        },
+        "barrier/cycle_barrier": {
+            "name": "单车矮栏"
+        },
+        "shop/sports": {
+            "name": "体育用品店"
+        },
+        "place/town": {
+            "name": "城镇"
+        },
+        "power/line": {
+            "name": "电路线"
+        },
+        "power/pole": {
+            "name": "电线杆"
+        },
+        "highway/tertiary_link": {
+            "name": "三级道路匝道"
+        },
+        "tourism/information": {
+            "name": "资讯"
+        },
+        "natural": {
+            "name": "自然物件"
+        },
+        "amenity/post_box": {
+            "name": "邮箱"
+        },
+        "shop/laundry": {
+            "name": "洗衣店"
+        },
+        "natural/peak": {
+            "name": "山峰"
+        },
+        "highway/tertiary": {
+            "name": "三级道路"
+        },
+        "natural/water/lake": {
+            "name": "湖泊"
+        },
+        "shop/video": {
+            "name": "影像店"
+        },
+        "tourism/artwork": {
+            "name": "艺术品"
+        },
+        "amenity/bank": {
+            "name": "银行"
+        },
+        "railway/tram": {
+            "name": "电车"
+        },
+        "landuse/farmyard": {
+            "name": "农庄"
+        },
+        "highway/cycleway": {
+            "name": "自行车道"
+        },
+        "shop/hardware": {
+            "name": "五金店"
+        },
+        "shop/travel_agency": {
+            "name": "旅行社"
+        },
+        "tourism/zoo": {
+            "name": "动物园"
+        },
+        "shop/computer": {
+            "name": "电脑店"
+        },
+        "amenity/restaurant": {
+            "name": "餐馆"
+        },
+        "landuse/grass": {
+            "name": "草地"
+        },
+        "natural/grassland": {
+            "name": "草原"
+        },
+        "type/route/detour": {
+            "name": "绕道路线"
+        },
+        "amenity/police": {
+            "name": "警察局"
+        },
+        "highway/turning_circle": {
+            "name": "环岛"
+        },
+        "highway/service/driveway": {
+            "name": "车道"
+        },
+        "leisure/pitch/basketball": {
+            "name": "篮球场"
+        },
+        "tourism": {
+            "name": "旅游设施"
+        },
+        "amenity/car_wash": {
+            "name": "洗车"
+        },
+        "shop/clothes": {
+            "name": "服装店"
+        },
+        "shop/tyres": {
+            "name": "轮胎店"
+        },
+        "tourism/theme_park": {
+            "name": "主题公园"
+        },
+        "aeroway/aerodrome": {
+            "name": "机场"
+        },
+        "amenity/bicycle_rental": {
+            "name": "自行车租赁处"
+        },
+        "shop/gift": {
+            "name": "礼品店"
+        },
+        "waterway/riverbank": {
+            "name": "河堤"
+        },
+        "place": {
+            "name": "地点"
+        },
+        "power": {
+            "name": "电力设施"
+        },
+        "leisure": {
+            "name": "休闲场所"
+        },
+        "shop/music": {
+            "name": "音乐店"
+        },
+        "amenity/post_office": {
+            "name": "邮局"
+        },
+        "barrier/toll_booth": {
+            "name": "收费站"
+        },
+        "building/house": {
+            "name": "房屋"
+        },
+        "leisure/marina": {
+            "name": "码头"
+        },
+        "waterway/dam": {
+            "name": "水坝"
+        },
+        "amenity/bar": {
+            "name": "酒吧"
+        },
+        "barrier/gate": {
+            "name": "门"
+        },
+        "tourism/museum": {
+            "name": "博物馆"
+        },
+        "barrier/stile": {
+            "name": "梯磴"
+        },
+        "highway/bridleway": {
+            "name": "马道"
+        },
+        "shop/boutique": {
+            "name": "精品店"
+        },
+        "shop/motorcycle": {
+            "name": "摩托车行"
+        },
+        "shop/variety_store": {
+            "name": "杂货店"
+        },
+        "leisure/pitch/tennis": {
+            "name": "网球场"
+        },
+        "waterway/river": {
+            "name": "河流"
+        },
+        "highway/trunk": {
+            "name": "干线道路"
+        },
+        "railway/subway": {
+            "name": "地铁"
+        },
+        "shop/butcher": {
+            "name": "肉贩"
+        },
+        "barrier/bollard": {
+            "name": "短柱"
+        },
+        "office": {
+            "name": "办公室"
+        },
+        "tourism/picnic_site": {
+            "name": "郊游地点"
+        },
+        "leisure/golf_course": {
+            "name": "高尔夫球场"
+        },
+        "amenity/fire_station": {
+            "name": "消防站"
+        },
+        "barrier": {
+            "name": "屏障"
+        },
+        "barrier/entrance": {
+            "name": "入口"
+        },
+        "historic/castle": {
+            "name": "城堡"
+        },
+        "natural/water/pond": {
+            "name": "池塘"
+        },
+        "shop/car_repair": {
+            "name": "汽车修理店"
+        },
+        "highway/path": {
+            "name": "路径"
+        },
+        "historic/archaeological_site": {
+            "name": "考古遗址"
+        },
+        "shop/beverages": {
+            "name": "饮品店"
+        },
+        "amenity/bench": {
+            "name": "长凳"
+        },
+        "landuse/meadow": {
+            "name": "牧场"
+        },
+        "shop/convenience": {
+            "name": "便利店"
+        },
+        "amenity/marketplace": {
+            "name": "市场"
+        },
+        "power/tower": {
+            "name": "高压电塔"
+        },
+        "amenity/toilets": {
+            "name": "厕所"
+        },
+        "highway/service": {
+            "name": "辅助道路"
+        },
+        "waterway/drain": {
+            "name": "下水道"
+        },
+        "highway/residential": {
+            "name": "住宅区道路"
+        },
+        "amenity/place_of_worship": {
+            "name": "礼拜场所"
+        },
+        "historic/wayside_shrine": {
+            "name": "路边神社"
+        },
+        "barrier/retaining_wall": {
+            "name": "挡土墙"
+        },
+        "highway/traffic_signals": {
+            "name": "红绿灯"
+        },
+        "amenity/embassy": {
+            "name": "使馆"
+        },
+        "shop/toys": {
+            "name": "玩具店"
+        },
+        "place/village": {
+            "name": "村庄"
+        },
+        "line": {
+            "name": "线"
+        },
+        "amenity/cafe": {
+            "name": "咖啡"
+        },
+        "point": {
+            "name": "点"
+        },
+        "highway/service/emergency_access": {
+            "name": "紧急通道"
+        },
+        "waterway/weir": {
+            "name": "堤坝"
+        },
+        "power/transformer": {
+            "name": "变电所"
+        },
+        "shop/pet": {
+            "name": "宠物店"
+        },
+        "natural/wetland": {
+            "name": "湿地"
+        },
+        "man_made/survey_point": {
+            "name": "测量点"
+        },
+        "natural/tree": {
+            "name": "树"
+        },
+        "type/route/power": {
+            "name": "供电路线"
+        },
+        "tourism/attraction": {
+            "name": "旅游景点"
+        },
+        "highway/service/alley": {
+            "name": "胡同"
+        },
+        "shop/department_store": {
+            "name": "百货店"
+        },
+        "historic/wayside_cross": {
+            "name": "路边十字架"
+        },
+        "man_made": {
+            "name": "人造物"
+        },
+        "shop/car_parts": {
+            "name": "汽车配件店"
+        },
+        "tourism/alpine_hut": {
+            "name": "高山小屋"
+        },
+        "natural/cliff": {
+            "name": "悬崖"
+        },
+        "shop/alcohol": {
+            "name": "酒品店"
+        },
+        "tourism/viewpoint": {
+            "name": "景点"
+        },
+        "landuse/construction": {
+            "name": "建筑物"
+        },
+        "highway/trunk_link": {
+            "name": "干线道路匝道"
+        },
+        "highway/footway": {
+            "name": "步行径"
+        },
+        "natural/coastline": {
+            "name": "海岸线"
+        },
+        "natural/glacier": {
+            "name": "冰川"
+        },
+        "aeroway": {
+            "name": "机场相关道路"
+        }
+    }
+}

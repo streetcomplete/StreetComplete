@@ -1,0 +1,2278 @@
+{
+    "presets": {
+        "shop/caravan": {
+            "name": "Haagissuvilate/autoelamute müügiplats",
+            "terms": "matkaauto,karavan,autoelamu,ratastel maja, autokaravan,haagiselamu"
+        },
+        "amenity/car_rental": {
+            "name": "Autorent"
+        },
+        "place/city": {
+            "name": "Linn"
+        },
+        "building": {
+            "name": "Hoone",
+            "terms": "ehitis"
+        },
+        "craft/dressmaker": {
+            "name": "Rätsep",
+            "terms": "õmbleja"
+        },
+        "barrier/lift_gate": {
+            "name": "Tõkkepuu"
+        },
+        "shop/agrarian": {
+            "name": "Põllumajandustarvete kauplus",
+            "terms": "aiatarbed,talupidamistarbed,põllumasinad,seemned,masinad"
+        },
+        "landuse/garages": {
+            "name": "Maakasutus garaažidele",
+            "terms": "garaažid"
+        },
+        "building/farm": {
+            "name": "Talumaja",
+            "terms": "talumaja,elumaja,elamu,maja,rehi*"
+        },
+        "shop/hunting": {
+            "name": "Jahipood"
+        },
+        "amenity/waste_disposal": {
+            "name": "Prügikonteiner",
+            "terms": "konteiner"
+        },
+        "type/restriction/only_right_turn": {
+            "name": "Ainult parempööre"
+        },
+        "craft/sawmill": {
+            "name": "Saekaater"
+        },
+        "circular": {
+            "name": "Liiklusring"
+        },
+        "healthcare/audiologist": {
+            "name": "Audioloog"
+        },
+        "highway/motorway": {
+            "name": "Kiirtee",
+            "terms": "Eraldatud sõiduradadega tee"
+        },
+        "natural/bay": {
+            "name": "Laht"
+        },
+        "building/bungalow": {
+            "name": "Bangalo",
+            "terms": "bungalo"
+        },
+        "building/terrace": {
+            "name": "Terrassmaja"
+        },
+        "aeroway/runway": {
+            "name": "Lennurada"
+        },
+        "amenity/studio": {
+            "name": "Stuudio",
+            "terms": "TV,raadiomaja,telemaja,lindistus,helistuudio"
+        },
+        "landuse/military": {
+            "name": "Militaarala",
+            "terms": "Sõjaväeala, sõjaväepiirkond"
+        },
+        "shop/seafood": {
+            "name": "Kalapood",
+            "terms": "mereannid"
+        },
+        "waterway/sanitary_dump_station": {
+            "name": "Septitangi tühjenduspunkt",
+            "terms": "wc tühjendus,tühjendus,sanitaar,paadi,laeva"
+        },
+        "barrier/city_wall": {
+            "name": "Linnamüür"
+        },
+        "boundary/administrative": {
+            "name": "Halduspiir"
+        },
+        "building/ruins": {
+            "name": "Hoone varemed",
+            "terms": "varemed,purunenud,maha jäetud"
+        },
+        "leisure/pitch/american_football": {
+            "name": "Ameerika jalgpalliväljak"
+        },
+        "traffic_calming/bump": {
+            "name": "Kiirusepiiraja",
+            "terms": "künnis,lamav politseinik,kiirustõke,tõke,liikluskünnis"
+        },
+        "craft/carpenter": {
+            "name": "Tisler",
+            "terms": "Puusepp, puussepp"
+        },
+        "railway/level_crossing": {
+            "name": "Raudtee-ülesõidukoht",
+            "terms": "ülesõit,ristumine,rongi"
+        },
+        "attraction/amusement_ride": {
+            "name": "Lõbuatraktsioon"
+        },
+        "place/suburb": {
+            "name": "Eeslinn",
+            "terms": "Äärelinn"
+        },
+        "man_made/pier": {
+            "name": "Kai"
+        },
+        "shop/farm": {
+            "name": "Talukaup",
+            "terms": "Talusaadused,farmikaup,põllusaadused,aiasaadused"
+        },
+        "waterway/stream_intermittent": {
+            "name": "Ajutine oja",
+            "terms": "perioodiline"
+        },
+        "highway/road": {
+            "name": "Teadmata tee",
+            "terms": "tee,väike tee"
+        },
+        "address": {
+            "name": "Aadress"
+        },
+        "highway/primary_link": {
+            "name": "Põhimaantee ühenduslõik"
+        },
+        "shop/greengrocer": {
+            "name": "Aedviljapood",
+            "terms": "puuviljad,aedviljad,talukaup,juurviljad"
+        },
+        "highway/traffic_mirror": {
+            "name": "Liikluspeegel"
+        },
+        "office/company": {
+            "name": "Ettevõtte kontor",
+            "terms": "kontor,firma,korporatiiv"
+        },
+        "shop/dairy": {
+            "name": "Piimapood",
+            "terms": "Meierei kauplus, piimatoodete kauplus"
+        },
+        "type/route/road": {
+            "name": "Teemarsruut"
+        },
+        "amenity/planetarium": {
+            "name": "Planetaarium"
+        },
+        "highway/track": {
+            "name": "Mittehooldatav tee",
+            "terms": "metsatee,rada,põlluvahetee,põllutee,metsasiht,tee,eratee,kinni kasvanud tee,maastikutee,atv,traktor,4x4,offroad,kehv tee,kitsas tee,siht,juurdepääsutee"
+        },
+        "shop/wine": {
+            "name": "Veinipood"
+        },
+        "shop/hairdresser": {
+            "name": "Juuksurisalong"
+        },
+        "building/school": {
+            "name": "Koolihoone",
+            "terms": "õppehoone,algkool,keskkool"
+        },
+        "tourism/information/board": {
+            "name": "Infotahvel",
+            "terms": "informatsioonitahvel,infopost"
+        },
+        "shop/furnace": {
+            "name": "Küttepood"
+        },
+        "landuse/industrial": {
+            "name": "Tööstuspiirkond",
+            "terms": "Tööstusala"
+        },
+        "type/route/hiking": {
+            "name": "Matkamarsruut"
+        },
+        "amenity/place_of_worship/christian": {
+            "name": "Kristlik kirik",
+            "terms": "kirik,katedraal,püha,luteri,kabel,pühamu"
+        },
+        "tourism/hostel": {
+            "name": "Hostel"
+        },
+        "leisure/pitch/volleyball": {
+            "name": "Võrkpalliväljak"
+        },
+        "amenity/veterinary": {
+            "name": "Loomaarst",
+            "terms": "Loomakliinik"
+        },
+        "leisure/amusement_arcade": {
+            "name": "Videomängumasin",
+            "terms": "telekamäng,mängukonsool"
+        },
+        "craft/pottery": {
+            "name": "Pottsepp"
+        },
+        "craft/roofer": {
+            "name": "Katuseehitaja"
+        },
+        "shop/massage": {
+            "name": "Massaaž",
+            "terms": "massaaz"
+        },
+        "area": {
+            "name": "Ala"
+        },
+        "landuse/landfill": {
+            "name": "Prügila",
+            "terms": "Prügimägi"
+        },
+        "allotments/plot": {
+            "name": "Ühisaia krunt"
+        },
+        "tourism/aquarium": {
+            "name": "Akvaarium"
+        },
+        "type/site": {
+            "name": "Asukoht"
+        },
+        "amenity/fountain": {
+            "name": "Purskkaev"
+        },
+        "shop/doityourself": {
+            "name": "Ehituskauplus",
+            "terms": "Ehituskaubad, santehnika, ehitustarvikud, ehituspood"
+        },
+        "amenity/taxi": {
+            "name": "Taksopeatus"
+        },
+        "amenity/smoking_area": {
+            "name": "Suitsetamise koht"
+        },
+        "man_made/water_tower": {
+            "name": "Veetorn"
+        },
+        "shop/dry_cleaning": {
+            "name": "Keemiline puhastus"
+        },
+        "tourism/caravan_site": {
+            "name": "Karavanipark",
+            "terms": "autoelamu,haagissuvila,kämpimisala"
+        },
+        "craft/clockmaker": {
+            "name": "Kellassepp"
+        },
+        "shop/furniture": {
+            "name": "Mööblipood"
+        },
+        "advertising/billboard": {
+            "name": "Reklaamtahvel"
+        },
+        "shop/bakery": {
+            "name": "Pagariäri"
+        },
+        "emergency/phone": {
+            "name": "Hädaabi telefon"
+        },
+        "shop/houseware": {
+            "name": "Kodutarvete kauplus",
+            "terms": "köögitabed,majapidamistarbed"
+        },
+        "leisure/pitch/soccer": {
+            "name": "Jalgpalliväljak"
+        },
+        "shop/vacant": {
+            "name": "Vaba kaubanduspind"
+        },
+        "amenity/social_facility/homeless_shelter": {
+            "name": "Kodutute varjupaik",
+            "terms": "Kodutute öömaja,varjupaik"
+        },
+        "highway/turning_loop": {
+            "name": "Ümberpöördering (saarega)",
+            "terms": "ümberpöörd,pöördering"
+        },
+        "leisure/miniature_golf": {
+            "name": "Minatuurgolf",
+            "terms": "Minigolf"
+        },
+        "amenity/hospital": {
+            "name": "Haigla territoorium",
+            "terms": "Haigla"
+        },
+        "amenity/telephone": {
+            "name": "Taksofon",
+            "terms": "Telefon, telefoniautomaat"
+        },
+        "building/dormitory": {
+            "name": "Ühiselamu"
+        },
+        "craft/blacksmith": {
+            "name": "Sepikoda"
+        },
+        "landuse/residential": {
+            "name": "Elamuala",
+            "terms": "Elurajoon, elamurajoon"
+        },
+        "leisure/stadium": {
+            "name": "Staadion"
+        },
+        "highway/speed_camera": {
+            "name": "Kiiruskaamera"
+        },
+        "amenity/drinking_water": {
+            "name": "Joogivesi"
+        },
+        "barrier/kissing_gate": {
+            "name": "Karjavärav"
+        },
+        "landuse/recreation_ground": {
+            "name": "Mänguala",
+            "terms": "puhkeala"
+        },
+        "type/restriction/no_u_turn": {
+            "name": "Tagasipöörd keelatud"
+        },
+        "amenity/townhall": {
+            "name": "Linnahall",
+            "terms": "raehall,raehoone"
+        },
+        "natural/water": {
+            "name": "Vesi"
+        },
+        "barrier/cycle_barrier": {
+            "name": "Jalgratta barjäär"
+        },
+        "embankment": {
+            "name": "Teetamm"
+        },
+        "shop/sports": {
+            "name": "Sporditarvete pood",
+            "terms": "spordipood"
+        },
+        "craft/winery": {
+            "name": "Veinitehas"
+        },
+        "shop/laundry": {
+            "name": "Pesumaja"
+        },
+        "amenity/grit_bin": {
+            "name": "Libedustõrje kast"
+        },
+        "amenity/bank": {
+            "name": "Pank"
+        },
+        "amenity/prison": {
+            "name": "Vangla",
+            "terms": "Arestimaja"
+        },
+        "amenity/police": {
+            "name": "Politsei"
+        },
+        "place/farm": {
+            "name": "farm"
+        },
+        "highway/service/driveway": {
+            "name": "Sissesõidutee"
+        },
+        "leisure/pitch/basketball": {
+            "name": "Korvpalliväljak"
+        },
+        "shop/newsagent": {
+            "name": "Ajakirjapood",
+            "terms": "ajalehemüüja"
+        },
+        "building/residential": {
+            "name": "Elamu",
+            "terms": "Eramu"
+        },
+        "healthcare": {
+            "name": "Tervishoiukeskus",
+            "terms": "kliinik,arst,haigla,heaolu,taastusravi,ravi"
+        },
+        "amenity/community_centre": {
+            "name": "Kogukonna keskus",
+            "terms": "keskus,üritused,hall,rahvamaja,kultuurikeskus,külakeskus,spordikeskus,külamaja"
+        },
+        "shop/tyres": {
+            "name": "Rehvipood",
+            "terms": "rehvid,kummid,autorehvid"
+        },
+        "traffic_calming/island": {
+            "name": "Eraldussaarega kitsendus",
+            "terms": "kitsendus,liikluskitsendus,aeglustus,saar,ohutussaar,kitsendussaar"
+        },
+        "shop/window_blind": {
+            "name": "Aknakatete kauplus",
+            "terms": "rulood,ribikardinad,lamellkardinad"
+        },
+        "building/temple": {
+            "name": "Templihoone",
+            "terms": "tempel"
+        },
+        "landuse/military/barracks": {
+            "name": "Kasarmu"
+        },
+        "amenity/casino": {
+            "name": "Kasiino"
+        },
+        "amenity/coworking_space": {
+            "name": "Ühiskasutatavad tööruumid"
+        },
+        "tourism/museum": {
+            "name": "Muuseum"
+        },
+        "railway/narrow_gauge": {
+            "name": "Kitsarööpaline raudtee"
+        },
+        "shop/curtain": {
+            "name": "Kardinakauplus"
+        },
+        "healthcare/hospice": {
+            "name": "Hooldekodu",
+            "terms": "hospiits"
+        },
+        "leisure/pitch/tennis": {
+            "name": "Tenniseväljak"
+        },
+        "amenity/clinic/abortion": {
+            "name": "Abordikliinik"
+        },
+        "craft/watchmaker": {
+            "name": "Kellassepp"
+        },
+        "highway/corridor": {
+            "name": "Sisekoridor",
+            "terms": "koridor"
+        },
+        "attraction/animal": {
+            "name": "Loom"
+        },
+        "craft/bookbinder": {
+            "name": "Raamatuköitja"
+        },
+        "shop/pawnbroker": {
+            "name": "Pandimaja",
+            "terms": "lombard"
+        },
+        "shop/beverages": {
+            "name": "Joogikauplus",
+            "terms": "karastusjoogid"
+        },
+        "entrance": {
+            "name": "Sisse- ja Väljapääs"
+        },
+        "amenity/place_of_worship/jewish": {
+            "name": "Juudi sünagoog",
+            "terms": "sünagoog,juudi,juut,judaism"
+        },
+        "highway/construction": {
+            "name": "Suletud tee",
+            "terms": "teesulg,teeehitus"
+        },
+        "power/tower": {
+            "name": "Kõrgepingetorn"
+        },
+        "landuse/military/airfield": {
+            "name": "Sõjaväe lennuväli"
+        },
+        "craft/boatbuilder": {
+            "name": "Paadiehitaja"
+        },
+        "craft/shoemaker": {
+            "name": "Kingsepp"
+        },
+        "shop/interior_decoration": {
+            "name": "Sisedekoratsioonikauplus",
+            "terms": "dekoratsioonid,kaunistus"
+        },
+        "man_made/crane": {
+            "name": "Kraana"
+        },
+        "leisure/pitch/table_tennis": {
+            "name": "Lauatennise laud",
+            "terms": "ping pongi laud, pinksi laud"
+        },
+        "amenity/social_facility/food_bank": {
+            "name": "Toidupank"
+        },
+        "shop/nutrition_supplements": {
+            "name": "Toidulisandite kauplus"
+        },
+        "craft/gardener": {
+            "name": "Aednik"
+        },
+        "building/church": {
+            "name": "Kirikuhoone"
+        },
+        "shop/video_games": {
+            "name": "Konsoolimängude pood",
+            "terms": "telekamängud,telerimängud,mängud"
+        },
+        "traffic_calming/dip": {
+            "name": "Ümberpööratud liikluskünnis",
+            "terms": "ümberpööratud künnis,künnis,lohk"
+        },
+        "traffic_calming/choker": {
+            "name": "Teekitsendus",
+            "terms": "sümmeetriline teekitsendus,kitsendus,sümmeetriline kitsendus,aeglustus"
+        },
+        "railway/funicular": {
+            "name": "Köisraudtee"
+        },
+        "power/transformer": {
+            "name": "Trafo",
+            "terms": "Transformaator"
+        },
+        "power/generator": {
+            "name": "Elektrigeneraator",
+            "terms": "generaator"
+        },
+        "natural/wetland": {
+            "name": "Märgala",
+            "terms": "roostik"
+        },
+        "landuse/military/naval_base": {
+            "name": "Mereväebaas"
+        },
+        "shop/department_store": {
+            "name": "Kaubamaja",
+            "terms": "kauplus, pood"
+        },
+        "historic/wayside_cross": {
+            "name": "Teeäärne rist"
+        },
+        "man_made/petroleum_well": {
+            "name": "Nafta puurkaev"
+        },
+        "healthcare/alternative": {
+            "name": "Alternatiivmeditsiin"
+        },
+        "highway/footway": {
+            "name": "Jalgtee",
+            "terms": "kõnnitee"
+        },
+        "building/roof": {
+            "name": "Katus"
+        },
+        "craft/upholsterer": {
+            "name": "Polsterdaja",
+            "terms": "drapeerija"
+        },
+        "natural/glacier": {
+            "name": "Liustik"
+        },
+        "shop/fashion": {
+            "name": "Moekauplus",
+            "terms": "Butiik, moepood, rõivakauplus"
+        },
+        "power/substation": {
+            "name": "Alajaam"
+        },
+        "amenity/fast_food": {
+            "name": "Kiirtoitlustus"
+        },
+        "type/route/pipeline": {
+            "name": "Torujuhtme marsruut"
+        },
+        "barrier/cattle_grid": {
+            "name": "Karjatara",
+            "terms": "tara,karjus,elektrikarjus,looma"
+        },
+        "tourism/motel": {
+            "name": "Motell",
+            "terms": "motohotell"
+        },
+        "building/cathedral": {
+            "name": "Katedraalihoone"
+        },
+        "natural/reef": {
+            "name": "Kari",
+            "terms": "riff,korall"
+        },
+        "craft/photographic_laboratory": {
+            "name": "Fotolabor",
+            "terms": "pildiilmutus,ilmutus,ilmutamine,fotod"
+        },
+        "leisure/slipway": {
+            "name": "Slipp",
+            "terms": "Slipp, väikesadam"
+        },
+        "leisure/dance": {
+            "name": "Tantsusaal",
+            "terms": "tantsuhall"
+        },
+        "traffic_calming/hump": {
+            "name": "Liikluskünnis",
+            "terms": "künnis,kiirustõke,tõke,aeglustaja,platvorm,kõrgendus,kühm"
+        },
+        "man_made/clearcut": {
+            "name": "Raiesmik",
+            "terms": "lageraie,raiestik,kännustik"
+        },
+        "building/chapel": {
+            "name": "Kabelihoone"
+        },
+        "craft/caterer": {
+            "name": "Toitlustaja"
+        },
+        "office/travel_agent": {
+            "name": "Reisibüroo"
+        },
+        "craft/jeweler": {
+            "name": "Kullassepp"
+        },
+        "landuse/industrial/slaughterhouse": {
+            "name": "Tapamaja"
+        },
+        "shop/bag": {
+            "name": "Kotipood",
+            "terms": "Käekoti pood"
+        },
+        "historic/tomb": {
+            "name": "Hauakamber",
+            "terms": "haud, kabel"
+        },
+        "waterway/water_point": {
+            "name": "Joogiveepunkt (veesõidukitele)",
+            "terms": "vesi,vee"
+        },
+        "shop/garden_centre": {
+            "name": "Aianduskeskus",
+            "terms": "Aianduskauplus"
+        },
+        "leisure/sports_centre/swimming": {
+            "name": "Ujula"
+        },
+        "barrier/hedge": {
+            "name": "Hekk"
+        },
+        "shop/kitchen": {
+            "name": "Köögimööblikauplus",
+            "terms": "köögimööblistuudio,köögistuudio"
+        },
+        "building/garages": {
+            "name": "Garaažid",
+            "terms": "Garaazid"
+        },
+        "shop/beauty": {
+            "name": "Ilusalong"
+        },
+        "amenity/charging_station": {
+            "name": "Laadimisjaam",
+            "terms": "kiirlaadimisjaam,elektriauto,chademo,ccs,mennekes"
+        },
+        "man_made/antenna": {
+            "name": "Antenn",
+            "terms": "raadio,saatja,mast,side,televisiooni,edastus,levi,signaal"
+        },
+        "waterway/canal": {
+            "name": "Kanal"
+        },
+        "type/route/horse": {
+            "name": "Ratsamarsruut"
+        },
+        "landuse/farmland": {
+            "name": "Põllumaa",
+            "terms": "põllumajandusmaa, maatulundusmaa"
+        },
+        "shop/baby_goods": {
+            "name": "Beebipood",
+            "terms": "Lastepood, tita pood,"
+        },
+        "shop/fishmonger": {
+            "name": "Kalakauplus"
+        },
+        "man_made/storage_tank": {
+            "name": "Mahuti"
+        },
+        "man_made/chimney": {
+            "name": "Korsten"
+        },
+        "shop/mall": {
+            "name": "Kaubanduskeskus",
+            "terms": "kauplus,pood,shoppamine,poekompleks"
+        },
+        "barrier/wall": {
+            "name": "Müür",
+            "terms": "Sein,vall"
+        },
+        "craft/insulator": {
+            "name": "Soojustaja",
+            "terms": "isoleerija,isolatsioon"
+        },
+        "shop/herbalist": {
+            "name": "Ravimtaimekauplus",
+            "terms": "ravitaimed"
+        },
+        "landuse/vineyard": {
+            "name": "Viinapuuaed"
+        },
+        "traffic_calming/rumble_strip": {
+            "name": "Täristi",
+            "terms": "põristi,põrin,tärin,värin,väristaja,müra,triibud,risti jooned,jooned"
+        },
+        "healthcare/midwife": {
+            "name": "Ämmaemand"
+        },
+        "aeroway/hangar": {
+            "name": "Angaar"
+        },
+        "building/retail": {
+            "name": "Kaubandushoone",
+            "terms": "Kaubandus"
+        },
+        "highway/motorway_link": {
+            "name": "Kiirtee ühenduslõik"
+        },
+        "shop/bed": {
+            "name": "Magamistoa kauba pood",
+            "terms": "Voodipood, madratsipood, padjapood, mööblipood"
+        },
+        "natural/scrub": {
+            "name": "Võsa"
+        },
+        "craft/photographer": {
+            "name": "Fotograaf",
+            "terms": "pildistaja"
+        },
+        "shop": {
+            "name": "Pood",
+            "terms": "kauplus"
+        },
+        "attraction/big_wheel": {
+            "name": "Vaateratas"
+        },
+        "natural/spring": {
+            "name": "Allikas",
+            "terms": "veeallikas,joogivesi,vesi"
+        },
+        "man_made/pipeline": {
+            "name": "Torujuhe"
+        },
+        "man_made/observatory": {
+            "name": "Observatoorium"
+        },
+        "healthcare/alternative/chiropractic": {
+            "name": "Kiropraktik"
+        },
+        "amenity/childcare": {
+            "name": "Lastehoid",
+            "terms": "päevahoid"
+        },
+        "shop/deli": {
+            "name": "Delikatessikauplus",
+            "terms": "Deli, delikaadid, hõrgutised"
+        },
+        "leisure/pitch/equestrian": {
+            "name": "Ratsaspordirada"
+        },
+        "shop/perfumery": {
+            "name": "Parfüümikauplus",
+            "terms": "lõhnaõli"
+        },
+        "highway/service/drive-through": {
+            "name": "Sõida läbi",
+            "terms": "läbisõit,osta kaasa,drive-through,kaasa müük"
+        },
+        "landuse/military/danger_area": {
+            "name": "Militaarohu ala"
+        },
+        "shop/confectionery": {
+            "name": "Kommipood"
+        },
+        "tourism/information/guidepost": {
+            "name": "Teeviit",
+            "terms": "suunaviit,viit,kohaviit"
+        },
+        "shop/electronics": {
+            "name": "Elektroonikapood",
+            "terms": "Arvutipood, köögitehnika, tehnika kauplus, tehnika pood"
+        },
+        "waterway": {
+            "name": "Veetee"
+        },
+        "amenity/clinic": {
+            "name": "Kliinik"
+        },
+        "amenity/place_of_worship/buddhist": {
+            "name": "Budistlik tempel",
+            "terms": "Budistlik pühakoda"
+        },
+        "natural/bare_rock": {
+            "name": "Paljand",
+            "terms": "Kivi paljand"
+        },
+        "amenity/crematorium": {
+            "name": "Krematoorium"
+        },
+        "building/farm_auxiliary": {
+            "name": "Taluhoone",
+            "terms": "hoone,ait,abihoone,laut,küün"
+        },
+        "amenity/waste_basket": {
+            "name": "Prügikast"
+        },
+        "building/construction": {
+            "name": "Ehitusjärgus hoone"
+        },
+        "highway/unclassified": {
+            "name": "Vähetähtis/klassifitseerimata tee",
+            "terms": "klassifitseerimata tee,väike tee,kitsas tee,kohalik tee"
+        },
+        "amenity/social_facility": {
+            "name": "Sotsiaalkeskus",
+            "terms": "Sotsiaalamet"
+        },
+        "shop/hifi": {
+            "name": "Hifi kauplus",
+            "terms": "hi-fi,high fidelity,loomutruu,helitehnika"
+        },
+        "craft/window_construction": {
+            "name": "Aknameister",
+            "terms": "uksemeister"
+        },
+        "craft/tinsmith": {
+            "name": "Plekksepp"
+        },
+        "shop/mobile_phone": {
+            "name": "Mobiilipood",
+            "terms": "mobiiltelefonid,nutitelefonid,telefonid"
+        },
+        "craft/basket_maker": {
+            "name": "Korvimeister"
+        },
+        "place/town": {
+            "name": "Linn"
+        },
+        "highway/tertiary_link": {
+            "name": "Kohaliku maantee ühendustee"
+        },
+        "tourism/information": {
+            "name": "Info",
+            "terms": "informatsioon"
+        },
+        "natural/water/lake": {
+            "name": "Järv"
+        },
+        "shop/video": {
+            "name": "Videopood",
+            "terms": "videolaenutus"
+        },
+        "building/warehouse": {
+            "name": "Laohoone"
+        },
+        "railway/tram": {
+            "name": "Tramm"
+        },
+        "power/minor_line": {
+            "name": "Elektriliin",
+            "terms": "õhuliin"
+        },
+        "amenity/social_facility/nursing_home": {
+            "name": "Hooldekodu"
+        },
+        "landuse/farmyard": {
+            "name": "Taluõu",
+            "terms": "taluhoov"
+        },
+        "man_made/works": {
+            "name": "Tehas",
+            "terms": "Vabrik"
+        },
+        "craft/plumber": {
+            "name": "Santehnik",
+            "terms": "Toruabi"
+        },
+        "highway/cycleway": {
+            "name": "Rattatee"
+        },
+        "shop/hardware": {
+            "name": "Rauakauplus",
+            "terms": "tööriistad,kinnitusvahendid"
+        },
+        "amenity/car_sharing": {
+            "name": "Auto lühirent",
+            "terms": "Autojagamispunkt"
+        },
+        "shop/funeral_directors": {
+            "name": "Matusebüroo",
+            "terms": "kirstud, puusärgid, matused"
+        },
+        "tourism/zoo": {
+            "name": "Loomaaed"
+        },
+        "shop/computer": {
+            "name": "Arvutipood",
+            "terms": "IT kauplus, arvutitarvikud"
+        },
+        "landuse/grass": {
+            "name": "Muru"
+        },
+        "natural/grassland": {
+            "name": "Rohumaa"
+        },
+        "highway/stop": {
+            "name": "Stoppmärk"
+        },
+        "tourism": {
+            "name": "Turism"
+        },
+        "amenity/car_wash": {
+            "name": "Autopesula",
+            "terms": "pesula"
+        },
+        "highway/street_lamp": {
+            "name": "Tänavavalgusti"
+        },
+        "tourism/theme_park": {
+            "name": "Lõbustuspark",
+            "terms": "teemapark,seikluskeskus,perepark,seikluspark"
+        },
+        "shop/watches": {
+            "name": "Kellapood"
+        },
+        "amenity/parking_entrance": {
+            "name": "Parkimismaja sisse/väljapääs"
+        },
+        "landuse": {
+            "name": "Maakasutus"
+        },
+        "waterway/riverbank": {
+            "name": "Jõekallas"
+        },
+        "shop/music": {
+            "name": "Muusikapood"
+        },
+        "barrier/toll_booth": {
+            "name": "Teemaksuputka"
+        },
+        "craft/stonemason": {
+            "name": "Kiviraidur"
+        },
+        "amenity/nightclub": {
+            "name": "Ööklubi"
+        },
+        "waterway/dam": {
+            "name": "Pais"
+        },
+        "amenity/school": {
+            "name": "Kool",
+            "terms": "Koolimaja"
+        },
+        "shop/photo": {
+            "name": "Fotograafiapood",
+            "terms": "fotopood,fototarbed,pildid,fotod,ilmutus"
+        },
+        "building/static_caravan": {
+            "name": "Paikne haagismaja",
+            "terms": "Haagiselamu,haagismaja,teisaldatav maja"
+        },
+        "leisure/pitch/skateboard": {
+            "name": "Rulapark",
+            "terms": "Skate park"
+        },
+        "highway/bridleway": {
+            "name": "Ratsutamisrada"
+        },
+        "shop/variety_store": {
+            "name": "Kodukauba pood",
+            "terms": "majapidamiskaup"
+        },
+        "amenity/doctors": {
+            "name": "Arst",
+            "terms": "doktor"
+        },
+        "barrier/ditch": {
+            "name": "Kraav"
+        },
+        "landuse/churchyard": {
+            "name": "Kirikuaed"
+        },
+        "amenity/shelter": {
+            "name": "Varjualune",
+            "terms": "ulualune,räästaalune,peavari"
+        },
+        "tourism/picnic_site": {
+            "name": "Piknikukoht",
+            "terms": "einestuskoht,söögikoht"
+        },
+        "highway/rest_area": {
+            "name": "Puhkeala"
+        },
+        "craft/electrician": {
+            "name": "Elektrik"
+        },
+        "historic/archaeological_site": {
+            "name": "Arheoloogiline koht"
+        },
+        "amenity/driving_school": {
+            "name": "Sõidukool",
+            "terms": "autokool,motokool,mootorratta,sõiduauto,veoauto,bussikool"
+        },
+        "building/barn": {
+            "name": "Küün",
+            "terms": "Tall, laut"
+        },
+        "amenity/bench": {
+            "name": "Pink"
+        },
+        "craft/beekeeper": {
+            "name": "Mesinik"
+        },
+        "amenity/toilets": {
+            "name": "Tualett",
+            "terms": "WC,kemmerg,peldik"
+        },
+        "shop/hearing_aids": {
+            "name": "Kuulmisabipood"
+        },
+        "shop/water": {
+            "name": "Joogivee pood"
+        },
+        "amenity/place_of_worship": {
+            "name": "Pühakoda",
+            "terms": "Pühapaik, palvekoht"
+        },
+        "barrier/retaining_wall": {
+            "name": "Tugisein",
+            "terms": "Kaitsemüür"
+        },
+        "highway/traffic_signals": {
+            "name": "Valgusfoorid",
+            "terms": "Foorid,signaaltuled"
+        },
+        "amenity/embassy": {
+            "name": "Saatkond",
+            "terms": "suursaatkond"
+        },
+        "place/islet": {
+            "name": "Laid",
+            "terms": "saareke,rahu,kari"
+        },
+        "type/restriction/no_left_turn": {
+            "name": "Vasakpöörd keelatud"
+        },
+        "leisure/ice_rink": {
+            "name": "Uisuväljak"
+        },
+        "healthcare/blood_donation": {
+            "name": "Verekeskus",
+            "terms": "veretalitus, vereteenistus, doonor"
+        },
+        "place/village": {
+            "name": "Küla"
+        },
+        "shop/water_sports": {
+            "name": "Veesporditarvete kauplus",
+            "terms": "ujumistarbed"
+        },
+        "shop/lottery": {
+            "name": "Lotopood",
+            "terms": "loterii"
+        },
+        "leisure/dog_park": {
+            "name": "Koerapark"
+        },
+        "natural/cave_entrance": {
+            "name": "Koopa sissepääs",
+            "terms": "Koobas,sissepääs,auk,õõs"
+        },
+        "point": {
+            "name": "Punkt",
+            "terms": "sõlm"
+        },
+        "shop/cheese": {
+            "name": "Juustupood"
+        },
+        "amenity/boat_rental": {
+            "name": "Paadi laenutus"
+        },
+        "building/cabin": {
+            "name": "Tare",
+            "terms": "Majake, onn, metsamajake"
+        },
+        "craft/sailmaker": {
+            "name": "Purjemeister"
+        },
+        "craft/glaziery": {
+            "name": "Klaasissepp",
+            "terms": "klaasimesiter"
+        },
+        "highway/motorway_junction": {
+            "name": "Kiirtee mahasõit"
+        },
+        "natural/tree": {
+            "name": "Puu"
+        },
+        "amenity/register_office": {
+            "name": "Perekonnaseisu osakond"
+        },
+        "shop/car_parts": {
+            "name": "Autoosade pood"
+        },
+        "building/apartments": {
+            "name": "Kortermaja"
+        },
+        "highway/trunk_link": {
+            "name": "E-tähistusega põhimaantee ühendustee"
+        },
+        "shop/bookmaker": {
+            "name": "Trükkal",
+            "terms": "Köitmiskoda, trükikoda, raamatutrükikoda, köitja"
+        },
+        "leisure/fitness_centre/yoga": {
+            "name": "Jooga stuudio"
+        },
+        "historic/boundary_stone": {
+            "name": "Piirikivi"
+        },
+        "leisure/park": {
+            "name": "Park"
+        },
+        "amenity/internet_cafe": {
+            "name": "Internetikohvik",
+            "terms": "Internetipunkt"
+        },
+        "leisure/garden": {
+            "name": "Aed"
+        },
+        "historic/memorial": {
+            "name": "Mälestusmärk",
+            "terms": "Memoriaal"
+        },
+        "shop/cosmetics": {
+            "name": "Kosmeetikapood",
+            "terms": "moekauplus"
+        },
+        "type/restriction/only_u_turn": {
+            "name": "Ainult ümberpöörd"
+        },
+        "leisure/swimming_pool": {
+            "name": "Ujumisbassein"
+        },
+        "waterway/stream": {
+            "name": "Oja"
+        },
+        "railway": {
+            "name": "Raudtee"
+        },
+        "building/university": {
+            "name": "Ülikoolihoone"
+        },
+        "amenity/library": {
+            "name": "Raamatukogu"
+        },
+        "shop/stationery": {
+            "name": "Kirjatarvete kauplus",
+            "terms": "kirjutusvahendid,büroovahendid,paberipood"
+        },
+        "highway/secondary_link": {
+            "name": "Tugimaantee ühenduslõik"
+        },
+        "highway/living_street": {
+            "name": "Õueala tee",
+            "terms": "Majadevaheline,elutänav,elamu,linna"
+        },
+        "landuse/military/bunker": {
+            "name": "Militaarpunker",
+            "terms": "punker"
+        },
+        "power/sub_station": {
+            "name": "Alajaam"
+        },
+        "shop/copyshop": {
+            "name": "Koopiateenuse kauplus"
+        },
+        "leisure/firepit": {
+            "name": "Lõkkease",
+            "terms": "Lõkkekoht"
+        },
+        "man_made/bridge": {
+            "name": "Sild"
+        },
+        "railway/monorail": {
+            "name": "Monorelss",
+            "terms": "üherööpmeline"
+        },
+        "shop/bicycle": {
+            "name": "Rattapood",
+            "terms": "Spordipood"
+        },
+        "tourism/apartment": {
+            "name": "Külaliskorter"
+        },
+        "amenity/hunting_stand": {
+            "name": "Jahitorn",
+            "terms": "jahipukk,pukk,kõrgiste"
+        },
+        "tourism/guest_house": {
+            "name": "Külalistemaja"
+        },
+        "healthcare/laboratory": {
+            "name": "Meditsiiniline labor",
+            "terms": "labor*,verelabor*"
+        },
+        "power/plant": {
+            "name": "Elektrijaamaala"
+        },
+        "landuse/aquaculture": {
+            "name": "Akvakultuur"
+        },
+        "amenity": {
+            "name": "Hüve"
+        },
+        "tourism/gallery": {
+            "name": "Kunstigalerii"
+        },
+        "amenity/fuel": {
+            "name": "Tankla",
+            "terms": "Bensiinijaam, kütusejaam, kütus"
+        },
+        "type/route/tram": {
+            "name": "Trammimarsruut"
+        },
+        "shop/second_hand": {
+            "name": "Komisjonikauplus",
+            "terms": "kasutatud"
+        },
+        "place/island": {
+            "name": "Saar"
+        },
+        "craft/rigger": {
+            "name": "Taglasemeister"
+        },
+        "man_made/water_works": {
+            "name": "Joogivee varustusjaam"
+        },
+        "amenity/pub": {
+            "name": "Kõrts",
+            "terms": "Pubi"
+        },
+        "building/entrance": {
+            "name": "Sissepääs"
+        },
+        "shop/religion": {
+            "name": "Usutarvete kauplus",
+            "terms": "kirikupood,usupood,pühatarvete"
+        },
+        "man_made/breakwater": {
+            "name": "Lainemurdja",
+            "terms": "sadamatamm,kaitsetamm,tamm"
+        },
+        "shop/shoes": {
+            "name": "Kingapood"
+        },
+        "amenity/ranger_station": {
+            "name": "Looduskeskus",
+            "terms": "külastuskeskus"
+        },
+        "amenity/swimming_pool": {
+            "name": "Ujumisbassein"
+        },
+        "man_made/adit": {
+            "name": "Stoll",
+            "terms": "suue,kaevandus,sissepääs,horisontaalne,kaeveõõne,rõhtkaeve,koobas"
+        },
+        "man_made/tower": {
+            "name": "Torn"
+        },
+        "shop/florist": {
+            "name": "Lillepood",
+            "terms": "Florist"
+        },
+        "type/route/ferry": {
+            "name": "Praamlaeva marsruut"
+        },
+        "amenity/atm": {
+            "name": "Pangaautomaat",
+            "terms": "sularahaautomaat"
+        },
+        "ford": {
+            "name": "Koolmekoht",
+            "terms": "Koole"
+        },
+        "natural/sand": {
+            "name": "Liiv"
+        },
+        "traffic_calming/table": {
+            "name": "Tõstetud pind",
+            "terms": "lame,künnis,lamav politseinik,kiirustõke,tõke,liikluskünnis"
+        },
+        "amenity/courthouse": {
+            "name": "Kohtumaja",
+            "terms": "Kohus"
+        },
+        "shop/art": {
+            "name": "Kunstitarvete kauplus"
+        },
+        "amenity/recycling_centre": {
+            "name": "Ümbertöötluskeskus",
+            "terms": "Taaskasutuskeskus"
+        },
+        "club": {
+            "name": "Klubi"
+        },
+        "waterway/fuel": {
+            "name": "Laevakütuse tankla",
+            "terms": "kütus,bensiin,diisel,gaas,paat,paadi,mere"
+        },
+        "highway": {
+            "name": "Tee"
+        },
+        "shop/pastry": {
+            "name": "Kondiiter",
+            "terms": "koogid,tordid"
+        },
+        "amenity/theatre": {
+            "name": "Teater"
+        },
+        "landuse/military/checkpoint": {
+            "name": "Militaarkontrollpunkt"
+        },
+        "man_made/lighthouse": {
+            "name": "Tuletorn"
+        },
+        "type/route/train": {
+            "name": "Rongimarsruut"
+        },
+        "barrier/fence": {
+            "name": "Aed"
+        },
+        "landuse/cemetery": {
+            "name": "Surnuaed",
+            "terms": "Kalmistu"
+        },
+        "railway/rail": {
+            "name": "Raudtee",
+            "terms": "rongitee"
+        },
+        "natural/scree": {
+            "name": "Rusukalle",
+            "terms": "klibukalle,kalle,mäe,lahtised kivid,kivid"
+        },
+        "office/government": {
+            "name": "Valitsuse kontor"
+        },
+        "railway/disused": {
+            "name": "Mittekasutatav raudtee",
+            "terms": "Kasutusest väljasolev raudtee, raudtee"
+        },
+        "amenity/grave_yard": {
+            "name": "Surnuaed",
+            "terms": "kalmistu"
+        },
+        "amenity/clinic/fertility": {
+            "name": "Viljakuskliinik"
+        },
+        "railway/subway_entrance": {
+            "name": "Metroo sissepääs",
+            "terms": "sissepääs"
+        },
+        "leisure/picnic_table": {
+            "name": "Piknikulaud"
+        },
+        "man_made/cutline": {
+            "name": "Siht",
+            "terms": "metsasiht,soosiht"
+        },
+        "shop/locksmith": {
+            "name": "Lukksepp",
+            "terms": "lukud,uksed"
+        },
+        "leisure/pitch": {
+            "name": "Spordiväljak"
+        },
+        "tourism/hotel": {
+            "name": "Hotell"
+        },
+        "historic/monument": {
+            "name": "Monument",
+            "terms": "Mälestis, ausammas"
+        },
+        "type/route/bicycle": {
+            "name": "Jalgrattamarsruut",
+            "terms": "jalgrattatee,rattatee,rattamarsruut"
+        },
+        "highway/give_way": {
+            "name": "Anna teed märk"
+        },
+        "historic": {
+            "name": "Ajalooline koht"
+        },
+        "type/enforcement": {
+            "name": "Liiklusjärelvalve",
+            "terms": "järelvalve,liikluskontroll,politseikontroll"
+        },
+        "building/kindergarten": {
+            "name": "Lasteaiahoone"
+        },
+        "leisure/playground": {
+            "name": "Mänguväljak"
+        },
+        "emergency/water_tank": {
+            "name": "Tuletõrjevee mahuti",
+            "terms": "veevõtukoht,tuletõrjemahuti"
+        },
+        "shop/erotic": {
+            "name": "Erootikapood",
+            "terms": "Seksipood,seksitarbed"
+        },
+        "type/restriction/only_left_turn": {
+            "name": "Ainult vasakpööre"
+        },
+        "highway/mini_roundabout": {
+            "name": "Väike ringtee"
+        },
+        "amenity/monastery": {
+            "name": "Kloostriala"
+        },
+        "highway/service/parking_aisle": {
+            "name": "Parkla vahetee",
+            "terms": "vahetee, vahekäik"
+        },
+        "amenity/bbq": {
+            "name": "Väligrill",
+            "terms": "grill"
+        },
+        "waterway/dock": {
+            "name": "Dokk",
+            "terms": "märgdokk,kuivdokk,ujuvdokk"
+        },
+        "waterway/boatyard": {
+            "name": "Laevatehas",
+            "terms": "dokk"
+        },
+        "power/line": {
+            "name": "Kõrgepingeliin",
+            "terms": "Elektriliin, kõrgliin, õhuliin"
+        },
+        "amenity/ice_cream": {
+            "name": "Jäätisekohvik"
+        },
+        "leisure/horse_riding": {
+            "name": "Ratsakeskus",
+            "terms": "Ratsutuskeskus"
+        },
+        "power/pole": {
+            "name": "Elektripost",
+            "terms": "õhuliinipost"
+        },
+        "natural/peak": {
+            "name": "Mäetipp",
+            "terms": "tipp"
+        },
+        "highway/tertiary": {
+            "name": "Kohalik maantee",
+            "terms": "kohaliku tähtsusega maantee,maantee"
+        },
+        "shop/beauty/nails": {
+            "name": "Küünesalong",
+            "terms": "maniküür,pediküür"
+        },
+        "tourism/artwork": {
+            "name": "Kunstiteos"
+        },
+        "landuse/retail": {
+            "name": "Jaekaubandusala",
+            "terms": "kaubandusala"
+        },
+        "leisure/sauna": {
+            "name": "Saun"
+        },
+        "craft/key_cutter": {
+            "name": "Võtmemeister",
+            "terms": "Võtmeabi, Võtmete valmistamine"
+        },
+        "leisure/resort": {
+            "name": "Puhkekeskus",
+            "terms": "Kuurort, spaa"
+        },
+        "shop/pyrotechnics": {
+            "name": "Ilutulestiku kauplus",
+            "terms": "pürotehnika"
+        },
+        "leisure/pitch/cricket": {
+            "name": "Kriketiväljak"
+        },
+        "amenity/arts_centre": {
+            "name": "Kunstide keskus",
+            "terms": "kunstidemaja"
+        },
+        "railway/crossing": {
+            "name": "Raudtee ülekäik",
+            "terms": "ülekäik,ületuskoht,jalakäija ületus,raudteega,ületustee"
+        },
+        "shop/travel_agency": {
+            "name": "Reisibüroo",
+            "terms": "reisiagentuur"
+        },
+        "amenity/restaurant": {
+            "name": "Restoran"
+        },
+        "type/route/detour": {
+            "name": "Ümbersõidu marsruut"
+        },
+        "amenity/bicycle_repair_station": {
+            "name": "Jalgrattaremondi pukk"
+        },
+        "highway/services": {
+            "name": "Maantee teenindusala",
+            "terms": "Teenindusala, kiirtee teenindusala, puhkeala"
+        },
+        "amenity/bureau_de_change": {
+            "name": "Valuutavahetus",
+            "terms": "rahavahetus"
+        },
+        "leisure/dancing_school": {
+            "name": "Tantsukool"
+        },
+        "leisure": {
+            "name": "Vaba aeg"
+        },
+        "amenity/post_office": {
+            "name": "Postkontor"
+        },
+        "natural/volcano": {
+            "name": "Vulkaan"
+        },
+        "amenity/bar": {
+            "name": "Baar"
+        },
+        "traffic_calming/cushion": {
+            "name": "Sõiduautokünnis",
+            "terms": "künnis,liikluskünnis,kitsendatud künnis"
+        },
+        "traffic_calming": {
+            "name": "Liikluse aeglustamine"
+        },
+        "barrier/stile": {
+            "name": "Astmestik",
+            "terms": "astmed"
+        },
+        "shop/boutique": {
+            "name": "Butiik",
+            "terms": "moekauplus, moekaup, boutique, ehtekauplus"
+        },
+        "area/highway": {
+            "name": "Teekate"
+        },
+        "amenity/vending_machine/parking_tickets": {
+            "name": "Parkimispileti automaat"
+        },
+        "shop/weapons": {
+            "name": "Relvapood"
+        },
+        "highway/trunk": {
+            "name": "E-tähistusega põhimaantee",
+            "terms": "Trunk Road,põhimaantee,maantee"
+        },
+        "office": {
+            "name": "Kontor"
+        },
+        "amenity/fire_station": {
+            "name": "Tuletõrjedepoo",
+            "terms": "tuletõrjujad"
+        },
+        "barrier/entrance": {
+            "name": "Läbipääs"
+        },
+        "emergency/fire_hydrant": {
+            "name": "Hüdrant",
+            "terms": "Tulehüdrant"
+        },
+        "noexit/yes": {
+            "name": "Tee lõpp",
+            "terms": "tupik,lõpp,ots"
+        },
+        "shop/scuba_diving": {
+            "name": "Sukeldustarvikute kauplus",
+            "terms": "sukelduskeskus,sukeldumine,snorkeldamine"
+        },
+        "natural/water/pond": {
+            "name": "Tiik"
+        },
+        "place/plot": {
+            "name": "Krunt"
+        },
+        "shop/vacuum_cleaner": {
+            "name": "Tolmuimeja kauplus"
+        },
+        "shop/chemist": {
+            "name": "Kodukeemia kauplus",
+            "terms": "puhastus*,ravimid,kemikaal*,pesuvahend*,üldpuhastus*,hügieeni*,tarbed,keemia"
+        },
+        "tourism/information/map": {
+            "name": "Kaart",
+            "terms": "seinakaart"
+        },
+        "building/hospital": {
+            "name": "Haiglahoone"
+        },
+        "amenity/marketplace": {
+            "name": "Turg",
+            "terms": "Turuplats"
+        },
+        "building/industrial": {
+            "name": "Tööstushoone"
+        },
+        "amenity/university": {
+            "name": "Ülikooliala"
+        },
+        "building/public": {
+            "name": "Avalik hoone"
+        },
+        "amenity/college": {
+            "name": "Kolledžiala"
+        },
+        "shop/toys": {
+            "name": "Mänguasjapood",
+            "terms": "Lastekaup"
+        },
+        "type/restriction/no_straight_on": {
+            "name": "Edasisõit keelatud"
+        },
+        "landuse/allotments": {
+            "name": "Ühisaed"
+        },
+        "highway/passing_place": {
+            "name": "Möödasõidukoht"
+        },
+        "amenity/cafe": {
+            "name": "Kohvik"
+        },
+        "highway/service/emergency_access": {
+            "name": "Päästetee",
+            "terms": "tuletõrjetee,kiirabitee"
+        },
+        "natural/mud": {
+            "name": "Muda",
+            "terms": "märgala,soo"
+        },
+        "building/civic": {
+            "name": "Üldkasutatav hoone",
+            "terms": "linna,keskus,seltsimaja,rahvamaja"
+        },
+        "craft/plasterer": {
+            "name": "Krohvija",
+            "terms": "kellumees"
+        },
+        "amenity/parking_space": {
+            "name": "Parkimiskoht",
+            "terms": "parkla"
+        },
+        "healthcare/birthing_center": {
+            "name": "Sünnitusmaja"
+        },
+        "building/greenhouse": {
+            "name": "Kasvuhoone"
+        },
+        "landuse/harbour": {
+            "name": "Sadam",
+            "terms": "jahisadam,paadisadam,laevasadam"
+        },
+        "shop/pet": {
+            "name": "Lemmikloomapood",
+            "terms": "loomapood,loomatarbed,koduloomatarbed"
+        },
+        "roundabout": {
+            "name": "Ringtee"
+        },
+        "type/route/power": {
+            "name": "Elektrimarsruut"
+        },
+        "highway/service/alley": {
+            "name": "Vahekäik",
+            "terms": "põiktänav,kitsas tänav"
+        },
+        "shop/tailor": {
+            "name": "Rätsep",
+            "terms": "õmbuskoda,õmbleja"
+        },
+        "natural/cliff": {
+            "name": "Kalju",
+            "terms": "Kuristik"
+        },
+        "amenity/clock": {
+            "name": "Kell",
+            "terms": "seinakell"
+        },
+        "building/garage": {
+            "name": "Garaaž",
+            "terms": "Garaaz"
+        },
+        "natural/coastline": {
+            "name": "Rannajoon",
+            "terms": "Rand"
+        },
+        "building/hotel": {
+            "name": "Hotellihoone"
+        },
+        "route/ferry": {
+            "name": "Praamitee"
+        },
+        "shop/outdoor": {
+            "name": "Matkatarvete kauplus",
+            "terms": "matkatarbed,välitarbed,telgid,ronimine,matkamine,telkimine"
+        },
+        "highway/raceway": {
+            "name": "Ringrada (motosport)",
+            "terms": "autorada, motorada, motokross, rallirada, motospordirada,krossirada"
+        },
+        "highway/steps": {
+            "name": "Trepp",
+            "terms": "astmed"
+        },
+        "leisure/beach_resort": {
+            "name": "Rannakuurort"
+        },
+        "highway/primary": {
+            "name": "Põhimaantee",
+            "terms": "maantee"
+        },
+        "shop/chocolate": {
+            "name": "Šokolaadikauplus",
+            "terms": "Sokolaadikauplus, shokolaadikauplus"
+        },
+        "building/bunker": {
+            "name": "Punker"
+        },
+        "aeroway/helipad": {
+            "name": "Kopteriväljak",
+            "terms": "Helikopteriväljak"
+        },
+        "amenity/dentist": {
+            "name": "Hambaarst"
+        },
+        "landuse/residential/apartments": {
+            "name": "Kortermajade kompleks",
+            "terms": "elumajad"
+        },
+        "amenity/place_of_worship/muslim": {
+            "name": "Islami mošee",
+            "terms": "muslim,moslem,mosee"
+        },
+        "shop/tea": {
+            "name": "Teepood",
+            "terms": "kohvipood"
+        },
+        "shop/supermarket": {
+            "name": "Supermarket"
+        },
+        "shop/wholesale": {
+            "name": "Hulgikauplus",
+            "terms": "hulgikaup"
+        },
+        "building/stadium": {
+            "name": "Staadionihoone"
+        },
+        "man_made/silo": {
+            "name": "Silo",
+            "terms": "Silo hoidla, Silo mahuti"
+        },
+        "building/hut": {
+            "name": "Hütt",
+            "terms": "onn"
+        },
+        "shop/candles": {
+            "name": "Küünlapood"
+        },
+        "natural/saddle": {
+            "name": "Mäesadul"
+        },
+        "building/transportation": {
+            "name": "Transpordihoone"
+        },
+        "landuse/orchard": {
+            "name": "Viljapuuaed"
+        },
+        "type/restriction/no_right_turn": {
+            "name": "Parempöörd keelatud"
+        },
+        "shop/car": {
+            "name": "Autopood",
+            "terms": "Auto esindus"
+        },
+        "building/stable": {
+            "name": "Tall",
+            "terms": "Hobusetall"
+        },
+        "amenity/public_bookcase": {
+            "name": "Avalik raamaturiiul",
+            "terms": "raamaturiiul"
+        },
+        "tourism/camp_site": {
+            "name": "Telkimisala",
+            "terms": "puhkeala,autoelamu,haagissuvila,telkimisplats,kämpimisala"
+        },
+        "building/semidetached_house": {
+            "name": "Ridaelamu",
+            "terms": "Elumajaosa"
+        },
+        "railway/abandoned": {
+            "name": "Mahajäetud raudtee"
+        },
+        "type/restriction": {
+            "name": "Piirang"
+        },
+        "shop/bathroom_furnishing": {
+            "name": "Santehnika kauplus",
+            "terms": "Sanitaartehnika"
+        },
+        "shop/beauty/tanning": {
+            "name": "Solaarium"
+        },
+        "amenity/food_court": {
+            "name": "Toiduväljak",
+            "terms": "Toiduala,söögiplats,söögiala"
+        },
+        "natural/beach": {
+            "name": "Rand",
+            "terms": "Liivarand"
+        },
+        "junction": {
+            "name": "Ristmik"
+        },
+        "vertex": {
+            "name": "Muu"
+        },
+        "type/boundary": {
+            "name": "Piir"
+        },
+        "aeroway/taxiway": {
+            "name": "Ruleerimistee"
+        },
+        "craft/optician": {
+            "name": "Optik"
+        },
+        "waterway/waterfall": {
+            "name": "Juga"
+        },
+        "type/route": {
+            "name": "Marsruut"
+        },
+        "man_made/embankment": {
+            "name": "Tamm"
+        },
+        "shop/tobacco": {
+            "name": "Tubakapood",
+            "terms": "suitsupood,tubakas,sigarid,sigaretid"
+        },
+        "building/shed": {
+            "name": "Kuur"
+        },
+        "building/detached": {
+            "name": "Eraldiseisev maja"
+        },
+        "shop/charity": {
+            "name": "Heategevuslik kauplus",
+            "terms": "Mittetulunduslik kauplus"
+        },
+        "shop/musical_instrument": {
+            "name": "Muusikainstrumentide kauplus",
+            "terms": "pillipood,pillid"
+        },
+        "man_made/wastewater_plant": {
+            "name": "Reoveepuhastusjaam"
+        },
+        "landuse/plant_nursery": {
+            "name": "Puukool",
+            "terms": "aiandus,aiand,lilled,kasvandus"
+        },
+        "shop/money_lender": {
+            "name": "Rahalaenutaja",
+            "terms": "krediit,laenud,kiirlaenud"
+        },
+        "shop/radiotechnics": {
+            "name": "Elektroonikakomponentide pood",
+            "terms": "elektroonika,tehnika,raadiotehnika,arvutitehnika"
+        },
+        "building/college": {
+            "name": "Kolledžihoone"
+        },
+        "amenity/nursing_home": {
+            "name": "Hoolduskodu"
+        },
+        "shop/ticket": {
+            "name": "Piletikauplus",
+            "terms": "piletid,kontserdipiletid,kassa,bussipiletid"
+        },
+        "amenity/social_facility/group_home": {
+            "name": "Vanadekodu",
+            "terms": "pensionärid"
+        },
+        "natural/water/reservoir": {
+            "name": "Reservuaar",
+            "terms": "veehoidla"
+        },
+        "craft/saddler": {
+            "name": "Sadulsepp"
+        },
+        "landuse/quarry": {
+            "name": "Karjäär"
+        },
+        "barrier/border_control": {
+            "name": "Piiripunkt",
+            "terms": "Piirikontroll, piiriületuspunkt"
+        },
+        "landuse/basin": {
+            "name": "Kogumisbassein"
+        },
+        "leisure/track": {
+            "name": "Staadion"
+        },
+        "shop/paint": {
+            "name": "Värvipood"
+        },
+        "historic/ruins": {
+            "name": "Varemed"
+        },
+        "highway/secondary": {
+            "name": "Tugimaantee",
+            "terms": "kohalik maantee,maantee"
+        },
+        "natural/fell": {
+            "name": "Mägitundra",
+            "terms": "Tundra"
+        },
+        "natural/heath": {
+            "name": "Nõmm"
+        },
+        "shop/leather": {
+            "name": "Nahakauplus",
+            "terms": "nahast,karusnahk"
+        },
+        "building/commercial": {
+            "name": "Ärihoone"
+        },
+        "amenity/bicycle_parking": {
+            "name": "Rattaparkla",
+            "terms": "jalgrattaparkla"
+        },
+        "amenity/compressed_air": {
+            "name": "Suruõhk",
+            "terms": "õhk"
+        },
+        "man_made/water_well": {
+            "name": "Veekaev",
+            "terms": "Kaev"
+        },
+        "shop/organic": {
+            "name": "Mahetoodete kauplus",
+            "terms": "mahekaup,ökoloogiline,mahepõllunduskaup"
+        },
+        "waterway/ditch": {
+            "name": "Kraav"
+        },
+        "shop/fuel": {
+            "name": "Küttepood",
+            "terms": "õli,kütteõli,küte,briketid,küttepuu,puitbrikett,turbabrikett,küttegraanul,pellet,kaminapuu"
+        },
+        "landuse/railway": {
+            "name": "Raudteekoridor"
+        },
+        "amenity/cinema": {
+            "name": "Kino",
+            "terms": "kobarkino"
+        },
+        "type/route/bus": {
+            "name": "Bussimarsruut",
+            "terms": "autobussimarsruut"
+        },
+        "type/route_master": {
+            "name": "Ülemmarsruut",
+            "terms": "Peamarsruut,koondmarsruut"
+        },
+        "landuse/farm": {
+            "name": "Põllumaa"
+        },
+        "natural/wood": {
+            "name": "Mets"
+        },
+        "shop/tattoo": {
+            "name": "Tatoveeringu salong"
+        },
+        "shop/health_food": {
+            "name": "Tervisliku toidu kauplus",
+            "terms": "vitamiinid,tervis,terviklikud,mahe,vegan,täistera,toidulisandid"
+        },
+        "shop/optician": {
+            "name": "Optikapood",
+            "terms": "optik,prillipood,prillid,läätsed"
+        },
+        "type/route/foot": {
+            "name": "Jalgmarsruut"
+        },
+        "barrier/block": {
+            "name": "Plokk",
+            "terms": "Betoonplokk, betoon"
+        },
+        "relation": {
+            "name": "Seos",
+            "terms": "relatsioon"
+        },
+        "shop/medical_supply": {
+            "name": "Tervisetoodete kauplus",
+            "terms": "ravitooted,taastusravi,invakaup,abivahendid"
+        },
+        "type/restriction/only_straight_on": {
+            "name": "Ainult otse"
+        },
+        "landuse/industrial/scrap_yard": {
+            "name": "Vanametalli kokkuost"
+        },
+        "camp_site/camp_pitch": {
+            "name": "Kämpingukoht",
+            "terms": "karavaniplats,kämpinguplats,telgiplats,telgikoht"
+        },
+        "shop/gas": {
+            "name": "Balloongaasi kauplus",
+            "terms": "gaas,vedelgaas,grillgaas,segugaas"
+        },
+        "landuse/commercial": {
+            "name": "Kommertsala"
+        },
+        "natural/ridge": {
+            "name": "Mäehari",
+            "terms": "seljandik,mäeseljandik,seljak,mäetipp,tipp"
+        },
+        "natural": {
+            "name": "Looduslik"
+        },
+        "amenity/post_box": {
+            "name": "Kirjakast"
+        },
+        "leisure/bowling_alley": {
+            "name": "Boolingusaal",
+            "terms": "bowling,keegel,keeglisaal,hobikeegel"
+        },
+        "man_made/mast": {
+            "name": "Mast",
+            "terms": "Mobiilimast, tv mast, telefonimast, raadiomast, televisioonimast, kommunikatsioonimast"
+        },
+        "shop/fishing": {
+            "name": "Kalastustarvete pood"
+        },
+        "craft/tiler": {
+            "name": "Plaatija"
+        },
+        "shop/frame": {
+            "name": "Raamikauplus",
+            "terms": "Piltide raamimine,maali raamimine"
+        },
+        "leisure/nature_reserve": {
+            "name": "Looduskaitseala",
+            "terms": "Maastikukaitseala, looduspark"
+        },
+        "shop/antiques": {
+            "name": "Antikvariaat",
+            "terms": "Antiigi kauplus"
+        },
+        "shop/fabric": {
+            "name": "Kangakauplus",
+            "terms": "kangapood"
+        },
+        "craft/brewery": {
+            "name": "Pruulikoda"
+        },
+        "highway/turning_circle": {
+            "name": "Ümberpöördering",
+            "terms": "ümberpöörd,pöördering"
+        },
+        "shop/coffee": {
+            "name": "Kohvipood"
+        },
+        "shop/e-cigarette": {
+            "name": "E-sigaretipood"
+        },
+        "shop/clothes": {
+            "name": "Riidepood",
+            "terms": "Moekauplus"
+        },
+        "aeroway/aerodrome": {
+            "name": "Lennujaam"
+        },
+        "amenity/bicycle_rental": {
+            "name": "Rattarent",
+            "terms": "jalgrattarent,laenutus"
+        },
+        "shop/gift": {
+            "name": "Kingipood"
+        },
+        "craft/locksmith": {
+            "name": "Lukuabi"
+        },
+        "leisure/sports_centre": {
+            "name": "Spordikeskus",
+            "terms": "Spordikompleks"
+        },
+        "place": {
+            "name": "Koht"
+        },
+        "power": {
+            "name": "Elekter"
+        },
+        "building/house": {
+            "name": "Maja"
+        },
+        "leisure/marina": {
+            "name": "Väikesadam",
+            "terms": "Jahisadam,kaatrisadam,jaht,paat,kaater,sadam"
+        },
+        "craft/tailor": {
+            "name": "Rätsep"
+        },
+        "barrier/gate": {
+            "name": "Värav"
+        },
+        "shop/motorcycle": {
+            "name": "Mootorrattapood",
+            "terms": "tsiklid"
+        },
+        "waterway/river": {
+            "name": "Jõgi"
+        },
+        "railway/subway": {
+            "name": "Metroo"
+        },
+        "shop/carpet": {
+            "name": "Vaibapood"
+        },
+        "craft": {
+            "name": "Käsitöö",
+            "terms": "meister,oskustöö"
+        },
+        "traffic_calming/chicane": {
+            "name": "Suunamuutetakistus",
+            "terms": "šikaan,shikaan,kitsendus,aeglustus,liiklusšikaan"
+        },
+        "shop/butcher": {
+            "name": "Lihapood",
+            "terms": "Lihunik"
+        },
+        "barrier/bollard": {
+            "name": "Piirdetulp",
+            "terms": "pollar, piirdepost"
+        },
+        "leisure/golf_course": {
+            "name": "Golfiväljak"
+        },
+        "barrier": {
+            "name": "Barjäär",
+            "terms": "tõke,takistus,blokeering,läbisõidupiirang"
+        },
+        "historic/castle": {
+            "name": "Loss",
+            "terms": "Kindlus"
+        },
+        "shop/car_repair": {
+            "name": "Autoremont",
+            "terms": "autoparandus, auto hooldus"
+        },
+        "craft/hvac": {
+            "name": "Ventilatsioon",
+            "terms": "kliima, sisekliima, kütteseadmed"
+        },
+        "highway/path": {
+            "name": "Rada"
+        },
+        "leisure/water_park": {
+            "name": "Veepark",
+            "terms": "Veekeskus"
+        },
+        "landuse/meadow": {
+            "name": "Heinamaa",
+            "terms": "Niit, luht"
+        },
+        "shop/convenience": {
+            "name": "Toidupood",
+            "terms": "Kauplus,pood,külapood,esmatarbekaup,väike pood"
+        },
+        "shop/books": {
+            "name": "Raamatupood"
+        },
+        "highway/service": {
+            "name": "Juurdepääsutee",
+            "terms": "service road,teenindustee,juurdesõidutee,kitsas tee,eratee,läbipääsutee,hoovitee"
+        },
+        "waterway/drain": {
+            "name": "Äravool",
+            "terms": "reovee äravool"
+        },
+        "highway/residential": {
+            "name": "Elamupiikonna tänav"
+        },
+        "historic/wayside_shrine": {
+            "name": "Teeäärne altar"
+        },
+        "type/boundary/administrative": {
+            "name": "Halduspiir"
+        },
+        "emergency/ambulance_station": {
+            "name": "Kiirabipunkt"
+        },
+        "amenity/motorcycle_parking": {
+            "name": "Mootorratta parkla"
+        },
+        "shop/craft": {
+            "name": "Käsitöökauplus",
+            "terms": "Kuntsitarvete kauplus"
+        },
+        "line": {
+            "name": "Joon"
+        },
+        "amenity/kindergarten": {
+            "name": "Lasteaed",
+            "terms": "Eelkool"
+        },
+        "waterway/weir": {
+            "name": "Ülevoolupais",
+            "terms": "tamm"
+        },
+        "craft/metal_construction": {
+            "name": "Metallikoda",
+            "terms": "metallitööd"
+        },
+        "craft/painter": {
+            "name": "Maaler",
+            "terms": "värvija"
+        },
+        "man_made/flagpole": {
+            "name": "Lipumast"
+        },
+        "tourism/attraction": {
+            "name": "Turismiatraktsioon",
+            "terms": "vaatamisväärsus"
+        },
+        "man_made": {
+            "name": "Inimtehtud"
+        },
+        "tourism/alpine_hut": {
+            "name": "Alpimaja"
+        },
+        "tourism/information/office": {
+            "name": "Turismiinfokeskus",
+            "terms": "infokeskus"
+        },
+        "shop/alcohol": {
+            "name": "Alkoholipood"
+        },
+        "shop/fireplace": {
+            "name": "Küttekollete pood",
+            "terms": "kaminad,ahjud,katlad"
+        },
+        "tourism/viewpoint": {
+            "name": "Vaatekoht",
+            "terms": "kaunis vaade,vaade"
+        },
+        "craft/handicraft": {
+            "name": "Käsitöö"
+        },
+        "landuse/construction": {
+            "name": "Ehitus"
+        },
+        "shop/motorcycle_repair": {
+            "name": "Mootorratta remondikoda",
+            "terms": "remont,hooldus"
+        },
+        "aeroway/terminal": {
+            "name": "Lennuterminal",
+            "terms": "terminal,lennujaam"
+        }
+    }
+}

@@ -1,0 +1,4014 @@
+{
+    "presets": {
+        "shop/caravan": {
+            "name": "Caravandealer"
+        },
+        "office/administrative": {
+            "name": "Bestuurlijke instantie"
+        },
+        "amenity/car_rental": {
+            "name": "Autoverhuur",
+            "terms": "huurauto,huren"
+        },
+        "place/city": {
+            "name": "Stad",
+            "terms": "plaats,gemeente"
+        },
+        "building": {
+            "name": "Gebouw",
+            "terms": "pand,bouwwerk,bouwsel,constructie"
+        },
+        "amenity/restaurant/indian": {
+            "name": "Indisch restaurant"
+        },
+        "craft/dressmaker": {
+            "name": "Kleermaker voornamelijk voor vrouwen",
+            "terms": "kleermaker,kleedjes,jurken,maatwerk,kleren,kledij"
+        },
+        "barrier/lift_gate": {
+            "name": "Slagboom",
+            "terms": "bareel"
+        },
+        "railway/halt": {
+            "name": "Treinstation op aanvraag"
+        },
+        "shop/agrarian": {
+            "name": "Landbouwbenodigdhedenwinkel",
+            "terms": "landbouwwinkel,landbouwzaak,landbouwerswinkel,landbouwerszaak,pesticidenwinkel,meststoffenwinkel,zadenwinkel,tractorwinkel,voerwinkel,veevoerwinkel,landbouwgereedschapswinkel,landbouwwerktuigenwinkel"
+        },
+        "landuse/garages": {
+            "name": "Garages (privéstalling voor voertuigen)",
+            "terms": "autogarage"
+        },
+        "internet_access/wlan": {
+            "name": "Wi-Fi-hotspot"
+        },
+        "amenity/shelter/lean_to": {
+            "name": "Halfopen hut"
+        },
+        "building/farm": {
+            "name": "Boerderijhuis",
+            "terms": "gebouw van boerderij,boerderijgebouw"
+        },
+        "shop/hunting": {
+            "name": "Jachtwinkel"
+        },
+        "amenity/waste_disposal": {
+            "name": "Kleine afvalcontainer",
+            "terms": "restafval,milieustraat,vuilbak"
+        },
+        "type/restriction/only_right_turn": {
+            "name": "Alleen rechts afslaan",
+            "terms": "enkel rechts afslaan,verplicht rechts afslaan,rechts afslaan verplicht,enkel rechts inslaan,alleen rechts inslaan,verplicht rechts inslaan,rechts inslaan verplicht"
+        },
+        "attraction/carousel": {
+            "name": "Draaimolen",
+            "terms": "carrousel,paardenmolen"
+        },
+        "craft/sawmill": {
+            "name": "Zagerij",
+            "terms": "zagerij"
+        },
+        "emergency/yes": {
+            "name": "Toegang voor hulpdiensten: ja"
+        },
+        "circular": {
+            "name": "Rotonde, verkeer erop niet steeds voorrang"
+        },
+        "healthcare/audiologist": {
+            "name": "Audiologist",
+            "terms": "audiologie,gehoorarts,gehoordokter"
+        },
+        "highway/motorway": {
+            "name": "Autosnelweg",
+            "terms": "autostrade,snelweg"
+        },
+        "natural/bay": {
+            "name": "Baai"
+        },
+        "amenity/fast_food/mexican": {
+            "name": "Mexicaanse fastfoodzaak"
+        },
+        "building/bungalow": {
+            "name": "Bungalow"
+        },
+        "building/terrace": {
+            "name": "Rijhuizen",
+            "terms": "rijtjeshuizen,huis,woningen,woonsten,woongebied,gebouw"
+        },
+        "aeroway/runway": {
+            "name": "Startbaan",
+            "terms": "landingsbaan"
+        },
+        "amenity/studio": {
+            "name": "Studio",
+            "terms": "opnamestudio,radio"
+        },
+        "landuse/military": {
+            "name": "Militair gebied",
+            "terms": "legerkazerne,kazerne,kwartier,landmacht,marinebasis,luchtmacht"
+        },
+        "shop/seafood": {
+            "name": "Viswinkel"
+        },
+        "railway/milestone": {
+            "name": "Afstandspaal aan spoorweg",
+            "terms": "hectometerpaaltje aan spoorweg,kilometerpaaltje aan spoorweg,mijlpaal,spoorwegmijlpaal,spoorwegafstandspaal"
+        },
+        "waterway/sanitary_dump_station": {
+            "name": "Maritieme toiletafvoer",
+            "terms": "schip,uitwerpselen,urine,toilet"
+        },
+        "barrier/city_wall": {
+            "name": "Stadsmuur",
+            "terms": "omwalling,wallen,verdediging"
+        },
+        "office/employment_agency": {
+            "name": "Uitzendbureau",
+            "terms": "uitzendkantoor,interimkantoor,werkloos,werk zoeken,werkwinkel"
+        },
+        "craft/sculptor": {
+            "name": "Beeldhouwer",
+            "terms": "beeldenaar,kunstenaar"
+        },
+        "office/government/register_office": {
+            "name": "Burgerlijke stand",
+            "terms": "dienst bevolking,bevolking,identiteitskaart,geboorte,trouwakte,trouw,huwelijk,burgerlijk,overlijdens,sterfte,scheiding,echtscheiding"
+        },
+        "amenity/waste_transfer_station": {
+            "name": "Afval-transfer-station",
+            "terms": "afvalverwerkingsbedrijf,afvalopslag,tijdelijke afvalopslag"
+        },
+        "boundary/administrative": {
+            "name": "Bestuurlijke grens",
+            "terms": "administratieve grens"
+        },
+        "man_made/surveillance": {
+            "name": "Bewaking",
+            "terms": "bewakingscamera,cctv"
+        },
+        "building/ruins": {
+            "name": "Gebouwruïnes",
+            "terms": "ruïnes,ingestort gebouw,vervallen gebouw"
+        },
+        "leisure/pitch/american_football": {
+            "name": "Americanfootball-veld",
+            "terms": "Amerikaans voetbalveld,american football"
+        },
+        "leisure/fitness_station/horizontal_ladder": {
+            "name": "Apenrek",
+            "terms": "horizontale ladder"
+        },
+        "traffic_calming/bump": {
+            "name": "Kleine verkeersdrempel",
+            "terms": "snelheidsdrempel,plateau,verkeersplateau"
+        },
+        "craft/carpenter": {
+            "name": "Timmerman",
+            "terms": "houtwerk,planken"
+        },
+        "railway/level_crossing": {
+            "name": "Spoorwegovergang (weg)",
+            "terms": "gelijkvloerse overgang,gelijkgrondse overgang,overweg,spooroverweg,treinkruising,treinsporen"
+        },
+        "amenity/restaurant/greek": {
+            "name": "Grieks restaurant"
+        },
+        "attraction/amusement_ride": {
+            "name": "Standaard pretparkattractie",
+            "terms": "achtbaan,rit,plezierrit,kermisattractie"
+        },
+        "place/suburb": {
+            "name": "Stadsdeel",
+            "terms": "stadsdeel,buurt,kwartier"
+        },
+        "man_made/pier": {
+            "name": "Pier of steiger",
+            "terms": "dok,steiger"
+        },
+        "shop/farm": {
+            "name": "Groente- en fruitkraam",
+            "terms": "groentenkraam"
+        },
+        "waterway/stream_intermittent": {
+            "name": "Soms droge stroom",
+            "terms": "stroom die soms droog straat,droge stroom,seizoensstroom,wadi,ford"
+        },
+        "highway/road": {
+            "name": "Weg met onbekend type",
+            "terms": "onbekende weg"
+        },
+        "address": {
+            "name": "Adres",
+            "terms": "contact,plaats,adresgegevens,straat,huisnummer"
+        },
+        "highway/primary_link": {
+            "name": "Verbindingsweg van hoofdweg",
+            "terms": "invoegstrook,oprit,afrit,provinciale weg,primaire weg,gewestweg,provincieweg"
+        },
+        "shop/greengrocer": {
+            "name": "Groenteboer",
+            "terms": "groenten en fruit,groentezaak,groentewinkel,fruitzaak,fruitwinkel,versmarkt"
+        },
+        "highway/traffic_mirror": {
+            "name": "Verkeersspiegel",
+            "terms": "spiegel,dodehoeksspiegel,kruispuntspiegel"
+        },
+        "railway/station": {
+            "name": "Treinstation"
+        },
+        "aerialway/rope_tow": {
+            "name": "Sleeplift",
+            "terms": "skilift,bugellift,handvat"
+        },
+        "office/therapist": {
+            "name": "Kantoor van therapeut",
+            "terms": "therapiekantoor,therapeutenkantoor"
+        },
+        "office/company": {
+            "name": "Kantoor van bedrijf",
+            "terms": "bedrijfskantoor,hoofdkwartier"
+        },
+        "shop/dairy": {
+            "name": "Zuivelhandel",
+            "terms": "zuivelwinkel"
+        },
+        "type/route/road": {
+            "name": "Autoroute",
+            "terms": "autotraject,sightseeingroute"
+        },
+        "amenity/planetarium": {
+            "name": "Planetarium",
+            "terms": "sterrenhemel,astronomie,sterrenwacht,museum"
+        },
+        "office/financial": {
+            "name": "Privékantoor van financiële instelling",
+            "terms": "financieel kantoor"
+        },
+        "highway/track": {
+            "name": "Veld- of bosweg",
+            "terms": "veldweg,bosweg,woudweg,houthakkersweg,landbouwweg,tractorweg,onbeheerde weg,trage weg,offroad"
+        },
+        "attraction/dark_ride": {
+            "name": "Darkride",
+            "terms": "spookhuis,thema-attractie"
+        },
+        "shop/wine": {
+            "name": "Wijnhandel",
+            "terms": "wijnwinkel,wijnproeverij,wijnzaak,wijnerij"
+        },
+        "shop/hairdresser": {
+            "name": "Kapper",
+            "terms": "kapper"
+        },
+        "building/school": {
+            "name": "Schoolgebouw",
+            "terms": "school,onderwijs,secundair onderwijs,lager onderwijs,basisschool,middelbaar,voortgezet onderwijs"
+        },
+        "tourism/information/board": {
+            "name": "Informatiebord",
+            "terms": "uitlegbord,informatie"
+        },
+        "amenity/restaurant/french": {
+            "name": "Frans restaurant"
+        },
+        "amenity/ferry_terminal": {
+            "name": "Veerbootterminal"
+        },
+        "shop/furnace": {
+            "name": "Verwarmingswinkel"
+        },
+        "landuse/industrial": {
+            "name": "Industriegebied",
+            "terms": "industriepark,industriezone,industrieel gebied,industriële zone"
+        },
+        "type/route/hiking": {
+            "name": "Hikingtraject",
+            "terms": "wandelroute,trekkingroute,wandeltraject"
+        },
+        "amenity/place_of_worship/christian": {
+            "name": "Christelijke kerk"
+        },
+        "tourism/hostel": {
+            "name": "Jeugdherberg",
+            "terms": "hostel"
+        },
+        "leisure/pitch/volleyball": {
+            "name": "Volleybalveld",
+            "terms": "volleyterrein,volleybalterrein"
+        },
+        "amenity/veterinary": {
+            "name": "Dierenarts",
+            "terms": "veearts,dierendokter"
+        },
+        "leisure/amusement_arcade": {
+            "name": "Speelhal",
+            "terms": "lunapark"
+        },
+        "craft/pottery": {
+            "name": "Pottenbakkerij",
+            "terms": "pottendraaierij,pottenmakerij"
+        },
+        "craft/roofer": {
+            "name": "Dakwerker",
+            "terms": "dakwerker"
+        },
+        "amenity/photo_booth": {
+            "name": "Pasfotohokje"
+        },
+        "amenity/restaurant/mexican": {
+            "name": "Mexicaans restaurant"
+        },
+        "shop/massage": {
+            "name": "Massagewinkel",
+            "terms": "olie"
+        },
+        "area": {
+            "name": "Vlak",
+            "terms": "gebied,anders,overige,iets anders,algemeen"
+        },
+        "landuse/landfill": {
+            "name": "Stort",
+            "terms": "stortplaats,vuilnisbelt"
+        },
+        "allotments/plot": {
+            "name": "Tuintje in volkstuin",
+            "terms": "volkstuinplot,volkstuinlot,volkstuindeel"
+        },
+        "tourism/aquarium": {
+            "name": "Aquarium",
+            "terms": "vis,zee,water"
+        },
+        "type/site": {
+            "name": "Site",
+            "terms": "terrein"
+        },
+        "type/route/subway": {
+            "name": "Metrotraject",
+            "terms": "metrolijn,route,lijn,metrotraject"
+        },
+        "amenity/fast_food/burger": {
+            "name": "Burgerfastfoodzaak",
+            "terms": "hamburgerfastfoodzaak,burgerrestaurant,hamburgerrestaurant"
+        },
+        "amenity/vending_machine/fuel": {
+            "name": "Brandstofpomp",
+            "terms": "benzinepomp,dieselpomp,gaspomp,lng-pomp,cng-pomp,biodieselpomp"
+        },
+        "amenity/fountain": {
+            "name": "Fontein",
+            "terms": "water,sproeier"
+        },
+        "shop/doityourself": {
+            "name": "Bouwmarkt, doe-het-zelfwinkel",
+            "terms": "DHZ-winkel,DIY-winkel,kluswinkel"
+        },
+        "amenity/taxi": {
+            "name": "Taxistandplaats",
+            "terms": "taxi's,taxiparking"
+        },
+        "amenity/smoking_area": {
+            "name": "Rookgebied",
+            "terms": "rookzone,kankerzone,rookpaviljoen"
+        },
+        "man_made/water_tower": {
+            "name": "Watertoren"
+        },
+        "railway/train_wash": {
+            "name": "Treinwasstraat",
+            "terms": "train wash"
+        },
+        "shop/dry_cleaning": {
+            "name": "Stomerij",
+            "terms": "droogkuis,nieuwkuis"
+        },
+        "tourism/caravan_site": {
+            "name": "Caravan-/kampeerwagenterrein",
+            "terms": "caravans,kampeerwagens,campers,motorhomes,mobilehomes,terrein voor kampeerwagens"
+        },
+        "craft/clockmaker": {
+            "name": "Klokmaker",
+            "terms": "klok,uurwerk"
+        },
+        "leisure/pitch/softball": {
+            "name": "Softbalveld"
+        },
+        "shop/furniture": {
+            "name": "Meubelzaak",
+            "terms": "woonwarenhuis,meubelwinkel"
+        },
+        "public_transport/platform_ferry": {
+            "name": "Veerboothalte",
+            "terms": "ferryhalte"
+        },
+        "advertising/billboard": {
+            "name": "Reclamebord",
+            "terms": "billboard"
+        },
+        "shop/bakery": {
+            "name": "Bakkerij",
+            "terms": "banketbakkerij,patisserie"
+        },
+        "emergency/phone": {
+            "name": "Praatpaal",
+            "terms": "noodtelefoon"
+        },
+        "golf/bunker": {
+            "name": "Bunker (zandpartij in golf)",
+            "terms": "zand,golf"
+        },
+        "shop/houseware": {
+            "name": "Huisraadwinkel",
+            "terms": "huiswaar,elektronica,meubilair,meubels,huishoudelijke elektronica,gebruiksvoorwerpen"
+        },
+        "leisure/pitch/soccer": {
+            "name": "Voetbalveld",
+            "terms": "voetbalveld,voetbalterrein"
+        },
+        "natural/water/river": {
+            "name": "Rivier"
+        },
+        "type/multipolygon": {
+            "name": "Meervoudige polygoon"
+        },
+        "shop/vacant": {
+            "name": "Leegstaande winkel"
+        },
+        "amenity/social_facility/homeless_shelter": {
+            "name": "Opvangcentrum voor Daklozen",
+            "terms": "dakloos"
+        },
+        "highway/turning_loop": {
+            "name": "Keerlus (met eiland)",
+            "terms": "keerplein,draaicirkel,pijpekop,pijpenkop,einde van de straat,cul-de-sac"
+        },
+        "leisure/miniature_golf": {
+            "name": "Minigolf",
+            "terms": "golf,midgetgolf,miniatuurgolf,hole"
+        },
+        "amenity/vending_machine/ice_cream": {
+            "name": "IJs-automaat",
+            "terms": "friscoautomaat,ijsjesautomaat"
+        },
+        "amenity/hospital": {
+            "name": "Ziekenhuisgebied",
+            "terms": "ziekenhuis,hospitaal,ziekenhuisgrond,hospitaalgrond,ziekenhuisgebied,hospitaalgebied,kliniek"
+        },
+        "public_transport/stop_position_monorail": {
+            "name": "Monorailstopplaats"
+        },
+        "amenity/telephone": {
+            "name": "Telefoon",
+            "terms": "telefoonhokje"
+        },
+        "building/dormitory": {
+            "name": "Studentenflats",
+            "terms": "peda,kot,home,studentenkot"
+        },
+        "craft/blacksmith": {
+            "name": "Smid",
+            "terms": "hoefsmid,metaal,staal,smeden,smidse,smederij"
+        },
+        "landuse/residential": {
+            "name": "Woongebied",
+            "terms": "huizen,residentieel,wonen,woonwijk"
+        },
+        "leisure/stadium": {
+            "name": "Stadion",
+            "terms": "arena"
+        },
+        "highway/speed_camera": {
+            "name": "Flitspaal",
+            "terms": "snelheidscamera,flitser,flitskast,vogelkotje,nestkastje,vogelkastje"
+        },
+        "public_transport/station_monorail": {
+            "name": "Monorailstation",
+            "terms": "spoorwegstation"
+        },
+        "amenity/drinking_water": {
+            "name": "Drinkwaterkraantje",
+            "terms": "water,kraan,verfrissing"
+        },
+        "amenity/pharmacy": {
+            "name": "Apotheek"
+        },
+        "barrier/kissing_gate": {
+            "name": "Voetgangershek",
+            "terms": "veehek,kushek,kusjeshek,kissing gate"
+        },
+        "landuse/recreation_ground": {
+            "name": "Recreatiegebied",
+            "terms": "park,speelveld"
+        },
+        "office/newspaper": {
+            "name": "Krantredactie",
+            "terms": "redactie,nieuwsredactie,krantenredactie"
+        },
+        "type/restriction/no_u_turn": {
+            "name": "Niet omkeren",
+            "terms": "geen U-bocht,U-bocht verboden,omkeren verboden,omdraaien verboden,verboden om te draaien,verboden om te keren,niet omdraaien,niet keren,verboden te keren,keren verboden,niet keren,niet draaien"
+        },
+        "amenity/townhall": {
+            "name": "Gemeentehuis",
+            "terms": "stadhuis,gemeentekantoor,stadsbestuur,burgemeester"
+        },
+        "public_transport/stop_position_bus": {
+            "name": "Busstopplaats"
+        },
+        "traffic_sign/city_limit_vertex": {
+            "name": "Verkeersbord stadsgrens",
+            "terms": "plaats,dorp,nederzetting,grens,rand,bord stadsgrens"
+        },
+        "shop/hairdresser_supply": {
+            "name": "Haarbenodigdhedenwinkel",
+            "terms": "kapperswinkel"
+        },
+        "natural/water": {
+            "name": "Water"
+        },
+        "barrier/cycle_barrier": {
+            "name": "Slingerhek",
+            "terms": "fiets,fietshek,barrière,veiligheid,afsluiting,hekjes"
+        },
+        "embankment": {
+            "name": "Dijk"
+        },
+        "shop/sports": {
+            "name": "Sportzaak",
+            "terms": "sportwinkel,sportkledij,sportattributen,sporttoebehoren,sportgerief"
+        },
+        "amenity/biergarten": {
+            "name": "Biergarten",
+            "terms": "bier,terras,café"
+        },
+        "amenity/vending_machine/elongated_coin": {
+            "name": "Souvenirsmuntautomaat",
+            "terms": "muntautomaat,iconische munt,muntvervormer"
+        },
+        "type/waterway": {
+            "name": "Waterloop",
+            "terms": "waterweg,rivier,stroom,verloop,afwatering,beek,vaart,kanaal"
+        },
+        "emergency/destination": {
+            "name": "Toegang voor hulpdiensten: bestemmingsverkeer"
+        },
+        "craft/winery": {
+            "name": "Wijnbrouwerij",
+            "terms": "wijnmakerij,wijnfabriek,druiven"
+        },
+        "public_transport/stop_position_train": {
+            "name": "Treinstopplaats"
+        },
+        "shop/laundry": {
+            "name": "Wasserette",
+            "terms": "wassalon"
+        },
+        "amenity/grit_bin": {
+            "name": "Bak met Mengeling van Strooizout en Grind",
+            "terms": "winter,ijs,ijsvrij,ijsruimen,ontdooien,grip,antislip"
+        },
+        "amenity/bank": {
+            "name": "Bank (financieel)",
+            "terms": "geld,rekening"
+        },
+        "amenity/prison": {
+            "name": "Gevangenisgebied",
+            "terms": "penitentiair complex"
+        },
+        "leisure/fishing": {
+            "name": "Visstek",
+            "terms": "visplaats,hengelplaats"
+        },
+        "building/boathouse": {
+            "name": "Boothuis",
+            "terms": "botenhuis,bootligplaats"
+        },
+        "amenity/police": {
+            "name": "Politiekantoor",
+            "terms": "politie,rijkswacht,gendarmerie"
+        },
+        "place/farm": {
+            "name": "Boerderij"
+        },
+        "highway/service/driveway": {
+            "name": "Oprit",
+            "terms": "privéweg,privéoprit"
+        },
+        "leisure/pitch/basketball": {
+            "name": "Basketbalveld",
+            "terms": "basketbalterrein"
+        },
+        "seamark/buoy_lateral": {
+            "name": "Vaargeulboei"
+        },
+        "shop/newsagent": {
+            "name": "Kranten-/Tijdschriftwinkel",
+            "terms": "nieuws,kranten,tijdschriften,magazines"
+        },
+        "building/residential": {
+            "name": "Woongebouw",
+            "terms": "residentieel gebouw,appartementsgebouw,flats"
+        },
+        "landuse/greenhouse_horticulture": {
+            "name": "Glastuinbouw",
+            "terms": "kassenbouw,kassencomplex,tuinbouwcomplex,groeikasbouw,kasbouw,serrebouw"
+        },
+        "healthcare": {
+            "name": "Gezondheidszorg-faciliteit",
+            "terms": "medische faciliteit"
+        },
+        "amenity/community_centre": {
+            "name": "Buurthuis",
+            "terms": "feestzaal,parochiezaal,gemeenschapshuis"
+        },
+        "shop/tyres": {
+            "name": "Bandenwinkel"
+        },
+        "aeroway/gate": {
+            "name": "Luchthaven-gate",
+            "terms": "terminal,boarden,passagiers,instappen,uitstappen,gate,vliegveld"
+        },
+        "seamark/beacon_lateral": {
+            "name": "Vaargeulbaken"
+        },
+        "man_made/mast/communication/mobile_phone": {
+            "name": "Mobieletelefoonmast",
+            "terms": "GSM-mast"
+        },
+        "manhole/drain": {
+            "name": "Kolk (rioolput)",
+            "terms": "straatkolk,trottoirkolk,afvoerputje,putje,rioolputje"
+        },
+        "traffic_calming/island": {
+            "name": "Verkeerseiland",
+            "terms": "rotonde,cirkel,langzaam"
+        },
+        "playground/cushion": {
+            "name": "Springkussen"
+        },
+        "highway/footway/conveying": {
+            "name": "Rolband",
+            "terms": "loopband,rolbaan,rollend trottoir,lopende band"
+        },
+        "aerialway/gondola": {
+            "name": "Kabelbaan met gondeltjes",
+            "terms": "gondellift,gondola,skilift"
+        },
+        "shop/window_blind": {
+            "name": "Jaloeziewinkel",
+            "terms": "zonwering,luiken,jaloezieën"
+        },
+        "advertising/column": {
+            "name": "Reclamezuil",
+            "terms": "reclamepaal,advertentiezuil,advertentiepaal"
+        },
+        "amenity/restaurant/italian": {
+            "name": "Italiaans restaurant"
+        },
+        "building/temple": {
+            "name": "Tempelgebouw"
+        },
+        "landuse/military/barracks": {
+            "name": "Kazerne",
+            "terms": "barakken,soldaten,troepen,militair,leger"
+        },
+        "amenity/casino": {
+            "name": "Casino",
+            "terms": "gokken,kansspelen"
+        },
+        "amenity/coworking_space": {
+            "name": "Coworking-kantoor"
+        },
+        "tourism/museum": {
+            "name": "Museum",
+            "terms": "museum"
+        },
+        "railway/buffer_stop": {
+            "name": "Stootblok",
+            "terms": "stootjuk"
+        },
+        "aerialway/pylon": {
+            "name": "Kabelbaanpilaar",
+            "terms": "skiliftpaal,kabelbaanpaal,paal,pilaar"
+        },
+        "craft/chimney_sweeper": {
+            "name": "Schoorsteenveger",
+            "terms": "schouwveger"
+        },
+        "railway/narrow_gauge": {
+            "name": "Smalspoor",
+            "terms": "smal spoor,normaalspoor,spoor"
+        },
+        "shop/curtain": {
+            "name": "Gordijnenwinkel",
+            "terms": "gordijnenwinkel,gordijnenzaak"
+        },
+        "amenity/recycling_container": {
+            "name": "Recyclingcontainer"
+        },
+        "healthcare/hospice": {
+            "name": "Palliatievezorgcentrum",
+            "terms": "hospice,hospitium,terminale zorg,terminaal,ongeneeslijk ziek,terminaal ziek,hospicezorg,palliatieve zorg,palliatievezorgeenheid"
+        },
+        "leisure/pitch/tennis": {
+            "name": "Tennisveld",
+            "terms": "tennisbaan,tennisterrein"
+        },
+        "amenity/clinic/abortion": {
+            "name": "Abortiecentrum",
+            "terms": "abortus"
+        },
+        "craft/watchmaker": {
+            "name": "Horlogemaker",
+            "terms": "uurwerkmaker"
+        },
+        "highway/footway/marked": {
+            "name": "Voetgangersoversteekplaats"
+        },
+        "leisure/fitness_centre": {
+            "name": "Fitnesscentrum",
+            "terms": "conditie,gym,sportschool,krachttraining,bodybuilding"
+        },
+        "highway/corridor": {
+            "name": "Gang in gebouw",
+            "terms": "binnen,binnenshuis,hal"
+        },
+        "traffic_sign/maxspeed_vertex": {
+            "name": "Verkeersbord maximumsnelheid",
+            "terms": "maximumsnelheidsbord,maximale snelheid,snelheidslimietbord"
+        },
+        "attraction/animal": {
+            "name": "Dier",
+            "terms": "zoo,dierenpark,kooi"
+        },
+        "amenity/restaurant/asian": {
+            "name": "Aziatisch restaurant"
+        },
+        "craft/bookbinder": {
+            "name": "Boekbinder",
+            "terms": "boekbinderij,inbinder"
+        },
+        "man_made/groyne": {
+            "name": "Strandhoofd",
+            "terms": "golfbreker"
+        },
+        "shop/country_store": {
+            "name": "Outdoorzaak",
+            "terms": "kampeerzaak,landelijk,scoutingwinkel,jacht,ruiter,paardrijden,tuinmachines"
+        },
+        "shop/pawnbroker": {
+            "name": "Bank van lening",
+            "terms": "pandhuis,lommerd,lombard,kredietinstelling,lenen,geld"
+        },
+        "shop/beverages": {
+            "name": "Drankenwinkel",
+            "terms": "drankenhandel,bierhuis,drankenhuis,drankhandel,wijnhandel,drankenwinkel,slijterij"
+        },
+        "public_transport/platform_bus": {
+            "name": "Bushalte",
+            "terms": "halte"
+        },
+        "entrance": {
+            "name": "Ingang/Uitgang",
+            "terms": "ingang,uitgang"
+        },
+        "emergency/fire_alarm": {
+            "name": "Brandmeldknop",
+            "terms": "brandmelder,brandalarm,brandweeroproep"
+        },
+        "amenity/place_of_worship/jewish": {
+            "name": "Joodse synagoge"
+        },
+        "highway/construction": {
+            "name": "Weg gesloten"
+        },
+        "power/tower": {
+            "name": "Hoogspanningsmast",
+            "terms": "hoogspanningstoren,elektriciteitsmast"
+        },
+        "aerialway/cable_car": {
+            "name": "Kabelbaan met één of twee cabines",
+            "terms": "skilift"
+        },
+        "landuse/military/airfield": {
+            "name": "Militair vliegveld",
+            "terms": "leger,luchtmacht,vliegtuigen"
+        },
+        "craft/boatbuilder": {
+            "name": "Scheepsbouwer",
+            "terms": "botenbouwer,boot,schip"
+        },
+        "craft/shoemaker": {
+            "name": "Schoenmaker",
+            "terms": "schoenenmaker"
+        },
+        "shop/interior_decoration": {
+            "name": "Binnenhuisdecoratiewinkel",
+            "terms": "versiering,decoratie,huis,interieur,stijl"
+        },
+        "man_made/crane": {
+            "name": "Permanente kraan",
+            "terms": "kraan,containerkraan,havenkraan"
+        },
+        "seamark/buoy_lateral/green": {
+            "name": "Groene boei"
+        },
+        "leisure/pitch/table_tennis": {
+            "name": "Pingpongtafel",
+            "terms": "tafeltennistafel"
+        },
+        "attraction/maze": {
+            "name": "Doolhof",
+            "terms": "labyrint"
+        },
+        "amenity/place_of_worship/sikh": {
+            "name": "Sikh-tempel",
+            "terms": "gurudwara,tempel"
+        },
+        "amenity/social_facility/food_bank": {
+            "name": "Voedselbank",
+            "terms": "voedselbank"
+        },
+        "shop/nutrition_supplements": {
+            "name": "Voedingssupplementenwinkel",
+            "terms": "supplementen,vitaminen,mineralen,kruiden,eiwitten"
+        },
+        "craft/gardener": {
+            "name": "Tuinman",
+            "terms": "hovenier,tuinbouwer,tuinaannemer"
+        },
+        "building/church": {
+            "name": "Kerkgebouw"
+        },
+        "man_made/tower/bell_tower": {
+            "name": "Klokkentoren"
+        },
+        "shop/video_games": {
+            "name": "Computerspelwinkel"
+        },
+        "traffic_calming/dip": {
+            "name": "Verkeersremmende greppel"
+        },
+        "traffic_calming/choker": {
+            "name": "Vernauwing",
+            "terms": "wegversmalling,versmalling,wegvernauwing"
+        },
+        "railway/funicular": {
+            "name": "Kabelspoorweg",
+            "terms": "kabelbaan,teleferiek,funiculaire"
+        },
+        "power/transformer": {
+            "name": "Transformator",
+            "terms": "trafo,omvormer"
+        },
+        "power/generator": {
+            "name": "Elektriciteitsgenerator",
+            "terms": "stroom,elektriciteit,energieopwekking,windmolen,windturbine,zonnepaneel,elektriciteitscentrale,energiecentrale,kerncentrale"
+        },
+        "natural/wetland": {
+            "name": "Moeras of drassig gebied",
+            "terms": "drasland,moerassen en waterrijke gebieden,drassig gebied"
+        },
+        "landuse/military/naval_base": {
+            "name": "Marinebasis",
+            "terms": "militair,leger,zeemacht"
+        },
+        "shop/department_store": {
+            "name": "Warenhuis",
+            "terms": "grootwarenhuis,winkelcentrum,shopping center"
+        },
+        "historic/wayside_cross": {
+            "name": "Wegkruis",
+            "terms": "bermmonument,veldkruis,bermkruis,hagelkruis,ongevalskruis,memoriekruis,moordkruis,zoenkruis,boetekruis,doodslagkruis"
+        },
+        "man_made/petroleum_well": {
+            "name": "Oliebron",
+            "terms": "olieput,gasbron"
+        },
+        "healthcare/alternative": {
+            "name": "Alternatieve geneeskunde",
+            "terms": "kwakzalverij"
+        },
+        "leisure/fitness_station/parallel_bars": {
+            "name": "Gymnastische brug",
+            "terms": "brug met gelijke leggers,brug met ongelijke leggers,damesbrug,herenbrug,dipstangen,fitness"
+        },
+        "highway/footway": {
+            "name": "Wandelpad",
+            "terms": "voetpad"
+        },
+        "building/roof": {
+            "name": "Dak",
+            "terms": "afdak"
+        },
+        "natural/tree_row": {
+            "name": "Bomenrij"
+        },
+        "craft/upholsterer": {
+            "name": "Stoffeerder",
+            "terms": "meubelstoffeerder,bekleder"
+        },
+        "natural/glacier": {
+            "name": "IJsgletsjer",
+            "terms": "gletsjer"
+        },
+        "shop/storage_rental": {
+            "name": "Verworpen tag, gebruik dit niet"
+        },
+        "shop/fashion": {
+            "name": "Modewinkel",
+            "terms": "kledij,kleding"
+        },
+        "natural/water/canal": {
+            "name": "Kanaal"
+        },
+        "power/substation": {
+            "name": "Transformatiestation",
+            "terms": "stroom,elektriciteit,energievoorzieningen,transformator,distributie,transformatiecabine,laagspanning,hoogspanning,voltage,spanning,onderstation,klein onderstation,distributiecabine,ondercentrale"
+        },
+        "amenity/fast_food": {
+            "name": "Fastfoodrestaurant",
+            "terms": "hamburgers,frieten,pizza"
+        },
+        "type/route/pipeline": {
+            "name": "Pijpleidingstraject",
+            "terms": "pijplijnroute,pijplijntraject,pijpleidingsroute"
+        },
+        "landuse/religious": {
+            "name": "Religieus gebied"
+        },
+        "traffic_sign/city_limit": {
+            "name": "Verkeersbord stadsgrens",
+            "terms": "plaats,dorp,nederzetting,grens,rand,bord stadsgrens"
+        },
+        "barrier/cattle_grid": {
+            "name": "Wildrooster",
+            "terms": "koeienrooster"
+        },
+        "tourism/motel": {
+            "name": "Motel",
+            "terms": "motorhotel"
+        },
+        "building/cathedral": {
+            "name": "Kathedraalgebouw",
+            "terms": "kerkgebouw"
+        },
+        "office/notary": {
+            "name": "Notariskantoor",
+            "terms": "notariaat, notaris, kantoor van notaris"
+        },
+        "natural/reef": {
+            "name": "Rif",
+            "terms": "ondiepte,koraalrif,zandbank"
+        },
+        "craft/photographic_laboratory": {
+            "name": "Foto-ontwikkellab",
+            "terms": "donkere kamer,foto,analoge foto,negatieven,fotograaf,fotografie"
+        },
+        "man_made/tower/minaret": {
+            "name": "Minaret"
+        },
+        "amenity/waste/dog_excrement": {
+            "name": "Afvalbak voor hondenpoep",
+            "terms": "hondenstront,hondenpoepbuis,hondenstrontbuis"
+        },
+        "leisure/slipway": {
+            "name": "Botenhelling",
+            "terms": "trailerhelling,tewaterlating,te water laten,boot,helling,boothelling"
+        },
+        "leisure/dance": {
+            "name": "Danszaal",
+            "terms": "ballroom,jive,swing,tango,wals"
+        },
+        "traffic_calming/hump": {
+            "name": "Verkeersdrempel, 2 meter of langer",
+            "terms": "snelheidsdrempel,plateau,verkeersplateau"
+        },
+        "man_made/clearcut": {
+            "name": "Gekapt bos"
+        },
+        "building/chapel": {
+            "name": "Kapelgebouw"
+        },
+        "craft/caterer": {
+            "name": "Catering",
+            "terms": "cateraar,traiteur"
+        },
+        "office/research": {
+            "name": "Onderzoekskantoor",
+            "terms": "researchkantoor,laboratorium,R&D"
+        },
+        "office/travel_agent": {
+            "name": "Reisbureau"
+        },
+        "piste/downhill": {
+            "name": "Downhillpiste"
+        },
+        "highway/footway/unmarked-raised": {
+            "name": "Ongemarkeerde oversteekplaats (op drempel)"
+        },
+        "craft/jeweler": {
+            "name": "Juwelier"
+        },
+        "landuse/industrial/slaughterhouse": {
+            "name": "Slachthuis",
+            "terms": "slachterij,abattoir,veeslachterij"
+        },
+        "office/telecommunication": {
+            "name": "Telecomkantoor",
+            "terms": "belwinkel,gsm-winkel,telcokantoor"
+        },
+        "shop/bag": {
+            "name": "Zak-/Reiskofferwinkel",
+            "terms": "zakken,bagage,kofferwinkel,zakwinkel,reiskofferwinkel"
+        },
+        "historic/tomb": {
+            "name": "Graftombe",
+            "terms": "tombe,grafmonument,grafheuvel,hunebed,megaliet,mausoleum"
+        },
+        "amenity/vending_machine/electronics": {
+            "name": "Electronica-automaat",
+            "terms": "automaat"
+        },
+        "leisure/pitch/netball": {
+            "name": "Netballveld"
+        },
+        "waterway/water_point": {
+            "name": "Waterpunt voor boten",
+            "terms": "drinkwatertank,watertank"
+        },
+        "shop/garden_centre": {
+            "name": "Tuincentrum",
+            "terms": "tuincentrum,bloemist,kas,kassen"
+        },
+        "leisure/sports_centre/swimming": {
+            "name": "Zwembadfaciliteit",
+            "terms": "zwemmen,waterbad,duiken"
+        },
+        "barrier/hedge": {
+            "name": "Haag",
+            "terms": "heg,haag"
+        },
+        "shop/kitchen": {
+            "name": "Keukenontwerpwinkel",
+            "terms": "keukendesignwinkel,keukendesignzaak,keukenwinkel,keukenzaak"
+        },
+        "building/garages": {
+            "name": "Garages (privéstalling voor voertuigen)",
+            "terms": "autogarage"
+        },
+        "leisure/pitch/rugby_league": {
+            "name": "Rugby League-veld",
+            "terms": "rugby,american football,football"
+        },
+        "shop/beauty": {
+            "name": "Schoonheidssalon",
+            "terms": "schoonheidswinkel,schoonheidsspeciaalzaak"
+        },
+        "amenity/charging_station": {
+            "name": "Oplaadstation",
+            "terms": "elektrisch,elektriciteit,oplaadpaal,tankstation"
+        },
+        "amenity/music_school": {
+            "name": "Muziekschool",
+            "terms": "muziekacademie,conservatorium"
+        },
+        "man_made/antenna": {
+            "name": "Antenne",
+            "terms": "zender,ontvanger,radio,zendmast"
+        },
+        "waterway/canal": {
+            "name": "Kanaal",
+            "terms": "vaart,afvoerkanaal,waterkanaal"
+        },
+        "leisure/common": {
+            "name": "Gemene weide",
+            "terms": "gemeenschappelijke grond,open ruimte"
+        },
+        "type/route/horse": {
+            "name": "Ruitertraject"
+        },
+        "amenity/dojo": {
+            "name": "Dojo / School voor Japanse krijgskunsten",
+            "terms": "judo,karate,kungfu,aikido,kendo,dojang,gevechtskunsten,vechtkunsten,japans gevechtskunsten,martial arts"
+        },
+        "landuse/farmland": {
+            "name": "Landbouwgrond",
+            "terms": "akker,veld,agricultuur,boerderij"
+        },
+        "shop/baby_goods": {
+            "name": "Babyartikelenwinkel",
+            "terms": "kledijwinkel,fopspeenwinkel,tutters,knuffels,babyspullenwinkel,babykledijwinkel"
+        },
+        "shop/fishmonger": {
+            "name": "Visboer"
+        },
+        "place/square": {
+            "name": "Plein",
+            "terms": "open plein,open plaats"
+        },
+        "amenity/shelter/gazebo": {
+            "name": "Kiosk",
+            "terms": "paviljoen"
+        },
+        "man_made/storage_tank": {
+            "name": "Opslagtank",
+            "terms": "olietank,silo"
+        },
+        "place/neighbourhood": {
+            "name": "Buurt",
+            "terms": "kwartier,wijk"
+        },
+        "amenity/fast_food/chicken": {
+            "name": "Kippenfastfoodzaak",
+            "terms": "kippenrestaurant"
+        },
+        "playground/slide": {
+            "name": "Glijbaan"
+        },
+        "leisure/pitch/beachvolleyball": {
+            "name": "Beachvolleybalveld",
+            "terms": "strandvolleybalveld,volleybalveld,zandveld"
+        },
+        "playground/basket_swing": {
+            "name": "Mandschommel",
+            "terms": "schommel"
+        },
+        "highway/footway/marked-raised": {
+            "name": "Voetgangersoversteekplaats (op drempel)"
+        },
+        "public_transport/stop_position_aerialway": {
+            "name": "Kabelbaanstopplaats"
+        },
+        "playground/climbing_frame": {
+            "name": "Klimrek"
+        },
+        "tourism/artwork/mural": {
+            "name": "Muurschildering",
+            "terms": "fresco"
+        },
+        "man_made/chimney": {
+            "name": "Industriële schoorsteen",
+            "terms": "schoorsteen,schouw"
+        },
+        "shop/mall": {
+            "name": "Winkelcentrum",
+            "terms": "shopping center,grootwarenhuis,warenhuis"
+        },
+        "barrier/wall": {
+            "name": "Muur",
+            "terms": "wand"
+        },
+        "craft/insulator": {
+            "name": "Isolatie"
+        },
+        "shop/herbalist": {
+            "name": "Herbalist",
+            "terms": "homeopathie"
+        },
+        "landuse/vineyard": {
+            "name": "Wijngaard",
+            "terms": "wijngaard"
+        },
+        "building/grandstand": {
+            "name": "Overdekte tribune"
+        },
+        "traffic_calming/rumble_strip": {
+            "name": "Verkeerswasbord",
+            "terms": "rammelstrook,ribbeltjesstrook,ribbelstrook,ribbelstrook over volledig wegdek"
+        },
+        "leisure/pitch/badminton": {
+            "name": "Badmintonveld"
+        },
+        "office/tax_advisor": {
+            "name": "Kantoor van belastingsadviseur",
+            "terms": "belastingsontwijking*,belastingsontduiking*,belastingsminimalisatie*,belastingen,belastingsreductie*"
+        },
+        "aerialway/drag_lift": {
+            "name": "Ski-sleeplift",
+            "terms": "skilift,stoeltjeslift,babyliftje"
+        },
+        "bridge/support/pier": {
+            "name": "Brugpijler",
+            "terms": "draagelement van brug,brugfundament,brugtoren"
+        },
+        "healthcare/midwife": {
+            "name": "Verloskundige",
+            "terms": "vroedkundige,vroedvrouw"
+        },
+        "aeroway/hangar": {
+            "name": "Hangar",
+            "terms": "loods,hangaar,opslagplaats,shelter"
+        },
+        "healthcare/psychotherapist": {
+            "name": "Psychotherapeut",
+            "terms": "psychotherapie,psycholoog,psychologie,psychiatrie,psychiater"
+        },
+        "building/retail": {
+            "name": "Handelspand",
+            "terms": "verkoop,winkel,handel,winkelgebouw,commercieel,shopping"
+        },
+        "highway/motorway_link": {
+            "name": "Verbindingsweg van autosnelweg",
+            "terms": "autostrade,snelweg,autosnelweg,link,invoegstrook,afslag"
+        },
+        "amenity/car_pooling": {
+            "name": "Oppikplaats voor carpooling",
+            "terms": "carpooling,samenrijden,afzetplaats voor samenrijden,oppikplaats voor carpooling,carpoolparking,carpoolstopplaats"
+        },
+        "place/isolated_dwelling": {
+            "name": "Alleenstaande woning"
+        },
+        "shop/bed": {
+            "name": "Bed-/Matrassenwinkel",
+            "terms": "beddenzaak,matrassenzaak,beddenwinkel,bedwinkel,matrassenwinkel"
+        },
+        "natural/scrub": {
+            "name": "Scrubland",
+            "terms": "kreupelhout,ruigte,savanne,prairie,pampa"
+        },
+        "craft/photographer": {
+            "name": "Fotograaf",
+            "terms": "portetten,pasfoto's,fotografie,fotokunstenaar"
+        },
+        "building/pavilion": {
+            "name": "Paviljoen"
+        },
+        "shop": {
+            "name": "Winkel",
+            "terms": "handelszaak"
+        },
+        "attraction/big_wheel": {
+            "name": "Reuzenrad",
+            "terms": "panoramisch rad,gondelrad"
+        },
+        "office/religion": {
+            "name": "Religieus kantoor"
+        },
+        "landuse/military/obstacle_course": {
+            "name": "Militair hindernissenparcours",
+            "terms": "oefenterrein,leger"
+        },
+        "natural/spring": {
+            "name": "Bron"
+        },
+        "man_made/pipeline": {
+            "name": "Pijpleiding",
+            "terms": "pijplijn,pijpleiding"
+        },
+        "man_made/observatory": {
+            "name": "Observatorium",
+            "terms": "sterrenwacht,astronomisch observatorium,meteorologisch observatorium"
+        },
+        "attraction/pirate_ship": {
+            "name": "Piratenschip",
+            "terms": "piratenboot"
+        },
+        "healthcare/alternative/chiropractic": {
+            "name": "Chiropractor",
+            "terms": "chiropraxie,chiropraxis,ruggewervel,wervelkolom"
+        },
+        "attraction/summer_toboggan": {
+            "name": "Zomerrodelbaan"
+        },
+        "amenity/childcare": {
+            "name": "Kinderdagverblijf",
+            "terms": "crèche,kribbe,kinderkribbe,baby,peuter"
+        },
+        "barrier/kerb/flush": {
+            "name": "Stoeprand zonder hoogteverschil",
+            "terms": "naadloze trottoirrand,naadloze stoeprand,trottoirrand zonder hoogteverschil"
+        },
+        "office/educational_institution": {
+            "name": "Kantoor van onderwijsinstelling",
+            "terms": "educatieve instelling,onderricht,onderwijsinstelling"
+        },
+        "shop/deli": {
+            "name": "Delicatessenwinkel",
+            "terms": "delicatesse,speciaalzaak,delicatessenwinkel,delicatessen,winkel"
+        },
+        "leisure/pitch/equestrian": {
+            "name": "Paardrijpiste",
+            "terms": "bak,dressuur,paardenbak,manegebak"
+        },
+        "place/quarter": {
+            "name": "Wijk",
+            "terms": "wijk,buurt,stadsdeel"
+        },
+        "healthcare/rehabilitation": {
+            "name": "Revalidatiekliniek",
+            "terms": "cognitieverevalidatiekliniek,neuropsychologischerevalidatiekliniek,verslavingszorg,ontwenningskliniek,afkickkliniek,beroepsrevalidatie,psychologischerevalidatiekliniek,gezichtsrevalidatiekliniek"
+        },
+        "shop/perfumery": {
+            "name": "Parfumwinkel",
+            "terms": "parfumerie,geuren,eau de toilette,eau de parfum"
+        },
+        "amenity/restaurant/vietnamese": {
+            "name": "Vietnamees restaurant"
+        },
+        "highway/service/drive-through": {
+            "name": "Drive-through",
+            "terms": "drive-in"
+        },
+        "shop/kiosk": {
+            "name": "Winkelkiosk",
+            "terms": "kiosk,nieuwskiosk,krantenwinkel,krantenkiosk"
+        },
+        "landuse/military/danger_area": {
+            "name": "Militaire gevarenzone",
+            "terms": "bommen,munitie,leger,gevarenzone,geen toegang,ontruimingszone,militaire ontruimingszone"
+        },
+        "shop/confectionery": {
+            "name": "Snoepwinkel"
+        },
+        "tourism/information/guidepost": {
+            "name": "Wandel-, fiets-, e.d. -wegwijzer",
+            "terms": "wegwijzer,wandelroutewegwijzer,fietsroutewegwijzer,routewegwijzer,route,wandelwegwijzer,fietswegwijzer"
+        },
+        "shop/electronics": {
+            "name": "Huishoudtoestellen-/Witgoedwinkel",
+            "terms": "huishoudelektro,witgoed,elektro,electro,wasmachine,keuken,vaatwasmachine,afwasmachine"
+        },
+        "waterway": {
+            "name": "Waterloop"
+        },
+        "amenity/clinic": {
+            "name": "Dagkliniek",
+            "terms": "dagkliniek"
+        },
+        "public_transport/stop_position_light_rail": {
+            "name": "Lightrailstopplaats",
+            "terms": "lichtspoorstopplaats,tramtreinstopplaats,sneltramstopplaats,lichtgewichttreinstopplaats"
+        },
+        "amenity/place_of_worship/buddhist": {
+            "name": "Boeddhistische tempel",
+            "terms": "boedistische tempel,boeddha,boeddhisme,tempel,stupa,vihara,klooster,pagode,zendo,dojo"
+        },
+        "natural/bare_rock": {
+            "name": "Onbedekte rots",
+            "terms": "rotsformatie,blote rots"
+        },
+        "leisure/pitch/australian_football": {
+            "name": "Australianfootballveld",
+            "terms": "footyveld,Australian rules football,Aussie rules,rugbyveld"
+        },
+        "amenity/language_school": {
+            "name": "Taalschool"
+        },
+        "amenity/crematorium": {
+            "name": "Crematorium",
+            "terms": "verassingscentrum,uitvaartcentrum,verbrandingsoven"
+        },
+        "building/farm_auxiliary": {
+            "name": "Boerderijgebouw",
+            "terms": "gebouw van boerderij"
+        },
+        "power/switch": {
+            "name": "Stroomschakelaar",
+            "terms": "schakelaar,hoogspanningsschakelaar,onderbreker,circuitbreker,elektrische schakelaar,elektriciteitsschakelaar"
+        },
+        "amenity/waste_basket": {
+            "name": "Prullenbak",
+            "terms": "afvalbak,vuilnisbak"
+        },
+        "building/construction": {
+            "name": "Gebouw in opbouw",
+            "terms": "constructie,werken,onaf,ruwbouw,nieuwbouw"
+        },
+        "highway/unclassified": {
+            "name": "Kleine openbare weg",
+            "terms": "ongeclassificeerde weg,niet-geclassificeerde weg,gemeenteweg,gemeentelijke weg,straat"
+        },
+        "office/charity": {
+            "name": "Kantoor van liefdadigheidsinstelling",
+            "terms": "liefdadigheidsinstellingskantoor"
+        },
+        "office/foundation": {
+            "name": "Kantoor van stichting",
+            "terms": "stichtingskantoor"
+        },
+        "amenity/social_facility": {
+            "name": "Sociale Faciliteit",
+            "terms": "OCMW,kansarmen,hulp,hulpcentrum"
+        },
+        "shop/hifi": {
+            "name": "Hifi-/Bruingoedwinkel",
+            "terms": "audio,bruingoed,hifi,stereoinstallatie"
+        },
+        "craft/window_construction": {
+            "name": "Raam- en deurkadermaker",
+            "terms": "raamconstructie,ramen,vensters,kozijnen,deuren"
+        },
+        "shop/appliance": {
+            "name": "Huishoudelijkeapparatuurwinkel",
+            "terms": "huisraadwinkel,huishoudelijke apparatuur"
+        },
+        "craft/tinsmith": {
+            "name": "Loodgieter",
+            "terms": "plombeur,waterleidingen"
+        },
+        "golf/green": {
+            "name": "Putting Green",
+            "terms": "golf"
+        },
+        "man_made/windmill": {
+            "name": "Windmolen"
+        },
+        "shop/mobile_phone": {
+            "name": "Mobieletelefoonwinkel",
+            "terms": "gsm-winkel,telefoonwinkel,telefoonzaak,gsm-zaak,mobieltjeswinkel,mobieltjeszaak"
+        },
+        "craft/basket_maker": {
+            "name": "Mandenvlechter",
+            "terms": "mand,vlecht,handwerk"
+        },
+        "building/service": {
+            "name": "Klein machinegebouw (pomp, onderstation …)",
+            "terms": "dienstgebouw,machinegebouw,machinekamer"
+        },
+        "place/town": {
+            "name": "Plaats",
+            "terms": "stad,gemeente"
+        },
+        "highway/tertiary_link": {
+            "name": "Verbindingsweg van tertiaire weg",
+            "terms": "invoegstrook,oprit,afrit,provinciale weg,gewestweg,provincieweg"
+        },
+        "tourism/information": {
+            "name": "Informatie",
+            "terms": "i,info,vvv,touristeninformatie,office de tourisme,tourismekantoor"
+        },
+        "amenity/vending_machine/coffee": {
+            "name": "Koffieautomaat",
+            "terms": "koffiezetmachine"
+        },
+        "landuse/military/training_area": {
+            "name": "Militair oefenterrein",
+            "terms": "oefenterrein,leger,opleiding,training,soldaten"
+        },
+        "playground/horizontal_bar": {
+            "name": "Rekstok als speeltuig"
+        },
+        "natural/water/lake": {
+            "name": "Meer",
+            "terms": "ven"
+        },
+        "shop/video": {
+            "name": "Videotheek",
+            "terms": "videoverhuur,dvd-theek,dvd-verhuur"
+        },
+        "amenity/animal_breeding": {
+            "name": "Fokkerij",
+            "terms": "kwekerij,stoeterij"
+        },
+        "building/warehouse": {
+            "name": "Opslagplaats",
+            "terms": "magazijn,warenhuis"
+        },
+        "railway/tram": {
+            "name": "Tramspoor",
+            "terms": "tramlijn,spoor"
+        },
+        "power/minor_line": {
+            "name": "Kleine elektriciteitslijn",
+            "terms": "stroomlijn,laagspanningslijn,laagspanningsleiding,elektriciteitsnet,elektriciteitslijn"
+        },
+        "amenity/social_facility/nursing_home": {
+            "name": "Verpleeghuis",
+            "terms": "verpleegtehuis,rust- en verzorgingstehuis,rusttehuis,rusthuis,bejaardentehuis,RVT,VVT"
+        },
+        "building/train_station": {
+            "name": "Treinstationgebouw"
+        },
+        "amenity/restaurant/thai": {
+            "name": "Thais restaurant"
+        },
+        "public_transport/station_light_rail": {
+            "name": "Lightrailstation",
+            "terms": "lichtspoorstation,tramtreinstation,sneltramstation,lichtgewichttreinstation,spoorwegstation"
+        },
+        "landuse/farmyard": {
+            "name": "Boerenerf",
+            "terms": "boerderij,hoeve,landbouw,hofstee"
+        },
+        "man_made/works": {
+            "name": "Fabriek",
+            "terms": "assemblage,brouwerij,autofabriek,productie,industrie,raffinaderij"
+        },
+        "craft/plumber": {
+            "name": "Loodgieter",
+            "terms": "loodgieter"
+        },
+        "highway/cycleway": {
+            "name": "Fietspad",
+            "terms": "rijwielpad,fietssnelweg,flitsfietspad,fietsoversteekplaats"
+        },
+        "man_made/gasometer": {
+            "name": "Gashouder",
+            "terms": "voorraadtank,gastank,gasopslagtank,oude gastank"
+        },
+        "shop/hardware": {
+            "name": "Bouwmarkt",
+            "terms": "bouwcentrum,bouwmaterialenspeciaalzaak"
+        },
+        "amenity/car_sharing": {
+            "name": "Autodelen",
+            "terms": "gedeelde auto"
+        },
+        "shop/funeral_directors": {
+            "name": "Begrafenisondernemer",
+            "terms": "rouwcentrum"
+        },
+        "tourism/zoo": {
+            "name": "Dierentuin",
+            "terms": "zoo"
+        },
+        "amenity/payment_centre": {
+            "name": "Betalingscentrum"
+        },
+        "shop/computer": {
+            "name": "Computerwinkel",
+            "terms": "IT,ICT,hardware,software,electronica,laptop"
+        },
+        "landuse/grass": {
+            "name": "Grasland",
+            "terms": "gras,gazon"
+        },
+        "natural/grassland": {
+            "name": "Natuurlijk grasland",
+            "terms": "grasland,grassen en kruidachtige planten,prairie,savanne"
+        },
+        "amenity/animal_boarding": {
+            "name": "Dierenpension",
+            "terms": "dierenhotel,kennel,huisdierenpension,huisdierenhotel,hondenhotel,hondenpension"
+        },
+        "highway/stop": {
+            "name": "Stopbord",
+            "terms": "stopstreep,stopteken"
+        },
+        "emergency/no": {
+            "name": "Toegang voor hulpdiensten: nee"
+        },
+        "public_transport/stop_position_ferry": {
+            "name": "Veerbootstopplaats",
+            "terms": "ferrystopplaats,veerbootaanmeerplaats,ferryaanmeerplaats,aanmeerplaats"
+        },
+        "tourism": {
+            "name": "Toerisme"
+        },
+        "traffic_sign": {
+            "name": "Verkeersbord"
+        },
+        "amenity/public_bath": {
+            "name": "Publiek bad",
+            "terms": "badhuis,onsen,voetbaden,warmwaterbronnen"
+        },
+        "amenity/car_wash": {
+            "name": "Autowasstraat",
+            "terms": "carwash,wasstraat"
+        },
+        "highway/street_lamp": {
+            "name": "Straatlantaarn",
+            "terms": "straatverlichting,straatlamp,lantaarnpaal"
+        },
+        "playground/zipwire": {
+            "name": "Tokkelbaan"
+        },
+        "tourism/theme_park": {
+            "name": "Themapark",
+            "terms": "pretpark"
+        },
+        "emergency/siren": {
+            "name": "Sirene"
+        },
+        "shop/watches": {
+            "name": "Horlogewinkel",
+            "terms": "uurwerkwinkel,klokkenwinkel"
+        },
+        "amenity/parking_entrance": {
+            "name": "Ingang/Uitgang van parkeergelegenheid",
+            "terms": "inrit,uitrit"
+        },
+        "landuse": {
+            "name": "Landgebruik"
+        },
+        "waterway/riverbank": {
+            "name": "Rivieroever"
+        },
+        "type/route/light_rail": {
+            "name": "Lightrailtraject",
+            "terms": "lichtspoorroute,lichtespoorwegroute"
+        },
+        "shop/music": {
+            "name": "Muziekwinkel"
+        },
+        "amenity/fast_food/fish_and_chips": {
+            "name": "Fish-and-chipsfastfoodzaak"
+        },
+        "barrier/toll_booth": {
+            "name": "Tolhuisje",
+            "terms": "tol,betalen,heffing,tolkantoor"
+        },
+        "highway/crossing/unmarked": {
+            "name": "Oversteekplaats",
+            "terms": "zebrapad"
+        },
+        "craft/stonemason": {
+            "name": "Metselaar",
+            "terms": "metselaar"
+        },
+        "aerialway": {
+            "name": "Kabelbaan"
+        },
+        "amenity/nightclub": {
+            "name": "Nachtclub",
+            "terms": "dancing,bar,uitgaan,disco"
+        },
+        "waterway/dam": {
+            "name": "Dam",
+            "terms": "dam"
+        },
+        "amenity/school": {
+            "name": "Schoolgebied",
+            "terms": "school,onderwijs,secundair onderwijs,lager onderwijs,basisschool,middelbaar,voortgezet onderwijs"
+        },
+        "public_transport/stop_position_tram": {
+            "name": "Tramstopplaats"
+        },
+        "shop/photo": {
+            "name": "Fotowinkel",
+            "terms": "camera,film"
+        },
+        "office/forestry": {
+            "name": "Bosbeheerkantoor",
+            "terms": "boswachtkantoor,kantoor van boswachters"
+        },
+        "building/static_caravan": {
+            "name": "Stacaravan",
+            "terms": "woonwagen,chalet"
+        },
+        "playground/rocker": {
+            "name": "Veerwip",
+            "terms": "veerpaardje,paardje,wipje"
+        },
+        "waterway/milestone": {
+            "name": "Afstandspaal aan waterweg",
+            "terms": "hectometerpaaltje aan waterweg,kilometerpaaltje aan waterweg,mijlpaal,waterwegmijlpaal,waterwegafstandspaal"
+        },
+        "leisure/pitch/skateboard": {
+            "name": "Skatepark"
+        },
+        "office/government/tax": {
+            "name": "Belastingskantoor",
+            "terms": "fiscaal kantoor,kantoor van belastingen"
+        },
+        "office/moving_company": {
+            "name": "Kantoor van verhuisbedrijf",
+            "terms": "verhuizers,verhuisbedrijfkantoor"
+        },
+        "highway/bridleway": {
+            "name": "Ruiterpad",
+            "terms": "paardenspoor"
+        },
+        "shop/variety_store": {
+            "name": "Euroshop"
+        },
+        "amenity/parking/multi-storey": {
+            "name": "Parkeergarage met meerdere niveaus",
+            "terms": "parkeertoren,parking met meerdere verdiepingen"
+        },
+        "amenity/doctors": {
+            "name": "Dokter",
+            "terms": "arts,geneesheer,huisarts"
+        },
+        "barrier/ditch": {
+            "name": "Droge gracht",
+            "terms": "loopgraaf,loopgraven"
+        },
+        "landuse/churchyard": {
+            "name": "Kerkhof",
+            "terms": "begraafplaats,zerk,kerk,dood,graf"
+        },
+        "amenity/shelter": {
+            "name": "Beschutting",
+            "terms": "afdak,schuilplaats,bescherming,beschutting,wachthuisje,wachthokje,bushokje,buskotje"
+        },
+        "shop/frozen_food": {
+            "name": "Ingevroren voedsel"
+        },
+        "tourism/picnic_site": {
+            "name": "Picknickplek",
+            "terms": "park"
+        },
+        "highway/rest_area": {
+            "name": "Stopplaats aan autoweg, zonder tankstation",
+            "terms": "aire,verzorgingsplaats,autoweg,autosnelweg,snelweg,autostrade,servicestation,picknick,tankstation,wegrestaurant,rustplaats,parkeerplaats,parking,afrit"
+        },
+        "amenity/vending_machine/stamps": {
+            "name": "Postzegelautomaat",
+            "terms": "postautomaat,zegelautomaat"
+        },
+        "public_transport/station_aerialway": {
+            "name": "Kabelbaanstation"
+        },
+        "playground/swing": {
+            "name": "Schommel"
+        },
+        "craft/electrician": {
+            "name": "Elektricien",
+            "terms": "monteur,elektriciteit,installatie,stielman,elektrisch"
+        },
+        "manhole/telecom": {
+            "name": "Telefonieputdeksel",
+            "terms": "man-gat,deksel,telecomdeksel,putdeksel,telecomputdeksel,mangat voor telefonie,telefoniestraatpot,telefoniestraatpot"
+        },
+        "attraction/drop_tower": {
+            "name": "Valtoren",
+            "terms": "valattractie,grote val"
+        },
+        "historic/archaeological_site": {
+            "name": "Archeologische opgraving",
+            "terms": "archeologische site,archeologische plaats"
+        },
+        "amenity/driving_school": {
+            "name": "Rijschool",
+            "terms": "autorijschool,autoschool,rijlessen,rijinstructeur"
+        },
+        "building/barn": {
+            "name": "Schuur",
+            "terms": "stal,loods"
+        },
+        "amenity/bench": {
+            "name": "Zitbank",
+            "terms": "bank,bankje,picnictafel"
+        },
+        "craft/beekeeper": {
+            "name": "Imker",
+            "terms": "bijenhouder"
+        },
+        "leisure/track/horse_racing": {
+            "name": "Paardenrenbaan",
+            "terms": "hippodroom,paardenrennen"
+        },
+        "amenity/toilets": {
+            "name": "Toiletten",
+            "terms": "wc,wc's,privaat,sanitaire,urinoir,w.c.,plee"
+        },
+        "leisure/fitness_station/box": {
+            "name": "Opstapje als fitnesstoestel",
+            "terms": "doos,stepdoos,stepkubus,fitnesskubus,fitnessdoos,verhoogje,fitness box,springen,calf raises"
+        },
+        "amenity/sanitary_dump_station": {
+            "name": "Kampeerauto-toilet-afvoer",
+            "terms": "kampeerauto,beerput,camper,kampeerwagen,mobilhome,zwerfwagen,motorhome,uitwerpselen,urine,toilet"
+        },
+        "shop/hearing_aids": {
+            "name": "Hoorapparatenwinkel",
+            "terms": "doof,slechthorend,oor,oren,hoorhulp"
+        },
+        "shop/water": {
+            "name": "Drinkwaterwinkel",
+            "terms": "waterwinkel,flessenwaterwinkel,waterflessenwinkel"
+        },
+        "public_transport/platform": {
+            "name": "Openbaarvervoershalte"
+        },
+        "craft/confectionery": {
+            "name": "Snoepmaker",
+            "terms": "artisanale snoepmaker,snoepwinkel"
+        },
+        "amenity/place_of_worship": {
+            "name": "Gebedshuis",
+            "terms": "godshuis,kerk,moskee"
+        },
+        "aerialway/goods": {
+            "name": "Goederenkabelbaan",
+            "terms": "goederenvervoer"
+        },
+        "railway/platform": {
+            "name": "Spoorperron"
+        },
+        "barrier/retaining_wall": {
+            "name": "Keermuur",
+            "terms": "steunmuur,terrasmuur,hoogteverschil,afgrond"
+        },
+        "amenity/love_hotel": {
+            "name": "Love hotel",
+            "terms": "liefdeshotel,discreet hotel,discrete kamers,sekshotel,privacyhotel,privacykamers"
+        },
+        "office/adoption_agency": {
+            "name": "Adoptiebureau",
+            "terms": "adoptieagentschap,adoptieorganisatie,adopteren,pleeggezin"
+        },
+        "highway/traffic_signals": {
+            "name": "Verkeerslichten",
+            "terms": "rode lichten,stoplichten"
+        },
+        "amenity/embassy": {
+            "name": "Ambassade",
+            "terms": "vertegenwoordiging,afgevaardigden"
+        },
+        "place/islet": {
+            "name": "Eilandje < 1 km²",
+            "terms": "archipel,atol,islet,rif"
+        },
+        "type/restriction/no_left_turn": {
+            "name": "Niet links afslaan",
+            "terms": "links afslaan verboden,links inslaan verboden,niet links inslaan,niet naar links"
+        },
+        "leisure/ice_rink": {
+            "name": "Schaatsbaan",
+            "terms": "ijsbaan"
+        },
+        "healthcare/blood_donation": {
+            "name": "Bloeddonorcentrum",
+            "terms": "bloedbank,bloeddonatie,bloedtransfusie,aferese,plasmaferese,stamceldonatie"
+        },
+        "place/village": {
+            "name": "Dorp",
+            "terms": "gehucht,woonkern,kern,buurt,buurtschap,vlek,kerkdorp,oort,gemeente"
+        },
+        "shop/water_sports": {
+            "name": "Watersport-/Zwemwinkel",
+            "terms": "watersportwinkel,zwemwinkel,watersportzaak,zwemgerief,watersportgerief"
+        },
+        "shop/lottery": {
+            "name": "Loterij"
+        },
+        "leisure/dog_park": {
+            "name": "Hondenpark",
+            "terms": "losloopgebied voor honden"
+        },
+        "natural/cave_entrance": {
+            "name": "Ingang van Grot",
+            "terms": "spelonk"
+        },
+        "point": {
+            "name": "Punt",
+            "terms": "anders,overige,iets anders,algemeen"
+        },
+        "shop/cheese": {
+            "name": "Kaaswinkel",
+            "terms": "kaashandel"
+        },
+        "amenity/boat_rental": {
+            "name": "Bootverhuur",
+            "terms": "boten,huren"
+        },
+        "amenity/place_of_worship/taoist": {
+            "name": "Taoïstische tempel",
+            "terms": "daoïstische tempel,klooster,tempel"
+        },
+        "building/mosque": {
+            "name": "Moskeegebouw",
+            "terms": "masjid,pleinmoskee"
+        },
+        "building/cabin": {
+            "name": "Blokhut",
+            "terms": "hut,blokhut,cabine,hout,balken,boomstammen"
+        },
+        "highway/bus_guideway": {
+            "name": "Geleidebusweg",
+            "terms": "spoorbus,geleide bus"
+        },
+        "highway/footway/sidewalk": {
+            "name": "Stoep"
+        },
+        "amenity/animal_shelter": {
+            "name": "Dierenasiel",
+            "terms": "kennel,adoptie,huisdierenasiel,hondenasiel,kattenasiel"
+        },
+        "emergency/private": {
+            "name": "Toegang voor hulpdiensten: privé"
+        },
+        "craft/sailmaker": {
+            "name": "Zeilmaker",
+            "terms": "zeilenmaker,zeilen,boten,boot,zeilenhersteller,hersteller"
+        },
+        "office/ngo": {
+            "name": "Kantoor van NGO",
+            "terms": "niet-gouvernementele organisatie,vzw,ngo,kantoor van ngo,ngo-kantoor"
+        },
+        "craft/glaziery": {
+            "name": "Glazenmaker",
+            "terms": "glas,ruitenmaker,ruiten,vensters"
+        },
+        "highway/footway/unmarked": {
+            "name": "Ongemarkeerde oversteekplaats"
+        },
+        "highway/motorway_junction": {
+            "name": "Oprit / Afrit van autosnelweg",
+            "terms": "afslag,afrit,kruispunt,autostrade,snelweg,autosnelweg,afrit"
+        },
+        "natural/tree": {
+            "name": "Boom"
+        },
+        "amenity/register_office": {
+            "name": "Burgerlijke Stand"
+        },
+        "highway/crossing/marked-raised": {
+            "name": "Voetgangersoversteekplaats (op drempel)"
+        },
+        "leisure/adult_gaming_centre": {
+            "name": "Speelzaal (met kansspelmachines)",
+            "terms": "casino,slot machine,slots,gokken,slotmachine"
+        },
+        "shop/car_parts": {
+            "name": "Auto-onderdelenwinkel",
+            "terms": "automaterialenwinkel,automaterialenhandel,auto-onderdelenhandel"
+        },
+        "leisure/outdoor_seating": {
+            "name": "Terras (horeca)",
+            "terms": "buiten zitten,buitenzitjes,buitenstoeltjes,buitenterras,horecaterras"
+        },
+        "office/lawyer": {
+            "name": "Advocatenkantoor",
+            "terms": "advocatenbureau,wetsgeleerden"
+        },
+        "building/apartments": {
+            "name": "Appartementen"
+        },
+        "highway/trunk_link": {
+            "name": "Verbindingsweg van autoweg",
+            "terms": "invoegstrook,oprit,afrit,expressweg,autostrade,autosnelweg"
+        },
+        "emergency/lifeguard": {
+            "name": "Reddingsbrigade"
+        },
+        "amenity/vending_machine/news_papers": {
+            "name": "krantenautomaat"
+        },
+        "shop/bookmaker": {
+            "name": "Bookmaker (gokkantoor)",
+            "terms": "bookmaker"
+        },
+        "leisure/fitness_centre/yoga": {
+            "name": "Yoga-studio",
+            "terms": "yogastudio,yogacentrum"
+        },
+        "leisure/track/running": {
+            "name": "Hardloopbaan",
+            "terms": "hardlooppiste,looppiste,atletiekpiste"
+        },
+        "aerialway/t-bar": {
+            "name": "Skilift met handvaten",
+            "terms": "T-bar,skilift"
+        },
+        "public_transport/platform_aerialway": {
+            "name": "Kabelbaanhalte"
+        },
+        "historic/boundary_stone": {
+            "name": "Historische grenspaal",
+            "terms": "grenssteen"
+        },
+        "leisure/park": {
+            "name": "Park",
+            "terms": "park"
+        },
+        "amenity/internet_cafe": {
+            "name": "Internetcafé",
+            "terms": "cyberspace,cybercafé"
+        },
+        "landuse/reservoir": {
+            "name": "Reservoir"
+        },
+        "leisure/garden": {
+            "name": "Tuin",
+            "terms": "openbare tuin,kruidentuin"
+        },
+        "historic/memorial": {
+            "name": "Gedenkplaats",
+            "terms": "monument"
+        },
+        "shop/cosmetics": {
+            "name": "Cosmeticawinkel",
+            "terms": "parfumerie"
+        },
+        "type/restriction/only_u_turn": {
+            "name": "Alleen omkeren",
+            "terms": "alleen U-bocht,U-bocht verplicht,omkeren verplicht,omdraaien verplicht,verplicht om te draaien,verplicht om te keren,enkel omdraaien,enkel omkeren,verplicht te keren,keren verplicht,enkel keren,alleen omdraaien,alleen draaien,alleen keren"
+        },
+        "leisure/swimming_pool": {
+            "name": "Zwembad",
+            "terms": "zwemmen,water"
+        },
+        "waterway/stream": {
+            "name": "Beek",
+            "terms": "stroom,rivier"
+        },
+        "railway": {
+            "name": "Spoorweg"
+        },
+        "building/university": {
+            "name": "Gebouw van universiteit of hogeschool",
+            "terms": "universiteit,hogeschool,onderwijs,hoger onderwijs"
+        },
+        "amenity/library": {
+            "name": "Bibliotheek",
+            "terms": "boeken,lenen,lezen,literatuuur"
+        },
+        "shop/stationery": {
+            "name": "Kantoorboekhandel",
+            "terms": "kaart,papier,kantoorbenodigdheden,kantoorartikelen"
+        },
+        "highway/secondary_link": {
+            "name": "Verbindingsweg van secundaire weg",
+            "terms": "invoegstrook,oprit,afrit,provinciale weg,gewestweg,provincieweg"
+        },
+        "office/advertising_agency": {
+            "name": "Reclamebureau",
+            "terms": "advertentiebureau,reclameagentschap,reclamebureau"
+        },
+        "highway/living_street": {
+            "name": "Woonerf",
+            "terms": "erf,woonzone"
+        },
+        "landuse/military/bunker": {
+            "name": "Militaire bunker",
+            "terms": "legerbunker"
+        },
+        "attraction/bumper_car": {
+            "name": "Botsautootjes",
+            "terms": "botsauto's"
+        },
+        "attraction/roller_coaster": {
+            "name": "Achtbaan",
+            "terms": "roetsjbaan,rollercoaster"
+        },
+        "power/sub_station": {
+            "name": "Klein onderstation"
+        },
+        "shop/copyshop": {
+            "name": "Copyshop",
+            "terms": "kopieshop,kopieerwinkel"
+        },
+        "leisure/firepit": {
+            "name": "Kampvuur",
+            "terms": "vuurplaats"
+        },
+        "public_transport/station_ferry": {
+            "name": "Veerbootstation",
+            "terms": "ferrystation"
+        },
+        "leisure/pitch/baseball": {
+            "name": "Honkbalveld",
+            "terms": "baseballveld,baseballterrein"
+        },
+        "man_made/bridge": {
+            "name": "Brug",
+            "terms": "tunnel,overspanning,brugomtrek,brugoppervlak"
+        },
+        "railway/monorail": {
+            "name": "Monorail",
+            "terms": "magneetzweefbaan,enkelspoor,spoor"
+        },
+        "office/physician": {
+            "name": "Arts"
+        },
+        "shop/bicycle": {
+            "name": "Fietswinkel",
+            "terms": "fietsenwinkel"
+        },
+        "public_transport/stop_position_subway": {
+            "name": "Metrostopplaats"
+        },
+        "tourism/apartment": {
+            "name": "Vakantieappartement",
+            "terms": "gastenappartement,verhuurd appartement,zomerappartement,vakantieflat,gastenflat,gastappartement,gastflat,verhuurde flat,zomerflat"
+        },
+        "amenity/hunting_stand": {
+            "name": "Jachthut",
+            "terms": "jachttoren,hoogzit"
+        },
+        "tourism/guest_house": {
+            "name": "Pension",
+            "terms": "bed and breakfast,bed & breakfast,hotel,B&B"
+        },
+        "healthcare/laboratory": {
+            "name": "Medisch laboratorium",
+            "terms": "laboratorium"
+        },
+        "shop/party": {
+            "name": "Feestwinkel",
+            "terms": "feestartikelen,carnavalswinkel,ballonnen,kostuums"
+        },
+        "power/plant": {
+            "name": "Gebied van elektriciteitscentrale",
+            "terms": "elektriciteitscentrale,koolcentrale,kolencentrale,stoomcentrale,STEG-centrale,oliecentrale,gascentrale,biomassacentrale,geothermische centrale,waterkrachtcentrale,kerncentrale,krachtcentrale,energiecentrale"
+        },
+        "landuse/aquaculture": {
+            "name": "Aquacultuur",
+            "terms": "viskweek,vissenboerderij,visboerderij,oesterkweek,algenkweek,algenboerderij,algenboerderij"
+        },
+        "amenity": {
+            "name": "Voorziening"
+        },
+        "seamark/buoy_lateral/red": {
+            "name": "Rode boei"
+        },
+        "tourism/gallery": {
+            "name": "Kunstgallerij",
+            "terms": "tentoonstelling,exposé,gallerij,kunstgallerie,gallerie,schilderijen,beeldhouwwerken,sculpturen"
+        },
+        "amenity/fuel": {
+            "name": "Tankstation",
+            "terms": "benzinestation,auto,diesel,nafte"
+        },
+        "type/route/tram": {
+            "name": "Tramtraject",
+            "terms": "tramroute"
+        },
+        "man_made/mast/communication/television": {
+            "name": "Televisiezendmast"
+        },
+        "shop/second_hand": {
+            "name": "Tweedehandswinkel",
+            "terms": "hergebruik,doorverkoop"
+        },
+        "place/island": {
+            "name": "Eiland",
+            "terms": "eiland"
+        },
+        "public_transport/platform_tram": {
+            "name": "Tramhalte",
+            "terms": "halte"
+        },
+        "attraction/bungee_jumping": {
+            "name": "Bungeespringen",
+            "terms": "bungeejumping"
+        },
+        "piste/piste": {
+            "name": "Wintersportpad",
+            "terms": "wintersportpiste"
+        },
+        "railway/signal": {
+            "name": "Spoorwegsein",
+            "terms": "sein,treinsein"
+        },
+        "craft/rigger": {
+            "name": "Tuigage",
+            "terms": "zeilen,masten,boten,boot,zeilboot"
+        },
+        "man_made/water_works": {
+            "name": "Waterwinstation"
+        },
+        "amenity/pub": {
+            "name": "Café",
+            "terms": "bar,kroeg,bierhuis,bier"
+        },
+        "building/entrance": {
+            "name": "Ingang/Uitgang"
+        },
+        "playground/structure": {
+            "name": "Speeltuig",
+            "terms": "speelconstructie"
+        },
+        "shop/religion": {
+            "name": "Religieuze winkel",
+            "terms": "liturgisch centrum,kerk,godsdienstwinkel,kruisbeelden,souvenirwinkel"
+        },
+        "golf/rough": {
+            "name": "Rough",
+            "terms": "golf"
+        },
+        "man_made/breakwater": {
+            "name": "Golfbreker",
+            "terms": "golven,havenbescherming,kustbescherming,stortsteengolfbreker,caissongolfbreker,drijvende golfbreker,palengolfbreker,havengolfbreker,strekdammen"
+        },
+        "shop/shoes": {
+            "name": "Schoenenwinkel",
+            "terms": "schoenenzaak,schoenenhandel"
+        },
+        "amenity/ranger_station": {
+            "name": "Boswachtershut"
+        },
+        "office/quango": {
+            "name": "Kantoor van quango",
+            "terms": "quangokantoor,quasi-NGO-kantoor,quasi-autonome-non-gouvernementele-organisatiekantoor"
+        },
+        "amenity/parking": {
+            "name": "Parkeerplaats",
+            "terms": "parkeerplaats,garage,parkeergarage,parkeergebouw,autoparking,parkeergelegenheid voor meerdere voertuigen"
+        },
+        "highway/bus_stop": {
+            "name": "Bushalte"
+        },
+        "office/energy_supplier": {
+            "name": "Kantoor van energiemaatschappij",
+            "terms": "energiemaatschappijkantoor,energieleverancierskantoor,kantoor van energieleverancier"
+        },
+        "amenity/place_of_worship/hindu": {
+            "name": "Hindoeïstische tempel",
+            "terms": "mandira,garbhargriha,mandu,puja,schrijn,tempel"
+        },
+        "traffic_sign_vertex": {
+            "name": "Verkeersbord",
+            "terms": "bord"
+        },
+        "aerialway/platter": {
+            "name": "Stoeltjeslift met zitschijven in plaats van stoeltjes",
+            "terms": "skilift"
+        },
+        "amenity/swimming_pool": {
+            "name": "Zwembad"
+        },
+        "amenity/vending_machine/condoms": {
+            "name": "Condoomautomaat",
+            "terms": "automaat"
+        },
+        "craft/electronics_repair": {
+            "name": "Electronicaherstelwinkel",
+            "terms": "electronica herstel winkel,herstellingen,gsm-herstelwinkel,telefoonherstelwinkel,smartphoneherstelwinkel,schermherstelwinkel,herstelwinkel"
+        },
+        "man_made/adit": {
+            "name": "Horizontale mijn- of grotingang",
+            "terms": "ingang,ondergronds,grot,mijn,adit"
+        },
+        "man_made/tower": {
+            "name": "Toren"
+        },
+        "shop/florist": {
+            "name": "Bloemenwinkel",
+            "terms": "bloemist,bloemenzaak"
+        },
+        "type/route/ferry": {
+            "name": "Veerboottraject",
+            "terms": "ferrytraject,veerponttraject"
+        },
+        "highway/crossing/marked": {
+            "name": "Zebrapad"
+        },
+        "amenity/atm": {
+            "name": "Bankautomaat",
+            "terms": "pinnen,pinautomaat,bancontact,ATM,geld afhalen,geldautomaat,geld uit de muur"
+        },
+        "ford": {
+            "name": "Voorde (doorwaadbare plaats)",
+            "terms": "drecht,dracht,trecht,tricht,waden,doorwaadbaar"
+        },
+        "natural/sand": {
+            "name": "Zand"
+        },
+        "place/locality": {
+            "name": "Veldnaam"
+        },
+        "traffic_calming/table": {
+            "name": "Verkeersplateau",
+            "terms": "verhoogd zebrapad,verkeersdrempel,drempel,plateau,verkeerstafel"
+        },
+        "amenity/courthouse": {
+            "name": "Gerechtsgebouw",
+            "terms": "rechtszaal,rechtbank,gerechtshof,paleis van justitie,justitiepaleis"
+        },
+        "shop/art": {
+            "name": "Kunstwinkel",
+            "terms": "galerij,kunstgalerij,galerie,kunstgalerie,tentoonstelling"
+        },
+        "place/hamlet": {
+            "name": "Dorp/gehucht/buurtschap"
+        },
+        "amenity/recycling_centre": {
+            "name": "Milieupark/Containerpark",
+            "terms": "milieupark,containerpark,milieustraat"
+        },
+        "club": {
+            "name": "Club",
+            "terms": "vereniging"
+        },
+        "office/private_investigator": {
+            "name": "Kantoor van privédetective",
+            "terms": "privédetectivekantoor,rechercheurskantoor,onderzoekerskantoor"
+        },
+        "waterway/fuel": {
+            "name": "Maritiem tankstation",
+            "terms": "schip,brandstof"
+        },
+        "highway": {
+            "name": "Weg"
+        },
+        "shop/pastry": {
+            "name": "Fijnbakkerij",
+            "terms": "patisserie,patissier,cake"
+        },
+        "amenity/theatre": {
+            "name": "Theater",
+            "terms": "concertgebouw,schouwburg,opvoering,optreden,opera,toneelstuk,musical"
+        },
+        "highway/pedestrian_line": {
+            "name": "Voetgangersstraat",
+            "terms": "voetgangersgebied,voetgangerszone,autovrij gebied,autovrije zone,autovrije straat"
+        },
+        "landuse/military/checkpoint": {
+            "name": "Militair checkpoint",
+            "terms": "controlepunt,checkpoint,douane,grenscontrole,leger"
+        },
+        "man_made/lighthouse": {
+            "name": "Vuurtoren",
+            "terms": "lichtbaken"
+        },
+        "type/route/train": {
+            "name": "Treintraject",
+            "terms": "spoor,NMBS,NS,treinroute"
+        },
+        "barrier/fence": {
+            "name": "Afrastering",
+            "terms": "afscheiding,omheining,hek,hekwerk,omrastering,raster,heining,hekkens"
+        },
+        "landuse/cemetery": {
+            "name": "Begraafplaats",
+            "terms": "begraafplaats,kerkhof"
+        },
+        "railway/rail": {
+            "name": "Spoorweg",
+            "terms": "treinspoor,tramspoor,spoorlijn,normaalspoor,spoor"
+        },
+        "natural/scree": {
+            "name": "Puinhelling",
+            "terms": "ravijn,talud"
+        },
+        "office/government": {
+            "name": "Overheidskantoor",
+            "terms": "overheidsdienst"
+        },
+        "office/it": {
+            "name": "IT-kantoor",
+            "terms": "computerkantoor,elektronicakantoor,hardware,software,IT-specialist,ICT-kantoor,ICT-specialist"
+        },
+        "railway/disused": {
+            "name": "Ongebruikte spoorweg (sporen nog aanwezig)",
+            "terms": "in onbruik geraakte spoorbaan,verloederde spoorweg,oude spoorweg,voormalige spoorweg,rails,oude rails,sporen,oude sporen,oude treinroute,treinroute,voormalige spoorweg,verloederde spoorweg"
+        },
+        "amenity/grave_yard": {
+            "name": "Begraafplaats",
+            "terms": "kerkhof"
+        },
+        "railway/light_rail": {
+            "name": "Lightrail",
+            "terms": "lichtspoor,lichte spoorweg"
+        },
+        "office/lawyer/notary": {
+            "name": "Notariaat"
+        },
+        "amenity/clinic/fertility": {
+            "name": "Vruchtbaarheidskliniek",
+            "terms": "kunstmatige inseminatie,conceptie,voorplanting"
+        },
+        "leisure/fitness_station": {
+            "name": "Buitenshuis fitness-station",
+            "terms": "fitness,speeltuin"
+        },
+        "amenity/vending_machine/newspapers": {
+            "name": "Krantenautomaat",
+            "terms": "automaat,dagbladautomaat,nieuwsautomaat"
+        },
+        "railway/subway_entrance": {
+            "name": "Ingang van metrostation",
+            "terms": "metro-ingang"
+        },
+        "emergency/fire_extinguisher": {
+            "name": "Brandblusser"
+        },
+        "healthcare/speech_therapist": {
+            "name": "Logopedist",
+            "terms": "logopedie,spraaktherapeut,spraaktherapie"
+        },
+        "leisure/picnic_table": {
+            "name": "Picknicktafel",
+            "terms": "tafel,bank,zitbank"
+        },
+        "man_made/cutline": {
+            "name": "Gerooide lijn",
+            "terms": "scheidingslijn"
+        },
+        "craft/scaffolder": {
+            "name": "Stellingenmaker",
+            "terms": "stellagemaker"
+        },
+        "shop/locksmith": {
+            "name": "Slotenmaker"
+        },
+        "office/insurance": {
+            "name": "Verzekeringskantoor",
+            "terms": "verzekeringsmakelaarkantoor,makelaarkantoor"
+        },
+        "leisure/pitch": {
+            "name": "Sportveld",
+            "terms": "sportterrein"
+        },
+        "public_transport/stop_position_trolleybus": {
+            "name": "Trolleybusstopplaats"
+        },
+        "tourism/hotel": {
+            "name": "Hotel",
+            "terms": "hotelgebouw,kamers"
+        },
+        "historic/monument": {
+            "name": "Monument",
+            "terms": "gedenkplaats"
+        },
+        "manhole": {
+            "name": "Putdeksel",
+            "terms": "mangat,man-gat,straatpot"
+        },
+        "type/route/bicycle": {
+            "name": "Fietsroute",
+            "terms": "fietstraject"
+        },
+        "highway/give_way": {
+            "name": "Voorrangsbord",
+            "terms": "voorrangsteken,haaientanden"
+        },
+        "man_made/mast/communication": {
+            "name": "Communicatietoren",
+            "terms": "communicatiemast"
+        },
+        "amenity/place_of_worship/shinto": {
+            "name": "Shintotempel",
+            "terms": "jinja,torii,kami,shintoheiligdom"
+        },
+        "leisure/fitness_station/horizontal_bar": {
+            "name": "Rekstok als fitnesstoestel",
+            "terms": "optrekstang,pullupstang,stang"
+        },
+        "historic": {
+            "name": "Geschiedskundige plaats",
+            "terms": "historische site,geschiedkundige site,historische plaats"
+        },
+        "type/enforcement": {
+            "name": "Controle"
+        },
+        "railway/switch": {
+            "name": "Spoorwegwissel",
+            "terms": "wissel,kruising"
+        },
+        "man_made/tower/communication": {
+            "name": "Communicatietoren"
+        },
+        "amenity/restaurant/sushi": {
+            "name": "Sushirestaurant",
+            "terms": "sushibar"
+        },
+        "piste/skitour": {
+            "name": "Toerskipad",
+            "terms": "ski-alpinismepad,ski mountaineering,skilooppad,langlaufpiste"
+        },
+        "healthcare/optometrist": {
+            "name": "Optometrist",
+            "terms": "oogarts,opticien"
+        },
+        "building/kindergarten": {
+            "name": "Kleuterschool/Gebouw van crèche",
+            "terms": "kleuterschool,kinderdagverblijf,peuterspeelzaal"
+        },
+        "leisure/playground": {
+            "name": "Speeltuin",
+            "terms": "speelplaats,speelterrein"
+        },
+        "emergency/water_tank": {
+            "name": "Noodwatertank",
+            "terms": "watertank,wateropslag,noodwateropslag,reservoir,noodreservoir,brandweerreservoir,brandweertank"
+        },
+        "shop/erotic": {
+            "name": "Seksshop",
+            "terms": "erotiek,sex shop"
+        },
+        "type/restriction/only_left_turn": {
+            "name": "Alleen links afslaan",
+            "terms": "enkel links afslaan,verplicht links afslaan,links afslaan verplicht,enkel links inslaan,alleen links inslaan,verplicht links inslaan,links inslaan verplicht"
+        },
+        "leisure/fitness_station/rings": {
+            "name": "Gymnastiekringen",
+            "terms": "ringen"
+        },
+        "highway/mini_roundabout": {
+            "name": "Rotonde zonder middeneiland",
+            "terms": "rondpunt,rotonde waarvan door het midden kan worden gereden"
+        },
+        "public_transport/platform_monorail": {
+            "name": "Monorailhalte"
+        },
+        "amenity/monastery": {
+            "name": "Kloostergebied",
+            "terms": "abdijgebied"
+        },
+        "highway/service/parking_aisle": {
+            "name": "Rijbaan in parkeergelegenheid",
+            "terms": "parkingweg,parkingas,weg in parkeergelegenheid"
+        },
+        "amenity/bbq": {
+            "name": "Barbecue/Grill",
+            "terms": "barbecue,grill,steengrill,BBQ,spit"
+        },
+        "waterway/dock": {
+            "name": "Havendok",
+            "terms": "kade,dok"
+        },
+        "waterway/boatyard": {
+            "name": "Scheepswerf",
+            "terms": "bootwerf,scheepsherstellingen,bootherstellingen,droogdok,bouwdok"
+        },
+        "power/line": {
+            "name": "Elektriciteitslijn",
+            "terms": "stroomlijn,hoogspanningslijn,hoogspanningsleiding,elektriciteitsnet,elektriciteitslijn"
+        },
+        "amenity/ice_cream": {
+            "name": "Ĳskraam",
+            "terms": "ijskraam,ijskraampje,ijscowinkel,ijsventer"
+        },
+        "leisure/horse_riding": {
+            "name": "Manege",
+            "terms": "manege,paardrijden,stallen,dressuur,jumping"
+        },
+        "power/pole": {
+            "name": "Elektriciteitspaal",
+            "terms": "stroom,laagspanning,laagspanningsleiding,elektriciteitsnet,elektriciteitskabel"
+        },
+        "barrier/guard_rail": {
+            "name": "Vangrail"
+        },
+        "natural/peak": {
+            "name": "Top",
+            "terms": "bergtop,heuveltop"
+        },
+        "highway/tertiary": {
+            "name": "Tertiare weg",
+            "terms": "provinciale weg,gewestweg,provincieweg"
+        },
+        "amenity/restaurant/steakhouse": {
+            "name": "Vleesrestaurant",
+            "terms": "biefstukrestaurant,steakrestaurant"
+        },
+        "shop/beauty/nails": {
+            "name": "Nagelsalon",
+            "terms": "manicure,pedicure,nagelstudio,nagellak,lakken"
+        },
+        "tourism/artwork": {
+            "name": "Kunstwerk",
+            "terms": "kunst,object,kunstobject,sculptuur,beeldhouwwerk,schilderij"
+        },
+        "amenity/vending_machine/sweets": {
+            "name": "Snackautomaat",
+            "terms": "etenautomaat,automaat"
+        },
+        "landuse/retail": {
+            "name": "Handelsgebied",
+            "terms": "commercieel,handel,shoppingstraat,winkelstraat,winkelgebied,verkoopgebied,verkoopzone"
+        },
+        "leisure/picnic_table/chess": {
+            "name": "Schaaktafel"
+        },
+        "leisure/sauna": {
+            "name": "Sauna"
+        },
+        "craft/key_cutter": {
+            "name": "Sleutelmaker",
+            "terms": "slotenmaker"
+        },
+        "leisure/fitness_station/sign": {
+            "name": "Instructiebord voor fitnessoefeningen",
+            "terms": "fitnessoefeningeninstructiebord,fitnessbord,oefeningenbord"
+        },
+        "leisure/resort": {
+            "name": "Resort",
+            "terms": "vakantiepark,hotel"
+        },
+        "shop/pyrotechnics": {
+            "name": "Vuurwerkwinkel",
+            "terms": "vuurpijlen,buskruit,nieuwjaar"
+        },
+        "leisure/pitch/cricket": {
+            "name": "Cricketveld"
+        },
+        "public_transport/platform_trolleybus": {
+            "name": "Trolleybushalte"
+        },
+        "amenity/arts_centre": {
+            "name": "Cultureel centrum",
+            "terms": "kunstencentrum,CC,schouwburg,concertgebouw"
+        },
+        "shop/pet_grooming": {
+            "name": "Trimsalon",
+            "terms": "huisdierenverzorging,huisdierentrimsalon,hondenverzorging,hondentrimsalon,kattenverzorging,kattentrimsalon"
+        },
+        "railway/crossing": {
+            "name": "Spoorwegovergang (pad)",
+            "terms": "gelijkvloerse overgang,gelijkgrondse overgang,overweg,spooroverweg,treinkruising,treinsporen"
+        },
+        "shop/travel_agency": {
+            "name": "Reisbureau",
+            "terms": "reisbureau"
+        },
+        "tourism/artwork/statue": {
+            "name": "Standbeeld",
+            "terms": "beeldhouwwerk"
+        },
+        "amenity/restaurant": {
+            "name": "Restaurant",
+            "terms": "kantine,snackbar,lunchroom,pizzeria"
+        },
+        "amenity/restaurant/pizza": {
+            "name": "Pizzarestaurant",
+            "terms": "pizzeria"
+        },
+        "type/route/detour": {
+            "name": "Permanente omleiding",
+            "terms": "omrijden,file vermijden,omleiding"
+        },
+        "amenity/bicycle_repair_station": {
+            "name": "Openbaar fietsgereedschap",
+            "terms": "fietsgereedschappen,fietsherstelplaats,fietspomp,pomp,kettinggereedschap,fietsbanden,onderhoud,doe-het-zelf-fietsenmaker"
+        },
+        "amenity/vending_machine/parcel_pickup": {
+            "name": "Pakketafhaalkluis"
+        },
+        "office/association": {
+            "name": "Kantoor van non-profitorganisatie",
+            "terms": "non-profitorganisatiekantoor,ngo-kantoor,vzw-kantoor,verenigingskantoor,kantoor van vereniging zonder winstoogmerk,vereniging zonder winstoogmerk,kantoor van vzw,kantoor van ngo"
+        },
+        "highway/services": {
+            "name": "Stopplaats aan autoweg met faciliteiten",
+            "terms": "aire,verzorgingsplaats,autoweg,autosnelweg,snelweg,autostrade,servicestation,picknick,tankstation,wegrestaurant,rustplaats,parkeerplaats,parking,afrit"
+        },
+        "amenity/bureau_de_change": {
+            "name": "Wisselkantoor",
+            "terms": "wisselen,geld,bank,munteenheid"
+        },
+        "tourism/chalet": {
+            "name": "Vakantiehuisje",
+            "terms": "chalet,huisje,bungalow"
+        },
+        "landuse/military/nuclear_explosion_site": {
+            "name": "Kernwapentestsite",
+            "terms": "nucleair,bommen,testzone,militaire gevarenzone,gevarenzone,geen toegang,leger,atoombomtestsite"
+        },
+        "leisure/dancing_school": {
+            "name": "Dansschool",
+            "terms": "dansonderwijs,dansconservatorium,conservatorium"
+        },
+        "public_transport/station_trolleybus": {
+            "name": "Trolleybusstation"
+        },
+        "leisure": {
+            "name": "Vrije tijd"
+        },
+        "amenity/post_office": {
+            "name": "Postkantoor",
+            "terms": "postbus,brievenbus,bpost,posterijen,postnl"
+        },
+        "tourism/trail_riding_station": {
+            "name": "Ruiterlogies",
+            "terms": "paardrijdhotel,ruiterhotel,paardrijdlogies,paardrijdaccomodatie,ruiteraccomodatie"
+        },
+        "public_transport/stop_position": {
+            "name": "Stopplaats voor openbaarvervoersvoertuig"
+        },
+        "natural/volcano": {
+            "name": "Vulkaan",
+            "terms": "caldera,krater"
+        },
+        "amenity/fast_food/pizza": {
+            "name": "Pizzafastfoodzaak"
+        },
+        "amenity/vending_machine": {
+            "name": "Automaat",
+            "terms": "verkoopautomaat"
+        },
+        "highway/milestone": {
+            "name": "Afstandspaal",
+            "terms": "kilometerpaaltje,hectometerbordje,hectometerpaaltje,kilometerbordje"
+        },
+        "leisure/bleachers": {
+            "name": "Tribune"
+        },
+        "amenity/bar": {
+            "name": "Bar",
+            "terms": "cocktailbar,dancing,disco,café"
+        },
+        "traffic_calming/cushion": {
+            "name": "Verkeerskussen"
+        },
+        "power/generator/source/nuclear": {
+            "name": "Kernreactor",
+            "terms": "nucleaire reactor,kernfusie"
+        },
+        "leisure/fitness_station/balance_beam": {
+            "name": "Evenwichtsbalk als fitnesstoestel",
+            "terms": "balk,balanceerbalk"
+        },
+        "man_made/bunker_silo": {
+            "name": "Bunkersilo"
+        },
+        "traffic_calming": {
+            "name": "Verkeersremmer",
+            "terms": "drempel,heuvel,langzaam,snelheid"
+        },
+        "barrier/stile": {
+            "name": "Overstaphek"
+        },
+        "type/route/piste": {
+            "name": "Piste of skiroute",
+            "terms": "skipiste"
+        },
+        "shop/boutique": {
+            "name": "Boetiek",
+            "terms": "boutique"
+        },
+        "area/highway": {
+            "name": "Wegdek",
+            "terms": "rand van weg,gebied,wegoppervlak"
+        },
+        "amenity/vending_machine/parcel_pickup_dropoff": {
+            "name": "Pakketautomaat",
+            "terms": "pakjesautomaat,pakketafhaalautomaat,pakjesafhaalautomaat,postpakketjes"
+        },
+        "amenity/vending_machine/parking_tickets": {
+            "name": "Parkeerticketautomaat",
+            "terms": "ticketautomaat,automaat"
+        },
+        "shop/weapons": {
+            "name": "Wapenwinkel",
+            "terms": "wapens,munitie"
+        },
+        "healthcare/physiotherapist": {
+            "name": "Fysiotherapeut",
+            "terms": "fysiotherapie,kinesitherapie,kinesitherapeut,kinesist,kinesie"
+        },
+        "bridge/support": {
+            "name": "Draagelement van brug",
+            "terms": "brugpijler,brugfundament,brugtoren"
+        },
+        "highway/trunk": {
+            "name": "Autoweg",
+            "terms": "expressweg,autostrade,autosnelweg"
+        },
+        "amenity/clock/sundial": {
+            "name": "Zonnewijzer"
+        },
+        "leisure/pitch/boules": {
+            "name": "Jeu-de-boules-veld",
+            "terms": "petanqueveld,petanquebaan,jeu de boules,bocce,lyonnaise,pétanque"
+        },
+        "power/cable/underground": {
+            "name": "Ondergrondse hoogspanningskabel",
+            "terms": "grondkabel,ondergrondse kabel,elektriciteitskabel,ondergrondse elektriciteitskabel,stroomkabel,ondergrondse stroomkabel"
+        },
+        "golf/tee": {
+            "name": "Tee-Box",
+            "terms": "golf"
+        },
+        "office": {
+            "name": "Kantoor",
+            "terms": "bureau"
+        },
+        "amenity/fire_station": {
+            "name": "Brandweerkazerne",
+            "terms": "brandweerwagens,brandweerbasis,brandweerstation"
+        },
+        "barrier/entrance": {
+            "name": "Doorgang"
+        },
+        "emergency/fire_hydrant": {
+            "name": "Brandkraan",
+            "terms": "hydrant,straatpot,brandstraatpot"
+        },
+        "noexit/yes": {
+            "name": "Doodlopend einde",
+            "terms": "geen doorgang,cul-de-sac,doodlopende straat"
+        },
+        "shop/scuba_diving": {
+            "name": "Duikwinkel",
+            "terms": "diepzeeduiken,duiken,duiksport,scuba"
+        },
+        "leisure/sports_centre/climbing": {
+            "name": "Klimhal"
+        },
+        "natural/water/pond": {
+            "name": "Vijver",
+            "terms": "meer,ven,poel,plas"
+        },
+        "place/plot": {
+            "name": "Perceel",
+            "terms": "plot,lot"
+        },
+        "attraction/water_slide": {
+            "name": "Waterglijbaan",
+            "terms": "glijbaan,wildwaterglijbaan,waterbaan"
+        },
+        "shop/vacuum_cleaner": {
+            "name": "Stofzuigerwinkel",
+            "terms": "huishouden,schoonmaken,poetsen,stofzuigen,electro,elektro"
+        },
+        "shop/chemist": {
+            "name": "Drogisterij",
+            "terms": "apotheek,apoteek,geneesmiddelen,geneesmiddelenwinkel zonder apotheker"
+        },
+        "tourism/information/map": {
+            "name": "Kaart",
+            "terms": "plan,plattegrond,informatie"
+        },
+        "building/hospital": {
+            "name": "Ziekenhuisgebouw",
+            "terms": "ziekenhuis,hospitaal,kliniek"
+        },
+        "amenity/marketplace": {
+            "name": "Marktplaats",
+            "terms": "groenten,vis,groentemarkt"
+        },
+        "building/industrial": {
+            "name": "Industrieel gebouw",
+            "terms": "industriegebouw,bedrijfsgebouw"
+        },
+        "amenity/restaurant/german": {
+            "name": "Duits restaurant"
+        },
+        "amenity/university": {
+            "name": "Campus van universiteit of hogeschool",
+            "terms": "universiteit,hogeschool,onderwijs,hoger onderwijs"
+        },
+        "building/public": {
+            "name": "Openbaar gebouw",
+            "terms": "publiek gebouw"
+        },
+        "highway/crossing/zebra-raised": {
+            "name": "Zebrapad (op drempel)"
+        },
+        "emergency/first_aid_kit": {
+            "name": "EHBO-kit"
+        },
+        "amenity/shower": {
+            "name": "Douche",
+            "terms": "stortbad,waterkraan,kraan"
+        },
+        "office/estate_agent": {
+            "name": "Immobiliënkantoor",
+            "terms": "vastgoedkantoor,vastgoedmakelaarskantoor"
+        },
+        "traffic_sign/maxspeed": {
+            "name": "Verkeersbord maximumsnelheid",
+            "terms": "maximumsnelheid,maximale snelheid,snelheidslimietbord"
+        },
+        "man_made/watermill": {
+            "name": "Watermolen"
+        },
+        "amenity/college": {
+            "name": "Campus van beroepsschool",
+            "terms": "bso,buo,buso,vmbo,speciaal onderwijs,bijzonder onderwijs,onderwijs,middelbaar,secundair onderwijs"
+        },
+        "shop/toys": {
+            "name": "Speelgoedwinkel",
+            "terms": "speelgoedwinkel"
+        },
+        "type/restriction/no_straight_on": {
+            "name": "Niet rechtdoor",
+            "terms": "rechtdoor verboden,rechtdoor gaan verboden,niet rechtdoorgaan,afslaan verplicht"
+        },
+        "landuse/allotments": {
+            "name": "Volkstuin",
+            "terms": "tuin,moestuin,aparte tuin"
+        },
+        "office/water_utility": {
+            "name": "Kantoor van watermaatschappij",
+            "terms": "watermaatschappij*,waterleidingsmaatschappij*"
+        },
+        "railway/tram_stop": {
+            "name": "Tramhalte"
+        },
+        "highway/passing_place": {
+            "name": "Passeerplaats",
+            "terms": "uitwijkplaats,kruisplaats"
+        },
+        "shop/tiles": {
+            "name": "Tegelwinkel",
+            "terms": "betegeling,vloertegelwinkel,muurtegelwinkel"
+        },
+        "highway/pedestrian_area": {
+            "name": "Voetgangersplein",
+            "terms": "voetgangerszone,voetgangersgebied,autovrij plein,autovrije zone,autovrij gebied"
+        },
+        "amenity/vending_machine/food": {
+            "name": "Voedselautomaat",
+            "terms": "etenautomaat,automaat met eten,voedingsautomaat"
+        },
+        "amenity/cafe": {
+            "name": "Cafetaria",
+            "terms": "cafetaria,tea-room,tearoom,tea room,koffiehuis,koffie,thee,vieruurtje,cake,taart"
+        },
+        "leisure/pitch/bowls": {
+            "name": "Bowls-baan",
+            "terms": "koersbal,bowls"
+        },
+        "highway/service/emergency_access": {
+            "name": "Toegangsweg voor hulpdiensten",
+            "terms": "noodweg,hulpdiensten,brandweerweg"
+        },
+        "natural/mud": {
+            "name": "Modder",
+            "terms": "slijk,modderpoel,drassig gebied,moeras,drasland"
+        },
+        "building/civic": {
+            "name": "Niet gebruiken – niet-gestandardiseerde tag"
+        },
+        "craft/plasterer": {
+            "name": "Stukadoor",
+            "terms": "pleister,plaaster,stucadoor,stucwerker,plakwerker,pleisterwerker,stiel"
+        },
+        "piste/hike": {
+            "name": "Sneeuwschoenrennen- of winterwandelpad"
+        },
+        "amenity/parking_space": {
+            "name": "Parkeerplaats binnen parkeergelegenheid",
+            "terms": "individuele parkeerplaats, parkeervak"
+        },
+        "healthcare/birthing_center": {
+            "name": "Bevallingscentrum met huiselijke inrichting",
+            "terms": "bevallingsbad,bevalbad,alternatieve bevalling,thuisbevalling,geboorte,verloskunde"
+        },
+        "building/greenhouse": {
+            "name": "Broeikas",
+            "terms": "serre,kas,glastuinbouw"
+        },
+        "landuse/harbour": {
+            "name": "Natuurlijke haven",
+            "terms": "haven,harbour"
+        },
+        "shop/pet": {
+            "name": "Dierenwinkel",
+            "terms": "dierenzaak,dierenwinkel,huisdieren"
+        },
+        "amenity/scrapyard": {
+            "name": "Sloperij"
+        },
+        "man_made/survey_point": {
+            "name": "Landmeetkundig referentiepunt",
+            "terms": "geodesisch punt,geodesisch referentiepunt"
+        },
+        "roundabout": {
+            "name": "Rotonde"
+        },
+        "type/route/power": {
+            "name": "Elektriciteitsleidingstraject",
+            "terms": "elektriciteitslijnroute,elektriciteitslijntraject,elektriciteitsleidingsroute"
+        },
+        "highway/service/alley": {
+            "name": "Steeg",
+            "terms": "steegje"
+        },
+        "man_made/mast/communication/radio": {
+            "name": "Radiozendmast"
+        },
+        "amenity/restaurant/seafood": {
+            "name": "Visrestaurant",
+            "terms": "zeevruchtenrestaurant"
+        },
+        "public_transport/station_train": {
+            "name": "Treinstation",
+            "terms": "spoorwegstation"
+        },
+        "shop/tailor": {
+            "name": "Kleermaker",
+            "terms": "maatwerk,kleren,kledij,kostuum"
+        },
+        "landuse/brownfield": {
+            "name": "Braakliggend terrein (voorheen bebouwd)",
+            "terms": "braakliggend terrein,afgebroken gebouw,ontwikkelingsgrond,braakliggende bouwgrond"
+        },
+        "natural/cliff": {
+            "name": "Klif",
+            "terms": "ravijn,afgrond"
+        },
+        "amenity/clock": {
+            "name": "Klok",
+            "terms": "uurwerk,horloge,uur,tijd"
+        },
+        "attraction": {
+            "name": "Attractie"
+        },
+        "building/garage": {
+            "name": "Garage (privéstalling voor voertuigen)",
+            "terms": "autogarage"
+        },
+        "natural/coastline": {
+            "name": "Kustlijn",
+            "terms": "waterlijn"
+        },
+        "building/carport": {
+            "name": "Carport"
+        },
+        "building/hotel": {
+            "name": "Hotelgebouw",
+            "terms": "hotel,kamers"
+        },
+        "shop/anime": {
+            "name": "Animewinkel",
+            "terms": "cosplay,mangawinkel,japans,stripwinkel,dakimakura"
+        },
+        "route/ferry": {
+            "name": "Veerboottraject",
+            "terms": "ferrytraject,veerponttraject"
+        },
+        "shop/outdoor": {
+            "name": "Winkel voor Benodigdheden voor Buitenactiviteiten",
+            "terms": "trekking,fietsen,hike,gps,kamperen,tent"
+        },
+        "highway/raceway": {
+            "name": "Racepiste (motorsport)",
+            "terms": "formule 1,auto,nascar,karting,motorsport,motorwedstrijd"
+        },
+        "emergency/designated": {
+            "name": "Toegang voor hulpdiensten: geadviseerd"
+        },
+        "highway/steps": {
+            "name": "Trap",
+            "terms": "trappen"
+        },
+        "leisure/fitness_station/hyperextension": {
+            "name": "Hyperextensiebank"
+        },
+        "tourism/artwork/sculpture": {
+            "name": "Sculptuur",
+            "terms": "standbeeld,beeldhouwwerk"
+        },
+        "leisure/beach_resort": {
+            "name": "Strandoord",
+            "terms": "strandresort,strandhotel"
+        },
+        "amenity/vending_machine/drinks": {
+            "name": "Drankautomaat",
+            "terms": "drinken,waterautomaat,automaat"
+        },
+        "highway/primary": {
+            "name": "Hoofdweg",
+            "terms": "provinciale weg,primaire weg,gewestweg,provincieweg"
+        },
+        "highway/footway/zebra": {
+            "name": "Zebrapad"
+        },
+        "amenity/shelter/picnic_shelter": {
+            "name": "Picnicpaviljoen",
+            "terms": "paviljoentje,picnic-hutje,kiosk"
+        },
+        "shop/chocolate": {
+            "name": "Chocoladewinkel",
+            "terms": "chocolatier,chocola,chocla,chokolade,zoetigheid,snoep"
+        },
+        "man_made/pumping_station": {
+            "name": "Gemaal (waterpompstation)",
+            "terms": "pompstation,waterpompstation"
+        },
+        "building/bunker": {
+            "name": "Bunker"
+        },
+        "emergency/defibrillator": {
+            "name": "Defibrillator",
+            "terms": "AED,hartritme,groene doos,externe defibrillator,schok,elektrische schok,reanimeren"
+        },
+        "aeroway/helipad": {
+            "name": "Helipad",
+            "terms": "helihaven,helikopterhaven,helikopterdek,landingsplaats"
+        },
+        "amenity/dentist": {
+            "name": "Tandarts",
+            "terms": "tandheelkundige,mond,tanden"
+        },
+        "highway/footway/zebra-raised": {
+            "name": "Zebrapad (op drempel)"
+        },
+        "landuse/residential/apartments": {
+            "name": "Appartementencomplex"
+        },
+        "amenity/place_of_worship/muslim": {
+            "name": "Moslim moskee"
+        },
+        "shop/tea": {
+            "name": "Theewinkel",
+            "terms": "theehuis"
+        },
+        "aerialway/chair_lift": {
+            "name": "Stoeltjeslift",
+            "terms": "skilift"
+        },
+        "landuse/pond": {
+            "name": "Vijver"
+        },
+        "shop/supermarket": {
+            "name": "Supermarkt",
+            "terms": "supermarkt,grootwarenhuis"
+        },
+        "office/political_party": {
+            "name": "Politieke partij",
+            "terms": "partijhoofdzetel,partijbureau"
+        },
+        "shop/wholesale": {
+            "name": "Groothandel",
+            "terms": "groothandelszaak"
+        },
+        "building/stadium": {
+            "name": "Stadiongebouw",
+            "terms": "stadiumgebouw"
+        },
+        "landuse/military/range": {
+            "name": "Militair schietterrein",
+            "terms": "oefenterrein,leger"
+        },
+        "man_made/silo": {
+            "name": "Silo",
+            "terms": "veevoeder,graansilo"
+        },
+        "man_made/surveillance/camera": {
+            "name": "Bewakingscamera"
+        },
+        "building/hut": {
+            "name": "Hut",
+            "terms": "hutje"
+        },
+        "shop/candles": {
+            "name": "Kaarsenwinkel",
+            "terms": "kaarsen,parafine,was,gezelligheid,lont"
+        },
+        "natural/saddle": {
+            "name": "Zadelpunt",
+            "terms": "bergkam,kam,top,bergtop,pas,bergpas"
+        },
+        "natural/water/basin": {
+            "name": "Basin"
+        },
+        "building/transportation": {
+            "name": "Openbaarvervoersgebouw"
+        },
+        "landuse/orchard": {
+            "name": "Boomgaard",
+            "terms": "boomgaard"
+        },
+        "type/restriction/no_right_turn": {
+            "name": "Niet rechts afslaan",
+            "terms": "rechts afslaan verboden,rechts inslaan verboden,niet rechts inslaan,niet naar rechts"
+        },
+        "shop/car": {
+            "name": "Autoshowroom",
+            "terms": "autodealer,autowinkel,toonzaal,autotoonzaal,garage,autogarage"
+        },
+        "building/stable": {
+            "name": "Stal",
+            "terms": "dieren,paarden,vee,stalling"
+        },
+        "amenity/public_bookcase": {
+            "name": "Openbare boekenkast",
+            "terms": "boeken,literatuur,bibliotheek,publieke boekenkast"
+        },
+        "tourism/camp_site": {
+            "name": "Camping",
+            "terms": "kamperen,kampeertenten,kampeerwagenpark"
+        },
+        "barrier/fence/railing": {
+            "name": "Reling"
+        },
+        "golf/hole": {
+            "name": "Golf Hole",
+            "terms": "gat,doel"
+        },
+        "building/semidetached_house": {
+            "name": "Niet gebruiken – niet-gestandardiseerde tag"
+        },
+        "railway/abandoned": {
+            "name": "Voormalige spoorweg (sporen weggehaald)",
+            "terms": "in onbruik geraakte spoorbaan,ongebruikte spoorweg,oude spoorweg,rails,oude rails,sporen,oude sporen,oude treinroute,treinroute,ongebruikte spoorweg,verloederde spoorweg"
+        },
+        "type/restriction": {
+            "name": "Beperking"
+        },
+        "playground/seesaw": {
+            "name": "Wip"
+        },
+        "shop/bathroom_furnishing": {
+            "name": "Badkamermeubelwinkel",
+            "terms": "sanitairwinkel"
+        },
+        "shop/beauty/tanning": {
+            "name": "Zonnebank",
+            "terms": "zonnecentrum,bruinen,zonnebankcentrum"
+        },
+        "amenity/water_point": {
+            "name": "Waterpunt voor kampeerauto's",
+            "terms": "drinkwatertank,watertank,waterpunt voor campers"
+        },
+        "public_transport/station": {
+            "name": "Openbaarvervoershalte"
+        },
+        "playground/balance_beam": {
+            "name": "Evenwichtsbalk als speeltuig",
+            "terms": "balk,balanceerbalk"
+        },
+        "leisure/hackerspace": {
+            "name": "Hackerspace",
+            "terms": "hackspace,makerspace,hacklab"
+        },
+        "landuse/forest": {
+            "name": "Beheerd bos"
+        },
+        "leisure/bandstand": {
+            "name": "Podium",
+            "terms": "paviljoen,kiosk"
+        },
+        "amenity/food_court": {
+            "name": "Eetplaats omringd door fastfoodzaken",
+            "terms": "food court,fastfood,fast food,restaurants,voedselhal"
+        },
+        "natural/beach": {
+            "name": "Strand",
+            "terms": "kust,zandstrand,duinen,steenstrand"
+        },
+        "junction": {
+            "name": "Kruispunt",
+            "terms": "kruising,toegangspunt,afslag,oprit,rotonde"
+        },
+        "office/coworking": {
+            "name": "Coworking-kantoor",
+            "terms": "samenwerken,coworking,coworking-kantoor,kantoor,gedeeld kantoor,coworking-plaats,coworking-omgeving"
+        },
+        "vertex": {
+            "name": "Overig",
+            "terms": "anders,overige,iets anders,algemeen"
+        },
+        "type/boundary": {
+            "name": "Grens"
+        },
+        "man_made/monitoring_station": {
+            "name": "Meetstation",
+            "terms": "observatiestation,meetapparatuur,observatieapparatuur,weerstation,seismische sensor,luchtkwaliteitmeetstation,luchtmeetstation,gps-meetstation,gps-grondstation,gnss-station,gnss-grondstation"
+        },
+        "aeroway/taxiway": {
+            "name": "Taxibaan",
+            "terms": "taxiën"
+        },
+        "craft/optician": {
+            "name": "Opticien"
+        },
+        "seamark/beacon_isolated_danger": {
+            "name": "Gevaarsbaken"
+        },
+        "waterway/waterfall": {
+            "name": "Waterval",
+            "terms": "cascade"
+        },
+        "office/guide": {
+            "name": "Gidsenkantoor",
+            "terms": "gidskantoor,kantoor van gidsen,berggidskantoor,duikbegeleiderskantoor"
+        },
+        "type/route": {
+            "name": "Route"
+        },
+        "amenity/vending_machine/public_transport_tickets": {
+            "name": "Automaat voor tickets voor openbaar vervoer",
+            "terms": "openbaarvervoerticketautomaat,ticketautomaat,automaat,OV-ticketautomaat,OV-kaartjesautomaat,tramkaartautomaat,buskaartautomaat,treinbiljetautomaat,biljetautomaat"
+        },
+        "man_made/embankment": {
+            "name": "Dijk"
+        },
+        "shop/tobacco": {
+            "name": "Tabakwinkel",
+            "terms": "sigarettenwinkel"
+        },
+        "building/shed": {
+            "name": "Schuurtje",
+            "terms": "hutje,tuinhuis"
+        },
+        "building/detached": {
+            "name": "Alleenstaand huis",
+            "terms": "villa,woning"
+        },
+        "shop/charity": {
+            "name": "Winkel van goed doel",
+            "terms": "kringloopwinkel,kringloopcentrum,kringwinkel,meerwinkel,vzw,goede doel,charitatieve instelling,charitatieve winkel"
+        },
+        "healthcare/occupational_therapist": {
+            "name": "Ergotherapeut",
+            "terms": "ergotherapie,ergotherapeute"
+        },
+        "shop/musical_instrument": {
+            "name": "Muziekinstrumentenwinkel",
+            "terms": "musiceren,muziekschool,pianowinkel,gitaarwinkel,vioolwinkel,partituren,pianokruk"
+        },
+        "man_made/wastewater_plant": {
+            "name": "Waterzuiveringsinstallatie",
+            "terms": "waterzuiveringsstation,zuiveringsstation,WZI"
+        },
+        "shop/catalogue": {
+            "name": "Cataloguswinkel"
+        },
+        "landuse/plant_nursery": {
+            "name": "Plantenkwekerij",
+            "terms": "tuinderij,tuin"
+        },
+        "shop/money_lender": {
+            "name": "Particuliere Gelduitleendienst",
+            "terms": "pandhuis,lommerd,lombard,kredietinstelling,lenen,geld,bank van lening"
+        },
+        "shop/radiotechnics": {
+            "name": "Winkel voor radio- en elektronische componenten",
+            "terms": "radiotechniek,satelliet-TV"
+        },
+        "building/college": {
+            "name": "Gebouw van beroepsschool",
+            "terms": "bso,buo,buso,vmbo,speciaal onderwijs,bijzonder onderwijs,onderwijs,middelbaar,secundair onderwijs"
+        },
+        "amenity/nursing_home": {
+            "name": "Verpleeghuis"
+        },
+        "shop/ticket": {
+            "name": "Ticketverkoop",
+            "terms": "toegangskaartjes,ticketjes"
+        },
+        "amenity/social_facility/group_home": {
+            "name": "Verzorgingstehuis (bv. bejaardentehuis)",
+            "terms": "rusthuis,bejaardentehuis"
+        },
+        "natural/water/reservoir": {
+            "name": "Reservoir",
+            "terms": "waterbekken,bekken,waterreservoir"
+        },
+        "craft/saddler": {
+            "name": "Zadelmaker",
+            "terms": "paarden,ruiter,paardrijden,manege"
+        },
+        "landuse/quarry": {
+            "name": "Groeve",
+            "terms": "steengroeve,mijn,openluchtmijn,dagbouw"
+        },
+        "barrier/border_control": {
+            "name": "Grenscontrole",
+            "terms": "douane"
+        },
+        "landuse/basin": {
+            "name": "Waterbekken"
+        },
+        "leisure/track": {
+            "name": "Racepiste (niet-motorsport)",
+            "terms": "stadion,stadium,fietsen,parcours,velodroom,pisterijden,baanwielrennen,skatebaan,skatepiste"
+        },
+        "aerialway/mixed_lift": {
+            "name": "Gemengde skilift",
+            "terms": "skilift,stoeltjeslift,gondellift,gondola"
+        },
+        "piste/nordic": {
+            "name": "Langlaufpiste",
+            "terms": "noordse skipiste,noords skiën,loipe"
+        },
+        "shop/paint": {
+            "name": "Verfwinkel",
+            "terms": "verfhandel,verfzaak"
+        },
+        "historic/ruins": {
+            "name": "Ruïne",
+            "terms": "geruïneerd gebouw"
+        },
+        "highway/secondary": {
+            "name": "Secundaire weg",
+            "terms": "provinciale weg,gewestweg,provincieweg"
+        },
+        "natural/fell": {
+            "name": "Fjell",
+            "terms": "berggebied,lage bergen,berkenbos,Scandinavische bergen"
+        },
+        "amenity/fast_food/sandwich": {
+            "name": "Broodjesfastfoodzaak"
+        },
+        "amenity/restaurant/japanese": {
+            "name": "Japans restaurant"
+        },
+        "natural/heath": {
+            "name": "Heideveld"
+        },
+        "amenity/fast_food/kebab": {
+            "name": "Kebabfastfoodzaak"
+        },
+        "landuse/greenfield": {
+            "name": "Braakliggende bouwgrond (nooit bebouwd)",
+            "terms": "verkaveling,nieuwe verkaveling,bouwgrond,braakliggend terrein,ontwikkelingsgrond"
+        },
+        "office/accountant": {
+            "name": "Boekhouder",
+            "terms": "accountant,bedrijfsadministratie"
+        },
+        "seamark": {
+            "name": "Scheepvaartobject"
+        },
+        "shop/leather": {
+            "name": "Lederwinkel",
+            "terms": "handtassen,leerwinkel,schoenen"
+        },
+        "building/commercial": {
+            "name": "Kantoorgebouw",
+            "terms": "bedrijf,vestiging"
+        },
+        "historic/wreck": {
+            "name": "Scheepswrak"
+        },
+        "club/sport": {
+            "name": "Sportclub"
+        },
+        "amenity/bicycle_parking": {
+            "name": "Fietsenstalling",
+            "terms": "fietsenrek,fietsenparking"
+        },
+        "amenity/compressed_air": {
+            "name": "Perslucht",
+            "terms": "fietspomp,autobanden,pomp,opblazen,oppompen"
+        },
+        "man_made/water_well": {
+            "name": "Waterbron",
+            "terms": "waterput"
+        },
+        "shop/organic": {
+            "name": "Winkel met Organische Koopwaar"
+        },
+        "waterway/ditch": {
+            "name": "Sloot",
+            "terms": "sloot,gracht"
+        },
+        "power/generator/source/wind": {
+            "name": "Windturbine",
+            "terms": "windmolen"
+        },
+        "leisure/fitness_station/stairs": {
+            "name": "Fitnesstrappen",
+            "terms": "oefentrappen,trappen,fitnesstreden"
+        },
+        "landuse/railway": {
+            "name": "Spoorweggebied",
+            "terms": "spoorgebied,spoorwegengebied,bundel,spoorbundel"
+        },
+        "amenity/cinema": {
+            "name": "Bioscoop",
+            "terms": "cinema,film,theater"
+        },
+        "type/route/bus": {
+            "name": "Bustraject",
+            "terms": "busroute,buslijn,lijn"
+        },
+        "natural/water/stream": {
+            "name": "Stroom"
+        },
+        "type/route_master": {
+            "name": "Openbaarvervoerstraject",
+            "terms": "lijn,buslijn,tramlijn,metrolijn,treintraject,treinlijn"
+        },
+        "landuse/farm": {
+            "name": "Landbouwgrond"
+        },
+        "place/city_block": {
+            "name": "Huizenblok"
+        },
+        "public_transport/platform_subway": {
+            "name": "Metrohalte"
+        },
+        "natural/wood": {
+            "name": "Bos",
+            "terms": "bomen,oerbos,oerwoud,woud"
+        },
+        "amenity/restaurant/chinese": {
+            "name": "Chinees restaurant"
+        },
+        "leisure/pitch/rugby_union": {
+            "name": "Rugby Union-veld",
+            "terms": "rugby,american football,football"
+        },
+        "craft/distillery": {
+            "name": "Destilleerderij",
+            "terms": "stokerij,distillerij,distilleerderij,destillerij,destillatie,whisky,gin,alcohol,jenever,brandewijn"
+        },
+        "aeroway/apron": {
+            "name": "Platform",
+            "terms": "taxibaan,apron,vliegveld"
+        },
+        "shop/tattoo": {
+            "name": "Tattoozetter",
+            "terms": "tattooshop,tattoeëerder,tattoeagezetter,tattooartist"
+        },
+        "shop/health_food": {
+            "name": "Gezondheidswinkel",
+            "terms": "supervoedselwinkel,superfoodwinkel"
+        },
+        "playground/roundabout": {
+            "name": "Speelplein-draaimolen",
+            "terms": "draaimolentje,zwierder,molentje,ronddraaiend platform"
+        },
+        "power/generator/method/photovoltaic": {
+            "name": "Zonnepaneel",
+            "terms": "fotovoltaïsche module"
+        },
+        "amenity/shelter/public_transport": {
+            "name": "Schuilhuisje voor openbaar vervoer",
+            "terms": "bushokje,tramhokje,treinhokje,buskotje,tramkotje"
+        },
+        "shop/optician": {
+            "name": "Opticien",
+            "terms": "brillenwinkel,brillenwinkel,lenzen,bril,zonnebril,oogarts"
+        },
+        "public_transport/platform_light_rail": {
+            "name": "Lightrailhalte",
+            "terms": "lichtspoorhalte,tramtreinhalte,sneltramhalte,lichtgewichttreinhalte,spoorweghalte"
+        },
+        "type/route/foot": {
+            "name": "Wandelroute",
+            "terms": "hikingroute,trekkingroute"
+        },
+        "barrier/block": {
+            "name": "Blok",
+            "terms": "wegversperring"
+        },
+        "amenity/theatre/type/amphi": {
+            "name": "Amfitheater",
+            "terms": "Romeins theater"
+        },
+        "relation": {
+            "name": "Relatie",
+            "terms": "relation"
+        },
+        "shop/medical_supply": {
+            "name": "Winkel voor Medische Hulpmiddelen"
+        },
+        "type/restriction/only_straight_on": {
+            "name": "Alleen rechtdoor",
+            "terms": "enkel rechtdoor,rechtdoor,niet draaien,niet afslaan,niet inslaan,draaien verboden,afslaan verboden,draaien verboden"
+        },
+        "landuse/industrial/scrap_yard": {
+            "name": "Sloperij",
+            "terms": "autokerkhof,oud ijzer,wrakken,schroothoop,metaal"
+        },
+        "amenity/recycling": {
+            "name": "Recycling"
+        },
+        "camp_site/camp_pitch": {
+            "name": "Individueel kampeerveld of sta-plaats op camping",
+            "terms": "kampeerveldje,sta-plaats,staplaats"
+        },
+        "shop/gas": {
+            "name": "Gasflessenwinkel",
+            "terms": "methaan,ethaan,propaan,butaan,gaswinkel,gastank,aardgas,lpg"
+        },
+        "landuse/commercial": {
+            "name": "Commercieel gebied",
+            "terms": "kantoren,bedrijven,bedrijvenpark"
+        },
+        "seamark/mooring": {
+            "name": "Aanmeerpunt"
+        },
+        "natural/ridge": {
+            "name": "Bergkam",
+            "terms": "kam,bergtop,top"
+        },
+        "natural": {
+            "name": "Natuurlijk"
+        },
+        "aerialway/magic_carpet": {
+            "name": "Tapijtlift",
+            "terms": "skilift"
+        },
+        "amenity/post_box": {
+            "name": "Brievenbus",
+            "terms": "postbus,bpost,posterijen,postnl"
+        },
+        "public_transport/station_tram": {
+            "name": "Tramstation",
+            "terms": "spoorwegstation"
+        },
+        "emergency/official": {
+            "name": "Toegang voor hulpdiensten: officiële voorkeursweg"
+        },
+        "playground/sandpit": {
+            "name": "Zandbak"
+        },
+        "railway/derail": {
+            "name": "Ontspoorblok",
+            "terms": "ontspoorinrichting,stopontspoorblok"
+        },
+        "leisure/bowling_alley": {
+            "name": "Bowlingbaan",
+            "terms": "bowlingcentrum,kegelbaan,bowlen,bowl inn"
+        },
+        "man_made/mast": {
+            "name": "Mast",
+            "terms": "zendmast,antenne,zendtoren,gsm-mast,toren,communicatiemast,radiomast,tv-mast"
+        },
+        "attraction/river_rafting": {
+            "name": "Wildwaterbaan",
+            "terms": "rivierraftride,boomstammetjes,rapid river,shoot-the-chute,spillwater,river splash,splash"
+        },
+        "amenity/payment_terminal": {
+            "name": "Betalingsterminal"
+        },
+        "leisure/bird_hide": {
+            "name": "Vogelkijkscherm of -hut",
+            "terms": "vogelkijkhut,vogelkijkscherm"
+        },
+        "shop/fishing": {
+            "name": "Hengelsportwinkel",
+            "terms": "visserswinkel,visserijwinkel,visgereiwinkel,netten,vislijnen"
+        },
+        "amenity/vending_machine/cigarettes": {
+            "name": "Sigarettenautomaat",
+            "terms": "sigarettenautomaat,tabakautomaat"
+        },
+        "craft/tiler": {
+            "name": "Tegelmaker",
+            "terms": "plavuis,tegel,tegellegger,tegelmaker"
+        },
+        "shop/frame": {
+            "name": "Kaderwinkel",
+            "terms": "schilderijen,kunst,kadrering"
+        },
+        "barrier/kerb": {
+            "name": "Stoeprand",
+            "terms": "trottoirrand,boordje,rand van voetpad"
+        },
+        "leisure/nature_reserve": {
+            "name": "Natuurreservaat"
+        },
+        "shop/antiques": {
+            "name": "Antiquair",
+            "terms": "antiekwinkel"
+        },
+        "playground/basket_spinner": {
+            "name": "Manddraaimolentje",
+            "terms": "mandmolentje"
+        },
+        "shop/fabric": {
+            "name": "Stofwinkel",
+            "terms": "kledij,naaien"
+        },
+        "craft/brewery": {
+            "name": "Brouwerij",
+            "terms": "bier,wijn,alcohol"
+        },
+        "highway/turning_circle": {
+            "name": "Keerplein",
+            "terms": "keerlus zonder eiland,draaicirkel,pijpekop,pijpenkop,einde van de straat,cul-de-sac"
+        },
+        "shop/coffee": {
+            "name": "Koffiewinkel",
+            "terms": "koffiebonen,koffiemolen"
+        },
+        "shop/e-cigarette": {
+            "name": "E-sigarettenwinkel",
+            "terms": "e-cigarettewinkel"
+        },
+        "tourism/wilderness_hut": {
+            "name": "Onbemande hut in wildernis",
+            "terms": "wildernishut,berghut,berghuis,berghostel,bergschuilhuis"
+        },
+        "amenity/dive_centre": {
+            "name": "Duikcentrum",
+            "terms": "duiken,snorkelen"
+        },
+        "amenity/vending_machine/feminine_hygiene": {
+            "name": "Menstruatieproductautomaat",
+            "terms": "maandverbandautomaat,tamponautomaat,menstruatie,vrouwelijke hygiëne,vrouwencondooms"
+        },
+        "shop/clothes": {
+            "name": "Kledingzaak",
+            "terms": "kledingwinkel,kledinghandel,kledij"
+        },
+        "amenity/restaurant/noodle": {
+            "name": "Noedelrestaurant",
+            "terms": "ramennoedelrestaurant,rijstnoedelrestaurant"
+        },
+        "aeroway/aerodrome": {
+            "name": "Luchthaven",
+            "terms": "vliegveld"
+        },
+        "amenity/bicycle_rental": {
+            "name": "Fietsverhuur",
+            "terms": "huren,fietsen"
+        },
+        "shop/gift": {
+            "name": "Cadeauwinkel",
+            "terms": "cadeauzaak,geschenkwinkel"
+        },
+        "craft/locksmith": {
+            "name": "Slotenmaker"
+        },
+        "leisure/sports_centre": {
+            "name": "Sportcentrum of -complex",
+            "terms": "sportcentrum,sportcomplex,bloso"
+        },
+        "place": {
+            "name": "Plaats"
+        },
+        "power": {
+            "name": "Stroomvoorziening"
+        },
+        "public_transport/platform_train": {
+            "name": "Treinhalte"
+        },
+        "leisure/fitness_station/push-up": {
+            "name": "Push-upstation",
+            "terms": "push-upstang,push-upbalk,push-upstang,fitness"
+        },
+        "aerialway/station": {
+            "name": "Kabelbaanstation"
+        },
+        "building/house": {
+            "name": "Huis",
+            "terms": "woning,woonst,woongebied,huizen,residentieel,wonen,woonwijk,gebouw"
+        },
+        "piste/sleigh": {
+            "name": "Arrenslee-piste",
+            "terms": "sledepiste,sleepiste,trekdiersleepiste"
+        },
+        "leisure/marina": {
+            "name": "Jachthaven",
+            "terms": "marina"
+        },
+        "craft/tailor": {
+            "name": "Kleermaker"
+        },
+        "amenity/restaurant/american": {
+            "name": "Amerikaans restaurant"
+        },
+        "piste/sled": {
+            "name": "Slee-piste",
+            "terms": "sledepiste"
+        },
+        "barrier/gate": {
+            "name": "Poort",
+            "terms": "hekken,poort"
+        },
+        "shop/motorcycle": {
+            "name": "Motorwinkel"
+        },
+        "waterway/river": {
+            "name": "Rivier",
+            "terms": "stroom,beek"
+        },
+        "office/architect": {
+            "name": "Architectenbureau",
+            "terms": "gebouwenontwerper,tekenaar,bouwmeester,architectenkantoor"
+        },
+        "railway/subway": {
+            "name": "Metrospoor",
+            "terms": "metrolijn,spoor"
+        },
+        "amenity/money_transfer": {
+            "name": "Wisselkantoor"
+        },
+        "highway/elevator": {
+            "name": "Lift"
+        },
+        "railway/miniature": {
+            "name": "Berijdbare minispoorweg",
+            "terms": "miniatuurspoorweg,minispoorweg,smalspoor"
+        },
+        "shop/carpet": {
+            "name": "Tapijtwinkel",
+            "terms": "vloerbedekkingswinkel,vloerbedekkingsspeciaalzaak"
+        },
+        "craft": {
+            "name": "Vakmanschap",
+            "terms": "stiel,kunde,handwerk"
+        },
+        "traffic_calming/chicane": {
+            "name": "Asverlegging",
+            "terms": "zigzag"
+        },
+        "public_transport/station_bus": {
+            "name": "Busstation"
+        },
+        "shop/butcher": {
+            "name": "Slagerij",
+            "terms": "slagerij,beenhouwerij"
+        },
+        "barrier/bollard": {
+            "name": "Paaltjes",
+            "terms": "pollers,inzinkbare paal"
+        },
+        "leisure/golf_course": {
+            "name": "Golfbaan",
+            "terms": "golfterrein"
+        },
+        "barrier": {
+            "name": "Barrière",
+            "terms": "grens,afscheiding,afsluiting,scheiding"
+        },
+        "historic/castle": {
+            "name": "Kasteel",
+            "terms": "kasteel,burcht"
+        },
+        "office/surveyor": {
+            "name": "Kantoor van landmeter/expert/risicoschatter/schademeter/opiniepeilers/statisticus",
+            "terms": "kantoor van landmeter,landmeterskantoor,kantoor van expert,exertisekantoor,kantoor van risicoschatter,risicoschatterskantoor,opiniepeilersbureau,kantoor van opiniepeilers,statisticikantoor,kantoor van statistici"
+        },
+        "shop/car_repair": {
+            "name": "Autogarage (herstel)",
+            "terms": "garage,autohersteller"
+        },
+        "craft/hvac": {
+            "name": "HVAC",
+            "terms": "airco,verwarming,ventilatie,koeling,airconditioning,cv,loodgieter"
+        },
+        "highway/path": {
+            "name": "Pad",
+            "terms": "wandelpad,fietspad,gemengd wandelpad en fietspad,hikepad,fietsoversteekplaats"
+        },
+        "leisure/water_park": {
+            "name": "Waterpretpark",
+            "terms": "subtropisch zwembad,zwembad,duiken,zwemmen"
+        },
+        "shop/sewing": {
+            "name": "Naaiwinkel",
+            "terms": "naaimachine,stofwinkel"
+        },
+        "attraction/train": {
+            "name": "Toeristentrein",
+            "terms": "treintje"
+        },
+        "landuse/meadow": {
+            "name": "Weide",
+            "terms": "wei,hooiveld,veld"
+        },
+        "shop/convenience": {
+            "name": "Gemakswinkel",
+            "terms": "buurtsuper,kruidenier,buurtwinkel,tankstationwinkel"
+        },
+        "amenity/bus_station": {
+            "name": "Busstation"
+        },
+        "highway/crossing/zebra": {
+            "name": "Zebrapad"
+        },
+        "highway/steps/conveying": {
+            "name": "Roltrap"
+        },
+        "shop/books": {
+            "name": "Boekwinkel",
+            "terms": "boek,bibliotheek,boekenwinkel,boekhandel"
+        },
+        "highway/service": {
+            "name": "Toegangsweg",
+            "terms": "privéweg"
+        },
+        "piste/ice_skate": {
+            "name": "Schaatsring"
+        },
+        "waterway/drain": {
+            "name": "Afvoer",
+            "terms": "greppel,gracht"
+        },
+        "highway/residential": {
+            "name": "Straat",
+            "terms": "woonstraat,residentiële weg,gemeenteweg,gemeentelijke weg,kleine openbare weg"
+        },
+        "historic/wayside_shrine": {
+            "name": "Wegschrijn",
+            "terms": "bermmonument,kapelletje,veldschrijn,mariaschrijn,wegkapelletje"
+        },
+        "amenity/restaurant/turkish": {
+            "name": "Turks restaurant"
+        },
+        "type/boundary/administrative": {
+            "name": "Bestuurlijke grens",
+            "terms": "administratieve grens"
+        },
+        "landuse/military/office": {
+            "name": "Militair kantoor",
+            "terms": "leger,administratie,marine,zeemacht,luchtmacht,landmacht"
+        },
+        "amenity/watering_place": {
+            "name": "Drinkplaats voor dieren",
+            "terms": "dierendrinkplaats,bron"
+        },
+        "public_transport/station_train_halt": {
+            "name": "Treinstation op aanvraag",
+            "terms": "spoorwegstation,treinhalte,spoorweghalte,halte"
+        },
+        "emergency/ambulance_station": {
+            "name": "Ambulancestandplaats",
+            "terms": "ambulancegarage"
+        },
+        "healthcare/podiatrist": {
+            "name": "Podoloog",
+            "terms": "voeten,nagels,voetheelkunde,podologie,podiatrie,podiatrist"
+        },
+        "amenity/motorcycle_parking": {
+            "name": "Motorfietsparking",
+            "terms": "motorparking,motoparking,motostalling,motorstalling,motorfietsparking,motoren,moto's,parking voor motoren,parking voor moto's,parking voor motorfietsen"
+        },
+        "shop/craft": {
+            "name": "Schilder- en Tekengereedschapswinkel",
+            "terms": "kunstbenodigdhedenwinkel,knutselwinkel"
+        },
+        "line": {
+            "name": "Lijn",
+            "terms": "anders,overige,iets anders,algemeen"
+        },
+        "amenity/vehicle_inspection": {
+            "name": "Voertuigkeuring",
+            "terms": "autokeuring,automobielkeuring,voertuiginspectie"
+        },
+        "amenity/kindergarten": {
+            "name": "Gebied van Crèche/Kleuterschool",
+            "terms": "kleuterschool,kinderdagverblijf,peuterspeelzaal"
+        },
+        "man_made/tower/observation": {
+            "name": "Observatietoren"
+        },
+        "waterway/weir": {
+            "name": "Stuw",
+            "terms": "waterkering,stuwdam,keerdam"
+        },
+        "craft/metal_construction": {
+            "name": "Metaalbewerker",
+            "terms": "metaalbewerking,staalbewerking,smid,lassers,lassen"
+        },
+        "craft/painter": {
+            "name": "Schilder",
+            "terms": "schildersbedrijf"
+        },
+        "public_transport/stop_area": {
+            "name": "Haltecomplex",
+            "terms": "stopplaats,haltecomplex,openbaar vervoer,openbaarvervoershaltecomplex,haltes,haltegroep,station"
+        },
+        "craft/carpet_layer": {
+            "name": "Tapijtlegger",
+            "terms": "vloerbekleder,tapis plain"
+        },
+        "man_made/flagpole": {
+            "name": "Vlaggenmast",
+            "terms": "vlaggenstok,vlaggenpaal"
+        },
+        "highway/crossing/unmarked-raised": {
+            "name": "Verhoogde oversteekplaats",
+            "terms": "zebrapad op plateau,zebrapad op drempel,oversteekplaats op plateau,oversteekplaats op drempel"
+        },
+        "tourism/attraction": {
+            "name": "Toeristische attractie",
+            "terms": "bezienswaardigheid,toeristische trekpleister,trekpleister"
+        },
+        "man_made": {
+            "name": "Aangelegd"
+        },
+        "barrier/kerb/lowered": {
+            "name": "Verlaagde stoeprand",
+            "terms": "verlaagde trottoirrand,verlaagd boordje,verlaagde rand van voetpad"
+        },
+        "golf/fairway": {
+            "name": "Fairway",
+            "terms": "golf"
+        },
+        "leisure/fitness_station/sit-up": {
+            "name": "Sit-upstation",
+            "terms": "crunchstation,fitness,sit-upbank,crunchbank"
+        },
+        "public_transport/station_subway": {
+            "name": "Metrostation",
+            "terms": "spoorwegstation"
+        },
+        "tourism/alpine_hut": {
+            "name": "Berghut"
+        },
+        "tourism/information/office": {
+            "name": "Toerismekantoor",
+            "terms": "bezoekerscentrum,informatiecentrum,vvv-kantoor,office du tourisme,informatie"
+        },
+        "shop/alcohol": {
+            "name": "Slijterij",
+            "terms": "alcoholwinkel"
+        },
+        "shop/fireplace": {
+            "name": "Haardwinkel",
+            "terms": "kachelwinkel"
+        },
+        "tourism/viewpoint": {
+            "name": "Uitzichtpunt",
+            "terms": "zicht,uitkijkpunt"
+        },
+        "craft/handicraft": {
+            "name": "Handwerkatelier",
+            "terms": "nijverheidsatelier,handenarbeid,handgemaakt,handvaardigheid,artisanaal atelier,brei-atelier"
+        },
+        "landuse/construction": {
+            "name": "Bouwterrein",
+            "terms": "constructie,werken,bouwput,bouwkuip"
+        },
+        "shop/trade": {
+            "name": "Bouwmaterialenhandel",
+            "terms": "bouwmaterialenwinkel,bouwmaterialenzaak,bouwmaterialengroothandel,vensterhandel,ruitenhandel,glashandel,ramenhandel,tegelhandel,tegelgroothandel,loodgieterswinkel,houthandel,houtgroothandel,plankenhandel"
+        },
+        "piste/downhill/halfpipe": {
+            "name": "Halfpipe"
+        },
+        "shop/motorcycle_repair": {
+            "name": "Motorreparatie"
+        },
+        "aeroway": {
+            "name": "Vliegveld"
+        },
+        "aeroway/terminal": {
+            "name": "Luchthaventerminal",
+            "terms": "vertrekhal,aankomsthal,terminal,gate,vliegveld"
+        },
+        "emergency/life_ring": {
+            "name": "Reddingsboei",
+            "terms": "reddingsvest,reddingsring,drijfring"
+        }
+    }
+}

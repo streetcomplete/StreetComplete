@@ -1,0 +1,2039 @@
+{
+    "presets": {
+        "office/administrative": {
+            "name": "Administracinis biuras"
+        },
+        "historic/boundary_stone": {
+            "name": "Riboženklis akmuo",
+            "terms": "riboženklis,akmuo"
+        },
+        "leisure/park": {
+            "name": "Parkas",
+            "terms": "parkas"
+        },
+        "amenity/car_rental": {
+            "name": "Automobilių nuoma",
+            "terms": "nuoma,mašinų nuoma,automobilių nuoma"
+        },
+        "amenity/internet_cafe": {
+            "name": "Interneto kavinė"
+        },
+        "place/city": {
+            "name": "Miestas",
+            "terms": "didmiestis"
+        },
+        "building": {
+            "name": "Pastatas",
+            "terms": "pastatas,namas,statinys"
+        },
+        "leisure/garden": {
+            "name": "Sodas",
+            "terms": "sodas"
+        },
+        "historic/memorial": {
+            "name": "Memorialas",
+            "terms": "paminklas"
+        },
+        "craft/dressmaker": {
+            "name": "Siuvėja",
+            "terms": "siuvėjas"
+        },
+        "shop/cosmetics": {
+            "name": "Kosmetikos parduotuvė"
+        },
+        "barrier/lift_gate": {
+            "name": "Pakeliami vartai",
+            "terms": "pakeliami vartai"
+        },
+        "leisure/swimming_pool": {
+            "name": "Baseinas",
+            "terms": "baseinas,maudymosi baseinas"
+        },
+        "waterway/stream": {
+            "name": "Upelis",
+            "terms": "Upelis,Upeliukas"
+        },
+        "landuse/garages": {
+            "name": "Garažų plotas"
+        },
+        "railway": {
+            "name": "Geležinkelis"
+        },
+        "building/university": {
+            "name": "Universiteto pastatas",
+            "terms": "universiteto pastatas,universitetas"
+        },
+        "internet_access/wlan": {
+            "name": "Wi-Fi Hotspot"
+        },
+        "building/farm": {
+            "name": "Fermos namas"
+        },
+        "amenity/library": {
+            "name": "Biblioteka",
+            "terms": "biblioteka,skaitykla"
+        },
+        "shop/stationery": {
+            "name": "Kanceliarinių prekių parduotuvė"
+        },
+        "office/advertising_agency": {
+            "name": "Reklamos agentūra"
+        },
+        "amenity/waste_disposal": {
+            "name": "Šiukšlių konteineris"
+        },
+        "highway/living_street": {
+            "name": "Gyvenamoji gatvė",
+            "terms": "gyvenamoji zona,gyvenamoji gatvė"
+        },
+        "attraction/carousel": {
+            "name": "Karuselė"
+        },
+        "craft/sawmill": {
+            "name": "Lentpjūvė",
+            "terms": "lentpjūvė"
+        },
+        "landuse/military/bunker": {
+            "name": "Karinis bunkeris"
+        },
+        "circular": {
+            "name": "Eismo žiedas"
+        },
+        "power/sub_station": {
+            "name": "Pastotė"
+        },
+        "shop/copyshop": {
+            "name": "Kopijavimo parduotuvė"
+        },
+        "highway/motorway": {
+            "name": "Greitkelis",
+            "terms": "greitkelis,automagistralė"
+        },
+        "natural/bay": {
+            "name": "Įlanka",
+            "terms": "įlanka"
+        },
+        "leisure/firepit": {
+            "name": "Ugniaduobė"
+        },
+        "man_made/bridge": {
+            "name": "Tiltas"
+        },
+        "aeroway/runway": {
+            "name": "Pakilimo takas",
+            "terms": "pakilimo takas"
+        },
+        "railway/monorail": {
+            "name": "Vienbėgis geležinkelis"
+        },
+        "amenity/studio": {
+            "name": "Studija",
+            "terms": "studija"
+        },
+        "landuse/military": {
+            "name": "Karinė zona",
+            "terms": "karinė zona,poligonas,kareivinės"
+        },
+        "office/physician": {
+            "name": "Gydytojas"
+        },
+        "shop/bicycle": {
+            "name": "Dviračių parduotuvė",
+            "terms": "dviračių parduotuvė"
+        },
+        "shop/seafood": {
+            "name": "Jūros gėrybių parduotuvė"
+        },
+        "barrier/city_wall": {
+            "name": "Miesto siena",
+            "terms": "siena,miesto siena"
+        },
+        "office/employment_agency": {
+            "name": "Įdarbinimo agentūra"
+        },
+        "tourism/apartment": {
+            "name": "Svečių apartamentai / butas"
+        },
+        "amenity/hunting_stand": {
+            "name": "Medžioklės bokštelis"
+        },
+        "tourism/guest_house": {
+            "name": "Svečių namai",
+            "terms": "Svečių namai"
+        },
+        "craft/sculptor": {
+            "name": "Skulptorius"
+        },
+        "boundary/administrative": {
+            "name": "Administracinė riba",
+            "terms": "riba,administracinė riba,siena"
+        },
+        "landuse/aquaculture": {
+            "name": "Akvakultūra"
+        },
+        "amenity": {
+            "name": "Paslaugos"
+        },
+        "building/ruins": {
+            "name": "Pastato griuvėsiai"
+        },
+        "tourism/gallery": {
+            "name": "Meno galerija"
+        },
+        "amenity/fuel": {
+            "name": "Degalinė",
+            "terms": "dujų stotis"
+        },
+        "type/route/tram": {
+            "name": "Tramvajaus maršrutas"
+        },
+        "leisure/pitch/american_football": {
+            "name": "Amerikoniško futbolo aikštė",
+            "terms": "amerikietiško futbolo aikštė"
+        },
+        "traffic_calming/bump": {
+            "name": "Maži greičio slopinimo kalneliai"
+        },
+        "place/island": {
+            "name": "Sala",
+            "terms": "sala"
+        },
+        "craft/carpenter": {
+            "name": "Dailidė",
+            "terms": "stalius"
+        },
+        "railway/level_crossing": {
+            "name": "Geležinkelio Pervaža (Kelias)"
+        },
+        "man_made/pier": {
+            "name": "Prieplauka"
+        },
+        "shop/farm": {
+            "name": "Produktų stendas"
+        },
+        "waterway/stream_intermittent": {
+            "name": "Nepastovus upeliukas"
+        },
+        "highway/road": {
+            "name": "Nežinomas kelias",
+            "terms": "nežinomas kelias"
+        },
+        "address": {
+            "name": "Adresas",
+            "terms": "adresas"
+        },
+        "shop/greengrocer": {
+            "name": "Daržovių ir vaisių pardavėjas"
+        },
+        "amenity/pub": {
+            "name": "Aludė",
+            "terms": "baras,aludė"
+        },
+        "building/entrance": {
+            "name": "Įėjimas/Išėjimas"
+        },
+        "shop/religion": {
+            "name": "Religinė parduotuvė"
+        },
+        "railway/station": {
+            "name": "Traukinių stotis"
+        },
+        "shop/shoes": {
+            "name": "Batų parduotuvė"
+        },
+        "office/company": {
+            "name": "Korporacijos biuras"
+        },
+        "shop/dairy": {
+            "name": "Pieno produktų parduotuvė"
+        },
+        "type/route/road": {
+            "name": "Kelio maršrutas"
+        },
+        "amenity/ranger_station": {
+            "name": "Girininkų stotis"
+        },
+        "amenity/planetarium": {
+            "name": "Planetariumas"
+        },
+        "office/financial": {
+            "name": "Finansų biuras",
+            "terms": "Finansų tarnyba"
+        },
+        "amenity/parking": {
+            "name": "Automobilių stovėjimo aikštelė"
+        },
+        "highway/bus_stop": {
+            "name": "Autobuso sustojimas / platforma"
+        },
+        "highway/track": {
+            "name": "Neprižiūrimas Kelias",
+            "terms": "miško keliukas,bekelė,dvigubos vėžės,šunkelis"
+        },
+        "amenity/place_of_worship/hindu": {
+            "name": "Hindu šventykla"
+        },
+        "shop/wine": {
+            "name": "Vyno parduotuvė",
+            "terms": "Vyninė,Vyno parduotuvė"
+        },
+        "shop/hairdresser": {
+            "name": "Kirpykla",
+            "terms": "kirpykla"
+        },
+        "amenity/swimming_pool": {
+            "name": "Baseinas"
+        },
+        "man_made/tower": {
+            "name": "Bokštas",
+            "terms": "bokštas"
+        },
+        "shop/florist": {
+            "name": "Gėlės"
+        },
+        "type/route/ferry": {
+            "name": "Kelto maršrutas"
+        },
+        "building/school": {
+            "name": "Mokyklos pastatas",
+            "terms": "mokyklos pastatas,mokykla"
+        },
+        "amenity/atm": {
+            "name": "Bankomatas",
+            "terms": "ATM,Bankomatas"
+        },
+        "tourism/information/board": {
+            "name": "Informacijos lenta"
+        },
+        "ford": {
+            "name": "Brasta",
+            "terms": "brasta"
+        },
+        "shop/furnace": {
+            "name": "Krosnių parduotuvė"
+        },
+        "landuse/industrial": {
+            "name": "Pramoninė zona",
+            "terms": "pramoninė zona,pramonė"
+        },
+        "natural/sand": {
+            "name": "Smėlis"
+        },
+        "place/locality": {
+            "name": "Vietovė",
+            "terms": "vietovė"
+        },
+        "type/route/hiking": {
+            "name": "Žygių maršrutas"
+        },
+        "amenity/courthouse": {
+            "name": "Teismo rūmai",
+            "terms": "Teismas,Teismo rūmai"
+        },
+        "shop/art": {
+            "name": "Meno parduotuvė"
+        },
+        "tourism/hostel": {
+            "name": "Viešbutis"
+        },
+        "leisure/pitch/volleyball": {
+            "name": "Tinklinio aikštelė"
+        },
+        "amenity/veterinary": {
+            "name": "Veterinarija",
+            "terms": "veterinaras"
+        },
+        "place/hamlet": {
+            "name": "Viensėdis",
+            "terms": "viensėdis,kaimelis"
+        },
+        "amenity/recycling_centre": {
+            "name": "Rūšiavimo centras"
+        },
+        "craft/pottery": {
+            "name": "Keramikos amatininkas",
+            "terms": "Puodų amatininkas"
+        },
+        "club": {
+            "name": "Klubas"
+        },
+        "craft/roofer": {
+            "name": "Stogdengys",
+            "terms": "stogdengys"
+        },
+        "highway": {
+            "name": "Greitkelis"
+        },
+        "shop/massage": {
+            "name": "Masažo parduotuvė"
+        },
+        "area": {
+            "name": "Plotas",
+            "terms": "plotas"
+        },
+        "shop/pastry": {
+            "name": "Kepykla"
+        },
+        "landuse/landfill": {
+            "name": "Sąvartynas",
+            "terms": "sąvartynas"
+        },
+        "amenity/theatre": {
+            "name": "Teatras",
+            "terms": "teatras"
+        },
+        "man_made/lighthouse": {
+            "name": "Švyturys",
+            "terms": "švyturys"
+        },
+        "type/route/train": {
+            "name": "Traukinio maršrutas"
+        },
+        "barrier/fence": {
+            "name": "Tvora",
+            "terms": "tvora"
+        },
+        "tourism/aquarium": {
+            "name": "Akvariumas"
+        },
+        "landuse/cemetery": {
+            "name": "Kapinės",
+            "terms": "kapinės"
+        },
+        "railway/rail": {
+            "name": "Gelžkelis",
+            "terms": "geležinkelis,gelžkelis"
+        },
+        "type/route/subway": {
+            "name": "Metro maršrutas"
+        },
+        "office/government": {
+            "name": "Vyriausybės biuras",
+            "terms": "Valdžios biuras"
+        },
+        "amenity/fountain": {
+            "name": "Fontanas",
+            "terms": "Fontanas"
+        },
+        "railway/disused": {
+            "name": "Nebenaudojamas geležinkelis",
+            "terms": "nenaudojamas geležinkelis,nenaudojami bėgiai"
+        },
+        "shop/doityourself": {
+            "name": "Pasidaryk pats parduotuvė"
+        },
+        "amenity/taxi": {
+            "name": "Taksi stendas",
+            "terms": "taksi aikštelė"
+        },
+        "amenity/grave_yard": {
+            "name": "Kapinės prie bažnyčios",
+            "terms": "Kapinės,Kapai"
+        },
+        "amenity/smoking_area": {
+            "name": "Rūkymo vieta"
+        },
+        "man_made/water_tower": {
+            "name": "Vandens bokštas",
+            "terms": "vandens bokštas"
+        },
+        "railway/train_wash": {
+            "name": "Traukinių plovykla"
+        },
+        "railway/subway_entrance": {
+            "name": "Metro įėjimas",
+            "terms": "įėjimas į metro"
+        },
+        "leisure/picnic_table": {
+            "name": "Pikniko stalas",
+            "terms": "poilsio stalas"
+        },
+        "man_made/cutline": {
+            "name": "Proskyna",
+            "terms": "proskyna"
+        },
+        "craft/scaffolder": {
+            "name": "Pastolių montuotojas"
+        },
+        "craft/clockmaker": {
+            "name": "Laikrodininkas",
+            "terms": "laikrodininkas"
+        },
+        "shop/locksmith": {
+            "name": "Raktininkas"
+        },
+        "office/insurance": {
+            "name": "Draudimo įstaiga",
+            "terms": "draudimas,draudimo kontora"
+        },
+        "shop/furniture": {
+            "name": "Baldų parduotuvė"
+        },
+        "leisure/pitch": {
+            "name": "Sporto aikštelė"
+        },
+        "tourism/hotel": {
+            "name": "Viešbutis",
+            "terms": "Viešbutis"
+        },
+        "advertising/billboard": {
+            "name": "Reklaminis stendas"
+        },
+        "shop/bakery": {
+            "name": "Kepykla",
+            "terms": "kepykla"
+        },
+        "historic/monument": {
+            "name": "Paminklas",
+            "terms": "monumentas,paminklas"
+        },
+        "emergency/phone": {
+            "name": "Pagalbos telefonas",
+            "terms": "avarinis telefonas"
+        },
+        "type/route/bicycle": {
+            "name": "Dviračių maršrutas",
+            "terms": "Dviračių maršrutas"
+        },
+        "highway/give_way": {
+            "name": "Duoti kelią ženklas"
+        },
+        "amenity/place_of_worship/shinto": {
+            "name": "Šintoizmo šventykla"
+        },
+        "leisure/pitch/soccer": {
+            "name": "Futbolo aikštė",
+            "terms": "futbolo aikštė"
+        },
+        "type/multipolygon": {
+            "name": "Multipoligonas"
+        },
+        "shop/vacant": {
+            "name": "Tuščia parduotuvė"
+        },
+        "amenity/social_facility/homeless_shelter": {
+            "name": "Benamių prieglauda",
+            "terms": "prieglauda,benamių prieglauda"
+        },
+        "historic": {
+            "name": "Istorinė vietovė",
+            "terms": "istorinė vieta"
+        },
+        "leisure/miniature_golf": {
+            "name": "Minigolfas"
+        },
+        "building/kindergarten": {
+            "name": "Vaikų darželio pastatas",
+            "terms": "vaikų darželis,darželio pastatas"
+        },
+        "amenity/hospital": {
+            "name": "Ligoninės kiemas"
+        },
+        "leisure/playground": {
+            "name": "Žaidimų aikštelė",
+            "terms": "žaidimų aikštelė"
+        },
+        "amenity/telephone": {
+            "name": "Telefonas",
+            "terms": "telefonas"
+        },
+        "building/dormitory": {
+            "name": "Bendrabutis",
+            "terms": "bendrabutis"
+        },
+        "craft/blacksmith": {
+            "name": "Kalvis",
+            "terms": "kalvis"
+        },
+        "emergency/water_tank": {
+            "name": "Skubaus atvejo vandens rezervuaras"
+        },
+        "landuse/residential": {
+            "name": "Gyvenamoji zona",
+            "terms": "gyvenamoji zona,miegamoji zona"
+        },
+        "shop/erotic": {
+            "name": "Erotikos parduotuvė"
+        },
+        "leisure/stadium": {
+            "name": "Stadionas",
+            "terms": "stadionas"
+        },
+        "highway/speed_camera": {
+            "name": "Greičio kamera"
+        },
+        "amenity/drinking_water": {
+            "name": "Geriamas vanduo",
+            "terms": "Vanduo,Geriamas vanduo"
+        },
+        "highway/mini_roundabout": {
+            "name": "Mini žiedas",
+            "terms": "mini-žiedas,žiedas"
+        },
+        "barrier/kissing_gate": {
+            "name": "Atsidarantys varteliai"
+        },
+        "type/restriction/no_u_turn": {
+            "name": "Jokio apsisukimo",
+            "terms": "Negalima apsisukti"
+        },
+        "amenity/townhall": {
+            "name": "Rotušė",
+            "terms": "rotušė"
+        },
+        "highway/service/parking_aisle": {
+            "name": "Parkavimo pravažiaviamas"
+        },
+        "amenity/bbq": {
+            "name": "Barbekiu/Grilis"
+        },
+        "natural/water": {
+            "name": "Vanduo",
+            "terms": "vanduo"
+        },
+        "barrier/cycle_barrier": {
+            "name": "Dviračių barjeras",
+            "terms": "dviračių barjeras"
+        },
+        "embankment": {
+            "name": "Užtvanka"
+        },
+        "shop/sports": {
+            "name": "Sporto reikmenų parduotuvė"
+        },
+        "power/line": {
+            "name": "Elektros linija",
+            "terms": "elektros linija"
+        },
+        "amenity/ice_cream": {
+            "name": "Ledų parduotuvė"
+        },
+        "power/pole": {
+            "name": "Elektros stulpas",
+            "terms": "stulpas,elektros stulpas"
+        },
+        "type/waterway": {
+            "name": "Vandens kelias"
+        },
+        "craft/winery": {
+            "name": "Vyninė",
+            "terms": "vyninė"
+        },
+        "shop/laundry": {
+            "name": "Skalbykla"
+        },
+        "natural/peak": {
+            "name": "Viršūnė",
+            "terms": "viršūnė,viršukalnė"
+        },
+        "highway/tertiary": {
+            "name": "Tretysis Kelias",
+            "terms": "kelias,gatvė"
+        },
+        "tourism/artwork": {
+            "name": "Meno kūrinys"
+        },
+        "amenity/grit_bin": {
+            "name": "Smėlio dėžė",
+            "terms": "Smėlio dėžė"
+        },
+        "amenity/bank": {
+            "name": "Bankas",
+            "terms": "Bankas"
+        },
+        "landuse/retail": {
+            "name": "Prekybos zona",
+            "terms": "prekybos zona"
+        },
+        "leisure/sauna": {
+            "name": "Sauna"
+        },
+        "craft/key_cutter": {
+            "name": "Raktininkas"
+        },
+        "shop/pyrotechnics": {
+            "name": "Fejerverkų parduotuvė"
+        },
+        "amenity/arts_centre": {
+            "name": "Menų centras",
+            "terms": "Menų centras,Meno centras"
+        },
+        "shop/travel_agency": {
+            "name": "Kelionių agentūra",
+            "terms": "Kelionių agentūra"
+        },
+        "tourism/artwork/statue": {
+            "name": "Statula"
+        },
+        "amenity/restaurant": {
+            "name": "Restoranas",
+            "terms": "rastoranas"
+        },
+        "type/route/detour": {
+            "name": "Apvažiavimo maršrutas"
+        },
+        "amenity/police": {
+            "name": "Policija",
+            "terms": "policija"
+        },
+        "place/farm": {
+            "name": "Ūkis"
+        },
+        "office/association": {
+            "name": "Ne pelno organizacijos biuras"
+        },
+        "highway/service/driveway": {
+            "name": "Įvažiavimas"
+        },
+        "leisure/pitch/basketball": {
+            "name": "Krepšinio aikštelė"
+        },
+        "shop/newsagent": {
+            "name": "Laikraščių/žurnalų parduotuvė"
+        },
+        "building/residential": {
+            "name": "Gyvenamasis pastatas",
+            "terms": "gyvenamasis,pastatas,namas,statinys"
+        },
+        "highway/services": {
+            "name": "Aptarnaujantis plotas",
+            "terms": "aptarnavimo zona,aptarnavimo plotas"
+        },
+        "amenity/community_centre": {
+            "name": "Bendruomenės centras",
+            "terms": "Bendruomenės centras"
+        },
+        "amenity/bureau_de_change": {
+            "name": "Valiutos keitykla",
+            "terms": "keitykla,valiutos keitykla"
+        },
+        "tourism/chalet": {
+            "name": "Atostogų kotedžas"
+        },
+        "shop/tyres": {
+            "name": "Padangų parduotuvė",
+            "terms": "Padangos,Padangų parduotuvė"
+        },
+        "leisure/dancing_school": {
+            "name": "Šokių mokykla"
+        },
+        "leisure": {
+            "name": "Laisvalaikis"
+        },
+        "amenity/post_office": {
+            "name": "Paštas",
+            "terms": "paštas,pašto skyrius"
+        },
+        "traffic_calming/island": {
+            "name": "Eismo salelė"
+        },
+        "natural/volcano": {
+            "name": "Ugnikalnis"
+        },
+        "amenity/vending_machine": {
+            "name": "Prekybos automatas"
+        },
+        "aerialway/gondola": {
+            "name": "Gondola",
+            "terms": "Gondola"
+        },
+        "advertising/column": {
+            "name": "Reklaminis stovas"
+        },
+        "building/temple": {
+            "name": "Šventyklos pastatas"
+        },
+        "landuse/military/barracks": {
+            "name": "Barakai"
+        },
+        "amenity/bar": {
+            "name": "Baras",
+            "terms": "Baras,Aludė"
+        },
+        "amenity/casino": {
+            "name": "Kazino"
+        },
+        "tourism/museum": {
+            "name": "Muziejus",
+            "terms": "Muziejus"
+        },
+        "barrier/stile": {
+            "name": "Perlipa",
+            "terms": "perlipa"
+        },
+        "shop/boutique": {
+            "name": "Parduotuvė",
+            "terms": "butikas"
+        },
+        "craft/chimney_sweeper": {
+            "name": "Kaminų valytojas"
+        },
+        "railway/narrow_gauge": {
+            "name": "Siaurukas",
+            "terms": "siaurukas"
+        },
+        "shop/curtain": {
+            "name": "Užuolaidų parduotuvė"
+        },
+        "area/highway": {
+            "name": "Kelio danga"
+        },
+        "leisure/pitch/tennis": {
+            "name": "Teniso aikštelė",
+            "terms": "teniso kortai"
+        },
+        "shop/weapons": {
+            "name": "Ginklų parduotuvė",
+            "terms": "Ginklai,Ginklų parduotuvė"
+        },
+        "highway/trunk": {
+            "name": "Magistralinis kelias",
+            "terms": "greitkelis"
+        },
+        "craft/watchmaker": {
+            "name": "Laikrodininkas",
+            "terms": "laikrodininkas"
+        },
+        "office": {
+            "name": "Biuras",
+            "terms": "kontora"
+        },
+        "amenity/fire_station": {
+            "name": "Gaisrinė",
+            "terms": "Gaisrinė,Priešgaisrinė tarnyba"
+        },
+        "attraction/animal": {
+            "name": "Gyvūnai"
+        },
+        "barrier/entrance": {
+            "name": "Įėjimas"
+        },
+        "emergency/fire_hydrant": {
+            "name": "Hidrantas"
+        },
+        "noexit/yes": {
+            "name": "Nėra išėjimo"
+        },
+        "shop/scuba_diving": {
+            "name": "Povandeninio nardymo parduotuvė"
+        },
+        "natural/water/pond": {
+            "name": "Kūdra",
+            "terms": "prūdas,kūdra"
+        },
+        "craft/bookbinder": {
+            "name": "Knygrišys",
+            "terms": "knygryšys"
+        },
+        "shop/pawnbroker": {
+            "name": "Lombardas"
+        },
+        "attraction/water_slide": {
+            "name": "Vandens čiuožykla"
+        },
+        "shop/beverages": {
+            "name": "Gėrimų parduotuvė",
+            "terms": "gėrimų parduotuvė"
+        },
+        "entrance": {
+            "name": "Įėjimas/Išėjimas",
+            "terms": "įėjimas,išėjimas"
+        },
+        "shop/chemist": {
+            "name": "Vaistinė"
+        },
+        "tourism/information/map": {
+            "name": "Žemėlapis"
+        },
+        "building/hospital": {
+            "name": "Ligoninės pastatas",
+            "terms": "ligoninės pastatas,ligoninė"
+        },
+        "amenity/marketplace": {
+            "name": "Prekyvietė",
+            "terms": "prekyvietė,turgus,turgelis"
+        },
+        "building/industrial": {
+            "name": "Pramoninis pastatas",
+            "terms": "pramoninis,pastatas,statinys,gamykla,įmonė"
+        },
+        "power/tower": {
+            "name": "Aukštos įtampos bokštas",
+            "terms": "aukštos įtampos stulpas"
+        },
+        "aerialway/cable_car": {
+            "name": "Funikulierius",
+            "terms": "funikulierius,keltuvas"
+        },
+        "amenity/university": {
+            "name": "Universiteto kiemas",
+            "terms": "universiteto teritorija"
+        },
+        "building/public": {
+            "name": "Viešasis pastatas",
+            "terms": "visuomeninis pastatas"
+        },
+        "emergency/first_aid_kit": {
+            "name": "Pirmos pagalbos rinkinys"
+        },
+        "amenity/shower": {
+            "name": "Dušas"
+        },
+        "craft/boatbuilder": {
+            "name": "Valčių statytojas",
+            "terms": "laivadirbys,laivų statykla"
+        },
+        "craft/shoemaker": {
+            "name": "Batsiuvys",
+            "terms": "Kurpius"
+        },
+        "office/estate_agent": {
+            "name": "Nekilnojamo turto biuras"
+        },
+        "man_made/watermill": {
+            "name": "Vandens malūnas"
+        },
+        "shop/interior_decoration": {
+            "name": "Interjero dekoravimo parduotuvė"
+        },
+        "amenity/college": {
+            "name": "Kolegijos kiemas"
+        },
+        "man_made/crane": {
+            "name": "Kranas"
+        },
+        "shop/toys": {
+            "name": "Žaislų parduotuvė",
+            "terms": "Žaislai"
+        },
+        "type/restriction/no_straight_on": {
+            "name": "Tik ne tiesiai",
+            "terms": "Tik ne tiesiai"
+        },
+        "leisure/pitch/table_tennis": {
+            "name": "Ping Pongo stalas"
+        },
+        "attraction/maze": {
+            "name": "Labirintas"
+        },
+        "landuse/allotments": {
+            "name": "Bendruomenės sodas"
+        },
+        "amenity/place_of_worship/sikh": {
+            "name": "Sikhizmo šventykla"
+        },
+        "amenity/social_facility/food_bank": {
+            "name": "Maisto  bankas",
+            "terms": "maisto bankas"
+        },
+        "craft/gardener": {
+            "name": "Sodininkas",
+            "terms": "Daržininkas"
+        },
+        "building/church": {
+            "name": "Bažnyčios pastatas"
+        },
+        "amenity/cafe": {
+            "name": "Kavinė",
+            "terms": "Kavinė"
+        },
+        "shop/video_games": {
+            "name": "Video Žaidimų parduotuvė"
+        },
+        "highway/service/emergency_access": {
+            "name": "Pagalbos priėjimas",
+            "terms": "avarinis priėjimas,avarinis privažiavimas"
+        },
+        "natural/mud": {
+            "name": "Purvas"
+        },
+        "building/civic": {
+            "name": "Pilietinis pastatas"
+        },
+        "amenity/parking_space": {
+            "name": "Stovėjimo vieta"
+        },
+        "healthcare/birthing_center": {
+            "name": "Gimdymo namai"
+        },
+        "building/greenhouse": {
+            "name": "Šiltnamis",
+            "terms": "šiltnamis"
+        },
+        "railway/funicular": {
+            "name": "Keltuvas",
+            "terms": "Funikulierius"
+        },
+        "landuse/harbour": {
+            "name": "Uostas"
+        },
+        "power/transformer": {
+            "name": "Transformatorius",
+            "terms": "transformatorius"
+        },
+        "power/generator": {
+            "name": "Jėgainė",
+            "terms": "generatorius,elektros generatorius"
+        },
+        "shop/pet": {
+            "name": "Augintinių parduotuvė"
+        },
+        "amenity/scrapyard": {
+            "name": "Metalo laužas"
+        },
+        "natural/wetland": {
+            "name": "Drėgna žemė"
+        },
+        "man_made/survey_point": {
+            "name": "Tyrimų vieta",
+            "terms": "stebėjimo taškas"
+        },
+        "roundabout": {
+            "name": "Žiedas"
+        },
+        "type/route/power": {
+            "name": "Energijos maršrutas"
+        },
+        "highway/service/alley": {
+            "name": "Alėja"
+        },
+        "shop/department_store": {
+            "name": "Universalinė parduotuvė"
+        },
+        "historic/wayside_cross": {
+            "name": "Kryžius prie kelio",
+            "terms": "pakelės kryžius"
+        },
+        "man_made/petroleum_well": {
+            "name": "Naftos gręžinys"
+        },
+        "healthcare/alternative": {
+            "name": "Alternatyvi medicina"
+        },
+        "natural/cliff": {
+            "name": "Uola"
+        },
+        "amenity/clock": {
+            "name": "Laikrodis",
+            "terms": "Laikrodis"
+        },
+        "building/garage": {
+            "name": "Garažas",
+            "terms": "garažas"
+        },
+        "highway/footway": {
+            "name": "Pėsčiųjų takas",
+            "terms": "pėsčiųjų takas"
+        },
+        "natural/coastline": {
+            "name": "Pakrantė",
+            "terms": "krantas"
+        },
+        "building/roof": {
+            "name": "Stogas",
+            "terms": "stogas"
+        },
+        "natural/glacier": {
+            "name": "Ledynas",
+            "terms": "ledynas"
+        },
+        "building/hotel": {
+            "name": "Viešbučio pastatas",
+            "terms": "viešbučio pastatas,viešbutis"
+        },
+        "shop/anime": {
+            "name": "Anime parduotuvė"
+        },
+        "route/ferry": {
+            "name": "Kelto maršrutas",
+            "terms": "kelto maršrutas"
+        },
+        "shop/outdoor": {
+            "name": "Laisvalaikio parduotuvė"
+        },
+        "shop/fashion": {
+            "name": "Mados parduotuvė"
+        },
+        "power/substation": {
+            "name": "Pastotė",
+            "terms": "pastotė"
+        },
+        "highway/steps": {
+            "name": "Laiptai",
+            "terms": "laiptai"
+        },
+        "tourism/artwork/sculpture": {
+            "name": "Skulptūra"
+        },
+        "amenity/fast_food": {
+            "name": "Greitas maistas",
+            "terms": "greitas maistas"
+        },
+        "highway/primary": {
+            "name": "Pirminis Kelias",
+            "terms": "pagrindinis"
+        },
+        "type/route/pipeline": {
+            "name": "Vamzdyno maršrutas"
+        },
+        "barrier/cattle_grid": {
+            "name": "Galvijų tinklelis"
+        },
+        "tourism/motel": {
+            "name": "Motelis"
+        },
+        "shop/chocolate": {
+            "name": "Šokolado parduotuvė",
+            "terms": "šokolado parduotuvė"
+        },
+        "building/cathedral": {
+            "name": "Katedros pastatas"
+        },
+        "building/bunker": {
+            "name": "Bunkeris"
+        },
+        "natural/reef": {
+            "name": "Rifas"
+        },
+        "craft/photographic_laboratory": {
+            "name": "Fotografijos laboratorija",
+            "terms": "Fotografijos studija"
+        },
+        "aeroway/helipad": {
+            "name": "Sraigtasparnių aikštelė",
+            "terms": "sraigtasparnuo aikštelė,sraigtasparnio nusileidimo aikštelė,malūnsparnio aikštelė"
+        },
+        "leisure/dance": {
+            "name": "Šokių salė"
+        },
+        "traffic_calming/hump": {
+            "name": "Dideli greičio slopinimo kalneliai"
+        },
+        "amenity/dentist": {
+            "name": "Dantistas",
+            "terms": "odontologas,dantistas,stomatologas"
+        },
+        "building/chapel": {
+            "name": "Koplyčios pastatas"
+        },
+        "craft/caterer": {
+            "name": "Maitinimo įstaiga"
+        },
+        "office/research": {
+            "name": "Tyrimų tarnyba",
+            "terms": "tyrimų kontora"
+        },
+        "shop/tea": {
+            "name": "Arbatos parduotuvė"
+        },
+        "office/travel_agent": {
+            "name": "Kelionių agentūra"
+        },
+        "craft/jeweler": {
+            "name": "Juvelyrikas"
+        },
+        "office/telecommunication": {
+            "name": "Telekomunikacijų biuras"
+        },
+        "shop/bag": {
+            "name": "Kuprinių/lagaminų parduotuvė"
+        },
+        "shop/supermarket": {
+            "name": "Prekybos centras",
+            "terms": "Prekybos centras"
+        },
+        "historic/tomb": {
+            "name": "Kapas"
+        },
+        "office/political_party": {
+            "name": "Politinė partija",
+            "terms": "politinė partija"
+        },
+        "shop/garden_centre": {
+            "name": "Sodo centras"
+        },
+        "building/stadium": {
+            "name": "Stadiono pastatas"
+        },
+        "barrier/hedge": {
+            "name": "Gyvatvorė",
+            "terms": "gyvatvorė"
+        },
+        "shop/kitchen": {
+            "name": "Virtuvės dizaino parduotuvė"
+        },
+        "building/garages": {
+            "name": "Garažai",
+            "terms": "garažai"
+        },
+        "shop/beauty": {
+            "name": "Grožio salonas",
+            "terms": "grožio salonas"
+        },
+        "building/hut": {
+            "name": "Namelis"
+        },
+        "shop/candles": {
+            "name": "Žvakių parduotuvė"
+        },
+        "amenity/charging_station": {
+            "name": "Įkrovimo stotelė",
+            "terms": "įkrovimo stotelė,įkrovimo stotis"
+        },
+        "amenity/music_school": {
+            "name": "Muzikos mokykla"
+        },
+        "man_made/antenna": {
+            "name": "Antena"
+        },
+        "waterway/canal": {
+            "name": "Kanalas",
+            "terms": "Kanalas"
+        },
+        "leisure/common": {
+            "name": "Bendros ganyklos"
+        },
+        "landuse/farmland": {
+            "name": "Dirbama žemė",
+            "terms": "dirbama žemė,žemdirbystė"
+        },
+        "shop/baby_goods": {
+            "name": "Vaikų prekių parduotuvė"
+        },
+        "shop/fishmonger": {
+            "name": "Žuvų pardavėjas"
+        },
+        "landuse/orchard": {
+            "name": "Vaismedžių sodas",
+            "terms": "sodas,vaisių sodas"
+        },
+        "type/restriction/no_right_turn": {
+            "name": "Jokio sukimo į dešinę",
+            "terms": "Negalima į dešinę"
+        },
+        "shop/car": {
+            "name": "Automobilių prekybos atstovybė",
+            "terms": "autosalonas"
+        },
+        "building/stable": {
+            "name": "Arklidės",
+            "terms": "arklidės"
+        },
+        "place/neighbourhood": {
+            "name": "Kaiminystė",
+            "terms": "Apylinkė"
+        },
+        "golf/hole": {
+            "name": "Golfo skylė",
+            "terms": "duobutė,golfo duobutė"
+        },
+        "building/semidetached_house": {
+            "name": "Pusiau atskirtas namas"
+        },
+        "railway/abandoned": {
+            "name": "Apleistas geležinkelis",
+            "terms": "apleistas gelžkelis,nebenaudojamas gelžkelis"
+        },
+        "type/restriction": {
+            "name": "Apribojimas",
+            "terms": "Apribojimas"
+        },
+        "tourism/artwork/mural": {
+            "name": "Muralas"
+        },
+        "shop/bathroom_furnishing": {
+            "name": "Vonios baldų parduotuvė"
+        },
+        "man_made/chimney": {
+            "name": "Kaminas"
+        },
+        "shop/mall": {
+            "name": "Prekybos centras",
+            "terms": "prekybos centras"
+        },
+        "barrier/wall": {
+            "name": "Siena",
+            "terms": "siena"
+        },
+        "natural/beach": {
+            "name": "Paplūdimys",
+            "terms": "maudykla,paplūdimys"
+        },
+        "junction": {
+            "name": "Jungtis",
+            "terms": "jungtis,sankryža"
+        },
+        "shop/herbalist": {
+            "name": "Žolininkas"
+        },
+        "landuse/vineyard": {
+            "name": "Vynuogynas",
+            "terms": "vynuogynas"
+        },
+        "vertex": {
+            "name": "Kita",
+            "terms": "Kita"
+        },
+        "type/boundary": {
+            "name": "Siena",
+            "terms": "Riba,Siena"
+        },
+        "craft/optician": {
+            "name": "Optikas"
+        },
+        "waterway/waterfall": {
+            "name": "Krioklys"
+        },
+        "type/route": {
+            "name": "Maršrutas",
+            "terms": "Maršrutas"
+        },
+        "man_made/embankment": {
+            "name": "Užtvanka"
+        },
+        "shop/tobacco": {
+            "name": "Tabako parduotuvė"
+        },
+        "building/shed": {
+            "name": "Angaras",
+            "terms": "pašiūrė"
+        },
+        "building/detached": {
+            "name": "Atskirtas pastatas"
+        },
+        "shop/musical_instrument": {
+            "name": "Muzikos instrumentų parduotuvė"
+        },
+        "aeroway/hangar": {
+            "name": "Angaras",
+            "terms": "Angaras"
+        },
+        "man_made/wastewater_plant": {
+            "name": "Nuotekų valymo įmonė",
+            "terms": "vandens valymo įrenginiai"
+        },
+        "shop/money_lender": {
+            "name": "Pinigų skolintojas"
+        },
+        "shop/radiotechnics": {
+            "name": "Radijo/elektroninių dalių parduotuvė"
+        },
+        "building/college": {
+            "name": "Kolegijos pastatas",
+            "terms": "koledžas"
+        },
+        "building/retail": {
+            "name": "Mažmeninės prekybos pastatas",
+            "terms": "prekybos pastatas,prekybvietė"
+        },
+        "shop/ticket": {
+            "name": "Bilietų pardavėjas"
+        },
+        "natural/water/reservoir": {
+            "name": "Rezervuaras",
+            "terms": "tvenkinys,rezervuaras"
+        },
+        "place/isolated_dwelling": {
+            "name": "Izoliuota gyvenvietė"
+        },
+        "craft/saddler": {
+            "name": "Pakinkytojas",
+            "terms": "Pakinktininkas"
+        },
+        "landuse/quarry": {
+            "name": "Karjeras",
+            "terms": "karjeras"
+        },
+        "barrier/border_control": {
+            "name": "Sienos kontrolė"
+        },
+        "landuse/basin": {
+            "name": "Vandens telkinys"
+        },
+        "shop/paint": {
+            "name": "Dažų parduotuvė"
+        },
+        "historic/ruins": {
+            "name": "Griuvėsiai",
+            "terms": "griuvėsiai"
+        },
+        "natural/scrub": {
+            "name": "Krūmai",
+            "terms": "krūmai"
+        },
+        "craft/photographer": {
+            "name": "Fotografas",
+            "terms": "fotografas"
+        },
+        "highway/secondary": {
+            "name": "Antrinis Kelias",
+            "terms": "nepagrindinis kelias,gatvė"
+        },
+        "building/pavilion": {
+            "name": "Pavilijono pastatas"
+        },
+        "shop": {
+            "name": "Parduotuvė",
+            "terms": "parduotuvė"
+        },
+        "attraction/big_wheel": {
+            "name": "Didelis ratas"
+        },
+        "landuse/greenfield": {
+            "name": "Žalias plotas"
+        },
+        "natural/spring": {
+            "name": "Šaltinis",
+            "terms": "šaltinis"
+        },
+        "man_made/pipeline": {
+            "name": "Vamzdynas"
+        },
+        "shop/leather": {
+            "name": "Odos dirbinių parduotuvė",
+            "terms": "oda,odos dirbiniai,odos dirbinių parduotuvė"
+        },
+        "man_made/observatory": {
+            "name": "Observatorija"
+        },
+        "building/commercial": {
+            "name": "Komercinis pastatas",
+            "terms": "komercinis,pastatas,statinys"
+        },
+        "attraction/pirate_ship": {
+            "name": "Piratų laivas"
+        },
+        "office/educational_institution": {
+            "name": "Edukacinis institutas",
+            "terms": "Mokslo institutas,Mokslo įstaiga"
+        },
+        "amenity/bicycle_parking": {
+            "name": "Dviračių stovėjimo aikštelė",
+            "terms": "dviračių stovas,dviračių stovėjimas,dviračių stovėjimo aikštelė"
+        },
+        "amenity/compressed_air": {
+            "name": "Suspaustas oras",
+            "terms": "suspaustas oras"
+        },
+        "shop/deli": {
+            "name": "Gastronomas"
+        },
+        "man_made/water_well": {
+            "name": "Vandens šulinys"
+        },
+        "shop/organic": {
+            "name": "Ekologiškų prekių parduotuvė",
+            "terms": "Organinių prekių parduotuvė"
+        },
+        "waterway/ditch": {
+            "name": "Griovys",
+            "terms": "Griovys"
+        },
+        "shop/perfumery": {
+            "name": "Parfumerijos parduotuvė"
+        },
+        "highway/service/drive-through": {
+            "name": "Pravažiavimas",
+            "terms": "pravažiavimas"
+        },
+        "shop/kiosk": {
+            "name": "Kioskas"
+        },
+        "landuse/military/danger_area": {
+            "name": "Pavojaus zona"
+        },
+        "shop/confectionery": {
+            "name": "Saldainių parduotuvė"
+        },
+        "shop/electronics": {
+            "name": "Elektronikos parduotuvė"
+        },
+        "waterway": {
+            "name": "Vandens kelias"
+        },
+        "amenity/clinic": {
+            "name": "Klinika",
+            "terms": "Klinika"
+        },
+        "amenity/place_of_worship/buddhist": {
+            "name": "Budistų Šventykla",
+            "terms": "budistų šventykla,šventykla"
+        },
+        "amenity/cinema": {
+            "name": "Kino teatras",
+            "terms": "Kinas,Kinoteatras"
+        },
+        "natural/bare_rock": {
+            "name": "Plikas akmuo"
+        },
+        "type/route/bus": {
+            "name": "Autobusų maršrutas",
+            "terms": "Autobuso maršrutas"
+        },
+        "landuse/farm": {
+            "name": "Dirbama žemė"
+        },
+        "amenity/language_school": {
+            "name": "Kalbų mokykla"
+        },
+        "amenity/crematorium": {
+            "name": "Krematoriumas"
+        },
+        "building/farm_auxiliary": {
+            "name": "Fermos pastatas"
+        },
+        "natural/wood": {
+            "name": "Miškas",
+            "terms": "medžiai"
+        },
+        "amenity/waste_basket": {
+            "name": "Šiukšliadėžė",
+            "terms": "šiukšliadėžė"
+        },
+        "building/construction": {
+            "name": "Statomas pastatas",
+            "terms": "statomas pastatas, statybos"
+        },
+        "highway/unclassified": {
+            "name": "Mažas/Neklasifikuotas Kelias"
+        },
+        "office/charity": {
+            "name": "Labdaros biuras"
+        },
+        "craft/distillery": {
+            "name": "Spirito gamykla"
+        },
+        "shop/tattoo": {
+            "name": "Tatuiruočių salonas"
+        },
+        "shop/optician": {
+            "name": "Optika"
+        },
+        "type/route/foot": {
+            "name": "Pėsčiųjų maršrutas"
+        },
+        "barrier/block": {
+            "name": "Blokas",
+            "terms": "blokas,akmuo"
+        },
+        "shop/hifi": {
+            "name": "Hifi parduotuvė"
+        },
+        "craft/window_construction": {
+            "name": "Langų montavimas"
+        },
+        "craft/tinsmith": {
+            "name": "Skardininkas"
+        },
+        "relation": {
+            "name": "Ryšys",
+            "terms": "ryšys"
+        },
+        "shop/medical_supply": {
+            "name": "Medicinos reikmenų parduotuvė"
+        },
+        "landuse/industrial/scrap_yard": {
+            "name": "Metalo laužas"
+        },
+        "man_made/windmill": {
+            "name": "Vėjo malūnas"
+        },
+        "shop/mobile_phone": {
+            "name": "Mobiliųjų telefonų parduotuvė"
+        },
+        "building/service": {
+            "name": "Paslaugų pastatas"
+        },
+        "place/town": {
+            "name": "Miestelis",
+            "terms": "miestas"
+        },
+        "landuse/commercial": {
+            "name": "Komercinė zona",
+            "terms": "komercinė zona,komercinė,komercija"
+        },
+        "tourism/information": {
+            "name": "Informacija",
+            "terms": "Informacija,Informacinis stendas"
+        },
+        "natural": {
+            "name": "Natūralus"
+        },
+        "amenity/post_box": {
+            "name": "Pašto dėžutė",
+            "terms": "paštadėžė,pašto dėžė"
+        },
+        "natural/water/lake": {
+            "name": "Ežeras",
+            "terms": "ežeras"
+        },
+        "shop/video": {
+            "name": "Vaizdo prekių parduotuvė"
+        },
+        "building/warehouse": {
+            "name": "Sandėlis",
+            "terms": "sandėlys"
+        },
+        "railway/tram": {
+            "name": "Tramvajus",
+            "terms": "tramvajus"
+        },
+        "power/minor_line": {
+            "name": "Maža elektros linija"
+        },
+        "landuse/farmyard": {
+            "name": "Ūkis",
+            "terms": "ūkis,ūkio sodyba,ferma"
+        },
+        "man_made/works": {
+            "name": "Gamykla"
+        },
+        "craft/plumber": {
+            "name": "Santechnikas",
+            "terms": "santechnikas"
+        },
+        "shop/frame": {
+            "name": "Įrėminimo parduotuvė"
+        },
+        "highway/cycleway": {
+            "name": "Dviračių takas",
+            "terms": "dviračių takas"
+        },
+        "shop/hardware": {
+            "name": "Techninės įrangos parduotuvė"
+        },
+        "amenity/car_sharing": {
+            "name": "Automobilių dalinimasis"
+        },
+        "leisure/nature_reserve": {
+            "name": "Draustinis",
+            "terms": "gamtos rezervatas,rezervatas,draustinis"
+        },
+        "shop/antiques": {
+            "name": "Atikvarų parduotuvė",
+            "terms": "antikvariatas"
+        },
+        "shop/funeral_directors": {
+            "name": "Laidojimo namai"
+        },
+        "tourism/zoo": {
+            "name": "Zoologijos sodas"
+        },
+        "shop/computer": {
+            "name": "Kompiuterių parduotuvė"
+        },
+        "landuse/grass": {
+            "name": "Ganykla",
+            "terms": "žolė"
+        },
+        "natural/grassland": {
+            "name": "Pieva"
+        },
+        "shop/fabric": {
+            "name": "Audinių parduotuvė"
+        },
+        "highway/stop": {
+            "name": "Stop ženklas",
+            "terms": "stop ženklas"
+        },
+        "craft/brewery": {
+            "name": "Alaus darykla",
+            "terms": "Aludarė"
+        },
+        "highway/turning_circle": {
+            "name": "Apsisukimo žiedas"
+        },
+        "shop/coffee": {
+            "name": "Kavos parduotuvė"
+        },
+        "shop/e-cigarette": {
+            "name": "El. cigarečių parduotuvė"
+        },
+        "tourism": {
+            "name": "Turizmas"
+        },
+        "amenity/public_bath": {
+            "name": "Vieša vonia"
+        },
+        "amenity/car_wash": {
+            "name": "Automobilių plovykla",
+            "terms": "plovykla,mašinų plovykla,automobilių plovykla"
+        },
+        "highway/street_lamp": {
+            "name": "Gatvė lempa",
+            "terms": "lempa,žibintas,gatvės žibintas"
+        },
+        "shop/clothes": {
+            "name": "Drabužių parduotuvė",
+            "terms": "drabužių parduotuvė"
+        },
+        "tourism/theme_park": {
+            "name": "Atrakcijonų parkas"
+        },
+        "emergency/siren": {
+            "name": "Sirena"
+        },
+        "aeroway/aerodrome": {
+            "name": "Oro uostas",
+            "terms": "Oro uostas"
+        },
+        "amenity/bicycle_rental": {
+            "name": "Dviračių nuoma",
+            "terms": "dviračių nuoma"
+        },
+        "shop/watches": {
+            "name": "Laikrodžių parduotuvė"
+        },
+        "landuse": {
+            "name": "Žemėnauda"
+        },
+        "shop/gift": {
+            "name": "Dovanų parduotuvė"
+        },
+        "craft/locksmith": {
+            "name": "Šaltkalvis"
+        },
+        "waterway/riverbank": {
+            "name": "Upės kraštas"
+        },
+        "place": {
+            "name": "Vietovė"
+        },
+        "power": {
+            "name": "Energija"
+        },
+        "shop/music": {
+            "name": "Muzikos parduotuvė",
+            "terms": "muzikos prekės,muzikos prekių parduotuvė"
+        },
+        "barrier/toll_booth": {
+            "name": "Mokėjimo punktas"
+        },
+        "building/house": {
+            "name": "Namas",
+            "terms": "namas"
+        },
+        "leisure/marina": {
+            "name": "Prieplauka",
+            "terms": "jachtklubas"
+        },
+        "craft/stonemason": {
+            "name": "Mūrininkas",
+            "terms": "mūrininkas"
+        },
+        "aerialway": {
+            "name": "Oro transporto kelias"
+        },
+        "craft/tailor": {
+            "name": "Siuvėjas"
+        },
+        "amenity/nightclub": {
+            "name": "Naktinis klubas",
+            "terms": "klubas,naktinis klubas"
+        },
+        "waterway/dam": {
+            "name": "Užtvanka",
+            "terms": "Užtvanka"
+        },
+        "amenity/school": {
+            "name": "Mokyklos kiemas"
+        },
+        "shop/photo": {
+            "name": "Fotografijos parduotuvė"
+        },
+        "building/static_caravan": {
+            "name": "Statiški mobilūs namai"
+        },
+        "barrier/gate": {
+            "name": "Vartai",
+            "terms": "vartai"
+        },
+        "leisure/pitch/skateboard": {
+            "name": "Riedlenčių parkas"
+        },
+        "highway/bridleway": {
+            "name": "Žirgų kelias",
+            "terms": "jodinėjimo takas,arklių takas"
+        },
+        "shop/motorcycle": {
+            "name": "Motociklų prekybos atstovybė"
+        },
+        "waterway/river": {
+            "name": "Upė",
+            "terms": "Upė"
+        },
+        "amenity/doctors": {
+            "name": "Daktaras"
+        },
+        "office/architect": {
+            "name": "Architekto biuras"
+        },
+        "railway/subway": {
+            "name": "Metro",
+            "terms": "metro"
+        },
+        "barrier/ditch": {
+            "name": "Tranšelis"
+        },
+        "shop/carpet": {
+            "name": "Kilimų parduotuvė",
+            "terms": "kilimai,kilimų parduotuvė"
+        },
+        "landuse/churchyard": {
+            "name": "Bažnyčios kiemas"
+        },
+        "shop/butcher": {
+            "name": "Mėsinė",
+            "terms": "mėsininkas"
+        },
+        "barrier/bollard": {
+            "name": "Stulpelis"
+        },
+        "amenity/shelter": {
+            "name": "Pastogė",
+            "terms": "pastogė"
+        },
+        "tourism/picnic_site": {
+            "name": "Pikniko stovyklavietė"
+        },
+        "highway/rest_area": {
+            "name": "Poilsio zona",
+            "terms": "poilsio zona"
+        },
+        "leisure/golf_course": {
+            "name": "Golfo aikštynas"
+        },
+        "barrier": {
+            "name": "Barjeras",
+            "terms": "barieras,kliūtis"
+        },
+        "historic/castle": {
+            "name": "Pilis",
+            "terms": "pilis,tvirtovė"
+        },
+        "craft/electrician": {
+            "name": "Elektrikas",
+            "terms": "elektrikas"
+        },
+        "shop/car_repair": {
+            "name": "Auto taisykla"
+        },
+        "craft/hvac": {
+            "name": "HVAC",
+            "terms": "hvac"
+        },
+        "highway/path": {
+            "name": "Takas",
+            "terms": "takas"
+        },
+        "historic/archaeological_site": {
+            "name": "Archeologinių kasinėjimų vieta",
+            "terms": "archeologinė vieta"
+        },
+        "leisure/water_park": {
+            "name": "Vandens parkas"
+        },
+        "amenity/driving_school": {
+            "name": "Vairavimo mokykla"
+        },
+        "building/barn": {
+            "name": "Klėtis",
+            "terms": "Svirnas, Tvartas"
+        },
+        "amenity/bench": {
+            "name": "Suolas",
+            "terms": "Suoliukas,Suolas"
+        },
+        "attraction/train": {
+            "name": "Turistų traukinys"
+        },
+        "craft/beekeeper": {
+            "name": "Bitininkas",
+            "terms": "bitininkas"
+        },
+        "landuse/meadow": {
+            "name": "Pieva",
+            "terms": "pieva,ganykla"
+        },
+        "shop/convenience": {
+            "name": "Savitarnos parduotuvė"
+        },
+        "amenity/toilets": {
+            "name": "Tualetas",
+            "terms": "tualetas,išvietė"
+        },
+        "shop/books": {
+            "name": "Knygynas",
+            "terms": "knygynas,knygų parduotuvė"
+        },
+        "highway/service": {
+            "name": "Aptarnaujantis kelias",
+            "terms": "aptarnavimo kelias,privažiavimas"
+        },
+        "waterway/drain": {
+            "name": "Vandens nuoteka",
+            "terms": "Nuotekos"
+        },
+        "shop/hearing_aids": {
+            "name": "Klausos aparatų parduotuvė"
+        },
+        "craft/confectionery": {
+            "name": "Saldainių gamintojas"
+        },
+        "highway/residential": {
+            "name": "Gyvenamasis kelias",
+            "terms": "kelias,gatvė,kiemas"
+        },
+        "amenity/place_of_worship": {
+            "name": "Maldos namai",
+            "terms": "maldos namai"
+        },
+        "historic/wayside_shrine": {
+            "name": "Pakelės šventovė",
+            "terms": "pakelės šventykla,rūpintojėlis,koplytstulpis"
+        },
+        "barrier/retaining_wall": {
+            "name": "Laikančioji siena"
+        },
+        "type/boundary/administrative": {
+            "name": "Administracinė siena",
+            "terms": "Administracinė riba"
+        },
+        "highway/traffic_signals": {
+            "name": "Eismo signala",
+            "terms": "šviesoforas"
+        },
+        "amenity/embassy": {
+            "name": "Ambasada",
+            "terms": "Ambasada,Atstovybė"
+        },
+        "type/restriction/no_left_turn": {
+            "name": "Jokio sukimo į kairę",
+            "terms": "Negalima į kairę"
+        },
+        "leisure/ice_rink": {
+            "name": "Čiuožykla"
+        },
+        "emergency/ambulance_station": {
+            "name": "Greitosios pagalbos stotis"
+        },
+        "place/village": {
+            "name": "Kaimas",
+            "terms": "kaimas"
+        },
+        "amenity/motorcycle_parking": {
+            "name": "Motociklų stovėjimo aikštelė",
+            "terms": "Motociklų stovėjimo aikštelė"
+        },
+        "shop/craft": {
+            "name": "Meno ir amatų parduotuvė"
+        },
+        "line": {
+            "name": "Linija"
+        },
+        "shop/lottery": {
+            "name": "Loterijų parduotuvė"
+        },
+        "amenity/kindergarten": {
+            "name": "Vaikų darželio plotas",
+            "terms": "vaikų darželis,darželio plotas"
+        },
+        "leisure/dog_park": {
+            "name": "Šunų parkas",
+            "terms": "šunparkis,šunų parkas"
+        },
+        "natural/cave_entrance": {
+            "name": "Įėjimas į olą",
+            "terms": "įėjimas į olą"
+        },
+        "point": {
+            "name": "Taškas",
+            "terms": "taškas"
+        },
+        "shop/cheese": {
+            "name": "Sūrių parduotuvė",
+            "terms": "sūrio parduotuvė"
+        },
+        "amenity/boat_rental": {
+            "name": "Laivų nuoma",
+            "terms": "laivų nuoma,valčių nuoma"
+        },
+        "amenity/place_of_worship/taoist": {
+            "name": "Taoistų šventykla"
+        },
+        "waterway/weir": {
+            "name": "Užtvanka"
+        },
+        "building/mosque": {
+            "name": "Mečetės pastatas"
+        },
+        "building/cabin": {
+            "name": "Kabina"
+        },
+        "amenity/animal_shelter": {
+            "name": "Gyvūnų prieglauda"
+        },
+        "craft/painter": {
+            "name": "Tapytojas",
+            "terms": "Dažytojas,Dailininkas"
+        },
+        "craft/glaziery": {
+            "name": "Stiklintojas"
+        },
+        "man_made/flagpole": {
+            "name": "Vėliavos stiebas"
+        },
+        "natural/tree": {
+            "name": "Medis",
+            "terms": "medis"
+        },
+        "tourism/attraction": {
+            "name": "Turistų traukos vieta"
+        },
+        "amenity/register_office": {
+            "name": "Registravimo biūras"
+        },
+        "man_made": {
+            "name": "Žmogaus sukurtas"
+        },
+        "leisure/adult_gaming_centre": {
+            "name": "Suaugusiųjų lošimų vieta"
+        },
+        "shop/car_parts": {
+            "name": "Auto dalių parduotuvė",
+            "terms": "automobilių dalys"
+        },
+        "tourism/alpine_hut": {
+            "name": "Kalnų namelis"
+        },
+        "shop/alcohol": {
+            "name": "Alkoholinių gėrimų parduotuvė",
+            "terms": "alkoholio parduotuvė"
+        },
+        "tourism/viewpoint": {
+            "name": "Apžvalgos taškas"
+        },
+        "craft/handicraft": {
+            "name": "Rankdarbių meistras"
+        },
+        "office/lawyer": {
+            "name": "Advokatų kontora"
+        },
+        "landuse/construction": {
+            "name": "Statybos",
+            "terms": "statybos"
+        },
+        "emergency/lifeguard": {
+            "name": "Gelbėtojas"
+        },
+        "shop/motorcycle_repair": {
+            "name": "Motociklų taisykla"
+        },
+        "shop/bookmaker": {
+            "name": "Knygrišys"
+        },
+        "emergency/life_ring": {
+            "name": "Gelbėjimo ratas"
+        }
+    }
+}

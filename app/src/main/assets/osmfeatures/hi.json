@@ -1,0 +1,61 @@
+{
+    "presets": {
+        "area": {
+            "name": "एरिया"
+        },
+        "landuse/grass": {
+            "name": "घास"
+        },
+        "natural/tree": {
+            "name": "पेड़"
+        },
+        "building/house": {
+            "name": "मकान"
+        },
+        "address": {
+            "name": "पता"
+        },
+        "line": {
+            "name": "रेखा"
+        },
+        "amenity/drinking_water": {
+            "name": "पीने का पानी"
+        },
+        "craft/tailor": {
+            "name": "दऱजी"
+        },
+        "natural/water/lake": {
+            "name": "झील"
+        },
+        "building/hut": {
+            "name": "झोपड़ी"
+        },
+        "golf/rough": {
+            "name": "खुरदुरा"
+        },
+        "point": {
+            "name": "बिंदु"
+        },
+        "amenity/clock": {
+            "name": "घडी"
+        },
+        "waterway/waterfall": {
+            "name": "झरना"
+        },
+        "natural/water/pond": {
+            "name": "तलाब"
+        },
+        "natural/water": {
+            "name": "पानी"
+        },
+        "tourism/zoo": {
+            "name": "चिड़िया घर"
+        },
+        "waterway/river": {
+            "name": "नदी"
+        },
+        "barrier/wall": {
+            "name": "दिवार"
+        }
+    }
+}
