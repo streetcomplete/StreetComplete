@@ -1013,7 +1013,7 @@
         },
         "man_made/pipeline": {
             "name": "管道",
-            "terms": "Pipeline,水管,管道,t導管,管線"
+            "terms": "Pipeline,水管,管道,\t導管,管線"
         },
         "attraction/pirate_ship": {
             "name": "海盜船",

@@ -28,6 +28,7 @@ import de.westnordost.streetcomplete.util.TextChangedWatcher
 import de.westnordost.streetcomplete.view.ListAdapter
 
 import android.text.format.DateUtils.MINUTE_IN_MILLIS
+import de.westnordost.osmapi.user.User
 import kotlinx.android.synthetic.main.fragment_quest_answer.*
 import kotlinx.android.synthetic.main.quest_buttonpanel_note_discussion.*
 import kotlinx.android.synthetic.main.quest_note_discussion_content.*
@@ -144,19 +145,18 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment<NoteAnswer>() {
                 commentText.text = comment.text
                 commentInfo.text = getString(R.string.quest_noteDiscussion_comment2, userName, dateDescription)
 
-                var bitmap = anonAvatar
-                if (comment.user != null) {
-                    val avatarFile = File(OsmModule.getAvatarsCacheDirectory(context!!).toString() + File.separator + comment.user.id)
-                    if (avatarFile.exists()) {
-                        bitmap = BitmapFactory.decodeFile(avatarFile.path)
-                    }
-                }
+                val bitmap = comment.user?.avatar ?: anonAvatar
                 val avatarDrawable = RoundedBitmapDrawableFactory.create(resources, bitmap)
                 avatarDrawable.isCircular = true
                 commentAvatar.setImageDrawable(avatarDrawable)
             } else {
                 commentContainer.visibility = View.GONE
             }
+        }
+
+        private val User.avatar: Bitmap? get() {
+            val file = File(OsmModule.getAvatarsCacheDirectory(context!!).toString() + File.separator + id)
+            return if (file.exists()) BitmapFactory.decodeFile(file.path) else null
         }
 
         private val NoteComment.Action.actionResourceId get() = when (this) {
