@@ -318,7 +318,8 @@ public class MapControlsFragment extends Fragment
 
 	private void onLocationIsDisabled()
 	{
-		trackingButton.setState(LocationState.ALLOWED);
+		trackingButton.setState(LocationUtil.hasLocationPermission(getActivity())
+			? LocationState.ALLOWED : LocationState.DENIED);
 		mapFragment.stopPositionTracking();
 		singleLocationRequest.stopRequest();
 	}

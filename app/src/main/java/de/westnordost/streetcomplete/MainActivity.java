@@ -278,7 +278,7 @@ public class MainActivity extends AppCompatActivity implements
 		uploadServiceIsBound = bindService(new Intent(this, QuestChangesUploadService.class),
 				uploadServiceConnection, BIND_AUTO_CREATE);
 
-		if(!hasAskedForLocation)
+		if(!hasAskedForLocation && !prefs.getBoolean(Prefs.LAST_LOCATION_REQUEST_DENIED, false))
 		{
 			locationRequestFragment.startRequest();
 		}
@@ -1044,6 +1044,8 @@ public class MainActivity extends AppCompatActivity implements
 	{
 		hasAskedForLocation = true;
 		boolean enabled = withLocationState.isEnabled();
+		prefs.edit().putBoolean(Prefs.LAST_LOCATION_REQUEST_DENIED, !enabled).apply();
+
 		if(enabled)
 		{
 			updateLocationAvailability();
