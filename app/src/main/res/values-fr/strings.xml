@@ -144,9 +144,9 @@ Cependant, avant de sauvegarder vos modifications, l’application vérifie avec
 
     <!-- Plus simple et plus court : "Quel est le revêtement de cette rue ?" -->
     <string name="quest_streetSurface_title">"Quel est le revêtement de cette rue ?"</string>
-    <string name="quest_surface_value_paved">"Pavé (générique)"</string>
-    <string name="quest_surface_value_unpaved">"Non pavé (générique)"</string>
-    <string name="quest_surface_value_ground">"Terre (générique)"</string>
+    <string name="quest_surface_value_paved">"Avec revêtement (générique)"</string>
+    <string name="quest_surface_value_unpaved">"Sans revêtement (générique)"</string>
+    <string name="quest_surface_value_ground">"Sol (générique)"</string>
     <string name="quest_surface_value_asphalt">"Asphalte"</string>
     <string name="quest_surface_value_compacted">"Compacté"</string>
 
@@ -162,12 +162,12 @@ Cependant, avant de sauvegarder vos modifications, l’application vérifie avec
 
     <!-- Maybe "gravier" for roads ? -->
     <string name="quest_surface_value_gravel">"Gravier"</string>
-    <string name="quest_surface_value_paving_stones">"Pavés (autres)"</string>
+    <string name="quest_surface_value_paving_stones">"Pavés réguliers"</string>
     <string name="quest_surface_value_pebblestone">"Cailloux"</string>
     <string name="quest_surface_value_sand">"Sable"</string>
 
     <!-- Sett is what you'd probably colloquially call cobblestone. See https://en.wikipedia.org/wiki/Sett_(paving)... Paved with quarried regular shaped rocks. Cobblestone pavement is pavement made from small, naturally rounded rock. -->
-    <string name="quest_surface_value_sett">"Pavés (pierre)"</string>
+    <string name="quest_surface_value_sett">"Pavés taillés"</string>
     <string name="quest_surface_value_wood">"Bois"</string>
 
     <!-- I think "Place(EN)" means "lieu", an area, instead of "place(FR)", a square -->
@@ -376,7 +376,7 @@ Sinon, vous pouvez télécharger un autre clavier dans la boutique d’applicati
     <string name="cannot_find_bbox_or_reduce_tilt">"Impossible de rechercher ici. Essayez de zoomer un peu plus ou de moins incliner la carte."</string>
     <string name="quest_crossing_type_title">"Quel est le type de ce passage piétons ?"</string>
     <string name="quest_crossing_type_signals">"Passage piétons avec feux"</string>
-    <string name="quest_crossing_type_uncontrolled">"Passage piétons non protégé"</string>
+    <string name="quest_crossing_type_uncontrolled">"Passage piétons sans feux"</string>
     <string name="quest_crossing_type_unmarked">"Passage piétons sans marquage"</string>
     <string name="compass_north_one_letter">"N"</string>
 
@@ -500,7 +500,7 @@ Partiellement signifie qu’un fauteuil roulant peut entrer et utiliser les toil
     <string name="quest_religion_for_wayside_shrine_title">"Quelle religion est représentée dans ce sanctuaire ?"</string>
     <string name="quest_parking_fee_title">"Le stationnement est-il payant ici ?"</string>
     <string name="quest_cycleway_value_lane_soft">"voie cyclable (ligne discontinue)"</string>
-    <string name="quest_surface_value_unhewn_cobblestone">"Pavé non taillé"</string>
+    <string name="quest_surface_value_unhewn_cobblestone">"Pavés grossiers"</string>
 
     <!-- Un peu long. -->
     <!-- Fuzzy -->
@@ -704,4 +704,9 @@ Partiellement signifie qu’un fauteuil roulant peut entrer et utiliser les toil
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Cette voie est-elle interdite aux piétons ?"</string>
     <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Cette rue a été notée en tant que ne possédant pas de trottoirs sur aucun des cotés. Dans le cas qu’il y aurait un trottoir mais qu’il soit indiqué comme une direction séparée, veuillez répondre ¨trottoir¨."</string>
     <string name="quest_buildingType_title">"Quel est le type de cet édifice ?"</string>
+    <string name="pref_category_theme">"Thème"</string>
+    <string name="pref_title_theme_select">"Sélectionner un thème"</string>
+    <string name="theme_automatic">"Automatique"</string>
+    <string name="theme_light">"Clair"</string>
+    <string name="theme_dark">"Sombre"</string>
 </resources>

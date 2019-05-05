@@ -187,7 +187,7 @@ Den information du anger skickas sedan direkt till OpenStreetMap i ditt namn, ut
     <string name="quest_busStopShelter_title">"Har den här hållplatsen en busskur?"</string>
     <string name="quest_bikeParkingCapacity_title">"Hur många cyklar kan parkeras här?"</string>
     <string name="quest_address_unusualHousenumber_confirmation_description">"Det här husnumret ser väldigt ovanligt ut."</string>
-    <string name="quest_sport_title">"Vilken sport spelas här?"</string>
+    <string name="quest_sport_title">"Vilken sport utförs här?"</string>
     <string name="quest_sport_answer_multi">"Ingen specifik sport"</string>
     <string name="quest_sport_soccer">"Fotboll"</string>
     <string name="quest_sport_tennis">"Tennis"</string>
@@ -683,4 +683,10 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Är fotgängare förbjudna att gå på den här vägen?"</string>
     <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Den här gatan märktes som att den inte hade någon trottoar på vardera sidan. Om det finns en trottoar trots allt, men den visas som en separat väg, var god svara \"trottoar\"."</string>
     <string name="quest_buildingType_title">"Vilken typ av byggnad är detta?"</string>
+    <string name="pref_category_theme">"Tema"</string>
+    <string name="pref_title_theme_select">"Välj tema"</string>
+    <string name="theme_automatic">"Automatiskt"</string>
+    <string name="theme_light">"Ljust"</string>
+    <string name="theme_dark">"Mörkt"</string>
+    <string name="theme_system_default">"Systemstandard"</string>
 </resources>

@@ -683,6 +683,12 @@ Parcialmente significa que um cadeirante pode entrar e usar o banheiro, mas barr
     <string name="quest_motorcycleParkingCapacity_title">"Quantas motocicletas podem estacionar aqui?"</string>
     <string name="quest_motorcycleParkingCoveredStatus_title">"O estacionamento de motocicletas é coberto (protegido da chuva)?"</string>
     <string name="default_disabled_msg_maxspeed">"Este tipo de missão está desligado por padrão porque normalmente é necessário verificar toda a rua por placas de limite de velocidade, não apenas o trecho selecionado.  Isso às vezes significa uma longa caminhada para resolver uma única missão."</string>
+    <string name="pref_title_quests_restore_hidden">"Restaurar missões ocultadas"</string>
+    <string name="restore_hidden_success">"Restauradas %d missões ocultadas"</string>
+
+    <!-- as in: "Where is the metro station?" - "It is underground" -->
+    <string name="underground">"subterrâneo:"</string>
+    <string name="quest_accessible_for_pedestrians_title_prohibited">"Os pedestres são proibidos de andar nesta rua?"</string>
     <string name="quest_buildingType_title">"Que tipo de edifício é esse?"</string>
     <string name="pref_category_theme">"Tema"</string>
     <string name="pref_title_theme_select">"Selecione o tema"</string>
@@ -690,4 +696,5 @@ Parcialmente significa que um cadeirante pode entrar e usar o banheiro, mas barr
     <string name="theme_light">"Claro"</string>
     <string name="theme_dark">"Escuro"</string>
     <string name="theme_system_default">"Padrão do sistema"</string>
+    <string name="quest_placeName_title_name">"Qual é o nome deste lugar? (%s)"</string>
 </resources>

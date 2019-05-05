@@ -648,4 +648,11 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Oinezkoek debekatuta al dute bide honetan ibiltzea?"</string>
     <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Kale hau alde bietan espaloirik gabeko gisa etiketatu da. Oinezkoen bidea egon badago, baina aparteko bide gisa adierazia, erantzun \"espaloia\"."</string>
     <string name="quest_buildingType_title">"Ze motako eraikina da hau?"</string>
+    <string name="pref_category_theme">"Itxura"</string>
+    <string name="pref_title_theme_select">"Hautatu itxura"</string>
+    <string name="theme_automatic">"Automatikoa"</string>
+    <string name="theme_light">"Argia"</string>
+    <string name="theme_dark">"Iluna"</string>
+    <string name="theme_system_default">"Sisteman lehenetsia"</string>
+    <string name="quest_placeName_title_name">"Zein da toki honen izena? (%s)"</string>
 </resources>

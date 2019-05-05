@@ -350,7 +350,7 @@ Vagy le is tölthetsz egy másik billentyűzetet az áruházból. Népszerű bil
     <string name="produce_sweet_peppers">"Édes paprika"</string>
     <string name="produce_brazil_nuts">"Brazil dió"</string>
     <string name="produce_tung_nuts">"Tung dió"</string>
-    <string name="quest_parkingType_title">"Ez milyen típusó parkoló?"</string>
+    <string name="quest_parkingType_title">"Ez milyen típusú parkoló?"</string>
     <string name="quest_parkingType_surface">"Normál"</string>
     <string name="quest_parkingType_underground">"Mélygarázs"</string>
     <string name="quest_parkingType_multiStorage">"Parkolóház"</string>
@@ -477,7 +477,7 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="quest_bicycle_parking_type_shed">"Zárt rácsos"</string>
     <string name="quest_bicycle_parking_type_locker">"Egyenként zárható"</string>
     <string name="quest_bicycle_parking_type_building">"Épület"</string>
-    <string name="quest_bicycle_parking_type_title">"Ez milyen típusó kerékpártároló?"</string>
+    <string name="quest_bicycle_parking_type_title">"Ez milyen típusú kerékpártároló?"</string>
     <string name="quest_cycleway_value_suggestion_lane">"kerékpárral javasolt sáv"</string>
     <string name="quest_postboxCollectionTimes_title">"Mikor gyűjtik be ezt a postaládát?"</string>
     <string name="quest_collectionTimes_add_times">"Gyűjtési idő hozzáadása"</string>
@@ -645,4 +645,5 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="theme_light">"Világos"</string>
     <string name="theme_dark">"Sötét"</string>
     <string name="theme_system_default">"Rendszer alapértelmezett"</string>
+    <string name="quest_placeName_title_name">"Mi a neve ennek a helynek? (%s)"</string>
 </resources>
