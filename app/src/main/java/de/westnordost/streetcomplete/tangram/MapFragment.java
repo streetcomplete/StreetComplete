@@ -654,6 +654,16 @@ public class MapFragment extends Fragment implements
 		onMapOrientation(rotation, tilt);
 	}
 
+	public void setPosition(LngLat position)
+	{
+		controller.setPosition(position);
+	}
+
+	public void setZoom(float zoom)
+	{
+		controller.setZoom(zoom);
+	}
+
 	public float getRotation()
 	{
 		return controller != null ? controller.getRotation() : 0;
