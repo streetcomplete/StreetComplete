@@ -1,14 +1,24 @@
 package de.westnordost.streetcomplete.quests.place_name
 
+import de.westnordost.osmapi.map.data.BoundingBox
+import de.westnordost.osmapi.map.data.Element
+import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandler
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.streetcomplete.data.osm.tql.FiltersParser
+import de.westnordost.streetcomplete.data.osm.tql.OverpassQLUtil
+import java.util.concurrent.FutureTask
 
-class AddPlaceName(o: OverpassMapDataDao) : SimpleOverpassQuestType<PlaceNameAnswer>(o) {
+class AddPlaceName(
+    private val overpassServer: OverpassMapDataDao,
+    private val featureDictionaryFuture: FutureTask<FeatureDictionary>
+) : OsmElementQuestType<PlaceNameAnswer> {
 
-    override val tagFilters =
-        "nodes, ways, relations with !name and noname != yes " +
+    private val filter by lazy { FiltersParser().parse(
+        "nodes, ways, relations with !name and !brand and noname != yes " +
         " and (shop and shop !~ no|vacant or tourism = information and information = office " +
         " or " +
         mapOf(
@@ -33,7 +43,7 @@ class AddPlaceName(o: OverpassMapDataDao) : SimpleOverpassQuestType<PlaceNameAns
                 // and tourism=information, see above
             ),
             "leisure" to arrayOf(
-                "park", "nature_reserve", "sports_centre", "fitness_centre", "dance", "golf_course",
+                "nature_reserve", "sports_centre", "fitness_centre", "dance", "golf_course",
                 "water_park", "miniature_golf", "stadium", "marina", "bowling_alley",
                 "amusement_arcade", "adult_gaming_centre", "tanning_salon", "horse_riding"
             ),
@@ -42,11 +52,26 @@ class AddPlaceName(o: OverpassMapDataDao) : SimpleOverpassQuestType<PlaceNameAns
             )
         ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString(" or ") +
         ")"
+    )}
 
     override val commitMessage = "Determine place names"
     override val icon = R.drawable.ic_quest_label
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_placeName_title
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_placeName_title_name
+
+    override fun download(bbox: BoundingBox, handler: MapDataWithGeometryHandler): Boolean {
+        val overpassQuery = filter.toOverpassQLString(bbox) + OverpassQLUtil.getQuestPrintStatement()
+        return overpassServer.getAndHandleQuota(overpassQuery) { element, geometry ->
+            if(element.tags != null) {
+                // only show places without names as quests for which a feature name is available
+                if (featureDictionaryFuture.get().byTags(element.tags).find().isNotEmpty()) {
+                    handler.handle(element, geometry);
+                }
+            }
+        }
+    }
+
+    override fun isApplicableTo(element: Element) = filter.matches(element)
 
     override fun createForm() = AddPlaceNameForm()
 

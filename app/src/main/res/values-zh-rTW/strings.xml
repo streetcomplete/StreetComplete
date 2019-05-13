@@ -701,4 +701,10 @@
     <string name="quest_accessible_for_pedestrians_title_prohibited">"這條道路禁止行人使用嗎？"</string>
     <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"這個街道目標被標記為雙向皆無人行道。若實際上有人行道，並且在地圖上顯示為獨立的道路，請回答「人行道」。"</string>
     <string name="quest_buildingType_title">"這棟建築物的種類是?"</string>
+    <string name="pref_category_theme">"主題"</string>
+    <string name="pref_title_theme_select">"選擇主題"</string>
+    <string name="theme_automatic">"自動"</string>
+    <string name="theme_light">"光亮"</string>
+    <string name="theme_dark">"黑暗"</string>
+    <string name="theme_system_default">"系統預設"</string>
 </resources>

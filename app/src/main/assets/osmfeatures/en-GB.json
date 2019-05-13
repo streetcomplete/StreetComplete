@@ -1,0 +1,2717 @@
+{
+    "presets": {
+        "office/administrative": {
+            "name": "Administrative Office"
+        },
+        "amenity/car_rental": {
+            "name": "Car Rental"
+        },
+        "place/city": {
+            "name": "City"
+        },
+        "building": {
+            "name": "Building"
+        },
+        "craft/dressmaker": {
+            "name": "Dressmaker"
+        },
+        "barrier/lift_gate": {
+            "name": "Lift Gate"
+        },
+        "railway/halt": {
+            "name": "Train Station (Halt / Request)"
+        },
+        "landuse/garages": {
+            "name": "Garage Landuse"
+        },
+        "building/farm": {
+            "name": "Farm House"
+        },
+        "amenity/waste_disposal": {
+            "name": "Garbage Dumpster"
+        },
+        "type/restriction/only_right_turn": {
+            "name": "Only Right Turn"
+        },
+        "attraction/carousel": {
+            "name": "Carousel"
+        },
+        "craft/sawmill": {
+            "name": "Sawmill"
+        },
+        "emergency/yes": {
+            "name": "Emergency Access Yes"
+        },
+        "circular": {
+            "name": "Traffic Circle"
+        },
+        "healthcare/audiologist": {
+            "name": "Audiologist"
+        },
+        "highway/motorway": {
+            "name": "Motorway"
+        },
+        "natural/bay": {
+            "name": "Bay"
+        },
+        "building/bungalow": {
+            "name": "Bungalow"
+        },
+        "building/terrace": {
+            "name": "Terraced houses"
+        },
+        "aeroway/runway": {
+            "name": "Runway"
+        },
+        "amenity/studio": {
+            "name": "Studio"
+        },
+        "landuse/military": {
+            "name": "Military Area"
+        },
+        "shop/seafood": {
+            "name": "Seafood Shop"
+        },
+        "railway/milestone": {
+            "name": "Railway Milestone"
+        },
+        "waterway/sanitary_dump_station": {
+            "name": "Marine Toilet Disposal"
+        },
+        "barrier/city_wall": {
+            "name": "City Wall"
+        },
+        "office/employment_agency": {
+            "name": "Employment Agency"
+        },
+        "craft/sculptor": {
+            "name": "Sculptor"
+        },
+        "office/government/register_office": {
+            "name": "Register Office"
+        },
+        "amenity/waste_transfer_station": {
+            "name": "Waste Transfer Station"
+        },
+        "boundary/administrative": {
+            "name": "Administrative Boundary"
+        },
+        "man_made/surveillance": {
+            "name": "Surveillance"
+        },
+        "building/ruins": {
+            "name": "Building Ruins"
+        },
+        "leisure/pitch/american_football": {
+            "name": "American Football Field"
+        },
+        "leisure/fitness_station/horizontal_ladder": {
+            "name": "Exercise Monkey Bars"
+        },
+        "traffic_calming/bump": {
+            "name": "Speed Bump"
+        },
+        "craft/carpenter": {
+            "name": "Carpenter"
+        },
+        "railway/level_crossing": {
+            "name": "Level Crossing (Road)"
+        },
+        "attraction/amusement_ride": {
+            "name": "Amusement Ride"
+        },
+        "place/suburb": {
+            "name": "Borough / Suburb"
+        },
+        "man_made/pier": {
+            "name": "Pier"
+        },
+        "shop/farm": {
+            "name": "Farm Shop"
+        },
+        "waterway/stream_intermittent": {
+            "name": "Intermittent Stream"
+        },
+        "highway/road": {
+            "name": "Unknown Road"
+        },
+        "address": {
+            "name": "Address"
+        },
+        "highway/primary_link": {
+            "name": "Primary Link"
+        },
+        "shop/greengrocer": {
+            "name": "Greengrocer"
+        },
+        "highway/traffic_mirror": {
+            "name": "Traffic Mirror"
+        },
+        "railway/station": {
+            "name": "Train Station"
+        },
+        "aerialway/rope_tow": {
+            "name": "Rope Tow Lift"
+        },
+        "office/therapist": {
+            "name": "Therapist Office"
+        },
+        "office/company": {
+            "name": "Corporate Office"
+        },
+        "shop/dairy": {
+            "name": "Dairy Shop"
+        },
+        "type/route/road": {
+            "name": "Road Route"
+        },
+        "amenity/planetarium": {
+            "name": "Planetarium"
+        },
+        "office/financial": {
+            "name": "Financial Office"
+        },
+        "highway/track": {
+            "name": "Track"
+        },
+        "attraction/dark_ride": {
+            "name": "Ghost Train"
+        },
+        "shop/wine": {
+            "name": "Wine Shop"
+        },
+        "shop/hairdresser": {
+            "name": "Hairdresser"
+        },
+        "building/school": {
+            "name": "School Building"
+        },
+        "tourism/information/board": {
+            "name": "Information Board"
+        },
+        "amenity/ferry_terminal": {
+            "name": "Ferry Station / Terminal"
+        },
+        "shop/furnace": {
+            "name": "Furnace Shop"
+        },
+        "landuse/industrial": {
+            "name": "Industrial Area"
+        },
+        "type/route/hiking": {
+            "name": "Hiking Route"
+        },
+        "tourism/hostel": {
+            "name": "Hostel"
+        },
+        "leisure/pitch/volleyball": {
+            "name": "Volleyball Court"
+        },
+        "amenity/veterinary": {
+            "name": "Veterinary"
+        },
+        "leisure/amusement_arcade": {
+            "name": "Amusement Arcade"
+        },
+        "craft/pottery": {
+            "name": "Pottery"
+        },
+        "craft/roofer": {
+            "name": "Roofer"
+        },
+        "shop/massage": {
+            "name": "Massage Shop"
+        },
+        "area": {
+            "name": "Area"
+        },
+        "landuse/landfill": {
+            "name": "Landfill"
+        },
+        "allotments/plot": {
+            "name": "Allotments Plot"
+        },
+        "tourism/aquarium": {
+            "name": "Aquarium"
+        },
+        "type/site": {
+            "name": "Site"
+        },
+        "type/route/subway": {
+            "name": "Subway Route"
+        },
+        "amenity/vending_machine/fuel": {
+            "name": "Fuel Pump"
+        },
+        "amenity/fountain": {
+            "name": "Fountain"
+        },
+        "shop/doityourself": {
+            "name": "DIY Shop"
+        },
+        "amenity/taxi": {
+            "name": "Taxi Stand"
+        },
+        "amenity/smoking_area": {
+            "name": "Smoking Area"
+        },
+        "man_made/water_tower": {
+            "name": "Water Tower"
+        },
+        "railway/train_wash": {
+            "name": "Train Wash"
+        },
+        "shop/dry_cleaning": {
+            "name": "Dry Cleaner"
+        },
+        "tourism/caravan_site": {
+            "name": "Caravan Park"
+        },
+        "craft/clockmaker": {
+            "name": "Clockmaker"
+        },
+        "shop/furniture": {
+            "name": "Furniture Shop"
+        },
+        "public_transport/platform_ferry": {
+            "name": "Ferry Stop / Platform"
+        },
+        "advertising/billboard": {
+            "name": "Billboard"
+        },
+        "shop/bakery": {
+            "name": "Bakery"
+        },
+        "emergency/phone": {
+            "name": "Emergency Phone"
+        },
+        "golf/bunker": {
+            "name": "Bunker"
+        },
+        "shop/houseware": {
+            "name": "Houseware Store",
+            "terms": "homeware, kitchenware, linen, crockery"
+        },
+        "leisure/pitch/soccer": {
+            "name": "Football Pitch"
+        },
+        "type/multipolygon": {
+            "name": "Multipolygon"
+        },
+        "shop/vacant": {
+            "name": "Vacant Shop"
+        },
+        "amenity/social_facility/homeless_shelter": {
+            "name": "Homeless Shelter"
+        },
+        "highway/turning_loop": {
+            "name": "Turning Loop (Island)"
+        },
+        "leisure/miniature_golf": {
+            "name": "Miniature Golf"
+        },
+        "amenity/vending_machine/ice_cream": {
+            "name": "Ice Cream Vending Machine"
+        },
+        "amenity/hospital": {
+            "name": "Hospital Grounds"
+        },
+        "public_transport/stop_position_monorail": {
+            "name": "Monorail Stopping Location"
+        },
+        "amenity/telephone": {
+            "name": "Telephone"
+        },
+        "building/dormitory": {
+            "name": "Dormitory"
+        },
+        "craft/blacksmith": {
+            "name": "Blacksmith"
+        },
+        "landuse/residential": {
+            "name": "Residential Area"
+        },
+        "leisure/stadium": {
+            "name": "Stadium"
+        },
+        "highway/speed_camera": {
+            "name": "Speed Camera"
+        },
+        "public_transport/station_monorail": {
+            "name": "Monorail Station"
+        },
+        "amenity/drinking_water": {
+            "name": "Drinking Water"
+        },
+        "barrier/kissing_gate": {
+            "name": "Kissing Gate"
+        },
+        "landuse/recreation_ground": {
+            "name": "Recreation Ground"
+        },
+        "office/newspaper": {
+            "name": "Newspaper Office"
+        },
+        "type/restriction/no_u_turn": {
+            "name": "No U-turn"
+        },
+        "amenity/townhall": {
+            "name": "Town Hall"
+        },
+        "public_transport/stop_position_bus": {
+            "name": "Bus Stopping Location"
+        },
+        "natural/water": {
+            "name": "Water"
+        },
+        "barrier/cycle_barrier": {
+            "name": "Cycle Barrier"
+        },
+        "embankment": {
+            "name": "Embankment"
+        },
+        "shop/sports": {
+            "name": "Sporting Goods Shop"
+        },
+        "amenity/vending_machine/elongated_coin": {
+            "name": "Elongated Coin Vending Machine"
+        },
+        "type/waterway": {
+            "name": "Waterway"
+        },
+        "emergency/destination": {
+            "name": "Emergency Access Destination"
+        },
+        "craft/winery": {
+            "name": "Winery"
+        },
+        "public_transport/stop_position_train": {
+            "name": "Train Stopping Location"
+        },
+        "shop/laundry": {
+            "name": "Laundry"
+        },
+        "amenity/grit_bin": {
+            "name": "Grit Bin"
+        },
+        "amenity/bank": {
+            "name": "Bank"
+        },
+        "amenity/prison": {
+            "name": "Prison Grounds"
+        },
+        "building/boathouse": {
+            "name": "Boathouse"
+        },
+        "amenity/police": {
+            "name": "Police"
+        },
+        "place/farm": {
+            "name": "Farm"
+        },
+        "highway/service/driveway": {
+            "name": "Driveway"
+        },
+        "leisure/pitch/basketball": {
+            "name": "Basketball Court"
+        },
+        "shop/newsagent": {
+            "name": "Newspaper/Magazine Shop"
+        },
+        "building/residential": {
+            "name": "Residential Building"
+        },
+        "landuse/greenhouse_horticulture": {
+            "name": "Greenhouse Horticulture"
+        },
+        "healthcare": {
+            "name": "Healthcare Facility"
+        },
+        "amenity/community_centre": {
+            "name": "Community Centre"
+        },
+        "shop/tyres": {
+            "name": "Tyre Shop"
+        },
+        "aeroway/gate": {
+            "name": "Airport Gate"
+        },
+        "manhole/drain": {
+            "name": "Storm Drain"
+        },
+        "traffic_calming/island": {
+            "name": "Traffic Island"
+        },
+        "playground/cushion": {
+            "name": "Bouncy Cushion"
+        },
+        "aerialway/gondola": {
+            "name": "Gondola",
+            "terms": "Dangleway"
+        },
+        "shop/window_blind": {
+            "name": "Window Blind Shop"
+        },
+        "advertising/column": {
+            "name": "Advertising Column"
+        },
+        "building/temple": {
+            "name": "Temple Building"
+        },
+        "landuse/military/barracks": {
+            "name": "Barracks"
+        },
+        "amenity/casino": {
+            "name": "Casino"
+        },
+        "amenity/coworking_space": {
+            "name": "Coworking Space"
+        },
+        "tourism/museum": {
+            "name": "Museum"
+        },
+        "railway/buffer_stop": {
+            "name": "Buffer Stop"
+        },
+        "aerialway/pylon": {
+            "name": "Aerialway Pylon"
+        },
+        "craft/chimney_sweeper": {
+            "name": "Chimney Sweeper"
+        },
+        "railway/narrow_gauge": {
+            "name": "Narrow Gauge Rail"
+        },
+        "shop/curtain": {
+            "name": "Curtain Shop"
+        },
+        "healthcare/hospice": {
+            "name": "Hospice"
+        },
+        "leisure/pitch/tennis": {
+            "name": "Tennis Court"
+        },
+        "amenity/clinic/abortion": {
+            "name": "Abortion Clinic"
+        },
+        "craft/watchmaker": {
+            "name": "Watchmaker"
+        },
+        "leisure/fitness_centre": {
+            "name": "Gym / Fitness Centre"
+        },
+        "highway/corridor": {
+            "name": "Indoor Corridor"
+        },
+        "attraction/animal": {
+            "name": "Animal"
+        },
+        "craft/bookbinder": {
+            "name": "Bookbinder"
+        },
+        "man_made/groyne": {
+            "name": "Groyne"
+        },
+        "shop/pawnbroker": {
+            "name": "Pawn Shop"
+        },
+        "shop/beverages": {
+            "name": "Beverages Shop"
+        },
+        "public_transport/platform_bus": {
+            "name": "Bus Stop / Platform"
+        },
+        "entrance": {
+            "name": "Entrance/Exit"
+        },
+        "power/tower": {
+            "name": "High-Voltage Tower"
+        },
+        "aerialway/cable_car": {
+            "name": "Cable Car"
+        },
+        "landuse/military/airfield": {
+            "name": "Military Airfield"
+        },
+        "craft/boatbuilder": {
+            "name": "Boat Builder"
+        },
+        "craft/shoemaker": {
+            "name": "Shoemaker"
+        },
+        "shop/interior_decoration": {
+            "name": "Interior Decoration Shop"
+        },
+        "man_made/crane": {
+            "name": "Crane"
+        },
+        "leisure/pitch/table_tennis": {
+            "name": "Ping Pong Table"
+        },
+        "attraction/maze": {
+            "name": "Maze"
+        },
+        "amenity/place_of_worship/sikh": {
+            "name": "Sikh Temple"
+        },
+        "amenity/social_facility/food_bank": {
+            "name": "Food Bank"
+        },
+        "shop/nutrition_supplements": {
+            "name": "Nutrition Supplements Shop"
+        },
+        "craft/gardener": {
+            "name": "Gardener"
+        },
+        "building/church": {
+            "name": "Church Building"
+        },
+        "shop/video_games": {
+            "name": "Video Games Shop"
+        },
+        "traffic_calming/dip": {
+            "name": "Dip"
+        },
+        "traffic_calming/choker": {
+            "name": "Traffic Choker"
+        },
+        "railway/funicular": {
+            "name": "Funicular"
+        },
+        "power/transformer": {
+            "name": "Transformer"
+        },
+        "power/generator": {
+            "name": "Power Generator"
+        },
+        "natural/wetland": {
+            "name": "Wetland"
+        },
+        "landuse/military/naval_base": {
+            "name": "Naval Base"
+        },
+        "shop/department_store": {
+            "name": "Department Store"
+        },
+        "historic/wayside_cross": {
+            "name": "Wayside Cross"
+        },
+        "man_made/petroleum_well": {
+            "name": "Oil Well"
+        },
+        "healthcare/alternative": {
+            "name": "Alternative Medicine"
+        },
+        "leisure/fitness_station/parallel_bars": {
+            "name": "Parallel Bars"
+        },
+        "highway/footway": {
+            "name": "Foot Path"
+        },
+        "building/roof": {
+            "name": "Roof"
+        },
+        "craft/upholsterer": {
+            "name": "Upholsterer"
+        },
+        "natural/glacier": {
+            "name": "Glacier"
+        },
+        "shop/storage_rental": {
+            "name": "Storage Rental"
+        },
+        "shop/fashion": {
+            "name": "Fashion Shop"
+        },
+        "power/substation": {
+            "name": "Substation"
+        },
+        "amenity/fast_food": {
+            "name": "Fast Food"
+        },
+        "type/route/pipeline": {
+            "name": "Pipeline Route"
+        },
+        "landuse/religious": {
+            "name": "Religious Area"
+        },
+        "barrier/cattle_grid": {
+            "name": "Cattle Grid"
+        },
+        "tourism/motel": {
+            "name": "Motel"
+        },
+        "building/cathedral": {
+            "name": "Cathedral Building"
+        },
+        "office/notary": {
+            "name": "Notary Office"
+        },
+        "natural/reef": {
+            "name": "Reef"
+        },
+        "craft/photographic_laboratory": {
+            "name": "Photographic Laboratory"
+        },
+        "amenity/waste/dog_excrement": {
+            "name": "Dog Excrement Bin"
+        },
+        "leisure/slipway": {
+            "name": "Slipway"
+        },
+        "leisure/dance": {
+            "name": "Dance Hall"
+        },
+        "traffic_calming/hump": {
+            "name": "Speed Hump"
+        },
+        "man_made/clearcut": {
+            "name": "Clearcut Forest"
+        },
+        "building/chapel": {
+            "name": "Chapel Building"
+        },
+        "craft/caterer": {
+            "name": "Caterer"
+        },
+        "office/research": {
+            "name": "Research Office"
+        },
+        "office/travel_agent": {
+            "name": "Travel Agency"
+        },
+        "craft/jeweler": {
+            "name": "Jeweler"
+        },
+        "landuse/industrial/slaughterhouse": {
+            "name": "Slaughterhouse"
+        },
+        "office/telecommunication": {
+            "name": "Telecom Office"
+        },
+        "shop/bag": {
+            "name": "Bag/Luggage Shop"
+        },
+        "historic/tomb": {
+            "name": "Tomb"
+        },
+        "amenity/vending_machine/electronics": {
+            "name": "Electronics Vending Machine"
+        },
+        "waterway/water_point": {
+            "name": "Marine Drinking Water"
+        },
+        "shop/garden_centre": {
+            "name": "Garden Centre"
+        },
+        "leisure/sports_centre/swimming": {
+            "name": "Swimming Pool Facility"
+        },
+        "barrier/hedge": {
+            "name": "Hedge"
+        },
+        "shop/kitchen": {
+            "name": "Kitchen Design Shop"
+        },
+        "building/garages": {
+            "name": "Garages"
+        },
+        "leisure/pitch/rugby_league": {
+            "name": "Rugby League Pitch"
+        },
+        "shop/beauty": {
+            "name": "Beauty Shop"
+        },
+        "amenity/charging_station": {
+            "name": "Charging Station"
+        },
+        "amenity/music_school": {
+            "name": "Music School"
+        },
+        "man_made/antenna": {
+            "name": "Antenna"
+        },
+        "waterway/canal": {
+            "name": "Canal"
+        },
+        "leisure/common": {
+            "name": "Common"
+        },
+        "type/route/horse": {
+            "name": "Riding Route"
+        },
+        "amenity/dojo": {
+            "name": "Dojo / Martial Arts Academy"
+        },
+        "landuse/farmland": {
+            "name": "Farmland"
+        },
+        "shop/baby_goods": {
+            "name": "Baby Goods Shop"
+        },
+        "shop/fishmonger": {
+            "name": "Fishmonger"
+        },
+        "place/square": {
+            "name": "Square"
+        },
+        "man_made/storage_tank": {
+            "name": "Storage Tank"
+        },
+        "place/neighbourhood": {
+            "name": "Neighborhood"
+        },
+        "playground/slide": {
+            "name": "Slide"
+        },
+        "leisure/pitch/beachvolleyball": {
+            "name": "Beach Volleyball Court"
+        },
+        "playground/basket_swing": {
+            "name": "Basket Swing"
+        },
+        "public_transport/stop_position_aerialway": {
+            "name": "Aerialway Stopping Location"
+        },
+        "playground/climbing_frame": {
+            "name": "Climbing Frame"
+        },
+        "man_made/chimney": {
+            "name": "Chimney"
+        },
+        "shop/mall": {
+            "name": "Mall"
+        },
+        "barrier/wall": {
+            "name": "Wall"
+        },
+        "craft/insulator": {
+            "name": "Insulator"
+        },
+        "shop/herbalist": {
+            "name": "Herbalist"
+        },
+        "landuse/vineyard": {
+            "name": "Vineyard"
+        },
+        "building/grandstand": {
+            "name": "Grandstand"
+        },
+        "traffic_calming/rumble_strip": {
+            "name": "Rumble Strip"
+        },
+        "office/tax_advisor": {
+            "name": "Tax Advisor Office"
+        },
+        "aerialway/drag_lift": {
+            "name": "Drag Lift"
+        },
+        "healthcare/midwife": {
+            "name": "Midwife"
+        },
+        "aeroway/hangar": {
+            "name": "Hangar"
+        },
+        "healthcare/psychotherapist": {
+            "name": "Psychotherapist"
+        },
+        "building/retail": {
+            "name": "Retail Building"
+        },
+        "highway/motorway_link": {
+            "name": "Motorway Link"
+        },
+        "amenity/car_pooling": {
+            "name": "Car Pooling"
+        },
+        "place/isolated_dwelling": {
+            "name": "Isolated Dwelling"
+        },
+        "shop/bed": {
+            "name": "Bed Shop"
+        },
+        "natural/scrub": {
+            "name": "Scrub"
+        },
+        "craft/photographer": {
+            "name": "Photographer"
+        },
+        "shop": {
+            "name": "Shop"
+        },
+        "attraction/big_wheel": {
+            "name": "Big Wheel"
+        },
+        "landuse/military/obstacle_course": {
+            "name": "Obstacle Course"
+        },
+        "natural/spring": {
+            "name": "Spring"
+        },
+        "man_made/pipeline": {
+            "name": "Pipeline"
+        },
+        "attraction/pirate_ship": {
+            "name": "Pirate Ship"
+        },
+        "healthcare/alternative/chiropractic": {
+            "name": "Chiropractor"
+        },
+        "amenity/childcare": {
+            "name": "Nursery/Childcare"
+        },
+        "barrier/kerb/flush": {
+            "name": "Flush Kerb"
+        },
+        "office/educational_institution": {
+            "name": "Educational Institution"
+        },
+        "shop/deli": {
+            "name": "Deli"
+        },
+        "leisure/pitch/equestrian": {
+            "name": "Riding Arena"
+        },
+        "place/quarter": {
+            "name": "Sub-Borough / Quarter"
+        },
+        "healthcare/rehabilitation": {
+            "name": "Rehabilitation Facility"
+        },
+        "shop/perfumery": {
+            "name": "Perfume Shop"
+        },
+        "highway/service/drive-through": {
+            "name": "Drive-Through"
+        },
+        "landuse/military/danger_area": {
+            "name": "Danger Area"
+        },
+        "shop/confectionery": {
+            "name": "Sweet Shop"
+        },
+        "tourism/information/guidepost": {
+            "name": "Guidepost"
+        },
+        "shop/electronics": {
+            "name": "Electronics Shop"
+        },
+        "waterway": {
+            "name": "Waterway"
+        },
+        "amenity/clinic": {
+            "name": "Clinic"
+        },
+        "public_transport/stop_position_light_rail": {
+            "name": "Light Rail Stopping Location"
+        },
+        "amenity/place_of_worship/buddhist": {
+            "name": "Buddhist Temple"
+        },
+        "natural/bare_rock": {
+            "name": "Bare Rock"
+        },
+        "amenity/crematorium": {
+            "name": "Crematorium"
+        },
+        "building/farm_auxiliary": {
+            "name": "Farm Building"
+        },
+        "power/switch": {
+            "name": "Power Switch"
+        },
+        "amenity/waste_basket": {
+            "name": "Rubbish Bin"
+        },
+        "building/construction": {
+            "name": "Building Under Construction"
+        },
+        "highway/unclassified": {
+            "name": "Minor/Unclassified Road"
+        },
+        "office/charity": {
+            "name": "Charity Office"
+        },
+        "office/foundation": {
+            "name": "Foundation Office"
+        },
+        "amenity/social_facility": {
+            "name": "Social Facility"
+        },
+        "shop/hifi": {
+            "name": "Hifi Shop"
+        },
+        "craft/window_construction": {
+            "name": "Window Construction"
+        },
+        "shop/appliance": {
+            "name": "Appliance Shop"
+        },
+        "craft/tinsmith": {
+            "name": "Tinsmith"
+        },
+        "golf/green": {
+            "name": "Putting Green"
+        },
+        "man_made/windmill": {
+            "name": "Windmill"
+        },
+        "shop/mobile_phone": {
+            "name": "Mobile Phone Shop"
+        },
+        "craft/basket_maker": {
+            "name": "Basket Maker"
+        },
+        "building/service": {
+            "name": "Service Building"
+        },
+        "place/town": {
+            "name": "Town"
+        },
+        "highway/tertiary_link": {
+            "name": "Tertiary Link"
+        },
+        "tourism/information": {
+            "name": "Information"
+        },
+        "amenity/vending_machine/coffee": {
+            "name": "Coffee Vending Machine"
+        },
+        "landuse/military/training_area": {
+            "name": "Training Area"
+        },
+        "playground/horizontal_bar": {
+            "name": "Play Horizontal Bar"
+        },
+        "natural/water/lake": {
+            "name": "Lake"
+        },
+        "shop/video": {
+            "name": "Video/DVD Shop"
+        },
+        "amenity/animal_breeding": {
+            "name": "Animal Breeding Facility"
+        },
+        "building/warehouse": {
+            "name": "Warehouse"
+        },
+        "railway/tram": {
+            "name": "Tram"
+        },
+        "power/minor_line": {
+            "name": "Minor Power Line"
+        },
+        "amenity/social_facility/nursing_home": {
+            "name": "Nursing Home"
+        },
+        "public_transport/station_light_rail": {
+            "name": "Light Rail Station"
+        },
+        "landuse/farmyard": {
+            "name": "Farmyard"
+        },
+        "man_made/works": {
+            "name": "Factory"
+        },
+        "craft/plumber": {
+            "name": "Plumber"
+        },
+        "highway/cycleway": {
+            "name": "Cycle Path"
+        },
+        "man_made/gasometer": {
+            "name": "Gasometer"
+        },
+        "shop/hardware": {
+            "name": "Hardware Shop"
+        },
+        "amenity/car_sharing": {
+            "name": "Car Sharing"
+        },
+        "shop/funeral_directors": {
+            "name": "Funeral Home"
+        },
+        "tourism/zoo": {
+            "name": "Zoo"
+        },
+        "amenity/payment_centre": {
+            "name": "Payment Centre"
+        },
+        "shop/computer": {
+            "name": "Computer Shop"
+        },
+        "landuse/grass": {
+            "name": "Grass"
+        },
+        "natural/grassland": {
+            "name": "Grassland"
+        },
+        "amenity/animal_boarding": {
+            "name": "Animal Boarding Facility"
+        },
+        "highway/stop": {
+            "name": "Stop Sign"
+        },
+        "emergency/no": {
+            "name": "Emergency Access No"
+        },
+        "public_transport/stop_position_ferry": {
+            "name": "Ferry Stopping Location"
+        },
+        "tourism": {
+            "name": "Tourism"
+        },
+        "amenity/public_bath": {
+            "name": "Public Bath"
+        },
+        "amenity/car_wash": {
+            "name": "Car Wash"
+        },
+        "highway/street_lamp": {
+            "name": "Street Light"
+        },
+        "playground/zipwire": {
+            "name": "Zip Wire"
+        },
+        "tourism/theme_park": {
+            "name": "Theme Park"
+        },
+        "shop/watches": {
+            "name": "Watches Shop"
+        },
+        "amenity/parking_entrance": {
+            "name": "Parking Garage Entrance/Exit"
+        },
+        "landuse": {
+            "name": "Land Use"
+        },
+        "waterway/riverbank": {
+            "name": "Riverbank"
+        },
+        "type/route/light_rail": {
+            "name": "Light Rail Route"
+        },
+        "shop/music": {
+            "name": "Music Shop"
+        },
+        "barrier/toll_booth": {
+            "name": "Toll Booth"
+        },
+        "craft/stonemason": {
+            "name": "Stonemason"
+        },
+        "aerialway": {
+            "name": "Aerialway"
+        },
+        "amenity/nightclub": {
+            "name": "Nightclub"
+        },
+        "waterway/dam": {
+            "name": "Dam"
+        },
+        "amenity/school": {
+            "name": "School Grounds"
+        },
+        "public_transport/stop_position_tram": {
+            "name": "Tram Stopping Location"
+        },
+        "shop/photo": {
+            "name": "Photography Shop"
+        },
+        "office/forestry": {
+            "name": "Forestry Office"
+        },
+        "building/static_caravan": {
+            "name": "Static Caravan"
+        },
+        "playground/rocker": {
+            "name": "Spring Rider"
+        },
+        "leisure/pitch/skateboard": {
+            "name": "Skate Park"
+        },
+        "office/government/tax": {
+            "name": "Tax and Revenue Office"
+        },
+        "office/moving_company": {
+            "name": "Moving Company Office"
+        },
+        "highway/bridleway": {
+            "name": "Bridleway"
+        },
+        "shop/variety_store": {
+            "name": "Variety Store"
+        },
+        "amenity/parking/multi-storey": {
+            "name": "Multistory Car Park"
+        },
+        "amenity/doctors": {
+            "name": "Doctor"
+        },
+        "barrier/ditch": {
+            "name": "Trench"
+        },
+        "landuse/churchyard": {
+            "name": "Churchyard"
+        },
+        "amenity/shelter": {
+            "name": "Shelter"
+        },
+        "tourism/picnic_site": {
+            "name": "Picnic Site"
+        },
+        "highway/rest_area": {
+            "name": "Rest Area"
+        },
+        "amenity/vending_machine/stamps": {
+            "name": "Postage Vending Machine"
+        },
+        "public_transport/station_aerialway": {
+            "name": "Aerialway Station"
+        },
+        "playground/swing": {
+            "name": "Swing"
+        },
+        "craft/electrician": {
+            "name": "Electrician"
+        },
+        "manhole/telecom": {
+            "name": "Telecom Manhole"
+        },
+        "attraction/drop_tower": {
+            "name": "Drop Tower"
+        },
+        "historic/archaeological_site": {
+            "name": "Archaeological Site"
+        },
+        "amenity/driving_school": {
+            "name": "Driving School"
+        },
+        "building/barn": {
+            "name": "Barn"
+        },
+        "amenity/bench": {
+            "name": "Bench"
+        },
+        "craft/beekeeper": {
+            "name": "Beekeeper"
+        },
+        "amenity/toilets": {
+            "name": "Toilets"
+        },
+        "leisure/fitness_station/box": {
+            "name": "Exercise Box"
+        },
+        "amenity/sanitary_dump_station": {
+            "name": "RV Toilet Disposal"
+        },
+        "shop/hearing_aids": {
+            "name": "Hearing Aids Shop"
+        },
+        "public_transport/platform": {
+            "name": "Transit Stop / Platform"
+        },
+        "craft/confectionery": {
+            "name": "Candy Maker"
+        },
+        "amenity/place_of_worship": {
+            "name": "Place of Worship"
+        },
+        "aerialway/goods": {
+            "name": "Goods Aerialway"
+        },
+        "railway/platform": {
+            "name": "Train Stop / Platform"
+        },
+        "barrier/retaining_wall": {
+            "name": "Retaining Wall"
+        },
+        "amenity/love_hotel": {
+            "name": "Love Hotel"
+        },
+        "office/adoption_agency": {
+            "name": "Adoption Agency"
+        },
+        "highway/traffic_signals": {
+            "name": "Traffic Lights"
+        },
+        "amenity/embassy": {
+            "name": "Embassy"
+        },
+        "place/islet": {
+            "name": "Islet"
+        },
+        "type/restriction/no_left_turn": {
+            "name": "No Left Turn"
+        },
+        "leisure/ice_rink": {
+            "name": "Ice Rink"
+        },
+        "healthcare/blood_donation": {
+            "name": "Blood Donor Centre"
+        },
+        "place/village": {
+            "name": "Village"
+        },
+        "shop/water_sports": {
+            "name": "Watersport/Swim Shop"
+        },
+        "shop/lottery": {
+            "name": "Lottery Shop"
+        },
+        "leisure/dog_park": {
+            "name": "Dog Park"
+        },
+        "natural/cave_entrance": {
+            "name": "Cave Entrance"
+        },
+        "point": {
+            "name": "Point"
+        },
+        "shop/cheese": {
+            "name": "Cheese Shop"
+        },
+        "amenity/boat_rental": {
+            "name": "Boat Rental"
+        },
+        "amenity/place_of_worship/taoist": {
+            "name": "Taoist Temple"
+        },
+        "building/mosque": {
+            "name": "Mosque Building"
+        },
+        "building/cabin": {
+            "name": "Cabin"
+        },
+        "highway/bus_guideway": {
+            "name": "Bus Guideway"
+        },
+        "amenity/animal_shelter": {
+            "name": "Animal Shelter"
+        },
+        "emergency/private": {
+            "name": "Emergency Access Private"
+        },
+        "craft/sailmaker": {
+            "name": "Sailmaker"
+        },
+        "office/ngo": {
+            "name": "NGO Office"
+        },
+        "craft/glaziery": {
+            "name": "Glaziery"
+        },
+        "highway/motorway_junction": {
+            "name": "Motorway Junction / Exit"
+        },
+        "natural/tree": {
+            "name": "Tree"
+        },
+        "amenity/register_office": {
+            "name": "Register Office"
+        },
+        "leisure/adult_gaming_centre": {
+            "name": "Adult Gaming Centre"
+        },
+        "shop/car_parts": {
+            "name": "Car Parts Shop"
+        },
+        "leisure/outdoor_seating": {
+            "name": "Outdoor Seating Area"
+        },
+        "office/lawyer": {
+            "name": "Law Office"
+        },
+        "highway/trunk_link": {
+            "name": "Trunk Link"
+        },
+        "amenity/vending_machine/news_papers": {
+            "name": "Newspaper Vending Machine"
+        },
+        "shop/bookmaker": {
+            "name": "Bookmaker"
+        },
+        "leisure/fitness_centre/yoga": {
+            "name": "Yoga Studio"
+        },
+        "aerialway/t-bar": {
+            "name": "T-bar Lift"
+        },
+        "public_transport/platform_aerialway": {
+            "name": "Aerialway Stop / Platform"
+        },
+        "historic/boundary_stone": {
+            "name": "Boundary Stone"
+        },
+        "leisure/park": {
+            "name": "Park"
+        },
+        "amenity/internet_cafe": {
+            "name": "Internet Cafe"
+        },
+        "leisure/garden": {
+            "name": "Garden"
+        },
+        "historic/memorial": {
+            "name": "Memorial"
+        },
+        "shop/cosmetics": {
+            "name": "Cosmetics Shop"
+        },
+        "type/restriction/only_u_turn": {
+            "name": "Only U-turn"
+        },
+        "leisure/swimming_pool": {
+            "name": "Swimming Pool"
+        },
+        "waterway/stream": {
+            "name": "Stream"
+        },
+        "railway": {
+            "name": "Railway"
+        },
+        "building/university": {
+            "name": "University Building"
+        },
+        "amenity/library": {
+            "name": "Library"
+        },
+        "shop/stationery": {
+            "name": "Stationery Shop"
+        },
+        "highway/secondary_link": {
+            "name": "Secondary Link"
+        },
+        "office/advertising_agency": {
+            "name": "Advertising Agency"
+        },
+        "highway/living_street": {
+            "name": "Living Street"
+        },
+        "landuse/military/bunker": {
+            "name": "Military Bunker"
+        },
+        "attraction/bumper_car": {
+            "name": "Bumper Car"
+        },
+        "attraction/roller_coaster": {
+            "name": "Roller Coaster"
+        },
+        "power/sub_station": {
+            "name": "Substation"
+        },
+        "shop/copyshop": {
+            "name": "Copyshop"
+        },
+        "leisure/firepit": {
+            "name": "Firepit"
+        },
+        "public_transport/station_ferry": {
+            "name": "Ferry Station / Terminal"
+        },
+        "man_made/bridge": {
+            "name": "Bridge"
+        },
+        "railway/monorail": {
+            "name": "Monorail"
+        },
+        "office/physician": {
+            "name": "Physician"
+        },
+        "shop/bicycle": {
+            "name": "Bicycle Shop"
+        },
+        "public_transport/stop_position_subway": {
+            "name": "Subway Stopping Location"
+        },
+        "tourism/apartment": {
+            "name": "Guest Apartment / Condo"
+        },
+        "amenity/hunting_stand": {
+            "name": "Hunting Stand"
+        },
+        "tourism/guest_house": {
+            "name": "Guest House"
+        },
+        "healthcare/laboratory": {
+            "name": "Medical Laboratory"
+        },
+        "power/plant": {
+            "name": "Power Station Grounds"
+        },
+        "landuse/aquaculture": {
+            "name": "Aquaculture"
+        },
+        "amenity": {
+            "name": "Amenity"
+        },
+        "tourism/gallery": {
+            "name": "Art Gallery"
+        },
+        "amenity/fuel": {
+            "name": "Petrol Station",
+            "terms": "gas, fuel, propane, diesel, lng, cng, biodiesel"
+        },
+        "type/route/tram": {
+            "name": "Tram Route"
+        },
+        "shop/second_hand": {
+            "name": "Second Hand Shop"
+        },
+        "place/island": {
+            "name": "Island"
+        },
+        "public_transport/platform_tram": {
+            "name": "Tram Stop / Platform"
+        },
+        "attraction/bungee_jumping": {
+            "name": "Bungee Jumping"
+        },
+        "railway/signal": {
+            "name": "Railway Signal"
+        },
+        "craft/rigger": {
+            "name": "Rigger"
+        },
+        "man_made/water_works": {
+            "name": "Water Works"
+        },
+        "amenity/pub": {
+            "name": "Pub"
+        },
+        "building/entrance": {
+            "name": "Entrance/Exit"
+        },
+        "playground/structure": {
+            "name": "Play Structure"
+        },
+        "shop/religion": {
+            "name": "Religious Shop"
+        },
+        "golf/rough": {
+            "name": "Rough"
+        },
+        "man_made/breakwater": {
+            "name": "Breakwater"
+        },
+        "shop/shoes": {
+            "name": "Shoe Shop"
+        },
+        "amenity/ranger_station": {
+            "name": "Warden Station"
+        },
+        "office/quango": {
+            "name": "Quasi-NGO Office"
+        },
+        "amenity/parking": {
+            "name": "Car Park"
+        },
+        "highway/bus_stop": {
+            "name": "Bus Stop / Platform"
+        },
+        "office/energy_supplier": {
+            "name": "Energy Supplier Office"
+        },
+        "amenity/place_of_worship/hindu": {
+            "name": "Hindu Temple"
+        },
+        "aerialway/platter": {
+            "name": "Platter Lift"
+        },
+        "amenity/swimming_pool": {
+            "name": "Swimming Pool"
+        },
+        "amenity/vending_machine/condoms": {
+            "name": "Condom Vending Machine"
+        },
+        "craft/electronics_repair": {
+            "name": "Electronics Repair Shop"
+        },
+        "man_made/adit": {
+            "name": "Adit"
+        },
+        "man_made/tower": {
+            "name": "Tower"
+        },
+        "shop/florist": {
+            "name": "Florist"
+        },
+        "type/route/ferry": {
+            "name": "Ferry Route"
+        },
+        "amenity/atm": {
+            "name": "Cash Machine"
+        },
+        "ford": {
+            "name": "Ford"
+        },
+        "natural/sand": {
+            "name": "Sand"
+        },
+        "place/locality": {
+            "name": "Locality"
+        },
+        "traffic_calming/table": {
+            "name": "Speed Table"
+        },
+        "amenity/courthouse": {
+            "name": "Courthouse"
+        },
+        "shop/art": {
+            "name": "Art Shop"
+        },
+        "place/hamlet": {
+            "name": "Hamlet"
+        },
+        "amenity/recycling_centre": {
+            "name": "Recycling Centre"
+        },
+        "club": {
+            "name": "Club"
+        },
+        "office/private_investigator": {
+            "name": "Private Investigator Office"
+        },
+        "waterway/fuel": {
+            "name": "Marine Fuel Station"
+        },
+        "highway": {
+            "name": "Highway"
+        },
+        "shop/pastry": {
+            "name": "Pastry Shop"
+        },
+        "amenity/theatre": {
+            "name": "Theatre"
+        },
+        "highway/pedestrian_line": {
+            "name": "Pedestrian Street"
+        },
+        "landuse/military/checkpoint": {
+            "name": "Checkpoint"
+        },
+        "man_made/lighthouse": {
+            "name": "Lighthouse"
+        },
+        "type/route/train": {
+            "name": "Train Route"
+        },
+        "barrier/fence": {
+            "name": "Fence"
+        },
+        "landuse/cemetery": {
+            "name": "Cemetery"
+        },
+        "railway/rail": {
+            "name": "Rail"
+        },
+        "natural/scree": {
+            "name": "Scree"
+        },
+        "office/government": {
+            "name": "Government Office"
+        },
+        "office/it": {
+            "name": "Information Technology Office"
+        },
+        "railway/disused": {
+            "name": "Disused Railway"
+        },
+        "amenity/grave_yard": {
+            "name": "Graveyard"
+        },
+        "railway/light_rail": {
+            "name": "Light Rail"
+        },
+        "office/lawyer/notary": {
+            "name": "Notary Office"
+        },
+        "amenity/clinic/fertility": {
+            "name": "Fertility Clinic"
+        },
+        "leisure/fitness_station": {
+            "name": "Outdoor Fitness Station"
+        },
+        "amenity/vending_machine/newspapers": {
+            "name": "Newspaper Vending Machine"
+        },
+        "railway/subway_entrance": {
+            "name": "Subway Entrance"
+        },
+        "healthcare/speech_therapist": {
+            "name": "Speech Therapist"
+        },
+        "leisure/picnic_table": {
+            "name": "Picnic Table"
+        },
+        "man_made/cutline": {
+            "name": "Cut line"
+        },
+        "craft/scaffolder": {
+            "name": "Scaffolder"
+        },
+        "shop/locksmith": {
+            "name": "Locksmith"
+        },
+        "office/insurance": {
+            "name": "Insurance Office"
+        },
+        "leisure/pitch": {
+            "name": "Sport Pitch"
+        },
+        "public_transport/stop_position_trolleybus": {
+            "name": "Trolleybus Stopping Location"
+        },
+        "tourism/hotel": {
+            "name": "Hotel"
+        },
+        "historic/monument": {
+            "name": "Monument"
+        },
+        "manhole": {
+            "name": "Manhole"
+        },
+        "type/route/bicycle": {
+            "name": "Cycle Route"
+        },
+        "highway/give_way": {
+            "name": "Give Way Sign"
+        },
+        "amenity/place_of_worship/shinto": {
+            "name": "Shinto Shrine"
+        },
+        "leisure/fitness_station/horizontal_bar": {
+            "name": "Exercise Horizontal Bar"
+        },
+        "historic": {
+            "name": "Historic Site"
+        },
+        "railway/switch": {
+            "name": "Railway Switch"
+        },
+        "healthcare/optometrist": {
+            "name": "Optometrist"
+        },
+        "building/kindergarten": {
+            "name": "Preschool/Kindergarten Building"
+        },
+        "leisure/playground": {
+            "name": "Playground"
+        },
+        "emergency/water_tank": {
+            "name": "Emergency Water Tank"
+        },
+        "shop/erotic": {
+            "name": "Erotic Shop"
+        },
+        "type/restriction/only_left_turn": {
+            "name": "Only Left Turn"
+        },
+        "leisure/fitness_station/rings": {
+            "name": "Exercise Rings"
+        },
+        "highway/mini_roundabout": {
+            "name": "Mini-Roundabout"
+        },
+        "public_transport/platform_monorail": {
+            "name": "Monorail Stop / Platform"
+        },
+        "amenity/monastery": {
+            "name": "Monastery Grounds"
+        },
+        "highway/service/parking_aisle": {
+            "name": "Parking Aisle"
+        },
+        "amenity/bbq": {
+            "name": "Barbecue/Grill"
+        },
+        "waterway/dock": {
+            "name": "Wet Dock / Dry Dock"
+        },
+        "waterway/boatyard": {
+            "name": "Boatyard"
+        },
+        "power/line": {
+            "name": "Power Line"
+        },
+        "amenity/ice_cream": {
+            "name": "Ice Cream Shop"
+        },
+        "leisure/horse_riding": {
+            "name": "Horseback Riding Facility"
+        },
+        "power/pole": {
+            "name": "Power Pole"
+        },
+        "natural/peak": {
+            "name": "Peak"
+        },
+        "highway/tertiary": {
+            "name": "Tertiary Road"
+        },
+        "shop/beauty/nails": {
+            "name": "Nail Salon"
+        },
+        "tourism/artwork": {
+            "name": "Artwork"
+        },
+        "amenity/vending_machine/sweets": {
+            "name": "Snack Vending Machine"
+        },
+        "landuse/retail": {
+            "name": "Retail Area"
+        },
+        "leisure/sauna": {
+            "name": "Sauna"
+        },
+        "craft/key_cutter": {
+            "name": "Key Cutter"
+        },
+        "leisure/fitness_station/sign": {
+            "name": "Exercise Instruction Sign"
+        },
+        "leisure/resort": {
+            "name": "Resort"
+        },
+        "shop/pyrotechnics": {
+            "name": "Fireworks Shop"
+        },
+        "leisure/pitch/cricket": {
+            "name": "Cricket Field"
+        },
+        "public_transport/platform_trolleybus": {
+            "name": "Trolleybus Stop / Platform"
+        },
+        "amenity/arts_centre": {
+            "name": "Arts Centre"
+        },
+        "shop/pet_grooming": {
+            "name": "Pet Grooming Shop"
+        },
+        "railway/crossing": {
+            "name": "Level Crossing (Path)"
+        },
+        "shop/travel_agency": {
+            "name": "Travel Agency"
+        },
+        "amenity/restaurant": {
+            "name": "Restaurant"
+        },
+        "type/route/detour": {
+            "name": "Detour Route"
+        },
+        "amenity/bicycle_repair_station": {
+            "name": "Bicycle Repair Tool Stand"
+        },
+        "office/association": {
+            "name": "Nonprofit Organization Office"
+        },
+        "highway/services": {
+            "name": "Service Area"
+        },
+        "amenity/bureau_de_change": {
+            "name": "Currency Exchange"
+        },
+        "tourism/chalet": {
+            "name": "Holiday Cottage"
+        },
+        "landuse/military/nuclear_explosion_site": {
+            "name": "Nuclear Explosion Site"
+        },
+        "leisure/dancing_school": {
+            "name": "Dance School"
+        },
+        "public_transport/station_trolleybus": {
+            "name": "Trolleybus Station / Terminal"
+        },
+        "leisure": {
+            "name": "Leisure"
+        },
+        "amenity/post_office": {
+            "name": "Post Office"
+        },
+        "tourism/trail_riding_station": {
+            "name": "Trail Riding Station"
+        },
+        "public_transport/stop_position": {
+            "name": "Transit Stopping Location"
+        },
+        "natural/volcano": {
+            "name": "Volcano"
+        },
+        "amenity/vending_machine": {
+            "name": "Vending Machine"
+        },
+        "amenity/bar": {
+            "name": "Bar"
+        },
+        "traffic_calming/cushion": {
+            "name": "Speed Cushion"
+        },
+        "leisure/fitness_station/balance_beam": {
+            "name": "Exercise Balance Beam"
+        },
+        "traffic_calming": {
+            "name": "Traffic Calming"
+        },
+        "barrier/stile": {
+            "name": "Stile"
+        },
+        "type/route/piste": {
+            "name": "Piste/Ski Route"
+        },
+        "shop/boutique": {
+            "name": "Boutique"
+        },
+        "area/highway": {
+            "name": "Road Surface"
+        },
+        "amenity/vending_machine/parking_tickets": {
+            "name": "Parking Ticket Vending Machine"
+        },
+        "shop/weapons": {
+            "name": "Weapon Shop"
+        },
+        "healthcare/physiotherapist": {
+            "name": "Physiotherapist"
+        },
+        "highway/trunk": {
+            "name": "Trunk Road"
+        },
+        "leisure/pitch/boules": {
+            "name": "Boules/Bocce Court"
+        },
+        "golf/tee": {
+            "name": "Tee Box"
+        },
+        "office": {
+            "name": "Office"
+        },
+        "amenity/fire_station": {
+            "name": "Fire Station"
+        },
+        "barrier/entrance": {
+            "name": "Entrance"
+        },
+        "emergency/fire_hydrant": {
+            "name": "Fire Hydrant"
+        },
+        "noexit/yes": {
+            "name": "No Exit"
+        },
+        "shop/scuba_diving": {
+            "name": "Scuba Diving Shop"
+        },
+        "natural/water/pond": {
+            "name": "Pond"
+        },
+        "place/plot": {
+            "name": "Plot"
+        },
+        "attraction/water_slide": {
+            "name": "Water Slide"
+        },
+        "shop/vacuum_cleaner": {
+            "name": "Vacuum Cleaner Shop"
+        },
+        "shop/chemist": {
+            "name": "Chemist"
+        },
+        "tourism/information/map": {
+            "name": "Map"
+        },
+        "building/hospital": {
+            "name": "Hospital Building"
+        },
+        "amenity/marketplace": {
+            "name": "Marketplace"
+        },
+        "building/industrial": {
+            "name": "Industrial Building"
+        },
+        "amenity/university": {
+            "name": "University Grounds"
+        },
+        "building/public": {
+            "name": "Public Building"
+        },
+        "amenity/shower": {
+            "name": "Shower"
+        },
+        "office/estate_agent": {
+            "name": "Estate Agent"
+        },
+        "man_made/watermill": {
+            "name": "Watermill"
+        },
+        "amenity/college": {
+            "name": "College Grounds"
+        },
+        "shop/toys": {
+            "name": "Toy Shop"
+        },
+        "type/restriction/no_straight_on": {
+            "name": "No Straight On"
+        },
+        "landuse/allotments": {
+            "name": "Allotments"
+        },
+        "office/water_utility": {
+            "name": "Water Utility Office"
+        },
+        "railway/tram_stop": {
+            "name": "Tram Stopping Position"
+        },
+        "highway/passing_place": {
+            "name": "Passing Place"
+        },
+        "shop/tiles": {
+            "name": "Tile Shop"
+        },
+        "highway/pedestrian_area": {
+            "name": "Pedestrian Area"
+        },
+        "amenity/vending_machine/food": {
+            "name": "Food Vending Machine"
+        },
+        "amenity/cafe": {
+            "name": "Cafe"
+        },
+        "leisure/pitch/bowls": {
+            "name": "Bowling Green"
+        },
+        "highway/service/emergency_access": {
+            "name": "Emergency Access"
+        },
+        "natural/mud": {
+            "name": "Mud"
+        },
+        "building/civic": {
+            "name": "Civic Building"
+        },
+        "craft/plasterer": {
+            "name": "Plasterer"
+        },
+        "amenity/parking_space": {
+            "name": "Parking Space"
+        },
+        "healthcare/birthing_center": {
+            "name": "Birthing Centre"
+        },
+        "building/greenhouse": {
+            "name": "Greenhouse"
+        },
+        "landuse/harbour": {
+            "name": "Harbor"
+        },
+        "shop/pet": {
+            "name": "Pet Shop"
+        },
+        "amenity/scrapyard": {
+            "name": "Scrap Yard"
+        },
+        "man_made/survey_point": {
+            "name": "Survey Point"
+        },
+        "roundabout": {
+            "name": "Roundabout"
+        },
+        "type/route/power": {
+            "name": "Power Route"
+        },
+        "highway/service/alley": {
+            "name": "Alley"
+        },
+        "public_transport/station_train": {
+            "name": "Train Station"
+        },
+        "shop/tailor": {
+            "name": "Tailor"
+        },
+        "landuse/brownfield": {
+            "name": "Brownfield"
+        },
+        "natural/cliff": {
+            "name": "Cliff"
+        },
+        "amenity/clock": {
+            "name": "Clock"
+        },
+        "building/garage": {
+            "name": "Garage"
+        },
+        "natural/coastline": {
+            "name": "Coastline"
+        },
+        "building/hotel": {
+            "name": "Hotel Building"
+        },
+        "shop/anime": {
+            "name": "Anime Shop"
+        },
+        "route/ferry": {
+            "name": "Ferry Route"
+        },
+        "shop/outdoor": {
+            "name": "Outdoors Shop"
+        },
+        "highway/raceway": {
+            "name": "Racetrack (Motorsport)"
+        },
+        "emergency/designated": {
+            "name": "Emergency Access Designated"
+        },
+        "highway/steps": {
+            "name": "Steps"
+        },
+        "leisure/fitness_station/hyperextension": {
+            "name": "Hyperextension Station"
+        },
+        "leisure/beach_resort": {
+            "name": "Beach Resort"
+        },
+        "amenity/vending_machine/drinks": {
+            "name": "Drink Vending Machine"
+        },
+        "highway/primary": {
+            "name": "Primary Road"
+        },
+        "shop/chocolate": {
+            "name": "Chocolate Shop"
+        },
+        "man_made/pumping_station": {
+            "name": "Pumping Station"
+        },
+        "building/bunker": {
+            "name": "Bunker"
+        },
+        "emergency/defibrillator": {
+            "name": "Defibrillator"
+        },
+        "aeroway/helipad": {
+            "name": "Helipad"
+        },
+        "amenity/dentist": {
+            "name": "Dentist"
+        },
+        "shop/tea": {
+            "name": "Tea Shop (Retail)"
+        },
+        "aerialway/chair_lift": {
+            "name": "Chair Lift"
+        },
+        "shop/supermarket": {
+            "name": "Supermarket"
+        },
+        "office/political_party": {
+            "name": "Political Party"
+        },
+        "shop/wholesale": {
+            "name": "Wholesale Shop / Cash & Carry "
+        },
+        "building/stadium": {
+            "name": "Stadium Building"
+        },
+        "landuse/military/range": {
+            "name": "Military Range"
+        },
+        "man_made/silo": {
+            "name": "Silo"
+        },
+        "building/hut": {
+            "name": "Hut"
+        },
+        "shop/candles": {
+            "name": "Candle Shop"
+        },
+        "natural/saddle": {
+            "name": "Saddle"
+        },
+        "building/transportation": {
+            "name": "Transportation Building"
+        },
+        "landuse/orchard": {
+            "name": "Orchard"
+        },
+        "type/restriction/no_right_turn": {
+            "name": "No Right Turn"
+        },
+        "shop/car": {
+            "name": "Car Dealership"
+        },
+        "building/stable": {
+            "name": "Stable"
+        },
+        "amenity/public_bookcase": {
+            "name": "Public Bookcase"
+        },
+        "tourism/camp_site": {
+            "name": "Camp Site"
+        },
+        "golf/hole": {
+            "name": "Golf Hole"
+        },
+        "building/semidetached_house": {
+            "name": "Semi-Detached House"
+        },
+        "railway/abandoned": {
+            "name": "Abandoned Railway"
+        },
+        "type/restriction": {
+            "name": "Restriction"
+        },
+        "playground/seesaw": {
+            "name": "Seesaw"
+        },
+        "shop/bathroom_furnishing": {
+            "name": "Bathroom Furnishing Shop"
+        },
+        "shop/beauty/tanning": {
+            "name": "Tanning Salon"
+        },
+        "amenity/water_point": {
+            "name": "RV Drinking Water"
+        },
+        "public_transport/station": {
+            "name": "Transit Station"
+        },
+        "playground/balance_beam": {
+            "name": "Play Balance Beam"
+        },
+        "leisure/hackerspace": {
+            "name": "Hackerspace"
+        },
+        "amenity/food_court": {
+            "name": "Food Court"
+        },
+        "natural/beach": {
+            "name": "Beach"
+        },
+        "junction": {
+            "name": "Junction"
+        },
+        "office/coworking": {
+            "name": "Coworking Space"
+        },
+        "vertex": {
+            "name": "Other"
+        },
+        "type/boundary": {
+            "name": "Boundary"
+        },
+        "aeroway/taxiway": {
+            "name": "Taxiway"
+        },
+        "craft/optician": {
+            "name": "Optician"
+        },
+        "waterway/waterfall": {
+            "name": "Waterfall"
+        },
+        "office/guide": {
+            "name": "Tour Guide Office"
+        },
+        "type/route": {
+            "name": "Route"
+        },
+        "amenity/vending_machine/public_transport_tickets": {
+            "name": "Transit Ticket Vending Machine"
+        },
+        "man_made/embankment": {
+            "name": "Embankment"
+        },
+        "shop/tobacco": {
+            "name": "Tobacco Shop"
+        },
+        "building/shed": {
+            "name": "Shed"
+        },
+        "building/detached": {
+            "name": "Detached House"
+        },
+        "shop/charity": {
+            "name": "Charity Shop"
+        },
+        "healthcare/occupational_therapist": {
+            "name": "Occupational Therapist"
+        },
+        "shop/musical_instrument": {
+            "name": "Musical Instrument Shop"
+        },
+        "man_made/wastewater_plant": {
+            "name": "Wastewater Plant"
+        },
+        "landuse/plant_nursery": {
+            "name": "Plant Nursery"
+        },
+        "shop/money_lender": {
+            "name": "Money Lender"
+        },
+        "shop/radiotechnics": {
+            "name": "Radio/Electronic Component Shop"
+        },
+        "building/college": {
+            "name": "College Building"
+        },
+        "amenity/nursing_home": {
+            "name": "Nursing Home"
+        },
+        "shop/ticket": {
+            "name": "Ticket Seller"
+        },
+        "amenity/social_facility/group_home": {
+            "name": "Elderly Group Home"
+        },
+        "natural/water/reservoir": {
+            "name": "Reservoir"
+        },
+        "craft/saddler": {
+            "name": "Saddler"
+        },
+        "landuse/quarry": {
+            "name": "Quarry"
+        },
+        "barrier/border_control": {
+            "name": "Border Control"
+        },
+        "landuse/basin": {
+            "name": "Basin"
+        },
+        "leisure/track": {
+            "name": "Racetrack (Non-Motorsport)"
+        },
+        "aerialway/mixed_lift": {
+            "name": "Mixed Lift"
+        },
+        "shop/paint": {
+            "name": "Paint Shop"
+        },
+        "historic/ruins": {
+            "name": "Ruins"
+        },
+        "highway/secondary": {
+            "name": "Secondary Road"
+        },
+        "natural/fell": {
+            "name": "Fell"
+        },
+        "natural/heath": {
+            "name": "Heath"
+        },
+        "landuse/greenfield": {
+            "name": "Greenfield"
+        },
+        "office/accountant": {
+            "name": "Accountant Office"
+        },
+        "shop/leather": {
+            "name": "Leather Shop"
+        },
+        "building/commercial": {
+            "name": "Commercial Building"
+        },
+        "amenity/bicycle_parking": {
+            "name": "Bicycle Parking"
+        },
+        "amenity/compressed_air": {
+            "name": "Compressed Air"
+        },
+        "man_made/water_well": {
+            "name": "Water Well"
+        },
+        "shop/organic": {
+            "name": "Organic Goods Store"
+        },
+        "waterway/ditch": {
+            "name": "Ditch"
+        },
+        "leisure/fitness_station/stairs": {
+            "name": "Exercise Stairs"
+        },
+        "landuse/railway": {
+            "name": "Railway Corridor"
+        },
+        "amenity/cinema": {
+            "name": "Cinema"
+        },
+        "type/route/bus": {
+            "name": "Bus Route"
+        },
+        "type/route_master": {
+            "name": "Route Master"
+        },
+        "landuse/farm": {
+            "name": "Farmland"
+        },
+        "public_transport/platform_subway": {
+            "name": "Subway Stop / Platform"
+        },
+        "natural/wood": {
+            "name": "Wood"
+        },
+        "leisure/pitch/rugby_union": {
+            "name": "Rugby Union Pitch"
+        },
+        "craft/distillery": {
+            "name": "Distillery"
+        },
+        "aeroway/apron": {
+            "name": "Apron"
+        },
+        "shop/tattoo": {
+            "name": "Tattoo Parlor"
+        },
+        "shop/health_food": {
+            "name": "Health Food Shop"
+        },
+        "playground/roundabout": {
+            "name": "Play Roundabout"
+        },
+        "shop/optician": {
+            "name": "Optician"
+        },
+        "public_transport/platform_light_rail": {
+            "name": "Light Rail Stop / Platform"
+        },
+        "type/route/foot": {
+            "name": "Foot Route"
+        },
+        "barrier/block": {
+            "name": "Block"
+        },
+        "relation": {
+            "name": "Relation"
+        },
+        "shop/medical_supply": {
+            "name": "Medical Supply Shop"
+        },
+        "type/restriction/only_straight_on": {
+            "name": "Only Straight On"
+        },
+        "landuse/industrial/scrap_yard": {
+            "name": "Scrap Yard"
+        },
+        "camp_site/camp_pitch": {
+            "name": "Camp Pitch"
+        },
+        "shop/gas": {
+            "name": "Bottled Gas Shop"
+        },
+        "landuse/commercial": {
+            "name": "Commercial Area"
+        },
+        "natural/ridge": {
+            "name": "Ridge"
+        },
+        "natural": {
+            "name": "Natural"
+        },
+        "aerialway/magic_carpet": {
+            "name": "Magic Carpet Lift"
+        },
+        "amenity/post_box": {
+            "name": "Post Box",
+            "terms": "Mailbox"
+        },
+        "public_transport/station_tram": {
+            "name": "Tram Station"
+        },
+        "emergency/official": {
+            "name": "Emergency Access Official"
+        },
+        "playground/sandpit": {
+            "name": "Sandpit"
+        },
+        "railway/derail": {
+            "name": "Railway Derailer"
+        },
+        "leisure/bowling_alley": {
+            "name": "Bowling Alley"
+        },
+        "man_made/mast": {
+            "name": "Mast"
+        },
+        "attraction/river_rafting": {
+            "name": "River Rafting"
+        },
+        "leisure/bird_hide": {
+            "name": "Bird Hide"
+        },
+        "amenity/vending_machine/cigarettes": {
+            "name": "Cigarette Vending Machine"
+        },
+        "craft/tiler": {
+            "name": "Tiler"
+        },
+        "shop/frame": {
+            "name": "Framing Shop"
+        },
+        "barrier/kerb": {
+            "name": "Kerb"
+        },
+        "leisure/nature_reserve": {
+            "name": "Nature Reserve"
+        },
+        "shop/antiques": {
+            "name": "Antiques Shop"
+        },
+        "playground/basket_spinner": {
+            "name": "Basket Spinner"
+        },
+        "shop/fabric": {
+            "name": "Fabric Shop"
+        },
+        "craft/brewery": {
+            "name": "Brewery"
+        },
+        "highway/turning_circle": {
+            "name": "Turning Circle"
+        },
+        "shop/coffee": {
+            "name": "Coffee Shop (Retail)"
+        },
+        "shop/e-cigarette": {
+            "name": "E-Cigarette Shop"
+        },
+        "tourism/wilderness_hut": {
+            "name": "Wilderness Hut"
+        },
+        "amenity/dive_centre": {
+            "name": "Dive Centre"
+        },
+        "amenity/vending_machine/feminine_hygiene": {
+            "name": "Feminine Hygiene Vending Machine"
+        },
+        "shop/clothes": {
+            "name": "Clothing Shop"
+        },
+        "aeroway/aerodrome": {
+            "name": "Airport"
+        },
+        "amenity/bicycle_rental": {
+            "name": "Bicycle Rental"
+        },
+        "shop/gift": {
+            "name": "Gift Shop"
+        },
+        "craft/locksmith": {
+            "name": "Locksmith"
+        },
+        "leisure/sports_centre": {
+            "name": "Sports Centre / Complex"
+        },
+        "place": {
+            "name": "Place"
+        },
+        "power": {
+            "name": "Power"
+        },
+        "public_transport/platform_train": {
+            "name": "Train Stop / Platform"
+        },
+        "leisure/fitness_station/push-up": {
+            "name": "Push-Up Station"
+        },
+        "aerialway/station": {
+            "name": "Aerialway Station"
+        },
+        "building/house": {
+            "name": "House"
+        },
+        "leisure/marina": {
+            "name": "Marina"
+        },
+        "craft/tailor": {
+            "name": "Tailor"
+        },
+        "barrier/gate": {
+            "name": "Gate"
+        },
+        "shop/motorcycle": {
+            "name": "Motorcycle Dealership"
+        },
+        "waterway/river": {
+            "name": "River"
+        },
+        "office/architect": {
+            "name": "Architect Office"
+        },
+        "railway/subway": {
+            "name": "Subway"
+        },
+        "highway/elevator": {
+            "name": "Lift"
+        },
+        "railway/miniature": {
+            "name": "Miniature Railway"
+        },
+        "shop/carpet": {
+            "name": "Carpet Shop"
+        },
+        "craft": {
+            "name": "Craft"
+        },
+        "traffic_calming/chicane": {
+            "name": "Traffic Chicane"
+        },
+        "public_transport/station_bus": {
+            "name": "Bus Station / Terminal"
+        },
+        "shop/butcher": {
+            "name": "Butcher"
+        },
+        "barrier/bollard": {
+            "name": "Bollard"
+        },
+        "leisure/golf_course": {
+            "name": "Golf Course"
+        },
+        "barrier": {
+            "name": "Barrier"
+        },
+        "historic/castle": {
+            "name": "Castle"
+        },
+        "office/surveyor": {
+            "name": "Surveyor Office"
+        },
+        "shop/car_repair": {
+            "name": "Car Repair Shop"
+        },
+        "craft/hvac": {
+            "name": "HVAC"
+        },
+        "highway/path": {
+            "name": "Path"
+        },
+        "leisure/water_park": {
+            "name": "Water Park"
+        },
+        "attraction/train": {
+            "name": "Tourist Train"
+        },
+        "landuse/meadow": {
+            "name": "Meadow"
+        },
+        "shop/convenience": {
+            "name": "Convenience Store"
+        },
+        "amenity/bus_station": {
+            "name": "Bus Station / Terminal"
+        },
+        "shop/books": {
+            "name": "Book Shop"
+        },
+        "highway/service": {
+            "name": "Service Road"
+        },
+        "waterway/drain": {
+            "name": "Drain"
+        },
+        "highway/residential": {
+            "name": "Residential Road"
+        },
+        "historic/wayside_shrine": {
+            "name": "Wayside Shrine"
+        },
+        "type/boundary/administrative": {
+            "name": "Administrative Boundary"
+        },
+        "landuse/military/office": {
+            "name": "Military Office"
+        },
+        "amenity/watering_place": {
+            "name": "Animal Watering Place"
+        },
+        "public_transport/station_train_halt": {
+            "name": "Train Station (Halt / Request)"
+        },
+        "emergency/ambulance_station": {
+            "name": "Ambulance Station"
+        },
+        "healthcare/podiatrist": {
+            "name": "Podiatrist"
+        },
+        "amenity/motorcycle_parking": {
+            "name": "Motorcycle Parking"
+        },
+        "shop/craft": {
+            "name": "Art and Craft Supplies Shop"
+        },
+        "line": {
+            "name": "Line"
+        },
+        "amenity/kindergarten": {
+            "name": "Preschool/Kindergarten Grounds"
+        },
+        "waterway/weir": {
+            "name": "Weir"
+        },
+        "craft/metal_construction": {
+            "name": "Metal Construction"
+        },
+        "craft/painter": {
+            "name": "Painter"
+        },
+        "public_transport/stop_area": {
+            "name": "Transit Stop Area"
+        },
+        "craft/carpet_layer": {
+            "name": "Carpet Layer"
+        },
+        "man_made/flagpole": {
+            "name": "Flagpole"
+        },
+        "tourism/attraction": {
+            "name": "Tourist Attraction"
+        },
+        "man_made": {
+            "name": "Man Made"
+        },
+        "barrier/kerb/lowered": {
+            "name": "Lowered Kerb"
+        },
+        "golf/fairway": {
+            "name": "Fairway"
+        },
+        "leisure/fitness_station/sit-up": {
+            "name": "Sit-Up Station"
+        },
+        "public_transport/station_subway": {
+            "name": "Subway Station"
+        },
+        "tourism/alpine_hut": {
+            "name": "Alpine Hut"
+        },
+        "tourism/information/office": {
+            "name": "Tourist Information Office"
+        },
+        "shop/alcohol": {
+            "name": "Off licence (Alcohol shop)"
+        },
+        "tourism/viewpoint": {
+            "name": "Viewpoint"
+        },
+        "craft/handicraft": {
+            "name": "Handicraft"
+        },
+        "landuse/construction": {
+            "name": "Construction"
+        },
+        "shop/trade": {
+            "name": "Trade Shop"
+        },
+        "shop/motorcycle_repair": {
+            "name": "Motorcycle Repair Shop"
+        },
+        "aeroway": {
+            "name": "Aeroway"
+        },
+        "aeroway/terminal": {
+            "name": "Airport Terminal"
+        },
+        "emergency/life_ring": {
+            "name": "Life Ring"
+        }
+    }
+}

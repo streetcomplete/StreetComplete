@@ -1,0 +1,4219 @@
+{
+    "presets": {
+        "shop/caravan": {
+            "name": "拖車經銷商",
+            "terms": "拖車經銷商"
+        },
+        "office/administrative": {
+            "name": "行政辦公室"
+        },
+        "amenity/car_rental": {
+            "name": "汽車租車店",
+            "terms": "汽車出租店,租車店,汽車租車店"
+        },
+        "place/city": {
+            "name": "城市",
+            "terms": "都市"
+        },
+        "building": {
+            "name": "建築物",
+            "terms": "建物"
+        },
+        "amenity/restaurant/indian": {
+            "name": "印度餐廳",
+            "terms": "印度餐廳"
+        },
+        "craft/dressmaker": {
+            "name": "製衣店",
+            "terms": "製衣匠,訂做衣服"
+        },
+        "barrier/lift_gate": {
+            "name": "道閘",
+            "terms": "閘門"
+        },
+        "railway/halt": {
+            "name": "火車站 (小站/招呼)"
+        },
+        "shop/agrarian": {
+            "name": "農業資材行",
+            "terms": "農業資材行"
+        },
+        "landuse/garages": {
+            "name": "車庫用地",
+            "terms": "車庫用地,車庫"
+        },
+        "internet_access/wlan": {
+            "name": "Wi-Fi 熱點",
+            "terms": "Wi-Fi 熱點"
+        },
+        "amenity/shelter/lean_to": {
+            "name": "單坡頂棚子",
+            "terms": "單坡頂棚子,棚子"
+        },
+        "building/farm": {
+            "name": "農舍",
+            "terms": "農舍"
+        },
+        "shop/hunting": {
+            "name": "打獵用品店",
+            "terms": "打獵用品店"
+        },
+        "amenity/waste_disposal": {
+            "name": "垃圾場",
+            "terms": "垃圾集中處,垃圾放置點"
+        },
+        "type/restriction/only_right_turn": {
+            "name": "只能右轉",
+            "terms": "只能右轉"
+        },
+        "attraction/carousel": {
+            "name": "旋轉木馬",
+            "terms": "旋轉木馬"
+        },
+        "craft/sawmill": {
+            "name": "鋸木廠",
+            "terms": "鋸木廠"
+        },
+        "emergency/yes": {
+            "name": "開放緊急通行"
+        },
+        "circular": {
+            "name": "圓環"
+        },
+        "healthcare/audiologist": {
+            "name": "聽覺矯正",
+            "terms": "聽覺矯正"
+        },
+        "highway/motorway": {
+            "name": "高速公路",
+            "terms": "高速公路"
+        },
+        "natural/bay": {
+            "name": "海灣",
+            "terms": "海灣"
+        },
+        "amenity/fast_food/mexican": {
+            "name": "墨西哥速食餐",
+            "terms": "墨西哥快餐"
+        },
+        "building/bungalow": {
+            "name": "平房",
+            "terms": "平房"
+        },
+        "building/terrace": {
+            "name": "排屋",
+            "terms": "行列式房屋,連棟式住宅"
+        },
+        "aeroway/runway": {
+            "name": "機場跑道",
+            "terms": "跑道"
+        },
+        "amenity/studio": {
+            "name": "工作室",
+            "terms": "工作室,Studio"
+        },
+        "landuse/military": {
+            "name": "軍事用地",
+            "terms": "營區,軍營,部隊用地,軍事區,軍用地"
+        },
+        "shop/seafood": {
+            "name": "海產店",
+            "terms": "海產店"
+        },
+        "railway/milestone": {
+            "name": "鐵路里程碑",
+            "terms": "鐵路里程碑"
+        },
+        "waterway/sanitary_dump_station": {
+            "name": "污水處理放流管",
+            "terms": "放流口,放流管,污水海洋放流口,污水海洋放流管"
+        },
+        "barrier/city_wall": {
+            "name": "城牆",
+            "terms": "城牆,City Wall"
+        },
+        "office/employment_agency": {
+            "name": "就業服務站",
+            "terms": "職業介紹所"
+        },
+        "craft/sculptor": {
+            "name": "雕塑家"
+        },
+        "office/government/register_office": {
+            "name": "戶政事務所",
+            "terms": "戶政事務所,戶政機關"
+        },
+        "amenity/waste_transfer_station": {
+            "name": "垃圾清運站",
+            "terms": "垃圾轉運站"
+        },
+        "boundary/administrative": {
+            "name": "行政界線",
+            "terms": "行政邊界"
+        },
+        "man_made/surveillance": {
+            "name": "監視器",
+            "terms": "監視錄影器"
+        },
+        "building/ruins": {
+            "name": "建築廢墟",
+            "terms": "建築廢墟"
+        },
+        "leisure/pitch/american_football": {
+            "name": "美式足球場",
+            "terms": "美式足球場"
+        },
+        "leisure/fitness_station/horizontal_ladder": {
+            "name": "橫爬架",
+            "terms": "橫爬架"
+        },
+        "traffic_calming/bump": {
+            "name": "減速丘",
+            "terms": "減速帶,減速器"
+        },
+        "craft/carpenter": {
+            "name": "木匠",
+            "terms": "木匠"
+        },
+        "railway/level_crossing": {
+            "name": "鐵路平交道（道路）",
+            "terms": "鐵路平交道,平交道"
+        },
+        "amenity/restaurant/greek": {
+            "name": "希臘餐廳",
+            "terms": "希臘餐廳"
+        },
+        "attraction/amusement_ride": {
+            "name": "遊樂園",
+            "terms": "遊樂場"
+        },
+        "place/suburb": {
+            "name": "郊區",
+            "terms": "郊區"
+        },
+        "man_made/pier": {
+            "name": "碼頭",
+            "terms": "碼頭"
+        },
+        "shop/farm": {
+            "name": "產地直銷店",
+            "terms": "農場直賣店,農場直銷店,特產店"
+        },
+        "waterway/stream_intermittent": {
+            "name": "週期性水流",
+            "terms": "週期性水流"
+        },
+        "highway/road": {
+            "name": "未知種類的道路",
+            "terms": "未知種類的道路"
+        },
+        "address": {
+            "name": "地址",
+            "terms": "地址,位置,位址"
+        },
+        "highway/primary_link": {
+            "name": "主要道路連接路",
+            "terms": "主要道路連接路"
+        },
+        "shop/greengrocer": {
+            "name": "蔬果店",
+            "terms": "蔬果店"
+        },
+        "highway/traffic_mirror": {
+            "name": "道路反射鏡",
+            "terms": "反射鏡,交通反射鏡"
+        },
+        "railway/station": {
+            "name": "火車站"
+        },
+        "aerialway/rope_tow": {
+            "name": "牽繩",
+            "terms": "牽繩"
+        },
+        "office/therapist": {
+            "name": "治療師辦公室",
+            "terms": "治療師辦公室"
+        },
+        "office/company": {
+            "name": "公司辦公室",
+            "terms": "辦公室,企業辦事處,企業辦公室"
+        },
+        "shop/dairy": {
+            "name": "奶製品店",
+            "terms": "奶製品店,乳品店"
+        },
+        "type/route/road": {
+            "name": "道路路線",
+            "terms": "公路路線"
+        },
+        "amenity/planetarium": {
+            "name": "天文臺",
+            "terms": "天文臺,天文台,觀象台"
+        },
+        "office/financial": {
+            "name": "金融機構辦公室",
+            "terms": "金融機構,金融單位"
+        },
+        "highway/track": {
+            "name": "產業道路",
+            "terms": "產業道路"
+        },
+        "attraction/dark_ride": {
+            "name": "黑暗探險",
+            "terms": "黑暗探險"
+        },
+        "shop/wine": {
+            "name": "販酒店",
+            "terms": "酒店"
+        },
+        "shop/hairdresser": {
+            "name": "理髮店",
+            "terms": "理髮店,髮廏,男士理髮"
+        },
+        "building/school": {
+            "name": "中小學建築物",
+            "terms": "學校建物,學校建築,小學建築,中學建築,高中建築,國中建築,國小建築,School Building,校舍"
+        },
+        "tourism/information/board": {
+            "name": "資訊告示牌",
+            "terms": "資訊告示牌,告示牌,看版"
+        },
+        "amenity/restaurant/french": {
+            "name": "法國餐廳",
+            "terms": "法式餐廳"
+        },
+        "amenity/ferry_terminal": {
+            "name": "水運碼頭"
+        },
+        "shop/furnace": {
+            "name": "火爐店"
+        },
+        "landuse/industrial": {
+            "name": "工業用地",
+            "terms": "工業區"
+        },
+        "type/route/hiking": {
+            "name": "遠足路線",
+            "terms": "遠足路線"
+        },
+        "amenity/place_of_worship/christian": {
+            "name": "教會",
+            "terms": "教會,基督教教會"
+        },
+        "tourism/hostel": {
+            "name": "旅舍",
+            "terms": "青年旅社"
+        },
+        "leisure/pitch/volleyball": {
+            "name": "排球場",
+            "terms": "排球場,球場"
+        },
+        "amenity/veterinary": {
+            "name": "獸醫院",
+            "terms": "獸醫診所, 動物醫院"
+        },
+        "leisure/amusement_arcade": {
+            "name": "遊樂場",
+            "terms": "遊樂場"
+        },
+        "craft/pottery": {
+            "name": "陶器工場",
+            "terms": "陶器工場"
+        },
+        "craft/roofer": {
+            "name": "屋頂工程",
+            "terms": "屋頂工"
+        },
+        "amenity/photo_booth": {
+            "name": "照相站",
+            "terms": "照相站"
+        },
+        "amenity/restaurant/mexican": {
+            "name": "墨西哥餐廳",
+            "terms": "墨西哥餐廳"
+        },
+        "shop/massage": {
+            "name": "按摩店",
+            "terms": "按摩商店, 舒壓中心"
+        },
+        "area": {
+            "name": "區域",
+            "terms": "區域"
+        },
+        "landuse/landfill": {
+            "name": "埯埋場",
+            "terms": "堆填區"
+        },
+        "allotments/plot": {
+            "name": "社區園圃",
+            "terms": "社區園圃,社區農圃,社區花園"
+        },
+        "tourism/aquarium": {
+            "name": "水族館（展覽館）",
+            "terms": "水族館,海洋世界,海洋公園"
+        },
+        "type/site": {
+            "name": "地點",
+            "terms": "場地"
+        },
+        "type/route/subway": {
+            "name": "地下鐵路線",
+            "terms": "地下鐵路線,捷運路線"
+        },
+        "amenity/fast_food/burger": {
+            "name": "漢堡速食店",
+            "terms": "漢堡店,速食店"
+        },
+        "amenity/vending_machine/fuel": {
+            "name": "自助加油機",
+            "terms": "自助加油機"
+        },
+        "amenity/fountain": {
+            "name": "噴水池",
+            "terms": "噴水泉"
+        },
+        "shop/doityourself": {
+            "name": "DIY商店",
+            "terms": "DIY商店"
+        },
+        "amenity/taxi": {
+            "name": "計程車招呼站",
+            "terms": "計程車站,招呼站"
+        },
+        "amenity/vending_machine/excrement_bags": {
+            "name": "大便丟棄袋",
+            "terms": "排泄物丟棄袋"
+        },
+        "amenity/smoking_area": {
+            "name": "吸煙區",
+            "terms": "吸煙區,吸菸區"
+        },
+        "man_made/water_tower": {
+            "name": "水塔",
+            "terms": "水塔"
+        },
+        "railway/train_wash": {
+            "name": "火車清洗處",
+            "terms": "火車清洗處"
+        },
+        "shop/dry_cleaning": {
+            "name": "乾洗店",
+            "terms": "乾洗商店"
+        },
+        "tourism/caravan_site": {
+            "name": "露營車停車場",
+            "terms": "房車營地"
+        },
+        "craft/clockmaker": {
+            "name": "製鐘匠",
+            "terms": "製鐘店"
+        },
+        "leisure/pitch/softball": {
+            "name": "壘球場",
+            "terms": "壘球場"
+        },
+        "shop/furniture": {
+            "name": "傢具店",
+            "terms": "家具店"
+        },
+        "public_transport/platform_ferry": {
+            "name": "船運停船處 / 船運月台",
+            "terms": "船運停船處,船運月台,"
+        },
+        "advertising/billboard": {
+            "name": "廣告牌",
+            "terms": "廣告看板"
+        },
+        "shop/bakery": {
+            "name": "麵包店",
+            "terms": "烘培坊"
+        },
+        "emergency/phone": {
+            "name": "緊急電話",
+            "terms": "緊急電話"
+        },
+        "golf/bunker": {
+            "name": "沙坑",
+            "terms": "沙坑"
+        },
+        "shop/houseware": {
+            "name": "家庭用品店",
+            "terms": "家居用品店"
+        },
+        "leisure/pitch/soccer": {
+            "name": "足球場",
+            "terms": "足球場,球場"
+        },
+        "natural/water/river": {
+            "name": "河流",
+            "terms": "河流,河川"
+        },
+        "type/multipolygon": {
+            "name": "多重多邊形"
+        },
+        "shop/vacant": {
+            "name": "閒置商店"
+        },
+        "amenity/social_facility/homeless_shelter": {
+            "name": "遊民收容所",
+            "terms": "露宿者中心,街友中心,遊民收容中心,遊民收容機構,街友收容機構"
+        },
+        "highway/turning_loop": {
+            "name": "迴轉圓環",
+            "terms": "迴轉圓環,迴轉道"
+        },
+        "leisure/miniature_golf": {
+            "name": "迷你高爾夫",
+            "terms": "迷你高爾夫,高爾夫"
+        },
+        "amenity/vending_machine/ice_cream": {
+            "name": "冰淇淋販賣機",
+            "terms": "冰淇淋販賣機,冰淇淋自動販賣機"
+        },
+        "amenity/hospital": {
+            "name": "醫院",
+            "terms": "醫院"
+        },
+        "public_transport/stop_position_monorail": {
+            "name": "單軌電車停車位置",
+            "terms": "單軌電車停車點"
+        },
+        "amenity/telephone": {
+            "name": "公用電話",
+            "terms": "話亭,電話亭,電話"
+        },
+        "building/dormitory": {
+            "name": "宿舍",
+            "terms": "學舍,學生宿舍,學寮"
+        },
+        "craft/blacksmith": {
+            "name": "鐵匠",
+            "terms": "打鐵匠"
+        },
+        "landuse/residential": {
+            "name": "住宅用地",
+            "terms": "住宅區"
+        },
+        "leisure/stadium": {
+            "name": "體育場",
+            "terms": "體育場"
+        },
+        "highway/speed_camera": {
+            "name": "測速照相機",
+            "terms": "測速攝影機,測速照相機,測速照相,測速攝影"
+        },
+        "public_transport/station_monorail": {
+            "name": "單軌站",
+            "terms": "單軌車站"
+        },
+        "amenity/drinking_water": {
+            "name": "飲水機",
+            "terms": "飲水,水源,活水,飲處,取水處"
+        },
+        "amenity/pharmacy": {
+            "name": "藥房櫃臺",
+            "terms": "藥房櫃臺"
+        },
+        "barrier/kissing_gate": {
+            "name": "單人轉門",
+            "terms": "U形旋轉小門,V形旋轉小門"
+        },
+        "landuse/recreation_ground": {
+            "name": "遊憩區",
+            "terms": "休憩區,遊樂場,遊樂園"
+        },
+        "office/newspaper": {
+            "name": "報社辦公室",
+            "terms": "媒體,報社,電視台,網路媒體"
+        },
+        "type/restriction/no_u_turn": {
+            "name": "不准掉頭",
+            "terms": "禁止迴轉"
+        },
+        "amenity/townhall": {
+            "name": "鄉鎮市區公所",
+            "terms": "鄉公所、鎮公所、市公所、區公所、市政廳"
+        },
+        "public_transport/stop_position_bus": {
+            "name": "公車停靠位置",
+            "terms": "巴士停靠位置"
+        },
+        "traffic_sign/city_limit_vertex": {
+            "name": "城市限制標誌",
+            "terms": "城市限制標誌"
+        },
+        "shop/hairdresser_supply": {
+            "name": "剪髮器材店",
+            "terms": "剪髮器材商店"
+        },
+        "natural/water": {
+            "name": "水",
+            "terms": "水體"
+        },
+        "barrier/cycle_barrier": {
+            "name": "自行車柵欄",
+            "terms": "自行車柵欄"
+        },
+        "embankment": {
+            "name": "路堤"
+        },
+        "shop/sports": {
+            "name": "運動用品店",
+            "terms": "運動用品店"
+        },
+        "amenity/biergarten": {
+            "name": "啤酒花園 ",
+            "terms": "啤酒花園,屋外花園酒店"
+        },
+        "amenity/vending_machine/elongated_coin": {
+            "name": "扁平紀念幣販賣機",
+            "terms": "扁平紀念幣販賣機,扁平紀念幣自動販賣機"
+        },
+        "type/waterway": {
+            "name": "水路",
+            "terms": "水路"
+        },
+        "emergency/destination": {
+            "name": "緊急通道目的地"
+        },
+        "craft/winery": {
+            "name": "釀酒廠",
+            "terms": "釀酒廠"
+        },
+        "public_transport/stop_position_train": {
+            "name": "火車停車位置",
+            "terms": "火車停車點"
+        },
+        "shop/laundry": {
+            "name": "洗衣店",
+            "terms": "洗衣店"
+        },
+        "golf/driving_range": {
+            "name": "高爾夫球練習場",
+            "terms": "高爾夫球練習場,練習場"
+        },
+        "amenity/grit_bin": {
+            "name": "沙盒",
+            "terms": "儲存用來加速路面融雪的沙、鹽混合物容器"
+        },
+        "amenity/bank": {
+            "name": "銀行",
+            "terms": "銀行,信用合作社"
+        },
+        "amenity/prison": {
+            "name": "監獄範圍",
+            "terms": "監獄,監獄範圍,看守所"
+        },
+        "leisure/fishing": {
+            "name": "釣魚點",
+            "terms": "釣魚熱點,釣魚處"
+        },
+        "building/boathouse": {
+            "name": "船屋",
+            "terms": "船屋,船庫,艇庫"
+        },
+        "amenity/police": {
+            "name": "警察局",
+            "terms": "警局,派出所"
+        },
+        "place/farm": {
+            "name": "農場"
+        },
+        "highway/service/driveway": {
+            "name": "車道",
+            "terms": "車線"
+        },
+        "leisure/pitch/basketball": {
+            "name": "籃球場",
+            "terms": "籃球場,球場"
+        },
+        "seamark/buoy_lateral": {
+            "name": "航道浮標"
+        },
+        "shop/newsagent": {
+            "name": "報紙/雜誌攤",
+            "terms": "報刊攤,報刊商店"
+        },
+        "building/residential": {
+            "name": "住宅建築物",
+            "terms": "住宅建築物"
+        },
+        "landuse/greenhouse_horticulture": {
+            "name": "溫室園藝",
+            "terms": "溫室農業"
+        },
+        "healthcare": {
+            "name": "醫療設施",
+            "terms": "醫療設施"
+        },
+        "amenity/community_centre": {
+            "name": "社區中心",
+            "terms": "社區發展協會,里活動中心,村活動中心,市民活動中心"
+        },
+        "shop/tyres": {
+            "name": "輪胎店",
+            "terms": "輪胎店"
+        },
+        "aeroway/gate": {
+            "name": "登機閘門",
+            "terms": "機場閘口,機場閘門,登機門,登機口"
+        },
+        "seamark/beacon_lateral": {
+            "name": "航道標誌"
+        },
+        "man_made/mast/communication/mobile_phone": {
+            "name": "行動電話天線",
+            "terms": "基地台,手機基地台"
+        },
+        "manhole/drain": {
+            "name": "排水系統",
+            "terms": "排水系統,排水道"
+        },
+        "traffic_calming/island": {
+            "name": "分隔島",
+            "terms": "分隔島"
+        },
+        "playground/cushion": {
+            "name": "彈力靠墊",
+            "terms": "彈力靠墊"
+        },
+        "highway/footway/conveying": {
+            "name": "移動人行道",
+            "terms": "移動人行道"
+        },
+        "aerialway/gondola": {
+            "name": "空中纜車",
+            "terms": "吊車"
+        },
+        "shop/window_blind": {
+            "name": "窗廉店",
+            "terms": "窗廉商店"
+        },
+        "advertising/column": {
+            "name": "廣告看板",
+            "terms": "廣告看板,廣告欄"
+        },
+        "amenity/restaurant/italian": {
+            "name": "義大利餐廳",
+            "terms": "義式餐廳"
+        },
+        "building/temple": {
+            "name": "寺廟建築物",
+            "terms": "寺廟建築,寺廟大樓"
+        },
+        "landuse/military/barracks": {
+            "name": "軍事建築",
+            "terms": "營房,軍營,營舍"
+        },
+        "amenity/casino": {
+            "name": "賭場",
+            "terms": "賭城"
+        },
+        "amenity/coworking_space": {
+            "name": "共同工作空間"
+        },
+        "tourism/museum": {
+            "name": "博物館",
+            "terms": "博物館"
+        },
+        "railway/buffer_stop": {
+            "name": "緩衝站",
+            "terms": "緩衝站"
+        },
+        "aerialway/pylon": {
+            "name": "纜車塔柱",
+            "terms": "吊道塔,纜車塔"
+        },
+        "craft/chimney_sweeper": {
+            "name": "煙囪清掃工 ",
+            "terms": "掃煙囪"
+        },
+        "railway/narrow_gauge": {
+            "name": "窄軌鐵路",
+            "terms": "窄軌鐵路"
+        },
+        "shop/curtain": {
+            "name": "窗廉店",
+            "terms": "窗廉商店"
+        },
+        "amenity/recycling_container": {
+            "name": "回收筒",
+            "terms": "回收箱"
+        },
+        "healthcare/hospice": {
+            "name": "安養院",
+            "terms": "安養院"
+        },
+        "leisure/pitch/tennis": {
+            "name": "網球場",
+            "terms": "網球場,球場"
+        },
+        "amenity/clinic/abortion": {
+            "name": "墮胎診所",
+            "terms": "墮胎診所"
+        },
+        "craft/watchmaker": {
+            "name": "鐘錶匠",
+            "terms": "鐘錶匠"
+        },
+        "highway/footway/marked": {
+            "name": "有標記人行穿越道",
+            "terms": "有斑馬線穿越道"
+        },
+        "leisure/fitness_centre": {
+            "name": "健身房／健身中心",
+            "terms": "健身房,健身中心,Gym"
+        },
+        "highway/corridor": {
+            "name": "室內走廊",
+            "terms": "室內通道"
+        },
+        "traffic_sign/maxspeed_vertex": {
+            "name": "速限指標",
+            "terms": "速限"
+        },
+        "attraction/animal": {
+            "name": "動物",
+            "terms": "動物圍欄"
+        },
+        "amenity/restaurant/asian": {
+            "name": "亞洲餐廳",
+            "terms": "亞洲餐廳"
+        },
+        "craft/bookbinder": {
+            "name": "書籍釘裝",
+            "terms": "書籍釘裝"
+        },
+        "man_made/groyne": {
+            "name": "堤防",
+            "terms": "河堤,海堤"
+        },
+        "shop/country_store": {
+            "name": "鄉村商店",
+            "terms": "鄉村商店"
+        },
+        "shop/pawnbroker": {
+            "name": "汽機車借款",
+            "terms": "地下錢莊"
+        },
+        "shop/beverages": {
+            "name": "飲品店",
+            "terms": "飲料店,手搖杯"
+        },
+        "public_transport/platform_bus": {
+            "name": "公車站牌 / 公車月台",
+            "terms": "公車站牌,公車月台,巴士站牌,巴士月台"
+        },
+        "entrance": {
+            "name": "入口/出口",
+            "terms": "入口/出口"
+        },
+        "emergency/fire_alarm": {
+            "name": "火災警鈴",
+            "terms": "火警警報點"
+        },
+        "amenity/place_of_worship/jewish": {
+            "name": "猶太教堂",
+            "terms": "猶太會堂"
+        },
+        "highway/construction": {
+            "name": "閉路",
+            "terms": "閉路"
+        },
+        "power/tower": {
+            "name": "高壓電塔",
+            "terms": "高壓輸電塔"
+        },
+        "aerialway/cable_car": {
+            "name": "纜車",
+            "terms": "街車"
+        },
+        "landuse/military/airfield": {
+            "name": "軍用機場",
+            "terms": "軍用機場,軍機場"
+        },
+        "craft/boatbuilder": {
+            "name": "造船匠",
+            "terms": "造船廠"
+        },
+        "craft/shoemaker": {
+            "name": "鞋匠",
+            "terms": "鞋匠"
+        },
+        "shop/interior_decoration": {
+            "name": "室內設計店",
+            "terms": "室內設計店"
+        },
+        "man_made/crane": {
+            "name": "起重機",
+            "terms": "起重機"
+        },
+        "seamark/buoy_lateral/green": {
+            "name": "綠色浮標"
+        },
+        "leisure/pitch/table_tennis": {
+            "name": "乒乓球桌",
+            "terms": "乒乓球桌,桌球桌"
+        },
+        "attraction/maze": {
+            "name": "迷宮",
+            "terms": "迷宮"
+        },
+        "amenity/place_of_worship/sikh": {
+            "name": "錫克教寺廟",
+            "terms": "錫克教寺廟"
+        },
+        "amenity/social_facility/food_bank": {
+            "name": "食物銀行",
+            "terms": "食物銀行,Food Bank"
+        },
+        "boundary": {
+            "name": "邊界"
+        },
+        "shop/nutrition_supplements": {
+            "name": "營養補充品店",
+            "terms": "營養補充品店, 保健食品專賣店"
+        },
+        "craft/gardener": {
+            "name": "園藝師",
+            "terms": "園藝師"
+        },
+        "building/church": {
+            "name": "教堂建築",
+            "terms": "教堂"
+        },
+        "man_made/tower/bell_tower": {
+            "name": "鐘樓",
+            "terms": "鐘樓"
+        },
+        "shop/video_games": {
+            "name": "電子遊戲店",
+            "terms": "電子遊戲商店,電玩店"
+        },
+        "traffic_calming/dip": {
+            "name": "減速坡",
+            "terms": "減速坡,斜坡"
+        },
+        "traffic_calming/choker": {
+            "name": "交通阻塞",
+            "terms": "交通阻塞"
+        },
+        "railway/funicular": {
+            "name": "纜車",
+            "terms": "纜車"
+        },
+        "power/transformer": {
+            "name": "變壓器",
+            "terms": "變壓器"
+        },
+        "power/generator": {
+            "name": "發電機",
+            "terms": "發電機"
+        },
+        "natural/wetland": {
+            "name": "濕地",
+            "terms": "濕地,潮間帶"
+        },
+        "landuse/military/naval_base": {
+            "name": "海軍基地",
+            "terms": "軍港,海軍基地"
+        },
+        "shop/department_store": {
+            "name": "百貨公司",
+            "terms": "百貨公司"
+        },
+        "historic/wayside_cross": {
+            "name": "路邊十字架",
+            "terms": "路邊十字架"
+        },
+        "man_made/petroleum_well": {
+            "name": "油井",
+            "terms": "油井"
+        },
+        "healthcare/alternative": {
+            "name": "替代療法",
+            "terms": "替代療法"
+        },
+        "leisure/fitness_station/parallel_bars": {
+            "name": "雙槓",
+            "terms": "雙槓"
+        },
+        "highway/footway": {
+            "name": "步道",
+            "terms": "步行徑,人行步道"
+        },
+        "building/roof": {
+            "name": "屋頂",
+            "terms": "上蓋"
+        },
+        "natural/tree_row": {
+            "name": "一排樹",
+            "terms": "一排樹"
+        },
+        "craft/upholsterer": {
+            "name": "室内裝修",
+            "terms": "室内設計"
+        },
+        "natural/glacier": {
+            "name": "冰川",
+            "terms": "冰川,冰河"
+        },
+        "shop/storage_rental": {
+            "name": "儲物空間出租",
+            "terms": "儲物空間出租"
+        },
+        "shop/fashion": {
+            "name": "時尚店",
+            "terms": "時裝店,時常衣服店"
+        },
+        "natural/water/canal": {
+            "name": "運河",
+            "terms": "運河"
+        },
+        "power/substation": {
+            "name": "變電所",
+            "terms": "變電站"
+        },
+        "amenity/fast_food": {
+            "name": "速食餐廳",
+            "terms": "速食店"
+        },
+        "type/route/pipeline": {
+            "name": "管道路線",
+            "terms": "管線路線"
+        },
+        "landuse/religious": {
+            "name": "宗教用地",
+            "terms": "寺廟、教會用地"
+        },
+        "traffic_sign/city_limit": {
+            "name": "城市限制標誌",
+            "terms": "城市限制標誌"
+        },
+        "barrier/cattle_grid": {
+            "name": "防畜欄",
+            "terms": "攔畜溝柵,攔牛木柵"
+        },
+        "tourism/motel": {
+            "name": "汽車旅館",
+            "terms": "motel"
+        },
+        "building/cathedral": {
+            "name": "大教堂建築",
+            "terms": "大教堂"
+        },
+        "office/notary": {
+            "name": "公證處",
+            "terms": "公證處"
+        },
+        "natural/reef": {
+            "name": "暗礁",
+            "terms": "暗礁,礁"
+        },
+        "craft/photographic_laboratory": {
+            "name": "影像研究室",
+            "terms": "影像實驗室"
+        },
+        "man_made/tower/minaret": {
+            "name": "尖塔",
+            "terms": "尖塔"
+        },
+        "amenity/waste/dog_excrement": {
+            "name": "狗排洩物箱",
+            "terms": "寵物排洩物箱,狗糞便棄置箱"
+        },
+        "leisure/slipway": {
+            "name": "船架滑道",
+            "terms": "船架滑道"
+        },
+        "leisure/dance": {
+            "name": "舞廳",
+            "terms": "跳舞場所"
+        },
+        "traffic_calming/hump": {
+            "name": "減速標線",
+            "terms": "減速標線"
+        },
+        "man_made/clearcut": {
+            "name": "伐木林",
+            "terms": "人工林"
+        },
+        "building/chapel": {
+            "name": "小聖堂建築",
+            "terms": "小聖堂"
+        },
+        "craft/caterer": {
+            "name": "辦桌",
+            "terms": "辦桌,包辦伙食者,備辦宴會者"
+        },
+        "office/research": {
+            "name": "研究機構",
+            "terms": "研究辦公室,研究中心"
+        },
+        "office/travel_agent": {
+            "name": "旅行社"
+        },
+        "piste/downhill": {
+            "name": "下坡滑雪路線 ",
+            "terms": "下坡滑雪路線"
+        },
+        "highway/footway/unmarked-raised": {
+            "name": "無標記人行穿越道（凸起）",
+            "terms": "無斑馬線穿越道（凸起）"
+        },
+        "craft/jeweler": {
+            "name": "首飾店"
+        },
+        "landuse/industrial/slaughterhouse": {
+            "name": "屠宰場",
+            "terms": "屠宰場"
+        },
+        "office/telecommunication": {
+            "name": "電信公司辦事處",
+            "terms": "電訊公司辦事處,電信門市"
+        },
+        "shop/bag": {
+            "name": "包包/行李店",
+            "terms": "包包/行李商店"
+        },
+        "historic/tomb": {
+            "name": "墳墓",
+            "terms": "墳墓,墓,墓碑"
+        },
+        "amenity/vending_machine/electronics": {
+            "name": "電子設備販賣機",
+            "terms": "電子設備販賣機,電子設備自動販賣機"
+        },
+        "leisure/pitch/netball": {
+            "name": "籃網球場",
+            "terms": "籃網球場"
+        },
+        "waterway/water_point": {
+            "name": "海洋飲用水",
+            "terms": "海洋飲用水"
+        },
+        "shop/garden_centre": {
+            "name": "園藝中心",
+            "terms": "園藝店,園藝行"
+        },
+        "leisure/sports_centre/swimming": {
+            "name": "游泳池附屬設施",
+            "terms": "游泳池設施,游池附屬設施,游池設施"
+        },
+        "barrier/hedge": {
+            "name": "樹籬",
+            "terms": "樹籬"
+        },
+        "shop/kitchen": {
+            "name": "廚房設計行",
+            "terms": "廚房設計店,廚房用品店"
+        },
+        "building/garages": {
+            "name": "車庫",
+            "terms": "車庫"
+        },
+        "leisure/pitch/rugby_league": {
+            "name": "聯盟式橄欖球",
+            "terms": "聯盟式橄欖球"
+        },
+        "shop/beauty": {
+            "name": "美容店",
+            "terms": "理容院,美妝店,護膚中心,指甲美容"
+        },
+        "amenity/charging_station": {
+            "name": "充電站",
+            "terms": "充電站, 電池交換站, 充電處"
+        },
+        "amenity/music_school": {
+            "name": "音樂學校",
+            "terms": "音樂學院,音樂學校"
+        },
+        "man_made/antenna": {
+            "name": "天線",
+            "terms": "天線"
+        },
+        "waterway/canal": {
+            "name": "運河",
+            "terms": "運河"
+        },
+        "leisure/common": {
+            "name": "公共用地",
+            "terms": "公有地"
+        },
+        "type/route/horse": {
+            "name": "騎馬路線",
+            "terms": "騎馬路線,騎乘路線"
+        },
+        "amenity/dojo": {
+            "name": "道場/武術研習班",
+            "terms": "道場/武術學院,道場/武藝研習班"
+        },
+        "landuse/farmland": {
+            "name": "農業用地",
+            "terms": "農田,稻田,農地,田,耕地"
+        },
+        "shop/baby_goods": {
+            "name": "嬰兒用品店",
+            "terms": "嬰兒用品商店"
+        },
+        "shop/fishmonger": {
+            "name": "魚販"
+        },
+        "place/square": {
+            "name": "廣場",
+            "terms": "徒步廣場,人行廣場"
+        },
+        "amenity/shelter/gazebo": {
+            "name": "露臺",
+            "terms": "露臺"
+        },
+        "man_made/storage_tank": {
+            "name": "儲油槽",
+            "terms": "存放槽,油罐,儲罐,儲水槽,儲汽槽"
+        },
+        "place/neighbourhood": {
+            "name": "鄰里",
+            "terms": "四鄰,Neighborhood"
+        },
+        "amenity/fast_food/chicken": {
+            "name": "雞肉速食店",
+            "terms": "雞肉速食店"
+        },
+        "playground/slide": {
+            "name": "溜滑梯",
+            "terms": "溜滑梯"
+        },
+        "leisure/pitch/beachvolleyball": {
+            "name": "沙灘排球場",
+            "terms": "沙灘排球場,沙灘排球"
+        },
+        "playground/basket_swing": {
+            "name": "籃子鞦韆",
+            "terms": "籃子鞦韆"
+        },
+        "highway/footway/marked-raised": {
+            "name": "有標記人行穿越道（凸起）",
+            "terms": "有斑馬線穿越道（凸起）"
+        },
+        "public_transport/stop_position_aerialway": {
+            "name": "纜車停車位置",
+            "terms": "纜車停車位置"
+        },
+        "playground/climbing_frame": {
+            "name": "攀爬架",
+            "terms": "攀爬架"
+        },
+        "tourism/artwork/mural": {
+            "name": "壁畫",
+            "terms": "Mural"
+        },
+        "man_made/chimney": {
+            "name": "煙囪",
+            "terms": "煙筒"
+        },
+        "shop/mall": {
+            "name": "購物中心",
+            "terms": "商場"
+        },
+        "barrier/wall": {
+            "name": "牆",
+            "terms": "牆壁"
+        },
+        "craft/insulator": {
+            "name": "隔熱工程",
+            "terms": "隔熱工程"
+        },
+        "shop/herbalist": {
+            "name": "草藥店",
+            "terms": "草藥店"
+        },
+        "landuse/vineyard": {
+            "name": "酒莊",
+            "terms": "酒莊"
+        },
+        "building/grandstand": {
+            "name": "正面看臺",
+            "terms": "正面看臺,看臺"
+        },
+        "traffic_calming/rumble_strip": {
+            "name": "跳動路面",
+            "terms": "起皺狹長路段"
+        },
+        "leisure/pitch/badminton": {
+            "name": "羽毛球場",
+            "terms": "羽毛球場"
+        },
+        "office/tax_advisor": {
+            "name": "稅務顧問辦公室",
+            "terms": "稅務顧問辦公室"
+        },
+        "aerialway/drag_lift": {
+            "name": "牽引纜車",
+            "terms": "牽引纜車"
+        },
+        "bridge/support/pier": {
+            "name": "橋墩",
+            "terms": "橋墩"
+        },
+        "healthcare/midwife": {
+            "name": "助產士",
+            "terms": "助產士"
+        },
+        "aeroway/hangar": {
+            "name": "機庫",
+            "terms": "飛機庫"
+        },
+        "healthcare/psychotherapist": {
+            "name": "心理治療師",
+            "terms": "心理治療師"
+        },
+        "building/retail": {
+            "name": "商業建築物",
+            "terms": "商辦大樓"
+        },
+        "golf/lateral_water_hazard": {
+            "name": "橫向水障礙",
+            "terms": "橫向水障礙"
+        },
+        "highway/motorway_link": {
+            "name": "高速公路引道",
+            "terms": "高速公路引道"
+        },
+        "amenity/car_pooling": {
+            "name": "汽車共乘",
+            "terms": "共乘,拚車"
+        },
+        "place/isolated_dwelling": {
+            "name": "獨立聚落",
+            "terms": "孤立民居"
+        },
+        "shop/bed": {
+            "name": "床具/寐具店",
+            "terms": "床具店,寐具店,寢具店"
+        },
+        "natural/scrub": {
+            "name": "荒地",
+            "terms": "荒地"
+        },
+        "craft/photographer": {
+            "name": "攝影店",
+            "terms": "攝影店"
+        },
+        "building/pavilion": {
+            "name": "亭樓"
+        },
+        "shop": {
+            "name": "商店",
+            "terms": "商店,商行"
+        },
+        "attraction/big_wheel": {
+            "name": "摩天輪",
+            "terms": "摩天輪"
+        },
+        "office/religion": {
+            "name": "宗教辦公處所",
+            "terms": "教堂辦公室,廟宇辦公室"
+        },
+        "landuse/military/obstacle_course": {
+            "name": "障礙課程場地",
+            "terms": "障礙課程場地,障礙課程"
+        },
+        "natural/spring": {
+            "name": "溫泉",
+            "terms": "溫泉"
+        },
+        "man_made/pipeline": {
+            "name": "管道",
+            "terms": "管線"
+        },
+        "man_made/observatory": {
+            "name": "天文台",
+            "terms": "天文館"
+        },
+        "attraction/pirate_ship": {
+            "name": "海盜船",
+            "terms": "海盜船"
+        },
+        "healthcare/alternative/chiropractic": {
+            "name": "脊骨神經醫師",
+            "terms": "脊骨神經醫師,脊骨按摩治療師,脊椎指壓治療者"
+        },
+        "attraction/summer_toboggan": {
+            "name": "夏季雪橇",
+            "terms": "夏天雪橇"
+        },
+        "amenity/childcare": {
+            "name": "托兒所/托嬰處",
+            "terms": "托兒所/托嬰處"
+        },
+        "barrier/kerb/flush": {
+            "name": "平齊路緣",
+            "terms": "嵌入式路緣"
+        },
+        "office/educational_institution": {
+            "name": "教育機構",
+            "terms": "教育機構,教育單位,補習班"
+        },
+        "shop/deli": {
+            "name": "美食店",
+            "terms": "美食店"
+        },
+        "leisure/pitch/equestrian": {
+            "name": "馬場",
+            "terms": "馬場"
+        },
+        "place/quarter": {
+            "name": "自治市區",
+            "terms": "自治市區"
+        },
+        "healthcare/rehabilitation": {
+            "name": "復建設施",
+            "terms": "復建設施"
+        },
+        "shop/perfumery": {
+            "name": "香水店",
+            "terms": "香水店"
+        },
+        "amenity/restaurant/vietnamese": {
+            "name": "越南餐廳",
+            "terms": "越式餐廳"
+        },
+        "highway/service/drive-through": {
+            "name": "德來速車道",
+            "terms": "駕駛通過以獲取服務,德來速車道"
+        },
+        "shop/kiosk": {
+            "name": "販賣亭",
+            "terms": "書報攤,零售亭,售貨亭"
+        },
+        "landuse/military/danger_area": {
+            "name": "危險區",
+            "terms": "危險地區,危險區域,危險區,禁區"
+        },
+        "shop/confectionery": {
+            "name": "糖果店",
+            "terms": "糖果商店"
+        },
+        "tourism/information/guidepost": {
+            "name": "指示牌",
+            "terms": "方向指引牌"
+        },
+        "shop/electronics": {
+            "name": "電器店",
+            "terms": "電器行"
+        },
+        "waterway": {
+            "name": "水道"
+        },
+        "amenity/clinic": {
+            "name": "診所",
+            "terms": "診療所,醫務所"
+        },
+        "public_transport/stop_position_light_rail": {
+            "name": "輕軌鐵路停車位置",
+            "terms": "輕軌電車停車點"
+        },
+        "amenity/place_of_worship/buddhist": {
+            "name": "佛寺",
+            "terms": "寺,廟,閣,寶殿"
+        },
+        "natural/bare_rock": {
+            "name": "裸露的岩石",
+            "terms": "裸露的岩石,裸岩"
+        },
+        "leisure/pitch/australian_football": {
+            "name": "澳式足球場",
+            "terms": "澳式足球場"
+        },
+        "amenity/language_school": {
+            "name": "語言學校",
+            "terms": "語言學校"
+        },
+        "amenity/crematorium": {
+            "name": "火葬場",
+            "terms": "火葬場"
+        },
+        "building/farm_auxiliary": {
+            "name": "農業設施",
+            "terms": "農業設施"
+        },
+        "power/switch": {
+            "name": "電力開關",
+            "terms": "電力開關"
+        },
+        "amenity/waste_basket": {
+            "name": "垃圾筒",
+            "terms": "廢物箱,垃圾箱"
+        },
+        "building/construction": {
+            "name": "施工中建築",
+            "terms": "大樓施工建造,施工中屋宇"
+        },
+        "highway/unclassified": {
+            "name": "一般道路/未分類道路",
+            "terms": "一般道路/未分類道路"
+        },
+        "office/charity": {
+            "name": "慈善事業辦公室",
+            "terms": "慈善事業"
+        },
+        "office/foundation": {
+            "name": "基金會辦公室",
+            "terms": "基金會"
+        },
+        "amenity/social_facility": {
+            "name": "社福機構",
+            "terms": "社福設施"
+        },
+        "shop/hifi": {
+            "name": "音響店",
+            "terms": "音響店"
+        },
+        "craft/window_construction": {
+            "name": "窗廠製作",
+            "terms": "製窗廠"
+        },
+        "shop/appliance": {
+            "name": "家用電器店",
+            "terms": "家電店,電器店"
+        },
+        "craft/tinsmith": {
+            "name": "錫匠",
+            "terms": "錫匠"
+        },
+        "golf/green": {
+            "name": "果嶺",
+            "terms": "果嶺"
+        },
+        "man_made/windmill": {
+            "name": "風力磨坊",
+            "terms": "風力磨坊"
+        },
+        "shop/mobile_phone": {
+            "name": "行動電話店",
+            "terms": "手機商店,手機店,手機行,行動通訊店"
+        },
+        "craft/basket_maker": {
+            "name": "编筐",
+            "terms": "编筐"
+        },
+        "building/service": {
+            "name": "服務建築",
+            "terms": "服務建築"
+        },
+        "place/town": {
+            "name": "鄉鎮市區",
+            "terms": "鄉、鎮、縣轄市、區、市鎮、城鎮"
+        },
+        "highway/tertiary_link": {
+            "name": "三級道路連接路",
+            "terms": "三級道路連接道"
+        },
+        "tourism/information": {
+            "name": "旅遊資訊",
+            "terms": "旅遊資訊"
+        },
+        "amenity/vending_machine/coffee": {
+            "name": "咖啡販賣機",
+            "terms": "咖啡販賣機,咖啡自動販賣機"
+        },
+        "landuse/military/training_area": {
+            "name": "訓練場地",
+            "terms": "教練場,訓練場"
+        },
+        "playground/horizontal_bar": {
+            "name": "單槓",
+            "terms": "單槓"
+        },
+        "natural/water/lake": {
+            "name": "湖泊",
+            "terms": "湖"
+        },
+        "shop/video": {
+            "name": "錄影帶店",
+            "terms": "影碟店"
+        },
+        "amenity/animal_breeding": {
+            "name": "動物繁殖場",
+            "terms": "動物繁殖場"
+        },
+        "building/warehouse": {
+            "name": "倉庫",
+            "terms": "倉庫"
+        },
+        "railway/tram": {
+            "name": "電車",
+            "terms": "電車"
+        },
+        "power/minor_line": {
+            "name": "次要電纜",
+            "terms": "次要電纜"
+        },
+        "amenity/social_facility/nursing_home": {
+            "name": "養老院",
+            "terms": "療養院,老人安養中心,Nursing Home"
+        },
+        "building/train_station": {
+            "name": "鐵路車站建築物"
+        },
+        "amenity/restaurant/thai": {
+            "name": "泰國餐廳",
+            "terms": "泰式餐廳"
+        },
+        "public_transport/station_light_rail": {
+            "name": "輕軌站",
+            "terms": "輕軌車站"
+        },
+        "landuse/farmyard": {
+            "name": "農莊",
+            "terms": "農莊"
+        },
+        "man_made/works": {
+            "name": "工廠",
+            "terms": "工廠,加工廠,Factory"
+        },
+        "craft/plumber": {
+            "name": "水管工",
+            "terms": "水喉匠"
+        },
+        "highway/cycleway": {
+            "name": "單車路線",
+            "terms": "單車徑,腳踏車路線"
+        },
+        "man_made/gasometer": {
+            "name": "煤氣鼓",
+            "terms": "煤氣筒"
+        },
+        "shop/hardware": {
+            "name": "五金店",
+            "terms": "五金行"
+        },
+        "amenity/car_sharing": {
+            "name": "汽車共享站",
+            "terms": "共享汽車站,汽車共享站"
+        },
+        "shop/funeral_directors": {
+            "name": "生命禮儀公司",
+            "terms": "禮儀公司"
+        },
+        "tourism/zoo": {
+            "name": "動物園",
+            "terms": "動物園"
+        },
+        "amenity/payment_centre": {
+            "name": "繳費中心",
+            "terms": "繳費中心"
+        },
+        "shop/computer": {
+            "name": "電腦店",
+            "terms": "電腦店"
+        },
+        "landuse/grass": {
+            "name": "草地",
+            "terms": "草地"
+        },
+        "natural/grassland": {
+            "name": "草原",
+            "terms": "草地"
+        },
+        "amenity/animal_boarding": {
+            "name": "寵物度假村",
+            "terms": "寵物度假村, 寵物飯店"
+        },
+        "highway/stop": {
+            "name": "停車標誌",
+            "terms": "停車再開"
+        },
+        "emergency/no": {
+            "name": "不開放緊急通行"
+        },
+        "public_transport/stop_position_ferry": {
+            "name": "船運停船位置",
+            "terms": "船運停船點"
+        },
+        "tourism": {
+            "name": "旅遊設施"
+        },
+        "traffic_sign": {
+            "name": "交通號誌",
+            "terms": "號誌"
+        },
+        "amenity/public_bath": {
+            "name": "公共澡堂",
+            "terms": "公共浴池,錢湯,公共浴場"
+        },
+        "amenity/car_wash": {
+            "name": "洗車店",
+            "terms": "洗車行,洗車店"
+        },
+        "highway/street_lamp": {
+            "name": "路燈",
+            "terms": "街燈"
+        },
+        "playground/zipwire": {
+            "name": "Zip Wire",
+            "terms": "Zip Wire"
+        },
+        "tourism/theme_park": {
+            "name": "主題公園",
+            "terms": "主題樂園"
+        },
+        "emergency/siren": {
+            "name": "警笛",
+            "terms": "警笛"
+        },
+        "shop/watches": {
+            "name": "鐘錶行",
+            "terms": "手錶店"
+        },
+        "amenity/parking_entrance": {
+            "name": "停車場入口/出口",
+            "terms": "停車場入口/出口,停車塔入口/出口,立體停車場入口/出口"
+        },
+        "landuse": {
+            "name": "土地利用"
+        },
+        "waterway/riverbank": {
+            "name": "河床"
+        },
+        "type/route/light_rail": {
+            "name": "輕軌路線",
+            "terms": "輕軌路線"
+        },
+        "shop/music": {
+            "name": "音樂店",
+            "terms": "唱片行"
+        },
+        "amenity/fast_food/fish_and_chips": {
+            "name": "炸魚速食店",
+            "terms": "炸魚店"
+        },
+        "barrier/toll_booth": {
+            "name": "收費亭",
+            "terms": "收費站"
+        },
+        "highway/crossing/unmarked": {
+            "name": "無標記人行穿越道",
+            "terms": "無斑馬線穿越道"
+        },
+        "craft/stonemason": {
+            "name": "切石廠",
+            "terms": "切石廠"
+        },
+        "aerialway": {
+            "name": "纜車路線"
+        },
+        "amenity/nightclub": {
+            "name": "夜總會",
+            "terms": "夜店"
+        },
+        "waterway/dam": {
+            "name": "堤壩",
+            "terms": "水庫,水壩"
+        },
+        "amenity/school": {
+            "name": "中小學範圍",
+            "terms": "學校,中學,小學,國中,國小,高中,學校用地,學校範圍,School Grounds,School"
+        },
+        "public_transport/stop_position_tram": {
+            "name": "街車停車位置",
+            "terms": "街車停車點"
+        },
+        "shop/photo": {
+            "name": "攝影用品店",
+            "terms": "照相店"
+        },
+        "office/forestry": {
+            "name": "林務辦公室",
+            "terms": "林務局"
+        },
+        "building/static_caravan": {
+            "name": "固定的拖掛式房車",
+            "terms": "固定的拖掛式房車"
+        },
+        "playground/rocker": {
+            "name": "彈簧椅",
+            "terms": "彈簧椅"
+        },
+        "waterway/milestone": {
+            "name": "水道里程碑",
+            "terms": "水道里程碑"
+        },
+        "leisure/pitch/skateboard": {
+            "name": "滑板公園",
+            "terms": "滑板場,極限公園,極限運動公園"
+        },
+        "office/government/tax": {
+            "name": "稅務辦公室",
+            "terms": "稅捐處"
+        },
+        "office/moving_company": {
+            "name": "搬家公司辦公室",
+            "terms": "搬家公司"
+        },
+        "highway/bridleway": {
+            "name": "馬道",
+            "terms": "馬道"
+        },
+        "shop/variety_store": {
+            "name": "雜貨店",
+            "terms": "雜貨店,39元商店"
+        },
+        "amenity/parking/multi-storey": {
+            "name": "立體停車場",
+            "terms": "多層停車場,停車塔"
+        },
+        "amenity/doctors": {
+            "name": "醫生",
+            "terms": "醫生診療處"
+        },
+        "barrier/ditch": {
+            "name": "溝",
+            "terms": "溝"
+        },
+        "landuse/churchyard": {
+            "name": "教堂院落",
+            "terms": "教堂用地"
+        },
+        "amenity/shelter": {
+            "name": "涼亭",
+            "terms": "遮雨棚,亭,亭子"
+        },
+        "shop/frozen_food": {
+            "name": "冷凍食品",
+            "terms": "冷凍食品"
+        },
+        "tourism/picnic_site": {
+            "name": "野餐場地",
+            "terms": "野餐地點"
+        },
+        "highway/rest_area": {
+            "name": "公路休憩區",
+            "terms": "公路休息站"
+        },
+        "amenity/vending_machine/stamps": {
+            "name": "郵票販賣機",
+            "terms": "郵票販賣機,郵票自動販賣機"
+        },
+        "public_transport/station_aerialway": {
+            "name": "纜車站",
+            "terms": "纜車車站"
+        },
+        "playground/swing": {
+            "name": "鞦韆",
+            "terms": "鞦韆"
+        },
+        "craft/electrician": {
+            "name": "電氣工程",
+            "terms": "電氣匠"
+        },
+        "manhole/telecom": {
+            "name": "電信公司人孔",
+            "terms": "電信公司人孔,電信人孔"
+        },
+        "attraction/drop_tower": {
+            "name": "自由落體",
+            "terms": "大怒神"
+        },
+        "historic/archaeological_site": {
+            "name": "考古地點",
+            "terms": "考古遺址"
+        },
+        "amenity/driving_school": {
+            "name": "駕訓班",
+            "terms": "駕訓班,駕訓學校"
+        },
+        "building/barn": {
+            "name": "穀倉",
+            "terms": "穀倉,糧倉"
+        },
+        "amenity/bench": {
+            "name": "長椅",
+            "terms": "長椅"
+        },
+        "craft/beekeeper": {
+            "name": "養蜂",
+            "terms": "養蜂戶"
+        },
+        "leisure/track/horse_racing": {
+            "name": "賽道 (賽馬)",
+            "terms": "賽道 (賽馬)"
+        },
+        "amenity/toilets": {
+            "name": "廁所",
+            "terms": "便所,公廁,洗手間,盥洗室,公共廁所"
+        },
+        "leisure/fitness_station/box": {
+            "name": "運動箱",
+            "terms": "運動箱"
+        },
+        "amenity/sanitary_dump_station": {
+            "name": "RV移動廁所",
+            "terms": "RV流動廁所,流動廁所"
+        },
+        "shop/hearing_aids": {
+            "name": "助聽器店",
+            "terms": "助聽器商店"
+        },
+        "shop/water": {
+            "name": "飲用水商店",
+            "terms": "飲用水商店"
+        },
+        "public_transport/platform": {
+            "name": "公車專用道停車處 / 月台",
+            "terms": "公車專用道停車處,公車專用道月台"
+        },
+        "craft/confectionery": {
+            "name": "糖果製造匠",
+            "terms": "糖果製造商,甜食製造匠"
+        },
+        "amenity/place_of_worship": {
+            "name": "宗教祟拜場所",
+            "terms": "廟,教堂,寺廟,清真寺,禮拜堂,寺,聚會所,教會"
+        },
+        "aerialway/goods": {
+            "name": "載貨纜車",
+            "terms": "載貨纜車,貨運纜車,流籠"
+        },
+        "railway/platform": {
+            "name": "街車站/月台"
+        },
+        "barrier/retaining_wall": {
+            "name": "擋土牆",
+            "terms": "護土牆"
+        },
+        "amenity/love_hotel": {
+            "name": "情趣旅館",
+            "terms": "愛情旅館,情人旅館"
+        },
+        "office/adoption_agency": {
+            "name": "領養代理",
+            "terms": "領養事務所"
+        },
+        "highway/traffic_signals": {
+            "name": "紅綠燈",
+            "terms": "交通燈,交通號誌,交通信號燈"
+        },
+        "amenity/embassy": {
+            "name": "使館",
+            "terms": "大使館,代表處,經濟文化辦事處"
+        },
+        "place/islet": {
+            "name": "小島",
+            "terms": "小島"
+        },
+        "type/restriction/no_left_turn": {
+            "name": "不准左轉",
+            "terms": "禁止左轉,不可以左轉"
+        },
+        "leisure/ice_rink": {
+            "name": "溜冰場",
+            "terms": "溜冰場"
+        },
+        "healthcare/blood_donation": {
+            "name": "捐血中心",
+            "terms": "捐血中心,捐血站,捐血車"
+        },
+        "place/village": {
+            "name": "村里",
+            "terms": "村里、村莊、村落、聚落"
+        },
+        "shop/water_sports": {
+            "name": "水上活動/泳具店",
+            "terms": "水上活動/游泳用品店"
+        },
+        "shop/lottery": {
+            "name": "彩券行",
+            "terms": "投注站,公益彩券"
+        },
+        "leisure/dog_park": {
+            "name": "狗公園",
+            "terms": "寵物公園"
+        },
+        "natural/cave_entrance": {
+            "name": "洞穴入口",
+            "terms": "洞穴入口"
+        },
+        "point": {
+            "name": "點",
+            "terms": "點"
+        },
+        "shop/cheese": {
+            "name": "起士店",
+            "terms": "起士商店,芝士店"
+        },
+        "amenity/boat_rental": {
+            "name": "小艇出租",
+            "terms": "租船處,小艇租賃"
+        },
+        "amenity/place_of_worship/taoist": {
+            "name": "道教寺廟",
+            "terms": "道教寺廟"
+        },
+        "building/mosque": {
+            "name": "清真寺建築",
+            "terms": "清真寺大院,清真寺大廈"
+        },
+        "building/cabin": {
+            "name": "小木屋",
+            "terms": "小屋,船艙"
+        },
+        "highway/bus_guideway": {
+            "name": "導向公車道",
+            "terms": "導向公車道"
+        },
+        "highway/footway/sidewalk": {
+            "name": "路邊人行道",
+            "terms": "人行道"
+        },
+        "amenity/animal_shelter": {
+            "name": "動物收容中心",
+            "terms": "動物收容中心"
+        },
+        "emergency/private": {
+            "name": "供私人緊急通行"
+        },
+        "craft/sailmaker": {
+            "name": "遊艇廠",
+            "terms": "遊艇廠"
+        },
+        "office/ngo": {
+            "name": "非政府機構辦公室",
+            "terms": "NGO辦公室,非政府組織"
+        },
+        "craft/glaziery": {
+            "name": "玻璃工程",
+            "terms": "玻璃工程,吹玻璃"
+        },
+        "highway/footway/unmarked": {
+            "name": "無標記人行穿越道",
+            "terms": "無斑馬線穿越道"
+        },
+        "highway/motorway_junction": {
+            "name": "交流道/出口",
+            "terms": "高速公路交流道/出口,高速公路交匯處/出口,快速道路交流道/出口"
+        },
+        "natural/tree": {
+            "name": "樹木",
+            "terms": "樹"
+        },
+        "amenity/register_office": {
+            "name": "戶政事務所"
+        },
+        "highway/crossing/marked-raised": {
+            "name": "標記人行穿越道（凸起）",
+            "terms": "有斑馬線穿越道（凸起）"
+        },
+        "leisure/adult_gaming_centre": {
+            "name": "成人遊戲中心",
+            "terms": "成人遊樂場"
+        },
+        "shop/car_parts": {
+            "name": "汽車零件店",
+            "terms": "汽車零件店"
+        },
+        "shop/jewelry": {
+            "name": "珠寶店",
+            "terms": "珠寶店"
+        },
+        "leisure/outdoor_seating": {
+            "name": "戶外座位區",
+            "terms": "戶外座位區,戶外座位"
+        },
+        "office/lawyer": {
+            "name": "律師事務所",
+            "terms": "法律事務所,律師樓"
+        },
+        "building/apartments": {
+            "name": "大樓建築物",
+            "terms": "大樓建築物,大樓"
+        },
+        "highway/trunk_link": {
+            "name": "幹道連接路",
+            "terms": "幹道連接道"
+        },
+        "emergency/lifeguard": {
+            "name": "救生員",
+            "terms": "救生員"
+        },
+        "amenity/vending_machine/news_papers": {
+            "name": "報紙販賣機"
+        },
+        "shop/bookmaker": {
+            "name": "書商",
+            "terms": "出版社"
+        },
+        "leisure/fitness_centre/yoga": {
+            "name": "瑜珈教室",
+            "terms": "瑜珈教室,瑜珈中心"
+        },
+        "leisure/track/running": {
+            "name": "賽道 (賽跑)",
+            "terms": "賽道 (賽跑)"
+        },
+        "aerialway/t-bar": {
+            "name": "T型吊桿",
+            "terms": "T型吊桿"
+        },
+        "public_transport/platform_aerialway": {
+            "name": "纜車站 / 月台",
+            "terms": "纜車站,纜車月台"
+        },
+        "historic/boundary_stone": {
+            "name": "界石",
+            "terms": "界碑"
+        },
+        "leisure/park": {
+            "name": "公園",
+            "terms": "綠地,遊樂場"
+        },
+        "amenity/internet_cafe": {
+            "name": "網咖",
+            "terms": "網咖,網吧,網路咖啡店,Internet Cafe"
+        },
+        "landuse/reservoir": {
+            "name": "貯水庫"
+        },
+        "leisure/garden": {
+            "name": "花園",
+            "terms": "花園,果園,菜園,植物園,公園"
+        },
+        "historic/memorial": {
+            "name": "紀念碑",
+            "terms": "紀念碑"
+        },
+        "golf/water_hazard": {
+            "name": "水障礙",
+            "terms": "水障礙"
+        },
+        "shop/cosmetics": {
+            "name": "化妝品店",
+            "terms": "化妝品店,保養品店,化妝品商店"
+        },
+        "type/restriction/only_u_turn": {
+            "name": "只能迴轉",
+            "terms": "只能迴轉"
+        },
+        "golf/cartpath_service": {
+            "name": "高爾夫球車道 / 服務道路",
+            "terms": "高爾夫球車道 / 服務道路"
+        },
+        "leisure/swimming_pool": {
+            "name": "游泳池",
+            "terms": "泳池"
+        },
+        "waterway/stream": {
+            "name": "溪流",
+            "terms": "小溪"
+        },
+        "railway": {
+            "name": "鐵路"
+        },
+        "building/university": {
+            "name": "大學建築物",
+            "terms": "大學建築物,大學校舍,校舍,學校建築,University Building"
+        },
+        "amenity/library": {
+            "name": "圖書館",
+            "terms": "圖書室,閱覽室"
+        },
+        "shop/stationery": {
+            "name": "文具店",
+            "terms": "文具店"
+        },
+        "highway/secondary_link": {
+            "name": "次級道路連接路",
+            "terms": "次級道路連接道"
+        },
+        "office/advertising_agency": {
+            "name": "廣告代理公司",
+            "terms": "廣告代理商"
+        },
+        "highway/living_street": {
+            "name": "生活街道",
+            "terms": "生活街道"
+        },
+        "landuse/military/bunker": {
+            "name": "軍事碉堡",
+            "terms": "軍事碉堡,碉堡"
+        },
+        "attraction/bumper_car": {
+            "name": "碰碰車",
+            "terms": "碰碰車"
+        },
+        "attraction/roller_coaster": {
+            "name": "雲霄飛車",
+            "terms": "雲霄飛車"
+        },
+        "power/sub_station": {
+            "name": "變電所"
+        },
+        "shop/copyshop": {
+            "name": "影印店",
+            "terms": "影印行"
+        },
+        "leisure/firepit": {
+            "name": "火坑",
+            "terms": "火爐"
+        },
+        "public_transport/station_ferry": {
+            "name": "船運站",
+            "terms": "船運站,渡輪站"
+        },
+        "leisure/pitch/baseball": {
+            "name": "棒球場",
+            "terms": "棒球場"
+        },
+        "man_made/bridge": {
+            "name": "橋樑",
+            "terms": "橋樑,橋,陸橋,天橋"
+        },
+        "railway/monorail": {
+            "name": "單軌電車",
+            "terms": "畢軌電車"
+        },
+        "office/physician": {
+            "name": "醫務所"
+        },
+        "shop/bicycle": {
+            "name": "單車店",
+            "terms": "腳踏車店"
+        },
+        "public_transport/stop_position_subway": {
+            "name": "捷運停車位置",
+            "terms": "捷運停車點"
+        },
+        "tourism/apartment": {
+            "name": "假日公寓",
+            "terms": "假日公寓,日租型套房"
+        },
+        "amenity/hunting_stand": {
+            "name": "獵寮",
+            "terms": "獵寮"
+        },
+        "tourism/guest_house": {
+            "name": "招待所",
+            "terms": "私人招待所"
+        },
+        "healthcare/laboratory": {
+            "name": "醫事檢驗所",
+            "terms": "醫檢"
+        },
+        "shop/party": {
+            "name": "宴會器材店",
+            "terms": "宴會器材商店"
+        },
+        "power/plant": {
+            "name": "發電廠用地",
+            "terms": "發電廠用地,發電廠廠區,發電廠範圍,發電廠,Power Station Grounds"
+        },
+        "landuse/aquaculture": {
+            "name": "養殖漁業",
+            "terms": "養殖漁業,水產養殖,Aquaculture"
+        },
+        "amenity": {
+            "name": "便利設施"
+        },
+        "seamark/buoy_lateral/red": {
+            "name": "紅色浮標",
+            "terms": "紅色浮標"
+        },
+        "tourism/gallery": {
+            "name": "藝廊",
+            "terms": "藝廊"
+        },
+        "amenity/fuel": {
+            "name": "加油站",
+            "terms": "加油站"
+        },
+        "type/route/tram": {
+            "name": "電車路線",
+            "terms": "電車路線"
+        },
+        "man_made/mast/communication/television": {
+            "name": "電視播放天線",
+            "terms": "電視通訊塔"
+        },
+        "shop/second_hand": {
+            "name": "格仔鋪/二手店",
+            "terms": "格仔店/二手店"
+        },
+        "place/island": {
+            "name": "島嶼",
+            "terms": "島,island"
+        },
+        "public_transport/platform_tram": {
+            "name": "路面電車停車處 / 月台",
+            "terms": "路面電車停車處,路面電車月台"
+        },
+        "attraction/bungee_jumping": {
+            "name": "高空彈跳",
+            "terms": "高空彈跳"
+        },
+        "piste/piste": {
+            "name": "冬季運動步道",
+            "terms": "冬季運動步道"
+        },
+        "railway/signal": {
+            "name": "鐵道信號",
+            "terms": "鐵道信號"
+        },
+        "craft/rigger": {
+            "name": "吊運服務",
+            "terms": "吊運服務"
+        },
+        "man_made/water_works": {
+            "name": "淨水廠",
+            "terms": "水務設施"
+        },
+        "amenity/pub": {
+            "name": "Pub",
+            "terms": "酒館,Pub"
+        },
+        "building/entrance": {
+            "name": "入口/出口"
+        },
+        "playground/structure": {
+            "name": "遊樂場設施",
+            "terms": "遊樂場設施"
+        },
+        "shop/religion": {
+            "name": "宗教用品店",
+            "terms": "金紙店、香鋪、佛具店"
+        },
+        "golf/rough": {
+            "name": "深草區",
+            "terms": "深草區"
+        },
+        "man_made/breakwater": {
+            "name": "防波堤",
+            "terms": "防波堤"
+        },
+        "shop/shoes": {
+            "name": "鞋店",
+            "terms": "鞋店"
+        },
+        "amenity/ranger_station": {
+            "name": "國家公園管理站",
+            "terms": "郊野公園管理站,自然保護區管理站"
+        },
+        "office/quango": {
+            "name": "準非政府組織辦公室",
+            "terms": "準非政府組織辦公室"
+        },
+        "amenity/parking": {
+            "name": "平面停車場",
+            "terms": "停車場"
+        },
+        "highway/bus_stop": {
+            "name": "公車站牌/公車月台"
+        },
+        "office/energy_supplier": {
+            "name": "電力供應辦公室",
+            "terms": "電力公司辦公室,台電,台電辦事處"
+        },
+        "amenity/place_of_worship/hindu": {
+            "name": "印度寺廟",
+            "terms": "印度寺廟,Hindu Temple"
+        },
+        "traffic_sign_vertex": {
+            "name": "交通號誌",
+            "terms": "交通號誌"
+        },
+        "aerialway/platter": {
+            "name": "吊盤",
+            "terms": "吊盤"
+        },
+        "amenity/swimming_pool": {
+            "name": "游泳池"
+        },
+        "amenity/vending_machine/condoms": {
+            "name": "保險套販賣機",
+            "terms": "保險套自動販賣機,販賣機"
+        },
+        "craft/electronics_repair": {
+            "name": "電器維修店",
+            "terms": "維修店,修電器店"
+        },
+        "man_made/adit": {
+            "name": "坑口",
+            "terms": "坑道口,礦坑口"
+        },
+        "man_made/tower": {
+            "name": "塔",
+            "terms": "塔"
+        },
+        "shop/florist": {
+            "name": "花店",
+            "terms": "花卉行"
+        },
+        "type/route/ferry": {
+            "name": "渡輪航線",
+            "terms": "渡輪路線"
+        },
+        "highway/crossing/marked": {
+            "name": "標記人行穿越道",
+            "terms": "有斑馬線穿越道"
+        },
+        "amenity/atm": {
+            "name": "自動櫃員機",
+            "terms": "提款機,ATM"
+        },
+        "ford": {
+            "name": "淺灘",
+            "terms": "淺灘"
+        },
+        "natural/sand": {
+            "name": "沙",
+            "terms": "沙,砂"
+        },
+        "place/locality": {
+            "name": "地點（無人定居）",
+            "terms": "地方"
+        },
+        "traffic_calming/table": {
+            "name": "減速丘",
+            "terms": "減速丘"
+        },
+        "amenity/courthouse": {
+            "name": "法院",
+            "terms": "法庭,地方法院,高等法院,最高法院"
+        },
+        "shop/art": {
+            "name": "藝術商店",
+            "terms": "藝術商店"
+        },
+        "place/hamlet": {
+            "name": "村莊",
+            "terms": "村鎮"
+        },
+        "amenity/recycling_centre": {
+            "name": "資源回收中心",
+            "terms": "回收中心"
+        },
+        "club": {
+            "name": "俱樂部",
+            "terms": "俱樂部,Club"
+        },
+        "office/private_investigator": {
+            "name": "私家偵探辦公室",
+            "terms": "私家偵探"
+        },
+        "waterway/fuel": {
+            "name": "船用加油站",
+            "terms": "船隻加油站"
+        },
+        "highway": {
+            "name": "道路"
+        },
+        "shop/pastry": {
+            "name": "糕餅店",
+            "terms": "糕餅店,蛋糕店,烘焙店"
+        },
+        "amenity/theatre": {
+            "name": "戲劇院",
+            "terms": "戲院,劇場"
+        },
+        "highway/pedestrian_line": {
+            "name": "行人徒步街道",
+            "terms": "行人徒步道路"
+        },
+        "landuse/military/checkpoint": {
+            "name": "崗哨",
+            "terms": "軍事崗哨,哨點"
+        },
+        "man_made/lighthouse": {
+            "name": "燈塔",
+            "terms": "燈塔"
+        },
+        "type/route/train": {
+            "name": "鐵路路線",
+            "terms": "列車路線"
+        },
+        "barrier/fence": {
+            "name": "柵欄",
+            "terms": "欄柵"
+        },
+        "landuse/cemetery": {
+            "name": "殯葬用地",
+            "terms": "公墓、墓地、墓園、納骨塔、墳墓"
+        },
+        "railway/rail": {
+            "name": "鐵軌",
+            "terms": "路軌"
+        },
+        "natural/scree": {
+            "name": "崩坍地",
+            "terms": "崩坍地、碎石坡"
+        },
+        "office/government": {
+            "name": "政府辦公室",
+            "terms": "政府機關"
+        },
+        "office/it": {
+            "name": "資訊公司辦公室",
+            "terms": "IT"
+        },
+        "railway/disused": {
+            "name": "廢棄鐵路",
+            "terms": "廢棄鐵道,廢棄的鐵路"
+        },
+        "amenity/grave_yard": {
+            "name": "墓地",
+            "terms": "墳場,墓地"
+        },
+        "railway/light_rail": {
+            "name": "輕軌",
+            "terms": "輕軌鐵路"
+        },
+        "office/lawyer/notary": {
+            "name": "公證處"
+        },
+        "amenity/clinic/fertility": {
+            "name": "生產診所",
+            "terms": "生產診所,不孕診所"
+        },
+        "leisure/fitness_station": {
+            "name": "戶外健身站",
+            "terms": "戶外健身站,健身站"
+        },
+        "amenity/vending_machine/newspapers": {
+            "name": "報紙自動販賣機",
+            "terms": "報紙自動販賣機,報紙販賣機"
+        },
+        "railway/subway_entrance": {
+            "name": "捷運入口",
+            "terms": "地鐵入口,地下鐵入口,捷運出入口,地鐵出入口,地下鐵出入口"
+        },
+        "emergency/fire_extinguisher": {
+            "name": "滅火器",
+            "terms": "滅火器"
+        },
+        "healthcare/speech_therapist": {
+            "name": "語言治療師",
+            "terms": "語言治療師"
+        },
+        "leisure/picnic_table": {
+            "name": "野餐桌",
+            "terms": "野餐桌"
+        },
+        "man_made/cutline": {
+            "name": "山林分界線",
+            "terms": "山林分界線"
+        },
+        "craft/scaffolder": {
+            "name": "棚架工程",
+            "terms": "棚架工程"
+        },
+        "shop/locksmith": {
+            "name": "鎖匠",
+            "terms": "鎖匠"
+        },
+        "office/insurance": {
+            "name": "保險公司辦公室",
+            "terms": "保險公司,人壽公司"
+        },
+        "leisure/pitch": {
+            "name": "運動場地",
+            "terms": "運動場"
+        },
+        "public_transport/stop_position_trolleybus": {
+            "name": "無軌電車停車位置",
+            "terms": "無軌電車停車點"
+        },
+        "tourism/hotel": {
+            "name": "旅館",
+            "terms": "酒店,旅店,賓館"
+        },
+        "historic/monument": {
+            "name": "纪念建築物",
+            "terms": "纪念碑,紀念塔,古蹟"
+        },
+        "manhole": {
+            "name": "人孔",
+            "terms": "人孔,下水道口"
+        },
+        "type/route/bicycle": {
+            "name": "單車路線",
+            "terms": "腳踏車路線"
+        },
+        "highway/give_way": {
+            "name": "通行標誌",
+            "terms": "讓車標誌"
+        },
+        "man_made/mast/communication": {
+            "name": "通訊天線",
+            "terms": "基地台"
+        },
+        "amenity/place_of_worship/shinto": {
+            "name": "神社",
+            "terms": "神社,日本神社"
+        },
+        "leisure/fitness_station/horizontal_bar": {
+            "name": "運動平衡單槓",
+            "terms": "運動平衡單槓"
+        },
+        "historic": {
+            "name": "歷史景點",
+            "terms": "歷史景點, 古蹟"
+        },
+        "type/enforcement": {
+            "name": "強制",
+            "terms": "強制"
+        },
+        "railway/switch": {
+            "name": "鐵路轉轍器",
+            "terms": "鐵路轉轍器"
+        },
+        "man_made/tower/communication": {
+            "name": "通訊塔",
+            "terms": "無線通訊塔"
+        },
+        "amenity/restaurant/sushi": {
+            "name": "壽司餐廳",
+            "terms": "壽司店"
+        },
+        "piste/skitour": {
+            "name": "滑雪旅遊步道",
+            "terms": "滑雪旅遊步道"
+        },
+        "healthcare/optometrist": {
+            "name": "驗光師",
+            "terms": "驗光師"
+        },
+        "building/kindergarten": {
+            "name": "育幼院/幼兒園校舍",
+            "terms": "育幼院/幼兒園校舍,育幼院校舍,幼兒園校舍,幼稚園校舍"
+        },
+        "leisure/playground": {
+            "name": "遊樂場",
+            "terms": "遊樂場"
+        },
+        "emergency/water_tank": {
+            "name": "緊急水箱",
+            "terms": "緊急水箱"
+        },
+        "shop/erotic": {
+            "name": "情趣用品店",
+            "terms": "情趣用品商店"
+        },
+        "type/restriction/only_left_turn": {
+            "name": "只能左轉",
+            "terms": "只能左轉"
+        },
+        "leisure/fitness_station/rings": {
+            "name": "運動吊環",
+            "terms": "運動吊環"
+        },
+        "highway/mini_roundabout": {
+            "name": "小型迴轉處",
+            "terms": "小型迴旋處"
+        },
+        "public_transport/platform_monorail": {
+            "name": "單軌電車停車處 / 月台",
+            "terms": "單軌電車停車處,單軌月台"
+        },
+        "amenity/monastery": {
+            "name": "修道院",
+            "terms": "修道院"
+        },
+        "highway/service/parking_aisle": {
+            "name": "停車場通道",
+            "terms": "停車場通道"
+        },
+        "amenity/bbq": {
+            "name": "燒烤",
+            "terms": "BBQ,燒烤"
+        },
+        "waterway/dock": {
+            "name": "濕塢 / 乾塢",
+            "terms": "濕塢 / 乾塢"
+        },
+        "waterway/boatyard": {
+            "name": "船塢",
+            "terms": "船塢"
+        },
+        "power/line": {
+            "name": "電纜",
+            "terms": "電線"
+        },
+        "amenity/ice_cream": {
+            "name": "冰淇淋店",
+            "terms": "冰淇淋店,冰淇淋"
+        },
+        "leisure/horse_riding": {
+            "name": "騎馬場",
+            "terms": "馬場,騎馬設施"
+        },
+        "power/pole": {
+            "name": "電線桿",
+            "terms": "電線桿"
+        },
+        "barrier/guard_rail": {
+            "name": "護欄",
+            "terms": "護軌"
+        },
+        "natural/peak": {
+            "name": "山頂",
+            "terms": "山峰,山巔"
+        },
+        "highway/tertiary": {
+            "name": "三級道路",
+            "terms": "三級道路"
+        },
+        "amenity/restaurant/steakhouse": {
+            "name": "牛排館",
+            "terms": "牛排店"
+        },
+        "shop/beauty/nails": {
+            "name": "指甲美容店",
+            "terms": "修指甲店,修指甲"
+        },
+        "tourism/artwork": {
+            "name": "公共藝術",
+            "terms": "藝術品,街頭藝術"
+        },
+        "amenity/vending_machine/sweets": {
+            "name": "零食販賣機",
+            "terms": "點心販賣機,販 賣機"
+        },
+        "golf/cartpath": {
+            "name": "高爾夫球車道",
+            "terms": "高爾夫球車道"
+        },
+        "landuse/retail": {
+            "name": "零售用地",
+            "terms": "商店街"
+        },
+        "leisure/picnic_table/chess": {
+            "name": "棋桌",
+            "terms": "象棋桌,西洋棋桌"
+        },
+        "leisure/sauna": {
+            "name": "桑拿",
+            "terms": "桑拿,芬蘭浴,三溫暖"
+        },
+        "craft/key_cutter": {
+            "name": "配匙店",
+            "terms": "鑰匙店"
+        },
+        "leisure/fitness_station/sign": {
+            "name": "運動指示標誌",
+            "terms": "運動指示說明"
+        },
+        "leisure/resort": {
+            "name": "度假勝地",
+            "terms": "度假村"
+        },
+        "shop/pyrotechnics": {
+            "name": "煙火商",
+            "terms": "煙火用品店"
+        },
+        "leisure/pitch/cricket": {
+            "name": "板球場",
+            "terms": "板球場"
+        },
+        "public_transport/platform_trolleybus": {
+            "name": "無軌電車站 / 月台",
+            "terms": "無軌電車站,無軌電車月台"
+        },
+        "amenity/arts_centre": {
+            "name": "藝文中心",
+            "terms": "文化中心,文化局,藝術中心"
+        },
+        "shop/pet_grooming": {
+            "name": "寵物美容店",
+            "terms": "寵物美容店"
+        },
+        "railway/crossing": {
+            "name": "鐵路平交道（路徑）",
+            "terms": "鐵路平交道,平交道"
+        },
+        "shop/travel_agency": {
+            "name": "旅行社",
+            "terms": "旅行社"
+        },
+        "tourism/artwork/statue": {
+            "name": "雕像",
+            "terms": "雕像"
+        },
+        "amenity/restaurant": {
+            "name": "餐廳",
+            "terms": "飯店,飯館,酒樓,餐館"
+        },
+        "amenity/restaurant/pizza": {
+            "name": "批薩餐廳",
+            "terms": "批薩店"
+        },
+        "type/route/detour": {
+            "name": "繞道路線",
+            "terms": "繞道路線"
+        },
+        "amenity/bicycle_repair_station": {
+            "name": "自行車維修工具站",
+            "terms": "單車維修工具站,自行車自助維修站,單車自助維修站"
+        },
+        "amenity/vending_machine/parcel_pickup": {
+            "name": "包裹取件儲物櫃",
+            "terms": "包裹取件儲物櫃,儲物櫃,寄物櫃"
+        },
+        "office/association": {
+            "name": "非營利組織辦公室",
+            "terms": "NGO,非營利組織"
+        },
+        "highway/services": {
+            "name": "公路服務區",
+            "terms": "公路服務區、公路休息站"
+        },
+        "amenity/bureau_de_change": {
+            "name": "外幣兌換",
+            "terms": "錢幣兌換,貨幣兌換"
+        },
+        "tourism/chalet": {
+            "name": "假日小屋",
+            "terms": "假日小屋"
+        },
+        "landuse/military/nuclear_explosion_site": {
+            "name": "核子爆炸場址",
+            "terms": "核子爆炸場址,核子試爆場"
+        },
+        "leisure/dancing_school": {
+            "name": "舞蹈學校",
+            "terms": "舞蹈學校"
+        },
+        "public_transport/station_trolleybus": {
+            "name": "無軌電車站",
+            "terms": "無軌電車站"
+        },
+        "leisure": {
+            "name": "休閒設施"
+        },
+        "amenity/post_office": {
+            "name": "郵局",
+            "terms": "中華郵政,郵政公司,郵便局"
+        },
+        "tourism/trail_riding_station": {
+            "name": "騎馬車站",
+            "terms": "騎馬車站"
+        },
+        "public_transport/stop_position": {
+            "name": "轉運站停車位置",
+            "terms": "客運站停車位置"
+        },
+        "natural/volcano": {
+            "name": "火山口",
+            "terms": "火山,火山口"
+        },
+        "amenity/fast_food/pizza": {
+            "name": "批薩快餐店",
+            "terms": "批薩店"
+        },
+        "amenity/vending_machine": {
+            "name": "自動販賣機",
+            "terms": "自動販賣機,販賣機"
+        },
+        "highway/milestone": {
+            "name": "公路里程碑",
+            "terms": "里程碑"
+        },
+        "leisure/bleachers": {
+            "name": "看台",
+            "terms": "看台,看臺"
+        },
+        "amenity/bar": {
+            "name": "酒吧",
+            "terms": "酒吧"
+        },
+        "traffic_calming/cushion": {
+            "name": "減速墊",
+            "terms": "減速墊"
+        },
+        "power/generator/source/nuclear": {
+            "name": "核能反應爐",
+            "terms": "核子爐,核子反應爐"
+        },
+        "leisure/fitness_station/balance_beam": {
+            "name": "運動平衡梁",
+            "terms": "運動平衡梁"
+        },
+        "man_made/bunker_silo": {
+            "name": "地面筒倉",
+            "terms": "地面筒倉;筒倉"
+        },
+        "traffic_calming": {
+            "name": "減速標線",
+            "terms": "減速標線,減速坡,跳動路面"
+        },
+        "barrier/stile": {
+            "name": "梯磴",
+            "terms": "牆兩邊的階梯"
+        },
+        "type/route/piste": {
+            "name": "滑雪路線",
+            "terms": "滑雪路線"
+        },
+        "shop/boutique": {
+            "name": "服飾店",
+            "terms": "精品服飾店"
+        },
+        "area/highway": {
+            "name": "路面材質",
+            "terms": "路面材質,路面"
+        },
+        "amenity/vending_machine/parcel_pickup_dropoff": {
+            "name": "包裹取／放儲物櫃",
+            "terms": "包裹取／放儲物櫃,置物櫃"
+        },
+        "amenity/vending_machine/parking_tickets": {
+            "name": "停車場繳費機",
+            "terms": "停車場自動繳費機,停車場收費機,販賣機"
+        },
+        "shop/weapons": {
+            "name": "武器店",
+            "terms": "武器商店,槍店"
+        },
+        "healthcare/physiotherapist": {
+            "name": "物理治療師",
+            "terms": "物理治療師"
+        },
+        "bridge/support": {
+            "name": "橋樑支撐類型",
+            "terms": "橋樑支撐類型"
+        },
+        "highway/trunk": {
+            "name": "幹道",
+            "terms": "幹道"
+        },
+        "amenity/clock/sundial": {
+            "name": "日晷",
+            "terms": "日晷"
+        },
+        "leisure/pitch/boules": {
+            "name": "法式滾球場",
+            "terms": "法式滾球場"
+        },
+        "power/cable/underground": {
+            "name": "地下電纜",
+            "terms": "電纜,地底式電纜"
+        },
+        "golf/tee": {
+            "name": "開球區",
+            "terms": "開球區"
+        },
+        "office": {
+            "name": "辦公室",
+            "terms": "辦公室"
+        },
+        "amenity/fire_station": {
+            "name": "消防局",
+            "terms": "消防隊,救火隊"
+        },
+        "barrier/entrance": {
+            "name": "入口"
+        },
+        "emergency/fire_hydrant": {
+            "name": "消防栓",
+            "terms": "消防栓,消防設施,"
+        },
+        "noexit/yes": {
+            "name": "死路",
+            "terms": "死路"
+        },
+        "shop/scuba_diving": {
+            "name": "潛水用品店",
+            "terms": "潛水用具店"
+        },
+        "leisure/sports_centre/climbing": {
+            "name": "攀岩場",
+            "terms": "攀岩場"
+        },
+        "natural/water/pond": {
+            "name": "池塘",
+            "terms": "池塘"
+        },
+        "place/plot": {
+            "name": "地籍",
+            "terms": "地籍"
+        },
+        "golf/path": {
+            "name": "高爾夫步道",
+            "terms": "高爾夫步道"
+        },
+        "attraction/water_slide": {
+            "name": "滑水道",
+            "terms": "滑水道"
+        },
+        "shop/vacuum_cleaner": {
+            "name": "吸塵器店",
+            "terms": "吸塵器商店"
+        },
+        "shop/chemist": {
+            "name": "藥妝店",
+            "terms": "藥妝店"
+        },
+        "tourism/information/map": {
+            "name": "地圖",
+            "terms": "地圖,指示圖,範圍圖,旅遊景點圖,景點圖"
+        },
+        "building/hospital": {
+            "name": "醫院建築物",
+            "terms": "醫院"
+        },
+        "amenity/marketplace": {
+            "name": "市場",
+            "terms": "市集,傳統市場,marketplace"
+        },
+        "building/industrial": {
+            "name": "工業建築物",
+            "terms": "工業建築物"
+        },
+        "amenity/restaurant/german": {
+            "name": "德國餐廳",
+            "terms": "德式餐廳"
+        },
+        "amenity/university": {
+            "name": "大學範圍",
+            "terms": "大學,大專,大學用地,學校,University Grounds,University"
+        },
+        "building/public": {
+            "name": "公共建築物",
+            "terms": "公共建築"
+        },
+        "highway/crossing/zebra-raised": {
+            "name": "標記人行穿越道（凸起）"
+        },
+        "emergency/first_aid_kit": {
+            "name": "急救箱",
+            "terms": "急救包"
+        },
+        "amenity/shower": {
+            "name": "淋浴間",
+            "terms": "淋浴間,淋浴,淋浴設施"
+        },
+        "office/estate_agent": {
+            "name": "房地產仲介",
+            "terms": "地產代理,房仲,不動產仲介"
+        },
+        "traffic_sign/maxspeed": {
+            "name": "速限指標",
+            "terms": "速限"
+        },
+        "man_made/watermill": {
+            "name": "水力磨坊",
+            "terms": "水力磨坊"
+        },
+        "amenity/college": {
+            "name": "學院範圍",
+            "terms": "學院,學院用地,技術學院,獨立學院,學校,College Grounds,College"
+        },
+        "shop/toys": {
+            "name": "玩具店",
+            "terms": "玩具店"
+        },
+        "type/restriction/no_straight_on": {
+            "name": "不准直駛",
+            "terms": "禁止進入"
+        },
+        "landuse/allotments": {
+            "name": "社區農園",
+            "terms": "社區田圃,城市農園,社區園圃,社區農地,都市農園"
+        },
+        "office/water_utility": {
+            "name": "自來水設施辦公室",
+            "terms": "自來水事務處,自來水公司"
+        },
+        "railway/tram_stop": {
+            "name": "街車停靠點"
+        },
+        "highway/passing_place": {
+            "name": "避車彎",
+            "terms": "避車彎"
+        },
+        "shop/tiles": {
+            "name": "磁磚商店",
+            "terms": "磁磚商店,磁磚店,瓷磚商店,瓷磚店"
+        },
+        "highway/pedestrian_area": {
+            "name": "徒步區",
+            "terms": "行人徒步區"
+        },
+        "amenity/vending_machine/food": {
+            "name": "食物販賣機",
+            "terms": "食物販賣機,食物自動販賣機"
+        },
+        "amenity/cafe": {
+            "name": "咖啡廳",
+            "terms": "咖啡店"
+        },
+        "leisure/pitch/bowls": {
+            "name": "保齡球綠地",
+            "terms": "保齡球綠地"
+        },
+        "highway/service/emergency_access": {
+            "name": "緊急通道",
+            "terms": "緊急通道"
+        },
+        "natural/mud": {
+            "name": "泥地",
+            "terms": "泥地"
+        },
+        "building/civic": {
+            "name": "公共建築物",
+            "terms": "公共建築物、公用建築物、公家機關"
+        },
+        "craft/plasterer": {
+            "name": "泥水匠",
+            "terms": "批盪工程"
+        },
+        "piste/hike": {
+            "name": "雪鞋或冬季健行步道",
+            "terms": "雪鞋或冬季健行步道"
+        },
+        "amenity/parking_space": {
+            "name": "停車位",
+            "terms": "停車格,停車空間"
+        },
+        "healthcare/birthing_center": {
+            "name": "生育中心",
+            "terms": "生育中心,分娩中心"
+        },
+        "building/greenhouse": {
+            "name": "溫室",
+            "terms": "溫室"
+        },
+        "landuse/harbour": {
+            "name": "港灣",
+            "terms": "港灣,海港"
+        },
+        "shop/pet": {
+            "name": "寵物店",
+            "terms": "寵物用品店"
+        },
+        "amenity/scrapyard": {
+            "name": "汽車廢料場"
+        },
+        "man_made/survey_point": {
+            "name": "測量點",
+            "terms": "三角點,土地測量點,控制點"
+        },
+        "roundabout": {
+            "name": "圓環"
+        },
+        "type/route/power": {
+            "name": "供電路線",
+            "terms": "輸電線路"
+        },
+        "highway/service/alley": {
+            "name": "巷弄",
+            "terms": "小巷,巷弄,後巷,橫巷,窄巷,胡同"
+        },
+        "man_made/mast/communication/radio": {
+            "name": "廣播天線",
+            "terms": "廣播通訊塔"
+        },
+        "amenity/restaurant/seafood": {
+            "name": "海鮮餐廳",
+            "terms": "海鮮餐廳"
+        },
+        "public_transport/station_train": {
+            "name": "火車站",
+            "terms": "鐵路車站,車站"
+        },
+        "shop/tailor": {
+            "name": "裁縫",
+            "terms": "裁縫師,成衣訂作,成衣匠"
+        },
+        "landuse/brownfield": {
+            "name": "棕色地帶",
+            "terms": "棕色地帶"
+        },
+        "natural/cliff": {
+            "name": "懸崖",
+            "terms": "懸崖,峭壁"
+        },
+        "amenity/clock": {
+            "name": "時鐘",
+            "terms": "時鐘,鐘塔"
+        },
+        "attraction": {
+            "name": "旅遊地點"
+        },
+        "building/garage": {
+            "name": "車庫",
+            "terms": "車庫"
+        },
+        "natural/coastline": {
+            "name": "海岸線",
+            "terms": "海岸線"
+        },
+        "building/carport": {
+            "name": "車棚",
+            "terms": "車棚"
+        },
+        "building/hotel": {
+            "name": "旅館建築物",
+            "terms": "酒店建築物,旅店建築物,賓館建築物"
+        },
+        "shop/anime": {
+            "name": "動漫店",
+            "terms": "動漫店"
+        },
+        "route/ferry": {
+            "name": "渡輪航線",
+            "terms": "渡輪航線"
+        },
+        "shop/outdoor": {
+            "name": "戶外用品店",
+            "terms": "戶外用具店"
+        },
+        "highway/raceway": {
+            "name": "賽道（賽車運動）",
+            "terms": "賽道（賽車運動）"
+        },
+        "emergency/designated": {
+            "name": "專用緊急通道"
+        },
+        "highway/steps": {
+            "name": "階梯",
+            "terms": "樓梯,階梯,石階"
+        },
+        "leisure/fitness_station/hyperextension": {
+            "name": "羅馬凳站",
+            "terms": "羅馬凳站"
+        },
+        "tourism/artwork/sculpture": {
+            "name": "雕塑",
+            "terms": "雕塑"
+        },
+        "leisure/beach_resort": {
+            "name": "海灘渡假村",
+            "terms": "海灘渡假村,海濱渡假村"
+        },
+        "amenity/vending_machine/drinks": {
+            "name": "飲料販賣機",
+            "terms": "飲料自動販賣機,販賣機"
+        },
+        "highway/primary": {
+            "name": "主要道路",
+            "terms": "主要道路"
+        },
+        "highway/footway/zebra": {
+            "name": "標記人行穿越道"
+        },
+        "amenity/shelter/picnic_shelter": {
+            "name": "野餐涼亭",
+            "terms": "野餐涼亭"
+        },
+        "shop/chocolate": {
+            "name": "巧克力店",
+            "terms": "巧克力商店"
+        },
+        "man_made/pumping_station": {
+            "name": "抽水站",
+            "terms": "抽水站"
+        },
+        "building/bunker": {
+            "name": "地堡"
+        },
+        "emergency/defibrillator": {
+            "name": "去顫器",
+            "terms": "去顫器,心臟去顫器,自動體外心臟去顫器,AED"
+        },
+        "aeroway/helipad": {
+            "name": "直昇機坪",
+            "terms": "直昇機停機坪,直升機停機坪"
+        },
+        "amenity/dentist": {
+            "name": "牙醫",
+            "terms": "牙醫診所"
+        },
+        "highway/footway/zebra-raised": {
+            "name": "有斑馬線人行穿越道（凸起）"
+        },
+        "landuse/residential/apartments": {
+            "name": "公寓大樓",
+            "terms": "公寓大樓,公寓"
+        },
+        "amenity/place_of_worship/muslim": {
+            "name": "清真寺",
+            "terms": "清真寺"
+        },
+        "shop/tea": {
+            "name": "茶行",
+            "terms": "茶葉店"
+        },
+        "aerialway/chair_lift": {
+            "name": "吊椅",
+            "terms": "纜椅"
+        },
+        "landuse/pond": {
+            "name": "池塘"
+        },
+        "shop/supermarket": {
+            "name": "超級市場",
+            "terms": "超市"
+        },
+        "office/political_party": {
+            "name": "政黨辦公室",
+            "terms": "黨部,競選總部,服務處"
+        },
+        "shop/wholesale": {
+            "name": "批發商",
+            "terms": "批發商,批發店"
+        },
+        "building/stadium": {
+            "name": "體育館",
+            "terms": "體育館、運動中心"
+        },
+        "landuse/military/range": {
+            "name": "軍用靶場",
+            "terms": "靶場,軍用靶場,射擊場,軍事靶場"
+        },
+        "man_made/silo": {
+            "name": "地窖",
+            "terms": "地窖,筒倉"
+        },
+        "man_made/surveillance/camera": {
+            "name": "監視攝影機",
+            "terms": "監視器"
+        },
+        "building/hut": {
+            "name": "棚屋",
+            "terms": "棚屋"
+        },
+        "shop/candles": {
+            "name": "燈具店",
+            "terms": "燈具行"
+        },
+        "natural/saddle": {
+            "name": "埡口",
+            "terms": "埡口,山口,鞍部"
+        },
+        "natural/water/basin": {
+            "name": "水池",
+            "terms": "水池"
+        },
+        "building/transportation": {
+            "name": "大眾運輸建築物",
+            "terms": "轉運站、車站"
+        },
+        "landuse/orchard": {
+            "name": "果園",
+            "terms": "果園"
+        },
+        "type/restriction/no_right_turn": {
+            "name": "不准右轉",
+            "terms": "禁止右轉,不可以右轉"
+        },
+        "shop/car": {
+            "name": "汽車行",
+            "terms": "賣車處"
+        },
+        "building/stable": {
+            "name": "馬房",
+            "terms": "馬房"
+        },
+        "amenity/public_bookcase": {
+            "name": "漂書站",
+            "terms": "可以自由取用、放置書籍的書架, 開放書架,公共書架"
+        },
+        "tourism/camp_site": {
+            "name": "露營地",
+            "terms": "營地"
+        },
+        "barrier/fence/railing": {
+            "name": "欄杆",
+            "terms": "欄杆"
+        },
+        "golf/hole": {
+            "name": "球洞",
+            "terms": "球洞"
+        },
+        "building/semidetached_house": {
+            "name": "半獨立式房屋",
+            "terms": "半獨立式住宅,半獨立式房子"
+        },
+        "railway/abandoned": {
+            "name": "鐵路遺跡",
+            "terms": "舊鐵路線"
+        },
+        "type/restriction": {
+            "name": "限制",
+            "terms": "限制"
+        },
+        "playground/seesaw": {
+            "name": "蹺蹺板",
+            "terms": "蹺蹺板"
+        },
+        "shop/bathroom_furnishing": {
+            "name": "衛浴用品店",
+            "terms": "衛浴店"
+        },
+        "shop/beauty/tanning": {
+            "name": "日曬沙龍",
+            "terms": "日光浴店,曬黑沙龍"
+        },
+        "amenity/water_point": {
+            "name": "RV 飲用水",
+            "terms": "運水車"
+        },
+        "public_transport/station": {
+            "name": "轉運站",
+            "terms": "客運站"
+        },
+        "playground/balance_beam": {
+            "name": "平衡梁",
+            "terms": "平衡梁"
+        },
+        "leisure/hackerspace": {
+            "name": "駭客空間",
+            "terms": "駭客空間,Hackerspace"
+        },
+        "landuse/forest": {
+            "name": "受管理的森林",
+            "terms": "受管理的森林,森林"
+        },
+        "leisure/bandstand": {
+            "name": "演奏臺",
+            "terms": "演奏臺,露天音樂臺,音樂臺"
+        },
+        "amenity/food_court": {
+            "name": "美食街",
+            "terms": "美食街,美食中心,食堂"
+        },
+        "natural/beach": {
+            "name": "沙灘",
+            "terms": "沙灘,海灘"
+        },
+        "junction": {
+            "name": "路口",
+            "terms": "槽化車道,道路交叉,十字路口,丁字路,路"
+        },
+        "office/coworking": {
+            "name": "共同工作空間",
+            "terms": "共同工作空間,共用工作空間,coworking space"
+        },
+        "vertex": {
+            "name": "其他",
+            "terms": "其他"
+        },
+        "type/boundary": {
+            "name": "邊界",
+            "terms": "界線"
+        },
+        "man_made/monitoring_station": {
+            "name": "監測站",
+            "terms": "監測點"
+        },
+        "aeroway/taxiway": {
+            "name": "滑行道",
+            "terms": "滑行道"
+        },
+        "craft/optician": {
+            "name": "眼鏡行"
+        },
+        "seamark/beacon_isolated_danger": {
+            "name": "警告信號燈",
+            "terms": "危險信號燈"
+        },
+        "waterway/waterfall": {
+            "name": "瀑布",
+            "terms": "Waterfall,瀑布,跌水"
+        },
+        "office/guide": {
+            "name": "導遊辦公室",
+            "terms": "導遊"
+        },
+        "type/route": {
+            "name": "路線",
+            "terms": "路線"
+        },
+        "amenity/vending_machine/public_transport_tickets": {
+            "name": "車票販賣機",
+            "terms": "車票自動販賣機,交通票券販賣機"
+        },
+        "man_made/embankment": {
+            "name": "堤防",
+            "terms": "基堤"
+        },
+        "shop/tobacco": {
+            "name": "菸店",
+            "terms": "香菸店"
+        },
+        "building/shed": {
+            "name": "小屋",
+            "terms": "小屋"
+        },
+        "building/detached": {
+            "name": "獨立式房屋",
+            "terms": "獨立式住宅,獨立式房子"
+        },
+        "shop/charity": {
+            "name": "慈善商店",
+            "terms": "慈善商店,義賣店"
+        },
+        "healthcare/occupational_therapist": {
+            "name": "職能治療師",
+            "terms": "職能治療師"
+        },
+        "shop/musical_instrument": {
+            "name": "音樂樂器行",
+            "terms": "樂器行"
+        },
+        "man_made/wastewater_plant": {
+            "name": "污水處理廠",
+            "terms": "污水處理廠,水資源回收中心"
+        },
+        "shop/catalogue": {
+            "name": "目錄店",
+            "terms": "目錄店"
+        },
+        "landuse/plant_nursery": {
+            "name": "育苗場",
+            "terms": "種苗中心"
+        },
+        "shop/money_lender": {
+            "name": "地下錢莊",
+            "terms": "借貸人,放款人,汽車借款"
+        },
+        "shop/radiotechnics": {
+            "name": "無線電/電子零件店",
+            "terms": "無線電/電子零件店"
+        },
+        "building/college": {
+            "name": "學院校舍",
+            "terms": "學院建築物、技術學院建築、學校建築、大學建築物、大學校舍"
+        },
+        "amenity/nursing_home": {
+            "name": "養老院"
+        },
+        "shop/ticket": {
+            "name": "賣票亭",
+            "terms": "售票處"
+        },
+        "amenity/social_facility/group_home": {
+            "name": "老人之家",
+            "terms": "老人安養院,榮民之家"
+        },
+        "natural/water/reservoir": {
+            "name": "水庫",
+            "terms": "水塘,貯水庫"
+        },
+        "craft/saddler": {
+            "name": "車船坐椅",
+            "terms": "汽車坐椅"
+        },
+        "landuse/quarry": {
+            "name": "礦區",
+            "terms": "礦場,採礦場"
+        },
+        "barrier/border_control": {
+            "name": "國境口岸",
+            "terms": "出入境管制站,邊境管制站,口岸,國境管制站"
+        },
+        "landuse/basin": {
+            "name": "水池"
+        },
+        "leisure/track": {
+            "name": "賽道（非賽車運動）",
+            "terms": "賽道（非賽車運動）"
+        },
+        "aerialway/mixed_lift": {
+            "name": "混合纜車",
+            "terms": "混合纜車"
+        },
+        "piste/nordic": {
+            "name": "北歐或越野滑雪道/滑雪道",
+            "terms": "北歐或越野滑雪道/滑雪道"
+        },
+        "shop/paint": {
+            "name": "油漆行",
+            "terms": "油漆店"
+        },
+        "historic/ruins": {
+            "name": "遺址",
+            "terms": "遺址"
+        },
+        "highway/secondary": {
+            "name": "次要道路",
+            "terms": "次要道路"
+        },
+        "natural/fell": {
+            "name": "高原荒地",
+            "terms": "高原荒地"
+        },
+        "amenity/fast_food/sandwich": {
+            "name": "三明治快餐廳",
+            "terms": "三明治快餐廳"
+        },
+        "amenity/restaurant/japanese": {
+            "name": "日式餐廳",
+            "terms": "日本餐廳"
+        },
+        "natural/heath": {
+            "name": "矮灌木叢",
+            "terms": "矮灌木叢"
+        },
+        "amenity/fast_food/kebab": {
+            "name": "炸肉串速食店",
+            "terms": "炸肉串店"
+        },
+        "landuse/greenfield": {
+            "name": "未開發地帶",
+            "terms": "未開發地帶,未開發地區"
+        },
+        "office/accountant": {
+            "name": "會計師事務所",
+            "terms": "會計師辦公室,會計師"
+        },
+        "seamark": {
+            "name": "海標"
+        },
+        "shop/leather": {
+            "name": "皮革店",
+            "terms": "皮革店"
+        },
+        "building/commercial": {
+            "name": "商業建築物",
+            "terms": "商業建築,商業建物,商業大樓"
+        },
+        "historic/wreck": {
+            "name": "沈船"
+        },
+        "club/sport": {
+            "name": "運動俱樂部",
+            "terms": "運動俱樂部,運動隊伍"
+        },
+        "amenity/bicycle_parking": {
+            "name": "單車停車場",
+            "terms": "腳踏車停車場,自行車停車場"
+        },
+        "amenity/compressed_air": {
+            "name": "壓縮空氣",
+            "terms": "冷氣,冷氣機"
+        },
+        "man_made/water_well": {
+            "name": "水井",
+            "terms": "水井,井,取水井"
+        },
+        "shop/organic": {
+            "name": "有機產品店",
+            "terms": "有機食品店"
+        },
+        "waterway/ditch": {
+            "name": "溝渠",
+            "terms": "水溝"
+        },
+        "shop/fuel": {
+            "name": "燃料店",
+            "terms": "燃料店,加油站"
+        },
+        "power/generator/source/wind": {
+            "name": "風機",
+            "terms": "風力發電機"
+        },
+        "leisure/fitness_station/stairs": {
+            "name": "運動椅",
+            "terms": "運動椅"
+        },
+        "landuse/railway": {
+            "name": "鐵路用地",
+            "terms": "鐵路通道"
+        },
+        "amenity/cinema": {
+            "name": "電影院",
+            "terms": "戲館,說書樓,Cinema"
+        },
+        "type/route/bus": {
+            "name": "公車路線",
+            "terms": "公共汽車路線,客運路線,巴士路線"
+        },
+        "natural/water/stream": {
+            "name": "溪流",
+            "terms": "溪流,小溪"
+        },
+        "type/route_master": {
+            "name": "路線總纜",
+            "terms": "路線總目"
+        },
+        "landuse/farm": {
+            "name": "農場"
+        },
+        "place/city_block": {
+            "name": "城市街區",
+            "terms": "街區"
+        },
+        "public_transport/platform_subway": {
+            "name": "捷運停車處 / 月台",
+            "terms": "捷運停車處,捷運月台,地鐵停車處,地鐵月台"
+        },
+        "natural/wood": {
+            "name": "樹林",
+            "terms": "樹林"
+        },
+        "amenity/restaurant/chinese": {
+            "name": "中式餐廳",
+            "terms": "中國餐廳"
+        },
+        "leisure/pitch/rugby_union": {
+            "name": "聯合式橄欖球",
+            "terms": "聯合式橄欖球"
+        },
+        "craft/distillery": {
+            "name": "酒廠",
+            "terms": "釀酒廠,造酒廠"
+        },
+        "aeroway/apron": {
+            "name": "停機坪",
+            "terms": "停機坪"
+        },
+        "shop/tattoo": {
+            "name": "刺青店",
+            "terms": "刺青行,Tattoo Parlor"
+        },
+        "shop/health_food": {
+            "name": "健康食品店",
+            "terms": "保康食品店"
+        },
+        "playground/roundabout": {
+            "name": "旋轉輪",
+            "terms": "旋轉輪"
+        },
+        "power/generator/method/photovoltaic": {
+            "name": "太陽能板",
+            "terms": "太陽能板"
+        },
+        "amenity/shelter/public_transport": {
+            "name": "轉運站亭子",
+            "terms": "轉運站"
+        },
+        "shop/optician": {
+            "name": "眼鏡行",
+            "terms": "眼鏡行"
+        },
+        "public_transport/platform_light_rail": {
+            "name": "輕軌停車處/ 月台",
+            "terms": "輕軌停車處,輕軌月台"
+        },
+        "type/route/foot": {
+            "name": "步行路線",
+            "terms": "步行路線"
+        },
+        "barrier/block": {
+            "name": "阻礙物",
+            "terms": "阻礙物"
+        },
+        "amenity/theatre/type/amphi": {
+            "name": "露天劇場",
+            "terms": "露天劇場"
+        },
+        "relation": {
+            "name": "關係",
+            "terms": "關係"
+        },
+        "shop/medical_supply": {
+            "name": "醫療器材行",
+            "terms": "醫療用品店"
+        },
+        "type/restriction/only_straight_on": {
+            "name": "只能直行",
+            "terms": "只能直行"
+        },
+        "landuse/industrial/scrap_yard": {
+            "name": "廢料場",
+            "terms": "廢料儲存地"
+        },
+        "amenity/recycling": {
+            "name": "回收"
+        },
+        "camp_site/camp_pitch": {
+            "name": "露營營地",
+            "terms": "露營營地,露營場地,營地"
+        },
+        "shop/gas": {
+            "name": "瓦斯店",
+            "terms": "瓦斯店"
+        },
+        "landuse/commercial": {
+            "name": "商業用地",
+            "terms": "商業用地"
+        },
+        "seamark/mooring": {
+            "name": "繫泊處",
+            "terms": "繫泊處"
+        },
+        "natural/ridge": {
+            "name": "山脊",
+            "terms": "山陵"
+        },
+        "natural": {
+            "name": "自然景觀"
+        },
+        "aerialway/magic_carpet": {
+            "name": "輸送帶",
+            "terms": "輸送帶"
+        },
+        "amenity/post_box": {
+            "name": "郵筒",
+            "terms": "郵箱,Postbox,Mailbox,投遞處"
+        },
+        "public_transport/station_tram": {
+            "name": "電車站",
+            "terms": "電車站"
+        },
+        "emergency/official": {
+            "name": "供官方緊急通行"
+        },
+        "playground/sandpit": {
+            "name": "沙坑",
+            "terms": "沙坑"
+        },
+        "railway/derail": {
+            "name": "鐵路脫軌器",
+            "terms": "鐵路脫軌器"
+        },
+        "leisure/bowling_alley": {
+            "name": "保齡球館",
+            "terms": "保齡球館,保齡球場,地球社"
+        },
+        "man_made/mast": {
+            "name": "塔狀天線",
+            "terms": "塔狀天線,天線"
+        },
+        "attraction/river_rafting": {
+            "name": "激流船",
+            "terms": "激流船"
+        },
+        "amenity/payment_terminal": {
+            "name": "繳費窗口",
+            "terms": "繳費處"
+        },
+        "leisure/bird_hide": {
+            "name": "鳥類棲息處",
+            "terms": "鳥類棲息處,鳥類棲地,鳥類藏身處"
+        },
+        "shop/fishing": {
+            "name": "釣魚用品店",
+            "terms": "釣魚用品店"
+        },
+        "amenity/vending_machine/cigarettes": {
+            "name": "香菸販賣機",
+            "terms": "香菸自動販賣機,販賣機"
+        },
+        "craft/tiler": {
+            "name": "地磚鋪設工程",
+            "terms": "地磚鋪設工程"
+        },
+        "shop/frame": {
+            "name": "表框店",
+            "terms": "表框店, 裱框店"
+        },
+        "barrier/kerb": {
+            "name": "路緣",
+            "terms": "路緣"
+        },
+        "leisure/nature_reserve": {
+            "name": "自然保留區",
+            "terms": "自然保護區"
+        },
+        "shop/antiques": {
+            "name": "古董店",
+            "terms": "古董商店"
+        },
+        "playground/basket_spinner": {
+            "name": "籃子旋轉器",
+            "terms": "籃子旋轉器"
+        },
+        "shop/fabric": {
+            "name": "帆布店",
+            "terms": "織布店,布店"
+        },
+        "craft/brewery": {
+            "name": "釀酒匠",
+            "terms": "釀酒廠"
+        },
+        "highway/turning_circle": {
+            "name": "回轉圈",
+            "terms": "回轉圈"
+        },
+        "shop/coffee": {
+            "name": "咖啡店",
+            "terms": "咖啡廳, 咖啡館"
+        },
+        "shop/e-cigarette": {
+            "name": "電子菸商店",
+            "terms": "電子菸商店,電子菸販賣店,電子菸販賣處"
+        },
+        "tourism/wilderness_hut": {
+            "name": "野外小屋",
+            "terms": "野外小屋"
+        },
+        "amenity/dive_centre": {
+            "name": "潛水中心",
+            "terms": "潛水服務中心"
+        },
+        "amenity/vending_machine/feminine_hygiene": {
+            "name": "女性衛生用品自動販賣機",
+            "terms": "女性衛生用品自動販賣機,衛生棉自動販賣機,棉條自動販賣機"
+        },
+        "shop/clothes": {
+            "name": "服飾店",
+            "terms": "衣服店,賣衣店"
+        },
+        "amenity/restaurant/noodle": {
+            "name": "麵店",
+            "terms": "麵店"
+        },
+        "aeroway/aerodrome": {
+            "name": "機場",
+            "terms": "機場,飛機場"
+        },
+        "amenity/bicycle_rental": {
+            "name": "單車出租",
+            "terms": "腳踏車出租,自行車出租"
+        },
+        "shop/gift": {
+            "name": "禮品店",
+            "terms": "禮物店"
+        },
+        "craft/locksmith": {
+            "name": "鎖匠"
+        },
+        "leisure/sports_centre": {
+            "name": "體育中心／設施",
+            "terms": "體育中心,體育設施"
+        },
+        "place": {
+            "name": "地方"
+        },
+        "power": {
+            "name": "電力設施"
+        },
+        "public_transport/platform_train": {
+            "name": "火車停車處 / 月台",
+            "terms": "火車停車處,火車月台"
+        },
+        "leisure/fitness_station/push-up": {
+            "name": "伏地挺身站",
+            "terms": "伏地挺身站"
+        },
+        "aerialway/station": {
+            "name": "纜車站"
+        },
+        "building/house": {
+            "name": "住宅",
+            "terms": "住宅、平房、透天厝"
+        },
+        "piste/sleigh": {
+            "name": "雪橇滑雪道",
+            "terms": "雪橇滑雪道"
+        },
+        "leisure/marina": {
+            "name": "遊艇碼頭",
+            "terms": "遊艇碼頭"
+        },
+        "craft/tailor": {
+            "name": "裁縫"
+        },
+        "amenity/restaurant/american": {
+            "name": "美國餐廳",
+            "terms": "美式餐廳"
+        },
+        "piste/sled": {
+            "name": "雪橇滑雪道",
+            "terms": "雪橇滑雪道"
+        },
+        "barrier/gate": {
+            "name": "閘門",
+            "terms": "閘門"
+        },
+        "shop/motorcycle": {
+            "name": "機車行",
+            "terms": "摩托車行,機器腳踏車行"
+        },
+        "waterway/river": {
+            "name": "河流",
+            "terms": "河川"
+        },
+        "office/architect": {
+            "name": "建築師事務所",
+            "terms": "建築師辦公室,建築師"
+        },
+        "railway/subway": {
+            "name": "捷運",
+            "terms": "地鐵,地下鐵,管子"
+        },
+        "amenity/money_transfer": {
+            "name": "匯款站",
+            "terms": "匯款處"
+        },
+        "highway/elevator": {
+            "name": "電梯",
+            "terms": "電梯,升降梯"
+        },
+        "railway/miniature": {
+            "name": "微型鐵路",
+            "terms": "微型鐵路,微型鐵軌"
+        },
+        "shop/carpet": {
+            "name": "地毯店",
+            "terms": "地毯商店"
+        },
+        "craft": {
+            "name": "工藝",
+            "terms": "工藝"
+        },
+        "traffic_calming/chicane": {
+            "name": "減速彎道",
+            "terms": "減速彎道"
+        },
+        "public_transport/station_bus": {
+            "name": "轉運站",
+            "terms": "客運站"
+        },
+        "shop/butcher": {
+            "name": "肉販",
+            "terms": "肉販"
+        },
+        "barrier/bollard": {
+            "name": "護柱",
+            "terms": "護柱,船柱"
+        },
+        "leisure/golf_course": {
+            "name": "高爾夫球場",
+            "terms": "高爾夫球場"
+        },
+        "barrier": {
+            "name": "屏障物",
+            "terms": "屏障物、阻擋物、柵欄"
+        },
+        "historic/castle": {
+            "name": "城堡",
+            "terms": "城堡"
+        },
+        "office/surveyor": {
+            "name": "測量員辦公室",
+            "terms": "地圖測繪"
+        },
+        "shop/car_repair": {
+            "name": "汽車維修店",
+            "terms": "汽車保養店"
+        },
+        "craft/hvac": {
+            "name": "空調工程",
+            "terms": "空調工程"
+        },
+        "highway/path": {
+            "name": "路徑",
+            "terms": "路徑"
+        },
+        "leisure/water_park": {
+            "name": "水上樂園",
+            "terms": "水上公園,水上遊樂園"
+        },
+        "shop/sewing": {
+            "name": "縫紉用品店",
+            "terms": "縫紉用品店"
+        },
+        "attraction/train": {
+            "name": "遊樂園小火車",
+            "terms": "遊樂園小火車"
+        },
+        "landuse/meadow": {
+            "name": "畜牧用地",
+            "terms": "牧場、放牧地"
+        },
+        "shop/convenience": {
+            "name": "便利商店",
+            "terms": "便利商店"
+        },
+        "amenity/bus_station": {
+            "name": "客運站"
+        },
+        "highway/crossing/zebra": {
+            "name": "標記人行穿越道"
+        },
+        "highway/steps/conveying": {
+            "name": "電梯",
+            "terms": "升降梯"
+        },
+        "shop/books": {
+            "name": "書店",
+            "terms": "書局"
+        },
+        "highway/service": {
+            "name": "服務道路",
+            "terms": "服務性道路、設施道路、場域道路"
+        },
+        "piste/ice_skate": {
+            "name": "滑冰滑雪道",
+            "terms": "滑冰滑雪道"
+        },
+        "waterway/drain": {
+            "name": "渠",
+            "terms": "灌溉水圳"
+        },
+        "highway/residential": {
+            "name": "住宅區道路",
+            "terms": "住宅區道路"
+        },
+        "historic/wayside_shrine": {
+            "name": "路邊神祠",
+            "terms": "路邊小廟"
+        },
+        "amenity/restaurant/turkish": {
+            "name": "土耳其餐廳",
+            "terms": "土耳其餐廳"
+        },
+        "type/boundary/administrative": {
+            "name": "行政界線",
+            "terms": "行政邊界"
+        },
+        "landuse/military/office": {
+            "name": "軍事單位辦公室",
+            "terms": "軍事辦公室"
+        },
+        "amenity/watering_place": {
+            "name": "動物飲水區",
+            "terms": "動物飲水區"
+        },
+        "public_transport/station_train_halt": {
+            "name": "火車站 (小站/招呼)",
+            "terms": "招呼站,小站"
+        },
+        "emergency/ambulance_station": {
+            "name": "救護站",
+            "terms": "急救站"
+        },
+        "healthcare/podiatrist": {
+            "name": "足科醫師",
+            "terms": "足科醫師,足科醫生"
+        },
+        "amenity/motorcycle_parking": {
+            "name": "機車停車場",
+            "terms": "機車停車場,速克達停車場,摩托車停車場"
+        },
+        "shop/craft": {
+            "name": "工藝品店",
+            "terms": "工藝品店,工藝品商店,手工藝店,手作工坊"
+        },
+        "line": {
+            "name": "線段",
+            "terms": "線"
+        },
+        "amenity/vehicle_inspection": {
+            "name": "車輛檢查",
+            "terms": "車輛檢查肖"
+        },
+        "amenity/kindergarten": {
+            "name": "育幼院/幼兒園範圍",
+            "terms": "育幼院/幼稚園,育幼院/幼稚園用地,育幼院,幼兒園,幼稚園,Preschool,Kindergarten"
+        },
+        "man_made/tower/observation": {
+            "name": "瞭望塔",
+            "terms": "瞭望塔"
+        },
+        "waterway/weir": {
+            "name": "水壩",
+            "terms": "堰堤"
+        },
+        "craft/metal_construction": {
+            "name": "鐵工工程",
+            "terms": "鐵工工程"
+        },
+        "craft/painter": {
+            "name": "油漆工程",
+            "terms": "油漆工程"
+        },
+        "public_transport/stop_area": {
+            "name": "轉運站區",
+            "terms": "客運站區"
+        },
+        "craft/carpet_layer": {
+            "name": "地氈工程",
+            "terms": "地氈工程"
+        },
+        "man_made/flagpole": {
+            "name": "旗桿",
+            "terms": "旗桿"
+        },
+        "highway/crossing/unmarked-raised": {
+            "name": "無標記人行穿越道（凸起）",
+            "terms": "無斑馬線穿越道（凸起）"
+        },
+        "tourism/attraction": {
+            "name": "觀光景點",
+            "terms": "觀光點"
+        },
+        "man_made": {
+            "name": "人工設施"
+        },
+        "barrier/kerb/lowered": {
+            "name": "低路緣 ",
+            "terms": "低路緣"
+        },
+        "golf/fairway": {
+            "name": "球道",
+            "terms": "球道"
+        },
+        "leisure/fitness_station/sit-up": {
+            "name": "仰臥起坐台",
+            "terms": "仰臥起坐台"
+        },
+        "public_transport/station_subway": {
+            "name": "捷運站",
+            "terms": "地鐵站,地下鐵站"
+        },
+        "tourism/alpine_hut": {
+            "name": "高山小屋",
+            "terms": "高山小屋"
+        },
+        "tourism/information/office": {
+            "name": "旅遊服務中心",
+            "terms": "遊客中心"
+        },
+        "shop/alcohol": {
+            "name": "酒類專賣店",
+            "terms": "酒類商店,酒品專賣店,酒莊"
+        },
+        "shop/fireplace": {
+            "name": "壁爐商店",
+            "terms": "壁爐店"
+        },
+        "tourism/viewpoint": {
+            "name": "觀景點",
+            "terms": "風景點"
+        },
+        "craft/handicraft": {
+            "name": "手工藝",
+            "terms": "手工藝"
+        },
+        "landuse/construction": {
+            "name": "建築工地",
+            "terms": "建築工程"
+        },
+        "shop/trade": {
+            "name": "材料行",
+            "terms": "材料行,供應商,貿易商"
+        },
+        "piste/downhill/halfpipe": {
+            "name": "半管",
+            "terms": "U 型管"
+        },
+        "shop/motorcycle_repair": {
+            "name": "摩托車維修店",
+            "terms": "摩托車維修店,機車維修店,機車行,摩托車行"
+        },
+        "aeroway": {
+            "name": "機場相關設施"
+        },
+        "aeroway/terminal": {
+            "name": "機場航廈",
+            "terms": "航廈,機場大堂"
+        },
+        "emergency/life_ring": {
+            "name": "救生圈",
+            "terms": "救生圈"
+        }
+    }
+}

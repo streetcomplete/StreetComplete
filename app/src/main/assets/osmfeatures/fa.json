@@ -1,0 +1,2746 @@
+{
+    "presets": {
+        "office/administrative": {
+            "name": "اداره حکومتی"
+        },
+        "amenity/car_rental": {
+            "name": "کرایه ماشین"
+        },
+        "place/city": {
+            "name": "شهر"
+        },
+        "building": {
+            "name": "ساختمان"
+        },
+        "amenity/restaurant/indian": {
+            "name": "رستوران هندی"
+        },
+        "craft/dressmaker": {
+            "name": "خیاطی زنانه"
+        },
+        "barrier/lift_gate": {
+            "name": "راهبند بازویی",
+            "terms": "گیت بالارونده"
+        },
+        "shop/agrarian": {
+            "name": "فروشگاه لوازم کشاورزی",
+            "terms": "ابزار آلات کشاورزی"
+        },
+        "internet_access/wlan": {
+            "name": "وای‌فای",
+            "terms": "وای فای, نقطه دسترسی, نقطه اتصال, hotspot, نقطه اتصال وای فای, بی سیم, wifi hotspot"
+        },
+        "shop/hunting": {
+            "name": "فروشگاه لوازم شکار",
+            "terms": "شکار"
+        },
+        "amenity/waste_disposal": {
+            "name": "زباله‌دان بزرگ",
+            "terms": "آشغال دان بزرگ, سطل زباله بزرگ, سطل زباله, زباله دان محله, سطل آشغال محله"
+        },
+        "type/restriction/only_right_turn": {
+            "name": "فقط پیچیدن به راست"
+        },
+        "attraction/carousel": {
+            "name": "چرخ فلک"
+        },
+        "craft/sawmill": {
+            "name": "چوب بری"
+        },
+        "emergency/yes": {
+            "name": "دسترسی اضطراری بله"
+        },
+        "healthcare/audiologist": {
+            "name": "شنوایی سنجی"
+        },
+        "highway/motorway": {
+            "name": "آزادراه",
+            "terms": "تندراه, اتوبان"
+        },
+        "natural/bay": {
+            "name": "خلیج"
+        },
+        "amenity/fast_food/mexican": {
+            "name": "فست‌فود مکزیکی"
+        },
+        "building/bungalow": {
+            "name": "بانگالو"
+        },
+        "building/terrace": {
+            "name": "خانه های ردیفی"
+        },
+        "aeroway/runway": {
+            "name": "باند فرودگاه"
+        },
+        "amenity/studio": {
+            "name": "استدیو"
+        },
+        "landuse/military": {
+            "name": "محیط نظامی"
+        },
+        "shop/seafood": {
+            "name": "فروشگاه غذای دریایی",
+            "terms": "ماهی فروشی"
+        },
+        "waterway/sanitary_dump_station": {
+            "name": "دفع توالت دریایی"
+        },
+        "barrier/city_wall": {
+            "name": "دیوار شهر"
+        },
+        "office/employment_agency": {
+            "name": "آژانس کاریابی"
+        },
+        "office/government/register_office": {
+            "name": "اداره ثبت",
+            "terms": "دفتر ثبت"
+        },
+        "amenity/waste_transfer_station": {
+            "name": "ایستگاه انتقال زباله"
+        },
+        "boundary/administrative": {
+            "name": "مرز حکومتی"
+        },
+        "man_made/surveillance": {
+            "name": "تجهیزات نظارتی"
+        },
+        "building/ruins": {
+            "name": "خرابه های ساختمان"
+        },
+        "leisure/pitch/american_football": {
+            "name": "میدان فوتبال آمریکایی"
+        },
+        "traffic_calming/bump": {
+            "name": "سرعتگیر",
+            "terms": "سرعتکاه, کاهش سرعت, سرعت, آهسته"
+        },
+        "craft/carpenter": {
+            "name": "نجاری"
+        },
+        "railway/level_crossing": {
+            "name": "تقاطع راه‌آهن (با جاده)",
+            "terms": "تقاطع جاده با راه‌آهن"
+        },
+        "amenity/restaurant/greek": {
+            "name": "رستوران یونانی"
+        },
+        "man_made/pier": {
+            "name": "اسکله"
+        },
+        "shop/farm": {
+            "name": "جایگاه عرضه محصول"
+        },
+        "waterway/stream_intermittent": {
+            "name": "نهر غیردائمی",
+            "terms": "فصلی, دوره‌ای, نهر فصلی, نهر دوره‌ای"
+        },
+        "highway/road": {
+            "name": "جادهٔ ناشناخته",
+            "terms": "جاده, خیابان, راه"
+        },
+        "address": {
+            "name": "نشانی",
+            "terms": "آدرس, ادرس, نشانی"
+        },
+        "highway/primary_link": {
+            "name": "اتصال درجه یک",
+            "terms": "رمپ, لچکی, خیابان, درجه ۱, اتصال, لینک, درجه 1"
+        },
+        "shop/greengrocer": {
+            "name": "سبزی فروشی",
+            "terms": "تره بار, میوه فروشی"
+        },
+        "highway/traffic_mirror": {
+            "name": "آینه ترافیکی",
+            "terms": "آینه رفت و آمد, پیچ, دور, ایمنی, دید, نقطه کور, آینه محدب, آینه کوژ, آیینه, آیینه ترافیکی"
+        },
+        "aerialway/rope_tow": {
+            "name": "طناب بالابر",
+            "terms": "بالابر طنابی, طناب"
+        },
+        "office/company": {
+            "name": "دفتر شرکت خصوصی"
+        },
+        "shop/dairy": {
+            "name": "فروشگاه لبنی",
+            "terms": "لبنیاتی, ماست بندی, شیر, پنیر, خامه"
+        },
+        "type/route/road": {
+            "name": "مسیر جاده"
+        },
+        "amenity/planetarium": {
+            "name": "آسمان نما"
+        },
+        "office/financial": {
+            "name": "اداره مالی"
+        },
+        "highway/track": {
+            "name": "جادهٔ خاکی رسیدگی‌نشده (track)",
+            "terms": "راه جنگلی, راه روستایی, مسیر تراکتور, مسیر مزرعه, مسیر زمین کشاورزی, مسیر کشاورزی, رد چرخ ماشین, خط چرخ, جیپ, 4x4, 4wd, آفرود, برون جاده, دو دیفرانسیل, atv, راه جیپ رو, جیپ رو"
+        },
+        "shop/wine": {
+            "name": "فروشگاه شراب"
+        },
+        "shop/hairdresser": {
+            "name": "آرایش و پیرایش",
+            "terms": "آرایشگاه, پیرایشگاه, سلمانی, سلمونی"
+        },
+        "building/school": {
+            "name": "ساختمان مدرسه",
+            "terms": "آکادمی، دبیرستان، مدرسه، راهنمایی، دبستان، پیش دانشگاهی، ابتدایی"
+        },
+        "tourism/information/board": {
+            "name": "تابلوی اطلاعات",
+            "terms": "صفحه‌ی اطلاعات, بورد اطلاعات, تابلوی اعلانات, اعلانات, اطلاعات"
+        },
+        "amenity/restaurant/french": {
+            "name": "رستوران فرانسوی"
+        },
+        "shop/furnace": {
+            "name": "فروشگاه مشعل و اجاق"
+        },
+        "landuse/industrial": {
+            "name": "محیط صنعتی"
+        },
+        "type/route/hiking": {
+            "name": "مسیر پیاده‌گردی",
+            "terms": "مسیر پیاده, مسیر پیاده‌روی"
+        },
+        "tourism/hostel": {
+            "name": "مسافرخانه"
+        },
+        "leisure/pitch/volleyball": {
+            "name": "سالن والیبال"
+        },
+        "amenity/veterinary": {
+            "name": "دامپزشکی"
+        },
+        "craft/pottery": {
+            "name": "سفالگری"
+        },
+        "craft/roofer": {
+            "name": "سقف ساز"
+        },
+        "amenity/restaurant/mexican": {
+            "name": "رستوران مکزیکی"
+        },
+        "shop/massage": {
+            "name": "فروشگاه ماساژ"
+        },
+        "area": {
+            "name": "محدوده",
+            "terms": "فضا, محوطه"
+        },
+        "landuse/landfill": {
+            "name": "محل دفن زباله",
+            "terms": "خاک‌چال, گورستان پسماند شهری, گورستان زایدات"
+        },
+        "tourism/aquarium": {
+            "name": "آکواریوم",
+            "terms": "آکواریوم ماهی"
+        },
+        "type/site": {
+            "name": "سایت",
+            "terms": "سایت، منطقه"
+        },
+        "type/route/subway": {
+            "name": "خط مترو",
+            "terms": "مسیر مترو"
+        },
+        "amenity/fountain": {
+            "name": "فواره"
+        },
+        "shop/doityourself": {
+            "name": "فروشگاه DIY",
+            "terms": "خودت انجام بده, بهسازی خانه, ابزار فروشی, ابزارآلات, خانگی"
+        },
+        "amenity/taxi": {
+            "name": "تاکسی",
+            "terms": "آژانس"
+        },
+        "amenity/smoking_area": {
+            "name": "منطقه سیگار کشیدن"
+        },
+        "man_made/water_tower": {
+            "name": "برج مخزن آب"
+        },
+        "shop/dry_cleaning": {
+            "name": "خشکشویی"
+        },
+        "tourism/caravan_site": {
+            "name": "پارکینگ ماشین کاروان",
+            "terms": "کمپ"
+        },
+        "craft/clockmaker": {
+            "name": "ساعت سازی"
+        },
+        "shop/furniture": {
+            "name": "فروشگاه مبلمان",
+            "terms": "میز و صندلی"
+        },
+        "advertising/billboard": {
+            "name": "تابلو تبلیغاتی",
+            "terms": "تابلو, بیلبورد, تبلیغ,"
+        },
+        "shop/bakery": {
+            "name": "نانوایی"
+        },
+        "emergency/phone": {
+            "name": "تلفن اورژانسی",
+            "terms": "تلفن اضطراری"
+        },
+        "golf/bunker": {
+            "name": "تله شن و ماسه"
+        },
+        "shop/houseware": {
+            "name": "فروشگاه لوازم خانگی "
+        },
+        "leisure/pitch/soccer": {
+            "name": "میدان فوتبال"
+        },
+        "type/multipolygon": {
+            "name": "چندچندضلعی"
+        },
+        "shop/vacant": {
+            "name": "فروشگاه بدون فروشنده"
+        },
+        "amenity/social_facility/homeless_shelter": {
+            "name": "سرپناه بی خانمان‌ها"
+        },
+        "highway/turning_loop": {
+            "name": "حلقهٔ گردش (جزیره)",
+            "terms": "حلقه برگردان (ایسلند), لوپ"
+        },
+        "leisure/miniature_golf": {
+            "name": "گلف مینیاتوری"
+        },
+        "amenity/vending_machine/ice_cream": {
+            "name": "دستگاه فروش بستنی"
+        },
+        "amenity/hospital": {
+            "name": "محیط بیمارستان"
+        },
+        "amenity/telephone": {
+            "name": "تلفن عمومی"
+        },
+        "building/dormitory": {
+            "name": "خوابگاه",
+            "terms": "خواب گاه,"
+        },
+        "craft/blacksmith": {
+            "name": "آهنگر",
+            "terms": "اسلحه ساز"
+        },
+        "landuse/residential": {
+            "name": "منطقهٔ مسکونی",
+            "terms": "منطقه مسکونی, محدوده مسکونی, ناحیه مسکونی, محوطه مسکونی, محیط مسکونی"
+        },
+        "leisure/stadium": {
+            "name": "ورزشگاه"
+        },
+        "highway/speed_camera": {
+            "name": "دوربین سرعت"
+        },
+        "public_transport/station_monorail": {
+            "name": "ایستگاه مونوریل"
+        },
+        "amenity/drinking_water": {
+            "name": "آب آشامیدنی",
+            "terms": "آبخوری, آب‌سردکن, سقاخانه"
+        },
+        "barrier/kissing_gate": {
+            "name": "ورودی مخصوص انسان",
+            "terms": "دروازه مخصوص انسان, کیسینگ گیت"
+        },
+        "landuse/recreation_ground": {
+            "name": "محوطه تفریحی"
+        },
+        "office/newspaper": {
+            "name": "دفتر روزنامه"
+        },
+        "type/restriction/no_u_turn": {
+            "name": "دور زدن ممنوع"
+        },
+        "amenity/townhall": {
+            "name": "شهرداری",
+            "terms": "فرمانداری, بخشداری,"
+        },
+        "shop/hairdresser_supply": {
+            "name": "فروشگاه لوازم سلمانی",
+            "terms": "شامپو, سلمانی, آرایشگاه, سشوار"
+        },
+        "natural/water": {
+            "name": "آب"
+        },
+        "barrier/cycle_barrier": {
+            "name": "مانع دوچرخه"
+        },
+        "embankment": {
+            "name": "خاکریز"
+        },
+        "shop/sports": {
+            "name": "فروشگاه لوازم ورزشی"
+        },
+        "type/waterway": {
+            "name": "راه آب",
+            "terms": "آبراه, جوی, جدول, رود, رودخانه, جریان, کانال, جوب"
+        },
+        "emergency/destination": {
+            "name": "دسترسی اضطراری مقصد"
+        },
+        "craft/winery": {
+            "name": "شراب خانه"
+        },
+        "shop/laundry": {
+            "name": "رخت‌شوی‌خانه",
+            "terms": "شستن, رخت شویی, رخت شوی خانه"
+        },
+        "amenity/grit_bin": {
+            "name": "سطل شن"
+        },
+        "amenity/bank": {
+            "name": "بانک"
+        },
+        "amenity/prison": {
+            "name": "محوطه زندان",
+            "terms": "زندان"
+        },
+        "amenity/police": {
+            "name": "پليس",
+            "terms": "اداره پلیس, کلانتری, پاسگاه, ایست بازرسی, آگاهی, اداره آگاهی, نیروی انتظامی"
+        },
+        "place/farm": {
+            "name": "مزرعه"
+        },
+        "highway/service/driveway": {
+            "name": "راه ورودی",
+            "terms": "راه دسترسی به اماکن"
+        },
+        "leisure/pitch/basketball": {
+            "name": "محوطه بسکتبال"
+        },
+        "shop/newsagent": {
+            "name": "فروشگاه روزنامه/مجله"
+        },
+        "building/residential": {
+            "name": "ساختمان مسکونی",
+            "terms": "ساختمان مسکونی, مجتمع مسکونی, برج مسکونی, آپارتمان مسکونی, اپارتمان مسکونی"
+        },
+        "amenity/community_centre": {
+            "name": "مرکز اجتماع",
+            "terms": "فرهنگسرا"
+        },
+        "shop/tyres": {
+            "name": "تایر فروشی"
+        },
+        "aeroway/gate": {
+            "name": " دروازه فرودگاه ",
+            "terms": "گیت فرودگاه"
+        },
+        "man_made/mast/communication/mobile_phone": {
+            "name": "دکل تلفن همراه",
+            "terms": "آنتن, دکل ارتباطی, دکل مخابراتی, برج مخابراتی, برج ارتباطی"
+        },
+        "manhole/drain": {
+            "name": "دریچه فاضلاب",
+            "terms": "منهول, آدم‌رو, چاهک, جوی, فاضلاب, آبهای سطحی"
+        },
+        "traffic_calming/island": {
+            "name": "جزیره ترافیکی"
+        },
+        "highway/footway/conveying": {
+            "name": "راه پیاده متحرک",
+            "terms": "پله برقی"
+        },
+        "aerialway/gondola": {
+            "name": "تله کابین",
+            "terms": "گوندولا, کابین"
+        },
+        "shop/window_blind": {
+            "name": "فروشگاه پرده و کرکره",
+            "terms": "فروشگاه پرده، فروشگاه کرکره"
+        },
+        "advertising/column": {
+            "name": "استوانه تبلیغاتی",
+            "terms": "تبلیغ, تبلیغات"
+        },
+        "amenity/restaurant/italian": {
+            "name": "رستوران ایتالیایی"
+        },
+        "building/temple": {
+            "name": "ساختمان معبد"
+        },
+        "landuse/military/barracks": {
+            "name": "پادگان"
+        },
+        "amenity/casino": {
+            "name": "کازینو"
+        },
+        "amenity/coworking_space": {
+            "name": "فضای کاری مشارکتی"
+        },
+        "tourism/museum": {
+            "name": "موزه"
+        },
+        "aerialway/pylon": {
+            "name": "تیر بالابر",
+            "terms": "شاه‌تیر بالابر, تیرک, دکل,  پیل"
+        },
+        "railway/narrow_gauge": {
+            "name": "راه آهن باریک کابلی"
+        },
+        "shop/curtain": {
+            "name": "پرده فروشی"
+        },
+        "amenity/recycling_container": {
+            "name": "سطل بازیافت",
+            "terms": "بازیافت"
+        },
+        "healthcare/hospice": {
+            "name": "آسایشگاه"
+        },
+        "leisure/pitch/tennis": {
+            "name": "محوطه تنیس"
+        },
+        "craft/watchmaker": {
+            "name": "ساعت ساز"
+        },
+        "highway/footway/marked": {
+            "name": "گذرگاه پیاده نشانه‌گذاری‌شده",
+            "terms": "خط کشی عابر پیاده, گذرگاه عابر پیاده"
+        },
+        "leisure/fitness_centre": {
+            "name": "باشگاه تناسب اندام",
+            "terms": "باشگاه بدنسازی"
+        },
+        "highway/corridor": {
+            "name": "راهروی داخلی",
+            "terms": "کریدور, کوریدور, راهرو"
+        },
+        "attraction/animal": {
+            "name": "حیوان",
+            "terms": "باغ وحش, پارک وحش, پارک حیوانات, شیر, ببر, خرس, پلنگ"
+        },
+        "amenity/restaurant/asian": {
+            "name": "رستوران آسیایی"
+        },
+        "craft/bookbinder": {
+            "name": "صحافی"
+        },
+        "man_made/groyne": {
+            "name": "آبشکن"
+        },
+        "shop/beverages": {
+            "name": "فروشگاه آشامیدنی",
+            "terms": "فروشگاه نوشیدنی, نوشابه"
+        },
+        "entrance": {
+            "name": "ورود/خروج"
+        },
+        "highway/construction": {
+            "name": "راه بسته است",
+            "terms": "کلاوژر, بسته, عملیات عمرانی , در حال ساخت, در حال تعمیر, کارگران مشغول کارند, در دست تعمیر,closure,construction"
+        },
+        "power/tower": {
+            "name": "دکل ولتاژ قوی"
+        },
+        "aerialway/cable_car": {
+            "name": "ماشین کابلی",
+            "terms": "ترن برقی, تراموای برقی, Cable Car, تله فریک, بالابر"
+        },
+        "landuse/military/airfield": {
+            "name": "پایگاه هوایی نظامی"
+        },
+        "craft/boatbuilder": {
+            "name": "قایق ساز",
+            "terms": "قایق ساز"
+        },
+        "craft/shoemaker": {
+            "name": "کفاش"
+        },
+        "shop/interior_decoration": {
+            "name": "فروشگاه تزئینات داخلی"
+        },
+        "man_made/crane": {
+            "name": "جرثقیل"
+        },
+        "leisure/pitch/table_tennis": {
+            "name": "میز پینگ پنگ"
+        },
+        "amenity/place_of_worship/sikh": {
+            "name": "معبد سیک"
+        },
+        "amenity/social_facility/food_bank": {
+            "name": "خیریه بانک غذا"
+        },
+        "shop/nutrition_supplements": {
+            "name": "فروشگاه تغذیه مکمل"
+        },
+        "craft/gardener": {
+            "name": "باغبان"
+        },
+        "building/church": {
+            "name": "ساختمان کلیسا"
+        },
+        "shop/video_games": {
+            "name": "فروشگاه بازی ویدئویی"
+        },
+        "traffic_calming/dip": {
+            "name": "آبراه کوچک",
+            "terms": "کانال باریک آب، آبراه وسط خیابان, جوی باریک"
+        },
+        "traffic_calming/choker": {
+            "name": "ترافیک خفه‌کن",
+            "terms": "سرعتگیر, سرعتکاه, خفت, کاهش سرعت"
+        },
+        "railway/funicular": {
+            "name": "کابلی"
+        },
+        "power/transformer": {
+            "name": "مبدل برق"
+        },
+        "power/generator": {
+            "name": "مولد برق"
+        },
+        "natural/wetland": {
+            "name": "اراضی مرطوب",
+            "terms": "باتلاق, نی زار, نیزار, خلاش, برکه خزه‌ای , خاک باتلاقی, مرداب, مانداب, هور, برکه, سطوح گلی, سطح گلی, پهنه جزر و مدی, پهنه کشندی, تالاب, زمین مرطوب"
+        },
+        "landuse/military/naval_base": {
+            "name": "پایگاه نیروی دریایی"
+        },
+        "shop/department_store": {
+            "name": "فروشگاه چندمنظوره",
+            "terms": "پاساژ, مرکز تجاری, مرکز خرید"
+        },
+        "historic/wayside_cross": {
+            "name": "صلیب کنار جاده"
+        },
+        "man_made/petroleum_well": {
+            "name": "چاه نفت"
+        },
+        "highway/footway": {
+            "name": "راه پیاده",
+            "terms": "پیاده روی, پیاده, پا, پیاده گردی, تریل, مسیر پیاده"
+        },
+        "building/roof": {
+            "name": "سقف"
+        },
+        "natural/tree_row": {
+            "name": "ردیف درخت"
+        },
+        "craft/upholsterer": {
+            "name": "خیاط پرده و رومبلی"
+        },
+        "natural/glacier": {
+            "name": "یخچال طبیعی",
+            "terms": "یخچال طبیعی"
+        },
+        "shop/storage_rental": {
+            "name": "کرایه انبار"
+        },
+        "shop/fashion": {
+            "name": "فروشگاه مد",
+            "terms": "فروشگاه فشن, فشن"
+        },
+        "power/substation": {
+            "name": "ایستگاه فرعی"
+        },
+        "amenity/fast_food": {
+            "name": "فست فود"
+        },
+        "type/route/pipeline": {
+            "name": "مسیر خط لوله"
+        },
+        "barrier/cattle_grid": {
+            "name": "شبکه آهنی"
+        },
+        "tourism/motel": {
+            "name": "متل"
+        },
+        "building/cathedral": {
+            "name": "ساختمان کلیسای جامع"
+        },
+        "office/notary": {
+            "name": "دفتر اسناد رسمی"
+        },
+        "craft/photographic_laboratory": {
+            "name": "آزمایشگاه ظهور عکس",
+            "terms": "فیلم, عکس, ویدیو"
+        },
+        "amenity/waste/dog_excrement": {
+            "name": "سطل زباله سگ"
+        },
+        "leisure/slipway": {
+            "name": "قایق ساکن"
+        },
+        "leisure/dance": {
+            "name": "سالن رقص",
+            "terms": "تالار رقص"
+        },
+        "traffic_calming/hump": {
+            "name": "سرعتکاه قوسی",
+            "terms": "سرعتکاه, کاهش سرعت, سرعت, آهسته"
+        },
+        "building/chapel": {
+            "name": "ساختمان کلیسای کوچک"
+        },
+        "craft/caterer": {
+            "name": "تهیه غذا",
+            "terms": "کیترینگ, کترینگ, پذیرایی, طبخ غذا"
+        },
+        "office/research": {
+            "name": "سازمان تحقیقاتی و پژوهشی"
+        },
+        "office/travel_agent": {
+            "name": "آژانس مسافرتی"
+        },
+        "highway/footway/unmarked-raised": {
+            "name": "گذرگاه پیاده بدون نشانه‌گذاری (برآمده)",
+            "terms": "سرعتکاه تخت, سرعتگیر تخت"
+        },
+        "craft/jeweler": {
+            "name": "جواهر سازی"
+        },
+        "landuse/industrial/slaughterhouse": {
+            "name": "کشتارگاه"
+        },
+        "office/telecommunication": {
+            "name": "دفتر مخابراتی",
+            "terms": "اداره مخابرات, اینترنت, ای دی اس ال, adsl, isp, آی اس پی"
+        },
+        "shop/bag": {
+            "name": "فروشگاه کیف/چمدان"
+        },
+        "historic/tomb": {
+            "name": "آرامگاه"
+        },
+        "waterway/water_point": {
+            "name": "آب آشامیدنی دریایی"
+        },
+        "shop/garden_centre": {
+            "name": "مرکز خرید گل و گلدان"
+        },
+        "leisure/sports_centre/swimming": {
+            "name": "تاسیسات استخر"
+        },
+        "barrier/hedge": {
+            "name": "پرچین"
+        },
+        "shop/kitchen": {
+            "name": "فروشگاه تزئینات آشپزخانه"
+        },
+        "building/garages": {
+            "name": "گاراژ"
+        },
+        "leisure/pitch/rugby_league": {
+            "name": "زمین راگبی ۱۳ نفره"
+        },
+        "shop/beauty": {
+            "name": "فروشگاه زیبایی"
+        },
+        "amenity/charging_station": {
+            "name": "ایستگاه شارژ"
+        },
+        "amenity/music_school": {
+            "name": "آموزشگاه موسیقی",
+            "terms": "مدرسه موسیقی، آکادمی موسیقی"
+        },
+        "man_made/antenna": {
+            "name": "آنتن"
+        },
+        "waterway/canal": {
+            "name": "کانال",
+            "terms": "مجرا, آبراهه, آبراه, قنات, کاریز"
+        },
+        "leisure/common": {
+            "name": "عمومی"
+        },
+        "type/route/horse": {
+            "name": "مسیر سوارکاری",
+            "terms": "مسیر اسب دوانی"
+        },
+        "amenity/dojo": {
+            "name": "باشگاه / آموزشگاه هنرهای رزمی"
+        },
+        "landuse/farmland": {
+            "name": "زمین‌های کشاورزی"
+        },
+        "shop/baby_goods": {
+            "name": "فروشگاه کالای کودک",
+            "terms": "سیسمونی بچه, لباس بچه"
+        },
+        "shop/fishmonger": {
+            "name": "ماهی فروشی"
+        },
+        "place/square": {
+            "name": "میدان"
+        },
+        "man_made/storage_tank": {
+            "name": "مخزن ذخیره"
+        },
+        "place/neighbourhood": {
+            "name": "همسایگی"
+        },
+        "playground/slide": {
+            "name": "سرسره"
+        },
+        "highway/footway/marked-raised": {
+            "name": "گذرگاه پیاده نشانه‌گذاری‌شده (برآمده)",
+            "terms": "خط کشی عابر پیاده, گذرگاه پیاده, گذرگاه عابر پیاده"
+        },
+        "man_made/chimney": {
+            "name": "دودکش"
+        },
+        "shop/mall": {
+            "name": "مرکز خرید"
+        },
+        "barrier/wall": {
+            "name": "دیوار"
+        },
+        "craft/insulator": {
+            "name": "عایق سازی"
+        },
+        "shop/herbalist": {
+            "name": "عطاری"
+        },
+        "landuse/vineyard": {
+            "name": "باغ انگور",
+            "terms": "تاکستان"
+        },
+        "traffic_calming/rumble_strip": {
+            "name": "نوار لرزاننده",
+            "terms": "شیار لرزاننده, شیارهای لرزاننده, رامبل, نوار رامبل, نواره شیاردار آسفالت, اسکرید, برجستگی لرزاننده"
+        },
+        "office/tax_advisor": {
+            "name": "دفتر مشاور مالیاتی"
+        },
+        "aerialway/drag_lift": {
+            "name": "تله‌اسکی",
+            "terms": "تلسکی, بالابر, بالابر کشنده, کشنده"
+        },
+        "healthcare/midwife": {
+            "name": "ماما"
+        },
+        "aeroway/hangar": {
+            "name": "آشیانه هواپیما"
+        },
+        "healthcare/psychotherapist": {
+            "name": "روان‎‌درمانگر"
+        },
+        "building/retail": {
+            "name": "ساختمان فروشگاه‌ها و مغازه‌های خرده فروشی"
+        },
+        "highway/motorway_link": {
+            "name": "اتصال آزادراه",
+            "terms": "رمپ, خروجی, رمپ خروبی"
+        },
+        "place/isolated_dwelling": {
+            "name": "مسکن ایزوله"
+        },
+        "shop/bed": {
+            "name": "فروشگاه کالای خواب/ تشک"
+        },
+        "natural/scrub": {
+            "name": "خارزار"
+        },
+        "craft/photographer": {
+            "name": "عکاسی",
+            "terms": "آتلیه عکاسی"
+        },
+        "shop": {
+            "name": "فروشگاه",
+            "terms": "مغازه"
+        },
+        "office/religion": {
+            "name": "دفاتر مذهبی",
+            "terms": "دفتر مرجع تقلید"
+        },
+        "landuse/military/obstacle_course": {
+            "name": "ميدان موانع"
+        },
+        "natural/spring": {
+            "name": "چشمه"
+        },
+        "man_made/pipeline": {
+            "name": "خط لوله"
+        },
+        "man_made/observatory": {
+            "name": "رصد خانه"
+        },
+        "attraction/pirate_ship": {
+            "name": "کشتی دزدان دریایی"
+        },
+        "amenity/childcare": {
+            "name": "مهدکودک/مراقبت از کودکان"
+        },
+        "office/educational_institution": {
+            "name": "مؤسسه آموزشی",
+            "terms": "موسسه آموزشی"
+        },
+        "shop/deli": {
+            "name": "اغذیه فروشی",
+            "terms": "حاضری فروشی"
+        },
+        "healthcare/rehabilitation": {
+            "name": "توانبخشی"
+        },
+        "shop/perfumery": {
+            "name": "عطر فروشی"
+        },
+        "highway/service/drive-through": {
+            "name": "بگیر و بران",
+            "terms": "پرداخت سواره, خدمات سواره, بدون پیاده شدن"
+        },
+        "shop/kiosk": {
+            "name": "دکه",
+            "terms": "کیوسک"
+        },
+        "landuse/military/danger_area": {
+            "name": "محدوده خطرناک"
+        },
+        "shop/confectionery": {
+            "name": "فروشگاه آب‌نبات",
+            "terms": "آب نبات"
+        },
+        "tourism/information/guidepost": {
+            "name": "تابلوی راهنما",
+            "terms": "تابلوی راهنمای مسیر"
+        },
+        "shop/electronics": {
+            "name": "فروشگاه لوازم برقی",
+            "terms": "یخچال, لوازم خانگی, رادیو, صوتی, دوربین, کامپیوتر, سینمای خانگی, ویدیو, تلویزیون, تی وی"
+        },
+        "waterway": {
+            "name": "راه آب"
+        },
+        "amenity/clinic": {
+            "name": "کلینیک"
+        },
+        "amenity/place_of_worship/buddhist": {
+            "name": "معبد بودایی"
+        },
+        "natural/bare_rock": {
+            "name": "صخره"
+        },
+        "amenity/language_school": {
+            "name": "آموزشگاه زبان",
+            "terms": "زبانکده، آکادمی موسیقی، مدرسه موسیقی"
+        },
+        "amenity/crematorium": {
+            "name": "مٌرده سوز"
+        },
+        "amenity/waste_basket": {
+            "name": "سطل زباله",
+            "terms": "زباله, آشغال, سطل آشغال, زباله دان, آشغال دانی,"
+        },
+        "building/construction": {
+            "name": "ساختمان در دست ساخت",
+            "terms": "سازه, در حال ساخت, ساخت و ساز"
+        },
+        "highway/unclassified": {
+            "name": "جادهٔ فرعی/جزئی",
+            "terms": "فرعی, غیراصلی"
+        },
+        "office/charity": {
+            "name": "دفتر خیریه"
+        },
+        "amenity/social_facility": {
+            "name": "خدمات اجتماعی",
+            "terms": "پرستاری و مراقبت, مرکز ترک اعتیاد, اعتیاد, کاردرمانی افراد معلول, سرپناه بی‌خانمان‌ها, بی‌خانمان, مراقبت, مرکز اجتماعی, امکانات اجتماعی"
+        },
+        "shop/hifi": {
+            "name": "فروشگاه لوازم صوتی",
+            "terms": "صوتی, استریو, اکو, اسپیکر"
+        },
+        "craft/window_construction": {
+            "name": "ساخت و ساز پنجره"
+        },
+        "shop/appliance": {
+            "name": "فروشگاه لوازم خانگی",
+            "terms": "ماشین ظرف شویی, خشک کن, فریز, یخچال, فر, گاز, اجاق گاز, ماشین لباس شویی, کولر, لوازم خانگی برقی, جارو برقی, جارو شارژی"
+        },
+        "craft/tinsmith": {
+            "name": "حلبساز"
+        },
+        "golf/green": {
+            "name": "چمن سبز نزدیک سوراخ"
+        },
+        "man_made/windmill": {
+            "name": "آسیاب بادی"
+        },
+        "shop/mobile_phone": {
+            "name": "فروشگاه تلفن همراه",
+            "terms": "موبایل"
+        },
+        "craft/basket_maker": {
+            "name": "سبد ساز"
+        },
+        "place/town": {
+            "name": "شهرک"
+        },
+        "highway/tertiary_link": {
+            "name": "اتصال درجه سه",
+            "terms": "رمپ, لچکی, خیابان, درجه ۳, اتصال, لینک, درجه 3"
+        },
+        "tourism/information": {
+            "name": "اطلاعات"
+        },
+        "amenity/vending_machine/coffee": {
+            "name": "دستگاه فروش قهوه"
+        },
+        "landuse/military/training_area": {
+            "name": "منطقه آموزشی"
+        },
+        "natural/water/lake": {
+            "name": "برکه ، استخر"
+        },
+        "shop/video": {
+            "name": "فیلم فروشی"
+        },
+        "amenity/animal_breeding": {
+            "name": "امکانات پرورش حیوانات"
+        },
+        "building/warehouse": {
+            "name": "انبار"
+        },
+        "railway/tram": {
+            "name": "تراموا",
+            "terms": "تراموا, واگن برقی"
+        },
+        "power/minor_line": {
+            "name": "خط برق ضعیف"
+        },
+        "amenity/social_facility/nursing_home": {
+            "name": "خانه سالمندان"
+        },
+        "landuse/farmyard": {
+            "name": "محوطه مزرعه"
+        },
+        "man_made/works": {
+            "name": "کارخانه"
+        },
+        "craft/plumber": {
+            "name": "لوله کش"
+        },
+        "highway/cycleway": {
+            "name": "راه دوچرخه‌سواری",
+            "terms": "دوچرخه, مسیر دوچرخه"
+        },
+        "man_made/gasometer": {
+            "name": "کنتور گاز"
+        },
+        "shop/hardware": {
+            "name": "فروشگاه ابزارآلات و یراق",
+            "terms": "ابزار فروشی, یراق, لوازم ساختمانی"
+        },
+        "amenity/car_sharing": {
+            "name": "به اشتراک گذاری خودرو"
+        },
+        "shop/funeral_directors": {
+            "name": "غسالخانه"
+        },
+        "tourism/zoo": {
+            "name": "باغ وحش",
+            "terms": "حیوانات, پارک وحش, پارک حیوانات, شیر, ببر, خرس, پلنگ"
+        },
+        "shop/computer": {
+            "name": "فروشگاه کامپیوتر",
+            "terms": "رایانه, نرم افزار, سی دی, سخت افزار, کامپیوتر"
+        },
+        "landuse/grass": {
+            "name": "علف زار"
+        },
+        "natural/grassland": {
+            "name": "مرتع",
+            "terms": "چمن زار"
+        },
+        "highway/stop": {
+            "name": "تابلوی ایست",
+            "terms": "علامت توقف, ایست"
+        },
+        "emergency/no": {
+            "name": "دسترسی اظطراری خیر"
+        },
+        "tourism": {
+            "name": "گردشگری"
+        },
+        "amenity/public_bath": {
+            "name": "حمام عمومی"
+        },
+        "amenity/car_wash": {
+            "name": "کارواش"
+        },
+        "highway/street_lamp": {
+            "name": "چراغ خیابان",
+            "terms": "لامپ خیابان, روشنای خیابان"
+        },
+        "tourism/theme_park": {
+            "name": "پارک تفریحی, شهربازی"
+        },
+        "shop/watches": {
+            "name": "ساعت فروشی"
+        },
+        "amenity/parking_entrance": {
+            "name": "ورودی/خروجی پارکینگ"
+        },
+        "landuse": {
+            "name": "کاربری زمین"
+        },
+        "waterway/riverbank": {
+            "name": "حاشیه رودخانه"
+        },
+        "shop/music": {
+            "name": "فروشگاه موسیقی"
+        },
+        "barrier/toll_booth": {
+            "name": "عوارضی"
+        },
+        "highway/crossing/unmarked": {
+            "name": "گذرگاه بدون نشانه‌گذاری",
+            "terms": "گذرگاه عابر پیاده"
+        },
+        "craft/stonemason": {
+            "name": "سنگ تراش"
+        },
+        "aerialway": {
+            "name": "راه هوایی"
+        },
+        "amenity/nightclub": {
+            "name": "کلوپ شبانه"
+        },
+        "waterway/dam": {
+            "name": "سد",
+            "terms": "بند"
+        },
+        "amenity/school": {
+            "name": "محیط مدرسه",
+            "terms": "آکادمی، دبیرستان، مدرسه، راهنمایی، دبستان، پیش دانشگاهی، ابتدایی"
+        },
+        "shop/photo": {
+            "name": "عکس و ویدیو",
+            "terms": "دوربین, فیلم, تبدیل فیلم, چاپ عکس"
+        },
+        "office/forestry": {
+            "name": "دفتر جنگلداری"
+        },
+        "building/static_caravan": {
+            "name": "خانه از پیش ساخته متحرک"
+        },
+        "leisure/pitch/skateboard": {
+            "name": "پارک اسکیت"
+        },
+        "office/government/tax": {
+            "name": "اداره مالیات و درآمد"
+        },
+        "highway/bridleway": {
+            "name": "راه حیوانات اهلی",
+            "terms": "راه مال رو, راه اسب رو, مسیر حیوانات اهلی"
+        },
+        "shop/variety_store": {
+            "name": "فروشگاه متنوع و ارزان",
+            "terms": "حاجی ارزونی"
+        },
+        "amenity/parking/multi-storey": {
+            "name": "پارکینگ طبقاتی",
+            "terms": "پارکینگ چندطبقه, پارکینگ داخلی, ساختمان پارکینگ, گاراژ پارکینگ"
+        },
+        "amenity/doctors": {
+            "name": "مطب دکتر",
+            "terms": "مطب پزشک, دکتر, پزشک, طبیب"
+        },
+        "barrier/ditch": {
+            "name": "خندق",
+            "terms": "ترانشه, سنگر, گودال, شیار, چال"
+        },
+        "landuse/churchyard": {
+            "name": "حیاط کلیسا"
+        },
+        "amenity/shelter": {
+            "name": "پناهگاه",
+            "terms": "آلاچیق"
+        },
+        "tourism/picnic_site": {
+            "name": "مکان پیک نیک",
+            "terms": "کمپ, محل پیک نیک, پیک نیک"
+        },
+        "highway/rest_area": {
+            "name": "استراحتگاه",
+            "terms": "فضای استراحت, محل استراحت, استراحتگاه کنار جاده"
+        },
+        "playground/swing": {
+            "name": "تاب"
+        },
+        "craft/electrician": {
+            "name": "متخصص برق"
+        },
+        "historic/archaeological_site": {
+            "name": "مکان باستان شناسی",
+            "terms": "سایت باستان شناسی"
+        },
+        "amenity/driving_school": {
+            "name": "آموزشگاه رانندگی",
+            "terms": "رانندگی"
+        },
+        "building/barn": {
+            "name": "انبار غله",
+            "terms": "انبار کاه"
+        },
+        "amenity/bench": {
+            "name": "نیمکت",
+            "terms": "صندلی, جای نشستن"
+        },
+        "craft/beekeeper": {
+            "name": "پرورش دهنده زنبور عسل"
+        },
+        "amenity/toilets": {
+            "name": "سرویس بهداشتی",
+            "terms": "توالت, توآلت, دستشویی, رفع حاجت, قضای حاجت, مستراح"
+        },
+        "amenity/sanitary_dump_station": {
+            "name": "دفع توالت RV"
+        },
+        "shop/hearing_aids": {
+            "name": "فروشگاه لوازم کمک شنوایی"
+        },
+        "shop/water": {
+            "name": "فروشگاه آب",
+            "terms": "آب تصفیه, فروشگاه آب تصفیه, آب فروشی"
+        },
+        "amenity/place_of_worship": {
+            "name": "پرستشگاه",
+            "terms": "عبادتگاه, امامزاده, مسجد, کلیسا, معبد, نمازخانه, کنیسه"
+        },
+        "aerialway/goods": {
+            "name": "راه هوایی محموله",
+            "terms": "راه هوایی کالا, کالا, محموله"
+        },
+        "barrier/retaining_wall": {
+            "name": "دیوار نگه دارنده"
+        },
+        "amenity/love_hotel": {
+            "name": "هتل عشق"
+        },
+        "highway/traffic_signals": {
+            "name": "چراغ راهنمایی",
+            "terms": "چراغ قرمز, سبز, زرد"
+        },
+        "amenity/embassy": {
+            "name": "سفارت خانه"
+        },
+        "type/restriction/no_left_turn": {
+            "name": "گردش به چپ ممنوع"
+        },
+        "leisure/ice_rink": {
+            "name": "یخ بازی"
+        },
+        "healthcare/blood_donation": {
+            "name": "مرکز اهدای خون",
+            "terms": "بانک خون, اهدای خون"
+        },
+        "place/village": {
+            "name": "روستا"
+        },
+        "shop/water_sports": {
+            "name": "فروشگاه لوازم ورزش‌های آبی / شنا ",
+            "terms": "شنا, لوازم شنا"
+        },
+        "shop/lottery": {
+            "name": "فروشگاه قرعه کشی",
+            "terms": "لاتاری"
+        },
+        "leisure/dog_park": {
+            "name": "پارک سگ"
+        },
+        "natural/cave_entrance": {
+            "name": "ورودی غار"
+        },
+        "point": {
+            "name": "نقطه"
+        },
+        "shop/cheese": {
+            "name": "پنیر فروشی"
+        },
+        "amenity/boat_rental": {
+            "name": "کرایه قایق"
+        },
+        "amenity/place_of_worship/taoist": {
+            "name": "معبد تائو"
+        },
+        "building/mosque": {
+            "name": "ساختمان مسجد"
+        },
+        "building/cabin": {
+            "name": "کابین"
+        },
+        "highway/footway/sidewalk": {
+            "name": "پیاده‌رو"
+        },
+        "amenity/animal_shelter": {
+            "name": "پناهگاه حیوانات",
+            "terms": "پناهگاه حیات, سگ, اسب, حیوان خانگی, مراقبت, درمان"
+        },
+        "emergency/private": {
+            "name": "دسترسی اضطراری شخصی"
+        },
+        "craft/sailmaker": {
+            "name": "بادبان ساز"
+        },
+        "office/ngo": {
+            "name": "سازمان مردم نهاد",
+            "terms": "سمن, سازمان عمومی غیردولتی, ان جی او, سازمان غیردولتی, غیردولتی"
+        },
+        "craft/glaziery": {
+            "name": "شیشه بری"
+        },
+        "highway/footway/unmarked": {
+            "name": "گذرگاه پیاده بدون نشانه‌گذاری",
+            "terms": "گذرگاه عابر پیاده"
+        },
+        "highway/motorway_junction": {
+            "name": "تقاطع بزرگراه / خروجی بزرگراه",
+            "terms": "خروجی"
+        },
+        "natural/tree": {
+            "name": "درخت"
+        },
+        "amenity/register_office": {
+            "name": "اداره ثبت"
+        },
+        "highway/crossing/marked-raised": {
+            "name": "گذرگاه نشانه‌گذاری‌شده (برآمده)",
+            "terms": "سرعتکاه تخت, گذرگاه پیاده برآمده, سرعتگیر تخت"
+        },
+        "leisure/adult_gaming_centre": {
+            "name": "مرکز بازی بزرگسالان"
+        },
+        "shop/car_parts": {
+            "name": "فروشگاه قطعات خودرو",
+            "terms": "لوازم یدکی, اتوموبیل, خودرو, لوازم اتوموبیل"
+        },
+        "office/lawyer": {
+            "name": "دفتر حقوقی"
+        },
+        "building/apartments": {
+            "name": "آپارتمان",
+            "terms": "ساختمان چندطبقه"
+        },
+        "highway/trunk_link": {
+            "name": "اتصال بزرگراه",
+            "terms": "رمپ, خروجی, رمپ خروبی"
+        },
+        "emergency/lifeguard": {
+            "name": "نجات غریق"
+        },
+        "amenity/vending_machine/news_papers": {
+            "name": "دستگاه خود فروش روزنامه"
+        },
+        "shop/bookmaker": {
+            "name": "دلال شرط‌بندی",
+            "terms": "قماربازی, شرطبندی"
+        },
+        "leisure/fitness_centre/yoga": {
+            "name": "استودیو یوگا"
+        },
+        "aerialway/t-bar": {
+            "name": "بالابر میله‌ای T شکل",
+            "terms": "نوار T"
+        },
+        "historic/boundary_stone": {
+            "name": "سنگ مرزی"
+        },
+        "leisure/park": {
+            "name": "پارک",
+            "terms": "بوستان, باغ, زمین بازی"
+        },
+        "amenity/internet_cafe": {
+            "name": "کافی‌نت",
+            "terms": "کافه‌ی اینترنت, کافینت, اینترنت"
+        },
+        "leisure/garden": {
+            "name": "باغ",
+            "terms": "تالار با باغ"
+        },
+        "historic/memorial": {
+            "name": "یادبود"
+        },
+        "shop/cosmetics": {
+            "name": "فروشگاه آرایشی و بهداشتی "
+        },
+        "type/restriction/only_u_turn": {
+            "name": "فقط دورزدن"
+        },
+        "leisure/swimming_pool": {
+            "name": "استخر شنا"
+        },
+        "waterway/stream": {
+            "name": "نهر",
+            "terms": "نهر, جریان, جوی طبیعی"
+        },
+        "railway": {
+            "name": "راه آهن"
+        },
+        "building/university": {
+            "name": "ساختمان دانشگاه"
+        },
+        "amenity/library": {
+            "name": "کتابخانه"
+        },
+        "shop/stationery": {
+            "name": "فروشگاه نوشت‌افزار",
+            "terms": "فروشگاه لوازم تحریر, فروشگاه لوازم التحریر"
+        },
+        "highway/secondary_link": {
+            "name": "اتصال درجه دو",
+            "terms": "رمپ, لچکی, خیابان, درجه ۲, اتصال, لینک, درجه 2"
+        },
+        "office/advertising_agency": {
+            "name": "کانون تبلیغاتی",
+            "terms": "آژانس تبلیغاتی, تبلیغات, بازاریابی"
+        },
+        "highway/living_street": {
+            "name": "خیابان  محدوده زندگی",
+            "terms": "کوچه"
+        },
+        "landuse/military/bunker": {
+            "name": "محدوده نظامی"
+        },
+        "attraction/roller_coaster": {
+            "name": "ترن هوایی"
+        },
+        "power/sub_station": {
+            "name": "ایستگاه فرعی"
+        },
+        "shop/copyshop": {
+            "name": "چاپ و تکثیر",
+            "terms": "کپی, فتوکپی, فوتوکپی, زیراکس, پرینت, چاپ"
+        },
+        "leisure/firepit": {
+            "name": "گودال آتش"
+        },
+        "leisure/pitch/baseball": {
+            "name": "زمین بیس بال",
+            "terms": "بیسبال"
+        },
+        "man_made/bridge": {
+            "name": "پل"
+        },
+        "railway/monorail": {
+            "name": "مونوریل"
+        },
+        "office/physician": {
+            "name": "پزشک"
+        },
+        "shop/bicycle": {
+            "name": "فروشگاه دوچرخه",
+            "terms": "دوچرخه, تعمیر"
+        },
+        "tourism/apartment": {
+            "name": "آپارتمان مهمان / کاندو"
+        },
+        "amenity/hunting_stand": {
+            "name": "ایستگاه شکار"
+        },
+        "tourism/guest_house": {
+            "name": "مهمان خانه"
+        },
+        "healthcare/laboratory": {
+            "name": "آزمایشگاه پزشکی"
+        },
+        "power/plant": {
+            "name": "محدوده نیروگاه برق"
+        },
+        "landuse/aquaculture": {
+            "name": "آبزی‌پروری",
+            "terms": "پرورش آبزیان, مزرعه ماهی"
+        },
+        "amenity": {
+            "name": "مکان رفاهی"
+        },
+        "tourism/gallery": {
+            "name": "گالری هنری"
+        },
+        "amenity/fuel": {
+            "name": "پمپ گاز"
+        },
+        "type/route/tram": {
+            "name": "مسیر تراموا",
+            "terms": "مسیر تراموا, مسیر واگن برقی"
+        },
+        "shop/second_hand": {
+            "name": "دست دوم فروشی",
+            "terms": "سمساری, استفاده شده, کارکرده, دست دو"
+        },
+        "place/island": {
+            "name": "جزیره"
+        },
+        "attraction/bungee_jumping": {
+            "name": "بانجی جامپینگ"
+        },
+        "craft/rigger": {
+            "name": "لولزم سازی"
+        },
+        "man_made/water_works": {
+            "name": "امور آب"
+        },
+        "amenity/pub": {
+            "name": "میخانه"
+        },
+        "building/entrance": {
+            "name": "ورود/خروج"
+        },
+        "shop/religion": {
+            "name": "فروشگاه مذهبی"
+        },
+        "golf/rough": {
+            "name": "منطقه زمخت"
+        },
+        "man_made/breakwater": {
+            "name": "موج شکن"
+        },
+        "shop/shoes": {
+            "name": "کفش فروشی"
+        },
+        "amenity/ranger_station": {
+            "name": "ایستگاه جنگلبانی"
+        },
+        "amenity/parking": {
+            "name": "پارکینگ"
+        },
+        "highway/bus_stop": {
+            "name": "ایستگاه اتوبوس / سکو"
+        },
+        "amenity/place_of_worship/hindu": {
+            "name": "معبد هندو"
+        },
+        "aerialway/platter": {
+            "name": "بالابر بشقابی",
+            "terms": "پلتر, دیسکی, بالابر دیسکی"
+        },
+        "amenity/swimming_pool": {
+            "name": "استخر شنا"
+        },
+        "amenity/vending_machine/condoms": {
+            "name": "دستگاه فروش کاندوم"
+        },
+        "craft/electronics_repair": {
+            "name": "فروشگاه تعمیرات الکترونیک",
+            "terms": "تعمیرات"
+        },
+        "man_made/adit": {
+            "name": "گذرگاه افقی"
+        },
+        "man_made/tower": {
+            "name": "دکل، برج"
+        },
+        "shop/florist": {
+            "name": "گل فروشی"
+        },
+        "type/route/ferry": {
+            "name": "مسیر فرابر",
+            "terms": "مسیر دریایی, مسیر فری"
+        },
+        "highway/crossing/marked": {
+            "name": "گذرگاه نشانه‌گذاری‌شده",
+            "terms": "خط کشی عابر پیاده, گذرگاه پیاده"
+        },
+        "amenity/atm": {
+            "name": "خودپرداز",
+            "terms": "عابر بانک, دستگاه خودپرداز, دستگاه عابر بانک, شبکه شتاب"
+        },
+        "ford": {
+            "name": "گدار",
+            "terms": "معبر رودخانه, عبور از رودخانه, فورد, عبور از آب"
+        },
+        "natural/sand": {
+            "name": "شن"
+        },
+        "place/locality": {
+            "name": "محلی"
+        },
+        "traffic_calming/table": {
+            "name": "سرعتکاه تخت",
+            "terms": "سرعتکاه, کاهش سرعت, سرعت, آهسته, تخت"
+        },
+        "amenity/courthouse": {
+            "name": "دادگاه",
+            "terms": "دادگستری"
+        },
+        "shop/art": {
+            "name": "فروشگاه آثار هنری"
+        },
+        "place/hamlet": {
+            "name": "دهکده"
+        },
+        "amenity/recycling_centre": {
+            "name": "مرکز بازیافت",
+            "terms": "بازیافت, بطری, قوطی, شیشه, زباله"
+        },
+        "office/private_investigator": {
+            "name": "دفتر تحقیقات خصوصی"
+        },
+        "waterway/fuel": {
+            "name": "جایگاه سوخت دریایی"
+        },
+        "highway": {
+            "name": "معبر"
+        },
+        "shop/pastry": {
+            "name": "شیرینی فروشی"
+        },
+        "amenity/theatre": {
+            "name": "تئاتر"
+        },
+        "highway/pedestrian_line": {
+            "name": "پیاده‌راه",
+            "terms": "میدان, میدانگاه, پیاده راه, بازار, صحن"
+        },
+        "landuse/military/checkpoint": {
+            "name": "ایست بازرسی"
+        },
+        "man_made/lighthouse": {
+            "name": "فانوس دریایی"
+        },
+        "type/route/train": {
+            "name": "مسیر راه آهن",
+            "terms": "مسیر قطار"
+        },
+        "barrier/fence": {
+            "name": "حصار",
+            "terms": "فنس, فنسکشی, فنس کشی"
+        },
+        "landuse/cemetery": {
+            "name": "قبرستان",
+            "terms": "گورستان, بهشت زهرا, بهشت فاطمه, آرامستان"
+        },
+        "railway/rail": {
+            "name": "ریل قطار"
+        },
+        "natural/scree": {
+            "name": "سنگ ریزه"
+        },
+        "office/government": {
+            "name": "دفتر دولتی",
+            "terms": "اداره دولتی"
+        },
+        "office/it": {
+            "name": "دفتر فناوری اطلاعات"
+        },
+        "railway/disused": {
+            "name": "راه آهن بلا استفاده"
+        },
+        "amenity/grave_yard": {
+            "name": "قبرستان (با مسجد یا امامزاده)",
+            "terms": "گورستان, بهشت زهرا, بهشت فاطمه, آرامستان"
+        },
+        "office/lawyer/notary": {
+            "name": "دفتر اسناد رسمی"
+        },
+        "leisure/fitness_station": {
+            "name": "ایستگاه ورزشی در فضای باز"
+        },
+        "amenity/vending_machine/newspapers": {
+            "name": "دستگاه فروش خودکار روزنامه"
+        },
+        "railway/subway_entrance": {
+            "name": "ورودی مترو"
+        },
+        "healthcare/speech_therapist": {
+            "name": "گفتار درمان"
+        },
+        "leisure/picnic_table": {
+            "name": "میز پیکنیک"
+        },
+        "man_made/cutline": {
+            "name": "خط برش"
+        },
+        "craft/scaffolder": {
+            "name": "داربستی"
+        },
+        "shop/locksmith": {
+            "name": "قفل سازی"
+        },
+        "office/insurance": {
+            "name": "دفتر بیمه"
+        },
+        "leisure/pitch": {
+            "name": "زمین ورزشی"
+        },
+        "tourism/hotel": {
+            "name": "هتل"
+        },
+        "historic/monument": {
+            "name": "مقبره"
+        },
+        "type/route/bicycle": {
+            "name": "مسیر دوچرخه"
+        },
+        "highway/give_way": {
+            "name": "تابلو حق تقدم با خودرو روبرو",
+            "terms": "تابلوی حق تقدم"
+        },
+        "amenity/place_of_worship/shinto": {
+            "name": "معبد شینتویی"
+        },
+        "historic": {
+            "name": "مکان تاریخی"
+        },
+        "healthcare/optometrist": {
+            "name": "چشم پزشک"
+        },
+        "building/kindergarten": {
+            "name": "ساختمان پیش دبستانی / کودکستان",
+            "terms": "پیش دبستانی، مهد کودک، مدرسه، کودکستان"
+        },
+        "leisure/playground": {
+            "name": "زمین بازی"
+        },
+        "emergency/water_tank": {
+            "name": "مخزن آب اضطراری"
+        },
+        "shop/erotic": {
+            "name": "فروشگاه لوازم بزرگسالان"
+        },
+        "type/restriction/only_left_turn": {
+            "name": "فقط پیچیدن به چپ"
+        },
+        "highway/mini_roundabout": {
+            "name": "فلکه کوچک",
+            "terms": "میدان کوچک"
+        },
+        "highway/service/parking_aisle": {
+            "name": "راهرو پارکینگ"
+        },
+        "amenity/bbq": {
+            "name": "باربیکیو / گریل",
+            "terms": "bbq, توری, کباب توری, اجاق کباب پزی"
+        },
+        "waterway/dock": {
+            "name": "بارانداز تر / بارانداز خشک"
+        },
+        "waterway/boatyard": {
+            "name": "محوطه قایق"
+        },
+        "power/line": {
+            "name": "خط نیرو"
+        },
+        "amenity/ice_cream": {
+            "name": "بستنی فروشی"
+        },
+        "leisure/horse_riding": {
+            "name": "باشگاه اسب سواری"
+        },
+        "barrier/guard_rail": {
+            "name": "گاردریل",
+            "terms": "سپر حفاظ, حفاظ جاده‌ای"
+        },
+        "natural/peak": {
+            "name": "قله",
+            "terms": "قله, نوک کوه, چکاد"
+        },
+        "highway/tertiary": {
+            "name": "جادهٔ درجه سه",
+            "terms": "جاده جمع کننده و پخش کننده, جمع و پخش کننده, درجه ۳, درجه 3"
+        },
+        "shop/beauty/nails": {
+            "name": "سالن آرایش ناخن"
+        },
+        "tourism/artwork": {
+            "name": "اثر هنری"
+        },
+        "amenity/vending_machine/sweets": {
+            "name": "ماشین خودفروش خوراکی"
+        },
+        "landuse/retail": {
+            "name": "منطقه خرید و فروش"
+        },
+        "leisure/picnic_table/chess": {
+            "name": "میز شطرنج",
+            "terms": "شطرنج، میز، نیمکت، تخته بازی، بازی تخته‌ای، بازی رومیزی"
+        },
+        "leisure/sauna": {
+            "name": "سونا"
+        },
+        "craft/key_cutter": {
+            "name": "برش های کلیدی"
+        },
+        "leisure/resort": {
+            "name": "مجتمع تفریحی",
+            "terms": "مکان پررفت‌آمد, اماکن پر رفت آمد,مکان‌های مطرح"
+        },
+        "shop/pyrotechnics": {
+            "name": "فروشگاه لوازم آتش‌بازی "
+        },
+        "amenity/arts_centre": {
+            "name": "مرکز هنری"
+        },
+        "railway/crossing": {
+            "name": "تقاطع خط آهن",
+            "terms": "تقاطع ریل, تقاطع راه آهن"
+        },
+        "shop/travel_agency": {
+            "name": "آژانس مسافرتی",
+            "terms": "تور, گردشگری, خدمات تور"
+        },
+        "amenity/restaurant": {
+            "name": "رستوران",
+            "terms": "بار, صبحانه, کافه, شام, ناهار"
+        },
+        "amenity/restaurant/pizza": {
+            "name": "رستوران پیتزا",
+            "terms": "پیتزا فروشی"
+        },
+        "type/route/detour": {
+            "name": "مسیر جایگزین",
+            "terms": "مسیر فرعی"
+        },
+        "amenity/bicycle_repair_station": {
+            "name": "ایستگاه تعمیر دوچرخه"
+        },
+        "office/association": {
+            "name": "دفتر سازمان غیر انتفاعی",
+            "terms": "ناسودبر, سازمان, غیرانتفاعی"
+        },
+        "highway/services": {
+            "name": "مجتمع خدماتی رفاهی",
+            "terms": "فضای خدماتی, ایستگاه خدماتی"
+        },
+        "amenity/bureau_de_change": {
+            "name": "تبدیل ارز / صرافی",
+            "terms": "ارز, صرافی, پول"
+        },
+        "landuse/military/nuclear_explosion_site": {
+            "name": "محدوده انفجار اتمی"
+        },
+        "leisure/dancing_school": {
+            "name": "مدرسه رقص",
+            "terms": "رقص"
+        },
+        "leisure": {
+            "name": "اوقات فراغت"
+        },
+        "amenity/post_office": {
+            "name": "اداره پست"
+        },
+        "natural/volcano": {
+            "name": "آتشفشان",
+            "terms": "دهانه, کوهستان"
+        },
+        "amenity/fast_food/pizza": {
+            "name": "پیتزا",
+            "terms": "فست فود, حاضری"
+        },
+        "amenity/vending_machine": {
+            "name": "دستگاه فروش خودکار"
+        },
+        "amenity/bar": {
+            "name": "بار"
+        },
+        "traffic_calming/cushion": {
+            "name": "بالشتک سرعتکاه"
+        },
+        "traffic_calming": {
+            "name": "آرام‌سازی ترافیک",
+            "terms": "آرام‌بخش ترافیک, سرعتگیر, سرعتکاه, از سرعت خود بکاهید"
+        },
+        "barrier/stile": {
+            "name": "حصار نردبانی"
+        },
+        "type/route/piste": {
+            "name": "مسیر پیست اسکی"
+        },
+        "shop/boutique": {
+            "name": "بوتیک"
+        },
+        "area/highway": {
+            "name": "سطح جاده",
+            "terms": "پوشش راه, کفپوش, آسفالت, روسازی"
+        },
+        "amenity/vending_machine/parking_tickets": {
+            "name": "دستگاه فروش خودکار کارت پارکینگ"
+        },
+        "shop/weapons": {
+            "name": "فروشگاه سلاح",
+            "terms": "تفنگ, اسلحه, چاقو, فروشگاه تفنگ, فروشگاه اسلحه, فروشگاه چاقو, اسلحه فروشی, چاقو فروشی, تفنگ فروشی, سلاح سرد"
+        },
+        "healthcare/physiotherapist": {
+            "name": "فیزیوتراپیست"
+        },
+        "highway/trunk": {
+            "name": "بزرگراه"
+        },
+        "golf/tee": {
+            "name": "Tee Box"
+        },
+        "office": {
+            "name": "دفتر",
+            "terms": "اداره"
+        },
+        "amenity/fire_station": {
+            "name": "ایستگاه آتش نشانی"
+        },
+        "barrier/entrance": {
+            "name": "ورودی"
+        },
+        "emergency/fire_hydrant": {
+            "name": "شیر آتش نشانی"
+        },
+        "shop/scuba_diving": {
+            "name": "فروشگاه لوازم غواصی ",
+            "terms": "غواصی, اسکوبا"
+        },
+        "natural/water/pond": {
+            "name": "آبگیر",
+            "terms": "برکه, حوضچه"
+        },
+        "attraction/water_slide": {
+            "name": "سرسره آبی"
+        },
+        "shop/vacuum_cleaner": {
+            "name": "فروشگاه جاروبرقی"
+        },
+        "shop/chemist": {
+            "name": "داروخانه"
+        },
+        "tourism/information/map": {
+            "name": "نقشه",
+            "terms": "اطلاعات گردشگری"
+        },
+        "building/hospital": {
+            "name": "ساختمان بیمارستان"
+        },
+        "amenity/marketplace": {
+            "name": "بازار"
+        },
+        "building/industrial": {
+            "name": "ساختمان صنعتی"
+        },
+        "amenity/restaurant/german": {
+            "name": "رستوران آلمانی"
+        },
+        "amenity/university": {
+            "name": "محوطه دانشگاه"
+        },
+        "building/public": {
+            "name": "ساختمان عمومی"
+        },
+        "highway/crossing/zebra-raised": {
+            "name": "خط‌کشی عابر پیاده (برآمده)"
+        },
+        "amenity/shower": {
+            "name": "دوش"
+        },
+        "office/estate_agent": {
+            "name": "دفتر املاک",
+            "terms": "مشاور املاک, بنگاه املاک"
+        },
+        "man_made/watermill": {
+            "name": "آسیاب آبی"
+        },
+        "amenity/college": {
+            "name": "محیط کالج"
+        },
+        "shop/toys": {
+            "name": "اسباب بازی فروشی"
+        },
+        "type/restriction/no_straight_on": {
+            "name": "مستقیم ممنوع"
+        },
+        "landuse/allotments": {
+            "name": "باغ مشارکتی",
+            "terms": "باغچه مشارکتی"
+        },
+        "shop/tiles": {
+            "name": "کاشی فروشی",
+            "terms": "سرامیک فروشی, کفپوش"
+        },
+        "highway/pedestrian_area": {
+            "name": "میدانگاه",
+            "terms": "میدان, میدان گاه, پیاده راه, بازار, صحن, محوطه پیاده"
+        },
+        "amenity/vending_machine/food": {
+            "name": "دستگاه فروش خوراکی"
+        },
+        "amenity/cafe": {
+            "name": "کافه",
+            "terms": "کافی شاپ, کافیشاپ, قهوه خانه, قهوه خونه, چای سرا"
+        },
+        "leisure/pitch/bowls": {
+            "name": "چمن مخصوص بولینگ"
+        },
+        "highway/service/emergency_access": {
+            "name": "دسترسی اورژانسی",
+            "terms": "دسترسی اضطراری"
+        },
+        "natural/mud": {
+            "name": "گل و لای",
+            "terms": "باتلاق, زمین مرطوب, زمین باتلاقی, تالاب, گل و لای"
+        },
+        "craft/plasterer": {
+            "name": "گچ کار"
+        },
+        "amenity/parking_space": {
+            "name": "جای پارک"
+        },
+        "healthcare/birthing_center": {
+            "name": "زایشگاه"
+        },
+        "building/greenhouse": {
+            "name": "گلخانه"
+        },
+        "landuse/harbour": {
+            "name": "بندرگاه"
+        },
+        "shop/pet": {
+            "name": "فروشگاه حیوانات خانگی",
+            "terms": "پرنده فروشی, سهره, گربه, سگ, ماهی, آکواریوم فروشی, ماهی تزئینی"
+        },
+        "man_made/survey_point": {
+            "name": "نقطه مطالعاتی"
+        },
+        "roundabout": {
+            "name": "فلکه (میدان)"
+        },
+        "type/route/power": {
+            "name": "مسیر برق",
+            "terms": "خط انتقال برق"
+        },
+        "highway/service/alley": {
+            "name": "پس‌کوچه",
+            "terms": "کوچه باریک, کوچه,"
+        },
+        "amenity/restaurant/seafood": {
+            "name": "رستوران غذاهای دریایی"
+        },
+        "public_transport/station_train": {
+            "name": "ایستگاه قطار"
+        },
+        "shop/tailor": {
+            "name": "خیاط"
+        },
+        "natural/cliff": {
+            "name": "دیواره",
+            "terms": "صخره, پرتگاه, صخره عمودی"
+        },
+        "amenity/clock": {
+            "name": "ساعت"
+        },
+        "attraction": {
+            "name": "جاذبه"
+        },
+        "building/garage": {
+            "name": "گاراژ"
+        },
+        "natural/coastline": {
+            "name": "خط ساحلی"
+        },
+        "building/hotel": {
+            "name": "ساختمان هتل"
+        },
+        "shop/anime": {
+            "name": "فروشگاه انیمه",
+            "terms": "مانگا, ژاپن"
+        },
+        "route/ferry": {
+            "name": "مسیر فَرابر",
+            "terms": "فری, مسیر فری, مسیر دریایی"
+        },
+        "shop/outdoor": {
+            "name": "فروشگاه لوازم کوهنوردی و کمپینگ",
+            "terms": "مسافرت, کوهنوردی, پیاده‌گردی, کمپ"
+        },
+        "emergency/designated": {
+            "name": "دسترسی اضطراری تعیین شده"
+        },
+        "highway/steps": {
+            "name": "پله",
+            "terms": "پلکان, پله‌ها, راه پله"
+        },
+        "amenity/vending_machine/drinks": {
+            "name": "دستگاه خودفروش آب آشامیدنی"
+        },
+        "highway/primary": {
+            "name": "جادهٔ درجه یک",
+            "terms": "جاده شریانی اصلی, شریانی اصلی, خیابان اصلی, خیابان اولیه, درجه ۱, جادهٔ اصلی, درجه 1"
+        },
+        "highway/footway/zebra": {
+            "name": "خطکشی عابر پیاده"
+        },
+        "amenity/shelter/picnic_shelter": {
+            "name": "آلاچیق پیکنیک",
+            "terms": "کلبه پیکنیک, سرپناه پیکنیک"
+        },
+        "shop/chocolate": {
+            "name": "فروشگاه شکلات",
+            "terms": "شکلات فروشی"
+        },
+        "man_made/pumping_station": {
+            "name": "ایستگاه پمپاژ"
+        },
+        "building/bunker": {
+            "name": "انباربزرگ"
+        },
+        "emergency/defibrillator": {
+            "name": "دستگاه شوک"
+        },
+        "aeroway/helipad": {
+            "name": "محل فرود هلی کوپتر"
+        },
+        "amenity/dentist": {
+            "name": "دندانپزشکی",
+            "terms": "کلینیک دندانپزشکی, مطب دندانپزشکی, دندان"
+        },
+        "highway/footway/zebra-raised": {
+            "name": "خط‌کشی عابر پیاده (برآمده)"
+        },
+        "landuse/residential/apartments": {
+            "name": "مجتمع آپارتمانی"
+        },
+        "amenity/place_of_worship/muslim": {
+            "name": "مسجد",
+            "terms": "مسلمان, مسجد مسلمانان"
+        },
+        "shop/tea": {
+            "name": "فروشگاه چای"
+        },
+        "aerialway/chair_lift": {
+            "name": "صندلی بالابر",
+            "terms": "تله سیژ, تله سی یژ, بالابر"
+        },
+        "shop/supermarket": {
+            "name": "فروشگاه بزرگ"
+        },
+        "office/political_party": {
+            "name": "حزب سیاسی"
+        },
+        "building/stadium": {
+            "name": "ساختمان استادیوم"
+        },
+        "landuse/military/range": {
+            "name": "محدوده نظامی"
+        },
+        "man_made/silo": {
+            "name": "سیلو"
+        },
+        "building/hut": {
+            "name": "کلبه"
+        },
+        "shop/candles": {
+            "name": "شمع فروشی"
+        },
+        "natural/saddle": {
+            "name": "گردنه"
+        },
+        "landuse/orchard": {
+            "name": "باغ میوه",
+            "terms": "میوه"
+        },
+        "type/restriction/no_right_turn": {
+            "name": "گردش به راست ممنوع"
+        },
+        "shop/car": {
+            "name": "نمایندگی خودرو",
+            "terms": "نمایشگاه خودرو, نمایشگاه ماشین, بنگاه معاملاتی خودرو, نمایشگاه اتوموبیل, فروش اتوموبیل"
+        },
+        "building/stable": {
+            "name": "اصطبل"
+        },
+        "amenity/public_bookcase": {
+            "name": "قفسه کتاب عمومی"
+        },
+        "tourism/camp_site": {
+            "name": "اردوگاه",
+            "terms": "کمپ, سایت"
+        },
+        "golf/hole": {
+            "name": "سوراخ گلف"
+        },
+        "building/semidetached_house": {
+            "name": "خانه شبه ویلایی"
+        },
+        "railway/abandoned": {
+            "name": "راه آهن متروکه"
+        },
+        "type/restriction": {
+            "name": "محدوده"
+        },
+        "playground/seesaw": {
+            "name": "الاکلنگ"
+        },
+        "shop/bathroom_furnishing": {
+            "name": "فروشگاه لوازم حمام",
+            "terms": "مبلمان حمام"
+        },
+        "shop/beauty/tanning": {
+            "name": "سالن برنزه"
+        },
+        "amenity/water_point": {
+            "name": "آب آشامیدنی"
+        },
+        "leisure/hackerspace": {
+            "name": "هکراسپیس"
+        },
+        "amenity/food_court": {
+            "name": "فودکورت",
+            "terms": "سرای غذا, تالار خوراک, رستوران, غذا, فست فود"
+        },
+        "natural/beach": {
+            "name": "ساحل"
+        },
+        "junction": {
+            "name": "اتصال"
+        },
+        "office/coworking": {
+            "name": "فضای کاری مشارکتی"
+        },
+        "vertex": {
+            "name": "سایر",
+            "terms": "دیگر, بقیه, باقی"
+        },
+        "type/boundary": {
+            "name": "مرز"
+        },
+        "aeroway/taxiway": {
+            "name": "خزشراه",
+            "terms": "مسیر خزش, تاکسیوی, تاکسی وی"
+        },
+        "craft/optician": {
+            "name": "عینک سازی"
+        },
+        "waterway/waterfall": {
+            "name": "آبشار"
+        },
+        "office/guide": {
+            "name": "دفتر راهنمای تور"
+        },
+        "type/route": {
+            "name": "مسیر"
+        },
+        "amenity/vending_machine/public_transport_tickets": {
+            "name": "ماشین خودفروش بلیط حمل و نقل"
+        },
+        "man_made/embankment": {
+            "name": "خاکریز"
+        },
+        "shop/tobacco": {
+            "name": "فروشگاه مواد افیونی تنباکو",
+            "terms": "دخانیات, مواد دخانی, فروشگاه مواد دخانی, فروشگاه دخانیات, تنباکو"
+        },
+        "building/shed": {
+            "name": "سایبان"
+        },
+        "building/detached": {
+            "name": "خانه ویلایی"
+        },
+        "shop/charity": {
+            "name": "فروشگاه خیریه"
+        },
+        "shop/musical_instrument": {
+            "name": "فروشگاه سازهای موسیقی"
+        },
+        "man_made/wastewater_plant": {
+            "name": "تصفیه خانه فاضلاب"
+        },
+        "landuse/plant_nursery": {
+            "name": "گلخانه"
+        },
+        "shop/money_lender": {
+            "name": "وام دهنده پول"
+        },
+        "shop/radiotechnics": {
+            "name": "فروشگاه رادیو/اجزای الکترونیکی"
+        },
+        "building/college": {
+            "name": "ساختمان دانشکده",
+            "terms": "ساختمان کالج"
+        },
+        "amenity/nursing_home": {
+            "name": "خانه سالمندان"
+        },
+        "shop/ticket": {
+            "name": "بلیط فروشی"
+        },
+        "amenity/social_facility/group_home": {
+            "name": "خانه سالمندان"
+        },
+        "natural/water/reservoir": {
+            "name": "دریاچه پشت سد",
+            "terms": "مخزن"
+        },
+        "craft/saddler": {
+            "name": "زین ساز"
+        },
+        "landuse/quarry": {
+            "name": "معدن روباز",
+            "terms": "معدن سطحی"
+        },
+        "barrier/border_control": {
+            "name": "مرزبانی"
+        },
+        "landuse/basin": {
+            "name": "حوزه رودخانه"
+        },
+        "aerialway/mixed_lift": {
+            "name": "بالابر ترکیبی",
+            "terms": "بالابر هیبریدی"
+        },
+        "shop/paint": {
+            "name": "فروشگاه رنگ"
+        },
+        "historic/ruins": {
+            "name": "ویرانه"
+        },
+        "highway/secondary": {
+            "name": "جادهٔ درجه دو",
+            "terms": "جاده شریانی فرعی, شریانی فرعی, خیابان ثانویه, درجه ۲, درجه 2"
+        },
+        "natural/fell": {
+            "name": "تپه سنگی"
+        },
+        "amenity/fast_food/sandwich": {
+            "name": "ساندویچی"
+        },
+        "amenity/restaurant/japanese": {
+            "name": "رستوران ژاپنی"
+        },
+        "natural/heath": {
+            "name": "بوته زار"
+        },
+        "amenity/fast_food/kebab": {
+            "name": "کبابی"
+        },
+        "office/accountant": {
+            "name": "دفتر حسابدار",
+            "terms": "حسابدار"
+        },
+        "shop/leather": {
+            "name": "فروشگاه چرم",
+            "terms": "دباغی, چرم فروشی"
+        },
+        "building/commercial": {
+            "name": "ساختمان تجاری",
+            "terms": "تجاری, بازرگانی,مجتمع تجاری"
+        },
+        "club/sport": {
+            "name": "باشگاه ورزشی"
+        },
+        "amenity/bicycle_parking": {
+            "name": "پارکینگ دوچرخه",
+            "terms": "دوچرخه"
+        },
+        "amenity/compressed_air": {
+            "name": "هوای فشرده"
+        },
+        "man_made/water_well": {
+            "name": "چاه آب"
+        },
+        "shop/organic": {
+            "name": "فروشگاه محصولات ارگانیک"
+        },
+        "waterway/ditch": {
+            "name": "جوی مصنوعی (کف‌سازی‌نشده)",
+            "terms": "زهکش، آبگذر، ابگذر زهکش فاضلاب، فاضلاب، جوب"
+        },
+        "shop/fuel": {
+            "name": "فروشگاه سوخت"
+        },
+        "amenity/cinema": {
+            "name": "سینما",
+            "terms": "تماشاخانه, تئاتر, تآتر, تاتر, فیلم, نمایش, پرده, پرده نمایش, پرده سینما"
+        },
+        "type/route/bus": {
+            "name": "مسیر اتوبوس"
+        },
+        "type/route_master": {
+            "name": "مسیر اصلی",
+            "terms": "مسیر مستر"
+        },
+        "landuse/farm": {
+            "name": "زمین‌های کشاورزی"
+        },
+        "natural/wood": {
+            "name": "چوب"
+        },
+        "amenity/restaurant/chinese": {
+            "name": "رستوران چینی"
+        },
+        "leisure/pitch/rugby_union": {
+            "name": "زمین راگبی ۱۵ نفره"
+        },
+        "aeroway/apron": {
+            "name": "پیشگاه",
+            "terms": "صحن"
+        },
+        "shop/tattoo": {
+            "name": "سالن تاتو"
+        },
+        "shop/health_food": {
+            "name": "فروشگاه غذای سلامت‌زا",
+            "terms": "غذای سالم, غذای کامل, ارگانیک"
+        },
+        "playground/roundabout": {
+            "name": "چرخ و فلک",
+            "terms": "چرخ و فلک افقی"
+        },
+        "amenity/shelter/public_transport": {
+            "name": "سایبان ایستگاه حمل‌ونقل عمومی",
+            "terms": "سایه‌بان, ایستگاه اتوبوس, ایستگاه مترو, انتظار, اتوبوس"
+        },
+        "shop/optician": {
+            "name": "عینک فروشی",
+            "terms": "عینک, چشم, بینایی"
+        },
+        "type/route/foot": {
+            "name": "مسیر پیاده"
+        },
+        "barrier/block": {
+            "name": "بلوک"
+        },
+        "amenity/theatre/type/amphi": {
+            "name": "آمفی تئاتر",
+            "terms": "آمفی, تئاتر, تاتر"
+        },
+        "relation": {
+            "name": "رابطه"
+        },
+        "shop/medical_supply": {
+            "name": "فروشگاه تجهیزات پزشکی"
+        },
+        "type/restriction/only_straight_on": {
+            "name": "فقط مستقیم"
+        },
+        "amenity/recycling": {
+            "name": "بازیافت"
+        },
+        "camp_site/camp_pitch": {
+            "name": "مکان برقراری چادر",
+            "terms": "مکان برقراری چادر، مکان قرار دادن خودرو کاروان, چادر"
+        },
+        "landuse/commercial": {
+            "name": "منطقه تجاری"
+        },
+        "natural/ridge": {
+            "name": "پرتگاه"
+        },
+        "natural": {
+            "name": "طبیعی"
+        },
+        "aerialway/magic_carpet": {
+            "name": "نوار نقاله بالابر",
+            "terms": "تسمه نقاله بالابر, فرش جادویی, نوار متحرک"
+        },
+        "amenity/post_box": {
+            "name": "صندوق پستی"
+        },
+        "emergency/official": {
+            "name": "دسترسی اظطراری رسمی"
+        },
+        "leisure/bowling_alley": {
+            "name": "سالن بولینگ"
+        },
+        "man_made/mast": {
+            "name": "دکل مخابراتی"
+        },
+        "leisure/bird_hide": {
+            "name": "مکان تماشای پرندگان",
+            "terms": "مخفیگاه تماشای پرندگان"
+        },
+        "shop/fishing": {
+            "name": "فروشگاه لوازم ماهی گیری",
+            "terms": "قلاب ماهی گیری, ماهی گیری, صید"
+        },
+        "amenity/vending_machine/cigarettes": {
+            "name": "دستگاه فروش سیگار"
+        },
+        "craft/tiler": {
+            "name": "آجر پز"
+        },
+        "shop/frame": {
+            "name": "قاب سازی",
+            "terms": "تابلو*, قاب*"
+        },
+        "leisure/nature_reserve": {
+            "name": "ذخیره‌گاه طبیعی",
+            "terms": "ذخیره‌گاه طبیعی, ذخیره گاه طبیعی, ذخیره گاه جنگلی"
+        },
+        "shop/antiques": {
+            "name": "فروشگاه عتیقه‌جات",
+            "terms": "فروشگاه آنتیک"
+        },
+        "shop/fabric": {
+            "name": "پارچه فروشی"
+        },
+        "craft/brewery": {
+            "name": "آبجو سازی"
+        },
+        "highway/turning_circle": {
+            "name": "دایرهٔ گردش",
+            "terms": "بنبست قابل دورزدن, بُن‌گرد, دایره دورزدن, محل دورزدن"
+        },
+        "shop/coffee": {
+            "name": "فروشگاه قهوه",
+            "terms": "قهوه فروشی"
+        },
+        "shop/e-cigarette": {
+            "name": "فروشگاه سیگار الکترونیکی",
+            "terms": "سیگار برقی, وافور"
+        },
+        "amenity/vending_machine/feminine_hygiene": {
+            "name": "دستتگاه فروش لوازم بهداشتی زنان"
+        },
+        "shop/clothes": {
+            "name": "فروشگاه لباس",
+            "terms": "لباس فروشی"
+        },
+        "aeroway/aerodrome": {
+            "name": "فرودگاه"
+        },
+        "amenity/bicycle_rental": {
+            "name": "اجاره دوچرخه",
+            "terms": "کرایه دوچرخه, دوچرخه"
+        },
+        "shop/gift": {
+            "name": "هدیه فروشی",
+            "terms": "کادوئی, کادویی, گیفت, سوغات, سوغاتی, فروشگاه کادو, کادو فروشی, کارت عروسی"
+        },
+        "craft/locksmith": {
+            "name": "قفل ساز"
+        },
+        "leisure/sports_centre": {
+            "name": "مجتمع / مرکز ورزشی",
+            "terms": "مرکز ورزشی, مجتمع ورزشی, باشگاه ورزشی"
+        },
+        "place": {
+            "name": "محل"
+        },
+        "power": {
+            "name": "نیرو"
+        },
+        "leisure/fitness_station/push-up": {
+            "name": "محل شنا رفتن"
+        },
+        "aerialway/station": {
+            "name": "ایستگاه راه هوایی"
+        },
+        "building/house": {
+            "name": "خانه"
+        },
+        "leisure/marina": {
+            "name": "تفرجگاه ساحلی"
+        },
+        "craft/tailor": {
+            "name": "خیاط"
+        },
+        "amenity/restaurant/american": {
+            "name": "رستوران آمریکایی"
+        },
+        "barrier/gate": {
+            "name": "دروازه",
+            "terms": "ورودی, گیت, ورود, در بزرگ"
+        },
+        "shop/motorcycle": {
+            "name": "نمایندگی موتور سیکلت"
+        },
+        "waterway/river": {
+            "name": "رودخانه",
+            "terms": "رودخانه، رود,"
+        },
+        "office/architect": {
+            "name": "دفتر معماری"
+        },
+        "railway/subway": {
+            "name": "مترو"
+        },
+        "highway/elevator": {
+            "name": "آسانسور",
+            "terms": "بالابر"
+        },
+        "shop/carpet": {
+            "name": "فرش فروشی",
+            "terms": "قالی فروشی, فرش"
+        },
+        "craft": {
+            "name": "پیشه"
+        },
+        "traffic_calming/chicane": {
+            "name": "پیچ سرعتگیر",
+            "terms": "سرعتگیر, سرعتکاه, پیچانه, پیچ در پیچ, کاهش سرعت"
+        },
+        "shop/butcher": {
+            "name": "قصابی"
+        },
+        "barrier/bollard": {
+            "name": "تیرک مهار",
+            "terms": "استوانه ترافیکی"
+        },
+        "leisure/golf_course": {
+            "name": "زمین گلف"
+        },
+        "barrier": {
+            "name": "مانع"
+        },
+        "historic/castle": {
+            "name": "قلعه",
+            "terms": "دژ"
+        },
+        "shop/car_repair": {
+            "name": "تعمیرگاه خودرو",
+            "terms": "گاراژ, اتوموبیل, ماشین, سرویس, مکانیکی, میکانیکی"
+        },
+        "craft/hvac": {
+            "name": "گرمایش و تهویه مطبوع"
+        },
+        "highway/path": {
+            "name": "راهچه",
+            "terms": "راهچه, رد, مسیر پیاده, پیاده گردی, پیاده روی, راه باریک"
+        },
+        "leisure/water_park": {
+            "name": "پارک آبی",
+            "terms": "شنا, استخر, شیرجه"
+        },
+        "shop/sewing": {
+            "name": "خرازی",
+            "terms": "فروشگاه لوازم دوزندگی, چرخ خیاطی, فروشگاه لوازم خیاطی"
+        },
+        "landuse/meadow": {
+            "name": "علفزار"
+        },
+        "shop/convenience": {
+            "name": "فروشگاه کوچک",
+            "terms": "سوپری, سوپرمارکت, بقالی, خواربارفروشی"
+        },
+        "amenity/bus_station": {
+            "name": "پایانه اتوبوس / ترمینال"
+        },
+        "highway/crossing/zebra": {
+            "name": "خطکشی عابر پیاده"
+        },
+        "highway/steps/conveying": {
+            "name": "پله برقی",
+            "terms": "نقاله, پله متحرک, سطح شیب دار متحرک"
+        },
+        "shop/books": {
+            "name": "کتاب‌فروشی",
+            "terms": "فروشگاه کتاب"
+        },
+        "highway/service": {
+            "name": "جادهٔ خدماتی",
+            "terms": "سرویس, جاده, خیابان"
+        },
+        "waterway/drain": {
+            "name": "جوی مصنوعی (کف‌سازی شده)",
+            "terms": "زهکش، آبگذر، ابگذر زهکش فاضلاب، فاضلاب، جوب، جدول"
+        },
+        "highway/residential": {
+            "name": "جادهٔ مسکونی",
+            "terms": "جادهٔ مسکونی, جاده ی مسکونی, راه مسکونی, خیابان مسکونی, کوچه مسکونی"
+        },
+        "historic/wayside_shrine": {
+            "name": "آرامگاه کنار جاده"
+        },
+        "amenity/restaurant/turkish": {
+            "name": "رستوران ترکی"
+        },
+        "type/boundary/administrative": {
+            "name": "مرز حکومتی"
+        },
+        "landuse/military/office": {
+            "name": "دفتر نظامی"
+        },
+        "amenity/watering_place": {
+            "name": "آبشخور حیوانات"
+        },
+        "emergency/ambulance_station": {
+            "name": "ایستگاه آمبولانس",
+            "terms": "ای ام اس, ای ام تی, ems, emt, اورژانس جاده‌ای, آمبولانس جاده‌ای, نجات"
+        },
+        "healthcare/podiatrist": {
+            "name": "پاپزشک"
+        },
+        "amenity/motorcycle_parking": {
+            "name": "پارکینگ موتور سیکلت",
+            "terms": "موتورسیکلت"
+        },
+        "shop/craft": {
+            "name": "فروشگاه هنر و صنایع دستی"
+        },
+        "line": {
+            "name": "خط"
+        },
+        "amenity/vehicle_inspection": {
+            "name": "مرکز معاینه فنی خودرو",
+            "terms": "معاینه فنی"
+        },
+        "amenity/kindergarten": {
+            "name": "محوطه پیش دبستانی / مهدکودک",
+            "terms": "پیش دبستانی، مهد کودک، مدرسه، کودکستان"
+        },
+        "waterway/weir": {
+            "name": "سرریز",
+            "terms": "بند"
+        },
+        "craft/metal_construction": {
+            "name": "ساخت و ساز فلزی"
+        },
+        "craft/painter": {
+            "name": "نقاش"
+        },
+        "craft/carpet_layer": {
+            "name": "موکت کار",
+            "terms": "نصب موکت و فرش, موکت, نصاب موکت"
+        },
+        "man_made/flagpole": {
+            "name": "میله پرچم"
+        },
+        "highway/crossing/unmarked-raised": {
+            "name": "گذرگاه بدون نشانه‌گذاری (برآمده)",
+            "terms": "سرعتکاه تخت, سرعتگیر تخت"
+        },
+        "tourism/attraction": {
+            "name": "جاذبه گردشگری",
+            "terms": "جاذبه توریستی"
+        },
+        "man_made": {
+            "name": "سازه ی انسانی"
+        },
+        "golf/fairway": {
+            "name": "چمن راه راه"
+        },
+        "leisure/fitness_station/sit-up": {
+            "name": "محل دراز و نشست"
+        },
+        "public_transport/station_subway": {
+            "name": "ایستگاه مترو"
+        },
+        "tourism/alpine_hut": {
+            "name": "کلبه آلپ"
+        },
+        "tourism/information/office": {
+            "name": "دفتر اطلاعات گردشگری",
+            "terms": "دفتر اطلاعات توریستی, کیوسک اطلاعات گردشگری"
+        },
+        "shop/alcohol": {
+            "name": "مغازه مشروبات الکلی"
+        },
+        "tourism/viewpoint": {
+            "name": "چشم‌انداز",
+            "terms": "منظره, ویو"
+        },
+        "craft/handicraft": {
+            "name": "صنایع دستی"
+        },
+        "landuse/construction": {
+            "name": "ساخت و ساز"
+        },
+        "shop/motorcycle_repair": {
+            "name": "تعمیرگاه موتورسیکلت"
+        },
+        "aeroway": {
+            "name": "راه پروازی"
+        },
+        "aeroway/terminal": {
+            "name": "پایانه فرودگاه",
+            "terms": "ترمینال فرودگاه"
+        }
+    }
+}

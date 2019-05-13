@@ -1,11 +1,13 @@
 package de.westnordost.streetcomplete.quests;
 
 import java.util.Arrays;
+import java.util.concurrent.FutureTask;
 
 import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import de.westnordost.osmfeatures.FeatureDictionary;
 import de.westnordost.streetcomplete.data.QuestType;
 import de.westnordost.streetcomplete.data.QuestTypeRegistry;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
@@ -39,6 +41,7 @@ import de.westnordost.streetcomplete.quests.oneway.data.WayTrafficFlowDao;
 import de.westnordost.streetcomplete.quests.parking_access.AddParkingAccess;
 import de.westnordost.streetcomplete.quests.parking_fee.AddParkingFee;
 import de.westnordost.streetcomplete.quests.parking_type.AddParkingType;
+import de.westnordost.streetcomplete.quests.place_name.AddPlaceName;
 import de.westnordost.streetcomplete.quests.playground_access.AddPlaygroundAccess;
 import de.westnordost.streetcomplete.quests.postbox_collection_times.AddPostboxCollectionTimes;
 import de.westnordost.streetcomplete.quests.powerpoles_material.AddPowerPolesMaterial;
@@ -80,7 +83,8 @@ public class QuestModule
 		OsmNoteQuestType osmNoteQuestType, OverpassMapDataDao o,
 		RoadNameSuggestionsDao roadNameSuggestionsDao,
 		PutRoadNameSuggestionsHandler putRoadNameSuggestionsHandler,
-		TrafficFlowSegmentsDao trafficFlowSegmentsDao, WayTrafficFlowDao trafficFlowDao)
+		TrafficFlowSegmentsDao trafficFlowSegmentsDao, WayTrafficFlowDao trafficFlowDao,
+		FutureTask<FeatureDictionary> featureDictionaryFuture)
 	{
 		QuestType[] questTypesOrderedByImportance = {
 				// ↓ 1. notes
@@ -88,11 +92,11 @@ public class QuestModule
 
 				// ↓ 2. important data that is used by many data consumers
 				new AddRoadName(o, roadNameSuggestionsDao, putRoadNameSuggestionsHandler),
+				new AddPlaceName(o, featureDictionaryFuture),
 				new AddOneway(o, trafficFlowSegmentsDao, trafficFlowDao),
 				new AddIsBuildingUnderground(o), //to avoid asking AddHousenumber and other for underground buildings
 				new AddHousenumber(o),
 				new MarkCompletedHighwayConstruction(o),
-				// new AddPlaceName(o), doesn't make sense as long as the app cannot tell the generic name of elements
 
 				// ↓ 3. useful data that is used by some data consumers
 				new AddRecyclingType(o),

@@ -28,13 +28,12 @@ class AddRailwayCrossingBarrier(private val overpassMapDataDao: OverpassMapDataD
         changes.add("crossing:barrier", answer)
     }
 
-    private fun getOverpassQuery(bbox: BoundingBox): String {
-        val bboxFilter = OverpassQLUtil.getGlobalOverpassBBox(bbox)
-        return bboxFilter + """
-   way["highway"]["access"~"^private|no$"];
-   node(w) -> .private;
-   node["railway"="level_crossing"][!"crossing:barrier"]->.crossings;
-   (.crossings; - .private;)->.public;
-   .public out;"""
-    }
+    private fun getOverpassQuery(bbox: BoundingBox) =
+        OverpassQLUtil.getGlobalOverpassBBox(bbox) + """
+        way["highway"]["access"~"^private|no$"]; node(w) -> .private_roads;
+        way["railway"="tram"]; node(w) -> .trams;
+        node["railway"="level_crossing"][!"crossing:barrier"];
+        (._; - .private_roads; );
+        (._; - .trams; );
+        out;"""
 }

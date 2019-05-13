@@ -94,7 +94,7 @@ public class FindQuestSourceComponent
 					})
 					.setNegativeButton(android.R.string.cancel, null);
 
-			checkBox.setVisibility(timesShown < 2 ? View.GONE : View.VISIBLE);
+			checkBox.setVisibility(timesShown < 1 ? View.GONE : View.VISIBLE);
 
 			alertDialogBuilder.show();
 		}

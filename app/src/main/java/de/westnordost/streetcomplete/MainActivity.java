@@ -52,6 +52,7 @@ import com.mapzen.tangram.LngLat;
 import java.util.Collection;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.FutureTask;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -64,6 +65,7 @@ import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.osmapi.map.data.OsmElement;
+import de.westnordost.osmfeatures.FeatureDictionary;
 import de.westnordost.streetcomplete.about.AboutFragment;
 import de.westnordost.streetcomplete.data.Quest;
 import de.westnordost.streetcomplete.data.QuestAutoSyncer;
@@ -121,6 +123,8 @@ public class MainActivity extends AppCompatActivity implements
 	@Inject AnswersCounter answersCounter;
 
 	@Inject SoundFx soundFx;
+
+	@Inject FutureTask<FeatureDictionary> featureDictionaryFutureTask;
 
 	private final Random random = new Random();
 
@@ -309,7 +313,7 @@ public class MainActivity extends AppCompatActivity implements
 		uploadServiceIsBound = bindService(new Intent(this, QuestChangesUploadService.class),
 				uploadServiceConnection, BIND_AUTO_CREATE);
 
-		if(!hasAskedForLocation)
+		if(!hasAskedForLocation && !prefs.getBoolean(Prefs.LAST_LOCATION_REQUEST_DENIED, false))
 		{
 			locationRequestFragment.startRequest();
 		}
@@ -407,7 +411,7 @@ public class MainActivity extends AppCompatActivity implements
 		icon.setImageResource(quest.getType().getIcon());
 		TextView text = inner.findViewById(R.id.text);
 
-		text.setText(QuestUtilKt.getHtmlQuestTitle(getResources(), quest.getType(), element));
+		text.setText(QuestUtilKt.getHtmlQuestTitle(getResources(), quest.getType(), element, featureDictionaryFutureTask));
 
 		new AlertDialog.Builder(this)
 			.setTitle(R.string.undo_confirm_title)
@@ -1090,6 +1094,8 @@ public class MainActivity extends AppCompatActivity implements
 	{
 		hasAskedForLocation = true;
 		boolean enabled = withLocationState.isEnabled();
+		prefs.edit().putBoolean(Prefs.LAST_LOCATION_REQUEST_DENIED, !enabled).apply();
+
 		if(enabled)
 		{
 			updateLocationAvailability();

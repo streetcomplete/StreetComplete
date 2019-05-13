@@ -651,4 +651,5 @@ Per example 1,3 o 2-6."</string>
     <string name="theme_light">"Clar"</string>
     <string name="theme_dark">"Fosc"</string>
     <string name="theme_system_default">"Predeterminat del sistema"</string>
+    <string name="quest_placeName_title_name">"Quin nom té aquest lloc? (%s)"</string>
 </resources>

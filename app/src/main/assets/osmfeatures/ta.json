@@ -1,0 +1,900 @@
+{
+    "presets": {
+        "power/substation": {
+            "name": "துணைநிலையம்"
+        },
+        "office/administrative": {
+            "name": "நிருவாக அலுவலகம்"
+        },
+        "highway/steps": {
+            "name": "படிகட்டுகள்"
+        },
+        "leisure/park": {
+            "name": "பூங்கா"
+        },
+        "place/city": {
+            "name": "மாநகரம்"
+        },
+        "amenity/vending_machine/drinks": {
+            "name": "குடிநீர் தானியங்கி",
+            "terms": "சோடா, குடிநீர், குளிர்பானம்"
+        },
+        "amenity/fast_food": {
+            "name": "துரித உணவு",
+            "terms": "உணவகம்"
+        },
+        "type/route/pipeline": {
+            "name": "குழாய் தொடர் பாதை"
+        },
+        "building": {
+            "name": "கட்டடம்"
+        },
+        "leisure/garden": {
+            "name": "தோட்டம்"
+        },
+        "historic/memorial": {
+            "name": "நினைவகம்"
+        },
+        "leisure/swimming_pool": {
+            "name": "நீச்சல் குளம்"
+        },
+        "waterway/stream": {
+            "name": "ஓடை"
+        },
+        "railway": {
+            "name": "இரயில்வே"
+        },
+        "building/university": {
+            "name": "பல்கலைக்கழக கட்டிடம்"
+        },
+        "building/farm": {
+            "name": "பண்ணை வீடு"
+        },
+        "amenity/library": {
+            "name": "புத்தகச்சாலை"
+        },
+        "aeroway/helipad": {
+            "name": "சிறு விமானம் இறங்கும் தளம்",
+            "terms": "உலங்கு வானூர்தி"
+        },
+        "office/advertising_agency": {
+            "name": "விளம்பர முகவர்"
+        },
+        "amenity/waste_disposal": {
+            "terms": "குப்பை, கழிவு"
+        },
+        "traffic_calming/hump": {
+            "name": "வேகத்தடை"
+        },
+        "amenity/dentist": {
+            "name": "பல் மருத்துவர் ",
+            "terms": "பல், பற்கள்"
+        },
+        "craft/sawmill": {
+            "name": "மரம் அறுக்கும் ஆலை"
+        },
+        "power/sub_station": {
+            "name": "துணைநிலையம்"
+        },
+        "office/research": {
+            "name": "ஆராய்ச்சி அலுவலகம்"
+        },
+        "shop/tea": {
+            "name": "தேநீர் கடை"
+        },
+        "office/travel_agent": {
+            "name": "பயண முகவர்"
+        },
+        "man_made/bridge": {
+            "name": "பாலம்"
+        },
+        "aeroway/runway": {
+            "name": "ஓடுதளம்"
+        },
+        "craft/jeweler": {
+            "name": "பத்தர்"
+        },
+        "office/telecommunication": {
+            "name": "தொலைத்தொடர்பு அலுவலகம்"
+        },
+        "railway/monorail": {
+            "name": "மோனோ இரயில்"
+        },
+        "landuse/military": {
+            "name": "இராணுவப் பகுதி"
+        },
+        "office/physician": {
+            "name": "மருத்துவர்"
+        },
+        "shop/bicycle": {
+            "name": "மிதிவண்டிக் கடை"
+        },
+        "railway/milestone": {
+            "name": "இரயில்வே மைல்கல்"
+        },
+        "barrier/city_wall": {
+            "name": "நகரச் சுவர்"
+        },
+        "office/employment_agency": {
+            "name": "வேலைவாய்ப்பு முகவர்"
+        },
+        "tourism/guest_house": {
+            "name": "விருந்தினர் இல்லம்"
+        },
+        "office/political_party": {
+            "name": "அரசியல் கட்சி"
+        },
+        "office/government/register_office": {
+            "name": "பதிவு அலுவலகம்"
+        },
+        "shop/wholesale": {
+            "name": "மொத்தவிலைக் கடை"
+        },
+        "man_made/surveillance": {
+            "name": "கண்காணிப்பு"
+        },
+        "tourism/gallery": {
+            "name": "கலைக்கூடம்"
+        },
+        "shop/beauty": {
+            "name": "அழகுசாதனக் கடை"
+        },
+        "building/hut": {
+            "name": "குடிசை"
+        },
+        "type/route/tram": {
+            "name": "டிராம் வழித்தடம்"
+        },
+        "amenity/music_school": {
+            "name": "இசைப் பள்ளி"
+        },
+        "waterway/canal": {
+            "name": "கால்வாய்"
+        },
+        "place/island": {
+            "name": "தீவு"
+        },
+        "craft/carpenter": {
+            "name": "தச்சர்"
+        },
+        "leisure/common": {
+            "name": "பொதுவான"
+        },
+        "amenity/dojo": {
+            "terms": "தற்காப்புக் கலை"
+        },
+        "landuse/farmland": {
+            "name": "பண்ணை நிலம்"
+        },
+        "public_transport/platform_tram": {
+            "name": "டிராம் நிறுத்தம் / நடைமேடை"
+        },
+        "building/transportation": {
+            "name": "போக்குவரத்துக் கட்டிடம்"
+        },
+        "type/restriction/no_right_turn": {
+            "name": "வலது வளைவுக் கூடாது"
+        },
+        "shop/car": {
+            "name": "வாகன விற்பனையகம்"
+        },
+        "address": {
+            "name": "முகவரி",
+            "terms": "விலாசம்"
+        },
+        "place/square": {
+            "name": "சதுக்கம்"
+        },
+        "place/neighbourhood": {
+            "name": "நகர்ப்பகுதி"
+        },
+        "amenity/pub": {
+            "name": "பப் "
+        },
+        "building/entrance": {
+            "name": "நுழைவாயில்/வெளியேறல்"
+        },
+        "railway/station": {
+            "name": "தொடருந்து நிலையம்"
+        },
+        "railway/abandoned": {
+            "name": "பயன்படுத்தப்படாத இரயில்வே"
+        },
+        "shop/shoes": {
+            "name": "காலணியகம்"
+        },
+        "type/restriction": {
+            "name": "கட்டுப்பாடு"
+        },
+        "type/route/road": {
+            "name": "சாலை வழி"
+        },
+        "amenity/planetarium": {
+            "name": "கோளரங்கம் "
+        },
+        "amenity/place_of_worship/hindu": {
+            "name": "இந்துக் கோயில்",
+            "terms": "கோவில், தேவஸ்தானம், மந்திர், சேத்திரம், ஆலயம்"
+        },
+        "man_made/chimney": {
+            "name": "புகைபோக்கி"
+        },
+        "shop/mall": {
+            "name": "பேரங்காடி"
+        },
+        "amenity/swimming_pool": {
+            "name": "நீச்சல் குளம்"
+        },
+        "barrier/wall": {
+            "name": "சுவர்"
+        },
+        "natural/beach": {
+            "name": "கடற்கரை"
+        },
+        "junction": {
+            "name": "சந்திப்பு"
+        },
+        "amenity/vending_machine/condoms": {
+            "name": "ஆணுறை தானியங்கி",
+            "terms": "ஆணுறை"
+        },
+        "man_made/tower": {
+            "name": "கோபுரம்"
+        },
+        "vertex": {
+            "name": "பிற"
+        },
+        "shop/florist": {
+            "name": "பூக்கடை"
+        },
+        "type/boundary": {
+            "name": "எல்லை"
+        },
+        "building/school": {
+            "name": "பள்ளிக் கட்டிடம்"
+        },
+        "amenity/atm": {
+            "name": "ஏ.டி.எம்"
+        },
+        "shop/art": {
+            "name": "கலை அங்காடி"
+        },
+        "tourism/hostel": {
+            "name": "விடுதி"
+        },
+        "waterway/waterfall": {
+            "name": "நீர்வீழ்ச்சி"
+        },
+        "type/route": {
+            "name": "வழி"
+        },
+        "man_made/embankment": {
+            "name": "கரை"
+        },
+        "office/private_investigator": {
+            "name": "தனியார் துப்பு துலக்கும் அலுவலகம்"
+        },
+        "shop/tobacco": {
+            "name": "புகையிலைக் கடை"
+        },
+        "area": {
+            "name": "பரப்பளவு"
+        },
+        "landuse/landfill": {
+            "terms": "கழிவு"
+        },
+        "aeroway/hangar": {
+            "name": "விமானங்கள் நிறுத்துமிடம்"
+        },
+        "man_made/wastewater_plant": {
+            "name": "நீர் சுத்திகரிப்பு நிலையம்"
+        },
+        "amenity/theatre": {
+            "name": "திரையரங்கம்"
+        },
+        "building/college": {
+            "name": "கல்லூரிக் கட்டிடம்"
+        },
+        "man_made/lighthouse": {
+            "name": "கலங்கரை விளக்கம்"
+        },
+        "type/route/train": {
+            "name": "தோடருந்து வழித்தடம்"
+        },
+        "barrier/fence": {
+            "name": "வேலி"
+        },
+        "tourism/aquarium": {
+            "name": "மீன் காட்சியகம்"
+        },
+        "railway/rail": {
+            "name": "இரயில்"
+        },
+        "natural/water/reservoir": {
+            "name": "நீர்த் தேக்கம்"
+        },
+        "type/site": {
+            "name": "தளம்"
+        },
+        "office/government": {
+            "name": "அரசு அலுவலகம்"
+        },
+        "railway/disused": {
+            "name": "பயன்படுத்தப்படாத இரயில்வே"
+        },
+        "amenity/grave_yard": {
+            "name": "இடுகாடு"
+        },
+        "railway/light_rail": {
+            "name": "இலகு இரயில்"
+        },
+        "office/lawyer/notary": {
+            "name": "ஆயத்துறை எழுத்துபதிவாளர் அலுவலகம்"
+        },
+        "man_made/water_tower": {
+            "name": "தண்ணீர்த் தொட்டி"
+        },
+        "railway/subway_entrance": {
+            "name": "சுரங்கப்பாதை நுழைவுவாயில்"
+        },
+        "emergency/fire_extinguisher": {
+            "name": "தீயணைப்பான்"
+        },
+        "shop": {
+            "name": "கடை"
+        },
+        "craft/scaffolder": {
+            "name": "சாரம் அடிப்பவர்"
+        },
+        "tourism/caravan_site": {
+            "name": "ஆர்வி பூங்கா"
+        },
+        "shop/leather": {
+            "name": "தோல் கடை"
+        },
+        "building/commercial": {
+            "name": "வியாபாரக் கட்டிடம்"
+        },
+        "tourism/hotel": {
+            "name": "உணவகம்"
+        },
+        "advertising/billboard": {
+            "name": "பில்போர்ட்",
+            "terms": "துண்டு விளம்பரங்கள் ஒட்டப்படும் பலகை"
+        },
+        "shop/bakery": {
+            "name": "அடுமனை"
+        },
+        "historic/monument": {
+            "name": "நினைவுச்சின்னம்"
+        },
+        "emergency/phone": {
+            "name": "அவசரத் தொலைபேசி"
+        },
+        "amenity/bicycle_parking": {
+            "name": "ஈருருளை நிறுத்தகம்"
+        },
+        "man_made/water_well": {
+            "name": "தண்ணீர்க் கிணறு"
+        },
+        "type/route/bicycle": {
+            "name": "மிதிவண்டிப் பாதை"
+        },
+        "waterway/ditch": {
+            "name": "சாக்கடை"
+        },
+        "leisure/pitch/soccer": {
+            "name": "காற்பந்து அரங்கம்"
+        },
+        "waterway": {
+            "name": "நீர்வழி"
+        },
+        "public_transport/stop_position_light_rail": {
+            "name": "இலகு இரயில் நிறுத்தம் இடம்"
+        },
+        "amenity/place_of_worship/buddhist": {
+            "name": "புத்தக் கோயில்"
+        },
+        "amenity/cinema": {
+            "name": "சினிமா"
+        },
+        "type/route/bus": {
+            "name": "பேருந்து தடம்"
+        },
+        "landuse/farm": {
+            "name": "பண்ணை நிலம்"
+        },
+        "amenity/language_school": {
+            "name": "மொழிப் பள்ளி"
+        },
+        "amenity/crematorium": {
+            "name": "சுடுகாடு",
+            "terms": "கல்லறை, இடுகாடு"
+        },
+        "building/farm_auxiliary": {
+            "name": "பண்ணைக் கட்டிடம்"
+        },
+        "natural/wood": {
+            "name": "மரம்"
+        },
+        "building/construction": {
+            "name": "கட்டிடம் கட்டப்பட்டுக் கொண்டிருக்கிறது"
+        },
+        "amenity/hospital": {
+            "name": "மருத்துவமனை "
+        },
+        "leisure/playground": {
+            "name": "விளையாட்டுத் திடல்"
+        },
+        "amenity/telephone": {
+            "name": "தொலைபேசி"
+        },
+        "emergency/water_tank": {
+            "name": "அவசர நீர் தொட்டி"
+        },
+        "aeroway/apron": {
+            "name": "காப்புத் தளம்"
+        },
+        "type/restriction/only_left_turn": {
+            "name": "இடது வளைவு மட்டும்"
+        },
+        "leisure/stadium": {
+            "name": "விளையாட்டு அரங்கம்"
+        },
+        "amenity/drinking_water": {
+            "name": "குடிநீர் ",
+            "terms": "ஊற்று"
+        },
+        "public_transport/platform_light_rail": {
+            "name": "இலகு இரயில் நிறுத்தம் / நடைமேடை"
+        },
+        "type/route/foot": {
+            "name": "நடைப் பாதை"
+        },
+        "office/newspaper": {
+            "name": "செய்தித்தாள் அலுவலகம்"
+        },
+        "amenity/townhall": {
+            "name": "நகராட்சிமன்றம்",
+            "terms": "கிராமம், நகரம், அரசு, நீதிமன்றம், பேரூராட்சிமன்றம்"
+        },
+        "relation": {
+            "name": "தொடர்பு"
+        },
+        "man_made/windmill": {
+            "name": "காற்றாலை"
+        },
+        "natural/water": {
+            "name": "தண்ணீர்"
+        },
+        "embankment": {
+            "name": "கரை"
+        },
+        "building/service": {
+            "name": "சேவைக் கட்டிடம்"
+        },
+        "place/town": {
+            "name": "நகரம்"
+        },
+        "power/line": {
+            "name": "மின் கம்பி"
+        },
+        "seamark/mooring": {
+            "name": "பிணைப்பு மிதவை"
+        },
+        "type/waterway": {
+            "name": "நீர்வழி"
+        },
+        "tourism/information": {
+            "name": "தகவல்"
+        },
+        "natural": {
+            "name": "இயற்கையான"
+        },
+        "amenity/post_box": {
+            "name": "அஞ்சல்பெட்டி"
+        },
+        "shop/laundry": {
+            "name": "சலவையகம்"
+        },
+        "natural/peak": {
+            "name": "மலை உச்சி"
+        },
+        "natural/water/lake": {
+            "name": "ஏரி"
+        },
+        "tourism/artwork": {
+            "name": "ஓவியம்"
+        },
+        "amenity/bank": {
+            "name": "வங்கி"
+        },
+        "railway/tram": {
+            "name": "அமிழ் தண்டூர்தி"
+        },
+        "public_transport/station_light_rail": {
+            "name": "இலகு இரயில் நிலையம்"
+        },
+        "landuse/farmyard": {
+            "name": "பண்ணை"
+        },
+        "man_made/works": {
+            "name": "ஆலை"
+        },
+        "craft/plumber": {
+            "name": "குழாய்நுட்பர்"
+        },
+        "highway/cycleway": {
+            "name": "மிதிவண்டிப் பாதை"
+        },
+        "amenity/arts_centre": {
+            "name": "கலையரங்கம் "
+        },
+        "shop/antiques": {
+            "name": "பழம்பொருள் அங்காடி"
+        },
+        "shop/travel_agency": {
+            "name": "பயண முகவர்"
+        },
+        "tourism/zoo": {
+            "name": "உயிரியல் பூங்கா"
+        },
+        "shop/computer": {
+            "name": "கணினி விற்பனையகம்"
+        },
+        "tourism/artwork/statue": {
+            "name": "சிலை"
+        },
+        "amenity/restaurant": {
+            "name": "உணவகம்"
+        },
+        "landuse/grass": {
+            "name": "புல்வெளி"
+        },
+        "natural/grassland": {
+            "name": "புல்வெளிகள்"
+        },
+        "amenity/police": {
+            "name": "காவல்"
+        },
+        "place/farm": {
+            "name": "பண்ணை"
+        },
+        "tourism": {
+            "name": "சுற்றுலா"
+        },
+        "building/residential": {
+            "name": "குடியிருப்புக் கட்டிடம்"
+        },
+        "highway/street_lamp": {
+            "name": "தெரு விளக்கு"
+        },
+        "amenity/bureau_de_change": {
+            "name": "பணப் பரிமாற்றம்"
+        },
+        "shop/clothes": {
+            "name": "ஜவுளிக் கடை"
+        },
+        "tourism/chalet": {
+            "name": "விடுமுறை குடில்"
+        },
+        "aeroway/aerodrome": {
+            "name": "விமானநிலையம்"
+        },
+        "amenity/bicycle_rental": {
+            "name": "சைக்கிள் வாடகை"
+        },
+        "aeroway/gate": {
+            "name": "விமான நிலைய நுழைவாயில்"
+        },
+        "leisure/dancing_school": {
+            "name": "நடனப் பள்ளி"
+        },
+        "waterway/riverbank": {
+            "name": "ஆற்றங்கரை"
+        },
+        "place": {
+            "name": "இடம்"
+        },
+        "public_transport/platform_train": {
+            "name": "தொடருந்து நிறுத்தம் / நடைமேடை"
+        },
+        "type/route/light_rail": {
+            "name": "இலகு இரயில் பாதை"
+        },
+        "amenity/post_office": {
+            "name": "அஞ்சலகம்"
+        },
+        "building/house": {
+            "name": "வீடு"
+        },
+        "leisure/marina": {
+            "name": "மரினா"
+        },
+        "natural/volcano": {
+            "name": "எரிமலை"
+        },
+        "craft/tailor": {
+            "name": "தையற்காரர்"
+        },
+        "highway/milestone": {
+            "name": "நெடுஞ்சாலை மைல்கல்"
+        },
+        "amenity/nightclub": {
+            "name": "இரவு விடுதி",
+            "terms": "டிஸ்கோ, இரவு விடுதி, ஆட்டம்"
+        },
+        "waterway/dam": {
+            "name": "அணை"
+        },
+        "amenity/school": {
+            "name": "பள்ளி மைதானம்"
+        },
+        "building/temple": {
+            "name": "கோயில் கட்டிடம்"
+        },
+        "amenity/bar": {
+            "name": "மதுபானக் கடை "
+        },
+        "waterway/milestone": {
+            "name": "நீர்வழி மைல்கல்"
+        },
+        "barrier/gate": {
+            "name": "கதவு"
+        },
+        "office/government/tax": {
+            "name": "வரி மற்றும் வருவாய் அலுவலகம்"
+        },
+        "tourism/museum": {
+            "name": "அருங்காட்சியகம்"
+        },
+        "healthcare/hospice": {
+            "name": "அறவுளி"
+        },
+        "leisure/pitch/tennis": {
+            "name": "டென்னிசு அரங்கம்"
+        },
+        "shop/weapons": {
+            "name": "ஆயுதவிற்பனைக் கடை"
+        },
+        "waterway/river": {
+            "name": "ஆறு"
+        },
+        "amenity/doctors": {
+            "name": "மருத்துவர் ",
+            "terms": "மருத்துவர்"
+        },
+        "railway/subway": {
+            "name": "சுரங்கப்பாதை"
+        },
+        "highway/elevator": {
+            "name": "மின்தூக்கி"
+        },
+        "landuse/churchyard": {
+            "name": "கோயில் முற்றம்"
+        },
+        "shop/butcher": {
+            "name": "இறைச்சிக் கடை"
+        },
+        "office": {
+            "name": "அலுவலகம்"
+        },
+        "leisure/golf_course": {
+            "name": "கோல்ஃப் கோர்ஸ்"
+        },
+        "amenity/fire_station": {
+            "name": "தீயணைப்பு நிலையம்"
+        },
+        "barrier/entrance": {
+            "name": "நுழைவுவாயில்"
+        },
+        "emergency/fire_hydrant": {
+            "name": "தீயணைப்புக் குழாய் முனை"
+        },
+        "historic/castle": {
+            "name": "கோட்டை"
+        },
+        "natural/water/pond": {
+            "name": "குளம்"
+        },
+        "office/surveyor": {
+            "name": "நில அளவாய்வாளர் அலுவலகம்"
+        },
+        "highway/path": {
+            "name": "வழி"
+        },
+        "leisure/water_park": {
+            "name": "தண்ணீர் பூங்கா"
+        },
+        "amenity/driving_school": {
+            "name": "ஓட்டுநர் பள்ளி"
+        },
+        "public_transport/platform_bus": {
+            "name": "பேருந்து நிறுத்தம்  / தடம்"
+        },
+        "amenity/bench": {
+            "name": "விசுப்பலகை"
+        },
+        "entrance": {
+            "name": "நுழைவு / வெளியேறு"
+        },
+        "shop/chemist": {
+            "name": "மருந்தகம்"
+        },
+        "tourism/information/map": {
+            "name": "வரைபடம்"
+        },
+        "building/hospital": {
+            "name": "மருத்துவமனைக் கட்டிடம்"
+        },
+        "amenity/bus_station": {
+            "name": "பேருந்து நிலையம் / முனையம்"
+        },
+        "amenity/marketplace": {
+            "name": "பஜார்"
+        },
+        "power/tower": {
+            "name": "அதிக-மின்னழுத்தக் கோபுரம்"
+        },
+        "amenity/toilets": {
+            "name": "கழிவறைகள்"
+        },
+        "aerialway/cable_car": {
+            "name": "கேபிள்  கார் "
+        },
+        "amenity/university": {
+            "name": "பல்கலைக்கழகத் திடல்"
+        },
+        "shop/books": {
+            "name": "புத்தகக் கடை"
+        },
+        "building/public": {
+            "name": "பொதுக் கட்டிடம்"
+        },
+        "waterway/drain": {
+            "name": "கழிவுநீர்"
+        },
+        "emergency/first_aid_kit": {
+            "name": "முதலுதவிப் பெட்டி"
+        },
+        "craft/shoemaker": {
+            "name": "செம்மார்"
+        },
+        "amenity/place_of_worship": {
+            "name": "வழிபாட்டு இடம்",
+            "terms": "பாசிலிகா, சேப்பல், கிறத்தவ ஆலயம், கோயில், பள்ளிவாசல், வணக்கத்தலம்"
+        },
+        "man_made/watermill": {
+            "name": "தண்ணீர் ஆலை"
+        },
+        "landuse/military/office": {
+            "name": "இராணுவ அலுவலகம்"
+        },
+        "amenity/embassy": {
+            "name": "தூதரகம்"
+        },
+        "shop/toys": {
+            "name": "விளையாட்டுப் பொருட் கடை"
+        },
+        "type/restriction/no_straight_on": {
+            "name": "நேராகப் போகக் கூடாது"
+        },
+        "type/restriction/no_left_turn": {
+            "name": "இடதுபுறம் செல்லக் கூடாது"
+        },
+        "amenity/place_of_worship/sikh": {
+            "name": "சீக்கியக் கோயில்"
+        },
+        "amenity/social_facility/food_bank": {
+            "name": "உணவு வங்கி"
+        },
+        "emergency/ambulance_station": {
+            "name": "அவசர ஊர்தி நிலையம்"
+        },
+        "place/village": {
+            "name": "கிராமம்"
+        },
+        "amenity/motorcycle_parking": {
+            "name": "ஈருருளை நிறுத்துமிடம்"
+        },
+        "building/church": {
+            "name": "தேவாலயக் கட்டிடம்"
+        },
+        "line": {
+            "name": "கோடு"
+        },
+        "natural/cave_entrance": {
+            "name": "குகை நுழைவாயில்"
+        },
+        "amenity/cafe": {
+            "name": "டீக்கடை"
+        },
+        "point": {
+            "name": "புள்ளி"
+        },
+        "natural/mud": {
+            "name": "சேறு"
+        },
+        "amenity/place_of_worship/taoist": {
+            "name": "தாவோயிசக் கோயில்"
+        },
+        "waterway/weir": {
+            "name": "சிற்றணை"
+        },
+        "building/mosque": {
+            "name": "பள்ளிவாசல் கட்டிடம்"
+        },
+        "craft/painter": {
+            "name": "ஓவியர்"
+        },
+        "natural/wetland": {
+            "name": "ஈரநிலம்"
+        },
+        "roundabout": {
+            "name": "வட்டச்சுற்று வழி"
+        },
+        "natural/tree": {
+            "name": "மரம்"
+        },
+        "type/route/power": {
+            "name": "மின் பாதை"
+        },
+        "amenity/register_office": {
+            "name": "பதிவு அலுவலகம்"
+        },
+        "man_made": {
+            "name": "மனிதனால் கட்டப்பட்டது"
+        },
+        "man_made/petroleum_well": {
+            "name": "எண்ணெய் கிணறு"
+        },
+        "healthcare/alternative": {
+            "name": "மாற்று மருத்துவம்"
+        },
+        "public_transport/station_train": {
+            "name": "தொடருந்து நிலையம்"
+        },
+        "shop/tailor": {
+            "name": "தையல்காரர்"
+        },
+        "amenity/clock": {
+            "name": "கடிகாரம்"
+        },
+        "tourism/information/office": {
+            "name": "சுற்றுலாத் தகவல் அலுவலகம்"
+        },
+        "shop/alcohol": {
+            "name": "மதுபானக் கடை"
+        },
+        "office/lawyer": {
+            "name": "சட்ட அலுவலகம்"
+        },
+        "landuse/construction": {
+            "name": "கட்டுமானம்"
+        },
+        "building/garage": {
+            "name": "வாகனப் பணிமனை"
+        },
+        "emergency/lifeguard": {
+            "name": "மெய்க்காப்பாளர்"
+        },
+        "highway/footway": {
+            "name": "நடைபாதை"
+        },
+        "natural/coastline": {
+            "name": "கடற்கரை"
+        },
+        "natural/tree_row": {
+            "name": "மரம் வரிசை"
+        },
+        "natural/glacier": {
+            "name": "பனிப் பாறை"
+        },
+        "building/hotel": {
+            "name": "விடுதிக் கட்டிடம்"
+        },
+        "shop/anime": {
+            "name": "பசைக் கடை"
+        }
+    }
+}

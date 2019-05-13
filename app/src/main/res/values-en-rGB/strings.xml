@@ -508,6 +508,8 @@ For instance 1,3 or 2-6."</string>
     <string name="quest_buildingType_residential_description">"building where people live"</string>
     <string name="quest_buildingType_house">"House"</string>
     <string name="quest_buildingType_house_description">"single-family home"</string>
+    <string name="quest_buildingType_terrace">"Terrace"</string>
+    <string name="quest_segregated_title">"How are the footway and cycleway laid out here?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
     <string name="quest_sidewalk_value_yes">"pavement"</string>
     <string name="quest_sidewalk_value_no">"no pavement"</string>

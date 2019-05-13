@@ -702,4 +702,5 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="theme_light">"Světlý"</string>
     <string name="theme_dark">"Tmavý"</string>
     <string name="theme_system_default">"Výchozí vzhled systému"</string>
+    <string name="quest_placeName_title_name">"Jak se jmenuje toto místo? (%s)"</string>
 </resources>
