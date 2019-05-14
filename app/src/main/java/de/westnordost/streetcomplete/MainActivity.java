@@ -260,26 +260,24 @@ public class MainActivity extends AppCompatActivity implements
 		{
 			if ("geo".equals(data.getScheme()))
 			{
-				double latitude = 0;
-				double longitude = 0;
-				float zoom = -1;
-
-				String geoUriRegex = "^geo:(-?[0-9]*\\.?[0-9]+),(-?[0-9]*\\.?[0-9]+).*?(?:\\?z=([0-9]*\\.?[0-9]+))?";
+				String geoUriRegex = "geo:(-?[0-9]*\\.?[0-9]+),(-?[0-9]*\\.?[0-9]+).*?(?:\\?z=([0-9]*\\.?[0-9]+))?";
 				Pattern pattern = Pattern.compile(geoUriRegex);
 				Matcher matcher = pattern.matcher(data.toString());
-				while (matcher.find())
+				if (matcher.find())
 				{
-					latitude = Double.parseDouble(matcher.group(1));
-					longitude = Double.parseDouble(matcher.group(2));
+					double latitude = Double.parseDouble(matcher.group(1));
+					double longitude = Double.parseDouble(matcher.group(2));
+
+					float zoom = -1;
 					if (matcher.group(3) != null) {
 						zoom = Float.valueOf(matcher.group(3));
 					}
-				}
 
-				mapFragment.setPosition(new LngLat(longitude,  latitude));
-				if (zoom != -1)
-				{
-					mapFragment.setZoom(zoom);
+					mapFragment.setPosition(new LngLat(longitude,  latitude));
+					if (zoom != -1 && zoom > 0)
+					{
+						mapFragment.setZoom(zoom);
+					}
 				}
 			}
 		}
