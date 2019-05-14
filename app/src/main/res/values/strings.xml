@@ -651,4 +651,5 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="theme_system_default">System default</string>
     <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">This street was tagged as having no sidewalk on either side. In the case that there is a sidewalk after all but it is displayed as a separate way, please answer \"sidewalk\".</string>
     <string name="action_open_location">Open location in another app</string>
+    <string name="map_application_missing">No other map application installed</string>
 </resources>

@@ -464,6 +464,8 @@ public class MainActivity extends AppCompatActivity implements
 				intent = new Intent(Intent.ACTION_VIEW, uri);
 				if (intent.resolveActivity(getPackageManager()) != null) {
 					startActivity(intent);
+				} else {
+					Toast.makeText(this, R.string.map_application_missing, Toast.LENGTH_LONG).show();
 				}
 				return true;
 		}
