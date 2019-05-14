@@ -96,6 +96,7 @@ import de.westnordost.streetcomplete.statistics.AnswersCounter;
 import de.westnordost.streetcomplete.tangram.MapControlsFragment;
 import de.westnordost.streetcomplete.tangram.MapFragment;
 import de.westnordost.streetcomplete.tangram.QuestsMapFragment;
+import de.westnordost.streetcomplete.tangram.TangramConst;
 import de.westnordost.streetcomplete.tools.CrashReportExceptionHandler;
 import de.westnordost.streetcomplete.util.DpUtil;
 import de.westnordost.streetcomplete.util.SlippyMapMath;
@@ -335,10 +336,10 @@ public class MainActivity extends AppCompatActivity implements
 		super.onPause();
 		questAutoSyncer.onPause();
 
-		LatLon pos = mapFragment.getPosition();
+		LngLat pos = mapFragment.getPosition();
 		prefs.edit()
-			.putLong(Prefs.MAP_LATITUDE, Double.doubleToRawLongBits(pos.getLatitude()))
-			.putLong(Prefs.MAP_LONGITUDE, Double.doubleToRawLongBits(pos.getLongitude()))
+			.putLong(Prefs.MAP_LATITUDE, Double.doubleToRawLongBits(pos.latitude))
+			.putLong(Prefs.MAP_LONGITUDE, Double.doubleToRawLongBits(pos.longitude))
 			.apply();
 	}
 
@@ -452,12 +453,12 @@ public class MainActivity extends AppCompatActivity implements
 				else              Toast.makeText(this, R.string.offline, Toast.LENGTH_SHORT).show();
 				return true;
 			case R.id.action_open_location:
-				LatLon position = mapFragment.getPosition();
+				LngLat position = mapFragment.getPosition();
 				float zoom = mapFragment.getZoom();
 
 				Uri uri = Uri.parse(String.format("geo:%f,%f?z=%f",
-					position.getLatitude(),
-					position.getLongitude(),
+					position.latitude,
+					position.longitude,
 					zoom
 				));
 
@@ -548,10 +549,10 @@ public class MainActivity extends AppCompatActivity implements
 		// below a certain threshold, it does not make sense to download, so let's enlarge it
 		if (areaInSqKm < ApplicationConstants.MIN_DOWNLOADABLE_AREA_IN_SQKM)
 		{
-			LatLon pos = mapFragment.getPosition();
+			LngLat pos = mapFragment.getPosition();
 			if (pos != null)
 			{
-				bbox = SphericalEarthMath.enclosingBoundingBox(pos,
+				bbox = SphericalEarthMath.enclosingBoundingBox(TangramConst.toLatLon(pos),
 						ApplicationConstants.MIN_DOWNLOADABLE_RADIUS_IN_METERS);
 			}
 		}
@@ -885,9 +886,9 @@ public class MainActivity extends AppCompatActivity implements
 		PointF notePosition = new PointF(screenPosition);
 		notePosition.offset(-mapPosition[0], -mapPosition[1]);
 
-		LatLon position = mapFragment.getPositionAt(notePosition);
+		LngLat position = mapFragment.getPositionAt(notePosition);
 		if(position == null) throw new NullPointerException();
-		questController.createNote(note, imagePaths, position);
+		questController.createNote(note, imagePaths, TangramConst.toLatLon(position));
 		triggerAutoUploadByUserInteraction();
 	}
 

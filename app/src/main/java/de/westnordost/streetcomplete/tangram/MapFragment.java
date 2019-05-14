@@ -654,9 +654,32 @@ public class MapFragment extends Fragment implements
 		onMapOrientation(rotation, tilt);
 	}
 
+	public LngLat getPositionAt(PointF pointF)
+	{
+		LngLat pos = controller.screenPositionToLngLat(pointF);
+		if(pos == null) return null;
+		return pos;
+	}
+
+	public PointF getPointOf(LatLon pos)
+	{
+		return controller.lngLatToScreenPosition(TangramConst.toLngLat(pos));
+	}
+
+	public LngLat getPosition()
+	{
+		if(controller == null) return null;
+		return controller.getPosition();
+	}
+
 	public void setPosition(LngLat position)
 	{
 		controller.setPosition(position);
+	}
+
+	public float getZoom()
+	{
+		return controller.getZoom();
 	}
 
 	public void setZoom(float zoom)
@@ -667,11 +690,6 @@ public class MapFragment extends Fragment implements
 	public float getRotation()
 	{
 		return controller != null ? controller.getRotation() : 0;
-	}
-
-	public float getZoom()
-	{
-		return controller.getZoom();
 	}
 
 	public void showMapControls()
