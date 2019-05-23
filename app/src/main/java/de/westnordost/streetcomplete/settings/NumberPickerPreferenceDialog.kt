@@ -17,14 +17,17 @@ class NumberPickerPreferenceDialog : PreferenceDialogFragmentCompat() {
     override fun onBindDialogView(view: View) {
         super.onBindDialogView(view)
         picker = view.findViewById(R.id.numberPicker)
-        values = (pref.maxValue..pref.minValue step pref.step).map { "$it" }.toTypedArray()
-        var currentValue = values.indexOf(pref.value.toString())
-        if(currentValue == -1) currentValue = 0
+        val intValues = (pref.minValue..pref.maxValue step pref.step).toList()
+        values = intValues.map { "$it" }.toTypedArray()
+        var index = values.indexOf(pref.value.toString())
+        if(index == -1) {
+            do ++index while(intValues[index] < pref.value)
+        }
 	    picker.apply {
             displayedValues = values
 		    minValue = 0
 		    maxValue = values.size - 1
-		    value = currentValue
+		    value = index
 		    wrapSelectorWheel = false
 	    }
     }
@@ -37,7 +40,7 @@ class NumberPickerPreferenceDialog : PreferenceDialogFragmentCompat() {
         picker.clearFocus()
 
         if (positiveResult) {
-            pref.value = values.indexOf(picker.value.toString())
+            pref.value = values[picker.value].toInt()
         }
     }
 }
