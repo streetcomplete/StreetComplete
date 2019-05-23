@@ -8,17 +8,23 @@ import de.westnordost.streetcomplete.R
 
 class NumberPickerPreferenceDialog : PreferenceDialogFragmentCompat() {
     private lateinit var picker: NumberPicker
+    private lateinit var values: Array<String>
 
-    private val numberPickerPreference: NumberPickerPreference
+    private val pref: NumberPickerPreference
         get() = preference as NumberPickerPreference
+
 
     override fun onBindDialogView(view: View) {
         super.onBindDialogView(view)
         picker = view.findViewById(R.id.numberPicker)
+        values = (pref.maxValue..pref.minValue step pref.step).map { "$it" }.toTypedArray()
+        var currentValue = values.indexOf(pref.value.toString())
+        if(currentValue == -1) currentValue = 0
 	    picker.apply {
-		    minValue = numberPickerPreference.minValue
-		    maxValue = numberPickerPreference.maxValue
-		    value = numberPickerPreference.value
+            displayedValues = values
+		    minValue = 0
+		    maxValue = values.size - 1
+		    value = currentValue
 		    wrapSelectorWheel = false
 	    }
     }
@@ -31,7 +37,7 @@ class NumberPickerPreferenceDialog : PreferenceDialogFragmentCompat() {
         picker.clearFocus()
 
         if (positiveResult) {
-            numberPickerPreference.value = picker.value
+            pref.value = values.indexOf(picker.value.toString())
         }
     }
 }

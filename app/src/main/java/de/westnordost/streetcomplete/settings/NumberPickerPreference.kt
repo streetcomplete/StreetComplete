@@ -30,6 +30,8 @@ class NumberPickerPreference @JvmOverloads constructor(
         private set
     var maxValue: Int = DEFAULT_MAX_VALUE
         private set
+    var step: Int = STEP
+        private set
 
 	init {
 		dialogLayoutResource = R.layout.dialog_number_picker_preference
@@ -37,6 +39,7 @@ class NumberPickerPreference @JvmOverloads constructor(
 		context.withStyledAttributes(attrs, R.styleable.NumberPickerPreference) {
 			minValue = getInt(R.styleable.NumberPickerPreference_minValue, DEFAULT_MIN_VALUE)
 			maxValue = getInt(R.styleable.NumberPickerPreference_maxValue, DEFAULT_MAX_VALUE)
+            step = getInt(R.styleable.NumberPickerPreference_step, STEP)
 		}
 
 	}
@@ -55,6 +58,7 @@ class NumberPickerPreference @JvmOverloads constructor(
     companion object {
         private const val DEFAULT_MIN_VALUE = 1
         private const val DEFAULT_MAX_VALUE = 100
+        private const val STEP = 1
 
         private const val DEFAULT_VALUE = 1
     }
