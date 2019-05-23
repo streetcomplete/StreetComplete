@@ -15,10 +15,10 @@ public class ApplicationConstants
 	public final static Date DATE_OF_BIRTH = new GregorianCalendar(2017,Calendar.FEBRUARY,20).getTime();
 
 	public final static double
-		MAX_DOWNLOADABLE_AREA_IN_SQKM = 50,
-		MIN_DOWNLOADABLE_AREA_IN_SQKM = 4;
+		MAX_DOWNLOADABLE_AREA_IN_SQKM = 20,
+		MIN_DOWNLOADABLE_AREA_IN_SQKM = 1;
 
-	public final static double MIN_DOWNLOADABLE_RADIUS_IN_METERS = 1000;
+	public final static double MIN_DOWNLOADABLE_RADIUS_IN_METERS = 600;
 
 	public final static String DATABASE_NAME = "streetcomplete.db";
 
