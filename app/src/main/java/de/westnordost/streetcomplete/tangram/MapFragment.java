@@ -661,9 +661,9 @@ public class MapFragment extends Fragment implements
 		return pos;
 	}
 
-	public PointF getPointOf(LatLon pos)
+	public PointF getPointOf(LngLat pos)
 	{
-		return controller.lngLatToScreenPosition(TangramConst.toLngLat(pos));
+		return controller.lngLatToScreenPosition(pos);
 	}
 
 	public LngLat getPosition()

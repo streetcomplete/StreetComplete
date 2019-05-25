@@ -263,7 +263,7 @@ public class MainActivity extends AppCompatActivity implements
 				String geoUriRegex = "geo:(-?[0-9]*\\.?[0-9]+),(-?[0-9]*\\.?[0-9]+).*?(?:\\?z=([0-9]*\\.?[0-9]+))?";
 				Pattern pattern = Pattern.compile(geoUriRegex);
 				Matcher matcher = pattern.matcher(data.toString());
-				if (matcher.find())
+				if (matcher.matches())
 				{
 					double latitude = Double.parseDouble(matcher.group(1));
 					double longitude = Double.parseDouble(matcher.group(2));
@@ -273,7 +273,12 @@ public class MainActivity extends AppCompatActivity implements
 						zoom = Float.valueOf(matcher.group(3));
 					}
 
-					mapFragment.setPosition(new LngLat(longitude,  latitude));
+					if (longitude >= -180 && longitude <= +180
+						&& latitude >= -90  && latitude <= +90)
+					{
+						mapFragment.setPosition(new LngLat(longitude,  latitude));
+					}
+
 					if (zoom != -1 && zoom > 0)
 					{
 						mapFragment.setZoom(zoom);
@@ -813,7 +818,7 @@ public class MainActivity extends AppCompatActivity implements
 		int size = (int) DpUtil.toPx(42, this);
 		int[] offset = new int[2];
 		mapFragment.getView().getLocationOnScreen(offset);
-		PointF startPos = mapFragment.getPointOf(quest.getCenter());
+		PointF startPos = mapFragment.getPointOf(TangramConst.toLngLat(quest.getCenter()));
 		startPos.x += offset[0] - size/2;
 		startPos.y += offset[1] - size*1.5;
 		showMarkerSolvedAnimation(quest.getType().getIcon(), startPos, source);
