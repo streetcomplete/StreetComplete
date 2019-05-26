@@ -36,7 +36,7 @@
             android:defaultValue="250"
             android:persistent="true"
             custom:minValue="50"
-            custom:maxValue="1000"
+            custom:maxValue="500"
             custom:step="50"
             android:dialogMessage="@string/pref_tilecache_size_message"
             android:dialogLayout="@layout/dialog_number_picker_preference"
