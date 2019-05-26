@@ -33,7 +33,7 @@
             android:key="map.tilecache"
             android:title="@string/pref_title_map_cache"
             android:summary="@string/pref_tilecache_size_summary"
-            android:defaultValue="250"
+            android:defaultValue="150"
             android:persistent="true"
             custom:minValue="50"
             custom:maxValue="500"
