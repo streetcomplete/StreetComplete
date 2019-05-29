@@ -16,6 +16,7 @@ import android.content.SharedPreferences;
 import android.graphics.Rect;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.IBinder;
 import androidx.annotation.AnyThread;
@@ -46,10 +47,14 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mapzen.tangram.LngLat;
+
 import java.util.Collection;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.FutureTask;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.inject.Inject;
 
@@ -91,6 +96,7 @@ import de.westnordost.streetcomplete.statistics.AnswersCounter;
 import de.westnordost.streetcomplete.tangram.MapControlsFragment;
 import de.westnordost.streetcomplete.tangram.MapFragment;
 import de.westnordost.streetcomplete.tangram.QuestsMapFragment;
+import de.westnordost.streetcomplete.tangram.TangramConst;
 import de.westnordost.streetcomplete.tools.CrashReportExceptionHandler;
 import de.westnordost.streetcomplete.util.DpUtil;
 import de.westnordost.streetcomplete.util.SlippyMapMath;
@@ -247,6 +253,39 @@ public class MainActivity extends AppCompatActivity implements
 		{
 			questController.deleteOld();
 		}
+
+		Intent intent = getIntent();
+		Uri data = intent.getData();
+		if (Intent.ACTION_VIEW.equals(intent.getAction()) && data != null)
+		{
+			if ("geo".equals(data.getScheme()))
+			{
+				String geoUriRegex = "geo:(-?[0-9]*\\.?[0-9]+),(-?[0-9]*\\.?[0-9]+).*?(?:\\?z=([0-9]*\\.?[0-9]+))?";
+				Pattern pattern = Pattern.compile(geoUriRegex);
+				Matcher matcher = pattern.matcher(data.toString());
+				if (matcher.matches())
+				{
+					double latitude = Double.parseDouble(matcher.group(1));
+					double longitude = Double.parseDouble(matcher.group(2));
+
+					float zoom = -1;
+					if (matcher.group(3) != null) {
+						zoom = Float.valueOf(matcher.group(3));
+					}
+
+					if (longitude >= -180 && longitude <= +180
+						&& latitude >= -90  && latitude <= +90)
+					{
+						mapFragment.setPosition(new LngLat(longitude,  latitude));
+					}
+
+					if (zoom != -1 && zoom > 0)
+					{
+						mapFragment.setZoom(zoom);
+					}
+				}
+			}
+		}
 	}
 
 	@Override public void onStart()
@@ -300,10 +339,10 @@ public class MainActivity extends AppCompatActivity implements
 		super.onPause();
 		questAutoSyncer.onPause();
 
-		LatLon pos = mapFragment.getPosition();
+		LngLat pos = mapFragment.getPosition();
 		prefs.edit()
-			.putLong(Prefs.MAP_LATITUDE, Double.doubleToRawLongBits(pos.getLatitude()))
-			.putLong(Prefs.MAP_LONGITUDE, Double.doubleToRawLongBits(pos.getLongitude()))
+			.putLong(Prefs.MAP_LATITUDE, Double.doubleToRawLongBits(pos.latitude))
+			.putLong(Prefs.MAP_LONGITUDE, Double.doubleToRawLongBits(pos.longitude))
 			.apply();
 	}
 
@@ -416,6 +455,23 @@ public class MainActivity extends AppCompatActivity implements
 				if(isConnected()) downloadDisplayedArea();
 				else              Toast.makeText(this, R.string.offline, Toast.LENGTH_SHORT).show();
 				return true;
+			case R.id.action_open_location:
+				LngLat position = mapFragment.getPosition();
+				float zoom = mapFragment.getZoom();
+
+				Uri uri = Uri.parse(String.format("geo:%f,%f?z=%f",
+					position.latitude,
+					position.longitude,
+					zoom
+				));
+
+				intent = new Intent(Intent.ACTION_VIEW, uri);
+				if (intent.resolveActivity(getPackageManager()) != null) {
+					startActivity(intent);
+				} else {
+					Toast.makeText(this, R.string.map_application_missing, Toast.LENGTH_LONG).show();
+				}
+				return true;
 		}
 
 		return super.onOptionsItemSelected(item);
@@ -496,10 +552,10 @@ public class MainActivity extends AppCompatActivity implements
 		// below a certain threshold, it does not make sense to download, so let's enlarge it
 		if (areaInSqKm < ApplicationConstants.MIN_DOWNLOADABLE_AREA_IN_SQKM)
 		{
-			LatLon pos = mapFragment.getPosition();
+			LngLat pos = mapFragment.getPosition();
 			if (pos != null)
 			{
-				bbox = SphericalEarthMath.enclosingBoundingBox(pos,
+				bbox = SphericalEarthMath.enclosingBoundingBox(TangramConst.toLatLon(pos),
 						ApplicationConstants.MIN_DOWNLOADABLE_RADIUS_IN_METERS);
 			}
 		}
@@ -762,7 +818,7 @@ public class MainActivity extends AppCompatActivity implements
 		int size = (int) DpUtil.toPx(42, this);
 		int[] offset = new int[2];
 		mapFragment.getView().getLocationOnScreen(offset);
-		PointF startPos = mapFragment.getPointOf(quest.getCenter());
+		PointF startPos = mapFragment.getPointOf(TangramConst.toLngLat(quest.getCenter()));
 		startPos.x += offset[0] - size/2;
 		startPos.y += offset[1] - size*1.5;
 		showMarkerSolvedAnimation(quest.getType().getIcon(), startPos, source);
@@ -833,9 +889,9 @@ public class MainActivity extends AppCompatActivity implements
 		PointF notePosition = new PointF(screenPosition);
 		notePosition.offset(-mapPosition[0], -mapPosition[1]);
 
-		LatLon position = mapFragment.getPositionAt(notePosition);
+		LngLat position = mapFragment.getPositionAt(notePosition);
 		if(position == null) throw new NullPointerException();
-		questController.createNote(note, imagePaths, position);
+		questController.createNote(note, imagePaths, TangramConst.toLatLon(position));
 		triggerAutoUploadByUserInteraction();
 	}
 

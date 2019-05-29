@@ -482,7 +482,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		// dealing with tilt: this method is just not defined if the tilt is above a certain limit
 		if(controller.getTilt() > Math.PI / 4f) return null; // 45°
 
-		LatLon[] positions = new LatLon[4];
+		LngLat[] positions = new LngLat[4];
 		positions[0] = getPositionAt(new PointF(offset.left,          offset.top));
 		positions[1] = getPositionAt(new PointF(offset.left + size.x ,offset.top));
 		positions[2] = getPositionAt(new PointF(offset.left,          offset.top + size.y));
@@ -492,11 +492,11 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		// be our bounding box
 
 		Double latMin = null, lonMin = null, latMax = null, lonMax = null;
-		for (LatLon position : positions)
+		for (LngLat position : positions)
 		{
 			if(position == null) return null;
-			double lat = position.getLatitude();
-			double lon = position.getLongitude();
+			double lat = position.latitude;
+			double lon = position.longitude;
 
 			if (latMin == null || latMin > lat) latMin = lat;
 			if (latMax == null || latMax < lat) latMax = lat;
@@ -505,23 +505,5 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		}
 
 		return new BoundingBox(latMin, lonMin, latMax, lonMax);
-	}
-
-	public LatLon getPositionAt(PointF pointF)
-	{
-		LngLat pos = controller.screenPositionToLngLat(pointF);
-		if(pos == null) return null;
-		return TangramConst.toLatLon(pos);
-	}
-
-	public LatLon getPosition()
-	{
-		if(controller == null) return null;
-		return TangramConst.toLatLon(controller.getPosition());
-	}
-
-	public PointF getPointOf(LatLon pos)
-	{
-		return controller.lngLatToScreenPosition(TangramConst.toLngLat(pos));
 	}
 }
