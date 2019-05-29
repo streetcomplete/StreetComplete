@@ -34,6 +34,6 @@ class AddRailwayCrossingBarrier(private val overpassMapDataDao: OverpassMapDataD
         way["railway"="tram"]; node(w) -> .trams;
         node["railway"="level_crossing"][!"crossing:barrier"];
         (._; - .private_roads; );
-        (._; - .trams; );
-        out;"""
+        (._; - .trams; );""" +
+        OverpassQLUtil.getQuestPrintStatement()
 }

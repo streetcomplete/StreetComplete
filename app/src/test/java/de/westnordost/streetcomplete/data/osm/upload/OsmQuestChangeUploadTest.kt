@@ -113,6 +113,18 @@ class OsmQuestChangeUploadTest {
 		verify(questDB).update(quest)
 	}
 
+    @Test fun `handles a conflict caused by negative version of element`() {
+        quest.setChanges(StringMapEntryAdd("a key", "a value"))
+
+        on(elementDB.get(NODE, elementId)).thenReturn(createNode(-1))
+        on(osmDao.getNode(elementId)).thenReturn(createNode(1))
+
+        assertTrue(uploader.upload(1, quest).success)
+
+        assertEquals(QuestStatus.CLOSED, quest.status)
+        verify(questDB).update(quest)
+    }
+
 	@Test(expected = IllegalStateException::class) fun `disallow reusing object`() {
 		uploader.upload(1, quest)
 		uploader.upload(1, quest)
