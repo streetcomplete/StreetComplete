@@ -279,11 +279,11 @@ public class MainActivity extends AppCompatActivity implements
 						&& latitude >= -90  && latitude <= +90)
 					{
 						mapFragment.setPosition(new LngLat(longitude,  latitude));
-					}
 
-					if (zoom != -1 && zoom > 0)
-					{
-						mapFragment.setZoom(zoom);
+						if (zoom != -1 && zoom > 0)
+						{
+							mapFragment.setZoom(zoom);
+						}
 					}
 				}
 			}
