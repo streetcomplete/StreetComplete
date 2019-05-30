@@ -144,7 +144,7 @@ Contudo, antes enviar as suas alterações, a aplicação confirma com &lt;a hre
     <string name="quest_surface_value_sand">"Areia"</string>
     <string name="quest_surface_value_sett">"Paralelos"</string>
     <string name="quest_surface_value_wood">"Madeira"</string>
-    <string name="quest_placeName_title">"Qual o nome deste lugar?"</string>
+    <string name="quest_placeName_title">"Qual o nome deste local?"</string>
     <string name="quest_sidewalk_title">"Esta estrada tem passeio?"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Onde fica esta rua?"</string>
     <string name="quest_cyclewaySurface_title">"Que tipo de pavimento tem esta ciclovia?"</string>
@@ -649,4 +649,5 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="theme_light">"Claro"</string>
     <string name="theme_dark">"Escuro"</string>
     <string name="theme_system_default">"Padrão do sistema"</string>
+    <string name="quest_placeName_title_name">"Qual é o nome deste local? (%s)"</string>
 </resources>

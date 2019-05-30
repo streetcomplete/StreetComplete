@@ -613,4 +613,16 @@
 
     <!-- as in: "Where is the metro station?" - "It is underground" -->
     <string name="underground">"지하:"</string>
+    <string name="quest_sidewalk_value_yes">"인도"</string>
+    <string name="quest_sidewalk_value_no">"인도 없음"</string>
+    <string name="quest_accessible_for_pedestrians_title_prohibited">"법적으로, 보행자가 이 도로를 걸을 수 없습니까?"</string>
+    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"이 도로의 양쪽에는 모두 인도가 없다고 나와 있습니다. 실제로 인도가 있지만 차도와 분리되어 있다면, \"인도\"라고 답하세요."</string>
+    <string name="quest_buildingType_title">"이 건물은 다음 중 어떤 건물입니까?"</string>
+    <string name="pref_category_theme">"테마"</string>
+    <string name="pref_title_theme_select">"테마 선택"</string>
+    <string name="theme_automatic">"자동"</string>
+    <string name="theme_light">"밝음"</string>
+    <string name="theme_dark">"어두움"</string>
+    <string name="theme_system_default">"시스템 기본값"</string>
+    <string name="quest_placeName_title_name">"이 장소의 명칭은 무엇입니까? (%s)"</string>
 </resources>

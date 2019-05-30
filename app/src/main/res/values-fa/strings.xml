@@ -702,4 +702,5 @@
     <string name="theme_light">"روشن"</string>
     <string name="theme_dark">"تیره"</string>
     <string name="theme_system_default">"پیشفرض سامانه"</string>
+    <string name="quest_placeName_title_name">"نام این مکان چیست؟ (%s)"</string>
 </resources>

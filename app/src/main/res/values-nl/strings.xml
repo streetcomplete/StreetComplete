@@ -711,4 +711,11 @@ Bijvoorbeeld 1m3 of 2-6."</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Is het voor voetgangers verboden om hier te lopen?"</string>
     <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Deze straat is beschreven als zijnde zonder trottoir aan een van de zijde. In het geval dat er wel een trottoir is maar het is beschreven als een gescheiden weg, graag \"trottoir\" antwoorden."</string>
     <string name="quest_buildingType_title">"Wat voor gebouw is dit?"</string>
+    <string name="pref_category_theme">"Thema"</string>
+    <string name="pref_title_theme_select">"Geselecteerd thema"</string>
+    <string name="theme_automatic">"Auto"</string>
+    <string name="theme_light">"Licht"</string>
+    <string name="theme_dark">"Donker"</string>
+    <string name="theme_system_default">"systeemfout"</string>
+    <string name="quest_placeName_title_name">"Wat is de naam van deze plaats? (%s)"</string>
 </resources>
