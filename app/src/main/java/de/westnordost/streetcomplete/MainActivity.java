@@ -51,6 +51,7 @@ import com.mapzen.tangram.LngLat;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Locale;
 import java.util.Random;
 import java.util.concurrent.FutureTask;
 import java.util.regex.Matcher;
@@ -460,7 +461,7 @@ public class MainActivity extends AppCompatActivity implements
 				LngLat position = mapFragment.getPosition();
 				float zoom = mapFragment.getZoom();
 
-				Uri uri = Uri.parse(String.format("geo:%f,%f?z=%f",
+				Uri uri = Uri.parse(String.format(Locale.US, "geo:%f,%f?z=%f",
 					position.latitude,
 					position.longitude,
 					zoom
