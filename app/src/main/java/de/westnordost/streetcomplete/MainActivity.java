@@ -58,6 +58,7 @@ import java.util.regex.Pattern;
 
 import javax.inject.Inject;
 
+import de.westnordost.osmapi.common.errors.OsmApiException;
 import de.westnordost.osmapi.common.errors.OsmApiReadResponseException;
 import de.westnordost.osmapi.common.errors.OsmAuthorizationException;
 import de.westnordost.osmapi.common.errors.OsmConnectionException;
@@ -681,10 +682,16 @@ public class MainActivity extends AppCompatActivity implements
 		{
 			runOnUiThread(() ->
 			{
-				// a 5xx error is not the fault of this app. Nothing we can do about it, so it does not
-				// make sense to send an error report. Just notify the user
-				// Also, we treat an invalid response the same as a (temporary) connection error
-				if (e instanceof OsmConnectionException || e instanceof OsmApiReadResponseException)
+				// a 5xx error is not the fault of this app. Nothing we can do about it, so it does
+				// not make sense to send an error report. Just notify the user. Further, we treat
+				// the following errors the same as a (temporary) connection error:
+				// - an invalid response (OsmApiReadResponseException)
+				// - request timeout (OsmApiException with error code 408)
+				boolean isEnvironmentError =
+					e instanceof OsmConnectionException ||
+					e instanceof OsmApiReadResponseException ||
+					(e instanceof OsmApiException && ((OsmApiException) e).getErrorCode() == 408);
+				if (isEnvironmentError)
 				{
 					Toast.makeText(MainActivity.this,R.string.download_server_error, Toast.LENGTH_LONG).show();
 				}
