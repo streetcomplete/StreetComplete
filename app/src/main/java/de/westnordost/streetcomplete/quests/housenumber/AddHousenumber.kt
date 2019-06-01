@@ -188,6 +188,10 @@ class AddHousenumber(private val overpass: OverpassMapDataDao) : OsmElementQuest
                     changes.add("addr:housenumber", answer.number)
                 }
             }
+            is HouseAndBlockNumber -> {
+                changes.add("addr:housenumber", answer.houseNumber)
+                changes.add("addr:block_number", answer.blockNumber)
+            }
         }
     }
 
