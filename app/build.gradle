@@ -84,8 +84,8 @@ dependencies {
     testImplementation 'org.mockito:mockito-core:2.23.4'
     testImplementation 'org.assertj:assertj-core:2.8.0'
 
-    androidTestImplementation 'androidx.test:runner:1.1.1'
-    androidTestImplementation 'androidx.test:rules:1.1.1'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test:rules:1.2.0'
     // KotlinX Jetifier can't cope with bytebuddy-1.9 which is a dependency of mockito-android 2.23.+
     androidTestImplementation 'org.mockito:mockito-android:2.22.0'
     androidTestImplementation 'org.assertj:assertj-core:2.8.0'
@@ -96,9 +96,9 @@ dependencies {
 
     // Android stuff
     implementation 'com.google.android.material:material:1.0.0'
-    implementation 'androidx.core:core:1.0.1'
+    implementation 'androidx.core:core:1.0.2'
     implementation 'androidx.appcompat:appcompat:1.0.2'
-    implementation 'androidx.annotation:annotation:1.0.2'
+    implementation 'androidx.annotation:annotation:1.1.0'
     implementation 'androidx.fragment:fragment:1.0.0'
     implementation 'androidx.preference:preference:1.0.0'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
@@ -110,10 +110,10 @@ dependencies {
 
     // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation "androidx.core:core-ktx:1.0.1"
+    implementation "androidx.core:core-ktx:1.0.2"
 
     // scheduling background jobs
-    implementation 'android.arch.work:work-runtime:1.0.0'
+    implementation 'android.arch.work:work-runtime:1.0.1'
 
     // geometry
     implementation 'de.westnordost:countryboundaries:1.5'
