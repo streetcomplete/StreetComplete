@@ -654,4 +654,5 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="map_application_missing">No other map application installed</string>
     <string name="label_housenumber">house number</string>
     <string name="label_blocknumber">block number</string>
+    <string name="quest_busStopShelter_covered">Whole stop is covered</string>
 </resources>
