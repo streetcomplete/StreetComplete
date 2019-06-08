@@ -649,4 +649,5 @@
     <string name="quest_building_underground_name_title">"Чи є повністю під землею %s?"</string>
     <string name="quest_building_underground_title">"Чи є ця будівля повністю під землею?"</string>
     <string name="quest_traffic_signals_sound_title">"Чи є тут звукові сигнали для сліпих?"</string>
+    <string name="quest_buildingType_title">"Якого типу ця будівля?"</string>
 </resources>

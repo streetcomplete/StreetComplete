@@ -559,4 +559,5 @@ som intervall skilde med bindestrek: «1,3» eller «2-6»."</string>
     <string name="quest_address_answer_no_housenumber_message2">"Er dette rett og er det ikkje berre ein del av ein bygning?"</string>
     <string name="quest_buildingType_shrine">"Heilagstad"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
+    <string name="quest_buildingType_title">"Kva slags bygning er dette?"</string>
 </resources>

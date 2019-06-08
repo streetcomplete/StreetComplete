@@ -3,8 +3,10 @@ package de.westnordost.streetcomplete.data.osm;
 import org.junit.Test;
 
 import java.util.List;
+import java.util.concurrent.FutureTask;
 
 import de.westnordost.osmapi.map.data.BoundingBox;
+import de.westnordost.osmfeatures.FeatureDictionary;
 import de.westnordost.streetcomplete.data.QuestType;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestType;
@@ -26,6 +28,7 @@ public class SimpleOverpassQuestsValidityTest
 		PutRoadNameSuggestionsHandler putRoadNameSuggestionsHandler = mock(PutRoadNameSuggestionsHandler.class);
 		TrafficFlowSegmentsDao trafficFlowSegmentsDao = mock(TrafficFlowSegmentsDao.class);
 		WayTrafficFlowDao wayTrafficFlowDao = mock(WayTrafficFlowDao.class);
+		FutureTask<FeatureDictionary> featureDictionaryFutureTask = mock(FutureTask.class);
 
 		BoundingBox bbox = new BoundingBox(0,0,1,1);
 		List<QuestType> questTypes = QuestModule.questTypeRegistry(
@@ -34,7 +37,8 @@ public class SimpleOverpassQuestsValidityTest
 			roadNameSuggestionsDao,
 			putRoadNameSuggestionsHandler,
 			trafficFlowSegmentsDao,
-			wayTrafficFlowDao).getAll();
+			wayTrafficFlowDao,
+			featureDictionaryFutureTask).getAll();
 
 		for(QuestType questType : questTypes)
 		{

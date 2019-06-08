@@ -528,4 +528,5 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_fee_not_at_hours">"はい。しかし次ではなく…"</string>
     <string name="quest_fee_hours_title">"次の時間に:"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
+    <string name="quest_buildingType_title">"これはどんな建物ですか?"</string>
 </resources>

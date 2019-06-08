@@ -9,13 +9,12 @@
         android:id="@+id/compassView"
         android:layout_width="64dp"
         android:layout_height="64dp"
-        style="@style/RoundButton"
+        style="@style/RoundWhiteButton"
         android:layout_marginTop="8dp"
         android:layout_marginRight="4dp"
         tools:ignore="RtlHardcoded"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:theme="@style/MapButton"
         >
 
         <TextView
@@ -23,6 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:id="@+id/compassNorth"
+            android:textColor="#000"
             android:layout_alignParentTop="true"
             android:text="@string/compass_north_one_letter"/>
 
@@ -54,31 +54,28 @@
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:scaleType="center"
-            style="@style/RoundButton"
+            style="@style/RoundWhiteButton"
             android:src="@drawable/ic_add_black_24dp"
-            android:contentDescription="@string/map_btn_zoom_in"
-            android:theme="@style/MapButton"/>
+            android:contentDescription="@string/map_btn_zoom_in"/>
 
         <ImageButton
             android:id="@+id/zoom_out"
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:scaleType="center"
-            style="@style/RoundButton"
+            style="@style/RoundWhiteButton"
             android:src="@drawable/ic_remove_black_24dp"
-            android:contentDescription="@string/map_btn_zoom_out"
-            android:theme="@style/MapButton"/>
+            android:contentDescription="@string/map_btn_zoom_out"/>
 
         <de.westnordost.streetcomplete.location.LocationStateButton
             android:id="@+id/gps_tracking"
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:scaleType="center"
-            style="@style/RoundButton"
+            style="@style/RoundWhiteButton"
             android:src="@drawable/ic_location_24dp"
             app:tint="@color/activated_tint"
-            android:contentDescription="@string/map_btn_gps_tracking"
-            android:theme="@style/MapButton"/>
+            android:contentDescription="@string/map_btn_gps_tracking"/>
 
     </LinearLayout>
 
@@ -98,10 +95,9 @@
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:scaleType="center"
-            style="@style/RoundButton"
+            style="@style/RoundWhiteButton"
             android:src="@drawable/ic_create_note_black_24dp"
-            android:contentDescription="@string/map_btn_create_note"
-            android:theme="@style/MapButton"/>
+            android:contentDescription="@string/map_btn_create_note"/>
 
     </LinearLayout>
 

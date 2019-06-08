@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.data.osm.upload;
 
 import android.util.Log;
 
+import java.net.HttpURLConnection;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -30,6 +31,8 @@ import de.westnordost.streetcomplete.data.osm.persist.AOsmQuestDao;
 import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao;
 import de.westnordost.streetcomplete.data.osm.persist.MergedElementDao;
 import de.westnordost.streetcomplete.util.SphericalEarthMath;
+
+import static java.net.HttpURLConnection.HTTP_CONFLICT;
 
 public class OsmQuestChangeUpload
 {
@@ -120,6 +123,13 @@ public class OsmQuestChangeUpload
 		int[] newVersion = {element.getVersion()};
 		try
 		{
+			// only necessary because of #1408: Elements where the version is invalid need to be treated
+			// as element conflicts so that the element can be updated from server, otherwise all users
+			// who already downloaded those incomplete elements are stuck and can no longer upload anything
+			// see also https://github.com/openstreetmap/operations/issues/303
+			if(element.getVersion() < 0)
+				throw new OsmConflictException(HTTP_CONFLICT, "Conflict", "Negative version is invalid");
+
 			osmDao.uploadChanges(changesetId, Collections.singleton(elementWithChangesApplied), diffElement ->
 			{
 				if(diffElement.clientId == elementWithChangesApplied.getId())

@@ -16,11 +16,11 @@
         android:layout_width="38dp"
         android:layout_height="38dp"
         android:background="@drawable/background_white_circle_1dp_stroke"
+        android:textColor="#000"
         android:padding="4dp"
         android:layout_margin="8dp"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:theme="@style/MapButton">
+        android:layout_alignParentTop="true">
 
         <TextView
             android:layout_width="wrap_content"
@@ -29,6 +29,7 @@
             android:id="@+id/compassNorth"
             android:layout_alignParentTop="true"
             android:text="@string/compass_north_one_letter"
+            android:textColor="#000"
             android:textSize="10dp"/>
 
         <ImageView

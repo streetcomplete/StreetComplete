@@ -16,6 +16,7 @@ import android.content.SharedPreferences;
 import android.graphics.Rect;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.IBinder;
 import androidx.annotation.AnyThread;
@@ -46,12 +47,19 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mapzen.tangram.LngLat;
+
 import java.util.Collection;
 import java.util.List;
+import java.util.Locale;
 import java.util.Random;
+import java.util.concurrent.FutureTask;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.inject.Inject;
 
+import de.westnordost.osmapi.common.errors.OsmApiException;
 import de.westnordost.osmapi.common.errors.OsmApiReadResponseException;
 import de.westnordost.osmapi.common.errors.OsmAuthorizationException;
 import de.westnordost.osmapi.common.errors.OsmConnectionException;
@@ -59,6 +67,7 @@ import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.osmapi.map.data.OsmElement;
+import de.westnordost.osmfeatures.FeatureDictionary;
 import de.westnordost.streetcomplete.about.AboutFragment;
 import de.westnordost.streetcomplete.data.Quest;
 import de.westnordost.streetcomplete.data.QuestAutoSyncer;
@@ -89,6 +98,7 @@ import de.westnordost.streetcomplete.statistics.AnswersCounter;
 import de.westnordost.streetcomplete.tangram.MapControlsFragment;
 import de.westnordost.streetcomplete.tangram.MapFragment;
 import de.westnordost.streetcomplete.tangram.QuestsMapFragment;
+import de.westnordost.streetcomplete.tangram.TangramConst;
 import de.westnordost.streetcomplete.tools.CrashReportExceptionHandler;
 import de.westnordost.streetcomplete.util.DpUtil;
 import de.westnordost.streetcomplete.util.SlippyMapMath;
@@ -116,6 +126,8 @@ public class MainActivity extends AppCompatActivity implements
 	@Inject AnswersCounter answersCounter;
 
 	@Inject SoundFx soundFx;
+
+	@Inject FutureTask<FeatureDictionary> featureDictionaryFutureTask;
 
 	private final Random random = new Random();
 
@@ -243,6 +255,39 @@ public class MainActivity extends AppCompatActivity implements
 		{
 			questController.deleteOld();
 		}
+
+		Intent intent = getIntent();
+		Uri data = intent.getData();
+		if (Intent.ACTION_VIEW.equals(intent.getAction()) && data != null)
+		{
+			if ("geo".equals(data.getScheme()))
+			{
+				String geoUriRegex = "geo:(-?[0-9]*\\.?[0-9]+),(-?[0-9]*\\.?[0-9]+).*?(?:\\?z=([0-9]*\\.?[0-9]+))?";
+				Pattern pattern = Pattern.compile(geoUriRegex);
+				Matcher matcher = pattern.matcher(data.toString());
+				if (matcher.matches())
+				{
+					double latitude = Double.parseDouble(matcher.group(1));
+					double longitude = Double.parseDouble(matcher.group(2));
+
+					float zoom = -1;
+					if (matcher.group(3) != null) {
+						zoom = Float.valueOf(matcher.group(3));
+					}
+
+					if (longitude >= -180 && longitude <= +180
+						&& latitude >= -90  && latitude <= +90)
+					{
+						mapFragment.setPosition(new LngLat(longitude,  latitude));
+
+						if (zoom != -1 && zoom > 0)
+						{
+							mapFragment.setZoom(zoom);
+						}
+					}
+				}
+			}
+		}
 	}
 
 	@Override public void onStart()
@@ -274,7 +319,7 @@ public class MainActivity extends AppCompatActivity implements
 		uploadServiceIsBound = bindService(new Intent(this, QuestChangesUploadService.class),
 				uploadServiceConnection, BIND_AUTO_CREATE);
 
-		if(!hasAskedForLocation)
+		if(!hasAskedForLocation && !prefs.getBoolean(Prefs.LAST_LOCATION_REQUEST_DENIED, false))
 		{
 			locationRequestFragment.startRequest();
 		}
@@ -296,10 +341,10 @@ public class MainActivity extends AppCompatActivity implements
 		super.onPause();
 		questAutoSyncer.onPause();
 
-		LatLon pos = mapFragment.getPosition();
+		LngLat pos = mapFragment.getPosition();
 		prefs.edit()
-			.putLong(Prefs.MAP_LATITUDE, Double.doubleToRawLongBits(pos.getLatitude()))
-			.putLong(Prefs.MAP_LONGITUDE, Double.doubleToRawLongBits(pos.getLongitude()))
+			.putLong(Prefs.MAP_LATITUDE, Double.doubleToRawLongBits(pos.latitude))
+			.putLong(Prefs.MAP_LONGITUDE, Double.doubleToRawLongBits(pos.longitude))
 			.apply();
 	}
 
@@ -372,7 +417,7 @@ public class MainActivity extends AppCompatActivity implements
 		icon.setImageResource(quest.getType().getIcon());
 		TextView text = inner.findViewById(R.id.text);
 
-		text.setText(QuestUtilKt.getHtmlQuestTitle(getResources(), quest.getType(), element));
+		text.setText(QuestUtilKt.getHtmlQuestTitle(getResources(), quest.getType(), element, featureDictionaryFutureTask));
 
 		new AlertDialog.Builder(this)
 			.setTitle(R.string.undo_confirm_title)
@@ -411,6 +456,23 @@ public class MainActivity extends AppCompatActivity implements
 			case R.id.action_download:
 				if(isConnected()) downloadDisplayedArea();
 				else              Toast.makeText(this, R.string.offline, Toast.LENGTH_SHORT).show();
+				return true;
+			case R.id.action_open_location:
+				LngLat position = mapFragment.getPosition();
+				float zoom = mapFragment.getZoom();
+
+				Uri uri = Uri.parse(String.format(Locale.US, "geo:%f,%f?z=%f",
+					position.latitude,
+					position.longitude,
+					zoom
+				));
+
+				intent = new Intent(Intent.ACTION_VIEW, uri);
+				if (intent.resolveActivity(getPackageManager()) != null) {
+					startActivity(intent);
+				} else {
+					Toast.makeText(this, R.string.map_application_missing, Toast.LENGTH_LONG).show();
+				}
 				return true;
 		}
 
@@ -492,10 +554,10 @@ public class MainActivity extends AppCompatActivity implements
 		// below a certain threshold, it does not make sense to download, so let's enlarge it
 		if (areaInSqKm < ApplicationConstants.MIN_DOWNLOADABLE_AREA_IN_SQKM)
 		{
-			LatLon pos = mapFragment.getPosition();
+			LngLat pos = mapFragment.getPosition();
 			if (pos != null)
 			{
-				bbox = SphericalEarthMath.enclosingBoundingBox(pos,
+				bbox = SphericalEarthMath.enclosingBoundingBox(TangramConst.toLatLon(pos),
 						ApplicationConstants.MIN_DOWNLOADABLE_RADIUS_IN_METERS);
 			}
 		}
@@ -621,10 +683,16 @@ public class MainActivity extends AppCompatActivity implements
 		{
 			runOnUiThread(() ->
 			{
-				// a 5xx error is not the fault of this app. Nothing we can do about it, so it does not
-				// make sense to send an error report. Just notify the user
-				// Also, we treat an invalid response the same as a (temporary) connection error
-				if (e instanceof OsmConnectionException || e instanceof OsmApiReadResponseException)
+				// a 5xx error is not the fault of this app. Nothing we can do about it, so it does
+				// not make sense to send an error report. Just notify the user. Further, we treat
+				// the following errors the same as a (temporary) connection error:
+				// - an invalid response (OsmApiReadResponseException)
+				// - request timeout (OsmApiException with error code 408)
+				boolean isEnvironmentError =
+					e instanceof OsmConnectionException ||
+					e instanceof OsmApiReadResponseException ||
+					(e instanceof OsmApiException && ((OsmApiException) e).getErrorCode() == 408);
+				if (isEnvironmentError)
 				{
 					Toast.makeText(MainActivity.this,R.string.download_server_error, Toast.LENGTH_LONG).show();
 				}
@@ -758,7 +826,7 @@ public class MainActivity extends AppCompatActivity implements
 		int size = (int) DpUtil.toPx(42, this);
 		int[] offset = new int[2];
 		mapFragment.getView().getLocationOnScreen(offset);
-		PointF startPos = mapFragment.getPointOf(quest.getCenter());
+		PointF startPos = mapFragment.getPointOf(TangramConst.toLngLat(quest.getCenter()));
 		startPos.x += offset[0] - size/2;
 		startPos.y += offset[1] - size*1.5;
 		showMarkerSolvedAnimation(quest.getType().getIcon(), startPos, source);
@@ -829,9 +897,9 @@ public class MainActivity extends AppCompatActivity implements
 		PointF notePosition = new PointF(screenPosition);
 		notePosition.offset(-mapPosition[0], -mapPosition[1]);
 
-		LatLon position = mapFragment.getPositionAt(notePosition);
+		LngLat position = mapFragment.getPositionAt(notePosition);
 		if(position == null) throw new NullPointerException();
-		questController.createNote(note, imagePaths, position);
+		questController.createNote(note, imagePaths, TangramConst.toLatLon(position));
 		triggerAutoUploadByUserInteraction();
 	}
 
@@ -1040,6 +1108,8 @@ public class MainActivity extends AppCompatActivity implements
 	{
 		hasAskedForLocation = true;
 		boolean enabled = withLocationState.isEnabled();
+		prefs.edit().putBoolean(Prefs.LAST_LOCATION_REQUEST_DENIED, !enabled).apply();
+
 		if(enabled)
 		{
 			updateLocationAvailability();

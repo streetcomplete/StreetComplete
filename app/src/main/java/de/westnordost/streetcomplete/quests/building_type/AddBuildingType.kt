@@ -16,7 +16,7 @@ class AddBuildingType (o: OverpassMapDataDao) : SimpleOverpassQuestType<String>(
     override val commitMessage = "Add building types"
     override val icon = R.drawable.ic_quest_building
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_buildingType_title2
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_buildingType_title
 
     override fun createForm() = AddBuildingTypeForm()
 

@@ -1,0 +1,1482 @@
+{
+    "presets": {
+        "office/administrative": {
+            "name": "Oficiu Administrativ"
+        },
+        "historic/boundary_stone": {
+            "name": "Piatră de Graniță"
+        },
+        "leisure/park": {
+            "name": "Parc"
+        },
+        "amenity/car_rental": {
+            "name": "Închiriere Mașini"
+        },
+        "amenity/internet_cafe": {
+            "name": "Internet Cafe"
+        },
+        "place/city": {
+            "name": "Oraș"
+        },
+        "building": {
+            "name": "Clădire"
+        },
+        "leisure/garden": {
+            "name": "Grădină"
+        },
+        "historic/memorial": {
+            "name": "Memorial"
+        },
+        "shop/cosmetics": {
+            "name": "osmetic"
+        },
+        "leisure/swimming_pool": {
+            "name": "Piscină"
+        },
+        "waterway/stream": {
+            "name": "Fluviu",
+            "terms": "q"
+        },
+        "railway": {
+            "name": "Cale Ferată"
+        },
+        "building/university": {
+            "name": "Universitate"
+        },
+        "amenity/library": {
+            "name": "Librărie"
+        },
+        "highway/secondary_link": {
+            "name": "Intrare în Stradă Secundară"
+        },
+        "amenity/waste_disposal": {
+            "name": "Container de Gunoi"
+        },
+        "landuse/military/bunker": {
+            "name": "Munker Militar"
+        },
+        "power/sub_station": {
+            "name": "SubStație"
+        },
+        "shop/copyshop": {
+            "name": "Atelier de Copiere"
+        },
+        "highway/motorway": {
+            "name": "Autostradă"
+        },
+        "natural/bay": {
+            "name": "Golf"
+        },
+        "building/terrace": {
+            "name": "Case în Rând"
+        },
+        "man_made/bridge": {
+            "name": "Pod"
+        },
+        "railway/monorail": {
+            "name": "Monoșină"
+        },
+        "amenity/studio": {
+            "name": "Studio"
+        },
+        "landuse/military": {
+            "name": "Zonă Militară"
+        },
+        "office/physician": {
+            "name": "Fizician"
+        },
+        "shop/bicycle": {
+            "name": "Magazin de Biciclete"
+        },
+        "shop/seafood": {
+            "name": "Magazin de Fructe de Mare"
+        },
+        "barrier/city_wall": {
+            "name": "Zid de Oraș"
+        },
+        "office/employment_agency": {
+            "name": "Agenție de Muncă"
+        },
+        "tourism/apartment": {
+            "name": "Apartament de Închiriat"
+        },
+        "amenity/hunting_stand": {
+            "name": "Stand de Vânătoare"
+        },
+        "tourism/guest_house": {
+            "name": "Casă de Oaspeți"
+        },
+        "office/government/register_office": {
+            "name": "Oficiu de Registru"
+        },
+        "boundary/administrative": {
+            "name": "Graniță Administrativă"
+        },
+        "landuse/aquaculture": {
+            "name": "Acvacultură"
+        },
+        "man_made/surveillance": {
+            "name": "Supraveghere"
+        },
+        "tourism/gallery": {
+            "name": "Galerie de Artă"
+        },
+        "amenity/fuel": {
+            "name": "Benzinărie"
+        },
+        "type/route/tram": {
+            "name": "Rută de Tranvai"
+        },
+        "leisure/pitch/american_football": {
+            "name": "Teren de Fotbal American"
+        },
+        "shop/second_hand": {
+            "name": "Magazin de Depozite"
+        },
+        "traffic_calming/bump": {
+            "name": "Cucui de Viteză"
+        },
+        "place/island": {
+            "name": "Insulă"
+        },
+        "railway/level_crossing": {
+            "name": "Traversare de Cale Ferată (Stradă)"
+        },
+        "place/suburb": {
+            "name": "Suburbie"
+        },
+        "man_made/pier": {
+            "name": "Chei"
+        },
+        "highway/road": {
+            "name": "Stradă Necunoscută"
+        },
+        "address": {
+            "name": "Adresă"
+        },
+        "highway/primary_link": {
+            "name": "Intrare în Drum Principal"
+        },
+        "amenity/pub": {
+            "name": "Pub"
+        },
+        "building/entrance": {
+            "name": "Intrare/Ieșire"
+        },
+        "highway/traffic_mirror": {
+            "name": "Oglindă de Trafic"
+        },
+        "shop/religion": {
+            "name": "Magazin Religios"
+        },
+        "shop/shoes": {
+            "name": "Magazin de Ghete"
+        },
+        "shop/dairy": {
+            "name": "Magazin de Lactate"
+        },
+        "type/route/road": {
+            "name": "Rută de Stadă"
+        },
+        "amenity/planetarium": {
+            "name": "Planetariu"
+        },
+        "office/financial": {
+            "name": "Oficiu Financiar"
+        },
+        "amenity/place_of_worship/hindu": {
+            "name": "Templu Hinduist"
+        },
+        "shop/wine": {
+            "name": "Magazin de Vinuri"
+        },
+        "shop/hairdresser": {
+            "name": "Frizer"
+        },
+        "amenity/swimming_pool": {
+            "name": "Piscină"
+        },
+        "man_made/tower": {
+            "name": "Turn"
+        },
+        "shop/florist": {
+            "name": "Florărie"
+        },
+        "type/route/ferry": {
+            "name": "Rută de Bac"
+        },
+        "building/school": {
+            "name": "Școală"
+        },
+        "amenity/atm": {
+            "name": "Bancomat"
+        },
+        "tourism/information/board": {
+            "name": "Panou de Informații"
+        },
+        "ford": {
+            "name": "Vad"
+        },
+        "landuse/industrial": {
+            "name": "Zonă Industrială"
+        },
+        "natural/sand": {
+            "name": "Nisip"
+        },
+        "place/locality": {
+            "name": "Localitate"
+        },
+        "type/route/hiking": {
+            "name": "Rută de Drumeție"
+        },
+        "amenity/courthouse": {
+            "name": "Tribunal"
+        },
+        "shop/art": {
+            "name": "Magazin de Artă"
+        },
+        "tourism/hostel": {
+            "name": "Hostel"
+        },
+        "leisure/pitch/volleyball": {
+            "name": "Teren de Voley"
+        },
+        "amenity/veterinary": {
+            "name": "Medic Veterinar"
+        },
+        "place/hamlet": {
+            "name": "Cătun"
+        },
+        "amenity/recycling_centre": {
+            "name": "Centru de Reciclare"
+        },
+        "club": {
+            "name": "Club"
+        },
+        "highway": {
+            "name": "Autostradă"
+        },
+        "shop/massage": {
+            "name": "Masaj"
+        },
+        "area": {
+            "name": "Suprafață"
+        },
+        "amenity/theatre": {
+            "name": "Teatru"
+        },
+        "landuse/military/checkpoint": {
+            "name": "Punct de Control"
+        },
+        "man_made/lighthouse": {
+            "name": "Far"
+        },
+        "type/route/train": {
+            "name": "Rută de Tren"
+        },
+        "barrier/fence": {
+            "name": "Gard"
+        },
+        "tourism/aquarium": {
+            "name": "Acvariu"
+        },
+        "landuse/cemetery": {
+            "name": "Cimitir"
+        },
+        "railway/rail": {
+            "name": "Șină"
+        },
+        "type/site": {
+            "name": "Sit"
+        },
+        "natural/scree": {
+            "name": "Pietriș"
+        },
+        "office/government": {
+            "name": "Oficiu de Guvern"
+        },
+        "amenity/fountain": {
+            "name": "Fântână"
+        },
+        "railway/disused": {
+            "name": "Cale Ferată Învechită"
+        },
+        "shop/doityourself": {
+            "name": "Magazin DIY"
+        },
+        "amenity/taxi": {
+            "name": "Stand de Taxi"
+        },
+        "amenity/grave_yard": {
+            "name": "Cimitir"
+        },
+        "office/lawyer/notary": {
+            "name": "Notar"
+        },
+        "leisure/fitness_station": {
+            "name": "Stație de Fitness în Aer Liber"
+        },
+        "man_made/water_tower": {
+            "name": "Turn de Apă"
+        },
+        "railway/subway_entrance": {
+            "name": "Intrare Metrou"
+        },
+        "shop/dry_cleaning": {
+            "name": "Uscător"
+        },
+        "leisure/picnic_table": {
+            "name": "Masă de Picnic"
+        },
+        "office/insurance": {
+            "name": "Oficiu de Asigurare"
+        },
+        "shop/furniture": {
+            "name": "Magazin de Mobilă"
+        },
+        "leisure/pitch": {
+            "name": "Teren de Sport"
+        },
+        "tourism/hotel": {
+            "name": "Hotel"
+        },
+        "advertising/billboard": {
+            "name": "Billboard"
+        },
+        "shop/bakery": {
+            "name": "Brutărie"
+        },
+        "historic/monument": {
+            "name": "Monument"
+        },
+        "type/route/bicycle": {
+            "name": "Rută de Biciclete"
+        },
+        "amenity/place_of_worship/shinto": {
+            "name": "Altar Shinto"
+        },
+        "leisure/pitch/soccer": {
+            "name": "Teren de Fotbal"
+        },
+        "type/multipolygon": {
+            "name": "Multipoligon"
+        },
+        "shop/vacant": {
+            "name": "Magazin Vacant"
+        },
+        "historic": {
+            "name": "Sit Istoric"
+        },
+        "leisure/miniature_golf": {
+            "name": "Minigolf"
+        },
+        "building/kindergarten": {
+            "name": "Preșcoală/Grădiniță"
+        },
+        "amenity/hospital": {
+            "name": "Spital"
+        },
+        "leisure/playground": {
+            "name": "Loc de Joacă"
+        },
+        "amenity/telephone": {
+            "name": "Telefon"
+        },
+        "building/dormitory": {
+            "name": "Dormitoriu"
+        },
+        "landuse/residential": {
+            "name": "Zonă Rezidențială"
+        },
+        "shop/erotic": {
+            "name": "Magazin Erotic"
+        },
+        "leisure/stadium": {
+            "name": "Stadion"
+        },
+        "amenity/drinking_water": {
+            "name": "Apă de Băut"
+        },
+        "type/restriction/no_u_turn": {
+            "name": "Fără Întoarcere"
+        },
+        "amenity/townhall": {
+            "name": "Primărie"
+        },
+        "highway/service/parking_aisle": {
+            "name": "Drum de Parcare"
+        },
+        "natural/water": {
+            "name": "Apă"
+        },
+        "embankment": {
+            "name": "Chei"
+        },
+        "shop/sports": {
+            "name": "Magazin de Haine de Sport"
+        },
+        "waterway/boatyard": {
+            "name": "Curte de Bărci"
+        },
+        "power/line": {
+            "name": "Linie de Alimentare"
+        },
+        "amenity/ice_cream": {
+            "name": "Magazin de Înghețată"
+        },
+        "leisure/horse_riding": {
+            "name": "Facilitate de Călărie"
+        },
+        "power/pole": {
+            "name": "Stâlp de Energie"
+        },
+        "craft/winery": {
+            "name": "Vinărie"
+        },
+        "shop/laundry": {
+            "name": "Spălătorie"
+        },
+        "natural/peak": {
+            "name": "Vârf"
+        },
+        "highway/tertiary": {
+            "name": "Stradă Terțiară"
+        },
+        "shop/beauty/nails": {
+            "name": "Salon de Unghii"
+        },
+        "amenity/bank": {
+            "name": "Banca"
+        },
+        "landuse/retail": {
+            "name": "Zonă de Retail"
+        },
+        "leisure/resort": {
+            "name": "Resort"
+        },
+        "shop/pyrotechnics": {
+            "name": "Magazin de Artificii"
+        },
+        "leisure/pitch/cricket": {
+            "name": "Teren de Cricket"
+        },
+        "amenity/prison": {
+            "name": "Închisoare"
+        },
+        "amenity/arts_centre": {
+            "name": "Centru de Artă"
+        },
+        "railway/crossing": {
+            "name": "Traversare de Căi Ferate (Potecă)"
+        },
+        "shop/travel_agency": {
+            "name": "Agenție de Călătorii"
+        },
+        "amenity/restaurant": {
+            "name": "Restaurant"
+        },
+        "type/route/detour": {
+            "name": "Rută Detur"
+        },
+        "amenity/police": {
+            "name": "Poliție"
+        },
+        "place/farm": {
+            "name": "Fermă"
+        },
+        "leisure/pitch/basketball": {
+            "name": "Teren de Basket"
+        },
+        "shop/newsagent": {
+            "name": "Magazin de Ziare"
+        },
+        "building/residential": {
+            "name": "Clădire Rezidențială"
+        },
+        "highway/services": {
+            "name": "Zonă de Serviciu"
+        },
+        "amenity/community_centre": {
+            "name": "Centru Comunitar"
+        },
+        "amenity/bureau_de_change": {
+            "name": "Schimbare Valută"
+        },
+        "shop/tyres": {
+            "name": "Magazin de Roți"
+        },
+        "landuse/military/nuclear_explosion_site": {
+            "name": "Sit de Explozie Nucleară"
+        },
+        "amenity/post_office": {
+            "name": "Oficiul Poștal"
+        },
+        "traffic_calming/island": {
+            "name": "Insulă de Trafic"
+        },
+        "natural/volcano": {
+            "name": "Vulcan"
+        },
+        "aerialway/gondola": {
+            "name": "Gondolă"
+        },
+        "landuse/military/barracks": {
+            "name": "Baraci"
+        },
+        "amenity/bar": {
+            "name": "Bar"
+        },
+        "traffic_calming/cushion": {
+            "terms": "g"
+        },
+        "amenity/casino": {
+            "name": "Cazino"
+        },
+        "tourism/museum": {
+            "name": "Muzeu"
+        },
+        "shop/boutique": {
+            "name": "Boutique"
+        },
+        "railway/narrow_gauge": {
+            "name": "Cale Ferată Îngustă"
+        },
+        "shop/curtain": {
+            "name": "Magazin de Perdele"
+        },
+        "leisure/pitch/tennis": {
+            "name": "Teren de Tenis"
+        },
+        "shop/weapons": {
+            "name": "Magazin de Arme"
+        },
+        "highway/trunk": {
+            "name": "Drum Expres"
+        },
+        "leisure/fitness_centre": {
+            "name": "Centru Fitness"
+        },
+        "golf/tee": {
+            "name": "Casa de Ceai"
+        },
+        "office": {
+            "name": "Oficiu"
+        },
+        "highway/corridor": {
+            "name": "Coridor Interior"
+        },
+        "amenity/fire_station": {
+            "name": "Pompieri"
+        },
+        "barrier/entrance": {
+            "name": "Intrare"
+        },
+        "noexit/yes": {
+            "name": "Fără Ieșire"
+        },
+        "shop/scuba_diving": {
+            "name": "Magazin de Scufundări"
+        },
+        "natural/water/pond": {
+            "name": "Iaz"
+        },
+        "shop/beverages": {
+            "name": "Magazin de Băuturi"
+        },
+        "shop/vacuum_cleaner": {
+            "name": "Magazin de Aspiratoare"
+        },
+        "entrance": {
+            "name": "Intrare/Ieșire"
+        },
+        "shop/chemist": {
+            "name": "Drogărie"
+        },
+        "tourism/information/map": {
+            "name": "Hartă"
+        },
+        "building/hospital": {
+            "name": "Spital"
+        },
+        "amenity/marketplace": {
+            "name": "Piață"
+        },
+        "building/industrial": {
+            "name": "Clădire Industrială"
+        },
+        "power/tower": {
+            "name": "Turn de Înaltă Tensiune"
+        },
+        "amenity/university": {
+            "name": "Universitate"
+        },
+        "building/public": {
+            "name": "Clădire Publică"
+        },
+        "landuse/military/airfield": {
+            "name": "Aeroport Militar"
+        },
+        "craft/shoemaker": {
+            "name": "Cizmar"
+        },
+        "office/estate_agent": {
+            "name": "Oficiu de Proprietate Imobiliară"
+        },
+        "man_made/watermill": {
+            "name": "Moară de Apă"
+        },
+        "shop/interior_decoration": {
+            "name": "Magazin de Decorații Interioare"
+        },
+        "shop/toys": {
+            "name": "Magazin de Jucării"
+        },
+        "type/restriction/no_straight_on": {
+            "name": "Fără Drum Continuu"
+        },
+        "leisure/pitch/table_tennis": {
+            "name": "Masă de Ping Pong"
+        },
+        "landuse/allotments": {
+            "name": "Grădină Comunitară"
+        },
+        "amenity/place_of_worship/sikh": {
+            "name": "Templu Sikh"
+        },
+        "shop/nutrition_supplements": {
+            "name": "Magazin de Suplimente Nutritive"
+        },
+        "craft/gardener": {
+            "name": "Grădinar"
+        },
+        "building/church": {
+            "name": "Biserică"
+        },
+        "amenity/cafe": {
+            "name": "Cafenea"
+        },
+        "shop/video_games": {
+            "name": "Magazin de Jocuri de Calculator"
+        },
+        "highway/service/emergency_access": {
+            "name": "Acces de Urgențe"
+        },
+        "amenity/parking_space": {
+            "name": "Loc de Parcare"
+        },
+        "building/greenhouse": {
+            "name": "Seră"
+        },
+        "railway/funicular": {
+            "name": "Frânghie"
+        },
+        "landuse/harbour": {
+            "name": "Port"
+        },
+        "power/transformer": {
+            "name": "Transformator"
+        },
+        "power/generator": {
+            "name": "Generator de Energie"
+        },
+        "shop/pet": {
+            "name": "Magazin de Animale"
+        },
+        "natural/wetland": {
+            "name": "Zonă Umedă"
+        },
+        "roundabout": {
+            "name": "Sens Giratoriu"
+        },
+        "landuse/military/naval_base": {
+            "name": "Bază Navală"
+        },
+        "type/route/power": {
+            "name": "Rută de Energie"
+        },
+        "highway/service/alley": {
+            "name": "Alee"
+        },
+        "shop/department_store": {
+            "name": "Magazin Universal"
+        },
+        "natural/cliff": {
+            "name": "Faleză"
+        },
+        "amenity/clock": {
+            "name": "Ceas"
+        },
+        "building/garage": {
+            "name": "Garaj"
+        },
+        "highway/footway": {
+            "name": "Potecă"
+        },
+        "natural/coastline": {
+            "name": "Linie de Coastă"
+        },
+        "building/roof": {
+            "name": "Acoperiș"
+        },
+        "natural/glacier": {
+            "name": "Ghețar"
+        },
+        "building/hotel": {
+            "name": "Hotel"
+        },
+        "shop/anime": {
+            "name": "Magazin Anime"
+        },
+        "route/ferry": {
+            "name": "Rută de Bac"
+        },
+        "shop/outdoor": {
+            "name": "Magazin în Aer Liber"
+        },
+        "shop/fashion": {
+            "name": "Magazin de Modă"
+        },
+        "power/substation": {
+            "name": "Substație"
+        },
+        "highway/steps": {
+            "name": "Scări"
+        },
+        "amenity/fast_food": {
+            "name": "Fast Food"
+        },
+        "highway/primary": {
+            "name": "Drum principal"
+        },
+        "type/route/pipeline": {
+            "name": "Rută de Conducte"
+        },
+        "tourism/motel": {
+            "name": "Motel"
+        },
+        "shop/chocolate": {
+            "name": "Magazin de Ciocolată"
+        },
+        "building/cathedral": {
+            "name": "Catedrală"
+        },
+        "man_made/pumping_station": {
+            "name": "Stație de Pompare"
+        },
+        "building/bunker": {
+            "name": "Bunker"
+        },
+        "emergency/defibrillator": {
+            "name": "Defibrilator"
+        },
+        "craft/photographic_laboratory": {
+            "name": "Laborator de Fotografie"
+        },
+        "leisure/dance": {
+            "name": "Sală de Dans"
+        },
+        "traffic_calming/hump": {
+            "name": "Cucui de Viteză"
+        },
+        "amenity/dentist": {
+            "name": "Dentist"
+        },
+        "building/chapel": {
+            "name": "Capelă"
+        },
+        "office/research": {
+            "name": "Birou de Cercetare"
+        },
+        "shop/tea": {
+            "name": "Magazin de Ceaiuri"
+        },
+        "office/travel_agent": {
+            "name": "Agenție de Călătorii"
+        },
+        "craft/jeweler": {
+            "name": "Giuvaer"
+        },
+        "office/telecommunication": {
+            "name": "Oficiu Telecom"
+        },
+        "shop/bag": {
+            "name": "Magazin de Bagaje"
+        },
+        "shop/supermarket": {
+            "name": "Supermarket"
+        },
+        "historic/tomb": {
+            "name": "Mormânt"
+        },
+        "office/political_party": {
+            "name": "Partid Politic"
+        },
+        "shop/garden_centre": {
+            "name": "Magazin de Grădinărit"
+        },
+        "leisure/sports_centre/swimming": {
+            "name": "Facilitate de Înnot"
+        },
+        "shop/kitchen": {
+            "name": "Magazin de Bucătărie"
+        },
+        "landuse/military/range": {
+            "name": "Gamă Militară"
+        },
+        "man_made/silo": {
+            "name": "Siloz"
+        },
+        "building/garages": {
+            "name": "Garaje"
+        },
+        "leisure/pitch/rugby_league": {
+            "name": "Teren de Rugby"
+        },
+        "shop/beauty": {
+            "name": "Magazin Beauty"
+        },
+        "building/hut": {
+            "name": "Colibă"
+        },
+        "shop/candles": {
+            "name": "Magazin de Lumânări"
+        },
+        "amenity/charging_station": {
+            "name": "Benzinărie"
+        },
+        "waterway/canal": {
+            "name": "Canal"
+        },
+        "leisure/common": {
+            "name": "Comun"
+        },
+        "type/route/horse": {
+            "name": "Rută de Călărit"
+        },
+        "landuse/farmland": {
+            "name": "Teren Agricol"
+        },
+        "shop/baby_goods": {
+            "name": "Magazin de Produse pentru Bebeluși"
+        },
+        "type/restriction/no_right_turn": {
+            "name": "Fără Întoarcere la Dreapta"
+        },
+        "shop/car": {
+            "name": "Magazin de Mașini"
+        },
+        "place/square": {
+            "name": "Piață"
+        },
+        "man_made/storage_tank": {
+            "name": "Rezervor de Stocare"
+        },
+        "place/neighbourhood": {
+            "name": "Cartier"
+        },
+        "tourism/camp_site": {
+            "name": "Teren de Camping"
+        },
+        "leisure/pitch/beachvolleyball": {
+            "name": "Teren de Volley de Plajă"
+        },
+        "building/semidetached_house": {
+            "name": "Casă Semi-detașată"
+        },
+        "railway/abandoned": {
+            "name": "Cale Ferată Abandonată"
+        },
+        "type/restriction": {
+            "name": "Restricție"
+        },
+        "shop/bathroom_furnishing": {
+            "name": "Magazin de Mobilier pentru Băi"
+        },
+        "shop/beauty/tanning": {
+            "name": "Salon de Bronzat"
+        },
+        "man_made/chimney": {
+            "name": "Șemineu"
+        },
+        "shop/mall": {
+            "name": "Mall"
+        },
+        "barrier/wall": {
+            "name": "Zid"
+        },
+        "natural/beach": {
+            "name": "Plajă"
+        },
+        "junction": {
+            "name": "Juncție"
+        },
+        "craft/insulator": {
+            "name": "Insulator"
+        },
+        "landuse/vineyard": {
+            "name": "Curte de Vin"
+        },
+        "vertex": {
+            "name": "Altele"
+        },
+        "type/boundary": {
+            "name": "Graniță"
+        },
+        "craft/optician": {
+            "name": "Optician"
+        },
+        "waterway/waterfall": {
+            "name": "Cascadă"
+        },
+        "type/route": {
+            "name": "Rută"
+        },
+        "man_made/embankment": {
+            "name": "Îmbarcare"
+        },
+        "shop/tobacco": {
+            "name": "Tăbăcărie"
+        },
+        "building/detached": {
+            "name": "Casă Detașată"
+        },
+        "shop/charity": {
+            "name": "Magazin de Caritate"
+        },
+        "shop/musical_instrument": {
+            "name": "Magazin de Instrumente Muzicale"
+        },
+        "man_made/wastewater_plant": {
+            "name": "Sta'ie de Epurare"
+        },
+        "shop/money_lender": {
+            "name": "Creditor de Bani"
+        },
+        "building/college": {
+            "name": "Colegiu"
+        },
+        "building/retail": {
+            "name": "Clădire de Retail"
+        },
+        "shop/ticket": {
+            "name": "Vânzător de Bilete"
+        },
+        "highway/motorway_link": {
+            "name": "Intrare în Autostradă"
+        },
+        "natural/water/reservoir": {
+            "name": "Rezervor"
+        },
+        "craft/saddler": {
+            "name": "Șelar"
+        },
+        "shop/bed": {
+            "name": "Magazin de Saltele"
+        },
+        "landuse/basin": {
+            "name": "Bazin"
+        },
+        "aerialway/mixed_lift": {
+            "name": "Lift Mixat"
+        },
+        "shop/paint": {
+            "name": "Magazin de Pictură"
+        },
+        "historic/ruins": {
+            "name": "Ruine"
+        },
+        "craft/photographer": {
+            "name": "Fotograf"
+        },
+        "highway/secondary": {
+            "name": "Drum secundar"
+        },
+        "shop": {
+            "name": "Magazin"
+        },
+        "natural/heath": {
+            "name": "Landă"
+        },
+        "landuse/military/obstacle_course": {
+            "name": "Curs cu Obstacole"
+        },
+        "man_made/pipeline": {
+            "name": "Condunctă"
+        },
+        "building/commercial": {
+            "name": "Clădire Comercială"
+        },
+        "amenity/childcare": {
+            "name": "Grădiniță"
+        },
+        "office/educational_institution": {
+            "name": "Instituție Educațională"
+        },
+        "amenity/bicycle_parking": {
+            "name": "Parcare biciclete"
+        },
+        "amenity/compressed_air": {
+            "name": "Aer Comprimat"
+        },
+        "leisure/pitch/equestrian": {
+            "name": "Teren de Călărit"
+        },
+        "man_made/water_well": {
+            "name": "Fântână"
+        },
+        "place/quarter": {
+            "name": "Cartier"
+        },
+        "shop/organic": {
+            "name": "Magazin de Bunuri Organice"
+        },
+        "shop/perfumery": {
+            "name": "Magazin de Parfum"
+        },
+        "landuse/military/danger_area": {
+            "name": "Zonă de Pericol"
+        },
+        "shop/confectionery": {
+            "name": "Magazin de Dulciuri"
+        },
+        "shop/electronics": {
+            "name": "Magazin de Electronice"
+        },
+        "waterway": {
+            "name": "Drum Marin"
+        },
+        "amenity/clinic": {
+            "name": "Clinică"
+        },
+        "amenity/place_of_worship/buddhist": {
+            "name": "Templu Budist"
+        },
+        "amenity/cinema": {
+            "name": "Cinema"
+        },
+        "natural/bare_rock": {
+            "name": "Stâncă"
+        },
+        "type/route/bus": {
+            "name": "Traseu Autobuz"
+        },
+        "landuse/farm": {
+            "name": "Teren Agricol"
+        },
+        "amenity/crematorium": {
+            "name": "Crematoriu"
+        },
+        "natural/wood": {
+            "name": "Pădure"
+        },
+        "building/construction": {
+            "name": "Clădire în Construcție"
+        },
+        "highway/unclassified": {
+            "name": "Stradă Minoră/Neclasificată"
+        },
+        "shop/tattoo": {
+            "name": "Artist de Tatuaje"
+        },
+        "shop/optician": {
+            "name": "Optician"
+        },
+        "amenity/social_facility": {
+            "name": "Facilitate Socială"
+        },
+        "type/route/foot": {
+            "name": "Rută pe Jos"
+        },
+        "barrier/block": {
+            "name": "Blocaj"
+        },
+        "craft/window_construction": {
+            "name": "Geamgiu"
+        },
+        "shop/appliance": {
+            "name": "Magazin de Electrocasnice"
+        },
+        "relation": {
+            "name": "Relație"
+        },
+        "shop/medical_supply": {
+            "name": "Magazin Alimentar Medical"
+        },
+        "man_made/windmill": {
+            "name": "Moară de Vânt"
+        },
+        "shop/mobile_phone": {
+            "name": "Magazin de Telefoane Mobile"
+        },
+        "place/town": {
+            "name": "Oraș"
+        },
+        "landuse/commercial": {
+            "name": "Zonă Comercială"
+        },
+        "highway/tertiary_link": {
+            "name": "Intrare în Stradă Terțiară"
+        },
+        "tourism/information": {
+            "name": "Informații"
+        },
+        "natural/ridge": {
+            "name": "Creastă"
+        },
+        "natural": {
+            "name": "Natural"
+        },
+        "amenity/post_box": {
+            "name": "Cutie Poștală"
+        },
+        "landuse/military/training_area": {
+            "name": "Zonă de Training"
+        },
+        "natural/water/lake": {
+            "name": "Lac"
+        },
+        "shop/video": {
+            "name": "Magazin Video"
+        },
+        "building/warehouse": {
+            "name": "Depozit"
+        },
+        "leisure/bowling_alley": {
+            "name": "Alee de Bowling"
+        },
+        "railway/tram": {
+            "name": "Tranvai"
+        },
+        "power/minor_line": {
+            "name": "Linie de Alimentare Minoră"
+        },
+        "landuse/farmyard": {
+            "name": "Curte Agricolă"
+        },
+        "man_made/works": {
+            "name": "Fabrică"
+        },
+        "highway/cycleway": {
+            "name": "Pistă biciclete"
+        },
+        "amenity/car_sharing": {
+            "name": "Car Sharing"
+        },
+        "leisure/nature_reserve": {
+            "name": "Rezervat Natural"
+        },
+        "shop/antiques": {
+            "name": "Anticariat"
+        },
+        "shop/funeral_directors": {
+            "name": "Casă Funerală"
+        },
+        "tourism/zoo": {
+            "name": "Grădină Zoologică"
+        },
+        "shop/computer": {
+            "name": "Magazin de Calculatoare"
+        },
+        "landuse/grass": {
+            "name": "Iarbă"
+        },
+        "natural/grassland": {
+            "name": "Iarbă"
+        },
+        "shop/fabric": {
+            "name": "Magazin de Materiale"
+        },
+        "highway/stop": {
+            "name": "Semn de Oprire"
+        },
+        "craft/brewery": {
+            "name": "Berărie"
+        },
+        "highway/turning_circle": {
+            "name": "Cerc de Cotitură"
+        },
+        "shop/coffee": {
+            "name": "Magazin de Cafea"
+        },
+        "shop/e-cigarette": {
+            "name": "Magazin de Țigarete Electrice"
+        },
+        "tourism": {
+            "name": "Turism"
+        },
+        "amenity/public_bath": {
+            "name": "Baie Publică"
+        },
+        "amenity/car_wash": {
+            "name": "Spălătorie Auto"
+        },
+        "highway/street_lamp": {
+            "name": "Lampă Stradală"
+        },
+        "shop/clothes": {
+            "name": "Magazin de Haine"
+        },
+        "tourism/theme_park": {
+            "name": "Parc de Distracții"
+        },
+        "aeroway/aerodrome": {
+            "name": "Aeroport"
+        },
+        "amenity/bicycle_rental": {
+            "name": "Închiriere biciclete"
+        },
+        "shop/watches": {
+            "name": "Magazin de Ceasuri"
+        },
+        "amenity/parking_entrance": {
+            "name": "Intrare/Ieșire Garaj"
+        },
+        "landuse": {
+            "name": "Utilizare Teren"
+        },
+        "shop/gift": {
+            "name": "Magazin de Cadouri"
+        },
+        "waterway/riverbank": {
+            "name": "Mal"
+        },
+        "leisure/sports_centre": {
+            "name": "Centru / Complex de Sport"
+        },
+        "place": {
+            "name": "Loc"
+        },
+        "power": {
+            "name": "Energie"
+        },
+        "shop/music": {
+            "name": "Magazin de Muzică"
+        },
+        "building/house": {
+            "name": "Casă"
+        },
+        "amenity/nightclub": {
+            "name": "Club de Noapte"
+        },
+        "waterway/dam": {
+            "name": "Baraj"
+        },
+        "amenity/school": {
+            "name": "Școală"
+        },
+        "shop/photo": {
+            "name": "Magazin de Fotografie"
+        },
+        "building/static_caravan": {
+            "name": "Casă Mobilă Statică"
+        },
+        "barrier/gate": {
+            "name": "Poartă"
+        },
+        "leisure/pitch/skateboard": {
+            "name": "Park de Skate"
+        },
+        "shop/motorcycle": {
+            "name": "Magazin de Motociclete"
+        },
+        "shop/variety_store": {
+            "name": "Magazin de Varietăți"
+        },
+        "waterway/river": {
+            "name": "Râu"
+        },
+        "amenity/doctors": {
+            "name": "Doctor"
+        },
+        "railway/subway": {
+            "name": "Metrou"
+        },
+        "highway/elevator": {
+            "name": "Lift"
+        },
+        "shop/carpet": {
+            "name": "Magazin de Covoare"
+        },
+        "landuse/churchyard": {
+            "name": "Curte de Biserică"
+        },
+        "shop/butcher": {
+            "name": "Măcelărie"
+        },
+        "tourism/picnic_site": {
+            "name": "Picnic"
+        },
+        "leisure/golf_course": {
+            "name": "Curs de Golf"
+        },
+        "barrier": {
+            "name": "Barieră"
+        },
+        "historic/castle": {
+            "name": "Castel"
+        },
+        "craft/electrician": {
+            "name": "Electrician"
+        },
+        "shop/car_repair": {
+            "name": "Vulcanizare"
+        },
+        "highway/path": {
+            "name": "Potecă"
+        },
+        "historic/archaeological_site": {
+            "name": "Sit Arheologic"
+        },
+        "leisure/water_park": {
+            "name": "Parc Acvatic"
+        },
+        "amenity/driving_school": {
+            "name": "Școală de Șoferi"
+        },
+        "building/barn": {
+            "name": "Grajd"
+        },
+        "amenity/bench": {
+            "name": "Bancă"
+        },
+        "landuse/meadow": {
+            "name": "Pajiște"
+        },
+        "shop/convenience": {
+            "name": "Magazin Universal"
+        },
+        "amenity/toilets": {
+            "name": "Toaletă"
+        },
+        "shop/books": {
+            "name": "Magazin de Cărți"
+        },
+        "highway/service": {
+            "name": "Stradă de Serviciu"
+        },
+        "waterway/drain": {
+            "name": "Pârâu"
+        },
+        "highway/residential": {
+            "name": "Drum rezidențial"
+        },
+        "amenity/place_of_worship": {
+            "name": "Loc de Rugăciune"
+        },
+        "type/boundary/administrative": {
+            "name": "Graniță Administrativă"
+        },
+        "landuse/military/office": {
+            "name": "Oficiu Militar"
+        },
+        "highway/traffic_signals": {
+            "name": "Semnale de Trafic"
+        },
+        "amenity/embassy": {
+            "name": "Ambasadă"
+        },
+        "type/restriction/no_left_turn": {
+            "name": "Fără Întoarcere la Stânga"
+        },
+        "healthcare/blood_donation": {
+            "name": "Centru de Donație de Sânge"
+        },
+        "emergency/ambulance_station": {
+            "name": "Stație de Ambulanță"
+        },
+        "place/village": {
+            "name": "Sat"
+        },
+        "amenity/motorcycle_parking": {
+            "name": "Parcare de Motociclete"
+        },
+        "line": {
+            "name": "Linie"
+        },
+        "shop/lottery": {
+            "name": "Loterie"
+        },
+        "amenity/kindergarten": {
+            "name": "Preșcoală/Grădiniță"
+        },
+        "leisure/dog_park": {
+            "name": "Parc de Câini"
+        },
+        "natural/cave_entrance": {
+            "name": "Intrare de Peșteră"
+        },
+        "point": {
+            "name": "Punct"
+        },
+        "shop/cheese": {
+            "name": "Magazin de Brânzeturi"
+        },
+        "amenity/boat_rental": {
+            "name": "Închiriere Barcă"
+        },
+        "amenity/place_of_worship/taoist": {
+            "name": "Templu Taoist"
+        },
+        "building/cabin": {
+            "name": "Cabină"
+        },
+        "craft/metal_construction": {
+            "name": "Construcție de Metal"
+        },
+        "craft/painter": {
+            "name": "Pictor"
+        },
+        "office/ngo": {
+            "name": "Oficiu NGO"
+        },
+        "highway/motorway_junction": {
+            "name": "Juncție de Autostradă / Ieșire"
+        },
+        "natural/tree": {
+            "name": "Copac"
+        },
+        "tourism/attraction": {
+            "name": "Atracție Turistică"
+        },
+        "amenity/register_office": {
+            "name": "Oficiu de Registrare"
+        },
+        "golf/fairway": {
+            "name": "Drum Maritim"
+        },
+        "tourism/alpine_hut": {
+            "name": "Cabană"
+        },
+        "tourism/information/office": {
+            "name": "Oficiu de Informare Turistică"
+        },
+        "shop/alcohol": {
+            "name": "Magazin de Băuturi Alcoolice",
+            "terms": "G"
+        },
+        "tourism/viewpoint": {
+            "name": "Punct de Vedere"
+        },
+        "craft/handicraft": {
+            "name": "Manufactură"
+        },
+        "office/lawyer": {
+            "name": "Cabinet de Avocatură"
+        },
+        "landuse/construction": {
+            "name": "Construcție"
+        },
+        "highway/trunk_link": {
+            "name": "Intrare în Drum Expres"
+        },
+        "shop/bookmaker": {
+            "name": "Atelier de Cărți"
+        },
+        "leisure/fitness_centre/yoga": {
+            "name": "Studio Yoga"
+        },
+        "aeroway": {
+            "name": "Aeroway"
+        }
+    }
+}

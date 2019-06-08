@@ -682,4 +682,25 @@
     <string name="default_disabled_msg_maxspeed">"این نوع جُستار به طور پیش فرض غیر فعال شده است زیرا اغلب شما نیاز به بررسی تمام خیابان‌ها برای تابلو‌های محدودیت سرعت دارید و نه فقط بخش انتخاب شده . این گاهی اوقات می‌تواند یک جاذبه کاربرپسند برای حل یک جُستار باشد."</string>
     <string name="pref_title_quests_restore_hidden">"بازگرداندن جُستارهای پنهان"</string>
     <string name="restore_hidden_success">"بازیابی  %d جُستار پنهان"</string>
+
+    <!-- caution: This is not necessarily the floor and level=0 is not necessarily at street level
+        as it may follow the numbering scheme of the building operator. Try to use a generic wording
+        that does not carry an implicit meaning of where it is located in respect to the ground floor.
+        The context is usually shopping centres, train stations or airport terminals -->
+    <string name="on_level">"در طبقه %s"</string>
+
+    <!-- as in: "Where is the metro station?" - "It is underground" -->
+    <string name="underground">"زیرزمین"</string>
+    <string name="quest_sidewalk_value_yes">"پیاده‌رو"</string>
+    <string name="quest_sidewalk_value_no">"بدون پیاده‌رو"</string>
+    <string name="quest_accessible_for_pedestrians_title_prohibited">"آیا پیاده‌روی عابران در این جاده ممنوع است؟"</string>
+    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"این خیابان برای نداشتن پیاده رو در هر دو طرف برچسب‌گذاری شده است. در صورتی که پیاده رو وجود دارد، ولی به صورت جداگانه نمایش داده شده است، لطفا \"پیاده‌راه\" را مشخص نمایید."</string>
+    <string name="quest_buildingType_title">"نوع این ساختمان چیست؟"</string>
+    <string name="pref_category_theme">"زمینه"</string>
+    <string name="pref_title_theme_select">"انتخاب زمینه"</string>
+    <string name="theme_automatic">"خودکار"</string>
+    <string name="theme_light">"روشن"</string>
+    <string name="theme_dark">"تیره"</string>
+    <string name="theme_system_default">"پیشفرض سامانه"</string>
+    <string name="quest_placeName_title_name">"نام این مکان چیست؟ (%s)"</string>
 </resources>

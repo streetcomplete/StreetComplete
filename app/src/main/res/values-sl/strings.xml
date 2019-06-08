@@ -400,7 +400,15 @@ Podatki, ki jih vnesete tu, bodo dodani v OpenStreetMap v vašem imenu, brez pot
     <string name="quest_buildingType_train_station">"Železniška postaja"</string>
     <string name="quest_buildingType_cars">"Za avtomobile"</string>
     <string name="quest_address_answer_no_housenumber">"Nima hišne številke…"</string>
+    <string name="quest_maxheight_title">"Kakšna je omejitev višine tu?"</string>
+    <string name="quest_maxheight_parking_entrance_title">"Kakšna je omejitev višine tega vhoda na parkirišče?"</string>
+    <string name="quest_maxheight_height_restrictor_title">"Kakšna je omejitev višine te višinske ovire?"</string>
+    <string name="quest_maxheight_tunnel_title">"Kakšna je omejitev višine v tem predoru?"</string>
+    <string name="quest_maxheight_answer_noSign">"Ni prometnega znaka..."</string>
+    <string name="quest_maxheight_answer_noSign_question">"Ali je dovolj visoko, da gredo spodaj tudi najvišji tovornjaki (vsaj 4,5 metra / 15 čevljev)?"</string>
+    <string name="quest_maxheight_unusualInput_confirmation_description">"Ta omejitev višine je neverjetna. Ali ste prepričani, da je pravilna?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
     <string name="quest_railway_crossing_barrier_title">"Kako je zaščiten ta prehod železniške proge?"</string>
     <string name="quest_railway_crossing_barrier_none">"Ni zaščite"</string>
+    <string name="quest_buildingType_title">"Kakšne vrste zgradba je to?"</string>
 </resources>

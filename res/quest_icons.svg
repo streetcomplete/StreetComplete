@@ -315,9 +315,9 @@
      inkscape:window-height="911"
      id="namedview4499"
      showgrid="true"
-     inkscape:zoom="0.53526218"
-     inkscape:cx="508.04408"
-     inkscape:cy="457.02856"
+     inkscape:zoom="3.0279001"
+     inkscape:cx="174.9916"
+     inkscape:cy="69.524157"
      inkscape:window-x="220"
      inkscape:window-y="57"
      inkscape:window-maximized="0"
@@ -2754,14 +2754,15 @@
        style="opacity:1;vector-effect:none;fill:none;fill-opacity:0.2;stroke:#7077ce;stroke-width:8;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:normal" />
     <path
        id="rect17235-1"
-       d="m -368.01367,460 -46,46 v 4 l 36,36 h 4 l 46,-46 v -38 l -2,-2 z M -342,468 a 5.985486,5.9924178 0 0 1 5.98633,5.99219 5.985486,5.9924178 0 0 1 -5.98633,5.99219 5.985486,5.9924178 0 0 1 -5.98437,-5.99219 A 5.985486,5.9924178 0 0 1 -342,468 Z"
+       d="m -368.01367,460 -46,46 v 4 l 36,36 h 4 l 46,-46 v -38 l -2,-2 z"
        style="opacity:1;vector-effect:none;fill:#000000;fill-opacity:0.2;stroke:none;stroke-width:6.506814;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.85353537;paint-order:normal"
-       inkscape:connector-curvature="0" />
-    <path
        inkscape:connector-curvature="0"
-       id="rect17235"
-       d="m -368,456 -46,46 v 4 l 36,36 h 4 l 46,-46 v -38 l -2,-2 z m 26.01367,8 a 5.985486,5.9924178 0 0 1 5.98633,5.99219 5.985486,5.9924178 0 0 1 -5.98633,5.99219 5.985486,5.9924178 0 0 1 -5.98437,-5.99219 5.985486,5.9924178 0 0 1 5.98437,-5.99219 z"
-       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:6.506814;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.85353537;paint-order:normal" />
+       sodipodi:nodetypes="ccccccccc" />
+    <path
+       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:6.506814;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.85353537;paint-order:normal"
+       d="M 192 1432 L 146 1478 L 146 1482 L 182 1518 L 186 1518 L 232 1472 L 232 1434 L 230 1432 L 192 1432 z M 218 1440 A 6 6 0 0 1 224 1446 A 6 6 0 0 1 218 1452 A 6 6 0 0 1 212 1446 A 6 6 0 0 1 218 1440 z "
+       transform="translate(-560.00002,-976)"
+       id="rect17235" />
     <path
        sodipodi:nodetypes="cc"
        inkscape:connector-curvature="0"

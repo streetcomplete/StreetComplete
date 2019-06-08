@@ -146,16 +146,20 @@ class AddMaxHeightForm : AbstractQuestFormAnswerFragment<MaxHeightAnswer>() {
     }
 
     private fun getHeightFromInput(): Measure? {
-        if (isMetric()) {
-            val input = meterInput?.text?.toString().orEmpty().trim().replace(",", ".")
-            if (input.isNotEmpty()) return MetricMeasure(input.toDouble())
-        } else {
-            val feetString = feetInput?.text?.toString().orEmpty().trim()
-            val inchString = inchInput?.text?.toString().orEmpty().trim()
+        try {
+            if (isMetric()) {
+                val input = meterInput?.text?.toString().orEmpty().trim().replace(",", ".")
+                if (input.isNotEmpty()) return MetricMeasure(input.toDouble())
+            } else {
+                val feetString = feetInput?.text?.toString().orEmpty().trim()
+                val inchString = inchInput?.text?.toString().orEmpty().trim()
 
-            if (feetString.isNotEmpty() && inchString.isNotEmpty()) {
-                return ImperialMeasure(feetString.toInt(), inchString.toInt())
+                if (feetString.isNotEmpty() && inchString.isNotEmpty()) {
+                    return ImperialMeasure(feetString.toInt(), inchString.toInt())
+                }
             }
+        } catch (e: NumberFormatException) {
+            return null;
         }
         return null
     }

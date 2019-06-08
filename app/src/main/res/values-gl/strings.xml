@@ -643,4 +643,8 @@ Por exemplo 1,3 ou 2-6."</string>
 
     <!-- as in: "Where is the metro station?" - "It is underground" -->
     <string name="underground">"subterráneo:"</string>
+    <string name="quest_sidewalk_value_yes">"beirarrúa"</string>
+    <string name="quest_sidewalk_value_no">"sen beirarrúa"</string>
+    <string name="quest_accessible_for_pedestrians_title_prohibited">"Os peóns teñen prohibido camiñar nesta estrada?"</string>
+    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Esta rúa foi etiquetada como que non ten beirarrúa en ámbalas dúas beiras. No caso de que ó final haxa beirarrúa, póñense de xeito separado en cada beira, escóllese \"sidewalk\" (beirarrúa)."</string>
 </resources>

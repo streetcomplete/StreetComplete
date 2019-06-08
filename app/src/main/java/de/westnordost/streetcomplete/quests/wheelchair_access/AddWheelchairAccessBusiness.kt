@@ -34,7 +34,7 @@ class AddWheelchairAccessBusiness(o: OverpassMapDataDao) : SimpleOverpassQuestTy
             ),
             "office" to arrayOf(
                 "insurance", "government", "lawyer", "estate_agent", "political_party", "travel_agent",
-                "tax_advisor", "therapist"
+                "tax_advisor", "therapist", "religion"
             )
         ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString(" or ") +
         " )" +

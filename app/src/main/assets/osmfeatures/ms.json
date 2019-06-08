@@ -1,0 +1,633 @@
+{
+    "presets": {
+        "power/substation": {
+            "name": "Pencawang"
+        },
+        "office/administrative": {
+            "name": "Pejabat Pentadbiran"
+        },
+        "amenity/internet_cafe": {
+            "name": "Kafe Internet"
+        },
+        "place/city": {
+            "name": "Bandar"
+        },
+        "amenity/fast_food": {
+            "name": "Makanan Segera"
+        },
+        "highway/primary": {
+            "name": "Jalan Utama"
+        },
+        "building": {
+            "name": "Bangunan"
+        },
+        "shop/chocolate": {
+            "name": "Kedai Coklat"
+        },
+        "building/cathedral": {
+            "name": "Bangunan Katedral"
+        },
+        "office/notary": {
+            "name": "Pejabat Penyaksi Awam"
+        },
+        "railway": {
+            "name": "Jalan Kereta Api"
+        },
+        "building/university": {
+            "name": "Bangunan Universiti"
+        },
+        "amenity/library": {
+            "name": "Perpustakaan"
+        },
+        "office/advertising_agency": {
+            "name": "Agensi Pengiklanan"
+        },
+        "building/chapel": {
+            "name": "Bangunan Gereja Kecil"
+        },
+        "power/sub_station": {
+            "name": "Pencawang"
+        },
+        "office/research": {
+            "name": "Pejabat Penyelidikan"
+        },
+        "office/travel_agent": {
+            "name": "Agensi Pelancongan"
+        },
+        "office/telecommunication": {
+            "name": "Pejabat Telekom"
+        },
+        "railway/monorail": {
+            "name": "Monorel"
+        },
+        "amenity/studio": {
+            "name": "Studio"
+        },
+        "office/physician": {
+            "name": "Pakar Perubatan"
+        },
+        "shop/bicycle": {
+            "name": "Kedai Basikal"
+        },
+        "office/employment_agency": {
+            "name": "Agensi Pekerjaan"
+        },
+        "office/political_party": {
+            "name": "Parti Politik"
+        },
+        "office/government/register_office": {
+            "name": "Pejabat Pendaftar"
+        },
+        "boundary/administrative": {
+            "name": "Sempadan Pentadbiran"
+        },
+        "building/garages": {
+            "name": "Garaj-garaj"
+        },
+        "amenity/fuel": {
+            "name": "Stesen Minyak"
+        },
+        "building/hut": {
+            "name": "Pondok",
+            "terms": "Dangau"
+        },
+        "amenity/music_school": {
+            "name": "Sekolah Muzik"
+        },
+        "waterway/canal": {
+            "name": "Terusan"
+        },
+        "place/island": {
+            "name": "Pulau"
+        },
+        "railway/level_crossing": {
+            "name": "Lintasan Kereta Api (Jalan)"
+        },
+        "public_transport/platform_tram": {
+            "name": "Hentian Tram / Platform"
+        },
+        "railway/signal": {
+            "name": "Isyarat Kereta Api"
+        },
+        "highway/road": {
+            "name": "Jalan Tidak Diketahui"
+        },
+        "address": {
+            "name": "Alamat"
+        },
+        "building/stable": {
+            "name": "Kandang Kuda"
+        },
+        "place/neighbourhood": {
+            "name": "Kejiranan"
+        },
+        "shop/greengrocer": {
+            "name": "Kedai Menjual Sayur"
+        },
+        "amenity/pub": {
+            "name": "Pub"
+        },
+        "playground/slide": {
+            "name": "Gelongsor"
+        },
+        "railway/station": {
+            "name": "Stesen Kereta Api"
+        },
+        "railway/abandoned": {
+            "name": "Jalan Kereta Api Terbiar"
+        },
+        "office/therapist": {
+            "name": "Pejabat Ahli Terapi"
+        },
+        "type/route/road": {
+            "name": "Laluan Jalan"
+        },
+        "playground/seesaw": {
+            "name": "Jongkang-jongket"
+        },
+        "amenity/ranger_station": {
+            "name": "Stesen Renjer"
+        },
+        "amenity/planetarium": {
+            "name": "Planetarium"
+        },
+        "office/financial": {
+            "name": "Pejabat Kewangan"
+        },
+        "office/quango": {
+            "name": "Pejabat Separa NGO"
+        },
+        "public_transport/station": {
+            "name": "Stesen Transit"
+        },
+        "office/energy_supplier": {
+            "name": "Pejabat Pembekal Tenaga"
+        },
+        "highway/track": {
+            "name": "Jalan Rintis Tidak Diselenggara"
+        },
+        "amenity/place_of_worship/hindu": {
+            "name": "Kuil Hindu"
+        },
+        "amenity/food_court": {
+            "name": "Medan Selera"
+        },
+        "amenity/swimming_pool": {
+            "name": "Kolam Renang"
+        },
+        "barrier/wall": {
+            "name": "Tembok"
+        },
+        "shop/florist": {
+            "name": "Kedai Bunga"
+        },
+        "building/school": {
+            "name": "Bangunan Sekolah"
+        },
+        "place/locality": {
+            "name": "Lokaliti"
+        },
+        "waterway/waterfall": {
+            "name": "Air Terjun"
+        },
+        "amenity/veterinary": {
+            "name": "Veterinar",
+            "terms": "Klinik Haiwan"
+        },
+        "office/guide": {
+            "name": "Pejabat Pemandu Pelancong"
+        },
+        "office/tax_advisor": {
+            "name": "Pejabat Penasihat Cukai"
+        },
+        "place/hamlet": {
+            "name": "Dukuh"
+        },
+        "amenity/recycling_centre": {
+            "name": "Pusat Kitar Semula"
+        },
+        "club": {
+            "name": "Kelab"
+        },
+        "office/private_investigator": {
+            "name": "Pejabat Penyiasat Peribadi"
+        },
+        "shop/musical_instrument": {
+            "name": "Kedai Alatan Muzik"
+        },
+        "area": {
+            "name": "Kawasan"
+        },
+        "amenity/theatre": {
+            "name": "Teater"
+        },
+        "shop/money_lender": {
+            "name": "Ceti",
+            "terms": "Along, Peminjam Wang"
+        },
+        "building/college": {
+            "name": "Bangunan Kolej"
+        },
+        "building/retail": {
+            "name": "Bangunan Kedai"
+        },
+        "tourism/aquarium": {
+            "name": "Akuarium"
+        },
+        "railway/rail": {
+            "name": "Kereta Api"
+        },
+        "office/government": {
+            "name": "Pejabat Kerajaan"
+        },
+        "office/it": {
+            "name": "Pejabat Teknologi Maklumat"
+        },
+        "place/isolated_dwelling": {
+            "name": "Tempat Tinggal Terpencil"
+        },
+        "railway/disused": {
+            "name": "Jalan Kereta Api yang Tidak Diguna"
+        },
+        "shop/doityourself": {
+            "name": "Kedai DIY",
+            "terms": "Kedai Dibuat Individu dengan Yakin, Kedai Buat Sendiri"
+        },
+        "amenity/taxi": {
+            "name": "Tempat Menunggu Teksi"
+        },
+        "railway/light_rail": {
+            "name": "Rel Ringan"
+        },
+        "shop/paint": {
+            "name": "Kedai Cat"
+        },
+        "office/lawyer/notary": {
+            "name": "Pejabat Penyaksi Awam"
+        },
+        "highway/secondary": {
+            "name": "Jalan Sekunder"
+        },
+        "shop/dry_cleaning": {
+            "name": "Kedai Cucian Kering"
+        },
+        "shop": {
+            "name": "Kedai"
+        },
+        "office/accountant": {
+            "name": "Pejabat Akauntan"
+        },
+        "office/insurance": {
+            "name": "Pejabat Insurans"
+        },
+        "building/commercial": {
+            "name": "Bangunan Perniagaan"
+        },
+        "tourism/hotel": {
+            "name": "Hotel"
+        },
+        "public_transport/platform_ferry": {
+            "name": "Hentian Feri / Platform"
+        },
+        "advertising/billboard": {
+            "name": "Papan Iklan"
+        },
+        "office/educational_institution": {
+            "name": "Institusi Pendidikan"
+        },
+        "amenity/place_of_worship/shinto": {
+            "name": "Tokong Shinto"
+        },
+        "leisure/pitch/soccer": {
+            "name": "Padang Bola Sepak"
+        },
+        "shop/electronics": {
+            "name": "Kedai Elektronik"
+        },
+        "waterway": {
+            "name": "Jalan Air"
+        },
+        "amenity/place_of_worship/buddhist": {
+            "name": "Tokong Buddha"
+        },
+        "public_transport/platform_subway": {
+            "name": "Hentian Laluan Bawah Tanah / Platform"
+        },
+        "building/kindergarten": {
+            "name": "Bangunan Prasekolah/Tadika"
+        },
+        "building/construction": {
+            "name": "Bangunan Dalam Pembinaan"
+        },
+        "highway/unclassified": {
+            "name": "Jalan Kecil/Tidak Dikelaskan"
+        },
+        "office/charity": {
+            "name": "Pejabat Kebajikan"
+        },
+        "amenity/telephone": {
+            "name": "Telefon"
+        },
+        "office/foundation": {
+            "name": "Pejabat Yayasan"
+        },
+        "public_transport/platform_light_rail": {
+            "name": "Hentian Rel Ringan / Platform"
+        },
+        "public_transport/platform_monorail": {
+            "name": "Hentian Monorel / Platform"
+        },
+        "office/newspaper": {
+            "name": "Pejabat Akhbar"
+        },
+        "amenity/townhall": {
+            "name": "Dewan Perbandaran"
+        },
+        "shop/mobile_phone": {
+            "name": "Kedai Telefon Bimbit",
+            "terms": "Topup, Kredit, Tambah Nilai, Bil Telefon"
+        },
+        "place/town": {
+            "name": "Bandar"
+        },
+        "power/line": {
+            "name": "Talian Elektrik"
+        },
+        "amenity/ice_cream": {
+            "name": "Kedai Ais Krim"
+        },
+        "power/pole": {
+            "name": "Tiang Elektrik"
+        },
+        "amenity/post_box": {
+            "name": "Peti Surat"
+        },
+        "highway/tertiary": {
+            "name": "Jalan Tertiari"
+        },
+        "building/warehouse": {
+            "name": "Gudang"
+        },
+        "railway/tram": {
+            "name": "Tram"
+        },
+        "power/minor_line": {
+            "name": "Talian Elektrik Kecil"
+        },
+        "leisure/pitch/cricket": {
+            "name": "Padang Kriket"
+        },
+        "amenity/prison": {
+            "name": "Kawasan Penjara"
+        },
+        "public_transport/platform_trolleybus": {
+            "name": "Hentian Bas Troli / Platform"
+        },
+        "shop/computer": {
+            "name": "Kedai Komputer"
+        },
+        "amenity/restaurant": {
+            "name": "Restoran"
+        },
+        "amenity/police": {
+            "name": "Polis"
+        },
+        "place/farm": {
+            "name": "Ladang"
+        },
+        "shop/fabric": {
+            "name": "Kedai Fabrik"
+        },
+        "office/association": {
+            "name": "Pejabat Pertubuhan Bukan Untung"
+        },
+        "shop/e-cigarette": {
+            "name": "Kedai Rokok Elektronik",
+            "terms": "Kedai E-Rokok, Vape"
+        },
+        "tourism": {
+            "name": "Pelancongan"
+        },
+        "building/residential": {
+            "name": "Bangunan Kediaman"
+        },
+        "shop/clothes": {
+            "name": "Kedai Pakaian"
+        },
+        "shop/tyres": {
+            "name": "Kedai Tayar"
+        },
+        "waterway/riverbank": {
+            "name": "Tebing sungai"
+        },
+        "place": {
+            "name": "Tempat"
+        },
+        "power": {
+            "name": "Tenaga Elektrik"
+        },
+        "public_transport/platform_train": {
+            "name": "Hentian Kereta Api / Platform"
+        },
+        "shop/music": {
+            "name": "Kedai Muzik"
+        },
+        "amenity/post_office": {
+            "name": "Pejabat Pos"
+        },
+        "barrier/toll_booth": {
+            "name": "Pondok Tol",
+            "terms": "Plaza Tol"
+        },
+        "building/house": {
+            "name": "Rumah"
+        },
+        "aerialway": {
+            "name": "Jalan Udara"
+        },
+        "amenity/vending_machine": {
+            "name": "Mesin Layan Diri"
+        },
+        "aerialway/gondola": {
+            "name": "Gondola"
+        },
+        "amenity/nightclub": {
+            "name": "Kelab Malam"
+        },
+        "amenity/school": {
+            "name": "Kawasan Sekolah"
+        },
+        "office/forestry": {
+            "name": "Pejabat Perhutanan"
+        },
+        "barrier/gate": {
+            "name": "Pintu"
+        },
+        "office/government/tax": {
+            "name": "Pejabat Cukai dan Hasil"
+        },
+        "office/moving_company": {
+            "name": "Pejabat Syarikat Pemindahan"
+        },
+        "railway/narrow_gauge": {
+            "name": "Rel Landasan Sempit"
+        },
+        "area/highway": {
+            "name": "Permukaaan Jalan"
+        },
+        "waterway/river": {
+            "name": "Sungai"
+        },
+        "office/architect": {
+            "name": "Pejabat Arkitek"
+        },
+        "highway/trunk": {
+            "name": "Jalan Batang"
+        },
+        "railway/subway": {
+            "name": "Kereta Api Bawah Tanah"
+        },
+        "office": {
+            "name": "Pejabat"
+        },
+        "tourism/picnic_site": {
+            "name": "Tapak Perkelahan"
+        },
+        "amenity/fire_station": {
+            "name": "Balai Bomba"
+        },
+        "office/surveyor": {
+            "name": "Pejabat Juruukur"
+        },
+        "place/plot": {
+            "name": "Plot"
+        },
+        "amenity/driving_school": {
+            "name": "Sekolah Memandu"
+        },
+        "public_transport/platform_bus": {
+            "name": "Hentian Bas / Platform"
+        },
+        "shop/convenience": {
+            "name": "Kedai Kecil",
+            "terms": "Kedai mudah beli"
+        },
+        "building/hospital": {
+            "name": "Bangunan Hospital"
+        },
+        "building/industrial": {
+            "name": "Bangunan Perindustrian"
+        },
+        "amenity/toilets": {
+            "name": "Tandas"
+        },
+        "aerialway/cable_car": {
+            "name": "Kereta Kabel"
+        },
+        "amenity/university": {
+            "name": "Kawasan Universiti"
+        },
+        "building/public": {
+            "name": "Bangunan Awam"
+        },
+        "highway/service": {
+            "name": "Jalan Perkhidmatan"
+        },
+        "public_transport/platform": {
+            "name": "Hentian Transit"
+        },
+        "highway/residential": {
+            "name": "Jalan Kediaman"
+        },
+        "amenity/place_of_worship": {
+            "name": "Tempat Ibadat"
+        },
+        "office/estate_agent": {
+            "name": "Pejabat Hartanah"
+        },
+        "railway/platform": {
+            "name": "Hentian Kereta Api / Platform"
+        },
+        "office/adoption_agency": {
+            "name": "Agensi Pengambilan Anak Angkat"
+        },
+        "amenity/embassy": {
+            "name": "Kedutaan"
+        },
+        "shop/toys": {
+            "name": "Kedai Permainan"
+        },
+        "place/islet": {
+            "name": "Anak Pulau"
+        },
+        "office/water_utility": {
+            "name": "Pejabat Pembekal Air"
+        },
+        "amenity/place_of_worship/sikh": {
+            "name": "Kuil Sikh"
+        },
+        "place/village": {
+            "name": "Kampung"
+        },
+        "amenity/motorcycle_parking": {
+            "name": "Tempat Letak Motosikal",
+            "terms": "Parkir Motosikal"
+        },
+        "building/church": {
+            "name": "Bangunan Gereja"
+        },
+        "amenity/cafe": {
+            "name": "Kafe"
+        },
+        "amenity/place_of_worship/taoist": {
+            "name": "Tokong Tao"
+        },
+        "building/mosque": {
+            "name": "Bangunan Masjid",
+            "terms": "Bangunan Surau, Musolla"
+        },
+        "amenity/parking_space": {
+            "name": "Ruang Letak Kenderaan"
+        },
+        "building/cabin": {
+            "name": "Kabin"
+        },
+        "building/greenhouse": {
+            "name": "Rumah Tanaman"
+        },
+        "railway/funicular": {
+            "name": "Funikulus"
+        },
+        "power/transformer": {
+            "name": "Transformer"
+        },
+        "office/ngo": {
+            "name": "Pejabat Pertubuhan Bukan Kerajaan"
+        },
+        "power/generator": {
+            "name": "Penjana Tenaga Elektrik"
+        },
+        "roundabout": {
+            "name": "Bulatan"
+        },
+        "amenity/register_office": {
+            "name": "Pejabat Pendaftar"
+        },
+        "shop/tailor": {
+            "name": "Kedai Tukang Jahit"
+        },
+        "office/lawyer": {
+            "name": "Pejabat Undang-undang"
+        },
+        "building/garage": {
+            "name": "Garaj"
+        },
+        "building/roof": {
+            "name": "Atap",
+            "terms": "Bumbung"
+        },
+        "building/hotel": {
+            "name": "Bangunan Hotel"
+        }
+    }
+}

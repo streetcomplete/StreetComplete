@@ -1,0 +1,3768 @@
+{
+    "presets": {
+        "office/administrative": {
+            "name": "Канцелярія"
+        },
+        "amenity/car_rental": {
+            "name": "Прокат автомобілів",
+            "terms": "Car Rental,ghjrfn fdnjvjsksd,прокат,оренда,машина,автівка"
+        },
+        "place/city": {
+            "name": "Місто",
+            "terms": "City,vscnj, місто"
+        },
+        "building": {
+            "name": "Будинок",
+            "terms": "Building, elbyjr, будівля, споруда, нерухомість"
+        },
+        "craft/dressmaker": {
+            "name": "Кравець",
+            "terms": "кравець, кравчиння,  кравчиха, швачка, модистка, одяг"
+        },
+        "barrier/lift_gate": {
+            "name": "Шлагбаум",
+            "terms": "Lift Gate, ikfufev, шлагбаум"
+        },
+        "railway/halt": {
+            "name": "Полустанок (на вимогу)"
+        },
+        "shop/agrarian": {
+            "name": "Сільгосптовари",
+            "terms": "насіння,добрива,пестициди,хімікати,садженці,запасні,частини"
+        },
+        "landuse/garages": {
+            "name": "Гаражний комплекс",
+            "terms": "гараж,кооператив,машина,ділянка"
+        },
+        "internet_access/wlan": {
+            "name": "Точка доступу Wi-Fi",
+            "terms": "wifi,wi-fi,інтернет,точка,доступ,тд,зв'язок"
+        },
+        "amenity/shelter/lean_to": {
+            "name": "Навіс",
+            "terms": "укриття,навіс"
+        },
+        "building/farm": {
+            "name": "Житловий будинок на фермі",
+            "terms": "будинок,ферма,дім,житло"
+        },
+        "amenity/waste_disposal": {
+            "name": "Контейнер для сміття",
+            "terms": "контейнер,сміття,відходи,комунальні служби,вивіз сміття"
+        },
+        "type/restriction/only_right_turn": {
+            "name": "Тільки праворуч",
+            "terms": "поворот,рух,праворуч,заборона"
+        },
+        "attraction/carousel": {
+            "name": "Карусель",
+            "terms": "карусель,парк,атракціон,розваги"
+        },
+        "craft/sawmill": {
+            "name": "Лісопилка",
+            "terms": "лісопилка, лісопильна рама, лісопильня, деревина, ліс"
+        },
+        "emergency/yes": {
+            "name": "Доступ для аварійно-рятувальних служб дозволено"
+        },
+        "circular": {
+            "name": "Коло"
+        },
+        "healthcare/audiologist": {
+            "name": "Аудіолог",
+            "terms": "лікарня,вухо,слух,апарат,аудіологія"
+        },
+        "highway/motorway": {
+            "name": "Автомагістраль",
+            "terms": "Motorway, fdnjvfuscnhfkm, автомагістраль"
+        },
+        "natural/bay": {
+            "name": "Затока",
+            "terms": "Bay, pfnjrf, затока"
+        },
+        "building/bungalow": {
+            "name": "Бунгало",
+            "terms": "дім,веранда,дача,маєток"
+        },
+        "building/terrace": {
+            "name": "Рядний будинок",
+            "terms": "ряд, будинок, таунхаус, будинки в ряд"
+        },
+        "aeroway/runway": {
+            "name": "Злітно-посадкова смуга",
+            "terms": "Runway,pksnyj-gjcflrjdf cveuf,посадкова смуга,злітна смуга"
+        },
+        "amenity/studio": {
+            "name": "Студія",
+            "terms": "студія, кіностудія, малярня, радіостудія"
+        },
+        "landuse/military": {
+            "name": "Військова зона",
+            "terms": "віська, територія, полігон, тренування, зброя, небезпека"
+        },
+        "shop/seafood": {
+            "name": "Морепродукти",
+            "terms": "риба, креветки, міді, кальмари, консерви, свіжа"
+        },
+        "railway/milestone": {
+            "name": "Кілометровий знак",
+            "terms": "знак,залізниця,кілометр"
+        },
+        "waterway/sanitary_dump_station": {
+            "name": "Місце зливу каналізації для човнів",
+            "terms": "Boat,Watercraft,Sanitary,Dump Station,Pumpout,Pump out,Elsan,CDP,CTDP,Chemical Toilet,каналізація,відходи,човен,лодка,яхта"
+        },
+        "barrier/city_wall": {
+            "name": "Міська стіна",
+            "terms": "City Wall, vscmrf cnsyf, міська стіна, вал, мур"
+        },
+        "office/employment_agency": {
+            "name": "Кадрова агенція",
+            "terms": "працевлаштування, робота, пошук роботи, рекрутингова агенція, Кадрова агенція, rflhjdf futywsz, Employment Agency"
+        },
+        "craft/sculptor": {
+            "name": "Скульптор",
+            "terms": "майстерня,скульптура,творець"
+        },
+        "office/government/register_office": {
+            "name": "Відділ державної реєстрації актів цивільного стану",
+            "terms": "реєстрація,актів,цивільного,стану,народження,смерть,шлюб,зміна,імені,призвіща,розлучення,громадянин"
+        },
+        "amenity/waste_transfer_station": {
+            "name": "Сміттєперевантажувальна станція",
+            "terms": "сміття,відходи,накопичення,перевалка,передача,сміттєзавалище,перевантаження,станція"
+        },
+        "boundary/administrative": {
+            "name": "Адміністративний кордон",
+            "terms": "Administrative Boundary,flvsyscnhfnbdybq rjhljy, адміністративний кордон, кордон"
+        },
+        "man_made/surveillance": {
+            "name": "Камера відео-спостереження",
+            "terms": "камера,спостереження,швидкість"
+        },
+        "building/ruins": {
+            "name": "Руїни",
+            "terms": "будинок,руїни"
+        },
+        "leisure/pitch/american_football": {
+            "name": "Поле для американського футболу",
+            "terms": "American Football Field, gjkt lkz fvthbrfycmrjuj aenjke, поле для американського футболу, американський футбол"
+        },
+        "leisure/fitness_station/horizontal_ladder": {
+            "name": "Рукохід",
+            "terms": "горизонтальна,драбина,фітнес,майданчик,руки,ходити,спорт"
+        },
+        "traffic_calming/bump": {
+            "name": "Лежачий поліцейський",
+            "terms": "швидкість, обмеження, перешкода"
+        },
+        "craft/carpenter": {
+            "name": "Тесляр",
+            "terms": "тесляр, стружка, деревина, вироби з деревени"
+        },
+        "railway/level_crossing": {
+            "name": "Залізничний переїзд (автомобільний)",
+            "terms": "залізниця,потяг,рейки,автомобіль,перехід,шлагбаум,світлофор,поїзд,(автомобільний),дорога,шлях"
+        },
+        "attraction/amusement_ride": {
+            "name": "Атракціони",
+            "terms": "розваги,тематичний,парк,атраціони,каруселі"
+        },
+        "place/suburb": {
+            "name": "Район в місті/Передмістя",
+            "terms": "район"
+        },
+        "man_made/pier": {
+            "name": "Пірс",
+            "terms": "Pier, gshc, причал, пірс"
+        },
+        "shop/farm": {
+            "name": "Стелаж з фермерськими товарами",
+            "terms": "Produce Stand, cntkf p athvthcmrbvb njdfhfvb, фермерський магазин, стелаж"
+        },
+        "waterway/stream_intermittent": {
+            "name": "Період безперервного потоку",
+            "terms": "арройо,струмок,дрейф,повінь,потік,лямок,біг,спуск,рух,приток,ваді,водотоки"
+        },
+        "highway/road": {
+            "name": "Тип невідомий",
+            "terms": "Unknown Road, nbg ytdsljvbq, тип невідомий"
+        },
+        "address": {
+            "name": "Адреса",
+            "terms": "address,адреса,місце,квартира,будинок,корпус,flhtcf,vscwt,rdfhnbhf,elbyjr,rjhgec"
+        },
+        "highway/primary_link": {
+            "name": "З’їзд з/на головну дорогу",
+            "terms": "Primary Link,ppl ujkjdye ljhjue, естакада, виїзд з, виїзд на, з’їзд з, з’їзд на"
+        },
+        "shop/greengrocer": {
+            "name": "Овочевий",
+            "terms": "Greengrocer, jdjxtdbq, овочі, овочевий"
+        },
+        "highway/traffic_mirror": {
+            "name": "Дзеркало",
+            "terms": "дзеркало,дорога,безпека,рух,огляд,попередження"
+        },
+        "railway/station": {
+            "name": "Залізнична станція"
+        },
+        "aerialway/rope_tow": {
+            "name": "Бугельний підйомник",
+            "terms": "бугель,підйомник,лижі,витяг"
+        },
+        "office/therapist": {
+            "name": "Фізіотерапевт",
+            "terms": "лікування,процедури,лікарня,лікар,неврологія"
+        },
+        "office/company": {
+            "name": "Офіс компанії",
+            "terms": "фірма,підприємство,контора,бюро,юридична особа,офіс компанії,"
+        },
+        "shop/dairy": {
+            "name": "Молочний магазин",
+            "terms": "молочні продукти, молоко"
+        },
+        "type/route/road": {
+            "name": "Автомобільний маршрут",
+            "terms": "Road Route, fdnjvjskmybq vfhihen, автомобільний маршрут"
+        },
+        "amenity/planetarium": {
+            "name": "Планетарій",
+            "terms": "планетарій,астрономія,обсерваторія,дозвілля,навчання"
+        },
+        "office/financial": {
+            "name": "Фінансове управління",
+            "terms": "відділ, банк, департамент"
+        },
+        "highway/track": {
+            "name": "Путівець",
+            "terms": "путівець,грунтовка,польова дорога,трактор,вантажівка,шрунт,трава,шлак,відсів"
+        },
+        "attraction/dark_ride": {
+            "name": "Кімната жахів",
+            "terms": "потяг,привід,жахи,розваги,парк"
+        },
+        "shop/wine": {
+            "name": "Вино",
+            "terms": "магазин, вино, алкоголь, грапа, сангрія"
+        },
+        "shop/hairdresser": {
+            "name": "Перукарня",
+            "terms": "Hairdresser, gtherfhyz, перукар"
+        },
+        "building/school": {
+            "name": "Школа",
+            "terms": "School, irjkf, школа"
+        },
+        "tourism/information/board": {
+            "name": "Інформаційний стенд",
+            "terms": "інформація,стенд,дошка,схема,відомості,туризм,попередження"
+        },
+        "amenity/ferry_terminal": {
+            "name": "Поромна станція/Термінал"
+        },
+        "shop/furnace": {
+            "name": "Опалювальні котли"
+        },
+        "landuse/industrial": {
+            "name": "Промислова зона",
+            "terms": "завод, фабрика, промисловість, виробництво, робоа, підприємство"
+        },
+        "type/route/hiking": {
+            "name": "Туристичний маршрут",
+            "terms": "Hiking Route, nehbcnbxybq vfhihen, пішохідний маршрут, туристичний маршрут, туризм"
+        },
+        "amenity/place_of_worship/christian": {
+            "name": "Християнська церква"
+        },
+        "tourism/hostel": {
+            "name": "Хостел",
+            "terms": "Hostel, jcntk, хостел"
+        },
+        "leisure/pitch/volleyball": {
+            "name": "Волейбольний майданчик",
+            "terms": "Volleyball Court,gjktqjkmybq vfqlfyxbr, волейбольний майданчик"
+        },
+        "amenity/veterinary": {
+            "name": "Ветеринарна лікарня",
+            "terms": "Veterinary, dtnthbyfhyf ksrfhyz, ветринар, втиринарна лікарня"
+        },
+        "leisure/amusement_arcade": {
+            "name": "Ігрові автомати",
+            "terms": "один-на-один,ігра,автомат,відео,симулятор,пінбол"
+        },
+        "craft/pottery": {
+            "name": "Гончарня",
+            "terms": "кераміка, гончарна справа, гончарні вироби, гончарня, гончар"
+        },
+        "craft/roofer": {
+            "name": "Покрівельник",
+            "terms": "покрівля, дах, черепиця, солома, очерет"
+        },
+        "shop/massage": {
+            "name": "Массаж",
+            "terms": "салон, СПА, процедура, відпочинок"
+        },
+        "area": {
+            "name": "Полігон",
+            "terms": "Area, gjksujy, район, область, площа, простір, ділянка, край, площина, полігон"
+        },
+        "landuse/landfill": {
+            "name": "Звалище",
+            "terms": "Landfill, Pdfkbot, смітник, звалище, полігон"
+        },
+        "allotments/plot": {
+            "name": "Дачна ділянка",
+            "terms": "дача,город,сад,ділянка,участок"
+        },
+        "tourism/aquarium": {
+            "name": "Акваріум",
+            "terms": "акваріум,туризм,розваги,вода,риби,тварини,вистава"
+        },
+        "type/site": {
+            "name": "Комплекс обʼєктів",
+            "terms": "будинки,споруди,комплекс,територія,склад,база,центр"
+        },
+        "type/route/subway": {
+            "name": "Лінія метро",
+            "terms": "метро,маршрут,громадський,транспорт,підземка"
+        },
+        "amenity/vending_machine/fuel": {
+            "name": "Автомат продажу палива",
+            "terms": "паливо,бензин,газ,пропан,бутан,дизель,скраплений газ,керосин,біодизель"
+        },
+        "amenity/fountain": {
+            "name": "Фонтан",
+            "terms": "Fountain, ajynfy,вода, фонтан"
+        },
+        "shop/doityourself": {
+            "name": "Зроби сам",
+            "terms": "DIY Store, phjb cfv, зроби сам, будматеріали"
+        },
+        "amenity/taxi": {
+            "name": "Стоянка таксі",
+            "terms": "Taxi Stand, cnjzyrf nfrcs,таксі, зупинка таксі"
+        },
+        "amenity/smoking_area": {
+            "name": "Місце для куріння",
+            "terms": "паління,куріння,дим,цигарки,сірники,запальничка,місце,майданчик,кімната"
+        },
+        "man_made/water_tower": {
+            "name": "Водонапірна вежа",
+            "terms": "Water Tower, djljyfgshyf dtf, водонапірна вежа"
+        },
+        "railway/train_wash": {
+            "name": "Мийка для вагонів",
+            "terms": "мийка,вагон,залізниця"
+        },
+        "shop/dry_cleaning": {
+            "name": "Хімчистка",
+            "terms": "прання, чистка, прасування"
+        },
+        "tourism/caravan_site": {
+            "name": "Караван-парк",
+            "terms": "RV Park, rfhfdfy-gfhr, караван-парк"
+        },
+        "craft/clockmaker": {
+            "name": "Годинникар",
+            "terms": "годинник, ремонт, годинникар, час"
+        },
+        "leisure/pitch/softball": {
+            "name": "Поле для софтболу"
+        },
+        "shop/furniture": {
+            "name": "Меблі",
+            "terms": "Furniture Store, vtks, меблі"
+        },
+        "public_transport/platform_ferry": {
+            "name": "Поромна зупинка/платформа",
+            "terms": "пором,док,човен,пірс,платформа,зупинка,транзит,громадський,транспорт,перевезення"
+        },
+        "advertising/billboard": {
+            "name": "Рекламний щит",
+            "terms": "реклама,оголошення,щит,бігборд,борд,інформація"
+        },
+        "shop/bakery": {
+            "name": "Булочна",
+            "terms": "Bakery, ekjxyf, хліб, пекарня, кондитерська"
+        },
+        "emergency/phone": {
+            "name": "Телефон виклику екстрених служб",
+            "terms": "Emergency Phone,ntktajy trcnhtyyjuj dbrkbre, телефон екстренного виклику"
+        },
+        "golf/bunker": {
+            "name": "Піщана пастка",
+            "terms": "піщана пастка, гольф"
+        },
+        "shop/houseware": {
+            "name": "Господарські товари",
+            "terms": "господарство, прибирання, побутова, хімія, товар, гігієна"
+        },
+        "leisure/pitch/soccer": {
+            "name": "Футбольне поле",
+            "terms": "Soccer Field, aenjkmyt gjkt, футбольне поле"
+        },
+        "natural/water/river": {
+            "name": "Ріка"
+        },
+        "type/multipolygon": {
+            "name": "Мультиполігон"
+        },
+        "shop/vacant": {
+            "name": "Здається в оренду"
+        },
+        "amenity/social_facility/homeless_shelter": {
+            "name": "Притулок для бездомних",
+            "terms": "Homeless shelter, ghbnekjr lkz tpljvyb, притулок для безхатченків, бомж"
+        },
+        "highway/turning_loop": {
+            "name": "Круг для розвороту (з острівцем)",
+            "terms": "розворот,тупик,місце,круг,газон,острівець,глухй кут"
+        },
+        "leisure/miniature_golf": {
+            "name": "Міні-гольф",
+            "terms": "міні-гольф,розваги,гольф,майданчик"
+        },
+        "amenity/vending_machine/ice_cream": {
+            "name": "Автомат морозива",
+            "terms": "морозиво,шоколадне,ванільне,фруктове"
+        },
+        "amenity/hospital": {
+            "name": "Територія лікарні",
+            "terms": "Hospital grounds, nthbnjhsz ksrfhys, територія лікарні, лікарня"
+        },
+        "public_transport/stop_position_monorail": {
+            "name": "Місце зупинки монорейки",
+            "terms": "монорейка,монорельс,зупинка,станція,транзит,громадський,транспорт,перевезення"
+        },
+        "amenity/telephone": {
+            "name": "Телефон",
+            "terms": "Telephone, ntktajy, телефон"
+        },
+        "building/dormitory": {
+            "name": "Гуртожиток",
+            "terms": "гуртожиток, общага, навчання"
+        },
+        "craft/blacksmith": {
+            "name": "Коваль",
+            "terms": "коваль, кузня"
+        },
+        "landuse/residential": {
+            "name": "Житлова зона",
+            "terms": "житло,помешкання,будинок,маєток,садиба,город"
+        },
+        "leisure/stadium": {
+            "name": "Стадіон",
+            "terms": "Stadium, cnflsjy, стадіон"
+        },
+        "highway/speed_camera": {
+            "name": "Камера контролю швидкості",
+            "terms": "камера,швидкість,контроль,штраф,порушення,правила,дорожній рух,дорога,спідкамера"
+        },
+        "public_transport/station_monorail": {
+            "name": "Станція монорейки",
+            "terms": "монорейка,монорельс,платформа,зупинка,станція,транзит,громадський,транспорт,перевезення"
+        },
+        "amenity/drinking_water": {
+            "name": "Питна вода",
+            "terms": "Drinking Water, gbnyf djlf, бювет, питна вода, вода"
+        },
+        "barrier/kissing_gate": {
+            "name": "Вузька хвіртка",
+            "terms": "Kissing Gate, depmrf dshnrf,вузка хвіртка"
+        },
+        "landuse/recreation_ground": {
+            "name": "Зона відпочинку",
+            "terms": "газон,поле,майданчик,відпочинок,дозвілля,громада"
+        },
+        "office/newspaper": {
+            "name": "Редакція газети",
+            "terms": "газета,редакція,новини,агенція"
+        },
+        "type/restriction/no_u_turn": {
+            "name": "Розворот заборонений",
+            "terms": "знак, обмеження, розворот, немає, заборона"
+        },
+        "amenity/townhall": {
+            "name": "Міська державна адміністрація",
+            "terms": "Town Hall, vscmrf lthfdyf flvsyscnhfwsz, мерія, ратуша, міськвиконком, влада"
+        },
+        "public_transport/stop_position_bus": {
+            "name": "Місце зупинки автобуса",
+            "terms": "автобус,зупинка,транзит,громадський,транспорт,перевезення"
+        },
+        "shop/hairdresser_supply": {
+            "name": "Перукарські товари"
+        },
+        "natural/water": {
+            "name": "Вода",
+            "terms": "Water, djlf, вода"
+        },
+        "barrier/cycle_barrier": {
+            "name": "Перешкода для велосипедистів",
+            "terms": "Cycle Barrier, gthtirjlf lkz dtkjcbgtlbcnsd, перешкода для велосипедів"
+        },
+        "embankment": {
+            "name": "Насип"
+        },
+        "shop/sports": {
+            "name": "Спорттовари",
+            "terms": "Sporting Goods Store,cgjhnnjdfhb, спорттовари"
+        },
+        "amenity/biergarten": {
+            "name": "Пивний садок",
+            "terms": "пиво,лавка,їжа,тепло,напої,beer,biergarten, відпочинок"
+        },
+        "amenity/vending_machine/elongated_coin": {
+            "name": "Автомат продажу сувенірних монет",
+            "terms": "монета,сувенір,витягнута,сплюснута,копійка"
+        },
+        "type/waterway": {
+            "name": "Водний шлях",
+            "terms": "водний,шлях,ріка,канал,шлюз,акведук"
+        },
+        "emergency/destination": {
+            "name": "Для доступу аварійно-рятувальних служб"
+        },
+        "craft/winery": {
+            "name": "Виноробня",
+            "terms": "вино, лоза, напої, алкоголь"
+        },
+        "public_transport/stop_position_train": {
+            "name": "Місце зупинки потяга",
+            "terms": "залізнична,платформа,зупинка,вокзал,станція,транзит,громадський,транспорт,перевезення"
+        },
+        "shop/laundry": {
+            "name": "Пральня",
+            "terms": "Laundry, ghfkmyz, пральня"
+        },
+        "amenity/grit_bin": {
+            "name": "Контейнер з піском",
+            "terms": "пісок, ящик, контейнер, гравій"
+        },
+        "amenity/bank": {
+            "name": "Банк",
+            "terms": "bank,банк,dfyr,каса,rfcf,кредитна спілка,rhtlbnyfcgskrf,скарбниця,казначейство,rfpyfxtqcndj,відділення,dsllsktyyz,кредит,rhtlbn,депозит,ltgjpbn,платіж,gkfns,готівка,ujnsdrf,переказ"
+        },
+        "amenity/prison": {
+            "name": "Вʼязниця",
+            "terms": "в'язниця,вʼязниця,ізолятор,сізо,камера,утримання,покарання,строк,слідство"
+        },
+        "leisure/fishing": {
+            "name": "Місце для риболовлі"
+        },
+        "building/boathouse": {
+            "name": "Елінг",
+            "terms": "човновець,човен,будинок,споруда,ангар,збереження"
+        },
+        "amenity/police": {
+            "name": "Міліція/Поліція",
+            "terms": "Police, vskswsz, gjkswsz, міліція, поліція, охорона порядку"
+        },
+        "place/farm": {
+            "name": "Ферма"
+        },
+        "highway/service/driveway": {
+            "name": "Проїзд",
+            "terms": "Driveway, ghjpl, проїзд"
+        },
+        "leisure/pitch/basketball": {
+            "name": "Баскетбольний майданчик",
+            "terms": "Basketball Court, fcrtnjkmybq vfqlfyxbr, баскетбольний майданчик, баскетбол"
+        },
+        "shop/newsagent": {
+            "name": "Преса",
+            "terms": "новини, журнал, газета"
+        },
+        "building/residential": {
+            "name": "Житловий будинок",
+            "terms": "Residential Building,bnkjdf elsdkz,житловий будинок,дім,оселя"
+        },
+        "landuse/greenhouse_horticulture": {
+            "name": "Тепличне господарство",
+            "terms": "квіти,овочі,фрукти,рослини,сільске,господарство,парник"
+        },
+        "healthcare": {
+            "name": "Охорона здоров'я",
+            "terms": "лікарня,клініка,больниця,доктор,лікар,здоров'я,хвороба,хірург"
+        },
+        "amenity/community_centre": {
+            "name": "Суспільний центр",
+            "terms": "суспільний центр"
+        },
+        "shop/tyres": {
+            "name": "Колеса та шини",
+            "terms": "Tire Store,ibyb, шини"
+        },
+        "aeroway/gate": {
+            "name": "Вихід на посадку",
+            "terms": "аеропорт,гейт,вихід,посадка,літак,трап,тунель"
+        },
+        "man_made/mast/communication/mobile_phone": {
+            "name": "Щогла мобільного зв'язку"
+        },
+        "manhole/drain": {
+            "name": "Дренажний колодязь",
+            "terms": "люк,дренаж,колодязь,каналізація"
+        },
+        "traffic_calming/island": {
+            "name": "Острівець безпеки",
+            "terms": "острівець,перешкода,обмеження,швидкість,безпека"
+        },
+        "playground/cushion": {
+            "name": "Надувний замок",
+            "terms": "забавка,ігровий,майданчик,діти,дитячий,замок,надувний,горка,пригалка"
+        },
+        "aerialway/gondola": {
+            "name": "Гондоли",
+            "terms": "gondola,ujyljkb,гондола"
+        },
+        "shop/window_blind": {
+            "name": "Жалюзі, ролети",
+            "terms": "магазин, жалюзі, ролети, занавіски"
+        },
+        "advertising/column": {
+            "name": "Тумба для оголошень",
+            "terms": "реклама,сітілайт,лайтбокс,оголошення,конструкція,колона,тумба"
+        },
+        "building/temple": {
+            "name": "Храм",
+            "terms": "будівля,храм,церква,собор,кірха,сінагога"
+        },
+        "landuse/military/barracks": {
+            "name": "Казарми",
+            "terms": "авіація,армія,база,військо,гвардія,моряки,піхота,солдати"
+        },
+        "amenity/casino": {
+            "name": "Казино",
+            "terms": "карти,гра,азарт,ставки,гральні автомати,розваги,гроші,покер,блек джек,рулетка,кості"
+        },
+        "amenity/coworking_space": {
+            "name": "Коворкінг"
+        },
+        "tourism/museum": {
+            "name": "Музей",
+            "terms": "Museum, veptq, музей"
+        },
+        "railway/buffer_stop": {
+            "name": "Буферний упор",
+            "terms": "буфер,стоп,зупника"
+        },
+        "aerialway/pylon": {
+            "name": "Опора канатної дороги",
+            "terms": "опора,канатна,дорога,витяг"
+        },
+        "craft/chimney_sweeper": {
+            "name": "Сажотрус",
+            "terms": "сажа,димар,чистити,труба,димохід"
+        },
+        "railway/narrow_gauge": {
+            "name": "Вузькоколійна Залізниця",
+            "terms": "залізниця, колія, вокзал"
+        },
+        "shop/curtain": {
+            "name": "Магазин занавісок",
+            "terms": "завіса, занавіса, штора"
+        },
+        "amenity/recycling_container": {
+            "name": "Контейнер для переробки відходів"
+        },
+        "healthcare/hospice": {
+            "name": "Хоспіс",
+            "terms": "хвороба,хоспіс,невіліковна,допомога"
+        },
+        "leisure/pitch/tennis": {
+            "name": "Тенісний майданчик",
+            "terms": "Tennis Court, ntyscybq vfqlfyxbr, тенісний майданчик"
+        },
+        "amenity/clinic/abortion": {
+            "name": "Клініка абортів",
+            "terms": "аборт,лікарня,жіноча,консультація,клініка"
+        },
+        "craft/watchmaker": {
+            "name": "Годинникар",
+            "terms": "виготовлення, годинник, швейцарський"
+        },
+        "leisure/fitness_centre": {
+            "name": "Зал/Фітнес центр",
+            "terms": "зал,спорт,центр,качалка,тренування,гімнастика,фітнес"
+        },
+        "highway/corridor": {
+            "name": "Коридор",
+            "terms": "Indoor Corridor,приміщення,коридор,прохід"
+        },
+        "traffic_sign/maxspeed_vertex": {
+            "name": "Знак обмеження швидкості"
+        },
+        "attraction/animal": {
+            "name": "Звірі",
+            "terms": "зоопарк,тематичний,парк,звірі,леви,тигри,медведі"
+        },
+        "amenity/restaurant/asian": {
+            "name": "Азіатський ресторан"
+        },
+        "craft/bookbinder": {
+            "name": "Палітурник",
+            "terms": "переплетник, переплетчик, книги"
+        },
+        "man_made/groyne": {
+            "name": "Хвилеріз",
+            "terms": "хвилі,споруда,захист,пляж,бухта"
+        },
+        "shop/pawnbroker": {
+            "name": "Ломбард",
+            "terms": "обмін, гроші"
+        },
+        "shop/beverages": {
+            "name": "Напої",
+            "terms": "Beverage Store, yfgj, напої, сік, вода"
+        },
+        "public_transport/platform_bus": {
+            "name": "Автобусна зупинка/платформа",
+            "terms": "автобус,платформа,зупинка,транзит,громадський,транспорт,перевезення"
+        },
+        "entrance": {
+            "name": "Вхід/вихід",
+            "terms": "вхід, вихід, блок, під’їзд, парадне, службовий"
+        },
+        "emergency/fire_alarm": {
+            "name": "Виклик пожежників",
+            "terms": "Телефон,пожежа,виклик,рятувати"
+        },
+        "amenity/place_of_worship/jewish": {
+            "name": "Єврейська синагога"
+        },
+        "highway/construction": {
+            "name": "Дорога не працює"
+        },
+        "power/tower": {
+            "name": "Опора ЛЕП",
+            "terms": "High-Voltage Tower, jgjhf KTG, опора ЛЕП"
+        },
+        "aerialway/cable_car": {
+            "name": "Канатний трамвай",
+            "terms": "cable car,канат,трамвай,транспорт,громадський"
+        },
+        "landuse/military/airfield": {
+            "name": "Військова авіабаза",
+            "terms": "авіація,армія,бомби,військо,гвардія,гелікоптер,гвинтокрил,літаки,аеродром,летовище"
+        },
+        "craft/boatbuilder": {
+            "name": "Судноверф ",
+            "terms": "Boat builder, rjhffkmyz, корабельня, верф"
+        },
+        "craft/shoemaker": {
+            "name": "Чоботар",
+            "terms": "взуття, туфлі, башмак, чобіт, швець, сандалі,"
+        },
+        "shop/interior_decoration": {
+            "name": "Оформлення інтер’єру",
+            "terms": "інтерьєр, оздоблення, шпалери, занавіски, штори, килими, покрівля, меблі"
+        },
+        "man_made/crane": {
+            "name": "Кран",
+            "terms": "кран,піднімач,підйомник,стаціонарний,портальний,козловий,балка,пересувний"
+        },
+        "leisure/pitch/table_tennis": {
+            "name": "Тенісний стіл",
+            "terms": "теніс,стіл,спорт,пінг-понг,ракетка"
+        },
+        "attraction/maze": {
+            "name": "Лабіринт",
+            "terms": "лабіринт,парк,розваги"
+        },
+        "amenity/place_of_worship/sikh": {
+            "name": "Храм сикхів",
+            "terms": "гурудвара,храм"
+        },
+        "amenity/social_facility/food_bank": {
+            "name": "Банк харчів",
+            "terms": "благодійність, їжа, харчі"
+        },
+        "shop/nutrition_supplements": {
+            "name": "Магазин храчових добавок",
+            "terms": "вітаміни,мінерали,спортивне харчування,дієтичне харчування,амінокіслоти"
+        },
+        "craft/gardener": {
+            "name": "Садівник",
+            "terms": "Садівник, сад, рослини, дерево. кущ"
+        },
+        "building/church": {
+            "name": "Церква",
+            "terms": "церква,молитва"
+        },
+        "shop/video_games": {
+            "name": "Комп’ютерні ігри",
+            "terms": "ігри, приставка, денді, комп’ютер, сега, икс-бокс, плейстейшен, x-box, playstation, dende, sega, atari"
+        },
+        "traffic_calming/dip": {
+            "name": "Заглиблення",
+            "terms": "заглиблення,перешкода,обмеження,швидкість,безпека"
+        },
+        "traffic_calming/choker": {
+            "name": "Звуження",
+            "terms": "звуження,перешкода,обмеження,швикість,безпека"
+        },
+        "railway/funicular": {
+            "name": "Фунікулер",
+            "terms": "фунікулер, канат, трос"
+        },
+        "power/transformer": {
+            "name": "Трансформатор",
+            "terms": "Transformer, nhfycajhvfnjh, трансформтор"
+        },
+        "power/generator": {
+            "name": "Електростанція",
+            "terms": "Power Generator, tktrnhjcnfywsz, електростанція"
+        },
+        "natural/wetland": {
+            "name": "Заболочені землі",
+            "terms": "Wetland, pfjkjxtys ptvks, болото, торф, плавні, мангрові зарості"
+        },
+        "landuse/military/naval_base": {
+            "name": "Військово-морська база",
+            "terms": "база,військо,гварія,моряки,десант,кораблі,човни"
+        },
+        "shop/department_store": {
+            "name": "Універмаг",
+            "terms": "Department Store, eysdthvfu, універмаг"
+        },
+        "historic/wayside_cross": {
+            "name": "Придорожній хрест",
+            "terms": "Wayside Cross, ghbljhjysq htcn, придорожній хрест"
+        },
+        "man_made/petroleum_well": {
+            "name": "Нафтова свердловина",
+            "terms": "drilling rig,oil derrick,oil drill,oil horse,oil rig,oil pump,petroleum well,pumpjack,нафта,насос,свердловина,викачування нафти"
+        },
+        "healthcare/alternative": {
+            "name": "Альтернативна медицина",
+            "terms": "нетрадиційна,медицина,акупунктура,антропософія,прикладна,кінезіологія,ароматерапія,аюрведа,трави,гомеопатія,гідротерапія,гіпноз,натуропатія,остеопатія,рефлексологія,реікі,шиацу,традиційні,туйна,уніані"
+        },
+        "leisure/fitness_station/parallel_bars": {
+            "name": "Бруси",
+            "terms": "паралельні,бруси,віджимання,фітнес,майданчик,спорт,тренажер"
+        },
+        "highway/footway": {
+            "name": "Пішохідна доріжка",
+            "terms": "стежка,маршрут,доріжка,тротуар,пішохідна,шлях"
+        },
+        "building/roof": {
+            "name": "Дах",
+            "terms": "Roof, lf, накриття, дах"
+        },
+        "natural/tree_row": {
+            "name": "Ряд дерев"
+        },
+        "craft/upholsterer": {
+            "name": "Меблівник",
+            "terms": "драпірувальник, меблівник, оббивальник, меблі"
+        },
+        "natural/glacier": {
+            "name": "Льодовик",
+            "terms": "Glacier, kmjljdbr, льодовик"
+        },
+        "shop/storage_rental": {
+            "name": "Місце на складі в оренду",
+            "terms": "зима,літо,осінь,весна,оренда,склад,комора,крам,послуги,зберігання,речі"
+        },
+        "shop/fashion": {
+            "name": "Бутік",
+            "terms": "мода, одяг, взуття, тренд, сезон"
+        },
+        "power/substation": {
+            "name": "Підстанція",
+            "terms": "підстанція"
+        },
+        "amenity/fast_food": {
+            "name": "Фаст-Фуд",
+            "terms": "Fast Food, afcn-ael, проста їжа, швидкі страви, фаст-фуд"
+        },
+        "type/route/pipeline": {
+            "name": "Трубопровід",
+            "terms": "Pipeline Route, nhejghjdsl, трубопровід"
+        },
+        "landuse/religious": {
+            "name": "Територія відправлення релігійних обрядів",
+            "terms": "храм,церква,костьол,монастир,релігія,обряд,собор"
+        },
+        "barrier/cattle_grid": {
+            "name": "Перешкода для худоби",
+            "terms": "Cattle Grid, gthtirjlf lkz eljb, перешкода для виходу худоби з пасовища на дорогу, худоба"
+        },
+        "tourism/motel": {
+            "name": "Мотель",
+            "terms": "Motel, vjntkm, мотель"
+        },
+        "building/cathedral": {
+            "name": "Собор",
+            "terms": "храм,собор,молитва,служба"
+        },
+        "office/notary": {
+            "name": "Нотаріус",
+            "terms": "нотаріус,договір,купівля,продаж,нерухомість,заповіт,спадщина,довіреність"
+        },
+        "natural/reef": {
+            "name": "Риф",
+            "terms": "риф,корал,бар'єр,окена,пісок,мілина"
+        },
+        "craft/photographic_laboratory": {
+            "name": "Фотолабораторія",
+            "terms": "фото, замовлення, друк, весілля, подія, документи"
+        },
+        "amenity/waste/dog_excrement": {
+            "name": "Контейнер для собачих екскрементів",
+            "terms": "контейнер,сміття,собака,екскременти,мусор,гімно,кавалок"
+        },
+        "leisure/slipway": {
+            "name": "Стапель",
+            "terms": "Slipway, cnfgtkm, стапель"
+        },
+        "leisure/dance": {
+            "name": "Зала для танців",
+            "terms": "танці,зала,бальні танці,розваги,дозвілля,клуб,інтереси,тренування"
+        },
+        "traffic_calming/hump": {
+            "name": "Лежачий поліцейський",
+            "terms": "швидкість, обмеження, перешкода"
+        },
+        "man_made/clearcut": {
+            "name": "Вирубка",
+            "terms": "ліс,дерева,заготівлі,рубка,суцільна"
+        },
+        "building/chapel": {
+            "name": "Каплиця",
+            "terms": "каплиця,служба,молитовня"
+        },
+        "craft/caterer": {
+            "name": "Організація банкетів",
+            "terms": "постачання, їжа, бенкети, обслуговування, кейтерінг"
+        },
+        "office/research": {
+            "name": "Дослідницька лабораторія",
+            "terms": "лабораторія, дослідт, випробування, експерименти"
+        },
+        "office/travel_agent": {
+            "name": "Туристична агенція"
+        },
+        "craft/jeweler": {
+            "name": "Ювелір"
+        },
+        "landuse/industrial/slaughterhouse": {
+            "name": "Скотобійня",
+            "terms": "бійня,скот,гов'ядина,телятина,свинина,баранина,м'ясо"
+        },
+        "office/telecommunication": {
+            "name": "Телекомунікаційна компанія",
+            "terms": "Зв’язок, телекомунікації"
+        },
+        "shop/bag": {
+            "name": "Магазин з продажу валіз",
+            "terms": "валіза, багаж, чемодан"
+        },
+        "historic/tomb": {
+            "name": "Гробниця",
+            "terms": "гробниця,поховання,могила,склеп"
+        },
+        "amenity/vending_machine/electronics": {
+            "name": "Автомат продажу електроприладів",
+            "terms": "кабель,зарядний пристрій,навушники,хендс-фрі,телефон,смартфон,планшет"
+        },
+        "waterway/water_point": {
+            "name": "Заправка човнів питною водою",
+            "terms": "човен,корабель,вода,питна"
+        },
+        "shop/garden_centre": {
+            "name": "Садово-парковий центр",
+            "terms": "Garden Center, cfljdj-gfhrjdbq wtynh, сад, город"
+        },
+        "leisure/sports_centre/swimming": {
+            "name": "Плавальний басейн",
+            "terms": "плавання,басейн,спорт,змагання,центр,вода,пірнання"
+        },
+        "barrier/hedge": {
+            "name": "Жива огорожа",
+            "terms": "Hedge, bdf jujhjf, живопліт, запліт, запуст"
+        },
+        "shop/kitchen": {
+            "name": "Меблі для кухні",
+            "terms": "кухня, меблі, дизайн, розробка, замволення, магазин"
+        },
+        "building/garages": {
+            "name": "Гаражі",
+            "terms": "Garages, ufhfs, гаражі"
+        },
+        "leisure/pitch/rugby_league": {
+            "name": "Поле для регбіліг",
+            "terms": "регбі,м’яч,м'яч,спорт,поле,майданчик,регбіліг"
+        },
+        "shop/beauty": {
+            "name": "Cалон краси",
+            "terms": "Beauty Shop, cfkjy rhfcb, салон краси"
+        },
+        "amenity/charging_station": {
+            "name": "Зарядна станція",
+            "terms": "Charging station,pfhzlyf cnfywsz,зарядна,станція,зарядка,суперчарджер,електро"
+        },
+        "amenity/music_school": {
+            "name": "Музична школа",
+            "terms": "музика,школа,навчання,інструмент,гітара,піаніно,фортепіано,рояль,скрипка,труба"
+        },
+        "man_made/antenna": {
+            "name": "Антена",
+            "terms": "антена,сигнал,зв'язок,мобільний,телефон,телесигнал,передача"
+        },
+        "waterway/canal": {
+            "name": "Канал",
+            "terms": "Canal, rfyfk, канал"
+        },
+        "leisure/common": {
+            "name": "Громада",
+            "terms": "громада, земля громади"
+        },
+        "type/route/horse": {
+            "name": "Маршрут для верхової їзди",
+            "terms": "кінь,верхи,шлях,маршрут"
+        },
+        "amenity/dojo": {
+            "name": "Додзьо / Школа бойових мистецтв",
+            "terms": "додзьо, бій, навчання, бойові мистецтва"
+        },
+        "landuse/farmland": {
+            "name": "Сільськогосподарські угіддя",
+            "terms": "поле, левада, пасовище, врожай"
+        },
+        "shop/baby_goods": {
+            "name": "Товари для немовлят",
+            "terms": "підгузки,"
+        },
+        "shop/fishmonger": {
+            "name": "Риботорговець"
+        },
+        "place/square": {
+            "name": "Майдан",
+            "terms": "майдан,площа"
+        },
+        "amenity/shelter/gazebo": {
+            "name": "Альтанка",
+            "terms": "альтанка,укриття"
+        },
+        "man_made/storage_tank": {
+            "name": "Резервуар",
+            "terms": "water,oil,gas,petrol,вода,нафта,газ,бензин"
+        },
+        "place/neighbourhood": {
+            "name": "Околиці",
+            "terms": "місцевість, район"
+        },
+        "playground/slide": {
+            "name": "Гірка-ковзанка",
+            "terms": "забавка,ігровий,майданчик,діти,дитячий,гірка,горка"
+        },
+        "leisure/pitch/beachvolleyball": {
+            "name": "Пляжний волейбол",
+            "terms": "майданчик,площадка,волейбол,пляж,спорт,дозвілля.гра"
+        },
+        "playground/basket_swing": {
+            "name": "Кошик гойдалка",
+            "terms": "кошик,забавка,гойдалка,ігровий,майданчик,діти,дитячий"
+        },
+        "public_transport/stop_position_aerialway": {
+            "name": "Місце зупинки канатної дороги",
+            "terms": "підвісна дорога,кабіна,вагон,перевезення,громадський,транспорт,канатна дорога,зупинка"
+        },
+        "playground/climbing_frame": {
+            "name": "Драбина лазалка",
+            "terms": "забавка,ігровий,майданчик,діти,дитячий,драбина,турнік,лазалка"
+        },
+        "tourism/artwork/mural": {
+            "name": "Мурал"
+        },
+        "man_made/chimney": {
+            "name": "Димохід",
+            "terms": "труба,дим,димохід,викиди"
+        },
+        "shop/mall": {
+            "name": "Торгівельний центр",
+            "terms": "Mall, njhusdtkmybq wtynh, торговельний центр"
+        },
+        "barrier/wall": {
+            "name": "Стіна",
+            "terms": "wall, cnsyf, стіна"
+        },
+        "craft/insulator": {
+            "name": "Утеплювач",
+            "terms": "утеплювач, ізоляція, будівля, тепло"
+        },
+        "shop/herbalist": {
+            "name": "Ботаник",
+            "terms": "рослини, трави, ботаника"
+        },
+        "landuse/vineyard": {
+            "name": "Виноградник",
+            "terms": "Vineyard, dbyjuhflybr, виноградник"
+        },
+        "building/grandstand": {
+            "name": "Трибуна",
+            "terms": "трибуна,сидіння,лавки"
+        },
+        "traffic_calming/rumble_strip": {
+            "name": "Шумові смуги",
+            "terms": "попередження, смуга, звук, шум"
+        },
+        "leisure/pitch/badminton": {
+            "name": "Майданчик для бадмінтону",
+            "terms": "бадмінтон,спорт,майданчик"
+        },
+        "office/tax_advisor": {
+            "name": "Податкова консультація",
+            "terms": "податки,консультант,оптимізація,фінансовий,експерт"
+        },
+        "aerialway/drag_lift": {
+            "name": "Бугельний підйомник",
+            "terms": "витяг,бугель,підйомник,лижі,сніг,гори,відпочинок,дозвілля,спорт,сноуборд"
+        },
+        "bridge/support/pier": {
+            "name": "Опора моста"
+        },
+        "healthcare/midwife": {
+            "name": "Акушерка",
+            "terms": "повитуха,пологи,дитина,вагітність"
+        },
+        "aeroway/hangar": {
+            "name": "Ангар",
+            "terms": "Hangar,fyufh,ангар"
+        },
+        "healthcare/psychotherapist": {
+            "name": "Психотерапевт",
+            "terms": "тривожність,депресія,психічне здоров'я,розум,самогубство,терапевт,терапія"
+        },
+        "building/retail": {
+            "name": "Роздрібна торгівля",
+            "terms": "Retail, hjplhsyf njdusdkz, роздрібна торгівля"
+        },
+        "highway/motorway_link": {
+            "name": "З’їзд з/на автомагістраль",
+            "terms": "Motorway Link, ppl fdnjvfuscnhfkm, естакада, виїзд з, виїзд на, з’їзд з, з’їзд на"
+        },
+        "amenity/car_pooling": {
+            "name": "Райдшеринг",
+            "terms": "райдшеринг,карпулінг"
+        },
+        "place/isolated_dwelling": {
+            "name": "Маєток",
+            "terms": "Isolated Dwelling,dsljrhtvktyt bnkj,відокремлене житло,маєток"
+        },
+        "shop/bed": {
+            "name": "Магазин постільних приналежнастей ",
+            "terms": "матрас"
+        },
+        "natural/scrub": {
+            "name": "Чагарник",
+            "terms": "Scrub, xfufhybr, кущі, чагарник"
+        },
+        "craft/photographer": {
+            "name": "Фотограф",
+            "terms": "фотограф, фотографія, документи, паспорт, весілля, подія"
+        },
+        "shop": {
+            "name": "Магазини/Майстерні",
+            "terms": "Shop, vfufpbyb vfqcnthys, продаж, послуги, крамниця, магазин"
+        },
+        "attraction/big_wheel": {
+            "name": "Оглядове колесо",
+            "terms": "огляд,колесо,чортове,тематичний,парк,розваги,атракціони"
+        },
+        "landuse/military/obstacle_course": {
+            "name": "Смуга перешкод",
+            "terms": "армія,військо,флот,випробування,тренування"
+        },
+        "natural/spring": {
+            "name": "Джерело",
+            "terms": "Spring, lthtkj, вода, джерело"
+        },
+        "man_made/pipeline": {
+            "name": "Трубопровід",
+            "terms": "Pipeline, nhejghjdsl, трубопровід"
+        },
+        "man_made/observatory": {
+            "name": "Обсерваторія",
+            "terms": "астрономія,метеорологія,спостереження,зірки,погода"
+        },
+        "attraction/pirate_ship": {
+            "name": "Піратській корабель",
+            "terms": "парк,розваги,корабель,човен,пірати,велика,гойдалка"
+        },
+        "healthcare/alternative/chiropractic": {
+            "name": "Хіропрактика",
+            "terms": "хіропрактика,костоправ,мануальна тепрапія,хребет"
+        },
+        "amenity/childcare": {
+            "name": "Дитяча кімната",
+            "terms": "дитяча кімната,догляд,діти"
+        },
+        "office/educational_institution": {
+            "name": "Офіс освітнього закладу",
+            "terms": "Офіс освітнього закладу, jasc jcdsnymjuj pfrkfle, Educational Institution, інститут, освіта"
+        },
+        "shop/deli": {
+            "name": "Делікатеси/Вишукана їжа",
+            "terms": "Deli, ltksrfntcb, делікатеси"
+        },
+        "leisure/pitch/equestrian": {
+            "name": "Манеж",
+            "terms": "манеж,виїздка,коні,конкур"
+        },
+        "place/quarter": {
+            "name": "Мікро-район/Квартал",
+            "terms": "мікрорайон,квартал,оклоток"
+        },
+        "healthcare/rehabilitation": {
+            "name": "Реабілітаційний заклад",
+            "terms": "рехаб,відновлення,терапія"
+        },
+        "shop/perfumery": {
+            "name": "Парфуми",
+            "terms": "парфуми,духи,одеколон,туалетна вода,аромат"
+        },
+        "highway/service/drive-through": {
+            "name": "Проїзд біля пункту обслуговування",
+            "terms": "Drive-Through, ghjpl skz geyrne jckeujdedfyyz, проїзд біля пункту обслуговування"
+        },
+        "shop/kiosk": {
+            "name": "Кіоск",
+            "terms": "журнали,газети,цигарки,напої,кава,чай,лотерея"
+        },
+        "landuse/military/danger_area": {
+            "name": "Небезпечна зона",
+            "terms": "війська,війна,смерть,полігон,бойові дії,стрільбище"
+        },
+        "shop/confectionery": {
+            "name": "Кондитерська ",
+            "terms": "солодощі, ласощі, цукерки"
+        },
+        "tourism/information/guidepost": {
+            "name": "Вказівник",
+            "terms": "вказівник,маршрут,напрямок,мітка,туризм,тропа,шлях,рух,інформація"
+        },
+        "shop/electronics": {
+            "name": "Електроніка",
+            "terms": "Electronics Store, tktrnhjysrf, електроніка"
+        },
+        "waterway": {
+            "name": "Водний шлях"
+        },
+        "amenity/clinic": {
+            "name": "Кліника",
+            "terms": "доктор, ліки, медицина, кліника"
+        },
+        "public_transport/stop_position_light_rail": {
+            "name": "Місце зупинки швидкісного трамваю",
+            "terms": "електричка,трамвай,рейки,дроти,електротранспорт,перевезення,громадський,транспорт,зупинка"
+        },
+        "amenity/place_of_worship/buddhist": {
+            "name": "Буддійський храм",
+            "terms": "Buddhist Temple, ellsqcmrbq hfv, будиський храм"
+        },
+        "natural/bare_rock": {
+            "name": "Голі скелі",
+            "terms": "скелі,каміння,валуни,гори"
+        },
+        "amenity/language_school": {
+            "name": "Мовна школа",
+            "terms": "мова,школа,іноземна"
+        },
+        "amenity/crematorium": {
+            "name": "Крематорій",
+            "terms": "крематорій,поховання,послуги,церемонія,мрець,покійник,кладовище,цвинтар,обряд,служба,колумбарій"
+        },
+        "building/farm_auxiliary": {
+            "name": "Господарчі споруди на фермі",
+            "terms": "споруда,ферма,пташник,комора,сховище,телятник,свинарник,конюшня,майстерня"
+        },
+        "power/switch": {
+            "name": "Розʼєднувач",
+            "terms": "електричний,роз'єднувач"
+        },
+        "amenity/waste_basket": {
+            "name": "Бак для сміття",
+            "terms": "Waste Basket, fr lkz cvsnnz, кошик для сміття, сміття"
+        },
+        "building/construction": {
+            "name": "Споруджуваний будинок",
+            "terms": "будівля, будівництво, будмайданчик"
+        },
+        "highway/unclassified": {
+            "name": "Незначні дороги",
+            "terms": "дорога,некласифікована,сільска,промислова,загальна"
+        },
+        "office/charity": {
+            "name": "Благодійна організація",
+            "terms": "допомога,офіс"
+        },
+        "office/foundation": {
+            "name": "Фундація",
+            "terms": "фундація,фонд,пожертва"
+        },
+        "amenity/social_facility": {
+            "name": "Соціальний центр",
+            "terms": "Social facility, cjwsfkmybq wtynh, соціальний центр"
+        },
+        "shop/hifi": {
+            "name": "Аудіо апаратура",
+            "terms": "Hifi Store,flesj jgfhfnehf, аудіо апаратура"
+        },
+        "craft/window_construction": {
+            "name": "Вікна",
+            "terms": "вікна, скло, виготовлення"
+        },
+        "shop/appliance": {
+            "name": "Побутова техніка",
+            "terms": "магазин,холодильник,пральна машина,кондиціонер,духовка,пічка,посудомийнк машина"
+        },
+        "craft/tinsmith": {
+            "name": "Лудильник",
+            "terms": "бляхар, лудильник, бляшанка, лудити"
+        },
+        "golf/green": {
+            "name": "Ґрін",
+            "terms": "green, гольф, ґрін, низька трава, лунка"
+        },
+        "man_made/windmill": {
+            "name": "Вітряний млин",
+            "terms": "вітер,вітряк,млин,колесо,борошно"
+        },
+        "shop/mobile_phone": {
+            "name": "Мобільні телефони",
+            "terms": "Mobile Phone Store,vjskmys ntktajyb, мобільні телефони"
+        },
+        "craft/basket_maker": {
+            "name": "Кошики",
+            "terms": "майстерня, кошики, кошик"
+        },
+        "building/service": {
+            "name": "Службова споруда",
+            "terms": "трасформатор,насос,машини,обладнання"
+        },
+        "place/town": {
+            "name": "Місто",
+            "terms": "Town, vscnj, місто, селище"
+        },
+        "highway/tertiary_link": {
+            "name": "З’їзд з/на третинну дорогу",
+            "terms": "Tertiary Link, ppl nhtnbyye ljhjue, естакада, виїзд з, виїзд на, з’їзд з, з’їзд на"
+        },
+        "tourism/information": {
+            "name": "Інформація",
+            "terms": "Information, syajhvfwsz, інформація"
+        },
+        "amenity/vending_machine/coffee": {
+            "name": "Каво-машина",
+            "terms": "кава,лате,капучіно,амерікано,напій,гарячий"
+        },
+        "landuse/military/training_area": {
+            "name": "Військовий полігон",
+            "terms": "військо,навчання,тренування,стрільбище,артилерія,танк,автомат,зброя"
+        },
+        "playground/horizontal_bar": {
+            "name": "Перекладина",
+            "terms": "турник"
+        },
+        "natural/water/lake": {
+            "name": "Озеро",
+            "terms": "Lake, jpthj, озеро"
+        },
+        "shop/video": {
+            "name": "Відео",
+            "terms": "Video Store,dsltj, відеомагазин, відеопрокат"
+        },
+        "amenity/animal_breeding": {
+            "name": "Розплідник тварин",
+            "terms": "питомник,розплідник,тварини,кошеня,собача,цуцик,кінь,собака,кішка,риба,ящерка"
+        },
+        "building/warehouse": {
+            "name": "Склад",
+            "terms": "warehouse, crkfl, склад"
+        },
+        "railway/tram": {
+            "name": "Трамвай",
+            "terms": "Tram, nhfvdfq, трамвай"
+        },
+        "power/minor_line": {
+            "name": "Лінія електропередачі середньої напруги",
+            "terms": "Minor Power Line, ksysz tktrnhjgthtlfxs cthtlymj yfghueb, Лінія електропередачі середньої напруги, ЛЕП"
+        },
+        "amenity/social_facility/nursing_home": {
+            "name": "Будинок престарілих",
+            "terms": "будинок,люди,літні,престарілі,похилий,вік,догляд,пансіон"
+        },
+        "public_transport/station_light_rail": {
+            "name": "Станція швидкісного трамвая",
+            "terms": "електричка,трамвай,рейки,дроти,електротранспорт,перевезення,громадський,транспорт"
+        },
+        "landuse/farmyard": {
+            "name": "Двір ферми",
+            "terms": "Farmyard, ldsh athvb, ферма, двір ферми"
+        },
+        "man_made/works": {
+            "name": "Фабрика",
+            "terms": "фабрика,завод,підприємство,виробництво,робота"
+        },
+        "craft/plumber": {
+            "name": "Водопровідник",
+            "terms": "водопровідник, паяльщик, слюсар, вода, сантехнік"
+        },
+        "highway/cycleway": {
+            "name": "Вело-доріжка",
+            "terms": "Cycle Path, dtkj-ljhsrf, веодоріжка"
+        },
+        "man_made/gasometer": {
+            "name": "Газгольдер",
+            "terms": "газгольдер,резервуар"
+        },
+        "shop/hardware": {
+            "name": "Господарські товари",
+            "terms": "Hardware Store, ujcgjlfhcmrs njdfhb, промтовари"
+        },
+        "amenity/car_sharing": {
+            "name": "Короткострокова оренда автомобіля",
+            "terms": "Car Sharing, rjhjnrjcnhjrjdf jhtylf fdnjvjskz,пошук попутників,каршерінг"
+        },
+        "shop/funeral_directors": {
+            "name": "Ритуальні послуги",
+            "terms": "похорони, поховання"
+        },
+        "tourism/zoo": {
+            "name": "Зоопарк",
+            "terms": "Zoo,pjjgfhr, зоопарк"
+        },
+        "shop/computer": {
+            "name": "Комп’ютери",
+            "terms": "Computer Store, rjvgnthb, комп’ютери"
+        },
+        "landuse/grass": {
+            "name": "Трава",
+            "terms": "Grass, nhfdf, трава"
+        },
+        "natural/grassland": {
+            "name": "Трави",
+            "terms": "Grassland, nhfdb, луг, вигін, трави"
+        },
+        "amenity/animal_boarding": {
+            "name": "Готель для тварин",
+            "terms": "притулок,тварини,тимчасово,догляд,відпустка,готель,коти,собаки,птахи,рептилії"
+        },
+        "highway/stop": {
+            "name": "Знак СТОП",
+            "terms": "Stop Sign, pyfr cnjg, Проїзд без зупинки заборонено, стоп, знак стоп"
+        },
+        "emergency/no": {
+            "name": "Немає доступу для аварійно-рятувальних служб"
+        },
+        "public_transport/stop_position_ferry": {
+            "name": "Місце зупинки порома",
+            "terms": "пором,док,човен,пірс,платформа,зупинка,транзит,громадський,транспорт,перевезення"
+        },
+        "tourism": {
+            "name": "Туризм"
+        },
+        "amenity/public_bath": {
+            "name": "Громадська лазня",
+            "terms": "лазня,пар,джерело,тепло,спа,курорт,відпочинок,онсен"
+        },
+        "amenity/car_wash": {
+            "name": "Автомийка",
+            "terms": "Car Wash, fdnjvbqrf,мийка,автомийка"
+        },
+        "highway/street_lamp": {
+            "name": "Ліхтар",
+            "terms": "лампа, світло, посвіт"
+        },
+        "playground/zipwire": {
+            "name": "Тролей",
+            "terms": "забавка,ігровий,майданчик,діти,дитячий,тролей,тарзанка,мотузка,канат"
+        },
+        "tourism/theme_park": {
+            "name": "Тематичний парк",
+            "terms": "Theme Park, ntvfnbxybq gfhr, тематичний парк"
+        },
+        "emergency/siren": {
+            "name": "Сирена",
+            "terms": "сирена,повідомлення,попередження,напад,небезпека"
+        },
+        "shop/watches": {
+            "name": "Годинники",
+            "terms": "годинник,магазин,салон,прикраси,чоловічі,жіночі,спортивні"
+        },
+        "amenity/parking_entrance": {
+            "name": "В’їзд/виїзд в паркінг",
+            "terms": "стоянка, паркінг"
+        },
+        "landuse": {
+            "name": "Землекористування"
+        },
+        "waterway/riverbank": {
+            "name": "Берег ріки"
+        },
+        "type/route/light_rail": {
+            "name": "Маршрут швидкісного трамвая",
+            "terms": "легкорейковий,транспорт,електричка,міська,колії,трамвай"
+        },
+        "shop/music": {
+            "name": "Музичний магазин",
+            "terms": "Music Store,vepbxybq vfufpby, музичний магазин"
+        },
+        "barrier/toll_booth": {
+            "name": "Пункт сплати за проїзд",
+            "terms": "Toll Booth,geyrn cgkfnb pf ghjpl, плата за проїзд, кіоск"
+        },
+        "craft/stonemason": {
+            "name": "Каменяр",
+            "terms": "каменяр, кладка, камінь, цегла, будівництво"
+        },
+        "aerialway": {
+            "name": "Канатна дорога"
+        },
+        "amenity/nightclub": {
+            "name": "Нічний клуб",
+            "terms": "Nightclub, ysxybq rke, нічний клуб, розваги, дискотека, бар"
+        },
+        "waterway/dam": {
+            "name": "Дамба",
+            "terms": "Dam, lfvf, дамба, гребля"
+        },
+        "amenity/school": {
+            "name": "Територія школи",
+            "terms": "School grounds, nthbnjhsz irjkb, шкільний двір, школа"
+        },
+        "public_transport/stop_position_tram": {
+            "name": "Місце зупинки трамвая",
+            "terms": "електричка,трамвай,рейки,дроти,електротранспорт,перевезення,громадський,транспорт,зупинка"
+        },
+        "shop/photo": {
+            "name": "Фототовари",
+            "terms": "Photography Store, ajnjnjdfhb, фотограф"
+        },
+        "office/forestry": {
+            "name": "Лісництво",
+            "terms": "лісництво,контора"
+        },
+        "building/static_caravan": {
+            "name": "Пересувний будинок",
+            "terms": "Пересувний будинок, кемпер, трейлер"
+        },
+        "playground/rocker": {
+            "name": "Пружинна гойдалка",
+            "terms": "забавка,ігровий,майданчик,діти,дитячий,гойдалка,конячка,літачок,мотоцикл,пружина"
+        },
+        "waterway/milestone": {
+            "name": "Кілометрова позначка",
+            "terms": "позначка,табличка,кілометр,миля,верста,відстань,вода,шлях"
+        },
+        "leisure/pitch/skateboard": {
+            "name": "Скейт-парк",
+            "terms": "Skate Park, crtqn-gfhr, екстрім, скейт-парк"
+        },
+        "office/government/tax": {
+            "name": "Фіскальна служба",
+            "terms": "податки,фіскальна,інспекція,служба"
+        },
+        "office/moving_company": {
+            "name": "Перевезення речей",
+            "terms": "компанія,речі,переїзд,послуги"
+        },
+        "highway/bridleway": {
+            "name": "Доріжка для вершників ",
+            "terms": "Bridle Path, ljhsrf lkz dthiybrsd, доріжка для кінних прогулянок, доріжка для верхової їзди"
+        },
+        "shop/variety_store": {
+            "name": "Універсам",
+            "terms": "Variety Store, eysdthcfv, універсам"
+        },
+        "amenity/parking/multi-storey": {
+            "name": "Багатоповерховий паркінг"
+        },
+        "amenity/doctors": {
+            "name": "Лікар",
+            "terms": "лікар,медицина,допомога"
+        },
+        "barrier/ditch": {
+            "name": "Рівчак",
+            "terms": "рів,окоп,траншея,шурф"
+        },
+        "landuse/churchyard": {
+            "name": "Церковне подвір’я",
+            "terms": "цвинтар, кладовище, церковне подвір’я, церква"
+        },
+        "amenity/shelter": {
+            "name": "Притулок",
+            "terms": "накриття, навіс"
+        },
+        "tourism/picnic_site": {
+            "name": "Місце для пікніка",
+            "terms": "Picnic Site, vscwt lkz gsrysrf, місце для пікніку"
+        },
+        "highway/rest_area": {
+            "name": "Зона відпочинку",
+            "terms": "пікнік, пляж, парк, атракціони,"
+        },
+        "amenity/vending_machine/stamps": {
+            "name": "Автомат продажу поштових марок",
+            "terms": "лист,марка,пошта,відправлення"
+        },
+        "public_transport/station_aerialway": {
+            "name": "Станція канатної дороги",
+            "terms": "канатна,підвісна,дорога,станція,витяг"
+        },
+        "playground/swing": {
+            "name": "Підвісна гойдалка",
+            "terms": "забавка,ігровий,майданчик,діти,дитячий,гойдалка,підвісна"
+        },
+        "craft/electrician": {
+            "name": "Електрик",
+            "terms": "електрик, електрика, струм, напруга, опір"
+        },
+        "manhole/telecom": {
+            "name": "Телекомунікаційний колодязь",
+            "terms": "люк,колодязь,кабель,зв'язок,телефон,інтернет,діра,дріт"
+        },
+        "attraction/drop_tower": {
+            "name": "Падіння з вежі",
+            "terms": "парк,атракціони,вежа,вільне,падіння,кидок"
+        },
+        "historic/archaeological_site": {
+            "name": "Археологічні пам’ятки",
+            "terms": "Archaeological Site, fhtjkjusxys gfvznrb, археологічні розкопки"
+        },
+        "amenity/driving_school": {
+            "name": "Автошкола",
+            "terms": "автівка,машина,права,кермування,школа,навчання,курси,дорога,мотоцикл,вантажівка,танспорт"
+        },
+        "building/barn": {
+            "name": "Комора",
+            "terms": "амбар, запаси, комора"
+        },
+        "amenity/bench": {
+            "name": "Лавка",
+            "terms": "bench,kfdrf,лавка"
+        },
+        "craft/beekeeper": {
+            "name": "Пасіка",
+            "terms": "бджоли, пасіка, бджоляр, пасічник"
+        },
+        "amenity/toilets": {
+            "name": "Туалет",
+            "terms": "Toilets, nefktn, туалет"
+        },
+        "leisure/fitness_station/box": {
+            "name": "Козел",
+            "terms": "козел,стрибати,гімнастичний,фітнес,майданчик"
+        },
+        "amenity/sanitary_dump_station": {
+            "name": "Місце зливу каналізації",
+            "terms": "каналізація,відходи,станція,послуги,кемпер,Motor Home,Camper,Sanitary,Dump Station,Elsan,CDP,CTDP,Chemical Toilet"
+        },
+        "shop/hearing_aids": {
+            "name": "Слухові апарати",
+            "terms": "магазин, вади, слух, підсилення, апарат"
+        },
+        "shop/water": {
+            "name": "Магазин питної води"
+        },
+        "public_transport/platform": {
+            "name": "Громадський транспорт, зупинка/платформа",
+            "terms": "платформа,зупинка,транзит,громадський,транспорт,перевезення"
+        },
+        "craft/confectionery": {
+            "name": "Виробник цукерок",
+            "terms": "цукерки,льодяники"
+        },
+        "amenity/place_of_worship": {
+            "name": "Культове місце",
+            "terms": "Place of Worship, rekmnjdt vscwt, церква, собор, мечеть, синагога, молитовний дім, культове місце, храм"
+        },
+        "aerialway/goods": {
+            "name": "Вантажна канатна дорога",
+            "terms": "витяг,підйомник,вантаж,канат,дорога"
+        },
+        "railway/platform": {
+            "name": "Залізнична зупинка/платформа"
+        },
+        "barrier/retaining_wall": {
+            "name": "Підпірна стіна",
+            "terms": "Retaining Wall, gslgshyf cnsyf, підпірна стіна"
+        },
+        "amenity/love_hotel": {
+            "name": "Готель кохання",
+            "terms": "love,готель,секс,стосунки,зустріч,пари"
+        },
+        "office/adoption_agency": {
+            "name": "Агенція з усиновлення",
+            "terms": "офіс,усиновлення,опіка,агенція,сирота"
+        },
+        "highway/traffic_signals": {
+            "name": "Світлофор",
+            "terms": "Traffic Signals, cdsnkjajh, світлофор"
+        },
+        "amenity/embassy": {
+            "name": "Амбасада",
+            "terms": "Embassy, fvfcflf, посольство, місія, амбасада"
+        },
+        "place/islet": {
+            "name": "Острівець",
+            "terms": "острів,малий,острівець,риф,банка,атол"
+        },
+        "type/restriction/no_left_turn": {
+            "name": "Поворот ліворуч заборонено",
+            "terms": "знак, обмеження, поворот, рух, крім, ліворуч"
+        },
+        "leisure/ice_rink": {
+            "name": "Каток",
+            "terms": "каток, лід, ковзанка, фігурне катання"
+        },
+        "healthcare/blood_donation": {
+            "name": "Банк крові",
+            "terms": "донор,кров,банк,плазма,переливання,плазмаферез"
+        },
+        "place/village": {
+            "name": "Село",
+            "terms": "Village, ctkj, село"
+        },
+        "shop/water_sports": {
+            "name": "Водный спорт/Спорттовари",
+            "terms": "спорт, товари, плавання, окуляри, костюм, купальник, плавки, ласти"
+        },
+        "shop/lottery": {
+            "name": "Лоторейний магазин",
+            "terms": "лотерея, розіграш"
+        },
+        "leisure/dog_park": {
+            "name": "Парк для собак",
+            "terms": "Dog Park, gfhr lkz cjfr, парк для собак"
+        },
+        "natural/cave_entrance": {
+            "name": "Печера",
+            "terms": "вхід, печера, огляд, туризм, спелеологія"
+        },
+        "point": {
+            "name": "Точка",
+            "terms": "Point, njxrf, точка"
+        },
+        "shop/cheese": {
+            "name": "Магазин сиру",
+            "terms": "сир, кисломолочні вироби"
+        },
+        "amenity/boat_rental": {
+            "name": "Прокат човнів",
+            "terms": "Boat Rental,ghjrfn xjdysd,катамаран,прокат,човни,човен"
+        },
+        "amenity/place_of_worship/taoist": {
+            "name": "Даосский храм",
+            "terms": "даос,монастир,храм"
+        },
+        "building/mosque": {
+            "name": "Будівля мечеті",
+            "terms": "мечеть,будівля,храм,іслам"
+        },
+        "building/cabin": {
+            "name": "Халупа",
+            "terms": "барліг, кабіна, халупа"
+        },
+        "highway/bus_guideway": {
+            "name": "Шпурбус",
+            "terms": "автобус,рельс,напрямний"
+        },
+        "highway/footway/sidewalk": {
+            "name": "Тротуар"
+        },
+        "amenity/animal_shelter": {
+            "name": "Притулок для тварин",
+            "terms": "тварини,притулок,прихисток,догляд,волонтер,кицька,цуцик,собака,кіт,кішка,захист,збереження"
+        },
+        "emergency/private": {
+            "name": "Для приватних аварійно-рятувальних служб"
+        },
+        "craft/sailmaker": {
+            "name": "Вітрильний майстер",
+            "terms": "вітрила, виготовлення, вітрильник, судно"
+        },
+        "office/ngo": {
+            "name": "Недержавна громадська організація",
+            "terms": "офіс неурядової організації"
+        },
+        "craft/glaziery": {
+            "name": "Скляр",
+            "terms": "скло, вікно, майстер, вікна, вітрина"
+        },
+        "highway/motorway_junction": {
+            "name": "З’єднання з автомагістралю",
+            "terms": "розв’язка, виїзд, з’їзд, автомагістраль, шосе"
+        },
+        "natural/tree": {
+            "name": "Дерево",
+            "terms": "Tree, lthtdj, дерево"
+        },
+        "amenity/register_office": {
+            "name": "РАГС (ЗАГС)"
+        },
+        "leisure/adult_gaming_centre": {
+            "name": "Гральні автомати",
+            "terms": "азарт,ставки,гроші,виграш,програш,атомат,казіно"
+        },
+        "shop/car_parts": {
+            "name": "Автозапчастини",
+            "terms": "Car Parts Store, fdnjpfgxfcnbyb, атозапчастини"
+        },
+        "leisure/outdoor_seating": {
+            "name": "Місця на свіжому повітрі",
+            "terms": "кафе,шинок,сніданок,обід,вечера,їжа,страви,напої,пиво,вино,горілка,віски,коньяк,алкоголь,ресторан,бар,паб,веренда,майданчик"
+        },
+        "office/lawyer": {
+            "name": "Адвокатське бюро",
+            "terms": "адвокатура, адвокат"
+        },
+        "building/apartments": {
+            "name": "Багатоквартирний будинок"
+        },
+        "highway/trunk_link": {
+            "name": "З’їзд з/на шосе",
+            "terms": "Trunk Link, ppl ijct, естакада, виїзд з, виїзд на, з’їзд з, з’їзд на"
+        },
+        "emergency/lifeguard": {
+            "name": "Рятувальник",
+            "terms": "рятувальник,рятівник,допомога"
+        },
+        "amenity/vending_machine/news_papers": {
+            "name": "Автомат продажу газет"
+        },
+        "shop/bookmaker": {
+            "name": "Видавництво",
+            "terms": "книги, друк"
+        },
+        "leisure/fitness_centre/yoga": {
+            "name": "Студія Йоги",
+            "terms": "йога,фітнес,фізичні,вправи,спорт,дозвілля"
+        },
+        "aerialway/t-bar": {
+            "name": "Анкерний підйомник",
+            "terms": "підйомник,анкер,бугель,лижі,витяг"
+        },
+        "public_transport/platform_aerialway": {
+            "name": "Канатна дорога, зупника/платформа",
+            "terms": "підвісна дорога,кабіна,вагон,перевезення,громадський,транспорт,канатна дорога"
+        },
+        "historic/boundary_stone": {
+            "name": "Прикордонний камінь",
+            "terms": "Boundary Stone, ghbrjhljyybq rfvsym, прикордонний камінь"
+        },
+        "leisure/park": {
+            "name": "Парк",
+            "terms": "Park, gfhr, парк"
+        },
+        "amenity/internet_cafe": {
+            "name": "Інтернет кафе",
+            "terms": "інтренет,комп'ютер,wifi,internet,кафе,доступ,клуб,ігри,дозвілля"
+        },
+        "landuse/reservoir": {
+            "name": "Водосховище"
+        },
+        "leisure/garden": {
+            "name": "Сад",
+            "terms": "Garden, cfl, сад"
+        },
+        "historic/memorial": {
+            "name": "Пам’ятник",
+            "terms": "Memorial, gfvznybr, пам’ятник"
+        },
+        "shop/cosmetics": {
+            "name": "Мазазин косметики",
+            "terms": "косметика, макіяж, товари для жінок"
+        },
+        "type/restriction/only_u_turn": {
+            "name": "Тільки розворот",
+            "terms": "рух,розворот,заборона"
+        },
+        "leisure/swimming_pool": {
+            "name": "Басейн",
+            "terms": "Swimming Pool, fctqy, басейн"
+        },
+        "waterway/stream": {
+            "name": "Струмок",
+            "terms": "Stream, cnhevjr, струмок"
+        },
+        "railway": {
+            "name": "Залізниця"
+        },
+        "building/university": {
+            "name": "Університет",
+            "terms": "University, eysdthcbntn, університет"
+        },
+        "amenity/library": {
+            "name": "Бібліотека",
+            "terms": "Library, sksjntrf, бібліотека, книги, книжка, читач"
+        },
+        "shop/stationery": {
+            "name": "Канцтовари",
+            "terms": "Stationery Store,rfywnjdfhb, канцтовари"
+        },
+        "highway/secondary_link": {
+            "name": "З’їзд з/на другорядну дорогу",
+            "terms": "Secondary Link, ppl lheujhzlye ljhjue, естакада, виїзд з, виїзд на, з’їзд з, з’їзд на"
+        },
+        "office/advertising_agency": {
+            "name": "Рекламна агенція",
+            "terms": "реклама,оголошення,теле,відео,радіо,преса"
+        },
+        "highway/living_street": {
+            "name": "Житлова зона",
+            "terms": "Living Street,bnkjdf pjyf,житлова зона"
+        },
+        "landuse/military/bunker": {
+            "name": "Військовий бункер",
+            "terms": "військо,армія,командування,штаб,укриття,сховище,арсенал"
+        },
+        "attraction/bumper_car": {
+            "name": "Бамперні машинки",
+            "terms": "автодром,машинки,тематичний,парк,розваги"
+        },
+        "attraction/roller_coaster": {
+            "name": "Американські гірки",
+            "terms": "парк,гірки,атракціони"
+        },
+        "power/sub_station": {
+            "name": "Підстанція"
+        },
+        "shop/copyshop": {
+            "name": "Копіювальні послуги",
+            "terms": "копія, дублікат, ксерокс, друк, поліграфія"
+        },
+        "leisure/firepit": {
+            "name": "Очаг",
+            "terms": "вогонь, яма, очаг"
+        },
+        "public_transport/station_ferry": {
+            "name": "Поромна станція/Термінал",
+            "terms": "пором,причал,переправа,термінал,станція"
+        },
+        "leisure/pitch/baseball": {
+            "name": "Баскетбольне поле"
+        },
+        "man_made/bridge": {
+            "name": "Контур мосту",
+            "terms": "міст,контур,споруда,перехід,проїзд"
+        },
+        "railway/monorail": {
+            "name": "Монорейка",
+            "terms": "Monorail, vjyjhtqrf, монорейка"
+        },
+        "office/physician": {
+            "name": "Лікар"
+        },
+        "shop/bicycle": {
+            "name": "Веломагазин",
+            "terms": "Bicycle Shop, dtkjvfufpby, веломагазин"
+        },
+        "public_transport/stop_position_subway": {
+            "name": "Місце зупинки потяга метро",
+            "terms": "метро,підземка,платформа,станція,зупинка,транзит,громадський,транспорт,перевезення"
+        },
+        "tourism/apartment": {
+            "name": "Мебльована квартира/Комплекс",
+            "terms": "готель,квартира,апартаменти,відпочинок,житло,готель,оренда,тур,кімната,хостел"
+        },
+        "amenity/hunting_stand": {
+            "name": "Мисливська вежа",
+            "terms": "вежа,здобич,полювання"
+        },
+        "tourism/guest_house": {
+            "name": "Гостьовий будинок",
+            "terms": "Guest House,ujcnmjdbq elbyjr, міні-готель, ліжко та сніданок, гостьовий будинок"
+        },
+        "healthcare/laboratory": {
+            "name": "Медична лабораторія",
+            "terms": "лабораторія,аналізи,кров,інсулін,цукор,сеча,кал,тиск,гормони"
+        },
+        "shop/party": {
+            "name": "Товари до свят"
+        },
+        "power/plant": {
+            "name": "Територія Електростанції",
+            "terms": "елктростанція,енергетика,напруга,генератор,вугілля,газ,ядерна енегргія,сонячна,вітрова"
+        },
+        "landuse/aquaculture": {
+            "name": "Аквакультура",
+            "terms": "рибгосп,ракоподібні,морські водорості,акваферма,креветки,устриці,рибництво,марікультури,водорості"
+        },
+        "amenity": {
+            "name": "Зручності"
+        },
+        "tourism/gallery": {
+            "name": "Художня галерея",
+            "terms": "музей,мистецтво,виставка,галерея"
+        },
+        "amenity/fuel": {
+            "name": "Заправка",
+            "terms": "Gas Station, pfghfdrf, азс, паливо, бензин, дизельне паливо, заправка"
+        },
+        "type/route/tram": {
+            "name": "Трамвайний маршрут",
+            "terms": "Tram Route, nhfvdfqybq vfhihen, трамвайний маршрут"
+        },
+        "man_made/mast/communication/television": {
+            "name": "Телевежа"
+        },
+        "shop/second_hand": {
+            "name": "Благодійний магазин",
+            "terms": "магазин, багодійний, низкі, ціни"
+        },
+        "place/island": {
+            "name": "Острів",
+            "terms": "Island, jcnhsd, архіпелаг, атол, мис, бар’єр, мілина, острівець, риф, коса, острів"
+        },
+        "public_transport/platform_tram": {
+            "name": "Трамвайна зупинка/платформа",
+            "terms": "трамвай,вагон,електротранспорт,рейки,дроти,платформа,зупинка,транзит,громадський,транспорт,перевезення"
+        },
+        "attraction/bungee_jumping": {
+            "name": "Тарзанка",
+            "terms": "тарзанка,банджі,джампінг,розваги тематичний,парк,платформа"
+        },
+        "railway/signal": {
+            "name": "Семафор",
+            "terms": "залізниця,сигнал,семафор,світлофор"
+        },
+        "craft/rigger": {
+            "name": "Такелажник",
+            "terms": "мачти, реї, вітрила, такелаж"
+        },
+        "man_made/water_works": {
+            "name": "Водозабір",
+            "terms": "Water Works, djljpfsh, водозабір"
+        },
+        "amenity/pub": {
+            "name": "Паб",
+            "terms": "Pub, gf, бар, пивна, шинок, пивниця, трактир"
+        },
+        "building/entrance": {
+            "name": "Вхід/Вихід"
+        },
+        "playground/structure": {
+            "name": "Ігрова споруда",
+            "terms": "забавка,ігровий,майданчик,діти,дитячий,гірка,драбина,замок,міст,башта,стінка,баланс,канат,кошик"
+        },
+        "shop/religion": {
+            "name": "Церковна лавка",
+            "terms": "свічки, ікони, образи, релігія, книжки, література"
+        },
+        "golf/rough": {
+            "name": "Раф",
+            "terms": "rough, нерівна місцевість, раф, гольф"
+        },
+        "man_made/breakwater": {
+            "name": "Хвилеріз",
+            "terms": "Breakwater, dbkthsp, хвилеріз"
+        },
+        "shop/shoes": {
+            "name": "Взуття",
+            "terms": "Shoe Store,dpennz, взуття"
+        },
+        "amenity/ranger_station": {
+            "name": "Контора лісництва",
+            "terms": "Ranger Station, rjynjhf kscybwndf, лісник, лісництво"
+        },
+        "office/quango": {
+            "name": "Квазі-НГО",
+            "terms": "офіс,НГО,громадська,організація,некомерційна,державна"
+        },
+        "amenity/parking": {
+            "name": "Автостоянка"
+        },
+        "highway/bus_stop": {
+            "name": "Автобусна зупинка/платформа"
+        },
+        "office/energy_supplier": {
+            "name": "Електропостачальна компанія",
+            "terms": "електрика,споживачі,постачання,офіс,контора"
+        },
+        "amenity/place_of_worship/hindu": {
+            "name": "Індуський храм",
+            "terms": "гарбагриха,манду,пуджа,храм,святиня"
+        },
+        "aerialway/platter": {
+            "name": "Платерний підйомник",
+            "terms": "круг,платер,підйомник,лижі"
+        },
+        "amenity/swimming_pool": {
+            "name": "Басейн"
+        },
+        "amenity/vending_machine/condoms": {
+            "name": "Автомат продажу нацюцюрників",
+            "terms": "перезерватив,кондом,гандон,секс,захист,атомат,торгівля"
+        },
+        "craft/electronics_repair": {
+            "name": "Ремонт електроніки",
+            "terms": "телевізор,комп'ютер,смартфон,планшет,гаджет"
+        },
+        "man_made/adit": {
+            "name": "Штольня",
+            "terms": "entrance,underground,mine, cave,печера,шахта,вхід,вихід,підземелля"
+        },
+        "man_made/tower": {
+            "name": "Вежа",
+            "terms": "Tower, dtf, башта, вежа"
+        },
+        "shop/florist": {
+            "name": "Квіти",
+            "terms": "Florist, rdsnb, квіти"
+        },
+        "type/route/ferry": {
+            "name": "Паром",
+            "terms": "Ferry Route, gfhjv, поромна переправа"
+        },
+        "highway/crossing/marked": {
+            "name": "Маркований пішохідний перехід"
+        },
+        "amenity/atm": {
+            "name": "Банкомат",
+            "terms": "ATM,fyrjvfn,банкомат"
+        },
+        "ford": {
+            "name": "Брід",
+            "terms": "брід, переправа"
+        },
+        "natural/sand": {
+            "name": "Пісок",
+            "terms": "пустеля"
+        },
+        "place/locality": {
+            "name": "Місцевість",
+            "terms": "Locality, vscwtdscnm, місцевість"
+        },
+        "traffic_calming/table": {
+            "name": "Піднятий пішохідний перехід",
+            "terms": "пошохідний,перешкода,швидкість,безпека,перехід,дорога,стіл,плаский,широкий,горб"
+        },
+        "amenity/courthouse": {
+            "name": "Суд",
+            "terms": "Courthouse, cel, суд"
+        },
+        "shop/art": {
+            "name": "Художній салон",
+            "terms": "магазин,салон,картини,мистецтво,ремесла,вироби"
+        },
+        "place/hamlet": {
+            "name": "Хутір",
+            "terms": "Hamlet, ensh, хутір"
+        },
+        "amenity/recycling_centre": {
+            "name": "Центру збору відходів для вторинної переробки",
+            "terms": "відходи,накопичення,сортування,воринна,сировина,пляшки,скло,бляшанки,ганчір'я,сміття,лом,поламані,речі"
+        },
+        "club": {
+            "name": "Клуб",
+            "terms": "радіо,електроника,кіно,шахи,спорт,фанклуб,організація,дозвілля,авто,політика,клуб"
+        },
+        "office/private_investigator": {
+            "name": "Приватний детектив",
+            "terms": "офіс,детектив,приватний,розшук,спостереження"
+        },
+        "waterway/fuel": {
+            "name": "Заправка для човнів",
+            "terms": "petrol,gas,diesel,boat,пальне,бензин,дизпаливо,човен,лодка,газ"
+        },
+        "highway": {
+            "name": "Дорога"
+        },
+        "shop/pastry": {
+            "name": "Кондитерські вироби",
+            "terms": "магазин,солодощі,кондитерські,вироби,тістечко"
+        },
+        "amenity/theatre": {
+            "name": "Театр",
+            "terms": "Theater, ntfnh, театр"
+        },
+        "highway/pedestrian_line": {
+            "name": "Пішохідна вулиця",
+            "terms": "пішохід,площа,майдан,плац"
+        },
+        "landuse/military/checkpoint": {
+            "name": "КПП",
+            "terms": "контроль,пропуск,блок,пост,війська,війна"
+        },
+        "man_made/lighthouse": {
+            "name": "Маяк",
+            "terms": "Lighthouse, vfzr, сигнал, вогонь, маяк"
+        },
+        "type/route/train": {
+            "name": "Залізничний маршрут",
+            "terms": "Train Route, pfkspybxybq vfhihen, залізничний маршрут"
+        },
+        "barrier/fence": {
+            "name": "Огорожа",
+            "terms": "Fence, jujhjf, паркан, тин, огорожа"
+        },
+        "landuse/cemetery": {
+            "name": "Кладовище",
+            "terms": "Cemetery, rkfljdbot, цвинтар"
+        },
+        "railway/rail": {
+            "name": "Рейки",
+            "terms": "Rail,htqrb, колії"
+        },
+        "natural/scree": {
+            "name": "Кам’яний обвал",
+            "terms": "Scree, rfvzybq jdfk, щебінь, осип"
+        },
+        "office/government": {
+            "name": "Уряд",
+            "terms": "правління,"
+        },
+        "office/it": {
+            "name": "ІТ компанія",
+            "terms": "інформаційні,технології,офіс,компанія"
+        },
+        "railway/disused": {
+            "name": "Колії, що не використовуються",
+            "terms": "Disused Railway,rjks oj yt dbrjhbcnjdenmcz, колі що не використовуються"
+        },
+        "amenity/grave_yard": {
+            "name": "Цвинтар",
+            "terms": "Graveyard, wdbynfh, кладовище, цвинтар"
+        },
+        "railway/light_rail": {
+            "name": "Швидкісний трамвай",
+            "terms": "легкорейковий,транспорт,електричка,міська,трамвай"
+        },
+        "office/lawyer/notary": {
+            "name": "Нотаріус"
+        },
+        "amenity/clinic/fertility": {
+            "name": "Пологовий будинок",
+            "terms": "клініка,репродуктивна,яйцеклітини,сперма,сперматазоїди,сімʼя,запліднення,фертильність"
+        },
+        "leisure/fitness_station": {
+            "name": "Тренажери на вулиці",
+            "terms": "спорт,качалка,тренування,гімнастика,фітнес"
+        },
+        "amenity/vending_machine/newspapers": {
+            "name": "Автомат продажу газет",
+            "terms": "газети,новини,журнали,преса"
+        },
+        "railway/subway_entrance": {
+            "name": "Вхід до метро",
+            "terms": "Subway Entrance, dsl lj vtnhj, вхід в метро"
+        },
+        "emergency/fire_extinguisher": {
+            "name": "Вогнегасник",
+            "terms": "вогонь,пожежа,вогнегасник,полумья"
+        },
+        "healthcare/speech_therapist": {
+            "name": "Логопед",
+            "terms": "логопед,вимова,розмова,заїкання"
+        },
+        "leisure/picnic_table": {
+            "name": "Місце для пікніка",
+            "terms": "пікнік, відпочинок"
+        },
+        "man_made/cutline": {
+            "name": "Просіка",
+            "terms": "Cut line, ghjcsrf, просіка"
+        },
+        "craft/scaffolder": {
+            "name": "Такелажник",
+            "terms": "такелаж, вантаж, будівельні ліси"
+        },
+        "shop/locksmith": {
+            "name": "Слюсар",
+            "terms": "слюсар, метал, майстер"
+        },
+        "office/insurance": {
+            "name": "Страхове бюро",
+            "terms": "страхування"
+        },
+        "leisure/pitch": {
+            "name": "Спортивний майданчик",
+            "terms": "Sport Pitch, cgjhnbdybq vfqlfyxbr, спортивний майданчик"
+        },
+        "public_transport/stop_position_trolleybus": {
+            "name": "Місце зупинки тролейбуса",
+            "terms": "тролейбус,вагон,електротранспорт,електробус,дроти,платформа,зупинка,транзит,громадський,транспорт,перевезення,рогатий"
+        },
+        "tourism/hotel": {
+            "name": "Готель",
+            "terms": "Hotel, ujntkm, готель"
+        },
+        "historic/monument": {
+            "name": "Монумент",
+            "terms": "Monument, vjyevtyn, монумент"
+        },
+        "manhole": {
+            "name": "Люк",
+            "terms": "люк,каналізація,кришка"
+        },
+        "type/route/bicycle": {
+            "name": "Велосипедний маршрут",
+            "terms": "Cycle Route, dtkjcbgtlybq vfhihen, веломаршрут"
+        },
+        "highway/give_way": {
+            "name": "Дати дорогу",
+            "terms": "знак,дати дорогу,зупинка,пріоритет,рух,обмеження"
+        },
+        "man_made/mast/communication": {
+            "name": "Вежа зв'язку"
+        },
+        "amenity/place_of_worship/shinto": {
+            "name": "Синтоїстська святиня",
+            "terms": "камі,торі"
+        },
+        "leisure/fitness_station/horizontal_bar": {
+            "name": "Перекладина",
+            "terms": "перекладина,турник,підтягування,фітнес,майданчик,спорт"
+        },
+        "historic": {
+            "name": "Історичні місця",
+            "terms": "Historic Site, scnjhbxys vscwz, історичні місця"
+        },
+        "railway/switch": {
+            "name": "Залізнична стрілка",
+            "terms": "стрілка,залізниця,рейки"
+        },
+        "man_made/tower/communication": {
+            "name": "Вежа зв'язку"
+        },
+        "healthcare/optometrist": {
+            "name": "Оптометрист",
+            "terms": "око,окуляри,зір,хрусталик,роговиця,сітківка"
+        },
+        "building/kindergarten": {
+            "name": "Дитячий сад",
+            "terms": "дитячий сад, будівля, початкова школа, будинок"
+        },
+        "leisure/playground": {
+            "name": "Ігровий майданчик",
+            "terms": "Playground, suhjdbq vfqlfyxbr, дитячий ігровий майданчик,ігровий майданчик"
+        },
+        "emergency/water_tank": {
+            "name": "Пожежний резервуар",
+            "terms": "вода,пожежа,цистерна,резервуар,небезпека"
+        },
+        "shop/erotic": {
+            "name": "Секс-шоп",
+            "terms": "секс, іграшки, для дорослих"
+        },
+        "type/restriction/only_left_turn": {
+            "name": "Тільки ліворуч",
+            "terms": "поворот,рух,ліворуч,заборона"
+        },
+        "leisure/fitness_station/rings": {
+            "name": "Кільця",
+            "terms": "кільця,гімнастика,фітнес,майданчик,спорт,тренажер"
+        },
+        "highway/mini_roundabout": {
+            "name": "Малий круговий рух ",
+            "terms": "Mini-Roundabout, vfkbq rheujdbq he, малий круговий рух"
+        },
+        "public_transport/platform_monorail": {
+            "name": "Монорейка, зупинка/платформа",
+            "terms": "монорейка,монорельс,платформа,зупинка,транзит,громадський,транспорт,перевезення"
+        },
+        "amenity/monastery": {
+            "name": "Територія монастиря",
+            "terms": "абатство,базиліка,моелельня,собор,вівтар,каплиця,церква,дім божий,молитовний дім,обрядовий дім,міссія,монастир,мечеть,приход,святилище,рака,святиня,синагога,храм"
+        },
+        "highway/service/parking_aisle": {
+            "name": "Проїзд по стоянці",
+            "terms": "Parking Aisle, ghjpl gj cnjzyws, проїзд по стоянці"
+        },
+        "amenity/bbq": {
+            "name": "Барбекю/мангал",
+            "terms": "мангал,барбекю,гриль,дрова,вогонь,шашлик"
+        },
+        "waterway/dock": {
+            "name": "Сухий/Мокрий док",
+            "terms": "корабель,човен,лодка,яклик,бухта,затока"
+        },
+        "waterway/boatyard": {
+            "name": "Човнова станція",
+            "terms": "човен,стоянка,станція,зберігання,ремонт"
+        },
+        "power/line": {
+            "name": "Лінія електропередачі високої напруги",
+            "terms": "Power Line, ksysz tktrnhjgthtlfxs dbcjrj yfgheub, Лінія електропередачі високої напруги, ЛЕП"
+        },
+        "amenity/ice_cream": {
+            "name": "Морозиво",
+            "terms": "морозиво,магазин,кафе,бар,крамниця,ласощі"
+        },
+        "leisure/horse_riding": {
+            "name": "Верхова їзда",
+            "terms": "коні,кінь,вершник,навчання,розваги,інструктор,конкур"
+        },
+        "power/pole": {
+            "name": "Опора",
+            "terms": "Power Pole, jgjhf, опора"
+        },
+        "natural/peak": {
+            "name": "Пік",
+            "terms": "Peak, gsr, пагорб, круча, вершина, гора, найвища точка, гребінь, узгір’я"
+        },
+        "highway/tertiary": {
+            "name": "Третинна дорога",
+            "terms": "Tertiary Road, nhtnbyyf ljhjuf, третинна дорога"
+        },
+        "amenity/restaurant/steakhouse": {
+            "name": "Стейк-хаус"
+        },
+        "shop/beauty/nails": {
+            "name": "Манікюрний салон",
+            "terms": "манікюр,нігті,лак,гель,догляд,краса,салон"
+        },
+        "tourism/artwork": {
+            "name": "Витвори мистецтв",
+            "terms": "Artwork, dbndjhb vbcntwnd, витвори мистецтва"
+        },
+        "amenity/vending_machine/sweets": {
+            "name": "Автомат продажу солодощів",
+            "terms": "цукерки,жувальна гумка,чіпси,печиво,крекери"
+        },
+        "landuse/retail": {
+            "name": "Торговельний квартал",
+            "terms": "магазин, супермаркет, центр, торговий, мегастор, розпродаж, знижки"
+        },
+        "leisure/sauna": {
+            "name": "Сауна",
+            "terms": "сауна,баня,лазня,чан"
+        },
+        "craft/key_cutter": {
+            "name": "Виготовлення ключів",
+            "terms": "ключ, виготовлення, майстер"
+        },
+        "leisure/fitness_station/sign": {
+            "name": "Знак",
+            "terms": "фітнес,майданчик,спорт,знак,опис,вправа"
+        },
+        "leisure/resort": {
+            "name": "Курорт",
+            "terms": "курорт,відпочинок,пляж,процедури,оздоровлення,лікування,вода,дозвілля,розваги,готель,житло,туризм"
+        },
+        "shop/pyrotechnics": {
+            "name": "Феєрверки",
+            "terms": "салют, свято, установка, свіча, бенгальский, вогонь, вистріл"
+        },
+        "leisure/pitch/cricket": {
+            "name": "Поле для крикету",
+            "terms": "крикет,поле,спорт,гра,битка,м'яч"
+        },
+        "public_transport/platform_trolleybus": {
+            "name": "Тролейбусна зупинка/платформа",
+            "terms": "тролейбус,вагон,електротранспорт,електробус,дроти,платформа,зупинка,транзит,громадський,транспорт,перевезення,рогатий"
+        },
+        "amenity/arts_centre": {
+            "name": "Мистецький центр",
+            "terms": "Arts Center,vbcntwmrbq wtynh,галерея,мистецький центр"
+        },
+        "shop/pet_grooming": {
+            "name": "Салон догляду за тваринами",
+            "terms": "собака,кіт,стрижка,підрізка кігтів,купання,мийка"
+        },
+        "railway/crossing": {
+            "name": "Залізничний перехід (пішохідний)",
+            "terms": "залізниця,потяг,рейки,пішоход,перехід,шлагбаум,світлофор,поїзд,(пішохідний)"
+        },
+        "shop/travel_agency": {
+            "name": "Туристична агенція",
+            "terms": "Travel Agency,nehbcnbxyf futywsz, туристична агенція"
+        },
+        "tourism/artwork/statue": {
+            "name": "Статуя"
+        },
+        "amenity/restaurant": {
+            "name": "Ресторан",
+            "terms": "Restaurant, htcnjhfy, ресторан, їжа"
+        },
+        "type/route/detour": {
+            "name": "Об’їзд",
+            "terms": "Detour Route, jpl, об’їзд"
+        },
+        "amenity/bicycle_repair_station": {
+            "name": "Станція ремонту велосипедів",
+            "terms": "вело-ремонт,ремонт,станція,стенд"
+        },
+        "amenity/vending_machine/parcel_pickup": {
+            "name": "Поштомат",
+            "terms": "пошта,посилка,доставка,онлайн"
+        },
+        "office/association": {
+            "name": "Неприбуткова організація",
+            "terms": "спілка,фундація,фонд,НГО,рада"
+        },
+        "highway/services": {
+            "name": "Зона обслуговування",
+            "terms": "зона обслуговування, сервіс"
+        },
+        "amenity/bureau_de_change": {
+            "name": "Обмін валют",
+            "terms": "валюта,долар,євро,курс,біржа,банк,обміник,міняло,пункт"
+        },
+        "tourism/chalet": {
+            "name": "Шале",
+            "terms": "котедж,туризм"
+        },
+        "landuse/military/nuclear_explosion_site": {
+            "name": "Ядерний випроувальний полігон",
+            "terms": "атом,бомба,вибух,випробування,радиація,полігон"
+        },
+        "leisure/dancing_school": {
+            "name": "Школа танців",
+            "terms": "школа,клуб,танці,танцювальна,танго,модерн,вальс,ча-ча-ча,латино,сучасні,хіп-хоп"
+        },
+        "public_transport/station_trolleybus": {
+            "name": "Тролейбусна станція/Термінал",
+            "terms": "тролейбус,вагон,електротранспорт,електробус,дроти,платформа,зупинка,станція,вокзал,платформа,транзит,громадський,транспорт,перевезення,рогатий"
+        },
+        "leisure": {
+            "name": "Дозвілля"
+        },
+        "amenity/post_office": {
+            "name": "Пошта",
+            "terms": "Post Office, gjinf, поштамт, пошта, поштове відділення"
+        },
+        "tourism/trail_riding_station": {
+            "name": "Місце відпочинку для коней та вершників",
+            "terms": "станція,відпочинок,коні,кінь,вершник,туризм"
+        },
+        "public_transport/stop_position": {
+            "name": "Місце зупинки",
+            "terms": "зупинка,транзит,громадський,транспорт,перевезення,термінал"
+        },
+        "natural/volcano": {
+            "name": "Вулкан",
+            "terms": "mountain,crater,вулкан,лава,кратер,гора,попіл,жерло"
+        },
+        "amenity/vending_machine": {
+            "name": "Торговельний автомат",
+            "terms": "торговельний автомат,торговий автомат,автомат"
+        },
+        "highway/milestone": {
+            "name": "Кілометрова позначка",
+            "terms": "позначка,табличка,кілометр,миля,верста,відстань,дорога,суходіл"
+        },
+        "leisure/bleachers": {
+            "name": "Трибуни",
+            "terms": "стадіон,трибуна,місця,сидіння,лавка,крісло,стілець"
+        },
+        "amenity/bar": {
+            "name": "Бар",
+            "terms": "бар,пиво,напої,алкоголь"
+        },
+        "traffic_calming/cushion": {
+            "name": "Лежачий поліцейський з розрізами",
+            "terms": "лежачий,поліцейський,розрізи,перешкода,обмеження,швидкість,безпека"
+        },
+        "power/generator/source/nuclear": {
+            "name": "Ядерний реактор"
+        },
+        "leisure/fitness_station/balance_beam": {
+            "name": "Бревно",
+            "terms": "бревно,балансування,гімнастика,фітнес,фізкультура,спорт,майданчик"
+        },
+        "man_made/bunker_silo": {
+            "name": "Силосна яма",
+            "terms": "силос,яма,бункер,корм,сховище"
+        },
+        "traffic_calming": {
+            "name": "Засоби для обмеження швидкості",
+            "terms": "лежачий,поліцейській,шикана,звуження,перешкода,стол,швидкість,безпека"
+        },
+        "barrier/stile": {
+            "name": "Перелаз/Турнікет",
+            "terms": "Stile, gthtkfp, nehysrtn, перелаз, турнікет"
+        },
+        "type/route/piste": {
+            "name": "Трек / Лижний маршрут",
+            "terms": "лижі,снігоступи,гірські,крос"
+        },
+        "shop/boutique": {
+            "name": "Бутік",
+            "terms": "Boutique,ensr, бутік"
+        },
+        "area/highway": {
+            "name": "Покриття дороги",
+            "terms": "дорога,покриття,асфальт,бруківка,пісок,грунт,трава"
+        },
+        "amenity/vending_machine/parcel_pickup_dropoff": {
+            "name": "Поштомат - видача/приймання відправлень",
+            "terms": "пошта,відправлення,автомат,посилка,доставка"
+        },
+        "amenity/vending_machine/parking_tickets": {
+            "name": "Паркомат",
+            "terms": "стоянка,квиток,автомобіль"
+        },
+        "shop/weapons": {
+            "name": "Зброя",
+            "terms": "Зброя, рушниця, мисливство, набої, пістолет, ніж, спорядження"
+        },
+        "healthcare/physiotherapist": {
+            "name": "Фізіотерапевт",
+            "terms": "фізіотерапевт,терапія,процедури"
+        },
+        "highway/trunk": {
+            "name": "Шосе",
+            "terms": "Trunk Road, ijct, шосе"
+        },
+        "leisure/pitch/boules": {
+            "name": "Буль/Боке",
+            "terms": "спорт,майданчик,шар,буль,боке"
+        },
+        "power/cable/underground": {
+            "name": "Підземний силовий кабель"
+        },
+        "golf/tee": {
+            "name": "Ті",
+            "terms": "гольф, початок, підставка, tee"
+        },
+        "office": {
+            "name": "Офіс",
+            "terms": "Office, jasc, офіс"
+        },
+        "amenity/fire_station": {
+            "name": "Пожежна станція",
+            "terms": "Fire Station, gjtyf cnfywsz, пожежне депо, пожежна станція, пожежа"
+        },
+        "barrier/entrance": {
+            "name": "Вхід"
+        },
+        "emergency/fire_hydrant": {
+            "name": "Пожежний гідрант",
+            "terms": "Fire Hydrant,gjtybq uslhfyn, пожежний гідрант"
+        },
+        "noexit/yes": {
+            "name": "Глухий кут",
+            "terms": "тупик,глухий,кут"
+        },
+        "shop/scuba_diving": {
+            "name": "Підводне плавання",
+            "terms": "магазин, пірнання, плавання, підводне, акваланг, ласти, обладнання, гідрокостюм"
+        },
+        "natural/water/pond": {
+            "name": "Ставок",
+            "terms": "Pond, cnfdjr, ставок"
+        },
+        "place/plot": {
+            "name": "Ділянка",
+            "terms": "ділянка,дача,участок,город"
+        },
+        "attraction/water_slide": {
+            "name": "Водні гірки",
+            "terms": "парк,аквапрак,вода,розваги,гірки,спуск"
+        },
+        "shop/vacuum_cleaner": {
+            "name": "Пилососи",
+            "terms": "приладдя, прибирання, мішки, щітка, пилосос, швабра"
+        },
+        "shop/chemist": {
+            "name": "Побутова хімія",
+            "terms": "побутова хімія,пральний,порошок,миючий засіб,догляд"
+        },
+        "tourism/information/map": {
+            "name": "Мапа",
+            "terms": "мапа,карта,схема,марут,шлях,довідка,туризм,інформація"
+        },
+        "building/hospital": {
+            "name": "Госпіталь",
+            "terms": "Hospital, ujcgsnfkm, госпіталь"
+        },
+        "amenity/marketplace": {
+            "name": "Ринок",
+            "terms": "Marketplace, hbyjr, базар, базарна площа"
+        },
+        "building/industrial": {
+            "name": "Промислова будівля",
+            "terms": "Industrial Building, ghjvbckjdf elsdkz, промислова будівля"
+        },
+        "amenity/university": {
+            "name": "Територія університета",
+            "terms": "університет, кампус, гуртожиток, корпус, бібліотека"
+        },
+        "building/public": {
+            "name": "Громадська будівля",
+            "terms": "суспільний центр, будівля, клуб, громада"
+        },
+        "emergency/first_aid_kit": {
+            "name": "Аптечка",
+            "terms": "допомога,невідкладна,медична,аварія,поранення,аварія,швидка"
+        },
+        "amenity/shower": {
+            "name": "Душ",
+            "terms": "душ,лазня,гігієна"
+        },
+        "office/estate_agent": {
+            "name": "Агенція з нерухомості",
+            "terms": "ріелтор, Агенція з нерухомості, futywsz p ythejvjcns, Real Estate Office"
+        },
+        "man_made/watermill": {
+            "name": "Водяний млин",
+            "terms": "вода,млин,колесо,борошно"
+        },
+        "amenity/college": {
+            "name": "Територія коледжу",
+            "terms": "коледж, технікум, освіта, територія"
+        },
+        "shop/toys": {
+            "name": "Іграшки",
+            "terms": "Toy Store,suhfirb, іграшки"
+        },
+        "type/restriction/no_straight_on": {
+            "name": "Рух заборонений",
+            "terms": "знак, обмеження, заборона, прямо"
+        },
+        "landuse/allotments": {
+            "name": "Дачі/горо́ди",
+            "terms": "дача,город,ділянка"
+        },
+        "office/water_utility": {
+            "name": "Водоканал",
+            "terms": "водопостачання,водовідведення,каналізація,послуги"
+        },
+        "railway/tram_stop": {
+            "name": "Місце зупинки трамвая"
+        },
+        "highway/passing_place": {
+            "name": "Місце для роз'їзду",
+            "terms": "дорога,дати шлях,роз'їзд,переваги,рух,зустрічний рух"
+        },
+        "shop/tiles": {
+            "name": "Кахель",
+            "terms": "магазин,кахель,кахлі,плитка,керамічна"
+        },
+        "highway/pedestrian_area": {
+            "name": "Пішохідна зона",
+            "terms": "майдан,площа,пішохід,зона,територія"
+        },
+        "amenity/vending_machine/food": {
+            "name": "Автомат продажу їжі",
+            "terms": "їжа,сир,молоко,картопля,макарони,ковбаса,сосиски"
+        },
+        "amenity/cafe": {
+            "name": "Кафе",
+            "terms": "cafe,кафе,кава,чай,бістро"
+        },
+        "leisure/pitch/bowls": {
+            "name": "Боулз",
+            "terms": "болуз,спорт,трава,кулі,джек,кітті,вудз,бола"
+        },
+        "highway/service/emergency_access": {
+            "name": "Невідкладна допомога",
+            "terms": "Emergency Access, ytdslrkflyf ljgjvjuf, невідкладна допомога"
+        },
+        "natural/mud": {
+            "name": "Багно",
+            "terms": "багно,багнюка,грязь"
+        },
+        "building/civic": {
+            "name": "Громадська будівля",
+            "terms": "муніципальний центр,бібліотека,громадський туалет,спортивний центр,басейн,ратуша"
+        },
+        "craft/plasterer": {
+            "name": "Штукатур",
+            "terms": "вапняр, кітар, мазальник"
+        },
+        "amenity/parking_space": {
+            "name": "Місце на стоянці",
+            "terms": "стоянка,місце,автомобіль"
+        },
+        "healthcare/birthing_center": {
+            "name": "Пологовий центр",
+            "terms": "дитина,пологи,вагітність"
+        },
+        "building/greenhouse": {
+            "name": "Теплиця",
+            "terms": "Greenhouse, ntgkbwz, теплиця"
+        },
+        "landuse/harbour": {
+            "name": "Гавань",
+            "terms": "гавань,затока,порт,притулок"
+        },
+        "shop/pet": {
+            "name": "Товари для тварин",
+            "terms": "Pet Store,njdfhb lkz ndfhby, зоомагазин"
+        },
+        "amenity/scrapyard": {
+            "name": "Авторозборка"
+        },
+        "man_made/survey_point": {
+            "name": "Геодезичний пункт",
+            "terms": "Survey Point, utjltpbxybq geyrn, місце спостереження"
+        },
+        "roundabout": {
+            "name": "Круг"
+        },
+        "type/route/power": {
+            "name": "Лінія електропередач",
+            "terms": "Power Route, ksysz tktrnhjgthtlfx, лінія електромережі"
+        },
+        "highway/service/alley": {
+            "name": "Провулок",
+            "terms": "Alley, ghjdekjr, провулок"
+        },
+        "man_made/mast/communication/radio": {
+            "name": "Радіотрансляційна щогла"
+        },
+        "public_transport/station_train": {
+            "name": "Залізнична станція",
+            "terms": "залізнична,платформа,зупинка,вокзал,станція,транзит,громадський,транспорт,перевезення"
+        },
+        "shop/tailor": {
+            "name": "Кравець",
+            "terms": "ательє, одяг, костюм, плаття, швець, замовлення"
+        },
+        "landuse/brownfield": {
+            "name": "Очищене місце під забудову",
+            "terms": "будівництво,ділянка,пустир,місце,реконструкція"
+        },
+        "natural/cliff": {
+            "name": "Скеля/Яр",
+            "terms": "Cliff, crtkz zh, скеля, обрив, яр"
+        },
+        "amenity/clock": {
+            "name": "Годинник",
+            "terms": "Clock, ujlbyybr, годинник"
+        },
+        "attraction": {
+            "name": "Визначне місце"
+        },
+        "building/garage": {
+            "name": "Гараж",
+            "terms": "Garage,ufhf, гарж"
+        },
+        "natural/coastline": {
+            "name": "Берегова лінія",
+            "terms": "Coastline, thtujdf ksysz, берегова лінія, берег"
+        },
+        "building/carport": {
+            "name": "Навіс"
+        },
+        "building/hotel": {
+            "name": "Готель",
+            "terms": "Hotel, ujntkm, готель"
+        },
+        "shop/anime": {
+            "name": "Аніме магазин",
+            "terms": "аніме, комікси"
+        },
+        "route/ferry": {
+            "name": "Паром",
+            "terms": "Ferry Route, gfhjv, паромна переправа"
+        },
+        "shop/outdoor": {
+            "name": "Активний відпочинок",
+            "terms": "товари, повітря, відпочинок, активний, спорт, ігри"
+        },
+        "highway/raceway": {
+            "name": "Гоночний трек (Мотоспорт)",
+            "terms": "авто,картинг,мотокрос,наскар,перегони,трек,формула*,(мотоспорт)"
+        },
+        "emergency/designated": {
+            "name": "Призначено для аварійно-рятувальних служб"
+        },
+        "highway/steps": {
+            "name": "Сходи",
+            "terms": "Steps, cjlb, драбина, сходова клітка, сходи"
+        },
+        "leisure/fitness_station/hyperextension": {
+            "name": "Гіперекстензія",
+            "terms": "фітнес,майданчик,тренажер,спорт,спина,прес"
+        },
+        "tourism/artwork/sculpture": {
+            "name": "Скульптура"
+        },
+        "leisure/beach_resort": {
+            "name": "Пляжний курорт",
+            "terms": "курорт,відпочинок,пляж,вода,дозвілля,розваги,готель,житло"
+        },
+        "amenity/vending_machine/drinks": {
+            "name": "Автомат продажу напоїв",
+            "terms": "напої,газована вода,вода,сік,автомат,продаж,кіоск"
+        },
+        "highway/primary": {
+            "name": "Головна дорога",
+            "terms": "Primary Road, ujkjdyf ljhjuf, головна дорога, основна дорога"
+        },
+        "shop/chocolate": {
+            "name": "Магазин шоколаду",
+            "terms": "шоколад, ласощі"
+        },
+        "man_made/pumping_station": {
+            "name": "Насосна станція",
+            "terms": "насос,очисні споруду,водопостачання,вода,подача,іригація"
+        },
+        "building/bunker": {
+            "name": "Бункер"
+        },
+        "emergency/defibrillator": {
+            "name": "Дефібрилятор",
+            "terms": "дефібрилятор,кардіостимулятор,невідкладна допомога"
+        },
+        "aeroway/helipad": {
+            "name": "Вертолітний майданчик",
+            "terms": "helipad,dthnjksnybq vfqlfyxbr,вертоліт,вертодром,вертольотний,майданчик,гелікоптер"
+        },
+        "amenity/dentist": {
+            "name": "Дантист",
+            "terms": "Dentist, lfynbcn, стоматолог, зубний лікар, лікар"
+        },
+        "landuse/residential/apartments": {
+            "name": "Житловий комплекс"
+        },
+        "amenity/place_of_worship/muslim": {
+            "name": "Мусульманська мечеть"
+        },
+        "shop/tea": {
+            "name": "Чай",
+            "terms": "чай, трави, напої, чайник, заварка"
+        },
+        "aerialway/chair_lift": {
+            "name": "Крісельний підйомник",
+            "terms": "Chair lift,rhsctkmybq gslqjvybr,крісельний,підйомник,витяг"
+        },
+        "landuse/pond": {
+            "name": "Ставок"
+        },
+        "shop/supermarket": {
+            "name": "Супермаркет",
+            "terms": "Supermarket,cegthvfhrtn, супермаркет"
+        },
+        "office/political_party": {
+            "name": "Політична партія",
+            "terms": "політика, партія"
+        },
+        "shop/wholesale": {
+            "name": "Гуртова торгівля",
+            "terms": "кеш-енд-кері,опт,гурт,товар"
+        },
+        "building/stadium": {
+            "name": "Стадіон",
+            "terms": "Стадіон,споруда,арена,будівля"
+        },
+        "landuse/military/range": {
+            "name": "Стрільбище",
+            "terms": "військо,армія,полігон,навчання,артилерія,автомат,гранатомет"
+        },
+        "man_made/silo": {
+            "name": "Силос",
+            "terms": "grain,corn,wheat,зерно,пшениця,ячмінь,елеватор"
+        },
+        "man_made/surveillance/camera": {
+            "name": "Камера відеоспостереження"
+        },
+        "building/hut": {
+            "name": "Сторожка",
+            "terms": "Hut, cnjhjrf, хатина, барак"
+        },
+        "shop/candles": {
+            "name": "Магазин свічок",
+            "terms": "свічка, полум’я"
+        },
+        "natural/saddle": {
+            "name": "Перевал",
+            "terms": "Saddle,pass,mountain pass,top,гора,перехід,перевал,вершина,прохід,проїзд"
+        },
+        "building/transportation": {
+            "name": "Транспорт",
+            "terms": "вокзал,станція,зупинка,траспорт"
+        },
+        "landuse/orchard": {
+            "name": "Сад",
+            "terms": "Orchard, cfl, сад"
+        },
+        "type/restriction/no_right_turn": {
+            "name": "Поворот праворуч заборонено",
+            "terms": "знак, обмеження, поворот, рух, тільки, прямо, ліворуч, розворот"
+        },
+        "shop/car": {
+            "name": "Автосалон",
+            "terms": "Car Dealership, fdnjcfkjy, автосалон"
+        },
+        "building/stable": {
+            "name": "Стайні",
+            "terms": "Stable, cnfqys, стайня"
+        },
+        "amenity/public_bookcase": {
+            "name": "Книжклва шафа",
+            "terms": "книга, шафа, обмін, безкоштовно, благодійництво, бібліотека"
+        },
+        "tourism/camp_site": {
+            "name": "Табір",
+            "terms": "табір,кемпіг,наметове,містечко"
+        },
+        "golf/hole": {
+            "name": "Лунка",
+            "terms": "гольф, отвір"
+        },
+        "building/semidetached_house": {
+            "name": "Двоквартирний будинок",
+            "terms": "будинок,квартира,два,дві,володар"
+        },
+        "railway/abandoned": {
+            "name": "Занедбані колії",
+            "terms": "Abandoned Railway,pfytlfys gjks, покинуті колії"
+        },
+        "type/restriction": {
+            "name": "Обмеження",
+            "terms": "Restriction, jvttyyz, обмеження"
+        },
+        "playground/seesaw": {
+            "name": "Гойдалка терези",
+            "terms": "забавка,ігровий,майданчик,діти,дитячий,гойдалка.терези"
+        },
+        "shop/bathroom_furnishing": {
+            "name": "Магазин сантехніки",
+            "terms": "сантехніка, ванна кімната"
+        },
+        "shop/beauty/tanning": {
+            "name": "Солярій",
+            "terms": "солярій,засмага,краса,салон,догляд"
+        },
+        "amenity/water_point": {
+            "name": "Заправка питною водою",
+            "terms": "вода,заправка,потяг,кемпінг,табір"
+        },
+        "public_transport/station": {
+            "name": "Громадський транспорт, зупинка/платформа",
+            "terms": "платформа,зупинка,транзит,громадський,транспорт,перевезення,термінал"
+        },
+        "playground/balance_beam": {
+            "name": "Бревно",
+            "terms": "ігровий,майданчик,бревно,розваги"
+        },
+        "leisure/hackerspace": {
+            "name": "Хакерспейс",
+            "terms": "хаклаб,лабораторія,зустріч,хак,спілкування"
+        },
+        "leisure/bandstand": {
+            "name": "Естрада",
+            "terms": "оркестр,виступ,майданчик,музика"
+        },
+        "amenity/food_court": {
+            "name": "Ресторане подвірʼя",
+            "terms": "фудкорт,забігайлівка,кафе,швидко,їжа,центр,торговий,розважальний,кіно,відпочинок,дозвілля,ресторан,суші,піца,кава,напої,тістечка"
+        },
+        "natural/beach": {
+            "name": "Пляж",
+            "terms": "Beach, gkz, пляж"
+        },
+        "junction": {
+            "name": "Перехресття",
+            "terms": "перехрестя, стоп, перехід, пшоход"
+        },
+        "office/coworking": {
+            "name": "Коворкінг",
+            "terms": "офіс,фрілансер,інтернет,робота"
+        },
+        "vertex": {
+            "name": "Інше",
+            "terms": "Other, syit, інше"
+        },
+        "type/boundary": {
+            "name": "Кордон",
+            "terms": "Boundary, rjhljy, кордон"
+        },
+        "man_made/monitoring_station": {
+            "name": "Станція спостереження",
+            "terms": "погода,землетрус,повітря,вода,сейсмологія,землетрус,gps,опади,повіні,рівень"
+        },
+        "aeroway/taxiway": {
+            "name": "Руліжна доріжка",
+            "terms": "taxiway,heks;yf ljhs;rf,руліжна доріжка"
+        },
+        "craft/optician": {
+            "name": "Оптика"
+        },
+        "waterway/waterfall": {
+            "name": "Водоспад",
+            "terms": "водоспад,вода,каскад,пороги,течія"
+        },
+        "office/guide": {
+            "name": "Гід",
+            "terms": "гід,туризм,лекція,супровід"
+        },
+        "type/route": {
+            "name": "Маршрут",
+            "terms": "Route, vfhihen, маршрут"
+        },
+        "amenity/vending_machine/public_transport_tickets": {
+            "name": "Автомат продажу проїзних квитків",
+            "terms": "автобус,трамвай,тролейбус,паром,електричка,квиток,транспорт,громадський,проїзд"
+        },
+        "man_made/embankment": {
+            "name": "Насип"
+        },
+        "shop/tobacco": {
+            "name": "Тютюн",
+            "terms": "цигарки, сигари, кальян, запальничка, дим, тютюн, фільтр, пачка, трубка"
+        },
+        "building/shed": {
+            "name": "Сарай",
+            "terms": "сарай, гараж"
+        },
+        "building/detached": {
+            "name": "Садиба",
+            "terms": "будинок,маєток,садиба"
+        },
+        "shop/charity": {
+            "name": "Доброчинна крамниця",
+            "terms": "благодійний,магазин,дешевий,допомога,одяг,крам"
+        },
+        "healthcare/occupational_therapist": {
+            "name": "Професійний терапевт",
+            "terms": "трудотерапія"
+        },
+        "shop/musical_instrument": {
+            "name": "Магазин музикальних інструментів ",
+            "terms": "музика, інструмент"
+        },
+        "man_made/wastewater_plant": {
+            "name": "Очисні споруди",
+            "terms": "Wastewater Plant, jxbcys cgjhelb, дренаж, очисні споруди"
+        },
+        "landuse/plant_nursery": {
+            "name": "Розплідник рослин",
+            "terms": "vivero,розплідник,рослини,садженці,дерева"
+        },
+        "shop/money_lender": {
+            "name": "Кредитна спілка",
+            "terms": "кредит, спілка, позика, гроші, процент, ставка, строк, розстрочка"
+        },
+        "shop/radiotechnics": {
+            "name": "Радіодеталі",
+            "terms": "деталі, радіо, електроніка, приладдя, запчастини"
+        },
+        "building/college": {
+            "name": "Коледж",
+            "terms": "коледж, технікум, будівля"
+        },
+        "amenity/nursing_home": {
+            "name": "Будинок престарілих"
+        },
+        "shop/ticket": {
+            "name": "Білетна каса",
+            "terms": "білет, каса"
+        },
+        "amenity/social_facility/group_home": {
+            "name": "Будинок пристарілих",
+            "terms": "догляд, будинок, похилий, вік, пристарілий, пенсіонер"
+        },
+        "natural/water/reservoir": {
+            "name": "Резервуар",
+            "terms": "Reservoir, htpthdefh, резервуар"
+        },
+        "craft/saddler": {
+            "name": "Сідельний майстер",
+            "terms": "сідельний майстер, сідло, кінь, верхова їзда"
+        },
+        "landuse/quarry": {
+            "name": "Кар’єр",
+            "terms": "Quarry, rfhh, кр’єр"
+        },
+        "barrier/border_control": {
+            "name": "Прикордонний контроль",
+            "terms": "кордон,контроль,перевірка,служба,країна,прикороднний"
+        },
+        "landuse/basin": {
+            "name": "Водойма"
+        },
+        "leisure/track": {
+            "name": "Гоночний трек (не мотоспорт)",
+            "terms": "перегони,вело,іподром,(не мотоспорт)"
+        },
+        "aerialway/mixed_lift": {
+            "name": "Змішаний підйомник",
+            "terms": "витяг,бугель,підйомник,лижі,сніг,гори,відпочинок,дозвілля,спорт,сноуборд"
+        },
+        "shop/paint": {
+            "name": "Магазин фарб",
+            "terms": "фарби, пензлі, розчинник, колір"
+        },
+        "historic/ruins": {
+            "name": "Руїни",
+            "terms": "Ruins, heyb, руїни"
+        },
+        "highway/secondary": {
+            "name": "Другорядна дорога",
+            "terms": "Secondary Road, lheujhzlyf ljhjuf, другорядна дорога"
+        },
+        "natural/fell": {
+            "name": "Пасовище",
+            "terms": "Fell, gfcjdbot, пасовище"
+        },
+        "natural/heath": {
+            "name": "Пустир/вереск",
+            "terms": "Heath, gecnbh, степ, верес, пустище"
+        },
+        "landuse/greenfield": {
+            "name": "Ділянка під нову забудову",
+            "terms": "будівництво,ділянка,місце,план"
+        },
+        "office/accountant": {
+            "name": "Бухгалтер",
+            "terms": "облік,фінанси,аудит,послуги,бухгалтерія"
+        },
+        "shop/leather": {
+            "name": "Магазин шкіри",
+            "terms": "шкіра, шкіряні вироби"
+        },
+        "building/commercial": {
+            "name": "Комерційна нерухомість",
+            "terms": "Commercial Building,rjvthwsqyf ythejvscnm, комерційна нерухомість"
+        },
+        "amenity/bicycle_parking": {
+            "name": "Вело-парковка",
+            "terms": "Bicycle Parking,dtkj-gfhrjdrf,велопарковка,ровер,велосипед"
+        },
+        "amenity/compressed_air": {
+            "name": "Стисненне повітря",
+            "terms": "стиснене повітря"
+        },
+        "man_made/water_well": {
+            "name": "Водяна свердловина",
+            "terms": "свердловина, колодязь, криниця"
+        },
+        "shop/organic": {
+            "name": "Органічна їжа",
+            "terms": "магазин, їжа, органічна, корисна, без добрив"
+        },
+        "waterway/ditch": {
+            "name": "Канава",
+            "terms": "Ditch, rfyfdf, канава"
+        },
+        "power/generator/source/wind": {
+            "name": "Вітрова турбіна"
+        },
+        "leisure/fitness_station/stairs": {
+            "name": "Сходи",
+            "terms": "сходи,фітнес,майданчик,спорт,тренажер"
+        },
+        "landuse/railway": {
+            "name": "Територія залізниці",
+            "terms": "залізниця,територія,транспорт,коридор"
+        },
+        "amenity/cinema": {
+            "name": "Кінотеатр",
+            "terms": "Cinema, rsyjntfnh, кіно, кінематографія, кінотеатр"
+        },
+        "type/route/bus": {
+            "name": "Автобусний маршрут",
+            "terms": "Bus Route, fdnjecybq vfhihen, автобусний маршрут"
+        },
+        "natural/water/stream": {
+            "name": "Струмок"
+        },
+        "type/route_master": {
+            "name": "Маршрут громадського транспорту",
+            "terms": "Route Master,nhfycgjhnybq vfhihen,транспортний маршрут,маршрут,громадський,транспорт"
+        },
+        "landuse/farm": {
+            "name": "Сільськогосподарські угіддя"
+        },
+        "public_transport/platform_subway": {
+            "name": "Метро, зупинка/платформа",
+            "terms": "метро,підземка,платформа,зупинка,транзит,громадський,транспорт,перевезення"
+        },
+        "natural/wood": {
+            "name": "Дерева",
+            "terms": "Wood, lthtdf, дерева, ліс"
+        },
+        "amenity/restaurant/chinese": {
+            "name": "Китайський ресторан"
+        },
+        "leisure/pitch/rugby_union": {
+            "name": "Поле для регбі",
+            "terms": "регбіюніон,юніон,регбі,м'яч,м’яч,поле,майданчик,спорт"
+        },
+        "craft/distillery": {
+            "name": "Ґуральня",
+            "terms": "горілка,вино,віски,коньяк,спирт,лікьор,настойка"
+        },
+        "aeroway/apron": {
+            "name": "Перон",
+            "terms": "Apron,перон,gthjy"
+        },
+        "shop/tattoo": {
+            "name": "Тату салон",
+            "terms": "тату салон"
+        },
+        "shop/health_food": {
+            "name": "Магазин здорового харчування",
+            "terms": "харчові добавки,вітаміни,вегеріанский,веганський"
+        },
+        "playground/roundabout": {
+            "name": "Карусель",
+            "terms": "забавка,ігровий,майданчик,діти,дитячий,карусель,крутилка,ручна"
+        },
+        "shop/optician": {
+            "name": "Оптика",
+            "terms": "окуліст, окуляри, лінзи"
+        },
+        "public_transport/platform_light_rail": {
+            "name": "Швидкісний трамвай, зупинка/платформа",
+            "terms": "електричка,трамвай,рейки,дроти,електротранспорт,перевезення,громадський,транспорт"
+        },
+        "type/route/foot": {
+            "name": "Пішохідний маршрут",
+            "terms": "Foot Route, gsijslybq vfhihen, пішохідний маршрут"
+        },
+        "barrier/block": {
+            "name": "Блок",
+            "terms": "Block, kjr, перешкода, кам’яна брила, блок"
+        },
+        "amenity/theatre/type/amphi": {
+            "name": "Амфітеатр"
+        },
+        "relation": {
+            "name": "Зв’язок",
+            "terms": "Relation, pdzpjr, зв’язок"
+        },
+        "shop/medical_supply": {
+            "name": "Медтехніка",
+            "terms": "магазин, медицина, техніка, обладнання, препарати"
+        },
+        "type/restriction/only_straight_on": {
+            "name": "ТІльки прямо",
+            "terms": "рух,прямо,заборона"
+        },
+        "landuse/industrial/scrap_yard": {
+            "name": "Авторозборка",
+            "terms": "автомобіль,вживаний,частина,запасна,брухт"
+        },
+        "amenity/recycling": {
+            "name": "Переробка вторсировини"
+        },
+        "camp_site/camp_pitch": {
+            "name": "Місце стоянки",
+            "terms": "платка,фургон,мотодім,автодім,караван,місце,ділянка"
+        },
+        "shop/gas": {
+            "name": "Продаж зрідженого газу",
+            "terms": "газ,пропан,балон,рідина,зріджений,заправка"
+        },
+        "landuse/commercial": {
+            "name": "Діловий район",
+            "terms": "офис, бізнес, торгівля, ринок, магазин"
+        },
+        "natural/ridge": {
+            "name": "Гірський хребет",
+            "terms": "гори,скелі,хребет,перевал,гребінь"
+        },
+        "natural": {
+            "name": "Природа"
+        },
+        "aerialway/magic_carpet": {
+            "name": "Стрічковий транспортер",
+            "terms": "стрічковий,транспортер,підйомник,конвеєрний,cnhsxrjdbq nhfcgjhnth,cnhsxrjdbq gslqkvybr,rjydt'hybq gslqjvybr,magic carpet lift"
+        },
+        "amenity/post_box": {
+            "name": "Поштова скриня",
+            "terms": "Mailbox, gjinjdf crhbyz, поштова скринька, пошта, лист"
+        },
+        "public_transport/station_tram": {
+            "name": "Трамвайна станція",
+            "terms": "трамвай,вагон,електротранспорт,рейки,дроти,платформа,зупинка,транзит,громадський,транспорт,перевезення"
+        },
+        "emergency/official": {
+            "name": "Доступ для аварійно-рятувальних служб відповідно до законодавста"
+        },
+        "playground/sandpit": {
+            "name": "Пісочниця",
+            "terms": "забавка,ігровий,майданчик,діти,дитячий,пісочниця,пісок"
+        },
+        "railway/derail": {
+            "name": "Залізничний дерейлер",
+            "terms": "дерейлер,перепона,залізниця,рейки"
+        },
+        "leisure/bowling_alley": {
+            "name": "Боулінг",
+            "terms": "боулінг,кеглі,доріжка,розваги,дозвілля,центр,спорт,10"
+        },
+        "man_made/mast": {
+            "name": "Мачта",
+            "terms": "мачта,антена,вежа,радіо,телебачення,зв'язок,мобільний,стільниковий"
+        },
+        "attraction/river_rafting": {
+            "name": "Катання річковими порогами",
+            "terms": "розваги,прак,пороги,річка,вода,сплав,імітація"
+        },
+        "leisure/bird_hide": {
+            "name": "Пункт спостереження",
+            "terms": "птахи,звіри,природа,тварини"
+        },
+        "amenity/vending_machine/cigarettes": {
+            "name": "Автомат продажу цигарок",
+            "terms": "циграки,торгівля,тютюн,палити,автомат,кіоск"
+        },
+        "craft/tiler": {
+            "name": "Плиточник",
+            "terms": "кахель, плитка, кахельник"
+        },
+        "shop/frame": {
+            "name": "Сільгосптовари",
+            "terms": "село, ферма, продукти, їжа, домашнє"
+        },
+        "barrier/kerb": {
+            "name": "Бордюр"
+        },
+        "leisure/nature_reserve": {
+            "name": "Заповідник",
+            "terms": "заповідник, заказник, охорона, природа, територія, акваторія, природний парк"
+        },
+        "shop/antiques": {
+            "name": "Антикварний магазин  ",
+            "terms": "антикваріат"
+        },
+        "playground/basket_spinner": {
+            "name": "Кошик карусель",
+            "terms": "кошик,забавка,гойдалка,крутилка,ігровий,майданчик,діти,дитячий,карусель"
+        },
+        "shop/fabric": {
+            "name": "Магазин тканин",
+            "terms": "такнина"
+        },
+        "craft/brewery": {
+            "name": "Пивовар",
+            "terms": "пиво, пивоварня, солод, хміль, піна, кухоль"
+        },
+        "highway/turning_circle": {
+            "name": "Місце для розвороту",
+            "terms": "Turning Circle, vscwt lkz hjdjhjne, місце для розвороту"
+        },
+        "shop/coffee": {
+            "name": "Крамниця кави",
+            "terms": "кава,крамниця,магазин"
+        },
+        "shop/e-cigarette": {
+            "name": "Магазин Е-цигарок",
+            "terms": "електроні,цигарки,магазин,рідина,аромат,мундштук"
+        },
+        "tourism/wilderness_hut": {
+            "name": "Лісова хатинка",
+            "terms": "притулок,халупа,хатка"
+        },
+        "amenity/dive_centre": {
+            "name": "Центр навчання підводного плавання",
+            "terms": "акваланг,скуба,пірнання,навчання,тренування"
+        },
+        "amenity/vending_machine/feminine_hygiene": {
+            "name": "Автомат з продажу засобів жіночої гігієни",
+            "terms": "презерватив,тампон,прокладка,жінка,жінки,засоби,гігієна,менструація,циклу,догляд,особистий"
+        },
+        "shop/clothes": {
+            "name": "Одяг",
+            "terms": "Clothing Store, jlzu, одяг"
+        },
+        "aeroway/aerodrome": {
+            "name": "Аеропорт",
+            "terms": "airport,аеропорт,аеродром,летовище,fthjgjhn,fthjlhjv,ktnjdbot"
+        },
+        "amenity/bicycle_rental": {
+            "name": "Прокат велосипедів",
+            "terms": "Bicycle Rental,ghjrfn dtkjcbgtlsd,прокат,велосипед"
+        },
+        "shop/gift": {
+            "name": "Подарунки",
+            "terms": "Gift Shop, gjlfheyrb, сувеніри, подарунки"
+        },
+        "craft/locksmith": {
+            "name": "Слюсар"
+        },
+        "leisure/sports_centre": {
+            "name": "Спортивний центр/комплекс",
+            "terms": "зал,спортивний центр,спорт"
+        },
+        "place": {
+            "name": "Місцевість"
+        },
+        "power": {
+            "name": "Енергетика"
+        },
+        "public_transport/platform_train": {
+            "name": "Залізнична зупинка/платформа",
+            "terms": "залізниця,потяг,вагон,платформа,зупинка,транзит,громадський,транспорт,перевезення"
+        },
+        "leisure/fitness_station/push-up": {
+            "name": "Низька перекладина",
+            "terms": "перекладина,віджимання,фітнес,майданчик,спорт,тренажер"
+        },
+        "aerialway/station": {
+            "name": "Станція канатної дороги"
+        },
+        "building/house": {
+            "name": "Дім",
+            "terms": "house,lsv,житловий будинок,дім,житло,маєток"
+        },
+        "leisure/marina": {
+            "name": "Пристань для яхт",
+            "terms": "Marina, ghbcnfym lkz zn, пристань для яхт"
+        },
+        "craft/tailor": {
+            "name": "Кравець"
+        },
+        "amenity/restaurant/american": {
+            "name": "Американський ресторан"
+        },
+        "barrier/gate": {
+            "name": "Ворота",
+            "terms": "Gate, djhjnf, ворота"
+        },
+        "shop/motorcycle": {
+            "name": "Мотомагазин",
+            "terms": "Motorcycle Dealership,vjnjvfufpby, мотоцикли"
+        },
+        "waterway/river": {
+            "name": "Ріка",
+            "terms": "River, hsrf, річка"
+        },
+        "office/architect": {
+            "name": "Архітектор",
+            "terms": "бюро,архітектура,будівництво,проектування"
+        },
+        "railway/subway": {
+            "name": "Метрополітен",
+            "terms": "Subway, vtnhjgjksnty, підземка, метро"
+        },
+        "highway/elevator": {
+            "name": "Ліфт",
+            "terms": "ліфт,підйомник"
+        },
+        "railway/miniature": {
+            "name": "Міні-залізниця",
+            "terms": "залізниця,розваги,парк,атракціон"
+        },
+        "shop/carpet": {
+            "name": "Магазин килимів ",
+            "terms": "килим, покриття"
+        },
+        "craft": {
+            "name": "Майстерня",
+            "terms": "майстерня, рукоділля, ручна робота"
+        },
+        "traffic_calming/chicane": {
+            "name": "Шикана",
+            "terms": "шикана,перешкода,обмеження,швидкість,безпека"
+        },
+        "public_transport/station_bus": {
+            "name": "Автостанція/Термінал",
+            "terms": "автобус,платформа,зупинка,вокзал,станція,транзит,громадський,транспорт,перевезення"
+        },
+        "shop/butcher": {
+            "name": "М’ясна лавка",
+            "terms": "Butcher, vzcyf kfdrf, м’ясо, м’ясний відділ"
+        },
+        "barrier/bollard": {
+            "name": "Стовпчик",
+            "terms": "Bollard, cnjdgxbr, стовп, кнехт, стовпчик"
+        },
+        "leisure/golf_course": {
+            "name": "Поле для гольфу",
+            "terms": "Golf Course, gjkt lkz ujkmae, поле для гольфу"
+        },
+        "barrier": {
+            "name": "Перепони",
+            "terms": "Barrier, gthtgjyb, бар’єр, шлагбаум, перешкода, рубіж, межа, застава, лінія поділу, огорожа, перемичка, поручні, перепона"
+        },
+        "historic/castle": {
+            "name": "За́мок",
+            "terms": "Castle, pfvjr, замок"
+        },
+        "office/surveyor": {
+            "name": "Експет-оцінщик",
+            "terms": "експертна,оцінка,будівлі,споруди,транспорт,автомобіль,земельна,ділянка"
+        },
+        "shop/car_repair": {
+            "name": "Автомайстерня",
+            "terms": "Car Repair Shop, fdnjvfqcnthyz, автосервіс"
+        },
+        "craft/hvac": {
+            "name": "Опалення, вентиляція та кондиціювання повітря",
+            "terms": "HVAC, jgfktyyz, dеynbkzwsz, rjylbwsdfyyz gjdsnhz, опалення, вентиляція, кондицівання повітря"
+        },
+        "highway/path": {
+            "name": "Стежка",
+            "terms": "Path, cntrf, тропа"
+        },
+        "leisure/water_park": {
+            "name": "Аквапарк",
+            "terms": "розваги,вода,горка,басейн,пірнання,душова,роздягальня,веселощі,гідромасаж"
+        },
+        "shop/sewing": {
+            "name": "Приладдя для шиття",
+            "terms": "нитки,голки,пряжа,в'язальні спиці,швейні машини"
+        },
+        "attraction/train": {
+            "name": "Туристичний потяг",
+            "terms": "парк,розваги,атракціон,потяг,чух-чух"
+        },
+        "landuse/meadow": {
+            "name": "Левада",
+            "terms": "Meadow, ktdflf, левада"
+        },
+        "shop/convenience": {
+            "name": "Міні-маркет",
+            "terms": "Convenience Store,vsys-vfhrtn, ларьок, магазин, міні-маркет"
+        },
+        "amenity/bus_station": {
+            "name": "Автостанція/Термінал"
+        },
+        "highway/steps/conveying": {
+            "name": "Ескалатор"
+        },
+        "shop/books": {
+            "name": "Книжковий магазин",
+            "terms": "книга, видавництво,"
+        },
+        "highway/service": {
+            "name": "Службовий проїзд",
+            "terms": "Service Road, ckejdbq ghjpl, службовий проїзд"
+        },
+        "waterway/drain": {
+            "name": "Дренажний канал",
+            "terms": "Drain, lhtyfybq rfyfk, стічна канава, дренаж"
+        },
+        "highway/residential": {
+            "name": "Вулиця",
+            "terms": "Residential Road, dekbwz, дорога місцевого значення, вулиця"
+        },
+        "historic/wayside_shrine": {
+            "name": "Придорожня рака",
+            "terms": "Wayside Shrine, ghbljhjyz hfrf, гробниця, рака, придорожня рака"
+        },
+        "type/boundary/administrative": {
+            "name": "Адміністративний кордон",
+            "terms": "Administrative Boundary, flvsyscnhfnbdybq rjhljy, адміністративний кордон"
+        },
+        "landuse/military/office": {
+            "name": "Військовий офіс",
+            "terms": "штаб,рекрут,військовий комісаріат,міністерство,учбовий центр,навчання,керування"
+        },
+        "amenity/watering_place": {
+            "name": "Водопій",
+            "terms": "вода,тварини,напувати,пити,корови,коні,кінь,птахи,свійськх,дикі"
+        },
+        "public_transport/station_train_halt": {
+            "name": "Полустанок (на вимогу)",
+            "terms": "залізнична,платформа,зупинка,вокзал,станція,транзит,громадський,транспорт,перевезення,(на вимогу)"
+        },
+        "emergency/ambulance_station": {
+            "name": "Станція швидкої медичної допомоги",
+            "terms": "Ambulance Station,cnfywsz idblrj vtlbxyj ljgjvjub, швидка допомога, перша допомога, станція швидкої допомоги"
+        },
+        "healthcare/podiatrist": {
+            "name": "Ортопед",
+            "terms": "суглоби,коліна,ноги,нігті"
+        },
+        "amenity/motorcycle_parking": {
+            "name": "Стоянка для мотоциклів",
+            "terms": "стоянка,мотоцикл"
+        },
+        "shop/craft": {
+            "name": "Мистецтво та ремесла",
+            "terms": "магазин, вироби, мистетство, ремесло, сувенір"
+        },
+        "line": {
+            "name": "Лінія",
+            "terms": "Line, ksysz, лінія"
+        },
+        "amenity/kindergarten": {
+            "name": "Підготовча школа / Територія дитсадка",
+            "terms": "дитсадок, дошкільна підготовка, ясла"
+        },
+        "man_made/tower/observation": {
+            "name": "Оглядова вежа"
+        },
+        "waterway/weir": {
+            "name": "Водозлив",
+            "terms": "Weir, djljpkbd, водозлив"
+        },
+        "craft/metal_construction": {
+            "name": "Металоконструкції",
+            "terms": "метал, будівництво, конструкції"
+        },
+        "craft/painter": {
+            "name": "Маляр",
+            "terms": "маляр, художник, фарба, декоратор"
+        },
+        "public_transport/stop_area": {
+            "name": "Територія зупинки",
+            "terms": "платформа,зупинка,транзит,громадський,транспорт,перевезення,термінал"
+        },
+        "craft/carpet_layer": {
+            "name": "Устелювач килимів",
+            "terms": "килими, настилання"
+        },
+        "man_made/flagpole": {
+            "name": "Флагшток",
+            "terms": "флагшток"
+        },
+        "tourism/attraction": {
+            "name": "Визначне місце",
+            "terms": "Tourist Attraction, dbpyfxyt vscwt, визначні місця"
+        },
+        "man_made": {
+            "name": "Штучні споруди"
+        },
+        "golf/fairway": {
+            "name": "Фервей",
+            "terms": "Fairway, Фервей, трава, низька, гладенька"
+        },
+        "leisure/fitness_station/sit-up": {
+            "name": "Прес",
+            "terms": "прес,фітнес,майданчик,тренажер,спорт"
+        },
+        "public_transport/station_subway": {
+            "name": "Станція метро",
+            "terms": "метро,підземка,платформа,станція,зупинка,транзит,громадський,транспорт,перевезення"
+        },
+        "tourism/alpine_hut": {
+            "name": "Гірський притулок",
+            "terms": "Alpine Hut, ushcmrbq ghbnekjr, колиба, гірська хатинка"
+        },
+        "tourism/information/office": {
+            "name": "Туристична довідкова служба",
+            "terms": "туризм,інформація,гід,довідка,допомога"
+        },
+        "shop/alcohol": {
+            "name": "Алкогольні напої",
+            "terms": "Liquor Store, fkrjujkmys yfgj, алкоголь"
+        },
+        "tourism/viewpoint": {
+            "name": "Оглядовий майданчик",
+            "terms": "Viewpoint, jukzljddbq vfqlfyxbr, оглядовий майданчик"
+        },
+        "craft/handicraft": {
+            "name": "Ручна робота",
+            "terms": "майстерність, ручна робота, ремесло"
+        },
+        "landuse/construction": {
+            "name": "Будівництво",
+            "terms": "Construction, elsdybwndj, будівництво"
+        },
+        "shop/trade": {
+            "name": "Оптово-роздрібний склад",
+            "terms": "опт,гурт,роздріб"
+        },
+        "shop/motorcycle_repair": {
+            "name": "Ремонт мотоциклів",
+            "terms": "ремонт,мотоцикл,гараж,сервіс"
+        },
+        "aeroway": {
+            "name": "Аеропорт"
+        },
+        "aeroway/terminal": {
+            "name": "Термінал",
+            "terms": "аеропорт,термінал,літак,очікування,duty-free,дьюті-фрі,зала"
+        },
+        "emergency/life_ring": {
+            "name": "Рятувальний круг",
+            "terms": "круг,рятувальний,буй,жилет"
+        }
+    }
+}

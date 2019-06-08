@@ -634,4 +634,5 @@
     <string name="quest_traffic_signals_button_title">"Έχουν αυτά τα φανάρια κουμπί για να ανάψει το πράσινο φως;"</string>
     <string name="quest_motorcycleParkingCapacity_title">"Πόσες μοτοσυκλέτες μπορούν να σταθμεύσουν εδώ;"</string>
     <string name="quest_motorcycleParkingCoveredStatus_title">"Αυτό το πάρκινγκ μοτοσυκλετών καλύπτεται (προστατεύεται από τη βροχή);"</string>
+    <string name="quest_buildingType_title">"Τι είδους κτίριο είναι αυτό;"</string>
 </resources>

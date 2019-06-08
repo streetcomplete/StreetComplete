@@ -1,0 +1,190 @@
+{
+    "presets": {
+        "vertex": {
+            "name": "ఇతర"
+        },
+        "highway/steps": {
+            "name": "మెట్లు"
+        },
+        "amenity/drinking_water": {
+            "name": "తాగే నీరు"
+        },
+        "leisure/park": {
+            "name": "పార్కు"
+        },
+        "place/city": {
+            "name": "నగరం"
+        },
+        "type/route/foot": {
+            "name": "కాలి బాట"
+        },
+        "office": {
+            "name": "కార్యాలయం"
+        },
+        "building": {
+            "name": "కట్టడం"
+        },
+        "leisure/garden": {
+            "name": "తోట"
+        },
+        "relation": {
+            "name": "సంబంధం"
+        },
+        "natural/water/pond": {
+            "name": "సరస్సు"
+        },
+        "highway/path": {
+            "name": "దారి"
+        },
+        "leisure/swimming_pool": {
+            "name": "ఈత కొలను"
+        },
+        "natural/water": {
+            "name": "నీళ్ళు"
+        },
+        "waterway/stream": {
+            "name": "కాలువ"
+        },
+        "place/town": {
+            "name": "పట్టణం"
+        },
+        "railway": {
+            "name": "రైల్వే"
+        },
+        "amenity/library": {
+            "name": "గ్రంథాలయం"
+        },
+        "power/pole": {
+            "name": "కరెంటు స్తంభం"
+        },
+        "tourism/information": {
+            "name": "సమాచారం"
+        },
+        "amenity/toilets": {
+            "name": "మరుగుదొడ్లు"
+        },
+        "natural/water/lake": {
+            "name": "చెరువు"
+        },
+        "barrier/fence": {
+            "name": "కంచె"
+        },
+        "amenity/bank": {
+            "name": "బ్యాంకు",
+            "terms": "బ్యాంకు"
+        },
+        "shop/supermarket": {
+            "name": "సుపర్ మార్కెట్"
+        },
+        "type/boundary/administrative": {
+            "name": "పరిపాలనా సరిహద్దు"
+        },
+        "amenity/grave_yard": {
+            "name": "స్మశానం"
+        },
+        "highway/traffic_signals": {
+            "name": "ట్రాఫిక్ సిగ్నళ్ళు"
+        },
+        "shop/toys": {
+            "name": "బొమ్మల కొట్టు"
+        },
+        "place/village": {
+            "name": "గ్రామం"
+        },
+        "tourism/zoo": {
+            "name": "జూ"
+        },
+        "amenity/restaurant": {
+            "name": "రెస్టారెంట్"
+        },
+        "landuse/grass": {
+            "name": "పచ్చిక"
+        },
+        "amenity/police": {
+            "name": "పోలీసు"
+        },
+        "line": {
+            "name": "గీత"
+        },
+        "building/hut": {
+            "name": "గుడిసె"
+        },
+        "point": {
+            "name": "బిందువు"
+        },
+        "waterway/canal": {
+            "name": "కాలువ",
+            "terms": "కాలువ"
+        },
+        "tourism/hotel": {
+            "name": "హోటెల్"
+        },
+        "aeroway/aerodrome": {
+            "name": "విమానాశ్రయం",
+            "terms": "విమానాశ్రయం"
+        },
+        "waterway/riverbank": {
+            "name": "నది ఒడ్డు"
+        },
+        "natural/wetland": {
+            "name": "తడినేల"
+        },
+        "amenity/post_office": {
+            "name": "తపాలా కార్యాలయం"
+        },
+        "shop/vacant": {
+            "name": "ఖాళీ దుకాణం"
+        },
+        "natural/tree": {
+            "name": "చెట్టు"
+        },
+        "building/house": {
+            "name": "ఇల్లు"
+        },
+        "address": {
+            "name": "చిరునామా",
+            "terms": "చిరునామా"
+        },
+        "historic": {
+            "name": "చారిత్రక ప్రదేశం"
+        },
+        "highway/primary_link": {
+            "name": "ముఖ్య లంకె"
+        },
+        "amenity/place_of_worship/buddhist": {
+            "name": "బౌద్ధ ఆలయం"
+        },
+        "amenity/pub": {
+            "name": "పబ్"
+        },
+        "amenity/cinema": {
+            "name": "సినిమా హాలు"
+        },
+        "waterway/dam": {
+            "name": "ఆనకట్ట",
+            "terms": "ఆనకట్ట"
+        },
+        "tourism/museum": {
+            "name": "మ్యూజియం"
+        },
+        "highway/footway": {
+            "name": "కాల్దారి"
+        },
+        "leisure/playground": {
+            "name": "ఆటమైదానం"
+        },
+        "leisure/pitch/tennis": {
+            "name": "టెన్నిస్ కోర్టు"
+        },
+        "waterway/river": {
+            "name": "నది",
+            "terms": "నది"
+        },
+        "amenity/swimming_pool": {
+            "name": "ఈత కొలను"
+        },
+        "barrier/wall": {
+            "name": "గోడ"
+        }
+    }
+}

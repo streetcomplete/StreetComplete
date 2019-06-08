@@ -194,6 +194,7 @@ However, before uploading your changes, the app checks with a &lt;a href=\"https
     <string name="quest_surface_value_sett">"Sett"</string>
     <string name="quest_surface_value_wood">"Wood"</string>
     <string name="quest_placeName_title">"What is the name of this place?"</string>
+    <string name="quest_placeName_title_name">"What is the name of this place? (%s)"</string>
     <string name="quest_sidewalk_title">"Does this street have a sidewalk?"</string>
     <string name="quest_busStopName_title">"What is the name of this bus stop?"</string>
     <string name="quest_tramStopName_title">"What is the name of this streetcar stop?"</string>
@@ -508,6 +509,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_maxspeed_name_title2">What is the speed limit for %s here?</string>
     <string name="pref_quests_reset">Reset both quest enablement and order to the default?</string>
 
+    <string name="quest_buildingType_title">"What kind of building is this?"</string>
     <string name="quest_buildingType_title2">"What was this building constructed as?"</string>
     <string name="quest_generic_item_invalid_value">Please select a more specific value.</string>
     <string name="quest_buildingType_answer_multiple_types">It has multiple purposes</string>
@@ -641,5 +643,16 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_sidewalk_value_yes">sidewalk</string>
     <string name="quest_sidewalk_value_no">no sidewalk</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">Are pedestrians prohibited from walking on this road here?</string>
+    <string name="pref_category_theme">Theme</string>
+    <string name="pref_title_theme_select">Select theme</string>
+    <string name="theme_automatic">Auto</string>
+    <string name="theme_light">Light</string>
+    <string name="theme_dark">Dark</string>
+    <string name="theme_system_default">System default</string>
     <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">This street was tagged as having no sidewalk on either side. In the case that there is a sidewalk after all but it is displayed as a separate way, please answer \"sidewalk\".</string>
+    <string name="action_open_location">Open location in another app</string>
+    <string name="map_application_missing">No other map application installed</string>
+    <string name="label_housenumber">house number</string>
+    <string name="label_blocknumber">block number</string>
+    <string name="quest_busStopShelter_covered">Whole stop is covered</string>
 </resources>

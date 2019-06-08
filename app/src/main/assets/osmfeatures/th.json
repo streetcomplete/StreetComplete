@@ -1,0 +1,28 @@
+{
+    "presets": {
+        "area": {
+            "name": "พื้นที่"
+        },
+        "waterway/waterfall": {
+            "name": "น้ำตก"
+        },
+        "waterway/weir": {
+            "name": "ประตูน้ำ/ฝาย"
+        },
+        "line": {
+            "name": "เส้น"
+        },
+        "waterway/drain": {
+            "name": "ลำราง/ทางระบายน้ำ"
+        },
+        "waterway/riverbank": {
+            "name": "ตลิ่งแม่น้ำ"
+        },
+        "point": {
+            "name": "จุด"
+        },
+        "waterway/river": {
+            "name": "แม่น้ำ"
+        }
+    }
+}

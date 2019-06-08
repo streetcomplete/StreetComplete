@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.tangram;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.graphics.PointF;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -124,7 +125,18 @@ public class MapFragment extends Fragment implements
 
 	public void getMapAsync(String apiKey)
 	{
-		getMapAsync(apiKey, "map_theme/scene.yaml");
+		getMapAsync(apiKey, getSceneFilePath());
+	}
+
+	protected String getSceneFilePath()
+	{
+		String scene = "scene-light.yaml";
+		int currentNightMode = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+		if (currentNightMode == Configuration.UI_MODE_NIGHT_YES)
+		{
+			scene = "scene-dark.yaml";
+		}
+		return "map_theme/" + scene;
 	}
 
 	@CallSuper public void getMapAsync(String apiKey, @NonNull final String sceneFilePath)
@@ -642,14 +654,42 @@ public class MapFragment extends Fragment implements
 		onMapOrientation(rotation, tilt);
 	}
 
-	public float getRotation()
+	public LngLat getPositionAt(PointF pointF)
 	{
-		return controller != null ? controller.getRotation() : 0;
+		LngLat pos = controller.screenPositionToLngLat(pointF);
+		if(pos == null) return null;
+		return pos;
+	}
+
+	public PointF getPointOf(LngLat pos)
+	{
+		return controller.lngLatToScreenPosition(pos);
+	}
+
+	public LngLat getPosition()
+	{
+		if(controller == null) return null;
+		return controller.getPosition();
+	}
+
+	public void setPosition(LngLat position)
+	{
+		controller.setPosition(position);
 	}
 
 	public float getZoom()
 	{
 		return controller.getZoom();
+	}
+
+	public void setZoom(float zoom)
+	{
+		controller.setZoom(zoom);
+	}
+
+	public float getRotation()
+	{
+		return controller != null ? controller.getRotation() : 0;
 	}
 
 	public void showMapControls()

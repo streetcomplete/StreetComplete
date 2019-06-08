@@ -23,7 +23,7 @@ import de.westnordost.streetcomplete.quests.note_discussion.NoteDiscussionForm;
 import de.westnordost.streetcomplete.quests.postbox_collection_times.AddCollectionTimesForm;
 import de.westnordost.streetcomplete.settings.SettingsActivity;
 import de.westnordost.streetcomplete.settings.SettingsFragment;
-import de.westnordost.streetcomplete.settings.QuestSelectionFragment;
+import de.westnordost.streetcomplete.settings.questselection.QuestSelectionFragment;
 import de.westnordost.streetcomplete.statistics.AnswersCounter;
 import de.westnordost.streetcomplete.tangram.MapControlsFragment;
 import de.westnordost.streetcomplete.tangram.QuestsMapFragment;
@@ -43,7 +43,7 @@ public interface ApplicationComponent
 	void inject(QuestChangesUploadService questChangesUploadService);
 	void inject(QuestDownloadService questChangesDownloadService);
 
-	void inject(SettingsFragment settingsFragment);
+	void inject(SettingsFragment.InjectedFields settingsFragment);
 	void inject(SettingsActivity settingsActivity);
 
 	void inject(AnswersCounter answersCounter);
@@ -63,7 +63,7 @@ public interface ApplicationComponent
 
 	void inject(MapControlsFragment mapControlsFragment);
 
-	void inject(QuestSelectionFragment questSelectionFragment);
+	void inject(QuestSelectionFragment.InjectedFields questSelectionFragment);
 
 	void inject(AddBuildingLevelsForm fragment);
 	void inject(ChangesetAutoCloserWorker worker);

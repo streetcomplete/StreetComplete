@@ -617,4 +617,5 @@ F.eks. 1,3 eller 2-6."</string>
     <string name="quest_buildingType_shrine">"Helligdom"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
     <string name="action_deselect_all">"Fravælg alle"</string>
+    <string name="quest_buildingType_title">"Hvilken slags bygning er dette?"</string>
 </resources>

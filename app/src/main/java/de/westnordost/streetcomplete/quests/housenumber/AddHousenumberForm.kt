@@ -32,6 +32,7 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
     private var houseNameInput: EditText? = null
     private var conscriptionNumberInput: EditText? = null
     private var streetNumberInput: EditText? = null
+    private var blockNumberInput: EditText? = null
 
     private var isHousename: Boolean = false
 
@@ -50,15 +51,10 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
     }
 
     override fun onClickOk() {
-        if (houseNameInput != null) {
-            applyAnswer(HouseName(houseNameInput!!.trimmedInput))
-        } else if (conscriptionNumberInput != null && streetNumberInput != null) {
-            applyConscriptionNumberAnswer(
-                conscriptionNumberInput!!.trimmedInput,
-                streetNumberInput!!.trimmedInput
-            )
-        } else if (houseNumberInput != null) {
-            applyHouseNumberAnswer(houseNumberInput!!.trimmedInput)
+        createAnswer()?.let { answer ->
+            confirmHousenumber(answer.looksInvalid()) {
+                applyAnswer(answer)
+            }
         }
     }
 
@@ -95,28 +91,6 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
         }
     }
 
-    private fun applyHouseNumberAnswer(houseNumber: String) {
-        val looksInvalid = !houseNumber.matches(getValidHousenumberRegex())
-
-        confirmHousenumber(looksInvalid) {
-            applyAnswer(HouseNumber(houseNumber))
-        }
-    }
-
-    private fun applyConscriptionNumberAnswer(conscriptionNumber: String, streetNumber: String) {
-        var looksInvalid = !conscriptionNumber.matches(VALID_CONSCRIPTIONNUMBER_REGEX.toRegex())
-        if (streetNumber.isNotEmpty()) {
-            looksInvalid = looksInvalid || !streetNumber.matches(getValidHousenumberRegex())
-        }
-
-        confirmHousenumber(looksInvalid) {
-            applyAnswer(ConscriptionNumber(
-                conscriptionNumber,
-                // streetNumber is optional
-                streetNumber = if(streetNumber.isNotEmpty()) streetNumber else null))
-        }
-    }
-
     // i.e. "95-98" or "5,5a,6" etc. (but not: "1, 3" or "3 - 5" or "5,6-7")
     private fun getValidHousenumberRegex(): Regex {
         var regex = VALID_HOUSENUMBER_REGEX
@@ -127,11 +101,7 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
         return "^$regex((-$regex)|(,$regex)+)?".toRegex()
     }
 
-    override fun isFormComplete(): Boolean {
-        // streetNumber is always optional
-        val input = getFirstNonNull(houseNumberInput, houseNameInput, conscriptionNumberInput)
-        return input?.trimmedInput?.isNotEmpty() ?: false
-    }
+    override fun isFormComplete() = createAnswer() != null
 
     private fun setLayout(layoutResourceId: Int) {
         val view = setContentView(layoutResourceId)
@@ -140,15 +110,17 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
         houseNameInput = view.findViewById(R.id.houseNameInput)
         conscriptionNumberInput = view.findViewById(R.id.conscriptionNumberInput)
         streetNumberInput = view.findViewById(R.id.streetNumberInput)
+        blockNumberInput = view.findViewById(R.id.blockNumberInput)
 
         val onChanged = TextChangedWatcher { checkIsFormComplete() }
         houseNumberInput?.addTextChangedListener(onChanged)
         houseNameInput?.addTextChangedListener(onChanged)
         conscriptionNumberInput?.addTextChangedListener(onChanged)
         streetNumberInput?.addTextChangedListener(onChanged)
+        blockNumberInput?.addTextChangedListener(onChanged)
 
         // streetNumber is always optional
-        val input = getFirstNonNull(houseNumberInput, houseNameInput, conscriptionNumberInput)
+        val input = getFirstNonNull(blockNumberInput, houseNumberInput, houseNameInput, conscriptionNumberInput)
         input?.requestFocus()
 
         initKeyboardButton(view)
@@ -194,12 +166,52 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
         }
     }
 
-    private val EditText.trimmedInput get() = text.toString().trim()
+    private fun createAnswer():HousenumberAnswer? =
+        if (houseNameInput != null) {
+            houseNameInput?.nonEmptyInput?.let { HouseName(it) }
+        }
+        else if (conscriptionNumberInput != null && streetNumberInput != null) {
+            conscriptionNumberInput?.nonEmptyInput?.let { conscriptionNumber ->
+                val streetNumber = streetNumberInput?.nonEmptyInput // streetNumber is optional
+                ConscriptionNumber(conscriptionNumber, streetNumber)
+            }
+        }
+        else if (blockNumberInput != null && houseNumberInput != null) {
+            blockNumberInput?.nonEmptyInput?.let { blockNumber ->
+                houseNumberInput?.nonEmptyInput?.let { houseNumber ->
+                    HouseAndBlockNumber(houseNumber, blockNumber)
+                }
+            }
+        }
+        else if (houseNumberInput != null) {
+            houseNumberInput?.nonEmptyInput?.let { HouseNumber(it) }
+        }
+        else null
+
+    private fun HousenumberAnswer.looksInvalid() = when(this) {
+        is ConscriptionNumber ->
+            !number.matches(VALID_CONSCRIPTIONNUMBER_REGEX.toRegex())
+                    || streetNumber != null && !streetNumber.matches(getValidHousenumberRegex())
+        is HouseNumber ->
+            !number.matches(getValidHousenumberRegex())
+        is HouseAndBlockNumber ->
+            !houseNumber.matches(getValidHousenumberRegex())
+                    || !blockNumber.matches(VALID_BLOCKNUMBER_REGEX.toRegex())
+        else ->
+            false
+    }
+
+    private val EditText.nonEmptyInput:String? get() {
+        val input = text.toString().trim()
+        return if(input.isNotEmpty()) input else null
+    }
 
     companion object {
         private const val IS_HOUSENAME = "is_housename"
         // i.e. 9999/a, 9/a, 99/9, 99a, 99 a, 9 / a
         const val VALID_HOUSENUMBER_REGEX = "\\p{N}{1,4}((\\s?/\\s?\\p{N})|(\\s?/?\\s?\\p{L}))?"
+        // i.e. 9, 99, 999, 999, 9A, 9 A
+        const val VALID_BLOCKNUMBER_REGEX = "\\p{N}{1,4}(\\s?\\p{L})?"
 
         const val VALID_CONSCRIPTIONNUMBER_REGEX = "\\p{N}{1,6}"
 

@@ -67,7 +67,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:scaleType="center"
-                    android:src = "@drawable/ic_close_black_24dp"
+                    android:src = "@drawable/ic_close_24dp"
                     android:background="?android:attr/actionBarItemBackground"
                     android:visibility="invisible"
                     android:contentDescription="@string/close"
@@ -152,7 +152,7 @@
     <Button
         android:id="@+id/okButton"
         android:text="@string/ok"
-        style="@style/RoundButton"
+        style="@style/RoundAccentButton"
         android:layout_width="72dp"
         android:layout_height="72dp"
         android:layout_alignParentEnd="true"

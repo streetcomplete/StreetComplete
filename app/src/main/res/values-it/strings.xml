@@ -35,8 +35,8 @@
     <string name="quest_leave_new_note_yes">"OK"</string>
     <string name="quest_leave_new_note_no">"No, nascondi solo"</string>
     <string name="quest_streetName_title">"Qual è il nome di questa strada?"</string>
-    <string name="quest_streetName_description">"come riportato sul cartello (le abbreviazioni vanno scritte per esteso):"</string>
-    <string name="quest_streetName_answer_noName_confirmation_description">"A volte il segnale stradale è solamente ad un'estremità della strada. Inoltre nota che potrebbero non esserci segnali stradali aggiuntivi per vie laterali che appartengono a una strada più grande. Di solito, qualsiasi strada con case ha un nome."</string>
+    <string name="quest_streetName_description">"come riportato sul cartello, le abbreviazioni vanno scritte per esteso:"</string>
+    <string name="quest_streetName_answer_noName_confirmation_description">"A volte il segnale stradale è solamente a un'estremità della strada. Inoltre potrebbero non esserci segnali stradali aggiuntivi per vie laterali che appartengono a una strada più grande. Di solito, qualsiasi strada con case ha un nome."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Se il nome può essere scritto senza un'abbreviazione, allora dovrebbe essere scritto per intero. Molte abbreviazioni comuni vengono automaticamente rese per esteso durante la digitazione."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Nessuna abbreviazione"</string>
     <string name="quest_openingHours_name_title">"Quali sono gli orari di apertura di %s?"</string>
@@ -64,7 +64,7 @@
     <string name="confirmation_cancel_prev_download_title">"Annullare l'attuale ricerca e invece cercare qui?"</string>
     <string name="notification_downloading">"Cerco missioni…"</string>
     <string name="now_downloading_toast">"Cerco altre missioni…"</string>
-    <string name="turn_on_location_request">"Il sistema di localizzazione è spento. Apro le impostazioni per abilitarlo?"</string>
+    <string name="turn_on_location_request">"La localizzazione è spenta. Apro le impostazioni per abilitarla?"</string>
     <string name="no_location_permission_warning">"La tua posizione è necessaria per capire cosa aggiornare intorno a te"</string>
     <string name="action_about">"Informazioni su StreetComplete"</string>
     <string name="about_title_version">"Versione"</string>
@@ -77,7 +77,7 @@
     <string name="about_title_license">"Licenza"</string>
     <string name="about_summary_license">"GNU General Public License"</string>
     <string name="offline">"Sei offline"</string>
-    <string name="confirmation_authorize_now">"Hai bisogno di autorizzare con il tuo account OSM per pubblicare le tue risposte. Procedo con l'autorizzazione?"</string>
+    <string name="confirmation_authorize_now">"Hai bisogno di autorizzare con il tuo account OSM per pubblicare le tue risposte. Autorizzare ora?"</string>
     <string name="not_authorized">"Non autorizzato"</string>
     <string name="version_banned_message">"Questa versione di StreetComplete è troppo vecchia. È necessario aggiornarla!"</string>
     <string name="no_gps_no_quests">"Per individuare le missioni da svolgere in zona è necessario abilitare la localizzazione"</string>
@@ -94,7 +94,7 @@
     <string name="quest_openingHours_answer_seasonal_opening_hours">"Diverso per mese…"</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">"Nessuna apertura regolare…"</string>
     <string name="quest_openingHours_comment_title">"Descrivi gli orari di apertura"</string>
-    <string name="quest_openingHours_comment_description">"A farla breve: idealmente vanno usate le parole nel cartello. Es.: \"su appuntamento\". L'assenza di un cartello non significa necessariamente che non ci siano orari di apertura regolari."</string>
+    <string name="quest_openingHours_comment_description">"Sii conciso, idealmente vanno usate le parole nel cartello, es.: \"su appuntamento\". L'assenza di un cartello non significa necessariamente che non ci siano orari di apertura regolari."</string>
     <string name="quest_buildingLevels_title">"Quanti piani ha questo edificio?"</string>
     <string name="quest_buildingLevels_title_buildingPart">"Quanti piani ha questa parte dell'edificio?"</string>
     <string name="quest_roofShape_title">"Che tipo di forma ha il tetto di questo edificio?"</string>
@@ -127,7 +127,7 @@ Tuttavia, prima di caricare le modifiche, l’app fa una verifica su un &lt;a hr
     <string name="autosync_on">"Attivo"</string>
     <string name="autosync_only_on_wifi">"Solo con WiFi"</string>
     <string name="autosync_off">"Spento"</string>
-    <string name="quest_streetSurface_title">"Che tipo di pavimentazione ha questa tratto di strada?"</string>
+    <string name="quest_streetSurface_title">"Che superficie ha questa tratto di strada?"</string>
     <string name="quest_surface_value_paved">"Pavimentato (generico)"</string>
     <string name="quest_surface_value_unpaved">"Non pavimentato (generico)"</string>
     <string name="quest_surface_value_ground">"Sterrato (generico)"</string>
@@ -147,8 +147,8 @@ Tuttavia, prima di caricare le modifiche, l’app fa una verifica su un &lt;a hr
     <string name="quest_placeName_title">"Qual è il nome di questo luogo?"</string>
     <string name="quest_sidewalk_title">"Questa strada ha un marciapiede?"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Dov'è questa strada?"</string>
-    <string name="quest_cyclewaySurface_title">"Che tipo di pavimentazione ha questa pista ciclabile?"</string>
-    <string name="quest_serviceType_title">"Quale tipo di strada di servizio è questa?"</string>
+    <string name="quest_cyclewaySurface_title">"Che superficie ha questa pista ciclabile?"</string>
+    <string name="quest_serviceType_title">"Che tipo di strada di servizio è questa?"</string>
     <string name="quest_streetLanes_title">"Quante corsie ha questa strada?"</string>
     <string name="quest_streetLanes_description">"Se non è presente alcuna striscia sulla strada, allora non ci sono corsie."</string>
     <string name="quest_streetLanes_answer_noLanes">"non ci sono corsie marcate"</string>
@@ -638,5 +638,15 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <!-- as in: "Where is the metro station?" - "It is underground" -->
     <string name="underground">"sottoterra"</string>
     <string name="quest_sidewalk_value_yes">"marciapiede"</string>
-    <string name="quest_sidewalk_value_no">"nessun parciapiede"</string>
+    <string name="quest_sidewalk_value_no">"nessun marciapiede"</string>
+    <string name="quest_accessible_for_pedestrians_title_prohibited">"Ai pedoni è vietato camminare su questa strada?"</string>
+    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"È stato indicato che questa strada non ha un marciapiede su nessuno dei due lati. Nel caso ci sia comunque un marciapiede ma è indicato come percorso separato rispondi \"marciapiede\"."</string>
+    <string name="quest_buildingType_title">"Che tipo di edificio è questo?"</string>
+    <string name="pref_category_theme">"Tema"</string>
+    <string name="pref_title_theme_select">"Seleziona tema"</string>
+    <string name="theme_automatic">"Automatico"</string>
+    <string name="theme_light">"Chiaro"</string>
+    <string name="theme_dark">"Scuro"</string>
+    <string name="theme_system_default">"Predefinito di sistema"</string>
+    <string name="quest_placeName_title_name">"Qual è il nome di questo posto? (%s)"</string>
 </resources>
