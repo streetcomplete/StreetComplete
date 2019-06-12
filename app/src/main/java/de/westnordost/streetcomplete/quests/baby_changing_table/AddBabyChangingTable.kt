@@ -10,7 +10,7 @@ class AddBabyChangingTable(o: OverpassMapDataDao) : SimpleOverpassQuestType<Bool
 
     override val tagFilters = """
         nodes, ways with (((amenity ~ restaurant|cafe|fuel|fast_food or shop ~ mall|department_store)
-        and name and toilets=yes) or amenity=toilets) and !diaper
+        and name and toilets=yes) or amenity=toilets) and !diaper and !changing_table
     """
     override val commitMessage = "Add baby changing table"
     override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
@@ -25,6 +25,6 @@ class AddBabyChangingTable(o: OverpassMapDataDao) : SimpleOverpassQuestType<Bool
     override fun createForm() = YesNoQuestAnswerFragment()
 
     override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
-        changes.add("diaper", if(answer) "yes" else "no")
+        changes.add("changing_table", if(answer) "yes" else "no")
     }
 }
