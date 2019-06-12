@@ -33,7 +33,9 @@ class AddOpeningHours (o: OverpassMapDataDao) : SimpleOverpassQuestType<OpeningH
                 // and tourism=information, see above
             ),
             "leisure" to arrayOf(
-                "sports_centre", "fitness_centre", "dance", "golf_course", "water_park",
+                // not sports_centre because these are often sports clubs which have no walk-in
+                // opening hours but training times
+                "fitness_centre", "dance", "golf_course", "water_park",
                 "miniature_golf", "bowling_alley", "horse_riding",  "amusement_arcade",
                 "adult_gaming_centre", "tanning_salon"
             ),
