@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.data.osm.upload;
 
 import android.util.Log;
 
-import java.net.HttpURLConnection;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
