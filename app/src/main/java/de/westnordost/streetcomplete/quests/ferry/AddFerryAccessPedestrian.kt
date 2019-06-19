@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 class AddFerryAccessPedestrian(o: OverpassMapDataDao) : SimpleOverpassQuestType<Boolean>(o) {
 
     override val tagFilters = "ways, relations with route=ferry and !foot"
-    override val commitMessage = "Specify ferry access"
+    override val commitMessage = "Specify ferry access for pedestrians"
     override val icon = R.drawable.ic_quest_ferry
     override val hasMarkersAtEnds = true
 
