@@ -75,6 +75,8 @@ import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelChairAcces
 import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAccessBusiness;
 import de.westnordost.streetcomplete.quests.bench_backrest.AddBenchBackrest;
 import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAccessOutside;
+import de.westnordost.streetcomplete.quests.ferry.AddFerryAccessMotorVehicle;
+import de.westnordost.streetcomplete.quests.ferry.AddFerryAccessPedestrian;
 
 @Module
 public class QuestModule
@@ -127,6 +129,8 @@ public class QuestModule
 				new AddTracktype(o),
 				new AddBikeParkingType(o), // used by OsmAnd
 				new AddPlaygroundAccess(o), //late as in many areas all needed access=private is already mapped
+				new AddFerryAccessPedestrian(o),
+				new AddFerryAccessMotorVehicle(o),
 
 				// ↓ 4. definitely shown as errors in QA tools
 
