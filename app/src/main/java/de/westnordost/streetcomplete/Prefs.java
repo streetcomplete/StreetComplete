@@ -16,7 +16,9 @@ public class Prefs
 			AUTOSYNC = "autosync",
 			KEEP_SCREEN_ON = "display.keepScreenOn",
 			UNGLUE_HINT_TIMES_SHOWN = "unglueHint.shown",
-			THEME_SELECT = "theme.select";
+			THEME_SELECT = "theme.select",
+			OVERPASS_URL = "overpass_url";
+
 
 	// not shown anywhere directly
 	public static final String
