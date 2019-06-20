@@ -617,7 +617,9 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_railway_crossing_barrier_none">It\'s not</string>
     <string name="action_deselect_all">Deselect all</string>
     <string name="quest_buildingType_retail_description">including buildings for restaurants, cafés, …</string>
-
+    <string name="quest_maxweight_title">"What is the weight limit here?"</string>
+    <string name="quest_maxweight_answer_noSign">There is no sign…</string>
+    <string name="quest_maxweight_unusualInput_confirmation_description">This weight looks implausible. Are you sure that it is correct?</string>
     <string name="quest_tracktype_title">What is the surface firmness of this track?</string>
     <string name="quest_tracktype_grade1">Solid</string>
     <string name="quest_tracktype_grade2">Mostly solid</string>
@@ -638,7 +640,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <!-- caution: This is not necessarily the floor and level=0 is not necessarily at street level as it may follow the numbering scheme of the building operator. Try to use a generic wording that does not carry an implicit meaning of where it is located in respect to the ground floor. The context is usually shopping centres, train stations or airport terminals -->
     <string name="on_level">on level %s:</string>
     <!-- as in: "Where is the metro station?" - "It is underground" -->
-    <string name="underground">underground:</string>
+    <string name="underground">underground:</string>quest_maxheight_title
     <string name="quest_sidewalk_value_yes">sidewalk</string>
     <string name="quest_sidewalk_value_no">no sidewalk</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">Are pedestrians prohibited from walking on this road here?</string>

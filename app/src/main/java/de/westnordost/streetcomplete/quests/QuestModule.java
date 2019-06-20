@@ -33,6 +33,7 @@ import de.westnordost.streetcomplete.quests.diet_type.AddVegetarian;
 import de.westnordost.streetcomplete.quests.fire_hydrant.AddFireHydrantType;
 import de.westnordost.streetcomplete.quests.internet_access.AddInternetAccess;
 import de.westnordost.streetcomplete.quests.max_height.AddMaxHeight;
+import de.westnordost.streetcomplete.quests.max_weight.AddMaxWeight;
 import de.westnordost.streetcomplete.quests.motorcycle_parking_capacity.AddMotorcycleParkingCapacity;
 import de.westnordost.streetcomplete.quests.motorcycle_parking_cover.AddMotorcycleParkingCover;
 import de.westnordost.streetcomplete.quests.oneway.AddOneway;
@@ -127,6 +128,7 @@ public class QuestModule
 				new AddMotorcycleParkingCapacity(o),
 				new AddPathSurface(o),
 				new AddTracktype(o),
+				new AddMaxWeight(o),
 				new AddBikeParkingType(o), // used by OsmAnd
 				new AddWheelChairAccessToilets(o), // used by wheelmap, OsmAnd, MAPS.ME
 				new AddPlaygroundAccess(o), //late as in many areas all needed access=private is already mapped
