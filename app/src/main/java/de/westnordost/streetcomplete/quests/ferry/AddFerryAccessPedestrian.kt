@@ -10,7 +10,7 @@ class AddFerryAccessPedestrian(o: OverpassMapDataDao) : SimpleOverpassQuestType<
 
     override val tagFilters = "ways, relations with route=ferry and !foot"
     override val commitMessage = "Specify ferry access for pedestrians"
-    override val icon = R.drawable.ic_quest_ferry
+    override val icon = R.drawable.ic_quest_ferry_pedestrian
     override val hasMarkersAtEnds = true
 
     override fun getTitle(tags: Map<String, String>): Int {
