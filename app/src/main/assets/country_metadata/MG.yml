@@ -2,5 +2,5 @@
 isLivingStreetKnown: true
 mobileCountryCode: 646
 officialLanguages: [mg, fr]
-orchardProduces: [coffee, vanilla, banana, guava, mango, mangosteen, coconut, cashew_nut, pineapple,
-  sisal, orange, pepper, cacao, pistachio, tomato, apple, tung_nut]
+orchardProduces: [banana, guava, mango, mangosteen, orange, pineapple, coconut, coffee, tomato, avocado,
+  sisal, grape, grapefruit, cacao, peach, apple, cashew_nut]

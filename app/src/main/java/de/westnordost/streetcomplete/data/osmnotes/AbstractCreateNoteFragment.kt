@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.data.osmnotes
 
 import android.content.res.Configuration
 import android.os.Bundle
-import android.support.design.widget.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,7 +20,7 @@ abstract class AbstractCreateNoteFragment : AbstractBottomSheetFragment() {
     private val attachPhotoFragment: AttachPhotoFragment?
         get() = childFragmentManager.findFragmentById(R.id.attachPhotoFragment) as AttachPhotoFragment
 
-    private val noteText get() = noteInput.text.toString().trim()
+    private val noteText get() = noteInput?.text?.toString().orEmpty().trim()
 
     protected abstract val layoutResId: Int
 
@@ -68,7 +68,8 @@ abstract class AbstractCreateNoteFragment : AbstractBottomSheetFragment() {
         attachPhotoFragment?.deleteImages()
     }
 
-    override fun isRejectingClose() = noteText.isNotEmpty()
+    override fun isRejectingClose() =
+        noteText.isNotEmpty() || attachPhotoFragment?.imagePaths?.isNotEmpty() == true
 
     private fun updateDoneButtonEnablement() {
         doneButton.isEnabled = !noteText.isEmpty()

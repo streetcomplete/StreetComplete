@@ -2,5 +2,5 @@
 isLeftHandTraffic: true
 mobileCountryCode: 514
 officialLanguages: [tet, pt]
-orchardProduces: [coffee, coconut, cacao, guava, mango, mangosteen, banana, avocado, orange, tomato,
-  papaya, pineapple]
+orchardProduces: [coffee, coconut, guava, mango, mangosteen, avocado, papaya, orange, tomato, banana,
+  cacao, pineapple]

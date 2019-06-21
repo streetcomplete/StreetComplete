@@ -1,10 +1,10 @@
 package de.westnordost.streetcomplete.quests.crossing_type
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.ImageListQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
 import de.westnordost.streetcomplete.view.Item
 
-class AddCrossingTypeForm : ImageListQuestAnswerFragment() {
+class AddCrossingTypeForm : AImageListQuestAnswerFragment<String, String>() {
 
     override val items = listOf(
         Item("traffic_signals", R.drawable.crossing_type_signals, R.string.quest_crossing_type_signals),
@@ -13,4 +13,8 @@ class AddCrossingTypeForm : ImageListQuestAnswerFragment() {
     )
 
     override val itemsPerRow = 3
+
+    override fun onClickOk(selectedItems: List<String>) {
+        applyAnswer(selectedItems.single())
+    }
 }

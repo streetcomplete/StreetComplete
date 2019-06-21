@@ -1,10 +1,10 @@
 package de.westnordost.streetcomplete.quests.railway_crossing
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.ImageListQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
 import de.westnordost.streetcomplete.view.Item
 
-class AddRailwayCrossingBarrierForm : ImageListQuestAnswerFragment() {
+class AddRailwayCrossingBarrierForm : AImageListQuestAnswerFragment<String,String>() {
 
     override val items get() = listOf(
         Item("no", R.drawable.ic_railway_crossing_none, R.string.quest_railway_crossing_barrier_none),
@@ -14,4 +14,8 @@ class AddRailwayCrossingBarrierForm : ImageListQuestAnswerFragment() {
     )
 
     override val itemsPerRow = 4
+
+    override fun onClickOk(selectedItems: List<String>) {
+        applyAnswer(selectedItems.single())
+    }
 }

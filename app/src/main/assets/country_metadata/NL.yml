@@ -3,7 +3,7 @@ isLivingStreetKnown: true
 isSlowZoneKnown: true
 mobileCountryCode: 204
 officialLanguages: [nl]
-orchardProduces: [pear, apple, strawberry, tomato, chilli_pepper, sweet_pepper, cherry, blueberry,
-  grape, plum, raspberry]
+orchardProduces: [tomato, chilli_pepper, sweet_pepper, pear, apple, strawberry, blueberry, raspberry,
+  plum, cherry, grape]
 popularReligions: [christian, muslim, jewish]
 popularSports: [soccer, tennis, equestrian, basketball, field_hockey]

@@ -1,18 +1,18 @@
 package de.westnordost.streetcomplete.quests.note_discussion
 
 import android.content.Context
-import android.support.v7.app.AlertDialog
+import androidx.appcompat.app.AlertDialog
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.core.view.doOnLayout
 
 import java.io.File
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osmnotes.AttachPhotoUtils
 import de.westnordost.streetcomplete.view.ListAdapter
-import de.westnordost.streetcomplete.ktx.postOnLayout
 
 class NoteImageAdapter(list: List<String>, private val context: Context) : ListAdapter<String>(list) {
 
@@ -33,7 +33,7 @@ class NoteImageAdapter(list: List<String>, private val context: Context) : ListA
         }
 
         override fun onBind(with: String) {
-            itemView.postOnLayout {
+            itemView.doOnLayout {
                 val bitmap = AttachPhotoUtils.resize(with, imageView.width)
                 imageView.setImageBitmap(bitmap)
             }

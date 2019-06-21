@@ -4,4 +4,4 @@ isLivingStreetKnown: true
 isSlowZoneKnown: true
 mobileCountryCode: 242
 officialLanguages: [nb, nn, 'no']
-orchardProduces: [strawberry, apple, plum, raspberry, cherry, pear, tomato, blueberry]
+orchardProduces: [apple, tomato, strawberry, raspberry, plum, cherry, pear, blueberry]

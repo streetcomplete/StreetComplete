@@ -5,9 +5,11 @@ import android.graphics.Point;
 import android.graphics.PointF;
 import android.graphics.Rect;
 import android.os.Build;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.UiThread;
+import android.os.Handler;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.UiThread;
 
 import com.mapzen.tangram.LabelPickResult;
 import com.mapzen.tangram.LngLat;
@@ -60,6 +62,8 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 
 	private static final float MAX_QUEST_ZOOM = 19;
 
+	private String sceneFile;
+
 	private Listener listener;
 
 	private Rect questOffset;
@@ -99,6 +103,17 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		}
 	}
 
+	@Override public void onResume()
+	{
+		super.onResume();
+		if (sceneFile != null && !sceneFile.equals(getSceneFilePath()))
+		{
+			/* recreation needs to be delayed because otherwise
+			* the activity might not be fully resumed yet before it is destroyed */
+			new Handler().postDelayed(() -> getActivity().recreate(), 1);
+		}
+	}
+
 	@Override public void onStop()
 	{
 		super.onStop();
@@ -127,6 +142,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		List<SceneUpdate> sceneUpdates = spriteSheetCreator.get();
 		sceneUpdates.add(new SceneUpdate("global.language", Locale.getDefault().getLanguage()));
 
+		sceneFile = sceneFilePath;
 		controller.loadSceneFile(sceneFilePath, sceneUpdates);
 	}
 
@@ -259,9 +275,11 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 	{
 		super.updateView();
 
+		if (controller == null) return;
+
 		if(controller.getZoom() < TILES_ZOOM) return;
 
-		// check if anything changed (needs to be extended when I reenable tilt and rotation)
+		// check if anything changed (needs to be extended when I re-enable tilt and rotation)
 		LngLat positionNow = controller.getPosition();
 		if(lastPos != null  && lastPos.equals(positionNow)) return;
 		lastPos = positionNow;
@@ -464,7 +482,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		// dealing with tilt: this method is just not defined if the tilt is above a certain limit
 		if(controller.getTilt() > Math.PI / 4f) return null; // 45°
 
-		LatLon[] positions = new LatLon[4];
+		LngLat[] positions = new LngLat[4];
 		positions[0] = getPositionAt(new PointF(offset.left,          offset.top));
 		positions[1] = getPositionAt(new PointF(offset.left + size.x ,offset.top));
 		positions[2] = getPositionAt(new PointF(offset.left,          offset.top + size.y));
@@ -474,11 +492,11 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		// be our bounding box
 
 		Double latMin = null, lonMin = null, latMax = null, lonMax = null;
-		for (LatLon position : positions)
+		for (LngLat position : positions)
 		{
 			if(position == null) return null;
-			double lat = position.getLatitude();
-			double lon = position.getLongitude();
+			double lat = position.latitude;
+			double lon = position.longitude;
 
 			if (latMin == null || latMin > lat) latMin = lat;
 			if (latMax == null || latMax < lat) latMax = lat;
@@ -487,23 +505,5 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		}
 
 		return new BoundingBox(latMin, lonMin, latMax, lonMax);
-	}
-
-	public LatLon getPositionAt(PointF pointF)
-	{
-		LngLat pos = controller.screenPositionToLngLat(pointF);
-		if(pos == null) return null;
-		return TangramConst.toLatLon(pos);
-	}
-
-	public LatLon getPosition()
-	{
-		if(controller == null) return null;
-		return TangramConst.toLatLon(controller.getPosition());
-	}
-
-	public PointF getPointOf(LatLon pos)
-	{
-		return controller.lngLatToScreenPosition(TangramConst.toLngLat(pos));
 	}
 }

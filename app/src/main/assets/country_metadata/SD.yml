@@ -2,6 +2,6 @@
 firstDayOfWorkweek: Su
 mobileCountryCode: 634
 officialLanguages: [ar, en]
-orchardProduces: [tomato, date, banana, guava, mango, mangosteen, lemon, lime, grapefruit, orange,
-  chilli_pepper, sweet_pepper, orange, pineapple]
+orchardProduces: [banana, guava, mango, mangosteen, tomato, date, lemon, lime, grapefruit, orange,
+  chilli_pepper, sweet_pepper, pineapple]
 popularReligions: [muslim]

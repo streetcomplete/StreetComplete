@@ -1,0 +1,5 @@
+Pomagajte izboljšati OpenStreetMap zemljevide s StreetComplete!
+
+Ta aplikacija poišče pomanjkljive podatke v vaši bližini in jih prikaže z oznakami na zemljevidu. Vsako pomanjkljivost je možno odpraviti z odgovori na nekaj enostavnih vprašanj.
+
+Podatki, ki jih vnesete tu, bodo dodani v OpenStreetMap v vašem imenu, brez potrebe po nadaljnem urejanju v drugih urejevalnikih.

@@ -16,7 +16,7 @@
         android:layout_centerHorizontal="true"
         android:scaleType="fitCenter"
         android:adjustViewBounds="true"
-        android:background="#ddd"
+        android:background="#3666"
         tools:src="@drawable/ic_cycleway_lane"/>
 
     <TextView

@@ -1,0 +1,5 @@
+Gjer dugnads­kartet OpenStreetMap betre med StreetComplete!
+
+Denne appen leitar opp ufullstendige kart­opplysningar i nærleiken av deg og viser desse på kartet. Ved å svara på enkle spørsmål om dei, vil du forbetra kart­grunnlaget der du er.
+
+Informasjonen du legg til vert sendt direkte til OpenStreetMap i ditt namn, utan at du treng bruka noko eksternt redigerings­program.

@@ -18,11 +18,19 @@ import de.westnordost.streetcomplete.util.SphericalEarthMath;
 
 public class ElementGeometryCreator
 {
-	protected WayGeometrySource data;
+	private final WayGeometrySource wayGeometrySource;
 
-	public void setWayGeometryProvider(WayGeometrySource data)
+	public ElementGeometryCreator(WayGeometrySource wayGeometrySource)
 	{
-		this.data = data;
+		this.wayGeometrySource = wayGeometrySource;
+	}
+
+	public ElementGeometry create(Element element)
+	{
+		if(element instanceof Node)     return create((Node) element);
+		if(element instanceof Way)      return create((Way) element);
+		if(element instanceof Relation) return create((Relation) element);
+		throw new IllegalArgumentException();
 	}
 
 	public ElementGeometry create(Node node)
@@ -32,9 +40,7 @@ public class ElementGeometryCreator
 
 	public ElementGeometry create(Way way)
 	{
-		if(data == null) throw new NullPointerException();
-
-		List<LatLon> polyline = data.getNodePositions(way.getId());
+		List<LatLon> polyline = wayGeometrySource.getNodePositions(way.getId());
 		// unable to create geometry
 		if(polyline.isEmpty()) return null;
 		eliminateDuplicates(polyline);
@@ -82,8 +88,6 @@ public class ElementGeometryCreator
 
 	public ElementGeometry create(Relation relation)
 	{
-		if(data == null) throw new NullPointerException();
-
 		if(OsmAreas.isArea(relation))
 		{
 			return createMultipolygonGeometry(relation);
@@ -104,7 +108,7 @@ public class ElementGeometryCreator
 			long wayId = member.getRef();
 			if(role == null || role.equals(member.getRole()))
 			{
-				List<LatLon> nodePositions = data.getNodePositions(wayId);
+				List<LatLon> nodePositions = wayGeometrySource.getNodePositions(wayId);
 				eliminateDuplicates(nodePositions);
 				if(nodePositions.size() > 1)
 				{

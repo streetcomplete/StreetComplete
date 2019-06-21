@@ -4,6 +4,6 @@ isLivingStreetKnown: true
 isSlowZoneKnown: true
 mobileCountryCode: 230
 officialLanguages: [cs]
-orchardProduces: [grape, apple, hop, plum, chilli_pepper, sweet_pepper, apricot, cherry, pear, peach,
-  walnut, strawberry, tomato, raspberry]
+orchardProduces: [apple, grape, tomato, hop, pear, plum, strawberry, cherry, chilli_pepper, sweet_pepper,
+  apricot, peach, walnut, raspberry]
 popularSports: [soccer, tennis, volleyball, beachvolleyball, ice_hockey, handball]

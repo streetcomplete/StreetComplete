@@ -1,13 +1,11 @@
 package de.westnordost.streetcomplete.quests.wheelchair_access
 
-import android.os.Bundle
-
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
 
-class AddWheelChairAccessPublicTransport(o: OverpassMapDataDao) : SimpleOverpassQuestType(o) {
+class AddWheelChairAccessPublicTransport(o: OverpassMapDataDao) : SimpleOverpassQuestType<String>(o) {
 
     override val tagFilters = """
         nodes, ways, relations with (amenity = bus_station or railway ~ station|subway_entrance)
@@ -39,7 +37,7 @@ class AddWheelChairAccessPublicTransport(o: OverpassMapDataDao) : SimpleOverpass
 
     override fun createForm() = AddWheelchairAccessPublicTransportForm()
 
-    override fun applyAnswerTo(answer: Bundle, changes: StringMapChangesBuilder) {
-        changes.add("wheelchair", answer.getString(WheelchairAccessAnswerFragment.ANSWER)!!)
+    override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {
+        changes.add("wheelchair", answer)
     }
 }

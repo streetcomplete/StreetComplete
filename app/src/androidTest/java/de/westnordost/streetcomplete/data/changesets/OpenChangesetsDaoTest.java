@@ -1,6 +1,11 @@
 package de.westnordost.streetcomplete.data.changesets;
 
+import org.junit.Before;
+import org.junit.Test;
+
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase;
+
+import static org.junit.Assert.*;
 
 public class OpenChangesetsDaoTest extends ApplicationDbTestCase
 {
@@ -9,30 +14,29 @@ public class OpenChangesetsDaoTest extends ApplicationDbTestCase
 	private static final OpenChangesetKey Q = new OpenChangesetKey("Hurzipurz","test");
 	private static final OpenChangesetKey P = new OpenChangesetKey("Brasliweks","test");
 
-	@Override public void setUp() throws Exception
+	@Before public void createDao()
 	{
-		super.setUp();
 		dao = new OpenChangesetsDao(dbHelper, null);
 	}
 
-	public void testDeleteNonExistent()
+	@Test public void deleteNonExistent()
 	{
 		assertFalse(dao.delete(Q));
 	}
 
-	public void testCreateDelete()
+	@Test public void createDelete()
 	{
 		dao.replace(Q,1);
 		assertTrue(dao.delete(Q));
 		assertNull(dao.get(Q));
 	}
 
-	public void testGetNull()
+	@Test public void getNull()
 	{
 		assertNull(dao.get(Q));
 	}
 
-	public void testInsertChangesetId()
+	@Test public void insertChangesetId()
 	{
 		dao.replace(Q, 12);
 		OpenChangesetInfo info = dao.get(Q);
@@ -41,19 +45,19 @@ public class OpenChangesetsDaoTest extends ApplicationDbTestCase
 		assertEquals(Q.source, info.key.source);
 	}
 
-	public void testReplaceChangesetId()
+	@Test public void replaceChangesetId()
 	{
 		dao.replace(Q, 12);
 		dao.replace(Q, 6497);
 		assertEquals(6497, (long) dao.get(Q).changesetId);
 	}
 
-	public void testGetNone()
+	@Test public void getNone()
 	{
 		assertTrue(dao.getAll().isEmpty());
 	}
 
-	public void testInsertTwo()
+	@Test public void insertTwo()
 	{
 		dao.replace(Q,1);
 		dao.replace(P,2);

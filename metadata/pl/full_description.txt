@@ -1,0 +1,5 @@
+Pomóż ulepszać OpenStreetMap z aplikacją StreetComplete!
+
+Ta aplikacja znajduje niekompletne lub brakujące dane w Twoim otoczeniu i wyświetla je na mapie w postaci zadań. Każde można rozwiązać, klikając w nie i odpowiadając na proste pytania.
+
+Udzielone odpowiedzi zostają potem umieszczone na OpenStreetMap w Twoim imieniu, bez potrzeby bezpośredniego edytowania map.

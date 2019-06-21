@@ -21,12 +21,14 @@
     <string name="map_attribution_mapzen">"Poganja %s"</string>
     <string name="map_attribution_osm">"© OpenStreetMap sodelavci"</string>
     <string name="quest_generic_otherAnswers">"Drugi odgovori..."</string>
-    <string name="quest_generic_answer_notApplicable">"Nisem prepričan"</string>
+    <string name="quest_generic_answer_notApplicable">"Nisem prepričan…"</string>
     <string name="quest_generic_confirmation_title">"Ali ste prepričani?"</string>
     <string name="quest_generic_confirmation_yes">"Da, prepričan sem."</string>
     <string name="quest_generic_confirmation_no">"Bom preveril"</string>
     <string name="quest_generic_error_field_empty">"To polje ste pustili prazno"</string>
     <string name="quest_leave_new_note_title">"Želite raje napisati opombo?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_leave_new_note_description">"Na tem kraju lahko objavite opombo, ki jo bodo videli drugi kartografi, ter jo dopolnili ali celo razrešili:"</string>
     <string name="quest_leave_new_note_yes">"V redu"</string>
     <string name="quest_leave_new_note_no">"Ne, samo skrij"</string>
@@ -65,7 +67,7 @@
     <string name="action_about">"O programu StreetComplete"</string>
     <string name="about_title_version">"Verzija"</string>
     <string name="about_title_authors">"Zasluge"</string>
-    <string name="about_summary_authors">"© 2016–2018 Tobias Zwick s sodelavci"</string>
+    <string name="about_summary_authors">"© 2016–2019 Tobias Zwick s sodelavci"</string>
     <string name="about_title_repository">"Izvorna koda"</string>
     <string name="about_summary_repository">"na GitHub-u"</string>
     <string name="about_title_report_error">"Prijavi napako"</string>
@@ -86,8 +88,8 @@
     <string name="quest_openingHours_public_holidays_short">"praznik"</string>
     <string name="quest_openingHours_open_end">"do zadnjega gosta"</string>
     <string name="quest_openingHours_answer_247">"Odprto 24/7"</string>
-    <string name="quest_openingHours_answer_seasonal_opening_hours">"Odvisno glede na mesec"</string>
-    <string name="quest_openingHours_answer_no_regular_opening_hours">"Ni rednega odpiralnega časa"</string>
+    <string name="quest_openingHours_answer_seasonal_opening_hours">"Odvisno glede na mesec…"</string>
+    <string name="quest_openingHours_answer_no_regular_opening_hours">"Ni rednega odpiralnega časa…"</string>
     <string name="quest_openingHours_comment_title">"Opišite odpiralni čas"</string>
     <string name="quest_openingHours_comment_description">"Bodite jedrnati, uporabite izraz iz napisa, npr \"po dogovoru\". Če ni napisa, še ne pomeni, da ni rednega odpiralnega časa."</string>
     <string name="quest_buildingLevels_title">"Koliko nadstropij ima ta zgradba?"</string>
@@ -136,7 +138,7 @@
 Ta aplikacija poišče pomanjkljive podatke v vaši bližini in jih prikaže z oznakami na zemljevidu. Vsako pomanjkljivost je možno odpraviti z odgovori na nekaj enostavnih vprašanj.
 
 Podatki, ki jih vnesete tu, bodo dodani v OpenStreetMap v vašem imenu, brez potrebe po nadaljnem urejanju v drugih urejevalnikih."</string>
-    <string name="quest_name_answer_noName">"Nima imena"</string>
+    <string name="quest_name_answer_noName">"Nima imena…"</string>
     <string name="quest_name_answer_noName_confirmation_title">"Res nima imena?"</string>
     <string name="quest_name_noName_confirmation_positive">"Da, nima imena"</string>
     <string name="quest_openingHours_add_times">"Dodaj odpiralni čas"</string>
@@ -194,6 +196,8 @@ Podatki, ki jih vnesete tu, bodo dodani v OpenStreetMap v vašem imenu, brez pot
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Ta hitrostna omejitev izgleda neverjetna."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Ali ste prepričani da ni omejitve?"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Da, ni znaka"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_urbanOk">"Naselje"</string>
     <string name="quest_maxspeed_answer_noSign_ruralOk">"Izven naselja"</string>
     <string name="quest_sport_ice_skating">"Drsanje na ledu"</string>
@@ -295,8 +299,8 @@ Podatki, ki jih vnesete tu, bodo dodani v OpenStreetMap v vašem imenu, brez pot
     <string name="quest_powerPolesMaterial_wood">"Les"</string>
     <string name="quest_powerPolesMaterial_metal">"Jeklo"</string>
     <string name="quest_powerPolesMaterial_concrete">"Beton"</string>
-    <string name="quest_maxspeed_answer_advisory_speed_limit">"Zgolj priporočena hitrost"</string>
-    <string name="quest_address_answer_house_name">"Nima hišne številke, ima pa ime"</string>
+    <string name="quest_maxspeed_answer_advisory_speed_limit">"Zgolj priporočena hitrost…"</string>
+    <string name="quest_address_answer_house_name">"Nima hišne številke, ima pa ime…"</string>
     <string name="quest_address_house_name_label">"Ime zgradbe:"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"Nadstropij v podstrešju"</string>
     <string name="quest_buildingLevels_levelsLabel2">"Običajnih nadstropij (ne podstrešnih)"</string>
@@ -357,11 +361,13 @@ Podatki, ki jih vnesete tu, bodo dodani v OpenStreetMap v vašem imenu, brez pot
     <string name="quest_streetName_pedestrian_title">"Kakšno ime ima ta pot za pešce?"</string>
     <string name="quest_streetSurface_square_title">"Kakšno površino ima ta trg?"</string>
     <string name="quest_streetSurface_square_name_title">"Kakšno površino ima trg %s tu?"</string>
-    <string name="quest_fee_answer_hours">"Odvisno od ure in dneva"</string>
+    <string name="quest_fee_answer_hours">"Odvisno od ure in dneva…"</string>
     <string name="quest_fee_add_times">"Vnesi ure"</string>
     <string name="quest_fee_only_at_hours">"Da, ampak samo..."</string>
     <string name="quest_fee_not_at_hours">"Da, ampak ne..."</string>
     <string name="quest_fee_hours_title">"ob naslednjih urah:"</string>
+    <string name="quest_bicycle_parking_type_stand">"Visoko stojalo (opora okviru kolesa)"</string>
+    <string name="quest_bicycle_parking_type_wheelbender">"Nizko stojalo (opora kolesu kolesa)"</string>
     <string name="quest_collectionTimes_answer_no_times_specified">"Ura ni določena"</string>
     <string name="quest_construction_road_title">"Ali je ta cesta že dokončana?"</string>
     <string name="quest_construction_cycleway_title">"Ali je ta kolesarska steza že dokončana?"</string>
@@ -393,6 +399,16 @@ Podatki, ki jih vnesete tu, bodo dodani v OpenStreetMap v vašem imenu, brez pot
     <string name="quest_buildingType_stadium">"Stadion"</string>
     <string name="quest_buildingType_train_station">"Železniška postaja"</string>
     <string name="quest_buildingType_cars">"Za avtomobile"</string>
-    <string name="quest_address_answer_no_housenumber">"Nima hišne številke"</string>
+    <string name="quest_address_answer_no_housenumber">"Nima hišne številke…"</string>
+    <string name="quest_maxheight_title">"Kakšna je omejitev višine tu?"</string>
+    <string name="quest_maxheight_parking_entrance_title">"Kakšna je omejitev višine tega vhoda na parkirišče?"</string>
+    <string name="quest_maxheight_height_restrictor_title">"Kakšna je omejitev višine te višinske ovire?"</string>
+    <string name="quest_maxheight_tunnel_title">"Kakšna je omejitev višine v tem predoru?"</string>
+    <string name="quest_maxheight_answer_noSign">"Ni prometnega znaka..."</string>
+    <string name="quest_maxheight_answer_noSign_question">"Ali je dovolj visoko, da gredo spodaj tudi najvišji tovornjaki (vsaj 4,5 metra / 15 čevljev)?"</string>
+    <string name="quest_maxheight_unusualInput_confirmation_description">"Ta omejitev višine je neverjetna. Ali ste prepričani, da je pravilna?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
+    <string name="quest_railway_crossing_barrier_title">"Kako je zaščiten ta prehod železniške proge?"</string>
+    <string name="quest_railway_crossing_barrier_none">"Ni zaščite"</string>
+    <string name="quest_buildingType_title">"Kakšne vrste zgradba je to?"</string>
 </resources>

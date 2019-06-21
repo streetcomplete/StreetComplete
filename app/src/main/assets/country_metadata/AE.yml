@@ -3,7 +3,7 @@ additionalStreetsignLanguages: [en]
 firstDayOfWorkweek: Su
 mobileCountryCode: 424
 officialLanguages: [ar]
-orchardProduces: [date, tomato, almond, guava, mango, mangosteen, chilli_pepper, sweet_pepper, lemon,
-  lime, fig, grape, banana]
+orchardProduces: [date, tomato, guava, mango, mangosteen, lemon, lime, chilli_pepper, sweet_pepper,
+  almond, fig, banana, grape]
 popularReligions: [muslim]
 popularSports: [tennis, golf]

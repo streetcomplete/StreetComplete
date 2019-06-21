@@ -2,6 +2,6 @@
 isLivingStreetKnown: true
 mobileCountryCode: 437
 officialLanguages: [ky, ru]
-orchardProduces: [apple, tomato, apricot, grape, hazelnut, pear, peach, plum, cherry, walnut, almond,
-  raspberry, pistachio, chilli_pepper, sweet_pepper, strawberry]
+orchardProduces: [tomato, apple, apricot, plum, pear, peach, grape, walnut, cherry, hazelnut, raspberry,
+  strawberry, almond, chilli_pepper, sweet_pepper, pistachio]
 popularReligions: [muslim]

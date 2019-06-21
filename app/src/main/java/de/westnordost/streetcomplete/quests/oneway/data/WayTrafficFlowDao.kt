@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.quests.oneway.data
 
-import android.content.ContentValues
 import android.database.sqlite.SQLiteOpenHelper
 
 import javax.inject.Inject
@@ -11,13 +10,15 @@ import de.westnordost.streetcomplete.quests.oneway.data.WayTrafficFlowTable.Colu
 import de.westnordost.streetcomplete.quests.oneway.data.WayTrafficFlowTable.Columns.IS_FORWARD
 
 import android.database.sqlite.SQLiteDatabase.*
+import androidx.core.content.contentValuesOf
 
 class WayTrafficFlowDao @Inject constructor(private val dbHelper: SQLiteOpenHelper) {
 
     fun put(wayId: Long, isForward: Boolean) {
-        val values = ContentValues()
-        values.put(WAY_ID, wayId)
-        values.put(IS_FORWARD, if (isForward) 1 else 0)
+        val values = contentValuesOf(
+            WAY_ID to wayId,
+            IS_FORWARD to if (isForward) 1 else 0
+        )
 
         dbHelper.writableDatabase.insertWithOnConflict(NAME, null, values, CONFLICT_REPLACE)
     }

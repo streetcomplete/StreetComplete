@@ -2,5 +2,5 @@
 isLivingStreetKnown: true
 mobileCountryCode: 276
 officialLanguages: [sq]
-orchardProduces: [olive, grape, tomato, apple, chilli_pepper, sweet_pepper, chestnut, plum, hop, cherry,
-  fig, peach, pear, lemon, lime, date, apricot]
+orchardProduces: [tomato, grape, olive, apple, chilli_pepper, sweet_pepper, plum, fig, orange, peach,
+  cherry, date, pear, chestnut, apricot, lemon, lime]

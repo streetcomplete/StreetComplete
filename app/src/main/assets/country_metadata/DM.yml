@@ -3,5 +3,5 @@ isLeftHandTraffic: true
 measurementSystem: [imperial, metric]
 mobileCountryCode: 366
 officialLanguages: [en]
-orchardProduces: [banana, coconut, cacao, guava, mango, mangosteen, grapefruit, orange, coffee, lemon,
-  lime, avocado, tomato, pineapple, nutmeg, papaya]
+orchardProduces: [banana, grapefruit, coconut, orange, guava, mango, mangosteen, lemon, lime, avocado,
+  tomato, cacao, coffee, pineapple, papaya, nutmeg]

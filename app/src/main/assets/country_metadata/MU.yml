@@ -4,5 +4,5 @@ isLivingStreetKnown: true
 isSlowZoneKnown: true
 mobileCountryCode: 617
 officialLanguages: [en, fr, mfe]
-orchardProduces: [tomato, tea, pineapple, coconut, banana, chilli_pepper, sweet_pepper]
+orchardProduces: [tomato, pineapple, banana, chilli_pepper, sweet_pepper, coconut, tea, pistachio]
 popularReligions: [hindu, christian, muslim]

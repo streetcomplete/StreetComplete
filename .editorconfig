@@ -13,6 +13,10 @@ tab_width = 4
 [*.{java,py}]
 indent_style = tab
 
+[*.{kt}]
+indent_style = space
+indent_size = 4
+
 [gradlew]
 indent_style = space
 indent_size = 4

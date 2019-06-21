@@ -3,6 +3,6 @@ additionalStreetsignLanguages: [en]
 firstDayOfWorkweek: Su
 mobileCountryCode: 422
 officialLanguages: [ar]
-orchardProduces: [date, banana, tomato, guava, mango, mangosteen, lemon, lime, chilli_pepper, sweet_pepper,
-  papaya]
+orchardProduces: [date, tomato, banana, guava, mango, mangosteen, chilli_pepper, sweet_pepper, lemon,
+  lime, papaya]
 popularReligions: [muslim]

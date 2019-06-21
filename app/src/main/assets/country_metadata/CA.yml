@@ -3,8 +3,8 @@ isAdvisorySpeedLimitKnown: true
 isSlowZoneKnown: false
 mobileCountryCode: 302
 officialLanguages: [en, fr]
-orchardProduces: [blueberry, apple, grape, cranberry, tomato, strawberry, peach, raspberry, chilli_pepper,
-  sweet_pepper, cherry, pear, plum, apricot, kiwi]
+orchardProduces: [tomato, apple, blueberry, cranberry, grape, chilli_pepper, sweet_pepper, strawberry,
+  peach, cherry, raspberry, pear, plum, apricot, kiwi]
 popularReligions: [christian, muslim, jewish, hindu, sikh]
 popularSports: [baseball, soccer, tennis, basketball, canadian_football, american_football, ice_hockey,
   curling]

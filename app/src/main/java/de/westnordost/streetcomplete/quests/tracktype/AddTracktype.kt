@@ -1,14 +1,11 @@
 package de.westnordost.streetcomplete.quests.tracktype
 
-import android.os.Bundle
-
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
-import de.westnordost.streetcomplete.quests.ImageListQuestAnswerFragment
 
-class AddTracktype(o: OverpassMapDataDao) : SimpleOverpassQuestType(o) {
+class AddTracktype(o: OverpassMapDataDao) : SimpleOverpassQuestType<String>(o) {
 
     override val tagFilters = """
         ways with highway=track and !tracktype
@@ -21,7 +18,7 @@ class AddTracktype(o: OverpassMapDataDao) : SimpleOverpassQuestType(o) {
 
     override fun createForm() = AddTracktypeForm()
 
-    override fun applyAnswerTo(answer: Bundle, changes: StringMapChangesBuilder) {
-        changes.add("tracktype", answer.getStringArrayList(ImageListQuestAnswerFragment.OSM_VALUES)!![0])
+    override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {
+        changes.add("tracktype", answer)
     }
 }

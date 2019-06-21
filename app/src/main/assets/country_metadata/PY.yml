@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
 mobileCountryCode: 744
 officialLanguages: [es, gug]
-orchardProduces: [mate, palm_oil, tung_nut, banana, pineapple, guava, mango, mangosteen, avocado, orange,
-  tomato, papaya, grapefruit, chilli_pepper, sweet_pepper, lemon, lime, grape, strawberry]
+orchardProduces: [orange, mate, banana, pineapple, tomato, tung_nut, grapefruit, guava, mango, mangosteen,
+  avocado, papaya, lemon, lime, chilli_pepper, sweet_pepper, strawberry, grape, plum]

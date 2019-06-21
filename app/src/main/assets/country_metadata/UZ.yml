@@ -1,6 +1,6 @@
 # Do not edit. Source files are in /res/country_metadata
 mobileCountryCode: 434
 officialLanguages: [uz, ru]
-orchardProduces: [grape, apple, tomato, apricot, peach, cherry, pear, plum, almond, walnut, persimmon,
-  hazelnut, pistachio, chilli_pepper, sweet_pepper, strawberry]
+orchardProduces: [tomato, grape, apple, apricot, peach, cherry, plum, pear, persimmon, walnut, almond,
+  strawberry, chilli_pepper, sweet_pepper, fig, hazelnut]
 popularReligions: [muslim]

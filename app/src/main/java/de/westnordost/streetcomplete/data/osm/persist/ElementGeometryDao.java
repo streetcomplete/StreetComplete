@@ -115,6 +115,15 @@ public class ElementGeometryDao
 		}
 	}
 
+	public void delete(Element.Type type, long id)
+	{
+		SQLiteDatabase db = dbHelper.getWritableDatabase();
+		String where = ElementGeometryTable.Columns.ELEMENT_TYPE + " = ? AND " +
+			ElementGeometryTable.Columns.ELEMENT_ID + " = ?";
+		String[] args = {type.name(), String.valueOf(id)};
+		db.delete(ElementGeometryTable.NAME, where, args);
+	}
+
 	static ElementGeometry createObjectFrom(Serializer serializer, Cursor cursor)
 	{
 		int colGeometryPolygons = cursor.getColumnIndexOrThrow(ElementGeometryTable.Columns.GEOMETRY_POLYGONS),

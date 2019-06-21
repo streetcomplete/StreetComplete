@@ -12,6 +12,7 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import de.westnordost.streetcomplete.ApplicationConstants;
 import de.westnordost.streetcomplete.data.changesets.OpenChangesetsDao;
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
 import de.westnordost.streetcomplete.data.osm.persist.UndoOsmQuestDao;
@@ -29,7 +30,12 @@ public class DbModule
 {
 	@Provides @Singleton public static SQLiteOpenHelper sqliteOpenHelper(Context ctx)
 	{
-		return new StreetCompleteOpenHelper(ctx, new TablesHelper[]{
+		return sqliteOpenHelper(ctx, ApplicationConstants.DATABASE_NAME);
+	}
+
+	public static SQLiteOpenHelper sqliteOpenHelper(Context ctx, String databaseName)
+	{
+		return new StreetCompleteOpenHelper(ctx, databaseName, new TablesHelper[]{
 			new RoadNamesTablesHelper(), new WayTrafficFlowTablesHelper()
 		});
 	}

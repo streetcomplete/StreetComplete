@@ -2,5 +2,5 @@
 isLeftHandTraffic: true
 mobileCountryCode: 548
 officialLanguages: [en, rar]
-orchardProduces: [coconut, papaya, guava, mango, mangosteen, tomato, banana, pineapple, avocado, orange,
-  grapefruit]
+orchardProduces: [coconut, papaya, tomato, guava, mango, mangosteen, banana, pineapple, orange, avocado,
+  grapefruit, lemon, lime, chilli_pepper, sweet_pepper]

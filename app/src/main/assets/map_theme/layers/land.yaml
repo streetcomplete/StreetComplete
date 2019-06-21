@@ -121,14 +121,14 @@ styles:
             uniforms:
                 u_waves: 1.5
                 u_speed: 0.08
-                u_color: [0.6,0.7,1.,1.]
+                u_color: [1.,1.,1.0,0.4]
             blocks:
                 color: |
                     float x = (v_texcoord.x - 0.495) * 2.;
                     if(x > 0.0) {
                         float opacity = 1.-x;
                         float waves = fract(u_waves*(1.-x)-u_time*u_speed);
-                        color = mix(color, u_color, opacity * waves);
+                        color = mix(color, u_color, opacity * waves * u_color.a);
                     } else {
                         color.a = 0.0;
                     }

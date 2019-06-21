@@ -19,6 +19,7 @@ import de.westnordost.streetcomplete.data.QuestType;
 import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao;
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestDao;
+import de.westnordost.streetcomplete.util.SphericalEarthMath;
 
 /** Manages creating new quests and removing quests that are no longer applicable for an OSM
  *  element locally */
@@ -43,15 +44,8 @@ public class OsmQuestGiver
 
 	public static class QuestUpdates
 	{
-		public List<OsmQuest> createdQuests = new ArrayList<>();
-		public List<Long> removedQuestIds = new ArrayList<>();
-	}
-
-	public List<Long> removeQuests(Element.Type type, long id)
-	{
-		List<Long> ids = questDB.getAllIds(type, id);
-		questDB.deleteAll(ids);
-		return ids;
+		public final List<OsmQuest> createdQuests = new ArrayList<>();
+		public final List<Long> removedQuestIds = new ArrayList<>();
 	}
 
 	public QuestUpdates updateQuests(Element element)
@@ -122,7 +116,9 @@ public class OsmQuestGiver
 
 	private boolean hasNoteAt(LatLon pos)
 	{
-		BoundingBox bbox = new BoundingBox(pos, pos);
+		// note about one meter around the center of an element still count as at this point as to
+		// deal with imprecision of the center calculation of geometry (see #1089)
+		BoundingBox bbox = SphericalEarthMath.enclosingBoundingBox(pos, 1);
 		return !osmNoteQuestDb.getAllPositions(bbox).isEmpty();
 	}
 

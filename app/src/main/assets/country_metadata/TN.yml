@@ -2,6 +2,6 @@
 additionalStreetsignLanguages: [fr]
 mobileCountryCode: 605
 officialLanguages: [ar]
-orchardProduces: [olive, almond, date, pistachio, tomato, grape, chilli_pepper, sweet_pepper, apple,
-  fig, peach, orange, pear, apricot, grapefruit, lemon, lime]
+orchardProduces: [tomato, olive, date, grape, peach, apple, orange, grapefruit, almond, lemon, lime,
+  apricot, fig, chilli_pepper, sweet_pepper, pear, plum]
 popularReligions: [muslim]

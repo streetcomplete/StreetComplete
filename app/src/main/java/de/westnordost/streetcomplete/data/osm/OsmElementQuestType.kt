@@ -1,14 +1,12 @@
 package de.westnordost.streetcomplete.data.osm
 
-import android.os.Bundle
-
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.data.QuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandler
 
-interface OsmElementQuestType : QuestType {
+interface OsmElementQuestType<T> : QuestType<T> {
 
     /** the commit message to be used for this quest type */
     val commitMessage: String
@@ -43,7 +41,7 @@ interface OsmElementQuestType : QuestType {
 
     /** applies the data from [answer] to the given element. The element is not directly modified,
      *  instead, a map of [changes] is built */
-    fun applyAnswerTo(answer: Bundle, changes: StringMapChangesBuilder)
+    fun applyAnswerTo(answer: T, changes: StringMapChangesBuilder)
 
     /** The quest type can clean it's metadata here, if any  */
     fun cleanMetadata() {}

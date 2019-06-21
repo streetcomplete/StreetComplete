@@ -4,6 +4,6 @@ isLivingStreetKnown: true
 isSlowZoneKnown: true
 mobileCountryCode: 250
 officialLanguages: [ru]
-orchardProduces: [apple, tomato, grape, plum, strawberry, raspberry, cherry, apricot, pear, peach,
+orchardProduces: [tomato, apple, grape, cherry, strawberry, raspberry, plum, pear, apricot, peach,
   blueberry, tea, hop, orange]
 popularSports: [soccer, basketball, tennis, field_hockey, volleyball, ice_hockey]

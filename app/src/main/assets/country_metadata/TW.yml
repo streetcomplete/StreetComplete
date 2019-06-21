@@ -2,7 +2,7 @@
 additionalStreetsignLanguages: [en]
 mobileCountryCode: 466
 officialLanguages: [zh]
-orchardProduces: [areca_nut, guava, mango, mangosteen, banana, tea, pineapple, pear, orange, tomato,
-  persimmon, grapefruit, apricot, grape, coconut, chilli_pepper, sweet_pepper, papaya]
+orchardProduces: [pineapple, banana, guava, mango, mangosteen, orange, tomato, pear, papaya, areca_nut,
+  grape, grapefruit, persimmon, lemon, lime, chilli_pepper, sweet_pepper, peach, apricot]
 popularReligions: [chinese_folk, taoist, buddhist, christian]
 popularSports: [basketball, tennis, volleyball, baseball]

@@ -2,6 +2,6 @@
 firstDayOfWorkweek: Su
 mobileCountryCode: 421
 officialLanguages: [ar]
-orchardProduces: [coffee, guava, mango, mangosteen, date, tomato, grape, banana, peach, chilli_pepper,
-  sweet_pepper, apple, lemon, lime, papaya, orange, fig, apricot, almond]
+orchardProduces: [guava, mango, mangosteen, grape, banana, orange, tomato, date, peach, lemon, lime,
+  papaya, coffee, apple, chilli_pepper, sweet_pepper, fig, apricot, pear]
 popularReligions: [muslim]

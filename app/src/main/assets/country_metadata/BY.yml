@@ -4,5 +4,5 @@ isLivingStreetKnown: true
 isSlowZoneKnown: true
 mobileCountryCode: 257
 officialLanguages: [be, ru]
-orchardProduces: [apple, cranberry, strawberry, plum, tomato, pear, walnut, grape, hazelnut, cherry]
+orchardProduces: [apple, tomato, strawberry, pear, cherry, grape, walnut, plum, hazelnut, cranberry]
 popularSports: [soccer, basketball, tennis, field_hockey, volleyball, ice_hockey]

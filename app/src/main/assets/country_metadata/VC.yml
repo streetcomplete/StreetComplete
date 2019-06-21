@@ -3,5 +3,5 @@ isLeftHandTraffic: true
 measurementSystem: [imperial, metric]
 mobileCountryCode: 360
 officialLanguages: [en]
-orchardProduces: [banana, cacao, coconut, coffee, nutmeg, guava, mango, mangosteen, orange, apple,
-  lemon, lime, chilli_pepper, sweet_pepper, pear, grapefruit]
+orchardProduces: [banana, coconut, guava, mango, mangosteen, apple, lemon, lime, orange, pear, chilli_pepper,
+  sweet_pepper, grapefruit, cacao, nutmeg, coffee]

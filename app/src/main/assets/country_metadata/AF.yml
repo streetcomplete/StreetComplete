@@ -2,6 +2,5 @@
 firstDayOfWorkweek: Sa
 mobileCountryCode: 412
 officialLanguages: [fa, ps]
-orchardProduces: [grape, almond, apple, apricot, plum, walnut, pistachio, peach, olive, fig, orange,
-  pear]
+orchardProduces: [grape, apple, apricot, peach, almond, plum, olive, pear, walnut, fig, orange, pistachio]
 popularReligions: [muslim]

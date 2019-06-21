@@ -280,7 +280,7 @@ public class FiltersParser
 				int length = input.findNext(quot,1);
 				if(input.isAtEnd(length))
 					throw new ParseException("Did not close quotation marks",input.getCursorPos()-1);
-				// +1 because we want to include teh closing quotation mark
+				// +1 because we want to include the closing quotation mark
 				return length+1;
 			}
 		}

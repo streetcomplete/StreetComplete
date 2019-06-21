@@ -2,6 +2,6 @@
 isLeftHandTraffic: true
 mobileCountryCode: 746
 officialLanguages: [nl]
-orchardProduces: [banana, orange, coconut, palm_oil, grapefruit, guava, mango, mangosteen, coffee,
-  cacao, tomato, pineapple, papaya, cherry, lemon, lime]
+orchardProduces: [banana, coconut, orange, grapefruit, guava, mango, mangosteen, tomato, pineapple,
+  cherry, papaya, lemon, lime, coffee, cacao]
 popularReligions: [christian, hindu, muslim]

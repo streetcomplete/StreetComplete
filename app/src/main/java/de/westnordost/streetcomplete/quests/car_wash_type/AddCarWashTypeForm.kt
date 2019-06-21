@@ -4,16 +4,16 @@ import android.os.Bundle
 import android.view.View
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.ImageListQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
 import de.westnordost.streetcomplete.view.ImageSelectAdapter
 import de.westnordost.streetcomplete.view.Item
 
-class AddCarWashTypeForm : ImageListQuestAnswerFragment() {
+class AddCarWashTypeForm : AImageListQuestAnswerFragment<AddCarWashTypeForm.CarWashOption, CarWashType>() {
 
     override val items = listOf(
-        Item(AUTOMATED, R.drawable.car_wash_automated, R.string.quest_carWashType_automated),
-        Item(SELF_SERVICE, R.drawable.car_wash_self_service, R.string.quest_carWashType_selfService),
-        Item(SERVICE, R.drawable.car_wash_service, R.string.quest_carWashType_service)
+        Item(CarWashOption.AUTOMATED, R.drawable.car_wash_automated, R.string.quest_carWashType_automated),
+        Item(CarWashOption.SELF_SERVICE, R.drawable.car_wash_self_service, R.string.quest_carWashType_selfService),
+        Item(CarWashOption.SERVICE, R.drawable.car_wash_service, R.string.quest_carWashType_service)
     )
 
     override val itemsPerRow = 3
@@ -38,9 +38,12 @@ class AddCarWashTypeForm : ImageListQuestAnswerFragment() {
         })
     }
 
-    companion object {
-        const val AUTOMATED = "AUTOMATED"
-        const val SELF_SERVICE = "SELF_SERVICE"
-        const val SERVICE = "SERVICE"
+    override fun onClickOk(selectedItems: List<CarWashOption>) {
+        applyAnswer(CarWashType(
+            isSelfService = selectedItems.contains(CarWashOption.SELF_SERVICE),
+            isAutomated = selectedItems.contains(CarWashOption.AUTOMATED)
+        ))
     }
+
+    enum class CarWashOption { AUTOMATED, SELF_SERVICE, SERVICE }
 }

@@ -1,14 +1,12 @@
 package de.westnordost.streetcomplete.quests.bench_backrest
 
-import android.os.Bundle
-
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
-import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.bench_backrest.BenchBackrestAnswer.*
 
-class AddBenchBackrest(o: OverpassMapDataDao) : SimpleOverpassQuestType(o) {
+class AddBenchBackrest(o: OverpassMapDataDao) : SimpleOverpassQuestType<BenchBackrestAnswer>(o) {
 
     override val tagFilters = "nodes with amenity=bench and !backrest"
     override val commitMessage = "Add backrest information to benches"
@@ -18,15 +16,14 @@ class AddBenchBackrest(o: OverpassMapDataDao) : SimpleOverpassQuestType(o) {
 
     override fun createForm() = AddBenchBackrestForm()
 
-    override fun applyAnswerTo(answer: Bundle, changes: StringMapChangesBuilder) {
-        val isPicnicTable = answer.getBoolean(AddBenchBackrestForm.PICNIC_TABLE)
-
-        if (isPicnicTable) {
-            changes.add("leisure", "picnic_table")
-            changes.delete("amenity")
-        } else {
-            val yesno = if (answer.getBoolean(YesNoQuestAnswerFragment.ANSWER)) "yes" else "no"
-            changes.add("backrest", yesno)
+    override fun applyAnswerTo(answer: BenchBackrestAnswer, changes: StringMapChangesBuilder) {
+        when (answer) {
+            PICNIC_TABLE -> {
+                changes.add("leisure", "picnic_table")
+                changes.delete("amenity")
+            }
+            YES -> changes.add("backrest", "yes")
+            NO -> changes.add("backrest", "no")
         }
     }
 }

@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.quests.oneway
 
-import android.os.Bundle
 import android.util.Log
 
 import de.westnordost.osmapi.map.data.BoundingBox
@@ -14,7 +13,6 @@ import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandler
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
 import de.westnordost.streetcomplete.data.osm.tql.FiltersParser
-import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.oneway.data.TrafficFlowSegment
 import de.westnordost.streetcomplete.quests.oneway.data.TrafficFlowSegmentsDao
 import de.westnordost.streetcomplete.quests.oneway.data.WayTrafficFlowDao
@@ -23,13 +21,14 @@ class AddOneway(
     private val overpassMapDataDao: OverpassMapDataDao,
     private val trafficFlowSegmentsDao: TrafficFlowSegmentsDao,
     private val db: WayTrafficFlowDao
-) : OsmElementQuestType {
+) : OsmElementQuestType<OnewayAnswer> {
 
     private val tagFilters =
         " ways with highway ~ " +
         "trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|" +
         "unclassified|residential|living_street|pedestrian|track|road" +
-        " and !oneway and (access !~ private|no or (foot and foot !~ private|no)) and area != yes"
+        " and !oneway and junction != roundabout and area != yes" +
+        " and (access !~ private|no or (foot and foot !~ private|no)) "
 
     override val commitMessage =
         "Add whether this road is a one-way road, this road was marked as likely oneway by improveosm.org"
@@ -63,9 +62,16 @@ class AddOneway(
 
                 val way = element as? Way ?: return
                 val segments = trafficDirectionMap[way.id] ?: return
-                // only create quest if direction can be clearly determined and is the same direction
-                // for all segments belonging to one OSM way (because StreetComplete cannot split ways
-                // up)
+                /* exclude rings because the driving direction can then not be determined reliably
+                   from the improveosm data and the quest should stay simple, i.e not require the
+                   user to input it in those cases. Additionally, whether a ring-road is a oneway or
+                   not is less valuable information (for routing) and many times such a ring will
+                   actually be a roundabout. Oneway information on roundabouts is superfluous.
+                   See #1320 */
+                if(way.nodeIds.last() == way.nodeIds.first()) return
+                /* only create quest if direction can be clearly determined and is the same
+                   direction for all segments belonging to one OSM way (because StreetComplete
+                   cannot split ways up) */
                 val isForward = isForward(geometry.polylines[0], segments) ?: return
 
                 db.put(way.id, isForward)
@@ -123,13 +129,11 @@ class AddOneway(
 
     override fun createForm() = AddOnewayForm()
 
-    override fun applyAnswerTo(answer: Bundle, changes: StringMapChangesBuilder) {
-        val isOneway = answer.getBoolean(YesNoQuestAnswerFragment.ANSWER)
-        if (!isOneway) {
+    override fun applyAnswerTo(answer: OnewayAnswer, changes: StringMapChangesBuilder) {
+        if (!answer.isOneway) {
             changes.add("oneway", "no")
         } else {
-            val wayId = answer.getLong(AddOnewayForm.WAY_ID)
-            changes.add("oneway", if (db.isForward(wayId)!!) "yes" else "-1")
+            changes.add("oneway", if (db.isForward(answer.wayId)!!) "yes" else "-1")
         }
     }
 

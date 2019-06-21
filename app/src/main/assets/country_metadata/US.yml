@@ -4,7 +4,7 @@ isSlowZoneKnown: false
 measurementSystem: [imperial]
 mobileCountryCode: 310
 officialLanguages: [en]
-orchardProduces: [grape, almond, tomato, apple, walnut, pistachio, peach, blueberry, grapefruit, plum,
-  chilli_pepper, sweet_pepper, strawberry, avocado, orange, lemon, lime]
+orchardProduces: [tomato, grape, apple, orange, strawberry, almond, peach, lemon, lime, grapefruit,
+  pear, walnut, cranberry, plum, pistachio, blueberry]
 popularReligions: [christian, jewish]
 popularSports: [baseball, tennis, basketball, soccer, golf, american_football]

@@ -1,9 +1,10 @@
 package de.westnordost.streetcomplete.quests.postbox_collection_times
 
 import android.os.Bundle
-import android.support.v7.app.AlertDialog
-import android.support.v7.widget.LinearLayoutManager
+import androidx.appcompat.app.AlertDialog
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.View
+import androidx.recyclerview.widget.RecyclerView
 
 import java.util.ArrayList
 
@@ -19,7 +20,7 @@ import de.westnordost.streetcomplete.ktx.toObject
 import kotlinx.android.synthetic.main.quest_collection_times.*
 
 
-class AddCollectionTimesForm : AbstractQuestFormAnswerFragment() {
+class AddCollectionTimesForm : AbstractQuestFormAnswerFragment<CollectionTimesAnswer>() {
 
     override val contentLayoutResId = R.layout.quest_collection_times
 
@@ -30,9 +31,6 @@ class AddCollectionTimesForm : AbstractQuestFormAnswerFragment() {
     private lateinit var collectionTimesAdapter: CollectionTimesAdapter
 
     @Inject internal lateinit var serializer: Serializer
-
-    private val collectionTimesString get() =
-        collectionTimesAdapter.createCollectionTimes().joinToString(", ")
 
     init {
         Injector.instance.applicationComponent.inject(this)
@@ -49,7 +47,7 @@ class AddCollectionTimesForm : AbstractQuestFormAnswerFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        collectionTimesList.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+        collectionTimesList.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
         collectionTimesList.adapter = collectionTimesAdapter
         collectionTimesList.isNestedScrollingEnabled = false
         checkIsFormComplete()
@@ -59,7 +57,7 @@ class AddCollectionTimesForm : AbstractQuestFormAnswerFragment() {
 
     private fun loadCollectionTimesData(savedInstanceState: Bundle?):List<WeekdaysTimesRow> =
         if (savedInstanceState != null) {
-            serializer.toObject<ArrayList<WeekdaysTimesRow>>(savedInstanceState.getByteArray(TIMES_DATA))
+            serializer.toObject<ArrayList<WeekdaysTimesRow>>(savedInstanceState.getByteArray(TIMES_DATA)!!)
         } else {
             listOf()
         }
@@ -71,31 +69,20 @@ class AddCollectionTimesForm : AbstractQuestFormAnswerFragment() {
     }
 
     override fun onClickOk() {
-        val answer = Bundle()
-        answer.putString(TIMES, collectionTimesString)
-        applyAnswer(answer)
+        applyAnswer(CollectionTimes(collectionTimesAdapter.createCollectionTimes()))
     }
 
     private fun confirmNoTimes() {
         AlertDialog.Builder(context!!)
             .setTitle(R.string.quest_generic_confirmation_title)
-            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> applyNoTimesAnswer() }
+            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> applyAnswer(NoCollectionTimesSign) }
             .setNegativeButton(R.string.quest_generic_confirmation_no, null)
             .show()
     }
 
-    private fun applyNoTimesAnswer() {
-        val answer = Bundle()
-        answer.putBoolean(NO_TIMES_SPECIFIED, true)
-        applyAnswer(answer)
-    }
-
-    override fun isFormComplete() = collectionTimesString.isNotEmpty()
+    override fun isFormComplete() = collectionTimesAdapter.createCollectionTimes().isNotEmpty()
 
     companion object {
-        const val TIMES = "times"
-        const val NO_TIMES_SPECIFIED = "no_times_specified"
-
         private const val TIMES_DATA = "times_data"
     }
 }

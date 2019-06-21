@@ -1,16 +1,16 @@
 package de.westnordost.streetcomplete.view
 
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 
 import de.westnordost.streetcomplete.R
 
 /** Select a number of items from a list of items  */
-class ImageSelectAdapter(private val maxSelectableIndices: Int = -1) :
+class ImageSelectAdapter<T>(private val maxSelectableIndices: Int = -1) :
     RecyclerView.Adapter<ItemViewHolder>() {
 
-    var items = listOf<GroupedItem>()
+    var items = listOf<Item<T>>()
     set(value) {
         field = value
         notifyDataSetChanged()
@@ -23,7 +23,7 @@ class ImageSelectAdapter(private val maxSelectableIndices: Int = -1) :
 
     val listeners = mutableListOf<ImageSelectAdapter.OnItemSelectionListener>()
 
-    val selectedItems get() = _selectedIndices.map { i -> items[i] }
+    val selectedItems get() = _selectedIndices.map { i -> items[i].value!! }
 
     interface OnItemSelectionListener {
         fun onIndexSelected(index: Int)

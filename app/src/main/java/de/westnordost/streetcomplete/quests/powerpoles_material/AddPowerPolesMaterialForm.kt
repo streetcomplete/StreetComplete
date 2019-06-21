@@ -1,10 +1,10 @@
 package de.westnordost.streetcomplete.quests.powerpoles_material
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.ImageListQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
 import de.westnordost.streetcomplete.view.Item
 
-class AddPowerPolesMaterialForm : ImageListQuestAnswerFragment() {
+class AddPowerPolesMaterialForm : AImageListQuestAnswerFragment<String,String>() {
 
     override val items = listOf(
         Item("wood", R.drawable.power_pole_wood, R.string.quest_powerPolesMaterial_wood),
@@ -13,4 +13,8 @@ class AddPowerPolesMaterialForm : ImageListQuestAnswerFragment() {
     )
 
     override val itemsPerRow = 3
+
+    override fun onClickOk(selectedItems: List<String>) {
+        applyAnswer(selectedItems.single())
+    }
 }

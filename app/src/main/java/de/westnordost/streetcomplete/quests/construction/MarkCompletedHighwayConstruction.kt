@@ -1,7 +1,5 @@
 package de.westnordost.streetcomplete.quests.construction
 
-import android.os.Bundle
-
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
@@ -13,7 +11,8 @@ import de.westnordost.streetcomplete.data.osm.tql.OverpassQLUtil
 import de.westnordost.streetcomplete.quests.DateUtil
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
-open class MarkCompletedHighwayConstruction(private val overpass: OverpassMapDataDao) : AMarkCompletedConstruction() {
+open class MarkCompletedHighwayConstruction(private val overpass: OverpassMapDataDao)
+    : AMarkCompletedConstruction<Boolean>() {
 
     override val commitMessage = "Determine whether construction is now completed"
     override val icon = R.drawable.ic_quest_road_construction
@@ -52,8 +51,8 @@ open class MarkCompletedHighwayConstruction(private val overpass: OverpassMapDat
 
     override fun createForm() = YesNoQuestAnswerFragment()
 
-    override fun applyAnswerTo(answer: Bundle, changes: StringMapChangesBuilder) {
-        if (answer.getBoolean(YesNoQuestAnswerFragment.ANSWER)) {
+    override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
+        if (answer) {
             val constructionValue = changes.getPreviousValue("construction") ?: "road"
             changes.modify("highway", constructionValue)
             removeTagsDescribingConstruction(changes)

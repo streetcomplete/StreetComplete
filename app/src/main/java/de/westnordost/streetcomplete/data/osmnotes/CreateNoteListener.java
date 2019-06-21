@@ -1,9 +1,8 @@
 package de.westnordost.streetcomplete.data.osmnotes;
 
 import android.graphics.Point;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public interface CreateNoteListener

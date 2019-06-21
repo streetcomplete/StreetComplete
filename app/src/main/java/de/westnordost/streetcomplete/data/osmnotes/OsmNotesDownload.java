@@ -67,6 +67,9 @@ public class OsmNotesDownload
 
 		noteServer.getAll(bbox, note ->
 		{
+			// exclude invalid notes (#1338)
+			if(note.comments.isEmpty()) return;
+
 			OsmNoteQuest quest = new OsmNoteQuest(note, questType);
 			if(shouldMakeNoteClosed(userId, note))
 			{

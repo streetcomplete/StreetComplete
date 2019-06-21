@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.quests.max_height
 
 import android.os.Bundle
-import android.support.v7.app.AlertDialog
+import androidx.appcompat.app.AlertDialog
 import android.text.InputFilter
 import android.text.method.DigitsKeyListener
 import android.view.LayoutInflater
@@ -21,7 +21,7 @@ import de.westnordost.streetcomplete.quests.max_height.Measurement.*
 
 private enum class Measurement { METRIC, IMPERIAL }
 
-class AddMaxHeightForm : AbstractQuestFormAnswerFragment() {
+class AddMaxHeightForm : AbstractQuestFormAnswerFragment<MaxHeightAnswer>() {
 
     override val otherAnswers = listOf(
         OtherAnswer(R.string.quest_maxheight_answer_noSign) { confirmNoSign() }
@@ -67,7 +67,7 @@ class AddMaxHeightForm : AbstractQuestFormAnswerFragment() {
         heightUnitSelect?.adapter = ArrayAdapter(context!!, R.layout.spinner_item_centered, getSpinnerItems(measurementUnits))
         heightUnitSelect?.setSelection(0)
         heightUnitSelect?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parentView: AdapterView<*>, selectedItemView: View, position: Int, id: Long) {
+            override fun onItemSelected(parentView: AdapterView<*>, selectedItemView: View?, position: Int, id: Long) {
                 val heightUnit = if (heightUnitSelect?.selectedItem == "m") METRIC else IMPERIAL
                 switchLayout(heightUnit)
             }
@@ -78,7 +78,12 @@ class AddMaxHeightForm : AbstractQuestFormAnswerFragment() {
         inchInput?.filters = arrayOf(InputFilter { source, start, end, dest, dstart, dend ->
             val destStr = dest.toString()
             val input = destStr.substring(0, dstart) + source.toString() + destStr.substring(dend, destStr.length)
-            if (input.toInt() <= 12) null else ""
+
+            if(input.isEmpty() || input.toIntOrNull() != null && input.toInt() <= 12) {
+                null
+            } else {
+                ""
+            }
         })
         /* Workaround for an Android bug that it assumes the decimal separator to always be the "."
            for EditTexts with inputType "numberDecimal", independent of Locale. See
@@ -116,16 +121,10 @@ class AddMaxHeightForm : AbstractQuestFormAnswerFragment() {
     private fun confirmNoSign() {
         activity?.let { AlertDialog.Builder(it)
             .setMessage(R.string.quest_maxheight_answer_noSign_question)
-            .setPositiveButton(R.string.quest_generic_hasFeature_yes) { _, _ -> applyNoSignAnswer(DEFAULT) }
-            .setNegativeButton(R.string.quest_generic_hasFeature_no) { _, _ -> applyNoSignAnswer(BELOW_DEFAULT) }
+            .setPositiveButton(R.string.quest_generic_hasFeature_yes) { _, _ ->  applyAnswer(NoMaxHeightSign(true)) }
+            .setNegativeButton(R.string.quest_generic_hasFeature_no) { _, _ -> applyAnswer(NoMaxHeightSign(false)) }
             .show()
         }
-    }
-
-    private fun applyNoSignAnswer(answer: String) {
-        val data = Bundle()
-        data.putString(NO_SIGN, answer)
-        applyAnswer(data)
     }
 
     override fun onClickOk() {
@@ -143,22 +142,24 @@ class AddMaxHeightForm : AbstractQuestFormAnswerFragment() {
     }
 
     private fun applyMaxHeightFormAnswer() {
-        val answer = Bundle()
-        answer.putString(MAX_HEIGHT, getHeightFromInput()!!.toString())
-        applyAnswer(answer)
+        applyAnswer(MaxHeight(getHeightFromInput()!!))
     }
 
     private fun getHeightFromInput(): Measure? {
-        if (isMetric()) {
-            val input = meterInput!!.text.toString().replace(",", ".")
-            if (input.isNotEmpty()) return MetricMeasure(input.toDouble())
-        } else {
-            val feetString = feetInput!!.text.toString()
-            val inchString = inchInput!!.text.toString()
+        try {
+            if (isMetric()) {
+                val input = meterInput?.text?.toString().orEmpty().trim().replace(",", ".")
+                if (input.isNotEmpty()) return MetricMeasure(input.toDouble())
+            } else {
+                val feetString = feetInput?.text?.toString().orEmpty().trim()
+                val inchString = inchInput?.text?.toString().orEmpty().trim()
 
-            if (feetString.isNotEmpty() && inchString.isNotEmpty()) {
-                return ImperialMeasure(feetString.toInt(), inchString.toInt())
+                if (feetString.isNotEmpty() && inchString.isNotEmpty()) {
+                    return ImperialMeasure(feetString.toInt(), inchString.toInt())
+                }
             }
+        } catch (e: NumberFormatException) {
+            return null;
         }
         return null
     }
@@ -176,12 +177,5 @@ class AddMaxHeightForm : AbstractQuestFormAnswerFragment() {
                 .setNegativeButton(R.string.quest_generic_confirmation_no, null)
                 .show()
         }
-    }
-
-    companion object {
-        const val MAX_HEIGHT = "max_height"
-        const val NO_SIGN = "no_sign"
-        const val BELOW_DEFAULT = "below_default"
-        const val DEFAULT = "default"
     }
 }

@@ -13,27 +13,29 @@ import:
     - layers/roads.yaml
 
 global:
-    text_stroke_color: '#20204e'
+    text_stroke_color: '#2e2e48'
     text_fill_color: '#ccf'
 
     railway_color: '#903'
-    road_color: '#448'
+    road_color: '#559'
     road_outline_color: '#99f'
     path_color: global.road_color
-    path_outline_color: '#96b'
+    path_outline_color: '#547'
     square_color: global.road_color
 
-    earth_color: '#20204e'
+    earth_color: '#2e2e48'
     water_color: '#002'
-    landuse_color: '#403066'
+    landuse_color: '#363054'
 
-    building_color: rgb(68,34,0)
-    building_outline_color: rgb(51,17,0)
+    building_color: [0.16, 0.36, 0.36, 0.75]
+    building_outline_color: [0.12, 0.32, 0.32, 0.75]
 
     boundary_color: '#e46'
 
     oneway_arrow_color: '#ccf'
-    barrier_color: '#ccf'
+    barrier_color: '#99f'
+
+    tunnel_color: [0.3, 0.2, 1.0, 0.2]
 
 styles:
     lines-railway-style:
@@ -41,7 +43,7 @@ styles:
         blend: add
     buildings-style:
         base: polygons
-        blend: add
+        blend: translucent
     buildings-outline-style:
         base: lines
-        blend: add
+        blend: translucent

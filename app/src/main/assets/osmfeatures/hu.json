@@ -1,0 +1,3515 @@
+{
+    "presets": {
+        "office/administrative": {
+            "name": "Közigazgatási hivatal"
+        },
+        "amenity/car_rental": {
+            "name": "Autókölcsönző",
+            "terms": "gépkocsi, gépjármű, jármű, köcsönzés, bérlés"
+        },
+        "place/city": {
+            "name": "Nagyváros",
+            "terms": "város, megyeszékhely, megyeközpont"
+        },
+        "building": {
+            "name": "Épület",
+            "terms": "építmény, ház, lakás,"
+        },
+        "amenity/restaurant/indian": {
+            "name": "Indiai étterem"
+        },
+        "craft/dressmaker": {
+            "name": "Nőiruha-készítő",
+            "terms": "Ruhakészítő, szabó, varrónő"
+        },
+        "barrier/lift_gate": {
+            "name": "Emelkedő sorompó",
+            "terms": "Sorompó"
+        },
+        "railway/halt": {
+            "name": "Vasútállomás (kérésre megáll)"
+        },
+        "shop/agrarian": {
+            "name": "Gazdabolt"
+        },
+        "building/farm": {
+            "name": "Mezőgazdasági épület"
+        },
+        "shop/hunting": {
+            "name": "Vadászati bolt"
+        },
+        "amenity/waste_disposal": {
+            "name": "Szemeteskonténer",
+            "terms": "szemetes, kuka, szemetes kuka, hulladéktároló"
+        },
+        "attraction/carousel": {
+            "name": "Körhinta",
+            "terms": "hita,kör,forgó,ló"
+        },
+        "craft/sawmill": {
+            "name": "Fűrészmalom",
+            "terms": "Fűrésztelep"
+        },
+        "emergency/yes": {
+            "name": "Vészhelyzeti használat"
+        },
+        "circular": {
+            "name": "Körforgalom"
+        },
+        "healthcare/audiologist": {
+            "name": "Audiológus",
+            "terms": "fül, hallás, hang"
+        },
+        "highway/motorway": {
+            "name": "Autópálya",
+            "terms": "Autópálya"
+        },
+        "natural/bay": {
+            "name": "Öböl",
+            "terms": "Öböl"
+        },
+        "building/bungalow": {
+            "name": "Bungaló"
+        },
+        "building/terrace": {
+            "name": "Sorház",
+            "terms": "házsor"
+        },
+        "aeroway/runway": {
+            "name": "Kifutópálya",
+            "terms": "futópálya, leszállópálya"
+        },
+        "amenity/studio": {
+            "name": "Stúdió",
+            "terms": "rádió, televízió, fotóstúdió, műterem, fényképész"
+        },
+        "landuse/military": {
+            "name": "Katonai terület",
+            "terms": "Lőtér,  Gyakorló terep"
+        },
+        "shop/seafood": {
+            "name": "Halbolt",
+            "terms": "halkereskedés, halas"
+        },
+        "railway/milestone": {
+            "name": "Vasúti mérföldkő",
+            "terms": "mérföldkő, vasút, kilométerkő"
+        },
+        "waterway/sanitary_dump_station": {
+            "name": "Tengeri WC kezelése",
+            "terms": "tisztaság, szaniter, ürítés"
+        },
+        "barrier/city_wall": {
+            "name": "Városfal",
+            "terms": "fal, középkor"
+        },
+        "office/employment_agency": {
+            "name": "Munkaügyi központ",
+            "terms": "munkaügyi hivatal"
+        },
+        "craft/sculptor": {
+            "name": "Szobrász"
+        },
+        "office/government/register_office": {
+            "name": "Anyakönyvi hivatal",
+            "terms": "anyakönyvi hivatal, házasságkötési hivatal"
+        },
+        "amenity/waste_transfer_station": {
+            "name": "Hulladékátrakó állomás",
+            "terms": "hulladék átrakó állomás, hulladék átadóállomás"
+        },
+        "boundary/administrative": {
+            "name": "Közigazgatási határ",
+            "terms": "adminisztratív határ, településhatár, városhatár, megyehatár, országhatár"
+        },
+        "man_made/surveillance": {
+            "name": "Térfigyelő kamera",
+            "terms": "biztonsági kamera, CCTV, zártláncú kamera"
+        },
+        "building/ruins": {
+            "name": "Épület romjai",
+            "terms": "romok,rom"
+        },
+        "leisure/pitch/american_football": {
+            "name": "Amerikaifutball-pálya",
+            "terms": "Amerikai foci pálya"
+        },
+        "traffic_calming/bump": {
+            "name": "Fekvőrendőr",
+            "terms": "Forgalomcsillapító küszöb, Sebességcsökkentő borda"
+        },
+        "craft/carpenter": {
+            "name": "Ács",
+            "terms": "Tetőfedő, épületasztalos"
+        },
+        "railway/level_crossing": {
+            "name": "Vasúti átjáró (közút)",
+            "terms": "vasúti kereszteződés,átkelő,átjáró"
+        },
+        "amenity/restaurant/greek": {
+            "name": "Görög étterem"
+        },
+        "attraction/amusement_ride": {
+            "name": "Mutatványos berendezés",
+            "terms": "körhinta, ringlispíl, óriáskerék, dodzsem, hullámvasút,"
+        },
+        "place/suburb": {
+            "name": "Városrész",
+            "terms": "városrész"
+        },
+        "man_made/pier": {
+            "name": "Móló",
+            "terms": "Móló"
+        },
+        "shop/farm": {
+            "name": "Termelői bolt",
+            "terms": "farm bolt, árus, kofa, tanyasi termék, őstermelő"
+        },
+        "waterway/stream_intermittent": {
+            "name": "Időszakos vízfolyás",
+            "terms": "csermely, patak, ér, folyó, folyam, folyás, víz, időszak, árad, áraszt"
+        },
+        "highway/road": {
+            "name": "Ismeretlen út",
+            "terms": "Ismeretlen típusú út"
+        },
+        "address": {
+            "name": "Lakcím",
+            "terms": "cím, lakcím, házszám, utca"
+        },
+        "highway/primary_link": {
+            "name": "Főútfelhajtó",
+            "terms": "Elsőrendű főútcsatlakozás"
+        },
+        "shop/greengrocer": {
+            "name": "Zöldséges",
+            "terms": "zöldség, gyümölcs"
+        },
+        "highway/traffic_mirror": {
+            "name": "Közlekedési tükör",
+            "terms": "közlekedési tükör"
+        },
+        "railway/station": {
+            "name": "Vasútállomás"
+        },
+        "aerialway/rope_tow": {
+            "name": "Kapaszkodólift",
+            "terms": "kötéllift, húzólift, vontatólift"
+        },
+        "office/company": {
+            "name": "Vállalati iroda"
+        },
+        "shop/dairy": {
+            "name": "Tejtermékbolt",
+            "terms": "tejtermék, Kecsketej, Kézműves tejtermékek boltja, tehéntej, juhtej, sajt, joghurt, kefír, tejföl"
+        },
+        "type/route/road": {
+            "name": "Közút",
+            "terms": "út, főút, közút, autóút, autópálya"
+        },
+        "amenity/planetarium": {
+            "name": "Planetárium",
+            "terms": "csillagvizsgáló, csilagda"
+        },
+        "office/financial": {
+            "name": "Pénzügyi vállalat irodája",
+            "terms": "pénzügy, hitelezés, kölcsön, befektetés, biztosítás"
+        },
+        "highway/track": {
+            "name": "Nem karbantartott mezőgazdasági/erdészeti út",
+            "terms": "erdészeti út, földút, mezőgazdasági út, tanyasi út, földút"
+        },
+        "attraction/dark_ride": {
+            "name": "Szellemvasút",
+            "terms": "kommunista,szellem,vasútja"
+        },
+        "shop/wine": {
+            "name": "Borszaküzlet",
+            "terms": "borászat, italbolt, borkereskedés"
+        },
+        "shop/hairdresser": {
+            "name": "Fodrász",
+            "terms": "hajvágás"
+        },
+        "building/school": {
+            "name": "Iskolaépület",
+            "terms": "Iskolaépület, általános iskola, szakközépiskola, gimnázium"
+        },
+        "tourism/information/board": {
+            "name": "Információs tábla",
+            "terms": "információs tábla"
+        },
+        "amenity/restaurant/french": {
+            "name": "Francia étterem"
+        },
+        "amenity/ferry_terminal": {
+            "name": "Kompállomás / Terminál"
+        },
+        "shop/furnace": {
+            "name": "Kazánbolt (elavult)"
+        },
+        "landuse/industrial": {
+            "name": "Ipari terület",
+            "terms": "ipar, gyárterület, gyár, ipari park"
+        },
+        "type/route/hiking": {
+            "name": "Turistaút",
+            "terms": "Túraút, Gyalogtúra"
+        },
+        "amenity/place_of_worship/christian": {
+            "name": "Keresztény templom"
+        },
+        "tourism/hostel": {
+            "name": "Turistaszálló",
+            "terms": "Hostel, ifjúsági szálló"
+        },
+        "leisure/pitch/volleyball": {
+            "name": "Röplabdapálya",
+            "terms": "röplabda,röpi,pálya"
+        },
+        "amenity/veterinary": {
+            "name": "Állatorvos",
+            "terms": "Állatorvosi rendelő, lódoktor, kutyadoktor, macskadoktor"
+        },
+        "craft/pottery": {
+            "name": "Fazekas",
+            "terms": "kerámia,agyag,kőedény,cserép"
+        },
+        "craft/roofer": {
+            "name": "Tetőfedő",
+            "terms": "Tetőfedő"
+        },
+        "amenity/restaurant/mexican": {
+            "name": "Mexikói étterem"
+        },
+        "shop/massage": {
+            "name": "Masszázsszalon",
+            "terms": "Masszőr, Masszázs, Gyógymasszázs, Svédmasszázs, Thai masszázs, Keleti masszázs, Gyúrás"
+        },
+        "area": {
+            "name": "Terület",
+            "terms": "terület"
+        },
+        "landuse/landfill": {
+            "name": "Hulladéklerakó",
+            "terms": "Szemétlerakó, szeméttelep"
+        },
+        "tourism/aquarium": {
+            "name": "Akvárium",
+            "terms": "akvárium"
+        },
+        "type/site": {
+            "name": "Helyszín",
+            "terms": "hely, site"
+        },
+        "type/route/subway": {
+            "name": "Metróvonal"
+        },
+        "amenity/fast_food/burger": {
+            "name": "Hamburger gyorsétterem"
+        },
+        "amenity/vending_machine/fuel": {
+            "name": "Benzinkút"
+        },
+        "amenity/fountain": {
+            "name": "Szökőkút",
+            "terms": "kút, díszkút"
+        },
+        "shop/doityourself": {
+            "name": "Barkácsáruház",
+            "terms": "barkács, ezermester, obi, praktiker, baumax, barkácsbolt, felújítás, szerszám"
+        },
+        "amenity/taxi": {
+            "name": "Taxiállomás",
+            "terms": "Taxidroszt, droszt"
+        },
+        "amenity/smoking_area": {
+            "name": "Dohányzó terület",
+            "terms": "dohányzásra kijelölt hely"
+        },
+        "man_made/water_tower": {
+            "name": "Víztorony",
+            "terms": "Víztorony"
+        },
+        "railway/train_wash": {
+            "name": "Mozdony mosó",
+            "terms": "vasút, mozdony, vonat, mosó, kocsimosó"
+        },
+        "shop/dry_cleaning": {
+            "name": "Vegytisztitó",
+            "terms": "Száraztisztító, patyolat, ruhatisztítás"
+        },
+        "tourism/caravan_site": {
+            "name": "Lakóautó park",
+            "terms": "lakóautó,lakókocsi,park"
+        },
+        "craft/clockmaker": {
+            "name": "Órás (falióra)",
+            "terms": "Órás"
+        },
+        "shop/furniture": {
+            "name": "Bútorbolt",
+            "terms": "bútor, lakberendezés"
+        },
+        "public_transport/platform_ferry": {
+            "name": "Kompmegállo peron"
+        },
+        "advertising/billboard": {
+            "name": "Óriásplakát",
+            "terms": "plakát,óriásplakát,reklámtábla,poszter, óriásposzter"
+        },
+        "shop/bakery": {
+            "name": "Pékség",
+            "terms": "pogácsa,kifli,kenyér,pékség,péksütemény"
+        },
+        "emergency/phone": {
+            "name": "Segélyhívó telefon",
+            "terms": "Vészhelyzeti telefon"
+        },
+        "golf/bunker": {
+            "name": "Homokcsapda",
+            "terms": "homokakadály,bunker"
+        },
+        "shop/houseware": {
+            "name": "Háztartási bolt",
+            "terms": "edények, evőeszközök, konyha, háztartási kisgépek, kerti eszközök,"
+        },
+        "leisure/pitch/soccer": {
+            "name": "Futballpálya",
+            "terms": "Focipálya"
+        },
+        "type/multipolygon": {
+            "name": "Multipoligon"
+        },
+        "shop/vacant": {
+            "name": "Üres üzlethelyiség"
+        },
+        "amenity/social_facility/homeless_shelter": {
+            "name": "Átmeneti szálló",
+            "terms": "Hajléktalan menedék, leányanya-otthon"
+        },
+        "highway/turning_loop": {
+            "name": "Fordulóhurok",
+            "terms": "fordulóhely"
+        },
+        "leisure/miniature_golf": {
+            "name": "Minigolf",
+            "terms": "minigolf, minigolfpálya, miniatűr golfpálya"
+        },
+        "amenity/vending_machine/ice_cream": {
+            "name": "Jégkrém árusító automata"
+        },
+        "amenity/hospital": {
+            "name": "Kórház",
+            "terms": "klinika, orvos, szakorvos, műtét"
+        },
+        "amenity/telephone": {
+            "name": "Telefon",
+            "terms": "Telefonfülke, telefonkészülék,telefon,nyilvános telefon, nyilvános állomás"
+        },
+        "building/dormitory": {
+            "name": "Kollégium",
+            "terms": "Kollégium, Diákszálló, Diákotthon"
+        },
+        "craft/blacksmith": {
+            "name": "Kovács",
+            "terms": "Patkolókovács, Kézi kovácsoló"
+        },
+        "landuse/residential": {
+            "name": "Lakóövezet",
+            "terms": "lakótelep, lakóterület"
+        },
+        "leisure/stadium": {
+            "name": "Stadion",
+            "terms": "Stadion"
+        },
+        "highway/speed_camera": {
+            "name": "Traffipax",
+            "terms": "sebességellenőrző, sebességmérő, kamera"
+        },
+        "public_transport/station_monorail": {
+            "name": "Egysínű vasúti állomás"
+        },
+        "amenity/drinking_water": {
+            "name": "Ivóvíz",
+            "terms": "Ivókút, kút, csap, közkifolyó, közkút, nyomós kút, forrás, víz"
+        },
+        "barrier/kissing_gate": {
+            "name": "Lengőkapu",
+            "terms": "Ütközős csapóajtó"
+        },
+        "landuse/recreation_ground": {
+            "name": "Szabadidőpark",
+            "terms": "park, pihenőhely"
+        },
+        "office/newspaper": {
+            "name": "Újságírói iroda"
+        },
+        "type/restriction/no_u_turn": {
+            "name": "Megfordulni tilos",
+            "terms": "Tilos megfordulni"
+        },
+        "amenity/townhall": {
+            "name": "Városháza",
+            "terms": "Polgármesteri hivatal, Községháza,"
+        },
+        "public_transport/stop_position_bus": {
+            "name": "Busz megállási hely"
+        },
+        "traffic_sign/city_limit_vertex": {
+            "name": "Lakott terület határát jelző tábla"
+        },
+        "natural/water": {
+            "name": "Víz",
+            "terms": "Víz"
+        },
+        "barrier/cycle_barrier": {
+            "name": "Kerékpáros-akadály",
+            "terms": "bicikliakadály"
+        },
+        "embankment": {
+            "name": "Töltés"
+        },
+        "shop/sports": {
+            "name": "Sportbolt",
+            "terms": "sportfelszerelés, sportszer"
+        },
+        "amenity/biergarten": {
+            "name": "Sörkert"
+        },
+        "type/waterway": {
+            "name": "Vízi út",
+            "terms": "folyó, csatorna, víz, út, hajó, csónak"
+        },
+        "emergency/destination": {
+            "name": "Kivéve célforgalom, vészhelyzetben"
+        },
+        "craft/winery": {
+            "name": "Borászat",
+            "terms": "pincészet"
+        },
+        "public_transport/stop_position_train": {
+            "name": "Vasút megállási hely"
+        },
+        "shop/laundry": {
+            "name": "Mosoda",
+            "terms": "ruhatisztító, vegytisztító, patyolat"
+        },
+        "amenity/grit_bin": {
+            "name": "Útszóróanyagos láda",
+            "terms": "szórósó, útszóróanyag, síkosságmentesítés"
+        },
+        "amenity/bank": {
+            "name": "Bank",
+            "terms": "Takarékszövetkezet, Pénzintézet, Takarék"
+        },
+        "amenity/prison": {
+            "name": "Börtön",
+            "terms": "börtön, fogház, fegyház"
+        },
+        "leisure/fishing": {
+            "name": "Horgászhely"
+        },
+        "building/boathouse": {
+            "name": "Csónakház"
+        },
+        "amenity/police": {
+            "name": "Rendőrség",
+            "terms": "rendőr, csendőr, kapitányság, zsandár, zsaru, fogda"
+        },
+        "place/farm": {
+            "name": "Tanya"
+        },
+        "highway/service/driveway": {
+            "name": "Kocsibehajtó",
+            "terms": "Kocsibejáró"
+        },
+        "leisure/pitch/basketball": {
+            "name": "Kosárlabdapálya",
+            "terms": "Kosárlabdapálya"
+        },
+        "shop/newsagent": {
+            "name": "Újságárus",
+            "terms": "Újságos, hírlapárus, trafik"
+        },
+        "building/residential": {
+            "name": "Lakóépület",
+            "terms": "Lakóház, lakás, ház"
+        },
+        "landuse/greenhouse_horticulture": {
+            "name": "Üvegházi kertészet"
+        },
+        "healthcare": {
+            "name": "Egészségügyi létesítmény",
+            "terms": "klinika, orvos, betegség, egészség, intézet, műtét, wellness"
+        },
+        "amenity/community_centre": {
+            "name": "Közösségi ház",
+            "terms": "művelődési ház, kultúrház, művház, faluház"
+        },
+        "shop/tyres": {
+            "name": "Autógumibolt",
+            "terms": "autógumi, gumiabroncs, gumiszerelés"
+        },
+        "aeroway/gate": {
+            "name": "Repülőtéri kapu",
+            "terms": "reptérkapu,légikapu"
+        },
+        "manhole/drain": {
+            "name": "Viharcsatorna",
+            "terms": "csatorna,cső"
+        },
+        "traffic_calming/island": {
+            "name": "Járdasziget",
+            "terms": "sziget, járdasziget"
+        },
+        "playground/cushion": {
+            "name": "Ugráló párna",
+            "terms": "párna,felfúj,ugrál"
+        },
+        "aerialway/gondola": {
+            "name": "Gondola",
+            "terms": "gondolakabinos felvonó, kabinos felvonó"
+        },
+        "shop/window_blind": {
+            "name": "Redőnybolt",
+            "terms": "redőny, roló, ablaksötétítő, árnyékolástechnika"
+        },
+        "advertising/column": {
+            "name": "Hirdetőoszlop"
+        },
+        "amenity/restaurant/italian": {
+            "name": "Olasz étterem"
+        },
+        "building/temple": {
+            "name": "Templomépület"
+        },
+        "landuse/military/barracks": {
+            "name": "Laktanya",
+            "terms": "kaszárnya"
+        },
+        "amenity/casino": {
+            "name": "Kaszinó",
+            "terms": "játékkaszinó, játékbarlang"
+        },
+        "amenity/coworking_space": {
+            "name": "Közösségi iroda"
+        },
+        "tourism/museum": {
+            "name": "Múzeum",
+            "terms": "Múzeum"
+        },
+        "railway/buffer_stop": {
+            "name": "Ütközőbak",
+            "terms": "üköző, ütközőbak, vasúti ütköző"
+        },
+        "aerialway/pylon": {
+            "name": "Drótkötélpálya-oszlop",
+            "terms": "oszlop, libegőoszlop"
+        },
+        "craft/chimney_sweeper": {
+            "name": "Kéményseprő"
+        },
+        "railway/narrow_gauge": {
+            "name": "Kisvasút",
+            "terms": "Keskeny nyomtávú vasút"
+        },
+        "shop/curtain": {
+            "name": "Függönybolt",
+            "terms": "karnis,függöny,kárpit,drapéria"
+        },
+        "amenity/recycling_container": {
+            "name": "Szelektív hulladékgyűjtő konténer"
+        },
+        "healthcare/hospice": {
+            "name": "Szeretetház",
+            "terms": "betegség, szeretet, gondoskodás"
+        },
+        "leisure/pitch/tennis": {
+            "name": "Teniszpálya",
+            "terms": "Teniszpálya"
+        },
+        "amenity/clinic/abortion": {
+            "name": "Abortusz klinika",
+            "terms": "abortusz, magzat elhajtás, klinika, kórház, szülészet, magzat,"
+        },
+        "craft/watchmaker": {
+            "name": "Órás (karóra)",
+            "terms": "Órakészítő és javító műhely"
+        },
+        "highway/footway/marked": {
+            "name": "Jelölt gyalogátkelőhely"
+        },
+        "leisure/fitness_centre": {
+            "name": "Edzőterem / Fitneszklub",
+            "terms": "konditerem,fitnesz,sport,központ"
+        },
+        "highway/corridor": {
+            "name": "Beltéri folyosó",
+            "terms": "beltéri folyosó"
+        },
+        "traffic_sign/maxspeed_vertex": {
+            "name": "Sebességkorlátozást jelző tábla"
+        },
+        "attraction/animal": {
+            "name": "Állat",
+            "terms": "állat,kutya,macska"
+        },
+        "amenity/restaurant/asian": {
+            "name": "Ázsiai étterem"
+        },
+        "craft/bookbinder": {
+            "name": "Könyvkötő",
+            "terms": "Könyvkötő"
+        },
+        "man_made/groyne": {
+            "name": "Keresztgát",
+            "terms": "védőgát, hullámtörő"
+        },
+        "shop/pawnbroker": {
+            "name": "Zálogház",
+            "terms": "Zálogház, zaci, bizományi"
+        },
+        "shop/beverages": {
+            "name": "Italbolt",
+            "terms": "pálinka,wiskey,wiski,vodka,bor,konyak"
+        },
+        "entrance": {
+            "name": "Bejárat/Kijárat",
+            "terms": "Bejárat/Kijárat"
+        },
+        "amenity/place_of_worship/jewish": {
+            "name": "Zsidó zsinagóga"
+        },
+        "highway/construction": {
+            "name": "Lezárt út"
+        },
+        "power/tower": {
+            "name": "Távvezetékoszlop",
+            "terms": "Magasfeszültségű oszlop, villanyoszlop"
+        },
+        "aerialway/cable_car": {
+            "name": "Kabinos felvonó",
+            "terms": "Nagykabinos lift, sífelvonó"
+        },
+        "landuse/military/airfield": {
+            "name": "Katonai repülőtér",
+            "terms": "katonai reptér,repülőbázis,légibázis, légitámaszpont"
+        },
+        "craft/boatbuilder": {
+            "name": "Hajóács",
+            "terms": "csónaképítő, csónakkészítő"
+        },
+        "craft/shoemaker": {
+            "name": "Cipész",
+            "terms": "Cipész, Cipőkészítő, Cipőjavító, Suszter, Csizmadia, Varga, Lábbeli készítő és javító mester"
+        },
+        "shop/interior_decoration": {
+            "name": "Lakberendezési bolt",
+            "terms": "lakástextil, díszek, bútor"
+        },
+        "man_made/crane": {
+            "name": "Daru",
+            "terms": "daru,emelő,teher"
+        },
+        "leisure/pitch/table_tennis": {
+            "name": "Pingpongasztal",
+            "terms": "asztalitenisz,asztal,pingpong"
+        },
+        "attraction/maze": {
+            "name": "Labirintus"
+        },
+        "amenity/place_of_worship/sikh": {
+            "name": "Szik templom",
+            "terms": "templom, szik, india"
+        },
+        "amenity/social_facility/food_bank": {
+            "name": "Élelmiszerbank ",
+            "terms": "Élelmiszer-adomány elosztó, Élelmiszersegély begyűjtő és elosztó"
+        },
+        "shop/nutrition_supplements": {
+            "name": "Étrendkiegészítő-bolt",
+            "terms": "étrend-kiegészítő, táplálékkiegészítő"
+        },
+        "craft/gardener": {
+            "name": "Kertész",
+            "terms": "Melegházi termelő, bolgárkertész"
+        },
+        "building/church": {
+            "name": "Templom",
+            "terms": "templomépület"
+        },
+        "shop/video_games": {
+            "name": "Videojátékbolt",
+            "terms": "PC-s játék, konzolos játék, XBOX, Wii"
+        },
+        "traffic_calming/dip": {
+            "name": "Bemarás",
+            "terms": "Mélyedés"
+        },
+        "traffic_calming/choker": {
+            "name": "Szűkítés",
+            "terms": "szűkület"
+        },
+        "railway/funicular": {
+            "name": "Sikló",
+            "terms": "Siklóvasút, kötélvasút"
+        },
+        "power/transformer": {
+            "name": "Transzformátor",
+            "terms": "transzformátor, trafó, áramátalakító"
+        },
+        "power/generator": {
+            "name": "Áramfejlesztő",
+            "terms": "generátor, erőmű, villamos energia, áram"
+        },
+        "natural/wetland": {
+            "name": "Mocsaras terület",
+            "terms": "Mocsaras, vizenyő, nádas, láp, ingovány"
+        },
+        "landuse/military/naval_base": {
+            "name": "Haditengerészeti támaszpont",
+            "terms": "tengerészeti,haditengerészeti,bázis"
+        },
+        "shop/department_store": {
+            "name": "Nagyáruház",
+            "terms": "Áruház, városi áruház, belvárosi áruház"
+        },
+        "historic/wayside_cross": {
+            "name": "Útmenti kereszt",
+            "terms": "Kőkereszt, feszület, pléhkrisztus"
+        },
+        "man_made/petroleum_well": {
+            "name": "Olajkút",
+            "terms": "olajkút"
+        },
+        "healthcare/alternative": {
+            "name": "Alternatív gyógyászat",
+            "terms": "akupunktúra, kineziológia, aromaterápia, ayurvéda, homeopátia, hidroterápia, hipnózis, naturopátia, oszteopátia, refelexológia, hagyományos"
+        },
+        "highway/footway": {
+            "name": "Gyalogút",
+            "terms": "Járda"
+        },
+        "building/roof": {
+            "name": "Tető",
+            "terms": "Tető, fedél, esőbeállló"
+        },
+        "natural/tree_row": {
+            "name": "Fasor"
+        },
+        "craft/upholsterer": {
+            "name": "Kárpitos",
+            "terms": "kárpitozás, bútor"
+        },
+        "natural/glacier": {
+            "name": "Gleccser",
+            "terms": "jégfolyó"
+        },
+        "shop/storage_rental": {
+            "name": "Tárolóhely bérbeadása",
+            "terms": "tárolás, raktárbérlés, parkolóhelybérlés"
+        },
+        "shop/fashion": {
+            "name": "Divatüzlet",
+            "terms": "Női divat, ruhabolt"
+        },
+        "power/substation": {
+            "name": "Alállomás",
+            "terms": "Elektromos alállomás, transzformátorállomás, trafóállomás, trafóház"
+        },
+        "amenity/fast_food": {
+            "name": "Gyorsétterem",
+            "terms": "pizza, gyros, gyorskajálda, lángos , büfé, hamburger, hot dog"
+        },
+        "type/route/pipeline": {
+            "name": "Csővezeték nyomvonala",
+            "terms": "Csővezeték, gázvezeték, kőolajvezeték"
+        },
+        "landuse/religious": {
+            "name": "Vallási övezet"
+        },
+        "traffic_sign/city_limit": {
+            "name": "Lakott terület határát jelző tábla"
+        },
+        "barrier/cattle_grid": {
+            "name": "Szarvasmarharács",
+            "terms": "tehénrács, marharács"
+        },
+        "tourism/motel": {
+            "name": "Motel",
+            "terms": "Motel, fogadó"
+        },
+        "building/cathedral": {
+            "name": "Székesegyház",
+            "terms": "katedrális, bazilika, templom, dóm"
+        },
+        "natural/reef": {
+            "name": "Zátony"
+        },
+        "craft/photographic_laboratory": {
+            "name": "Fotólabor",
+            "terms": "Fotólabor , Fotóműhely , Fotólaboratórium"
+        },
+        "amenity/waste/dog_excrement": {
+            "name": "Kutyaürülék tartály",
+            "terms": "ürülék, kutya, kuka"
+        },
+        "leisure/slipway": {
+            "name": "Sólya",
+            "terms": "Sólya, hajócsúszda"
+        },
+        "leisure/dance": {
+            "name": "Táncterem",
+            "terms": "táncterem"
+        },
+        "traffic_calming/hump": {
+            "name": "Hosszú fekvőrendőr",
+            "terms": "Lapos és hosszú fekvőrendőr"
+        },
+        "man_made/clearcut": {
+            "name": "Tarvágás"
+        },
+        "building/chapel": {
+            "name": "Kápolna",
+            "terms": "imaház, templom"
+        },
+        "craft/caterer": {
+            "name": "Partyszerviz",
+            "terms": "Catering, Partyszerviz, Rendezvényszervező"
+        },
+        "office/research": {
+            "name": "Kutatóintézet",
+            "terms": "kutatás, fejlesztés, alapkutatás"
+        },
+        "office/travel_agent": {
+            "name": "Utazási iroda"
+        },
+        "highway/footway/unmarked-raised": {
+            "name": "Jelöletlen kereszteződés (kiemelt)"
+        },
+        "craft/jeweler": {
+            "name": "Ékszerész"
+        },
+        "landuse/industrial/slaughterhouse": {
+            "name": "Vágóhíd"
+        },
+        "office/telecommunication": {
+            "name": "Távközlési cég irodája",
+            "terms": "mobilszolgáltató, telekommunikáció, telefon, internet"
+        },
+        "shop/bag": {
+            "name": "Táska- és bőröndbolt",
+            "terms": "bőrdíszmű és táskabolt,koffer,utazótáska"
+        },
+        "historic/tomb": {
+            "name": "Sír",
+            "terms": "sír, temetkezési hely, mauzóleum, kripta"
+        },
+        "waterway/water_point": {
+            "name": "Ivóvíz-csatlakozás hajóknak",
+            "terms": "ivóvíz, édesvíz"
+        },
+        "shop/garden_centre": {
+            "name": "Kertészet",
+            "terms": "Kertészet"
+        },
+        "leisure/sports_centre/swimming": {
+            "name": "Uszoda",
+            "terms": "Úszómedence, uszoda"
+        },
+        "barrier/hedge": {
+            "name": "Sövény",
+            "terms": "bozót, bokor, cserje, fasor"
+        },
+        "shop/kitchen": {
+            "name": "Konyhabútorbolt",
+            "terms": "konyhabútor, konyhatervezés, konyhadesign"
+        },
+        "building/garages": {
+            "name": "Garázsok",
+            "terms": "Garázsok, autótárolók, garázssor"
+        },
+        "leisure/pitch/rugby_league": {
+            "name": "Rugby League-pálya",
+            "terms": "rögbi,pálya"
+        },
+        "shop/beauty": {
+            "name": "Szépségszalon",
+            "terms": "kozmetikus"
+        },
+        "amenity/charging_station": {
+            "name": "Elektromos töltőállomás",
+            "terms": "villanyautó töltő, elektromos autó töltőállomás, elektromos töltőállomás, töltőoszlop,"
+        },
+        "amenity/music_school": {
+            "name": "Zeneiskola"
+        },
+        "man_made/antenna": {
+            "name": "Antenna"
+        },
+        "waterway/canal": {
+            "name": "Csatorna",
+            "terms": "kanális"
+        },
+        "leisure/common": {
+            "name": "Szabadidős tevékenységre használható közös terület (Nagy-Britannia)",
+            "terms": "Közterület"
+        },
+        "type/route/horse": {
+            "name": "Lovaglóút",
+            "terms": "lovagló út, lovagló útvonal, lovas út, lovas útvonal"
+        },
+        "amenity/dojo": {
+            "name": "Harcművészeti edzőterem / dodzso",
+            "terms": "kick-box,karate, kung fu, aikido, taekwando,  judo, jujitsu, kendo,capoeira,dzsudo,baranta,zenbukan,kempo,boksz,krav maga,csikung,vusu,saolin,kungfu,"
+        },
+        "landuse/farmland": {
+            "name": "Mezőgazdasági terület",
+            "terms": "szántó, szántóföld, búzaföld, kukoricaföld, aratás, mezőgazdaság"
+        },
+        "shop/baby_goods": {
+            "name": "Bababolt",
+            "terms": "babruha, babakocsi, babaágy, babjáték"
+        },
+        "shop/fishmonger": {
+            "name": "Halbolt"
+        },
+        "place/square": {
+            "name": "Tér",
+            "terms": "négyszögletes tér"
+        },
+        "amenity/shelter/gazebo": {
+            "name": "Pavilon"
+        },
+        "man_made/storage_tank": {
+            "name": "Tárolótartály",
+            "terms": "tároló, tartály"
+        },
+        "place/neighbourhood": {
+            "name": "Környék",
+            "terms": "környék,negyed"
+        },
+        "amenity/fast_food/chicken": {
+            "name": "Csirke gyorsétterem"
+        },
+        "playground/slide": {
+            "name": "Csúszda",
+            "terms": "csúszás,lejtő"
+        },
+        "leisure/pitch/beachvolleyball": {
+            "name": "Strandröplabdapálya",
+            "terms": "strand,röplabda,röpi,pálya"
+        },
+        "playground/basket_swing": {
+            "name": "Kosárhinta",
+            "terms": "kosár,hinta,játék"
+        },
+        "highway/footway/marked-raised": {
+            "name": "Jelölt gyalogátkelőhely (kiemelt)"
+        },
+        "public_transport/stop_position_aerialway": {
+            "name": "Felvonó megállási pont"
+        },
+        "playground/climbing_frame": {
+            "name": "Mászóka",
+            "terms": "mászóka,játék"
+        },
+        "tourism/artwork/mural": {
+            "name": "Freskó"
+        },
+        "man_made/chimney": {
+            "name": "Kémény",
+            "terms": "füstelvezető"
+        },
+        "shop/mall": {
+            "name": "Bevásárlóközpont",
+            "terms": "pláza"
+        },
+        "barrier/wall": {
+            "name": "Fal",
+            "terms": "erődítmény"
+        },
+        "craft/insulator": {
+            "name": "Épület-hőszigetelő",
+            "terms": "Szigetelő"
+        },
+        "shop/herbalist": {
+            "name": "Gyógynövénybolt",
+            "terms": "Gyógynövény, tea, étrendkiegészítő, biobolt"
+        },
+        "landuse/vineyard": {
+            "name": "Szőlő",
+            "terms": "szőlőskert, szőlőültetvény"
+        },
+        "traffic_calming/rumble_strip": {
+            "name": "Rázósáv",
+            "terms": "rázó felfestés"
+        },
+        "leisure/pitch/badminton": {
+            "name": "Tollaslabda pálya"
+        },
+        "aerialway/drag_lift": {
+            "name": "Húzólift",
+            "terms": "sífelvonó, csákányos, tányéros"
+        },
+        "bridge/support/pier": {
+            "name": "Hídpillér"
+        },
+        "healthcare/midwife": {
+            "name": "Bába",
+            "terms": "gyermek, születés, terhesség"
+        },
+        "aeroway/hangar": {
+            "name": "Hangár",
+            "terms": "hangár, repülőgépgarázs, repülőgépszerviz"
+        },
+        "healthcare/psychotherapist": {
+            "name": "Pszichoterapeuta",
+            "terms": "szorongás, tanácsadó, depresszió, mentális egészség, elme, öngyilkosság, terapeuta, terápia"
+        },
+        "building/retail": {
+            "name": "Kiskereskedelmi épület",
+            "terms": "Boltépület"
+        },
+        "highway/motorway_link": {
+            "name": "Autópálya-felhajtó",
+            "terms": "autópálya lehajtó, autópálya leágazás"
+        },
+        "place/isolated_dwelling": {
+            "name": "Elszigetelt lakás",
+            "terms": "Elszigetelt otthon"
+        },
+        "shop/bed": {
+            "name": "Ágy- és matracbolt",
+            "terms": "Hálószobabútor, ágy, párna, paplan, takaró, lepedő, ágynemű"
+        },
+        "natural/scrub": {
+            "name": "Bozót",
+            "terms": "bokor, cserjés"
+        },
+        "craft/photographer": {
+            "name": "Fényképész",
+            "terms": "Fotós, Fotográfus"
+        },
+        "shop": {
+            "name": "Üzlet",
+            "terms": "bolt, kereskedés, kiskereskedés"
+        },
+        "attraction/big_wheel": {
+            "name": "Óriáskerék",
+            "terms": "nagy kerék,óriás kerék"
+        },
+        "landuse/military/obstacle_course": {
+            "name": "Akadálypálya",
+            "terms": "akadálypálya"
+        },
+        "natural/spring": {
+            "name": "Forrás",
+            "terms": "Forrás"
+        },
+        "man_made/pipeline": {
+            "name": "Csővezeték",
+            "terms": "Csővezeték"
+        },
+        "man_made/observatory": {
+            "name": "Obszervatórium"
+        },
+        "attraction/pirate_ship": {
+            "name": "Kalózhajó",
+            "terms": "kalóz,hajó"
+        },
+        "healthcare/alternative/chiropractic": {
+            "name": "Hátmasszás",
+            "terms": "hát, fájdalom, gerinc, masszázs"
+        },
+        "attraction/summer_toboggan": {
+            "name": "Nyári bob"
+        },
+        "amenity/childcare": {
+            "name": "Bölcsőde",
+            "terms": "Csecsemőotthon"
+        },
+        "office/educational_institution": {
+            "name": "Oktatási intézmény",
+            "terms": "oktatási intézmény"
+        },
+        "shop/deli": {
+            "name": "Csemegebolt",
+            "terms": "Delikát, csemege"
+        },
+        "leisure/pitch/equestrian": {
+            "name": "Lovaspálya",
+            "terms": "lovarda, lovasiskola"
+        },
+        "place/quarter": {
+            "name": "Sub-Borough / Quarter",
+            "terms": "sub-borough,quarter"
+        },
+        "healthcare/rehabilitation": {
+            "name": "Rehabilitációs létesítmény",
+            "terms": "rehab, terapeuta, terápia"
+        },
+        "shop/perfumery": {
+            "name": "Parfüméria",
+            "terms": "parfümbolt, illatszerbolt"
+        },
+        "amenity/restaurant/vietnamese": {
+            "name": "Vietnámi étterem"
+        },
+        "highway/service/drive-through": {
+            "name": "Autós szolgáltatáshoz vezető út",
+            "terms": "drive-in, autós szolgáltatás"
+        },
+        "shop/kiosk": {
+            "name": "Trafik"
+        },
+        "landuse/military/danger_area": {
+            "name": "Veszélyes terület",
+            "terms": "veszély,veszélyes,terület"
+        },
+        "shop/confectionery": {
+            "name": "Édességbolt",
+            "terms": "süteménybolt, tortaszaküzlet, cukrászüzlet, cukrászat, cukorka, nyalóka, csokoládé"
+        },
+        "tourism/information/guidepost": {
+            "name": "Irányjelző tábla",
+            "terms": "útjelző tábla"
+        },
+        "shop/electronics": {
+            "name": "Elektronikai bolt",
+            "terms": "háztartási gép, TV, rádió, hűtőszekrény,"
+        },
+        "waterway": {
+            "name": "Vízfolyás"
+        },
+        "amenity/clinic": {
+            "name": "Rendelőintézet",
+            "terms": "orvosi rendelő, szakorvosi rendelő, SZTK"
+        },
+        "amenity/place_of_worship/buddhist": {
+            "name": "Buddhista szentély",
+            "terms": "buddhista templom, buddhizmus"
+        },
+        "natural/bare_rock": {
+            "name": "Csupasz szikla",
+            "terms": "szikla, kő, kőzet"
+        },
+        "leisure/pitch/australian_football": {
+            "name": "Ausztrál futball pálya"
+        },
+        "amenity/language_school": {
+            "name": "Nyelviskola"
+        },
+        "amenity/crematorium": {
+            "name": "Krematórium",
+            "terms": "halotthamvasztó"
+        },
+        "building/farm_auxiliary": {
+            "name": "Mezőgazdasági melléképület"
+        },
+        "power/switch": {
+            "name": "Hálózati kapcsoló"
+        },
+        "amenity/waste_basket": {
+            "name": "Szemeteskosár",
+            "terms": "kuka, szemétkosár"
+        },
+        "building/construction": {
+            "name": "Épülő épület",
+            "terms": "építkezés"
+        },
+        "highway/unclassified": {
+            "name": "Alsóbbrendű út",
+            "terms": "alsóbbrendű út"
+        },
+        "office/charity": {
+            "name": "Jótékonysági iroda"
+        },
+        "amenity/social_facility": {
+            "name": "Szociális létesítmény",
+            "terms": "Szociális intézmény"
+        },
+        "shop/hifi": {
+            "name": "HiFi-bolt",
+            "terms": "akusztika, extreme audio,hifi,hi-fi,audio,audiophyl,high end,házimozi,erősítő,hangfal,"
+        },
+        "craft/window_construction": {
+            "name": "Ablakkészítő",
+            "terms": "ajtó és ablak készítés, ablakos, nyílászáró"
+        },
+        "shop/appliance": {
+            "name": "Háztartási gép üzlet",
+            "terms": "háztartási,gép,készülék,nagygép,kisgép"
+        },
+        "craft/tinsmith": {
+            "name": "Bádogos",
+            "terms": "Üstfoltozó, vizesbádogos"
+        },
+        "golf/green": {
+            "name": "Putting green - lyuk körüli sima rész",
+            "terms": "Putting green - lyuk körüli rész"
+        },
+        "man_made/windmill": {
+            "name": "Szélmalom",
+            "terms": "malom, szél"
+        },
+        "shop/mobile_phone": {
+            "name": "Mobiltelefon-szaküzlet",
+            "terms": "android,iphone,nokia, mobiltelefon, okostelefon"
+        },
+        "craft/basket_maker": {
+            "name": "Kosárfonó",
+            "terms": "Kosárfonó"
+        },
+        "building/service": {
+            "name": "Szolgáltató épület"
+        },
+        "place/town": {
+            "name": "Város",
+            "terms": "kisváros"
+        },
+        "highway/tertiary_link": {
+            "name": "Bekötőút felhajtó",
+            "terms": "Harmadrendű főút csatlakozás"
+        },
+        "tourism/information": {
+            "name": "Információ",
+            "terms": "Információs iroda"
+        },
+        "amenity/vending_machine/coffee": {
+            "name": "Kávéárusító automata"
+        },
+        "landuse/military/training_area": {
+            "name": "Kiképzési terület",
+            "terms": "katonai,honvédségi,kiképző,terület"
+        },
+        "natural/water/lake": {
+            "name": "Tó",
+            "terms": "Tó"
+        },
+        "shop/video": {
+            "name": "Videófilmbolt vagy -kölcsönző",
+            "terms": "DVD, videokazetta, film"
+        },
+        "amenity/animal_breeding": {
+            "name": "Állattenyésztő",
+            "terms": "tenyésztő, bika, macska, tehén, kutya, ló, hüllő"
+        },
+        "building/warehouse": {
+            "name": "Raktár",
+            "terms": "Lerakat"
+        },
+        "railway/tram": {
+            "name": "Villamos",
+            "terms": "Villamos"
+        },
+        "power/minor_line": {
+            "name": "Középfeszültségű vezeték",
+            "terms": "távvezeték, villanyvezeték, kisfesztültségű vezeték"
+        },
+        "amenity/social_facility/nursing_home": {
+            "name": "Ápolóotthon",
+            "terms": "öregek otthona, fogyatékosok otthona"
+        },
+        "amenity/restaurant/thai": {
+            "name": "Thai étterem"
+        },
+        "public_transport/station_light_rail": {
+            "name": "HÉV állomás"
+        },
+        "landuse/farmyard": {
+            "name": "Tanyaudvar",
+            "terms": "farm, tanya, gazdaság, mezőgazdasági üzem"
+        },
+        "man_made/works": {
+            "name": "Gyár",
+            "terms": "gyár,üzem,kombinát,manufaktúra,művek"
+        },
+        "craft/plumber": {
+            "name": "Vízvezeték-szerelő",
+            "terms": "Vízvezeték szerelő"
+        },
+        "highway/cycleway": {
+            "name": "Kerékpárút",
+            "terms": "Bicikliút, bringaút"
+        },
+        "man_made/gasometer": {
+            "name": "Gáztartály",
+            "terms": "gazométer"
+        },
+        "shop/hardware": {
+            "name": "Vas-műszaki bolt",
+            "terms": "csavarbolt, villanyszerelés, vasbolt, vaskereskedés"
+        },
+        "amenity/car_sharing": {
+            "name": "Autómegosztó",
+            "terms": "közösségi autó, közösségi gépjármű"
+        },
+        "shop/funeral_directors": {
+            "name": "Temetkezési iroda",
+            "terms": "Temetkezési ügyintézés, temetkezési intézet,  temetkezési és hamvasztási ügyintézés"
+        },
+        "tourism/zoo": {
+            "name": "Állatkert",
+            "terms": "Állatkert"
+        },
+        "shop/computer": {
+            "name": "Számítógépbolt",
+            "terms": "Számítástechnikai üzlet, notebook bolt, laptop bolt, Apple bolt"
+        },
+        "landuse/grass": {
+            "name": "Fű",
+            "terms": "gyep"
+        },
+        "natural/grassland": {
+            "name": "Füves puszta",
+            "terms": "rét, puszta, mező"
+        },
+        "amenity/animal_boarding": {
+            "name": "Állatpanzió",
+            "terms": "állatszálló, macska, kutya, ló, kismacska, háziállathotel, hüllő"
+        },
+        "highway/stop": {
+            "name": "Stoptábla",
+            "terms": "stop, állj! elsőbbségadás kötelező"
+        },
+        "emergency/no": {
+            "name": "Vészhelyzeti használatra tilos"
+        },
+        "tourism": {
+            "name": "Turizmus"
+        },
+        "traffic_sign": {
+            "name": "Jelzőtábla"
+        },
+        "amenity/public_bath": {
+            "name": "Nyilvános fürdő",
+            "terms": "nyilvános fürdő,közfürdő,fürdő"
+        },
+        "amenity/car_wash": {
+            "name": "Autómosó",
+            "terms": "kocsimosó"
+        },
+        "highway/street_lamp": {
+            "name": "Utcai lámpa",
+            "terms": "Közvilágítás, lámpa, utcai világítás"
+        },
+        "playground/zipwire": {
+            "name": "Kötélcsúszda",
+            "terms": "kötél,csúszda"
+        },
+        "tourism/theme_park": {
+            "name": "Vidámpark",
+            "terms": "vidámpark,élménypark,vurstli"
+        },
+        "emergency/siren": {
+            "name": "Sziréna"
+        },
+        "shop/watches": {
+            "name": "Órabolt (karóra)",
+            "terms": "órabolt, órás"
+        },
+        "amenity/parking_entrance": {
+            "name": "Parkolóház be-/kijárat",
+            "terms": "garázsbejárat, parkolóház"
+        },
+        "landuse": {
+            "name": "Területhasználat"
+        },
+        "waterway/riverbank": {
+            "name": "Folyópart"
+        },
+        "type/route/light_rail": {
+            "name": "HÉV-vonal"
+        },
+        "shop/music": {
+            "name": "Hanglemezbolt",
+            "terms": "Zenebolt, CD és DVD bolt, Zeneműbolt, Muzsikabolt, kotta és hanglemezbolt"
+        },
+        "amenity/fast_food/fish_and_chips": {
+            "name": "Hal és krumpli gyorsétterem"
+        },
+        "barrier/toll_booth": {
+            "name": "Fizetőkapu",
+            "terms": "kapu, útdíj, autópálya-matrica, matrica"
+        },
+        "highway/crossing/unmarked": {
+            "name": "Jelöletlen kereszteződés"
+        },
+        "craft/stonemason": {
+            "name": "Kőfaragó",
+            "terms": "Kőfaragó műhely"
+        },
+        "aerialway": {
+            "name": "Drótkötélpálya"
+        },
+        "amenity/nightclub": {
+            "name": "Diszkó",
+            "terms": "Night Club, Éjszakai bár, Diszkó"
+        },
+        "waterway/dam": {
+            "name": "Völgyzáró gát",
+            "terms": "vízerőmű, tározó, víztározó, gát"
+        },
+        "amenity/school": {
+            "name": "Iskola",
+            "terms": "suli, tanítás, oktatás, nevelés, közoktatás, köznevelés"
+        },
+        "public_transport/stop_position_tram": {
+            "name": "Villamos megállási hely"
+        },
+        "shop/photo": {
+            "name": "Fotósbolt",
+            "terms": "fényképész, fényképezés, filmkidolgozás, előhívás, igazolványkép"
+        },
+        "office/forestry": {
+            "name": "Erdészeti hivatal"
+        },
+        "building/static_caravan": {
+            "name": "Telepített lakókocsi",
+            "terms": "Rögzített lakókocsi, telepített lakókocsi"
+        },
+        "waterway/milestone": {
+            "name": "Vízi mérföldkő"
+        },
+        "leisure/pitch/skateboard": {
+            "name": "Gördeszkapark",
+            "terms": "Gördeszkapark"
+        },
+        "office/moving_company": {
+            "name": "Költözőcég iroda"
+        },
+        "highway/bridleway": {
+            "name": "Lovaglóút",
+            "terms": "Lovas út"
+        },
+        "shop/variety_store": {
+            "name": "100 forintos bolt",
+            "terms": "olcsó áruk boltja, 1 eurós bolt"
+        },
+        "amenity/parking/multi-storey": {
+            "name": "Többszintes parkolóház"
+        },
+        "amenity/doctors": {
+            "name": "Orvos",
+            "terms": "doktor, szakorvos, rendelő, háziorvos, gyerekorvos"
+        },
+        "barrier/ditch": {
+            "name": "Árok",
+            "terms": "árok, gödör"
+        },
+        "landuse/churchyard": {
+            "name": "Templomkert",
+            "terms": "templomudvar, nartex, kerengő"
+        },
+        "amenity/shelter": {
+            "name": "Esőbeálló",
+            "terms": "fedett, fedél, esőház, esőkunyhó, menedékház"
+        },
+        "tourism/picnic_site": {
+            "name": "Piknikezőhely",
+            "terms": "Piknik terület"
+        },
+        "highway/rest_area": {
+            "name": "Pihenőhely",
+            "terms": "Pihenőhely"
+        },
+        "public_transport/station_aerialway": {
+            "name": "Felvonóállomás"
+        },
+        "playground/swing": {
+            "name": "Hinta",
+            "terms": "hinta"
+        },
+        "craft/electrician": {
+            "name": "Villanyszerelő",
+            "terms": "Villanyszerelő"
+        },
+        "manhole/telecom": {
+            "name": "Távközlési akna",
+            "terms": "akna, szekrény, távközlés"
+        },
+        "attraction/drop_tower": {
+            "name": "Ejtő torony",
+            "terms": "torony,ejtés,leejt"
+        },
+        "historic/archaeological_site": {
+            "name": "Régészeti lelőhely",
+            "terms": "Régészeti lelőhely"
+        },
+        "amenity/driving_school": {
+            "name": "Autósiskola",
+            "terms": "jogosítvány, KRESZ"
+        },
+        "building/barn": {
+            "name": "Pajta",
+            "terms": "csűr, melléképület, mezőgazdasági épület"
+        },
+        "amenity/bench": {
+            "name": "Pad",
+            "terms": "pad, ülés, ülőalkalmatosság"
+        },
+        "craft/beekeeper": {
+            "name": "Méhész",
+            "terms": "Méhész"
+        },
+        "amenity/toilets": {
+            "name": "WC",
+            "terms": "vécé, illemhely, toalett, klotyó, árnyékszék, budi, pottyantós"
+        },
+        "leisure/fitness_station/box": {
+            "name": "Gyakorlai doboz"
+        },
+        "amenity/sanitary_dump_station": {
+            "name": "Szaniterürítő hely (lakóautóknak)",
+            "terms": "lakóautó,lakókocsi,vécé,toalett,tisztasági"
+        },
+        "shop/hearing_aids": {
+            "name": "Hallókészülékbolt",
+            "terms": "hallókészülékek"
+        },
+        "craft/confectionery": {
+            "name": "Cukrász"
+        },
+        "amenity/place_of_worship": {
+            "name": "Istentiszteleti hely",
+            "terms": "templom, kápolna, vallás, felszentelt"
+        },
+        "aerialway/goods": {
+            "name": "Teherfelvonó",
+            "terms": "teherlift"
+        },
+        "railway/platform": {
+            "name": "Vasútmegálló peron"
+        },
+        "barrier/retaining_wall": {
+            "name": "Támfal",
+            "terms": "támasztófal"
+        },
+        "amenity/love_hotel": {
+            "name": "Love hotel"
+        },
+        "office/adoption_agency": {
+            "name": "Örökbefogadási ügynökség"
+        },
+        "highway/traffic_signals": {
+            "name": "Jelzőlámpa",
+            "terms": "lámpa,villanyrendőr,jelzőlámpa,közlekedési lámpa"
+        },
+        "amenity/embassy": {
+            "name": "Külképviselet",
+            "terms": "nagykövetség, követség,  konzulátus, külképviselet"
+        },
+        "place/islet": {
+            "name": "Szigetecske"
+        },
+        "type/restriction/no_left_turn": {
+            "name": "Balra bekanyarodni tilos",
+            "terms": "Tilos balra kanyarodni, balra menni tilos"
+        },
+        "leisure/ice_rink": {
+            "name": "Jégpálya",
+            "terms": "műjégpálya"
+        },
+        "healthcare/blood_donation": {
+            "name": "Véradóhely",
+            "terms": "véradás, vérellátás, őssejt, plazma, transzfúzió, vérátömlesztés"
+        },
+        "place/village": {
+            "name": "Falu",
+            "terms": "község"
+        },
+        "shop/water_sports": {
+            "name": "Vízisport-bolt",
+            "terms": "kajak,csónak,mentőmellény,fürdőruha,szörf"
+        },
+        "shop/lottery": {
+            "name": "Lottózó",
+            "terms": "szerencsejáték, fogadóiroda, totó"
+        },
+        "leisure/dog_park": {
+            "name": "Kutyafuttató",
+            "terms": "Kutyasétáltató"
+        },
+        "natural/cave_entrance": {
+            "name": "Barlangbejárat",
+            "terms": "Barlang"
+        },
+        "point": {
+            "name": "Pont",
+            "terms": "Pont"
+        },
+        "shop/cheese": {
+            "name": "Sajtbolt",
+            "terms": "Kecskesajtbolt, Francia sajtok boltja"
+        },
+        "amenity/boat_rental": {
+            "name": "Hajókölcsönző",
+            "terms": "csónakkölcsönző"
+        },
+        "amenity/place_of_worship/taoist": {
+            "name": "Taoista templom",
+            "terms": "templom, tao, kína"
+        },
+        "building/mosque": {
+            "name": "Mecset"
+        },
+        "building/cabin": {
+            "name": "Kis faház",
+            "terms": "Faház"
+        },
+        "highway/bus_guideway": {
+            "name": "Buszsín"
+        },
+        "highway/footway/sidewalk": {
+            "name": "Járda"
+        },
+        "amenity/animal_shelter": {
+            "name": "Állatmenhely",
+            "terms": "örökbefogadás, kutya, macska, ló, állatmenhely, hüllő, menhely"
+        },
+        "emergency/private": {
+            "name": "Vészhelyzeti használat: magántulajdon"
+        },
+        "craft/sailmaker": {
+            "name": "Vitorlakészítő",
+            "terms": "Hajóvitorla, hajóvászon"
+        },
+        "office/ngo": {
+            "name": "Civil szervezet",
+            "terms": "Nonprofit szervezet, NGO, egyesület"
+        },
+        "craft/glaziery": {
+            "name": "Üvegműves",
+            "terms": "üvegjátékok,kristálypalack,Öblösüveggyártás"
+        },
+        "highway/footway/unmarked": {
+            "name": "Jelöletlen kereszteződés"
+        },
+        "highway/motorway_junction": {
+            "name": "Autópálya-csomópont / -kijárat",
+            "terms": "autópálya lehajtó, autópálya felhajtó, elágazás, leágazás, kijárat"
+        },
+        "natural/tree": {
+            "name": "Fa",
+            "terms": "Fa"
+        },
+        "amenity/register_office": {
+            "name": "Anyakönyvi hivatal"
+        },
+        "highway/crossing/marked-raised": {
+            "name": "Jelölt gyalogátkelőhely (kiemelt)"
+        },
+        "leisure/adult_gaming_centre": {
+            "name": "Felnőtt játékközpont",
+            "terms": "játékterem"
+        },
+        "shop/car_parts": {
+            "name": "Autóalkatrész-üzlet",
+            "terms": "gépkocsi, gépjármű, alkatrész"
+        },
+        "office/lawyer": {
+            "name": "Ügyvéd",
+            "terms": "ügyvéd, bíróság, közjegyző, ügyész"
+        },
+        "building/apartments": {
+            "name": "Társasház épület"
+        },
+        "highway/trunk_link": {
+            "name": "Autóútfelhajtó",
+            "terms": "Autóút csatlakozás"
+        },
+        "emergency/lifeguard": {
+            "name": "Strandőr"
+        },
+        "amenity/vending_machine/news_papers": {
+            "name": "Újságárusító automata"
+        },
+        "shop/bookmaker": {
+            "name": "Fogadóiroda",
+            "terms": "bukméker"
+        },
+        "leisure/fitness_centre/yoga": {
+            "name": "Jógastúdió",
+            "terms": "jógaközpont, jóga,stúdió"
+        },
+        "aerialway/t-bar": {
+            "name": "Csákányos felvonó",
+            "terms": "csákányos, húzólift"
+        },
+        "historic/boundary_stone": {
+            "name": "Határkő",
+            "terms": "Határkő"
+        },
+        "leisure/park": {
+            "name": "Park",
+            "terms": "Park"
+        },
+        "amenity/internet_cafe": {
+            "name": "Internetkávézó",
+            "terms": "internetkávézó, cybercafé, nyilvános internet"
+        },
+        "leisure/garden": {
+            "name": "Kert",
+            "terms": "Kert"
+        },
+        "historic/memorial": {
+            "name": "Emlékmű",
+            "terms": "Emlékhely"
+        },
+        "shop/cosmetics": {
+            "name": "Kozmetikai bolt",
+            "terms": "Szépségápolási szaküzlet,  Sminkbolt,  Parfüm bolt,"
+        },
+        "leisure/swimming_pool": {
+            "name": "Úszómedence",
+            "terms": "Úszómedence, uszoda"
+        },
+        "waterway/stream": {
+            "name": "Patak",
+            "terms": "ér, vízfolyás"
+        },
+        "railway": {
+            "name": "Vasút"
+        },
+        "building/university": {
+            "name": "Egyetemi épület",
+            "terms": "egyetem, főiskola, felsőoktatás"
+        },
+        "amenity/library": {
+            "name": "Könyvtár",
+            "terms": "könyvkölcsönző"
+        },
+        "shop/stationery": {
+            "name": "Írószerbolt",
+            "terms": "papír, írószer, nyomtatvány, irodaszer"
+        },
+        "highway/secondary_link": {
+            "name": "Összekötő út felhajtó",
+            "terms": "Másodrendű főút csatlakozás"
+        },
+        "office/advertising_agency": {
+            "name": "Reklámügynökség"
+        },
+        "highway/living_street": {
+            "name": "Pihenőút",
+            "terms": "Pihenő-lakóút, lakóút, pihenőövezet, lakóövezet"
+        },
+        "landuse/military/bunker": {
+            "name": "Bunker",
+            "terms": "bunker,óvóhely"
+        },
+        "attraction/bumper_car": {
+            "name": "Dodzsem",
+            "terms": "dodzsem,kisautó,ütközés"
+        },
+        "attraction/roller_coaster": {
+            "name": "Hullámvasút",
+            "terms": "vasút,hullám"
+        },
+        "power/sub_station": {
+            "name": "Áramelosztó alállomás"
+        },
+        "shop/copyshop": {
+            "name": "Fénymásoló",
+            "terms": "Copyguru, Copy Generál, nyomtatás, diplomakötés, spirálozás"
+        },
+        "leisure/firepit": {
+            "name": "Tűzrakóhely",
+            "terms": "tűzrakó, tábortűz, szalonnasütés"
+        },
+        "public_transport/station_ferry": {
+            "name": "Kompállomás / pályaudvar"
+        },
+        "leisure/pitch/baseball": {
+            "name": "Baseball pálya"
+        },
+        "man_made/bridge": {
+            "name": "Híd",
+            "terms": "híd"
+        },
+        "railway/monorail": {
+            "name": "Egysínű vasút",
+            "terms": "nyeregvasút, mágnesvasút"
+        },
+        "office/physician": {
+            "name": "Orvosi rendelő"
+        },
+        "shop/bicycle": {
+            "name": "Kerékpárbolt",
+            "terms": "bicaj, bringa, bicikli"
+        },
+        "public_transport/stop_position_subway": {
+            "name": "Metró megállási hely"
+        },
+        "tourism/apartment": {
+            "name": "Apartman",
+            "terms": "vendégház"
+        },
+        "amenity/hunting_stand": {
+            "name": "Magasles",
+            "terms": "vadászles"
+        },
+        "tourism/guest_house": {
+            "name": "Vendégház",
+            "terms": "Vendégház"
+        },
+        "power/plant": {
+            "name": "Erőműterület",
+            "terms": "erőmű"
+        },
+        "landuse/aquaculture": {
+            "name": "Akvakultúra",
+            "terms": "vízművelés, haltenyésztés, kagylótenyésztés, ráktenyésztés, sea food"
+        },
+        "amenity": {
+            "name": "Hasznos és fontos szolgáltatás"
+        },
+        "tourism/gallery": {
+            "name": "Művészeti galéria",
+            "terms": "galéria, kiállítás, kiállító terem, képzőművészet"
+        },
+        "amenity/fuel": {
+            "name": "Benzinkút",
+            "terms": "töltőállomás, shell, agip, lukoil, omv, mol, benzin,gázolaj, üzemanyag, autógáz, dízel, diesel, bioetanol"
+        },
+        "type/route/tram": {
+            "name": "Villamosvonal",
+            "terms": "Villamos útvonal"
+        },
+        "shop/second_hand": {
+            "name": "Használtáru-bolt",
+            "terms": "Használtruha bolt, Turkáló, Turi, Turkáló butik, bálás bolt, second hand bolt, használt cikk"
+        },
+        "place/island": {
+            "name": "Sziget",
+            "terms": "sziget"
+        },
+        "public_transport/platform_tram": {
+            "name": "Villamosmegálló peron"
+        },
+        "attraction/bungee_jumping": {
+            "name": "Bungee jumping",
+            "terms": "ugrás,kötél,gumikötél"
+        },
+        "railway/signal": {
+            "name": "Vasúti jelző",
+            "terms": "jelző, jelzés, vasút"
+        },
+        "craft/rigger": {
+            "name": "Vitorlásfelszerelés-készítő",
+            "terms": "Hajójavító műhely"
+        },
+        "man_made/water_works": {
+            "name": "Vízmű",
+            "terms": "Vízmű"
+        },
+        "amenity/pub": {
+            "name": "Kocsma",
+            "terms": "italmérés, csehó, borozó, poharazó, ivó, talponálló, söntés, csapszék, söröző, sörház"
+        },
+        "building/entrance": {
+            "name": "Be-/kijárat"
+        },
+        "playground/structure": {
+            "name": "Jászóvár",
+            "terms": "ház,vár,játék"
+        },
+        "shop/religion": {
+            "name": "Kegytárgybolt",
+            "terms": "vallási tárgyak, imakönyv, rózsafüzér"
+        },
+        "golf/rough": {
+            "name": "Rough - vágatlan fűves rész",
+            "terms": "Rough -  vágatlan fűves rész"
+        },
+        "man_made/breakwater": {
+            "name": "Hullámtörő",
+            "terms": "Hullámtörő"
+        },
+        "shop/shoes": {
+            "name": "Cipőbolt",
+            "terms": "cipőbolt, cipő papucs csizma és más lábbelik boltja, cipobolt"
+        },
+        "amenity/ranger_station": {
+            "name": "Nemzeti park látogatóközpontja",
+            "terms": "látogatóközpont, vadőr, vadászat, természetjárás, táborozás"
+        },
+        "amenity/parking": {
+            "name": "Parkoló"
+        },
+        "highway/bus_stop": {
+            "name": "Buszmegálló peron"
+        },
+        "office/energy_supplier": {
+            "name": "Energiaszolgáltató hivatal"
+        },
+        "amenity/place_of_worship/hindu": {
+            "name": "Hindu templom",
+            "terms": "templom, hindu"
+        },
+        "traffic_sign_vertex": {
+            "name": "Jelzőtábla"
+        },
+        "aerialway/platter": {
+            "name": "Tányéros felvonó",
+            "terms": "Tányéros, húzólift"
+        },
+        "amenity/swimming_pool": {
+            "name": "Úszómedence"
+        },
+        "amenity/vending_machine/condoms": {
+            "name": "Óvszerárusító automata",
+            "terms": "kondomautomata, gumi, óvszer"
+        },
+        "craft/electronics_repair": {
+            "name": "Elektronikai szerviz",
+            "terms": "eltronikai,szerviz,javító,bontó"
+        },
+        "man_made/adit": {
+            "name": "Bányatárna (vízszintes)",
+            "terms": "bánya, akna, táró"
+        },
+        "man_made/tower": {
+            "name": "Torony",
+            "terms": "magas épület"
+        },
+        "shop/florist": {
+            "name": "Virágárus",
+            "terms": "virágos, virágbolt, szobanövény, dísznövény, bonsai"
+        },
+        "type/route/ferry": {
+            "name": "Kompútvonal",
+            "terms": "Kompjárat útvonal"
+        },
+        "highway/crossing/marked": {
+            "name": "Jelölt gyalogátkelőhely"
+        },
+        "amenity/atm": {
+            "name": "Bankautomata",
+            "terms": "ATM, Pénzautomata, Pénzkiadó automata"
+        },
+        "ford": {
+            "name": "Gázló",
+            "terms": "Gázló"
+        },
+        "natural/sand": {
+            "name": "Homok",
+            "terms": "homok,föveny"
+        },
+        "place/locality": {
+            "name": "Lakatlan hely",
+            "terms": "dűlő, helynév"
+        },
+        "traffic_calming/table": {
+            "name": "Megemelt szintű gyalogátjáró",
+            "terms": "sebesség, tábla, lassító"
+        },
+        "amenity/courthouse": {
+            "name": "Bíróság",
+            "terms": "Törvényszék, Kúria , Ítélőtábla, Bírósági Hivatal, ítélőszék"
+        },
+        "shop/art": {
+            "name": "Műalkotásbolt",
+            "terms": "művészbolt"
+        },
+        "place/hamlet": {
+            "name": "Falucska",
+            "terms": "falucska,településrész, tanyabokor"
+        },
+        "amenity/recycling_centre": {
+            "name": "Hulladékudvar",
+            "terms": "hulladék, szelektív hulladék, szeméttelep, szemétlerakó, veszélyes hulladék"
+        },
+        "club": {
+            "name": "Klub",
+            "terms": "Club"
+        },
+        "office/private_investigator": {
+            "name": "Magánnyomozó iroda"
+        },
+        "waterway/fuel": {
+            "name": "Üzemanyag-töltő állomás hajóknak",
+            "terms": "üzemanyag,dízel,gázolaj,csónak,hajó, hajóbenzinkút, bunkerolaj"
+        },
+        "highway": {
+            "name": "Közút"
+        },
+        "shop/pastry": {
+            "name": "Cukrászda",
+            "terms": "cukrászda,sütemény,süti,torta"
+        },
+        "amenity/theatre": {
+            "name": "Színház",
+            "terms": "amfiteátrum, játékszín, teátrum, bábszínház, operaház"
+        },
+        "highway/pedestrian_line": {
+            "name": "Sétálóutca"
+        },
+        "landuse/military/checkpoint": {
+            "name": "Ellenőrzőpont",
+            "terms": "checkpoint"
+        },
+        "man_made/lighthouse": {
+            "name": "Világítótorony",
+            "terms": "Világítótorony"
+        },
+        "type/route/train": {
+            "name": "Vasútvonal",
+            "terms": "Vonat útvonal"
+        },
+        "barrier/fence": {
+            "name": "Kerítés",
+            "terms": "drótkerítés, betonkerítés, fal"
+        },
+        "landuse/cemetery": {
+            "name": "Temető",
+            "terms": "Köztemető, sírkert"
+        },
+        "railway/rail": {
+            "name": "Vasúti pálya",
+            "terms": "Vasútvonal"
+        },
+        "natural/scree": {
+            "name": "Törmeléklejtő",
+            "terms": "kőtörmelék, kőfolyás"
+        },
+        "office/government": {
+            "name": "Kormányzati hivatal",
+            "terms": "Kormányzat, minisztérium, országos szerv"
+        },
+        "office/it": {
+            "name": "Informatikai iroda"
+        },
+        "railway/disused": {
+            "name": "Használaton kívüli vasút",
+            "terms": "megszűnt vasútvonal"
+        },
+        "amenity/grave_yard": {
+            "name": "Templom körüli temető",
+            "terms": "temető, templomkert, sírkert"
+        },
+        "railway/light_rail": {
+            "name": "HÉV"
+        },
+        "office/lawyer/notary": {
+            "name": "Közjegyzői iroda"
+        },
+        "amenity/clinic/fertility": {
+            "name": "Termékenységi klinika",
+            "terms": "termékenység, szaporodás, klinika, kórház, sperma, pete, lombik"
+        },
+        "leisure/fitness_station": {
+            "name": "Fitneszpark",
+            "terms": "fitnesz,sport, edzőhely"
+        },
+        "amenity/vending_machine/newspapers": {
+            "name": "Újságárusító automata",
+            "terms": "automata,árusító,újság"
+        },
+        "railway/subway_entrance": {
+            "name": "Metrólejáró",
+            "terms": "Metróbejárat, lejárat"
+        },
+        "emergency/fire_extinguisher": {
+            "name": "Tűzoltókészülék"
+        },
+        "healthcare/speech_therapist": {
+            "name": "Beszédterapeuta",
+            "terms": "beszéd, terapeuta, terápia, hang"
+        },
+        "leisure/picnic_table": {
+            "name": "Piknikasztal",
+            "terms": "Piknikasztal"
+        },
+        "man_made/cutline": {
+            "name": "Nyiladék",
+            "terms": "Irtás"
+        },
+        "craft/scaffolder": {
+            "name": "Állványépítő",
+            "terms": "ács-állványozó"
+        },
+        "shop/locksmith": {
+            "name": "Lakatos",
+            "terms": "kulcsmásoló, záras, zárszerelő"
+        },
+        "office/insurance": {
+            "name": "Biztosító",
+            "terms": "Biztosító"
+        },
+        "leisure/pitch": {
+            "name": "Sportpálya",
+            "terms": "Sportpálya"
+        },
+        "public_transport/stop_position_trolleybus": {
+            "name": "Trolibusz megállási hely"
+        },
+        "tourism/hotel": {
+            "name": "Szálloda",
+            "terms": "Hotel, szálloda"
+        },
+        "historic/monument": {
+            "name": "Monumentális, épületszerű emlékmű",
+            "terms": "monumentális emlékmű"
+        },
+        "manhole": {
+            "name": "Búvónyílás",
+            "terms": "akna"
+        },
+        "type/route/bicycle": {
+            "name": "Kerékpáros útvonal",
+            "terms": "Biciklis útvonal"
+        },
+        "highway/give_way": {
+            "name": "Elsőbbségadás kötelező tábla",
+            "terms": "elsőbbségadás"
+        },
+        "amenity/place_of_worship/shinto": {
+            "name": "Sintó szentély",
+            "terms": "sintó, szentély, japán"
+        },
+        "leisure/fitness_station/horizontal_bar": {
+            "name": "Gyakorlati nyújtó"
+        },
+        "historic": {
+            "name": "Történelmi hely",
+            "terms": "Történelmi hely"
+        },
+        "railway/switch": {
+            "name": "Vasúti váltó",
+            "terms": "váltó, vasút"
+        },
+        "man_made/tower/communication": {
+            "name": "Kommunikációs torony"
+        },
+        "amenity/restaurant/sushi": {
+            "name": "Sushi étterem"
+        },
+        "healthcare/optometrist": {
+            "name": "Optometrista",
+            "terms": "szem,szemüveg,lencse,látás"
+        },
+        "building/kindergarten": {
+            "name": "Óvodaépület",
+            "terms": "Iskolai előkészítő épület,  ovi épület, bölcsőde épület, kisdedóvó épület, dedó épület"
+        },
+        "leisure/playground": {
+            "name": "Játszótér",
+            "terms": "Játszótér"
+        },
+        "emergency/water_tank": {
+            "name": "Vészhelyzeti víztartály"
+        },
+        "shop/erotic": {
+            "name": "Szexbolt",
+            "terms": "erotikus bolt, szexuális segédeszköz"
+        },
+        "highway/mini_roundabout": {
+            "name": "Mini körforgalom",
+            "terms": "Mini körforgalom"
+        },
+        "public_transport/platform_monorail": {
+            "name": "Egysínű vasúti megállo peron"
+        },
+        "amenity/monastery": {
+            "name": "Kolostor"
+        },
+        "highway/service/parking_aisle": {
+            "name": "Parkolóút",
+            "terms": "Parkolóút"
+        },
+        "amenity/bbq": {
+            "name": "Közösségi grillező - szallonasütő",
+            "terms": "tábortűz,grill,piknik,tűzrakó"
+        },
+        "waterway/dock": {
+            "name": "Dokk",
+            "terms": "kikötő, dokk, úszódokk, szárazdokk"
+        },
+        "waterway/boatyard": {
+            "name": "Hajótelep",
+            "terms": "csónak,kikötő, kishajó, vitorlás"
+        },
+        "power/line": {
+            "name": "Távvezeték",
+            "terms": "Elektromos vezeték"
+        },
+        "amenity/ice_cream": {
+            "name": "Fagylaltozó",
+            "terms": "fagyibolt, fagyis, fagylaltos, fagylaltüzlet"
+        },
+        "leisure/horse_riding": {
+            "name": "Lovasiskola",
+            "terms": "Lovaglás"
+        },
+        "power/pole": {
+            "name": "Villanyoszlop",
+            "terms": "villanypózna, villanykaró"
+        },
+        "natural/peak": {
+            "name": "Hegycsúcs",
+            "terms": "Hegycsúcs, hegytető, csúcs"
+        },
+        "highway/tertiary": {
+            "name": "Bekötőút",
+            "terms": "Harmadrendű főút"
+        },
+        "shop/beauty/nails": {
+            "name": "Manikűr",
+            "terms": "manikűr,pedikűr, körömszalon, műkörömépítés"
+        },
+        "tourism/artwork": {
+            "name": "Műalkotás",
+            "terms": "Művészeti alkotás, szobor, fafaragás"
+        },
+        "amenity/vending_machine/sweets": {
+            "name": "Édességet árusító automata",
+            "terms": "csokoládé, cukorka, snack, chips"
+        },
+        "landuse/retail": {
+            "name": "Kiskereskedelmi terület",
+            "terms": "kiskereskedelem, boltok"
+        },
+        "leisure/sauna": {
+            "name": "Szauna",
+            "terms": "gőz, meleg, izzad, szauna"
+        },
+        "craft/key_cutter": {
+            "name": "Kulcsmásoló",
+            "terms": "Kulcsos, Kulcskészítő, Kulcsmásoló"
+        },
+        "leisure/resort": {
+            "name": "Üdülőhely",
+            "terms": "üdülő,üdülőhely"
+        },
+        "shop/pyrotechnics": {
+            "name": "Tűzijátékbolt",
+            "terms": "robbanószer, tűzijáték, petárda, csillagszóró, pirotechnika"
+        },
+        "leisure/pitch/cricket": {
+            "name": "Krikettpálya",
+            "terms": "krikettpálya"
+        },
+        "public_transport/platform_trolleybus": {
+            "name": "Trolibusz megálló peron"
+        },
+        "amenity/arts_centre": {
+            "name": "Művészeti központ",
+            "terms": "galéria,kiállítás, kiállító terem,tárlat,képzőművészet,festészet,képek"
+        },
+        "railway/crossing": {
+            "name": "Vasúti átjáró (gyalogos)",
+            "terms": "vasúti kereszteződés,átkelő"
+        },
+        "shop/travel_agency": {
+            "name": "Utazási iroda",
+            "terms": "ibusz,vista,neckermann,nyaralás,last minute,utazás,travel,karthago tours,tours,tui,reisen,otp travel,voyage"
+        },
+        "tourism/artwork/statue": {
+            "name": "Szobor"
+        },
+        "amenity/restaurant": {
+            "name": "Étterem",
+            "terms": "kajálda, étkezde, vendéglő, csárda, fogadó, ebédlő, kisvendéglő"
+        },
+        "type/route/detour": {
+            "name": "Terelőút",
+            "terms": "Elkerülőút, terelés, terelőút"
+        },
+        "amenity/bicycle_repair_station": {
+            "name": "Önálló kerékpárszerelő pont",
+            "terms": "kerékpárszerelés, biciklijavítás, bringajavító"
+        },
+        "office/association": {
+            "name": "Nonprofit szervezet iroda"
+        },
+        "highway/services": {
+            "name": "Autós pihenőhely",
+            "terms": "autó,pihenő,pihenőhely"
+        },
+        "amenity/bureau_de_change": {
+            "name": "Pénzváltó",
+            "terms": "Valutaváltás, valuta váltó, pénzváltás, exchange"
+        },
+        "tourism/chalet": {
+            "name": "Nyaralóház"
+        },
+        "landuse/military/nuclear_explosion_site": {
+            "name": "Nukleáris robbantási helyszín",
+            "terms": "atomrobbantás, atombomba, atomkísérlet"
+        },
+        "leisure/dancing_school": {
+            "name": "Tánciskola"
+        },
+        "public_transport/station_trolleybus": {
+            "name": "Trolibuszpályaudvar"
+        },
+        "leisure": {
+            "name": "Szabadidő"
+        },
+        "amenity/post_office": {
+            "name": "Posta",
+            "terms": "postahivatal, postaközpont"
+        },
+        "natural/volcano": {
+            "name": "Vulkán",
+            "terms": "vulkán, tűzhányó"
+        },
+        "amenity/fast_food/pizza": {
+            "name": "Pizza gyorsétterem"
+        },
+        "amenity/vending_machine": {
+            "name": "Árusító automata",
+            "terms": "automata,árusító automata"
+        },
+        "highway/milestone": {
+            "name": "Kilométerkő"
+        },
+        "leisure/bleachers": {
+            "name": "Lelátó"
+        },
+        "amenity/bar": {
+            "name": "Bár",
+            "terms": "bár, kocsma, éjszakai szórakozó, lokál"
+        },
+        "traffic_calming/cushion": {
+            "name": "Párna",
+            "terms": "párna"
+        },
+        "power/generator/source/nuclear": {
+            "name": "Atomreaktor"
+        },
+        "leisure/fitness_station/balance_beam": {
+            "name": "Gyakorlati egyensúlyozó gerenda"
+        },
+        "traffic_calming": {
+            "name": "Forgalomcsillapító",
+            "terms": "forgalomcsillapító"
+        },
+        "barrier/stile": {
+            "name": "Kerítésátjáró",
+            "terms": "Létra"
+        },
+        "type/route/piste": {
+            "name": "Sípálya/Síútvonal"
+        },
+        "shop/boutique": {
+            "name": "Butik",
+            "terms": "Butik"
+        },
+        "area/highway": {
+            "name": "Útfelület",
+            "terms": "úttest"
+        },
+        "amenity/vending_machine/parking_tickets": {
+            "name": "Parkolójegy-automata",
+            "terms": "parkolóautomata"
+        },
+        "shop/weapons": {
+            "name": "Fegyverbolt",
+            "terms": "Kés, lőfegyver, riasztófegyver"
+        },
+        "healthcare/physiotherapist": {
+            "name": "Gyógytornász",
+            "terms": "fizikai, terapeuta, terápia"
+        },
+        "highway/trunk": {
+            "name": "Autóút",
+            "terms": "Autóút"
+        },
+        "golf/tee": {
+            "name": "Tee box - Elütőhely",
+            "terms": "Tee box - Elütőhely"
+        },
+        "office": {
+            "name": "Iroda",
+            "terms": "Iroda"
+        },
+        "amenity/fire_station": {
+            "name": "Tűzoltóság",
+            "terms": "Tűzoltóállomás, tűzoltólaktanya"
+        },
+        "barrier/entrance": {
+            "name": "Bejárat"
+        },
+        "emergency/fire_hydrant": {
+            "name": "Tűzcsap",
+            "terms": "Tűzcsap, vészhelyzet, tűzoltók, spricni, fecskendő, tömlő"
+        },
+        "noexit/yes": {
+            "name": "Zsákutca",
+            "terms": "zsákutca"
+        },
+        "shop/scuba_diving": {
+            "name": "Búvárfelszerelés-bolt",
+            "terms": "Búvárfelszerelések boltja, Búvárbolt, Búvárszakáruház"
+        },
+        "natural/water/pond": {
+            "name": "Tavacska",
+            "terms": "Tavacska"
+        },
+        "place/plot": {
+            "name": "Parcella"
+        },
+        "attraction/water_slide": {
+            "name": "Vízi csúszda",
+            "terms": "csúszda,víz,csúszás"
+        },
+        "shop/vacuum_cleaner": {
+            "name": "Porszívóbolt",
+            "terms": "Porszívó, takarítógép"
+        },
+        "shop/chemist": {
+            "name": "Drogéria",
+            "terms": "drogéria, gyógyszertár, illatszer, kozmetikum, testápolás"
+        },
+        "tourism/information/map": {
+            "name": "Térkép",
+            "terms": "térkép"
+        },
+        "building/hospital": {
+            "name": "Kórházépület",
+            "terms": "Kórházi épület, Klinika épület, Gyógyintézet épület"
+        },
+        "amenity/marketplace": {
+            "name": "Piac",
+            "terms": "vásár"
+        },
+        "building/industrial": {
+            "name": "Ipari épület",
+            "terms": "Gyárépület"
+        },
+        "amenity/restaurant/german": {
+            "name": "Német étterem"
+        },
+        "amenity/university": {
+            "name": "Egyetem",
+            "terms": "kampusz, campus, felsőoktatás"
+        },
+        "building/public": {
+            "name": "Középület",
+            "terms": "Nyilvános épület"
+        },
+        "highway/crossing/zebra-raised": {
+            "name": "Jelölt gyalogátkelőhely (kiemelt)"
+        },
+        "emergency/first_aid_kit": {
+            "name": "Elsősegélykészlet"
+        },
+        "amenity/shower": {
+            "name": "Zuhany",
+            "terms": "zuhanyzó,tusoló,fürdő"
+        },
+        "office/estate_agent": {
+            "name": "Ingatlaniroda",
+            "terms": "ingatlanközvetítő"
+        },
+        "traffic_sign/maxspeed": {
+            "name": "Sebességkorlátozást jelző tábla"
+        },
+        "man_made/watermill": {
+            "name": "Vízimalom",
+            "terms": "malom, víz"
+        },
+        "amenity/college": {
+            "name": "Főiskola",
+            "terms": "főiskola, felsőoktatás, fősuli"
+        },
+        "shop/toys": {
+            "name": "Játékbolt",
+            "terms": "barbie,lego,hasbro,mattel,babák,fisher price,logikai,barkács,bébi,gyermek,kreatív"
+        },
+        "type/restriction/no_straight_on": {
+            "name": "Egyenesen továbbhaladni tilos",
+            "terms": "Tilos egyenesen menni, továbbmenni tilos"
+        },
+        "landuse/allotments": {
+            "name": "Közösségi kert",
+            "terms": "közösségi kert"
+        },
+        "railway/tram_stop": {
+            "name": "Villamosmegállási pont"
+        },
+        "highway/passing_place": {
+            "name": "Kitérőhely"
+        },
+        "shop/tiles": {
+            "name": "Csempebolt"
+        },
+        "highway/pedestrian_area": {
+            "name": "Sétáló övezet"
+        },
+        "amenity/vending_machine/food": {
+            "name": "Ételárusító automata"
+        },
+        "amenity/cafe": {
+            "name": "Kávézó",
+            "terms": "kávéház, presszó, cukrászda"
+        },
+        "leisure/pitch/bowls": {
+            "name": "Gyeptekepálya",
+            "terms": "bowling pálya"
+        },
+        "highway/service/emergency_access": {
+            "name": "Vészhelyzeti használat",
+            "terms": "Vészkijárat, tűzoltóbejárat, tűzoltási felvonulási útvonal, vészhelyzeti bejárat"
+        },
+        "natural/mud": {
+            "name": "Sár"
+        },
+        "building/civic": {
+            "name": "Polgári Épület"
+        },
+        "craft/plasterer": {
+            "name": "Gipszműves, stukkós",
+            "terms": "vakoló"
+        },
+        "amenity/parking_space": {
+            "name": "Parkolóhely",
+            "terms": "parkoló, parkolópont, várakozó hely"
+        },
+        "healthcare/birthing_center": {
+            "name": "Szülészeti központ",
+            "terms": "baba, születés, labor, terhesség"
+        },
+        "building/greenhouse": {
+            "name": "Üvegház",
+            "terms": "Üvegház"
+        },
+        "landuse/harbour": {
+            "name": "Kikötő",
+            "terms": "kikötő, hajó"
+        },
+        "shop/pet": {
+            "name": "Kisállatkereskedés",
+            "terms": "Kisállat kereskedés, Kisállat és állateledelt árusító bolt, Állateledel"
+        },
+        "amenity/scrapyard": {
+            "name": "Szeméttelep"
+        },
+        "man_made/survey_point": {
+            "name": "Földmérési alappont",
+            "terms": "Megfigyelőpont"
+        },
+        "roundabout": {
+            "name": "Körforgalom"
+        },
+        "type/route/power": {
+            "name": "Távvezeték nyomvonala",
+            "terms": "Elektromos vezeték útvonala, távvezeték, nagyfeszültségű vezeték"
+        },
+        "highway/service/alley": {
+            "name": "Sikátor",
+            "terms": "köz"
+        },
+        "public_transport/station_train": {
+            "name": "Vasútállomás"
+        },
+        "shop/tailor": {
+            "name": "Szabóüzlet",
+            "terms": "szabóság,  méretre ruhát készítő üzlet"
+        },
+        "landuse/brownfield": {
+            "name": "Barnamezős terület",
+            "terms": "mező, barna, szántó"
+        },
+        "natural/cliff": {
+            "name": "Sziklaszirt",
+            "terms": "Sziklafal, sziklaperem"
+        },
+        "amenity/clock": {
+            "name": "Óra",
+            "terms": "óra"
+        },
+        "building/garage": {
+            "name": "Garázs",
+            "terms": "Garázs,autótároló"
+        },
+        "natural/coastline": {
+            "name": "Partvonal",
+            "terms": "Tengerpart"
+        },
+        "building/hotel": {
+            "name": "Szállodaépület",
+            "terms": "Hotel, szálloda"
+        },
+        "shop/anime": {
+            "name": "Anime képregényekkel kapcsolatos bolt",
+            "terms": "képregény,anime"
+        },
+        "route/ferry": {
+            "name": "Kompútvonal",
+            "terms": "Komp, rév"
+        },
+        "shop/outdoor": {
+            "name": "Túrafelszerelés-bolt",
+            "terms": "hegymászó felszerelés, outdoor, sportbolt, hegymászóbolt, túrabolt"
+        },
+        "highway/raceway": {
+            "name": "Autóversenypálya",
+            "terms": "versenypálya, autóverseny, motorverseny, forma-1"
+        },
+        "emergency/designated": {
+            "name": "Kifejezetten vészhelyzeti használatra"
+        },
+        "highway/steps": {
+            "name": "Lépcső",
+            "terms": "Lépcsők"
+        },
+        "tourism/artwork/sculpture": {
+            "name": "Absztrakt szobor"
+        },
+        "leisure/beach_resort": {
+            "name": "Fürdőhely, vízparti strand",
+            "terms": "strand, fürdő, vízpart, tengerpart"
+        },
+        "amenity/vending_machine/drinks": {
+            "name": "Italárusító automata",
+            "terms": "italautomata, italgép"
+        },
+        "highway/primary": {
+            "name": "Főút",
+            "terms": "Elsőrendű főút"
+        },
+        "highway/footway/zebra": {
+            "name": "Jelölt gyalogátkelőhely"
+        },
+        "shop/chocolate": {
+            "name": "Csokoládébolt",
+            "terms": "Kézműves csokoládébolt, Csokibolt, édesség"
+        },
+        "man_made/pumping_station": {
+            "name": "Szivattyúház",
+            "terms": "szivattyú,pumpa"
+        },
+        "building/bunker": {
+            "name": "Bunker"
+        },
+        "emergency/defibrillator": {
+            "name": "Defibrillátor",
+            "terms": "Defibrillátor"
+        },
+        "aeroway/helipad": {
+            "name": "Helikopter-leszállóhely",
+            "terms": "heliport, helikopter leszálló, helpad"
+        },
+        "amenity/dentist": {
+            "name": "Fogorvos",
+            "terms": "Fogász, Fogászat"
+        },
+        "highway/footway/zebra-raised": {
+            "name": "Jelölt gyalogátkelőhely (kiemelt)"
+        },
+        "landuse/residential/apartments": {
+            "name": "Társasház együttes"
+        },
+        "amenity/place_of_worship/muslim": {
+            "name": "Muszlim mecset"
+        },
+        "shop/tea": {
+            "name": "Teaüzlet",
+            "terms": "teabolt, teázó"
+        },
+        "aerialway/chair_lift": {
+            "name": "Ülőlift",
+            "terms": "libegő, sífelvonó"
+        },
+        "shop/supermarket": {
+            "name": "Szupermarket",
+            "terms": "szupermarket, élelmiszerbolt, hipermarket, ABC, CBA, Spar, Aldi, Lidl, Penny, Auchan, Tesco"
+        },
+        "office/political_party": {
+            "name": "Pártiroda",
+            "terms": "pártszékház, politika, párt"
+        },
+        "building/stadium": {
+            "name": "Stadion épület"
+        },
+        "landuse/military/range": {
+            "name": "Katonai lőtér",
+            "terms": "katonai,honvédségi,lőtér"
+        },
+        "man_made/silo": {
+            "name": "Siló",
+            "terms": "siló, gabonatároló"
+        },
+        "man_made/surveillance/camera": {
+            "name": "Térfigyelő kamera"
+        },
+        "building/hut": {
+            "name": "Kunyhó",
+            "terms": "Kunyhó, kalyiba, viskó"
+        },
+        "shop/candles": {
+            "name": "Gyertya- és mécsesbolt",
+            "terms": "Gyertya- és mécsesbolt"
+        },
+        "natural/saddle": {
+            "name": "Nyereg",
+            "terms": "hágó"
+        },
+        "building/transportation": {
+            "name": "Közlekedési épület"
+        },
+        "landuse/orchard": {
+            "name": "Gyümölcsös",
+            "terms": "Gyümölcsöskert, gyümölcsfás, ültetvény"
+        },
+        "type/restriction/no_right_turn": {
+            "name": "Jobbra bekanyarodni tilos",
+            "terms": "Tilos jobbra kanyarodni, jobbra menni tilos, jobbra fordulni tilos"
+        },
+        "shop/car": {
+            "name": "Autókereskedés",
+            "terms": "Autószalon, márkakereskedés"
+        },
+        "building/stable": {
+            "name": "Lóistálló",
+            "terms": "Istálló"
+        },
+        "amenity/public_bookcase": {
+            "name": "Közösségi könyvespolc",
+            "terms": "nyilvános könyvespolc, könyv"
+        },
+        "tourism/camp_site": {
+            "name": "Kemping",
+            "terms": "tábor, sátortábor, kemping"
+        },
+        "golf/hole": {
+            "name": "Golflyuk",
+            "terms": "Golflyuk"
+        },
+        "building/semidetached_house": {
+            "name": "Ikerház",
+            "terms": "ikerház"
+        },
+        "railway/abandoned": {
+            "name": "Felszedett vasútvonal",
+            "terms": "felhagyott vasútvonal, megszűnt vasútvonal"
+        },
+        "type/restriction": {
+            "name": "Korlátozás",
+            "terms": "Korlátozás, tilalom, KRESZ"
+        },
+        "playground/seesaw": {
+            "name": "Mérleghinta",
+            "terms": "hinta,mérleg,libikóka"
+        },
+        "shop/bathroom_furnishing": {
+            "name": "Fürdőszobabútor-bolt",
+            "terms": "Szaniter, csaptelep, fürdőszoba felszerelés"
+        },
+        "shop/beauty/tanning": {
+            "name": "Szolárium",
+            "terms": "szolárium, szoli"
+        },
+        "amenity/water_point": {
+            "name": "Ivóvíz-csatlakozás lakóautónak",
+            "terms": "lakóautó, lakókocsi, víz, ivóvíz"
+        },
+        "leisure/hackerspace": {
+            "name": "Alkotóműhely",
+            "terms": "alkotóműhely, alkotólabor, alkotóhely"
+        },
+        "leisure/bandstand": {
+            "name": "Zenepavilon"
+        },
+        "amenity/food_court": {
+            "name": "Étkezőtér",
+            "terms": "food court, ebédlő"
+        },
+        "natural/beach": {
+            "name": "Természetes strand",
+            "terms": "Strand, vízpart, tengerpart, fürdőhely"
+        },
+        "junction": {
+            "name": "Elágazás",
+            "terms": "Elágazás, útkereszteződés, csomópont"
+        },
+        "office/coworking": {
+            "name": "Közösségi iroda",
+            "terms": "közösségi munkatér, coworking"
+        },
+        "vertex": {
+            "name": "Egyéb",
+            "terms": "Egyéb"
+        },
+        "type/boundary": {
+            "name": "Határvonal",
+            "terms": "Határ"
+        },
+        "man_made/monitoring_station": {
+            "name": "Megfigyelőállomás"
+        },
+        "aeroway/taxiway": {
+            "name": "Gurulóút",
+            "terms": "taxiút"
+        },
+        "craft/optician": {
+            "name": "Látszerész"
+        },
+        "waterway/waterfall": {
+            "name": "Vízesés",
+            "terms": "vízesés,zuhatag,zúgó"
+        },
+        "type/route": {
+            "name": "Útvonal",
+            "terms": "útvonal, nyomvonal"
+        },
+        "amenity/vending_machine/public_transport_tickets": {
+            "name": "Tömegközlekedési jegyet árusító automata",
+            "terms": "BKK-automata, jegyautomata, villamosjegy, buszjegy, metrójegy"
+        },
+        "man_made/embankment": {
+            "name": "Töltés"
+        },
+        "shop/tobacco": {
+            "name": "Dohánybolt",
+            "terms": "Nemzeti dohánybolt, dohány, cigaretta, szivar"
+        },
+        "building/shed": {
+            "name": "Fészer",
+            "terms": "Kunyhó, Fészer, Pajta,csűr,raktár,viskó, sufni"
+        },
+        "building/detached": {
+            "name": "Családi ház (Egyesült Királyság)",
+            "terms": "lakóház, detached"
+        },
+        "shop/charity": {
+            "name": "Adománybolt",
+            "terms": "jótékonysági bolt"
+        },
+        "healthcare/occupational_therapist": {
+            "name": "Foglalkozási terapeuta",
+            "terms": "terapeuta, terápia, foglalkozás"
+        },
+        "shop/musical_instrument": {
+            "name": "Hangszerbolt",
+            "terms": "Hangszer, kotta, Hangszerdiszkont"
+        },
+        "man_made/wastewater_plant": {
+            "name": "Szennyvíztelep",
+            "terms": "Szennyvíztisztító üzem"
+        },
+        "landuse/plant_nursery": {
+            "name": "Növényiskola",
+            "terms": "növényiskola, faiskola"
+        },
+        "shop/money_lender": {
+            "name": "Pénzkölcsönző",
+            "terms": "Gyorskölcsön pénzkölcsönző, Hitel centrum, Cofidis Gyorskölcsönző, Gyorshitelező, Személyi kölcsönző, Provident"
+        },
+        "shop/radiotechnics": {
+            "name": "Rádiótechnikai bolt",
+            "terms": "Elektronikai alkatrész, mérőműszer,"
+        },
+        "building/college": {
+            "name": "Főiskolai épület",
+            "terms": "felsőoktatási intézmény, egyetem"
+        },
+        "amenity/nursing_home": {
+            "name": "Ápolóotthon"
+        },
+        "shop/ticket": {
+            "name": "Jegyárus",
+            "terms": "koncertjegy,színházjegy,interticket,hajójegy"
+        },
+        "amenity/social_facility/group_home": {
+            "name": "Idősek otthona",
+            "terms": "Idősek szociális gondozója"
+        },
+        "natural/water/reservoir": {
+            "name": "Víztározó",
+            "terms": "Víztározó"
+        },
+        "craft/saddler": {
+            "name": "Nyeregkészítő",
+            "terms": "Lószerszám"
+        },
+        "landuse/quarry": {
+            "name": "Kőfejtő",
+            "terms": "kőbánya"
+        },
+        "barrier/border_control": {
+            "name": "Határátkelő",
+            "terms": "határellenőrzés, országhatár, államhatár, határállomás"
+        },
+        "landuse/basin": {
+            "name": "Vízgyűjtő medence"
+        },
+        "leisure/track": {
+            "name": "Versenypálya (nem motorsport)",
+            "terms": "versenypálya,"
+        },
+        "aerialway/mixed_lift": {
+            "name": "Vegyes felvonó",
+            "terms": "hibrid felvonó"
+        },
+        "shop/paint": {
+            "name": "Festékbolt",
+            "terms": "Falfesték bolt, Tikkurila Festékbolt, Színkeverő bolt, Festék- vegyi áru szaküzlet"
+        },
+        "historic/ruins": {
+            "name": "Romok",
+            "terms": "Romok"
+        },
+        "highway/secondary": {
+            "name": "Összekötő út",
+            "terms": "Másodrendű főút"
+        },
+        "natural/fell": {
+            "name": "Fjell",
+            "terms": "kopár északi táj, tundra"
+        },
+        "amenity/fast_food/sandwich": {
+            "name": "Szendvics gyorsétterem"
+        },
+        "amenity/restaurant/japanese": {
+            "name": "Japán étterem"
+        },
+        "natural/heath": {
+            "name": "Fenyér",
+            "terms": "pusztaság, rét, hangafű, törpecserjés"
+        },
+        "amenity/fast_food/kebab": {
+            "name": "Kebab gyorsétterem"
+        },
+        "landuse/greenfield": {
+            "name": "Zöldmezős terület",
+            "terms": "mező, szántó, zöld"
+        },
+        "office/accountant": {
+            "name": "Könyvelő iroda"
+        },
+        "shop/leather": {
+            "name": "Bőrdíszműbolt",
+            "terms": "bőrdíszműves, bőrös, bőrruházat, bőrékeszer"
+        },
+        "building/commercial": {
+            "name": "Üzleti épület",
+            "terms": "business, kereskedelem, vállalat, cég, vállalkozás"
+        },
+        "historic/wreck": {
+            "name": "Hajóroncs"
+        },
+        "amenity/bicycle_parking": {
+            "name": "Kerékpártároló",
+            "terms": "bicaj, bringa, bicikli, kétkerekű parkoló"
+        },
+        "amenity/compressed_air": {
+            "name": "Sűrített levegő",
+            "terms": "gumi, kompresszor"
+        },
+        "man_made/water_well": {
+            "name": "Kút",
+            "terms": "kerekes kút, gémeskút"
+        },
+        "shop/organic": {
+            "name": "Biobolt",
+            "terms": "Bio és natúr élelmiszer bolt, Biominőségű és egészséges táplálékok boltja, Natura bolt, Natura Reformtáplálkozási Szaküzlet, Bio és organikus ételek és áruk boltja"
+        },
+        "waterway/ditch": {
+            "name": "Árok",
+            "terms": "árok, vízelvezető"
+        },
+        "power/generator/source/wind": {
+            "name": "Szélturbina"
+        },
+        "leisure/fitness_station/stairs": {
+            "name": "Gyakorlati lépcső"
+        },
+        "landuse/railway": {
+            "name": "Vasúti terület",
+            "terms": "vasúti folyosó, űrszelvény"
+        },
+        "amenity/cinema": {
+            "name": "Mozi",
+            "terms": "filmszínház"
+        },
+        "type/route/bus": {
+            "name": "Buszútvonal",
+            "terms": "Buszvonal"
+        },
+        "type/route_master": {
+            "name": "Route Master",
+            "terms": "Route Master"
+        },
+        "landuse/farm": {
+            "name": "Mezőgazdasági terület"
+        },
+        "place/city_block": {
+            "name": "Várostömb"
+        },
+        "public_transport/platform_subway": {
+            "name": "Metrómegálló peron"
+        },
+        "natural/wood": {
+            "name": "Természetes erdő",
+            "terms": "erdő, őserdő, liget, fás terület"
+        },
+        "amenity/restaurant/chinese": {
+            "name": "Kínai étterem"
+        },
+        "leisure/pitch/rugby_union": {
+            "name": "Rugby Union-pálya",
+            "terms": "rögbi,pálya"
+        },
+        "craft/distillery": {
+            "name": "Párlatfőző",
+            "terms": "alkohol,ital,pálinka,szeszfőzde"
+        },
+        "aeroway/apron": {
+            "name": "Forgalmi előtér",
+            "terms": "repülő parkoló, előtér"
+        },
+        "shop/tattoo": {
+            "name": "Tetováló szalon",
+            "terms": "tetoválás,  piercing, tatoo"
+        },
+        "playground/roundabout": {
+            "name": "Körforgó",
+            "terms": "körforgó,körhinta,játék"
+        },
+        "power/generator/method/photovoltaic": {
+            "name": "Napelem"
+        },
+        "shop/optician": {
+            "name": "Látszerész",
+            "terms": "Szemüveg, kontaktlencse"
+        },
+        "public_transport/platform_light_rail": {
+            "name": "HÉV-megállo peron"
+        },
+        "type/route/foot": {
+            "name": "Gyalogos útvonal",
+            "terms": "Gyalog útvonal"
+        },
+        "barrier/block": {
+            "name": "Tömb",
+            "terms": "Torlasz, Akadály"
+        },
+        "amenity/theatre/type/amphi": {
+            "name": "Amfiteátrum"
+        },
+        "relation": {
+            "name": "Kapcsolat",
+            "terms": "Kapcsolat"
+        },
+        "shop/medical_supply": {
+            "name": "Gyógyászati segédeszközök boltja",
+            "terms": "Gyógybolt, Egészségbolt, Gyógyászati eszközök boltja"
+        },
+        "landuse/industrial/scrap_yard": {
+            "name": "Szeméttelep"
+        },
+        "amenity/recycling": {
+            "name": "Szelektív hulladékgyűjtő"
+        },
+        "camp_site/camp_pitch": {
+            "name": "Sátor- vagy lakókocsihely",
+            "terms": "sátorhely, táborhely, kempinghely"
+        },
+        "shop/gas": {
+            "name": "Palackozottgáz-bolt",
+            "terms": "gáztöltő, PB gáz, gázpalack, palckozott gáz, cseppfolyós gáz"
+        },
+        "landuse/commercial": {
+            "name": "Üzleti terület",
+            "terms": "üzleti park, kereskedelmi terület"
+        },
+        "natural/ridge": {
+            "name": "Hegygerinc",
+            "terms": "hegy,gerinc,tető"
+        },
+        "natural": {
+            "name": "Természet"
+        },
+        "aerialway/magic_carpet": {
+            "name": "Szállítószalag-felvonó",
+            "terms": "varázsszőnyeg, repülőszőnyeg"
+        },
+        "amenity/post_box": {
+            "name": "Postaláda",
+            "terms": "levélszekrény"
+        },
+        "public_transport/station_tram": {
+            "name": "Villamosállomás"
+        },
+        "emergency/official": {
+            "name": "Hivatalosan vészhelyzeti használatra"
+        },
+        "playground/sandpit": {
+            "name": "Homokozó",
+            "terms": "homok,játék"
+        },
+        "railway/derail": {
+            "name": "Vasúti kitérő",
+            "terms": "kitérő, vasút"
+        },
+        "leisure/bowling_alley": {
+            "name": "Bowlingpálya",
+            "terms": "bowling pálya"
+        },
+        "man_made/mast": {
+            "name": "Pózna",
+            "terms": "pózna, mobiltorony, mobilcella, rádióadó"
+        },
+        "attraction/river_rafting": {
+            "name": "Vadvízi evezés",
+            "terms": "evezés,csónak,folyó"
+        },
+        "leisure/bird_hide": {
+            "name": "Madárles",
+            "terms": "madárles"
+        },
+        "shop/fishing": {
+            "name": "Horgászbolt"
+        },
+        "amenity/vending_machine/cigarettes": {
+            "name": "Cigerettaárusító automata",
+            "terms": "cigerettaautomata, cigiautomata, dohányautomata"
+        },
+        "craft/tiler": {
+            "name": "Burkoló",
+            "terms": "Burkoló mester, csempéző"
+        },
+        "shop/frame": {
+            "name": "Képkeretező",
+            "terms": "Képkeretes"
+        },
+        "leisure/nature_reserve": {
+            "name": "Természetvédelmi terület",
+            "terms": "természetvédelem,terület,nemzeti,park, tájvédelmi körzet"
+        },
+        "shop/antiques": {
+            "name": "Régiségkereskedés",
+            "terms": "antikvitás, antikvárium, ószeres"
+        },
+        "playground/basket_spinner": {
+            "name": "Kosár forgó",
+            "terms": "kosár,forog,hinta"
+        },
+        "shop/fabric": {
+            "name": "Rövidáru- és méterárubolt",
+            "terms": "RÖLTEX, lakástextil,  rőfösbolt"
+        },
+        "craft/brewery": {
+            "name": "Sörfőzde",
+            "terms": "Sörfőzde, Sörfőző"
+        },
+        "highway/turning_circle": {
+            "name": "Forduló",
+            "terms": "Forduló"
+        },
+        "shop/coffee": {
+            "name": "Kávébolt",
+            "terms": "kávébolt, kávéüzlet, kávé kereskedés"
+        },
+        "shop/e-cigarette": {
+            "name": "E-cigaretta bolt",
+            "terms": "e-cigaretta, elektromos cigaretta"
+        },
+        "tourism/wilderness_hut": {
+            "name": "Menedékház (személyzet nélkül)"
+        },
+        "amenity/vending_machine/feminine_hygiene": {
+            "name": "Női higéniás automata",
+            "terms": "automata, óvszer, tampon, betét, nő, menstruáció, higiéniás eszközök, testápolás"
+        },
+        "shop/clothes": {
+            "name": "Ruházati bolt",
+            "terms": "fehérneműbolt, öltönyáruház, ruhabolt"
+        },
+        "aeroway/aerodrome": {
+            "name": "Repülőtér",
+            "terms": "repülőtér, reptér"
+        },
+        "amenity/bicycle_rental": {
+            "name": "Kerékpárkölcsönző",
+            "terms": "bicajkölcsönző, bringakölcsönzés, biciklikölcsönzés"
+        },
+        "shop/gift": {
+            "name": "Ajándékbolt",
+            "terms": "meglepetés, ajándéktárgy, szuvenír"
+        },
+        "craft/locksmith": {
+            "name": "Lakatos"
+        },
+        "leisure/sports_centre": {
+            "name": "Sportközpont / komplexum",
+            "terms": "sport,központ,komplexum"
+        },
+        "place": {
+            "name": "Hely"
+        },
+        "power": {
+            "name": "Energia"
+        },
+        "public_transport/platform_train": {
+            "name": "Vasútmegálló peron"
+        },
+        "aerialway/station": {
+            "name": "Felvonóállomás"
+        },
+        "building/house": {
+            "name": "Családi ház",
+            "terms": "Ház"
+        },
+        "piste/sleigh": {
+            "name": "Szánkópálya"
+        },
+        "leisure/marina": {
+            "name": "Kishajókikötő",
+            "terms": "Kikötő"
+        },
+        "craft/tailor": {
+            "name": "Szabó"
+        },
+        "amenity/restaurant/american": {
+            "name": "Amerikai étterem"
+        },
+        "barrier/gate": {
+            "name": "Kapu",
+            "terms": "ajtó"
+        },
+        "shop/motorcycle": {
+            "name": "Motorkerékpár-kereskedés",
+            "terms": "Motorbicikli Márkakereskedő, Robogó és motor márkakereskedő,"
+        },
+        "waterway/river": {
+            "name": "Folyó",
+            "terms": "folyam"
+        },
+        "office/architect": {
+            "name": "Építészi iroda"
+        },
+        "railway/subway": {
+            "name": "Metró",
+            "terms": "földalatti"
+        },
+        "highway/elevator": {
+            "name": "Felvonó",
+            "terms": "lift"
+        },
+        "railway/miniature": {
+            "name": "Miniatűrvasút"
+        },
+        "shop/carpet": {
+            "name": "Szőnyegbolt",
+            "terms": "Szőnyegház, Padlószőnyeg áruház, Diego"
+        },
+        "craft": {
+            "name": "Műhely",
+            "terms": "kézműves, iparos, iparművész, mesterember, műhely"
+        },
+        "traffic_calming/chicane": {
+            "name": "Forgalmi sikán",
+            "terms": "forgalmi sikán"
+        },
+        "public_transport/station_bus": {
+            "name": "Buszállomás / pályaudvar"
+        },
+        "shop/butcher": {
+            "name": "Hentes",
+            "terms": "Hentes, Mészáros, Húsbolt"
+        },
+        "barrier/bollard": {
+            "name": "Oszlop",
+            "terms": "terelőoszlop"
+        },
+        "leisure/golf_course": {
+            "name": "Golfpálya",
+            "terms": "Golfpálya"
+        },
+        "barrier": {
+            "name": "Akadály",
+            "terms": "akadály, torlasz"
+        },
+        "historic/castle": {
+            "name": "Vár",
+            "terms": "Kastély, Palota"
+        },
+        "shop/car_repair": {
+            "name": "Autószerelő",
+            "terms": "autószerviz, autójavító"
+        },
+        "craft/hvac": {
+            "name": "Fűtés-, szellőztetés- és légkondicionálás-szerelő",
+            "terms": "Fűtés, szellőzés, légkondicionálás, épületgépészet"
+        },
+        "highway/path": {
+            "name": "Ösvény",
+            "terms": "Ösvény"
+        },
+        "leisure/water_park": {
+            "name": "Élményfürdő",
+            "terms": "strand,akvapark,aquapark,vízi szórakoztatópark"
+        },
+        "attraction/train": {
+            "name": "Turista vasút",
+            "terms": "vasút,turista"
+        },
+        "landuse/meadow": {
+            "name": "Rét",
+            "terms": "tisztás, legelő"
+        },
+        "shop/convenience": {
+            "name": "Kis élelmiszerbolt",
+            "terms": "ABC, sarki élelmiszer, kisbolt, közért"
+        },
+        "amenity/bus_station": {
+            "name": "Buszpályaudvar"
+        },
+        "highway/crossing/zebra": {
+            "name": "Jelölt gyalogátkelőhely"
+        },
+        "highway/steps/conveying": {
+            "name": "Mozgólépcső vagy -járda"
+        },
+        "shop/books": {
+            "name": "Könyvesbolt",
+            "terms": "Könyvesbolt"
+        },
+        "highway/service": {
+            "name": "Szervizút",
+            "terms": "szervizút,bekötő,út"
+        },
+        "waterway/drain": {
+            "name": "Vízelvezető csatorna",
+            "terms": "Ér"
+        },
+        "highway/residential": {
+            "name": "Lakóút",
+            "terms": "utca"
+        },
+        "historic/wayside_shrine": {
+            "name": "Útmenti kegyhely",
+            "terms": "Útmenti szentély"
+        },
+        "amenity/restaurant/turkish": {
+            "name": "Török étterem"
+        },
+        "type/boundary/administrative": {
+            "name": "Közigazgatási határ",
+            "terms": "településhatár, megyehatár, országhatár, államhatár"
+        },
+        "landuse/military/office": {
+            "name": "Katonai hivatal",
+            "terms": "katonai,honvédségi hivatal"
+        },
+        "amenity/watering_place": {
+            "name": "Állatitató hely",
+            "terms": "állatitató, itató, vályú"
+        },
+        "public_transport/station_train_halt": {
+            "name": "Vasútállomás (kérésre megáll)"
+        },
+        "emergency/ambulance_station": {
+            "name": "Mentőállomás",
+            "terms": "Mentőautó állomás"
+        },
+        "healthcare/podiatrist": {
+            "name": "Lábgyógyász",
+            "terms": "láb, gyógyítás"
+        },
+        "amenity/motorcycle_parking": {
+            "name": "Motorkerékpár-parkoló",
+            "terms": "motoros parkoló, motor parkoló"
+        },
+        "shop/craft": {
+            "name": "Kézműveskellék-bolt",
+            "terms": "hobbyművész, kreatív, dekoráció, művészellátó, kézműves"
+        },
+        "line": {
+            "name": "Vonal",
+            "terms": "Vonal"
+        },
+        "amenity/kindergarten": {
+            "name": "Óvoda",
+            "terms": "ovi"
+        },
+        "man_made/tower/observation": {
+            "name": "Kilátótorony"
+        },
+        "waterway/weir": {
+            "name": "Bukógát",
+            "terms": "Bukógát"
+        },
+        "craft/metal_construction": {
+            "name": "Fémiparos",
+            "terms": "Huzaltermék gyártása,  Kötőelem, csavar gyártása, Acél tárolóeszköz gyártása,  Szerszámgyártás, Fémmegmunkálás"
+        },
+        "craft/painter": {
+            "name": "Szobafestő",
+            "terms": "Festő, mázoló"
+        },
+        "public_transport/stop_area": {
+            "name": "Tranzitmegállási terület"
+        },
+        "craft/carpet_layer": {
+            "name": "Szőnyegpadló-lerakó",
+            "terms": "szőnyegpadló, padlóburkolat"
+        },
+        "man_made/flagpole": {
+            "name": "Zászlórúd",
+            "terms": "árboc"
+        },
+        "highway/crossing/unmarked-raised": {
+            "name": "Jelöletlen kereszteződés (kiemelt)"
+        },
+        "tourism/attraction": {
+            "name": "Turisztikai látványosság",
+            "terms": "Turistalátványosság, látványosság, attrakció"
+        },
+        "man_made": {
+            "name": "Építmények"
+        },
+        "golf/fairway": {
+            "name": "Fairway-sima pázsitos rész",
+            "terms": "Fairway-sima pázsitos rész"
+        },
+        "public_transport/station_subway": {
+            "name": "Metróállomás"
+        },
+        "tourism/alpine_hut": {
+            "name": "Menedékház",
+            "terms": "Menedékház"
+        },
+        "tourism/information/office": {
+            "name": "Tourinform iroda",
+            "terms": "turistainformáció, turistairoda, idegenforgalom"
+        },
+        "shop/alcohol": {
+            "name": "Alkoholüzlet",
+            "terms": "unikum,pálinka,baileys,konyak,tokaji,vodka,wiszki,whiskey,kosher szilvapálinka,zwack"
+        },
+        "tourism/viewpoint": {
+            "name": "Kilátóhely",
+            "terms": "Kilátópont"
+        },
+        "craft/handicraft": {
+            "name": "Kézművestermék-készítő",
+            "terms": "iparművész"
+        },
+        "landuse/construction": {
+            "name": "Építkezés",
+            "terms": "építési terület, bontás, építkezés"
+        },
+        "shop/trade": {
+            "name": "Kereskedelmi üzlet"
+        },
+        "aeroway": {
+            "name": "Légi közeledés"
+        },
+        "aeroway/terminal": {
+            "name": "Repülőtéri terminál",
+            "terms": "terminál,reptéri terminál,légi pályaudvar, utasforgalmi épület"
+        },
+        "emergency/life_ring": {
+            "name": "Mentőöv",
+            "terms": "öv,gyűrű,mentés,életmentés"
+        }
+    }
+}

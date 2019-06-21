@@ -1,8 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.download;
 
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import org.jetbrains.annotations.NotNull;
 import org.junit.Before;
@@ -115,7 +114,7 @@ public class OsmQuestDownloadTest
 		dl.setQuestListener(listener);
 
 		// -> we expect that quest with node #5 is removed
-		dl.download(questType, new BoundingBox(0,0,1,1), null);
+		dl.download(questType, new BoundingBox(0,0,1,1), Collections.emptySet());
 
 		verify(osmQuestDao).deleteAll(any());
 		verify(listener).onQuestsRemoved(any(), any());
@@ -134,7 +133,7 @@ public class OsmQuestDownloadTest
 		ElementGeometry geometry;
 	}
 
-	private static class ListBackedQuestType implements OsmElementQuestType
+	private static class ListBackedQuestType implements OsmElementQuestType<String>
 	{
 		private final List<ElementWithGeometry> list;
 
@@ -143,11 +142,12 @@ public class OsmQuestDownloadTest
 			this.list = list;
 		}
 
-		@NonNull @Override public AbstractQuestAnswerFragment createForm() { return null; }
+		@NonNull @Override public AbstractQuestAnswerFragment<String> createForm() {
+			return new AbstractQuestAnswerFragment<String>() {}; }
 		@Override public int getIcon() { return 0; }
 		@Override public int getTitle(@NonNull Map<String,String> tags) { return 0; }
-		@Override public void applyAnswerTo(@NonNull Bundle answer, @NonNull StringMapChangesBuilder changes) {}
-		@Override public String getCommitMessage() { return ""; }
+		@Override public void applyAnswerTo(@NonNull String answer, @NonNull StringMapChangesBuilder changes) {}
+		@Override @NonNull public String getCommitMessage() { return ""; }
 		@Nullable @Override public Boolean isApplicableTo(@NonNull Element element) { return false; }
 
 		@Override public boolean download(@NonNull BoundingBox bbox, @NonNull

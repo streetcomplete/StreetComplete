@@ -3,6 +3,6 @@ additionalStreetsignLanguages: [en]
 isLivingStreetKnown: true
 mobileCountryCode: 282
 officialLanguages: [ka]
-orchardProduces: [grape, orange, hazelnut, apple, tomato, walnut, peach, plum, tea, pear, cherry, almond,
-  lemon, lime, apricot, strawberry]
+orchardProduces: [grape, tomato, apple, peach, hazelnut, pear, plum, chilli_pepper, sweet_pepper, walnut,
+  cherry, tea, strawberry, lemon, lime, orange, apricot]
 popularSports: [rugby]

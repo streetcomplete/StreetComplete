@@ -1,8 +1,7 @@
 package de.westnordost.streetcomplete.quests.housenumber
 
-import android.content.Context
 import android.os.Bundle
-import android.support.v7.app.AlertDialog
+import androidx.appcompat.app.AlertDialog
 import android.text.InputType
 import android.text.method.DigitsKeyListener
 import android.view.LayoutInflater
@@ -11,6 +10,7 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
+import androidx.core.content.getSystemService
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
@@ -20,7 +20,7 @@ import de.westnordost.streetcomplete.util.TextChangedWatcher
 import de.westnordost.streetcomplete.view.ItemViewHolder
 
 
-class AddHousenumberForm : AbstractQuestFormAnswerFragment() {
+class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() {
 
     override val otherAnswers = listOf(
         OtherAnswer(R.string.quest_address_answer_no_housenumber) { onNoHouseNumber() },
@@ -32,6 +32,7 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment() {
     private var houseNameInput: EditText? = null
     private var conscriptionNumberInput: EditText? = null
     private var streetNumberInput: EditText? = null
+    private var blockNumberInput: EditText? = null
 
     private var isHousename: Boolean = false
 
@@ -50,15 +51,10 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment() {
     }
 
     override fun onClickOk() {
-        if (houseNameInput != null) {
-            applyHouseNameAnswer(houseNameInput!!.trimmedInput)
-        } else if (conscriptionNumberInput != null && streetNumberInput != null) {
-            applyConscriptionNumberAnswer(
-                conscriptionNumberInput!!.trimmedInput,
-                streetNumberInput!!.trimmedInput
-            )
-        } else if (houseNumberInput != null) {
-            applyHouseNumberAnswer(houseNumberInput!!.trimmedInput)
+        createAnswer()?.let { answer ->
+            confirmHousenumber(answer.looksInvalid()) {
+                applyAnswer(answer)
+            }
         }
     }
 
@@ -77,60 +73,21 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment() {
 
     private fun onNoHouseNumber() {
         val buildingValue = osmElement!!.tags["building"]!!
-        val item = BuildingType.getByTag("building", buildingValue)
-        if (item != null) {
+        val buildingType = BuildingType.getByTag("building", buildingValue)
+        if (buildingType != null) {
             val inflater = LayoutInflater.from(activity)
             val inner = inflater.inflate(R.layout.dialog_quest_address_no_housenumber, null, false)
-            ItemViewHolder(inner.findViewById(R.id.item_view)).bind(item)
+            ItemViewHolder(inner.findViewById(R.id.item_view)).bind(buildingType.item)
 
             AlertDialog.Builder(activity!!)
                 .setView(inner)
-                .setPositiveButton(R.string.quest_generic_hasFeature_yes) { _, _ -> applyNoHouseNumberAnswer() }
+                .setPositiveButton(R.string.quest_generic_hasFeature_yes) { _, _ -> applyAnswer(NoAddress) }
                 .setNegativeButton(R.string.quest_generic_hasFeature_no_leave_note) { _, _ -> onClickCantSay() }
                 .show()
         } else {
             // fallback in case the type of building is known by Housenumber quest but not by
             // building type quest
             onClickCantSay()
-        }
-    }
-
-    private fun applyNoHouseNumberAnswer() {
-        val answer = Bundle()
-        answer.putBoolean(NO_ADDRESS, true)
-        applyAnswer(answer)
-    }
-
-    private fun applyHouseNameAnswer(houseName: String) {
-        val answer = Bundle()
-        answer.putString(HOUSENAME, houseName)
-        applyAnswer(answer)
-    }
-
-    private fun applyHouseNumberAnswer(houseNumber: String) {
-        val answer = Bundle()
-        val looksInvalid = !houseNumber.matches(getValidHousenumberRegex())
-
-        confirmHousenumber(looksInvalid) {
-            answer.putString(HOUSENUMBER, houseNumber)
-            applyAnswer(answer)
-        }
-    }
-
-    private fun applyConscriptionNumberAnswer(conscriptionNumber: String, streetNumber: String) {
-        val answer = Bundle()
-        var looksInvalid = !conscriptionNumber.matches(VALID_CONSCRIPTIONNUMBER_REGEX.toRegex())
-        if (streetNumber.isNotEmpty()) {
-            looksInvalid = looksInvalid || !streetNumber.matches(getValidHousenumberRegex())
-        }
-
-        confirmHousenumber(looksInvalid) {
-            answer.putString(CONSCRIPTIONNUMBER, conscriptionNumber)
-            // streetNumber is optional
-            if (streetNumber.isNotEmpty()) {
-                answer.putString(STREETNUMBER, streetNumber)
-            }
-            applyAnswer(answer)
         }
     }
 
@@ -144,11 +101,7 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment() {
         return "^$regex((-$regex)|(,$regex)+)?".toRegex()
     }
 
-    override fun isFormComplete(): Boolean {
-        // streetNumber is always optional
-        val input = getFirstNonNull(houseNumberInput, houseNameInput, conscriptionNumberInput)
-        return input?.trimmedInput?.isNotEmpty() ?: false
-    }
+    override fun isFormComplete() = createAnswer() != null
 
     private fun setLayout(layoutResourceId: Int) {
         val view = setContentView(layoutResourceId)
@@ -157,15 +110,17 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment() {
         houseNameInput = view.findViewById(R.id.houseNameInput)
         conscriptionNumberInput = view.findViewById(R.id.conscriptionNumberInput)
         streetNumberInput = view.findViewById(R.id.streetNumberInput)
+        blockNumberInput = view.findViewById(R.id.blockNumberInput)
 
         val onChanged = TextChangedWatcher { checkIsFormComplete() }
         houseNumberInput?.addTextChangedListener(onChanged)
         houseNameInput?.addTextChangedListener(onChanged)
         conscriptionNumberInput?.addTextChangedListener(onChanged)
         streetNumberInput?.addTextChangedListener(onChanged)
+        blockNumberInput?.addTextChangedListener(onChanged)
 
         // streetNumber is always optional
-        val input = getFirstNonNull(houseNumberInput, houseNameInput, conscriptionNumberInput)
+        val input = getFirstNonNull(blockNumberInput, houseNumberInput, houseNameInput, conscriptionNumberInput)
         input?.requestFocus()
 
         initKeyboardButton(view)
@@ -191,8 +146,8 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment() {
                     // for some reason, the cursor position gets lost first time the input type is set (#1093)
                     focus.setSelection(start, end)
 
-                    val imm = activity!!.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                    imm.showSoftInput(focus, InputMethodManager.SHOW_IMPLICIT)
+                    val imm = activity?.getSystemService<InputMethodManager>()
+                    imm?.showSoftInput(focus, InputMethodManager.SHOW_IMPLICIT)
                 }
             }
         }
@@ -211,18 +166,52 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment() {
         }
     }
 
-    private val EditText.trimmedInput get() = text.toString().trim()
+    private fun createAnswer():HousenumberAnswer? =
+        if (houseNameInput != null) {
+            houseNameInput?.nonEmptyInput?.let { HouseName(it) }
+        }
+        else if (conscriptionNumberInput != null && streetNumberInput != null) {
+            conscriptionNumberInput?.nonEmptyInput?.let { conscriptionNumber ->
+                val streetNumber = streetNumberInput?.nonEmptyInput // streetNumber is optional
+                ConscriptionNumber(conscriptionNumber, streetNumber)
+            }
+        }
+        else if (blockNumberInput != null && houseNumberInput != null) {
+            blockNumberInput?.nonEmptyInput?.let { blockNumber ->
+                houseNumberInput?.nonEmptyInput?.let { houseNumber ->
+                    HouseAndBlockNumber(houseNumber, blockNumber)
+                }
+            }
+        }
+        else if (houseNumberInput != null) {
+            houseNumberInput?.nonEmptyInput?.let { HouseNumber(it) }
+        }
+        else null
+
+    private fun HousenumberAnswer.looksInvalid() = when(this) {
+        is ConscriptionNumber ->
+            !number.matches(VALID_CONSCRIPTIONNUMBER_REGEX.toRegex())
+                    || streetNumber != null && !streetNumber.matches(getValidHousenumberRegex())
+        is HouseNumber ->
+            !number.matches(getValidHousenumberRegex())
+        is HouseAndBlockNumber ->
+            !houseNumber.matches(getValidHousenumberRegex())
+                    || !blockNumber.matches(VALID_BLOCKNUMBER_REGEX.toRegex())
+        else ->
+            false
+    }
+
+    private val EditText.nonEmptyInput:String? get() {
+        val input = text.toString().trim()
+        return if(input.isNotEmpty()) input else null
+    }
 
     companion object {
-        const val NO_ADDRESS = "noaddress"
-        const val HOUSENUMBER = "housenumber"
-        const val HOUSENAME = "housename"
-        const val CONSCRIPTIONNUMBER = "conscriptionnumber"
-        const val STREETNUMBER = "streetnumber"
-
-        private val IS_HOUSENAME = "is_housename"
+        private const val IS_HOUSENAME = "is_housename"
         // i.e. 9999/a, 9/a, 99/9, 99a, 99 a, 9 / a
         const val VALID_HOUSENUMBER_REGEX = "\\p{N}{1,4}((\\s?/\\s?\\p{N})|(\\s?/?\\s?\\p{L}))?"
+        // i.e. 9, 99, 999, 999, 9A, 9 A
+        const val VALID_BLOCKNUMBER_REGEX = "\\p{N}{1,4}(\\s?\\p{L})?"
 
         const val VALID_CONSCRIPTIONNUMBER_REGEX = "\\p{N}{1,6}"
 

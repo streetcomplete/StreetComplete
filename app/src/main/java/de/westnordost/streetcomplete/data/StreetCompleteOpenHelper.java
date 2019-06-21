@@ -25,7 +25,6 @@ import de.westnordost.streetcomplete.quests.oneway.AddOneway;
 @Singleton
 public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 {
-	public static final String DB_NAME = "streetcomplete.db";
 	public static final int DB_VERSION = 11;
 
 	private static final String OSM_QUESTS_CREATE_PARAMS = " (" +
@@ -222,9 +221,9 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 
 	private final TablesHelper[] extensions;
 
-	public StreetCompleteOpenHelper(Context context, TablesHelper[] extensions)
+	public StreetCompleteOpenHelper(Context context, String dbName, TablesHelper[] extensions)
 	{
-		super(context, DB_NAME, null, DB_VERSION);
+		super(context, dbName, null, DB_VERSION);
 		this.extensions = extensions;
 	}
 

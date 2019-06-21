@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
 mobileCountryCode: 724
 officialLanguages: [pt]
-orchardProduces: [coffee, cacao, cashew_nut, banana, coconut, sisal, rubber, palm_oil, grape, guava,
-  mango, mangosteen, mate, pineapple, tomato, orange, lemon, lime]
+orchardProduces: [orange, banana, tomato, coffee, coconut, pineapple, guava, mango, mangosteen, grape,
+  cashew_nut, lemon, lime, papaya, apple, mate, cacao, peach]

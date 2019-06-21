@@ -12,6 +12,7 @@ import android.view.animation.AnimationSet
 import android.view.animation.BounceInterpolator
 import android.view.animation.TranslateAnimation
 import android.view.inputmethod.InputMethodManager
+import androidx.core.content.getSystemService
 
 import de.westnordost.streetcomplete.R
 import kotlinx.android.synthetic.main.form_leave_note.*
@@ -28,7 +29,7 @@ class CreateNoteFragment : AbstractCreateNoteFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         if (savedInstanceState == null) {
-            markerLayoutContainer.startAnimation(createFallDownAnimation())
+            markerLayoutContainer?.startAnimation(createFallDownAnimation())
         }
 
         titleLabel.text = getString(R.string.map_btn_create_note)
@@ -62,13 +63,14 @@ class CreateNoteFragment : AbstractCreateNoteFragment() {
         return a
     }
 
-    override fun onAttach(ctx: Context?) {
-        super.onAttach(ctx)
-        callbackListener = ctx as CreateNoteListener
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        callbackListener = context as CreateNoteListener
     }
 
     override fun onDiscard() {
-        markerLayoutContainer.visibility = View.INVISIBLE
+        super.onDiscard()
+        markerLayoutContainer?.visibility = View.INVISIBLE
     }
 
     override fun onLeaveNote(text: String, imagePaths: List<String>?) {
@@ -79,13 +81,13 @@ class CreateNoteFragment : AbstractCreateNoteFragment() {
         val screenPos = Point(point[0], point[1])
         screenPos.offset(createNoteMarker.width / 2, createNoteMarker.height / 2)
 
-        markerLayoutContainer.visibility = View.INVISIBLE
+        markerLayoutContainer?.visibility = View.INVISIBLE
 
         callbackListener.onLeaveNote(text, imagePaths, screenPos)
     }
 
     private fun closeKeyboard(): Boolean {
-        val imm = context!!.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        return imm.hideSoftInputFromWindow(noteInput.windowToken, 0)
+        val imm = context?.getSystemService<InputMethodManager>()
+        return imm?.hideSoftInputFromWindow(noteInput.windowToken, 0) ?: false
     }
 }

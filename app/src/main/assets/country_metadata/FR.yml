@@ -6,6 +6,6 @@ isLivingStreetKnown: true
 isSlowZoneKnown: true
 mobileCountryCode: 208
 officialLanguages: [fr]
-orchardProduces: [grape, apple, walnut, plum, olive, apricot, peach, cherry, chestnut, pear, hazelnut,
-  kiwi, strawberry, tomato, blueberry]
+orchardProduces: [grape, apple, tomato, plum, peach, apricot, pear, kiwi, strawberry, orange, chilli_pepper,
+  sweet_pepper, walnut, cherry, olive, hazelnut]
 popularSports: [soccer, tennis, basketball, boules, equestrian, rugby]

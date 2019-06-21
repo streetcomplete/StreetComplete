@@ -1,7 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
 mobileCountryCode: 452
 officialLanguages: [vi]
-orchardProduces: [coffee, rubber, cashew_nut, coconut, tea, banana, guava, mango, mangosteen, chilli_pepper,
-  sweet_pepper, pepper, orange, grapefruit, pineapple, grape]
+orchardProduces: [banana, coffee, coconut, rubber, cashew_nut, guava, mango, mangosteen, orange, pineapple,
+  grapefruit, tea, pepper, chilli_pepper, sweet_pepper, grape]
 popularReligions: [chinese_folk, buddhist, christian, caodaism]
 popularSports: [soccer, tennis, badminton, australian_football, sepak_takraw]

@@ -1,14 +1,11 @@
 package de.westnordost.streetcomplete.quests.surface
 
-import android.os.Bundle
-
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
-import de.westnordost.streetcomplete.quests.GroupedImageListQuestAnswerFragment
 
-class AddPathSurface(o: OverpassMapDataDao) : SimpleOverpassQuestType(o) {
+class AddPathSurface(o: OverpassMapDataDao) : SimpleOverpassQuestType<String>(o) {
 
     override val tagFilters = """
         ways with highway ~ path|footway|cycleway|bridleway|steps
@@ -27,7 +24,7 @@ class AddPathSurface(o: OverpassMapDataDao) : SimpleOverpassQuestType(o) {
 
     override fun createForm() = AddPathSurfaceForm()
 
-    override fun applyAnswerTo(answer: Bundle, changes: StringMapChangesBuilder) {
-        changes.add("surface", answer.getString(GroupedImageListQuestAnswerFragment.OSM_VALUE)!!)
+    override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {
+        changes.add("surface", answer)
     }
 }

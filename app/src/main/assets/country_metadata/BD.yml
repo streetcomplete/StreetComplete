@@ -3,6 +3,6 @@ firstDayOfWorkweek: Su
 isLeftHandTraffic: true
 mobileCountryCode: 470
 officialLanguages: [bn]
-orchardProduces: [areca_nut, chilli_pepper, sweet_pepper, guava, mango, mangosteen, rubber, tea, banana,
-  coconut, tomato, lemon, lime, pineapple, papaya, grapefruit, orange]
+orchardProduces: [guava, mango, mangosteen, banana, tomato, pineapple, chilli_pepper, sweet_pepper,
+  papaya, areca_nut, coconut, tea, lemon, lime, grapefruit, orange, rubber]
 popularReligions: [muslim, hindu]

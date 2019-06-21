@@ -8,11 +8,11 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.support.annotation.AnyThread;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.content.LocalBroadcastManager;
+import androidx.annotation.AnyThread;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,6 +48,8 @@ public class MapControlsFragment extends Fragment
 
 	private ViewGroup leftSide, rightSide;
 	private boolean isShowingControls = true;
+
+	private final Handler mainHandler = new Handler(Looper.getMainLooper());
 
 	@Inject SharedPreferences prefs;
 
@@ -140,7 +142,7 @@ public class MapControlsFragment extends Fragment
 		createNoteButton.setOnClickListener(v ->
 		{
 			v.setEnabled(false);
-			new Handler(Looper.getMainLooper()).postDelayed(() -> v.setEnabled(true), 200);
+			mainHandler.postDelayed(() -> v.setEnabled(true), 200);
 			listener.onClickCreateNote();
 		});
 
@@ -203,6 +205,12 @@ public class MapControlsFragment extends Fragment
 	{
 		super.onSaveInstanceState(outState);
 		outState.putBoolean(SHOW_CONTROLS, isShowingControls);
+	}
+
+	@Override public void onDestroy()
+	{
+		super.onDestroy();
+		mainHandler.removeCallbacksAndMessages(null);
 	}
 
 	/* ------------------------ Calls from the MapFragment ------------------------ */
@@ -310,7 +318,8 @@ public class MapControlsFragment extends Fragment
 
 	private void onLocationIsDisabled()
 	{
-		trackingButton.setState(LocationState.ALLOWED);
+		trackingButton.setState(LocationUtil.hasLocationPermission(getActivity())
+			? LocationState.ALLOWED : LocationState.DENIED);
 		mapFragment.stopPositionTracking();
 		singleLocationRequest.stopRequest();
 	}

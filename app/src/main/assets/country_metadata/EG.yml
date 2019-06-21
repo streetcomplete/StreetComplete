@@ -3,6 +3,6 @@ additionalStreetsignLanguages: [en]
 firstDayOfWorkweek: Su
 mobileCountryCode: 602
 officialLanguages: [ar]
-orchardProduces: [tomato, orange, guava, mango, mangosteen, grape, olive, date, fig, banana, apple,
-  peach, chilli_pepper, sweet_pepper, lemon, lime, apricot, strawberry, walnut]
+orchardProduces: [tomato, grape, date, guava, mango, mangosteen, banana, orange, olive, apple, strawberry,
+  peach, lemon, lime, fig, apricot, pear, chilli_pepper, sweet_pepper]
 popularReligions: [muslim]

@@ -2,7 +2,7 @@
 isLeftHandTraffic: true
 mobileCountryCode: 510
 officialLanguages: [id, ms, jv, su, mad, min]
-orchardProduces: [palm_oil, rubber, coconut, cacao, coffee, cashew_nut, chilli_pepper, sweet_pepper,
-  guava, mango, mangosteen, pepper, nutmeg, areca_nut, tea, banana, tomato, orange]
+orchardProduces: [coconut, banana, rubber, guava, mango, mangosteen, orange, chilli_pepper, sweet_pepper,
+  pineapple, tomato, papaya, cacao, coffee, avocado, tea, areca_nut, cashew_nut]
 popularReligions: [muslim, christian, hindu, buddhist, chinese_folk]
 popularSports: [soccer, tennis, basketball, volleyball, badminton]

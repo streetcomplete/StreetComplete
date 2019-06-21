@@ -1,13 +1,11 @@
 package de.westnordost.streetcomplete.quests.internet_access
 
-import android.os.Bundle
-
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
 
-class AddInternetAccess(o: OverpassMapDataDao) : SimpleOverpassQuestType(o) {
+class AddInternetAccess(o: OverpassMapDataDao) : SimpleOverpassQuestType<String>(o) {
 
     override val tagFilters = """
         nodes, ways, relations with (amenity=library or tourism ~ hotel|guest_house|hostel|motel)
@@ -21,7 +19,7 @@ class AddInternetAccess(o: OverpassMapDataDao) : SimpleOverpassQuestType(o) {
 
     override fun createForm() = AddInternetAccessForm()
 
-    override fun applyAnswerTo(answer: Bundle, changes: StringMapChangesBuilder) {
-        changes.add("internet_access", answer.getString(AddInternetAccessForm.INTERNET_ACCESS)!!)
+    override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {
+        changes.add("internet_access", answer)
     }
 }

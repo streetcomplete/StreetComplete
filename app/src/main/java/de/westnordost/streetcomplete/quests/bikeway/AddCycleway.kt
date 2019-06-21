@@ -1,7 +1,5 @@
 package de.westnordost.streetcomplete.quests.bikeway
 
-import android.os.Bundle
-
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
@@ -15,17 +13,17 @@ import de.westnordost.streetcomplete.data.osm.tql.OverpassQLUtil
 
 import de.westnordost.streetcomplete.quests.bikeway.Cycleway.*
 
-class AddCycleway(private val overpassServer: OverpassMapDataDao) : OsmElementQuestType {
+class AddCycleway(private val overpassServer: OverpassMapDataDao) : OsmElementQuestType<CyclewayAnswer> {
 
     override val commitMessage = "Add whether there are cycleways"
     override val icon = R.drawable.ic_quest_bicycleway
 
-    // See overview here: https://ent8r.github.io/blacklistr/?java=bikeway/AddCycleway.java
+    // See overview here: https://ent8r.github.io/blacklistr/?streetcomplete=bikeway/AddCycleway.kt
     // #749. sources:
     // Google Street View (driving around in virtual car)
     // https://en.wikivoyage.org/wiki/Cycling
     // http://peopleforbikes.org/get-local/ (US)
-    override val enabledForCountries = Countries.noneExcept(arrayOf(
+    override val enabledForCountries = Countries.noneExcept(
         // all of Northern and Western Europe, most of Central Europe, some of Southern Europe
         "NO","SE","FI","IS","DK",
         "GB","IE","NL","BE","FR","LU",
@@ -46,7 +44,7 @@ class AddCycleway(private val overpassServer: OverpassMapDataDao) : OsmElementQu
         "US-MA","US-NJ","US-NY","US-DC","US-CT","US-FL",
         "US-MN","US-MI","US-IL","US-WI","US-IN",
         "US-AZ","US-TX"
-    ))
+    )
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_cycleway_title2
 
@@ -56,7 +54,7 @@ class AddCycleway(private val overpassServer: OverpassMapDataDao) : OsmElementQu
         return overpassServer.getAndHandleQuota(getOverpassQuery(bbox), handler)
     }
 
-    /** @return overpass query string to get streets without cycleway info not near paths for
+    /** returns overpass query string to get streets without cycleway info not near paths for
      * bicycles.
      */
     private fun getOverpassQuery(bbox: BoundingBox): String {
@@ -77,9 +75,9 @@ class AddCycleway(private val overpassServer: OverpassMapDataDao) : OsmElementQu
             // not any explicitly tagged as no bicycles
             "[bicycle != no]" +
             "[access !~ \"^private|no$\"]" +
-            // some roads may be father than MIN_DIST_TO_CYCLEWAYS from cycleways,
-            // not tagged cycleway=separate/sidepath but may have hint that there is
-            // a separately tagged cycleway
+            // some roads may be farther than minDistToCycleways from cycleways, not tagged with
+            // cycleway=separate/sidepath but may have a hint that there is a separately tagged
+            // cycleway
             "[bicycle != use_sidepath][\"bicycle:backward\" != use_sidepath]" +
             "[\"bicycle:forward\" != use_sidepath]" +
             " -> .streets;" +
@@ -99,34 +97,20 @@ class AddCycleway(private val overpassServer: OverpassMapDataDao) : OsmElementQu
 
     override fun createForm() = AddCyclewayForm()
 
-    override fun applyAnswerTo(answer: Bundle, changes: StringMapChangesBuilder) {
-        val right = answer.getString(AddCyclewayForm.CYCLEWAY_RIGHT)
-        val left = answer.getString(AddCyclewayForm.CYCLEWAY_LEFT)
-
-        val cyclewayRight = if (right != null) Cycleway.valueOf(right) else null
-        val cyclewayLeft = if (left != null) Cycleway.valueOf(left) else null
-
-        val cyclewayRightDir = answer.getInt(AddCyclewayForm.CYCLEWAY_RIGHT_DIR)
-        val cyclewayLeftDir = answer.getInt(AddCyclewayForm.CYCLEWAY_LEFT_DIR)
-
-        val bothSidesAreSame = (cyclewayLeft == cyclewayRight && cyclewayLeft != null
-                && cyclewayRightDir == 0 && cyclewayLeftDir == 0)
-
-        if (bothSidesAreSame) {
-            applyCyclewayAnswerTo(cyclewayLeft!!, Side.BOTH, 0, changes)
-        } else {
-            if (cyclewayLeft != null) {
-                applyCyclewayAnswerTo(cyclewayLeft, Side.LEFT, cyclewayLeftDir, changes)
+    override fun applyAnswerTo(answer: CyclewayAnswer, changes: StringMapChangesBuilder) {
+        answer.apply {
+            if (left == right) {
+                left?.let { applyCyclewayAnswerTo(it.cycleway, Side.BOTH, 0, changes) }
+            } else {
+                left?.let { applyCyclewayAnswerTo(it.cycleway, Side.LEFT, it.dirInOneway, changes) }
+                right?.let { applyCyclewayAnswerTo(it.cycleway, Side.RIGHT, it.dirInOneway, changes) }
             }
-            if (cyclewayRight != null) {
-                applyCyclewayAnswerTo(cyclewayRight, Side.RIGHT, cyclewayRightDir, changes)
+
+            applySidewalkAnswerTo(left?.cycleway, right?.cycleway, changes)
+
+            if (isOnewayNotForCyclists) {
+                changes.addOrModify("oneway:bicycle", "no")
             }
-        }
-
-        applySidewalkAnswerTo(cyclewayLeft, cyclewayRight, changes)
-
-        if (answer.getBoolean(AddCyclewayForm.IS_ONEWAY_NOT_FOR_CYCLISTS)) {
-            changes.addOrModify("oneway:bicycle", "no")
         }
     }
 

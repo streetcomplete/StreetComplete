@@ -1,5 +1,8 @@
 package de.westnordost.streetcomplete.data.osmnotes;
 
+import org.junit.Before;
+import org.junit.Test;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -11,17 +14,18 @@ import de.westnordost.osmapi.notes.Note;
 import de.westnordost.osmapi.notes.NoteComment;
 import de.westnordost.osmapi.user.User;
 
+import static org.junit.Assert.*;
+
 public class NoteDaoTest extends ApplicationDbTestCase
 {
 	private NoteDao dao;
 
-	@Override public void setUp() throws Exception
+	@Before public void createDao()
 	{
-		super.setUp();
 		dao = new NoteDao(dbHelper, serializer);
 	}
 
-	public void testPutGetNoClosedDate()
+	@Test public void putGetNoClosedDate()
 	{
 		Note note = createNote();
 
@@ -30,7 +34,7 @@ public class NoteDaoTest extends ApplicationDbTestCase
 		checkEqual(note, dbNote);
 	}
 
-	public void testPutAll()
+	@Test public void putAll()
 	{
 		Collection<Note> notes = new ArrayList<>();
 		Note n1 = createNote();
@@ -45,7 +49,7 @@ public class NoteDaoTest extends ApplicationDbTestCase
 		assertNotNull(dao.get(2));
 	}
 
-	public void testPutReplace()
+	@Test public void putReplace()
 	{
 		Note note = createNote();
 		dao.put(note);
@@ -56,7 +60,7 @@ public class NoteDaoTest extends ApplicationDbTestCase
 		checkEqual(note, dbNote);
 	}
 
-	public void testPutGetWithClosedDate()
+	@Test public void putGetWithClosedDate()
 	{
 		Note note = createNote();
 		note.dateClosed = new Date(6000);
@@ -66,7 +70,7 @@ public class NoteDaoTest extends ApplicationDbTestCase
 		checkEqual(note, dbNote);
 	}
 
-	public void testDeleteUnreferenced()
+	@Test public void deleteUnreferenced()
 	{
 		Note note = createNote();
 		dao.put(note);
@@ -78,7 +82,7 @@ public class NoteDaoTest extends ApplicationDbTestCase
 		assertEquals(0,dao.deleteUnreferenced());
 	}
 
-	public void testDelete()
+	@Test public void delete()
 	{
 		Note note = createNote();
 		assertFalse(dao.delete(note.id));

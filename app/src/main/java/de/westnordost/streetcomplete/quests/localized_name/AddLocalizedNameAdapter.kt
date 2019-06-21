@@ -3,8 +3,8 @@ package de.westnordost.streetcomplete.quests.localized_name
 import android.content.Context
 import android.graphics.Typeface
 import android.os.AsyncTask
-import android.support.v7.widget.PopupMenu
-import android.support.v7.widget.RecyclerView
+import androidx.appcompat.widget.PopupMenu
+import androidx.recyclerview.widget.RecyclerView
 import android.text.Editable
 import android.view.LayoutInflater
 import android.view.View
@@ -20,6 +20,7 @@ import de.westnordost.streetcomplete.data.meta.AbbreviationsByLocale
 import de.westnordost.streetcomplete.util.DefaultTextWatcher
 
 import android.view.Menu.NONE
+import de.westnordost.streetcomplete.view.AutoCorrectAbbreviationsEditText
 
 /** Carries the data language code + name in that language  */
 data class LocalizedName(var languageCode: String, var name: String)
@@ -280,7 +281,7 @@ class AddLocalizedNameAdapter(
         private fun updateNameSuggestions() {
             val localizedNameSuggestionsMap = getLocalizedNameSuggestionsByLanguageCode(localizedName.languageCode)
 
-            val nameInputNotEmpty = autoCorrectInput.text.toString().isNotEmpty()
+            val nameInputNotEmpty = autoCorrectInput.text.toString().trim().isNotEmpty()
             val hasNoNameSuggestions = localizedNameSuggestionsMap.isEmpty()
             buttonNameSuggestions.visibility =
                 if (hasNoNameSuggestions || nameInputNotEmpty) View.GONE else View.VISIBLE

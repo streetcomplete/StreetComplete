@@ -3,5 +3,5 @@ isLeftHandTraffic: true
 isLivingStreetKnown: true
 mobileCountryCode: 650
 officialLanguages: [en, ny]
-orchardProduces: [tea, banana, guava, mango, mangosteen, tomato, coffee, tung_nut, pepper, chilli_pepper,
-  sweet_pepper, sisal, nutmeg, vanilla]
+orchardProduces: [guava, mango, mangosteen, tomato, banana, pineapple, orange, avocado, papaya, tea,
+  lemon, lime, peach, coffee, tung_nut, apple, pepper, chilli_pepper, sweet_pepper]

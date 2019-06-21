@@ -1,5 +1,6 @@
 # Do not edit. Source files are in /res/country_metadata
 mobileCountryCode: 710
 officialLanguages: [es]
-orchardProduces: [coffee, orange, cacao, agave, palm_oil, pineapple, coconut, tomato, banana]
+orchardProduces: [coffee, orange, banana, tomato, pineapple, chilli_pepper, sweet_pepper, coconut,
+  cacao, agave]
 popularSports: [basketball, baseball, soccer]

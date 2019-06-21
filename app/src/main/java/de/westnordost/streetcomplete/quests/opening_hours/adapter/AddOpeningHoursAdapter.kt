@@ -1,12 +1,13 @@
 package de.westnordost.streetcomplete.quests.opening_hours.adapter
 
 import android.content.Context
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.view.updateLayoutParams
 
 import java.text.DateFormatSymbols
 import java.util.Locale
@@ -22,7 +23,6 @@ import de.westnordost.streetcomplete.quests.opening_hours.model.Weekdays
 import de.westnordost.streetcomplete.quests.opening_hours.WeekdaysPickerDialog
 import de.westnordost.streetcomplete.view.dialogs.RangePickedCallback
 import de.westnordost.streetcomplete.view.dialogs.RangePickerDialog
-import de.westnordost.streetcomplete.ktx.updateLayoutParams
 
 data class OpeningMonthsRow(var months: CircularSection = CircularSection(0, MAX_MONTH_INDEX)) {
 

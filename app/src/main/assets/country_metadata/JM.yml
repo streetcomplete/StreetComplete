@@ -2,5 +2,5 @@
 isLeftHandTraffic: true
 mobileCountryCode: 338
 officialLanguages: [en, jam]
-orchardProduces: [coconut, coffee, banana, orange, cacao, grapefruit, tomato, lemon, lime, chilli_pepper,
-  sweet_pepper, pineapple, sisal, guava, mango, mangosteen, papaya, avocado]
+orchardProduces: [coconut, banana, grapefruit, tomato, pineapple, lemon, lime, chilli_pepper, sweet_pepper,
+  papaya, coffee, orange, guava, mango, mangosteen, avocado, cacao, sisal]

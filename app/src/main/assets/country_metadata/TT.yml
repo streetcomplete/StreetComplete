@@ -2,7 +2,7 @@
 isLeftHandTraffic: true
 mobileCountryCode: 374
 officialLanguages: [en]
-orchardProduces: [cacao, coconut, banana, orange, pineapple, nutmeg, lemon, lime, coffee, chilli_pepper,
-  sweet_pepper, papaya, tomato, grapefruit, avocado, guava, mango, mangosteen]
+orchardProduces: [coconut, banana, lemon, lime, orange, tomato, pineapple, grapefruit, chilli_pepper,
+  sweet_pepper, papaya, guava, mango, mangosteen, avocado, nutmeg, cacao, coffee]
 popularReligions: [christian, hindu]
 popularSports: [cricket]

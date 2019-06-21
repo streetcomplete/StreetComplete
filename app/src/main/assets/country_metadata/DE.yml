@@ -4,7 +4,8 @@ isLivingStreetKnown: true
 isSlowZoneKnown: true
 mobileCountryCode: 262
 officialLanguages: [de]
-orchardProduces: [grape, apple, hop, strawberry, walnut, plum, cherry, blueberry, pear, raspberry,
-  tomato, chilli_pepper, sweet_pepper, peach, apricot]
+orchardProduces: [grape, apple, strawberry, tomato, hop, plum, pear, walnut, cherry, blueberry, chilli_pepper,
+  sweet_pepper, raspberry, peach, apricot]
+popularReligions: [christian, muslim, jewish]
 popularSports: [soccer, tennis, equestrian]
 regularShoppingDays: 5

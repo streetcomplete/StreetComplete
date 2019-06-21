@@ -1,0 +1,5 @@
+Ndihmoni për të përmirësuar OpenStreetMap me StreetComplete!
+
+Kjo aplikacion gjen të dhëna jo të plota në afërsi dhe e shfaq atë në një hartë me shenjues. Secili prej tyre është i zgjidhshëm duke iu përgjigjur një pyetjeje të thjeshtë për të plotësuar informacionin në vend.
+
+Informacioni që futni shtohet direkt në OpenStreetMap në emrin tuaj, pa nevojën e përdorimit të një redaktori tjetër.

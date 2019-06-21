@@ -1,15 +1,12 @@
 package de.westnordost.streetcomplete.quests.segregated
 
-import android.os.Bundle
-
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.OsmTaggings
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
-import de.westnordost.streetcomplete.quests.ImageListQuestAnswerFragment
 
-class AddCyclewaySegregation(o: OverpassMapDataDao) : SimpleOverpassQuestType(o) {
+class AddCyclewaySegregation(o: OverpassMapDataDao) : SimpleOverpassQuestType<Boolean>(o) {
 
     override val tagFilters = """
         ways with
@@ -28,7 +25,7 @@ class AddCyclewaySegregation(o: OverpassMapDataDao) : SimpleOverpassQuestType(o)
 
     override fun createForm() = AddCyclewaySegregationForm()
 
-    override fun applyAnswerTo(answer: Bundle, changes: StringMapChangesBuilder) {
-        changes.add("segregated", answer.getStringArrayList(ImageListQuestAnswerFragment.OSM_VALUES)!![0])
+    override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
+        changes.add("segregated", if(answer) "yes" else "no")
     }
 }

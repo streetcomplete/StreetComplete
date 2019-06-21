@@ -1,14 +1,11 @@
 package de.westnordost.streetcomplete.quests.parking_type
 
-import android.os.Bundle
-
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
-import de.westnordost.streetcomplete.quests.ImageListQuestAnswerFragment
 
-class AddParkingType(o: OverpassMapDataDao) : SimpleOverpassQuestType(o) {
+class AddParkingType(o: OverpassMapDataDao) : SimpleOverpassQuestType<String>(o) {
 
     override val tagFilters = "nodes, ways, relations with amenity=parking and !parking"
     override val commitMessage = "Add parking type"
@@ -18,7 +15,7 @@ class AddParkingType(o: OverpassMapDataDao) : SimpleOverpassQuestType(o) {
 
     override fun createForm() = AddParkingTypeForm()
 
-    override fun applyAnswerTo(answer: Bundle, changes: StringMapChangesBuilder) {
-        changes.add("parking", answer.getStringArrayList(ImageListQuestAnswerFragment.OSM_VALUES)!![0])
+    override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {
+        changes.add("parking", answer)
     }
 }

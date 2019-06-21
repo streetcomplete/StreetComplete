@@ -1,13 +1,11 @@
 package de.westnordost.streetcomplete.quests.localized_name
 
-import android.os.Bundle
-
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
 
-class AddBusStopName(o: OverpassMapDataDao) : SimpleOverpassQuestType(o) {
+class AddBusStopName(o: OverpassMapDataDao) : SimpleOverpassQuestType<BusStopNameAnswer>(o) {
 
     override val tagFilters = """
         nodes with
@@ -28,16 +26,18 @@ class AddBusStopName(o: OverpassMapDataDao) : SimpleOverpassQuestType(o) {
 
     override fun createForm() = AddBusStopNameForm()
 
-    override fun applyAnswerTo(answer: Bundle, changes: StringMapChangesBuilder) {
-        if (answer.getBoolean(AddLocalizedNameForm.NO_NAME)) {
-            changes.add("noname", "yes")
-        } else {
-            val nameByLanguage = answer.toNameByLanguage()
-            for ((key, value) in nameByLanguage) {
-                if (key.isEmpty()) {
-                    changes.addOrModify("name", value)
-                } else {
-                    changes.addOrModify("name:$key", value)
+    override fun applyAnswerTo(answer: BusStopNameAnswer, changes: StringMapChangesBuilder) {
+        when(answer) {
+            is NoBusStopName -> {
+                changes.add("noname", "yes")
+            }
+            is BusStopName -> {
+                for ((languageCode, name) in answer.localizedNames) {
+                    if (languageCode.isEmpty()) {
+                        changes.addOrModify("name", name)
+                    } else {
+                        changes.addOrModify("name:$languageCode", name)
+                    }
                 }
             }
         }

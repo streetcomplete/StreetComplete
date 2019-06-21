@@ -2,6 +2,6 @@
 isLeftHandTraffic: true
 mobileCountryCode: 402
 officialLanguages: [dz]
-orchardProduces: [areca_nut, orange, apple, nutmeg, chilli_pepper, sweet_pepper, pear, peach, tomato,
-  plum, guava, mango, mangosteen]
+orchardProduces: [orange, chilli_pepper, sweet_pepper, areca_nut, apple, banana, nutmeg, guava, mango,
+  mangosteen, pear, peach, plum, tomato, walnut]
 popularReligions: [buddhist, hindu]

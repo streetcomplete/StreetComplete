@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.view
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.RelativeLayout
-import de.westnordost.streetcomplete.ktx.postOnPreDraw
+import androidx.core.view.doOnPreDraw
 
 class SlidingRelativeLayout @JvmOverloads constructor(
     context: Context,
@@ -26,7 +26,7 @@ class SlidingRelativeLayout @JvmOverloads constructor(
         if (width != 0 || height != 0) {
             callback()
         } else {
-            postOnPreDraw(callback)
+            doOnPreDraw { callback() }
         }
     }
 }

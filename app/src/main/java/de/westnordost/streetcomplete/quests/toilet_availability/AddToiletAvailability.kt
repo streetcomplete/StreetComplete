@@ -1,14 +1,12 @@
 package de.westnordost.streetcomplete.quests.toilet_availability
 
-import android.os.Bundle
-
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
-class AddToiletAvailability(o: OverpassMapDataDao) : SimpleOverpassQuestType(o) {
+class AddToiletAvailability(o: OverpassMapDataDao) : SimpleOverpassQuestType<Boolean>(o) {
 
     // only for malls, big stores and rest areas because users should not need to go inside a non-public
     // place to solve the quest. (Considering malls and department stores public enough)
@@ -28,8 +26,7 @@ class AddToiletAvailability(o: OverpassMapDataDao) : SimpleOverpassQuestType(o) 
 
     override fun createForm() = YesNoQuestAnswerFragment()
 
-    override fun applyAnswerTo(answer: Bundle, changes: StringMapChangesBuilder) {
-        val yesno = if (answer.getBoolean(YesNoQuestAnswerFragment.ANSWER)) "yes" else "no"
-        changes.add("toilets", yesno)
+    override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
+        changes.add("toilets", if (answer) "yes" else "no")
     }
 }

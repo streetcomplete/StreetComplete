@@ -2,6 +2,6 @@
 additionalStreetsignLanguages: [en]
 mobileCountryCode: 456
 officialLanguages: [km]
-orchardProduces: [banana, rubber, coconut, chilli_pepper, sweet_pepper, orange, guava, mango, mangosteen,
-  pineapple, coffee, pepper, lemon, lime, grapefruit]
+orchardProduces: [banana, coconut, guava, mango, mangosteen, orange, pineapple, rubber, chilli_pepper,
+  sweet_pepper, grapefruit, lemon, lime, pepper, coffee]
 popularReligions: [buddhist, muslim]

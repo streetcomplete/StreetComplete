@@ -3,7 +3,7 @@ additionalStreetsignLanguages: [en]
 isLeftHandTraffic: true
 mobileCountryCode: 520
 officialLanguages: [th]
-orchardProduces: [rubber, palm_oil, guava, mango, mangosteen, coconut, pineapple, coffee, banana, grapefruit,
-  areca_nut, cashew_nut, lemon, lime, orange, tea, tomato, grape]
+orchardProduces: [rubber, guava, mango, mangosteen, pineapple, banana, coconut, grapefruit, papaya,
+  orange, tomato, lemon, lime, grape, tea, areca_nut, coffee, cashew_nut]
 popularReligions: [buddhist, muslim, chinese_folk, taoist]
 popularSports: [tennis, soccer, golf, basketball, badminton, sepak_takraw]

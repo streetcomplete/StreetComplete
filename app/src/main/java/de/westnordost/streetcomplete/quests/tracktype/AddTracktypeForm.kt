@@ -1,10 +1,10 @@
 package de.westnordost.streetcomplete.quests.tracktype
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.ImageListQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
 import de.westnordost.streetcomplete.view.Item
 
-class AddTracktypeForm : ImageListQuestAnswerFragment() {
+class AddTracktypeForm : AImageListQuestAnswerFragment<String, String>() {
 
     override val items = listOf(
         Item("grade1", R.drawable.tracktype_grade1, R.string.quest_tracktype_grade1),
@@ -15,4 +15,8 @@ class AddTracktypeForm : ImageListQuestAnswerFragment() {
     )
 
     override val itemsPerRow = 3
+
+    override fun onClickOk(selectedItems: List<String>) {
+        applyAnswer(selectedItems.single())
+    }
 }

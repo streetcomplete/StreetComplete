@@ -1,14 +1,11 @@
 package de.westnordost.streetcomplete.quests.way_lit
 
-import android.os.Bundle
-
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
-import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
-class AddWayLit(o: OverpassMapDataDao) : SimpleOverpassQuestType(o) {
+class AddWayLit(o: OverpassMapDataDao) : SimpleOverpassQuestType<String>(o) {
 
     /* Using sidewalk as a tell-tale tag for (urban) streets which reached a certain level of
        development. I.e. non-urban streets will usually not even be lit in industrialized
@@ -51,14 +48,8 @@ class AddWayLit(o: OverpassMapDataDao) : SimpleOverpassQuestType(o) {
 
     override fun createForm() = WayLitForm()
 
-    override fun applyAnswerTo(answer: Bundle, changes: StringMapChangesBuilder) {
-        val other = answer.getString(WayLitForm.OTHER_ANSWER)
-        if (other != null) {
-            changes.add("lit", other)
-        } else {
-            val yesno = if (answer.getBoolean(YesNoQuestAnswerFragment.ANSWER)) "yes" else "no"
-            changes.add("lit", yesno)
-        }
+    override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {
+        changes.add("lit", answer)
     }
 
     companion object {

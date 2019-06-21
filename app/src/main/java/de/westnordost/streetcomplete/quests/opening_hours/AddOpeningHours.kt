@@ -1,13 +1,11 @@
 package de.westnordost.streetcomplete.quests.opening_hours
 
-import android.os.Bundle
-
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 
-class AddOpeningHours (o: OverpassMapDataDao) : SimpleOverpassQuestType(o) {
+class AddOpeningHours (o: OverpassMapDataDao) : SimpleOverpassQuestType<OpeningHoursAnswer>(o) {
 
     /* See also AddWheelchairAccessBusiness and AddPlaceName, which has a similar list and is/should
        be ordered in the same way for better overview */
@@ -35,12 +33,14 @@ class AddOpeningHours (o: OverpassMapDataDao) : SimpleOverpassQuestType(o) {
                 // and tourism=information, see above
             ),
             "leisure" to arrayOf(
-                "sports_centre", "fitness_centre", "dance", "golf_course", "water_park",
+                // not sports_centre because these are often sports clubs which have no walk-in
+                // opening hours but training times
+                "fitness_centre", "dance", "golf_course", "water_park",
                 "miniature_golf", "bowling_alley", "horse_riding",  "amusement_arcade",
                 "adult_gaming_centre", "tanning_salon"
             ),
             "office" to arrayOf(
-                "insurance", "government", "estate_agent", "travel_agent"
+                "insurance", "government", "estate_agent", "travel_agent", "religion"
             )
         ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString(" or ") +
         " )" +
@@ -54,12 +54,15 @@ class AddOpeningHours (o: OverpassMapDataDao) : SimpleOverpassQuestType(o) {
 
     override fun createForm() = AddOpeningHoursForm()
 
-    override fun applyAnswerTo(answer: Bundle, changes: StringMapChangesBuilder) {
-        val openingHours = answer.getString(AddOpeningHoursForm.OPENING_HOURS)
-        if (answer.getBoolean(AddOpeningHoursForm.NO_SIGN)) {
-            changes.add("opening_hours:signed", "no")
-        } else {
-            changes.add("opening_hours", openingHours!!)
+    override fun applyAnswerTo(answer: OpeningHoursAnswer, changes: StringMapChangesBuilder) {
+        when(answer) {
+            is RegularOpeningHours -> changes.add("opening_hours", answer.times.joinToString(";"))
+            is AlwaysOpen          -> changes.add("opening_hours", "24/7")
+            is NoOpeningHoursSign  -> changes.add("opening_hours:signed", "no")
+            is DescribeOpeningHours -> {
+                val text = answer.text.replace("\"","")
+                changes.add("opening_hours", "\"$text\"")
+            }
         }
     }
 }

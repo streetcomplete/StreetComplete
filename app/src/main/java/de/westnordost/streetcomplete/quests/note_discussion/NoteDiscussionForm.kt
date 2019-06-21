@@ -3,9 +3,9 @@ package de.westnordost.streetcomplete.quests.note_discussion
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
-import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import android.text.format.DateUtils
 import android.view.View
 import android.view.ViewGroup
@@ -28,11 +28,12 @@ import de.westnordost.streetcomplete.util.TextChangedWatcher
 import de.westnordost.streetcomplete.view.ListAdapter
 
 import android.text.format.DateUtils.MINUTE_IN_MILLIS
+import de.westnordost.osmapi.user.User
 import kotlinx.android.synthetic.main.fragment_quest_answer.*
 import kotlinx.android.synthetic.main.quest_buttonpanel_note_discussion.*
 import kotlinx.android.synthetic.main.quest_note_discussion_content.*
 
-class NoteDiscussionForm : AbstractQuestAnswerFragment() {
+class NoteDiscussionForm : AbstractQuestAnswerFragment<NoteAnswer>() {
 
     override val contentLayoutResId = R.layout.quest_note_discussion_content
     override val buttonsResId = R.layout.quest_buttonpanel_note_discussion
@@ -44,7 +45,7 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment() {
     private val attachPhotoFragment get() =
         childFragmentManager.findFragmentById(R.id.attachPhotoFragment) as? AttachPhotoFragment
 
-    private val noteText: String get() = noteInput.text.toString().trim()
+    private val noteText: String get() = noteInput?.text?.toString().orEmpty().trim()
 
     init {
         Injector.instance.applicationComponent.inject(this)
@@ -77,20 +78,21 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment() {
         val discussionView = layoutInflater.inflate(R.layout.quest_note_discussion_items, scrollViewChild, false) as RecyclerView
 
         discussionView.isNestedScrollingEnabled = false
-        discussionView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        discussionView.layoutManager = LinearLayoutManager(
+            context,
+            RecyclerView.VERTICAL,
+            false
+        )
         discussionView.adapter = NoteCommentListAdapter(comments)
 
         scrollViewChild.addView(discussionView, 0)
     }
 
     private fun onClickOk() {
-        val answer = Bundle()
-        answer.putString(TEXT, noteText)
-        attachPhotoFragment?.let { answer.putStringArrayList(IMAGE_PATHS, ArrayList(it.imagePaths)) }
-        applyAnswer(answer)
+        applyAnswer(NoteAnswer(noteText, attachPhotoFragment?.imagePaths))
     }
 
-    public override fun onDiscard() {
+    override fun onDiscard() {
         attachPhotoFragment?.deleteImages()
     }
 
@@ -143,13 +145,7 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment() {
                 commentText.text = comment.text
                 commentInfo.text = getString(R.string.quest_noteDiscussion_comment2, userName, dateDescription)
 
-                var bitmap = anonAvatar
-                if (comment.user != null) {
-                    val avatarFile = File(OsmModule.getAvatarsCacheDirectory(context!!).toString() + File.separator + comment.user.id)
-                    if (avatarFile.exists()) {
-                        bitmap = BitmapFactory.decodeFile(avatarFile.path)
-                    }
-                }
+                val bitmap = comment.user?.avatar ?: anonAvatar
                 val avatarDrawable = RoundedBitmapDrawableFactory.create(resources, bitmap)
                 avatarDrawable.isCircular = true
                 commentAvatar.setImageDrawable(avatarDrawable)
@@ -158,16 +154,16 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment() {
             }
         }
 
+        private val User.avatar: Bitmap? get() {
+            val file = File(OsmModule.getAvatarsCacheDirectory(context!!).toString() + File.separator + id)
+            return if (file.exists()) BitmapFactory.decodeFile(file.path) else null
+        }
+
         private val NoteComment.Action.actionResourceId get() = when (this) {
             NoteComment.Action.CLOSED -> R.string.quest_noteDiscussion_closed2
             NoteComment.Action.REOPENED -> R.string.quest_noteDiscussion_reopen2
             NoteComment.Action.HIDDEN -> R.string.quest_noteDiscussion_hide2
             else -> 0
         }
-    }
-
-    companion object {
-        const val TEXT = "text"
-        const val IMAGE_PATHS = "image_paths"
     }
 }

@@ -3,6 +3,6 @@ additionalStreetsignLanguages: [en]
 firstDayOfWorkweek: Su
 mobileCountryCode: 416
 officialLanguages: [ar]
-orchardProduces: [olive, tomato, grape, peach, apple, date, chilli_pepper, sweet_pepper, lemon, lime,
-  orange, apricot, banana, plum, grapefruit, pear, almond]
+orchardProduces: [tomato, olive, chilli_pepper, sweet_pepper, peach, grape, apple, lemon, lime, banana,
+  orange, date, apricot, grapefruit, plum, strawberry, pear]
 popularReligions: [muslim]

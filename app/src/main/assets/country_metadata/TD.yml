@@ -1,5 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
 mobileCountryCode: 622
 officialLanguages: [fr, ar]
-orchardProduces: [date, guava, mango, mangosteen]
+orchardProduces: [guava, mango, mangosteen, date]
 popularReligions: [muslim]

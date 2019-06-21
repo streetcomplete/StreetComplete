@@ -1,12 +1,12 @@
 package de.westnordost.streetcomplete.quests
 
 import android.content.ContextWrapper
-import android.support.annotation.AnyThread
+import androidx.annotation.AnyThread
 import android.content.Context
 import android.content.res.Configuration
 import android.content.res.Resources
 import android.os.Bundle
-import android.support.v7.app.AlertDialog
+import androidx.appcompat.app.AlertDialog
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.View
@@ -15,7 +15,6 @@ import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.PopupMenu
-import android.widget.Toast
 
 import java.lang.ref.WeakReference
 import java.util.Locale
@@ -23,6 +22,7 @@ import java.util.Locale
 import javax.inject.Inject
 
 import de.westnordost.osmapi.map.data.OsmElement
+import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.QuestGroup
@@ -32,12 +32,14 @@ import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.osm.ElementGeometry
 import kotlinx.android.synthetic.main.fragment_quest_answer.*
+import java.util.concurrent.FutureTask
 
 /** Abstract base class for any dialog with which the user answers a specific quest(ion)  */
-abstract class AbstractQuestAnswerFragment : AbstractBottomSheetFragment() {
+abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment() {
 
-    @Inject internal lateinit var countryInfos: CountryInfos
-    @Inject internal lateinit var questTypeRegistry: QuestTypeRegistry
+    private val countryInfos: CountryInfos
+    private val questTypeRegistry: QuestTypeRegistry
+    private val featureDictionaryFuture: FutureTask<FeatureDictionary>
 
     private val questAnswerComponent = QuestAnswerComponent()
 
@@ -46,7 +48,7 @@ abstract class AbstractQuestAnswerFragment : AbstractBottomSheetFragment() {
     private lateinit var otherAnswersButton: Button
 
     protected lateinit var elementGeometry: ElementGeometry private set
-    private lateinit var questType: QuestType
+    private lateinit var questType: QuestType<T>
     private var initialMapRotation = 0f
     private var initialMapTilt = 0f
     protected var osmElement: OsmElement? = null
@@ -86,7 +88,11 @@ abstract class AbstractQuestAnswerFragment : AbstractBottomSheetFragment() {
     open val contentPadding = true
 
     init {
-        Injector.instance.applicationComponent.inject(this)
+        val fields = InjectedFields()
+        Injector.instance.applicationComponent.inject(fields)
+        countryInfos = fields.countryInfos
+        questTypeRegistry = fields.questTypeRegistry
+        featureDictionaryFuture = fields.featureDictionaryFuture
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -95,7 +101,7 @@ abstract class AbstractQuestAnswerFragment : AbstractBottomSheetFragment() {
         questAnswerComponent.onCreate(arguments)
         osmElement = arguments!!.getSerializable(ARG_ELEMENT) as OsmElement?
         elementGeometry = arguments!!.getSerializable(ARG_GEOMETRY) as ElementGeometry
-        questType = questTypeRegistry.getByName(arguments!!.getString(ARG_QUESTTYPE))
+        questType = questTypeRegistry.getByName(arguments!!.getString(ARG_QUESTTYPE)) as QuestType<T>
         initialMapRotation = arguments!!.getFloat(ARG_MAP_ROTATION)
         initialMapTilt = arguments!!.getFloat(ARG_MAP_TILT)
         _countryInfo = null // reset lazy field
@@ -116,7 +122,15 @@ abstract class AbstractQuestAnswerFragment : AbstractBottomSheetFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        titleLabel.text = QuestUtil.getHtmlTitle(resources, questType, osmElement)
+        titleLabel.text = resources.getHtmlQuestTitle(questType, osmElement, featureDictionaryFuture)
+
+        val levelLabelText = getLevelLabelText()
+        if (levelLabelText != null) {
+            levelLabel.visibility = View.VISIBLE
+            levelLabel.text = levelLabelText
+        } else {
+            levelLabel.visibility = View.GONE
+        }
 
         // no content? -> hide the content container
         if (content.childCount == 0) {
@@ -149,6 +163,21 @@ abstract class AbstractQuestAnswerFragment : AbstractBottomSheetFragment() {
         }
     }
 
+    private fun getLevelLabelText(): String? {
+        val tags = osmElement?.tags ?: return null
+        /* prefer addr:floor etc. over level as level is rather an index than how the floor is
+           denominated in the building and thus may (sometimes) not coincide with it. E.g.
+           addr:floor may be "M" while level is "2" */
+        val level = tags["addr:floor"] ?: tags["level:ref"] ?: tags["level"]
+        if (level != null) {
+            return resources.getString(R.string.on_level, level)
+        }
+        val tunnel = tags["tunnel"]
+        if(tunnel != null && tunnel == "yes" || tags["location"] == "underground") {
+            return resources.getString(R.string.underground)
+        }
+        return null
+    }
 
     override fun onStart() {
         super.onStart()
@@ -196,22 +225,14 @@ abstract class AbstractQuestAnswerFragment : AbstractBottomSheetFragment() {
             .setMessage(R.string.quest_leave_new_note_description)
             .setNegativeButton(R.string.quest_leave_new_note_no) { _, _ -> questAnswerComponent.onSkippedQuest() }
             .setPositiveButton(R.string.quest_leave_new_note_yes) { _, _ ->
-                val questTitle = QuestUtil.getTitle(englishResources, questType, osmElement)
+                val questTitle = englishResources.getQuestTitle(questType, osmElement, featureDictionaryFuture)
                 questAnswerComponent.onComposeNote(questTitle)
             }
             .show()
     }
 
-    protected fun applyAnswer(data: Bundle) {
-        if (data.isEmpty) {
-            Toast.makeText(activity, R.string.no_changes, Toast.LENGTH_SHORT).show()
-            return
-        }
-        // in case there is a bug that a quest fills the bundle with nulls -> report
-        for (key in data.keySet()) {
-            if (data.get(key) == null) throw NullPointerException("Key $key is null")
-        }
-        questAnswerComponent.onAnswerQuest(data)
+    protected fun applyAnswer(data: T) {
+        questAnswerComponent.onAnswerQuest(data as Any)
     }
 
     protected fun skipQuest() {
@@ -239,6 +260,12 @@ abstract class AbstractQuestAnswerFragment : AbstractBottomSheetFragment() {
 
     @AnyThread open fun onMapOrientation(rotation: Float, tilt: Float) {
         // default empty implementation
+    }
+
+    internal class InjectedFields {
+        @Inject internal lateinit var countryInfos: CountryInfos
+        @Inject internal lateinit var questTypeRegistry: QuestTypeRegistry
+        @Inject internal lateinit var featureDictionaryFuture: FutureTask<FeatureDictionary>
     }
 
     companion object {

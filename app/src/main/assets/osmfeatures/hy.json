@@ -1,0 +1,46 @@
+{
+    "presets": {
+        "area": {
+            "name": "Տիրույթ"
+        },
+        "aeroway/helipad": {
+            "name": "Ուղաթիռային հրապարակ"
+        },
+        "highway/steps": {
+            "name": "Աստիճաններ"
+        },
+        "amenity/cinema": {
+            "name": "Կինոթատրոն"
+        },
+        "amenity/bank": {
+            "name": "Բանկ"
+        },
+        "amenity/cafe": {
+            "name": "Սրճարան"
+        },
+        "amenity/fast_food": {
+            "name": "Արագ սնունդ"
+        },
+        "relation": {
+            "name": "Յարաբերութիւն"
+        },
+        "amenity/bar": {
+            "name": "Բար"
+        },
+        "barrier/gate": {
+            "name": "Դարպաս"
+        },
+        "aeroway/aerodrome": {
+            "name": "Օդանավակայան"
+        },
+        "amenity/bicycle_rental": {
+            "name": "Հեծանիվի վարձակալություն"
+        },
+        "amenity/bicycle_parking": {
+            "name": "Հեծանվային կայանատեղի"
+        },
+        "barrier/wall": {
+            "name": "Պատ"
+        }
+    }
+}

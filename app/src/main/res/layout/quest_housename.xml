@@ -19,10 +19,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
-        android:background="#fff"
+        android:background="@drawable/background_white_corners"
         >
 
-        <android.support.v7.widget.AppCompatEditText
+        <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/houseNameInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
