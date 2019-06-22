@@ -14,7 +14,7 @@ class AddMaxWeight(private val overpassServer: OverpassMapDataDao) : OsmElementQ
 
     private val wayFilter by lazy { FiltersParser().parse("""
         ways with highway ~ trunk|primary|secondary|tertiary|unclassified|residential|living_street|service
-         and !maxweight
+         and !maxweight and maxweight:signed!=no
          and bridge ~ yes|viaduct|movable|covered|tresle|cantilever
          and motor_vehicle !~ private|no
          and vehicle !~ private|no
