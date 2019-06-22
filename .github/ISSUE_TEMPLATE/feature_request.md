@@ -1,7 +1,6 @@
 ---
 name: Feature request
 about: Suggest an idea for this project
-labels: enhancement
 ---
 <!--
 If you are suggesting a new quest, please choose the "Quest suggestion" template.
