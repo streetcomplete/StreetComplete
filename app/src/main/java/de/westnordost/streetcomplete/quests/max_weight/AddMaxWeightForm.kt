@@ -61,7 +61,7 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
         val measurementUnits = countryInfo.measurementSystem
         weightUnitSelect?.visibility = if (measurementUnits.size == 1) View.GONE else View.VISIBLE
         weightUnitSelect?.adapter = ArrayAdapter(context!!, R.layout.spinner_item_centered, getSpinnerItems(measurementUnits))
-        weightUnitSelect?.setSelection(0)
+        weightUnitSelect?.setSelection(measurementUnits.size - 1) // prefer metric
         weightUnitSelect?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parentView: AdapterView<*>, selectedItemView: View?, position: Int, id: Long) {
                 val heightUnit = if (weightUnitSelect?.selectedItem == "t") METRIC else IMPERIAL
