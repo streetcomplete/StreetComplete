@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.quests.max_weight
 
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
-import android.text.InputFilter
 import android.text.method.DigitsKeyListener
 import android.view.LayoutInflater
 import android.view.View
