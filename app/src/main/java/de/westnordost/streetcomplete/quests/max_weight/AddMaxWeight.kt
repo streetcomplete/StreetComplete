@@ -13,9 +13,9 @@ import de.westnordost.streetcomplete.data.osm.tql.OverpassQLUtil
 class AddMaxWeight(private val overpassServer: OverpassMapDataDao) : OsmElementQuestType<MaxWeightAnswer> {
 
     private val wayFilter by lazy { FiltersParser().parse("""
-        ways with highway ~ trunk|primary|secondary|tertiary|unclassified|residential|living_street|service
+        ways with highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|living_street|service
          and !maxweight and maxweight:signed!=no
-         and bridge ~ yes|viaduct|movable|covered|tresle|cantilever
+         and bridge != no
          and motor_vehicle !~ private|no
          and vehicle !~ private|no
          and (access !~ private|no or (foot and foot !~ private|no))
