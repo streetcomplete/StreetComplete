@@ -31,8 +31,8 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
     private var poundInput: EditText? = null
     private var weightUnitSelect: Spinner? = null
 
-    private var meterInputSign: View? = null
-    private var feetInputSign: View? = null
+    private var tonInputSign: View? = null
+    private var poundInputSign: View? = null
 
     override fun isFormComplete() = getWeightFromInput() != null
 
@@ -48,17 +48,17 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
     private fun setMaxWeightSignLayout(resourceId: Int, unit: Measurement) {
         val contentView = setContentView(resourceId)
 
-        tonInput = contentView.findViewById(R.id.meterInput)
-        poundInput = contentView.findViewById(R.id.poundInput)
+        tonInput = contentView.findViewById(R.id.metricInput)
+        poundInput = contentView.findViewById(R.id.imperialInput)
 
         val onTextChangedListener = TextChangedWatcher { checkIsFormComplete() }
         tonInput?.addTextChangedListener(onTextChangedListener)
         poundInput?.addTextChangedListener(onTextChangedListener)
 
-        meterInputSign = contentView.findViewById(R.id.meterInputSign)
-        feetInputSign = contentView.findViewById(R.id.feetInputSign)
+        tonInputSign = contentView.findViewById(R.id.metricInputSign)
+        poundInputSign = contentView.findViewById(R.id.imperialInputSign)
 
-        weightUnitSelect = contentView.findViewById(R.id.heightUnitSelect)
+        weightUnitSelect = contentView.findViewById(R.id.unitSelect)
         val measurementUnits = countryInfo.measurementSystem
         weightUnitSelect?.visibility = if (measurementUnits.size == 1) View.GONE else View.VISIBLE
         weightUnitSelect?.adapter = ArrayAdapter(context!!, R.layout.spinner_item_centered, getSpinnerItems(measurementUnits))
@@ -90,8 +90,8 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
         val isMetric = unit == METRIC
         val isImperial = unit == IMPERIAL
 
-        meterInputSign?.visibility = if (isMetric) View.VISIBLE else View.GONE
-        feetInputSign?.visibility = if (isImperial) View.VISIBLE else View.GONE
+        tonInputSign?.visibility = if (isMetric) View.VISIBLE else View.GONE
+        poundInputSign?.visibility = if (isImperial) View.VISIBLE else View.GONE
 
         if (isMetric) tonInput?.requestFocus()
         if (isImperial) poundInput?.requestFocus()

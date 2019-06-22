@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <RelativeLayout
-        android:id="@+id/meterInputSign"
+        android:id="@+id/metricInputSign"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
@@ -28,7 +28,7 @@
             tools:ignore="HardcodedText" />
 
         <EditText
-            android:id="@+id/meterInput"
+            android:id="@+id/metricInput"
             android:layout_width="96dp"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -45,8 +45,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/meterInput"
-            android:layout_alignBottom="@+id/meterInput"
+            android:layout_toEndOf="@+id/metricInput"
+            android:layout_alignBottom="@+id/metricInput"
             android:gravity="center"
             android:text="m"
             android:textColor="@color/traffic_black"

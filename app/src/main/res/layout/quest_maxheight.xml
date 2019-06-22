@@ -12,17 +12,17 @@
         android:id="@+id/inputSigns">
 
         <include
-            android:id="@+id/meterInputSign"
+            android:id="@+id/metricInputSign"
             layout="@layout/quest_maxheight_meter"/>
 
         <include
-            android:id="@+id/feetInputSign"
+            android:id="@+id/imperialInputSign"
             layout="@layout/quest_maxheight_feet"/>
 
     </RelativeLayout>
 
     <Spinner
-        android:id="@+id/heightUnitSelect"
+        android:id="@+id/unitSelect"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
