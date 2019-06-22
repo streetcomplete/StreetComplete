@@ -42,4 +42,14 @@
         android:visibility="gone"
         tools:visibility="visible"
         />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TONS"
+        android:textStyle="bold"
+        android:textSize="18dp"
+        android:gravity="center"
+        android:textColor="@color/traffic_black"
+        tools:ignore="HardcodedText"/>
 </LinearLayout>
