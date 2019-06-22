@@ -75,6 +75,15 @@ class SplitWayUpload @Inject constructor(private val osmDao: MapDataDao) {
     /** Returns the elements that have been changed */
     private fun createSplitWays(originalWay: Way, splitIndices: List<Int>): List<Way> {
         val nodesChunks = originalWay.nodeIds.splitIntoChunks(splitIndices)
+        /* Handle circular ways specially: If you split at a circular way at two nodes, you just
+           want to split it at these points, not also at the former endpoint. So if the last node is
+           the same first node, join the last and the first way chunk. (copied from JOSM) */
+        if (nodesChunks.size > 1 && nodesChunks.first().first() == nodesChunks.last().last()) {
+            val lastChunk = nodesChunks.removeAt(nodesChunks.lastIndex)
+            lastChunk.removeAt(lastChunk.lastIndex)
+            nodesChunks.first().addAll(0, lastChunk)
+        }
+
         val indexOfChunkToKeep = nodesChunks.indexOfMaxBy { it.size }
         val tags = originalWay.tags?.toMap()
         var newWayId = -1L
@@ -208,7 +217,7 @@ private inline fun <T, R : Comparable<R>> Iterable<T>.indexOfMaxBy(selector: (T)
 }
 
 /** returns a copy of the list split at the given indices with each chunk sharing each the first and last element */
-private fun <E> List<E>.splitIntoChunks(indices: List<Int>): List<MutableList<E>> {
+private fun <E> List<E>.splitIntoChunks(indices: List<Int>): MutableList<MutableList<E>> {
     val result = mutableListOf<MutableList<E>>()
     var lastIndex = 0
     for (index in indices) {

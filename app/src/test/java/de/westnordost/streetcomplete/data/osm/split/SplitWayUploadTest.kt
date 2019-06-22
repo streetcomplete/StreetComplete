@@ -6,7 +6,7 @@ import de.westnordost.streetcomplete.argumentCaptor
 import de.westnordost.streetcomplete.eq
 import de.westnordost.streetcomplete.on
 import de.westnordost.streetcomplete.util.SphericalEarthMath
-import junit.framework.Assert.*
+import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
 import org.mockito.ArgumentCaptor
@@ -14,32 +14,52 @@ import org.mockito.Mockito
 import org.mockito.Mockito.verify
 
 class SplitWayUploadTest {
-    private lateinit var uploader: SplitWayUpload
-    private lateinit var osmDao: MapDataDao
+    private val uploader: SplitWayUpload
+    private val osmDao: MapDataDao
 
     private val node1 = OsmNode(1, 1, 0.0, 0.0, null)
     private val node2 = OsmNode(2, 1, 0.0, 1.0, null)
     private val node3 = OsmNode(3, 1, 1.0, 1.0, null)
     private val node4 = OsmNode(4, 1, 1.0, 0.0, null)
-    private val way = OsmWay(1,1, mutableListOf(1,2,3,4), null)
+    private var way = OsmWay(1,1, mutableListOf(1,2,3,4), null)
+        set(value) {
+            field = value
+            on(osmDao.getWay(1)).thenReturn(way)
+        }
     private val split = SplitWayAtPosition(way, node2, node3, 0.5)
 
-    @Before fun setUp() {
+    init {
         osmDao = Mockito.mock(MapDataDao::class.java)
+        uploader = SplitWayUpload(osmDao)
+    }
+
+    @Before fun setUp() {
         on(osmDao.getWay(1)).thenReturn(way)
         on(osmDao.getNode(1)).thenReturn(node1)
         on(osmDao.getNode(2)).thenReturn(node2)
         on(osmDao.getNode(3)).thenReturn(node3)
         on(osmDao.getNode(4)).thenReturn(node4)
-
-        uploader = SplitWayUpload(osmDao)
+        on(osmDao.getRelationsForWay(1)).thenReturn(listOf())
     }
 
     @Test(expected = IllegalArgumentException::class)
     fun `throw if less than two split positions on closed way`() {
-        val way = OsmWay(1, 1, mutableListOf(1,2,3,1), null)
-        val split = SplitWayAtPosition(way, node1, node2, 0.5)
-        uploader.upload(0, way, listOf(split))
+        way = OsmWay(1, 1, mutableListOf(1,2,3,1), null)
+        uploader.upload(0, way, listOf(SplitWayAtPosition(way, node1, node2, 0.5)))
+    }
+
+    @Test fun `should merge last and first chunk for closed ways`() {
+        way = OsmWay(1,1, mutableListOf(1,2,3,4,1), null)
+        uploader.upload(0, way, listOf(
+            SplitWayAtPosition(way, node2, node3, 0.0),
+            SplitWayAtPosition(way, node3, node4, 0.0)
+        ))
+        val elements = getUploadedElements()
+        assertEquals(2, elements.ways.size)
+        assertTrue(elements.ways.map { it.nodeIds }.containsAll(listOf<List<Long>>(
+            listOf(3,4,1,2),
+            listOf(2,3)
+        )))
     }
 
     @Test(expected = ConflictException::class)
@@ -62,10 +82,8 @@ class SplitWayUploadTest {
 
     @Test(expected = ConflictException::class)
     fun `raise conflict if updated way has split position at its very start`() {
-        val split = SplitWayAtPosition(way, node2, node3, 0.0)
-        val way = OsmWay(1,1, mutableListOf(2,3,4), null)
-        on(osmDao.getWay(1)).thenReturn(way)
-        uploader.upload(0, way, listOf(split))
+        on(osmDao.getWay(1)).thenReturn(wayWithNodes(2,3,4))
+        uploader.upload(0, way, listOf(SplitWayAtPosition(way, node2, node3, 0.0)))
     }
 
     @Test(expected = ConflictException::class)
@@ -111,8 +129,7 @@ class SplitWayUploadTest {
     }
 
     @Test fun `successfully split way with one split position at vertex`() {
-        val split = SplitWayAtPosition(way, node2, node3, 0.0)
-        uploader.upload(0, way, listOf(split))
+        uploader.upload(0, way, listOf(SplitWayAtPosition(way, node2, node3, 0.0)))
 
         val elements = getUploadedElements()
         assertTrue(elements.nodes.isEmpty()) // no nodes were added
@@ -124,8 +141,7 @@ class SplitWayUploadTest {
     }
 
     @Test fun `successfully split way with one split position`() {
-        val split = SplitWayAtPosition(way, node2, node3, 0.5)
-        uploader.upload(0, way, listOf(split))
+        uploader.upload(0, way, listOf(SplitWayAtPosition(way, node2, node3, 0.5)))
 
         val elements = getUploadedElements()
         assertEquals(1, elements.nodes.size)
