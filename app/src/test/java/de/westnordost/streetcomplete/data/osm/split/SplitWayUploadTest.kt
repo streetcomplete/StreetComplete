@@ -52,19 +52,6 @@ class SplitWayUploadTest {
         doSplit(SplitWayAtPosition(way, node1, node2, 0.5))
     }
 
-    @Test fun `should merge last and first chunk for closed ways`() {
-        way = OsmWay(1,1, mutableListOf(1,2,3,4,1), null)
-        val elements = doSplit(
-            SplitWayAtPosition(way, node2, node3, 0.0),
-            SplitWayAtPosition(way, node3, node4, 0.0)
-        )
-        assertEquals(2, elements.ways.size)
-        assertTrue(elements.waysNodeIds.containsAll(listOf<List<Long>>(
-            listOf(3,4,1,2),
-            listOf(2,3)
-        )))
-    }
-
     @Test(expected = ConflictException::class)
     fun `raise conflict if way was deleted`() {
         on(osmDao.getWay(1)).thenReturn(null)
@@ -131,7 +118,20 @@ class SplitWayUploadTest {
         doSplit()
     }
 
-    @Test fun `successfully split way with one split position at vertex`() {
+    @Test fun `merge last and first chunk for closed ways`() {
+        way = OsmWay(1,1, mutableListOf(1,2,3,4,1), null)
+        val elements = doSplit(
+            SplitWayAtPosition(way, node2, node3, 0.0),
+            SplitWayAtPosition(way, node3, node4, 0.0)
+        )
+        assertEquals(2, elements.ways.size)
+        assertTrue(elements.waysNodeIds.containsAll(listOf<List<Long>>(
+            listOf(3,4,1,2),
+            listOf(2,3)
+        )))
+    }
+
+    @Test fun `split way with one split position at vertex`() {
         val elements = doSplit(SplitWayAtPosition(way, node2, node3, 0.0))
         assertTrue(elements.nodes.isEmpty()) // no nodes were added
         assertEquals(2, elements.ways.size)
@@ -141,7 +141,7 @@ class SplitWayUploadTest {
         )))
     }
 
-    @Test fun `successfully split way with one split position`() {
+    @Test fun `split way with one split position`() {
         val elements = doSplit(SplitWayAtPosition(way, node2, node3, 0.5))
         assertEquals(1, elements.nodes.size)
         assertEquals(2, elements.ways.size)
@@ -160,7 +160,7 @@ class SplitWayUploadTest {
         )))
     }
 
-    @Test fun `successfully split way with several split position at vertices`() {
+    @Test fun `split way with several split position at vertices`() {
         // 1   2   3   4
         //     |   |
         val elements = doSplit(
@@ -177,7 +177,7 @@ class SplitWayUploadTest {
         )))
     }
 
-    @Test fun `successfully split way with multiple split positions`() {
+    @Test fun `split way with multiple split positions`() {
         // 1   2   3   4
         //       |   |
         val elements = doSplit(
@@ -194,7 +194,7 @@ class SplitWayUploadTest {
         )))
     }
 
-    @Test fun `successfully split way with multiple split positions, one of which is at vertices`() {
+    @Test fun `split way with multiple split positions, one of which is at vertices`() {
         // 1   2   3   4
         //   | |
         val elements = doSplit(
@@ -211,7 +211,7 @@ class SplitWayUploadTest {
         )))
     }
 
-    @Test fun `successfully split way with multiple unordered split positions between the same nodes`() {
+    @Test fun `split way with multiple unordered split positions between the same nodes`() {
         // 1  2  3  4
         //    ||||
         val elements = doSplit(
@@ -273,6 +273,28 @@ class SplitWayUploadTest {
         )
     }
 
+    @Test fun `insert all way chunks multiple times into relation the way is a member of multiple times`() {
+        on(osmDao.getWay(2)).thenReturn(OsmWay(2, 1, listOf(1,6,1), null))
+        on(osmDao.getWay(3)).thenReturn(OsmWay(3, 1, listOf(4,5,4), null))
+        on(osmDao.getRelationsForWay(1)).thenReturn(listOf(
+            OsmRelation(1,1, membersForWays(listOf(1,2,1,3)), null)
+        ))
+        val elements = doSplit()
+
+        assertEquals(1, elements.relations.size)
+        assertEquals(
+            listOf<List<Long>>(
+                listOf(-1,3,4),
+                listOf(1,2,-1),
+                listOf(1,6,1),
+                listOf(1,2,-1),
+                listOf(-1,3,4),
+                listOf(4,5,4)
+            ),
+            elements.memberNodeIdsByRelationId[1]
+        )
+    }
+
     @Test fun `all way chunks in updated relations have the same role as the original way`() {
         on(osmDao.getRelationsForWay(1)).thenReturn(listOf(
             OsmRelation(1,1, membersForWays(listOf(1), "cool role"), null),
@@ -300,7 +322,7 @@ class SplitWayUploadTest {
         )
     }
 
-    @Test fun `don't mind if a way has been deleted in the updated relation`() {
+    @Test fun `ignore if a way has been deleted when determining way orientation in relation`() {
         /* while determining the orientation of the way in the relation, the neighbouring ways are
            downloaded and analyzed - if they do not exist anymore, this should not lead to a
            nullpointer exception */
@@ -309,11 +331,11 @@ class SplitWayUploadTest {
         on(osmDao.getRelationsForWay(1)).thenReturn(listOf(
             OsmRelation(1,1, membersForWays(listOf(2,1,3)), null)
         ))
-        uploader.upload(0, way, listOf(split))
+        doSplit()
     }
 
     @Test fun `insert way chunks backwards in the updated relation as end of reverse chain`() {
-        // 5 4 | 1 2 3 4  =>  5 4 | 3 4 | 1 2 3
+        // 5 4 | 1 2 3 4  =>  5 4 | -1 3 4 | 1 2 -1
         on(osmDao.getWay(2)).thenReturn(OsmWay(2, 1, listOf(5,4), null))
         on(osmDao.getRelationsForWay(1)).thenReturn(listOf(
             OsmRelation(1,1, membersForWays(listOf(2,1)), null)
@@ -327,8 +349,30 @@ class SplitWayUploadTest {
         )
     }
 
+    @Test fun `ignore non-way relation members when determining way orientation in relation`() {
+        // 5 4 | 1 2 3 4  =>  5 4 | -1 3 4 | 1 2 -1
+        on(osmDao.getWay(2)).thenReturn(OsmWay(2, 1, listOf(5,4), null))
+        on(osmDao.getRelationsForWay(1)).thenReturn(listOf(
+            OsmRelation(1,1, mutableListOf<RelationMember>(
+                OsmRelationMember(2, "", WAY),
+                OsmRelationMember(1, "", NODE),
+                OsmRelationMember(2, "", RELATION),
+                OsmRelationMember(1, "", WAY),
+                OsmRelationMember(1, "", NODE),
+                OsmRelationMember(2, "", RELATION)
+            ), null)
+        ))
+        val elements = doSplit()
+
+        assertEquals(1, elements.relations.size)
+        assertEquals(
+            listOf<List<Long>>(listOf(5,4), listOf(-1,3,4), listOf(1,2,-1)),
+            elements.memberNodeIdsByRelationId[1]
+        )
+    }
+
     @Test fun `insert way chunks forwards in the updated relation as end of chain`() {
-        // 5 1 | 1 2 3 4  =>  5 1 | 1 2 3 | 3 4
+        // 5 1 | 1 2 3 4  =>  5 1 | 1 2 -1 | -1 3 4
         on(osmDao.getWay(2)).thenReturn(OsmWay(2, 1, listOf(5,1), null))
         on(osmDao.getRelationsForWay(1)).thenReturn(listOf(
             OsmRelation(1,1, membersForWays(listOf(2,1)), null)
@@ -343,7 +387,7 @@ class SplitWayUploadTest {
     }
 
     @Test fun `insert way chunks backwards in the updated relation as start of reverse chain`() {
-        // 1 2 3 4 | 5 1  =>  3 4 | 1 2 3 | 5 1
+        // 1 2 3 4 | 5 1  =>  -1 3 4 | 1 2 -1 | 5 1
         on(osmDao.getWay(2)).thenReturn(OsmWay(2, 1, listOf(5,1), null))
         on(osmDao.getRelationsForWay(1)).thenReturn(listOf(
             OsmRelation(1,1, membersForWays(listOf(1,2)), null)
@@ -358,7 +402,7 @@ class SplitWayUploadTest {
     }
 
     @Test fun `insert way chunks forwards in the updated relation as start of chain`() {
-        // 1 2 3 4 | 5 4  =>  1 2 3 | 3 4 | 5 4
+        // 1 2 3 4 | 5 4  =>  1 2 -1 | -1 3 4 | 5 4
         on(osmDao.getWay(2)).thenReturn(OsmWay(2, 1, listOf(5,4), null))
         on(osmDao.getRelationsForWay(1)).thenReturn(listOf(
             OsmRelation(1,1, membersForWays(listOf(1,2)), null)
@@ -372,7 +416,126 @@ class SplitWayUploadTest {
         )
     }
 
-    // TODO test special relation types...
+    @Test fun `update a restriction relation with split from-way and via node`() {
+        `update a restriction-like relation with split-way and via node`("restriction", "via", "from")
+    }
+
+    @Test fun `update a restriction relation with split to-way and via node`() {
+        `update a restriction-like relation with split-way and via node`("restriction", "via", "to")
+    }
+
+    private fun `update a restriction-like relation with split-way and via node`(
+        relationType: String, via: String, role: String) {
+        val otherRole = if (role == "from") "to" else "from"
+        on(osmDao.getWay(2)).thenReturn(OsmWay(2, 1, listOf(4,5), null))
+        on(osmDao.getRelationsForWay(1)).thenReturn(listOf(
+            OsmRelation(1,1, mutableListOf<RelationMember>(
+                OsmRelationMember(1, role, WAY),
+                OsmRelationMember(2, otherRole, WAY),
+                OsmRelationMember(4, via, NODE)
+            ), mapOf("type" to relationType))
+        ))
+        val elements = doSplit()
+
+        val relation = elements.relations.single()
+        assertEquals(3, relation.members.size)
+
+        val relationMember = relation.members[0]!!
+        val newWay = elements.waysById.getValue(relationMember.ref)
+        assertEquals(listOf<Long>(-1,3,4), newWay.nodeIds.toList())
+        assertEquals(role, relationMember.role)
+        assertEquals(WAY, relationMember.type)
+    }
+
+    @Test fun `update a restriction relation with split from-way and via way`() {
+        `update a restriction-like relation with split-way and via way`("restriction", "via", "from")
+    }
+
+    @Test fun `update a restriction relation with split to-way and via way`() {
+        `update a restriction-like relation with split-way and via way`("restriction", "via", "to")
+    }
+
+    private fun `update a restriction-like relation with split-way and via way`(
+        relationType: String, via: String, role: String) {
+        val otherRole = if (role == "from") "to" else "from"
+        on(osmDao.getWay(2)).thenReturn(OsmWay(2, 1, listOf(6,8), null))
+        on(osmDao.getWay(3)).thenReturn(OsmWay(2, 1, listOf(6,5,4), null))
+        on(osmDao.getRelationsForWay(1)).thenReturn(listOf(
+            OsmRelation(1,1, mutableListOf<RelationMember>(
+                OsmRelationMember(1, role, WAY),
+                OsmRelationMember(2, otherRole, WAY),
+                OsmRelationMember(3, via, WAY)
+            ), mapOf("type" to relationType))
+        ))
+        val elements = doSplit()
+
+        val relation = elements.relations.single()
+        assertEquals(3, relation.members.size)
+
+        val fromRelationMember = relation.members[0]!!
+        val fromWay = elements.waysById.getValue(fromRelationMember.ref)
+        assertEquals(listOf<Long>(-1,3,4), fromWay.nodeIds.toList())
+        assertEquals(role, fromRelationMember.role)
+        assertEquals(WAY, fromRelationMember.type)
+    }
+
+    @Test fun `no special treatment of restriction relation if the way has another role`() {
+        on(osmDao.getRelationsForWay(1)).thenReturn(listOf(
+            OsmRelation(1,1, mutableListOf<RelationMember>(
+                OsmRelationMember(1, "another role", WAY),
+                OsmRelationMember(2, "from", WAY),
+                OsmRelationMember(4, "via", NODE),
+                OsmRelationMember(4, "to", WAY)
+            ), mapOf("type" to "restriction"))
+        ))
+        val elements = doSplit()
+
+        val relation = elements.relations.single()
+        assertEquals(5, relation.members.size)
+    }
+
+    @Test fun `no special treatment of restriction relation if there is no via`() {
+        on(osmDao.getRelationsForWay(1)).thenReturn(listOf(
+            OsmRelation(1,1, mutableListOf<RelationMember>(
+                OsmRelationMember(1, "from", WAY),
+                OsmRelationMember(2, "to", WAY)
+            ), mapOf("type" to "restriction"))
+        ))
+        val elements = doSplit()
+
+        val relation = elements.relations.single()
+        assertEquals(3, relation.members.size)
+    }
+
+    @Test fun `no special treatment of restriction relation if from-way does not touch via`() {
+        on(osmDao.getRelationsForWay(1)).thenReturn(listOf(
+            OsmRelation(1,1, mutableListOf<RelationMember>(
+                OsmRelationMember(1, "from", WAY),
+                OsmRelationMember(5, "via", NODE),
+                OsmRelationMember(2, "to", WAY)
+            ), mapOf("type" to "restriction"))
+        ))
+        val elements = doSplit()
+
+        val relation = elements.relations.single()
+        assertEquals(4, relation.members.size)
+    }
+
+    @Test fun `update a destination sign relation with split to-way and intersection node`() {
+        `update a restriction-like relation with split-way and via node`("destination_sign", "intersection", "to")
+    }
+
+    @Test fun `update a destination sign relation with split to-way and sign node`() {
+        `update a restriction-like relation with split-way and via node`("destination_sign", "sign", "to")
+    }
+
+    @Test fun `update a destination sign relation with split from-way and intersection node`() {
+        `update a restriction-like relation with split-way and via node`("destination_sign", "intersection", "from")
+    }
+
+    @Test fun `update a destination sign relation with split from-way and sign node`() {
+        `update a restriction-like relation with split-way and via node`("destination_sign", "sign", "from")
+    }
 
     // TODO test modification aware...?
 
@@ -412,5 +575,3 @@ class SplitWayUploadTest {
             }
     }
 }
-
-

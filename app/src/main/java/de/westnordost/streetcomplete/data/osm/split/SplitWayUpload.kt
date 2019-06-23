@@ -5,6 +5,10 @@ import de.westnordost.osmapi.map.data.*
 import de.westnordost.streetcomplete.util.SphericalEarthMath
 import javax.inject.Inject
 import de.westnordost.osmapi.map.data.Element.Type.*
+import de.westnordost.streetcomplete.ktx.containsAny
+import de.westnordost.streetcomplete.ktx.findNext
+import de.westnordost.streetcomplete.ktx.findPrevious
+import de.westnordost.streetcomplete.ktx.firstAndLast
 
 class SplitWayUpload @Inject constructor(private val osmDao: MapDataDao) {
 
@@ -95,18 +99,19 @@ class SplitWayUpload @Inject constructor(private val osmDao: MapDataDao) {
     }
 
     /** Returns the elements that have been changed */
-    private fun updateRelations(originalWay: Way, newWays: List<Way>) : List<Relation> {
+    private fun updateRelations(originalWay: Way, newWays: List<Way>) : Collection<Relation> {
         val relations = originalWay.fetchParentRelations()
-        val result = mutableListOf<Relation>()
+        val result = mutableSetOf<Relation>()
         for (relation in relations) {
-            val indexOfWayInRelation = relation.members.indexOfFirst { it.type == WAY && it.ref == originalWay.id }
-            if (indexOfWayInRelation == -1) continue
-
-            if (!updateSpecialRelation(relation, indexOfWayInRelation, newWays)) {
-                updateNormalRelation(relation, indexOfWayInRelation, originalWay, newWays)
+            for(i in relation.members.size - 1 downTo 0) {
+                val relationMember = relation.members[i]
+                if (relationMember.type == WAY && relationMember.ref == originalWay.id) {
+                    if (!updateSpecialRelation(relation, i, newWays)) {
+                        updateNormalRelation(relation, i, originalWay, newWays)
+                    }
+                    result.add(relation)
+                }
             }
-
-            result.add(relation)
         }
         return result
     }
@@ -136,8 +141,9 @@ class SplitWayUpload @Inject constructor(private val osmDao: MapDataDao) {
                                      originalWay: Way, newWays: List<Way>) {
         val originalWayRole = relation.members[indexOfWayInRelation].role
         // TODO modification aware shit
-        val newRelationMembers = newWays.map { way -> OsmRelationMember(way.id, originalWayRole, WAY) }.toMutableList()
-        val isOrientedBackwards = originalWay.isOrientedForwardInOrderedRelation(relation) == false
+        val newRelationMembers = newWays.map { way ->
+            OsmRelationMember(way.id, originalWayRole, WAY) }.toMutableList()
+        val isOrientedBackwards = originalWay.isOrientedForwardInOrderedRelation(relation, indexOfWayInRelation) == false
         if (isOrientedBackwards) newRelationMembers.reverse()
 
         relation.members.removeAt(indexOfWayInRelation)
@@ -153,21 +159,16 @@ class SplitWayUpload @Inject constructor(private val osmDao: MapDataDao) {
     private fun Way.fetchParentRelations() = osmDao.getRelationsForWay(id)
 
     /** returns null if the relation is not ordered, false if oriented backwards, true if oriented forward */
-    private fun Way.isOrientedForwardInOrderedRelation(relation: Relation): Boolean? {
-        val wayIdsInRelation = relation.members.filter { it.type == WAY }.map { it.ref }
-        if (wayIdsInRelation.size < 2) return null
-
-        val index = wayIdsInRelation.indexOfFirst { it == id }
-        if (index == -1)
-            throw IllegalArgumentException("Way #$id is not in relation #${relation.id}")
-
-        val wayBefore = osmDao.getWay(wayIdsInRelation.wrapGet(index - 1))
+    private fun Way.isOrientedForwardInOrderedRelation(relation: Relation, indexInRelation: Int): Boolean? {
+        val wayIdBefore = relation.members.findPrevious(indexInRelation) { it.type == WAY }?.ref
+        val wayBefore = wayIdBefore?.let { osmDao.getWay(it) }
         if (wayBefore != null) {
             if (isAfterWayInChain(wayBefore)) return true
             if (isBeforeWayInChain(wayBefore)) return false
         }
 
-        val wayAfter = osmDao.getWay(wayIdsInRelation.wrapGet(index + 1))
+        val wayIdAfter = relation.members.findNext(indexInRelation+1) { it.type == WAY }?.ref
+        val wayAfter = wayIdAfter?.let { osmDao.getWay(it) }
         if (wayAfter != null) {
             if (isBeforeWayInChain(wayAfter)) return true
             if (isAfterWayInChain(wayAfter)) return false
@@ -234,16 +235,9 @@ private fun <E> List<E>.splitIntoChunks(indices: List<Int>): MutableList<Mutable
     return result
 }
 
-/** get that wraps around, e.g. a.get(a.size) == a.get(0) */
-private fun <E> List<E>.wrapGet(index: Int) = get(((index % size) + size) % size)
-
 private fun Way.isClosed() = nodeIds.size >= 3 && nodeIds.first() == nodeIds.last()
 
-private fun <E> List<E>.firstAndLast() = if (size == 1) listOf(first()) else listOf(first(), last())
-
-private fun <E> Collection<E>.containsAny(elements: Collection<E>) = elements.any { contains(it) }
-
-        /** returns whether this way immediately precedes the given way in a chain */
+/** returns whether this way immediately precedes the given way in a chain */
 private fun Way.isBeforeWayInChain(way:Way) =
     nodeIds.last() == way.nodeIds.last() || nodeIds.last() == way.nodeIds.first()
 
