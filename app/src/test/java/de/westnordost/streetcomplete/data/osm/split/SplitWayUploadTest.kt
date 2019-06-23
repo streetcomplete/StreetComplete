@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.data.osm.split
 
 import de.westnordost.osmapi.map.MapDataDao
 import de.westnordost.osmapi.map.data.*
+import de.westnordost.osmapi.map.data.Element.Type.*
 import de.westnordost.streetcomplete.argumentCaptor
 import de.westnordost.streetcomplete.eq
 import de.westnordost.streetcomplete.on
@@ -11,6 +12,7 @@ import org.junit.Before
 import org.junit.Test
 import org.mockito.ArgumentCaptor
 import org.mockito.Mockito
+import org.mockito.Mockito.reset
 import org.mockito.Mockito.verify
 
 class SplitWayUploadTest {
@@ -34,6 +36,8 @@ class SplitWayUploadTest {
     }
 
     @Before fun setUp() {
+        way = OsmWay(1,1, mutableListOf(1,2,3,4), null)
+        reset(osmDao)
         on(osmDao.getWay(1)).thenReturn(way)
         on(osmDao.getNode(1)).thenReturn(node1)
         on(osmDao.getNode(2)).thenReturn(node2)
@@ -45,18 +49,17 @@ class SplitWayUploadTest {
     @Test(expected = IllegalArgumentException::class)
     fun `throw if less than two split positions on closed way`() {
         way = OsmWay(1, 1, mutableListOf(1,2,3,1), null)
-        uploader.upload(0, way, listOf(SplitWayAtPosition(way, node1, node2, 0.5)))
+        doSplit(SplitWayAtPosition(way, node1, node2, 0.5))
     }
 
     @Test fun `should merge last and first chunk for closed ways`() {
         way = OsmWay(1,1, mutableListOf(1,2,3,4,1), null)
-        uploader.upload(0, way, listOf(
+        val elements = doSplit(
             SplitWayAtPosition(way, node2, node3, 0.0),
             SplitWayAtPosition(way, node3, node4, 0.0)
-        ))
-        val elements = getUploadedElements()
+        )
         assertEquals(2, elements.ways.size)
-        assertTrue(elements.ways.map { it.nodeIds }.containsAll(listOf<List<Long>>(
+        assertTrue(elements.waysNodeIds.containsAll(listOf<List<Long>>(
             listOf(3,4,1,2),
             listOf(2,3)
         )))
@@ -65,85 +68,81 @@ class SplitWayUploadTest {
     @Test(expected = ConflictException::class)
     fun `raise conflict if way was deleted`() {
         on(osmDao.getWay(1)).thenReturn(null)
-        uploader.upload(0, way, listOf(split))
+        doSplit()
     }
 
     @Test(expected = ConflictException::class)
     fun `raise conflict if updated way was cut at the start`() {
         on(osmDao.getWay(1)).thenReturn(wayWithNodes(2,3,4))
-        uploader.upload(0, way, listOf(split))
+        doSplit()
     }
 
     @Test(expected = ConflictException::class)
     fun `raise conflict if updated way was cut at the end`() {
         on(osmDao.getWay(1)).thenReturn(wayWithNodes(1,2,3))
-        uploader.upload(0, way, listOf(split))
+        doSplit()
     }
 
     @Test(expected = ConflictException::class)
     fun `raise conflict if updated way has split position at its very start`() {
         on(osmDao.getWay(1)).thenReturn(wayWithNodes(2,3,4))
-        uploader.upload(0, way, listOf(SplitWayAtPosition(way, node2, node3, 0.0)))
+        doSplit(SplitWayAtPosition(way, node2, node3, 0.0))
     }
 
     @Test(expected = ConflictException::class)
     fun `raise conflict if first node is not in the updated way`() {
         on(osmDao.getWay(1)).thenReturn(wayWithNodes(1,3,4))
-        uploader.upload(0, way, listOf(split))
+        doSplit()
     }
 
     @Test(expected = ConflictException::class)
     fun `raise conflict if second node is not in the updated way`() {
         on(osmDao.getWay(1)).thenReturn(wayWithNodes(1,2,4))
-        uploader.upload(0, way, listOf(split))
+        doSplit()
     }
 
     @Test(expected = ConflictException::class)
     fun `raise conflict if the second node is not directly after the first one in the updated way`() {
         on(osmDao.getWay(1)).thenReturn(wayWithNodes(1,3,2,4))
-        uploader.upload(0, way, listOf(split))
+        doSplit()
     }
 
     @Test(expected = ConflictException::class)
     fun `raise conflict if first node of split position was deleted`() {
         on(osmDao.getNode(2)).thenReturn(null)
-        uploader.upload(0, way, listOf(split))
+        doSplit()
     }
 
     @Test(expected = ConflictException::class)
     fun `raise conflict if second node of split position was deleted`() {
         on(osmDao.getNode(3)).thenReturn(null)
-        uploader.upload(0, way, listOf(split))
+        doSplit()
     }
 
     @Test(expected = ConflictException::class)
     fun `raise conflict if first node of split position has been moved`() {
         on(osmDao.getNode(2)).thenReturn(OsmNode(2, 2, 0.333, 0.333, null))
-        uploader.upload(0, way, listOf(split))
+        doSplit()
     }
 
     @Test(expected = ConflictException::class)
     fun `raise conflict if second node of split position has been moved`() {
         on(osmDao.getNode(3)).thenReturn(OsmNode(3, 2, 0.333, 0.333, null))
-        uploader.upload(0, way, listOf(split))
+        doSplit()
     }
 
     @Test fun `successfully split way with one split position at vertex`() {
-        uploader.upload(0, way, listOf(SplitWayAtPosition(way, node2, node3, 0.0)))
-
-        val elements = getUploadedElements()
+        val elements = doSplit(SplitWayAtPosition(way, node2, node3, 0.0))
         assertTrue(elements.nodes.isEmpty()) // no nodes were added
         assertEquals(2, elements.ways.size)
-        assertTrue(elements.ways.map { it.nodeIds }.containsAll(listOf<List<Long>>(
+        assertTrue(elements.waysNodeIds.containsAll(listOf<List<Long>>(
             listOf(1,2),
             listOf(2,3,4)
         )))
     }
 
     @Test fun `successfully split way with one split position`() {
-        uploader.upload(0, way, listOf(SplitWayAtPosition(way, node2, node3, 0.5)))
-
-        val elements = getUploadedElements()
+        val elements = doSplit(SplitWayAtPosition(way, node2, node3, 0.5))
         assertEquals(1, elements.nodes.size)
         assertEquals(2, elements.ways.size)
         val node = elements.nodes.single()
@@ -155,7 +154,7 @@ class SplitWayUploadTest {
                 p1.longitude + 0.5 * (p2.longitude - p1.longitude)),
             node.position)
 
-        assertTrue(elements.ways.map { it.nodeIds }.containsAll(listOf<List<Long>>(
+        assertTrue(elements.waysNodeIds.containsAll(listOf<List<Long>>(
             listOf(1,2,-1),
             listOf(-1,3,4)
         )))
@@ -164,15 +163,14 @@ class SplitWayUploadTest {
     @Test fun `successfully split way with several split position at vertices`() {
         // 1   2   3   4
         //     |   |
-        uploader.upload(0, way, listOf(
+        val elements = doSplit(
             SplitWayAtPosition(way, node2, node3, 0.0),
             SplitWayAtPosition(way, node3, node4, 0.0)
-        ))
+        )
 
-        val elements = getUploadedElements()
         assertTrue(elements.nodes.isEmpty()) // no nodes were added
         assertEquals(3, elements.ways.size)
-        assertTrue(elements.ways.map { it.nodeIds }.containsAll(listOf<List<Long>>(
+        assertTrue(elements.waysNodeIds.containsAll(listOf<List<Long>>(
             listOf(1,2),
             listOf(2,3),
             listOf(3,4)
@@ -182,15 +180,14 @@ class SplitWayUploadTest {
     @Test fun `successfully split way with multiple split positions`() {
         // 1   2   3   4
         //       |   |
-        uploader.upload(0, way, listOf(
+        val elements = doSplit(
             SplitWayAtPosition(way, node2, node3, 0.5),
             SplitWayAtPosition(way, node3, node4, 0.5)
-        ))
+        )
 
-        val elements = getUploadedElements()
         assertEquals(2, elements.nodes.size)
         assertEquals(3, elements.ways.size)
-        assertTrue(elements.ways.map { it.nodeIds }.containsAll(listOf<List<Long>>(
+        assertTrue(elements.waysNodeIds.containsAll(listOf<List<Long>>(
             listOf(1,2,-1),
             listOf(-1,3,-2),
             listOf(-2,4)
@@ -200,15 +197,14 @@ class SplitWayUploadTest {
     @Test fun `successfully split way with multiple split positions, one of which is at vertices`() {
         // 1   2   3   4
         //   | |
-        uploader.upload(0, way, listOf(
+        val elements = doSplit(
             SplitWayAtPosition(way, node1, node2, 0.5),
             SplitWayAtPosition(way, node2, node3, 0.0)
-        ))
+        )
 
-        val elements = getUploadedElements()
         assertEquals(1, elements.nodes.size)
         assertEquals(3, elements.ways.size)
-        assertTrue(elements.ways.map { it.nodeIds }.containsAll(listOf<List<Long>>(
+        assertTrue(elements.waysNodeIds.containsAll(listOf<List<Long>>(
             listOf(1,-1),
             listOf(-1,2),
             listOf(2,3,4)
@@ -218,17 +214,16 @@ class SplitWayUploadTest {
     @Test fun `successfully split way with multiple unordered split positions between the same nodes`() {
         // 1  2  3  4
         //    ||||
-        uploader.upload(0, way, listOf(
+        val elements = doSplit(
             SplitWayAtPosition(way, node2, node3, 0.66),
             SplitWayAtPosition(way, node3, node4, 0.0),
             SplitWayAtPosition(way, node2, node3, 0.0),
             SplitWayAtPosition(way, node2, node3, 0.33)
-        ))
+        )
 
-        val elements = getUploadedElements()
         assertEquals(2, elements.nodes.size)
         assertEquals(5, elements.ways.size)
-        assertTrue(elements.ways.map { it.nodeIds }.containsAll(listOf<List<Long>>(
+        assertTrue(elements.waysNodeIds.containsAll(listOf<List<Long>>(
             listOf(1,2),
             listOf(2,-1),
             listOf(-1,-2),
@@ -237,19 +232,152 @@ class SplitWayUploadTest {
         )))
     }
 
-    @Test fun `should reuse object id of longest split chunk (= second chunk)`() {
-        uploader.upload(0, way, listOf(SplitWayAtPosition(way, node2, node3, 0.0)))
-        assertEquals(way.id, getUploadedElements().ways.maxBy { it.nodeIds.size }?.id)
+    @Test fun `reuse object id of longest split chunk (= second chunk)`() {
+        val elements = doSplit(SplitWayAtPosition(way, node2, node3, 0.0))
+        assertEquals(way.id, elements.ways.maxBy { it.nodeIds.size }?.id)
     }
 
-    @Test fun `should reuse object id of longest split chunk (= first chunk)`() {
-        uploader.upload(0, way, listOf(SplitWayAtPosition(way, node3, node4, 0.0)))
-        assertEquals(way.id, getUploadedElements().ways.maxBy { it.nodeIds.size }?.id)
+    @Test fun `reuse object id of longest split chunk (= first chunk)`() {
+        val elements = doSplit(SplitWayAtPosition(way, node3, node4, 0.0))
+        assertEquals(way.id, elements.ways.maxBy { it.nodeIds.size }?.id)
     }
 
-    // TODO relations...
+    @Test fun `insert all way chunks into relation the way is a member of`() {
+        on(osmDao.getRelationsForWay(1)).thenReturn(listOf(
+            OsmRelation(1,1, membersForWays(listOf(1)), null)
+        ))
+        val elements = doSplit()
 
-    private fun getUploadedElements(): Elements {
+        assertEquals(1, elements.relations.size)
+        assertEquals(
+            listOf<List<Long>>(listOf(1,2,-1), listOf(-1,3,4)),
+            elements.memberNodeIdsByRelationId[1]
+        )
+    }
+
+    @Test fun `insert all way chunks into multiple relations the way is a member of`() {
+        on(osmDao.getRelationsForWay(1)).thenReturn(listOf(
+            OsmRelation(1,1, membersForWays(listOf(1)), null),
+            OsmRelation(2,1, membersForWays(listOf(1)), null)
+        ))
+        val elements = doSplit()
+
+        assertEquals(2, elements.relations.size)
+        assertEquals(
+            listOf<List<Long>>(listOf(1,2,-1), listOf(-1,3,4)),
+            elements.memberNodeIdsByRelationId[1]
+        )
+        assertEquals(
+            listOf<List<Long>>(listOf(1,2,-1), listOf(-1,3,4)),
+            elements.memberNodeIdsByRelationId[2]
+        )
+    }
+
+    @Test fun `all way chunks in updated relations have the same role as the original way`() {
+        on(osmDao.getRelationsForWay(1)).thenReturn(listOf(
+            OsmRelation(1,1, membersForWays(listOf(1), "cool role"), null),
+            OsmRelation(2,1, membersForWays(listOf(1), "not so cool role"), null)
+        ))
+        val relationsById = doSplit().relationsById
+
+        assertTrue(relationsById.getValue(1).members.all { it.role == "cool role" })
+        assertTrue(relationsById.getValue(2).members.all { it.role == "not so cool role" })
+    }
+
+    @Test fun `insert way chunks at correct position in the updated relation`() {
+        // 5 6 | 1 2 3 4 | 7 8  => 5 6 | 1 2 -1 | -1 3 4 | 7 8
+        on(osmDao.getWay(2)).thenReturn(OsmWay(2, 1, listOf(5,6), null))
+        on(osmDao.getWay(3)).thenReturn(OsmWay(3, 1, listOf(7,8), null))
+        on(osmDao.getRelationsForWay(1)).thenReturn(listOf(
+            OsmRelation(1,1, membersForWays(listOf(2,1,3)), null)
+        ))
+        val elements = doSplit()
+
+        assertEquals(1, elements.relations.size)
+        assertEquals(
+            listOf<List<Long>>(listOf(5,6), listOf(1,2,-1), listOf(-1,3,4), listOf(7,8)),
+            elements.memberNodeIdsByRelationId[1]
+        )
+    }
+
+    @Test fun `don't mind if a way has been deleted in the updated relation`() {
+        /* while determining the orientation of the way in the relation, the neighbouring ways are
+           downloaded and analyzed - if they do not exist anymore, this should not lead to a
+           nullpointer exception */
+        on(osmDao.getWay(2)).thenReturn(null)
+        on(osmDao.getWay(3)).thenReturn(null)
+        on(osmDao.getRelationsForWay(1)).thenReturn(listOf(
+            OsmRelation(1,1, membersForWays(listOf(2,1,3)), null)
+        ))
+        uploader.upload(0, way, listOf(split))
+    }
+
+    @Test fun `insert way chunks backwards in the updated relation as end of reverse chain`() {
+        // 5 4 | 1 2 3 4  =>  5 4 | 3 4 | 1 2 3
+        on(osmDao.getWay(2)).thenReturn(OsmWay(2, 1, listOf(5,4), null))
+        on(osmDao.getRelationsForWay(1)).thenReturn(listOf(
+            OsmRelation(1,1, membersForWays(listOf(2,1)), null)
+        ))
+        val elements = doSplit()
+
+        assertEquals(1, elements.relations.size)
+        assertEquals(
+            listOf<List<Long>>(listOf(5,4), listOf(-1,3,4), listOf(1,2,-1)),
+            elements.memberNodeIdsByRelationId[1]
+        )
+    }
+
+    @Test fun `insert way chunks forwards in the updated relation as end of chain`() {
+        // 5 1 | 1 2 3 4  =>  5 1 | 1 2 3 | 3 4
+        on(osmDao.getWay(2)).thenReturn(OsmWay(2, 1, listOf(5,1), null))
+        on(osmDao.getRelationsForWay(1)).thenReturn(listOf(
+            OsmRelation(1,1, membersForWays(listOf(2,1)), null)
+        ))
+        val elements = doSplit()
+
+        assertEquals(1, elements.relations.size)
+        assertEquals(
+            listOf<List<Long>>(listOf(5,1), listOf(1,2,-1), listOf(-1,3,4)),
+            elements.memberNodeIdsByRelationId[1]
+        )
+    }
+
+    @Test fun `insert way chunks backwards in the updated relation as start of reverse chain`() {
+        // 1 2 3 4 | 5 1  =>  3 4 | 1 2 3 | 5 1
+        on(osmDao.getWay(2)).thenReturn(OsmWay(2, 1, listOf(5,1), null))
+        on(osmDao.getRelationsForWay(1)).thenReturn(listOf(
+            OsmRelation(1,1, membersForWays(listOf(1,2)), null)
+        ))
+        val elements = doSplit()
+
+        assertEquals(1, elements.relations.size)
+        assertEquals(
+            listOf<List<Long>>(listOf(-1,3,4), listOf(1,2,-1), listOf(5,1)),
+            elements.memberNodeIdsByRelationId[1]
+        )
+    }
+
+    @Test fun `insert way chunks forwards in the updated relation as start of chain`() {
+        // 1 2 3 4 | 5 4  =>  1 2 3 | 3 4 | 5 4
+        on(osmDao.getWay(2)).thenReturn(OsmWay(2, 1, listOf(5,4), null))
+        on(osmDao.getRelationsForWay(1)).thenReturn(listOf(
+            OsmRelation(1,1, membersForWays(listOf(1,2)), null)
+        ))
+        val elements = doSplit()
+
+        assertEquals(1, elements.relations.size)
+        assertEquals(
+            listOf<List<Long>>(listOf(1,2,-1), listOf(-1,3,4), listOf(5,4)),
+            elements.memberNodeIdsByRelationId[1]
+        )
+    }
+
+    // TODO test special relation types...
+
+    // TODO test modification aware...?
+
+    private fun doSplit(vararg splits: SplitWayAtPosition = arrayOf(split)) : Elements {
+        uploader.upload(0, way, splits.asList())
         val arg: ArgumentCaptor<Iterable<Element>> = argumentCaptor()
         verify(osmDao).uploadChanges(eq(0), arg.capture(), eq(null))
         val elements = arg.value.toList()
@@ -261,10 +389,28 @@ class SplitWayUploadTest {
     }
 
     private fun wayWithNodes(vararg nodes: Long) = OsmWay(1, 2, nodes.asList(), null)
+
+    private fun membersForWays(ids: List<Long>, role: String = ""): List<RelationMember> =
+        ids.map { id -> OsmRelationMember(id, role, WAY) }.toMutableList()
+
+    private inner class Elements(
+        val nodes: List<Node>,
+        val ways: List<Way>,
+        val relations: List<Relation>
+    ) {
+        val waysNodeIds get() = ways.map { it.nodeIds }
+
+        val waysById get() = ways.associateBy { it.id }
+        val relationsById get() = relations.associateBy { it.id }
+
+        val memberNodeIdsByRelationId: Map<Long, List<List<Long>>> get() =
+            relations.associate { relation ->
+                relation.id to relation.members.mapNotNull { member ->
+                    if (member.type != WAY) null
+                    else (waysById[member.ref] ?: osmDao.getWay(member.ref)).nodeIds.toList()
+                }
+            }
+    }
 }
 
-private data class Elements(
-    val nodes: List<Node>,
-    val ways: List<Way>,
-    val relations: List<Relation>
-)
+

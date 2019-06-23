@@ -155,17 +155,23 @@ class SplitWayUpload @Inject constructor(private val osmDao: MapDataDao) {
     /** returns null if the relation is not ordered, false if oriented backwards, true if oriented forward */
     private fun Way.isOrientedForwardInOrderedRelation(relation: Relation): Boolean? {
         val wayIdsInRelation = relation.members.filter { it.type == WAY }.map { it.ref }
+        if (wayIdsInRelation.size < 2) return null
+
         val index = wayIdsInRelation.indexOfFirst { it == id }
         if (index == -1)
             throw IllegalArgumentException("Way #$id is not in relation #${relation.id}")
 
         val wayBefore = osmDao.getWay(wayIdsInRelation.wrapGet(index - 1))
-        if (isAfterWayInChain(wayBefore)) return true
-        if (isBeforeWayInChain(wayBefore)) return false
+        if (wayBefore != null) {
+            if (isAfterWayInChain(wayBefore)) return true
+            if (isBeforeWayInChain(wayBefore)) return false
+        }
 
         val wayAfter = osmDao.getWay(wayIdsInRelation.wrapGet(index + 1))
-        if (isBeforeWayInChain(wayAfter)) return true
-        if (isAfterWayInChain(wayAfter)) return false
+        if (wayAfter != null) {
+            if (isBeforeWayInChain(wayAfter)) return true
+            if (isAfterWayInChain(wayAfter)) return false
+        }
 
         return null
     }
