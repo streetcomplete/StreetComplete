@@ -24,11 +24,6 @@
         <item>DARK</item>
     </string-array>
 
-    <string-array name="pref_entries_overpass_url_select" translatable="false">
-        <item>"https://overpass-api.de/api/"</item>
-        <item>"https://overpass.kumi.systems/api/"</item>
-    </string-array>
-
     <string-array name="pref_entryvalues_overpass_url_select" translatable="false">
         <item>"https://overpass-api.de/api/"</item>
         <item>"https://overpass.kumi.systems/api/"</item>
