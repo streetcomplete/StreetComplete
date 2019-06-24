@@ -455,6 +455,10 @@ class SplitWayUploadTest {
         `update a restriction-like relation with split-way and via way`("restriction", "via", "to")
     }
 
+    @Test fun `update a restriction-like relation with another type`() {
+        `update a restriction-like relation with split-way and via node`("some_weird_restriction", "via", "from")
+    }
+
     private fun `update a restriction-like relation with split-way and via way`(
         relationType: String, via: String, role: String) {
         val otherRole = if (role == "from") "to" else "from"

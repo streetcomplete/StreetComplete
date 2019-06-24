@@ -119,21 +119,21 @@ class SplitWayUpload @Inject constructor(private val osmDao: MapDataDao) {
     /** Returns whether it has been treated as a special relation type */
     private fun updateSpecialRelation(relation: Relation, indexOfWayInRelation: Int, newWays: List<Way>): Boolean {
         val relationType = relation.tags?.get("type") ?: ""
-        if (relationType == "restriction" || relationType == "destination_sign") {
-            val originalWayRole = relation.members[indexOfWayInRelation].role
-            if (originalWayRole == "from" || originalWayRole == "to") {
-                val viaNodeIds = relation.fetchViaNodeIds(relationType)
-                if (viaNodeIds != null) {
-                    val newWay = newWays.find { it.nodeIds.firstAndLast().containsAny(viaNodeIds) }
-                    if (newWay != null) {
-                        // TODO modification aware shit
-                        val newRelationMember = OsmRelationMember(newWay.id, originalWayRole, WAY)
-                        relation.members[indexOfWayInRelation] = newRelationMember
-                        return true
-                    }
+        val originalWayRole = relation.members[indexOfWayInRelation].role
+        if (originalWayRole == "from" || originalWayRole == "to") {
+            val viaNodeIds = relation.fetchViaNodeIds(relationType)
+            if (viaNodeIds != null) {
+                val newWay = newWays.find { it.nodeIds.firstAndLast().containsAny(viaNodeIds) }
+                if (newWay != null) {
+                    // TODO modification aware shit
+                    val newRelationMember = OsmRelationMember(newWay.id, originalWayRole, WAY)
+                    relation.members[indexOfWayInRelation] = newRelationMember
+                    return true
                 }
             }
         }
+        // room for handling other special relation types here
+
         return false
     }
 
@@ -253,6 +253,6 @@ private fun Relation.findVia(relationType: String): RelationMember? {
             nodesAndWays.find { it.role == "intersection" } ?:
             nodesAndWays.find { it.role == "sign" }
         }
-        else -> null
+        else -> nodesAndWays.find { it.role == "via" }
     }
 }
