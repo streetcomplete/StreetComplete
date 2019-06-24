@@ -94,6 +94,7 @@ public class QuestModule
 				new AddRoadName(o, roadNameSuggestionsDao, putRoadNameSuggestionsHandler),
 				new AddPlaceName(o, featureDictionaryFuture),
 				new AddOneway(o, trafficFlowSegmentsDao, trafficFlowDao),
+				new AddBusStopName(o),
 				new AddIsBuildingUnderground(o), //to avoid asking AddHousenumber and other for underground buildings
 				new AddHousenumber(o),
 				new MarkCompletedHighwayConstruction(o),
@@ -122,7 +123,6 @@ public class QuestModule
 				new AddParkingAccess(o),
 				new AddParkingFee(o),
 				new AddMotorcycleParkingCapacity(o),
-				new AddBusStopName(o),
 				new AddPathSurface(o),
 				new AddTracktype(o),
 				new AddBikeParkingType(o), // used by OsmAnd
