@@ -101,14 +101,14 @@ public class QuestModule
 
 				// ↓ 3. useful data that is used by some data consumers
 				new AddRecyclingType(o),
+				new AddReligionToPlaceOfWorship(o), // icon on maps are different
+				new AddSport(o),
 				new AddRoadSurface(o),
 				new AddMaxSpeed(o), // should best be after road surface because it excludes unpaved roads
 				new AddMaxHeight(o),
 				new AddRailwayCrossingBarrier(o), // useful for routing
-				new AddReligionToPlaceOfWorship(o), // icon on maps are different
 				new AddPostboxCollectionTimes(o),
 				new AddOpeningHours(o),
-				new AddSport(o),
 				new AddBikeParkingCapacity(o), // cycle map layer on osm.org
 				new AddOrchardProduce(o),
 				new AddCycleway(o),
