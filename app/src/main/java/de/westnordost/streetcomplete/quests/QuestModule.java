@@ -126,6 +126,7 @@ public class QuestModule
 				new AddPathSurface(o),
 				new AddTracktype(o),
 				new AddBikeParkingType(o), // used by OsmAnd
+				new AddWheelChairAccessToilets(o), // used by wheelmap, MAPS.ME
 				new AddPlaygroundAccess(o), //late as in many areas all needed access=private is already mapped
 
 				// ↓ 4. definitely shown as errors in QA tools
@@ -146,7 +147,6 @@ public class QuestModule
 				new AddWheelchairAccessBusiness(o),
 				new AddToiletAvailability(o),
 				new AddBridgeStructure(o),
-				new AddWheelChairAccessToilets(o),
 				new AddReligionToWaysideShrine(o),
 				new AddCyclewaySegregation(o),
 				new MarkCompletedBuildingConstruction(o),
