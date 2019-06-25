@@ -113,7 +113,7 @@ public class QuestModule
 				new AddOrchardProduce(o),
 				new AddCycleway(o),
 				new AddSidewalk(o),
-				new AddProhibitedForPedestrians(o),
+				new AddProhibitedForPedestrians(o), // uses info from AddSidewalk quest, should be after it
 				new AddCrossingType(o),
 				new AddBuildingLevels(o),
 				new AddBusStopShelter(o), // at least OsmAnd
