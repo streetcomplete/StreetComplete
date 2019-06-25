@@ -98,10 +98,11 @@ public class QuestModule
 				new AddIsBuildingUnderground(o), //to avoid asking AddHousenumber and other for underground buildings
 				new AddHousenumber(o),
 				new MarkCompletedHighwayConstruction(o),
+				new AddReligionToPlaceOfWorship(o), // icons on maps are different - OSM Carto, mapy.cz, OsmAnd, Sputnik etc
+				new AddParkingAccess(o), //OSM Carto, mapy.cz, OSMand, Sputnik etc
 
 				// ↓ 3. useful data that is used by some data consumers
 				new AddRecyclingType(o),
-				new AddReligionToPlaceOfWorship(o), // icon on maps are different
 				new AddSport(o),
 				new AddRoadSurface(o),
 				new AddMaxSpeed(o), // should best be after road surface because it excludes unpaved roads
@@ -120,7 +121,6 @@ public class QuestModule
 				new AddVegetarian(o),
 				new AddVegan(o),
 				new AddInternetAccess(o),
-				new AddParkingAccess(o),
 				new AddParkingFee(o),
 				new AddMotorcycleParkingCapacity(o),
 				new AddPathSurface(o),
