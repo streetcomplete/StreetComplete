@@ -126,8 +126,10 @@ public class QuestModule
 				new AddPathSurface(o),
 				new AddTracktype(o),
 				new AddBikeParkingType(o), // used by OsmAnd
-				new AddWheelChairAccessToilets(o), // used by wheelmap, MAPS.ME
+				new AddWheelChairAccessToilets(o), // used by wheelmap, OsmAnd, MAPS.ME
 				new AddPlaygroundAccess(o), //late as in many areas all needed access=private is already mapped
+				new AddWheelchairAccessBusiness(o), // used by wheelmap, OsmAnd, MAPS.ME
+				new AddToiletAvailability(o), //OSM Carto, shown in OsmAnd descriptions
 
 				// ↓ 4. definitely shown as errors in QA tools
 
@@ -137,15 +139,16 @@ public class QuestModule
 				// ↓ 6. may be shown as possibly missing in QA tools
 
 				// ↓ 7. data useful for only a specific use case
+				new AddWayLit(o), //  used by OsmAnd if "Street lighting" is enabled. (Configure map, Map rendering, Details)
+				new AddToiletsFee(o), // used by OsmAnd in the object description
+				new AddBabyChangingTable(o), // used by OsmAnd in the object description
+				new AddBikeParkingCover(o), // used by OsmAnd in the object description
 				new AddTrafficSignalsSound(o),
 				new AddRoofShape(o),
 				new AddWheelChairAccessPublicTransport(o),
 				new AddWheelchairAccessOutside(o),
 				new AddTactilePavingBusStop(o),
 				new AddTactilePavingCrosswalk(o),
-				new AddWayLit(o),
-				new AddWheelchairAccessBusiness(o),
-				new AddToiletAvailability(o),
 				new AddBridgeStructure(o),
 				new AddReligionToWaysideShrine(o),
 				new AddCyclewaySegregation(o),
@@ -153,10 +156,7 @@ public class QuestModule
 
 				// ↓ 8. defined in the wiki, but not really used by anyone yet. Just collected for
 				//      the sake of mapping it in case it makes sense later
-				new AddBikeParkingCover(o),
 				new AddMotorcycleParkingCover(o),
-				new AddToiletsFee(o),
-				new AddBabyChangingTable(o),
 				new AddFireHydrantType(o),
 				new AddParkingType(o),
 				new AddPowerPolesMaterial(o),
