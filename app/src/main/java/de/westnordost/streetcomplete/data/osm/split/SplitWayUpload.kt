@@ -92,9 +92,14 @@ class SplitWayUpload @Inject constructor(private val osmDao: MapDataDao) {
         val tags = originalWay.tags?.toMap()
         var newWayId = -1L
         return nodesChunks.mapIndexed { index, nodes ->
-            // TODO modification aware shit
-            if(index == indexOfChunkToKeep) OsmWay(originalWay.id, originalWay.version, nodes, tags)
-            else                            OsmWay(newWayId--, 0, nodes, tags)
+            if(index == indexOfChunkToKeep) {
+                val way = OsmWay(originalWay.id, originalWay.version, nodes, tags)
+                way.isModified = true
+                way
+            }
+            else {
+                OsmWay(newWayId--, 0, nodes, tags)
+            }
         }
     }
 
@@ -125,7 +130,6 @@ class SplitWayUpload @Inject constructor(private val osmDao: MapDataDao) {
             if (viaNodeIds != null) {
                 val newWay = newWays.find { it.nodeIds.firstAndLast().containsAny(viaNodeIds) }
                 if (newWay != null) {
-                    // TODO modification aware shit
                     val newRelationMember = OsmRelationMember(newWay.id, originalWayRole, WAY)
                     relation.members[indexOfWayInRelation] = newRelationMember
                     return true
@@ -140,7 +144,6 @@ class SplitWayUpload @Inject constructor(private val osmDao: MapDataDao) {
     private fun updateNormalRelation(relation: Relation, indexOfWayInRelation: Int,
                                      originalWay: Way, newWays: List<Way>) {
         val originalWayRole = relation.members[indexOfWayInRelation].role
-        // TODO modification aware shit
         val newRelationMembers = newWays.map { way ->
             OsmRelationMember(way.id, originalWayRole, WAY) }.toMutableList()
         val isOrientedBackwards = originalWay.isOrientedForwardInOrderedRelation(relation, indexOfWayInRelation) == false
