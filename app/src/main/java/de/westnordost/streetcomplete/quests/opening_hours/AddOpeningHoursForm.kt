@@ -23,6 +23,7 @@ import de.westnordost.streetcomplete.util.Serializer
 
 import android.view.Menu.NONE
 import androidx.recyclerview.widget.RecyclerView
+import de.westnordost.streetcomplete.ktx.showHint
 import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.ktx.toObject
 import kotlinx.android.synthetic.main.quest_opening_hours.*

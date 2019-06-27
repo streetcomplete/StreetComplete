@@ -13,6 +13,7 @@ import android.widget.EditText
 import androidx.core.content.getSystemService
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.ktx.showHint
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.quests.building_type.BuildingType
@@ -25,7 +26,7 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
     override val otherAnswers = listOf(
         OtherAnswer(R.string.quest_address_answer_no_housenumber) { onNoHouseNumber() },
         OtherAnswer(R.string.quest_address_answer_house_name) { switchToHouseName() },
-        OtherAnswer(R.string.quest_housenumber_multiple_numbers) { showMultipleNumbersHint() }
+        OtherAnswer(R.string.quest_housenumber_multiple_numbers) { activity?.showHint(R.string.quest_housenumber_multiple_numbers_description) }
     )
 
     private var houseNumberInput: EditText? = null
@@ -61,14 +62,6 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
     private fun switchToHouseName() {
         isHousename = true
         setLayout(R.layout.quest_housename)
-    }
-
-    private fun showMultipleNumbersHint() {
-        activity?.let { AlertDialog.Builder(it)
-            .setMessage(R.string.quest_housenumber_multiple_numbers_description)
-            .setPositiveButton(android.R.string.ok, null)
-            .show()
-        }
     }
 
     private fun onNoHouseNumber() {

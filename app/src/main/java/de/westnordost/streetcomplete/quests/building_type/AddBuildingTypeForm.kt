@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.ktx.showHint
 import de.westnordost.streetcomplete.quests.AGroupedImageListQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.quests.building_type.BuildingType.*
@@ -11,7 +12,7 @@ import de.westnordost.streetcomplete.quests.building_type.BuildingType.*
 class AddBuildingTypeForm : AGroupedImageListQuestAnswerFragment<String,String>() {
 
     override val otherAnswers = listOf(
-        OtherAnswer(R.string.quest_buildingType_answer_multiple_types) { showMultipleTypesHint() },
+        OtherAnswer(R.string.quest_buildingType_answer_multiple_types) { activity?.showHint(R.string.quest_buildingType_answer_multiple_types_description) },
         OtherAnswer(R.string.quest_buildingType_answer_construction_site) { applyAnswer("construction") }
     )
 
@@ -33,13 +34,5 @@ class AddBuildingTypeForm : AGroupedImageListQuestAnswerFragment<String,String>(
 
     override fun onClickOk(value: String) {
         applyAnswer(value)
-    }
-
-    private fun showMultipleTypesHint() {
-        activity?.let { AlertDialog.Builder(it)
-            .setMessage(R.string.quest_buildingType_answer_multiple_types_description)
-            .setPositiveButton(android.R.string.ok, null)
-            .show()
-        }
     }
 }

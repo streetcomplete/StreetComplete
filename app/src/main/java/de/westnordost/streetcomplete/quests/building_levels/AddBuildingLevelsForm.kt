@@ -8,6 +8,7 @@ import javax.inject.Inject
 
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.ktx.showHint
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.LastPickedValuesStore
 import de.westnordost.streetcomplete.quests.OtherAnswer
@@ -20,7 +21,7 @@ class AddBuildingLevelsForm : AbstractQuestFormAnswerFragment<BuildingLevelsAnsw
     override val contentLayoutResId = R.layout.quest_building_levels
 
     override val otherAnswers = listOf(
-        OtherAnswer(R.string.quest_buildingLevels_answer_multipleLevels) { showMultipleLevelsHint() }
+        OtherAnswer(R.string.quest_buildingLevels_answer_multipleLevels) { activity?.showHint(R.string.quest_buildingLevels_answer_description) }
     )
 
     private val levels get() = levelsInput?.text?.toString().orEmpty().trim()
@@ -67,14 +68,6 @@ class AddBuildingLevelsForm : AbstractQuestFormAnswerFragment<BuildingLevelsAnsw
         favs.add(javaClass.simpleName,
             listOfNotNull(buildingLevels, roofLevels).joinToString("#"), max = 1)
         applyAnswer(BuildingLevelsAnswer(buildingLevels, roofLevels))
-    }
-
-    private fun showMultipleLevelsHint() {
-        activity?.let { AlertDialog.Builder(it)
-            .setMessage(R.string.quest_buildingLevels_answer_description)
-            .setPositiveButton(android.R.string.ok, null)
-            .show()
-        }
     }
 
     override fun isFormComplete() = !levels.isEmpty()
