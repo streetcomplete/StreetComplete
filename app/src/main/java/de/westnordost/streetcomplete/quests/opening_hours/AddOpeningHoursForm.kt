@@ -36,7 +36,8 @@ class AddOpeningHoursForm : AbstractQuestFormAnswerFragment<OpeningHoursAnswer>(
         OtherAnswer(R.string.quest_openingHours_no_sign) { confirmNoSign() },
         OtherAnswer(R.string.quest_openingHours_answer_no_regular_opening_hours) { showInputCommentDialog() },
         OtherAnswer(R.string.quest_openingHours_answer_247) { showConfirm24_7Dialog() },
-        OtherAnswer(R.string.quest_openingHours_answer_seasonal_opening_hours) { openingHoursAdapter.changeToMonthsMode() }
+        OtherAnswer(R.string.quest_openingHours_answer_seasonal_opening_hours) { openingHoursAdapter.changeToMonthsMode() },
+        OtherAnswer(R.string.quest_openingHours_answer_differs_by_day_of_week) { activity?.showHint(R.string.quest_openingHours_differs_by_day_of_week) }
     )
 
     private lateinit var openingHoursAdapter: AddOpeningHoursAdapter
