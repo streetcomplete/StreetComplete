@@ -51,7 +51,7 @@
     <string name="quest_openingHours_chooseMonthsTitle">"Select months"</string>
     <string name="quest_openingHours_chooseWeekdaysTitle">"Select group of weekdays with the same opening hours"</string>
     <string name="quest_openingHours_24_7_confirmation">"In other words, is it open any time, every day?"</string>
-    <string name="quest_openingHours_differs_by_day_of_week">You can use the \"ADD OPENING HOURS\" button multiple times, adding separate groups of days with the same opening hours.</string>
+    <string name="quest_openingHours_differs_by_day_of_week">You can use the \"ADD OPENING HOURS\" button multiple times, adding separate groups of days with the same opening hours every time.</string>
     <string name="quest_openingHours_answer_differs_by_day_of_week">Differs by day of week…</string>
     <string name="quest_noteDiscussion_title">"Can you contribute anything to this note?"</string>
     <string name="quest_noteDiscussion_no">"No, hide"</string>
