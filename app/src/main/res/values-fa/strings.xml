@@ -703,4 +703,6 @@
     <string name="theme_dark">"تیره"</string>
     <string name="theme_system_default">"پیشفرض سامانه"</string>
     <string name="quest_placeName_title_name">"نام این مکان چیست؟ (%s)"</string>
+    <string name="action_open_location">"مکان را در برنامه دیگری باز نمایید"</string>
+    <string name="map_application_missing">"برنامه نقشه دیگری نصب نگردیده‌است"</string>
 </resources>

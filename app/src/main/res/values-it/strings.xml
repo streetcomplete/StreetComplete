@@ -648,5 +648,7 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="theme_light">"Chiaro"</string>
     <string name="theme_dark">"Scuro"</string>
     <string name="theme_system_default">"Predefinito di sistema"</string>
-    <string name="quest_placeName_title_name">"Qual è il nome di questo posto? (%s)"</string>
+    <string name="quest_placeName_title_name">"Qual è il nome di questo luogo? (%s)"</string>
+    <string name="action_open_location">"Apri posizione in un'altra applicazione"</string>
+    <string name="map_application_missing">"Nessun'altra applicazione di mappe installata"</string>
 </resources>
