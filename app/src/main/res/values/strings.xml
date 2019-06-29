@@ -659,5 +659,5 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_ferry_pedestrian_title">Does this ferry route transport pedestrians?</string>
     <string name="quest_ferry_motor_vehicle_name_title">Does %s transport motor vehicles?</string>
     <string name="quest_ferry_motor_vehicle_title">Does this ferry route transport motor vehicles?</string>
-    <string name="quest_leave_new_note_photos_are_useful">Adding photo will make the report much more useful.</string>
+    <string name="quest_leave_new_note_photos_are_useful">Adding a photo will make the report much more useful.</string>
 </resources>
