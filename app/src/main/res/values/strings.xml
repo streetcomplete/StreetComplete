@@ -653,4 +653,8 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="label_housenumber">house number</string>
     <string name="label_blocknumber">block number</string>
     <string name="quest_busStopShelter_covered">Whole stop is covered</string>
+    <string name="quest_ferry_pedestrian_name_title">Does %s transport pedestrians?</string>
+    <string name="quest_ferry_pedestrian_title">Does transport pedestrians?</string>
+    <string name="quest_ferry_motor_vehicle_name_title">Does %s transport motor vehicles?</string>
+    <string name="quest_ferry_motor_vehicle_title">Does transport motor vehicles?</string>
 </resources>
