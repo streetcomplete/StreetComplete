@@ -94,39 +94,42 @@ public class QuestModule
 				new AddRoadName(o, roadNameSuggestionsDao, putRoadNameSuggestionsHandler),
 				new AddPlaceName(o, featureDictionaryFuture),
 				new AddOneway(o, trafficFlowSegmentsDao, trafficFlowDao),
+				new AddBusStopName(o),
 				new AddIsBuildingUnderground(o), //to avoid asking AddHousenumber and other for underground buildings
 				new AddHousenumber(o),
 				new MarkCompletedHighwayConstruction(o),
+				new AddReligionToPlaceOfWorship(o), // icons on maps are different - OSM Carto, mapy.cz, OsmAnd, Sputnik etc
+				new AddParkingAccess(o), //OSM Carto, mapy.cz, OSMand, Sputnik etc
 
 				// ↓ 3. useful data that is used by some data consumers
 				new AddRecyclingType(o),
+				new AddSport(o),
 				new AddRoadSurface(o),
 				new AddMaxSpeed(o), // should best be after road surface because it excludes unpaved roads
 				new AddMaxHeight(o),
 				new AddRailwayCrossingBarrier(o), // useful for routing
-				new AddReligionToPlaceOfWorship(o), // icon on maps are different
 				new AddPostboxCollectionTimes(o),
 				new AddOpeningHours(o),
-				new AddSport(o),
 				new AddBikeParkingCapacity(o), // cycle map layer on osm.org
 				new AddOrchardProduce(o),
 				new AddCycleway(o),
 				new AddSidewalk(o),
-				new AddProhibitedForPedestrians(o),
+				new AddProhibitedForPedestrians(o), // uses info from AddSidewalk quest, should be after it
 				new AddCrossingType(o),
 				new AddBuildingLevels(o),
 				new AddBusStopShelter(o), // at least OsmAnd
 				new AddVegetarian(o),
 				new AddVegan(o),
 				new AddInternetAccess(o),
-				new AddParkingAccess(o),
 				new AddParkingFee(o),
 				new AddMotorcycleParkingCapacity(o),
-				new AddBusStopName(o),
 				new AddPathSurface(o),
 				new AddTracktype(o),
 				new AddBikeParkingType(o), // used by OsmAnd
+				new AddWheelChairAccessToilets(o), // used by wheelmap, OsmAnd, MAPS.ME
 				new AddPlaygroundAccess(o), //late as in many areas all needed access=private is already mapped
+				new AddWheelchairAccessBusiness(o), // used by wheelmap, OsmAnd, MAPS.ME
+				new AddToiletAvailability(o), //OSM Carto, shown in OsmAnd descriptions
 
 				// ↓ 4. definitely shown as errors in QA tools
 
@@ -136,27 +139,24 @@ public class QuestModule
 				// ↓ 6. may be shown as possibly missing in QA tools
 
 				// ↓ 7. data useful for only a specific use case
+				new AddWayLit(o), //  used by OsmAnd if "Street lighting" is enabled. (Configure map, Map rendering, Details)
+				new AddToiletsFee(o), // used by OsmAnd in the object description
+				new AddBabyChangingTable(o), // used by OsmAnd in the object description
+				new AddBikeParkingCover(o), // used by OsmAnd in the object description
 				new AddTrafficSignalsSound(o),
 				new AddRoofShape(o),
 				new AddWheelChairAccessPublicTransport(o),
 				new AddWheelchairAccessOutside(o),
 				new AddTactilePavingBusStop(o),
 				new AddTactilePavingCrosswalk(o),
-				new AddWayLit(o),
-				new AddWheelchairAccessBusiness(o),
-				new AddToiletAvailability(o),
 				new AddBridgeStructure(o),
-				new AddWheelChairAccessToilets(o),
 				new AddReligionToWaysideShrine(o),
 				new AddCyclewaySegregation(o),
 				new MarkCompletedBuildingConstruction(o),
 
 				// ↓ 8. defined in the wiki, but not really used by anyone yet. Just collected for
 				//      the sake of mapping it in case it makes sense later
-				new AddBikeParkingCover(o),
 				new AddMotorcycleParkingCover(o),
-				new AddToiletsFee(o),
-				new AddBabyChangingTable(o),
 				new AddFireHydrantType(o),
 				new AddParkingType(o),
 				new AddPowerPolesMaterial(o),

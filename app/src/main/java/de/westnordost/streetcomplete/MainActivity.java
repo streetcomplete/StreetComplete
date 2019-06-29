@@ -278,6 +278,7 @@ public class MainActivity extends AppCompatActivity implements
 					if (longitude >= -180 && longitude <= +180
 						&& latitude >= -90  && latitude <= +90)
 					{
+						mapFragment.setIsFollowingPosition(false);
 						mapFragment.setPosition(new LngLat(longitude,  latitude));
 
 						if (zoom != -1 && zoom > 0)
@@ -495,6 +496,7 @@ public class MainActivity extends AppCompatActivity implements
 	@UiThread private void requestOAuthorized()
 	{
 		if(dontShowRequestAuthorizationAgain) return;
+		if(answersCounter.waitingForUpload() <= 5) return;
 
 		View inner = LayoutInflater.from(this).inflate(
 				R.layout.dialog_authorize_now, null, false);
