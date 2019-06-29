@@ -203,10 +203,10 @@ private class SplitWayAtComparator(private val way: Way) : Comparator<SplitWayAt
     }
 }
 
-private fun createSplitPosition(firstPosition: LatLon, secondPosition: LatLon, delta: Double) =
-    SphericalEarthMath.createTranslated(
-        firstPosition.latitude + delta * (secondPosition.latitude - firstPosition.latitude),
-        firstPosition.longitude + delta * (secondPosition.longitude - firstPosition.longitude))
+private fun createSplitPosition(firstPosition: LatLon, secondPosition: LatLon, delta: Double): LatLon {
+    val line = listOf(firstPosition, secondPosition)
+    return SphericalEarthMath.pointOnPolylineFromStart(line, SphericalEarthMath.distance(line) * delta)
+}
 
 /** returns the index of the first element yielding the largest value of the given function or -1 if there are no elements. */
 private inline fun <T, R : Comparable<R>> Iterable<T>.indexOfMaxBy(selector: (T) -> R): Int {
