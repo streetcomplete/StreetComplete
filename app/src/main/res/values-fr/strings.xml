@@ -286,7 +286,6 @@ S’il n’y a aucun panneau tout le long de la route mise en surbrillance, les 
     <string name="quest_wheelchairAccess_limited_description_public_transport">"Partiellement signifie qu’il n’y a pas plus d’une marche d’escalier pour y accéder."</string>
 
     <!-- Abréviation *dans* le nom ? -->
-    <!-- Fuzzy -->
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Abréviation dans le nom %s ?"</string>
     <string name="quest_baby_changing_table_toilets_title">"Est-ce que ces toilettes disposent d’une table à langer ?"</string>
     <string name="quest_baby_changing_table_title">"Est-ce que %s possède une table à langer ?"</string>
@@ -464,7 +463,7 @@ Partiellement signifie qu’un fauteuil roulant peut entrer et utiliser les toil
     <string name="map_btn_create_note">"Ajouter une note"</string>
     <string name="create_new_note_unprecise">"Zoomer pour créer une note"</string>
     <string name="create_new_note_description">"Vous pouvez laisser une note pour informer les autres cartographes d’un problème à cet endroit. Ajustez la position de la note en déplaçant la carte :"</string>
-    <string name="pref_title_quests_invalidation">"Cache de quête invalide"</string>
+    <string name="pref_title_quests_invalidation">"Invalider le cache de quêtes"</string>
     <string name="pref_title_quests_invalidation_summary">"Utile si vous pensez que certaines quêtes sont obsolètes"</string>
     <string name="invalidate_confirmation">"Invalider"</string>
     <string name="invalidation_dialog_message">"L’invalidation du cache entraînera la mise à jour des quêtes lors du prochain téléchargement. Le cache des quête est automatiquement invalidé après une semaine et immédiatement lorsqu’une quête que vous avez résolue a déjà été traitée par quelqu’un d’autre."</string>
@@ -503,7 +502,6 @@ Partiellement signifie qu’un fauteuil roulant peut entrer et utiliser les toil
     <string name="quest_surface_value_unhewn_cobblestone">"Pavés grossiers"</string>
 
     <!-- Un peu long. -->
-    <!-- Fuzzy -->
     <string name="quest_parking_access_title">"L'accès à ce parking est-il restreint ?"</string>
 
     <!-- Traduction non littérale. Il faudrait connaître le contexte. -->
@@ -545,9 +543,7 @@ Partiellement signifie qu’un fauteuil roulant peut entrer et utiliser les toil
     <string name="quest_select_hint_most_specific">"Sélectionner le plus spécifique qui convient :"</string>
     <string name="quest_generic_item_confirmation">"Êtes vous sûr de ne pas pouvoir le déterminer plus spécifiquement ?"</string>
     <string name="privacy_html_tileserver">"&lt;p&gt;Pour afficher la carte, les tuiles vectorielles sont téléchargées depuis &lt;a href=\"https://tiles.map-data.de\"&gt;map-data.de&lt;/a&gt;. Ce service enregistre les demandes de tuiles à des fins de statistiques anonymes et de détection d’erreurs. Les journaux de demandes sont supprimés après quelques jours.&lt;/p&gt;"</string>
-
-    <!-- Fuzzy -->
-    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Pour certaines quêtes, des données de tiers sont téléchargées. En particulier, la quête de voie à sens unique utilise une API tierce, également hébergée sur westnordost.de, pour trouver des voies probablement à sens unique.&lt;p&gt;"</string>
+    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Pour certaines quêtes, des données de tiers sont téléchargées. En particulier, la quête de voie à sens unique utilise une API tierce, également hébergée sur westnordost.de, pour trouver des voies probablement à sens unique.&lt;/p&gt;"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"Non (laisser une note)"</string>
     <string name="pref_quests_reset">"Réinitialiser les types quêtes à afficher et leur ordre d’affichage ?"</string>
 
@@ -709,4 +705,8 @@ Partiellement signifie qu’un fauteuil roulant peut entrer et utiliser les toil
     <string name="theme_automatic">"Automatique"</string>
     <string name="theme_light">"Clair"</string>
     <string name="theme_dark">"Sombre"</string>
+    <string name="theme_system_default">"Thème du système"</string>
+    <string name="quest_placeName_title_name">"Comment s'appelle ce lieu ? (%s)"</string>
+    <string name="action_open_location">"Afficher dans une autre application"</string>
+    <string name="map_application_missing">"Pas d'autre application cartographique installée"</string>
 </resources>

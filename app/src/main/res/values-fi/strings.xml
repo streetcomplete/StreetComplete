@@ -708,4 +708,6 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
     <string name="theme_dark">"Tumma"</string>
     <string name="theme_system_default">"Järjestelmän oletus"</string>
     <string name="quest_placeName_title_name">"Mikä on tämän paikan nimi? (%s)"</string>
+    <string name="action_open_location">"Avaa sijainti toisessa sovelluksessa"</string>
+    <string name="map_application_missing">"Muita karttasovelluksia ei ole asennettu"</string>
 </resources>

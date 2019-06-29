@@ -73,6 +73,8 @@ class AddSidewalkForm : AbstractQuestFormAnswerFragment<SidewalkAnswer>() {
 
     override fun isFormComplete() = leftSide != null && rightSide != null
 
+    override fun isRejectingClose() = leftSide != null || rightSide != null
+
     private fun showSidewalkSelectionDialog(isRight: Boolean) {
         val recyclerView = RecyclerView(activity!!)
         recyclerView.layoutParams = RecyclerView.LayoutParams(MATCH_PARENT, MATCH_PARENT)

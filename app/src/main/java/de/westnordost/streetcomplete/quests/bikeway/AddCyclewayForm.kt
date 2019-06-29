@@ -148,6 +148,8 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
         if (isDefiningBothSides) leftSide != null && rightSide != null
         else                     leftSide != null || rightSide != null
 
+    override fun isRejectingClose() = leftSide != null || rightSide != null
+
     private fun showCyclewaySelectionDialog(isRight: Boolean) {
         val recyclerView = RecyclerView(activity!!)
         recyclerView.layoutParams = RecyclerView.LayoutParams(MATCH_PARENT, MATCH_PARENT)

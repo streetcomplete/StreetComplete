@@ -36,8 +36,8 @@
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Jeśli się da, nazwa powinna być podana w całości, bez skrótów. Wiele powszechnych skrótów jest rozwijanych automatycznie podczas pisania, ale nie wszystkie."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Nie ma skrótów"</string>
     <string name="quest_openingHours_name_title">"Jakie są godziny otwarcia %s?"</string>
-    <string name="quest_openingHours_start_time">"Godziny otwarcia"</string>
-    <string name="quest_openingHours_end_time">"Godziny zamknięcia"</string>
+    <string name="quest_openingHours_start_time">"otwarte od"</string>
+    <string name="quest_openingHours_end_time">"do"</string>
     <string name="quest_openingHours_add_months">"Dodaj miesiące"</string>
     <string name="quest_openingHours_add_hours">"Dodaj godziny"</string>
     <string name="quest_openingHours_add_weekdays">"Dodaj dni tygodnia"</string>
@@ -142,7 +142,7 @@ Niemniej przed każdym wysłaniem zmian aplikacja sprawdza &lt;a href=\"https://
     <string name="quest_surface_value_sand">"piaskowa"</string>
     <string name="quest_surface_value_sett">"nierówne kamienie"</string>
     <string name="quest_surface_value_wood">"drewniana"</string>
-    <string name="quest_placeName_title">"Jak się nazywa to miejsce?"</string>
+    <string name="quest_placeName_title">"Jaka jest nazwa własna tego miejsca?"</string>
     <string name="quest_sidewalk_title">"Czy ta ulica ma chodnik?"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Gdzie jest ta ulica?"</string>
     <string name="quest_cyclewaySurface_title">"Jaki rodzaj nawierzchni ma ta droga dla rowerów?"</string>
@@ -159,9 +159,9 @@ Niemniej przed każdym wysłaniem zmian aplikacja sprawdza &lt;a href=\"https://
 Ta aplikacja znajduje niekompletne lub brakujące dane w Twoim otoczeniu i wyświetla je na mapie w postaci zadań. Każde można rozwiązać, klikając w nie i odpowiadając na proste pytania.
 
 Udzielone odpowiedzi zostają potem umieszczone na OpenStreetMap w Twoim imieniu, bez potrzeby bezpośredniego edytowania map."</string>
-    <string name="quest_name_answer_noName">"Nie ma nazwy…"</string>
-    <string name="quest_name_answer_noName_confirmation_title">"Naprawdę nie ma nazwy?"</string>
-    <string name="quest_name_noName_confirmation_positive">"Tak, nie ma nazwy"</string>
+    <string name="quest_name_answer_noName">"Nie ma nazwy własnej…"</string>
+    <string name="quest_name_answer_noName_confirmation_title">"Naprawdę nie ma nazwy własnej?"</string>
+    <string name="quest_name_noName_confirmation_positive">"Tak, nie ma nazwy własnej"</string>
     <string name="quest_openingHours_add_times">"Dodaj godziny otwarcia"</string>
     <string name="crash_message">"Wysłać raport błędu do programistów?"</string>
     <string name="crash_title">"O nie, ostatnie użycie StreetComplete zakończyło się błędem!"</string>
@@ -406,7 +406,7 @@ W przeciwnym wypadku możesz ściągnąć dodatkowe aplikacje klawiatury ze skle
     <string name="quest_cycleway_answer_contraflow_cycleway">"Znajduje się tu kontrapas…"</string>
     <string name="quest_openingHours_emptyAnswer">"Musisz opisać, co jest na znaku. Jeśli nie ma znaku, możesz zapytać na miejscu o godziny otwarcia."</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"brak, ale rowerzyści mogą się poruszać w obu kierunkach"</string>
-    <string name="quest_streetName_answer_noName_question">"Dlaczego ten obiekt nie ma nazwy?"</string>
+    <string name="quest_streetName_answer_noName_question">"Dlaczego ta droga nie ma nazwy?"</string>
     <string name="quest_streetName_answer_noProperStreet_service2">"To coś w rodzaju podjazdu lub alejki parkingowej"</string>
     <string name="quest_streetName_answer_noProperStreet_track2">"Jest to droga polna lub leśna"</string>
     <string name="quest_streetName_answer_noName_noname">"Żadne z powyższych, po prostu nie ma nazwy"</string>
@@ -505,11 +505,11 @@ Na przykład 1,3 lub 2-6."</string>
     <string name="quest_buildingType_house">"Dom"</string>
     <string name="quest_buildingType_house_description">"Dom jednorodzinny"</string>
     <string name="quest_buildingType_apartments_description">"budynek dla wielu rodzin, może mieć sklepy na parterze"</string>
-    <string name="quest_buildingType_apartments">"Apartamenty"</string>
-    <string name="quest_buildingType_detached">"Dom jednorodzinny"</string>
+    <string name="quest_buildingType_apartments">"Budynek wielorodzinny"</string>
+    <string name="quest_buildingType_detached">"Wolnostojący dom jednorodzinny"</string>
     <string name="quest_buildingType_detached_description">"wolnostojący dom jednorodzinny"</string>
     <string name="quest_buildingType_semi_detached">"Bliźniak"</string>
-    <string name="quest_buildingType_semi_detached_description">"dwa połączone domy jednorodzinne"</string>
+    <string name="quest_buildingType_semi_detached_description">"dom bliźniak"</string>
     <string name="quest_buildingType_terrace">"Szeregowiec"</string>
     <string name="quest_buildingType_terrace_description">"rząd podobnych budynków jednorodzinnych"</string>
     <string name="quest_buildingType_hotel">"Hotel"</string>
@@ -555,7 +555,7 @@ Na przykład 1,3 lub 2-6."</string>
     <string name="quest_buildingType_garages">"Garaże"</string>
     <string name="quest_buildingType_parking">"Parking"</string>
     <string name="quest_buildingType_farm">"W gospodarstwie"</string>
-    <string name="quest_buildingType_farmhouse">"Dom"</string>
+    <string name="quest_buildingType_farmhouse">"Dom w gospodarstwie rolnym"</string>
     <string name="quest_buildingType_farmhouse_description">"budynek mieszkalny w gospodarstwie"</string>
     <string name="quest_buildingType_farm_auxiliary">"Budynek gospodarczy"</string>
     <string name="quest_buildingType_farm_auxiliary_description">"niemieszkalny budynek w gospodarstwie"</string>
@@ -578,7 +578,7 @@ Na przykład 1,3 lub 2-6."</string>
     <string name="quest_maxspeed_answer_sign">"Znak"</string>
     <string name="quest_maxspeed_answer_zone2">"To jest strefa (ograniczonej prędkości)"</string>
     <string name="quest_maxspeed_answer_noSign2">"Brak znaku, stosowane są domyślne ograniczenia prędkości"</string>
-    <string name="quest_openingHours_no_sign">"Brak informacji o godzinach otwarcia"</string>
+    <string name="quest_openingHours_no_sign">"Brak tabliczki o godzinach otwarcia"</string>
     <string name="quest_maxspeed_name_title2">"Jakie jest tutaj ograniczenie prędkości dla %s?"</string>
     <string name="quest_buildingType_sports_centre">"Centrum sportowe"</string>
     <string name="quest_buildingType_toilets">"Toalety"</string>
@@ -643,4 +643,7 @@ Na przykład 1,3 lub 2-6."</string>
     <string name="theme_light">"Jasny"</string>
     <string name="theme_dark">"Ciemny"</string>
     <string name="theme_system_default">"Domyślny systemu"</string>
+    <string name="quest_placeName_title_name">"Jaka jest nazwa tego miejsca? (%s)"</string>
+    <string name="action_open_location">"Otwórz to miejsce na mapie innej aplikacji"</string>
+    <string name="map_application_missing">"Nie ma innej aplikacji map"</string>
 </resources>
