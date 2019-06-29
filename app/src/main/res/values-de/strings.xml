@@ -653,4 +653,6 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="theme_dark">"Dunkel"</string>
     <string name="theme_system_default">"Systemvorgabe"</string>
     <string name="quest_placeName_title_name">"Was ist der Name hiervon? (%s)"</string>
+    <string name="action_open_location">"Standort in einer anderen App öffnen"</string>
+    <string name="map_application_missing">"Keine andere Kartenanwendung installiert"</string>
 </resources>

@@ -142,7 +142,6 @@
     <string name="quest_sport_ice_hockey">"Ice hockey"</string>
     <string name="quest_sport_netball">"Netball"</string>
     <string name="quest_sport_rugby">"Rugby"</string>
-    <string name="pref_category_cache">"Cache"</string>
     <string name="pref_title_sync">"Auto-sync"</string>
     <string name="map_btn_zoom_out">"Zoom out"</string>
     <string name="map_btn_zoom_in">"Zoom in"</string>
@@ -643,7 +642,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_sidewalk_value_yes">sidewalk</string>
     <string name="quest_sidewalk_value_no">no sidewalk</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">Are pedestrians prohibited from walking on this road here?</string>
-    <string name="pref_category_theme">Theme</string>
     <string name="pref_title_theme_select">Select theme</string>
     <string name="theme_automatic">Auto</string>
     <string name="theme_light">Light</string>
@@ -657,4 +655,8 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="label_housenumber">house number</string>
     <string name="label_blocknumber">block number</string>
     <string name="quest_busStopShelter_covered">Whole stop is covered</string>
+    <string name="quest_ferry_pedestrian_name_title">Does %s transport pedestrians?</string>
+    <string name="quest_ferry_pedestrian_title">Does transport pedestrians?</string>
+    <string name="quest_ferry_motor_vehicle_name_title">Does %s transport motor vehicles?</string>
+    <string name="quest_ferry_motor_vehicle_title">Does transport motor vehicles?</string>
 </resources>

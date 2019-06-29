@@ -655,4 +655,6 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="theme_dark">"Iluna"</string>
     <string name="theme_system_default">"Sisteman lehenetsia"</string>
     <string name="quest_placeName_title_name">"Zein da toki honen izena? (%s)"</string>
+    <string name="action_open_location">"Ireki kokalekua beste aplikazio batekin"</string>
+    <string name="map_application_missing">"Ez dago beste mapa aplikaziorik instalatuta"</string>
 </resources>

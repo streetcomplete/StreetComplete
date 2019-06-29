@@ -15,7 +15,7 @@ import java.util.concurrent.FutureTask
 class AddPlaceNameTest {
 
     private val questType = AddPlaceName(mock(OverpassMapDataDao::class.java),
-        mock(Future::class.java) as FutureTask<FeatureDictionary>
+        mock(FutureTask::class.java) as FutureTask<FeatureDictionary>
     )
 
     @Test fun `apply no name answer`() {

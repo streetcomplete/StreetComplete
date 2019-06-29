@@ -281,10 +281,8 @@ public class MainActivity extends AppCompatActivity implements
 						mapFragment.setIsFollowingPosition(false);
 						mapFragment.setPosition(new LngLat(longitude,  latitude));
 
-						if (zoom != -1 && zoom > 0)
-						{
-							mapFragment.setZoom(zoom);
-						}
+						if (zoom < 14) zoom = 18;
+						mapFragment.setZoom(zoom);
 					}
 				}
 			}
@@ -496,6 +494,7 @@ public class MainActivity extends AppCompatActivity implements
 	@UiThread private void requestOAuthorized()
 	{
 		if(dontShowRequestAuthorizationAgain) return;
+		if(answersCounter.waitingForUpload() <= 5) return;
 
 		View inner = LayoutInflater.from(this).inflate(
 				R.layout.dialog_authorize_now, null, false);

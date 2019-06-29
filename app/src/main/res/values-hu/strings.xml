@@ -646,4 +646,6 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="theme_dark">"Sötét"</string>
     <string name="theme_system_default">"Rendszer alapértelmezett"</string>
     <string name="quest_placeName_title_name">"Mi a neve ennek a helynek? (%s)"</string>
+    <string name="action_open_location">"Hely megnyitása egy másik alkalmazásban"</string>
+    <string name="map_application_missing">"Nem található másik térképalkalmazás"</string>
 </resources>
