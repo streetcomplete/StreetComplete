@@ -27,7 +27,55 @@
     </PreferenceCategory>
 
     <PreferenceCategory
-        android:title="@string/pref_category_cache">
+        android:key="display"
+        android:title="@string/pref_category_display">
+
+        <Preference
+            android:key="quests"
+            android:title="@string/pref_title_quests"
+            android:widgetLayout="@layout/widget_image_next"
+            />
+
+        <SwitchPreference
+            android:key="display.nonQuestionNotes"
+            android:title="@string/pref_title_show_notes_not_phrased_as_questions"
+            android:summaryOn="@string/pref_summaryOn_show_notes_not_phrased_as_questions"
+            android:summaryOff="@string/pref_summaryOff_show_notes_not_phrased_as_questions"
+            android:persistent="true"
+            />
+
+        <SwitchPreference
+            android:key="display.keepScreenOn"
+            android:title="@string/pref_title_keep_screen_on"
+            android:persistent="true"
+            />
+
+        <ListPreference
+            android:key="theme.select"
+            android:title="@string/pref_title_theme_select"
+            android:summary="%s"
+            android:defaultValue="AUTO"
+            android:entries="@array/pref_entries_theme_select"
+            android:entryValues="@array/pref_entryvalues_theme_select"
+            android:persistent="true"
+            />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="advanced"
+        android:title="@string/pref_category_advanced"
+        >
+
+        <Preference
+            android:key="quests.invalidation"
+            android:title="@string/pref_title_quests_invalidation"
+            android:summary="@string/pref_title_quests_invalidation_summary"
+            />
+
+        <Preference
+            android:key="quests.restore.hidden"
+            android:title="@string/pref_title_quests_restore_hidden"
+            />
 
         <de.westnordost.streetcomplete.settings.NumberPickerPreference
             android:key="map.tilecache"
@@ -43,67 +91,6 @@
             android:positiveButtonText="@android:string/ok"
             android:negativeButtonText="@android:string/cancel"
             />
-
-    </PreferenceCategory>
-
-    <PreferenceCategory
-        android:key="display"
-        android:title="@string/pref_category_display">
-
-        <SwitchPreference
-            android:key="display.keepScreenOn"
-            android:title="@string/pref_title_keep_screen_on"
-            android:persistent="true"
-            />
-
-        <SwitchPreference
-            android:key="display.nonQuestionNotes"
-            android:title="@string/pref_title_show_notes_not_phrased_as_questions"
-            android:summaryOn="@string/pref_summaryOn_show_notes_not_phrased_as_questions"
-            android:summaryOff="@string/pref_summaryOff_show_notes_not_phrased_as_questions"
-            android:persistent="true"
-            />
-
-    </PreferenceCategory>
-
-    <PreferenceCategory
-        android:key="theme"
-        android:title="@string/pref_category_theme">
-
-        <ListPreference
-            android:key="theme.select"
-            android:title="@string/pref_title_theme_select"
-            android:summary="%s"
-            android:defaultValue="AUTO"
-            android:entries="@array/pref_entries_theme_select"
-            android:entryValues="@array/pref_entryvalues_theme_select"
-            android:persistent="true"
-            />
-
-    </PreferenceCategory>
-
-    <PreferenceCategory
-        android:key="advanced"
-        android:title="@string/pref_category_advanced"
-        >
-
-        <Preference
-            android:key="quests"
-            android:title="@string/pref_title_quests"
-            android:widgetLayout="@layout/widget_image_next"
-            />
-
-        <Preference
-            android:key="quests.invalidation"
-            android:title="@string/pref_title_quests_invalidation"
-            android:summary="@string/pref_title_quests_invalidation_summary"
-            />
-
-        <Preference
-            android:key="quests.restore.hidden"
-            android:title="@string/pref_title_quests_restore_hidden"
-            />
-
     </PreferenceCategory>
 
 </PreferenceScreen>
