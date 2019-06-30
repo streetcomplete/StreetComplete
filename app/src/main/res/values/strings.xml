@@ -7,7 +7,7 @@
     <string name="oauth_cancelled">"Authorization canceled"</string>
     <string name="oauth_failed_permissions">"Authorization failed: All listed permissions need to be granted"</string>
     <string name="title_activity_settings">"Settings"</string>
-    <string name="pref_category_communication">"Communication"</string>
+    <string name="pref_category_account">Account</string>
     <string name="pref_category_display">"Display"</string>
     <string name="pref_title_authorization">"Authorize OSM access"</string>
     <string name="pref_title_authorized_username_summary">"Authorized account: %s"</string>

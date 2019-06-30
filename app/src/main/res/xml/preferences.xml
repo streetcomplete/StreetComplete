@@ -3,18 +3,8 @@
                   xmlns:custom="http://schemas.android.com/apk/res-auto">
 
     <PreferenceCategory
-        android:key="communication"
-        android:title="@string/pref_category_communication">
-
-        <ListPreference
-            android:key="autosync"
-            android:title="@string/pref_title_sync"
-            android:summary="%s"
-            android:defaultValue="ON"
-            android:entries="@array/pref_entries_autosync"
-            android:entryValues="@array/pref_entryvalues_autosync"
-            android:persistent="true"
-            />
+        android:key="account"
+        android:title="@string/pref_category_account">
 
         <Preference
             android:key="oauth"
@@ -66,15 +56,25 @@
         android:title="@string/pref_category_advanced"
         >
 
-        <Preference
-            android:key="quests.invalidation"
-            android:title="@string/pref_title_quests_invalidation"
-            android:summary="@string/pref_title_quests_invalidation_summary"
+        <ListPreference
+            android:key="overpass_url"
+            android:title="@string/pref_title_overpass_url_select"
+            android:summary="@string/pref_title_overpass_url_info"
+            android:defaultValue="https://overpass-api.de/api/"
+            android:entries="@array/pref_overpass_url_select"
+            android:entryValues="@array/pref_overpass_url_select"
+            android:persistent="true"
             />
 
         <Preference
             android:key="quests.restore.hidden"
             android:title="@string/pref_title_quests_restore_hidden"
+            />
+
+        <Preference
+            android:key="quests.invalidation"
+            android:title="@string/pref_title_quests_invalidation"
+            android:summary="@string/pref_title_quests_invalidation_summary"
             />
 
         <de.westnordost.streetcomplete.settings.NumberPickerPreference
@@ -91,17 +91,16 @@
             android:positiveButtonText="@android:string/ok"
             android:negativeButtonText="@android:string/cancel"
             />
-      
+
         <ListPreference
-            android:key="overpass_url"
-            android:title="@string/pref_title_overpass_url_select"
-            android:summary="@string/pref_title_overpass_url_info"
-            android:defaultValue="https://overpass-api.de/api/"
-            android:entries="@array/pref_overpass_url_select"
-            android:entryValues="@array/pref_overpass_url_select"
+            android:key="autosync"
+            android:title="@string/pref_title_sync"
+            android:summary="%s"
+            android:defaultValue="ON"
+            android:entries="@array/pref_entries_autosync"
+            android:entryValues="@array/pref_entryvalues_autosync"
             android:persistent="true"
             />
-      
     </PreferenceCategory>
 
 </PreferenceScreen>
