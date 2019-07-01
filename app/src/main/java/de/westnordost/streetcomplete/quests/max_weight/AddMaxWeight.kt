@@ -1,11 +1,21 @@
 package de.westnordost.streetcomplete.quests.max_weight
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.Countries
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
 
 class AddMaxWeight(o: OverpassMapDataDao) : SimpleOverpassQuestType<MaxWeightAnswer>(o) {
+
+    override val commitMessage = "Add maximum allowed weight"
+    override val icon = R.drawable.ic_quest_max_weight
+
+    override val enabledForCountries = Countries.allExcept(
+            "CA", // requires special icons
+            "US", // requires special icons, single maxweight fits all is a rare variant
+            "AU"  // requires special icons, single maxweight fits all is a rare variant
+    )
 
     override val tagFilters = """
         ways with highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|living_street|service
@@ -16,9 +26,6 @@ class AddMaxWeight(o: OverpassMapDataDao) : SimpleOverpassQuestType<MaxWeightAns
          and (access !~ private|no or (foot and foot !~ private|no))
          and area != yes
     """
-
-    override val commitMessage = "Add maximum allowed weight"
-    override val icon = R.drawable.ic_quest_max_weight
 
     override fun getTitle(tags: Map<String, String>): Int {
         return R.string.quest_maxweight_title
