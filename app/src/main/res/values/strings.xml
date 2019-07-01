@@ -661,6 +661,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_ferry_pedestrian_title">Does this ferry route transport pedestrians?</string>
     <string name="quest_ferry_motor_vehicle_name_title">Does %s transport motor vehicles?</string>
     <string name="quest_ferry_motor_vehicle_title">Does this ferry route transport motor vehicles?</string>
-    <string name="quest_maxweight_answer_other_sign">There is an other maxweight sign</string>
+    <string name="quest_maxweight_answer_other_sign">There is an other weight limit sign</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">Would you like to leave a note? Note with a photo will allow other mappers to mark it. Common signs will be added to StreetComplete, allowing a direct input.</string>
 </resources>
