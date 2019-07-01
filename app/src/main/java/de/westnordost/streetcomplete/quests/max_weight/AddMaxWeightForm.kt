@@ -23,8 +23,18 @@ private enum class Measurement { METRIC, IMPERIAL }
 class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
 
     override val otherAnswers = listOf(
-        OtherAnswer(R.string.quest_maxweight_answer_noSign) { applyAnswer(NoMaxWeightSign("dummy")) }
+            OtherAnswer(R.string.quest_maxweight_answer_other_sign) { onUnsupportedSign() },
+            OtherAnswer(R.string.quest_maxweight_answer_noSign) { applyAnswer(NoMaxWeightSign("dummy")) }
     )
+
+    private fun onUnsupportedSign() {
+        AlertDialog.Builder(activity!!)
+                .setMessage(R.string.quest_maxweight_unsupported_sign_request_photo)
+                .setPositiveButton(R.string.quest_generic_hasFeature_yes) { _, _ -> onClickCantSay() }
+                .setNegativeButton(R.string.quest_leave_new_note_no) { _, _ -> skipQuest() }
+                .show()
+
+    }
 
     private var tonInput: EditText? = null
     private var poundInput: EditText? = null
