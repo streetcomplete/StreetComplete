@@ -51,7 +51,7 @@ class AddMaxWeight(private val overpassServer: OverpassMapDataDao) : OsmElementQ
                 changes.add("maxweight", answer.value.toString())
             }
             is NoMaxWeightSign -> {
-                changes.add("maxweight:signed", "no")
+                changes.addOrModify("maxweight:signed", "no")
             }
         }
     }
