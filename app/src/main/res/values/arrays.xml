@@ -27,5 +27,6 @@
     <string-array name="pref_overpass_url_select" translatable="false">
         <item>"https://overpass-api.de/api/"</item>
         <item>"https://overpass.kumi.systems/api/"</item>
+        <item>"https://overpass.nchc.org.tw/api/"</item>
     </string-array>
 </resources>
