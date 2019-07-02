@@ -68,7 +68,7 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
         tonInputSign = contentView.findViewById(R.id.tonInputSign)
         poundInputSign = contentView.findViewById(R.id.poundInputSign)
 
-        weightUnitSelect = contentView.findViewById(R.id.unitSelect)
+        weightUnitSelect = contentView.findViewById(R.id.weightUnitSelect)
         val measurementUnits = countryInfo.measurementSystem
         weightUnitSelect?.visibility = if (measurementUnits.size == 1) View.GONE else View.VISIBLE
         weightUnitSelect?.adapter = ArrayAdapter(context!!, R.layout.spinner_item_centered, getSpinnerItems(measurementUnits))

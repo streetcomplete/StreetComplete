@@ -62,7 +62,7 @@ class AddMaxHeightForm : AbstractQuestFormAnswerFragment<MaxHeightAnswer>() {
         meterInputSign = contentView.findViewById(R.id.meterInputSign)
         feetInputSign = contentView.findViewById(R.id.feetInputSign)
 
-        heightUnitSelect = contentView.findViewById(R.id.unitSelect)
+        heightUnitSelect = contentView.findViewById(R.id.heightUnitSelect)
         val measurementUnits = countryInfo.measurementSystem
         heightUnitSelect?.visibility = if (measurementUnits.size == 1) View.GONE else View.VISIBLE
         heightUnitSelect?.adapter = ArrayAdapter(context!!, R.layout.spinner_item_centered, getSpinnerItems(measurementUnits))
