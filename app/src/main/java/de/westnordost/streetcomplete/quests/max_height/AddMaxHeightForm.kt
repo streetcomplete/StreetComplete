@@ -14,6 +14,7 @@ import android.widget.Spinner
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
+import de.westnordost.streetcomplete.quests.InputUtil
 import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.util.TextChangedWatcher
 
@@ -148,11 +149,11 @@ class AddMaxHeightForm : AbstractQuestFormAnswerFragment<MaxHeightAnswer>() {
     private fun getHeightFromInput(): Measure? {
         try {
             if (isMetric()) {
-                val input = meterInput?.text?.toString().orEmpty().trim().replace(",", ".")
+                val input = InputUtil.numberInputToStandardString(meterInput)
                 if (input.isNotEmpty()) return MetricMeasure(input.toDouble())
             } else {
-                val feetString = feetInput?.text?.toString().orEmpty().trim()
-                val inchString = inchInput?.text?.toString().orEmpty().trim()
+                val feetString = InputUtil.numberInputToStandardString(feetInput)
+                val inchString = InputUtil.numberInputToStandardString(inchInput)
 
                 if (feetString.isNotEmpty() && inchString.isNotEmpty()) {
                     return ImperialMeasure(feetString.toInt(), inchString.toInt())
