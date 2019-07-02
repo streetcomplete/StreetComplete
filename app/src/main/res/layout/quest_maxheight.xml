@@ -12,11 +12,11 @@
         android:id="@+id/inputSigns">
 
         <include
-            android:id="@+id/metricInputSign"
+            android:id="@+id/meterInputSign"
             layout="@layout/quest_maxheight_meter"/>
 
         <include
-            android:id="@+id/imperialInputSign"
+            android:id="@+id/feetInputSign"
             layout="@layout/quest_maxheight_feet"/>
 
     </RelativeLayout>

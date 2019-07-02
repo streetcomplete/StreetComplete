@@ -50,7 +50,7 @@ class AddMaxHeightForm : AbstractQuestFormAnswerFragment<MaxHeightAnswer>() {
     private fun setMaxHeightSignLayout(resourceId: Int, unit: Measurement) {
         val contentView = setContentView(resourceId)
 
-        meterInput = contentView.findViewById(R.id.metricInput)
+        meterInput = contentView.findViewById(R.id.meterInput)
         feetInput = contentView.findViewById(R.id.feetInput)
         inchInput = contentView.findViewById(R.id.inchInput)
 
@@ -59,8 +59,8 @@ class AddMaxHeightForm : AbstractQuestFormAnswerFragment<MaxHeightAnswer>() {
         feetInput?.addTextChangedListener(onTextChangedListener)
         inchInput?.addTextChangedListener(onTextChangedListener)
 
-        meterInputSign = contentView.findViewById(R.id.metricInputSign)
-        feetInputSign = contentView.findViewById(R.id.imperialInputSign)
+        meterInputSign = contentView.findViewById(R.id.meterInputSign)
+        feetInputSign = contentView.findViewById(R.id.feetInputSign)
 
         heightUnitSelect = contentView.findViewById(R.id.unitSelect)
         val measurementUnits = countryInfo.measurementSystem

@@ -58,15 +58,15 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
     private fun setMaxWeightSignLayout(resourceId: Int, unit: Measurement) {
         val contentView = setContentView(resourceId)
 
-        tonInput = contentView.findViewById(R.id.metricInput)
-        poundInput = contentView.findViewById(R.id.imperialInput)
+        tonInput = contentView.findViewById(R.id.tonInput)
+        poundInput = contentView.findViewById(R.id.poundInput)
 
         val onTextChangedListener = TextChangedWatcher { checkIsFormComplete() }
         tonInput?.addTextChangedListener(onTextChangedListener)
         poundInput?.addTextChangedListener(onTextChangedListener)
 
-        tonInputSign = contentView.findViewById(R.id.metricInputSign)
-        poundInputSign = contentView.findViewById(R.id.imperialInputSign)
+        tonInputSign = contentView.findViewById(R.id.tonInputSign)
+        poundInputSign = contentView.findViewById(R.id.poundInputSign)
 
         weightUnitSelect = contentView.findViewById(R.id.unitSelect)
         val measurementUnits = countryInfo.measurementSystem

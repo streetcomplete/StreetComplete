@@ -12,11 +12,11 @@
         android:id="@+id/inputSigns">
 
         <include
-            android:id="@+id/metricInputSign"
+            android:id="@+id/tonInputSign"
             layout="@layout/quest_maxweight_ton_georgia"/>
 
         <include
-            android:id="@+id/imperialInputSign"
+            android:id="@+id/poundInputSign"
             layout="@layout/quest_maxweight_pound"/>
 
     </RelativeLayout>

@@ -12,7 +12,7 @@
         android:layout_centerHorizontal="true"
         android:background="@drawable/background_rectangular_sign_yellow"
         android:padding="16dp"
-        android:id="@+id/imperialInputSign">
+        android:id="@+id/feetInputSign">
 
         <EditText
             android:id="@+id/feetInput"
