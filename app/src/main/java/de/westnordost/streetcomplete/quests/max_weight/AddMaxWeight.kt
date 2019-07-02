@@ -13,8 +13,8 @@ class AddMaxWeight(o: OverpassMapDataDao) : SimpleOverpassQuestType<MaxWeightAns
 
     override val enabledForCountries = Countries.allExcept(
             "CA", // requires special icons
-            "US", // requires special icons, single maxweight fits all is a rare variant
-            "AU"  // requires special icons, single maxweight fits all is a rare variant
+            "US", // requires special icons - single weight sign is available, but it is a rare variant
+            "AU"  // requires special icons - single weight sign is available, but it is a rare variant
     )
 
     override val tagFilters = """
