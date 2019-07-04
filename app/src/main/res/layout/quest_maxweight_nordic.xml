@@ -10,7 +10,7 @@
         android:layout_width="112dp"
         android:layout_height="112dp"
         android:gravity="center"
-        android:background="@drawable/background_maxweight_sign_yellow"
+        android:background="@drawable/background_generic_prohibitory_sign_yellow"
         android:padding="18dp">
 
         <EditText
