@@ -621,7 +621,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_maxweight_answer_noSign">There is no sign…</string>
     <string name="quest_maxweight_unusualInput_confirmation_description">This weight looks implausible. Are you sure that it is correct?</string>
     <string name="quest_maxweight_answer_other_sign">There is an other weight limit sign</string>
-    <string name="quest_maxweight_unsupported_sign_request_photo">Would you like to leave a note? Note with a photo will allow other mappers to handle it. Common signs will be also added to StreetComplete, allowing a direct input.</string>
+    <string name="quest_maxweight_unsupported_sign_request_photo">Would you like to leave a note? A note with a photo will enable other mappers to handle it. Common signs will also be added to StreetComplete, allowing a direct input.</string>
     <string name="quest_tracktype_title">What is the surface firmness of this track?</string>
     <string name="quest_tracktype_grade1">Solid</string>
     <string name="quest_tracktype_grade2">Mostly solid</string>
