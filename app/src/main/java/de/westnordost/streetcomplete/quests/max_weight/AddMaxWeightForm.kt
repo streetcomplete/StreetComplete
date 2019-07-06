@@ -76,8 +76,8 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
         weightUnitSelect?.setSelection(measurementUnits.size - 1) // prefer metric
         weightUnitSelect?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parentView: AdapterView<*>, selectedItemView: View?, position: Int, id: Long) {
-                val heightUnit = if (weightUnitSelect?.selectedItem == "t") METRIC else IMPERIAL
-                switchLayout(heightUnit)
+                val weightUnit = if (weightUnitSelect?.selectedItem == "t") METRIC else IMPERIAL
+                switchLayout(weightUnit)
             }
 
             override fun onNothingSelected(parentView: AdapterView<*>) {}
