@@ -395,7 +395,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		// main priority part - values fit into Integer, but with as large steps as possible
 		Integer order = questTypeOrder.get(quest.getType());
 		if(order == null) order = 0;
-		Integer freeValuesForEachQuest = Integer.MAX_VALUE / questTypeOrder.size();
+		int freeValuesForEachQuest = Integer.MAX_VALUE / questTypeOrder.size();
 		order = order * freeValuesForEachQuest;
 
 		// quest ID is used to add values unique to each quest to make ordering consistent
