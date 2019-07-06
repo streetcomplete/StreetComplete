@@ -385,7 +385,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 	}
 */
 
-	protected Long questPriority(Quest quest){
+	private Long getQuestPriority(Quest quest){
 		// priority is decided by
 		// - primarily by quest type to allow quest prioritization
 		// - for quests of the same type - influenced by quest id,
@@ -450,7 +450,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 				geoJson.append("\",\"");
 				geoJson.append("order");
 				geoJson.append("\":\"");
-				geoJson.append(questPriority(quest));
+				geoJson.append(getQuestPriority(quest));
 				geoJson.append("\"}}");
 			}
 		}
