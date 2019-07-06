@@ -385,7 +385,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 	}
 */
 
-	private Long getQuestPriority(Quest quest){
+	private int getQuestPriority(Quest quest){
 		// priority is decided by
 		// - primarily by quest type to allow quest prioritization
 		// - for quests of the same type - influenced by quest id,
@@ -399,7 +399,8 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		order *= freeValuesForEachQuest;
 
 		// quest ID is used to add values unique to each quest to make ordering consistent
-		long hopefullyUniqueValueForQuest = quest.getId() % freeValuesForEachQuest;
+		// freeValuesForEachQuest is an int, so % freeValuesForEachQuest will fit into int
+		int hopefullyUniqueValueForQuest = (int) (quest.getId() % freeValuesForEachQuest);
 
 		return order + hopefullyUniqueValueForQuest;
 	}
