@@ -659,5 +659,5 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_ferry_pedestrian_title">Does this ferry route transport pedestrians?</string>
     <string name="quest_ferry_motor_vehicle_name_title">Does %s transport motor vehicles?</string>
     <string name="quest_ferry_motor_vehicle_title">Does this ferry route transport motor vehicles?</string>
-    <string name="create_new_note_hint">Note text goes here. Other mappers editing in this region will see it. You can use any language, but generally one understood by local mappers is the best.</string>
+    <string name="create_new_note_hint">Best write the note in the locally spoken language or otherwise in English.</string>
 </resources>
