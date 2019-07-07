@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.quests.max_weight
 
-//if the minimum required API would be 24, we could maybe use https://developer.android.com/reference/android/icu/util/Measure
 abstract class Measure {
     abstract fun toTons(): Double
     abstract override fun toString(): String
