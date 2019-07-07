@@ -26,7 +26,7 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
     override val otherAnswers = listOf(
             OtherAnswer(R.string.quest_maxweight_answer_other_sign) { onUnsupportedSign() },
             OtherAnswer(R.string.quest_maxweight_answer_sign_with_exceptions) { onUnsupportedSign() },
-            OtherAnswer(R.string.quest_maxweight_answer_noSign) { applyAnswer(NoMaxWeightSign("dummy")) }
+            OtherAnswer(R.string.quest_maxweight_answer_noSign) { applyAnswer(NoMaxWeightSign) }
     )
 
     private fun onUnsupportedSign() {
