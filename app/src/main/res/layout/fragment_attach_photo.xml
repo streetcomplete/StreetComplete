@@ -15,8 +15,8 @@
         android:id="@+id/photosAreUsefulExplanation"
         android:layout_toEndOf="@id/takePhotoButton"
         android:text="@string/quest_leave_new_note_photos_are_useful"
-        android:layout_width="120dp"
-        android:layout_height="64dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_centerVertical="true"/>
 
     <androidx.recyclerview.widget.RecyclerView
