@@ -25,11 +25,13 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osmnotes.AttachPhotoUtils
 
 import android.app.Activity.RESULT_OK
+import android.database.DataSetObserver
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.ApplicationConstants.ATTACH_PHOTO_MAXWIDTH
 import de.westnordost.streetcomplete.ApplicationConstants.ATTACH_PHOTO_QUALITY
 import de.westnordost.streetcomplete.ktx.toast
+import de.westnordost.streetcomplete.util.AdapterDataChangedWatcher
 import kotlinx.android.synthetic.main.fragment_attach_photo.*
 
 class AttachPhotoFragment : Fragment() {
@@ -84,6 +86,7 @@ class AttachPhotoFragment : Fragment() {
             false
         )
         gridView.adapter = noteImageAdapter
+        noteImageAdapter.registerAdapterDataObserver(AdapterDataChangedWatcher { updateHintVisibility() })
         updateHintVisibility()
     }
 
@@ -141,7 +144,6 @@ class AttachPhotoFragment : Fragment() {
             }
             currentImagePath = null
         }
-        updateHintVisibility()
     }
 
     private fun removeCurrentImage() {
