@@ -1,11 +1,11 @@
 package de.westnordost.streetcomplete.quests.max_weight
 
-abstract class Measure {
+sealed class WeightMeasure {
     abstract fun toTons(): Double
     abstract override fun toString(): String
 }
 
-data class MetricMeasure(val tons: Double) : Measure() {
+data class MetricWeightMeasure(val tons: Double) : WeightMeasure() {
     override fun toTons() = tons
     override fun toString() =
         if (tons % 1 == 0.0) {
@@ -15,7 +15,7 @@ data class MetricMeasure(val tons: Double) : Measure() {
         }
 }
 
-data class UsShortTons(val tons: Double) : Measure() {
+data class UsShortTons(val tons: Double) : WeightMeasure() {
     override fun toTons() = tons * 0.90718474
     override fun toString() =
             if (tons % 1 == 0.0) {
@@ -25,7 +25,7 @@ data class UsShortTons(val tons: Double) : Measure() {
             }
 }
 
-data class ImperialMeasure(val pounds: Int) : Measure() {
+data class ImperialWeightMeasure(val pounds: Int) : WeightMeasure() {
     override fun toTons() = pounds * 0.45359237 / 1000
     override fun toString() = "$pounds lbs"
 }

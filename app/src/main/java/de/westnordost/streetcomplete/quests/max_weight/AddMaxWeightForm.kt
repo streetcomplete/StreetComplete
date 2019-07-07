@@ -134,7 +134,7 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
         applyAnswer(MaxWeight(getWeightFromInput()!!))
     }
 
-    private fun getWeightFromInput(): Measure? {
+    private fun getWeightFromInput(): WeightMeasure? {
         try {
             if (isMetric()) {
                 val input = InputUtil.numberInputToStandardString(tonInput)
@@ -143,13 +143,13 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
                     if ("US" == country) {
                         return UsShortTons(input.toDouble())
                     }
-                    return MetricMeasure(input.toDouble())
+                    return MetricWeightMeasure(input.toDouble())
                 }
             } else {
                 val poundString = InputUtil.numberInputToStandardString(poundInput)
 
                 if (poundString.isNotEmpty()) {
-                    return ImperialMeasure(poundString.toInt())
+                    return ImperialWeightMeasure(poundString.toInt())
                 }
             }
         } catch (e: NumberFormatException) {
