@@ -625,4 +625,6 @@
     <string name="theme_dark">"어두움"</string>
     <string name="theme_system_default">"시스템 기본값"</string>
     <string name="quest_placeName_title_name">"이 장소의 명칭은 무엇입니까? (%s)"</string>
+    <string name="action_open_location">"다른 앱에서 위치 열기"</string>
+    <string name="map_application_missing">"설치된 다른 지도 앱이 없습니다"</string>
 </resources>

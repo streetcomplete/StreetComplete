@@ -1,9 +1,11 @@
 package de.westnordost.streetcomplete.data;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 
 import java.io.File;
 
+import javax.inject.Inject;
 import javax.inject.Named;
 import javax.inject.Provider;
 import javax.inject.Singleton;
@@ -12,6 +14,7 @@ import dagger.Module;
 import dagger.Provides;
 import de.westnordost.osmapi.user.UserDao;
 import de.westnordost.streetcomplete.ApplicationConstants;
+import de.westnordost.streetcomplete.Prefs;
 import de.westnordost.streetcomplete.data.osm.OsmQuestGiver;
 import de.westnordost.streetcomplete.data.osm.download.ElementGeometryCreator;
 import de.westnordost.streetcomplete.data.osm.download.OsmApiWayGeometrySource;
@@ -40,7 +43,7 @@ public class OsmModule
 {
 	public static final String
 		OSM_API_URL = "https://api.openstreetmap.org/api/0.6/",
-		OVERPASS_API_URL = "https://overpass-api.de/api/",
+		OVERPASS_API_WITH_ATTIC_DATA_URL = "https://overpass-api.de/api/", // required for some tests
 		ONEWAY_API_URL = "https://www.westnordost.de/streetcomplete/oneway-data-api/";
 
 
@@ -61,19 +64,27 @@ public class OsmModule
 		return new OsmMapDataFactory();
 	}
 
+	// see https://wiki.openstreetmap.org/wiki/Overpass_API/Overpass_QL#timeout:
+	// default value is 180 seconds
+	// give additional 4 seconds to get and process refusal from Overpass
+	// or maybe a bit late response rather than trigger timeout exception
+	private static int OVERPASS_QUERY_TIMEOUT_IN_MILISECONDS = (180 + 4) * 1000;
+
 	@Provides public static OverpassMapDataDao overpassMapDataDao(
-			Provider<OverpassMapDataParser> parserProvider)
+			Provider<OverpassMapDataParser> parserProvider, SharedPreferences prefs)
 	{
+		Integer timeout = OVERPASS_QUERY_TIMEOUT_IN_MILISECONDS;
 		OsmConnection overpassConnection = new OsmConnection(
-				OVERPASS_API_URL, ApplicationConstants.USER_AGENT, null);
+			prefs.getString(Prefs.OVERPASS_URL, OVERPASS_API_WITH_ATTIC_DATA_URL), ApplicationConstants.USER_AGENT, null, timeout);
 		return new OverpassMapDataDao(overpassConnection, parserProvider);
 	}
 
 	@Provides public static OverpassOldMapDataDao overpassOldMapDataDao(
 		Provider<OverpassMapDataParser> parserProvider, String date)
 	{
+		Integer timeout = OVERPASS_QUERY_TIMEOUT_IN_MILISECONDS;
 		OsmConnection overpassConnection = new OsmConnection(
-			OVERPASS_API_URL, ApplicationConstants.USER_AGENT, null);
+			OVERPASS_API_WITH_ATTIC_DATA_URL, ApplicationConstants.USER_AGENT, null, timeout);
 		return new OverpassOldMapDataDao(overpassConnection, parserProvider, date);
 	}
 

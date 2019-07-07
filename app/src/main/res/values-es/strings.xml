@@ -689,4 +689,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
     <!-- @riccot Yo iría más por «Predeterminada», por defecto está mal dicho, aunque sea común. -->
     <string name="theme_system_default">"Predeterminada"</string>
     <string name="quest_placeName_title_name">"¿Qué es él nombré dé éste lugar? (%s)"</string>
+    <string name="action_open_location">"Abrir lugar en otra app"</string>
+    <string name="map_application_missing">"No hay otra aplicación para mapas instalada"</string>
 </resources>

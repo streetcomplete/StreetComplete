@@ -21,6 +21,8 @@ Follow [**this link** to improve the translations](https://poeditor.com/join/pro
 
 [![POEditor](https://poeditor.com/public/images/logo_small.png)](https://poeditor.com/join/project/IE4GC127Ki)
 
+After joining [main site of the POEditor](https://poeditor.com/projects/) should list StreetComplete for logged in users.
+
 Before each release, translations are pulled in from POEditor.
 
 ## Solving notes

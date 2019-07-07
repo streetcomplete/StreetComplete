@@ -652,4 +652,6 @@ Per example 1,3 o 2-6."</string>
     <string name="theme_dark">"Fosc"</string>
     <string name="theme_system_default">"Predeterminat del sistema"</string>
     <string name="quest_placeName_title_name">"Quin nom té aquest lloc? (%s)"</string>
+    <string name="action_open_location">"Obre la ubicació en una altra aplicació"</string>
+    <string name="map_application_missing">"No hi ha cap altra aplicació de mapes instal·lada"</string>
 </resources>

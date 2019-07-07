@@ -385,6 +385,26 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 	}
 */
 
+	private int getQuestPriority(Quest quest){
+		// priority is decided by
+		// - primarily by quest type to allow quest prioritization
+		// - for quests of the same type - influenced by quest id,
+		//   this is done to reduce chance that as user zoom in a quest disappears,
+		//   especially in case where disappearing quest is one that user selected to solve
+
+		// main priority part - values fit into Integer, but with as large steps as possible
+		Integer order = questTypeOrder.get(quest.getType());
+		if(order == null) order = 0;
+		int freeValuesForEachQuest = Integer.MAX_VALUE / questTypeOrder.size();
+		order *= freeValuesForEachQuest;
+
+		// quest ID is used to add values unique to each quest to make ordering consistent
+		// freeValuesForEachQuest is an int, so % freeValuesForEachQuest will fit into int
+		int hopefullyUniqueValueForQuest = (int) (quest.getId() % freeValuesForEachQuest);
+
+		return order + hopefullyUniqueValueForQuest;
+	}
+
 	@UiThread
 	public void addQuests(Iterable quests, QuestGroup group)
 	{
@@ -405,9 +425,6 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 			}
 
 			String questIconName = getActivity().getResources().getResourceEntryName(quest.getType().getIcon());
-
-			Integer order = questTypeOrder.get(quest.getType());
-			if(order == null) order = 0;
 
 			LatLon[] positions = quest.getMarkerLocations();
 
@@ -434,7 +451,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 				geoJson.append("\",\"");
 				geoJson.append("order");
 				geoJson.append("\":\"");
-				geoJson.append(order);
+				geoJson.append(getQuestPriority(quest));
 				geoJson.append("\"}}");
 			}
 		}

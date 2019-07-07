@@ -79,7 +79,7 @@ class OverpassMapDataParserTest {
 	    ), relation.members)
         assertNull(relation.tags)
 	    assertEquals(
-		    ElementGeometry(listOf(p.subList(2,4), p.subList(0,2)), null),
+		    ElementGeometry(listOf(p.subList(0,2), p.subList(2,4)), null),
 		    eg.geometry
 	    )
     }

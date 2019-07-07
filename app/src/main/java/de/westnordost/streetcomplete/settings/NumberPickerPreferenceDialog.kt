@@ -21,7 +21,7 @@ class NumberPickerPreferenceDialog : PreferenceDialogFragmentCompat() {
         values = intValues.map { "$it" }.toTypedArray()
         var index = values.indexOf(pref.value.toString())
         if(index == -1) {
-            do ++index while(intValues[index] < pref.value)
+            do ++index while(index < intValues.lastIndex && intValues[index] < pref.value)
         }
 	    picker.apply {
             displayedValues = values

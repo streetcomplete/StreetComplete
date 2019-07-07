@@ -20,6 +20,7 @@
         android:inputType="textMultiLine"
         android:gravity="top|start"
         android:minLines="3"
+        android:hint="@string/create_new_note_hint"
         />
 
     <FrameLayout

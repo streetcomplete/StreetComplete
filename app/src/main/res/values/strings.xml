@@ -647,10 +647,17 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="theme_light">Light</string>
     <string name="theme_dark">Dark</string>
     <string name="theme_system_default">System default</string>
+    <string name="pref_title_overpass_url_select">Change Overpass server</string>
+    <string name="pref_title_overpass_url_info">Requires application restart to apply. May bypass censorship, for example in Russia.</string>
     <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">This street was tagged as having no sidewalk on either side. In the case that there is a sidewalk after all but it is displayed as a separate way, please answer \"sidewalk\".</string>
     <string name="action_open_location">Open location in another app</string>
     <string name="map_application_missing">No other map application installed</string>
     <string name="label_housenumber">house number</string>
     <string name="label_blocknumber">block number</string>
     <string name="quest_busStopShelter_covered">Whole stop is covered</string>
+    <string name="quest_ferry_pedestrian_name_title">Does %s transport pedestrians?</string>
+    <string name="quest_ferry_pedestrian_title">Does this ferry route transport pedestrians?</string>
+    <string name="quest_ferry_motor_vehicle_name_title">Does %s transport motor vehicles?</string>
+    <string name="quest_ferry_motor_vehicle_title">Does this ferry route transport motor vehicles?</string>
+    <string name="create_new_note_hint">Best write the note in the locally spoken language or otherwise in English.</string>
 </resources>
