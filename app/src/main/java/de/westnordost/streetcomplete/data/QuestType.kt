@@ -14,6 +14,8 @@ interface QuestType<T> {
      * if it is not disabled by default */
     val defaultDisabledMessage: Int get() = 0
 
+    val nameGivingTags: List<String> get() = listOf("name", "brand")
+
     /** returns the dialog in which the user can add the data */
     fun createForm(): AbstractQuestAnswerFragment<T>
 }
