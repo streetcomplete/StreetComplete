@@ -39,7 +39,7 @@ class AddPlaceName(
             ),
             "tourism" to arrayOf(
                 "attraction", "zoo", "aquarium", "theme_park", "gallery", "museum",                                          // attractions
-                "hotel", "guest_house", "motel", "hostel", "alpine_hut", "apartment", "resort", "camp_site", "caravan_site"  // accomodations
+                "hotel", "guest_house", "motel", "hostel", "alpine_hut", "apartment", "resort", "camp_site", "caravan_site"  // accommodations
                 // and tourism=information, see above
             ),
             "leisure" to arrayOf(
