@@ -29,13 +29,13 @@ class AddPlaceName(
                 "townhall", "prison", "courthouse", "embassy", "police", "fire_station", "ranger_station",                              // civic
                 "bank", "bureau_de_change", "money_transfer", "post_office", "library", "marketplace", "internet_cafe",                 // commercial
                 "community_centre", "social_facility", "nursing_home", "childcare", "retirement_home", "social_centre", "youth_centre", // social
-                "car_wash", "car_rental", "boat_rental", "fuel",                                                                        // car stuff
+                "car_wash", "car_rental", "boat_rental", "fuel",                                                                        // transport
                 "dentist", "doctors", "clinic", "pharmacy", "hospital",                                                                 // health care
                 "place_of_worship", "monastery",                                                                                        // religious
                 "kindergarten", "school", "college", "university", "research_institute",                                                // education
                 "driving_school", "dive_centre", "language_school", "music_school",                                                     // learning
                 "casino", "brothel", "gambling", "love_hotel", "stripclub",                                                             // bad stuff
-                "animal_boarding", "animal_shelter", "animal_breeding", "veterinary"
+                "animal_boarding", "animal_shelter", "animal_breeding", "veterinary"                                                    // animals
             ),
             "tourism" to arrayOf(
                 "attraction", "zoo", "aquarium", "theme_park", "gallery", "museum",                                          // attractions
