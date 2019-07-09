@@ -1122,6 +1122,20 @@ public class MainActivity extends AppCompatActivity implements
 
 	// ---------------------------------------------------------------------------------------------
 
+	/** Menu raised by clicking on the star icon */
+	public void starInfoMenu(View view) {
+		String message = getString(R.string.about_contributing) + "\n\n" + getString(R.string.about_missing_stars);
+		if(answersCounter.waitingForUpload() + answersCounter.uploaded() == 0){
+			message = getString(R.string.how_to_get_stars) + "\n\n" + getString(R.string.about_contributing);
+		}
+		new AlertDialog.Builder(MainActivity.this)
+			.setMessage(message)
+			.show();
+	}
+
+
+	// ---------------------------------------------------------------------------------------------
+
 	/** Does not necessarily mean that the user has internet. But if he is not connected, he will
 	 *  not have internet */
 	private boolean isConnected()
