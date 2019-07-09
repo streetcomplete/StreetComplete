@@ -29,7 +29,7 @@ class AddPlaceName(
                 "townhall", "prison", "courthouse", "embassy", "police", "fire_station", "ranger_station",                              // civic
                 "bank", "bureau_de_change", "money_transfer", "post_office", "library", "marketplace", "internet_cafe",                 // commercial
                 "community_centre", "social_facility", "nursing_home", "childcare", "retirement_home", "social_centre", "youth_centre", // social
-                "car_wash", "car_rental", "boat_rental", "fuel",                                                                        // transport
+                "car_wash", "car_rental", "boat_rental", "fuel", "ferry_terminal",                                                      // transport
                 "dentist", "doctors", "clinic", "pharmacy", "hospital",                                                                 // health care
                 "place_of_worship", "monastery",                                                                                        // religious
                 "kindergarten", "school", "college", "university", "research_institute",                                                // education
