@@ -907,6 +907,7 @@ public class MainActivity extends AppCompatActivity implements
 		if(questAutoSyncer.isAllowedByPreference())
 		{
 			if (!oAuth.isAuthorized()) {
+				// new users should not be immediately pestered to login after each change (#1446)
 				if(answersCounter.waitingForUpload() > 5) {
 					requestOAuthorized();
 				}
