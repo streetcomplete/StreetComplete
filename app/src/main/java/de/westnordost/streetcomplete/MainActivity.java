@@ -494,7 +494,6 @@ public class MainActivity extends AppCompatActivity implements
 	@UiThread private void requestOAuthorized()
 	{
 		if(dontShowRequestAuthorizationAgain) return;
-		if(answersCounter.waitingForUpload() <= 5) return;
 
 		View inner = LayoutInflater.from(this).inflate(
 				R.layout.dialog_authorize_now, null, false);
@@ -907,8 +906,14 @@ public class MainActivity extends AppCompatActivity implements
 	{
 		if(questAutoSyncer.isAllowedByPreference())
 		{
-			if (!oAuth.isAuthorized()) requestOAuthorized();
-			else questAutoSyncer.triggerAutoUpload();
+			if (!oAuth.isAuthorized()) {
+				if(answersCounter.waitingForUpload() > 5) {
+					requestOAuthorized();
+				}
+			}
+			else {
+				questAutoSyncer.triggerAutoUpload();
+			}
 		}
 	}
 
