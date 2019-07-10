@@ -44,6 +44,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -246,6 +247,9 @@ public class MainActivity extends AppCompatActivity implements
 
 		downloadProgressBar = findViewById(R.id.download_progress);
 		downloadProgressBar.setMax(1000);
+
+		RelativeLayout starMenu = findViewById(R.id.uploadedAnswersContainer);
+		starMenu.setOnClickListener(this::starInfoMenu);
 
 		mapFragment = (QuestsMapFragment) getSupportFragmentManager().findFragmentById(R.id.map_fragment);
 		mapFragment.getMapAsync(BuildConfig.MAPZEN_API_KEY);

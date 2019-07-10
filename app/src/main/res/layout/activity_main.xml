@@ -42,7 +42,8 @@
                 android:paddingEnd="12dp"
                 android:clipChildren="false"
                 android:minWidth="84dp"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:clickable="true">
 
                 <ProgressBar
                     android:id="@+id/uploadedAnswersProgress"
@@ -59,8 +60,7 @@
                     android:layout_height="wrap_content"
                     android:padding="8dp"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/ic_star_white_24dp"
-                    android:onClick="starInfoMenu"/>
+                    android:src="@drawable/ic_star_white_24dp"/>
 
                 <TextView
                     android:id="@+id/uploadedAnswersCounter"
