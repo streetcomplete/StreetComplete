@@ -1,9 +1,10 @@
-package de.westnordost.streetcomplete.data.osm.split
+package de.westnordost.streetcomplete.data.osm.upload
 
 import de.westnordost.osmapi.map.MapDataDao
 import de.westnordost.osmapi.map.data.*
 import de.westnordost.osmapi.map.data.Element.Type.*
 import de.westnordost.streetcomplete.argumentCaptor
+import de.westnordost.streetcomplete.data.osm.changes.SplitWayAtPosition
 import de.westnordost.streetcomplete.eq
 import de.westnordost.streetcomplete.on
 import de.westnordost.streetcomplete.util.SphericalEarthMath
@@ -11,12 +12,10 @@ import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
 import org.mockito.ArgumentCaptor
-import org.mockito.Mockito
-import org.mockito.Mockito.reset
-import org.mockito.Mockito.verify
+import org.mockito.Mockito.*
 
-class SplitWayUploadTest {
-    private val uploader: SplitWayUpload
+class SplitSingleOsmWayUploadTest {
+    private val uploader: SplitSingleOsmWayUpload
     private val osmDao: MapDataDao
 
     private val node1 = OsmNode(1, 1, 0.0, 0.0, null)
@@ -28,11 +27,12 @@ class SplitWayUploadTest {
             field = value
             on(osmDao.getWay(1)).thenReturn(way)
         }
-    private val split = SplitWayAtPosition(way, node2, node3, 0.5)
+    private val split =
+        SplitWayAtPosition(way, node2, node3, 0.5)
 
     init {
-        osmDao = Mockito.mock(MapDataDao::class.java)
-        uploader = SplitWayUpload(osmDao)
+        osmDao = mock(MapDataDao::class.java)
+        uploader = SplitSingleOsmWayUpload(osmDao)
     }
 
     @Before fun setUp() {
@@ -52,67 +52,67 @@ class SplitWayUploadTest {
         doSplit(SplitWayAtPosition(way, node1, node2, 0.5))
     }
 
-    @Test(expected = ConflictException::class)
+    @Test(expected = ElementConflictException::class)
     fun `raise conflict if way was deleted`() {
         on(osmDao.getWay(1)).thenReturn(null)
         doSplit()
     }
 
-    @Test(expected = ConflictException::class)
+    @Test(expected = ElementConflictException::class)
     fun `raise conflict if updated way was cut at the start`() {
         on(osmDao.getWay(1)).thenReturn(wayWithNodes(2,3,4))
         doSplit()
     }
 
-    @Test(expected = ConflictException::class)
+    @Test(expected = ElementConflictException::class)
     fun `raise conflict if updated way was cut at the end`() {
         on(osmDao.getWay(1)).thenReturn(wayWithNodes(1,2,3))
         doSplit()
     }
 
-    @Test(expected = ConflictException::class)
+    @Test(expected = ElementConflictException::class)
     fun `raise conflict if updated way has split position at its very start`() {
         on(osmDao.getWay(1)).thenReturn(wayWithNodes(2,3,4))
         doSplit(SplitWayAtPosition(way, node2, node3, 0.0))
     }
 
-    @Test(expected = ConflictException::class)
+    @Test(expected = ElementConflictException::class)
     fun `raise conflict if first node is not in the updated way`() {
         on(osmDao.getWay(1)).thenReturn(wayWithNodes(1,3,4))
         doSplit()
     }
 
-    @Test(expected = ConflictException::class)
+    @Test(expected = ElementConflictException::class)
     fun `raise conflict if second node is not in the updated way`() {
         on(osmDao.getWay(1)).thenReturn(wayWithNodes(1,2,4))
         doSplit()
     }
 
-    @Test(expected = ConflictException::class)
+    @Test(expected = ElementConflictException::class)
     fun `raise conflict if the second node is not directly after the first one in the updated way`() {
         on(osmDao.getWay(1)).thenReturn(wayWithNodes(1,3,2,4))
         doSplit()
     }
 
-    @Test(expected = ConflictException::class)
+    @Test(expected = ElementConflictException::class)
     fun `raise conflict if first node of split position was deleted`() {
         on(osmDao.getNode(2)).thenReturn(null)
         doSplit()
     }
 
-    @Test(expected = ConflictException::class)
+    @Test(expected = ElementConflictException::class)
     fun `raise conflict if second node of split position was deleted`() {
         on(osmDao.getNode(3)).thenReturn(null)
         doSplit()
     }
 
-    @Test(expected = ConflictException::class)
+    @Test(expected = ElementConflictException::class)
     fun `raise conflict if first node of split position has been moved`() {
         on(osmDao.getNode(2)).thenReturn(OsmNode(2, 2, 0.333, 0.333, null))
         doSplit()
     }
 
-    @Test(expected = ConflictException::class)
+    @Test(expected = ElementConflictException::class)
     fun `raise conflict if second node of split position has been moved`() {
         on(osmDao.getNode(3)).thenReturn(OsmNode(3, 2, 0.333, 0.333, null))
         doSplit()
@@ -152,7 +152,8 @@ class SplitWayUploadTest {
             SphericalEarthMath.createTranslated(
                 p1.latitude + 0.5 * (p2.latitude - p1.latitude),
                 p1.longitude + 0.5 * (p2.longitude - p1.longitude)),
-            node.position)
+            node.position
+        )
 
         assertTrue(elements.waysNodeIds.containsAll(listOf<List<Long>>(
             listOf(1,2,-1),
@@ -541,13 +542,14 @@ class SplitWayUploadTest {
         `update a restriction-like relation with split-way and via node`("destination_sign", "sign", "from")
     }
 
-    // TODO test modification aware...?
-
     private fun doSplit(vararg splits: SplitWayAtPosition = arrayOf(split)) : Elements {
         uploader.upload(0, way, splits.asList())
         val arg: ArgumentCaptor<Iterable<Element>> = argumentCaptor()
-        verify(osmDao).uploadChanges(eq(0), arg.capture(), eq(null))
+        verify(osmDao).uploadChanges(eq(0), arg.capture(), any())
         val elements = arg.value.toList()
+        for (element in elements) {
+            assertTrue(element.isModified || element.isNew )
+        }
         return Elements(
             elements.mapNotNull { it as? Node },
             elements.mapNotNull { it as? Way },

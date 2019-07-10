@@ -137,4 +137,8 @@ public class OsmQuest implements Quest
 	{
 		this.id = id;
 	}
+
+	public Boolean isApplicableTo(Element element) {
+		return type.isApplicableTo(element);
+	}
 }

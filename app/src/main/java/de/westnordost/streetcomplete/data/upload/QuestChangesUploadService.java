@@ -23,7 +23,9 @@ import de.westnordost.streetcomplete.Injector;
 import de.westnordost.streetcomplete.data.VisibleQuestListener;
 import de.westnordost.streetcomplete.data.VisibleQuestRelay;
 import de.westnordost.streetcomplete.data.osm.upload.OsmQuestChangesetsUpload;
-import de.westnordost.streetcomplete.data.osm.upload.UndoOsmQuestChangesetsUpload;
+import de.westnordost.streetcomplete.data.osm.upload.OsmQuestsUpload;
+import de.westnordost.streetcomplete.data.osm.upload.SplitOsmWaysUpload;
+import de.westnordost.streetcomplete.data.osm.upload.UndoOsmQuestsUpload;
 import de.westnordost.streetcomplete.data.osmnotes.CreateNoteUpload;
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestChangesUpload;
 import de.westnordost.streetcomplete.oauth.OAuthPrefs;
@@ -32,15 +34,17 @@ import de.westnordost.streetcomplete.oauth.OAuthPrefs;
  *  notes and quests he answered */
 public class QuestChangesUploadService extends IntentService
 {
-	private static final String TAG = "QuestChangesUpload";
+	private static final String TAG = "Upload";
 
 	private static Boolean banned = null;
 	private static String banReason = null;
 
 	@Inject Provider<OsmNoteQuestChangesUpload> noteQuestUploadProvider;
-	@Inject Provider<OsmQuestChangesetsUpload> questUploadProvider;
-	@Inject Provider<UndoOsmQuestChangesetsUpload> undoQuestUploadProvider;
+	@Inject Provider<OsmQuestsUpload> questUploadProvider;
+	@Inject Provider<UndoOsmQuestsUpload> undoQuestUploadProvider;
 	@Inject Provider<CreateNoteUpload> createNoteUploadProvider;
+	@Inject Provider<SplitOsmWaysUpload> splitWaysUploadProvider;
+	@Inject Provider<OsmQuestChangesetsUpload> changesetsUploadProvider;
 	@Inject OAuthPrefs oAuth;
 
 	private final IBinder binder = new Interface();
@@ -108,7 +112,7 @@ public class QuestChangesUploadService extends IntentService
 				throw new OsmAuthorizationException(401, "Unauthorized", "User is not authorized");
 			}
 
-			Log.i(TAG, "Starting upload changes");
+			Log.i(TAG, "Starting upload");
 
 			OsmNoteQuestChangesUpload noteQuestUpload = noteQuestUploadProvider.get();
 			noteQuestUpload.setProgressListener(uploadedChangeRelay);
@@ -116,17 +120,20 @@ public class QuestChangesUploadService extends IntentService
 
 			if (cancelState.get()) return;
 
-			UndoOsmQuestChangesetsUpload undoOsmQuestUpload = undoQuestUploadProvider.get();
-			undoOsmQuestUpload.setProgressListener(uploadedChangeRelay);
-			undoOsmQuestUpload.setVisibleQuestListener(visibleQuestRelay);
-			undoOsmQuestUpload.upload(cancelState);
+			OsmQuestChangesetsUpload osmQuestChangesetsUpload = changesetsUploadProvider.get();
+			osmQuestChangesetsUpload.setCancelState(cancelState);
+			osmQuestChangesetsUpload.setProgressListener(uploadedChangeRelay);
+			osmQuestChangesetsUpload.setVisibleQuestListener(visibleQuestRelay);
+
+			undoQuestUploadProvider.get().upload(osmQuestChangesetsUpload);
 
 			if (cancelState.get()) return;
 
-			OsmQuestChangesetsUpload osmQuestUpload = questUploadProvider.get();
-			osmQuestUpload.setProgressListener(uploadedChangeRelay);
-			osmQuestUpload.setVisibleQuestListener(visibleQuestRelay);
-			osmQuestUpload.upload(cancelState);
+			questUploadProvider.get().upload(osmQuestChangesetsUpload);
+
+			if (cancelState.get()) return;
+
+			splitWaysUploadProvider.get().upload(osmQuestChangesetsUpload);
 
 			if (cancelState.get()) return;
 
@@ -136,7 +143,7 @@ public class QuestChangesUploadService extends IntentService
 		}
 		catch (Exception e)
 		{
-			Log.e(TAG, "Unable to upload changes", e);
+			Log.e(TAG, "Unable to upload", e);
 			if(progressListener != null)
 			{
 				progressListener.onError(e);
@@ -148,7 +155,7 @@ public class QuestChangesUploadService extends IntentService
 			progressListener.onFinished();
 		}
 
-		Log.i(TAG, "Finished upload changes");
+		Log.i(TAG, "Finished upload");
 	}
 
 	private static boolean isBanned()

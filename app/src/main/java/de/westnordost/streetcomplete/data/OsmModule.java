@@ -5,8 +5,6 @@ import android.content.SharedPreferences;
 
 import java.io.File;
 
-import javax.inject.Inject;
-import javax.inject.Named;
 import javax.inject.Provider;
 import javax.inject.Singleton;
 
@@ -22,8 +20,7 @@ import de.westnordost.streetcomplete.data.osm.download.OverpassOldMapDataDao;
 import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao;
 import de.westnordost.streetcomplete.data.osm.persist.MergedElementDao;
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
-import de.westnordost.streetcomplete.data.osm.persist.UndoOsmQuestDao;
-import de.westnordost.streetcomplete.data.osm.upload.OsmQuestChangeUpload;
+import de.westnordost.streetcomplete.data.osm.upload.SingleOsmQuestUpload;
 import de.westnordost.streetcomplete.data.osmnotes.OsmAvatarsDownload;
 import de.westnordost.streetcomplete.oauth.OAuthPrefs;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
@@ -118,21 +115,12 @@ public class OsmModule
 		return new MapDataDao(osm);
 	}
 
-	@Provides public static OsmQuestChangeUpload osmQuestChangeUpload(
+	@Provides public static SingleOsmQuestUpload osmQuestChangeUpload(
 		MapDataDao osmDao, OsmQuestDao questDB, MergedElementDao elementDB,
 		ElementGeometryDao elementGeometryDB, OsmApiWayGeometrySource wayGeometrySource,
 		OsmQuestGiver questGiver)
 	{
-		return new OsmQuestChangeUpload(osmDao, questDB, elementDB, elementGeometryDB,
-			new ElementGeometryCreator(wayGeometrySource), questGiver);
-	}
-
-	@Provides @Named("undo") public static OsmQuestChangeUpload undoOsmQuestChangeUpload(
-		MapDataDao osmDao, UndoOsmQuestDao questDB, MergedElementDao elementDB,
-		ElementGeometryDao elementGeometryDB, OsmApiWayGeometrySource wayGeometrySource,
-		OsmQuestGiver questGiver)
-	{
-		return new OsmQuestChangeUpload(osmDao, questDB, elementDB, elementGeometryDB,
+		return new SingleOsmQuestUpload(osmDao, questDB, elementDB, elementGeometryDB,
 			new ElementGeometryCreator(wayGeometrySource), questGiver);
 	}
 

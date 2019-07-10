@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.data.osm.split
+package de.westnordost.streetcomplete.data.osm.changes
 
 import de.westnordost.osmapi.map.data.OsmNode
 import de.westnordost.osmapi.map.data.OsmWay

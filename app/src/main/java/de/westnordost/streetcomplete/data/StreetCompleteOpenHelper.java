@@ -12,6 +12,7 @@ import de.westnordost.streetcomplete.data.changesets.OpenChangesetsTable;
 import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryTable;
 import de.westnordost.streetcomplete.data.osm.persist.NodeTable;
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestTable;
+import de.westnordost.streetcomplete.data.osm.persist.SplitWayTable;
 import de.westnordost.streetcomplete.data.osmnotes.CreateNoteTable;
 import de.westnordost.streetcomplete.data.osmnotes.NoteTable;
 import de.westnordost.streetcomplete.data.osm.persist.RelationTable;
@@ -25,29 +26,7 @@ import de.westnordost.streetcomplete.quests.oneway.AddOneway;
 @Singleton
 public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 {
-	public static final int DB_VERSION = 11;
-
-	private static final String OSM_QUESTS_CREATE_PARAMS = " (" +
-			OsmQuestTable.Columns.QUEST_ID +		" INTEGER		PRIMARY KEY, " +
-			OsmQuestTable.Columns.QUEST_TYPE +		" varchar(255)	NOT NULL, " +
-			OsmQuestTable.Columns.QUEST_STATUS +	" varchar(255)	NOT NULL, " +
-			OsmQuestTable.Columns.TAG_CHANGES +		" blob, " + // null if no changes
-			OsmQuestTable.Columns.CHANGES_SOURCE +	" varchar(255), " +
-			OsmQuestTable.Columns.LAST_UPDATE + 	" int			NOT NULL, " +
-			OsmQuestTable.Columns.ELEMENT_ID +		" int			NOT NULL, " +
-			OsmQuestTable.Columns.ELEMENT_TYPE +	" varchar(255)	NOT NULL, " +
-			"CONSTRAINT same_osm_quest UNIQUE (" +
-			OsmQuestTable.Columns.QUEST_TYPE + ", " +
-			OsmQuestTable.Columns.ELEMENT_ID + ", " +
-			OsmQuestTable.Columns.ELEMENT_TYPE +
-			"), " +
-			"CONSTRAINT element_key FOREIGN KEY (" +
-			OsmQuestTable.Columns.ELEMENT_TYPE + ", " + OsmQuestTable.Columns.ELEMENT_ID +
-			") REFERENCES " + ElementGeometryTable.NAME + " (" +
-			ElementGeometryTable.Columns.ELEMENT_TYPE + ", " +
-			ElementGeometryTable.Columns.ELEMENT_ID +
-			")" +
-			");";
+	public static final int DB_VERSION = 12;
 
 	private static final String OSM_QUESTS_TABLE_CREATE_DB_VERSION_3 =
 			"CREATE TABLE " + OsmQuestTable.NAME + " (" +
@@ -73,10 +52,49 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 
 
 	private static final String OSM_QUESTS_TABLE_CREATE =
-			"CREATE TABLE " + OsmQuestTable.NAME + OSM_QUESTS_CREATE_PARAMS;
+			"CREATE TABLE " + OsmQuestTable.NAME + " (" +
+				OsmQuestTable.Columns.QUEST_ID +		" INTEGER		PRIMARY KEY, " +
+				OsmQuestTable.Columns.QUEST_TYPE +		" varchar(255)	NOT NULL, " +
+				OsmQuestTable.Columns.QUEST_STATUS +	" varchar(255)	NOT NULL, " +
+				OsmQuestTable.Columns.TAG_CHANGES +		" blob, " + // null if no changes
+				OsmQuestTable.Columns.CHANGES_SOURCE +	" varchar(255), " +
+				OsmQuestTable.Columns.LAST_UPDATE + 	" int			NOT NULL, " +
+				OsmQuestTable.Columns.ELEMENT_ID +		" int			NOT NULL, " +
+				OsmQuestTable.Columns.ELEMENT_TYPE +	" varchar(255)	NOT NULL, " +
+			"CONSTRAINT same_osm_quest UNIQUE (" +
+				OsmQuestTable.Columns.QUEST_TYPE + ", " +
+				OsmQuestTable.Columns.ELEMENT_ID + ", " +
+				OsmQuestTable.Columns.ELEMENT_TYPE +
+			"), " +
+			"CONSTRAINT element_key FOREIGN KEY (" +
+				OsmQuestTable.Columns.ELEMENT_TYPE + ", " + OsmQuestTable.Columns.ELEMENT_ID +
+			") REFERENCES " + ElementGeometryTable.NAME + " (" +
+				ElementGeometryTable.Columns.ELEMENT_TYPE + ", " +
+				ElementGeometryTable.Columns.ELEMENT_ID +
+			")" +
+			");";
 
 	private static final String UNDO_OSM_QUESTS_TABLE_CREATE =
-			"CREATE TABLE " + OsmQuestTable.NAME_UNDO + OSM_QUESTS_CREATE_PARAMS;
+			"CREATE TABLE " + OsmQuestTable.NAME_UNDO + " (" +
+				OsmQuestTable.Columns.QUEST_ID +		" INTEGER		PRIMARY KEY, " +
+				OsmQuestTable.Columns.QUEST_TYPE +		" varchar(255)	NOT NULL, " +
+				OsmQuestTable.Columns.TAG_CHANGES +		" blob, " + // null if no changes
+				OsmQuestTable.Columns.CHANGES_SOURCE +	" varchar(255), " +
+				OsmQuestTable.Columns.LAST_UPDATE + 	" int			NOT NULL, " +
+				OsmQuestTable.Columns.ELEMENT_ID +		" int			NOT NULL, " +
+				OsmQuestTable.Columns.ELEMENT_TYPE +	" varchar(255)	NOT NULL, " +
+			"CONSTRAINT same_osm_quest UNIQUE (" +
+				OsmQuestTable.Columns.QUEST_TYPE + ", " +
+				OsmQuestTable.Columns.ELEMENT_ID + ", " +
+				OsmQuestTable.Columns.ELEMENT_TYPE +
+			"), " +
+			"CONSTRAINT element_key FOREIGN KEY (" +
+				OsmQuestTable.Columns.ELEMENT_TYPE + ", " + OsmQuestTable.Columns.ELEMENT_ID +
+			") REFERENCES " + ElementGeometryTable.NAME + " (" +
+				ElementGeometryTable.Columns.ELEMENT_TYPE + ", " +
+				ElementGeometryTable.Columns.ELEMENT_ID +
+			")" +
+			");";
 
 	private static final String ELEMENTS_GEOMETRY_TABLE_CREATE =
 			"CREATE TABLE " + ElementGeometryTable.NAME +
@@ -204,7 +222,7 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 			"CREATE TABLE " + OpenChangesetsTable.NAME +
 			" (" +
 				OpenChangesetsTable.Columns.QUEST_TYPE +    " varchar(255), " +
-				OpenChangesetsTable.Columns.SOURCE +		" varchar(255), " +
+				OpenChangesetsTable.Columns.SOURCE +        " varchar(255), " +
 				OpenChangesetsTable.Columns.CHANGESET_ID +  " int	NOT NULL, " +
 				"CONSTRAINT primary_key PRIMARY KEY (" +
 					OpenChangesetsTable.Columns.QUEST_TYPE + ", " +
@@ -218,6 +236,31 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 				QuestVisibilityTable.Columns.QUEST_TYPE +    " varchar(255) PRIMARY KEY, " +
 				QuestVisibilityTable.Columns.VISIBILITY +    " int NOT NULL " +
 			");";
+
+	private static final String SPLIT_WAYS_TABLE_CREATE =
+			"CREATE TABLE " + SplitWayTable.NAME +
+			" (" +
+				SplitWayTable.Columns.WAY_ID +        " int    NOT NULL, " +
+				SplitWayTable.Columns.NODE1_ID +      " int    NOT NULL, " +
+				SplitWayTable.Columns.NODE1_VERSION + " int    NOT NULL, " +
+				SplitWayTable.Columns.NODE1_LAT +     " double NOT NULL, " +
+				SplitWayTable.Columns.NODE1_LON +     " double NOT NULL, " +
+				SplitWayTable.Columns.NODE2_ID +      " int    NOT NULL, " +
+				SplitWayTable.Columns.NODE2_VERSION + " int    NOT NULL, " +
+				SplitWayTable.Columns.NODE2_LAT +     " double NOT NULL, " +
+				SplitWayTable.Columns.NODE2_LON +     " double NOT NULL, " +
+				SplitWayTable.Columns.DELTA +         " double NOT NULL, " +
+				"CONSTRAINT same_split UNIQUE (" +
+					SplitWayTable.Columns.WAY_ID + ", " +
+					SplitWayTable.Columns.NODE1_ID + ", " +
+					SplitWayTable.Columns.NODE2_ID + ", " +
+					SplitWayTable.Columns.DELTA +
+				") " +
+			");";
+
+	private static final String SPLIT_WAYS_INDEX_CREATE =
+			"CREATE INDEX " + SplitWayTable.INDEX_NAME + " ON " + SplitWayTable.NAME +
+			" (" + SplitWayTable.Columns.WAY_ID + ");";
 
 	private final TablesHelper[] extensions;
 
@@ -336,6 +379,11 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 			db.delete(OsmQuestTable.NAME_UNDO, where, args);
 		}
 
+		if(oldVersion < 12 && newVersion >= 12)
+		{
+			db.execSQL(SPLIT_WAYS_TABLE_CREATE);
+			db.execSQL(SPLIT_WAYS_INDEX_CREATE);
+		}
 		// for later changes to the DB
 		// ...
 

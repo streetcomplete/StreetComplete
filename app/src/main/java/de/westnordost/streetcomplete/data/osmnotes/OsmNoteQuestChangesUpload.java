@@ -18,7 +18,7 @@ import de.westnordost.streetcomplete.util.ImageUploader;
 
 public class OsmNoteQuestChangesUpload
 {
-	private static final String TAG = "CommentNoteUpload";
+	private static final String TAG = "Upload";
 
 	private final NotesDao osmDao;
 	private final OsmNoteQuestDao questDB;

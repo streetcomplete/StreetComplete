@@ -25,7 +25,6 @@ import de.westnordost.streetcomplete.on
 import org.junit.Before
 import org.mockito.ArgumentMatchers
 import org.mockito.Mockito.*
-import javax.inject.Provider
 
 class OsmQuestChangesetsUploadTest {
 
@@ -37,7 +36,7 @@ class OsmQuestChangesetsUploadTest {
 	private lateinit var statisticsDB: QuestStatisticsDao
 	private lateinit var openChangesetsDB: OpenChangesetsDao
 	private lateinit var downloadedTilesDao: DownloadedTilesDao
-	private lateinit var osmQuestChangeUpload: OsmQuestChangeUpload
+	private lateinit var singleOsmQuestUpload: SingleOsmQuestUpload
 	private lateinit var changesetAutoCloser: ChangesetAutoCloser
 	private lateinit var quest: OsmQuest
 
@@ -57,11 +56,11 @@ class OsmQuestChangesetsUploadTest {
 		questDB = mock(OsmQuestDao::class.java)
 		on(questDB.getAll(null, QuestStatus.ANSWERED)).thenReturn(listOf(quest))
 
-		osmQuestChangeUpload = mock(OsmQuestChangeUpload::class.java)
+        singleOsmQuestUpload = mock(SingleOsmQuestUpload::class.java)
 
 		uploader = OsmQuestChangesetsUpload(
 			osmDao, questDB, elementDB, elementGeometryDB, statisticsDB, openChangesetsDB,
-			downloadedTilesDao, Provider { osmQuestChangeUpload }, changesetAutoCloser)
+			downloadedTilesDao, changesetAutoCloser)
 	}
 
     @Test fun `cancel upload works`() {
@@ -74,8 +73,9 @@ class OsmQuestChangesetsUploadTest {
         }
 
         val cancel = AtomicBoolean(false)
+        uploader.setCancelState(cancel)
 
-        val thread = Thread { uploader.upload(cancel) }
+        val thread = Thread { uploader.upload(...) }
         thread.start()
 
         cancel.set(true)
@@ -88,15 +88,15 @@ class OsmQuestChangesetsUploadTest {
 		val oldChangesetId = 42L
 		val newChangesetId = 123L
 
-		on(osmQuestChangeUpload.upload(eq(oldChangesetId), any(), anyBoolean()))
+		on(singleOsmQuestUpload.upload(eq(oldChangesetId), any()))
 			.thenThrow(OsmConflictException::class.java)
 
 		on(osmDao.openChangeset(any())).thenReturn(newChangesetId)
 
-		on(osmQuestChangeUpload.upload(eq(newChangesetId), any(), anyBoolean()))
-			.thenReturn(OsmQuestChangeUpload.UploadResult(true, listOf(), listOf()))
+		on(singleOsmQuestUpload.upload(eq(newChangesetId), any()))
+			.thenReturn(OsmQuestUploadResult(true, listOf(), listOf()))
 
-		uploader.upload(AtomicBoolean(false))
+		uploader.upload(...)
 
 		// if it wouldn't work, the mock osmQuestChangeUpload would continue to throw a
 		// OsmConflictException
@@ -105,10 +105,10 @@ class OsmQuestChangesetsUploadTest {
 	}
 
 	@Test fun `invalidates area around quest if upload fails`() {
-		on(osmQuestChangeUpload.upload(anyLong(), any(), anyBoolean())).thenReturn(
-			OsmQuestChangeUpload.UploadResult(false, listOf(), listOf()))
+		on(singleOsmQuestUpload.upload(anyLong(), any())).thenReturn(
+            OsmQuestUploadResult(false, listOf(), listOf()))
 
-		uploader.upload(AtomicBoolean(false))
+		uploader.upload(...)
 
 		verify(downloadedTilesDao).remove(ArgumentMatchers.any())
 	}
@@ -117,35 +117,35 @@ class OsmQuestChangesetsUploadTest {
 		val createdQuests = listOf( mock(OsmQuest::class.java))
 		val removedQuestIds = listOf(1L, 2L)
 
-		on(osmQuestChangeUpload.upload(anyLong(), any(), anyBoolean())).thenReturn(
-			OsmQuestChangeUpload.UploadResult(true, createdQuests, removedQuestIds))
+		on(singleOsmQuestUpload.upload(anyLong(), any())).thenReturn(
+            OsmQuestUploadResult(true, createdQuests, removedQuestIds))
 
 		val listener = mock(VisibleQuestListener::class.java)
 		uploader.setVisibleQuestListener(listener)
-		uploader.upload(AtomicBoolean(false))
+		uploader.upload(...)
 
 		verify(listener).onQuestsCreated(createdQuests, QuestGroup.OSM)
 		verify(listener).onQuestsRemoved(removedQuestIds, QuestGroup.OSM)
 	}
 
 	@Test fun `calls progress listener for successfully uploaded quest`() {
-		on(osmQuestChangeUpload.upload(anyLong(), any(), anyBoolean())).thenReturn(
-			OsmQuestChangeUpload.UploadResult(true, listOf(), listOf()))
+		on(singleOsmQuestUpload.upload(anyLong(), any())).thenReturn(
+            OsmQuestUploadResult(true, listOf(), listOf()))
 
 		val listener = mock(OnUploadedChangeListener::class.java)
 		uploader.setProgressListener(listener)
-		uploader.upload(AtomicBoolean(false))
+		uploader.upload(...)
 
 		verify(listener).onUploaded()
 	}
 
 	@Test fun `calls progress listener for dropped quest`() {
-		on(osmQuestChangeUpload.upload(anyLong(), any(), anyBoolean())).thenReturn(
-			OsmQuestChangeUpload.UploadResult(false, listOf(), listOf()))
+		on(singleOsmQuestUpload.upload(anyLong(), any())).thenReturn(
+            OsmQuestUploadResult(false, listOf(), listOf()))
 
 		val listener = mock(OnUploadedChangeListener::class.java)
 		uploader.setProgressListener(listener)
-		uploader.upload(AtomicBoolean(false))
+		uploader.upload(...)
 
 		verify(listener).onDiscarded()
 	}

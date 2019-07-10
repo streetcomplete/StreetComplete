@@ -252,7 +252,6 @@ public class QuestController
 					quest.getElementId(),
 					quest.getGeometry());
 			reversedQuest.setChanges(quest.getChanges().reversed(), quest.getChangesSource());
-			reversedQuest.setStatus(QuestStatus.ANSWERED);
 			undoOsmQuestDB.add(reversedQuest);
 		}
 		else

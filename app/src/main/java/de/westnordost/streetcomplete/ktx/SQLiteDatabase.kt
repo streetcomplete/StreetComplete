@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.ktx
 
+import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 
 /**
@@ -15,3 +16,18 @@ inline fun <T> SQLiteDatabase.transaction(body: SQLiteDatabase.() -> T): T {
         endTransaction()
     }
 }
+
+
+fun SQLiteDatabase.query(
+    table: String,
+    columns: Array<String>? = null,
+    selection: String? = null,
+    selectionArgs: Array<String>? = null
+) = query(table, columns, selection, selectionArgs, null, null, null, null)
+
+fun SQLiteDatabase.queryOne(
+    table: String,
+    columns: Array<String>? = null,
+    selection: String? = null,
+    selectionArgs: Array<String>? = null
+) = query(table, columns, selection, selectionArgs, null, null, null, "1")

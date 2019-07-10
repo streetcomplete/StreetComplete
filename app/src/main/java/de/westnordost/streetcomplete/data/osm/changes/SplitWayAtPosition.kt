@@ -1,11 +1,13 @@
-package de.westnordost.streetcomplete.data.osm.split
+package de.westnordost.streetcomplete.data.osm.changes
 
 import de.westnordost.osmapi.map.data.Node
 import de.westnordost.osmapi.map.data.Way
 
 /** data class that carries the information for one split to perform on a random position on a way. */
-class SplitWayAtPosition(way: Way, val firstNode: Node, val secondNode: Node, val delta: Double) {
-    init { validate(way) }
+class SplitWayAtPosition(val firstNode: Node, val secondNode: Node, val delta: Double) {
+
+    constructor(way: Way, firstNode: Node, secondNode: Node, delta: Double)
+            : this(firstNode, secondNode, delta) { validate(way) }
 
     fun validate(way: Way) {
         if(delta < 0 || delta >= 1)

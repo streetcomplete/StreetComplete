@@ -1,28 +1,30 @@
-package de.westnordost.streetcomplete.data.osm.split
+package de.westnordost.streetcomplete.data.osm.upload
 
 import de.westnordost.osmapi.map.MapDataDao
 import de.westnordost.osmapi.map.data.*
 import de.westnordost.streetcomplete.util.SphericalEarthMath
 import javax.inject.Inject
 import de.westnordost.osmapi.map.data.Element.Type.*
+import de.westnordost.streetcomplete.data.osm.changes.SplitWayAtPosition
 import de.westnordost.streetcomplete.ktx.containsAny
 import de.westnordost.streetcomplete.ktx.findNext
 import de.westnordost.streetcomplete.ktx.findPrevious
 import de.westnordost.streetcomplete.ktx.firstAndLast
 
-class SplitWayUpload @Inject constructor(private val osmDao: MapDataDao) {
-
-    fun upload(changesetId: Long, way: Way, splits: List<SplitWayAtPosition>) {
-        
+class SplitSingleOsmWayUpload @Inject constructor(private val osmDao: MapDataDao)  {
+    /** Uploads one split
+     *  Returns only the ways that have been updated or throws a ConflictException */
+    fun upload(changesetId: Long, way: Way, splits: List<SplitWayAtPosition>): List<Way> {
         if(way.isClosed() && splits.size < 2)
             throw IllegalArgumentException("Must specify at least two split positions for a closed way")
 
         val updatedWay = way.fetchUpdated()
+            ?: throw ElementDeletedException("Way #${way.id} has been deleted")
         checkForConflicts(way, updatedWay)
         try {
             for (split in splits) split.validate(updatedWay)
         } catch (e: IllegalArgumentException) {
-            throw ConflictException(e.message)
+            throw ElementConflictException(e.message)
         }
         val sortedSplits = splits.sortedWith(SplitWayAtComparator(updatedWay))
 
@@ -32,15 +34,22 @@ class SplitWayUpload @Inject constructor(private val osmDao: MapDataDao) {
         val splitAtIndices = mutableListOf<Int>()
         for (split in sortedSplits) {
             val updatedFirstNode = split.firstNode.fetchUpdated()
+                ?: throw ElementConflictException("Node #${split.firstNode.id} has been deleted")
             checkForConflicts(split.firstNode, updatedFirstNode)
             val updatedSecondNode = split.secondNode.fetchUpdated()
+                ?: throw ElementConflictException("Node #${split.secondNode.id} has been deleted")
             checkForConflicts(split.secondNode, updatedSecondNode)
 
             if (split.delta == 0.0) {
                 val firstNodeIndex = updatedWay.nodeIds.indexOf(updatedFirstNode.id)
                 splitAtIndices.add(firstNodeIndex)
             } else if (split.delta > 0.0) {
-                val splitPosition = createSplitPosition(updatedFirstNode.position, updatedSecondNode.position, split.delta)
+                val splitPosition =
+                    createSplitPosition(
+                        updatedFirstNode.position,
+                        updatedSecondNode.position,
+                        split.delta
+                    )
                 val splitNode = OsmNode(newNodeId--, 1, splitPosition, null)
                 uploadElements.add(splitNode)
 
@@ -51,14 +60,18 @@ class SplitWayUpload @Inject constructor(private val osmDao: MapDataDao) {
         }
 
         uploadElements.addAll(splitWayAtIndices(updatedWay, splitAtIndices))
-        osmDao.uploadChanges(changesetId, uploadElements, null)
+        /* not catching OsmConflictException here because we already downloaded all related
+           elements just now already - it must be a changeset conflict */
+        val handler = UpdateElementsHandler(uploadElements)
+        osmDao.uploadChanges(changesetId, uploadElements, handler)
+        return handler.updatedElements.filterIsInstance<Way>()
     }
 
     private fun checkForConflicts(old: Way, new: Way) {
         if(old.version != new.version) {
             // unsolvable conflict if other was shortened (e.g. cut in two) or extended
             if(old.nodeIds.first() != new.nodeIds.first() || old.nodeIds.last() != new.nodeIds.last())
-                throw ConflictException("Way #${old.id} has been changed and the conflict cannot be solved automatically")
+                throw ElementConflictException("Way #${old.id} has been changed and the conflict cannot be solved automatically")
         }
     }
 
@@ -66,7 +79,7 @@ class SplitWayUpload @Inject constructor(private val osmDao: MapDataDao) {
         if(old.version != new.version) {
             // unsolvable conflict if node has been moved
             if(old.position.latitude != new.position.latitude || old.position.longitude != new.position.longitude)
-                throw ConflictException("Node #${old.id} has been moved and the conflict cannot be solved automatically")
+                throw ElementConflictException("Node #${old.id} has been moved and the conflict cannot be solved automatically")
         }
     }
 
@@ -153,11 +166,9 @@ class SplitWayUpload @Inject constructor(private val osmDao: MapDataDao) {
         relation.members.addAll(indexOfWayInRelation, newRelationMembers)
     }
 
-    private fun Node.fetchUpdated() =
-        osmDao.getNode(id) ?: throw ConflictException("Node #$id has been deleted")
+    private fun Node.fetchUpdated(): Node? = osmDao.getNode(id)
 
-    private fun Way.fetchUpdated() =
-        osmDao.getWay(id) ?: throw ConflictException("Way #$id has been deleted")
+    private fun Way.fetchUpdated(): Way? = osmDao.getWay(id)
 
     private fun Way.fetchParentRelations() = osmDao.getRelationsForWay(id)
 
