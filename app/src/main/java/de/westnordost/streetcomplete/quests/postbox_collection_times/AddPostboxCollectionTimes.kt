@@ -35,7 +35,16 @@ class AddPostboxCollectionTimes(o: OverpassMapDataDao) : SimpleOverpassQuestType
         // apparently mostly not in Latin America and in Arabic world and unknown in Africa
     )
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_postboxCollectionTimes_title
+    override val nameGivingTags: List<String>
+        get() {
+            return listOf("name", "brand", "operator")
+        }
+
+    override fun getTitle(tags: Map<String, String>): Int {
+        val hasName = tags.containsKey("name") || tags.containsKey("brand") || tags.containsKey("operator")
+        return if (hasName) R.string.quest_postboxCollectionTimes_name_title
+        else         R.string.quest_postboxCollectionTimes_title
+    }
 
     override fun createForm() = AddCollectionTimesForm()
 

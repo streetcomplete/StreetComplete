@@ -7,8 +7,11 @@ interface QuestType<T> {
     /** the icon resource id used to display this quest type on the map */
     val icon: Int
 
-    /** the title resource id used to display the quest's question */
-    val title: Int
+    /** returns title resource for when the element has the specified [tags]. The tags are unmodifiable */
+    fun getTitle(tags: Map<String, String>): Int //TODO: rename to getTitleTemplate
+
+    /** returns on or more replacements, to be used in the title template. The tags are unmodifiable. */
+    fun getTitleReplacements(tags: Map<String, String>, typeName: Lazy<String?>): Array<String?>
 
     /** returns the string resource id that explains why this quest is disabled by default or zero
      * if it is not disabled by default */

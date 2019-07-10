@@ -139,7 +139,7 @@ class QuestSelectionAdapter @Inject constructor(
             val colorResId = if (item.isInteractionEnabled) android.R.color.transparent else R.color.greyed_out
             itemView.setBackgroundResource(colorResId)
             iconView.setImageResource(item.questType.icon)
-            textView.text = textView.resources.getString(item.questType.title, "…")
+            textView.text = textView.resources.getString(item.questType.getTitle(emptyMap()), "…")
             checkBox.setOnCheckedChangeListener(null)
             checkBox.isChecked = item.visible
             checkBox.isEnabled = item.isInteractionEnabled

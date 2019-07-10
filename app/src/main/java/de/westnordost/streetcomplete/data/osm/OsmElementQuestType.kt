@@ -8,6 +8,18 @@ import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandle
 
 interface OsmElementQuestType<T> : QuestType<T> {
 
+    val nameGivingTags: List<String> get() = listOf("name", "brand")
+
+    override fun getTitleReplacements(tags: Map<String, String>, typeName: Lazy<String?>): Array<String?> {
+        for(nameTag in nameGivingTags) {
+            if (tags.containsKey(nameTag)) {
+                val value = tags.getValue(nameTag)
+                return arrayOf(value)
+            }
+        }
+        return arrayOf()
+    }
+
     /** the commit message to be used for this quest type */
     val commitMessage: String
 
@@ -19,11 +31,6 @@ interface OsmElementQuestType<T> : QuestType<T> {
 
     /** returns whether the markers should be at the ends instead of the center */
     val hasMarkersAtEnds: Boolean get() = false
-
-    /** returns title resource for when the element has the specified [tags]. The tags are unmodifiable */
-    fun getTitle(tags: Map<String, String>): Int
-
-    override val title: Int get() = getTitle(emptyMap())
 
     /** Downloads map data for this quest type for the given [bbox] and puts the received data into
      *  the [handler]. Returns whether the download was successful
