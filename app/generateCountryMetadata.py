@@ -16,7 +16,7 @@ for filename in sorted(os.listdir(sourceDir)):
 	if filename.endswith(".yml"):
 		basename = os.path.splitext(filename)[0]
 		with open(sourceDir + filename, 'r', encoding='utf8') as file:
-			data = yaml.load(file.read());
+			data = yaml.load(file.read())
 			for key, value in data.items():
 				targetFileName = targetDir + key + ".yml"
 				
