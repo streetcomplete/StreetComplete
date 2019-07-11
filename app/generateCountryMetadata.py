@@ -21,9 +21,9 @@ for filename in sorted(os.listdir(sourceDir)):
 				targetFileName = targetDir + key + ".yml"
 				
 				if os.path.isfile(targetFileName):
-					targetFile = open(targetFileName, "a", encoding='utf8')
+					targetFile = open(targetFileName, "a", encoding='utf8', newline='\r\n')
 				else:
-					targetFile = open(targetFileName, "w", encoding='utf8')
+					targetFile = open(targetFileName, "w", encoding='utf8', newline='\r\n')
 					targetFile.write("# "+comment+"\n")
 				
 				dump = yaml.safe_dump(value)
