@@ -7,6 +7,7 @@
     android:gravity="center_horizontal">
 
     <LinearLayout
+        android:id="@+id/inputSigns"
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:orientation="vertical"
@@ -60,4 +61,13 @@
             android:textColor="@color/traffic_black"
             tools:ignore="HardcodedText"/>
     </LinearLayout>
+    <Spinner
+        android:id="@+id/weightUnitSelect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@+id/inputSigns"
+        android:paddingStart="16dp"
+        android:background="#0fff"
+        tools:visibility="visible"/>
 </RelativeLayout>
