@@ -223,7 +223,7 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment() {
         AlertDialog.Builder(context!!)
             .setTitle(R.string.quest_leave_new_note_title)
             .setMessage(R.string.quest_leave_new_note_description)
-            .setNegativeButton(R.string.quest_leave_new_note_no) { _, _ -> questAnswerComponent.onSkippedQuest() }
+            .setNegativeButton(R.string.quest_leave_new_note_no) { _, _ -> skipQuest() }
             .setPositiveButton(R.string.quest_leave_new_note_yes) { _, _ ->
                 val questTitle = englishResources.getQuestTitle(questType, osmElement, featureDictionaryFuture)
                 questAnswerComponent.onComposeNote(questTitle)

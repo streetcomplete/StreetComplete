@@ -15,7 +15,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 
 import java.io.File
 import java.io.FileOutputStream
@@ -26,14 +25,20 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osmnotes.AttachPhotoUtils
 
 import android.app.Activity.RESULT_OK
+import android.database.DataSetObserver
+import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.ApplicationConstants.ATTACH_PHOTO_MAXWIDTH
 import de.westnordost.streetcomplete.ApplicationConstants.ATTACH_PHOTO_QUALITY
 import de.westnordost.streetcomplete.ktx.toast
+import de.westnordost.streetcomplete.util.AdapterDataChangedWatcher
 import kotlinx.android.synthetic.main.fragment_attach_photo.*
 
 class AttachPhotoFragment : Fragment() {
 
-    val imagePaths: List<String> get() = noteImageAdapter.list
+    val imagePaths: List<String> get() = noteImageAdapter.list;
+    private var photosListView : RecyclerView? = null;
+    private var hintView : TextView? = null;
 
     private var currentImagePath: String? = null
 
@@ -45,8 +50,19 @@ class AttachPhotoFragment : Fragment() {
         if (!activity!!.packageManager.hasSystemFeature(PackageManager.FEATURE_CAMERA)) {
             view.visibility = View.GONE
         }
-
+        photosListView = view.findViewById(R.id.gridView)
+        hintView = view.findViewById(R.id.photosAreUsefulExplanation)
         return view
+    }
+
+    private fun updateHintVisibility(){
+        if (imagePaths.isEmpty()) {
+            photosListView?.visibility = View.GONE;
+            hintView?.visibility = View.VISIBLE;
+        } else {
+            photosListView?.visibility = View.VISIBLE;
+            hintView?.visibility = View.GONE;
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -70,6 +86,8 @@ class AttachPhotoFragment : Fragment() {
             false
         )
         gridView.adapter = noteImageAdapter
+        noteImageAdapter.registerAdapterDataObserver(AdapterDataChangedWatcher { updateHintVisibility() })
+        updateHintVisibility()
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
