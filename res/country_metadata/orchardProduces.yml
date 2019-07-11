@@ -1,3 +1,4 @@
+# use app/generateCountryMetadata.py to generate files used by StreetComplete
 # list of most produced/cultivated crops/fruits in the world
 # source: Food and Agriculture Organization of the United Nations, http://www.fao.org/faostat/en/#data/QC
 # created/parsed by script: https://github.com/rugk/crops-parser

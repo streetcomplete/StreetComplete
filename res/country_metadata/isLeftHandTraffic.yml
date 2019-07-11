@@ -1,3 +1,4 @@
+# use app/generateCountryMetadata.py to generate files used by StreetComplete
 # Source: https://en.wikipedia.org/wiki/List_of_countries_with_left-hand_traffic 15/09/2017
 default: false
 AI: true

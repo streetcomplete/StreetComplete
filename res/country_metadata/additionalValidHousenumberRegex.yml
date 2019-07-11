@@ -1,2 +1,3 @@
+# use app/generateCountryMetadata.py to generate files used by StreetComplete
 ES: s/n
 FR: \p{N}{1,4}\sbis
