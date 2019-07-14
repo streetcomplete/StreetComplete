@@ -8,7 +8,7 @@ interface QuestType<T> {
     val icon: Int
 
     /** returns title resource for when the element has the specified [tags]. The tags are unmodifiable */
-    fun getTitle(tags: Map<String, String>): Int //TODO: rename to getTitleTemplate
+    fun getTitle(tags: Map<String, String>): Int
 
     /** returns on or more replacements, to be used in the title template. The tags are unmodifiable. */
     fun getTitleReplacements(tags: Map<String, String>, typeName: Lazy<String?>): Array<String?>
