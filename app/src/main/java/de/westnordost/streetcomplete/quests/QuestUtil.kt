@@ -25,9 +25,7 @@ fun Resources.getHtmlQuestTitle(questType: QuestType<*>, element: Element?, feat
 private fun getElementName(questType: QuestType<*>, element: Element?, locale: Locale, featureDictionaryFuture: FutureTask<FeatureDictionary>?): String? {
     val tags = element?.tags
     val typeName = lazy {featureDictionaryFuture?.get()?.let { it.byTags(tags).forLocale(locale).find()?.firstOrNull()?.name }}
-    val nameCandidates = questType.getTitleReplacements(tags ?: emptyMap(), typeName);
-    if(nameCandidates.isEmpty()) return null
-    return nameCandidates.first()
+    return questType.getTitleReplacements(tags ?: emptyMap(), typeName).firstOrNull();
 }
 
 
