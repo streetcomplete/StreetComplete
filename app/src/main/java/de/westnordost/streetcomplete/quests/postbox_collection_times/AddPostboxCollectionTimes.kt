@@ -36,13 +36,8 @@ class AddPostboxCollectionTimes(o: OverpassMapDataDao) : SimpleOverpassQuestType
     )
 
     override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String?> {
-        for(nameTag in listOf("name", "brand", "operator")) {
-            if (tags.containsKey(nameTag)) {
-                val value = tags.getValue(nameTag)
-                return arrayOf(value)
-            }
-        }
-        return arrayOf()
+        val name = tags["name"] ?: tags["brand"] ?: tags["operator"]
+        return if (name != null) arrayOf(name) else arrayOf()
     }
 
     override fun getTitle(tags: Map<String, String>): Int {

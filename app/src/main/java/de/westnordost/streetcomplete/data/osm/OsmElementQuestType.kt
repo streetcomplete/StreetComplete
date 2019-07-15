@@ -9,13 +9,8 @@ import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandle
 interface OsmElementQuestType<T> : QuestType<T> {
 
     fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String?> {
-        for(nameTag in listOf("name", "brand")) {
-            if (tags.containsKey(nameTag)) {
-                val value = tags.getValue(nameTag)
-                return arrayOf(value)
-            }
-        }
-        return arrayOf()
+        val name = tags["name"] ?: tags["brand"]
+        return if (name != null) arrayOf(name) else arrayOf()
     }
 
     /** the commit message to be used for this quest type */
