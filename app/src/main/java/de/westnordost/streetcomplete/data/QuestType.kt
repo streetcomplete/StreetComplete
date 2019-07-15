@@ -11,7 +11,7 @@ interface QuestType<T> {
     val title: Int
 
     /** returns on or more replacements, to be used in the title template. The tags are unmodifiable. */
-    fun getTitleReplacements(tags: Map<String, String>, typeName: Lazy<String?>): Array<String?>
+    fun getTitleReplacements(tags: Map<String, String>, featureName: Lazy<String?>): Array<String?>
 
     /** returns the string resource id that explains why this quest is disabled by default or zero
      * if it is not disabled by default */

@@ -6,7 +6,7 @@ import de.westnordost.streetcomplete.quests.note_discussion.NoteAnswer
 import de.westnordost.streetcomplete.quests.note_discussion.NoteDiscussionForm
 
 class OsmNoteQuestType : QuestType<NoteAnswer> {
-    override fun getTitleReplacements(tags: Map<String, String>, typeName: Lazy<String?>): Array<String?> {
+    override fun getTitleReplacements(tags: Map<String, String>, featureName: Lazy<String?>): Array<String?> {
         return arrayOf()
     }
 
