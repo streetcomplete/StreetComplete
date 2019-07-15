@@ -35,7 +35,7 @@ class AddPostboxCollectionTimes(o: OverpassMapDataDao) : SimpleOverpassQuestType
         // apparently mostly not in Latin America and in Arabic world and unknown in Africa
     )
 
-    override fun getTitleReplacements(tags: Map<String, String>, featureName: Lazy<String?>): Array<String?> {
+    override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String?> {
         for(nameTag in listOf("name", "brand", "operator")) {
             if (tags.containsKey(nameTag)) {
                 val value = tags.getValue(nameTag)
