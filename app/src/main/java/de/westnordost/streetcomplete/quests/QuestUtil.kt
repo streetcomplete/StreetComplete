@@ -25,7 +25,7 @@ fun Resources.getHtmlQuestTitle(questType: QuestType<*>, element: Element?, feat
 private fun getElementName(questType: QuestType<*>, element: Element?, locale: Locale, featureDictionaryFuture: FutureTask<FeatureDictionary>?): String? {
     val tags = element?.tags
     val typeName = lazy {featureDictionaryFuture?.get()?.let { it.byTags(tags).forLocale(locale).find()?.firstOrNull()?.name }}
-    return questType.getTitleReplacements(tags ?: emptyMap(), typeName).firstOrNull();
+    return ((questType as? OsmElementQuestType<*>)?.getTitleReplacements(tags ?: emptyMap(), typeName) ?: arrayOf()).firstOrNull();
 }
 
 
