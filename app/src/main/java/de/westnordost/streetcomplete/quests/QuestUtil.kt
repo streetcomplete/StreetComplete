@@ -30,4 +30,4 @@ private fun getElementName(questType: QuestType<*>, element: Element?, locale: L
 
 
 private fun getQuestTitleResId(questType: QuestType<*>, element: Element?) =
-    (questType as? OsmElementQuestType<*>)?.getTitle(element?.tags ?: emptyMap()) ?: questType.getTitle(emptyMap())
+    (questType as? OsmElementQuestType<*>)?.getTitle(element?.tags ?: emptyMap()) ?: questType.title

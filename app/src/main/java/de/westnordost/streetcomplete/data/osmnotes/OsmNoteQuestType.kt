@@ -11,7 +11,7 @@ class OsmNoteQuestType : QuestType<NoteAnswer> {
     }
 
     override val icon = R.drawable.ic_quest_notes
-    override fun getTitle(tags: Map<String, String>): Int = R.string.quest_noteDiscussion_title
+    override val title = R.string.quest_noteDiscussion_title
 
     override fun createForm() = NoteDiscussionForm()
 }

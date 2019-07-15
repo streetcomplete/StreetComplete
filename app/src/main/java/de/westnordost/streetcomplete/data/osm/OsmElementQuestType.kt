@@ -32,6 +32,11 @@ interface OsmElementQuestType<T> : QuestType<T> {
     /** returns whether the markers should be at the ends instead of the center */
     val hasMarkersAtEnds: Boolean get() = false
 
+    /** returns title resource for when the element has the specified [tags]. The tags are unmodifiable */
+    fun getTitle(tags: Map<String, String>): Int
+
+    override val title: Int get() = getTitle(emptyMap())
+
     /** Downloads map data for this quest type for the given [bbox] and puts the received data into
      *  the [handler]. Returns whether the download was successful
      */
