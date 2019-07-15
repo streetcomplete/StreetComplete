@@ -8,10 +8,8 @@ import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandle
 
 interface OsmElementQuestType<T> : QuestType<T> {
 
-    val nameGivingTags: List<String> get() = listOf("name", "brand")
-
     override fun getTitleReplacements(tags: Map<String, String>, typeName: Lazy<String?>): Array<String?> {
-        for(nameTag in nameGivingTags) {
+        for(nameTag in listOf("name", "brand")) {
             if (tags.containsKey(nameTag)) {
                 val value = tags.getValue(nameTag)
                 return arrayOf(value)
