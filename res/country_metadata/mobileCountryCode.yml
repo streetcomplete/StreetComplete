@@ -1,3 +1,4 @@
+# use app/generateCountryMetadata.py to generate files used by StreetComplete
 # sources: https://en.wikipedia.org/wiki/Mobile_country_code
 # Overseas and unincorporated territories and other regions that are already
 # part of another ISO 3166-alpha2 code are commented out

@@ -44,6 +44,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -246,6 +247,9 @@ public class MainActivity extends AppCompatActivity implements
 
 		downloadProgressBar = findViewById(R.id.download_progress);
 		downloadProgressBar.setMax(1000);
+
+		RelativeLayout starMenu = findViewById(R.id.uploadedAnswersContainer);
+		starMenu.setOnClickListener(this::starInfoMenu);
 
 		mapFragment = (QuestsMapFragment) getSupportFragmentManager().findFragmentById(R.id.map_fragment);
 		mapFragment.getMapAsync(BuildConfig.MAPZEN_API_KEY);
@@ -1125,6 +1129,20 @@ public class MainActivity extends AppCompatActivity implements
 			Toast.makeText(MainActivity.this, R.string.no_gps_no_quests, Toast.LENGTH_LONG).show();
 		}
 	}
+
+	// ---------------------------------------------------------------------------------------------
+
+	/** Menu raised by clicking on the star icon */
+	public void starInfoMenu(View view) {
+		String message = getString(R.string.about_contributing) + "\n\n" + getString(R.string.about_missing_stars);
+		if(answersCounter.waitingForUpload() + answersCounter.uploaded() == 0){
+			message = getString(R.string.how_to_get_stars) + "\n\n" + getString(R.string.about_contributing);
+		}
+		new AlertDialog.Builder(MainActivity.this)
+			.setMessage(message)
+			.show();
+	}
+
 
 	// ---------------------------------------------------------------------------------------------
 
