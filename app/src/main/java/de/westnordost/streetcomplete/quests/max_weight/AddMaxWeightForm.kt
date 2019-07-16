@@ -12,8 +12,8 @@ import android.widget.EditText
 import android.widget.Spinner
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.ktx.numberOrNull
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
-import de.westnordost.streetcomplete.quests.InputUtil
 import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.util.TextChangedWatcher
 
@@ -137,8 +137,8 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
     private fun getWeightFromInput(): WeightMeasure? {
         try {
             if (isMetric()) {
-                val input = InputUtil.numberInputToStandardString(tonInput)
-                if (input.isNotEmpty()) {
+                val input = tonInput?.numberOrNull
+                if (input != null) {
                     val country = countryInfo.countryCode
                     if ("US" == country) {
                         return UsShortTons(input.toDouble())
@@ -146,9 +146,8 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
                     return MetricWeightMeasure(input.toDouble())
                 }
             } else {
-                val poundString = InputUtil.numberInputToStandardString(poundInput)
-
-                if (poundString.isNotEmpty()) {
+                val poundString = poundInput?.numberOrNull
+                if (poundString != null) {
                     return ImperialWeightMeasure(poundString.toInt())
                 }
             }
