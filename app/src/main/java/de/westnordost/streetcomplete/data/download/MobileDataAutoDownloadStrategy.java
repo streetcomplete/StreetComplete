@@ -37,4 +37,9 @@ public class MobileDataAutoDownloadStrategy extends AActiveRadiusStrategy
 	{
 		return 600;
 	}
+
+	@Override
+	protected int getMinQuestsTypesInActiveRadius() {
+		return 2;
+	}
 }

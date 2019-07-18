@@ -46,4 +46,9 @@ public class WifiAutoDownloadStrategy extends AActiveRadiusStrategy
 	{
 		return 1200;
 	}
+
+	@Override
+	protected int getMinQuestsTypesInActiveRadius() {
+		return 3;
+	}
 }

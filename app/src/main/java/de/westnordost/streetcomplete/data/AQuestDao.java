@@ -11,6 +11,7 @@ import java.util.Collection;
 import java.util.List;
 
 import de.westnordost.osmapi.map.data.BoundingBox;
+import de.westnordost.streetcomplete.data.osm.persist.OsmQuestTable;
 
 public abstract class AQuestDao<T extends Quest>
 {
@@ -69,6 +70,22 @@ public abstract class AQuestDao<T extends Quest>
 
 		try (Cursor cursor = db.query(getMergedViewName(), new String[]{"COUNT(*)"},
 				qb.getWhere(), qb.getArgs(), null, null, null, null))
+		{
+			cursor.moveToFirst();
+			return cursor.getInt(0);
+		}
+	}
+
+	public int getTypeCount(BoundingBox bbox, QuestStatus status)
+	{
+		SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+		WhereSelectionBuilder qb = new WhereSelectionBuilder();
+		addBBox(bbox, qb);
+		addQuestStatus(status, qb);
+
+		try (Cursor cursor = db.query(getMergedViewName(), new String[]{"COUNT (DISTINCT " + OsmQuestTable.Columns.QUEST_TYPE + ")"},
+			qb.getWhere(), qb.getArgs(), null, null, null, null))
 		{
 			cursor.moveToFirst();
 			return cursor.getInt(0);

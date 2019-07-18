@@ -40,6 +40,12 @@ public abstract class AActiveRadiusStrategy implements QuestAutoDownloadStrategy
 	{
 		BoundingBox bbox = SphericalEarthMath.enclosingBoundingBox(pos, radius);
 
+		int typeCount = osmQuestDB.getTypeCount(bbox, QuestStatus.NEW);
+		if (typeCount < getMinQuestsTypesInActiveRadius()) {
+			Log.i(TAG, "Downloading quests because there are only " + typeCount + " quest types in " + radius + "m radius and " + getMinQuestsTypesInActiveRadius() + " are required");
+			return true;
+		}
+
 		double areaInKm2 = SphericalEarthMath.enclosedArea(bbox) / 1000 / 1000;
 
 		// got enough quests in vicinity
@@ -80,8 +86,8 @@ public abstract class AActiveRadiusStrategy implements QuestAutoDownloadStrategy
 		return SphericalEarthMath.enclosingBoundingBox(pos, getDownloadRadius());
 	}
 
+	protected abstract int getMinQuestsTypesInActiveRadius();
 	protected abstract int getMinQuestsInActiveRadiusPerKm2();
 	protected abstract int[] getActiveRadii();
 	protected abstract int getDownloadRadius();
-
 }
