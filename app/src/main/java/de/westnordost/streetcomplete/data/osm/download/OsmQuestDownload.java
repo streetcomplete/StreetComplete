@@ -199,21 +199,17 @@ public class OsmQuestDownload
 			return false;
 		}
 
-		// do not create quests that refer to geometry that is too large for a surveyor to be
+		// do not create quests that refer to geometry that is too long for a surveyor to be
 		// expected to survey
-		double distance = 0;
-		if(geometry.polylines != null) {
-			for (List<LatLon> polyline : geometry.polylines) {
-				distance += SphericalEarthMath.distance(polyline);
-			}
-		}
-		if(geometry.polygons != null) {
-			for (List<LatLon> polyline : geometry.polygons)
+		if(geometry.polylines != null)
+		{
+			double distance = 0;
+			for (List<LatLon> polyline : geometry.polylines)
 			{
 				distance += SphericalEarthMath.distance(polyline);
 			}
+			if(distance > MAX_GEOMETRY_LENGTH_IN_METERS) return false;
 		}
-		if(distance > MAX_GEOMETRY_LENGTH_IN_METERS) return false;
 
 		// do not create quests whose marker is at/near a blacklisted position
 		LatLon truncatedGeometryCenter = truncateTo5Decimals(geometry.center);
