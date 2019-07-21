@@ -26,7 +26,7 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
     override val otherAnswers = listOf(
             OtherAnswer(R.string.quest_maxweight_answer_other_sign) { onUnsupportedSign() },
             OtherAnswer(R.string.quest_maxweight_answer_sign_with_exceptions) { onUnsupportedSign() },
-            OtherAnswer(R.string.quest_maxweight_answer_noSign) { applyAnswer(NoMaxWeightSign) }
+            OtherAnswer(R.string.quest_maxweight_answer_noSign) { confirmNoSign() }
     )
 
     private fun onUnsupportedSign() {
@@ -36,6 +36,14 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
                 .setNegativeButton(R.string.quest_leave_new_note_no) { _, _ -> skipQuest() }
                 .show()
 
+    }
+
+    private fun confirmNoSign() {
+        AlertDialog.Builder(activity!!)
+                .setTitle(R.string.quest_generic_confirmation_title)
+                .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> applyAnswer(NoMaxWeightSign) }
+                .setNegativeButton(R.string.quest_generic_confirmation_no, null)
+                .show()
     }
 
     private var tonInput: EditText? = null
