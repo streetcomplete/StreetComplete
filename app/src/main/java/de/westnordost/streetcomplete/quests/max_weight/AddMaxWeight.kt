@@ -25,7 +25,7 @@ class AddMaxWeight(o: OverpassMapDataDao) : SimpleOverpassQuestType<MaxWeightAns
          and !maxweight:hgv and !maxweight:bus and !maxweight:hgv_articulated and !maxweight:tourist_bus
          and !maxweight:coach
          and !maxweightrating
-         and !maxweightrating:hgv and !maxweightrating:bus
+         and !maxweightrating:hgv and !maxweightrating:bus and !hgv
          and !maxunladenweight
          and !maxunladenweight:hgv and !maxunladenweight:bus
          and bridge and bridge != no
