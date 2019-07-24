@@ -1,12 +1,12 @@
 ![StreetComplete](http://www.westnordost.de/streetcomplete/featureGraphic.png)
 
-An Android app which finds wrong, incomplete or extendable data in the user's vicinity and provides the tools to complete these easily and directly on site without having to use another editor.
+StreetComplete is an easy to use editor of OpenStreetMap data available for Android. It can be used without any OpenStreetMap-specific knowledge. It asks simple questions, with answers directly used to edit and improve OpenStreetMap data.
 
 The found issues are presented to the user as markers on a map (like i.e. in Osmose) that each are
 solvable by filling out a simple form to complete/correct the information on site. The user's
 answer is then processed and directly uploaded into the OSM database in meaningful changesets in the name
 of the user's OSM account.
-Since the app is meant to be used on a survey, it can be used offline and otherwise aims to be
+Since the app is meant to be used on a survey, it can be used offline and is
 economic with data usage.
 
 The app is aimed at users who do not know anything about OSM tagging schemes but still want to
