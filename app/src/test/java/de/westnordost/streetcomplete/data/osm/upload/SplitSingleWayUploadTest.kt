@@ -1,10 +1,11 @@
 package de.westnordost.streetcomplete.data.osm.upload
 
+import de.westnordost.osmapi.common.errors.OsmConflictException
 import de.westnordost.osmapi.map.MapDataDao
 import de.westnordost.osmapi.map.data.*
 import de.westnordost.osmapi.map.data.Element.Type.*
 import de.westnordost.streetcomplete.argumentCaptor
-import de.westnordost.streetcomplete.data.osm.changes.SplitWayAtPosition
+import de.westnordost.streetcomplete.data.osm.changes.SplitWay
 import de.westnordost.streetcomplete.eq
 import de.westnordost.streetcomplete.on
 import de.westnordost.streetcomplete.util.SphericalEarthMath
@@ -14,9 +15,9 @@ import org.junit.Test
 import org.mockito.ArgumentCaptor
 import org.mockito.Mockito.*
 
-class SplitSingleOsmWayUploadTest {
-    private val uploader: SplitSingleOsmWayUpload
-    private val osmDao: MapDataDao
+class SplitSingleWayUploadTest {
+    private val osmDao = mock(MapDataDao::class.java)
+    private val uploader = SplitSingleWayUpload(osmDao)
 
     private val node1 = OsmNode(1, 1, 0.0, 0.0, null)
     private val node2 = OsmNode(2, 1, 0.0, 1.0, null)
@@ -27,13 +28,7 @@ class SplitSingleOsmWayUploadTest {
             field = value
             on(osmDao.getWay(1)).thenReturn(way)
         }
-    private val split =
-        SplitWayAtPosition(way, node2, node3, 0.5)
-
-    init {
-        osmDao = mock(MapDataDao::class.java)
-        uploader = SplitSingleOsmWayUpload(osmDao)
-    }
+    private val split = SplitWay(way, node2, node3, 0.5)
 
     @Before fun setUp() {
         way = OsmWay(1,1, mutableListOf(1,2,3,4), null)
@@ -49,7 +44,7 @@ class SplitSingleOsmWayUploadTest {
     @Test(expected = IllegalArgumentException::class)
     fun `throw if less than two split positions on closed way`() {
         way = OsmWay(1, 1, mutableListOf(1,2,3,1), null)
-        doSplit(SplitWayAtPosition(way, node1, node2, 0.5))
+        doSplit(SplitWay(way, node1, node2, 0.5))
     }
 
     @Test(expected = ElementConflictException::class)
@@ -73,7 +68,7 @@ class SplitSingleOsmWayUploadTest {
     @Test(expected = ElementConflictException::class)
     fun `raise conflict if updated way has split position at its very start`() {
         on(osmDao.getWay(1)).thenReturn(wayWithNodes(2,3,4))
-        doSplit(SplitWayAtPosition(way, node2, node3, 0.0))
+        doSplit(SplitWay(way, node2, node3, 0.0))
     }
 
     @Test(expected = ElementConflictException::class)
@@ -118,11 +113,17 @@ class SplitSingleOsmWayUploadTest {
         doSplit()
     }
 
+    @Test(expected = ChangesetConflictException::class)
+    fun `raise changeset conflict on conflict of uploadChanges`() {
+        on(osmDao.uploadChanges(anyLong(), anyList(), any())).thenThrow(OsmConflictException(409, "jo", "ho"))
+        doSplit()
+    }
+
     @Test fun `merge last and first chunk for closed ways`() {
         way = OsmWay(1,1, mutableListOf(1,2,3,4,1), null)
         val elements = doSplit(
-            SplitWayAtPosition(way, node2, node3, 0.0),
-            SplitWayAtPosition(way, node3, node4, 0.0)
+            SplitWay(way, node2, node3, 0.0),
+            SplitWay(way, node3, node4, 0.0)
         )
         assertEquals(2, elements.ways.size)
         assertTrue(elements.waysNodeIds.containsAll(listOf<List<Long>>(
@@ -132,7 +133,7 @@ class SplitSingleOsmWayUploadTest {
     }
 
     @Test fun `split way with one split position at vertex`() {
-        val elements = doSplit(SplitWayAtPosition(way, node2, node3, 0.0))
+        val elements = doSplit(SplitWay(way, node2, node3, 0.0))
         assertTrue(elements.nodes.isEmpty()) // no nodes were added
         assertEquals(2, elements.ways.size)
         assertTrue(elements.waysNodeIds.containsAll(listOf<List<Long>>(
@@ -142,7 +143,7 @@ class SplitSingleOsmWayUploadTest {
     }
 
     @Test fun `split way with one split position`() {
-        val elements = doSplit(SplitWayAtPosition(way, node2, node3, 0.5))
+        val elements = doSplit(SplitWay(way, node2, node3, 0.5))
         assertEquals(1, elements.nodes.size)
         assertEquals(2, elements.ways.size)
         val node = elements.nodes.single()
@@ -165,8 +166,8 @@ class SplitSingleOsmWayUploadTest {
         // 1   2   3   4
         //     |   |
         val elements = doSplit(
-            SplitWayAtPosition(way, node2, node3, 0.0),
-            SplitWayAtPosition(way, node3, node4, 0.0)
+            SplitWay(way, node2, node3, 0.0),
+            SplitWay(way, node3, node4, 0.0)
         )
 
         assertTrue(elements.nodes.isEmpty()) // no nodes were added
@@ -182,8 +183,8 @@ class SplitSingleOsmWayUploadTest {
         // 1   2   3   4
         //       |   |
         val elements = doSplit(
-            SplitWayAtPosition(way, node2, node3, 0.5),
-            SplitWayAtPosition(way, node3, node4, 0.5)
+            SplitWay(way, node2, node3, 0.5),
+            SplitWay(way, node3, node4, 0.5)
         )
 
         assertEquals(2, elements.nodes.size)
@@ -199,8 +200,8 @@ class SplitSingleOsmWayUploadTest {
         // 1   2   3   4
         //   | |
         val elements = doSplit(
-            SplitWayAtPosition(way, node1, node2, 0.5),
-            SplitWayAtPosition(way, node2, node3, 0.0)
+            SplitWay(way, node1, node2, 0.5),
+            SplitWay(way, node2, node3, 0.0)
         )
 
         assertEquals(1, elements.nodes.size)
@@ -216,10 +217,10 @@ class SplitSingleOsmWayUploadTest {
         // 1  2  3  4
         //    ||||
         val elements = doSplit(
-            SplitWayAtPosition(way, node2, node3, 0.66),
-            SplitWayAtPosition(way, node3, node4, 0.0),
-            SplitWayAtPosition(way, node2, node3, 0.0),
-            SplitWayAtPosition(way, node2, node3, 0.33)
+            SplitWay(way, node2, node3, 0.66),
+            SplitWay(way, node3, node4, 0.0),
+            SplitWay(way, node2, node3, 0.0),
+            SplitWay(way, node2, node3, 0.33)
         )
 
         assertEquals(2, elements.nodes.size)
@@ -234,12 +235,12 @@ class SplitSingleOsmWayUploadTest {
     }
 
     @Test fun `reuse object id of longest split chunk (= second chunk)`() {
-        val elements = doSplit(SplitWayAtPosition(way, node2, node3, 0.0))
+        val elements = doSplit(SplitWay(way, node2, node3, 0.0))
         assertEquals(way.id, elements.ways.maxBy { it.nodeIds.size }?.id)
     }
 
     @Test fun `reuse object id of longest split chunk (= first chunk)`() {
-        val elements = doSplit(SplitWayAtPosition(way, node3, node4, 0.0))
+        val elements = doSplit(SplitWay(way, node3, node4, 0.0))
         assertEquals(way.id, elements.ways.maxBy { it.nodeIds.size }?.id)
     }
 
@@ -542,7 +543,7 @@ class SplitSingleOsmWayUploadTest {
         `update a restriction-like relation with split-way and via node`("destination_sign", "sign", "from")
     }
 
-    private fun doSplit(vararg splits: SplitWayAtPosition = arrayOf(split)) : Elements {
+    private fun doSplit(vararg splits: SplitWay = arrayOf(split)) : Elements {
         uploader.upload(0, way, splits.asList())
         val arg: ArgumentCaptor<Iterable<Element>> = argumentCaptor()
         verify(osmDao).uploadChanges(eq(0), arg.capture(), any())

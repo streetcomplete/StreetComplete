@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.data.upload;
 import android.app.IntentService;
 import android.content.Intent;
 import android.os.Binder;
+import android.os.CancellationSignal;
 import android.os.IBinder;
 import android.util.Log;
 
@@ -12,22 +13,19 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 import javax.inject.Inject;
-import javax.inject.Provider;
 
 import de.westnordost.osmapi.common.errors.OsmAuthorizationException;
 import de.westnordost.streetcomplete.ApplicationConstants;
 import de.westnordost.streetcomplete.Injector;
 import de.westnordost.streetcomplete.data.VisibleQuestListener;
 import de.westnordost.streetcomplete.data.VisibleQuestRelay;
-import de.westnordost.streetcomplete.data.osm.upload.OsmQuestChangesetsUpload;
 import de.westnordost.streetcomplete.data.osm.upload.OsmQuestsUpload;
-import de.westnordost.streetcomplete.data.osm.upload.SplitOsmWaysUpload;
+import de.westnordost.streetcomplete.data.osm.upload.SplitWaysUpload;
 import de.westnordost.streetcomplete.data.osm.upload.UndoOsmQuestsUpload;
-import de.westnordost.streetcomplete.data.osmnotes.CreateNoteUpload;
-import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestChangesUpload;
+import de.westnordost.streetcomplete.data.osmnotes.CreateNotesUpload;
+import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestsChangesUpload;
 import de.westnordost.streetcomplete.oauth.OAuthPrefs;
 
 /** Collects and uploads all changes the user has done: notes he left, comments he left on existing
@@ -39,12 +37,11 @@ public class QuestChangesUploadService extends IntentService
 	private static Boolean banned = null;
 	private static String banReason = null;
 
-	@Inject Provider<OsmNoteQuestChangesUpload> noteQuestUploadProvider;
-	@Inject Provider<OsmQuestsUpload> questUploadProvider;
-	@Inject Provider<UndoOsmQuestsUpload> undoQuestUploadProvider;
-	@Inject Provider<CreateNoteUpload> createNoteUploadProvider;
-	@Inject Provider<SplitOsmWaysUpload> splitWaysUploadProvider;
-	@Inject Provider<OsmQuestChangesetsUpload> changesetsUploadProvider;
+	@Inject OsmNoteQuestsChangesUpload noteQuestUpload;
+	@Inject OsmQuestsUpload questUpload;
+	@Inject UndoOsmQuestsUpload undoQuestUpload;
+	@Inject CreateNotesUpload createNoteUpload;
+	@Inject SplitWaysUpload splitWaysUpload;
 	@Inject OAuthPrefs oAuth;
 
 	private final IBinder binder = new Interface();
@@ -65,7 +62,7 @@ public class QuestChangesUploadService extends IntentService
 		}
 	};
 
-	private AtomicBoolean cancelState;
+	private CancellationSignal cancelState;
 
 	public QuestChangesUploadService()
 	{
@@ -76,7 +73,7 @@ public class QuestChangesUploadService extends IntentService
 	@Override public void onCreate()
 	{
 		super.onCreate();
-		cancelState = new AtomicBoolean(false);
+		cancelState = new CancellationSignal();
 	}
 
 	@Override public IBinder onBind(Intent intent)
@@ -86,13 +83,13 @@ public class QuestChangesUploadService extends IntentService
 
 	@Override public void onDestroy()
 	{
-		cancelState.set(true);
+		cancelState.cancel();
 		super.onDestroy();
 	}
 
 	@Override protected void onHandleIntent(Intent intent)
 	{
-		if(cancelState.get()) return;
+		if(cancelState.isCanceled()) return;
 
 		if(progressListener != null)
 		{
@@ -114,31 +111,27 @@ public class QuestChangesUploadService extends IntentService
 
 			Log.i(TAG, "Starting upload");
 
-			OsmNoteQuestChangesUpload noteQuestUpload = noteQuestUploadProvider.get();
-			noteQuestUpload.setProgressListener(uploadedChangeRelay);
+			noteQuestUpload.setUploadedChangeListener(uploadedChangeRelay);
 			noteQuestUpload.upload(cancelState);
 
-			if (cancelState.get()) return;
+			if (cancelState.isCanceled()) return;
 
-			OsmQuestChangesetsUpload osmQuestChangesetsUpload = changesetsUploadProvider.get();
-			osmQuestChangesetsUpload.setCancelState(cancelState);
-			osmQuestChangesetsUpload.setProgressListener(uploadedChangeRelay);
-			osmQuestChangesetsUpload.setVisibleQuestListener(visibleQuestRelay);
+			undoQuestUpload.setUploadedChangeListener(uploadedChangeRelay);
+			undoQuestUpload.upload(cancelState);
 
-			undoQuestUploadProvider.get().upload(osmQuestChangesetsUpload);
+			if (cancelState.isCanceled()) return;
 
-			if (cancelState.get()) return;
+			questUpload.setUploadedChangeListener(uploadedChangeRelay);
+			questUpload.upload(cancelState);
 
-			questUploadProvider.get().upload(osmQuestChangesetsUpload);
+			if (cancelState.isCanceled()) return;
 
-			if (cancelState.get()) return;
+			splitWaysUpload.setUploadedChangeListener(uploadedChangeRelay);
+			splitWaysUpload.upload(cancelState);
 
-			splitWaysUploadProvider.get().upload(osmQuestChangesetsUpload);
+			if (cancelState.isCanceled()) return;
 
-			if (cancelState.get()) return;
-
-			CreateNoteUpload createNoteUpload = createNoteUploadProvider.get();
-			createNoteUpload.setProgressListener(uploadedChangeRelay);
+			createNoteUpload.setUploadedChangeListener(uploadedChangeRelay);
 			createNoteUpload.upload(cancelState);
 		}
 		catch (Exception e)

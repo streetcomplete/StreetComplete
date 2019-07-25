@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.osm.ElementKey
 import de.westnordost.streetcomplete.ktx.copy
 import java.util.ArrayList
 
+/** Reads the answer of an update map call on the OSM API */
 class UpdateElementsHandler(val elements: Collection<Element>) : Handler<DiffElement> {
     val updatedElements: MutableList<Element> = ArrayList()
     val deletedElementsKeys: MutableList<ElementKey> = ArrayList()

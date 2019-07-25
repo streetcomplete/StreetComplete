@@ -18,3 +18,13 @@ fun Cursor.getDoubleOrNull(columnName: String): Double? = getDoubleOrNull(getCol
 fun Cursor.getFloatOrNull(columnName: String): Float? = getFloatOrNull(getColumnIndexOrThrow(columnName))
 fun Cursor.getStringOrNull(columnName: String): String? = getStringOrNull(getColumnIndexOrThrow(columnName))
 fun Cursor.getBlobOrNull(columnName: String): ByteArray? = getBlobOrNull(getColumnIndexOrThrow(columnName))
+
+inline fun <R> Cursor.map(transform: (Cursor) -> R): List<R> {
+    val result = mutableListOf<R>()
+    moveToFirst()
+    while(!isAfterLast()) {
+        result.add(transform(this))
+        moveToNext()
+    }
+    return result
+}

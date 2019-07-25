@@ -24,6 +24,7 @@ import de.westnordost.streetcomplete.ApplicationConstants;
 import de.westnordost.streetcomplete.data.changesets.OpenChangesetsDao;
 import de.westnordost.streetcomplete.data.download.QuestDownloadService;
 import de.westnordost.streetcomplete.data.osm.OsmQuest;
+import de.westnordost.streetcomplete.data.osm.UndoOsmQuest;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChanges;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao;
@@ -245,14 +246,7 @@ public class QuestController
 		{
 			quest.setStatus(QuestStatus.REVERT);
 			osmQuestDB.update(quest);
-
-			OsmQuest reversedQuest = new OsmQuest(
-					quest.getOsmElementQuestType(),
-					quest.getElementType(),
-					quest.getElementId(),
-					quest.getGeometry());
-			reversedQuest.setChanges(quest.getChanges().reversed(), quest.getChangesSource());
-			undoOsmQuestDB.add(reversedQuest);
+			undoOsmQuestDB.add(new UndoOsmQuest(quest));
 		}
 		else
 		{

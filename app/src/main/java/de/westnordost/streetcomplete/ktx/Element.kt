@@ -4,7 +4,7 @@ import de.westnordost.osmapi.map.data.*
 import java.util.ArrayList
 
 fun Element.copy(newId: Long = id, newVersion: Int = version): Element {
-    val tags = tags?.let { HashMap(it) }
+    val tags = tags?.let { HashMap(it) } ?: HashMap()
     return when (this) {
         is Node -> OsmNode(newId, newVersion, position, tags)
         is Way -> OsmWay(newId, newVersion, ArrayList(nodeIds), tags)

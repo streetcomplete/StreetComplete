@@ -12,7 +12,8 @@ import de.westnordost.streetcomplete.data.changesets.OpenChangesetsTable;
 import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryTable;
 import de.westnordost.streetcomplete.data.osm.persist.NodeTable;
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestTable;
-import de.westnordost.streetcomplete.data.osm.persist.SplitWayTable;
+import de.westnordost.streetcomplete.data.osm.persist.OsmQuestSplitWayTable;
+import de.westnordost.streetcomplete.data.osm.persist.UndoOsmQuestTable;
 import de.westnordost.streetcomplete.data.osmnotes.CreateNoteTable;
 import de.westnordost.streetcomplete.data.osmnotes.NoteTable;
 import de.westnordost.streetcomplete.data.osm.persist.RelationTable;
@@ -75,21 +76,20 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 			");";
 
 	private static final String UNDO_OSM_QUESTS_TABLE_CREATE =
-			"CREATE TABLE " + OsmQuestTable.NAME_UNDO + " (" +
-				OsmQuestTable.Columns.QUEST_ID +		" INTEGER		PRIMARY KEY, " +
-				OsmQuestTable.Columns.QUEST_TYPE +		" varchar(255)	NOT NULL, " +
-				OsmQuestTable.Columns.TAG_CHANGES +		" blob, " + // null if no changes
-				OsmQuestTable.Columns.CHANGES_SOURCE +	" varchar(255), " +
-				OsmQuestTable.Columns.LAST_UPDATE + 	" int			NOT NULL, " +
-				OsmQuestTable.Columns.ELEMENT_ID +		" int			NOT NULL, " +
-				OsmQuestTable.Columns.ELEMENT_TYPE +	" varchar(255)	NOT NULL, " +
+			"CREATE TABLE " + UndoOsmQuestTable.NAME + " (" +
+				UndoOsmQuestTable.Columns.QUEST_ID +		" INTEGER		PRIMARY KEY, " +
+				UndoOsmQuestTable.Columns.QUEST_TYPE +		" varchar(255)	NOT NULL, " +
+				UndoOsmQuestTable.Columns.TAG_CHANGES +		" blob			NOT NULL, " +
+				UndoOsmQuestTable.Columns.CHANGES_SOURCE +	" varchar(255)  NOT NULL, " +
+				UndoOsmQuestTable.Columns.ELEMENT_ID +		" int			NOT NULL, " +
+				UndoOsmQuestTable.Columns.ELEMENT_TYPE +	" varchar(255)	NOT NULL, " +
 			"CONSTRAINT same_osm_quest UNIQUE (" +
-				OsmQuestTable.Columns.QUEST_TYPE + ", " +
-				OsmQuestTable.Columns.ELEMENT_ID + ", " +
-				OsmQuestTable.Columns.ELEMENT_TYPE +
+				UndoOsmQuestTable.Columns.QUEST_TYPE + ", " +
+				UndoOsmQuestTable.Columns.ELEMENT_ID + ", " +
+				UndoOsmQuestTable.Columns.ELEMENT_TYPE +
 			"), " +
 			"CONSTRAINT element_key FOREIGN KEY (" +
-				OsmQuestTable.Columns.ELEMENT_TYPE + ", " + OsmQuestTable.Columns.ELEMENT_ID +
+				UndoOsmQuestTable.Columns.ELEMENT_TYPE + ", " + UndoOsmQuestTable.Columns.ELEMENT_ID +
 			") REFERENCES " + ElementGeometryTable.NAME + " (" +
 				ElementGeometryTable.Columns.ELEMENT_TYPE + ", " +
 				ElementGeometryTable.Columns.ELEMENT_ID +
@@ -120,8 +120,8 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 				");";
 
 	private static final String OSM_UNDO_QUESTS_VIEW_CREATE =
-			"CREATE VIEW " + OsmQuestTable.NAME_UNDO_MERGED_VIEW + " AS " +
-					"SELECT * FROM " + OsmQuestTable.NAME_UNDO + " " +
+			"CREATE VIEW " + UndoOsmQuestTable.NAME_MERGED_VIEW + " AS " +
+					"SELECT * FROM " + UndoOsmQuestTable.NAME + " " +
 					"INNER JOIN " + ElementGeometryTable.NAME + " USING (" +
 					ElementGeometryTable.Columns.ELEMENT_TYPE + ", " +
 					ElementGeometryTable.Columns.ELEMENT_ID +
@@ -223,7 +223,7 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 			" (" +
 				OpenChangesetsTable.Columns.QUEST_TYPE +    " varchar(255), " +
 				OpenChangesetsTable.Columns.SOURCE +        " varchar(255), " +
-				OpenChangesetsTable.Columns.CHANGESET_ID +  " int	NOT NULL, " +
+				OpenChangesetsTable.Columns.CHANGESET_ID +  " int NOT NULL, " +
 				"CONSTRAINT primary_key PRIMARY KEY (" +
 					OpenChangesetsTable.Columns.QUEST_TYPE + ", " +
 					OpenChangesetsTable.Columns.SOURCE +
@@ -238,29 +238,14 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 			");";
 
 	private static final String SPLIT_WAYS_TABLE_CREATE =
-			"CREATE TABLE " + SplitWayTable.NAME +
+			"CREATE TABLE " + OsmQuestSplitWayTable.NAME +
 			" (" +
-				SplitWayTable.Columns.WAY_ID +        " int    NOT NULL, " +
-				SplitWayTable.Columns.NODE1_ID +      " int    NOT NULL, " +
-				SplitWayTable.Columns.NODE1_VERSION + " int    NOT NULL, " +
-				SplitWayTable.Columns.NODE1_LAT +     " double NOT NULL, " +
-				SplitWayTable.Columns.NODE1_LON +     " double NOT NULL, " +
-				SplitWayTable.Columns.NODE2_ID +      " int    NOT NULL, " +
-				SplitWayTable.Columns.NODE2_VERSION + " int    NOT NULL, " +
-				SplitWayTable.Columns.NODE2_LAT +     " double NOT NULL, " +
-				SplitWayTable.Columns.NODE2_LON +     " double NOT NULL, " +
-				SplitWayTable.Columns.DELTA +         " double NOT NULL, " +
-				"CONSTRAINT same_split UNIQUE (" +
-					SplitWayTable.Columns.WAY_ID + ", " +
-					SplitWayTable.Columns.NODE1_ID + ", " +
-					SplitWayTable.Columns.NODE2_ID + ", " +
-					SplitWayTable.Columns.DELTA +
-				") " +
+				OsmQuestSplitWayTable.Columns.QUEST_ID +      " int          PRIMARY KEY, " +
+				OsmQuestSplitWayTable.Columns.QUEST_TYPE +    " varchar(255) NOT NULL, " +
+				OsmQuestSplitWayTable.Columns.WAY_ID +        " int          NOT NULL, " +
+				OsmQuestSplitWayTable.Columns.SPLITS +        " blob         NOT NULL, " +
+				OsmQuestSplitWayTable.Columns.SOURCE +        " varchar(255) NOT NULL " +
 			");";
-
-	private static final String SPLIT_WAYS_INDEX_CREATE =
-			"CREATE INDEX " + SplitWayTable.INDEX_NAME + " ON " + SplitWayTable.NAME +
-			" (" + SplitWayTable.Columns.WAY_ID + ");";
 
 	private final TablesHelper[] extensions;
 
@@ -376,13 +361,17 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 			String where = OsmQuestTable.Columns.QUEST_TYPE + " = ?";
 			String[] args = {AddOneway.class.getSimpleName()};
 			db.delete(OsmQuestTable.NAME, where, args);
-			db.delete(OsmQuestTable.NAME_UNDO, where, args);
+			db.delete(UndoOsmQuestTable.NAME, where, args);
 		}
 
 		if(oldVersion < 12 && newVersion >= 12)
 		{
 			db.execSQL(SPLIT_WAYS_TABLE_CREATE);
-			db.execSQL(SPLIT_WAYS_INDEX_CREATE);
+			// slightly different structure for undo osm quest table. Isn't worth converting
+			db.execSQL("DROP TABLE " + UndoOsmQuestTable.NAME);
+			db.execSQL("DROP VIEW " + UndoOsmQuestTable.NAME_MERGED_VIEW);
+			db.execSQL(UNDO_OSM_QUESTS_TABLE_CREATE);
+			db.execSQL(OSM_UNDO_QUESTS_VIEW_CREATE);
 		}
 		// for later changes to the DB
 		// ...
@@ -393,20 +382,13 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 		}
 	}
 
-
 	private static boolean tableHasColumn(SQLiteDatabase db, String tableName, String columnName)
 	{
-
 		try (Cursor cursor = db.rawQuery("PRAGMA table_info(" + tableName + ")", null))
 		{
-			if (cursor.moveToFirst())
-			{
-				while (!cursor.isAfterLast())
-				{
-					String name = cursor.getString(cursor.getColumnIndexOrThrow("name"));
-					if (columnName.equals(name)) return true;
-					cursor.moveToNext();
-				}
+			while(cursor.moveToNext()) {
+				String name = cursor.getString(cursor.getColumnIndexOrThrow("name"));
+				if (columnName.equals(name)) return true;
 			}
 		}
 		return false;

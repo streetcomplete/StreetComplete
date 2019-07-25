@@ -1,27 +1,27 @@
 package de.westnordost.streetcomplete.data.osm.upload
 
-import java.util.Locale
-
 import javax.inject.Inject
 import de.westnordost.osmapi.common.errors.OsmConflictException
 import de.westnordost.osmapi.map.MapDataDao
 import de.westnordost.osmapi.map.data.*
-import de.westnordost.streetcomplete.data.osm.OsmQuest
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChanges
 import de.westnordost.streetcomplete.ktx.copy
 import de.westnordost.streetcomplete.util.SphericalEarthMath
 
 import java.net.HttpURLConnection.HTTP_CONFLICT
 
-open class SingleOsmQuestUpload @Inject constructor(private val osmDao: MapDataDao) {
-    /** Uploads the changes made for one quest
-     *  Returns the element that has been updated or throws a ConflictException */
-    fun upload(changesetId: Long, quest: OsmQuest, dbElement: Element): Element {
+/** Uploads the changes made for one quest
+ *  Returns the element that has been updated or throws a ConflictException */
+class SingleOsmElementTagChangesUpload @Inject constructor(private val osmDao: MapDataDao) {
+
+    fun upload(changesetId: Long, quest: HasElementTagChanges, dbElement: Element): Element {
         var element = dbElement
         var handlingConflict = false
 
         while(true) {
-            val elementWithChangesApplied = element.changesApplied(quest.changes)
+            val changes = quest.changes ?: throw ElementConflictException("No changes")
+
+            val elementWithChangesApplied = element.changesApplied(changes)
             val handler = UpdateElementsHandler(listOf(elementWithChangesApplied))
             try {
                 /* only necessary because of #1408: Elements where the version is invalid need to be
@@ -47,11 +47,11 @@ open class SingleOsmQuestUpload @Inject constructor(private val osmDao: MapDataD
         }
     }
 
-    private fun handleConflict(quest: OsmQuest, element: Element, e: OsmConflictException): Element {
+    private fun handleConflict(quest: HasElementTagChanges, element: Element, e: OsmConflictException): Element {
         /* Conflict can either happen because of the changeset or because of the element(s)
            uploaded. A changeset conflict cannot be handled here */
         val newElement = element.fetchUpdated()
-        if (newElement?.version == element.version) throw e
+        if (newElement?.version == element.version) throw ChangesetConflictException(e.message, e)
 
 	    if (newElement == null) {
             throw ElementDeletedException("Element has already been deleted")
@@ -127,6 +127,3 @@ private fun Element.changesApplied(changes: StringMapChanges): Element {
     }
     return copy
 }
-
-private fun OsmQuest.toLogString() =
-	type.javaClass.simpleName + " for " + elementType.name.toLowerCase(Locale.US) + " #" + elementId

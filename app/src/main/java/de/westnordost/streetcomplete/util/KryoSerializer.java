@@ -17,6 +17,7 @@ import de.westnordost.streetcomplete.data.osm.changes.StringMapChanges;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryDelete;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryModify;
+import de.westnordost.streetcomplete.data.osm.persist.SplitWayData;
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningMonthsRow;
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningWeekdaysRow;
 import de.westnordost.streetcomplete.quests.opening_hours.model.CircularSection;
@@ -59,6 +60,7 @@ public class KryoSerializer implements Serializer
 			LocalizedName.class,
 			WeekdaysTimesRow.class,
 			OsmLatLon.class,
+			SplitWayData.class
 	};
 
 

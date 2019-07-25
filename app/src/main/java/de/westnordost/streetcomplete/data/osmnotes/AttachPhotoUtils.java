@@ -3,6 +3,8 @@ package de.westnordost.streetcomplete.data.osmnotes;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
+
+import androidx.annotation.Nullable;
 import androidx.exifinterface.media.ExifInterface;
 
 import java.io.File;
@@ -13,7 +15,7 @@ import de.westnordost.streetcomplete.util.ImageUploader;
 
 public class AttachPhotoUtils
 {
-	public static String uploadAndGetAttachedPhotosText(ImageUploader imageUploader, List<String> imagePaths)
+	public static String uploadAndGetAttachedPhotosText(ImageUploader imageUploader, @Nullable List<String> imagePaths)
 	{
 		if(imagePaths != null && !imagePaths.isEmpty())
 		{

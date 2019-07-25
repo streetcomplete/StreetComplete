@@ -20,7 +20,7 @@ import de.westnordost.streetcomplete.data.osm.download.OverpassOldMapDataDao;
 import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao;
 import de.westnordost.streetcomplete.data.osm.persist.MergedElementDao;
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
-import de.westnordost.streetcomplete.data.osm.upload.SingleOsmQuestUpload;
+import de.westnordost.streetcomplete.data.osm.upload.SingleOsmElementTagChangesUpload;
 import de.westnordost.streetcomplete.data.osmnotes.OsmAvatarsDownload;
 import de.westnordost.streetcomplete.oauth.OAuthPrefs;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
@@ -113,15 +113,6 @@ public class OsmModule
 	@Provides public static MapDataDao mapDataDao(OsmConnection osm)
 	{
 		return new MapDataDao(osm);
-	}
-
-	@Provides public static SingleOsmQuestUpload osmQuestChangeUpload(
-		MapDataDao osmDao, OsmQuestDao questDB, MergedElementDao elementDB,
-		ElementGeometryDao elementGeometryDB, OsmApiWayGeometrySource wayGeometrySource,
-		OsmQuestGiver questGiver)
-	{
-		return new SingleOsmQuestUpload(osmDao, questDB, elementDB, elementGeometryDB,
-			new ElementGeometryCreator(wayGeometrySource), questGiver);
 	}
 
 	@Provides public static OsmAvatarsDownload avatarsDownload(UserDao userDao, Context context)

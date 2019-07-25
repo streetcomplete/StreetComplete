@@ -1,20 +1,22 @@
 package de.westnordost.streetcomplete.data.osm.upload
 
+import de.westnordost.osmapi.common.errors.OsmConflictException
 import de.westnordost.osmapi.map.MapDataDao
 import de.westnordost.osmapi.map.data.*
 import de.westnordost.streetcomplete.util.SphericalEarthMath
 import javax.inject.Inject
 import de.westnordost.osmapi.map.data.Element.Type.*
-import de.westnordost.streetcomplete.data.osm.changes.SplitWayAtPosition
+import de.westnordost.streetcomplete.data.osm.changes.SplitWay
 import de.westnordost.streetcomplete.ktx.containsAny
 import de.westnordost.streetcomplete.ktx.findNext
 import de.westnordost.streetcomplete.ktx.findPrevious
 import de.westnordost.streetcomplete.ktx.firstAndLast
 
-class SplitSingleOsmWayUpload @Inject constructor(private val osmDao: MapDataDao)  {
-    /** Uploads one split
-     *  Returns only the ways that have been updated or throws a ConflictException */
-    fun upload(changesetId: Long, way: Way, splits: List<SplitWayAtPosition>): List<Way> {
+/** Uploads one split way
+ *  Returns only the ways that have been updated or throws a ConflictException */
+class SplitSingleWayUpload @Inject constructor(private val osmDao: MapDataDao)  {
+
+    fun upload(changesetId: Long, way: Way, splits: List<SplitWay>): List<Way> {
         if(way.isClosed() && splits.size < 2)
             throw IllegalArgumentException("Must specify at least two split positions for a closed way")
 
@@ -60,10 +62,12 @@ class SplitSingleOsmWayUpload @Inject constructor(private val osmDao: MapDataDao
         }
 
         uploadElements.addAll(splitWayAtIndices(updatedWay, splitAtIndices))
-        /* not catching OsmConflictException here because we already downloaded all related
-           elements just now already - it must be a changeset conflict */
         val handler = UpdateElementsHandler(uploadElements)
-        osmDao.uploadChanges(changesetId, uploadElements, handler)
+        try {
+            osmDao.uploadChanges(changesetId, uploadElements, handler)
+        } catch (e: OsmConflictException) {
+            throw ChangesetConflictException(e.message, e)
+        }
         return handler.updatedElements.filterIsInstance<Way>()
     }
 
@@ -202,8 +206,8 @@ class SplitSingleOsmWayUpload @Inject constructor(private val osmDao: MapDataDao
 }
 
 /** comparator that sorts all the splits from start to end in the way */
-private class SplitWayAtComparator(private val way: Way) : Comparator<SplitWayAtPosition> {
-    override fun compare(split1: SplitWayAtPosition, split2: SplitWayAtPosition): Int {
+private class SplitWayAtComparator(private val way: Way) : Comparator<SplitWay> {
+    override fun compare(split1: SplitWay, split2: SplitWay): Int {
         val split1Index = way.nodeIds.indexOf(split1.secondNode.id)
         val split2Index = way.nodeIds.indexOf(split2.secondNode.id)
         val diffIndex = split1Index - split2Index
