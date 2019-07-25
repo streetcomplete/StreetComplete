@@ -5,7 +5,7 @@ contribute to the OpenStreetMap by surveying their neighbourhood (or other place
 
  StreetComplete on its own locates places where survey will be helpful. The found places are shown as markers on a map. Each can be solved by walking to the location and filling in the app a simple form to complete/correct the information. For example a road without name will result in a marker with an appropriate quest. After tapping it "What is the name of this road?" question is shown, with a text field to answer it. More examples are shown in screenshots below.
 
-The user's answer is automatically processed and directly uploaded into the OSM database. Edits are done in meaningful changesets using user's OSM account.
+The user's answer is automatically processed and directly uploaded into the OSM database. Edits are done in meaningful changesets using the user's OSM account.
 Since the app is meant to be used on a survey, it can be used offline and is
 economic with data usage.
 
