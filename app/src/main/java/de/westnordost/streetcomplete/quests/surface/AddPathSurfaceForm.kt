@@ -5,7 +5,7 @@ import de.westnordost.streetcomplete.quests.AGroupedImageListQuestAnswerFragment
 import de.westnordost.streetcomplete.view.Item
 import de.westnordost.streetcomplete.quests.surface.Surface.*
 
-class AddPathSurfaceForm : AGroupedImageListQuestAnswerFragment<String, String>() {
+open class AddPathSurfaceForm : AGroupedImageListQuestAnswerFragment<String, String>() {
 
     override val topItems get() =
         when (val pathType = determinePathType(osmElement!!.tags)) {
@@ -48,7 +48,7 @@ class AddPathSurfaceForm : AGroupedImageListQuestAnswerFragment<String, String>(
         ).toItems())
     )
 
-    private fun determinePathType(tags: Map<String, String>): String? {
+    open fun determinePathType(tags: Map<String, String>): String? {
         val pathType = tags["highway"]
         // interpret paths with foot/bicycle/horse=designated as...
         if ("path" == pathType) {
