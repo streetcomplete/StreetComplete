@@ -2,15 +2,15 @@
 
 StreetComplete is an easy to use editor of OpenStreetMap data available for Android. It can be used without any OpenStreetMap-specific knowledge. It asks simple questions, with answers directly used to edit and improve OpenStreetMap data.
 
-The found issues are presented to the user as markers on a map (like i.e. in Osmose) that each are
-solvable by filling out a simple form to complete/correct the information on site. The user's
-answer is then processed and directly uploaded into the OSM database in meaningful changesets in the name
-of the user's OSM account.
+The app is aimed at users who do not know anything about OSM tagging schemes but still want to
+contribute to the OpenStreetMap by surveying their neighbourhood (or other places as well). The found issues are presented to the user as markers on a map (like i.e. in Osmose) that each are
+solvable by filling out a simple form to complete/correct the information on site.
+
+The user's answer is automatically processed and directly uploaded into the OSM database. Edits are done in meaningful changesets using user's OSM account.
 Since the app is meant to be used on a survey, it can be used offline and is
 economic with data usage.
 
-The app is aimed at users who do not know anything about OSM tagging schemes but still want to
-contribute to the OpenStreetMap by surveying their neighbourhood (or other places as well). Because of the target group, only those quests are shown which are answerable very clearly by asking simple questions and only those quests are created which contain very few false positives.
+To make app easy to use quests are limited to answerable by asking simple questions. Also, only quests with very few false positives are allowe.
 
 ## Screenshots
 <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot01.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot02.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot03.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot04.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot05.png" width="170"/>
