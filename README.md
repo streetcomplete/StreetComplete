@@ -10,7 +10,7 @@ The user's answer is automatically processed and directly uploaded into the OSM 
 Since the app is meant to be used on a survey, it can be used offline and is
 economic with data usage.
 
-To make app easy to use quests are limited to answerable by asking simple questions. Also, only quests with very few false positives are allowe.
+To make app easy to use quests are limited to answerable by asking simple questions. Also, only quests with very few false positives are allowed.
 
 ## Screenshots
 <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot01.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot02.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot03.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot04.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot05.png" width="170"/>
