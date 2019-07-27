@@ -15,7 +15,11 @@ public class ViewUtils
 			{
 				@Override public void onGlobalLayout()
 				{
-					if(vto.isAlive()) vto.removeOnGlobalLayoutListener(this);
+					try {
+						vto.removeOnGlobalLayoutListener(this);
+					} catch (IllegalStateException e) {
+						// ignore: checking isAlive before is not sufficient (race condition)
+					}
 					runnable.run();
 				}
 			});
@@ -31,7 +35,11 @@ public class ViewUtils
 			{
 				@Override public boolean onPreDraw()
 				{
-					if(vto.isAlive()) vto.removeOnPreDrawListener(this);
+					try {
+						vto.removeOnPreDrawListener(this);
+					} catch (IllegalStateException e) {
+						// ignore: checking isAlive before is not sufficient (race condition)
+					}
 					runnable.run();
 					return true;
 				}
