@@ -91,13 +91,12 @@
     <string name="quest_openingHours_answer_no_regular_opening_hours">"Brak stałych godzin otwarcia…"</string>
     <string name="quest_openingHours_comment_title">"Opisz godziny otwarcia"</string>
     <string name="quest_openingHours_comment_description">"Krótko i zwięźle, najlepiej tak jak jest napisane na tabliczce, np. \"po uzgodnieniu terminu\". Brak tabliczki niekoniecznie oznacza braku stałych godzin otwarcia."</string>
-    <string name="quest_buildingLevels_title">"Ile pięter ma ten budynek?"</string>
-    <string name="quest_buildingLevels_title_buildingPart">"Ile pięter ma ta część budynku?"</string>
+    <string name="quest_buildingLevels_title">"Ile kondygnacji ma ten budynek?"</string>
+    <string name="quest_buildingLevels_title_buildingPart">"Ile kondygnacji ma ta część budynku?"</string>
     <string name="quest_roofShape_title">"Jaki ogólny kształt dachu ma ten budynek?"</string>
     <string name="quest_roofShape_select_one">"Wybierz jeden:"</string>
     <string name="quest_roofShape_show_more">"Pokaż więcej…"</string>
     <string name="quest_roofShape_answer_many">"Ma kilka różnych kształtów"</string>
-    <string name="pref_category_cache">"Pamięć podręczna"</string>
     <string name="pref_title_sync">"Autosynchronizacja"</string>
     <string name="map_btn_zoom_out">"Oddal"</string>
     <string name="map_btn_zoom_in">"Przybliż"</string>
@@ -625,25 +624,37 @@ Na przykład 1,3 lub 2-6."</string>
     <string name="restore_hidden_success">"Przywrócono %d ukrytych zadań"</string>
 
     <!-- caution: This is not necessarily the floor and level=0 is not necessarily at street level
-        as it may follow the numbering scheme of the building operator. Try to use a generic wording
-        that does not carry an implicit meaning of where it is located in respect to the ground floor.
-        The context is usually shopping centres, train stations or airport terminals -->
+    as it may follow the numbering scheme of the building operator. Try to use a generic wording
+    that does not carry an implicit meaning of where it is located in respect to the ground floor.
+    The context is usually shopping centres, train stations or airport terminals -->
     <string name="on_level">"na piętrze %s:"</string>
 
     <!-- as in: "Where is the metro station?" - "It is underground" -->
     <string name="underground">"pod ziemią:"</string>
     <string name="quest_sidewalk_value_yes">"chodnik"</string>
     <string name="quest_sidewalk_value_no">"brak chodnika"</string>
-    <string name="quest_accessible_for_pedestrians_title_prohibited">"Czy pieszy mają zakaz poruszania się na tej drodze?"</string>
+    <string name="quest_accessible_for_pedestrians_title_prohibited">"Czy piesi mają zakaz poruszania się na tej drodze?"</string>
     <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Ta ulica jest otagowana jako pozbawiona chodnika po obu stronach. Jeśli jednak chodnik istnieje, ale jest wyświetlany jako samodzielna droga, wypełnij odpowiedź na temat chodnika."</string>
     <string name="quest_buildingType_title">"Jaki to rodzaj budynku?"</string>
-    <string name="pref_category_theme">"Motyw"</string>
     <string name="pref_title_theme_select">"Wybierz motyw"</string>
     <string name="theme_automatic">"Automatyczny"</string>
     <string name="theme_light">"Jasny"</string>
     <string name="theme_dark">"Ciemny"</string>
     <string name="theme_system_default">"Domyślny systemu"</string>
-    <string name="quest_placeName_title_name">"Jaka jest nazwa tego miejsca? (%s)"</string>
-    <string name="action_open_location">"Otwórz to miejsce na mapie innej aplikacji"</string>
+    <string name="quest_placeName_title_name">"Jaka jest nazwa własna tego miejsca? (%s)"</string>
+    <string name="action_open_location">"Otwórz to miejsce w innej aplikacji"</string>
     <string name="map_application_missing">"Nie ma innej aplikacji map"</string>
+    <string name="pref_title_overpass_url_select">"Zmień serwer Overpassa"</string>
+    <string name="pref_title_overpass_url_info">"Wymaga restartu aplikacji. Może pozwoli na obejście cenzury, na przykład w Rosji."</string>
+    <string name="label_housenumber">"Numer domu"</string>
+    <string name="label_blocknumber">"Numer kwartału"</string>
+    <string name="quest_busStopShelter_covered">"Przystanek jest w całości przykryty"</string>
+    <string name="quest_ferry_pedestrian_name_title">"Czy %s przewozi pieszych?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_ferry_pedestrian_title">"Czy ten prom przewozi pieszych?"</string>
+    <string name="quest_ferry_motor_vehicle_name_title">"Czy %s przewozi pojazdy silnikowe?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_ferry_motor_vehicle_title">"Czy ten prom przewozi pojazdy silnikowe?"</string>
 </resources>

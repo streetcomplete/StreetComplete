@@ -107,7 +107,6 @@
     <string name="quest_roofShape_select_one">"Birini seç:"</string>
     <string name="quest_roofShape_show_more">"Daha fazla göster…"</string>
     <string name="quest_roofShape_answer_many">"Birkaç farklı şekli vardır"</string>
-    <string name="pref_category_cache">"Önbellek"</string>
     <string name="pref_title_sync">"Otomatik Senkronizasyon"</string>
     <string name="map_btn_zoom_out">"Uzaklaştır"</string>
     <string name="map_btn_zoom_in">"Yakınlaştır"</string>
@@ -518,7 +517,6 @@ Aksi takdirde, uygulama mağazasında başka bir klavye indirebilirsiniz. Birço
     <string name="quest_openingHours_timeSelect_next">"İleri"</string>
     <string name="quest_sidewalk_value_yes">"kaldırım"</string>
     <string name="quest_buildingType_title">"Bu nasıl bir bina?"</string>
-    <string name="pref_category_theme">"Tema"</string>
     <string name="theme_automatic">"Otomatik"</string>
     <string name="theme_dark">"Koyu"</string>
     <string name="theme_system_default">"Varsayılan"</string>

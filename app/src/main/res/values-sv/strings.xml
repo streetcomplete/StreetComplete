@@ -105,7 +105,6 @@
     <string name="quest_roofShape_select_one">"Välj en:"</string>
     <string name="quest_roofShape_show_more">"Visa mer…"</string>
     <string name="quest_roofShape_answer_many">"Det har flera olika former"</string>
-    <string name="pref_category_cache">"Cache"</string>
     <string name="pref_title_sync">"Automatisk synkronisering"</string>
     <string name="map_btn_zoom_out">"Zooma ut"</string>
     <string name="map_btn_zoom_in">"Zooma in"</string>
@@ -671,9 +670,9 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="restore_hidden_success">"Återställde %d dolda uppdrag"</string>
 
     <!-- caution: This is not necessarily the floor and level=0 is not necessarily at street level
-        as it may follow the numbering scheme of the building operator. Try to use a generic wording
-        that does not carry an implicit meaning of where it is located in respect to the ground floor.
-        The context is usually shopping centres, train stations or airport terminals -->
+    as it may follow the numbering scheme of the building operator. Try to use a generic wording
+    that does not carry an implicit meaning of where it is located in respect to the ground floor.
+    The context is usually shopping centres, train stations or airport terminals -->
     <string name="on_level">"på nivå %s:"</string>
 
     <!-- as in: "Where is the metro station?" - "It is underground" -->
@@ -683,13 +682,12 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Är fotgängare förbjudna att gå på den här vägen?"</string>
     <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Den här gatan märktes som att den inte hade någon trottoar på vardera sidan. Om det finns en trottoar trots allt, men den visas som en separat väg, var god svara \"trottoar\"."</string>
     <string name="quest_buildingType_title">"Vilken typ av byggnad är detta?"</string>
-    <string name="pref_category_theme">"Tema"</string>
     <string name="pref_title_theme_select">"Välj tema"</string>
     <string name="theme_automatic">"Automatiskt"</string>
     <string name="theme_light">"Ljust"</string>
     <string name="theme_dark">"Mörkt"</string>
     <string name="theme_system_default">"Systemstandard"</string>
     <string name="quest_placeName_title_name">"Vad heter det här stället? (%s)"</string>
-    <string name="action_open_location">"Öppen plats i en annan app"</string>
+    <string name="action_open_location">"Öppna plats i en annan app"</string>
     <string name="map_application_missing">"Ingen annan kartapplikation installerad"</string>
 </resources>

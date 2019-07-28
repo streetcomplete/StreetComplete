@@ -97,7 +97,6 @@
     <string name="quest_roofShape_select_one">"한 개만 선택하세요"</string>
     <string name="quest_roofShape_show_more">"더 보기..."</string>
     <string name="quest_roofShape_answer_many">"다양한 모양을 가지고 있습니다"</string>
-    <string name="pref_category_cache">"캐시"</string>
     <string name="pref_title_sync">"자동 동기화"</string>
     <string name="map_btn_zoom_out">"축소"</string>
     <string name="map_btn_zoom_in">"확대"</string>
@@ -606,9 +605,9 @@
     <string name="restore_hidden_success">"숨겨진 퀘스트 %d개가 복원되었습니다"</string>
 
     <!-- caution: This is not necessarily the floor and level=0 is not necessarily at street level
-        as it may follow the numbering scheme of the building operator. Try to use a generic wording
-        that does not carry an implicit meaning of where it is located in respect to the ground floor.
-        The context is usually shopping centres, train stations or airport terminals -->
+    as it may follow the numbering scheme of the building operator. Try to use a generic wording
+    that does not carry an implicit meaning of where it is located in respect to the ground floor.
+    The context is usually shopping centres, train stations or airport terminals -->
     <string name="on_level">"%s층에 있음:"</string>
 
     <!-- as in: "Where is the metro station?" - "It is underground" -->
@@ -618,7 +617,6 @@
     <string name="quest_accessible_for_pedestrians_title_prohibited">"법적으로, 보행자가 이 도로를 걸을 수 없습니까?"</string>
     <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"이 도로의 양쪽에는 모두 인도가 없다고 나와 있습니다. 실제로 인도가 있지만 차도와 분리되어 있다면, \"인도\"라고 답하세요."</string>
     <string name="quest_buildingType_title">"이 건물은 다음 중 어떤 건물입니까?"</string>
-    <string name="pref_category_theme">"테마"</string>
     <string name="pref_title_theme_select">"테마 선택"</string>
     <string name="theme_automatic">"자동"</string>
     <string name="theme_light">"밝음"</string>

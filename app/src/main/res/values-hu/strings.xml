@@ -97,7 +97,6 @@
     <string name="quest_roofShape_select_one">"Jelölj ki egyet:"</string>
     <string name="quest_roofShape_show_more">"Továbbiak…"</string>
     <string name="quest_roofShape_answer_many">"Több különböző alakja van"</string>
-    <string name="pref_category_cache">"Gyorsítótár"</string>
     <string name="pref_title_sync">"Automatikus szinkronizálás"</string>
     <string name="map_btn_zoom_out">"Kicsinyít"</string>
     <string name="map_btn_zoom_in">"Nagyít"</string>
@@ -627,9 +626,9 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="restore_hidden_success">"%d rejtett kérdés visszaállítása"</string>
 
     <!-- caution: This is not necessarily the floor and level=0 is not necessarily at street level
-        as it may follow the numbering scheme of the building operator. Try to use a generic wording
-        that does not carry an implicit meaning of where it is located in respect to the ground floor.
-        The context is usually shopping centres, train stations or airport terminals -->
+    as it may follow the numbering scheme of the building operator. Try to use a generic wording
+    that does not carry an implicit meaning of where it is located in respect to the ground floor.
+    The context is usually shopping centres, train stations or airport terminals -->
     <string name="on_level">"a(z) %s. szinten:"</string>
 
     <!-- as in: "Where is the metro station?" - "It is underground" -->
@@ -639,7 +638,6 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="quest_accessible_for_pedestrians_title_prohibited">"A gyalogosok ki vannak tiltva ebből az utcából?"</string>
     <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Ezt azt utat úgy jelölték meg, hogy egyik oldalon sincs járda. Abban az esetben, ha végső soron van járda, csak külön vonalként szerepel a térképen, kérlek a \"járdá\"-t jelöld meg."</string>
     <string name="quest_buildingType_title">"Ez milyen épület?"</string>
-    <string name="pref_category_theme">"Téma"</string>
     <string name="pref_title_theme_select">"Téma kiválasztása"</string>
     <string name="theme_automatic">"Automatikus"</string>
     <string name="theme_light">"Világos"</string>

@@ -2,7 +2,7 @@
 <resources>
     <string name="action_settings">"Impostazioni"</string>
     <string name="oauth_communication_error">"Impossibile raggiungere il server per l'autenticazione"</string>
-    <string name="loading">"Caricamento in corso"</string>
+    <string name="loading">"Caricamento"</string>
     <string name="retry">"Riprova"</string>
     <string name="oauth_cancelled">"Autorizzazione annullata"</string>
     <string name="oauth_failed_permissions">"Autorizzazione negata: vanno concessi tutti i permessi elencati"</string>
@@ -101,7 +101,6 @@
     <string name="quest_roofShape_select_one">"Selezionane una:"</string>
     <string name="quest_roofShape_show_more">"Mostrane altre..."</string>
     <string name="quest_roofShape_answer_many">"ha diverse forme"</string>
-    <string name="pref_category_cache">"Cache"</string>
     <string name="pref_title_sync">"Auto-Sync"</string>
     <string name="map_btn_zoom_out">"Rimpicciolisci"</string>
     <string name="map_btn_zoom_in">"Ingrandisci"</string>
@@ -422,7 +421,7 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     \"Parzialmente\" significa che con la sedia a rotelle si può entrare e utilizzare i servizi igienici, ma non ci sono barre d'appoggio o sanitari per disabili."</string>
     <string name="map_btn_create_note">"Crea una nuova nota"</string>
     <string name="create_new_note_unprecise">"Ingrandisci per creare una nota"</string>
-    <string name="create_new_note_description">"Puoi lasciare una nota per far sapere agli altri mappatori che qua c'è un problema. Aggiusta la posizione della nota muovendo la mappa:"</string>
+    <string name="create_new_note_description">"Puoi lasciare una nota per far sapere agli altri mappatori che qui c'è un problema. Aggiusta la posizione della nota muovendo la mappa:"</string>
     <string name="pref_title_quests_invalidation">"Invalida la cache delle missioni"</string>
     <string name="pref_title_quests_invalidation_summary">"Utile se pensi che qualche missione non sia aggiornata"</string>
     <string name="invalidate_confirmation">"Invalida"</string>
@@ -623,16 +622,16 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="quest_wheelchairAccess_limited_description_outside">"Parziale significa che per accedere non c'è più di un gradino."</string>
     <string name="quest_wheelchairAccess_outside_title">"Questo luogo è accessibile in sedia a rotelle?"</string>
     <string name="quest_traffic_signals_button_title">"Il semaforo ha un pulsante per richiedere il verde?"</string>
-    <string name="quest_motorcycleParkingCapacity_title">"Quanti motocicli si possono parcheggiare qua?"</string>
+    <string name="quest_motorcycleParkingCapacity_title">"Quanti motocicli si possono parcheggiare qui?"</string>
     <string name="quest_motorcycleParkingCoveredStatus_title">"Questo parcheggio per motocicli è coperto (protetto dalla pioggia)?"</string>
     <string name="default_disabled_msg_maxspeed">"Questo tipo di compito è disabilitato perché generalmente è richiesto di controllare tutta la strada per cercare i segnali dei limiti di velocità, non solo la sezione evidenziata. Questo potrebbe richiedere molto tempo solo per risolvere un singolo compito."</string>
     <string name="pref_title_quests_restore_hidden">"Ripristina le ricerche nascoste"</string>
     <string name="restore_hidden_success">"Ripristinate %d ricerche nascoste"</string>
 
     <!-- caution: This is not necessarily the floor and level=0 is not necessarily at street level
-        as it may follow the numbering scheme of the building operator. Try to use a generic wording
-        that does not carry an implicit meaning of where it is located in respect to the ground floor.
-        The context is usually shopping centres, train stations or airport terminals -->
+    as it may follow the numbering scheme of the building operator. Try to use a generic wording
+    that does not carry an implicit meaning of where it is located in respect to the ground floor.
+    The context is usually shopping centres, train stations or airport terminals -->
     <string name="on_level">"al piano %s"</string>
 
     <!-- as in: "Where is the metro station?" - "It is underground" -->
@@ -642,7 +641,6 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Ai pedoni è vietato camminare su questa strada?"</string>
     <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"È stato indicato che questa strada non ha un marciapiede su nessuno dei due lati. Nel caso ci sia comunque un marciapiede ma è indicato come percorso separato rispondi \"marciapiede\"."</string>
     <string name="quest_buildingType_title">"Che tipo di edificio è questo?"</string>
-    <string name="pref_category_theme">"Tema"</string>
     <string name="pref_title_theme_select">"Seleziona tema"</string>
     <string name="theme_automatic">"Automatico"</string>
     <string name="theme_light">"Chiaro"</string>
@@ -651,4 +649,17 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="quest_placeName_title_name">"Qual è il nome di questo luogo? (%s)"</string>
     <string name="action_open_location">"Apri posizione in un'altra applicazione"</string>
     <string name="map_application_missing">"Nessun'altra applicazione di mappe installata"</string>
+    <string name="pref_title_overpass_url_select">"Cambia server Overpass"</string>
+    <string name="pref_title_overpass_url_info">"Richiede il riavvio dell'applicazione. Potrebbe essere utile per evitare la censura, per esempio in Russia."</string>
+    <string name="label_housenumber">"numero civico"</string>
+    <string name="label_blocknumber">"numero del quartiere"</string>
+    <string name="quest_busStopShelter_covered">"Tutta la fermata è coperta"</string>
+    <string name="quest_ferry_pedestrian_name_title">"%s trasporta pedoni?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_ferry_pedestrian_title">"Trasporta pedoni?"</string>
+    <string name="quest_ferry_motor_vehicle_name_title">"%s trasporta veicoli motorizzati?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_ferry_motor_vehicle_title">"Trasporta veicoli motorizzati?"</string>
 </resources>

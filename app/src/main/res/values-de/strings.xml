@@ -97,7 +97,6 @@
     <string name="quest_roofShape_select_one">"Wähle eine aus:"</string>
     <string name="quest_roofShape_show_more">"Weitere anzeigen…"</string>
     <string name="quest_roofShape_answer_many">"Es hat mehrere unterschiedliche"</string>
-    <string name="pref_category_cache">"Cache"</string>
     <string name="pref_title_sync">"Auto-Synchronisierung"</string>
     <string name="map_btn_zoom_out">"Verkleinern"</string>
     <string name="map_btn_zoom_in">"Vergrößern"</string>
@@ -552,7 +551,6 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_buildingType_stadium">"Stadion"</string>
 
     <!-- discussion on: https://github.com/westnordost/StreetComplete/issues/1347 -->
-    <!-- Fuzzy -->
     <string name="quest_buildingType_train_station">"Bahnhofsgebäude"</string>
     <string name="quest_buildingType_transportation">"Gebäude für den öffentlichen Personenverkehr"</string>
     <string name="quest_buildingType_university">"Universitätsgebäude"</string>
@@ -634,9 +632,9 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="restore_hidden_success">"%d versteckte Aufgaben wiederhergestellt"</string>
 
     <!-- caution: This is not necessarily the floor and level=0 is not necessarily at street level
-        as it may follow the numbering scheme of the building operator. Try to use a generic wording
-        that does not carry an implicit meaning of where it is located in respect to the ground floor.
-        The context is usually shopping centres, train stations or airport terminals -->
+    as it may follow the numbering scheme of the building operator. Try to use a generic wording
+    that does not carry an implicit meaning of where it is located in respect to the ground floor.
+    The context is usually shopping centres, train stations or airport terminals -->
     <string name="on_level">"auf Ebene %s:"</string>
 
     <!-- as in: "Where is the metro station?" - "It is underground" -->
@@ -646,7 +644,6 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Ist es Fußgängern verboten, hier auf dieser Straße zu gehen?"</string>
     <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Für diese Straße wurde angegeben, dass sie links und rechts keinen Bürgersteig hat. Sollte es doch einen Bürgersteig geben, er aber als separater Weg angezeigt wird, bitte mit „Bürgersteig“ antworten."</string>
     <string name="quest_buildingType_title">"Was für ein Gebäude ist das?"</string>
-    <string name="pref_category_theme">"Design"</string>
     <string name="pref_title_theme_select">"Design auswählen"</string>
     <string name="theme_automatic">"Auto"</string>
     <string name="theme_light">"Hell"</string>
@@ -655,4 +652,19 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_placeName_title_name">"Was ist der Name hiervon? (%s)"</string>
     <string name="action_open_location">"Standort in einer anderen App öffnen"</string>
     <string name="map_application_missing">"Keine andere Kartenanwendung installiert"</string>
+    <string name="pref_title_overpass_url_select">"Overpass-Server ändern"</string>
+    <string name="pref_title_overpass_url_info">"Die Änderung wird erst nach Neustart übernommen. Könnte Zensur umgehen, zum Beispiel in Russland."</string>
+    <string name="label_housenumber">"Hausnummer"</string>
+    <string name="label_blocknumber">"Blocknummer"</string>
+    <string name="quest_busStopShelter_covered">"gesamte Haltestelle ist überdacht"</string>
+    <string name="quest_ferry_pedestrian_name_title">"Kann man als Fußgänger %s nutzen?"</string>
+    <string name="quest_ferry_pedestrian_title">"Kann man als Fußgänger diese Fährverbindung nutzen?"</string>
+    <string name="quest_ferry_motor_vehicle_name_title">"Kann man als Autofahrer %s nutzen?"</string>
+    <string name="quest_ferry_motor_vehicle_title">"Kann man als Autofahrer diese Fährverbindung nutzen?"</string>
+    <string name="quest_leave_new_note_photos_are_useful">"Ein Foto macht eine Notiz oft viel hilfreicher."</string>
+    <string name="quest_postboxCollectionTimes_name_title">"Wann wird dieser %s Postkasten geleert?"</string>
+    <string name="create_new_note_hint">"Am besten die Notiz in der lokal gesprochenen Sprache oder ansonsten auf Englisch verfassen."</string>
+    <string name="about_contributing">"Deine Antworten verbessern direkt die OpenStreetMap. Die beigetragenen Daten sind frei, jeder kann sie benutzen. Es gibt bereits viele tolle Projekte, die darauf zugreifen."</string>
+    <string name="about_missing_stars">"Die Sterne werden momentan nicht zwischen deinen Geräten geteilt, aber die Antworten werden direkt zur OpenStreetMap-Datenbank hinzugefügt."</string>
+    <string name="how_to_get_stars">"Wähle eine der Aufgaben auf der Karte und beantworte die Frage. So verbesserst du die OpenStreetMap und bekommst Sterne. Solltest Du keine Aufgaben auf der Karte sehen, musst du vielleicht weiter hereinzoomen."</string>
 </resources>
