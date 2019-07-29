@@ -124,3 +124,7 @@ tracktype_grade2               CC-BY 4.0         https://github.com/westnordost/
 tracktype_grade3               CC0		         https://pixabay.com/en/field-away-nature-meadow-lane-406183/
 tracktype_grade4               Public Domain     https://github.com/westnordost/StreetComplete/pull/959#issuecomment-427905219 (Bjorn Rasmussen)
 tracktype_grade5               CC-BY-SA 4.0  	 https://commons.wikimedia.org/wiki/File:Zandpad_aan_buitenkant_van_het_gebied._Locatie,_Stuttebosch_in_de_lendevallei._Provincie_Friesland_01.jpg
+
+leaf_type_needleleaved         CC-BY 3.0         https://commons.wikimedia.org/wiki/File:Whitebark_pine_Pinus_albicaulis_needle_clusters.jpg (Jane Richardson)
+leaf_type_broadleaved          CC-BY-SA 2.0      https://commons.wikimedia.org/wiki/File:Populus_tremuloides_(5002308731).jpg (Matt Lavin)
+leaf_type_mixed                CC0               https://commons.wikimedia.org/wiki/File:Needleleaved_and_broadleaved_leaves_on_one_image_20190709_181925.jpg (Mateusz Konieczny)
