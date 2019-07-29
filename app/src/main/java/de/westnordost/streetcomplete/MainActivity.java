@@ -440,15 +440,22 @@ public class MainActivity extends AppCompatActivity implements
 				questAutoSyncer.triggerAutoUpload();
 				answersCounter.subtractOneUnsynced(quest.getChangesSource());
 				updateUndoButtonVisibility();
-				btnUndo.setEnabled(true);
+				setUndoButtonEnabled(true);
 			})
-			.setNegativeButton(R.string.undo_confirm_negative, (dialog, which) -> { btnUndo.setEnabled(true); })
-			.setOnCancelListener(dialog -> { btnUndo.setEnabled(true); })
+			.setNegativeButton(R.string.undo_confirm_negative, (dialog, which) -> { setUndoButtonEnabled(true); })
+			.setOnCancelListener(dialog -> { setUndoButtonEnabled(true); })
 			.show();
 	}
 
-	private void updateUndoButtonVisibility() {
+	private void updateUndoButtonVisibility()
+	{
 		btnUndo.setVisible(questController.getLastSolvedOsmQuest() != null);
+	}
+
+	private void setUndoButtonEnabled(boolean enabled)
+	{
+		btnUndo.setEnabled(enabled);
+		btnUndo.getIcon().setAlpha(enabled ? 255 : 127);
 	}
 
 	@Override public boolean onOptionsItemSelected(MenuItem item)
@@ -459,10 +466,10 @@ public class MainActivity extends AppCompatActivity implements
 		switch (id)
 		{
 			case R.id.action_undo:
-				btnUndo.setEnabled(false);
+				setUndoButtonEnabled(false);
 				OsmQuest quest = questController.getLastSolvedOsmQuest();
 				if (quest != null) confirmUndo(quest);
-				else btnUndo.setEnabled(true);
+				else setUndoButtonEnabled(true);
 				return true;
 			case R.id.action_settings:
 				intent = new Intent(this, SettingsActivity.class);
@@ -609,6 +616,7 @@ public class MainActivity extends AppCompatActivity implements
 			runOnUiThread(() ->
 			{
 				unsyncedChangesContainer.setEnabled(false);
+				setUndoButtonEnabled(false);
 				if(uploadProgressBar != null) uploadProgressBar.setVisibility(View.VISIBLE);
 			});
 		}
@@ -676,6 +684,7 @@ public class MainActivity extends AppCompatActivity implements
 			runOnUiThread(() ->
 			{
 				unsyncedChangesContainer.setEnabled(true);
+				setUndoButtonEnabled(true);
 				if(uploadProgressBar != null) uploadProgressBar.setVisibility(View.INVISIBLE);
 			});
 			answersCounter.update();
