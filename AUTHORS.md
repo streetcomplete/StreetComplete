@@ -11,6 +11,8 @@ Code contributions: [Check this complete list of contributors on GitHub](https:/
 
 Translations: [Check the project on POEditor to see language contributors](https://poeditor.com/projects/view?id=97843)
 
+See also contributors to [projects used by StreetComplete](https://github.com/westnordost/StreetComplete/blob/master/CONTRIBUTING.md#streetcomplete-related-projects), some were even specially created to help it.
+
 ## Licenses & Sources
 
 It's [GPL v3](https://www.gnu.org/licenses/gpl.html) for code and mixed Creative Common licenses for assets (of which none is more restrictive than [CC-BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)) with two images used under fair use.
