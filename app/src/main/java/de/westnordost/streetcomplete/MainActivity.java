@@ -434,8 +434,10 @@ public class MainActivity extends AppCompatActivity implements
 				questAutoSyncer.triggerAutoUpload();
 				answersCounter.subtractOneUnsynced(quest.getChangesSource());
 				updateUndoButtonVisibility();
+				btnUndo.setEnabled(true);
 			})
-			.setNegativeButton(R.string.undo_confirm_negative, null)
+			.setNegativeButton(R.string.undo_confirm_negative, (dialog, which) -> { btnUndo.setEnabled(true); })
+			.setOnCancelListener(dialog -> { btnUndo.setEnabled(true); })
 			.show();
 	}
 
@@ -451,8 +453,10 @@ public class MainActivity extends AppCompatActivity implements
 		switch (id)
 		{
 			case R.id.action_undo:
+				btnUndo.setEnabled(false);
 				OsmQuest quest = questController.getLastSolvedOsmQuest();
-				if(quest != null) confirmUndo(quest);
+				if (quest != null) confirmUndo(quest);
+				else btnUndo.setEnabled(true);
 				return true;
 			case R.id.action_settings:
 				intent = new Intent(this, SettingsActivity.class);
