@@ -147,6 +147,7 @@ public class MainActivity extends AppCompatActivity implements
 	private ProgressBar uploadProgressBar;
 
 	private View unsyncedChangesContainer;
+	private MenuItem btnUndo;
 
 	private float mapRotation, mapTilt;
 	private boolean isFollowingPosition;
@@ -409,6 +410,8 @@ public class MainActivity extends AppCompatActivity implements
 	@Override public boolean onCreateOptionsMenu(Menu menu)
 	{
 		getMenuInflater().inflate(R.menu.menu_main, menu);
+		btnUndo = menu.findItem(R.id.action_undo);
+		updateUndoButtonVisibility();
 		return true;
 	}
 
@@ -436,9 +439,14 @@ public class MainActivity extends AppCompatActivity implements
 				questController.undo(quest);
 				questAutoSyncer.triggerAutoUpload();
 				answersCounter.subtractOneUnsynced(quest.getChangesSource());
+				updateUndoButtonVisibility();
 			})
 			.setNegativeButton(R.string.undo_confirm_negative, null)
 			.show();
+	}
+
+	private void updateUndoButtonVisibility() {
+		btnUndo.setVisible(questController.getLastSolvedOsmQuest() != null);
 	}
 
 	@Override public boolean onOptionsItemSelected(MenuItem item)
@@ -451,7 +459,6 @@ public class MainActivity extends AppCompatActivity implements
 			case R.id.action_undo:
 				OsmQuest quest = questController.getLastSolvedOsmQuest();
 				if(quest != null) confirmUndo(quest);
-				else              Toast.makeText(this, R.string.no_changes_to_undo, Toast.LENGTH_SHORT).show();
 				return true;
 			case R.id.action_settings:
 				intent = new Intent(this, SettingsActivity.class);
@@ -884,6 +891,7 @@ public class MainActivity extends AppCompatActivity implements
 		flingQuestMarkerTo(img, answersCounter.getAnswerTarget(), () -> {
 			root.removeView(img);
 			answersCounter.addOneUnsynced(source);
+			btnUndo.setVisible(true);
 		});
 	}
 
