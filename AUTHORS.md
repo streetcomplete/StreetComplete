@@ -17,9 +17,8 @@ See also contributors to [projects used by StreetComplete](https://github.com/we
 
 It's [GPL v3](https://www.gnu.org/licenses/gpl.html) for code and mixed Creative Common licenses for assets (of which none is more restrictive than [CC-BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)). Additionally two images are used under fair use.
 
-Check
+Check following files to see sources and authors of the single resources in detail.
 
-* [res/authors.txt](res/authors.txt) and
+* [res/authors.txt](res/authors.txt)
 * [app/src/main/res/authors.txt](app/src/main/res/authors.txt)
 * [app/src/main/assets/authors.txt](app/src/main/assets/authors.txt)
-to see sources and authors of the single resources in detail. 
