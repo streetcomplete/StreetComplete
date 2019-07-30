@@ -99,7 +99,6 @@
     <string name="quest_roofShape_select_one">"hautatu bat:"</string>
     <string name="quest_roofShape_show_more">"Erakutsi gehiago..."</string>
     <string name="quest_roofShape_answer_many">"Hainbat forma desberdin ditu"</string>
-    <string name="pref_category_cache">"Cachea"</string>
     <string name="pref_title_sync">"Sinkronizaio automatikoa"</string>
     <string name="map_btn_zoom_out">"Urrundu zooma"</string>
     <string name="map_btn_zoom_in">"Hurbildu zooma"</string>
@@ -636,9 +635,9 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="restore_hidden_success">"Ezkutatutako %d erronka berreskuratu dira"</string>
 
     <!-- caution: This is not necessarily the floor and level=0 is not necessarily at street level
-        as it may follow the numbering scheme of the building operator. Try to use a generic wording
-        that does not carry an implicit meaning of where it is located in respect to the ground floor.
-        The context is usually shopping centres, train stations or airport terminals -->
+    as it may follow the numbering scheme of the building operator. Try to use a generic wording
+    that does not carry an implicit meaning of where it is located in respect to the ground floor.
+    The context is usually shopping centres, train stations or airport terminals -->
     <string name="on_level">"%s. pisuan:"</string>
 
     <!-- as in: "Where is the metro station?" - "It is underground" -->
@@ -648,7 +647,6 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Oinezkoek debekatuta al dute bide honetan ibiltzea?"</string>
     <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Kale hau alde bietan espaloirik gabeko gisa etiketatu da. Oinezkoen bidea egon badago, baina aparteko bide gisa adierazia, erantzun \"espaloia\"."</string>
     <string name="quest_buildingType_title">"Ze motako eraikina da hau?"</string>
-    <string name="pref_category_theme">"Itxura"</string>
     <string name="pref_title_theme_select">"Hautatu itxura"</string>
     <string name="theme_automatic">"Automatikoa"</string>
     <string name="theme_light">"Argia"</string>

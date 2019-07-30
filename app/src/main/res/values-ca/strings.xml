@@ -99,7 +99,6 @@
     <string name="quest_roofShape_select_one">"Selecciona'n un:"</string>
     <string name="quest_roofShape_show_more">"Mostra'n més…"</string>
     <string name="quest_roofShape_answer_many">"Té diferents formes"</string>
-    <string name="pref_category_cache">"Memòria cau"</string>
     <string name="pref_title_sync">"Sinc. automàtica"</string>
     <string name="map_btn_zoom_out">"Allunya't"</string>
     <string name="map_btn_zoom_in">"Apropa't"</string>
@@ -633,9 +632,9 @@ Per example 1,3 o 2-6."</string>
     <string name="restore_hidden_success">"S'han restaurat %d missions ocultes"</string>
 
     <!-- caution: This is not necessarily the floor and level=0 is not necessarily at street level
-        as it may follow the numbering scheme of the building operator. Try to use a generic wording
-        that does not carry an implicit meaning of where it is located in respect to the ground floor.
-        The context is usually shopping centres, train stations or airport terminals -->
+    as it may follow the numbering scheme of the building operator. Try to use a generic wording
+    that does not carry an implicit meaning of where it is located in respect to the ground floor.
+    The context is usually shopping centres, train stations or airport terminals -->
     <string name="on_level">"en el nivell %s:"</string>
 
     <!-- as in: "Where is the metro station?" - "It is underground" -->
@@ -645,7 +644,6 @@ Per example 1,3 o 2-6."</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Els vianants tenen prohibit caminar per aquesta via en aquest punt?"</string>
     <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Aquest carrer es va etiquetar sense vorera en cap costat. En cas que hi hagi una vorera, però es mostri com a una via separada, respongueu «vorera»"</string>
     <string name="quest_buildingType_title">"Quin tipus d'edifici és?"</string>
-    <string name="pref_category_theme">"Tema"</string>
     <string name="pref_title_theme_select">"Seleccioneu un tema"</string>
     <string name="theme_automatic">"Automàtic"</string>
     <string name="theme_light">"Clar"</string>
@@ -654,4 +652,17 @@ Per example 1,3 o 2-6."</string>
     <string name="quest_placeName_title_name">"Quin nom té aquest lloc? (%s)"</string>
     <string name="action_open_location">"Obre la ubicació en una altra aplicació"</string>
     <string name="map_application_missing">"No hi ha cap altra aplicació de mapes instal·lada"</string>
+    <string name="pref_title_overpass_url_select">"Canvia el servidor Overpass"</string>
+    <string name="pref_title_overpass_url_info">"Cal reiniciar l'aplicació per a aplicar-ho. Permet eludir la censura, per exemple en Rússia."</string>
+    <string name="label_housenumber">"número de casa"</string>
+    <string name="label_blocknumber">"número de bloc"</string>
+    <string name="quest_busStopShelter_covered">"Cobreix tota la parada"</string>
+    <string name="quest_ferry_pedestrian_name_title">"%s transporta vianants?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_ferry_pedestrian_title">"Transporta vianants?"</string>
+    <string name="quest_ferry_motor_vehicle_name_title">"%s transporta vehicles a motor?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_ferry_motor_vehicle_title">"Transporta vehicles a motor?"</string>
 </resources>

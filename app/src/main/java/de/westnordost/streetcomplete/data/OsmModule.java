@@ -64,19 +64,27 @@ public class OsmModule
 		return new OsmMapDataFactory();
 	}
 
+	// see https://wiki.openstreetmap.org/wiki/Overpass_API/Overpass_QL#timeout:
+	// default value is 180 seconds
+	// give additional 4 seconds to get and process refusal from Overpass
+	// or maybe a bit late response rather than trigger timeout exception
+	private static int OVERPASS_QUERY_TIMEOUT_IN_MILISECONDS = (180 + 4) * 1000;
+
 	@Provides public static OverpassMapDataDao overpassMapDataDao(
 			Provider<OverpassMapDataParser> parserProvider, SharedPreferences prefs)
 	{
+		Integer timeout = OVERPASS_QUERY_TIMEOUT_IN_MILISECONDS;
 		OsmConnection overpassConnection = new OsmConnection(
-			prefs.getString(Prefs.OVERPASS_URL, OVERPASS_API_WITH_ATTIC_DATA_URL), ApplicationConstants.USER_AGENT, null);
+			prefs.getString(Prefs.OVERPASS_URL, OVERPASS_API_WITH_ATTIC_DATA_URL), ApplicationConstants.USER_AGENT, null, timeout);
 		return new OverpassMapDataDao(overpassConnection, parserProvider);
 	}
 
 	@Provides public static OverpassOldMapDataDao overpassOldMapDataDao(
 		Provider<OverpassMapDataParser> parserProvider, String date)
 	{
+		Integer timeout = OVERPASS_QUERY_TIMEOUT_IN_MILISECONDS;
 		OsmConnection overpassConnection = new OsmConnection(
-			OVERPASS_API_WITH_ATTIC_DATA_URL, ApplicationConstants.USER_AGENT, null);
+			OVERPASS_API_WITH_ATTIC_DATA_URL, ApplicationConstants.USER_AGENT, null, timeout);
 		return new OverpassOldMapDataDao(overpassConnection, parserProvider, date);
 	}
 

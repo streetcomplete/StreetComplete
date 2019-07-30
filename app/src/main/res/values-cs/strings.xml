@@ -107,7 +107,6 @@
     <string name="quest_roofShape_select_one">"Vyberte jeden:"</string>
     <string name="quest_roofShape_show_more">"Zobrazit více..."</string>
     <string name="quest_roofShape_answer_many">"Má několik různých tvarů"</string>
-    <string name="pref_category_cache">"Mezipaměť"</string>
     <string name="pref_title_sync">"Auto synchronizace"</string>
     <string name="map_btn_zoom_out">"Oddálit"</string>
     <string name="map_btn_zoom_in">"Přiblížit"</string>
@@ -684,9 +683,9 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="restore_hidden_success">"Obnoveno %d skrytých úkolů"</string>
 
     <!-- caution: This is not necessarily the floor and level=0 is not necessarily at street level
-        as it may follow the numbering scheme of the building operator. Try to use a generic wording
-        that does not carry an implicit meaning of where it is located in respect to the ground floor.
-        The context is usually shopping centres, train stations or airport terminals -->
+    as it may follow the numbering scheme of the building operator. Try to use a generic wording
+    that does not carry an implicit meaning of where it is located in respect to the ground floor.
+    The context is usually shopping centres, train stations or airport terminals -->
     <string name="on_level">"na podlaží %s:"</string>
 
     <!-- as in: "Where is the metro station?" - "It is underground" -->
@@ -696,7 +695,6 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Mají chodci zakázáno chodit zde po této cestě?"</string>
     <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Tato ulice/cesta byla označena jako že nemá chodník na žádné straně. Pokud ale chodník má a ten je označen jako samostatná cesta, vyberte prosím odpověď „chodník“."</string>
     <string name="quest_buildingType_title">"Jakého druhu je tato stavba?"</string>
-    <string name="pref_category_theme">"Vzhled"</string>
     <string name="pref_title_theme_select">"Vyberte vzhled"</string>
     <string name="theme_automatic">"Automaticky"</string>
     <string name="theme_light">"Světlý"</string>
@@ -705,4 +703,17 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_placeName_title_name">"Jak se jmenuje toto místo? (%s)"</string>
     <string name="action_open_location">"Otevřít lokaci v jiné aplikaci"</string>
     <string name="map_application_missing">"Nemáte nainstalovanou žádnou jinou mapovou aplikaci"</string>
+    <string name="pref_title_overpass_url_select">"Změnit Overpass server"</string>
+    <string name="pref_title_overpass_url_info">"Aplikace bude muset být restartovaná. Nastavení může obejít cenzuru, např. v Rusku."</string>
+    <string name="label_housenumber">"číslo popisné"</string>
+    <string name="label_blocknumber">"číslo bloku"</string>
+    <string name="quest_busStopShelter_covered">"Celá zastávka je zastřešená"</string>
+    <string name="quest_ferry_pedestrian_name_title">"Převáží %s chodce?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_ferry_pedestrian_title">"Převáží chodce?"</string>
+    <string name="quest_ferry_motor_vehicle_name_title">"Převáží %s motorová vozidla?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_ferry_motor_vehicle_title">"Převáží motorová vozidla?"</string>
 </resources>

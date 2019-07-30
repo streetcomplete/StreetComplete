@@ -1,17 +1,17 @@
 All assets made by and (c) Tobias Zwick unless explicitly stated otherwise. License: CC-BY-SA 4.0.
 
 URLs to other sources used:
- - Twemoji 2 (MIT license)		   https://github.com/twitter/twemoji/
- - EmojiOne 2 (CC-BY 4 license)	   https://github.com/emojione/emojione/tree/2.2.7
- - elegant themes (GPL)			   https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free
+ - Twemoji 2 (MIT license)      https://github.com/twitter/twemoji/
+ - EmojiOne 2 (CC-BY 4 license) https://github.com/emojione/emojione/tree/2.2.7
+ - elegant themes (GPL)         https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free
 
 
 File                            Author if not Tobias Zwick / Source
 ===============================================================================
 
-appicon_fancy.svg				elegant themes
+appicon_fancy.svg               elegant themes
 
-appicon_flat.svg				elegant themes
+appicon_flat.svg                elegant themes
 
 building_icons.svg
     apartments
@@ -62,90 +62,93 @@ living_street.svg
 roof_shape_icons.svg
 
 quest_icons.svg
-	apple
-	baby						modified from Twemoji: U+1F6BC
-	beer						modified from Twemoji: U+1F37A
-	bench
-	bicycle
-	bicycle_parking
-	bicycle_parking_capacity
-	bicycle_parking_cover
-	bicycleway
-	bicycleway_width
-	blind
-	blind_bus					parts taken from Twemoji: U+1F68D
-	blind_pedestrian_crossing
-	blind_traffic_lights
-	bridge
-	building
-	building_construction
-	building_height
-	building_levels
-	building_underground
-	bus                         modified from Twemoji: U+1F68D
-	bus_shelter                 parts taken from Twemoji: U+1F68D
-	bus_stop_name               parts taken from Twemoji: U+1F68D
-	car							modified from Twemoji: U+1F698
-	car_wash					modified from Twemoji: U+1F698
-	car_charger					parts taken from Twemoji: U+1F698 and U+1F50C
-	clock
-	fee
-	ferry						modified from Twemoji: U+26F4
-	fire_hydrant
-	fuel
-	housenumber
-	housenumber_street
-	label
-	lantern
-	leaf
-	mail
-	max_width
-	max_height
-	max_speed
-	max_weight
-	money						modified from EmojiOne 2: U+1F4B8
-	museum
-	note_create
-	notes
-	oneway
-	parking
-	parking_access				parts taken from EmojiOne 2: U+1F511
-	parking_fee					parts taken from EmojiOne 2: U+1F4B8
-	parking_maxstay
-	pedestrian
-	pedestrian_crossing
-	pedestrian_segregated
-	phone
-	power
-	quest
-	restaurant					modified from Twemoji: U+1F37D
-	restaurant_vegan			parts taken from Twemoji: U+1F37D and U+1F955
-	restaurant_vegetarian		parts taken from Twemoji: U+1F37D and U+1F955
-	railway
-	road_construction
-	roof_shape
-	recycling					modified from Twemoji: U+267B
-	religion
-	smoke
-	sport						modified from EmojiOne 2: U+26BD
-	steps
-	street
-	street_lanes
-	street_name
-	street_surface
-	street_surface_paved_detail
-	street_turn_lanes
-	street_width
-	toilets
-	toilets_fee
-	toilets_wheelchair
-	tractor
-	traffic_lights
-	way_surface
-	way_width
-	wifi
-	wheelchair
-	wheelchair_shop
+    apple
+    baby                         modified from Twemoji: U+1F6BC
+    beer                         modified from Twemoji: U+1F37A
+    bench
+    bicycle
+    bicycle_parking
+    bicycle_parking_capacity
+    bicycle_parking_cover
+    bicycleway
+    bicycleway_surface
+    bicycleway_width
+    blind
+    blind_bus                    parts taken from Twemoji: U+1F68D
+    blind_pedestrian_crossing
+    blind_traffic_lights
+    bridge
+    building
+    building_construction
+    building_height
+    building_levels
+    building_underground
+    bus                          modified from Twemoji: U+1F68D
+    bus_shelter                  parts taken from Twemoji: U+1F68D
+    bus_stop_name                parts taken from Twemoji: U+1F68D
+    car                          modified from Twemoji: U+1F698
+    car_wash                     modified from Twemoji: U+1F698
+    car_charger                  parts taken from Twemoji: U+1F698 and U+1F50C
+    clock
+    fee
+    ferry                        modified from Twemoji: U+26F4
+    ferry_pedestrian             modified from Twemoji: U+26F4
+    fire_hydrant
+    fuel
+    guidepost
+    housenumber
+    housenumber_street
+    label
+    lantern
+    leaf
+    mail
+    max_width
+    max_height
+    max_speed
+    max_weight
+    money                        modified from EmojiOne 2: U+1F4B8
+    museum
+    note_create
+    notes
+    oneway
+    parking
+    parking_access               parts taken from EmojiOne 2: U+1F511
+    parking_fee                  parts taken from EmojiOne 2: U+1F4B8
+    parking_maxstay
+    pedestrian
+    pedestrian_crossing
+    pedestrian_segregated
+    phone
+    power
+    quest
+    restaurant                   modified from Twemoji: U+1F37D
+    restaurant_vegan             parts taken from Twemoji: U+1F37D and U+1F955
+    restaurant_vegetarian        parts taken from Twemoji: U+1F37D and U+1F955
+    railway
+    road_construction
+    roof_shape
+    recycling                    modified from Twemoji: U+267B
+    religion
+    smoke
+    sport                        modified from EmojiOne 2: U+26BD
+    steps
+    street
+    street_lanes
+    street_name
+    street_surface
+    street_surface_paved_detail
+    street_turn_lanes
+    street_width
+    toilets
+    toilets_fee
+    toilets_wheelchair
+    tractor
+    traffic_lights
+    way_surface
+    way_width
+    wifi
+    wheelchair
+    wheelchair_shop
 
 railway_crossing_double_half.svg (c) 2018 ServusWorld - License: CC0
 railway_crossing_full.svg        (c) 2018 ServusWorld - License: CC0
@@ -153,68 +156,68 @@ railway_crossing_half.svg        (c) 2018 ServusWorld - License: CC0
 railway_crossing_none.svg        (c) 2018 ServusWorld - License: CC0
 
 recycling_icons.svg
-	batteries
-	cans
-	clothes						by Adrien Pavie, modified from EmojiOne 2: U+1F456, U+1F455
-	glass_bottles
-	green_waste					Twemoji: U+1F33F
-	newspaper					modified from EmojiOne 2: U+1F4F0
-	plastic_bottles
-	shoes						EmojiOne 2: U+1F45F
-	small_appliances	        EmojiOne 2: U+1F50C
+    batteries
+    cans
+    clothes                      by Adrien Pavie, modified from EmojiOne 2: U+1F456, U+1F455
+    glass_bottles
+    green_waste                  Twemoji: U+1F33F
+    newspaper                    modified from EmojiOne 2: U+1F4F0
+    plastic_bottles
+    shoes                        EmojiOne 2: U+1F45F
+    small_appliances             EmojiOne 2: U+1F50C
 
 religion_icons.svg
-	hindu						https://commons.wikimedia.org/wiki/File:Om_symbol.svg
-	jain						https://commons.wikimedia.org/wiki/File:Ahimsa.svg
-	sikh						https://en.wikipedia.org/wiki/File:Khanda.svg
-	buddhist
-	christian
-	jewish						https://commons.wikimedia.org/wiki/File:Star_of_David.svg
-	muslim						https://commons.wikimedia.org/wiki/File:Star_and_Crescent.svg
-	bahai						https://commons.wikimedia.org/wiki/File:Bahai_star.svg
-	confucian
-	shinto						https://commons.wikimedia.org/wiki/File:Shinto_torii_vermillion.svg
-	taoism
-	chinese						https://commons.wikimedia.org/wiki/File:Chinese_lu_symbol_-_%E7%A6%84.svg
-	caodai
+    hindu                        https://commons.wikimedia.org/wiki/File:Om_symbol.svg
+    jain                         https://commons.wikimedia.org/wiki/File:Ahimsa.svg
+    sikh                         https://en.wikipedia.org/wiki/File:Khanda.svg
+    buddhist
+    christian
+    jewish                       https://commons.wikimedia.org/wiki/File:Star_of_David.svg
+    muslim                       https://commons.wikimedia.org/wiki/File:Star_and_Crescent.svg
+    bahai                        https://commons.wikimedia.org/wiki/File:Bahai_star.svg
+    confucian
+    shinto                       https://commons.wikimedia.org/wiki/File:Shinto_torii_vermillion.svg
+    taoism
+    chinese                      https://commons.wikimedia.org/wiki/File:Chinese_lu_symbol_-_%E7%A6%84.svg
+    caodai
 
 slow_zone.svg
 
 slow_zone_us.svg
 
 sport_icons.svg
-	american_football
-	archery						modified from Twemoji: U+1F3F9
-	athletics
-	australian_football
-	badminton					EmojiOne 2: U+1F3F8
-	baseball
-	basketball					EmojiOne 2: U+1F3C0
-	beach_volleyball			by Adrien Pavie, modified from EmojiOne 2: U+1F3D0
-	boules
-	bowls
-	canadian_football
-	cricket						EmojiOne 2: U+1F3CF
-	equestrian					Twemoji: U+1F3C7
-	field_hockey				EmojiOne 2: U+1F3D1
-	gaelic_games				parts taken from EmojiOne 2: U+1F3D0
-	golf						Twemoji: U+26F3
-	gymnastics					modified from EmojiOne 2: U+1F938
-	handball
-	ice_hockey					EmojiOne 2: U+1F3D2
-	ice_skating					EmojiOne 2: U+26F8
-	ice_stock
-	netball						mashup from EmojiOne 2: U+1F3D0 and U+1F3C0
-	racquetball
-	rugby						EmojiOne 2: U+1F3C9
-	paddle_tennis
-	sepak_takraw
-	shooting					modified from Twemoji: U+1F52B
-	skateboard
-	soccer						EmojiOne 2: U+26BD
-	softball
-	skating
-	squash						modified from EmojiOne 2: U+1F3F8
-	table_tennis				EmojiOne 2: U+1F3D3
-	tennis						EmojiOne 2: U+1F3BE
-	volleyball					EmojiOne 2: U+1F3D0
+    american_football
+    archery                      modified from Twemoji: U+1F3F9
+    athletics
+    australian_football
+    badminton                    EmojiOne 2: U+1F3F8
+    baseball
+    basketball                   EmojiOne 2: U+1F3C0
+    beach_volleyball             by Adrien Pavie, modified from EmojiOne 2: U+1F3D0
+    boules
+    bowls
+    canadian_football
+    cricket                      EmojiOne 2: U+1F3CF
+    equestrian                   Twemoji: U+1F3C7
+    field_hockey                 EmojiOne 2: U+1F3D1
+    gaelic_games                 parts taken from EmojiOne 2: U+1F3D0
+    golf                         Twemoji: U+26F3
+    gymnastics                   modified from EmojiOne 2: U+1F938
+    handball
+    ice_hockey                   EmojiOne 2: U+1F3D2
+    ice_skating                  EmojiOne 2: U+26F8
+    ice_stock
+    netball                      mashup from EmojiOne 2: U+1F3D0 and U+1F3C0
+    racquetball
+    rugby                        EmojiOne 2: U+1F3C9
+    paddle_tennis
+    sepak_takraw
+    shooting                     modified from Twemoji: U+1F52B
+    skateboard
+    soccer                       EmojiOne 2: U+26BD
+    softball
+    skating
+    squash                       modified from EmojiOne 2: U+1F3F8
+    table_tennis                 EmojiOne 2: U+1F3D3
+    tennis                       EmojiOne 2: U+1F3BE
+    volleyball                   EmojiOne 2: U+1F3D0

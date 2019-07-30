@@ -21,6 +21,8 @@ Follow [**this link** to improve the translations](https://poeditor.com/join/pro
 
 [![POEditor](https://poeditor.com/public/images/logo_small.png)](https://poeditor.com/join/project/IE4GC127Ki)
 
+After joining [main site of the POEditor](https://poeditor.com/projects/) should list StreetComplete for logged in users.
+
 Before each release, translations are pulled in from POEditor.
 
 ## Solving notes
@@ -86,7 +88,7 @@ Always remember to pay attention to [the quest guidelines](https://github.com/we
 
 #### Dependencies
 
-* [Tangram-ES](https://github.com/tangrams/tangram-es/) for technical issues with the map rendering
+* [Tangram-ES](https://github.com/tangrams/tangram-es/) map rendering
 * [countryboundaries](https://github.com/westnordost/countryboundaries) for detecting, in which country a quest is (affects quest display, etc.)
 * [osmapi](https://github.com/westnordost/osmapi) for communication with the OSM API
 * [osmfeatures](https://github.com/westnordost/osmfeatures) to correctly refer to a feature by name

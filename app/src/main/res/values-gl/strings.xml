@@ -99,7 +99,6 @@
     <string name="quest_roofShape_select_one">"Escolle unha forma:"</string>
     <string name="quest_roofShape_show_more">"Amosar máis..."</string>
     <string name="quest_roofShape_answer_many">"Ten varias formas diferentes"</string>
-    <string name="pref_category_cache">"Caché"</string>
     <string name="pref_title_sync">"Sincronización automática"</string>
     <string name="map_btn_zoom_out">"Afastar"</string>
     <string name="map_btn_zoom_in">"Achegar"</string>
@@ -636,9 +635,9 @@ Por exemplo 1,3 ou 2-6."</string>
     <string name="restore_hidden_success">"Restauráronse %d tarefas agochadas"</string>
 
     <!-- caution: This is not necessarily the floor and level=0 is not necessarily at street level
-        as it may follow the numbering scheme of the building operator. Try to use a generic wording
-        that does not carry an implicit meaning of where it is located in respect to the ground floor.
-        The context is usually shopping centres, train stations or airport terminals -->
+    as it may follow the numbering scheme of the building operator. Try to use a generic wording
+    that does not carry an implicit meaning of where it is located in respect to the ground floor.
+    The context is usually shopping centres, train stations or airport terminals -->
     <string name="on_level">"no nivel %s:"</string>
 
     <!-- as in: "Where is the metro station?" - "It is underground" -->
@@ -648,7 +647,6 @@ Por exemplo 1,3 ou 2-6."</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Os peóns teñen prohibido camiñar nesta estrada?"</string>
     <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Esta rúa foi etiquetada como que non ten beirarrúa en ámbalas dúas beiras. No caso de que ó final haxa beirarrúa, póñense de xeito separado en cada beira, escóllese \"sidewalk\" (beirarrúa)."</string>
     <string name="quest_buildingType_title">"Que tipo de edificio é?"</string>
-    <string name="pref_category_theme">"Aparencia"</string>
     <string name="pref_title_theme_select">"Escolle a aparencia"</string>
     <string name="theme_automatic">"Automático"</string>
     <string name="theme_light">"Claro"</string>
@@ -657,4 +655,17 @@ Por exemplo 1,3 ou 2-6."</string>
     <string name="quest_placeName_title_name">"Cal é o nome deste lugar? (%s)"</string>
     <string name="action_open_location">"Abrir localización noutra aplicación"</string>
     <string name="map_application_missing">"Ningunha outra aplicación de mapas instalada"</string>
+    <string name="pref_title_overpass_url_select">"Mudar de servidor do Overpass"</string>
+    <string name="pref_title_overpass_url_info">"Require reiniciar a aplicación para aplicar. Pode pasar por alto a censura, por exemplo en Rusia."</string>
+    <string name="label_housenumber">"número de edificio"</string>
+    <string name="label_blocknumber">"número de bloque"</string>
+    <string name="quest_busStopShelter_covered">"Toda a paraxe está cuberta"</string>
+    <string name="quest_ferry_pedestrian_name_title">"Pode %s transportar persoas?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_ferry_pedestrian_title">"Pode transportar persoas?"</string>
+    <string name="quest_ferry_motor_vehicle_name_title">"Pode %s transportar vehículos motorizados?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_ferry_motor_vehicle_title">"Pode transportar vehículos motorizados?"</string>
 </resources>

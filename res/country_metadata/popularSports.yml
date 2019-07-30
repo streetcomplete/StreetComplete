@@ -1,3 +1,4 @@
+# use app/generateCountryMetadata.py to generate files used by StreetComplete
 # sports that should be shown first before the order defined in the form.
 # no total order required. Just mention the sports that should show within the first few entries
 default: []

@@ -56,6 +56,8 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 	private LngLat positionBeforeShowingQuest = null;
 
 	private LngLat lastPos;
+	private Float lastRotation, lastTilt;
+
 	private Rect lastDisplayedRect;
 	private final Set<Point> retrievedTiles;
 	private static final int TILES_ZOOM = 14;
@@ -279,10 +281,15 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 
 		if(controller.getZoom() < TILES_ZOOM) return;
 
-		// check if anything changed (needs to be extended when I re-enable tilt and rotation)
 		LngLat positionNow = controller.getPosition();
-		if(lastPos != null  && lastPos.equals(positionNow)) return;
+		float tiltNow = controller.getTilt();
+		float rotationNow = controller.getRotation();
+		if(lastPos != null && lastTilt != null && lastRotation != null &&
+			lastPos.equals(positionNow) && lastTilt == tiltNow && lastRotation == rotationNow) return;
+
 		lastPos = positionNow;
+		lastTilt = tiltNow;
+		lastRotation = rotationNow;
 
 		BoundingBox displayedArea = getDisplayedArea(new Rect());
 		if(displayedArea == null) return;
@@ -385,6 +392,26 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 	}
 */
 
+	private int getQuestPriority(Quest quest){
+		// priority is decided by
+		// - primarily by quest type to allow quest prioritization
+		// - for quests of the same type - influenced by quest id,
+		//   this is done to reduce chance that as user zoom in a quest disappears,
+		//   especially in case where disappearing quest is one that user selected to solve
+
+		// main priority part - values fit into Integer, but with as large steps as possible
+		Integer order = questTypeOrder.get(quest.getType());
+		if(order == null) order = 0;
+		int freeValuesForEachQuest = Integer.MAX_VALUE / questTypeOrder.size();
+		order *= freeValuesForEachQuest;
+
+		// quest ID is used to add values unique to each quest to make ordering consistent
+		// freeValuesForEachQuest is an int, so % freeValuesForEachQuest will fit into int
+		int hopefullyUniqueValueForQuest = (int) (quest.getId() % freeValuesForEachQuest);
+
+		return order + hopefullyUniqueValueForQuest;
+	}
+
 	@UiThread
 	public void addQuests(Iterable quests, QuestGroup group)
 	{
@@ -405,9 +432,6 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 			}
 
 			String questIconName = getActivity().getResources().getResourceEntryName(quest.getType().getIcon());
-
-			Integer order = questTypeOrder.get(quest.getType());
-			if(order == null) order = 0;
 
 			LatLon[] positions = quest.getMarkerLocations();
 
@@ -434,7 +458,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 				geoJson.append("\",\"");
 				geoJson.append("order");
 				geoJson.append("\":\"");
-				geoJson.append(order);
+				geoJson.append(getQuestPriority(quest));
 				geoJson.append("\"}}");
 			}
 		}
@@ -463,6 +487,8 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		if(questsLayer != null) questsLayer.clear();
 		retrievedTiles.clear();
 		lastPos = null;
+		lastTilt = null;
+		lastRotation = null;
 		lastDisplayedRect = null;
 	}
 

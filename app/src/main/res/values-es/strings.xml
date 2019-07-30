@@ -99,7 +99,6 @@
     <string name="quest_roofShape_select_one">"Selecciona una forma:"</string>
     <string name="quest_roofShape_show_more">"Mostrar más…"</string>
     <string name="quest_roofShape_answer_many">"Tiene varias formas diferentes"</string>
-    <string name="pref_category_cache">"Caché"</string>
     <string name="pref_title_sync">"Sincronización automática"</string>
     <string name="map_btn_zoom_out">"Alejar"</string>
     <string name="map_btn_zoom_in">"Acercar"</string>
@@ -666,9 +665,9 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
     <string name="restore_hidden_success">"Mostrar %d tareas ocultas"</string>
 
     <!-- caution: This is not necessarily the floor and level=0 is not necessarily at street level
-        as it may follow the numbering scheme of the building operator. Try to use a generic wording
-        that does not carry an implicit meaning of where it is located in respect to the ground floor.
-        The context is usually shopping centres, train stations or airport terminals -->
+    as it may follow the numbering scheme of the building operator. Try to use a generic wording
+    that does not carry an implicit meaning of where it is located in respect to the ground floor.
+    The context is usually shopping centres, train stations or airport terminals -->
     <string name="on_level">"en el nivel %s"</string>
 
     <!-- as in: "Where is the metro station?" - "It is underground" -->
@@ -680,7 +679,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
     <string name="quest_accessible_for_pedestrians_title_prohibited">"¿Está prohibido que los peatones circulen por este tramo de carretera?"</string>
     <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"No figura que haya acera a ningún lado de esta carretera. En caso de que la haya, pero figure como una vía alternativa, contesta \"acera\"."</string>
     <string name="quest_buildingType_title">"¿Qué tipo de edificio es?"</string>
-    <string name="pref_category_theme">"Apariencia"</string>
     <string name="pref_title_theme_select">"Selecciona la apariencia"</string>
     <string name="theme_automatic">"Automático"</string>
     <string name="theme_light">"Claro"</string>
@@ -691,4 +689,17 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
     <string name="quest_placeName_title_name">"¿Qué es él nombré dé éste lugar? (%s)"</string>
     <string name="action_open_location">"Abrir lugar en otra app"</string>
     <string name="map_application_missing">"No hay otra aplicación para mapas instalada"</string>
+    <string name="pref_title_overpass_url_select">"Cambiar servidor Overpass"</string>
+    <string name="pref_title_overpass_url_info">"Requierereiniciar la aplicación para aplicar. Puede pasar por alto la censura, por ejemplo en Rusia."</string>
+    <string name="label_housenumber">"número de casa"</string>
+    <string name="label_blocknumber">"número de bloque"</string>
+    <string name="quest_busStopShelter_covered">"Toda la parada esta cubierta"</string>
+    <string name="quest_ferry_pedestrian_name_title">"¿Transporta %s personas?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_ferry_pedestrian_title">"¿Transporta personas?"</string>
+    <string name="quest_ferry_motor_vehicle_name_title">"¿Transporta %s vehículos motorizados?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_ferry_motor_vehicle_title">"¿Transporta vehículos motorizados?"</string>
 </resources>
