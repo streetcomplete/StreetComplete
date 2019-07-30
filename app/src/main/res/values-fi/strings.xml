@@ -111,7 +111,6 @@
     <string name="quest_roofShape_select_one">"Valitse yksi:"</string>
     <string name="quest_roofShape_show_more">"Näytä lisää"</string>
     <string name="quest_roofShape_answer_many">"Sillä on useita erilaisia muotoja"</string>
-    <string name="pref_category_cache">"Välimuisti"</string>
     <string name="pref_title_sync">"Auto-Sync"</string>
     <string name="map_btn_zoom_out">"Loitonna"</string>
     <string name="map_btn_zoom_in">"Lähennä"</string>
@@ -689,9 +688,9 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
     <string name="restore_hidden_success">"Palautettiin %d piilotettua kyselyä"</string>
 
     <!-- caution: This is not necessarily the floor and level=0 is not necessarily at street level
-        as it may follow the numbering scheme of the building operator. Try to use a generic wording
-        that does not carry an implicit meaning of where it is located in respect to the ground floor.
-        The context is usually shopping centres, train stations or airport terminals -->
+    as it may follow the numbering scheme of the building operator. Try to use a generic wording
+    that does not carry an implicit meaning of where it is located in respect to the ground floor.
+    The context is usually shopping centres, train stations or airport terminals -->
     <string name="on_level">"kerroksessa %s:"</string>
 
     <!-- as in: "Where is the metro station?" - "It is underground" -->
@@ -701,7 +700,6 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Onko jalankulku kielletty tällä kadulla?"</string>
     <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Tämä katu on merkitty kaduksi, jolla ei ole jalkakäytävää kummallakaan puolella. Siinä tapauksessa, että kadulla kuitenkin on jalkakäytävä, mutta se näytetään erillisenä tienä, vastaa \"jalkakäytävä\"."</string>
     <string name="quest_buildingType_title">"Millainen rakennus tämä on?"</string>
-    <string name="pref_category_theme">"Teema"</string>
     <string name="pref_title_theme_select">"Valitse teema"</string>
     <string name="theme_automatic">"Automaattinen"</string>
     <string name="theme_light">"Vaalea"</string>

@@ -40,7 +40,7 @@
     <string name="quest_streetName_description">"tel qu’écrit sur le panneau (les abréviations sont automatiquement développées) :"</string>
 
     <!-- "Also, note that there may not be extra street signs for side streets that belong to a bigger street."
-    That is not very clear to me. Any further explanations? -->
+That is not very clear to me. Any further explanations? -->
     <string name="quest_streetName_answer_noName_confirmation_description">"Parfois le panneau ne se trouve qu’à une seule extrémité de la rue. Les ruelles adjacentes aux grandes rues n’ont souvent pas de panneaux supplémentaires. Habituellement, une rue qui a une maison porte un nom."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Si vous pouvez écrire le nom sans abréviation, faites-le. Les abréviations communes sont développées automatiquement pendant que vous tapez, mais peut-être pas toutes."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Pas d’abréviation"</string>
@@ -110,7 +110,6 @@
     <string name="quest_roofShape_select_one">"Sélectionner un :"</string>
     <string name="quest_roofShape_show_more">"Montrer d’avantage…"</string>
     <string name="quest_roofShape_answer_many">"Il a plusieurs formes différentes"</string>
-    <string name="pref_category_cache">"Cache"</string>
     <string name="pref_title_sync">"Synchronisation automatique"</string>
     <string name="map_btn_zoom_out">"Zoom arrière"</string>
     <string name="map_btn_zoom_in">"Zoom avant"</string>
@@ -151,7 +150,7 @@ Cependant, avant de sauvegarder vos modifications, l’application vérifie avec
     <string name="quest_surface_value_compacted">"Compacté"</string>
 
     <!-- en:concrete = fr:béton = de:Beton
-    en:cement = fr:ciment = de:Zement -->
+en:cement = fr:ciment = de:Zement -->
     <string name="quest_surface_value_concrete">"Ciment"</string>
     <string name="quest_surface_value_dirt">"Terre"</string>
     <string name="quest_surface_value_fine_gravel">"Petits graviers"</string>
@@ -688,9 +687,9 @@ Partiellement signifie qu’un fauteuil roulant peut entrer et utiliser les toil
     <string name="restore_hidden_success">"%d quêtes cachées ont été restaurées"</string>
 
     <!-- caution: This is not necessarily the floor and level=0 is not necessarily at street level
-        as it may follow the numbering scheme of the building operator. Try to use a generic wording
-        that does not carry an implicit meaning of where it is located in respect to the ground floor.
-        The context is usually shopping centres, train stations or airport terminals -->
+    as it may follow the numbering scheme of the building operator. Try to use a generic wording
+    that does not carry an implicit meaning of where it is located in respect to the ground floor.
+    The context is usually shopping centres, train stations or airport terminals -->
     <string name="on_level">"à l'étage %s:"</string>
 
     <!-- as in: "Where is the metro station?" - "It is underground" -->
@@ -700,7 +699,6 @@ Partiellement signifie qu’un fauteuil roulant peut entrer et utiliser les toil
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Cette voie est-elle interdite aux piétons ?"</string>
     <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Cette rue a été notée en tant que ne possédant pas de trottoirs sur aucun des cotés. Dans le cas qu’il y aurait un trottoir mais qu’il soit indiqué comme une direction séparée, veuillez répondre ¨trottoir¨."</string>
     <string name="quest_buildingType_title">"Quel est le type de cet édifice ?"</string>
-    <string name="pref_category_theme">"Thème"</string>
     <string name="pref_title_theme_select">"Sélectionner un thème"</string>
     <string name="theme_automatic">"Automatique"</string>
     <string name="theme_light">"Clair"</string>
@@ -709,4 +707,20 @@ Partiellement signifie qu’un fauteuil roulant peut entrer et utiliser les toil
     <string name="quest_placeName_title_name">"Comment s'appelle ce lieu ? (%s)"</string>
     <string name="action_open_location">"Afficher dans une autre application"</string>
     <string name="map_application_missing">"Pas d'autre application cartographique installée"</string>
+    <string name="pref_title_overpass_url_select">"Changer de serveur Overpass"</string>
+    <string name="pref_title_overpass_url_info">"Nécessite un redémarrage de l'application pour prendre effet. Peut contourner la censure, notamment en Russie."</string>
+    <string name="label_housenumber">"Numéro de rue"</string>
+
+    <!-- I'm not sure about my translation. -->
+    <!-- Fuzzy -->
+    <string name="label_blocknumber">"Numéro d'entrée"</string>
+    <string name="quest_busStopShelter_covered">"L'arrêt de bus est couvert complétement."</string>
+    <string name="quest_ferry_pedestrian_name_title">"Est-ce que %s transporte des passagers ?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_ferry_pedestrian_title">"Transporte-t-il des passagers ?"</string>
+    <string name="quest_ferry_motor_vehicle_name_title">"Est-ce que %s transporte des véhicules à moteur ?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_ferry_motor_vehicle_title">"Transporte-t-il des véhicules à moteur ?"</string>
 </resources>

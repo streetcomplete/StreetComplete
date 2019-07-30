@@ -103,7 +103,6 @@
     <string name="quest_roofShape_select_one">"Selecione um:"</string>
     <string name="quest_roofShape_show_more">"Mostre mais…"</string>
     <string name="quest_roofShape_answer_many">"Tem várias formas diferentes"</string>
-    <string name="pref_category_cache">"Cache"</string>
     <string name="pref_title_sync">"Auto-Sincronização"</string>
     <string name="map_btn_zoom_out">"Afastar"</string>
     <string name="map_btn_zoom_in">"Aproximar"</string>
@@ -618,7 +617,7 @@ Parcialmente significa que um cadeirante pode entrar e usar o banheiro, mas barr
     <string name="quest_address_answer_no_housenumber_message2">"Isso está correto e não é apenas parte de outro prédio?"</string>
 
     <!-- For example this is a shrine: https://wiki.openstreetmap.org/wiki/File:Shinto_shrine_building.jpg
-    Is "Altar" really fitting here? It is about a building type after all. -->
+Is "Altar" really fitting here? It is about a building type after all. -->
     <string name="quest_buildingType_shrine">"Santuário"</string>
     <string name="quest_maxspeed_title_short2">"Qual o limite de velocidade para esta rua?"</string>
     <string name="quest_maxspeed_answer_sign">"Uma placa"</string>
@@ -690,7 +689,6 @@ Parcialmente significa que um cadeirante pode entrar e usar o banheiro, mas barr
     <string name="underground">"subterrâneo:"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Os pedestres são proibidos de andar nesta rua?"</string>
     <string name="quest_buildingType_title">"Que tipo de edifício é esse?"</string>
-    <string name="pref_category_theme">"Tema"</string>
     <string name="pref_title_theme_select">"Selecione o tema"</string>
     <string name="theme_automatic">"Automático"</string>
     <string name="theme_light">"Claro"</string>

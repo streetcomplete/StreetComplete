@@ -101,7 +101,6 @@
     <string name="quest_roofShape_select_one">"Selecionar uma opção:"</string>
     <string name="quest_roofShape_show_more">"Mostrar mais..."</string>
     <string name="quest_roofShape_answer_many">"Tem várias formas diferentes"</string>
-    <string name="pref_category_cache">"Ficheiros temporários"</string>
     <string name="pref_title_sync">"Sincronização automática"</string>
     <string name="map_btn_zoom_out">"Afastar"</string>
     <string name="map_btn_zoom_in">"Aproximar"</string>
@@ -631,9 +630,9 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="restore_hidden_success">"Restaurados %d desafios ocultados"</string>
 
     <!-- caution: This is not necessarily the floor and level=0 is not necessarily at street level
-        as it may follow the numbering scheme of the building operator. Try to use a generic wording
-        that does not carry an implicit meaning of where it is located in respect to the ground floor.
-        The context is usually shopping centres, train stations or airport terminals -->
+    as it may follow the numbering scheme of the building operator. Try to use a generic wording
+    that does not carry an implicit meaning of where it is located in respect to the ground floor.
+    The context is usually shopping centres, train stations or airport terminals -->
     <string name="on_level">"no nível %s:"</string>
 
     <!-- as in: "Where is the metro station?" - "It is underground" -->
@@ -643,7 +642,6 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="quest_accessible_for_pedestrians_title_prohibited">"É proibida a circulação pedestre nesta estrada?"</string>
     <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Esta rua foi etiquetada como não tendo passeio em nenhum dos lados. Caso haja passeio, mas a está cartografada como um elemento à parte, responda \"passeio\"."</string>
     <string name="quest_buildingType_title">"Que tipo de edifício é este?"</string>
-    <string name="pref_category_theme">"Tema"</string>
     <string name="pref_title_theme_select">"Selecionar tema"</string>
     <string name="theme_automatic">"Automático"</string>
     <string name="theme_light">"Claro"</string>
