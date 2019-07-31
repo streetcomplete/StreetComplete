@@ -784,6 +784,7 @@ public class MainActivity extends AppCompatActivity implements
 			if(questController.solve(questId, group, answer, source))
 			{
 				showQuestSolvedAnimation(quest, source);
+				btnUndo.setVisible(true);
 			}
 			triggerAutoUploadByUserInteraction();
 		});
@@ -904,7 +905,6 @@ public class MainActivity extends AppCompatActivity implements
 		flingQuestMarkerTo(img, answersCounter.getAnswerTarget(), () -> {
 			root.removeView(img);
 			answersCounter.addOneUnsynced(source);
-			btnUndo.setVisible(true);
 		});
 	}
 
