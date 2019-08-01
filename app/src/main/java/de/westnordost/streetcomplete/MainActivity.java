@@ -142,6 +142,7 @@ public class MainActivity extends AppCompatActivity implements
 	private ProgressBar uploadProgressBar;
 
 	private View unsyncedChangesContainer;
+	private MenuItem btnUndo;
 
 	private float mapRotation, mapTilt;
 	private boolean isFollowingPosition;
@@ -403,6 +404,8 @@ public class MainActivity extends AppCompatActivity implements
 	@Override public boolean onCreateOptionsMenu(Menu menu)
 	{
 		getMenuInflater().inflate(R.menu.menu_main, menu);
+		btnUndo = menu.findItem(R.id.action_undo);
+		updateUndoButtonVisibility();
 		return true;
 	}
 
@@ -430,9 +433,23 @@ public class MainActivity extends AppCompatActivity implements
 				questController.undo(quest);
 				questAutoSyncer.triggerAutoUpload();
 				answersCounter.subtractOneUnsynced(quest.getChangesSource());
+				updateUndoButtonVisibility();
+				setUndoButtonEnabled(true);
 			})
-			.setNegativeButton(R.string.undo_confirm_negative, null)
+			.setNegativeButton(R.string.undo_confirm_negative, (dialog, which) -> { setUndoButtonEnabled(true); })
+			.setOnCancelListener(dialog -> { setUndoButtonEnabled(true); })
 			.show();
+	}
+
+	private void updateUndoButtonVisibility()
+	{
+		btnUndo.setVisible(questController.getLastSolvedOsmQuest() != null);
+	}
+
+	private void setUndoButtonEnabled(boolean enabled)
+	{
+		btnUndo.setEnabled(enabled);
+		btnUndo.getIcon().setAlpha(enabled ? 255 : 127);
 	}
 
 	@Override public boolean onOptionsItemSelected(MenuItem item)
@@ -443,9 +460,10 @@ public class MainActivity extends AppCompatActivity implements
 		switch (id)
 		{
 			case R.id.action_undo:
+				setUndoButtonEnabled(false);
 				OsmQuest quest = questController.getLastSolvedOsmQuest();
-				if(quest != null) confirmUndo(quest);
-				else              Toast.makeText(this, R.string.no_changes_to_undo, Toast.LENGTH_SHORT).show();
+				if (quest != null) confirmUndo(quest);
+				else setUndoButtonEnabled(true);
 				return true;
 			case R.id.action_settings:
 				intent = new Intent(this, SettingsActivity.class);
@@ -578,6 +596,7 @@ public class MainActivity extends AppCompatActivity implements
 			runOnUiThread(() ->
 			{
 				unsyncedChangesContainer.setEnabled(false);
+				setUndoButtonEnabled(false);
 				if(uploadProgressBar != null) uploadProgressBar.setVisibility(View.VISIBLE);
 			});
 		}
@@ -645,6 +664,7 @@ public class MainActivity extends AppCompatActivity implements
 			runOnUiThread(() ->
 			{
 				unsyncedChangesContainer.setEnabled(true);
+				setUndoButtonEnabled(true);
 				if(uploadProgressBar != null) uploadProgressBar.setVisibility(View.INVISIBLE);
 			});
 			answersCounter.update();
@@ -767,6 +787,7 @@ public class MainActivity extends AppCompatActivity implements
 			Quest quest = questController.get(questId, group);
 			if(questController.solve(questId, group, answer, source))
 			{
+				updateUndoButtonVisibility();
 				showQuestSolvedAnimation(quest, source);
 			}
 			triggerAutoUploadByUserInteraction();

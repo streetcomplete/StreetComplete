@@ -325,7 +325,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_crossing_type_unmarked">Crossing without road markings</string>
     <string name="compass_north_one_letter">N</string>
     <string name="action_undo">Undo</string>
-    <string name="no_changes_to_undo">Nothing to undo</string>
     <string name="undo_confirm_title">Undo the following last answer?</string>
     <string name="quest_orchard_produce_title">What is being cultivated here?</string>
     <string name="produce_grapes">Grapes</string>
