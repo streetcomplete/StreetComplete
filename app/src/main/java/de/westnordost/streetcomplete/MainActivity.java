@@ -783,8 +783,8 @@ public class MainActivity extends AppCompatActivity implements
 			Quest quest = questController.get(questId, group);
 			if(questController.solve(questId, group, answer, source))
 			{
+				updateUndoButtonVisibility();
 				showQuestSolvedAnimation(quest, source);
-				btnUndo.setVisible(true);
 			}
 			triggerAutoUploadByUserInteraction();
 		});
