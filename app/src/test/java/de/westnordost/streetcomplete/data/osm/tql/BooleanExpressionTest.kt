@@ -65,7 +65,7 @@ class BooleanExpressionTest {
     }
 
     @Test fun `type not initially set`() {
-        val x = BooleanExpression<BooleanExpressionValue>()
+        val x = BooleanExpression<BooleanExpressionValue<String>, String>()
         assertFalse(x.isAnd)
         assertFalse(x.isOr)
         assertFalse(x.isRoot)
@@ -73,29 +73,29 @@ class BooleanExpressionTest {
     }
 
     @Test fun `add and`() {
-        val x = BooleanExpression<BooleanExpressionValue>()
+        val x = BooleanExpression<BooleanExpressionValue<String>, String>()
         assertTrue(x.addAnd().isAnd)
     }
 
     @Test fun `add or`() {
-        val x = BooleanExpression<BooleanExpressionValue>()
+        val x = BooleanExpression<BooleanExpressionValue<String>, String>()
         assertTrue(x.addOr().isOr)
     }
 
     @Test fun `set as root`() {
-        val x = BooleanExpression<BooleanExpressionValue>(true)
+        val x = BooleanExpression<BooleanExpressionValue<String>, String>(true)
         assertTrue(x.isRoot)
     }
 
     @Test fun `set as value`() {
-        val x = BooleanExpression<BooleanExpressionValue>()
+        val x = BooleanExpression<BooleanExpressionValue<String>, String>()
         x.addValue(TestBooleanExpressionValue("jo"))
         assertTrue(x.firstChild!!.isValue)
-        assertEquals("jo", (x.firstChild!!.value as TestBooleanExpressionValue).getValue())
+        assertEquals("jo", (x.firstChild!!.value as TestBooleanExpressionValue).value)
     }
 
     @Test fun `get parent`() {
-        val parent = BooleanExpression<BooleanExpressionValue>()
+        val parent = BooleanExpression<BooleanExpressionValue<String>, String>()
         assertNull(parent.parent)
         assertEquals(parent, parent.addOpenBracket().parent)
     }
@@ -114,8 +114,8 @@ class BooleanExpressionTest {
     }
 
     private fun checkRecursiveEqualsButNotSame(
-        tree: BooleanExpression<BooleanExpressionValue>,
-        treeCopy: BooleanExpression<BooleanExpressionValue>
+        tree: BooleanExpression<BooleanExpressionValue<String>, String>,
+        treeCopy: BooleanExpression<BooleanExpressionValue<String>, String>
     ) {
         assertNotSame(tree, treeCopy)
         assertEquals(tree.toString(), treeCopy.toString())

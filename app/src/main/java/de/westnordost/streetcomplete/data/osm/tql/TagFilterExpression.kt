@@ -10,7 +10,7 @@ import de.westnordost.streetcomplete.data.osm.tql.ElementsTypeFilter.RELATIONS
  *  "ways with (highway = residential or highway = tertiary) and !name"  */
 class TagFilterExpression(
     private val elementsTypeFilters: List<ElementsTypeFilter>,
-    private val tagExprRoot: BooleanExpression<OQLExpressionValue>
+    private val tagExprRoot: BooleanExpression<TagFilter, Tags>
 ) {
 
     /** returns whether the given element is found through (=matches) this expression */
@@ -20,7 +20,7 @@ class TagFilterExpression(
 	        Element.Type.WAY -> elementsTypeFilters.contains(WAYS)
 	        Element.Type.RELATION -> elementsTypeFilters.contains(RELATIONS)
 	        else -> false
-        } && tagExprRoot.matches(element)
+        } && tagExprRoot.matches(element.tags)
 
     /** returns this expression as a Overpass query string */
     fun toOverpassQLString(bbox: BoundingBox?): String {
@@ -51,7 +51,7 @@ class TagFilterExpression(
         return oql.toString()
     }
 
-    private fun createExpandedExpression(): BooleanExpression<OQLExpressionValue> {
+    private fun createExpandedExpression(): BooleanExpression<TagFilter, Tags> {
         val result = tagExprRoot.copy()
         result.flatten()
         result.expand()
@@ -61,14 +61,14 @@ class TagFilterExpression(
     private fun getTagFiltersOverpassQLString(elementTypeName: String, elements: List<String>) =
 	    elements.joinToString("") { element -> "$elementTypeName$element;" }
 
-    private fun BooleanExpression<OQLExpressionValue>?.toOverpassQLFilters() = when {
+    private fun BooleanExpression<TagFilter, Tags>?.toOverpassQLFilters() = when {
 	    this == null     -> listOf("")
 	    isOr             -> children.map { it.toSingleOverpassQLFilter() }
 	    isAnd || isValue -> listOf(toSingleOverpassQLFilter())
 	    else             -> throw RuntimeException("The boolean expression is not in the expected format")
     }
 
-    private fun BooleanExpression<OQLExpressionValue>.toSingleOverpassQLFilter() = when {
+    private fun BooleanExpression<TagFilter, Tags>.toSingleOverpassQLFilter() = when {
 	    isValue -> "[${value!!.toOverpassQLString()}]"
 	    isAnd   -> children.joinToString("") { "[${it.value!!.toOverpassQLString()}]" }
 	    else    -> throw RuntimeException("The boolean expression is not in the expected format")

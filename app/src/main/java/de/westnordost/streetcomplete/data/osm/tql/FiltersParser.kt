@@ -59,7 +59,7 @@ private fun StringWithCursor.parseElementDeclaration(): ElementsTypeFilter {
 	)
 }
 
-private fun StringWithCursor.parseTags(): BooleanExpression<OQLExpressionValue> {
+private fun StringWithCursor.parseTags(): BooleanExpression<TagFilter, Tags> {
 	// tags are optional...
 	if (!nextIsAndAdvanceIgnoreCase(WITH)) {
 		if (!isAtEnd) {
@@ -68,7 +68,7 @@ private fun StringWithCursor.parseTags(): BooleanExpression<OQLExpressionValue> 
 		return BooleanExpression()
 	}
 
-	val builder = BooleanExpressionBuilder<OQLExpressionValue>()
+	val builder = BooleanExpressionBuilder<TagFilter, Tags>()
 
 	do {
 		// if it has no bracket, there must be at least one whitespace
@@ -106,7 +106,7 @@ private fun StringWithCursor.parseTags(): BooleanExpression<OQLExpressionValue> 
 	}
 }
 
-private fun StringWithCursor.parseBrackets(bracket: Char, expr: BooleanExpressionBuilder<*>): Boolean {
+private fun StringWithCursor.parseBrackets(bracket: Char, expr: BooleanExpressionBuilder<*,*>): Boolean {
 	var characterCount = expectAnyNumberOfSpaces()
 	var previousCharacterCount: Int
 	do {
@@ -127,7 +127,7 @@ private fun StringWithCursor.parseBrackets(bracket: Char, expr: BooleanExpressio
 	return characterCount > 0
 }
 
-private fun StringWithCursor.parseTag(): OQLExpressionValue {
+private fun StringWithCursor.parseTag(): TagFilter {
 	if (nextIsAndAdvance('!')) {
 		expectAnyNumberOfSpaces()
 		return KeyFilter(parseKey(), false)

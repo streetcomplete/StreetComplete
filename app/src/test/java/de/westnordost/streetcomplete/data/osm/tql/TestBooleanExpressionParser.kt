@@ -3,8 +3,8 @@ package de.westnordost.streetcomplete.data.osm.tql
 import java.util.Locale
 
 object TestBooleanExpressionParser {
-    fun parse(input: String): BooleanExpression<BooleanExpressionValue> {
-        val builder = BooleanExpressionBuilder<BooleanExpressionValue>()
+    fun parse(input: String): BooleanExpression<BooleanExpressionValue<String>, String> {
+        val builder = BooleanExpressionBuilder<BooleanExpressionValue<String>, String>()
         val reader = StringWithCursor(input, Locale.US)
         while (!reader.isAtEnd) {
 	        when {

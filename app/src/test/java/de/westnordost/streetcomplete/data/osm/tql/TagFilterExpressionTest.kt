@@ -45,7 +45,7 @@ class TagFilterExpressionTest {
         on(booleanExpression.matches(any())).thenReturn(true)
         val expr = TagFilterExpression(
             ElementsTypeFilter.values().toList(),
-	        booleanExpression as BooleanExpression<OQLExpressionValue>
+	        booleanExpression as BooleanExpression<TagFilter, Tags>
         )
 
         assertTrue(expr.matches(node))
@@ -63,7 +63,7 @@ class TagFilterExpressionTest {
         val expr = mock(BooleanExpression::class.java)
 	    on(expr.matches(any())).thenReturn(true)
         return TagFilterExpression(listOf(elementsTypeFilter),
-	        expr as BooleanExpression<OQLExpressionValue>
+	        expr as BooleanExpression<TagFilter, Tags>
         )
     }
 }

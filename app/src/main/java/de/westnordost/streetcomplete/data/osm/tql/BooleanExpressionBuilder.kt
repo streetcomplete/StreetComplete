@@ -4,11 +4,11 @@ import java.util.EmptyStackException
 import java.util.Stack
 
 /** Builds a boolean expression. Basically a BooleanExpression with a cursor.  */
-class BooleanExpressionBuilder<T : BooleanExpressionValue> {
-    private var node: BooleanExpression<T> = BooleanExpression(true)
-    private val bracket: Stack<BooleanExpression<T>> = Stack()
+class BooleanExpressionBuilder<I : BooleanExpressionValue<T>, T> {
+    private var node: BooleanExpression<I,T> = BooleanExpression(true)
+    private val bracket: Stack<BooleanExpression<I,T>> = Stack()
 
-    fun build(): BooleanExpression<T> {
+    fun build(): BooleanExpression<I,T> {
         if (!bracket.empty()) {
             throw IllegalStateException("Closed one bracket too little")
         }
@@ -35,7 +35,7 @@ class BooleanExpressionBuilder<T : BooleanExpressionValue> {
         }
     }
 
-    fun addValue(t: T) { node.addValue(t) }
+    fun addValue(i: I) { node.addValue(i) }
     fun addAnd() { node = node.addAnd() }
     fun addOr() { node = node.addOr() }
 }

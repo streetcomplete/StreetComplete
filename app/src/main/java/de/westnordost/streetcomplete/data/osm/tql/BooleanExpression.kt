@@ -4,7 +4,7 @@ import de.westnordost.streetcomplete.data.osm.tql.BooleanExpression.Type.*
 import java.util.*
 
 /** A boolean expression of values that are connected by ANDs and ORs  */
-class BooleanExpression<T : BooleanExpressionValue>(asRoot: Boolean = false) {
+class BooleanExpression<I : BooleanExpressionValue<T>,T>(asRoot: Boolean = false) {
 
     // once set, these are final
     private var type: Type? = null
@@ -12,15 +12,15 @@ class BooleanExpression<T : BooleanExpressionValue>(asRoot: Boolean = false) {
 			if (field != null) throw IllegalStateException()
 			field = value
 		}
-    var value: T? = null
+    var value: I? = null
         private set
 
-    var parent: BooleanExpression<T>? = null
+    var parent: BooleanExpression<I,T>? = null
         private set
 	val children get() = _children.toList()
-    private var _children = LinkedList<BooleanExpression<T>>()
+    private var _children = LinkedList<BooleanExpression<I,T>>()
 
-    val firstChild: BooleanExpression<T>?
+    val firstChild: BooleanExpression<I,T>?
         get() = if (!_children.isEmpty()) _children.first else null
 
 	enum class Type { AND, OR, ROOT, LEAF }
@@ -36,7 +36,7 @@ class BooleanExpression<T : BooleanExpressionValue>(asRoot: Boolean = false) {
 
     /** --------------------- Methods for extending the boolean expression ----------------------  */
 
-    fun addAnd(): BooleanExpression<T> {
+    fun addAnd(): BooleanExpression<I,T> {
         if (!isAnd) {
             val newChild = createIntermediateChild()
             newChild.type = AND
@@ -45,8 +45,8 @@ class BooleanExpression<T : BooleanExpressionValue>(asRoot: Boolean = false) {
         return this
     }
 
-    fun addOr(): BooleanExpression<T> {
-        var node: BooleanExpression<T> = this
+    fun addOr(): BooleanExpression<I,T> {
+        var node: BooleanExpression<I,T> = this
 
         if (isAnd) {
             if (parent!!.isRoot) {
@@ -65,24 +65,24 @@ class BooleanExpression<T : BooleanExpressionValue>(asRoot: Boolean = false) {
         return node
     }
 
-    fun addValue(t: T) {
+    fun addValue(t: I) {
         val child = createChild()
         child.type = LEAF
         child.value = t
     }
 
-    fun addOpenBracket(): BooleanExpression<T> {
+    fun addOpenBracket(): BooleanExpression<I,T> {
         return createChild()
     }
 
-    private fun createChild(): BooleanExpression<T> {
-        val child = BooleanExpression<T>()
+    private fun createChild(): BooleanExpression<I,T> {
+        val child = BooleanExpression<I,T>()
         addChild(child)
         return child
     }
 
-    private fun createIntermediateParent(): BooleanExpression<T> {
-        val newParent = BooleanExpression<T>()
+    private fun createIntermediateParent(): BooleanExpression<I,T> {
+        val newParent = BooleanExpression<I,T>()
 	    val oldParent = parent!!
 	    oldParent.removeChild(this)
         newParent.addChild(this)
@@ -90,34 +90,34 @@ class BooleanExpression<T : BooleanExpressionValue>(asRoot: Boolean = false) {
         return newParent
     }
 
-    private fun createIntermediateChild(): BooleanExpression<T> {
+    private fun createIntermediateChild(): BooleanExpression<I,T> {
         val lastChild = removeLastChild()
         val newNode = createChild()
         if (lastChild != null) newNode.addChild(lastChild)
         return newNode
     }
 
-    private fun removeLastChild(): BooleanExpression<T>? {
+    private fun removeLastChild(): BooleanExpression<I,T>? {
         return if (!_children.isEmpty()) _children.removeLast() else null
     }
 
-    private fun addChild(child: BooleanExpression<T>) {
+    private fun addChild(child: BooleanExpression<I,T>) {
         child.parent = this
         _children.add(child)
     }
 
-    private fun removeChild(child: BooleanExpression<T>) {
+    private fun removeChild(child: BooleanExpression<I,T>) {
         _children.remove(child)
         child.parent = null
     }
 
     /** --------------------- Methods for accessing the boolean expression ---------------------  */
 
-    fun matches(element: Any): Boolean = when (type) {
-        LEAF -> value!!.matches(element)
-        OR   -> _children.any { it.matches(element) }
-        AND  -> _children.all { it.matches(element) }
-        ROOT -> _children.first.matches(element)
+    fun matches(obj: T?): Boolean = when (type) {
+        LEAF -> value!!.matches(obj)
+        OR   -> _children.any { it.matches(obj) }
+        AND  -> _children.all { it.matches(obj) }
+        ROOT -> _children.first.matches(obj)
         else -> false
     }
 
@@ -158,15 +158,15 @@ class BooleanExpression<T : BooleanExpressionValue>(asRoot: Boolean = false) {
     }
 
     private fun replaceChildAt(
-        at: MutableListIterator<BooleanExpression<T>>,
-        with: BooleanExpression<T>
+        at: MutableListIterator<BooleanExpression<I,T>>,
+        with: BooleanExpression<I,T>
     ) {
         replaceChildAt(at, listOf(with))
     }
 
     private fun replaceChildAt(
-        at: MutableListIterator<BooleanExpression<T>>,
-        with: Collection<BooleanExpression<T>>
+        at: MutableListIterator<BooleanExpression<I,T>>,
+        with: Collection<BooleanExpression<I,T>>
     ) {
         at.remove()
         for (withEle in with) {
@@ -198,7 +198,7 @@ class BooleanExpression<T : BooleanExpressionValue>(asRoot: Boolean = false) {
         for (child in LinkedList(_children)) child.moveDownAnds()
     }
 
-    private fun replaceChild(replace: BooleanExpression<T>, with: BooleanExpression<T>) {
+    private fun replaceChild(replace: BooleanExpression<I,T>, with: BooleanExpression<I,T>) {
         val it = _children.listIterator()
         while (it.hasNext()) {
             val child = it.next()
@@ -209,8 +209,8 @@ class BooleanExpression<T : BooleanExpressionValue>(asRoot: Boolean = false) {
         }
     }
 
-    fun copy(): BooleanExpression<T> {
-        val result = BooleanExpression<T>()
+    fun copy(): BooleanExpression<I,T> {
+        val result = BooleanExpression<I,T>()
         result.type = type
         result.value = value // <- this is a a reference! value should be immutable
         result.parent = null // parent is set on parent.addChild, see for loop
@@ -223,7 +223,7 @@ class BooleanExpression<T : BooleanExpressionValue>(asRoot: Boolean = false) {
     }
 
     /** Adds deep copies of this as children to other, each taking one original child as its own  */
-    private fun addCopiesOfMyselfInBetweenChildrenOf(other: BooleanExpression<T>) {
+    private fun addCopiesOfMyselfInBetweenChildrenOf(other: BooleanExpression<I,T>) {
         val it = other._children.listIterator()
         while (it.hasNext()) {
             val child = it.next()
@@ -233,7 +233,7 @@ class BooleanExpression<T : BooleanExpressionValue>(asRoot: Boolean = false) {
         }
     }
 
-    private fun replacePlaceholder(with: BooleanExpression<T>) {
+    private fun replacePlaceholder(with: BooleanExpression<I,T>) {
         val it = _children.listIterator()
         while (it.hasNext()) {
             val child = it.next()
@@ -245,13 +245,13 @@ class BooleanExpression<T : BooleanExpressionValue>(asRoot: Boolean = false) {
     }
 
     /** Find first OR child and remove it from my children  */
-    private fun removeFirstOr(): BooleanExpression<T>? {
+    private fun removeFirstOr(): BooleanExpression<I,T>? {
         val it = _children.listIterator()
         while (it.hasNext()) {
             val child = it.next()
             if (child.isOr) {
                 it.remove()
-                val placeholder = BooleanExpression<T>()
+                val placeholder = BooleanExpression<I,T>()
                 it.add(placeholder)
                 return child
             }

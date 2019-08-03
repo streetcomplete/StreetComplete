@@ -1,5 +1,5 @@
 package de.westnordost.streetcomplete.data.osm.tql
 
-interface BooleanExpressionValue {
-    fun matches(ele: Any?): Boolean
+interface BooleanExpressionValue<in T> {
+    fun matches(obj: T?): Boolean
 }
