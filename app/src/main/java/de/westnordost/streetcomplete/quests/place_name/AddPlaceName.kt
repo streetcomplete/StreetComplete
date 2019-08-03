@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandler
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
 import de.westnordost.streetcomplete.data.osm.tql.FiltersParser
-import de.westnordost.streetcomplete.data.osm.tql.OverpassQLUtil
+import de.westnordost.streetcomplete.data.osm.tql.getQuestPrintStatement
 import java.util.concurrent.FutureTask
 
 class AddPlaceName(
@@ -61,7 +61,7 @@ class AddPlaceName(
     override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>) = arrayOf(featureName.value)
 
     override fun download(bbox: BoundingBox, handler: MapDataWithGeometryHandler): Boolean {
-        val overpassQuery = filter.toOverpassQLString(bbox) + OverpassQLUtil.getQuestPrintStatement()
+        val overpassQuery = filter.toOverpassQLString(bbox) + getQuestPrintStatement()
         return overpassServer.getAndHandleQuota(overpassQuery) { element, geometry ->
             if(element.tags != null) {
                 // only show places without names as quests for which a feature name is available

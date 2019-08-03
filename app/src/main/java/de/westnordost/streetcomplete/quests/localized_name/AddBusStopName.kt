@@ -9,7 +9,7 @@ class AddBusStopName(o: OverpassMapDataDao) : SimpleOverpassQuestType<BusStopNam
 
     override val tagFilters = """
         nodes with
-        ((public_transport = platform and (bus = yes or trolleybus = yes or tram = yes))
+        ((public_transport = platform and ~bus|trolleybus|tram ~ yes)
         or
         (highway = bus_stop and public_transport != stop_position))
         and !name and noname != yes

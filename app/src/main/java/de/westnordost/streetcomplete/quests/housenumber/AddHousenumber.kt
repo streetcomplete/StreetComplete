@@ -12,7 +12,9 @@ import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandler
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
-import de.westnordost.streetcomplete.data.osm.tql.OverpassQLUtil
+import de.westnordost.streetcomplete.data.osm.tql.DEFAULT_MAX_QUESTS
+import de.westnordost.streetcomplete.data.osm.tql.toGlobalOverpassBBox
+import de.westnordost.streetcomplete.data.osm.tql.toOverpassBboxFilter
 import de.westnordost.streetcomplete.util.FlattenIterable
 import de.westnordost.streetcomplete.util.LatLonRaster
 import de.westnordost.streetcomplete.util.SphericalEarthMath
@@ -73,7 +75,7 @@ class AddHousenumber(private val overpass: OverpassMapDataDao) : OsmElementQuest
         for (building in buildings.values) {
             // even though we could continue here, limit the max amount of quests created to the
             // default maximum to avoid performance problems
-            if (createdQuests++ >= OverpassQLUtil.DEFAULT_MAX_QUESTS) break
+            if (createdQuests++ >= DEFAULT_MAX_QUESTS) break
 
             val addrContainedInBuilding = getPositionContainedInBuilding(building.geometry, addrPositions)
             if (addrContainedInBuilding != null) {
@@ -120,7 +122,7 @@ class AddHousenumber(private val overpass: OverpassMapDataDao) : OsmElementQuest
 
     /** Query that returns all areas that are not buildings but have addresses  */
     private fun getNonBuildingAreasWithAddresses(bbox: BoundingBox): String {
-        return OverpassQLUtil.getGlobalOverpassBBox(bbox) +
+        return bbox.toGlobalOverpassBBox() +
             "(way[!building]" + ANY_ADDRESS_FILTER + ";rel[!building]" + ANY_ADDRESS_FILTER + ";);" +
             "out geom;"
     }
@@ -128,7 +130,7 @@ class AddHousenumber(private val overpass: OverpassMapDataDao) : OsmElementQuest
     /** Query that returns all buildings that neither have an address node on their outline, nor
      * on itself  */
     private fun getBuildingsWithoutAddressesOverpassQuery(bbox: BoundingBox): String {
-        val bboxFilter = OverpassQLUtil.getOverpassBboxFilter(bbox)
+        val bboxFilter = bbox.toOverpassBboxFilter()
         return "(" +
             "  way" + BUILDINGS_WITHOUT_ADDRESS_FILTER + bboxFilter + ";" +
             "  rel" + BUILDINGS_WITHOUT_ADDRESS_FILTER + bboxFilter + ";" +
@@ -137,13 +139,13 @@ class AddHousenumber(private val overpass: OverpassMapDataDao) : OsmElementQuest
             "node.building_nodes" + ANY_ADDRESS_FILTER + ";< -> .buildings_with_addr_nodes;" +
             // all buildings without housenumber minus ways that contain building nodes with addresses
             "(.buildings; - .buildings_with_addr_nodes;);" +
-            // not using OverpassQLUtil.getQuestPrintStatement here because buildings will get filtered out further here
+            // not using getQuestPrintStatement here because buildings will get filtered out further here
             "out meta geom;"
     }
 
     /** Query that returns all address nodes that are not part of any building outline  */
     private fun getFreeFloatingAddressesOverpassQuery(bbox: BoundingBox): String {
-        return OverpassQLUtil.getGlobalOverpassBBox(bbox) +
+        return bbox.toGlobalOverpassBBox() +
             "(" +
             "  node" + ANY_ADDRESS_FILTER + ";" +
             "  - ((way[building];relation[building];);>;);" +

@@ -19,10 +19,7 @@ class AddWayLit(o: OverpassMapDataDao) : SimpleOverpassQuestType<String>(o) {
         highway ~ ${LIT_RESIDENTIAL_ROADS.joinToString("|")}
         or highway ~ ${LIT_NON_RESIDENTIAL_ROADS.joinToString("|")} and (
             sidewalk ~ both|left|right|yes|separate
-            or source:maxspeed ~ .+:urban
-            or maxspeed:type ~ .+:urban
-            or zone:maxspeed ~ .+:urban
-            or zone:traffic ~ .+:urban
+            or ~source:maxspeed|maxspeed:type|zone:maxspeed|zone:traffic ~ .+:urban
         )
         or highway ~ ${LIT_WAYS.joinToString("|")}
         or highway = path and (foot = designated or bicycle = designated)

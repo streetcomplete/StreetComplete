@@ -8,22 +8,23 @@ import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandler
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
 import de.westnordost.streetcomplete.data.osm.tql.FiltersParser
-import de.westnordost.streetcomplete.data.osm.tql.OverpassQLUtil
+import de.westnordost.streetcomplete.data.osm.tql.getQuestPrintStatement
+import de.westnordost.streetcomplete.data.osm.tql.toGlobalOverpassBBox
 
 class AddMaxHeight(private val overpassServer: OverpassMapDataDao) : OsmElementQuestType<MaxHeightAnswer> {
 
     private val nodeFilter by lazy { FiltersParser().parse("""
         nodes with
-        (barrier=height_restrictor or amenity=parking_entrance and parking ~ underground|multi-storey)
+        (barrier = height_restrictor or amenity = parking_entrance and parking ~ underground|multi-storey)
         and !maxheight and !maxheight:physical
     """)}
 
     private val wayFilter by lazy { FiltersParser().parse("""
         ways with
         (highway ~ motorway|motorway_link|trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|living_street|track|road
-          or (highway=service and access!~private|no and vehicle!~private|no)
+          or (highway = service and access !~ private|no and vehicle !~ private|no)
         )
-        and (covered=yes or tunnel~yes|building_passage|avalanche_protector)
+        and (covered = yes or tunnel ~ yes|building_passage|avalanche_protector)
         and !maxheight and !maxheight:physical
     """)}
 
@@ -51,12 +52,12 @@ class AddMaxHeight(private val overpassServer: OverpassMapDataDao) : OsmElementQ
     }
 
     private fun getOverpassQuery(bbox: BoundingBox) =
-        OverpassQLUtil.getGlobalOverpassBBox(bbox) +
+        bbox.toGlobalOverpassBBox() +
         "(" +
         nodeFilter.toOverpassQLString(null) +
         wayFilter.toOverpassQLString(null) +
         ");" +
-        OverpassQLUtil.getQuestPrintStatement()
+        getQuestPrintStatement()
 
     override fun createForm() = AddMaxHeightForm()
 

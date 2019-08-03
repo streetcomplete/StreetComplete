@@ -11,8 +11,7 @@ class AddProhibitedForPedestrians(o: OverpassMapDataDao) : SimpleOverpassQuestTy
 
     override val tagFilters = """
         ways with !foot and (
-          sidewalk ~ none|no or
-          sidewalk:both ~ none|no or
+          ~'sidewalk(:both)?' ~ none|no or
           (sidewalk:left ~ none|no and sidewalk:right ~ none|no)
         )
         and access !~ private|no
