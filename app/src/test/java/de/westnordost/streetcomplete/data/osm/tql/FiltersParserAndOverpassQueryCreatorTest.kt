@@ -2,8 +2,6 @@ package de.westnordost.streetcomplete.data.osm.tql
 
 import org.junit.Test
 
-import de.westnordost.osmapi.map.data.BoundingBox
-
 import org.junit.Assert.*
 import java.text.ParseException
 
@@ -293,47 +291,6 @@ class FiltersParserAndOverpassQueryCreatorTest {
         )
     }
 
-    @Test fun boundingBox() {
-        val bbox = BoundingBox(0.0, 0.0, 5.0, 10.0)
-        check("nodes", "[bbox:0,0,5,10];node;", bbox)
-        check("nodes with highway", "[bbox:0,0,5,10];node[highway];", bbox)
-        check(
-            "nodes with highway or railway",
-            """
-            [bbox:0,0,5,10];
-            node[highway]->.n1;
-            node[railway]->.n2;
-            (.n1;.n2;);
-            """,
-            bbox
-        )
-    }
-
-    @Test fun `boundingBox with multiple element types`() {
-        val bbox = BoundingBox(0.0, 0.0, 5.0, 10.0)
-
-        check("nodes, ways, relations", "[bbox:0,0,5,10];nwr;", bbox)
-        check(
-            "nodes, ways, relations with highway",
-            "[bbox:0,0,5,10];nwr[highway];", bbox
-        )
-
-        check(
-            "nodes, ways with highway or railway",
-	        """
-            [bbox:0,0,5,10];
-            node[highway]->.n2;
-            node[railway]->.n3;
-            (.n2;.n3;)->.n1;
-            way[highway]->.w2;
-            way[railway]->.w3;
-            (.w2;.w3;)->.w1;
-            (.n1;.w1;);
-            """,
-            bbox
-        )
-    }
-
     private fun shouldFail(input: String) {
         try {
             FiltersParser().parse(input)
@@ -342,10 +299,10 @@ class FiltersParserAndOverpassQueryCreatorTest {
         }
     }
 
-    private fun check(input: String, output: String, bbox: BoundingBox? = null) {
+    private fun check(input: String, output: String) {
         val expr = FiltersParser().parse(input)
         assertEquals(
             output.replace("\n","").replace(" ",""),
-            expr.toOverpassQLString(bbox).replace("\n","").replace(" ",""))
+            expr.toOverpassQLString().replace("\n","").replace(" ",""))
     }
 }

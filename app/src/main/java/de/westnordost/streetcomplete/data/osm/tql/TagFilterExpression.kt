@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.data.osm.tql
 
-import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.data.osm.tql.ElementsTypeFilter.NODES
 import de.westnordost.streetcomplete.data.osm.tql.ElementsTypeFilter.WAYS
@@ -30,13 +29,8 @@ class TagFilterExpression(
         } && (tagExprRoot?.matches(element.tags) ?: true)
 
     /** returns this expression as a Overpass query string */
-    fun toOverpassQLString(bbox: BoundingBox?): String {
-        val oql = StringBuilder()
-        if (bbox != null) {
-            oql.append(bbox.toGlobalOverpassBBox()+"\n")
-        }
-        oql.append(overpassQuery)
-        return oql.toString()
+    fun toOverpassQLString(): String {
+        return overpassQuery
     }
 
 }

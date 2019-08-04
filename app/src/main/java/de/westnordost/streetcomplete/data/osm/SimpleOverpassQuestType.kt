@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
 import de.westnordost.streetcomplete.data.osm.tql.FiltersParser
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.streetcomplete.data.osm.tql.getQuestPrintStatement
+import de.westnordost.streetcomplete.data.osm.tql.toGlobalOverpassBBox
 
 /** Quest type that simply makes a certain overpass query using tag filters and creates quests for
  * every element received  */
@@ -17,7 +18,7 @@ abstract class SimpleOverpassQuestType<T>(
     abstract val tagFilters: String
 
     fun getOverpassQuery(bbox: BoundingBox) =
-        filter.toOverpassQLString(bbox) + getQuestPrintStatement()
+        bbox.toGlobalOverpassBBox() + "\n" + filter.toOverpassQLString() + getQuestPrintStatement()
 
     override fun download(bbox: BoundingBox, handler: MapDataWithGeometryHandler): Boolean {
         return overpassServer.getAndHandleQuota(getOverpassQuery(bbox), handler)

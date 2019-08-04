@@ -54,8 +54,8 @@ class AddMaxHeight(private val overpassServer: OverpassMapDataDao) : OsmElementQ
     private fun getOverpassQuery(bbox: BoundingBox) =
         bbox.toGlobalOverpassBBox() +
         "(" +
-        nodeFilter.toOverpassQLString(null) +
-        wayFilter.toOverpassQLString(null) +
+        nodeFilter.toOverpassQLString() +
+        wayFilter.toOverpassQLString() +
         ");" +
         getQuestPrintStatement()
 
