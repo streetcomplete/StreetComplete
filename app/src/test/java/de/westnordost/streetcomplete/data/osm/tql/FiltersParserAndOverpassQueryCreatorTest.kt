@@ -7,10 +7,10 @@ import de.westnordost.osmapi.map.data.BoundingBox
 import org.junit.Assert.*
 import java.text.ParseException
 
-/** Integration test for the filter parser and the filter expression, the whole way from parsing
+/** Integration test for the filter parser, filter expression and creator, the whole way from parsing
  * the tag filters expression to returning it as a OQL string. More convenient this way since the
  * easiest way to create a filter expressions is to parse it from string.  */
-class FiltersParserTest {
+class FiltersParserAndOverpassQueryCreatorTest {
     @Test fun node() {
         check("nodes", "node;")
         check("NODES", "node;")
@@ -41,7 +41,7 @@ class FiltersParserTest {
 
     @Test fun `multiple element types with tag`() {
         check("nodes, ways, relations with shop", "nwr[shop];")
-        check("nodes, ways with shop", "(node[shop];way[shop];);")
+        check("nodes, ways with shop", "node[shop]->.n1;way[shop]->.w1;(.n1;.w1;);")
     }
 
     @Test fun `whitespace in front is okay`() {
@@ -95,11 +95,11 @@ class FiltersParserTest {
         check("nodes with highway = §$%&%/??", "node[highway = '§$%&%/??'];")
     }
 
-    @Test fun `tag key quotation marks not closed`() {
+    @Test fun `fail if tag key quotation marks not closed`() {
         shouldFail("nodes with \"highway = residential or bla")
     }
 
-    @Test fun `tag value quotation marks not closed`() {
+    @Test fun `fail if tag value quotation marks not closed`() {
         shouldFail("nodes with highway = \"residential or bla")
     }
 
@@ -125,11 +125,11 @@ class FiltersParserTest {
         shouldFail("nodes with highway or ")
     }
 
-    @Test fun `fail when bracket not closed`() {
+    @Test fun `fail if bracket not closed`() {
         shouldFail("nodes with (highway")
     }
 
-    @Test fun `failed when too many brackets closed`() {
+    @Test fun `failed if too many brackets closed`() {
         shouldFail("nodes with highway)")
     }
 
@@ -165,15 +165,131 @@ class FiltersParserTest {
         shouldFail("nodes with !highway!~residential")
     }
 
-    @Test fun `two tags`() {
+    @Test fun and() {
         check("nodes with highway and name", "node[highway][name];")
-        check("nodes with highway or name", "(node[highway];node[name];);")
     }
 
-    @Test fun `or in and`() {
+    @Test fun `two and`() {
+        check("nodes with highway and name and ref", "node[highway][name][ref];")
+    }
+
+    @Test fun or() {
+        check("nodes with highway or name",
+            """
+            node[highway]->.n1;
+            node[name]->.n2;
+            (.n1;.n2;);
+            """)
+    }
+
+    @Test fun `two or`() {
+        check("nodes with highway or name or ref",
+            """
+            node[highway]->.n1;
+            node[name]->.n2;
+            node[ref]->.n3;
+            (.n1;.n2;.n3;);
+            """)
+    }
+
+    @Test fun `or as first child in and`() {
         check(
-            "nodes with(highway or railway)and name",
-            "(node[highway][name];node[railway][name];);"
+            "nodes with (highway or railway) and name and ref",
+            """
+            node[highway]->.n1;
+            node[railway]->.n2;
+            (.n2;.n3;)->.n3;
+            node.n3[name][ref];
+            """
+        )
+    }
+
+    @Test fun `or as last child in and`() {
+        check(
+            "nodes with name and ref and (highway or railway)",
+            """
+            node[name][ref]->.n1;
+            node.n1[highway]->.n2;
+            node.n1[railway]->.n3;
+            (.n2;.n3;);
+            """
+        )
+    }
+
+    @Test fun `or in the middle of and`() {
+        check(
+            "nodes with name and (highway or railway) and ref",
+            """
+            node[name]->.n1;
+            node.n1[highway]->.n2;
+            node.n1[railway]->.n3;
+            (.n2;.n3;)->.n1;
+            node.n1[ref];
+            """
+        )
+    }
+
+    @Test fun `and as first child in or`() {
+        check(
+            "nodes with (name and waterway) or highway or railway",
+            """
+            node[name][waterway]->.n1;
+            node[highway]->.n2;
+            node[railway]->.n3;
+            (.n1;.n2;.n3;);
+            """
+        )
+    }
+
+    @Test fun `and as last child in or`() {
+        check(
+            "nodes with highway or railway or (name and waterway)",
+            """
+            node[highway]->.n1;
+            node[railway]->.n2;
+            node[name][waterway]->.n3;
+            (.n1;.n2;.n3;);
+            """
+        )
+    }
+
+    @Test fun `and in the middle of or`() {
+        check(
+            "nodes with highway or (name and waterway) or railway",
+            """
+            node[highway]->.n1;
+            node[name][waterway]->.n2;
+            node[railway]->.n3;
+            (.n1;.n2;.n3;);
+            """
+        )
+    }
+
+    @Test fun `and in or in and`() {
+        check(
+            "nodes with name and (highway and ref or waterway) and width",
+            """
+            node[name]->.n1;
+            node.n1[highway][ref]->.n2;
+            node.n1[waterway]->.n3;
+            (.n2;.n3;)->.n1;
+            node.n1[width];
+            """
+        )
+    }
+
+    @Test fun `and in or in and in or`() {
+        check(
+            "nodes with waterway or (highway and (noname or (name and ref)) and width)",
+            """
+            node[waterway]->.n1;
+            node[highway]->.n2;
+            node.n2[noname]->.n3;
+            node.n2[name][ref]->.n4;
+            (.n3;.n4;)->.n2;
+            node.n2[width]->.n2;
+            (.n1;.n2;);
+            """
         )
     }
 
@@ -183,7 +299,13 @@ class FiltersParserTest {
         check("nodes with highway", "[bbox:0,0,5,10];node[highway];", bbox)
         check(
             "nodes with highway or railway",
-            "[bbox:0,0,5,10];(node[highway];node[railway];);", bbox
+            """
+            [bbox:0,0,5,10];
+            node[highway]->.n1;
+            node[railway]->.n2;
+            (.n1;.n2;);
+            """,
+            bbox
         )
     }
 
@@ -198,7 +320,17 @@ class FiltersParserTest {
 
         check(
             "nodes, ways with highway or railway",
-	        "[bbox:0,0,5,10];(node[highway];node[railway];way[highway];way[railway];);", bbox
+	        """
+            [bbox:0,0,5,10];
+            node[highway]->.n2;
+            node[railway]->.n3;
+            (.n2;.n3;)->.n1;
+            way[highway]->.w2;
+            way[railway]->.w3;
+            (.w2;.w3;)->.w1;
+            (.n1;.w1;);
+            """,
+            bbox
         )
     }
 
@@ -212,6 +344,8 @@ class FiltersParserTest {
 
     private fun check(input: String, output: String, bbox: BoundingBox? = null) {
         val expr = FiltersParser().parse(input)
-        assertEquals(output, expr.toOverpassQLString(bbox))
+        assertEquals(
+            output.replace("\n","").replace(" ",""),
+            expr.toOverpassQLString(bbox).replace("\n","").replace(" ",""))
     }
 }

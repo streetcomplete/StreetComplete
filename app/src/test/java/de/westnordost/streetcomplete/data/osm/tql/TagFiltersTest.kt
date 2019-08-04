@@ -4,10 +4,10 @@ import org.junit.Test
 
 import org.junit.Assert.*
 
-class KeyFilterTest {
+class HasKeyTest {
 
-	@Test fun `matches key`() {
-		val key = KeyFilter("name", true)
+	@Test fun matches() {
+		val key = HasKey("name")
 
 		assertTrue(key.matches(mapOf("name" to "yes")))
 		assertTrue(key.matches(mapOf("name" to "no")))
@@ -15,30 +15,33 @@ class KeyFilterTest {
 		assertFalse(key.matches(mapOf()))
 	}
 
-	@Test fun `not matches key`() {
-		val key = KeyFilter("name", false)
-
-		assertFalse(key.matches(mapOf("name" to "yes")))
-		assertFalse(key.matches(mapOf("name" to "no")))
-		assertTrue(key.matches(mapOf("neme" to "no")))
-		assertTrue(key.matches(mapOf()))
-	}
-
-	@Test fun `key to string`() {
-		assertEquals("name", KeyFilter("name", true).toOverpassQLString())
-		assertEquals("'name:old'", KeyFilter("name:old", true).toOverpassQLString())
-	}
-
-	@Test fun `not key to string`() {
-		assertEquals("!name", KeyFilter("name", false).toOverpassQLString())
-		assertEquals("!'name:old'", KeyFilter("name:old", false).toOverpassQLString())
+	@Test fun toOverpassQLString() {
+		assertEquals("name", HasKey("name").toOverpassQLString())
+		assertEquals("'name:old'", HasKey("name:old").toOverpassQLString())
 	}
 }
 
-class KeyValueFilterTest {
+class NotHasKeyTest {
 
-	@Test fun `matches equal`() {
-		val eq = KeyValueFilter("highway", "residential", true)
+    @Test fun matches() {
+        val key = NotHasKey("name")
+
+        assertFalse(key.matches(mapOf("name" to "yes")))
+        assertFalse(key.matches(mapOf("name" to "no")))
+        assertTrue(key.matches(mapOf("neme" to "no")))
+        assertTrue(key.matches(mapOf()))
+    }
+
+    @Test fun toOverpassQLString() {
+        assertEquals("!name", NotHasKey("name").toOverpassQLString())
+        assertEquals("!'name:old'", NotHasKey("name:old").toOverpassQLString())
+    }
+}
+
+class HasTagTest {
+
+	@Test fun matches() {
+		val eq = HasTag("highway", "residential")
 
 		assertTrue(eq.matches(mapOf("highway" to "residential")))
 		assertFalse(eq.matches(mapOf("highway" to "residental")))
@@ -46,30 +49,33 @@ class KeyValueFilterTest {
 		assertFalse(eq.matches(mapOf()))
 	}
 
-	@Test fun `matches not equal`() {
-		val neq = KeyValueFilter("highway", "residential", false)
-
-		assertFalse(neq.matches(mapOf("highway" to "residential")))
-		assertTrue(neq.matches(mapOf("highway" to "residental")))
-		assertTrue(neq.matches(mapOf("hipway" to "residential")))
-		assertTrue(neq.matches(mapOf()))
-	}
-
-	@Test fun `key value to string`() {
-		val eq = KeyValueFilter("highway", "residential", true)
+	@Test fun toOverpassQLString() {
+		val eq = HasTag("highway", "residential")
 		assertEquals("highway = residential", eq.toOverpassQLString())
-	}
-
-	@Test fun `key not value to string`() {
-		val neq = KeyValueFilter("highway", "residential", false)
-		assertEquals("highway != residential", neq.toOverpassQLString())
 	}
 }
 
-class KeyRegexValueFilterTest {
+class NotHasTagTest {
+
+    @Test fun matches() {
+        val neq = NotHasTag("highway", "residential")
+
+        assertFalse(neq.matches(mapOf("highway" to "residential")))
+        assertTrue(neq.matches(mapOf("highway" to "residental")))
+        assertTrue(neq.matches(mapOf("hipway" to "residential")))
+        assertTrue(neq.matches(mapOf()))
+    }
+
+    @Test fun toOverpassQLString() {
+        val neq = NotHasTag("highway", "residential")
+        assertEquals("highway != residential", neq.toOverpassQLString())
+    }
+}
+
+class HasTagValueLikeTest {
 
 	@Test fun `matches like dot`() {
-		val like = KeyRegexValueFilter("highway", ".esidential", true)
+		val like = HasTagValueLike("highway", ".esidential")
 
 		assertTrue(like.matches(mapOf("highway" to "residential")))
 		assertTrue(like.matches(mapOf("highway" to "wesidential")))
@@ -78,7 +84,7 @@ class KeyRegexValueFilterTest {
 	}
 
 	@Test fun `matches like or`() {
-		val like = KeyRegexValueFilter("highway", "residential|unclassified", true)
+		val like = HasTagValueLike("highway", "residential|unclassified")
 
 		assertTrue(like.matches(mapOf("highway" to "residential")))
 		assertTrue(like.matches(mapOf("highway" to "unclassified")))
@@ -87,14 +93,14 @@ class KeyRegexValueFilterTest {
 	}
 
 	@Test fun `matches not like dot`() {
-		val notlike = KeyRegexValueFilter("highway", ".*", false)
+		val notlike = NotHasTagValueLike("highway", ".*")
 
 		assertFalse(notlike.matches(mapOf("highway" to "anything")))
 		assertTrue(notlike.matches(mapOf()))
 	}
 
 	@Test fun `matches not like or`() {
-		val notlike = KeyRegexValueFilter("noname", "yes", false)
+		val notlike = NotHasTagValueLike("noname", "yes")
 
 		assertFalse(notlike.matches(mapOf("noname" to "yes")))
 		assertTrue(notlike.matches(mapOf("noname" to "no")))
@@ -102,20 +108,20 @@ class KeyRegexValueFilterTest {
 	}
 
 	@Test fun `key value to string`() {
-		val eq = KeyRegexValueFilter("highway", ".*", true)
+		val eq = HasTagValueLike("highway", ".*")
 		assertEquals("highway ~ '^.*$'", eq.toOverpassQLString())
 	}
 
 	@Test fun `key not value to string`() {
-		val neq = KeyRegexValueFilter("highway", ".*", false)
+		val neq = NotHasTagValueLike("highway", ".*")
 		assertEquals("highway !~ '^.*$'", neq.toOverpassQLString())
 	}
 }
 
-class RegexKeyRegexValueFilterTest {
+class HasTagLikeTest {
 
 	@Test fun `matches regex key and value`() {
-		val eq = RegexKeyRegexValueFilter(".ame", "y.s")
+		val eq = HasTagLike(".ame", "y.s")
 
 		assertTrue(eq.matches(mapOf("name" to "yes")))
 		assertTrue(eq.matches(mapOf("lame" to "yos")))
@@ -127,7 +133,7 @@ class RegexKeyRegexValueFilterTest {
 	}
 
 	@Test fun `to string`() {
-		val eq = RegexKeyRegexValueFilter(".ame", "y.s")
+		val eq = HasTagLike(".ame", "y.s")
 		assertEquals("~'^.ame$' ~ '^y.s$'", eq.toOverpassQLString())
 	}
 }

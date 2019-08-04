@@ -36,6 +36,10 @@ class BooleanExpressionBuilderTest {
     @Test fun brackets12() { check("a*(b*c)", "a*b*c") }
     @Test fun brackets13() { check("a+(b+c)", "a+b+c") }
 
+    @Test fun brackets14() { check("(a*b+c)", "a*b+c") }
+    @Test fun brackets15() { check("(a+b*c)", "a+b*c") }
+    @Test fun brackets16() { check("(((a+b*c)))", "a+b*c") }
+
     @Test fun merge1() { check("a+(b+(c+(d)))", "a+b+c+d") }
     @Test fun merge2() { check("a*(b*(c*(d)))", "a*b*c*d") }
     @Test fun merge3() { check("a*(b+(c*(d)))", "a*(b+c*d)") }

@@ -59,13 +59,13 @@ private fun StringWithCursor.parseElementDeclaration(): ElementsTypeFilter {
 	)
 }
 
-private fun StringWithCursor.parseTags(): BooleanExpression<TagFilter, Tags> {
+private fun StringWithCursor.parseTags(): BooleanExpression<TagFilter, Tags>? {
 	// tags are optional...
 	if (!nextIsAndAdvanceIgnoreCase(WITH)) {
 		if (!isAtEnd) {
 			throw ParseException("Expected end of string or 'with' keyword", cursorPos)
 		}
-		return BooleanExpression()
+		return null
 	}
 
 	val builder = BooleanExpressionBuilder<TagFilter, Tags>()
@@ -130,7 +130,7 @@ private fun StringWithCursor.parseBrackets(bracket: Char, expr: BooleanExpressio
 private fun StringWithCursor.parseTag(): TagFilter {
 	if (nextIsAndAdvance('!')) {
 		expectAnyNumberOfSpaces()
-		return KeyFilter(parseKey(), false)
+		return NotHasKey(parseKey())
 	}
 
 	if (nextIsAndAdvance('~')) {
@@ -145,21 +145,21 @@ private fun StringWithCursor.parseTag(): TagFilter {
 			)
 		}
 		expectAnyNumberOfSpaces()
-		return RegexKeyRegexValueFilter(key, parseValue())
+		return HasTagLike(key, parseValue())
 	}
 
 	val key = parseKey()
 	expectAnyNumberOfSpaces()
-	val operator = parseOperator() ?: return KeyFilter(key, true)
+	val operator = parseOperator() ?: return HasKey(key)
 
 	expectAnyNumberOfSpaces()
 	val value = parseValue()
 
 	when (operator) {
-		"=" -> return KeyValueFilter(key, value, true)
-		"!=" -> return KeyValueFilter(key, value, false)
-		"~" -> return KeyRegexValueFilter(key, value, true)
-		"!~" -> return KeyRegexValueFilter(key, value, false)
+		"=" -> return HasTag(key, value)
+		"!=" -> return NotHasTag(key, value)
+		"~" -> return HasTagValueLike(key, value)
+		"!~" -> return NotHasTagValueLike(key, value)
 	}
 	throw ParseException("Unknown operator '$operator'", cursorPos)
 }

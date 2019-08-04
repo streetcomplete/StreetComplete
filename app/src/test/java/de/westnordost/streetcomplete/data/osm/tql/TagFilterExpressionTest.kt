@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.any
 import de.westnordost.streetcomplete.on
 
 import org.junit.Assert.*
-import org.mockito.Mockito.mock
+import org.mockito.Mockito.*
 
 class TagFilterExpressionTest {
     // Tests for toOverpassQLString are in FiltersParserTest
@@ -40,17 +40,22 @@ class TagFilterExpressionTest {
         assertTrue(expr.matches(relation))
     }
 
-    @Test fun `matches elements`() {
-        val booleanExpression = mock(BooleanExpression::class.java)
-        on(booleanExpression.matches(any())).thenReturn(true)
-        val expr = TagFilterExpression(
-            ElementsTypeFilter.values().toList(),
-	        booleanExpression as BooleanExpression<TagFilter, Tags>
-        )
+    @Test fun `matches nwr`() {
+        val expr = createMatchExpression(*ElementsTypeFilter.values())
 
         assertTrue(expr.matches(node))
         assertTrue(expr.matches(way))
         assertTrue(expr.matches(relation))
+    }
+
+    @Test fun `matches filter`() {
+        val tagFilter = mock(TagFilter::class.java)
+        val expr = TagFilterExpression(listOf(ElementsTypeFilter.NODES), Leaf(tagFilter))
+
+        on(tagFilter.matches(any())).thenReturn(true)
+        assertTrue(expr.matches(node))
+        on(tagFilter.matches(any())).thenReturn(false)
+        assertFalse(expr.matches(node))
     }
 
     private fun createElement(type: Element.Type): Element {
@@ -59,11 +64,9 @@ class TagFilterExpressionTest {
         return element
     }
 
-    private fun createMatchExpression(elementsTypeFilter: ElementsTypeFilter): TagFilterExpression {
-        val expr = mock(BooleanExpression::class.java)
-	    on(expr.matches(any())).thenReturn(true)
-        return TagFilterExpression(listOf(elementsTypeFilter),
-	        expr as BooleanExpression<TagFilter, Tags>
-        )
+    private fun createMatchExpression(vararg elementsTypeFilter: ElementsTypeFilter): TagFilterExpression {
+        val tagFilter = mock(TagFilter::class.java)
+        on(tagFilter.matches(any())).thenReturn(true)
+        return TagFilterExpression(elementsTypeFilter.asList(), Leaf(tagFilter))
     }
 }

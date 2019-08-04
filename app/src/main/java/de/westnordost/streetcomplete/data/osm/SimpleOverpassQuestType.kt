@@ -14,7 +14,7 @@ abstract class SimpleOverpassQuestType<T>(
 
     private val filter by lazy { FiltersParser().parse(tagFilters) }
 
-    protected abstract val tagFilters: String
+    abstract val tagFilters: String
 
     fun getOverpassQuery(bbox: BoundingBox) =
         filter.toOverpassQLString(bbox) + getQuestPrintStatement()

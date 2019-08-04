@@ -3,7 +3,9 @@ package de.westnordost.streetcomplete
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
-import de.westnordost.streetcomplete.data.osm.download.*
+import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandler
+import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestType
 import de.westnordost.streetcomplete.quests.QuestModule
 import de.westnordost.streetcomplete.quests.localized_name.data.PutRoadNameSuggestionsHandler
@@ -18,8 +20,11 @@ fun main() {
     val overpassMock = mock(OverpassMapDataDao::class.java)
     on(overpassMock.getAndHandleQuota(any(), any())).then { invocation ->
         var query = invocation.getArgument(0) as String
-        query = query.replace("0,0,1,1", "{{bbox}}").replace(";", ";\n").replace("\n(", "\n(\n")
-        print("```\n$query```\n")
+        // make query overpass-turbo friendly
+        query = query
+            .replace("0,0,1,1", "{{bbox}}")
+            .replace("out meta geom 2000;", "out meta geom;")
+        print("```\n$query\n```\n")
         true
     }
 
@@ -38,6 +43,10 @@ fun main() {
     for (questType in registry.all) {
         if (questType is OsmElementQuestType) {
             println("### " + questType.javaClass.simpleName)
+            if (questType is SimpleOverpassQuestType) {
+                val filters = questType.tagFilters.trimIndent()
+                println("<details>\n<summary>Tag Filters</summary>\n\n```\n$filters\n```\n</details>\n")
+            }
             questType.download(bbox, mock(MapDataWithGeometryHandler::class.java))
             println()
         }

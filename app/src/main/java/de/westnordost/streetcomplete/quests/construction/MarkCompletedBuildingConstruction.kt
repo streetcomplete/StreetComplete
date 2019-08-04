@@ -34,10 +34,10 @@ open class MarkCompletedBuildingConstruction(private val overpass: OverpassMapDa
         val groupName = ".buildings_under_construction"
         val wayGroupName = groupName + "_ways"
         val relationGroupName = groupName + "_relations"
-        return bbox.toGlobalOverpassBBox() +
+        return bbox.toGlobalOverpassBBox() + "\n" +
             "way" + getQueryPart("building", wayGroupName, 180) +
             "relation" + getQueryPart("building", relationGroupName, 180) +
-            "(" + wayGroupName + "; " + relationGroupName + ";); " +
+            "($wayGroupName; $relationGroupName;);\n" +
             getQuestPrintStatement()
     }
 
