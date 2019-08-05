@@ -194,10 +194,10 @@ class FiltersParserAndOverpassQueryCreatorTest {
         check(
             "nodes with (highway or railway) and name and ref",
             """
-            node[highway]->.n1;
-            node[railway]->.n2;
-            (.n2;.n3;)->.n3;
-            node.n3[name][ref];
+            node[highway]->.n2;
+            node[railway]->.n3;
+            (.n2;.n3;)->.n1;
+            node.n1[name][ref];
             """
         )
     }

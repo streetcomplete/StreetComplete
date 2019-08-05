@@ -33,40 +33,49 @@ class OverpassQueryCreator(
 
     private fun BooleanExpression<TagFilter, Tags>.toOverpassString(elementType: String, resultSetId: Int?): String {
         return when (this) {
-            is Leaf -> listOf(value).toOverpassQLString(elementType, null, resultSetId)
+            is Leaf -> AllTagFilters(value).toOverpassString(elementType, null, resultSetId)
             is AnyOf -> toOverpassString(elementType, null, resultSetId)
             is AllOf -> toOverpassString(elementType, null, resultSetId)
             else -> throw IllegalStateException("Unexpected expression")
         }
     }
 
+    private fun AllOf<TagFilter, Tags>.childrenWithLeavesMerged(): List<BooleanExpression<TagFilter, Tags>> {
+        val consecutiveLeaves = mutableListOf<TagFilter>()
+        val mergedChildren = mutableListOf<BooleanExpression<TagFilter, Tags>>()
+        for (child in children) {
+            when (child) {
+                is Leaf -> consecutiveLeaves.add(child.value)
+                is AnyOf -> {
+                    if (consecutiveLeaves.isNotEmpty()) {
+                        mergedChildren.add(AllTagFilters(consecutiveLeaves.toList()))
+                        consecutiveLeaves.clear()
+                    }
+                    mergedChildren.add(child)
+                }
+                else -> throw IllegalStateException("Expected only Leaf and AnyOf children")
+            }
+        }
+        if (consecutiveLeaves.isNotEmpty()) {
+            mergedChildren.add(AllTagFilters(consecutiveLeaves.toList()))
+        }
+        return mergedChildren
+    }
+
     private fun AllOf<TagFilter, Tags>.toOverpassString(elementType: String, inputSetId: Int?, resultSetId: Int?): String {
-        var stmtInputSet = inputSetId
-        var stmtResultSet = resultSetId
         val result = StringBuilder()
+        val workingSet by lazy { assignResultSetId() }
 
-        if (children.any { it !is AnyOf && it !is Leaf })
-            throw IllegalStateException("Expected only Leaf and AnyOf children")
+        val childrenMerged = childrenWithLeavesMerged()
+        childrenMerged.forEachIndexed { i, child ->
+            val isFirst = i == 0
+            val isLast = i == childrenMerged.lastIndex
+            val stmtInputSetId = if (isFirst) inputSetId else workingSet
+            val stmtResultSetId = if (isLast) resultSetId else workingSet
 
-        // need a result set if there is at least two statements. All leaves count as one only.
-        val leaves = children.filterIsInstance<Leaf<TagFilter, Tags>>().map { it.value }
-        val anyOfs = children.filterIsInstance<AnyOf<TagFilter, Tags>>()
-        val numberOfStatements = anyOfs.size + (if (leaves.isNotEmpty()) 1 else 0)
-        val needStmtResultSet = resultSetId == null && numberOfStatements >= 2
-
-        // (...cause) all leaves are moved to the front and merged into one statement (easier code)
-        if (leaves.isNotEmpty()) {
-            if (needStmtResultSet) stmtResultSet = assignResultSetId()
-            result.append(leaves.toOverpassQLString(elementType, stmtInputSet, stmtResultSet))
-            stmtInputSet = stmtResultSet
+            if (child is AnyOf) result.append(child.toOverpassString(elementType, stmtInputSetId, stmtResultSetId))
+            else if (child is AllTagFilters) result.append(child.toOverpassString(elementType, stmtInputSetId, stmtResultSetId))
         }
-
-        for (anyOf in anyOfs) {
-            if (needStmtResultSet) stmtResultSet = assignResultSetId()
-            result.append(anyOf.toOverpassString(elementType, stmtInputSet, stmtResultSet))
-            stmtInputSet = stmtResultSet
-        }
-
         return result.toString()
     }
 
@@ -78,7 +87,7 @@ class OverpassQueryCreator(
             val workingSetId = child.assignResultSetId()
             result.append(when (child) {
                 is Leaf ->
-                    listOf(child.value).toOverpassQLString(elementType, inputSetId, workingSetId)
+                    AllTagFilters(child.value).toOverpassString(elementType, inputSetId, workingSetId)
                 is AllOf ->
                     child.toOverpassString(elementType, inputSetId, workingSetId)
                 else ->
@@ -93,9 +102,9 @@ class OverpassQueryCreator(
         return result.toString()
     }
 
-    private fun List<TagFilter>.toOverpassQLString(elementType: String, inputSetId: Int?, resultSetId: Int?): String {
+    private fun AllTagFilters.toOverpassString(elementType: String, inputSetId: Int?, resultSetId: Int?): String {
         val elementFilter = elementType + inputSetId?.let { getSetId(elementType,it) }.orEmpty()
-        val tagFilters = joinToString("") { "[${it.toOverpassQLString()}]" }
+        val tagFilters = values.joinToString("") { "[${it.toOverpassQLString()}]" }
         val resultStmt = resultSetId?.let { " -> " + getSetId(elementType,it) }.orEmpty()
         return "$elementFilter$tagFilters$resultStmt;\n"
     }
@@ -116,5 +125,11 @@ class OverpassQueryCreator(
             dataSets[this] = setIdCounter++
         }
         return dataSets[this]!!
+    }
+
+    private class AllTagFilters(val values: List<TagFilter>) : BooleanExpression<TagFilter, Tags>() {
+        constructor(value: TagFilter) : this(listOf(value))
+        override fun matches(obj: Tags?) = values.all { it.matches(obj) }
+        override fun toString() = values.joinToString(" and ")
     }
 }
