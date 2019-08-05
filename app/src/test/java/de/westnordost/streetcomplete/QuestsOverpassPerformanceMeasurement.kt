@@ -5,11 +5,9 @@ import de.westnordost.osmapi.OsmConnection
 import de.westnordost.osmapi.common.errors.OsmApiException
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmfeatures.FeatureDictionary
-import de.westnordost.streetcomplete.any
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.download.*
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestType
-import de.westnordost.streetcomplete.on
 import de.westnordost.streetcomplete.quests.QuestModule
 import de.westnordost.streetcomplete.quests.localized_name.data.PutRoadNameSuggestionsHandler
 import de.westnordost.streetcomplete.quests.localized_name.data.RoadNameSuggestionsDao
@@ -51,7 +49,7 @@ fun main() {
             println()
         }
     }
-    println("Total response time: ${overpassMapDataDao.totalTime}s")
+    println("Total response time: ${overpassMapDataDao.totalTime/1000}s")
     println("Total waiting time: ${overpassMapDataDao.totalWaitTime}s")
 }
 
@@ -61,7 +59,7 @@ private class TestOverpassMapDataDao {
     var totalWaitTime = 0L
 
     val osm = OsmConnection(
-            "https://overpass-api.de/api/",
+            "https://overpass.maptime.in/api/",
             "StreetComplete Overpass Query Performance Test",
             null,
             (180 + 4) * 1000)
@@ -86,8 +84,9 @@ private class TestOverpassMapDataDao {
                 } else throw e
             }
         }
-        totalTime += time/1000
-        print("${time/1000}s ")
+        totalTime += time
+        val s = "%.1f".format(time/1000.0)
+        print("${s}s ")
     }
 
     private fun getStatus(): OverpassStatus = osm.makeRequest("status", OverpassStatusParser())
