@@ -20,7 +20,7 @@ class AddPlaceName(
 
     private val filter by lazy { FiltersParser().parse("""
         nodes, ways, relations with 
-         !name and !brand and noname != yes and (
+        (
           shop and shop !~ no|vacant
           or tourism = information and information = office 
           or """.trimIndent() +
@@ -53,8 +53,10 @@ class AddPlaceName(
             "office" to arrayOf(
                 "insurance", "estate_agent", "travel_agent"
             )
-        ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n  or ") +
-        "\n)"
+        ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n  or ") + "\n" + """
+        )
+        and !name and !brand and noname != yes
+        """.trimIndent()
     )}
 
     override val commitMessage = "Determine place names"
