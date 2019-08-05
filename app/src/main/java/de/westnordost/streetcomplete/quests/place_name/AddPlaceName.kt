@@ -18,10 +18,12 @@ class AddPlaceName(
     private val featureDictionaryFuture: FutureTask<FeatureDictionary>
 ) : OsmElementQuestType<PlaceNameAnswer> {
 
-    private val filter by lazy { FiltersParser().parse(
-        "nodes, ways, relations with !name and !brand and noname != yes " +
-        " and (shop and shop !~ no|vacant or tourism = information and information = office " +
-        " or " +
+    private val filter by lazy { FiltersParser().parse("""
+        nodes, ways, relations with 
+         !name and !brand and noname != yes and (
+          shop and shop !~ no|vacant
+          or tourism = information and information = office 
+          or """.trimIndent() +
         mapOf(
             "amenity" to arrayOf(
                 "restaurant", "cafe", "ice_cream", "fast_food", "bar", "pub", "biergarten", "food_court", "nightclub",                  // eat & drink
@@ -51,8 +53,8 @@ class AddPlaceName(
             "office" to arrayOf(
                 "insurance", "estate_agent", "travel_agent"
             )
-        ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString(" or ") +
-        ")"
+        ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n  or ") +
+        "\n)"
     )}
 
     override val commitMessage = "Determine place names"

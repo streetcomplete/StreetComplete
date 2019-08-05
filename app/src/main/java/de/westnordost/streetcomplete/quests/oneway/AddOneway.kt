@@ -23,12 +23,11 @@ class AddOneway(
     private val db: WayTrafficFlowDao
 ) : OsmElementQuestType<OnewayAnswer> {
 
-    private val tagFilters =
-        " ways with highway ~ " +
-        "trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|" +
-        "unclassified|residential|living_street|pedestrian|track|road" +
-        " and !oneway and junction != roundabout and area != yes" +
-        " and (access !~ private|no or (foot and foot !~ private|no)) "
+    private val tagFilters = """
+        ways with highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|living_street|pedestrian|track|road
+         and !oneway and junction != roundabout and area != yes
+         and (access !~ private|no or (foot and foot !~ private|no))
+    """
 
     override val commitMessage =
         "Add whether this road is a one-way road, this road was marked as likely oneway by improveosm.org"

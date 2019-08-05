@@ -40,18 +40,17 @@ class AddRoadName(
 
     /** returns overpass query string for creating the quests */
     private fun getOverpassQuery(bbox: BoundingBox) =
-        bbox.toGlobalOverpassBBox() +
-        ROADS_WITHOUT_NAMES + "; " +
+        bbox.toGlobalOverpassBBox() + "\n" +
+        ROADS_WITHOUT_NAMES + ";\n " +
         getQuestPrintStatement()
 
     /** return overpass query string to get roads with names near roads that don't have names */
     private fun getStreetNameSuggestionsOverpassQuery(bbox: BoundingBox) =
-        bbox.toGlobalOverpassBBox() +
-        ROADS_WITHOUT_NAMES + " -> .without_names;" +
-        ROADS_WITH_NAMES + " -> .with_names;" +
-        "way.with_names(around.without_names:" +
-        MAX_DIST_FOR_ROAD_NAME_SUGGESTION + ");" +
-        "out body geom;"
+        bbox.toGlobalOverpassBBox() + """
+        $ROADS_WITHOUT_NAMES -> .without_names;
+        $ROADS_WITH_NAMES -> .with_names;
+        way.with_names(around.without_names: $MAX_DIST_FOR_ROAD_NAME_SUGGESTION );
+        out body geom;""".trimIndent()
 
     override fun createForm() = AddRoadNameForm()
 
