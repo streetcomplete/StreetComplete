@@ -48,16 +48,15 @@ class AddMaxHeight(private val overpassServer: OverpassMapDataDao) : OsmElementQ
         nodeFilter.matches(element) || wayFilter.matches(element)
 
     override fun download(bbox: BoundingBox, handler: MapDataWithGeometryHandler): Boolean {
-        return overpassServer.getAndHandleQuota(getOverpassQuery(bbox), handler)
+        return overpassServer.getAndHandleQuota(getNodeOverpassQuery(bbox), handler)
+               && overpassServer.getAndHandleQuota(getWayOverpassQuery(bbox), handler)
     }
 
-    private fun getOverpassQuery(bbox: BoundingBox) =
-        bbox.toGlobalOverpassBBox() +
-        "(" +
-        nodeFilter.toOverpassQLString() +
-        wayFilter.toOverpassQLString() +
-        ");" +
-        getQuestPrintStatement()
+    private fun getNodeOverpassQuery(bbox: BoundingBox) =
+        bbox.toGlobalOverpassBBox() + nodeFilter.toOverpassQLString() + "\n" + getQuestPrintStatement()
+
+    private fun getWayOverpassQuery(bbox: BoundingBox) =
+        bbox.toGlobalOverpassBBox() + wayFilter.toOverpassQLString() + "\n" + getQuestPrintStatement()
 
     override fun createForm() = AddMaxHeightForm()
 

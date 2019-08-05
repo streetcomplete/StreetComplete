@@ -69,7 +69,7 @@ class AddPlaceName(
             if(element.tags != null) {
                 // only show places without names as quests for which a feature name is available
                 if (featureDictionaryFuture.get().byTags(element.tags).find().isNotEmpty()) {
-                    handler.handle(element, geometry);
+                    handler.handle(element, geometry)
                 }
             }
         }
