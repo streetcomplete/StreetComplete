@@ -29,7 +29,7 @@ class AddSidewalk(private val overpassServer: OverpassMapDataDao) : OsmElementQu
         val minDistToWays = 15 //m
 
         // note: this query is very similar to the query in AddCycleway
-        return bbox.toGlobalOverpassBBox() +
+        return bbox.toGlobalOverpassBBox() + "\n" +
             "way[highway ~ '^(primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential)$']" +
             "[area != yes]" +
             // not any motorroads
@@ -48,11 +48,11 @@ class AddSidewalk(private val overpassServer: OverpassMapDataDao) : OsmElementQu
             // footway=separate/sidepath but may have a hint that there is a separately tagged
             // sidewalk
             "[foot != use_sidepath]" +
-            " -> .streets;" +
+            " -> .streets;\n" +
             "way[highway ~ '^(path|footway|cycleway)$'](around.streets: " + minDistToWays + ")" +
-            " -> .ways;" +
-            "way.streets(around.ways: " + minDistToWays + ") -> .streets_near_ways;" +
-            "(.streets; - .streets_near_ways;);" +
+            " -> .ways;\n" +
+            "way.streets(around.ways: " + minDistToWays + ") -> .streets_near_ways;\n" +
+            "(.streets; - .streets_near_ways;);\n" +
             getQuestPrintStatement()
     }
 

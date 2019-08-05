@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
 
 class AddFireHydrantType(o: OverpassMapDataDao) : SimpleOverpassQuestType<String>(o) {
 
-    override val tagFilters = "nodes with emergency=fire_hydrant and !fire_hydrant:type"
+    override val tagFilters = "nodes with emergency = fire_hydrant and !fire_hydrant:type"
     override val commitMessage = "Add fire hydrant type"
     override val icon = R.drawable.ic_quest_fire_hydrant
 

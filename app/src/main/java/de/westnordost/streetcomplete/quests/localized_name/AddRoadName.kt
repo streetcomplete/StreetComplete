@@ -46,7 +46,7 @@ class AddRoadName(
 
     /** return overpass query string to get roads with names near roads that don't have names */
     private fun getStreetNameSuggestionsOverpassQuery(bbox: BoundingBox) =
-        bbox.toGlobalOverpassBBox() + """
+        bbox.toGlobalOverpassBBox() + "\n" + """
         $ROADS_WITHOUT_NAMES -> .without_names;
         $ROADS_WITH_NAMES -> .with_names;
         way.with_names(around.without_names: $MAX_DIST_FOR_ROAD_NAME_SUGGESTION );

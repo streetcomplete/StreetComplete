@@ -61,7 +61,7 @@ class AddCycleway(private val overpassServer: OverpassMapDataDao) : OsmElementQu
     private fun getOverpassQuery(bbox: BoundingBox): String {
         val minDistToCycleways = 15 //m
 
-        return bbox.toGlobalOverpassBBox() +
+        return bbox.toGlobalOverpassBBox() + "\n" +
             "way[highway ~ '^(primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified)$']" +
             "[area != yes]" +
             // not any motorroads
@@ -81,17 +81,17 @@ class AddCycleway(private val overpassServer: OverpassMapDataDao) : OsmElementQu
             // cycleway
             "[bicycle != use_sidepath]['bicycle:backward' != use_sidepath]" +
             "['bicycle:forward' != use_sidepath]" +
-            " -> .streets;" +
-            "(" +
-            "way[highway=cycleway](around.streets: " + minDistToCycleways + ");" +
+            " -> .streets;\n" +
+            "(\n" +
+            "  way[highway=cycleway](around.streets: " + minDistToCycleways + ");\n" +
             // See #718: If a separate way exists, it may be that the user's answer should
             // correctly be tagged on that separate way and not on the street -> this app would
             // tag data on the wrong elements. So, don't ask at all for separately mapped ways.
             // :-(
-            "way[highway ~ '^(path|footway)$'](around.streets: " + minDistToCycleways + ");" +
-            ") -> .cycleways;" +
-            "way.streets(around.cycleways: " + minDistToCycleways + ") -> .streets_near_cycleways;" +
-            "(.streets; - .streets_near_cycleways;);" +
+            "  way[highway ~ '^(path|footway)$'](around.streets: " + minDistToCycleways + ");\n" +
+            ") -> .cycleways;\n" +
+            "way.streets(around.cycleways: " + minDistToCycleways + ") -> .streets_near_cycleways;\n" +
+            "(.streets; - .streets_near_cycleways;);\n" +
             getQuestPrintStatement()
     }
 

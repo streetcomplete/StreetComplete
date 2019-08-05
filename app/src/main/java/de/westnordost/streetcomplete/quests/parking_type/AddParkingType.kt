@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
 
 class AddParkingType(o: OverpassMapDataDao) : SimpleOverpassQuestType<String>(o) {
 
-    override val tagFilters = "nodes, ways, relations with amenity=parking and !parking"
+    override val tagFilters = "nodes, ways, relations with amenity = parking and !parking"
     override val commitMessage = "Add parking type"
     override val icon = R.drawable.ic_quest_parking
 

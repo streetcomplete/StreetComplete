@@ -8,7 +8,7 @@ import de.westnordost.streetcomplete.quests.bench_backrest.BenchBackrestAnswer.*
 
 class AddBenchBackrest(o: OverpassMapDataDao) : SimpleOverpassQuestType<BenchBackrestAnswer>(o) {
 
-    override val tagFilters = "nodes with amenity=bench and !backrest"
+    override val tagFilters = "nodes with amenity = bench and !backrest"
     override val commitMessage = "Add backrest information to benches"
     override val icon = R.drawable.ic_quest_bench
 
