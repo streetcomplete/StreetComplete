@@ -662,4 +662,10 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
 
     <!-- Fuzzy -->
     <string name="quest_ferry_motor_vehicle_title">"Trasporta veicoli motorizzati?"</string>
+    <string name="quest_leave_new_note_photos_are_useful">"L’aggiunta di una foto renderà la nota molto più utile."</string>
+    <string name="quest_postboxCollectionTimes_name_title">"Quali sono gli orari di raccolta della buca delle lettere %s?"</string>
+    <string name="create_new_note_hint">"Sarebbe meglio scrivere la nota nella lingua locale o altrimenti in inglese."</string>
+    <string name="about_contributing">"Le tue risposte migliorano direttamente OpenStreetMap. I dati inseriti sono liberi, chiunque può usarli. Molti grandi progetti li stanno già usando."</string>
+    <string name="about_missing_stars">"Attualmente, il conto delle stelle non è condiviso tra dispositivi ma le risposte sono aggiunte direttamente al database di OpenStreetMap."</string>
+    <string name="how_to_get_stars">"Scegli un’icona sulla mappa e rispondi alla domanda. In questo modo migliorerai i dati OpenStreetMap e otterrai delle stelle. Se non vedi icone sulla mappa prova a diminuire l’ingrandimento."</string>
 </resources>

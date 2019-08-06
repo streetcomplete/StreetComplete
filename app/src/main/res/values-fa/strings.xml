@@ -716,4 +716,11 @@
 
     <!-- Fuzzy -->
     <string name="quest_ferry_motor_vehicle_title">"آیا خودرو حمل و نقل عمومی وجود دارد؟"</string>
+    <string name="quest_leave_new_note_photos_are_useful">"اضافه کردن تصویر سبب می‌شود، یادداشت بسیار مفیدتر واقع شود."</string>
+    <string name="quest_postboxCollectionTimes_name_title">"زمان جمع آوری صندوق پستی %s را می‌دانید؟
+"</string>
+    <string name="create_new_note_hint">"بهترین یادداشت را به زبان محلی بنگارید یا در غیر این صورت به زبان انگلیسی بنویسید."</string>
+    <string name="about_contributing">"پاسخ های شما به طور مستقیم در حال ارتقا OpenStreetMap است. داده های به اشتراک گذاشته شده متن‌باز است، همه می‌توانند از آن استفاده کنند. بسیاری از پروژه های بزرگ قبلاً از آن استفاده کرده‌اند."</string>
+    <string name="about_missing_stars">"در حال حاضر، تعداد ستارگان در گوشی‌های همراه به اشتراک گذاشته نمی شود، اما پاسخ ها به صورت مستقیم به پایگاه داده OpenStreetMap اضافه می‌شوند."</string>
+    <string name="how_to_get_stars">"یکی از نشانگرهای موجود در نقشه را انتخاب کنید و به پرسش آن پاسخ دهید. به این ترتیب داده های OpenStreetMap را بهبود می بخشید و ستاره می‌گیرید. در صورت عدم وجود نشانگر ، لازم است نقشه را بزرگنمایی کنید."</string>
 </resources>
