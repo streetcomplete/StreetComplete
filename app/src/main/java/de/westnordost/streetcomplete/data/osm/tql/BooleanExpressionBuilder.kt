@@ -49,15 +49,15 @@ class BooleanExpressionBuilder<I : Matcher<T>, T> {
     }
 
     fun addAnd() {
-        val or = node as? AnyOf
+        val anyOf = node as? AnyOf
         val group = node as? BracketHelper
 
-        if (or != null) {
-            val last = or.children.last()
-            val and = AllOf<I, T>()
-            or.replaceChild(last, and)
-            and.addChild(last)
-            node = and
+        if (anyOf != null) {
+            val last = anyOf.children.last()
+            val allOf = AllOf<I, T>()
+            anyOf.replaceChild(last, allOf)
+            allOf.addChild(last)
+            node = allOf
         }
         else if (group != null) {
             node = replaceChain(group, AllOf())
@@ -65,19 +65,19 @@ class BooleanExpressionBuilder<I : Matcher<T>, T> {
     }
 
     fun addOr() {
-        val and = node as? AllOf
+        val allOf = node as? AllOf
         val group = node as? BracketHelper
 
-        if (and != null) {
+        if (allOf != null) {
             val nodeParent = node.parent
             if (nodeParent is AnyOf) {
                 node = nodeParent
             } else  {
-                nodeParent?.removeChild(and)
-                val or = AnyOf<I, T>()
-                or.addChild(and)
-                nodeParent?.addChild(or)
-                node = or
+                nodeParent?.removeChild(allOf)
+                val anyOf = AnyOf<I, T>()
+                anyOf.addChild(allOf)
+                nodeParent?.addChild(anyOf)
+                node = anyOf
             }
         }
         else if (group != null) {
