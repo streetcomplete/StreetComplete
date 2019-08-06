@@ -6,19 +6,19 @@ import org.junit.Assert.*
 
 class HasKeyTest {
 
-	@Test fun matches() {
-		val key = HasKey("name")
+    @Test fun matches() {
+        val key = HasKey("name")
 
-		assertTrue(key.matches(mapOf("name" to "yes")))
-		assertTrue(key.matches(mapOf("name" to "no")))
-		assertFalse(key.matches(mapOf("neme" to "no")))
-		assertFalse(key.matches(mapOf()))
-	}
+        assertTrue(key.matches(mapOf("name" to "yes")))
+        assertTrue(key.matches(mapOf("name" to "no")))
+        assertFalse(key.matches(mapOf("neme" to "no")))
+        assertFalse(key.matches(mapOf()))
+    }
 
-	@Test fun toOverpassQLString() {
-		assertEquals("name", HasKey("name").toOverpassQLString())
-		assertEquals("'name:old'", HasKey("name:old").toOverpassQLString())
-	}
+    @Test fun toOverpassQLString() {
+        assertEquals("name", HasKey("name").toOverpassQLString())
+        assertEquals("'name:old'", HasKey("name:old").toOverpassQLString())
+    }
 }
 
 class NotHasKeyTest {
@@ -40,19 +40,19 @@ class NotHasKeyTest {
 
 class HasTagTest {
 
-	@Test fun matches() {
-		val eq = HasTag("highway", "residential")
+    @Test fun matches() {
+        val eq = HasTag("highway", "residential")
 
-		assertTrue(eq.matches(mapOf("highway" to "residential")))
-		assertFalse(eq.matches(mapOf("highway" to "residental")))
-		assertFalse(eq.matches(mapOf("hipway" to "residential")))
-		assertFalse(eq.matches(mapOf()))
-	}
+        assertTrue(eq.matches(mapOf("highway" to "residential")))
+        assertFalse(eq.matches(mapOf("highway" to "residental")))
+        assertFalse(eq.matches(mapOf("hipway" to "residential")))
+        assertFalse(eq.matches(mapOf()))
+    }
 
-	@Test fun toOverpassQLString() {
-		val eq = HasTag("highway", "residential")
-		assertEquals("highway = residential", eq.toOverpassQLString())
-	}
+    @Test fun toOverpassQLString() {
+        val eq = HasTag("highway", "residential")
+        assertEquals("highway = residential", eq.toOverpassQLString())
+    }
 }
 
 class NotHasTagTest {
@@ -74,66 +74,66 @@ class NotHasTagTest {
 
 class HasTagValueLikeTest {
 
-	@Test fun `matches like dot`() {
-		val like = HasTagValueLike("highway", ".esidential")
+    @Test fun `matches like dot`() {
+        val like = HasTagValueLike("highway", ".esidential")
 
-		assertTrue(like.matches(mapOf("highway" to "residential")))
-		assertTrue(like.matches(mapOf("highway" to "wesidential")))
-		assertFalse(like.matches(mapOf("highway" to "rresidential")))
-		assertFalse(like.matches(mapOf()))
-	}
+        assertTrue(like.matches(mapOf("highway" to "residential")))
+        assertTrue(like.matches(mapOf("highway" to "wesidential")))
+        assertFalse(like.matches(mapOf("highway" to "rresidential")))
+        assertFalse(like.matches(mapOf()))
+    }
 
-	@Test fun `matches like or`() {
-		val like = HasTagValueLike("highway", "residential|unclassified")
+    @Test fun `matches like or`() {
+        val like = HasTagValueLike("highway", "residential|unclassified")
 
-		assertTrue(like.matches(mapOf("highway" to "residential")))
-		assertTrue(like.matches(mapOf("highway" to "unclassified")))
-		assertFalse(like.matches(mapOf("highway" to "blub")))
-		assertFalse(like.matches(mapOf()))
-	}
+        assertTrue(like.matches(mapOf("highway" to "residential")))
+        assertTrue(like.matches(mapOf("highway" to "unclassified")))
+        assertFalse(like.matches(mapOf("highway" to "blub")))
+        assertFalse(like.matches(mapOf()))
+    }
 
-	@Test fun `matches not like dot`() {
-		val notlike = NotHasTagValueLike("highway", ".*")
+    @Test fun `matches not like dot`() {
+        val notlike = NotHasTagValueLike("highway", ".*")
 
-		assertFalse(notlike.matches(mapOf("highway" to "anything")))
-		assertTrue(notlike.matches(mapOf()))
-	}
+        assertFalse(notlike.matches(mapOf("highway" to "anything")))
+        assertTrue(notlike.matches(mapOf()))
+    }
 
-	@Test fun `matches not like or`() {
-		val notlike = NotHasTagValueLike("noname", "yes")
+    @Test fun `matches not like or`() {
+        val notlike = NotHasTagValueLike("noname", "yes")
 
-		assertFalse(notlike.matches(mapOf("noname" to "yes")))
-		assertTrue(notlike.matches(mapOf("noname" to "no")))
-		assertTrue(notlike.matches(mapOf()))
-	}
+        assertFalse(notlike.matches(mapOf("noname" to "yes")))
+        assertTrue(notlike.matches(mapOf("noname" to "no")))
+        assertTrue(notlike.matches(mapOf()))
+    }
 
-	@Test fun `key value to string`() {
-		val eq = HasTagValueLike("highway", ".*")
-		assertEquals("highway ~ '^.*$'", eq.toOverpassQLString())
-	}
+    @Test fun `key value to string`() {
+        val eq = HasTagValueLike("highway", ".*")
+        assertEquals("highway ~ '^.*$'", eq.toOverpassQLString())
+    }
 
-	@Test fun `key not value to string`() {
-		val neq = NotHasTagValueLike("highway", ".*")
-		assertEquals("highway !~ '^.*$'", neq.toOverpassQLString())
-	}
+    @Test fun `key not value to string`() {
+        val neq = NotHasTagValueLike("highway", ".*")
+        assertEquals("highway !~ '^.*$'", neq.toOverpassQLString())
+    }
 }
 
 class HasTagLikeTest {
 
-	@Test fun `matches regex key and value`() {
-		val eq = HasTagLike(".ame", "y.s")
+    @Test fun `matches regex key and value`() {
+        val eq = HasTagLike(".ame", "y.s")
 
-		assertTrue(eq.matches(mapOf("name" to "yes")))
-		assertTrue(eq.matches(mapOf("lame" to "yos")))
-		assertFalse(eq.matches(mapOf("lame" to "no")))
-		assertFalse(eq.matches(mapOf("good" to "yes")))
-		assertFalse(eq.matches(mapOf("neme" to "no")))
-		assertFalse(eq.matches(mapOf("names" to "yess")))
-		assertFalse(eq.matches(mapOf()))
-	}
+        assertTrue(eq.matches(mapOf("name" to "yes")))
+        assertTrue(eq.matches(mapOf("lame" to "yos")))
+        assertFalse(eq.matches(mapOf("lame" to "no")))
+        assertFalse(eq.matches(mapOf("good" to "yes")))
+        assertFalse(eq.matches(mapOf("neme" to "no")))
+        assertFalse(eq.matches(mapOf("names" to "yess")))
+        assertFalse(eq.matches(mapOf()))
+    }
 
-	@Test fun `to string`() {
-		val eq = HasTagLike(".ame", "y.s")
-		assertEquals("~'^.ame$' ~ '^y.s$'", eq.toOverpassQLString())
-	}
+    @Test fun `to string`() {
+        val eq = HasTagLike(".ame", "y.s")
+        assertEquals("~'^.ame$' ~ '^y.s$'", eq.toOverpassQLString())
+    }
 }

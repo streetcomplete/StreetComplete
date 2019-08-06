@@ -22,10 +22,10 @@ class TagFilterExpression(
     /** returns whether the given element is found through (=matches) this expression */
     fun matches(element: Element) =
         when (element.type) {
-	        Element.Type.NODE -> elementsTypes.contains(NODES)
-	        Element.Type.WAY -> elementsTypes.contains(WAYS)
-	        Element.Type.RELATION -> elementsTypes.contains(RELATIONS)
-	        else -> false
+            Element.Type.NODE -> elementsTypes.contains(NODES)
+            Element.Type.WAY -> elementsTypes.contains(WAYS)
+            Element.Type.RELATION -> elementsTypes.contains(RELATIONS)
+            else -> false
         } && (tagExprRoot?.matches(element.tags) ?: true)
 
     /** returns this expression as a Overpass query string */

@@ -53,11 +53,11 @@ class BooleanExpressionBuilderTest {
     @Test(expected = IllegalStateException::class)
     fun `closed too many brackets 1`() { TestBooleanExpressionParser.parse("a+b)") }
 
-	@Test(expected = IllegalStateException::class)
-	fun `closed too many brackets 2`() { TestBooleanExpressionParser.parse("(a+b))") }
+    @Test(expected = IllegalStateException::class)
+    fun `closed too many brackets 2`() { TestBooleanExpressionParser.parse("(a+b))") }
 
-	@Test(expected = IllegalStateException::class)
-	fun `closed too many brackets 3`() { TestBooleanExpressionParser.parse("((b+c)*a)+d)") }
+    @Test(expected = IllegalStateException::class)
+    fun `closed too many brackets 3`() { TestBooleanExpressionParser.parse("((b+c)*a)+d)") }
 
     @Test(expected = IllegalStateException::class)
     fun `closed too few brackets 1`() { TestBooleanExpressionParser.parse("(a+b") }
@@ -69,8 +69,8 @@ class BooleanExpressionBuilderTest {
     fun `closed too few brackets 3`() { TestBooleanExpressionParser.parse("((a*(b+c))") }
 
     private fun check(input: String, expected: String = input) {
-		val tree = TestBooleanExpressionParser.parse(input)
-		assertEquals(expected, translateOutput(tree.toString()))
+        val tree = TestBooleanExpressionParser.parse(input)
+        assertEquals(expected, translateOutput(tree.toString()))
     }
 
     private fun translateOutput(output: String) = output.replace(" and ", "*").replace(" or ", "+")

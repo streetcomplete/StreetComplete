@@ -60,7 +60,7 @@ class TagFilterExpressionTest {
 
     private fun createElement(type: Element.Type): Element {
         val element = mock(Element::class.java)
-	    on(element.type).thenReturn(type)
+        on(element.type).thenReturn(type)
         return element
     }
 

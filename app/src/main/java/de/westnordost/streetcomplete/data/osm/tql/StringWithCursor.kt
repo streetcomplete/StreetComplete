@@ -6,7 +6,7 @@ import kotlin.math.min
 /** Convenience class to make it easier to go step by step through a string  */
 class StringWithCursor(private val string: String, private val locale: Locale) {
     var cursorPos = 0
-	    private set
+        private set
 
     /** returns whether the cursor reached the end */
     val isAtEnd get() = cursorPos >= string.length
@@ -75,10 +75,10 @@ class StringWithCursor(private val string: String, private val locale: Locale) {
     fun nextIs(c: Char): Boolean = c == char
     fun nextIs(str: String): Boolean = string.startsWith(str, cursorPos)
     fun nextIsIgnoreCase(str: String): Boolean =
-	    nextIs(str.toLowerCase(locale)) || nextIs(str.toUpperCase(locale))
+        nextIs(str.toLowerCase(locale)) || nextIs(str.toUpperCase(locale))
 
     private fun toDelta(index: Int): Int =
-	    if (index == -1) string.length - cursorPos else index - cursorPos
+        if (index == -1) string.length - cursorPos else index - cursorPos
 
     // good for debugging
     override fun toString(): String =
