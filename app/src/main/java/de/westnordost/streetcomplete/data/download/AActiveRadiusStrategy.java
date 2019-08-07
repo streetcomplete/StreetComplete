@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.data.download;
 import android.graphics.Rect;
 import android.util.Log;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Provider;
@@ -36,14 +37,14 @@ public abstract class AActiveRadiusStrategy implements QuestAutoDownloadStrategy
 		this.questTypesProvider = questTypesProvider;
 	}
 
-	private boolean mayDownloadHere(LatLon pos, int radius, int numberOfQuestTypes)
+	private boolean mayDownloadHere(LatLon pos, int radius, List<String> questTypeNames)
 	{
 		BoundingBox bbox = SphericalEarthMath.enclosingBoundingBox(pos, radius);
 
 		double areaInKm2 = SphericalEarthMath.enclosedArea(bbox) / 1000 / 1000;
 
 		// got enough quests in vicinity
-		int visibleQuests = osmQuestDB.getCount(bbox, QuestStatus.NEW);
+		int visibleQuests = osmQuestDB.getCount(bbox, QuestStatus.NEW, questTypeNames);
 		if(visibleQuests / areaInKm2 > getMinQuestsInActiveRadiusPerKm2())
 		{
 			Log.i(TAG, "Not downloading quests because there are enough quests in " + radius + "m radius");
@@ -56,7 +57,7 @@ public abstract class AActiveRadiusStrategy implements QuestAutoDownloadStrategy
 		long questExpirationTime = ApplicationConstants.REFRESH_QUESTS_AFTER;
 		long ignoreOlderThan = Math.max(0,System.currentTimeMillis() - questExpirationTime);
 		int alreadyDownloadedQuestTypes = downloadedTilesDao.get(tiles, ignoreOlderThan).size();
-		if(alreadyDownloadedQuestTypes >= numberOfQuestTypes)
+		if(alreadyDownloadedQuestTypes >= questTypeNames.size())
 		{
 			Log.i(TAG, "Not downloading quests because everything has been downloaded already in " + radius + "m radius");
 			return false;
@@ -65,12 +66,23 @@ public abstract class AActiveRadiusStrategy implements QuestAutoDownloadStrategy
 		return true;
 	}
 
+	private List<String> getQuestTypeNames()
+	{
+		List<QuestType> questTypes = questTypesProvider.get();
+		List<String> questTypeNames = new ArrayList<>(questTypes.size());
+		for (QuestType questType : questTypes)
+		{
+			questTypeNames.add(questType.getClass().getSimpleName());
+		}
+		return questTypeNames;
+	}
+
 	@Override public boolean mayDownloadHere(LatLon pos)
 	{
-		int numberOfQuestTypes = questTypesProvider.get().size();
+		List<String> questTypeNames = getQuestTypeNames();
 		for (int activeRadius : getActiveRadii())
 		{
-			if(mayDownloadHere(pos, activeRadius, numberOfQuestTypes)) return true;
+			if(mayDownloadHere(pos, activeRadius, questTypeNames)) return true;
 		}
 		return false;
 	}

@@ -73,6 +73,21 @@ public abstract class AOsmQuestDao extends AQuestDao<OsmQuest>
 		return getAllThings(getMergedViewName(), null, qb, this::createObjectFrom);
 	}
 
+	public int getCount(BoundingBox bbox, QuestStatus status, List<String> questTypesNames)
+	{
+		WhereSelectionBuilder qb = new WhereSelectionBuilder();
+		addBBox(bbox, qb);
+		addQuestStatus(status, qb);
+		addQuestTypes(questTypesNames, qb);
+
+		try (Cursor cursor = dbHelper.getReadableDatabase().query(getMergedViewName(), new String[]{"COUNT(*)"},
+			qb.getWhere(), qb.getArgs(), null, null, null, null))
+		{
+			cursor.moveToFirst();
+			return cursor.getInt(0);
+		}
+	}
+
 	public List<Long> getAllIds(Element.Type type, long id)
 	{
 		WhereSelectionBuilder qb = new WhereSelectionBuilder();

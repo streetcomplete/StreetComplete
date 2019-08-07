@@ -685,9 +685,20 @@ Is "Altar" really fitting here? It is about a building type after all. -->
     <string name="pref_title_quests_restore_hidden">"Restaurar missões ocultadas"</string>
     <string name="restore_hidden_success">"Restauradas %d missões ocultadas"</string>
 
+    <!-- caution: This is not necessarily the floor and level=0 is not necessarily at street level
+    as it may follow the numbering scheme of the building operator. Try to use a generic wording
+    that does not carry an implicit meaning of where it is located in respect to the ground floor.
+    The context is usually shopping centres, train stations or airport terminals -->
+    <string name="on_level">"no nível %s:"</string>
+
     <!-- as in: "Where is the metro station?" - "It is underground" -->
     <string name="underground">"subterrâneo:"</string>
+    <string name="quest_sidewalk_value_yes">"Com calçada"</string>
+    <string name="quest_sidewalk_value_no">"Sem calçada"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Os pedestres são proibidos de andar nesta rua?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Esta rua foi marcada como não tendo calçadas em nenhum lado.  No caso de haver uma calçada no final das contas mas estiver mostrada como uma via separada, por favor responda \"calçada\"."</string>
     <string name="quest_buildingType_title">"Que tipo de edifício é esse?"</string>
     <string name="pref_title_theme_select">"Selecione o tema"</string>
     <string name="theme_automatic">"Automático"</string>
@@ -695,4 +706,25 @@ Is "Altar" really fitting here? It is about a building type after all. -->
     <string name="theme_dark">"Escuro"</string>
     <string name="theme_system_default">"Padrão do sistema"</string>
     <string name="quest_placeName_title_name">"Qual é o nome deste lugar? (%s)"</string>
+    <string name="action_open_location">"Abrir localização em outro app"</string>
+    <string name="map_application_missing">"Nenhuma outra aplicação de mapa instalada"</string>
+    <string name="pref_title_overpass_url_select">"Mudar o servidor Overpass"</string>
+
+    <!-- Fuzzy -->
+    <string name="pref_title_overpass_url_info">"Precisa reiniciar a aplicação para ativar.  Pode contornar censura, por exemplo na Rússia."</string>
+    <string name="label_housenumber">"número da casa"</string>
+    <string name="label_blocknumber">"número da quadra"</string>
+    <string name="quest_busStopShelter_covered">"Toda a parada é coberta"</string>
+    <string name="quest_leave_new_note_photos_are_useful">"Adicinar uma foto tornará a nota muito mais útil."</string>
+    <string name="quest_postboxCollectionTimes_name_title">"Quais os horários de coleta dessa caixa postal %s?"</string>
+
+    <!-- Fuzzy -->
+    <string name="create_new_note_hint">"É melhor adicionar a nota na língua falada localmente ou então em inglês."</string>
+
+    <!-- Fuzzy -->
+    <string name="about_contributing">"Suas respostas estão melhorando diretamente o OpenStreetMap.  Os dados contribuídos são abertos, todos podem usá-los.  Muitos grandes projetos já estão usando-os."</string>
+    <string name="about_missing_stars">"Atualmente, a contagem de estrelas não é compartilhada entre dispositivos, mas as respostas são adicionadas diretamente ao banco de dados do OpenStreetMap."</string>
+
+    <!-- Fuzzy -->
+    <string name="how_to_get_stars">"Escolha um dos marcadores no mapa e responda as questões.  Assim você irá melhorar os dados do OpenStreetMap e ganhar estrelas.  Sé você não achar nenhum marcador, você pode ter que diminuir o zoom do mapa."</string>
 </resources>
