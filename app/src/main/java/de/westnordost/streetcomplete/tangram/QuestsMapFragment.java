@@ -56,6 +56,8 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 	private LngLat positionBeforeShowingQuest = null;
 
 	private LngLat lastPos;
+	private Float lastRotation, lastTilt;
+
 	private Rect lastDisplayedRect;
 	private final Set<Point> retrievedTiles;
 	private static final int TILES_ZOOM = 14;
@@ -279,10 +281,15 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 
 		if(controller.getZoom() < TILES_ZOOM) return;
 
-		// check if anything changed (needs to be extended when I re-enable tilt and rotation)
 		LngLat positionNow = controller.getPosition();
-		if(lastPos != null  && lastPos.equals(positionNow)) return;
+		float tiltNow = controller.getTilt();
+		float rotationNow = controller.getRotation();
+		if(lastPos != null && lastTilt != null && lastRotation != null &&
+			lastPos.equals(positionNow) && lastTilt == tiltNow && lastRotation == rotationNow) return;
+
 		lastPos = positionNow;
+		lastTilt = tiltNow;
+		lastRotation = rotationNow;
 
 		BoundingBox displayedArea = getDisplayedArea(new Rect());
 		if(displayedArea == null) return;
@@ -480,6 +487,8 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		if(questsLayer != null) questsLayer.clear();
 		retrievedTiles.clear();
 		lastPos = null;
+		lastTilt = null;
+		lastRotation = null;
 		lastDisplayedRect = null;
 	}
 

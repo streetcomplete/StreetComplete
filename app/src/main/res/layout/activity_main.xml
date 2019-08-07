@@ -42,7 +42,8 @@
                 android:paddingEnd="12dp"
                 android:clipChildren="false"
                 android:minWidth="84dp"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:clickable="true">
 
                 <ProgressBar
                     android:id="@+id/uploadedAnswersProgress"

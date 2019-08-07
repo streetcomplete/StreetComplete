@@ -81,6 +81,22 @@ public class OsmQuestDaoTest extends ApplicationDbTestCase
 		checkEqual(quest, dbQuest);
 	}
 
+	@Test public void getCountByMultipeQuestTypes()
+	{
+		ElementGeometry geom = new ElementGeometry(new OsmLatLon(5,5));
+
+		OsmQuest quest1 = createNewQuest(new TestQuestType(), 1, Element.Type.NODE, geom);
+		OsmQuest quest2 = createNewQuest(new TestQuestType2(), 2, Element.Type.NODE, geom);
+
+		addToDaos(quest1, quest2);
+
+		assertEquals(1, dao.getCount(null, null, Collections.singletonList(
+			TestQuestType.class.getSimpleName())));
+		assertEquals(2, dao.getCount(null, null, Arrays.asList(
+			TestQuestType.class.getSimpleName(),
+			TestQuestType2.class.getSimpleName())));
+	}
+
 	@Test public void getAllByBBox()
 	{
 		OsmQuest quest1 = createNewQuest(11, Element.Type.NODE);

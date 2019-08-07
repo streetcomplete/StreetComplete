@@ -17,7 +17,7 @@ public class OsmAreas
 			" tourism or building:part or" +
 			" aerialway = station or railway = station or" +
 			" natural ~ " +
-				"wood|scrub|heath|moor|grassland|fell|bare_rock|scree|shingle|sand|mud" +
+				"wood|scrub|heath|moor|grassland|fell|bare_rock|scree|shingle|sand|mud|" +
 				"water|wetland|glacier|beach|rock|sinkhole" +
 			" or" +
 			" man_made ~ " +

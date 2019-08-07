@@ -18,11 +18,11 @@ bicycle_parking_type_wheel...  CC-BY-SA 4.0      https://commons.wikimedia.org/w
 
 car_wash_automated.jpg         CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Carwas.jpg
 car_wash_service.jpg           fair use          http://ctproductsandservices.com/2013/10/splash-car-wash/
-car_wash_self_service.jpg      CC0               https://pixabay.com/en/wash-a-car-the-car-blue-1822415/
+car_wash_self_service.jpg      Public Domain     https://commons.wikimedia.org/wiki/File:US_Navy_110831-N-NT881-079_Sailors_assigned_to_the_guided-missile_submarine_USS_Ohio_(SSGN_726)_and_Navy_Operational_Support_Center_Cincinnati_part.jpg
 
 crossing_type_signals.jpg      CC0               https://pixabay.com/en/little-green-man-traffic-lights-819851/
 crossing_type_zebra.jpg        CC-BY-SA 1.0      https://commons.wikimedia.org/wiki/File%3AZebra_crossing.jpg
-crossing_type_unmarked.jpg     fair use          http://www.jrlawfirm.com/wp-content/uploads/2016/04/unmarked-crosswalks-texas.jpg on https://www.jrlawfirm.com/blog/unmarked-crosswalks/
+crossing_type_unmarked.jpg     CC0               own work by Mateusz Konieczny
 
 fire_hydrant_pillar.jpg        CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:W%C3%ABntreng,_Hydrant.jpg
 fire_hydrant_wall.jpg          CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Guentherscheid_Tunnel_Rescue4.jpg

@@ -90,6 +90,10 @@ public class AnswersCounter
 		return unsynced;
 	}
 
+	public Integer uploaded(){
+		return unsynced;
+	}
+
 	@SuppressLint("StaticFieldLeak") public void update()
 	{
 		new AsyncTask<Void, Void, Void>()
