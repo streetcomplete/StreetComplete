@@ -21,7 +21,7 @@ class SingleOsmNoteQuestChangesUploadTest {
 
     @Before fun setUp() {
         osmDao = mock(NotesDao::class.java)
-        on(osmDao.comment(anyLong(), any())).thenReturn(mock(Note::class.java))
+        on(osmDao.comment(anyLong(), any())).thenReturn(createNote())
         imageUploader = mock(ImageUploader::class.java)
         noteUploader = SingleOsmNoteQuestChangesUpload(osmDao, imageUploader)
     }
@@ -52,22 +52,26 @@ class SingleOsmNoteQuestChangesUploadTest {
     }
 
     @Test(expected = ConflictException::class)
-    fun `not found exception is rethrown as ElementConflictException`() {
+    fun `not found exception is rethrown as ConflictException`() {
         on(osmDao.comment(anyLong(), any())).thenThrow(OsmNotFoundException(404, "title", "desc"))
         noteUploader.upload(createQuest())
     }
 
     @Test(expected = ConflictException::class)
-    fun `conflict exception is rethrown as ElementConflictException`() {
+    fun `conflict exception is rethrown as ConflictException`() {
         on(osmDao.comment(anyLong(), any())).thenThrow(OsmConflictException(409, "title", "desc"))
         noteUploader.upload(createQuest())
     }
 
-    private fun createQuest(): OsmNoteQuest {
+    private fun createNote(): Note {
         val note = Note()
         note.id = 1
         note.position = OsmLatLon(1.0, 2.0)
-        val quest = OsmNoteQuest(note, OsmNoteQuestType())
+        return note
+    }
+
+    private fun createQuest(): OsmNoteQuest {
+        val quest = OsmNoteQuest(createNote(), OsmNoteQuestType())
         quest.id = 3
         quest.comment = "blablub"
         return quest

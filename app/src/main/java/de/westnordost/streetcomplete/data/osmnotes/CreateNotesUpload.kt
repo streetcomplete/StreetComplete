@@ -46,6 +46,7 @@ class CreateNotesUpload @Inject constructor(
                 noteDB.put(newNote)
                 noteQuestDB.add(noteQuest)
                 statisticsDB.addOneNote()
+
                 Log.d(TAG, "Uploaded note ${createNote.logString}")
                 uploadedChangeListener?.onUploaded()
                 created++
@@ -65,7 +66,7 @@ class CreateNotesUpload @Inject constructor(
         Log.i(TAG, logMsg)
     }
 
-    fun uploadSingle(n: CreateNote): Note {
+    private fun uploadSingle(n: CreateNote): Note {
         if (n.isAssociatedElementDeleted())
             throw ElementDeletedException("Associated element deleted")
         

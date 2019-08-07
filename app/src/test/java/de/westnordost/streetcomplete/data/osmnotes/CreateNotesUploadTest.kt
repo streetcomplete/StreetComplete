@@ -15,6 +15,10 @@ import de.westnordost.streetcomplete.on
 import de.westnordost.streetcomplete.any
 
 import org.mockito.Mockito.*
+import de.westnordost.osmapi.map.data.OsmLatLon
+import de.westnordost.osmapi.notes.NoteComment
+import java.util.*
+
 
 class CreateNotesUploadTest {
 	private lateinit var createNoteDB: CreateNoteDao
@@ -49,7 +53,7 @@ class CreateNotesUploadTest {
 	}
 
 	@Test fun `catches conflict exception`() {
-		on(createNoteDB.getAll(null)).thenReturn(listOf(mock(CreateNote::class.java)))
+		on(createNoteDB.getAll(null)).thenReturn(listOf(newCreateNote()))
 		on(singleCreateNoteUpload.upload(any())).thenThrow(ConflictException())
 
 		uploader.upload(CancellationSignal())
@@ -58,25 +62,23 @@ class CreateNotesUploadTest {
 	}
 
 	@Test fun `delete each uploaded quest in local DB and call listener`() {
-		val createNotes = listOf( mock(CreateNote::class.java), mock(CreateNote::class.java))
+		val createNotes = listOf( newCreateNote(), newCreateNote())
 
 		on(createNoteDB.getAll(null)).thenReturn(createNotes)
-		on(singleCreateNoteUpload.upload(any())).thenReturn(mock(Note::class.java))
+		on(singleCreateNoteUpload.upload(any())).thenReturn(newNote())
 
 		uploader.uploadedChangeListener = mock(OnUploadedChangeListener::class.java)
 		uploader.upload(CancellationSignal())
 
-		for (createNote in createNotes) {
-			verify(createNoteDB).delete(anyLong())
-			verify(noteDB).put(any())
-			verify(noteQuestDB).add(any())
-			verify(statisticsDB).addOneNote()
-			verify(uploader.uploadedChangeListener)?.onUploaded()
-		}
+        verify(createNoteDB, times(createNotes.size)).delete(anyLong())
+        verify(noteDB, times(createNotes.size)).put(any())
+        verify(noteQuestDB, times(createNotes.size)).add(any())
+        verify(statisticsDB, times(createNotes.size)).addOneNote()
+        verify(uploader.uploadedChangeListener, times(createNotes.size))?.onUploaded()
 	}
 
 	@Test fun `delete each unsuccessfully uploaded quest in local DB and call listener`() {
-		val createNotes = listOf( mock(CreateNote::class.java), mock(CreateNote::class.java))
+		val createNotes = listOf( newCreateNote(), newCreateNote())
 
 		on(createNoteDB.getAll(null)).thenReturn(createNotes)
 		on(singleCreateNoteUpload.upload(any())).thenThrow(ConflictException())
@@ -84,15 +86,13 @@ class CreateNotesUploadTest {
 		uploader.uploadedChangeListener = mock(OnUploadedChangeListener::class.java)
 		uploader.upload(CancellationSignal())
 
-		for (createNote in createNotes) {
-			verify(createNoteDB).delete(anyLong())
-			verifyZeroInteractions(statisticsDB, noteQuestDB, noteDB)
-			verify(uploader.uploadedChangeListener)?.onDiscarded()
-		}
+        verify(createNoteDB, times(createNotes.size)).delete(anyLong())
+        verifyZeroInteractions(statisticsDB, noteQuestDB, noteDB)
+        verify(uploader.uploadedChangeListener, times(createNotes.size))?.onDiscarded()
 	}
 
 	@Test fun `discard if element was deleted`() {
-		val createNote = CreateNote()
+		val createNote = newCreateNote()
 		createNote.elementId = 1
 		createNote.elementType = Element.Type.NODE
 
@@ -104,4 +104,27 @@ class CreateNotesUploadTest {
 
 		verify(uploader.uploadedChangeListener)?.onDiscarded()
 	}
+
+
+    private fun newNote(): Note {
+        val note = Note()
+        note.id = 2
+        note.status = Note.Status.OPEN
+        note.dateCreated = Date()
+        note.position = OsmLatLon(1.0, 2.0)
+        val comment = NoteComment()
+        comment.text = "bla bla"
+        comment.action = NoteComment.Action.OPENED
+        comment.date = Date()
+        note.comments.add(0, comment)
+        return note
+    }
+
+    private fun newCreateNote(): CreateNote {
+        val n = CreateNote()
+        n.id = 1
+        n.text = "jo ho"
+        n.position = OsmLatLon(1.0, 2.0)
+        return n
+    }
 }
