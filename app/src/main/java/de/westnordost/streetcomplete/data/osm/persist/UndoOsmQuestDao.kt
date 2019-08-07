@@ -28,9 +28,9 @@ class UndoOsmQuestDao @Inject constructor(
     private var questTypeList: QuestTypeRegistry
 ) {
     fun getAll(): List<UndoOsmQuest> {
-	    return dbHelper.readableDatabase.query(NAME_MERGED_VIEW).use { cursor ->
-		    return cursor.map { it.createUndo() }
-	    }
+        return dbHelper.readableDatabase.query(NAME_MERGED_VIEW).use { cursor ->
+            return cursor.map { it.createUndo() }
+        }
     }
 
     fun delete(questId: Long): Int {

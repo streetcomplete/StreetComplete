@@ -26,7 +26,7 @@ class OsmQuestsUpload @Inject constructor(
 
     @Synchronized fun upload(signal: CancellationSignal) {
         if (signal.isCanceled) return
-		Log.i(TAG, "Applying quest changes")
+        Log.i(TAG, "Applying quest changes")
         for (quest in questDB.getAll(null, QuestStatus.ANSWERED)) {
             if (signal.isCanceled) break
 
@@ -45,8 +45,8 @@ class OsmQuestsUpload @Inject constructor(
             }
         }
 
-		questDB.deleteAllClosed(System.currentTimeMillis() - MAX_QUEST_UNDO_HISTORY_AGE)
-	}
+        questDB.deleteAllClosed(System.currentTimeMillis() - MAX_QUEST_UNDO_HISTORY_AGE)
+    }
 
     private fun uploadSingle(quest: OsmQuest) : Element {
         val element = elementDB.get(quest.elementType, quest.elementId)

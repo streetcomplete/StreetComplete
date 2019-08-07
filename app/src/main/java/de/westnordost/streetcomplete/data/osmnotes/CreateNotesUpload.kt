@@ -32,7 +32,7 @@ class CreateNotesUpload @Inject constructor(
         var created = 0
         var obsolete = 0
         if (signal.isCanceled) return
-	    Log.i(TAG, "Uploading create notes")
+        Log.i(TAG, "Uploading create notes")
         for (createNote in createNoteDB.getAll(null)) {
             if (signal.isCanceled) break
 
@@ -56,8 +56,8 @@ class CreateNotesUpload @Inject constructor(
                 obsolete++
             }
 
-	        createNoteDB.delete(createNote.id)
-	        AttachPhotoUtils.deleteImages(createNote.imagePaths)
+            createNoteDB.delete(createNote.id)
+            AttachPhotoUtils.deleteImages(createNote.imagePaths)
         }
         var logMsg = "Created $created notes"
         if (obsolete > 0) {

@@ -53,7 +53,7 @@ class SingleOsmElementTagChangesUpload @Inject constructor(private val osmDao: M
         val newElement = element.fetchUpdated()
         if (newElement?.version == element.version) throw ChangesetConflictException(e.message, e)
 
-	    if (newElement == null) {
+        if (newElement == null) {
             throw ElementDeletedException("Element has already been deleted")
         }
 

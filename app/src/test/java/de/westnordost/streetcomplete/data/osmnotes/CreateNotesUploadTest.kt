@@ -21,11 +21,11 @@ import java.util.*
 
 
 class CreateNotesUploadTest {
-	private lateinit var createNoteDB: CreateNoteDao
-	private lateinit var noteDB: NoteDao
-	private lateinit var noteQuestDB: OsmNoteQuestDao
-	private lateinit var mapDataDao: MapDataDao
-	private lateinit var questType: OsmNoteQuestType
+    private lateinit var createNoteDB: CreateNoteDao
+    private lateinit var noteDB: NoteDao
+    private lateinit var noteQuestDB: OsmNoteQuestDao
+    private lateinit var mapDataDao: MapDataDao
+    private lateinit var questType: OsmNoteQuestType
 	private lateinit var statisticsDB: QuestStatisticsDao
 	private lateinit var singleCreateNoteUpload: SingleCreateNoteUpload
 
