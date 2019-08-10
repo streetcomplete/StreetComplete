@@ -43,7 +43,7 @@ public class OsmModule
 {
 	public static final String
 		OSM_API_URL = "https://api.openstreetmap.org/api/0.6/",
-		OVERPASS_API_WITH_ATTIC_DATA_URL = "https://overpass-api.de/api/", // required for some tests
+		OVERPASS_API_WITH_ATTIC_DATA_URL = "https://lz4.overpass-api.de/api/", // required for some tests
 		ONEWAY_API_URL = "https://www.westnordost.de/streetcomplete/oneway-data-api/";
 
 
