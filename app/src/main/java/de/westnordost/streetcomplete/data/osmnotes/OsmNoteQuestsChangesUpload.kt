@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.data.osmnotes
 
-import android.os.CancellationSignal
 import android.util.Log
 
 import javax.inject.Inject
@@ -9,6 +8,7 @@ import de.westnordost.streetcomplete.data.QuestStatus
 import de.westnordost.streetcomplete.data.osm.upload.ConflictException
 import de.westnordost.streetcomplete.data.statistics.QuestStatisticsDao
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
+import java.util.concurrent.atomic.AtomicBoolean
 
 /** Gets all note quests from local DB and uploads them via the OSM API */
 class OsmNoteQuestsChangesUpload @Inject constructor(
@@ -21,12 +21,12 @@ class OsmNoteQuestsChangesUpload @Inject constructor(
 
     var uploadedChangeListener: OnUploadedChangeListener? = null
 
-    @Synchronized fun upload(cancelState: CancellationSignal) {
+    @Synchronized fun upload(cancelled: AtomicBoolean) {
         var created = 0
         var obsolete = 0
-        if (cancelState.isCanceled) return
+        if (cancelled.get()) return
         for (quest in questDB.getAll(null, QuestStatus.ANSWERED)) {
-            if (cancelState.isCanceled) break
+            if (cancelled.get()) break
 
             try {
                 val newNote = singleNoteUpload.upload(quest)

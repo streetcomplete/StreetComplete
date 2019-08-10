@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.data.osm.upload
 
-import android.os.CancellationSignal
 import android.util.Log
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.data.osm.UndoOsmQuest
@@ -10,6 +9,7 @@ import de.westnordost.streetcomplete.data.osm.persist.MergedElementDao
 import de.westnordost.streetcomplete.data.osm.persist.UndoOsmQuestDao
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
 import java.util.*
+import java.util.concurrent.atomic.AtomicBoolean
 
 /** Gets all undo osm quests from local DB and uploads them via the OSM API */
 class UndoOsmQuestsUpload @Inject constructor(
@@ -22,11 +22,11 @@ class UndoOsmQuestsUpload @Inject constructor(
 
     var uploadedChangeListener: OnUploadedChangeListener? = null
 
-    @Synchronized fun upload(signal: CancellationSignal) {
-        if (signal.isCanceled) return
+    @Synchronized fun upload(cancelled: AtomicBoolean) {
+        if (cancelled.get()) return
         Log.i(TAG, "Undoing quest changes")
         for (quest in undoQuestDB.getAll()) {
-            if (signal.isCanceled) break
+            if (cancelled.get()) break
 
             try {
                 uploadSingle(quest)

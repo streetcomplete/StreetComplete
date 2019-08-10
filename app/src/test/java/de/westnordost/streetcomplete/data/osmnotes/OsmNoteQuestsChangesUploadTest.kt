@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.data.osmnotes
 
-import android.os.CancellationSignal
 import de.westnordost.osmapi.notes.Note
 import org.junit.Before
 
@@ -15,6 +14,7 @@ import org.junit.Test
 import org.mockito.Mockito.*
 import de.westnordost.osmapi.map.data.OsmLatLon
 import org.junit.Assert.assertEquals
+import java.util.concurrent.atomic.AtomicBoolean
 
 
 class OsmNoteQuestsChangesUploadTest {
@@ -33,9 +33,7 @@ class OsmNoteQuestsChangesUploadTest {
     }
 
     @Test fun `cancel upload works`() {
-        val signal = CancellationSignal()
-        signal.cancel()
-        uploader.upload(signal)
+        uploader.upload(AtomicBoolean(true))
         verifyZeroInteractions(singleNoteUploader, questStatisticsDb, questDB, noteDB)
     }
 
@@ -43,7 +41,7 @@ class OsmNoteQuestsChangesUploadTest {
         on(questDB.getAll(null, QuestStatus.ANSWERED)).thenReturn(listOf(createQuest()))
         on(singleNoteUploader.upload(any())).thenThrow(ConflictException())
 
-        uploader.upload(CancellationSignal())
+        uploader.upload(AtomicBoolean(false))
 
         // will not throw ElementConflictException
     }
@@ -55,7 +53,7 @@ class OsmNoteQuestsChangesUploadTest {
         on(singleNoteUploader.upload(any())).thenReturn(createNote())
 
         uploader.uploadedChangeListener = mock(OnUploadedChangeListener::class.java)
-        uploader.upload(CancellationSignal())
+        uploader.upload(AtomicBoolean(false))
 
         for (quest in quests) {
             assertEquals(QuestStatus.CLOSED, quest.status)
@@ -73,26 +71,26 @@ class OsmNoteQuestsChangesUploadTest {
         on(singleNoteUploader.upload(any())).thenThrow(ConflictException())
 
         uploader.uploadedChangeListener = mock(OnUploadedChangeListener::class.java)
-        uploader.upload(CancellationSignal())
+        uploader.upload(AtomicBoolean(false))
 
         verify(questDB, times(quests.size)).delete(anyLong())
         verify(noteDB, times(quests.size)).delete(anyLong())
         verifyZeroInteractions(questStatisticsDb)
         verify(uploader.uploadedChangeListener, times(quests.size))?.onDiscarded()
     }
+}
 
-    private fun createNote(): Note {
-        val note = Note()
-        note.id = 1
-        note.position = OsmLatLon(1.0, 2.0)
-        return note
-    }
+private fun createNote(): Note {
+    val note = Note()
+    note.id = 1
+    note.position = OsmLatLon(1.0, 2.0)
+    return note
+}
 
-    private fun createQuest(): OsmNoteQuest {
-        val quest = OsmNoteQuest(createNote(), OsmNoteQuestType())
-        quest.id = 3
-        quest.status = QuestStatus.NEW
-        quest.comment = "blablub"
-        return quest
-    }
+private fun createQuest(): OsmNoteQuest {
+    val quest = OsmNoteQuest(createNote(), OsmNoteQuestType())
+    quest.id = 3
+    quest.status = QuestStatus.NEW
+    quest.comment = "blablub"
+    return quest
 }

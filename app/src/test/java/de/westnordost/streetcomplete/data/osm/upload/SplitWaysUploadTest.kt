@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.upload
 
-import android.os.CancellationSignal
+import de.westnordost.osmapi.map.data.Way
 import de.westnordost.streetcomplete.data.osm.OsmQuestSplitWay
 import de.westnordost.streetcomplete.data.osm.persist.SplitWayDao
 import de.westnordost.streetcomplete.data.osm.persist.WayDao
@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.any
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mockito.*
+import java.util.concurrent.atomic.AtomicBoolean
 
 class SplitWaysUploadTest {
     private lateinit var splitWayDB: SplitWayDao
@@ -21,15 +22,15 @@ class SplitWaysUploadTest {
     @Before fun setUp() {
         splitWayDB = mock(SplitWayDao::class.java)
         wayDao = mock(WayDao::class.java)
+        on(wayDao.get(anyLong())).thenReturn(mock(Way::class.java))
         changesetManager = mock(OpenQuestChangesetsManager::class.java)
         splitSingleOsmWayUpload = mock(SplitSingleWayUpload::class.java)
         uploader = SplitWaysUpload(splitWayDB, wayDao, changesetManager, splitSingleOsmWayUpload)
     }
 
     @Test fun `cancel upload works`() {
-        val signal = CancellationSignal()
-        signal.cancel()
-        uploader.upload(signal)
+        val cancelled = AtomicBoolean(true)
+        uploader.upload(cancelled)
         verifyZeroInteractions(changesetManager, splitSingleOsmWayUpload, wayDao, splitWayDB)
     }
 
@@ -38,7 +39,7 @@ class SplitWaysUploadTest {
         on(splitSingleOsmWayUpload.upload(anyLong(), any(), anyList()))
             .thenThrow(ElementConflictException())
 
-        uploader.upload(CancellationSignal())
+        uploader.upload(AtomicBoolean(false))
 
         // will not throw ElementConflictException
     }
@@ -48,7 +49,7 @@ class SplitWaysUploadTest {
         on(wayDao.get(anyLong())).thenReturn(null)
 
         uploader.uploadedChangeListener = mock(OnUploadedChangeListener::class.java)
-        uploader.upload(CancellationSignal())
+        uploader.upload(AtomicBoolean(false))
 
         verify(uploader.uploadedChangeListener)?.onDiscarded()
     }
@@ -59,7 +60,7 @@ class SplitWaysUploadTest {
             .thenThrow(ChangesetConflictException())
             .thenReturn(listOf())
 
-        uploader.upload(CancellationSignal())
+        uploader.upload(AtomicBoolean(false))
 
         // will not throw ChangesetConflictException but instead call single upload twice
         verify(changesetManager).getOrCreateChangeset(any(), any())
@@ -77,7 +78,7 @@ class SplitWaysUploadTest {
             .thenReturn(listOf())
 
         uploader.uploadedChangeListener = mock(OnUploadedChangeListener::class.java)
-        uploader.upload(CancellationSignal())
+        uploader.upload(AtomicBoolean(false))
 
         verify(splitWayDB, times(2)).delete(0L)
         verify(uploader.uploadedChangeListener)?.onUploaded()
