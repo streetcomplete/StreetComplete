@@ -73,7 +73,7 @@ public class QuestChangesUploadService extends IntentService
 	@Override public void onCreate()
 	{
 		super.onCreate();
-		cancelState = new AtomicBoolean();
+		cancelState = new AtomicBoolean(false);
 	}
 
 	@Override public IBinder onBind(Intent intent)
@@ -83,7 +83,7 @@ public class QuestChangesUploadService extends IntentService
 
 	@Override public void onDestroy()
 	{
-		cancelState.set(false);
+		cancelState.set(true);
 		super.onDestroy();
 	}
 
