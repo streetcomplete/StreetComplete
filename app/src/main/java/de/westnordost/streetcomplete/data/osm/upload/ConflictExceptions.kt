@@ -9,5 +9,9 @@ class ChangesetConflictException @JvmOverloads constructor(
 open class ElementConflictException @JvmOverloads constructor(
     message: String? = null, cause: Throwable? = null) : ConflictException(message, cause)
 
-class ElementDeletedException @JvmOverloads constructor(
+/** Element conflict that concern all quests that have something to do with this element */
+open class ElementIncompatibleException @JvmOverloads constructor(
     message: String? = null, cause: Throwable? = null) : ElementConflictException(message, cause)
+
+class ElementDeletedException @JvmOverloads constructor(
+    message: String? = null, cause: Throwable? = null) : ElementIncompatibleException(message, cause)

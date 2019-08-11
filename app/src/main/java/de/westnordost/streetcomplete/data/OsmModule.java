@@ -20,8 +20,17 @@ import de.westnordost.streetcomplete.data.osm.download.OverpassOldMapDataDao;
 import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao;
 import de.westnordost.streetcomplete.data.osm.persist.MergedElementDao;
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
+import de.westnordost.streetcomplete.data.osm.persist.SplitWayDao;
+import de.westnordost.streetcomplete.data.osm.persist.UndoOsmQuestDao;
+import de.westnordost.streetcomplete.data.osm.upload.OpenQuestChangesetsManager;
+import de.westnordost.streetcomplete.data.osm.upload.OsmQuestsUpload;
 import de.westnordost.streetcomplete.data.osm.upload.SingleOsmElementTagChangesUpload;
+import de.westnordost.streetcomplete.data.osm.upload.SplitSingleWayUpload;
+import de.westnordost.streetcomplete.data.osm.upload.SplitWaysUpload;
+import de.westnordost.streetcomplete.data.osm.upload.UndoOsmQuestsUpload;
 import de.westnordost.streetcomplete.data.osmnotes.OsmAvatarsDownload;
+import de.westnordost.streetcomplete.data.statistics.QuestStatisticsDao;
+import de.westnordost.streetcomplete.data.tiles.DownloadedTilesDao;
 import de.westnordost.streetcomplete.oauth.OAuthPrefs;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataParser;
@@ -113,6 +122,35 @@ public class OsmModule
 	@Provides public static MapDataDao mapDataDao(OsmConnection osm)
 	{
 		return new MapDataDao(osm);
+	}
+
+	@Provides public static OsmQuestsUpload osmQuestsUpload(
+		MergedElementDao elementDB, ElementGeometryDao elementGeometryDB,
+		OpenQuestChangesetsManager changesetManager, OsmQuestGiver questGiver,
+		QuestStatisticsDao statisticsDB, OsmApiWayGeometrySource wayGeometrySource,
+		OsmQuestDao questDB, SingleOsmElementTagChangesUpload singleChangeUpload,
+		DownloadedTilesDao downloadedTilesDao) {
+		return new OsmQuestsUpload(elementDB, elementGeometryDB, changesetManager, questGiver,
+			statisticsDB, new ElementGeometryCreator(wayGeometrySource), questDB,
+			singleChangeUpload, downloadedTilesDao);
+	}
+
+	@Provides public static UndoOsmQuestsUpload undoOsmQuestsUpload(
+		MergedElementDao elementDB, ElementGeometryDao elementGeometryDB,
+		OpenQuestChangesetsManager changesetManager, OsmQuestGiver questGiver,
+		QuestStatisticsDao statisticsDB, OsmApiWayGeometrySource wayGeometrySource,
+		UndoOsmQuestDao questDB, SingleOsmElementTagChangesUpload singleChangeUpload) {
+		return new UndoOsmQuestsUpload(elementDB, elementGeometryDB, changesetManager, questGiver,
+			statisticsDB, new ElementGeometryCreator(wayGeometrySource), questDB, singleChangeUpload);
+	}
+
+	@Provides public static SplitWaysUpload splitWaysUpload(
+		MergedElementDao elementDB, ElementGeometryDao elementGeometryDB,
+		OpenQuestChangesetsManager changesetManager, OsmQuestGiver questGiver,
+		QuestStatisticsDao statisticsDB, OsmApiWayGeometrySource wayGeometrySource,
+		SplitWayDao questDB, SplitSingleWayUpload singleUpload) {
+		return new SplitWaysUpload(elementDB, elementGeometryDB, changesetManager, questGiver,
+			statisticsDB, new ElementGeometryCreator(wayGeometrySource), questDB, singleUpload);
 	}
 
 	@Provides public static OsmAvatarsDownload avatarsDownload(UserDao userDao, Context context)

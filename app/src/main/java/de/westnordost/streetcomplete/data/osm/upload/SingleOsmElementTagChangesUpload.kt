@@ -58,7 +58,7 @@ class SingleOsmElementTagChangesUpload @Inject constructor(private val osmDao: M
         }
 
         if (isGeometrySubstantiallyDifferent(element, newElement)) {
-            throw ElementConflictException("Element geometry changed substantially")
+            throw ElementIncompatibleException("Element geometry changed substantially")
         }
 
         /* if after updating to the new version of the element, the quest is not applicable to

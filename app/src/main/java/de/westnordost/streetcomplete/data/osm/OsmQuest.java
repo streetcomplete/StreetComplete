@@ -13,10 +13,11 @@ import de.westnordost.streetcomplete.data.QuestType;
 import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.streetcomplete.data.osm.upload.HasElementTagChanges;
+import de.westnordost.streetcomplete.data.osm.upload.UploadableInChangeset;
 import de.westnordost.streetcomplete.util.SphericalEarthMath;
 
 /** Represents one task for the user to complete/correct the data based on one OSM element */
-public class OsmQuest implements Quest, HasElementTagChanges
+public class OsmQuest implements Quest, UploadableInChangeset, HasElementTagChanges
 {
 	public OsmQuest(OsmElementQuestType type, Element.Type elementType, long elementId,
 					ElementGeometry geometry)
@@ -143,4 +144,8 @@ public class OsmQuest implements Quest, HasElementTagChanges
 	public Boolean isApplicableTo(@NonNull Element element) {
 		return type.isApplicableTo(element);
 	}
+
+	/* --------------------------- UploadableInChangeset --------------------------- */
+
+	@Override public String getSource() { return changesSource; }
 }

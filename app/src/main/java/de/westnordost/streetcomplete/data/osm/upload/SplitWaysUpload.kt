@@ -2,52 +2,50 @@ package de.westnordost.streetcomplete.data.osm.upload
 
 import android.util.Log
 import de.westnordost.osmapi.map.data.Element
+import de.westnordost.osmapi.map.data.Way
+import de.westnordost.streetcomplete.data.osm.OsmQuestGiver
 import de.westnordost.streetcomplete.data.osm.OsmQuestSplitWay
+import de.westnordost.streetcomplete.data.osm.download.ElementGeometryCreator
+import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao
+import de.westnordost.streetcomplete.data.osm.persist.MergedElementDao
 import de.westnordost.streetcomplete.data.osm.persist.SplitWayDao
-import de.westnordost.streetcomplete.data.osm.persist.WayDao
-import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
+import de.westnordost.streetcomplete.data.statistics.QuestStatisticsDao
 import java.util.concurrent.atomic.AtomicBoolean
 import javax.inject.Inject
 
 /** Gets all split ways from local DB and uploads them via the OSM API */
 class SplitWaysUpload @Inject constructor(
+    elementDB: MergedElementDao,
+    elementGeometryDB: ElementGeometryDao,
+    changesetManager: OpenQuestChangesetsManager,
+    questGiver: OsmQuestGiver,
+    statisticsDB: QuestStatisticsDao,
+    elementGeometryCreator: ElementGeometryCreator,
     private val splitWayDB: SplitWayDao,
-    private val wayDao: WayDao,
-    private val changesetManager: OpenQuestChangesetsManager,
     private val splitSingleOsmWayUpload: SplitSingleWayUpload
-) {
+) : OsmInChangesetsUpload<OsmQuestSplitWay>(elementDB, elementGeometryDB, changesetManager,
+    questGiver, statisticsDB, elementGeometryCreator) {
+
     private val TAG = "SplitOsmWayUpload"
 
-    var uploadedChangeListener: OnUploadedChangeListener? = null
-
-    @Synchronized fun upload(cancelled: AtomicBoolean) {
-        if (cancelled.get()) return
+    @Synchronized override fun upload(cancelled: AtomicBoolean) {
         Log.i(TAG, "Splitting ways")
-        for (quest in splitWayDB.getAll()) {
-            if (cancelled.get()) break
-
-            try {
-                uploadSingle(quest)
-                Log.d(TAG, "Uploaded split way #${quest.wayId}")
-                uploadedChangeListener?.onUploaded()
-            } catch (e: ElementConflictException) {
-                Log.d(TAG, "Dropped split for way #${quest.wayId}: ${e.message}")
-                uploadedChangeListener?.onDiscarded()
-            }
-
-            splitWayDB.delete(quest.id)
-        }
+        super.upload(cancelled)
     }
 
-    private fun uploadSingle(quest: OsmQuestSplitWay): List<Element> {
-        val way = wayDao.get(quest.wayId) ?: throw ElementDeletedException("Way deleted")
+    override fun getAll(): Collection<OsmQuestSplitWay> = splitWayDB.getAll()
 
-        return try {
-            val changesetId = changesetManager.getOrCreateChangeset(quest.questType, quest.source)
-            splitSingleOsmWayUpload.upload(changesetId, way, quest.splits)
-        } catch (e: ChangesetConflictException) {
-            val changesetId = changesetManager.createChangeset(quest.questType, quest.source)
-            splitSingleOsmWayUpload.upload(changesetId, way, quest.splits)
-        }
+    override fun uploadSingle(changesetId: Long, quest: OsmQuestSplitWay, element: Element): List<Element> {
+        return splitSingleOsmWayUpload.upload(changesetId, element as Way, quest.splits)
+    }
+
+    override fun onUploadSuccessful(quest: OsmQuestSplitWay) {
+        splitWayDB.delete(quest.id)
+        Log.d(TAG, "Uploaded split way #${quest.wayId}")
+    }
+
+    override fun onUploadFailed(quest: OsmQuestSplitWay, e: Throwable) {
+        splitWayDB.delete(quest.id)
+        Log.d(TAG, "Dropped split for way #${quest.wayId}: ${e.message}")
     }
 }

@@ -7,10 +7,15 @@ import de.westnordost.streetcomplete.data.QuestStatus
 import de.westnordost.streetcomplete.data.osm.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.OsmQuest
+import de.westnordost.streetcomplete.data.osm.OsmQuestGiver
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
+import de.westnordost.streetcomplete.data.osm.download.ElementGeometryCreator
+import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao
 import de.westnordost.streetcomplete.data.osm.persist.MergedElementDao
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao
+import de.westnordost.streetcomplete.data.statistics.QuestStatisticsDao
+import de.westnordost.streetcomplete.data.tiles.DownloadedTilesDao
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
 import de.westnordost.streetcomplete.on
 import org.junit.Assert.assertEquals
@@ -25,7 +30,12 @@ class OsmQuestsUploadTest {
     private lateinit var questDB: OsmQuestDao
     private lateinit var elementDB: MergedElementDao
     private lateinit var changesetManager: OpenQuestChangesetsManager
+    private lateinit var elementGeometryDB: ElementGeometryDao
+    private lateinit var questGiver: OsmQuestGiver
+    private lateinit var statisticsDB: QuestStatisticsDao
+    private lateinit var elementGeometryCreator: ElementGeometryCreator
     private lateinit var singleChangeUpload: SingleOsmElementTagChangesUpload
+    private lateinit var downloadedTilesDao: DownloadedTilesDao
     private lateinit var uploader: OsmQuestsUpload
 
     @Before fun setUp() {
@@ -34,7 +44,14 @@ class OsmQuestsUploadTest {
         on(elementDB.get(any(), anyLong())).thenReturn(mock(Element::class.java))
         changesetManager = mock(OpenQuestChangesetsManager::class.java)
         singleChangeUpload = mock(SingleOsmElementTagChangesUpload::class.java)
-        uploader = OsmQuestsUpload(questDB, elementDB, changesetManager, singleChangeUpload)
+        elementGeometryDB = mock(ElementGeometryDao::class.java)
+        questGiver = mock(OsmQuestGiver::class.java)
+        on(questGiver.updateQuests(any())).thenReturn(OsmQuestGiver.QuestUpdates())
+        statisticsDB = mock(QuestStatisticsDao::class.java)
+        elementGeometryCreator = mock(ElementGeometryCreator::class.java)
+        downloadedTilesDao = mock(DownloadedTilesDao::class.java)
+        uploader = OsmQuestsUpload(elementDB, elementGeometryDB, changesetManager, questGiver,
+            statisticsDB, elementGeometryCreator, questDB, singleChangeUpload, downloadedTilesDao)
     }
 
     @Test fun `cancel upload works`() {
@@ -91,6 +108,10 @@ class OsmQuestsUploadTest {
         }
         verify(questDB, times(2)).update(any())
         verify(uploader.uploadedChangeListener, times(2))?.onUploaded()
+        verify(elementDB, times(2)).put(any())
+        verify(elementGeometryDB, times(2)).put(any(), anyLong(), any())
+        verify(questGiver, times(2)).updateQuests(any())
+        verifyZeroInteractions(downloadedTilesDao)
     }
 
     @Test fun `delete each unsuccessful upload from local DB and call listener`() {
@@ -105,6 +126,22 @@ class OsmQuestsUploadTest {
 
         verify(questDB, times(2)).delete(anyLong())
         verify(uploader.uploadedChangeListener, times(2))?.onDiscarded()
+        verify(downloadedTilesDao, times(2)).remove(any())
+        verifyZeroInteractions(questGiver, elementGeometryCreator)
+    }
+
+    @Test fun `delete unreferenced elements and clean metadata at the end`() {
+        val quest = createQuest()
+
+        on(questDB.getAll(null, QuestStatus.ANSWERED)).thenReturn(listOf(quest))
+        on(singleChangeUpload.upload(anyLong(), any(), any()))
+            .thenReturn(mock(Element::class.java))
+
+        uploader.upload(AtomicBoolean(false))
+
+        verify(elementGeometryDB).deleteUnreferenced()
+        verify(elementDB).deleteUnreferenced()
+        verify(quest.osmElementQuestType).cleanMetadata()
     }
 }
 

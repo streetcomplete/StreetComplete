@@ -2,56 +2,54 @@ package de.westnordost.streetcomplete.data.osm.upload
 
 import android.util.Log
 import de.westnordost.osmapi.map.data.Element
+import de.westnordost.streetcomplete.data.osm.OsmQuestGiver
 import de.westnordost.streetcomplete.data.osm.UndoOsmQuest
+import de.westnordost.streetcomplete.data.osm.download.ElementGeometryCreator
+import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao
 import javax.inject.Inject
 
 import de.westnordost.streetcomplete.data.osm.persist.MergedElementDao
 import de.westnordost.streetcomplete.data.osm.persist.UndoOsmQuestDao
-import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
+import de.westnordost.streetcomplete.data.statistics.QuestStatisticsDao
 import java.util.*
 import java.util.concurrent.atomic.AtomicBoolean
 
 /** Gets all undo osm quests from local DB and uploads them via the OSM API */
 class UndoOsmQuestsUpload @Inject constructor(
+    elementDB: MergedElementDao,
+    elementGeometryDB: ElementGeometryDao,
+    changesetManager: OpenQuestChangesetsManager,
+    questGiver: OsmQuestGiver,
+    statisticsDB: QuestStatisticsDao,
+    elementGeometryCreator: ElementGeometryCreator,
     private val undoQuestDB: UndoOsmQuestDao,
-    private val elementDB: MergedElementDao,
-    private val changesetManager: OpenQuestChangesetsManager,
     private val singleChangeUpload: SingleOsmElementTagChangesUpload
-) {
+) : OsmInChangesetsUpload<UndoOsmQuest>(elementDB, elementGeometryDB, changesetManager, questGiver,
+    statisticsDB, elementGeometryCreator) {
+
     private val TAG = "UndoOsmQuestUpload"
 
-    var uploadedChangeListener: OnUploadedChangeListener? = null
-
-    @Synchronized fun upload(cancelled: AtomicBoolean) {
-        if (cancelled.get()) return
+    @Synchronized override fun upload(cancelled: AtomicBoolean) {
         Log.i(TAG, "Undoing quest changes")
-        for (quest in undoQuestDB.getAll()) {
-            if (cancelled.get()) break
-
-            try {
-                uploadSingle(quest)
-                Log.d(TAG, "Uploaded undo osm quest ${quest.toLogString()}")
-                uploadedChangeListener?.onUploaded()
-            } catch (e: ElementConflictException) {
-                Log.d(TAG, "Dropped undo osm quest ${quest.toLogString()}: ${e.message}")
-                uploadedChangeListener?.onDiscarded()
-            }
-
-            undoQuestDB.delete(quest.id!!)
-        }
+        super.upload(cancelled)
     }
 
-    private fun uploadSingle(quest: UndoOsmQuest): Element {
-        val element = elementDB.get(quest.elementType, quest.elementId)
-            ?: throw ElementDeletedException("Element deleted")
+    override fun getAll() = undoQuestDB.getAll()
 
-        return try {
-            val changesetId = changesetManager.getOrCreateChangeset(quest.type, quest.changesSource)
-            singleChangeUpload.upload(changesetId, quest, element)
-        }  catch (e: ChangesetConflictException) {
-            val changesetId = changesetManager.createChangeset(quest.type, quest.changesSource)
-            singleChangeUpload.upload(changesetId, quest, element)
-        }
+    override fun uploadSingle(changesetId: Long, quest: UndoOsmQuest, element: Element): List<Element> {
+        return listOf(singleChangeUpload.upload(changesetId, quest, element))
+    }
+
+    override fun onUploadSuccessful(quest: UndoOsmQuest) {
+        undoQuestDB.delete(quest.id!!)
+        Log.d(TAG, "Uploaded undo osm quest ${quest.toLogString()}")
+
+    }
+
+    override fun onUploadFailed(quest: UndoOsmQuest, e: Throwable) {
+        undoQuestDB.delete(quest.id!!)
+        Log.d(TAG, "Dropped undo osm quest ${quest.toLogString()}: ${e.message}")
+
     }
 }
 
