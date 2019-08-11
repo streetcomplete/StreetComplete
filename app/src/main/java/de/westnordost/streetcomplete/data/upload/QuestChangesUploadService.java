@@ -117,16 +117,19 @@ public class QuestChangesUploadService extends IntentService
 			if (cancelState.get()) return;
 
 			undoQuestUpload.setUploadedChangeListener(uploadedChangeRelay);
+			undoQuestUpload.setVisibleQuestListener(visibleQuestRelay);
 			undoQuestUpload.upload(cancelState);
 
 			if (cancelState.get()) return;
 
 			questUpload.setUploadedChangeListener(uploadedChangeRelay);
+			questUpload.setVisibleQuestListener(visibleQuestRelay);
 			questUpload.upload(cancelState);
 
 			if (cancelState.get()) return;
 
 			splitWaysUpload.setUploadedChangeListener(uploadedChangeRelay);
+			splitWaysUpload.setVisibleQuestListener(visibleQuestRelay);
 			splitWaysUpload.upload(cancelState);
 
 			if (cancelState.get()) return;
