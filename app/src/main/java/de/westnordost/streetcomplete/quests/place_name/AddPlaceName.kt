@@ -38,8 +38,8 @@ class AddPlaceName(
                 "animal_boarding", "animal_shelter", "animal_breeding", "veterinary"                                                    // animals
             ),
             "tourism" to arrayOf(
-                "attraction", "zoo", "aquarium", "theme_park", "gallery", "museum",                                          // attractions
-                "hotel", "guest_house", "motel", "hostel", "alpine_hut", "apartment", "resort", "camp_site", "caravan_site"  // accommodations
+                "attraction", "zoo", "aquarium", "theme_park", "gallery", "museum",                                                     // attractions
+                "hotel", "guest_house", "motel", "hostel", "alpine_hut", "apartment", "resort", "camp_site", "caravan_site", "chalet"   // accommodations
                 // and tourism=information, see above
             ),
             "leisure" to arrayOf(
