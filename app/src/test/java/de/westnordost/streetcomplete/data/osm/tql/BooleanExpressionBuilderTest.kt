@@ -54,6 +54,7 @@ class BooleanExpressionBuilderTest {
     @Test fun merge10() { check("(a+b*c)*d*(e+f*g)*h", "(a+b*c)*d*(e+f*g)*h") }
 
     @Test fun flatten1() { check("((a*b)*c)*d*(e*f)", "a*b*c*d*e*f") }
+    @Test fun flatten2() { check("(a+b*(c+d)+e)*f", "(a+b*(c+d)+e)*f") }
 
 
     @Test(expected = IllegalStateException::class)
