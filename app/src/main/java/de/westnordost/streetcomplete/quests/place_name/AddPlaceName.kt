@@ -4,6 +4,7 @@ import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.OsmTaggings
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandler
@@ -47,9 +48,7 @@ class AddPlaceName(
                 "water_park", "miniature_golf", "stadium", "marina", "bowling_alley",
                 "amusement_arcade", "adult_gaming_centre", "tanning_salon", "horse_riding"
             ),
-            "office" to arrayOf(
-                "insurance", "estate_agent", "travel_agent"
-            )
+            "office" to OsmTaggings.OFFICES_VISITED_BY_GENERAL_PUBLIC
         ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString(" or ") +
         ")"
     )}

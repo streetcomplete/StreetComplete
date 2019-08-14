@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.opening_hours
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.OsmTaggings
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
@@ -39,9 +40,7 @@ class AddOpeningHours (o: OverpassMapDataDao) : SimpleOverpassQuestType<OpeningH
                 "miniature_golf", "bowling_alley", "horse_riding",  "amusement_arcade",
                 "adult_gaming_centre", "tanning_salon"
             ),
-            "office" to arrayOf(
-                "insurance", "government", "estate_agent", "travel_agent", "religion"
-            )
+            "office" to OsmTaggings.OFFICES_VISITED_BY_GENERAL_PUBLIC
         ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString(" or ") +
         " )" +
         " and !opening_hours and name and opening_hours:signed != no" +
