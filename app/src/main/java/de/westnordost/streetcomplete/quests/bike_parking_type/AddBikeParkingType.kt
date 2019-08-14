@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
 
 class AddBikeParkingType(o: OverpassMapDataDao) : SimpleOverpassQuestType<String>(o) {
 
-    override val tagFilters = "nodes, ways with amenity=bicycle_parking and access!=private and !bicycle_parking"
+    override val tagFilters = "nodes, ways with amenity=bicycle_parking and access !~ private|no and !bicycle_parking"
     override val commitMessage = "Add bicycle parking type"
     override val icon = R.drawable.ic_quest_bicycle_parking
 

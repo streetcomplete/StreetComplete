@@ -96,7 +96,7 @@
             android:key="overpass_url"
             android:title="@string/pref_title_overpass_url_select"
             android:summary="@string/pref_title_overpass_url_info"
-            android:defaultValue="https://overpass-api.de/api/"
+            android:defaultValue="https://lz4.overpass-api.de/api/"
             android:entries="@array/pref_overpass_url_select"
             android:entryValues="@array/pref_overpass_url_select"
             android:persistent="true"

@@ -10,7 +10,7 @@ import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
 class AddMaxSpeed(o: OverpassMapDataDao) : SimpleOverpassQuestType<MaxSpeedAnswer>(o) {
 
     override val tagFilters = """
-        ways with highway ~ motorway|trunk|primary|secondary|tertiary|unclassified|residential
+        ways with highway ~ motorway|motorway_link|trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential
          and !maxspeed and !maxspeed:forward and !maxspeed:backward
          and !source:maxspeed and !zone:maxspeed and !maxspeed:type and !zone:traffic
          and surface !~ ${OsmTaggings.ANYTHING_UNPAVED.joinToString("|")}
