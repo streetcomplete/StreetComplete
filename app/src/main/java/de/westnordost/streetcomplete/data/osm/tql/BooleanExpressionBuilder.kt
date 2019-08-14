@@ -41,7 +41,9 @@ class BooleanExpressionBuilder<I : Matcher<T>, T> {
     fun addCloseBracket() {
         if (--bracketCount < 0 ) throw IllegalStateException("Closed one bracket too much")
 
-        node = node.parent!!
+        do {
+            node = node.parent!!
+        } while(node !is BracketHelper)
     }
 
     fun addValue(i: I) {
@@ -49,18 +51,12 @@ class BooleanExpressionBuilder<I : Matcher<T>, T> {
     }
 
     fun addAnd() {
-        val anyOf = node as? AnyOf
-        val group = node as? BracketHelper
-
-        if (anyOf != null) {
-            val last = anyOf.children.last()
+        if (node !is AllOf) {
+            val last = node.children.last()
             val allOf = AllOf<I, T>()
-            anyOf.replaceChild(last, allOf)
+            node.replaceChild(last, allOf)
             allOf.addChild(last)
             node = allOf
-        }
-        else if (group != null) {
-            node = replaceChain(group, AllOf())
         }
     }
 
@@ -81,17 +77,13 @@ class BooleanExpressionBuilder<I : Matcher<T>, T> {
             }
         }
         else if (group != null) {
-            node = replaceChain(group, AnyOf())
+            val last = node.children.last()
+            val anyOf = AnyOf<I, T>()
+            node.replaceChild(last, anyOf)
+            anyOf.addChild(last)
+            node = anyOf
         }
     }
-}
-
-private fun <I : Matcher<T>, T> replaceChain(replace: Chain<I, T>, with: Chain<I, T>): Chain<I, T> {
-    replace.parent?.replaceChild(replace, with)
-    for (child in replace.children) {
-        with.addChild(child)
-    }
-    return with
 }
 
 private fun <I : Matcher<T>, T> Chain<I, T>.ensureNoBracketNodes() {

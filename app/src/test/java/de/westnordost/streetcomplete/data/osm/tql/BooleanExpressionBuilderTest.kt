@@ -50,6 +50,12 @@ class BooleanExpressionBuilderTest {
     @Test fun merge7() { check("(((a)+b)*c)+d", "(a+b)*c+d") }
     @Test fun merge8() { check("(((a)*b)+c)*d", "(a*b+c)*d") }
 
+    @Test fun merge9() { check("(a+b*c)*d", "(a+b*c)*d") }
+    @Test fun merge10() { check("(a+b*c)*d*(e+f*g)*h", "(a+b*c)*d*(e+f*g)*h") }
+
+    @Test fun flatten1() { check("((a*b)*c)*d*(e*f)", "a*b*c*d*e*f") }
+
+
     @Test(expected = IllegalStateException::class)
     fun `closed too many brackets 1`() { TestBooleanExpressionParser.parse("a+b)") }
 

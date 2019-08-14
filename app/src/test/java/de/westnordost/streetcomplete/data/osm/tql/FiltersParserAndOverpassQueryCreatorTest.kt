@@ -291,6 +291,18 @@ class FiltersParserAndOverpassQueryCreatorTest {
         )
     }
 
+    @Test fun `and in bracket followed by another and`() {
+        check(
+            "nodes with (noname or (name and ref)) and highway",
+            """
+            node[noname]->.n2;
+            node[name][ref]->.n3;
+            (.n2;.n3;)->.n1;
+            node.n1[highway];
+            """
+        )
+    }
+
     private fun shouldFail(input: String) {
         try {
             FiltersParser().parse(input)
