@@ -5,13 +5,12 @@ import android.view.View
 import android.widget.ImageView
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AYesNoQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.*
 import kotlinx.android.synthetic.main.quest_buttonpanel_yes_no_sidewalk.*
 
-class AddAccessibleForPedestriansForm : AbstractQuestAnswerFragment<ProhibitedForPedestriansAnswer>() {
+class AddProhibitedForPedestriansForm : AbstractQuestAnswerFragment<ProhibitedForPedestriansAnswer>() {
 
     override val buttonsResId = R.layout.quest_buttonpanel_yes_no_sidewalk
 
@@ -27,7 +26,7 @@ class AddAccessibleForPedestriansForm : AbstractQuestAnswerFragment<ProhibitedFo
 
     // the living street answer stuff is copied from AddMaxSpeedForm
     override val otherAnswers: List<OtherAnswer> get() {
-        val result = mutableListOf<OtherAnswer>()
+        val result = mutableListOf(createSplitWayAnswer())
 
         val highwayTag = osmElement!!.tags["highway"]!!
         if (countryInfo.isLivingStreetKnown && MAYBE_LIVING_STREET.contains(highwayTag)) {

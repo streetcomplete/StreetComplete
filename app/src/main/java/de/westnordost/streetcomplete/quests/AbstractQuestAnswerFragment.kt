@@ -220,7 +220,7 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment() {
     }
 
     protected fun onClickCantSay() {
-        AlertDialog.Builder(context!!)
+        context?.let { AlertDialog.Builder(it)
             .setTitle(R.string.quest_leave_new_note_title)
             .setMessage(R.string.quest_leave_new_note_description)
             .setNegativeButton(R.string.quest_leave_new_note_no) { _, _ -> skipQuest() }
@@ -229,10 +229,25 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment() {
                 questAnswerComponent.onComposeNote(questTitle)
             }
             .show()
+        }
+    }
+
+    protected fun createSplitWayAnswer() =
+        OtherAnswer(R.string.quest_generic_answer_differs_along_the_way) { onClickSplitWayAnswer() }
+
+    private fun onClickSplitWayAnswer() {
+        context?.let { AlertDialog.Builder(it)
+            .setMessage(R.string.quest_split_way_description)
+            .setNegativeButton(android.R.string.cancel, null)
+            .setPositiveButton(android.R.string.ok) { _, _ ->
+                questAnswerComponent.onSplitWay()
+            }
+            .show()
+        }
     }
 
     protected fun applyAnswer(data: T) {
-        questAnswerComponent.onAnswerQuest(data as Any)
+        questAnswerComponent.onAnsweredQuest(data as Any)
     }
 
     protected fun skipQuest() {

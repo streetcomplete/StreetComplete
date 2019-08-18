@@ -14,6 +14,8 @@ class AddCyclewaySegregationForm : AImageListQuestAnswerFragment<Boolean, Boolea
         Item(false, R.drawable.ic_path_segregated_no, R.string.quest_segregated_mixed)
     )
 
+    override val otherAnswers = listOf(createSplitWayAnswer())
+
     override val itemsPerRow = 2
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

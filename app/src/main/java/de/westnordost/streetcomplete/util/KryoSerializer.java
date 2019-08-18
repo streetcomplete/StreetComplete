@@ -13,11 +13,13 @@ import java.util.HashMap;
 import javax.inject.Singleton;
 
 import de.westnordost.osmapi.map.data.Fixed1E7LatLon;
+import de.westnordost.streetcomplete.data.osm.changes.SplitAtLinePosition;
+import de.westnordost.streetcomplete.data.osm.changes.SplitAtPoint;
+import de.westnordost.streetcomplete.data.osm.changes.SplitPolylineAtPosition;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChanges;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryDelete;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryModify;
-import de.westnordost.streetcomplete.data.osm.persist.SplitWayData;
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningMonthsRow;
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningWeekdaysRow;
 import de.westnordost.streetcomplete.quests.opening_hours.model.CircularSection;
@@ -60,7 +62,8 @@ public class KryoSerializer implements Serializer
 			LocalizedName.class,
 			WeekdaysTimesRow.class,
 			OsmLatLon.class,
-			SplitWayData.class
+			SplitAtPoint.class,
+			SplitAtLinePosition.class
 	};
 
 

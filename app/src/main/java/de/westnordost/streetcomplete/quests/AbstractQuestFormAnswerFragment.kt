@@ -2,10 +2,10 @@ package de.westnordost.streetcomplete.quests
 
 import android.os.Bundle
 import android.view.View
-import android.view.animation.AccelerateInterpolator
-import android.view.animation.DecelerateInterpolator
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.ktx.popIn
+import de.westnordost.streetcomplete.ktx.popOut
 import de.westnordost.streetcomplete.ktx.toast
 import kotlinx.android.synthetic.main.fragment_quest_answer.*
 
@@ -26,18 +26,9 @@ abstract class AbstractQuestFormAnswerFragment<T> : AbstractQuestAnswerFragment<
 
     protected fun checkIsFormComplete() {
         if (isFormComplete()) {
-            okButton.visibility = View.VISIBLE
-            okButton.animate()
-                .alpha(1f).scaleX(1f).scaleY(1f)
-                .setDuration(100)
-                .setInterpolator(DecelerateInterpolator())
-                .withEndAction(null)
+            okButton.popIn()
         } else {
-            okButton.animate()
-                .alpha(0f).scaleX(0.5f).scaleY(0.5f)
-                .setDuration(100)
-                .setInterpolator(AccelerateInterpolator())
-                .withEndAction { okButton?.visibility = View.GONE }
+            okButton.popOut()
         }
     }
 

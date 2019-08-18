@@ -12,3 +12,5 @@ fun Element.copy(newId: Long = id, newVersion: Int = version): Element {
         else -> throw RuntimeException()
     }
 }
+
+fun Way.isClosed() = nodeIds.size >= 3 && nodeIds.first() == nodeIds.last()

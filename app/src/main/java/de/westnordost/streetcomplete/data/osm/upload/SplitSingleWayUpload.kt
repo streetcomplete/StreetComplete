@@ -3,61 +3,49 @@ package de.westnordost.streetcomplete.data.osm.upload
 import de.westnordost.osmapi.common.errors.OsmConflictException
 import de.westnordost.osmapi.map.MapDataDao
 import de.westnordost.osmapi.map.data.*
-import de.westnordost.streetcomplete.util.SphericalEarthMath
 import javax.inject.Inject
 import de.westnordost.osmapi.map.data.Element.Type.*
-import de.westnordost.streetcomplete.data.osm.changes.SplitWay
-import de.westnordost.streetcomplete.ktx.containsAny
-import de.westnordost.streetcomplete.ktx.findNext
-import de.westnordost.streetcomplete.ktx.findPrevious
-import de.westnordost.streetcomplete.ktx.firstAndLast
+import de.westnordost.streetcomplete.data.osm.changes.SplitAtLinePosition
+import de.westnordost.streetcomplete.data.osm.changes.SplitAtPoint
+import de.westnordost.streetcomplete.data.osm.changes.SplitPolylineAtPosition
+import de.westnordost.streetcomplete.ktx.*
+import de.westnordost.streetcomplete.util.SphericalEarthMath
+import kotlin.math.sign
 
 /** Uploads one split way
  *  Returns only the ways that have been updated or throws a ConflictException */
 class SplitSingleWayUpload @Inject constructor(private val osmDao: MapDataDao)  {
 
-    fun upload(changesetId: Long, way: Way, splits: List<SplitWay>): List<Way> {
-        if(way.isClosed() && splits.size < 2)
-            throw IllegalArgumentException("Must specify at least two split positions for a closed way")
-
+    fun upload(changesetId: Long, way: Way, splits: List<SplitPolylineAtPosition>): List<Way> {
         val updatedWay = way.fetchUpdated()
             ?: throw ElementDeletedException("Way #${way.id} has been deleted")
+        if(updatedWay.isClosed() && splits.size < 2)
+            throw ElementConflictException("Must specify at least two split positions for a closed way")
         checkForConflicts(way, updatedWay)
-        try {
-            for (split in splits) split.validate(updatedWay)
-        } catch (e: IllegalArgumentException) {
-            throw ElementConflictException(e.message)
-        }
-        val sortedSplits = splits.sortedWith(SplitWayAtComparator(updatedWay))
+
+        val nodes = updatedWay.fetchNodes()
+        val positions = nodes.map { it.position }
+        val sortedSplits = splits.map { it.toSplitWay(positions) }.sorted()
 
         val uploadElements = mutableListOf<Element>()
         var newNodeId = -1L
 
         val splitAtIndices = mutableListOf<Int>()
+        var insertedNodeCount = 0
         for (split in sortedSplits) {
-            val updatedFirstNode = split.firstNode.fetchUpdated()
-                ?: throw ElementConflictException("Node #${split.firstNode.id} has been deleted")
-            checkForConflicts(split.firstNode, updatedFirstNode)
-            val updatedSecondNode = split.secondNode.fetchUpdated()
-                ?: throw ElementConflictException("Node #${split.secondNode.id} has been deleted")
-            checkForConflicts(split.secondNode, updatedSecondNode)
+            when(split) {
+                is SplitWayAtPoint -> {
+                    splitAtIndices.add(split.index + insertedNodeCount)
+                }
+                is SplitWayAtLinePosition -> {
+                    val splitNode = OsmNode(newNodeId--, 1, split.pos, null)
+                    uploadElements.add(splitNode)
 
-            if (split.delta == 0.0) {
-                val firstNodeIndex = updatedWay.nodeIds.indexOf(updatedFirstNode.id)
-                splitAtIndices.add(firstNodeIndex)
-            } else if (split.delta > 0.0) {
-                val splitPosition =
-                    createSplitPosition(
-                        updatedFirstNode.position,
-                        updatedSecondNode.position,
-                        split.delta
-                    )
-                val splitNode = OsmNode(newNodeId--, 1, splitPosition, null)
-                uploadElements.add(splitNode)
-
-                val secondNodeIndex = updatedWay.nodeIds.indexOf(updatedSecondNode.id)
-                updatedWay.nodeIds.add(secondNodeIndex, splitNode.id)
-                splitAtIndices.add(secondNodeIndex)
+                    val nodeIndex = split.index2 + insertedNodeCount
+                    updatedWay.nodeIds.add(nodeIndex, splitNode.id)
+                    splitAtIndices.add(nodeIndex)
+                    ++insertedNodeCount
+                }
             }
         }
 
@@ -76,14 +64,6 @@ class SplitSingleWayUpload @Inject constructor(private val osmDao: MapDataDao)  
             // unsolvable conflict if other was shortened (e.g. cut in two) or extended
             if(old.nodeIds.first() != new.nodeIds.first() || old.nodeIds.last() != new.nodeIds.last())
                 throw ElementConflictException("Way #${old.id} has been changed and the conflict cannot be solved automatically")
-        }
-    }
-
-    private fun checkForConflicts(old: Node, new: Node) {
-        if(old.version != new.version) {
-            // unsolvable conflict if node has been moved
-            if(old.position.latitude != new.position.latitude || old.position.longitude != new.position.longitude)
-                throw ElementConflictException("Node #${old.id} has been moved and the conflict cannot be solved automatically")
         }
     }
 
@@ -170,7 +150,7 @@ class SplitSingleWayUpload @Inject constructor(private val osmDao: MapDataDao)  
         relation.members.addAll(indexOfWayInRelation, newRelationMembers)
     }
 
-    private fun Node.fetchUpdated(): Node? = osmDao.getNode(id)
+    private fun Way.fetchNodes(): List<Node> = osmDao.getNodes(nodeIds)
 
     private fun Way.fetchUpdated(): Way? = osmDao.getWay(id)
 
@@ -205,41 +185,88 @@ class SplitSingleWayUpload @Inject constructor(private val osmDao: MapDataDao)  
     }
 }
 
-/** comparator that sorts all the splits from start to end in the way */
-private class SplitWayAtComparator(private val way: Way) : Comparator<SplitWay> {
-    override fun compare(split1: SplitWay, split2: SplitWay): Int {
-        val split1Index = way.nodeIds.indexOf(split1.secondNode.id)
-        val split2Index = way.nodeIds.indexOf(split2.secondNode.id)
-        val diffIndex = split1Index - split2Index
+/** data class that carries the information for one split to perform on a random position on a way.
+ *  So, same as SplitPolylineAtPosition, but additionally with the index of the split in the way. */
+private sealed class SplitWay : Comparable<SplitWay> {
+    abstract val pos: LatLon
+    protected abstract val index: Int
+    protected abstract val delta: Double
+
+    /** sort by index, then delta, ascending. The algorithm relies on this order! */
+    override fun compareTo(other: SplitWay): Int {
+        val diffIndex = index - other.index
         if (diffIndex != 0) return diffIndex
 
-        val diffDelta = split1.delta - split2.delta
-        return if (diffDelta < 0) -1 else if (diffDelta > 0) 1 else 0
+        val diffDelta = delta - other.delta
+        return diffDelta.sign.toInt()
     }
 }
 
-private fun createSplitPosition(firstPosition: LatLon, secondPosition: LatLon, delta: Double): LatLon {
-    val line = listOf(firstPosition, secondPosition)
-    return SphericalEarthMath.pointOnPolylineFromStart(line, SphericalEarthMath.distance(line) * delta)
+private data class SplitWayAtPoint(override val pos: LatLon, public override val index: Int) : SplitWay() {
+    override val delta get() = 0.0
 }
 
-/** returns the index of the first element yielding the largest value of the given function or -1 if there are no elements. */
-private inline fun <T, R : Comparable<R>> Iterable<T>.indexOfMaxBy(selector: (T) -> R): Int {
-    val iterator = iterator()
-    if (!iterator.hasNext()) return -1
-    var indexOfMaxElem = 0
-    var i = 0
-    var maxValue = selector(iterator.next())
-    while (iterator.hasNext()) {
-        ++i
-        val v = selector(iterator.next())
-        if (maxValue < v) {
-            indexOfMaxElem = i
-            maxValue = v
+private data class SplitWayAtLinePosition(
+    val pos1: LatLon, val index1: Int,
+    val pos2: LatLon, val index2: Int,
+    public override val delta: Double) : SplitWay() {
+    override val index get() = index1
+    override val pos: LatLon get() {
+        val line = listOf(pos1, pos2)
+        return SphericalEarthMath.pointOnPolylineFromStart(
+            line,
+            SphericalEarthMath.distance(line) * delta
+        )!!
+    }
+}
+
+/** creates a SplitWay from a SplitLineAtPosition, given the nodes of the way. So, basically it
+ *  simply finds the node index/indices at which the split should be made.
+ *  If the way changed significantly in the meantime, it will throw an ElementConflictException */
+private fun SplitPolylineAtPosition.toSplitWay(positions: List<LatLon>): SplitWay {
+    return when(this) {
+        is SplitAtPoint -> toSplitWay(positions)
+        is SplitAtLinePosition -> toSplitWay(positions)
+    }
+}
+
+private fun SplitAtPoint.toSplitWay(positions: List<LatLon>): SplitWayAtPoint {
+    // could be several indices, for example if the way has the shape of an 8.
+    var indicesOf = positions.osmIndicesOf(pos)
+    if (indicesOf.isEmpty()) throw ElementConflictException("To be split point has been moved")
+
+    indicesOf = indicesOf.filter { index -> index > 0 && index < positions.lastIndex }
+    if (indicesOf.isEmpty())
+        throw ElementConflictException("Split position is now at the very start or end of the way - can't split there")
+
+    return SplitWayAtPoint(pos, indicesOf.first())
+}
+
+private fun SplitAtLinePosition.toSplitWay(positions: List<LatLon>): SplitWayAtLinePosition {
+    // could be several indices, for example if the way has the shape of an 8...
+    val indicesOf1 = positions.osmIndicesOf(pos1)
+    if (indicesOf1.isEmpty()) throw ElementConflictException("To be split line has been moved")
+
+    val indicesOf2 = positions.osmIndicesOf(pos2)
+    if (indicesOf2.isEmpty()) throw ElementConflictException("To be split line has been moved")
+
+    // ...and we need to find out which of the lines is meant
+    for (i1 in indicesOf1) {
+        for (i2 in indicesOf2) {
+            /* For SplitAtLinePosition, the direction of the way does not matter. But for the
+               SplitWayAtLinePosition it must be in the same order as the OSM way. */
+            if (i1 + 1 == i2) return SplitWayAtLinePosition(pos1, i1, pos2, i2, delta)
+            if (i2 + 1 == i1) return SplitWayAtLinePosition(pos2, i2, pos1, i1, 1.0 - delta)
         }
     }
-    return indexOfMaxElem
+    throw ElementConflictException("End points of the to be split line are not directly successive anymore")
 }
+
+/** returns the indices at which the given pos is found in this list, taking into accound the limited
+ *  precision of positions in OSM. */
+private fun List<LatLon>.osmIndicesOf(pos: LatLon): List<Int> =
+    mapIndexedNotNull { i, p -> if (p.equalsInOsm(pos)) i else null }
+
 
 /** returns a copy of the list split at the given indices with each chunk sharing each the first and last element */
 private fun <E> List<E>.splitIntoChunks(indices: List<Int>): MutableList<MutableList<E>> {
@@ -253,14 +280,12 @@ private fun <E> List<E>.splitIntoChunks(indices: List<Int>): MutableList<Mutable
     return result
 }
 
-private fun Way.isClosed() = nodeIds.size >= 3 && nodeIds.first() == nodeIds.last()
-
 /** returns whether this way immediately precedes the given way in a chain */
-private fun Way.isBeforeWayInChain(way:Way) =
+private fun Way.isBeforeWayInChain(way: Way) =
     nodeIds.last() == way.nodeIds.last() || nodeIds.last() == way.nodeIds.first()
 
 /** returns whether this way immediately follows the given way in a chain */
-private fun Way.isAfterWayInChain(way:Way) =
+private fun Way.isAfterWayInChain(way: Way) =
     nodeIds.first() == way.nodeIds.last() || nodeIds.first() == way.nodeIds.first()
 
 private fun Relation.findVia(relationType: String): RelationMember? {

@@ -6,6 +6,8 @@ import de.westnordost.streetcomplete.view.Item
 
 class AddTracktypeForm : AImageListQuestAnswerFragment<String, String>() {
 
+    override val otherAnswers = listOf(createSplitWayAnswer())
+
     override val items = listOf(
         Item("grade1", R.drawable.tracktype_grade1, R.string.quest_tracktype_grade1),
         Item("grade2", R.drawable.tracktype_grade2, R.string.quest_tracktype_grade2),

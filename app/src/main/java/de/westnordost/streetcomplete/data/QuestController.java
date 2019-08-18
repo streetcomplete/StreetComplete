@@ -8,6 +8,8 @@ import android.graphics.Rect;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.IBinder;
+
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import android.util.Log;
 
@@ -24,12 +26,15 @@ import de.westnordost.streetcomplete.ApplicationConstants;
 import de.westnordost.streetcomplete.data.changesets.OpenChangesetsDao;
 import de.westnordost.streetcomplete.data.download.QuestDownloadService;
 import de.westnordost.streetcomplete.data.osm.OsmQuest;
+import de.westnordost.streetcomplete.data.osm.OsmQuestSplitWay;
 import de.westnordost.streetcomplete.data.osm.UndoOsmQuest;
+import de.westnordost.streetcomplete.data.osm.changes.SplitPolylineAtPosition;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChanges;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
 import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao;
 import de.westnordost.streetcomplete.data.osm.persist.MergedElementDao;
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
+import de.westnordost.streetcomplete.data.osm.persist.OsmQuestSplitWayDao;
 import de.westnordost.streetcomplete.data.osm.persist.UndoOsmQuestDao;
 import de.westnordost.streetcomplete.data.osmnotes.CreateNote;
 import de.westnordost.streetcomplete.data.osmnotes.CreateNoteDao;
@@ -52,6 +57,7 @@ public class QuestController
 	private final MergedElementDao osmElementDB;
 	private final ElementGeometryDao geometryDB;
 	private final OsmNoteQuestDao osmNoteQuestDB;
+	private final OsmQuestSplitWayDao splitWayDB;
 	private final CreateNoteDao createNoteDB;
 	private final OpenChangesetsDao openChangesetsDao;
 	private final Context context;
@@ -94,8 +100,8 @@ public class QuestController
 
 	@Inject public QuestController(OsmQuestDao osmQuestDB, UndoOsmQuestDao undoOsmQuestDB,
 								   MergedElementDao osmElementDB, ElementGeometryDao geometryDB,
-								   OsmNoteQuestDao osmNoteQuestDB, CreateNoteDao createNoteDB,
-								   OpenChangesetsDao openChangesetsDao,
+								   OsmNoteQuestDao osmNoteQuestDB, OsmQuestSplitWayDao splitWayDB,
+								   CreateNoteDao createNoteDB, OpenChangesetsDao openChangesetsDao,
 								   Provider<List<QuestType>> questTypesProvider, Context context)
 	{
 		this.osmQuestDB = osmQuestDB;
@@ -103,6 +109,7 @@ public class QuestController
 		this.osmElementDB = osmElementDB;
 		this.geometryDB = geometryDB;
 		this.osmNoteQuestDB = osmNoteQuestDB;
+		this.splitWayDB = splitWayDB;
 		this.createNoteDB = createNoteDB;
 		this.openChangesetsDao = openChangesetsDao;
 		this.questTypesProvider = questTypesProvider;
@@ -166,8 +173,24 @@ public class QuestController
 		   creation for other users, so those quests should be removed from the user's
 		   own display as well. As soon as the note is resolved, the quests will be re-
 		   created next time they are downloaded */
+		removeQuestsForElement(q.getElementType(), q.getElementId());
+		return true;
+	}
+
+	public void createNote(String text, @Nullable List<String> imagePaths, LatLon position)
+	{
+		CreateNote createNote = new CreateNote();
+		createNote.position = position;
+		createNote.text = text;
+		createNote.imagePaths = imagePaths;
+		createNoteDB.add(createNote);
+	}
+
+	private void removeQuestsForElement(Element.Type elementType, long elementId) {
+
+		// TODO actually there should be a method in OsmQuestDB: deleteAllForElement or similar
 		List<OsmQuest> questsForThisOsmElement = osmQuestDB.getAll(null, QuestStatus.NEW, null,
-				q.getElementType(), q.getElementId());
+			elementType, elementId);
 		List<Long> questIdsForThisOsmElement = new ArrayList<>(questsForThisOsmElement.size());
 		for(OsmQuest quest : questsForThisOsmElement)
 		{
@@ -179,16 +202,26 @@ public class QuestController
 
 		osmElementDB.deleteUnreferenced();
 		geometryDB.deleteUnreferenced();
-		return true;
 	}
 
-	public void createNote(String text, @Nullable List<String> imagePaths, LatLon position)
+	/** Split a way for the given OSM Quest. The quest will turn invisible.
+	 *  @return true if successful */
+	public boolean splitWay(long osmQuestId, @NonNull List<? extends SplitPolylineAtPosition> splits, @NonNull String source)
 	{
-		CreateNote createNote = new CreateNote();
-		createNote.position = position;
-		createNote.text = text;
-		createNote.imagePaths = imagePaths;
-		createNoteDB.add(createNote);
+		OsmQuest q = osmQuestDB.get(osmQuestId);
+		// race condition: another thread may have removed the element already (#288)
+		if(q == null || q.getStatus() != QuestStatus.NEW) return false;
+
+		splitWayDB.put(new OsmQuestSplitWay(
+			osmQuestId,
+			q.getOsmElementQuestType(),
+			q.getElementId(),
+			source,
+			splits
+		));
+
+		removeQuestsForElement(q.getElementType(), q.getElementId());
+		return true;
 	}
 
 	/** Apply the user's answer to the given quest. (The quest will turn invisible.)

@@ -20,7 +20,7 @@ import de.westnordost.streetcomplete.data.osm.download.OverpassOldMapDataDao;
 import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao;
 import de.westnordost.streetcomplete.data.osm.persist.MergedElementDao;
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
-import de.westnordost.streetcomplete.data.osm.persist.SplitWayDao;
+import de.westnordost.streetcomplete.data.osm.persist.OsmQuestSplitWayDao;
 import de.westnordost.streetcomplete.data.osm.persist.UndoOsmQuestDao;
 import de.westnordost.streetcomplete.data.osm.upload.OpenQuestChangesetsManager;
 import de.westnordost.streetcomplete.data.osm.upload.OsmQuestsUpload;
@@ -148,7 +148,7 @@ public class OsmModule
 		MergedElementDao elementDB, ElementGeometryDao elementGeometryDB,
 		OpenQuestChangesetsManager changesetManager, OsmQuestGiver questGiver,
 		QuestStatisticsDao statisticsDB, OsmApiWayGeometrySource wayGeometrySource,
-		SplitWayDao questDB, SplitSingleWayUpload singleUpload) {
+		OsmQuestSplitWayDao questDB, SplitSingleWayUpload singleUpload) {
 		return new SplitWaysUpload(elementDB, elementGeometryDB, changesetManager, questGiver,
 			statisticsDB, new ElementGeometryCreator(wayGeometrySource), questDB, singleUpload);
 	}

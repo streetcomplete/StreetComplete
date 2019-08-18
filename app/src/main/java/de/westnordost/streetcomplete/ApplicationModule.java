@@ -22,6 +22,7 @@ import de.westnordost.streetcomplete.data.download.WifiAutoDownloadStrategy;
 import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao;
 import de.westnordost.streetcomplete.data.osm.persist.MergedElementDao;
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
+import de.westnordost.streetcomplete.data.osm.persist.OsmQuestSplitWayDao;
 import de.westnordost.streetcomplete.data.osm.persist.UndoOsmQuestDao;
 import de.westnordost.streetcomplete.data.osmnotes.CreateNoteDao;
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestDao;
@@ -67,14 +68,14 @@ public class ApplicationModule
 	}
 
 	@Provides public QuestController questController(
-			OsmQuestDao osmQuestDB, UndoOsmQuestDao undoOsmQuestDB, MergedElementDao osmElementDB,
-			ElementGeometryDao geometryDB, OsmNoteQuestDao osmNoteQuestDB,
-			CreateNoteDao createNoteDB, OpenChangesetsDao manageChangesetsDB,
-			Provider<List<QuestType>> questTypesProvider)
+		OsmQuestDao osmQuestDB, UndoOsmQuestDao undoOsmQuestDB, MergedElementDao osmElementDB,
+		ElementGeometryDao geometryDB, OsmNoteQuestDao osmNoteQuestDB,
+		CreateNoteDao createNoteDB, OsmQuestSplitWayDao splitWayDB,
+		OpenChangesetsDao manageChangesetsDB, Provider<List<QuestType>> questTypesProvider)
 	{
 		return new QuestController(
-				osmQuestDB, undoOsmQuestDB, osmElementDB, geometryDB, osmNoteQuestDB, createNoteDB,
-				manageChangesetsDB,	questTypesProvider, appContext());
+			osmQuestDB, undoOsmQuestDB, osmElementDB, geometryDB, osmNoteQuestDB, splitWayDB,
+			createNoteDB, manageChangesetsDB, questTypesProvider, appContext());
 	}
 
 	@Provides public static MobileDataAutoDownloadStrategy mobileDataAutoDownloadStrategy(

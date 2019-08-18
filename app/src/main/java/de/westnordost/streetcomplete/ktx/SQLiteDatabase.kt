@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.ktx
 
-import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 
 /**

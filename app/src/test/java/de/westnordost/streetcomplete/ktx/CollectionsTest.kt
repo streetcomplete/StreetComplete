@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.ktx
 
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertNull
+import org.junit.Assert.*
 import org.junit.Test
 
 class CollectionsTest {
@@ -48,5 +47,31 @@ class CollectionsTest {
     @Test(expected = IndexOutOfBoundsException::class)
     fun `findPrevious throws if negative index`() {
         assertNull(listOf(1, 2, 3).findPrevious(-1) { true })
+    }
+
+    @Test fun `forEachPair with empty list`() {
+        listOf<String>().forEachPair { _, _ -> fail() }
+    }
+
+    @Test fun `forEachPair with list with only one element`() {
+        listOf(1).forEachPair { _, _ -> fail() }
+    }
+
+    @Test fun `forEachPair with several elements`() {
+        var counter = 0
+        listOf(1,2,3,4).forEachPair { first, second ->
+            assertEquals(first+1, second)
+            counter++
+        }
+        assertEquals(3, counter)
+    }
+
+    @Test fun `indexOfMaxBy with no elements`() {
+        assertEquals(-1, listOf<String>().indexOfMaxBy { it.length })
+    }
+
+    @Test fun `indexOfMaxBy with some elements`() {
+        assertEquals(2, listOf(3,4,8).indexOfMaxBy { it })
+        assertEquals(0, listOf(4,0,-1).indexOfMaxBy { it })
     }
 }

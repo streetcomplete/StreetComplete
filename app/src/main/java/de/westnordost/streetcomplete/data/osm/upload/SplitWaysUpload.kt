@@ -8,7 +8,7 @@ import de.westnordost.streetcomplete.data.osm.OsmQuestSplitWay
 import de.westnordost.streetcomplete.data.osm.download.ElementGeometryCreator
 import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao
 import de.westnordost.streetcomplete.data.osm.persist.MergedElementDao
-import de.westnordost.streetcomplete.data.osm.persist.SplitWayDao
+import de.westnordost.streetcomplete.data.osm.persist.OsmQuestSplitWayDao
 import de.westnordost.streetcomplete.data.statistics.QuestStatisticsDao
 import java.util.concurrent.atomic.AtomicBoolean
 import javax.inject.Inject
@@ -21,7 +21,7 @@ class SplitWaysUpload @Inject constructor(
     questGiver: OsmQuestGiver,
     statisticsDB: QuestStatisticsDao,
     elementGeometryCreator: ElementGeometryCreator,
-    private val splitWayDB: SplitWayDao,
+    private val splitWayDB: OsmQuestSplitWayDao,
     private val splitSingleOsmWayUpload: SplitSingleWayUpload
 ) : OsmInChangesetsUpload<OsmQuestSplitWay>(elementDB, elementGeometryDB, changesetManager,
     questGiver, statisticsDB, elementGeometryCreator) {

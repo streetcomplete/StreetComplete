@@ -8,13 +8,13 @@ import android.os.Build;
 import android.os.Handler;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.annotation.UiThread;
 
 import com.mapzen.tangram.LabelPickResult;
 import com.mapzen.tangram.LngLat;
 import com.mapzen.tangram.MapController;
 import com.mapzen.tangram.MapData;
+import com.mapzen.tangram.Marker;
 import com.mapzen.tangram.SceneError;
 import com.mapzen.tangram.SceneUpdate;
 import com.mapzen.tangram.TouchInput;
@@ -31,14 +31,17 @@ import javax.inject.Inject;
 import javax.inject.Provider;
 
 import de.westnordost.streetcomplete.Injector;
+import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.Quest;
 import de.westnordost.streetcomplete.data.QuestGroup;
 import de.westnordost.streetcomplete.data.QuestType;
 import de.westnordost.streetcomplete.data.osm.ElementGeometry;
 import de.westnordost.streetcomplete.quests.bikeway.AddCycleway;
+import de.westnordost.streetcomplete.util.DpUtil;
 import de.westnordost.streetcomplete.util.SlippyMapMath;
 import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.LatLon;
+import de.westnordost.streetcomplete.util.SphericalEarthMath;
 
 public class QuestsMapFragment extends MapFragment implements TouchInput.TapResponder,
 		MapController.LabelPickListener
@@ -70,6 +73,9 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 
 	private Rect questOffset;
 
+	// LatLon -> Marker Id
+	private final Map<LatLon, Long> markerIds = new HashMap<>();
+
 	@Inject Provider<List<QuestType>> questTypesProvider;
 	@Inject TangramQuestSpriteSheetCreator spriteSheetCreator;
 	private Map<QuestType, Integer> questTypeOrder;
@@ -77,7 +83,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 	public interface Listener
 	{
 		void onClickedQuest(QuestGroup questGroup, Long questId);
-		void onClickedMapAt(@Nullable LatLon position);
+		void onClickedMapAt(LatLon position, double horizontalAccuracyInMeters);
 		/** Called once the given bbox comes into view first (listener should get quests there) */
 		void onFirstInView(BoundingBox bbox);
 	}
@@ -166,7 +172,12 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 
 	@Override public boolean onSingleTapConfirmed(float x, float y)
 	{
-		if(controller != null) controller.pickLabel(x,y);
+
+		if(controller != null) {
+			onClickedMap(x, y);
+
+			controller.pickLabel(x,y);
+		}
 		return true;
 	}
 
@@ -180,7 +191,6 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 				|| labelPickResult.getProperties() == null
 				|| labelPickResult.getProperties().get(MARKER_QUEST_ID) == null)
 		{
-			onClickedMap(positionX, positionY);
 			return;
 		}
 
@@ -264,7 +274,17 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 	private void onClickedMap(float positionX, float positionY)
 	{
 		LngLat pos = controller.screenPositionToLngLat(new PointF(positionX, positionY));
-		if(pos != null) listener.onClickedMapAt(TangramConst.toLatLon(pos));
+		if(pos != null) {
+			float fingerSize = DpUtil.toPx(11, getContext());
+			LngLat fingerEdge = controller.screenPositionToLngLat(new PointF(positionX + fingerSize, positionY));
+			if (fingerEdge != null)
+			{
+				LatLon clickPos = TangramConst.toLatLon(pos);
+				LatLon fingerEdgePos = TangramConst.toLatLon(fingerEdge);
+				double fingerRadiusInMeters = SphericalEarthMath.distance(clickPos, fingerEdgePos);
+				listener.onClickedMapAt(clickPos, fingerRadiusInMeters);
+			}
+		}
 	}
 
 	@Override protected boolean shouldCenterCurrentPosition()
@@ -361,12 +381,12 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		}
 	}
 
-	@UiThread
-	public void removeQuestGeometry()
+	@UiThread public void removeQuestGeometry()
 	{
 		if(geometryLayer != null) geometryLayer.clear();
 		if(controller != null)
 		{
+			controller.removeAllMarkers();
 			if(zoomBeforeShowingQuest != null) controller.setZoomEased(zoomBeforeShowingQuest, 500);
 			if(positionBeforeShowingQuest != null) controller.setPositionEased(positionBeforeShowingQuest, 500);
 			zoomBeforeShowingQuest = null;
@@ -374,23 +394,28 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 			followPosition();
 		}
 	}
-/*
-	public void addQuest(Quest quest, QuestGroup group)
-	{
-		// TODO: this method may also be called for quests that are already displayed on this map
-		if(questsLayer == null) return;
 
-		LngLat pos = TangramConst.toLngLat(quest.getMarkerLocation());
-		Map<String, String> props = new HashMap<>();
-		props.put("type", "point");
-		props.put("kind", quest.getType().getIconName());
-		props.put(MARKER_QUEST_GROUP, group.name());
-		props.put(MARKER_QUEST_ID, String.valueOf(quest.getId()));
-		questsLayer.addPoint(pos, props);
-
-		controller.applySceneUpdates();
+	@UiThread public void putMarkerForCurrentQuest(LatLon pos) {
+		deleteMarkerForCurrentQuest(pos);
+		if (controller != null) {
+			Marker marker = controller.addMarker();
+			marker.setDrawable(R.drawable.crosshair_marker);
+			// TODO ugly!!
+			marker.setStylingFromString("{ style: 'points', color: 'white', size: [50px, 50px], order: 2000, collide: false }");
+			marker.setPoint(TangramConst.toLngLat(pos));
+			markerIds.put(pos, marker.getMarkerId());
+		}
 	}
-*/
+
+	@UiThread public void deleteMarkerForCurrentQuest(LatLon pos) {
+		if (controller != null) {
+			Long markerId = markerIds.get(pos);
+			if (markerId != null) {
+				controller.removeMarker(markerId);
+				markerIds.remove(pos);
+			}
+		}
+	}
 
 	private int getQuestPriority(Quest quest){
 		// priority is decided by

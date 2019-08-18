@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.data.osm.upload
 
 import de.westnordost.osmapi.map.data.Way
 import de.westnordost.streetcomplete.data.osm.OsmQuestSplitWay
-import de.westnordost.streetcomplete.data.osm.persist.SplitWayDao
+import de.westnordost.streetcomplete.data.osm.persist.OsmQuestSplitWayDao
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
 import de.westnordost.streetcomplete.on
 import de.westnordost.streetcomplete.any
@@ -19,7 +19,7 @@ import org.mockito.Mockito.*
 import java.util.concurrent.atomic.AtomicBoolean
 
 class SplitWaysUploadTest {
-    private lateinit var splitWayDB: SplitWayDao
+    private lateinit var splitWayDB: OsmQuestSplitWayDao
     private lateinit var elementDB: MergedElementDao
     private lateinit var changesetManager: OpenQuestChangesetsManager
     private lateinit var elementGeometryDB: ElementGeometryDao
@@ -30,7 +30,7 @@ class SplitWaysUploadTest {
     private lateinit var uploader: SplitWaysUpload
 
     @Before fun setUp() {
-        splitWayDB = mock(SplitWayDao::class.java)
+        splitWayDB = mock(OsmQuestSplitWayDao::class.java)
         elementDB = mock(MergedElementDao::class.java)
         on(elementDB.get(any(), ArgumentMatchers.anyLong())).thenReturn(mock(Way::class.java))
         changesetManager = mock(OpenQuestChangesetsManager::class.java)
