@@ -2,6 +2,7 @@
 isAdvisorySpeedLimitKnown: true
 isSlowZoneKnown: false
 measurementSystem: [imperial]
+measurementSystemForWeightLimits: [short_ton_formatted_as_ton, pounds]
 mobileCountryCode: 310
 officialLanguages: [en]
 orchardProduces: [tomato, grape, apple, orange, strawberry, almond, peach, lemon, lime, grapefruit,

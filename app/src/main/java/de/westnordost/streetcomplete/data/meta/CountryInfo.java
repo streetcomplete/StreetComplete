@@ -15,6 +15,7 @@ public class CountryInfo implements Serializable, Cloneable
 	String countryCode;
 
 	List<String> measurementSystem;
+	List<String> measurementSystemForWeightLimits;
 	List<String> popularSports;
 	List<String> popularReligions;
 	String firstDayOfWorkweek;
@@ -32,6 +33,11 @@ public class CountryInfo implements Serializable, Cloneable
 	public List<String> getMeasurementSystem()
 	{
 		return measurementSystem;
+	}
+
+	public List<String> getMeasurementSystemForWeightLimits()
+	{
+		return measurementSystemForWeightLimits;
 	}
 
 	public List<String> getPopularSports()

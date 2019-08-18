@@ -5,6 +5,7 @@ isLeftHandTraffic: false
 isLivingStreetKnown: false
 isSlowZoneKnown: false
 measurementSystem: [metric]
+measurementSystemForWeightLimits: [ton]
 officialLanguages: [en]
 orchardProduces: []
 popularReligions: []
