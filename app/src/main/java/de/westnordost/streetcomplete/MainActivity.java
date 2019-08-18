@@ -1134,12 +1134,12 @@ public class MainActivity extends AppCompatActivity implements
 		else            retrieveQuest.run();
 	}
 
-	@Override public void onClickedMapAt(LatLon position, double horizontalAccuracyInMeters)
+	@Override public void onClickedMapAt(LatLon position, double clickAreaSizeInMeters)
 	{
 		IsCloseableBottomSheet f = getBottomSheetFragment();
 		if(f != null)
 		{
-			if(!f.onClickMapAt(position, horizontalAccuracyInMeters))
+			if(!f.onClickMapAt(position, clickAreaSizeInMeters))
 				f.onClickClose(this::closeBottomSheet);
 		}
 	}

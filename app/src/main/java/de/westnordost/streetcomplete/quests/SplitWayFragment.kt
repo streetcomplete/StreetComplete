@@ -53,6 +53,7 @@ class SplitWayFragment : Fragment(), IsCloseableBottomSheet {
         way = arguments!!.getSerializable(ARG_WAY) as Way
         val elementGeometry = arguments!!.getSerializable(ARG_ELEMENT_GEOMETRY) as ElementGeometry
         positions = elementGeometry.polylines.single().map { OsmLatLon(it.latitude, it.longitude) }
+        soundFx.prepare(R.raw.snip)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -89,9 +90,11 @@ class SplitWayFragment : Fragment(), IsCloseableBottomSheet {
     }
 
     @UiThread
-    override fun onClickMapAt(position: LatLon, horizontalAccuracyInMeters: Double): Boolean {
+    override fun onClickMapAt(position: LatLon, clickAreaSizeInMeters: Double): Boolean {
+        // so it is easier to hit the line with the thumb. For precision, one can zoom
+        val extendedClickArea = clickAreaSizeInMeters * 1.5
 
-        val splitWayCandidates = createSplits(position, horizontalAccuracyInMeters)
+        val splitWayCandidates = createSplits(position, extendedClickArea)
         // split point could be put on several places
         if (splitWayCandidates.size > 1) {
             context?.toast(R.string.quest_split_way_too_imprecise)
@@ -101,7 +104,7 @@ class SplitWayFragment : Fragment(), IsCloseableBottomSheet {
             val splitPosition = splitWay.pos
 
             // new split point is too close to existing split points
-            if (splits.any { distance(it.second, splitPosition) < horizontalAccuracyInMeters } ) {
+            if (splits.any { distance(it.second, splitPosition) < extendedClickArea } ) {
                 context?.toast(R.string.quest_split_way_too_imprecise)
             } else {
                 splits.add(Pair(splitWay, splitPosition))
@@ -114,30 +117,30 @@ class SplitWayFragment : Fragment(), IsCloseableBottomSheet {
         return true
     }
 
-    private fun createSplits(clickPosition: LatLon, horizontalAccuracyInMeters: Double): Set<SplitPolylineAtPosition> {
-        val splitWaysAtNodes = createSplitsAtNodes(clickPosition, horizontalAccuracyInMeters)
+    private fun createSplits(clickPosition: LatLon, clickAreaSizeInMeters: Double): Set<SplitPolylineAtPosition> {
+        val splitWaysAtNodes = createSplitsAtNodes(clickPosition, clickAreaSizeInMeters)
         // if a split on a node is possible, do that and don't even check if a split on a way is also possible
         if (splitWaysAtNodes.isNotEmpty()) return splitWaysAtNodes
-        return createSplitsForLines(clickPosition, horizontalAccuracyInMeters)
+        return createSplitsForLines(clickPosition, clickAreaSizeInMeters)
     }
 
-    private fun createSplitsAtNodes(clickPosition: LatLon, horizontalAccuracyInMeters: Double): Set<SplitAtPoint> {
+    private fun createSplitsAtNodes(clickPosition: LatLon, clickAreaSizeInMeters: Double): Set<SplitAtPoint> {
         // ignore first and last node (cannot be split at the very start or end)
         val result = mutableSetOf<SplitAtPoint>()
         for (pos in positions.subList(1, positions.size - 1)) {
             val nodeDistance = distance(clickPosition, pos)
-            if (horizontalAccuracyInMeters > nodeDistance) {
+            if (clickAreaSizeInMeters > nodeDistance) {
                 result.add(SplitAtPoint(pos))
             }
         }
         return result
     }
 
-    private fun createSplitsForLines(clickPosition: LatLon, horizontalAccuracyInMeters: Double): Set<SplitAtLinePosition> {
+    private fun createSplitsForLines(clickPosition: LatLon, clickAreaSizeInMeters: Double): Set<SplitAtLinePosition> {
         val result = mutableSetOf<SplitAtLinePosition>()
         positions.forEachPair { first, second ->
             val crossTrackDistance = crossTrackDistance(first, second, clickPosition)
-            if (horizontalAccuracyInMeters > crossTrackDistance) {
+            if (clickAreaSizeInMeters > crossTrackDistance) {
                 val alongTrackDistance = alongTrackDistance(first, second, clickPosition)
                 val distance = distance(first, second)
                 if (distance > alongTrackDistance && alongTrackDistance > 0) {

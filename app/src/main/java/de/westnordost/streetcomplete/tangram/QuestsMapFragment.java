@@ -67,6 +67,8 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 
 	private static final float MAX_QUEST_ZOOM = 19;
 
+	private static final int CLICK_AREA_SIZE_IN_DP = 48;
+
 	private String sceneFile;
 
 	private Listener listener;
@@ -83,7 +85,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 	public interface Listener
 	{
 		void onClickedQuest(QuestGroup questGroup, Long questId);
-		void onClickedMapAt(LatLon position, double horizontalAccuracyInMeters);
+		void onClickedMapAt(LatLon position, double clickAreaSizeInMeters);
 		/** Called once the given bbox comes into view first (listener should get quests there) */
 		void onFirstInView(BoundingBox bbox);
 	}
@@ -275,7 +277,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 	{
 		LngLat pos = controller.screenPositionToLngLat(new PointF(positionX, positionY));
 		if(pos != null) {
-			float fingerSize = DpUtil.toPx(11, getContext());
+			float fingerSize = DpUtil.toPx(CLICK_AREA_SIZE_IN_DP, getContext())/2;
 			LngLat fingerEdge = controller.screenPositionToLngLat(new PointF(positionX + fingerSize, positionY));
 			if (fingerEdge != null)
 			{
@@ -400,8 +402,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		if (controller != null) {
 			Marker marker = controller.addMarker();
 			marker.setDrawable(R.drawable.crosshair_marker);
-			// TODO ugly!!
-			marker.setStylingFromString("{ style: 'points', color: 'white', size: [50px, 50px], order: 2000, collide: false }");
+			marker.setStylingFromString("{ style: 'points', color: 'white', size: 48px, order: 2000, collide: false }");
 			marker.setPoint(TangramConst.toLngLat(pos));
 			markerIds.put(pos, marker.getMarkerId());
 		}

@@ -103,7 +103,7 @@ abstract class AbstractBottomSheetFragment : Fragment(), IsCloseableBottomSheet 
 	    closeButton.visibility = if (coversToolbar) View.VISIBLE else View.INVISIBLE
     }
 
-    @UiThread override fun onClickMapAt(position: LatLon, horizontalAccuracyInMeters: Double): Boolean {
+    @UiThread override fun onClickMapAt(position: LatLon, clickAreaSizeInMeters: Double): Boolean {
         return false
     }
 
