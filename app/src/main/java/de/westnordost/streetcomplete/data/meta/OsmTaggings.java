@@ -24,7 +24,11 @@ public class OsmTaggings
 	public static final String SURVEY_MARK_KEY = "check_date";
 
 	public static final String[] OFFICES_VISITED_BY_GENERAL_PUBLIC = {
-		"insurance", "government", "lawyer", "estate_agent", "political_party", "travel_agent",
-		"tax_advisor", "therapist", "religion",
+		"insurance", "government", "travel_agent", "tax_advisor", "therapist", "religion",
+		"lawyer", "estate_agent", "political_party"
+	};
+
+	public static final String[] OFFICES_WITH_WALK_IN_BY_GENERAL_PUBLIC = {
+		"insurance", "government", "travel_agent", "tax_advisor", "therapist", "religion",
 	};
 }
