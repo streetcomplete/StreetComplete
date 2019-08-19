@@ -37,7 +37,7 @@ class OsmQuestSplitWayDaoTest : ApplicationDbTestCase() {
 
 	    assertEquals(input.questType, output.questType)
 	    assertEquals(input.wayId, output.wayId)
-	    assertEquals(input.id, output.id)
+	    assertEquals(input.questId, output.questId)
 	    assertEquals(input.splits.size, output.splits.size)
 	    val it = input.splits.listIterator()
 	    val ot = output.splits.listIterator()

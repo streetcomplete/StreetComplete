@@ -40,12 +40,12 @@ class SplitWaysUpload @Inject constructor(
     }
 
     override fun onUploadSuccessful(quest: OsmQuestSplitWay) {
-        splitWayDB.delete(quest.id)
+        splitWayDB.delete(quest.questId)
         Log.d(TAG, "Uploaded split way #${quest.wayId}")
     }
 
     override fun onUploadFailed(quest: OsmQuestSplitWay, e: Throwable) {
-        splitWayDB.delete(quest.id)
+        splitWayDB.delete(quest.questId)
         Log.d(TAG, "Dropped split for way #${quest.wayId}: ${e.message}")
     }
 }

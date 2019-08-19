@@ -29,9 +29,9 @@ class OsmQuestSplitWayDao @Inject constructor(
         }
     }
 
-    fun get(id: Long): OsmQuestSplitWay? {
+    fun get(questId: Long): OsmQuestSplitWay? {
         val selection = "$QUEST_ID = ?"
-        val args = arrayOf(id.toString())
+        val args = arrayOf(questId.toString())
         return dbHelper.readableDatabase.queryOne(NAME, null, selection, args).use { cursor ->
             return cursor.createOsmQuestSplitWay()
         }
@@ -41,12 +41,12 @@ class OsmQuestSplitWayDao @Inject constructor(
         dbHelper.writableDatabase.insert(NAME, null, quest.createContentValues())
     }
 
-    fun delete(id: Long) {
-        dbHelper.writableDatabase.delete(NAME, "$QUEST_ID = $id", null)
+    fun delete(questId: Long) {
+        dbHelper.writableDatabase.delete(NAME, "$QUEST_ID = $questId", null)
     }
 
     private fun OsmQuestSplitWay.createContentValues() = ContentValues().also { v ->
-        v.put(QUEST_ID, id)
+        v.put(QUEST_ID, questId)
         v.put(QUEST_TYPE, questType.javaClass.simpleName)
         v.put(WAY_ID, wayId)
         v.put(SOURCE, source)

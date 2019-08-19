@@ -5,7 +5,7 @@ import de.westnordost.streetcomplete.data.osm.changes.SplitPolylineAtPosition
 import de.westnordost.streetcomplete.data.osm.upload.UploadableInChangeset
 
 data class OsmQuestSplitWay(
-    val id: Long,
+    val questId: Long,
     val questType: OsmElementQuestType<*>,
     val wayId: Long,
     override val source: String,
