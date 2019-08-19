@@ -48,8 +48,20 @@ class AddPlaceName(
                 "water_park", "miniature_golf", "stadium", "marina", "bowling_alley",
                 "amusement_arcade", "adult_gaming_centre", "tanning_salon", "horse_riding"
             ),
-            "office" to OsmTaggings.OFFICES_VISITED_BY_GENERAL_PUBLIC,
-            "craft" to OsmTaggings.CRAFT_VISITED_BY_GENERAL_PUBLIC
+            "office" to arrayOf(
+                "insurance", "government", "travel_agent", "tax_advisor", "religion", "employment_agency",
+                "lawyer", "estate_agent", "political_party", "therapist",
+                "company", "lawyer", "educational_institution", "telecommunication",
+                "administrative", "ngo", "association", "it", "accountant", "research", "architect",
+                "financial", "newspaper", "advertising_agency"
+            ),
+            "craft" to arrayOf(
+                "carpenter", "shoemaker", "tailor", "winery", "photographer", "electrician",
+                "brewery", "metal_construction", "plumber", "confectionery", "caterer", "hvac",
+                "window_construction", "dressmaker", "electronics_repair", "handicraft", "gardener",
+                "stonemason", "painter", "glaziery", "key_cutter", "beekeper", "blacksmith",
+                "roofer", "upholsterer", "pottery"
+            )
         ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString(" or ") +
         ")"
     )}
