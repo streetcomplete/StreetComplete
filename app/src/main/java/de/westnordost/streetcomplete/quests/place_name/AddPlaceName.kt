@@ -49,17 +49,24 @@ class AddPlaceName(
                 "amusement_arcade", "adult_gaming_centre", "tanning_salon", "horse_riding"
             ),
             "office" to arrayOf(
+                // also listed for AddOpeningHours and AddWheelchair quests
                 "insurance", "government", "travel_agent", "tax_advisor", "religion", "employment_agency",
+                // also listed for AddWheelchair quest
                 "lawyer", "estate_agent", "political_party", "therapist",
+                // ones below not listed for other quests
                 "company", "lawyer", "educational_institution", "telecommunication",
                 "administrative", "ngo", "association", "it", "accountant", "research", "architect",
                 "financial", "newspaper", "advertising_agency"
             ),
             "craft" to arrayOf(
-                "carpenter", "shoemaker", "tailor", "winery", "photographer", "electrician",
-                "brewery", "metal_construction", "plumber", "confectionery", "caterer", "hvac",
-                "window_construction", "dressmaker", "electronics_repair", "handicraft", "gardener",
-                "stonemason", "painter", "glaziery", "key_cutter", "beekeper", "blacksmith",
+                // also listed for AddOpeningHours and AddWheelchair quests
+                "carpenter", "shoemaker", "tailor", "photographer", "dressmaker",
+                "electronics_repair", "key_cutter", "stonemason",
+                // also listed for AddPlaceName quest
+                "winery", "electrician", "plumber",
+                // ones below not listed for other quests
+                "metal_construction", "confectionery", "caterer", "hvac", "window_construction",
+                "handicraft", "gardener", "painter", "glaziery", "beekeper", "blacksmith",
                 "roofer", "upholsterer", "pottery"
             )
         ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString(" or ") +
