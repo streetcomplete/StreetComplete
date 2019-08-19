@@ -8,4 +8,4 @@ fun LatLon.equalsInOsm(other: LatLon) =
     !latitude.isDifferent(other.latitude, 1e-7) &&
     !longitude.isDifferent(other.longitude, 1e-7)
 
-private fun Double.isDifferent(other: Double, delta: Double) = abs(this - other) > delta
+private fun Double.isDifferent(other: Double, delta: Double) = abs(this - other) >= delta
