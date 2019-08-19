@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.data.osm.persist
 
 import android.content.ContentValues
 import android.database.Cursor
+import android.database.sqlite.SQLiteDatabase.CONFLICT_REPLACE
 import android.database.sqlite.SQLiteOpenHelper
 import de.westnordost.streetcomplete.data.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
@@ -23,26 +24,24 @@ class OsmQuestSplitWayDao @Inject constructor(
     private val serializer: Serializer,
     private val questTypeList: QuestTypeRegistry
 ) {
+    private val db get() = dbHelper.writableDatabase
+
     fun getAll(): List<OsmQuestSplitWay> {
-        return dbHelper.readableDatabase.query(NAME).use { cursor ->
-            return cursor.map { it.createOsmQuestSplitWay() }
-        }
+        return db.query(NAME) { it.createOsmQuestSplitWay() }
     }
 
     fun get(questId: Long): OsmQuestSplitWay? {
         val selection = "$QUEST_ID = ?"
         val args = arrayOf(questId.toString())
-        return dbHelper.readableDatabase.queryOne(NAME, null, selection, args).use { cursor ->
-            return cursor.createOsmQuestSplitWay()
-        }
+        return db.queryOne(NAME, null, selection, args) { it.createOsmQuestSplitWay() }
     }
 
     fun put(quest: OsmQuestSplitWay) {
-        dbHelper.writableDatabase.insert(NAME, null, quest.createContentValues())
+        db.insertWithOnConflict(NAME, null, quest.createContentValues(), CONFLICT_REPLACE)
     }
 
     fun delete(questId: Long) {
-        dbHelper.writableDatabase.delete(NAME, "$QUEST_ID = $questId", null)
+        db.delete(NAME, "$QUEST_ID = $questId", null)
     }
 
     private fun OsmQuestSplitWay.createContentValues() = ContentValues().also { v ->

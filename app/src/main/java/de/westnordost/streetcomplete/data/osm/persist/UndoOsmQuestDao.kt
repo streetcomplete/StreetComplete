@@ -21,24 +21,23 @@ import de.westnordost.streetcomplete.data.osm.persist.UndoOsmQuestTable.NAME_MER
 import de.westnordost.streetcomplete.ktx.*
 import de.westnordost.streetcomplete.util.Serializer
 
-/** Undos of OsmQuests  */
 class UndoOsmQuestDao @Inject constructor(
-    private var dbHelper: SQLiteOpenHelper,
-    private var serializer: Serializer,
-    private var questTypeList: QuestTypeRegistry
+    private val dbHelper: SQLiteOpenHelper,
+    private val serializer: Serializer,
+    private val questTypeList: QuestTypeRegistry
 ) {
+    private val db get() = dbHelper.writableDatabase
+
     fun getAll(): List<UndoOsmQuest> {
-        return dbHelper.readableDatabase.query(NAME_MERGED_VIEW).use { cursor ->
-            return cursor.map { it.createUndo() }
-        }
+        return db.query(NAME_MERGED_VIEW) { it.createUndo() }
     }
 
-    fun delete(questId: Long): Int {
-        return dbHelper.writableDatabase.delete(NAME, "$QUEST_ID = $questId", null)
+    fun delete(questId: Long) {
+        db.delete(NAME, "$QUEST_ID = $questId", null)
     }
 
     fun add(quest: UndoOsmQuest) {
-        dbHelper.writableDatabase.insert(NAME, null, quest.createContentValues())
+        db.insert(NAME, null, quest.createContentValues())
     }
 
     private fun UndoOsmQuest.createContentValues() = ContentValues().also { v ->
@@ -60,3 +59,5 @@ class UndoOsmQuestDao @Inject constructor(
         ElementGeometryDao.createObjectFrom(serializer, this)
     )
 }
+
+// TODO test for this!!

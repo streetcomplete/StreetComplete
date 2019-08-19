@@ -43,9 +43,8 @@ class QuestAnswerComponentTest {
                 assertEquals(expectQuestTitle, questTitle)
             }
 
-            override fun onSplitWay(questId: Long, group: QuestGroup) {
-                assertEquals(expectQuestId.toLong(), questId)
-                assertEquals(expectGroup, group)
+            override fun onSplitWay(osmQuestId: Long) {
+                assertEquals(expectQuestId.toLong(), osmQuestId)
             }
 
             override fun onSkippedQuest(questId: Long, group: QuestGroup) {

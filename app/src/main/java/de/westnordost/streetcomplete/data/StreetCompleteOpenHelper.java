@@ -282,6 +282,8 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 
 		db.execSQL(QUEST_VISIBILITY_TABLE_CREATE);
 
+		db.execSQL(SPLIT_WAYS_TABLE_CREATE);
+
 		for (TablesHelper extension : extensions)
 		{
 			extension.onCreate(db);
