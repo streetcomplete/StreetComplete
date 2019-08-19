@@ -40,7 +40,8 @@ class AddOpeningHours (o: OverpassMapDataDao) : SimpleOverpassQuestType<OpeningH
                 "miniature_golf", "bowling_alley", "horse_riding",  "amusement_arcade",
                 "adult_gaming_centre", "tanning_salon"
             ),
-            "office" to OsmTaggings.OFFICES_WITH_WALK_IN_BY_GENERAL_PUBLIC
+            "office" to OsmTaggings.OFFICES_WITH_WALK_IN_BY_GENERAL_PUBLIC,
+            "craft" to OsmTaggings.CRAFT_WITH_WALK_IN_BY_GENERAL_PUBLIC
         ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString(" or ") +
         " )" +
         " and !opening_hours and name and opening_hours:signed != no" +

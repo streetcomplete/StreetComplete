@@ -31,4 +31,15 @@ public class OsmTaggings
 	public static final String[] OFFICES_WITH_WALK_IN_BY_GENERAL_PUBLIC = {
 		"insurance", "government", "travel_agent", "tax_advisor", "religion"
 	};
+
+	public static final String[] CRAFT_VISITED_BY_GENERAL_PUBLIC = {
+		"carpenter", "shoemaker", "tailor", "photographer", "dressmaker",
+		"electronics_repair", "key_cutter", "stonemason",
+		"winery", "electrician", "plumber"
+	};
+
+	public static final String[] CRAFT_WITH_WALK_IN_BY_GENERAL_PUBLIC = {
+		"carpenter", "shoemaker", "tailor", "photographer", "dressmaker",
+		"electronics_repair", "key_cutter", "stonemason"
+	};
 }

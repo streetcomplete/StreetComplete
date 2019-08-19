@@ -33,7 +33,8 @@ class AddWheelchairAccessBusiness(o: OverpassMapDataDao) : SimpleOverpassQuestTy
                 "bowling_alley", "horse_riding", "sports_centre", "fitness_centre",
                 "amusement_arcade", "adult_gaming_centre", "tanning_salon"
             ),
-            "office" to OsmTaggings.OFFICES_VISITED_BY_GENERAL_PUBLIC
+            "office" to OsmTaggings.OFFICES_VISITED_BY_GENERAL_PUBLIC,
+            "craft" to OsmTaggings.CRAFT_VISITED_BY_GENERAL_PUBLIC
         ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString(" or ") +
         " )" +
         " and !wheelchair and name"
