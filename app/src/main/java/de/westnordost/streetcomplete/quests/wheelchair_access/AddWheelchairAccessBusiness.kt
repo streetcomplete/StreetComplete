@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.wheelchair_access
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.OsmTaggings
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
@@ -32,10 +33,7 @@ class AddWheelchairAccessBusiness(o: OverpassMapDataDao) : SimpleOverpassQuestTy
                 "bowling_alley", "horse_riding", "sports_centre", "fitness_centre",
                 "amusement_arcade", "adult_gaming_centre", "tanning_salon"
             ),
-            "office" to arrayOf(
-                "insurance", "government", "lawyer", "estate_agent", "political_party", "travel_agent",
-                "tax_advisor", "therapist", "religion"
-            )
+            "office" to OsmTaggings.OFFICES_VISITED_BY_GENERAL_PUBLIC
         ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString(" or ") +
         " )" +
         " and !wheelchair and name"
