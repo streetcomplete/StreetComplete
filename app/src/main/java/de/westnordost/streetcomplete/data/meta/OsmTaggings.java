@@ -29,6 +29,6 @@ public class OsmTaggings
 	};
 
 	public static final String[] OFFICES_WITH_WALK_IN_BY_GENERAL_PUBLIC = {
-		"insurance", "government", "travel_agent", "tax_advisor", "therapist", "religion",
+		"insurance", "government", "travel_agent", "tax_advisor", "religion"
 	};
 }
