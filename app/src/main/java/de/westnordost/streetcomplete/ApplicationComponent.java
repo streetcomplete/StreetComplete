@@ -1,9 +1,8 @@
 package de.westnordost.streetcomplete;
 
-import org.jetbrains.annotations.NotNull;
-
 import javax.inject.Singleton;
 
+import androidx.annotation.NonNull;
 import dagger.Component;
 import de.westnordost.streetcomplete.data.DbModule;
 import de.westnordost.streetcomplete.data.OsmModule;
@@ -71,5 +70,5 @@ public interface ApplicationComponent
 	void inject(AddBuildingLevelsForm fragment);
 	void inject(ChangesetAutoCloserWorker worker);
 
-	void inject(@NotNull SplitWayFragment splitWayFragment);
+	void inject(@NonNull SplitWayFragment splitWayFragment);
 }
