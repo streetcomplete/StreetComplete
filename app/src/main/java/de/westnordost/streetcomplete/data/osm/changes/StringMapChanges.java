@@ -13,7 +13,7 @@ import java.util.NoSuchElementException;
  *  it. A StringMapChanges is immutable. */
 public class StringMapChanges
 {
-	private final List<StringMapEntryChange> changes;
+	private final ArrayList<StringMapEntryChange> changes;
 
 	public List<StringMapEntryChange> getChanges()
 	{
@@ -22,7 +22,7 @@ public class StringMapChanges
 
 	public StringMapChanges(@NonNull List<StringMapEntryChange> changes)
 	{
-		this.changes = changes;
+		this.changes = new ArrayList<>(changes);
 	}
 
 	/** @return a StringMapChanges that exactly reverses this StringMapChanges */

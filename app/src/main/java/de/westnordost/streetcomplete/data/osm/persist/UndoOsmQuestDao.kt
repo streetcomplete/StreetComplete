@@ -32,6 +32,12 @@ class UndoOsmQuestDao @Inject constructor(
         return db.query(NAME_MERGED_VIEW) { it.createUndo() }
     }
 
+    fun get(questId: Long): UndoOsmQuest? {
+        val selection = "$QUEST_ID = ?"
+        val args = arrayOf(questId.toString())
+        return db.queryOne(NAME_MERGED_VIEW, null, selection, args) { it.createUndo() }
+    }
+
     fun delete(questId: Long) {
         db.delete(NAME, "$QUEST_ID = $questId", null)
     }
@@ -59,5 +65,3 @@ class UndoOsmQuestDao @Inject constructor(
         ElementGeometryDao.createObjectFrom(serializer, this)
     )
 }
-
-// TODO test for this!!

@@ -20,7 +20,7 @@ fun Cursor.getFloatOrNull(columnName: String): Float? = getFloatOrNull(getColumn
 fun Cursor.getStringOrNull(columnName: String): String? = getStringOrNull(getColumnIndexOrThrow(columnName))
 fun Cursor.getBlobOrNull(columnName: String): ByteArray? = getBlobOrNull(getColumnIndexOrThrow(columnName))
 
-@Deprecated("Better not use until/if it will be possible that this is typesafe on compile time")
+@Deprecated("Better not use until/if there are union types that make this typesafe on compile time")
 // still keeping it around though...
 inline fun <reified T> Cursor.get(columnName: String): T {
     val index = getColumnIndexOrThrow(columnName)
@@ -36,7 +36,7 @@ inline fun <reified T> Cursor.get(columnName: String): T {
     } as T
 }
 
-@Deprecated("Better not use until/if it will be possible that this is typesafe on compile time")
+@Deprecated("Better not use until/if there are union types that make this typesafe on compile time")
 // still keeping it around though...
 fun contentValuesOf(vararg pairs: Pair<String, Any?>): ContentValues {
     val r = ContentValues()
