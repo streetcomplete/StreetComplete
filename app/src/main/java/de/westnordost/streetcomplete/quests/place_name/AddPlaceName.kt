@@ -20,7 +20,7 @@ class AddPlaceName(
 
     private val filter by lazy { FiltersParser().parse(
         "nodes, ways, relations with !name and !brand and noname != yes " +
-        " and (shop and shop !~ no|vacant or tourism = information and information = office " +
+        " and (shop and shop !~ no|vacant or craft or office or tourism = information and information = office " +
         " or " +
         mapOf(
             "amenity" to arrayOf(
@@ -47,27 +47,6 @@ class AddPlaceName(
                 "nature_reserve", "sports_centre", "fitness_centre", "dance", "golf_course",
                 "water_park", "miniature_golf", "stadium", "marina", "bowling_alley",
                 "amusement_arcade", "adult_gaming_centre", "tanning_salon", "horse_riding"
-            ),
-            "office" to arrayOf(
-                // also listed for AddOpeningHours and AddWheelchair quests
-                "insurance", "government", "travel_agent", "tax_advisor", "religion", "employment_agency",
-                // also listed for AddWheelchair quest
-                "lawyer", "estate_agent", "political_party", "therapist",
-                // ones below not listed for other quests
-                "company", "lawyer", "educational_institution", "telecommunication",
-                "administrative", "ngo", "association", "it", "accountant", "research", "architect",
-                "financial", "newspaper", "advertising_agency"
-            ),
-            "craft" to arrayOf(
-                // also listed for AddOpeningHours and AddWheelchair quests
-                "carpenter", "shoemaker", "tailor", "photographer", "dressmaker",
-                "electronics_repair", "key_cutter", "stonemason",
-                // also listed for AddPlaceName quest
-                "winery", "electrician", "plumber",
-                // ones below not listed for other quests
-                "metal_construction", "confectionery", "caterer", "hvac", "window_construction",
-                "handicraft", "gardener", "painter", "glaziery", "beekeper", "blacksmith",
-                "roofer", "upholsterer", "pottery"
             )
         ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString(" or ") +
         ")"

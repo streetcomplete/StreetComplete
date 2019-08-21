@@ -34,16 +34,16 @@ class AddWheelchairAccessBusiness(o: OverpassMapDataDao) : SimpleOverpassQuestTy
                 "amusement_arcade", "adult_gaming_centre", "tanning_salon"
             ),
             "office" to arrayOf(
-                // also listed for AddOpeningHours and AddPlaceName quests
+                // also listed for AddOpeningHours quest
                 "insurance", "government", "travel_agent", "tax_advisor", "religion", "employment_agency",
-                // also listed for AddPlaceName quest
+                // not listed manually for other quests
                 "lawyer", "estate_agent", "political_party", "therapist"
             ),
             "craft" to arrayOf(
-                // also listed for AddOpeningHours and AddPlaceName quests
+                // also listed for AddOpeningHours quest
                 "carpenter", "shoemaker", "tailor", "photographer", "dressmaker",
                 "electronics_repair", "key_cutter", "stonemason",
-                // also listed for AddPlaceName quest
+                // not listed manually for other quests
                 "winery", "electrician", "plumber"
             )
         ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString(" or ") +

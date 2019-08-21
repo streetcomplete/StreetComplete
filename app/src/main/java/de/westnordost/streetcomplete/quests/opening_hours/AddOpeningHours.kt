@@ -41,11 +41,11 @@ class AddOpeningHours (o: OverpassMapDataDao) : SimpleOverpassQuestType<OpeningH
                 "adult_gaming_centre", "tanning_salon"
             ),
             "office" to arrayOf(
-                // also listed for AddPlaceName and AddWheelchair quests
+                // also listed for AddWheelchair quest
                 "insurance", "government", "travel_agent", "tax_advisor", "religion", "employment_agency"
             ),
             "craft" to arrayOf(
-                // also listed for AddPlaceName and AddWheelchair quests
+                // also listed for AddWheelchair quest
                 "carpenter", "shoemaker", "tailor", "photographer", "dressmaker",
                 "electronics_repair", "key_cutter", "stonemason"
             )
