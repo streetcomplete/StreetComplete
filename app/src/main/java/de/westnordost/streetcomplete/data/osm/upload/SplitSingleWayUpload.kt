@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.upload
 
 import de.westnordost.osmapi.common.errors.OsmConflictException
+import de.westnordost.osmapi.common.errors.OsmNotFoundException
 import de.westnordost.osmapi.map.MapDataDao
 import de.westnordost.osmapi.map.data.*
 import javax.inject.Inject
@@ -170,7 +171,13 @@ class SplitSingleWayUpload @Inject constructor(private val osmDao: MapDataDao)  
         relation.members.addAll(indexOfWayInRelation, newRelationMembers)
     }
 
-    private fun Way.fetchNodes(): List<Node> = osmDao.getNodes(nodeIds)
+    private fun Way.fetchNodes(): List<Node> {
+        try {
+            return osmDao.getNodes(nodeIds)
+        } catch (e: OsmNotFoundException) {
+            throw ConflictException("Way was modified right while uploading the changes (what's the chance?)",e)
+        }
+    }
 
     private fun Way.fetchUpdated(): Way? = osmDao.getWay(id)
 
