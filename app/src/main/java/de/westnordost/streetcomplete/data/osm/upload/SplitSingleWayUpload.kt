@@ -113,6 +113,12 @@ class SplitSingleWayUpload @Inject constructor(private val osmDao: MapDataDao)  
         val relations = originalWay.fetchParentRelations()
         val result = mutableSetOf<Relation>()
         for (relation in relations) {
+            /* iterating in reverse because the relation member for the original way is replaced
+               by one or several new ways in-place within the loop. So, no relation member is
+               iterated twice. If in the future, there will be any special relation that removes
+               a relation member or replaces several relation members with only one relation member,
+               then this here won't work anymore and the algorithm needs to modify a copy of the
+               relation members list. */
             for(i in relation.members.size - 1 downTo 0) {
                 val relationMember = relation.members[i]
                 if (relationMember.type == WAY && relationMember.ref == originalWay.id) {
@@ -130,6 +136,9 @@ class SplitSingleWayUpload @Inject constructor(private val osmDao: MapDataDao)  
     private fun updateSpecialRelation(relation: Relation, indexOfWayInRelation: Int, newWays: List<Way>): Boolean {
         val relationType = relation.tags?.get("type") ?: ""
         val originalWayRole = relation.members[indexOfWayInRelation].role
+        /* for a from-to-relation (i.e. turn restriction, destination sign, ...) only the two ways
+           directly connecting with the via node/way should be kept in the relation. If one of these
+           ways is split up, the correct way chunk must be selected to replace the old way. */
         if (originalWayRole == "from" || originalWayRole == "to") {
             val viaNodeIds = relation.fetchViaNodeIds(relationType)
             if (viaNodeIds != null) {
@@ -148,6 +157,9 @@ class SplitSingleWayUpload @Inject constructor(private val osmDao: MapDataDao)  
 
     private fun updateNormalRelation(relation: Relation, indexOfWayInRelation: Int,
                                      originalWay: Way, newWays: List<Way>) {
+        /* for any (non-special, see above) relation, the new way chunks that replace the original
+           way must be all inserted into each relation.  In the correct order, if the relation is
+           ordered at all. */
         val originalWayRole = relation.members[indexOfWayInRelation].role
         val newRelationMembers = newWays.map { way ->
             OsmRelationMember(way.id, originalWayRole, WAY) }.toMutableList()
@@ -214,10 +226,9 @@ private data class SplitWayAtPoint(override val pos: LatLon, public override val
     override val delta get() = 0.0
 }
 
-private data class SplitWayAtLinePosition(
-    val pos1: LatLon, val index1: Int,
-    val pos2: LatLon, val index2: Int,
-    public override val delta: Double) : SplitWay() {
+private data class SplitWayAtLinePosition( val pos1: LatLon, val index1: Int,
+                                           val pos2: LatLon, val index2: Int,
+                                           public override val delta: Double) : SplitWay() {
     override val index get() = index1
     override val pos: LatLon get() {
         val line = listOf(pos1, pos2)
