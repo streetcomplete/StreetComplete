@@ -75,6 +75,8 @@ Note that StreetComplete also uses [some dependencies](#issues-of-dependencies),
 
 If you need to find things where help is especially appreciated [have a look at the issues tagged with "help wanted"](https://github.com/westnordost/StreetComplete/labels/help%20wanted).
 
+See also a [documentation of program architecture](ARCHITECTURE.md).
+
 ### Developing new quests
 
 You want to contribute a new quest right away? That's great!
