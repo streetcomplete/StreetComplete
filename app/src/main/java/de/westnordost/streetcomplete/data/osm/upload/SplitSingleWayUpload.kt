@@ -9,7 +9,8 @@ import de.westnordost.streetcomplete.data.osm.changes.SplitAtLinePosition
 import de.westnordost.streetcomplete.data.osm.changes.SplitAtPoint
 import de.westnordost.streetcomplete.data.osm.changes.SplitPolylineAtPosition
 import de.westnordost.streetcomplete.ktx.*
-import de.westnordost.streetcomplete.util.SphericalEarthMath
+import de.westnordost.streetcomplete.util.SphericalEarthMath.distance
+import de.westnordost.streetcomplete.util.SphericalEarthMath.pointOnPolylineFromStart
 import kotlin.math.sign
 
 /** Uploads one split way
@@ -25,6 +26,8 @@ class SplitSingleWayUpload @Inject constructor(private val osmDao: MapDataDao)  
 
         val nodes = updatedWay.fetchNodes()
         val positions = nodes.map { it.position }
+        /* the splits must be sorted strictly from start to end of way because the algorithm may
+           insert nodes in the way */
         val sortedSplits = splits.map { it.toSplitWay(positions) }.sorted()
 
         val uploadElements = mutableListOf<Element>()
@@ -56,6 +59,7 @@ class SplitSingleWayUpload @Inject constructor(private val osmDao: MapDataDao)  
         } catch (e: OsmConflictException) {
             throw ChangesetConflictException(e.message, e)
         }
+        // the added nodes and updated relations are not relevant for quest creation, only the way are
         return handler.updatedElements.filterIsInstance<Way>()
     }
 
@@ -85,14 +89,18 @@ class SplitSingleWayUpload @Inject constructor(private val osmDao: MapDataDao)  
             nodesChunks.first().addAll(0, lastChunk)
         }
 
+        /* Instead of deleting the old way and replacing it with the new splitted chunks, one of the
+           chunks should use the id of the old way, so that it inherits the OSM history of the
+           previous way. The chunk with the most nodes is selected for this.
+           This is the same behavior as JOSM and Vespucci. */
         val indexOfChunkToKeep = nodesChunks.indexOfMaxBy { it.size }
         val tags = originalWay.tags?.toMap()
         var newWayId = -1L
         return nodesChunks.mapIndexed { index, nodes ->
             if(index == indexOfChunkToKeep) {
-                val way = OsmWay(originalWay.id, originalWay.version, nodes, tags)
-                way.isModified = true
-                way
+                OsmWay(originalWay.id, originalWay.version, nodes, tags).apply {
+                    isModified = true
+                }
             }
             else {
                 OsmWay(newWayId--, 0, nodes, tags)
@@ -213,10 +221,7 @@ private data class SplitWayAtLinePosition(
     override val index get() = index1
     override val pos: LatLon get() {
         val line = listOf(pos1, pos2)
-        return SphericalEarthMath.pointOnPolylineFromStart(
-            line,
-            SphericalEarthMath.distance(line) * delta
-        )!!
+        return pointOnPolylineFromStart(line, distance(line) * delta)!!
     }
 }
 

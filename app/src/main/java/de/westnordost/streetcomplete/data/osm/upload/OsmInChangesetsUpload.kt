@@ -106,6 +106,9 @@ abstract class OsmInChangesetsUpload<T : UploadableInChangeset>(
     }
 
     protected abstract fun getAll() : Collection<T>
+    /** Upload the changes for a single quest and element.
+     *  Returns the updated element(s) for which it should be checked whether they are eligible
+     *  for new quests (or not eligible anymore for existing quests) */
     protected abstract fun uploadSingle(changesetId: Long, quest: T, element: Element): List<Element>
 
     protected abstract fun onUploadSuccessful(quest: T)
