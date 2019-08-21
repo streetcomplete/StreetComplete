@@ -14,4 +14,4 @@ Note quest is also special because part of the answer - photos made by users - i
 
 # Map
 
-SC is also downloading from external source data used to display its map, map is rendered locally from [vector map tiles](https://github.com/tilezen/vector-datasource).
+SC downloads the [vector tiles](https://github.com/tilezen/vector-datasource) used to display its map from an external source, and renders them using the library tangram-es.
