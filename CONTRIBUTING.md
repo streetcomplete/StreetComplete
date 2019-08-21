@@ -73,7 +73,9 @@ There are many reasonable feature requests and ideas for new question types in t
 
 Note that StreetComplete also uses [some dependencies](#issues-of-dependencies), where contributions are likely also accepted and help StreetComplete, too.
 
-If you need to find things where help is appreciated [have a look at the issues tagged with "help wanted"](https://github.com/westnordost/StreetComplete/labels/help%20wanted).
+If you need to find things where help is especially appreciated [have a look at the issues tagged with "help wanted"](https://github.com/westnordost/StreetComplete/labels/help%20wanted).
+
+See also a [documentation of program architecture](ARCHITECTURE.md).
 
 ### Developing new quests
 
