@@ -10,7 +10,7 @@ Definition of quests in the program may be simple, with just few parameters and 
 
 Some quests may be based on other data sources. [Note quest](https://github.com/westnordost/StreetComplete/tree/master/app/src/main/java/de/westnordost/streetcomplete/quests/note_discussion) is based on data directly downloaded using [OSM API](https://wiki.openstreetmap.org/wiki/API_v0.6#Map_Notes_API). [Oneway quest](https://github.com/westnordost/StreetComplete/tree/master/app/src/main/java/de/westnordost/streetcomplete/quests/oneway) is using [external list of roads likely to be oneway](https://github.com/ENT8R/oneway-data-api).
 
-Note quest is also special because part of the answer - photos made by users - is uploaded to a [special photo service](https://github.com/exploide/sc-photo-service), as OSM notes are not allowing hosting of images directly on OSM servers.
+The note quest is also special because part of the answer - photos made by users - is uploaded to a [special photo service](https://github.com/exploide/sc-photo-service), as OSM notes do not allow hosting of images directly on OSM servers.
 
 # Map
 
