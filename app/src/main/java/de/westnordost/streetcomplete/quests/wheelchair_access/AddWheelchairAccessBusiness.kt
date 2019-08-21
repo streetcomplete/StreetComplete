@@ -44,7 +44,7 @@ class AddWheelchairAccessBusiness(o: OverpassMapDataDao) : SimpleOverpassQuestTy
                 "carpenter", "shoemaker", "tailor", "photographer", "dressmaker",
                 "electronics_repair", "key_cutter", "stonemason",
                 // not listed manually for other quests
-                "winery", "electrician", "plumber"
+                "winery"
             )
         ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString(" or ") +
         " )" +
