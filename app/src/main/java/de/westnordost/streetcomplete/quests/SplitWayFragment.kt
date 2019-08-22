@@ -154,14 +154,12 @@ class SplitWayFragment : Fragment(), IsCloseableBottomSheet {
 
     @UiThread override fun onClickClose(onConfirmed: Runnable) {
         if (!hasChanges) {
-            onDiscard()
             onConfirmed.run()
         } else {
             activity?.let {
                 AlertDialog.Builder(it)
                     .setMessage(R.string.confirmation_discard_title)
                     .setPositiveButton(R.string.confirmation_discard_positive) { _, _ ->
-                        onDiscard()
                         onConfirmed.run()
                     }
                     .setNegativeButton(R.string.confirmation_discard_negative, null)
@@ -169,8 +167,6 @@ class SplitWayFragment : Fragment(), IsCloseableBottomSheet {
             }
         }
     }
-
-    private fun onDiscard() {}
 
     private fun animateButtonVisibilities() {
         if (isFormComplete) okButton.popIn() else okButton.popOut()
