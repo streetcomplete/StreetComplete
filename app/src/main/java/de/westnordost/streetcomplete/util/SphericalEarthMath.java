@@ -111,7 +111,7 @@ public class SphericalEarthMath
 			toRadians(pos2.getLongitude())
 		);
 	}
-// TODO test these two functions!
+
 	/**
 	 * @return the shortest distance of the arc between two points and another point in meters
 	 */
@@ -129,7 +129,7 @@ public class SphericalEarthMath
 
 	/**
 	 * @return same as crossTrackDistance, only the distance returned here is the distance between
-	 * the start point and the point to where the perpendicular drawn from point crosses the path.
+	 * the start point and the point to where the perpendicular drawn from point crosses the arc.
 	 */
 	public static double alongTrackDistance(LatLon start, LatLon end, LatLon point)
 	{

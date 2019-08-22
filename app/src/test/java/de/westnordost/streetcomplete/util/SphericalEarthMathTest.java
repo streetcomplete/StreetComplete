@@ -9,6 +9,7 @@ import java.util.List;
 
 import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.LatLon;
+import de.westnordost.osmapi.map.data.OsmLatLon;
 
 import static de.westnordost.streetcomplete.util.SphericalEarthMath.*;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -22,27 +23,27 @@ public class SphericalEarthMathTest
 
 	@Test public void distanceToBerlin()
 	{
-		checkHamburgTo(52.4, 13.4, 259, 117, 110);
+		checkHamburgTo(52.4, 13.4, 259, 117, 120);
 	}
 
 	@Test public void distanceToLübeck()
 	{
-		checkHamburgTo(53.85, 10.68, 59, 49, 61);
+		checkHamburgTo(53.85, 10.68, 59, 49, 49);
 	}
 
 	@Test public void distanceToLosAngeles()
 	{
-		checkHamburgTo(34, -118, 9075, 319, 206);
+		checkHamburgTo(34, -118, 9075, 319, 208);
 	}
 
 	@Test public void distanceToReykjavik()
 	{
-		checkHamburgTo(64.11, -21.98, 2152, 316, 280);
+		checkHamburgTo(64.11, -21.98, 2152, 316, 288);
 	}
 
 	@Test public void distanceToPortElizabeth()
 	{
-		checkHamburgTo(-33.9, -25.6, 10307, 209, 231);
+		checkHamburgTo(-33.9, -25.6, 10307, 209, 200);
 	}
 
 	@Test public void distanceToPoles()
@@ -53,7 +54,7 @@ public class SphericalEarthMathTest
 
 	@Test public void distanceToOtherSideOfEarth()
 	{
-		checkHamburgTo(-53.5, -170.0, (int) (Math.PI*6371), 270, 180);
+		checkHamburgTo(-53.5, -170.0, (int) (Math.PI*6371), 270, 270);
 	}
 
 	@Test public void shortDistance()
@@ -104,6 +105,38 @@ public class SphericalEarthMathTest
 		if(angle2 != null)
 			assertEquals((int) angle2, Math.round(finalBearing(HH, t)));
 
+	}
+
+	/* ++++++++++++++++++++++++++++++ test distance to arc distance +++++++++++++++++++++++++++++ */
+
+	@Test public void simpleDistanceToHorizontalArc()
+	{
+		LatLon start = new OsmLatLon(0.0, -0.01);
+		LatLon end = new OsmLatLon(0.0, +0.01);
+		LatLon point = new OsmLatLon(0.01, 0.0);
+		LatLon intersect = new OsmLatLon(0.0, 0.0);
+		assertEquals(distance(point, intersect), crossTrackDistance(start, end, point), 0.01);
+		assertEquals(distance(start, intersect), alongTrackDistance(start, end, point), 0.01);
+	}
+
+	@Test public void simpleDistanceToVerticalArc()
+	{
+		LatLon start = new OsmLatLon(-0.01, 0.0);
+		LatLon end = new OsmLatLon(+0.01, 0.0);
+		LatLon point = new OsmLatLon(0.0, 0.01);
+		LatLon intersect = new OsmLatLon(0.0, 0.0);
+		assertEquals(distance(point, intersect), crossTrackDistance(start, end, point), 0.01);
+		assertEquals(distance(start, intersect), alongTrackDistance(start, end, point), 0.01);
+	}
+
+	@Test public void simpleDistanceToSlopedArc()
+	{
+		LatLon start = new OsmLatLon(-0.01, -0.01);
+		LatLon end = new OsmLatLon(+0.01, +0.01);
+		LatLon point = new OsmLatLon(-0.01, +0.01);
+		LatLon intersect = new OsmLatLon(0.0, 0.0);
+		assertEquals(distance(point, intersect), crossTrackDistance(start, end, point), 0.01);
+		assertEquals(distance(start, intersect), alongTrackDistance(start, end, point), 0.01);
 	}
 
 	/* +++++++++++++++++++++++++++++ test creation of bounding boxes ++++++++++++++++++++++++++++ */
