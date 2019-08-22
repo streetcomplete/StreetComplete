@@ -58,10 +58,10 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = super.onCreateView(inflater, container, savedInstanceState)
 
-        val unit = if (countryInfo.measurementSystemForWeightLimits[0] == "ton" && countryInfo.measurementSystemForWeightLimits.size == 1) {
-            TON
-        } else {
-            USA
+        val unit = when(countryInfo.measurementSystemForWeightLimits) {
+            listOf("ton") -> TON
+            listOf("short_ton_formatted_as_ton", "pounds") -> USA
+            else -> throw UnsupportedOperationException("not implemented")
         }
         setMaxWeightSignLayout(R.layout.quest_maxweight, unit)
 
