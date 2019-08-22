@@ -14,4 +14,4 @@ The note quest is also special because part of the answer - photos made by users
 
 # Map
 
-SC downloads the [vector tiles](https://github.com/tilezen/vector-datasource) used to display its map from an external source, and renders them using the library tangram-es.
+SC downloads the [vector tiles](https://github.com/tilezen/vector-datasource) used to display its map from an external source, and renders them using the library [tangram-es](https://github.com/tangrams/tangram-es).
