@@ -58,7 +58,11 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = super.onCreateView(inflater, container, savedInstanceState)
 
-        val unit = if (countryInfo.measurementSystemForWeightLimits[0] == "ton") TON else USA
+        val unit = if (countryInfo.measurementSystemForWeightLimits[0] == "ton" && countryInfo.measurementSystemForWeightLimits.size == 1) {
+            TON
+        } else {
+            USA
+        }
         setMaxWeightSignLayout(R.layout.quest_maxweight, unit)
 
         return view
