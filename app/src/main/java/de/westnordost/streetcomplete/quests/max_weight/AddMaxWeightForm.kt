@@ -19,7 +19,7 @@ import de.westnordost.streetcomplete.util.TextChangedWatcher
 
 import de.westnordost.streetcomplete.quests.max_weight.Measurement.*
 
-private enum class Measurement { METRIC, USA }
+private enum class Measurement { TON, USA }
 
 class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
 
@@ -58,7 +58,7 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = super.onCreateView(inflater, container, savedInstanceState)
 
-        val unit = if (countryInfo.measurementSystemForWeightLimits[0] == "ton") METRIC else USA
+        val unit = if (countryInfo.measurementSystemForWeightLimits[0] == "ton") TON else USA
         setMaxWeightSignLayout(R.layout.quest_maxweight, unit)
 
         return view
@@ -84,7 +84,7 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
         weightUnitSelect?.setSelection(measurementUnits.size - 1) // prefer metric
         weightUnitSelect?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parentView: AdapterView<*>, selectedItemView: View?, position: Int, id: Long) {
-                val weightUnit = if (weightUnitSelect?.selectedItem == "t") METRIC else USA
+                val weightUnit = if (weightUnitSelect?.selectedItem == "t") TON else USA
                 switchLayout(weightUnit)
             }
 
@@ -106,7 +106,7 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
     }
 
     private fun switchLayout(unit: Measurement) {
-        val isMetric = unit == METRIC
+        val isMetric = unit == TON
         val isImperial = unit == USA
 
         tonInputSign?.visibility = if (isMetric) View.VISIBLE else View.GONE
