@@ -4,6 +4,7 @@ import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.OsmTaggings
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandler
@@ -19,7 +20,7 @@ class AddPlaceName(
 
     private val filter by lazy { FiltersParser().parse(
         "nodes, ways, relations with !name and !brand and noname != yes " +
-        " and (shop and shop !~ no|vacant or tourism = information and information = office " +
+        " and (shop and shop !~ no|vacant or craft or office or tourism = information and information = office " +
         " or " +
         mapOf(
             "amenity" to arrayOf(
@@ -38,17 +39,14 @@ class AddPlaceName(
                 "animal_boarding", "animal_shelter", "animal_breeding", "veterinary"                                                    // animals
             ),
             "tourism" to arrayOf(
-                "attraction", "zoo", "aquarium", "theme_park", "gallery", "museum",                                          // attractions
-                "hotel", "guest_house", "motel", "hostel", "alpine_hut", "apartment", "resort", "camp_site", "caravan_site"  // accommodations
+                "attraction", "zoo", "aquarium", "theme_park", "gallery", "museum",                                                     // attractions
+                "hotel", "guest_house", "motel", "hostel", "alpine_hut", "apartment", "resort", "camp_site", "caravan_site", "chalet"   // accommodations
                 // and tourism=information, see above
             ),
             "leisure" to arrayOf(
                 "nature_reserve", "sports_centre", "fitness_centre", "dance", "golf_course",
                 "water_park", "miniature_golf", "stadium", "marina", "bowling_alley",
                 "amusement_arcade", "adult_gaming_centre", "tanning_salon", "horse_riding"
-            ),
-            "office" to arrayOf(
-                "insurance", "estate_agent", "travel_agent"
             )
         ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString(" or ") +
         ")"

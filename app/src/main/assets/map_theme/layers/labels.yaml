@@ -19,7 +19,7 @@ layers:
     places:
         data: { source: mapzen}
         places-labels:
-            filter: { name: true }
+            filter: {name: true, not: {source: [whosonfirst.org]}}
             draw:
                 text:
                     text_source: global.name_source

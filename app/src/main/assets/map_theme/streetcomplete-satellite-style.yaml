@@ -8,16 +8,15 @@ import:
     - global.yaml
     - layers/labels.yaml
 
-sources:
-    mapbox-satellite:
-        type: Raster
-        url: https://api.mapbox.com/v4/mapbox.satellite/{z}/{x}/{y}.png
-        url_params:
-            access_token: pk.eyJ1IjoiZW50OHIiLCJhIjoiY2o5aXBvZGI1MGMyZzJxbjJtNGxzZzllYiJ9.7vUh6rE_BUG1RdfEqQdtCg
+# layer docs: https://raw.githubusercontent.com/osmlab/editor-layer-index/74501812b31cca1c3505d7e942c5188c63adf5b2/sources/world/EsriImagery.geojson
 
+sources:
+    raster:
+        type: Raster
+        url: https://server.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}
 layers:
-    terrain:
-        data: { source: mapbox-satellite }
+    raster:
+        data: { source: raster }
         draw:
             raster:
                 order: 0
