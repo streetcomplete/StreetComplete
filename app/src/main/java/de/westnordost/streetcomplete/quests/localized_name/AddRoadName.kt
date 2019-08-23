@@ -48,7 +48,7 @@ class AddRoadName(
         OverpassQLUtil.getQuestPrintStatement()
 
     /** return overpass query string to get roads with names near roads that don't have names
-     *  private roads ae not filtered out here, partially to reduce complexity but also
+     *  private roads are not filtered out here, partially to reduce complexity but also
      *  because the road may have a private segment that is named already or is close to a road
      *  with a useful name
      * */
