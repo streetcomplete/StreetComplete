@@ -50,7 +50,7 @@ class AddRoadName(
     /** return overpass query string to get roads with names near roads that don't have names
      *  private roads ae not filtered out here, partially to reduce complexity but also
      *  because road may have private segment that is named already or be close to road
-     *  with an useful name
+     *  with a useful name
      * */
     private fun getStreetNameSuggestionsOverpassQuery(bbox: BoundingBox) =
         OverpassQLUtil.getGlobalOverpassBBox(bbox) +
