@@ -49,7 +49,7 @@ class AddRoadName(
 
     /** return overpass query string to get roads with names near roads that don't have names
      *  private roads ae not filtered out here, partially to reduce complexity but also
-     *  because road may have private segment that is named already or be close to road
+     *  because the road may have a private segment that is named already or is close to a road
      *  with a useful name
      * */
     private fun getStreetNameSuggestionsOverpassQuery(bbox: BoundingBox) =
