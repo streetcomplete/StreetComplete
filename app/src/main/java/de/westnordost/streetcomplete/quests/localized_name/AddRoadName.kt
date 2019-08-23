@@ -42,8 +42,8 @@ class AddRoadName(
         OverpassQLUtil.getGlobalOverpassBBox(bbox) +
         ROADS_WITHOUT_NAMES + "->.unnamed;\n" +
         "(\n" +
-        "  way.unnamed['access'!~'private|no'];\n" +
-        "  way.unnamed['foot']['foot'!~'private|no'];\n" +
+        "  way.unnamed['access' !~ '^private|no$'];\n" +
+        "  way.unnamed['foot']['foot' !~ '^private|no$'];\n" +
         "); " +
         OverpassQLUtil.getQuestPrintStatement()
 
