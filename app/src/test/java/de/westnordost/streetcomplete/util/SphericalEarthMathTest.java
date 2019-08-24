@@ -139,6 +139,26 @@ public class SphericalEarthMathTest
 		assertEquals(distance(start, intersect), alongTrackDistance(start, end, point), 0.01);
 	}
 
+	@Test public void distanceToHorizontalArcCrossing180thMeridian()
+	{
+		LatLon start = new OsmLatLon(0.0, 170);
+		LatLon end = new OsmLatLon(0.0, -170);
+		LatLon point = new OsmLatLon(0.01, -175.0);
+		LatLon intersect = new OsmLatLon(0.0, -175.0);
+		assertEquals(distance(point, intersect), crossTrackDistance(start, end, point), 0.01);
+		assertEquals(distance(start, intersect), alongTrackDistance(start, end, point), 0.01);
+	}
+
+	@Test public void distanceToVerticalArcCrossingNorthPole()
+	{
+		LatLon start = new OsmLatLon(80.0, 0.0);
+		LatLon end = new OsmLatLon(0.0, 180.0);
+		LatLon point = new OsmLatLon(85.0, 179.99);
+		LatLon intersect = new OsmLatLon(85.0, 180.0);
+		assertEquals(distance(point, intersect), crossTrackDistance(start, end, point), 0.01);
+		assertEquals(distance(start, intersect), alongTrackDistance(start, end, point), 0.01);
+	}
+
 	/* +++++++++++++++++++++++++++++ test creation of bounding boxes ++++++++++++++++++++++++++++ */
 
 	@Test public void enclosingBoundingBoxRadius()
