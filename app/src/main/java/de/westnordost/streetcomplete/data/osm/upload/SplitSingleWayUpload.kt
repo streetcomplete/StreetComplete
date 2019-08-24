@@ -173,7 +173,9 @@ class SplitSingleWayUpload @Inject constructor(private val osmDao: MapDataDao)  
 
     private fun Way.fetchNodes(): List<Node> {
         try {
-            return osmDao.getNodes(nodeIds)
+            val nodesMap = osmDao.getNodes(nodeIds).associateBy { node -> node.id }
+            // the fetched nodes must be returned ordered in the way
+            return nodeIds.map { nodeId -> nodesMap.getValue(nodeId) }
         } catch (e: OsmNotFoundException) {
             throw ConflictException("Way was modified right while uploading the changes (what's the chance?)",e)
         }
