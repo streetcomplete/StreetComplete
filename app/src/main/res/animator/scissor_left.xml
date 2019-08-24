@@ -11,6 +11,6 @@
         android:propertyName="rotation"
         android:valueFrom="29"
         android:valueTo="0"
-        android:duration="140"
+        android:duration="220"
         android:interpolator="@android:anim/accelerate_interpolator"/>
 </set>

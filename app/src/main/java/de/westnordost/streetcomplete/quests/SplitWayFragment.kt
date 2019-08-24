@@ -131,12 +131,14 @@ class SplitWayFragment : Fragment(), IsCloseableBottomSheet {
 
         (scissors.drawable as? Animatable)?.start()
 
-        scissors.x = scissorsPos.x - scissors.width/3
-        scissors.y = scissorsPos.y - scissors.height/3
+        scissors.updateLayoutParams<RelativeLayout.LayoutParams> {
+            leftMargin = (scissorsPos.x - scissors.width/2).toInt()
+            topMargin = (scissorsPos.y - scissors.height/2).toInt()
+        }
         scissors.alpha = 1f
-        scissors.scaleX = 1f
-        scissors.scaleY = 1f
-        scissors.animate().setStartDelay(100).alpha(0f).setDuration(200).start()
+        val animator = AnimatorInflater.loadAnimator(context, R.animator.scissors_snip)
+        animator.setTarget(scissors)
+        animator.start()
 
         soundFx.play(R.raw.snip)
     }
