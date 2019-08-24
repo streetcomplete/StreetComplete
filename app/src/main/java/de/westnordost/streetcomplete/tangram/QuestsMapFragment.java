@@ -61,6 +61,9 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 	private LngLat lastPos;
 	private Float lastRotation, lastTilt;
 
+	private LatLon lastClickPos;
+	private double lastFingerRadiusInMeters;
+
 	private Rect lastDisplayedRect;
 	private final Set<Point> retrievedTiles;
 	private static final int TILES_ZOOM = 14;
@@ -85,7 +88,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 	public interface Listener
 	{
 		void onClickedQuest(QuestGroup questGroup, Long questId);
-		void onClickedMapAt(LatLon position, double clickAreaSizeInMeters);
+		void onClickedMapAt(@NonNull LatLon position, double clickAreaSizeInMeters);
 		/** Called once the given bbox comes into view first (listener should get quests there) */
 		void onFirstInView(BoundingBox bbox);
 	}
@@ -193,6 +196,10 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 				|| labelPickResult.getProperties() == null
 				|| labelPickResult.getProperties().get(MARKER_QUEST_ID) == null)
 		{
+			if (lastClickPos != null)
+			{
+				listener.onClickedMapAt(lastClickPos, lastFingerRadiusInMeters);
+			}
 			return;
 		}
 
@@ -284,7 +291,8 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 				LatLon clickPos = TangramConst.toLatLon(pos);
 				LatLon fingerEdgePos = TangramConst.toLatLon(fingerEdge);
 				double fingerRadiusInMeters = SphericalEarthMath.distance(clickPos, fingerEdgePos);
-				listener.onClickedMapAt(clickPos, fingerRadiusInMeters);
+				lastClickPos = clickPos;
+				lastFingerRadiusInMeters = fingerRadiusInMeters;
 			}
 		}
 	}
@@ -388,7 +396,10 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		if(geometryLayer != null) geometryLayer.clear();
 		if(controller != null)
 		{
-			controller.removeAllMarkers();
+			for (Long markerId : markerIds.values())
+			{
+				controller.removeMarker(markerId);
+			}
 			markerIds.clear();
 			if(zoomBeforeShowingQuest != null) controller.setZoomEased(zoomBeforeShowingQuest, 500);
 			if(positionBeforeShowingQuest != null) controller.setPositionEased(positionBeforeShowingQuest, 500);

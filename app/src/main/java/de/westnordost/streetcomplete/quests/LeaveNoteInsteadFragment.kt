@@ -10,7 +10,7 @@ import de.westnordost.streetcomplete.data.osmnotes.AbstractCreateNoteFragment
 import kotlinx.android.synthetic.main.form_leave_note.*
 import kotlinx.android.synthetic.main.fragment_quest_answer.*
 
-class LeaveNoteInsteadFragment : AbstractCreateNoteFragment() {
+class LeaveNoteInsteadFragment : AbstractCreateNoteFragment(), IsShowingQuestDetails {
 
     interface Listener {
         fun onCreatedNoteInstead(questId: Long, group: QuestGroup, questTitle: String, note: String, imagePaths: List<String>?)
@@ -19,8 +19,8 @@ class LeaveNoteInsteadFragment : AbstractCreateNoteFragment() {
     override val layoutResId = R.layout.fragment_quest_answer
 
     private lateinit var questTitle: String
-    private var questId: Long = 0L
-    private lateinit var questGroup: QuestGroup
+    override var questId: Long = 0L
+    override lateinit var questGroup: QuestGroup
 
     override fun onCreate(inState: Bundle?) {
         super.onCreate(inState)
