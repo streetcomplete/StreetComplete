@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.quests
 
+import android.graphics.PointF
+import android.graphics.drawable.Animatable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -39,6 +41,7 @@ class SplitWayFragment : Fragment(), IsCloseableBottomSheet {
     private var osmQuestId: Long = 0L
     private lateinit var way: Way
     private lateinit var positions: List<OsmLatLon>
+    private var clickPos: PointF? = null
 
     private val hasChanges get() = splits.isNotEmpty()
     private val isFormComplete get() = splits.size >= if (way.isClosed()) 2 else 1
@@ -54,6 +57,7 @@ class SplitWayFragment : Fragment(), IsCloseableBottomSheet {
         val elementGeometry = arguments!!.getSerializable(ARG_ELEMENT_GEOMETRY) as ElementGeometry
         positions = elementGeometry.polylines.single().map { OsmLatLon(it.latitude, it.longitude) }
         soundFx.prepare(R.raw.snip)
+        soundFx.prepare(R.raw.plop2)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -62,6 +66,11 @@ class SplitWayFragment : Fragment(), IsCloseableBottomSheet {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        bottomSheetContainer.setOnTouchListener { _, event ->
+            clickPos = PointF(event.x, event.y)
+            false
+        }
 
         okButton.setOnClickListener { onClickOk() }
         cancelButton.setOnClickListener { activity?.onBackPressed() }
@@ -85,16 +94,15 @@ class SplitWayFragment : Fragment(), IsCloseableBottomSheet {
         if (splits.isNotEmpty()) {
             val item = splits.removeAt(splits.lastIndex)
             animateButtonVisibilities()
+            soundFx.play(R.raw.plop2)
             (activity as? Listener)?.onRemoveSplit(item.second)
         }
     }
 
     @UiThread
     override fun onClickMapAt(position: LatLon, clickAreaSizeInMeters: Double): Boolean {
-        // so it is easier to hit the line with the thumb. For precision, one can zoom
-        val extendedClickArea = clickAreaSizeInMeters * 1.5
 
-        val splitWayCandidates = createSplits(position, extendedClickArea)
+        val splitWayCandidates = createSplits(position, clickAreaSizeInMeters)
         // split point could be put on several places
         if (splitWayCandidates.size > 1) {
             context?.toast(R.string.quest_split_way_too_imprecise)
@@ -104,17 +112,33 @@ class SplitWayFragment : Fragment(), IsCloseableBottomSheet {
             val splitPosition = splitWay.pos
 
             // new split point is too close to existing split points
-            if (splits.any { distance(it.second, splitPosition) < extendedClickArea } ) {
+            if (splits.any { distance(it.second, splitPosition) < clickAreaSizeInMeters } ) {
                 context?.toast(R.string.quest_split_way_too_imprecise)
             } else {
                 splits.add(Pair(splitWay, splitPosition))
                 animateButtonVisibilities()
-                soundFx.play(R.raw.snip)
+                animateScissors()
                 (activity as? Listener)?.onAddSplit(splitPosition)
             }
         }
         // always consume event. User should press the cancel button to exit
         return true
+    }
+
+
+    private fun animateScissors() {
+        val scissorsPos = clickPos ?: return
+
+        (scissors.drawable as? Animatable)?.start()
+
+        scissors.x = scissorsPos.x - scissors.width/3
+        scissors.y = scissorsPos.y - scissors.height/3
+        scissors.alpha = 1f
+        scissors.scaleX = 1f
+        scissors.scaleY = 1f
+        scissors.animate().setStartDelay(100).alpha(0f).setDuration(200).start()
+
+        soundFx.play(R.raw.snip)
     }
 
     private fun createSplits(clickPosition: LatLon, clickAreaSizeInMeters: Double): Set<SplitPolylineAtPosition> {
