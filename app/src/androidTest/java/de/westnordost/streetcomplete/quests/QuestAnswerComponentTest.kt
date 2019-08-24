@@ -26,7 +26,7 @@ class QuestAnswerComponentTest {
         val c1 = QuestAnswerComponent()
 
         val expectQuestId = 3
-        val expectGroup = QuestGroup.OSM_NOTE
+        val expectGroup = QuestGroup.OSM
         val expectQuestTitle = "What?"
         val expectObject = "jo"
 
