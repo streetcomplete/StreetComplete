@@ -91,6 +91,7 @@ import de.westnordost.streetcomplete.location.LocationUtil;
 import de.westnordost.streetcomplete.oauth.OAuthPrefs;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 import de.westnordost.streetcomplete.quests.IsCloseableBottomSheet;
+import de.westnordost.streetcomplete.quests.IsShowingQuestDetails;
 import de.westnordost.streetcomplete.quests.LeaveNoteInsteadFragment;
 import de.westnordost.streetcomplete.quests.OsmQuestAnswerListener;
 import de.westnordost.streetcomplete.quests.QuestAnswerComponent;
@@ -912,9 +913,11 @@ public class MainActivity extends AppCompatActivity implements
 			return;
 		}
 
-		IsCloseableBottomSheet f = getBottomSheetFragment();
-		if (f != null)   f.onClickClose(this::composeNote);
-		else             composeNote();
+		Fragment f = getBottomSheetFragment();
+		if (f instanceof IsCloseableBottomSheet)
+			((IsCloseableBottomSheet)f).onClickClose(this::composeNote);
+		else
+			composeNote();
 	}
 
 	private void composeNote()
@@ -929,7 +932,8 @@ public class MainActivity extends AppCompatActivity implements
 	{
 		runOnUiThread(() -> mapFragment.addQuests(quests, group));
 		// to recreate element geometry of selected quest (if any) after recreation of activity
-		if(getQuestDetailsFragment() != null)
+		Fragment f = getBottomSheetFragment();
+		if(f instanceof IsShowingQuestDetails)
 		{
 			for (Quest q : quests)
 			{
@@ -972,10 +976,10 @@ public class MainActivity extends AppCompatActivity implements
 
 	@Override public void onBackPressed()
 	{
-		IsCloseableBottomSheet f = getBottomSheetFragment();
-		if(f != null)
+		Fragment f = getBottomSheetFragment();
+		if(f instanceof IsCloseableBottomSheet)
 		{
-			f.onClickClose(() ->
+			((IsCloseableBottomSheet)f).onClickClose(() ->
 			{
 				mapFragment.removeQuestGeometry();
 				mapFragment.setIsFollowingPosition(isFollowingPosition);
@@ -1027,10 +1031,10 @@ public class MainActivity extends AppCompatActivity implements
 
 	private boolean isQuestDetailsCurrentlyDisplayedFor(long questId, QuestGroup group)
 	{
-		AbstractQuestAnswerFragment currentFragment = getQuestDetailsFragment();
-		return currentFragment != null
-				&& currentFragment.getQuestId() == questId
-				&& currentFragment.getQuestGroup() == group;
+		Fragment f = getBottomSheetFragment();
+		return f instanceof IsShowingQuestDetails
+			&& ((IsShowingQuestDetails)f).getQuestId() == questId
+			&& ((IsShowingQuestDetails)f).getQuestGroup() == group;
 	}
 
 	@UiThread private void showQuestDetails(Quest quest, QuestGroup group)
@@ -1086,17 +1090,9 @@ public class MainActivity extends AppCompatActivity implements
 		ft.commit();
 	}
 
-	private IsCloseableBottomSheet getBottomSheetFragment()
+	private Fragment getBottomSheetFragment()
 	{
-		Fragment f = getSupportFragmentManager().findFragmentByTag(BOTTOM_SHEET);
-		return f instanceof IsCloseableBottomSheet ? (IsCloseableBottomSheet) f : null;
-	}
-
-	private AbstractQuestAnswerFragment getQuestDetailsFragment()
-	{
-		Fragment f = getSupportFragmentManager().findFragmentByTag(BOTTOM_SHEET);
-
-		return f instanceof AbstractQuestAnswerFragment ? (AbstractQuestAnswerFragment) f : null ;
+		return getSupportFragmentManager().findFragmentByTag(BOTTOM_SHEET);
 	}
 
 	/* ---------------------------------- MapFragment.Listener ---------------------------------- */
@@ -1105,10 +1101,10 @@ public class MainActivity extends AppCompatActivity implements
 	{
 		mapRotation = rotation;
 		mapTilt = tilt;
-		AbstractQuestAnswerFragment f = getQuestDetailsFragment();
-		if (f != null)
+		Fragment f = getBottomSheetFragment();
+		if (f instanceof AbstractQuestAnswerFragment)
 		{
-			f.onMapOrientation(rotation, tilt);
+			((AbstractQuestAnswerFragment)f).onMapOrientation(rotation, tilt);
 		}
 	}
 
@@ -1129,18 +1125,21 @@ public class MainActivity extends AppCompatActivity implements
 			if(quest != null) showQuestDetails(quest, questGroup);
 		};
 
-		IsCloseableBottomSheet f = getBottomSheetFragment();
-		if (f != null)  f.onClickClose(retrieveQuest);
-		else            retrieveQuest.run();
+		Fragment f = getBottomSheetFragment();
+		if (f instanceof IsCloseableBottomSheet)
+			((IsCloseableBottomSheet)f).onClickClose(retrieveQuest);
+		else
+			retrieveQuest.run();
 	}
 
 	@Override public void onClickedMapAt(LatLon position, double clickAreaSizeInMeters)
 	{
-		IsCloseableBottomSheet f = getBottomSheetFragment();
-		if(f != null)
+		Fragment f = getBottomSheetFragment();
+		if (f instanceof IsCloseableBottomSheet)
 		{
-			if(!f.onClickMapAt(position, clickAreaSizeInMeters))
-				f.onClickClose(this::closeBottomSheet);
+			IsCloseableBottomSheet g = (IsCloseableBottomSheet) f;
+			if(!g.onClickMapAt(position, clickAreaSizeInMeters))
+				g.onClickClose(this::closeBottomSheet);
 		}
 	}
 

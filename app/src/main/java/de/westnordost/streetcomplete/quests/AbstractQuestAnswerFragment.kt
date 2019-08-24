@@ -35,7 +35,7 @@ import kotlinx.android.synthetic.main.fragment_quest_answer.*
 import java.util.concurrent.FutureTask
 
 /** Abstract base class for any dialog with which the user answers a specific quest(ion)  */
-abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment() {
+abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), IsShowingQuestDetails {
 
     private val countryInfos: CountryInfos
     private val questTypeRegistry: QuestTypeRegistry
@@ -78,8 +78,8 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment() {
 
     private var startedOnce = false
 
-    val questId:Long get() = questAnswerComponent.questId
-    val questGroup:QuestGroup get() = questAnswerComponent.questGroup
+    override val questId: Long get() = questAnswerComponent.questId
+    override val questGroup: QuestGroup get() = questAnswerComponent.questGroup
 
     open val contentLayoutResId: Int? = null
     open val buttonsResId: Int? = null

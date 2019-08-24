@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests
 
+import android.animation.AnimatorInflater
 import android.graphics.PointF
 import android.graphics.drawable.Animatable
 import android.os.Bundle
@@ -7,9 +8,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
+import android.widget.RelativeLayout
 import androidx.annotation.UiThread
 import androidx.appcompat.app.AlertDialog
 import androidx.core.os.bundleOf
+import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.map.data.OsmLatLon
@@ -17,6 +20,7 @@ import de.westnordost.osmapi.map.data.Way
 import de.westnordost.streetcomplete.Injector
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.QuestGroup
 import de.westnordost.streetcomplete.data.osm.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.changes.SplitAtLinePosition
 import de.westnordost.streetcomplete.data.osm.changes.SplitAtPoint
@@ -27,7 +31,7 @@ import de.westnordost.streetcomplete.util.SphericalEarthMath.*
 import kotlinx.android.synthetic.main.fragment_split_way.*
 import javax.inject.Inject
 
-class SplitWayFragment : Fragment(), IsCloseableBottomSheet {
+class SplitWayFragment : Fragment(), IsCloseableBottomSheet, IsShowingQuestDetails {
 
     interface Listener {
         fun onAddSplit(point: LatLon)
@@ -37,6 +41,9 @@ class SplitWayFragment : Fragment(), IsCloseableBottomSheet {
     private val splits: MutableList<Pair<SplitPolylineAtPosition, LatLon>> = mutableListOf()
 
     @Inject internal lateinit var soundFx: SoundFx
+
+    override val questId: Long get() = osmQuestId
+    override val questGroup: QuestGroup get() = QuestGroup.OSM
 
     private var osmQuestId: Long = 0L
     private lateinit var way: Way
