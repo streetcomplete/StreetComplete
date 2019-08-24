@@ -835,10 +835,11 @@ public class MainActivity extends AppCompatActivity implements
 	{
 		questSource.findSource(osmQuestId, QuestGroup.OSM, mapFragment.getDisplayedLocation(), source ->
 		{
+			Quest quest = questController.get(osmQuestId, QuestGroup.OSM);
 			closeQuestDetailsFor(osmQuestId, QuestGroup.OSM);
 			if(questController.splitWay(osmQuestId, splits, source))
 			{
-				// TODO showQuestSolvedAnimation(quest, source);
+				showQuestSolvedAnimation(quest, source);
 			}
 			triggerAutoUploadByUserInteraction();
 		});
