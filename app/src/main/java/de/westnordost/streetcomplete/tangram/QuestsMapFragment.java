@@ -389,6 +389,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		if(controller != null)
 		{
 			controller.removeAllMarkers();
+			markerIds.clear();
 			if(zoomBeforeShowingQuest != null) controller.setZoomEased(zoomBeforeShowingQuest, 500);
 			if(positionBeforeShowingQuest != null) controller.setPositionEased(positionBeforeShowingQuest, 500);
 			zoomBeforeShowingQuest = null;
