@@ -2,9 +2,8 @@
 <resources>
     <string name="action_settings">"Settings"</string>
     <string name="oauth_communication_error">"Unable to reach the authorization server"</string>
-    <string name="oauth_confirm_deauthroize_username">"You are now linked with OSM account: %s, do you want to deauthorize it?"</string>
-    <string name="oauth_confirm_deauthroize">"You are now linked with an OSM account, do you want to deauthorize it?"</string>
-    <string name="oauth_deauthroize_confirmation">"deauthorize"</string>
+    <string name="oauth_remove_authorization_dialog_message">"Do you want to remove the authorization for your OSM account?"</string>
+    <string name="oauth_remove_authorization_confirmation">"Remove"</string>
     <string name="loading">"Loading"</string>
     <string name="retry">"Retry"</string>
     <string name="oauth_cancelled">"Authorization canceled"</string>

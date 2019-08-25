@@ -55,21 +55,19 @@ class SettingsFragment : PreferenceFragmentCompat(),
         addPreferencesFromResource(R.xml.preferences)
 
 	    preferenceScreen.findPreference("oauth").setOnPreferenceClickListener {
-            // If OSM account is authorized, ask if user want to deauthorize it
-            // If not, just do OAuth
-            context?.takeIf { oAuth.isAuthorized }?.let {
-                val username = prefs.getString(Prefs.OSM_USER_NAME, null)
-                val message = if (username != null) getString(R.string.oauth_confirm_deauthroize_username, username)
-                else getString(R.string.oauth_confirm_deauthroize)
-
-                AlertDialog.Builder(it)
-                        .setMessage(message)
-                        .setPositiveButton(R.string.oauth_deauthroize_confirmation) { _, _ ->
+            if (oAuth.isAuthorized) {
+                context?.let {
+                    AlertDialog.Builder(it)
+                        .setMessage(R.string.oauth_remove_authorization_dialog_message)
+                        .setPositiveButton(R.string.oauth_remove_authorization_confirmation) { _, _ ->
                             oAuth.saveConsumer(null)
                         }
                         .setNegativeButton(android.R.string.cancel, null)
                         .show()
-            } ?: fragmentManager?.let { OsmOAuthDialogFragment().show(it, OsmOAuthDialogFragment.TAG) }
+                }
+            } else {
+                fragmentManager?.let { OsmOAuthDialogFragment().show(it, OsmOAuthDialogFragment.TAG) }
+            }
             true
         }
 
