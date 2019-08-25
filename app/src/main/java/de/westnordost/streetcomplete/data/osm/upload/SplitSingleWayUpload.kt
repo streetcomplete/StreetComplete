@@ -29,7 +29,7 @@ class SplitSingleWayUpload @Inject constructor(private val osmDao: MapDataDao)  
         val positions = nodes.map { it.position }
         /* the splits must be sorted strictly from start to end of way because the algorithm may
            insert nodes in the way */
-        val sortedSplits = splits.map { it.toSplitWay(positions) }.sorted()
+        val sortedSplits = splits.flatMap { it.toSplitWay(positions) }.sorted()
 
         val uploadElements = mutableListOf<Element>()
         var newNodeId = -1L
@@ -247,15 +247,18 @@ private data class SplitWayAtLinePosition( val pos1: LatLon, val index1: Int,
 
 /** creates a SplitWay from a SplitLineAtPosition, given the nodes of the way. So, basically it
  *  simply finds the node index/indices at which the split should be made.
+ *  One SplitPolylineAtPosition will map to several SplitWays for self-intersecting ways that have
+ *  a split at the position where they self-intersect. I.e. a way in the shape of an 8 split exactly
+ *  in the centre.
  *  If the way changed significantly in the meantime, it will throw an ElementConflictException */
-private fun SplitPolylineAtPosition.toSplitWay(positions: List<LatLon>): SplitWay {
+private fun SplitPolylineAtPosition.toSplitWay(positions: List<LatLon>): Collection<SplitWay> {
     return when(this) {
         is SplitAtPoint -> toSplitWay(positions)
         is SplitAtLinePosition -> toSplitWay(positions)
     }
 }
 
-private fun SplitAtPoint.toSplitWay(positions: List<LatLon>): SplitWayAtPoint {
+private fun SplitAtPoint.toSplitWay(positions: List<LatLon>): Collection<SplitWayAtPoint> {
     // could be several indices, for example if the way has the shape of an 8.
     var indicesOf = positions.osmIndicesOf(pos)
     if (indicesOf.isEmpty()) throw ElementConflictException("To be split point has been moved")
@@ -264,10 +267,10 @@ private fun SplitAtPoint.toSplitWay(positions: List<LatLon>): SplitWayAtPoint {
     if (indicesOf.isEmpty())
         throw ElementConflictException("Split position is now at the very start or end of the way - can't split there")
 
-    return SplitWayAtPoint(pos, indicesOf.first())
+    return indicesOf.map { indexOf -> SplitWayAtPoint(pos, indexOf) }
 }
 
-private fun SplitAtLinePosition.toSplitWay(positions: List<LatLon>): SplitWayAtLinePosition {
+private fun SplitAtLinePosition.toSplitWay(positions: List<LatLon>): Collection<SplitWayAtLinePosition> {
     // could be several indices, for example if the way has the shape of an 8...
     val indicesOf1 = positions.osmIndicesOf(pos1)
     if (indicesOf1.isEmpty()) throw ElementConflictException("To be split line has been moved")
@@ -276,15 +279,19 @@ private fun SplitAtLinePosition.toSplitWay(positions: List<LatLon>): SplitWayAtL
     if (indicesOf2.isEmpty()) throw ElementConflictException("To be split line has been moved")
 
     // ...and we need to find out which of the lines is meant
+    val result = mutableListOf<SplitWayAtLinePosition>()
     for (i1 in indicesOf1) {
         for (i2 in indicesOf2) {
             /* For SplitAtLinePosition, the direction of the way does not matter. But for the
                SplitWayAtLinePosition it must be in the same order as the OSM way. */
-            if (i1 + 1 == i2) return SplitWayAtLinePosition(pos1, i1, pos2, i2, delta)
-            if (i2 + 1 == i1) return SplitWayAtLinePosition(pos2, i2, pos1, i1, 1.0 - delta)
+            if (i1 + 1 == i2) result.add(SplitWayAtLinePosition(pos1, i1, pos2, i2, delta))
+            if (i2 + 1 == i1) result.add(SplitWayAtLinePosition(pos2, i2, pos1, i1, 1.0 - delta))
         }
     }
-    throw ElementConflictException("End points of the to be split line are not directly successive anymore")
+    if (result.isNotEmpty())
+        return result
+    else
+        throw ElementConflictException("End points of the to be split line are not directly successive anymore")
 }
 
 /** returns the indices at which the given pos is found in this list, taking into accound the limited
