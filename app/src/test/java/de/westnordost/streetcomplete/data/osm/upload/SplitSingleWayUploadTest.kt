@@ -46,7 +46,7 @@ class SplitSingleWayUploadTest {
         way = OsmWay(0,1, mutableListOf(0,1,2,3), null)
         on(osmDao.getNodes(any())).then { invocation ->
             val nodeIds = invocation.getArgument(0) as List<Long>
-            nodeIds.map { nodeId -> n[nodeId.toInt()] }
+            nodeIds.map { nodeId -> n[nodeId.toInt()] }.shuffled()
         }
         on(osmDao.getRelationsForWay(0)).thenReturn(listOf())
     }
