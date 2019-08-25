@@ -13,6 +13,7 @@ class AddTracktype(o: OverpassMapDataDao) : SimpleOverpassQuestType<String>(o) {
     """
     override val commitMessage = "Add tracktype"
     override val icon = R.drawable.ic_quest_tractor
+    override val isSplitWayEnabled = true
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_tracktype_title
 

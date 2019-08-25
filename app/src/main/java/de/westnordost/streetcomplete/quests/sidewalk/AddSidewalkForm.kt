@@ -21,7 +21,6 @@ class AddSidewalkForm : AbstractQuestFormAnswerFragment<SidewalkAnswer>() {
 
     override val contentLayoutResId = R.layout.quest_street_side_puzzle
     override val contentPadding = false
-    override val otherAnswers = listOf(createSplitWayAnswer())
 
     private var streetSideRotater: StreetSideRotater? = null
     private var leftSide: Sidewalk? = null

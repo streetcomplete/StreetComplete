@@ -31,6 +31,7 @@ class AddProhibitedForPedestrians(o: OverpassMapDataDao) : SimpleOverpassQuestTy
 
     override val commitMessage = "Add whether roads are accessible for pedestrians"
     override val icon = R.drawable.ic_quest_no_pedestrians
+    override val isSplitWayEnabled = true
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_accessible_for_pedestrians_title_prohibited
 

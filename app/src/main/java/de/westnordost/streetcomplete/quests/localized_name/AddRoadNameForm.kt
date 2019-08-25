@@ -20,7 +20,6 @@ import java.lang.IllegalStateException
 class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
 
     override val otherAnswers = listOf(
-        createSplitWayAnswer(),
         OtherAnswer(R.string.quest_name_answer_noName) { selectNoStreetNameReason() },
         OtherAnswer(R.string.quest_streetName_answer_cantType) { showKeyboardInfo() }
     )

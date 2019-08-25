@@ -23,7 +23,7 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
     override val contentLayoutResId = R.layout.quest_maxspeed
 
     override val otherAnswers: List<OtherAnswer> get() {
-        val result = mutableListOf(createSplitWayAnswer())
+        val result = mutableListOf<OtherAnswer>()
 
         val highwayTag = osmElement!!.tags["highway"]!!
         if (countryInfo.isLivingStreetKnown && MAYBE_LIVING_STREET.contains(highwayTag)) {

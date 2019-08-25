@@ -7,8 +7,6 @@ import de.westnordost.streetcomplete.quests.surface.Surface.*
 
 class AddPathSurfaceForm : AGroupedImageListQuestAnswerFragment<String, String>() {
 
-    override val otherAnswers = listOf(createSplitWayAnswer())
-
     override val topItems get() =
         when (val pathType = determinePathType(osmElement!!.tags)) {
             "bridleway" -> listOf(

@@ -30,7 +30,7 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
 
     override val otherAnswers: List<OtherAnswer> get() {
         val isNoRoundabout = osmElement!!.tags["junction"] != "roundabout"
-        val result = mutableListOf(createSplitWayAnswer())
+        val result = mutableListOf<OtherAnswer>()
         if (!isDefiningBothSides && isNoRoundabout) {
             result.add(OtherAnswer(R.string.quest_cycleway_answer_contraflow_cycleway) { showBothSides() })
         }

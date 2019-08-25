@@ -7,7 +7,6 @@ import de.westnordost.streetcomplete.quests.OtherAnswer
 class WayLitForm : AYesNoQuestAnswerFragment<String>() {
 
     override val otherAnswers = listOf(
-        createSplitWayAnswer(),
         OtherAnswer(R.string.quest_way_lit_24_7) { applyAnswer("24/7") },
         OtherAnswer(R.string.quest_way_lit_automatic) { applyAnswer("automatic") }
     )

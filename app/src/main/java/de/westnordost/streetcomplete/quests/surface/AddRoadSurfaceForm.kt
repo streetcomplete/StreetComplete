@@ -7,8 +7,6 @@ import de.westnordost.streetcomplete.quests.surface.Surface.*
 
 class AddRoadSurfaceForm : AGroupedImageListQuestAnswerFragment<String,String>() {
 
-    override val otherAnswers = listOf(createSplitWayAnswer())
-
     override val topItems get() =
         // tracks often have different surfaces than other roads
         if (osmElement!!.tags["highway"] == "track")

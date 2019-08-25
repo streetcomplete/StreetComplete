@@ -22,6 +22,7 @@ import java.util.Locale
 import javax.inject.Inject
 
 import de.westnordost.osmapi.map.data.OsmElement
+import de.westnordost.osmapi.map.data.Way
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
@@ -30,6 +31,7 @@ import de.westnordost.streetcomplete.data.QuestType
 import de.westnordost.streetcomplete.data.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.meta.CountryInfos
+import de.westnordost.streetcomplete.data.meta.OsmAreas
 import de.westnordost.streetcomplete.data.osm.ElementGeometry
 import kotlinx.android.synthetic.main.fragment_quest_answer.*
 import java.util.concurrent.FutureTask
@@ -137,10 +139,7 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
             content.visibility = View.GONE
         }
 
-
-        val cantSay = OtherAnswer(R.string.quest_generic_answer_notApplicable) { onClickCantSay() }
-        val answers = listOf(cantSay) + otherAnswers
-
+        val answers = assembleOtherAnswers()
         if (answers.size == 1) {
             otherAnswersButton.setText(answers.first().titleResourceId)
             otherAnswersButton.setOnClickListener { answers.first().action() }
@@ -161,6 +160,21 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
                 }
             }
         }
+    }
+
+    private fun assembleOtherAnswers() : List<OtherAnswer> {
+        val answers = mutableListOf<OtherAnswer>()
+
+        val cantSay = OtherAnswer(R.string.quest_generic_answer_notApplicable) { onClickCantSay() }
+        answers.add(cantSay)
+
+        val isWayString = (osmElement as? Way)?.let { !OsmAreas.isArea(it) } ?: false
+        if (isWayString) {
+            val splitWay = OtherAnswer(R.string.quest_generic_answer_differs_along_the_way) { onClickSplitWayAnswer() }
+            answers.add(splitWay)
+        }
+        answers.addAll(otherAnswers)
+        return answers
     }
 
     private fun getLevelLabelText(): String? {
@@ -231,9 +245,6 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
             .show()
         }
     }
-
-    protected fun createSplitWayAnswer() =
-        OtherAnswer(R.string.quest_generic_answer_differs_along_the_way) { onClickSplitWayAnswer() }
 
     private fun onClickSplitWayAnswer() {
         context?.let { AlertDialog.Builder(it)
