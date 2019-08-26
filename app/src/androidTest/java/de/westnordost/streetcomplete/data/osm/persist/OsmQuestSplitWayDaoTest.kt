@@ -70,6 +70,21 @@ class OsmQuestSplitWayDaoTest : ApplicationDbTestCase() {
 		assertEquals(2, dao.getAll().size)
 	}
 
+    @Test fun getCount0() {
+        assertEquals(0, dao.getCount())
+    }
+
+    @Test fun getCount1() {
+        dao.put(createOsmQuestSplitWay(1L, 1L))
+        assertEquals(1, dao.getCount())
+    }
+
+    @Test fun getCount2() {
+        dao.put(createOsmQuestSplitWay(1L, 1L))
+        dao.put(createOsmQuestSplitWay(2L, 2L))
+        assertEquals(2, dao.getCount())
+    }
+
 	private fun createOsmQuestSplitWay(id: Long, wayId: Long = 1L): OsmQuestSplitWay {
 		val pos1 = OsmLatLon(0.0, 0.0)
 		val pos2 = OsmLatLon(1.0, 0.0)

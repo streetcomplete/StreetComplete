@@ -36,6 +36,10 @@ class OsmQuestSplitWayDao @Inject constructor(
         return db.queryOne(NAME, null, selection, args) { it.createOsmQuestSplitWay() }
     }
 
+    fun getCount(): Int {
+        return db.queryOne(NAME, arrayOf("COUNT(*)")) { it.getInt(0) } ?: 0
+    }
+
     fun put(quest: OsmQuestSplitWay) {
         db.insertWithOnConflict(NAME, null, quest.createContentValues(), CONFLICT_REPLACE)
     }
