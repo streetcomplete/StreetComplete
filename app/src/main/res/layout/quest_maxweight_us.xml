@@ -5,6 +5,7 @@
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
     android:gravity="center_horizontal">
+
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -19,6 +20,7 @@
             layout="@layout/quest_maxweight_pound_us_simple"/>
 
     </RelativeLayout>
+
     <Spinner
         android:id="@+id/weightUnitSelect"
         android:layout_width="wrap_content"
@@ -27,5 +29,7 @@
         android:layout_toEndOf="@+id/inputSigns"
         android:paddingStart="16dp"
         android:background="#0fff"
+        android:visibility="gone"
         tools:visibility="visible"/>
+
 </RelativeLayout>
