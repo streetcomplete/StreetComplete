@@ -82,7 +82,7 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
         poundInputSign = contentView.findViewById(R.id.poundInputSign)
 
         weightUnitSelect = contentView.findViewById(R.id.weightUnitSelect)
-        val measurementUnits = countryInfo.measurementSystem
+        val measurementUnits = countryInfo.measurementSystemForWeightLimits
         weightUnitSelect?.visibility = if (measurementUnits.size == 1) View.GONE else View.VISIBLE
         weightUnitSelect?.adapter = ArrayAdapter(context!!, R.layout.spinner_item_centered, getSpinnerItems(measurementUnits))
         weightUnitSelect?.setSelection(measurementUnits.size - 1) // prefer metric
@@ -151,8 +151,7 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
             if (isMetric()) {
                 val input = tonInput?.numberOrNull
                 if (input != null) {
-                    val country = countryInfo.countryCode
-                    if ("US" == country) {
+                    if (countryInfo.measurementSystemForWeightLimits.contains("short_ton_formatted_as_ton")) {
                         return UsShortTons(input.toDouble())
                     }
                     return MetricWeightMeasure(input.toDouble())
