@@ -19,7 +19,7 @@ import de.westnordost.streetcomplete.util.TextChangedWatcher
 
 import de.westnordost.streetcomplete.quests.max_weight.Measurement.*
 
-private enum class Measurement { TON, USA }
+private enum class Measurement { TON, POUND }
 
 class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
 
@@ -60,7 +60,7 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
 
         val unit = when(countryInfo.measurementSystemForWeightLimits) {
             listOf("ton") -> TON
-            listOf("short_ton_formatted_as_ton", "pound") -> USA
+            listOf("short_ton_formatted_as_ton", "pound") -> POUND
             else -> throw UnsupportedOperationException("not implemented")
         }
         setMaxWeightSignLayout(R.layout.quest_maxweight, unit)
@@ -88,7 +88,7 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
         weightUnitSelect?.setSelection(0)
         weightUnitSelect?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parentView: AdapterView<*>, selectedItemView: View?, position: Int, id: Long) {
-                val weightUnit = if (weightUnitSelect?.selectedItem == "t") TON else USA
+                val weightUnit = if (weightUnitSelect?.selectedItem == "t") TON else POUND
                 switchLayout(weightUnit)
             }
 
@@ -111,13 +111,13 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
 
     private fun switchLayout(unit: Measurement) {
         val isMetric = unit == TON
-        val isUsa = unit == USA
+        val isPound = unit == POUND
 
         tonInputSign?.visibility = if (isMetric) View.VISIBLE else View.GONE
-        poundInputSign?.visibility = if (isUsa) View.VISIBLE else View.GONE
+        poundInputSign?.visibility = if (isPound) View.VISIBLE else View.GONE
 
         if (isMetric) tonInput?.requestFocus()
-        if (isUsa) poundInput?.requestFocus()
+        if (isPound) poundInput?.requestFocus()
     }
 
     private fun getSpinnerItems(units: List<String>) = units.mapNotNull {
