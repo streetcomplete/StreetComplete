@@ -15,7 +15,7 @@ data class MetricWeightMeasure(val tons: Double) : WeightMeasure() {
         }
 }
 
-data class UsShortTons(val tons: Double) : WeightMeasure() {
+data class ShortTons(val tons: Double) : WeightMeasure() {
     override fun toTons() = tons * 0.90718474
     override fun toString() =
             if (tons % 1 == 0.0) {

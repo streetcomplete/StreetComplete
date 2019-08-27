@@ -152,7 +152,7 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
                 val input = tonInput?.numberOrNull
                 if (input != null) {
                     if (countryInfo.measurementSystemForWeightLimits.contains("short_ton_formatted_as_ton")) {
-                        return UsShortTons(input.toDouble())
+                        return ShortTons(input.toDouble())
                     }
                     return MetricWeightMeasure(input.toDouble())
                 }
