@@ -111,13 +111,13 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
 
     private fun switchLayout(unit: Measurement) {
         val isMetric = unit == TON
-        val isImperial = unit == USA
+        val isUsa = unit == USA
 
         tonInputSign?.visibility = if (isMetric) View.VISIBLE else View.GONE
-        poundInputSign?.visibility = if (isImperial) View.VISIBLE else View.GONE
+        poundInputSign?.visibility = if (isUsa) View.VISIBLE else View.GONE
 
         if (isMetric) tonInput?.requestFocus()
-        if (isImperial) poundInput?.requestFocus()
+        if (isUsa) poundInput?.requestFocus()
     }
 
     private fun getSpinnerItems(units: List<String>) = units.mapNotNull {
