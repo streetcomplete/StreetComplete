@@ -142,8 +142,8 @@ class SplitSingleWayUpload @Inject constructor(private val osmDao: MapDataDao)  
            ways is split up, the correct way chunk must be selected to replace the old way. */
         if (originalWayRole == "from" || originalWayRole == "to") {
             val viaNodeIds = relation.fetchViaNodeIds(relationType)
-            if (viaNodeIds != null) {
-                val newWay = newWays.find { it.nodeIds.firstAndLast().containsAny(viaNodeIds) }
+            if (viaNodeIds.isNotEmpty()) {
+                val newWay = newWays.find { viaNodeIds.containsAny(it.nodeIds.firstAndLast()) }
                 if (newWay != null) {
                     val newRelationMember = OsmRelationMember(newWay.id, originalWayRole, WAY)
                     relation.members[indexOfWayInRelation] = newRelationMember
@@ -204,14 +204,20 @@ class SplitSingleWayUpload @Inject constructor(private val osmDao: MapDataDao)  
         return null
     }
 
-    private fun Relation.fetchViaNodeIds(relationType: String): List<Long>? {
-        val via = findVia(relationType) ?: return null
-        return when (via.type) {
-            WAY -> osmDao.getWay(via.ref)?.nodeIds?.firstAndLast()
-            NODE -> listOf(via.ref)
-            else -> null
+    private fun Relation.fetchViaNodeIds(relationType: String): Set<Long> {
+        val vias = findVias(relationType)
+        val nodeIds = mutableSetOf<Long>()
+        for (via in vias) {
+            if (via.type == NODE) {
+                nodeIds.add(via.ref)
+            } else if (via.type == WAY) {
+                val way = osmDao.getWay(via.ref)
+                if (way != null) nodeIds.addAll(way.nodeIds.firstAndLast())
+            }
         }
+        return nodeIds
     }
+
 }
 
 /** data class that carries the information for one split to perform on a random position on a way.
@@ -320,14 +326,14 @@ private fun Way.isBeforeWayInChain(way: Way) =
 private fun Way.isAfterWayInChain(way: Way) =
     nodeIds.first() == way.nodeIds.last() || nodeIds.first() == way.nodeIds.first()
 
-private fun Relation.findVia(relationType: String): RelationMember? {
+private fun Relation.findVias(relationType: String): List<RelationMember> {
     val nodesAndWays = members.filter { it.type == NODE || it.type == WAY }
     return when (relationType) {
-        "restriction" -> nodesAndWays.find { it.role == "via" }
+        "restriction" -> nodesAndWays.filter { it.role == "via" }
         "destination_sign" -> {
-            nodesAndWays.find { it.role == "intersection" } ?:
-            nodesAndWays.find { it.role == "sign" }
+            nodesAndWays.filter { it.role == "intersection" }.takeUnless { it.isEmpty() } ?:
+            nodesAndWays.filter { it.role == "sign" }
         }
-        else -> nodesAndWays.find { it.role == "via" }
+        else -> nodesAndWays.filter { it.role == "via" }
     }
 }

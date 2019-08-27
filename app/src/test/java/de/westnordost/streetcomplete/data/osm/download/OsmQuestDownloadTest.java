@@ -171,5 +171,10 @@ public class OsmQuestDownloadTest
 		{
 			return new String[0];
 		}
+
+		@Override public boolean isSplitWayEnabled()
+		{
+			return false;
+		}
 	}
 }

@@ -506,6 +506,31 @@ class SplitSingleWayUploadTest {
         assertEquals(WAY, fromRelationMember.type)
     }
 
+    @Test fun `update a restriction-like relation with split-way and multiple via ways`() {
+        on(osmDao.getWay(0)).thenReturn(OsmWay(0, 1, listOf(0,1,2,3), null))
+        on(osmDao.getWay(1)).thenReturn(OsmWay(1, 1, listOf(6,7), null))
+        on(osmDao.getWay(2)).thenReturn(OsmWay(2, 1, listOf(4,5,6), null))
+        on(osmDao.getWay(3)).thenReturn(OsmWay(3, 1, listOf(3,4), null))
+        on(osmDao.getRelationsForWay(0)).thenReturn(listOf(
+            OsmRelation(0,1, mutableListOf<RelationMember>(
+                OsmRelationMember(0, "from", WAY),
+                OsmRelationMember(1, "to", WAY),
+                OsmRelationMember(2, "via", WAY),
+                OsmRelationMember(3, "via", WAY)
+            ), mapOf("type" to "restriction"))
+        ))
+        val elements = doSplit(SplitAtPoint(p[2]))
+
+        val relation = elements.relations.single()
+        assertEquals(4, relation.members.size)
+
+        val fromRelationMember = relation.members[0]!!
+        val fromWay = elements.waysById.getValue(fromRelationMember.ref)
+        assertEquals(listOf<Long>(2,3), fromWay.nodeIds.toList())
+        assertEquals("from", fromRelationMember.role)
+        assertEquals(WAY, fromRelationMember.type)
+    }
+
     @Test fun `no special treatment of restriction relation if the way has another role`() {
         on(osmDao.getRelationsForWay(0)).thenReturn(listOf(
             OsmRelation(0,1, mutableListOf<RelationMember>(
