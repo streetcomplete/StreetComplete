@@ -168,6 +168,8 @@ class AddMaxHeightForm : AbstractQuestFormAnswerFragment<MaxHeightAnswer>() {
     private fun isMetric() =
         heightUnitSelect?.let { it.selectedItem == "m" }
             ?: (countryInfo.measurementSystem[0] == "metric")
+    // heightUnitSelect will give null for cases where there is a single unit
+    // in such cases there is single unit, so we can use [0] to get it
 
     private fun confirmUnusualInput(callback: () -> (Unit)) {
         activity?.let {

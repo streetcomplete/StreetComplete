@@ -148,7 +148,7 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
 
     private fun getWeightFromInput(): WeightMeasure? {
         try {
-            if (isMetric()) {
+            if (isTon()) {
                 val input = tonInput?.numberOrNull
                 if (input != null) {
                     if (countryInfo.measurementSystemForWeightLimits.contains("short_ton_formatted_as_ton")) {
@@ -168,9 +168,12 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
         return null
     }
 
-    private fun isMetric() =
+    private fun isTon() =
         weightUnitSelect?.let { it.selectedItem == "t" }
-            ?: (countryInfo.measurementSystem[0] == "metric")
+            ?: (countryInfo.measurementSystemForWeightLimits[0] == "ton"
+                    || countryInfo.measurementSystemForWeightLimits[0] == "short_ton_formatted_as_ton")
+        // weightUnitSelect will give null for cases where there is a single unit
+        // in such cases there is single unit, so we can use [0] to get it
 
     private fun confirmUnusualInput(callback: () -> (Unit)) {
         activity?.let {
