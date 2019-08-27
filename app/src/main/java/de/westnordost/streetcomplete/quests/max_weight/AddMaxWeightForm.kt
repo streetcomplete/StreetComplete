@@ -156,11 +156,13 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
                     }
                     return MetricWeightMeasure(input.toDouble())
                 }
-            } else {
+            } else if (isPound()) {
                 val poundString = poundInput?.numberOrNull
                 if (poundString != null) {
                     return ImperialWeightMeasure(poundString.toInt())
                 }
+            } else {
+                throw UnsupportedOperationException("not implemented")
             }
         } catch (e: NumberFormatException) {
             return null;
@@ -174,6 +176,11 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
                     || countryInfo.measurementSystemForWeightLimits[0] == "short_ton_formatted_as_ton")
         // weightUnitSelect will give null for cases where there is a single unit
         // in such cases there is single unit, so we can use [0] to get it
+
+    private fun isPound() =
+            weightUnitSelect?.let { it.selectedItem == "lbs" }
+                    ?: (countryInfo.measurementSystemForWeightLimits[0] == "pound")
+    // see comment in isTon
 
     private fun confirmUnusualInput(callback: () -> (Unit)) {
         activity?.let {
