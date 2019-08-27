@@ -60,7 +60,7 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
 
         val unit = when(countryInfo.measurementSystemForWeightLimits) {
             listOf("ton") -> TON
-            listOf("short_ton_formatted_as_ton", "pounds") -> USA
+            listOf("short_ton_formatted_as_ton", "pound") -> USA
             else -> throw UnsupportedOperationException("not implemented")
         }
         setMaxWeightSignLayout(R.layout.quest_maxweight, unit)
@@ -122,8 +122,9 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
 
     private fun getSpinnerItems(units: List<String>) = units.mapNotNull {
         when(it) {
-            "metric" -> "t"
-            "imperial" -> "lbs"
+            "ton" -> "t"
+            "short_ton_formatted_as_ton" -> "t"
+            "pound" -> "lbs"
             else -> null
         }
     }
