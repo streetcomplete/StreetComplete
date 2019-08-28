@@ -10,7 +10,8 @@ import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandler
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
 import de.westnordost.streetcomplete.data.osm.tql.FiltersParser
-import de.westnordost.streetcomplete.data.osm.tql.OverpassQLUtil
+import de.westnordost.streetcomplete.data.osm.tql.getQuestPrintStatement
+import de.westnordost.streetcomplete.data.osm.tql.toGlobalOverpassBBox
 import java.util.concurrent.FutureTask
 
 class AddPlaceName(
@@ -18,10 +19,14 @@ class AddPlaceName(
     private val featureDictionaryFuture: FutureTask<FeatureDictionary>
 ) : OsmElementQuestType<PlaceNameAnswer> {
 
-    private val filter by lazy { FiltersParser().parse(
-        "nodes, ways, relations with !name and !brand and noname != yes " +
-        " and (shop and shop !~ no|vacant or craft or office or tourism = information and information = office " +
-        " or " +
+    private val filter by lazy { FiltersParser().parse("""
+        nodes, ways, relations with 
+        (
+          shop and shop !~ no|vacant
+          or craft
+          or office
+          or tourism = information and information = office 
+          or """.trimIndent() +
         mapOf(
             "amenity" to arrayOf(
                 "restaurant", "cafe", "ice_cream", "fast_food", "bar", "pub", "biergarten", "food_court", "nightclub",                  // eat & drink
@@ -48,8 +53,10 @@ class AddPlaceName(
                 "water_park", "miniature_golf", "stadium", "marina", "bowling_alley",
                 "amusement_arcade", "adult_gaming_centre", "tanning_salon", "horse_riding"
             )
-        ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString(" or ") +
-        ")"
+        ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n  or ") + "\n" + """
+        )
+        and !name and !brand and noname != yes
+        """.trimIndent()
     )}
 
     override val commitMessage = "Determine place names"
@@ -59,12 +66,12 @@ class AddPlaceName(
     override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>) = arrayOf(featureName.value)
 
     override fun download(bbox: BoundingBox, handler: MapDataWithGeometryHandler): Boolean {
-        val overpassQuery = filter.toOverpassQLString(bbox) + OverpassQLUtil.getQuestPrintStatement()
+        val overpassQuery = bbox.toGlobalOverpassBBox() + "\n" + filter.toOverpassQLString() + getQuestPrintStatement()
         return overpassServer.getAndHandleQuota(overpassQuery) { element, geometry ->
             if(element.tags != null) {
                 // only show places without names as quests for which a feature name is available
                 if (featureDictionaryFuture.get().byTags(element.tags).find().isNotEmpty()) {
-                    handler.handle(element, geometry);
+                    handler.handle(element, geometry)
                 }
             }
         }

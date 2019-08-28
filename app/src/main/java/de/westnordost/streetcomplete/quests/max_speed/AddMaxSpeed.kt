@@ -16,8 +16,8 @@ class AddMaxSpeed(o: OverpassMapDataDao) : SimpleOverpassQuestType<MaxSpeedAnswe
          and surface !~ ${OsmTaggings.ANYTHING_UNPAVED.joinToString("|")}
          and motor_vehicle !~ private|no
          and vehicle !~ private|no
-         and (access !~ private|no or (foot and foot !~ private|no))
          and area != yes
+         and (access !~ private|no or (foot and foot !~ private|no))
     """
     override val commitMessage = "Add speed limits"
     override val icon = R.drawable.ic_quest_max_speed

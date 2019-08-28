@@ -8,7 +8,7 @@ import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
 class AddPlaygroundAccess(o: OverpassMapDataDao) : SimpleOverpassQuestType<Boolean>(o) {
 
-    override val tagFilters = "nodes, ways, relations with leisure=playground and (!access or access=unknown)"
+    override val tagFilters = "nodes, ways, relations with leisure = playground and (!access or access = unknown)"
     override val commitMessage = "Add playground access"
     override val icon = R.drawable.ic_quest_playground
 

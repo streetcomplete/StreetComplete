@@ -65,7 +65,7 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
         super.onCreate(savedInstanceState)
 
         isDefiningBothSides = savedInstanceState?.getBoolean(DEFINE_BOTH_SIDES)
-                ?: !likelyNoBicycleContraflow.matches(osmElement)
+                ?: !likelyNoBicycleContraflow.matches(osmElement!!)
 
         savedInstanceState?.getString(CYCLEWAY_RIGHT)?.let { rightSide = Cycleway.valueOf(it) }
         savedInstanceState?.getString(CYCLEWAY_LEFT)?.let { leftSide = Cycleway.valueOf(it) }

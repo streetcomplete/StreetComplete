@@ -8,12 +8,14 @@ import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
 
 class AddWheelchairAccessBusiness(o: OverpassMapDataDao) : SimpleOverpassQuestType<String>(o)
 {
-    override val tagFilters =
-        " nodes, ways, relations with ( shop and shop !~ no|vacant" +
-        " or amenity = parking and parking = multi-storey" +
-        " or amenity = recycling and recycling_type = centre" +
-        " or tourism = information and information = office" +
-        " or  " +
+    override val tagFilters = """
+        nodes, ways, relations with
+        (
+         shop and shop !~ no|vacant
+         or amenity = parking and parking = multi-storey
+         or amenity = recycling and recycling_type = centre
+         or tourism = information and information = office
+         or """.trimIndent() +
         mapOf(
             "amenity" to arrayOf(
                 "restaurant", "cafe", "ice_cream", "fast_food", "bar", "pub", "biergarten", "food_court", "nightclub",
@@ -46,9 +48,8 @@ class AddWheelchairAccessBusiness(o: OverpassMapDataDao) : SimpleOverpassQuestTy
                 // not listed manually for other quests
                 "winery"
             )
-        ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString(" or ") +
-        " )" +
-        " and !wheelchair and name"
+        ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n or ") +
+        "\n) and !wheelchair and name"
 
     override val commitMessage = "Add wheelchair access"
     override val icon = R.drawable.ic_quest_wheelchair_shop

@@ -9,7 +9,7 @@ class AddTactilePavingBusStop(o: OverpassMapDataDao) : SimpleOverpassQuestType<B
 
     override val tagFilters = """
         nodes, ways with
-        (public_transport=platform or (highway=bus_stop and public_transport!=stop_position))
+        (public_transport = platform or (highway = bus_stop and public_transport != stop_position))
         and !tactile_paving
     """
     override val commitMessage = "Add tactile pavings on bus stops"

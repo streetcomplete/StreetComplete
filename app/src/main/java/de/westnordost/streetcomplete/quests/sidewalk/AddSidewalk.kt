@@ -8,7 +8,8 @@ import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandler
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
-import de.westnordost.streetcomplete.data.osm.tql.OverpassQLUtil
+import de.westnordost.streetcomplete.data.osm.tql.getQuestPrintStatement
+import de.westnordost.streetcomplete.data.osm.tql.toGlobalOverpassBBox
 
 class AddSidewalk(private val overpassServer: OverpassMapDataDao) : OsmElementQuestType<SidewalkAnswer> {
 
@@ -28,31 +29,31 @@ class AddSidewalk(private val overpassServer: OverpassMapDataDao) : OsmElementQu
         val minDistToWays = 15 //m
 
         // note: this query is very similar to the query in AddCycleway
-        return OverpassQLUtil.getGlobalOverpassBBox(bbox) +
-            "way[highway ~ \"^(primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential)$\"]" +
+        return bbox.toGlobalOverpassBBox() + "\n" +
+            "way[highway ~ '^(primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential)$']" +
             "[area != yes]" +
             // not any motorroads
             "[motorroad != yes]" +
             // only without sidewalk tags
-            "[!sidewalk][!\"sidewalk:left\"][!\"sidewalk:right\"][!\"sidewalk:both\"]" +
+            "[!sidewalk][!'sidewalk:left'][!'sidewalk:right'][!'sidewalk:both']" +
             // not any with very low speed limit because they not very likely to have sidewalks
-            "[maxspeed !~ \"^(8|7|6|5|5 mph|walk)$\"]" +
+            "[maxspeed !~ '^(8|7|6|5|5 mph|walk)$']" +
             // not any unpaved because of the same reason
-            "[surface !~ \"^(" + OsmTaggings.ANYTHING_UNPAVED.joinToString("|") + ")$\"]" +
+            "[surface !~ '^(" + OsmTaggings.ANYTHING_UNPAVED.joinToString("|") + ")$']" +
             "[lit = yes]" +
             // not any explicitly tagged as no pedestrians
             "[foot != no]" +
-            "[access !~ \"^private|no$\"]" +
+            "[access !~ '^private|no$']" +
             // some roads may be farther than minDistToWays from ways, not tagged with
             // footway=separate/sidepath but may have a hint that there is a separately tagged
             // sidewalk
             "[foot != use_sidepath]" +
-            " -> .streets;" +
-            "way[highway ~ \"^(path|footway|cycleway)$\"](around.streets: " + minDistToWays + ")" +
-            " -> .ways;" +
-            "way.streets(around.ways: " + minDistToWays + ") -> .streets_near_ways;" +
-            "(.streets; - .streets_near_ways;);" +
-            OverpassQLUtil.getQuestPrintStatement()
+            " -> .streets;\n" +
+            "way[highway ~ '^(path|footway|cycleway)$'](around.streets: " + minDistToWays + ")" +
+            " -> .ways;\n" +
+            "way.streets(around.ways: " + minDistToWays + ") -> .streets_near_ways;\n" +
+            "(.streets; - .streets_near_ways;);\n" +
+            getQuestPrintStatement()
     }
 
     override fun isApplicableTo(element: Element): Boolean? = null

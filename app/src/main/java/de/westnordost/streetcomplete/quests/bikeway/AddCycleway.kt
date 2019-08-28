@@ -9,7 +9,8 @@ import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandler
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
-import de.westnordost.streetcomplete.data.osm.tql.OverpassQLUtil
+import de.westnordost.streetcomplete.data.osm.tql.getQuestPrintStatement
+import de.westnordost.streetcomplete.data.osm.tql.toGlobalOverpassBBox
 
 import de.westnordost.streetcomplete.quests.bikeway.Cycleway.*
 
@@ -60,38 +61,38 @@ class AddCycleway(private val overpassServer: OverpassMapDataDao) : OsmElementQu
     private fun getOverpassQuery(bbox: BoundingBox): String {
         val minDistToCycleways = 15 //m
 
-        return OverpassQLUtil.getGlobalOverpassBBox(bbox) +
-            "way[highway ~ \"^(primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified)$\"]" +
+        return bbox.toGlobalOverpassBBox() + "\n" +
+            "way[highway ~ '^(primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified)$']" +
             "[area != yes]" +
             // not any motorroads
             "[motorroad != yes]" +
             // only without cycleway tags
-            "[!cycleway][!\"cycleway:left\"][!\"cycleway:right\"][!\"cycleway:both\"]" +
-            "[!\"sidewalk:bicycle\"][!\"sidewalk:both:bicycle\"][!\"sidewalk:left:bicycle\"][!\"sidewalk:right:bicycle\"]" +
+            "[!cycleway][!'cycleway:left'][!'cycleway:right'][!'cycleway:both']" +
+            "[!'sidewalk:bicycle'][!'sidewalk:both:bicycle'][!'sidewalk:left:bicycle'][!'sidewalk:right:bicycle']" +
             // not any with low speed limit because they not very likely to have cycleway infrastructure
-            "[maxspeed !~ \"^(20|15|10|8|7|6|5|10 mph|5 mph|walk)$\"]" +
+            "[maxspeed !~ '^(20|15|10|8|7|6|5|10 mph|5 mph|walk)$']" +
             // not any unpaved because of the same reason
-            "[surface !~ \"^(" + OsmTaggings.ANYTHING_UNPAVED.joinToString("|") + ")$\"]" +
+            "[surface !~ '^(" + OsmTaggings.ANYTHING_UNPAVED.joinToString("|") + ")$']" +
             // not any explicitly tagged as no bicycles
             "[bicycle != no]" +
-            "[access !~ \"^private|no$\"]" +
+            "[access !~ '^private|no$']" +
             // some roads may be farther than minDistToCycleways from cycleways, not tagged with
             // cycleway=separate/sidepath but may have a hint that there is a separately tagged
             // cycleway
-            "[bicycle != use_sidepath][\"bicycle:backward\" != use_sidepath]" +
-            "[\"bicycle:forward\" != use_sidepath]" +
-            " -> .streets;" +
-            "(" +
-            "way[highway=cycleway](around.streets: " + minDistToCycleways + ");" +
+            "[bicycle != use_sidepath]['bicycle:backward' != use_sidepath]" +
+            "['bicycle:forward' != use_sidepath]" +
+            " -> .streets;\n" +
+            "(\n" +
+            "  way[highway=cycleway](around.streets: " + minDistToCycleways + ");\n" +
             // See #718: If a separate way exists, it may be that the user's answer should
             // correctly be tagged on that separate way and not on the street -> this app would
             // tag data on the wrong elements. So, don't ask at all for separately mapped ways.
             // :-(
-            "way[highway ~ \"^(path|footway)$\"](around.streets: " + minDistToCycleways + ");" +
-            ") -> .cycleways;" +
-            "way.streets(around.cycleways: " + minDistToCycleways + ") -> .streets_near_cycleways;" +
-            "(.streets; - .streets_near_cycleways;);" +
-            OverpassQLUtil.getQuestPrintStatement()
+            "  way[highway ~ '^(path|footway)$'](around.streets: " + minDistToCycleways + ");\n" +
+            ") -> .cycleways;\n" +
+            "way.streets(around.cycleways: " + minDistToCycleways + ") -> .streets_near_cycleways;\n" +
+            "(.streets; - .streets_near_cycleways;);\n" +
+            getQuestPrintStatement()
     }
 
 

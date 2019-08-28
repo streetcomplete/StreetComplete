@@ -16,16 +16,13 @@ class AddWayLit(o: OverpassMapDataDao) : SimpleOverpassQuestType<String>(o) {
         See #427 for discussion. */
     override val tagFilters = """
         ways with (
-        highway ~ ${LIT_RESIDENTIAL_ROADS.joinToString("|")}
-        or highway ~ ${LIT_NON_RESIDENTIAL_ROADS.joinToString("|")} and (
+          highway ~ ${LIT_RESIDENTIAL_ROADS.joinToString("|")}
+          or highway ~ ${LIT_NON_RESIDENTIAL_ROADS.joinToString("|")} and (
             sidewalk ~ both|left|right|yes|separate
-            or source:maxspeed ~ .+:urban
-            or maxspeed:type ~ .+:urban
-            or zone:maxspeed ~ .+:urban
-            or zone:traffic ~ .+:urban
-        )
-        or highway ~ ${LIT_WAYS.joinToString("|")}
-        or highway = path and (foot = designated or bicycle = designated)
+            or ~source:maxspeed|maxspeed:type|zone:maxspeed|zone:traffic ~ .+:urban
+          )
+          or highway ~ ${LIT_WAYS.joinToString("|")}
+          or highway = path and (foot = designated or bicycle = designated)
         )
         and !lit
         and (access !~ private|no or (foot and foot !~ private|no))

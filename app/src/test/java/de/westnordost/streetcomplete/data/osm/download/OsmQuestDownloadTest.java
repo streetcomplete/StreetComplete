@@ -33,6 +33,7 @@ import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
+import kotlin.Lazy;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
@@ -165,5 +166,10 @@ public class OsmQuestDownloadTest
 		@Override public int getTitle() { return 0; }
 		@Override public void cleanMetadata() {}
 		@Override public int getDefaultDisabledMessage() { return 0; }
+
+		@NotNull @Override public String[] getTitleArgs(@NotNull Map<String, String> tags, @NotNull Lazy<String> featureName)
+		{
+			return new String[0];
+		}
 	}
 }
