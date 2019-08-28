@@ -3,13 +3,12 @@ package de.westnordost.streetcomplete.quests.leaf_detail
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.OsmTaggings
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
-import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandler
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
-import de.westnordost.streetcomplete.data.osm.tql.OverpassQLUtil
+import de.westnordost.streetcomplete.data.osm.tql.getQuestPrintStatement
+import de.westnordost.streetcomplete.data.osm.tql.toGlobalOverpassBBox
 
 class AddForestLeafType(private val overpassServer: OverpassMapDataDao) : OsmElementQuestType<String> {
     override val commitMessage = "Add leaf type"
@@ -20,14 +19,14 @@ class AddForestLeafType(private val overpassServer: OverpassMapDataDao) : OsmEle
     }
 
     private fun getOverpassQuery(bbox: BoundingBox): String {
-        return OverpassQLUtil.getGlobalOverpassBBox(bbox) +
+        return bbox.toGlobalOverpassBBox() +
                 "("+
                 "way[landuse=forest][!leaf_type](if: length()<700.0);\n" +
                 "relation[landuse=forest][!leaf_type](if: length()<700.0);\n" +
                 "way[natural=wood][!leaf_type](if: length()<700.0);\n" +
                 "relation[natural=wood][!leaf_type](if: length()<700.0);\n" +
                 ");" +
-                OverpassQLUtil.getQuestPrintStatement()
+                getQuestPrintStatement()
     }
     override fun isApplicableTo(element: Element):Boolean? = null
 
