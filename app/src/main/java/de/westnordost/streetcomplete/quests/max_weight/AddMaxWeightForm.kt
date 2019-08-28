@@ -57,18 +57,11 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = super.onCreateView(inflater, container, savedInstanceState)
-
-        val unit = when(countryInfo.measurementSystemForWeightLimits) {
-            listOf("ton") -> TON
-            listOf("short_ton_formatted_as_ton", "pound") -> POUND
-            else -> throw UnsupportedOperationException("not implemented")
-        }
-        setMaxWeightSignLayout(R.layout.quest_maxweight, unit)
-
+        setMaxWeightSignLayout(R.layout.quest_maxweight)
         return view
     }
 
-    private fun setMaxWeightSignLayout(resourceId: Int, unit: Measurement) {
+    private fun setMaxWeightSignLayout(resourceId: Int) {
         val contentView = setContentView(resourceId)
 
         tonInput = contentView.findViewById(R.id.tonInput)
@@ -88,7 +81,11 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
         weightUnitSelect?.setSelection(0)
         weightUnitSelect?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parentView: AdapterView<*>, selectedItemView: View?, position: Int, id: Long) {
-                val weightUnit = if (weightUnitSelect?.selectedItem == "t") TON else POUND
+                val weightUnit = when(weightUnitSelect?.selectedItem) {
+                    "t" -> TON
+                    "lbs" -> POUND
+                    else -> throw UnsupportedOperationException("not implemented")
+                }
                 switchLayout(weightUnit)
             }
 
@@ -105,8 +102,6 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
            whether he should use the one as displayed on the sign or in his phone's locale */
         //char separator = DecimalFormatSymbols.getInstance(getCountryInfo().getLocale()).getDecimalSeparator();
         tonInput?.keyListener = DigitsKeyListener.getInstance("0123456789,.")
-
-        switchLayout(unit)
     }
 
     private fun switchLayout(unit: Measurement) {
