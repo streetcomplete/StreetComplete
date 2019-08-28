@@ -105,6 +105,9 @@
             "name": "Prodaja domačih pridelkov",
             "terms": "lokalna tržnica"
         },
+        "waterway/stream_intermittent": {
+            "name": "Presihajoč potok"
+        },
         "highway/road": {
             "name": "Tip ceste ni znan",
             "terms": "neznan tip"
@@ -1162,9 +1165,6 @@
             "name": "Oskrbovalna žičnica",
             "terms": "oskrbovalka,žičnica,zipline"
         },
-        "railway/platform": {
-            "name": "Želežniško postajališče"
-        },
         "barrier/retaining_wall": {
             "name": "Škarpa",
             "terms": "zid,škarfa"
@@ -1174,8 +1174,7 @@
             "terms": "signalna naprava, svetlobni signali,luči,svetila,utripanje"
         },
         "amenity/embassy": {
-            "name": "Veleposlaništvo",
-            "terms": "ambasada,konzulat"
+            "name": "Veleposlaništvo"
         },
         "type/restriction/no_left_turn": {
             "name": "Ni mogoče zaviti levo",
@@ -1269,9 +1268,6 @@
             "name": "Reševalec",
             "terms": "čuvaj,reševalec iz vode,prva pomoč"
         },
-        "amenity/vending_machine/news_papers": {
-            "name": "Avtomat za časopis"
-        },
         "shop/bookmaker": {
             "name": "Stavnica",
             "terms": "pobiralec stav"
@@ -1337,9 +1333,6 @@
         "highway/living_street": {
             "name": "Ulica z umirjenim prometom",
             "terms": "mirna cona,cona umirjenega prometa"
-        },
-        "landuse/military/bunker": {
-            "name": "Vojaško zaklonišče"
         },
         "power/sub_station": {
             "name": "Razdelilna transformatorska postaja"
@@ -1438,9 +1431,6 @@
         "amenity/parking": {
             "name": "Parkirno mesto"
         },
-        "highway/bus_stop": {
-            "name": "Avtobusno postajališče"
-        },
         "amenity/place_of_worship/hindu": {
             "name": "Hindujski tempel"
         },
@@ -1519,10 +1509,6 @@
         "amenity/theatre": {
             "name": "Gledališče",
             "terms": "gledališka dvorana"
-        },
-        "landuse/military/checkpoint": {
-            "name": "Nadzorna točka",
-            "terms": "kontrola, kontrolna točka, rampa"
         },
         "man_made/lighthouse": {
             "name": "Svetilnik",
@@ -1737,9 +1723,6 @@
             "name": "Menjalnica",
             "terms": "menjalnica,menjava,devize"
         },
-        "landuse/military/nuclear_explosion_site": {
-            "name": "Območje jedrskih poskusov"
-        },
         "leisure": {
             "name": "Prosti čas"
         },
@@ -1767,8 +1750,7 @@
             "terms": "prelaz"
         },
         "shop/boutique": {
-            "name": "Butik",
-            "terms": "prodajalna,moda"
+            "name": "Butik"
         },
         "area/highway": {
             "name": "Površina ceste"
@@ -1911,9 +1893,6 @@
             "name": "Geodetska točka",
             "terms": "triangulacijska točka"
         },
-        "roundabout": {
-            "name": "Krožišče"
-        },
         "type/route/power": {
             "name": "Daljnovod",
             "terms": "daljnovod,kablovod"
@@ -2007,10 +1986,6 @@
             "name": "Supermarket",
             "terms": "supermarker,velika samopostrežna trgovina"
         },
-        "office/political_party": {
-            "name": "Politična stranka",
-            "terms": "stranka"
-        },
         "landuse/military/range": {
             "name": "Vojaško strelišče"
         },
@@ -2090,10 +2065,6 @@
         },
         "office/coworking": {
             "name": "Prostor za sodelo"
-        },
-        "vertex": {
-            "name": "Drugo",
-            "terms": "ostalo,drugo,podobno"
         },
         "type/boundary": {
             "name": "Meja",
@@ -2289,10 +2260,6 @@
         },
         "shop/medical_supply": {
             "name": "Trgovina z medicinskimi primpomočki"
-        },
-        "camp_site/camp_pitch": {
-            "name": "Kampirno mesto",
-            "terms": "kamp plac, plac, šotorišče, prikolišče, prikolica, elektrika, postavitev"
         },
         "shop/gas": {
             "name": "Trgovina s plinskimi jeklenkami"
@@ -2502,9 +2469,6 @@
         "type/boundary/administrative": {
             "name": "Upravna meja",
             "terms": "administrativna meja"
-        },
-        "landuse/military/office": {
-            "name": "Vojaške pisarne"
         },
         "amenity/watering_place": {
             "name": "Napajališče za živali",

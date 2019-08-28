@@ -44,6 +44,9 @@
         "building/farm": {
             "name": "Жилое здание на ферме"
         },
+        "shop/hunting": {
+            "name": "Охотничий магазин"
+        },
         "amenity/waste_disposal": {
             "name": "Мусорный бак",
             "terms": "мусор, мусорная площадка, помойка"
@@ -61,9 +64,6 @@
         },
         "emergency/yes": {
             "name": "Доступ экстренных служб разрешён"
-        },
-        "circular": {
-            "name": "Круговое движение со въездами разного приоритета"
         },
         "healthcare/audiologist": {
             "name": "Аудиолог"
@@ -157,6 +157,10 @@
         "attraction/amusement_ride": {
             "name": "Аттракцион в парке развлечений"
         },
+        "barrier/height_restrictor": {
+            "name": "Ограничитель высоты",
+            "terms": "Ограничитель высоты"
+        },
         "place/suburb": {
             "name": "Район / Пригород"
         },
@@ -180,7 +184,7 @@
             "terms": "адрес, адресная информация, адреска"
         },
         "highway/primary_link": {
-            "name": "Съезд с дороги регионального значения",
+            "name": "Съезд с первостепенной дороги",
             "terms": "съезд"
         },
         "shop/greengrocer": {
@@ -258,6 +262,9 @@
             "name": "Маршрут пешего туризма",
             "terms": "туризм, туристическая прогулка, маршрут"
         },
+        "amenity/place_of_worship/christian": {
+            "name": "Христианская церковь"
+        },
         "tourism/hostel": {
             "name": "Хостел",
             "terms": "хостел"
@@ -280,6 +287,9 @@
         "craft/roofer": {
             "name": "Офис кровельщика",
             "terms": "кровельщик"
+        },
+        "amenity/photo_booth": {
+            "name": "Фотокабина"
         },
         "shop/massage": {
             "name": "Массажный салон",
@@ -323,6 +333,9 @@
             "name": "Стоянка такси",
             "terms": "Стоянка такси"
         },
+        "amenity/vending_machine/excrement_bags": {
+            "name": "Автомат по продаже мешков для экскрементов"
+        },
         "amenity/smoking_area": {
             "name": "Место для курения",
             "terms": "место для курения, зона для курения"
@@ -353,10 +366,6 @@
         "shop/furniture": {
             "name": "Мебельный магазин",
             "terms": "Мебельный магазин"
-        },
-        "public_transport/platform_ferry": {
-            "name": "Пристань для парома",
-            "terms": "пристань, причал, пирс, паром, платформа, общественный транспорт"
         },
         "advertising/billboard": {
             "name": "Рекламный щит",
@@ -397,6 +406,9 @@
         },
         "leisure/miniature_golf": {
             "name": "Мини-гольф"
+        },
+        "tourism/zoo/petting": {
+            "name": "Контактный зоопарк"
         },
         "amenity/vending_machine/ice_cream": {
             "name": "Мороженое",
@@ -439,6 +451,9 @@
         "amenity/drinking_water": {
             "name": "Питьевая вода",
             "terms": "Питьевая вода, колонка, кран, колодец, ключ, родник"
+        },
+        "amenity/pharmacy": {
+            "name": "Аптека"
         },
         "barrier/kissing_gate": {
             "name": "Преграда для животных",
@@ -517,6 +532,9 @@
             "name": "Тюрьма",
             "terms": "тюрьма, следственный изолятор, исправительная колония, СИЗО"
         },
+        "leisure/fishing": {
+            "name": "Место для рыбалки"
+        },
         "building/boathouse": {
             "name": "Здание для хранения лодок",
             "terms": "лодочный док, лодочный сарай, навес для лодок"
@@ -567,6 +585,10 @@
         },
         "seamark/beacon_lateral": {
             "name": "Маяк канала"
+        },
+        "man_made/mast/communication/mobile_phone": {
+            "name": "Мачта сотовой связи",
+            "terms": "Мачта, сота, сотовая мачта"
         },
         "manhole/drain": {
             "name": "Дренажный колодец"
@@ -666,8 +688,7 @@
             "name": "Знак ограничения скорости"
         },
         "attraction/animal": {
-            "name": "Животные",
-            "terms": "зоопарк, лев, тигр, обезьяна"
+            "name": "Вольер для животных"
         },
         "craft/bookbinder": {
             "name": "Переплётчик книг",
@@ -685,9 +706,6 @@
             "name": "Магазин по продаже алкогольных и безалкогольных напитков",
             "terms": "Магазин напитков, Продажа напитков"
         },
-        "public_transport/platform_bus": {
-            "name": "Автобусная платформа"
-        },
         "entrance": {
             "name": "Вход/выход",
             "terms": "вход, выход"
@@ -695,6 +713,12 @@
         "emergency/fire_alarm": {
             "name": "Пожарная тревога",
             "terms": "пожар, тревога, вызов"
+        },
+        "shop/clothes/underwear": {
+            "name": "Магазин нижнего белья"
+        },
+        "amenity/place_of_worship/jewish": {
+            "name": "Иудейская синагога"
         },
         "power/tower": {
             "name": "Опора ЛЭП",
@@ -801,6 +825,9 @@
         "leisure/fitness_station/parallel_bars": {
             "name": "Брусья"
         },
+        "railway/rail/highspeed": {
+            "name": "Высокоскоростная железная дорога"
+        },
         "highway/footway": {
             "name": "Пешеходная дорожка",
             "terms": "Пешеходная тропа, Пешая тропа"
@@ -825,8 +852,7 @@
             "name": "Аренда складских помещений"
         },
         "shop/fashion": {
-            "name": "Магазин модной брендовой одежды",
-            "terms": "мода, одежда, обувь, тренд, сезон"
+            "name": "Магазин модной брендовой одежды"
         },
         "power/substation": {
             "name": "Подстанция",
@@ -977,6 +1003,9 @@
             "name": "Общественные места для прогулок, без специфики",
             "terms": "общество, прогулка, общественные места"
         },
+        "amenity/parking/underground": {
+            "name": "Подземная парковка"
+        },
         "type/route/horse": {
             "name": "Конно-верховой маршрут",
             "terms": "Маршрут верхом"
@@ -1010,6 +1039,9 @@
         "place/neighbourhood": {
             "name": "Исторический район со сложившимся именем",
             "terms": "местность, район"
+        },
+        "amenity/fast_food/chicken": {
+            "name": "Куриный Фаст-Фуд"
         },
         "playground/slide": {
             "name": "Горка"
@@ -1118,6 +1150,9 @@
         "craft/photographer": {
             "name": "Фотограф",
             "terms": "фотограф, фото оператор"
+        },
+        "building/pavilion": {
+            "name": "Павильон"
         },
         "shop": {
             "name": "Неопределённый магазин",
@@ -1338,6 +1373,9 @@
             "name": "Дом престарелых (устаревший тег)",
             "terms": "дом престарелых, дом инвалидов"
         },
+        "building/train_station": {
+            "name": "Здание железнодорожного вокзала"
+        },
         "public_transport/station_light_rail": {
             "name": "Станция легкорельсового транспорта"
         },
@@ -1512,6 +1550,9 @@
             "name": "Помощь при переезде",
             "terms": "Перевозка, переезд"
         },
+        "tourism/artwork/graffiti": {
+            "name": "Граффити"
+        },
         "highway/bridleway": {
             "name": "Конная тропа",
             "terms": "Конная тропа, Дорога для верховой езды, Дорога для конной езды"
@@ -1592,6 +1633,9 @@
             "name": "Туалет",
             "terms": "туалет"
         },
+        "leisure/fitness_station/box": {
+            "name": "Атлетическая площадка"
+        },
         "amenity/sanitary_dump_station": {
             "name": "Слив для туалета трейлеров",
             "terms": "слив для туалета, утилизация туалета трейлера"
@@ -1622,6 +1666,9 @@
             "name": "Подпорная стена",
             "terms": "Подпорная стена, укрепляющая стена"
         },
+        "amenity/bar/lgbtq": {
+            "name": "ЛГБТ+ Бар"
+        },
         "amenity/love_hotel": {
             "name": "Отель любви",
             "terms": "отель любви, отель на одну ночь, отель, на ночь, суточно, посуточно, ночь, для занятий сексом, для секса"
@@ -1634,8 +1681,7 @@
             "terms": "светофор"
         },
         "amenity/embassy": {
-            "name": "Посольство",
-            "terms": "посольство, консульство"
+            "name": "Посольство"
         },
         "place/islet": {
             "name": "Островок",
@@ -1746,6 +1792,9 @@
             "name": "Автозапчасти",
             "terms": "автозапчасти"
         },
+        "shop/jewelry": {
+            "name": "Ювелирный магазин"
+        },
         "leisure/outdoor_seating": {
             "name": "Столики на улице (площадка)",
             "terms": "на улице, кафе на улице, стол, столики, уличное"
@@ -1754,16 +1803,16 @@
             "name": "Юридические услуги",
             "terms": "Адвокат, Нотариус, Адвокатская контора, Нотариальная контора, Юридическая консультация"
         },
+        "building/apartments": {
+            "name": "Многоквартирный дом"
+        },
         "highway/trunk_link": {
-            "name": "Съезд с дороги федерального значения",
+            "name": "Съезд с основной дороги",
             "terms": "Заезд на магистраль, Съезд с магистрали"
         },
         "emergency/lifeguard": {
             "name": "Спасатель на воде",
             "terms": "пляж, бассейн, тонет, утонул, вода"
-        },
-        "amenity/vending_machine/news_papers": {
-            "name": "Автомат по продаже газет (ошибочный тег)"
         },
         "shop/bookmaker": {
             "name": "Букмекерская контора",
@@ -1776,9 +1825,6 @@
         "aerialway/t-bar": {
             "name": "Анкерный подъёмник",
             "terms": "Якорный подъёмник,Бугель"
-        },
-        "public_transport/platform_aerialway": {
-            "name": "Платформа канатной дороги"
         },
         "historic/boundary_stone": {
             "name": "Пограничный камень",
@@ -1831,7 +1877,7 @@
             "terms": "Канцелярский магазин, Канцтовары"
         },
         "highway/secondary_link": {
-            "name": "Съезд с важной дороги",
+            "name": "Съезд с второстепенной дороги",
             "terms": "съезд, съезд с важной дороги"
         },
         "office/advertising_agency": {
@@ -1839,11 +1885,8 @@
             "terms": "реклама, рекламное агенство"
         },
         "highway/living_street": {
-            "name": "Жилая улица (со знаком 5.21 или 5.22)",
+            "name": "Улица со знаком 5.21 или 5.22",
             "terms": "Жилая улица, Улица в жилой застройке, Жилая зона"
-        },
-        "landuse/military/bunker": {
-            "name": "Военный бункер"
         },
         "attraction/bumper_car": {
             "name": "Автодром (бамперные машинки)"
@@ -1936,9 +1979,6 @@
             "name": "Остров",
             "terms": "Остров, большой остров"
         },
-        "public_transport/platform_tram": {
-            "name": "Трамвайная платформа"
-        },
         "attraction/bungee_jumping": {
             "name": "Банджи-джампинг",
             "terms": "Батут"
@@ -1994,7 +2034,7 @@
             "terms": "парковка, стоянка, автостоянка"
         },
         "highway/bus_stop": {
-            "name": "Автобусная платформа"
+            "name": "Автобусная остановка"
         },
         "office/energy_supplier": {
             "name": "Поставщик топлива"
@@ -2100,10 +2140,6 @@
         },
         "highway/pedestrian_line": {
             "name": "Пешеходная улица"
-        },
-        "landuse/military/checkpoint": {
-            "name": "Контрольно-пропускной пункт",
-            "terms": "Зона досмотра, КПП"
         },
         "man_made/lighthouse": {
             "name": "Маяк",
@@ -2263,9 +2299,6 @@
             "name": "Миникруг",
             "terms": "Мини круговое движение, Маленький поворотный круг"
         },
-        "public_transport/platform_monorail": {
-            "name": "Платформа монорельса"
-        },
         "amenity/monastery": {
             "name": "Монастырь"
         },
@@ -2324,6 +2357,9 @@
             "name": "Торговая территория",
             "terms": "розничная торговля, ряды, базар"
         },
+        "leisure/picnic_table/chess": {
+            "name": "Шахматный стол"
+        },
         "leisure/sauna": {
             "name": "Сауна",
             "terms": "баня"
@@ -2345,9 +2381,6 @@
         },
         "leisure/pitch/cricket": {
             "name": "Поля для крикета"
-        },
-        "public_transport/platform_trolleybus": {
-            "name": "Троллейбусная платформа"
         },
         "amenity/arts_centre": {
             "name": "Центр Искусств",
@@ -2398,10 +2431,6 @@
         "tourism/chalet": {
             "name": "Коттедж под аренду",
             "terms": "Дом на выходные, арендуемая дача"
-        },
-        "landuse/military/nuclear_explosion_site": {
-            "name": "Ядерный полигон",
-            "terms": "ядерный полигон, полигон для испытаний ядерного оружия"
         },
         "leisure/dancing_school": {
             "name": "Школа танцев"
@@ -2463,12 +2492,14 @@
             "name": "Перелаз",
             "terms": "ступеньки, лестница, лаз, узкиий лаз"
         },
+        "railway/construction": {
+            "name": "Строящаяся железная дорога"
+        },
         "type/route/piste": {
             "name": "Лыжный маршрут"
         },
         "shop/boutique": {
-            "name": "Бутик",
-            "terms": "Бутик, магазин изысканных товаров, премиум класс, модные товары"
+            "name": "Бутик"
         },
         "area/highway": {
             "name": "Дорожное покрытие",
@@ -2493,7 +2524,7 @@
             "name": "Опора моста"
         },
         "highway/trunk": {
-            "name": "Дорога федерального значения",
+            "name": "Основная дорога",
             "terms": "трасса"
         },
         "leisure/pitch/boules": {
@@ -2679,9 +2710,6 @@
             "name": "Тригонометрический пункт",
             "terms": "Тригонометрический пункт"
         },
-        "roundabout": {
-            "name": "Кольцевая развязка"
-        },
         "type/route/power": {
             "name": "Маршрут электроэнергии",
             "terms": "электропередачи, электроэнергетика"
@@ -2763,7 +2791,7 @@
             "terms": "газировка, напитки, вода"
         },
         "highway/primary": {
-            "name": "Дорога регионального значения",
+            "name": "Первостепенная дорога",
             "terms": "первичная, региональная"
         },
         "highway/footway/zebra": {
@@ -2797,6 +2825,9 @@
         "highway/footway/zebra-raised": {
             "name": "Пешеходный переход (приподнятый)"
         },
+        "amenity/place_of_worship/muslim": {
+            "name": "Мусульманская мечеть"
+        },
         "shop/tea": {
             "name": "Чайный магазин",
             "terms": "магазин чая, чайный магазин, чайная лавка, лавка чая"
@@ -2808,10 +2839,6 @@
         "shop/supermarket": {
             "name": "Супермаркет",
             "terms": "гипермаркет, сумермаркет"
-        },
-        "office/political_party": {
-            "name": "Политическая партия",
-            "terms": "политическая партия"
         },
         "shop/wholesale": {
             "name": "Оптовый магазин",
@@ -2828,6 +2855,9 @@
         "man_made/silo": {
             "name": "Силос (хранилище сыпучего)",
             "terms": "зерно, пшеница, мука, хранилище"
+        },
+        "man_made/surveillance/camera": {
+            "name": "Камера видеонаблюдения"
         },
         "building/hut": {
             "name": "Хижина",
@@ -2909,6 +2939,9 @@
             "name": "Хакерспейс",
             "terms": "хакспейс"
         },
+        "landuse/forest": {
+            "name": "Используемый в хозяйственной деятельности лес"
+        },
         "leisure/bandstand": {
             "name": "Площадка для музыкантов",
             "terms": "сцена"
@@ -2927,10 +2960,6 @@
         },
         "office/coworking": {
             "name": "Коворкинг"
-        },
-        "vertex": {
-            "name": "Другой объект",
-            "terms": "точка"
         },
         "type/boundary": {
             "name": "Граница",
@@ -3058,7 +3087,7 @@
             "terms": "руины, развалины"
         },
         "highway/secondary": {
-            "name": "Важная дорога",
+            "name": "Второстепенная дорога",
             "terms": "съезд"
         },
         "natural/fell": {
@@ -3090,6 +3119,9 @@
         "historic/wreck": {
             "name": "Кораблекрушение",
             "terms": "остатки, лодка, корабль, крушение, катастрофа, авария, разбился, судно, утонул, затонул"
+        },
+        "club/sport": {
+            "name": "Спортивный клуб"
         },
         "amenity/bicycle_parking": {
             "name": "Велопарковка",
@@ -3129,9 +3161,6 @@
         "landuse/farm": {
             "name": "Сельскохозяйственные угодья (устаревший тег)"
         },
-        "public_transport/platform_subway": {
-            "name": "Платформа метро"
-        },
         "natural/wood": {
             "name": "Лес / деревья — предпочитаемый",
             "terms": "Лес, Деревья, Роща, Чаща"
@@ -3158,6 +3187,9 @@
         "playground/roundabout": {
             "name": "Карусель"
         },
+        "power/generator/method/photovoltaic": {
+            "name": "Солнечная Панель"
+        },
         "amenity/shelter/public_transport": {
             "name": "Укрытие от непогоды (остановочный павильон)",
             "terms": "остановка"
@@ -3165,9 +3197,6 @@
         "shop/optician": {
             "name": "Оптика",
             "terms": "оптика, очки, линзы, окулист"
-        },
-        "public_transport/platform_light_rail": {
-            "name": "Платформа легкорельсового транспорта"
         },
         "type/route/foot": {
             "name": "Пешеходный маршрут",
@@ -3197,10 +3226,6 @@
         },
         "amenity/recycling": {
             "name": "Вторичное сырьё"
-        },
-        "camp_site/camp_pitch": {
-            "name": "Поляна для кемпинга",
-            "terms": "тент, палатка, кемпинг"
         },
         "shop/gas": {
             "name": "Магазин газовых баллонов",
@@ -3249,8 +3274,14 @@
         "attraction/river_rafting": {
             "name": "Сплав по реке"
         },
+        "amenity/payment_terminal": {
+            "name": "Платёжный терминал"
+        },
         "leisure/bird_hide": {
             "name": "Пункт наблюдения за птицами"
+        },
+        "shop/fishing": {
+            "name": "Рыболовный магазин"
         },
         "amenity/vending_machine/cigarettes": {
             "name": "Автомат по продаже сигарет",
@@ -3335,9 +3366,6 @@
         "power": {
             "name": "Объекты энергетики"
         },
-        "public_transport/platform_train": {
-            "name": "Железнодорожная платформа"
-        },
         "leisure/fitness_station/push-up": {
             "name": "Тренажер для отжиманий"
         },
@@ -3380,6 +3408,9 @@
         "railway/subway": {
             "name": "Метро",
             "terms": "Метро, Подземка, Метрополитен"
+        },
+        "amenity/money_transfer": {
+            "name": "Денежные переводы"
         },
         "highway/elevator": {
             "name": "Лифт"
@@ -3438,6 +3469,9 @@
             "name": "Тропа",
             "terms": "Тропа, Тропинка, Тропка, пешеходная дорога для немоторизованного траспорта"
         },
+        "indoor/corridor_line": {
+            "name": "Коридор внутри здания"
+        },
         "leisure/water_park": {
             "name": "Аквапарк",
             "terms": "аквапарк"
@@ -3480,7 +3514,7 @@
             "terms": "Канава, Дождевая канава, сточный канал, водоотводный канал"
         },
         "highway/residential": {
-            "name": "Дорога вдоль жилых зон"
+            "name": "Улица"
         },
         "historic/wayside_shrine": {
             "name": "Придорожная часовня",
@@ -3489,10 +3523,6 @@
         "type/boundary/administrative": {
             "name": "Административная граница",
             "terms": "Административная граница"
-        },
-        "landuse/military/office": {
-            "name": "Военный офис",
-            "terms": "Военные административные здания"
         },
         "amenity/watering_place": {
             "name": "Водопой для животных",
@@ -3520,9 +3550,18 @@
             "name": "Линия",
             "terms": "Линия"
         },
+        "amenity/vehicle_inspection": {
+            "name": "Станция техосмотра"
+        },
         "amenity/kindergarten": {
             "name": "Детский сад/ясли",
             "terms": "детский сад, дошкольный сад, ясли, детсад, ДОУ"
+        },
+        "man_made/tower/observation": {
+            "name": "Наблюдательная вышка"
+        },
+        "tourism/artwork/installation": {
+            "name": "Инсталляция"
         },
         "waterway/weir": {
             "name": "Плотина",

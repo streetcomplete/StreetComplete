@@ -59,6 +59,10 @@
             "name": "خليج",
             "terms": "خليج"
         },
+        "amenity/fast_food/mexican": {
+            "name": "طعام مكسيكي وجبة سريعة",
+            "terms": "مكسيكي"
+        },
         "building/terrace": {
             "name": "صف منازل",
             "terms": "صف منازل"
@@ -276,7 +280,7 @@
             "terms": "مسار مترو"
         },
         "amenity/fast_food/burger": {
-            "name": "برجر وجبات سريعة",
+            "name": "برجر وجبة سريعة",
             "terms": "إفطار,عشاء,طعام,"
         },
         "amenity/vending_machine/fuel": {
@@ -320,8 +324,8 @@
             "name": "محل أثاث",
             "terms": "محل أثاث"
         },
-        "public_transport/platform_ferry": {
-            "name": "محطة/موقف عبّارة"
+        "advertising/billboard": {
+            "name": "لوحة"
         },
         "shop/bakery": {
             "name": "مخبز",
@@ -432,6 +436,9 @@
             "name": "متجر أدوات رياضية",
             "terms": "محل بيع أدوات رياضية"
         },
+        "amenity/vending_machine/elongated_coin": {
+            "name": "آلة بيع عُملة مسطحة"
+        },
         "type/waterway": {
             "name": "مجرى مائي",
             "terms": "مجرى مائي، ممر مائي"
@@ -527,6 +534,9 @@
             "name": "برج التلفريك / المصعد التزلج",
             "terms": "برج التلفريك ; المصعد التزلج"
         },
+        "railway/narrow_gauge": {
+            "name": "سكك حديد ضيقة"
+        },
         "shop/curtain": {
             "name": "محل بيع الستائر",
             "terms": "ستائر"
@@ -554,10 +564,6 @@
             "name": "ممر داخلي",
             "terms": "ممر داخلي; رواق"
         },
-        "attraction/animal": {
-            "name": "حيوان",
-            "terms": "حيوان"
-        },
         "amenity/restaurant/asian": {
             "name": "مطعم آسيوي"
         },
@@ -571,9 +577,6 @@
         "shop/beverages": {
             "name": "محل مشروبات",
             "terms": "محل مشروبات"
-        },
-        "public_transport/platform_bus": {
-            "name": "محطة/موقف حافلة"
         },
         "entrance": {
             "name": "مدخل ومخرج",
@@ -698,7 +701,7 @@
         },
         "amenity/fast_food": {
             "name": "وجبات سريعة",
-            "terms": "مأكولات السريعة"
+            "terms": "مأكولات سريعة"
         },
         "type/route/pipeline": {
             "name": "مسار خط أنابيب",
@@ -822,6 +825,10 @@
             "name": "أرض مشترك ",
             "terms": "مشّاع، متعارف عليه، شعبي، شائع"
         },
+        "amenity/parking/underground": {
+            "name": "موقف تحت الأرض",
+            "terms": "جراج"
+        },
         "type/route/horse": {
             "name": "مسار ركوب",
             "terms": "مسار ركوب"
@@ -853,7 +860,7 @@
             "terms": "حي سكني"
         },
         "amenity/fast_food/chicken": {
-            "name": "دجاج وجبات سريعة",
+            "name": "دجاج وجبة سريعة",
             "terms": "إفطار,مقصف,عشاء,طعام"
         },
         "leisure/pitch/beachvolleyball": {
@@ -906,6 +913,9 @@
         "highway/motorway_link": {
             "name": "رابط لطريق سريع",
             "terms": "رابط لطريق سريع"
+        },
+        "amenity/car_pooling": {
+            "name": "مشاركة السيارة"
         },
         "place/isolated_dwelling": {
             "name": "مساكن متفرقة",
@@ -1217,8 +1227,11 @@
             "terms": "محل بيع الموسيقى"
         },
         "amenity/fast_food/fish_and_chips": {
-            "name": "سمك ورقائق البطاطس وجبات سريعة",
+            "name": "سمك ورقائق بطاطس وجبة سريعة",
             "terms": "إفطار,قهوة,عشاء,طعام"
+        },
+        "amenity/bicycle_parking/building": {
+            "name": "مرآب وقوف دراجات"
         },
         "barrier/toll_booth": {
             "name": "كشك التحصيل",
@@ -1228,7 +1241,8 @@
             "name": "كابلات معلقة في الهواء"
         },
         "amenity/nightclub": {
-            "name": "ملهى ليلي"
+            "name": "ملهى ليلي",
+            "terms": "كباريه"
         },
         "waterway/dam": {
             "name": "سد",
@@ -1264,6 +1278,10 @@
         "shop/variety_store": {
             "name": "محل كل شيء ",
             "terms": "محل كل شيء, محل بالجملة"
+        },
+        "amenity/parking/multi-storey": {
+            "name": "مرآب وقوف متعدد الطوابق",
+            "terms": "جراج, مرآب"
         },
         "amenity/doctors": {
             "name": "طبيب",
@@ -1320,8 +1338,9 @@
             "name": "متجر سماعات الأذن الطبية",
             "terms": "سماعات الأذن الطبية; معينات سمعية; أجهزة تقوية السمع; مساعدات السمع"
         },
-        "public_transport/platform": {
-            "name": "محطة/موقف عبور"
+        "shop/water": {
+            "name": "متجر مياه شرب",
+            "terms": "مياه صحية, مياه, ماء"
         },
         "craft/confectionery": {
             "name": "حلواني",
@@ -1335,9 +1354,6 @@
             "name": "نقل البضائع بالكابلات ",
             "terms": "نقل البضائع بالكابلات"
         },
-        "railway/platform": {
-            "name": "رصيف سكة حديد"
-        },
         "barrier/retaining_wall": {
             "name": "جدار تثبيت",
             "terms": "جدار تثبيت"
@@ -1347,8 +1363,7 @@
             "terms": "اشارة; اشارات; اشارة مرور"
         },
         "amenity/embassy": {
-            "name": "سفارة",
-            "terms": "سفارة"
+            "name": "سفارة"
         },
         "place/islet": {
             "name": "جزيرة صغيرة",
@@ -1369,6 +1384,9 @@
         "place/village": {
             "name": "قرية",
             "terms": "قرية"
+        },
+        "shop/water_sports": {
+            "name": "متجر رياضة مائية/سباحة"
         },
         "shop/lottery": {
             "name": "متجر اليانصيب"
@@ -1433,18 +1451,15 @@
             "name": "مكتب قانوني ",
             "terms": "مكتب محاماة، اﻹدارة القانونية، المحكمة،"
         },
+        "building/apartments": {
+            "name": "مبنى شقق سكنية"
+        },
         "highway/trunk_link": {
             "name": "رابط لطريق أساسي",
             "terms": "رابط لشارع أساسي"
         },
-        "amenity/vending_machine/news_papers": {
-            "name": "آلة بيع جرائد"
-        },
         "shop/bookmaker": {
             "name": "مكتب رهانات"
-        },
-        "public_transport/platform_aerialway": {
-            "name": "محطة/موقف طريق جوي"
         },
         "historic/boundary_stone": {
             "name": "صخرة حدودية",
@@ -1507,10 +1522,6 @@
         "highway/living_street": {
             "name": "شارع سكني",
             "terms": "شارع سكني"
-        },
-        "landuse/military/bunker": {
-            "name": "ملجأ عسكري",
-            "terms": "ملجأ عسكري"
         },
         "attraction/bumper_car": {
             "name": "سيارة اصطدامية",
@@ -1597,9 +1608,6 @@
             "name": "جزيرة",
             "terms": "جزيرة"
         },
-        "public_transport/platform_tram": {
-            "name": "محطة/موقف ترام"
-        },
         "railway/signal": {
             "name": "إشارات المرور ( السكك الحديدية )",
             "terms": "إشارة المرور"
@@ -1614,6 +1622,9 @@
         },
         "building/entrance": {
             "name": "مدخل ومخرج"
+        },
+        "playground/structure": {
+            "name": "هيكل اللعب"
         },
         "shop/religion": {
             "name": "متجر ديني",
@@ -1637,9 +1648,6 @@
         },
         "amenity/parking": {
             "name": "ساحة انتظار سيارات"
-        },
-        "highway/bus_stop": {
-            "name": "موقف حافلات"
         },
         "office/energy_supplier": {
             "name": "شركة مرافق الكهرباء",
@@ -1732,10 +1740,6 @@
         "highway/pedestrian_line": {
             "name": "شارع للمشاة",
             "terms": "شارع للمشاة"
-        },
-        "landuse/military/checkpoint": {
-            "name": "نقطة تفتيش عسكرية",
-            "terms": "نقطة تفتيش عسكرية"
         },
         "man_made/lighthouse": {
             "name": "منارة",
@@ -1852,6 +1856,9 @@
         "amenity/restaurant/sushi": {
             "name": "مطعم سوشي"
         },
+        "amenity/events_venue": {
+            "name": "مكان الأحداث"
+        },
         "healthcare/optometrist": {
             "name": "أخصائي البصريات",
             "terms": "أخصائي البصريات"
@@ -1859,6 +1866,9 @@
         "building/kindergarten": {
             "name": "مبنى روضة أطفال",
             "terms": "روضة; أطفال"
+        },
+        "amenity/fast_food/ice_cream": {
+            "name": "أيس كريم وجبة سريعة"
         },
         "leisure/playground": {
             "name": "ساحة ألعاب للأطفال",
@@ -1871,9 +1881,6 @@
         "highway/mini_roundabout": {
             "name": "دوار صغير",
             "terms": "دوار صغير"
-        },
-        "public_transport/platform_monorail": {
-            "name": "محطة/موقف سكة حديد أحادية"
         },
         "highway/service/parking_aisle": {
             "name": "ممر وقوف السيارات",
@@ -1906,6 +1913,9 @@
         "power/pole": {
             "name": "برج كهرباء",
             "terms": "برج كهرباء"
+        },
+        "barrier/chain": {
+            "name": "سلسلة"
         },
         "natural/peak": {
             "name": "قمة",
@@ -1944,9 +1954,6 @@
         "leisure/pitch/cricket": {
             "name": "ملعب كريكت",
             "terms": "ملعب كريكت"
-        },
-        "public_transport/platform_trolleybus": {
-            "name": "محطة/موقف حافلة كهربائية"
         },
         "amenity/arts_centre": {
             "name": "مركز فنون",
@@ -1989,10 +1996,6 @@
         "tourism/chalet": {
             "name": "كوخ لقضاء العطلة",
             "terms": "كوخ لقضاء العطلة"
-        },
-        "landuse/military/nuclear_explosion_site": {
-            "name": "موقع الانفجار النووي",
-            "terms": "موقع الانفجار النووي"
         },
         "leisure/dancing_school": {
             "name": "مدرسة الرقص",
@@ -2044,8 +2047,7 @@
             "terms": "تزلج"
         },
         "shop/boutique": {
-            "name": "بوتيك",
-            "terms": "بوتيك"
+            "name": "بوتيك"
         },
         "area/highway": {
             "name": "سطح الطريق"
@@ -2152,7 +2154,7 @@
             "terms": "أرض كلية"
         },
         "shop/toys": {
-            "name": "محل ألعاب",
+            "name": "متجر ألعاب",
             "terms": "محل ألعاب"
         },
         "office/water_utility": {
@@ -2163,8 +2165,8 @@
             "name": "موقف ترام"
         },
         "shop/tiles": {
-            "name": "محل بيع البلاط",
-            "terms": "محل بيع البلاط، بلاط، خزف"
+            "name": "متجر بلاط",
+            "terms": "محل بيع البلاط، بلاط، خزف,سيراميك"
         },
         "highway/pedestrian_area": {
             "name": "منطقة للمشاة",
@@ -2206,9 +2208,6 @@
         "man_made/survey_point": {
             "name": "نقطة مسح",
             "terms": "نقطة مسح"
-        },
-        "roundabout": {
-            "name": "دوار مروري"
         },
         "type/route/power": {
             "name": "مسار خط كهربائي",
@@ -2307,7 +2306,7 @@
             "terms": "مسجد,جامع,مصلى,صلاة,مسلم,مسلمين"
         },
         "shop/tea": {
-            "name": "محل بيع الشاي",
+            "name": "متجر شاي",
             "terms": "محل بيع الشاي،  شاي"
         },
         "aerialway/chair_lift": {
@@ -2318,12 +2317,8 @@
             "name": "سوبر ماركت",
             "terms": "سوبرماركت, متجر كبير"
         },
-        "office/political_party": {
-            "name": "الحزب السياسي ",
-            "terms": "حزب سياسي، الحزب السياسي، المكتب السياسي، مكتب سياسي"
-        },
         "shop/wholesale": {
-            "name": "محل بيع بالجملة",
+            "name": "متجر بيع بالجملة",
             "terms": "محل بيع بالجملة"
         },
         "building/stadium": {
@@ -2349,6 +2344,10 @@
         "natural/saddle": {
             "name": "ممر جبلي",
             "terms": "ممر جبلي"
+        },
+        "amenity/fast_food/donut": {
+            "name": "دونات وجبة سريعة",
+            "terms": "دونات"
         },
         "building/transportation": {
             "name": "مبنى للنقل العام",
@@ -2412,10 +2411,6 @@
         "office/coworking": {
             "name": "مساحة عمل مشتركة",
             "terms": "مساحة عمل مشتركة"
-        },
-        "vertex": {
-            "name": "أخرى",
-            "terms": "أخرى"
         },
         "type/boundary": {
             "name": "حدود",
@@ -2487,7 +2482,7 @@
             "name": "دار التمريض"
         },
         "shop/ticket": {
-            "name": "بائع التذاكر",
+            "name": "بائع تذاكر",
             "terms": "بائع التذاكر; تذاكر"
         },
         "amenity/social_facility/group_home": {
@@ -2545,7 +2540,7 @@
             "terms": "مرج"
         },
         "amenity/fast_food/kebab": {
-            "name": "كباب وجبات سريعة",
+            "name": "كباب وجبة سريعة",
             "terms": "إفطار,مقصف,عشاء,طعام"
         },
         "office/accountant": {
@@ -2606,9 +2601,6 @@
         "landuse/farm": {
             "name": "أرض زراعية"
         },
-        "public_transport/platform_subway": {
-            "name": "محطة/موقف مترو أنفاق"
-        },
         "natural/wood": {
             "name": "غابة أخشاب",
             "terms": "غابة أخشاب"
@@ -2634,9 +2626,6 @@
         "shop/optician": {
             "name": "متجر نظارات",
             "terms": "محل بيع نظارات"
-        },
-        "public_transport/platform_light_rail": {
-            "name": "محطة/موقف سكة حديد خفيفة"
         },
         "type/route/foot": {
             "name": "مسار المشي بالأقدام",
@@ -2762,10 +2751,6 @@
         "power": {
             "name": "الطاقة"
         },
-        "public_transport/platform_train": {
-            "name": "محطة/موقف قطار",
-            "terms": "رصيف سكة حديد,قطار"
-        },
         "aerialway/station": {
             "name": "محطة النقل بالكابلات"
         },
@@ -2840,7 +2825,7 @@
             "terms": "حصن; قلعة; قصر"
         },
         "office/surveyor": {
-            "name": "مساح",
+            "name": "مكتب مساح أرضي",
             "terms": "مساح"
         },
         "shop/car_repair": {
@@ -2870,6 +2855,10 @@
         "amenity/bus_station": {
             "name": "محطة حافلات"
         },
+        "highway/steps/conveying": {
+            "name": "سلم كهربائي",
+            "terms": "سلم متحرك"
+        },
         "shop/books": {
             "name": "متجر كتب",
             "terms": "مكتبة، كتب"
@@ -2896,9 +2885,6 @@
         "type/boundary/administrative": {
             "name": "حدود إدارية",
             "terms": "حدود إدارية, تقسيمات إدارية"
-        },
-        "landuse/military/office": {
-            "name": "مكتب عسكري"
         },
         "amenity/watering_place": {
             "name": "مكان شرب للحيوانات"

@@ -121,9 +121,6 @@
         "tourism/guest_house": {
             "name": "விருந்தினர் இல்லம்"
         },
-        "office/political_party": {
-            "name": "அரசியல் கட்சி"
-        },
         "office/government/register_office": {
             "name": "பதிவு அலுவலகம்"
         },
@@ -165,9 +162,6 @@
         },
         "landuse/farmland": {
             "name": "பண்ணை நிலம்"
-        },
-        "public_transport/platform_tram": {
-            "name": "டிராம் நிறுத்தம் / நடைமேடை"
         },
         "building/transportation": {
             "name": "போக்குவரத்துக் கட்டிடம்"
@@ -240,9 +234,6 @@
         },
         "man_made/tower": {
             "name": "கோபுரம்"
-        },
-        "vertex": {
-            "name": "பிற"
         },
         "shop/florist": {
             "name": "பூக்கடை"
@@ -445,9 +436,6 @@
             "name": "குடிநீர் ",
             "terms": "ஊற்று"
         },
-        "public_transport/platform_light_rail": {
-            "name": "இலகு இரயில் நிறுத்தம் / நடைமேடை"
-        },
         "type/route/foot": {
             "name": "நடைப் பாதை"
         },
@@ -596,9 +584,6 @@
         "place": {
             "name": "இடம்"
         },
-        "public_transport/platform_train": {
-            "name": "தொடருந்து நிறுத்தம் / நடைமேடை"
-        },
         "type/route/light_rail": {
             "name": "இலகு இரயில் பாதை"
         },
@@ -709,9 +694,6 @@
         "amenity/driving_school": {
             "name": "ஓட்டுநர் பள்ளி"
         },
-        "public_transport/platform_bus": {
-            "name": "பேருந்து நிறுத்தம்  / தடம்"
-        },
         "amenity/bench": {
             "name": "விசுப்பலகை"
         },
@@ -766,9 +748,6 @@
         },
         "man_made/watermill": {
             "name": "தண்ணீர் ஆலை"
-        },
-        "landuse/military/office": {
-            "name": "இராணுவ அலுவலகம்"
         },
         "amenity/embassy": {
             "name": "தூதரகம்"
@@ -829,9 +808,6 @@
         },
         "natural/wetland": {
             "name": "ஈரநிலம்"
-        },
-        "roundabout": {
-            "name": "வட்டச்சுற்று வழி"
         },
         "natural/tree": {
             "name": "மரம்"

@@ -789,10 +789,6 @@
             "name": "Predajňa pneumatík",
             "terms": "predajna pneumatik,pneumatiky,pneuservis,kolesa,kolesá"
         },
-        "landuse/military/nuclear_explosion_site": {
-            "name": "Miesto nukleárnej explózie",
-            "terms": "miesto nuklearnej explózie, jadrový výbuch,jadrovy vybuch,jadrová bonba,jadrova bomba"
-        },
         "aeroway/gate": {
             "name": "Letisková brána",
             "terms": "letiskova brana,brána,brana"
@@ -840,8 +836,7 @@
             "terms": "prielaz,rebrík,rebrik,stupačky,stupacky"
         },
         "shop/boutique": {
-            "name": "Butik",
-            "terms": "oblecenie,oblečenie,šaty,saty,odev,odevy"
+            "name": "Butik"
         },
         "aerialway/pylon": {
             "name": "Stožiar lanovky",
@@ -1074,9 +1069,6 @@
             "name": "Triangulačný bod",
             "terms": "triangulacny bod,nivelizacny bod,nivelizačný bod,nivelácia,nivelacia,referencny bod,referenčný bod"
         },
-        "roundabout": {
-            "name": "Kruhový objazd"
-        },
         "landuse/military/naval_base": {
             "name": "Námorná základňa",
             "terms": "namorna zakladna"
@@ -1158,8 +1150,7 @@
             "terms": "outdoorovy obchod,trekový obchod,trekovy ochod,outdoor"
         },
         "shop/fashion": {
-            "name": "Obchod s módnymi doplnkami",
-            "terms": "obchod s modmymi doplnkami"
+            "name": "Obchod s módnymi doplnkami"
         },
         "emergency/designated": {
             "name": "Núdzový vstup vyznačený"
@@ -1272,10 +1263,6 @@
         "shop/supermarket": {
             "name": "Supermarket",
             "terms": "potraviny,obchod,samoška,samoska,samoobsluha"
-        },
-        "office/political_party": {
-            "name": "Politická strana",
-            "terms": "politicka strana"
         },
         "waterway/water_point": {
             "name": "Pitná voda pre lode",
@@ -1442,10 +1429,6 @@
         "landuse/vineyard": {
             "name": "Vinica",
             "terms": "vinice,vinohrad,hrozno,víno,vino"
-        },
-        "vertex": {
-            "name": "Iné",
-            "terms": "ostatné,ostatne,ine,zvyšnézvysne"
         },
         "type/boundary": {
             "name": "Hranica",
@@ -2227,8 +2210,7 @@
             "terms": "semafor,svetelná križovatka,svetelné dopravné značenie,svetelna krizovatka,svetelne znacenie,svetelne dopravne znacenie"
         },
         "amenity/embassy": {
-            "name": "Veľvyslanectvo",
-            "terms": "ambasáda,ambasada,zastupiteľstvo,zastupitelstvo,veľvyslanectvo,velvyslanectvo"
+            "name": "Veľvyslanectvo"
         },
         "type/restriction/no_left_turn": {
             "name": "Zákaz odbočenia vľavo",
@@ -2397,9 +2379,6 @@
         "highway/trunk_link": {
             "name": "Privádzač rýchlostnej cesty",
             "terms": "privadzac na rychlostnu cestu,privadzac,privádzač,zjazd,vyjazd,výjazd,nájazd,najazd,pripojovací pruh,pripojovaci pruh"
-        },
-        "amenity/vending_machine/news_papers": {
-            "name": "Automat na noviny"
         },
         "shop/bookmaker": {
             "name": "Stávková kancelária",

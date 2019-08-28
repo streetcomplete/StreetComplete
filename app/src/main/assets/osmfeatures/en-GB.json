@@ -42,9 +42,6 @@
         "emergency/yes": {
             "name": "Emergency Access Yes"
         },
-        "circular": {
-            "name": "Traffic Circle"
-        },
         "healthcare/audiologist": {
             "name": "Audiologist"
         },
@@ -273,9 +270,6 @@
         "shop/furniture": {
             "name": "Furniture Shop"
         },
-        "public_transport/platform_ferry": {
-            "name": "Ferry Stop / Platform"
-        },
         "advertising/billboard": {
             "name": "Billboard"
         },
@@ -497,14 +491,14 @@
         "craft/watchmaker": {
             "name": "Watchmaker"
         },
+        "highway/footway/marked": {
+            "name": "Marked Crossing"
+        },
         "leisure/fitness_centre": {
             "name": "Gym / Fitness Centre"
         },
         "highway/corridor": {
             "name": "Indoor Corridor"
-        },
-        "attraction/animal": {
-            "name": "Animal"
         },
         "craft/bookbinder": {
             "name": "Bookbinder"
@@ -517,9 +511,6 @@
         },
         "shop/beverages": {
             "name": "Beverages Shop"
-        },
-        "public_transport/platform_bus": {
-            "name": "Bus Stop / Platform"
         },
         "entrance": {
             "name": "Entrance/Exit"
@@ -769,6 +760,9 @@
         },
         "playground/basket_swing": {
             "name": "Basket Swing"
+        },
+        "highway/footway/marked-raised": {
+            "name": "Marked Crossing (Raised)"
         },
         "public_transport/stop_position_aerialway": {
             "name": "Aerialway Stopping Location"
@@ -1208,9 +1202,6 @@
         "shop/hearing_aids": {
             "name": "Hearing Aids Shop"
         },
-        "public_transport/platform": {
-            "name": "Transit Stop / Platform"
-        },
         "craft/confectionery": {
             "name": "Candy Maker"
         },
@@ -1219,9 +1210,6 @@
         },
         "aerialway/goods": {
             "name": "Goods Aerialway"
-        },
-        "railway/platform": {
-            "name": "Train Stop / Platform"
         },
         "barrier/retaining_wall": {
             "name": "Retaining Wall"
@@ -1310,6 +1298,9 @@
         "amenity/register_office": {
             "name": "Register Office"
         },
+        "highway/crossing/marked-raised": {
+            "name": "Marked Crossing (Raised)"
+        },
         "leisure/adult_gaming_centre": {
             "name": "Adult Gaming Centre"
         },
@@ -1325,9 +1316,6 @@
         "highway/trunk_link": {
             "name": "Trunk Link"
         },
-        "amenity/vending_machine/news_papers": {
-            "name": "Newspaper Vending Machine"
-        },
         "shop/bookmaker": {
             "name": "Bookmaker"
         },
@@ -1336,9 +1324,6 @@
         },
         "aerialway/t-bar": {
             "name": "T-bar Lift"
-        },
-        "public_transport/platform_aerialway": {
-            "name": "Aerialway Stop / Platform"
         },
         "historic/boundary_stone": {
             "name": "Boundary Stone"
@@ -1387,9 +1372,6 @@
         },
         "highway/living_street": {
             "name": "Living Street"
-        },
-        "landuse/military/bunker": {
-            "name": "Military Bunker"
         },
         "attraction/bumper_car": {
             "name": "Bumper Car"
@@ -1461,9 +1443,6 @@
         "place/island": {
             "name": "Island"
         },
-        "public_transport/platform_tram": {
-            "name": "Tram Stop / Platform"
-        },
         "attraction/bungee_jumping": {
             "name": "Bungee Jumping"
         },
@@ -1506,9 +1485,6 @@
         "amenity/parking": {
             "name": "Car Park"
         },
-        "highway/bus_stop": {
-            "name": "Bus Stop / Platform"
-        },
         "office/energy_supplier": {
             "name": "Energy Supplier Office"
         },
@@ -1538,6 +1514,9 @@
         },
         "type/route/ferry": {
             "name": "Ferry Route"
+        },
+        "highway/crossing/marked": {
+            "name": "Marked Crossing"
         },
         "amenity/atm": {
             "name": "Cash Machine"
@@ -1586,9 +1565,6 @@
         },
         "highway/pedestrian_line": {
             "name": "Pedestrian Street"
-        },
-        "landuse/military/checkpoint": {
-            "name": "Checkpoint"
         },
         "man_made/lighthouse": {
             "name": "Lighthouse"
@@ -1713,9 +1689,6 @@
         "highway/mini_roundabout": {
             "name": "Mini-Roundabout"
         },
-        "public_transport/platform_monorail": {
-            "name": "Monorail Stop / Platform"
-        },
         "amenity/monastery": {
             "name": "Monastery Grounds"
         },
@@ -1779,9 +1752,6 @@
         "leisure/pitch/cricket": {
             "name": "Cricket Field"
         },
-        "public_transport/platform_trolleybus": {
-            "name": "Trolleybus Stop / Platform"
-        },
         "amenity/arts_centre": {
             "name": "Arts Centre"
         },
@@ -1814,9 +1784,6 @@
         },
         "tourism/chalet": {
             "name": "Holiday Cottage"
-        },
-        "landuse/military/nuclear_explosion_site": {
-            "name": "Nuclear Explosion Site"
         },
         "leisure/dancing_school": {
             "name": "Dance School"
@@ -1935,6 +1902,9 @@
         "building/public": {
             "name": "Public Building"
         },
+        "highway/crossing/zebra-raised": {
+            "name": "Marked Crossing (Raised)"
+        },
         "amenity/shower": {
             "name": "Shower"
         },
@@ -2013,9 +1983,6 @@
         "man_made/survey_point": {
             "name": "Survey Point"
         },
-        "roundabout": {
-            "name": "Roundabout"
-        },
         "type/route/power": {
             "name": "Power Route"
         },
@@ -2076,6 +2043,9 @@
         "highway/primary": {
             "name": "Primary Road"
         },
+        "highway/footway/zebra": {
+            "name": "Marked Crossing"
+        },
         "shop/chocolate": {
             "name": "Chocolate Shop"
         },
@@ -2094,6 +2064,9 @@
         "amenity/dentist": {
             "name": "Dentist"
         },
+        "highway/footway/zebra-raised": {
+            "name": "Marked Crossing (Raised)"
+        },
         "shop/tea": {
             "name": "Tea Shop (Retail)"
         },
@@ -2102,9 +2075,6 @@
         },
         "shop/supermarket": {
             "name": "Supermarket"
-        },
-        "office/political_party": {
-            "name": "Political Party"
         },
         "shop/wholesale": {
             "name": "Wholesale Shop / Cash & Carry "
@@ -2192,9 +2162,6 @@
         },
         "office/coworking": {
             "name": "Coworking Space"
-        },
-        "vertex": {
-            "name": "Other"
         },
         "type/boundary": {
             "name": "Boundary"
@@ -2343,9 +2310,6 @@
         "landuse/farm": {
             "name": "Farmland"
         },
-        "public_transport/platform_subway": {
-            "name": "Subway Stop / Platform"
-        },
         "natural/wood": {
             "name": "Wood"
         },
@@ -2370,9 +2334,6 @@
         "shop/optician": {
             "name": "Optician"
         },
-        "public_transport/platform_light_rail": {
-            "name": "Light Rail Stop / Platform"
-        },
         "type/route/foot": {
             "name": "Foot Route"
         },
@@ -2390,9 +2351,6 @@
         },
         "landuse/industrial/scrap_yard": {
             "name": "Scrap Yard"
-        },
-        "camp_site/camp_pitch": {
-            "name": "Camp Pitch"
         },
         "shop/gas": {
             "name": "Bottled Gas Shop"
@@ -2506,9 +2464,6 @@
         "power": {
             "name": "Power"
         },
-        "public_transport/platform_train": {
-            "name": "Train Stop / Platform"
-        },
         "leisure/fitness_station/push-up": {
             "name": "Push-Up Station"
         },
@@ -2599,6 +2554,9 @@
         "amenity/bus_station": {
             "name": "Bus Station / Terminal"
         },
+        "highway/crossing/zebra": {
+            "name": "Marked Crossing"
+        },
         "shop/books": {
             "name": "Book Shop"
         },
@@ -2616,9 +2574,6 @@
         },
         "type/boundary/administrative": {
             "name": "Administrative Boundary"
-        },
-        "landuse/military/office": {
-            "name": "Military Office"
         },
         "amenity/watering_place": {
             "name": "Animal Watering Place"

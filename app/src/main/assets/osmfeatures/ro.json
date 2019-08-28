@@ -52,9 +52,6 @@
         "amenity/waste_disposal": {
             "name": "Container de Gunoi"
         },
-        "landuse/military/bunker": {
-            "name": "Munker Militar"
-        },
         "power/sub_station": {
             "name": "SubStație"
         },
@@ -264,9 +261,6 @@
         },
         "amenity/theatre": {
             "name": "Teatru"
-        },
-        "landuse/military/checkpoint": {
-            "name": "Punct de Control"
         },
         "man_made/lighthouse": {
             "name": "Far"
@@ -505,9 +499,6 @@
         "shop/tyres": {
             "name": "Magazin de Roți"
         },
-        "landuse/military/nuclear_explosion_site": {
-            "name": "Sit de Explozie Nucleară"
-        },
         "amenity/post_office": {
             "name": "Oficiul Poștal"
         },
@@ -685,9 +676,6 @@
         "natural/wetland": {
             "name": "Zonă Umedă"
         },
-        "roundabout": {
-            "name": "Sens Giratoriu"
-        },
         "landuse/military/naval_base": {
             "name": "Bază Navală"
         },
@@ -808,9 +796,6 @@
         "historic/tomb": {
             "name": "Mormânt"
         },
-        "office/political_party": {
-            "name": "Partid Politic"
-        },
         "shop/garden_centre": {
             "name": "Magazin de Grădinărit"
         },
@@ -915,9 +900,6 @@
         },
         "landuse/vineyard": {
             "name": "Curte de Vin"
-        },
-        "vertex": {
-            "name": "Altele"
         },
         "type/boundary": {
             "name": "Graniță"
@@ -1365,9 +1347,6 @@
         },
         "type/boundary/administrative": {
             "name": "Graniță Administrativă"
-        },
-        "landuse/military/office": {
-            "name": "Oficiu Militar"
         },
         "highway/traffic_signals": {
             "name": "Semnale de Trafic"

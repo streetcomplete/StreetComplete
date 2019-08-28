@@ -1,8 +1,5 @@
 {
     "presets": {
-        "vertex": {
-            "name": "ఇతర"
-        },
         "highway/steps": {
             "name": "మెట్లు"
         },

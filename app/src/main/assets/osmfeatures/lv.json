@@ -67,9 +67,6 @@
         "craft/sawmill": {
             "name": "Kokzāģētava"
         },
-        "landuse/military/bunker": {
-            "name": "Militārais Bunkurs"
-        },
         "attraction/roller_coaster": {
             "name": "Amerikāņu Kalniņi",
             "terms": "atrakcija,brauciens,ātrs"
@@ -377,9 +374,6 @@
         "tourism/hotel": {
             "name": "Viesnīca"
         },
-        "public_transport/platform_ferry": {
-            "name": "Prāmja pietura / Platforma"
-        },
         "advertising/billboard": {
             "name": "Reklāmas dēlis"
         },
@@ -519,9 +513,6 @@
         "amenity/prison": {
             "terms": "cietums,ūķis,aizturēšana,kamera"
         },
-        "public_transport/platform_trolleybus": {
-            "name": "Trolejbusu pietura / platforma"
-        },
         "amenity/arts_centre": {
             "name": "Mākslas Centrs"
         },
@@ -564,9 +555,6 @@
         },
         "shop/tyres": {
             "name": "Riepu veikals"
-        },
-        "landuse/military/nuclear_explosion_site": {
-            "name": "Atomsprādziena zona"
         },
         "aeroway/gate": {
             "name": "Lidostas vārti"
@@ -659,10 +647,6 @@
             "name": "Ugunsdzēsēju stacija",
             "terms": "pažarnieki, depo"
         },
-        "attraction/animal": {
-            "name": "Dzīvnieku",
-            "terms": "zoo, dzīvnieku parks, lauva, tīģeris, žirafe, lācis"
-        },
         "barrier/entrance": {
             "name": "Ieeja"
         },
@@ -687,9 +671,6 @@
         },
         "shop/vacuum_cleaner": {
             "name": "Putekļusūcēju veikals"
-        },
-        "public_transport/platform_bus": {
-            "name": "Autobusu pietura / platforma"
         },
         "entrance": {
             "name": "Ieeja/Izeja"
@@ -803,9 +784,6 @@
         },
         "man_made/survey_point": {
             "name": "Novērošanas punkts"
-        },
-        "roundabout": {
-            "name": "Aplis"
         },
         "landuse/military/naval_base": {
             "name": "Ūdensspēku bāze"
@@ -1028,9 +1006,6 @@
         "landuse/vineyard": {
             "name": "Vīnogu lauks"
         },
-        "vertex": {
-            "name": "Cits"
-        },
         "building/grandstand": {
             "name": "Tribīnes"
         },
@@ -1196,9 +1171,6 @@
         },
         "building/farm_auxiliary": {
             "name": "Fermas Ēka"
-        },
-        "public_transport/platform_subway": {
-            "name": "Metro pietura / platforma"
         },
         "natural/wood": {
             "name": "Koks"
@@ -1398,9 +1370,6 @@
         },
         "power": {
             "name": "Enerģija"
-        },
-        "public_transport/platform_train": {
-            "name": "Vilciena Pietura / Platforma"
         },
         "shop/music": {
             "name": "Mūzikas veikals"
@@ -1672,9 +1641,6 @@
         },
         "shop/motorcycle_repair": {
             "name": "Motociklu remonta darbnīca"
-        },
-        "amenity/vending_machine/news_papers": {
-            "name": "Avīžu Tirdzniecības automāts"
         },
         "leisure/fitness_centre/yoga": {
             "name": "Jogas studija"

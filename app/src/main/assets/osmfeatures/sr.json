@@ -1,8 +1,5 @@
 {
     "presets": {
-        "leisure/track/running": {
-            "name": "Тркачка стаза (за спортисте)"
-        },
         "historic/boundary_stone": {
             "name": "Гранични камен"
         },
@@ -66,10 +63,6 @@
         },
         "craft/sawmill": {
             "name": "Пилана"
-        },
-        "landuse/military/bunker": {
-            "name": "Војни бункер",
-            "terms": "војни бункер,војно склониште"
         },
         "power/sub_station": {
             "name": "Трафо-станица"
@@ -326,10 +319,6 @@
         },
         "amenity/theatre": {
             "name": "Позориште"
-        },
-        "landuse/military/checkpoint": {
-            "name": "Контролна тачка",
-            "terms": "контролна тачка,контролни пункт"
         },
         "man_made/lighthouse": {
             "name": "Светионик"
@@ -640,10 +629,6 @@
         "shop/tyres": {
             "name": "Продавница гума"
         },
-        "landuse/military/nuclear_explosion_site": {
-            "name": "Место нуклеарне експлозије,нуклеарна експлозија",
-            "terms": "место нуклеарне експлозије"
-        },
         "aeroway/gate": {
             "name": "Излаз за укрцавање"
         },
@@ -740,10 +725,6 @@
         },
         "traffic_sign/maxspeed_vertex": {
             "name": "Знак за ограничење брзине"
-        },
-        "attraction/animal": {
-            "name": "Животиња",
-            "terms": "животиња,живуљка,звер,зверка"
         },
         "barrier/entrance": {
             "name": "Улаз"
@@ -1026,9 +1007,6 @@
             "name": "Гроб",
             "terms": "гроб,гробница,рака,надгробни споменик"
         },
-        "office/political_party": {
-            "name": "Политичка странка"
-        },
         "waterway/water_point": {
             "name": "Морска пијаћа вода"
         },
@@ -1156,9 +1134,6 @@
         },
         "landuse/vineyard": {
             "name": "Виноград"
-        },
-        "vertex": {
-            "name": "Остало"
         },
         "type/boundary": {
             "name": "Граница"
@@ -1713,9 +1688,6 @@
         "landuse/meadow": {
             "name": "Ливада"
         },
-        "leisure/track/horse_racing": {
-            "name": "Тркачка стаза (за коње)"
-        },
         "shop/convenience": {
             "name": "Бакалница"
         },
@@ -1869,9 +1841,6 @@
         },
         "highway/trunk_link": {
             "name": "Магистрални прилаз"
-        },
-        "amenity/vending_machine/news_papers": {
-            "name": "Аутомат за новине"
         },
         "shop/bookmaker": {
             "name": "Кладионичар"

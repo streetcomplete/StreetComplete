@@ -39,13 +39,13 @@
             "terms": "آشغال دان بزرگ, سطل زباله بزرگ, سطل زباله, زباله دان محله, سطل آشغال محله"
         },
         "type/restriction/only_right_turn": {
-            "name": "فقط پیچیدن به راست"
+            "name": "فقط گردش به راست"
         },
         "attraction/carousel": {
             "name": "چرخ فلک"
         },
         "craft/sawmill": {
-            "name": "چوب بری"
+            "name": "چوب‌بری"
         },
         "emergency/yes": {
             "name": "دسترسی اضطراری بله"
@@ -119,7 +119,7 @@
         },
         "railway/level_crossing": {
             "name": "تقاطع راه‌آهن (با جاده)",
-            "terms": "تقاطع جاده با راه‌آهن"
+            "terms": "راه آهن,قطار,ریل,رانندگی,تقاطع"
         },
         "amenity/restaurant/greek": {
             "name": "رستوران یونانی"
@@ -182,7 +182,7 @@
             "name": "فروشگاه شراب"
         },
         "shop/hairdresser": {
-            "name": "آرایش و پیرایش",
+            "name": "آرایشگاه",
             "terms": "آرایشگاه, پیرایشگاه, سلمانی, سلمونی"
         },
         "building/school": {
@@ -271,6 +271,9 @@
             "name": "پارکینگ ماشین کاروان",
             "terms": "کمپ"
         },
+        "natural/valley": {
+            "name": "دره"
+        },
         "craft/clockmaker": {
             "name": "ساعت سازی"
         },
@@ -298,11 +301,15 @@
         "leisure/pitch/soccer": {
             "name": "میدان فوتبال"
         },
+        "natural/water/river": {
+            "name": "رودخانه",
+            "terms": "جریان"
+        },
         "type/multipolygon": {
             "name": "چندچندضلعی"
         },
         "shop/vacant": {
-            "name": "فروشگاه بدون فروشنده"
+            "name": "فروشگاه خالی"
         },
         "amenity/social_facility/homeless_shelter": {
             "name": "سرپناه بی خانمان‌ها"
@@ -318,10 +325,12 @@
             "name": "دستگاه فروش بستنی"
         },
         "amenity/hospital": {
-            "name": "محیط بیمارستان"
+            "name": "محیط بیمارستان",
+            "terms": "کلینیک,دکتر,پزشک,اورژانس,بیمار,مریض,بیماری,مریض خانه,جراحی,عمل کردن,سلامت,سلامتی"
         },
         "amenity/telephone": {
-            "name": "تلفن عمومی"
+            "name": "تلفن عمومی",
+            "terms": "تلفن,تلفن عمومی,زنگ,تماس,شماره،باجه تلفن"
         },
         "building/dormitory": {
             "name": "خوابگاه",
@@ -382,7 +391,7 @@
             "name": "فروشگاه لوازم ورزشی"
         },
         "type/waterway": {
-            "name": "راه آب",
+            "name": "راه آبی",
             "terms": "آبراه, جوی, جدول, رود, رودخانه, جریان, کانال, جوب"
         },
         "emergency/destination": {
@@ -399,7 +408,8 @@
             "name": "سطل شن"
         },
         "amenity/bank": {
-            "name": "بانک"
+            "name": "بانک",
+            "terms": "حساب,کارت,وام,تسهیلات,سود,چک,بدهی,بستانکاری,بدهکاری"
         },
         "amenity/prison": {
             "name": "محوطه زندان",
@@ -496,9 +506,6 @@
             "name": "سطل بازیافت",
             "terms": "بازیافت"
         },
-        "healthcare/hospice": {
-            "name": "آسایشگاه"
-        },
         "leisure/pitch/tennis": {
             "name": "محوطه تنیس"
         },
@@ -518,8 +525,7 @@
             "terms": "کریدور, کوریدور, راهرو"
         },
         "attraction/animal": {
-            "name": "حیوان",
-            "terms": "باغ وحش, پارک وحش, پارک حیوانات, شیر, ببر, خرس, پلنگ"
+            "terms": "پارک حیوانات، باغ وحش، خرس، پرنده، پرندگان، ماهی، حشره، حشرات، میمون، پنگوئن، پارک تفریحی، ببر، شیر، آکواریوم، لاکپشت، خزندگان"
         },
         "amenity/restaurant/asian": {
             "name": "رستوران آسیایی"
@@ -621,7 +627,7 @@
         },
         "highway/footway": {
             "name": "راه پیاده",
-            "terms": "پیاده روی, پیاده, پا, پیاده گردی, تریل, مسیر پیاده"
+            "terms": "پیاده, پیاده روی, پا, پیاده گردی, تریل, مسیر پیاده"
         },
         "building/roof": {
             "name": "سقف"
@@ -640,8 +646,11 @@
             "name": "کرایه انبار"
         },
         "shop/fashion": {
-            "name": "فروشگاه مد",
-            "terms": "فروشگاه فشن, فشن"
+            "name": "فروشگاه مد"
+        },
+        "natural/water/canal": {
+            "name": "آبراهه",
+            "terms": "کانال"
         },
         "power/substation": {
             "name": "ایستگاه فرعی"
@@ -750,11 +759,15 @@
             "name": "آنتن"
         },
         "waterway/canal": {
-            "name": "کانال",
-            "terms": "مجرا, آبراهه, آبراه, قنات, کاریز"
+            "name": "آبراهه",
+            "terms": "مجرا, کانال, آبراه, قنات, کاریز"
         },
         "leisure/common": {
             "name": "عمومی"
+        },
+        "amenity/parking/underground": {
+            "name": "پارکینگ زیرزمینی",
+            "terms": "پارکینگ خودرو"
         },
         "type/route/horse": {
             "name": "مسیر سوارکاری",
@@ -774,7 +787,8 @@
             "name": "ماهی فروشی"
         },
         "place/square": {
-            "name": "میدان"
+            "name": "میدانگاه (square)",
+            "terms": "پلازا، میدان عمومی، میدان معامله، بازار"
         },
         "man_made/storage_tank": {
             "name": "مخزن ذخیره"
@@ -842,11 +856,15 @@
             "name": "فروشگاه کالای خواب/ تشک"
         },
         "natural/scrub": {
-            "name": "خارزار"
+            "name": "بوته‌زار و درختچه‌زار",
+            "terms": "بوته، تنک‌بیشه، درختچه‌زار"
         },
         "craft/photographer": {
             "name": "عکاسی",
             "terms": "آتلیه عکاسی"
+        },
+        "public_transport/platform/bus_point": {
+            "name": "ایستگاه اتوبوس"
         },
         "shop": {
             "name": "فروشگاه",
@@ -879,8 +897,8 @@
             "terms": "موسسه آموزشی"
         },
         "shop/deli": {
-            "name": "اغذیه فروشی",
-            "terms": "حاضری فروشی"
+            "name": "حاضری فروشی",
+            "terms": "اغذیه فروشی"
         },
         "healthcare/rehabilitation": {
             "name": "توانبخشی"
@@ -912,7 +930,7 @@
             "terms": "یخچال, لوازم خانگی, رادیو, صوتی, دوربین, کامپیوتر, سینمای خانگی, ویدیو, تلویزیون, تی وی"
         },
         "waterway": {
-            "name": "راه آب"
+            "name": "مسیر آب"
         },
         "amenity/clinic": {
             "name": "کلینیک"
@@ -993,7 +1011,7 @@
             "name": "منطقه آموزشی"
         },
         "natural/water/lake": {
-            "name": "برکه ، استخر"
+            "name": "دریاچه"
         },
         "shop/video": {
             "name": "فیلم فروشی"
@@ -1012,7 +1030,8 @@
             "name": "خط برق ضعیف"
         },
         "amenity/social_facility/nursing_home": {
-            "name": "خانه سالمندان"
+            "name": "آسایشگاه سالمندان",
+            "terms": "سالمندان، زندگی، پرستاری، مسن، کهن سال، پیرمرد، پیرزن، آسایشگاه سالمندان"
         },
         "landuse/farmyard": {
             "name": "محوطه مزرعه"
@@ -1049,11 +1068,11 @@
             "terms": "رایانه, نرم افزار, سی دی, سخت افزار, کامپیوتر"
         },
         "landuse/grass": {
-            "name": "علف زار"
+            "name": "چمن"
         },
         "natural/grassland": {
             "name": "مرتع",
-            "terms": "چمن زار"
+            "terms": "علفزار، ساوانا"
         },
         "highway/stop": {
             "name": "تابلوی ایست",
@@ -1088,7 +1107,7 @@
             "name": "کاربری زمین"
         },
         "waterway/riverbank": {
-            "name": "حاشیه رودخانه"
+            "name": "دامنه رودخانه"
         },
         "shop/music": {
             "name": "فروشگاه موسیقی"
@@ -1193,9 +1212,13 @@
         "craft/beekeeper": {
             "name": "پرورش دهنده زنبور عسل"
         },
+        "leisure/track/horse_racing": {
+            "name": "مسیر مسابقه سوارکاری",
+            "terms": "اسب‌دوانی"
+        },
         "amenity/toilets": {
             "name": "سرویس بهداشتی",
-            "terms": "توالت, توآلت, دستشویی, رفع حاجت, قضای حاجت, مستراح"
+            "terms": "توالت, توآلت, دستشویی, رفع حاجت, قضای حاجت, مستراح"
         },
         "amenity/sanitary_dump_station": {
             "name": "دفع توالت RV"
@@ -1318,11 +1341,14 @@
             "name": "فروشگاه قطعات خودرو",
             "terms": "لوازم یدکی, اتوموبیل, خودرو, لوازم اتوموبیل"
         },
+        "shop/jewelry": {
+            "name": "جواهرفروشی"
+        },
         "office/lawyer": {
             "name": "دفتر حقوقی"
         },
         "building/apartments": {
-            "name": "آپارتمان",
+            "name": "ساختمان آپارتمانی",
             "terms": "ساختمان چندطبقه"
         },
         "highway/trunk_link": {
@@ -1332,15 +1358,16 @@
         "emergency/lifeguard": {
             "name": "نجات غریق"
         },
-        "amenity/vending_machine/news_papers": {
-            "name": "دستگاه خود فروش روزنامه"
-        },
         "shop/bookmaker": {
             "name": "دلال شرط‌بندی",
             "terms": "قماربازی, شرطبندی"
         },
         "leisure/fitness_centre/yoga": {
             "name": "استودیو یوگا"
+        },
+        "leisure/track/running": {
+            "name": "مسیر مسابقه دو",
+            "terms": "دو میدانی، دونده، دویدن، پیاده"
         },
         "aerialway/t-bar": {
             "name": "بالابر میله‌ای T شکل",
@@ -1384,11 +1411,12 @@
             "name": "ساختمان دانشگاه"
         },
         "amenity/library": {
-            "name": "کتابخانه"
+            "name": "کتابخانه",
+            "terms": "کتابخانه,کتاب"
         },
         "shop/stationery": {
             "name": "فروشگاه نوشت‌افزار",
-            "terms": "فروشگاه لوازم تحریر, فروشگاه لوازم التحریر"
+            "terms": "فروشگاه لوازم تحریر، فروشگاه لوازم التحریر، لوازم تحریر"
         },
         "highway/secondary_link": {
             "name": "اتصال درجه دو",
@@ -1401,9 +1429,6 @@
         "highway/living_street": {
             "name": "خیابان  محدوده زندگی",
             "terms": "کوچه"
-        },
-        "landuse/military/bunker": {
-            "name": "محدوده نظامی"
         },
         "attraction/roller_coaster": {
             "name": "ترن هوایی"
@@ -1505,10 +1530,11 @@
             "name": "ایستگاه جنگلبانی"
         },
         "amenity/parking": {
-            "name": "پارکینگ"
+            "name": "پارکینگ",
+            "terms": "پارکینگ،اتومبیل،ماشین،پارکنیگ ماشین،پارکینگ اتومبیل"
         },
         "highway/bus_stop": {
-            "name": "ایستگاه اتوبوس / سکو"
+            "name": "ایستگاه اتوبوس"
         },
         "amenity/place_of_worship/hindu": {
             "name": "معبد هندو"
@@ -1556,7 +1582,7 @@
             "name": "شن"
         },
         "place/locality": {
-            "name": "محلی"
+            "name": "محل خالی از سکنه"
         },
         "traffic_calming/table": {
             "name": "سرعتکاه تخت",
@@ -1589,14 +1615,12 @@
             "name": "شیرینی فروشی"
         },
         "amenity/theatre": {
-            "name": "تئاتر"
+            "name": "تئاتر",
+            "terms": "نمایش,تآتر,تاتر,نمایشنامه,تیاتر,صحنه,بلیط"
         },
         "highway/pedestrian_line": {
             "name": "پیاده‌راه",
             "terms": "میدان, میدانگاه, پیاده راه, بازار, صحن"
-        },
-        "landuse/military/checkpoint": {
-            "name": "ایست بازرسی"
         },
         "man_made/lighthouse": {
             "name": "فانوس دریایی"
@@ -1657,6 +1681,10 @@
         "craft/scaffolder": {
             "name": "داربستی"
         },
+        "public_transport/platform/ferry": {
+            "name": "سکوی فرابر",
+            "terms": "سکوی فری، فری، قایق، حمل و نقل عمومی، ترانزیت"
+        },
         "shop/locksmith": {
             "name": "قفل سازی"
         },
@@ -1702,7 +1730,7 @@
             "name": "فروشگاه لوازم بزرگسالان"
         },
         "type/restriction/only_left_turn": {
-            "name": "فقط پیچیدن به چپ"
+            "name": "فقط گردش به چپ"
         },
         "highway/mini_roundabout": {
             "name": "فلکه کوچک",
@@ -1737,6 +1765,9 @@
         "natural/peak": {
             "name": "قله",
             "terms": "قله, نوک کوه, چکاد"
+        },
+        "public_transport/platform/monorail_point": {
+            "name": "ایستگاه / سکوی مونوریل"
         },
         "highway/tertiary": {
             "name": "جادهٔ درجه سه",
@@ -1784,7 +1815,7 @@
         },
         "amenity/restaurant": {
             "name": "رستوران",
-            "terms": "بار, صبحانه, کافه, شام, ناهار"
+            "terms": "بار, صبحانه, کافه, شام, ناهار,غذا,خوردن,خوردنی,نوشیدن,نوشیدنی,پیتزا,کباب,همبرگر"
         },
         "amenity/restaurant/pizza": {
             "name": "رستوران پیتزا",
@@ -1809,12 +1840,9 @@
             "name": "تبدیل ارز / صرافی",
             "terms": "ارز, صرافی, پول"
         },
-        "landuse/military/nuclear_explosion_site": {
-            "name": "محدوده انفجار اتمی"
-        },
         "leisure/dancing_school": {
-            "name": "مدرسه رقص",
-            "terms": "رقص"
+            "name": "آموزشگاه رقص",
+            "terms": "رقص، مدرسه، آکادمی"
         },
         "leisure": {
             "name": "اوقات فراغت"
@@ -1869,6 +1897,9 @@
         "highway/trunk": {
             "name": "بزرگراه"
         },
+        "building_point": {
+            "name": "ساختمان"
+        },
         "golf/tee": {
             "name": "Tee Box"
         },
@@ -1891,7 +1922,7 @@
         },
         "natural/water/pond": {
             "name": "آبگیر",
-            "terms": "برکه, حوضچه"
+            "terms": "برکه, حوضچه, استخر"
         },
         "attraction/water_slide": {
             "name": "سرسره آبی"
@@ -1919,7 +1950,8 @@
             "name": "رستوران آلمانی"
         },
         "amenity/university": {
-            "name": "محوطه دانشگاه"
+            "name": "محوطه دانشگاه",
+            "terms": "دانشگاه,لیسانس,کالج,مدرک,آموزش,استاد,دانشجو"
         },
         "building/public": {
             "name": "ساختمان عمومی"
@@ -1955,7 +1987,7 @@
             "terms": "سرامیک فروشی, کفپوش"
         },
         "highway/pedestrian_area": {
-            "name": "میدانگاه",
+            "name": "میدانگاه (Pedestrian Area)",
             "terms": "میدان, میدان گاه, پیاده راه, بازار, صحن, محوطه پیاده"
         },
         "amenity/vending_machine/food": {
@@ -1998,7 +2030,7 @@
         "man_made/survey_point": {
             "name": "نقطه مطالعاتی"
         },
-        "roundabout": {
+        "junction/roundabout": {
             "name": "فلکه (میدان)"
         },
         "type/route/power": {
@@ -2006,7 +2038,7 @@
             "terms": "خط انتقال برق"
         },
         "highway/service/alley": {
-            "name": "پس‌کوچه",
+            "name": "کوچه خدماتی",
             "terms": "کوچه باریک, کوچه,"
         },
         "amenity/restaurant/seafood": {
@@ -2094,7 +2126,7 @@
             "name": "خط‌کشی عابر پیاده (برآمده)"
         },
         "landuse/residential/apartments": {
-            "name": "مجتمع آپارتمانی"
+            "name": "محدوده مجتمع آپارتمانی"
         },
         "amenity/place_of_worship/muslim": {
             "name": "مسجد",
@@ -2110,11 +2142,11 @@
         "shop/supermarket": {
             "name": "فروشگاه بزرگ"
         },
-        "office/political_party": {
-            "name": "حزب سیاسی"
-        },
         "building/stadium": {
             "name": "ساختمان استادیوم"
+        },
+        "highway/footway/crossing": {
+            "name": "گذرگاه پیاده"
         },
         "landuse/military/range": {
             "name": "محدوده نظامی"
@@ -2130,6 +2162,9 @@
         },
         "natural/saddle": {
             "name": "گردنه"
+        },
+        "natural/water/basin": {
+            "name": "حوضه"
         },
         "landuse/orchard": {
             "name": "باغ میوه",
@@ -2162,7 +2197,7 @@
             "name": "راه آهن متروکه"
         },
         "type/restriction": {
-            "name": "محدوده"
+            "name": "محدودیت"
         },
         "playground/seesaw": {
             "name": "الاکلنگ"
@@ -2188,14 +2223,11 @@
             "name": "ساحل"
         },
         "junction": {
-            "name": "اتصال"
+            "name": "تقاطع",
+            "terms": "چهارراه، سه راه، سه راهی، دوراهی"
         },
         "office/coworking": {
             "name": "فضای کاری مشارکتی"
-        },
-        "vertex": {
-            "name": "سایر",
-            "terms": "دیگر, بقیه, باقی"
         },
         "type/boundary": {
             "name": "مرز"
@@ -2255,13 +2287,14 @@
             "terms": "ساختمان کالج"
         },
         "amenity/nursing_home": {
-            "name": "خانه سالمندان"
+            "name": "آسایشگاه"
         },
         "shop/ticket": {
             "name": "بلیط فروشی"
         },
         "amenity/social_facility/group_home": {
-            "name": "خانه سالمندان"
+            "name": "خانه سالمندان",
+            "terms": "سالمندان، زندگی، مسن، کهن سال، پیرمرد، پیرزن، خانه مراقبت، آسایشگاه سالمندان"
         },
         "natural/water/reservoir": {
             "name": "دریاچه پشت سد",
@@ -2288,7 +2321,8 @@
             "name": "فروشگاه رنگ"
         },
         "historic/ruins": {
-            "name": "ویرانه"
+            "name": "ویرانه های تاریخی",
+            "terms": "خرابه،ویرانه،قلعه،کتیبه،تاریخی،باستانی"
         },
         "highway/secondary": {
             "name": "جادهٔ درجه دو",
@@ -2304,10 +2338,11 @@
             "name": "رستوران ژاپنی"
         },
         "natural/heath": {
-            "name": "بوته زار"
+            "name": "بوته‌زار",
+            "terms": "خلنگزار، خارزار"
         },
         "amenity/fast_food/kebab": {
-            "name": "کبابی"
+            "name": "کبابی (فست فود)"
         },
         "office/accountant": {
             "name": "دفتر حسابدار",
@@ -2338,18 +2373,23 @@
             "name": "فروشگاه محصولات ارگانیک"
         },
         "waterway/ditch": {
-            "name": "جوی مصنوعی (کف‌سازی‌نشده)",
+            "name": "جوب",
             "terms": "زهکش، آبگذر، ابگذر زهکش فاضلاب، فاضلاب، جوب"
         },
         "shop/fuel": {
-            "name": "فروشگاه سوخت"
+            "name": "فروشگاه سوخت",
+            "terms": "سوخت، زغال، نفت، بنزین، روغن"
         },
         "amenity/cinema": {
             "name": "سینما",
-            "terms": "تماشاخانه, تئاتر, تآتر, تاتر, فیلم, نمایش, پرده, پرده نمایش, پرده سینما"
+            "terms": "تماشاخانه, تئاتر, تآتر, تاتر, فیلم, نمایش, پرده, پرده نمایش, پرده سینما,بلیط,سانس,گیشه"
         },
         "type/route/bus": {
             "name": "مسیر اتوبوس"
+        },
+        "natural/water/stream": {
+            "name": "نهر",
+            "terms": "رود"
         },
         "type/route_master": {
             "name": "مسیر اصلی",
@@ -2412,10 +2452,6 @@
         "amenity/recycling": {
             "name": "بازیافت"
         },
-        "camp_site/camp_pitch": {
-            "name": "مکان برقراری چادر",
-            "terms": "مکان برقراری چادر، مکان قرار دادن خودرو کاروان, چادر"
-        },
         "landuse/commercial": {
             "name": "منطقه تجاری"
         },
@@ -2430,7 +2466,8 @@
             "terms": "تسمه نقاله بالابر, فرش جادویی, نوار متحرک"
         },
         "amenity/post_box": {
-            "name": "صندوق پستی"
+            "name": "صندوق پستی",
+            "terms": "نامه,پست,بسته,تمبر,گیرنده,فرستنده,پستچی,نامه رسان"
         },
         "emergency/official": {
             "name": "دسترسی اظطراری رسمی"
@@ -2493,14 +2530,15 @@
             "terms": "لباس فروشی"
         },
         "aeroway/aerodrome": {
-            "name": "فرودگاه"
+            "name": "فرودگاه",
+            "terms": "هواپیما,پرواز,ترمینال"
         },
         "amenity/bicycle_rental": {
             "name": "اجاره دوچرخه",
             "terms": "کرایه دوچرخه, دوچرخه"
         },
         "shop/gift": {
-            "name": "هدیه فروشی",
+            "name": "فروشگاه لوازم کادویی",
             "terms": "کادوئی, کادویی, گیفت, سوغات, سوغاتی, فروشگاه کادو, کادو فروشی, کارت عروسی"
         },
         "craft/locksmith": {
@@ -2542,7 +2580,7 @@
             "name": "نمایندگی موتور سیکلت"
         },
         "waterway/river": {
-            "name": "رودخانه",
+            "name": "رود",
             "terms": "رودخانه، رود,"
         },
         "office/architect": {
@@ -2572,6 +2610,9 @@
         "barrier/bollard": {
             "name": "تیرک مهار",
             "terms": "استوانه ترافیکی"
+        },
+        "public_transport/platform/ferry_point": {
+            "name": "ایستگاه / سکوی فرابر"
         },
         "leisure/golf_course": {
             "name": "زمین گلف"
@@ -2603,10 +2644,11 @@
             "terms": "فروشگاه لوازم دوزندگی, چرخ خیاطی, فروشگاه لوازم خیاطی"
         },
         "landuse/meadow": {
-            "name": "علفزار"
+            "name": "علفزار",
+            "terms": "چراگاه، علوفه، یونجه زار"
         },
         "shop/convenience": {
-            "name": "فروشگاه کوچک",
+            "name": "فروشگاه کوچک / سوپرمارکت",
             "terms": "سوپری, سوپرمارکت, بقالی, خواربارفروشی"
         },
         "amenity/bus_station": {
@@ -2628,7 +2670,7 @@
             "terms": "سرویس, جاده, خیابان"
         },
         "waterway/drain": {
-            "name": "جوی مصنوعی (کف‌سازی شده)",
+            "name": "مسیل",
             "terms": "زهکش، آبگذر، ابگذر زهکش فاضلاب، فاضلاب، جوب، جدول"
         },
         "highway/residential": {
@@ -2643,9 +2685,6 @@
         },
         "type/boundary/administrative": {
             "name": "مرز حکومتی"
-        },
-        "landuse/military/office": {
-            "name": "دفتر نظامی"
         },
         "amenity/watering_place": {
             "name": "آبشخور حیوانات"
@@ -2676,8 +2715,8 @@
             "terms": "پیش دبستانی، مهد کودک، مدرسه، کودکستان"
         },
         "waterway/weir": {
-            "name": "سرریز",
-            "terms": "بند"
+            "name": "بند آب",
+            "terms": "بند, سرریز"
         },
         "craft/metal_construction": {
             "name": "ساخت و ساز فلزی"
@@ -2715,6 +2754,9 @@
         "tourism/alpine_hut": {
             "name": "کلبه آلپ"
         },
+        "public_transport/platform/monorail": {
+            "name": "سکوی مونوریل"
+        },
         "tourism/information/office": {
             "name": "دفتر اطلاعات گردشگری",
             "terms": "دفتر اطلاعات توریستی, کیوسک اطلاعات گردشگری"
@@ -2723,8 +2765,8 @@
             "name": "مغازه مشروبات الکلی"
         },
         "tourism/viewpoint": {
-            "name": "چشم‌انداز",
-            "terms": "منظره, ویو"
+            "name": "نقطه دید",
+            "terms": "چشم‌انداز"
         },
         "craft/handicraft": {
             "name": "صنایع دستی"
@@ -2740,7 +2782,7 @@
         },
         "aeroway/terminal": {
             "name": "پایانه فرودگاه",
-            "terms": "ترمینال فرودگاه"
+            "terms": "ترمینال فرودگاه,هواپیما,فرودگاه,بلیط,خلبان"
         }
     }
 }
