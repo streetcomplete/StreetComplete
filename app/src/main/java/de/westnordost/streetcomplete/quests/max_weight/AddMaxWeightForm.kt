@@ -76,6 +76,13 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
 
         weightUnitSelect = contentView.findViewById(R.id.weightUnitSelect)
         val measurementUnits = countryInfo.measurementSystemForWeightLimits
+        val primaryUnit = when(measurementUnits[0]) {
+            "ton" -> TON
+            "short_ton_formatted_as_ton" -> TON
+            "pound" -> POUND
+            else -> throw UnsupportedOperationException("not implemented")
+        }
+        switchLayout(primaryUnit)
         weightUnitSelect?.visibility = if (measurementUnits.size == 1) View.GONE else View.VISIBLE
         weightUnitSelect?.adapter = ArrayAdapter(context!!, R.layout.spinner_item_centered, getSpinnerItems(measurementUnits))
         weightUnitSelect?.setSelection(0)
