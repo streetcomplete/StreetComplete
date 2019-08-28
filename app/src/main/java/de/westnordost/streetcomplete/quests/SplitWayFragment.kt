@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests
 
 import android.animation.AnimatorInflater
+import android.content.res.Configuration
 import android.graphics.PointF
 import android.graphics.drawable.Animatable
 import android.os.Bundle
@@ -74,7 +75,7 @@ class SplitWayFragment : Fragment(), IsCloseableBottomSheet, IsShowingQuestDetai
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        bottomSheetContainer.setOnTouchListener { _, event ->
+        splitWayRoot.setOnTouchListener { _, event ->
             clickPos = PointF(event.x, event.y)
             false
         }
@@ -91,6 +92,15 @@ class SplitWayFragment : Fragment(), IsCloseableBottomSheet, IsShowingQuestDetai
                 AnimationUtils.loadAnimation(context, R.anim.inflate_answer_bubble)
             )
         }
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration?) {
+        super.onConfigurationChanged(newConfig)
+        // see rant comment in AbstractBottomSheetFragment
+        resources.updateConfiguration(newConfig, resources.displayMetrics)
+
+        bottomSheetContainer.setBackgroundResource(R.drawable.speechbubbles_gradient_background)
+        bottomSheetContainer.updateLayoutParams { width = resources.getDimensionPixelSize(R.dimen.quest_form_width) }
     }
 
     private fun onClickOk() {
