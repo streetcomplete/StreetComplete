@@ -55,7 +55,19 @@ class SettingsFragment : PreferenceFragmentCompat(),
         addPreferencesFromResource(R.xml.preferences)
 
 	    preferenceScreen.findPreference("oauth").setOnPreferenceClickListener {
-	        fragmentManager?.let { OsmOAuthDialogFragment().show(it, OsmOAuthDialogFragment.TAG) }
+            if (oAuth.isAuthorized) {
+                context?.let {
+                    AlertDialog.Builder(it)
+                        .setMessage(R.string.oauth_remove_authorization_dialog_message)
+                        .setPositiveButton(R.string.oauth_remove_authorization_confirmation) { _, _ ->
+                            oAuth.saveConsumer(null)
+                        }
+                        .setNegativeButton(android.R.string.cancel, null)
+                        .show()
+                }
+            } else {
+                fragmentManager?.let { OsmOAuthDialogFragment().show(it, OsmOAuthDialogFragment.TAG) }
+            }
             true
         }
 

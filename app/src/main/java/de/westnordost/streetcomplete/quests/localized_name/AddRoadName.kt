@@ -41,10 +41,18 @@ class AddRoadName(
     /** returns overpass query string for creating the quests */
     private fun getOverpassQuery(bbox: BoundingBox) =
         bbox.toGlobalOverpassBBox() + "\n" +
-        ROADS_WITHOUT_NAMES + ";\n " +
+        ROADS_WITHOUT_NAMES + "->.unnamed;\n" +
+        "(\n" +
+        "  way.unnamed['access' !~ '^private|no$'];\n" +
+        "  way.unnamed['foot']['foot' !~ '^private|no$'];\n" +
+        "); " +
         getQuestPrintStatement()
 
-    /** return overpass query string to get roads with names near roads that don't have names */
+    /** return overpass query string to get roads with names near roads that don't have names
+     *  private roads are not filtered out here, partially to reduce complexity but also
+     *  because the road may have a private segment that is named already or is close to a road
+     *  with a useful name
+     * */
     private fun getStreetNameSuggestionsOverpassQuery(bbox: BoundingBox) =
         bbox.toGlobalOverpassBBox() + "\n" + """
         $ROADS_WITHOUT_NAMES -> .without_names;

@@ -2,6 +2,8 @@
 <resources>
     <string name="action_settings">"Settings"</string>
     <string name="oauth_communication_error">"Unable to reach the authorization server"</string>
+    <string name="oauth_remove_authorization_dialog_message">"Do you want to remove the authorization for your OSM account?"</string>
+    <string name="oauth_remove_authorization_confirmation">"Remove"</string>
     <string name="loading">"Loading"</string>
     <string name="retry">"Retry"</string>
     <string name="oauth_cancelled">"Authorization canceled"</string>
@@ -661,8 +663,13 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_ferry_pedestrian_title">Does this ferry route transport pedestrians?</string>
     <string name="quest_ferry_motor_vehicle_name_title">Does %s transport motor vehicles?</string>
     <string name="quest_ferry_motor_vehicle_title">Does this ferry route transport motor vehicles?</string>
+    <string name="quest_leafType_title">Do the trees here have needles or leaves?</string>
+    <string name="quest_leaf_type_needles">Needles</string>
+    <string name="quest_leaf_type_broadleaved">Broadleaved</string>
+    <string name="quest_leaf_type_mixed">Both are present</string>
     <string name="create_new_note_hint">Best write the note in the locally spoken language or otherwise in English.</string>
     <string name="about_contributing">Your answers are directly improving OpenStreetMap. Contributed data is open, everyone can use it. Many great projects are already using it.</string>
     <string name="about_missing_stars">Currently, the star count is not shared across devices, but answers are added directly to the OpenStreetMap database.</string>
     <string name="how_to_get_stars">Choose one of the markers on the map and answer the question. This way you will improve OpenStreetMap data and get stars. If you see no markers you may need to zoom out the map.</string>
+    <string name="quest_cyclewayPartSurface_title">What\'s the surface of the cycleway here?</string>
 </resources>

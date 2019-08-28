@@ -4,6 +4,7 @@ import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.OsmTaggings
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandler
@@ -22,6 +23,8 @@ class AddPlaceName(
         nodes, ways, relations with 
         (
           shop and shop !~ no|vacant
+          or craft
+          or office
           or tourism = information and information = office 
           or """.trimIndent() +
         mapOf(
@@ -49,9 +52,6 @@ class AddPlaceName(
                 "nature_reserve", "sports_centre", "fitness_centre", "dance", "golf_course",
                 "water_park", "miniature_golf", "stadium", "marina", "bowling_alley",
                 "amusement_arcade", "adult_gaming_centre", "tanning_salon", "horse_riding"
-            ),
-            "office" to arrayOf(
-                "insurance", "estate_agent", "travel_agent"
             )
         ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n  or ") + "\n" + """
         )
