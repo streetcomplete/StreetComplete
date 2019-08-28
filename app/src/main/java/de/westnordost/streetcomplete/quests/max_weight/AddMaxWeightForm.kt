@@ -105,13 +105,13 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
     }
 
     private fun switchLayout(unit: Measurement) {
-        val isMetric = unit == TON
+        val isTon = unit == TON
         val isPound = unit == POUND
 
-        tonInputSign?.visibility = if (isMetric) View.VISIBLE else View.GONE
+        tonInputSign?.visibility = if (isTon) View.VISIBLE else View.GONE
         poundInputSign?.visibility = if (isPound) View.VISIBLE else View.GONE
 
-        if (isMetric) tonInput?.requestFocus()
+        if (isTon) tonInput?.requestFocus()
         if (isPound) poundInput?.requestFocus()
     }
 
