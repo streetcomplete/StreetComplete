@@ -55,6 +55,7 @@ import de.westnordost.streetcomplete.quests.localized_name.data.PutRoadNameSugge
 import de.westnordost.streetcomplete.quests.localized_name.data.RoadNameSuggestionsDao;
 import de.westnordost.streetcomplete.quests.segregated.AddCyclewaySegregation;
 import de.westnordost.streetcomplete.quests.sidewalk.AddSidewalk;
+import de.westnordost.streetcomplete.quests.surface.AddCyclewayPartSurface;
 import de.westnordost.streetcomplete.quests.surface.AddPathSurface;
 import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingBusStop;
 import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingCrosswalk;
@@ -162,6 +163,7 @@ public class QuestModule
 
 				// ↓ 8. defined in the wiki, but not really used by anyone yet. Just collected for
 				//      the sake of mapping it in case it makes sense later
+				new AddCyclewayPartSurface(o),
 				new AddMotorcycleParkingCover(o),
 				new AddFireHydrantType(o),
 				new AddParkingType(o),
