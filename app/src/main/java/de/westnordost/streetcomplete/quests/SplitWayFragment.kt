@@ -104,7 +104,26 @@ class SplitWayFragment : Fragment(), IsCloseableBottomSheet, IsShowingQuestDetai
     }
 
     private fun onClickOk() {
+        if (splits.size > 2) {
+            confirmManySplits { onSplittedWayConfirmed() }
+        } else {
+            onSplittedWayConfirmed()
+        }
+    }
+
+    private fun onSplittedWayConfirmed() {
         (activity as Listener).onSplittedWay(osmQuestId, splits.map { it.first })
+    }
+
+    private fun confirmManySplits(callback: () -> (Unit)) {
+        activity?.let {
+            AlertDialog.Builder(it)
+                .setTitle(R.string.quest_generic_confirmation_title)
+                .setMessage(R.string.quest_split_way_many_splits_confirmation_description)
+                .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> callback() }
+                .setNegativeButton(R.string.quest_generic_confirmation_no, null)
+                .show()
+        }
     }
 
     private fun onClickUndo() {
