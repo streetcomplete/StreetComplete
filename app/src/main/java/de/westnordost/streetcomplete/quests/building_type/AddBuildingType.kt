@@ -11,7 +11,7 @@ class AddBuildingType (o: OverpassMapDataDao) : SimpleOverpassQuestType<String>(
     // information about the purpose of the building, so no need to force asking it
     override val tagFilters = """
         ways, relations with building = yes
-        and !man_made and !historic and !military and !power and location!=underground
+        and !man_made and !historic and !military and !power and location!=underground and ruins!=yes
     """
     override val commitMessage = "Add building types"
     override val icon = R.drawable.ic_quest_building
