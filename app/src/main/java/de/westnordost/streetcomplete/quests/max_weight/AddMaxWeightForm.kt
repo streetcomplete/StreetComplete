@@ -170,13 +170,13 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
         weightUnitSelect?.let { it.selectedItem == "t" }
             ?: (countryInfo.measurementSystemForWeightLimits[0] == "ton"
                     || countryInfo.measurementSystemForWeightLimits[0] == "short_ton_formatted_as_ton")
-        // weightUnitSelect will give null for cases where there is a single unit
-        // in such cases there is single unit, so we can use [0] to get it
+        // weightUnitSelect will give a null for cases where there is a single unit
+        // in such cases there is a single unit, so we can use [0] to get it
 
     private fun isPound() =
             weightUnitSelect?.let { it.selectedItem == "lbs" }
                     ?: (countryInfo.measurementSystemForWeightLimits[0] == "pound")
-    // see comment in isTon
+    // see comment in the isTon function
 
     private fun confirmUnusualInput(callback: () -> (Unit)) {
         activity?.let {
