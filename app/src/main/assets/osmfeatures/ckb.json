@@ -150,9 +150,6 @@
         "landuse/industrial": {
             "name": "ناوچەی پیشەسازی"
         },
-        "attraction/animal": {
-            "name": "ئاژەڵ"
-        },
         "amenity/veterinary": {
             "name": "ڤێتێرنەری"
         },
@@ -218,9 +215,6 @@
         },
         "amenity/smoking_area": {
             "name": "ناوچەی جگەرەکێشان"
-        },
-        "landuse/military/office": {
-            "name": "نووسینگەی سەربازیی"
         },
         "highway/traffic_signals": {
             "name": "نیشانەکانی هاتوچۆ"

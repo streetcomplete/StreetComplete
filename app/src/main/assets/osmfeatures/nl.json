@@ -1,7 +1,7 @@
 {
     "presets": {
         "shop/caravan": {
-            "name": "Caravandealer"
+            "name": "Caravan-dealer"
         },
         "office/administrative": {
             "name": "Bestuurlijke instantie"
@@ -72,9 +72,6 @@
         "emergency/yes": {
             "name": "Toegang voor hulpdiensten: ja"
         },
-        "circular": {
-            "name": "Rotonde, verkeer erop niet steeds voorrang"
-        },
         "healthcare/audiologist": {
             "name": "Audiologist",
             "terms": "audiologie,gehoorarts,gehoordokter"
@@ -142,6 +139,9 @@
         "boundary/administrative": {
             "name": "Bestuurlijke grens",
             "terms": "administratieve grens"
+        },
+        "historic/memorial/plaque": {
+            "name": "Gedenkplaat"
         },
         "man_made/surveillance": {
             "name": "Bewaking",
@@ -287,7 +287,8 @@
             "terms": "wandelroute,trekkingroute,wandeltraject"
         },
         "amenity/place_of_worship/christian": {
-            "name": "Christelijke kerk"
+            "name": "Christelijke kerk",
+            "terms": "kerk,christenen"
         },
         "tourism/hostel": {
             "name": "Jeugdherberg",
@@ -367,6 +368,10 @@
             "name": "Taxistandplaats",
             "terms": "taxi's,taxiparking"
         },
+        "amenity/vending_machine/excrement_bags": {
+            "name": "Strontzakjesautomaat",
+            "terms": "hondenstrontzakjesautomaat"
+        },
         "amenity/smoking_area": {
             "name": "Rookgebied",
             "terms": "rookzone,kankerzone,rookpaviljoen"
@@ -386,6 +391,10 @@
             "name": "Caravan-/kampeerwagenterrein",
             "terms": "caravans,kampeerwagens,campers,motorhomes,mobilehomes,terrein voor kampeerwagens"
         },
+        "natural/valley": {
+            "name": "Vallei",
+            "terms": "dal"
+        },
         "craft/clockmaker": {
             "name": "Klokmaker",
             "terms": "klok,uurwerk"
@@ -396,10 +405,6 @@
         "shop/furniture": {
             "name": "Meubelzaak",
             "terms": "woonwarenhuis,meubelwinkel"
-        },
-        "public_transport/platform_ferry": {
-            "name": "Veerboothalte",
-            "terms": "ferryhalte"
         },
         "advertising/billboard": {
             "name": "Reclamebord",
@@ -541,6 +546,9 @@
             "name": "Biergarten",
             "terms": "bier,terras,café"
         },
+        "office/diplomatic/consulate": {
+            "name": "Consulaat"
+        },
         "amenity/vending_machine/elongated_coin": {
             "name": "Souvenirsmuntautomaat",
             "terms": "muntautomaat,iconische munt,muntvervormer"
@@ -665,6 +673,9 @@
         "amenity/restaurant/italian": {
             "name": "Italiaans restaurant"
         },
+        "barrier/turnstile": {
+            "name": "Draaipoort"
+        },
         "building/temple": {
             "name": "Tempelgebouw"
         },
@@ -764,10 +775,6 @@
             "name": "Drankenwinkel",
             "terms": "drankenhandel,bierhuis,drankenhuis,drankhandel,wijnhandel,drankenwinkel,slijterij"
         },
-        "public_transport/platform_bus": {
-            "name": "Bushalte",
-            "terms": "halte"
-        },
         "entrance": {
             "name": "Ingang/Uitgang",
             "terms": "ingang,uitgang"
@@ -828,6 +835,9 @@
         "amenity/social_facility/food_bank": {
             "name": "Voedselbank",
             "terms": "voedselbank"
+        },
+        "boundary": {
+            "name": "Grens"
         },
         "shop/nutrition_supplements": {
             "name": "Voedingssupplementenwinkel",
@@ -893,6 +903,9 @@
             "name": "Gymnastische brug",
             "terms": "brug met gelijke leggers,brug met ongelijke leggers,damesbrug,herenbrug,dipstangen,fitness"
         },
+        "railway/rail/highspeed": {
+            "name": "Hogesnelheidslijn"
+        },
         "highway/footway": {
             "name": "Wandelpad",
             "terms": "voetpad"
@@ -916,8 +929,7 @@
             "name": "Verworpen tag, gebruik dit niet"
         },
         "shop/fashion": {
-            "name": "Modewinkel",
-            "terms": "kledij,kleding"
+            "name": "Modewinkel"
         },
         "natural/water/canal": {
             "name": "Kanaal"
@@ -1085,6 +1097,9 @@
             "name": "Gemene weide",
             "terms": "gemeenschappelijke grond,open ruimte"
         },
+        "amenity/parking/underground": {
+            "name": "Ondergronds parkeren"
+        },
         "type/route/horse": {
             "name": "Ruitertraject"
         },
@@ -1106,6 +1121,9 @@
         "place/square": {
             "name": "Plein",
             "terms": "open plein,open plaats"
+        },
+        "barrier/kerb/raised": {
+            "name": "Verhoogde stoeprand"
         },
         "amenity/shelter/gazebo": {
             "name": "Kiosk",
@@ -1136,6 +1154,9 @@
         },
         "highway/footway/marked-raised": {
             "name": "Voetgangersoversteekplaats (op drempel)"
+        },
+        "man_made/tunnel": {
+            "name": "Tunnel"
         },
         "public_transport/stop_position_aerialway": {
             "name": "Kabelbaanstopplaats"
@@ -1231,6 +1252,12 @@
             "name": "Fotograaf",
             "terms": "portetten,pasfoto's,fotografie,fotokunstenaar"
         },
+        "junction/circular": {
+            "name": "Rotonde, verkeer erop niet steeds voorrang"
+        },
+        "public_transport/platform/bus_point": {
+            "name": "Bushalte"
+        },
         "building/pavilion": {
             "name": "Paviljoen"
         },
@@ -1259,6 +1286,9 @@
         "man_made/observatory": {
             "name": "Observatorium",
             "terms": "sterrenwacht,astronomisch observatorium,meteorologisch observatorium"
+        },
+        "junction/jughandle": {
+            "name": "Jughandle"
         },
         "attraction/pirate_ship": {
             "name": "Piratenschip",
@@ -1382,6 +1412,10 @@
         "office/charity": {
             "name": "Kantoor van liefdadigheidsinstelling",
             "terms": "liefdadigheidsinstellingskantoor"
+        },
+        "man_made/pier/floating": {
+            "name": "Drijvende pier",
+            "terms": "drijvende promenade"
         },
         "office/foundation": {
             "name": "Kantoor van stichting",
@@ -1666,6 +1700,9 @@
             "name": "Kantoor van verhuisbedrijf",
             "terms": "verhuizers,verhuisbedrijfkantoor"
         },
+        "tourism/artwork/graffiti": {
+            "name": "Graffitie"
+        },
         "highway/bridleway": {
             "name": "Ruiterpad",
             "terms": "paardenspoor"
@@ -1687,14 +1724,14 @@
         },
         "landuse/churchyard": {
             "name": "Kerkhof",
-            "terms": "begraafplaats,zerk,kerk,dood,graf"
+            "terms": "begraafplaats,zerken,dood,graf"
         },
         "amenity/shelter": {
             "name": "Beschutting",
             "terms": "afdak,schuilplaats,bescherming,beschutting,wachthuisje,wachthokje,bushokje,buskotje"
         },
         "shop/frozen_food": {
-            "name": "Ingevroren voedsel"
+            "name": "Ingevrorenvoedselzaak"
         },
         "tourism/picnic_site": {
             "name": "Picknickplek",
@@ -1771,7 +1808,11 @@
             "terms": "waterwinkel,flessenwaterwinkel,waterflessenwinkel"
         },
         "public_transport/platform": {
-            "name": "Openbaarvervoershalte"
+            "name": "Openbaarvervoershalte",
+            "terms": "spoorwegperron,spoorwegplatform,treinperron,treinplatform,tramperron,tramhalte,tramplatform,metroperron,metrohalte,metroplatform,busperron,bushalte,busplatform,platform"
+        },
+        "public_transport/platform/trolleybus_point": {
+            "name": "Trolleybushalte"
         },
         "craft/confectionery": {
             "name": "Snoepmaker",
@@ -1785,12 +1826,13 @@
             "name": "Goederenkabelbaan",
             "terms": "goederenvervoer"
         },
-        "railway/platform": {
-            "name": "Spoorperron"
-        },
         "barrier/retaining_wall": {
             "name": "Keermuur",
             "terms": "steunmuur,terrasmuur,hoogteverschil,afgrond"
+        },
+        "amenity/bar/lgbtq": {
+            "name": "LGBTQ+-bar",
+            "terms": "homobar,lesbobar,LGB-bar,LGBT-bar,LGBQ-bar,LGBQT-bar"
         },
         "amenity/love_hotel": {
             "name": "Love hotel",
@@ -1805,8 +1847,7 @@
             "terms": "rode lichten,stoplichten"
         },
         "amenity/embassy": {
-            "name": "Ambassade",
-            "terms": "vertegenwoordiging,afgevaardigden"
+            "name": "Ambassade"
         },
         "place/islet": {
             "name": "Eilandje < 1 km²",
@@ -1874,6 +1915,9 @@
         "highway/footway/sidewalk": {
             "name": "Stoep"
         },
+        "power/generator/source/hydro": {
+            "name": "Waterturbine"
+        },
         "amenity/animal_shelter": {
             "name": "Dierenasiel",
             "terms": "kennel,adoptie,huisdierenasiel,hondenasiel,kattenasiel"
@@ -1917,6 +1961,10 @@
             "name": "Auto-onderdelenwinkel",
             "terms": "automaterialenwinkel,automaterialenhandel,auto-onderdelenhandel"
         },
+        "shop/jewelry": {
+            "name": "Juwelierszaak",
+            "terms": "juwelen,goud,diamanten,ringen,oorbellen,sierraden"
+        },
         "leisure/outdoor_seating": {
             "name": "Terras (horeca)",
             "terms": "buiten zitten,buitenzitjes,buitenstoeltjes,buitenterras,horecaterras"
@@ -1935,9 +1983,6 @@
         "emergency/lifeguard": {
             "name": "Reddingsbrigade"
         },
-        "amenity/vending_machine/news_papers": {
-            "name": "krantenautomaat"
-        },
         "shop/bookmaker": {
             "name": "Bookmaker (gokkantoor)",
             "terms": "bookmaker"
@@ -1953,9 +1998,6 @@
         "aerialway/t-bar": {
             "name": "Skilift met handvaten",
             "terms": "T-bar,skilift"
-        },
-        "public_transport/platform_aerialway": {
-            "name": "Kabelbaanhalte"
         },
         "historic/boundary_stone": {
             "name": "Historische grenspaal",
@@ -2023,10 +2065,6 @@
             "name": "Woonerf",
             "terms": "erf,woonzone"
         },
-        "landuse/military/bunker": {
-            "name": "Militaire bunker",
-            "terms": "legerbunker"
-        },
         "attraction/bumper_car": {
             "name": "Botsautootjes",
             "terms": "botsauto's"
@@ -2084,6 +2122,9 @@
             "name": "Pension",
             "terms": "bed and breakfast,bed & breakfast,hotel,B&B"
         },
+        "amenity/nightclub/lgbtq": {
+            "name": "LGBTQ+-nachtclub"
+        },
         "healthcare/laboratory": {
             "name": "Medisch laboratorium",
             "terms": "laboratorium"
@@ -2129,13 +2170,12 @@
             "name": "Eiland",
             "terms": "eiland"
         },
-        "public_transport/platform_tram": {
-            "name": "Tramhalte",
-            "terms": "halte"
-        },
         "attraction/bungee_jumping": {
             "name": "Bungeespringen",
             "terms": "bungeejumping"
+        },
+        "shop/games": {
+            "name": "Bordspellenwinkel"
         },
         "piste/piste": {
             "name": "Wintersportpad",
@@ -2200,6 +2240,9 @@
         "amenity/place_of_worship/hindu": {
             "name": "Hindoeïstische tempel",
             "terms": "mandira,garbhargriha,mandu,puja,schrijn,tempel"
+        },
+        "waterway/canal/lock": {
+            "name": "Kanaalsluis"
         },
         "traffic_sign_vertex": {
             "name": "Verkeersbord",
@@ -2297,10 +2340,6 @@
         "highway/pedestrian_line": {
             "name": "Voetgangersstraat",
             "terms": "voetgangersgebied,voetgangerszone,autovrij gebied,autovrije zone,autovrije straat"
-        },
-        "landuse/military/checkpoint": {
-            "name": "Militair checkpoint",
-            "terms": "controlepunt,checkpoint,douane,grenscontrole,leger"
         },
         "man_made/lighthouse": {
             "name": "Vuurtoren",
@@ -2484,9 +2523,6 @@
             "name": "Rotonde zonder middeneiland",
             "terms": "rondpunt,rotonde waarvan door het midden kan worden gereden"
         },
-        "public_transport/platform_monorail": {
-            "name": "Monorailhalte"
-        },
         "amenity/monastery": {
             "name": "Kloostergebied",
             "terms": "abdijgebied"
@@ -2503,9 +2539,16 @@
             "name": "Havendok",
             "terms": "kade,dok"
         },
+        "amenity/community_centre/lgbtq": {
+            "name": "LGBTQ+-buurthuis",
+            "terms": "homo-buurthuis,lesbo-buurthuis,LGB-buurthuis,LGBT-buurthuis,LGBQT-buurthuis"
+        },
         "waterway/boatyard": {
             "name": "Scheepswerf",
             "terms": "bootwerf,scheepsherstellingen,bootherstellingen,droogdok,bouwdok"
+        },
+        "man_made/mineshaft": {
+            "name": "Mijnschacht"
         },
         "power/line": {
             "name": "Elektriciteitslijn",
@@ -2529,6 +2572,9 @@
         "natural/peak": {
             "name": "Top",
             "terms": "bergtop,heuveltop"
+        },
+        "public_transport/platform/monorail_point": {
+            "name": "Monorailperron"
         },
         "highway/tertiary": {
             "name": "Tertiare weg",
@@ -2578,9 +2624,6 @@
         },
         "leisure/pitch/cricket": {
             "name": "Cricketveld"
-        },
-        "public_transport/platform_trolleybus": {
-            "name": "Trolleybushalte"
         },
         "amenity/arts_centre": {
             "name": "Cultureel centrum",
@@ -2637,9 +2680,8 @@
             "name": "Vakantiehuisje",
             "terms": "chalet,huisje,bungalow"
         },
-        "landuse/military/nuclear_explosion_site": {
-            "name": "Kernwapentestsite",
-            "terms": "nucleair,bommen,testzone,militaire gevarenzone,gevarenzone,geen toegang,leger,atoombomtestsite"
+        "office/diplomatic/embassy": {
+            "name": "Ambassade"
         },
         "leisure/dancing_school": {
             "name": "Dansschool",
@@ -2710,8 +2752,7 @@
             "terms": "skipiste"
         },
         "shop/boutique": {
-            "name": "Boetiek",
-            "terms": "boutique"
+            "name": "Boetiek"
         },
         "area/highway": {
             "name": "Wegdek",
@@ -2743,6 +2784,9 @@
         },
         "amenity/clock/sundial": {
             "name": "Zonnewijzer"
+        },
+        "building_point": {
+            "name": "Gebouw"
         },
         "leisure/pitch/boules": {
             "name": "Jeu-de-boules-veld",
@@ -2942,7 +2986,7 @@
             "name": "Landmeetkundig referentiepunt",
             "terms": "geodesisch punt,geodesisch referentiepunt"
         },
-        "roundabout": {
+        "junction/roundabout": {
             "name": "Rotonde"
         },
         "type/route/power": {
@@ -2955,6 +2999,10 @@
         },
         "man_made/mast/communication/radio": {
             "name": "Radiozendmast"
+        },
+        "amenity/pub/lgbtq": {
+            "name": "LGBTQ+-café",
+            "terms": "homocafé,lesbocafé,LGB-café,LGBT-café,LGBQ-café,LGBQT-café"
         },
         "amenity/restaurant/seafood": {
             "name": "Visrestaurant",
@@ -3017,6 +3065,9 @@
         "emergency/designated": {
             "name": "Toegang voor hulpdiensten: geadviseerd"
         },
+        "man_made/beehive": {
+            "name": "Bijenkorf"
+        },
         "highway/steps": {
             "name": "Trap",
             "terms": "trappen"
@@ -3055,6 +3106,9 @@
             "name": "Gemaal (waterpompstation)",
             "terms": "pompstation,waterpompstation"
         },
+        "telecom/data_center": {
+            "name": "Datacenter"
+        },
         "building/bunker": {
             "name": "Bunker"
         },
@@ -3077,7 +3131,8 @@
             "name": "Appartementencomplex"
         },
         "amenity/place_of_worship/muslim": {
-            "name": "Moslim moskee"
+            "name": "Islamitische moskee",
+            "terms": "moslimmoskee,moskee"
         },
         "shop/tea": {
             "name": "Theewinkel",
@@ -3093,10 +3148,6 @@
         "shop/supermarket": {
             "name": "Supermarkt",
             "terms": "supermarkt,grootwarenhuis"
-        },
-        "office/political_party": {
-            "name": "Politieke partij",
-            "terms": "partijhoofdzetel,partijbureau"
         },
         "shop/wholesale": {
             "name": "Groothandel",
@@ -3225,12 +3276,11 @@
             "name": "Coworking-kantoor",
             "terms": "samenwerken,coworking,coworking-kantoor,kantoor,gedeeld kantoor,coworking-plaats,coworking-omgeving"
         },
-        "vertex": {
-            "name": "Overig",
-            "terms": "anders,overige,iets anders,algemeen"
-        },
         "type/boundary": {
             "name": "Grens"
+        },
+        "type/route/monorail": {
+            "name": "Monorailroute"
         },
         "man_made/monitoring_station": {
             "name": "Meetstation",
@@ -3287,6 +3337,9 @@
         "shop/musical_instrument": {
             "name": "Muziekinstrumentenwinkel",
             "terms": "musiceren,muziekschool,pianowinkel,gitaarwinkel,vioolwinkel,partituren,pianokruk"
+        },
+        "highway/cycleway/bicycle_foot": {
+            "name": "Fiets- en voetpad"
         },
         "man_made/wastewater_plant": {
             "name": "Waterzuiveringsinstallatie",
@@ -3425,6 +3478,10 @@
             "name": "Sloot",
             "terms": "sloot,gracht"
         },
+        "shop/fuel": {
+            "name": "Tankstation",
+            "terms": "benzinestation,dieselstation,brandstofstation"
+        },
         "power/generator/source/wind": {
             "name": "Windturbine",
             "terms": "windmolen"
@@ -3457,9 +3514,6 @@
         },
         "place/city_block": {
             "name": "Huizenblok"
-        },
-        "public_transport/platform_subway": {
-            "name": "Metrohalte"
         },
         "natural/wood": {
             "name": "Bos",
@@ -3504,10 +3558,6 @@
             "name": "Opticien",
             "terms": "brillenwinkel,brillenwinkel,lenzen,bril,zonnebril,oogarts"
         },
-        "public_transport/platform_light_rail": {
-            "name": "Lightrailhalte",
-            "terms": "lichtspoorhalte,tramtreinhalte,sneltramhalte,lichtgewichttreinhalte,spoorweghalte"
-        },
         "type/route/foot": {
             "name": "Wandelroute",
             "terms": "hikingroute,trekkingroute"
@@ -3535,12 +3585,11 @@
             "name": "Sloperij",
             "terms": "autokerkhof,oud ijzer,wrakken,schroothoop,metaal"
         },
+        "amenity/pub/microbrewery": {
+            "name": "Café met microbrouwerij"
+        },
         "amenity/recycling": {
             "name": "Recycling"
-        },
-        "camp_site/camp_pitch": {
-            "name": "Individueel kampeerveld of sta-plaats op camping",
-            "terms": "kampeerveldje,sta-plaats,staplaats"
         },
         "shop/gas": {
             "name": "Gasflessenwinkel",
@@ -3697,9 +3746,6 @@
         "power": {
             "name": "Stroomvoorziening"
         },
-        "public_transport/platform_train": {
-            "name": "Treinhalte"
-        },
         "leisure/fitness_station/push-up": {
             "name": "Push-upstation",
             "terms": "push-upstang,push-upbalk,push-upstang,fitness"
@@ -3853,6 +3899,12 @@
             "name": "Afvoer",
             "terms": "greppel,gracht"
         },
+        "man_made/pipeline/underground": {
+            "name": "Ondergrondse pijpleiding"
+        },
+        "public_transport/platform/subway": {
+            "name": "Metroperron"
+        },
         "highway/residential": {
             "name": "Straat",
             "terms": "woonstraat,residentiële weg,gemeenteweg,gemeentelijke weg,kleine openbare weg"
@@ -3868,13 +3920,12 @@
             "name": "Bestuurlijke grens",
             "terms": "administratieve grens"
         },
-        "landuse/military/office": {
-            "name": "Militair kantoor",
-            "terms": "leger,administratie,marine,zeemacht,luchtmacht,landmacht"
-        },
         "amenity/watering_place": {
             "name": "Drinkplaats voor dieren",
             "terms": "dierendrinkplaats,bron"
+        },
+        "tourism/artwork/bust": {
+            "name": "Buste"
         },
         "public_transport/station_train_halt": {
             "name": "Treinstation op aanvraag",
@@ -3910,6 +3961,9 @@
         },
         "man_made/tower/observation": {
             "name": "Observatietoren"
+        },
+        "tourism/artwork/installation": {
+            "name": "Kunstinstallatie"
         },
         "waterway/weir": {
             "name": "Stuw",

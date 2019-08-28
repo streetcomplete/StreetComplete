@@ -93,12 +93,6 @@
             "name": "Lentpjūvė",
             "terms": "lentpjūvė"
         },
-        "landuse/military/bunker": {
-            "name": "Karinis bunkeris"
-        },
-        "circular": {
-            "name": "Eismo žiedas"
-        },
         "power/sub_station": {
             "name": "Pastotė"
         },
@@ -262,9 +256,6 @@
         },
         "amenity/parking": {
             "name": "Automobilių stovėjimo aikštelė"
-        },
-        "highway/bus_stop": {
-            "name": "Autobuso sustojimas / platforma"
         },
         "highway/track": {
             "name": "Neprižiūrimas Kelias",
@@ -762,8 +753,7 @@
             "terms": "perlipa"
         },
         "shop/boutique": {
-            "name": "Parduotuvė",
-            "terms": "butikas"
+            "name": "Parduotuvė"
         },
         "craft/chimney_sweeper": {
             "name": "Kaminų valytojas"
@@ -801,9 +791,6 @@
         "amenity/fire_station": {
             "name": "Gaisrinė",
             "terms": "Gaisrinė,Priešgaisrinė tarnyba"
-        },
-        "attraction/animal": {
-            "name": "Gyvūnai"
         },
         "barrier/entrance": {
             "name": "Įėjimas"
@@ -988,9 +975,6 @@
             "name": "Tyrimų vieta",
             "terms": "stebėjimo taškas"
         },
-        "roundabout": {
-            "name": "Žiedas"
-        },
         "type/route/power": {
             "name": "Energijos maršrutas"
         },
@@ -1145,10 +1129,6 @@
         "historic/tomb": {
             "name": "Kapas"
         },
-        "office/political_party": {
-            "name": "Politinė partija",
-            "terms": "politinė partija"
-        },
         "shop/garden_centre": {
             "name": "Sodo centras"
         },
@@ -1269,10 +1249,6 @@
         "landuse/vineyard": {
             "name": "Vynuogynas",
             "terms": "vynuogynas"
-        },
-        "vertex": {
-            "name": "Kita",
-            "terms": "Kita"
         },
         "type/boundary": {
             "name": "Siena",
@@ -1904,8 +1880,7 @@
             "terms": "šviesoforas"
         },
         "amenity/embassy": {
-            "name": "Ambasada",
-            "terms": "Ambasada,Atstovybė"
+            "name": "Ambasada"
         },
         "type/restriction/no_left_turn": {
             "name": "Jokio sukimo į kairę",
