@@ -18,17 +18,18 @@ abstract class AMarkCompletedConstruction<T> : OsmElementQuestType<T> {
     // will cause OSM elements to become ineligible for this quest for reviewIntervalInDays days.
     // It allows supporting check_date and any other survey markers without parsing of any tags.
     protected fun getQueryPart( key: String, nameOfGeneratedGroup: String, reviewIntervalInDays: Int) =
-        "[" + key + "=construction]" +
-        "(if:!is_date(t['opening_date']) || date(t['opening_date'])<date('" + getCurrentDateString() + "'))" +
-        " -> .construction_with_unknown_state; " +
-        getRecentlyEditedConstructionsQueryPart(key,reviewIntervalInDays) + " -> .recently_edited_construction;" +
-        "(.construction_with_unknown_state; - .recently_edited_construction;) -> " + nameOfGeneratedGroup + ";"
+        "[$key = construction](if:!is_date(t['opening_date']) || date(t['opening_date']) < " +
+        "date('${getCurrentDateString()}')) -> .construction_with_unknown_state;\n" +
+        "${getRecentlyEditedConstructionsQueryPart(key,reviewIntervalInDays)} -> .recently_edited_construction;\n" +
+        "(.construction_with_unknown_state; - .recently_edited_construction;) -> $nameOfGeneratedGroup;\n"
 
-    private fun getRecentlyEditedConstructionsQueryPart( key: String, reviewIntervalInDays: Int) =
-        "(" +
-        "way[" + key + "=construction](newer: '" + getOffsetDateString(-reviewIntervalInDays) + "');" +
-        "relation[" + key + "=construction](newer: '" + getOffsetDateString(-reviewIntervalInDays) + "');" +
-        ")"
+    private fun getRecentlyEditedConstructionsQueryPart( key: String, reviewIntervalInDays: Int) : String {
+        val newer = getOffsetDateString(-reviewIntervalInDays)
+        return "(\n" +
+               "  way[$key=construction](newer: '$newer');\n" +
+               "  relation[$key=construction](newer: '$newer');\n" +
+               ")"
+    }
 
     protected fun removeTagsDescribingConstruction(changes: StringMapChangesBuilder) {
         changes.deleteIfExists("construction")

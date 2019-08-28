@@ -9,9 +9,9 @@ Thanks also not only to code and translation contributors, but also to the peopl
 
 Code contributions: [Check this complete list of contributors on GitHub](https://github.com/westnordost/StreetComplete/graphs/contributors)
 
-Translations: [Check the project on POEditor to see language contributors](https://poeditor.com/projects/view?id=97843)
-
 See also contributors to [projects used by StreetComplete](https://github.com/westnordost/StreetComplete/blob/master/CONTRIBUTING.md#streetcomplete-related-projects), some were even specially created to help it.
+
+Translations: Unfortunately POEditor is [not making possible](https://poeditor.uservoice.com/forums/171919-general/suggestions/31242085-public-url-to-view-project-contributors) to share list of contributors.
 
 ## Licenses & Sources
 

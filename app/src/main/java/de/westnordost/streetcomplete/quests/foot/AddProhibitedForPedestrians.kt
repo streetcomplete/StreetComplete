@@ -10,11 +10,11 @@ import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.
 class AddProhibitedForPedestrians(o: OverpassMapDataDao) : SimpleOverpassQuestType<ProhibitedForPedestriansAnswer>(o) {
 
     override val tagFilters = """
-        ways with !foot and (
-          sidewalk ~ none|no or
-          sidewalk:both ~ none|no or
+        ways with (
+          ~'sidewalk(:both)?' ~ none|no or
           (sidewalk:left ~ none|no and sidewalk:right ~ none|no)
         )
+        and !foot
         and access !~ private|no
         """ +
         /* asking for any road without sidewalk is too much. Main interesting situations are

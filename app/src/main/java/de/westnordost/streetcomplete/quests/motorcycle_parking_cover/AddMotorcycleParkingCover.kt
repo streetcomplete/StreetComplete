@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 class AddMotorcycleParkingCover(o: OverpassMapDataDao) : SimpleOverpassQuestType<Boolean>(o) {
 
     override val tagFilters = """
-        nodes, ways with amenity=motorcycle_parking
+        nodes, ways with amenity = motorcycle_parking
         and access !~ private|no and !covered and motorcycle_parking !~ shed|garage_boxes|building
     """
     override val commitMessage = "Add motorcycle parkings cover"

@@ -9,7 +9,8 @@ import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandler
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
 import de.westnordost.streetcomplete.data.osm.tql.FiltersParser
-import de.westnordost.streetcomplete.data.osm.tql.OverpassQLUtil
+import de.westnordost.streetcomplete.data.osm.tql.getQuestPrintStatement
+import de.westnordost.streetcomplete.data.osm.tql.toGlobalOverpassBBox
 import de.westnordost.streetcomplete.quests.localized_name.data.PutRoadNameSuggestionsHandler
 import de.westnordost.streetcomplete.quests.localized_name.data.RoadNameSuggestionsDao
 
@@ -40,18 +41,25 @@ class AddRoadName(
 
     /** returns overpass query string for creating the quests */
     private fun getOverpassQuery(bbox: BoundingBox) =
-        OverpassQLUtil.getGlobalOverpassBBox(bbox) +
-        ROADS_WITHOUT_NAMES + "; " +
-        OverpassQLUtil.getQuestPrintStatement()
+        bbox.toGlobalOverpassBBox() + "\n" +
+        ROADS_WITHOUT_NAMES + "->.unnamed;\n" +
+        "(\n" +
+        "  way.unnamed['access' !~ '^private|no$'];\n" +
+        "  way.unnamed['foot']['foot' !~ '^private|no$'];\n" +
+        "); " +
+        getQuestPrintStatement()
 
-    /** return overpass query string to get roads with names near roads that don't have names */
+    /** return overpass query string to get roads with names near roads that don't have names
+     *  private roads are not filtered out here, partially to reduce complexity but also
+     *  because the road may have a private segment that is named already or is close to a road
+     *  with a useful name
+     * */
     private fun getStreetNameSuggestionsOverpassQuery(bbox: BoundingBox) =
-        OverpassQLUtil.getGlobalOverpassBBox(bbox) +
-        ROADS_WITHOUT_NAMES + " -> .without_names;" +
-        ROADS_WITH_NAMES + " -> .with_names;" +
-        "way.with_names(around.without_names:" +
-        MAX_DIST_FOR_ROAD_NAME_SUGGESTION + ");" +
-        "out body geom;"
+        bbox.toGlobalOverpassBBox() + "\n" + """
+        $ROADS_WITHOUT_NAMES -> .without_names;
+        $ROADS_WITH_NAMES -> .with_names;
+        way.with_names(around.without_names: $MAX_DIST_FOR_ROAD_NAME_SUGGESTION );
+        out body geom;""".trimIndent()
 
     override fun createForm() = AddRoadNameForm()
 

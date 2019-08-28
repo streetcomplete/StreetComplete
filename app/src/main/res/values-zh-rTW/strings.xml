@@ -2,6 +2,8 @@
 <resources>
     <string name="action_settings">"設定"</string>
     <string name="oauth_communication_error">"無法連接到驗證伺服器"</string>
+    <string name="oauth_remove_authorization_dialog_message">"目前已連結OSM帳號，你想撤消嗎？"</string>
+    <string name="oauth_remove_authorization_confirmation">"撤消"</string>
     <string name="loading">"載入中"</string>
     <string name="retry">"重試"</string>
     <string name="oauth_cancelled">"取消驗證"</string>

@@ -10,13 +10,15 @@ class AddOpeningHours (o: OverpassMapDataDao) : SimpleOverpassQuestType<OpeningH
 
     /* See also AddWheelchairAccessBusiness and AddPlaceName, which has a similar list and is/should
        be ordered in the same way for better overview */
-    override val tagFilters =
-        "nodes, ways, relations with ( shop and shop !~ no|vacant" +
-        " or amenity = bicycle_parking and bicycle_parking = building" +
-        " or amenity = parking and parking = multi-storey" +
-        " or amenity = recycling and recycling_type = centre" +
-        " or tourism = information and information = office" +
-        " or  " +
+    override val tagFilters = """
+        nodes, ways, relations with
+        (
+         shop and shop !~ no|vacant
+         or amenity = bicycle_parking and bicycle_parking = building
+         or amenity = parking and parking = multi-storey
+         or amenity = recycling and recycling_type = centre
+         or tourism = information and information = office
+         or """.trimIndent() +
         mapOf(
             "amenity" to arrayOf(
                 "restaurant", "cafe", "ice_cream", "fast_food", "bar", "pub", "biergarten", "food_court", "nightclub", // eat & drink
@@ -49,10 +51,11 @@ class AddOpeningHours (o: OverpassMapDataDao) : SimpleOverpassQuestType<OpeningH
                 "carpenter", "shoemaker", "tailor", "photographer", "dressmaker",
                 "electronics_repair", "key_cutter", "stonemason"
             )
-        ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString(" or ") +
-        " )" +
-        " and !opening_hours and name and opening_hours:signed != no" +
-        " and (access !~ private|no)"
+        ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n or ") + "\n" + """
+        )
+         and !opening_hours and name and opening_hours:signed != no
+         and (access !~ private|no)
+        """.trimIndent()
 
     override val commitMessage = "Add opening hours"
     override val icon = R.drawable.ic_quest_opening_hours

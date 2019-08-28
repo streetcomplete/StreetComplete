@@ -9,11 +9,11 @@ import de.westnordost.streetcomplete.quests.bus_stop_shelter.BusStopShelterAnswe
 class AddBusStopShelter(o: OverpassMapDataDao) : SimpleOverpassQuestType<BusStopShelterAnswer>(o) {
 
     override val tagFilters = """
-        nodes with (
-        (public_transport=platform and (bus=yes or trolleybus=yes or tram=yes))
+        nodes with 
+        ((public_transport = platform and ~bus|trolleybus|tram ~ yes)
         or
-        (highway=bus_stop and public_transport!=stop_position)
-        ) and !shelter and !covered
+        (highway = bus_stop and public_transport != stop_position))
+        and !shelter and !covered
     """
     override val commitMessage = "Add bus stop shelter"
     override val icon = R.drawable.ic_quest_bus_stop_shelter

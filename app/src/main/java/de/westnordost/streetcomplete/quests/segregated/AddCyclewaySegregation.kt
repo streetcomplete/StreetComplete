@@ -11,11 +11,12 @@ class AddCyclewaySegregation(o: OverpassMapDataDao) : SimpleOverpassQuestType<Bo
     override val tagFilters = """
         ways with
         (
-         (highway = path and bicycle = designated and foot = designated)
-         or (highway = footway and bicycle = designated)
-         or (highway = cycleway and foot ~ designated|yes)
+          (highway = path and bicycle = designated and foot = designated)
+          or (highway = footway and bicycle = designated)
+          or (highway = cycleway and foot ~ designated|yes)
         )
-        and !segregated and area != yes and surface ~ ${OsmTaggings.ANYTHING_PAVED.joinToString("|")}
+        and !segregated and area != yes
+        and surface ~ ${OsmTaggings.ANYTHING_PAVED.joinToString("|")}
     """
 
     override val commitMessage = "Add segregated status for combined footway with cycleway"

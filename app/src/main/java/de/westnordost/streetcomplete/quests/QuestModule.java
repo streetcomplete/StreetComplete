@@ -22,6 +22,7 @@ import de.westnordost.streetcomplete.quests.building_levels.AddBuildingLevels;
 import de.westnordost.streetcomplete.quests.building_type.AddBuildingType;
 import de.westnordost.streetcomplete.quests.building_underground.AddIsBuildingUnderground;
 import de.westnordost.streetcomplete.quests.foot.AddProhibitedForPedestrians;
+import de.westnordost.streetcomplete.quests.leaf_detail.AddForestLeafType;
 import de.westnordost.streetcomplete.quests.localized_name.AddBusStopName;
 import de.westnordost.streetcomplete.quests.bus_stop_shelter.AddBusStopShelter;
 import de.westnordost.streetcomplete.quests.car_wash_type.AddCarWashType;
@@ -54,6 +55,7 @@ import de.westnordost.streetcomplete.quests.localized_name.data.PutRoadNameSugge
 import de.westnordost.streetcomplete.quests.localized_name.data.RoadNameSuggestionsDao;
 import de.westnordost.streetcomplete.quests.segregated.AddCyclewaySegregation;
 import de.westnordost.streetcomplete.quests.sidewalk.AddSidewalk;
+import de.westnordost.streetcomplete.quests.surface.AddCyclewayPartSurface;
 import de.westnordost.streetcomplete.quests.surface.AddPathSurface;
 import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingBusStop;
 import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingCrosswalk;
@@ -127,6 +129,7 @@ public class QuestModule
 				new AddMotorcycleParkingCapacity(o),
 				new AddPathSurface(o),
 				new AddTracktype(o),
+				new AddForestLeafType(o), // used by OSM Carto
 				new AddBikeParkingType(o), // used by OsmAnd
 				new AddWheelChairAccessToilets(o), // used by wheelmap, OsmAnd, MAPS.ME
 				new AddPlaygroundAccess(o), //late as in many areas all needed access=private is already mapped
@@ -160,6 +163,7 @@ public class QuestModule
 
 				// ↓ 8. defined in the wiki, but not really used by anyone yet. Just collected for
 				//      the sake of mapping it in case it makes sense later
+				new AddCyclewayPartSurface(o),
 				new AddMotorcycleParkingCover(o),
 				new AddFireHydrantType(o),
 				new AddParkingType(o),
