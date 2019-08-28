@@ -22,6 +22,7 @@ import de.westnordost.streetcomplete.quests.building_levels.AddBuildingLevels;
 import de.westnordost.streetcomplete.quests.building_type.AddBuildingType;
 import de.westnordost.streetcomplete.quests.building_underground.AddIsBuildingUnderground;
 import de.westnordost.streetcomplete.quests.foot.AddProhibitedForPedestrians;
+import de.westnordost.streetcomplete.quests.leaf_detail.AddForestLeafType;
 import de.westnordost.streetcomplete.quests.localized_name.AddBusStopName;
 import de.westnordost.streetcomplete.quests.bus_stop_shelter.AddBusStopShelter;
 import de.westnordost.streetcomplete.quests.car_wash_type.AddCarWashType;
@@ -127,6 +128,7 @@ public class QuestModule
 				new AddMotorcycleParkingCapacity(o),
 				new AddPathSurface(o),
 				new AddTracktype(o),
+				new AddForestLeafType(o), // used by OSM Carto
 				new AddBikeParkingType(o), // used by OsmAnd
 				new AddWheelChairAccessToilets(o), // used by wheelmap, OsmAnd, MAPS.ME
 				new AddPlaygroundAccess(o), //late as in many areas all needed access=private is already mapped

@@ -663,6 +663,10 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_ferry_pedestrian_title">Does this ferry route transport pedestrians?</string>
     <string name="quest_ferry_motor_vehicle_name_title">Does %s transport motor vehicles?</string>
     <string name="quest_ferry_motor_vehicle_title">Does this ferry route transport motor vehicles?</string>
+    <string name="quest_leafType_title">Do the trees here have needles or leaves?</string>
+    <string name="quest_leaf_type_needles">Needles</string>
+    <string name="quest_leaf_type_broadleaved">Broadleaved</string>
+    <string name="quest_leaf_type_mixed">Both are present</string>
     <string name="create_new_note_hint">Best write the note in the locally spoken language or otherwise in English.</string>
     <string name="about_contributing">Your answers are directly improving OpenStreetMap. Contributed data is open, everyone can use it. Many great projects are already using it.</string>
     <string name="about_missing_stars">Currently, the star count is not shared across devices, but answers are added directly to the OpenStreetMap database.</string>
