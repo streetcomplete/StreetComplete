@@ -168,10 +168,20 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
         val cantSay = OtherAnswer(R.string.quest_generic_answer_notApplicable) { onClickCantSay() }
         answers.add(cantSay)
 
-        val isWayString = (osmElement as? Way)?.let { !OsmAreas.isArea(it) } ?: false
-        if (isWayString) {
-            val splitWay = OtherAnswer(R.string.quest_generic_answer_differs_along_the_way) { onClickSplitWayAnswer() }
-            answers.add(splitWay)
+        val way = osmElement as? Way
+        if (way != null) {
+            /* splitting up a closed roundabout can be very complex if it is part of a route
+               relation, so it is not supported
+               https://wiki.openstreetmap.org/wiki/Relation:route#Bus_routes_and_roundabouts
+            */
+            val isClosedRoundabout = way.nodeIds.firstOrNull() == way.nodeIds.lastOrNull() &&
+                    way.tags?.get("junction") == "roundabout"
+            if (!isClosedRoundabout && !OsmAreas.isArea(way)) {
+                val splitWay = OtherAnswer(R.string.quest_generic_answer_differs_along_the_way) {
+                    onClickSplitWayAnswer()
+                }
+                answers.add(splitWay)
+            }
         }
         answers.addAll(otherAnswers)
         return answers
