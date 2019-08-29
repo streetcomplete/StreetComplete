@@ -5,9 +5,9 @@ isLeftHandTraffic: false
 isLivingStreetKnown: false
 isSlowZoneKnown: false
 measurementSystem: [metric]
-measurementSystemForWeightLimits: [ton]
 officialLanguages: [en]
 orchardProduces: []
 popularReligions: []
 popularSports: []
 regularShoppingDays: 6
+unitsOfWeightLimits: [ton]

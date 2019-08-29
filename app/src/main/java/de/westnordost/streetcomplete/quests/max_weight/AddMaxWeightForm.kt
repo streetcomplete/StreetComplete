@@ -75,7 +75,7 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
         poundInputSign = contentView.findViewById(R.id.poundInputSign)
 
         weightUnitSelect = contentView.findViewById(R.id.weightUnitSelect)
-        val measurementUnits = countryInfo.measurementSystemForWeightLimits
+        val measurementUnits = countryInfo.unitsOfWeightLimits
         val primaryUnit = when(measurementUnits[0]) {
             "ton" -> TON
             "short_ton_formatted_as_ton" -> TON
@@ -154,7 +154,7 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
             if (isTon()) {
                 val input = tonInput?.numberOrNull
                 if (input != null) {
-                    if (countryInfo.measurementSystemForWeightLimits.contains("short_ton_formatted_as_ton")) {
+                    if (countryInfo.unitsOfWeightLimits.contains("short_ton_formatted_as_ton")) {
                         return ShortTons(input.toDouble())
                     }
                     return MetricWeightMeasure(input.toDouble())
@@ -175,14 +175,14 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
 
     private fun isTon() =
         weightUnitSelect?.let { it.selectedItem == "t" }
-            ?: (countryInfo.measurementSystemForWeightLimits[0] == "ton"
-                    || countryInfo.measurementSystemForWeightLimits[0] == "short_ton_formatted_as_ton")
+            ?: (countryInfo.unitsOfWeightLimits[0] == "ton"
+                    || countryInfo.unitsOfWeightLimits[0] == "short_ton_formatted_as_ton")
         // weightUnitSelect will give a null for cases where there is a single unit
         // in such cases there is a single unit, so we can use [0] to get it
 
     private fun isPound() =
             weightUnitSelect?.let { it.selectedItem == "lbs" }
-                    ?: (countryInfo.measurementSystemForWeightLimits[0] == "pound")
+                    ?: (countryInfo.unitsOfWeightLimits[0] == "pound")
     // see comment in the isTon function
 
     private fun confirmUnusualInput(callback: () -> (Unit)) {
