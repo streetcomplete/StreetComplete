@@ -673,7 +673,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="how_to_get_stars">Choose one of the markers on the map and answer the question. This way you will improve OpenStreetMap data and get stars. If you see no markers you may need to zoom out the map.</string>
     <string name="quest_cyclewayPartSurface_title">What\'s the surface of the cycleway here?</string>
     <string name="quest_generic_answer_differs_along_the_way">"Differs along the way…"</string>
-    <string name="quest_split_way_description">If it differs along the way, the first step is to split up the way. After that, the quest can be answered for each split part separately.\nNote that the quests for the split parts may appear mach later.\nSplit it now?</string>
+    <string name="quest_split_way_description">If it differs along the way, the first step is to split up the way. After that, the quest can be answered for each split part separately.\nNote that the quests for the split parts may appear much later.\nSplit it now?</string>
     <string name="quest_split_way_tutorial">Tap on the way to split it at the point(s) where the answer differs. Try to be as precise as possible, you can zoom in as usual.</string>
     <string name="quest_split_way_too_imprecise">"Please zoom in further"</string>
     <string name="quest_split_way_many_splits_confirmation_description">These are a quite a few splits. You can always further split up the way later.</string>
