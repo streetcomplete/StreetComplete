@@ -6,7 +6,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:drawableStart="@drawable/ic_file_upload_black_48dp"
+        android:drawableStart="@drawable/ic_file_upload_inverted_48dp"
         android:drawablePadding="8dp"
         android:text="@string/dialog_tutorial_upload"
         android:textAppearance="@android:style/TextAppearance.Theme.Dialog"/>

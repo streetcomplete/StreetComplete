@@ -219,6 +219,6 @@ class AddHousenumber(private val overpass: OverpassMapDataDao) : OsmElementQuest
         private const val BUILDINGS_WITHOUT_ADDRESS_FILTER =
             "['building'~'^(house|residential|apartments|detached|terrace|dormitory|semi|semidetached_house|farm|" +
             "school|civic|college|university|public|hospital|kindergarten|train_station|hotel|" +
-            "retail|commercial)$'][location!=underground]" + NO_ADDRESS_FILTER
+            "retail|commercial)$'][location!=underground][ruins!=yes]" + NO_ADDRESS_FILTER
     }
 }

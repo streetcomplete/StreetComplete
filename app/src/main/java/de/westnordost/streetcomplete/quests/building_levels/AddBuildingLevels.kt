@@ -17,7 +17,7 @@ class AddBuildingLevels(o: OverpassMapDataDao) : SimpleOverpassQuestType<Buildin
             "commercial","office","warehouse","industrial","manufacture","parking","farm",
             "farm_auxiliary","barn","cabin").joinToString("|") + "\n" +
         " and !building:levels and !height and !building:height\n " +
-        " and !man_made and location!=underground\n "
+        " and !man_made and location!=underground and ruins!=yes\n "
     override val commitMessage = "Add building and roof levels"
     override val icon = R.drawable.ic_quest_building_levels
 
