@@ -139,24 +139,25 @@ class SplitWayFragment : Fragment(), IsCloseableBottomSheet, IsShowingQuestDetai
     override fun onClickMapAt(position: LatLon, clickAreaSizeInMeters: Double): Boolean {
 
         val splitWayCandidates = createSplits(position, clickAreaSizeInMeters)
-        // split point could be put on several places
-        if (splitWayCandidates.size > 1) {
+        if (splitWayCandidates.isEmpty()) return true
+
+        // show toast only if it is possible to zoom in further
+        if (splitWayCandidates.size > 1 && clickAreaSizeInMeters > CLICK_AREA_SIZE_AT_MAX_ZOOM) {
             context?.toast(R.string.quest_split_way_too_imprecise)
         }
-        else if (splitWayCandidates.size == 1) {
-            val splitWay = splitWayCandidates.single()
-            val splitPosition = splitWay.pos
+        val splitWay = splitWayCandidates.minBy { distance(it.pos, position) }!!
+        val splitPosition = splitWay.pos
 
-            // new split point is too close to existing split points
-            if (splits.any { distance(it.second, splitPosition) < clickAreaSizeInMeters } ) {
-                context?.toast(R.string.quest_split_way_too_imprecise)
-            } else {
-                splits.add(Pair(splitWay, splitPosition))
-                animateButtonVisibilities()
-                animateScissors()
-                (activity as? Listener)?.onAddSplit(splitPosition)
-            }
+        // new split point is too close to existing split points
+        if (splits.any { distance(it.second, splitPosition) < clickAreaSizeInMeters } ) {
+            context?.toast(R.string.quest_split_way_too_imprecise)
+        } else {
+            splits.add(Pair(splitWay, splitPosition))
+            animateButtonVisibilities()
+            animateScissors()
+            (activity as? Listener)?.onAddSplit(splitPosition)
         }
+
         // always consume event. User should press the cancel button to exit
         return true
     }
@@ -236,6 +237,8 @@ class SplitWayFragment : Fragment(), IsCloseableBottomSheet, IsShowingQuestDetai
     }
 
     companion object {
+        private const val CLICK_AREA_SIZE_AT_MAX_ZOOM = 2.6
+
         private const val ARG_QUEST_ID = "questId"
         private const val ARG_WAY = "way"
         private const val ARG_ELEMENT_GEOMETRY = "elementGeometry"
