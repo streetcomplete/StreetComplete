@@ -73,8 +73,8 @@ import de.westnordost.streetcomplete.quests.sport.AddSport;
 import de.westnordost.streetcomplete.quests.traffic_signals_sound.AddTrafficSignalsSound;
 import de.westnordost.streetcomplete.quests.traffic_signals_button.AddTrafficSignalsButton;
 import de.westnordost.streetcomplete.quests.way_lit.AddWayLit;
-import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelChairAccessPublicTransport;
-import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelChairAccessToilets;
+import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAccessPublicTransport;
+import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAccessToilets;
 import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAccessBusiness;
 import de.westnordost.streetcomplete.quests.bench_backrest.AddBenchBackrest;
 import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAccessOutside;
@@ -132,7 +132,7 @@ public class QuestModule
 				new AddTracktype(o),
 				new AddForestLeafType(o), // used by OSM Carto
 				new AddBikeParkingType(o), // used by OsmAnd
-				new AddWheelChairAccessToilets(o), // used by wheelmap, OsmAnd, MAPS.ME
+				new AddWheelchairAccessToilets(o), // used by wheelmap, OsmAnd, MAPS.ME
 				new AddPlaygroundAccess(o), //late as in many areas all needed access=private is already mapped
 				new AddWheelchairAccessBusiness(o), // used by wheelmap, OsmAnd, MAPS.ME
 				new AddToiletAvailability(o), //OSM Carto, shown in OsmAnd descriptions
@@ -153,7 +153,7 @@ public class QuestModule
 				new AddBikeParkingCover(o), // used by OsmAnd in the object description
 				new AddTrafficSignalsSound(o),
 				new AddRoofShape(o),
-				new AddWheelChairAccessPublicTransport(o),
+				new AddWheelchairAccessPublicTransport(o),
 				new AddWheelchairAccessOutside(o),
 				new AddTactilePavingBusStop(o),
 				new AddTactilePavingCrosswalk(o),
