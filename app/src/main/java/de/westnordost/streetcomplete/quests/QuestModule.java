@@ -17,6 +17,7 @@ import de.westnordost.streetcomplete.quests.bike_parking_capacity.AddBikeParking
 import de.westnordost.streetcomplete.quests.bike_parking_cover.AddBikeParkingCover;
 import de.westnordost.streetcomplete.quests.bike_parking_type.AddBikeParkingType;
 import de.westnordost.streetcomplete.quests.bikeway.AddCycleway;
+import de.westnordost.streetcomplete.quests.board_type.AddBoardType;
 import de.westnordost.streetcomplete.quests.bridge_structure.AddBridgeStructure;
 import de.westnordost.streetcomplete.quests.building_levels.AddBuildingLevels;
 import de.westnordost.streetcomplete.quests.building_type.AddBuildingType;
@@ -166,6 +167,7 @@ public class QuestModule
 				//      the sake of mapping it in case it makes sense later
 				new AddCyclewayPartSurface(o),
 				new AddFootwayPartSurface(o),
+				new AddBoardType(o),
 				new AddMotorcycleParkingCover(o),
 				new AddFireHydrantType(o),
 				new AddParkingType(o),
