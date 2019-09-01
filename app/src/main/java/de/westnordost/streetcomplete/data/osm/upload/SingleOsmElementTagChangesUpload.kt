@@ -22,7 +22,7 @@ class SingleOsmElementTagChangesUpload @Inject constructor(private val osmDao: M
             val changes = quest.changes ?: throw ElementConflictException("No changes")
 
             val elementWithChangesApplied = element.changesApplied(changes)
-            val handler = UpdateElementsHandler(listOf(elementWithChangesApplied))
+            val handler = UpdateElementsHandler(mutableListOf(elementWithChangesApplied))
             try {
                 /* only necessary because of #1408: Elements where the version is invalid need to be
                    treated as element conflicts so that the element can be updated from server,

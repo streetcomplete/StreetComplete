@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.data.osm.upload
 
 import androidx.annotation.CallSuper
 import de.westnordost.osmapi.map.data.Element
-import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.QuestGroup
 import de.westnordost.streetcomplete.data.QuestType
 import de.westnordost.streetcomplete.data.VisibleQuestListener
@@ -14,7 +13,6 @@ import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao
 import de.westnordost.streetcomplete.data.osm.persist.MergedElementDao
 import de.westnordost.streetcomplete.data.statistics.QuestStatisticsDao
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
-import de.westnordost.streetcomplete.util.SlippyMapMath
 
 import java.util.concurrent.atomic.AtomicBoolean
 
