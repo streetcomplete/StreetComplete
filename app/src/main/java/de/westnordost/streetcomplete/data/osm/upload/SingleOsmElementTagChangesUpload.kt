@@ -110,6 +110,7 @@ private fun isRelationGeometrySubstantiallyDifferent(relation: Relation, newRela
 private fun Element.changesApplied(changes: StringMapChanges): Element {
     val copy = this.copy()
     try {
+        if (copy.tags == null) throw ElementConflictException("The element has no tags")
         changes.applyTo(copy.tags)
     } catch (e: IllegalStateException) {
         throw ElementConflictException("Conflict while applying the changes")
