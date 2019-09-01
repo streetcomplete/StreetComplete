@@ -33,7 +33,9 @@ class SingleCreateNoteUpload @Inject constructor(
     private fun createNote(n: CreateNote): Note {
         val attachedPhotosText = AttachPhotoUtils.uploadAndGetAttachedPhotosText(imageUploader, n.imagePaths)
         val result = osmDao.create(n.position, n.fullNoteText + attachedPhotosText)
-        imageUploader.activate(result.id)
+        if (!n.imagePaths.isNullOrEmpty()) {
+            imageUploader.activate(result.id)
+        }
         return result
     }
 
@@ -42,7 +44,9 @@ class SingleCreateNoteUpload @Inject constructor(
             try {
                 val attachedPhotosText = AttachPhotoUtils.uploadAndGetAttachedPhotosText(imageUploader, attachedImagePaths)
                 val result = osmDao.comment(note.id, text + attachedPhotosText)
-                imageUploader.activate(result.id)
+                if (!attachedImagePaths.isNullOrEmpty()) {
+                    imageUploader.activate(result.id)
+                }
                 result
             } catch (e: OsmConflictException) {
                 throw ConflictException(e.message, e)
