@@ -9,11 +9,13 @@ import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.data.QuestStatus
 import de.westnordost.streetcomplete.data.QuestType
-import de.westnordost.streetcomplete.data.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestDao
+import de.westnordost.streetcomplete.data.visiblequests.OrderedVisibleQuestTypesProvider
 import de.westnordost.streetcomplete.util.SphericalEarthMath
+import javax.inject.Named
+import javax.inject.Provider
 
 /** Manages creating new quests and removing quests that are no longer applicable for an OSM
  * element locally  */
@@ -21,7 +23,7 @@ class OsmQuestGiver @Inject constructor(
     private val osmNoteQuestDb: OsmNoteQuestDao,
     private val questDB: OsmQuestDao,
     private val elementGeometryDB: ElementGeometryDao,
-    private val questTypeRegistry: QuestTypeRegistry
+    private val questTypesProvider: OrderedVisibleQuestTypesProvider
 ) {
 
 	private val TAG = "OsmQuestGiver"
@@ -42,7 +44,7 @@ class OsmQuestGiver @Inject constructor(
         val createdQuestsLog = ArrayList<String>()
         val removedQuestsLog = ArrayList<String>()
 
-        for (questType in questTypeRegistry.all) {
+        for (questType in questTypesProvider.get()) {
             if (questType !is OsmElementQuestType<*>) continue
 
             val appliesToElement = questType.isApplicableTo(element) ?: continue

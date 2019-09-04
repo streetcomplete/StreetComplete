@@ -18,7 +18,6 @@ import java.util.Collections;
 import java.util.List;
 
 import javax.inject.Inject;
-import javax.inject.Provider;
 
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.osmapi.map.data.OsmElement;
@@ -41,6 +40,7 @@ import de.westnordost.streetcomplete.data.osmnotes.CreateNoteDao;
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuest;
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestDao;
 import de.westnordost.streetcomplete.data.upload.QuestChangesUploadService;
+import de.westnordost.streetcomplete.data.visiblequests.OrderedVisibleQuestTypesProvider;
 import de.westnordost.streetcomplete.quests.note_discussion.NoteAnswer;
 import de.westnordost.streetcomplete.util.SlippyMapMath;
 import de.westnordost.osmapi.map.data.BoundingBox;
@@ -62,7 +62,7 @@ public class QuestController
 	private final OpenChangesetsDao openChangesetsDao;
 	private final Context context;
 	private final VisibleQuestRelay relay;
-	private final Provider<List<QuestType>> questTypesProvider;
+	private final OrderedVisibleQuestTypesProvider questTypesProvider;
 
 	private boolean downloadServiceIsBound;
 	private QuestDownloadService.Interface downloadService;
@@ -102,7 +102,7 @@ public class QuestController
 								   MergedElementDao osmElementDB, ElementGeometryDao geometryDB,
 								   OsmNoteQuestDao osmNoteQuestDB, OsmQuestSplitWayDao splitWayDB,
 								   CreateNoteDao createNoteDB, OpenChangesetsDao openChangesetsDao,
-								   Provider<List<QuestType>> questTypesProvider, Context context)
+								   OrderedVisibleQuestTypesProvider questTypesProvider, Context context)
 	{
 		this.osmQuestDB = osmQuestDB;
 		this.undoOsmQuestDB = undoOsmQuestDB;
@@ -396,7 +396,7 @@ public class QuestController
 
 	private List<String> getQuestTypeNames()
 	{
-		List<QuestType> questTypes = questTypesProvider.get();
+		List<QuestType<?>> questTypes = questTypesProvider.get();
 		List<String> questTypeNames = new ArrayList<>(questTypes.size());
 		for (QuestType questType : questTypes)
 		{

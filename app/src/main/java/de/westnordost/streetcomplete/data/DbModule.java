@@ -4,10 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -79,24 +75,5 @@ public class DbModule
 			SharedPreferences prefs, QuestTypeRegistry questTypeRegistry)
 	{
 		return new QuestTypeOrderList(prefs, questTypeRegistry);
-	}
-
-	@Provides public static List<QuestType> visibleQuestTypes(
-			QuestTypeRegistry questTypeRegistry, VisibleQuestTypeDao visibleQuestTypeDao,
-			QuestTypeOrderList questTypeOrderList)
-	{
-		List<QuestType> questTypes = new ArrayList<>(questTypeRegistry.getAll());
-		Iterator<QuestType> it = questTypes.listIterator();
-		while(it.hasNext())
-		{
-			QuestType questType = it.next();
-			if(!visibleQuestTypeDao.isVisible(questType))
-			{
-				it.remove();
-			}
-		}
-		questTypeOrderList.sort(questTypes);
-
-		return questTypes;
 	}
 }

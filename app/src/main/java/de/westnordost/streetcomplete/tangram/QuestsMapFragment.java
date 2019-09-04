@@ -28,7 +28,6 @@ import java.util.Map;
 import java.util.Set;
 
 import javax.inject.Inject;
-import javax.inject.Provider;
 
 import de.westnordost.streetcomplete.Injector;
 import de.westnordost.streetcomplete.R;
@@ -36,6 +35,7 @@ import de.westnordost.streetcomplete.data.Quest;
 import de.westnordost.streetcomplete.data.QuestGroup;
 import de.westnordost.streetcomplete.data.QuestType;
 import de.westnordost.streetcomplete.data.osm.ElementGeometry;
+import de.westnordost.streetcomplete.data.visiblequests.OrderedVisibleQuestTypesProvider;
 import de.westnordost.streetcomplete.quests.bikeway.AddCycleway;
 import de.westnordost.streetcomplete.util.DpUtil;
 import de.westnordost.streetcomplete.util.SlippyMapMath;
@@ -81,7 +81,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 	// LatLon -> Marker Id
 	private final Map<LatLon, Long> markerIds = new HashMap<>();
 
-	@Inject Provider<List<QuestType>> questTypesProvider;
+	@Inject OrderedVisibleQuestTypesProvider questTypesProvider;
 	@Inject TangramQuestSpriteSheetCreator spriteSheetCreator;
 	private Map<QuestType, Integer> questTypeOrder;
 
