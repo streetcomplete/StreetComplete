@@ -54,14 +54,14 @@ class SplitSingleWayUpload @Inject constructor(private val osmDao: MapDataDao)  
         }
 
         uploadElements.addAll(splitWayAtIndices(updatedWay, splitAtIndices))
-        val handler = UpdateElementsHandler(uploadElements)
+        val handler = UpdateElementsHandler()
         try {
             osmDao.uploadChanges(changesetId, uploadElements, handler)
         } catch (e: OsmConflictException) {
             throw ChangesetConflictException(e.message, e)
         }
         // the added nodes and updated relations are not relevant for quest creation, only the way are
-        return handler.updatedElements.filterIsInstance<Way>()
+        return handler.getElementUpdates(uploadElements).updated.filterIsInstance<Way>()
     }
 
     private fun checkForConflicts(old: Way, new: Way) {

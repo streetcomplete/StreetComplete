@@ -4,98 +4,72 @@ import de.westnordost.osmapi.common.Handler
 import de.westnordost.osmapi.map.changes.DiffElement
 import de.westnordost.osmapi.map.data.*
 import de.westnordost.streetcomplete.data.osm.ElementKey
-import de.westnordost.streetcomplete.ktx.copy
-import kotlin.collections.HashSet
 
-/** Reads the answer of an update map call on the OSM API and updates the given elements with the
- *  DiffElement response.
- *  The updatedElements deletedElementsKeys sets contain the elements that have been changed as
- *  a result of the update. */
-class UpdateElementsHandler(val elements: MutableCollection<Element>) : Handler<DiffElement> {
-    val updatedElements: MutableSet<Element> = HashSet()
-    val deletedElementsKeys: MutableSet<ElementKey> = HashSet()
-
-    private val relations get() = elements.filterIsInstance<Relation>()
-    private val ways get() = elements.filterIsInstance<Way>()
+/** Reads the answer of an update map call on the OSM API. */
+class UpdateElementsHandler : Handler<DiffElement> {
+    private val nodeDiffs: MutableMap<Long, DiffElement> = mutableMapOf()
+    private val wayDiffs: MutableMap<Long, DiffElement> = mutableMapOf()
+    private val relationDiffs: MutableMap<Long, DiffElement> = mutableMapOf()
 
     override fun handle(d: DiffElement) {
-        val element = elements.find { it.type == d.type && it.id == d.clientId } ?: return
-        if (d.serverVersion == null || d.serverId == null) {
-            deleteElement(element.type, element.id)
-        }
-        else if (element.version != d.serverVersion || element.id != d.serverId) {
-            updateElement(element, d.serverId, d.serverVersion)
+        when (d.type ?: return) {
+            Element.Type.NODE -> nodeDiffs[d.clientId] = d
+            Element.Type.WAY -> wayDiffs[d.clientId] = d
+            Element.Type.RELATION -> relationDiffs[d.clientId] = d
         }
     }
 
-    private fun deleteElement(type: Element.Type, id: Long) {
-        deletedElementsKeys.add(ElementKey(type, id))
-
-        if (type == Element.Type.NODE) {
-            deleteDeletedNodesFromWays(id)
-        }
-        deleteDeletedElementsFromRelations(type, id)
-    }
-
-    private fun deleteDeletedNodesFromWays(id: Long) {
-        for (way in ways) {
-            val it = way.nodeIds.listIterator()
-            while (it.hasNext()) {
-                if (it.next() == id) {
-                    it.remove()
-                    updatedElements.add(way)
-                }
+    fun getElementUpdates(elements: Collection<Element>): ElementUpdates {
+        val updatedElements = mutableListOf<Element>()
+        val deletedElementKeys = mutableListOf<ElementKey>()
+        for (element in elements) {
+            val update = getDiff(element.type, element.id) ?: continue
+            if (update.serverId != null && update.serverVersion != null) {
+                updatedElements.add(createUpdatedElement(element, update.serverId, update.serverVersion))
+            } else {
+                deletedElementKeys.add(ElementKey(update.type, update.clientId))
             }
         }
+        return ElementUpdates(updatedElements, deletedElementKeys)
     }
 
-    private fun deleteDeletedElementsFromRelations(type: Element.Type, id: Long) {
-        for (relation in relations) {
-            val it = relation.members.listIterator()
-            while (it.hasNext()) {
-                val member = it.next()
-                if (member.type == type && member.ref == id) {
-                    it.remove()
-                    updatedElements.add(relation)
-                }
-            }
-        }
+    private fun getDiff(type: Element.Type, id: Long): DiffElement? = when (type) {
+        Element.Type.NODE -> nodeDiffs[id]
+        Element.Type.WAY -> wayDiffs[id]
+        Element.Type.RELATION -> relationDiffs[id]
     }
 
-    private fun updateElement(element: Element, newId: Long, newVersion: Int) {
-        val oldId = element.id
-        val newElement = element.copy(newId, newVersion)
-        updatedElements.add(newElement)
-
-        if (element.type == Element.Type.NODE) {
-            updateWaysWithUpdatedNodeId(oldId, newId)
+    private fun createUpdatedElement(element: Element, newId: Long, newVersion: Int): Element =
+        when (element) {
+            is Node -> createUpdatedNode(element, newId, newVersion)
+            is Way -> createUpdatedWay(element, newId, newVersion)
+            is Relation -> createUpdatedRelation(element, newId, newVersion)
+            else -> throw RuntimeException()
         }
-        updateRelationsWithUpdatedElementId(element.type, oldId, newId)
+
+    private fun createUpdatedNode(node: Node, newId: Long, newVersion: Int): Node {
+        return OsmNode(newId, newVersion, node.position, node.tags?.let { HashMap(it) })
     }
 
-    private fun updateWaysWithUpdatedNodeId(oldId: Long, newId: Long) {
-        for (way in ways) {
-            val it = way.nodeIds.listIterator()
-            while (it.hasNext()) {
-                if (it.next() == oldId) {
-                    it.set(newId)
-                    updatedElements.add(way)
-                }
-            }
+    private fun createUpdatedWay(way: Way, newId: Long, newVersion: Int): Way {
+        val newNodeIds = ArrayList<Long>(way.nodeIds.size)
+        for (nodeId in way.nodeIds) {
+            val update = nodeDiffs[nodeId]
+            if (update == null) newNodeIds.add(nodeId)
+            else if (update.serverId != null) newNodeIds.add(update.serverId)
         }
+        return OsmWay(newId, newVersion, newNodeIds, way.tags?.let { HashMap(it) })
     }
 
-    private fun updateRelationsWithUpdatedElementId(type: Element.Type, oldId: Long, newId: Long) {
-        for (relation in relations) {
-            val it = relation.members.listIterator()
-            while (it.hasNext()) {
-                val member = it.next()
-                if (member.type == type && member.ref == oldId) {
-                    it.set(OsmRelationMember(newId, member.role, type))
-                    updatedElements.add(relation)
-                }
-            }
+    private fun createUpdatedRelation(relation: Relation, newId: Long, newVersion: Int): Relation {
+        val newRelationMembers = ArrayList<RelationMember>(relation.members.size)
+        for (member in relation.members) {
+            val update = getDiff(member.type, member.ref)
+            if (update == null) newRelationMembers.add(OsmRelationMember(member.ref, member.role, member.type))
+            else if(update.serverId != null) newRelationMembers.add(OsmRelationMember(update.serverId, member.role, member.type))
         }
+        return OsmRelation(newId, newVersion, newRelationMembers, relation.tags?.let { HashMap(it) })
     }
 }
 
+data class ElementUpdates(val updated: Collection<Element>, val deleted: Collection<ElementKey>)
