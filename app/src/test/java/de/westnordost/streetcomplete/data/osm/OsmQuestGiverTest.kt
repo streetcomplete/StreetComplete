@@ -10,10 +10,10 @@ import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.osmapi.map.data.OsmNode
 import de.westnordost.streetcomplete.any
 import de.westnordost.streetcomplete.data.QuestStatus
-import de.westnordost.streetcomplete.data.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestDao
+import de.westnordost.streetcomplete.data.visiblequests.OrderedVisibleQuestTypesProvider
 import de.westnordost.streetcomplete.on
 
 import org.junit.Assert.*
@@ -42,9 +42,10 @@ class OsmQuestGiverTest {
 
         questType = mock(OsmElementQuestType::class.java)
 
-        osmQuestUnlocker = OsmQuestGiver(osmNoteQuestDao, osmQuestDao, elementGeometryDao,
-            QuestTypeRegistry(listOf(questType))
-        )
+        val questTypeProvider = mock(OrderedVisibleQuestTypesProvider::class.java)
+        on(questTypeProvider.get()).thenReturn(listOf(questType))
+
+        osmQuestUnlocker = OsmQuestGiver(osmNoteQuestDao, osmQuestDao, elementGeometryDao, questTypeProvider)
     }
 
     @Test fun `note blocks new quests`() {

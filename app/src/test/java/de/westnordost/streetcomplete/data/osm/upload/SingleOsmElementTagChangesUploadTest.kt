@@ -133,8 +133,8 @@ class SingleOsmElementTagChangesUploadTest {
 
     @Test(expected = ElementConflictException::class)
     fun `raise conflict when the updated node moved`() {
-        val old = OsmNode(0, 0, OsmLatLon(51.4777, 0.0), null)
-        val new = OsmNode(0, 1, OsmLatLon(51.4780, 0.0), null)
+        val old = OsmNode(0, 0, OsmLatLon(51.4777, 0.0), mutableMapOf())
+        val new = OsmNode(0, 1, OsmLatLon(51.4780, 0.0), mutableMapOf())
         reportConflictOnUpload()
         on(osmDao.getNode(old.id)).thenReturn(new)
 
@@ -143,8 +143,8 @@ class SingleOsmElementTagChangesUploadTest {
 
     @Test(expected = ElementConflictException::class)
     fun `raise conflict when the updated way was extended one one side`() {
-        val old = OsmWay(0, 0, listOf(1,2), null)
-        val new = OsmWay(0, 1, listOf(4,1,2), null)
+        val old = OsmWay(0, 0, listOf(1,2), mutableMapOf())
+        val new = OsmWay(0, 1, listOf(4,1,2), mutableMapOf())
         reportConflictOnUpload()
         on(osmDao.getWay(old.id)).thenReturn(new)
 
@@ -153,8 +153,8 @@ class SingleOsmElementTagChangesUploadTest {
 
     @Test(expected = ElementConflictException::class)
     fun `raise conflict when the updated way was extended one the other side`() {
-        val old = OsmWay(0, 0, listOf(1,2), null)
-        val new = OsmWay(0, 1, listOf(1,2,3), null)
+        val old = OsmWay(0, 0, listOf(1,2), mutableMapOf())
+        val new = OsmWay(0, 1, listOf(1,2,3), mutableMapOf())
         reportConflictOnUpload()
         on(osmDao.getWay(old.id)).thenReturn(new)
 
@@ -163,8 +163,8 @@ class SingleOsmElementTagChangesUploadTest {
 
     @Test(expected = ElementConflictException::class)
     fun `raise conflict when the updated way was shortened on one side`() {
-        val old = OsmWay(0, 0, listOf(1,2,3), null)
-        val new = OsmWay(0, 1, listOf(2,3), null)
+        val old = OsmWay(0, 0, listOf(1,2,3), mutableMapOf())
+        val new = OsmWay(0, 1, listOf(2,3), mutableMapOf())
         reportConflictOnUpload()
         on(osmDao.getWay(old.id)).thenReturn(new)
 
@@ -173,8 +173,8 @@ class SingleOsmElementTagChangesUploadTest {
 
     @Test(expected = ElementConflictException::class)
     fun `raise conflict when the updated way was shortened on the other side`() {
-        val old = OsmWay(0, 0, listOf(1,2,3), null)
-        val new = OsmWay(0, 1, listOf(1,2), null)
+        val old = OsmWay(0, 0, listOf(1,2,3), mutableMapOf())
+        val new = OsmWay(0, 1, listOf(1,2), mutableMapOf())
         reportConflictOnUpload()
         on(osmDao.getWay(old.id)).thenReturn(new)
 
@@ -183,8 +183,8 @@ class SingleOsmElementTagChangesUploadTest {
 
     @Test(expected = ElementConflictException::class)
     fun `raise conflict when the updated relation has different members`() {
-        val old = OsmRelation(0, 0, listOf(OsmRelationMember(0, "outer", WAY)), null)
-        val new = OsmRelation(0, 1, listOf(OsmRelationMember(0, "inner", WAY)), null)
+        val old = OsmRelation(0, 0, listOf(OsmRelationMember(0, "outer", WAY)), mutableMapOf())
+        val new = OsmRelation(0, 1, listOf(OsmRelationMember(0, "inner", WAY)), mutableMapOf())
         reportConflictOnUpload()
         on(osmDao.getRelation(old.id)).thenReturn(new)
 
@@ -192,8 +192,8 @@ class SingleOsmElementTagChangesUploadTest {
     }
 
     @Test fun `do not raise conflict when the updated way was extended not at the ends`() {
-        val old = OsmWay(0, 0, listOf(1,2,3), null)
-        val new = OsmWay(0, 1, listOf(1,2,4,5,6,3), null)
+        val old = OsmWay(0, 0, listOf(1,2,3), mutableMapOf())
+        val new = OsmWay(0, 1, listOf(1,2,4,5,6,3), mutableMapOf())
         on(osmDao.getWay(old.id)).thenReturn(new)
         reportConflictOnFirstUploadButThenUploadSuccessfully(new)
 
@@ -236,7 +236,7 @@ class SingleOsmElementTagChangesUploadTest {
 
     private fun changes(vararg change: StringMapEntryChange) = StringMapChanges(change.toList())
 
-    private fun createNode(version: Int, tags: Map<String, String>? = null) =
+    private fun createNode(version: Int, tags: Map<String, String>? = mutableMapOf()) =
         OsmNode(nodeId, version, pos, tags)
 
     private fun getUploadedElement(calls: Int = 1): Element {
