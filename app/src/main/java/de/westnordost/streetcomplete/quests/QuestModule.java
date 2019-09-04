@@ -80,6 +80,7 @@ import de.westnordost.streetcomplete.quests.bench_backrest.AddBenchBackrest;
 import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAccessOutside;
 import de.westnordost.streetcomplete.quests.ferry.AddFerryAccessMotorVehicle;
 import de.westnordost.streetcomplete.quests.ferry.AddFerryAccessPedestrian;
+import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAccessToiletsPart;
 
 @Module
 public class QuestModule
@@ -169,6 +170,7 @@ public class QuestModule
 				new AddMotorcycleParkingCover(o),
 				new AddFireHydrantType(o),
 				new AddParkingType(o),
+				new AddWheelchairAccessToiletsPart(o),
 				new AddPowerPolesMaterial(o),
 				new AddCarWashType(o),
 				new AddBenchBackrest(o),
