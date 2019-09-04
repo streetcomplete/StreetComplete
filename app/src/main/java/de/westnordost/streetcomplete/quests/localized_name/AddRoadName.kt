@@ -24,6 +24,7 @@ class AddRoadName(
     override val commitMessage = "Determine road names and types"
     override val icon = R.drawable.ic_quest_street_name
     override val hasMarkersAtEnds = true
+    override val isSplitWayEnabled = true
 
     override fun getTitle(tags: Map<String, String>) =
         if (tags["highway"] == "pedestrian")

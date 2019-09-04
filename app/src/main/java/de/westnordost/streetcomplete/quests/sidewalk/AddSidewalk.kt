@@ -15,6 +15,7 @@ class AddSidewalk(private val overpassServer: OverpassMapDataDao) : OsmElementQu
 
     override val commitMessage = "Add whether there are sidewalks"
     override val icon = R.drawable.ic_quest_sidewalk
+    override val isSplitWayEnabled = true
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_sidewalk_title
 

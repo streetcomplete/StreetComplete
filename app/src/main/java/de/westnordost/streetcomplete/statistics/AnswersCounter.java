@@ -11,6 +11,7 @@ import javax.inject.Inject;
 
 import de.westnordost.streetcomplete.data.QuestStatus;
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
+import de.westnordost.streetcomplete.data.osm.persist.OsmQuestSplitWayDao;
 import de.westnordost.streetcomplete.data.osmnotes.CreateNoteDao;
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestDao;
 import de.westnordost.streetcomplete.data.statistics.QuestStatisticsDao;
@@ -20,6 +21,7 @@ public class AnswersCounter
 	private final OsmQuestDao questDB;
 	private final OsmNoteQuestDao noteQuestDB;
 	private final CreateNoteDao createNoteDB;
+	private final OsmQuestSplitWayDao splitWayDB;
 	private final QuestStatisticsDao questStatisticsDB;
 
 	private int uploaded;
@@ -33,11 +35,13 @@ public class AnswersCounter
 	private boolean isAutosync;
 
 	@Inject public AnswersCounter(OsmQuestDao questDB, OsmNoteQuestDao noteQuestDB,
-								  CreateNoteDao createNoteDB, QuestStatisticsDao questStatisticsDB)
+								  CreateNoteDao createNoteDB, OsmQuestSplitWayDao splitWayDB,
+								  QuestStatisticsDao questStatisticsDB)
 	{
 		this.questDB = questDB;
 		this.noteQuestDB = noteQuestDB;
 		this.createNoteDB = createNoteDB;
+		this.splitWayDB = splitWayDB;
 		this.questStatisticsDB = questStatisticsDB;
 	}
 
@@ -104,6 +108,7 @@ public class AnswersCounter
 				unsynced = 0;
 				unsynced += questDB.getCount(null, QuestStatus.ANSWERED);
 				unsynced += noteQuestDB.getCount(null, QuestStatus.ANSWERED);
+				unsynced += splitWayDB.getCount();
 				unsynced += createNoteDB.getCount();
 				return null;
 			}

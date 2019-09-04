@@ -22,6 +22,8 @@ class AddCyclewaySegregation(o: OverpassMapDataDao) : SimpleOverpassQuestType<Bo
     override val commitMessage = "Add segregated status for combined footway with cycleway"
     override val icon = R.drawable.ic_quest_path_segregation
 
+    override val isSplitWayEnabled = true
+
     override fun getTitle(tags: Map<String, String>) = R.string.quest_segregated_title
 
     override fun createForm() = AddCyclewaySegregationForm()

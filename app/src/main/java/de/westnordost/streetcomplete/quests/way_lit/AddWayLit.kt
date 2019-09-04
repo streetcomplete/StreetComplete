@@ -30,6 +30,7 @@ class AddWayLit(o: OverpassMapDataDao) : SimpleOverpassQuestType<String>(o) {
 
     override val commitMessage = "Add whether way is lit"
     override val icon = R.drawable.ic_quest_lantern
+    override val isSplitWayEnabled = true
 
     override fun getTitle(tags: Map<String, String>): Int {
         val type = tags["highway"]

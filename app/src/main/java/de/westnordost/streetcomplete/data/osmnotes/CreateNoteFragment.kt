@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.data.osmnotes
 
-import android.content.Context
 import android.content.res.Configuration
 import android.graphics.Point
 import android.os.Bundle
@@ -21,9 +20,12 @@ import kotlinx.android.synthetic.main.marker_create_note.*
 
 class CreateNoteFragment : AbstractCreateNoteFragment() {
 
-    override val layoutResId = R.layout.fragment_create_note
+    interface Listener {
+        /** Called when the user wants to leave a note which is not related to a quest  */
+        fun onCreatedNote(note: String, imagePaths: List<String>?, screenPosition: Point)
+    }
 
-    private lateinit var callbackListener: CreateNoteListener
+    override val layoutResId = R.layout.fragment_create_note
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -63,17 +65,12 @@ class CreateNoteFragment : AbstractCreateNoteFragment() {
         return a
     }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        callbackListener = context as CreateNoteListener
-    }
-
     override fun onDiscard() {
         super.onDiscard()
         markerLayoutContainer?.visibility = View.INVISIBLE
     }
 
-    override fun onLeaveNote(text: String, imagePaths: List<String>?) {
+    override fun onComposedNote(text: String, imagePaths: List<String>?) {
         if (closeKeyboard()) return
 
         val point = IntArray(2)
@@ -83,7 +80,7 @@ class CreateNoteFragment : AbstractCreateNoteFragment() {
 
         markerLayoutContainer?.visibility = View.INVISIBLE
 
-        callbackListener.onLeaveNote(text, imagePaths, screenPos)
+        (activity as Listener).onCreatedNote(text, imagePaths, screenPos)
     }
 
     private fun closeKeyboard(): Boolean {

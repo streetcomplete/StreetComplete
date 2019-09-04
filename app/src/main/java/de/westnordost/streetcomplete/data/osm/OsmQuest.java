@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.osm;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.Date;
@@ -11,10 +12,12 @@ import de.westnordost.streetcomplete.data.osm.changes.StringMapChanges;
 import de.westnordost.streetcomplete.data.QuestType;
 import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.osmapi.map.data.LatLon;
+import de.westnordost.streetcomplete.data.osm.upload.HasElementTagChanges;
+import de.westnordost.streetcomplete.data.osm.upload.UploadableInChangeset;
 import de.westnordost.streetcomplete.util.SphericalEarthMath;
 
 /** Represents one task for the user to complete/correct the data based on one OSM element */
-public class OsmQuest implements Quest
+public class OsmQuest implements Quest, UploadableInChangeset, HasElementTagChanges
 {
 	public OsmQuest(OsmElementQuestType type, Element.Type elementType, long elementId,
 					ElementGeometry geometry)
@@ -22,7 +25,7 @@ public class OsmQuest implements Quest
 		this(null, type, elementType, elementId, QuestStatus.NEW, null, null, new Date(), geometry);
 	}
 
-	public OsmQuest(Long id, OsmElementQuestType type, Element.Type elementType, long elementId,
+	public OsmQuest(@Nullable Long id, OsmElementQuestType type, Element.Type elementType, long elementId,
 					QuestStatus status, @Nullable StringMapChanges changes,
 					@Nullable  String changesSource, Date lastUpdate, ElementGeometry geometry)
 	{
@@ -37,7 +40,7 @@ public class OsmQuest implements Quest
 		this.lastUpdate = lastUpdate;
 	}
 
-	private Long id;
+	@Nullable private Long id;
 	private final OsmElementQuestType type;
 	private QuestStatus status;
 	private final ElementGeometry geometry;
@@ -48,12 +51,12 @@ public class OsmQuest implements Quest
 
 	// and the changes to the tags (in the future, streetcomplete should probably be able to edit more
 	// than just tags -> osmchange?)
-	private StringMapChanges changes;
-	private String changesSource;
+	@Nullable private StringMapChanges changes;
+	@Nullable private String changesSource;
 
 	private Date lastUpdate;
 
-	@Override public Long getId()
+	@Override @Nullable public Long getId()
 	{
 		return id;
 	}
@@ -105,12 +108,12 @@ public class OsmQuest implements Quest
 		return geometry;
 	}
 
-	public StringMapChanges getChanges()
+	@Nullable public StringMapChanges getChanges()
 	{
 		return changes;
 	}
 
-	public String getChangesSource() { return changesSource; }
+	@Nullable public String getChangesSource() { return changesSource; }
 
 	public void setChanges(StringMapChanges changes, String source)
 	{
@@ -137,4 +140,12 @@ public class OsmQuest implements Quest
 	{
 		this.id = id;
 	}
+
+	public Boolean isApplicableTo(@NonNull Element element) {
+		return type.isApplicableTo(element);
+	}
+
+	/* --------------------------- UploadableInChangeset --------------------------- */
+
+	@Override public String getSource() { return changesSource; }
 }

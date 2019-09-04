@@ -6,9 +6,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import de.westnordost.streetcomplete.ApplicationConstants;
-import de.westnordost.streetcomplete.quests.localized_name.data.RoadNamesTablesHelper;
-import de.westnordost.streetcomplete.quests.oneway.data.WayTrafficFlowTablesHelper;
 import de.westnordost.streetcomplete.util.KryoSerializer;
 import de.westnordost.streetcomplete.util.Serializer;
 

@@ -33,6 +33,7 @@ class AddOneway(
         "Add whether this road is a one-way road, this road was marked as likely oneway by improveosm.org"
     override val icon = R.drawable.ic_quest_oneway
     override val hasMarkersAtEnds = true
+    override val isSplitWayEnabled = true
 
     private val filter by lazy { FiltersParser().parse(tagFilters) }
 

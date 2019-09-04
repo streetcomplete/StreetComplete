@@ -71,9 +71,9 @@ public class SphericalEarthMath
 	/** @return a new position in the given distance and angle from the original position */
 	public static LatLon translate(LatLon pos, double distance, double angle)
 	{
-		double φ1 = Math.toRadians(pos.getLatitude());
-		double λ1 = Math.toRadians(pos.getLongitude());
-		double α1 = Math.toRadians(angle);
+		double φ1 = toRadians(pos.getLatitude());
+		double λ1 = toRadians(pos.getLongitude());
+		double α1 = toRadians(angle);
 		double σ12 = distance / EARTH_RADIUS;
 
 		double y = sin(φ1) * cos(σ12) + cos(φ1) * sin(σ12) * cos(α1);
@@ -104,12 +104,43 @@ public class SphericalEarthMath
 	 */
 	public static double distance(LatLon pos1, LatLon pos2)
 	{
-		return EARTH_RADIUS * distance(
-				Math.toRadians(pos1.getLatitude()),
-				Math.toRadians(pos1.getLongitude()),
-				Math.toRadians(pos2.getLatitude()),
-				Math.toRadians(pos2.getLongitude()
-				));
+		return distance(
+			toRadians(pos1.getLatitude()),
+			toRadians(pos1.getLongitude()),
+			toRadians(pos2.getLatitude()),
+			toRadians(pos2.getLongitude())
+		);
+	}
+
+	/**
+	 * @return the shortest distance of the arc between two points and another point in meters
+	 */
+	public static double crossTrackDistance(LatLon start, LatLon end, LatLon point)
+	{
+		return crossTrackDistance(
+			toRadians(start.getLatitude()),
+			toRadians(start.getLongitude()),
+			toRadians(end.getLatitude()),
+			toRadians(end.getLongitude()),
+			toRadians(point.getLatitude()),
+			toRadians(point.getLongitude())
+		);
+	}
+
+	/**
+	 * @return same as crossTrackDistance, only the distance returned here is the distance between
+	 * the start point and the point to where the perpendicular drawn from point crosses the arc.
+	 */
+	public static double alongTrackDistance(LatLon start, LatLon end, LatLon point)
+	{
+		return alongTrackDistance(
+			toRadians(start.getLatitude()),
+			toRadians(start.getLongitude()),
+			toRadians(end.getLatitude()),
+			toRadians(end.getLongitude()),
+			toRadians(point.getLatitude()),
+			toRadians(point.getLongitude())
+		);
 	}
 
 	/**
@@ -155,10 +186,10 @@ public class SphericalEarthMath
 	public static double bearing(LatLon pos1, LatLon pos2)
 	{
 		double bearing =  Math.toDegrees(bearing(
-				Math.toRadians(pos1.getLatitude()),
-				Math.toRadians(pos1.getLongitude()),
-				Math.toRadians(pos2.getLatitude()),
-				Math.toRadians(pos2.getLongitude())
+				toRadians(pos1.getLatitude()),
+				toRadians(pos1.getLongitude()),
+				toRadians(pos2.getLatitude()),
+				toRadians(pos2.getLongitude())
 		));
 
 		if(bearing < 0) bearing += 360;
@@ -173,10 +204,10 @@ public class SphericalEarthMath
 	public static double finalBearing(LatLon pos1, LatLon pos2)
 	{
 		double bearing =  Math.toDegrees(finalBearing(
-				Math.toRadians(pos1.getLatitude()),
-				Math.toRadians(pos1.getLongitude()),
-				Math.toRadians(pos2.getLatitude()),
-				Math.toRadians(pos2.getLongitude())
+				toRadians(pos1.getLatitude()),
+				toRadians(pos1.getLongitude()),
+				toRadians(pos2.getLatitude()),
+				toRadians(pos2.getLongitude())
 		));
 
 		if(bearing < 0) bearing += 360;
@@ -408,32 +439,53 @@ public class SphericalEarthMath
 		return sum > 0;
 	}
 
-	// https://en.wikipedia.org/wiki/Great-circle_navigation#cite_note-2
+	private static double crossTrackDistance(double φ1, double λ1, double φ2, double λ2, double φ3, double λ3)
+	{
+		double θ12 = bearing(φ1, λ1, φ2, λ2);
+		double θ13 = bearing(φ1, λ1, φ3, λ3);
+		double δ13 = distance(φ1, λ1, φ3, λ3) / EARTH_RADIUS;
+
+		double δxt = asin(sin(δ13) * sin(θ13-θ12));
+		return abs(δxt * EARTH_RADIUS);
+	}
+
+	private static double alongTrackDistance(double φ1, double λ1, double φ2, double λ2, double φ3, double λ3)
+	{
+		double θ12 = bearing(φ1, λ1, φ2, λ2);
+		double θ13 = bearing(φ1, λ1, φ3, λ3);
+		double δ13 = distance(φ1, λ1, φ3, λ3) / EARTH_RADIUS;
+
+		double δxt = asin(sin(δ13) * sin(θ13-θ12));
+		double δat = acos(cos(δ13) / abs(cos(δxt)));
+		return δat * signum(cos(θ12-θ13)) * EARTH_RADIUS;
+	}
+
+	// http://www.movable-type.co.uk/scripts/latlong.html
 	private static double distance(double φ1, double λ1, double φ2, double λ2)
 	{
 		double Δλ = λ2 - λ1;
+		double Δφ = φ2 - φ1;
 
-		double y = sqrt(sqr(cos(φ2)*sin(Δλ)) + sqr(cos(φ1)*sin(φ2) - sin(φ1)*cos(φ2)*cos(Δλ)));
-		double x = sin(φ1)*sin(φ2) + cos(φ1)*cos(φ2)*cos(Δλ);
-		return atan2(y, x);
+		double a = sqr(sin(Δφ/2)) + cos(φ1) * cos(φ2) * sqr(sin(Δλ/2));
+		double c = 2 * atan2(sqrt(a), sqrt(1-a));
+		return c * EARTH_RADIUS;
 	}
 
-	//See https://en.wikipedia.org/wiki/Great-circle_navigation#Course_and_distance
 	private static double bearing(double φ1, double λ1, double φ2, double λ2)
 	{
 		double Δλ = λ2 - λ1;
-		return Math.atan2(sin(Δλ), cos(φ1) * tan(φ2) - sin(φ1) * cos(Δλ));
+		return Math.atan2(sin(Δλ) * cos(φ2), cos(φ1) * sin(φ2) - sin(φ1) * cos(φ2) * cos(Δλ));
 	}
 
 	private static double finalBearing(double φ1, double λ1, double φ2, double λ2)
 	{
 		double Δλ = λ2 - λ1;
-		return Math.atan2(sin(Δλ), -cos(φ2)*tan(φ1) + sin(φ1)*cos(Δλ));
+		return Math.atan2(sin(Δλ) * cos(φ1), -cos(φ2) * sin(φ1) + sin(φ2) * cos(φ1) * cos(Δλ));
 	}
 
 	private static double sqr(double x) { return Math.pow(x, 2); }
 
-	private static LatLon createTranslated(double lat, double lon)
+	public static LatLon createTranslated(double lat, double lon)
 	{
 		lon = normalizeLongitude(lon);
 

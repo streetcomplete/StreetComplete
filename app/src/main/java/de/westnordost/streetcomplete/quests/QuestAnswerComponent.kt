@@ -32,7 +32,7 @@ class QuestAnswerComponent {
         callbackListener = listener
     }
 
-    fun onAnswerQuest(answer: Any) {
+    fun onAnsweredQuest(answer: Any) {
         callbackListener.onAnsweredQuest(questId, questGroup, answer)
     }
 
@@ -40,8 +40,9 @@ class QuestAnswerComponent {
         callbackListener.onComposeNote(questId, questGroup, questTitle)
     }
 
-    fun onLeaveNote(questTitle: String, text: String, imagePaths: List<String>?) {
-        callbackListener.onLeaveNote(questId, questGroup, questTitle, text, imagePaths)
+    fun onSplitWay() {
+        if (questGroup != QuestGroup.OSM) throw IllegalStateException()
+        callbackListener.onSplitWay(questId)
     }
 
     fun onSkippedQuest() {

@@ -6,13 +6,12 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.inject.Provider;
-
 import de.westnordost.streetcomplete.ApplicationConstants;
 import de.westnordost.streetcomplete.data.QuestStatus;
 import de.westnordost.streetcomplete.data.QuestType;
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
 import de.westnordost.streetcomplete.data.tiles.DownloadedTilesDao;
+import de.westnordost.streetcomplete.data.visiblequests.OrderedVisibleQuestTypesProvider;
 import de.westnordost.streetcomplete.util.SlippyMapMath;
 import de.westnordost.streetcomplete.util.SphericalEarthMath;
 import de.westnordost.osmapi.map.data.BoundingBox;
@@ -26,11 +25,11 @@ public abstract class AActiveRadiusStrategy implements QuestAutoDownloadStrategy
 
 	private final OsmQuestDao osmQuestDB;
 	private final DownloadedTilesDao downloadedTilesDao;
-	private final Provider<List<QuestType>> questTypesProvider;
+	private final OrderedVisibleQuestTypesProvider questTypesProvider;
 
 	public AActiveRadiusStrategy(
 			OsmQuestDao osmQuestDB, DownloadedTilesDao downloadedTilesDao,
-			Provider<List<QuestType>> questTypesProvider)
+			OrderedVisibleQuestTypesProvider questTypesProvider)
 	{
 		this.osmQuestDB = osmQuestDB;
 		this.downloadedTilesDao = downloadedTilesDao;
@@ -68,7 +67,7 @@ public abstract class AActiveRadiusStrategy implements QuestAutoDownloadStrategy
 
 	private List<String> getQuestTypeNames()
 	{
-		List<QuestType> questTypes = questTypesProvider.get();
+		List<QuestType<?>> questTypes = questTypesProvider.get();
 		List<String> questTypeNames = new ArrayList<>(questTypes.size());
 		for (QuestType questType : questTypes)
 		{

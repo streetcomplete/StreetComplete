@@ -61,7 +61,7 @@ abstract class AbstractCreateNoteFragment : AbstractBottomSheetFragment() {
     }
 
     private fun onClickOk() {
-        onLeaveNote(noteText, attachPhotoFragment?.imagePaths)
+        onComposedNote(noteText, attachPhotoFragment?.imagePaths)
     }
 
     override fun onDiscard() {
@@ -75,5 +75,5 @@ abstract class AbstractCreateNoteFragment : AbstractBottomSheetFragment() {
         doneButton.isEnabled = !noteText.isEmpty()
     }
 
-    protected abstract fun onLeaveNote(text: String, imagePaths: List<String>?)
+    protected abstract fun onComposedNote(text: String, imagePaths: List<String>?)
 }

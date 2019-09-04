@@ -47,6 +47,8 @@ class AddCycleway(private val overpassServer: OverpassMapDataDao) : OsmElementQu
         "US-AZ","US-TX"
     )
 
+    override val isSplitWayEnabled = true
+
     override fun getTitle(tags: Map<String, String>) = R.string.quest_cycleway_title2
 
     override fun isApplicableTo(element: Element):Boolean? = null

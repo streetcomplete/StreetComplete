@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.ktx
 
+import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 
 /**
@@ -14,4 +15,31 @@ inline fun <T> SQLiteDatabase.transaction(body: SQLiteDatabase.() -> T): T {
     } finally {
         endTransaction()
     }
+}
+
+
+fun <R> SQLiteDatabase.query(
+    table: String,
+    columns: Array<String>? = null,
+    selection: String? = null,
+    selectionArgs: Array<String>? = null,
+    transform: (Cursor) -> R
+): List<R> = query(table, columns, selection, selectionArgs, null, null, null, null).use { cursor ->
+    val result = mutableListOf<R>()
+    cursor.moveToFirst()
+    while(!cursor.isAfterLast) {
+        result.add(transform(cursor))
+        cursor.moveToNext()
+    }
+    result
+}
+
+fun <R> SQLiteDatabase.queryOne(
+    table: String,
+    columns: Array<String>? = null,
+    selection: String? = null,
+    selectionArgs: Array<String>? = null,
+    transform: (Cursor) -> R?
+): R? = query(table, columns, selection, selectionArgs, null, null, null, "1").use { cursor ->
+    if (cursor.moveToFirst()) transform(cursor) else null
 }

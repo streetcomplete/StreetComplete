@@ -88,4 +88,19 @@ public class WayDao extends AOsmElementDao<Way>
 
 		return new OsmWay(id, version, nodeIds, tags);
 	}
+
+	/** Cleans up element entries that are not referenced by any quest anymore. */
+	@Override public void deleteUnreferenced()
+	{
+		SQLiteDatabase db = dbHelper.getWritableDatabase();
+		String where = getIdColumnName() + " NOT IN ( " +
+			getSelectAllElementIdsIn(OsmQuestTable.NAME) +
+			" UNION " +
+			getSelectAllElementIdsIn(UndoOsmQuestTable.NAME) +
+			" UNION " +
+			" SELECT " + OsmQuestSplitWayTable.Columns.WAY_ID + " AS " + getIdColumnName() + " FROM " + OsmQuestSplitWayTable.NAME +
+			")";
+
+		db.delete(getTableName(), where, null);
+	}
 }

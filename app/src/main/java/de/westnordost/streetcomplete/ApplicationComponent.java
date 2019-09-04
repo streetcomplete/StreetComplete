@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete;
 
 import javax.inject.Singleton;
 
+import androidx.annotation.NonNull;
 import dagger.Component;
 import de.westnordost.streetcomplete.data.DbModule;
 import de.westnordost.streetcomplete.data.OsmModule;
@@ -13,6 +14,7 @@ import de.westnordost.streetcomplete.oauth.OAuthModule;
 import de.westnordost.streetcomplete.oauth.OsmOAuthDialogFragment;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 import de.westnordost.streetcomplete.quests.QuestModule;
+import de.westnordost.streetcomplete.quests.SplitWayFragment;
 import de.westnordost.streetcomplete.quests.building_levels.AddBuildingLevelsForm;
 import de.westnordost.streetcomplete.quests.localized_name.AAddLocalizedNameForm;
 import de.westnordost.streetcomplete.quests.oneway.AddOnewayForm;
@@ -68,4 +70,5 @@ public interface ApplicationComponent
 	void inject(AddBuildingLevelsForm fragment);
 	void inject(ChangesetAutoCloserWorker worker);
 
+	void inject(@NonNull SplitWayFragment splitWayFragment);
 }

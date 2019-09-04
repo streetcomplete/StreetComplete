@@ -81,13 +81,13 @@ dependencies {
 
     // tests
     testImplementation 'junit:junit:4.12'
-    testImplementation 'org.mockito:mockito-core:2.23.4'
+    testImplementation 'org.mockito:mockito-core:2.28.2'
     testImplementation 'org.assertj:assertj-core:2.8.0'
+    testImplementation 'de.westnordost:osmapi:3.4'
 
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test:rules:1.2.0'
-    // KotlinX Jetifier can't cope with bytebuddy-1.9 which is a dependency of mockito-android 2.23.+
-    androidTestImplementation 'org.mockito:mockito-android:2.22.0'
+    androidTestImplementation 'org.mockito:mockito-android:2.28.2'
     androidTestImplementation 'org.assertj:assertj-core:2.8.0'
 
     // dependency injection
@@ -122,7 +122,7 @@ dependencies {
 
     // talking with OSM Api
     implementation 'oauth.signpost:signpost-core:1.2.1.2'
-    implementation ('de.westnordost:osmapi:3.3') {
+    implementation ('de.westnordost:osmapi:3.4') {
         // it's already included in Android
         exclude group: 'net.sf.kxml', module: 'kxml2'
     }

@@ -25,6 +25,9 @@ interface OsmElementQuestType<T> : QuestType<T> {
     /** returns whether the markers should be at the ends instead of the center */
     val hasMarkersAtEnds: Boolean get() = false
 
+    /** returns whether the user should be able to split the way instead */
+    val isSplitWayEnabled: Boolean get() = false
+
     /** returns title resource for when the element has the specified [tags]. The tags are unmodifiable */
     fun getTitle(tags: Map<String, String>): Int
 

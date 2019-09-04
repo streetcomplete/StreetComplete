@@ -7,25 +7,10 @@ import android.content.res.AssetManager;
 import android.content.res.Resources;
 import android.preference.PreferenceManager;
 
-import java.util.List;
-
-import javax.inject.Provider;
 import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import de.westnordost.streetcomplete.data.QuestController;
-import de.westnordost.streetcomplete.data.QuestType;
-import de.westnordost.streetcomplete.data.changesets.OpenChangesetsDao;
-import de.westnordost.streetcomplete.data.download.MobileDataAutoDownloadStrategy;
-import de.westnordost.streetcomplete.data.download.WifiAutoDownloadStrategy;
-import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao;
-import de.westnordost.streetcomplete.data.osm.persist.MergedElementDao;
-import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
-import de.westnordost.streetcomplete.data.osm.persist.UndoOsmQuestDao;
-import de.westnordost.streetcomplete.data.osmnotes.CreateNoteDao;
-import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestDao;
-import de.westnordost.streetcomplete.data.tiles.DownloadedTilesDao;
 import de.westnordost.streetcomplete.location.LocationRequestFragment;
 import de.westnordost.streetcomplete.oauth.OsmOAuthDialogFragment;
 import de.westnordost.streetcomplete.sound.SoundFx;
@@ -64,31 +49,6 @@ public class ApplicationModule
 	@Provides public Resources resources()
 	{
 		return application.getResources();
-	}
-
-	@Provides public QuestController questController(
-			OsmQuestDao osmQuestDB, UndoOsmQuestDao undoOsmQuestDB, MergedElementDao osmElementDB,
-			ElementGeometryDao geometryDB, OsmNoteQuestDao osmNoteQuestDB,
-			CreateNoteDao createNoteDB, OpenChangesetsDao manageChangesetsDB,
-			Provider<List<QuestType>> questTypesProvider)
-	{
-		return new QuestController(
-				osmQuestDB, undoOsmQuestDB, osmElementDB, geometryDB, osmNoteQuestDB, createNoteDB,
-				manageChangesetsDB,	questTypesProvider, appContext());
-	}
-
-	@Provides public static MobileDataAutoDownloadStrategy mobileDataAutoDownloadStrategy(
-			OsmQuestDao osmQuestDB, DownloadedTilesDao downloadedTilesDao,
-			Provider<List<QuestType>> questTypesProvider)
-	{
-		return new MobileDataAutoDownloadStrategy(osmQuestDB, downloadedTilesDao, questTypesProvider);
-	}
-
-	@Provides public static WifiAutoDownloadStrategy wifiAutoDownloadStrategy(
-			OsmQuestDao osmQuestDB, DownloadedTilesDao downloadedTilesDao,
-			Provider<List<QuestType>> questTypesProvider)
-	{
-		return new WifiAutoDownloadStrategy(osmQuestDB, downloadedTilesDao, questTypesProvider);
 	}
 
 	@Provides public static LocationRequestFragment locationRequestComponent()

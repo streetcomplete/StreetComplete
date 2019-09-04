@@ -14,6 +14,7 @@ class AddRoadSurface(o: OverpassMapDataDao) : SimpleOverpassQuestType<String>(o)
     """
     override val commitMessage = "Add road surfaces"
     override val icon = R.drawable.ic_quest_street_surface
+    override val isSplitWayEnabled = true
 
     override fun getTitle(tags: Map<String, String>): Int {
         val hasName = tags.containsKey("name")
