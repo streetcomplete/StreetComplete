@@ -22,34 +22,28 @@ import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderList
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeDao
 
 class QuestSelectionFragment : Fragment() {
-    private val questSelectionAdapter: QuestSelectionAdapter
-	private val questTypeRegistry: QuestTypeRegistry
-	private val visibleQuestTypeDao: VisibleQuestTypeDao
-	private val questTypeOrderList: QuestTypeOrderList
+    @Inject internal lateinit var questSelectionAdapter: QuestSelectionAdapter
+    @Inject internal lateinit var questTypeRegistry: QuestTypeRegistry
+    @Inject internal lateinit var visibleQuestTypeDao: VisibleQuestTypeDao
+    @Inject internal lateinit var questTypeOrderList: QuestTypeOrderList
 
 	init {
-		val fields =
-			InjectedFields()
-		Injector.instance.applicationComponent.inject(fields)
-	    questSelectionAdapter = fields.questSelectionAdapter
-		questTypeRegistry = fields.questTypeRegistry
-		visibleQuestTypeDao = fields.visibleQuestTypeDao
-		questTypeOrderList = fields.questTypeOrderList
+		Injector.instance.applicationComponent.inject(this)
+        questSelectionAdapter.list = createQuestTypeVisibilityList()
 	}
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         setHasOptionsMenu(true)
+        return inflater.inflate(R.layout.fragment_quest_selection, container, false)
+    }
 
-        val view = inflater.inflate(R.layout.fragment_quest_selection, container, false)
-
-        questSelectionAdapter.list = createQuestTypeVisibilityList()
-
-        val questSelectionList = view.findViewById<RecyclerView>(R.id.questSelectionList)
-        questSelectionList.addItemDecoration(DividerItemDecoration(context!!, DividerItemDecoration.VERTICAL))
-        questSelectionList.layoutManager = LinearLayoutManager(context)
-        questSelectionList.adapter = questSelectionAdapter
-
-        return view
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        view.findViewById<RecyclerView>(R.id.questSelectionList).apply {
+            addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
+            layoutManager = LinearLayoutManager(context)
+            adapter = questSelectionAdapter
+        }
     }
 
     override fun onStart() {
@@ -102,11 +96,4 @@ class QuestSelectionFragment : Fragment() {
         questTypeOrderList.sort(questTypes)
 	    return questTypes.map { QuestVisibility(it, visibleQuestTypeDao.isVisible(it)) }.toMutableList()
     }
-
-	internal class InjectedFields {
-		@Inject internal lateinit var questSelectionAdapter: QuestSelectionAdapter
-		@Inject internal lateinit var questTypeRegistry: QuestTypeRegistry
-		@Inject internal lateinit var visibleQuestTypeDao: VisibleQuestTypeDao
-		@Inject internal lateinit var questTypeOrderList: QuestTypeOrderList
-	}
 }

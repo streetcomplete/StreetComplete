@@ -65,7 +65,7 @@ public interface ApplicationComponent
 
 	void inject(MapControlsFragment mapControlsFragment);
 
-	void inject(QuestSelectionFragment.InjectedFields questSelectionFragment);
+	void inject(QuestSelectionFragment questSelectionFragment);
 
 	void inject(AddBuildingLevelsForm fragment);
 	void inject(ChangesetAutoCloserWorker worker);
