@@ -21,6 +21,8 @@
         <item name="dividerVertical">@drawable/button_bar_divider</item>
         <item name="dividerHorizontal">@drawable/button_bar_divider</item>
         <item name="android:popupMenuStyle">@style/Theme.Bubble.Popup</item>
+
+        <item name="preferenceTheme">@style/CustomPreferenceTheme</item>
     </style>
 
     <style name="Theme.Bubble.Popup" parent="Widget.AppCompat.Light.PopupMenu">
@@ -39,5 +41,38 @@
     </style>
 
     <style name="Theme.Bubble.Dialog.Alert"/>
+
+    <style name="CustomPreferenceTheme" parent="@style/PreferenceThemeOverlay">
+        <item name="preferenceCategoryStyle">@style/CustomPreferenceCategory</item>
+        <item name="preferenceStyle">@style/CustomPreference</item>
+        <item name="checkBoxPreferenceStyle">@style/CustomCheckBoxPreference</item>
+        <item name="dialogPreferenceStyle">@style/CustomDialogPreference</item>
+        <item name="switchPreferenceCompatStyle">@style/CustomSwitchPreferenceCompat</item>  <!-- for pre lollipop(v21) -->
+        <item name="switchPreferenceStyle">@style/CustomSwitchPreference</item>
+    </style>
+
+    <style name="CustomPreferenceCategory" parent="Preference.Category.Material">
+        <item name="iconSpaceReserved">false</item>
+    </style>
+
+    <style name="CustomPreference" parent="Preference.Material">
+        <item name="iconSpaceReserved">false</item>
+    </style>
+
+    <style name="CustomCheckBoxPreference" parent="Preference.CheckBoxPreference.Material">
+        <item name="iconSpaceReserved">false</item>
+    </style>
+
+    <style name="CustomDialogPreference" parent="Preference.DialogPreference.Material">
+        <item name="iconSpaceReserved">false</item>
+    </style>
+
+    <style name="CustomSwitchPreferenceCompat" parent="Preference.SwitchPreferenceCompat.Material">
+        <item name="iconSpaceReserved">false</item>
+    </style>
+
+    <style name="CustomSwitchPreference" parent="Preference.SwitchPreference.Material">
+        <item name="iconSpaceReserved">false</item>
+    </style>
 
 </resources>
