@@ -13,19 +13,15 @@ import android.widget.Toast
 
 import javax.inject.Provider
 
-import de.westnordost.streetcomplete.FragmentContainerActivity
-import de.westnordost.streetcomplete.Injector
-import de.westnordost.streetcomplete.IntentListener
-import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.QuestStatus
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao
 import de.westnordost.streetcomplete.data.tiles.DownloadedTilesDao
 import de.westnordost.streetcomplete.oauth.OAuthPrefs
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.toast
 import de.westnordost.streetcomplete.oauth.OsmOAuthDialogFragment
 import de.westnordost.streetcomplete.settings.questselection.QuestSelectionFragment
 import javax.inject.Inject
+import de.westnordost.streetcomplete.*
 
 
 class SettingsFragment : PreferenceFragmentCompat(),
@@ -96,6 +92,13 @@ class SettingsFragment : PreferenceFragmentCompat(),
             }
             osmQuestDao.replaceAll(hidden)
 	        context?.toast(getString(R.string.restore_hidden_success, hidden.size), Toast.LENGTH_LONG)
+            true
+        }
+
+        preferenceScreen.findPreference("debug").isVisible = BuildConfig.DEBUG
+
+        preferenceScreen.findPreference("debug.quests").setOnPreferenceClickListener {
+            startActivity(Intent(context, ShowQuestFormsActivity::class.java))
             true
         }
     }

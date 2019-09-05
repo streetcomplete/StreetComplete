@@ -53,6 +53,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".FragmentContainerActivity"/>
+        <activity android:name=".settings.ShowQuestFormsActivity"
+            android:configChanges="orientation|screenSize|uiMode"/>
         <service android:name=".data.download.QuestDownloadService" />
         <service android:name=".data.upload.QuestChangesUploadService" />
         <provider

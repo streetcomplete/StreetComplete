@@ -104,4 +104,15 @@
       
     </PreferenceCategory>
 
+    <PreferenceCategory
+        android:key="debug"
+        android:title="Debug">
+
+        <Preference
+            android:key="debug.quests"
+            android:title="Show Quest Forms"
+            />
+
+    </PreferenceCategory>
+
 </PreferenceScreen>
