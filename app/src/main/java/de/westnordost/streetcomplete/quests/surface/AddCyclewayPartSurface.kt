@@ -13,6 +13,7 @@ class AddCyclewayPartSurface(o: OverpassMapDataDao) : SimpleOverpassQuestType<St
     """
     override val commitMessage = "Add path surfaces"
     override val icon = R.drawable.ic_quest_bicycleway_surface
+    override val isSplitWayEnabled = true
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_cyclewayPartSurface_title
 
