@@ -188,9 +188,9 @@ class AddHousenumber(private val overpass: OverpassMapDataDao) : OsmElementQuest
 
     override fun applyAnswerTo(answer: HousenumberAnswer, changes: StringMapChangesBuilder) {
         when(answer) {
-            is NoAddress   -> changes.add("noaddress", "yes")
-            is HouseNumber -> changes.add("addr:housenumber", answer.number)
-            is HouseName   -> changes.add("addr:housename", answer.name)
+            is NoHouseNumber -> changes.add("nohousenumber", "yes")
+            is HouseNumber   -> changes.add("addr:housenumber", answer.number)
+            is HouseName     -> changes.add("addr:housename", answer.name)
             is ConscriptionNumber -> {
                 changes.add("addr:conscriptionnumber", answer.number)
                 if (answer.streetNumber != null) {
@@ -214,7 +214,7 @@ class AddHousenumber(private val overpass: OverpassMapDataDao) : OsmElementQuest
             "[~'^addr:(housenumber|housename|conscriptionnumber|streetnumber)$'~'.']"
 
         private const val NO_ADDRESS_FILTER =
-            "[!'addr:housenumber'][!'addr:housename'][!'addr:conscriptionnumber'][!'addr:streetnumber'][!noaddress]"
+            "[!'addr:housenumber'][!'addr:housename'][!'addr:conscriptionnumber'][!'addr:streetnumber'][!noaddress][!nohousenumber]"
 
         private const val BUILDINGS_WITHOUT_ADDRESS_FILTER =
             "['building'~'^(house|residential|apartments|detached|terrace|dormitory|semi|semidetached_house|farm|" +
