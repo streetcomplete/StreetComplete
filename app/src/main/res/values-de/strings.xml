@@ -27,7 +27,7 @@
     <string name="quest_generic_confirmation_no">"Prüfe ich"</string>
     <string name="quest_generic_error_field_empty">"Dieses Feld wurde leer gelassen"</string>
     <string name="quest_leave_new_note_title">"Stattdessen eine Notiz hinterlassen?"</string>
-    <string name="quest_leave_new_note_description">"Du kannst hier eine öffentliche Notiz hinterlassen, welche von anderen kommentiert und hoffentlich gelöst werden kann oder diese Aufgabe stattdessen  für dich selbst verstecken"</string>
+    <string name="quest_leave_new_note_description">"Du kannst hier eine öffentliche Notiz hinterlassen, welche von anderen kommentiert und hoffentlich gelöst werden kann oder diese Aufgabe stattdessen für dich selbst verstecken"</string>
     <string name="quest_leave_new_note_yes">"OK"</string>
     <string name="quest_leave_new_note_no">"Nein, verstecken"</string>
     <string name="quest_streetName_title">"Wie heißt diese Straße?"</string>
@@ -667,4 +667,20 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="about_contributing">"Deine Antworten verbessern direkt die OpenStreetMap. Die beigetragenen Daten sind frei, jeder kann sie benutzen. Es gibt bereits viele tolle Projekte, die darauf zugreifen."</string>
     <string name="about_missing_stars">"Die Sterne werden momentan nicht zwischen deinen Geräten geteilt, aber die Antworten werden direkt zur OpenStreetMap-Datenbank hinzugefügt."</string>
     <string name="how_to_get_stars">"Wähle eine der Aufgaben auf der Karte und beantworte die Frage. So verbesserst du die OpenStreetMap und bekommst Sterne. Solltest Du keine Aufgaben auf der Karte sehen, musst du vielleicht weiter hereinzoomen."</string>
+    <string name="oauth_remove_authorization_dialog_message">"Möchtest Du die Authorisierung für dein OSM Benutzerkonto entfernen?"</string>
+    <string name="oauth_remove_authorization_confirmation">"Entfernen"</string>
+    <string name="quest_leafType_title">"Haben die Bäume hier Nadeln oder Blätter?"</string>
+    <string name="quest_leaf_type_needles">"Nadeln"</string>
+    <string name="quest_leaf_type_broadleaved">"Blätter"</string>
+    <string name="quest_leaf_type_mixed">"Gibt hier beide"</string>
+    <string name="quest_cyclewayPartSurface_title">"Welche Oberfläche hat der Fahrradweg hier?"</string>
+    <string name="quest_generic_answer_differs_along_the_way">"Entlang des Weges unterschiedlich…"</string>
+    <string name="quest_split_way_description">"Wenn es entlang des Weges unterschiedlich ist, ist der erste Schritt, den Weg aufzuspalten. Danach kann die Aufgabe für jeden Teil davon getrennt beantwortet werden.
+Beachte, dass die Aufgaben für die aufgespaltenen Teile möglicherweise erst viel später erscheinen.
+Jetzt aufspalten?"</string>
+    <string name="quest_split_way_tutorial">"Drücke auf den Weg, um ihn an den Punkt(en), wo die Antwort unterschiedlich ist, aufzuspalten. Versuche, möglichst genau zu sein, Du kannst wie immer frei hereinzoomen."</string>
+    <string name="quest_split_way_too_imprecise">"Bitte zoome weiter herein"</string>
+    <string name="quest_split_way_many_splits_confirmation_description">"Das sind ganz schön viele Punkte an denen aufgespalten werden soll. Es gibt die Möglichkeit, den Weg auch später noch weiter aufzuspalten."</string>
+    <string name="quest_footwayPartSurface_title">"Welche Oberfläche hat der Fußweg hier?"</string>
+    <string name="quest_wheelchairAccess_toiletsPart_title">"Ist die Toilette in %s zugänglich für Rollstühle?"</string>
 </resources>

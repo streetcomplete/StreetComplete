@@ -723,4 +723,26 @@ Partiellement signifie qu’un fauteuil roulant peut entrer et utiliser les toil
 
     <!-- Fuzzy -->
     <string name="quest_ferry_motor_vehicle_title">"Transporte-t-il des véhicules à moteur ?"</string>
+    <string name="quest_leave_new_note_photos_are_useful">"Ajouter une photo rendra la note beaucoup plus utile."</string>
+    <string name="quest_postboxCollectionTimes_name_title">"Quelles sont les heures de relève pour cette boîte postale %s?"</string>
+    <string name="create_new_note_hint">"Il est préférable d’écrire la note dans la langue parlée localement ou autrement en anglais."</string>
+    <string name="about_contributing">"Vos réponses améliorent directement OpenStreetMap. Les données ajoutées sont ouvertes, tout le monde peut les utiliser. Beaucoup de grands projets l'utilisent déjà."</string>
+    <string name="about_missing_stars">"Actuellement, le nombre d'étoiles n'est pas partagé entre les appareils, mais les réponses sont ajoutées directement à la base de données OpenStreetMap."</string>
+    <string name="how_to_get_stars">"Choisissez l'un des marqueurs sur la carte et répondez à la question. De cette façon, vous améliorerez les données OpenStreetMap et obtiendrez des étoiles. Si vous ne voyez aucun marqueur, vous devriez peut-être effectuer un zoom arrière sur la carte."</string>
+    <string name="oauth_remove_authorization_dialog_message">"Voulez-vous supprimer l'autorisation pour votre compte OSM?"</string>
+    <string name="oauth_remove_authorization_confirmation">"Supprimer"</string>
+    <string name="quest_leafType_title">"Est ce que les arbres ont des aiguilles ou des feuilles ?"</string>
+
+    <!-- I don't find a way to get the context of this, it may also be translated in "épineux". -->
+    <string name="quest_leaf_type_needles">"Aiguilles"</string>
+    <string name="quest_leaf_type_broadleaved">"feuillu"</string>
+    <string name="quest_leaf_type_mixed">"Les deux sont présents"</string>
+    <string name="quest_cyclewayPartSurface_title">"Quelle est la surface de la piste cyclable ?"</string>
+    <string name="quest_generic_answer_differs_along_the_way">"diffère en cours de route"</string>
+    <string name="quest_split_way_description">"Si cela diffère en cours de route, la première étape consiste à diviser le chemin. Ensuite, vous pouvez répondre à la quête séparément pour chaque partie séparée.
+Notez que les quêtes pour les parties scindées peuvent apparaître beaucoup plus tard.
+Le séparer maintenant?"</string>
+    <string name="quest_split_way_tutorial">"Cliquez sur le chemin au (x) point (s) où la réponse diffère. Essayez d'être aussi précis que possible, vous pouvez zoomer comme d'habitude."</string>
+    <string name="quest_split_way_too_imprecise">"Veuillez zoomer davantage"</string>
+    <string name="quest_footwayPartSurface_title">"Quelle est la surface du chemin piéton ici?"</string>
 </resources>

@@ -721,6 +721,19 @@
 "</string>
     <string name="create_new_note_hint">"بهترین یادداشت را به زبان محلی بنگارید یا در غیر این صورت به زبان انگلیسی بنویسید."</string>
     <string name="about_contributing">"پاسخ های شما به طور مستقیم در حال ارتقا OpenStreetMap است. داده های به اشتراک گذاشته شده متن‌باز است، همه می‌توانند از آن استفاده کنند. بسیاری از پروژه های بزرگ قبلاً از آن استفاده کرده‌اند."</string>
-    <string name="about_missing_stars">"در حال حاضر، تعداد ستارگان در گوشی‌های همراه به اشتراک گذاشته نمی شود، اما پاسخ ها به صورت مستقیم به پایگاه داده OpenStreetMap اضافه می‌شوند."</string>
+    <string name="about_missing_stars">"در حال حاضر، تعداد امتیاز‌ها در گوشی‌های همراه به اشتراک گذاشته نمی شود، اما پاسخ ها به صورت مستقیم به پایگاه داده OpenStreetMap اضافه می‌شوند."</string>
     <string name="how_to_get_stars">"یکی از نشانگرهای موجود در نقشه را انتخاب کنید و به پرسش آن پاسخ دهید. به این ترتیب داده های OpenStreetMap را بهبود می بخشید و ستاره می‌گیرید. در صورت عدم وجود نشانگر ، لازم است نقشه را بزرگنمایی کنید."</string>
+    <string name="oauth_remove_authorization_dialog_message">"آیا می‌خواهید مجوز ورود به حساب کاربری OSM خود را حذف نمایید؟"</string>
+    <string name="oauth_remove_authorization_confirmation">"حذف کردن"</string>
+    <string name="quest_leafType_title">"درختان اینجا برگ‌سوزنی هستند یا پهن‌برگ؟"</string>
+    <string name="quest_leaf_type_needles">"سوزنی"</string>
+    <string name="quest_leaf_type_broadleaved">"پهن‌برگ"</string>
+    <string name="quest_leaf_type_mixed">"هر دو وجود دارند"</string>
+    <string name="quest_cyclewayPartSurface_title">"سطح مسیر دوچرخه ‌سواری از چه جنسی است؟"</string>
+    <string name="quest_generic_answer_differs_along_the_way">"تناقض در طول مسیر..."</string>
+    <string name="quest_split_way_description">"اگر در طول راه تناقض وجود داشته باشد، اولین گام تفکیک راه است. پس از آن می‌توان برای هر قسمت تفکیک شده به طور جداگانه پاسخ جُستار را ارائه نمود. توجه داشته باشید که جُستارهای بخش‌های تفکیک‌شده ممکن است بعداً ارائه شوند. اکنون تفکیک کنید؟"</string>
+    <string name="quest_split_way_tutorial">"روی مسیر ضربه بزنید و در نقطه ای (هایی) که چند پاسخ وجود دارد، آن مسیر را تفکیک کنید. سعی کنید تا حد ممکن دقیق باشید ، می توانید طبق معمول بزرگنمایی کنید."</string>
+    <string name="quest_split_way_too_imprecise">"لطفاً بیشتر بزرگنمایی کنید."</string>
+    <string name="quest_split_way_many_splits_confirmation_description">"اینها به چند مسیر تفکیک شده است. همیشه بعداً هم می‌توانید راه را تفکیک کنید."</string>
+    <string name="quest_footwayPartSurface_title">"سطح این پیاده‌راه از چه جنسی است؟"</string>
 </resources>

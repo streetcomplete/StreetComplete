@@ -103,7 +103,6 @@
     <string name="quest_roofShape_select_one">"Vælg en:"</string>
     <string name="quest_roofShape_show_more">"Vis mere…"</string>
     <string name="quest_roofShape_answer_many">"Den har flere forskellige former"</string>
-    <string name="pref_category_cache">"Cache"</string>
 
     <!-- "Auto-synk" would mean auto-swallow -->
     <string name="pref_title_sync">"Auto-synkroniser"</string>
@@ -615,6 +614,8 @@ F.eks. 1,3 eller 2-6."</string>
     <string name="quest_address_answer_no_housenumber_message1">"Bygningen var markeret som:"</string>
     <string name="quest_address_answer_no_housenumber_message2">"Er dette korrekt, og er det ikke bare en del af en bygning?"</string>
     <string name="quest_buildingType_shrine">"Helligdom"</string>
+    <string name="quest_maxspeed_title_short2">"Hvad er fartgrænsen for denne vej?"</string>
+    <string name="quest_maxspeed_answer_sign">"Et skilt"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
     <string name="action_deselect_all">"Fravælg alle"</string>
     <string name="quest_buildingType_title">"Hvilken slags bygning er dette?"</string>

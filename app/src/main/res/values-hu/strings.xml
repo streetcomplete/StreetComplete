@@ -418,7 +418,7 @@ Vagy le is tölthetsz egy másik billentyűzetet az áruházból. Népszerű bil
     <string name="quest_wheelchairAccess_description_toilets">"Ha akadálymentes, akkor talán látható rajta egy ehhez hasonló jel.
 A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehet használni, de nincs korlát vagy megfelelő mosdókagyló."</string>
     <string name="map_btn_create_note">"Új megjegyzés létrehozása"</string>
-    <string name="create_new_note_unprecise">"Megjegyzés létrehozásához tovább kell nagyítani"</string>
+    <string name="create_new_note_unprecise">"Megjegyzés létrehozásához közelíts rá jobban"</string>
     <string name="create_new_note_description">"Megjegyzés elhelyezésével tájékoztathatod a többi térképezőt arról, hogy itt egy probléma van. A megjegyzés helyét a térkép mozgatásával lehet beállítani:"</string>
     <string name="pref_title_quests_invalidation">"Kérdések helyi gyorsítótárának érvénytelenítése"</string>
     <string name="pref_title_quests_invalidation_summary">"Akkor hasznos, ha néhány kérdés elavult"</string>
@@ -646,4 +646,31 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="quest_placeName_title_name">"Mi a neve ennek a helynek? (%s)"</string>
     <string name="action_open_location">"Hely megnyitása egy másik alkalmazásban"</string>
     <string name="map_application_missing">"Nem található másik térképalkalmazás"</string>
+    <string name="pref_title_overpass_url_select">"Overpass szerver módosítása"</string>
+    <string name="pref_title_overpass_url_info">"Alkalmazás újraindítása szükséges. A cenzútát lehet, hogy meg tudja kerülni egyes országokban."</string>
+    <string name="label_housenumber">"házszám"</string>
+    <string name="label_blocknumber">"háztömb szám"</string>
+    <string name="quest_busStopShelter_covered">"Az egész megálló fedett"</string>
+    <string name="quest_ferry_pedestrian_name_title">"%s szállít gyalogosokat?"</string>
+    <string name="quest_ferry_pedestrian_title">"Ez a komp szállít gyalogosokat?"</string>
+    <string name="quest_ferry_motor_vehicle_name_title">"%s szállít gépjárműveket?"</string>
+    <string name="quest_ferry_motor_vehicle_title">"Ez a komp szállít gépjárműveket?"</string>
+    <string name="quest_leave_new_note_photos_are_useful">"Fénykép hozzáadásával a megjegyzés sokkal hasznosabb lesz."</string>
+    <string name="quest_postboxCollectionTimes_name_title">"Mikor gyűjtik be ezt a postaládát: %s?"</string>
+    <string name="create_new_note_hint">"Legjobb, ha a megjegyzést a helyi nyelven vagy angolul írod."</string>
+    <string name="about_contributing">"A válaszaid közvetlenül fejlesztik az OpenStreetMap-et. A hozzáadott adatok nyíltak, bárki használhatja. Számos nagyszerű projekt már használja is."</string>
+    <string name="about_missing_stars">"Jelenleg a csillagok száma más eszközökön nem látható, viszont a válaszok közvetlenül az OpenStreetMap adatbázisába kerülnek."</string>
+    <string name="how_to_get_stars">"Válaszd ki az egyik jelölőt a térképen és válaszold meg a kérdést. Így fejleszted az OpenStreetMap adatokat és csillagogat szerzel. Ha nem látsz jelölőket, akkor lehet, hogy jobban rá kell közelítened a térképre."</string>
+    <string name="oauth_remove_authorization_dialog_message">"Szeretnéd eltávolítani az OSM fiókod hitelesítését?"</string>
+    <string name="oauth_remove_authorization_confirmation">"Eltávolít"</string>
+    <string name="quest_leafType_title">"Az itteni fák tűlevelűek vagy lombosak?"</string>
+    <string name="quest_leaf_type_needles">"Tűlevelű"</string>
+    <string name="quest_leaf_type_broadleaved">"Lombos"</string>
+    <string name="quest_leaf_type_mixed">"Mindkettő megtalálható"</string>
+    <string name="quest_cyclewayPartSurface_title">"Milyen a burkolata itt a kerékpárútnak?"</string>
+    <string name="quest_generic_answer_differs_along_the_way">"Az út mentén változik..."</string>
+    <string name="quest_split_way_description">"Ha az út mentén változik, akkor először fel kell osztani az utat. Utána a kérdést meg tudod válaszolni az egyes darabokra külön-külön. Lehet, hogy a darabokra vonatkozó új kérdések esetleg jóval később jelennek meg. Felosztod most?"</string>
+    <string name="quest_split_way_tutorial">"Koppints az út azon pontja(i)ra, ahol a válasz megváltozik. Próbálj meg a lehető legpontosabb lenni, ráközelíthetsz, mint mindig."</string>
+    <string name="quest_split_way_too_imprecise">"Kérlek közelíts rá jobban"</string>
+    <string name="quest_split_way_many_splits_confirmation_description">"Ez jó pár új darab. Később is ugyanúgy tovább oszthatod az utat."</string>
 </resources>

@@ -107,7 +107,6 @@
     <string name="quest_roofShape_select_one">"Выберите один вариант:"</string>
     <string name="quest_roofShape_show_more">"Ещё…"</string>
     <string name="quest_roofShape_answer_many">"Она имеет несколько разных форм"</string>
-    <string name="pref_category_cache">"Кэш"</string>
     <string name="pref_title_sync">"Автосинхронизация"</string>
     <string name="map_btn_zoom_out">"Отдалить"</string>
     <string name="map_btn_zoom_in">"Приблизить"</string>
@@ -686,5 +685,15 @@
     <string name="default_disabled_msg_maxspeed">"Это задание выключено по умолчанию, потому что обычно требует проверить всю улицу на знаки ограничения скорости, не только подсвеченный сегмент. Это может быть слишком долгим для одного задания."</string>
     <string name="pref_title_quests_restore_hidden">"Показать скрытые квесты"</string>
     <string name="restore_hidden_success">"Показано %d скрытых квестов"</string>
+    <string name="quest_sidewalk_value_yes">"тротуар"</string>
+    <string name="quest_sidewalk_value_no">"нет тротуара"</string>
+    <string name="quest_accessible_for_pedestrians_title_prohibited">"Запрещается ли пешеходам ходить по этой дороге?"</string>
     <string name="quest_buildingType_title">"Какого типа это здание?"</string>
+    <string name="pref_title_theme_select">"Выберите тему"</string>
+    <string name="theme_automatic">"Автоматически"</string>
+    <string name="theme_light">"Светлая"</string>
+    <string name="theme_dark">"Темная"</string>
+    <string name="theme_system_default">"Система по умолчанию"</string>
+    <string name="pref_title_overpass_url_info">"Требуется перезапуск приложения, чтобы применить. Может обойти цензуру, например в России."</string>
+    <string name="label_housenumber">"номер дома"</string>
 </resources>

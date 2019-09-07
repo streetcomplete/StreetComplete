@@ -716,4 +716,10 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
 
     <!-- Fuzzy -->
     <string name="quest_ferry_motor_vehicle_title">"Převáží motorová vozidla?"</string>
+    <string name="quest_leave_new_note_photos_are_useful">"Přidáním fotografie uděláte poznámku mnohem užitečnější."</string>
+    <string name="quest_postboxCollectionTimes_name_title">"Kdy se tato %s poštovní schránka vybírá?"</string>
+    <string name="create_new_note_hint">"Nejlepší je napsat poznámku v jazyku, kterým se tu mluví, nebo jinak v angličtině."</string>
+    <string name="about_contributing">"Vaše odpovědi přímo vylepšují OpenStreetMap. Vložená data jsou otevřená a každý je může použít. Mnoho skvělých projektů je již používá."</string>
+    <string name="about_missing_stars">"Počet hvězdiček není momentálně sdílen mezi různými zařízeními, ale odpovědi jsou přímo přidány do OpenStreetMap databáze."</string>
+    <string name="how_to_get_stars">"Vyberte jeden z bodů na mapě a odpovězte na otázku, která se pod ním nachází. Tím vylepšíte data na OpenStreetMap a dostanete hvězdičku. Pokud žádné body nevidíte, zkuste odzoomovat mapu."</string>
 </resources>

@@ -625,4 +625,19 @@
     <string name="quest_placeName_title_name">"이 장소의 명칭은 무엇입니까? (%s)"</string>
     <string name="action_open_location">"다른 앱에서 위치 열기"</string>
     <string name="map_application_missing">"설치된 다른 지도 앱이 없습니다"</string>
+    <string name="pref_title_overpass_url_select">"Overpass 서버 변경"</string>
+    <string name="pref_title_overpass_url_info">"설정을 적용하려면 앱을 다시 시작해야 합니다. 러시아 등의 국가에서는 검열을 우회할 수도 있습니다."</string>
+    <string name="label_housenumber">"건물 번호"</string>
+    <string name="label_blocknumber">"거리 블록 번호"</string>
+    <string name="quest_busStopShelter_covered">"모든 정류장에 지붕에 있음"</string>
+    <string name="quest_ferry_pedestrian_name_title">"사람이 %s을(를) 이용할 수 있습니까?"</string>
+    <string name="quest_ferry_pedestrian_title">"사람이 이 페리 노선을 이용할 수 있습니까?"</string>
+    <string name="quest_ferry_motor_vehicle_name_title">"자동차가 %s을(를) 이용할 수 있습니까?"</string>
+    <string name="quest_ferry_motor_vehicle_title">"자동차가 이 페리 노선을 이용할 수 있습니까?"</string>
+    <string name="quest_leave_new_note_photos_are_useful">"사진을 추가하면 참고를 읽는 다른 사람들에게 도움이 됩니다."</string>
+    <string name="quest_postboxCollectionTimes_name_title">"이 %s 우체통에서는 우편물을 언제 가져갑니까?"</string>
+    <string name="create_new_note_hint">"참고는 현지어나 영어로 작성하는 것이 좋습니다."</string>
+    <string name="about_contributing">"답변은 오픈스트리트맵을 개선하는 데 직접적으로 이용됩니다. 기여한 데이터는 자유롭게, 누구나 이용할 수 있습니다. 이미 수많은 거대 프로젝트에서 오픈스트리트맵 데이터를 이용하고 있습니다."</string>
+    <string name="about_missing_stars">"현재, 별점은 공유되지 않습니다. 그러나 답변은 오픈스트리트맵 데이터베이스에 바로 들어갑니다."</string>
+    <string name="how_to_get_stars">"지도에서 퀘스트를 찾아 터치하세요. 이 방식으로 오픈스트리트맵 데이터에 기여하면 별을 얻을 수 있습니다. 만약 지도에 퀘스트가 보이지 않는다면 지도를 축소해 보세요."</string>
 </resources>

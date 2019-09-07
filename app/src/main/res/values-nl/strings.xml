@@ -731,4 +731,25 @@ Bijvoorbeeld 1m3 of 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_ferry_motor_vehicle_title">"Vervoert Voertuigen?"</string>
+    <string name="quest_leave_new_note_photos_are_useful">"Het toevoegen van een foto maakt de notitie duidelijker."</string>
+    <string name="quest_postboxCollectionTimes_name_title">"Wat zijn de ophaaltijden van deze %s brievenbus."</string>
+    <string name="create_new_note_hint">"Het beste is de notitie in de lokaal gesproken taal of anders in het Engels te schrijven. "</string>
+    <string name="about_contributing">"Jou antwoorden verbeteren direct Open StreetMap. Bijgedragen data is open, iedereen kan er gebruik van maken. Vele grote projecten gebruiken het al."</string>
+    <string name="about_missing_stars">"Momenteel wordt het aantal sterren niet gedeeld tussen apparaten, maar antwoorden worden direct toegevoegd aan de OpenStreetMap-database."</string>
+    <string name="how_to_get_stars">"Kies een van de markeringen op de kaart en beantwoord de vraag. Op deze manier verbetert u OpenStreetMap-gegevens en krijgt u sterren. Als u geen markeringen ziet, moet u mogelijk uitzoomen op de kaart."</string>
+
+    <!-- I think it might be better to change the text to: Do you want to remove the connection with your OSM account? -->
+    <string name="oauth_remove_authorization_dialog_message">"Wil je de autorisatiekoppeling met je OSM account verwijderen? "</string>
+    <string name="oauth_remove_authorization_confirmation">"Verwijderen"</string>
+    <string name="quest_leafType_title">"Hebben de bomen hier bladeren of naalden?"</string>
+    <string name="quest_leaf_type_needles">"Naalden"</string>
+    <string name="quest_leaf_type_broadleaved">"Breedbladig"</string>
+    <string name="quest_leaf_type_mixed">"Beide zijn aanwezig"</string>
+    <string name="quest_cyclewayPartSurface_title">"Welke bedekking heeft het fietspad hier?"</string>
+    <string name="quest_generic_answer_differs_along_the_way">"Verschilt onderweg"</string>
+    <string name="quest_split_way_description">"Als het onderweg verschilt is de eerste stap om de weg te splitsen. Nadat de weg gesplitst is kan de vraag voor ieder deel apart beantwoord worden. Le op! De vragen voor de gesplitste delen komen mogelijk pas veel later. Nu splitsen? "</string>
+    <string name="quest_split_way_tutorial">"Tik op die punten van de weg waar het antwoord veranderd. Probeer zo precies mogelijk te zijn. Je kan als normaal inzoemen. "</string>
+    <string name="quest_split_way_too_imprecise">"Zoem verder in."</string>
+    <string name="quest_split_way_many_splits_confirmation_description">"Dat zijn een aardig aantal splits. Je kan de weg later altijd verder splitsen."</string>
+    <string name="quest_footwayPartSurface_title">"Welke bedekking heeft dit voetpad hier?"</string>
 </resources>
