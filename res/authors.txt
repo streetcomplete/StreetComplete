@@ -158,13 +158,19 @@ railway_crossing_none.svg        (c) 2018 ServusWorld - License: CC0
 recycling_icons.svg
     batteries
     cans
+    carton
     clothes                      by Adrien Pavie, modified from EmojiOne 2: U+1F456, U+1F455
     glass_bottles
-    green_waste                  Twemoji: U+1F33F
+    green_waste                  modified from Twemoji: U+1F33F
+    lego
     newspaper                    modified from EmojiOne 2: U+1F4F0
+    paper_only
+    paper_and_cartons
+    plastic
     plastic_bottles
-    shoes                        EmojiOne 2: U+1F45F
-    small_appliances             EmojiOne 2: U+1F50C
+    shoes                        modified from EmojiOne 2: U+1F45F
+    small_electrical_appliances  EmojiOne 2: U+1F50C
+    tetra
 
 religion_icons.svg
     hindu                        https://commons.wikimedia.org/wiki/File:Om_symbol.svg
