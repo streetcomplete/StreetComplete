@@ -16,6 +16,7 @@ class AddMaxHeight(private val overpassServer: OverpassMapDataDao) : OsmElementQ
     private val nodeFilter by lazy { FiltersParser().parse("""
         nodes with
         (barrier = height_restrictor or amenity = parking_entrance and parking ~ underground|multi-storey)
+        and access !~ private|no and vehicle !~ private|no
         and !maxheight and !maxheight:physical
     """)}
 
