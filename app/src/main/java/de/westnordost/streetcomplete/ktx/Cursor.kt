@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.ktx
 
-import android.content.ContentValues
 import android.database.Cursor
 import androidx.core.database.*
 
@@ -20,8 +19,6 @@ fun Cursor.getFloatOrNull(columnName: String): Float? = getFloatOrNull(getColumn
 fun Cursor.getStringOrNull(columnName: String): String? = getStringOrNull(getColumnIndexOrThrow(columnName))
 fun Cursor.getBlobOrNull(columnName: String): ByteArray? = getBlobOrNull(getColumnIndexOrThrow(columnName))
 
-@Deprecated("Better not use until/if there are union types that make this typesafe on compile time")
-// still keeping it around though...
 inline fun <reified T> Cursor.get(columnName: String): T {
     val index = getColumnIndexOrThrow(columnName)
     return when(T::class) {
@@ -34,26 +31,4 @@ inline fun <reified T> Cursor.get(columnName: String): T {
         ByteArray::class -> getBlob(index)
         else -> throw ClassCastException("Expected either an Int, Short, Long, Float, Double, String or ByteArray")
     } as T
-}
-
-@Deprecated("Better not use until/if there are union types that make this typesafe on compile time")
-// still keeping it around though...
-fun contentValuesOf(vararg pairs: Pair<String, Any?>): ContentValues {
-    val r = ContentValues()
-    for ((key, value) in pairs) {
-        when(value) {
-            null -> r.putNull(key)
-            is Long -> r.put(key, value)
-            is Int -> r.put(key, value)
-            is Short -> r.put(key, value)
-            is Byte -> r.put(key, value)
-            is Double -> r.put(key, value)
-            is Float -> r.put(key, value)
-            is Boolean -> r.put(key, value)
-            is String -> r.put(key, value)
-            is ByteArray -> r.put(key, value)
-            else -> throw ClassCastException("Expected either an Int, Short, Long, Byte, Float, Double, Boolean, String or ByteArray")
-        }
-    }
-    return r
 }
