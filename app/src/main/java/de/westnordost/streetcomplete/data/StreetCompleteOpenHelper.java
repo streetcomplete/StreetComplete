@@ -154,34 +154,6 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 			"SELECT * FROM " + OsmNoteQuestTable.NAME + " " +
 				"INNER JOIN " + NoteTable.NAME + " USING (" + NoteTable.Columns.ID + ");";
 
-	private static final String NODES_TABLE_CREATE =
-			"CREATE TABLE " + NodeTable.NAME +
-			" (" +
-				NodeTable.Columns.ID +			" int		PRIMARY KEY, " +
-				NodeTable.Columns.VERSION +		" int		NOT NULL, " +
-				NodeTable.Columns.LATITUDE + 	" double	NOT NULL, " +
-				NodeTable.Columns.LONGITUDE + 	" double	NOT NULL, " +
-				NodeTable.Columns.TAGS +		" blob" +
-			");";
-
-	private static final String WAYS_TABLE_CREATE =
-			"CREATE TABLE " + WayTable.NAME +
-			" (" +
-				WayTable.Columns.ID +		" int	PRIMARY KEY, " +
-				WayTable.Columns.VERSION +	" int	NOT NULL, " +
-				WayTable.Columns.TAGS +		" blob, " +
-				WayTable.Columns.NODE_IDS +	" blob	NOT NULL" +
-			");";
-
-	private static final String RELATIONS_TABLE_CREATE =
-			"CREATE TABLE " + RelationTable.NAME +
-			" (" +
-				RelationTable.Columns.ID +		" int	PRIMARY KEY, " +
-				RelationTable.Columns.VERSION +	" int	NOT NULL, " +
-				RelationTable.Columns.TAGS +	" blob, " +
-				RelationTable.Columns.MEMBERS +	" blob NOT NULL" +
-			");";
-
 	private static final String QUEST_STATISTICS_TABLE_CREATE =
 			"CREATE TABLE " + QuestStatisticsTable.NAME +
 			" (" +
@@ -247,9 +219,9 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 		db.execSQL(OSM_QUESTS_TABLE_CREATE);
 		db.execSQL(UNDO_OSM_QUESTS_TABLE_CREATE);
 
-		db.execSQL(NODES_TABLE_CREATE);
-		db.execSQL(WAYS_TABLE_CREATE);
-		db.execSQL(RELATIONS_TABLE_CREATE);
+		db.execSQL(NodeTable.CREATE);
+		db.execSQL(WayTable.CREATE);
+		db.execSQL(RelationTable.CREATE);
 
 		db.execSQL(NOTES_TABLE_CREATE);
 		db.execSQL(OSM_NOTES_QUESTS_TABLE_CREATE);

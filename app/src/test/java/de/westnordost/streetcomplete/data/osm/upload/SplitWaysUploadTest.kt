@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.upload
 
-import de.westnordost.osmapi.map.data.Way
+import de.westnordost.osmapi.map.data.Element
+import de.westnordost.osmapi.map.data.OsmWay
 import de.westnordost.streetcomplete.data.osm.OsmQuestSplitWay
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestSplitWayDao
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
@@ -33,7 +34,7 @@ class SplitWaysUploadTest {
     @Before fun setUp() {
         splitWayDB = mock(OsmQuestSplitWayDao::class.java)
         elementDB = mock(MergedElementDao::class.java)
-        on(elementDB.get(any(), ArgumentMatchers.anyLong())).thenReturn(mock(Way::class.java))
+        on(elementDB.get(any(), ArgumentMatchers.anyLong())).thenReturn(createElement())
         changesetManager = mock(OpenQuestChangesetsManager::class.java)
         splitSingleOsmWayUpload = mock(SplitSingleWayUpload::class.java)
         elementGeometryDB = mock(ElementGeometryDao::class.java)
@@ -76,7 +77,7 @@ class SplitWaysUploadTest {
         on(splitWayDB.getAll()).thenReturn(listOf(createOsmSplitWay()))
         on(splitSingleOsmWayUpload.upload(anyLong(), any(), anyList()))
             .thenThrow(ChangesetConflictException())
-            .thenReturn(listOf(mock(Way::class.java)))
+            .thenReturn(listOf(createElement()))
 
         uploader.upload(AtomicBoolean(false))
 
@@ -90,7 +91,7 @@ class SplitWaysUploadTest {
         on(splitWayDB.getAll()).thenReturn(listOf(createOsmSplitWay(), createOsmSplitWay()))
         on(splitSingleOsmWayUpload.upload(anyLong(), any(), anyList()))
             .thenThrow(ElementConflictException())
-            .thenReturn(listOf(mock(Way::class.java)))
+            .thenReturn(listOf(createElement()))
 
         uploader.uploadedChangeListener = mock(OnUploadedChangeListener::class.java)
         uploader.upload(AtomicBoolean(false))
@@ -110,7 +111,7 @@ class SplitWaysUploadTest {
 
         on(splitWayDB.getAll()).thenReturn(listOf(quest))
         on(splitSingleOsmWayUpload.upload(anyLong(), any(), any()))
-            .thenReturn(listOf(mock(Way::class.java)))
+            .thenReturn(listOf(createElement()))
 
         uploader.upload(AtomicBoolean(false))
 
@@ -122,3 +123,5 @@ class SplitWaysUploadTest {
 
 private fun createOsmSplitWay() =
     OsmQuestSplitWay(1, mock(OsmElementQuestType::class.java), 1, "survey", listOf())
+
+private fun createElement() = OsmWay(1,1, listOf(1,2,3), null)

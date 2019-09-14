@@ -66,7 +66,8 @@ class ElementGeometryDao @Inject constructor(
          */
 		val where = "(" + ELEMENT_TYPE + LUMP + ELEMENT_ID + ") NOT IN (" +
 			"SELECT " + OsmQuestTable.Columns.ELEMENT_TYPE + LUMP + OsmQuestTable.Columns.ELEMENT_ID + " FROM " + OsmQuestTable.NAME + " " +
-			"UNION SELECT " + UndoOsmQuestTable.Columns.ELEMENT_TYPE + LUMP + UndoOsmQuestTable.Columns.ELEMENT_ID + " FROM " + UndoOsmQuestTable.NAME
+			"UNION SELECT " + UndoOsmQuestTable.Columns.ELEMENT_TYPE + LUMP + UndoOsmQuestTable.Columns.ELEMENT_ID + " FROM " + UndoOsmQuestTable.NAME +
+            ")"
 
 		return db.delete(NAME, where, null)
 	}

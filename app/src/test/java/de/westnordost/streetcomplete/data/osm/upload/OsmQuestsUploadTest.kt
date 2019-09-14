@@ -2,12 +2,10 @@ package de.westnordost.streetcomplete.data.osm.upload
 
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.OsmLatLon
+import de.westnordost.osmapi.map.data.OsmNode
 import de.westnordost.streetcomplete.any
 import de.westnordost.streetcomplete.data.QuestStatus
-import de.westnordost.streetcomplete.data.osm.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
-import de.westnordost.streetcomplete.data.osm.OsmQuest
-import de.westnordost.streetcomplete.data.osm.OsmQuestGiver
+import de.westnordost.streetcomplete.data.osm.*
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.download.ElementGeometryCreator
@@ -41,7 +39,7 @@ class OsmQuestsUploadTest {
     @Before fun setUp() {
         questDB = mock(OsmQuestDao::class.java)
         elementDB = mock(MergedElementDao::class.java)
-        on(elementDB.get(any(), anyLong())).thenReturn(mock(Element::class.java))
+        on(elementDB.get(any(), anyLong())).thenReturn(createElement())
         changesetManager = mock(OpenQuestChangesetsManager::class.java)
         singleChangeUpload = mock(SingleOsmElementTagChangesUpload::class.java)
         elementGeometryDB = mock(ElementGeometryDao::class.java)
@@ -84,7 +82,7 @@ class OsmQuestsUploadTest {
         on(questDB.getAll(null, QuestStatus.ANSWERED)).thenReturn(listOf(createQuest()))
         on(singleChangeUpload.upload(anyLong(), any(), any()))
             .thenThrow(ChangesetConflictException())
-            .thenReturn(mock(Element::class.java))
+            .thenReturn(createElement())
 
         uploader.upload(AtomicBoolean(false))
 
@@ -98,8 +96,7 @@ class OsmQuestsUploadTest {
         val quests = listOf( createQuest(), createQuest())
 
         on(questDB.getAll(null, QuestStatus.ANSWERED)).thenReturn(quests)
-        on(singleChangeUpload.upload(anyLong(), any(), any()))
-            .thenReturn(mock(Element::class.java))
+        on(singleChangeUpload.upload(anyLong(), any(), any())).thenReturn(createElement())
 
         uploader.uploadedChangeListener = mock(OnUploadedChangeListener::class.java)
         uploader.upload(AtomicBoolean(false))
@@ -135,8 +132,7 @@ class OsmQuestsUploadTest {
         val quest = createQuest()
 
         on(questDB.getAll(null, QuestStatus.ANSWERED)).thenReturn(listOf(quest))
-        on(singleChangeUpload.upload(anyLong(), any(), any()))
-            .thenReturn(mock(Element::class.java))
+        on(singleChangeUpload.upload(anyLong(), any(), any())).thenReturn(createElement())
 
         uploader.upload(AtomicBoolean(false))
 
@@ -153,3 +149,5 @@ private fun createQuest() : OsmQuest {
     return OsmQuest(1L, questType, Element.Type.NODE, 1L, QuestStatus.ANSWERED, changes, "survey",
         Date(), geometry)
 }
+
+private fun createElement() = OsmNode(1,1,OsmLatLon(0.0,0.0),null)
