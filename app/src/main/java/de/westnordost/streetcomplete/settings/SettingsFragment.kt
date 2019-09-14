@@ -27,23 +27,17 @@ import de.westnordost.streetcomplete.*
 class SettingsFragment : PreferenceFragmentCompat(),
     SharedPreferences.OnSharedPreferenceChangeListener, IntentListener {
 
-    private val prefs: SharedPreferences
-	private val oAuth: OAuthPrefs
-	private val applyNoteVisibilityChangedTask: Provider<ApplyNoteVisibilityChangedTask>
-	private val downloadedTilesDao: DownloadedTilesDao
-	private val osmQuestDao: OsmQuestDao
+    @Inject internal lateinit var prefs: SharedPreferences
+    @Inject internal lateinit var oAuth: OAuthPrefs
+    @Inject internal lateinit var applyNoteVisibilityChangedTask: Provider<ApplyNoteVisibilityChangedTask>
+    @Inject internal lateinit var downloadedTilesDao: DownloadedTilesDao
+    @Inject internal lateinit var osmQuestDao: OsmQuestDao
 
 	private val fragmentActivity: FragmentContainerActivity?
 		get() = activity as FragmentContainerActivity?
 
 	init {
-		val fields = InjectedFields()
-		Injector.instance.applicationComponent.inject(fields)
-		prefs = fields.prefs
-		oAuth = fields.oAuth
-		applyNoteVisibilityChangedTask = fields.applyNoteVisibilityChangedTask
-		downloadedTilesDao = fields.downloadedTilesDao
-		osmQuestDao = fields.osmQuestDao
+		Injector.instance.applicationComponent.inject(this)
 	}
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
@@ -178,12 +172,4 @@ class SettingsFragment : PreferenceFragmentCompat(),
         val oauthFragment = fragmentManager?.findFragmentByTag(OsmOAuthDialogFragment.TAG) as OsmOAuthDialogFragment?
         oauthFragment?.onNewIntent(intent)
     }
-
-	internal class InjectedFields {
-		@Inject internal lateinit var prefs: SharedPreferences
-		@Inject internal lateinit var oAuth: OAuthPrefs
-		@Inject internal lateinit var applyNoteVisibilityChangedTask: Provider<ApplyNoteVisibilityChangedTask>
-		@Inject internal lateinit var downloadedTilesDao: DownloadedTilesDao
-		@Inject internal lateinit var osmQuestDao: OsmQuestDao
-	}
 }

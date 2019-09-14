@@ -48,7 +48,7 @@ public interface ApplicationComponent
 	void inject(QuestChangesUploadService questChangesUploadService);
 	void inject(QuestDownloadService questChangesDownloadService);
 
-	void inject(SettingsFragment.InjectedFields settingsFragment);
+	void inject(SettingsFragment settingsFragment);
 	void inject(SettingsActivity settingsActivity);
 
 	void inject(AnswersCounter answersCounter);
