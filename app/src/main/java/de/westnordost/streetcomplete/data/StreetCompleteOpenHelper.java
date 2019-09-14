@@ -75,41 +75,12 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 			")" +
 			");";
 
-	private static final String UNDO_OSM_QUESTS_TABLE_CREATE =
-			"CREATE TABLE " + UndoOsmQuestTable.NAME + " (" +
-				UndoOsmQuestTable.Columns.QUEST_ID +		" INTEGER		PRIMARY KEY, " +
-				UndoOsmQuestTable.Columns.QUEST_TYPE +		" varchar(255)	NOT NULL, " +
-				UndoOsmQuestTable.Columns.TAG_CHANGES +		" blob			NOT NULL, " +
-				UndoOsmQuestTable.Columns.CHANGES_SOURCE +	" varchar(255)  NOT NULL, " +
-				UndoOsmQuestTable.Columns.ELEMENT_ID +		" int			NOT NULL, " +
-				UndoOsmQuestTable.Columns.ELEMENT_TYPE +	" varchar(255)	NOT NULL, " +
-			"CONSTRAINT same_osm_quest UNIQUE (" +
-				UndoOsmQuestTable.Columns.QUEST_TYPE + ", " +
-				UndoOsmQuestTable.Columns.ELEMENT_ID + ", " +
-				UndoOsmQuestTable.Columns.ELEMENT_TYPE +
-			"), " +
-			"CONSTRAINT element_key FOREIGN KEY (" +
-				UndoOsmQuestTable.Columns.ELEMENT_TYPE + ", " + UndoOsmQuestTable.Columns.ELEMENT_ID +
-			") REFERENCES " + ElementGeometryTable.NAME + " (" +
-				ElementGeometryTable.Columns.ELEMENT_TYPE + ", " +
-				ElementGeometryTable.Columns.ELEMENT_ID +
-			")" +
-			");";
-
 	private static final String OSM_QUESTS_VIEW_CREATE =
 			"CREATE VIEW " + OsmQuestTable.NAME_MERGED_VIEW + " AS " +
 			"SELECT * FROM " + OsmQuestTable.NAME + " " +
 				"INNER JOIN " + ElementGeometryTable.NAME + " USING (" +
-					ElementGeometryTable.Columns.ELEMENT_TYPE + ", " +
-					ElementGeometryTable.Columns.ELEMENT_ID +
-				");";
-
-	private static final String UNDO_OSM_QUESTS_VIEW_CREATE =
-			"CREATE VIEW " + UndoOsmQuestTable.NAME_MERGED_VIEW + " AS " +
-			"SELECT * FROM " + UndoOsmQuestTable.NAME + " " +
-				"INNER JOIN " + ElementGeometryTable.NAME + " USING (" +
-					ElementGeometryTable.Columns.ELEMENT_TYPE + ", " +
-					ElementGeometryTable.Columns.ELEMENT_ID +
+				ElementGeometryTable.Columns.ELEMENT_TYPE + ", " +
+				ElementGeometryTable.Columns.ELEMENT_ID +
 				");";
 
 	private static final String OSM_NOTES_QUESTS_TABLE_CREATE =
@@ -194,16 +165,6 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 				QuestVisibilityTable.Columns.VISIBILITY +    " int NOT NULL " +
 			");";
 
-	private static final String SPLIT_WAYS_TABLE_CREATE =
-			"CREATE TABLE " + OsmQuestSplitWayTable.NAME +
-			" (" +
-				OsmQuestSplitWayTable.Columns.QUEST_ID +      " int          PRIMARY KEY, " +
-				OsmQuestSplitWayTable.Columns.QUEST_TYPE +    " varchar(255) NOT NULL, " +
-				OsmQuestSplitWayTable.Columns.WAY_ID +        " int          NOT NULL, " +
-				OsmQuestSplitWayTable.Columns.SPLITS +        " blob         NOT NULL, " +
-				OsmQuestSplitWayTable.Columns.SOURCE +        " varchar(255) NOT NULL " +
-			");";
-
 	private final TablesHelper[] extensions;
 
 	public StreetCompleteOpenHelper(Context context, String dbName, TablesHelper[] extensions)
@@ -217,7 +178,7 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 	{
 		db.execSQL(ElementGeometryTable.CREATE);
 		db.execSQL(OSM_QUESTS_TABLE_CREATE);
-		db.execSQL(UNDO_OSM_QUESTS_TABLE_CREATE);
+		db.execSQL(UndoOsmQuestTable.CREATE);
 
 		db.execSQL(NodeTable.CREATE);
 		db.execSQL(WayTable.CREATE);
@@ -232,14 +193,14 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 		db.execSQL(DOWNLOADED_TILES_TABLE_CREATE);
 
 		db.execSQL(OSM_QUESTS_VIEW_CREATE);
-		db.execSQL(UNDO_OSM_QUESTS_VIEW_CREATE);
+		db.execSQL(UndoOsmQuestTable.MERGED_VIEW_CREATE);
 		db.execSQL(OSM_NOTES_VIEW_CREATE);
 
 		db.execSQL(OPEN_CHANGESETS_TABLE_CREATE);
 
 		db.execSQL(QUEST_VISIBILITY_TABLE_CREATE);
 
-		db.execSQL(SPLIT_WAYS_TABLE_CREATE);
+		db.execSQL(OsmQuestSplitWayTable.CREATE);
 
 		for (TablesHelper extension : extensions)
 		{
@@ -297,8 +258,8 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 
 		if(oldVersion < 7 && newVersion >= 7)
 		{
-			db.execSQL(UNDO_OSM_QUESTS_TABLE_CREATE);
-			db.execSQL(UNDO_OSM_QUESTS_VIEW_CREATE);
+			db.execSQL(UndoOsmQuestTable.CREATE);
+			db.execSQL(UndoOsmQuestTable.MERGED_VIEW_CREATE);
 		}
 
 		if(oldVersion < 8 && newVersion >= 8)
@@ -325,12 +286,12 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 
 		if(oldVersion < 12 && newVersion >= 12)
 		{
-			db.execSQL(SPLIT_WAYS_TABLE_CREATE);
+			db.execSQL(OsmQuestSplitWayTable.CREATE);
 			// slightly different structure for undo osm quest table. Isn't worth converting
 			db.execSQL("DROP TABLE " + UndoOsmQuestTable.NAME);
 			db.execSQL("DROP VIEW " + UndoOsmQuestTable.NAME_MERGED_VIEW);
-			db.execSQL(UNDO_OSM_QUESTS_TABLE_CREATE);
-			db.execSQL(UNDO_OSM_QUESTS_VIEW_CREATE);
+			db.execSQL(UndoOsmQuestTable.CREATE);
+			db.execSQL(UndoOsmQuestTable.MERGED_VIEW_CREATE);
 		}
 		// for later changes to the DB
 		// ...

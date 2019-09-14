@@ -1,9 +1,9 @@
 package de.westnordost.streetcomplete.data.osm.persist
 
-import android.content.ContentValues
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase.CONFLICT_REPLACE
 import android.database.sqlite.SQLiteOpenHelper
+import androidx.core.content.contentValuesOf
 import de.westnordost.streetcomplete.data.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.OsmQuestSplitWay
@@ -48,13 +48,13 @@ class OsmQuestSplitWayDao @Inject constructor(
         db.delete(NAME, "$QUEST_ID = $questId", null)
     }
 
-    private fun OsmQuestSplitWay.createContentValues() = ContentValues().also { v ->
-        v.put(QUEST_ID, questId)
-        v.put(QUEST_TYPE, questType.javaClass.simpleName)
-        v.put(WAY_ID, wayId)
-        v.put(SOURCE, source)
-        v.put(SPLITS, serializer.toBytes(ArrayList(splits)))
-    }
+    private fun OsmQuestSplitWay.createContentValues() = contentValuesOf(
+        QUEST_ID to questId,
+        QUEST_TYPE to questType.javaClass.simpleName,
+        WAY_ID to wayId,
+        SOURCE to source,
+        SPLITS to serializer.toBytes(ArrayList(splits))
+    )
 
     private fun Cursor.createOsmQuestSplitWay() = OsmQuestSplitWay(
         getLong(QUEST_ID),

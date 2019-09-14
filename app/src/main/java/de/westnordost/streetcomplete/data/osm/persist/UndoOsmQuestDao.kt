@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.data.osm.persist
 
-import android.content.ContentValues
 import android.database.Cursor
 import android.database.sqlite.SQLiteOpenHelper
+import androidx.core.content.contentValuesOf
 import de.westnordost.osmapi.map.data.Element
 
 import javax.inject.Inject
@@ -46,14 +46,14 @@ class UndoOsmQuestDao @Inject constructor(
         db.insert(NAME, null, quest.createContentValues())
     }
 
-    private fun UndoOsmQuest.createContentValues() = ContentValues().also { v ->
-        v.put(QUEST_ID, id)
-        v.put(QUEST_TYPE, type.javaClass.simpleName)
-        v.put(TAG_CHANGES, serializer.toBytes(changes))
-        v.put(CHANGES_SOURCE, changesSource)
-        v.put(ELEMENT_TYPE, elementType.name)
-        v.put(ELEMENT_ID, elementId)
-    }
+    private fun UndoOsmQuest.createContentValues() = contentValuesOf(
+        QUEST_ID to id,
+        QUEST_TYPE to type.javaClass.simpleName,
+        TAG_CHANGES to serializer.toBytes(changes),
+        CHANGES_SOURCE to changesSource,
+        ELEMENT_TYPE to elementType.name,
+        ELEMENT_ID to elementId
+    )
 
     private fun Cursor.createUndo() = UndoOsmQuest(
         getLong(QUEST_ID),
