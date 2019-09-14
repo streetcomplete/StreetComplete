@@ -6,6 +6,7 @@ import javax.inject.Inject
 
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.data.osm.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandler
 
 // TODO only open in order to be able to mock it in tests
@@ -15,12 +16,13 @@ open class PutRoadNameSuggestionsHandler @Inject constructor(
 
     override fun handle(element: Element, geometry: ElementGeometry?) {
         if (element.type != Element.Type.WAY) return
-        val points = geometry?.polylines?.get(0) ?: return
+        if (geometry !is ElementPolylinesGeometry) return
         val namesByLanguage = element.tags?.toRoadNameByLanguage() ?: return
 
-        roadNameSuggestionsDao.putRoad(element.id, namesByLanguage, points)
+        roadNameSuggestionsDao.putRoad(element.id, namesByLanguage, geometry.polylines.first())
     }
 
+    /** OSM tags (i.e. name:de=Bäckergang) to map of language code -> name (i.e. de=Bäckergang) */
     private fun Map<String,String>.toRoadNameByLanguage(): Map<String, String>? {
         val result = mutableMapOf<String,String>()
         val namePattern = Pattern.compile("name(:(.*))?")

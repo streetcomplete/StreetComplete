@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.data.osm.OsmQuest
 import de.westnordost.streetcomplete.data.osm.OsmQuestGiver
 import de.westnordost.streetcomplete.data.osm.download.ElementGeometryCreator
 import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao
+import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryEntry
 import de.westnordost.streetcomplete.data.osm.persist.MergedElementDao
 import de.westnordost.streetcomplete.data.statistics.QuestStatisticsDao
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
@@ -83,9 +84,15 @@ abstract class OsmInChangesetsUpload<T : UploadableInChangeset>(
     }
 
     private fun updateElement(newElement: Element): OsmQuestGiver.QuestUpdates {
-        elementDB.put(newElement)
-        elementGeometryDB.put(newElement.type, newElement.id, elementGeometryCreator.create(newElement))
-        return questGiver.updateQuests(newElement)
+        val geometry = elementGeometryCreator.create(newElement)
+        if (geometry != null) {
+            elementGeometryDB.put(ElementGeometryEntry(newElement.type, newElement.id, geometry))
+            elementDB.put(newElement)
+            return questGiver.updateQuests(newElement)
+        } else {
+            // new element has invalid geometry
+            return OsmQuestGiver.QuestUpdates(listOf(), deleteElement(newElement.type, newElement.id))
+        }
     }
 
     private fun deleteElement(elementType: Element.Type, elementId: Long): List<Long> {

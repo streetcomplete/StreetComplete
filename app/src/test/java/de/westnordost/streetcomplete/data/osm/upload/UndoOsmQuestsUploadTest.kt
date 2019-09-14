@@ -41,9 +41,10 @@ class UndoOsmQuestsUploadTest {
         singleChangeUpload = mock(SingleOsmElementTagChangesUpload::class.java)
         elementGeometryDB = mock(ElementGeometryDao::class.java)
         questGiver = mock(OsmQuestGiver::class.java)
-        on(questGiver.updateQuests(any())).thenReturn(OsmQuestGiver.QuestUpdates())
+        on(questGiver.updateQuests(any())).thenReturn(OsmQuestGiver.QuestUpdates(listOf(), listOf()))
         statisticsDB = mock(QuestStatisticsDao::class.java)
         elementGeometryCreator = mock(ElementGeometryCreator::class.java)
+        on(elementGeometryCreator.create(any<Element>())).thenReturn(mock(ElementGeometry::class.java))
         uploader = UndoOsmQuestsUpload(elementDB, elementGeometryDB, changesetManager, questGiver,
             statisticsDB, elementGeometryCreator, undoQuestDB, singleChangeUpload)
     }
@@ -102,7 +103,7 @@ class UndoOsmQuestsUploadTest {
         verify(uploader.uploadedChangeListener)?.onDiscarded()
 
         verify(elementDB, times(1)).put(any())
-        verify(elementGeometryDB, times(1)).put(any(), anyLong(), any())
+        verify(elementGeometryDB, times(1)).put(any())
         verify(questGiver, times(1)).updateQuests(any())
         verifyNoMoreInteractions(questGiver)
     }
@@ -124,7 +125,7 @@ class UndoOsmQuestsUploadTest {
 
 private fun createUndoQuest() : UndoOsmQuest {
     val changes = StringMapChanges(listOf(StringMapEntryAdd("surface","asphalt")))
-    val geometry = ElementGeometry(OsmLatLon(0.0,0.0))
+    val geometry = ElementPointGeometry(OsmLatLon(0.0,0.0))
     val questType = mock(OsmElementQuestType::class.java)
     return UndoOsmQuest(1, questType, Element.Type.NODE, 1, changes, "survey", geometry)
 }

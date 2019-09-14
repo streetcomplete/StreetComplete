@@ -23,9 +23,11 @@ import de.westnordost.streetcomplete.data.QuestType;
 import de.westnordost.streetcomplete.data.VisibleQuestListener;
 import de.westnordost.streetcomplete.data.osm.Countries;
 import de.westnordost.streetcomplete.data.osm.ElementGeometry;
+import de.westnordost.streetcomplete.data.osm.ElementPolylinesGeometry;
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
 import de.westnordost.streetcomplete.data.osm.OsmQuest;
 import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao;
+import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryEntry;
 import de.westnordost.streetcomplete.data.osm.persist.MergedElementDao;
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
 import de.westnordost.streetcomplete.data.osm.ElementKey;
@@ -75,7 +77,7 @@ public class OsmQuestDownload
 		}
 		Log.i(TAG, getQuestTypeName(questType) + ": Starting");
 
-		final ArrayList<ElementGeometryDao.Row> geometryRows = new ArrayList<>();
+		final ArrayList<ElementGeometryEntry> geometryRows = new ArrayList<>();
 		final Map<ElementKey,Element> elements = new HashMap<>();
 		final ArrayList<OsmQuest> quests = new ArrayList<>();
 		final Map<ElementKey, Long> previousQuests = getPreviousQuestsIdsByElementKey(questType, bbox);
@@ -96,8 +98,7 @@ public class OsmQuestDownload
 
 				OsmQuest quest = new OsmQuest(questType, elementType, elementId, geometry);
 
-				geometryRows.add(new ElementGeometryDao.Row(
-						elementType, elementId, quest.getGeometry()));
+				geometryRows.add(new ElementGeometryEntry(elementType, elementId, quest.getGeometry()));
 				quests.add(quest);
 				ElementKey elementKey = new ElementKey(elementType, elementId);
 				elements.put(elementKey, element);
@@ -201,10 +202,11 @@ public class OsmQuestDownload
 
 		// do not create quests that refer to geometry that is too long for a surveyor to be
 		// expected to survey
-		if(geometry.polylines != null)
+		if(geometry instanceof ElementPolylinesGeometry)
 		{
+			ElementPolylinesGeometry polylinesGeometry = (ElementPolylinesGeometry) geometry;
 			double distance = 0;
-			for (List<LatLon> polyline : geometry.polylines)
+			for (List<LatLon> polyline : polylinesGeometry.getPolylines())
 			{
 				distance += SphericalEarthMath.distance(polyline);
 			}
@@ -212,11 +214,11 @@ public class OsmQuestDownload
 		}
 
 		// do not create quests whose marker is at/near a blacklisted position
-		LatLon truncatedGeometryCenter = truncateTo5Decimals(geometry.center);
+		LatLon truncatedGeometryCenter = truncateTo5Decimals(geometry.getCenter());
 		if(blacklistedPositions != null && blacklistedPositions.contains(truncatedGeometryCenter))
 		{
 			Log.d(TAG, getQuestTypeName(questType) + ": Not adding a quest at " +
-					getPosAsLogString(geometry.center) +
+					getPosAsLogString(geometry.getCenter()) +
 					" because there is a note at that position");
 			return false;
 		}
@@ -225,13 +227,13 @@ public class OsmQuestDownload
 		Countries countries = questType.getEnabledForCountries();
 		if(!countries.isAllCountries())
 		{
-			LatLon p = geometry.center;
+			LatLon p = geometry.getCenter();
 
 			if(getCountryBoundaries().isInAny(p.getLongitude(), p.getLatitude(), countries.getExceptions())
 				== countries.isAllExcept())
 			{
 				Log.v(TAG, getQuestTypeName(questType) + ": Not adding a quest at " +
-					getPosAsLogString(geometry.center) +
+					getPosAsLogString(geometry.getCenter()) +
 					" because the quest is disabled in this country");
 				return false;
 			}

@@ -22,7 +22,7 @@ import de.westnordost.streetcomplete.Injector
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.QuestGroup
-import de.westnordost.streetcomplete.data.osm.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.changes.SplitAtLinePosition
 import de.westnordost.streetcomplete.data.osm.changes.SplitAtPoint
 import de.westnordost.streetcomplete.data.osm.changes.SplitPolylineAtPosition
@@ -62,7 +62,7 @@ class SplitWayFragment : Fragment(), IsCloseableBottomSheet, IsShowingQuestDetai
         super.onCreate(savedInstanceState)
         osmQuestId = arguments!!.getLong(ARG_QUEST_ID)
         way = arguments!!.getSerializable(ARG_WAY) as Way
-        val elementGeometry = arguments!!.getSerializable(ARG_ELEMENT_GEOMETRY) as ElementGeometry
+        val elementGeometry = arguments!!.getSerializable(ARG_ELEMENT_GEOMETRY) as ElementPolylinesGeometry
         positions = elementGeometry.polylines.single().map { OsmLatLon(it.latitude, it.longitude) }
         soundFx.prepare(R.raw.snip)
         soundFx.prepare(R.raw.plop2)
@@ -244,7 +244,7 @@ class SplitWayFragment : Fragment(), IsCloseableBottomSheet, IsShowingQuestDetai
         private const val ARG_ELEMENT_GEOMETRY = "elementGeometry"
 
         @JvmStatic
-        fun create(osmQuestId: Long, way: Way, elementGeometry: ElementGeometry): SplitWayFragment {
+        fun create(osmQuestId: Long, way: Way, elementGeometry: ElementPolylinesGeometry): SplitWayFragment {
             val f = SplitWayFragment()
             f.arguments = bundleOf(
                 ARG_QUEST_ID to osmQuestId,

@@ -46,9 +46,10 @@ class OsmQuestsUploadTest {
         singleChangeUpload = mock(SingleOsmElementTagChangesUpload::class.java)
         elementGeometryDB = mock(ElementGeometryDao::class.java)
         questGiver = mock(OsmQuestGiver::class.java)
-        on(questGiver.updateQuests(any())).thenReturn(OsmQuestGiver.QuestUpdates())
+        on(questGiver.updateQuests(any())).thenReturn(OsmQuestGiver.QuestUpdates(listOf(), listOf()))
         statisticsDB = mock(QuestStatisticsDao::class.java)
         elementGeometryCreator = mock(ElementGeometryCreator::class.java)
+        on(elementGeometryCreator.create(any<Element>())).thenReturn(mock(ElementGeometry::class.java))
         downloadedTilesDao = mock(DownloadedTilesDao::class.java)
         uploader = OsmQuestsUpload(elementDB, elementGeometryDB, changesetManager, questGiver,
             statisticsDB, elementGeometryCreator, questDB, singleChangeUpload, downloadedTilesDao)
@@ -109,7 +110,7 @@ class OsmQuestsUploadTest {
         verify(questDB, times(2)).update(any())
         verify(uploader.uploadedChangeListener, times(2))?.onUploaded()
         verify(elementDB, times(2)).put(any())
-        verify(elementGeometryDB, times(2)).put(any(), anyLong(), any())
+        verify(elementGeometryDB, times(2)).put(any())
         verify(questGiver, times(2)).updateQuests(any())
         verifyZeroInteractions(downloadedTilesDao)
     }
@@ -147,7 +148,7 @@ class OsmQuestsUploadTest {
 
 private fun createQuest() : OsmQuest {
     val changes = StringMapChanges(listOf(StringMapEntryAdd("surface","asphalt")))
-    val geometry = ElementGeometry(OsmLatLon(0.0,0.0))
+    val geometry = ElementPointGeometry(OsmLatLon(0.0,0.0))
     val questType = mock(OsmElementQuestType::class.java)
     return OsmQuest(1L, questType, Element.Type.NODE, 1L, QuestStatus.ANSWERED, changes, "survey",
         Date(), geometry)

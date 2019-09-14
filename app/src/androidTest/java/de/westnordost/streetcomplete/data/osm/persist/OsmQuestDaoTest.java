@@ -18,6 +18,7 @@ import de.westnordost.streetcomplete.data.QuestStatus;
 import de.westnordost.streetcomplete.data.QuestType;
 import de.westnordost.streetcomplete.data.QuestTypeRegistry;
 import de.westnordost.streetcomplete.data.osm.ElementGeometry;
+import de.westnordost.streetcomplete.data.osm.ElementPointGeometry;
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
 import de.westnordost.streetcomplete.data.osm.OsmQuest;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChanges;
@@ -83,7 +84,7 @@ public class OsmQuestDaoTest extends ApplicationDbTestCase
 
 	@Test public void getCountByMultipeQuestTypes()
 	{
-		ElementGeometry geom = new ElementGeometry(new OsmLatLon(5,5));
+		ElementGeometry geom = new ElementPointGeometry(new OsmLatLon(5,5));
 
 		OsmQuest quest1 = createNewQuest(new TestQuestType(), 1, Element.Type.NODE, geom);
 		OsmQuest quest2 = createNewQuest(new TestQuestType2(), 2, Element.Type.NODE, geom);
@@ -100,7 +101,7 @@ public class OsmQuestDaoTest extends ApplicationDbTestCase
 	@Test public void getAllByBBox()
 	{
 		OsmQuest quest1 = createNewQuest(11, Element.Type.NODE);
-		OsmQuest quest2 = createNewQuest(12, Element.Type.NODE, new ElementGeometry(new OsmLatLon(11,11)));
+		OsmQuest quest2 = createNewQuest(12, Element.Type.NODE, new ElementPointGeometry(new OsmLatLon(11,11)));
 
 		addToDaos(quest1, quest2);
 
@@ -121,7 +122,7 @@ public class OsmQuestDaoTest extends ApplicationDbTestCase
 
 	@Test public void getAllByMultipleQuestTypes()
 	{
-		ElementGeometry geom = new ElementGeometry(new OsmLatLon(5,5));
+		ElementGeometry geom = new ElementPointGeometry(new OsmLatLon(5,5));
 
 		OsmQuest quest1 = createNewQuest(new TestQuestType(), 1, Element.Type.NODE, geom);
 		OsmQuest quest2 = createNewQuest(new TestQuestType2(), 2, Element.Type.NODE, geom);
@@ -139,7 +140,7 @@ public class OsmQuestDaoTest extends ApplicationDbTestCase
 
 	private static OsmQuest createNewQuest(long id, Element.Type elementType)
 	{
-		return createNewQuest(id, elementType, new ElementGeometry(new OsmLatLon(5,5)));
+		return createNewQuest(id, elementType, new ElementPointGeometry(new OsmLatLon(5,5)));
 	}
 
 	private static OsmQuest createNewQuest(long id, Element.Type elementType, ElementGeometry geometry)
@@ -158,7 +159,7 @@ public class OsmQuestDaoTest extends ApplicationDbTestCase
 	{
 		for (OsmQuest quest : quests)
 		{
-			geometryDao.put(quest.getElementType(), quest.getElementId(), quest.getGeometry());
+			geometryDao.put(new ElementGeometryEntry(quest.getElementType(), quest.getElementId(), quest.getGeometry()));
 			boolean result = dao.add(quest);
 			assertTrue(result);
 		}
@@ -193,7 +194,7 @@ public class OsmQuestDaoTest extends ApplicationDbTestCase
 
 	@Test public void dDeleteReverted()
 	{
-		ElementGeometry geom = new ElementGeometry(new OsmLatLon(5,5));
+		ElementGeometry geom = new ElementPointGeometry(new OsmLatLon(5,5));
 
 		OsmQuest quest1 = createNewQuest(new TestQuestType(), 1, Element.Type.NODE, geom);
 		quest1.setStatus(QuestStatus.CLOSED);
@@ -211,7 +212,7 @@ public class OsmQuestDaoTest extends ApplicationDbTestCase
 
 	@Test public void getNextNewAt()
 	{
-		ElementGeometry geom = new ElementGeometry(new OsmLatLon(5,5));
+		ElementGeometry geom = new ElementPointGeometry(new OsmLatLon(5,5));
 
 		OsmQuest quest = createNewQuest(new TestQuestType(), 1, Element.Type.NODE, geom);
 		quest.setStatus(QuestStatus.ANSWERED);
@@ -230,7 +231,7 @@ public class OsmQuestDaoTest extends ApplicationDbTestCase
 
 	@Test public void getNoFittingNextNewAt()
 	{
-		ElementGeometry geom = new ElementGeometry(new OsmLatLon(5,5));
+		ElementGeometry geom = new ElementPointGeometry(new OsmLatLon(5,5));
 
 		OsmQuest quest = createNewQuest(new TestQuestType(), 1, Element.Type.NODE, geom);
 		quest.setStatus(QuestStatus.ANSWERED);
@@ -242,7 +243,7 @@ public class OsmQuestDaoTest extends ApplicationDbTestCase
 
 	@Test public void getNoNextNewAt()
 	{
-		ElementGeometry geom = new ElementGeometry(new OsmLatLon(5,5));
+		ElementGeometry geom = new ElementPointGeometry(new OsmLatLon(5,5));
 
 		OsmQuest quest = createNewQuest(new TestQuestType(), 1, Element.Type.NODE, geom);
 		quest.setStatus(QuestStatus.ANSWERED);
@@ -254,7 +255,7 @@ public class OsmQuestDaoTest extends ApplicationDbTestCase
 
 	@Test public void getAllIds()
 	{
-		ElementGeometry geom = new ElementGeometry(new OsmLatLon(5,5));
+		ElementGeometry geom = new ElementPointGeometry(new OsmLatLon(5,5));
 
 		OsmQuest q1 = createNewQuest(new TestQuestType(), 1, Element.Type.NODE, geom);
 		OsmQuest q2 = createNewQuest(new TestQuestType2(), 1, Element.Type.NODE, geom);

@@ -4,7 +4,7 @@ import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
 import de.westnordost.streetcomplete.data.QuestTypeRegistry
-import de.westnordost.streetcomplete.data.osm.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.UndoOsmQuest
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
@@ -60,11 +60,11 @@ class UndoOsmQuestDaoTest : ApplicationDbTestCase() {
 	}
 
 	private fun addUndoQuest(id: Long, elementId: Long = 1L): UndoOsmQuest {
-		val geometry = ElementGeometry(OsmLatLon(1.0, 2.0))
+		val geometry = ElementPointGeometry(OsmLatLon(1.0, 2.0))
 		val elementType = Element.Type.NODE
 		val changes = StringMapChanges(listOf(StringMapEntryAdd("foo", "bar")))
 		val quest = UndoOsmQuest(id, questType, elementType, elementId, changes, "test", geometry)
-		geometryDao.put(elementType, elementId, geometry)
+		geometryDao.put(ElementGeometryEntry(elementType, elementId, geometry))
 		dao.add(quest)
 		return quest
 	}

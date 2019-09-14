@@ -79,6 +79,7 @@ import de.westnordost.streetcomplete.data.QuestGroup;
 import de.westnordost.streetcomplete.data.VisibleQuestListener;
 import de.westnordost.streetcomplete.data.download.QuestDownloadProgressListener;
 import de.westnordost.streetcomplete.data.download.QuestDownloadService;
+import de.westnordost.streetcomplete.data.osm.ElementPolylinesGeometry;
 import de.westnordost.streetcomplete.data.osm.OsmQuest;
 import de.westnordost.streetcomplete.data.osm.changes.SplitPolylineAtPosition;
 import de.westnordost.streetcomplete.data.upload.QuestChangesUploadProgressListener;
@@ -780,7 +781,9 @@ public class MainActivity extends AppCompatActivity implements
 		if (quest == null) return;
 		OsmElement element = questController.getOsmElement((OsmQuest) quest);
 		if (!(element instanceof Way)) return;
-		showInBottomSheet(SplitWayFragment.create(osmQuestId, (Way) element, quest.getGeometry()));
+		showInBottomSheet(SplitWayFragment.create(
+			osmQuestId, (Way) element, (ElementPolylinesGeometry) quest.getGeometry()
+		));
 	}
 
 	@Override public void onSkippedQuest(long questId, @NonNull QuestGroup group)

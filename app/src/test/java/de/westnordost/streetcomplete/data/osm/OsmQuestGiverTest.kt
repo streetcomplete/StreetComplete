@@ -27,12 +27,9 @@ class OsmQuestGiverTest {
     private lateinit var osmQuestUnlocker: OsmQuestGiver
     private lateinit var questType: OsmElementQuestType<*>
 
-	private val POS = OsmLatLon(10.0, 10.0)
-	private val NODE = OsmNode(1, 0, POS, null, null, null)
-
     @Before fun setUp() {
         val elementGeometryDao = mock(ElementGeometryDao::class.java)
-        on(elementGeometryDao.get(Element.Type.NODE, 1)).thenReturn(ElementGeometry(POS))
+        on(elementGeometryDao.get(Element.Type.NODE, 1)).thenReturn(ElementPointGeometry(POS))
 
         osmNoteQuestDao = mock(OsmNoteQuestDao::class.java)
         on(osmNoteQuestDao.getAllPositions(any())).thenReturn(emptyList())
@@ -56,7 +53,7 @@ class OsmQuestGiverTest {
     }
 
     @Test fun `previous quest blocks new quest`() {
-        val q = OsmQuest(questType, Element.Type.NODE, 1, ElementGeometry(POS))
+        val q = OsmQuest(questType, Element.Type.NODE, 1, ElementPointGeometry(POS))
         on(osmQuestDao.getAll(null, null, null, Element.Type.NODE, 1L)).thenReturn(listOf(q))
         on(questType.isApplicableTo(NODE)).thenReturn(true)
 
@@ -74,7 +71,7 @@ class OsmQuestGiverTest {
     }
 
     @Test fun `not applicable removes previous quest`() {
-        val q = OsmQuest(123L, questType, Element.Type.NODE, 1, QuestStatus.NEW, null, null, Date(), ElementGeometry(POS))
+        val q = OsmQuest(123L, questType, Element.Type.NODE, 1, QuestStatus.NEW, null, null, Date(), ElementPointGeometry(POS))
         on(osmQuestDao.getAll(null, null, null, Element.Type.NODE, 1L)).thenReturn(listOf(q))
         on(questType.isApplicableTo(NODE)).thenReturn(false)
 
@@ -97,3 +94,6 @@ class OsmQuestGiverTest {
         verify(osmQuestDao).addAll(listOf(quest))
     }
 }
+
+private val POS = OsmLatLon(10.0, 10.0)
+private val NODE = OsmNode(1, 0, POS, null, null, null)

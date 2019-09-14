@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.data.QuestType;
 import de.westnordost.streetcomplete.data.osm.ElementGeometry;
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.osmapi.notes.Note;
+import de.westnordost.streetcomplete.data.osm.ElementPointGeometry;
 
 public class OsmNoteQuest implements Quest
 {
@@ -80,7 +81,7 @@ public class OsmNoteQuest implements Quest
 		// will/should likely not show up for other users of this app
 
 		// no geometry other than the marker location
-		return new ElementGeometry(getCenter());
+		return new ElementPointGeometry(getCenter());
 	}
 
 	@Override public LatLon getCenter()

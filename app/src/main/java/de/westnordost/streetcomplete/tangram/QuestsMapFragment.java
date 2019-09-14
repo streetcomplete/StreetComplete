@@ -35,6 +35,8 @@ import de.westnordost.streetcomplete.data.Quest;
 import de.westnordost.streetcomplete.data.QuestGroup;
 import de.westnordost.streetcomplete.data.QuestType;
 import de.westnordost.streetcomplete.data.osm.ElementGeometry;
+import de.westnordost.streetcomplete.data.osm.ElementPolygonsGeometry;
+import de.westnordost.streetcomplete.data.osm.ElementPolylinesGeometry;
 import de.westnordost.streetcomplete.data.visiblequests.OrderedVisibleQuestTypesProvider;
 import de.westnordost.streetcomplete.quests.bikeway.AddCycleway;
 import de.westnordost.streetcomplete.util.DpUtil;
@@ -251,7 +253,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 
 		if(normalCenter == null || offsetCenter == null) return null;
 
-		LngLat pos = TangramConst.toLngLat(geometry.center);
+		LngLat pos = TangramConst.toLngLat(geometry.getCenter());
 		pos.latitude -= offsetCenter.latitude - normalCenter.latitude;
 		pos.longitude -= offsetCenter.longitude - normalCenter.longitude;
 		return pos;
@@ -370,24 +372,26 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 
 		Map<String,String> props = new HashMap<>();
 
-		if(g.polygons != null)
+		if(g instanceof ElementPolygonsGeometry)
 		{
+			ElementPolygonsGeometry pg = (ElementPolygonsGeometry) g;
 			props.put("type", "poly");
-			geometryLayer.addPolygon(TangramConst.toLngLat(g.polygons), props);
+			geometryLayer.addPolygon(TangramConst.toLngLat(pg.getPolygons()), props);
 		}
-		else if(g.polylines != null)
+		else if(g instanceof ElementPolylinesGeometry)
 		{
+			ElementPolylinesGeometry pg = (ElementPolylinesGeometry) g;
 			props.put("type", "line");
-			List<List<LngLat>> polylines = TangramConst.toLngLat(g.polylines);
+			List<List<LngLat>> polylines = TangramConst.toLngLat(pg.getPolylines());
 			for(List<LngLat> polyline : polylines)
 			{
 				geometryLayer.addPolyline(polyline, props);
 			}
 		}
-		else if(g.center != null)
+		else
 		{
 			props.put("type", "point");
-			geometryLayer.addPoint(TangramConst.toLngLat(g.center), props);
+			geometryLayer.addPoint(TangramConst.toLngLat(g.getCenter()), props);
 		}
 	}
 

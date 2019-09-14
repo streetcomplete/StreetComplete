@@ -62,6 +62,6 @@ class UndoOsmQuestDao @Inject constructor(
         getLong(ELEMENT_ID),
         serializer.toObject(getBlob(TAG_CHANGES)),
         getString(CHANGES_SOURCE),
-        ElementGeometryDao.createObjectFrom(serializer, this)
+        this.createElementGeometry(serializer)
     )
 }

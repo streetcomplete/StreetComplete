@@ -8,6 +8,7 @@ import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.map.data.Way
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandler
@@ -56,7 +57,8 @@ class AddOneway(
         val query = "way(id:${trafficDirectionMap.keys.joinToString(",")}); out meta geom;"
         overpassMapDataDao.getAndHandleQuota(query) { element, geometry ->
             fun handle(element: Element, geometry: ElementGeometry?) {
-                if(geometry == null) return
+                if (geometry == null) return
+                if (geometry !is ElementPolylinesGeometry) return
                 // filter the data as ImproveOSM data may be outdated or catching too much
                 if (!filter.matches(element)) return
 
@@ -68,11 +70,11 @@ class AddOneway(
                    not is less valuable information (for routing) and many times such a ring will
                    actually be a roundabout. Oneway information on roundabouts is superfluous.
                    See #1320 */
-                if(way.nodeIds.last() == way.nodeIds.first()) return
+                if (way.nodeIds.last() == way.nodeIds.first()) return
                 /* only create quest if direction can be clearly determined and is the same
                    direction for all segments belonging to one OSM way (because StreetComplete
                    cannot split ways up) */
-                val isForward = isForward(geometry.polylines[0], segments) ?: return
+                val isForward = isForward(geometry.polylines.first(), segments) ?: return
 
                 db.put(way.id, isForward)
                 handler.handle(element, geometry)

@@ -22,6 +22,7 @@ import de.westnordost.streetcomplete.data.QuestStatus;
 import de.westnordost.streetcomplete.data.VisibleQuestListener;
 import de.westnordost.streetcomplete.data.osm.Countries;
 import de.westnordost.streetcomplete.data.osm.ElementGeometry;
+import de.westnordost.streetcomplete.data.osm.ElementPointGeometry;
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
 import de.westnordost.streetcomplete.data.osm.OsmQuest;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
@@ -59,7 +60,7 @@ public class OsmQuestDownloadTest
 
 		ElementWithGeometry blacklistElement = new ElementWithGeometry();
 		blacklistElement.element = new OsmNode(0,0,blacklistPos,null);
-		blacklistElement.geometry = new ElementGeometry(blacklistPos);
+		blacklistElement.geometry = new ElementPointGeometry(blacklistPos);
 		ElementWithGeometry invalidGeometryElement = new ElementWithGeometry();
 		invalidGeometryElement.element = new OsmNode(0,0,new OsmLatLon(1.0,1.0),null);
 		invalidGeometryElement.geometry = null;
@@ -85,7 +86,7 @@ public class OsmQuestDownloadTest
 
 		ElementWithGeometry node4 = new ElementWithGeometry();
 		node4.element = new OsmNode(4,0,pos,null);
-		node4.geometry =  new ElementGeometry(pos);
+		node4.geometry =  new ElementPointGeometry(pos);
 		// questType mock will only "find" the Node #4
 		OsmElementQuestType questType = new ListBackedQuestType(Collections.singletonList(node4));
 
@@ -93,10 +94,10 @@ public class OsmQuestDownloadTest
 		List<OsmQuest> quests = new ArrayList<>();
 		quests.add(new OsmQuest(
 				12L, questType, Element.Type.NODE, 4, QuestStatus.NEW, null, null,
-				new Date(), new ElementGeometry(pos)));
+				new Date(), new ElementPointGeometry(pos)));
 		quests.add(new OsmQuest(
 				13L, questType, Element.Type.NODE, 5, QuestStatus.NEW, null, null,
-				new Date(), new ElementGeometry(pos)));
+				new Date(), new ElementPointGeometry(pos)));
 
 		when(osmQuestDao.getAll(any(), any(), any(), any(), any())).thenReturn(quests);
 

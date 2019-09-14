@@ -14,8 +14,6 @@ import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestDao
 import de.westnordost.streetcomplete.data.visiblequests.OrderedVisibleQuestTypesProvider
 import de.westnordost.streetcomplete.util.SphericalEarthMath
-import javax.inject.Named
-import javax.inject.Provider
 
 /** Manages creating new quests and removing quests that are no longer applicable for an OSM
  * element locally  */
@@ -28,15 +26,15 @@ class OsmQuestGiver @Inject constructor(
 
 	private val TAG = "OsmQuestGiver"
 
-    class QuestUpdates {
-        val createdQuests: MutableList<OsmQuest> = ArrayList()
-        val removedQuestIds: MutableList<Long> = ArrayList()
-    }
+    data class QuestUpdates(val createdQuests: List<OsmQuest>, val removedQuestIds: List<Long>)
 
     fun updateQuests(element: Element): QuestUpdates {
-        val result = QuestUpdates()
+        val createdQuests: MutableList<OsmQuest> = ArrayList()
+        val removedQuestIds: MutableList<Long> = ArrayList()
 
-        val geometry = elementGeometryDB.get(element.type, element.id) ?: return result
+        val geometry = elementGeometryDB.get(element.type, element.id) ?: return QuestUpdates(
+            emptyList(), emptyList()
+        )
 
         val hasNote = hasNoteAt(geometry.center)
 
@@ -52,7 +50,7 @@ class OsmQuestGiver @Inject constructor(
             val hasQuest = currentQuests.containsKey(questType)
             if (appliesToElement && !hasQuest && !hasNote) {
                 val quest = OsmQuest(questType, element.type, element.id, geometry)
-                result.createdQuests.add(quest)
+                createdQuests.add(quest)
                 createdQuestsLog.add(questType.javaClass.simpleName)
             }
             if (!appliesToElement && hasQuest) {
@@ -61,26 +59,26 @@ class OsmQuestGiver @Inject constructor(
                 // do not apply to the element anymore. E.g. after adding the name to the street,
                 // there shan't be any AddRoadName quest for that street anymore
                 if (quest.status == QuestStatus.NEW) {
-                    result.removedQuestIds.add(quest.id!!)
+                    removedQuestIds.add(quest.id!!)
                     removedQuestsLog.add(questType.javaClass.simpleName)
                 }
             }
         }
 
-        if (result.createdQuests.isNotEmpty()) {
+        if (createdQuests.isNotEmpty()) {
             // Before new quests are unlocked, all reverted quests need to be removed for
             // this element so that they can be created anew as the case may be
             questDB.deleteAllReverted(element.type, element.id)
 
-            questDB.addAll(result.createdQuests)
+            questDB.addAll(createdQuests)
             Log.d(TAG, "Created new quests for ${element.type.name}#${element.id}: ${createdQuestsLog.joinToString()}")
         }
-        if (result.removedQuestIds.isNotEmpty()) {
-            questDB.deleteAll(result.removedQuestIds)
+        if (removedQuestIds.isNotEmpty()) {
+            questDB.deleteAll(removedQuestIds)
             Log.d(TAG, "Removed quests no longer applicable for ${element.type.name}#${element.id}: ${removedQuestsLog.joinToString()}")
         }
 
-        return result
+        return QuestUpdates(createdQuests, removedQuestIds)
     }
 
     fun deleteQuests(elementType: Element.Type, elementId: Long): List<Long> {

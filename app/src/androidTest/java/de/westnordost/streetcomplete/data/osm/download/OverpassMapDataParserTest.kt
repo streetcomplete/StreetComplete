@@ -8,6 +8,9 @@ import java.io.InputStream
 import de.westnordost.streetcomplete.data.osm.ElementGeometry
 import de.westnordost.osmapi.map.OsmMapDataFactory
 import de.westnordost.osmapi.map.data.*
+import de.westnordost.streetcomplete.data.osm.ElementPointGeometry
+import de.westnordost.streetcomplete.data.osm.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.util.SphericalEarthMath.centerPointOfPolyline
 
 import org.junit.Assert.*
 
@@ -22,7 +25,7 @@ class OverpassMapDataParserTest {
         assertEquals(5, node.id)
         assertEquals(1, node.version)
         assertNull(node.tags)
-        assertEquals(ElementGeometry(pos), eg.geometry)
+        assertEquals(ElementPointGeometry(pos), eg.geometry)
     }
 
     @Test fun way() {
@@ -39,7 +42,7 @@ class OverpassMapDataParserTest {
         assertEquals(1, way.version)
         assertEquals(listOf(2L,3L), way.nodeIds)
         assertEquals(
-	        ElementGeometry(listOf(ps), null),
+	        ElementPolylinesGeometry(listOf(ps), centerPointOfPolyline(ps)),
 	        eg.geometry
         )
     }
@@ -78,10 +81,10 @@ class OverpassMapDataParserTest {
 		    OsmRelationMember(3, "point", Element.Type.NODE)
 	    ), relation.members)
         assertNull(relation.tags)
-	    assertEquals(
-		    ElementGeometry(listOf(p.subList(0,2), p.subList(2,4)), null),
-		    eg.geometry
-	    )
+        val way1Nodes = p.subList(0,2)
+        val way2Nodes = p.subList(2,4)
+        val expectedGeometry = ElementPolylinesGeometry(listOf(way1Nodes, way2Nodes), OsmLatLon(2.0, 3.0))
+	    assertEquals(expectedGeometry, eg.geometry)
     }
 
     @Test fun tags() {

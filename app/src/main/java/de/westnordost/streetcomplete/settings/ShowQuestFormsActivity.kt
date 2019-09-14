@@ -18,7 +18,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.QuestGroup
 import de.westnordost.streetcomplete.data.QuestType
 import de.westnordost.streetcomplete.data.QuestTypeRegistry
-import de.westnordost.streetcomplete.data.osm.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.ElementPointGeometry
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.OsmQuestAnswerListener
 import de.westnordost.streetcomplete.quests.QuestAnswerComponent
@@ -79,7 +79,7 @@ class ShowQuestFormsActivity : AppCompatActivity(), OsmQuestAnswerListener {
         val lat = Double.fromBits(prefs.getLong(Prefs.MAP_LATITUDE, 0.0.toBits()))
         val lng = Double.fromBits(prefs.getLong(Prefs.MAP_LONGITUDE, 0.0.toBits()))
         val pos = OsmLatLon(lat, lng)
-        val elementGeometry = ElementGeometry(pos)
+        val elementGeometry = ElementPointGeometry(pos)
         val element = OsmNode(1, 1, pos, mapOf())
 
         val f = questType.createForm()

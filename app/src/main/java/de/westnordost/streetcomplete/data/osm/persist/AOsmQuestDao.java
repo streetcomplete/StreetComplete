@@ -252,7 +252,7 @@ public abstract class AOsmQuestDao extends AQuestDao<OsmQuest>
 			changesSource = cursor.getString(colChangesSource);
 		}
 
-		ElementGeometry geometry = ElementGeometryDao.createObjectFrom(serializer, cursor);
+		ElementGeometry geometry = ElementGeometryDaoKt.createElementGeometry(cursor, serializer);
 
 		Date lastChange = new Date(cursor.getLong(colLastChange));
 

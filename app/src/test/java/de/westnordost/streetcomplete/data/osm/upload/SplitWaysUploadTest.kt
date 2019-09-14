@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.osm.persist.OsmQuestSplitWayDao
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
 import de.westnordost.streetcomplete.on
 import de.westnordost.streetcomplete.any
+import de.westnordost.streetcomplete.data.osm.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.OsmQuestGiver
 import de.westnordost.streetcomplete.data.osm.download.ElementGeometryCreator
@@ -37,9 +38,10 @@ class SplitWaysUploadTest {
         splitSingleOsmWayUpload = mock(SplitSingleWayUpload::class.java)
         elementGeometryDB = mock(ElementGeometryDao::class.java)
         questGiver = mock(OsmQuestGiver::class.java)
-        on(questGiver.updateQuests(any())).thenReturn(OsmQuestGiver.QuestUpdates())
+        on(questGiver.updateQuests(any())).thenReturn(OsmQuestGiver.QuestUpdates(listOf(), listOf()))
         statisticsDB = mock(QuestStatisticsDao::class.java)
         elementGeometryCreator = mock(ElementGeometryCreator::class.java)
+        on(elementGeometryCreator.create(any<Element>())).thenReturn(mock(ElementGeometry::class.java))
         uploader = SplitWaysUpload(elementDB, elementGeometryDB, changesetManager, questGiver,
             statisticsDB, elementGeometryCreator, splitWayDB, splitSingleOsmWayUpload)
     }
@@ -98,7 +100,7 @@ class SplitWaysUploadTest {
         verify(uploader.uploadedChangeListener)?.onDiscarded()
 
         verify(elementDB, times(1)).put(any())
-        verify(elementGeometryDB, times(1)).put(any(), ArgumentMatchers.anyLong(), any())
+        verify(elementGeometryDB, times(1)).put(any())
         verify(questGiver, times(1)).updateQuests(any())
         verifyNoMoreInteractions(questGiver)
     }

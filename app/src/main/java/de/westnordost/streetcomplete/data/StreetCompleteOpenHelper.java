@@ -96,21 +96,6 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 			")" +
 			");";
 
-	private static final String ELEMENTS_GEOMETRY_TABLE_CREATE =
-			"CREATE TABLE " + ElementGeometryTable.NAME +
-			" (" +
-				ElementGeometryTable.Columns.ELEMENT_TYPE +			" varchar(255)	NOT NULL, " +
-				ElementGeometryTable.Columns.ELEMENT_ID +			" int			NOT NULL, " +
-				ElementGeometryTable.Columns.GEOMETRY_POLYLINES +	" blob, " +
-				ElementGeometryTable.Columns.GEOMETRY_POLYGONS +	" blob, " +
-				ElementGeometryTable.Columns.LATITUDE +				" double		NOT NULL, " +
-				ElementGeometryTable.Columns.LONGITUDE +			" double		NOT NULL, " +
-				"CONSTRAINT primary_key PRIMARY KEY (" +
-					ElementGeometryTable.Columns.ELEMENT_TYPE + ", " +
-					ElementGeometryTable.Columns.ELEMENT_ID +
-				") " +
-			");";
-
 	private static final String OSM_QUESTS_VIEW_CREATE =
 			"CREATE VIEW " + OsmQuestTable.NAME_MERGED_VIEW + " AS " +
 			"SELECT * FROM " + OsmQuestTable.NAME + " " +
@@ -258,7 +243,7 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 	@Override
 	public void onCreate(SQLiteDatabase db)
 	{
-		db.execSQL(ELEMENTS_GEOMETRY_TABLE_CREATE);
+		db.execSQL(ElementGeometryTable.CREATE);
 		db.execSQL(OSM_QUESTS_TABLE_CREATE);
 		db.execSQL(UNDO_OSM_QUESTS_TABLE_CREATE);
 

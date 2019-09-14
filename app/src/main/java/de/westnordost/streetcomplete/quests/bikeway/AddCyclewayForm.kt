@@ -15,6 +15,7 @@ import android.widget.TextView
 import java.util.Collections
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.tql.FiltersParser
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.OtherAnswer
@@ -76,7 +77,7 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
 
         puzzleView.listener = { isRight -> showCyclewaySelectionDialog(isRight) }
 
-        streetSideRotater = StreetSideRotater(puzzleView, compassNeedle, elementGeometry)
+        streetSideRotater = StreetSideRotater(puzzleView, compassNeedle, elementGeometry as ElementPolylinesGeometry)
 
         if (!isDefiningBothSides) {
             if (isLeftHandTraffic) puzzleView.showOnlyLeftSide()

@@ -63,9 +63,9 @@ public class OsmQuest implements Quest, UploadableInChangeset, HasElementTagChan
 
 	@Override public LatLon[] getMarkerLocations()
 	{
-		if(getOsmElementQuestType().getHasMarkersAtEnds() && geometry.polylines != null)
+		if(getOsmElementQuestType().getHasMarkersAtEnds() && geometry instanceof ElementPolylinesGeometry)
 		{
-			List<LatLon> polyline = geometry.polylines.get(0);
+			List<LatLon> polyline = ((ElementPolylinesGeometry) geometry).getPolylines().get(0);
 			double length = SphericalEarthMath.distance(polyline);
 			if(length > 15*4)
 			{
@@ -80,7 +80,7 @@ public class OsmQuest implements Quest, UploadableInChangeset, HasElementTagChan
 
 	@Override public LatLon getCenter()
 	{
-		return geometry.center;
+		return geometry.getCenter();
 	}
 
 	public long getElementId()

@@ -84,11 +84,9 @@ class AddRoadName(
                 }
                 // these params are passed from the form only to update the road name suggestions so that
                 // newly input street names turn up in the suggestions as well
-                val points = answer.wayGeometry.polylines?.getOrNull(0)
-                if (points != null) {
-                    val roadNameByLanguage = answer.localizedNames.associate { it.languageCode to it.name }
-                    roadNameSuggestionsDao.putRoad( answer.wayId, roadNameByLanguage, points)
-                }
+                val points = answer.wayGeometry.polylines.first()
+                val roadNameByLanguage = answer.localizedNames.associate { it.languageCode to it.name }
+                roadNameSuggestionsDao.putRoad( answer.wayId, roadNameByLanguage, points)
             }
         }
     }

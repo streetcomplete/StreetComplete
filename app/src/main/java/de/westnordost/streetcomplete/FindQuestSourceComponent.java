@@ -14,9 +14,10 @@ import javax.inject.Inject;
 
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.osmapi.map.data.OsmLatLon;
-import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.QuestGroup;
 import de.westnordost.streetcomplete.data.osm.ElementGeometry;
+import de.westnordost.streetcomplete.data.osm.ElementPolygonsGeometry;
+import de.westnordost.streetcomplete.data.osm.ElementPolylinesGeometry;
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestDao;
 import de.westnordost.streetcomplete.util.FlattenIterable;
@@ -108,9 +109,11 @@ public class FindQuestSourceComponent
 		LatLon loc = new OsmLatLon(location.getLatitude(), location.getLongitude());
 
 		FlattenIterable<LatLon> itb = new FlattenIterable<>(LatLon.class);
-		if(geometry.polygons != null) itb.add(geometry.polygons);
-		else if(geometry.polylines != null) itb.add(geometry.polylines);
-		else itb.add(Collections.singleton(geometry.center));
+		if (geometry instanceof ElementPolylinesGeometry)
+			itb.add(((ElementPolylinesGeometry)geometry).getPolylines());
+		else if (geometry instanceof ElementPolygonsGeometry)
+			itb.add(((ElementPolygonsGeometry)geometry).getPolygons());
+		else itb.add(Collections.singleton(geometry.getCenter()));
 		for (LatLon pos : itb)
 		{
 			double distance = SphericalEarthMath.distance(loc, pos);

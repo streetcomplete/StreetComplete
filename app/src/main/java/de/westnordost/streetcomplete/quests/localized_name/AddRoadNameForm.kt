@@ -12,6 +12,7 @@ import javax.inject.Inject
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.AbbreviationsByLocale
+import de.westnordost.streetcomplete.data.osm.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.quests.localized_name.data.RoadNameSuggestionsDao
 import java.lang.IllegalStateException
@@ -39,11 +40,11 @@ class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
     }
 
     private fun getRoadNameSuggestions(): List<MutableMap<String, String>> {
-        val points = elementGeometry.polylines?.getOrNull(0) ?: return listOf()
-        val onlyFirstAndLast = listOf(points[0], points[points.size - 1])
-
+        val polyline = (elementGeometry as ElementPolylinesGeometry).polylines.first()
         return roadNameSuggestionsDao.getNames(
-            onlyFirstAndLast, AddRoadName.MAX_DIST_FOR_ROAD_NAME_SUGGESTION)
+            listOf(polyline.first(), polyline.last()),
+            AddRoadName.MAX_DIST_FOR_ROAD_NAME_SUGGESTION
+        )
     }
 
     override fun onClickOk(names: List<LocalizedName>) {
@@ -60,7 +61,7 @@ class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
         }
 
         confirmPossibleAbbreviationsIfAny(possibleAbbreviations) {
-            applyAnswer(RoadName(names, osmElement!!.id, elementGeometry))
+            applyAnswer(RoadName(names, osmElement!!.id, elementGeometry as ElementPolylinesGeometry))
         }
     }
 

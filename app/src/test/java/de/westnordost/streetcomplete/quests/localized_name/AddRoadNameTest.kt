@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.localized_name
 
-import de.westnordost.streetcomplete.data.osm.ElementGeometry
+import de.westnordost.osmapi.map.data.OsmLatLon
+import de.westnordost.streetcomplete.data.osm.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryModify
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
@@ -79,6 +80,9 @@ class AddRoadNameTest {
     }
 
     // convenience method
-    private fun roadName(vararg names:LocalizedName) =
-        RoadName(names.toList(), 1L, mock(ElementGeometry::class.java))
+    private fun roadName(vararg names:LocalizedName): RoadName {
+        val pointsList = listOf(listOf(OsmLatLon(0.0,0.0), OsmLatLon(1.0,1.0)))
+        val geometry = ElementPolylinesGeometry(pointsList, OsmLatLon(0.0, 0.0))
+        return RoadName(names.toList(), 1L, geometry)
+    }
 }
