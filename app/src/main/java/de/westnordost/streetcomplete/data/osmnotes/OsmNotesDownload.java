@@ -131,7 +131,7 @@ public class OsmNotesDownload
 
 		for(CreateNote createNote : createNoteDB.getAll(bbox))
 		{
-			positions.add(createNote.position);
+			positions.add(createNote.getPosition());
 		}
 
 		int closedAmount = previousQuestsByNoteId.size();

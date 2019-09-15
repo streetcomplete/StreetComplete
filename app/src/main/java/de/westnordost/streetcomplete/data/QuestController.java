@@ -24,6 +24,7 @@ import de.westnordost.osmapi.map.data.OsmElement;
 import de.westnordost.streetcomplete.ApplicationConstants;
 import de.westnordost.streetcomplete.data.changesets.OpenChangesetsDao;
 import de.westnordost.streetcomplete.data.download.QuestDownloadService;
+import de.westnordost.streetcomplete.data.osm.ElementKey;
 import de.westnordost.streetcomplete.data.osm.OsmQuest;
 import de.westnordost.streetcomplete.data.osm.OsmQuestSplitWay;
 import de.westnordost.streetcomplete.data.osm.UndoOsmQuest;
@@ -159,13 +160,7 @@ public class QuestController
 		// race condition: another thread may have removed the element already (#288)
 		if(q == null || q.getStatus() != QuestStatus.NEW) return false;
 
-		CreateNote createNote = new CreateNote();
-		createNote.position = q.getCenter();
-		createNote.text = text;
-		createNote.questTitle = questTitle;
-		createNote.elementType = q.getElementType();
-		createNote.elementId = q.getElementId();
-		createNote.imagePaths = imagePaths;
+		CreateNote createNote = new CreateNote(null, text, q.getCenter(), questTitle, new ElementKey(q.getElementType(), q.getElementId()), imagePaths);
 		createNoteDB.add(createNote);
 
 		/* The quests that reference the same element for which the user was not able to
@@ -179,10 +174,7 @@ public class QuestController
 
 	public void createNote(String text, @Nullable List<String> imagePaths, LatLon position)
 	{
-		CreateNote createNote = new CreateNote();
-		createNote.position = position;
-		createNote.text = text;
-		createNote.imagePaths = imagePaths;
+		CreateNote createNote = new CreateNote(null, text, position, null, null, imagePaths);
 		createNoteDB.add(createNote);
 	}
 

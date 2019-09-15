@@ -107,19 +107,6 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 					NoteTable.Columns.COMMENTS +	" blob			NOT NULL" +
 					");";
 
-	private static final String CREATE_OSM_NOTES_TABLE_CREATE =
-			"CREATE TABLE " + CreateNoteTable.NAME +
-					" (" +
-					CreateNoteTable.Columns.ID + 		" INTEGER		PRIMARY KEY, " +
-					CreateNoteTable.Columns.LATITUDE + 	" double		NOT NULL, " +
-					CreateNoteTable.Columns.LONGITUDE + " double		NOT NULL, " +
-					CreateNoteTable.Columns.ELEMENT_TYPE +	" varchar(255), " +
-					CreateNoteTable.Columns.ELEMENT_ID +	" int, " +
-					CreateNoteTable.Columns.TEXT + 		" text			NOT NULL, " +
-					CreateNoteTable.Columns.QUEST_TITLE + " text, " +
-					CreateNoteTable.Columns.IMAGE_PATHS + " blob" +
-					");";
-
 	private static final String OSM_NOTES_VIEW_CREATE =
 			"CREATE VIEW " + OsmNoteQuestTable.NAME_MERGED_VIEW + " AS " +
 			"SELECT * FROM " + OsmNoteQuestTable.NAME + " " +
@@ -186,7 +173,7 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 
 		db.execSQL(NOTES_TABLE_CREATE);
 		db.execSQL(OSM_NOTES_QUESTS_TABLE_CREATE);
-		db.execSQL(CREATE_OSM_NOTES_TABLE_CREATE);
+		db.execSQL(CreateNoteTable.CREATE);
 
 		db.execSQL(QUEST_STATISTICS_TABLE_CREATE);
 
@@ -265,7 +252,7 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 		if(oldVersion < 8 && newVersion >= 8)
 		{
 			db.execSQL("ALTER TABLE " + CreateNoteTable.NAME + " ADD COLUMN " +
-					CreateNoteTable.Columns.IMAGE_PATHS + " blob ;");
+				CreateNoteTable.Columns.IMAGE_PATHS + " blob ;");
 			db.execSQL("ALTER TABLE " + OsmNoteQuestTable.NAME + " ADD COLUMN " +
 					OsmNoteQuestTable.Columns.IMAGE_PATHS + " blob ;");
 		}

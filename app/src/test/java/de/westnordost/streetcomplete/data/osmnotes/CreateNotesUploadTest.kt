@@ -15,6 +15,7 @@ import de.westnordost.streetcomplete.any
 import org.mockito.Mockito.*
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.osmapi.notes.NoteComment
+import de.westnordost.streetcomplete.data.osm.ElementKey
 import java.util.*
 import java.util.concurrent.atomic.AtomicBoolean
 
@@ -51,7 +52,7 @@ class CreateNotesUploadTest {
 	}
 
 	@Test fun `catches conflict exception`() {
-		on(createNoteDB.getAll(null)).thenReturn(listOf(newCreateNote()))
+		on(createNoteDB.getAll()).thenReturn(listOf(newCreateNote()))
 		on(singleCreateNoteUpload.upload(any())).thenThrow(ConflictException())
 
 		uploader.upload(AtomicBoolean(false))
@@ -62,7 +63,7 @@ class CreateNotesUploadTest {
 	@Test fun `delete each uploaded quest in local DB and call listener`() {
 		val createNotes = listOf( newCreateNote(), newCreateNote())
 
-		on(createNoteDB.getAll(null)).thenReturn(createNotes)
+		on(createNoteDB.getAll()).thenReturn(createNotes)
 		on(singleCreateNoteUpload.upload(any())).thenReturn(newNote())
 
 		uploader.uploadedChangeListener = mock(OnUploadedChangeListener::class.java)
@@ -78,7 +79,7 @@ class CreateNotesUploadTest {
 	@Test fun `delete each unsuccessfully uploaded quest in local DB and call listener`() {
 		val createNotes = listOf( newCreateNote(), newCreateNote())
 
-		on(createNoteDB.getAll(null)).thenReturn(createNotes)
+		on(createNoteDB.getAll()).thenReturn(createNotes)
 		on(singleCreateNoteUpload.upload(any())).thenThrow(ConflictException())
 
 		uploader.uploadedChangeListener = mock(OnUploadedChangeListener::class.java)
@@ -90,11 +91,9 @@ class CreateNotesUploadTest {
 	}
 
 	@Test fun `discard if element was deleted`() {
-		val createNote = newCreateNote()
-		createNote.elementId = 1
-		createNote.elementType = Element.Type.NODE
+		val createNote = CreateNote(1, "jo ho", OsmLatLon(1.0, 2.0), null, ElementKey(Element.Type.NODE, 1))
 
-		on(createNoteDB.getAll(null)).thenReturn(listOf(createNote))
+		on(createNoteDB.getAll()).thenReturn(listOf(createNote))
 		on(mapDataDao.getNode(anyLong())).thenReturn(null)
 
 		uploader.uploadedChangeListener = mock(OnUploadedChangeListener::class.java)
@@ -118,10 +117,4 @@ private fun newNote(): Note {
     return note
 }
 
-private fun newCreateNote(): CreateNote {
-    val n = CreateNote()
-    n.id = 1
-    n.text = "jo ho"
-    n.position = OsmLatLon(1.0, 2.0)
-    return n
-}
+private fun newCreateNote() = CreateNote(1, "jo ho", OsmLatLon(1.0, 2.0), null, null, null)

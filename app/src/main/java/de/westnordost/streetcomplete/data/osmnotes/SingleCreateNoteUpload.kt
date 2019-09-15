@@ -21,7 +21,7 @@ class SingleCreateNoteUpload @Inject constructor(
     private val imageUploader: ImageUploader
 ) {
     fun upload(n: CreateNote): Note {
-        if (n.hasAssociatedElement()) {
+        if (n.elementKey != null) {
             val oldNote = findAlreadyExistingNoteWithSameAssociatedElement(n)
             if (oldNote != null) {
                 return commentNote(oldNote, n.text, n.imagePaths)
@@ -78,7 +78,7 @@ class SingleCreateNoteUpload @Inject constructor(
 }
 
 private val CreateNote.fullNoteText: String get() {
-    return if (hasAssociatedElement()) {
+    return if (elementKey != null) {
         val title = questTitle
         if (title != null) {
             "Unable to answer \"$title\" for $associatedElementString via $USER_AGENT:\n\n$text"
@@ -89,8 +89,9 @@ private val CreateNote.fullNoteText: String get() {
 }
 
 private val CreateNote.associatedElementRegex: String? get() {
-    val elementTypeName = elementType?.name ?: return null
-    val elementId = elementId ?: return null
+    val elementKey = elementKey ?: return null
+    val elementTypeName = elementKey.elementType.name
+    val elementId = elementKey.elementId
     // before 0.11 - i.e. "way #123"
     val oldStyleRegex = "$elementTypeName\\s*#$elementId"
     // i.e. www.openstreetmap.org/way/123
@@ -100,7 +101,8 @@ private val CreateNote.associatedElementRegex: String? get() {
 }
 
 private val CreateNote.associatedElementString: String? get() {
-    val lowercaseTypeName = elementType?.name?.toLowerCase(Locale.UK) ?: return null
-    val elementId = elementId ?: return null
+    val elementKey = elementKey ?: return null
+    val lowercaseTypeName = elementKey.elementType.name.toLowerCase(Locale.UK)
+    val elementId = elementKey.elementId
     return "https://osm.org/$lowercaseTypeName/$elementId"
 }

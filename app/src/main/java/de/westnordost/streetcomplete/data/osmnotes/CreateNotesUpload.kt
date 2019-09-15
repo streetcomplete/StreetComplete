@@ -33,7 +33,7 @@ class CreateNotesUpload @Inject constructor(
         var obsolete = 0
         if (cancelled.get()) return
         Log.i(TAG, "Uploading create notes")
-        for (createNote in createNoteDB.getAll(null)) {
+        for (createNote in createNoteDB.getAll()) {
             if (cancelled.get()) break
 
             try {
@@ -56,7 +56,7 @@ class CreateNotesUpload @Inject constructor(
                 obsolete++
             }
 
-            createNoteDB.delete(createNote.id)
+            createNoteDB.delete(createNote.id!!)
             AttachPhotoUtils.deleteImages(createNote.imagePaths)
         }
         var logMsg = "Created $created notes"
@@ -74,16 +74,15 @@ class CreateNotesUpload @Inject constructor(
     }
 
     private fun CreateNote.isAssociatedElementDeleted(): Boolean {
-        return hasAssociatedElement() && fetchElement() == null
+        return elementKey != null && fetchElement() == null
     }
 
     private fun CreateNote.fetchElement(): Element? {
-        val type = elementType ?: return null
-        val id = elementId ?: return null
-        return when (type) {
-            Element.Type.NODE -> mapDataDao.getNode(id)
-            Element.Type.WAY -> mapDataDao.getWay(id)
-            Element.Type.RELATION -> mapDataDao.getRelation(id)
+        val key = elementKey ?: return null
+        return when (key.elementType) {
+            Element.Type.NODE -> mapDataDao.getNode(key.elementId)
+            Element.Type.WAY -> mapDataDao.getWay(key.elementId)
+            Element.Type.RELATION -> mapDataDao.getRelation(key.elementId)
         }
     }
 }
