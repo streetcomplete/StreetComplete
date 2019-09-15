@@ -28,7 +28,9 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            android:elevation="4dp">
+            android:elevation="4dp"
+            app:theme="@style/ThemeOverlay.AppCompat.Dark"
+            app:popupTheme="@style/Theme.Bubble.ToolbarPopup">
 
             <RelativeLayout
                 android:id="@+id/uploadedAnswersContainer"
