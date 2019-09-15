@@ -734,7 +734,7 @@ Partiellement signifie qu’un fauteuil roulant peut entrer et utiliser les toil
     <string name="quest_leafType_title">"Est ce que les arbres ont des aiguilles ou des feuilles ?"</string>
 
     <!-- I don't find a way to get the context of this, it may also be translated in "épineux". -->
-    <string name="quest_leaf_type_needles">"Aiguilles"</string>
+    <string name="quest_leaf_type_needles">"Conifères"</string>
     <string name="quest_leaf_type_broadleaved">"feuillu"</string>
     <string name="quest_leaf_type_mixed">"Les deux sont présents"</string>
     <string name="quest_cyclewayPartSurface_title">"Quelle est la surface de la piste cyclable ?"</string>
