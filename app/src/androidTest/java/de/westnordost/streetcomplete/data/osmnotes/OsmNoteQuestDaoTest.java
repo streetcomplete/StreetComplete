@@ -31,7 +31,7 @@ public class OsmNoteQuestDaoTest extends ApplicationDbTestCase
 
 	@Test public void addGetNoChanges()
 	{
-		Note note = NoteDaoTest.createNote();
+		Note note = createNote();
 		OsmNoteQuest quest = new OsmNoteQuest(note, questType);
 		noteDao.put(note);
 		dao.add(quest);
@@ -42,7 +42,7 @@ public class OsmNoteQuestDaoTest extends ApplicationDbTestCase
 
 	@Test public void addGetWithChanges()
 	{
-		Note note = NoteDaoTest.createNote();
+		Note note = createNote();
 		ArrayList<String> imagePaths = new ArrayList<>();
 		imagePaths.add("blubbi");
 		imagePaths.add("diblub");
@@ -58,7 +58,7 @@ public class OsmNoteQuestDaoTest extends ApplicationDbTestCase
 	{
 		// tests if the "unique" property is set correctly in the table
 
-		Note note = NoteDaoTest.createNote();
+		Note note = createNote();
 		noteDao.put(note);
 
 		OsmNoteQuest quest = new OsmNoteQuest(note,questType);
@@ -77,7 +77,7 @@ public class OsmNoteQuestDaoTest extends ApplicationDbTestCase
 
 	@Test public void addReplace()
 	{
-		Note note = NoteDaoTest.createNote();
+		Note note = createNote();
 		noteDao.put(note);
 
 		OsmNoteQuest quest = new OsmNoteQuest(note, questType);
@@ -95,7 +95,7 @@ public class OsmNoteQuestDaoTest extends ApplicationDbTestCase
 
 	@Test public void getPositions()
 	{
-		Note note = NoteDaoTest.createNote();
+		Note note = createNote();
 		note.position = new OsmLatLon(34,35);
 		noteDao.put(note);
 		OsmNoteQuest quest = new OsmNoteQuest(note, questType);
@@ -115,4 +115,14 @@ public class OsmNoteQuestDaoTest extends ApplicationDbTestCase
 		assertEquals(quest.getType(), dbQuest.getType());
 		// note saving already tested in NoteDaoTest
 	}
+
+	private Note createNote() {
+		Note note = new Note();
+		note.position = new OsmLatLon(1.0, 1.0);
+		note.status = Note.Status.OPEN;
+		note.id = 5;
+		note.dateCreated = new Date(5000);
+		return note;
+	}
+
 }

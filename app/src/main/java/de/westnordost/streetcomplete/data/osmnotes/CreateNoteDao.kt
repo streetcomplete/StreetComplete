@@ -38,9 +38,7 @@ class CreateNoteDao @Inject constructor(
     }
 
     fun get(id: Long): CreateNote? {
-        val selection =  "$ID = ?"
-        val args = arrayOf(id.toString())
-	    return db.queryOne(NAME, null, selection, args) { it.createCreateNote() }
+	    return db.queryOne(NAME, null, "$ID = $id") { it.createCreateNote() }
     }
 
 	fun getCount(): Int {

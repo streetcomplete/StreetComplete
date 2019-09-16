@@ -95,18 +95,6 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 					"REFERENCES " + NoteTable.NAME + "(" + NoteTable.Columns.ID + ")" +
 			");";
 
-	private static final String NOTES_TABLE_CREATE =
-			"CREATE TABLE " + NoteTable.NAME +
-					" (" +
-					NoteTable.Columns.ID +			" int			PRIMARY KEY, " +
-					NoteTable.Columns.LATITUDE + 	" double		NOT NULL, " +
-					NoteTable.Columns.LONGITUDE + 	" double		NOT NULL, " +
-					NoteTable.Columns.CREATED +		" int			NOT NULL, " +
-					NoteTable.Columns.CLOSED +		" int, " +
-					NoteTable.Columns.STATUS + 		" varchar(255)	NOT NULL, " +
-					NoteTable.Columns.COMMENTS +	" blob			NOT NULL" +
-					");";
-
 	private static final String OSM_NOTES_VIEW_CREATE =
 			"CREATE VIEW " + OsmNoteQuestTable.NAME_MERGED_VIEW + " AS " +
 			"SELECT * FROM " + OsmNoteQuestTable.NAME + " " +
@@ -171,7 +159,7 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 		db.execSQL(WayTable.CREATE);
 		db.execSQL(RelationTable.CREATE);
 
-		db.execSQL(NOTES_TABLE_CREATE);
+		db.execSQL(NoteTable.CREATE);
 		db.execSQL(OSM_NOTES_QUESTS_TABLE_CREATE);
 		db.execSQL(CreateNoteTable.CREATE);
 

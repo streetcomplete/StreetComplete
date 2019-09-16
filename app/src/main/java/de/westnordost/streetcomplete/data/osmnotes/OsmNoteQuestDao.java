@@ -154,7 +154,7 @@ public class OsmNoteQuestDao extends AQuestDao<OsmNoteQuest>
 		Note note = null;
 		if(!cursor.isNull(colNoteId))
 		{
-			note = NoteDao.createObjectFrom(serializer, cursor);
+			note = NoteDaoKt.createNote(cursor, serializer);
 		}
 
 		return new OsmNoteQuest(questId, note, status, comment, lastUpdate, questType, imagePaths);
