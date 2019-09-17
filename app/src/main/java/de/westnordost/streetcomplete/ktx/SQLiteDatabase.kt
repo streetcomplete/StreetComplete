@@ -23,9 +23,11 @@ fun <R> SQLiteDatabase.query(
     columns: Array<String>? = null,
     selection: String? = null,
     selectionArgs: Array<String>? = null,
+    groupBy: String? = null,
+    having: String? = null,
     transform: (Cursor) -> R
-): List<R> = query(table, columns, selection, selectionArgs, null, null, null, null).use { cursor ->
-    val result = mutableListOf<R>()
+): List<R> = query(table, columns, selection, selectionArgs, groupBy, having, null, null).use { cursor ->
+    val result = ArrayList<R>(cursor.count)
     cursor.moveToFirst()
     while(!cursor.isAfterLast) {
         result.add(transform(cursor))

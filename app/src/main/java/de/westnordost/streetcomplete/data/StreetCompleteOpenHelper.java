@@ -19,6 +19,7 @@ import de.westnordost.streetcomplete.data.osmnotes.NoteTable;
 import de.westnordost.streetcomplete.data.osm.persist.RelationTable;
 import de.westnordost.streetcomplete.data.osm.persist.WayTable;
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestTable;
+import de.westnordost.streetcomplete.data.tiles.DownloadedTilesDao;
 import de.westnordost.streetcomplete.data.visiblequests.QuestVisibilityTable;
 import de.westnordost.streetcomplete.data.statistics.QuestStatisticsTable;
 import de.westnordost.streetcomplete.data.tiles.DownloadedTilesTable;
@@ -107,20 +108,6 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 				QuestStatisticsTable.Columns.SUCCEEDED +	" int			NOT NULL " +
 			");";
 
-	private static final String DOWNLOADED_TILES_TABLE_CREATE =
-			"CREATE TABLE " + DownloadedTilesTable.NAME +
-			" (" +
-				DownloadedTilesTable.Columns.X +			" int	NOT NULL, " +
-				DownloadedTilesTable.Columns.Y +			" int	NOT NULL, " +
-				DownloadedTilesTable.Columns.QUEST_TYPE + 	" varchar(255) NOT NULL, " +
-				DownloadedTilesTable.Columns.DATE +			" int	NOT NULL, " +
-				"CONSTRAINT primary_key PRIMARY KEY (" +
-					DownloadedTilesTable.Columns.X + ", " +
-					DownloadedTilesTable.Columns.Y + ", " +
-					DownloadedTilesTable.Columns.QUEST_TYPE +
-				") " +
-			");";
-
 	private static final String OPEN_CHANGESETS_TABLE_CREATE =
 			"CREATE TABLE " + OpenChangesetsTable.NAME +
 			" (" +
@@ -165,7 +152,7 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 
 		db.execSQL(QUEST_STATISTICS_TABLE_CREATE);
 
-		db.execSQL(DOWNLOADED_TILES_TABLE_CREATE);
+		db.execSQL(DownloadedTilesTable.CREATE);
 
 		db.execSQL(OSM_QUESTS_VIEW_CREATE);
 		db.execSQL(UndoOsmQuestTable.MERGED_VIEW_CREATE);
