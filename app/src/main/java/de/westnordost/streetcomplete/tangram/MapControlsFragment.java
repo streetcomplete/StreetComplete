@@ -11,6 +11,7 @@ import android.os.Looper;
 import androidx.annotation.AnyThread;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.view.ViewKt;
 import androidx.fragment.app.Fragment;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import android.view.LayoutInflater;
@@ -35,7 +36,7 @@ import de.westnordost.streetcomplete.location.LocationState;
 import de.westnordost.streetcomplete.location.LocationStateButton;
 import de.westnordost.streetcomplete.location.LocationUtil;
 import de.westnordost.streetcomplete.location.SingleLocationRequest;
-import de.westnordost.streetcomplete.util.ViewUtils;
+import kotlin.Unit;
 
 public class MapControlsFragment extends Fragment
 {
@@ -162,17 +163,21 @@ public class MapControlsFragment extends Fragment
 	@Override public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
 	{
 		super.onViewCreated(view, savedInstanceState);
-		ViewUtils.postOnLayout(view, () ->
-		{
-			if(!isShowingControls)
-			{
-				hideAll(leftSide, -1);
-				hideAll(rightSide, +1);
-			}
-		});
-
+		ViewKt.doOnLayout(view, this::packagedHider);
 
 		mapFragment.onMapControlsCreated(this);
+	}
+
+	public Unit packagedHider(View _trigger) {
+		this.hider();
+		return Unit.INSTANCE;
+	}
+
+	public void hider() {
+		if (!isShowingControls) {
+			hideAll(leftSide, -1);
+			hideAll(rightSide, +1);
+		}
 	}
 
 	@Override public void onStart()
