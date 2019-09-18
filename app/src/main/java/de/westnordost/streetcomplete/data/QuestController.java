@@ -4,6 +4,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.content.SharedPreferences;
 import android.graphics.Rect;
 import android.os.Handler;
 import android.os.HandlerThread;
@@ -22,7 +23,7 @@ import javax.inject.Inject;
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.osmapi.map.data.OsmElement;
 import de.westnordost.streetcomplete.ApplicationConstants;
-import de.westnordost.streetcomplete.data.changesets.OpenChangesetsDao;
+import de.westnordost.streetcomplete.Prefs;
 import de.westnordost.streetcomplete.data.download.QuestDownloadService;
 import de.westnordost.streetcomplete.data.osm.ElementKey;
 import de.westnordost.streetcomplete.data.osm.OsmQuest;
@@ -60,7 +61,7 @@ public class QuestController
 	private final OsmNoteQuestDao osmNoteQuestDB;
 	private final OsmQuestSplitWayDao splitWayDB;
 	private final CreateNoteDao createNoteDB;
-	private final OpenChangesetsDao openChangesetsDao;
+	private final SharedPreferences prefs;
 	private final Context context;
 	private final VisibleQuestRelay relay;
 	private final OrderedVisibleQuestTypesProvider questTypesProvider;
@@ -102,7 +103,7 @@ public class QuestController
 	@Inject public QuestController(OsmQuestDao osmQuestDB, UndoOsmQuestDao undoOsmQuestDB,
 								   MergedElementDao osmElementDB, ElementGeometryDao geometryDB,
 								   OsmNoteQuestDao osmNoteQuestDB, OsmQuestSplitWayDao splitWayDB,
-								   CreateNoteDao createNoteDB, OpenChangesetsDao openChangesetsDao,
+								   CreateNoteDao createNoteDB, SharedPreferences prefs,
 								   OrderedVisibleQuestTypesProvider questTypesProvider, Context context)
 	{
 		this.osmQuestDB = osmQuestDB;
@@ -112,7 +113,7 @@ public class QuestController
 		this.osmNoteQuestDB = osmNoteQuestDB;
 		this.splitWayDB = splitWayDB;
 		this.createNoteDB = createNoteDB;
-		this.openChangesetsDao = openChangesetsDao;
+		this.prefs = prefs;
 		this.questTypesProvider = questTypesProvider;
 		this.context = context;
 		this.relay = new VisibleQuestRelay();
@@ -330,7 +331,7 @@ public class QuestController
 			q.setChanges(changes, source);
 			q.setStatus(QuestStatus.ANSWERED);
 			osmQuestDB.update(q);
-			openChangesetsDao.setLastQuestSolvedTimeToNow();
+			prefs.edit().putLong(Prefs.LAST_SOLVED_QUEST_TIME, System.currentTimeMillis()).apply();
 			return true;
 		}
 		else

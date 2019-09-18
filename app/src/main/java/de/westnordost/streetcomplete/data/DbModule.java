@@ -48,9 +48,9 @@ public class DbModule
 	}
 
 	@Provides @Singleton public static OpenChangesetsDao changesetsManagerDao(
-			SQLiteOpenHelper dbHelper, SharedPreferences prefs)
+			SQLiteOpenHelper dbHelper)
 	{
-		return new OpenChangesetsDao(dbHelper,prefs);
+		return new OpenChangesetsDao(dbHelper);
 	}
 
 	@Provides @Singleton public static OsmQuestDao osmQuestDao(

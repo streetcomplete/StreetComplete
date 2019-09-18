@@ -19,7 +19,6 @@ import de.westnordost.streetcomplete.data.osmnotes.NoteTable;
 import de.westnordost.streetcomplete.data.osm.persist.RelationTable;
 import de.westnordost.streetcomplete.data.osm.persist.WayTable;
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestTable;
-import de.westnordost.streetcomplete.data.tiles.DownloadedTilesDao;
 import de.westnordost.streetcomplete.data.visiblequests.QuestVisibilityTable;
 import de.westnordost.streetcomplete.data.statistics.QuestStatisticsTable;
 import de.westnordost.streetcomplete.data.tiles.DownloadedTilesTable;
@@ -108,18 +107,6 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 				QuestStatisticsTable.Columns.SUCCEEDED +	" int			NOT NULL " +
 			");";
 
-	private static final String OPEN_CHANGESETS_TABLE_CREATE =
-			"CREATE TABLE " + OpenChangesetsTable.NAME +
-			" (" +
-				OpenChangesetsTable.Columns.QUEST_TYPE +    " varchar(255), " +
-				OpenChangesetsTable.Columns.SOURCE +        " varchar(255), " +
-				OpenChangesetsTable.Columns.CHANGESET_ID +  " int NOT NULL, " +
-				"CONSTRAINT primary_key PRIMARY KEY (" +
-					OpenChangesetsTable.Columns.QUEST_TYPE + ", " +
-					OpenChangesetsTable.Columns.SOURCE +
-				") " +
-			");";
-
 	private static final String QUEST_VISIBILITY_TABLE_CREATE =
 			"CREATE TABLE " + QuestVisibilityTable.NAME +
 			" (" +
@@ -158,7 +145,7 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 		db.execSQL(UndoOsmQuestTable.MERGED_VIEW_CREATE);
 		db.execSQL(OSM_NOTES_VIEW_CREATE);
 
-		db.execSQL(OPEN_CHANGESETS_TABLE_CREATE);
+		db.execSQL(OpenChangesetsTable.CREATE);
 
 		db.execSQL(QUEST_VISIBILITY_TABLE_CREATE);
 
@@ -190,7 +177,7 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 
 		if(oldVersion < 3 && newVersion >= 3)
 		{
-			db.execSQL(OPEN_CHANGESETS_TABLE_CREATE);
+			db.execSQL(OpenChangesetsTable.CREATE);
 		}
 
 		if(oldVersion < 4 && newVersion >= 4)
@@ -209,7 +196,7 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 			// effect that all currently open changesets will not be used but instead new ones are
 			// created. That's okay because OSM server closes open changesets after 1h automatically.
 			db.execSQL("DROP TABLE " + OpenChangesetsTable.NAME + ";");
-			db.execSQL(OPEN_CHANGESETS_TABLE_CREATE);
+			db.execSQL(OpenChangesetsTable.CREATE);
 		}
 
 		if(oldVersion < 5 && newVersion >= 5)
