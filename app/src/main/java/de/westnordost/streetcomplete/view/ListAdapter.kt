@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.view
 import androidx.recyclerview.widget.RecyclerView
 import android.view.View
 
+/** Adapter based on a list */
 abstract class ListAdapter<T>(list: List<T> = listOf()) :
     RecyclerView.Adapter<ListAdapter.ViewHolder<T>>() {
 
@@ -12,7 +13,7 @@ abstract class ListAdapter<T>(list: List<T> = listOf()) :
             notifyDataSetChanged()
         }
 
-    override fun onBindViewHolder(holder: ListAdapter.ViewHolder<T>, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder<T>, position: Int) {
         holder.onBind(list[position])
     }
 
