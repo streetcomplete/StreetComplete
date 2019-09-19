@@ -678,5 +678,15 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_split_way_tutorial">Tap on the way to split it at the point(s) where the answer differs. Try to be as precise as possible, you can zoom in as usual.</string>
     <string name="quest_split_way_too_imprecise">"Please zoom in further"</string>
     <string name="quest_split_way_many_splits_confirmation_description">These are quite a few splits. You can always further split up the way later.</string>
+    <string name="quest_recycling_materials_title">What can be left here for recycling?</string>
+    <string name="quest_recycling_type_batteries">Batteries</string>
+    <string name="quest_recycling_type_cans">Cans</string>
+    <string name="quest_recycling_type_clothes">Clothes</string>
+    <string name="quest_recycling_type_green_waste">Mown grass, green plants, cut branches</string>
+    <string name="quest_recycling_type_glass_bottles">Glass bottles</string>
+    <string name="quest_recycling_type_paper">Paper</string>
+    <string name="quest_recycling_type_plastic">Plastic</string>
+    <string name="quest_recycling_type_shoes">Shoes</string>
+    <string name="quest_recycling_type_electric_appliances">Electric appliances</string>
 
 </resources>
