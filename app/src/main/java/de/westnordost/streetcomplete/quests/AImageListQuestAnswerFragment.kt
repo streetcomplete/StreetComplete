@@ -97,8 +97,9 @@ abstract class AImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnswerFragm
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
+        // note: the view might be not available anymore at this point!
         outState.putIntegerArrayList(SELECTED_INDICES, ArrayList(imageSelector.selectedIndices))
-        outState.putBoolean(EXPANDED, showMoreButton.visibility == View.GONE)
+        outState.putBoolean(EXPANDED, showMoreButton?.visibility == View.GONE)
     }
 
     override fun isFormComplete() = imageSelector.selectedIndices.isNotEmpty()

@@ -25,7 +25,6 @@ class OpenQuestChangesetsManager @Inject constructor(
     private val TAG = "ChangesetManager"
 
     fun getOrCreateChangeset(questType: OsmElementQuestType<*>, source: String): Long {
-        closeOldChangesets()
         val openChangeset = openChangesetsDB.get(questType.name, source)
         return if (openChangeset?.changesetId != null) {
             openChangeset.changesetId

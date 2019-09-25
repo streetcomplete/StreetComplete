@@ -14,6 +14,7 @@ import androidx.annotation.AnyThread;
 import androidx.annotation.CallSuper;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.view.ViewKt;
 import androidx.fragment.app.Fragment;
 import androidx.preference.PreferenceManager;
 import android.text.Html;
@@ -45,7 +46,7 @@ import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.util.BitmapUtil;
 import de.westnordost.streetcomplete.util.DpUtil;
 import de.westnordost.streetcomplete.util.SphericalEarthMath;
-import de.westnordost.streetcomplete.util.ViewUtils;
+import kotlin.Unit;
 
 import static android.content.Context.SENSOR_SERVICE;
 
@@ -190,8 +191,13 @@ public class MapFragment extends Fragment implements
 			followPosition();
 			showLocation();
 			View v = getView();
-			if(v != null) ViewUtils.postOnLayout(v, this::updateView);
+			if(v != null) ViewKt.doOnLayout(v, this::packagedUpdateView);
 		}
+	}
+
+	public Unit packagedUpdateView(View _trigger){
+		this.updateView();
+		return Unit.INSTANCE;
 	}
 
 	private void initMarkers()

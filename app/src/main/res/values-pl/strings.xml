@@ -680,4 +680,5 @@ Podzielić?"</string>
     <string name="quest_split_way_too_imprecise">"Proszę, zbliż bardziej"</string>
     <string name="quest_split_way_many_splits_confirmation_description">"To jest sporo podziałów! Zawsze możesz podzielić linię bardziej przy odpowiadaniu na poszczególne zadania."</string>
     <string name="quest_footwayPartSurface_title">"Jak jest nawierzchnia części będącej chodnikiem dla pieszych?"</string>
+    <string name="quest_wheelchairAccess_toiletsPart_title">"Czy toalety w %s jest dostępna dla osób na wózku inwalidzkim?"</string>
 </resources>

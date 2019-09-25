@@ -75,20 +75,29 @@ class AddRoadName(
                 }
             }
             is RoadName -> {
-                for ((languageCode, name) in answer.localizedNames) {
-                    if (languageCode.isEmpty()) {
-                        changes.addOrModify("name", name)
-                    } else {
-                        changes.addOrModify("name:$languageCode", name)
-                    }
+                val singleName = answer.localizedNames.singleOrNull()
+                if (singleName?.isRef() == true) {
+                    changes.add("ref", singleName.name)
+                } else {
+                    applyAnswerRoadName(answer, changes)
                 }
-                // these params are passed from the form only to update the road name suggestions so that
-                // newly input street names turn up in the suggestions as well
-                val points = answer.wayGeometry.polylines.first()
-                val roadNameByLanguage = answer.localizedNames.associate { it.languageCode to it.name }
-                roadNameSuggestionsDao.putRoad( answer.wayId, roadNameByLanguage, points)
             }
         }
+    }
+
+    private fun applyAnswerRoadName(answer: RoadName, changes: StringMapChangesBuilder) {
+        for ((languageCode, name) in answer.localizedNames) {
+            if (languageCode.isEmpty()) {
+                changes.addOrModify("name", name)
+            } else {
+                changes.addOrModify("name:$languageCode", name)
+            }
+        }
+        // these params are passed from the form only to update the road name suggestions so that
+        // newly input street names turn up in the suggestions as well
+        val points = answer.wayGeometry.polylines.first()
+        val roadNameByLanguage = answer.localizedNames.associate { it.languageCode to it.name }
+        roadNameSuggestionsDao.putRoad( answer.wayId, roadNameByLanguage, points)
     }
 
     companion object {
@@ -105,3 +114,6 @@ class AddRoadName(
         )}
     }
 }
+
+private fun LocalizedName.isRef() =
+    languageCode.isEmpty() && name.matches("[A-Z]{0,3}[ -]?[0-9]{0,5}".toRegex())

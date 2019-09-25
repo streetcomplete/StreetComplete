@@ -736,4 +736,5 @@
     <string name="quest_split_way_too_imprecise">"لطفاً بیشتر بزرگنمایی کنید."</string>
     <string name="quest_split_way_many_splits_confirmation_description">"اینها به چند مسیر تفکیک شده است. همیشه بعداً هم می‌توانید راه را تفکیک کنید."</string>
     <string name="quest_footwayPartSurface_title">"سطح این پیاده‌راه از چه جنسی است؟"</string>
+    <string name="quest_wheelchairAccess_toiletsPart_title">"آیا دستشویی با صندلی چرخدار %s قابل دسترسی است؟"</string>
 </resources>

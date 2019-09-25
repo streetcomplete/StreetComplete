@@ -245,9 +245,9 @@ Si no hi ha cap senya en tot el carrer que s'apliqui en l'àrea realçada, s'apl
     <string name="quest_wheelchairAccess_subway_entrance_title">"Es pot accedir en cadira de rodes a aquesta entrada de metro?"</string>
     <string name="quest_wheelchairAccess_railway_station_title">"Es pot accedir en cadira de rodes a aquesta estació de tren?"</string>
     <string name="quest_wheelchairAccess_location_title">"Es pot accedir en cadira de rodes a aquesta ubicació?"</string>
-    <string name="quest_wheelchairAccess_bus_station_name_title">"La estació de bus %s és accessible amb cadira de rodes?"</string>
-    <string name="quest_wheelchairAccess_subway_entrance_name_title">"La entrada de metro %s és accessible amb cadira de rodes?"</string>
-    <string name="quest_wheelchairAccess_railway_station_name_title">"La estació de tren %s és accessible amb cadira de rodes?"</string>
+    <string name="quest_wheelchairAccess_bus_station_name_title">"L'estació de bus %s és accessible amb cadira de rodes?"</string>
+    <string name="quest_wheelchairAccess_subway_entrance_name_title">"L'entrada de metro %s és accessible amb cadira de rodes?"</string>
+    <string name="quest_wheelchairAccess_railway_station_name_title">"L'estació de tren %s és accessible amb cadira de rodes?"</string>
     <string name="quest_wheelchairAccess_location_name_title">"La ubicació %s és accessible amb cadira de rodes?"</string>
 
     <!-- Fuzzy -->
@@ -673,4 +673,16 @@ Per example 1,3 o 2-6."</string>
     <string name="how_to_get_stars">"Trieu un dels marcadors del mapa i respongueu la qüestió. D'aquesta manera millorareu les dades d'OpenStreetMap i guanyareu estrelles. Si no veieu marcadors, potser heu de canviar l'escala del mapa."</string>
     <string name="oauth_remove_authorization_dialog_message">"Voleu suprimir l'autorització del vostre compte d'OSM?"</string>
     <string name="oauth_remove_authorization_confirmation">"Suprimeix"</string>
+    <string name="quest_leafType_title">"Els arbres aquí tenen fulles amples o d'agulla?"</string>
+    <string name="quest_leaf_type_needles">"Agulles"</string>
+    <string name="quest_leaf_type_broadleaved">"Fulles amples"</string>
+    <string name="quest_leaf_type_mixed">"Ambdues"</string>
+    <string name="quest_cyclewayPartSurface_title">"Quin tipus de superfície té el carril bici aquí?"</string>
+    <string name="quest_generic_answer_differs_along_the_way">"Canvia al llarg de la via..."</string>
+    <string name="quest_split_way_description">"Si varia al llarg de la via, el primer pas és dividir la via. Després de fer-ho, es pot respondre la missió per a cada tram separadament. Tingueu en compte que les missions per als trams poden aparèixer molt més tard. Voleu dividir-la ara?"</string>
+    <string name="quest_split_way_tutorial">"Toqueu en la via per a dividir-la en els punts on la resposta varia. Intenteu de ser tan precís com sigui possible, podeu apropar-vos-hi com és habitual."</string>
+    <string name="quest_split_way_too_imprecise">"Apropeu-vos més"</string>
+    <string name="quest_split_way_many_splits_confirmation_description">"Ja hi ha unes quantes divisions. Sempre podeu afegir-ne més endavant."</string>
+    <string name="quest_footwayPartSurface_title">"Quin tipus de superfície té el camí de vianants aquí?"</string>
+    <string name="quest_wheelchairAccess_toiletsPart_title">"Els serveis de %s són accessibles amb cadira de rodes?"</string>
 </resources>
