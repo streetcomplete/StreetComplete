@@ -745,4 +745,5 @@ Le séparer maintenant?"</string>
     <string name="quest_split_way_tutorial">"Cliquez sur le chemin au (x) point (s) où la réponse diffère. Essayez d'être aussi précis que possible, vous pouvez zoomer comme d'habitude."</string>
     <string name="quest_split_way_too_imprecise">"Veuillez zoomer davantage"</string>
     <string name="quest_footwayPartSurface_title">"Quelle est la surface du chemin piéton ici?"</string>
+    <string name="quest_wheelchairAccess_toiletsPart_title">"Est-ce que les toilettes de %s sont accessibles aux fauteuils roulants ?"</string>
 </resources>

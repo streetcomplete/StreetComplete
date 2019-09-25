@@ -702,4 +702,24 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
 
     <!-- Fuzzy -->
     <string name="quest_ferry_motor_vehicle_title">"¿Transporta vehículos motorizados?"</string>
+    <string name="quest_leave_new_note_photos_are_useful">"Añadir una nota hará la nota mucho más útil."</string>
+    <string name="quest_postboxCollectionTimes_name_title">"¿Cuáles son las horas de recogida de estos %s buzones?"</string>
+    <string name="create_new_note_hint">"Mejor escribe la nota en el idioma local o si no, en inglés."</string>
+    <string name="about_contributing">"Tus respuestas están directamente mejorando OpenStreetMap. Los datos aportados son abiertos, todos el mundo puede usarlos. Muchos grandes proyectos están ya utilizándolos."</string>
+    <string name="about_missing_stars">"Actualmente, la cuenta de estrellas no es compartida a través de los dispositivos, sino que las respuestas son añadidas directamente a la base de datos OpenStreetMap."</string>
+    <string name="how_to_get_stars">"Escoge uno de los marcadores del mapa y response la pregunta. De esta manera mejorarás los datos de OpenStreetMap y conseguirás estrellas. Si no ves marcadores, puede que tengas que hacer menos zoom al mapa."</string>
+    <string name="oauth_remove_authorization_dialog_message">"¿Quieres eliminar la autorización de tu cuenta OSM?"</string>
+    <string name="oauth_remove_authorization_confirmation">"Eliminar"</string>
+    <string name="quest_leafType_title">"¿Tienen los árboles aquí agujas u hojas?"</string>
+    <string name="quest_leaf_type_needles">"Agujas"</string>
+    <string name="quest_leaf_type_broadleaved">"De hojas anchas"</string>
+    <string name="quest_leaf_type_mixed">"Ambos están presentes"</string>
+    <string name="quest_cyclewayPartSurface_title">"¿Cuál es la superficie de la vía ciclista?"</string>
+    <string name="quest_generic_answer_differs_along_the_way">"Difiere a lo largo de la vía..."</string>
+    <string name="quest_split_way_description">"Si difiere a lo largo de la vía, el primer paso es dividir la vía. Tras eso, el objetivo puede ser respondido para cada parte por separado. Date cuenta que los objetivos para las partes divididas pueden aparecen mucho más tarde. ¿Dividirlas ahora?"</string>
+    <string name="quest_split_way_tutorial">"Toca en la vía para dividirla en el(los) punto(s) donde la respuesta difiere. Intenta ser lo más preciso posible, puedes hacer más zoom como de costumbre."</string>
+    <string name="quest_split_way_too_imprecise">"Por favor, haz más zoom"</string>
+    <string name="quest_split_way_many_splits_confirmation_description">"Estas son un buen número de divisiones. Puedes siempre dividir aún más la vía más adelante."</string>
+    <string name="quest_footwayPartSurface_title">"¿Cuál es la superficie de la acera aquí?"</string>
+    <string name="quest_wheelchairAccess_toiletsPart_title">"¿Es el servicio accesible para %s sillas de ruedas?"</string>
 </resources>
