@@ -47,16 +47,16 @@ public abstract class AActiveRadiusStrategy implements QuestAutoDownloadStrategy
 		long questExpirationTime = ApplicationConstants.REFRESH_QUESTS_AFTER;
 		long ignoreOlderThan = Math.max(0,System.currentTimeMillis() - questExpirationTime);
 		Set<String> alreadyDownloaded = new HashSet<>(downloadedTilesDao.get(tiles, ignoreOlderThan));
-		if(alreadyDownloaded.size() >= questTypeNames.size())
-		{
-			Log.i(TAG, "Not downloading quests because everything has been downloaded already in " + radius + "m radius");
-			return false;
-		}
-
 		List<String> notAlreadyDownloaded = new ArrayList<>();
 		for (String questTypeName : questTypeNames)
 		{
 			if (!alreadyDownloaded.contains(questTypeName)) notAlreadyDownloaded.add(questTypeName);
+		}
+
+		if(notAlreadyDownloaded.isEmpty())
+		{
+			Log.i(TAG, "Not downloading quests because everything has been downloaded already in " + radius + "m radius");
+			return false;
 		}
 		double areaInKm2 = SphericalEarthMath.enclosedArea(bbox) / 1000 / 1000;
 		// got enough quests in vicinity
