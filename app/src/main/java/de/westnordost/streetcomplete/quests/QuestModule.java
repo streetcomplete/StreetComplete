@@ -152,12 +152,12 @@ public class QuestModule
 				new AddToiletsFee(o), // used by OsmAnd in the object description
 				new AddBabyChangingTable(o), // used by OsmAnd in the object description
 				new AddBikeParkingCover(o), // used by OsmAnd in the object description
-				new AddTrafficSignalsSound(o),
+				new AddTactilePavingCrosswalk(o), // Paving can be completed while waiting to cross
+				new AddTrafficSignalsSound(o), // Sound needs to be done as or after you're crossing
 				new AddRoofShape(o),
 				new AddWheelchairAccessPublicTransport(o),
 				new AddWheelchairAccessOutside(o),
 				new AddTactilePavingBusStop(o),
-				new AddTactilePavingCrosswalk(o),
 				new AddBridgeStructure(o),
 				new AddReligionToWaysideShrine(o),
 				new AddCyclewaySegregation(o),
