@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.persist
 
 import android.database.Cursor
-import android.database.sqlite.SQLiteDatabase.CONFLICT_REPLACE
 import android.database.sqlite.SQLiteOpenHelper
 import androidx.core.content.contentValuesOf
 
@@ -45,7 +44,7 @@ class ElementGeometryDao @Inject constructor(
             ELEMENT_ID to entry.elementId
         ) + mapping.toContentValues(entry.geometry)
 
-		db.insertWithOnConflict(NAME, null, values, CONFLICT_REPLACE)
+		db.replaceOrThrow(NAME, null, values)
 	}
 
 	fun get(type: Element.Type, id: Long): ElementGeometry? {

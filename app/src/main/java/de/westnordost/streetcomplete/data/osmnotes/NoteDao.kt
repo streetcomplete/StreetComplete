@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.data.osmnotes
 
 
 import android.database.Cursor
-import android.database.sqlite.SQLiteDatabase.CONFLICT_REPLACE
 import android.database.sqlite.SQLiteOpenHelper
 import androidx.core.content.contentValuesOf
 
@@ -41,7 +40,7 @@ class NoteDao @Inject constructor(
     }
 
     fun put(note: Note) {
-	    db.insertWithOnConflict(NAME, null, mapping.toContentValues(note), CONFLICT_REPLACE)
+	    db.replaceOrThrow(NAME, null, mapping.toContentValues(note))
     }
 
     fun get(id: Long): Note? {

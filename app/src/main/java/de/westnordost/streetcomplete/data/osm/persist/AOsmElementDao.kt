@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.data.osm.persist
 
-import android.database.sqlite.SQLiteDatabase.CONFLICT_REPLACE
 import android.database.sqlite.SQLiteOpenHelper
 
 import de.westnordost.osmapi.map.data.Element
@@ -26,7 +25,7 @@ abstract class AOsmElementDao<T : Element>(private val dbHelper: SQLiteOpenHelpe
     }
 
     fun put(element: T) {
-	    db.insertWithOnConflict(tableName, null, mapping.toContentValues(element), CONFLICT_REPLACE)
+	    db.replaceOrThrow(tableName, null, mapping.toContentValues(element))
     }
 
     fun delete(id: Long) {

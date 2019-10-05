@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.persist
 
 import android.database.Cursor
-import android.database.sqlite.SQLiteDatabase.CONFLICT_REPLACE
 import android.database.sqlite.SQLiteOpenHelper
 import androidx.core.content.contentValuesOf
 import de.westnordost.streetcomplete.data.ObjectRelationalMapping
@@ -41,7 +40,7 @@ class OsmQuestSplitWayDao @Inject constructor(
     }
 
     fun put(quest: OsmQuestSplitWay) {
-        db.insertWithOnConflict(NAME, null, mapping.toContentValues(quest), CONFLICT_REPLACE)
+        db.replaceOrThrow(NAME, null, mapping.toContentValues(quest))
     }
 
     fun delete(questId: Long) {

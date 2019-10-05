@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.quests.localized_name.data
 
-import android.database.sqlite.SQLiteDatabase.CONFLICT_REPLACE
 import android.database.sqlite.SQLiteOpenHelper
 import androidx.core.content.contentValuesOf
 
@@ -39,7 +38,7 @@ open class RoadNameSuggestionsDao @Inject constructor(
             MAX_LATITUDE to bbox.maxLatitude,
             MAX_LONGITUDE to bbox.maxLongitude
         )
-        db.insertWithOnConflict(NAME, null, v, CONFLICT_REPLACE)
+        db.replaceOrThrow(NAME, null, v)
     }
 
     /** returns something like [{"": "17th Street", "de": "17. Straße", "en": "17th Street" }, ...] */

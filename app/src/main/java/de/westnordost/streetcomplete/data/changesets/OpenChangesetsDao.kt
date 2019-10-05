@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.data.changesets
 
 import android.database.Cursor
-import android.database.sqlite.SQLiteDatabase.CONFLICT_REPLACE
 import android.database.sqlite.SQLiteOpenHelper
 import androidx.core.content.contentValuesOf
 import de.westnordost.streetcomplete.data.ObjectRelationalMapping
@@ -29,7 +28,7 @@ class OpenChangesetsDao @Inject constructor(
     }
 
     fun put(openChangeset: OpenChangeset) {
-	    db.insertWithOnConflict(NAME, null, mapping.toContentValues(openChangeset), CONFLICT_REPLACE)
+	    db.replaceOrThrow(NAME, null, mapping.toContentValues(openChangeset))
     }
 
     fun get(questType: String, source: String): OpenChangeset? {

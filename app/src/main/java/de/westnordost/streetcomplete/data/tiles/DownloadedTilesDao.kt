@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.data.tiles
 
-import android.database.sqlite.SQLiteDatabase.CONFLICT_REPLACE
 import android.database.sqlite.SQLiteOpenHelper
 import android.graphics.Point
 import android.graphics.Rect
@@ -33,7 +32,7 @@ class DownloadedTilesDao @Inject constructor(private val dbHelper: SQLiteOpenHel
 				        QUEST_TYPE to questTypeName,
 				        DATE to time
 			        )
-			        db.insertWithOnConflict(NAME, null, values, CONFLICT_REPLACE)
+			        db.replaceOrThrow(NAME, null, values)
 		        }
 	        }
         }

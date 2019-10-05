@@ -24,7 +24,7 @@ class WayTrafficFlowDao @Inject constructor(private val dbHelper: SQLiteOpenHelp
             IS_FORWARD to if (isForward) 1 else 0
         )
 
-        db.insertWithOnConflict(NAME, null, contentValues, CONFLICT_REPLACE)
+        db.replaceOrThrow(NAME, null, contentValues)
     }
 
     /** returns whether the direction of road user flow is forward or null if unknown
