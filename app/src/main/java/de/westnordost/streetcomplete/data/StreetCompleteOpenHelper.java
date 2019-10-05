@@ -36,13 +36,6 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 				QuestStatisticsTable.Columns.SUCCEEDED +	" int			NOT NULL " +
 			");";
 
-	private static final String QUEST_VISIBILITY_TABLE_CREATE =
-			"CREATE TABLE " + QuestVisibilityTable.NAME +
-			" (" +
-				QuestVisibilityTable.Columns.QUEST_TYPE +    " varchar(255) PRIMARY KEY, " +
-				QuestVisibilityTable.Columns.VISIBILITY +    " int NOT NULL " +
-			");";
-
 	private final TablesHelper[] extensions;
 
 	public StreetCompleteOpenHelper(Context context, String dbName, TablesHelper[] extensions)
@@ -76,7 +69,7 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 
 		db.execSQL(OpenChangesetsTable.CREATE);
 
-		db.execSQL(QUEST_VISIBILITY_TABLE_CREATE);
+		db.execSQL(QuestVisibilityTable.CREATE);
 
 		db.execSQL(OsmQuestSplitWayTable.CREATE);
 
@@ -150,7 +143,7 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 
 		if(oldVersion < 9 && newVersion >= 9)
 		{
-			db.execSQL(QUEST_VISIBILITY_TABLE_CREATE);
+			db.execSQL(QuestVisibilityTable.CREATE);
 		}
 
 		// all oneway quest data was invalidated on version 11
