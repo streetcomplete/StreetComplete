@@ -125,7 +125,7 @@ public class OsmNotesDownload
 				listener.onQuestsRemoved(previousQuestsByNoteId.values(), QuestGroup.OSM_NOTE);
 			}
 
-			noteQuestDB.deleteAll(previousQuestsByNoteId.values());
+			noteQuestDB.deleteAllIds(previousQuestsByNoteId.values());
 			noteDB.deleteUnreferenced();
 		}
 
@@ -150,7 +150,10 @@ public class OsmNotesDownload
 	private HashMap<Long, Long> getPreviousQuestsByNoteId(BoundingBox bbox)
 	{
 		HashMap<Long, Long> result = new HashMap<>();
-		for(OsmNoteQuest quest : noteQuestDB.getAll(bbox, null))
+		for(OsmNoteQuest quest : noteQuestDB.getAll(mergedQueryBuilder -> {
+			mergedQueryBuilder.withinBounds(bbox);
+			return null;
+		}))
 		{
 			result.put(quest.getNote().id, quest.getId());
 		}

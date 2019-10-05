@@ -15,6 +15,7 @@ import de.westnordost.streetcomplete.util.Serializer
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.osmapi.notes.Note
 import de.westnordost.osmapi.notes.NoteComment
+import de.westnordost.streetcomplete.data.ObjectRelationalMapping
 import de.westnordost.streetcomplete.data.osmnotes.NoteTable.Columns.CLOSED
 import de.westnordost.streetcomplete.data.osmnotes.NoteTable.Columns.COMMENTS
 import de.westnordost.streetcomplete.data.osmnotes.NoteTable.Columns.CREATED
@@ -27,9 +28,8 @@ import de.westnordost.streetcomplete.ktx.*
 
 class NoteDao @Inject constructor(
     private val dbHelper: SQLiteOpenHelper,
-    private val serializer: Serializer
+    private val mapping: NoteMapping
 ) {
-
 	private val db get() = dbHelper.writableDatabase
 
     fun putAll(notes: Collection<Note>) {
@@ -41,11 +41,11 @@ class NoteDao @Inject constructor(
     }
 
     fun put(note: Note) {
-	    db.insertWithOnConflict(NAME, null, note.createContentValues(), CONFLICT_REPLACE)
+	    db.insertWithOnConflict(NAME, null, mapping.toContentValues(note), CONFLICT_REPLACE)
     }
 
     fun get(id: Long): Note? {
-        return db.queryOne(NAME, null, "$ID = $id") { it.createNote(serializer) }
+        return db.queryOne(NAME, null, "$ID = $id") { mapping.toObject(it) }
     }
 
     fun delete(id: Long): Boolean {
@@ -59,23 +59,27 @@ class NoteDao @Inject constructor(
 
         return db.delete(NAME, where, null)
     }
-
-	private fun Note.createContentValues() = contentValuesOf(
-		ID to id,
-		LATITUDE to position.latitude,
-		LONGITUDE to position.longitude,
-		STATUS to status.name,
-		CREATED to dateCreated.time,
-		CLOSED to dateClosed?.time,
-		COMMENTS to serializer.toBytes(ArrayList(comments))
-	)
 }
 
-internal fun Cursor.createNote(serializer: Serializer) = Note().also { n ->
-	n.id = getLong(ID)
-	n.position = OsmLatLon(getDouble(LATITUDE), getDouble(LONGITUDE))
-	n.dateCreated = Date(getLong(CREATED))
-	n.dateClosed = getLongOrNull(CLOSED)?.let { Date(it) }
-	n.status = Note.Status.valueOf(getString(STATUS))
-	n.comments = serializer.toObject<ArrayList<NoteComment>>(getBlob(COMMENTS))
+class NoteMapping @Inject constructor(private val serializer: Serializer)
+    : ObjectRelationalMapping<Note> {
+
+    override fun toContentValues(obj: Note) = contentValuesOf(
+        ID to obj.id,
+        LATITUDE to obj.position.latitude,
+        LONGITUDE to obj.position.longitude,
+        STATUS to obj.status.name,
+        CREATED to obj.dateCreated.time,
+        CLOSED to obj.dateClosed?.time,
+        COMMENTS to serializer.toBytes(ArrayList(obj.comments))
+    )
+
+    override fun toObject(cursor: Cursor) = Note().also { n ->
+        n.id = cursor.getLong(ID)
+        n.position = OsmLatLon(cursor.getDouble(LATITUDE), cursor.getDouble(LONGITUDE))
+        n.dateCreated = Date(cursor.getLong(CREATED))
+        n.dateClosed = cursor.getLongOrNull(CLOSED)?.let { Date(it) }
+        n.status = Note.Status.valueOf(cursor.getString(STATUS))
+        n.comments = serializer.toObject<ArrayList<NoteComment>>(cursor.getBlob(COMMENTS))
+    }
 }

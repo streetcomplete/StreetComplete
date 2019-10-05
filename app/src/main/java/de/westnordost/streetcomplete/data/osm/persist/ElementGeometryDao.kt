@@ -12,6 +12,7 @@ import de.westnordost.streetcomplete.data.osm.ElementGeometry
 import de.westnordost.streetcomplete.util.Serializer
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.OsmLatLon
+import de.westnordost.streetcomplete.data.ObjectRelationalMapping
 import de.westnordost.streetcomplete.data.osm.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.ElementPolylinesGeometry
@@ -26,9 +27,8 @@ import de.westnordost.streetcomplete.ktx.*
 
 class ElementGeometryDao @Inject constructor(
     private val dbHelper: SQLiteOpenHelper,
-    private val serializer: Serializer
+    private val mapping: ElementGeometryMapping
 ) {
-
 	private val db get() = dbHelper.writableDatabase
 
 	fun putAll(entries: Collection<ElementGeometryEntry>) {
@@ -40,14 +40,19 @@ class ElementGeometryDao @Inject constructor(
 	}
 
 	fun put(entry: ElementGeometryEntry) {
-		db.insertWithOnConflict(NAME, null, entry.createContentValues(), CONFLICT_REPLACE)
+        val values = contentValuesOf(
+            ELEMENT_TYPE to entry.elementType.name,
+            ELEMENT_ID to entry.elementId
+        ) + mapping.toContentValues(entry.geometry)
+
+		db.insertWithOnConflict(NAME, null, values, CONFLICT_REPLACE)
 	}
 
 	fun get(type: Element.Type, id: Long): ElementGeometry? {
 		val where = "$ELEMENT_TYPE = ? AND $ELEMENT_ID = ?"
 		val args = arrayOf(type.name, id.toString())
 
-		return db.queryOne(NAME, null, where, args) { it.createElementGeometry(serializer) }
+		return db.queryOne(NAME, null, where, args) { mapping.toObject(it) }
 	}
 
 	fun delete(type: Element.Type, id: Long) {
@@ -71,15 +76,6 @@ class ElementGeometryDao @Inject constructor(
 
 		return db.delete(NAME, where, null)
 	}
-
-    private fun ElementGeometryEntry.createContentValues() = contentValuesOf(
-        ELEMENT_TYPE to elementType.name,
-        ELEMENT_ID to elementId,
-        LATITUDE to geometry.center.latitude,
-        LONGITUDE to geometry.center.longitude,
-        GEOMETRY_POLYGONS to (geometry as? ElementPolygonsGeometry)?.let { serializer.toBytes(geometry.polygons) },
-        GEOMETRY_POLYLINES to (geometry as? ElementPolylinesGeometry)?.let { serializer.toBytes(geometry.polylines) }
-    )
 }
 
 data class ElementGeometryEntry(
@@ -89,17 +85,28 @@ data class ElementGeometryEntry(
 )
 
 private const val LUMP = "+'#'+"
-
 private typealias PolyLines = ArrayList<ArrayList<OsmLatLon>>
 
-internal fun Cursor.createElementGeometry(serializer: Serializer): ElementGeometry {
-    val polylines = getBlobOrNull(GEOMETRY_POLYLINES)?.let { serializer.toObject<PolyLines>(it) }
-    val polygons = getBlobOrNull(GEOMETRY_POLYGONS)?.let { serializer.toObject<PolyLines>(it) }
-    val center = OsmLatLon(getDouble(LATITUDE), getDouble(LONGITUDE))
+class ElementGeometryMapping @Inject constructor(
+    private val serializer: Serializer)
+    : ObjectRelationalMapping<ElementGeometry> {
 
-    return when {
-        polygons != null ->  ElementPolygonsGeometry(polygons, center)
-        polylines != null -> ElementPolylinesGeometry(polylines, center)
-        else ->              ElementPointGeometry(center)
+    override fun toContentValues(obj: ElementGeometry) = contentValuesOf(
+        LATITUDE to obj.center.latitude,
+        LONGITUDE to obj.center.longitude,
+        GEOMETRY_POLYGONS to (obj as? ElementPolygonsGeometry)?.let { serializer.toBytes(obj.polygons) },
+        GEOMETRY_POLYLINES to (obj as? ElementPolylinesGeometry)?.let { serializer.toBytes(obj.polylines) }
+    )
+
+    override fun toObject(cursor: Cursor): ElementGeometry {
+        val polylines = cursor.getBlobOrNull(GEOMETRY_POLYLINES)?.let { serializer.toObject<PolyLines>(it) }
+        val polygons = cursor.getBlobOrNull(GEOMETRY_POLYGONS)?.let { serializer.toObject<PolyLines>(it) }
+        val center = OsmLatLon(cursor.getDouble(LATITUDE), cursor.getDouble(LONGITUDE))
+
+        return when {
+            polygons != null ->  ElementPolygonsGeometry(polygons, center)
+            polylines != null -> ElementPolylinesGeometry(polylines, center)
+            else ->              ElementPointGeometry(center)
+        }
     }
 }

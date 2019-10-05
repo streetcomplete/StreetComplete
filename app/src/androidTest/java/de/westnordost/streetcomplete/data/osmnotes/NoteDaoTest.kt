@@ -17,7 +17,7 @@ class NoteDaoTest : ApplicationDbTestCase() {
     private lateinit var dao: NoteDao
 
     @Before fun createDao() {
-        dao = NoteDao(dbHelper, serializer)
+        dao = NoteDao(dbHelper, NoteMapping(serializer))
     }
 
     @Test fun putGetNoClosedDate() {
@@ -63,8 +63,9 @@ class NoteDaoTest : ApplicationDbTestCase() {
     @Test fun deleteUnreferencedButNothingIsUnreferenced() {
         val note = createNote()
         dao.put(note)
-        OsmNoteQuestDao(dbHelper, serializer, OsmNoteQuestType())
-            .add(OsmNoteQuest(note, OsmNoteQuestType()))
+        val noteMapping = NoteMapping(serializer)
+        val osmNoteQuestMapping = OsmNoteQuestMapping(serializer, OsmNoteQuestType(), noteMapping)
+        OsmNoteQuestDao(dbHelper, osmNoteQuestMapping).add(OsmNoteQuest(note, OsmNoteQuestType()))
         assertEquals(0, dao.deleteUnreferenced())
     }
     

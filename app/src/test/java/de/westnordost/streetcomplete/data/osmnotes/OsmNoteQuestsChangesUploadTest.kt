@@ -38,7 +38,7 @@ class OsmNoteQuestsChangesUploadTest {
     }
 
     @Test fun `catches conflict exception`() {
-        on(questDB.getAll(null, QuestStatus.ANSWERED)).thenReturn(listOf(createQuest()))
+        on(questDB.getAll(any())).thenReturn(listOf(createQuest()))
         on(singleNoteUploader.upload(any())).thenThrow(ConflictException())
 
         uploader.upload(AtomicBoolean(false))
@@ -49,7 +49,7 @@ class OsmNoteQuestsChangesUploadTest {
     @Test fun `close each uploaded quest in local DB and call listener`() {
         val quests = listOf( createQuest(), createQuest())
 
-        on(questDB.getAll(null, QuestStatus.ANSWERED)).thenReturn(quests)
+        on(questDB.getAll(any())).thenReturn(quests)
         on(singleNoteUploader.upload(any())).thenReturn(createNote())
 
         uploader.uploadedChangeListener = mock(OnUploadedChangeListener::class.java)
@@ -67,7 +67,7 @@ class OsmNoteQuestsChangesUploadTest {
     @Test fun `delete each unsuccessfully uploaded quest in local DB and call listener`() {
         val quests = listOf( createQuest(), createQuest())
 
-        on(questDB.getAll(null, QuestStatus.ANSWERED)).thenReturn(quests)
+        on(questDB.getAll(any())).thenReturn(quests)
         on(singleNoteUploader.upload(any())).thenThrow(ConflictException())
 
         uploader.uploadedChangeListener = mock(OnUploadedChangeListener::class.java)

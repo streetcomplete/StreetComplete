@@ -13,6 +13,7 @@ import org.junit.Test
 import de.westnordost.osmapi.map.data.Element
 
 import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
+import de.westnordost.streetcomplete.data.ObjectRelationalMapping
 import org.junit.Assert.*
 import org.mockito.Mockito.*
 
@@ -78,14 +79,14 @@ private class TestOsmElementDao(dbHelper: SQLiteOpenHelper) : AOsmElementDao<Ele
 	override val elementTypeName = Element.Type.NODE.name
 	override val tableName = TABLE_NAME
 	override val idColumnName = ID_COL
+    override val mapping = object : ObjectRelationalMapping<Element> {
+        override fun toContentValues(obj: Element) = contentValuesOf(
+            ID_COL to obj.id,
+            VERSION_COL to obj.version
+        )
 
-	override fun createContentValuesFrom(element: Element) = contentValuesOf(
-        ID_COL to element.id,
-        VERSION_COL to element.version
-    )
-
-	override fun createObjectFrom(cursor: Cursor) =
-        createElement(cursor.getLong(0), cursor.getInt(1))
+        override fun toObject(cursor: Cursor) = createElement(cursor.getLong(0), cursor.getInt(1))
+    }
 }
 
 private class TestDbHelper(context: Context) : SQLiteOpenHelper(context, TESTDB, null, 1) {

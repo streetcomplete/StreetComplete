@@ -68,13 +68,16 @@ class OsmQuestGiver @Inject constructor(
         if (createdQuests.isNotEmpty()) {
             // Before new quests are unlocked, all reverted quests need to be removed for
             // this element so that they can be created anew as the case may be
-            questDB.deleteAllReverted(element.type, element.id)
+            questDB.deleteAll {
+                withStatus(QuestStatus.REVERT)
+                forElement(element.type, element.id)
+            }
 
             questDB.addAll(createdQuests)
             Log.d(TAG, "Created new quests for ${element.type.name}#${element.id}: ${createdQuestsLog.joinToString()}")
         }
         if (removedQuestIds.isNotEmpty()) {
-            questDB.deleteAll(removedQuestIds)
+            questDB.deleteAllIds(removedQuestIds)
             Log.d(TAG, "Removed quests no longer applicable for ${element.type.name}#${element.id}: ${removedQuestsLog.joinToString()}")
         }
 
@@ -82,8 +85,8 @@ class OsmQuestGiver @Inject constructor(
     }
 
     fun deleteQuests(elementType: Element.Type, elementId: Long): List<Long> {
-        val ids = questDB.getAllIds(elementType, elementId)
-        questDB.deleteAll(ids)
+        val ids = questDB.getAllIds { forElement(elementType, elementId) }
+        questDB.deleteAllIds(ids)
 
         Log.d(TAG, "Removed all quests for deleted element " + elementType.name + "#" + elementId)
 	    return ids
@@ -97,7 +100,7 @@ class OsmQuestGiver @Inject constructor(
     }
 
     private fun getCurrentQuests(element: Element): Map<QuestType<*>, OsmQuest> {
-        val quests = questDB.getAll(null, null, null, element.type, element.id)
+        val quests = questDB.getAll { forElement(element.type, element.id) }
         val result = HashMap<QuestType<*>, OsmQuest>(quests.size)
         for (quest in quests) {
             if (quest.status == QuestStatus.REVERT) continue

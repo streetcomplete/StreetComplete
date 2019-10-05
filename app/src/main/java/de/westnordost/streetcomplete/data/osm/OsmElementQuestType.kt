@@ -51,6 +51,10 @@ interface OsmElementQuestType<T> : QuestType<T> {
      *  instead, a map of [changes] is built */
     fun applyAnswerTo(answer: T, changes: StringMapChangesBuilder)
 
+    fun applyAnswerToUnsafe(answer: Any, changes: StringMapChangesBuilder) {
+        applyAnswerTo(answer as T, changes)
+    }
+
     /** The quest type can clean it's metadata here, if any  */
     fun cleanMetadata() {}
 }

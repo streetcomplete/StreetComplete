@@ -18,7 +18,8 @@ class OsmQuestSplitWayDaoTest : ApplicationDbTestCase() {
 	private lateinit var dao: OsmQuestSplitWayDao
 
 	@Before fun createDao() {
-		dao = OsmQuestSplitWayDao(dbHelper, serializer, QuestTypeRegistry(listOf(questType)))
+        val mapping = OsmQuestSplitWayMapping(serializer, QuestTypeRegistry(listOf(questType)))
+		dao = OsmQuestSplitWayDao(dbHelper, mapping)
 	}
 
     @Test fun getButNothingIsThere() {

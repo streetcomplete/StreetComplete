@@ -4,6 +4,7 @@ import android.database.Cursor
 import android.database.sqlite.SQLiteOpenHelper
 import androidx.core.content.contentValuesOf
 import de.westnordost.osmapi.map.data.Element
+import de.westnordost.streetcomplete.data.ObjectRelationalMapping
 
 import javax.inject.Inject
 
@@ -23,19 +24,18 @@ import de.westnordost.streetcomplete.util.Serializer
 
 class UndoOsmQuestDao @Inject constructor(
     private val dbHelper: SQLiteOpenHelper,
-    private val serializer: Serializer,
-    private val questTypeList: QuestTypeRegistry
+    private val mapping: UndoOsmQuestMapping
 ) {
     private val db get() = dbHelper.writableDatabase
 
     fun getAll(): List<UndoOsmQuest> {
-        return db.query(NAME_MERGED_VIEW) { it.createUndo() }
+        return db.query(NAME_MERGED_VIEW) { mapping.toObject(it) }
     }
 
     fun get(questId: Long): UndoOsmQuest? {
         val selection = "$QUEST_ID = ?"
         val args = arrayOf(questId.toString())
-        return db.queryOne(NAME_MERGED_VIEW, null, selection, args) { it.createUndo() }
+        return db.queryOne(NAME_MERGED_VIEW, null, selection, args) { mapping.toObject(it) }
     }
 
     fun delete(questId: Long) {
@@ -43,25 +43,32 @@ class UndoOsmQuestDao @Inject constructor(
     }
 
     fun add(quest: UndoOsmQuest) {
-        db.insert(NAME, null, quest.createContentValues())
+        db.insert(NAME, null, mapping.toContentValues(quest))
     }
+}
 
-    private fun UndoOsmQuest.createContentValues() = contentValuesOf(
-        QUEST_ID to id,
-        QUEST_TYPE to type.javaClass.simpleName,
-        TAG_CHANGES to serializer.toBytes(changes),
-        CHANGES_SOURCE to changesSource,
-        ELEMENT_TYPE to elementType.name,
-        ELEMENT_ID to elementId
+class UndoOsmQuestMapping @Inject constructor(
+    private val serializer: Serializer,
+    private val questTypeList: QuestTypeRegistry,
+    private val elementGeometryMapping: ElementGeometryMapping
+) : ObjectRelationalMapping<UndoOsmQuest> {
+
+    override fun toContentValues(obj: UndoOsmQuest) = contentValuesOf(
+        QUEST_ID to obj.id,
+        QUEST_TYPE to obj.type.javaClass.simpleName,
+        TAG_CHANGES to serializer.toBytes(obj.changes),
+        CHANGES_SOURCE to obj.changesSource,
+        ELEMENT_TYPE to obj.elementType.name,
+        ELEMENT_ID to obj.elementId
     )
 
-    private fun Cursor.createUndo() = UndoOsmQuest(
-        getLong(QUEST_ID),
-        questTypeList.getByName(getString(QUEST_TYPE)) as OsmElementQuestType<*>,
-        Element.Type.valueOf(getString(ELEMENT_TYPE)),
-        getLong(ELEMENT_ID),
-        serializer.toObject(getBlob(TAG_CHANGES)),
-        getString(CHANGES_SOURCE),
-        this.createElementGeometry(serializer)
+    override fun toObject(cursor: Cursor) = UndoOsmQuest(
+        cursor.getLong(QUEST_ID),
+        questTypeList.getByName(cursor.getString(QUEST_TYPE)) as OsmElementQuestType<*>,
+        Element.Type.valueOf(cursor.getString(ELEMENT_TYPE)),
+        cursor.getLong(ELEMENT_ID),
+        serializer.toObject(cursor.getBlob(TAG_CHANGES)),
+        cursor.getString(CHANGES_SOURCE),
+        elementGeometryMapping.toObject(cursor)
     )
 }

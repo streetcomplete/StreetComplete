@@ -10,7 +10,6 @@ import dagger.Module;
 import dagger.Provides;
 import de.westnordost.streetcomplete.ApplicationConstants;
 import de.westnordost.streetcomplete.data.changesets.OpenChangesetsDao;
-import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
 import de.westnordost.streetcomplete.data.osm.persist.UndoOsmQuestDao;
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderList;
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeDao;
@@ -45,24 +44,6 @@ public class DbModule
 			SQLiteOpenHelper dbHelper, ChangesetsDao changesetsDao)
 	{
 		return new QuestStatisticsDao(dbHelper, changesetsDao);
-	}
-
-	@Provides @Singleton public static OpenChangesetsDao changesetsManagerDao(
-			SQLiteOpenHelper dbHelper)
-	{
-		return new OpenChangesetsDao(dbHelper);
-	}
-
-	@Provides @Singleton public static OsmQuestDao osmQuestDao(
-			SQLiteOpenHelper dbHelper, Serializer serializer, QuestTypeRegistry questTypeList)
-	{
-		return new OsmQuestDao(dbHelper, serializer, questTypeList);
-	}
-
-	@Provides @Singleton public static UndoOsmQuestDao undoOsmQuestDao(
-			SQLiteOpenHelper dbHelper, Serializer serializer, QuestTypeRegistry questTypeList)
-	{
-		return new UndoOsmQuestDao(dbHelper, serializer, questTypeList);
 	}
 
 	@Provides @Singleton public static VisibleQuestTypeDao visibleQuestTypeDao(

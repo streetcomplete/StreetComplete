@@ -15,7 +15,7 @@ class CreateNoteDaoTest : ApplicationDbTestCase() {
     private lateinit var dao: CreateNoteDao
 
     @Before fun createDao() {
-        dao = CreateNoteDao(dbHelper, serializer)
+        dao = CreateNoteDao(dbHelper, CreateNoteMapping(serializer))
     }
 
 	@Test fun getButNothingIsThere() {

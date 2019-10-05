@@ -80,12 +80,8 @@ class SettingsFragment : PreferenceFragmentCompat(),
         }
 
         preferenceScreen.findPreference("quests.restore.hidden").setOnPreferenceClickListener {
-            val hidden = osmQuestDao.getAll(null, QuestStatus.HIDDEN, null, null, null)
-            for (q in hidden) {
-                q.status = QuestStatus.NEW
-            }
-            osmQuestDao.replaceAll(hidden)
-	        context?.toast(getString(R.string.restore_hidden_success, hidden.size), Toast.LENGTH_LONG)
+            val hidden = osmQuestDao.unhideAll()
+	        context?.toast(getString(R.string.restore_hidden_success, hidden), Toast.LENGTH_LONG)
             true
         }
 

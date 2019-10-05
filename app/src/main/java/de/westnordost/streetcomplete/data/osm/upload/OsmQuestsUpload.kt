@@ -41,7 +41,7 @@ class OsmQuestsUpload @Inject constructor(
         super.upload(cancelled)
     }
 
-    override fun getAll(): Collection<OsmQuest> = questDB.getAll(null, QuestStatus.ANSWERED)
+    override fun getAll(): Collection<OsmQuest> = questDB.getAll { withStatus(QuestStatus.ANSWERED) }
 
     override fun uploadSingle(changesetId: Long, quest: OsmQuest, element: Element): List<Element> {
         return listOf(singleChangeUpload.upload(changesetId, quest, element))
@@ -70,7 +70,11 @@ class OsmQuestsUpload @Inject constructor(
 
     override fun cleanUp(questTypes: Set<OsmElementQuestType<*>>) {
         super.cleanUp(questTypes)
-        questDB.deleteAllClosed(System.currentTimeMillis() - MAX_QUEST_UNDO_HISTORY_AGE)
+        val timestamp = System.currentTimeMillis() - MAX_QUEST_UNDO_HISTORY_AGE
+        questDB.deleteAll {
+            withStatusIn(QuestStatus.CLOSED, QuestStatus.REVERT)
+            changedBefore(timestamp)
+        }
     }
 }
 

@@ -14,15 +14,18 @@ import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.map.data.OsmLatLon
+import de.westnordost.streetcomplete.data.QuestTypeRegistry
 
 import org.junit.Assert.*
 import org.mockito.Mockito.mock
 
 class ElementGeometryDaoTest : ApplicationDbTestCase() {
     private lateinit var dao: ElementGeometryDao
+    private lateinit var elementGeometryMapping: ElementGeometryMapping
 
     @Before fun createDao() {
-        dao = ElementGeometryDao(dbHelper, serializer)
+        elementGeometryMapping = ElementGeometryMapping(serializer)
+        dao = ElementGeometryDao(dbHelper, elementGeometryMapping)
     }
 
     @Test fun testGetNull() {
@@ -88,8 +91,10 @@ class ElementGeometryDaoTest : ApplicationDbTestCase() {
         assertEquals(1, dao.deleteUnreferenced())
 
         dao.put(ElementGeometryEntry(type, id, geometry))
-	    val questDao = OsmQuestDao(dbHelper, serializer, null)
-	    questDao.add(OsmQuest(mock(OsmElementQuestType::class.java), type, id, geometry))
+        val questType = mock(OsmElementQuestType::class.java)
+        val osmQuestMapping = OsmQuestMapping(serializer, QuestTypeRegistry(listOf(questType)), elementGeometryMapping)
+	    val questDao = OsmQuestDao(dbHelper, osmQuestMapping)
+	    questDao.add(OsmQuest(questType, type, id, geometry))
         assertEquals(0, dao.deleteUnreferenced())
     }
 

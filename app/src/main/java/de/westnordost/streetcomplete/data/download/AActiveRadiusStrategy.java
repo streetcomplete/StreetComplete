@@ -60,7 +60,12 @@ public abstract class AActiveRadiusStrategy implements QuestAutoDownloadStrategy
 		}
 		double areaInKm2 = SphericalEarthMath.enclosedArea(bbox) / 1000 / 1000;
 		// got enough quests in vicinity
-		int visibleQuests = osmQuestDB.getCount(bbox, QuestStatus.NEW, notAlreadyDownloaded);
+		int visibleQuests = osmQuestDB.getCount(queryBuilder -> {
+			queryBuilder.withinBounds(bbox);
+			queryBuilder.withStatus(QuestStatus.NEW);
+			queryBuilder.forQuestTypeNames(notAlreadyDownloaded);
+			return null;
+		});
 		if(visibleQuests / areaInKm2 > getMinQuestsInActiveRadiusPerKm2())
 		{
 			Log.i(TAG, "Not downloading quests because there are enough quests in " + radius + "m radius");

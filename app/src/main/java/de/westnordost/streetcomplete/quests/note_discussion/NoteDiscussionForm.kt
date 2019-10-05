@@ -65,7 +65,7 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment<NoteAnswer>() {
 
         anonAvatar = BitmapUtil.createBitmapFrom(resources.getDrawable(R.drawable.ic_osm_anon_avatar))
 
-        inflateNoteDiscussion(noteDb.get(questId).note.comments)
+        inflateNoteDiscussion(noteDb.get(questId)!!.note.comments)
 
         if (savedInstanceState == null) {
             childFragmentManager.beginTransaction()

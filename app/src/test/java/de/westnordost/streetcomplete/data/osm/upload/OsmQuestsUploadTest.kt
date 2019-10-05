@@ -59,7 +59,7 @@ class OsmQuestsUploadTest {
     }
 
     @Test fun `catches ElementConflict exception`() {
-        on(questDB.getAll(null, QuestStatus.ANSWERED)).thenReturn(listOf(createQuest()))
+        on(questDB.getAll { withStatus(QuestStatus.ANSWERED) }).thenReturn(listOf(createQuest()))
         on(singleChangeUpload.upload(anyLong(), any(), any()))
             .thenThrow(ElementConflictException())
 
@@ -69,7 +69,7 @@ class OsmQuestsUploadTest {
     }
 
     @Test fun `discard if element was deleted`() {
-        on(questDB.getAll(null, QuestStatus.ANSWERED)).thenReturn(listOf(createQuest()))
+        on(questDB.getAll(any())).thenReturn(listOf(createQuest()))
         on(elementDB.get(any(), anyLong())).thenReturn(null)
 
         uploader.uploadedChangeListener = mock(OnUploadedChangeListener::class.java)
@@ -79,7 +79,7 @@ class OsmQuestsUploadTest {
     }
 
     @Test fun `catches ChangesetConflictException exception and tries again once`() {
-        on(questDB.getAll(null, QuestStatus.ANSWERED)).thenReturn(listOf(createQuest()))
+        on(questDB.getAll(any())).thenReturn(listOf(createQuest()))
         on(singleChangeUpload.upload(anyLong(), any(), any()))
             .thenThrow(ChangesetConflictException())
             .thenReturn(createElement())
@@ -95,7 +95,7 @@ class OsmQuestsUploadTest {
     @Test fun `close each uploaded quest in local DB and call listener`() {
         val quests = listOf( createQuest(), createQuest())
 
-        on(questDB.getAll(null, QuestStatus.ANSWERED)).thenReturn(quests)
+        on(questDB.getAll(any())).thenReturn(quests)
         on(singleChangeUpload.upload(anyLong(), any(), any())).thenReturn(createElement())
 
         uploader.uploadedChangeListener = mock(OnUploadedChangeListener::class.java)
@@ -115,7 +115,7 @@ class OsmQuestsUploadTest {
     @Test fun `delete each unsuccessful upload from local DB and call listener`() {
         val quests = listOf( createQuest(), createQuest())
 
-        on(questDB.getAll(null, QuestStatus.ANSWERED)).thenReturn(quests)
+        on(questDB.getAll(any())).thenReturn(quests)
         on(singleChangeUpload.upload(anyLong(), any(), any()))
             .thenThrow(ElementConflictException())
 
@@ -131,7 +131,7 @@ class OsmQuestsUploadTest {
     @Test fun `delete unreferenced elements and clean metadata at the end`() {
         val quest = createQuest()
 
-        on(questDB.getAll(null, QuestStatus.ANSWERED)).thenReturn(listOf(quest))
+        on(questDB.getAll(any())).thenReturn(listOf(quest))
         on(singleChangeUpload.upload(anyLong(), any(), any())).thenReturn(createElement())
 
         uploader.upload(AtomicBoolean(false))

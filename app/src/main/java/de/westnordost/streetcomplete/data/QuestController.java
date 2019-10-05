@@ -180,17 +180,13 @@ public class QuestController
 	}
 
 	private void removeQuestsForElement(Element.Type elementType, long elementId) {
+		List<Long> questIdsForThisOsmElement = osmQuestDB.getAllIds(queryBuilder -> {
+			queryBuilder.withStatus(QuestStatus.NEW);
+			queryBuilder.forElement(elementType, elementId);
+			return null;
+		});
 
-		// TODO actually there should be a method in OsmQuestDB: deleteAllForElement or similar
-		List<OsmQuest> questsForThisOsmElement = osmQuestDB.getAll(null, QuestStatus.NEW, null,
-			elementType, elementId);
-		List<Long> questIdsForThisOsmElement = new ArrayList<>(questsForThisOsmElement.size());
-		for(OsmQuest quest : questsForThisOsmElement)
-		{
-			questIdsForThisOsmElement.add(quest.getId());
-		}
-
-		osmQuestDB.deleteAll(questIdsForThisOsmElement);
+		osmQuestDB.deleteAllIds(questIdsForThisOsmElement);
 		workerHandler.post(() -> relay.onQuestsRemoved(questIdsForThisOsmElement, QuestGroup.OSM));
 
 		osmElementDB.deleteUnreferenced();
@@ -245,15 +241,6 @@ public class QuestController
 		return (OsmElement) osmElementDB.get(quest.getElementType(), quest.getElementId());
 	}
 
-	@Nullable public Quest getNextAt(long questId, QuestGroup group)
-	{
-		if (group == QuestGroup.OSM)
-		{
-			return osmQuestDB.getNextNewAt(questId, getQuestTypeNames());
-		}
-		return null;
-	}
-
 	public void undo(final OsmQuest quest)
 	{
 		if(quest == null) return;
@@ -262,7 +249,8 @@ public class QuestController
 		if(quest.getStatus() == QuestStatus.ANSWERED || quest.getStatus() == QuestStatus.HIDDEN)
 		{
 			quest.setStatus(QuestStatus.NEW);
-			quest.setChanges(null, null);
+			quest.setChanges(null);
+			quest.setChangesSource(null);
 			osmQuestDB.update(quest);
 			// inform relay that the quest is visible again
 			workerHandler.post(() -> relay.onQuestsCreated(Collections.singletonList(quest), QuestGroup.OSM));
@@ -313,7 +301,7 @@ public class QuestController
 		try
 		{
 			StringMapChangesBuilder changesBuilder = new StringMapChangesBuilder(element.getTags());
-			q.getOsmElementQuestType().applyAnswerTo(answer, changesBuilder);
+			q.getOsmElementQuestType().applyAnswerToUnsafe(answer, changesBuilder);
 			changes = changesBuilder.create();
 		}
 		catch (IllegalArgumentException e)
@@ -328,7 +316,8 @@ public class QuestController
 		if(!changes.isEmpty())
 		{
 			Log.d(TAG, "Solved a "+q.getType().getClass().getSimpleName() + " quest: " + changes.toString());
-			q.setChanges(changes, source);
+			q.setChanges(changes);
+			q.setChangesSource(source);
 			q.setStatus(QuestStatus.ANSWERED);
 			osmQuestDB.update(q);
 			prefs.edit().putLong(Prefs.LAST_SOLVED_QUEST_TIME, System.currentTimeMillis()).apply();
@@ -379,10 +368,19 @@ public class QuestController
 		{
 			List<String> questTypeNames = getQuestTypeNames();
 
-			List<OsmQuest> osmQuests = osmQuestDB.getAll(bbox, QuestStatus.NEW, questTypeNames);
+			List<OsmQuest> osmQuests = osmQuestDB.getAll(queryBuilder -> {
+				queryBuilder.withinBounds(bbox);
+				queryBuilder.withStatus(QuestStatus.NEW);
+				queryBuilder.forQuestTypeNames(questTypeNames);
+				return null;
+			});
 			if(!osmQuests.isEmpty()) relay.onQuestsCreated(osmQuests, QuestGroup.OSM);
 
-			List<OsmNoteQuest> osmNoteQuests = osmNoteQuestDB.getAll(bbox, QuestStatus.NEW);
+			List<OsmNoteQuest> osmNoteQuests = osmNoteQuestDB.getAll(mergedQueryBuilder -> {
+				mergedQueryBuilder.withinBounds(bbox);
+				mergedQueryBuilder.withStatus(QuestStatus.NEW);
+				return null;
+			});
 			if(!osmNoteQuests.isEmpty()) relay.onQuestsCreated(osmNoteQuests, QuestGroup.OSM_NOTE);
 		});
 	}
@@ -445,8 +443,16 @@ public class QuestController
 		workerHandler.post(() ->
 		{
 			long timestamp = System.currentTimeMillis() - ApplicationConstants.DELETE_UNSOLVED_QUESTS_AFTER;
-			int deleted = osmQuestDB.deleteAllUnsolved(timestamp);
-			deleted += osmNoteQuestDB.deleteAllUnsolved(timestamp);
+			int deleted = osmQuestDB.deleteAll(queryBuilder -> {
+				queryBuilder.withStatusIn(QuestStatus.NEW, QuestStatus.HIDDEN);
+				queryBuilder.changedBefore(timestamp);
+				return null;
+			});
+			deleted += osmNoteQuestDB.deleteAll(queryBuilder -> {
+				queryBuilder.withStatusIn(QuestStatus.NEW, QuestStatus.HIDDEN);
+				queryBuilder.changedBefore(timestamp);
+				return null;
+			});
 
 			if(deleted > 0)
 			{

@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.data.osm.download;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import org.jetbrains.annotations.NotNull;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -99,7 +100,7 @@ public class OsmQuestDownloadTest
 				13L, questType, Element.Type.NODE, 5, QuestStatus.NEW, null, null,
 				new Date(), new ElementPointGeometry(pos)));
 
-		when(osmQuestDao.getAll(any(), any(), any(), any(), any())).thenReturn(quests);
+		when(osmQuestDao.getAll(any())).thenReturn(quests);
 
 		doAnswer(invocation ->
 		{
@@ -107,7 +108,7 @@ public class OsmQuestDownloadTest
 			assertEquals(1, deletedQuests.size());
 			assertEquals(13L, (long) deletedQuests.iterator().next());
 			return 1;
-		}).when(osmQuestDao).deleteAll(any());
+		}).when(osmQuestDao).deleteAllIds(any());
 
 		OsmQuestDownload dl = new OsmQuestDownload(geometryDb, elementDb, osmQuestDao, countryBoundariesFuture);
 
@@ -117,14 +118,14 @@ public class OsmQuestDownloadTest
 		// -> we expect that quest with node #5 is removed
 		dl.download(questType, new BoundingBox(0,0,1,1), Collections.emptySet());
 
-		verify(osmQuestDao).deleteAll(any());
+		verify(osmQuestDao).deleteAllIds(any());
 		verify(listener).onQuestsRemoved(any(), any());
 	}
 
 
 	private void setUpOsmQuestDaoMockWithNoPreviousElements()
 	{
-		when(osmQuestDao.getAll(any(), any(), any(),any(), any()))
+		when(osmQuestDao.getAll(any()))
 				.thenReturn(Collections.emptyList());
 	}
 
@@ -177,5 +178,9 @@ public class OsmQuestDownloadTest
 		{
 			return false;
 		}
+
+		@Override public void applyAnswerToUnsafe(
+			@NotNull Object answer, @NotNull StringMapChangesBuilder changes)
+		{}
 	}
 }

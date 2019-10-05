@@ -25,7 +25,7 @@ class OsmNoteQuestsChangesUpload @Inject constructor(
         var created = 0
         var obsolete = 0
         if (cancelled.get()) return
-        for (quest in questDB.getAll(null, QuestStatus.ANSWERED)) {
+        for (quest in questDB.getAll { withStatus(QuestStatus.ANSWERED) }) {
             if (cancelled.get()) break
 
             try {
@@ -39,7 +39,6 @@ class OsmNoteQuestsChangesUpload @Inject constructor(
                   */
                 // so, not this: questDB.delete(quest.getId());
                 quest.status = QuestStatus.CLOSED
-                quest.note = newNote
                 questDB.update(quest)
                 noteDB.put(newNote)
                 statisticsDB.addOneNote()

@@ -15,7 +15,7 @@ class NodeDaoTest : ApplicationDbTestCase() {
     private lateinit var dao: NodeDao
 
     @Before fun createDao() {
-        dao = NodeDao(dbHelper, serializer)
+        dao = NodeDao(dbHelper, NodeMapping(serializer))
     }
 
     @Test fun putGetNoTags() {

@@ -106,8 +106,14 @@ public class AnswersCounter
 			{
 				uploaded = questStatisticsDB.getTotalAmount();
 				unsynced = 0;
-				unsynced += questDB.getCount(null, QuestStatus.ANSWERED);
-				unsynced += noteQuestDB.getCount(null, QuestStatus.ANSWERED);
+				unsynced += questDB.getCount(queryBuilder -> {
+					queryBuilder.withStatus(QuestStatus.ANSWERED);
+					return null;
+				});
+				unsynced += noteQuestDB.getCount(queryBuilder -> {
+					queryBuilder.withStatus(QuestStatus.ANSWERED);
+					return null;
+				});
 				unsynced += splitWayDB.getCount();
 				unsynced += createNoteDB.getCount();
 				return null;

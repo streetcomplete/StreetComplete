@@ -20,8 +20,9 @@ class UndoOsmQuestDaoTest : ApplicationDbTestCase() {
 	private lateinit var dao: UndoOsmQuestDao
 
 	@Before fun createDaos() {
-		geometryDao = ElementGeometryDao(dbHelper, serializer)
-		dao = UndoOsmQuestDao(dbHelper, serializer, QuestTypeRegistry(listOf(questType)))
+        val elementGeometryMapping = ElementGeometryMapping(serializer)
+		geometryDao = ElementGeometryDao(dbHelper, elementGeometryMapping)
+		dao = UndoOsmQuestDao(dbHelper, UndoOsmQuestMapping(serializer, QuestTypeRegistry(listOf(questType)), elementGeometryMapping))
 	}
 
 	@Test fun getButNothingIsThere() {

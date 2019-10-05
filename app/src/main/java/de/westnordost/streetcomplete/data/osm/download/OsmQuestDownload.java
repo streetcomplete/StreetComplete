@@ -131,7 +131,7 @@ public class OsmQuestDownload
 				questListener.onQuestsRemoved(previousQuests.values(), QuestGroup.OSM);
 			}
 
-			osmQuestDB.deleteAll(previousQuests.values());
+			osmQuestDB.deleteAllIds(previousQuests.values());
 		}
 
 		// note: this could be done after ALL osm quest types have been downloaded if this
@@ -155,9 +155,13 @@ public class OsmQuestDownload
 	{
 		String questTypeName = questType.getClass().getSimpleName();
 		Map<ElementKey, Long> result = new HashMap<>();
-		for(OsmQuest quest : osmQuestDB.getAll(bbox, null, questTypeName, null, null))
+		for(OsmQuest quest : osmQuestDB.getAll(queryBuilder -> {
+			queryBuilder.withinBounds(bbox);
+			queryBuilder.forQuestTypeName(questTypeName);
+			return null;
+		}))
 		{
-			result.put(new ElementKey(quest.getElementType(), quest.getElementId()),	quest.getId());
+			result.put(new ElementKey(quest.getElementType(), quest.getElementId()), quest.getId());
 		}
 		return result;
 	}
