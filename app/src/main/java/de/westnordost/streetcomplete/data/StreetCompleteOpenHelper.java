@@ -22,7 +22,9 @@ import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestTable;
 import de.westnordost.streetcomplete.data.visiblequests.QuestVisibilityTable;
 import de.westnordost.streetcomplete.data.statistics.QuestStatisticsTable;
 import de.westnordost.streetcomplete.data.tiles.DownloadedTilesTable;
+import de.westnordost.streetcomplete.quests.localized_name.data.RoadNamesTable;
 import de.westnordost.streetcomplete.quests.oneway.AddOneway;
+import de.westnordost.streetcomplete.quests.oneway.data.WayTrafficFlowTable;
 
 @Singleton
 public class StreetCompleteOpenHelper extends SQLiteOpenHelper
@@ -36,12 +38,9 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 				QuestStatisticsTable.Columns.SUCCEEDED +	" int			NOT NULL " +
 			");";
 
-	private final TablesHelper[] extensions;
-
-	public StreetCompleteOpenHelper(Context context, String dbName, TablesHelper[] extensions)
+	public StreetCompleteOpenHelper(Context context, String dbName)
 	{
 		super(context, dbName, null, DB_VERSION);
-		this.extensions = extensions;
 	}
 
 	@Override
@@ -73,10 +72,8 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 
 		db.execSQL(OsmQuestSplitWayTable.CREATE);
 
-		for (TablesHelper extension : extensions)
-		{
-			extension.onCreate(db);
-		}
+		db.execSQL(RoadNamesTable.CREATE);
+		db.execSQL(WayTrafficFlowTable.CREATE);
 	}
 
 	@Override
@@ -127,6 +124,10 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 				CreateNoteTable.Columns.QUEST_TITLE + " text;");
 		}
 
+		if (oldVersion < 6 && newVersion >= 6) {
+			db.execSQL(RoadNamesTable.CREATE);
+		}
+
 		if(oldVersion < 7 && newVersion >= 7)
 		{
 			db.execSQL(UndoOsmQuestTable.CREATE);
@@ -146,6 +147,10 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 			db.execSQL(QuestVisibilityTable.CREATE);
 		}
 
+		if (oldVersion < 10 && newVersion >= 10) {
+			db.execSQL(WayTrafficFlowTable.CREATE);
+		}
+
 		// all oneway quest data was invalidated on version 11
 		if(oldVersion < 11 && newVersion >= 11)
 		{
@@ -153,6 +158,7 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 			String[] args = {AddOneway.class.getSimpleName()};
 			db.delete(OsmQuestTable.NAME, where, args);
 			db.delete(UndoOsmQuestTable.NAME, where, args);
+			db.delete(WayTrafficFlowTable.NAME, null, null);
 		}
 
 		if(oldVersion < 12 && newVersion >= 12)
@@ -166,11 +172,6 @@ public class StreetCompleteOpenHelper extends SQLiteOpenHelper
 		}
 		// for later changes to the DB
 		// ...
-
-		for (TablesHelper extension : extensions)
-		{
-			extension.onUpgrade(db, oldVersion, newVersion);
-		}
 	}
 
 	private static boolean tableHasColumn(SQLiteDatabase db, String tableName, String columnName)
