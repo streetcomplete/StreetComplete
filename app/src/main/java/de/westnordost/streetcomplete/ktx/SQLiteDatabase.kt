@@ -67,3 +67,15 @@ fun <R> SQLiteDatabase.queryOne(
     orderBy: String? = null,
     transform: (Cursor) -> R
 ): R? = queryOne(table, columns, selection?.where, selection?.args, orderBy, transform)
+
+
+fun SQLiteDatabase.hasColumn(tableName: String, columnName: String): Boolean {
+    rawQuery("PRAGMA table_info($tableName)", null).use { cursor ->
+        cursor.moveToFirst()
+        while(!cursor.isAfterLast) {
+            if (columnName == cursor.getString("name")) return true
+            cursor.moveToNext()
+        }
+    }
+    return false
+}

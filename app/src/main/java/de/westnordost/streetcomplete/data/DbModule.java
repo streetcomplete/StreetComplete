@@ -26,7 +26,7 @@ public class DbModule
 
 	public static SQLiteOpenHelper sqliteOpenHelper(Context ctx, String databaseName)
 	{
-		return new StreetCompleteOpenHelper(ctx, databaseName);
+		return new StreetCompleteSQLiteOpenHelper(ctx, databaseName);
 	}
 
 	@Provides @Singleton public static Serializer serializer()
