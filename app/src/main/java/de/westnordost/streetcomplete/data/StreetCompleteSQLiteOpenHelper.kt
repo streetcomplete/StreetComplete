@@ -42,7 +42,7 @@ import de.westnordost.streetcomplete.quests.oneway.data.WayTrafficFlowTable
         db.execSQL(OsmNoteQuestTable.CREATE)
         db.execSQL(CreateNoteTable.CREATE)
 
-        db.execSQL(QUEST_STATISTICS_TABLE_CREATE)
+        db.execSQL(QuestStatisticsTable.CREATE)
 
         db.execSQL(DownloadedTilesTable.CREATE)
 
@@ -162,9 +162,3 @@ import de.westnordost.streetcomplete.quests.oneway.data.WayTrafficFlowTable
 }
 
 private const val DB_VERSION = 12
-
-private val QUEST_STATISTICS_TABLE_CREATE = "CREATE TABLE " + QuestStatisticsTable.NAME +
-	" (" +
-	QuestStatisticsTable.Columns.QUEST_TYPE + " varchar(255)	PRIMARY KEY, " +
-	QuestStatisticsTable.Columns.SUCCEEDED + " int			NOT NULL " +
-	");"

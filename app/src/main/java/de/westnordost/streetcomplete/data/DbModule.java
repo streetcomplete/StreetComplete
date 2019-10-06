@@ -11,10 +11,8 @@ import dagger.Provides;
 import de.westnordost.streetcomplete.ApplicationConstants;
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderList;
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeDao;
-import de.westnordost.streetcomplete.data.statistics.QuestStatisticsDao;
 import de.westnordost.streetcomplete.util.KryoSerializer;
 import de.westnordost.streetcomplete.util.Serializer;
-import de.westnordost.osmapi.changesets.ChangesetsDao;
 
 @Module
 public class DbModule
@@ -32,12 +30,6 @@ public class DbModule
 	@Provides @Singleton public static Serializer serializer()
 	{
 		return new KryoSerializer();
-	}
-
-	@Provides @Singleton public static QuestStatisticsDao questStatisticsDao(
-			SQLiteOpenHelper dbHelper, ChangesetsDao changesetsDao)
-	{
-		return new QuestStatisticsDao(dbHelper, changesetsDao);
 	}
 
 	@Provides @Singleton public static VisibleQuestTypeDao visibleQuestTypeDao(
