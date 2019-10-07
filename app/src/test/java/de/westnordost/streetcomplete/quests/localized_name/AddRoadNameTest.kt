@@ -84,7 +84,7 @@ class AddRoadNameTest {
         questType.verifyAnswer(
             tags,
             RoadIsServiceRoad,
-            StringMapEntryModify("highway", tags["highway"], "service")
+            StringMapEntryModify("highway", tags.getValue("highway"), "service")
         )
     }
 
@@ -92,7 +92,7 @@ class AddRoadNameTest {
         questType.verifyAnswer(
             tags,
             RoadIsTrack,
-            StringMapEntryModify("highway", tags["highway"], "track")
+            StringMapEntryModify("highway", tags.getValue("highway"), "track")
         )
     }
 

@@ -70,7 +70,7 @@ class AddRoadName(
             is RoadIsTrack       -> changes.modify("highway", "track")
             is RoadIsLinkRoad    -> {
                 val prevValue = changes.getPreviousValue("highway")
-                if (prevValue.matches("primary|secondary|tertiary".toRegex())) {
+                if (prevValue?.matches("primary|secondary|tertiary".toRegex()) == true) {
                     changes.modify("highway", prevValue + "_link")
                 }
             }
