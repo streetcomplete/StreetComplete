@@ -118,6 +118,7 @@ dependencies {
     // geometry
     implementation 'de.westnordost:countryboundaries:1.5'
 
+    // dictionary of OSM map features
     implementation 'de.westnordost:osmfeatures-android:1.0'
 
     // talking with OSM Api
