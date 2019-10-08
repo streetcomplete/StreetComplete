@@ -7,6 +7,8 @@ import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.TextView;
 
+import java.util.Arrays;
+
 import javax.inject.Inject;
 
 import de.westnordost.streetcomplete.data.QuestStatus;
@@ -106,14 +108,8 @@ public class AnswersCounter
 			{
 				uploaded = questStatisticsDB.getTotalAmount();
 				unsynced = 0;
-				unsynced += questDB.getCount(queryBuilder -> {
-					queryBuilder.withStatus(QuestStatus.ANSWERED);
-					return null;
-				});
-				unsynced += noteQuestDB.getCount(queryBuilder -> {
-					queryBuilder.withStatus(QuestStatus.ANSWERED);
-					return null;
-				});
+				unsynced += questDB.getCount(Arrays.asList(QuestStatus.ANSWERED), null, null, null, null);
+				unsynced += noteQuestDB.getCount(Arrays.asList(QuestStatus.ANSWERED), null, null);
 				unsynced += splitWayDB.getCount();
 				unsynced += createNoteDB.getCount();
 				return null;

@@ -52,7 +52,7 @@ public class OsmNotesDownloadTest
 		Note note2 = createANote();
 		note2.id = 5L;
 		quests.add(new OsmNoteQuest(13L, note2, QuestStatus.NEW, null, new Date(), new OsmNoteQuestType(), null));
-		when(noteQuestDB.getAll(any())).thenReturn(quests);
+		when(noteQuestDB.getAll(isNull(), any(), isNull())).thenReturn(quests);
 
 		doAnswer(invocation ->
 		{

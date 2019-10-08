@@ -24,6 +24,7 @@ import de.westnordost.streetcomplete.data.osm.persist.OsmQuestTable.Columns.TAG_
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestTable.NAME
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestTable.NAME_MERGED_VIEW
 import de.westnordost.streetcomplete.data.QuestStatus.*
+import de.westnordost.streetcomplete.data.osm.ElementKey
 import de.westnordost.streetcomplete.ktx.*
 import de.westnordost.streetcomplete.util.Serializer
 
@@ -76,73 +77,96 @@ class OsmQuestDao @Inject constructor(
     }
 
     fun getLastSolved(): OsmQuest? {
-        val qb = MergedQueryBuilder().apply { withStatusIn(HIDDEN, ANSWERED, CLOSED) }
-        return db.queryOne(NAME_MERGED_VIEW, null, qb.selection, "$LAST_UPDATE DESC") { mapping.toObject(it) }
+        val qb = createQuery(statusIn = listOf(HIDDEN, ANSWERED, CLOSED))
+        return db.queryOne(NAME_MERGED_VIEW, null, qb, "$LAST_UPDATE DESC") { mapping.toObject(it) }
     }
 
-    fun getAll(block: (MergedQueryBuilder.() -> Unit)? = null): List<OsmQuest> {
-        val qb = block?.let { MergedQueryBuilder().apply(it) }
-        return db.query(NAME_MERGED_VIEW, null, qb?.selection) { mapping.toObject(it) }
+    fun getAll(
+        statusIn: Collection<QuestStatus>? = null,
+        bounds: BoundingBox? = null,
+        element: ElementKey? = null,
+        questTypes: Collection<String>? = null,
+        changedBefore: Long? = null
+    ): List<OsmQuest> {
+        val qb = createQuery(statusIn, bounds, element, questTypes, changedBefore)
+        return db.query(NAME_MERGED_VIEW, null, qb) { mapping.toObject(it) }
     }
 
-    fun getAllIds(block: (MergedQueryBuilder.() -> Unit)? = null): List<Long> {
-        val qb = block?.let { MergedQueryBuilder().apply(it) }
-        return db.query(NAME_MERGED_VIEW, arrayOf(QUEST_ID), qb?.selection) { it.getLong(0) }
+    fun getAllIds(
+        statusIn: Collection<QuestStatus>? = null,
+        bounds: BoundingBox? = null,
+        element: ElementKey? = null,
+        questTypes: Collection<String>? = null,
+        changedBefore: Long? = null
+    ): List<Long> {
+        val qb = createQuery(statusIn, bounds, element, questTypes, changedBefore)
+        return db.query(NAME_MERGED_VIEW, arrayOf(QUEST_ID), qb) { it.getLong(0) }
     }
 
-    fun getCount(block: (MergedQueryBuilder.() -> Unit)? = null): Int {
-        val qb = block?.let { MergedQueryBuilder().apply(it) }
-        return db.queryOne(NAME_MERGED_VIEW, arrayOf("COUNT(*)"), qb?.selection) { it.getInt(0) } ?: 0
+    fun getCount(
+        statusIn: Collection<QuestStatus>? = null,
+        bounds: BoundingBox? = null,
+        element: ElementKey? = null,
+        questTypes: Collection<String>? = null,
+        changedBefore: Long? = null
+    ): Int {
+        val qb = createQuery(statusIn, bounds, element, questTypes, changedBefore)
+        return db.queryOne(NAME_MERGED_VIEW, arrayOf("COUNT(*)"), qb) { it.getInt(0) } ?: 0
     }
 
-    fun deleteAll(block: (QueryBuilder.() -> Unit)? = null): Int {
-        val qb = block?.let { QueryBuilder().apply(it) }
-        return db.delete(NAME, qb?.selection?.where, qb?.selection?.args)
+    fun deleteAll(
+        statusIn: Collection<QuestStatus>? = null,
+        bounds: BoundingBox? = null,
+        element: ElementKey? = null,
+        questTypes: Collection<String>? = null,
+        changedBefore: Long? = null
+    ): Int {
+        val qb = createQuery(statusIn, bounds, element, questTypes, changedBefore)
+        return db.delete(NAME, qb.where, qb.args)
     }
+}
 
-    open class QueryBuilder {
-        internal val selection = WhereSelectionBuilder()
-
-        fun forElement(elementType: Element.Type, elementId: Long) {
-            selection.add("$ELEMENT_TYPE = ?", elementType.name)
-            selection.add("$ELEMENT_ID = ?", elementId.toString())
+private fun createQuery(
+    statusIn: Collection<QuestStatus>? = null,
+    bounds: BoundingBox? = null,
+    element: ElementKey? = null,
+    questTypes: Collection<String>? = null,
+    changedBefore: Long? = null
+) = WhereSelectionBuilder().apply {
+    if (element != null) {
+        add("$ELEMENT_TYPE = ?", element.elementType.name)
+        add("$ELEMENT_ID = ?", element.elementId.toString())
+    }
+    if (statusIn != null && statusIn.isNotEmpty()) {
+        if (statusIn.size == 1) {
+            add("$QUEST_STATUS = ?", statusIn.single().name)
+        } else {
+            val names = statusIn.joinToString(",") { "\"$it\"" }
+            add("$QUEST_STATUS IN ($names)")
         }
-
-        fun withStatus(questStatus: QuestStatus) {
-            selection.add("$QUEST_STATUS = ?", questStatus.name)
-        }
-
-        fun withStatusIn(vararg questStatus: QuestStatus) {
-            val names = questStatus.joinToString(",") { "\"$it\"" }
-            selection.add("$QUEST_STATUS IN ($names)")
-        }
-
-        fun forQuestTypeName(questType: String) {
-            selection.add("$QUEST_TYPE = ?", questType)
-        }
-
-        fun forQuestTypeNames(questTypes: Collection<String>) {
+    }
+    if (questTypes != null && questTypes.isNotEmpty()) {
+        if (questTypes.size == 1) {
+            add("$QUEST_TYPE = ?", questTypes.single())
+        } else {
             val names = questTypes.joinToString(",") { "\"$it\"" }
-            selection.add("$QUEST_TYPE IN ($names)")
-        }
-
-        fun changedBefore(timestamp: Long) {
-            selection.add("$LAST_UPDATE < ?", timestamp.toString())
+            add("$QUEST_TYPE IN ($names)")
         }
     }
-
-    class MergedQueryBuilder : QueryBuilder() {
-        fun withinBounds(bounds: BoundingBox) {
-            selection.add("(${ElementGeometryTable.Columns.LATITUDE} BETWEEN ? AND ?)",
-                bounds.minLatitude.toString(),
-                bounds.maxLatitude.toString()
-            )
-            selection.add(
-                "(${ElementGeometryTable.Columns.LONGITUDE} BETWEEN ? AND ?)",
-                bounds.minLongitude.toString(),
-                bounds.maxLongitude.toString()
-            )
-        }
+    if (bounds != null) {
+        add(
+            "(${ElementGeometryTable.Columns.LATITUDE} BETWEEN ? AND ?)",
+            bounds.minLatitude.toString(),
+            bounds.maxLatitude.toString()
+        )
+        add(
+            "(${ElementGeometryTable.Columns.LONGITUDE} BETWEEN ? AND ?)",
+            bounds.minLongitude.toString(),
+            bounds.maxLongitude.toString()
+        )
+    }
+    if (changedBefore != null) {
+        add("$LAST_UPDATE < ?", changedBefore.toString())
     }
 }
 

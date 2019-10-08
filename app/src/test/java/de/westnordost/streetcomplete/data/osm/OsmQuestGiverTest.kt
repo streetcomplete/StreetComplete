@@ -35,7 +35,7 @@ class OsmQuestGiverTest {
         on(osmNoteQuestDao.getAllPositions(any())).thenReturn(emptyList())
 
         osmQuestDao = mock()
-        on(osmQuestDao.getAll(any())).thenReturn(emptyList())
+        on(osmQuestDao.getAll(element = ElementKey(Element.Type.NODE, 1))).thenReturn(emptyList())
 
         questType = mock()
 
@@ -54,7 +54,7 @@ class OsmQuestGiverTest {
 
     @Test fun `previous quest blocks new quest`() {
         val q = OsmQuest(questType, Element.Type.NODE, 1, ElementPointGeometry(POS))
-        on(osmQuestDao.getAll(any())).thenReturn(listOf(q))
+        on(osmQuestDao.getAll(element = ElementKey(Element.Type.NODE, 1))).thenReturn(listOf(q))
         on(questType.isApplicableTo(NODE)).thenReturn(true)
 
         val r = osmQuestUnlocker.updateQuests(NODE)
@@ -72,7 +72,7 @@ class OsmQuestGiverTest {
 
     @Test fun `not applicable removes previous quest`() {
         val q = OsmQuest(123L, questType, Element.Type.NODE, 1, QuestStatus.NEW, null, null, Date(), ElementPointGeometry(POS))
-        on(osmQuestDao.getAll(any())).thenReturn(listOf(q))
+        on(osmQuestDao.getAll(element = ElementKey(Element.Type.NODE, 1))).thenReturn(listOf(q))
         on(questType.isApplicableTo(NODE)).thenReturn(false)
 
         val r = osmQuestUnlocker.updateQuests(NODE)
@@ -90,7 +90,7 @@ class OsmQuestGiverTest {
         assertEquals(Element.Type.NODE, quest.elementType)
         assertEquals(questType, quest.type)
 
-        verify(osmQuestDao).deleteAll(any())
+        verify(osmQuestDao).deleteAll(statusIn = listOf(QuestStatus.REVERT), element = ElementKey(Element.Type.NODE, 1))
         verify(osmQuestDao).addAll(listOf(quest))
     }
 }

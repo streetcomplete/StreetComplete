@@ -121,7 +121,7 @@ class OsmNoteQuestDaoTest : ApplicationDbTestCase() {
 	        create(noteId = 2, notePosition = OsmLatLon(11.0, 11.0))
         )
 
-        assertEquals(1, dao.getAll { withinBounds(BoundingBox(0.0, 0.0, 10.0, 10.0)) }.size)
+        assertEquals(1, dao.getAll(bounds = BoundingBox(0.0, 0.0, 10.0, 10.0)).size)
         assertEquals(2, dao.getAll().size)
     }
 
@@ -131,15 +131,10 @@ class OsmNoteQuestDaoTest : ApplicationDbTestCase() {
 	        create(noteId = 2, status = QuestStatus.NEW)
         )
 
-        assertEquals(1, dao.getAll { withStatus(QuestStatus.HIDDEN) }.size)
-        assertEquals(1, dao.getAll { withStatus(QuestStatus.NEW) }.size)
-        assertEquals(0, dao.getAll { withStatus(QuestStatus.CLOSED) }.size)
-        assertEquals(2, dao.getAll { withStatusIn(QuestStatus.NEW, QuestStatus.HIDDEN) }.size)
-    }
-
-    @Test fun getAllIds() {
-        addToDaos(create(1), create(2))
-        assertEquals(2, dao.getAllIds().size)
+        assertEquals(1, dao.getAll(statusIn = listOf(QuestStatus.HIDDEN)).size)
+        assertEquals(1, dao.getAll(statusIn = listOf(QuestStatus.NEW)).size)
+        assertEquals(0, dao.getAll(statusIn = listOf(QuestStatus.CLOSED)).size)
+        assertEquals(2, dao.getAll(statusIn = listOf(QuestStatus.NEW, QuestStatus.HIDDEN)).size)
     }
 
     @Test fun getCount() {

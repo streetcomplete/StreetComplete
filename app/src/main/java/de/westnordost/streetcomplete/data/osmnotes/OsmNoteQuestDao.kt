@@ -66,30 +66,37 @@ class OsmNoteQuestDao @Inject constructor(
         return db.delete(NAME, "$QUEST_ID IN (${ids.joinToString(",")})", null)
     }
 
-    fun getAllPositions(bbox: BoundingBox): List<LatLon> {
+    fun getAllPositions(bounds: BoundingBox): List<LatLon> {
         val cols = arrayOf(NoteTable.Columns.LATITUDE, NoteTable.Columns.LONGITUDE)
-        val qb = MergedQueryBuilder().apply { withinBounds(bbox) }.selection
+        val qb = createQuery(bounds = bounds)
         return db.query(NAME_MERGED_VIEW, cols, qb) { OsmLatLon(it.getDouble(0), it.getDouble(1)) }
     }
 
-    fun getAll(block: (MergedQueryBuilder.() -> Unit)? = null): List<OsmNoteQuest> {
-        val qb = block?.let { MergedQueryBuilder().apply(it) }
-        return db.query(NAME_MERGED_VIEW, null, qb?.selection) { mapping.toObject(it) }
+    fun getAll(
+        statusIn: Collection<QuestStatus>? = null,
+        bounds: BoundingBox? = null,
+        changedBefore: Long? = null
+    ): List<OsmNoteQuest> {
+        val qb = createQuery(statusIn, bounds, changedBefore)
+        return db.query(NAME_MERGED_VIEW, null, qb) { mapping.toObject(it) }
     }
 
-    fun getAllIds(block: (MergedQueryBuilder.() -> Unit)? = null): List<Long> {
-        val qb = block?.let { MergedQueryBuilder().apply(it) }
-        return db.query(NAME_MERGED_VIEW, arrayOf(QUEST_ID), qb?.selection) { it.getLong(0) }
+    fun getCount(
+        statusIn: Collection<QuestStatus>? = null,
+        bounds: BoundingBox? = null,
+        changedBefore: Long? = null
+    ): Int {
+        val qb = createQuery(statusIn, bounds, changedBefore)
+        return db.queryOne(NAME_MERGED_VIEW, arrayOf("COUNT(*)"), qb) { it.getInt(0) } ?: 0
     }
 
-    fun getCount(block: (MergedQueryBuilder.() -> Unit)? = null): Int {
-        val qb = block?.let { MergedQueryBuilder().apply(it) }
-        return db.queryOne(NAME_MERGED_VIEW, arrayOf("COUNT(*)"), qb?.selection) { it.getInt(0) } ?: 0
-    }
-
-    fun deleteAll(block: (QueryBuilder.() -> Unit)? = null): Int {
-        val qb = block?.let { QueryBuilder().apply(it) }
-        return db.delete(NAME, qb?.selection?.where, qb?.selection?.args)
+    fun deleteAll(
+        statusIn: Collection<QuestStatus>? = null,
+        bounds: BoundingBox? = null,
+        changedBefore: Long? = null
+    ): Int {
+        val qb = createQuery(statusIn, bounds, changedBefore)
+        return db.delete(NAME, qb.where, qb.args)
     }
 
     private fun insertAll(quests: Collection<OsmNoteQuest>, conflictAlgorithm: Int): Int {
@@ -107,36 +114,35 @@ class OsmNoteQuestDao @Inject constructor(
 
         return addedRows
     }
+}
 
-    open class QueryBuilder {
-        internal val selection = WhereSelectionBuilder()
-
-        fun withStatus(questStatus: QuestStatus) {
-            selection.add("$QUEST_STATUS = ?", questStatus.name)
-        }
-
-        fun withStatusIn(vararg questStatus: QuestStatus) {
-            val names = questStatus.joinToString(",") { "\"$it\"" }
-            selection.add("$QUEST_STATUS IN ($names)")
-        }
-
-        fun changedBefore(timestamp: Long) {
-            selection.add("$LAST_UPDATE < ?", timestamp.toString())
+private fun createQuery(
+    statusIn: Collection<QuestStatus>? = null,
+    bounds: BoundingBox? = null,
+    changedBefore: Long? = null
+) = WhereSelectionBuilder().apply {
+    if (statusIn != null && statusIn.isNotEmpty()) {
+        if (statusIn.size == 1) {
+            add("$QUEST_STATUS = ?", statusIn.single().name)
+        } else {
+            val names = statusIn.joinToString(",") { "\"$it\"" }
+            add("$QUEST_STATUS IN ($names)")
         }
     }
-
-    class MergedQueryBuilder : QueryBuilder() {
-        fun withinBounds(bounds: BoundingBox) {
-            selection.add("(${NoteTable.Columns.LATITUDE} BETWEEN ? AND ?)",
-                bounds.minLatitude.toString(),
-                bounds.maxLatitude.toString()
-            )
-            selection.add(
-                "(${NoteTable.Columns.LONGITUDE} BETWEEN ? AND ?)",
-                bounds.minLongitude.toString(),
-                bounds.maxLongitude.toString()
-            )
-        }
+    if (bounds != null) {
+        add(
+            "(${NoteTable.Columns.LATITUDE} BETWEEN ? AND ?)",
+            bounds.minLatitude.toString(),
+            bounds.maxLatitude.toString()
+        )
+        add(
+            "(${NoteTable.Columns.LONGITUDE} BETWEEN ? AND ?)",
+            bounds.minLongitude.toString(),
+            bounds.maxLongitude.toString()
+        )
+    }
+    if (changedBefore != null) {
+        add("$LAST_UPDATE < ?", changedBefore.toString())
     }
 }
 

@@ -100,7 +100,7 @@ public class OsmQuestDownloadTest
 				13L, questType, Element.Type.NODE, 5, QuestStatus.NEW, null, null,
 				new Date(), new ElementPointGeometry(pos)));
 
-		when(osmQuestDao.getAll(any())).thenReturn(quests);
+		when(osmQuestDao.getAll(isNull(), any(), isNull(), any(), isNull())).thenReturn(quests);
 
 		doAnswer(invocation ->
 		{
@@ -125,8 +125,7 @@ public class OsmQuestDownloadTest
 
 	private void setUpOsmQuestDaoMockWithNoPreviousElements()
 	{
-		when(osmQuestDao.getAll(any()))
-				.thenReturn(Collections.emptyList());
+		when(osmQuestDao.getAll(isNull(), any(), isNull(), any(), isNull())).thenReturn(Collections.emptyList());
 	}
 
 	private static class ElementWithGeometry

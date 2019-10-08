@@ -4,6 +4,7 @@ import android.graphics.Rect;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -60,12 +61,7 @@ public abstract class AActiveRadiusStrategy implements QuestAutoDownloadStrategy
 		}
 		double areaInKm2 = SphericalEarthMath.enclosedArea(bbox) / 1000 / 1000;
 		// got enough quests in vicinity
-		int visibleQuests = osmQuestDB.getCount(queryBuilder -> {
-			queryBuilder.withinBounds(bbox);
-			queryBuilder.withStatus(QuestStatus.NEW);
-			queryBuilder.forQuestTypeNames(notAlreadyDownloaded);
-			return null;
-		});
+		int visibleQuests = osmQuestDB.getCount(Arrays.asList(QuestStatus.NEW), bbox, null, notAlreadyDownloaded, null);
 		if(visibleQuests / areaInKm2 > getMinQuestsInActiveRadiusPerKm2())
 		{
 			Log.i(TAG, "Not downloading quests because there are enough quests in " + radius + "m radius");

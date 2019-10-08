@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.persist
 
+import de.westnordost.osmapi.map.data.BoundingBox
 import org.junit.Before
 import org.junit.Test
 
@@ -7,15 +8,10 @@ import org.junit.Assert.*
 
 import java.util.Date
 
-import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
 import de.westnordost.streetcomplete.data.QuestStatus
 import de.westnordost.streetcomplete.data.QuestType
 import de.westnordost.streetcomplete.data.QuestTypeRegistry
-import de.westnordost.streetcomplete.data.osm.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.ElementPointGeometry
-import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
-import de.westnordost.streetcomplete.data.osm.OsmQuest
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryDelete
@@ -24,6 +20,7 @@ import de.westnordost.streetcomplete.data.osm.persist.test.TestQuestType
 import de.westnordost.streetcomplete.data.osm.persist.test.TestQuestType2
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.OsmLatLon
+import de.westnordost.streetcomplete.data.osm.*
 
 class OsmQuestDaoTest : ApplicationDbTestCase() {
     private lateinit var geometryDao: ElementGeometryDao
@@ -108,11 +105,11 @@ class OsmQuestDaoTest : ApplicationDbTestCase() {
             create(elementId = 2, status = QuestStatus.HIDDEN)
         )
 
-        assertEquals(0, dao.getCount { withStatus(QuestStatus.NEW) })
+        assertEquals(0, dao.getCount(listOf(QuestStatus.NEW)))
 
         dao.unhideAll()
 
-        assertEquals(2, dao.getCount { withStatus(QuestStatus.NEW) })
+        assertEquals(2, dao.getCount(listOf(QuestStatus.NEW)))
     }
 
     @Test fun getAllByBBox() {
@@ -121,7 +118,7 @@ class OsmQuestDaoTest : ApplicationDbTestCase() {
             create(elementId = 2, geometry = ElementPointGeometry(OsmLatLon(11.0, 11.0)))
         )
 
-        assertEquals(1, dao.getAll { withinBounds(BoundingBox(0.0, 0.0, 10.0, 10.0)) }.size)
+        assertEquals(1, dao.getAll(bounds = BoundingBox(0.0, 0.0, 10.0, 10.0)).size)
         assertEquals(2, dao.getAll().size)
     }
 
@@ -131,10 +128,10 @@ class OsmQuestDaoTest : ApplicationDbTestCase() {
             create(elementId = 2, status = QuestStatus.NEW)
         )
 
-        assertEquals(1, dao.getAll { withStatus(QuestStatus.HIDDEN) }.size)
-        assertEquals(1, dao.getAll { withStatus(QuestStatus.NEW) }.size)
-        assertEquals(0, dao.getAll { withStatus(QuestStatus.CLOSED) }.size)
-        assertEquals(2, dao.getAll { withStatusIn(QuestStatus.NEW, QuestStatus.HIDDEN) }.size)
+        assertEquals(1, dao.getAll(statusIn = listOf(QuestStatus.HIDDEN)).size)
+        assertEquals(1, dao.getAll(statusIn = listOf(QuestStatus.NEW)).size)
+        assertEquals(0, dao.getAll(statusIn = listOf(QuestStatus.CLOSED)).size)
+        assertEquals(2, dao.getAll(statusIn = listOf(QuestStatus.NEW, QuestStatus.HIDDEN)).size)
     }
 
     @Test fun getAllByElement() {
@@ -143,8 +140,8 @@ class OsmQuestDaoTest : ApplicationDbTestCase() {
             create(elementType = Element.Type.WAY, elementId = 2)
         )
 
-        assertEquals(1, dao.getAll { forElement(Element.Type.WAY, 2) }.size)
-        assertEquals(1, dao.getAll { forElement(Element.Type.NODE, 1) }.size)
+        assertEquals(1, dao.getAll(element = ElementKey(Element.Type.WAY, 2)).size)
+        assertEquals(1, dao.getAll(element = ElementKey(Element.Type.NODE, 1)).size)
     }
 
     @Test fun getAllByQuestTypes() {
@@ -153,11 +150,9 @@ class OsmQuestDaoTest : ApplicationDbTestCase() {
             create(questType = TEST_QUEST_TYPE2)
         )
 
-        assertEquals(1, dao.getAll { forQuestTypeNames(listOf(TestQuestType::class.java.simpleName)) }.size)
-        assertEquals(2, dao.getAll { forQuestTypeNames(
-            listOf(TestQuestType::class.java.simpleName, TestQuestType2::class.java.simpleName)
-        ) }.size)
-        assertEquals(1, dao.getAll { forQuestTypeName(TestQuestType::class.java.simpleName) }.size)
+        assertEquals(1, dao.getAll(questTypes = listOf(TestQuestType::class.java.simpleName)).size)
+        assertEquals(2, dao.getAll(questTypes = listOf(TestQuestType::class.java.simpleName, TestQuestType2::class.java.simpleName)).size)
+        assertEquals(1, dao.getAll(questTypes = listOf(TestQuestType::class.java.simpleName)).size)
     }
 
     @Test fun getAllIds() {

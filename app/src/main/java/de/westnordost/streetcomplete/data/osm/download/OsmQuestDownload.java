@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.data.osm.download;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -155,11 +156,7 @@ public class OsmQuestDownload
 	{
 		String questTypeName = questType.getClass().getSimpleName();
 		Map<ElementKey, Long> result = new HashMap<>();
-		for(OsmQuest quest : osmQuestDB.getAll(queryBuilder -> {
-			queryBuilder.withinBounds(bbox);
-			queryBuilder.forQuestTypeName(questTypeName);
-			return null;
-		}))
+		for(OsmQuest quest : osmQuestDB.getAll(null, bbox, null, Arrays.asList(questTypeName), null))
 		{
 			result.put(new ElementKey(quest.getElementType(), quest.getElementId()), quest.getId());
 		}

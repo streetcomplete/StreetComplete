@@ -150,10 +150,7 @@ public class OsmNotesDownload
 	private HashMap<Long, Long> getPreviousQuestsByNoteId(BoundingBox bbox)
 	{
 		HashMap<Long, Long> result = new HashMap<>();
-		for(OsmNoteQuest quest : noteQuestDB.getAll(mergedQueryBuilder -> {
-			mergedQueryBuilder.withinBounds(bbox);
-			return null;
-		}))
+		for(OsmNoteQuest quest : noteQuestDB.getAll(null, bbox, null))
 		{
 			result.put(quest.getNote().id, quest.getId());
 		}

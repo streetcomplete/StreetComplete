@@ -15,6 +15,7 @@ import androidx.annotation.Nullable;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -180,11 +181,8 @@ public class QuestController
 	}
 
 	private void removeQuestsForElement(Element.Type elementType, long elementId) {
-		List<Long> questIdsForThisOsmElement = osmQuestDB.getAllIds(queryBuilder -> {
-			queryBuilder.withStatus(QuestStatus.NEW);
-			queryBuilder.forElement(elementType, elementId);
-			return null;
-		});
+		List<Long> questIdsForThisOsmElement = osmQuestDB.getAllIds(
+			Arrays.asList(QuestStatus.NEW), null, new ElementKey(elementType, elementId), null, null);
 
 		osmQuestDB.deleteAllIds(questIdsForThisOsmElement);
 		workerHandler.post(() -> relay.onQuestsRemoved(questIdsForThisOsmElement, QuestGroup.OSM));
@@ -368,19 +366,10 @@ public class QuestController
 		{
 			List<String> questTypeNames = getQuestTypeNames();
 
-			List<OsmQuest> osmQuests = osmQuestDB.getAll(queryBuilder -> {
-				queryBuilder.withinBounds(bbox);
-				queryBuilder.withStatus(QuestStatus.NEW);
-				queryBuilder.forQuestTypeNames(questTypeNames);
-				return null;
-			});
+			List<OsmQuest> osmQuests = osmQuestDB.getAll(Arrays.asList(QuestStatus.NEW), bbox, null, questTypeNames, null);
 			if(!osmQuests.isEmpty()) relay.onQuestsCreated(osmQuests, QuestGroup.OSM);
 
-			List<OsmNoteQuest> osmNoteQuests = osmNoteQuestDB.getAll(mergedQueryBuilder -> {
-				mergedQueryBuilder.withinBounds(bbox);
-				mergedQueryBuilder.withStatus(QuestStatus.NEW);
-				return null;
-			});
+			List<OsmNoteQuest> osmNoteQuests = osmNoteQuestDB.getAll(Arrays.asList(QuestStatus.NEW), bbox, null);
 			if(!osmNoteQuests.isEmpty()) relay.onQuestsCreated(osmNoteQuests, QuestGroup.OSM_NOTE);
 		});
 	}
@@ -443,16 +432,14 @@ public class QuestController
 		workerHandler.post(() ->
 		{
 			long timestamp = System.currentTimeMillis() - ApplicationConstants.DELETE_UNSOLVED_QUESTS_AFTER;
-			int deleted = osmQuestDB.deleteAll(queryBuilder -> {
-				queryBuilder.withStatusIn(QuestStatus.NEW, QuestStatus.HIDDEN);
-				queryBuilder.changedBefore(timestamp);
-				return null;
-			});
-			deleted += osmNoteQuestDB.deleteAll(queryBuilder -> {
-				queryBuilder.withStatusIn(QuestStatus.NEW, QuestStatus.HIDDEN);
-				queryBuilder.changedBefore(timestamp);
-				return null;
-			});
+			int deleted = osmQuestDB.deleteAll(
+				Arrays.asList(QuestStatus.NEW, QuestStatus.HIDDEN), null, null, null,
+				timestamp
+			);
+			deleted += osmNoteQuestDB.deleteAll(
+				Arrays.asList(QuestStatus.NEW, QuestStatus.HIDDEN), null,
+				timestamp
+			);
 
 			if(deleted > 0)
 			{

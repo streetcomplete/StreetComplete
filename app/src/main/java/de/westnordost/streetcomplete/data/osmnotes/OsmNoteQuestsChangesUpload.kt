@@ -25,7 +25,7 @@ class OsmNoteQuestsChangesUpload @Inject constructor(
         var created = 0
         var obsolete = 0
         if (cancelled.get()) return
-        for (quest in questDB.getAll { withStatus(QuestStatus.ANSWERED) }) {
+        for (quest in questDB.getAll(listOf(QuestStatus.ANSWERED))) {
             if (cancelled.get()) break
 
             try {
