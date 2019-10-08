@@ -8,7 +8,6 @@ import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.notes.Note
 import de.westnordost.streetcomplete.data.osm.upload.ConflictException
 import de.westnordost.streetcomplete.data.statistics.QuestStatisticsDao
-import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
 import de.westnordost.streetcomplete.on
 import de.westnordost.streetcomplete.any
 
@@ -16,6 +15,7 @@ import org.mockito.Mockito.*
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.osmapi.notes.NoteComment
 import de.westnordost.streetcomplete.data.osm.ElementKey
+import de.westnordost.streetcomplete.mock
 import java.util.*
 import java.util.concurrent.atomic.AtomicBoolean
 
@@ -32,13 +32,13 @@ class CreateNotesUploadTest {
     private lateinit var uploader: CreateNotesUpload
 
     @Before fun setUp() {
-        mapDataDao = mock(MapDataDao::class.java)
-	    noteQuestDB = mock(OsmNoteQuestDao::class.java)
-	    noteDB = mock(NoteDao::class.java)
-	    createNoteDB = mock(CreateNoteDao::class.java)
-	    questType = mock(OsmNoteQuestType::class.java)
-	    statisticsDB = mock(QuestStatisticsDao::class.java)
-	    singleCreateNoteUpload = mock(SingleCreateNoteUpload::class.java)
+        mapDataDao = mock()
+	    noteQuestDB = mock()
+	    noteDB = mock()
+	    createNoteDB = mock()
+	    questType = mock()
+	    statisticsDB = mock()
+	    singleCreateNoteUpload = mock()
 
         uploader = CreateNotesUpload(createNoteDB, noteDB, noteQuestDB, mapDataDao, questType,
 	        statisticsDB, singleCreateNoteUpload)
@@ -66,7 +66,7 @@ class CreateNotesUploadTest {
 		on(createNoteDB.getAll()).thenReturn(createNotes)
 		on(singleCreateNoteUpload.upload(any())).thenReturn(newNote())
 
-		uploader.uploadedChangeListener = mock(OnUploadedChangeListener::class.java)
+		uploader.uploadedChangeListener = mock()
 		uploader.upload(AtomicBoolean(false))
 
         verify(createNoteDB, times(createNotes.size)).delete(anyLong())
@@ -82,7 +82,7 @@ class CreateNotesUploadTest {
 		on(createNoteDB.getAll()).thenReturn(createNotes)
 		on(singleCreateNoteUpload.upload(any())).thenThrow(ConflictException())
 
-		uploader.uploadedChangeListener = mock(OnUploadedChangeListener::class.java)
+		uploader.uploadedChangeListener = mock()
 		uploader.upload(AtomicBoolean(false))
 
         verify(createNoteDB, times(createNotes.size)).delete(anyLong())
@@ -96,7 +96,7 @@ class CreateNotesUploadTest {
 		on(createNoteDB.getAll()).thenReturn(listOf(createNote))
 		on(mapDataDao.getNode(anyLong())).thenReturn(null)
 
-		uploader.uploadedChangeListener = mock(OnUploadedChangeListener::class.java)
+		uploader.uploadedChangeListener = mock()
 		uploader.upload(AtomicBoolean(false))
 
 		verify(uploader.uploadedChangeListener)?.onDiscarded()

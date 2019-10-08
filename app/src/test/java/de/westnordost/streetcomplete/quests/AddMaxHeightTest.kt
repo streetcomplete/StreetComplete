@@ -1,14 +1,13 @@
 package de.westnordost.streetcomplete.quests
 
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.quests.max_height.*
 import org.junit.Test
-import org.mockito.Mockito.mock
 
 class AddMaxHeightTest {
 
-    private val questType = AddMaxHeight(mock(OverpassMapDataDao::class.java))
+    private val questType = AddMaxHeight(mock())
 
     @Test fun `apply metric height answer`() {
         questType.verifyAnswer(

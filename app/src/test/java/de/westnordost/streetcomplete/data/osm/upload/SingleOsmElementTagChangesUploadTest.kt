@@ -15,6 +15,7 @@ import de.westnordost.streetcomplete.argumentCaptor
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryChange
+import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.on
 import org.junit.Assert.*
 import org.mockito.ArgumentCaptor
@@ -32,9 +33,9 @@ class SingleOsmElementTagChangesUploadTest {
     private val node: Node = OsmNode(nodeId, 1, pos, mutableMapOf())
 
     @Before fun setUp() {
-        osmDao = mock(MapDataDao::class.java)
+        osmDao = mock()
 
-	    quest = mock(HasElementTagChanges::class.java)
+	    quest = mock()
 	    on(quest.changes).thenReturn(changes(StringMapEntryAdd("a key","a value")))
         on(quest.isApplicableTo(any())).thenReturn(true)
 

@@ -1,19 +1,16 @@
 package de.westnordost.streetcomplete.quests.add_housenumber
 
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.quests.housenumber.*
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
-import org.mockito.Mockito.mock
-
-
 class AddHousenumberTest {
 
-    private val questType = AddHousenumber(mock(OverpassMapDataDao::class.java))
+    private val questType = AddHousenumber(mock())
 
     @Test fun `housenumber regex`() {
         val r = AddHousenumberForm.VALID_HOUSENUMBER_REGEX.toRegex()

@@ -12,7 +12,7 @@ import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao
 import de.westnordost.streetcomplete.data.osm.persist.MergedElementDao
 import de.westnordost.streetcomplete.data.osm.persist.UndoOsmQuestDao
 import de.westnordost.streetcomplete.data.statistics.QuestStatisticsDao
-import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
+import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.on
 import org.junit.Before
 import org.junit.Test
@@ -32,17 +32,17 @@ class UndoOsmQuestsUploadTest {
     private lateinit var uploader: UndoOsmQuestsUpload
 
     @Before fun setUp() {
-        undoQuestDB = mock(UndoOsmQuestDao::class.java)
-        elementDB = mock(MergedElementDao::class.java)
+        undoQuestDB = mock()
+        elementDB = mock()
         on(elementDB.get(any(), anyLong())).thenReturn(createElement())
-        changesetManager = mock(OpenQuestChangesetsManager::class.java)
-        singleChangeUpload = mock(SingleOsmElementTagChangesUpload::class.java)
-        elementGeometryDB = mock(ElementGeometryDao::class.java)
-        questGiver = mock(OsmQuestGiver::class.java)
+        changesetManager = mock()
+        singleChangeUpload = mock()
+        elementGeometryDB = mock()
+        questGiver = mock()
         on(questGiver.updateQuests(any())).thenReturn(OsmQuestGiver.QuestUpdates(listOf(), listOf()))
-        statisticsDB = mock(QuestStatisticsDao::class.java)
-        elementGeometryCreator = mock(ElementGeometryCreator::class.java)
-        on(elementGeometryCreator.create(any<Element>())).thenReturn(mock(ElementGeometry::class.java))
+        statisticsDB = mock()
+        elementGeometryCreator = mock()
+        on(elementGeometryCreator.create(any<Element>())).thenReturn(mock())
         uploader = UndoOsmQuestsUpload(elementDB, elementGeometryDB, changesetManager, questGiver,
             statisticsDB, elementGeometryCreator, undoQuestDB, singleChangeUpload)
     }
@@ -67,7 +67,7 @@ class UndoOsmQuestsUploadTest {
         on(undoQuestDB.getAll()).thenReturn(listOf(createUndoQuest()))
         on(elementDB.get(any(), anyLong())).thenReturn(null)
 
-        uploader.uploadedChangeListener = mock(OnUploadedChangeListener::class.java)
+        uploader.uploadedChangeListener = mock()
         uploader.upload(AtomicBoolean(false))
 
         verify(uploader.uploadedChangeListener)?.onDiscarded()
@@ -93,7 +93,7 @@ class UndoOsmQuestsUploadTest {
             .thenThrow(ElementConflictException())
             .thenReturn(createElement())
 
-        uploader.uploadedChangeListener = mock(OnUploadedChangeListener::class.java)
+        uploader.uploadedChangeListener = mock()
         uploader.upload(AtomicBoolean(false))
 
         verify(undoQuestDB, times(2)).delete(anyLong())
@@ -123,8 +123,7 @@ class UndoOsmQuestsUploadTest {
 private fun createUndoQuest() : UndoOsmQuest {
     val changes = StringMapChanges(listOf(StringMapEntryAdd("surface","asphalt")))
     val geometry = ElementPointGeometry(OsmLatLon(0.0,0.0))
-    val questType = mock(OsmElementQuestType::class.java)
-    return UndoOsmQuest(1, questType, Element.Type.NODE, 1, changes, "survey", geometry)
+    return UndoOsmQuest(1, mock(), Element.Type.NODE, 1, changes, "survey", geometry)
 }
 
 private fun createElement() = OsmNode(1,1,OsmLatLon(0.0,0.0),null)

@@ -11,6 +11,7 @@ import de.westnordost.osmapi.map.data.OsmRelationMember
 import de.westnordost.osmapi.map.data.OsmWay
 import de.westnordost.osmapi.map.data.Relation
 import de.westnordost.osmapi.map.data.Way
+import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.on
 
 import org.mockito.Mockito.*
@@ -22,21 +23,21 @@ class MergedElementDaoTest {
     private lateinit var dao: MergedElementDao
 
     @Before fun setUp() {
-        nodeDao = mock(NodeDao::class.java)
-        wayDao = mock(WayDao::class.java)
-        relationDao = mock(RelationDao::class.java)
+        nodeDao = mock()
+        wayDao = mock()
+        relationDao = mock()
         dao = MergedElementDao(nodeDao, wayDao, relationDao)
     }
 
     @Test fun putNode() {
-        val node = mock(Node::class.java)
+        val node: Node = mock()
         on(node.type).thenReturn(Element.Type.NODE)
         dao.put(node)
         verify(nodeDao).put(node)
     }
 
     @Test fun getNode() {
-        val node = mock(Node::class.java)
+        val node: Node = mock()
         on(node.id).thenReturn(1L)
         dao.get(Element.Type.NODE, 1L)
         verify(nodeDao).get(1L)
@@ -48,14 +49,14 @@ class MergedElementDaoTest {
     }
 
     @Test fun putWay() {
-        val way = mock(Way::class.java)
+        val way: Way = mock()
         on(way.type).thenReturn(Element.Type.WAY)
         dao.put(way)
         verify(wayDao).put(way)
     }
 
     @Test fun getWay() {
-        val way = mock(Way::class.java)
+        val way: Way = mock()
         on(way.id).thenReturn(1L)
 
         dao.get(Element.Type.WAY, 1L)
@@ -68,14 +69,14 @@ class MergedElementDaoTest {
     }
 
     @Test fun putRelation() {
-        val relation = mock(Relation::class.java)
+        val relation: Relation = mock()
         on(relation.type).thenReturn(Element.Type.RELATION)
         dao.put(relation)
         verify(relationDao).put(relation)
     }
 
     @Test fun getRelation() {
-        val relation = mock(Relation::class.java)
+        val relation: Relation = mock()
         on(relation.id).thenReturn(1L)
 
         dao.get(Element.Type.RELATION, 1L)

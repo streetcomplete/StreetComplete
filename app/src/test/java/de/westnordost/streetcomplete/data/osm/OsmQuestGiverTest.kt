@@ -14,10 +14,10 @@ import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestDao
 import de.westnordost.streetcomplete.data.visiblequests.OrderedVisibleQuestTypesProvider
+import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.on
 
 import org.junit.Assert.*
-import org.mockito.Mockito.mock
 import org.mockito.Mockito.verify
 
 class OsmQuestGiverTest {
@@ -28,18 +28,18 @@ class OsmQuestGiverTest {
     private lateinit var questType: OsmElementQuestType<*>
 
     @Before fun setUp() {
-        val elementGeometryDao = mock(ElementGeometryDao::class.java)
+        val elementGeometryDao: ElementGeometryDao = mock()
         on(elementGeometryDao.get(Element.Type.NODE, 1)).thenReturn(ElementPointGeometry(POS))
 
-        osmNoteQuestDao = mock(OsmNoteQuestDao::class.java)
+        osmNoteQuestDao = mock()
         on(osmNoteQuestDao.getAllPositions(any())).thenReturn(emptyList())
 
-        osmQuestDao = mock(OsmQuestDao::class.java)
+        osmQuestDao = mock()
         on(osmQuestDao.getAll(any())).thenReturn(emptyList())
 
-        questType = mock(OsmElementQuestType::class.java)
+        questType = mock()
 
-        val questTypeProvider = mock(OrderedVisibleQuestTypesProvider::class.java)
+        val questTypeProvider: OrderedVisibleQuestTypesProvider = mock()
         on(questTypeProvider.get()).thenReturn(listOf(questType))
 
         osmQuestUnlocker = OsmQuestGiver(osmNoteQuestDao, osmQuestDao, elementGeometryDao, questTypeProvider)

@@ -4,16 +4,14 @@ import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.OsmWay
 import de.westnordost.streetcomplete.data.osm.OsmQuestSplitWay
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestSplitWayDao
-import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
 import de.westnordost.streetcomplete.on
 import de.westnordost.streetcomplete.any
-import de.westnordost.streetcomplete.data.osm.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.OsmQuestGiver
 import de.westnordost.streetcomplete.data.osm.download.ElementGeometryCreator
 import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao
 import de.westnordost.streetcomplete.data.osm.persist.MergedElementDao
 import de.westnordost.streetcomplete.data.statistics.QuestStatisticsDao
+import de.westnordost.streetcomplete.mock
 import org.junit.Before
 import org.junit.Test
 import org.mockito.ArgumentMatchers
@@ -32,17 +30,17 @@ class SplitWaysUploadTest {
     private lateinit var uploader: SplitWaysUpload
 
     @Before fun setUp() {
-        splitWayDB = mock(OsmQuestSplitWayDao::class.java)
-        elementDB = mock(MergedElementDao::class.java)
+        splitWayDB = mock()
+        elementDB = mock()
         on(elementDB.get(any(), ArgumentMatchers.anyLong())).thenReturn(createElement())
-        changesetManager = mock(OpenQuestChangesetsManager::class.java)
-        splitSingleOsmWayUpload = mock(SplitSingleWayUpload::class.java)
-        elementGeometryDB = mock(ElementGeometryDao::class.java)
-        questGiver = mock(OsmQuestGiver::class.java)
+        changesetManager = mock()
+        splitSingleOsmWayUpload = mock()
+        elementGeometryDB = mock()
+        questGiver = mock()
         on(questGiver.updateQuests(any())).thenReturn(OsmQuestGiver.QuestUpdates(listOf(), listOf()))
-        statisticsDB = mock(QuestStatisticsDao::class.java)
-        elementGeometryCreator = mock(ElementGeometryCreator::class.java)
-        on(elementGeometryCreator.create(any<Element>())).thenReturn(mock(ElementGeometry::class.java))
+        statisticsDB = mock()
+        elementGeometryCreator = mock()
+        on(elementGeometryCreator.create(any<Element>())).thenReturn(mock())
         uploader = SplitWaysUpload(elementDB, elementGeometryDB, changesetManager, questGiver,
             statisticsDB, elementGeometryCreator, splitWayDB, splitSingleOsmWayUpload)
     }
@@ -67,7 +65,7 @@ class SplitWaysUploadTest {
         on(splitWayDB.getAll()).thenReturn(listOf(createOsmSplitWay()))
         on(elementDB.get(any(),anyLong())).thenReturn(null)
 
-        uploader.uploadedChangeListener = mock(OnUploadedChangeListener::class.java)
+        uploader.uploadedChangeListener = mock()
         uploader.upload(AtomicBoolean(false))
 
         verify(uploader.uploadedChangeListener)?.onDiscarded()
@@ -93,7 +91,7 @@ class SplitWaysUploadTest {
             .thenThrow(ElementConflictException())
             .thenReturn(listOf(createElement()))
 
-        uploader.uploadedChangeListener = mock(OnUploadedChangeListener::class.java)
+        uploader.uploadedChangeListener = mock()
         uploader.upload(AtomicBoolean(false))
 
         verify(splitWayDB, times(2)).delete(anyLong())
@@ -121,7 +119,6 @@ class SplitWaysUploadTest {
     }
 }
 
-private fun createOsmSplitWay() =
-    OsmQuestSplitWay(1, mock(OsmElementQuestType::class.java), 1, "survey", listOf())
+private fun createOsmSplitWay() = OsmQuestSplitWay(1, mock(), 1, "survey", listOf())
 
 private fun createElement() = OsmWay(1,1, listOf(1,2,3), null)

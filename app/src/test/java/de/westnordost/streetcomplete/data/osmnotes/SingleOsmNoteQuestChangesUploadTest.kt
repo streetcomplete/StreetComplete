@@ -7,6 +7,7 @@ import de.westnordost.osmapi.notes.Note
 import de.westnordost.osmapi.notes.NotesDao
 import de.westnordost.streetcomplete.any
 import de.westnordost.streetcomplete.data.osm.upload.ConflictException
+import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.on
 import de.westnordost.streetcomplete.util.ImageUploader
 import org.junit.Before
@@ -20,9 +21,9 @@ class SingleOsmNoteQuestChangesUploadTest {
     private lateinit var noteUploader: SingleOsmNoteQuestChangesUpload
 
     @Before fun setUp() {
-        osmDao = mock(NotesDao::class.java)
+        osmDao = mock()
         on(osmDao.comment(anyLong(), any())).thenReturn(createNote())
-        imageUploader = mock(ImageUploader::class.java)
+        imageUploader = mock()
         noteUploader = SingleOsmNoteQuestChangesUpload(osmDao, imageUploader)
     }
 

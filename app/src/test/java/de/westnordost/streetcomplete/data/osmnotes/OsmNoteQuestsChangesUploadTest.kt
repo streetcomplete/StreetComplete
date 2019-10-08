@@ -6,13 +6,13 @@ import org.junit.Before
 import de.westnordost.streetcomplete.data.QuestStatus
 import de.westnordost.streetcomplete.data.osm.upload.ConflictException
 import de.westnordost.streetcomplete.data.statistics.QuestStatisticsDao
-import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
 import de.westnordost.streetcomplete.on
 import de.westnordost.streetcomplete.any
 import org.junit.Test
 
 import org.mockito.Mockito.*
 import de.westnordost.osmapi.map.data.OsmLatLon
+import de.westnordost.streetcomplete.mock
 import org.junit.Assert.assertEquals
 import java.util.concurrent.atomic.AtomicBoolean
 
@@ -25,10 +25,10 @@ class OsmNoteQuestsChangesUploadTest {
     private lateinit var uploader: OsmNoteQuestsChangesUpload
 
     @Before fun setUp() {
-        noteDB = mock(NoteDao::class.java)
-        questDB = mock(OsmNoteQuestDao::class.java)
-        questStatisticsDb = mock(QuestStatisticsDao::class.java)
-        singleNoteUploader = mock(SingleOsmNoteQuestChangesUpload::class.java)
+        noteDB = mock()
+        questDB = mock()
+        questStatisticsDb = mock()
+        singleNoteUploader = mock()
         uploader = OsmNoteQuestsChangesUpload(questDB, questStatisticsDb, noteDB, singleNoteUploader)
     }
 
@@ -52,7 +52,7 @@ class OsmNoteQuestsChangesUploadTest {
         on(questDB.getAll(any())).thenReturn(quests)
         on(singleNoteUploader.upload(any())).thenReturn(createNote())
 
-        uploader.uploadedChangeListener = mock(OnUploadedChangeListener::class.java)
+        uploader.uploadedChangeListener = mock()
         uploader.upload(AtomicBoolean(false))
 
         for (quest in quests) {
@@ -70,7 +70,7 @@ class OsmNoteQuestsChangesUploadTest {
         on(questDB.getAll(any())).thenReturn(quests)
         on(singleNoteUploader.upload(any())).thenThrow(ConflictException())
 
-        uploader.uploadedChangeListener = mock(OnUploadedChangeListener::class.java)
+        uploader.uploadedChangeListener = mock()
         uploader.upload(AtomicBoolean(false))
 
         verify(questDB, times(quests.size)).delete(anyLong())

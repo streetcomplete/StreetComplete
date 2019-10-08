@@ -1,15 +1,14 @@
 package de.westnordost.streetcomplete.quests
 
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.quests.sidewalk.AddSidewalk
 import de.westnordost.streetcomplete.quests.sidewalk.SidewalkAnswer
 import org.junit.Test
-import org.mockito.Mockito.mock
 
 class AddSidewalkTest {
 
-	private val questType = AddSidewalk(mock(OverpassMapDataDao::class.java))
+	private val questType = AddSidewalk(mock())
 
 	@Test fun `apply no sidewalk answer`() {
 		questType.verifyAnswer(

@@ -2,15 +2,13 @@ package de.westnordost.streetcomplete.quests
 
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryModify
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.quests.max_speed.*
 import org.junit.Test
 
-import org.mockito.Mockito.mock
-
 class AddMaxSpeedTest {
 
-    private val questType = AddMaxSpeed(mock(OverpassMapDataDao::class.java))
+    private val questType = AddMaxSpeed(mock())
 
     @Test fun `apply no sign answer`() {
         questType.verifyAnswer(

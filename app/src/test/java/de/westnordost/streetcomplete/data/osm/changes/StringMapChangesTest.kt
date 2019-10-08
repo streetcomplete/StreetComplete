@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.changes
 
+import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.on
 import org.junit.Test
 
@@ -21,7 +22,7 @@ class StringMapChangesTest {
     }
 
     @Test fun one() {
-        val change = mock(StringMapEntryChange::class.java)
+        val change: StringMapEntryChange = mock()
         on(change.toString()).thenReturn("x")
 
         val changes = StringMapChanges(listOf(change))
@@ -37,9 +38,9 @@ class StringMapChangesTest {
     }
 
     @Test fun two() {
-        val change1 = mock(StringMapEntryChange::class.java)
+        val change1: StringMapEntryChange = mock()
         on(change1.toString()).thenReturn("a")
-        val change2 = mock(StringMapEntryChange::class.java)
+        val change2: StringMapEntryChange = mock()
         on(change2.toString()).thenReturn("b")
 
         val changes = StringMapChanges(listOf(change1, change2))
@@ -60,7 +61,7 @@ class StringMapChangesTest {
     fun `applying with conflict fails`() {
         val someMap = mutableMapOf<String, String>()
 
-        val conflict = mock(StringMapEntryChange::class.java)
+        val conflict: StringMapEntryChange = mock()
         on(conflict.conflictsWith(someMap)).thenReturn(true)
 
         val changes = StringMapChanges(listOf(conflict))
@@ -71,16 +72,10 @@ class StringMapChangesTest {
     @Test fun getConflicts() {
         val someMap = emptyMap<String, String>()
 
-        val conflict = mock(StringMapEntryChange::class.java)
+        val conflict: StringMapEntryChange = mock()
         on(conflict.conflictsWith(someMap)).thenReturn(true)
         
-        val changes = StringMapChanges(listOf(
-            mock(StringMapEntryChange::class.java),
-            mock(StringMapEntryChange::class.java),
-            conflict,
-            mock(StringMapEntryChange::class.java),
-            conflict
-        ))
+        val changes = StringMapChanges(listOf(mock(), mock(), conflict, mock(), conflict))
 
         changes.getConflictsTo(someMap)
 

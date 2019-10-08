@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.any
 import de.westnordost.streetcomplete.data.changesets.OpenChangeset
 import de.westnordost.streetcomplete.data.changesets.OpenChangesetsDao
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
+import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.on
 import org.junit.Assert.assertEquals
 import org.junit.Before
@@ -22,11 +23,11 @@ class OpenQuestChangesetsManagerTest {
     private lateinit var prefs: SharedPreferences
 
     @Before fun setUp() {
-        questType = mock(OsmElementQuestType::class.java)
-        osmDao = mock(MapDataDao::class.java)
-        openChangesetsDB = mock(OpenChangesetsDao::class.java)
-        changesetAutoCloser = mock(ChangesetAutoCloser::class.java)
-        prefs = mock(SharedPreferences::class.java)
+        questType = mock()
+        osmDao = mock()
+        openChangesetsDB = mock()
+        changesetAutoCloser = mock()
+        prefs = mock()
         manager = OpenQuestChangesetsManager(osmDao, openChangesetsDB, changesetAutoCloser, prefs)
     }
 

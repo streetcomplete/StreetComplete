@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.osm.changes.SplitAtLinePosition
 import de.westnordost.streetcomplete.data.osm.changes.SplitAtPoint
 import de.westnordost.streetcomplete.data.osm.changes.SplitPolylineAtPosition
 import de.westnordost.streetcomplete.eq
+import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.on
 import de.westnordost.streetcomplete.util.SphericalEarthMath
 import org.junit.Assert.*
@@ -18,7 +19,7 @@ import org.mockito.ArgumentCaptor
 import org.mockito.Mockito.*
 
 class SplitSingleWayUploadTest {
-    private val osmDao = mock(MapDataDao::class.java)
+    private val osmDao: MapDataDao = mock()
     private val uploader = SplitSingleWayUpload(osmDao)
 
     private val p = arrayOf(

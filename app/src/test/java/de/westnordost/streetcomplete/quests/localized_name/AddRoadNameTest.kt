@@ -4,21 +4,13 @@ import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.data.osm.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryModify
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
-import de.westnordost.streetcomplete.quests.localized_name.data.PutRoadNameSuggestionsHandler
-import de.westnordost.streetcomplete.quests.localized_name.data.RoadNameSuggestionsDao
+import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import org.junit.Test
 
-import org.mockito.Mockito.mock
-
 class AddRoadNameTest {
 
-    private val questType = AddRoadName(
-        mock(OverpassMapDataDao::class.java),
-        mock(RoadNameSuggestionsDao::class.java),
-        mock(PutRoadNameSuggestionsHandler::class.java)
-    )
+    private val questType = AddRoadName(mock(), mock(), mock())
 
     private val tags = mapOf("highway" to "residential")
 
