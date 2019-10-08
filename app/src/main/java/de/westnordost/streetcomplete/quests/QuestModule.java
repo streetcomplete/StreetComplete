@@ -22,6 +22,7 @@ import de.westnordost.streetcomplete.quests.building_levels.AddBuildingLevels;
 import de.westnordost.streetcomplete.quests.building_type.AddBuildingType;
 import de.westnordost.streetcomplete.quests.building_underground.AddIsBuildingUnderground;
 import de.westnordost.streetcomplete.quests.foot.AddProhibitedForPedestrians;
+import de.westnordost.streetcomplete.quests.general_fee.AddGeneralFee;
 import de.westnordost.streetcomplete.quests.leaf_detail.AddForestLeafType;
 import de.westnordost.streetcomplete.quests.localized_name.AddBusStopName;
 import de.westnordost.streetcomplete.quests.bus_stop_shelter.AddBusStopShelter;
@@ -162,6 +163,7 @@ public class QuestModule
 				new AddReligionToWaysideShrine(o),
 				new AddCyclewaySegregation(o),
 				new MarkCompletedBuildingConstruction(o),
+				new AddGeneralFee(o),
 
 				// ↓ 8. defined in the wiki, but not really used by anyone yet. Just collected for
 				//      the sake of mapping it in case it makes sense later
