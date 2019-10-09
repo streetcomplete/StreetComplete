@@ -34,7 +34,7 @@ class ShowQuestFormsActivity : AppCompatActivity(), OsmQuestAnswerListener {
 
 	init {
 		Injector.instance.applicationComponent.inject(this)
-        showQuestFormAdapter.list = questTypeRegistry.all
+        showQuestFormAdapter.list = questTypeRegistry.all.toMutableList()
 	}
 
     override fun onCreate(savedInstanceState: Bundle?) {

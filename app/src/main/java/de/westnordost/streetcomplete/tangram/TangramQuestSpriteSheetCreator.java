@@ -48,7 +48,7 @@ public class TangramQuestSpriteSheetCreator
 
 	private Set<Integer> getQuestIconResourceIds()
 	{
-		List<QuestType> questTypeList = questTypeRegistry.getAll();
+		List<QuestType<?>> questTypeList = questTypeRegistry.getAll();
 		Set<Integer> questIconResIds = new HashSet<>(questTypeList.size());
 		for(QuestType questType : questTypeList)
 		{

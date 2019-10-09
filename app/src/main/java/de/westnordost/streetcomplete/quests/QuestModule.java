@@ -92,7 +92,7 @@ public class QuestModule
 		TrafficFlowSegmentsDao trafficFlowSegmentsDao, WayTrafficFlowDao trafficFlowDao,
 		FutureTask<FeatureDictionary> featureDictionaryFuture)
 	{
-		QuestType[] questTypesOrderedByImportance = {
+		QuestType<?>[] questTypesOrderedByImportance = {
 				// ↓ 1. notes
 				osmNoteQuestType,
 

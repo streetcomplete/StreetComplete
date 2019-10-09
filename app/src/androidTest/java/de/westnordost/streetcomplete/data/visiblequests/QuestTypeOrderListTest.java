@@ -30,14 +30,18 @@ public class QuestTypeOrderListTest
 	private QuestType four = new TestQuestType4();
 	private QuestType five = new TestQuestType5();
 
-	private List<QuestType> list;
+	private List<QuestType<?>> list;
 
 	private QuestTypeOrderList questTypeOrderList;
 
 	@Before public void setUpList()
 	{
 		list = new ArrayList<>();
-		list.addAll(Arrays.asList(one, two, three, four, five));
+		list.add(one);
+		list.add(two);
+		list.add(three);
+		list.add(four);
+		list.add(five);
 
 		questTypeOrderList = new QuestTypeOrderList(
 				getInstrumentation().getContext().getSharedPreferences("Test", Context.MODE_PRIVATE),
