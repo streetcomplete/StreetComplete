@@ -524,7 +524,6 @@ public class MainActivity extends AppCompatActivity implements
 		if(dontShowRequestAuthorizationAgain) return;
 
 		View inner = LayoutInflater.from(this).inflate(R.layout.dialog_authorize_now, null, false);
-		final CheckBox checkBox = inner.findViewById(R.id.checkBoxDontShowAgain);
 
 		new AlertDialog.Builder(this)
 				.setView(inner)
@@ -536,7 +535,7 @@ public class MainActivity extends AppCompatActivity implements
 				})
 				.setNegativeButton(R.string.later, (dialog, which) ->
 				{
-					dontShowRequestAuthorizationAgain = checkBox.isChecked();
+					dontShowRequestAuthorizationAgain = true;
 				}).show();
 	}
 
@@ -596,7 +595,7 @@ public class MainActivity extends AppCompatActivity implements
 		{
 			if (!oAuth.isAuthorized()) {
 				// new users should not be immediately pestered to login after each change (#1446)
-				if(answersCounter.waitingForUpload() > 5) {
+				if(answersCounter.waitingForUpload() >= 3) {
 					requestOAuthorized();
 				}
 			}
