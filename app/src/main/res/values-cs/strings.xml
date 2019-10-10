@@ -722,4 +722,18 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="about_contributing">"Vaše odpovědi přímo vylepšují OpenStreetMap. Vložená data jsou otevřená a každý je může použít. Mnoho skvělých projektů je již používá."</string>
     <string name="about_missing_stars">"Počet hvězdiček není momentálně sdílen mezi různými zařízeními, ale odpovědi jsou přímo přidány do OpenStreetMap databáze."</string>
     <string name="how_to_get_stars">"Vyberte jeden z bodů na mapě a odpovězte na otázku, která se pod ním nachází. Tím vylepšíte data na OpenStreetMap a dostanete hvězdičku. Pokud žádné body nevidíte, zkuste odzoomovat mapu."</string>
+    <string name="oauth_remove_authorization_dialog_message">"Chcete odstranit propojení s vaším OSM účtem?"</string>
+    <string name="oauth_remove_authorization_confirmation">"Odstranit"</string>
+    <string name="quest_leafType_title">"Jsou zde jehličnaté nebo listnaté stromy?"</string>
+    <string name="quest_leaf_type_needles">"Jehličnany"</string>
+    <string name="quest_leaf_type_broadleaved">"Listnáče"</string>
+    <string name="quest_leaf_type_mixed">"Jsou tu oba"</string>
+    <string name="quest_cyclewayPartSurface_title">"Jaký je povrch této cyklostezky?"</string>
+    <string name="quest_generic_answer_differs_along_the_way">"V různých částech různý..."</string>
+    <string name="quest_split_way_description">"Pokud má cesta v různých částech různý povrch, je dobré ji nejdříve rozdělit a pak odpovědět na samostatné úkoly v každé její části. Vemte na vědomí, že úkoly pro jednotlivé části se mohou zobrazit mnohem později. Chcete cestu rozdělit?"</string>
+    <string name="quest_split_way_tutorial">"Klepněte na cestu pro její rozdělení v bodě(-ech), kde se odpovědi liší. Pokuste se být co nejpřesnější. Jako obvykle můžete použít zoom."</string>
+    <string name="quest_split_way_too_imprecise">"Zazoomujte více, prosím"</string>
+    <string name="quest_split_way_many_splits_confirmation_description">"Tohle je docela dost rozdělení. Cestu můžete vždycky rozdělit později."</string>
+    <string name="quest_footwayPartSurface_title">"Jaký je povrch této stezky pro chodce/chodníku?"</string>
+    <string name="quest_wheelchairAccess_toiletsPart_title">"Je toaleta v %s přístupná pro vozíčkáře?"</string>
 </resources>

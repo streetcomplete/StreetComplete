@@ -37,6 +37,34 @@ class AddRoadNameTest {
         )
     }
 
+    @Test fun `apply ref answer`() {
+        val refs = listOf("9","A","A2","L 3211","US-9","MEX 25","1234","G9321")
+        for (ref in refs) {
+            questType.verifyAnswer(
+                tags,
+                roadName(LocalizedName("", ref)),
+                StringMapEntryAdd("ref", ref)
+            )
+        }
+    }
+
+    @Test fun `do not apply ref answer if it is a localized name`() {
+        questType.verifyAnswer(
+            tags,
+            roadName(
+                LocalizedName("", "A1"),
+                LocalizedName("de", "A1")
+            ),
+            StringMapEntryAdd("name", "A1"),
+            StringMapEntryAdd("name:de", "A1")
+        )
+        questType.verifyAnswer(
+            tags,
+            roadName(LocalizedName("de", "A1")),
+            StringMapEntryAdd("name:de", "A1")
+        )
+    }
+
     @Test fun `apply name answer with multiple names`() {
         questType.verifyAnswer(
             tags,

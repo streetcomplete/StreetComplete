@@ -4,7 +4,9 @@ import android.graphics.Rect;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import de.westnordost.streetcomplete.ApplicationConstants;
 import de.westnordost.streetcomplete.data.QuestStatus;
@@ -40,25 +42,28 @@ public abstract class AActiveRadiusStrategy implements QuestAutoDownloadStrategy
 	{
 		BoundingBox bbox = SphericalEarthMath.enclosingBoundingBox(pos, radius);
 
-		double areaInKm2 = SphericalEarthMath.enclosedArea(bbox) / 1000 / 1000;
-
-		// got enough quests in vicinity
-		int visibleQuests = osmQuestDB.getCount(bbox, QuestStatus.NEW, questTypeNames);
-		if(visibleQuests / areaInKm2 > getMinQuestsInActiveRadiusPerKm2())
-		{
-			Log.i(TAG, "Not downloading quests because there are enough quests in " + radius + "m radius");
-			return false;
-		}
-
-		// (this check is more computational effort, so its done after the vicinity check)
 		// nothing more to download
 		Rect tiles = SlippyMapMath.enclosingTiles(bbox, ApplicationConstants.QUEST_TILE_ZOOM);
 		long questExpirationTime = ApplicationConstants.REFRESH_QUESTS_AFTER;
 		long ignoreOlderThan = Math.max(0,System.currentTimeMillis() - questExpirationTime);
-		int alreadyDownloadedQuestTypes = downloadedTilesDao.get(tiles, ignoreOlderThan).size();
-		if(alreadyDownloadedQuestTypes >= questTypeNames.size())
+		Set<String> alreadyDownloaded = new HashSet<>(downloadedTilesDao.get(tiles, ignoreOlderThan));
+		List<String> notAlreadyDownloaded = new ArrayList<>();
+		for (String questTypeName : questTypeNames)
+		{
+			if (!alreadyDownloaded.contains(questTypeName)) notAlreadyDownloaded.add(questTypeName);
+		}
+
+		if(notAlreadyDownloaded.isEmpty())
 		{
 			Log.i(TAG, "Not downloading quests because everything has been downloaded already in " + radius + "m radius");
+			return false;
+		}
+		double areaInKm2 = SphericalEarthMath.enclosedArea(bbox) / 1000 / 1000;
+		// got enough quests in vicinity
+		int visibleQuests = osmQuestDB.getCount(bbox, QuestStatus.NEW, notAlreadyDownloaded);
+		if(visibleQuests / areaInKm2 > getMinQuestsInActiveRadiusPerKm2())
+		{
+			Log.i(TAG, "Not downloading quests because there are enough quests in " + radius + "m radius");
 			return false;
 		}
 

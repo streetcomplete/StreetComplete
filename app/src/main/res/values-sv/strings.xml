@@ -51,7 +51,7 @@
     <string name="quest_noteDiscussion_anonymous">"Anonym"</string>
     <string name="confirmation_discard_title">"Släng svar?"</string>
     <string name="confirmation_discard_positive">"Släng"</string>
-    <string name="confirmation_discard_negative">"Ångra"</string>
+    <string name="confirmation_discard_negative">"Avbryt"</string>
     <string name="action_download">"Sök efter uppdrag här"</string>
     <string name="action_upload">"Skicka svar"</string>
     <string name="no_changes">"Du lämnade formuläret tomt"</string>
@@ -85,11 +85,11 @@
     <string name="no_gps_no_quests">"För att söka efter uppdrag runt omkring dig automatiskt, slå på plats"</string>
     <string name="nothing_more_to_download">"Det finns inga fler uppdrag här"</string>
     <string name="later">"Senare"</string>
-    <string name="quest_streetName_answer_noProperStreet_link">"den bara förbinder två vägar"</string>
+    <string name="quest_streetName_answer_noProperStreet_link">"Den bara förbinder två vägar"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Något annat (lämna notering)"</string>
     <string name="about_title_privacy_statement">"Sekretesspolicy"</string>
     <string name="about_summary_privacy_statement">"och dataanvändning"</string>
-    <string name="quest_openingHours_public_holidays">"allmänna helgdagar"</string>
+    <string name="quest_openingHours_public_holidays">"Allmänna helgdagar"</string>
 
     <!-- Fuzzy -->
     <string name="quest_openingHours_public_holidays_short">"Allmänna helgdagar"</string>
@@ -135,7 +135,7 @@ Men innan du skickar dina ändringar kontrollerar appen med en &lt;a href=\"http
     <string name="autosync_only_on_wifi">"Endast på Wi-Fi"</string>
     <string name="autosync_off">"Av"</string>
     <string name="quest_streetSurface_title">"Vad har den här delen av vägen för underlag?"</string>
-    <string name="quest_surface_value_paved">"Belagd (generiska)"</string>
+    <string name="quest_surface_value_paved">"Belagd (generisk)"</string>
     <string name="quest_surface_value_unpaved">"Obelagd (generiska)"</string>
     <string name="quest_surface_value_ground">"Mark (generiska)"</string>
     <string name="quest_surface_value_asphalt">"Asfalt"</string>
@@ -199,7 +199,7 @@ Den information du anger skickas sedan direkt till OpenStreetMap i ditt namn, ut
     <string name="quest_sport_beachvolleyball">"Beachvolleyboll"</string>
     <string name="quest_sport_american_football">"Amerikansk fotboll"</string>
     <string name="quest_sport_skateboard">"Skateboard"</string>
-    <string name="quest_sport_bowls">"Bowling"</string>
+    <string name="quest_sport_bowls">"Bowls"</string>
     <string name="quest_sport_boules">"Boule"</string>
     <string name="quest_sport_shooting">"Skytte"</string>
     <string name="quest_sport_cricket">"Kricket"</string>
@@ -217,7 +217,7 @@ Den information du anger skickas sedan direkt till OpenStreetMap i ditt namn, ut
     <string name="quest_select_hint">"Välj:"</string>
     <string name="quest_sport_manySports_confirmation_description">"Är denna planen gjord speciellt för dessa sporter (där utrustning och märken finns) eller är det en allmän plan för alla sorters spel?"</string>
     <string name="quest_manySports_confirmation_specific">"Dessa specifikt"</string>
-    <string name="quest_manySports_confirmation_generic">"Allmän"</string>
+    <string name="quest_manySports_confirmation_generic">"Allmänna ändamål"</string>
     <string name="quest_sport_manySports_confirmation_title">"Du valde många sporter"</string>
     <string name="quest_busStopShelter_name_title">"Har hållplatsen %s en busskur?"</string>
     <string name="quest_toiletsFee_title">"Kostar det något att använda toaletten?"</string>
@@ -346,7 +346,7 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="produce_nutmeg">"Muskotnötter"</string>
     <string name="produce_oil_palms">"Oljepalmer"</string>
     <string name="produce_olives">"Oliver"</string>
-    <string name="produce_oranges">"Apelsiner"</string>
+    <string name="produce_oranges">"Appelsiner"</string>
     <string name="produce_papayas">"Papaya"</string>
     <string name="produce_peaches">"Persikor"</string>
     <string name="produce_pears">"Päron"</string>
@@ -414,13 +414,13 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_leave_new_note_photo">"Bifoga foto"</string>
     <string name="quest_leave_new_note_photo_delete_title">"Vill du ta bort den här bilden?"</string>
     <string name="quest_cycleway_value_track">"separat cykelbana"</string>
-    <string name="quest_cycleway_value_lane">"cykelfil"</string>
+    <string name="quest_cycleway_value_lane">"cykelkörfält"</string>
     <string name="quest_cycleway_value_none">"ingen"</string>
-    <string name="quest_cycleway_value_shared">"cykelfil delad med annan trafik"</string>
-    <string name="quest_cycleway_value_bus_lane">"cykel- och kollektivfil"</string>
+    <string name="quest_cycleway_value_shared">"cykelkörfält delad med annan trafik"</string>
+    <string name="quest_cycleway_value_bus_lane">"på busskörfältet"</string>
     <string name="quest_cycleway_value_sidewalk">"gång- och cykelbana"</string>
     <string name="quest_leave_new_note_create_image_error">"Fel vid skapandet av foto"</string>
-    <string name="quest_cycleway_value_lane_dual">"cykelfil, båda riktningarna"</string>
+    <string name="quest_cycleway_value_lane_dual">"cykelkörfält, båda riktningarna"</string>
     <string name="quest_cycleway_value_track_dual">"separat cykelbana, båda riktningarna"</string>
     <string name="quest_cycleway_value_sidewalk_allowed">"ingen, men cyklister är tillåtna på trottoaren"</string>
     <string name="pref_category_advanced">"Avancerat"</string>
@@ -494,7 +494,7 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_religion_chinese_folk">"Kinesisk folkreligion"</string>
     <string name="quest_religion_for_wayside_shrine_title">"Vilken religion praktiseras vid den här helgedomen?"</string>
     <string name="quest_parking_fee_title">"Kostar det något att parkera här?"</string>
-    <string name="quest_cycleway_value_lane_soft">"cykelfil (streckad markering)"</string>
+    <string name="quest_cycleway_value_lane_soft">"cykelkörfält (streckad markering)"</string>
     <string name="quest_surface_value_unhewn_cobblestone">"Ohuggen kullersten "</string>
     <string name="quest_parking_access_title">"Är det reglerat vem som får parkera här?"</string>
     <string name="quest_parking_access_private">"Parkeringen är privat"</string>
@@ -520,7 +520,7 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_bicycle_parking_type_locker">"Skåp"</string>
     <string name="quest_bicycle_parking_type_building">"Byggnad"</string>
     <string name="quest_bicycle_parking_type_title">"Vilken typ av cykelparkering är det här?"</string>
-    <string name="quest_cycleway_value_suggestion_lane">"cykelfil (uppmaning)"</string>
+    <string name="quest_cycleway_value_suggestion_lane">"cykelkörfält (uppmaning)"</string>
     <string name="quest_postboxCollectionTimes_title">"Vad har den här brevlådan för tömningstider?"</string>
     <string name="quest_collectionTimes_add_times">"Lägg till tömningstid"</string>
     <string name="quest_collectionTimes_answer_no_times_specified">"Tömningstid är inte specificerad"</string>
@@ -537,7 +537,7 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_select_hint_most_specific">"Välj det mest detaljerade svaret som passar:"</string>
     <string name="quest_generic_item_confirmation">"Är du säker på att du inte kan svara mer specifikt?"</string>
     <string name="privacy_html_tileserver">"&lt;p&gt;För att visa kartan hämtas vektorkartor från &lt;a href=\"https://tiles.map-data.de\"&gt;map-data.de&lt;/a&gt;. Tjänsten loggar begäran av kartan för anonym statistik och för att hitta eventuella fel, men tar bort loggarna efter några dagar. &lt;/p&gt;"</string>
-    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;För några uppdrag kommer tilläggsdata från tredje part att laddas ned. Sökningen efter uppdrag om enkelriktade gator använder ett API på westnordost.de för att hitta kandidater för enkelriktad körning.&lt;/p&gt;"</string>
+    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;För några uppdrag kommer tilläggsdata från tredje part att hämtas. Sökningen efter uppdrag om enkelriktade gator använder ett API på westnordost.de för att hitta kandidater för enkelriktad körning.&lt;/p&gt;"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"Nej (lämna anteckning)"</string>
     <string name="pref_quests_reset">"Vill du nollställa både uppdrag och ordningsföljd?"</string>
     <string name="quest_buildingType_title2">"Vad uppfördes den här byggnaden som?"</string>
@@ -690,4 +690,28 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_placeName_title_name">"Vad heter det här stället? (%s)"</string>
     <string name="action_open_location">"Öppna plats i en annan app"</string>
     <string name="map_application_missing">"Ingen annan kartapplikation installerad"</string>
+    <string name="pref_title_overpass_url_select">"Ändra Overpass server"</string>
+    <string name="pref_title_overpass_url_info">"Kräver att applikationen startas om för att gälla. Kan kringgå censur, till exempel i Ryssland."</string>
+    <string name="label_housenumber">"husnummer"</string>
+    <string name="label_blocknumber">"kvarternummer"</string>
+    <string name="quest_ferry_pedestrian_name_title">"Transporterar %s fotgängare?"</string>
+    <string name="quest_ferry_pedestrian_title">"Transporterar denna färjelinje fotgängare?"</string>
+    <string name="quest_ferry_motor_vehicle_name_title">"Transporterar %s motorfordon?"</string>
+    <string name="quest_ferry_motor_vehicle_title">"Transporterar denna färjelinje motorfordon?"</string>
+    <string name="quest_leave_new_note_photos_are_useful">"Genom att lägga till ett foto gör du anteckningen mycket mer användbar."</string>
+    <string name="quest_postboxCollectionTimes_name_title">"Vilka är tömningstiderna för denna %s postlåda?"</string>
+    <string name="create_new_note_hint">"Det är bäst att skriva anteckningen på det lokalt talade språket eller på engelska."</string>
+    <string name="about_contributing">"Dina svar förbättrar OpenStreetMap direkt. Bidragsuppgifter är öppna, alla kan använda dem. Många fantastiska projekt använder redan det."</string>
+    <string name="about_missing_stars">"För närvarande delas inte stjärnantalet över enheter, men svar läggs direkt till OpenStreetMap-databasen."</string>
+    <string name="how_to_get_stars">"Välj en av markörerna på kartan och svara på frågan. På så sätt förbättrar du OpenStreetMap-data och får stjärnor. Om du inte ser några markörer kan du behöva zooma ut kartan."</string>
+    <string name="oauth_remove_authorization_dialog_message">"Vill du ta bort behörighet till ditt OSM-konto?"</string>
+    <string name="oauth_remove_authorization_confirmation">"Ta bort"</string>
+    <string name="quest_leafType_title">"Har träden här barr eller blad?"</string>
+    <string name="quest_leaf_type_needles">"Barr"</string>
+    <string name="quest_leaf_type_broadleaved">"Bredbladig"</string>
+    <string name="quest_leaf_type_mixed">"Båda är närvarande"</string>
+    <string name="quest_cyclewayPartSurface_title">"Vad är ytan på cykelvägen här?"</string>
+    <string name="quest_generic_answer_differs_along_the_way">"Skiljer sig längs vägen…"</string>
+    <string name="quest_split_way_too_imprecise">"Vänligen zooma in ytterligare"</string>
+    <string name="quest_wheelchairAccess_toiletsPart_title">"Är toaletten på %s tillgänglig med rullstol?"</string>
 </resources>

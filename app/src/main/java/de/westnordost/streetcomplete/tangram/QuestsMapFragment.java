@@ -114,6 +114,13 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		{
 			questTypeOrder.put(questType, order++);
 		}
+
+		BoundingBox displayedArea = getDisplayedArea(new Rect());
+		if(displayedArea != null)
+		{
+			lastDisplayedRect = SlippyMapMath.enclosingTiles(displayedArea, TILES_ZOOM);
+			updateQuestsInRect(lastDisplayedRect);
+		}
 	}
 
 	@Override public void onResume()
@@ -328,7 +335,12 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		if(lastDisplayedRect != null && lastDisplayedRect.equals(tilesRect)) return;
 		lastDisplayedRect = tilesRect;
 
-		// area to big -> skip ( see https://github.com/tangrams/tangram-es/issues/1492 )
+		updateQuestsInRect(tilesRect);
+	}
+
+	private void updateQuestsInRect(Rect tilesRect)
+	{
+		// area too big -> skip ( see https://github.com/tangrams/tangram-es/issues/1492 )
 		if(tilesRect.width() * tilesRect.height() > 4)
 		{
 			return;

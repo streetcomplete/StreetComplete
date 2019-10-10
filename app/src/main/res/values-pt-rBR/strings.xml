@@ -150,7 +150,7 @@ No entanto, antes de carregar suas alterações, o app verifica com um &lt;a hre
     <string name="quest_placeName_title">"Qual o nome deste lugar?"</string>
     <string name="quest_sidewalk_title">"Essa rua tem alguma calçada?"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Onde é esta rua?"</string>
-    <string name="quest_cyclewaySurface_title">"Que tipo de pavimento tem essa ciclovia aqui?"</string>
+    <string name="quest_cyclewaySurface_title">"Que tipo de pavimento a ciclovia tem aqui?"</string>
     <string name="quest_serviceType_title">"Que tipo de rua de serviço é essa?"</string>
     <string name="quest_streetLanes_title">"Quantas pistas tem essa rua?"</string>
     <string name="quest_streetLanes_description">"Se não houver marcações rodoviárias, não há pistas."</string>
@@ -727,4 +727,15 @@ Is "Altar" really fitting here? It is about a building type after all. -->
 
     <!-- Fuzzy -->
     <string name="how_to_get_stars">"Escolha um dos marcadores no mapa e responda as questões.  Assim você irá melhorar os dados do OpenStreetMap e ganhar estrelas.  Sé você não achar nenhum marcador, você pode ter que diminuir o zoom do mapa."</string>
+    <string name="oauth_remove_authorization_dialog_message">"Você quer remover a autorização para sua conta OSM?"</string>
+    <string name="oauth_remove_authorization_confirmation">"Remover"</string>
+    <string name="quest_leafType_title">"As árvores aqui têm agulhas ou folhas?"</string>
+    <string name="quest_leaf_type_needles">"Agulhas"</string>
+    <string name="quest_leaf_type_broadleaved">"Folhas"</string>
+    <string name="quest_leaf_type_mixed">"Ambas"</string>
+    <string name="quest_cyclewayPartSurface_title">"Que tipo de pavimento tem a ciclovia aqui?"</string>
+    <string name="quest_split_way_too_imprecise">"Por favor aproxime mais"</string>
+    <string name="quest_split_way_many_splits_confirmation_description">"Parecem muitas divisões.  Você pode dividir mais depois se precisar."</string>
+    <string name="quest_footwayPartSurface_title">"Que tipo de pavimento tem o caminho de pedestre aqui?"</string>
+    <string name="quest_wheelchairAccess_toiletsPart_title">"O banheiro em %s é acessível para cadeirantes?"</string>
 </resources>
