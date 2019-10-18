@@ -622,9 +622,7 @@ public class MapFragment extends Fragment implements
 		compass.onDestroy();
 		if(mapView != null) mapView.onDestroy();
 		controller = null;
-		directionMarker = null;
-		accuracyMarker = null;
-		locationMarker = null;
+		onSceneUpdate();
 	}
 
 	@Override public void onLowMemory()
@@ -706,5 +704,10 @@ public class MapFragment extends Fragment implements
 	public void hideMapControls()
 	{
 		if(mapControls != null) mapControls.hideControls();
+	}
+	private void onSceneUpdate() {
+		locationMarker = null;
+		directionMarker = null;
+		accuracyMarker = null;
 	}
 }
