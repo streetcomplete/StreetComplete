@@ -36,9 +36,12 @@ import com.mapzen.tangram.MapController;
 import com.mapzen.tangram.MapView;
 import com.mapzen.tangram.Marker;
 import com.mapzen.tangram.SceneError;
+import com.mapzen.tangram.SceneUpdate;
 import com.mapzen.tangram.TouchInput;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.streetcomplete.Prefs;
@@ -705,6 +708,17 @@ public class MapFragment extends Fragment implements
 	{
 		if(mapControls != null) mapControls.hideControls();
 	}
+
+	public void toggle3DBuildings(boolean toggleOn)
+	{
+		onSceneUpdate();
+		
+		List<SceneUpdate> updates = new ArrayList<>();
+		updates.add(new SceneUpdate("layers.buildings.draw.buildings-style.extrude", toggleOn ? "true" : "false"));
+		updates.add(new SceneUpdate("layers.buildings.draw.buildings-outline-style.extrude", toggleOn ? "true" : "false"));
+		controller.updateSceneAsync(updates);
+	}
+
 	private void onSceneUpdate() {
 		locationMarker = null;
 		directionMarker = null;
