@@ -682,5 +682,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_split_way_many_splits_confirmation_description">These are quite a few splits. You can always further split up the way later.</string>
     <string name="confirmation_authorize_now_note">You can do this later on the settings screen.</string>
     <string name="quest_generalFee_title">Does it cost a fee to enter %s?</string>
+    <string name="quest_laundrySelfService_title">Is this a self-service laundry?</string>
+    <string name="quest_laundrySelfService_name_title">Is %s a self-service?</string>
 
 </resources>
