@@ -159,6 +159,47 @@ public class SphericalEarthMathTest
 		assertEquals(distance(start, intersect), alongTrackDistance(start, end, point), 0.01);
 	}
 
+	@Test public void distanceToSinglePosition()
+	{
+		LatLon point = new OsmLatLon(0.01, 0.0);
+		LatLon intersect = new OsmLatLon(0.0, 0.0);
+		assertEquals(
+			distance(intersect, point),
+			crossTrackDistance(Collections.singletonList(intersect), point),
+			0.01
+		);
+	}
+
+	@Test public void distanceToSingleArc()
+	{
+		LatLon start = new OsmLatLon(0.0, -0.01);
+		LatLon end = new OsmLatLon(0.0, +0.01);
+		LatLon point = new OsmLatLon(0.01, 0.0);
+		assertEquals(
+			crossTrackDistance(start, end, point),
+			crossTrackDistance(Arrays.asList(start, end), point),
+			0.01
+		);
+	}
+
+	@Test public void distanceToMultipleArcs()
+	{
+		LatLon p0 = new OsmLatLon(0.0, -0.01);
+		LatLon p1 = new OsmLatLon(0.0, +0.01);
+		LatLon p2 = new OsmLatLon(0.0, +0.02);
+		LatLon point = new OsmLatLon(0.01, 0.0);
+		assertEquals(
+			crossTrackDistance(p0, p1, point),
+			crossTrackDistance(Arrays.asList(p0, p1, p2), point),
+			0.01
+		);
+		assertEquals(
+			crossTrackDistance(p0, p1, point),
+			crossTrackDistance(Arrays.asList(p2, p1, p0), point),
+			0.01
+		);
+	}
+
 	/* +++++++++++++++++++++++++++++ test creation of bounding boxes ++++++++++++++++++++++++++++ */
 
 	@Test public void enclosingBoundingBoxRadius()
