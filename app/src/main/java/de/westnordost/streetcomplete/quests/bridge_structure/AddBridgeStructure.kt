@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
 
 class AddBridgeStructure(o: OverpassMapDataDao) : SimpleOverpassQuestType<String>(o) {
 
-    override val tagFilters = "ways with man_made=bridge and !bridge:structure"
+    override val tagFilters = "ways with man_made=bridge and !bridge:structure and !bridge:movable"
     override val icon = R.drawable.ic_quest_bridge
     override val commitMessage = "Add bridge structures"
 
