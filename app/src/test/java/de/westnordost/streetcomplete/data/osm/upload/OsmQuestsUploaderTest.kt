@@ -4,24 +4,28 @@ import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.osmapi.map.data.OsmNode
 import de.westnordost.streetcomplete.any
+import de.westnordost.streetcomplete.data.QuestStatus
 import de.westnordost.streetcomplete.data.osm.*
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.download.ElementGeometryCreator
 import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao
 import de.westnordost.streetcomplete.data.osm.persist.MergedElementDao
-import de.westnordost.streetcomplete.data.osm.persist.UndoOsmQuestDao
+import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao
 import de.westnordost.streetcomplete.data.statistics.QuestStatisticsDao
+import de.westnordost.streetcomplete.data.tiles.DownloadedTilesDao
 import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.on
+import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 import org.mockito.ArgumentMatchers.anyLong
 import org.mockito.Mockito.*
+import java.util.*
 import java.util.concurrent.atomic.AtomicBoolean
 
-class UndoOsmQuestsUploadTest {
-    private lateinit var undoQuestDB: UndoOsmQuestDao
+class OsmQuestsUploaderTest {
+    private lateinit var questDB: OsmQuestDao
     private lateinit var elementDB: MergedElementDao
     private lateinit var changesetManager: OpenQuestChangesetsManager
     private lateinit var elementGeometryDB: ElementGeometryDao
@@ -29,10 +33,11 @@ class UndoOsmQuestsUploadTest {
     private lateinit var statisticsDB: QuestStatisticsDao
     private lateinit var elementGeometryCreator: ElementGeometryCreator
     private lateinit var singleChangeUpload: SingleOsmElementTagChangesUpload
-    private lateinit var uploader: UndoOsmQuestsUpload
+    private lateinit var downloadedTilesDao: DownloadedTilesDao
+    private lateinit var uploader: OsmQuestsUploader
 
     @Before fun setUp() {
-        undoQuestDB = mock()
+        questDB = mock()
         elementDB = mock()
         on(elementDB.get(any(), anyLong())).thenReturn(createElement())
         changesetManager = mock()
@@ -43,18 +48,18 @@ class UndoOsmQuestsUploadTest {
         statisticsDB = mock()
         elementGeometryCreator = mock()
         on(elementGeometryCreator.create(any<Element>())).thenReturn(mock())
-        uploader = UndoOsmQuestsUpload(elementDB, elementGeometryDB, changesetManager, questGiver,
-            statisticsDB, elementGeometryCreator, undoQuestDB, singleChangeUpload)
+        downloadedTilesDao = mock()
+        uploader = OsmQuestsUploader(elementDB, elementGeometryDB, changesetManager, questGiver,
+            statisticsDB, elementGeometryCreator, questDB, singleChangeUpload, downloadedTilesDao)
     }
 
     @Test fun `cancel upload works`() {
-        val cancelled = AtomicBoolean(true)
-        uploader.upload(cancelled)
-        verifyZeroInteractions(changesetManager, singleChangeUpload, elementDB, undoQuestDB)
+        uploader.upload(AtomicBoolean(true))
+        verifyZeroInteractions(changesetManager, singleChangeUpload, elementDB, questDB)
     }
 
     @Test fun `catches ElementConflict exception`() {
-        on(undoQuestDB.getAll()).thenReturn(listOf(createUndoQuest()))
+        on(questDB.getAll(statusIn = listOf(QuestStatus.ANSWERED))).thenReturn(listOf(createQuest()))
         on(singleChangeUpload.upload(anyLong(), any(), any()))
             .thenThrow(ElementConflictException())
 
@@ -64,7 +69,7 @@ class UndoOsmQuestsUploadTest {
     }
 
     @Test fun `discard if element was deleted`() {
-        on(undoQuestDB.getAll()).thenReturn(listOf(createUndoQuest()))
+        on(questDB.getAll(statusIn = listOf(QuestStatus.ANSWERED))).thenReturn(listOf(createQuest()))
         on(elementDB.get(any(), anyLong())).thenReturn(null)
 
         uploader.uploadedChangeListener = mock()
@@ -74,7 +79,7 @@ class UndoOsmQuestsUploadTest {
     }
 
     @Test fun `catches ChangesetConflictException exception and tries again once`() {
-        on(undoQuestDB.getAll()).thenReturn(listOf(createUndoQuest()))
+        on(questDB.getAll(statusIn = listOf(QuestStatus.ANSWERED))).thenReturn(listOf(createQuest()))
         on(singleChangeUpload.upload(anyLong(), any(), any()))
             .thenThrow(ChangesetConflictException())
             .thenReturn(createElement())
@@ -87,29 +92,46 @@ class UndoOsmQuestsUploadTest {
         verify(singleChangeUpload, times(2)).upload(anyLong(), any(), any())
     }
 
-    @Test fun `delete each uploaded quest from local DB and calls listener`() {
-        on(undoQuestDB.getAll()).thenReturn(listOf(createUndoQuest(), createUndoQuest()))
-        on(singleChangeUpload.upload(anyLong(), any(), any()))
-            .thenThrow(ElementConflictException())
-            .thenReturn(createElement())
+    @Test fun `close each uploaded quest in local DB and call listener`() {
+        val quests = listOf( createQuest(), createQuest())
+
+        on(questDB.getAll(statusIn = listOf(QuestStatus.ANSWERED))).thenReturn(quests)
+        on(singleChangeUpload.upload(anyLong(), any(), any())).thenReturn(createElement())
 
         uploader.uploadedChangeListener = mock()
         uploader.upload(AtomicBoolean(false))
 
-        verify(undoQuestDB, times(2)).delete(anyLong())
-        verify(uploader.uploadedChangeListener)?.onUploaded()
-        verify(uploader.uploadedChangeListener)?.onDiscarded()
+        for (quest in quests) {
+            assertEquals(QuestStatus.CLOSED, quest.status)
+        }
+        verify(questDB, times(2)).update(any())
+        verify(uploader.uploadedChangeListener, times(2))?.onUploaded()
+        verify(elementDB, times(2)).put(any())
+        verify(elementGeometryDB, times(2)).put(any())
+        verify(questGiver, times(2)).updateQuests(any())
+        verifyZeroInteractions(downloadedTilesDao)
+    }
 
-        verify(elementDB, times(1)).put(any())
-        verify(elementGeometryDB, times(1)).put(any())
-        verify(questGiver, times(1)).updateQuests(any())
-        verifyNoMoreInteractions(questGiver)
+    @Test fun `delete each unsuccessful upload from local DB and call listener`() {
+        val quests = listOf( createQuest(), createQuest())
+
+        on(questDB.getAll(statusIn = listOf(QuestStatus.ANSWERED))).thenReturn(quests)
+        on(singleChangeUpload.upload(anyLong(), any(), any()))
+            .thenThrow(ElementConflictException())
+
+        uploader.uploadedChangeListener = mock()
+        uploader.upload(AtomicBoolean(false))
+
+        verify(questDB, times(2)).delete(anyLong())
+        verify(uploader.uploadedChangeListener, times(2))?.onDiscarded()
+        verify(downloadedTilesDao, times(2)).remove(any())
+        verifyZeroInteractions(questGiver, elementGeometryCreator)
     }
 
     @Test fun `delete unreferenced elements and clean metadata at the end`() {
-        val quest = createUndoQuest()
+        val quest = createQuest()
 
-        on(undoQuestDB.getAll()).thenReturn(listOf(quest))
+        on(questDB.getAll(statusIn = listOf(QuestStatus.ANSWERED))).thenReturn(listOf(quest))
         on(singleChangeUpload.upload(anyLong(), any(), any())).thenReturn(createElement())
 
         uploader.upload(AtomicBoolean(false))
@@ -120,10 +142,11 @@ class UndoOsmQuestsUploadTest {
     }
 }
 
-private fun createUndoQuest() : UndoOsmQuest {
+private fun createQuest() : OsmQuest {
     val changes = StringMapChanges(listOf(StringMapEntryAdd("surface","asphalt")))
     val geometry = ElementPointGeometry(OsmLatLon(0.0,0.0))
-    return UndoOsmQuest(1, mock(), Element.Type.NODE, 1, changes, "survey", geometry)
+    return OsmQuest(1L, mock(), Element.Type.NODE, 1L, QuestStatus.ANSWERED, changes, "survey",
+        Date(), geometry)
 }
 
 private fun createElement() = OsmNode(1,1,OsmLatLon(0.0,0.0),null)

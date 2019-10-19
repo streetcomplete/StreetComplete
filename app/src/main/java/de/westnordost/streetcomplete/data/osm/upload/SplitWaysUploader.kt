@@ -14,7 +14,7 @@ import java.util.concurrent.atomic.AtomicBoolean
 import javax.inject.Inject
 
 /** Gets all split ways from local DB and uploads them via the OSM API */
-class SplitWaysUpload @Inject constructor(
+class SplitWaysUploader @Inject constructor(
     elementDB: MergedElementDao,
     elementGeometryDB: ElementGeometryDao,
     changesetManager: OpenQuestChangesetsManager,
@@ -23,7 +23,7 @@ class SplitWaysUpload @Inject constructor(
     elementGeometryCreator: ElementGeometryCreator,
     private val splitWayDB: OsmQuestSplitWayDao,
     private val splitSingleOsmWayUpload: SplitSingleWayUpload
-) : OsmInChangesetsUpload<OsmQuestSplitWay>(elementDB, elementGeometryDB, changesetManager,
+) : OsmInChangesetsUploader<OsmQuestSplitWay>(elementDB, elementGeometryDB, changesetManager,
     questGiver, statisticsDB, elementGeometryCreator) {
 
     private val TAG = "SplitOsmWayUpload"

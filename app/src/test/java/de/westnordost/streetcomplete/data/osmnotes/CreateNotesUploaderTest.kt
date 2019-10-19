@@ -20,7 +20,7 @@ import java.util.*
 import java.util.concurrent.atomic.AtomicBoolean
 
 
-class CreateNotesUploadTest {
+class CreateNotesUploaderTest {
     private lateinit var createNoteDB: CreateNoteDao
     private lateinit var noteDB: NoteDao
     private lateinit var noteQuestDB: OsmNoteQuestDao
@@ -29,7 +29,7 @@ class CreateNotesUploadTest {
 	private lateinit var statisticsDB: QuestStatisticsDao
 	private lateinit var singleCreateNoteUpload: SingleCreateNoteUpload
 
-    private lateinit var uploader: CreateNotesUpload
+    private lateinit var uploader: CreateNotesUploader
 
     @Before fun setUp() {
         mapDataDao = mock()
@@ -40,7 +40,7 @@ class CreateNotesUploadTest {
 	    statisticsDB = mock()
 	    singleCreateNoteUpload = mock()
 
-        uploader = CreateNotesUpload(createNoteDB, noteDB, noteQuestDB, mapDataDao, questType,
+        uploader = CreateNotesUploader(createNoteDB, noteDB, noteQuestDB, mapDataDao, questType,
 	        statisticsDB, singleCreateNoteUpload)
     }
 

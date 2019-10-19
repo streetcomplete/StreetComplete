@@ -12,10 +12,11 @@ import de.westnordost.streetcomplete.data.osm.upload.ConflictException
 import de.westnordost.streetcomplete.data.osm.upload.ElementDeletedException
 import de.westnordost.streetcomplete.data.statistics.QuestStatisticsDao
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
+import de.westnordost.streetcomplete.data.upload.Uploader
 import java.util.concurrent.atomic.AtomicBoolean
 
 /** Gets all create notes from local DB and uploads them via the OSM API */
-class CreateNotesUpload @Inject constructor(
+class CreateNotesUploader @Inject constructor(
     private val createNoteDB: CreateNoteDao,
     private val noteDB: NoteDao,
     private val noteQuestDB: OsmNoteQuestDao,
@@ -23,12 +24,12 @@ class CreateNotesUpload @Inject constructor(
     private val questType: OsmNoteQuestType,
     private val statisticsDB: QuestStatisticsDao,
     private val singleCreateNoteUpload: SingleCreateNoteUpload
-) {
+): Uploader {
     private val TAG = "CreateNotesUpload"
 
-    var uploadedChangeListener: OnUploadedChangeListener? = null
+    override var uploadedChangeListener: OnUploadedChangeListener? = null
 
-    @Synchronized fun upload(cancelled: AtomicBoolean) {
+    @Synchronized override fun upload(cancelled: AtomicBoolean) {
         var created = 0
         var obsolete = 0
         if (cancelled.get()) return

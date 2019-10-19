@@ -17,19 +17,19 @@ import org.junit.Assert.assertEquals
 import java.util.concurrent.atomic.AtomicBoolean
 
 
-class OsmNoteQuestsChangesUploadTest {
+class OsmNoteQuestsChangesUploaderTest {
     private lateinit var noteDB: NoteDao
     private lateinit var questDB: OsmNoteQuestDao
     private lateinit var questStatisticsDb: QuestStatisticsDao
     private lateinit var singleNoteUploader: SingleOsmNoteQuestChangesUpload
-    private lateinit var uploader: OsmNoteQuestsChangesUpload
+    private lateinit var uploader: OsmNoteQuestsChangesUploader
 
     @Before fun setUp() {
         noteDB = mock()
         questDB = mock()
         questStatisticsDb = mock()
         singleNoteUploader = mock()
-        uploader = OsmNoteQuestsChangesUpload(questDB, questStatisticsDb, noteDB, singleNoteUploader)
+        uploader = OsmNoteQuestsChangesUploader(questDB, questStatisticsDb, noteDB, singleNoteUploader)
     }
 
     @Test fun `cancel upload works`() {

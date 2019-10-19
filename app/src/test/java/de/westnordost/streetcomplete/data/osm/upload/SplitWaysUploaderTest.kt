@@ -18,7 +18,7 @@ import org.mockito.ArgumentMatchers
 import org.mockito.Mockito.*
 import java.util.concurrent.atomic.AtomicBoolean
 
-class SplitWaysUploadTest {
+class SplitWaysUploaderTest {
     private lateinit var splitWayDB: OsmQuestSplitWayDao
     private lateinit var elementDB: MergedElementDao
     private lateinit var changesetManager: OpenQuestChangesetsManager
@@ -27,7 +27,7 @@ class SplitWaysUploadTest {
     private lateinit var statisticsDB: QuestStatisticsDao
     private lateinit var elementGeometryCreator: ElementGeometryCreator
     private lateinit var splitSingleOsmWayUpload: SplitSingleWayUpload
-    private lateinit var uploader: SplitWaysUpload
+    private lateinit var uploader: SplitWaysUploader
 
     @Before fun setUp() {
         splitWayDB = mock()
@@ -41,7 +41,7 @@ class SplitWaysUploadTest {
         statisticsDB = mock()
         elementGeometryCreator = mock()
         on(elementGeometryCreator.create(any<Element>())).thenReturn(mock())
-        uploader = SplitWaysUpload(elementDB, elementGeometryDB, changesetManager, questGiver,
+        uploader = SplitWaysUploader(elementDB, elementGeometryDB, changesetManager, questGiver,
             statisticsDB, elementGeometryCreator, splitWayDB, splitSingleOsmWayUpload)
     }
 

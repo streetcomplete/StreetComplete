@@ -21,7 +21,7 @@ import java.util.*
 import java.util.concurrent.atomic.AtomicBoolean
 
 /** Gets all answered osm quests from local DB and uploads them via the OSM API */
-class OsmQuestsUpload @Inject constructor(
+class OsmQuestsUploader @Inject constructor(
     elementDB: MergedElementDao,
     elementGeometryDB: ElementGeometryDao,
     changesetManager: OpenQuestChangesetsManager,
@@ -31,7 +31,7 @@ class OsmQuestsUpload @Inject constructor(
     private val questDB: OsmQuestDao,
     private val singleChangeUpload: SingleOsmElementTagChangesUpload,
     private val downloadedTilesDao: DownloadedTilesDao
-) : OsmInChangesetsUpload<OsmQuest>(elementDB, elementGeometryDB, changesetManager, questGiver,
+) : OsmInChangesetsUploader<OsmQuest>(elementDB, elementGeometryDB, changesetManager, questGiver,
     statisticsDB, elementGeometryCreator) {
 
     private val TAG = "OsmQuestUpload"

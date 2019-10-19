@@ -6,34 +6,21 @@ import android.os.Binder
 import android.os.IBinder
 import android.util.Log
 
-import java.io.IOException
-import java.net.HttpURLConnection
-import java.net.URL
 import java.util.concurrent.atomic.AtomicBoolean
 
 import javax.inject.Inject
 
 import de.westnordost.osmapi.common.errors.OsmAuthorizationException
-import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.data.VisibleQuestListener
 import de.westnordost.streetcomplete.data.VisibleQuestRelay
-import de.westnordost.streetcomplete.data.osm.upload.OsmQuestsUpload
-import de.westnordost.streetcomplete.data.osm.upload.SplitWaysUpload
-import de.westnordost.streetcomplete.data.osm.upload.UndoOsmQuestsUpload
-import de.westnordost.streetcomplete.data.osmnotes.CreateNotesUpload
-import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestsChangesUpload
 import de.westnordost.streetcomplete.oauth.OAuthPrefs
 
 /** Collects and uploads all changes the user has done: notes he left, comments he left on existing
  * notes and quests he answered  */
 class QuestChangesUploadService : IntentService(TAG) {
-
-    @Inject internal lateinit var noteQuestUpload: OsmNoteQuestsChangesUpload
-    @Inject internal lateinit var questUpload: OsmQuestsUpload
-    @Inject internal lateinit var undoQuestUpload: UndoOsmQuestsUpload
-    @Inject internal lateinit var createNoteUpload: CreateNotesUpload
-    @Inject internal lateinit var splitWaysUpload: SplitWaysUpload
+    @Inject internal lateinit var uploaders: List<Uploader>
+    @Inject internal lateinit var versionIsBannedCheck: VersionIsBannedChecker
     @Inject internal lateinit var oAuth: OAuthPrefs
 
 	/** Public interface to classes that are bound to this service  */
@@ -63,6 +50,8 @@ class QuestChangesUploadService : IntentService(TAG) {
 
 	private val cancelState = AtomicBoolean(false)
 
+    private val bannedInfo: BannedInfo by lazy { versionIsBannedCheck.get() }
+
     init {
         Injector.instance.applicationComponent.inject(this)
     }
@@ -87,8 +76,9 @@ class QuestChangesUploadService : IntentService(TAG) {
         progressListener?.onStarted()
 
         try {
-            if (isBanned) {
-                throw VersionBannedException(banReason)
+            val banned = bannedInfo
+            if (banned is IsBanned) {
+                throw VersionBannedException(banned.reason)
             }
 
             // let's fail early in case of no authorization
@@ -98,31 +88,13 @@ class QuestChangesUploadService : IntentService(TAG) {
 
             Log.i(TAG, "Starting upload")
 
-            noteQuestUpload.uploadedChangeListener = uploadedChangeRelay
-            noteQuestUpload.upload(cancelState)
+            for (uploader in uploaders) {
+                if (cancelState.get()) return
+                uploader.uploadedChangeListener = uploadedChangeRelay
+                uploader.visibleQuestListener = visibleQuestRelay
+                uploader.upload(cancelState)
+            }
 
-            if (cancelState.get()) return
-
-            undoQuestUpload.uploadedChangeListener = uploadedChangeRelay
-            undoQuestUpload.visibleQuestListener = visibleQuestRelay
-            undoQuestUpload.upload(cancelState)
-
-            if (cancelState.get()) return
-
-            questUpload.uploadedChangeListener = uploadedChangeRelay
-            questUpload.visibleQuestListener = visibleQuestRelay
-            questUpload.upload(cancelState)
-
-            if (cancelState.get()) return
-
-            splitWaysUpload.uploadedChangeListener = uploadedChangeRelay
-            splitWaysUpload.visibleQuestListener = visibleQuestRelay
-            splitWaysUpload.upload(cancelState)
-
-            if (cancelState.get()) return
-
-            createNoteUpload.uploadedChangeListener = uploadedChangeRelay
-            createNoteUpload.upload(cancelState)
         } catch (e: Exception) {
             Log.e(TAG, "Unable to upload", e)
             progressListener?.onError(e)
@@ -134,33 +106,6 @@ class QuestChangesUploadService : IntentService(TAG) {
     }
 
     companion object {
-        private val TAG = "Upload"
-
-        private var banReason: String? = null
-        private val isBanned: Boolean by lazy { checkBanned() }
-
-        private fun checkBanned(): Boolean {
-	        var connection: HttpURLConnection? = null
-            try {
-                val url = URL("https://www.westnordost.de/streetcomplete/banned_versions.txt")
-	            connection = (url.openConnection() as HttpURLConnection)
-	            connection.inputStream.bufferedReader().use { reader ->
-		            for (line in reader.lineSequence()) {
-			            val text = line.split("\t".toRegex())
-			            val userAgent = text[0]
-			            if (userAgent == ApplicationConstants.USER_AGENT) {
-				            banReason = if (text.size > 1) text[1] else null
-				            return true
-			            }
-		            }
-	            }
-            } catch (e: IOException) {
-                // if there is an io exception, never mind then...! (The unreachability of the above
-                // internet address should not lead to this app being unusable!)
-            } finally {
-                connection?.disconnect()
-            }
-            return false
-        }
+        private const val TAG = "Upload"
     }
 }

@@ -14,22 +14,23 @@ import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryEntry
 import de.westnordost.streetcomplete.data.osm.persist.MergedElementDao
 import de.westnordost.streetcomplete.data.statistics.QuestStatisticsDao
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
+import de.westnordost.streetcomplete.data.upload.Uploader
 
 import java.util.concurrent.atomic.AtomicBoolean
 
-abstract class OsmInChangesetsUpload<T : UploadableInChangeset>(
+abstract class OsmInChangesetsUploader<T : UploadableInChangeset>(
     private val elementDB: MergedElementDao,
     private val elementGeometryDB: ElementGeometryDao,
     private val changesetManager: OpenQuestChangesetsManager,
     private val questGiver: OsmQuestGiver,
     private val statisticsDB: QuestStatisticsDao,
     private val elementGeometryCreator: ElementGeometryCreator
-    ) {
+    ): Uploader {
 
-    var visibleQuestListener: VisibleQuestListener? = null
-    var uploadedChangeListener: OnUploadedChangeListener? = null
+    override var visibleQuestListener: VisibleQuestListener? = null
+    override var uploadedChangeListener: OnUploadedChangeListener? = null
 
-    @Synchronized @CallSuper open fun upload(cancelled: AtomicBoolean) {
+    @Synchronized @CallSuper override fun upload(cancelled: AtomicBoolean) {
         if (cancelled.get()) return
 
         val uploadedQuestTypes = mutableSetOf<OsmElementQuestType<*>>()

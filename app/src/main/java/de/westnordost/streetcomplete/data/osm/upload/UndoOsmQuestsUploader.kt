@@ -15,7 +15,7 @@ import java.util.*
 import java.util.concurrent.atomic.AtomicBoolean
 
 /** Gets all undo osm quests from local DB and uploads them via the OSM API */
-class UndoOsmQuestsUpload @Inject constructor(
+class UndoOsmQuestsUploader @Inject constructor(
     elementDB: MergedElementDao,
     elementGeometryDB: ElementGeometryDao,
     changesetManager: OpenQuestChangesetsManager,
@@ -24,7 +24,7 @@ class UndoOsmQuestsUpload @Inject constructor(
     elementGeometryCreator: ElementGeometryCreator,
     private val undoQuestDB: UndoOsmQuestDao,
     private val singleChangeUpload: SingleOsmElementTagChangesUpload
-) : OsmInChangesetsUpload<UndoOsmQuest>(elementDB, elementGeometryDB, changesetManager, questGiver,
+) : OsmInChangesetsUploader<UndoOsmQuest>(elementDB, elementGeometryDB, changesetManager, questGiver,
     statisticsDB, elementGeometryCreator) {
 
     private val TAG = "UndoOsmQuestUpload"
