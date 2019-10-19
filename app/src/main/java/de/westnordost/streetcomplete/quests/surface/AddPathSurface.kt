@@ -9,7 +9,7 @@ class AddPathSurface(o: OverpassMapDataDao) : SimpleOverpassQuestType<String>(o)
 
     override val tagFilters = """
         ways with highway ~ path|footway|cycleway|bridleway|steps
-        and !surface and access !~ private|no
+        and !surface and !conveying and access !~ private|no
     """
     override val commitMessage = "Add path surfaces"
     override val icon = R.drawable.ic_quest_way_surface
