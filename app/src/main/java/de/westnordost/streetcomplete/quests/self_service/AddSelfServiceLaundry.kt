@@ -12,14 +12,7 @@ class AddSelfServiceLaundry(o: OverpassMapDataDao) : SimpleOverpassQuestType<Boo
     override val commitMessage = "Add self service info"
     override val icon = R.drawable.ic_quest_laundry
 
-    override fun getTitle(tags: Map<String, String>): Int {
-        val hasName = tags.containsKey("name")
-        return if (hasName) {
-            R.string.quest_laundrySelfService_name_title
-        } else {
-            R.string.quest_laundrySelfService_title
-        }
-    }
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_laundrySelfService_title
 
     override fun createForm() = YesNoQuestAnswerFragment()
 
