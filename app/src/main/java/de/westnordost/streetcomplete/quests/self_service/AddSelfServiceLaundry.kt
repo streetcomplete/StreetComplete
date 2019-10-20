@@ -10,7 +10,7 @@ class AddSelfServiceLaundry(o: OverpassMapDataDao) : SimpleOverpassQuestType<Boo
 
     override val tagFilters = "nodes, ways with shop=laundry and !self_service"
     override val commitMessage = "Add self service info"
-    override val icon = R.drawable.ic_quest_power // no suitable at this moment
+    override val icon = R.drawable.ic_quest_laundry
 
     override fun getTitle(tags: Map<String, String>): Int {
         val hasName = tags.containsKey("name")
