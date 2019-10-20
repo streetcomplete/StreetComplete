@@ -15,6 +15,7 @@ import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.graphics.Rect;
+import android.location.Location;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -42,7 +43,6 @@ import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.OvershootInterpolator;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -51,6 +51,7 @@ import android.widget.Toast;
 
 import com.mapzen.tangram.LngLat;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.Locale;
@@ -150,6 +151,7 @@ public class MainActivity extends AppCompatActivity implements
 	private MenuItem btnUndo;
 
 	private float mapRotation, mapTilt;
+	private Location locationWhenOpenedQuest;
 	private boolean isFollowingPosition;
 	private boolean isCompassMode;
 
@@ -776,7 +778,8 @@ public class MainActivity extends AppCompatActivity implements
 
 	@Override public void onAnsweredQuest(long questId, @NonNull QuestGroup group, @NonNull Object answer)
 	{
-		questSource.findSource(questId, group, mapFragment.getDisplayedLocation(), source ->
+		Location currentLocation = mapFragment.getDisplayedLocation();
+		questSource.findSource(questId, group, Arrays.asList(currentLocation, locationWhenOpenedQuest), source ->
 		{
 			closeQuestDetailsFor(questId, group);
 			Quest quest = questController.get(questId, group);
@@ -853,7 +856,8 @@ public class MainActivity extends AppCompatActivity implements
 
 	@Override public void onSplittedWay(long osmQuestId, @NonNull List<? extends SplitPolylineAtPosition> splits)
 	{
-		questSource.findSource(osmQuestId, QuestGroup.OSM, mapFragment.getDisplayedLocation(), source ->
+		Location currentLocation = mapFragment.getDisplayedLocation();
+		questSource.findSource(osmQuestId, QuestGroup.OSM, Arrays.asList(currentLocation, locationWhenOpenedQuest), source ->
 		{
 			Quest quest = questController.get(osmQuestId, QuestGroup.OSM);
 			closeQuestDetailsFor(osmQuestId, QuestGroup.OSM);
@@ -1070,6 +1074,7 @@ public class MainActivity extends AppCompatActivity implements
 		f.setArguments(args);
 
 		freezeMap();
+		locationWhenOpenedQuest = mapFragment.getDisplayedLocation();
 		showInBottomSheet(f);
 	}
 
