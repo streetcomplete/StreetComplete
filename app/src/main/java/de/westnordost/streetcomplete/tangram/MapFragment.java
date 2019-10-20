@@ -625,7 +625,9 @@ public class MapFragment extends Fragment implements
 		compass.onDestroy();
 		if(mapView != null) mapView.onDestroy();
 		controller = null;
-		onSceneUpdate();
+		locationMarker = null;
+		directionMarker = null;
+		accuracyMarker = null;
 	}
 
 	@Override public void onLowMemory()
@@ -709,19 +711,23 @@ public class MapFragment extends Fragment implements
 		if(mapControls != null) mapControls.hideControls();
 	}
 
-	public void toggle3DBuildings(boolean toggleOn)
+	public void setShow3DBuildings(boolean toggleOn)
 	{
-		onSceneUpdate();
-		
 		List<SceneUpdate> updates = new ArrayList<>();
 		updates.add(new SceneUpdate("layers.buildings.draw.buildings-style.extrude", toggleOn ? "true" : "false"));
 		updates.add(new SceneUpdate("layers.buildings.draw.buildings-outline-style.extrude", toggleOn ? "true" : "false"));
-		controller.updateSceneAsync(updates);
+		updateSceneAsync(updates);
 	}
 
-	private void onSceneUpdate() {
+	/**
+	 * Call this method instead of MapController.updateSceneAsync() when doing Scene update.
+	 * Just to prevent app crash with invalidated markers.
+	 */
+	protected int updateSceneAsync(List<SceneUpdate> sceneUpdates)
+	{
 		locationMarker = null;
 		directionMarker = null;
 		accuracyMarker = null;
+		return controller.updateSceneAsync(sceneUpdates);
 	}
 }
