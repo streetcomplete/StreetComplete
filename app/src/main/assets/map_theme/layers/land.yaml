@@ -110,9 +110,6 @@ styles:
     buildings-style:
         base: polygons
         blend: opaque
-        shaders:
-            blocks:
-                position:
     buildings-outline-style:
         base: lines
         blend: inlay

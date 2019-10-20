@@ -714,9 +714,7 @@ public class MapFragment extends Fragment implements
 		onSceneUpdate();
 		
 		List<SceneUpdate> updates = new ArrayList<>();
-		updates.add(new SceneUpdate("scene.animated", toggleOn ? "false" : "true"));
-		updates.add(new SceneUpdate("styles.buildings-style.shaders.blocks.position",
-			toggleOn ? "" : "position.z = position.z / exp((u_time - 0.7) * step(0.7, u_time));"));
+		updates.add(new SceneUpdate("layers.buildings.draw.buildings-style.extrude", toggleOn ? "true" : "false"));
 		updates.add(new SceneUpdate("layers.buildings.draw.buildings-outline-style.extrude", toggleOn ? "true" : "false"));
 		controller.updateSceneAsync(updates);
 	}
