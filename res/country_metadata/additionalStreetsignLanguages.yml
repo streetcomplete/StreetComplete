@@ -1,3 +1,4 @@
+# use app/generateCountryMetadata.py to generate files used by StreetComplete
 # A mapping of additional languages that one can expect to find on a street sign that are not official languages
 # Sources:
 # https://wiki.openstreetmap.org/wiki/Multilingual_names
@@ -12,7 +13,7 @@ CN-BJ: [en]
 EG: [en]
 EE: [ru]
 # can be removed if osmBoundaries is extended to differenciate between Catalunia, Valencia, Basque,...
-ES: [ca, eu, gl]
+ES: [ca, eu, gl, ast]
 # unclear where exactly in France this is also spoken. When it is clear -> osmBoundaries could be extended
 FR: [oc, ca, br]
 # can be removed if osmBoundaries is extended to differenciate between Scotland, Wales,...
@@ -24,6 +25,8 @@ IL: [en]
 IN: [en]
 IN-PY: [fr]
 IR: [en]
+# in South Tyrol only
+IT: [de]
 JP: [en]
 JO: [en]
 KH: [en]

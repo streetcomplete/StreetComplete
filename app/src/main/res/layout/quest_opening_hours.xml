@@ -4,14 +4,14 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/opening_hours_list"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/openingHoursList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-    </android.support.v7.widget.RecyclerView>
+    </androidx.recyclerview.widget.RecyclerView>
 
     <Button
-        android:id="@+id/btn_add"
+        android:id="@+id/addTimesButton"
         android:text="@string/quest_openingHours_add_times"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>

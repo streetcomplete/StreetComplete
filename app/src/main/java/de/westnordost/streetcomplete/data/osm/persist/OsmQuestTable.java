@@ -9,10 +9,6 @@ public class OsmQuestTable
 	public static final String NAME = "osm_quests";
 	public static final String NAME_MERGED_VIEW = "osm_quests_full";
 
-	public static final String NAME_UNDO = "osm_quests_undo";
-	public static final String NAME_UNDO_MERGED_VIEW = "osm_quests_full_undo";
-
-
 	public static class Columns
 	{
 		public static final String

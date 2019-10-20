@@ -88,8 +88,12 @@ public class OverpassMapDataDao
 			OverpassStatus status = getStatus();
 			if(status.availableSlots == 0)
 			{
-				// rather wait 1s longer than required cause we only get the time in seconds
-				int waitInSeconds = (1 + status.nextAvailableSlotIn);
+				// apparently sometimes Overpass does not tell the client when the next slot is
+				// available when there is currently no slot available. So let's just wait 60s
+				// before trying again
+				// also, rather wait 1s longer than required cause we only get the time in seconds
+				int waitInSeconds =
+					status.nextAvailableSlotIn != null ? status.nextAvailableSlotIn + 1: 60;
 				Log.i(TAG, "Hit Overpass quota. Waiting " + waitInSeconds + "s before continuing");
 				try
 				{

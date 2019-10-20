@@ -28,8 +28,8 @@
         android:paddingEnd="14dp"
         >
 
-        <de.westnordost.streetcomplete.quests.localized_name.AutoCorrectAbbreviationsEditText
-            android:id="@+id/nameInput"
+        <de.westnordost.streetcomplete.view.AutoCorrectAbbreviationsEditText
+            android:id="@+id/autoCorrectInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -43,7 +43,7 @@
     </me.grantland.widget.AutofitLayout>
 
     <ImageView
-        android:id="@+id/nameSuggestions"
+        android:id="@+id/nameSuggestionsButton"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_arrow_drop_down_white_24dp"

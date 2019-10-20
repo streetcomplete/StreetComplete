@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_marginStart="16dp"
     android:padding="6dp"
-    android:background="@drawable/image_select_cell">
+    android:background="@drawable/image_select_cell_rounded">
 
     <ImageView
         android:id="@+id/imageView"

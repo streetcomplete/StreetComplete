@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete;
 
-import android.content.SharedPreferences;
+import androidx.appcompat.app.AppCompatDelegate;
 
 /** Constant class to have all the identifiers for shared preferences in one place */
 public class Prefs
@@ -15,7 +15,10 @@ public class Prefs
 			SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS = "display.nonQuestionNotes",
 			AUTOSYNC = "autosync",
 			KEEP_SCREEN_ON = "display.keepScreenOn",
-			UNGLUE_HINT_TIMES_SHOWN = "unglueHint.shown";
+			UNGLUE_HINT_TIMES_SHOWN = "unglueHint.shown",
+			THEME_SELECT = "theme.select",
+			OVERPASS_URL = "overpass_url";
+
 
 	// not shown anywhere directly
 	public static final String
@@ -23,12 +26,25 @@ public class Prefs
 			QUEST_INVALIDATION = "quests.invalidation",
 			LAST_SOLVED_QUEST_TIME = "changesets.lastQuestSolvedTime",
 			MAP_LATITUDE = "map.latitude",
-			MAP_LONGITUDE = "map.longitude";
+			MAP_LONGITUDE = "map.longitude",
+			LAST_PICKED_PREFIX = "imageListLastPicked.",
+			LAST_LOCATION_REQUEST_DENIED = "location.denied";
 
 	public static final String HAS_SHOWN_UNDO_FUCKUP_WARNING = "alert.undo_fuckup_warning";
 
 	public enum Autosync
 	{
 		ON, WIFI, OFF
+	}
+
+	public enum Theme
+	{
+		LIGHT(AppCompatDelegate.MODE_NIGHT_NO),
+		DARK(AppCompatDelegate.MODE_NIGHT_YES),
+		AUTO(AppCompatDelegate.MODE_NIGHT_AUTO),
+		SYSTEM(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+
+		public int appCompatNightMode;
+		Theme(int appCompatNightMode) { this.appCompatNightMode = appCompatNightMode; }
 	}
 }

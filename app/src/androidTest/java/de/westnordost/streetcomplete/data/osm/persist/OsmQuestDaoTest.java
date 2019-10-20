@@ -1,5 +1,11 @@
 package de.westnordost.streetcomplete.data.osm.persist;
 
+import org.junit.Before;
+import org.junit.Test;
+
+import static org.assertj.core.api.Assertions.*;
+import static org.junit.Assert.*;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -32,21 +38,21 @@ public class OsmQuestDaoTest extends ApplicationDbTestCase
 	private ElementGeometryDao geometryDao;
 	private OsmQuestDao dao;
 
-	@Override public void setUp() throws Exception
+	@Before public void createDaos()
 	{
-		super.setUp();
 		geometryDao = new ElementGeometryDao(dbHelper, serializer);
-		List<QuestType> list = new ArrayList<>();
-		list.add(new TestQuestType());
-		list.add(new TestQuestType2());
-		list.add(new TestQuestType3());
-		list.add(new TestQuestType4());
-		list.add(new TestQuestType5());
+		List<QuestType> list = Arrays.asList(
+			new TestQuestType(),
+			new TestQuestType2(),
+			new TestQuestType3(),
+			new TestQuestType4(),
+			new TestQuestType5()
+		);
 
 		dao = new OsmQuestDao(dbHelper, serializer, new QuestTypeRegistry(list));
 	}
 
-	public void testAddGetNoChanges()
+	@Test public void addGetNoChanges()
 	{
 		OsmQuest quest = createNewQuest(11, Element.Type.NODE);
 
@@ -58,7 +64,7 @@ public class OsmQuestDaoTest extends ApplicationDbTestCase
 		checkEqual(quest, dbQuest);
 	}
 
-	public void testAddGetWithChanges()
+	@Test public void addGetWithChanges()
 	{
 		List<StringMapEntryChange> changes = new ArrayList<>();
 		changes.add(new StringMapEntryAdd("a key", "a value"));
@@ -75,7 +81,23 @@ public class OsmQuestDaoTest extends ApplicationDbTestCase
 		checkEqual(quest, dbQuest);
 	}
 
-	public void testGetAllByBBox()
+	@Test public void getCountByMultipeQuestTypes()
+	{
+		ElementGeometry geom = new ElementGeometry(new OsmLatLon(5,5));
+
+		OsmQuest quest1 = createNewQuest(new TestQuestType(), 1, Element.Type.NODE, geom);
+		OsmQuest quest2 = createNewQuest(new TestQuestType2(), 2, Element.Type.NODE, geom);
+
+		addToDaos(quest1, quest2);
+
+		assertEquals(1, dao.getCount(null, null, Collections.singletonList(
+			TestQuestType.class.getSimpleName())));
+		assertEquals(2, dao.getCount(null, null, Arrays.asList(
+			TestQuestType.class.getSimpleName(),
+			TestQuestType2.class.getSimpleName())));
+	}
+
+	@Test public void getAllByBBox()
 	{
 		OsmQuest quest1 = createNewQuest(11, Element.Type.NODE);
 		OsmQuest quest2 = createNewQuest(12, Element.Type.NODE, new ElementGeometry(new OsmLatLon(11,11)));
@@ -86,7 +108,7 @@ public class OsmQuestDaoTest extends ApplicationDbTestCase
 		assertEquals(2,dao.getAll(null, null, null, null, null).size());
 	}
 
-	public void testGetAllByElementTypeAndId()
+	@Test public void getAllByElementTypeAndId()
 	{
 		OsmQuest quest1 = createNewQuest(11, Element.Type.NODE);
 		OsmQuest quest2 = createNewQuest(12, Element.Type.WAY);
@@ -97,7 +119,7 @@ public class OsmQuestDaoTest extends ApplicationDbTestCase
 		assertEquals(1,dao.getAll(null, null, null, Element.Type.WAY, 12L).size());
 	}
 
-	public void testGetAllByMultipleQuestTypes()
+	@Test public void getAllByMultipleQuestTypes()
 	{
 		ElementGeometry geom = new ElementGeometry(new OsmLatLon(5,5));
 
@@ -142,7 +164,7 @@ public class OsmQuestDaoTest extends ApplicationDbTestCase
 		}
 	}
 
-	public void testDeleteAllClosed()
+	@Test public void deleteAllClosed()
 	{
 		OsmQuest quest1 = createNewQuest(1, Element.Type.NODE);
 		quest1.setStatus(QuestStatus.CLOSED);
@@ -155,7 +177,21 @@ public class OsmQuestDaoTest extends ApplicationDbTestCase
 		assertEquals(2,dao.deleteAllClosed(System.currentTimeMillis() + 10000L));
 	}
 
-	public void testDeleteReverted()
+	@Test public void deleteAllUnsolved()
+	{
+		OsmQuest quest1 = createNewQuest(1, Element.Type.NODE);
+		quest1.setStatus(QuestStatus.NEW);
+		OsmQuest quest2 = createNewQuest(2, Element.Type.NODE);
+		quest2.setStatus(QuestStatus.HIDDEN);
+		OsmQuest quest3 = createNewQuest(3, Element.Type.NODE);
+		quest3.setStatus(QuestStatus.ANSWERED);
+
+		addToDaos(quest1, quest2, quest3);
+
+		assertEquals(2,dao.deleteAllUnsolved(System.currentTimeMillis() + 10000L));
+	}
+
+	@Test public void dDeleteReverted()
 	{
 		ElementGeometry geom = new ElementGeometry(new OsmLatLon(5,5));
 
@@ -173,7 +209,7 @@ public class OsmQuestDaoTest extends ApplicationDbTestCase
 		assertEquals(1,dao.deleteAllReverted(Element.Type.NODE,1));
 	}
 
-	public void testGetNextNewAt()
+	@Test public void getNextNewAt()
 	{
 		ElementGeometry geom = new ElementGeometry(new OsmLatLon(5,5));
 
@@ -192,7 +228,7 @@ public class OsmQuestDaoTest extends ApplicationDbTestCase
 		assertEquals(nextQuest.getType().getClass().getSimpleName(),"TestQuestType4");
 	}
 
-	public void testGetNoFittingNextNewAt()
+	@Test public void getNoFittingNextNewAt()
 	{
 		ElementGeometry geom = new ElementGeometry(new OsmLatLon(5,5));
 
@@ -204,7 +240,7 @@ public class OsmQuestDaoTest extends ApplicationDbTestCase
 		assertNull(dao.getNextNewAt(1,Arrays.asList("TestQuestType")));
 	}
 
-	public void testGetNoNextNewAt()
+	@Test public void getNoNextNewAt()
 	{
 		ElementGeometry geom = new ElementGeometry(new OsmLatLon(5,5));
 
@@ -214,6 +250,20 @@ public class OsmQuestDaoTest extends ApplicationDbTestCase
 		addToDaos(quest);
 
 		assertNull(dao.getNextNewAt(1,null));
+	}
+
+	@Test public void getAllIds()
+	{
+		ElementGeometry geom = new ElementGeometry(new OsmLatLon(5,5));
+
+		OsmQuest q1 = createNewQuest(new TestQuestType(), 1, Element.Type.NODE, geom);
+		OsmQuest q2 = createNewQuest(new TestQuestType2(), 1, Element.Type.NODE, geom);
+		OsmQuest q3 = createNewQuest(new TestQuestType3(), 3, Element.Type.NODE, geom);
+		OsmQuest q4 = createNewQuest(new TestQuestType4(), 1, Element.Type.WAY, geom);
+		addToDaos(q1,q2,q3,q4);
+
+		List<Long> ids = dao.getAllIds(Element.Type.NODE, 1);
+		assertThat(ids).containsExactlyInAnyOrder(q1.getId(), q2.getId());
 	}
 
 	private void checkEqual(OsmQuest quest, OsmQuest dbQuest)
@@ -226,7 +276,7 @@ public class OsmQuestDaoTest extends ApplicationDbTestCase
 		assertEquals(quest.getChanges(), dbQuest.getChanges());
 		assertEquals(quest.getChangesSource(), dbQuest.getChangesSource());
 		assertEquals(quest.getGeometry(), dbQuest.getGeometry());
-		assertEquals(quest.getMarkerLocation(), dbQuest.getMarkerLocation());
+		assertEquals(quest.getCenter(), dbQuest.getCenter());
 		// is now updated to current time on DB insert
 		// no: assertEquals(quest.getLastUpdate(), dbQuest.getLastUpdate());
 	}

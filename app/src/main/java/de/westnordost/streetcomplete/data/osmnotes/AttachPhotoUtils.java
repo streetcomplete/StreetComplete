@@ -3,7 +3,9 @@ package de.westnordost.streetcomplete.data.osmnotes;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
-import android.support.media.ExifInterface;
+
+import androidx.annotation.Nullable;
+import androidx.exifinterface.media.ExifInterface;
 
 import java.io.File;
 import java.io.IOException;
@@ -13,7 +15,7 @@ import de.westnordost.streetcomplete.util.ImageUploader;
 
 public class AttachPhotoUtils
 {
-	public static String uploadAndGetAttachedPhotosText(ImageUploader imageUploader, List<String> imagePaths)
+	public static String uploadAndGetAttachedPhotosText(ImageUploader imageUploader, @Nullable List<String> imagePaths)
 	{
 		if(imagePaths != null && !imagePaths.isEmpty())
 		{
@@ -89,7 +91,10 @@ public class AttachPhotoUtils
 		matrix.postScale(desiredScale, desiredScale);
 		Bitmap result = Bitmap.createBitmap(sampledSrcBitmap, 0, 0, sampledSrcBitmap.getWidth(), sampledSrcBitmap.getHeight(), matrix, true);
 
-		sampledSrcBitmap.recycle();
+		if(result != sampledSrcBitmap)
+		{
+			sampledSrcBitmap.recycle();
+		}
 		return result;
 	}
 
@@ -102,7 +107,7 @@ public class AttachPhotoUtils
 			orientation = exifInterface.getAttributeInt(ExifInterface.TAG_ORIENTATION,
 					ExifInterface.ORIENTATION_UNDEFINED);
 		}
-		catch (IOException e)
+		catch (IOException ignore)
 		{
 		}
 

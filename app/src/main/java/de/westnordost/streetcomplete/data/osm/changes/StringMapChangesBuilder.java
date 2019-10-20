@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.changes;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -94,8 +94,7 @@ public class StringMapChangesBuilder
 
 	public StringMapChanges create()
 	{
-		List<StringMapEntryChange> list = new ArrayList<>();
-		list.addAll(changes.values());
+		List<StringMapEntryChange> list = new ArrayList<>(changes.values());
 		return new StringMapChanges(list);
 	}
 }

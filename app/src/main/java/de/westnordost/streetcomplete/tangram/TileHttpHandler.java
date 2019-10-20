@@ -1,9 +1,18 @@
 package de.westnordost.streetcomplete.tangram;
 
+import androidx.annotation.NonNull;
+
 import com.mapzen.tangram.HttpHandler;
 
 import java.io.File;
+import java.io.IOException;
+
+import de.westnordost.streetcomplete.ApplicationConstants;
+import okhttp3.CacheControl;
 import okhttp3.Callback;
+import okhttp3.HttpUrl;
+import okhttp3.Request;
+import okhttp3.internal.Version;
 
 public class TileHttpHandler extends HttpHandler
 {
@@ -21,14 +30,24 @@ public class TileHttpHandler extends HttpHandler
 		this.apiKey = apiKey;
 	}
 
-	public boolean onRequest(String url, Callback cb) {
-		if(url != null) url += "?api_key=" + apiKey;
-		return super.onRequest(url, cb);
-	}
+	@Override public void onRequest(@NonNull String url, @NonNull Callback cb, long requestHandle)
+	{
+		HttpUrl httpUrl = HttpUrl.parse(url + "?api_key=" + apiKey);
+		if (httpUrl == null) {
+			cb.onFailure(null, new IOException("HttpUrl failed to parse url=" + url));
+		}
+		else {
+			Request.Builder builder = new Request.Builder()
+				.url(httpUrl)
+				.tag(requestHandle)
+				.header("User-Agent", ApplicationConstants.USER_AGENT + " / " + Version.userAgent());
 
-	public void onCancel(String url) {
-		if(url != null) url += "?api_key=" + apiKey;
-		super.onCancel(url);
+			CacheControl cacheControl = cachePolicy.apply(httpUrl);
+			if (cacheControl != null) {
+				builder.cacheControl(cacheControl);
+			}
+			Request request = builder.build();
+			okClient.newCall(request).enqueue(cb);
+		}
 	}
-
 }

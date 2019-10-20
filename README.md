@@ -1,30 +1,27 @@
 ![StreetComplete](http://www.westnordost.de/streetcomplete/featureGraphic.png)
 
-An Android app which finds wrong, incomplete or extendable data in the user's vicinity and provides the tools to complete these easily and directly on site without having to use another editor.
+StreetComplete is an easy to use editor of OpenStreetMap data available for Android. It can be used without any OpenStreetMap-specific knowledge. It asks simple questions, with answers directly used to edit and improve OpenStreetMap data. The app is aimed at users who do not know anything about OSM tagging schemes but still want to contribute to OpenStreetMap.
 
-The found issues are presented to the user as markers on a map (like i.e. in Osmose) that each are
-solvable by filling out a simple form to complete/correct the information on site. The user's
-answer is then processed and directly uploaded into the OSM database in meaningful changesets in the name
-of the user's OSM account.
-Since the app is meant to be used on a survey, it can be used offline and otherwise aims to be
+StreetComplete automatically looks for nearby places where a survey is needed and shows them as quest markers on its map. Each of these quests can then be solved on site by answering a simple question. For example, tapping on a marker may show the question "What is the name of this road?", with a text field to answer it.
+More examples are shown in the screenshots below.
+
+The user's answer is automatically processed and uploaded directly into the OSM database. Edits are done in meaningful changesets using the user's OSM account.
+Since the app is meant to be used on a survey, it can be used offline and is
 economic with data usage.
 
-The app is aimed at users who do not know anything about OSM tagging schemes but still want to
-contribute to the OpenStreetMap by surveying their neighbourhood (or other places as well). Because of the target group, only those quests are shown which are answerable very clearly by asking one simple question and only those quests are created which contain very few false positives.
+To make the app easy to use, quests are limited to those answerable by asking simple questions.
 
 ## Screenshots
-<img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot1.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot2.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot3.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot4.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot5.png" width="170"/>
-<img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot6.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot7.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot8.png" width="170"/> <a href="http://www.youtube.com/watch?v=l6DGcmvtya4"><img src="http://img.youtube.com/vi/l6DGcmvtya4/0.jpg" width="340"/></a>
+<img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot01.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot02.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot03.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot04.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot05.png" width="170"/>
+<img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot06.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot07.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot08.png" width="170"/> <a href="http://www.youtube.com/watch?v=l6DGcmvtya4"><img src="http://img.youtube.com/vi/l6DGcmvtya4/0.jpg" width="340"/></a>
 
 ## Download
 
-[<img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" alt="Get it on Google Play" height="80">](https://play.google.com/store/apps/details?id=de.westnordost.streetcomplete)[<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid"
-      height="80"><br/>](https://f-droid.org/packages/de.westnordost.streetcomplete/)
-You can also simply download the APK from the [Releases](https://github.com/westnordost/StreetComplete/releases) section of this GitHub page.
+[<img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" alt="Get it on Google Play" height="80">](https://play.google.com/store/apps/details?id=de.westnordost.streetcomplete)[<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" alt="Get it on F-Droid" height="80">](https://f-droid.org/packages/de.westnordost.streetcomplete/)[<img src="https://user-images.githubusercontent.com/663460/26973090-f8fdc986-4d14-11e7-995a-e7c5e79ed925.png" alt="Download APK from GitHub" height="80">](https://github.com/westnordost/StreetComplete/releases/latest)
 
 ## Quests
 
-Right now, there are very few different question types. More will be added over time.
+There are quite a few different quest types now and more will be added over time.
 You can see a community-managed [list of all quests in the OSM wiki](https://wiki.openstreetmap.org/wiki/StreetComplete/Quests).
 
 ## FAQ

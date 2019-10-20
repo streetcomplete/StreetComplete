@@ -1,1 +1,0 @@
-App för komplettering av OpenStreetMap

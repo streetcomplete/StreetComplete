@@ -1,0 +1,6 @@
+import:
+    - streetcomplete.yaml
+    - streetcomplete-dark-style.yaml
+
+global:
+  geometry_color: '#44ff6600' # accent color + alpha

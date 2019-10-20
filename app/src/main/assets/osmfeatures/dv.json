@@ -1,0 +1,235 @@
+{
+    "presets": {
+        "route/ferry": {
+            "name": "ފެރީއަށްދާ މަގުތައް"
+        },
+        "leisure/stadium": {
+            "name": "ސްޓޭޑިއަމް"
+        },
+        "type/route/ferry": {
+            "name": "ފެރީއަށްދާ މަގުތައް"
+        },
+        "leisure/park": {
+            "name": "ޕާރކުތައް"
+        },
+        "place/city": {
+            "name": "ސިިޓީ"
+        },
+        "amenity/fast_food": {
+            "name": "ފާސްޓް ފުޑް"
+        },
+        "highway/primary": {
+            "name": "މައި މަގު"
+        },
+        "building": {
+            "name": "އިމާރާތް"
+        },
+        "landuse/industrial": {
+            "name": "ސިނާޢީ ސަރަޙައްދު"
+        },
+        "place/locality": {
+            "name": "ރަށްްފުށު"
+        },
+        "natural/water/pond": {
+            "name": "ފެންގަނޑު"
+        },
+        "shop/car_repair": {
+            "name": "ކާާރު ހަދައިދޭ ގަރާޖް"
+        },
+        "highway/path": {
+            "name": "ދުވާރު"
+        },
+        "natural/water": {
+            "name": "ފެން"
+        },
+        "shop/mobile_phone": {
+            "name": "މޯބައިލް ފޯނު ވިއްކާ ފިހާރަ"
+        },
+        "waterway/dock": {
+            "name": "ބޯޓުފަހަރު ބަނދަރުކުރާ ސަރަޙައްދު"
+        },
+        "place/town": {
+            "name": "އަވަށް"
+        },
+        "highway": {
+            "name": "ހައިވޭ"
+        },
+        "landuse/commercial": {
+            "name": "ވިޔަފާރި ސަރަޙައްދު"
+        },
+        "power/line": {
+            "name": "ކަރަންޓް ވިއުގަ"
+        },
+        "amenity/library": {
+            "name": "ލައިބްރަރީ"
+        },
+        "area": {
+            "name": "އިމާރާތްތައް"
+        },
+        "landuse/landfill": {
+            "name": "ކުނި އުކާލާ ސަރަޙައްދު"
+        },
+        "building/industrial": {
+            "name": "ސިނާާޢީ ޢިމާރާތްތައް"
+        },
+        "amenity/toilets": {
+            "name": "ފާޚާނާ"
+        },
+        "building/public": {
+            "name": "ސަރުކާރު އިމާރާތްތައް"
+        },
+        "highway/service": {
+            "name": "ޚިދުމަތްދޭ މަގުތައް"
+        },
+        "highway/tertiary": {
+            "name": "ބާރުބޮޑު މަގުތައް"
+        },
+        "natural/water/lake": {
+            "name": "ކޯރު"
+        },
+        "landuse/cemetery": {
+            "name": "ސަހަރާ"
+        },
+        "amenity/bank": {
+            "name": "ބޭންކު"
+        },
+        "office/government": {
+            "name": "ސަރުކާރު އޮފީސްތައް"
+        },
+        "landuse/retail": {
+            "name": "ވިޔަފާރި ސަރަޙައްދު"
+        },
+        "office/travel_agent": {
+            "name": "ޓްރެވެލް އޭޖެންސީ"
+        },
+        "highway/residential": {
+            "name": "މީހުުން ދިރިއުޅޭ މަގުތައް"
+        },
+        "amenity/place_of_worship": {
+            "name": "އަޅުކަންކުރާ ތަންތަން"
+        },
+        "man_made/bridge": {
+            "name": "ފާލަން"
+        },
+        "aeroway/runway": {
+            "name": "އެއާރޕޯޓް ރަންވޭ"
+        },
+        "shop/supermarket": {
+            "name": "ސުޕަރމާރކެޓް"
+        },
+        "landuse/military": {
+            "name": "އަސްކަރީ ސަރަޙައްދު"
+        },
+        "leisure/pitch/cricket": {
+            "name": "ކްރިކެޓް ކުޅޭ ސަރަޙައްދު"
+        },
+        "shop/hardware": {
+            "name": "ހާރޑްވެއާރ ފިހާރަ"
+        },
+        "shop/travel_agency": {
+            "name": "ޓްރެވެލް އޭޖެންސީ"
+        },
+        "amenity/restaurant": {
+            "name": "ރެސްޓޯރަންޓް"
+        },
+        "landuse/grass": {
+            "name": "ވިނަގަނޑު"
+        },
+        "shop": {
+            "name": "ފިހާރަ"
+        },
+        "landuse/aquaculture": {
+            "name": "އެެކުއާކަލްޗަރ"
+        },
+        "amenity/cafe": {
+            "name": "ކެފޭ"
+        },
+        "building/residential": {
+            "name": "މީީހުން ދިރިއުޅޭ ޢިމާރާތްތައް"
+        },
+        "point": {
+            "name": "ލޮކޭޝަން ޕޮއިންޓް"
+        },
+        "waterway/canal": {
+            "name": "ކެނެލް"
+        },
+        "building/commercial": {
+            "name": "ވިިޔަފާރި ޢިމާރާތްތައް"
+        },
+        "tourism/hotel": {
+            "name": "ހޮޓާ"
+        },
+        "place/island": {
+            "name": "ރަށް"
+        },
+        "landuse/farmland": {
+            "name": "ދަނޑުވެރި ސަރަޙައްދުތައް"
+        },
+        "leisure/sports_centre": {
+            "name": "ކުުޅިވަރު މަރުކަޒު"
+        },
+        "place": {
+            "name": "ތަނުގެ ނަން"
+        },
+        "man_made/pier": {
+            "name": "ބަނދަރު"
+        },
+        "natural/wetland": {
+            "name": "ޗަކަ ގަނޑު"
+        },
+        "building/house": {
+            "name": "ގެެދޮރު"
+        },
+        "address": {
+            "name": "އެޑްރެސް"
+        },
+        "leisure/marina": {
+            "name": "ޔޮޓު މެރީނާ"
+        },
+        "waterway": {
+            "name": "ކަނޑުމަގު"
+        },
+        "amenity/cinema": {
+            "name": "ސިނަމާ"
+        },
+        "natural/bare_rock": {
+            "name": "ފަރުބަދަ ފަދަ ތަންތަން"
+        },
+        "amenity/school": {
+            "name": "ސްކޫލު ބިން"
+        },
+        "landuse/farm": {
+            "name": "ދަނޑުވެރި ސަރަޙައްދުތައް"
+        },
+        "amenity/bar": {
+            "name": "ބާރ"
+        },
+        "natural/wood": {
+            "name": "ޖަންގަލި"
+        },
+        "natural/coastline": {
+            "name": "އައްސޭރިފަށް"
+        },
+        "highway/track": {
+            "name": "ނުހަދާ މަގުތައް"
+        },
+        "highway/unclassified": {
+            "name": "ފާހަަގަނުކުރެވޭ ކުދި މަގުތައް"
+        },
+        "amenity/hospital": {
+            "name": "ހޮސްޕިޓަލް"
+        },
+        "area/highway": {
+            "name": "މަގު"
+        },
+        "aeroway/terminal": {
+            "name": "އެއާރޕޯޓް ގިމަތަ"
+        },
+        "landuse/residential": {
+            "name": "މީހުން ދިރިއުޅޭ ސަރަޙައްދު"
+        },
+        "natural/beach": {
+            "name": "މޫދު ސަރަޙައްދު"
+        }
+    }
+}

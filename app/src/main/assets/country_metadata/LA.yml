@@ -1,6 +1,6 @@
 # Do not edit. Source files are in /res/country_metadata
 mobileCountryCode: 457
 officialLanguages: [lo]
-orchardProduces: [coffee, banana, chilli_pepper, sweet_pepper, nutmeg, orange, pineapple, tea, grapefruit,
-  guava, mango, mangosteen, lemon, lime]
+orchardProduces: [banana, coffee, pineapple, orange, chilli_pepper, sweet_pepper, tea, grapefruit,
+  lemon, lime, guava, mango, mangosteen, nutmeg]
 popularReligions: [buddhist]

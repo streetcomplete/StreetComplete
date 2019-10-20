@@ -59,8 +59,7 @@ public class RelationDao extends AOsmElementDao<Relation>
 		insert.bindBlob(3, serializer.toBytes(new ArrayList<>(relation.getMembers())));
 		if(relation.getTags() != null)
 		{
-			HashMap<String,String> map = new HashMap<>();
-			map.putAll(relation.getTags());
+			HashMap<String, String> map = new HashMap<>(relation.getTags());
 			insert.bindBlob(4, serializer.toBytes(map));
 		}
 		else

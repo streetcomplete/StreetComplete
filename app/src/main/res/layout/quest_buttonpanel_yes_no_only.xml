@@ -2,27 +2,27 @@
 <merge xmlns:android="http://schemas.android.com/apk/res/android">
 
     <Button
-        android:id="@+id/buttonNo"
+        android:id="@+id/noButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        style="?android:attr/buttonBarButtonStyle"
+        style="@style/BottomSheetButtonBarItem"
         android:text="@string/quest_generic_hasFeature_no" />
 
     <Button
-        android:id="@+id/buttonYes"
+        android:id="@+id/yesButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        style="?android:attr/buttonBarButtonStyle"
+        style="@style/BottomSheetButtonBarItem"
         android:text="@string/quest_generic_hasFeature_yes" />
 
     <Button
-        android:id="@+id/buttonOnly"
+        android:id="@+id/onlyButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        style="?android:attr/buttonBarButtonStyle"
+        style="@style/BottomSheetButtonBarItem"
         android:text="@string/quest_hasFeature_only" />
 
 </merge>

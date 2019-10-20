@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/splitWayRoot">
+
+    <ImageView
+        android:id="@+id/scissors"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:rotation="-45"
+        android:alpha="0"
+        android:src="@drawable/scissors_animation"/>
+
+    <de.westnordost.streetcomplete.view.SlidingRelativeLayout
+        android:layout_width="@dimen/quest_form_width"
+        android:layout_height="match_parent"
+        android:background="@drawable/speechbubbles_gradient_background"
+        android:id="@+id/bottomSheetContainer"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true">
+
+            <ImageButton
+                android:id="@+id/undoButton"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:scaleType="center"
+                style="@style/RoundWhiteButton"
+                android:src="@drawable/ic_undo_black_24dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="32dp"/>
+
+            <FrameLayout
+                android:id="@+id/speechbubbleContentContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/speech_bubble_none"
+                android:layout_marginStart="-2.5dp"
+                android:layout_marginEnd="-2.5dp"
+                android:layout_marginBottom="4dp"
+                android:layout_below="@id/undoButton">
+
+                <de.westnordost.streetcomplete.view.MaskSpeechbubbleCornersFrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:showDividers="middle"
+                        android:divider="@drawable/button_bar_divider">
+
+                        <RelativeLayout
+                            android:id="@+id/content"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/quest_split_way_tutorial" />
+
+                        </RelativeLayout>
+
+                        <LinearLayout
+                            android:id="@+id/buttonPanel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layoutDirection="locale"
+                            style="@style/ButtonBar">
+
+                            <Button
+                                android:id="@+id/cancelButton"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@android:string/cancel"
+                                style="@style/BottomSheetButtonBarItem"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </de.westnordost.streetcomplete.view.MaskSpeechbubbleCornersFrameLayout>
+
+            </FrameLayout>
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/okButton"
+            android:text="@string/ok"
+            style="@style/RoundAccentButton"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="8dp"
+            android:visibility="gone"
+            android:scaleX="0.5"
+            android:scaleY="0.5"
+            android:alpha="0"/>
+
+    </de.westnordost.streetcomplete.view.SlidingRelativeLayout>
+
+</RelativeLayout>

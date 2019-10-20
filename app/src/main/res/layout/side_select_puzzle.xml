@@ -5,7 +5,7 @@
 
     <RelativeLayout
         android:id="@+id/rotateContainer"
-        android:background="#ddd"
+        android:background="#3666"
         android:layout_width="280dp"
         android:layout_height="280dp"
         android:layout_gravity="center"
@@ -20,7 +20,9 @@
 
         <RelativeLayout
             android:id="@+id/leftSide"
-            style="android:attr/selectableItemBackground"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
             android:layout_alignParentLeft="true"
             android:layout_toLeftOf="@+id/strut"
             android:layout_width="match_parent"
@@ -41,7 +43,9 @@
 
         <RelativeLayout
             android:id="@+id/rightSide"
-            style="android:attr/selectableItemBackground"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
             android:layout_alignParentRight="true"
             android:layout_toRightOf="@+id/strut"
             android:layout_width="match_parent"

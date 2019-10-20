@@ -27,32 +27,13 @@
     </PreferenceCategory>
 
     <PreferenceCategory
-        android:title="@string/pref_category_cache">
-
-        <de.westnordost.streetcomplete.settings.NumberPickerPreference
-            android:key="map.tilecache"
-            android:title="@string/pref_title_map_cache"
-            android:summary="@string/pref_tilecache_size_summary"
-            android:defaultValue="50"
-            android:persistent="true"
-            custom:minValue="1"
-            custom:maxValue="250"
-            android:dialogMessage="@string/pref_tilecache_size_message"
-            android:dialogLayout="@layout/dialog_number_picker_preference"
-            android:positiveButtonText="@android:string/ok"
-            android:negativeButtonText="@android:string/cancel"
-            />
-
-    </PreferenceCategory>
-
-    <PreferenceCategory
         android:key="display"
         android:title="@string/pref_category_display">
 
-        <SwitchPreference
-            android:key="display.keepScreenOn"
-            android:title="@string/pref_title_keep_screen_on"
-            android:persistent="true"
+        <Preference
+            android:key="quests"
+            android:title="@string/pref_title_quests"
+            android:widgetLayout="@layout/widget_image_next"
             />
 
         <SwitchPreference
@@ -63,6 +44,21 @@
             android:persistent="true"
             />
 
+        <SwitchPreference
+            android:key="display.keepScreenOn"
+            android:title="@string/pref_title_keep_screen_on"
+            android:persistent="true"
+            />
+
+        <ListPreference
+            android:key="theme.select"
+            android:title="@string/pref_title_theme_select"
+            android:summary="%s"
+            android:defaultValue="AUTO"
+            android:entries="@array/pref_entries_theme_select"
+            android:entryValues="@array/pref_entryvalues_theme_select"
+            android:persistent="true"
+            />
     </PreferenceCategory>
 
     <PreferenceCategory
@@ -71,15 +67,50 @@
         >
 
         <Preference
-            android:key="quests"
-            android:title="@string/pref_title_quests"
-            android:widgetLayout="@layout/widget_image_next"
-            />
-
-        <Preference
             android:key="quests.invalidation"
             android:title="@string/pref_title_quests_invalidation"
             android:summary="@string/pref_title_quests_invalidation_summary"
+            />
+
+        <Preference
+            android:key="quests.restore.hidden"
+            android:title="@string/pref_title_quests_restore_hidden"
+            />
+
+        <de.westnordost.streetcomplete.settings.NumberPickerPreference
+            android:key="map.tilecache"
+            android:title="@string/pref_title_map_cache"
+            android:summary="@string/pref_tilecache_size_summary"
+            android:defaultValue="50"
+            android:persistent="true"
+            custom:minValue="10"
+            custom:maxValue="250"
+            custom:step="10"
+            android:dialogMessage="@string/pref_tilecache_size_message"
+            android:dialogLayout="@layout/dialog_number_picker_preference"
+            android:positiveButtonText="@android:string/ok"
+            android:negativeButtonText="@android:string/cancel"
+            />
+      
+        <ListPreference
+            android:key="overpass_url"
+            android:title="@string/pref_title_overpass_url_select"
+            android:summary="@string/pref_title_overpass_url_info"
+            android:defaultValue="https://lz4.overpass-api.de/api/"
+            android:entries="@array/pref_overpass_url_select"
+            android:entryValues="@array/pref_overpass_url_select"
+            android:persistent="true"
+            />
+      
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="debug"
+        android:title="Debug">
+
+        <Preference
+            android:key="debug.quests"
+            android:title="Show Quest Forms"
             />
 
     </PreferenceCategory>

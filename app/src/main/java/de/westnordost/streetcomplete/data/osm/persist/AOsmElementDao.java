@@ -10,7 +10,7 @@ import de.westnordost.osmapi.map.data.Element;
 
 public abstract class AOsmElementDao<T extends Element>
 {
-	private final SQLiteOpenHelper dbHelper;
+	protected final SQLiteOpenHelper dbHelper;
 
 	public AOsmElementDao(SQLiteOpenHelper dbHelper)
 	{
@@ -62,16 +62,16 @@ public abstract class AOsmElementDao<T extends Element>
 	public void deleteUnreferenced()
 	{
 		SQLiteDatabase db = dbHelper.getWritableDatabase();
-		String where = NodeTable.Columns.ID + " NOT IN ( " +
+		String where = getIdColumnName() + " NOT IN ( " +
 				getSelectAllElementIdsIn(OsmQuestTable.NAME) +
 				" UNION " +
-				getSelectAllElementIdsIn(OsmQuestTable.NAME_UNDO) +
+				getSelectAllElementIdsIn(UndoOsmQuestTable.NAME) +
 				")";
 
 		db.delete(getTableName(), where, null);
 	}
 
-	private String getSelectAllElementIdsIn(String table)
+	protected String getSelectAllElementIdsIn(String table)
 	{
 		return 	"SELECT " + OsmQuestTable.Columns.ELEMENT_ID + " AS " + getIdColumnName() +
 				" FROM " + table +

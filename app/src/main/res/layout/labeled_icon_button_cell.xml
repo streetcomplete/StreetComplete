@@ -5,7 +5,7 @@
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_margin="4dp"
                 android:padding="4dp"
-                android:background="?attr/selectableItemBackground"
+                android:background="?android:attr/selectableItemBackground"
     >
 
     <ImageView
@@ -16,7 +16,7 @@
         android:layout_centerHorizontal="true"
         android:scaleType="fitCenter"
         android:adjustViewBounds="true"
-        android:background="#ddd"
+        android:background="#3666"
         tools:src="@drawable/ic_cycleway_lane"/>
 
     <TextView

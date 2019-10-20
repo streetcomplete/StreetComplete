@@ -17,7 +17,7 @@ public class OsmAreas
 			" tourism or building:part or" +
 			" aerialway = station or railway = station or" +
 			" natural ~ " +
-				"wood|scrub|heath|moor|grassland|fell|bare_rock|scree|shingle|sand|mud" +
+				"wood|scrub|heath|moor|grassland|fell|bare_rock|scree|shingle|sand|mud|" +
 				"water|wetland|glacier|beach|rock|sinkhole" +
 			" or" +
 			" man_made ~ " +
@@ -27,7 +27,8 @@ public class OsmAreas
 				"pumping_station|reservoir_covered|wastewater_plant|water_tank|water_tower|water_well|water_works" +
 			" or" +
 			" power ~ compensator|converter|generator|plant|substation or" +
-			" waterway ~ boatyard|dam|dock|riverbank|fuel" +
+			" waterway ~ boatyard|dam|dock|riverbank|fuel or" +
+			" cemetery ~ sector|grave" +
 			")"
 	);
 

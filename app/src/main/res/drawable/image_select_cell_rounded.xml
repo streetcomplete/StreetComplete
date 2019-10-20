@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_selected="true" android:drawable="@drawable/selection_frame_rounded"/>
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/rounded_selection_radius"/>
+            <solid android:color="@color/pressed" />
+        </shape>
+    </item>
+</selector>

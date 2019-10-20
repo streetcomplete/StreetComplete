@@ -2,12 +2,13 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/marker_layout_create_note"
+    android:id="@+id/markerLayoutContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
 
     <RelativeLayout
+        android:id="@+id/centeredMarkerLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/quest_form_topOffset"
@@ -18,7 +19,7 @@
         tools:ignore="RtlHardcoded,RtlSymmetry">
 
         <RelativeLayout
-            android:id="@+id/marker_create_note"
+            android:id="@+id/createNoteMarker"
             android:layout_width="wrap_content"
             android:layout_height="128dp">
 
@@ -34,7 +35,7 @@
                 android:layout_width="42dp"
                 android:layout_height="42dp"
                 android:layout_marginTop="5dp"
-                android:layout_marginLeft="19dp"
+                android:layout_centerHorizontal="true"
                 android:src="@drawable/ic_quest_create_note" />
 
         </RelativeLayout>

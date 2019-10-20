@@ -25,6 +25,7 @@ import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestDao;
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestType;
 import de.westnordost.streetcomplete.data.osmnotes.OsmNotesDownload;
 import de.westnordost.streetcomplete.data.tiles.DownloadedTilesDao;
+import de.westnordost.streetcomplete.data.visiblequests.OrderedVisibleQuestTypesProvider;
 import de.westnordost.streetcomplete.util.SlippyMapMath;
 import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.LatLon;
@@ -36,7 +37,7 @@ public class QuestDownload
 	private final Provider<OsmNotesDownload> notesDownloadProvider;
 	private final Provider<OsmQuestDownload> questDownloadProvider;
 	private final QuestTypeRegistry questTypeRegistry;
-	private final Provider<List<QuestType>> questTypesProvider;
+	private final OrderedVisibleQuestTypesProvider questTypesProvider;
 	private final SharedPreferences prefs;
 	private final DownloadedTilesDao downloadedTilesDao;
 	private final OsmNoteQuestDao osmNoteQuestDb;
@@ -60,7 +61,7 @@ public class QuestDownload
 								 DownloadedTilesDao downloadedTilesDao,
 								 OsmNoteQuestDao osmNoteQuestDb,
 								 QuestTypeRegistry questTypeRegistry, SharedPreferences prefs,
-								 Provider<List<QuestType>> questTypesProvider)
+								 OrderedVisibleQuestTypesProvider questTypesProvider)
 	{
 		this.notesDownloadProvider = notesDownloadProvider;
 		this.questDownloadProvider = questDownloadProvider;

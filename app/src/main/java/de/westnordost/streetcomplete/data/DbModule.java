@@ -4,14 +4,11 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
 import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import de.westnordost.streetcomplete.ApplicationConstants;
 import de.westnordost.streetcomplete.data.changesets.OpenChangesetsDao;
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
 import de.westnordost.streetcomplete.data.osm.persist.UndoOsmQuestDao;
@@ -19,7 +16,7 @@ import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderList;
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeDao;
 import de.westnordost.streetcomplete.data.statistics.QuestStatisticsDao;
 import de.westnordost.streetcomplete.quests.localized_name.data.RoadNamesTablesHelper;
-import de.westnordost.streetcomplete.quests.oneway.WayTrafficFlowTablesHelper;
+import de.westnordost.streetcomplete.quests.oneway.data.WayTrafficFlowTablesHelper;
 import de.westnordost.streetcomplete.util.KryoSerializer;
 import de.westnordost.streetcomplete.util.Serializer;
 import de.westnordost.osmapi.changesets.ChangesetsDao;
@@ -29,7 +26,12 @@ public class DbModule
 {
 	@Provides @Singleton public static SQLiteOpenHelper sqliteOpenHelper(Context ctx)
 	{
-		return new StreetCompleteOpenHelper(ctx, new TablesHelper[]{
+		return sqliteOpenHelper(ctx, ApplicationConstants.DATABASE_NAME);
+	}
+
+	public static SQLiteOpenHelper sqliteOpenHelper(Context ctx, String databaseName)
+	{
+		return new StreetCompleteOpenHelper(ctx, databaseName, new TablesHelper[]{
 			new RoadNamesTablesHelper(), new WayTrafficFlowTablesHelper()
 		});
 	}
@@ -73,24 +75,5 @@ public class DbModule
 			SharedPreferences prefs, QuestTypeRegistry questTypeRegistry)
 	{
 		return new QuestTypeOrderList(prefs, questTypeRegistry);
-	}
-
-	@Provides public static List<QuestType> visibleQuestTypes(
-			QuestTypeRegistry questTypeRegistry, VisibleQuestTypeDao visibleQuestTypeDao,
-			QuestTypeOrderList questTypeOrderList)
-	{
-		List<QuestType> questTypes = new ArrayList<>(questTypeRegistry.getAll());
-		Iterator<QuestType> it = questTypes.listIterator();
-		while(it.hasNext())
-		{
-			QuestType questType = it.next();
-			if(!visibleQuestTypeDao.isVisible(questType))
-			{
-				it.remove();
-			}
-		}
-		questTypeOrderList.sort(questTypes);
-
-		return questTypes;
 	}
 }

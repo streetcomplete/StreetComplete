@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ImageView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/imageView"
+    android:layout_width="42dp"
+    android:layout_height="42dp"
+    android:padding="2dp"
+    android:background="@drawable/background_quest_icon"
+    android:elevation="12dp"
+    tools:src="@drawable/ic_quest_bicycleway"/>

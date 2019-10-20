@@ -58,8 +58,7 @@ public class WayDao extends AOsmElementDao<Way>
 		insert.bindBlob(3, serializer.toBytes(new ArrayList<>(way.getNodeIds())));
 		if(way.getTags() != null)
 		{
-			HashMap<String,String> map = new HashMap<>();
-			map.putAll(way.getTags());
+			HashMap<String, String> map = new HashMap<>(way.getTags());
 			insert.bindBlob(4, serializer.toBytes(map));
 		}
 		else
@@ -88,5 +87,20 @@ public class WayDao extends AOsmElementDao<Way>
 		List<Long> nodeIds = serializer.toObject(cursor.getBlob(colNodeIds), ArrayList.class);
 
 		return new OsmWay(id, version, nodeIds, tags);
+	}
+
+	/** Cleans up element entries that are not referenced by any quest anymore. */
+	@Override public void deleteUnreferenced()
+	{
+		SQLiteDatabase db = dbHelper.getWritableDatabase();
+		String where = getIdColumnName() + " NOT IN ( " +
+			getSelectAllElementIdsIn(OsmQuestTable.NAME) +
+			" UNION " +
+			getSelectAllElementIdsIn(UndoOsmQuestTable.NAME) +
+			" UNION " +
+			" SELECT " + OsmQuestSplitWayTable.Columns.WAY_ID + " AS " + getIdColumnName() + " FROM " + OsmQuestSplitWayTable.NAME +
+			")";
+
+		db.delete(getTableName(), where, null);
 	}
 }

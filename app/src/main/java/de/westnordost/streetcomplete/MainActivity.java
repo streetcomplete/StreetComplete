@@ -1,9 +1,12 @@
 package de.westnordost.streetcomplete;
 
 import android.animation.ObjectAnimator;
+import android.content.res.Configuration;
 import android.graphics.Point;
 import android.graphics.PointF;
-import android.support.v4.app.Fragment;
+import androidx.annotation.DrawableRes;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
@@ -15,39 +18,51 @@ import android.graphics.Rect;
 import android.location.Location;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.IBinder;
-import android.support.annotation.AnyThread;
-import android.support.annotation.Nullable;
-import android.support.annotation.UiThread;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.content.LocalBroadcastManager;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.preference.PreferenceManager;
-import android.support.v7.widget.Toolbar;
+import androidx.annotation.AnyThread;
+import androidx.annotation.Nullable;
+import androidx.annotation.UiThread;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.PreferenceManager;
+import androidx.appcompat.widget.Toolbar;
 import android.text.method.LinkMovementMethod;
 import android.text.util.Linkify;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.OvershootInterpolator;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
+import com.mapzen.tangram.LngLat;
+
+import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
+import java.util.List;
+import java.util.Locale;
+import java.util.Random;
+import java.util.concurrent.FutureTask;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.inject.Inject;
 
+import de.westnordost.osmapi.common.errors.OsmApiException;
 import de.westnordost.osmapi.common.errors.OsmApiReadResponseException;
 import de.westnordost.osmapi.common.errors.OsmAuthorizationException;
 import de.westnordost.osmapi.common.errors.OsmConnectionException;
@@ -55,16 +70,18 @@ import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.osmapi.map.data.OsmElement;
+import de.westnordost.osmapi.map.data.Way;
+import de.westnordost.osmfeatures.FeatureDictionary;
 import de.westnordost.streetcomplete.about.AboutFragment;
 import de.westnordost.streetcomplete.data.Quest;
 import de.westnordost.streetcomplete.data.QuestAutoSyncer;
-import de.westnordost.streetcomplete.data.osmnotes.CreateNoteListener;
 import de.westnordost.streetcomplete.data.QuestController;
 import de.westnordost.streetcomplete.data.QuestGroup;
 import de.westnordost.streetcomplete.data.VisibleQuestListener;
 import de.westnordost.streetcomplete.data.download.QuestDownloadProgressListener;
 import de.westnordost.streetcomplete.data.download.QuestDownloadService;
 import de.westnordost.streetcomplete.data.osm.OsmQuest;
+import de.westnordost.streetcomplete.data.osm.changes.SplitPolylineAtPosition;
 import de.westnordost.streetcomplete.data.upload.QuestChangesUploadProgressListener;
 import de.westnordost.streetcomplete.data.upload.QuestChangesUploadService;
 import de.westnordost.streetcomplete.data.upload.VersionBannedException;
@@ -73,26 +90,33 @@ import de.westnordost.streetcomplete.location.LocationRequestFragment;
 import de.westnordost.streetcomplete.location.LocationState;
 import de.westnordost.streetcomplete.location.LocationUtil;
 import de.westnordost.streetcomplete.oauth.OAuthPrefs;
-import de.westnordost.streetcomplete.quests.AbstractBottomSheetFragment;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
-import de.westnordost.streetcomplete.quests.FindQuestSourceComponent;
+import de.westnordost.streetcomplete.quests.IsCloseableBottomSheet;
+import de.westnordost.streetcomplete.quests.IsShowingQuestDetails;
+import de.westnordost.streetcomplete.quests.LeaveNoteInsteadFragment;
 import de.westnordost.streetcomplete.quests.OsmQuestAnswerListener;
 import de.westnordost.streetcomplete.quests.QuestAnswerComponent;
-import de.westnordost.streetcomplete.quests.QuestUtil;
+import de.westnordost.streetcomplete.quests.QuestUtilKt;
+import de.westnordost.streetcomplete.quests.SplitWayFragment;
 import de.westnordost.streetcomplete.settings.SettingsActivity;
-import de.westnordost.streetcomplete.statistics.UnsyncedChangesCounter;
-import de.westnordost.streetcomplete.statistics.UploadedAnswersCounter;
+import de.westnordost.streetcomplete.sound.SoundFx;
+import de.westnordost.streetcomplete.statistics.AnswersCounter;
 import de.westnordost.streetcomplete.tangram.MapControlsFragment;
 import de.westnordost.streetcomplete.tangram.MapFragment;
 import de.westnordost.streetcomplete.tangram.QuestsMapFragment;
+import de.westnordost.streetcomplete.tangram.TangramConst;
 import de.westnordost.streetcomplete.tools.CrashReportExceptionHandler;
+import de.westnordost.streetcomplete.util.DpUtil;
 import de.westnordost.streetcomplete.util.SlippyMapMath;
 import de.westnordost.streetcomplete.util.SphericalEarthMath;
-import de.westnordost.streetcomplete.view.dialogs.AlertDialogBuilder;
+
+
+import static de.westnordost.streetcomplete.ApplicationConstants.MANUAL_DOWNLOAD_QUEST_TYPE_COUNT;
 
 public class MainActivity extends AppCompatActivity implements
-		OsmQuestAnswerListener, CreateNoteListener, VisibleQuestListener,
-		QuestsMapFragment.Listener, MapFragment.Listener, MapControlsFragment.Listener
+		OsmQuestAnswerListener, CreateNoteFragment.Listener, VisibleQuestListener,
+		QuestsMapFragment.Listener, MapFragment.Listener, MapControlsFragment.Listener,
+		SplitWayFragment.Listener, LeaveNoteInsteadFragment.Listener
 {
 	@Inject CrashReportExceptionHandler crashReportExceptionHandler;
 
@@ -106,24 +130,34 @@ public class MainActivity extends AppCompatActivity implements
 
 	@Inject FindQuestSourceComponent questSource;
 
-	@Inject UploadedAnswersCounter uploadedAnswersCounter;
-	@Inject UnsyncedChangesCounter unsyncedChangesCounter;
+	@Inject AnswersCounter answersCounter;
+
+	@Inject SoundFx soundFx;
+
+	@Inject FutureTask<FeatureDictionary> featureDictionaryFutureTask;
+
+	private final Random random = new Random();
 
 	// per application start settings
 	private static boolean hasAskedForLocation = false;
 	private static boolean dontShowRequestAuthorizationAgain = false;
 
 	private QuestsMapFragment mapFragment;
-	private Location lastLocation;
 
-	private ProgressBar progressBar;
+	private ProgressBar downloadProgressBar;
+	private ProgressBar uploadProgressBar;
+
+	private View unsyncedChangesContainer;
+	private MenuItem btnUndo;
 
 	private float mapRotation, mapTilt;
+	private Location locationWhenOpenedQuest;
 	private boolean isFollowingPosition;
+	private boolean isCompassMode;
 
 	private boolean downloadServiceIsBound;
 	private QuestDownloadService.Interface downloadService;
-	private ServiceConnection downloadServiceConnection = new ServiceConnection()
+	private final ServiceConnection downloadServiceConnection = new ServiceConnection()
 	{
 		public void onServiceConnected(ComponentName className, IBinder service)
 		{
@@ -139,7 +173,7 @@ public class MainActivity extends AppCompatActivity implements
 	};
 	private boolean uploadServiceIsBound;
 	private QuestChangesUploadService.Interface uploadService;
-	private ServiceConnection uploadServiceConnection = new ServiceConnection()
+	private final ServiceConnection uploadServiceConnection = new ServiceConnection()
 	{
 		public void onServiceConnected(ComponentName className, IBinder service)
 		{
@@ -178,7 +212,11 @@ public class MainActivity extends AppCompatActivity implements
 
 		crashReportExceptionHandler.askUserToSendCrashReportIfExists(this);
 
-		setContentView(R.layout.activity_main);
+		soundFx.prepare(R.raw.plop0);
+		soundFx.prepare(R.raw.plop1);
+		soundFx.prepare(R.raw.plop2);
+		soundFx.prepare(R.raw.plop3);
+
 		PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
 
 		if(prefs.getBoolean(Prefs.KEEP_SCREEN_ON, false))
@@ -186,53 +224,97 @@ public class MainActivity extends AppCompatActivity implements
 			getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 		}
 
+		questSource.onCreate(this);
+		questController.onCreate();
+
+		getSupportFragmentManager().beginTransaction()
+			.add(locationRequestFragment, LocationRequestFragment.class.getSimpleName())
+			.commit();
+
+		setContentView(R.layout.activity_main);
+
 		Toolbar toolbar = findViewById(R.id.toolbar);
 		toolbar.setTitle("");
 		setSupportActionBar(toolbar);
 
-		questController.onCreate();
+		TextView uploadedAnswersView = findViewById(R.id.uploadedAnswersCounter);
+		TextView unsyncedChangesView = findViewById(R.id.unsyncedAnswersCounter);
+		unsyncedChangesContainer = findViewById(R.id.unsyncedAnswersContainer);
+		answersCounter.setViews(uploadedAnswersView, unsyncedChangesView, unsyncedChangesContainer);
+		unsyncedChangesContainer.setOnClickListener(view ->
+		{
+			if (isConnected())
+			{
+				uploadChanges();
+			}
+			else
+			{
+				Toast.makeText(MainActivity.this, R.string.offline, Toast.LENGTH_SHORT).show();
+			}
+		});
 
-		TextView uploadedAnswersView = toolbar.findViewById(R.id.uploadedAnswersCounter);
-		uploadedAnswersCounter.setTarget(uploadedAnswersView);
+		downloadProgressBar = findViewById(R.id.download_progress);
+		downloadProgressBar.setMax(1000);
 
-		TextView unsyncedChangesView = toolbar.findViewById(R.id.unsyncedAnswersCounter);
-		unsyncedChangesCounter.setTarget(unsyncedChangesView);
-		unsyncedChangesView.setOnClickListener(view -> {
-            if (isConnected()) {
-                uploadChanges();
-            }
-            else {
-                Toast.makeText(MainActivity.this, R.string.offline, Toast.LENGTH_SHORT).show();
-            }
-        });
-
-		questSource.onCreate(this);
-
-		getSupportFragmentManager().beginTransaction()
-				.add(locationRequestFragment, LocationRequestFragment.class.getSimpleName())
-				.commit();
-
-		progressBar = findViewById(R.id.download_progress);
-		progressBar.setMax(1000);
+		RelativeLayout starMenu = findViewById(R.id.uploadedAnswersContainer);
+		starMenu.setOnClickListener(this::starInfoMenu);
 
 		mapFragment = (QuestsMapFragment) getSupportFragmentManager().findFragmentById(R.id.map_fragment);
-		mapFragment.setQuestOffsets(new Rect(
-				getResources().getDimensionPixelSize(R.dimen.quest_form_leftOffset),
-				0,
-				getResources().getDimensionPixelSize(R.dimen.quest_form_rightOffset),
-				getResources().getDimensionPixelSize(R.dimen.quest_form_bottomOffset)));
+		mapFragment.getMapAsync(BuildConfig.MAPZEN_API_KEY);
+		updateMapQuestOffsets();
 
-		mapFragment.getMapAsync(BuildConfig.MAPZEN_API_KEY != null ?
-				BuildConfig.MAPZEN_API_KEY :
-				new String(new char[]{55,104,71,105,86,45,105,79,82,106,109,79,53,89,68,68,57,120,112,114,48,103}));
+		if(savedInstanceState == null)
+		{
+			questController.deleteOld();
+		}
+
+		Intent intent = getIntent();
+		Uri data = intent.getData();
+		if (Intent.ACTION_VIEW.equals(intent.getAction()) && data != null)
+		{
+			// TODO: geo intent parsing and creating should go into own utility class
+			if ("geo".equals(data.getScheme()))
+			{
+				String geoUriRegex = "geo:(-?[0-9]*\\.?[0-9]+),(-?[0-9]*\\.?[0-9]+).*?(?:\\?z=([0-9]*\\.?[0-9]+))?";
+				Pattern pattern = Pattern.compile(geoUriRegex);
+				Matcher matcher = pattern.matcher(data.toString());
+				if (matcher.matches())
+				{
+					double latitude = Double.parseDouble(matcher.group(1));
+					double longitude = Double.parseDouble(matcher.group(2));
+
+					float zoom = -1;
+					if (matcher.group(3) != null) {
+						zoom = Float.valueOf(matcher.group(3));
+					}
+
+					if (longitude >= -180 && longitude <= +180
+						&& latitude >= -90  && latitude <= +90)
+					{
+						mapFragment.setIsFollowingPosition(false);
+						mapFragment.setPosition(new LngLat(longitude,  latitude));
+
+						if (zoom < 14) zoom = 18;
+						mapFragment.setZoom(zoom);
+					}
+				}
+			}
+		}
 	}
 
 	@Override public void onStart()
 	{
 		super.onStart();
 
-		uploadedAnswersCounter.update();
-		unsyncedChangesCounter.update();
+		boolean isAutosync = Prefs.Autosync.valueOf(prefs.getString(Prefs.AUTOSYNC,"ON")) == Prefs.Autosync.ON;
+		ProgressBar uploadedAnswersProgressBar = findViewById(R.id.uploadedAnswersProgress);
+		ProgressBar unsyncedAnswersProgressBar = findViewById(R.id.unsyncedAnswersProgress);
+		uploadedAnswersProgressBar.setVisibility(View.INVISIBLE);
+		unsyncedAnswersProgressBar.setVisibility(View.INVISIBLE);
+
+		uploadProgressBar = isAutosync ? uploadedAnswersProgressBar : unsyncedAnswersProgressBar;
+		answersCounter.setAutosync(isAutosync);
+		answersCounter.update();
 
 		registerReceiver(locationAvailabilityReceiver, LocationUtil.createLocationAvailabilityIntentFilter());
 
@@ -242,15 +324,14 @@ public class MainActivity extends AppCompatActivity implements
 				new IntentFilter(LocationRequestFragment.ACTION_FINISHED));
 
 		questController.onStart(this);
-		questAutoSyncer.onStart();
 
-		progressBar.setAlpha(0f);
+		downloadProgressBar.setAlpha(0f);
 		downloadServiceIsBound = bindService(new Intent(this, QuestDownloadService.class),
 				downloadServiceConnection, BIND_AUTO_CREATE);
 		uploadServiceIsBound = bindService(new Intent(this, QuestChangesUploadService.class),
 				uploadServiceConnection, BIND_AUTO_CREATE);
 
-		if(!hasAskedForLocation)
+		if(!hasAskedForLocation && !prefs.getBoolean(Prefs.LAST_LOCATION_REQUEST_DENIED, false))
 		{
 			locationRequestFragment.startRequest();
 		}
@@ -260,13 +341,22 @@ public class MainActivity extends AppCompatActivity implements
 		}
 	}
 
+	@Override protected void onResume()
+	{
+		super.onResume();
+		questAutoSyncer.onResume();
+		questAutoSyncer.triggerAutoUpload();
+	}
+
 	@Override public void onPause()
 	{
 		super.onPause();
-		LatLon pos = mapFragment.getPosition();
+		questAutoSyncer.onPause();
+
+		LngLat pos = mapFragment.getPosition();
 		prefs.edit()
-			.putLong(Prefs.MAP_LATITUDE, Double.doubleToRawLongBits(pos.getLatitude()))
-			.putLong(Prefs.MAP_LONGITUDE, Double.doubleToRawLongBits(pos.getLongitude()))
+			.putLong(Prefs.MAP_LATITUDE, Double.doubleToRawLongBits(pos.latitude))
+			.putLong(Prefs.MAP_LONGITUDE, Double.doubleToRawLongBits(pos.longitude))
 			.apply();
 	}
 
@@ -280,7 +370,6 @@ public class MainActivity extends AppCompatActivity implements
 		unregisterReceiver(locationAvailabilityReceiver);
 
 		questController.onStop();
-		questAutoSyncer.onStop();
 
 		if (downloadServiceIsBound) unbindService(downloadServiceConnection);
 		if (downloadService != null)
@@ -289,7 +378,7 @@ public class MainActivity extends AppCompatActivity implements
 			downloadService.startForeground();
 			// since we unbound from the service, we won't get the onFinished call. But we will get
 			// the onStarted call when we return to this activity when the service is rebound
-			progressBar.setAlpha(0f);
+			downloadProgressBar.setAlpha(0f);
 		}
 
 		if (uploadServiceIsBound) unbindService(uploadServiceConnection);
@@ -305,9 +394,26 @@ public class MainActivity extends AppCompatActivity implements
 		questController.onDestroy();
 	}
 
+	@Override public void onConfigurationChanged(Configuration newConfig) {
+		super.onConfigurationChanged(newConfig);
+		findViewById(R.id.main).requestLayout();
+		updateMapQuestOffsets();
+	}
+
+	private void updateMapQuestOffsets()
+	{
+		mapFragment.setQuestOffsets(new Rect(
+			getResources().getDimensionPixelSize(R.dimen.quest_form_leftOffset),
+			0,
+			getResources().getDimensionPixelSize(R.dimen.quest_form_rightOffset),
+			getResources().getDimensionPixelSize(R.dimen.quest_form_bottomOffset)));
+	}
+
 	@Override public boolean onCreateOptionsMenu(Menu menu)
 	{
 		getMenuInflater().inflate(R.menu.menu_main, menu);
+		btnUndo = menu.findItem(R.id.action_undo);
+		updateUndoButtonVisibility();
 		return true;
 	}
 
@@ -320,24 +426,38 @@ public class MainActivity extends AppCompatActivity implements
 	{
 		Element element = questController.getOsmElement(quest);
 
-		View inner = LayoutInflater.from(this).inflate(
-				R.layout.dialog_undo, null, false);
+		View inner = LayoutInflater.from(this).inflate(R.layout.dialog_undo, null, false);
 		ImageView icon = inner.findViewById(R.id.icon);
 		icon.setImageResource(quest.getType().getIcon());
 		TextView text = inner.findViewById(R.id.text);
 
-		text.setText(QuestUtil.getHtmlTitle(getResources(), quest.getType(), element));
+		text.setText(QuestUtilKt.getHtmlQuestTitle(getResources(), quest.getType(), element, featureDictionaryFutureTask));
 
-		new AlertDialogBuilder(this)
-				.setTitle(R.string.undo_confirm_title)
-				.setView(inner)
-				.setPositiveButton(R.string.undo_confirm_positive, (dialog, which) ->
-				{
-					questController.undoOsmQuest(quest);
-					unsyncedChangesCounter.decrement(quest.getChangesSource());
-				})
-				.setNegativeButton(R.string.undo_confirm_negative, null)
-				.show();
+		new AlertDialog.Builder(this)
+			.setTitle(R.string.undo_confirm_title)
+			.setView(inner)
+			.setPositiveButton(R.string.undo_confirm_positive, (dialog, which) ->
+			{
+				questController.undo(quest);
+				questAutoSyncer.triggerAutoUpload();
+				answersCounter.subtractOneUnsynced(quest.getChangesSource());
+				updateUndoButtonVisibility();
+				setUndoButtonEnabled(true);
+			})
+			.setNegativeButton(R.string.undo_confirm_negative, (dialog, which) -> { setUndoButtonEnabled(true); })
+			.setOnCancelListener(dialog -> { setUndoButtonEnabled(true); })
+			.show();
+	}
+
+	private void updateUndoButtonVisibility()
+	{
+		btnUndo.setVisible(questController.getLastSolvedOsmQuest() != null);
+	}
+
+	private void setUndoButtonEnabled(boolean enabled)
+	{
+		btnUndo.setEnabled(enabled);
+		btnUndo.getIcon().setAlpha(enabled ? 255 : 127);
 	}
 
 	@Override public boolean onOptionsItemSelected(MenuItem item)
@@ -348,9 +468,10 @@ public class MainActivity extends AppCompatActivity implements
 		switch (id)
 		{
 			case R.id.action_undo:
+				setUndoButtonEnabled(false);
 				OsmQuest quest = questController.getLastSolvedOsmQuest();
-				if(quest != null) confirmUndo(quest);
-				else              Toast.makeText(this, R.string.no_changes_to_undo, Toast.LENGTH_SHORT).show();
+				if (quest != null) confirmUndo(quest);
+				else setUndoButtonEnabled(true);
 				return true;
 			case R.id.action_settings:
 				intent = new Intent(this, SettingsActivity.class);
@@ -364,6 +485,23 @@ public class MainActivity extends AppCompatActivity implements
 			case R.id.action_download:
 				if(isConnected()) downloadDisplayedArea();
 				else              Toast.makeText(this, R.string.offline, Toast.LENGTH_SHORT).show();
+				return true;
+			case R.id.action_open_location:
+				LngLat position = mapFragment.getPosition();
+				float zoom = mapFragment.getZoom();
+
+				Uri uri = Uri.parse(String.format(Locale.US, "geo:%f,%f?z=%f",
+					position.latitude,
+					position.longitude,
+					zoom
+				));
+
+				intent = new Intent(Intent.ACTION_VIEW, uri);
+				if (intent.resolveActivity(getPackageManager()) != null) {
+					startActivity(intent);
+				} else {
+					Toast.makeText(this, R.string.map_application_missing, Toast.LENGTH_LONG).show();
+				}
 				return true;
 		}
 
@@ -387,11 +525,9 @@ public class MainActivity extends AppCompatActivity implements
 	{
 		if(dontShowRequestAuthorizationAgain) return;
 
-		View inner = LayoutInflater.from(this).inflate(
-				R.layout.dialog_authorize_now, null, false);
-		final CheckBox checkBox = inner.findViewById(R.id.checkBoxDontShowAgain);
+		View inner = LayoutInflater.from(this).inflate(R.layout.dialog_authorize_now, null, false);
 
-		new AlertDialogBuilder(this)
+		new AlertDialog.Builder(this)
 				.setView(inner)
 				.setPositiveButton(android.R.string.ok, (dialog, which) ->
 				{
@@ -401,7 +537,7 @@ public class MainActivity extends AppCompatActivity implements
 				})
 				.setNegativeButton(R.string.later, (dialog, which) ->
 				{
-					dontShowRequestAuthorizationAgain = checkBox.isChecked();
+					dontShowRequestAuthorizationAgain = true;
 				}).show();
 	}
 
@@ -425,7 +561,7 @@ public class MainActivity extends AppCompatActivity implements
 			{
 				if (questController.isPriorityDownloadRunning())
 				{
-					new AlertDialogBuilder(this)
+					new AlertDialog.Builder(this)
 							.setMessage(R.string.confirmation_cancel_prev_download_title)
 							.setPositiveButton(android.R.string.ok, (dialog, which) -> downloadAreaConfirmed(enclosingBBox))
 							.setNegativeButton(android.R.string.cancel, null)
@@ -445,22 +581,56 @@ public class MainActivity extends AppCompatActivity implements
 		// below a certain threshold, it does not make sense to download, so let's enlarge it
 		if (areaInSqKm < ApplicationConstants.MIN_DOWNLOADABLE_AREA_IN_SQKM)
 		{
-			LatLon pos = mapFragment.getPosition();
+			LngLat pos = mapFragment.getPosition();
 			if (pos != null)
 			{
-				bbox = SphericalEarthMath.enclosingBoundingBox(pos,
+				bbox = SphericalEarthMath.enclosingBoundingBox(TangramConst.toLatLon(pos),
 						ApplicationConstants.MIN_DOWNLOADABLE_RADIUS_IN_METERS);
 			}
 		}
-		questController.download(bbox, 5, true);
+		questController.download(bbox, MANUAL_DOWNLOAD_QUEST_TYPE_COUNT, true);
 	}
 
+	private void triggerAutoUploadByUserInteraction()
+	{
+		if(questAutoSyncer.isAllowedByPreference())
+		{
+			if (!oAuth.isAuthorized()) {
+				// new users should not be immediately pestered to login after each change (#1446)
+				if(answersCounter.waitingForUpload() >= 3) {
+					requestOAuthorized();
+				}
+			}
+			else {
+				questAutoSyncer.triggerAutoUpload();
+			}
+		}
+	}
 
 	/* ------------------------------ Upload progress listener ---------------------------------- */
 
 	private final QuestChangesUploadProgressListener uploadProgressListener
 			= new QuestChangesUploadProgressListener()
 	{
+		@AnyThread @Override public void onStarted()
+		{
+			runOnUiThread(() ->
+			{
+				unsyncedChangesContainer.setEnabled(false);
+				setUndoButtonEnabled(false);
+				if(uploadProgressBar != null) uploadProgressBar.setVisibility(View.VISIBLE);
+			});
+		}
+
+		@Override public void onProgress(boolean success)
+		{
+			runOnUiThread(() ->
+			{
+				if(success) answersCounter.uploadedOne();
+				else        answersCounter.discardedOne();
+			});
+		}
+
 		@AnyThread @Override public void onError(final Exception e)
 		{
 			runOnUiThread(() ->
@@ -474,7 +644,7 @@ public class MainActivity extends AppCompatActivity implements
 						message += "\n\n" + vbe.getBanReason();
 					}
 
-					AlertDialog dialog = new AlertDialogBuilder(MainActivity.this)
+					AlertDialog dialog = new AlertDialog.Builder(MainActivity.this)
 							.setMessage(message)
 							.setPositiveButton(android.R.string.ok, null)
 							.create();
@@ -512,14 +682,17 @@ public class MainActivity extends AppCompatActivity implements
 
 		@AnyThread @Override public void onFinished()
 		{
-			runOnUiThread(() -> {
-				uploadedAnswersCounter.update();
-				unsyncedChangesCounter.update();
+			runOnUiThread(() ->
+			{
+				unsyncedChangesContainer.setEnabled(true);
+				setUndoButtonEnabled(true);
+				if(uploadProgressBar != null) uploadProgressBar.setVisibility(View.INVISIBLE);
 			});
+			answersCounter.update();
 		}
 	};
 
-	/* ------------------------------------ Progress bar  --------------------------------------- */
+	/* ----------------------------- Download Progress listener  -------------------------------- */
 
 	private final QuestDownloadProgressListener downloadProgressListener
 			= new QuestDownloadProgressListener()
@@ -528,9 +701,8 @@ public class MainActivity extends AppCompatActivity implements
 		{
 			runOnUiThread(() ->
 			{
-				ObjectAnimator fadeInAnimator = ObjectAnimator.ofFloat(progressBar, View.ALPHA, 1f);
-				fadeInAnimator.start();
-				progressBar.setProgress(0);
+				downloadProgressBar.animate().alpha(1);
+				downloadProgressBar.setProgress(0);
 
 				Toast.makeText(
 						MainActivity.this,
@@ -544,7 +716,7 @@ public class MainActivity extends AppCompatActivity implements
 			runOnUiThread(() ->
 			{
 				int intProgress = (int) (1000 * progress);
-				ObjectAnimator progressAnimator = ObjectAnimator.ofInt(progressBar, "progress", intProgress);
+				ObjectAnimator progressAnimator = ObjectAnimator.ofInt(downloadProgressBar, "progress", intProgress);
 				progressAnimator.setDuration(1000);
 				progressAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
 				progressAnimator.start();
@@ -555,10 +727,16 @@ public class MainActivity extends AppCompatActivity implements
 		{
 			runOnUiThread(() ->
 			{
-				// a 5xx error is not the fault of this app. Nothing we can do about it, so it does not
-				// make sense to send an error report. Just notify the user
-				// Also, we treat an invalid response the same as a (temporary) connection error
-				if (e instanceof OsmConnectionException || e instanceof OsmApiReadResponseException)
+				// a 5xx error is not the fault of this app. Nothing we can do about it, so it does
+				// not make sense to send an error report. Just notify the user. Further, we treat
+				// the following errors the same as a (temporary) connection error:
+				// - an invalid response (OsmApiReadResponseException)
+				// - request timeout (OsmApiException with error code 408)
+				boolean isEnvironmentError =
+					e instanceof OsmConnectionException ||
+					e instanceof OsmApiReadResponseException ||
+					(e instanceof OsmApiException && ((OsmApiException) e).getErrorCode() == 408);
+				if (isEnvironmentError)
 				{
 					Toast.makeText(MainActivity.this,R.string.download_server_error, Toast.LENGTH_LONG).show();
 				}
@@ -580,9 +758,7 @@ public class MainActivity extends AppCompatActivity implements
 		{
 			runOnUiThread(() ->
 			{
-				ObjectAnimator fadeOutAnimator = ObjectAnimator.ofFloat(progressBar, View.ALPHA, 0f);
-				fadeOutAnimator.setDuration(1000);
-				fadeOutAnimator.start();
+				downloadProgressBar.animate().alpha(0).setDuration(1000);
 			});
 		}
 
@@ -598,86 +774,69 @@ public class MainActivity extends AppCompatActivity implements
 		}
 	};
 
-	/* ------------ Managing bottom sheet (quest details) and interaction with map  ------------- */
+	/* --------------------------------- OsmQuestAnswerListener --------------------------------- */
 
-	private final static String BOTTOM_SHEET = "bottom_sheet";
-
-	@Override public void onBackPressed()
+	@Override public void onAnsweredQuest(long questId, @NonNull QuestGroup group, @NonNull Object answer)
 	{
-		AbstractBottomSheetFragment f = getBottomSheetFragment();
-		if(f != null)
-		{
-			f.onClickClose(() ->
-			{
-				mapFragment.removeQuestGeometry();
-				mapFragment.setIsFollowingPosition(isFollowingPosition);
-				MainActivity.super.onBackPressed();
-			});
-		}
-		else
-		{
-			super.onBackPressed();
-		}
-	}
-
-	/* ------------- OsmQuestAnswerListener ------------- */
-
-	@Override public void onAnsweredQuest(final long questId, final QuestGroup group, final Bundle answer)
-	{
-		// line between location now and location when the form was opened
-		Location[] locations = new Location[]{ lastLocation, mapFragment.getDisplayedLocation() };
-		questSource.findSource(questId, group, locations, source ->
+		Location currentLocation = mapFragment.getDisplayedLocation();
+		questSource.findSource(questId, group, Arrays.asList(currentLocation, locationWhenOpenedQuest), source ->
 		{
 			closeQuestDetailsFor(questId, group);
-			unsyncedChangesCounter.increase(source);
-			questController.solveQuest(questId, group, answer, source);
+			Quest quest = questController.get(questId, group);
+			if(questController.solve(questId, group, answer, source))
+			{
+				updateUndoButtonVisibility();
+				showQuestSolvedAnimation(quest, source);
+			}
+			triggerAutoUploadByUserInteraction();
 		});
 	}
 
-	@Override public void onLeaveNote(long questId, QuestGroup group, String questTitle, String note, ArrayList<String> imagePaths)
+	@Override public void onComposeNote(long questId, @NonNull QuestGroup group, @NonNull String questTitle)
+	{
+		showInBottomSheet(LeaveNoteInsteadFragment.create(questId, group, questTitle));
+	}
+
+	@Override public void onSplitWay(long osmQuestId)
+	{
+		Quest quest = questController.get(osmQuestId, QuestGroup.OSM);
+		if (quest == null) return;
+		OsmElement element = questController.getOsmElement((OsmQuest) quest);
+		if (!(element instanceof Way)) return;
+		showInBottomSheet(SplitWayFragment.create(osmQuestId, (Way) element, quest.getGeometry()));
+	}
+
+	@Override public void onSkippedQuest(long questId, @NonNull QuestGroup group)
 	{
 		closeQuestDetailsFor(questId, group);
-		questController.createNote(questId, questTitle, note, imagePaths);
-
-		unsyncedChangesCounter.increase(null);
+		questController.hide(questId, group);
 	}
 
-	@Override public void onSkippedQuest(long questId, QuestGroup group)
+	/* --------------------------- LeaveNoteInsteadFragment.Listener ---------------------------- */
+
+	@Override public void onCreatedNoteInstead(
+		long questId, @NonNull QuestGroup group, @NonNull String questTitle, @NonNull String note,
+		@Nullable List<String> imagePaths)
 	{
 		closeQuestDetailsFor(questId, group);
-		questController.hideQuest(questId, group);
-	}
-
-	private void closeQuestDetailsFor(long questId, QuestGroup group)
-	{
-		if (isQuestDetailsCurrentlyDisplayedFor(questId, group))
+		// the quest is deleted from DB on creating a note, so need to fetch quest before
+		Quest quest = questController.get(questId, group);
+		if(questController.createNote(questId, questTitle, note, imagePaths))
 		{
-			closeBottomSheet();
+			showQuestSolvedAnimation(quest, null);
 		}
+		triggerAutoUploadByUserInteraction();
 	}
 
-	/* ------------- creating notes ------------- */
+	/* ------------------------------ CreateNoteFragment.Listener ------------------------------- */
 
-	@Override public void onClickCreateNote()
+
+	@Override public void onCreatedNote(
+		@NonNull String note, @Nullable List<String> imagePaths, @NonNull Point screenPosition)
 	{
-		if (mapFragment.getZoom() < ApplicationConstants.NOTE_MIN_ZOOM)
-		{
-			Toast.makeText(this, R.string.create_new_note_unprecise, Toast.LENGTH_LONG).show();
-			return;
-		}
+		showMarkerSolvedAnimation(R.drawable.ic_quest_create_note, new PointF(screenPosition), null);
+		closeBottomSheet();
 
-		AbstractBottomSheetFragment f = getBottomSheetFragment();
-		if (f != null)   f.onClickClose(this::composeNote);
-		else             composeNote();
-	}
-
-	private void composeNote()
-	{
-		showInBottomSheet(new CreateNoteFragment());
-	}
-
-	@Override public void onLeaveNote(String note, ArrayList<String> imagePaths, Point screenPosition)
-	{
 		int[] mapPosition = new int[2];
 		View mapView = mapFragment.getView();
 		if(mapView == null) return;
@@ -687,29 +846,129 @@ public class MainActivity extends AppCompatActivity implements
 		PointF notePosition = new PointF(screenPosition);
 		notePosition.offset(-mapPosition[0], -mapPosition[1]);
 
-		LatLon position = mapFragment.getPositionAt(notePosition);
+		LngLat position = mapFragment.getPositionAt(notePosition);
 		if(position == null) throw new NullPointerException();
-		questController.createNote(note, imagePaths, position);
-
-		unsyncedChangesCounter.increase(null);
-
-		closeBottomSheet();
+		questController.createNote(note, imagePaths, TangramConst.toLatLon(position));
+		triggerAutoUploadByUserInteraction();
 	}
 
-	/* ------------- VisibleQuestListener ------------- */
+	/* ------------------------------- SplitWayFragment.Listener -------------------------------- */
+
+	@Override public void onSplittedWay(long osmQuestId, @NonNull List<? extends SplitPolylineAtPosition> splits)
+	{
+		Location currentLocation = mapFragment.getDisplayedLocation();
+		questSource.findSource(osmQuestId, QuestGroup.OSM, Arrays.asList(currentLocation, locationWhenOpenedQuest), source ->
+		{
+			Quest quest = questController.get(osmQuestId, QuestGroup.OSM);
+			closeQuestDetailsFor(osmQuestId, QuestGroup.OSM);
+			if(questController.splitWay(osmQuestId, splits, source))
+			{
+				showQuestSolvedAnimation(quest, source);
+			}
+			triggerAutoUploadByUserInteraction();
+		});
+	}
+
+	@Override public void onAddSplit(@NonNull LatLon point)
+	{
+		mapFragment.putMarkerForCurrentQuest(point);
+	}
+
+	@Override public void onRemoveSplit(@NonNull LatLon point)
+	{
+		mapFragment.deleteMarkerForCurrentQuest(point);
+	}
+
+	/* ------------------------------------------------------------------------------------------ */
+
+	private void showQuestSolvedAnimation(Quest quest, String source)
+	{
+		if(quest == null) return;
+
+		int size = (int) DpUtil.toPx(42, this);
+		int[] offset = new int[2];
+		mapFragment.getView().getLocationOnScreen(offset);
+		PointF startPos = mapFragment.getPointOf(TangramConst.toLngLat(quest.getCenter()));
+		startPos.x += offset[0] - size/2;
+		startPos.y += offset[1] - size*1.5;
+		showMarkerSolvedAnimation(quest.getType().getIcon(), startPos, source);
+	}
+
+	private void showMarkerSolvedAnimation(@DrawableRes int iconResId, PointF startScreenPos, String source)
+	{
+		soundFx.play(getResources().getIdentifier("plop"+random.nextInt(4), "raw", getPackageName()));
+
+		ViewGroup root = (ViewGroup) getWindow().getDecorView();
+		ImageView img = (ImageView) getLayoutInflater().inflate(R.layout.effect_quest_plop, root, false);
+		img.setX(startScreenPos.x);
+		img.setY(startScreenPos.y);
+		img.setImageResource(iconResId);
+		root.addView(img);
+
+		flingQuestMarkerTo(img, answersCounter.getAnswerTarget(), () -> {
+			root.removeView(img);
+			answersCounter.addOneUnsynced(source);
+		});
+	}
+
+	private void flingQuestMarkerTo(View quest, View target, Runnable onFinished)
+	{
+		int[] targetPos = new int[2];
+		target.getLocationOnScreen(targetPos);
+
+		quest.animate()
+			.scaleX(1.6f).scaleY(1.6f)
+			.setInterpolator(new OvershootInterpolator(8f))
+			.setDuration(250)
+			.withEndAction(() -> {
+				quest.animate()
+					.scaleX(0.2f).scaleY(0.2f)
+					.alpha(0.8f)
+					.x(targetPos[0]).y(targetPos[1])
+					.setDuration(250)
+					.setInterpolator(new AccelerateInterpolator())
+					.withEndAction(onFinished);
+			});
+	}
+
+	/* ------------------------------ MapControlsFragment.Listener ------------------------------ */
+
+	@Override public void onClickCreateNote()
+	{
+		if (mapFragment.getZoom() < ApplicationConstants.NOTE_MIN_ZOOM)
+		{
+			Toast.makeText(this, R.string.create_new_note_unprecise, Toast.LENGTH_LONG).show();
+			return;
+		}
+
+		Fragment f = getBottomSheetFragment();
+		if (f instanceof IsCloseableBottomSheet)
+			((IsCloseableBottomSheet)f).onClickClose(this::composeNote);
+		else
+			composeNote();
+	}
+
+	private void composeNote()
+	{
+		freezeMap();
+		showInBottomSheet(new CreateNoteFragment());
+	}
+
+	/* ---------------------------------- VisibleQuestListener ---------------------------------- */
 
 	@AnyThread @Override
 	public void onQuestsCreated(final Collection<? extends Quest> quests, final QuestGroup group)
 	{
 		runOnUiThread(() -> mapFragment.addQuests(quests, group));
 		// to recreate element geometry of selected quest (if any) after recreation of activity
-		if(getQuestDetailsFragment() != null)
+		Fragment f = getBottomSheetFragment();
+		if(f instanceof IsShowingQuestDetails)
 		{
 			for (Quest q : quests)
 			{
 				if (isQuestDetailsCurrentlyDisplayedFor(q.getId(), group))
 				{
-					questController.retrieve(group, q.getId());
+					runOnUiThread(() -> showQuestDetails(q, group));
 					return;
 				}
 			}
@@ -717,50 +976,46 @@ public class MainActivity extends AppCompatActivity implements
 	}
 
 	@AnyThread @Override
-	public synchronized void onQuestSelected(final Quest quest, final QuestGroup group, final Element element)
-	{
-		runOnUiThread(() ->
-		{
-			showQuestDetails(quest, group, element);
-			mapFragment.addQuestGeometry(quest.getGeometry());
-		});
-	}
-
-	@AnyThread @Override
 	public synchronized void onQuestsRemoved(Collection<Long> questIds, QuestGroup group)
 	{
-		removeQuests(questIds, group);
-	}
+		runOnUiThread(() -> mapFragment.removeQuests(questIds, group));
 
-	@AnyThread @Override
-	public synchronized void onQuestSolved(long questId, QuestGroup group)
-	{
-		questAutoSyncer.triggerAutoUpload();
-		removeQuests(Collections.singletonList(questId), group);
-	}
-
-	@AnyThread @Override
-	public void onQuestReverted(long revertQuestId, QuestGroup group)
-	{
-		questAutoSyncer.triggerAutoUpload();
-	}
-
-	private void removeQuests(Collection<Long> questIds, QuestGroup group)
-	{
 		// amount of quests is reduced -> check if redownloding now makes sense
 		questAutoSyncer.triggerAutoDownload();
 
 		for(long questId : questIds)
 		{
-			if (!isQuestDetailsCurrentlyDisplayedFor(questId, group)) continue;
-
-			runOnUiThread(this::closeBottomSheet);
-			questController.retrieveNextAt(questId, group);
-
-			break;
+			runOnUiThread(() ->  { closeQuestDetailsFor(questId, group); });
 		}
+	}
 
-		mapFragment.removeQuests(questIds, group);
+	/* ------------ Managing bottom sheet (quest details) and interaction with map  ------------- */
+
+	private final static String BOTTOM_SHEET = "bottom_sheet";
+
+	@Override public void onBackPressed()
+	{
+		Fragment f = getBottomSheetFragment();
+		if(f instanceof IsCloseableBottomSheet)
+		{
+			((IsCloseableBottomSheet)f).onClickClose(() ->
+			{
+				getSupportFragmentManager().popBackStackImmediate(BOTTOM_SHEET, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+				unfreezeMap();
+			});
+		}
+		else
+		{
+			super.onBackPressed();
+		}
+	}
+
+	private void closeQuestDetailsFor(long questId, QuestGroup group)
+	{
+		if (isQuestDetailsCurrentlyDisplayedFor(questId, group))
+		{
+			closeBottomSheet();
+		}
 	}
 
 	@UiThread private void closeBottomSheet()
@@ -783,21 +1038,18 @@ public class MainActivity extends AppCompatActivity implements
 		}
 
 		getSupportFragmentManager().popBackStackImmediate(BOTTOM_SHEET, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-
-		mapFragment.setIsFollowingPosition(isFollowingPosition);
-		mapFragment.removeQuestGeometry();
+		unfreezeMap();
 	}
 
 	private boolean isQuestDetailsCurrentlyDisplayedFor(long questId, QuestGroup group)
 	{
-		AbstractQuestAnswerFragment currentFragment = getQuestDetailsFragment();
-		return currentFragment != null
-				&& currentFragment.getQuestId() == questId
-				&& currentFragment.getQuestGroup() == group;
+		Fragment f = getBottomSheetFragment();
+		return f instanceof IsShowingQuestDetails
+			&& ((IsShowingQuestDetails)f).getQuestId() == questId
+			&& ((IsShowingQuestDetails)f).getQuestGroup() == group;
 	}
 
-	@UiThread private void showQuestDetails(final Quest quest, final QuestGroup group,
-											final Element element)
+	@UiThread private void showQuestDetails(Quest quest, QuestGroup group)
 	{
 		if(isQuestDetailsCurrentlyDisplayedFor(quest.getId(), group)) return;
 
@@ -806,14 +1058,14 @@ public class MainActivity extends AppCompatActivity implements
 			closeBottomSheet();
 		}
 
-		lastLocation = mapFragment.getDisplayedLocation();
 		mapFragment.addQuestGeometry(quest.getGeometry());
 
 		AbstractQuestAnswerFragment f = quest.getType().createForm();
-		Bundle args = QuestAnswerComponent.createArguments(quest.getId(), group);
+		Bundle args = QuestAnswerComponent.Companion.createArguments(quest.getId(), group);
 		if (group == QuestGroup.OSM)
 		{
-			args.putSerializable(AbstractQuestAnswerFragment.ARG_ELEMENT, (OsmElement) element);
+			OsmElement element = questController.getOsmElement((OsmQuest) quest);
+			args.putSerializable(AbstractQuestAnswerFragment.ARG_ELEMENT, element);
 		}
 		args.putSerializable(AbstractQuestAnswerFragment.ARG_GEOMETRY, quest.getGeometry());
 		args.putString(AbstractQuestAnswerFragment.ARG_QUESTTYPE, quest.getType().getClass().getSimpleName());
@@ -821,46 +1073,57 @@ public class MainActivity extends AppCompatActivity implements
 		args.putFloat(AbstractQuestAnswerFragment.ARG_MAP_TILT, mapTilt);
 		f.setArguments(args);
 
+		freezeMap();
+		locationWhenOpenedQuest = mapFragment.getDisplayedLocation();
 		showInBottomSheet(f);
 	}
 
-	private void showInBottomSheet(Fragment f)
-	{
-		isFollowingPosition = mapFragment.isFollowingPosition();
-		mapFragment.setIsFollowingPosition(false);
-
+	private void showInBottomSheet(Fragment f) {
+		int appearAnim = getBottomSheetFragment() == null ? R.animator.quest_answer_form_appear : 0;
+		int disappearAnim = R.animator.quest_answer_form_disappear;
 		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-		ft.setCustomAnimations(
-				R.animator.quest_answer_form_appear, R.animator.quest_answer_form_disappear,
-				R.animator.quest_answer_form_appear, R.animator.quest_answer_form_disappear);
-		ft.add(R.id.map_bottom_sheet_container, f, BOTTOM_SHEET);
+		ft.setCustomAnimations(appearAnim, disappearAnim, appearAnim, disappearAnim);
+		ft.replace(R.id.map_bottom_sheet_container, f, BOTTOM_SHEET);
 		ft.addToBackStack(BOTTOM_SHEET);
 		ft.commit();
 	}
 
-	private AbstractBottomSheetFragment getBottomSheetFragment()
+	private Fragment getBottomSheetFragment()
 	{
-		return (AbstractBottomSheetFragment) getSupportFragmentManager().findFragmentByTag(BOTTOM_SHEET);
+		return getSupportFragmentManager().findFragmentByTag(BOTTOM_SHEET);
 	}
 
-	private AbstractQuestAnswerFragment getQuestDetailsFragment()
+	private void freezeMap()
 	{
-		AbstractBottomSheetFragment f = getBottomSheetFragment();
-
-		return f instanceof AbstractQuestAnswerFragment ? (AbstractQuestAnswerFragment) f : null ;
+		isFollowingPosition = mapFragment.isFollowingPosition();
+		isCompassMode = mapFragment.isCompassMode();
+		mapFragment.setIsFollowingPosition(false);
+		mapFragment.setCompassMode(false);
+		mapFragment.hideMapControls();
 	}
+
+	private void unfreezeMap()
+	{
+		mapFragment.setIsFollowingPosition(isFollowingPosition);
+		mapFragment.setCompassMode(isCompassMode);
+		mapFragment.removeQuestGeometry();
+		mapFragment.showMapControls();
+	}
+
+	/* ---------------------------------- MapFragment.Listener ---------------------------------- */
 
 	@AnyThread @Override public void onMapOrientation(float rotation, float tilt)
 	{
 		mapRotation = rotation;
 		mapTilt = tilt;
-		AbstractQuestAnswerFragment f = getQuestDetailsFragment();
-		if (f != null)
+		Fragment f = getBottomSheetFragment();
+		if (f instanceof AbstractQuestAnswerFragment)
 		{
-			f.onMapOrientation(rotation, tilt);
+			((AbstractQuestAnswerFragment)f).onMapOrientation(rotation, tilt);
 		}
 	}
-	/* ---------- QuestsMapFragment.Listener ---------- */
+
+	/* ------------------------------- QuestsMapFragment.Listener ------------------------------- */
 
 	@Override public void onFirstInView(BoundingBox bbox)
 	{
@@ -871,27 +1134,31 @@ public class MainActivity extends AppCompatActivity implements
 	{
 		if (isQuestDetailsCurrentlyDisplayedFor(questId, questGroup)) return;
 
-		AbstractBottomSheetFragment f = getBottomSheetFragment();
-		if (f != null)
+		Runnable retrieveQuest = () ->
 		{
-			f.onClickClose(() -> questController.retrieve(questGroup, questId));
-		}
+			Quest quest = questController.get(questId, questGroup);
+			if(quest != null) showQuestDetails(quest, questGroup);
+		};
+
+		Fragment f = getBottomSheetFragment();
+		if (f instanceof IsCloseableBottomSheet)
+			((IsCloseableBottomSheet)f).onClickClose(retrieveQuest);
 		else
-		{
-			questController.retrieve(questGroup, questId);
-		}
+			retrieveQuest.run();
 	}
 
-	@Override public void onClickedMapAt(@Nullable LatLon position)
+	@Override public void onClickedMapAt(@NonNull LatLon position, double clickAreaSizeInMeters)
 	{
-		AbstractBottomSheetFragment f = getBottomSheetFragment();
-		if(f != null)
+		Fragment f = getBottomSheetFragment();
+		if (f instanceof IsCloseableBottomSheet)
 		{
-			f.onClickClose(this::closeBottomSheet);
+			IsCloseableBottomSheet g = (IsCloseableBottomSheet) f;
+			if(!g.onClickMapAt(position, clickAreaSizeInMeters))
+				g.onClickClose(this::closeBottomSheet);
 		}
 	}
 
-	/* ---------- Location listener ---------- */
+	/* ------------------------------------ Location listener ----------------------------------- */
 
 	private void updateLocationAvailability()
 	{
@@ -909,6 +1176,8 @@ public class MainActivity extends AppCompatActivity implements
 	{
 		hasAskedForLocation = true;
 		boolean enabled = withLocationState.isEnabled();
+		prefs.edit().putBoolean(Prefs.LAST_LOCATION_REQUEST_DENIED, !enabled).apply();
+
 		if(enabled)
 		{
 			updateLocationAvailability();
@@ -918,6 +1187,20 @@ public class MainActivity extends AppCompatActivity implements
 			Toast.makeText(MainActivity.this, R.string.no_gps_no_quests, Toast.LENGTH_LONG).show();
 		}
 	}
+
+	// ---------------------------------------------------------------------------------------------
+
+	/** Menu raised by clicking on the star icon */
+	public void starInfoMenu(View view) {
+		String message = getString(R.string.about_contributing) + "\n\n" + getString(R.string.about_missing_stars);
+		if(answersCounter.waitingForUpload() + answersCounter.uploaded() == 0){
+			message = getString(R.string.how_to_get_stars) + "\n\n" + getString(R.string.about_contributing);
+		}
+		new AlertDialog.Builder(MainActivity.this)
+			.setMessage(message)
+			.show();
+	}
+
 
 	// ---------------------------------------------------------------------------------------------
 

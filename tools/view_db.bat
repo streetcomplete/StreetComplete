@@ -1,4 +1,5 @@
-app=de.westnordost.streetcomplete.debug
+SET app=de.westnordost.streetcomplete.debug
+SET ANDROID_SDK_ROOT=C:\Android\sdk
 %ANDROID_SDK_ROOT%\platform-tools\adb.exe shell run-as %app% chmod 777 /data/data/%app%/databases/
 %ANDROID_SDK_ROOT%\platform-tools\adb.exe shell run-as %app% chmod 777 /data/data/%app%/databases/streetcomplete.db
 %ANDROID_SDK_ROOT%\platform-tools\adb.exe shell cp /data/data/%app%/databases/streetcomplete.db /sdcard/

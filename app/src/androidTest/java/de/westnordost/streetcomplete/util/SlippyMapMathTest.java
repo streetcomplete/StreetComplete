@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.util;
 import android.graphics.Point;
 import android.graphics.Rect;
 
-import junit.framework.TestCase;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,9 +12,11 @@ import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.osmapi.map.data.OsmLatLon;
 
-public class SlippyMapMathTest extends TestCase
+import static org.junit.Assert.*;
+
+public class SlippyMapMathTest
 {
-	public void testForthAndBack()
+	@Test public void forthAndBack()
 	{
 		LatLon p = new OsmLatLon(53.0,9.0);
 		Point tile = SlippyMapMath.enclosingTile(p, 15);
@@ -29,11 +31,9 @@ public class SlippyMapMathTest extends TestCase
 		BoundingBox bbox2 = SlippyMapMath.asBoundingBox(r, 15);
 
 		assertEquals(bbox, bbox2);
-
-
 	}
 
-	public void testAsTileList()
+	@Test public void asTileList()
 	{
 		List<Point> ps = new ArrayList<>();
 		ps.add(new Point(1,1));

@@ -19,15 +19,15 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
-        android:background="#fff"
+        android:background="@drawable/background_white_corners"
         >
 
-        <android.support.v7.widget.AppCompatEditText
-            android:id="@+id/inputHouseName"
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/houseNameInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/background_housenumber_frame"
-            app:backgroundTint="#495aad"
+            app:backgroundTint="@color/traffic_blue"
             android:inputType="text"
             android:imeOptions="actionDone"
             tools:text="My Cool House"

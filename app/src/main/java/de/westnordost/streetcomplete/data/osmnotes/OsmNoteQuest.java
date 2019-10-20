@@ -1,8 +1,9 @@
 package de.westnordost.streetcomplete.data.osmnotes;
 
-import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import androidx.annotation.Nullable;
 import de.westnordost.streetcomplete.data.Quest;
 import de.westnordost.streetcomplete.data.QuestStatus;
 import de.westnordost.streetcomplete.data.QuestType;
@@ -17,8 +18,8 @@ public class OsmNoteQuest implements Quest
 		this(null, note, QuestStatus.NEW, null, new Date(), osmNoteQuestType, null);
 	}
 
-	public OsmNoteQuest(Long id, Note note, QuestStatus status, String comment, Date lastUpdate,
-						OsmNoteQuestType questType, ArrayList<String> imagePaths)
+	public OsmNoteQuest(@Nullable Long id, Note note, QuestStatus status, @Nullable String comment, Date lastUpdate,
+						OsmNoteQuestType questType, @Nullable List<String> imagePaths)
 	{
 		this.id = id;
 		this.note = note;
@@ -29,14 +30,14 @@ public class OsmNoteQuest implements Quest
 		this.imagePaths = imagePaths;
 	}
 
-	private Long id;
+	@Nullable  private Long id;
 	private Date lastUpdate;
 	private QuestStatus status;
 	private Note note;
 
-	private String comment;
+	@Nullable private String comment;
 
-	private ArrayList<String> imagePaths;
+	@Nullable private List<String> imagePaths;
 
 	private final OsmNoteQuestType questType;
 
@@ -66,9 +67,9 @@ public class OsmNoteQuest implements Quest
 		return id;
 	}
 
-	@Override public LatLon getMarkerLocation()
+	@Override public LatLon[] getMarkerLocations()
 	{
-		return note.position;
+		return new LatLon[]{note.position};
 	}
 
 	@Override public ElementGeometry getGeometry()
@@ -79,7 +80,12 @@ public class OsmNoteQuest implements Quest
 		// will/should likely not show up for other users of this app
 
 		// no geometry other than the marker location
-		return new ElementGeometry(getMarkerLocation());
+		return new ElementGeometry(getCenter());
+	}
+
+	@Override public LatLon getCenter()
+	{
+		return note.position;
 	}
 
 	public Note getNote()
@@ -92,12 +98,12 @@ public class OsmNoteQuest implements Quest
 		this.note = note;
 	}
 
-	public String getComment()
+	@Nullable public String getComment()
 	{
 		return comment;
 	}
 
-	public void setComment(String comment)
+	public void setComment(@Nullable String comment)
 	{
 		this.comment = comment;
 	}
@@ -112,12 +118,12 @@ public class OsmNoteQuest implements Quest
 		this.id = id;
 	}
 
-	public void setImagePaths(ArrayList<String> imagePaths)
+	public void setImagePaths(@Nullable List<String> imagePaths)
 	{
 		this.imagePaths = imagePaths;
 	}
 
-	public ArrayList<String> getImagePaths()
+	@Nullable public List<String> getImagePaths()
 	{
 		return imagePaths;
 	}

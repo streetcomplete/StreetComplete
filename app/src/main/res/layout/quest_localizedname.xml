@@ -7,13 +7,13 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/description"
+        android:id="@+id/descriptionLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/quest_streetName_description"/>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/roadnames"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/namesList"
         android:background="@drawable/background_roadname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -21,7 +21,7 @@
         />
 
     <Button
-        android:id="@+id/btn_add"
+        android:id="@+id/addLanguageButton"
         android:text="➕"
         android:layout_width="50dp"
         android:layout_height="wrap_content"

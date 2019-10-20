@@ -3,27 +3,26 @@ package de.westnordost.streetcomplete.tangram;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.graphics.PointF;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.hardware.SensorManager;
 import android.location.Location;
 import android.os.Bundle;
-import android.support.annotation.AnyThread;
-import android.support.annotation.CallSuper;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v13.app.FragmentCompat;
-import android.support.v4.app.Fragment;
-import android.support.v7.preference.PreferenceManager;
+import androidx.annotation.AnyThread;
+import androidx.annotation.CallSuper;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.view.ViewKt;
+import androidx.fragment.app.Fragment;
+import androidx.preference.PreferenceManager;
 import android.text.Html;
 import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
-import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
 import android.view.WindowManager;
 import android.widget.TextView;
 
@@ -45,16 +44,16 @@ import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.streetcomplete.Prefs;
 import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.util.BitmapUtil;
+import de.westnordost.streetcomplete.util.DpUtil;
 import de.westnordost.streetcomplete.util.SphericalEarthMath;
+import kotlin.Unit;
 
 import static android.content.Context.SENSOR_SERVICE;
 
 public class MapFragment extends Fragment implements
-		FragmentCompat.OnRequestPermissionsResultCallback, LocationListener,
-		LostApiClient.ConnectionCallbacks, TouchInput.ScaleResponder,
-		TouchInput.ShoveResponder, TouchInput.RotateResponder,
-		TouchInput.PanResponder, TouchInput.DoubleTapResponder,
-		CompassComponent.Listener, MapController.SceneLoadListener
+	LocationListener, LostApiClient.ConnectionCallbacks, TouchInput.ScaleResponder,
+	TouchInput.ShoveResponder, TouchInput.RotateResponder, TouchInput.PanResponder,
+	TouchInput.DoubleTapResponder, CompassComponent.Listener, MapController.SceneLoadListener
 {
 	private CompassComponent compass = new CompassComponent();
 
@@ -127,7 +126,18 @@ public class MapFragment extends Fragment implements
 
 	public void getMapAsync(String apiKey)
 	{
-		getMapAsync(apiKey, "map_theme/scene.yaml");
+		getMapAsync(apiKey, getSceneFilePath());
+	}
+
+	protected String getSceneFilePath()
+	{
+		String scene = "scene-light.yaml";
+		int currentNightMode = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+		if (currentNightMode == Configuration.UI_MODE_NIGHT_YES)
+		{
+			scene = "scene-dark.yaml";
+		}
+		return "map_theme/" + scene;
 	}
 
 	@CallSuper public void getMapAsync(String apiKey, @NonNull final String sceneFilePath)
@@ -180,24 +190,14 @@ public class MapFragment extends Fragment implements
 			initMarkers();
 			followPosition();
 			showLocation();
-			postOnLayout(this::updateView);
+			View v = getView();
+			if(v != null) ViewKt.doOnLayout(v, this::packagedUpdateView);
 		}
 	}
 
-	private void postOnLayout(final Runnable runnable)
-	{
-		ViewTreeObserver vto = getView().getViewTreeObserver();
-		if(vto.isAlive())
-		{
-			vto.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener()
-			{
-				@Override public void onGlobalLayout()
-				{
-					getView().getViewTreeObserver().removeOnGlobalLayoutListener(this);
-					runnable.run();
-				}
-			});
-		}
+	public Unit packagedUpdateView(View _trigger){
+		this.updateView();
+		return Unit.INSTANCE;
 	}
 
 	private void initMarkers()
@@ -238,12 +238,11 @@ public class MapFragment extends Fragment implements
 
 	private String[] sizeInDp(Drawable drawable)
 	{
-		DisplayMetrics metrics = new DisplayMetrics();
-		getActivity().getWindowManager().getDefaultDisplay().getMetrics(metrics);
-		float d = metrics.density;
+		Context ctx = getContext();
 		return new String[]{
-				drawable.getIntrinsicWidth() / d + "px",
-				drawable.getIntrinsicHeight() / d + "px"};
+			// CSS "px" are in fact density dependent pixels
+			DpUtil.toDp(drawable.getIntrinsicWidth(), ctx) + "px",
+			DpUtil.toDp(drawable.getIntrinsicHeight(),ctx) + "px"};
 	}
 
 	private void updateMapTileCacheSize()
@@ -290,11 +289,6 @@ public class MapFragment extends Fragment implements
 	public void setIsFollowingPosition(boolean value)
 	{
 		isFollowingPosition = value;
-		if(!isFollowingPosition) {
-			zoomedYet = false;
-			isShowingDirection = false;
-			isCompassMode = false;
-		}
 		followPosition();
 	}
 
@@ -379,6 +373,7 @@ public class MapFragment extends Fragment implements
 
 	protected void updateView()
 	{
+		if(controller == null) return;
 		updateAccuracy();
 		if(shouldCenterCurrentPosition())
 		{
@@ -491,7 +486,6 @@ public class MapFragment extends Fragment implements
 
 	public void setCompassMode(boolean isCompassMode)
 	{
-		if(!isFollowingPosition) return;
 		this.isCompassMode = isCompassMode;
 		if(isCompassMode)
 		{
@@ -666,9 +660,27 @@ public class MapFragment extends Fragment implements
 		onMapOrientation(rotation, tilt);
 	}
 
-	public float getRotation()
+	public LngLat getPositionAt(PointF pointF)
 	{
-		return controller != null ? controller.getRotation() : 0;
+		LngLat pos = controller.screenPositionToLngLat(pointF);
+		if(pos == null) return null;
+		return pos;
+	}
+
+	public PointF getPointOf(LngLat pos)
+	{
+		return controller.lngLatToScreenPosition(pos);
+	}
+
+	public LngLat getPosition()
+	{
+		if(controller == null) return null;
+		return controller.getPosition();
+	}
+
+	public void setPosition(LngLat position)
+	{
+		controller.setPosition(position);
 	}
 
 	public float getZoom()
@@ -676,4 +688,23 @@ public class MapFragment extends Fragment implements
 		return controller.getZoom();
 	}
 
+	public void setZoom(float zoom)
+	{
+		controller.setZoom(zoom);
+	}
+
+	public float getRotation()
+	{
+		return controller != null ? controller.getRotation() : 0;
+	}
+
+	public void showMapControls()
+	{
+		if(mapControls != null) mapControls.showControls();
+	}
+
+	public void hideMapControls()
+	{
+		if(mapControls != null) mapControls.hideControls();
+	}
 }

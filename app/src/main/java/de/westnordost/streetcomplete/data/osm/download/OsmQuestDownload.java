@@ -5,7 +5,10 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.Future;
@@ -14,6 +17,7 @@ import java.util.concurrent.FutureTask;
 import javax.inject.Inject;
 
 import de.westnordost.countryboundaries.CountryBoundaries;
+import de.westnordost.osmapi.map.data.OsmLatLon;
 import de.westnordost.streetcomplete.data.QuestGroup;
 import de.westnordost.streetcomplete.data.QuestType;
 import de.westnordost.streetcomplete.data.VisibleQuestListener;
@@ -24,13 +28,16 @@ import de.westnordost.streetcomplete.data.osm.OsmQuest;
 import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao;
 import de.westnordost.streetcomplete.data.osm.persist.MergedElementDao;
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
-import de.westnordost.streetcomplete.data.osm.persist.OsmElementKey;
+import de.westnordost.streetcomplete.data.osm.ElementKey;
 import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.osmapi.map.data.LatLon;
+import de.westnordost.streetcomplete.util.SphericalEarthMath;
 
 public class OsmQuestDownload
 {
+	public static final int MAX_GEOMETRY_LENGTH_IN_METERS = 500;
+
 	private static final String TAG = "QuestDownload";
 
 	// injections
@@ -66,16 +73,23 @@ public class OsmQuestDownload
 				"Skipped because it is disabled for this country");
 			return true;
 		}
+		Log.i(TAG, getQuestTypeName(questType) + ": Starting");
 
 		final ArrayList<ElementGeometryDao.Row> geometryRows = new ArrayList<>();
-		final Map<OsmElementKey,Element> elements = new HashMap<>();
+		final Map<ElementKey,Element> elements = new HashMap<>();
 		final ArrayList<OsmQuest> quests = new ArrayList<>();
-		final Map<OsmElementKey, Long> previousQuests = getPreviousQuestsIdsByElementKey(questType, bbox);
+		final Map<ElementKey, Long> previousQuests = getPreviousQuestsIdsByElementKey(questType, bbox);
+
+		final HashSet<LatLon> truncatedBlacklistedPositions = new HashSet<>();
+		for (LatLon blacklistedPosition : blacklistedPositions)
+		{
+			truncatedBlacklistedPositions.add(truncateTo5Decimals(blacklistedPosition));
+		}
 
 		long time = System.currentTimeMillis();
 		boolean success = questType.download(bbox, (element, geometry) ->
 		{
-			if(mayCreateQuestFrom(questType, element, geometry, blacklistedPositions))
+			if(mayCreateQuestFrom(questType, element, geometry, truncatedBlacklistedPositions))
 			{
 				Element.Type elementType = element.getType();
 				long elementId = element.getId();
@@ -85,7 +99,7 @@ public class OsmQuestDownload
 				geometryRows.add(new ElementGeometryDao.Row(
 						elementType, elementId, quest.getGeometry()));
 				quests.add(quest);
-				OsmElementKey elementKey = new OsmElementKey(elementType, elementId);
+				ElementKey elementKey = new ElementKey(elementType, elementId);
 				elements.put(elementKey, element);
 				previousQuests.remove(elementKey);
 			}
@@ -123,25 +137,26 @@ public class OsmQuestDownload
 		// turns out to be slow if done for every quest type
 		geometryDB.deleteUnreferenced();
 		elementDB.deleteUnreferenced();
+		questType.cleanMetadata();
 
 		int obsoleteAmount = previousQuests.size();
 		Log.i(TAG, getQuestTypeName(questType) + ": " +
 				"Added " + newQuestsByQuestType + " new and " +
 				"removed " + obsoleteAmount + " already resolved quests." +
 				" (Total: " + quests.size() + ")" +
-				" in " + (System.currentTimeMillis() - time) + "ms");
+				" in " + ((System.currentTimeMillis() - time)/1000) + "s");
 
 		return true;
 	}
 
-	private Map<OsmElementKey, Long> getPreviousQuestsIdsByElementKey(
+	private Map<ElementKey, Long> getPreviousQuestsIdsByElementKey(
 			OsmElementQuestType questType, BoundingBox bbox)
 	{
 		String questTypeName = questType.getClass().getSimpleName();
-		Map<OsmElementKey, Long> result = new HashMap<>();
+		Map<ElementKey, Long> result = new HashMap<>();
 		for(OsmQuest quest : osmQuestDB.getAll(bbox, null, questTypeName, null, null))
 		{
-			result.put(new OsmElementKey(quest.getElementType(), quest.getElementId()),	quest.getId());
+			result.put(new ElementKey(quest.getElementType(), quest.getElementId()),	quest.getId());
 		}
 		return result;
 	}
@@ -157,7 +172,7 @@ public class OsmQuestDownload
 				bbox.getMinLongitude(), bbox.getMinLatitude(),
 				bbox.getMaxLongitude(), bbox.getMaxLatitude());
 
-			if(containsAnyOf(containingCountries, countries.getExceptions())) return false;
+			return !containsAnyOf(containingCountries, countries.getExceptions());
 		}
 		else
 		{
@@ -165,9 +180,8 @@ public class OsmQuestDownload
 				bbox.getMinLongitude(), bbox.getMinLatitude(),
 				bbox.getMaxLongitude(), bbox.getMaxLatitude());
 
-			if(!containsAnyOf(intersectingCountries, countries.getExceptions())) return false;
+			return containsAnyOf(intersectingCountries, countries.getExceptions());
 		}
-		return true;
 	}
 
 	private boolean mayCreateQuestFrom(
@@ -185,8 +199,21 @@ public class OsmQuestDownload
 			return false;
 		}
 
-		// do not create quests whose marker is at a blacklisted position
-		if(blacklistedPositions != null && blacklistedPositions.contains(geometry.center))
+		// do not create quests that refer to geometry that is too long for a surveyor to be
+		// expected to survey
+		if(geometry.polylines != null)
+		{
+			double distance = 0;
+			for (List<LatLon> polyline : geometry.polylines)
+			{
+				distance += SphericalEarthMath.distance(polyline);
+			}
+			if(distance > MAX_GEOMETRY_LENGTH_IN_METERS) return false;
+		}
+
+		// do not create quests whose marker is at/near a blacklisted position
+		LatLon truncatedGeometryCenter = truncateTo5Decimals(geometry.center);
+		if(blacklistedPositions != null && blacklistedPositions.contains(truncatedGeometryCenter))
 		{
 			Log.d(TAG, getQuestTypeName(questType) + ": Not adding a quest at " +
 					getPosAsLogString(geometry.center) +
@@ -213,6 +240,17 @@ public class OsmQuestDownload
 		return true;
 	}
 
+	// the resulting precision is about ~1 meter (see #1089)
+	private static LatLon truncateTo5Decimals(LatLon latLon) {
+		return new OsmLatLon(
+			truncateTo5Decimals(latLon.getLatitude()),
+			truncateTo5Decimals(latLon.getLongitude()));
+	}
+
+	private static double truncateTo5Decimals(double val) {
+		return (double)((int)(val * 1e5))/1e5;
+	}
+
 	private CountryBoundaries getCountryBoundaries()
 	{
 		try
@@ -237,7 +275,7 @@ public class OsmQuestDownload
 
 	private static String getElementAsLogString(Element element)
 	{
-		return element.getType().name().toLowerCase() + " #" + element.getId();
+		return element.getType().name().toLowerCase(Locale.US) + " #" + element.getId();
 	}
 
 	private static String getQuestTypeName(QuestType q)

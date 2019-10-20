@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primary_dark</item>
+        <item name="colorAccent">@color/accent</item>
+        <!-- to workaround a bug in Android (AppCompat?), see
+             https://stackoverflow.com/questions/41727729/fatal-exception-java-lang-unsupportedoperationexception-failed-to-resolve-attr -->
+        <item name="android:colorPrimary" tools:targetApi="lollipop">@color/primary</item>
+        <item name="android:colorPrimaryDark" tools:targetApi="lollipop">@color/primary_dark</item>
+        <item name="android:colorAccent" tools:targetApi="lollipop">@color/accent</item>
+
+        <item name="alertDialogTheme">@style/Theme.Bubble.Dialog.Alert</item>
+        <item name="dialogTheme">@style/Theme.Bubble.Dialog</item>
+        <item name="titleTextAppearance">@style/TextAppearance.Title</item>
+        <item name="buttonBarStyle">@style/ButtonBar</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="dividerVertical">@drawable/button_bar_divider</item>
+        <item name="dividerHorizontal">@drawable/button_bar_divider</item>
+        <item name="android:popupMenuStyle">@style/Theme.Bubble.Popup</item>
+    </style>
+
+    <style name="Theme.Bubble.ToolbarPopup"  parent="Theme.AppCompat.DayNight.NoActionBar"/>
+
+    <style name="Theme.Bubble.Popup" parent="Widget.AppCompat.Light.PopupMenu">
+        <item name="android:popupBackground">@drawable/speech_bubble_none</item>
+        <item name="android:popupAnimationStyle">@style/Animation.Popup.Bubble</item>
+    </style>
+
+    <style name="Theme.Bubble.Dialog" parent="Theme.AppCompat.DayNight.Dialog">
+        <item name="colorAccent">@color/accent</item>
+        <item name="android:windowTitleStyle">@style/DialogWindowTitle.Bubble</item>
+        <item name="buttonBarStyle">@style/ButtonBar</item>
+        <item name="android:windowBackground">@drawable/speech_bubble_none</item>
+        <item name="android:windowAnimationStyle">@style/Animation.Dialog.Bubble</item>
+        <item name="android:windowMinWidthMajor">50%</item>
+        <item name="android:windowMinWidthMinor">75%</item>
+    </style>
+
+    <style name="Theme.Bubble.Dialog.Alert"/>
+
+</resources>

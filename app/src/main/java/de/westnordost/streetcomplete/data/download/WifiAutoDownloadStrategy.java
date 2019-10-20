@@ -1,19 +1,17 @@
 package de.westnordost.streetcomplete.data.download;
 
-import java.util.List;
 
 import javax.inject.Inject;
-import javax.inject.Provider;
 
-import de.westnordost.streetcomplete.data.QuestType;
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
 import de.westnordost.streetcomplete.data.tiles.DownloadedTilesDao;
+import de.westnordost.streetcomplete.data.visiblequests.OrderedVisibleQuestTypesProvider;
 
 public class WifiAutoDownloadStrategy extends AActiveRadiusStrategy
 {
 	@Inject public WifiAutoDownloadStrategy(
 			OsmQuestDao osmQuestDB, DownloadedTilesDao downloadedTilesDao,
-			Provider<List<QuestType>> questTypes)
+			OrderedVisibleQuestTypesProvider questTypes)
 	{
 		super(osmQuestDB, downloadedTilesDao, questTypes);
 	}
@@ -28,7 +26,7 @@ public class WifiAutoDownloadStrategy extends AActiveRadiusStrategy
 
 	@Override public int getQuestTypeDownloadCount()
 	{
-		return 3;
+		return 8;
 	}
 
 	@Override protected int getMinQuestsInActiveRadiusPerKm2()
@@ -38,12 +36,12 @@ public class WifiAutoDownloadStrategy extends AActiveRadiusStrategy
 
 	@Override protected int[] getActiveRadii()
 	{
-		// checks if either in 1200 or 400m radius, there are enough quests.
-		return new int[]{1200, 400};
+		// checks if either in 600 or 300m radius, there are enough quests.
+		return new int[]{600, 300};
 	}
 
 	@Override protected int getDownloadRadius()
 	{
-		return 2400;
+		return 1200;
 	}
 }

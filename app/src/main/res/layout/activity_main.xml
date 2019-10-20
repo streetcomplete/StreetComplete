@@ -1,6 +1,7 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -22,44 +23,94 @@
         android:orientation="vertical">
         <!-- the toolbar somehow always wants to be in front in its layout, so let's ban it into
              a sub frame layout -->
-        <android.support.v7.widget.Toolbar
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
+        <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            android:elevation="4dp">
+            android:elevation="4dp"
+            app:theme="@style/ThemeOverlay.AppCompat.Dark"
+            app:popupTheme="@style/Theme.Bubble.ToolbarPopup">
 
-            <TextView
-                android:id="@+id/uploadedAnswersCounter"
+            <RelativeLayout
+                android:id="@+id/uploadedAnswersContainer"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:paddingStart="0dp"
+                android:paddingEnd="12dp"
+                android:clipChildren="false"
+                android:minWidth="84dp"
                 android:gravity="center_vertical"
-                android:drawableStart="@drawable/ic_star_white_24dp"
-                android:drawablePadding="4dp"
-                android:padding="8dp"
-                android:minEms="4"
-                tools:text="8888"
-                />
+                android:clickable="true">
 
-            <TextView
-                android:id="@+id/unsyncedAnswersCounter"
+                <ProgressBar
+                    android:id="@+id/uploadedAnswersProgress"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:indeterminate="true"
+                    android:layout_centerVertical="true"
+                    android:visibility="invisible"
+                    tools:visibility="visible"/>
+
+                <ImageView
+                    android:id="@+id/uploadedAnswersIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_star_white_24dp"/>
+
+                <TextView
+                    android:id="@+id/uploadedAnswersCounter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@id/uploadedAnswersIcon"
+                    tools:text="8888"
+                    />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/unsyncedAnswersContainer"
+                android:background="?android:attr/actionBarItemBackground"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:drawablePadding="4dp"
-                android:padding="8dp"
-                android:drawableStart="@drawable/ic_file_upload_24dp"
-                android:gravity="center_vertical"
-                android:background="?android:attr/selectableItemBackground"
-                android:minEms="2"
-                tools:text="88"
-                />
+                android:paddingStart="0dp"
+                android:paddingEnd="12dp"
+                android:clipChildren="false"
+                android:minWidth="68dp"
+                android:gravity="center_vertical">
 
+                <ProgressBar
+                    android:id="@+id/unsyncedAnswersProgress"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:indeterminate="true"
+                    android:layout_centerVertical="true"
+                    android:visibility="invisible"
+                    tools:visibility="visible"/>
 
-        </android.support.v7.widget.Toolbar>
+                <ImageView
+                    android:id="@+id/unsyncedAnswersIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/ic_file_upload_24dp"/>
+
+                <TextView
+                    android:id="@+id/unsyncedAnswersCounter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@id/unsyncedAnswersIcon"
+                    android:minWidth="16dp"
+                    tools:text="88"/>
+
+            </RelativeLayout>
+
+        </androidx.appcompat.widget.Toolbar>
 
         <ProgressBar
             android:id="@+id/download_progress"

@@ -1,5 +1,8 @@
 package de.westnordost.streetcomplete.data.osm.persist;
 
+import org.junit.Before;
+import org.junit.Test;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,18 +12,19 @@ import de.westnordost.osmapi.map.data.Node;
 import de.westnordost.osmapi.map.data.OsmLatLon;
 import de.westnordost.osmapi.map.data.OsmNode;
 
+import static org.junit.Assert.assertEquals;
+
 
 public class NodeDaoTest extends ApplicationDbTestCase
 {
 	private NodeDao dao;
 
-	@Override public void setUp() throws Exception
+	@Before public void createDao()
 	{
-		super.setUp();
 		dao = new NodeDao(dbHelper, serializer);
 	}
 
-	public void testPutGetNoTags()
+	@Test public void putGetNoTags()
 	{
 		LatLon pos = new OsmLatLon(2,2);
 		Node node = new OsmNode(5, 1, pos, null);
@@ -30,7 +34,7 @@ public class NodeDaoTest extends ApplicationDbTestCase
 		checkEqual(node, dbNode);
 	}
 
-	public void testPutGetWithTags()
+	@Test public void putGetWithTags()
 	{
 		Map<String,String> tags = new HashMap<>();
 		tags.put("a key", "a value");

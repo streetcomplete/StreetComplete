@@ -1,3 +1,4 @@
+# use app/generateCountryMetadata.py to generate files used by StreetComplete
 # religions that should be shown first before the order defined in the form.
 # no total order required. Just mention the religions that should show within the first few entries
 default: []
@@ -12,6 +13,7 @@ BN: [muslim]
 BT: [buddhist, hindu]
 CA: [christian, muslim, jewish, hindu, sikh]
 CN: [chinese_folk, taoist, buddhist, christian, muslim]
+DE: [christian, muslim, jewish]
 DJ: [muslim]
 DZ: [muslim]
 EG: [muslim]

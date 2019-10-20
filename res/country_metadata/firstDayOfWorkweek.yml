@@ -1,3 +1,4 @@
+# use app/generateCountryMetadata.py to generate files used by StreetComplete
 # the first day in a workweek (not necessarily the first day of the week in a calendar)
 # Source: https://en.wikipedia.org/wiki/Workweek_and_weekend#Around_the_world (retrieved 2016-10-27)
 default: Mo
