@@ -205,7 +205,7 @@ private fun StringWithCursor.expectOneOrMoreSpaces(): Int {
 }
 
 private fun StringWithCursor.nextIsReservedWord(): String? {
-    return RESERVED_WORDS.firstOrNull { nextIsIgnoreCase(it) }
+    return RESERVED_WORDS.map { "$it " }.firstOrNull { nextIsIgnoreCase(it) }
 }
 
 private fun StringWithCursor.findKeyLength(): Int {

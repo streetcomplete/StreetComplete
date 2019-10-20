@@ -75,6 +75,12 @@ class FiltersParserAndOverpassQueryCreatorTest {
         check("nodes with \"with\"=\"with\"", "node[with = with];")
     }
 
+    @Test fun `tag may start with reserved word`() {
+        check("nodes with widthdrawn = with", "node[widthdrawn = with];")
+        check("nodes with orchard = or", "node[orchard = or];")
+        check("nodes with android = and", "node[android = and];")
+    }
+
     @Test fun `tag key with quotation marks is ok`() {
         check(
             "nodes with \"highway = residential or bla\"",
