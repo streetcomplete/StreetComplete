@@ -10,9 +10,8 @@ class AddFootwayPartSurface(o: OverpassMapDataDao) : SimpleOverpassQuestType<Str
 	override val tagFilters = """
         ways with
         (
-          highway ~ footway|path 
-          or 
-          (highway ~ cycleway|bridleway and foot ~ designated|yes)
+          highway = footway 
+          or (highway ~ path|cycleway|bridleway and foot != no)
         )
         and segregated = yes
         and !footway:surface and !surface:footway

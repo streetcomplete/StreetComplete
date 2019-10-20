@@ -11,8 +11,8 @@ class AddCyclewayPartSurface(o: OverpassMapDataDao) : SimpleOverpassQuestType<St
         ways with
         (
           highway = cycleway 
-          or 
-          (highway ~ path|footway|bridleway and bicycle ~ designated|yes)
+          or (highway ~ path|footway and bicycle != no)
+          or (highway = bridleway and bicycle ~ designated|yes)
         )
         and segregated = yes
         and !cycleway:surface and !surface:cycleway
