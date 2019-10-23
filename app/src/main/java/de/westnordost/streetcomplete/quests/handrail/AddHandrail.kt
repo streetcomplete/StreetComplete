@@ -19,7 +19,8 @@ import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 class AddHandrail(overpassServer: OverpassMapDataDao) : SimpleOverpassQuestType<Boolean>(overpassServer) {
     // Do not include nodes and relations, even though these exist with the right tags, because
     // according to the wiki page for `highway=steps` [2] it can only be applied to ways. It also
-    // does not make much sense for other types of elements and it is more likely to be a
+    // does not make much sense for other types of elements and it is more likely to be a tagging
+    // mistake.
     // Do not exclude elements tagged with `handrail:left`, `handrail:center` or `handrail:right`
     // because according to the wiki page for `handrail=*` [1], the `handrail` tag should
     // always have just `yes` or
