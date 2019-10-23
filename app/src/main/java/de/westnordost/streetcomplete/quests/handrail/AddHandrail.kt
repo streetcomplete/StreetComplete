@@ -12,9 +12,6 @@ import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
  * which does not depend on the location of the handrail.
  * The details would only slow down the answering in a survey by requiring more thought and a more
  * complex GUI (interpreting the direction of the OSM way for example).
- *
- * Github Issue for this quest:
- * https://github.com/westnordost/StreetComplete/issues/1390
  */
 class AddHandrail(overpassServer: OverpassMapDataDao) : SimpleOverpassQuestType<Boolean>(overpassServer) {
     // Do not include nodes and relations, even though these exist with the right tags, because
