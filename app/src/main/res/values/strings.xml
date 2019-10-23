@@ -683,5 +683,5 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="confirmation_authorize_now_note">You can do this later on the settings screen.</string>
     <string name="quest_generalFee_title">Does it cost a fee to enter %s?</string>
     <string name="quest_laundrySelfService_title">Is this laundry a self service laundry?</string>
-
+    <string name="quest_handrail_title">Do these steps have a handrail?</string>
 </resources>
