@@ -64,6 +64,8 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 	private LatLon lastClickPos;
 	private double lastFingerRadiusInMeters;
 
+	// TODO this could maybe solved instead by a scene update, see https://tangrams.readthedocs.io/en/latest/Syntax-Reference/layers/
+	// (enabled key) but not until the fragment learnt how to properly reinitialize its markers on a scene update
 	private boolean isShowingQuests = true;
 
 	private Rect lastDisplayedRect;
