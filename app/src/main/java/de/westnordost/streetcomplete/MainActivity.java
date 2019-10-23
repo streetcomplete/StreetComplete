@@ -803,6 +803,7 @@ public class MainActivity extends AppCompatActivity implements
 		if (quest == null) return;
 		OsmElement element = questController.getOsmElement((OsmQuest) quest);
 		if (!(element instanceof Way)) return;
+		mapFragment.setIsShowingQuests(false);
 		showInBottomSheet(SplitWayFragment.create(osmQuestId, (Way) element, quest.getGeometry()));
 	}
 
@@ -1108,6 +1109,7 @@ public class MainActivity extends AppCompatActivity implements
 		mapFragment.setCompassMode(isCompassMode);
 		mapFragment.removeQuestGeometry();
 		mapFragment.showMapControls();
+		mapFragment.setIsShowingQuests(true);
 	}
 
 	/* ---------------------------------- MapFragment.Listener ---------------------------------- */

@@ -64,6 +64,8 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 	private LatLon lastClickPos;
 	private double lastFingerRadiusInMeters;
 
+	private boolean isShowingQuests;
+
 	private Rect lastDisplayedRect;
 	private final Set<Point> retrievedTiles;
 	private static final int TILES_ZOOM = 14;
@@ -115,11 +117,14 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 			questTypeOrder.put(questType, order++);
 		}
 
-		BoundingBox displayedArea = getDisplayedArea(new Rect());
-		if(displayedArea != null)
+		if (isShowingQuests)
 		{
-			lastDisplayedRect = SlippyMapMath.enclosingTiles(displayedArea, TILES_ZOOM);
-			updateQuestsInRect(lastDisplayedRect);
+			BoundingBox displayedArea = getDisplayedArea(new Rect());
+			if (displayedArea != null)
+			{
+				lastDisplayedRect = SlippyMapMath.enclosingTiles(displayedArea, TILES_ZOOM);
+				updateQuestsInRect(lastDisplayedRect);
+			}
 		}
 	}
 
@@ -316,6 +321,8 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 
 		if (controller == null) return;
 
+		if (!isShowingQuests) return;
+
 		if(controller.getZoom() < TILES_ZOOM) return;
 
 		LngLat positionNow = controller.getPosition();
@@ -376,6 +383,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 	@UiThread public void addQuestGeometry(ElementGeometry g)
 	{
 		if(geometryLayer == null) return; // might still be null - async calls...
+		if(!isShowingQuests) return;
 
 		zoomAndMoveToContain(g);
 		updateView();
@@ -541,6 +549,19 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		lastRotation = null;
 		lastDisplayedRect = null;
 	}
+
+	public void setIsShowingQuests(boolean showQuests)
+	{
+		if (isShowingQuests == showQuests) return;
+
+		isShowingQuests = showQuests;
+		if (!showQuests) {
+			clearQuests();
+		} else {
+			updateView();
+		}
+	}
+
 
 	public BoundingBox getDisplayedArea(Rect offset)
 	{
