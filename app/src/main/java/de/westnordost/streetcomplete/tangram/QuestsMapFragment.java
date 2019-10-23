@@ -64,7 +64,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 	private LatLon lastClickPos;
 	private double lastFingerRadiusInMeters;
 
-	private boolean isShowingQuests;
+	private boolean isShowingQuests = true;
 
 	private Rect lastDisplayedRect;
 	private final Set<Point> retrievedTiles;
