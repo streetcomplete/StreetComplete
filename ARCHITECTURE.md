@@ -1,4 +1,4 @@
-# Quest data flow
+## Quest data flow
 
 StreetComplete queries external services to find quest candidates.
 
@@ -12,6 +12,19 @@ Some quests may be based on other data sources. The [note quest](https://github.
 
 The note quest is also special because part of the answer – photos made by users – is uploaded to a [special photo service](https://github.com/exploide/sc-photo-service), as OSM notes do not allow hosting of images directly on OSM servers.
 
-# Map
+## Tests
+
+The tests are split up into multiple parts:
+
+* `test`: unit tests that do not have dependencies on Android and thus are executed on the local machine  
+  These are saved in [`app/test/java/de/westnordost/streetcomplete`](https://github.com/westnordost/StreetComplete/tree/master/app/src/test/java/de/westnordost/streetcomplete).
+* `androidTest`: integration tests that are executed on the smartphone (or emulator).  
+  These are saved in [`app/androidTest/java/de/westnordost/streetcomplete`](https://github.com/westnordost/StreetComplete/tree/master/app/src/androidTest/java/de/westnordost/streetcomplete).
+
+Here is how to find them in Android Studio:  
+![Android selected -> subdirectory app/java/de.westnordost.streetcomplete (androidTest) and app/java/de.westnordost.streetcomplete (test) highlighted](https://user-images.githubusercontent.com/4661658/67514851-ce1fce00-f69d-11e9-8c23-01e4798e00ba.png)
+
+
+## Map
 
 SC downloads the [vector tiles](https://github.com/tilezen/vector-datasource) used for displaying its map from an external source and renders them using the library [tangram-es](https://github.com/tangrams/tangram-es).
