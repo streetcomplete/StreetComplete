@@ -15,6 +15,7 @@ bicycle_parking_type_buildi... CC-BY-SA 3.0      https://commons.wikimedia.org/w
 bicycle_parking_type_shed.jpg  CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Parking_v%C3%A9los_s%C3%A9curis%C3%A9_gare_des_Martres_2015-08-20.JPG
 bicycle_parking_type_stand.jpg CC0               https://commons.wikimedia.org/wiki/File:Bicycle_parking_stand_2.jpg
 bicycle_parking_type_wheel...  CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Bizikletak_lotzekoa.JPG
+bicycle_parking_type_locker... CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Bicycle_lockers_at_Gathurst_railway_station.JPG
 
 car_wash_automated.jpg         CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Carwas.jpg
 car_wash_service.jpg           Public Domain     https://commons.wikimedia.org/wiki/File:US_Navy_110831-N-NT881-079_Sailors_assigned_to_the_guided-missile_submarine_USS_Ohio_(SSGN_726)_and_Navy_Operational_Support_Center_Cincinnati_part.jpg
@@ -51,8 +52,8 @@ power_pole_concrete.jpg        CC-BY-SA 3.0      https://commons.wikimedia.org/w
 produce_areca_nut.jpg          CC-BY-SA 2.5      https://commons.wikimedia.org/wiki/File:Betel_nut_tree.JPG
 produce_tung_nut.jpg           CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Vernicia_fordii5.jpg
 produce_brazil_nut.jpg         CC-BY 2.0         https://commons.wikimedia.org/wiki/File:%22Bertholetia_excelsa%22_Castanha-do-Par%C3%A1_Brazil-nuts_tree_2.jpg
-produce_chilli_pepper.jpg      CC-BY-SA 3.0      https://de.wikipedia.org/wiki/Datei:Thai_peppers.jpg
-produce_sweet_pepper.jpg       CC0               https://pixabay.com/de/paprika-nachtschattengew%C3%A4chs-1539491/
+produce_chili.jpg              CC-BY-SA 3.0      https://de.wikipedia.org/wiki/Datei:Thai_peppers.jpg
+produce_bell_pepper.jpg        CC0               https://pixabay.com/de/paprika-nachtschattengew%C3%A4chs-1539491/
 produce_banana.jpg             CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Musa-sp3.1.jpg
 produce_orange.jpg             CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:OrangeBloss_wb.jpg
 produce_lemon.jpg              CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Limonu.jpg
@@ -76,7 +77,7 @@ produce_cherry.jpg             CC-BY-SA 4.0      https://commons.wikimedia.org/w
 produce_papaya.jpg             CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Papaya_BW_1.jpg
 produce_cacao.jpg              Public Domain     https://commons.wikimedia.org/wiki/File:Cocoa_Pods.JPG
 produce_walnut.jpg             CC-BY-SA 2.0      https://commons.wikimedia.org/wiki/File:Juglans_regia_Echte_Walnussfrucht_1.jpg
-produce_oil_palm.jpg           CC-BY-SA 2.5      https://commons.wikimedia.org/wiki/File:Elaeis_guineensis_MS_3467.jpg
+produce_palm_oil.jpg           CC-BY-SA 2.5      https://commons.wikimedia.org/wiki/File:Elaeis_guineensis_MS_3467.jpg
 produce_fig.jpg                CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Grappe_de_figues.jpg
 produce_tea.jpg                CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Camellia_sinensis_(Boltz_Conservatory).JPG
 produce_almond.jpg             CC-BY-SA 2.0      https://commons.wikimedia.org/wiki/File:Madrigueras_(20578932389)_(cropped).jpg
@@ -89,7 +90,7 @@ produce_date.jpg               CC-BY-SA 3.0      https://commons.wikimedia.org/w
 produce_rubber.jpg             CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Latex_-_Hevea_-_Cameroun.JPG
 produce_cashew.jpg             CC-BY-SA 3.0      https://de.wikipedia.org/wiki/Datei:Cashew_apples.jpg
 produce_hop.jpg                CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Hopfendolde-mit-hopfengarten.jpg
-produce_hazel.jpg              CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Haselnuss_Gr_99.jpg
+produce_hazelnut.jpg           CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:CORYLUS_AVELLANA_-_SANT_JUST_-_IB-046_(Avellaner).JPG
 produce_chestnut.jpg           CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Chataigne.JPG
 produce_sisal.jpg              CC-BY 2.0         https://www.flickr.com/photos/agecombahia/5189770130
 produce_pistachio.jpg          CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Pistacchio_di_Bronte.jpg
@@ -111,7 +112,7 @@ surface_compacted.jpg          CC-BY 2.0         https://www.flickr.com/photos/i
 surface_concrete.jpg           CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:2014-08-29_15_33_15_View_across_Stuyvesant_Avenue_in_Ewing,_New_Jersey,_with_concrete_pavement_likely_dating_to_the_1950s.JPG
 surface_dirt.jpg               CC-BY 3.0         https://commons.wikimedia.org/wiki/File:Dirt_road_towards_the_south_and_Ndara_Borehole_in_the_Tsavo_East_National_Park,_Kenya.jpg
 surface_grass_paver.jpg        Public Domain     https://commons.wikimedia.org/wiki/File:Rasenpflasterstein_1.jpg
-surface_pebblestones.jpg       CC-BY-SA 2.0      https://wiki.openstreetmap.org/wiki/File:Dscf1829-800.jpg
+surface_pebblestone.jpg        CC-BY-SA 2.0      https://wiki.openstreetmap.org/wiki/File:Dscf1829-800.jpg
 surface_sand.jpg               CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:2013-08-21_12_04_26_View_south_towards_Barnegat_Lighthouse_along_the_sand_road_to_Barnegat_Inlet_in_Island_Beach_State_Park.jpg
 surface_sett.jpg               CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Brusteinshalden.JPG
 surface_wood.jpg               CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Wooden_Bridge_In_Midst_of_Kaziranga_Wild_life_Sanctuary.jpg
@@ -121,12 +122,12 @@ tactile_paving_illustration... CC-BY 2.0         https://www.flickr.com/photos/j
                                CC-BY 2.0         https://www.flickr.com/photos/jeanlouis_zimmermann/10493532264/in/album-72157635218804514/
                                CC-BY 2.0         https://www.flickr.com/photos/jeanlouis_zimmermann/10473021344/in/album-72157635218804514/
 
-tracktype_grade1        	   Public Domain     https://github.com/westnordost/StreetComplete/pull/959#issuecomment-427905219 (Bjorn Rasmussen)
-tracktype_grade2               CC-BY 4.0         https://github.com/westnordost/StreetComplete/issues/133#issuecomment-393650654 (Bjorn Rasmussen)
-tracktype_grade3               CC0		         https://pixabay.com/en/field-away-nature-meadow-lane-406183/
-tracktype_grade4               Public Domain     https://github.com/westnordost/StreetComplete/pull/959#issuecomment-427905219 (Bjorn Rasmussen)
-tracktype_grade5               CC-BY-SA 4.0  	 https://commons.wikimedia.org/wiki/File:Zandpad_aan_buitenkant_van_het_gebied._Locatie,_Stuttebosch_in_de_lendevallei._Provincie_Friesland_01.jpg
+tracktype_grade1.jpg    	   Public Domain     https://github.com/westnordost/StreetComplete/pull/959#issuecomment-427905219 (Bjorn Rasmussen)
+tracktype_grade2.jpg           CC-BY 4.0         https://github.com/westnordost/StreetComplete/issues/133#issuecomment-393650654 (Bjorn Rasmussen)
+tracktype_grade3.jpg           CC0		         https://pixabay.com/en/field-away-nature-meadow-lane-406183/
+tracktype_grade4.jpg           Public Domain     https://github.com/westnordost/StreetComplete/pull/959#issuecomment-427905219 (Bjorn Rasmussen)
+tracktype_grade5.jpg           CC-BY-SA 4.0  	 https://commons.wikimedia.org/wiki/File:Zandpad_aan_buitenkant_van_het_gebied._Locatie,_Stuttebosch_in_de_lendevallei._Provincie_Friesland_01.jpg
 
-leaf_type_needleleaved         CC-BY 3.0         https://commons.wikimedia.org/wiki/File:Whitebark_pine_Pinus_albicaulis_needle_clusters.jpg (Jane Richardson)
-leaf_type_broadleaved          CC-BY-SA 2.0      https://commons.wikimedia.org/wiki/File:Populus_tremuloides_(5002308731).jpg (Matt Lavin)
-leaf_type_mixed                CC0               https://commons.wikimedia.org/wiki/File:Needleleaved_and_broadleaved_leaves_on_one_image_20190709_181925.jpg (Mateusz Konieczny)
+leaf_type_needleleaved.jpg     CC-BY 3.0         https://commons.wikimedia.org/wiki/File:Whitebark_pine_Pinus_albicaulis_needle_clusters.jpg (Jane Richardson)
+leaf_type_broadleaved.jpg      CC-BY-SA 2.0      https://commons.wikimedia.org/wiki/File:Populus_tremuloides_(5002308731).jpg (Matt Lavin)
+leaf_type_mixed.jpg            CC0               https://commons.wikimedia.org/wiki/File:Needleleaved_and_broadleaved_leaves_on_one_image_20190709_181925.jpg (Mateusz Konieczny)
