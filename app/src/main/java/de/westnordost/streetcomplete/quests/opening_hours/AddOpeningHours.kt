@@ -19,11 +19,17 @@ class AddOpeningHours (o: OverpassMapDataDao) : SimpleOverpassQuestType<OpeningH
          or amenity = recycling and recycling_type = centre
          or tourism = information and information = office
          or """.trimIndent() +
+
+        // The common list is shared by the name quest, the opening hours quest and the wheelchair quest.
+        // So when adding other tags to the common list keep in mind that they need to be appropriate for all those quests.
+        // Independent tags can by added in the "opening_hours only" tab.
+
         mapOf(
             "amenity" to arrayOf(
+                // common
                 "restaurant", "cafe", "ice_cream", "fast_food", "bar", "pub", "biergarten", "food_court", "nightclub", // eat & drink
-                "cinema", "planetarium", "casino", "library",                                                          // amenities
-                "townhall", "courthouse", "embassy", "community_centre", "youth_centre",                               // civic
+                "cinema", "planetarium", "casino", "arts_centre",                                                      // amenities
+                "townhall", "courthouse", "embassy", "community_centre", "youth_centre", "library",                    // civic
                 // not ATM because too often it's simply 24/7 and too often it is confused with
                 // a bank that might be just next door because the app does not tell the user what
                 // kind of object this is about
@@ -32,22 +38,25 @@ class AddOpeningHours (o: OverpassMapDataDao) : SimpleOverpassQuestType<OpeningH
                 "dentist", "doctors", "clinic", "pharmacy", "veterinary"                                               // health
             ),
             "tourism" to arrayOf(
+                // common
                 "zoo", "aquarium", "theme_park", "gallery", "museum"
                 // and tourism=information, see above
             ),
             "leisure" to arrayOf(
                 // not sports_centre because these are often sports clubs which have no walk-in
                 // opening hours but training times
+
+                // common
                 "fitness_centre", "dance", "golf_course", "water_park",
                 "miniature_golf", "bowling_alley", "horse_riding",  "amusement_arcade",
                 "adult_gaming_centre", "tanning_salon"
             ),
             "office" to arrayOf(
-                // also listed for AddWheelchair quest
+                // common
                 "insurance", "government", "travel_agent", "tax_advisor", "religion", "employment_agency"
             ),
             "craft" to arrayOf(
-                // also listed for AddWheelchair quest
+                // common
                 "carpenter", "shoemaker", "tailor", "photographer", "dressmaker",
                 "electronics_repair", "key_cutter", "stonemason"
             )

@@ -16,36 +16,58 @@ class AddWheelchairAccessBusiness(o: OverpassMapDataDao) : SimpleOverpassQuestTy
          or amenity = recycling and recycling_type = centre
          or tourism = information and information = office
          or """.trimIndent() +
+
+        // The common list is shared by the name quest, the opening hours quest and the wheelchair quest.
+        // So when adding other tags to the common list keep in mind that they need to be appropriate for all those quests.
+        // Independent tags can by added in the "wheelchair only" tab.
+
         mapOf(
             "amenity" to arrayOf(
-                "restaurant", "cafe", "ice_cream", "fast_food", "bar", "pub", "biergarten", "food_court", "nightclub",
-                "cinema", "library", "theatre", "arts_centre", "casino", "conference_centre",
-                "bank", "bureau_de_change", "money_transfer", "post_office", "internet_cafe", "marketplace",
-                "police", "ranger_station", "courthouse", "embassy", "townhall", "community_centre", "youth_centre",
-                "car_wash", "car_rental", "fuel", "driving_school",
-                "doctors", "clinic", "pharmacy", "veterinary", "dentist",
-                "place_of_worship"
+                // common
+                "restaurant", "cafe", "ice_cream", "fast_food", "bar", "pub", "biergarten", "food_court", "nightclub", // eat & drink
+                "cinema", "planetarium", "casino", "arts_centre",                                                      // amenities
+                "townhall", "courthouse", "embassy", "community_centre", "youth_centre", "library",                    // civic
+                "bank", /*atm,*/ "bureau_de_change", "money_transfer", "post_office", "marketplace", "internet_cafe",  // commercial
+                "car_wash", "car_rental", "boat_rental", "fuel",                                                       // car stuff
+                "dentist", "doctors", "clinic", "pharmacy", "veterinary",                                              // health
+
+                // wheelchair only
+                "theatre", "arts_centre", "conference_centre",
+                "police", "ranger_station","prison",
+                "kindergarten", "school", "college", "university", "research_institute",                                                // education
+                "driving_school", "dive_centre", "language_school", "music_school",                                                     // learning
+                "ferry_terminal",
+                "place_of_worship",
+                "hospital"
             ),
             "tourism" to arrayOf(
-                "zoo", "aquarium", "theme_park", "gallery", "attraction", "viewpoint",
+                // common
+                "zoo", "aquarium", "theme_park", "gallery", "museum",
+                // wheelchair only
+                "attraction", "viewpoint",
                 "museum", "hotel", "guest_house", "hostel", "motel", "apartment", "chalet"
             ),
             "leisure" to arrayOf(
-                "golf_course", "water_park", "miniature_golf", "dance",
-                "bowling_alley", "horse_riding", "sports_centre", "fitness_centre",
-                "amusement_arcade", "adult_gaming_centre", "tanning_salon"
+                // common
+                "fitness_centre", "dance", "golf_course", "water_park",
+                "miniature_golf", "bowling_alley", "horse_riding",  "amusement_arcade",
+                "adult_gaming_centre", "tanning_salon",
+                // wheelchair only
+                "sports_centre"
             ),
             "office" to arrayOf(
-                // also listed for AddOpeningHours quest
+                // common
                 "insurance", "government", "travel_agent", "tax_advisor", "religion", "employment_agency",
-                // not listed manually for other quests
+
+                // name and wheelchair
                 "lawyer", "estate_agent", "political_party", "therapist"
             ),
             "craft" to arrayOf(
-                // also listed for AddOpeningHours quest
+                // common
                 "carpenter", "shoemaker", "tailor", "photographer", "dressmaker",
                 "electronics_repair", "key_cutter", "stonemason",
-                // not listed manually for other quests
+
+                // name and wheelchair
                 "winery"
             )
         ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n or ") +

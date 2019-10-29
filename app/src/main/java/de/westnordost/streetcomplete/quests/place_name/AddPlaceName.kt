@@ -27,31 +27,67 @@ class AddPlaceName(
           or office
           or tourism = information and information = office 
           or """.trimIndent() +
+
+        // The common list is shared by the name quest, the opening hours quest and the wheelchair quest.
+        // So when adding other tags to the common list keep in mind that they need to be appropriate for all those quests.
+        // Independent tags can by added in the "name only" tab.
+
         mapOf(
             "amenity" to arrayOf(
-                "restaurant", "cafe", "ice_cream", "fast_food", "bar", "pub", "biergarten", "food_court", "nightclub",                  // eat & drink
-                "cinema", "theatre", "planetarium", "arts_centre", "studio",                                                            // culture
-                "events_venue", "conference_centre", "exhibition_centre", "music_venue",                                                // events
-                "townhall", "prison", "courthouse", "embassy", "police", "fire_station", "ranger_station",                              // civic
-                "bank", "bureau_de_change", "money_transfer", "post_office", "library", "marketplace", "internet_cafe",                 // commercial
-                "community_centre", "social_facility", "nursing_home", "childcare", "retirement_home", "social_centre", "youth_centre", // social
-                "car_wash", "car_rental", "boat_rental", "fuel", "ferry_terminal",                                                      // transport
-                "dentist", "doctors", "clinic", "pharmacy", "hospital",                                                                 // health care
-                "place_of_worship", "monastery",                                                                                        // religious
-                "kindergarten", "school", "college", "university", "research_institute",                                                // education
-                "driving_school", "dive_centre", "language_school", "music_school",                                                     // learning
-                "casino", "brothel", "gambling", "love_hotel", "stripclub",                                                             // bad stuff
-                "animal_boarding", "animal_shelter", "animal_breeding", "veterinary"                                                    // animals
+                // common
+                "restaurant", "cafe", "ice_cream", "fast_food", "bar", "pub", "biergarten", "food_court", "nightclub", // eat & drink
+                "cinema", "planetarium", "casino", "arts_centre",                                                      // amenities
+                "townhall", "courthouse", "embassy", "community_centre", "youth_centre", "library",                    // civic
+                "bank", /*atm,*/ "bureau_de_change", "money_transfer", "post_office", "marketplace", "internet_cafe",  // commercial
+                "car_wash", "car_rental", "boat_rental", "fuel",                                                       // car stuff
+                "dentist", "doctors", "clinic", "pharmacy", "veterinary",                                              // health
+
+                //name only
+                "theatre", "studio",                                                               // culture
+                "events_venue", "conference_centre", "exhibition_centre", "music_venue",            // events
+                "prison", "police", "fire_station", "ranger_station",                               // civic
+                "social_facility", "nursing_home", "childcare", "retirement_home", "social_centre", // social
+                "ferry_terminal",                                                                   // transport
+                "hospital",                                                                         // health care
+                "place_of_worship", "monastery",                                                    // religious
+                "kindergarten", "school", "college", "university", "research_institute",            // education
+                "driving_school", "dive_centre", "language_school", "music_school",                 // learning
+                "brothel", "gambling", "love_hotel", "stripclub",                                   // bad stuff
+                "animal_boarding", "animal_shelter", "animal_breeding"                              // animals
             ),
             "tourism" to arrayOf(
-                "attraction", "zoo", "aquarium", "theme_park", "gallery", "museum",                                                     // attractions
+                // common
+                "zoo", "aquarium", "theme_park", "gallery", "museum",
+
+                // name only
+                "attraction",                                                                                                           // attractions
                 "hotel", "guest_house", "motel", "hostel", "alpine_hut", "apartment", "resort", "camp_site", "caravan_site", "chalet"   // accommodations
                 // and tourism=information, see above
             ),
             "leisure" to arrayOf(
-                "nature_reserve", "sports_centre", "fitness_centre", "dance", "golf_course",
-                "water_park", "miniature_golf", "stadium", "marina", "bowling_alley",
-                "amusement_arcade", "adult_gaming_centre", "tanning_salon", "horse_riding"
+                //common
+                "fitness_centre", "dance", "golf_course", "water_park",
+                "miniature_golf", "bowling_alley", "horse_riding",  "amusement_arcade",
+                "adult_gaming_centre", "tanning_salon",
+
+                //name only
+                "nature_reserve", "sports_centre", "dance", "golf_course",
+                "stadium", "marina"
+            ),
+            "office" to arrayOf(
+                // common
+                "insurance", "government", "travel_agent", "tax_advisor", "religion", "employment_agency",
+
+                // name and wheelchair
+                "lawyer", "estate_agent", "political_party", "therapist"
+            ),
+            "craft" to arrayOf(
+                // common
+                "carpenter", "shoemaker", "tailor", "photographer", "dressmaker",
+                "electronics_repair", "key_cutter", "stonemason",
+
+                // name and wheelchair
+                "winery"
             )
         ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n  or ") + "\n" + """
         )
