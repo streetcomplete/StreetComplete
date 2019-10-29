@@ -8,7 +8,13 @@ import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
 class AddInternetAccess(o: OverpassMapDataDao) : SimpleOverpassQuestType<String>(o) {
 
     override val tagFilters = """
-        nodes, ways, relations with (amenity=library or tourism ~ hotel|guest_house|hostel|motel)
+        nodes, ways, relations with (
+            amenity ~ library|restaurant|fast_food|cafe|pub|bar|biergarten|theatre|bus_station|community_centre|nightclub or 
+            tourism ~ hotel|guest_house|hostel|motel|camp_site|museum or 
+            leisure ~ marina|sports_centre|fitness_centre or
+            shop ~ hairdresser|car_repair|department_store|supermarket|beauty|mall or
+            public_transport ~ station
+        )
         and !internet_access and !wifi and name
     """
     override val commitMessage = "Add internet access"
