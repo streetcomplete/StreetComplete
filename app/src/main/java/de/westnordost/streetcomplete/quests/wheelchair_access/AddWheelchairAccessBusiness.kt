@@ -32,7 +32,7 @@ class AddWheelchairAccessBusiness(o: OverpassMapDataDao) : SimpleOverpassQuestTy
                 "dentist", "doctors", "clinic", "pharmacy", "veterinary",                                              // health
 
                 // wheelchair only
-                "theatre", "arts_centre", "conference_centre",
+                "theatre", "conference_centre",
                 "police", "ranger_station","prison",
                 "kindergarten", "school", "college", "university", "research_institute",                                                // education
                 "driving_school", "dive_centre", "language_school", "music_school",                                                     // learning
@@ -45,7 +45,7 @@ class AddWheelchairAccessBusiness(o: OverpassMapDataDao) : SimpleOverpassQuestTy
                 "zoo", "aquarium", "theme_park", "gallery", "museum",
                 // wheelchair only
                 "attraction", "viewpoint",
-                "museum", "hotel", "guest_house", "hostel", "motel", "apartment", "chalet"
+                "hotel", "guest_house", "hostel", "motel", "apartment", "chalet"
             ),
             "leisure" to arrayOf(
                 // common
