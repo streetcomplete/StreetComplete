@@ -73,21 +73,6 @@ class AddPlaceName(
                 //name only
                 "nature_reserve", "sports_centre", "dance", "golf_course",
                 "stadium", "marina"
-            ),
-            "office" to arrayOf(
-                // common
-                "insurance", "government", "travel_agent", "tax_advisor", "religion", "employment_agency",
-
-                // name and wheelchair
-                "lawyer", "estate_agent", "political_party", "therapist"
-            ),
-            "craft" to arrayOf(
-                // common
-                "carpenter", "shoemaker", "tailor", "photographer", "dressmaker",
-                "electronics_repair", "key_cutter", "stonemason",
-
-                // name and wheelchair
-                "winery"
             )
         ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n  or ") + "\n" + """
         )
