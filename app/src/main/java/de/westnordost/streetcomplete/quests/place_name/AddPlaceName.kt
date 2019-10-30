@@ -54,9 +54,10 @@ class AddPlaceName(
                 "amusement_arcade", "adult_gaming_centre", "tanning_salon", "horse_riding"
             ),
             "landuse" to arrayOf(
-                    "cemetery",
-                    "allotments", "recreation_ground",
-                    "military", "quarry"
+                    "cemetery", "allotments"
+            ),
+            "military" to arrayOf(
+                "airfield", "barracks", "training_area"
             )
         ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n  or ") + "\n" + """
         )
