@@ -1,10 +1,10 @@
 # Do not edit. Source files are in /res/country_metadata
 additionalStreetsignLanguages: [en]
-lengthUnits: [foot and inch, meter]
+lengthUnits: [meter, foot and inch]
 mobileCountryCode: 414
 officialLanguages: [my]
 orchardProduces: [coconut, rubber, areca_nut, chilli_pepper, sweet_pepper, tea, coffee, cashew_nut,
   guava, mango, mangosteen]
 popularReligions: [buddhist, christian, muslim, hindu]
 popularSports: [soccer, tennis, sepak_takraw]
-speedUnits: [miles per hour, kilometers per hour]
+speedUnits: [kilometers per hour, miles per hour]
