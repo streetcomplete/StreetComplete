@@ -19,8 +19,8 @@ class AddMaxWeight(o: OverpassMapDataDao) : SimpleOverpassQuestType<MaxWeightAns
 
     override val tagFilters = """
         ways with highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|living_street|service
-         and service!=driveway
-         and !maxweight and maxweight:signed!=no
+         and service != driveway
+         and !maxweight and maxweight:signed != no
          and !maxaxleload and !maxbogieweight
          and !maxweight:hgv and !maxweight:bus and !maxweight:hgv_articulated and !maxweight:tourist_bus
          and !maxweight:coach
@@ -35,9 +35,7 @@ class AddMaxWeight(o: OverpassMapDataDao) : SimpleOverpassQuestType<MaxWeightAns
          and area != yes
     """
 
-    override fun getTitle(tags: Map<String, String>): Int {
-        return R.string.quest_maxweight_title
-    }
+    override fun getTitle(tags: Map<String, String>) = R.string.quest_maxweight_title
 
     override fun createForm() = AddMaxWeightForm()
 
