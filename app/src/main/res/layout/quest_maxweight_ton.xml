@@ -20,11 +20,12 @@
         android:textColor="@color/traffic_black"
         android:textSize="24dp"
         android:textStyle="bold"
-        tools:text="1.44" />
+        tools:text="40" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
         android:gravity="center"
         android:text="t"
         android:textColor="@color/traffic_black"

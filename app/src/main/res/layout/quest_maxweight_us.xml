@@ -3,12 +3,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:gravity="center_horizontal">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         android:id="@+id/inputSigns">
 
         <include
@@ -28,7 +28,6 @@
         android:layout_centerVertical="true"
         android:layout_toEndOf="@+id/inputSigns"
         android:paddingStart="16dp"
-        android:background="#0fff"
         android:visibility="gone"
         tools:visibility="visible"/>
 
