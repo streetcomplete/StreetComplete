@@ -87,7 +87,7 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
         speedInput?.addTextChangedListener(TextChangedWatcher { checkIsFormComplete() })
 
         speedUnitSelect = rightSideContainer.findViewById(R.id.speedUnitSelect)
-        val measurementUnits = countryInfo.measurementSystem
+        val measurementUnits = countryInfo.speedUnits
         speedUnitSelect?.visibility = if (measurementUnits.size == 1) View.GONE else View.VISIBLE
         speedUnitSelect?.adapter = ArrayAdapter(context!!, R.layout.spinner_item_centered, getSpinnerItems(measurementUnits))
         speedUnitSelect?.setSelection(0)
@@ -97,8 +97,8 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
 
     private fun getSpinnerItems(units: List<String>) = units.mapNotNull {
         when(it) {
-            "metric" -> "km/h"
-            "imperial" -> "mph"
+            "kilometers per hour" -> "km/h"
+            "miles per hour" -> "mph"
             else -> null
         }
     }
@@ -111,9 +111,9 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
     }
 
     private val SpeedType.layoutResId get() = when (this) {
-        AddMaxSpeedForm.SpeedType.SIGN -> R.layout.quest_maxspeed_sign
-        AddMaxSpeedForm.SpeedType.ZONE -> R.layout.quest_maxspeed_zone_sign
-        AddMaxSpeedForm.SpeedType.ADVISORY -> R.layout.quest_maxspeed_advisory
+        SpeedType.SIGN -> R.layout.quest_maxspeed_sign
+        SpeedType.ZONE -> R.layout.quest_maxspeed_zone_sign
+        SpeedType.ADVISORY -> R.layout.quest_maxspeed_advisory
         else -> null
     }
 

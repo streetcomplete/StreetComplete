@@ -4,10 +4,11 @@ isAdvisorySpeedLimitKnown: false
 isLeftHandTraffic: false
 isLivingStreetKnown: false
 isSlowZoneKnown: false
-measurementSystem: [metric]
+lengthUnits: [meter]
 officialLanguages: [en]
 orchardProduces: []
 popularReligions: []
 popularSports: []
 regularShoppingDays: 6
-unitsOfWeightLimits: [ton]
+speedUnits: [kilometers per hour]
+weightLimitUnits: [ton]

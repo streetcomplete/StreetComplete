@@ -58,10 +58,10 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
         poundInputSign = contentView.findViewById(R.id.poundInputSign)
 
         weightUnitSelect = contentView.findViewById(R.id.weightUnitSelect)
-        val measurementUnits = countryInfo.unitsOfWeightLimits
+        val measurementUnits = countryInfo.weightLimitUnits
         val primaryUnit = when(measurementUnits[0]) {
             "ton" -> TON
-            "short_ton_formatted_as_ton" -> TON
+            "short ton" -> TON
             "pound" -> POUND
             else -> throw UnsupportedOperationException("not implemented")
         }
@@ -98,7 +98,7 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
     private fun getSpinnerItems(units: List<String>) = units.mapNotNull {
         when(it) {
             "ton" -> "t"
-            "short_ton_formatted_as_ton" -> "t"
+            "short ton" -> "t"
             "pound" -> "lbs"
             else -> null
         }
@@ -127,7 +127,7 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
             if (isTon()) {
                 val input = tonInput?.numberOrNull
                 if (input != null) {
-                    if (countryInfo.unitsOfWeightLimits.contains("short_ton_formatted_as_ton")) {
+                    if (countryInfo.weightLimitUnits.contains("short ton")) {
                         return ShortTons(input.toDouble())
                     }
                     return MetricTons(input.toDouble())
@@ -148,14 +148,14 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
 
     private fun isTon() =
         weightUnitSelect?.let { it.selectedItem == "t" }
-            ?: (countryInfo.unitsOfWeightLimits[0] == "ton"
-                    || countryInfo.unitsOfWeightLimits[0] == "short_ton_formatted_as_ton")
+            ?: (countryInfo.weightLimitUnits[0] == "ton"
+                    || countryInfo.weightLimitUnits[0] == "short ton")
         // weightUnitSelect will give a null for cases where there is a single unit
         // in such cases there is a single unit, so we can use [0] to get it
 
     private fun isPound() =
             weightUnitSelect?.let { it.selectedItem == "lbs" }
-                    ?: (countryInfo.unitsOfWeightLimits[0] == "pound")
+                    ?: (countryInfo.weightLimitUnits[0] == "pound")
     // see comment in the isTon function
 
     private fun onUnsupportedSign() {
