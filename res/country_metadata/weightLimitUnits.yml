@@ -1,0 +1,3 @@
+# use app/generateCountryMetadata.py to generate files used by StreetComplete
+default: [ton]
+US: [short ton, pound]

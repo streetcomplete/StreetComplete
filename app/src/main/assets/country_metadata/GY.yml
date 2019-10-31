@@ -1,9 +1,10 @@
 # Do not edit. Source files are in /res/country_metadata
 isLeftHandTraffic: true
-measurementSystem: [metric, imperial]
+lengthUnits: [meter, foot and inch]
 mobileCountryCode: 738
 officialLanguages: [en, gyn]
 orchardProduces: [coconut, papaya, chilli_pepper, sweet_pepper, tomato, pineapple, banana, guava, mango,
   mangosteen, orange, lemon, lime, cherry, grapefruit, avocado, cacao, coffee, pepper]
 popularReligions: [christian, hindu, muslim]
 popularSports: [cricket]
+speedUnits: [kilometers per hour, miles per hour]

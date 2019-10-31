@@ -1,6 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
 isLeftHandTraffic: true
-measurementSystem: [imperial, metric]
+lengthUnits: [foot and inch, meter]
 mobileCountryCode: 549
 officialLanguages: [sm, en]
 popularSports: [cricket]
+speedUnits: [miles per hour, kilometers per hour]
