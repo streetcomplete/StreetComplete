@@ -29,6 +29,9 @@
             "name": "리프트 문",
             "terms": "내리닫이 문"
         },
+        "public_transport/platform/light_rail_point": {
+            "name": "경전철 정거장 / 승강장"
+        },
         "railway/halt": {
             "name": "기차역 (간이역)"
         },
@@ -68,9 +71,6 @@
         },
         "emergency/yes": {
             "name": "비상시 접근 가능"
-        },
-        "circular": {
-            "name": "로터리"
         },
         "healthcare/audiologist": {
             "name": "청능사",
@@ -151,6 +151,9 @@
         "leisure/pitch/american_football": {
             "name": "미식축구 경기장",
             "terms": "미식 축구장"
+        },
+        "historic/manor": {
+            "name": "영주 저택"
         },
         "traffic_calming/bump": {
             "name": "과속방지턱",
@@ -301,6 +304,9 @@
             "name": "지붕 시공자",
             "terms": "지붕 시공자"
         },
+        "amenity/photo_booth": {
+            "name": "사진 부스"
+        },
         "amenity/restaurant/mexican": {
             "name": "멕시코 음식점"
         },
@@ -317,6 +323,9 @@
         },
         "allotments/plot": {
             "name": "지역 공원 부지"
+        },
+        "historic/castle/palace": {
+            "name": "궁전"
         },
         "tourism/aquarium": {
             "name": "아쿠아리움",
@@ -364,6 +373,9 @@
         "tourism/caravan_site": {
             "name": "RV 공원"
         },
+        "natural/valley": {
+            "name": "골짜기"
+        },
         "craft/clockmaker": {
             "name": "시계공",
             "terms": "시계 제작자"
@@ -375,10 +387,6 @@
             "name": "가구점",
             "terms": "의자,소파,식탁,탁자,책상"
         },
-        "public_transport/platform_ferry": {
-            "name": "페리 정거장 / 승강장",
-            "terms": "배,보트,부두,페리,잔교,플랫폼,대중교통"
-        },
         "advertising/billboard": {
             "name": "광고판",
             "terms": "간판"
@@ -386,6 +394,9 @@
         "shop/bakery": {
             "name": "제과점",
             "terms": "빵집"
+        },
+        "shop/erotic/lgbtq": {
+            "name": "LGBTQ+ 성인용품 가게"
         },
         "emergency/phone": {
             "name": "긴급 전화",
@@ -516,6 +527,9 @@
             "name": "옥외 식탁",
             "terms": "옥외 식탁,야외 식탁"
         },
+        "office/diplomatic/consulate": {
+            "name": "영사관"
+        },
         "amenity/vending_machine/elongated_coin": {
             "name": "기념품 동전 자판기"
         },
@@ -536,6 +550,9 @@
         },
         "shop/laundry": {
             "name": "세탁소"
+        },
+        "golf/driving_range": {
+            "name": "드라이빙 레인지"
         },
         "amenity/grit_bin": {
             "name": "염화칼슘 보관소",
@@ -697,8 +714,7 @@
             "name": "제한 속도 표지판"
         },
         "attraction/animal": {
-            "name": "동물",
-            "terms": "동물"
+            "name": "동물 우리"
         },
         "amenity/restaurant/asian": {
             "name": "아시아 음식점"
@@ -718,16 +734,15 @@
             "name": "음료 가게",
             "terms": "음료 가게"
         },
-        "public_transport/platform_bus": {
-            "name": "버스 정류장",
-            "terms": "버스,정류소,정거장,대중교통"
-        },
         "entrance": {
             "name": "입구/출구",
             "terms": "입구/출구, 출입구"
         },
         "emergency/fire_alarm": {
             "name": "화재경보기"
+        },
+        "shop/clothes/underwear": {
+            "name": "속옷 가게"
         },
         "amenity/place_of_worship/jewish": {
             "name": "유대교 시너고그"
@@ -779,6 +794,9 @@
         "amenity/social_facility/food_bank": {
             "name": "푸드 뱅크",
             "terms": "푸드 뱅크"
+        },
+        "boundary": {
+            "name": "경계"
         },
         "shop/nutrition_supplements": {
             "name": "영양 보조 식품 가게"
@@ -841,6 +859,9 @@
         "leisure/fitness_station/parallel_bars": {
             "name": "평행봉"
         },
+        "railway/rail/highspeed": {
+            "name": "고속 철도"
+        },
         "highway/footway": {
             "name": "보도",
             "terms": "보도"
@@ -864,8 +885,7 @@
             "name": "저장공간 대여소"
         },
         "shop/fashion": {
-            "name": "패션 가게",
-            "terms": "패션 가게"
+            "name": "패션 가게"
         },
         "natural/water/canal": {
             "name": "운하"
@@ -950,6 +970,9 @@
         "highway/footway/unmarked-raised": {
             "name": "표시되지 않은 고원식 횡단보도"
         },
+        "indoor/door": {
+            "name": "실내 문"
+        },
         "craft/jeweler": {
             "name": "보석 공예"
         },
@@ -1025,6 +1048,9 @@
             "name": "일반",
             "terms": "일반, 공통"
         },
+        "amenity/parking/underground": {
+            "name": "지하 주차장"
+        },
         "type/route/horse": {
             "name": "승마 노선"
         },
@@ -1046,6 +1072,9 @@
         "place/square": {
             "name": "광장",
             "terms": "광장"
+        },
+        "barrier/kerb/raised": {
+            "name": "턱 높은 연석"
         },
         "amenity/shelter/gazebo": {
             "name": "정자"
@@ -1070,6 +1099,9 @@
         },
         "highway/footway/marked-raised": {
             "name": "고원식 횡단보도"
+        },
+        "man_made/tunnel": {
+            "name": "터널"
         },
         "public_transport/stop_position_aerialway": {
             "name": "삭도 정차 위치",
@@ -1167,6 +1199,10 @@
             "name": "사진가",
             "terms": "사진작가"
         },
+        "public_transport/platform/bus_point": {
+            "name": "버스 정류소",
+            "terms": "정류장,정거장"
+        },
         "shop": {
             "name": "상점",
             "terms": "가게"
@@ -1248,6 +1284,10 @@
         "shop/confectionery": {
             "name": "사탕 가게",
             "terms": "사탕 가게"
+        },
+        "natural/cape": {
+            "name": "곶",
+            "terms": "갑"
         },
         "tourism/information/guidepost": {
             "name": "안내 표지"
@@ -1398,6 +1438,9 @@
             "name": "요양원",
             "terms": "요양원"
         },
+        "building/train_station": {
+            "name": "기차역 건물"
+        },
         "amenity/restaurant/thai": {
             "name": "태국 음식점"
         },
@@ -1497,6 +1540,9 @@
             "name": "사이렌",
             "terms": "사이렌,경고"
         },
+        "historic/city_gate": {
+            "name": "성문"
+        },
         "shop/watches": {
             "name": "손목시계 가게"
         },
@@ -1526,6 +1572,9 @@
         },
         "highway/crossing/unmarked": {
             "name": "표시되지 않은 횡단보도"
+        },
+        "man_made/storage_tank/water": {
+            "name": "수조"
         },
         "craft/stonemason": {
             "name": "석공",
@@ -1602,6 +1651,9 @@
             "name": "대피소",
             "terms": "대피소, 피난소"
         },
+        "shop/frozen_food": {
+            "name": "냉동식품 가게"
+        },
         "tourism/picnic_site": {
             "name": "유원지"
         },
@@ -1652,7 +1704,7 @@
             "terms": "양봉가"
         },
         "leisure/track/horse_racing": {
-            "name": "경주로(경마)"
+            "name": "경마 경주로"
         },
         "amenity/toilets": {
             "name": "화장실",
@@ -1669,8 +1721,11 @@
             "name": "식수 가게"
         },
         "public_transport/platform": {
-            "name": "대중교통 정거장 / 승강장",
-            "terms": "플랫폼,대중교통"
+            "name": "대중교통 승강장"
+        },
+        "public_transport/platform/trolleybus_point": {
+            "name": "트롤리버스 정류소",
+            "terms": "정류장,정거장"
         },
         "craft/confectionery": {
             "name": "제과 공장",
@@ -1685,11 +1740,14 @@
             "terms": "화물 항공 운송"
         },
         "railway/platform": {
-            "name": "기차 정거장 / 승강장"
+            "name": "기차 승강장"
         },
         "barrier/retaining_wall": {
             "name": "옹벽",
             "terms": "옹벽"
+        },
+        "amenity/bar/lgbtq": {
+            "name": "LGBTQ+ 바"
         },
         "amenity/love_hotel": {
             "name": "러브 호텔"
@@ -1702,8 +1760,10 @@
             "terms": "교통신호"
         },
         "amenity/embassy": {
-            "name": "대사관",
-            "terms": "대사관"
+            "name": "대사관"
+        },
+        "leisure/track/cycling": {
+            "name": "자전거 경주로"
         },
         "place/islet": {
             "name": "작은 섬"
@@ -1806,9 +1866,15 @@
         "highway/crossing/marked-raised": {
             "name": "고원식 횡단보도"
         },
+        "indoor/wall": {
+            "name": "실내 벽"
+        },
         "leisure/adult_gaming_centre": {
             "name": "성인용 게임방",
             "terms": "도박,노름,슬롯머신"
+        },
+        "public_transport/platform_point": {
+            "name": "대중교통 정거장 / 승강장"
         },
         "shop/car_parts": {
             "name": "자동차 부품점",
@@ -1832,9 +1898,6 @@
         "emergency/lifeguard": {
             "name": "구조요원"
         },
-        "amenity/vending_machine/news_papers": {
-            "name": "신문 자동판매기"
-        },
         "shop/bookmaker": {
             "name": "마권업자",
             "terms": "마권업자"
@@ -1843,16 +1906,16 @@
             "name": "요가 스튜디오",
             "terms": "요가 스튜디오"
         },
+        "public_transport/platform/aerialway": {
+            "name": "삭도 승강장"
+        },
         "leisure/track/running": {
-            "name": "육상 트랙(달리기)"
+            "name": "육상 트랙",
+            "terms": "달리기,경주로"
         },
         "aerialway/t-bar": {
             "name": "T-바 리프트",
             "terms": "T-바 리프트"
-        },
-        "public_transport/platform_aerialway": {
-            "name": "삭도 정거장 / 승강장",
-            "terms": "가공삭도,공중삭도,로프웨이,케이블카,플랫폼,대중교통"
         },
         "historic/boundary_stone": {
             "name": "경계석",
@@ -1902,6 +1965,9 @@
             "name": "대학 건물",
             "terms": "대학교 건물"
         },
+        "public_transport/platform/train_point": {
+            "name": "기차 정거장 / 승강장"
+        },
         "amenity/library": {
             "name": "도서관",
             "terms": "도서관, 문고"
@@ -1921,10 +1987,6 @@
         "highway/living_street": {
             "name": "주택가 거리",
             "terms": "주택가 거리"
-        },
-        "landuse/military/bunker": {
-            "name": "군사 벙커",
-            "terms": "군사 벙커"
         },
         "attraction/bumper_car": {
             "name": "범퍼카",
@@ -1983,6 +2045,9 @@
             "name": "민박",
             "terms": "B&B,게스트하우스"
         },
+        "amenity/nightclub/lgbtq": {
+            "name": "LGBTQ+ 나이트클럽"
+        },
         "healthcare/laboratory": {
             "name": "의학 연구소"
         },
@@ -2025,13 +2090,12 @@
             "name": "섬",
             "terms": "섬"
         },
-        "public_transport/platform_tram": {
-            "name": "전차 정거장 / 승강장",
-            "terms": "전기,플랫폼,대중교통,철도,선로,전차,트롤리"
-        },
         "attraction/bungee_jumping": {
             "name": "번지점프",
             "terms": "번지점프"
+        },
+        "shop/games": {
+            "name": "보드게임 가게"
         },
         "railway/signal": {
             "name": "철도신호"
@@ -2079,7 +2143,7 @@
             "name": "주차장"
         },
         "highway/bus_stop": {
-            "name": "버스 정류장"
+            "name": "버스 정류소"
         },
         "office/energy_supplier": {
             "name": "에너지 공급자 사무소",
@@ -2122,6 +2186,9 @@
         "type/route/ferry": {
             "name": "페리 노선"
         },
+        "emergency": {
+            "name": "비상 지물"
+        },
         "highway/crossing/marked": {
             "name": "횡단보도"
         },
@@ -2156,6 +2223,9 @@
             "name": "반",
             "terms": "작은 마을"
         },
+        "public_transport/platform/train": {
+            "name": "기차 승강장"
+        },
         "amenity/recycling_centre": {
             "name": "재활용 센터",
             "terms": "재활용 센터"
@@ -2184,10 +2254,6 @@
         },
         "highway/pedestrian_line": {
             "name": "보행자 거리"
-        },
-        "landuse/military/checkpoint": {
-            "name": "검문소",
-            "terms": "체크포인트"
         },
         "man_made/lighthouse": {
             "name": "등대",
@@ -2270,6 +2336,9 @@
             "name": "비계공",
             "terms": "비계 설치자"
         },
+        "public_transport/platform/ferry": {
+            "name": "페리 승강장"
+        },
         "shop/locksmith": {
             "name": "열쇠 제조공",
             "terms": "자물쇠 제조공"
@@ -2327,6 +2396,12 @@
         "amenity/restaurant/sushi": {
             "name": "초밥 음식점"
         },
+        "indoor/corridor": {
+            "name": "실내 복도"
+        },
+        "amenity/events_venue": {
+            "name": "행사장"
+        },
         "healthcare/optometrist": {
             "name": "검안사",
             "terms": "눈,안경,라식,렌즈,시력"
@@ -2334,6 +2409,12 @@
         "building/kindergarten": {
             "name": "유치원 건물",
             "terms": "어린이집/유치원 건물"
+        },
+        "indoor/room": {
+            "name": "방"
+        },
+        "amenity/fast_food/ice_cream": {
+            "name": "아이스크림 패스트푸드"
         },
         "leisure/playground": {
             "name": "놀이터",
@@ -2353,16 +2434,18 @@
             "name": "소형 회전교차로",
             "terms": "소형 회전교차로"
         },
-        "public_transport/platform_monorail": {
-            "name": "모노레일 정거장 / 승강장",
-            "terms": "모노레일,플랫폼,대중교통,철도"
-        },
         "amenity/monastery": {
             "name": "수도원 부지"
+        },
+        "amenity/toilets/disposal/flush": {
+            "name": "수세식 화장실"
         },
         "highway/service/parking_aisle": {
             "name": "주차장 통로",
             "terms": "주차장 통로"
+        },
+        "indoor/area": {
+            "name": "실내 공간"
         },
         "amenity/bbq": {
             "name": "바비큐/그릴",
@@ -2375,6 +2458,9 @@
         "waterway/boatyard": {
             "name": "보트 선착장",
             "terms": "조선소"
+        },
+        "man_made/mineshaft": {
+            "name": "수직 갱도"
         },
         "power/line": {
             "name": "송전선",
@@ -2399,6 +2485,9 @@
             "name": "정상",
             "terms": "봉우리,산꼭대기,정점,첨봉,언덕,산"
         },
+        "public_transport/platform/monorail_point": {
+            "name": "모노레일 정거장 / 승강장"
+        },
         "highway/tertiary": {
             "name": "3차 도로",
             "terms": "3차 도로"
@@ -2422,6 +2511,9 @@
             "name": "소매 지역",
             "terms": "상업 지역"
         },
+        "leisure/picnic_table/chess": {
+            "name": "체스 테이블"
+        },
         "leisure/sauna": {
             "name": "사우나"
         },
@@ -2442,10 +2534,6 @@
         "leisure/pitch/cricket": {
             "name": "크리켓장",
             "terms": "크리켓 경기장"
-        },
-        "public_transport/platform_trolleybus": {
-            "name": "트롤리버스 정류장",
-            "terms": "버스,전기,정류소,정거장,대중교통,무궤도,전차,트롤리"
         },
         "amenity/arts_centre": {
             "name": "아트 센터",
@@ -2496,9 +2584,8 @@
         "tourism/chalet": {
             "name": "별장"
         },
-        "landuse/military/nuclear_explosion_site": {
-            "name": "핵 폭발 지역",
-            "terms": "핵 폭발 지역"
+        "office/diplomatic/embassy": {
+            "name": "대사관"
         },
         "leisure/dancing_school": {
             "name": "댄스 학원"
@@ -2555,12 +2642,14 @@
             "name": "회전문",
             "terms": "회전문"
         },
+        "railway/construction": {
+            "name": "공사 중인 철도"
+        },
         "type/route/piste": {
             "name": "피스트/스키 노선"
         },
         "shop/boutique": {
-            "name": "부티크",
-            "terms": "부티크"
+            "name": "부티크"
         },
         "area/highway": {
             "name": "노면",
@@ -2588,9 +2677,15 @@
             "name": "해시계",
             "terms": "해시계"
         },
+        "building_point": {
+            "name": "건물"
+        },
         "leisure/pitch/boules": {
             "name": "불/보체 코트",
             "terms": "보체,리오네즈,페탕크"
+        },
+        "public_transport/platform/trolleybus": {
+            "name": "트롤리버스 승강장"
         },
         "power/cable/underground": {
             "name": "지하 전력 케이블"
@@ -2606,6 +2701,9 @@
         "amenity/fire_station": {
             "name": "소방서",
             "terms": "소방서"
+        },
+        "emergency/fire_hose": {
+            "name": "소방 호스"
         },
         "barrier/entrance": {
             "name": "입구"
@@ -2658,6 +2756,9 @@
         "amenity/restaurant/german": {
             "name": "독일 음식점"
         },
+        "public_transport/platform/aerialway_point": {
+            "name": "삭도 정거장 / 승강장"
+        },
         "amenity/university": {
             "name": "대학 부지",
             "terms": "대학교 부지"
@@ -2668,6 +2769,9 @@
         },
         "highway/crossing/zebra-raised": {
             "name": "고원식 횡단보도"
+        },
+        "highway/cycleway/crossing/unmarked": {
+            "name": "표시되지 않은 자전거 횡단로"
         },
         "emergency/first_aid_kit": {
             "name": "구급상자"
@@ -2758,6 +2862,9 @@
             "name": "항구",
             "terms": "항구"
         },
+        "playground": {
+            "name": "놀이터 기구"
+        },
         "shop/pet": {
             "name": "애완동물 가게",
             "terms": "동물,고양이,개,물고기,강아지,파충류"
@@ -2769,9 +2876,6 @@
             "name": "조사/관측 지점",
             "terms": "조사/관측 지점"
         },
-        "roundabout": {
-            "name": "회전교차로"
-        },
         "type/route/power": {
             "name": "전력 노선"
         },
@@ -2781,6 +2885,9 @@
         },
         "man_made/mast/communication/radio": {
             "name": "라디오 송신탑"
+        },
+        "amenity/pub/lgbtq": {
+            "name": "LGBTQ+ 주점"
         },
         "amenity/restaurant/seafood": {
             "name": "해산물 음식점"
@@ -2838,6 +2945,10 @@
         "emergency/designated": {
             "name": "비상시 접근으로 지정됨"
         },
+        "man_made/beehive": {
+            "name": "벌통",
+            "terms": "벌집"
+        },
         "highway/steps": {
             "name": "계단",
             "terms": "계단"
@@ -2847,6 +2958,9 @@
         },
         "leisure/beach_resort": {
             "name": "해변 리조트"
+        },
+        "shop/lighting": {
+            "name": "조명 가게"
         },
         "amenity/vending_machine/drinks": {
             "name": "음료 자판기",
@@ -2867,6 +2981,9 @@
             "name": "펌프장",
             "terms": "펌프장"
         },
+        "telecom/data_center": {
+            "name": "데이터 센터"
+        },
         "building/bunker": {
             "name": "벙커"
         },
@@ -2881,6 +2998,9 @@
         "amenity/dentist": {
             "name": "치과 의원",
             "terms": "치과 의원, 치과"
+        },
+        "highway/cycleway/crossing/marked": {
+            "name": "표시된 자전거 횡단로"
         },
         "highway/footway/zebra-raised": {
             "name": "고원식 횡단보도"
@@ -2905,10 +3025,6 @@
         "shop/supermarket": {
             "name": "슈퍼마켓",
             "terms": "수퍼마켓, 슈퍼마켓"
-        },
-        "office/political_party": {
-            "name": "정당",
-            "terms": "정당"
         },
         "shop/wholesale": {
             "name": "도매상"
@@ -2938,6 +3054,12 @@
         "natural/saddle": {
             "name": "안부",
             "terms": "콜,고개,재,영"
+        },
+        "public_transport/platform/tram_point": {
+            "name": "전차 정거장 / 승강장"
+        },
+        "amenity/fast_food/donut": {
+            "name": "도넛 패스트푸드"
         },
         "building/transportation": {
             "name": "대중교통 건물"
@@ -3030,13 +3152,12 @@
             "name": "공동 작업 공간",
             "terms": "공동 작업 공간"
         },
-        "vertex": {
-            "name": "기타",
-            "terms": "기타"
-        },
         "type/boundary": {
             "name": "경계",
             "terms": "경계"
+        },
+        "type/route/monorail": {
+            "name": "모노레일 노선"
         },
         "man_made/monitoring_station": {
             "name": "관측소",
@@ -3132,6 +3253,9 @@
         "landuse/quarry": {
             "name": "채석장",
             "terms": "채석장"
+        },
+        "public_transport/platform/subway_point": {
+            "name": "지하철 정거장 / 승강장"
         },
         "barrier/border_control": {
             "name": "국경 통계",
@@ -3248,10 +3372,6 @@
         "place/city_block": {
             "name": "도시 블록"
         },
-        "public_transport/platform_subway": {
-            "name": "지하철 정거장 / 승강장",
-            "terms": "지하철,플랫폼,대중교통,철도,선로,지하"
-        },
         "natural/wood": {
             "name": "삼림",
             "terms": "숲,산림,나무"
@@ -3285,10 +3405,6 @@
             "name": "안경점",
             "terms": "눈,안경"
         },
-        "public_transport/platform_light_rail": {
-            "name": "경전철 정거장 / 승강장",
-            "terms": "전기,경전철,라이트 레일,플랫폼,대중교통,철도,선로,트롤리"
-        },
         "type/route/foot": {
             "name": "도보 노선"
         },
@@ -3313,12 +3429,11 @@
             "name": "폐차장",
             "terms": "자동차,폐품,금속,고철,차량"
         },
+        "building/hangar": {
+            "name": "격납고 건물"
+        },
         "amenity/recycling": {
             "name": "재활용"
-        },
-        "camp_site/camp_pitch": {
-            "name": "캠핑장",
-            "terms": "캠핑장"
         },
         "shop/gas": {
             "name": "가스통 가게",
@@ -3381,6 +3496,9 @@
         "craft/tiler": {
             "name": "타일 시공자",
             "terms": "타일 시공자"
+        },
+        "indoor": {
+            "name": "실내 지물"
         },
         "shop/frame": {
             "name": "액자 가게",
@@ -3457,10 +3575,6 @@
         "power": {
             "name": "전력"
         },
-        "public_transport/platform_train": {
-            "name": "기차 정거장 / 승강장",
-            "terms": "플랫폼,대중교통,철도,선로,기차"
-        },
         "aerialway/station": {
             "name": "공중 이동로 승강장"
         },
@@ -3478,9 +3592,15 @@
         "amenity/restaurant/american": {
             "name": "미국 음식점"
         },
+        "public_transport/platform/bus": {
+            "name": "버스 승강장"
+        },
         "barrier/gate": {
             "name": "문",
             "terms": "문"
+        },
+        "amenity/conference_centre": {
+            "name": "컨벤션 센터"
         },
         "shop/motorcycle": {
             "name": "오토바이 대리점",
@@ -3531,6 +3651,9 @@
             "name": "보호 기둥",
             "terms": "보호 기둥"
         },
+        "public_transport/platform/ferry_point": {
+            "name": "페리 정거장 / 승강장"
+        },
         "leisure/golf_course": {
             "name": "골프장",
             "terms": "골프장"
@@ -3557,6 +3680,9 @@
         "highway/path": {
             "name": "경로",
             "terms": "경로"
+        },
+        "indoor/corridor_line": {
+            "name": "실내 복도"
         },
         "leisure/water_park": {
             "name": "워터파크",
@@ -3598,9 +3724,21 @@
             "name": "배수로",
             "terms": "배수로"
         },
+        "man_made/pipeline/underground": {
+            "name": "지하 파이프라인"
+        },
+        "public_transport/platform/subway": {
+            "name": "지하철 승강장"
+        },
         "highway/residential": {
             "name": "주거 도로",
             "terms": "주거 도로, 골목길"
+        },
+        "public_transport/platform/light_rail": {
+            "name": "경전철 승강장"
+        },
+        "public_transport/platform/tram": {
+            "name": "전차 승강장"
         },
         "historic/wayside_shrine": {
             "name": "길가의 신사",
@@ -3612,10 +3750,6 @@
         "type/boundary/administrative": {
             "name": "행정 경계",
             "terms": "행정 경계"
-        },
-        "landuse/military/office": {
-            "name": "군사 사무소",
-            "terms": "군사 사무실"
         },
         "amenity/watering_place": {
             "name": "동물 급수 장소",
@@ -3701,6 +3835,9 @@
         "tourism/alpine_hut": {
             "name": "고산장"
         },
+        "public_transport/platform/monorail": {
+            "name": "모노레일 승강장"
+        },
         "tourism/information/office": {
             "name": "관광안내소"
         },
@@ -3724,6 +3861,9 @@
         },
         "shop/trade": {
             "name": "무역 가게"
+        },
+        "office/diplomatic": {
+            "name": "외교 사무소"
         },
         "shop/motorcycle_repair": {
             "name": "오토바이 수리점"

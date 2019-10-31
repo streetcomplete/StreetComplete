@@ -7,8 +7,8 @@ import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandler
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
-import de.westnordost.streetcomplete.data.osm.tql.OverpassQLUtil
-import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
+import de.westnordost.streetcomplete.data.osm.tql.getQuestPrintStatement
+import de.westnordost.streetcomplete.data.osm.tql.toGlobalOverpassBBox
 
 class AddRailwayCrossingBarrier(private val overpassMapDataDao: OverpassMapDataDao) : OsmElementQuestType<String> {
     override val commitMessage = "Add type of barrier for railway crossing"
@@ -29,11 +29,13 @@ class AddRailwayCrossingBarrier(private val overpassMapDataDao: OverpassMapDataD
     }
 
     private fun getOverpassQuery(bbox: BoundingBox) =
-        OverpassQLUtil.getGlobalOverpassBBox(bbox) + """
-        way["highway"]["access"~"^private|no$"]; node(w) -> .private_roads;
-        way["railway"~"^tram|abandoned$"]; node(w) -> .excluded_railways;
-        node["railway"="level_crossing"][!"crossing:barrier"];
+        bbox.toGlobalOverpassBBox() + "\n" + """
+        way[highway][access ~ '^private|no$'];
+        node(w) -> .private_roads;
+        way[railway ~ '^tram|abandoned$'];
+        node(w) -> .excluded_railways;
+        node[railway = level_crossing][!'crossing:barrier'];
         (._; - .private_roads; );
-        (._; - .excluded_railways; );""" +
-        OverpassQLUtil.getQuestPrintStatement()
+        (._; - .excluded_railways; );""".trimIndent() + "\n" +
+        getQuestPrintStatement()
 }

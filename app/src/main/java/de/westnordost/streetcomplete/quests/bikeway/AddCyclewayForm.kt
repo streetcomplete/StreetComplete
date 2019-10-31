@@ -28,13 +28,13 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
     override val contentLayoutResId = R.layout.quest_street_side_puzzle
     override val contentPadding = false
 
-    override val otherAnswers:List<OtherAnswer> get() {
+    override val otherAnswers: List<OtherAnswer> get() {
         val isNoRoundabout = osmElement!!.tags["junction"] != "roundabout"
-        return if (!isDefiningBothSides && isNoRoundabout) {
-            listOf(OtherAnswer(R.string.quest_cycleway_answer_contraflow_cycleway) { showBothSides() })
-        } else {
-            listOf()
+        val result = mutableListOf<OtherAnswer>()
+        if (!isDefiningBothSides && isNoRoundabout) {
+            result.add(OtherAnswer(R.string.quest_cycleway_answer_contraflow_cycleway) { showBothSides() })
         }
+        return result
     }
 
     private val likelyNoBicycleContraflow = FiltersParser().parse("""
@@ -65,7 +65,7 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
         super.onCreate(savedInstanceState)
 
         isDefiningBothSides = savedInstanceState?.getBoolean(DEFINE_BOTH_SIDES)
-                ?: !likelyNoBicycleContraflow.matches(osmElement)
+                ?: !likelyNoBicycleContraflow.matches(osmElement!!)
 
         savedInstanceState?.getString(CYCLEWAY_RIGHT)?.let { rightSide = Cycleway.valueOf(it) }
         savedInstanceState?.getString(CYCLEWAY_LEFT)?.let { leftSide = Cycleway.valueOf(it) }

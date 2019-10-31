@@ -20,7 +20,7 @@
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:scaleType="fitXY"
-            android:background="@drawable/background_white_circle"/>
+            android:background="@drawable/background_avatar"/>
 
         <FrameLayout
             android:layout_width="match_parent"

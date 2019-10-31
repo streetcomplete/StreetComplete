@@ -1,7 +1,10 @@
 package de.westnordost.streetcomplete;
 
+import org.jetbrains.annotations.NotNull;
+
 import javax.inject.Singleton;
 
+import androidx.annotation.NonNull;
 import dagger.Component;
 import de.westnordost.streetcomplete.data.DbModule;
 import de.westnordost.streetcomplete.data.OsmModule;
@@ -13,6 +16,7 @@ import de.westnordost.streetcomplete.oauth.OAuthModule;
 import de.westnordost.streetcomplete.oauth.OsmOAuthDialogFragment;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 import de.westnordost.streetcomplete.quests.QuestModule;
+import de.westnordost.streetcomplete.quests.SplitWayFragment;
 import de.westnordost.streetcomplete.quests.building_levels.AddBuildingLevelsForm;
 import de.westnordost.streetcomplete.quests.localized_name.AAddLocalizedNameForm;
 import de.westnordost.streetcomplete.quests.oneway.AddOnewayForm;
@@ -23,6 +27,7 @@ import de.westnordost.streetcomplete.quests.note_discussion.NoteDiscussionForm;
 import de.westnordost.streetcomplete.quests.postbox_collection_times.AddCollectionTimesForm;
 import de.westnordost.streetcomplete.settings.SettingsActivity;
 import de.westnordost.streetcomplete.settings.SettingsFragment;
+import de.westnordost.streetcomplete.settings.ShowQuestFormsActivity;
 import de.westnordost.streetcomplete.settings.questselection.QuestSelectionFragment;
 import de.westnordost.streetcomplete.statistics.AnswersCounter;
 import de.westnordost.streetcomplete.tangram.MapControlsFragment;
@@ -63,9 +68,12 @@ public interface ApplicationComponent
 
 	void inject(MapControlsFragment mapControlsFragment);
 
-	void inject(QuestSelectionFragment.InjectedFields questSelectionFragment);
+	void inject(QuestSelectionFragment questSelectionFragment);
 
 	void inject(AddBuildingLevelsForm fragment);
 	void inject(ChangesetAutoCloserWorker worker);
 
+	void inject(@NonNull SplitWayFragment splitWayFragment);
+
+	void inject(@NotNull ShowQuestFormsActivity showQuestFormsActivity);
 }

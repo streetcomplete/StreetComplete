@@ -15,6 +15,10 @@
             "name": "Edifici",
             "terms": "Edifici, Bloc de pisos, Nau industrial, Centre comercial, Oficines, Bloc, Casa, Barraca"
         },
+        "amenity/restaurant/indian": {
+            "name": "Restaurant indi",
+            "terms": "cuina índia"
+        },
         "craft/dressmaker": {
             "name": "Sastreria"
         },
@@ -33,9 +37,6 @@
         },
         "emergency/yes": {
             "name": "Accés per a emergències permès"
-        },
-        "circular": {
-            "name": "Rotonda"
         },
         "highway/motorway": {
             "name": "Autopista",
@@ -103,6 +104,10 @@
         },
         "railway/level_crossing": {
             "name": "Pas a nivell (carretera)"
+        },
+        "amenity/restaurant/greek": {
+            "name": "Restaurant grec",
+            "terms": "cuina grega"
         },
         "attraction/amusement_ride": {
             "name": "Atracció de fira"
@@ -172,6 +177,10 @@
             "name": "Tauler informatiu",
             "terms": "Tauler d'informació, panell d'informació, panell informatiu"
         },
+        "amenity/restaurant/french": {
+            "name": "Restaurant francès",
+            "terms": "cuina francesa"
+        },
         "amenity/ferry_terminal": {
             "name": "Moll per Ferry"
         },
@@ -203,6 +212,10 @@
         },
         "craft/roofer": {
             "name": "Constructor de teulades"
+        },
+        "amenity/restaurant/mexican": {
+            "name": "Restaurant mexicà",
+            "terms": "cuina mexicana"
         },
         "shop/massage": {
             "name": "Centre de massatges"
@@ -410,6 +423,10 @@
         "advertising/column": {
             "terms": "Columna publicitària, publicitat, cartell, propaganda"
         },
+        "amenity/restaurant/italian": {
+            "name": "Restaurant italià",
+            "terms": "cuina italiana"
+        },
         "building/temple": {
             "name": "Edifici d'un temple"
         },
@@ -454,9 +471,6 @@
         },
         "highway/corridor": {
             "name": "Corredor interior"
-        },
-        "attraction/animal": {
-            "name": "Animal"
         },
         "craft/bookbinder": {
             "name": "Enquadernador"
@@ -813,6 +827,10 @@
             "name": "Temple budista",
             "terms": "Temple Budista, Lloc per al culte budista, església budista"
         },
+        "amenity/language_school": {
+            "name": "Escola d'idiomes",
+            "terms": "Acadèmia d'idiomes, escola de llengües, acadèmia de llengües"
+        },
         "amenity/crematorium": {
             "name": "Crematori"
         },
@@ -893,6 +911,10 @@
         },
         "amenity/social_facility/nursing_home": {
             "name": "Llar d'avis"
+        },
+        "amenity/restaurant/thai": {
+            "name": "Restaurant tailandès",
+            "terms": "cuina tailandesa"
         },
         "landuse/farmyard": {
             "name": "Edificis de Granja",
@@ -1083,6 +1105,9 @@
             "name": "Mur de contenció",
             "terms": "Mur de contenció, Paret de contenció"
         },
+        "amenity/bar/lgbtq": {
+            "name": "Bar LGBTQ+"
+        },
         "office/adoption_agency": {
             "name": "Agència d'adopció"
         },
@@ -1091,8 +1116,7 @@
             "terms": "Senyals de trànsit, Senyals de tràfic"
         },
         "amenity/embassy": {
-            "name": "Ambaixada",
-            "terms": "Ambaixada, Institució representativa d'un altre país, Edifici de dependències extrangeres"
+            "name": "Ambaixada"
         },
         "type/restriction/no_left_turn": {
             "name": "Prohibició del gir a l'esquerra",
@@ -1181,9 +1205,6 @@
             "name": "Enllaç de via principal",
             "terms": "Enllaç amb via ràpida"
         },
-        "amenity/vending_machine/news_papers": {
-            "name": "Màquina expenedora de diaris"
-        },
         "shop/bookmaker": {
             "name": "Cusidor de llibres"
         },
@@ -1249,9 +1270,6 @@
         "highway/living_street": {
             "name": "Carrer residencial",
             "terms": "Carrer residencial"
-        },
-        "landuse/military/bunker": {
-            "name": "Búnquer militar"
         },
         "attraction/roller_coaster": {
             "name": "Muntanya russa"
@@ -1416,9 +1434,6 @@
         "amenity/theatre": {
             "name": "Teatre",
             "terms": "Cinema, Sala de Cine, Complex de cines, edifici de cines, sala de cine"
-        },
-        "landuse/military/checkpoint": {
-            "name": "Punt de control"
         },
         "man_made/lighthouse": {
             "name": "Far",
@@ -1592,6 +1607,10 @@
             "name": "Restaurant",
             "terms": "Restaurant, Lloc per menjar, Bistro, Wok, Trattoria, Pizzeria"
         },
+        "amenity/restaurant/pizza": {
+            "name": "Pizzeria",
+            "terms": "pizzes"
+        },
         "type/route/detour": {
             "name": "Desviació"
         },
@@ -1702,6 +1721,10 @@
             "name": "Edifici industrial",
             "terms": "Edifici industrial"
         },
+        "amenity/restaurant/german": {
+            "name": "Restaurant alemany",
+            "terms": "cuina alemanya"
+        },
         "amenity/university": {
             "name": "Campus universitari"
         },
@@ -1757,9 +1780,6 @@
         "man_made/survey_point": {
             "name": "Punt referencial",
             "terms": "Punt de salvació,Punt de salvament,Punt d'evacuació"
-        },
-        "roundabout": {
-            "name": "Rotonda"
         },
         "type/route/power": {
             "name": "Traçat d'una línia elèctrica"
@@ -1847,10 +1867,6 @@
             "name": "Supermercat",
             "terms": "Supermercat, Súper, Hipermercat, Híper"
         },
-        "office/political_party": {
-            "name": "Local de partit polític",
-            "terms": "Partit polític"
-        },
         "building/stadium": {
             "name": "Edifici d'un estadi"
         },
@@ -1924,10 +1940,6 @@
         },
         "office/coworking": {
             "name": "Espai de coworking"
-        },
-        "vertex": {
-            "name": "Altres",
-            "terms": "Altre, Altres"
         },
         "type/boundary": {
             "name": "Límit",
@@ -2026,6 +2038,10 @@
         "natural/fell": {
             "name": "Prat d'alta muntanya"
         },
+        "amenity/restaurant/japanese": {
+            "name": "Restaurant japonès",
+            "terms": "cuina japonesa"
+        },
         "natural/heath": {
             "name": "Landa"
         },
@@ -2109,9 +2125,6 @@
         },
         "amenity/recycling": {
             "name": "Reciclatge"
-        },
-        "camp_site/camp_pitch": {
-            "name": "Àrea de campament"
         },
         "landuse/commercial": {
             "name": "Zona Comercial"
@@ -2308,12 +2321,13 @@
             "name": "Capella",
             "terms": "Ermita"
         },
+        "amenity/restaurant/turkish": {
+            "name": "Restaurant turc",
+            "terms": "cuina turca"
+        },
         "type/boundary/administrative": {
             "name": "Límit administratiu",
             "terms": "Límit administratiu, Frontera"
-        },
-        "landuse/military/office": {
-            "name": "Oficina militar"
         },
         "amenity/watering_place": {
             "name": "Font d'aigua per animals"
@@ -2332,6 +2346,10 @@
         "line": {
             "name": "Línia",
             "terms": "Línia"
+        },
+        "amenity/vehicle_inspection": {
+            "name": "Inspecció de vehicles",
+            "terms": "ITV"
         },
         "amenity/kindergarten": {
             "name": "Centre preescolar"

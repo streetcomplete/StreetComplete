@@ -393,9 +393,6 @@
         "amenity/fire_station": {
             "name": "Suhiltzaile-etxe"
         },
-        "attraction/animal": {
-            "name": "Animali"
-        },
         "barrier/entrance": {
             "name": "Sarrera"
         },
@@ -485,9 +482,6 @@
         },
         "building/garage": {
             "name": "Garaje"
-        },
-        "amenity/vending_machine/news_papers": {
-            "name": "Egunkarien makina saltzaile"
         },
         "building/roof": {
             "name": "Teilatu"

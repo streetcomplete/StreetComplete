@@ -73,7 +73,11 @@ There are many reasonable feature requests and ideas for new question types in t
 
 Note that StreetComplete also uses [some dependencies](#issues-of-dependencies), where contributions are likely also accepted and help StreetComplete, too.
 
-If you need to find things where help is appreciated [have a look at the issues tagged with "help wanted"](https://github.com/westnordost/StreetComplete/labels/help%20wanted).
+If you need to find things where help is especially appreciated [have a look at the issues tagged with "help wanted"](https://github.com/westnordost/StreetComplete/labels/help%20wanted).
+
+To build and test StreetComplete [download and install Android Studio](https://developer.android.com/studio/) which comes bundled with all tools needed, checkout and open the project in this application and click on the green play button on the top.
+
+See also a [documentation of program architecture](ARCHITECTURE.md).
 
 ### Developing new quests
 
@@ -88,7 +92,7 @@ Always remember to pay attention to [the quest guidelines](https://github.com/we
 
 #### Dependencies
 
-* [Tangram-ES](https://github.com/tangrams/tangram-es/) for technical issues with the map rendering
+* [Tangram-ES](https://github.com/tangrams/tangram-es/) map rendering
 * [countryboundaries](https://github.com/westnordost/countryboundaries) for detecting, in which country a quest is (affects quest display, etc.)
 * [osmapi](https://github.com/westnordost/osmapi) for communication with the OSM API
 * [osmfeatures](https://github.com/westnordost/osmfeatures) to correctly refer to a feature by name

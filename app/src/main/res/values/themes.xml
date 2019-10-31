@@ -23,6 +23,8 @@
         <item name="android:popupMenuStyle">@style/Theme.Bubble.Popup</item>
     </style>
 
+    <style name="Theme.Bubble.ToolbarPopup"  parent="Theme.AppCompat.DayNight.NoActionBar"/>
+
     <style name="Theme.Bubble.Popup" parent="Widget.AppCompat.Light.PopupMenu">
         <item name="android:popupBackground">@drawable/speech_bubble_none</item>
         <item name="android:popupAnimationStyle">@style/Animation.Popup.Bubble</item>

@@ -19,8 +19,9 @@ import de.westnordost.streetcomplete.R
 
 import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_COLLAPSED
 import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_EXPANDED
+import de.westnordost.osmapi.map.data.LatLon
 
-abstract class AbstractBottomSheetFragment : Fragment() {
+abstract class AbstractBottomSheetFragment : Fragment(), IsCloseableBottomSheet {
     private lateinit var bottomSheet: LinearLayout
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<*>
     private lateinit var closeButton: View
@@ -36,7 +37,7 @@ abstract class AbstractBottomSheetFragment : Fragment() {
         }
 
         closeButton = view.findViewById(R.id.closeButton)
-        closeButton.setOnClickListener { activity!!.onBackPressed() }
+        closeButton.setOnClickListener { activity?.onBackPressed() }
 
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
 
@@ -88,9 +89,7 @@ abstract class AbstractBottomSheetFragment : Fragment() {
         bottomSheetBehavior.peekHeight = resources.getDimensionPixelSize(R.dimen.quest_form_peekHeight)
         view?.findViewById<View>(R.id.bottomSheetContainer)?.let {
 	        it.setBackgroundResource(R.drawable.speechbubbles_gradient_background)
-	        it.updateLayoutParams {
-		        width = resources.getDimensionPixelSize(R.dimen.quest_form_width)
-	        }
+	        it.updateLayoutParams { width = resources.getDimensionPixelSize(R.dimen.quest_form_width) }
         }
     }
 
@@ -104,9 +103,13 @@ abstract class AbstractBottomSheetFragment : Fragment() {
 	    closeButton.visibility = if (coversToolbar) View.VISIBLE else View.INVISIBLE
     }
 
+    @UiThread override fun onClickMapAt(position: LatLon, clickAreaSizeInMeters: Double): Boolean {
+        return false
+    }
+
     /** Request to close the form through user interaction (back button, clicked other quest,..),
      * requires user confirmation if any changes have been made  */
-    @UiThread fun onClickClose(onConfirmed: Runnable) {
+    @UiThread override fun onClickClose(onConfirmed: Runnable) {
         if (!isRejectingClose()) {
             onDiscard()
             onConfirmed.run()

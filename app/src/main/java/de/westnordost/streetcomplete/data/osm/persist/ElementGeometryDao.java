@@ -162,7 +162,7 @@ public class ElementGeometryDao
 				")  NOT IN ( " +
 					getSelectAllElementsIn(OsmQuestTable.NAME) +
 					" UNION " +
-					getSelectAllElementsIn(OsmQuestTable.NAME_UNDO) +
+					getSelectAllElementsIn(UndoOsmQuestTable.NAME) +
 				")";
 
 		return db.delete(ElementGeometryTable.NAME, where, null);

@@ -12,7 +12,7 @@ class AddToiletAvailability(o: OverpassMapDataDao) : SimpleOverpassQuestType<Boo
     // place to solve the quest. (Considering malls and department stores public enough)
     override val tagFilters = """
         nodes, ways with
-        ( (shop ~ mall|department_store and name) or (highway ~ services|rest_area) )
+        ( (shop ~ mall|department_store and name) or highway ~ services|rest_area )
         and !toilets
     """
     override val commitMessage = "Add toilet availability"

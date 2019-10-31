@@ -7,7 +7,8 @@ import de.westnordost.streetcomplete.data.meta.OsmTaggings
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandler
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
-import de.westnordost.streetcomplete.data.osm.tql.OverpassQLUtil
+import de.westnordost.streetcomplete.data.osm.tql.getQuestPrintStatement
+import de.westnordost.streetcomplete.data.osm.tql.toGlobalOverpassBBox
 import de.westnordost.streetcomplete.quests.DateUtil
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
@@ -44,9 +45,9 @@ open class MarkCompletedHighwayConstruction(private val overpass: OverpassMapDat
      */
     private fun getOverpassQuery(bbox: BoundingBox): String {
         val groupName = ".roads_for_review"
-        return OverpassQLUtil.getGlobalOverpassBBox(bbox) +
+        return bbox.toGlobalOverpassBBox() +
             "way" + getQueryPart("highway", groupName, 14) +
-            groupName + " " + OverpassQLUtil.getQuestPrintStatement()
+            groupName + " " + getQuestPrintStatement()
     }
 
     override fun createForm() = YesNoQuestAnswerFragment()

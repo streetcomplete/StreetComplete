@@ -513,8 +513,7 @@
             "terms": "prelaz,prelaz preko ograde"
         },
         "shop/boutique": {
-            "name": "Butik",
-            "terms": "butik,radnja za prodaju odjeće"
+            "name": "Butik"
         },
         "leisure/pitch/tennis": {
             "name": "Teniski teren",
@@ -705,10 +704,6 @@
             "name": "Supermarket",
             "terms": "supermarket,prodaja robe široke potrošnje"
         },
-        "office/political_party": {
-            "name": "Politička stranka",
-            "terms": "politička stranka,politička partija,ured političke partije"
-        },
         "shop/garden_centre": {
             "name": "Centar za baštovanstvo",
             "terms": "centar za baštovanstvo,centar za vrtlarstvo"
@@ -774,10 +769,6 @@
         "landuse/vineyard": {
             "name": "Vinograd",
             "terms": "vinograd,uzgoj grožđa"
-        },
-        "vertex": {
-            "name": "Drugo",
-            "terms": "ostalo,drugo"
         },
         "type/boundary": {
             "name": "Granica",
@@ -1231,8 +1222,7 @@
             "terms": "saobraćajna signalizacija,semafori,saobraćajni znakovi"
         },
         "amenity/embassy": {
-            "name": "Ambasada",
-            "terms": "ambasada,konzulat,predstavništvo strane zemlje"
+            "name": "Ambasada"
         },
         "emergency/ambulance_station": {
             "name": "Stanica hitne pomoći",

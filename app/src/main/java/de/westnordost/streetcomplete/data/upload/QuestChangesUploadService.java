@@ -15,32 +15,33 @@ import java.net.URL;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import javax.inject.Inject;
-import javax.inject.Provider;
 
 import de.westnordost.osmapi.common.errors.OsmAuthorizationException;
 import de.westnordost.streetcomplete.ApplicationConstants;
 import de.westnordost.streetcomplete.Injector;
 import de.westnordost.streetcomplete.data.VisibleQuestListener;
 import de.westnordost.streetcomplete.data.VisibleQuestRelay;
-import de.westnordost.streetcomplete.data.osm.upload.OsmQuestChangesetsUpload;
-import de.westnordost.streetcomplete.data.osm.upload.UndoOsmQuestChangesetsUpload;
-import de.westnordost.streetcomplete.data.osmnotes.CreateNoteUpload;
-import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestChangesUpload;
+import de.westnordost.streetcomplete.data.osm.upload.OsmQuestsUpload;
+import de.westnordost.streetcomplete.data.osm.upload.SplitWaysUpload;
+import de.westnordost.streetcomplete.data.osm.upload.UndoOsmQuestsUpload;
+import de.westnordost.streetcomplete.data.osmnotes.CreateNotesUpload;
+import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestsChangesUpload;
 import de.westnordost.streetcomplete.oauth.OAuthPrefs;
 
 /** Collects and uploads all changes the user has done: notes he left, comments he left on existing
  *  notes and quests he answered */
 public class QuestChangesUploadService extends IntentService
 {
-	private static final String TAG = "QuestChangesUpload";
+	private static final String TAG = "Upload";
 
 	private static Boolean banned = null;
 	private static String banReason = null;
 
-	@Inject Provider<OsmNoteQuestChangesUpload> noteQuestUploadProvider;
-	@Inject Provider<OsmQuestChangesetsUpload> questUploadProvider;
-	@Inject Provider<UndoOsmQuestChangesetsUpload> undoQuestUploadProvider;
-	@Inject Provider<CreateNoteUpload> createNoteUploadProvider;
+	@Inject OsmNoteQuestsChangesUpload noteQuestUpload;
+	@Inject OsmQuestsUpload questUpload;
+	@Inject UndoOsmQuestsUpload undoQuestUpload;
+	@Inject CreateNotesUpload createNoteUpload;
+	@Inject SplitWaysUpload splitWaysUpload;
 	@Inject OAuthPrefs oAuth;
 
 	private final IBinder binder = new Interface();
@@ -108,35 +109,37 @@ public class QuestChangesUploadService extends IntentService
 				throw new OsmAuthorizationException(401, "Unauthorized", "User is not authorized");
 			}
 
-			Log.i(TAG, "Starting upload changes");
+			Log.i(TAG, "Starting upload");
 
-			OsmNoteQuestChangesUpload noteQuestUpload = noteQuestUploadProvider.get();
-			noteQuestUpload.setProgressListener(uploadedChangeRelay);
+			noteQuestUpload.setUploadedChangeListener(uploadedChangeRelay);
 			noteQuestUpload.upload(cancelState);
 
 			if (cancelState.get()) return;
 
-			UndoOsmQuestChangesetsUpload undoOsmQuestUpload = undoQuestUploadProvider.get();
-			undoOsmQuestUpload.setProgressListener(uploadedChangeRelay);
-			undoOsmQuestUpload.setVisibleQuestListener(visibleQuestRelay);
-			undoOsmQuestUpload.upload(cancelState);
+			undoQuestUpload.setUploadedChangeListener(uploadedChangeRelay);
+			undoQuestUpload.setVisibleQuestListener(visibleQuestRelay);
+			undoQuestUpload.upload(cancelState);
 
 			if (cancelState.get()) return;
 
-			OsmQuestChangesetsUpload osmQuestUpload = questUploadProvider.get();
-			osmQuestUpload.setProgressListener(uploadedChangeRelay);
-			osmQuestUpload.setVisibleQuestListener(visibleQuestRelay);
-			osmQuestUpload.upload(cancelState);
+			questUpload.setUploadedChangeListener(uploadedChangeRelay);
+			questUpload.setVisibleQuestListener(visibleQuestRelay);
+			questUpload.upload(cancelState);
 
 			if (cancelState.get()) return;
 
-			CreateNoteUpload createNoteUpload = createNoteUploadProvider.get();
-			createNoteUpload.setProgressListener(uploadedChangeRelay);
-			createNoteUpload.upload(cancelState);
+			splitWaysUpload.setUploadedChangeListener(uploadedChangeRelay);
+			splitWaysUpload.setVisibleQuestListener(visibleQuestRelay);
+			splitWaysUpload.upload(cancelState);
+
+			if (cancelState.get()) return;
+
+			createNoteUpload.setUploadedChangeListener(uploadedChangeRelay);
+			createNoteUpload.upload(new AtomicBoolean(false));
 		}
 		catch (Exception e)
 		{
-			Log.e(TAG, "Unable to upload changes", e);
+			Log.e(TAG, "Unable to upload", e);
 			if(progressListener != null)
 			{
 				progressListener.onError(e);
@@ -148,7 +151,7 @@ public class QuestChangesUploadService extends IntentService
 			progressListener.onFinished();
 		}
 
-		Log.i(TAG, "Finished upload changes");
+		Log.i(TAG, "Finished upload");
 	}
 
 	private static boolean isBanned()

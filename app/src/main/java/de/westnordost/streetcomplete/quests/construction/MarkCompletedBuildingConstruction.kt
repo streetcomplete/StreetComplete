@@ -7,7 +7,8 @@ import de.westnordost.streetcomplete.data.meta.OsmTaggings
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandler
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
-import de.westnordost.streetcomplete.data.osm.tql.OverpassQLUtil
+import de.westnordost.streetcomplete.data.osm.tql.getQuestPrintStatement
+import de.westnordost.streetcomplete.data.osm.tql.toGlobalOverpassBBox
 import de.westnordost.streetcomplete.quests.DateUtil
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
@@ -33,11 +34,11 @@ open class MarkCompletedBuildingConstruction(private val overpass: OverpassMapDa
         val groupName = ".buildings_under_construction"
         val wayGroupName = groupName + "_ways"
         val relationGroupName = groupName + "_relations"
-        return OverpassQLUtil.getGlobalOverpassBBox(bbox) +
+        return bbox.toGlobalOverpassBBox() + "\n" +
             "way" + getQueryPart("building", wayGroupName, 180) +
             "relation" + getQueryPart("building", relationGroupName, 180) +
-            "(" + wayGroupName + "; " + relationGroupName + ";); " +
-            OverpassQLUtil.getQuestPrintStatement()
+            "($wayGroupName; $relationGroupName;);\n" +
+            getQuestPrintStatement()
     }
 
     override fun createForm() = YesNoQuestAnswerFragment()

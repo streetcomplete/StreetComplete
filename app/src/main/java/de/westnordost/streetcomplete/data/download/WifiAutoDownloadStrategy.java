@@ -1,19 +1,17 @@
 package de.westnordost.streetcomplete.data.download;
 
-import java.util.List;
 
 import javax.inject.Inject;
-import javax.inject.Provider;
 
-import de.westnordost.streetcomplete.data.QuestType;
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
 import de.westnordost.streetcomplete.data.tiles.DownloadedTilesDao;
+import de.westnordost.streetcomplete.data.visiblequests.OrderedVisibleQuestTypesProvider;
 
 public class WifiAutoDownloadStrategy extends AActiveRadiusStrategy
 {
 	@Inject public WifiAutoDownloadStrategy(
 			OsmQuestDao osmQuestDB, DownloadedTilesDao downloadedTilesDao,
-			Provider<List<QuestType>> questTypes)
+			OrderedVisibleQuestTypesProvider questTypes)
 	{
 		super(osmQuestDB, downloadedTilesDao, questTypes);
 	}

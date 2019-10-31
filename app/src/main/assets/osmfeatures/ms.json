@@ -72,9 +72,6 @@
         "office/employment_agency": {
             "name": "Agensi Pekerjaan"
         },
-        "office/political_party": {
-            "name": "Parti Politik"
-        },
         "office/government/register_office": {
             "name": "Pejabat Pendaftar"
         },
@@ -102,9 +99,6 @@
         },
         "railway/level_crossing": {
             "name": "Lintasan Kereta Api (Jalan)"
-        },
-        "public_transport/platform_tram": {
-            "name": "Hentian Tram / Platform"
         },
         "railway/signal": {
             "name": "Isyarat Kereta Api"
@@ -286,9 +280,6 @@
         "tourism/hotel": {
             "name": "Hotel"
         },
-        "public_transport/platform_ferry": {
-            "name": "Hentian Feri / Platform"
-        },
         "advertising/billboard": {
             "name": "Papan Iklan"
         },
@@ -310,9 +301,6 @@
         "amenity/place_of_worship/buddhist": {
             "name": "Tokong Buddha"
         },
-        "public_transport/platform_subway": {
-            "name": "Hentian Laluan Bawah Tanah / Platform"
-        },
         "building/kindergarten": {
             "name": "Bangunan Prasekolah/Tadika"
         },
@@ -330,12 +318,6 @@
         },
         "office/foundation": {
             "name": "Pejabat Yayasan"
-        },
-        "public_transport/platform_light_rail": {
-            "name": "Hentian Rel Ringan / Platform"
-        },
-        "public_transport/platform_monorail": {
-            "name": "Hentian Monorel / Platform"
         },
         "office/newspaper": {
             "name": "Pejabat Akhbar"
@@ -380,9 +362,6 @@
         "amenity/prison": {
             "name": "Kawasan Penjara"
         },
-        "public_transport/platform_trolleybus": {
-            "name": "Hentian Bas Troli / Platform"
-        },
         "shop/computer": {
             "name": "Kedai Komputer"
         },
@@ -425,9 +404,6 @@
         },
         "power": {
             "name": "Tenaga Elektrik"
-        },
-        "public_transport/platform_train": {
-            "name": "Hentian Kereta Api / Platform"
         },
         "shop/music": {
             "name": "Kedai Muzik"
@@ -505,9 +481,6 @@
         "amenity/driving_school": {
             "name": "Sekolah Memandu"
         },
-        "public_transport/platform_bus": {
-            "name": "Hentian Bas / Platform"
-        },
         "shop/convenience": {
             "name": "Kedai Kecil",
             "terms": "Kedai mudah beli"
@@ -533,9 +506,6 @@
         "highway/service": {
             "name": "Jalan Perkhidmatan"
         },
-        "public_transport/platform": {
-            "name": "Hentian Transit"
-        },
         "highway/residential": {
             "name": "Jalan Kediaman"
         },
@@ -544,9 +514,6 @@
         },
         "office/estate_agent": {
             "name": "Pejabat Hartanah"
-        },
-        "railway/platform": {
-            "name": "Hentian Kereta Api / Platform"
         },
         "office/adoption_agency": {
             "name": "Agensi Pengambilan Anak Angkat"
@@ -606,9 +573,6 @@
         },
         "power/generator": {
             "name": "Penjana Tenaga Elektrik"
-        },
-        "roundabout": {
-            "name": "Bulatan"
         },
         "amenity/register_office": {
             "name": "Pejabat Pendaftar"

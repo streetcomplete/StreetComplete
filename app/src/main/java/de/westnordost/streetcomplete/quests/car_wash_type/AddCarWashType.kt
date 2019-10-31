@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
 
 class AddCarWashType(o: OverpassMapDataDao) : SimpleOverpassQuestType<CarWashType>(o) {
 
-    override val tagFilters = "nodes, ways with amenity=car_wash and !automated and !self_service"
+    override val tagFilters = "nodes, ways with amenity = car_wash and !automated and !self_service"
     override val commitMessage = "Add car wash type"
     override val icon = R.drawable.ic_quest_car_wash
 

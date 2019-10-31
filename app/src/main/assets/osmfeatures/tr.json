@@ -38,9 +38,6 @@
         "emergency/yes": {
             "name": "Acil Erişim"
         },
-        "circular": {
-            "name": "Dönel Kavşak"
-        },
         "healthcare/audiologist": {
             "name": "Ses Uzmanı",
             "terms": "Odyolog"
@@ -311,10 +308,6 @@
             "name": "Mobilya Mağazası",
             "terms": "Mobilya Mağazası"
         },
-        "public_transport/platform_ferry": {
-            "name": "Feribot Terminali",
-            "terms": "Feribot Yolcu İndirme/Bindirme Platformu"
-        },
         "advertising/billboard": {
             "name": "Reklam Panosu",
             "terms": "Reklam Panosu, Bilbord"
@@ -396,6 +389,9 @@
         "amenity/drinking_water": {
             "name": "İçme Suyu",
             "terms": "İçme Suyu, Sebil"
+        },
+        "amenity/pharmacy": {
+            "name": "Eczane"
         },
         "barrier/kissing_gate": {
             "name": "Sadece İnsanlar İçin Giriş Kapısı",
@@ -582,10 +578,6 @@
             "name": "Koridor",
             "terms": "Koridor, Geçit"
         },
-        "attraction/animal": {
-            "name": "Hayvan",
-            "terms": "Hayvan"
-        },
         "craft/bookbinder": {
             "name": "Ciltçi",
             "terms": "Ciltçi"
@@ -601,10 +593,6 @@
         "shop/beverages": {
             "name": "İçecek Dükkanı",
             "terms": "İçecek Dükkanı"
-        },
-        "public_transport/platform_bus": {
-            "name": "Otobüs Durağı",
-            "terms": "Durak, Otobüs Yolcu İndirme/Bindirme Platformu"
         },
         "entrance": {
             "name": "Giriş/Çıkış",
@@ -730,8 +718,7 @@
             "terms": "Depo Kiralama Mağazası"
         },
         "shop/fashion": {
-            "name": "Giyim Mağazası",
-            "terms": "Giyim Mağazası"
+            "name": "Giyim Mağazası"
         },
         "power/substation": {
             "name": "Trafo",
@@ -1410,10 +1397,6 @@
             "name": "İşitme Cihazı Mağazası ",
             "terms": "İşitme Cihazı Mağazası"
         },
-        "public_transport/platform": {
-            "name": "Toplu Taşıma Durağı",
-            "terms": "Toplu Taşıma Yolcu İndirme/Bindirme Platformu"
-        },
         "craft/confectionery": {
             "name": "Şekerci"
         },
@@ -1442,8 +1425,7 @@
             "terms": "Trafik İşaretleri, Trafik Levhaları"
         },
         "amenity/embassy": {
-            "name": "Büyükelçilik",
-            "terms": "Büyükelçilik"
+            "name": "Büyükelçilik"
         },
         "type/restriction/no_left_turn": {
             "name": "Sola Dönüş Yasak",
@@ -1546,12 +1528,12 @@
             "name": "Hukuk Bürosu",
             "terms": "Hukuk Şirketi Şubesi"
         },
+        "building/apartments": {
+            "name": "Residans"
+        },
         "highway/trunk_link": {
             "name": "Duble Yol Bağlantı Yolu",
             "terms": "Duble Yol Bağlantı Yolu, Duble Yola Bağlantı Yolu, Duble Yola Bağlanan Yol"
-        },
-        "amenity/vending_machine/news_papers": {
-            "name": "Gazete Otomatı"
         },
         "shop/bookmaker": {
             "name": "Bahis Merkezi",
@@ -1564,10 +1546,6 @@
         "aerialway/t-bar": {
             "name": "Çubuklu Teleferik",
             "terms": "Çubuklu Teleferik"
-        },
-        "public_transport/platform_aerialway": {
-            "name": "Havayolu Durağı",
-            "terms": "Havayolu ile Taşıma Yolcu İndirme/Bindirme Platformu"
         },
         "historic/boundary_stone": {
             "name": "Sınır İşareti",
@@ -1627,10 +1605,6 @@
         "highway/living_street": {
             "name": "Sokak",
             "terms": "Sokak"
-        },
-        "landuse/military/bunker": {
-            "name": "Sığınak",
-            "terms": "Sığınak"
         },
         "attraction/bumper_car": {
             "name": "Çarpışan Araba",
@@ -1716,10 +1690,6 @@
         "place/island": {
             "name": "Ada",
             "terms": "Ada"
-        },
-        "public_transport/platform_tram": {
-            "name": "Tramvay Durağı",
-            "terms": "Tramvay Yolcu İndirme/Bindirme Platformu"
         },
         "attraction/bungee_jumping": {
             "name": "Bungee Jumping",
@@ -1864,10 +1834,6 @@
         "highway/pedestrian_line": {
             "name": "Yaya Yolu"
         },
-        "landuse/military/checkpoint": {
-            "name": "Kontrol Noktası",
-            "terms": "Kontrol Noktası"
-        },
         "man_made/lighthouse": {
             "name": "Deniz Feneri",
             "terms": "Deniz Feneri, Fener"
@@ -2009,10 +1975,6 @@
             "name": "Küçük Dönel Kavşak",
             "terms": "Küçük Dönel Kavşak"
         },
-        "public_transport/platform_monorail": {
-            "name": "Tek Raylı Tren İstasyonu",
-            "terms": "Tek Raylı Tren Yolcu İndirme/Bindirme Platformu"
-        },
         "highway/service/parking_aisle": {
             "name": "Park Yolu",
             "terms": "Park Yolu, Park Yeri, Park Koridoru"
@@ -2088,10 +2050,6 @@
             "name": "Kriket Sahası",
             "terms": "Kriket Sahası"
         },
-        "public_transport/platform_trolleybus": {
-            "name": "Troleybüs Durağı",
-            "terms": "Troleybüs, Raysız Tramvay Yolcu İndirme/Bindirme Platformu"
-        },
         "amenity/arts_centre": {
             "name": "Sanat Merkezi",
             "terms": "Sanat Merkezi"
@@ -2127,10 +2085,6 @@
         "amenity/bureau_de_change": {
             "name": "Döviz Bürosu",
             "terms": "Döviz Bürosu"
-        },
-        "landuse/military/nuclear_explosion_site": {
-            "name": "Nükleer Patlama Sahası",
-            "terms": "Nükleer Patlama Sahası"
         },
         "public_transport/station_trolleybus": {
             "name": "Troleybüs Terminali",
@@ -2172,8 +2126,7 @@
             "terms": "Çit Merdiveni"
         },
         "shop/boutique": {
-            "name": "Butik Mağaza",
-            "terms": "Butik"
+            "name": "Butik Mağaza"
         },
         "area/highway": {
             "name": "Yol Durumu",
@@ -2344,9 +2297,6 @@
             "name": "Ölçüm Kontrol Noktası",
             "terms": "Ölçüm Kontrol Noktası"
         },
-        "roundabout": {
-            "name": "Dönel Kavşak"
-        },
         "type/route/power": {
             "name": "Elektrik Hattı Güzergahı",
             "terms": "Elektrik Hattı Güzergahı, Elektrik Hattı Rotası"
@@ -2449,10 +2399,6 @@
             "name": "Süpermarket",
             "terms": "Süpermarket"
         },
-        "office/political_party": {
-            "name": "Siyasi Parti",
-            "terms": "Parti Şubesi"
-        },
         "building/stadium": {
             "name": "Stadyum",
             "terms": "Stadyum"
@@ -2552,10 +2498,6 @@
         "office/coworking": {
             "name": "Ortak Çalışma Alanı",
             "terms": "Ortak Çalışma Yeri"
-        },
-        "vertex": {
-            "name": "Diğer",
-            "terms": "Nokta"
         },
         "type/boundary": {
             "name": "Sınır",
@@ -2743,10 +2685,6 @@
         "landuse/farm": {
             "name": "Tarım Alanı"
         },
-        "public_transport/platform_subway": {
-            "name": "Metro Durağı",
-            "terms": "Metro Yolcu İndirme/Bindirme Platformu"
-        },
         "natural/wood": {
             "name": "Ormanlık Alan",
             "terms": "Ormanlık Alan, Orman"
@@ -2771,10 +2709,6 @@
             "name": "Gözlükçü",
             "terms": "Gözlükçü, Optik"
         },
-        "public_transport/platform_light_rail": {
-            "name": "Raybüs Durağı",
-            "terms": "Raybüs, Hafif Raylı Taşıt Yolcu İndirme/Bindirme Platformu"
-        },
         "type/route/foot": {
             "name": "Yürüyüş Güzergahı",
             "terms": "Yürüyüş Güzergahı, Yürüyüş Rotası"
@@ -2793,10 +2727,6 @@
         },
         "landuse/industrial/scrap_yard": {
             "name": "Hurdalık"
-        },
-        "camp_site/camp_pitch": {
-            "name": "Kamp Ateş Alanı",
-            "terms": "Kamp Ateş Alanı"
         },
         "shop/gas": {
             "name": "Tüpçü",
@@ -2916,10 +2846,6 @@
         },
         "power": {
             "name": "Güç"
-        },
-        "public_transport/platform_train": {
-            "name": "Tren Durağı",
-            "terms": "Tren Yolcu İndirme/Bindirme Platformu"
         },
         "aerialway/station": {
             "name": "Teleferik İstasyonu"
@@ -3053,10 +2979,6 @@
         "type/boundary/administrative": {
             "name": "İdari Sınır",
             "terms": "İdari Sınır"
-        },
-        "landuse/military/office": {
-            "name": "Askeri Büro",
-            "terms": "Askeri Büro, Askeri Ofsi"
         },
         "amenity/watering_place": {
             "name": "Hayvan Yıkama Yeri",

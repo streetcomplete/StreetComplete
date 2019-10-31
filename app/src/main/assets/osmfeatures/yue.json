@@ -553,8 +553,7 @@
             "terms": "Stile,梯梃,梯磴"
         },
         "shop/boutique": {
-            "name": "時裝店",
-            "terms": "Boutique,時裝店,服飾店,精品店"
+            "name": "時裝店"
         },
         "aerialway/pylon": {
             "name": "吊車塔",
@@ -765,10 +764,6 @@
             "name": "超級市場",
             "terms": "Supermarket,超級市場"
         },
-        "office/political_party": {
-            "name": "政黨",
-            "terms": "Political Party,政黨"
-        },
         "shop/garden_centre": {
             "name": "園藝舖",
             "terms": "Garden Center,園藝中心,園藝舖,花店"
@@ -840,10 +835,6 @@
         "landuse/vineyard": {
             "name": "葡萄園",
             "terms": "Vineyard,葡萄園,酒莊"
-        },
-        "vertex": {
-            "name": "其他",
-            "terms": "Other,其他,其它"
         },
         "type/boundary": {
             "name": "界",
@@ -1312,8 +1303,7 @@
             "terms": "Traffic Signals,交通燈,紅綠燈"
         },
         "amenity/embassy": {
-            "name": "大使館",
-            "terms": "Embassy,使館,大使館,領事館"
+            "name": "大使館"
         },
         "place/islet": {
             "name": "洲仔"

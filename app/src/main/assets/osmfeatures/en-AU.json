@@ -1,19 +1,118 @@
 {
     "presets": {
-        "barrier/kerb": {
-            "name": "Kerb"
+        "tourism/caravan_site": {
+            "name": "Caravan Site"
+        },
+        "amenity/pharmacy": {
+            "name": "Pharmacy"
+        },
+        "highway/footway/marked": {
+            "name": "Marked Crossing"
+        },
+        "highway/crossing/marked": {
+            "name": "Marked Crossing"
+        },
+        "leisure/fitness_centre": {
+            "name": "Gym / Fitness Centre"
         },
         "amenity/fuel": {
             "name": "Service Station"
         },
-        "barrier/kerb/lowered": {
-            "name": "Lowered Kerb"
+        "highway/footway/zebra": {
+            "name": "Marked Zebra Crossing"
         },
-        "tourism/caravan_site": {
-            "name": "Caravan Site"
+        "shop/cheese": {
+            "name": "Cheese Shop",
+            "terms": "Cheesemonger"
+        },
+        "amenity/community_centre": {
+            "name": "Community Centre"
+        },
+        "amenity/dive_centre": {
+            "name": "Dive Centre"
+        },
+        "shop/chocolate": {
+            "name": "Chocolate Shop",
+            "terms": "Chocolatier"
+        },
+        "amenity/recycling_centre": {
+            "name": "Recycling Centre"
+        },
+        "shop/tyres": {
+            "name": "Tyre Shop"
+        },
+        "healthcare/birthing_center": {
+            "name": "Birthing Centre"
         },
         "barrier/kerb/flush": {
             "name": "Flush Kerb"
+        },
+        "highway/footway/sidewalk": {
+            "name": "Footpath"
+        },
+        "telecom/data_center": {
+            "name": "Data Centre"
+        },
+        "amenity/community_centre/lgbtq": {
+            "name": "LGBTQ+ Community Centre"
+        },
+        "highway/give_way": {
+            "name": "Give Way Sign"
+        },
+        "leisure/sports_centre": {
+            "name": "Sports Centre / Complex"
+        },
+        "shop/chemist": {
+            "name": "Pharmacy",
+            "terms": "Chemist"
+        },
+        "highway/crossing/zebra": {
+            "name": "Marked Crossing"
+        },
+        "highway/crossing/marked-raised": {
+            "name": "Marked Crossing (Raised)"
+        },
+        "barrier/kerb/lowered": {
+            "name": "Lowered Kerb"
+        },
+        "highway/living_street": {
+            "name": "Shared Zone Road"
+        },
+        "highway/crossing/zebra-raised": {
+            "name": "Marked Crossing (Raised)"
+        },
+        "highway/footway/zebra-raised": {
+            "name": "Marked Zebra Crossing (Raised)"
+        },
+        "leisure/adult_gaming_centre": {
+            "name": "Adult Gaming Centre"
+        },
+        "highway/footway/marked-raised": {
+            "name": "Marked Crossing (Raised)"
+        },
+        "amenity/social_centre": {
+            "name": "Social Centre"
+        },
+        "amenity/vending_machine/fuel": {
+            "name": "Fuel Pump"
+        },
+        "amenity/conference_centre": {
+            "name": "Convention Centre"
+        },
+        "barrier/kerb": {
+            "name": "Kerb"
+        },
+        "amenity/arts_centre": {
+            "name": "Arts Centre"
+        },
+        "healthcare/blood_donation": {
+            "name": "Blood Donor Centre"
+        },
+        "amenity/payment_centre": {
+            "name": "Payment Centre"
+        },
+        "shop/garden_centre": {
+            "name": "Garden Centre"
         }
     }
 }

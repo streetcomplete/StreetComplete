@@ -22,6 +22,9 @@ import de.westnordost.streetcomplete.quests.building_levels.AddBuildingLevels;
 import de.westnordost.streetcomplete.quests.building_type.AddBuildingType;
 import de.westnordost.streetcomplete.quests.building_underground.AddIsBuildingUnderground;
 import de.westnordost.streetcomplete.quests.foot.AddProhibitedForPedestrians;
+import de.westnordost.streetcomplete.quests.general_fee.AddGeneralFee;
+import de.westnordost.streetcomplete.quests.handrail.AddHandrail;
+import de.westnordost.streetcomplete.quests.leaf_detail.AddForestLeafType;
 import de.westnordost.streetcomplete.quests.localized_name.AddBusStopName;
 import de.westnordost.streetcomplete.quests.bus_stop_shelter.AddBusStopShelter;
 import de.westnordost.streetcomplete.quests.car_wash_type.AddCarWashType;
@@ -54,7 +57,10 @@ import de.westnordost.streetcomplete.quests.religion.AddReligionToWaysideShrine;
 import de.westnordost.streetcomplete.quests.localized_name.data.PutRoadNameSuggestionsHandler;
 import de.westnordost.streetcomplete.quests.localized_name.data.RoadNameSuggestionsDao;
 import de.westnordost.streetcomplete.quests.segregated.AddCyclewaySegregation;
+import de.westnordost.streetcomplete.quests.self_service.AddSelfServiceLaundry;
 import de.westnordost.streetcomplete.quests.sidewalk.AddSidewalk;
+import de.westnordost.streetcomplete.quests.surface.AddCyclewayPartSurface;
+import de.westnordost.streetcomplete.quests.surface.AddFootwayPartSurface;
 import de.westnordost.streetcomplete.quests.surface.AddPathSurface;
 import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingBusStop;
 import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingCrosswalk;
@@ -71,13 +77,14 @@ import de.westnordost.streetcomplete.quests.sport.AddSport;
 import de.westnordost.streetcomplete.quests.traffic_signals_sound.AddTrafficSignalsSound;
 import de.westnordost.streetcomplete.quests.traffic_signals_button.AddTrafficSignalsButton;
 import de.westnordost.streetcomplete.quests.way_lit.AddWayLit;
-import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelChairAccessPublicTransport;
-import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelChairAccessToilets;
+import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAccessPublicTransport;
+import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAccessToilets;
 import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAccessBusiness;
 import de.westnordost.streetcomplete.quests.bench_backrest.AddBenchBackrest;
 import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAccessOutside;
 import de.westnordost.streetcomplete.quests.ferry.AddFerryAccessMotorVehicle;
 import de.westnordost.streetcomplete.quests.ferry.AddFerryAccessPedestrian;
+import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAccessToiletsPart;
 
 @Module
 public class QuestModule
@@ -129,8 +136,9 @@ public class QuestModule
 				new AddPathSurface(o),
 				new AddTracktype(o),
 				new AddMaxWeight(o),
+				new AddForestLeafType(o), // used by OSM Carto
 				new AddBikeParkingType(o), // used by OsmAnd
-				new AddWheelChairAccessToilets(o), // used by wheelmap, OsmAnd, MAPS.ME
+				new AddWheelchairAccessToilets(o), // used by wheelmap, OsmAnd, MAPS.ME
 				new AddPlaygroundAccess(o), //late as in many areas all needed access=private is already mapped
 				new AddWheelchairAccessBusiness(o), // used by wheelmap, OsmAnd, MAPS.ME
 				new AddToiletAvailability(o), //OSM Carto, shown in OsmAnd descriptions
@@ -149,22 +157,28 @@ public class QuestModule
 				new AddToiletsFee(o), // used by OsmAnd in the object description
 				new AddBabyChangingTable(o), // used by OsmAnd in the object description
 				new AddBikeParkingCover(o), // used by OsmAnd in the object description
-				new AddTrafficSignalsSound(o),
+				new AddTactilePavingCrosswalk(o), // Paving can be completed while waiting to cross
+				new AddTrafficSignalsSound(o), // Sound needs to be done as or after you're crossing
 				new AddRoofShape(o),
-				new AddWheelChairAccessPublicTransport(o),
+				new AddWheelchairAccessPublicTransport(o),
 				new AddWheelchairAccessOutside(o),
 				new AddTactilePavingBusStop(o),
-				new AddTactilePavingCrosswalk(o),
 				new AddBridgeStructure(o),
 				new AddReligionToWaysideShrine(o),
 				new AddCyclewaySegregation(o),
 				new MarkCompletedBuildingConstruction(o),
+				new AddGeneralFee(o),
+				new AddSelfServiceLaundry(o),
+				new AddHandrail(o), // for accessibility of pedestrian routing
 
 				// ↓ 8. defined in the wiki, but not really used by anyone yet. Just collected for
 				//      the sake of mapping it in case it makes sense later
+				new AddCyclewayPartSurface(o),
+				new AddFootwayPartSurface(o),
 				new AddMotorcycleParkingCover(o),
 				new AddFireHydrantType(o),
 				new AddParkingType(o),
+				new AddWheelchairAccessToiletsPart(o),
 				new AddPowerPolesMaterial(o),
 				new AddCarWashType(o),
 				new AddBenchBackrest(o),

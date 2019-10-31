@@ -26,11 +26,9 @@ class QuestAnswerComponentTest {
         val c1 = QuestAnswerComponent()
 
         val expectQuestId = 3
-        val expectGroup = QuestGroup.OSM_NOTE
-        val expectNote = "test"
+        val expectGroup = QuestGroup.OSM
         val expectQuestTitle = "What?"
         val expectObject = "jo"
-        val expectImagePaths = listOf("dings","dongs")
 
         c1.onAttach(object : OsmQuestAnswerListener {
             override fun onAnsweredQuest(questId: Long, group: QuestGroup, answer: Any) {
@@ -45,12 +43,8 @@ class QuestAnswerComponentTest {
                 assertEquals(expectQuestTitle, questTitle)
             }
 
-            override fun onLeaveNote(questId: Long, group: QuestGroup, questTitle: String, note: String, imagePaths: List<String>?) {
-                assertEquals(expectQuestId.toLong(), questId)
-                assertEquals(expectGroup, group)
-                assertEquals(expectNote, note)
-                assertEquals(expectQuestTitle, questTitle)
-                assertEquals(expectImagePaths, imagePaths)
+            override fun onSplitWay(osmQuestId: Long) {
+                assertEquals(expectQuestId.toLong(), osmQuestId)
             }
 
             override fun onSkippedQuest(questId: Long, group: QuestGroup) {
@@ -61,8 +55,8 @@ class QuestAnswerComponentTest {
 
         c1.onCreate(QuestAnswerComponent.createArguments(expectQuestId.toLong(), expectGroup))
         c1.onComposeNote(expectQuestTitle)
-        c1.onLeaveNote(expectQuestTitle, expectNote, expectImagePaths)
-        c1.onAnswerQuest(expectObject)
+        c1.onSplitWay()
+        c1.onAnsweredQuest(expectObject)
         c1.onSkippedQuest()
     }
 }

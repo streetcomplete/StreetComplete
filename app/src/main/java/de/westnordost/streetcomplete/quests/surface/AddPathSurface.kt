@@ -9,10 +9,14 @@ class AddPathSurface(o: OverpassMapDataDao) : SimpleOverpassQuestType<String>(o)
 
     override val tagFilters = """
         ways with highway ~ path|footway|cycleway|bridleway|steps
-        and !surface and access !~ private|no
+        and !surface
+        and segregated != yes
+        and (!conveying or conveying = no) and (!indoor or indoor = no)
+        and access !~ private|no
     """
     override val commitMessage = "Add path surfaces"
     override val icon = R.drawable.ic_quest_way_surface
+    override val isSplitWayEnabled = true
 
     override fun getTitle(tags: Map<String, String>) = when {
         tags["area"] == "yes"          -> R.string.quest_streetSurface_square_title

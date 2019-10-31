@@ -2,6 +2,8 @@
 <resources>
     <string name="action_settings">"Settings"</string>
     <string name="oauth_communication_error">"Unable to reach the authorization server"</string>
+    <string name="oauth_remove_authorization_dialog_message">"Do you want to remove the authorization for your OSM account?"</string>
+    <string name="oauth_remove_authorization_confirmation">"Remove"</string>
     <string name="loading">"Loading"</string>
     <string name="retry">"Retry"</string>
     <string name="oauth_cancelled">"Authorization canceled"</string>
@@ -261,10 +263,12 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
     <string name="quest_way_lit_automatic">"It uses motion detection"</string>
     <string name="quest_way_lit_24_7">"It’s lit night and day"</string>
     <string name="quest_tactilePaving_title_bus">"Does this bus stop have tactile pavings?"</string>
+    <string name="quest_tactilePaving_title_tram">"Does this streetcar stop have tactile pavings?"</string>
     <string name="quest_tactilePaving_title_crosswalk">"Does this crosswalk have tactile pavings on both sides?"</string>
     <string name="quest_source_dialog_title">Are you sure you checked this on-site?</string>
     <string name="quest_source_dialog_note">Only information that was found on a survey should be entered.</string>
     <string name="quest_tactilePaving_title_name_bus">"Does the bus stop %s have tactile pavings?"</string>
+    <string name="quest_tactilePaving_title_name_tram">"Does the streetcar stop %s have tactile pavings?"</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Is this bicycle parking covered (protected from rain)?"</string>
     <string name="dialog_session_dont_show_again">Don’t show again for this session</string>
     <string name="quest_sport_softball">Softball</string>
@@ -282,6 +286,7 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
     <string name="quest_wheelchairAccess_location_title">Is this location wheelchair accessible?</string>
     <string name="quest_wheelchairAccess_bus_station_name_title">Is the bus station %s wheelchair accessible?</string>
     <string name="quest_wheelchairAccess_toilets_name_title">Is the restroom %s wheelchair accessible?</string>
+    <string name="quest_wheelchairAccess_toiletsPart_title">Is the restroom at %s wheelchair accessible?</string>
     <string name="quest_wheelchairAccess_subway_entrance_name_title">Is the subway entrance %s wheelchair accessible?</string>
     <string name="quest_wheelchairAccess_railway_station_name_title">Is the train station %s wheelchair accessible?</string>
     <string name="quest_wheelchairAccess_location_name_title">Is the location %s wheelchair accessible?</string>
@@ -325,7 +330,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_crossing_type_unmarked">Crossing without road markings</string>
     <string name="compass_north_one_letter">N</string>
     <string name="action_undo">Undo</string>
-    <string name="no_changes_to_undo">Nothing to undo</string>
     <string name="undo_confirm_title">Undo the following last answer?</string>
     <string name="quest_orchard_produce_title">What is being cultivated here?</string>
     <string name="produce_grapes">Grapes</string>
@@ -407,7 +411,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_cycleway_value_lane_soft">cycle lane (dashed markings)</string>
     <string name="quest_cycleway_value_none">none</string>
     <string name="quest_cycleway_value_shared">lane shared explicitly with other traffic</string>
-    <string name="quest_buildingLevels_answer_multipleLevels">differs per building part</string>
+    <string name="quest_buildingLevels_answer_multipleLevels">Differs per building part</string>
     <string name="quest_buildingLevels_answer_description">In this case, simply input the values of the highest building part.</string>
     <string name="unglue_hint">Tap to unglue view from position</string>
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">Are the roadways of this road here physically separated (i.e. through a barrier)? The default speed limit depends on whether this is the case or not.</string>
@@ -666,8 +670,23 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_ferry_pedestrian_title">Does this ferry route transport pedestrians?</string>
     <string name="quest_ferry_motor_vehicle_name_title">Does %s transport motor vehicles?</string>
     <string name="quest_ferry_motor_vehicle_title">Does this ferry route transport motor vehicles?</string>
+    <string name="quest_leafType_title">Do the trees here have needles or leaves?</string>
+    <string name="quest_leaf_type_needles">Needles</string>
+    <string name="quest_leaf_type_broadleaved">Broadleaved</string>
+    <string name="quest_leaf_type_mixed">Both are present</string>
     <string name="create_new_note_hint">Best write the note in the locally spoken language or otherwise in English.</string>
     <string name="about_contributing">Your answers are directly improving OpenStreetMap. Contributed data is open, everyone can use it. Many great projects are already using it.</string>
     <string name="about_missing_stars">Currently, the star count is not shared across devices, but answers are added directly to the OpenStreetMap database.</string>
     <string name="how_to_get_stars">Choose one of the markers on the map and answer the question. This way you will improve OpenStreetMap data and get stars. If you see no markers you may need to zoom out the map.</string>
+    <string name="quest_cyclewayPartSurface_title">What\'s the surface of the cycleway here?</string>
+    <string name="quest_footwayPartSurface_title">What\'s the surface of the footway here?</string>
+    <string name="quest_generic_answer_differs_along_the_way">"Differs along the way…"</string>
+    <string name="quest_split_way_description">If it differs along the way, the first step is to split up the way. After that, the quest can be answered for each split part separately.\nNote that the quests for the split parts may appear much later.\nSplit it now?</string>
+    <string name="quest_split_way_tutorial">Tap on the way to split it at the point(s) where the answer differs. Try to be as precise as possible, you can zoom in as usual.</string>
+    <string name="quest_split_way_too_imprecise">"Please zoom in further"</string>
+    <string name="quest_split_way_many_splits_confirmation_description">These are quite a few splits. You can always further split up the way later.</string>
+    <string name="confirmation_authorize_now_note">You can do this later on the settings screen.</string>
+    <string name="quest_generalFee_title">Does it cost a fee to enter %s?</string>
+    <string name="quest_laundrySelfService_title">Is this laundry a self service laundry?</string>
+    <string name="quest_handrail_title">Do these steps have a handrail?</string>
 </resources>

@@ -24,7 +24,8 @@
             "terms": "Løftebom, Bom"
         },
         "shop/agrarian": {
-            "name": "Grovvareforretning"
+            "name": "Grovvareforretning",
+            "terms": "korn,landbrug,afgrøde,gødning,maskiner,ukrudtsmiddel"
         },
         "amenity/shelter/lean_to": {
             "name": "Åbent overnatningsshelter",
@@ -83,8 +84,8 @@
             "name": "Jernbanemilepæl"
         },
         "waterway/sanitary_dump_station": {
-            "name": "Søtoilet funktionsområde",
-            "terms": "Søtoilet funktionsområde, Søtoilet tømning"
+            "name": "Marine sanitærdeponi",
+            "terms": "tørcloset,toilet,kloak,affald,lort,kemisk toilet,closet,campingtoilet,camping,havn,båd"
         },
         "barrier/city_wall": {
             "name": "Bymur",
@@ -224,6 +225,10 @@
             "name": "Vandrerute",
             "terms": "Vandrerute, Vandretur, Gårute"
         },
+        "amenity/place_of_worship/christian": {
+            "name": "Kristen kirke",
+            "terms": "kristendom,kirke,katedral,kapel,gud,præst,sogn,tempel"
+        },
         "tourism/hostel": {
             "name": "Vandrerhjem",
             "terms": "Vandrerhjem"
@@ -300,7 +305,7 @@
         },
         "tourism/caravan_site": {
             "name": "Autocamperplads",
-            "terms": "Autocamperplads"
+            "terms": "Autocamperplads,mobile home,camper,van"
         },
         "craft/clockmaker": {
             "name": "Urmager",
@@ -413,6 +418,10 @@
         "shop/sports": {
             "name": "Sportsudstyrsbutik",
             "terms": "Sportsudstyrsbutik, Sportsforretning"
+        },
+        "office/diplomatic/consulate": {
+            "name": "Konsulat",
+            "terms": "konsul,diplomati,diplomat,repræsentation"
         },
         "type/waterway": {
             "name": "Vandvej"
@@ -561,10 +570,6 @@
             "name": "Indendørskorridor",
             "terms": "Indendørskorridor, Indendørspassage"
         },
-        "attraction/animal": {
-            "name": "Dyr",
-            "terms": "zoom,dyrepark,tiger,løve,giraf,bjørn"
-        },
         "craft/bookbinder": {
             "name": "Bogbinder",
             "terms": "Bogbinder"
@@ -592,6 +597,10 @@
         "aerialway/cable_car": {
             "name": "Svævebane",
             "terms": "Svævebane, Gondolbane"
+        },
+        "craft/floorer": {
+            "name": "Gulvlægger",
+            "terms": "gulv,belægning,håndværker"
         },
         "landuse/military/airfield": {
             "name": "Militærflyveplads",
@@ -696,6 +705,9 @@
             "name": "Tag",
             "terms": "Tag"
         },
+        "natural/tree_row": {
+            "name": "Trærække"
+        },
         "craft/upholsterer": {
             "name": "Møbelpolstrer",
             "terms": "Møbelpolstrer"
@@ -709,8 +721,7 @@
             "terms": "Lagerhotel, Opbevaringshotel"
         },
         "shop/fashion": {
-            "name": "Modebutik",
-            "terms": "Modebutik"
+            "name": "Modebutik"
         },
         "power/substation": {
             "name": "Transformatorstation",
@@ -723,6 +734,10 @@
         "type/route/pipeline": {
             "name": "Rørledningsnet",
             "terms": "Rørledningsnet"
+        },
+        "landuse/religious": {
+            "name": "Helligt område",
+            "terms": "religion,hellig,religiøst,"
         },
         "barrier/cattle_grid": {
             "name": "Kreaturrist",
@@ -871,6 +886,10 @@
             "name": "Plads",
             "terms": "Plads, Bytorv"
         },
+        "barrier/kerb/raised": {
+            "name": "Hævet kantsten",
+            "terms": "høj,kant,sten"
+        },
         "amenity/shelter/gazebo": {
             "name": "Lysthus",
             "terms": "skovtur,læskur,skur,"
@@ -993,6 +1012,10 @@
             "name": "Dagpleje/Vuggestue",
             "terms": "Dagpleje/Vuggestue"
         },
+        "barrier/kerb/flush": {
+            "name": "Udjævnet kantsten",
+            "terms": "kantsten,lige,jævn,flad,usynlig"
+        },
         "office/educational_institution": {
             "name": "Uddannelsesinstitution",
             "terms": "Uddannelsesinstitution"
@@ -1047,6 +1070,10 @@
         "natural/bare_rock": {
             "name": "Klippe",
             "terms": "Klippe, Klippeområde"
+        },
+        "amenity/language_school": {
+            "name": "Sprogskole",
+            "terms": "sprog,lingvistik,skole,uddannelse"
         },
         "amenity/crematorium": {
             "name": "Krematorium",
@@ -1214,7 +1241,7 @@
         },
         "amenity/car_wash": {
             "name": "Bilvask",
-            "terms": "Bilvask, Automobilvask"
+            "terms": "Bilvask, Automobilvask,autovask"
         },
         "highway/street_lamp": {
             "name": "Gadelampe",
@@ -1271,6 +1298,10 @@
         "shop/photo": {
             "name": "Fotoforretning",
             "terms": "Fotoforretning"
+        },
+        "office/forestry": {
+            "name": "Skovbrugskontor",
+            "terms": "skovbrug,landmand,landbrug,skovløber,skovarbejder"
         },
         "building/static_caravan": {
             "name": "Fast mobilt hus",
@@ -1348,8 +1379,8 @@
             "terms": "Toiletter, WC"
         },
         "amenity/sanitary_dump_station": {
-            "name": "Tørcloset-toilet funtionsområde",
-            "terms": "Tørcloset-toilet funtionsområde"
+            "name": "Bortskaffelse af sanitært affald",
+            "terms": "tørcloset,toilet,kloak,affald,lort,kemisk toilet,closet,campingvogn,autocamper,campingtoilet,camping,"
         },
         "shop/hearing_aids": {
             "name": "Høreapparatbutik",
@@ -1384,8 +1415,7 @@
             "terms": "Trafiksignal, Lyskryds, Lyskurv"
         },
         "amenity/embassy": {
-            "name": "Ambassade",
-            "terms": "Ambassade"
+            "name": "Ambassade"
         },
         "place/islet": {
             "name": "Holm"
@@ -1481,8 +1511,12 @@
             "terms": "Voksen spillecenter, Spillehal"
         },
         "shop/car_parts": {
-            "name": "Autoudstyrsbutik",
-            "terms": "Autoudstyrsbutik, Biludstyrsbutik"
+            "name": "Biludstyrsbutik",
+            "terms": "Autoudstyrsbutik, Biludstyrsbutik,bil,auto"
+        },
+        "shop/jewelry": {
+            "name": "Guldsmed",
+            "terms": "smykke,ædelsten,ring,guld,sølv"
         },
         "leisure/outdoor_seating": {
             "name": "Udendørs siddepladser",
@@ -1492,12 +1526,17 @@
             "name": "Advokatkontor",
             "terms": "Advokatkontor, Advokatfirma"
         },
+        "building/apartments": {
+            "name": "Lejlighedskompleks",
+            "terms": "etagebygning,lejlighed,etage"
+        },
         "highway/trunk_link": {
             "name": "Afkørsel motortrafikvej",
             "terms": "Afkørsel motortrafikvej"
         },
-        "amenity/vending_machine/news_papers": {
-            "name": "Avisautomat"
+        "emergency/lifeguard": {
+            "name": "Livredder",
+            "terms": "redning,kyst,svømning,førstehjælp,nødhjælp"
         },
         "shop/bookmaker": {
             "name": "Bookmaker",
@@ -1569,10 +1608,6 @@
             "name": "Stillevej",
             "terms": "Stillevej"
         },
-        "landuse/military/bunker": {
-            "name": "Militærbunker",
-            "terms": "Militærbunker, bunker"
-        },
         "attraction/bumper_car": {
             "name": "Radiobil"
         },
@@ -1588,7 +1623,7 @@
         },
         "leisure/firepit": {
             "name": "Lejrbålsplads",
-            "terms": "Lejrbålsplads, Bålplads"
+            "terms": "lejrbålsplads,bålplads,bålsted,lejrbål,ild,ildsted,bål"
         },
         "man_made/bridge": {
             "name": "Bro",
@@ -1694,9 +1729,6 @@
             "name": "Bilparkering",
             "terms": "parkering,parkeringsplads,holdeplads"
         },
-        "highway/bus_stop": {
-            "name": "Busstop / trinbrædt"
-        },
         "amenity/place_of_worship/hindu": {
             "name": "Hindu-tempel",
             "terms": "tempel,hindu"
@@ -1731,6 +1763,9 @@
         "type/route/ferry": {
             "name": "Færgerute",
             "terms": "Færgerute"
+        },
+        "emergency": {
+            "name": "Nødhjælpsegenskaber"
         },
         "amenity/atm": {
             "name": "Pengeautomat",
@@ -1788,10 +1823,6 @@
         },
         "highway/pedestrian_line": {
             "name": "Gågade"
-        },
-        "landuse/military/checkpoint": {
-            "name": "Checkpunkt",
-            "terms": "Checkpunkt"
         },
         "man_made/lighthouse": {
             "name": "Fyr (navigation)",
@@ -1930,6 +1961,10 @@
             "name": "Kloster-område",
             "terms": "kloster, nonne, katedral, kapel, kirke, gud, bøn"
         },
+        "amenity/toilets/disposal/flush": {
+            "name": "Vandskyllende toiletter",
+            "terms": "wc,water closet, træk og slip,træk,slip"
+        },
         "highway/service/parking_aisle": {
             "name": "Vej mellem parkeringspladser",
             "terms": "Parkeringsvej"
@@ -2041,10 +2076,6 @@
         "tourism/chalet": {
             "name": "Feriehus"
         },
-        "landuse/military/nuclear_explosion_site": {
-            "name": "Atomspræningsomårde",
-            "terms": "Atomspræningsomårde"
-        },
         "leisure/dancing_school": {
             "name": "Danseskole"
         },
@@ -2084,8 +2115,7 @@
             "terms": "Stente"
         },
         "shop/boutique": {
-            "name": "Boutique",
-            "terms": "Boutique"
+            "name": "Boutique"
         },
         "area/highway": {
             "name": "Vejbelægning",
@@ -2207,6 +2237,10 @@
             "name": "Kolonihave",
             "terms": "kolonihaveområde, kolonihave,"
         },
+        "office/water_utility": {
+            "name": "Vandforsyningskontor",
+            "terms": "vand,forsyning"
+        },
         "highway/passing_place": {
             "name": "Vigested"
         },
@@ -2258,9 +2292,6 @@
         "man_made/survey_point": {
             "name": "Geografisk fixpunkt",
             "terms": "Geografisk fixpunkt"
-        },
-        "roundabout": {
-            "name": "Rundkørsel"
         },
         "type/route/power": {
             "name": "Elledningsnet",
@@ -2368,10 +2399,6 @@
             "name": "Supermarked",
             "terms": "Supermarked, Lavprisbutik, Discountbutik"
         },
-        "office/political_party": {
-            "name": "Politisk parti",
-            "terms": "Politisk parti"
-        },
         "landuse/military/range": {
             "name": "Militærskydebane",
             "terms": "Militærskydebane, Skydebane"
@@ -2402,7 +2429,7 @@
         },
         "shop/car": {
             "name": "Bilforhandler",
-            "terms": "Bilforhandler"
+            "terms": "Bilforhandler,autoforhandler,bil,køretøj"
         },
         "building/stable": {
             "name": "Stald",
@@ -2444,6 +2471,10 @@
             "name": "Genbrugsvand",
             "terms": "Genbrugsvand"
         },
+        "landuse/forest": {
+            "name": "Forvaltet skov",
+            "terms": "skov,plantage,skovbrug,forvaltet"
+        },
         "amenity/food_court": {
             "name": "Torvehaller",
             "terms": "Torvehaller, Food Court, Fødevaremarkedspladser"
@@ -2459,10 +2490,6 @@
         "office/coworking": {
             "name": "Kontorfællesskab",
             "terms": "Kontorfællesskab, Fællesskabsarbejdsplads"
-        },
-        "vertex": {
-            "name": "Andre",
-            "terms": "Andre"
         },
         "type/boundary": {
             "name": "Grænse",
@@ -2584,6 +2611,10 @@
             "name": "Fjeld",
             "terms": "Fjeld"
         },
+        "barrier/kerb/rolled": {
+            "name": "Afrundet kantsten",
+            "terms": "kant,sten,rund,afrundet,valmet"
+        },
         "natural/heath": {
             "name": "Hede",
             "terms": "Hede"
@@ -2641,7 +2672,7 @@
         },
         "natural/wood": {
             "name": "Naturskov",
-            "terms": "Naturskov"
+            "terms": "træ,natur,skov,vild,fredsskov"
         },
         "leisure/pitch/rugby_union": {
             "name": "Rugby bane",
@@ -2654,6 +2685,10 @@
         "aeroway/apron": {
             "name": "forplads foran hangarer",
             "terms": "Apron"
+        },
+        "historic/castle/fortress": {
+            "name": "Historisk befæstning",
+            "terms": "militær,fort,slot"
         },
         "shop/tattoo": {
             "name": "Tatovør",
@@ -2685,10 +2720,6 @@
         },
         "type/restriction/only_straight_on": {
             "name": "Kun lige ud"
-        },
-        "camp_site/camp_pitch": {
-            "name": "Plads på Campingplads",
-            "terms": "Campingplads"
         },
         "shop/gas": {
             "name": "Gasflaskebutik",
@@ -2742,9 +2773,16 @@
             "name": "Brolægger",
             "terms": "Brolægger"
         },
+        "indoor": {
+            "name": "Indendørsegenskaber"
+        },
         "shop/frame": {
             "name": "Rammebutik",
             "terms": "Rammebutik, Billedrammer"
+        },
+        "barrier/kerb": {
+            "name": "Kantsten",
+            "terms": "fortov,kant,sten,"
         },
         "leisure/nature_reserve": {
             "name": "Naturreservat",
@@ -2773,6 +2811,10 @@
         "shop/e-cigarette": {
             "name": "E-cigaretbutik",
             "terms": "E-cigaretbutik, E-cigaretforretning"
+        },
+        "historic/fort": {
+            "name": "Historisk fort",
+            "terms": "fort, befæstning, slot"
         },
         "tourism/wilderness_hut": {
             "name": "Vildmarkshytte"
@@ -2840,6 +2882,10 @@
             "name": "Arkitekt-kontor",
             "terms": "arkitekt, tegning, bygning"
         },
+        "leisure/swimming_area": {
+            "name": "Åbentvandssvømningsområde",
+            "terms": "svømning, åben,åbent, fri,frit,sø,å,hav,vand,bade,badning"
+        },
         "railway/subway": {
             "name": "S-togspor",
             "terms": "S-togspor"
@@ -2884,8 +2930,8 @@
             "terms": "Slot, Kongeslotte"
         },
         "shop/car_repair": {
-            "name": "Autoværksted",
-            "terms": "Autoværksted, Bilværksted,automekaniker,mekaniker"
+            "name": "Bilværksted",
+            "terms": "Autoværksted,bilværksted,automekaniker,mekaniker,værksted"
         },
         "craft/hvac": {
             "name": "Ventilationsfirma",
@@ -2938,10 +2984,6 @@
             "name": " Administrativ grænse",
             "terms": "Administrativ grænse"
         },
-        "landuse/military/office": {
-            "name": "Militærkontor",
-            "terms": "Militærkontor"
-        },
         "amenity/watering_place": {
             "name": "Dyrevandtrug",
             "terms": "Dyrevandtrug, Vandtrug"
@@ -2982,6 +3024,10 @@
             "name": "Maler",
             "terms": "Maler"
         },
+        "public_transport/stop_area": {
+            "name": "Stoppestedsområde",
+            "terms": "stop,stoppested,station"
+        },
         "craft/carpet_layer": {
             "name": "Tæppelægger",
             "terms": "Tæppelægger"
@@ -2996,6 +3042,10 @@
         },
         "man_made": {
             "name": "Menneskeskabt"
+        },
+        "barrier/kerb/lowered": {
+            "name": "Sænket kantsten",
+            "terms": "kant,sten,sænket,lav"
         },
         "golf/fairway": {
             "name": "Fairway",

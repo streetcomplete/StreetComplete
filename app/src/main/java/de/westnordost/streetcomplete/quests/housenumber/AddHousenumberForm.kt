@@ -81,7 +81,7 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
 
             AlertDialog.Builder(activity!!)
                 .setView(inner)
-                .setPositiveButton(R.string.quest_generic_hasFeature_yes) { _, _ -> applyAnswer(NoAddress) }
+                .setPositiveButton(R.string.quest_generic_hasFeature_yes) { _, _ -> applyAnswer(NoHouseNumber) }
                 .setNegativeButton(R.string.quest_generic_hasFeature_no_leave_note) { _, _ -> onClickCantSay() }
                 .show()
         } else {

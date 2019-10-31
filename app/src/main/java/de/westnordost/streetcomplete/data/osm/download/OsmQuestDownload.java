@@ -28,7 +28,7 @@ import de.westnordost.streetcomplete.data.osm.OsmQuest;
 import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao;
 import de.westnordost.streetcomplete.data.osm.persist.MergedElementDao;
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
-import de.westnordost.streetcomplete.data.osm.persist.OsmElementKey;
+import de.westnordost.streetcomplete.data.osm.ElementKey;
 import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.osmapi.map.data.LatLon;
@@ -76,9 +76,9 @@ public class OsmQuestDownload
 		Log.i(TAG, getQuestTypeName(questType) + ": Starting");
 
 		final ArrayList<ElementGeometryDao.Row> geometryRows = new ArrayList<>();
-		final Map<OsmElementKey,Element> elements = new HashMap<>();
+		final Map<ElementKey,Element> elements = new HashMap<>();
 		final ArrayList<OsmQuest> quests = new ArrayList<>();
-		final Map<OsmElementKey, Long> previousQuests = getPreviousQuestsIdsByElementKey(questType, bbox);
+		final Map<ElementKey, Long> previousQuests = getPreviousQuestsIdsByElementKey(questType, bbox);
 
 		final HashSet<LatLon> truncatedBlacklistedPositions = new HashSet<>();
 		for (LatLon blacklistedPosition : blacklistedPositions)
@@ -99,7 +99,7 @@ public class OsmQuestDownload
 				geometryRows.add(new ElementGeometryDao.Row(
 						elementType, elementId, quest.getGeometry()));
 				quests.add(quest);
-				OsmElementKey elementKey = new OsmElementKey(elementType, elementId);
+				ElementKey elementKey = new ElementKey(elementType, elementId);
 				elements.put(elementKey, element);
 				previousQuests.remove(elementKey);
 			}
@@ -149,14 +149,14 @@ public class OsmQuestDownload
 		return true;
 	}
 
-	private Map<OsmElementKey, Long> getPreviousQuestsIdsByElementKey(
+	private Map<ElementKey, Long> getPreviousQuestsIdsByElementKey(
 			OsmElementQuestType questType, BoundingBox bbox)
 	{
 		String questTypeName = questType.getClass().getSimpleName();
-		Map<OsmElementKey, Long> result = new HashMap<>();
+		Map<ElementKey, Long> result = new HashMap<>();
 		for(OsmQuest quest : osmQuestDB.getAll(bbox, null, questTypeName, null, null))
 		{
-			result.put(new OsmElementKey(quest.getElementType(), quest.getElementId()),	quest.getId());
+			result.put(new ElementKey(quest.getElementType(), quest.getElementId()),	quest.getId());
 		}
 		return result;
 	}

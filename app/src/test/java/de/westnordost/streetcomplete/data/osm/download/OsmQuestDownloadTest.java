@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.data.osm.download;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import org.jetbrains.annotations.NotNull;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -33,6 +32,7 @@ import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
+import kotlin.Lazy;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
@@ -160,10 +160,21 @@ public class OsmQuestDownloadTest
 			return true;
 		}
 
-		@NotNull @Override public Countries getEnabledForCountries() { return Countries.ALL; }
+		@NonNull @Override public Countries getEnabledForCountries() { return Countries.ALL; }
 		@Override public boolean getHasMarkersAtEnds() { return false; }
 		@Override public int getTitle() { return 0; }
 		@Override public void cleanMetadata() {}
 		@Override public int getDefaultDisabledMessage() { return 0; }
+
+		@NonNull @Override public String[] getTitleArgs(
+			@NonNull Map<String, String> tags, @NonNull Lazy<String> featureName)
+		{
+			return new String[0];
+		}
+
+		@Override public boolean isSplitWayEnabled()
+		{
+			return false;
+		}
 	}
 }

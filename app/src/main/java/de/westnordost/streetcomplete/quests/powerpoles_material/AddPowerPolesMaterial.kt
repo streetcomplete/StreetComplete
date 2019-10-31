@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
 
 class AddPowerPolesMaterial(o: OverpassMapDataDao) : SimpleOverpassQuestType<String>(o) {
 
-    override val tagFilters = "nodes with power=pole and !material"
+    override val tagFilters = "nodes with power = pole and !material"
     override val commitMessage = "Add powerpoles material type"
     override val icon = R.drawable.ic_quest_power
 

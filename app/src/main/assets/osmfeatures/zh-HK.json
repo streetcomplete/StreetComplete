@@ -598,10 +598,6 @@
             "name": "室內走廊",
             "terms": "室內通道"
         },
-        "attraction/animal": {
-            "name": "動物",
-            "terms": "Animal,動物"
-        },
         "amenity/restaurant/asian": {
             "name": "亞洲餐廳",
             "terms": "亞式餐廳"
@@ -747,8 +743,7 @@
             "terms": "迷你倉,儲存倉"
         },
         "shop/fashion": {
-            "name": "時裝店",
-            "terms": "時裝店"
+            "name": "時裝店"
         },
         "power/substation": {
             "name": "變壓站",
@@ -1454,8 +1449,7 @@
             "terms": "Traffic Signals,交通燈,紅綠燈"
         },
         "amenity/embassy": {
-            "name": "大使館",
-            "terms": "Embassy,使館,大使館,領事館"
+            "name": "大使館"
         },
         "type/restriction/no_left_turn": {
             "name": "不准左轉",
@@ -1566,9 +1560,6 @@
             "name": "救生員",
             "terms": "救生員"
         },
-        "amenity/vending_machine/news_papers": {
-            "name": "報紙售賣機"
-        },
         "shop/bookmaker": {
             "name": "投注站",
             "terms": "投注站,收受賭注者"
@@ -1635,10 +1626,6 @@
         "highway/living_street": {
             "name": "生活街道",
             "terms": "Living Street,居住街道,生活街道"
-        },
-        "landuse/military/bunker": {
-            "name": "軍事地堡",
-            "terms": "Military Bunker,地堡,暗堡"
         },
         "attraction/bumper_car": {
             "name": "碰碰車",
@@ -1764,9 +1751,6 @@
             "name": "停車場",
             "terms": "Car Parking,停車場,泊車位,泊車場,停車位"
         },
-        "highway/bus_stop": {
-            "name": "巴士站 / 月台"
-        },
         "amenity/place_of_worship/hindu": {
             "name": "印度廟",
             "terms": "Hindu Temple, 印度教廟"
@@ -1856,10 +1840,6 @@
         "highway/pedestrian_line": {
             "name": "行人專用街道",
             "terms": "Pedestrian Street,行人專用街道"
-        },
-        "landuse/military/checkpoint": {
-            "name": "檢查站",
-            "terms": "Checkpoint,檢查站,檢查點,軍事崗哨,哨站"
         },
         "man_made/lighthouse": {
             "name": "燈塔",
@@ -2124,10 +2104,6 @@
             "name": "外幣兌換",
             "terms": "錢幣兌換,換錢"
         },
-        "landuse/military/nuclear_explosion_site": {
-            "name": "核爆場地",
-            "terms": "Nuclear Explosion Site,核子爆炸場址,核子試爆場"
-        },
         "leisure": {
             "name": "消閒"
         },
@@ -2172,8 +2148,7 @@
             "terms": "Stile,梯梃,梯磴"
         },
         "shop/boutique": {
-            "name": "時裝店",
-            "terms": "Boutique,時裝店,服飾店,精品店,服裝店"
+            "name": "時裝店"
         },
         "area/highway": {
             "name": "路面物質",
@@ -2353,9 +2328,6 @@
             "name": "測量點",
             "terms": "Survey Point,測量點"
         },
-        "roundabout": {
-            "name": "迴旋處"
-        },
         "type/route/power": {
             "name": "供電路綫",
             "terms": "Power Route,供電路綫,供電路線"
@@ -2462,10 +2434,6 @@
             "name": "超級市場",
             "terms": "Supermarket,超級市場"
         },
-        "office/political_party": {
-            "name": "政黨",
-            "terms": "Political Party,政黨,政治"
-        },
         "landuse/military/range": {
             "name": "軍事靶場",
             "terms": "Military Range,靶場,軍用靶場,射擊場"
@@ -2553,10 +2521,6 @@
         "office/coworking": {
             "name": "共同工作空間",
             "terms": "Coworking Space,共用工作空間"
-        },
-        "vertex": {
-            "name": "其他",
-            "terms": "Other,其他,其它"
         },
         "type/boundary": {
             "name": "邊界",
@@ -2799,10 +2763,6 @@
         },
         "amenity/recycling": {
             "name": "回收設施"
-        },
-        "camp_site/camp_pitch": {
-            "name": "露營營地",
-            "terms": "Camp Pitch, 露營場地, 營地"
         },
         "shop/gas": {
             "name": "瓶裝石油氣店",
@@ -3071,10 +3031,6 @@
         "type/boundary/administrative": {
             "name": "行政邊界",
             "terms": "Administrative Boundary,行政界線,行政邊界"
-        },
-        "landuse/military/office": {
-            "name": "軍事辦公室",
-            "terms": "Military Office,軍事辦公室"
         },
         "amenity/watering_place": {
             "name": "動物飲水處",

@@ -99,7 +99,6 @@
     <string name="quest_roofShape_select_one">"Parinkite vieną:"</string>
     <string name="quest_roofShape_show_more">"Rodyti daugiau..."</string>
     <string name="quest_roofShape_answer_many">"Jis turi kelias skirtingas formas"</string>
-    <string name="pref_category_cache">"Podėlis"</string>
     <string name="pref_title_sync">"Automatinė sinchronizacija"</string>
     <string name="map_btn_zoom_out">"Nutolinti"</string>
     <string name="map_btn_zoom_in">"Priartinti"</string>
@@ -634,5 +633,57 @@ Pavyzdžiui 1,3 arba 2-6."</string>
     <string name="quest_motorcycleParkingCapacity_title">"Kiek motociklų gali būti čia priparkuoti?"</string>
     <string name="quest_motorcycleParkingCoveredStatus_title">"Ar ši motociklų stovėjimo vieta dengta (apsaugota nuo lietaus)?"</string>
     <string name="default_disabled_msg_maxspeed">"Šis užduočių tipas išjungtas, nes jūsų paprastai prašoma patikrinti apribojimus visoje gatvėje, ne tik pažymėtoje vietoje. Gali būti labai sunku išspręsti net vieną užduotį."</string>
+    <string name="pref_title_quests_restore_hidden">"Atstatyti paslėptas užduotis"</string>
+    <string name="restore_hidden_success">"Atstatytos %d paslėptos užduotys"</string>
+
+    <!-- caution: This is not necessarily the floor and level=0 is not necessarily at street level
+    as it may follow the numbering scheme of the building operator. Try to use a generic wording
+    that does not carry an implicit meaning of where it is located in respect to the ground floor.
+    The context is usually shopping centres, train stations or airport terminals -->
+    <string name="on_level">"lygyje %s:"</string>
+
+    <!-- as in: "Where is the metro station?" - "It is underground" -->
+    <string name="underground">"po žeme:"</string>
+    <string name="quest_sidewalk_value_yes">"šaligatvis"</string>
+    <string name="quest_sidewalk_value_no">"nėra šaligatvio"</string>
+    <string name="quest_accessible_for_pedestrians_title_prohibited">"Ar pėstiesiems draudžiama eiti šiuo keliu?"</string>
+    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Ši gatvė pažymėta kaip neturinti šaligatvio nei vienoje pusėje. Jei visgi yra šaligatvis, bet jis rodomas kaip atskiras kelias, atsakykite „šaligatvis“."</string>
     <string name="quest_buildingType_title">"Kokio tipo šis pastatas?"</string>
+    <string name="pref_title_theme_select">"Parinkite temą"</string>
+    <string name="theme_automatic">"Automatinė"</string>
+    <string name="theme_light">"Šviesi"</string>
+    <string name="theme_dark">"Tamsi"</string>
+    <string name="theme_system_default">"Sistemos numatytoji"</string>
+    <string name="quest_placeName_title_name">"Koks šios vietos pavadinimas? (%s)"</string>
+    <string name="action_open_location">"Atverti vietą kitoje programėlėje"</string>
+    <string name="map_application_missing">"Nėra įdiegtų kitų žemėlapių programėlių"</string>
+    <string name="pref_title_overpass_url_select">"Keisti Overpass serverį"</string>
+    <string name="pref_title_overpass_url_info">"Reikalauja iš naujo paleisti programėlę. Gali išvengti cenzūros pavyzdžiui Maskvoje."</string>
+    <string name="label_housenumber">"namo numeris"</string>
+    <string name="label_blocknumber">"bloko numeris"</string>
+    <string name="quest_busStopShelter_covered">"Visa stotelė uždengta"</string>
+    <string name="quest_ferry_pedestrian_name_title">"Ar %s perveža pėsčiuosius?"</string>
+    <string name="quest_ferry_pedestrian_title">"Ar šis kelto maršrutas perveža pėsčiuosius?"</string>
+    <string name="quest_ferry_motor_vehicle_name_title">"Ar %s perveža motorines transporto priemones?"</string>
+    <string name="quest_ferry_motor_vehicle_title">"Ar šis kelto maršrutas perveža motorines transporto priemones?"</string>
+    <string name="quest_leave_new_note_photos_are_useful">"Pridėjus nuotrauką pastaba bus daug naudingesnė."</string>
+    <string name="quest_postboxCollectionTimes_name_title">"Kokie yra šios %s pašto dėžutės laiškų surinkimo laikai?"</string>
+    <string name="create_new_note_hint">"Geriausia pastabą rašyti vietoje naudojama kalba arba angliškai."</string>
+    <string name="about_contributing">"Jūsų atsakymai tiesiogiai tobulina OpenStreetMap. Pateikti duomenys yra atviri, visi gali juos naudoti. Daug puikių projektų jau naudoja šiuos duomenis."</string>
+    <string name="about_missing_stars">"Šiuo metu žvaigždučių skaičius nedalinamas tarp įrenginių, bet atsakymai pridedami tiesiai į OpenStreetMap duomenų bazę."</string>
+    <string name="how_to_get_stars">"Parinkite vieną iš žymeklių žemėlapyje ir atsakykite į klausimą. Tokiu būdu jūs tobulinsite OpenStreetMap duomenis ir gausite žvaigždutes. Jei nematote žymeklių, galite atitolinti žemėlapį."</string>
+    <string name="oauth_remove_authorization_dialog_message">"Ar norite pašalinti jūsų OSM paskyros autorizaciją?"</string>
+    <string name="oauth_remove_authorization_confirmation">"Pašalinti"</string>
+    <string name="quest_leafType_title">"Čia esantys medžiai yra spygliuočiai ar lapuočiai?"</string>
+    <string name="quest_leaf_type_needles">"Spygliuočiai"</string>
+    <string name="quest_leaf_type_broadleaved">"Lapuočiai"</string>
+    <string name="quest_leaf_type_mixed">"Ir tokie, ir tokie"</string>
+    <string name="quest_cyclewayPartSurface_title">"Kokia čia yra dviračių tako danga?"</string>
+    <string name="quest_generic_answer_differs_along_the_way">"Skirtingose vietose skirtinga..."</string>
+    <string name="quest_split_way_description">"Jei skirtingose vietose skirtinga, pirmas žingsnis yra padalinti kelią. Po to bus galima atsakyti į užduotį kiekvienai daliai atskirai. Pastebėtina, kad užduotys padalintoms dalims gali pasirodyti daug vėliau. Padalinti dabar?"</string>
+    <string name="quest_split_way_tutorial">"Spustelėkite ant kelio toje vietoje, kur atsakymai skiriasi. Pabandykite skirtumo vietą nurodyti kiek galima tiksliau, priartinkite kaip visada."</string>
+    <string name="quest_split_way_too_imprecise">"Prašome labiau pirartinti"</string>
+    <string name="quest_split_way_many_splits_confirmation_description">"Čia jau yra pakankamai padalinimų. Visada kelią galite dar dalinti vėliau."</string>
+    <string name="quest_footwayPartSurface_title">"Koks šioje vietoje pėsčiųjų tako paviršius?"</string>
+    <string name="quest_wheelchairAccess_toiletsPart_title">"Ar poilsio kambarys %s prieinamas neįgaliųjų vežimėliu?"</string>
 </resources>

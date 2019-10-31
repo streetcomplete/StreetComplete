@@ -69,9 +69,6 @@
         "tourism/guest_house": {
             "name": "অতিথিশালা"
         },
-        "office/political_party": {
-            "name": "রাজনৈতিক দল"
-        },
         "boundary/administrative": {
             "name": "প্রশাসনিক সীমানা"
         },
@@ -85,7 +82,7 @@
             "name": "কুড়েঘর"
         },
         "leisure/pitch/american_football": {
-            "name": "অামেরিকান ফুটবল মাঠ"
+            "name": "মার্কিন ফুটবল মাঠ"
         },
         "waterway/canal": {
             "name": "খাল"
@@ -133,13 +130,10 @@
             "name": "সৈকত"
         },
         "landuse/vineyard": {
-            "name": "অাঙুরখেত"
+            "name": "আঙুরখেত"
         },
         "man_made/tower": {
             "name": "মিনার"
-        },
-        "vertex": {
-            "name": "অন্যান্য"
         },
         "shop/florist": {
             "name": "ফুল ব্যবসায়ী"
@@ -223,7 +217,7 @@
             "name": "নল"
         },
         "shop/furniture": {
-            "name": "অাসবাবপত্রের দোকান"
+            "name": "আসবাবপত্রের দোকান"
         },
         "building/commercial": {
             "name": "বানিজ্যিক ভবন"
@@ -238,7 +232,7 @@
             "name": "স্মৃতিস্তম্ভ"
         },
         "emergency/phone": {
-            "name": "অাপদকালীন দুরভাষ"
+            "name": "জরুরি ফোন"
         },
         "amenity/bicycle_parking": {
             "name": "সাইকেল পার্ক করার জায়গা"
@@ -358,7 +352,7 @@
             "name": "পর্যটন"
         },
         "building/residential": {
-            "name": "অাবাসিক ভবন"
+            "name": "আবাসিক ভবন"
         },
         "shop/clothes": {
             "name": "জামাকাপড়ের দোকান"
@@ -472,7 +466,7 @@
             "name": "নালা"
         },
         "highway/residential": {
-            "name": "অাবাসিক রাস্তা"
+            "name": "আবাসিক রাস্তা"
         },
         "amenity/place_of_worship": {
             "name": "প্রার্থনাস্থল"

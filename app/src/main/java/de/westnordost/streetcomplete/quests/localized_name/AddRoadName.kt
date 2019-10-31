@@ -9,7 +9,8 @@ import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandler
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
 import de.westnordost.streetcomplete.data.osm.tql.FiltersParser
-import de.westnordost.streetcomplete.data.osm.tql.OverpassQLUtil
+import de.westnordost.streetcomplete.data.osm.tql.getQuestPrintStatement
+import de.westnordost.streetcomplete.data.osm.tql.toGlobalOverpassBBox
 import de.westnordost.streetcomplete.quests.localized_name.data.PutRoadNameSuggestionsHandler
 import de.westnordost.streetcomplete.quests.localized_name.data.RoadNameSuggestionsDao
 
@@ -23,6 +24,7 @@ class AddRoadName(
     override val commitMessage = "Determine road names and types"
     override val icon = R.drawable.ic_quest_street_name
     override val hasMarkersAtEnds = true
+    override val isSplitWayEnabled = true
 
     override fun getTitle(tags: Map<String, String>) =
         if (tags["highway"] == "pedestrian")
@@ -39,18 +41,25 @@ class AddRoadName(
 
     /** returns overpass query string for creating the quests */
     private fun getOverpassQuery(bbox: BoundingBox) =
-        OverpassQLUtil.getGlobalOverpassBBox(bbox) +
-        ROADS_WITHOUT_NAMES + "; " +
-        OverpassQLUtil.getQuestPrintStatement()
+        bbox.toGlobalOverpassBBox() + "\n" +
+        ROADS_WITHOUT_NAMES + "->.unnamed;\n" +
+        "(\n" +
+        "  way.unnamed['access' !~ '^private|no$'];\n" +
+        "  way.unnamed['foot']['foot' !~ '^private|no$'];\n" +
+        "); " +
+        getQuestPrintStatement()
 
-    /** return overpass query string to get roads with names near roads that don't have names */
+    /** return overpass query string to get roads with names near roads that don't have names
+     *  private roads are not filtered out here, partially to reduce complexity but also
+     *  because the road may have a private segment that is named already or is close to a road
+     *  with a useful name
+     * */
     private fun getStreetNameSuggestionsOverpassQuery(bbox: BoundingBox) =
-        OverpassQLUtil.getGlobalOverpassBBox(bbox) +
-        ROADS_WITHOUT_NAMES + " -> .without_names;" +
-        ROADS_WITH_NAMES + " -> .with_names;" +
-        "way.with_names(around.without_names:" +
-        MAX_DIST_FOR_ROAD_NAME_SUGGESTION + ");" +
-        "out body geom;"
+        bbox.toGlobalOverpassBBox() + "\n" + """
+        $ROADS_WITHOUT_NAMES -> .without_names;
+        $ROADS_WITH_NAMES -> .with_names;
+        way.with_names(around.without_names: $MAX_DIST_FOR_ROAD_NAME_SUGGESTION );
+        out body geom;""".trimIndent()
 
     override fun createForm() = AddRoadNameForm()
 
@@ -66,21 +75,31 @@ class AddRoadName(
                 }
             }
             is RoadName -> {
-                for ((languageCode, name) in answer.localizedNames) {
-                    if (languageCode.isEmpty()) {
-                        changes.addOrModify("name", name)
-                    } else {
-                        changes.addOrModify("name:$languageCode", name)
-                    }
-                }
-                // these params are passed from the form only to update the road name suggestions so that
-                // newly input street names turn up in the suggestions as well
-                val points = answer.wayGeometry.polylines?.getOrNull(0)
-                if (points != null) {
-                    val roadNameByLanguage = answer.localizedNames.associate { it.languageCode to it.name }
-                    roadNameSuggestionsDao.putRoad( answer.wayId, roadNameByLanguage, points)
+                val singleName = answer.localizedNames.singleOrNull()
+                if (singleName?.isRef() == true) {
+                    changes.add("ref", singleName.name)
+                } else {
+                    applyAnswerRoadName(answer, changes)
                 }
             }
+        }
+    }
+
+    private fun applyAnswerRoadName(answer: RoadName, changes: StringMapChangesBuilder) {
+        for ((languageCode, name) in answer.localizedNames) {
+            if (languageCode.isEmpty()) {
+                changes.addOrModify("name", name)
+            } else {
+                changes.addOrModify("name:$languageCode", name)
+            }
+        }
+        // these params are passed from the form only to update the road name suggestions so that
+        // newly input street names turn up in the suggestions as well
+        val points = answer.wayGeometry.polylines?.getOrNull(0)
+        if (points != null) {
+            val roadNameByLanguage =
+                answer.localizedNames.associate { it.languageCode to it.name }
+            roadNameSuggestionsDao.putRoad(answer.wayId, roadNameByLanguage, points)
         }
     }
 
@@ -98,3 +117,6 @@ class AddRoadName(
         )}
     }
 }
+
+private fun LocalizedName.isRef() =
+    languageCode.isEmpty() && name.matches("[A-Z]{0,3}[ -]?[0-9]{0,5}".toRegex())

@@ -109,7 +109,6 @@
     <string name="quest_roofShape_select_one">"Selecteer er één:"</string>
     <string name="quest_roofShape_show_more">"Toon meer…"</string>
     <string name="quest_roofShape_answer_many">"Het heeft verschillende vormen"</string>
-    <string name="pref_category_cache">"Cache"</string>
     <string name="pref_title_sync">"Automatisch synchroniseren"</string>
     <string name="map_btn_zoom_out">"Uitzoomen"</string>
     <string name="map_btn_zoom_in">"Inzoomen"</string>
@@ -699,9 +698,9 @@ Bijvoorbeeld 1m3 of 2-6."</string>
     <string name="restore_hidden_success">"%d Verborgen vragen hersteld"</string>
 
     <!-- caution: This is not necessarily the floor and level=0 is not necessarily at street level
-        as it may follow the numbering scheme of the building operator. Try to use a generic wording
-        that does not carry an implicit meaning of where it is located in respect to the ground floor.
-        The context is usually shopping centres, train stations or airport terminals -->
+    as it may follow the numbering scheme of the building operator. Try to use a generic wording
+    that does not carry an implicit meaning of where it is located in respect to the ground floor.
+    The context is usually shopping centres, train stations or airport terminals -->
     <string name="on_level">"op niveau %s:"</string>
 
     <!-- as in: "Where is the metro station?" - "It is underground" -->
@@ -711,11 +710,46 @@ Bijvoorbeeld 1m3 of 2-6."</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Is het voor voetgangers verboden om hier te lopen?"</string>
     <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Deze straat is beschreven als zijnde zonder trottoir aan een van de zijde. In het geval dat er wel een trottoir is maar het is beschreven als een gescheiden weg, graag \"trottoir\" antwoorden."</string>
     <string name="quest_buildingType_title">"Wat voor gebouw is dit?"</string>
-    <string name="pref_category_theme">"Thema"</string>
     <string name="pref_title_theme_select">"Geselecteerd thema"</string>
     <string name="theme_automatic">"Auto"</string>
     <string name="theme_light">"Licht"</string>
     <string name="theme_dark">"Donker"</string>
     <string name="theme_system_default">"systeemfout"</string>
     <string name="quest_placeName_title_name">"Wat is de naam van deze plaats? (%s)"</string>
+    <string name="action_open_location">"Open de locatie in een andere App"</string>
+    <string name="map_application_missing">"Geen andere map applicatie geïnstalleerd"</string>
+    <string name="pref_title_overpass_url_select">"Wijzig overpass server"</string>
+    <string name="pref_title_overpass_url_info">"Vereist dat de applicatie opnieuw wordt opgestart. Kan de censuur omzeilen, bijvoorbeeld in Rusland."</string>
+    <string name="label_housenumber">"huisnummer"</string>
+    <string name="label_blocknumber">"bloknummer"</string>
+    <string name="quest_busStopShelter_covered">"Het hele halte hokje is overdekt"</string>
+    <string name="quest_ferry_pedestrian_name_title">"Vervoert %s voetgangers?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_ferry_pedestrian_title">"Vervoert voetgangers?"</string>
+    <string name="quest_ferry_motor_vehicle_name_title">"Vervoert %s motorvoertuigen?"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_ferry_motor_vehicle_title">"Vervoert Voertuigen?"</string>
+    <string name="quest_leave_new_note_photos_are_useful">"Het toevoegen van een foto maakt de notitie duidelijker."</string>
+    <string name="quest_postboxCollectionTimes_name_title">"Wat zijn de ophaaltijden van deze %s brievenbus."</string>
+    <string name="create_new_note_hint">"Het beste is de notitie in de lokaal gesproken taal of anders in het Engels te schrijven. "</string>
+    <string name="about_contributing">"Jou antwoorden verbeteren direct Open StreetMap. Bijgedragen data is open, iedereen kan er gebruik van maken. Vele grote projecten gebruiken het al."</string>
+    <string name="about_missing_stars">"Momenteel wordt het aantal sterren niet gedeeld tussen apparaten, maar antwoorden worden direct toegevoegd aan de OpenStreetMap-database."</string>
+    <string name="how_to_get_stars">"Kies een van de markeringen op de kaart en beantwoord de vraag. Op deze manier verbetert u OpenStreetMap-gegevens en krijgt u sterren. Als u geen markeringen ziet, moet u mogelijk uitzoomen op de kaart."</string>
+
+    <!-- I think it might be better to change the text to: Do you want to remove the connection with your OSM account? -->
+    <string name="oauth_remove_authorization_dialog_message">"Wil je de autorisatiekoppeling met je OSM account verwijderen? "</string>
+    <string name="oauth_remove_authorization_confirmation">"Verwijderen"</string>
+    <string name="quest_leafType_title">"Hebben de bomen hier bladeren of naalden?"</string>
+    <string name="quest_leaf_type_needles">"Naalden"</string>
+    <string name="quest_leaf_type_broadleaved">"Breedbladig"</string>
+    <string name="quest_leaf_type_mixed">"Beide zijn aanwezig"</string>
+    <string name="quest_cyclewayPartSurface_title">"Welke bedekking heeft het fietspad hier?"</string>
+    <string name="quest_generic_answer_differs_along_the_way">"Verschilt onderweg"</string>
+    <string name="quest_split_way_description">"Als het onderweg verschilt is de eerste stap om de weg te splitsen. Nadat de weg gesplitst is kan de vraag voor ieder deel apart beantwoord worden. Le op! De vragen voor de gesplitste delen komen mogelijk pas veel later. Nu splitsen? "</string>
+    <string name="quest_split_way_tutorial">"Tik op die punten van de weg waar het antwoord veranderd. Probeer zo precies mogelijk te zijn. Je kan als normaal inzoemen. "</string>
+    <string name="quest_split_way_too_imprecise">"Zoem verder in."</string>
+    <string name="quest_split_way_many_splits_confirmation_description">"Dat zijn een aardig aantal splits. Je kan de weg later altijd verder splitsen."</string>
+    <string name="quest_footwayPartSurface_title">"Welke bedekking heeft dit voetpad hier?"</string>
 </resources>

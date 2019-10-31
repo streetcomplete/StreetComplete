@@ -143,6 +143,14 @@ layers:
                     flat: true
                     color: global.barrier_color
                     size: [[17, 2px], [20, 16px]]
+        roundabout:
+            filter: { kind: [mini_roundabout, turning_loop, turning_circle] }
+            draw:
+                points:
+                    buffer: 2px
+                    flat: true
+                    color: global.roundabout_color
+                    size: [[16, 2px], [20, 24px]]
 
 styles:
     step_dashes:

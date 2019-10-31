@@ -1,15 +1,15 @@
 package de.westnordost.streetcomplete.data.osm.download;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
 /** Knows which vertices connect which ways. T is the identifier of a vertex */
 public class NodeWayMap<T>
 {
-	private final Map<T, List<List<T>>> wayEndpoints = new HashMap<>();
+	private final Map<T, List<List<T>>> wayEndpoints = new LinkedHashMap<>();
 
 	public NodeWayMap(List<List<T>> ways)
 	{

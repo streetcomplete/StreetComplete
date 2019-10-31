@@ -26,6 +26,7 @@ global:
 
     oneway_arrow_color: '#888'
     barrier_color: '#888'
+    roundabout_color: global.road_outline_color
 
     tunnel_color: [1., 1., 1., 0.2]
 

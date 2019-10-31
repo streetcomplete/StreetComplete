@@ -84,10 +84,10 @@ class AddHousenumberTest {
         )
     }
 
-    @Test fun `apply no address answer`() {
+    @Test fun `apply no house number answer`() {
         questType.verifyAnswer(
-            NoAddress,
-            StringMapEntryAdd("noaddress", "yes")
+            NoHouseNumber,
+            StringMapEntryAdd("nohousenumber", "yes")
         )
     }
 }

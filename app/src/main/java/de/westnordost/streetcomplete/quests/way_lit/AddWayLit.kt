@@ -16,16 +16,13 @@ class AddWayLit(o: OverpassMapDataDao) : SimpleOverpassQuestType<String>(o) {
         See #427 for discussion. */
     override val tagFilters = """
         ways with (
-        highway ~ ${LIT_RESIDENTIAL_ROADS.joinToString("|")}
-        or highway ~ ${LIT_NON_RESIDENTIAL_ROADS.joinToString("|")} and (
+          highway ~ ${LIT_RESIDENTIAL_ROADS.joinToString("|")}
+          or highway ~ ${LIT_NON_RESIDENTIAL_ROADS.joinToString("|")} and (
             sidewalk ~ both|left|right|yes|separate
-            or source:maxspeed ~ .+:urban
-            or maxspeed:type ~ .+:urban
-            or zone:maxspeed ~ .+:urban
-            or zone:traffic ~ .+:urban
-        )
-        or highway ~ ${LIT_WAYS.joinToString("|")}
-        or highway = path and (foot = designated or bicycle = designated)
+            or ~source:maxspeed|maxspeed:type|zone:maxspeed|zone:traffic ~ .+:urban
+          )
+          or highway ~ ${LIT_WAYS.joinToString("|")}
+          or highway = path and (foot = designated or bicycle = designated)
         )
         and !lit
         and (access !~ private|no or (foot and foot !~ private|no))
@@ -33,6 +30,7 @@ class AddWayLit(o: OverpassMapDataDao) : SimpleOverpassQuestType<String>(o) {
 
     override val commitMessage = "Add whether way is lit"
     override val icon = R.drawable.ic_quest_lantern
+    override val isSplitWayEnabled = true
 
     override fun getTitle(tags: Map<String, String>): Int {
         val type = tags["highway"]
@@ -56,7 +54,8 @@ class AddWayLit(o: OverpassMapDataDao) : SimpleOverpassQuestType<String>(o) {
         private val LIT_RESIDENTIAL_ROADS = arrayOf("residential", "living_street", "pedestrian")
 
         private val LIT_NON_RESIDENTIAL_ROADS =
-            arrayOf("primary", "secondary", "tertiary", "unclassified", "service")
+            arrayOf("primary", "primary_link", "secondary", "secondary_link",
+                    "tertiary", "tertiary_link", "unclassified", "service")
 
         private val LIT_WAYS = arrayOf("footway", "cycleway", "steps")
     }

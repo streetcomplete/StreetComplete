@@ -138,9 +138,6 @@
         "amenity/bar": {
             "name": "Makhaayad"
         },
-        "highway/bus_stop": {
-            "name": "Boostaajo"
-        },
         "highway/track": {
             "name": "Jidka Jayga aan la Dayactirin"
         },
@@ -176,9 +173,6 @@
         },
         "highway/path": {
             "name": "Waddo"
-        },
-        "public_transport/platform_bus": {
-            "name": "Boostaajo"
         },
         "highway": {
             "name": "Wadada Halboowlaha"

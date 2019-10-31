@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.opening_hours
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.OsmTaggings
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
@@ -9,13 +10,15 @@ class AddOpeningHours (o: OverpassMapDataDao) : SimpleOverpassQuestType<OpeningH
 
     /* See also AddWheelchairAccessBusiness and AddPlaceName, which has a similar list and is/should
        be ordered in the same way for better overview */
-    override val tagFilters =
-        "nodes, ways, relations with ( shop and shop !~ no|vacant" +
-        " or amenity = bicycle_parking and bicycle_parking = building" +
-        " or amenity = parking and parking = multi-storey" +
-        " or amenity = recycling and recycling_type = centre" +
-        " or tourism = information and information = office" +
-        " or  " +
+    override val tagFilters = """
+        nodes, ways, relations with
+        (
+         shop and shop !~ no|vacant
+         or amenity = bicycle_parking and bicycle_parking = building
+         or amenity = parking and parking = multi-storey
+         or amenity = recycling and recycling_type = centre
+         or tourism = information and information = office
+         or """.trimIndent() +
         mapOf(
             "amenity" to arrayOf(
                 "restaurant", "cafe", "ice_cream", "fast_food", "bar", "pub", "biergarten", "food_court", "nightclub", // eat & drink
@@ -40,12 +43,19 @@ class AddOpeningHours (o: OverpassMapDataDao) : SimpleOverpassQuestType<OpeningH
                 "adult_gaming_centre", "tanning_salon"
             ),
             "office" to arrayOf(
-                "insurance", "government", "estate_agent", "travel_agent", "religion"
+                // also listed for AddWheelchair quest
+                "insurance", "government", "travel_agent", "tax_advisor", "religion", "employment_agency"
+            ),
+            "craft" to arrayOf(
+                // also listed for AddWheelchair quest
+                "carpenter", "shoemaker", "tailor", "photographer", "dressmaker",
+                "electronics_repair", "key_cutter", "stonemason"
             )
-        ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString(" or ") +
-        " )" +
-        " and !opening_hours and name and opening_hours:signed != no" +
-        " and (access !~ private|no)"
+        ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n or ") + "\n" + """
+        )
+         and !opening_hours and name and opening_hours:signed != no
+         and (access !~ private|no)
+        """.trimIndent()
 
     override val commitMessage = "Add opening hours"
     override val icon = R.drawable.ic_quest_opening_hours

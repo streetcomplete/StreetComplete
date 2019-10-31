@@ -228,9 +228,6 @@
         "shop/furniture": {
             "name": "Mueblería"
         },
-        "public_transport/platform_ferry": {
-            "name": "Andén / Parada de ferry"
-        },
         "advertising/billboard": {
             "name": "Tableru d'anuncios",
             "terms": "anunciu, publicidá, cartelera"
@@ -428,9 +425,6 @@
         "highway/corridor": {
             "name": "Pasiellu d'edificiu"
         },
-        "attraction/animal": {
-            "name": "Animales"
-        },
         "craft/bookbinder": {
             "name": "Encuadernador",
             "terms": "Encuadernación"
@@ -444,9 +438,6 @@
         },
         "shop/beverages": {
             "name": "Venta de bebíes"
-        },
-        "public_transport/platform_bus": {
-            "name": "Andén / Parada d'autobús"
         },
         "entrance": {
             "name": "Entrada/Salida",
@@ -552,8 +543,7 @@
             "name": "Alquiler d'almacenes"
         },
         "shop/fashion": {
-            "name": "Tienda de moda",
-            "terms": "boutique, moda"
+            "name": "Tienda de moda"
         },
         "power/substation": {
             "name": "Subestación"
@@ -1043,15 +1033,9 @@
         "shop/hearing_aids": {
             "name": "Audiólogu"
         },
-        "public_transport/platform": {
-            "name": "Andén / Parada de tresporte"
-        },
         "amenity/place_of_worship": {
             "name": "Llugar de cultu",
             "terms": "Cultu,Templu"
-        },
-        "railway/platform": {
-            "name": "Andén / Parada de tren"
         },
         "barrier/retaining_wall": {
             "name": "Muru de contención"
@@ -1061,8 +1045,7 @@
             "terms": "Semáforu, pasu peatonal"
         },
         "amenity/embassy": {
-            "name": "Embaxada",
-            "terms": "Embaxada, Consuláu, Representación diplomática"
+            "name": "Embaxada"
         },
         "type/restriction/no_left_turn": {
             "name": "Xiru a la izquierda torgáu"
@@ -1145,9 +1128,6 @@
             "name": "Enllaz d'estrada nacional",
             "terms": "Salida, accesu, enllaz, nacional"
         },
-        "amenity/vending_machine/news_papers": {
-            "name": "Máquina de venta de periódicos"
-        },
         "shop/bookmaker": {
             "name": "Encuadernador"
         },
@@ -1203,9 +1183,6 @@
         "highway/living_street": {
             "name": "Rúa residencial",
             "terms": "Semipeatonal,Zona 30"
-        },
-        "landuse/military/bunker": {
-            "name": "Bunquer militar"
         },
         "attraction/bumper_car": {
             "name": "Coches de choque",
@@ -1270,9 +1247,6 @@
             "name": "Islla",
             "terms": "Islla, castru"
         },
-        "public_transport/platform_tram": {
-            "name": "Andén / Parada de tranvía"
-        },
         "railway/signal": {
             "name": "Señal de ferrocarril"
         },
@@ -1304,9 +1278,6 @@
         "amenity/ranger_station": {
             "name": "Guardes forestales",
             "terms": "guardabosques, seprona"
-        },
-        "highway/bus_stop": {
-            "name": "Andén / Parada d'autobús"
         },
         "office/energy_supplier": {
             "name": "Oficina de distribuidora d'enerxía"
@@ -1383,9 +1354,6 @@
         },
         "highway/pedestrian_line": {
             "name": "Rúa peatonal"
-        },
-        "landuse/military/checkpoint": {
-            "name": "Puntu de control"
         },
         "man_made/lighthouse": {
             "name": "Faru"
@@ -1483,9 +1451,6 @@
         "highway/mini_roundabout": {
             "name": "Mini-rotonda"
         },
-        "public_transport/platform_monorail": {
-            "name": "Andén / Parada de monocarril"
-        },
         "highway/service/parking_aisle": {
             "name": "Pasiellu d'aparcamientu"
         },
@@ -1541,9 +1506,6 @@
         "leisure/pitch/cricket": {
             "name": "Campu de cricket"
         },
-        "public_transport/platform_trolleybus": {
-            "name": "Andén / Parada de trolebús"
-        },
         "amenity/arts_centre": {
             "name": "Centru d'arte",
             "terms": "arte, pintura, escultura, plástica, ilustración"
@@ -1574,9 +1536,6 @@
         "amenity/bureau_de_change": {
             "name": "Cambiu de moneda",
             "terms": "Divisa, cambiu"
-        },
-        "landuse/military/nuclear_explosion_site": {
-            "name": "Llugar d'españíu nuclear"
         },
         "leisure": {
             "name": "Recréu"
@@ -1748,9 +1707,6 @@
         "man_made/survey_point": {
             "name": "Vértiz xeodésicu"
         },
-        "roundabout": {
-            "name": "Rotonda"
-        },
         "type/route/power": {
             "name": "Ruta d'enerxía",
             "terms": "Ruta de llinia d'enerxía"
@@ -1844,9 +1800,6 @@
             "name": "Supermercáu",
             "terms": "Supermercáu, super"
         },
-        "office/political_party": {
-            "name": "Partíu políticu"
-        },
         "landuse/military/range": {
             "name": "Campu de tiru"
         },
@@ -1901,9 +1854,6 @@
         },
         "junction": {
             "name": "Crucie"
-        },
-        "vertex": {
-            "name": "Otru"
         },
         "type/boundary": {
             "name": "Llende"
@@ -2050,9 +2000,6 @@
         "landuse/farm": {
             "name": "Tierra de llabor"
         },
-        "public_transport/platform_subway": {
-            "name": "Andén / Parada de metro"
-        },
         "natural/wood": {
             "name": "Viesca"
         },
@@ -2072,9 +2019,6 @@
         "shop/optician": {
             "name": "Óptica",
             "terms": "ópticu, optometrista"
-        },
-        "public_transport/platform_light_rail": {
-            "name": "Andén / Parada de tren llixeru"
         },
         "type/route/foot": {
             "name": "Ruta a pie",
@@ -2180,9 +2124,6 @@
         "power": {
             "name": "Enerxía"
         },
-        "public_transport/platform_train": {
-            "name": "Andén / Parada de tren"
-        },
         "aerialway/station": {
             "name": "Estación de remonte"
         },
@@ -2277,9 +2218,6 @@
         },
         "type/boundary/administrative": {
             "name": "Llende alministrativa"
-        },
-        "landuse/military/office": {
-            "name": "Oficina militar"
         },
         "amenity/watering_place": {
             "name": "Bebederu p'animales",

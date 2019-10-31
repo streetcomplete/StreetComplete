@@ -10,11 +10,11 @@ import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.
 class AddProhibitedForPedestrians(o: OverpassMapDataDao) : SimpleOverpassQuestType<ProhibitedForPedestriansAnswer>(o) {
 
     override val tagFilters = """
-        ways with !foot and (
-          sidewalk ~ none|no or
-          sidewalk:both ~ none|no or
+        ways with (
+          ~'sidewalk(:both)?' ~ none|no or
           (sidewalk:left ~ none|no and sidewalk:right ~ none|no)
         )
+        and !foot
         and access !~ private|no
         """ +
         /* asking for any road without sidewalk is too much. Main interesting situations are
@@ -30,11 +30,12 @@ class AddProhibitedForPedestrians(o: OverpassMapDataDao) : SimpleOverpassQuestTy
         "and ( oneway~yes|-1 or bridge=yes or tunnel=yes or bicycle~no|use_sidepath or lit=yes )"
 
     override val commitMessage = "Add whether roads are accessible for pedestrians"
-    override val icon = R.drawable.ic_quest_pedestrian
+    override val icon = R.drawable.ic_quest_no_pedestrians
+    override val isSplitWayEnabled = true
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_accessible_for_pedestrians_title_prohibited
 
-    override fun createForm() = AddAccessibleForPedestriansForm()
+    override fun createForm() = AddProhibitedForPedestriansForm()
 
     override fun applyAnswerTo(answer: ProhibitedForPedestriansAnswer, changes: StringMapChangesBuilder) {
         when(answer) {

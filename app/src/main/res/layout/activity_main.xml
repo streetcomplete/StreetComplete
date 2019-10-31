@@ -24,15 +24,13 @@
         <!-- the toolbar somehow always wants to be in front in its layout, so let's ban it into
              a sub frame layout -->
         <androidx.appcompat.widget.Toolbar
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            android:elevation="4dp">
+            android:elevation="4dp"
+            app:theme="@style/ThemeOverlay.AppCompat.Dark"
+            app:popupTheme="@style/Theme.Bubble.ToolbarPopup">
 
             <RelativeLayout
                 android:id="@+id/uploadedAnswersContainer"

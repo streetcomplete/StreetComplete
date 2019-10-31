@@ -97,7 +97,6 @@
     <string name="quest_roofShape_select_one">"한 개만 선택하세요"</string>
     <string name="quest_roofShape_show_more">"더 보기..."</string>
     <string name="quest_roofShape_answer_many">"다양한 모양을 가지고 있습니다"</string>
-    <string name="pref_category_cache">"캐시"</string>
     <string name="pref_title_sync">"자동 동기화"</string>
     <string name="map_btn_zoom_out">"축소"</string>
     <string name="map_btn_zoom_in">"확대"</string>
@@ -606,9 +605,9 @@
     <string name="restore_hidden_success">"숨겨진 퀘스트 %d개가 복원되었습니다"</string>
 
     <!-- caution: This is not necessarily the floor and level=0 is not necessarily at street level
-        as it may follow the numbering scheme of the building operator. Try to use a generic wording
-        that does not carry an implicit meaning of where it is located in respect to the ground floor.
-        The context is usually shopping centres, train stations or airport terminals -->
+    as it may follow the numbering scheme of the building operator. Try to use a generic wording
+    that does not carry an implicit meaning of where it is located in respect to the ground floor.
+    The context is usually shopping centres, train stations or airport terminals -->
     <string name="on_level">"%s층에 있음:"</string>
 
     <!-- as in: "Where is the metro station?" - "It is underground" -->
@@ -618,7 +617,6 @@
     <string name="quest_accessible_for_pedestrians_title_prohibited">"법적으로, 보행자가 이 도로를 걸을 수 없습니까?"</string>
     <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"이 도로의 양쪽에는 모두 인도가 없다고 나와 있습니다. 실제로 인도가 있지만 차도와 분리되어 있다면, \"인도\"라고 답하세요."</string>
     <string name="quest_buildingType_title">"이 건물은 다음 중 어떤 건물입니까?"</string>
-    <string name="pref_category_theme">"테마"</string>
     <string name="pref_title_theme_select">"테마 선택"</string>
     <string name="theme_automatic">"자동"</string>
     <string name="theme_light">"밝음"</string>
@@ -627,4 +625,19 @@
     <string name="quest_placeName_title_name">"이 장소의 명칭은 무엇입니까? (%s)"</string>
     <string name="action_open_location">"다른 앱에서 위치 열기"</string>
     <string name="map_application_missing">"설치된 다른 지도 앱이 없습니다"</string>
+    <string name="pref_title_overpass_url_select">"Overpass 서버 변경"</string>
+    <string name="pref_title_overpass_url_info">"설정을 적용하려면 앱을 다시 시작해야 합니다. 러시아 등의 국가에서는 검열을 우회할 수도 있습니다."</string>
+    <string name="label_housenumber">"건물 번호"</string>
+    <string name="label_blocknumber">"거리 블록 번호"</string>
+    <string name="quest_busStopShelter_covered">"모든 정류장에 지붕에 있음"</string>
+    <string name="quest_ferry_pedestrian_name_title">"사람이 %s을(를) 이용할 수 있습니까?"</string>
+    <string name="quest_ferry_pedestrian_title">"사람이 이 페리 노선을 이용할 수 있습니까?"</string>
+    <string name="quest_ferry_motor_vehicle_name_title">"자동차가 %s을(를) 이용할 수 있습니까?"</string>
+    <string name="quest_ferry_motor_vehicle_title">"자동차가 이 페리 노선을 이용할 수 있습니까?"</string>
+    <string name="quest_leave_new_note_photos_are_useful">"사진을 추가하면 참고를 읽는 다른 사람들에게 도움이 됩니다."</string>
+    <string name="quest_postboxCollectionTimes_name_title">"이 %s 우체통에서는 우편물을 언제 가져갑니까?"</string>
+    <string name="create_new_note_hint">"참고는 현지어나 영어로 작성하는 것이 좋습니다."</string>
+    <string name="about_contributing">"답변은 오픈스트리트맵을 개선하는 데 직접적으로 이용됩니다. 기여한 데이터는 자유롭게, 누구나 이용할 수 있습니다. 이미 수많은 거대 프로젝트에서 오픈스트리트맵 데이터를 이용하고 있습니다."</string>
+    <string name="about_missing_stars">"현재, 별점은 공유되지 않습니다. 그러나 답변은 오픈스트리트맵 데이터베이스에 바로 들어갑니다."</string>
+    <string name="how_to_get_stars">"지도에서 퀘스트를 찾아 터치하세요. 이 방식으로 오픈스트리트맵 데이터에 기여하면 별을 얻을 수 있습니다. 만약 지도에 퀘스트가 보이지 않는다면 지도를 축소해 보세요."</string>
 </resources>

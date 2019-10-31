@@ -526,8 +526,7 @@
             "terms": "Gedung Bersejarah, Sejarah, Prasejarah, Kuno"
         },
         "shop/boutique": {
-            "name": "Butik",
-            "terms": "Toko Baju, Pakaian"
+            "name": "Butik"
         },
         "railway/narrow_gauge": {
             "name": "Sepur Sempit",
@@ -676,9 +675,6 @@
         "man_made/survey_point": {
             "name": "Titik Survei"
         },
-        "roundabout": {
-            "name": "Bundaran"
-        },
         "type/route/power": {
             "name": "Rute Energi Listrik"
         },
@@ -738,8 +734,7 @@
             "name": "Toko Perlengkapan Outdoor"
         },
         "shop/fashion": {
-            "name": "Toko Mode",
-            "terms": "Fashion, Fesyen"
+            "name": "Toko Mode"
         },
         "power/substation": {
             "name": "Terminal"
@@ -803,9 +798,6 @@
         "shop/supermarket": {
             "name": "Supermarket",
             "terms": "Pasar Swalayan"
-        },
-        "office/political_party": {
-            "name": "Partai Politik"
         },
         "shop/garden_centre": {
             "name": "Toko Tanaman",
@@ -894,9 +886,6 @@
         "landuse/vineyard": {
             "name": "Kebun Anggur",
             "terms": "Kebun Anggur"
-        },
-        "vertex": {
-            "name": "Lainnya"
         },
         "type/boundary": {
             "name": "Batas"
@@ -1394,8 +1383,7 @@
             "terms": "Lampu Merah"
         },
         "amenity/embassy": {
-            "name": "Kedutaan besar",
-            "terms": "Kedutaan"
+            "name": "Kedutaan besar"
         },
         "type/restriction/no_left_turn": {
             "name": "Dilarang Berbelok ke Kiri"
