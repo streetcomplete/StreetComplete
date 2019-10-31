@@ -1,0 +1,43 @@
+# use app/generateCountryMetadata.py to generate files used by StreetComplete
+# Sources:
+# https://en.wikipedia.org/wiki/Metrication#Overview
+# https://en.wikipedia.org/wiki/Comparison_of_MUTCD-influenced_traffic_signs
+# https://en.wikipedia.org/wiki/Comparison_of_European_road_signs
+#
+# GB changed street signs to either include meters or only mention meters. So, setting meter, foot and inch for all the crown dependencies
+# This file has been forked off from lengthUnits.
+default: [meter]
+AG: [foot and inch, meter] # metric system is introduced but the imperial system remains in common use
+AI: [meter, foot and inch] # British Overseas Territory
+AS: [foot and inch, meter] # territory of the US
+BM: [meter, foot and inch] # British Overseas Territory
+BS: [foot and inch, meter] # mainly imperial units used
+BZ: [foot and inch, meter] # mainly imperial units used
+DM: [foot and inch, meter] # metric system is introduced but the imperial system remains in common use
+FK: [meter, foot and inch] # British Overseas Territory
+FM: [foot and inch, meter] # mainly imperial units used
+GB: [meter, foot and inch] # changeover to the metric system is in progress
+GD: [foot and inch, meter]
+GG: [meter, foot and inch] # British Crown Dependency
+GI: [meter, foot and inch] # British Overseas Territory
+GS: [meter, foot and inch] # British Overseas Territory
+GU: [foot and inch, meter] # same as Micronesia (FM) because it is part of it
+GY: [meter, foot and inch] # metric system has been introduced in 1982 but the imperial system is still used sometimes
+IM: [meter, foot and inch] # British Crown Dependency
+JE: [meter, foot and inch] # British Crown Dependency
+KN: [meter, foot and inch]
+KY: [foot and inch, meter] # mainly imperial units used
+LC: [foot and inch, meter] # metric system is introduced but the imperial system remains in common use
+LR: [foot and inch, meter] # imperial units are used officially but some signs are using the metric system
+MH: [foot and inch, meter] # mainly imperial units used
+MM: [meter, foot and inch] # Myanmar is converting to the metric system, although very slowly
+MP: [foot and inch, meter] # territory of the US
+MS: [meter, foot and inch] # British Overseas Territory
+PR: [foot and inch, meter] # territory of the US
+PW: [foot and inch, meter] # same as Micronesia (FM) because it is part of it
+TC: [meter, foot and inch] # British Overseas Territory
+US: [foot and inch]
+VC: [foot and inch, meter] # mainly imperial units used
+VG: [foot and inch, meter] # mainly imperial units used
+VI: [foot and inch, meter] # mainly imperial units used
+WS: [foot and inch, meter] # Samoa started to convert to the metric system in 2014.

@@ -1,4 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
 isLeftHandTraffic: true
-measurementSystem: [imperial, metric]
+lengthUnits: [meter, foot and inch]
 officialLanguages: [en]
+speedUnits: [miles per hour, kilometers per hour]

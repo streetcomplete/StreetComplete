@@ -24,12 +24,24 @@ public class CountryInfosTest
 		assertTrue(Weekdays.Companion.getWeekdayIndex(info.getFirstDayOfWorkweek()) > -1);
 	}
 
-	private void checkMeasurementUnitIsEitherMetricOrImperial(CountryInfo info)
+	private void checkLengthUnitIsEitherMeterOrFootAndInch(CountryInfo info)
 	{
-		assertNotNull(info.getMeasurementSystem());
-		assertTrue(info.getMeasurementSystem().contains("metric") || info.getMeasurementSystem().contains("imperial"));
+		assertNotNull(info.getLengthUnits());
+		assertTrue(info.getLengthUnits().contains("meter") || info.getLengthUnits().contains("foot and inch"));
 	}
 
+	private void checkSpeedUnitIsEitherMphOrKmh(CountryInfo info)
+	{
+		assertNotNull(info.getSpeedUnits());
+		assertTrue(info.getSpeedUnits().contains("kilometers per hour") || info.getSpeedUnits().contains("miles per hour"));
+	}
+
+
+	private void checkWeightLimitUnitIsEitherTonOrShortTonOrPound(CountryInfo info)
+	{
+		assertNotNull(info.getWeightLimitUnits());
+		assertTrue(info.getWeightLimitUnits().contains("ton") || info.getWeightLimitUnits().contains("short ton") || info.getWeightLimitUnits().contains("pound"));
+	}
 	private void checkAdditionalValidHousenumberRegexes(Map<String, CountryInfo> infos)
 	{
 		assertTrue("99 bis".matches(infos.get("FR").getAdditionalValidHousenumberRegex()));
@@ -52,7 +64,9 @@ public class CountryInfosTest
 	private void checkForEach(CountryInfo info)
 	{
 		checkFirstDayOfWorkweekIsValid(info);
-		checkMeasurementUnitIsEitherMetricOrImperial(info);
+		checkLengthUnitIsEitherMeterOrFootAndInch(info);
+		checkSpeedUnitIsEitherMphOrKmh(info);
+		checkWeightLimitUnitIsEitherTonOrShortTonOrPound(info);
 		checkRegularShoppingDaysIsBetween0And7(info);
 		checkStartOfWorkweekValid(info);
 	}

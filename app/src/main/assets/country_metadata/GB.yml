@@ -4,10 +4,11 @@ isAdvisorySpeedLimitKnown: true
 isLeftHandTraffic: true
 isLivingStreetKnown: true
 isSlowZoneKnown: true
-measurementSystem: [imperial, metric]
+lengthUnits: [meter, foot and inch]
 mobileCountryCode: 234
 officialLanguages: [en]
 orchardProduces: [apple, strawberry, tomato, pear, chilli_pepper, sweet_pepper, raspberry, plum, cherry,
   hop, grape]
 popularReligions: [christian, muslim, jewish, hindu, sikh]
 popularSports: [soccer, tennis, bowls, cricket, golf, basketball, rugby]
+speedUnits: [miles per hour]
