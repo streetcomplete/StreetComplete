@@ -11,7 +11,6 @@ class AddMaxWeight(o: OverpassMapDataDao) : SimpleOverpassQuestType<MaxWeightAns
     override val commitMessage = "Add maximum allowed weight"
     override val icon = R.drawable.ic_quest_max_weight
     override val hasMarkersAtEnds = true
-    override val isSplitWayEnabled = true
 
     override val enabledForCountries = Countries.allExcept(
             "CA", // requires special icons
