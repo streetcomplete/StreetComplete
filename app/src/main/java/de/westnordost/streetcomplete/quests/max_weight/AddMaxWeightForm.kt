@@ -141,7 +141,7 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
 
     private fun userSelectedUnrealisticWeight(): Boolean {
         val weight = getWeightFromInput() ?: return false
-        val w = weight.toTons()
+        val w = weight.toMetricTons()
         return w > 25 || w < 2
     }
 
@@ -157,12 +157,12 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
                     if (countryInfo.unitsOfWeightLimits.contains("short_ton_formatted_as_ton")) {
                         return ShortTons(input.toDouble())
                     }
-                    return MetricWeightMeasure(input.toDouble())
+                    return MetricTons(input.toDouble())
                 }
             } else if (isPound()) {
                 val poundString = poundInput?.numberOrNull
                 if (poundString != null) {
-                    return ImperialWeightMeasure(poundString.toInt())
+                    return ImperialPounds(poundString.toInt())
                 }
             } else {
                 throw UnsupportedOperationException("not implemented")

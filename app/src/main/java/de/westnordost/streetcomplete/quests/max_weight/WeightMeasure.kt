@@ -1,31 +1,23 @@
 package de.westnordost.streetcomplete.quests.max_weight
 
+import de.westnordost.streetcomplete.ktx.toShortString
+
 sealed class WeightMeasure {
-    abstract fun toTons(): Double
+    abstract fun toMetricTons(): Double
     abstract override fun toString(): String
 }
 
-data class MetricWeightMeasure(val tons: Double) : WeightMeasure() {
-    override fun toTons() = tons
-    override fun toString() =
-        if (tons % 1 == 0.0) {
-            tons.toInt().toString()
-        } else {
-            tons.toString()
-        }
+data class MetricTons(val tons: Double) : WeightMeasure() {
+    override fun toMetricTons() = tons
+    override fun toString() = tons.toShortString()
 }
 
 data class ShortTons(val tons: Double) : WeightMeasure() {
-    override fun toTons() = tons * 0.90718474
-    override fun toString() =
-            if (tons % 1 == 0.0) {
-                tons.toInt().toString() + " st"
-            } else {
-                "$tons st"
-            }
+    override fun toMetricTons() = tons * 0.90718474
+    override fun toString() = tons.toShortString() + " st"
 }
 
-data class ImperialWeightMeasure(val pounds: Int) : WeightMeasure() {
-    override fun toTons() = pounds * 0.45359237 / 1000
+data class ImperialPounds(val pounds: Int) : WeightMeasure() {
+    override fun toMetricTons() = pounds * 0.45359237 / 1000
     override fun toString() = "$pounds lbs"
 }

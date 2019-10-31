@@ -12,14 +12,14 @@ class AddMaxHeightTest {
 
     @Test fun `apply metric height answer`() {
         questType.verifyAnswer(
-            MaxHeight(MetricHeightMeasure(3.5)),
+            MaxHeight(Meters(3.5)),
             StringMapEntryAdd("maxheight","3.5")
         )
     }
 
     @Test fun `apply imperial height answer`() {
         questType.verifyAnswer(
-            MaxHeight(ImperialHeightMeasure(10, 6)),
+            MaxHeight(ImperialFeetAndInches(10, 6)),
             StringMapEntryAdd("maxheight","10'6\"")
         )
     }

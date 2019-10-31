@@ -150,13 +150,13 @@ class AddMaxHeightForm : AbstractQuestFormAnswerFragment<MaxHeightAnswer>() {
         try {
             if (isMetric()) {
                 val input = meterInput?.numberOrNull
-                if (input != null) return MetricHeightMeasure(input.toDouble())
+                if (input != null) return Meters(input.toDouble())
             } else {
                 val feetString = feetInput?.numberOrNull
                 val inchString = inchInput?.numberOrNull
 
                 if (feetString != null && inchString != null) {
-                    return ImperialHeightMeasure(feetString.toInt(), inchString.toInt())
+                    return ImperialFeetAndInches(feetString.toInt(), inchString.toInt())
                 }
             }
         } catch (e: NumberFormatException) {
