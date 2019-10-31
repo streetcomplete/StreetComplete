@@ -6,7 +6,7 @@ object TestBooleanExpressionParser {
     fun parse(input: String): BooleanExpression<Matcher<String>, String>? {
         val builder = BooleanExpressionBuilder<Matcher<String>, String>()
         val reader = StringWithCursor(input, Locale.US)
-        while (!reader.isAtEnd) {
+        while (!reader.isAtEnd()) {
             when {
                 reader.nextIsAndAdvance('*') -> builder.addAnd()
                 reader.nextIsAndAdvance('+') -> builder.addOr()

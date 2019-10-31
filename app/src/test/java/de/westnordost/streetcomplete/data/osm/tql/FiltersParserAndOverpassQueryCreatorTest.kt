@@ -68,6 +68,10 @@ class FiltersParserAndOverpassQueryCreatorTest {
         shouldFail("nodes with around")
         shouldFail("nodes with or")
         shouldFail("nodes with and")
+        shouldFail("nodes with with = abc")
+        shouldFail("nodes with around = abc")
+        shouldFail("nodes with or = abc")
+        shouldFail("nodes with and = abc")
     }
 
     @Test fun `tag key like reserved word in quotation marks is ok`() {

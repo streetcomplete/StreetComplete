@@ -8,9 +8,6 @@ class StringWithCursor(private val string: String, private val locale: Locale) {
     var cursorPos = 0
         private set
 
-    /** returns whether the cursor reached the end */
-    val isAtEnd get() = cursorPos >= string.length
-
     private val char: Char?
         get() = if (cursorPos < string.length) string[cursorPos] else null
 
@@ -38,7 +35,8 @@ class StringWithCursor(private val string: String, private val locale: Locale) {
         return true
     }
 
-    fun isAtEnd(x: Int): Boolean = cursorPos + x >= string.length
+    /** returns whether the cursor reached the end */
+    fun isAtEnd(x: Int = 0): Boolean = cursorPos + x >= string.length
     fun findNext(str: String): Int = toDelta(string.indexOf(str, cursorPos))
     fun findNext(c: Char, offs: Int = 0): Int = toDelta(string.indexOf(c, cursorPos + offs))
 

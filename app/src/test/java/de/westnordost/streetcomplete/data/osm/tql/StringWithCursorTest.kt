@@ -44,7 +44,7 @@ class StringWithCursorTest {
         x.advanceBy(3)
         assertTrue(x.nextIsAndAdvance("23"))
         assertEquals(7, x.cursorPos)
-        assertTrue(x.isAtEnd)
+        assertTrue(x.isAtEnd())
     }
 
     @Test fun nextIsAndAdvanceChar() {
