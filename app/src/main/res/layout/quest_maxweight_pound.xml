@@ -17,11 +17,11 @@
         android:gravity="center"
         android:inputType="number"
         android:digits="0123456789"
-        android:maxLength="2"
+        android:maxLength="6"
         android:textColor="@color/traffic_black"
-        android:textSize="24dp"
+        android:textSize="15dp"
         android:textStyle="bold"
-        tools:text="15" />
+        tools:text="10000" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -29,7 +29,7 @@
         android:gravity="center"
         android:text=" lbs"
         android:textColor="@color/traffic_black"
-        android:textSize="24dp"
+        android:textSize="15dp"
         android:textStyle="bold"
         tools:ignore="HardcodedText" />
 
