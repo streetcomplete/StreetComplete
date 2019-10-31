@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.quests.max_height
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import android.text.InputFilter
-import android.text.method.DigitsKeyListener
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +12,7 @@ import android.widget.EditText
 import android.widget.Spinner
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.ktx.allowOnlyNumbers
 import de.westnordost.streetcomplete.ktx.numberOrNull
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.OtherAnswer
@@ -86,17 +86,7 @@ class AddMaxHeightForm : AbstractQuestFormAnswerFragment<MaxHeightAnswer>() {
                 ""
             }
         })
-        /* Workaround for an Android bug that it assumes the decimal separator to always be the "."
-           for EditTexts with inputType "numberDecimal", independent of Locale. See
-           https://issuetracker.google.com/issues/36907764 .
-
-           Affected Android versions are all versions till (exclusive) Android Oreo. */
-
-        /* actually, let's not care about which separator the user uses, he might be confused
-           whether he should use the one as displayed on the sign or in his phone's locale */
-        //char separator = DecimalFormatSymbols.getInstance(getCountryInfo().getLocale()).getDecimalSeparator();
-        meterInput?.keyListener = DigitsKeyListener.getInstance("0123456789,.")
-
+        meterInput?.allowOnlyNumbers()
         switchLayout(unit)
     }
 
@@ -160,7 +150,7 @@ class AddMaxHeightForm : AbstractQuestFormAnswerFragment<MaxHeightAnswer>() {
                 }
             }
         } catch (e: NumberFormatException) {
-            return null;
+            return null
         }
         return null
     }
