@@ -39,15 +39,15 @@ class AddMaxSpeed(o: OverpassMapDataDao) : SimpleOverpassQuestType<MaxSpeedAnswe
     override fun applyAnswerTo(answer: MaxSpeedAnswer, changes: StringMapChangesBuilder) {
         when(answer) {
             is MaxSpeedSign -> {
-                changes.add("maxspeed", answer.value)
+                changes.add("maxspeed", answer.value.toString())
                 changes.add("maxspeed:type", "sign")
             }
             is MaxSpeedZone -> {
-                changes.add("maxspeed", answer.value)
+                changes.add("maxspeed", answer.value.toString())
                 changes.add("maxspeed:type", answer.countryCode + ":" + answer.roadType)
             }
             is AdvisorySpeedSign -> {
-                changes.add("maxspeed:advisory", answer.value)
+                changes.add("maxspeed:advisory", answer.value.toString())
                 changes.add("maxspeed:type:advisory", "sign")
             }
             is IsLivingStreet -> {

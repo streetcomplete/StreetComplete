@@ -17,34 +17,34 @@ import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.util.TextChangedWatcher
 
-import de.westnordost.streetcomplete.quests.max_weight.Measurement.*
-
-private enum class Measurement { TON, POUND }
+import de.westnordost.streetcomplete.quests.max_weight.WeightMeasurementUnit.*
 
 class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
 
     override val otherAnswers = listOf(
-            OtherAnswer(R.string.quest_maxweight_answer_other_sign) { onUnsupportedSign() },
-            OtherAnswer(R.string.quest_maxweight_answer_sign_with_exceptions) { onUnsupportedSign() },
-            OtherAnswer(R.string.quest_maxweight_answer_noSign) { confirmNoSign() }
+        OtherAnswer(R.string.quest_maxweight_answer_other_sign) { onUnsupportedSign() },
+        OtherAnswer(R.string.quest_maxweight_answer_sign_with_exceptions) { onUnsupportedSign() },
+        OtherAnswer(R.string.quest_maxweight_answer_noSign) { confirmNoSign() }
     )
 
     private var tonInput: EditText? = null
     private var poundInput: EditText? = null
     private var weightUnitSelect: Spinner? = null
-
     private var tonInputSign: View? = null
     private var poundInputSign: View? = null
+
+    private val weightLimitUnits get() = countryInfo.weightLimitUnits.map { it.toWeightMeasurementUnit() }
 
     override fun isFormComplete() = getWeightFromInput() != null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = super.onCreateView(inflater, container, savedInstanceState)
-        setMaxWeightSignLayout(R.layout.quest_maxweight)
+
+        setMaxWeightSignLayout(R.layout.quest_maxweight, weightLimitUnits.first())
         return view
     }
 
-    private fun setMaxWeightSignLayout(resourceId: Int) {
+    private fun setMaxWeightSignLayout(resourceId: Int, unit: WeightMeasurementUnit) {
         val contentView = setContentView(resourceId)
 
         tonInput = contentView.findViewById(R.id.tonInput)
@@ -58,33 +58,21 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
         poundInputSign = contentView.findViewById(R.id.poundInputSign)
 
         weightUnitSelect = contentView.findViewById(R.id.weightUnitSelect)
-        val measurementUnits = countryInfo.weightLimitUnits
-        val primaryUnit = when(measurementUnits[0]) {
-            "ton" -> TON
-            "short ton" -> TON
-            "pound" -> POUND
-            else -> throw UnsupportedOperationException("not implemented")
-        }
-        switchLayout(primaryUnit)
-        weightUnitSelect?.visibility = if (measurementUnits.size == 1) View.GONE else View.VISIBLE
-        weightUnitSelect?.adapter = ArrayAdapter(context!!, R.layout.spinner_item_centered, getSpinnerItems(measurementUnits))
+        weightUnitSelect?.visibility = if (weightLimitUnits.size == 1) View.GONE else View.VISIBLE
+        weightUnitSelect?.adapter = ArrayAdapter(context!!, R.layout.spinner_item_centered, weightLimitUnits)
         weightUnitSelect?.setSelection(0)
         weightUnitSelect?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parentView: AdapterView<*>, selectedItemView: View?, position: Int, id: Long) {
-                val weightUnit = when(weightUnitSelect?.selectedItem) {
-                    "t" -> TON
-                    "lbs" -> POUND
-                    else -> throw UnsupportedOperationException("not implemented")
-                }
-                switchLayout(weightUnit)
+                switchLayout(weightUnitSelect?.selectedItem as WeightMeasurementUnit)
             }
 
             override fun onNothingSelected(parentView: AdapterView<*>) {}
         }
         tonInput?.allowOnlyNumbers()
+        switchLayout(unit)
     }
 
-    private fun switchLayout(unit: Measurement) {
+    private fun switchLayout(unit: WeightMeasurementUnit) {
         val isTon = unit == TON
         val isPound = unit == POUND
 
@@ -93,15 +81,6 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
 
         if (isTon) tonInput?.requestFocus()
         if (isPound) poundInput?.requestFocus()
-    }
-
-    private fun getSpinnerItems(units: List<String>) = units.mapNotNull {
-        when(it) {
-            "ton" -> "t"
-            "short ton" -> "t"
-            "pound" -> "lbs"
-            else -> null
-        }
     }
 
     override fun onClickOk() {
@@ -123,40 +102,13 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
     }
 
     private fun getWeightFromInput(): WeightMeasure? {
-        try {
-            if (isTon()) {
-                val input = tonInput?.numberOrNull
-                if (input != null) {
-                    if (countryInfo.weightLimitUnits.contains("short ton")) {
-                        return ShortTons(input.toDouble())
-                    }
-                    return MetricTons(input.toDouble())
-                }
-            } else if (isPound()) {
-                val poundString = poundInput?.numberOrNull
-                if (poundString != null) {
-                    return ImperialPounds(poundString.toInt())
-                }
-            } else {
-                throw UnsupportedOperationException("not implemented")
-            }
-        } catch (e: NumberFormatException) {
-            return null
+        when(weightUnitSelect?.selectedItem as WeightMeasurementUnit? ?: weightLimitUnits.first()) {
+            TON ->       tonInput?.numberOrNull?.let { return MetricTons(it) }
+            SHORT_TON -> tonInput?.numberOrNull?.let { return ShortTons(it) }
+            POUND ->     poundInput?.numberOrNull?.let { return ImperialPounds(it.toInt()) }
         }
         return null
     }
-
-    private fun isTon() =
-        weightUnitSelect?.let { it.selectedItem == "t" }
-            ?: (countryInfo.weightLimitUnits[0] == "ton"
-                    || countryInfo.weightLimitUnits[0] == "short ton")
-        // weightUnitSelect will give a null for cases where there is a single unit
-        // in such cases there is a single unit, so we can use [0] to get it
-
-    private fun isPound() =
-            weightUnitSelect?.let { it.selectedItem == "lbs" }
-                    ?: (countryInfo.weightLimitUnits[0] == "pound")
-    // see comment in the isTon function
 
     private fun onUnsupportedSign() {
         activity?.let { AlertDialog.Builder(it)

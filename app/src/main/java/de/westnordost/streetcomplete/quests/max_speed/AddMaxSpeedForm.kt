@@ -11,9 +11,12 @@ import android.widget.ImageView
 import android.widget.Spinner
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.ktx.numberOrNull
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.util.TextChangedWatcher
+import de.westnordost.streetcomplete.quests.max_speed.SpeedType.*
+import de.westnordost.streetcomplete.quests.max_speed.SpeedMeasurementUnit.*
 import kotlinx.android.synthetic.main.quest_maxspeed.*
 import java.lang.IllegalStateException
 
@@ -39,11 +42,7 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
     private var speedUnitSelect: Spinner? = null
     private var speedType: SpeedType? = null
 
-    private val speed get() = speedInput?.text?.toString().orEmpty().trim()
-
-    private enum class SpeedType {
-        SIGN, ZONE, ADVISORY, NO_SIGN
-    }
+    private val speedUnits get() = countryInfo.speedUnits.map { it.toSpeedMeasurementUnit() }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -56,7 +55,7 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
     }
 
     override fun onClickOk() {
-        if (speedType == SpeedType.NO_SIGN) {
+        if (speedType == NO_SIGN) {
             val couldBeSlowZone = countryInfo.isSlowZoneKnown
                     && POSSIBLY_SLOWZONE_ROADS.contains(osmElement!!.tags["highway"])
 
@@ -72,7 +71,7 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
         }
     }
 
-    override fun isFormComplete() = speedType != null && (speedInput == null || speed.isNotEmpty())
+    override fun isFormComplete() = getSpeedFromInput() != null
 
     /* ---------------------------------------- With sign --------------------------------------- */
 
@@ -87,41 +86,30 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
         speedInput?.addTextChangedListener(TextChangedWatcher { checkIsFormComplete() })
 
         speedUnitSelect = rightSideContainer.findViewById(R.id.speedUnitSelect)
-        val measurementUnits = countryInfo.speedUnits
-        speedUnitSelect?.visibility = if (measurementUnits.size == 1) View.GONE else View.VISIBLE
-        speedUnitSelect?.adapter = ArrayAdapter(context!!, R.layout.spinner_item_centered, getSpinnerItems(measurementUnits))
+        speedUnitSelect?.visibility = if (speedUnits.size == 1) View.GONE else View.VISIBLE
+        speedUnitSelect?.adapter = ArrayAdapter(context!!, R.layout.spinner_item_centered, speedUnits)
         speedUnitSelect?.setSelection(0)
 
         checkIsFormComplete()
     }
 
-    private fun getSpinnerItems(units: List<String>) = units.mapNotNull {
-        when(it) {
-            "kilometers per hour" -> "km/h"
-            "miles per hour" -> "mph"
-            else -> null
-        }
-    }
-
     private fun getSpeedType(@IdRes checkedId: Int) = when (checkedId) {
-        R.id.sign -> SpeedType.SIGN
-        R.id.zone -> SpeedType.ZONE
-        R.id.no_sign -> SpeedType.NO_SIGN
+        R.id.sign ->    SIGN
+        R.id.zone ->    ZONE
+        R.id.no_sign -> NO_SIGN
         else -> null
     }
 
     private val SpeedType.layoutResId get() = when (this) {
-        SpeedType.SIGN -> R.layout.quest_maxspeed_sign
-        SpeedType.ZONE -> R.layout.quest_maxspeed_zone_sign
-        SpeedType.ADVISORY -> R.layout.quest_maxspeed_advisory
+        SIGN ->     R.layout.quest_maxspeed_sign
+        ZONE ->     R.layout.quest_maxspeed_zone_sign
+        ADVISORY -> R.layout.quest_maxspeed_advisory
         else -> null
     }
 
     private fun userSelectedUnusualSpeed(): Boolean {
-        val speed = speed.toInt()
-        val speedUnit = speedUnitSelect?.selectedItem as String?
-        val speedInKmh = if (speedUnit == "mph") mphToKmh(speed.toDouble()) else speed.toDouble()
-        return speedInKmh > 140 || speed > 20 && speed % 5 != 0
+        val kmh = getSpeedFromInput()?.toKmh() ?: return false
+        return kmh > 140 || kmh > 20 && kmh % 5 != 0
     }
 
     private fun switchToAdvisorySpeedLimit() {
@@ -129,38 +117,35 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
         for (i in 0 until speedTypeSelect.childCount) {
             speedTypeSelect.getChildAt(i).isEnabled = false
         }
-        setSpeedType(SpeedType.ADVISORY)
+        setSpeedType(ADVISORY)
     }
 
     private fun confirmUnusualInput(onConfirmed: () -> Unit) {
-        activity?.let {
-            AlertDialog.Builder(it)
-                .setTitle(R.string.quest_generic_confirmation_title)
-                .setMessage(R.string.quest_maxspeed_unusualInput_confirmation_description)
-                .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> onConfirmed() }
-                .setNegativeButton(R.string.quest_generic_confirmation_no, null)
-                .show()
+        activity?.let { AlertDialog.Builder(it)
+            .setTitle(R.string.quest_generic_confirmation_title)
+            .setMessage(R.string.quest_maxspeed_unusualInput_confirmation_description)
+            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> onConfirmed() }
+            .setNegativeButton(R.string.quest_generic_confirmation_no, null)
+            .show()
         }
     }
 
     private fun applySpeedLimitFormAnswer() {
-        val speed = speed.toInt()
-        var speedStr = speed.toString()
-
-        // km/h is the OSM default, is not mentioned
-        val speedUnit = speedUnitSelect!!.selectedItem as String
-        if (speedUnit != "km/h") {
-            speedStr += " $speedUnit"
+        val speed = getSpeedFromInput()!!
+        when (speedType) {
+            ADVISORY -> applyAnswer(AdvisorySpeedSign(speed))
+            ZONE ->     applyAnswer(MaxSpeedZone(speed, countryInfo.countryCode, "zone${speed.toValue()}"))
+            SIGN ->     applyAnswer(MaxSpeedSign(speed))
+            else ->     throw IllegalStateException()
         }
+    }
 
-        if (speedType == SpeedType.ADVISORY) {
-            applyAnswer(AdvisorySpeedSign(speedStr))
-        } else if(speedType == SpeedType.ZONE) {
-            applyAnswer(MaxSpeedZone(speedStr, countryInfo.countryCode, "zone$speed"))
-        } else if(speedType == SpeedType.SIGN) {
-            applyAnswer(MaxSpeedSign(speedStr))
-        } else {
-            throw IllegalStateException()
+    private fun getSpeedFromInput(): SpeedMeasure? {
+        val value = speedInput?.numberOrNull?.toInt() ?: return null
+        val unit = speedUnitSelect?.selectedItem as SpeedMeasurementUnit? ?: speedUnits.first()
+        return when(unit) {
+            KILOMETERS_PER_HOUR -> Kmh(value)
+            MILES_PER_HOUR -> Mph(value)
         }
     }
 
@@ -280,7 +265,9 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
         private val POSSIBLY_SLOWZONE_ROADS = listOf("residential", "unclassified", "tertiary" /*#1133*/)
         private val MAYBE_LIVING_STREET = listOf("residential", "unclassified")
         private val ROADS_WITH_DEFINITE_SPEED_LIMIT = listOf("trunk", "motorway", "living_street")
-
-        private fun mphToKmh(mph: Double) = 1.60934 * mph
     }
+}
+
+private enum class SpeedType {
+    SIGN, ZONE, ADVISORY, NO_SIGN
 }

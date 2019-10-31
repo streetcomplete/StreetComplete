@@ -18,9 +18,7 @@ import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.util.TextChangedWatcher
 
-import de.westnordost.streetcomplete.quests.max_height.Measurement.*
-
-private enum class Measurement { METER, IMPERIAL_FOOT_AND_INCH }
+import de.westnordost.streetcomplete.quests.max_height.HeightMeasurementUnit.*
 
 class AddMaxHeightForm : AbstractQuestFormAnswerFragment<MaxHeightAnswer>() {
 
@@ -32,22 +30,21 @@ class AddMaxHeightForm : AbstractQuestFormAnswerFragment<MaxHeightAnswer>() {
     private var feetInput: EditText? = null
     private var inchInput: EditText? = null
     private var heightUnitSelect: Spinner? = null
-
     private var meterInputSign: View? = null
     private var feetInputSign: View? = null
+
+    private val heightUnits get() = countryInfo.lengthUnits.map { it.toHeightMeasurementUnit() }
 
     override fun isFormComplete() = getHeightFromInput() != null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = super.onCreateView(inflater, container, savedInstanceState)
 
-        val unit = if (countryInfo.lengthUnits[0] == "meter") METER else IMPERIAL_FOOT_AND_INCH
-        setMaxHeightSignLayout(R.layout.quest_maxheight, unit)
-
+        setMaxHeightSignLayout(R.layout.quest_maxheight, heightUnits.first())
         return view
     }
 
-    private fun setMaxHeightSignLayout(resourceId: Int, unit: Measurement) {
+    private fun setMaxHeightSignLayout(resourceId: Int, unit: HeightMeasurementUnit) {
         val contentView = setContentView(resourceId)
 
         meterInput = contentView.findViewById(R.id.meterInput)
@@ -63,14 +60,12 @@ class AddMaxHeightForm : AbstractQuestFormAnswerFragment<MaxHeightAnswer>() {
         feetInputSign = contentView.findViewById(R.id.feetInputSign)
 
         heightUnitSelect = contentView.findViewById(R.id.heightUnitSelect)
-        val measurementUnits = countryInfo.lengthUnits
-        heightUnitSelect?.visibility = if (measurementUnits.size == 1) View.GONE else View.VISIBLE
-        heightUnitSelect?.adapter = ArrayAdapter(context!!, R.layout.spinner_item_centered, getSpinnerItems(measurementUnits))
+        heightUnitSelect?.visibility = if (heightUnits.size == 1) View.GONE else View.VISIBLE
+        heightUnitSelect?.adapter = ArrayAdapter(context!!, R.layout.spinner_item_centered, heightUnits)
         heightUnitSelect?.setSelection(0)
         heightUnitSelect?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parentView: AdapterView<*>, selectedItemView: View?, position: Int, id: Long) {
-                val heightUnit = if (heightUnitSelect?.selectedItem == "m") METER else IMPERIAL_FOOT_AND_INCH
-                switchLayout(heightUnit)
+                switchLayout(heightUnitSelect?.selectedItem as HeightMeasurementUnit)
             }
 
             override fun onNothingSelected(parentView: AdapterView<*>) {}
@@ -80,42 +75,21 @@ class AddMaxHeightForm : AbstractQuestFormAnswerFragment<MaxHeightAnswer>() {
             val destStr = dest.toString()
             val input = destStr.substring(0, dstart) + source.toString() + destStr.substring(dend, destStr.length)
 
-            if(input.isEmpty() || input.toIntOrNull() != null && input.toInt() <= 12) {
-                null
-            } else {
-                ""
-            }
+            if(input.isEmpty() || input.toIntOrNull() != null && input.toInt() <= 12) null else ""
         })
         meterInput?.allowOnlyNumbers()
         switchLayout(unit)
     }
 
-    private fun switchLayout(unit: Measurement) {
+    private fun switchLayout(unit: HeightMeasurementUnit) {
         val isMetric = unit == METER
-        val isImperial = unit == IMPERIAL_FOOT_AND_INCH
+        val isImperial = unit == FOOT_AND_INCH
 
         meterInputSign?.visibility = if (isMetric) View.VISIBLE else View.GONE
         feetInputSign?.visibility = if (isImperial) View.VISIBLE else View.GONE
 
         if (isMetric) meterInput?.requestFocus()
         if (isImperial) feetInput?.requestFocus()
-    }
-
-    private fun getSpinnerItems(units: List<String>) = units.mapNotNull {
-        when(it) {
-            "metric" -> "m"
-            "imperial" -> "ft"
-            else -> null
-        }
-    }
-
-    private fun confirmNoSign() {
-        activity?.let { AlertDialog.Builder(it)
-            .setMessage(R.string.quest_maxheight_answer_noSign_question)
-            .setPositiveButton(R.string.quest_generic_hasFeature_yes) { _, _ ->  applyAnswer(NoMaxHeightSign(true)) }
-            .setNegativeButton(R.string.quest_generic_hasFeature_no) { _, _ -> applyAnswer(NoMaxHeightSign(false)) }
-            .show()
-        }
     }
 
     override fun onClickOk() {
@@ -137,38 +111,38 @@ class AddMaxHeightForm : AbstractQuestFormAnswerFragment<MaxHeightAnswer>() {
     }
 
     private fun getHeightFromInput(): HeightMeasure? {
-        try {
-            if (isMetric()) {
-                val input = meterInput?.numberOrNull
-                if (input != null) return Meters(input.toDouble())
-            } else {
-                val feetString = feetInput?.numberOrNull
-                val inchString = inchInput?.numberOrNull
+        when(heightUnitSelect?.selectedItem as HeightMeasurementUnit? ?: heightUnits.first()) {
+            METER -> {
+                return meterInput?.numberOrNull?.let { Meters(it) }
+            }
+            FOOT_AND_INCH -> {
+                val feet = feetInput?.numberOrNull?.toInt()
+                val inches = inchInput?.numberOrNull?.toInt()
 
-                if (feetString != null && inchString != null) {
-                    return ImperialFeetAndInches(feetString.toInt(), inchString.toInt())
+                if (feet != null && inches != null) {
+                    return ImperialFeetAndInches(feet, inches)
                 }
             }
-        } catch (e: NumberFormatException) {
-            return null
         }
         return null
     }
 
-    private fun isMetric() =
-        heightUnitSelect?.let { it.selectedItem == "m" }
-            ?: (countryInfo.lengthUnits[0] == "meter")
-    // heightUnitSelect will give null for cases where there is a single unit
-    // in such cases there is single unit, so we can use [0] to get it
+    private fun confirmNoSign() {
+        activity?.let { AlertDialog.Builder(it)
+            .setMessage(R.string.quest_maxheight_answer_noSign_question)
+            .setPositiveButton(R.string.quest_generic_hasFeature_yes) { _, _ ->  applyAnswer(NoMaxHeightSign(true)) }
+            .setNegativeButton(R.string.quest_generic_hasFeature_no) { _, _ -> applyAnswer(NoMaxHeightSign(false)) }
+            .show()
+        }
+    }
 
     private fun confirmUnusualInput(callback: () -> (Unit)) {
-        activity?.let {
-            AlertDialog.Builder(it)
-                .setTitle(R.string.quest_generic_confirmation_title)
-                .setMessage(R.string.quest_maxheight_unusualInput_confirmation_description)
-                .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> callback() }
-                .setNegativeButton(R.string.quest_generic_confirmation_no, null)
-                .show()
+        activity?.let { AlertDialog.Builder(it)
+            .setTitle(R.string.quest_generic_confirmation_title)
+            .setMessage(R.string.quest_maxheight_unusualInput_confirmation_description)
+            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> callback() }
+            .setNegativeButton(R.string.quest_generic_confirmation_no, null)
+            .show()
         }
     }
 }
