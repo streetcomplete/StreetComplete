@@ -626,8 +626,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_maxweight_title">"What is the weight limit here?"</string>
     <string name="quest_maxweight_answer_noSign">There is no sign</string>
     <string name="quest_maxweight_unusualInput_confirmation_description">This weight looks implausible. Are you sure that it is correct?</string>
-    <string name="quest_maxweight_answer_other_sign">Other weight limit sign…</string>
-    <string name="quest_maxweight_answer_sign_with_exceptions">It depends…</string>
+    <string name="quest_maxweight_answer_other_sign">Sign looks different…</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">Would you like to leave a note? A note with a photo will enable other mappers to take care of it.</string>
     <string name="quest_tracktype_title">What is the surface firmness of this track?</string>
     <string name="quest_tracktype_grade1">Solid</string>
