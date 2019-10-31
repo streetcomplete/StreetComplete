@@ -29,23 +29,6 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
             OtherAnswer(R.string.quest_maxweight_answer_noSign) { confirmNoSign() }
     )
 
-    private fun onUnsupportedSign() {
-        AlertDialog.Builder(activity!!)
-                .setMessage(R.string.quest_maxweight_unsupported_sign_request_photo)
-                .setPositiveButton(android.R.string.ok) { _, _ -> onClickCantSay() }
-                .setNegativeButton(R.string.quest_leave_new_note_no) { _, _ -> skipQuest() }
-                .show()
-
-    }
-
-    private fun confirmNoSign() {
-        AlertDialog.Builder(activity!!)
-                .setTitle(R.string.quest_generic_confirmation_title)
-                .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> applyAnswer(NoMaxWeightSign) }
-                .setNegativeButton(R.string.quest_generic_confirmation_no, null)
-                .show()
-    }
-
     private var tonInput: EditText? = null
     private var poundInput: EditText? = null
     private var weightUnitSelect: Spinner? = null
@@ -185,14 +168,31 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
                     ?: (countryInfo.unitsOfWeightLimits[0] == "pound")
     // see comment in the isTon function
 
+    private fun onUnsupportedSign() {
+        activity?.let { AlertDialog.Builder(it)
+            .setMessage(R.string.quest_maxweight_unsupported_sign_request_photo)
+            .setPositiveButton(android.R.string.ok) { _, _ -> onClickCantSay() }
+            .setNegativeButton(R.string.quest_leave_new_note_no) { _, _ -> skipQuest() }
+            .show()
+        }
+    }
+
+    private fun confirmNoSign() {
+        activity?.let { AlertDialog.Builder(it)
+            .setTitle(R.string.quest_generic_confirmation_title)
+            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> applyAnswer(NoMaxWeightSign) }
+            .setNegativeButton(R.string.quest_generic_confirmation_no, null)
+            .show()
+        }
+    }
+
     private fun confirmUnusualInput(callback: () -> (Unit)) {
-        activity?.let {
-            AlertDialog.Builder(it)
-                .setTitle(R.string.quest_generic_confirmation_title)
-                .setMessage(R.string.quest_maxweight_unusualInput_confirmation_description)
-                .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> callback() }
-                .setNegativeButton(R.string.quest_generic_confirmation_no, null)
-                .show()
+        activity?.let { AlertDialog.Builder(it)
+            .setTitle(R.string.quest_generic_confirmation_title)
+            .setMessage(R.string.quest_maxweight_unusualInput_confirmation_description)
+            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> callback() }
+            .setNegativeButton(R.string.quest_generic_confirmation_no, null)
+            .show()
         }
     }
 }
