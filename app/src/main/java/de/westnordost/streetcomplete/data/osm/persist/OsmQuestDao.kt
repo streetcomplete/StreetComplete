@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.persist
 
 import android.database.Cursor
+import android.database.sqlite.SQLiteDatabase.CONFLICT_IGNORE
 import android.database.sqlite.SQLiteOpenHelper
 import androidx.core.content.contentValuesOf
 
@@ -57,7 +58,7 @@ class OsmQuestDao @Inject constructor(
         db.transaction {
             for (quest in quests) {
                 quest.lastUpdate = Date()
-                val rowId = db.insert(NAME, null, mapping.toContentValues(quest))
+                val rowId = db.insertWithOnConflict(NAME, null, mapping.toContentValues(quest), CONFLICT_IGNORE)
                 if (rowId != -1L) {
                     quest.id = rowId
                     addedRows++
