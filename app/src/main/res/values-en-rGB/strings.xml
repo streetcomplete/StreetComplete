@@ -346,7 +346,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_crossing_type_unmarked">"Crossing without road markings"</string>
     <string name="compass_north_one_letter">"N"</string>
     <string name="action_undo">"Undo"</string>
-    <string name="no_changes_to_undo">"Nothing to undo"</string>
     <string name="undo_confirm_title">"Undo the following last answer?"</string>
     <string name="produce_mangosteen">"Mangosteen"</string>
     <string name="produce_tomatoes">"Tomatoes"</string>
@@ -369,6 +368,8 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_buildingLevels_roofLevelsLabel2">"levels in the roof"</string>
     <string name="quest_buildingLevels_levelsLabel2">"regular levels (not counting the roof)"</string>
     <string name="pref_title_authorized_summary">"Authorised"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingLevels_answer_multipleLevels">"Differs per building part"</string>
     <string name="quest_buildingLevels_answer_description">"In this case, simply input the values of the highest building part."</string>
     <string name="unglue_hint">"Tap to unglue view from position"</string>
@@ -581,4 +582,6 @@ For instance 1,3 or 2-6."</string>
     <string name="quest_leaf_type_needles">"Needles"</string>
     <string name="quest_footwayPartSurface_title">"What's the surface of the footway here?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title">"Is the toilet at %s wheelchair accessible?"</string>
+    <string name="quest_tactilePaving_title_tram">"Does this tram stop have tactile pavings?"</string>
+    <string name="quest_tactilePaving_title_name_tram">"Does the tram stop %s have tactile pavings?"</string>
 </resources>

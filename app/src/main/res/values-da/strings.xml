@@ -368,7 +368,6 @@ Ellers kan du downloade et andet keyboard i Forretning. Populære keyboards der 
     <string name="quest_crossing_type_unmarked">"Overgang uden markering på vejen"</string>
     <string name="compass_north_one_letter">"N"</string>
     <string name="action_undo">"Fortryd"</string>
-    <string name="no_changes_to_undo">"Intet at fortryde"</string>
     <string name="undo_confirm_title">"Fortryd følgende sidste svar?"</string>
     <string name="produce_mangosteen">"Mangostan"</string>
     <string name="produce_tomatoes">"Tomater"</string>
@@ -391,6 +390,8 @@ Ellers kan du downloade et andet keyboard i Forretning. Populære keyboards der 
     <string name="quest_buildingLevels_roofLevelsLabel2">"etager i taget"</string>
     <string name="quest_buildingLevels_levelsLabel2">"normale etager (eksl. taget)"</string>
     <string name="pref_title_authorized_summary">"Godkendt"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingLevels_answer_multipleLevels">"forskellig per bygningsdel"</string>
     <string name="quest_buildingLevels_answer_description">"I dette tilfælde skal værdien for den højeste bygningsdel angives."</string>
     <string name="unglue_hint">"Tryk for at frigøre skærm fra position"</string>

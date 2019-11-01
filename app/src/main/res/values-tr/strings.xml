@@ -12,7 +12,7 @@
     <string name="pref_title_authorization">"OSM erişimine izin ver"</string>
     <string name="pref_title_not_authorized_summary">"Henüz yetkili değil"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
-    <string name="pref_tilecache_size_message">"Harici depolama biriminde önbellek harita fayanslarına ayrılmış megabaytlık alan"</string>
+    <string name="pref_tilecache_size_message">"Harita döşemelerini önbelleğe almak için harici depolamaya ayrılan megabayt alan"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Tüm notları göster"</string>
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Sorularla ifade edilmeyen notları da gösteriliyor"</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Sorularla ifade edilmeyen notları yoksayma"</string>
@@ -22,11 +22,11 @@
     <string name="map_attribution_osm">"© OpenStreetMap katkıda bulunan kullanıcılar"</string>
     <string name="quest_generic_otherAnswers">"Diğer cevaplar…"</string>
     <string name="quest_generic_answer_notApplicable">"Söyleyemem…"</string>
-    <string name="quest_generic_confirmation_title">"Emin misiniz?"</string>
+    <string name="quest_generic_confirmation_title">"Emin misin?"</string>
     <string name="quest_generic_confirmation_yes">"Evet eminim"</string>
     <string name="quest_generic_confirmation_no">"Kontrol edeceğim"</string>
     <string name="quest_generic_error_field_empty">"Bu alanı boş bıraktın"</string>
-    <string name="quest_leave_new_note_title">"Bunun yerine bir not bırakmak mı?"</string>
+    <string name="quest_leave_new_note_title">"Bunun yerine bir not bırakın?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_leave_new_note_description">"Diğer haritacıların yorum yapabileceği ve umarım çözeceği bu konuma ortak bir not bırakabilirsiniz:"</string>
@@ -389,7 +389,6 @@ Aksi takdirde, uygulama mağazasında başka bir klavye indirebilirsiniz. Birço
     <string name="quest_crossing_type_unmarked">"Yol işaretleri olmayan geçiş"</string>
     <string name="compass_north_one_letter">"K"</string>
     <string name="action_undo">"Geri al"</string>
-    <string name="no_changes_to_undo">"Geri alınacak bir şey yok"</string>
     <string name="undo_confirm_title">"Son cevabı geri almak istiyor musun?"</string>
     <string name="produce_mangosteen">"Mangostan"</string>
     <string name="produce_tomatoes">"Domates"</string>
@@ -412,6 +411,8 @@ Aksi takdirde, uygulama mağazasında başka bir klavye indirebilirsiniz. Birço
     <string name="quest_buildingLevels_roofLevelsLabel2">"Çatı katı sayısı"</string>
     <string name="quest_buildingLevels_levelsLabel2">"Kat sayısı (çatı katı hariç)"</string>
     <string name="pref_title_authorized_summary">"İzin verildi"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingLevels_answer_multipleLevels">"Binanın bölümüne göre değişiyor"</string>
     <string name="quest_buildingLevels_answer_description">"Bu durumda en yüksek bölümün değerlerini girin"</string>
     <string name="unglue_hint">"Görüntüyü konumdan ayırmak için dokun"</string>

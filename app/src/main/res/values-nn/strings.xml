@@ -99,7 +99,6 @@
     <string name="quest_roofShape_select_one">"Vel éi:"</string>
     <string name="quest_roofShape_show_more">"Vel fleire …"</string>
     <string name="quest_roofShape_answer_many">"Det har fleire ulike former"</string>
-    <string name="pref_category_cache">"Mellomlager"</string>
     <string name="pref_title_sync">"Automatisk synkronisering"</string>
     <string name="map_btn_zoom_out">"Zoom ut"</string>
     <string name="map_btn_zoom_in">"Zoom inn"</string>
@@ -327,7 +326,6 @@ Elles kan du lasta ned eit anna tastatur i appbutikken. Mykje brukte tastatur so
     <string name="quest_crossing_type_unmarked">"Overgang utan vegmarkering"</string>
     <string name="compass_north_one_letter">"N"</string>
     <string name="action_undo">"Angra"</string>
-    <string name="no_changes_to_undo">"Ingenting å angra"</string>
     <string name="undo_confirm_title">"Vil du angra det siste svaret ditt?"</string>
     <string name="produce_mangosteen">"Mangostan"</string>
     <string name="produce_tomatoes">"Tomatar"</string>
@@ -350,6 +348,8 @@ Elles kan du lasta ned eit anna tastatur i appbutikken. Mykje brukte tastatur so
     <string name="quest_buildingLevels_roofLevelsLabel2">"taketasjar"</string>
     <string name="quest_buildingLevels_levelsLabel2">"vanlege etasjar (utanom taketasjar)"</string>
     <string name="pref_title_authorized_summary">"Godkjend"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingLevels_answer_multipleLevels">"forskjellig for ulike bygningsdelar"</string>
     <string name="quest_buildingLevels_answer_description">"Skriv i så fall inn talet på etasjar til den høgaste bygningsdelen."</string>
     <string name="unglue_hint">"Trykk for å løysa visinga frå gjeldande posisjon"</string>

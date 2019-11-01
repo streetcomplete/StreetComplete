@@ -294,7 +294,6 @@ Podatki, ki jih vnesete tu, bodo dodani v OpenStreetMap v vašem imenu, brez pot
     <string name="quest_crossing_type_unmarked">"Brez oznak na cestišču"</string>
     <string name="compass_north_one_letter">"S"</string>
     <string name="action_undo">"Razveljavi"</string>
-    <string name="no_changes_to_undo">"Ni česa razveljaviti"</string>
     <string name="produce_tomatoes">"Paradižnik"</string>
     <string name="produce_sweet_peppers">"Sladka paprika"</string>
     <string name="produce_brazil_nuts">"Brazilski oreščki"</string>
@@ -313,6 +312,8 @@ Podatki, ki jih vnesete tu, bodo dodani v OpenStreetMap v vašem imenu, brez pot
     <string name="quest_buildingLevels_roofLevelsLabel2">"Nadstropij v podstrešju"</string>
     <string name="quest_buildingLevels_levelsLabel2">"Običajnih nadstropij (ne podstrešnih)"</string>
     <string name="pref_title_authorized_summary">"Pooblaščen"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingLevels_answer_multipleLevels">"Različno glede na del stavbe"</string>
     <string name="unglue_hint">"Tapnite, da pogled odpnete od trenutne lokacije"</string>
     <string name="pref_title_not_authorized_summary2">"Za pooblastilo se prijavite preko spletnega brskalnika"</string>
@@ -463,7 +464,13 @@ Na primer 1,3 ali 2-6."</string>
     <string name="quest_building_underground_title">"Ali je ta zgradba v celoti pod zemljo?"</string>
     <string name="quest_traffic_signals_sound_title">"Ali so tu zvočni signali za slepe?"</string>
     <string name="quest_sidewalk_value_yes">"pločnik"</string>
+    <string name="quest_sidewalk_value_no">"brez pločnika"</string>
     <string name="quest_buildingType_title">"Kakšne vrste zgradba je to?"</string>
+    <string name="pref_title_theme_select">"Izberi témo"</string>
+    <string name="theme_automatic">"Samodejna"</string>
+    <string name="theme_light">"Svetla"</string>
+    <string name="theme_dark">"Temna"</string>
+    <string name="theme_system_default">"Sistemsko privzeta"</string>
     <string name="label_housenumber">"hišna številka"</string>
     <string name="quest_busStopShelter_covered">"Celotno postajališče je pokrito"</string>
 </resources>

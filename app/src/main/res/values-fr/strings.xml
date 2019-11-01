@@ -380,7 +380,6 @@ Sinon, vous pouvez télécharger un autre clavier dans la boutique d’applicati
 
     <!-- "Confirmer" (EN:Confirm)? Even if it is a general word, have you an example please? -->
     <string name="action_undo">"Confirmer"</string>
-    <string name="no_changes_to_undo">"Rien à annuler"</string>
     <string name="undo_confirm_title">"Annuler la dernière réponse ?"</string>
     <string name="produce_mangosteen">"Mangoustan"</string>
     <string name="produce_tomatoes">"Tomates"</string>
@@ -403,6 +402,8 @@ Sinon, vous pouvez télécharger un autre clavier dans la boutique d’applicati
     <string name="quest_buildingLevels_roofLevelsLabel2">"Niveaux dans le toit"</string>
     <string name="quest_buildingLevels_levelsLabel2">"Niveaux (sans compter ceux du toit)"</string>
     <string name="pref_title_authorized_summary">"Autorisé"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingLevels_answer_multipleLevels">"diffère selon la partie du bâtiment"</string>
     <string name="quest_buildingLevels_answer_description">"Dans ce cas, entrez simplement les valeurs de la partie du bâtiment la plus grande."</string>
     <string name="unglue_hint">"Appuyer pour ne plus fixer la vue sur la position"</string>
@@ -421,8 +422,8 @@ Sinon, vous pouvez télécharger un autre clavier dans la boutique d’applicati
     <string name="quest_cycleway_value_bus_lane">"sur la voie de bus"</string>
     <string name="quest_cycleway_value_sidewalk">"trottoir partagé"</string>
     <string name="quest_leave_new_note_create_image_error">"Impossible de créer un fichier pour cette photo"</string>
-    <string name="quest_cycleway_value_lane_dual">"bande cyclable (sur la route) dans les 2 sens"</string>
-    <string name="quest_cycleway_value_track_dual">"piste cyclable, dans les 2 sens"</string>
+    <string name="quest_cycleway_value_lane_dual">"bande cyclable (sur la route) dans les deux sens"</string>
+    <string name="quest_cycleway_value_track_dual">"piste cyclable, dans les deux sens"</string>
     <string name="quest_cycleway_value_sidewalk_allowed">"aucune, mais les cyclistes sont admis sur le trottoir"</string>
     <string name="pref_category_advanced">"Avancée"</string>
     <string name="pref_title_quests">"Sélection de quête"</string>
@@ -697,7 +698,7 @@ Partiellement signifie qu’un fauteuil roulant peut entrer et utiliser les toil
     <string name="quest_sidewalk_value_yes">"trottoir"</string>
     <string name="quest_sidewalk_value_no">"pas de trottoir"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Cette voie est-elle interdite aux piétons ?"</string>
-    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Cette rue a été notée en tant que ne possédant pas de trottoirs sur aucun des cotés. Dans le cas qu’il y aurait un trottoir mais qu’il soit indiqué comme une direction séparée, veuillez répondre ¨trottoir¨."</string>
+    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Cette rue a été notée comme ne possédant pas de trottoirs sur aucun des cotés. Dans le cas où il y aurait un trottoir mais qu’il est indiqué sur la carte comme étant une voie séparée, veuillez répondre « trottoir »."</string>
     <string name="quest_buildingType_title">"Quel est le type de cet édifice ?"</string>
     <string name="pref_title_theme_select">"Sélectionner un thème"</string>
     <string name="theme_automatic">"Automatique"</string>
@@ -741,9 +742,12 @@ Partiellement signifie qu’un fauteuil roulant peut entrer et utiliser les toil
     <string name="quest_generic_answer_differs_along_the_way">"diffère en cours de route"</string>
     <string name="quest_split_way_description">"Si cela diffère en cours de route, la première étape consiste à diviser le chemin. Ensuite, vous pouvez répondre à la quête séparément pour chaque partie séparée.
 Notez que les quêtes pour les parties scindées peuvent apparaître beaucoup plus tard.
-Le séparer maintenant?"</string>
-    <string name="quest_split_way_tutorial">"Cliquez sur le chemin au (x) point (s) où la réponse diffère. Essayez d'être aussi précis que possible, vous pouvez zoomer comme d'habitude."</string>
+Le séparer maintenant ?"</string>
+    <string name="quest_split_way_tutorial">"Cliquez sur le chemin au(x) point(s) où la réponse diffère. Essayez d'être aussi précis que possible, vous pouvez zoomer comme d'habitude."</string>
     <string name="quest_split_way_too_imprecise">"Veuillez zoomer davantage"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_split_way_many_splits_confirmation_description">"Il y a beaucoup de divisions. Vous pourrez toujours rediviser le chemin plus tard."</string>
     <string name="quest_footwayPartSurface_title">"Quelle est la surface du chemin piéton ici?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title">"Est-ce que les toilettes de %s sont accessibles aux fauteuils roulants ?"</string>
 </resources>
