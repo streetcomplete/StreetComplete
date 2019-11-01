@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.data.osmnotes
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.data.osm.ElementKey
 
-// TODO immutable list?
 data class CreateNote(
     var id: Long?,
     val text: String,
