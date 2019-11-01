@@ -25,11 +25,11 @@ class QuestChangesUploadService : IntentService(TAG) {
 
     /** Public interface to classes that are bound to this service  */
     inner class Interface : Binder() {
-        fun setProgressListener(listener: QuestChangesUploadProgressListener) {
+        fun setProgressListener(listener: QuestChangesUploadProgressListener?) {
             progressListener = listener
         }
 
-        fun setQuestListener(listener: VisibleQuestListener) {
+        fun setQuestListener(listener: VisibleQuestListener?) {
             visibleQuestRelay.listener = listener
         }
     }
