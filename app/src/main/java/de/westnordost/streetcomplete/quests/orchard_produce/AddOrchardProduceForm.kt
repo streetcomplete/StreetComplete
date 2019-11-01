@@ -4,7 +4,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
 import de.westnordost.streetcomplete.view.Item
 
-class AddOrchardProduceForm : AImageListQuestAnswerFragment<String, String>() {
+class AddOrchardProduceForm : AImageListQuestAnswerFragment<String, List<String>>() {
 
     private val produces = listOf(
         // ordered alphabetically here for overview. Produces are filtered and sorted by what is
@@ -69,15 +69,16 @@ class AddOrchardProduceForm : AImageListQuestAnswerFragment<String, String>() {
         Item("vanilla",       R.drawable.produce_vanilla,     R.string.produce_vanilla),
         Item("walnut",        R.drawable.produce_walnut,      R.string.produce_walnuts)
     )
-    private val producesMap = produces.associate { it.value to it }
+    private val producesMap = produces.associateBy { it.value }
 
     // only include what is given for that country
     override val items get() = countryInfo.orchardProduces.mapNotNull { producesMap[it] }
 
     override val itemsPerRow = 3
     override val maxNumberOfInitiallyShownItems = -1
+    override val maxSelectableItems = -1
 
     override fun onClickOk(selectedItems: List<String>) {
-        applyAnswer(selectedItems.single())
+        applyAnswer(selectedItems)
     }
 }

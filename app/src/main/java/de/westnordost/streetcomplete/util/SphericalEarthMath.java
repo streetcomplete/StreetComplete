@@ -144,6 +144,34 @@ public class SphericalEarthMath
 	}
 
 	/**
+	 * @return the shortest distance of a polyline and a point, in meters
+	 */
+	public static double crossTrackDistance(List<LatLon> polyLine, LatLon point)
+	{
+		if(polyLine.isEmpty()) throw new IllegalArgumentException("Polyline must not be empty");
+		if(polyLine.size() == 1) return distance(polyLine.get(0), point);
+
+		double px = toRadians(point.getLongitude());
+		double py = toRadians(point.getLatitude());
+
+		double shortestDistance = Double.MAX_VALUE;
+		Iterator<LatLon> it = polyLine.iterator();
+		LatLon p0 = it.next(), p1;
+		while(it.hasNext())
+		{
+			p1 = it.next();
+			double distance = crossTrackDistance(
+				toRadians(p0.getLatitude()), toRadians(p0.getLongitude()),
+				toRadians(p1.getLatitude()), toRadians(p1.getLongitude()),
+				py, px
+			);
+			if (distance < shortestDistance) shortestDistance = distance;
+			p0 = p1;
+		}
+		return shortestDistance;
+	}
+
+	/**
 	 * @return distance covered by the given polyline
 	 */
 	public static double distance(List<LatLon> positions)

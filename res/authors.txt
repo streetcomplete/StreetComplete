@@ -187,6 +187,8 @@ religion_icons.svg
     chinese                      https://commons.wikimedia.org/wiki/File:Chinese_lu_symbol_-_%E7%A6%84.svg
     caodai
 
+scissors.svg
+
 slow_zone.svg
 
 slow_zone_us.svg

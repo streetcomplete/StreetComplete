@@ -131,6 +131,44 @@ class SphericalEarthMathTest {
         assertEquals(distance(start, intersect), alongTrackDistance(start, end, point), 0.01)
     }
 
+    @Test fun `distance to single position`() {
+        val point = OsmLatLon(0.01, 0.0)
+        val intersect = OsmLatLon(0.0, 0.0)
+        assertEquals(
+            distance(intersect, point),
+            crossTrackDistance(listOf(intersect), point),
+            0.01
+        )
+    }
+
+    @Test fun `distance to single arc`() {
+        val start = OsmLatLon(0.0, -0.01)
+        val end = OsmLatLon(0.0, +0.01)
+        val point = OsmLatLon(0.01, 0.0)
+        assertEquals(
+            crossTrackDistance(start, end, point),
+            crossTrackDistance(listOf(start, end), point),
+            0.01
+        )
+    }
+
+    @Test fun `distance to multiple arcs`() {
+        val p0 = OsmLatLon(0.0, -0.01)
+        val p1 = OsmLatLon(0.0, +0.01)
+        val p2 = OsmLatLon(0.0, +0.02)
+        val point = OsmLatLon(0.01, 0.0)
+        assertEquals(
+            crossTrackDistance(p0, p1, point),
+            crossTrackDistance(listOf(p0, p1, p2), point),
+            0.01
+        )
+        assertEquals(
+            crossTrackDistance(p0, p1, point),
+            crossTrackDistance(listOf(p2, p1, p0), point),
+            0.01
+        )
+    }
+
     /* +++++++++++++++++++++++++++++ test creation of bounding boxes ++++++++++++++++++++++++++++ */
 
     @Test fun `enclosingBoundingBox radius`() {

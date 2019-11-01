@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="112dp"
     android:layout_height="112dp"
-    android:background="@drawable/background_maxspeed_sign"
+    android:background="@drawable/background_generic_prohibition_sign"
     android:paddingStart="16dp"
     android:paddingEnd="16dp"
     android:paddingTop="12dp"

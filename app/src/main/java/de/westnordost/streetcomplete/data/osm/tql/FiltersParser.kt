@@ -62,7 +62,7 @@ private fun StringWithCursor.parseElementDeclaration(): ElementsTypeFilter {
 private fun StringWithCursor.parseTags(): BooleanExpression<TagFilter, Tags>? {
     // tags are optional...
     if (!nextIsAndAdvanceIgnoreCase(WITH)) {
-        if (!isAtEnd) {
+        if (!isAtEnd()) {
             throw ParseException("Expected end of string or 'with' keyword", cursorPos)
         }
         return null
@@ -83,7 +83,7 @@ private fun StringWithCursor.parseTags(): BooleanExpression<TagFilter, Tags>? {
         var separated = previousIs(' ')
         separated = separated or parseBrackets(')', builder)
 
-        if (isAtEnd) break
+        if (isAtEnd()) break
 
         // same as with the opening bracket, only that if the string is over, its okay
         if (!separated) {
@@ -205,7 +205,9 @@ private fun StringWithCursor.expectOneOrMoreSpaces(): Int {
 }
 
 private fun StringWithCursor.nextIsReservedWord(): String? {
-    return RESERVED_WORDS.firstOrNull { nextIsIgnoreCase(it) }
+    return RESERVED_WORDS.firstOrNull {
+        nextIsIgnoreCase(it) && (isAtEnd(it.length) || findNext(' ', it.length) == it.length)
+    }
 }
 
 private fun StringWithCursor.findKeyLength(): Int {

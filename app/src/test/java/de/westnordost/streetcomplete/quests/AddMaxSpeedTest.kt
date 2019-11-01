@@ -19,15 +19,23 @@ class AddMaxSpeedTest {
 
     @Test fun `apply sign answer`() {
         questType.verifyAnswer(
-            MaxSpeedSign("123"),
+            MaxSpeedSign(Kmh(123)),
             StringMapEntryAdd("maxspeed", "123"),
+            StringMapEntryAdd("maxspeed:type", "sign")
+        )
+    }
+
+    @Test fun `apply mph sign answer`() {
+        questType.verifyAnswer(
+            MaxSpeedSign(Mph(123)),
+            StringMapEntryAdd("maxspeed", "123 mph"),
             StringMapEntryAdd("maxspeed:type", "sign")
         )
     }
 
     @Test fun `apply advisory sign answer`() {
         questType.verifyAnswer(
-            AdvisorySpeedSign("123"),
+            AdvisorySpeedSign(Kmh(123)),
             StringMapEntryAdd("maxspeed:advisory", "123"),
             StringMapEntryAdd("maxspeed:type:advisory", "sign")
         )
@@ -35,7 +43,7 @@ class AddMaxSpeedTest {
 
     @Test fun `apply zone sign answer`() {
         questType.verifyAnswer(
-            MaxSpeedZone("123", "AA", "zoneXYZ"),
+            MaxSpeedZone(Kmh(123), "AA", "zoneXYZ"),
             StringMapEntryAdd("maxspeed", "123"),
             StringMapEntryAdd("maxspeed:type", "AA:zoneXYZ")
         )

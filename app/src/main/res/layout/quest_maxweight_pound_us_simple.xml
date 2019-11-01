@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="100dp"
+    android:layout_height="wrap_content"
+    android:padding="12dp"
+    android:background="@drawable/background_rectangular_sign_white"
+    android:gravity="center">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="WEIGHT LIMIT"
+        android:textStyle="bold"
+        android:textSize="18dp"
+        android:gravity="center"
+        android:textColor="@color/traffic_black"
+        tools:ignore="HardcodedText"/>
+
+    <EditText
+        android:id="@+id/poundInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="#0fff"
+        android:inputType="number"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textColor="@color/traffic_black"
+        android:maxLength="5"
+        android:textSize="22dp"
+        tools:text="10000"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="POUNDS"
+        android:textStyle="bold"
+        android:textSize="18dp"
+        android:gravity="center"
+        android:textColor="@color/traffic_black"
+        tools:ignore="HardcodedText"/>
+</LinearLayout>
