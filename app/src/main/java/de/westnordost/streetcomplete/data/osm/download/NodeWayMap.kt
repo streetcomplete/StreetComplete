@@ -23,9 +23,9 @@ class NodeWayMap<T>(ways: List<List<T>>) {
 
     fun hasNextNode(): Boolean = wayEndpoints.isNotEmpty()
 
-	fun getNextNode(): T = wayEndpoints.keys.iterator().next()
+    fun getNextNode(): T = wayEndpoints.keys.iterator().next()
 
-	fun getWaysAtNode(node: T): List<List<T>>? = wayEndpoints[node]
+    fun getWaysAtNode(node: T): List<List<T>>? = wayEndpoints[node]
 
     fun removeWay(way: List<T>) {
         val it = wayEndpoints.values.iterator()

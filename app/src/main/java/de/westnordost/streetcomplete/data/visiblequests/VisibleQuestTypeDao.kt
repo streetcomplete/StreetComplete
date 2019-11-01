@@ -17,16 +17,16 @@ class VisibleQuestTypeDao @Inject constructor(private val dbHelper: SQLiteOpenHe
 
     private val cache: MutableMap<String, Boolean> by lazy { loadQuestTypeVisibilities() }
 
-	private val db get() = dbHelper.writableDatabase
+    private val db get() = dbHelper.writableDatabase
 
     private fun loadQuestTypeVisibilities(): MutableMap<String, Boolean> {
         val result = mutableMapOf<String,Boolean>()
-	    db.query(NAME) { cursor ->
-		    val questTypeName = cursor.getString(QUEST_TYPE)
-		    val visible = cursor.getInt(VISIBILITY) != 0
-		    result[questTypeName] = visible
-	    }
-	    return result
+        db.query(NAME) { cursor ->
+            val questTypeName = cursor.getString(QUEST_TYPE)
+            val visible = cursor.getInt(VISIBILITY) != 0
+            result[questTypeName] = visible
+        }
+        return result
     }
 
     @Synchronized fun isVisible(questType: QuestType<*>): Boolean {
@@ -36,15 +36,15 @@ class VisibleQuestTypeDao @Inject constructor(private val dbHelper: SQLiteOpenHe
 
     @Synchronized fun setVisible(questType: QuestType<*>, visible: Boolean) {
         val questTypeName = questType.javaClass.simpleName
-	    db.replaceOrThrow(NAME, null, contentValuesOf(
-		    QUEST_TYPE to questTypeName,
-		    VISIBILITY to if (visible) 1 else 0
-	    ))
-	    cache[questTypeName] = visible
+        db.replaceOrThrow(NAME, null, contentValuesOf(
+            QUEST_TYPE to questTypeName,
+            VISIBILITY to if (visible) 1 else 0
+        ))
+        cache[questTypeName] = visible
     }
 
     @Synchronized fun clear() {
-	    db.delete(NAME, null, null)
+        db.delete(NAME, null, null)
         cache.clear()
     }
 }

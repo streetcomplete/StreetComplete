@@ -41,8 +41,8 @@ class ElementGeometryDaoTest : ApplicationDbTestCase() {
     @Test fun putAll() {
         val geometry = createSimpleGeometry()
         dao.putAll(listOf(
-	        ElementGeometryEntry(Element.Type.NODE, 1, geometry),
-		    ElementGeometryEntry(Element.Type.WAY, 2, geometry)
+            ElementGeometryEntry(Element.Type.NODE, 1, geometry),
+            ElementGeometryEntry(Element.Type.WAY, 2, geometry)
         ))
 
         assertNotNull(dao.get(Element.Type.WAY, 2))
@@ -58,7 +58,7 @@ class ElementGeometryDaoTest : ApplicationDbTestCase() {
     }
 
     @Test fun polylineGeometryPutGet() {
-	    val polylines = arrayListOf(createSomeLatLons(0.0))
+        val polylines = arrayListOf(createSomeLatLons(0.0))
         val geometry = ElementPolylinesGeometry(polylines, OsmLatLon(1.0, 2.0))
         dao.put(ElementGeometryEntry(Element.Type.WAY, 0, geometry))
         val dbGeometry = dao.get(Element.Type.WAY, 0)
@@ -93,8 +93,8 @@ class ElementGeometryDaoTest : ApplicationDbTestCase() {
         dao.put(ElementGeometryEntry(type, id, geometry))
         val questType = mock(OsmElementQuestType::class.java)
         val osmQuestMapping = OsmQuestMapping(serializer, QuestTypeRegistry(listOf(questType)), elementGeometryMapping)
-	    val questDao = OsmQuestDao(dbHelper, osmQuestMapping)
-	    questDao.add(OsmQuest(questType, type, id, geometry))
+        val questDao = OsmQuestDao(dbHelper, osmQuestMapping)
+        questDao.add(OsmQuest(questType, type, id, geometry))
         assertEquals(0, dao.deleteUnreferenced())
     }
 

@@ -23,33 +23,33 @@ class CreditsFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_credits, container, false)
 
-	    val contributorCredits = view.findViewById<LinearLayout>(R.id.contributorCredits)
+        val contributorCredits = view.findViewById<LinearLayout>(R.id.contributorCredits)
         for (contributor in readContributors()) {
             val textView = TextView(activity)
             textView.text = contributor
             contributorCredits.addView(textView, LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT))
         }
 
-	    val translationCredits = view.findViewById<LinearLayout>(R.id.translationCredits)
+        val translationCredits = view.findViewById<LinearLayout>(R.id.translationCredits)
         for (translatorsByLanguage in readTranslators()) {
             val (language, translators) = translatorsByLanguage
             val item = inflater.inflate(R.layout.row_credits_translators, translationCredits, false)
-	        (item.findViewById<View>(R.id.language) as TextView).text = language
-	        (item.findViewById<View>(R.id.contributors) as TextView).text = translators
+            (item.findViewById<View>(R.id.language) as TextView).text = language
+            (item.findViewById<View>(R.id.contributors) as TextView).text = translators
             translationCredits.addView(item)
         }
 
-	    val translationCreditsMore = view.findViewById<TextView>(R.id.translationCreditsMore)
-	    translationCreditsMore.movementMethod = LinkMovementMethod.getInstance()
-	    translationCreditsMore.text = Html.fromHtml(getString(R.string.credits_translations))
-	    val contributorMore = view.findViewById<TextView>(R.id.contributorMore)
-	    contributorMore.movementMethod = LinkMovementMethod.getInstance()
-	    contributorMore.text = Html.fromHtml(getString(R.string.credits_contributors))
+        val translationCreditsMore = view.findViewById<TextView>(R.id.translationCreditsMore)
+        translationCreditsMore.movementMethod = LinkMovementMethod.getInstance()
+        translationCreditsMore.text = Html.fromHtml(getString(R.string.credits_translations))
+        val contributorMore = view.findViewById<TextView>(R.id.contributorMore)
+        contributorMore.movementMethod = LinkMovementMethod.getInstance()
+        contributorMore.text = Html.fromHtml(getString(R.string.credits_contributors))
 
         return view
     }
 
-	override fun onStart() {
+    override fun onStart() {
         super.onStart()
         activity?.setTitle(R.string.about_title_authors)
     }
@@ -66,6 +66,6 @@ class CreditsFragment : Fragment() {
         val inputStream = resources.openRawResource(R.raw.credits_translations)
         val reader = YamlReader(InputStreamReader(inputStream))
         val result = (reader.read() as Map<String, String>).toList()
-	    return result.sortedBy { e -> e.first }
+        return result.sortedBy { e -> e.first }
     }
 }

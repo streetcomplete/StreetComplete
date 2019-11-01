@@ -32,10 +32,10 @@ class ShowQuestFormsActivity : AppCompatActivity(), OsmQuestAnswerListener {
     @Inject internal lateinit var prefs: SharedPreferences
     private val showQuestFormAdapter: ShowQuestFormAdapter = ShowQuestFormAdapter()
 
-	init {
-		Injector.instance.applicationComponent.inject(this)
+    init {
+        Injector.instance.applicationComponent.inject(this)
         showQuestFormAdapter.list = questTypeRegistry.all.toMutableList()
-	}
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

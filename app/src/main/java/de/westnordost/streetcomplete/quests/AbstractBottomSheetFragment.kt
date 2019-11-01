@@ -43,12 +43,12 @@ abstract class AbstractBottomSheetFragment : Fragment(), IsCloseableBottomSheet 
 
         val titleSpeechBubble = view.findViewById<View>(R.id.speechBubbleTitleContainer)
         titleSpeechBubble.setOnClickListener {
-	        bottomSheetBehavior.apply {
-		        if (state == STATE_EXPANDED)
-			        state = STATE_COLLAPSED
-		        else if (state == STATE_COLLAPSED)
-			        state = STATE_EXPANDED
-	        }
+            bottomSheetBehavior.apply {
+                if (state == STATE_EXPANDED)
+                    state = STATE_COLLAPSED
+                else if (state == STATE_COLLAPSED)
+                    state = STATE_EXPANDED
+            }
         }
 
         bottomSheetBehavior.setBottomSheetCallback(object :
@@ -88,19 +88,19 @@ abstract class AbstractBottomSheetFragment : Fragment(), IsCloseableBottomSheet 
 
         bottomSheetBehavior.peekHeight = resources.getDimensionPixelSize(R.dimen.quest_form_peekHeight)
         view?.findViewById<View>(R.id.bottomSheetContainer)?.let {
-	        it.setBackgroundResource(R.drawable.speechbubbles_gradient_background)
-	        it.updateLayoutParams { width = resources.getDimensionPixelSize(R.dimen.quest_form_width) }
+            it.setBackgroundResource(R.drawable.speechbubbles_gradient_background)
+            it.updateLayoutParams { width = resources.getDimensionPixelSize(R.dimen.quest_form_width) }
         }
     }
 
     private fun updateCloseButtonVisibility() {
-	    // this is called asynchronously. It may happen that the activity is already gone when this
-	    // method is finally called
-	    val activity = activity?: return
-	    val toolbarHeight = activity.findViewById<View>(R.id.toolbar).height
-	    val speechBubbleTopMargin = resources.getDimension(R.dimen.quest_form_speech_bubble_top_margin)
-	    val coversToolbar = bottomSheet.top < speechBubbleTopMargin + toolbarHeight
-	    closeButton.visibility = if (coversToolbar) View.VISIBLE else View.INVISIBLE
+        // this is called asynchronously. It may happen that the activity is already gone when this
+        // method is finally called
+        val activity = activity?: return
+        val toolbarHeight = activity.findViewById<View>(R.id.toolbar).height
+        val speechBubbleTopMargin = resources.getDimension(R.dimen.quest_form_speech_bubble_top_margin)
+        val coversToolbar = bottomSheet.top < speechBubbleTopMargin + toolbarHeight
+        closeButton.visibility = if (coversToolbar) View.VISIBLE else View.INVISIBLE
     }
 
     @UiThread override fun onClickMapAt(position: LatLon, clickAreaSizeInMeters: Double): Boolean {
@@ -114,21 +114,21 @@ abstract class AbstractBottomSheetFragment : Fragment(), IsCloseableBottomSheet 
             onDiscard()
             onConfirmed.run()
         } else {
-	        activity?.let {
-		        AlertDialog.Builder(it)
-			        .setMessage(R.string.confirmation_discard_title)
-			        .setPositiveButton(R.string.confirmation_discard_positive) { _, _ ->
-				        onDiscard()
-				        onConfirmed.run()
-			        }
-			        .setNegativeButton(R.string.confirmation_discard_negative, null)
-			        .show()
-	        }
+            activity?.let {
+                AlertDialog.Builder(it)
+                    .setMessage(R.string.confirmation_discard_title)
+                    .setPositiveButton(R.string.confirmation_discard_positive) { _, _ ->
+                        onDiscard()
+                        onConfirmed.run()
+                    }
+                    .setNegativeButton(R.string.confirmation_discard_negative, null)
+                    .show()
+            }
         }
     }
 
-	/** returns whether this form should not be closeable without confirmation */
-	open fun isRejectingClose(): Boolean = false
+    /** returns whether this form should not be closeable without confirmation */
+    open fun isRejectingClose(): Boolean = false
 
     protected open fun onDiscard() {}
 }

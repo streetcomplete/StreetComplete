@@ -19,8 +19,8 @@ data class OsmNoteQuest(
     var imagePaths: List<String>?
 ) : Quest {
 
-	constructor(note: Note, osmNoteQuestType: OsmNoteQuestType)
-		: this(null, note, QuestStatus.NEW, null, Date(), osmNoteQuestType, null)
+    constructor(note: Note, osmNoteQuestType: OsmNoteQuestType)
+        : this(null, note, QuestStatus.NEW, null, Date(), osmNoteQuestType, null)
 
     override val type: QuestType<*> get() = questType
     override val markerLocations: Array<LatLon> get() = arrayOf(note.position)

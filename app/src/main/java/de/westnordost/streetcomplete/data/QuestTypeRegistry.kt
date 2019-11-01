@@ -12,12 +12,12 @@ class QuestTypeRegistry(val all: List<QuestType<*>>) {
         val map = mutableMapOf<String, QuestType<*>>()
         for (questType in all) {
             val questTypeName = questType.javaClass.simpleName
-	        require(!map.containsKey(questTypeName)) {
-		        "A quest type's name must be unique! \"$questTypeName\" is defined twice!"
-	        }
-	        map[questTypeName] = questType
+            require(!map.containsKey(questTypeName)) {
+                "A quest type's name must be unique! \"$questTypeName\" is defined twice!"
+            }
+            map[questTypeName] = questType
         }
-	    typeMap = map
+        typeMap = map
     }
 
     fun getByName(typeName: String): QuestType<*>? {

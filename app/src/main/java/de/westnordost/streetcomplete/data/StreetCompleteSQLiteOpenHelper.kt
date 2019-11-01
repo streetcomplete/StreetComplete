@@ -81,16 +81,16 @@ import de.westnordost.streetcomplete.quests.oneway.data.WayTrafficFlowTable
         if (oldVersion < 4 && newVersion >= 4) {
             if (!db.hasColumn(OsmQuestTable.NAME, OsmQuestTable.Columns.CHANGES_SOURCE)) {
                 db.execSQL("""
-					ALTER TABLE ${OsmQuestTable.NAME}
-					ADD COLUMN ${OsmQuestTable.Columns.CHANGES_SOURCE} varchar(255);
-					""".trimIndent()
+                    ALTER TABLE ${OsmQuestTable.NAME}
+                    ADD COLUMN ${OsmQuestTable.Columns.CHANGES_SOURCE} varchar(255);
+                    """.trimIndent()
                 )
             }
             db.execSQL("""
-				UPDATE ${OsmQuestTable.NAME}
-				SET ${OsmQuestTable.Columns.CHANGES_SOURCE} = 'survey'
-				WHERE ${OsmQuestTable.Columns.CHANGES_SOURCE} ISNULL;
-				""".trimIndent()
+                UPDATE ${OsmQuestTable.NAME}
+                SET ${OsmQuestTable.Columns.CHANGES_SOURCE} = 'survey'
+                WHERE ${OsmQuestTable.Columns.CHANGES_SOURCE} ISNULL;
+                """.trimIndent()
             )
 
             // sqlite does not support dropping/altering constraints. Need to create new table.
@@ -103,9 +103,9 @@ import de.westnordost.streetcomplete.quests.oneway.data.WayTrafficFlowTable
 
         if (oldVersion < 5 && newVersion >= 5) {
             db.execSQL("""
-				ALTER TABLE ${CreateNoteTable.NAME}
-				ADD COLUMN ${CreateNoteTable.Columns.QUEST_TITLE} text;
-				""".trimIndent()
+                ALTER TABLE ${CreateNoteTable.NAME}
+                ADD COLUMN ${CreateNoteTable.Columns.QUEST_TITLE} text;
+                """.trimIndent()
             )
         }
 
@@ -120,14 +120,14 @@ import de.westnordost.streetcomplete.quests.oneway.data.WayTrafficFlowTable
 
         if (oldVersion < 8 && newVersion >= 8) {
             db.execSQL("""
-				ALTER TABLE ${CreateNoteTable.NAME}
-				ADD COLUMN ${CreateNoteTable.Columns.IMAGE_PATHS} blob;
-				""".trimIndent()
+                ALTER TABLE ${CreateNoteTable.NAME}
+                ADD COLUMN ${CreateNoteTable.Columns.IMAGE_PATHS} blob;
+                """.trimIndent()
             )
             db.execSQL("""
-				ALTER TABLE ${OsmNoteQuestTable.NAME}
-				ADD COLUMN ${OsmNoteQuestTable.Columns.IMAGE_PATHS} blob;
-				""".trimIndent()
+                ALTER TABLE ${OsmNoteQuestTable.NAME}
+                ADD COLUMN ${OsmNoteQuestTable.Columns.IMAGE_PATHS} blob;
+                """.trimIndent()
             )
         }
 

@@ -20,7 +20,7 @@ constructor(
         val relations = mutableListOf<Relation>()
 
         for (element in elements) {
-	        when (element) {
+            when (element) {
                 is Node -> nodes.add(element)
                 is Way -> ways.add(element)
                 is Relation -> relations.add(element)
@@ -48,11 +48,11 @@ constructor(
     }
 
     fun get(type: Element.Type, id: Long): Element? {
-	    return when (type) {
-		    Element.Type.NODE -> nodeDao.get(id)
-		    Element.Type.WAY -> wayDao.get(id)
-		    Element.Type.RELATION -> relationDao.get(id)
-	    }
+        return when (type) {
+            Element.Type.NODE -> nodeDao.get(id)
+            Element.Type.WAY -> wayDao.get(id)
+            Element.Type.RELATION -> relationDao.get(id)
+        }
     }
 
     fun deleteUnreferenced() {

@@ -21,14 +21,14 @@ class OpenChangesetsDao @Inject constructor(
     private val dbHelper: SQLiteOpenHelper,
     private val mapping: OpenChangesetMapping
 ) {
-	private val db get() = dbHelper.writableDatabase
+    private val db get() = dbHelper.writableDatabase
 
     fun getAll(): Collection<OpenChangeset> {
-	    return db.query(NAME) { mapping.toObject(it) }
+        return db.query(NAME) { mapping.toObject(it) }
     }
 
     fun put(openChangeset: OpenChangeset) {
-	    db.replaceOrThrow(NAME, null, mapping.toContentValues(openChangeset))
+        db.replaceOrThrow(NAME, null, mapping.toContentValues(openChangeset))
     }
 
     fun get(questType: String, source: String): OpenChangeset? {
@@ -38,8 +38,8 @@ class OpenChangesetsDao @Inject constructor(
     }
 
     fun delete(questType: String, source: String): Boolean {
-	    val where = "$QUEST_TYPE = ? AND $SOURCE = ?"
-	    val whereArgs = arrayOf(questType, source)
+        val where = "$QUEST_TYPE = ? AND $SOURCE = ?"
+        val whereArgs = arrayOf(questType, source)
         return db.delete(NAME, where, whereArgs) == 1
     }
 }

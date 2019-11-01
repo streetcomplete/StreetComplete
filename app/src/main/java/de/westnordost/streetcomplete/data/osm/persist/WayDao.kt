@@ -23,7 +23,7 @@ import de.westnordost.streetcomplete.ktx.*
 class WayDao @Inject constructor(private val dbHelper: SQLiteOpenHelper, override val mapping: WayMapping)
     : AOsmElementDao<Way>(dbHelper) {
 
-	private val db get() = dbHelper.writableDatabase
+    private val db get() = dbHelper.writableDatabase
 
     override val tableName = WayTable.NAME
     override val idColumnName = ID
@@ -31,14 +31,14 @@ class WayDao @Inject constructor(private val dbHelper: SQLiteOpenHelper, overrid
 
     /** Cleans up element entries that are not referenced by any quest anymore.  */
     override fun deleteUnreferenced() {
-	    val where = """
-			$idColumnName NOT IN (
-			${getSelectAllElementIdsIn(OsmQuestTable.NAME)} 
-			UNION
-			${getSelectAllElementIdsIn(UndoOsmQuestTable.NAME)}
-			UNION
-			SELECT ${OsmQuestSplitWayTable.Columns.WAY_ID} AS $idColumnName FROM ${OsmQuestSplitWayTable.NAME}
-			)""".trimIndent()
+        val where = """
+            $idColumnName NOT IN (
+            ${getSelectAllElementIdsIn(OsmQuestTable.NAME)} 
+            UNION
+            ${getSelectAllElementIdsIn(UndoOsmQuestTable.NAME)}
+            UNION
+            SELECT ${OsmQuestSplitWayTable.Columns.WAY_ID} AS $idColumnName FROM ${OsmQuestSplitWayTable.NAME}
+            )""".trimIndent()
 
         db.delete(tableName, where, null)
     }

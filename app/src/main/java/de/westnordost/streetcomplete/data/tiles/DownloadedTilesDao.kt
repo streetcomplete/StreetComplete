@@ -18,23 +18,23 @@ import javax.inject.Inject
  * (~0.022° per tile -> a few kilometers sidelength) */
 class DownloadedTilesDao @Inject constructor(private val dbHelper: SQLiteOpenHelper) {
 
-	private val db get() = dbHelper.writableDatabase
+    private val db get() = dbHelper.writableDatabase
 
     /** Persist that the given quest type has been downloaded in every tile in the given tile range  */
     fun put(tiles: Rect, questTypeName: String) {
         db.transaction {
-	        val time = System.currentTimeMillis()
-	        for (x in tiles.left..tiles.right) {
-		        for (y in tiles.top..tiles.bottom) {
-			        val values = contentValuesOf(
-				        X to x,
-				        Y to y,
-				        QUEST_TYPE to questTypeName,
-				        DATE to time
-			        )
-			        db.replaceOrThrow(NAME, null, values)
-		        }
-	        }
+            val time = System.currentTimeMillis()
+            for (x in tiles.left..tiles.right) {
+                for (y in tiles.top..tiles.bottom) {
+                    val values = contentValuesOf(
+                        X to x,
+                        Y to y,
+                        QUEST_TYPE to questTypeName,
+                        DATE to time
+                    )
+                    db.replaceOrThrow(NAME, null, values)
+                }
+            }
         }
     }
 
@@ -53,16 +53,16 @@ class DownloadedTilesDao @Inject constructor(private val dbHelper: SQLiteOpenHel
     fun get(tiles: Rect, ignoreOlderThan: Long): List<String> {
         val tileCount = (1 + tiles.width()) * (1 + tiles.height())
         return db.query(NAME,
-	        columns = arrayOf(QUEST_TYPE),
-	        selection = "$X BETWEEN ? AND ? AND $Y BETWEEN ? AND ? AND $DATE > ?",
-	        selectionArgs = arrayOf(
-		        tiles.left.toString(),
-		        tiles.right.toString(),
-		        tiles.top.toString(),
-		        tiles.bottom.toString(),
-		        ignoreOlderThan.toString()
-	        ),
-	        groupBy = QUEST_TYPE,
-	        having = "COUNT(*) >= $tileCount") { it.getString(0) }
+            columns = arrayOf(QUEST_TYPE),
+            selection = "$X BETWEEN ? AND ? AND $Y BETWEEN ? AND ? AND $DATE > ?",
+            selectionArgs = arrayOf(
+                tiles.left.toString(),
+                tiles.right.toString(),
+                tiles.top.toString(),
+                tiles.bottom.toString(),
+                ignoreOlderThan.toString()
+            ),
+            groupBy = QUEST_TYPE,
+            having = "COUNT(*) >= $tileCount") { it.getString(0) }
     }
 }

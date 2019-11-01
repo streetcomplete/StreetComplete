@@ -10,9 +10,9 @@ import org.junit.Assert.*
 class OpenChangesetsDaoTest : ApplicationDbTestCase() {
     private lateinit var dao: OpenChangesetsDao
 
-	private val Q = "Hurzipurz"
-	private val P = "Brasliweks"
-	private val SOURCE = "test"
+    private val Q = "Hurzipurz"
+    private val P = "Brasliweks"
+    private val SOURCE = "test"
 
     @Before fun createDao() {
         dao = OpenChangesetsDao(dbHelper, OpenChangesetMapping())

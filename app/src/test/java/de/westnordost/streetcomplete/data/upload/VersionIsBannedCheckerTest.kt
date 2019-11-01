@@ -4,9 +4,9 @@ import org.junit.Assert.*
 import org.junit.Test
 
 class VersionIsBannedCheckerTest {
-	@Test fun `banned version `() {
-		assertEquals(IsBanned(null), VersionIsBannedChecker(URL, "StreetComplete 0.1").get())
-	}
+    @Test fun `banned version `() {
+        assertEquals(IsBanned(null), VersionIsBannedChecker(URL, "StreetComplete 0.1").get())
+    }
 
     @Test fun `not banned version `() {
         assertEquals(IsNotBanned, VersionIsBannedChecker(URL, "StreetComplete 3.0").get())

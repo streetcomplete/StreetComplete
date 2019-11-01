@@ -16,10 +16,10 @@ class ChangesetAutoCloser @Inject constructor() {
     fun enqueue(delayInMilliseconds: Long) {
         // changesets are closed delayed after X minutes of inactivity
         WorkManager.getInstance().enqueueUniqueWork("AutoCloseChangesets", REPLACE,
-	        OneTimeWorkRequest.Builder(ChangesetAutoCloserWorker::class.java)
+            OneTimeWorkRequest.Builder(ChangesetAutoCloserWorker::class.java)
                 .setInitialDelay(delayInMilliseconds, TimeUnit.MILLISECONDS)
                 .setConstraints(
-	                Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED).build()
+                    Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED).build()
                 )
                 .build()
         )

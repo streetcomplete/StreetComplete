@@ -28,50 +28,50 @@ class CreateNoteDao @Inject constructor(
     private val dbHelper: SQLiteOpenHelper,
     private val mapping: CreateNoteMapping
 ) {
-	private val db get() = dbHelper.writableDatabase
+    private val db get() = dbHelper.writableDatabase
 
     fun add(note: CreateNote): Boolean {
         val rowId = db.insert(NAME, null, mapping.toContentValues(note))
-	    if (rowId == -1L) return false
+        if (rowId == -1L) return false
 
         note.id = rowId
         return true
     }
 
     fun get(id: Long): CreateNote? {
-	    return db.queryOne(NAME, null, "$ID = $id") { mapping.toObject(it) }
+        return db.queryOne(NAME, null, "$ID = $id") { mapping.toObject(it) }
     }
 
-	fun getCount(): Int {
+    fun getCount(): Int {
         return db.queryOne(NAME, arrayOf("COUNT(*)")) { it.getInt(0) } ?: 0
-	}
+    }
 
     fun delete(id: Long): Boolean {
-	    return db.delete(NAME, "$ID = $id", null) == 1
+        return db.delete(NAME, "$ID = $id", null) == 1
     }
 
-	fun getAll(): List<CreateNote> {
-		return db.query(NAME) { mapping.toObject(it) }
-	}
+    fun getAll(): List<CreateNote> {
+        return db.query(NAME) { mapping.toObject(it) }
+    }
 
     fun getAll(bbox: BoundingBox): List<CreateNote> {
         val builder = WhereSelectionBuilder()
-	    builder.appendBounds(bbox)
+        builder.appendBounds(bbox)
 
-	    return db.query(NAME, null, builder.where, builder.args) { mapping.toObject(it) }
+        return db.query(NAME, null, builder.where, builder.args) { mapping.toObject(it) }
     }
 }
 
 private fun WhereSelectionBuilder.appendBounds(bbox: BoundingBox) {
-	add("($LATITUDE BETWEEN ? AND ?)",
-		bbox.minLatitude.toString(),
-		bbox.maxLatitude.toString()
-	)
-	add(
-		"($LONGITUDE BETWEEN ? AND ?)",
-		bbox.minLongitude.toString(),
-		bbox.maxLongitude.toString()
-	)
+    add("($LATITUDE BETWEEN ? AND ?)",
+        bbox.minLatitude.toString(),
+        bbox.maxLatitude.toString()
+    )
+    add(
+        "($LONGITUDE BETWEEN ? AND ?)",
+        bbox.minLongitude.toString(),
+        bbox.maxLongitude.toString()
+    )
 }
 
 class CreateNoteMapping @Inject constructor(private val serializer: Serializer)

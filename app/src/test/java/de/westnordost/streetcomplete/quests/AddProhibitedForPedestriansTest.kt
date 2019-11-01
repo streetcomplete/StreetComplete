@@ -9,15 +9,15 @@ import org.junit.Test
 
 class AddProhibitedForPedestriansTest {
 
-	private val questType = AddProhibitedForPedestrians(mock())
+    private val questType = AddProhibitedForPedestrians(mock())
 
-	@Test fun `apply yes answer`() {
-		questType.verifyAnswer(YES, StringMapEntryAdd("foot", "no"))
-	}
+    @Test fun `apply yes answer`() {
+        questType.verifyAnswer(YES, StringMapEntryAdd("foot", "no"))
+    }
 
-	@Test fun `apply no answer`() {
+    @Test fun `apply no answer`() {
         questType.verifyAnswer(NO, StringMapEntryAdd("foot", "yes"))
-	}
+    }
 
     @Test fun `apply separate sidewalk answer`() {
         questType.verifyAnswer(
@@ -28,11 +28,11 @@ class AddProhibitedForPedestriansTest {
         )
     }
 
-	@Test fun `apply living street answer`() {
+    @Test fun `apply living street answer`() {
         questType.verifyAnswer(
             mapOf("highway" to "residential"),
             IS_LIVING_STREET,
             StringMapEntryModify("highway", "residential", "living_street")
         )
-	}
+    }
 }

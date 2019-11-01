@@ -19,9 +19,9 @@ class TangramConstTest {
 
     @Test fun `convert lists`() {
         val positionLists = listOf(
-	        listOf(),
-	        listOf(OsmLatLon(1.0, 2.0), OsmLatLon(3.0, 4.0)),
-	        listOf(OsmLatLon(5.0, 6.0))
+            listOf(),
+            listOf(OsmLatLon(1.0, 2.0), OsmLatLon(3.0, 4.0)),
+            listOf(OsmLatLon(5.0, 6.0))
         )
         val positionLists2 = toLatLon(toLngLat(positionLists))
 

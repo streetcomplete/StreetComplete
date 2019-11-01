@@ -31,9 +31,9 @@ class OsmAvatarsDownload @Inject constructor(
 
         for ((userId, avatarUrl) in userAvatars) {
             try {
-	            val avatarFile = File(cacheDir, "$userId")
-	            URL(avatarUrl).saveToFile(avatarFile)
-	            Log.i("OsmAvatarsDownload", "Saved file: ${avatarFile.path}")
+                val avatarFile = File(cacheDir, "$userId")
+                URL(avatarUrl).saveToFile(avatarFile)
+                Log.i("OsmAvatarsDownload", "Saved file: ${avatarFile.path}")
             } catch (e: IOException) {
                 Log.w("OsmAvatarsDownload", "Unable to download avatar for user id $userId")
             }
@@ -45,7 +45,7 @@ class OsmAvatarsDownload @Inject constructor(
         val userAvatars = HashMap<Long, String>()
         for (userId in userIds) {
             userDao.get(userId)?.profileImageUrl?.let {
-	            userAvatars[userId] = it
+                userAvatars[userId] = it
             }
         }
         return userAvatars

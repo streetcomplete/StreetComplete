@@ -9,7 +9,7 @@ class StringMapChangesBuilderTest {
     @Test fun delete() {
         val builder = StringMapChangesBuilder(mapOf("exists" to "like this"))
         builder.delete("exists")
-	    val change = builder.create().changes.single() as StringMapEntryDelete
+        val change = builder.create().changes.single() as StringMapEntryDelete
         assertEquals("exists", change.key)
         assertEquals("like this", change.valueBefore)
     }
@@ -48,11 +48,11 @@ class StringMapChangesBuilderTest {
         assertEquals("like that", change.value)
     }
 
-	@Test(expected = IllegalArgumentException::class)
-	fun `modify non-existing does fail`() {
-		val builder = StringMapChangesBuilder(mapOf("exists" to "like this"))
-		builder.modify("does not exist", "bla")
-	}
+    @Test(expected = IllegalArgumentException::class)
+    fun `modify non-existing does fail`() {
+        val builder = StringMapChangesBuilder(mapOf("exists" to "like this"))
+        builder.modify("does not exist", "bla")
+    }
 
     @Test fun `modifyIfExists non-existing does not fail`() {
         val builder = StringMapChangesBuilder(mapOf("exists" to "like this"))

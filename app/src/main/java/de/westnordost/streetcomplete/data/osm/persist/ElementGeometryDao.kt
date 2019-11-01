@@ -28,59 +28,59 @@ class ElementGeometryDao @Inject constructor(
     private val dbHelper: SQLiteOpenHelper,
     private val mapping: ElementGeometryMapping
 ) {
-	private val db get() = dbHelper.writableDatabase
+    private val db get() = dbHelper.writableDatabase
 
-	fun putAll(entries: Collection<ElementGeometryEntry>) {
-		db.transaction {
-			for (entry in entries) {
-				put(entry)
-			}
-		}
-	}
+    fun putAll(entries: Collection<ElementGeometryEntry>) {
+        db.transaction {
+            for (entry in entries) {
+                put(entry)
+            }
+        }
+    }
 
-	fun put(entry: ElementGeometryEntry) {
+    fun put(entry: ElementGeometryEntry) {
         val values = contentValuesOf(
             ELEMENT_TYPE to entry.elementType.name,
             ELEMENT_ID to entry.elementId
         ) + mapping.toContentValues(entry.geometry)
 
-		db.replaceOrThrow(NAME, null, values)
-	}
+        db.replaceOrThrow(NAME, null, values)
+    }
 
-	fun get(type: Element.Type, id: Long): ElementGeometry? {
-		val where = "$ELEMENT_TYPE = ? AND $ELEMENT_ID = ?"
-		val args = arrayOf(type.name, id.toString())
+    fun get(type: Element.Type, id: Long): ElementGeometry? {
+        val where = "$ELEMENT_TYPE = ? AND $ELEMENT_ID = ?"
+        val args = arrayOf(type.name, id.toString())
 
-		return db.queryOne(NAME, null, where, args) { mapping.toObject(it) }
-	}
+        return db.queryOne(NAME, null, where, args) { mapping.toObject(it) }
+    }
 
-	fun delete(type: Element.Type, id: Long) {
-		val where = "$ELEMENT_TYPE = ? AND $ELEMENT_ID = ?"
-		val args = arrayOf(type.name, id.toString())
+    fun delete(type: Element.Type, id: Long) {
+        val where = "$ELEMENT_TYPE = ? AND $ELEMENT_ID = ?"
+        val args = arrayOf(type.name, id.toString())
 
-		db.delete(NAME, where, args)
-	}
+        db.delete(NAME, where, args)
+    }
 
-	/** Cleans up element geometry entries that belong to elements that are not referenced by any
-	 * quest anymore.  */
-	fun deleteUnreferenced(): Int {
-		/* SQLite does not allow selecting multiple columns in a DELETE subquery. Using a workaround
+    /** Cleans up element geometry entries that belong to elements that are not referenced by any
+     * quest anymore.  */
+    fun deleteUnreferenced(): Int {
+        /* SQLite does not allow selecting multiple columns in a DELETE subquery. Using a workaround
          * as described here:
          * http://blog.programmingsolution.net/sql-server-2008/tsql/delete-rows-of-a-table-matching-multiple-columns-of-another-table/
          */
-		val where = "(" + ELEMENT_TYPE + LUMP + ELEMENT_ID + ") NOT IN (" +
-			"SELECT " + OsmQuestTable.Columns.ELEMENT_TYPE + LUMP + OsmQuestTable.Columns.ELEMENT_ID + " FROM " + OsmQuestTable.NAME + " " +
-			"UNION SELECT " + UndoOsmQuestTable.Columns.ELEMENT_TYPE + LUMP + UndoOsmQuestTable.Columns.ELEMENT_ID + " FROM " + UndoOsmQuestTable.NAME +
+        val where = "(" + ELEMENT_TYPE + LUMP + ELEMENT_ID + ") NOT IN (" +
+            "SELECT " + OsmQuestTable.Columns.ELEMENT_TYPE + LUMP + OsmQuestTable.Columns.ELEMENT_ID + " FROM " + OsmQuestTable.NAME + " " +
+            "UNION SELECT " + UndoOsmQuestTable.Columns.ELEMENT_TYPE + LUMP + UndoOsmQuestTable.Columns.ELEMENT_ID + " FROM " + UndoOsmQuestTable.NAME +
             ")"
 
-		return db.delete(NAME, where, null)
-	}
+        return db.delete(NAME, where, null)
+    }
 }
 
 data class ElementGeometryEntry(
-	val elementType: Element.Type,
-	val elementId: Long,
-	val geometry: ElementGeometry
+    val elementType: Element.Type,
+    val elementId: Long,
+    val geometry: ElementGeometry
 )
 
 private const val LUMP = "+'#'+"

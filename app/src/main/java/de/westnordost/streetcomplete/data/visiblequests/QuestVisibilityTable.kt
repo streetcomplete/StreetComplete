@@ -8,9 +8,9 @@ object QuestVisibilityTable {
         const val VISIBILITY = "visibility"
     }
 
-	const val CREATE = """
-		CREATE TABLE $NAME (
-			${Columns.QUEST_TYPE} varchar(255) PRIMARY KEY,
-			${Columns.VISIBILITY} int NOT NULL
-		);"""
+    const val CREATE = """
+        CREATE TABLE $NAME (
+            ${Columns.QUEST_TYPE} varchar(255) PRIMARY KEY,
+            ${Columns.VISIBILITY} int NOT NULL
+        );"""
 }

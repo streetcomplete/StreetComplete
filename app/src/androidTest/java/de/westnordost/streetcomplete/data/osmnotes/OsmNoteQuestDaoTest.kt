@@ -33,9 +33,9 @@ class OsmNoteQuestDaoTest : ApplicationDbTestCase() {
 
     @Test fun addGetWithChanges() {
         val quest = create(
-	        status = QuestStatus.ANSWERED,
-	        comment = "hi da du",
-	        imagePaths = listOf("blubbi", "diblub")
+            status = QuestStatus.ANSWERED,
+            comment = "hi da du",
+            imagePaths = listOf("blubbi", "diblub")
         )
         addToDaos(quest)
 
@@ -70,7 +70,7 @@ class OsmNoteQuestDaoTest : ApplicationDbTestCase() {
 
     @Test fun addAllAndDeleteAll() {
         val notes = listOf(createNote(1), createNote(2), createNote(3))
-	    noteDao.putAll(notes)
+        noteDao.putAll(notes)
 
         val quests = notes.map { create(it) }
         assertEquals(3, dao.addAll(quests))
@@ -117,8 +117,8 @@ class OsmNoteQuestDaoTest : ApplicationDbTestCase() {
 
     @Test fun getAllByBBox() {
         addToDaos(
-	        create(noteId = 1, notePosition = OsmLatLon(5.0, 5.0)),
-	        create(noteId = 2, notePosition = OsmLatLon(11.0, 11.0))
+            create(noteId = 1, notePosition = OsmLatLon(5.0, 5.0)),
+            create(noteId = 2, notePosition = OsmLatLon(11.0, 11.0))
         )
 
         assertEquals(1, dao.getAll(bounds = BoundingBox(0.0, 0.0, 10.0, 10.0)).size)
@@ -127,8 +127,8 @@ class OsmNoteQuestDaoTest : ApplicationDbTestCase() {
 
     @Test fun getAllByStatus() {
         addToDaos(
-	        create(noteId = 1, status = QuestStatus.HIDDEN),
-	        create(noteId = 2, status = QuestStatus.NEW)
+            create(noteId = 1, status = QuestStatus.HIDDEN),
+            create(noteId = 2, status = QuestStatus.NEW)
         )
 
         assertEquals(1, dao.getAll(statusIn = listOf(QuestStatus.HIDDEN)).size)
@@ -159,26 +159,26 @@ class OsmNoteQuestDaoTest : ApplicationDbTestCase() {
     }
 
     private fun createNote(id: Long = 5, position: LatLon = OsmLatLon(1.0, 1.0)) = Note().also {
-	    it.id = id
-	    it.position = position
-	    it.status = Note.Status.OPEN
-	    it.dateCreated = Date(5000)
+        it.id = id
+        it.position = position
+        it.status = Note.Status.OPEN
+        it.dateCreated = Date(5000)
     }
 
-	private fun create(
-		noteId: Long = 1,
-		status: QuestStatus = QuestStatus.NEW,
-		notePosition: LatLon = OsmLatLon(1.0, 1.0),
-		comment: String? = null,
-		imagePaths: List<String>? = null
-	) = create( createNote(noteId, notePosition), status, comment, imagePaths)
+    private fun create(
+        noteId: Long = 1,
+        status: QuestStatus = QuestStatus.NEW,
+        notePosition: LatLon = OsmLatLon(1.0, 1.0),
+        comment: String? = null,
+        imagePaths: List<String>? = null
+    ) = create( createNote(noteId, notePosition), status, comment, imagePaths)
 
-	private fun create(
-		note: Note,
-		status: QuestStatus = QuestStatus.NEW,
-		comment: String? = null,
-		imagePaths: List<String>? = null
-	) = OsmNoteQuest( null, note, status, comment, Date(5000), questType, imagePaths)
+    private fun create(
+        note: Note,
+        status: QuestStatus = QuestStatus.NEW,
+        comment: String? = null,
+        imagePaths: List<String>? = null
+    ) = OsmNoteQuest( null, note, status, comment, Date(5000), questType, imagePaths)
 
     private fun addToDaos(vararg quests: OsmNoteQuest) {
         for (quest in quests) {

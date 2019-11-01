@@ -19,10 +19,10 @@ class RelationDaoTest : ApplicationDbTestCase() {
     }
 
     @Test fun putGetNoTags() {
-	    val members = listOf(
-		    OsmRelationMember(0, "outer", Element.Type.WAY),
-		    OsmRelationMember(1, "inner", Element.Type.WAY)
-	    )
+        val members = listOf(
+            OsmRelationMember(0, "outer", Element.Type.WAY),
+            OsmRelationMember(1, "inner", Element.Type.WAY)
+        )
         val relation = OsmRelation(5, 1, members, null)
         dao.put(relation)
         val dbRelation = dao.get(5)
@@ -32,8 +32,8 @@ class RelationDaoTest : ApplicationDbTestCase() {
 
     @Test fun putGetWithTags() {
         val members = listOf(
-	        OsmRelationMember(0, "outer", Element.Type.WAY),
-	        OsmRelationMember(1, "inner", Element.Type.WAY)
+            OsmRelationMember(0, "outer", Element.Type.WAY),
+            OsmRelationMember(1, "inner", Element.Type.WAY)
         )
         val relation = OsmRelation(5, 1, members, mapOf("a key" to "a value"))
         dao.put(relation)

@@ -17,25 +17,25 @@ class UserChangesetsDao @Inject constructor(private val changesetsDao: Changeset
         val relay = RememberLastHandlerRelay(handler)
         do {
             val filters = QueryChangesetsFilters().byUser(userId)
-	        relay.earliest?.let {
-		        filters.byOpenSomeTimeBetween(it.dateCreated, closedAfter)
-	        }
+            relay.earliest?.let {
+                filters.byOpenSomeTimeBetween(it.dateCreated, closedAfter)
+            }
             relay.foundMore = false
             changesetsDao.find(relay, filters)
         } while (relay.foundMore)
     }
 
-	private class RememberLastHandlerRelay(private val relayTo: Handler<ChangesetInfo>
-	) : Handler<ChangesetInfo> {
-		var earliest: ChangesetInfo? = null
-		var foundMore: Boolean = false
+    private class RememberLastHandlerRelay(private val relayTo: Handler<ChangesetInfo>
+    ) : Handler<ChangesetInfo> {
+        var earliest: ChangesetInfo? = null
+        var foundMore: Boolean = false
 
-		override fun handle(info: ChangesetInfo) {
-			if (earliest == null || earliest!!.dateCreated.after(info.dateCreated)) {
-				earliest = info
-				relayTo.handle(info)
-				foundMore = true
-			}
-		}
-	}
+        override fun handle(info: ChangesetInfo) {
+            if (earliest == null || earliest!!.dateCreated.after(info.dateCreated)) {
+                earliest = info
+                relayTo.handle(info)
+                foundMore = true
+            }
+        }
+    }
 }

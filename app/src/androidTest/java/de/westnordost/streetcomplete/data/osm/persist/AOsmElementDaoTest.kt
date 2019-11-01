@@ -62,10 +62,10 @@ class AOsmElementDaoTest {
 }
 
 private fun createElement(id: Long, version: Int): Element {
-	val element = mock(Element::class.java)
-	`when`(element.id).thenReturn(id)
-	`when`(element.version).thenReturn(version)
-	return element
+    val element = mock(Element::class.java)
+    `when`(element.id).thenReturn(id)
+    `when`(element.version).thenReturn(version)
+    return element
 }
 
 private const val TABLE_NAME = "test"
@@ -76,9 +76,9 @@ private const val TESTDB = "testdb.db"
 
 private class TestOsmElementDao(dbHelper: SQLiteOpenHelper) : AOsmElementDao<Element>(dbHelper) {
 
-	override val elementTypeName = Element.Type.NODE.name
-	override val tableName = TABLE_NAME
-	override val idColumnName = ID_COL
+    override val elementTypeName = Element.Type.NODE.name
+    override val tableName = TABLE_NAME
+    override val idColumnName = ID_COL
     override val mapping = object : ObjectRelationalMapping<Element> {
         override fun toContentValues(obj: Element) = contentValuesOf(
             ID_COL to obj.id,
@@ -91,29 +91,29 @@ private class TestOsmElementDao(dbHelper: SQLiteOpenHelper) : AOsmElementDao<Ele
 
 private class TestDbHelper(context: Context) : SQLiteOpenHelper(context, TESTDB, null, 1) {
 
-	override fun onCreate(db: SQLiteDatabase) {
-		// the AOsmElementDao is tied to the quest table... but we only need the id and type
-		db.execSQL(
-			"CREATE TABLE " + OsmQuestTable.NAME + " (" +
-				OsmQuestTable.Columns.ELEMENT_ID + " int			NOT NULL, " +
-				OsmQuestTable.Columns.ELEMENT_TYPE + " varchar(255)	NOT NULL " +
-				");"
-		)
-		db.execSQL(
-			"INSERT INTO " + OsmQuestTable.NAME + " (" +
-				OsmQuestTable.Columns.ELEMENT_ID + ", " +
-				OsmQuestTable.Columns.ELEMENT_TYPE + ") VALUES " +
-				"(1, \"" + Element.Type.NODE.name + "\");"
-		)
+    override fun onCreate(db: SQLiteDatabase) {
+        // the AOsmElementDao is tied to the quest table... but we only need the id and type
+        db.execSQL(
+            "CREATE TABLE " + OsmQuestTable.NAME + " (" +
+                OsmQuestTable.Columns.ELEMENT_ID + " int            NOT NULL, " +
+                OsmQuestTable.Columns.ELEMENT_TYPE + " varchar(255)    NOT NULL " +
+                ");"
+        )
+        db.execSQL(
+            "INSERT INTO " + OsmQuestTable.NAME + " (" +
+                OsmQuestTable.Columns.ELEMENT_ID + ", " +
+                OsmQuestTable.Columns.ELEMENT_TYPE + ") VALUES " +
+                "(1, \"" + Element.Type.NODE.name + "\");"
+        )
 
-		db.execSQL(
-			"CREATE TABLE " + TABLE_NAME + " ( " +
-				ID_COL + " int PRIMARY KEY, " +
-				VERSION_COL + " int);"
-		)
-	}
+        db.execSQL(
+            "CREATE TABLE " + TABLE_NAME + " ( " +
+                ID_COL + " int PRIMARY KEY, " +
+                VERSION_COL + " int);"
+        )
+    }
 
-	override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
+    override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
 
-	}
+    }
 }

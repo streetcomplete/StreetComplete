@@ -82,27 +82,27 @@ class NoteDaoTest : ApplicationDbTestCase() {
 }
 
 private fun checkEqual(note: Note, dbNote: Note) {
-	assertEquals(note.id, dbNote.id)
-	assertEquals(note.position, dbNote.position)
-	assertEquals(note.status, dbNote.status)
-	assertEquals(note.dateCreated, dbNote.dateCreated)
-	assertEquals(note.dateClosed, dbNote.dateClosed)
+    assertEquals(note.id, dbNote.id)
+    assertEquals(note.position, dbNote.position)
+    assertEquals(note.status, dbNote.status)
+    assertEquals(note.dateCreated, dbNote.dateCreated)
+    assertEquals(note.dateClosed, dbNote.dateClosed)
 
-	assertEquals(note.comments.size, dbNote.comments.size)
-	val it: ListIterator<NoteComment>
-	val dbIt: ListIterator<NoteComment>
-	it = note.comments.listIterator()
-	dbIt = dbNote.comments.listIterator()
+    assertEquals(note.comments.size, dbNote.comments.size)
+    val it: ListIterator<NoteComment>
+    val dbIt: ListIterator<NoteComment>
+    it = note.comments.listIterator()
+    dbIt = dbNote.comments.listIterator()
 
-	while (it.hasNext() && dbIt.hasNext()) {
-		val comment = it.next()
-		val dbComment = dbIt.next()
-		assertEquals(comment.action, dbComment.action)
-		assertEquals(comment.date, dbComment.date)
-		assertEquals(comment.text, dbComment.text)
-		assertEquals(comment.user.displayName, dbComment.user.displayName)
-		assertEquals(comment.user.id, dbComment.user.id)
-	}
+    while (it.hasNext() && dbIt.hasNext()) {
+        val comment = it.next()
+        val dbComment = dbIt.next()
+        assertEquals(comment.action, dbComment.action)
+        assertEquals(comment.date, dbComment.date)
+        assertEquals(comment.text, dbComment.text)
+        assertEquals(comment.user.displayName, dbComment.user.displayName)
+        assertEquals(comment.user.id, dbComment.user.id)
+    }
 }
 
 private fun createNote(id: Long = 5): Note {

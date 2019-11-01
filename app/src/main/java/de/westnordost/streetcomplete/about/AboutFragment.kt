@@ -57,7 +57,7 @@ class AboutFragment : PreferenceFragmentCompat() {
         }
 
         findPreference("report_error").setOnPreferenceClickListener {
-	        val browserIntent = Intent(
+            val browserIntent = Intent(
                 Intent.ACTION_VIEW,
                 Uri.parse("https://github.com/westnordost/StreetComplete/issues/")
             )
@@ -71,7 +71,7 @@ class AboutFragment : PreferenceFragmentCompat() {
             intent.putExtra(Intent.EXTRA_EMAIL, arrayOf("osm@westnordost.de"))
             intent.putExtra(Intent.EXTRA_SUBJECT, ApplicationConstants.USER_AGENT + " Feedback")
             if (activity?.let { intent.resolveActivity(it.packageManager) } == null) {
-	            return@setOnPreferenceClickListener false
+                return@setOnPreferenceClickListener false
             }
             startActivity(intent)
             true

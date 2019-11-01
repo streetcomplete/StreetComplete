@@ -29,18 +29,18 @@ class NoteDao @Inject constructor(
     private val dbHelper: SQLiteOpenHelper,
     private val mapping: NoteMapping
 ) {
-	private val db get() = dbHelper.writableDatabase
+    private val db get() = dbHelper.writableDatabase
 
     fun putAll(notes: Collection<Note>) {
         db.transaction {
-	        for (note in notes) {
-		        put(note)
-	        }
+            for (note in notes) {
+                put(note)
+            }
         }
     }
 
     fun put(note: Note) {
-	    db.replaceOrThrow(NAME, null, mapping.toContentValues(note))
+        db.replaceOrThrow(NAME, null, mapping.toContentValues(note))
     }
 
     fun get(id: Long): Note? {

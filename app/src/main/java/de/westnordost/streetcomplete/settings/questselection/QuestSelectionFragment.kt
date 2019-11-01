@@ -27,10 +27,10 @@ class QuestSelectionFragment : Fragment() {
     @Inject internal lateinit var visibleQuestTypeDao: VisibleQuestTypeDao
     @Inject internal lateinit var questTypeOrderList: QuestTypeOrderList
 
-	init {
-		Injector.instance.applicationComponent.inject(this)
+    init {
+        Injector.instance.applicationComponent.inject(this)
         questSelectionAdapter.list = createQuestTypeVisibilityList()
-	}
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         setHasOptionsMenu(true)
@@ -60,11 +60,11 @@ class QuestSelectionFragment : Fragment() {
         when (item?.itemId) {
             R.id.action_reset -> {
                 context?.let {
-	                AlertDialog.Builder(it)
-		                .setMessage(R.string.pref_quests_reset)
-		                .setPositiveButton(android.R.string.ok) { _, _ -> onReset() }
-		                .setNegativeButton(android.R.string.cancel, null)
-		                .show()
+                    AlertDialog.Builder(it)
+                        .setMessage(R.string.pref_quests_reset)
+                        .setPositiveButton(android.R.string.ok) { _, _ -> onReset() }
+                        .setNegativeButton(android.R.string.cancel, null)
+                        .show()
                 }
                 return true
             }
@@ -94,6 +94,6 @@ class QuestSelectionFragment : Fragment() {
     private fun createQuestTypeVisibilityList(): MutableList<QuestVisibility> {
         val questTypes = questTypeRegistry.all.toMutableList()
         questTypeOrderList.sort(questTypes)
-	    return questTypes.map { QuestVisibility(it, visibleQuestTypeDao.isVisible(it)) }.toMutableList()
+        return questTypes.map { QuestVisibility(it, visibleQuestTypeDao.isVisible(it)) }.toMutableList()
     }
 }

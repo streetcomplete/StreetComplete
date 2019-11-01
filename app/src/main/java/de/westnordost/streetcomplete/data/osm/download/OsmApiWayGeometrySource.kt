@@ -14,16 +14,16 @@ import javax.inject.Inject
 class OsmApiWayGeometrySource @Inject constructor(private val osmDao: MapDataDao) : WayGeometrySource {
 
     override fun getNodePositions(wayId: Long): List<LatLon> {
-	    lateinit var way: Way
-	    val nodes = LongSparseArray<Node>()
+        lateinit var way: Way
+        val nodes = LongSparseArray<Node>()
 
         osmDao.getWayComplete(wayId, object : MapDataHandler {
-	        override fun handle(b: BoundingBox) {}
-	        override fun handle(n: Node) { nodes.put(n.id, n) }
-	        override fun handle(w: Way) { way = w }
-	        override fun handle(r: Relation) {}
+            override fun handle(b: BoundingBox) {}
+            override fun handle(n: Node) { nodes.put(n.id, n) }
+            override fun handle(w: Way) { way = w }
+            override fun handle(r: Relation) {}
         })
 
-	    return way.nodeIds.map { nodes[it].position }
+        return way.nodeIds.map { nodes[it].position }
     }
 }

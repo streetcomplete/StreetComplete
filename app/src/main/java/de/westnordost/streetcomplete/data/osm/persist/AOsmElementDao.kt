@@ -9,23 +9,23 @@ import de.westnordost.streetcomplete.ktx.transaction
 
 abstract class AOsmElementDao<T : Element>(private val dbHelper: SQLiteOpenHelper) {
 
-	private val db get() = dbHelper.writableDatabase
+    private val db get() = dbHelper.writableDatabase
 
-	protected abstract val elementTypeName: String
+    protected abstract val elementTypeName: String
     protected abstract val tableName: String
     protected abstract val idColumnName: String
     protected abstract val mapping: ObjectRelationalMapping<T>
 
     fun putAll(elements: Collection<T>) {
-	    db.transaction {
-		    for (element in elements) {
-			    put(element)
-		    }
-	    }
+        db.transaction {
+            for (element in elements) {
+                put(element)
+            }
+        }
     }
 
     fun put(element: T) {
-	    db.replaceOrThrow(tableName, null, mapping.toContentValues(element))
+        db.replaceOrThrow(tableName, null, mapping.toContentValues(element))
     }
 
     fun delete(id: Long) {
@@ -33,24 +33,24 @@ abstract class AOsmElementDao<T : Element>(private val dbHelper: SQLiteOpenHelpe
     }
 
     fun get(id: Long): T? {
-	    return db.queryOne(tableName, null, "$idColumnName = $id", null) { mapping.toObject(it) }
+        return db.queryOne(tableName, null, "$idColumnName = $id", null) { mapping.toObject(it) }
     }
 
     /** Cleans up element entries that are not referenced by any quest anymore.  */
     open fun deleteUnreferenced() {
         val where = """
-			$idColumnName NOT IN (
-			${getSelectAllElementIdsIn(OsmQuestTable.NAME)} 
-			UNION
-			${getSelectAllElementIdsIn(UndoOsmQuestTable.NAME)}
-			)""".trimIndent()
+            $idColumnName NOT IN (
+            ${getSelectAllElementIdsIn(OsmQuestTable.NAME)} 
+            UNION
+            ${getSelectAllElementIdsIn(UndoOsmQuestTable.NAME)}
+            )""".trimIndent()
 
         db.delete(tableName, where, null)
     }
 
     protected fun getSelectAllElementIdsIn(table: String) = """
         SELECT ${OsmQuestTable.Columns.ELEMENT_ID} AS $idColumnName
-		FROM $table
+        FROM $table
         WHERE ${OsmQuestTable.Columns.ELEMENT_TYPE} = "$elementTypeName"
     """
 }

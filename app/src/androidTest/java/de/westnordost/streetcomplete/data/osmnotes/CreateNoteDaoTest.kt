@@ -18,17 +18,17 @@ class CreateNoteDaoTest : ApplicationDbTestCase() {
         dao = CreateNoteDao(dbHelper, CreateNoteMapping(serializer))
     }
 
-	@Test fun getButNothingIsThere() {
-		assertNull(dao.get(1L))
-	}
+    @Test fun getButNothingIsThere() {
+        assertNull(dao.get(1L))
+    }
 
-	@Test fun getAllButNothingIsThere() {
-		assertEquals(listOf<CreateNote>(), dao.getAll())
-	}
+    @Test fun getAllButNothingIsThere() {
+        assertEquals(listOf<CreateNote>(), dao.getAll())
+    }
 
     @Test fun addAndGet() {
         val note = CreateNote(null, "text", OsmLatLon(3.0, 5.0), "title",
-	        ElementKey(Element.Type.NODE, 132L), arrayListOf("hello","hey"))
+            ElementKey(Element.Type.NODE, 132L), arrayListOf("hello","hey"))
 
         assertTrue(dao.add(note))
         val dbNote = dao.get(note.id!!)!!
@@ -40,13 +40,13 @@ class CreateNoteDaoTest : ApplicationDbTestCase() {
         assertNull(dao.get(note.id!!))
     }
 
-	@Test fun delete() {
-		val note = CreateNote(null, "text", OsmLatLon(3.0, 5.0))
+    @Test fun delete() {
+        val note = CreateNote(null, "text", OsmLatLon(3.0, 5.0))
 
-		assertTrue(dao.add(note))
-		assertTrue(dao.delete(note.id!!))
-		assertNull(dao.get(note.id!!))
-	}
+        assertTrue(dao.add(note))
+        assertTrue(dao.delete(note.id!!))
+        assertNull(dao.get(note.id!!))
+    }
 
     @Test fun addAndGetNullableFields() {
         val note = CreateNote(null, "text", OsmLatLon(3.0, 5.0))

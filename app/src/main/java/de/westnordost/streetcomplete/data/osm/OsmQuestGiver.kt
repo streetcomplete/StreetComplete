@@ -24,7 +24,7 @@ class OsmQuestGiver @Inject constructor(
     private val questTypesProvider: OrderedVisibleQuestTypesProvider
 ) {
 
-	private val TAG = "OsmQuestGiver"
+    private val TAG = "OsmQuestGiver"
 
     data class QuestUpdates(val createdQuests: List<OsmQuest>, val removedQuestIds: List<Long>)
 
@@ -88,7 +88,7 @@ class OsmQuestGiver @Inject constructor(
         questDB.deleteAllIds(ids)
 
         Log.d(TAG, "Removed all quests for deleted element " + elementType.name + "#" + elementId)
-	    return ids
+        return ids
     }
 
     private fun hasNoteAt(pos: LatLon): Boolean {
