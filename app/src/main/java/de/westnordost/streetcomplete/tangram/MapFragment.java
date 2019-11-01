@@ -36,9 +36,12 @@ import com.mapzen.tangram.MapController;
 import com.mapzen.tangram.MapView;
 import com.mapzen.tangram.Marker;
 import com.mapzen.tangram.SceneError;
+import com.mapzen.tangram.SceneUpdate;
 import com.mapzen.tangram.TouchInput;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.streetcomplete.Prefs;
@@ -622,9 +625,9 @@ public class MapFragment extends Fragment implements
 		compass.onDestroy();
 		if(mapView != null) mapView.onDestroy();
 		controller = null;
+		locationMarker = null;
 		directionMarker = null;
 		accuracyMarker = null;
-		locationMarker = null;
 	}
 
 	@Override public void onLowMemory()
@@ -706,5 +709,25 @@ public class MapFragment extends Fragment implements
 	public void hideMapControls()
 	{
 		if(mapControls != null) mapControls.hideControls();
+	}
+
+	public void setShow3DBuildings(boolean toggleOn)
+	{
+		List<SceneUpdate> updates = new ArrayList<>();
+		updates.add(new SceneUpdate("layers.buildings.draw.buildings-style.extrude", toggleOn ? "true" : "false"));
+		updates.add(new SceneUpdate("layers.buildings.draw.buildings-outline-style.extrude", toggleOn ? "true" : "false"));
+		updateSceneAsync(updates);
+	}
+
+	/**
+	 * Call this method instead of MapController.updateSceneAsync() when doing Scene update.
+	 * Just to prevent app crash with invalidated markers.
+	 */
+	protected int updateSceneAsync(List<SceneUpdate> sceneUpdates)
+	{
+		locationMarker = null;
+		directionMarker = null;
+		accuracyMarker = null;
+		return controller.updateSceneAsync(sceneUpdates);
 	}
 }

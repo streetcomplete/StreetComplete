@@ -953,6 +953,7 @@ public class MainActivity extends AppCompatActivity implements
 	{
 		freezeMap();
 		showInBottomSheet(new CreateNoteFragment());
+		mapFragment.setShow3DBuildings(false);
 	}
 
 	/* ---------------------------------- VisibleQuestListener ---------------------------------- */
@@ -1002,6 +1003,7 @@ public class MainActivity extends AppCompatActivity implements
 			((IsCloseableBottomSheet)f).onClickClose(() ->
 			{
 				getSupportFragmentManager().popBackStackImmediate(BOTTOM_SHEET, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+				mapFragment.setShow3DBuildings(true);
 				unfreezeMap();
 			});
 		}
