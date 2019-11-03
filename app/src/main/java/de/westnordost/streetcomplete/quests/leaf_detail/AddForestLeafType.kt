@@ -18,16 +18,16 @@ class AddForestLeafType(private val overpassServer: OverpassMapDataDao) : OsmEle
         return overpassServer.getAndHandleQuota(getOverpassQuery(bbox), handler)
     }
 
-    private fun getOverpassQuery(bbox: BoundingBox): String {
-        return bbox.toGlobalOverpassBBox() +
-                "("+
-                "way[landuse=forest][!leaf_type](if: length()<700.0);\n" +
-                "relation[landuse=forest][!leaf_type](if: length()<700.0);\n" +
-                "way[natural=wood][!leaf_type](if: length()<700.0);\n" +
-                "relation[natural=wood][!leaf_type](if: length()<700.0);\n" +
-                ");" +
-                getQuestPrintStatement()
-    }
+    private fun getOverpassQuery(bbox: BoundingBox) = """
+        ${bbox.toGlobalOverpassBBox()}
+        (
+          way[landuse = forest][!leaf_type](if: length()<700.0);
+          relation[landuse = forest][!leaf_type](if: length()<700.0);
+          way[natural = wood][!leaf_type](if: length()<700.0);
+          relation[natural = wood][!leaf_type](if: length()<700.0);
+        );
+        ${getQuestPrintStatement()}""".trimIndent()
+
     override fun isApplicableTo(element: Element):Boolean? = null
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_leafType_title
