@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.osmnotes
 
+import android.util.Log
 import de.westnordost.osmapi.common.SingleElementHandler
 import de.westnordost.osmapi.common.errors.OsmConflictException
 import de.westnordost.osmapi.map.data.BoundingBox
@@ -7,14 +8,13 @@ import de.westnordost.osmapi.notes.Note
 import de.westnordost.osmapi.notes.NotesDao
 import de.westnordost.streetcomplete.ApplicationConstants.USER_AGENT
 import de.westnordost.streetcomplete.data.osm.upload.ConflictException
-import de.westnordost.streetcomplete.util.StreetCompleteImageUploader
 import java.util.*
 import javax.inject.Inject
 
 /** Create a note at the given position, or, if there is already a note at the exact same
  * position AND its associated element is the same, adds the user's message as another comment.
  *
- * Throws an ElementConflictException and does not add the note comment if that note has already
+ * Throws a ConflictException and does not add the note comment if that note has already
  * been closed because the contribution is very likely obsolete (based on old data) */
 class SingleCreateNoteUpload @Inject constructor(
     private val osmDao: NotesDao,
@@ -34,7 +34,7 @@ class SingleCreateNoteUpload @Inject constructor(
         val attachedPhotosText = AttachPhotoUtils.uploadAndGetAttachedPhotosText(imageUploader, n.imagePaths)
         val result = osmDao.create(n.position, n.fullNoteText + attachedPhotosText)
         if (!n.imagePaths.isNullOrEmpty()) {
-            imageUploader.activate(result.id)
+            activateImages(result.id)
         }
         return result
     }
@@ -45,7 +45,7 @@ class SingleCreateNoteUpload @Inject constructor(
                 val attachedPhotosText = AttachPhotoUtils.uploadAndGetAttachedPhotosText(imageUploader, attachedImagePaths)
                 val result = osmDao.comment(note.id, text + attachedPhotosText)
                 if (!attachedImagePaths.isNullOrEmpty()) {
-                    imageUploader.activate(result.id)
+                    activateImages(result.id)
                 }
                 result
             } catch (e: OsmConflictException) {
@@ -54,6 +54,13 @@ class SingleCreateNoteUpload @Inject constructor(
         } else throw ConflictException("Note already closed")
     }
 
+    private fun activateImages(noteId: Long) {
+        try {
+            imageUploader.activate(noteId)
+        } catch (e: ImageActivationException) {
+            Log.e("NoteImageUpload", "Image activation failed", e)
+        }
+    }
 
     private fun findAlreadyExistingNoteWithSameAssociatedElement(newNote: CreateNote): Note? {
         val handler = object : SingleElementHandler<Note>() {

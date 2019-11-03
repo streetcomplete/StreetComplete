@@ -1,6 +1,4 @@
-package de.westnordost.streetcomplete.util
-
-import android.util.Log
+package de.westnordost.streetcomplete.data.osmnotes
 
 import org.json.JSONException
 import org.json.JSONObject
@@ -13,11 +11,10 @@ import java.net.URLConnection
 
 import de.westnordost.streetcomplete.ApplicationConstants
 
-/** Uploads a list of image paths to an instance of https://github.com/exploide/sc-photo-service */
+/** Upload and activate a list of image paths to an instance of https://github.com/exploide/sc-photo-service */
 class StreetCompleteImageUploader(private val baseUrl: String) {
 
-    private val TAG = "ImageUploader"
-
+    /** Upload list of images. Throws a ImageUploadException if there was any error */
     fun upload(imagePaths: List<String>?): List<String> {
         val imageLinks = ArrayList<String>()
 
@@ -26,48 +23,41 @@ class StreetCompleteImageUploader(private val baseUrl: String) {
             if (!file.exists()) continue 
         
             try {
-                val httpConnection = createConnection("upload.php")
-                httpConnection.requestMethod = "POST"
-                httpConnection.setRequestProperty("Content-Type", URLConnection.guessContentTypeFromName(file.path))
-                httpConnection.setRequestProperty("Content-Transfer-Encoding", "binary")
-                httpConnection.setRequestProperty("Content-Length", file.length().toString())
-
-                httpConnection.outputStream.use { output ->
+                val connection = createConnection("upload.php")
+                connection.requestMethod = "POST"
+                connection.setRequestProperty("Content-Type", URLConnection.guessContentTypeFromName(file.path))
+                connection.setRequestProperty("Content-Transfer-Encoding", "binary")
+                connection.setRequestProperty("Content-Length", file.length().toString())
+                connection.outputStream.use { output ->
                     file.inputStream().use { input ->
                         input.copyTo(output)
                     }
                 }
 
-                val status = httpConnection.responseCode
+                val status = connection.responseCode
                 if (status == HttpURLConnection.HTTP_OK) {
-                    val response = httpConnection.inputStream.bufferedReader().use { it.readText() }
+                    val response = connection.inputStream.bufferedReader().use { it.readText() }
                     try {
                         val jsonResponse = JSONObject(response)
                         val url = jsonResponse.getString("future_url")
                         imageLinks.add(url)
                     } catch (e: JSONException) {
-                        imageLinks.add("(error: upload failed)")
-                        Log.e(TAG, "Upload Failed: Unexpected response \"$response\"", e)
+                        throw ImageUploadException("Upload Failed: Unexpected response \"$response\"")
                     }
                 } else {
-                    imageLinks.add("(error: upload failed)")
-                    val error = httpConnection.errorStream.bufferedReader().use { it.readText() }
-                    Log.e(TAG, "Upload failed: Error code $status, Message: \"$error\"")
+                    val error = connection.errorStream.bufferedReader().use { it.readText() }
+                    throw ImageUploadException("Upload failed: Error code $status, Message: \"$error\"")
                 }
-
-                httpConnection.disconnect()
+                connection.disconnect()
             } catch (e: IOException) {
-                imageLinks.add("(error: upload failed)")
-                Log.e(TAG, "Upload failed", e)
+                throw ImageUploadException("Upload failed", e)
             }
-            // an error here should neither crash the app nor make the whole note upload
-            // fail but should not be silently ignored -> middle ground: include error message
-            // in note (comment) and log to console
         }
 
         return imageLinks
     }
 
+    /** Activate the images in the given note. Throws a ImageActivationException if there was any error */
     fun activate(noteId: Long) {
         try {
             val connection = createConnection("activate.php")
@@ -76,15 +66,13 @@ class StreetCompleteImageUploader(private val baseUrl: String) {
             connection.outputStream.bufferedWriter().use { it.write("{\"osm_note_id\": $noteId}") }
 
             val status = connection.responseCode
-            if (status == HttpURLConnection.HTTP_OK) {
-                val response = connection.inputStream.bufferedReader().use { it.readText() }
-                Log.d(TAG, "Activation successful: \"$response\"")
-            } else {
+            if (status != HttpURLConnection.HTTP_OK) {
                 val error = connection.errorStream.bufferedReader().use { it.readText() }
-                Log.e(TAG, "Activation failed: Error code $status, Message: \"$error\"")
+                throw ImageActivationException("Error code $status, Message: \"$error\"")
             }
+            connection.disconnect()
         } catch (e: IOException) {
-            Log.e(TAG, "Activation failed", e)
+            throw ImageActivationException("", e)
         }
     }
 
@@ -98,3 +86,8 @@ class StreetCompleteImageUploader(private val baseUrl: String) {
     }
 }
 
+class ImageUploadException(message: String? = null, cause: Throwable? = null)
+    : RuntimeException(message, cause)
+
+class ImageActivationException(message: String? = null, cause: Throwable? = null)
+    : RuntimeException(message, cause)

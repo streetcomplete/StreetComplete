@@ -17,6 +17,7 @@ import de.westnordost.osmapi.notes.NoteComment
 import de.westnordost.streetcomplete.data.osm.ElementKey
 import de.westnordost.streetcomplete.mock
 import java.util.*
+
 import java.util.concurrent.atomic.AtomicBoolean
 
 
@@ -100,6 +101,17 @@ class CreateNotesUploaderTest {
         uploader.upload(AtomicBoolean(false))
 
         verify(uploader.uploadedChangeListener)?.onDiscarded()
+    }
+
+    @Test fun `catches image upload exception`() {
+        val note = CreateNote(1, "jo ho", OsmLatLon(1.0, 2.0), null, null, listOf("hello"))
+        on(createNoteDB.getAll()).thenReturn(listOf(note))
+        on(singleCreateNoteUpload.upload(any())).thenThrow(ImageUploadException())
+
+        uploader.upload(AtomicBoolean(false))
+
+        verify(createNoteDB, never()).delete(anyLong())
+        // will not throw ElementConflictException and not delete the note from db
     }
 }
 

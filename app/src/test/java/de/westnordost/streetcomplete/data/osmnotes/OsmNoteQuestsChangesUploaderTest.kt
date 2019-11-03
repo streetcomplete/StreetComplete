@@ -78,6 +78,21 @@ class OsmNoteQuestsChangesUploaderTest {
         verifyZeroInteractions(questStatisticsDb)
         verify(uploader.uploadedChangeListener, times(quests.size))?.onDiscarded()
     }
+
+    @Test fun `catches image upload exception`() {
+        val quest = createQuest()
+        quest.imagePaths = listOf("hello")
+        on(questDB.getAll(statusIn = listOf(QuestStatus.ANSWERED))).thenReturn(listOf(quest))
+        on(singleNoteUploader.upload(any())).thenThrow(ImageUploadException())
+
+        uploader.upload(AtomicBoolean(false))
+
+        // will not throw ElementConflictException, nor delete the note from db, nor update it
+        verify(questDB, never()).delete(anyLong())
+        verify(questDB, never()).update(any())
+        verify(noteDB, never()).delete(anyLong())
+        verify(noteDB, never()).put(any())
+    }
 }
 
 private fun createNote(): Note {

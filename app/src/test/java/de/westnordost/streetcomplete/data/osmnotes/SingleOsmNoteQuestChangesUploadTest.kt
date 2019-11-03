@@ -9,11 +9,12 @@ import de.westnordost.streetcomplete.any
 import de.westnordost.streetcomplete.data.osm.upload.ConflictException
 import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.on
-import de.westnordost.streetcomplete.util.StreetCompleteImageUploader
 import org.junit.Before
 import org.junit.Test
-import org.mockito.ArgumentMatchers.anyLong
-import org.mockito.Mockito.*
+import org.mockito.ArgumentMatchers.*
+import org.mockito.Mockito
+import org.mockito.Mockito.never
+import org.mockito.Mockito.verify
 
 class SingleOsmNoteQuestChangesUploadTest {
     private lateinit var osmDao: NotesDao
@@ -62,6 +63,23 @@ class SingleOsmNoteQuestChangesUploadTest {
     fun `conflict exception is rethrown as ConflictException`() {
         on(osmDao.comment(anyLong(), any())).thenThrow(OsmConflictException(409, "title", "desc"))
         noteUploader.upload(createQuest())
+    }
+
+    @Test fun `error on activation of images is caught`() {
+        val quest = createQuest()
+        quest.imagePaths = listOf("hello")
+        on(imageUploader.activate(Mockito.anyLong())).thenThrow(ImageActivationException())
+
+        noteUploader.upload(quest)
+    }
+
+    @Test(expected = ImageUploadException::class)
+    fun `error on upload of images is not caught`() {
+        val quest = createQuest()
+        quest.imagePaths = listOf("hello")
+        on(imageUploader.activate(Mockito.anyLong())).thenThrow(ImageUploadException())
+
+        noteUploader.upload(quest)
     }
 
     private fun createNote(): Note {

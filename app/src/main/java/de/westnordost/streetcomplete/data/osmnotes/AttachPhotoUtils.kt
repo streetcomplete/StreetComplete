@@ -2,13 +2,11 @@ package de.westnordost.streetcomplete.data.osmnotes
 
 import java.io.File
 
-import de.westnordost.streetcomplete.util.StreetCompleteImageUploader
-
 object AttachPhotoUtils {
     fun uploadAndGetAttachedPhotosText(imageUploader: StreetCompleteImageUploader, imagePaths: List<String>?): String {
         if (imagePaths != null && imagePaths.isNotEmpty()) {
             val urls = imageUploader.upload(imagePaths)
-            if (urls != null && urls.isNotEmpty()) {
+            if (urls.isNotEmpty()) {
                 return "\n\nAttached photo(s):\n" + urls.joinToString("\n")
             }
         }

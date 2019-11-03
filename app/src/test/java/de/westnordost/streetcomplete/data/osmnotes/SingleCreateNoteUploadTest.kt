@@ -12,7 +12,6 @@ import de.westnordost.streetcomplete.data.osm.ElementKey
 import de.westnordost.streetcomplete.data.osm.upload.ConflictException
 import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.on
-import de.westnordost.streetcomplete.util.StreetCompleteImageUploader
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
@@ -142,6 +141,23 @@ class SingleCreateNoteUploadTest {
         assertEquals(existingNote, uploader.upload(createNote))
 
         verify(notesDao).comment(existingNote.id, createNote.text + "\n\nAttached photo(s):\nhello, too")
+    }
+
+    @Test fun `error on activation of images is caught`() {
+        val createNote = CreateNote(1, "jo", OsmLatLon(1.0, 2.0), null, null, listOf("hello"))
+        on(notesDao.create(any(), anyString())).thenReturn(newNote(null))
+        on(imageUploader.activate(anyLong())).thenThrow(ImageActivationException())
+
+        uploader.upload(createNote)
+    }
+
+    @Test(expected = ImageUploadException::class)
+    fun `error on upload of images is not caught`() {
+        val createNote = CreateNote(1, "jo", OsmLatLon(1.0, 2.0), null, null, listOf("hello"))
+        on(notesDao.create(any(), anyString())).thenReturn(newNote(null))
+        on(imageUploader.activate(anyLong())).thenThrow(ImageUploadException())
+
+        uploader.upload(createNote)
     }
 
     private fun setUpExistingNote(note: Note) {

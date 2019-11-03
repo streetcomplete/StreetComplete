@@ -1,11 +1,11 @@
 package de.westnordost.streetcomplete.data.osmnotes
 
+import android.util.Log
 import de.westnordost.osmapi.common.errors.OsmConflictException
 import de.westnordost.osmapi.common.errors.OsmNotFoundException
 import de.westnordost.osmapi.notes.Note
 import de.westnordost.osmapi.notes.NotesDao
 import de.westnordost.streetcomplete.data.osm.upload.ConflictException
-import de.westnordost.streetcomplete.util.StreetCompleteImageUploader
 import javax.inject.Inject
 
 /** Uploads a single note quest to OSM */
@@ -19,7 +19,7 @@ class SingleOsmNoteQuestChangesUpload @Inject constructor(
             val attachedPhotosText = AttachPhotoUtils.uploadAndGetAttachedPhotosText(imageUploader, quest.imagePaths)
             val newNote = osmDao.comment(quest.note.id, quest.comment + attachedPhotosText)
             if (!quest.imagePaths.isNullOrEmpty()) {
-                imageUploader.activate(newNote.id)
+                activateImages(newNote.id)
             }
             return newNote
         } catch (e: OsmNotFoundException) {
@@ -27,6 +27,14 @@ class SingleOsmNoteQuestChangesUpload @Inject constructor(
             throw ConflictException(e.message, e)
         } catch (e: OsmConflictException) {
             throw ConflictException(e.message, e)
+        }
+    }
+
+    private fun activateImages(noteId: Long) {
+        try {
+            imageUploader.activate(noteId)
+        } catch (e: ImageActivationException) {
+            Log.e("NoteImageUpload", "Image activation failed", e)
         }
     }
 }

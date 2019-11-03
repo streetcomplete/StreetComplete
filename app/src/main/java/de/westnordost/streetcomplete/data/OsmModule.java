@@ -47,7 +47,7 @@ import de.westnordost.osmapi.map.MapDataFactory;
 import de.westnordost.osmapi.map.OsmMapDataFactory;
 import de.westnordost.osmapi.notes.NotesDao;
 import de.westnordost.streetcomplete.quests.oneway.data.TrafficFlowSegmentsDao;
-import de.westnordost.streetcomplete.util.StreetCompleteImageUploader;
+import de.westnordost.streetcomplete.data.osmnotes.StreetCompleteImageUploader;
 import oauth.signpost.OAuthConsumer;
 
 @Module
