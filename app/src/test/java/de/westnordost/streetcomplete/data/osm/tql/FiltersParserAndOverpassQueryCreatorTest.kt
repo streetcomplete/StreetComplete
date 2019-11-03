@@ -161,9 +161,9 @@ class FiltersParserAndOverpassQueryCreatorTest {
     @Test fun `tag operator`() {
         check("nodes with highway=residential", "node[highway = residential];")
         check("nodes with highway!=residential", "node[highway != residential];")
-        check("nodes with highway~residential", "node[highway ~ '^residential$'];")
-        check("nodes with ~highway~residential", "node[~'^highway$' ~ '^residential$'];")
-        check("nodes with highway!~residential", "node[highway !~ '^residential$'];")
+        check("nodes with highway~residential", "node[highway ~ '^(residential)$'];")
+        check("nodes with ~highway~residential", "node[~'^(highway)$' ~ '^(residential)$'];")
+        check("nodes with highway!~residential", "node[highway !~ '^(residential)$'];")
     }
 
     @Test fun `tag negation not combinable with operator`() {
