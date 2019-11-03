@@ -12,6 +12,7 @@ import java.io.File
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osmnotes.AttachPhotoUtils
+import de.westnordost.streetcomplete.util.BitmapFactoryUtils
 import de.westnordost.streetcomplete.view.ListAdapter
 
 class NoteImageAdapter(list: List<String>, private val context: Context) : ListAdapter<String>(list) {
@@ -34,7 +35,7 @@ class NoteImageAdapter(list: List<String>, private val context: Context) : ListA
 
         override fun onBind(with: String) {
             itemView.doOnLayout {
-                val bitmap = AttachPhotoUtils.resize(with, imageView.width)
+                val bitmap = BitmapFactoryUtils.decodeScaledBitmapAndNormalize(with, imageView.width, imageView.height)
                 imageView.setImageBitmap(bitmap)
             }
         }

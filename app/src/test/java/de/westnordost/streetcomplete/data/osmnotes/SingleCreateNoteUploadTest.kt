@@ -12,7 +12,7 @@ import de.westnordost.streetcomplete.data.osm.ElementKey
 import de.westnordost.streetcomplete.data.osm.upload.ConflictException
 import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.on
-import de.westnordost.streetcomplete.util.ImageUploader
+import de.westnordost.streetcomplete.util.StreetCompleteImageUploader
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
@@ -21,7 +21,7 @@ import java.util.*
 
 class SingleCreateNoteUploadTest {
     private lateinit var notesDao: NotesDao
-    private lateinit var imageUploader: ImageUploader
+    private lateinit var imageUploader: StreetCompleteImageUploader
     private lateinit var uploader: SingleCreateNoteUpload
 
     @Before fun setUp() {

@@ -7,7 +7,6 @@ import java.io.File;
 import java.util.Arrays;
 import java.util.List;
 
-import javax.inject.Named;
 import javax.inject.Provider;
 import javax.inject.Singleton;
 
@@ -48,7 +47,7 @@ import de.westnordost.osmapi.map.MapDataFactory;
 import de.westnordost.osmapi.map.OsmMapDataFactory;
 import de.westnordost.osmapi.notes.NotesDao;
 import de.westnordost.streetcomplete.quests.oneway.data.TrafficFlowSegmentsDao;
-import de.westnordost.streetcomplete.util.ImageUploader;
+import de.westnordost.streetcomplete.util.StreetCompleteImageUploader;
 import oauth.signpost.OAuthConsumer;
 
 @Module
@@ -165,9 +164,9 @@ public class OsmModule
 		return new OsmAvatarsDownload(userDao, getAvatarsCacheDirectory(context));
 	}
 
-	@Provides public static ImageUploader imageUploader()
+	@Provides public static StreetCompleteImageUploader imageUploader()
 	{
-		return new ImageUploader(ApplicationConstants.SC_PHOTO_SERVICE_URL);
+		return new StreetCompleteImageUploader(ApplicationConstants.SC_PHOTO_SERVICE_URL);
 	}
 
 	@Provides public static List<? extends Uploader> uploaders(

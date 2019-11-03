@@ -7,7 +7,7 @@ import de.westnordost.osmapi.notes.Note
 import de.westnordost.osmapi.notes.NotesDao
 import de.westnordost.streetcomplete.ApplicationConstants.USER_AGENT
 import de.westnordost.streetcomplete.data.osm.upload.ConflictException
-import de.westnordost.streetcomplete.util.ImageUploader
+import de.westnordost.streetcomplete.util.StreetCompleteImageUploader
 import java.util.*
 import javax.inject.Inject
 
@@ -18,7 +18,7 @@ import javax.inject.Inject
  * been closed because the contribution is very likely obsolete (based on old data) */
 class SingleCreateNoteUpload @Inject constructor(
     private val osmDao: NotesDao,
-    private val imageUploader: ImageUploader
+    private val imageUploader: StreetCompleteImageUploader
 ) {
     fun upload(n: CreateNote): Note {
         if (n.elementKey != null) {

@@ -5,13 +5,13 @@ import de.westnordost.osmapi.common.errors.OsmNotFoundException
 import de.westnordost.osmapi.notes.Note
 import de.westnordost.osmapi.notes.NotesDao
 import de.westnordost.streetcomplete.data.osm.upload.ConflictException
-import de.westnordost.streetcomplete.util.ImageUploader
+import de.westnordost.streetcomplete.util.StreetCompleteImageUploader
 import javax.inject.Inject
 
 /** Uploads a single note quest to OSM */
 class SingleOsmNoteQuestChangesUpload @Inject constructor(
         private val osmDao: NotesDao,
-        private val imageUploader: ImageUploader
+        private val imageUploader: StreetCompleteImageUploader
 ){
 
     fun upload(quest: OsmNoteQuest): Note {

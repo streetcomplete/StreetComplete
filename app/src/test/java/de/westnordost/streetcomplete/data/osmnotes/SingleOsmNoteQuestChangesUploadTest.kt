@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.any
 import de.westnordost.streetcomplete.data.osm.upload.ConflictException
 import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.on
-import de.westnordost.streetcomplete.util.ImageUploader
+import de.westnordost.streetcomplete.util.StreetCompleteImageUploader
 import org.junit.Before
 import org.junit.Test
 import org.mockito.ArgumentMatchers.anyLong
@@ -17,7 +17,7 @@ import org.mockito.Mockito.*
 
 class SingleOsmNoteQuestChangesUploadTest {
     private lateinit var osmDao: NotesDao
-    private lateinit var imageUploader: ImageUploader
+    private lateinit var imageUploader: StreetCompleteImageUploader
     private lateinit var noteUploader: SingleOsmNoteQuestChangesUpload
 
     @Before fun setUp() {
