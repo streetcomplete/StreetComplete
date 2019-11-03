@@ -211,6 +211,8 @@ public class MainActivity extends AppCompatActivity implements
 
 		Injector.instance.getApplicationComponent().inject(this);
 
+		getLifecycle().addObserver(questAutoSyncer);
+
 		crashReportExceptionHandler.askUserToSendCrashReportIfExists(this);
 
 		soundFx.prepare(R.raw.plop0);
@@ -345,14 +347,12 @@ public class MainActivity extends AppCompatActivity implements
 	@Override protected void onResume()
 	{
 		super.onResume();
-		questAutoSyncer.onResume();
 		questAutoSyncer.triggerAutoUpload();
 	}
 
 	@Override public void onPause()
 	{
 		super.onPause();
-		questAutoSyncer.onPause();
 
 		LngLat pos = mapFragment.getPosition();
 		prefs.edit()
