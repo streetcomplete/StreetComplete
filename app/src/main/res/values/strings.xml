@@ -692,7 +692,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_recycling_type_batteries">Batteries</string>
     <string name="quest_recycling_type_cans">Cans</string>
     <string name="quest_recycling_type_clothes">Clothes</string>
-    <string name="quest_recycling_type_green_waste">Mown grass, green plants, cut branches</string>
+    <string name="quest_recycling_type_green_waste">Garden waste</string>
     <string name="quest_recycling_type_glass_bottles">Glass bottles</string>
     <string name="quest_recycling_type_paper">Paper</string>
     <string name="quest_recycling_type_plastic">Plastic</string>
