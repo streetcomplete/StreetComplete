@@ -8,6 +8,9 @@ import java.io.InputStream
 import de.westnordost.streetcomplete.data.osm.ElementGeometry
 import de.westnordost.osmapi.map.OsmMapDataFactory
 import de.westnordost.osmapi.map.data.*
+import de.westnordost.streetcomplete.data.osm.ElementPointGeometry
+import de.westnordost.streetcomplete.data.osm.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.util.SphericalEarthMath.centerPointOfPolyline
 
 import org.junit.Assert.*
 
@@ -22,7 +25,7 @@ class OverpassMapDataParserTest {
         assertEquals(5, node.id)
         assertEquals(1, node.version)
         assertNull(node.tags)
-        assertEquals(ElementGeometry(pos), eg.geometry)
+        assertEquals(ElementPointGeometry(pos), eg.geometry)
     }
 
     @Test fun way() {
@@ -39,8 +42,8 @@ class OverpassMapDataParserTest {
         assertEquals(1, way.version)
         assertEquals(listOf(2L,3L), way.nodeIds)
         assertEquals(
-	        ElementGeometry(listOf(ps), null),
-	        eg.geometry
+            ElementPolylinesGeometry(listOf(ps), centerPointOfPolyline(ps)),
+            eg.geometry
         )
     }
 
@@ -71,17 +74,17 @@ class OverpassMapDataParserTest {
         val relation = eg.element as Relation
         assertEquals(10, relation.id)
         assertEquals(1, relation.version)
-	    assertEquals(listOf(
-		    OsmRelationMember(4, "", Element.Type.RELATION),
-		    OsmRelationMember(1, "outer", Element.Type.WAY),
-		    OsmRelationMember(2, "inner", Element.Type.WAY),
-		    OsmRelationMember(3, "point", Element.Type.NODE)
-	    ), relation.members)
+        assertEquals(listOf(
+            OsmRelationMember(4, "", Element.Type.RELATION),
+            OsmRelationMember(1, "outer", Element.Type.WAY),
+            OsmRelationMember(2, "inner", Element.Type.WAY),
+            OsmRelationMember(3, "point", Element.Type.NODE)
+        ), relation.members)
         assertNull(relation.tags)
-	    assertEquals(
-		    ElementGeometry(listOf(p.subList(0,2), p.subList(2,4)), null),
-		    eg.geometry
-	    )
+        val way1Nodes = p.subList(0,2)
+        val way2Nodes = p.subList(2,4)
+        val expectedGeometry = ElementPolylinesGeometry(listOf(way1Nodes, way2Nodes), OsmLatLon(2.0, 3.0))
+        assertEquals(expectedGeometry, eg.geometry)
     }
 
     @Test fun tags() {
@@ -92,7 +95,7 @@ class OverpassMapDataParserTest {
             </relation>
         """)
 
-	    assertEquals(mapOf("a" to "b", "c" to "d"), eg.element.tags)
+        assertEquals(mapOf("a" to "b", "c" to "d"), eg.element.tags)
     }
 
     @Test fun skelInput() {
@@ -104,35 +107,35 @@ class OverpassMapDataParserTest {
     @Test fun parseSeveral() {
         val egs = parse("""
             <node id='1' version='1' lat='1' lon='4'/>
-			<way id='1' version='1'>
-			 <nd ref='2' lat='1' lon='3'/>
-			 <nd ref='3' lat='2' lon='4'/>
-			</way>
-			<relation id='1' version='1'>
-			 <member type='way' ref='2' role='inner'>
-			  <nd lat='1' lon='3'/>
-			  <nd lat='2' lon='4'/>
-			 </member>
-			</relation>
-		""")
+            <way id='1' version='1'>
+             <nd ref='2' lat='1' lon='3'/>
+             <nd ref='3' lat='2' lon='4'/>
+            </way>
+            <relation id='1' version='1'>
+             <member type='way' ref='2' role='inner'>
+              <nd lat='1' lon='3'/>
+              <nd lat='2' lon='4'/>
+             </member>
+            </relation>
+        """)
 
         assertEquals(3, egs.size)
     }
 
-	private fun parse(xml: String): List<ElementWithGeometry> {
-		val parser = OverpassMapDataParser(OsmMapDataFactory())
-		val result = mutableListOf<ElementWithGeometry>()
-		parser.setHandler { element, geometry ->
-			result.add(ElementWithGeometry(element, geometry))
-		}
-		parser.parse(xml.toInputStream())
-		return result
-	}
+    private fun parse(xml: String): List<ElementWithGeometry> {
+        val parser = OverpassMapDataParser(OsmMapDataFactory())
+        val result = mutableListOf<ElementWithGeometry>()
+        parser.setHandler { element, geometry ->
+            result.add(ElementWithGeometry(element, geometry))
+        }
+        parser.parse(xml.toInputStream())
+        return result
+    }
 
     private fun parseOne(xml: String) = parse(xml).first()
 
     private data class ElementWithGeometry(val element:Element, val geometry: ElementGeometry?)
 
     private fun String.toInputStream(): InputStream =
-	    ByteArrayInputStream(this.toByteArray(charset("UTF-8")))
+        ByteArrayInputStream(this.toByteArray(charset("UTF-8")))
 }

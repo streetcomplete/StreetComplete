@@ -15,6 +15,7 @@ import de.westnordost.streetcomplete.argumentCaptor
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryChange
+import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.on
 import org.junit.Assert.*
 import org.mockito.ArgumentCaptor
@@ -32,16 +33,16 @@ class SingleOsmElementTagChangesUploadTest {
     private val node: Node = OsmNode(nodeId, 1, pos, mutableMapOf())
 
     @Before fun setUp() {
-        osmDao = mock(MapDataDao::class.java)
+        osmDao = mock()
 
-	    quest = mock(HasElementTagChanges::class.java)
-	    on(quest.changes).thenReturn(changes(StringMapEntryAdd("a key","a value")))
+        quest = mock()
+        on(quest.changes).thenReturn(changes(StringMapEntryAdd("a key","a value")))
         on(quest.isApplicableTo(any())).thenReturn(true)
 
         uploader = SingleOsmElementTagChangesUpload(osmDao)
     }
 
-	@Test fun `applies changes and uploads element`() {
+    @Test fun `applies changes and uploads element`() {
         on(quest.changes).thenReturn(changes(StringMapEntryAdd("test","123")))
         willUploadSuccessfully(node)
 
@@ -51,7 +52,7 @@ class SingleOsmElementTagChangesUploadTest {
         assertEquals(mapOf("test" to "123"), element.tags)
     }
 
-	@Test fun `handles a solvable conflict`() {
+    @Test fun `handles a solvable conflict`() {
         on(quest.changes).thenReturn(changes(StringMapEntryAdd("a key","a value")))
 
         val newNode = createNode(2, mapOf("another key" to "another value"))
@@ -65,7 +66,7 @@ class SingleOsmElementTagChangesUploadTest {
             mapOf("a key" to "a value", "another key" to "another value"),
             element.tags
         )
-	}
+    }
 
     @Test fun `handles a conflict caused by negative version of element`() {
         on(quest.changes).thenReturn(changes(StringMapEntryAdd("a key","a value")))
@@ -90,30 +91,30 @@ class SingleOsmElementTagChangesUploadTest {
 
     @Test(expected = ElementConflictException::class)
     fun `raise conflict when updated element changed the same tag`() {
-	    // quest wants to add key=123, but the updated element already has key=abc
+        // quest wants to add key=123, but the updated element already has key=abc
         on(quest.changes).thenReturn(changes(StringMapEntryAdd("key","123")))
 
         reportConflictOnUpload()
-	    on(osmDao.getNode(nodeId)).thenReturn(createNode(2, mapOf("key" to "abc")))
+        on(osmDao.getNode(nodeId)).thenReturn(createNode(2, mapOf("key" to "abc")))
 
         uploader.upload(0L, quest, node)
-	}
+    }
 
     @Test(expected = ElementConflictException::class)
-	fun `raise conflict when a tag value of the change is too long`() {
+    fun `raise conflict when a tag value of the change is too long`() {
         on(quest.changes).thenReturn(changes(StringMapEntryAdd("too","l"+"o".repeat(1000)+"ng")))
 
         uploader.upload(0L, quest, node)
-	}
+    }
 
     @Test(expected = ElementConflictException::class)
-	fun `raise conflict when the updated element is no longer applicable to the quest`() {
+    fun `raise conflict when the updated element is no longer applicable to the quest`() {
         reportConflictOnUpload()
-		on(osmDao.getNode(nodeId)).thenReturn(createNode(2))
+        on(osmDao.getNode(nodeId)).thenReturn(createNode(2))
         on(quest.isApplicableTo(any())).thenReturn(false)
 
         uploader.upload(0L, quest, node)
-	}
+    }
 
     @Test fun `do not raise conflict when the quest is no longer applicable but is ignored by quest`() {
         val newNode = createNode(2)
@@ -200,14 +201,14 @@ class SingleOsmElementTagChangesUploadTest {
         uploader.upload(0L, quest, old)
     }
 
-	@Test(expected = ChangesetConflictException::class)
+    @Test(expected = ChangesetConflictException::class)
     fun `do not catch a changeset conflict exception`() {
-		// OSM Dao returns an element with the same version as in the database
+        // OSM Dao returns an element with the same version as in the database
         reportConflictOnUpload()
         on(osmDao.getNode(anyLong())).thenReturn(node)
 
         uploader.upload(0L, quest, node)
-	}
+    }
 
     @Test(expected = ElementConflictException::class)
     fun `raise runtime exception if API continues to report conflict`() {

@@ -36,7 +36,6 @@ class AddReligionForm : AImageListQuestAnswerFragment<String,String>() {
         Item("caodaism",  R.drawable.ic_religion_caodaist,  R.string.quest_religion_caodaist) // Vietnam
     ).sortedBy(countryInfo.popularReligions)
 
-    override val maxSelectableItems = 1
     override val maxNumberOfInitiallyShownItems = 4
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -14,10 +14,10 @@ import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestDao
 import de.westnordost.streetcomplete.data.visiblequests.OrderedVisibleQuestTypesProvider
+import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.on
 
 import org.junit.Assert.*
-import org.mockito.Mockito.mock
 import org.mockito.Mockito.verify
 
 class OsmQuestGiverTest {
@@ -27,22 +27,19 @@ class OsmQuestGiverTest {
     private lateinit var osmQuestUnlocker: OsmQuestGiver
     private lateinit var questType: OsmElementQuestType<*>
 
-	private val POS = OsmLatLon(10.0, 10.0)
-	private val NODE = OsmNode(1, 0, POS, null, null, null)
-
     @Before fun setUp() {
-        val elementGeometryDao = mock(ElementGeometryDao::class.java)
-        on(elementGeometryDao.get(Element.Type.NODE, 1)).thenReturn(ElementGeometry(POS))
+        val elementGeometryDao: ElementGeometryDao = mock()
+        on(elementGeometryDao.get(Element.Type.NODE, 1)).thenReturn(ElementPointGeometry(POS))
 
-        osmNoteQuestDao = mock(OsmNoteQuestDao::class.java)
+        osmNoteQuestDao = mock()
         on(osmNoteQuestDao.getAllPositions(any())).thenReturn(emptyList())
 
-        osmQuestDao = mock(OsmQuestDao::class.java)
-        on(osmQuestDao.getAll(null, null, null, Element.Type.NODE, 1L)).thenReturn(emptyList())
+        osmQuestDao = mock()
+        on(osmQuestDao.getAll(element = ElementKey(Element.Type.NODE, 1))).thenReturn(emptyList())
 
-        questType = mock(OsmElementQuestType::class.java)
+        questType = mock()
 
-        val questTypeProvider = mock(OrderedVisibleQuestTypesProvider::class.java)
+        val questTypeProvider: OrderedVisibleQuestTypesProvider = mock()
         on(questTypeProvider.get()).thenReturn(listOf(questType))
 
         osmQuestUnlocker = OsmQuestGiver(osmNoteQuestDao, osmQuestDao, elementGeometryDao, questTypeProvider)
@@ -56,8 +53,8 @@ class OsmQuestGiverTest {
     }
 
     @Test fun `previous quest blocks new quest`() {
-        val q = OsmQuest(questType, Element.Type.NODE, 1, ElementGeometry(POS))
-        on(osmQuestDao.getAll(null, null, null, Element.Type.NODE, 1L)).thenReturn(listOf(q))
+        val q = OsmQuest(questType, Element.Type.NODE, 1, ElementPointGeometry(POS))
+        on(osmQuestDao.getAll(element = ElementKey(Element.Type.NODE, 1))).thenReturn(listOf(q))
         on(questType.isApplicableTo(NODE)).thenReturn(true)
 
         val r = osmQuestUnlocker.updateQuests(NODE)
@@ -74,15 +71,15 @@ class OsmQuestGiverTest {
     }
 
     @Test fun `not applicable removes previous quest`() {
-        val q = OsmQuest(123L, questType, Element.Type.NODE, 1, QuestStatus.NEW, null, null, Date(), ElementGeometry(POS))
-        on(osmQuestDao.getAll(null, null, null, Element.Type.NODE, 1L)).thenReturn(listOf(q))
+        val q = OsmQuest(123L, questType, Element.Type.NODE, 1, QuestStatus.NEW, null, null, Date(), ElementPointGeometry(POS))
+        on(osmQuestDao.getAll(element = ElementKey(Element.Type.NODE, 1))).thenReturn(listOf(q))
         on(questType.isApplicableTo(NODE)).thenReturn(false)
 
         val r = osmQuestUnlocker.updateQuests(NODE)
         assertTrue(r.createdQuests.isEmpty())
         assertEquals(123L, r.removedQuestIds.single())
 
-        verify(osmQuestDao).deleteAll(listOf(123L))
+        verify(osmQuestDao).deleteAllIds(listOf(123L))
     }
 
     @Test fun `applicable adds new quest`() {
@@ -93,7 +90,10 @@ class OsmQuestGiverTest {
         assertEquals(Element.Type.NODE, quest.elementType)
         assertEquals(questType, quest.type)
 
-        verify(osmQuestDao).deleteAllReverted(Element.Type.NODE, 1)
+        verify(osmQuestDao).deleteAll(statusIn = listOf(QuestStatus.REVERT), element = ElementKey(Element.Type.NODE, 1))
         verify(osmQuestDao).addAll(listOf(quest))
     }
 }
+
+private val POS = OsmLatLon(10.0, 10.0)
+private val NODE = OsmNode(1, 0, POS, null, null, null)

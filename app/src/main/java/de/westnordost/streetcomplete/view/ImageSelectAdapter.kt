@@ -21,7 +21,7 @@ class ImageSelectAdapter<T>(private val maxSelectableIndices: Int = -1) :
 
     var cellLayoutId = R.layout.cell_labeled_image_select
 
-    val listeners = mutableListOf<ImageSelectAdapter.OnItemSelectionListener>()
+    val listeners = mutableListOf<OnItemSelectionListener>()
 
     val selectedItems get() = _selectedIndices.map { i -> items[i].value!! }
 

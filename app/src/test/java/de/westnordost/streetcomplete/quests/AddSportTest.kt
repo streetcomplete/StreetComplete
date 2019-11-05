@@ -2,15 +2,13 @@ package de.westnordost.streetcomplete.quests
 
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryModify
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.quests.sport.AddSport
 import org.junit.Test
 
-import org.mockito.Mockito.mock
-
 class AddSportTest {
 
-    private val questType = AddSport(mock(OverpassMapDataDao::class.java))
+    private val questType = AddSport(mock())
 
     @Test fun `replace hockey when applying answer`() {
         questType.verifyAnswer(

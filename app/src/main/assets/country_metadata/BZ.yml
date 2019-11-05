@@ -1,6 +1,7 @@
 # Do not edit. Source files are in /res/country_metadata
-measurementSystem: [imperial, metric]
+lengthUnits: [foot and inch, meter]
 mobileCountryCode: 702
 officialLanguages: [en, bzj]
 orchardProduces: [orange, banana, grapefruit, tomato, chilli_pepper, sweet_pepper, pineapple, papaya,
   coconut, cacao, coffee, guava, mango, mangosteen]
+speedUnits: [miles per hour, kilometers per hour]

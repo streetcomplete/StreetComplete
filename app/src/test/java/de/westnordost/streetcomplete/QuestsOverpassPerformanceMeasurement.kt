@@ -4,48 +4,32 @@ import de.westnordost.osmapi.ApiRequestWriter
 import de.westnordost.osmapi.OsmConnection
 import de.westnordost.osmapi.common.errors.OsmApiException
 import de.westnordost.osmapi.map.data.BoundingBox
-import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.download.*
-import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestType
 import de.westnordost.streetcomplete.quests.QuestModule
-import de.westnordost.streetcomplete.quests.localized_name.data.PutRoadNameSuggestionsHandler
-import de.westnordost.streetcomplete.quests.localized_name.data.RoadNameSuggestionsDao
-import de.westnordost.streetcomplete.quests.oneway.data.TrafficFlowSegmentsDao
-import de.westnordost.streetcomplete.quests.oneway.data.WayTrafficFlowDao
-import org.mockito.Mockito.mock
 import java.io.OutputStream
 import java.lang.Thread.sleep
 import java.net.URLEncoder
-import java.util.concurrent.FutureTask
 import kotlin.system.measureTimeMillis
 
 fun main() {
 
     val overpassMapDataDao = TestOverpassMapDataDao()
 
-    val overpassMock = mock(OverpassMapDataDao::class.java)
+    val overpassMock: OverpassMapDataDao = mock()
     on(overpassMock.getAndHandleQuota(any(), any())).then { invocation ->
         overpassMapDataDao.get(invocation.getArgument(0) as String)
         true
     }
 
-    val registry = QuestModule.questTypeRegistry(
-        mock(OsmNoteQuestType::class.java),
-        overpassMock,
-        mock(RoadNameSuggestionsDao::class.java),
-        mock(PutRoadNameSuggestionsHandler::class.java),
-        mock(TrafficFlowSegmentsDao::class.java),
-        mock(WayTrafficFlowDao::class.java),
-        mock(FutureTask::class.java) as FutureTask<FeatureDictionary>?
-    )
+    val registry = QuestModule.questTypeRegistry(mock(), overpassMock, mock(), mock(), mock(), mock(), mock())
 
     val hamburg = BoundingBox(53.5, 9.9, 53.6, 10.0)
 
     for (questType in registry.all) {
         if (questType is OsmElementQuestType) {
             print(questType.javaClass.simpleName + ": ")
-            questType.download(hamburg, mock(MapDataWithGeometryHandler::class.java))
+            questType.download(hamburg, mock())
             println()
         }
     }

@@ -15,6 +15,7 @@ import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.graphics.Rect;
+import android.location.Location;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -42,7 +43,6 @@ import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.OvershootInterpolator;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -51,6 +51,7 @@ import android.widget.Toast;
 
 import com.mapzen.tangram.LngLat;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.Locale;
@@ -79,6 +80,7 @@ import de.westnordost.streetcomplete.data.QuestGroup;
 import de.westnordost.streetcomplete.data.VisibleQuestListener;
 import de.westnordost.streetcomplete.data.download.QuestDownloadProgressListener;
 import de.westnordost.streetcomplete.data.download.QuestDownloadService;
+import de.westnordost.streetcomplete.data.osm.ElementPolylinesGeometry;
 import de.westnordost.streetcomplete.data.osm.OsmQuest;
 import de.westnordost.streetcomplete.data.osm.changes.SplitPolylineAtPosition;
 import de.westnordost.streetcomplete.data.upload.QuestChangesUploadProgressListener;
@@ -150,6 +152,7 @@ public class MainActivity extends AppCompatActivity implements
 	private MenuItem btnUndo;
 
 	private float mapRotation, mapTilt;
+	private Location locationWhenOpenedQuest;
 	private boolean isFollowingPosition;
 	private boolean isCompassMode;
 
@@ -524,7 +527,6 @@ public class MainActivity extends AppCompatActivity implements
 		if(dontShowRequestAuthorizationAgain) return;
 
 		View inner = LayoutInflater.from(this).inflate(R.layout.dialog_authorize_now, null, false);
-		final CheckBox checkBox = inner.findViewById(R.id.checkBoxDontShowAgain);
 
 		new AlertDialog.Builder(this)
 				.setView(inner)
@@ -536,7 +538,7 @@ public class MainActivity extends AppCompatActivity implements
 				})
 				.setNegativeButton(R.string.later, (dialog, which) ->
 				{
-					dontShowRequestAuthorizationAgain = checkBox.isChecked();
+					dontShowRequestAuthorizationAgain = true;
 				}).show();
 	}
 
@@ -596,7 +598,7 @@ public class MainActivity extends AppCompatActivity implements
 		{
 			if (!oAuth.isAuthorized()) {
 				// new users should not be immediately pestered to login after each change (#1446)
-				if(answersCounter.waitingForUpload() > 5) {
+				if(answersCounter.waitingForUpload() >= 3) {
 					requestOAuthorized();
 				}
 			}
@@ -777,7 +779,8 @@ public class MainActivity extends AppCompatActivity implements
 
 	@Override public void onAnsweredQuest(long questId, @NonNull QuestGroup group, @NonNull Object answer)
 	{
-		questSource.findSource(questId, group, mapFragment.getDisplayedLocation(), source ->
+		Location currentLocation = mapFragment.getDisplayedLocation();
+		questSource.findSource(questId, group, Arrays.asList(currentLocation, locationWhenOpenedQuest), source ->
 		{
 			closeQuestDetailsFor(questId, group);
 			Quest quest = questController.get(questId, group);
@@ -801,7 +804,10 @@ public class MainActivity extends AppCompatActivity implements
 		if (quest == null) return;
 		OsmElement element = questController.getOsmElement((OsmQuest) quest);
 		if (!(element instanceof Way)) return;
-		showInBottomSheet(SplitWayFragment.create(osmQuestId, (Way) element, quest.getGeometry()));
+		mapFragment.setIsShowingQuests(false);
+		showInBottomSheet(SplitWayFragment.create(
+			osmQuestId, (Way) element, (ElementPolylinesGeometry) quest.getGeometry()
+		));
 	}
 
 	@Override public void onSkippedQuest(long questId, @NonNull QuestGroup group)
@@ -854,7 +860,8 @@ public class MainActivity extends AppCompatActivity implements
 
 	@Override public void onSplittedWay(long osmQuestId, @NonNull List<? extends SplitPolylineAtPosition> splits)
 	{
-		questSource.findSource(osmQuestId, QuestGroup.OSM, mapFragment.getDisplayedLocation(), source ->
+		Location currentLocation = mapFragment.getDisplayedLocation();
+		questSource.findSource(osmQuestId, QuestGroup.OSM, Arrays.asList(currentLocation, locationWhenOpenedQuest), source ->
 		{
 			Quest quest = questController.get(osmQuestId, QuestGroup.OSM);
 			closeQuestDetailsFor(osmQuestId, QuestGroup.OSM);
@@ -949,6 +956,7 @@ public class MainActivity extends AppCompatActivity implements
 	{
 		freezeMap();
 		showInBottomSheet(new CreateNoteFragment());
+		mapFragment.setShow3DBuildings(false);
 	}
 
 	/* ---------------------------------- VisibleQuestListener ---------------------------------- */
@@ -998,6 +1006,7 @@ public class MainActivity extends AppCompatActivity implements
 			((IsCloseableBottomSheet)f).onClickClose(() ->
 			{
 				getSupportFragmentManager().popBackStackImmediate(BOTTOM_SHEET, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+				mapFragment.setShow3DBuildings(true);
 				unfreezeMap();
 			});
 		}
@@ -1071,6 +1080,7 @@ public class MainActivity extends AppCompatActivity implements
 		f.setArguments(args);
 
 		freezeMap();
+		locationWhenOpenedQuest = mapFragment.getDisplayedLocation();
 		showInBottomSheet(f);
 	}
 
@@ -1104,6 +1114,7 @@ public class MainActivity extends AppCompatActivity implements
 		mapFragment.setCompassMode(isCompassMode);
 		mapFragment.removeQuestGeometry();
 		mapFragment.showMapControls();
+		mapFragment.setIsShowingQuests(true);
 	}
 
 	/* ---------------------------------- MapFragment.Listener ---------------------------------- */

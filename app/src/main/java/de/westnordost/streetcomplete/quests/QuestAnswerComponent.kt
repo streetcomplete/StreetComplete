@@ -19,9 +19,9 @@ class QuestAnswerComponent {
     fun onCreate(args: Bundle?) {
 
         if (args == null || args.getLong(ARG_QUEST_ID, -1) == -1L || args.getString(ARG_QUEST_GROUP, null) == null) {
-	        throw IllegalStateException(
-		        "Use QuestAnswerComponent.createArguments and pass the created bundle as an argument."
-	        )
+            throw IllegalStateException(
+                "Use QuestAnswerComponent.createArguments and pass the created bundle as an argument."
+            )
         }
 
         questId = args.getLong(ARG_QUEST_ID)

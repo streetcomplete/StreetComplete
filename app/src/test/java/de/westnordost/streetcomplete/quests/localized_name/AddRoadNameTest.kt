@@ -1,23 +1,16 @@
 package de.westnordost.streetcomplete.quests.localized_name
 
-import de.westnordost.streetcomplete.data.osm.ElementGeometry
+import de.westnordost.osmapi.map.data.OsmLatLon
+import de.westnordost.streetcomplete.data.osm.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryModify
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
-import de.westnordost.streetcomplete.quests.localized_name.data.PutRoadNameSuggestionsHandler
-import de.westnordost.streetcomplete.quests.localized_name.data.RoadNameSuggestionsDao
+import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import org.junit.Test
 
-import org.mockito.Mockito.mock
-
 class AddRoadNameTest {
 
-    private val questType = AddRoadName(
-        mock(OverpassMapDataDao::class.java),
-        mock(RoadNameSuggestionsDao::class.java),
-        mock(PutRoadNameSuggestionsHandler::class.java)
-    )
+    private val questType = AddRoadName(mock(), mock(), mock())
 
     private val tags = mapOf("highway" to "residential")
 
@@ -83,7 +76,7 @@ class AddRoadNameTest {
         questType.verifyAnswer(
             tags,
             RoadIsServiceRoad,
-            StringMapEntryModify("highway", tags["highway"], "service")
+            StringMapEntryModify("highway", tags.getValue("highway"), "service")
         )
     }
 
@@ -91,7 +84,7 @@ class AddRoadNameTest {
         questType.verifyAnswer(
             tags,
             RoadIsTrack,
-            StringMapEntryModify("highway", tags["highway"], "track")
+            StringMapEntryModify("highway", tags.getValue("highway"), "track")
         )
     }
 
@@ -107,6 +100,9 @@ class AddRoadNameTest {
     }
 
     // convenience method
-    private fun roadName(vararg names:LocalizedName) =
-        RoadName(names.toList(), 1L, mock(ElementGeometry::class.java))
+    private fun roadName(vararg names:LocalizedName): RoadName {
+        val pointsList = listOf(listOf(OsmLatLon(0.0,0.0), OsmLatLon(1.0,1.0)))
+        val geometry = ElementPolylinesGeometry(pointsList, OsmLatLon(0.0, 0.0))
+        return RoadName(names.toList(), 1L, geometry)
+    }
 }

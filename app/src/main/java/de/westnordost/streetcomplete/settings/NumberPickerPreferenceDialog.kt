@@ -23,13 +23,13 @@ class NumberPickerPreferenceDialog : PreferenceDialogFragmentCompat() {
         if(index == -1) {
             do ++index while(index < intValues.lastIndex && intValues[index] < pref.value)
         }
-	    picker.apply {
+        picker.apply {
             displayedValues = values
-		    minValue = 0
-		    maxValue = values.size - 1
-		    value = index
-		    wrapSelectorWheel = false
-	    }
+            minValue = 0
+            maxValue = values.size - 1
+            value = index
+            wrapSelectorWheel = false
+        }
     }
 
     override fun onDialogClosed(positiveResult: Boolean) {

@@ -4,7 +4,10 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import java.io.File;
+import java.util.Arrays;
+import java.util.List;
 
+import javax.inject.Named;
 import javax.inject.Provider;
 import javax.inject.Singleton;
 
@@ -23,14 +26,18 @@ import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestSplitWayDao;
 import de.westnordost.streetcomplete.data.osm.persist.UndoOsmQuestDao;
 import de.westnordost.streetcomplete.data.osm.upload.OpenQuestChangesetsManager;
-import de.westnordost.streetcomplete.data.osm.upload.OsmQuestsUpload;
+import de.westnordost.streetcomplete.data.osm.upload.OsmQuestsUploader;
 import de.westnordost.streetcomplete.data.osm.upload.SingleOsmElementTagChangesUpload;
 import de.westnordost.streetcomplete.data.osm.upload.SplitSingleWayUpload;
-import de.westnordost.streetcomplete.data.osm.upload.SplitWaysUpload;
-import de.westnordost.streetcomplete.data.osm.upload.UndoOsmQuestsUpload;
+import de.westnordost.streetcomplete.data.osm.upload.SplitWaysUploader;
+import de.westnordost.streetcomplete.data.osm.upload.UndoOsmQuestsUploader;
+import de.westnordost.streetcomplete.data.osmnotes.CreateNotesUploader;
 import de.westnordost.streetcomplete.data.osmnotes.OsmAvatarsDownload;
+import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestsChangesUploader;
 import de.westnordost.streetcomplete.data.statistics.QuestStatisticsDao;
 import de.westnordost.streetcomplete.data.tiles.DownloadedTilesDao;
+import de.westnordost.streetcomplete.data.upload.Uploader;
+import de.westnordost.streetcomplete.data.upload.VersionIsBannedChecker;
 import de.westnordost.streetcomplete.oauth.OAuthPrefs;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataParser;
@@ -124,32 +131,32 @@ public class OsmModule
 		return new MapDataDao(osm);
 	}
 
-	@Provides public static OsmQuestsUpload osmQuestsUpload(
+	@Provides public static OsmQuestsUploader osmQuestsUpload(
 		MergedElementDao elementDB, ElementGeometryDao elementGeometryDB,
 		OpenQuestChangesetsManager changesetManager, OsmQuestGiver questGiver,
 		QuestStatisticsDao statisticsDB, OsmApiWayGeometrySource wayGeometrySource,
 		OsmQuestDao questDB, SingleOsmElementTagChangesUpload singleChangeUpload,
 		DownloadedTilesDao downloadedTilesDao) {
-		return new OsmQuestsUpload(elementDB, elementGeometryDB, changesetManager, questGiver,
+		return new OsmQuestsUploader(elementDB, elementGeometryDB, changesetManager, questGiver,
 			statisticsDB, new ElementGeometryCreator(wayGeometrySource), questDB,
 			singleChangeUpload, downloadedTilesDao);
 	}
 
-	@Provides public static UndoOsmQuestsUpload undoOsmQuestsUpload(
+	@Provides public static UndoOsmQuestsUploader undoOsmQuestsUpload(
 		MergedElementDao elementDB, ElementGeometryDao elementGeometryDB,
 		OpenQuestChangesetsManager changesetManager, OsmQuestGiver questGiver,
 		QuestStatisticsDao statisticsDB, OsmApiWayGeometrySource wayGeometrySource,
 		UndoOsmQuestDao questDB, SingleOsmElementTagChangesUpload singleChangeUpload) {
-		return new UndoOsmQuestsUpload(elementDB, elementGeometryDB, changesetManager, questGiver,
+		return new UndoOsmQuestsUploader(elementDB, elementGeometryDB, changesetManager, questGiver,
 			statisticsDB, new ElementGeometryCreator(wayGeometrySource), questDB, singleChangeUpload);
 	}
 
-	@Provides public static SplitWaysUpload splitWaysUpload(
+	@Provides public static SplitWaysUploader splitWaysUpload(
 		MergedElementDao elementDB, ElementGeometryDao elementGeometryDB,
 		OpenQuestChangesetsManager changesetManager, OsmQuestGiver questGiver,
 		QuestStatisticsDao statisticsDB, OsmApiWayGeometrySource wayGeometrySource,
 		OsmQuestSplitWayDao questDB, SplitSingleWayUpload singleUpload) {
-		return new SplitWaysUpload(elementDB, elementGeometryDB, changesetManager, questGiver,
+		return new SplitWaysUploader(elementDB, elementGeometryDB, changesetManager, questGiver,
 			statisticsDB, new ElementGeometryCreator(wayGeometrySource), questDB, singleUpload);
 	}
 
@@ -163,8 +170,23 @@ public class OsmModule
 		return new ImageUploader(ApplicationConstants.SC_PHOTO_SERVICE_URL);
 	}
 
+	@Provides public static List<? extends Uploader> uploaders(
+		OsmNoteQuestsChangesUploader osmNoteQuestsChangesUploader,
+		UndoOsmQuestsUploader undoOsmQuestsUploader, OsmQuestsUploader osmQuestsUploader,
+		SplitWaysUploader splitWaysUploader, CreateNotesUploader createNotesUploader
+	) {
+		return Arrays.asList(osmNoteQuestsChangesUploader, undoOsmQuestsUploader, osmQuestsUploader,
+			splitWaysUploader, createNotesUploader);
+	}
+
 	public static File getAvatarsCacheDirectory(Context context)
 	{
 		return new File(context.getCacheDir(), ApplicationConstants.AVATARS_CACHE_DIRECTORY);
+	}
+
+	@Provides public static VersionIsBannedChecker checkVersionIsBanned() {
+		return new VersionIsBannedChecker(
+			"https://www.westnordost.de/streetcomplete/banned_versions.txt",
+			ApplicationConstants.USER_AGENT);
 	}
 }

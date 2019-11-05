@@ -15,7 +15,6 @@ import javax.inject.Singleton;
 import de.westnordost.osmapi.map.data.Fixed1E7LatLon;
 import de.westnordost.streetcomplete.data.osm.changes.SplitAtLinePosition;
 import de.westnordost.streetcomplete.data.osm.changes.SplitAtPoint;
-import de.westnordost.streetcomplete.data.osm.changes.SplitPolylineAtPosition;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChanges;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryDelete;

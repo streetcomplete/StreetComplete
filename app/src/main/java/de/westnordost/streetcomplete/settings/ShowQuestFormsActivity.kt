@@ -18,7 +18,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.QuestGroup
 import de.westnordost.streetcomplete.data.QuestType
 import de.westnordost.streetcomplete.data.QuestTypeRegistry
-import de.westnordost.streetcomplete.data.osm.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.ElementPointGeometry
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.OsmQuestAnswerListener
 import de.westnordost.streetcomplete.quests.QuestAnswerComponent
@@ -32,10 +32,10 @@ class ShowQuestFormsActivity : AppCompatActivity(), OsmQuestAnswerListener {
     @Inject internal lateinit var prefs: SharedPreferences
     private val showQuestFormAdapter: ShowQuestFormAdapter = ShowQuestFormAdapter()
 
-	init {
-		Injector.instance.applicationComponent.inject(this)
-        showQuestFormAdapter.list = questTypeRegistry.all
-	}
+    init {
+        Injector.instance.applicationComponent.inject(this)
+        showQuestFormAdapter.list = questTypeRegistry.all.toMutableList()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -79,7 +79,7 @@ class ShowQuestFormsActivity : AppCompatActivity(), OsmQuestAnswerListener {
         val lat = Double.fromBits(prefs.getLong(Prefs.MAP_LATITUDE, 0.0.toBits()))
         val lng = Double.fromBits(prefs.getLong(Prefs.MAP_LONGITUDE, 0.0.toBits()))
         val pos = OsmLatLon(lat, lng)
-        val elementGeometry = ElementGeometry(pos)
+        val elementGeometry = ElementPointGeometry(pos)
         val element = OsmNode(1, 1, pos, mapOf("highway" to "cycleway", "building" to "residential"))
 
         val f = questType.createForm()

@@ -2,24 +2,24 @@ package de.westnordost.streetcomplete;
 
 import android.app.Activity;
 import android.location.Location;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.CheckBox;
 
 import java.util.Collections;
+import java.util.List;
 
 import javax.inject.Inject;
 
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.osmapi.map.data.OsmLatLon;
-import de.westnordost.streetcomplete.R;
 import de.westnordost.streetcomplete.data.QuestGroup;
 import de.westnordost.streetcomplete.data.osm.ElementGeometry;
+import de.westnordost.streetcomplete.data.osm.ElementPolygonsGeometry;
+import de.westnordost.streetcomplete.data.osm.ElementPolylinesGeometry;
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestDao;
-import de.westnordost.streetcomplete.util.FlattenIterable;
 import de.westnordost.streetcomplete.util.SphericalEarthMath;
 
 
@@ -69,10 +69,10 @@ public class FindQuestSourceComponent
 		this.activity = context;
 	}
 
-	public void findSource(final long questId, final QuestGroup group, @Nullable final Location location,
+	public void findSource(final long questId, final QuestGroup group, final List<Location> locations,
 						   final Listener listener)
 	{
-		if(dontShowAgain || isWithinSurveyDistance(questId, group, location))
+		if(dontShowAgain || isWithinSurveyDistance(questId, group, locations))
 		{
 			listener.onFindQuestSourceResult(SURVEY);
 		}
@@ -100,23 +100,29 @@ public class FindQuestSourceComponent
 		}
 	}
 
-	private boolean isWithinSurveyDistance(long questId, QuestGroup group, @Nullable Location location)
+	private boolean isWithinSurveyDistance(long questId, QuestGroup group, List<Location> locations)
 	{
 		ElementGeometry geometry = getQuestGeometry(questId, group);
-		if(geometry == null || location == null) return false;
+		if(geometry == null) return false;
 
-		LatLon loc = new OsmLatLon(location.getLatitude(), location.getLongitude());
-
-		FlattenIterable<LatLon> itb = new FlattenIterable<>(LatLon.class);
-		if(geometry.polygons != null) itb.add(geometry.polygons);
-		else if(geometry.polylines != null) itb.add(geometry.polylines);
-		else itb.add(Collections.singleton(geometry.center));
-		for (LatLon pos : itb)
+		for (Location location : locations)
 		{
-			double distance = SphericalEarthMath.distance(loc, pos);
-			if(distance < location.getAccuracy() + MAX_DISTANCE_TO_ELEMENT_FOR_SURVEY) return true;
-		}
+			if (location == null) continue;
+			LatLon loc = new OsmLatLon(location.getLatitude(), location.getLongitude());
 
+			List<List<LatLon>> polyLines;
+			if (geometry instanceof ElementPolylinesGeometry)
+				polyLines = ((ElementPolylinesGeometry)geometry).getPolylines();
+			else if (geometry instanceof ElementPolygonsGeometry)
+				polyLines = ((ElementPolygonsGeometry)geometry).getPolygons();
+			else polyLines = Collections.singletonList(Collections.singletonList(geometry.getCenter()));
+
+			for (List<LatLon> polyLine : polyLines)
+			{
+				double distance = SphericalEarthMath.crossTrackDistance(polyLine, loc);
+				if (distance < location.getAccuracy() + MAX_DISTANCE_TO_ELEMENT_FOR_SURVEY) return true;
+			}
+		}
 		return false;
 	}
 

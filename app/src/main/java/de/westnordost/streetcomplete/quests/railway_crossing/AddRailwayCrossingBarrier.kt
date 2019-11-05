@@ -30,9 +30,9 @@ class AddRailwayCrossingBarrier(private val overpassMapDataDao: OverpassMapDataD
 
     private fun getOverpassQuery(bbox: BoundingBox) =
         bbox.toGlobalOverpassBBox() + "\n" + """
-        way[highway][access ~ '^private|no$'];
+        way[highway][access ~ '^(private|no)$'];
         node(w) -> .private_roads;
-        way[railway ~ '^tram|abandoned$'];
+        way[railway ~ '^(tram|abandoned)$'];
         node(w) -> .excluded_railways;
         node[railway = level_crossing][!'crossing:barrier'];
         (._; - .private_roads; );

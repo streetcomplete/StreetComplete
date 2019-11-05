@@ -1,0 +1,44 @@
+# use app/generateCountryMetadata.py to generate files used by StreetComplete
+# Sources:
+# https://en.wikipedia.org/wiki/Metrication#Overview
+# https://en.wikipedia.org/wiki/Imperial_units#Current_use
+# https://en.wikipedia.org/wiki/Comparison_of_MUTCD-influenced_traffic_signs
+# https://en.wikipedia.org/wiki/Miles_per_hour
+#
+# setting miles per hour, kilometers per hour for all those small island states where things may change quickly or gov doesn't act on norms
+default: [kilometers per hour]
+AG: [miles per hour, kilometers per hour] # metric system is introduced but the imperial system remains in common use
+AI: [miles per hour, kilometers per hour] # British Overseas Territory
+AS: [miles per hour, kilometers per hour] # territory of the US
+BM: [miles per hour, kilometers per hour] # British Overseas Territory
+BS: [miles per hour, kilometers per hour] # mainly imperial units used
+BZ: [miles per hour, kilometers per hour] # mainly imperial units used
+DM: [miles per hour, kilometers per hour] # metric system is introduced but the imperial system remains in common use
+FK: [miles per hour, kilometers per hour] # British Overseas Territory
+FM: [miles per hour, kilometers per hour] # mainly imperial units used
+GB: [miles per hour]
+GD: [miles per hour, kilometers per hour]
+GG: [miles per hour, kilometers per hour] # British Crown Dependency
+GI: [miles per hour, kilometers per hour] # British Overseas Territory
+GS: [miles per hour, kilometers per hour] # British Overseas Territory
+GU: [miles per hour, kilometers per hour] # same as Micronesia (FM) because it is part of it
+GY: [kilometers per hour, miles per hour] # metric system has been introduced in 1982 but the imperial system is still used sometimes
+IM: [miles per hour, kilometers per hour] # British Crown Dependency
+JE: [miles per hour, kilometers per hour] # British Crown Dependency
+KN: [miles per hour, kilometers per hour]
+KY: [miles per hour, kilometers per hour] # mainly imperial units used
+LC: [miles per hour, kilometers per hour] # metric system is introduced but the imperial system remains in common use
+LR: [miles per hour, kilometers per hour] # imperial units are used officially but some signs are using the metric system
+MH: [miles per hour, kilometers per hour] # mainly imperial units used
+MM: [kilometers per hour, miles per hour] # Myanmar is converting to the metric system, although very slowly. https://en.wikipedia.org/wiki/Myanmar_units_of_measurement#Adoption_of_SI_(metric)_system
+MP: [miles per hour, kilometers per hour] # territory of the US
+MS: [miles per hour, kilometers per hour] # British Overseas Territory
+PR: [miles per hour, kilometers per hour] # territory of the US
+PW: [miles per hour, kilometers per hour] # same as Micronesia (FM) because it is part of it
+SH: [miles per hour, kilometers per hour] # British Overseas Territory
+TC: [miles per hour, kilometers per hour] # British Overseas Territory
+US: [miles per hour]
+VC: [miles per hour, kilometers per hour] # mainly imperial units used
+VG: [miles per hour, kilometers per hour] # mainly imperial units used
+VI: [miles per hour, kilometers per hour] # mainly imperial units used
+WS: [miles per hour, kilometers per hour] # Samoa started to convert to the metric system in 2014.

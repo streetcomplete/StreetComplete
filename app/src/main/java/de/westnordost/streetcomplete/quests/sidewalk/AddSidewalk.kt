@@ -44,7 +44,7 @@ class AddSidewalk(private val overpassServer: OverpassMapDataDao) : OsmElementQu
             "[lit = yes]" +
             // not any explicitly tagged as no pedestrians
             "[foot != no]" +
-            "[access !~ '^private|no$']" +
+            "[access !~ '^(private|no)$']" +
             // some roads may be farther than minDistToWays from ways, not tagged with
             // footway=separate/sidepath but may have a hint that there is a separately tagged
             // sidewalk

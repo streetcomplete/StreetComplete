@@ -396,7 +396,6 @@
     <string name="quest_crossing_type_unmarked">"無道路標記的路口"</string>
     <string name="compass_north_one_letter">"北"</string>
     <string name="action_undo">"復原"</string>
-    <string name="no_changes_to_undo">"沒有可以復原的動作"</string>
     <string name="undo_confirm_title">"復原上個回答？"</string>
     <string name="produce_mangosteen">"山竹"</string>
     <string name="produce_tomatoes">"番茄"</string>
@@ -419,6 +418,8 @@
     <string name="quest_buildingLevels_roofLevelsLabel2">"屋頂樓層數"</string>
     <string name="quest_buildingLevels_levelsLabel2">"一般的樓層數 (不計算屋頂)"</string>
     <string name="pref_title_authorized_summary">"驗證"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingLevels_answer_multipleLevels">"建築部分的不同"</string>
     <string name="quest_buildingLevels_answer_description">"在這一個例子，簡單填寫建築部分最高樓層數值。"</string>
     <string name="unglue_hint">"從位置點取消界限視圖"</string>
@@ -725,4 +726,18 @@
     <string name="how_to_get_stars">"選擇其他一個地圖上的標記，並且回答問題，這樣你能增進開放街圖資料，並且給予星等，如果沒看到標記你需要縮小地圖。"</string>
     <string name="oauth_remove_authorization_dialog_message">"目前已連結OSM帳號，你想撤消嗎？"</string>
     <string name="oauth_remove_authorization_confirmation">"撤消"</string>
+    <string name="quest_leafType_title">"這些樹是針葉還是闊葉？"</string>
+    <string name="quest_leaf_type_needles">"針葉"</string>
+    <string name="quest_leaf_type_broadleaved">"闊葉"</string>
+    <string name="quest_leaf_type_mixed">"都有"</string>
+    <string name="quest_cyclewayPartSurface_title">"單車道的路面材質？"</string>
+    <string name="quest_generic_answer_differs_along_the_way">"整條路不大一樣..."</string>
+    <string name="quest_split_way_description">"如果沿路都不同的話，第一步是先分割路徑"</string>
+    <string name="quest_split_way_tutorial">"點在路徑上開始有不同答案的地方，並且分割的節點。請儘可能精確，你還可以如往常放大處理。"</string>
+    <string name="quest_split_way_too_imprecise">"請放更大"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_split_way_many_splits_confirmation_description">"有可分割多個地方，你總是可以稍後再度分割路徑。"</string>
+    <string name="quest_footwayPartSurface_title">"人行步道的鋪面材質是什麼？"</string>
+    <string name="quest_wheelchairAccess_toiletsPart_title">"這裡的廁所是否是輪椅可通行的？"</string>
 </resources>

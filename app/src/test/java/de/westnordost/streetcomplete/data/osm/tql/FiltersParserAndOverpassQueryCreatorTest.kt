@@ -68,11 +68,21 @@ class FiltersParserAndOverpassQueryCreatorTest {
         shouldFail("nodes with around")
         shouldFail("nodes with or")
         shouldFail("nodes with and")
+        shouldFail("nodes with with = abc")
+        shouldFail("nodes with around = abc")
+        shouldFail("nodes with or = abc")
+        shouldFail("nodes with and = abc")
     }
 
     @Test fun `tag key like reserved word in quotation marks is ok`() {
         check("nodes with \"with\"", "node[with];")
         check("nodes with \"with\"=\"with\"", "node[with = with];")
+    }
+
+    @Test fun `tag may start with reserved word`() {
+        check("nodes with widthdrawn = with", "node[widthdrawn = with];")
+        check("nodes with orchard = or", "node[orchard = or];")
+        check("nodes with android = and", "node[android = and];")
     }
 
     @Test fun `tag key with quotation marks is ok`() {
@@ -151,9 +161,9 @@ class FiltersParserAndOverpassQueryCreatorTest {
     @Test fun `tag operator`() {
         check("nodes with highway=residential", "node[highway = residential];")
         check("nodes with highway!=residential", "node[highway != residential];")
-        check("nodes with highway~residential", "node[highway ~ '^residential$'];")
-        check("nodes with ~highway~residential", "node[~'^highway$' ~ '^residential$'];")
-        check("nodes with highway!~residential", "node[highway !~ '^residential$'];")
+        check("nodes with highway~residential", "node[highway ~ '^(residential)$'];")
+        check("nodes with ~highway~residential", "node[~'^(highway)$' ~ '^(residential)$'];")
+        check("nodes with highway!~residential", "node[highway !~ '^(residential)$'];")
     }
 
     @Test fun `tag negation not combinable with operator`() {

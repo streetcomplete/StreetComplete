@@ -4,10 +4,10 @@ import org.junit.Test
 
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.any
+import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.on
 
 import org.junit.Assert.*
-import org.mockito.Mockito.*
 
 class TagFilterExpressionTest {
     // Tests for toOverpassQLString are in FiltersParserTest
@@ -49,7 +49,7 @@ class TagFilterExpressionTest {
     }
 
     @Test fun `matches filter`() {
-        val tagFilter = mock(TagFilter::class.java)
+        val tagFilter: TagFilter = mock()
         val expr = TagFilterExpression(listOf(ElementsTypeFilter.NODES), Leaf(tagFilter))
 
         on(tagFilter.matches(any())).thenReturn(true)
@@ -59,13 +59,13 @@ class TagFilterExpressionTest {
     }
 
     private fun createElement(type: Element.Type): Element {
-        val element = mock(Element::class.java)
+        val element: Element = mock()
         on(element.type).thenReturn(type)
         return element
     }
 
     private fun createMatchExpression(vararg elementsTypeFilter: ElementsTypeFilter): TagFilterExpression {
-        val tagFilter = mock(TagFilter::class.java)
+        val tagFilter: TagFilter = mock()
         on(tagFilter.matches(any())).thenReturn(true)
         return TagFilterExpression(elementsTypeFilter.asList(), Leaf(tagFilter))
     }

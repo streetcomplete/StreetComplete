@@ -2,15 +2,13 @@ package de.westnordost.streetcomplete.quests
 
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryModify
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.quests.max_speed.*
 import org.junit.Test
 
-import org.mockito.Mockito.mock
-
 class AddMaxSpeedTest {
 
-    private val questType = AddMaxSpeed(mock(OverpassMapDataDao::class.java))
+    private val questType = AddMaxSpeed(mock())
 
     @Test fun `apply no sign answer`() {
         questType.verifyAnswer(
@@ -21,15 +19,23 @@ class AddMaxSpeedTest {
 
     @Test fun `apply sign answer`() {
         questType.verifyAnswer(
-            MaxSpeedSign("123"),
+            MaxSpeedSign(Kmh(123)),
             StringMapEntryAdd("maxspeed", "123"),
+            StringMapEntryAdd("maxspeed:type", "sign")
+        )
+    }
+
+    @Test fun `apply mph sign answer`() {
+        questType.verifyAnswer(
+            MaxSpeedSign(Mph(123)),
+            StringMapEntryAdd("maxspeed", "123 mph"),
             StringMapEntryAdd("maxspeed:type", "sign")
         )
     }
 
     @Test fun `apply advisory sign answer`() {
         questType.verifyAnswer(
-            AdvisorySpeedSign("123"),
+            AdvisorySpeedSign(Kmh(123)),
             StringMapEntryAdd("maxspeed:advisory", "123"),
             StringMapEntryAdd("maxspeed:type:advisory", "sign")
         )
@@ -37,7 +43,7 @@ class AddMaxSpeedTest {
 
     @Test fun `apply zone sign answer`() {
         questType.verifyAnswer(
-            MaxSpeedZone("123", "AA", "zoneXYZ"),
+            MaxSpeedZone(Kmh(123), "AA", "zoneXYZ"),
             StringMapEntryAdd("maxspeed", "123"),
             StringMapEntryAdd("maxspeed:type", "AA:zoneXYZ")
         )

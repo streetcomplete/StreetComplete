@@ -4,6 +4,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.content.SharedPreferences;
 import android.graphics.Rect;
 import android.os.Handler;
 import android.os.HandlerThread;
@@ -14,6 +15,7 @@ import androidx.annotation.Nullable;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -22,8 +24,9 @@ import javax.inject.Inject;
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.osmapi.map.data.OsmElement;
 import de.westnordost.streetcomplete.ApplicationConstants;
-import de.westnordost.streetcomplete.data.changesets.OpenChangesetsDao;
+import de.westnordost.streetcomplete.Prefs;
 import de.westnordost.streetcomplete.data.download.QuestDownloadService;
+import de.westnordost.streetcomplete.data.osm.ElementKey;
 import de.westnordost.streetcomplete.data.osm.OsmQuest;
 import de.westnordost.streetcomplete.data.osm.OsmQuestSplitWay;
 import de.westnordost.streetcomplete.data.osm.UndoOsmQuest;
@@ -59,7 +62,7 @@ public class QuestController
 	private final OsmNoteQuestDao osmNoteQuestDB;
 	private final OsmQuestSplitWayDao splitWayDB;
 	private final CreateNoteDao createNoteDB;
-	private final OpenChangesetsDao openChangesetsDao;
+	private final SharedPreferences prefs;
 	private final Context context;
 	private final VisibleQuestRelay relay;
 	private final OrderedVisibleQuestTypesProvider questTypesProvider;
@@ -101,7 +104,7 @@ public class QuestController
 	@Inject public QuestController(OsmQuestDao osmQuestDB, UndoOsmQuestDao undoOsmQuestDB,
 								   MergedElementDao osmElementDB, ElementGeometryDao geometryDB,
 								   OsmNoteQuestDao osmNoteQuestDB, OsmQuestSplitWayDao splitWayDB,
-								   CreateNoteDao createNoteDB, OpenChangesetsDao openChangesetsDao,
+								   CreateNoteDao createNoteDB, SharedPreferences prefs,
 								   OrderedVisibleQuestTypesProvider questTypesProvider, Context context)
 	{
 		this.osmQuestDB = osmQuestDB;
@@ -111,7 +114,7 @@ public class QuestController
 		this.osmNoteQuestDB = osmNoteQuestDB;
 		this.splitWayDB = splitWayDB;
 		this.createNoteDB = createNoteDB;
-		this.openChangesetsDao = openChangesetsDao;
+		this.prefs = prefs;
 		this.questTypesProvider = questTypesProvider;
 		this.context = context;
 		this.relay = new VisibleQuestRelay();
@@ -159,13 +162,7 @@ public class QuestController
 		// race condition: another thread may have removed the element already (#288)
 		if(q == null || q.getStatus() != QuestStatus.NEW) return false;
 
-		CreateNote createNote = new CreateNote();
-		createNote.position = q.getCenter();
-		createNote.text = text;
-		createNote.questTitle = questTitle;
-		createNote.elementType = q.getElementType();
-		createNote.elementId = q.getElementId();
-		createNote.imagePaths = imagePaths;
+		CreateNote createNote = new CreateNote(null, text, q.getCenter(), questTitle, new ElementKey(q.getElementType(), q.getElementId()), imagePaths);
 		createNoteDB.add(createNote);
 
 		/* The quests that reference the same element for which the user was not able to
@@ -179,25 +176,15 @@ public class QuestController
 
 	public void createNote(String text, @Nullable List<String> imagePaths, LatLon position)
 	{
-		CreateNote createNote = new CreateNote();
-		createNote.position = position;
-		createNote.text = text;
-		createNote.imagePaths = imagePaths;
+		CreateNote createNote = new CreateNote(null, text, position, null, null, imagePaths);
 		createNoteDB.add(createNote);
 	}
 
 	private void removeQuestsForElement(Element.Type elementType, long elementId) {
+		List<Long> questIdsForThisOsmElement = osmQuestDB.getAllIds(
+			Arrays.asList(QuestStatus.NEW), null, new ElementKey(elementType, elementId), null, null);
 
-		// TODO actually there should be a method in OsmQuestDB: deleteAllForElement or similar
-		List<OsmQuest> questsForThisOsmElement = osmQuestDB.getAll(null, QuestStatus.NEW, null,
-			elementType, elementId);
-		List<Long> questIdsForThisOsmElement = new ArrayList<>(questsForThisOsmElement.size());
-		for(OsmQuest quest : questsForThisOsmElement)
-		{
-			questIdsForThisOsmElement.add(quest.getId());
-		}
-
-		osmQuestDB.deleteAll(questIdsForThisOsmElement);
+		osmQuestDB.deleteAllIds(questIdsForThisOsmElement);
 		workerHandler.post(() -> relay.onQuestsRemoved(questIdsForThisOsmElement, QuestGroup.OSM));
 
 		osmElementDB.deleteUnreferenced();
@@ -252,15 +239,6 @@ public class QuestController
 		return (OsmElement) osmElementDB.get(quest.getElementType(), quest.getElementId());
 	}
 
-	@Nullable public Quest getNextAt(long questId, QuestGroup group)
-	{
-		if (group == QuestGroup.OSM)
-		{
-			return osmQuestDB.getNextNewAt(questId, getQuestTypeNames());
-		}
-		return null;
-	}
-
 	public void undo(final OsmQuest quest)
 	{
 		if(quest == null) return;
@@ -269,7 +247,8 @@ public class QuestController
 		if(quest.getStatus() == QuestStatus.ANSWERED || quest.getStatus() == QuestStatus.HIDDEN)
 		{
 			quest.setStatus(QuestStatus.NEW);
-			quest.setChanges(null, null);
+			quest.setChanges(null);
+			quest.setChangesSource(null);
 			osmQuestDB.update(quest);
 			// inform relay that the quest is visible again
 			workerHandler.post(() -> relay.onQuestsCreated(Collections.singletonList(quest), QuestGroup.OSM));
@@ -320,7 +299,7 @@ public class QuestController
 		try
 		{
 			StringMapChangesBuilder changesBuilder = new StringMapChangesBuilder(element.getTags());
-			q.getOsmElementQuestType().applyAnswerTo(answer, changesBuilder);
+			q.getOsmElementQuestType().applyAnswerToUnsafe(answer, changesBuilder);
 			changes = changesBuilder.create();
 		}
 		catch (IllegalArgumentException e)
@@ -335,10 +314,11 @@ public class QuestController
 		if(!changes.isEmpty())
 		{
 			Log.d(TAG, "Solved a "+q.getType().getClass().getSimpleName() + " quest: " + changes.toString());
-			q.setChanges(changes, source);
+			q.setChanges(changes);
+			q.setChangesSource(source);
 			q.setStatus(QuestStatus.ANSWERED);
 			osmQuestDB.update(q);
-			openChangesetsDao.setLastQuestSolvedTimeToNow();
+			prefs.edit().putLong(Prefs.LAST_SOLVED_QUEST_TIME, System.currentTimeMillis()).apply();
 			return true;
 		}
 		else
@@ -386,10 +366,10 @@ public class QuestController
 		{
 			List<String> questTypeNames = getQuestTypeNames();
 
-			List<OsmQuest> osmQuests = osmQuestDB.getAll(bbox, QuestStatus.NEW, questTypeNames);
+			List<OsmQuest> osmQuests = osmQuestDB.getAll(Arrays.asList(QuestStatus.NEW), bbox, null, questTypeNames, null);
 			if(!osmQuests.isEmpty()) relay.onQuestsCreated(osmQuests, QuestGroup.OSM);
 
-			List<OsmNoteQuest> osmNoteQuests = osmNoteQuestDB.getAll(bbox, QuestStatus.NEW);
+			List<OsmNoteQuest> osmNoteQuests = osmNoteQuestDB.getAll(Arrays.asList(QuestStatus.NEW), bbox, null);
 			if(!osmNoteQuests.isEmpty()) relay.onQuestsCreated(osmNoteQuests, QuestGroup.OSM_NOTE);
 		});
 	}
@@ -452,8 +432,14 @@ public class QuestController
 		workerHandler.post(() ->
 		{
 			long timestamp = System.currentTimeMillis() - ApplicationConstants.DELETE_UNSOLVED_QUESTS_AFTER;
-			int deleted = osmQuestDB.deleteAllUnsolved(timestamp);
-			deleted += osmNoteQuestDB.deleteAllUnsolved(timestamp);
+			int deleted = osmQuestDB.deleteAll(
+				Arrays.asList(QuestStatus.NEW, QuestStatus.HIDDEN), null, null, null,
+				timestamp
+			);
+			deleted += osmNoteQuestDB.deleteAll(
+				Arrays.asList(QuestStatus.NEW, QuestStatus.HIDDEN), null,
+				timestamp
+			);
 
 			if(deleted > 0)
 			{

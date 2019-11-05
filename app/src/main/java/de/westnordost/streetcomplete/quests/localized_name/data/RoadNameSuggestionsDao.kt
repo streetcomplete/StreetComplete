@@ -1,13 +1,13 @@
 package de.westnordost.streetcomplete.quests.localized_name.data
 
 import android.database.sqlite.SQLiteOpenHelper
-
-import java.util.ArrayList
-import java.util.HashMap
+import androidx.core.content.contentValuesOf
 
 import javax.inject.Inject
 
 import de.westnordost.osmapi.map.data.LatLon
+import de.westnordost.streetcomplete.ktx.getBlob
+import de.westnordost.streetcomplete.ktx.query
 import de.westnordost.streetcomplete.quests.localized_name.data.RoadNamesTable.Columns.GEOMETRY
 import de.westnordost.streetcomplete.quests.localized_name.data.RoadNamesTable.Columns.MAX_LATITUDE
 import de.westnordost.streetcomplete.quests.localized_name.data.RoadNamesTable.Columns.MAX_LONGITUDE
@@ -19,35 +19,26 @@ import de.westnordost.streetcomplete.quests.localized_name.data.RoadNamesTable.N
 import de.westnordost.streetcomplete.util.Serializer
 import de.westnordost.streetcomplete.util.SphericalEarthMath
 import de.westnordost.streetcomplete.ktx.toObject
-import de.westnordost.streetcomplete.ktx.transaction
 
 // TODO only open in order to be able to mock it in tests
 open class RoadNameSuggestionsDao @Inject constructor(
     private val dbHelper: SQLiteOpenHelper,
     private val serializer: Serializer
 ) {
-
-    private val insert = dbHelper.writableDatabase.compileStatement(
-        "INSERT OR REPLACE INTO $NAME " +
-        "($WAY_ID,$NAMES,$GEOMETRY,$MIN_LATITUDE,$MIN_LONGITUDE,$MAX_LATITUDE,$MAX_LONGITUDE) " +
-        "values (?,?,?,?,?,?,?);"
-    )
+    private val db get() = dbHelper.writableDatabase
 
     fun putRoad(wayId: Long, namesByLanguage: Map<String, String>, geometry: List<LatLon>) {
         val bbox = SphericalEarthMath.enclosingBoundingBox(geometry)
-
-        dbHelper.writableDatabase.transaction {
-            insert.bindLong(1, wayId)
-            insert.bindBlob(2, serializer.toBytes(HashMap(namesByLanguage)))
-            insert.bindBlob(3, serializer.toBytes(ArrayList(geometry)))
-            insert.bindDouble(4, bbox.minLatitude)
-            insert.bindDouble(5, bbox.minLongitude)
-            insert.bindDouble(6, bbox.maxLatitude)
-            insert.bindDouble(7, bbox.maxLongitude)
-
-            insert.executeInsert()
-            insert.clearBindings()
-        }
+        val v = contentValuesOf(
+            WAY_ID to wayId,
+            NAMES to serializer.toBytes(HashMap(namesByLanguage)),
+            GEOMETRY to serializer.toBytes(ArrayList(geometry)),
+            MIN_LATITUDE to bbox.minLatitude,
+            MIN_LONGITUDE to bbox.minLongitude,
+            MAX_LATITUDE to bbox.maxLatitude,
+            MAX_LONGITUDE to bbox.maxLongitude
+        )
+        db.replaceOrThrow(NAME, null, v)
     }
 
     /** returns something like [{"": "17th Street", "de": "17. Straße", "en": "17th Street" }, ...] */
@@ -74,16 +65,11 @@ open class RoadNameSuggestionsDao @Inject constructor(
 
         val result = mutableListOf<MutableMap<String, String>>()
 
-        dbHelper.readableDatabase.query(NAME, cols, query, args, null, null, null).use { cursor ->
-            if (cursor.moveToFirst()) {
-                while (!cursor.isAfterLast) {
-                    val geometry: ArrayList<LatLon> = serializer.toObject(cursor.getBlob(0))
-                    if (SphericalEarthMath.isWithinDistance(maxDistance, points, geometry)) {
-                        val map: HashMap<String,String> = serializer.toObject(cursor.getBlob(1))
-                        result.add(map)
-                    }
-                    cursor.moveToNext()
-                }
+        db.query(NAME, cols, query, args.requireNoNulls()) { cursor ->
+            val geometry: ArrayList<LatLon> = serializer.toObject(cursor.getBlob(GEOMETRY))
+            if (SphericalEarthMath.isWithinDistance(maxDistance, points, geometry)) {
+                val map: HashMap<String,String> = serializer.toObject(cursor.getBlob(NAMES))
+                result.add(map)
             }
         }
         return result

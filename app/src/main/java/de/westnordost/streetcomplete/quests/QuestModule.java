@@ -22,6 +22,8 @@ import de.westnordost.streetcomplete.quests.building_levels.AddBuildingLevels;
 import de.westnordost.streetcomplete.quests.building_type.AddBuildingType;
 import de.westnordost.streetcomplete.quests.building_underground.AddIsBuildingUnderground;
 import de.westnordost.streetcomplete.quests.foot.AddProhibitedForPedestrians;
+import de.westnordost.streetcomplete.quests.general_fee.AddGeneralFee;
+import de.westnordost.streetcomplete.quests.handrail.AddHandrail;
 import de.westnordost.streetcomplete.quests.leaf_detail.AddForestLeafType;
 import de.westnordost.streetcomplete.quests.localized_name.AddBusStopName;
 import de.westnordost.streetcomplete.quests.bus_stop_shelter.AddBusStopShelter;
@@ -34,6 +36,7 @@ import de.westnordost.streetcomplete.quests.diet_type.AddVegetarian;
 import de.westnordost.streetcomplete.quests.fire_hydrant.AddFireHydrantType;
 import de.westnordost.streetcomplete.quests.internet_access.AddInternetAccess;
 import de.westnordost.streetcomplete.quests.max_height.AddMaxHeight;
+import de.westnordost.streetcomplete.quests.max_weight.AddMaxWeight;
 import de.westnordost.streetcomplete.quests.motorcycle_parking_capacity.AddMotorcycleParkingCapacity;
 import de.westnordost.streetcomplete.quests.motorcycle_parking_cover.AddMotorcycleParkingCover;
 import de.westnordost.streetcomplete.quests.oneway.AddOneway;
@@ -54,6 +57,7 @@ import de.westnordost.streetcomplete.quests.religion.AddReligionToWaysideShrine;
 import de.westnordost.streetcomplete.quests.localized_name.data.PutRoadNameSuggestionsHandler;
 import de.westnordost.streetcomplete.quests.localized_name.data.RoadNameSuggestionsDao;
 import de.westnordost.streetcomplete.quests.segregated.AddCyclewaySegregation;
+import de.westnordost.streetcomplete.quests.self_service.AddSelfServiceLaundry;
 import de.westnordost.streetcomplete.quests.sidewalk.AddSidewalk;
 import de.westnordost.streetcomplete.quests.surface.AddCyclewayPartSurface;
 import de.westnordost.streetcomplete.quests.surface.AddFootwayPartSurface;
@@ -92,7 +96,7 @@ public class QuestModule
 		TrafficFlowSegmentsDao trafficFlowSegmentsDao, WayTrafficFlowDao trafficFlowDao,
 		FutureTask<FeatureDictionary> featureDictionaryFuture)
 	{
-		QuestType[] questTypesOrderedByImportance = {
+		QuestType<?>[] questTypesOrderedByImportance = {
 				// ↓ 1. notes
 				osmNoteQuestType,
 
@@ -131,6 +135,7 @@ public class QuestModule
 				new AddMotorcycleParkingCapacity(o),
 				new AddPathSurface(o),
 				new AddTracktype(o),
+				new AddMaxWeight(o),
 				new AddForestLeafType(o), // used by OSM Carto
 				new AddBikeParkingType(o), // used by OsmAnd
 				new AddWheelchairAccessToilets(o), // used by wheelmap, OsmAnd, MAPS.ME
@@ -152,16 +157,19 @@ public class QuestModule
 				new AddToiletsFee(o), // used by OsmAnd in the object description
 				new AddBabyChangingTable(o), // used by OsmAnd in the object description
 				new AddBikeParkingCover(o), // used by OsmAnd in the object description
-				new AddTrafficSignalsSound(o),
+				new AddTactilePavingCrosswalk(o), // Paving can be completed while waiting to cross
+				new AddTrafficSignalsSound(o), // Sound needs to be done as or after you're crossing
 				new AddRoofShape(o),
 				new AddWheelchairAccessPublicTransport(o),
 				new AddWheelchairAccessOutside(o),
 				new AddTactilePavingBusStop(o),
-				new AddTactilePavingCrosswalk(o),
 				new AddBridgeStructure(o),
 				new AddReligionToWaysideShrine(o),
 				new AddCyclewaySegregation(o),
 				new MarkCompletedBuildingConstruction(o),
+				new AddGeneralFee(o),
+				new AddSelfServiceLaundry(o),
+				new AddHandrail(o), // for accessibility of pedestrian routing
 
 				// ↓ 8. defined in the wiki, but not really used by anyone yet. Just collected for
 				//      the sake of mapping it in case it makes sense later

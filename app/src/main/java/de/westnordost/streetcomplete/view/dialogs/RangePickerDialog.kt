@@ -11,6 +11,7 @@ import de.westnordost.streetcomplete.R
 
 typealias RangePickedCallback = (startIndex: Int, endIndex: Int) -> Unit
 
+/** A dialog in which you can select a range of values  */
 class RangePickerDialog(
     context: Context,
     values: Array<String>,

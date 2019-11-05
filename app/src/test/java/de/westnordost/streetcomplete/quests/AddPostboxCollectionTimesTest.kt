@@ -1,16 +1,14 @@
 package de.westnordost.streetcomplete.quests
 
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.quests.opening_hours.model.Weekdays
 import de.westnordost.streetcomplete.quests.postbox_collection_times.*
 import org.junit.Test
 
-import org.mockito.Mockito.mock
-
 class AddPostboxCollectionTimesTest {
 
-    private val questType = AddPostboxCollectionTimes(mock(OverpassMapDataDao::class.java))
+    private val questType = AddPostboxCollectionTimes(mock())
 
     @Test fun `apply no signed times answer`() {
         questType.verifyAnswer(

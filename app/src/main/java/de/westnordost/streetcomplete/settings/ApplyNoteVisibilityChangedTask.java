@@ -35,7 +35,7 @@ public class ApplyNoteVisibilityChangedTask extends AsyncTask<Void, Void, Void>
 	@Override protected Void doInBackground(Void... voids)
 	{
 		boolean showNonQuestionNotes = prefs.getBoolean(Prefs.SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS, false);
-		for(OsmNoteQuest quest : osmNoteQuestDao.getAll(null,null))
+		for(OsmNoteQuest quest : osmNoteQuestDao.getAll(null, null, null))
 		{
 			if (quest.getStatus() == QuestStatus.NEW || quest.getStatus() == QuestStatus.INVISIBLE)
 			{

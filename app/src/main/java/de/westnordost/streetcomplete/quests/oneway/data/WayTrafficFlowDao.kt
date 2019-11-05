@@ -11,16 +11,20 @@ import de.westnordost.streetcomplete.quests.oneway.data.WayTrafficFlowTable.Colu
 
 import android.database.sqlite.SQLiteDatabase.*
 import androidx.core.content.contentValuesOf
+import de.westnordost.streetcomplete.ktx.getInt
+import de.westnordost.streetcomplete.ktx.queryOne
 
 class WayTrafficFlowDao @Inject constructor(private val dbHelper: SQLiteOpenHelper) {
 
+    private val db get() = dbHelper.writableDatabase
+
     fun put(wayId: Long, isForward: Boolean) {
-        val values = contentValuesOf(
+        val contentValues = contentValuesOf(
             WAY_ID to wayId,
             IS_FORWARD to if (isForward) 1 else 0
         )
 
-        dbHelper.writableDatabase.insertWithOnConflict(NAME, null, values, CONFLICT_REPLACE)
+        db.replaceOrThrow(NAME, null, contentValues)
     }
 
     /** returns whether the direction of road user flow is forward or null if unknown
@@ -30,24 +34,19 @@ class WayTrafficFlowDao @Inject constructor(private val dbHelper: SQLiteOpenHelp
         val query = "$WAY_ID = ?"
         val args = arrayOf(wayId.toString())
 
-        dbHelper.readableDatabase.query(NAME, cols, query, args, null, null, null, "1").use { cursor ->
-            if (cursor.moveToFirst()) {
-                return cursor.getInt(0) != 0
-            }
-        }
-        return null
+        return db.queryOne(NAME, cols, query, args) { it.getInt(IS_FORWARD) != 0 }
     }
 
     fun delete(wayId: Long) {
         val query = "$WAY_ID = ?"
         val args = arrayOf(wayId.toString())
 
-        dbHelper.writableDatabase.delete(NAME, query, args)
+        db.delete(NAME, query, args)
     }
 
     fun deleteUnreferenced() {
         val query = "$WAY_ID NOT IN (SELECT ${WayTable.Columns.ID} AS $WAY_ID FROM ${WayTable.NAME});"
 
-        dbHelper.writableDatabase.delete(NAME, query, null)
+        db.delete(NAME, query, null)
     }
 }

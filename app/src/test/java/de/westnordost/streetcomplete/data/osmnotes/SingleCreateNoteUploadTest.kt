@@ -8,7 +8,9 @@ import de.westnordost.osmapi.notes.Note
 import de.westnordost.osmapi.notes.NoteComment
 import de.westnordost.osmapi.notes.NotesDao
 import de.westnordost.streetcomplete.ApplicationConstants.USER_AGENT
+import de.westnordost.streetcomplete.data.osm.ElementKey
 import de.westnordost.streetcomplete.data.osm.upload.ConflictException
+import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.on
 import de.westnordost.streetcomplete.util.ImageUploader
 import org.junit.Assert.*
@@ -23,15 +25,13 @@ class SingleCreateNoteUploadTest {
     private lateinit var uploader: SingleCreateNoteUpload
 
     @Before fun setUp() {
-        notesDao = mock(NotesDao::class.java)
-        imageUploader = mock(ImageUploader::class.java)
+        notesDao = mock()
+        imageUploader = mock()
         uploader = SingleCreateNoteUpload(notesDao, imageUploader)
     }
 
     @Test fun `upload createNote on existing note will comment on existing note`() {
-        val createNote = newCreateNote()
-        createNote.elementType = Element.Type.WAY
-        createNote.elementId = 5L
+        val createNote = CreateNote(1, "jo", OsmLatLon(1.0, 2.0), null, ElementKey(Element.Type.WAY, 5L))
 
         val existingNote = newNote(createNote)
         setUpExistingNote(existingNote)
@@ -44,9 +44,7 @@ class SingleCreateNoteUploadTest {
 
     @Test(expected = ConflictException::class)
     fun `upload createNote on existing closed note will throw conflict exception`() {
-        val createNote = newCreateNote()
-        createNote.elementType = Element.Type.WAY
-        createNote.elementId = 5L
+        val createNote = CreateNote(1, "jo", OsmLatLon(1.0, 2.0), null, ElementKey(Element.Type.WAY, 5L))
 
         val existingNote = newNote(createNote)
         existingNote.status = Note.Status.CLOSED
@@ -60,9 +58,7 @@ class SingleCreateNoteUploadTest {
 
     @Test(expected = ConflictException::class)
     fun `upload createNote on existing note will throw along a conflict exception`() {
-        val createNote = newCreateNote()
-        createNote.elementType = Element.Type.WAY
-        createNote.elementId = 5L
+        val createNote = CreateNote(1, "jo", OsmLatLon(1.0, 2.0), null, ElementKey(Element.Type.WAY, 5L))
 
         val existingNote = newNote(createNote)
         setUpExistingNote(existingNote)
@@ -76,7 +72,7 @@ class SingleCreateNoteUploadTest {
     }
 
     @Test fun `upload createNote with no associated element works`() {
-        val createNote = newCreateNote()
+        val createNote = CreateNote(1, "jo", OsmLatLon(1.0, 2.0))
         val note = newNote(null)
 
         on(notesDao.create(any(), anyString())).thenReturn(note)
@@ -90,10 +86,7 @@ class SingleCreateNoteUploadTest {
     }
 
     @Test fun `upload createNote with no quest title but associated element works`() {
-        val createNote = newCreateNote()
-        createNote.elementType = Element.Type.WAY
-        createNote.elementId = 5L
-
+        val createNote = CreateNote(1, "jo", OsmLatLon(1.0, 2.0), null, ElementKey(Element.Type.WAY, 5L))
         val note = newNote(null)
 
         on(notesDao.create(any(), anyString())).thenReturn(note)
@@ -107,10 +100,7 @@ class SingleCreateNoteUploadTest {
     }
 
     @Test fun `upload createNote with associated element and no note yet works`() {
-        val createNote = newCreateNote()
-        createNote.elementType = Element.Type.WAY
-        createNote.elementId = 5L
-        createNote.questTitle = "What?"
+        val createNote = CreateNote(1, "jo", OsmLatLon(1.0, 2.0), "What?", ElementKey(Element.Type.WAY, 5L))
 
         val note = newNote(createNote)
 
@@ -125,8 +115,7 @@ class SingleCreateNoteUploadTest {
     }
 
     @Test fun `upload createNote uploads images and displays links`() {
-        val createNote = newCreateNote()
-        createNote.imagePaths = listOf("hello")
+        val createNote = CreateNote(1, "jo", OsmLatLon(1.0, 2.0), null, null, listOf("hello"))
 
         val note = newNote(null)
         on(notesDao.create(any(), anyString())).thenReturn(note)
@@ -142,10 +131,7 @@ class SingleCreateNoteUploadTest {
     }
 
     @Test fun `upload createNote as comment uploads images and displays links`() {
-        val createNote = newCreateNote()
-        createNote.elementType = Element.Type.WAY
-        createNote.elementId = 5L
-        createNote.imagePaths = listOf("hello")
+        val createNote = CreateNote(1, "jo", OsmLatLon(1.0, 2.0), null, ElementKey(Element.Type.WAY, 5L), listOf("hello"))
 
         val existingNote = newNote(createNote)
         setUpExistingNote(existingNote)
@@ -180,18 +166,11 @@ class SingleCreateNoteUploadTest {
         note.comments.add(0, comment)
         return note
     }
-
-    private fun newCreateNote(): CreateNote {
-        val n = CreateNote()
-        n.id = 1
-        n.text = "jo ho"
-        n.position = OsmLatLon(1.0, 2.0)
-        return n
-    }
 }
 
 private val CreateNote.associatedElementString: String? get() {
-    val lowercaseTypeName = elementType?.name?.toLowerCase(Locale.UK) ?: return null
-    val elementId = elementId ?: return null
+    val elementKey = elementKey ?: return null
+    val lowercaseTypeName = elementKey.elementType.name.toLowerCase(Locale.UK)
+    val elementId = elementKey.elementId
     return "https://osm.org/$lowercaseTypeName/$elementId"
 }

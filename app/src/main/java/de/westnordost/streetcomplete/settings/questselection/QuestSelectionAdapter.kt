@@ -44,7 +44,7 @@ class QuestSelectionAdapter @Inject constructor(
     init {
         val lat = Double.fromBits(prefs.getLong(Prefs.MAP_LATITUDE, 0.0.toBits()))
         val lng = Double.fromBits(prefs.getLong(Prefs.MAP_LONGITUDE, 0.0.toBits()))
-	    currentCountryCodes = countryBoundaries.get().getIds(lng, lat)
+        currentCountryCodes = countryBoundaries.get().getIds(lng, lat)
     }
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
@@ -112,26 +112,26 @@ class QuestSelectionAdapter @Inject constructor(
         ListAdapter.ViewHolder<QuestVisibility>(itemView), CompoundButton.OnCheckedChangeListener {
 
         private val questIcon: ImageView = itemView.questIcon
-	    private val questTitle: TextView = itemView.questTitle
-	    private val visibilityCheckBox: CheckBox = itemView.visibilityCheckBox
-	    private val countryDisabledText: TextView = itemView.countryDisabledText
-	    lateinit var item: QuestVisibility
+        private val questTitle: TextView = itemView.questTitle
+        private val visibilityCheckBox: CheckBox = itemView.visibilityCheckBox
+        private val countryDisabledText: TextView = itemView.countryDisabledText
+        lateinit var item: QuestVisibility
 
         private val isEnabledInCurrentCountry: Boolean
             get() {
-	            (item.questType as? OsmElementQuestType<*>)?.let { questType ->
-		            val countries = questType.enabledForCountries
-		            for (currentCountryCode in currentCountryCodes) {
-			            if (countries.exceptions.contains(currentCountryCode)) {
-				            return !countries.isAllExcept
-			            }
-		            }
-		            return countries.isAllExcept
-	            }
+                (item.questType as? OsmElementQuestType<*>)?.let { questType ->
+                    val countries = questType.enabledForCountries
+                    for (currentCountryCode in currentCountryCodes) {
+                        if (countries.exceptions.contains(currentCountryCode)) {
+                            return !countries.isAllExcept
+                        }
+                    }
+                    return countries.isAllExcept
+                }
                 return true
             }
 
-	    override fun onBind(with: QuestVisibility) {
+        override fun onBind(with: QuestVisibility) {
             this.item = with
             val colorResId = if (item.isInteractionEnabled) android.R.color.transparent else R.color.greyed_out
             itemView.setBackgroundResource(colorResId)
@@ -145,7 +145,7 @@ class QuestSelectionAdapter @Inject constructor(
             if (!isEnabledInCurrentCountry) {
                 val cc = if (currentCountryCodes.isEmpty()) "Atlantis" else currentCountryCodes[0]
                 countryDisabledText.text =  countryDisabledText.resources.getString(
-	                R.string.questList_disabled_in_country, Locale("", cc).displayCountry
+                    R.string.questList_disabled_in_country, Locale("", cc).displayCountry
                 )
                 countryDisabledText.visibility = View.VISIBLE
             } else {

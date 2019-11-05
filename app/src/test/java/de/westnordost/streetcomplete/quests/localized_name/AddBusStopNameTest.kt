@@ -1,14 +1,13 @@
 package de.westnordost.streetcomplete.quests.localized_name
 
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import org.junit.Test
-import org.mockito.Mockito.mock
 
 class AddBusStopNameTest {
 
-    private val questType = AddBusStopName(mock(OverpassMapDataDao::class.java))
+    private val questType = AddBusStopName(mock())
 
     @Test
     fun `apply no name answer`() {

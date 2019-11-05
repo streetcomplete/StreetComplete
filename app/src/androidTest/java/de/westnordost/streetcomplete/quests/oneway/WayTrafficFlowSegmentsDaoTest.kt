@@ -3,7 +3,9 @@ package de.westnordost.streetcomplete.quests.oneway
 import de.westnordost.osmapi.map.data.OsmWay
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
 import de.westnordost.streetcomplete.data.osm.persist.WayDao
+import de.westnordost.streetcomplete.data.osm.persist.WayMapping
 import de.westnordost.streetcomplete.quests.oneway.data.WayTrafficFlowDao
+import de.westnordost.streetcomplete.util.KryoSerializer
 import de.westnordost.streetcomplete.util.Serializer
 import org.junit.Assert.*
 import org.junit.Before
@@ -44,11 +46,7 @@ class WayTrafficFlowSegmentsDaoTest : ApplicationDbTestCase() {
     }
 
     @Test fun deleteUnreferenced() {
-        val mockSerializer = object : Serializer {
-            override fun toBytes(`object`: Any) = ByteArray(0)
-            override fun <T> toObject(bytes: ByteArray, type: Class<T>) = type.newInstance()
-        }
-        val wayDao = WayDao(dbHelper, mockSerializer)
+        val wayDao = WayDao(dbHelper, WayMapping(KryoSerializer()))
 
         wayDao.put(OsmWay(1, 0, mutableListOf(), null))
         wayDao.put(OsmWay(2, 0, mutableListOf(), null))

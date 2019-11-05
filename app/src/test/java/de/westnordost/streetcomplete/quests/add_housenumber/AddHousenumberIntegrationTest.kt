@@ -1,5 +1,5 @@
 package de.westnordost.streetcomplete.quests.add_housenumber
-
+/*
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.streetcomplete.IntegrationTests
 import de.westnordost.streetcomplete.data.OsmModule
@@ -132,3 +132,4 @@ class AddHousenumberIntegrationTest {
         quest.verifyDownloadYieldsNoQuest(bbox)
     }
 }
+*/

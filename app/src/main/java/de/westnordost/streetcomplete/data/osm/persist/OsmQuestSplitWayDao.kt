@@ -1,9 +1,9 @@
 package de.westnordost.streetcomplete.data.osm.persist
 
-import android.content.ContentValues
 import android.database.Cursor
-import android.database.sqlite.SQLiteDatabase.CONFLICT_REPLACE
 import android.database.sqlite.SQLiteOpenHelper
+import androidx.core.content.contentValuesOf
+import de.westnordost.streetcomplete.data.ObjectRelationalMapping
 import de.westnordost.streetcomplete.data.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.OsmQuestSplitWay
@@ -21,19 +21,18 @@ import kotlin.collections.ArrayList
 
 class OsmQuestSplitWayDao @Inject constructor(
     private val dbHelper: SQLiteOpenHelper,
-    private val serializer: Serializer,
-    private val questTypeList: QuestTypeRegistry
+    private val mapping: OsmQuestSplitWayMapping
 ) {
     private val db get() = dbHelper.writableDatabase
 
     fun getAll(): List<OsmQuestSplitWay> {
-        return db.query(NAME) { it.createOsmQuestSplitWay() }
+        return db.query(NAME) { mapping.toObject(it) }
     }
 
     fun get(questId: Long): OsmQuestSplitWay? {
         val selection = "$QUEST_ID = ?"
         val args = arrayOf(questId.toString())
-        return db.queryOne(NAME, null, selection, args) { it.createOsmQuestSplitWay() }
+        return db.queryOne(NAME, null, selection, args) { mapping.toObject(it) }
     }
 
     fun getCount(): Int {
@@ -41,26 +40,32 @@ class OsmQuestSplitWayDao @Inject constructor(
     }
 
     fun put(quest: OsmQuestSplitWay) {
-        db.insertWithOnConflict(NAME, null, quest.createContentValues(), CONFLICT_REPLACE)
+        db.replaceOrThrow(NAME, null, mapping.toContentValues(quest))
     }
 
     fun delete(questId: Long) {
         db.delete(NAME, "$QUEST_ID = $questId", null)
     }
+}
 
-    private fun OsmQuestSplitWay.createContentValues() = ContentValues().also { v ->
-        v.put(QUEST_ID, questId)
-        v.put(QUEST_TYPE, questType.javaClass.simpleName)
-        v.put(WAY_ID, wayId)
-        v.put(SOURCE, source)
-        v.put(SPLITS, serializer.toBytes(ArrayList(splits)))
-    }
+class OsmQuestSplitWayMapping @Inject constructor(
+    private val serializer: Serializer,
+    private val questTypeList: QuestTypeRegistry
+) : ObjectRelationalMapping<OsmQuestSplitWay> {
 
-    private fun Cursor.createOsmQuestSplitWay() = OsmQuestSplitWay(
-        getLong(QUEST_ID),
-        questTypeList.getByName(getString(QUEST_TYPE)) as OsmElementQuestType<*>,
-        getLong(WAY_ID),
-        getString(SOURCE),
-        (serializer.toObject(getBlob(SPLITS)) as ArrayList<SplitPolylineAtPosition>)
+    override fun toContentValues(obj: OsmQuestSplitWay) = contentValuesOf(
+        QUEST_ID to obj.questId,
+        QUEST_TYPE to obj.questType.javaClass.simpleName,
+        WAY_ID to obj.wayId,
+        SOURCE to obj.source,
+        SPLITS to serializer.toBytes(ArrayList(obj.splits))
+    )
+
+    override fun toObject(cursor: Cursor)= OsmQuestSplitWay(
+        cursor.getLong(QUEST_ID),
+        questTypeList.getByName(cursor.getString(QUEST_TYPE)) as OsmElementQuestType<*>,
+        cursor.getLong(WAY_ID),
+        cursor.getString(SOURCE),
+        (serializer.toObject(cursor.getBlob(SPLITS)) as ArrayList<SplitPolylineAtPosition>)
     )
 }

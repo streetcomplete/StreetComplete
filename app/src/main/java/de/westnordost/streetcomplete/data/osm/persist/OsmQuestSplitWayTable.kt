@@ -10,4 +10,13 @@ object OsmQuestSplitWayTable {
         const val SPLITS = "splits"
         const val SOURCE = "source"
     }
+
+    const val CREATE = """
+        CREATE TABLE $NAME (
+            ${Columns.QUEST_ID} int PRIMARY KEY,
+            ${Columns.QUEST_TYPE} varchar(255) NOT NULL,
+            ${Columns.WAY_ID} int NOT NULL,
+            ${Columns.SPLITS} blob NOT NULL,
+            ${Columns.SOURCE} varchar(255) NOT NULL
+        );"""
 }

@@ -34,8 +34,8 @@ class ShowHtmlFragment : Fragment() {
         fun create(text: String, titleStringId: Int): ShowHtmlFragment {
             val result = ShowHtmlFragment()
             result.arguments = bundleOf(
-	            TEXT to text,
-	            TITLE_STRING_RESOURCE_ID to titleStringId
+                TEXT to text,
+                TITLE_STRING_RESOURCE_ID to titleStringId
             )
             return result
         }

@@ -1,16 +1,15 @@
 package de.westnordost.streetcomplete.quests.opening_hours
 
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.quests.opening_hours.model.*
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import org.junit.Test
 
-import org.mockito.Mockito.mock
 
 class AddOpeningHoursTest {
 
-    private val questType = AddOpeningHours(mock(OverpassMapDataDao::class.java))
+    private val questType = AddOpeningHours(mock())
 
     @Test fun `apply description answer`() {
         questType.verifyAnswer(

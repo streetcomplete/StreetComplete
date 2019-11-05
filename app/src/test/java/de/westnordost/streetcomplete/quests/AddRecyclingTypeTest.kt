@@ -2,16 +2,14 @@ package de.westnordost.streetcomplete.quests
 
 
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.quests.recycling.AddRecyclingType
 import de.westnordost.streetcomplete.quests.recycling.RecyclingType
 import org.junit.Test
 
-import org.mockito.Mockito.mock
-
 class AddRecyclingTypeTest  {
 
-    private val questType = AddRecyclingType(mock(OverpassMapDataDao::class.java))
+    private val questType = AddRecyclingType(mock())
 
     @Test fun `apply recycling centre answer`() {
         questType.verifyAnswer(

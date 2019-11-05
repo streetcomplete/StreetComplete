@@ -6,6 +6,8 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 
+// Kotlin: convert when quest download is converted
+
 public class Countries
 {
 	public static final Countries ALL = new Countries(true, null);

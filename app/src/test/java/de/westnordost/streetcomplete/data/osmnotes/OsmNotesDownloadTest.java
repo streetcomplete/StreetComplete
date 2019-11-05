@@ -17,7 +17,6 @@ import de.westnordost.osmapi.notes.Note;
 import de.westnordost.osmapi.notes.NoteComment;
 import de.westnordost.osmapi.notes.NotesDao;
 import de.westnordost.streetcomplete.Prefs;
-import de.westnordost.streetcomplete.data.QuestGroup;
 import de.westnordost.streetcomplete.data.QuestStatus;
 import de.westnordost.streetcomplete.data.VisibleQuestListener;
 
@@ -53,8 +52,7 @@ public class OsmNotesDownloadTest
 		Note note2 = createANote();
 		note2.id = 5L;
 		quests.add(new OsmNoteQuest(13L, note2, QuestStatus.NEW, null, new Date(), new OsmNoteQuestType(), null));
-		when(noteQuestDB.getAll(any(), any()))
-				.thenReturn(quests);
+		when(noteQuestDB.getAll(isNull(), any(), isNull())).thenReturn(quests);
 
 		doAnswer(invocation ->
 		{
@@ -62,7 +60,7 @@ public class OsmNotesDownloadTest
 			assertEquals(1, deletedQuests.size());
 			assertEquals(13L, (long) deletedQuests.iterator().next());
 			return 1;
-		}).when(noteQuestDB).deleteAll(any());
+		}).when(noteQuestDB).deleteAllIds(any());
 
 		// note dao mock will only "find" the note #4
 		List<Note> notes = new ArrayList<>();
@@ -77,7 +75,7 @@ public class OsmNotesDownloadTest
 
 		dl.download(new BoundingBox(0,0,1,1), null, 1000);
 
-		verify(noteQuestDB).deleteAll(any());
+		verify(noteQuestDB).deleteAllIds(any());
 		verify(listener).onQuestsRemoved(any(), any());
 	}
 

@@ -210,15 +210,15 @@ Die von dir eingegebenen Informationen werden dann direkt in deinem Namen zu Ope
     <string name="quest_sport_manySports_confirmation_title">"Viele Sportarten ausgewählt"</string>
     <string name="quest_busStopShelter_name_title">"Hat die Haltestelle %s einen Unterstand?"</string>
     <string name="quest_toiletsFee_title">"Kostet die Benutzung dieser Toiletten etwas?"</string>
-    <string name="quest_tactilePaving_title_bus">"Hat diese Haltestelle ein Bodenleitsystem?"</string>
-    <string name="quest_tactilePaving_title_crosswalk">"Hat dieser Überweg ein Bodenleitsystem auf beiden Seiten?"</string>
+    <string name="quest_tactilePaving_title_bus">"Hat diese Bushaltestelle eine spezielle Pflasterung für Blinde?"</string>
+    <string name="quest_tactilePaving_title_crosswalk">"Hat dieser Überweg eine spezielle Pflasterung für Blinde auf beiden Seiten?"</string>
     <string name="quest_source_dialog_title">"Wurde die Information vor Ort überprüft?"</string>
-    <string name="quest_tactilePaving_title_name_bus">"Hat die Haltestelle %s eine spezielle Pflasterung für Blinde?"</string>
+    <string name="quest_tactilePaving_title_name_bus">"Hat die Bushaltestelle %s eine spezielle Pflasterung für Blinde?"</string>
     <string name="quest_source_dialog_note">"Nur vor Ort erhobene Informationen sollen ergänzt werden."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Ist der Fahrradstellplatz überdacht (Schutz vor Regen)?"</string>
     <string name="dialog_session_dont_show_again">"Für diese Sitzung nicht mehr fragen"</string>
     <string name="quest_streetSurface_name_title">"Welche Oberfläche hat die Straße %s hier?"</string>
-    <string name="quest_maxspeed_unusualInput_confirmation_description">"Diese Höchstgeschwindigkeit scheint nicht plausibel."</string>
+    <string name="quest_maxspeed_unusualInput_confirmation_description">"Diese Höchstgeschwindigkeit sieht ungewöhnlich aus."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Sicher, dass kein Schild vorhanden ist?"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation">"Hast Du am anderen Ende der Straße nachgeschaut?
 Wenn es keine Schilder entlang der gesamten Straße gibt, die für den hervorgehobenen Abschnitt gelten, gelten die gesetzlichen Geschwindigkeitsbegrenzungen."</string>
@@ -348,7 +348,6 @@ Andernfalls kannst Du eine alternative Tastatur im App Store herunterladen. Beli
     <!-- Shouldn't this be translatable="false"? -->
     <string name="compass_north_one_letter">"N"</string>
     <string name="action_undo">"Rückgängig machen"</string>
-    <string name="no_changes_to_undo">"Nichts rückgängig zu machen"</string>
     <string name="undo_confirm_title">"Die folgende Antwort rückgängig machen?"</string>
     <string name="produce_mangosteen">"Mangostane"</string>
     <string name="produce_tomatoes">"Tomaten"</string>
@@ -602,7 +601,7 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_maxheight_tunnel_title">"Was ist die Durchfahrtshöhe dieses Tunnels?"</string>
     <string name="quest_maxheight_answer_noSign">"Es gibt kein Schild…"</string>
     <string name="quest_maxheight_answer_noSign_question">"Ist selbst für die höchsten Lastwagen mehr als genug Platz, um darunter durchzufahren? (mindestens etwa 4,5m)"</string>
-    <string name="quest_maxheight_unusualInput_confirmation_description">"Diese Höhe sieht unplausibel aus. Bist du sicher, dass sie korrekt ist?"</string>
+    <string name="quest_maxheight_unusualInput_confirmation_description">"Diese Höhe sieht ungewöhnlich aus. Bist du sicher, dass sie korrekt ist?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_closed2">"Geschlossen von %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_reopen2">"Wieder geöffnet von %1$s, %2$s"</string>
@@ -683,4 +682,15 @@ Jetzt aufspalten?"</string>
     <string name="quest_split_way_many_splits_confirmation_description">"Das sind ganz schön viele Punkte an denen aufgespalten werden soll. Es gibt die Möglichkeit, den Weg auch später noch weiter aufzuspalten."</string>
     <string name="quest_footwayPartSurface_title">"Welche Oberfläche hat der Fußweg hier?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title">"Ist die Toilette in %s zugänglich für Rollstühle?"</string>
+    <string name="quest_tactilePaving_title_tram">"Hat diese Straßenbahnhaltestelle eine spezielle Pflasterung für Blinde?"</string>
+    <string name="quest_tactilePaving_title_name_tram">"Hat die Straßenbahnhaltestelle %s eine spezielle Pflasterung für Blinde?"</string>
+    <string name="quest_maxweight_title">"Was ist das Maximalgewicht hier?"</string>
+    <string name="quest_maxweight_answer_noSign">"Da ist kein Schild"</string>
+    <string name="quest_maxweight_unusualInput_confirmation_description">"Diese Höhe sieht ungewöhnlich aus. Bist du sicher, dass sie korrekt ist?"</string>
+    <string name="quest_maxweight_answer_other_sign">"Schild sieht anders aus…"</string>
+    <string name="quest_maxweight_unsupported_sign_request_photo">"Willst du stattdessen eine Notiz hinterlassen? Mit Hilfe eines Fotos können andere Mapper sich darum kümmern, es einzutragen."</string>
+    <string name="confirmation_authorize_now_note">"Du kannst es später in den Einstellungen machen."</string>
+    <string name="quest_generalFee_title">"Kostet %s Eintritt?"</string>
+    <string name="quest_laundrySelfService_title">"Ist diese Wäscherei ein Waschsalon?"</string>
+    <string name="quest_handrail_title">"Gibt es an dieser Treppe ein Geländer?"</string>
 </resources>

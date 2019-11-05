@@ -77,7 +77,7 @@ class AddCycleway(private val overpassServer: OverpassMapDataDao) : OsmElementQu
             "[surface !~ '^(" + OsmTaggings.ANYTHING_UNPAVED.joinToString("|") + ")$']" +
             // not any explicitly tagged as no bicycles
             "[bicycle != no]" +
-            "[access !~ '^private|no$']" +
+            "[access !~ '^(private|no)$']" +
             // some roads may be farther than minDistToCycleways from cycleways, not tagged with
             // cycleway=separate/sidepath but may have a hint that there is a separately tagged
             // cycleway

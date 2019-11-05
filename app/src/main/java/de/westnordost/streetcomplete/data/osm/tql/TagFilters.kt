@@ -33,7 +33,7 @@ class NotHasTag(val key: String, val value: String) : TagFilter {
 class HasTagValueLike(val key: String, value: String) : TagFilter {
     val value = value.toRegex()
 
-    override fun toOverpassQLString() = key.quote() + " ~ " + "^${value.pattern}$".quote()
+    override fun toOverpassQLString() = key.quote() + " ~ " + "^(${value.pattern})$".quote()
     override fun toString() = toOverpassQLString()
     override fun matches(obj: Tags?) = obj?.get(key)?.matches(value) ?: false
 }
@@ -41,7 +41,7 @@ class HasTagValueLike(val key: String, value: String) : TagFilter {
 class NotHasTagValueLike(val key: String, value: String) : TagFilter {
     val value = value.toRegex()
 
-    override fun toOverpassQLString() = key.quote() + " !~ " + "^${value.pattern}$".quote()
+    override fun toOverpassQLString() = key.quote() + " !~ " + "^(${value.pattern})$".quote()
     override fun toString() = toOverpassQLString()
     override fun matches(obj: Tags?) = !(obj?.get(key)?.matches(value) ?: false)
 }
@@ -51,7 +51,7 @@ class HasTagLike(key: String, value: String) : TagFilter {
     val value = value.toRegex()
 
     override fun toOverpassQLString() =
-        "~" + "^${key.pattern}$".quote() + " ~ " + "^${value.pattern}$".quote()
+        "~" + "^(${key.pattern})$".quote() + " ~ " + "^(${value.pattern})$".quote()
     override fun toString() = toOverpassQLString()
 
     override fun matches(obj: Tags?) =

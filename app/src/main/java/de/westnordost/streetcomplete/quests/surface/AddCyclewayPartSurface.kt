@@ -8,7 +8,13 @@ import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
 class AddCyclewayPartSurface(o: OverpassMapDataDao) : SimpleOverpassQuestType<String>(o) {
 
     override val tagFilters = """
-        ways with highway ~ path|footway|cycleway|bridleway and surface = paved and bicycle ~ designated|yes and segregated=yes
+        ways with
+        (
+          highway = cycleway 
+          or (highway ~ path|footway and bicycle != no)
+          or (highway = bridleway and bicycle ~ designated|yes)
+        )
+        and segregated = yes
         and !cycleway:surface and !surface:cycleway
     """
     override val commitMessage = "Add path surfaces"

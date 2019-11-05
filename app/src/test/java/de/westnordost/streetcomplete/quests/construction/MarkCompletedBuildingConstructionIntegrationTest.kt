@@ -1,5 +1,5 @@
 package de.westnordost.streetcomplete.quests.construction
-
+/*
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.streetcomplete.IntegrationTests
 import de.westnordost.streetcomplete.data.OsmModule
@@ -47,3 +47,4 @@ class MarkCompletedBuildingConstructionIntegrationTest {
         quest.verifyDownloadYieldsQuest(bbox)
     }
 }
+*/

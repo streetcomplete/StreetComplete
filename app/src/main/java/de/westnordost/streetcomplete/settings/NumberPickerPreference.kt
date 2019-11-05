@@ -11,20 +11,20 @@ import de.westnordost.streetcomplete.R
  * Preference that shows a simple number picker
  */
 class NumberPickerPreference @JvmOverloads constructor(
-	context: Context,
-	attrs: AttributeSet? = null,
-	defStyleAttr: Int = R.attr.dialogPreferenceStyle,
-	defStyleRes: Int = 0
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = R.attr.dialogPreferenceStyle,
+    defStyleRes: Int = 0
 ) : DialogPreferenceCompat(context, attrs, defStyleAttr, defStyleRes) {
 
     private var _value: Int = 0
-	var value: Int
-		get() = _value
-		set(v) {
-			_value = v
-			persistInt(v)
-			notifyChanged()
-		}
+    var value: Int
+        get() = _value
+        set(v) {
+            _value = v
+            persistInt(v)
+            notifyChanged()
+        }
 
     var minValue: Int = DEFAULT_MIN_VALUE
         private set
@@ -33,22 +33,22 @@ class NumberPickerPreference @JvmOverloads constructor(
     var step: Int = STEP
         private set
 
-	init {
-		dialogLayoutResource = R.layout.dialog_number_picker_preference
+    init {
+        dialogLayoutResource = R.layout.dialog_number_picker_preference
 
-		context.withStyledAttributes(attrs, R.styleable.NumberPickerPreference) {
-			minValue = getInt(R.styleable.NumberPickerPreference_minValue, DEFAULT_MIN_VALUE)
-			maxValue = getInt(R.styleable.NumberPickerPreference_maxValue, DEFAULT_MAX_VALUE)
+        context.withStyledAttributes(attrs, R.styleable.NumberPickerPreference) {
+            minValue = getInt(R.styleable.NumberPickerPreference_minValue, DEFAULT_MIN_VALUE)
+            maxValue = getInt(R.styleable.NumberPickerPreference_maxValue, DEFAULT_MAX_VALUE)
             step = getInt(R.styleable.NumberPickerPreference_step, STEP)
-		}
+        }
 
-	}
+    }
 
     override fun createDialog() = NumberPickerPreferenceDialog()
 
     override fun onSetInitialValue(restorePersistedValue: Boolean, defaultValue: Any?) {
         val defaultInt = defaultValue as? Int ?: DEFAULT_VALUE
-	    _value = if (restorePersistedValue) getPersistedInt(defaultInt) else defaultInt
+        _value = if (restorePersistedValue) getPersistedInt(defaultInt) else defaultInt
     }
 
     override fun onGetDefaultValue(a: TypedArray, index: Int) = a.getInteger(index, DEFAULT_VALUE)

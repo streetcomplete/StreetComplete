@@ -8,6 +8,7 @@ import javax.inject.Inject
 
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.quests.AYesNoQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.StreetSideRotater
 import de.westnordost.streetcomplete.quests.oneway.data.WayTrafficFlowDao
@@ -36,7 +37,7 @@ class AddOnewayForm : AYesNoQuestAnswerFragment<OnewayAnswer>() {
             else R.drawable.ic_oneway_lane_reverse
         )
 
-        streetSideRotater = StreetSideRotater(puzzleView, compassNeedle, elementGeometry)
+        streetSideRotater = StreetSideRotater(puzzleView, compassNeedle, elementGeometry as ElementPolylinesGeometry)
     }
 
     override fun onClick(answer: Boolean) {

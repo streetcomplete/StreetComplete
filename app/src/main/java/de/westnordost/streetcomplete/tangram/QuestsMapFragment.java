@@ -35,6 +35,8 @@ import de.westnordost.streetcomplete.data.Quest;
 import de.westnordost.streetcomplete.data.QuestGroup;
 import de.westnordost.streetcomplete.data.QuestType;
 import de.westnordost.streetcomplete.data.osm.ElementGeometry;
+import de.westnordost.streetcomplete.data.osm.ElementPolygonsGeometry;
+import de.westnordost.streetcomplete.data.osm.ElementPolylinesGeometry;
 import de.westnordost.streetcomplete.data.visiblequests.OrderedVisibleQuestTypesProvider;
 import de.westnordost.streetcomplete.quests.bikeway.AddCycleway;
 import de.westnordost.streetcomplete.util.DpUtil;
@@ -63,6 +65,10 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 
 	private LatLon lastClickPos;
 	private double lastFingerRadiusInMeters;
+
+	// TODO this could maybe solved instead by a scene update, see https://tangrams.readthedocs.io/en/latest/Syntax-Reference/layers/
+	// (enabled key) but not until the fragment learnt how to properly reinitialize its markers on a scene update
+	private boolean isShowingQuests = true;
 
 	private Rect lastDisplayedRect;
 	private final Set<Point> retrievedTiles;
@@ -115,11 +121,14 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 			questTypeOrder.put(questType, order++);
 		}
 
-		BoundingBox displayedArea = getDisplayedArea(new Rect());
-		if(displayedArea != null)
+		if (isShowingQuests)
 		{
-			lastDisplayedRect = SlippyMapMath.enclosingTiles(displayedArea, TILES_ZOOM);
-			updateQuestsInRect(lastDisplayedRect);
+			BoundingBox displayedArea = getDisplayedArea(new Rect());
+			if (displayedArea != null)
+			{
+				lastDisplayedRect = SlippyMapMath.enclosingTiles(displayedArea, TILES_ZOOM);
+				updateQuestsInRect(lastDisplayedRect);
+			}
 		}
 	}
 
@@ -258,7 +267,7 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 
 		if(normalCenter == null || offsetCenter == null) return null;
 
-		LngLat pos = TangramConst.toLngLat(geometry.center);
+		LngLat pos = TangramConst.toLngLat(geometry.getCenter());
 		pos.latitude -= offsetCenter.latitude - normalCenter.latitude;
 		pos.longitude -= offsetCenter.longitude - normalCenter.longitude;
 		return pos;
@@ -315,6 +324,8 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		super.updateView();
 
 		if (controller == null) return;
+
+		if (!isShowingQuests) return;
 
 		if(controller.getZoom() < TILES_ZOOM) return;
 
@@ -376,30 +387,33 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 	@UiThread public void addQuestGeometry(ElementGeometry g)
 	{
 		if(geometryLayer == null) return; // might still be null - async calls...
+		if(!isShowingQuests) return;
 
 		zoomAndMoveToContain(g);
 		updateView();
 
 		Map<String,String> props = new HashMap<>();
 
-		if(g.polygons != null)
+		if(g instanceof ElementPolygonsGeometry)
 		{
+			ElementPolygonsGeometry pg = (ElementPolygonsGeometry) g;
 			props.put("type", "poly");
-			geometryLayer.addPolygon(TangramConst.toLngLat(g.polygons), props);
+			geometryLayer.addPolygon(TangramConst.toLngLat(pg.getPolygons()), props);
 		}
-		else if(g.polylines != null)
+		else if(g instanceof ElementPolylinesGeometry)
 		{
+			ElementPolylinesGeometry pg = (ElementPolylinesGeometry) g;
 			props.put("type", "line");
-			List<List<LngLat>> polylines = TangramConst.toLngLat(g.polylines);
+			List<List<LngLat>> polylines = TangramConst.toLngLat(pg.getPolylines());
 			for(List<LngLat> polyline : polylines)
 			{
 				geometryLayer.addPolyline(polyline, props);
 			}
 		}
-		else if(g.center != null)
+		else
 		{
 			props.put("type", "point");
-			geometryLayer.addPoint(TangramConst.toLngLat(g.center), props);
+			geometryLayer.addPoint(TangramConst.toLngLat(g.getCenter()), props);
 		}
 	}
 
@@ -541,6 +555,19 @@ public class QuestsMapFragment extends MapFragment implements TouchInput.TapResp
 		lastRotation = null;
 		lastDisplayedRect = null;
 	}
+
+	public void setIsShowingQuests(boolean showQuests)
+	{
+		if (isShowingQuests == showQuests) return;
+
+		isShowingQuests = showQuests;
+		if (!showQuests) {
+			clearQuests();
+		} else {
+			updateView();
+		}
+	}
+
 
 	public BoundingBox getDisplayedArea(Rect offset)
 	{

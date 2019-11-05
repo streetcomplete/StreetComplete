@@ -7,7 +7,7 @@ import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.Countries
-import de.westnordost.streetcomplete.data.osm.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandler
@@ -95,7 +95,7 @@ class AddHousenumber(private val overpass: OverpassMapDataDao) : OsmElementQuest
         val buildingsByCenterPoint = mutableMapOf<LatLon, ElementWithGeometry>()
         val query = getBuildingsWithoutAddressesOverpassQuery(bbox)
         val success = overpass.getAndHandleQuota(query) { element, geometry ->
-            if (geometry?.polygons != null && geometry.center != null) {
+            if (geometry is ElementPolygonsGeometry) {
                 buildingsByCenterPoint[geometry.center] = ElementWithGeometry(element, geometry)
             }
         }
@@ -111,63 +111,18 @@ class AddHousenumber(private val overpass: OverpassMapDataDao) : OsmElementQuest
         return if (success) grid else null
     }
 
-    private fun downloadAreasWithAddresses(bbox: BoundingBox): List<ElementGeometry>? {
-        val areas = mutableListOf<ElementGeometry>()
-        val query = getNonBuildingAreasWithAddresses(bbox)
+    private fun downloadAreasWithAddresses(bbox: BoundingBox): List<ElementPolygonsGeometry>? {
+        val areas = mutableListOf<ElementPolygonsGeometry>()
+        val query = getNonBuildingAreasWithAddressesOverpassQuery(bbox)
         val success = overpass.getAndHandleQuota(query) { _, geometry ->
-            if (geometry?.polygons != null) areas.add(geometry)
+            if (geometry is ElementPolygonsGeometry) areas.add(geometry)
         }
         return if (success) areas else null
     }
 
-    /** Query that returns all areas that are not buildings but have addresses  */
-    private fun getNonBuildingAreasWithAddresses(bbox: BoundingBox): String {
-        val globalBbox = bbox.toGlobalOverpassBBox()
-        return """
-            $globalBbox
-            (
-              way[!building] $ANY_ADDRESS_FILTER;
-              rel[!building] $ANY_ADDRESS_FILTER;
-            );
-            out geom;
-            """.trimIndent()
-    }
-
-    /** Query that returns all buildings that neither have an address node on their outline, nor
-     * on itself  */
-    private fun getBuildingsWithoutAddressesOverpassQuery(bbox: BoundingBox): String {
-        val bboxFilter = bbox.toOverpassBboxFilter()
-        return """
-            (
-              way$BUILDINGS_WITHOUT_ADDRESS_FILTER$bboxFilter;
-              rel$BUILDINGS_WITHOUT_ADDRESS_FILTER$bboxFilter;
-            ) -> .buildings;
-            .buildings > -> .building_nodes;
-            node.building_nodes$ANY_ADDRESS_FILTER; < -> .buildings_with_addr_nodes;
-            (.buildings; - .buildings_with_addr_nodes;);
-            out meta geom;
-            """.trimIndent()
-    }
-
-    /** Query that returns all address nodes that are not part of any building outline  */
-    private fun getFreeFloatingAddressesOverpassQuery(bbox: BoundingBox): String {
-        val globalBbox = bbox.toGlobalOverpassBBox()
-        return """
-            $globalBbox
-            (
-              node$ANY_ADDRESS_FILTER;
-               - ((way[building]; relation[building];);>;);
-            );
-            out skel;
-            """.trimIndent()
-    }
-
-
-    private fun getPositionContainedInBuilding(building: ElementGeometry, positions: LatLonRaster): LatLon? {
-        val buildingPolygons = building.polygons ?: return null
-
+    private fun getPositionContainedInBuilding(building: ElementPolygonsGeometry, positions: LatLonRaster): LatLon? {
         for (pos in positions.getAll(building.bounds)) {
-            if (SphericalEarthMath.isInMultipolygon(pos, buildingPolygons)) return pos
+            if (SphericalEarthMath.isInMultipolygon(pos, building.polygons)) return pos
         }
         return null
     }
@@ -207,18 +162,59 @@ class AddHousenumber(private val overpass: OverpassMapDataDao) : OsmElementQuest
         }
     }
 
-    private data class ElementWithGeometry(val element: Element, val geometry: ElementGeometry)
+}
 
-    companion object {
-        private const val ANY_ADDRESS_FILTER =
-            "[~'^addr:(housenumber|housename|conscriptionnumber|streetnumber)$'~'.']"
+/** Query that returns all areas that are not buildings but have addresses  */
+private fun getNonBuildingAreasWithAddressesOverpassQuery(bbox: BoundingBox): String {
+    val globalBbox = bbox.toGlobalOverpassBBox()
+    return """
+            $globalBbox
+            (
+              way[!building] $ANY_ADDRESS_FILTER;
+              rel[!building] $ANY_ADDRESS_FILTER;
+            );
+            out geom;
+            """.trimIndent()
+}
 
-        private const val NO_ADDRESS_FILTER =
-            "[!'addr:housenumber'][!'addr:housename'][!'addr:conscriptionnumber'][!'addr:streetnumber'][!noaddress][!nohousenumber]"
+/** Query that returns all buildings that neither have an address node on their outline, nor
+ * on itself  */
+private fun getBuildingsWithoutAddressesOverpassQuery(bbox: BoundingBox): String {
+    val bboxFilter = bbox.toOverpassBboxFilter()
+    return """
+            (
+              way$BUILDINGS_WITHOUT_ADDRESS_FILTER$bboxFilter;
+              rel$BUILDINGS_WITHOUT_ADDRESS_FILTER$bboxFilter;
+            ) -> .buildings;
+            .buildings > -> .building_nodes;
+            node.building_nodes$ANY_ADDRESS_FILTER; < -> .buildings_with_addr_nodes;
+            (.buildings; - .buildings_with_addr_nodes;);
+            out meta geom;
+            """.trimIndent()
+}
 
-        private const val BUILDINGS_WITHOUT_ADDRESS_FILTER =
-            "['building'~'^(house|residential|apartments|detached|terrace|dormitory|semi|semidetached_house|farm|" +
+/** Query that returns all address nodes that are not part of any building outline  */
+private fun getFreeFloatingAddressesOverpassQuery(bbox: BoundingBox): String {
+    val globalBbox = bbox.toGlobalOverpassBBox()
+    return """
+            $globalBbox
+            (
+              node$ANY_ADDRESS_FILTER;
+               - ((way[building]; relation[building];);>;);
+            );
+            out skel;
+            """.trimIndent()
+}
+
+private data class ElementWithGeometry(val element: Element, val geometry: ElementPolygonsGeometry)
+
+private const val ANY_ADDRESS_FILTER =
+    "[~'^addr:(housenumber|housename|conscriptionnumber|streetnumber)$'~'.']"
+
+private const val NO_ADDRESS_FILTER =
+    "[!'addr:housenumber'][!'addr:housename'][!'addr:conscriptionnumber'][!'addr:streetnumber'][!noaddress][!nohousenumber]"
+
+private const val BUILDINGS_WITHOUT_ADDRESS_FILTER =
+    "['building'~'^(house|residential|apartments|detached|terrace|dormitory|semi|semidetached_house|farm|" +
             "school|civic|college|university|public|hospital|kindergarten|train_station|hotel|" +
             "retail|commercial)$'][location!=underground][ruins!=yes]" + NO_ADDRESS_FILTER
-    }
-}
