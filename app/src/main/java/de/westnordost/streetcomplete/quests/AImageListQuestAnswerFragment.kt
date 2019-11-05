@@ -93,7 +93,7 @@ abstract class AImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnswerFragm
         }
     }
 
-    abstract protected fun onClickOk(selectedItems: List<I>)
+    protected abstract fun onClickOk(selectedItems: List<I>)
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
