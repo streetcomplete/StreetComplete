@@ -30,6 +30,8 @@ class ImageSelectAdapter<T>(private val maxSelectableIndices: Int = -1) :
         fun onIndexDeselected(index: Int)
     }
 
+    fun indexOf(item: T): Int = items.indexOfFirst { it.value == item }
+
     fun select(indices: List<Int>) {
         for (index in indices) {
             select(index)
