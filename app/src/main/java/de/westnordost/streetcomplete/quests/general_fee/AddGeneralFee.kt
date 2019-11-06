@@ -12,7 +12,7 @@ class AddGeneralFee(o: OverpassMapDataDao) : SimpleOverpassQuestType<Boolean>(o)
             "(tourism=museum or leisure=beach_resort or tourism=gallery) " +
             "and access !~ private|no and !fee and name"
     override val commitMessage = "Add fee info"
-    override val icon = R.drawable.ic_quest_money
+    override val icon = R.drawable.ic_quest_fee
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_generalFee_title
 
