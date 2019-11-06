@@ -36,5 +36,6 @@ class ImageListPickerDialog<T>(
 
             override fun onIndexDeselected(index: Int) {}
         })
+        recyclerView.adapter = adapter
     }
 }
