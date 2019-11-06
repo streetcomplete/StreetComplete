@@ -71,7 +71,7 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
         }
     }
 
-    override fun isFormComplete() = getSpeedFromInput() != null
+    override fun isFormComplete() = speedType == NO_SIGN || getSpeedFromInput() != null
 
     /* ---------------------------------------- With sign --------------------------------------- */
 
