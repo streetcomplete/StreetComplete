@@ -2,15 +2,7 @@ package de.westnordost.streetcomplete.quests.bikeway
 
 import android.os.Bundle
 import androidx.annotation.AnyThread
-import androidx.appcompat.app.AlertDialog
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.view.ViewGroup.LayoutParams.MATCH_PARENT
-import android.widget.ImageView
-import android.widget.TextView
 
 import java.util.Collections
 
@@ -20,7 +12,7 @@ import de.westnordost.streetcomplete.data.osm.tql.FiltersParser
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.quests.StreetSideRotater
-import de.westnordost.streetcomplete.view.ListAdapter
+import de.westnordost.streetcomplete.view.dialogs.ImageListPickerDialog
 import kotlinx.android.synthetic.main.quest_street_side_puzzle.*
 
 
@@ -152,18 +144,10 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
     override fun isRejectingClose() = leftSide != null || rightSide != null
 
     private fun showCyclewaySelectionDialog(isRight: Boolean) {
-        val recyclerView = RecyclerView(activity!!)
-        recyclerView.layoutParams = RecyclerView.LayoutParams(MATCH_PARENT, MATCH_PARENT)
-        recyclerView.layoutManager = GridLayoutManager(activity, 2)
-
-        val alertDialog = AlertDialog.Builder(activity!!)
-            .setTitle(R.string.quest_select_hint)
-            .setView(recyclerView)
-            .create()
-
-        recyclerView.adapter = createAdapter(getCyclewayItems(isRight)) { cycleway ->
-            alertDialog.dismiss()
-
+        val ctx = context ?: return
+        val items = getCyclewayItems(isRight).map { it.asItem(isLeftHandTraffic) }
+        ImageListPickerDialog(ctx, items, R.layout.labeled_icon_button_cell, 2) { selected ->
+            val cycleway = selected.value!!
             val iconResId = cycleway.getIconResId(isLeftHandTraffic)
 
             if (isRight) {
@@ -174,8 +158,7 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
                 leftSide = cycleway
             }
             checkIsFormComplete()
-        }
-        alertDialog.show()
+        }.show()
     }
 
     private fun getCyclewayItems(isRight: Boolean): List<Cycleway> {
@@ -199,23 +182,6 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
 
         return values
     }
-
-    private fun createAdapter(items: List<Cycleway>, callback: (Cycleway) -> Unit) =
-        object : ListAdapter<Cycleway>(items) {
-            override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-                object : ListAdapter.ViewHolder<Cycleway>(
-                    LayoutInflater.from(parent.context).inflate(R.layout.labeled_icon_button_cell, parent, false)
-                ) {
-                    override fun onBind(with: Cycleway) {
-                        val imageView = itemView.findViewById<ImageView>(R.id.imageView)
-                        val textView = itemView.findViewById<TextView>(R.id.textView)
-                        val resId = with.getIconResId(isLeftHandTraffic)
-                        imageView.setImageDrawable(resources.getDrawable(resId))
-                        textView.setText(with.nameResId)
-                        itemView.setOnClickListener { callback(with) }
-                    }
-                }
-        }
 
     private fun showBothSides() {
         isDefiningBothSides = true
