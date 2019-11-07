@@ -20,8 +20,8 @@ class AddRecyclingContainerMaterials(private val overpassServer: OverpassMapData
 
     private fun getOverpassQuery(bbox: BoundingBox) = """
         ${bbox.toGlobalOverpassBBox()}
-        node[amenity = recycling][recycling_type = container][~"^recycling:.*$"~".*"] -> .known;
         node[amenity = recycling][recycling_type = container] -> .all;
+        node.all[~"^recycling:.*$" ~ ".*"] -> .known;
         (.all; - .known;);
         ${getQuestPrintStatement()}""".trimIndent()
 
