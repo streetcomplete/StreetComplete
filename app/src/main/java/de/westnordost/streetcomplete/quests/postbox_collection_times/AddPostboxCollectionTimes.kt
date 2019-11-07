@@ -5,11 +5,12 @@ import de.westnordost.streetcomplete.data.osm.Countries
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.streetcomplete.ktx.containsAny
 
 class AddPostboxCollectionTimes(o: OverpassMapDataDao) : SimpleOverpassQuestType<CollectionTimesAnswer>(o) {
 
     override val tagFilters = """
-        nodes with amenity=post_box and !collection_times
+        nodes with amenity = post_box and !collection_times
         and collection_times:signed != no and access !~ private|no
     """
     override val icon = R.drawable.ic_quest_mail
@@ -41,9 +42,9 @@ class AddPostboxCollectionTimes(o: OverpassMapDataDao) : SimpleOverpassQuestType
     }
 
     override fun getTitle(tags: Map<String, String>): Int {
-        val hasName = tags.containsKey("name") || tags.containsKey("brand") || tags.containsKey("operator")
+        val hasName = tags.keys.containsAny(listOf("name","brand","operator"))
         return if (hasName) R.string.quest_postboxCollectionTimes_name_title
-        else         R.string.quest_postboxCollectionTimes_title
+               else         R.string.quest_postboxCollectionTimes_title
     }
 
     override fun createForm() = AddCollectionTimesForm()
