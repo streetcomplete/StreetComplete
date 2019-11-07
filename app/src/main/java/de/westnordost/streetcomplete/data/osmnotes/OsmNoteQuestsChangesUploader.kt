@@ -39,7 +39,7 @@ class OsmNoteQuestsChangesUploader @Inject constructor(
                    (Reminder: Note quests block other quests)
                   */
                 // so, not this: questDB.delete(quest.getId());
-                quest.status = QuestStatus.CLOSED
+                quest.close()
                 questDB.update(quest)
                 noteDB.put(newNote)
                 statisticsDB.addOneNote()

@@ -48,7 +48,7 @@ class OsmQuestsUploader @Inject constructor(
     }
 
     override fun onUploadSuccessful(quest: OsmQuest) {
-        quest.status = QuestStatus.CLOSED
+        quest.close()
         questDB.update(quest)
         Log.d(TAG, "Uploaded osm quest ${quest.toLogString()}")
     }
