@@ -31,8 +31,8 @@ import de.westnordost.streetcomplete.data.QuestType
 import de.westnordost.streetcomplete.data.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.meta.CountryInfos
-import de.westnordost.streetcomplete.data.meta.OsmAreas
 import de.westnordost.streetcomplete.data.osm.ElementGeometry
+import de.westnordost.streetcomplete.ktx.isArea
 import kotlinx.android.synthetic.main.fragment_quest_answer.*
 import java.util.concurrent.FutureTask
 
@@ -176,7 +176,7 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
             */
             val isClosedRoundabout = way.nodeIds.firstOrNull() == way.nodeIds.lastOrNull() &&
                     way.tags?.get("junction") == "roundabout"
-            if (!isClosedRoundabout && !OsmAreas.isArea(way)) {
+            if (!isClosedRoundabout && !way.isArea()) {
                 val splitWay = OtherAnswer(R.string.quest_generic_answer_differs_along_the_way) {
                     onClickSplitWayAnswer()
                 }

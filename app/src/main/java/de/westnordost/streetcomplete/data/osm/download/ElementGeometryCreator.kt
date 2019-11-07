@@ -1,11 +1,11 @@
 package de.westnordost.streetcomplete.data.osm.download
 
 import de.westnordost.osmapi.map.data.*
-import de.westnordost.streetcomplete.data.meta.OsmAreas
 import de.westnordost.streetcomplete.data.osm.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.ktx.isArea
 import de.westnordost.streetcomplete.util.SphericalEarthMath.*
 import kotlin.collections.ArrayList
 
@@ -26,7 +26,7 @@ class ElementGeometryCreator(private val wayGeometrySource: WayGeometrySource) {
         polyline.eliminateDuplicates()
         if (polyline.size < 2) return null
 
-        return if (OsmAreas.isArea(way)) {
+        return if (way.isArea()) {
             /* ElementGeometry considers polygons that are defined clockwise holes, so ensure that
                it is defined CCW here. */
             if (isRingDefinedClockwise(polyline)) polyline.reverse()
@@ -37,7 +37,7 @@ class ElementGeometryCreator(private val wayGeometrySource: WayGeometrySource) {
     }
 
     fun create(relation: Relation): ElementGeometry? {
-        return if (OsmAreas.isArea(relation)) {
+        return if (relation.isArea()) {
             createMultipolygonGeometry(relation)
         } else {
             createPolylinesGeometry(relation)
