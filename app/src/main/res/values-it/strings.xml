@@ -685,4 +685,7 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="quest_split_way_many_splits_confirmation_description">"Queste sono parecchie divisioni. Puoi dividere ancora la strada più tardi."</string>
     <string name="quest_footwayPartSurface_title">"Qual è la superficie di questo passaggio pedonale?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title">"I servizi igienici in %s sono accessibili con la sedia a rotelle?"</string>
+    <string name="quest_maxweight_title">"Qual è il limite di peso qui?"</string>
+    <string name="quest_maxweight_answer_noSign">"Non c'è alcun segnale"</string>
+    <string name="quest_maxweight_unusualInput_confirmation_description">"Il peso inserito sembra erroneo. Sei sicuro sia corretto?"</string>
 </resources>
