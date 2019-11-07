@@ -228,7 +228,7 @@ public class MainActivity extends AppCompatActivity implements
 		}
 
 		questSource.onCreate(this);
-		questController.onCreate();
+		getLifecycle().addObserver(questController);
 
 		getSupportFragmentManager().beginTransaction()
 			.add(locationRequestFragment, LocationRequestFragment.class.getSimpleName())
@@ -326,7 +326,7 @@ public class MainActivity extends AppCompatActivity implements
 		localBroadcaster.registerReceiver(locationRequestFinishedReceiver,
 				new IntentFilter(LocationRequestFragment.ACTION_FINISHED));
 
-		questController.onStart(this);
+		questController.setListener(this);
 
 		downloadProgressBar.setAlpha(0f);
 		downloadServiceIsBound = bindService(new Intent(this, QuestDownloadService.class),
@@ -370,7 +370,7 @@ public class MainActivity extends AppCompatActivity implements
 
 		unregisterReceiver(locationAvailabilityReceiver);
 
-		questController.onStop();
+		questController.setListener(null);
 
 		if (downloadServiceIsBound) unbindService(downloadServiceConnection);
 		if (downloadService != null)
@@ -387,12 +387,6 @@ public class MainActivity extends AppCompatActivity implements
 		{
 			uploadService.setProgressListener(null);
 		}
-	}
-
-	@Override public void onDestroy()
-	{
-		super.onDestroy();
-		questController.onDestroy();
 	}
 
 	@Override public void onConfigurationChanged(Configuration newConfig) {
@@ -962,7 +956,7 @@ public class MainActivity extends AppCompatActivity implements
 	/* ---------------------------------- VisibleQuestListener ---------------------------------- */
 
 	@AnyThread @Override
-	public void onQuestsCreated(final Collection<? extends Quest> quests, final QuestGroup group)
+	public void onQuestsCreated(@NonNull final Collection<? extends Quest> quests, @NonNull final QuestGroup group)
 	{
 		runOnUiThread(() -> mapFragment.addQuests(quests, group));
 		// to recreate element geometry of selected quest (if any) after recreation of activity
@@ -981,7 +975,7 @@ public class MainActivity extends AppCompatActivity implements
 	}
 
 	@AnyThread @Override
-	public synchronized void onQuestsRemoved(Collection<Long> questIds, QuestGroup group)
+	public synchronized void onQuestsRemoved(Collection<Long> questIds, @NonNull QuestGroup group)
 	{
 		runOnUiThread(() -> mapFragment.removeQuests(questIds, group));
 

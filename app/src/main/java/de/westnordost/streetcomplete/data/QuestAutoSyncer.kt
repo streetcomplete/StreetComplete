@@ -123,8 +123,7 @@ class QuestAutoSyncer @Inject constructor(
                 try {
                     questController.download(
                         downloadStrategy.getDownloadBoundingBox(pos),
-                        downloadStrategy.questTypeDownloadCount,
-                        false
+                        downloadStrategy.questTypeDownloadCount
                     )
                 } catch (e: IllegalStateException) {
                     // The Android 9 bug described here should not result in a hard crash of the app
