@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.upload
 
 import android.app.IntentService
+import android.content.Context
 import android.content.Intent
 import android.os.Binder
 import android.os.IBinder
@@ -106,6 +107,10 @@ class QuestChangesUploadService : IntentService(TAG) {
     }
 
     companion object {
+        fun createIntent(context: Context): Intent {
+            return Intent(context, QuestChangesUploadService::class.java)
+        }
+
         private const val TAG = "Upload"
     }
 }

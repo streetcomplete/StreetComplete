@@ -215,4 +215,14 @@ public class QuestDownloadService extends Service
 			stopSelf(msg.arg1);
 		}
 	}
+
+	public static Intent createIntent(Context context, Rect tilesRect, Integer maxQuestTypesToDownload, boolean isPriority) {
+		Intent intent = new Intent(context, QuestDownloadService.class);
+		intent.putExtra(ARG_TILES_RECT, tilesRect);
+		intent.putExtra(ARG_IS_PRIORITY, isPriority);
+		if (maxQuestTypesToDownload != null) {
+			intent.putExtra(ARG_MAX_QUEST_TYPES, maxQuestTypesToDownload);
+		}
+		return intent;
+	}
 }
