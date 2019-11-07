@@ -10,6 +10,8 @@ import de.westnordost.streetcomplete.view.dialogs.ImageListPickerDialog
 
 class AddRecyclingContainerMaterialsForm : AImageListQuestAnswerFragment<String, List<String>>() {
 
+    override val contentLayoutResId = R.layout.quest_recycling_materials
+
     override val items = listOf(
         Item("glass_bottles",       R.drawable.ic_recycling_glass_bottles,       R.string.quest_recycling_type_glass_bottles),
         Item("paper",               R.drawable.ic_recycling_paper,               R.string.quest_recycling_type_paper),
