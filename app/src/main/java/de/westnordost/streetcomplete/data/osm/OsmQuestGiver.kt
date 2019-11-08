@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.osm
 
 import android.util.Log
+import de.westnordost.countryboundaries.CountryBoundaries
 
 
 import javax.inject.Inject
@@ -14,6 +15,7 @@ import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestDao
 import de.westnordost.streetcomplete.data.visiblequests.OrderedVisibleQuestTypesProvider
 import de.westnordost.streetcomplete.util.SphericalEarthMath
+import java.util.concurrent.FutureTask
 
 /** Manages creating new quests and removing quests that are no longer applicable for an OSM
  * element locally  */
@@ -21,7 +23,8 @@ class OsmQuestGiver @Inject constructor(
     private val osmNoteQuestDb: OsmNoteQuestDao,
     private val questDB: OsmQuestDao,
     private val elementGeometryDB: ElementGeometryDao,
-    private val questTypesProvider: OrderedVisibleQuestTypesProvider
+    private val questTypesProvider: OrderedVisibleQuestTypesProvider,
+    private val countryBoundariesFuture: FutureTask<CountryBoundaries>
 ) {
 
     private val TAG = "OsmQuestGiver"
@@ -46,9 +49,14 @@ class OsmQuestGiver @Inject constructor(
             if (questType !is OsmElementQuestType<*>) continue
 
             val appliesToElement = questType.isApplicableTo(element) ?: continue
+            val countries = questType.enabledForCountries
+            val isEnabledForCountry = !countries.isNoCountries && (countries.isAllCountries || countryBoundariesFuture.get().isInAny(
+                geometry.center.longitude,
+                geometry.center.latitude,
+                countries.exceptions) != countries.isAllExcept)
 
             val hasQuest = currentQuests.containsKey(questType)
-            if (appliesToElement && !hasQuest && !hasNote) {
+            if (appliesToElement && !hasQuest && !hasNote && isEnabledForCountry) {
                 val quest = OsmQuest(questType, element.type, element.id, geometry)
                 createdQuests.add(quest)
                 createdQuestsLog.add(questType.javaClass.simpleName)
