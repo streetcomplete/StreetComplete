@@ -9,17 +9,21 @@ import de.westnordost.streetcomplete.util.SphericalEarthMath.*
 /** Information on the geometry of a quest  */
 sealed class ElementGeometry : Serializable {
     abstract val center: LatLon
-    abstract val bounds: BoundingBox
+    // the bbox should not be serialized, his is why the bounds cannot be a (computed) property directly
+    abstract fun getBounds(): BoundingBox
 }
 
 data class ElementPolylinesGeometry(val polylines: List<List<LatLon>>, override val center: LatLon) : ElementGeometry() {
-    override val bounds: BoundingBox by lazy { enclosingBoundingBox(polylines.flatten()) }
+    @delegate:Transient private val bbox by lazy { enclosingBoundingBox(polylines.flatten()) }
+    override fun getBounds(): BoundingBox = bbox
 }
 
 data class ElementPolygonsGeometry(val polygons: List<List<LatLon>>, override val center: LatLon) : ElementGeometry() {
-    override val bounds: BoundingBox by lazy { enclosingBoundingBox(polygons.flatten()) }
+    @delegate:Transient private val bbox by lazy { enclosingBoundingBox(polygons.flatten()) }
+    override fun getBounds(): BoundingBox = bbox
 }
 
 data class ElementPointGeometry(override val center: LatLon) : ElementGeometry() {
-    override val bounds: BoundingBox by lazy { enclosingBoundingBox(listOf(center)) }
+    @delegate:Transient private val bbox by lazy { enclosingBoundingBox(listOf(center)) }
+    override fun getBounds(): BoundingBox = bbox
 }

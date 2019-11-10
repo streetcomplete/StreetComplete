@@ -45,6 +45,10 @@
         "railway/halt": {
             "name": "Przystanek kolejowy"
         },
+        "amenity/vending_machine/eggs": {
+            "name": "Automat z jajkami",
+            "terms": "automat z jajkami, jajka, jaja"
+        },
         "shop/agrarian": {
             "name": "Sklep rolniczy",
             "terms": "rolniczy, produkcja rolna, pasze, nasiona, sprzęt rolniczy, pestycydy, części do maszyn rolniczych"
@@ -208,6 +212,10 @@
             "name": "Restauracja grecka",
             "terms": "restauracja grecka,kuchnia grecka"
         },
+        "shop/psychic": {
+            "name": "Medium",
+            "terms": "medium, wróżka, wróżbita, wróżenie"
+        },
         "attraction/amusement_ride": {
             "name": "Przejażdżka rozrywkowa",
             "terms": "przejażdżka rozrywkowa"
@@ -225,8 +233,12 @@
             "terms": "pomost"
         },
         "shop/farm": {
-            "name": "Stragan produktów",
-            "terms": "stragan"
+            "name": "Stragan świeżych produktów",
+            "terms": "stragan świeżych produktów, sklep wiejski, świeża żywność, warzywa, owoce"
+        },
+        "aeroway/spaceport": {
+            "name": "Port kosmiczny",
+            "terms": "port kosmiczny, kosmodrom, centrum lotów kosmicznych"
         },
         "waterway/stream_intermittent": {
             "name": "Strumień okresowy",
@@ -393,6 +405,10 @@
             "name": "Akwarium",
             "terms": "akwarium"
         },
+        "man_made/manhole": {
+            "name": "Właz do kanału",
+            "terms": "właz do kanału, wpust do kanału, pokrywa kanału, właz do studzienki, wpust do studzienki, pokrywa studzienki, studzienka, właz do studni, wpust do studni, pokrywa studni, studnia"
+        },
         "type/site": {
             "name": "Relacja grupująca",
             "terms": "grupowanie,wiązanie"
@@ -415,7 +431,7 @@
         },
         "shop/doityourself": {
             "name": "Market budowlany/sklep dla majsterkowiczów",
-            "terms": "sklep dla majsterkowiczów"
+            "terms": "market budowlany, sklep dla majsterkowiczów, diy, obi, praktiker, leroy merlin"
         },
         "amenity/taxi": {
             "name": "Postój taksówek",
@@ -433,6 +449,10 @@
             "name": "Wieża ciśnień",
             "terms": "wieża ciśnień"
         },
+        "shop/brewing_supplies": {
+            "name": "Sklep dla piwowarów domowych",
+            "terms": "piwowarstwo domowe, browar domowy, domowy browar, akcesoria piwowarskie, akcesoria winiarskie, słód, słody, chmiele"
+        },
         "railway/train_wash": {
             "name": "Myjnia pociągów",
             "terms": "myjnia pociągów"
@@ -440,6 +460,10 @@
         "shop/dry_cleaning": {
             "name": "Pralnia chemiczna",
             "terms": "pralnia chemiczna"
+        },
+        "indoor/elevator": {
+            "name": "Szyb windy (w budynku)",
+            "terms": "szyb windy, winda, dźwig, wewnątrz, indoor"
         },
         "tourism/caravan_site": {
             "name": "Kemping dla kamperów",
@@ -455,7 +479,7 @@
         },
         "leisure/pitch/softball": {
             "name": "Boisko do softballu",
-            "terms": "boisko do softballa,softball"
+            "terms": "boisko do softballu, softball"
         },
         "shop/furniture": {
             "name": "Sklep meblowy",
@@ -471,7 +495,7 @@
         },
         "shop/erotic/lgbtq": {
             "name": "Sex shop LGBT",
-            "terms": "sex shop dla homoseksualistów, gejów, lesbijek, sklep erotyczny"
+            "terms": "sex shop dla homoseksualistów, gejów, lesbijek, sex-shop, sklep erotyczny"
         },
         "emergency/phone": {
             "name": "Telefon alarmowy",
@@ -559,6 +583,10 @@
             "name": "Fotoradar",
             "terms": "fotoradar,kontrola prędkości"
         },
+        "amenity/studio/radio": {
+            "name": "Studio radiowe",
+            "terms": "studio radiowe, radio, stacja radiowa"
+        },
         "public_transport/station_monorail": {
             "name": "Stacja kolei jednoszynowej",
             "terms": "stacja kolei jednoszynowej,kolej jednoszynowa,kolej elektryczna,tory,szyny,terminal,stacja,dworzec,transport publiczny,transport,przewozy"
@@ -590,6 +618,10 @@
         "amenity/townhall": {
             "name": "Ratusz",
             "terms": "władze miasta,ratusz,urząd miasta,urząd gminy,starostwo"
+        },
+        "shop/rental": {
+            "name": "Wypożyczalnia",
+            "terms": "wypożyczalnia, wynajem"
         },
         "public_transport/stop_position_bus": {
             "name": "Miejsce zatrzymania się autobusu",
@@ -632,7 +664,7 @@
         },
         "amenity/vending_machine/elongated_coin": {
             "name": "Automat do sprzedaży monet pamiątkowych",
-            "terms": "automat do sprzedaży monet pamiątkowych,moneta pamiątkowa"
+            "terms": "automat do sprzedaży monet pamiątkowych, monety pamiątkowe, moneta pamiątkowa"
         },
         "type/waterway": {
             "name": "Ciek",
@@ -659,11 +691,15 @@
         },
         "amenity/grit_bin": {
             "name": "Pojemnik z piaskiem lub żwirem",
-            "terms": "pojemnik z żwirem"
+            "terms": "pojemnik ze żwirem"
         },
         "amenity/bank": {
             "name": "Bank",
             "terms": "bankowość, kasa, skok"
+        },
+        "highway/path/informal": {
+            "name": "Nieoficjalna droga",
+            "terms": "nieoficjalna droga"
         },
         "shop/outpost": {
             "name": "Placówka sklepu internetowego",
@@ -706,7 +742,7 @@
         },
         "shop/newsagent": {
             "name": "Sklep z prasą",
-            "terms": "prasa, gazety, kolporter, inmedio"
+            "terms": "prasa, gazety, czasopisma, lotto, kolporter, inmedio, ruch"
         },
         "building/residential": {
             "name": "Budynek mieszkalny",
@@ -739,10 +775,6 @@
         "man_made/mast/communication/mobile_phone": {
             "name": "Maszt telefonii komórkowej",
             "terms": "antena,maszt komórkowy,maszt telefonii komórkowej,wieża telefonii komórkowej,maszt komunikacyjny,wieża komunikacyjna,maszt transmisyjny,wieża transmisyjna"
-        },
-        "manhole/drain": {
-            "name": "Kanalizacja burzowa",
-            "terms": "Kanalizacja deszczowa, burzowiec"
         },
         "traffic_calming/island": {
             "name": "Wysepka drogowa",
@@ -841,7 +873,7 @@
         },
         "amenity/clinic/abortion": {
             "name": "Klinika aborcyjna",
-            "terms": "klinika aborcyjna"
+            "terms": "klinika aborcyjna, aborcja, aborcje"
         },
         "craft/watchmaker": {
             "name": "Zegarmistrz",
@@ -913,7 +945,7 @@
         },
         "power/tower": {
             "name": "Słup wysokiego napięcia",
-            "terms": "wieża wysokiego napiecia"
+            "terms": "wieża wysokiego napięcia"
         },
         "aerialway/cable_car": {
             "name": "Kolejka górska",
@@ -945,7 +977,7 @@
         },
         "seamark/buoy_lateral/green": {
             "name": "Zielona boja",
-            "terms": "boja boczna,cevni,znacznik kanalu,iala"
+            "terms": "boja boczna, cevni, znacznik kanału, iala"
         },
         "leisure/pitch/table_tennis": {
             "name": "Stół do tenisa stołowego",
@@ -967,6 +999,10 @@
             "name": "Producent znaków/szyldów",
             "terms": "producent znaków, producent szyldów, rzemiosło, rzemieślnik, rzemieślnicy"
         },
+        "amenity/vending_machine/bread": {
+            "name": "Automat z pieczywem",
+            "terms": "automat z pieczywem, pieczywo, chleb, bułki"
+        },
         "boundary": {
             "name": "Granica"
         },
@@ -974,9 +1010,17 @@
             "name": "Sklep z suplementami diety",
             "terms": "suplementy diety"
         },
+        "amenity/studio/video": {
+            "name": "Studio filmowe",
+            "terms": "studio filmowe, wytwórnia filmowa, wytwórnia filmów, produkcja filmowa, produkcja filmów"
+        },
         "craft/gardener": {
             "name": "Ogrodnik",
             "terms": "ogrodnik, sadownik, ogród, rzemiosło, rzemieślnik, rzemieślnicy"
+        },
+        "indoor/stairs": {
+            "name": "Klatka schodowa (w budynku)",
+            "terms": "klatka schodowa, schody, wewnątrz, indoor"
         },
         "building/church": {
             "name": "Budynek kościoła",
@@ -1028,7 +1072,7 @@
         },
         "shop/department_store": {
             "name": "Dom towarowy",
-            "terms": "dom towarowy,dom handlowy"
+            "terms": "dom towarowy, dom handlowy, zakupy"
         },
         "historic/wayside_cross": {
             "name": "Przydrożny krzyż",
@@ -1066,6 +1110,10 @@
             "name": "Tapicer",
             "terms": "tapicer, tapisjer, tapicerka, rzemiosło, rzemieślnik, rzemieślnicy"
         },
+        "man_made/manhole/sewer": {
+            "name": "Właz do kanału ściekowego",
+            "terms": "właz do kanału ściekowego, wpust do kanału ściekowego, pokrywa kanału ściekowego, kanał ściekowy, ścieki, system kanalizacyjny, kanalizacja"
+        },
         "natural/glacier": {
             "name": "Lodowiec",
             "terms": "lodowiec, lądolód, jęzor lodowcowy"
@@ -1073,6 +1121,10 @@
         "shop/storage_rental": {
             "name": "Przechowalnia rzeczy (długoterminowa)",
             "terms": "przechowalnia rzeczy, przechowalnia pojazdów,magazyn"
+        },
+        "barrier/bollard_line": {
+            "name": "Rząd słupków",
+            "terms": "rząd słupków, rząd pachołków, słupki, pachołki, słupek, pachołek"
         },
         "shop/fashion": {
             "name": "Sklep odzieżowy"
@@ -1335,8 +1387,8 @@
             "terms": "olej,gaz ziemny,woda,ściek,ścieki"
         },
         "playground/slide": {
-            "name": "Zjeżdzalnia",
-            "terms": "zjeżdzalnia"
+            "name": "Zjeżdżalnia",
+            "terms": "zjeżdżalnia"
         },
         "leisure/pitch/beachvolleyball": {
             "name": "Boisko do gry w siatkówkę plażową",
@@ -1370,13 +1422,17 @@
             "name": "Mural",
             "terms": "mural,fresk,malowanie ścian"
         },
+        "highway/raceway/motocross": {
+            "name": "Tor motocrossowy",
+            "terms": "tor motocrossowy, tor żużlowy, żużel, motocykle, tor wyścigowy, wyścigi"
+        },
         "man_made/chimney": {
             "name": "Komin",
             "terms": "kominek"
         },
         "shop/mall": {
             "name": "Centrum handlowe",
-            "terms": "pasaż,galeria,promenady,arkady,tarasy"
+            "terms": "centrum handlowe, galeria handlowa, pasaż handlowy, zakupy"
         },
         "barrier/wall": {
             "name": "Mur",
@@ -1440,7 +1496,7 @@
         },
         "building/retail": {
             "name": "Budynek handlu detalicznego",
-            "terms": "handel detaliczny"
+            "terms": "budynek handlu detalicznego, budynek handlowy, pawilon handlowy, handel detaliczny"
         },
         "golf/lateral_water_hazard": {
             "name": "Boczna przeszkoda wodna",
@@ -1467,7 +1523,7 @@
         },
         "natural/scrub": {
             "name": "Zarośla",
-            "terms": "Krzaki, zarośla"
+            "terms": "zarośla, krzaki, zieleń"
         },
         "craft/photographer": {
             "name": "Fotograf",
@@ -1526,6 +1582,10 @@
         "healthcare/alternative/chiropractic": {
             "name": "Kręgarz",
             "terms": "kręgarz"
+        },
+        "amenity/townhall/city": {
+            "name": "Ratusz",
+            "terms": "ratusz"
         },
         "attraction/summer_toboggan": {
             "name": "Letnie saneczkarstwo",
@@ -1700,7 +1760,7 @@
         },
         "craft/basket_maker": {
             "name": "Wikliniarz",
-            "terms": "wikliniarz, wikilina, rzemiosło, rzemieślnik, rzemieślnicy"
+            "terms": "wikliniarz, wiklina, rzemiosło, rzemieślnik, rzemieślnicy"
         },
         "building/service": {
             "name": "Budynek techniczny",
@@ -1728,7 +1788,7 @@
         },
         "amenity/vending_machine/coffee": {
             "name": "Automat do sprzedaży kawy",
-            "terms": "automat do sprzedaży kawy, kawiarka, kawa"
+            "terms": "automat do sprzedaży kawy, automat z kawą, kawiarka, kawa"
         },
         "landuse/military/training_area": {
             "name": "Poligon wojskowy",
@@ -1843,6 +1903,14 @@
         },
         "emergency/no": {
             "name": "Brak dojazdu dla służb ratowniczych"
+        },
+        "man_made/manhole/drain": {
+            "name": "Właz do kanału burzowego",
+            "terms": "właz do kanału burzowego, wpust do kanału burzowego, pokrywa kanału burzowego, kanał burzowy, burzówka, burzowiec, kanalizacja burzowa, kanał deszczowy, kanalizacja deszczowa"
+        },
+        "man_made/manhole/telecom": {
+            "name": "Właz do studni kablowej",
+            "terms": "właz do studni kablowej teletechnicznej, wpust do studni kablowej teletechnicznej, pokrywa studni kablowej teletechnicznej, studnia kablowa teletechniczna, studnia teletechniczna, studnia telekomunikacyjna, studnia telefoniczna, studzienka telekomunikacyjna, studzienka telefoniczna, kable telekomunikacyjne, światłowody"
         },
         "public_transport/stop_position_ferry": {
             "name": "Miejsce zatrzymania się promu",
@@ -2052,10 +2120,6 @@
             "name": "Elektryk",
             "terms": "elektryk, elektrotechnik, rzemiosło, rzemieślnik, rzemieślnicy"
         },
-        "manhole/telecom": {
-            "name": "Węzeł telekomunikacyjny",
-            "terms": "studzienka telekomunikacyjna"
-        },
         "attraction/drop_tower": {
             "name": "Wieża swobodnego spadania",
             "terms": "wieża spadania"
@@ -2091,6 +2155,10 @@
         "leisure/fitness_station/box": {
             "name": "Step",
             "terms": "step"
+        },
+        "amenity/fast_food/hot_dog": {
+            "name": "Bar z hot dogami",
+            "terms": "bar z hot dogami, bar z hot-dogami"
         },
         "amenity/sanitary_dump_station": {
             "name": "Miejsce opróżniania toalety (dla kamperów)",
@@ -2182,6 +2250,10 @@
             "name": "Sklep wielobranżowy",
             "terms": "sklep wielobranżowy"
         },
+        "amenity/studio/audio": {
+            "name": "Studio nagrań",
+            "terms": "studio nagrań, studio nagraniowe"
+        },
         "building_part": {
             "name": "Część budynku",
             "terms": "część budynku, element budynku, dach, wieża"
@@ -2221,6 +2293,10 @@
         "amenity/boat_rental": {
             "name": "Wypożyczalnia łodzi",
             "terms": "wynajem łodzi"
+        },
+        "man_made/utility_pole": {
+            "name": "Słup",
+            "terms": "słup"
         },
         "amenity/place_of_worship/taoist": {
             "name": "Świątynia taoistyczna",
@@ -2325,8 +2401,8 @@
             "terms": "ratownik,RKO,CPR,pomoc"
         },
         "office/financial_advisor": {
-            "name": "Doradzca finansowy",
-            "terms": "doradzca finansowy, doradztwo finansowe"
+            "name": "Doradca finansowy",
+            "terms": "doradca finansowy, doradztwo finansowe"
         },
         "shop/bookmaker": {
             "name": "Bukmacher",
@@ -2369,7 +2445,7 @@
         },
         "leisure/garden": {
             "name": "Ogród",
-            "terms": "ogród"
+            "terms": "ogród, zieleń"
         },
         "historic/memorial": {
             "name": "Pomnik/Miejsce pamięci",
@@ -2426,8 +2502,8 @@
             "terms": "strefa zamieszkania"
         },
         "attraction/bumper_car": {
-            "name": "Autodrom",
-            "terms": "autodrom, samochodziki"
+            "name": "Autodrom (w parku rozrywki)",
+            "terms": "autodrom, samochodziki, park rozrywki, lunapark, wesołe miasteczko"
         },
         "attraction/roller_coaster": {
             "name": "Kolejka górska",
@@ -2438,7 +2514,7 @@
         },
         "shop/copyshop": {
             "name": "Punkt ksero",
-            "terms": "kopiowanie"
+            "terms": "punkt ksero, kopiowanie, skanowanie, drukowanie, drukarnia"
         },
         "leisure/firepit": {
             "name": "Miejsce na ognisko",
@@ -2519,7 +2595,7 @@
         },
         "seamark/buoy_lateral/red": {
             "name": "Czerwona boja",
-            "terms": "boja boczna,cevni,znacznik kanalu,iala"
+            "terms": "boja boczna, cevni, znacznik kanału, iala"
         },
         "tourism/gallery": {
             "name": "Galeria sztuki",
@@ -2555,7 +2631,7 @@
         },
         "piste/piste": {
             "name": "Szlaki sportów zimowych",
-            "terms": "szlaki sportów zimowych,narty,klasyczne,przełajowe,downhill,alpejskie,snowbord,wycieczki narciarskie,sanki,saneczki,sanie,kulig,skijöring,husky,koń,zimowa wspinaczka,rakiety śniegowe,lód,łyżwiarstwo"
+            "terms": "szlaki sportów zimowych, narty, klasyczne, przełajowe, downhill, alpejskie, snowboard, wycieczki narciarskie, sanki, saneczki,sanie, kulig, skijöring, husky, koń, zimowa wspinaczka, rakiety śniegowe, lód, łyżwiarstwo"
         },
         "railway/signal": {
             "name": "Semafor",
@@ -2644,7 +2720,7 @@
         },
         "amenity/vending_machine/condoms": {
             "name": "Automat z prezerwatywami",
-            "terms": "Automat z prezerwatywami"
+            "terms": "automat z prezerwatywami, prezerwatywy"
         },
         "craft/electronics_repair": {
             "name": "Punkt napraw sprzętu elektronicznego",
@@ -2741,7 +2817,7 @@
         },
         "amenity/theatre": {
             "name": "Teatr",
-            "terms": "teatr,sztuka,przedstawienie"
+            "terms": "teatr, teatr muzyczny, teatr lalek, opera, filharmonia, balet"
         },
         "highway/pedestrian_line": {
             "name": "Ulica-deptak",
@@ -2808,7 +2884,7 @@
         },
         "amenity/vending_machine/newspapers": {
             "name": "Automat z gazetami",
-            "terms": "Automat z gazetami"
+            "terms": "automat z gazetami, gazety"
         },
         "railway/subway_entrance": {
             "name": "Wejście do metra",
@@ -2870,10 +2946,6 @@
             "name": "Duży pomnik",
             "terms": "monument,pomnik"
         },
-        "manhole": {
-            "name": "Studzienka włazowa",
-            "terms": "właz,studzienka włazowa"
-        },
         "type/route/bicycle": {
             "name": "Trasa rowerowa",
             "terms": "szlak rowerowy"
@@ -2934,9 +3006,13 @@
             "name": "Optometrysta",
             "terms": "optometrysta"
         },
+        "man_made/manhole/power": {
+            "name": "Właz do studni elektrycznej",
+            "terms": "właz do studni elektrycznej, wpust do studni elektrycznej, licznik elektryczny, licznik energii elektrycznej, licznik prądu, przewody elektryczne, sieć elektryczna"
+        },
         "building/kindergarten": {
             "name": "Budynek przedszkola",
-            "terms": "budynek przedzkolny"
+            "terms": "budynek przedszkolny"
         },
         "indoor/room": {
             "name": "Pomieszczenie w budynku",
@@ -2955,7 +3031,7 @@
         },
         "shop/erotic": {
             "name": "Sex shop",
-            "terms": "sex shop, sklep erotyczny"
+            "terms": "sex shop, sex-shop, sklep erotyczny"
         },
         "type/restriction/only_left_turn": {
             "name": "Nakaz skrętu w lewo",
@@ -3010,7 +3086,7 @@
             "terms": "szyb, szacht, jaskinia, tunel, kopalnia"
         },
         "power/line": {
-            "name": "Linia energetyczna wysokiego napiecia",
+            "name": "Linia energetyczna wysokiego napięcia",
             "terms": "lina wysokiego napięcia, lina energetyczna"
         },
         "amenity/ice_cream": {
@@ -3053,12 +3129,12 @@
             "terms": "manicure, pedicure, paznokcie"
         },
         "tourism/artwork": {
-            "name": "Rzeźba",
+            "name": "Dzieło sztuki",
             "terms": "dzieło sztuki"
         },
         "amenity/vending_machine/sweets": {
             "name": "Automat z przekąskami",
-            "terms": "Automat z przekąskami"
+            "terms": "automat z przekąskami, przekąski, gumy do żucia, ciastka, ciasteczka, chipsy, czipsy"
         },
         "golf/cartpath": {
             "name": "Ścieżka dla wózka golfowego",
@@ -3066,7 +3142,7 @@
         },
         "landuse/retail": {
             "name": "Teren handlu detalicznego",
-            "terms": "handel detaliczny"
+            "terms": "teren handlu detalicznego, handel detaliczny, targowisko"
         },
         "leisure/picnic_table/chess": {
             "name": "Stolik szachowy",
@@ -3201,7 +3277,7 @@
         },
         "amenity/vending_machine": {
             "name": "Automat sprzedający",
-            "terms": "Automat do sprzedaży"
+            "terms": "automat do sprzedaży"
         },
         "highway/milestone": {
             "name": "Słupek pikietażowy",
@@ -3221,7 +3297,7 @@
         },
         "amenity/bar": {
             "name": "Bar alkoholowy",
-            "terms": "bar, bar koktajlowy, koktajl bar, koktajle, drinki, wyszynk"
+            "terms": "bar, bar koktajlowy, koktajl bar, koktajle, drinki, wyszynk, wino, wódka, piwo"
         },
         "traffic_calming/cushion": {
             "name": "Poduszka",
@@ -3276,7 +3352,7 @@
         },
         "amenity/vending_machine/parking_tickets": {
             "name": "Parkomat",
-            "terms": "Parkomat"
+            "terms": "parkomat, automat z biletami parkingowymi, bilety parkingowe"
         },
         "shop/weapons": {
             "name": "Sklep z bronią",
@@ -3303,7 +3379,7 @@
         },
         "shop/cannabis": {
             "name": "Sklep z produktami z konopi",
-            "terms": "sklep z produktami z konopi, cofee shop, konopie, marihuana, cannabis, kanabis"
+            "terms": "sklep z produktami z konopi, coffee shop, konopie, marihuana, cannabis, kanabis"
         },
         "leisure/pitch/boules": {
             "name": "Bule",
@@ -3370,7 +3446,7 @@
         },
         "landuse/flowerbed": {
             "name": "Kwietnik",
-            "terms": "kwietnik, klomb, gazon, ogród kwiatowy, zieleń"
+            "terms": "kwietnik, klomb, gazon, rabata, rabatka, ogród kwiatowy, zieleń"
         },
         "shop/vacuum_cleaner": {
             "name": "Sklep z odkurzaczami",
@@ -3389,8 +3465,8 @@
             "terms": "budynek szpitala, budynek szpitalny"
         },
         "amenity/marketplace": {
-            "name": "Targowisko",
-            "terms": "targowisko,targ,rynek,giełda"
+            "name": "Targowisko / Hala targowa",
+            "terms": "targowisko, targ, hala targowa, bazar, zakupy"
         },
         "building/industrial": {
             "name": "Budynek przemysłowy",
@@ -3439,8 +3515,8 @@
             "terms": "młyn wodny"
         },
         "amenity/college": {
-            "name": "Teren szkoły policealnej",
-            "terms": "teren szkoły policealnej"
+            "name": "Teren koledżu / szkoły policealnej",
+            "terms": "koledż, college, szkoła policealna, szkoła pomaturalna"
         },
         "shop/toys": {
             "name": "Sklep z zabawkami",
@@ -3601,6 +3677,10 @@
             "name": "Wybrzeże",
             "terms": "Linia brzegowa"
         },
+        "amenity/studio/television": {
+            "name": "Studio telewizyjne",
+            "terms": "studio telewizyjne, stacja telewizyjna, telewizja, tv"
+        },
         "building/carport": {
             "name": "Wiata garażowa",
             "terms": "wiata,zadaszone miejsce parkingowe,garaż,samochód,podjazd"
@@ -3623,7 +3703,7 @@
         },
         "highway/raceway": {
             "name": "Tor wyścigowy (sporty motorowe)",
-            "terms": "tor,wyścigowy,samochodowy,motorowy"
+            "terms": "tor wyścigowy, wyścigi, formuła 1, nascar, motocykle, samochody"
         },
         "emergency/designated": {
             "name": "Wyznaczony dojazd dla służb ratowniczych"
@@ -3654,7 +3734,7 @@
         },
         "amenity/vending_machine/drinks": {
             "name": "Automat z napojami",
-            "terms": "Automat z napojami"
+            "terms": "automat z napojami, napoje, soki"
         },
         "highway/primary": {
             "name": "Droga pierwszorzędna",
@@ -3740,6 +3820,10 @@
             "name": "Hurtownia",
             "terms": "hurtownia, sprzedaż hurtowa, makro, selgros"
         },
+        "amenity/loading_dock": {
+            "name": "Dok załadunkowy",
+            "terms": "dok załadunkowy"
+        },
         "building/stadium": {
             "name": "Budynek stadionu",
             "terms": "stadion,sporotowy"
@@ -3780,7 +3864,8 @@
             "terms": "zbiornik, drenaż, retencja, retencyjny"
         },
         "public_transport/platform/tram_point": {
-            "name": "Przystanek tramwajowy"
+            "name": "Przystanek tramwajowy",
+            "terms": "przystanek tramwajowy, peron, tramwaj"
         },
         "amenity/fast_food/donut": {
             "name": "Sklep z donutami",
@@ -3817,6 +3902,10 @@
         "barrier/fence/railing": {
             "name": "Poręcz",
             "terms": "poręcz"
+        },
+        "amenity/vending_machine/ice_cubes": {
+            "name": "Automat z kostkami lodu",
+            "terms": "automat z kostkami lodu, kostki lodu, lód w kostkach"
         },
         "golf/hole": {
             "name": "Dołek na polu golfowym",
@@ -3903,8 +3992,8 @@
             "terms": "droga kołowania"
         },
         "amenity/prep_school": {
-            "name": "Szkolenia / korepetycje",
-            "terms": "szkoła, szkolenia, korepetycje"
+            "name": "Szkoła korepetycji",
+            "terms": "szkoła korepetycji, korepetycje, egzaminy"
         },
         "craft/optician": {
             "name": "Optyk"
@@ -3928,6 +4017,10 @@
         "amenity/vending_machine/public_transport_tickets": {
             "name": "Automat z biletami komunikacji publicznej",
             "terms": "bilety komunikacji publicznej"
+        },
+        "man_made/manhole/gas": {
+            "name": "Właz do studzienki gazowej",
+            "terms": "właz do studzienki gazowej, wpust do studzienki gazowej, gazowa studzienka rewizyjna, studzienka rewizyjna do gazu, gazociąg, rurociąg gazowy, sieć gazowa"
         },
         "man_made/embankment": {
             "name": "Nasyp",
@@ -3990,8 +4083,8 @@
             "terms": "elektronika,radiotechnika,części elektroniczne"
         },
         "building/college": {
-            "name": "Budynek szkoły policealnej",
-            "terms": "Szkoła policealna"
+            "name": "Budynek koledżu / szkoły policealnej",
+            "terms": "budynek koledżu, budynek szkoły policealnej, koledż, college, szkoła policealna, szkoła pomaturalna"
         },
         "man_made/beacon": {
             "name": "Nabieżnik",
@@ -4072,7 +4165,7 @@
         },
         "natural/heath": {
             "name": "Wrzosowisko",
-            "terms": "wrzosowisko"
+            "terms": "wrzosowisko, zieleń"
         },
         "aeroway/parking_position": {
             "name": "Miejsce postoju samolotu",
@@ -4091,11 +4184,11 @@
             "terms": "biuro rachunkowe, księgowy"
         },
         "seamark": {
-            "name": "Znak wodny"
+            "name": "Znak nawigacyjny"
         },
         "shop/leather": {
             "name": "Sklep z odzieżą skórzaną",
-            "terms": "sklep z odzieżą skórzaną, sklep z galanterią skorzaną, odzież skórzana, galanteria skórzana, kurtki skórzane, paski"
+            "terms": "sklep z odzieżą skórzaną, sklep z galanterią skórzaną, odzież skórzana, galanteria skórzana, kurtki skórzane, paski"
         },
         "building/commercial": {
             "name": "Budynek komercyjny",
@@ -4296,7 +4389,7 @@
         },
         "amenity/post_box": {
             "name": "Skrzynka pocztowa",
-            "terms": "skrzynka,pocztowa,listy"
+            "terms": "skrzynka pocztowa, listy"
         },
         "public_transport/station_tram": {
             "name": "Stacja tramwajowa",
@@ -4343,7 +4436,7 @@
         },
         "amenity/vending_machine/cigarettes": {
             "name": "Automat z papierosami",
-            "terms": "Automat z papierosami"
+            "terms": "automat z papierosami, papierosy"
         },
         "craft/tiler": {
             "name": "Glazurnik",
@@ -4359,6 +4452,10 @@
         "shop/frame": {
             "name": "Sklep z ramami",
             "terms": "ramy, oprawa obrazów, oprawy obrazów, obrazy, fotografie"
+        },
+        "amenity/weighbridge": {
+            "name": "Waga dla pojazdów",
+            "terms": "waga dla pojazdów, waga samochodowa"
         },
         "barrier/kerb": {
             "name": "Krawężnik",
@@ -4407,6 +4504,10 @@
         "amenity/dive_centre": {
             "name": "Centrum nurkowe",
             "terms": "centrum nurkowe,nurkowanie,nurkować"
+        },
+        "highway/raceway/karting": {
+            "name": "Tor gokartowy",
+            "terms": "tor gokartowy, tor kartingowy, karting, carting, gokarty, tor wyścigowy, wyścigi"
         },
         "amenity/vending_machine/feminine_hygiene": {
             "name": "Automat z produktami higieny kobiecej",
@@ -4475,6 +4576,10 @@
             "name": "Przystań",
             "terms": "przystań,marina"
         },
+        "man_made/manhole/water": {
+            "name": "Właz do studzienki wodomierzowej",
+            "terms": "właz do studzienki wodomierzowej, wpust do studzienki wodomierzowej, pokrywa studzienki wodomierzowej, studzienka wodomierzowa, studzienka wodociągowa, sieć wodociągowa, wodociąg, rurociąg wodny"
+        },
         "craft/tailor": {
             "name": "Krawiec"
         },
@@ -4524,7 +4629,7 @@
         },
         "highway/elevator": {
             "name": "Winda",
-            "terms": "podnośnik, wyciąg"
+            "terms": "winda, dźwig"
         },
         "railway/miniature": {
             "name": "Minikolejka",
@@ -4532,7 +4637,7 @@
         },
         "shop/carpet": {
             "name": "Sklep z dywanami",
-            "terms": "wykładzina"
+            "terms": "sklep z dywanami, dywany, wykładziny"
         },
         "craft": {
             "name": "Rzemiosło",
@@ -4552,7 +4657,7 @@
         },
         "barrier/bollard": {
             "name": "Słupek",
-            "terms": "słupek,słup,pal"
+            "terms": "słupek, pachołek"
         },
         "public_transport/platform/ferry_point": {
             "name": "Przystanek / Peron promu"
@@ -4624,7 +4729,7 @@
         },
         "highway/steps/conveying": {
             "name": "Schody ruchome",
-            "terms": "ruchome schody, stopnie, ruch ludzi, jazda"
+            "terms": "schody ruchome, ruchome schody, eskalator"
         },
         "shop/books": {
             "name": "Księgarnia",
@@ -4694,6 +4799,10 @@
             "name": "Stacja pogotowia ratunkowego",
             "terms": "pogotowie ratunkowe"
         },
+        "barrier/wall/noise_barrier": {
+            "name": "Ekrany akustyczne",
+            "terms": "ekrany akustyczne, ekran akustyczny, ekran dźwiękochłonny"
+        },
         "healthcare/podiatrist": {
             "name": "Podolog",
             "terms": "podolog,podiatra"
@@ -4712,7 +4821,7 @@
         },
         "amenity/vehicle_inspection": {
             "name": "Stacja kontroli pojazdów",
-            "terms": "skp, kontrola pojazdów, kontrola samochodów, przeglądy, przeglądy techniczne, badania techniczne pojazdów"
+            "terms": "skp, kontrola pojazdów, kontrola samochodów, przeglądy rejestracyjne, przeglądy techniczne, badania techniczne pojazdów, okręgowa stacja kontroli pojazdów, podstawowa stacja kontroli pojazdów"
         },
         "amenity/recycling/container/green_waste": {
             "name": "Pojemnik na odpady zielone",
@@ -4799,7 +4908,7 @@
         },
         "shop/alcohol": {
             "name": "Sklep monopolowy",
-            "terms": "alkohol"
+            "terms": "sklep monopolowy, alkohol, wódka, piwo, wino"
         },
         "shop/fireplace": {
             "name": "Sklep z kominkami",
@@ -4815,7 +4924,7 @@
         },
         "landuse/construction": {
             "name": "Plac budowy",
-            "terms": "teren budowy,budowa,obszar budowy"
+            "terms": "teren budowy, budowa, obszar budowy"
         },
         "shop/trade": {
             "name": "Skład branżowy",
@@ -4823,7 +4932,7 @@
         },
         "office/diplomatic": {
             "name": "Placówka dyplomatyczna",
-            "terms": "placówka dymplomatyczna, ambasada, konsulat, biuro łącznikowe"
+            "terms": "placówka dyplomatyczna, ambasada, konsulat, biuro łącznikowe"
         },
         "piste/downhill/halfpipe": {
             "name": "Rampa (snowboard)",

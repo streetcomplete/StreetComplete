@@ -357,6 +357,10 @@
             "name": "Minigolf",
             "terms": "Minigolf"
         },
+        "amenity/vending_machine/ice_cream": {
+            "name": "Isautomat",
+            "terms": "is,ispind"
+        },
         "amenity/hospital": {
             "name": "Hospitalsområde",
             "terms": "Hospitalsområde"
@@ -490,10 +494,6 @@
         "aeroway/gate": {
             "name": "Lufthavnsgate",
             "terms": "Lufthavnsgate"
-        },
-        "manhole/drain": {
-            "name": "Regnafløb",
-            "terms": "storm,regn,afløb"
         },
         "traffic_calming/island": {
             "name": "Helleanlæg",
@@ -747,6 +747,10 @@
             "name": "Motel",
             "terms": "Motel, Bilmotel"
         },
+        "amenity/vending_machine/bottle_return": {
+            "name": "Pantautomat",
+            "terms": "pant,retur,flaske,tomra"
+        },
         "building/cathedral": {
             "name": "Katedralbygning",
             "terms": "Katedralbygning"
@@ -810,6 +814,10 @@
         "historic/tomb": {
             "name": "Grav",
             "terms": "Grav"
+        },
+        "amenity/vending_machine/electronics": {
+            "name": "Salgsautomat, elektronik",
+            "terms": "elektronik,automat,gadget"
         },
         "waterway/water_point": {
             "name": "Havnedrikkevand",
@@ -1139,7 +1147,8 @@
             "terms": "Turistinformation"
         },
         "amenity/vending_machine/coffee": {
-            "name": "Kaffeautomat"
+            "name": "Kaffeautomat",
+            "terms": "kaffe,automat"
         },
         "landuse/military/training_area": {
             "name": "Træningsområde",
@@ -1332,8 +1341,8 @@
             "terms": "Grøft"
         },
         "landuse/churchyard": {
-            "name": "Kirkegård",
-            "terms": "Kirkegårde"
+            "name": "Kirkeområde",
+            "terms": "Kirkegård"
         },
         "amenity/shelter": {
             "name": "Læsted",
@@ -1346,6 +1355,9 @@
         "highway/rest_area": {
             "name": "Rasteplads",
             "terms": "Rasteplads"
+        },
+        "amenity/vending_machine/stamps": {
+            "name": "Frimærkeautomat"
         },
         "playground/swing": {
             "name": "Gynge"
@@ -1608,9 +1620,6 @@
             "name": "Stillevej",
             "terms": "Stillevej"
         },
-        "attraction/bumper_car": {
-            "name": "Radiobil"
-        },
         "attraction/roller_coaster": {
             "name": "Rutchebane"
         },
@@ -1742,7 +1751,7 @@
         },
         "amenity/vending_machine/condoms": {
             "name": "Kondomautomat",
-            "terms": "Kondomautomat"
+            "terms": "Kondomautomat,automat,præservativ"
         },
         "craft/electronics_repair": {
             "name": "Elektronikværksted",
@@ -1837,7 +1846,7 @@
             "terms": "Hegn, Elhegn"
         },
         "landuse/cemetery": {
-            "name": "Gravplads ",
+            "name": "Kirkegård",
             "terms": "Gravplads"
         },
         "railway/rail": {
@@ -1857,8 +1866,8 @@
             "terms": "Ej brugt jernbanespor"
         },
         "amenity/grave_yard": {
-            "name": "Kirkegård",
-            "terms": "Kirkegård, Gravsted"
+            "name": "Gravplads",
+            "terms": "Kirkegård"
         },
         "office/lawyer/notary": {
             "name": "Notarkontor"
@@ -1910,10 +1919,6 @@
         "historic/monument": {
             "name": "Monument",
             "terms": "Monument"
-        },
-        "manhole": {
-            "name": "Brønd",
-            "terms": "dæksel,kloak"
         },
         "type/route/bicycle": {
             "name": "Cykelrute",
@@ -2123,7 +2128,7 @@
         },
         "amenity/vending_machine/parking_tickets": {
             "name": "Parkeringsbilletautomat",
-            "terms": "P-autoautomat, automat"
+            "terms": "P-automat, automat"
         },
         "shop/weapons": {
             "name": "Våbenbutik",
@@ -2247,6 +2252,10 @@
         "highway/pedestrian_area": {
             "name": "Gågade areal"
         },
+        "amenity/vending_machine/food": {
+            "name": "Madautomat",
+            "terms": "mad,fødevare,automat"
+        },
         "amenity/cafe": {
             "name": "Cafe",
             "terms": "Cafe, Café"
@@ -2337,10 +2346,6 @@
             "name": "Friluftsudstyrsbutik",
             "terms": "Friluftsudstyrsbutik, Friluftsudstyrsforretning, eventyr,sport,udendørs,"
         },
-        "highway/raceway": {
-            "name": "Racerbane (Motorsport)",
-            "terms": "Racerbane (Motorsport)"
-        },
         "emergency/designated": {
             "name": "Udrykningskørsel forbeholdt"
         },
@@ -2354,7 +2359,7 @@
         },
         "amenity/vending_machine/drinks": {
             "name": "Drikkeautomat",
-            "terms": "Drikkeautomat, Sodavandsautomat"
+            "terms": "Drikkeautomat, Sodavandsautomat,læskedrik,drik"
         },
         "highway/primary": {
             "name": "Primærvej",
@@ -2512,7 +2517,7 @@
         },
         "amenity/vending_machine/public_transport_tickets": {
             "name": "Billetautomat",
-            "terms": "Billetautomat, Rejsebilletautomat"
+            "terms": "Billetautomat, Rejsebilletautomat,rejse,billet,"
         },
         "man_made/embankment": {
             "name": "Forhøjning til tog, vej"
@@ -2740,10 +2745,6 @@
             "name": "Rullebane",
             "terms": "Rullebane, Skirullebane"
         },
-        "amenity/post_box": {
-            "name": "Postkasse",
-            "terms": "Postkasse"
-        },
         "emergency/official": {
             "name": "Udrykningskørsel officielt"
         },
@@ -2767,7 +2768,7 @@
         },
         "amenity/vending_machine/cigarettes": {
             "name": "Cigaretautomat",
-            "terms": "Cigaretautomat, Tobaksautomat"
+            "terms": "Cigaretautomat, Tobaksautomat,tobak,cigaret"
         },
         "craft/tiler": {
             "name": "Brolægger",
@@ -3070,10 +3071,6 @@
         "craft/handicraft": {
             "name": "Hobby",
             "terms": "Hobby"
-        },
-        "landuse/construction": {
-            "name": "Under konstruktion",
-            "terms": "Under konstruktion, Byggeplads"
         },
         "shop/motorcycle_repair": {
             "name": "Motorcykelværksted",

@@ -37,6 +37,11 @@ public class Countries
 		return defaultAll && (exceptions == null || exceptions.length == 0);
 	}
 
+	public boolean isNoCountries()
+	{
+		return !defaultAll && (exceptions == null || exceptions.length == 0);
+	}
+
 	/** @return true if it is all countries except the exceptions, false if it is no countries except the exceptions */
 	public boolean isAllExcept()
 	{

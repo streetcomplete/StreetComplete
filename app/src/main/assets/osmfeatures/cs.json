@@ -604,9 +604,6 @@
         "man_made/mast/communication/mobile_phone": {
             "name": "Mobilní telefonní vysílač"
         },
-        "manhole/drain": {
-            "name": "Kanalizační vpusť"
-        },
         "traffic_calming/island": {
             "name": "Ostrůvek",
             "terms": "kruhák,kruháč,kulaťák,kruhový objezd,pomalu,zpomalit"
@@ -1639,9 +1636,6 @@
             "name": "Elektrikář",
             "terms": "elektrikář,elektrikářství"
         },
-        "manhole/telecom": {
-            "name": "Telekomunikační šachta"
-        },
         "attraction/drop_tower": {
             "name": "padací věž"
         },
@@ -1929,9 +1923,6 @@
         "highway/living_street": {
             "name": "Obytná zóna",
             "terms": "obytná zóna"
-        },
-        "attraction/bumper_car": {
-            "name": "Autodrom"
         },
         "attraction/roller_coaster": {
             "name": "Horská dráha"
@@ -2299,9 +2290,6 @@
         "historic/monument": {
             "name": "Monument",
             "terms": "pamětihodnost,památník,pomník,hrdina"
-        },
-        "manhole": {
-            "name": "Šachta"
         },
         "type/route/bicycle": {
             "name": "Cyklotrasa",
@@ -2847,10 +2835,6 @@
             "name": "Outdoorové zboží",
             "terms": "outdoor,outdoorový,outdoorová,outdoorové,kempování,kempingové,horolezecký,horolezecké,sport,sportovní,příroda,přírody"
         },
-        "highway/raceway": {
-            "name": "Závodní dráha (motorsport)",
-            "terms": "auto*,formule jedna,motokára,motokros,závod*,dráha"
-        },
         "emergency/designated": {
             "name": "Vyhrazeno pro záchranná vozidla"
         },
@@ -3371,10 +3355,6 @@
             "name": "Pojízdný koberec",
             "terms": "pojízdný koberec,pásový dopravník,lyžařský vlek,vlek,lanovka na pásu,pohyblivý pás,eskalátor"
         },
-        "amenity/post_box": {
-            "name": "Poštovní schránka",
-            "terms": "schránka,poštovní schránka,schránka na dopisy"
-        },
         "public_transport/station_tram": {
             "name": "Tramvajová stanice"
         },
@@ -3765,10 +3745,6 @@
         "craft/handicraft": {
             "name": "Řemeslník",
             "terms": "řemeslník,řemeslo,řemeslná výroba,ruční výroba,rukodělný,rukodělná"
-        },
-        "landuse/construction": {
-            "name": "Výstavba",
-            "terms": "stavba,konstrukce,výstavba"
         },
         "shop/motorcycle_repair": {
             "name": "Opravna motocyklů"

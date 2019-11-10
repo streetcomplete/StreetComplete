@@ -222,7 +222,7 @@ StreetComplete je plně přeložená do češtiny a je vyvíjena s důrazem na t
     <string name="quest_sport_manySports_confirmation_title">"Vybrali jste více sportů"</string>
     <string name="quest_busStopShelter_name_title">"Má autobusová zastávka %s střechu?"</string>
     <string name="quest_toiletsFee_title">"Musí se na těchto toaletách platit?"</string>
-    <string name="quest_tactilePaving_title_bus">"Má tato autobusová zastávka dlažbu pro nevidomé?"</string>
+    <string name="quest_tactilePaving_title_bus">"Má tato autobusová zastávka hmatovou dlažbu?"</string>
     <string name="quest_tactilePaving_title_crosswalk">"Má tento přechod hmatovou dlažbu na obou stranách?"</string>
     <string name="quest_source_dialog_title">"Opravdu jste to zkontroloval(a) na místě?"</string>
     <string name="quest_tactilePaving_title_name_bus">"Má autobusová zastávka %s hmatovou dlažbu?"</string>
@@ -738,4 +738,15 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_split_way_many_splits_confirmation_description">"Tohle je docela dost rozdělení. Cestu můžete vždycky rozdělit později."</string>
     <string name="quest_footwayPartSurface_title">"Jaký je povrch této stezky pro chodce/chodníku?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title">"Je toaleta v %s přístupná pro vozíčkáře?"</string>
+    <string name="quest_tactilePaving_title_tram">"Má tato tramvajová zastávka dlažbu pro nevidomé? "</string>
+    <string name="quest_tactilePaving_title_name_tram">"Má tramvajová zastávka %s hmatovou dlažbu?"</string>
+    <string name="quest_maxweight_title">"Jaké je zde omezení hmotnosti?"</string>
+    <string name="quest_maxweight_answer_noSign">"Není tu žádná značka"</string>
+    <string name="quest_maxweight_unusualInput_confirmation_description">"Tato hmotnost vypadá nepravděpodobně. jste si jistí, že je správná?"</string>
+    <string name="quest_maxweight_answer_other_sign">"Značka vypadá jinak..."</string>
+    <string name="quest_maxweight_unsupported_sign_request_photo">"Chcete zde nechat poznámku? Poznámka s fotografií umožní dalším mapujícím, aby ji vyřešili."</string>
+    <string name="confirmation_authorize_now_note">"Můžete to udělat později v nastavení."</string>
+    <string name="quest_generalFee_title">"Je zde poplatek pro vstup do  %s?"</string>
+    <string name="quest_laundrySelfService_title">"Je tato prádelna samoobslužná?"</string>
+    <string name="quest_handrail_title">"Mají tyto schody zábradlí?"</string>
 </resources>

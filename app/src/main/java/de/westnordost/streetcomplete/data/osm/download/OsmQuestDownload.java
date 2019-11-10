@@ -230,7 +230,7 @@ public class OsmQuestDownload
 		{
 			LatLon p = geometry.getCenter();
 
-			if(getCountryBoundaries().isInAny(p.getLongitude(), p.getLatitude(), countries.getExceptions())
+			if(countries.isNoCountries() || getCountryBoundaries().isInAny(p.getLongitude(), p.getLatitude(), countries.getExceptions())
 				== countries.isAllExcept())
 			{
 				Log.v(TAG, getQuestTypeName(questType) + ": Not adding a quest at " +

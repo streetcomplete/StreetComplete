@@ -45,6 +45,10 @@
         "railway/halt": {
             "name": "鉄道駅（停留場）"
         },
+        "amenity/vending_machine/eggs": {
+            "name": "自販機(卵)",
+            "terms": "自販機(卵), 卵, タマゴ, 自販機"
+        },
         "shop/agrarian": {
             "name": "農業用品店",
             "terms": "農業用品店, 農協, 種苗店, 農業, 農薬, 飼料, 肥料, 駆除剤, 農機具, 除草剤"
@@ -208,6 +212,10 @@
             "name": "レストラン・ギリシャ料理",
             "terms": "レストラン, ギリシャ料理, ギリシャ, 飲食店, 食事, 食べる, 料理, ランチ"
         },
+        "shop/psychic": {
+            "name": "サイキック店",
+            "terms": "サイキック店, 超能力"
+        },
         "attraction/amusement_ride": {
             "name": "遊園地の乗り物",
             "terms": "遊園地の乗り物, 乗り物, アトラクション, 娯楽"
@@ -227,6 +235,10 @@
         "shop/farm": {
             "name": "農産物直売所",
             "terms": "農産物直売所, 直販, 食品, 食べ物"
+        },
+        "aeroway/spaceport": {
+            "name": "宇宙船基地",
+            "terms": "宇宙船基地, 宇宙船, スペースポート, 宇宙船発射基地"
         },
         "waterway/stream_intermittent": {
             "name": "間欠河川",
@@ -393,6 +405,10 @@
             "name": "水族館",
             "terms": "水族館"
         },
+        "man_made/manhole": {
+            "name": "マンホール",
+            "terms": "マンホール, 蓋, フタ"
+        },
         "type/site": {
             "name": "区域",
             "terms": "区域"
@@ -433,6 +449,10 @@
             "name": "給水塔",
             "terms": "給水塔"
         },
+        "shop/brewing_supplies": {
+            "name": "醸造用品店",
+            "terms": "醸造用品店, 醸造, 酒, 酒造, DIY, ホームブリュー"
+        },
         "railway/train_wash": {
             "name": "洗車機（鉄道用）",
             "terms": "洗車機, 洗車"
@@ -440,6 +460,10 @@
         "shop/dry_cleaning": {
             "name": "クリーニング店",
             "terms": "クリーニング, ドライクリーニング店, 洗濯屋"
+        },
+        "indoor/elevator": {
+            "name": "エレベータ（インドア）",
+            "terms": "エレベータ（インドア）, エレベータ, インドア"
         },
         "tourism/caravan_site": {
             "name": "オートキャンプ場",
@@ -559,6 +583,10 @@
             "name": "スピードカメラ",
             "terms": "スピードカメラ, オービス, 自動速度違反取締装置, 道路設備"
         },
+        "amenity/studio/radio": {
+            "name": "ラジオ局",
+            "terms": "ラジオ局, ラジオ, ラジオステーション, 放送"
+        },
         "public_transport/station_monorail": {
             "name": "モノレールの駅",
             "terms": "モノレール駅, モノレール"
@@ -590,6 +618,10 @@
         "amenity/townhall": {
             "name": "役場",
             "terms": "市役所, 区役所, 町役場, 村役場, 市庁, 役所"
+        },
+        "shop/rental": {
+            "name": "レンタルショップ",
+            "terms": "レンタルショップ, レンタル店, お店, 店舗, レンタル用品店"
         },
         "public_transport/stop_position_bus": {
             "name": "バス（停止位置）",
@@ -665,6 +697,10 @@
             "name": "銀行",
             "terms": "銀行, 信用金庫, 信用組合, お金, 金融"
         },
+        "highway/path/informal": {
+            "name": "けもの道",
+            "terms": "けもの道, 獣道, 小道"
+        },
         "shop/outpost": {
             "name": "商品受け取り店",
             "terms": "商品受け取り店, アウトポスト, 配達, 受取"
@@ -739,10 +775,6 @@
         "man_made/mast/communication/mobile_phone": {
             "name": "柱（携帯電話）",
             "terms": "柱（携帯電話）, 携帯電話柱, 柱"
-        },
-        "manhole/drain": {
-            "name": "雨水用マンホール",
-            "terms": "雨水用マンホール"
         },
         "traffic_calming/island": {
             "name": "交通島",
@@ -896,8 +928,8 @@
             "terms": "出入口, 入口, 出口, 出入り口, エントランス, 玄関, 正面入口, 裏口"
         },
         "emergency/fire_alarm": {
-            "name": "火災放置機",
-            "terms": "火災通報ボックス, 火災通報装置, 火災放置機, 火事, 消防"
+            "name": "火災報知機",
+            "terms": "火災通報ボックス, 火災通報装置, 火災報知機, 火事, 消防, 火災報知器, 報知器, 報知機"
         },
         "shop/clothes/underwear": {
             "name": "下着店",
@@ -967,6 +999,10 @@
             "name": "看板屋",
             "terms": "看板屋, 広告サイン制作, 広告"
         },
+        "amenity/vending_machine/bread": {
+            "name": "自販機(パン)",
+            "terms": "自販機(パン), パン, 自販機"
+        },
         "boundary": {
             "name": "行政境界"
         },
@@ -974,9 +1010,17 @@
             "name": "栄養サプリ販売店",
             "terms": "栄養サプリメント販売店, サプリ専門店, サプリメント専門店, 健康"
         },
+        "amenity/studio/video": {
+            "name": "映画スタジオ",
+            "terms": "映画スタジオ, フィルムスタジオ, スタジオ"
+        },
         "craft/gardener": {
             "name": "造園業",
             "terms": "庭師, 職人, 工房, 造園, 造園業, 樹木"
+        },
+        "indoor/stairs": {
+            "name": "階段（インドア）",
+            "terms": "階段（インドア）, 階段, インドア"
         },
         "building/church": {
             "name": "教会（建物）",
@@ -1066,6 +1110,10 @@
             "name": "椅子張り職人",
             "terms": "椅子張り職人, 職人"
         },
+        "man_made/manhole/sewer": {
+            "name": "マンホール(溝渠)",
+            "terms": "マンホール(溝渠), 溝, 溝渠"
+        },
         "natural/glacier": {
             "name": "氷河",
             "terms": "氷河"
@@ -1073,6 +1121,10 @@
         "shop/storage_rental": {
             "name": "レンタル倉庫",
             "terms": "貸し倉庫, レンタルボックス, 貸しコンテナ, 貸倉庫, 倉庫, レンタル倉庫, レンタル収納, レンタル収納スペース, トランクルーム, コンテナ収納, 荷物"
+        },
+        "barrier/bollard_line": {
+            "name": "侵入防止杭",
+            "terms": "杭, ポスト, 侵入防止杭, ボラード"
         },
         "shop/fashion": {
             "name": "ファッション店"
@@ -1370,6 +1422,10 @@
             "name": "壁画",
             "terms": "壁画, フレスコ"
         },
+        "highway/raceway/motocross": {
+            "name": "モトクロスレース場",
+            "terms": "モトクロスレース場, レース場, スポーツ, サーキット, バイク"
+        },
         "man_made/chimney": {
             "name": "煙突",
             "terms": "煙突"
@@ -1526,6 +1582,10 @@
         "healthcare/alternative/chiropractic": {
             "name": "カイロプラクター",
             "terms": "カイロプラクター, カイロプラクティック, 医療"
+        },
+        "amenity/townhall/city": {
+            "name": "市区役所",
+            "terms": "市区役所, 市役所, 区役所, 役場"
         },
         "attraction/summer_toboggan": {
             "name": "トボガンぞり",
@@ -1844,6 +1904,14 @@
         "emergency/no": {
             "name": "緊急車両の利用不可"
         },
+        "man_made/manhole/drain": {
+            "name": "マンホール(排水)",
+            "terms": "マンホール(排水), 排水, 雨水, 集水"
+        },
+        "man_made/manhole/telecom": {
+            "name": "マンホール(通信)",
+            "terms": "マンホール(通信), 通信, 電話, テレコム"
+        },
         "public_transport/stop_position_ferry": {
             "name": "フェリー（停止位置）",
             "terms": "フェリー停止位置, フェリー"
@@ -2052,10 +2120,6 @@
             "name": "電気工事店",
             "terms": "電気工事店, 職人, 工房"
         },
-        "manhole/telecom": {
-            "name": "電話線用マンホール",
-            "terms": "電話線用マンホール"
-        },
         "attraction/drop_tower": {
             "name": "落下塔",
             "terms": "落下塔, アトラクション"
@@ -2091,6 +2155,10 @@
         "leisure/fitness_station/box": {
             "name": "トレーニング台",
             "terms": "トレーニング台, 運動台, 運動器具, トレーニング, エクササイズ, 健康遊具"
+        },
+        "amenity/fast_food/hot_dog": {
+            "name": "ファストフード・ホットドッグ",
+            "terms": "ファストフード・ホットドッグ, ホットドッグ, ファストフード, 飲食, 食べる, 軽食, 飲食店, 食事, 料理"
         },
         "amenity/sanitary_dump_station": {
             "name": "キャンピングカー用汚物廃棄所",
@@ -2182,6 +2250,10 @@
             "name": "よろず屋",
             "terms": "よろずや, よろず屋, 万屋"
         },
+        "amenity/studio/audio": {
+            "name": "レコーディングスタジオ",
+            "terms": "レコーディングスタジオ, 音楽スタジオ, 録音スタジオ, 録画スタジオ"
+        },
         "building_part": {
             "name": "建物の一部分",
             "terms": "建物の一部分, 建物, 建物の部分"
@@ -2221,6 +2293,10 @@
         "amenity/boat_rental": {
             "name": "貸しボート",
             "terms": "貸しボート, ボート, 公園, 娯楽, レジャー, 舟, 池, 公園, 観光"
+        },
+        "man_made/utility_pole": {
+            "name": "柱",
+            "terms": "電柱, 鉄柱, 柱"
         },
         "amenity/place_of_worship/taoist": {
             "name": "道教寺院",
@@ -2427,7 +2503,7 @@
         },
         "attraction/bumper_car": {
             "name": "バンパーカー",
-            "terms": "バンパーカー, アトラクション"
+            "terms": "バンパーカー, バンプカー"
         },
         "attraction/roller_coaster": {
             "name": "ローラーコースター",
@@ -2870,10 +2946,6 @@
             "name": "記念堂",
             "terms": "記念堂, 記念建造物, 歴史"
         },
-        "manhole": {
-            "name": "マンホール",
-            "terms": "マンホール, 潜孔, 人孔"
-        },
         "type/route/bicycle": {
             "name": "サイクリングルート",
             "terms": "サイクリングルート, サイクリングコース"
@@ -2933,6 +3005,10 @@
         "healthcare/optometrist": {
             "name": "検眼医",
             "terms": "検眼医, 視力測定医, 医療"
+        },
+        "man_made/manhole/power": {
+            "name": "マンホール(電力)",
+            "terms": "マンホール(電力), 電力, 電気"
         },
         "building/kindergarten": {
             "name": "幼稚園/保育園（建物）",
@@ -3601,6 +3677,10 @@
             "name": "海岸線",
             "terms": "海岸線"
         },
+        "amenity/studio/television": {
+            "name": "テレビ局",
+            "terms": "テレビ局, テレビ, テレビステーション, 放送"
+        },
         "building/carport": {
             "name": "簡易車庫",
             "terms": "カーポート, 駐車場, 車庫, 簡易車庫, ガレージ"
@@ -3622,8 +3702,8 @@
             "terms": "アウトドアショップ"
         },
         "highway/raceway": {
-            "name": "レーストラック（モータースポーツ）",
-            "terms": "レーストラック, 車道, 私道"
+            "name": "モーターレース場",
+            "terms": "モーターレース場, 自動車レース場, バイクレース場, レース場, スポーツ, サーキット, 自動車, バイク, カーレース, バイクレース"
         },
         "emergency/designated": {
             "name": "緊急車両の通行指定"
@@ -3740,6 +3820,10 @@
             "name": "卸売店",
             "terms": "卸, 卸売, 卸売店"
         },
+        "amenity/loading_dock": {
+            "name": "貨物の搬出入口",
+            "terms": "貨物の搬出入口, 貨物搬入口, 貨物積出口, 荷受, 荷出"
+        },
         "building/stadium": {
             "name": "スタジアム（建物）",
             "terms": "スタジアム, スポーツ, 運動, 競技"
@@ -3780,7 +3864,8 @@
             "terms": "遊水地, 遊水池, 集水地域, 水, 貯水池"
         },
         "public_transport/platform/tram_point": {
-            "name": "路面電車のりば/プラットホーム"
+            "name": "路面電車のりば/プラットホーム",
+            "terms": "トラム乗り場, トラム, 路面電車, LRT, ライトレール, 市電, ちんちん電車, チンチン電車, のりば, ホーム, プラットホーム, 駅, 電停, 停留場, 停車場, 乗降所"
         },
         "amenity/fast_food/donut": {
             "name": "ファストフード・ドーナツ",
@@ -3817,6 +3902,10 @@
         "barrier/fence/railing": {
             "name": "ガードレール（歩行者用）",
             "terms": "ガードレール, 交通, 交通安全, 道路, 欄干"
+        },
+        "amenity/vending_machine/ice_cubes": {
+            "name": "自販機(氷)",
+            "terms": "自販機(氷), 氷, アイス, 自販機"
         },
         "golf/hole": {
             "name": "ゴルフホール",
@@ -3928,6 +4017,10 @@
         "amenity/vending_machine/public_transport_tickets": {
             "name": "切符販売機",
             "terms": "券売機, 自動券売機, 自動販売機, 自販機, 自動発券機, 発券機"
+        },
+        "man_made/manhole/gas": {
+            "name": "マンホール(ガス)",
+            "terms": "マンホール(ガス), ガス, 都市ガス"
         },
         "man_made/embankment": {
             "name": "土手",
@@ -4296,7 +4389,7 @@
         },
         "amenity/post_box": {
             "name": "郵便ポスト",
-            "terms": "郵便ポスト, 郵便箱, ポスト"
+            "terms": "郵便ポスト, ポスト, 郵便差出口, 〒"
         },
         "public_transport/station_tram": {
             "name": "路面電車の駅",
@@ -4360,6 +4453,10 @@
             "name": "額縁店",
             "terms": "額縁店"
         },
+        "amenity/weighbridge": {
+            "name": "トラックスケール",
+            "terms": "トラックスケール, 車両計量台"
+        },
         "barrier/kerb": {
             "name": "縁石",
             "terms": "縁石"
@@ -4407,6 +4504,10 @@
         "amenity/dive_centre": {
             "name": "ダイブセンター",
             "terms": "ダイブセンター, スキューバダイビングセンター, ダイビングセンター, 海, 潜水"
+        },
+        "highway/raceway/karting": {
+            "name": "カートレース場",
+            "terms": "カートレース場, レース場, スポーツ, サーキット"
         },
         "amenity/vending_machine/feminine_hygiene": {
             "name": "生理用品自動販売機",
@@ -4474,6 +4575,10 @@
         "leisure/marina": {
             "name": "マリーナ",
             "terms": "マリーナ, ヨットハーバー, スポーツ, 運動, 娯楽, レジャー"
+        },
+        "man_made/manhole/water": {
+            "name": "マンホール(水道)",
+            "terms": "マンホール(水道), 水道, 上下水道, 上水, 下水"
         },
         "craft/tailor": {
             "name": "仕立て屋"
@@ -4694,6 +4799,10 @@
             "name": "救急車の基地",
             "terms": "救急車の基地, 救命"
         },
+        "barrier/wall/noise_barrier": {
+            "name": "防音壁",
+            "terms": "障害物, バリア, 防音壁, 壁, 騒音"
+        },
         "healthcare/podiatrist": {
             "name": "足病医",
             "terms": "足病医, 医療"
@@ -4814,8 +4923,8 @@
             "terms": "手工芸品, 職人, 工房, 雑貨, 工芸, 民芸, こけし, 人形"
         },
         "landuse/construction": {
-            "name": "建設用地",
-            "terms": "工事中用地, 建設用地, 工事現場"
+            "name": "建設予定地",
+            "terms": "工事中用地, 建設用地, 工事現場, 建設予定地"
         },
         "shop/trade": {
             "name": "建築資材店",

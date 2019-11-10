@@ -447,9 +447,6 @@
         "natural": {
             "name": "自然物件"
         },
-        "amenity/post_box": {
-            "name": "邮箱"
-        },
         "shop/laundry": {
             "name": "洗衣店"
         },
@@ -758,9 +755,6 @@
         },
         "tourism/viewpoint": {
             "name": "景点"
-        },
-        "landuse/construction": {
-            "name": "建筑物"
         },
         "highway/trunk_link": {
             "name": "干线道路匝道"

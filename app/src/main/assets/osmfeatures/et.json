@@ -1809,10 +1809,6 @@
             "name": "Matkatarvete kauplus",
             "terms": "matkatarbed,välitarbed,telgid,ronimine,matkamine,telkimine"
         },
-        "highway/raceway": {
-            "name": "Ringrada (motosport)",
-            "terms": "autorada, motorada, motokross, rallirada, motospordirada,krossirada"
-        },
         "highway/steps": {
             "name": "Trepp",
             "terms": "astmed"
@@ -2157,9 +2153,6 @@
         "natural": {
             "name": "Looduslik"
         },
-        "amenity/post_box": {
-            "name": "Kirjakast"
-        },
         "leisure/bowling_alley": {
             "name": "Boolingusaal",
             "terms": "bowling,keegel,keeglisaal,hobikeegel"
@@ -2405,9 +2398,6 @@
         },
         "craft/handicraft": {
             "name": "Käsitöö"
-        },
-        "landuse/construction": {
-            "name": "Ehitus"
         },
         "shop/motorcycle_repair": {
             "name": "Mootorratta remondikoda",

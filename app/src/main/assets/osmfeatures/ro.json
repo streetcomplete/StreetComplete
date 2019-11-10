@@ -1108,9 +1108,6 @@
         "natural": {
             "name": "Natural"
         },
-        "amenity/post_box": {
-            "name": "Cutie Poștală"
-        },
         "landuse/military/training_area": {
             "name": "Zonă de Training"
         },
@@ -1441,9 +1438,6 @@
         },
         "office/lawyer": {
             "name": "Cabinet de Avocatură"
-        },
-        "landuse/construction": {
-            "name": "Construcție"
         },
         "highway/trunk_link": {
             "name": "Intrare în Drum Expres"
