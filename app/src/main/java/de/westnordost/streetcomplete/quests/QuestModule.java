@@ -52,6 +52,7 @@ import de.westnordost.streetcomplete.quests.powerpoles_material.AddPowerPolesMat
 import de.westnordost.streetcomplete.quests.orchard_produce.AddOrchardProduce;
 import de.westnordost.streetcomplete.quests.railway_crossing.AddRailwayCrossingBarrier;
 import de.westnordost.streetcomplete.quests.recycling.AddRecyclingType;
+import de.westnordost.streetcomplete.quests.recycling_glass.DetermineRecyclingGlass;
 import de.westnordost.streetcomplete.quests.recycling_material.AddRecyclingContainerMaterials;
 import de.westnordost.streetcomplete.quests.religion.AddReligionToPlaceOfWorship;
 import de.westnordost.streetcomplete.quests.religion.AddReligionToWaysideShrine;
@@ -150,6 +151,7 @@ public class QuestModule
 				// ↓ 4. definitely shown as errors in QA tools
 
 				// ↓ 5. may be shown as missing in QA tools
+				new DetermineRecyclingGlass(o), // because most recycling:glass=yes is a tagging mistake
 				new AddBuildingType(o), // because housenumber, building levels etc. depend on it
 
 				// ↓ 6. may be shown as possibly missing in QA tools
