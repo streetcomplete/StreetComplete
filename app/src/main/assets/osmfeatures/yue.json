@@ -1042,10 +1042,6 @@
             "name": "輸送帶",
             "terms": "Magic Carpet Lift,輸送帶"
         },
-        "amenity/post_box": {
-            "name": "郵筒",
-            "terms": "Mailbox,Post,Post Box,郵筒,郵箱"
-        },
         "natural/water/lake": {
             "name": "湖",
             "terms": "Lake,湖,湖泊"
@@ -1384,10 +1380,6 @@
         "office/lawyer": {
             "name": "律師事務所",
             "terms": "Law Office,律師事務所"
-        },
-        "landuse/construction": {
-            "name": "地盤",
-            "terms": "Construction,地盤,建築工程,建築物"
         },
         "highway/trunk_link": {
             "name": "幹道駁路",

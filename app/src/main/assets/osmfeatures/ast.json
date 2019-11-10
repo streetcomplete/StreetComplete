@@ -1001,9 +1001,6 @@
         "craft/electrician": {
             "name": "Electricista"
         },
-        "manhole/telecom": {
-            "name": "Pozu de telecomunicaciones"
-        },
         "historic/archaeological_site": {
             "name": "Xacimientu arqueolóxicu"
         },
@@ -1183,10 +1180,6 @@
         "highway/living_street": {
             "name": "Rúa residencial",
             "terms": "Semipeatonal,Zona 30"
-        },
-        "attraction/bumper_car": {
-            "name": "Coches de choque",
-            "terms": "coche,choque,atracciones,feria"
         },
         "attraction/roller_coaster": {
             "name": "Montaña rusa",
@@ -1419,9 +1412,6 @@
         },
         "historic/monument": {
             "name": "Monumentu"
-        },
-        "manhole": {
-            "name": "Tapa d'alcantariella"
         },
         "type/route/bicycle": {
             "name": "Ruta ciclista"
@@ -1750,9 +1740,6 @@
         "shop/outdoor": {
             "name": "Equipamientu d'aire llibre"
         },
-        "highway/raceway": {
-            "name": "Circuitu (Deportes de motor)"
-        },
         "emergency/designated": {
             "name": "Accesu d'emerxencia designáu"
         },
@@ -2049,10 +2036,6 @@
             "name": "Alfombra máxica",
             "terms": "remonte de cinta rodante"
         },
-        "amenity/post_box": {
-            "name": "Buzón",
-            "terms": "Buzón, Correos, Carta"
-        },
         "emergency/official": {
             "name": "Accesu d'emerxencia oficial"
         },
@@ -2287,9 +2270,6 @@
         },
         "craft/handicraft": {
             "name": "Manualidaes"
-        },
-        "landuse/construction": {
-            "name": "Construccion"
         },
         "aeroway": {
             "name": "Via d'aviación"

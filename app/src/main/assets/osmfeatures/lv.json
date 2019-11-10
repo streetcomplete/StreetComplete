@@ -383,9 +383,6 @@
         "historic/monument": {
             "name": "Piemineklis"
         },
-        "manhole": {
-            "name": "Kanalizācijas lūka"
-        },
         "emergency/phone": {
             "name": "Ārkārtas telefons"
         },
@@ -1231,10 +1228,6 @@
         "natural": {
             "name": "Dabisks"
         },
-        "amenity/post_box": {
-            "name": "Pasta kastīte",
-            "terms": "vēstule, pasts, kaste"
-        },
         "natural/water/lake": {
             "name": "Ezers"
         },
@@ -1475,9 +1468,6 @@
         "craft/electrician": {
             "name": "Elektriķis"
         },
-        "manhole/telecom": {
-            "name": "Telekomunikāciju lūka"
-        },
         "shop/car_repair": {
             "name": "Auto remontdarbnīca",
             "terms": "remonts, serviss, garāža"
@@ -1632,9 +1622,6 @@
         },
         "tourism/viewpoint": {
             "name": "Skatu punkts"
-        },
-        "landuse/construction": {
-            "name": "Būvlaukums"
         },
         "emergency/lifeguard": {
             "name": "Glābējs"

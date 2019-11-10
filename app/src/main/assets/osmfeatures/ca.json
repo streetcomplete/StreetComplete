@@ -2136,10 +2136,6 @@
             "name": "Cinta remuntadora",
             "terms": "catifa màgica, catifa rodant, cinta transportadora"
         },
-        "amenity/post_box": {
-            "name": "Bústia de correus",
-            "terms": "Bústia, Bústia Pública, Correus, Carta, Servei de Correus, Enviament"
-        },
         "emergency/official": {
             "name": "Accés per a emergències oficial"
         },
@@ -2393,10 +2389,6 @@
         },
         "craft/handicraft": {
             "name": "Botiga d'artesà"
-        },
-        "landuse/construction": {
-            "name": "Zona en construcció",
-            "terms": "En construcció"
         },
         "aeroway": {
             "name": "Infraestructura aeroportuària"

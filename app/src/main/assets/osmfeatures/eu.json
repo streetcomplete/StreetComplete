@@ -267,9 +267,6 @@
         "amenity/vending_machine/coffee": {
             "name": "Kafe makina saltzaile"
         },
-        "amenity/post_box": {
-            "name": "Postontzi"
-        },
         "amenity/grit_bin": {
             "name": "Hare-ontzi"
         },

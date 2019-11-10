@@ -477,9 +477,6 @@
         "natural": {
             "name": "Природа"
         },
-        "amenity/post_box": {
-            "name": "Пощенска кутия"
-        },
         "shop/laundry": {
             "name": "Пералня"
         },
@@ -803,9 +800,6 @@
         },
         "tourism/viewpoint": {
             "name": "Точка с хубава гледка"
-        },
-        "landuse/construction": {
-            "name": "Строеж"
         },
         "highway/trunk_link": {
             "name": "Връзка със скоростен път"

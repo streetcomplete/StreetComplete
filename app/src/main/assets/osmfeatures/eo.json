@@ -732,10 +732,6 @@
             "name": "Masto poŝtelefona",
             "terms": "anteno,masto,gsm,poŝtelefona masto"
         },
-        "manhole/drain": {
-            "name": "Stratkanala (pluvakvo) kovrilo",
-            "terms": "stratkanalo,kloako,kanalo,pluvakvo"
-        },
         "traffic_calming/island": {
             "name": "Trafik-insuleto",
             "terms": "trafikinsuleto,trafikinsulo"
@@ -2032,10 +2028,6 @@
             "name": "Elektrista oficejo",
             "terms": "elektristo"
         },
-        "manhole/telecom": {
-            "name": "Stratkanala (telekomunikado) kovrilo",
-            "terms": "stratkanalo,kabloj,subteraj kabloj,telefonaj kabloj"
-        },
         "attraction/drop_tower": {
             "name": "Defala turo (allogaĵo)",
             "terms": "turo,drop tower"
@@ -2400,10 +2392,6 @@
         "highway/living_street": {
             "name": "Ĉedoma strato",
             "terms": "loka vojo,chedoma vojo,cxedoma vojo,strateto"
-        },
-        "attraction/bumper_car": {
-            "name": "Kolizi-aŭtetoj (allogaĵo)",
-            "terms": "koliziaj aŭtetoj,aŭtetoj,dodgem"
         },
         "attraction/roller_coaster": {
             "name": "Onda fervojo",
@@ -2845,10 +2833,6 @@
         "historic/monument": {
             "name": "Monumento (masiva objekto)",
             "terms": "monumento"
-        },
-        "manhole": {
-            "name": "Stratkanala kovrilo",
-            "terms": "stratkanalo,kanalo,kloako,kablokanalo,pluvkanalo,kovrilo"
         },
         "type/route/bicycle": {
             "name": "Bicikla kurso",
@@ -3585,10 +3569,6 @@
             "name": "Vojaĝila vendejo",
             "terms": "vojaĝiloj,vojaghiloj,vojagxiloj,ekipaĵo,tendoj"
         },
-        "highway/raceway": {
-            "name": "Vojo aŭtokonkursada",
-            "terms": "aŭtokonkursejo,aŭtodromo,kurejo,dromo,aŭtovego"
-        },
         "emergency/designated": {
             "name": "Vivsav-serva aliro: adaptita"
         },
@@ -4246,10 +4226,6 @@
             "name": "Ŝtuparlifto skiada",
             "terms": "shtuparlifto skiada,sxtuparliftoskiada,skitelfero tapiŝa,magia tapiŝo,magia tapisxo,magia tapisho"
         },
-        "amenity/post_box": {
-            "name": "Poŝtkesto (senda)",
-            "terms": "poshtkesto,posxtkesto,leterkesto,leterskatolo,leterujo"
-        },
         "public_transport/station_tram": {
             "name": "Stacio trama",
             "terms": "trama haltejo,tramhaltejo"
@@ -4760,10 +4736,6 @@
         "craft/handicraft": {
             "name": "Manmetistejo",
             "terms": "manlaboristo,braklaboristo,manufakturo"
-        },
-        "landuse/construction": {
-            "name": "Konstruejo",
-            "terms": "konstruado"
         },
         "shop/trade": {
             "name": "Pogranda vendejo (konstruaĵ‑materialoj)",

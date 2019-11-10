@@ -680,9 +680,6 @@
         "man_made/mast/communication/mobile_phone": {
             "name": "Torre telefonica"
         },
-        "manhole/drain": {
-            "name": "Tombino"
-        },
         "traffic_calming/island": {
             "name": "Isola di traffico",
             "terms": "isola,pedonale"
@@ -1293,6 +1290,9 @@
             "name": "Sciovia",
             "terms": "sci,teleferica,skilift,lift"
         },
+        "amenity/letter_box": {
+            "name": "Cassetta delle lettere"
+        },
         "bridge/support/pier": {
             "name": "pilone"
         },
@@ -1670,7 +1670,7 @@
         },
         "landuse/grass": {
             "name": "Erba",
-            "terms": "Erba"
+            "terms": "erba,prato,area verde"
         },
         "natural/grassland": {
             "name": "Prateria",
@@ -1875,9 +1875,6 @@
         "craft/electrician": {
             "name": "Elettricista",
             "terms": "elettronica,elettricità"
-        },
-        "manhole/telecom": {
-            "name": "Tombino per telecomunicazioni"
         },
         "attraction/drop_tower": {
             "name": "Torre a caduta libera",
@@ -2116,7 +2113,7 @@
         },
         "building/apartments": {
             "name": "Appartamenti",
-            "terms": "appartamenti,condominio,palazzo,palazzone,casermone,case popolari,abitazioni,case,edilizia popolare,peep,iacp"
+            "terms": "appartamenti,condomini,palazzi,palazzoni,casermoni,case popolari,abitazioni,case,edilizia popolare,peep,iacp,terreno,lotto,terreno condominiale, area condominiale"
         },
         "highway/trunk_link": {
             "name": "Svincolo superstrada",
@@ -2214,10 +2211,6 @@
         "highway/living_street": {
             "name": "Strada residenziale prevalentemente pedonale",
             "terms": "living street"
-        },
-        "attraction/bumper_car": {
-            "name": "Autoscontro",
-            "terms": "autoscontro,auto,macchine,macchinine,parco a tema,attrazioni,divertimento,divertimenti,giostra,luna park"
         },
         "attraction/roller_coaster": {
             "name": "Montagne russe",
@@ -2629,9 +2622,6 @@
         "historic/monument": {
             "name": "Monumento",
             "terms": "Monumento"
-        },
-        "manhole": {
-            "name": "Tombino"
         },
         "type/route/bicycle": {
             "name": "Itinerario ciclabile",
@@ -3157,7 +3147,7 @@
         },
         "landuse/allotments": {
             "name": "Orti in concessione",
-            "terms": "orti,orto,pubblico,concessione,comune,giardino,lotto"
+            "terms": "orti,orto,pubblico,concessione,lotto,orti urbani"
         },
         "office/water_utility": {
             "name": "Ufficio azienda di fornitura dell'acqua"
@@ -3315,10 +3305,6 @@
             "name": "Negozio per sport all'aria aperta",
             "terms": "campeggio,scalata,escursionismo"
         },
-        "highway/raceway": {
-            "name": "Circuito (Motoristico)",
-            "terms": "pista,autodromo,pista automobilistica,pista motoristica,auto,moto,motori,nascar,corsa,formula uno"
-        },
         "emergency/designated": {
             "name": "Accesso di emergenza designato"
         },
@@ -3396,7 +3382,7 @@
             "name": "Strisce pedonali (rialzate)"
         },
         "landuse/residential/apartments": {
-            "name": "Condominio",
+            "name": "Area condominiale",
             "terms": "appartamento,locale,unità immobiliare,immobile,residenza"
         },
         "amenity/place_of_worship/muslim": {
@@ -3736,7 +3722,7 @@
             "name": "Posizione di parcheggio per aeromobili"
         },
         "amenity/fast_food/kebab": {
-            "name": "Fast Food i kebab",
+            "name": "Fast Food di kebab",
             "terms": "bar,colazione,caffè,mensa,cena,drivein,mangiare,grigliata,pranzo,tavolo,kebab,kebap,shawarma"
         },
         "landuse/greenfield": {
@@ -3933,10 +3919,6 @@
         "aerialway/magic_carpet": {
             "name": "Tapis roulant",
             "terms": "tappeto scorrevole"
-        },
-        "amenity/post_box": {
-            "name": "Buca delle lettere",
-            "terms": "cassetta postale,lettere,portalettere,buchetta,postino"
         },
         "public_transport/station_tram": {
             "name": "Stazione tram"
@@ -4399,10 +4381,6 @@
         "craft/handicraft": {
             "name": "Artigiano",
             "terms": "Artigianato,Artigiano"
-        },
-        "landuse/construction": {
-            "name": "Costruzione",
-            "terms": "In costruzione,cantiere"
         },
         "shop/trade": {
             "name": "Materiali da edilizia",

@@ -479,9 +479,6 @@
         "natural": {
             "name": "இயற்கையான"
         },
-        "amenity/post_box": {
-            "name": "அஞ்சல்பெட்டி"
-        },
         "shop/laundry": {
             "name": "சலவையகம்"
         },
@@ -844,9 +841,6 @@
         },
         "office/lawyer": {
             "name": "சட்ட அலுவலகம்"
-        },
-        "landuse/construction": {
-            "name": "கட்டுமானம்"
         },
         "building/garage": {
             "name": "வாகனப் பணிமனை"

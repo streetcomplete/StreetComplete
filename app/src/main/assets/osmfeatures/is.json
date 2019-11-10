@@ -481,9 +481,6 @@
         "man_made/mast/communication/mobile_phone": {
             "name": "Farsíma mastur"
         },
-        "manhole/drain": {
-            "name": "Yfirfall"
-        },
         "traffic_calming/island": {
             "name": "Umferðareyja"
         },
@@ -1288,9 +1285,6 @@
         "craft/electrician": {
             "name": "Rafvirki"
         },
-        "manhole/telecom": {
-            "name": "Mannop fyrir fjarskipti"
-        },
         "attraction/drop_tower": {
             "name": "Fallturn"
         },
@@ -1512,9 +1506,6 @@
         },
         "highway/living_street": {
             "name": "Vistgata"
-        },
-        "attraction/bumper_car": {
-            "name": "Ákeyrslubílar"
         },
         "attraction/roller_coaster": {
             "name": "Rússíbani"
@@ -1800,9 +1791,6 @@
         },
         "historic/monument": {
             "name": "Minnisvarði"
-        },
-        "manhole": {
-            "name": "Mannop"
         },
         "type/route/bicycle": {
             "name": "Hjólaleið"
@@ -2246,9 +2234,6 @@
         "shop/outdoor": {
             "name": "Útivistarbúð"
         },
-        "highway/raceway": {
-            "name": "Keppnisbraut (mótorsport)"
-        },
         "emergency/designated": {
             "name": "Ætlað sem neyðaraðgangur"
         },
@@ -2659,9 +2644,6 @@
         "aerialway/magic_carpet": {
             "name": "Töfrateppi"
         },
-        "amenity/post_box": {
-            "name": "Póstkassi"
-        },
         "public_transport/station_tram": {
             "name": "Sporvagnastöð"
         },
@@ -2971,9 +2953,6 @@
         },
         "craft/handicraft": {
             "name": "Handverk"
-        },
-        "landuse/construction": {
-            "name": "Byggingarframkvæmdir"
         },
         "shop/trade": {
             "name": "Iðnaðarvörusala"

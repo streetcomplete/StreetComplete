@@ -45,6 +45,10 @@
         "railway/halt": {
             "name": "Estación / Aparadero de tren (parada / a pedido)"
         },
+        "amenity/vending_machine/eggs": {
+            "name": "Máquina expendedora de huevos",
+            "terms": "huevos"
+        },
         "shop/agrarian": {
             "name": "Tienda de suministros agrícolas",
             "terms": "Tienda de suministros agrícolas, insumos agrícolas, máquinas agrícolas, semillas, pesticidas, fertilizantes, herramientas agrícolas, agrícola, agricola"
@@ -208,6 +212,10 @@
             "name": "Restaurante griego",
             "terms": "desayuno, cena, comedor, cena, comer, parrilla, almuerzo, mesa, café, cafe, pitas, aceitunas"
         },
+        "shop/psychic": {
+            "name": "Vidente",
+            "terms": "astrología, bola de cristal, adivinación, adivina, vidente, espíritu, parapsicológico, parasicológico, parapsicológo, parasicológo, parapsicológa, parasicológa, vidente, medium, médium"
+        },
         "attraction/amusement_ride": {
             "name": "Atracción de feria",
             "terms": "atracción de feria, juego, juego de feria, juegos mecánicos, máquina de emociones mecanizada"
@@ -227,6 +235,10 @@
         "shop/farm": {
             "name": "Tienda de productos agrícolas",
             "terms": "granja, agrícola, productos, puesto, caseta"
+        },
+        "aeroway/spaceport": {
+            "name": "Puerto espacial",
+            "terms": "cosmódromo, cosmodromo, centro de lanzamiento de cohetes, complejo de lanzamiento de cohetes, sitio de lanzamiento de cohetes, cohetes, puerto espacial"
         },
         "waterway/stream_intermittent": {
             "name": "Corriente intermitente",
@@ -393,6 +405,10 @@
             "name": "Acuario",
             "terms": "acuario público, peces, océano, agua"
         },
+        "man_made/manhole": {
+            "name": "Pozo de inspección",
+            "terms": "cubierta, agujero, alcantarillado, telecomunicaciones, boca de alcantarilla, registro"
+        },
         "type/site": {
             "name": "Sitio",
             "terms": "sitio, lugar, zona, emplazamiento, terreno, instalación, espacio, área"
@@ -433,6 +449,10 @@
             "name": "Torre de agua",
             "terms": "Depósito de agua elevado, tanque de agua, tanque, torre de agua"
         },
+        "shop/brewing_supplies": {
+            "name": "Tienda de suministros de cerveza",
+            "terms": "tienda de cerveza, tienda de suministros homebrew, homebrew"
+        },
         "railway/train_wash": {
             "name": "Instalación de lavado de trenes",
             "terms": "lavado, lavadero, limpieza, tren, ferroviario, ferrocarril"
@@ -440,6 +460,10 @@
         "shop/dry_cleaning": {
             "name": "Tintorería",
             "terms": "Tintorería"
+        },
+        "indoor/elevator": {
+            "name": "Hueco del ascensor",
+            "terms": "agujero del ascensor, ascensor"
         },
         "tourism/caravan_site": {
             "name": "Parque de autocaravanas",
@@ -559,6 +583,10 @@
             "name": "Radar de tráfico / Cámara de velocidad",
             "terms": "cámara de velocidad, camara de velocidad, radar de velocidad, radares de tráfico, cámara, camara, radar, tráfico, trafico, trampa, cámara de policía de tráfico, cámara de luz roja, fotomulta, radar de foto,  cámara de carril de autobús, límite velocidad, control velocidad, radar, fotorradar"
         },
+        "amenity/studio/radio": {
+            "name": "Estación de radio",
+            "terms": "radio am, radio fm, radiodifusión, estudio de radio,am, fm"
+        },
         "public_transport/station_monorail": {
             "name": "Estación de monorriel",
             "terms": "monorriel, transporte público, transporte publico, ferrocarril, tránsito, transporte"
@@ -590,6 +618,10 @@
         "amenity/townhall": {
             "name": "Ayuntamiento / Municipalidad",
             "terms": "ayuntamiento, alcaldía, municipio, municipalidad, municipal, concejo, consistorio, cabildo, gobierno local, gobierno municipal, alcalde, intendente, concejales, ediles, comuna, casa consistorial"
+        },
+        "shop/rental": {
+            "name": "Tienda de alquiler",
+            "terms": "alquilar, alquiler, vehículos, equipos"
         },
         "public_transport/stop_position_bus": {
             "name": "Ubicación de parada de autobús",
@@ -665,6 +697,10 @@
             "name": "Banco",
             "terms": "banco, bancario, cooperativa de ahorro y crédito, cooperativa de crédito, financiera, entidad bancaria"
         },
+        "highway/path/informal": {
+            "name": "Camino informal",
+            "terms": "rastro de contrabando, camino de vaca, línea de deseo, camino de deseo, línea deseada, camino deseado, camino de elefante, camino de juego, camino de cabra, camino de rebaño, camino de cerdos, acceso directo, atajo, camino social, rastro de uso, no planificado, deseado"
+        },
         "shop/outpost": {
             "name": "Puesto de venta minorista online",
             "terms": "en línea, recoger, retirar"
@@ -739,10 +775,6 @@
         "man_made/mast/communication/mobile_phone": {
             "name": "Mástil de telefonía móvil",
             "terms": "antena, mástil celular, mástil de teléfono celular, torre de telefonía celular, torre celular, mástil de comunicación, torre de comunicación, torre alzada, torre de telefonía móvil, mástil de transmisión, torre de transmisión"
-        },
-        "manhole/drain": {
-            "name": "Desagüe pluvial",
-            "terms": "Cubierta, tapa, desagüe, agujero, pozo, lluvia, alcantarillado, tormenta, boca de tormenta, alcantarillado pluvial"
         },
         "traffic_calming/island": {
             "name": "Isleta de tránsito",
@@ -967,6 +999,10 @@
             "name": "Fabricante de carteles",
             "terms": "fabricante, carteles, tiendas, negocios"
         },
+        "amenity/vending_machine/bread": {
+            "name": "Máquina expendedora de pan",
+            "terms": "baguette, pan"
+        },
         "boundary": {
             "name": "Límite"
         },
@@ -974,9 +1010,17 @@
             "name": "Tienda de suplementos nutricionales",
             "terms": "nutrición, suplementos, complementos, vitaminas, minerales, tienda, almacén, negocio"
         },
+        "amenity/studio/video": {
+            "name": "Estudio de cine",
+            "terms": "producción de cine, estudio de cine, producción de video, grabación de video, estudio de video"
+        },
         "craft/gardener": {
             "name": "Jardinero",
             "terms": "jardinero,  jardinería, jardín"
+        },
+        "indoor/stairs": {
+            "name": "Escalera interior",
+            "terms": "escalera, hueco de escalera, escalones"
         },
         "building/church": {
             "name": "Edificio iglesia",
@@ -1066,6 +1110,10 @@
             "name": "Tapicero",
             "terms": "Tapicero"
         },
+        "man_made/manhole/sewer": {
+            "name": "Pozo de desagüe",
+            "terms": "cubierta, desagüe, agujero, alcantarillado, pozo, inspección"
+        },
         "natural/glacier": {
             "name": "Glaciar",
             "terms": "glaciar, glaciares"
@@ -1073,6 +1121,10 @@
         "shop/storage_rental": {
             "name": "Alquiler de depósito",
             "terms": "almacenamiento, almacén, almacenaje, depósito, baulera, alquiler, renta, arrendamiento"
+        },
+        "barrier/bollard_line": {
+            "name": "Fila de bolardos",
+            "terms": "bolardo, poste"
         },
         "shop/fashion": {
             "name": "Tienda de moda"
@@ -1370,6 +1422,10 @@
             "name": "Mural",
             "terms": "mural, fresco"
         },
+        "highway/raceway/motocross": {
+            "name": "Pista de carreras de motocross",
+            "terms": "carreras off-road, motos offroad, circuito de motocross, circuito de motos, deportes de motor, motocross"
+        },
         "man_made/chimney": {
             "name": "Chimenea",
             "terms": "chimenea, fogón, fuego"
@@ -1525,6 +1581,10 @@
         "healthcare/alternative/chiropractic": {
             "name": "Quiropráctico",
             "terms": "Quiropráctico, dolor de espalda, espalda, columna"
+        },
+        "amenity/townhall/city": {
+            "name": "Municipalidad / Ayuntamiento",
+            "terms": "municipalidad, gobierno, alcalde, municipio, ayuntamiento, gobierno urbano, municipio"
         },
         "attraction/summer_toboggan": {
             "name": "Tobogán de verano",
@@ -1843,6 +1903,14 @@
         "emergency/no": {
             "name": "Acceso de emergencia no permitido"
         },
+        "man_made/manhole/drain": {
+            "name": "Desagüe pluvial",
+            "terms": "cubierta, drenaje, agujero, lluvia, alcantarillado, alcantarilla, boca de tormenta, desagüe pluvial, desague, Colector de aguas pluviales"
+        },
+        "man_made/manhole/telecom": {
+            "name": "Pozo de telecomunicaciones",
+            "terms": "cable, cubierta, teléfono, agujero, telecomunicaciones, pozo, inspección"
+        },
         "public_transport/stop_position_ferry": {
             "name": "Ubicación de parada de ferry",
             "terms": "punto detención, transporte público, tránsito, transporte, naval, marítimo, bote, barco, ferry, buque, lancha, muelle, dársena"
@@ -2051,10 +2119,6 @@
             "name": "Electricista",
             "terms": "electricista, iluminista, electricidad"
         },
-        "manhole/telecom": {
-            "name": "Pozo de telecomunicaciones",
-            "terms": "telecomunicaciones, teléfono, pozo, boca de inspección, pozo de registro, abertura, boca de acceso"
-        },
         "attraction/drop_tower": {
             "name": "Torre de caída",
             "terms": "torre de caída, pilar de caída, juego mecánico, juego de feria"
@@ -2090,6 +2154,10 @@
         "leisure/fitness_station/box": {
             "name": "Cajón para ejercicio",
             "terms": "cajón, cajon, caja, ejercicio, gimnasio, salto, saltar"
+        },
+        "amenity/fast_food/hot_dog": {
+            "name": "Comida rápida perro caliente",
+            "terms": "frankfurter, frank, puesto de perros calientes, sándwich, salchicha, wiener, perros calientes, perrito caliente, panchos"
         },
         "amenity/sanitary_dump_station": {
             "name": "Desecho de inodoro de casa rodante",
@@ -2181,6 +2249,10 @@
             "name": "Tienda general",
             "terms": "almacén, almacen, Tienda de pueblo"
         },
+        "amenity/studio/audio": {
+            "name": "Estudio de grabación",
+            "terms": "mezcla de audio, producción de audio, grabación de audio, estudio de audio, mezcla de sonido, producción de sonido, grabación de sonido, estudio de sonido"
+        },
         "building_part": {
             "name": "Parte de edificio",
             "terms": "Techo, edificios simples en 3D"
@@ -2220,6 +2292,10 @@
         "amenity/boat_rental": {
             "name": "Alquiler de barcos",
             "terms": "alquiler de botes"
+        },
+        "man_made/utility_pole": {
+            "name": "Poste de servicios públicos",
+            "terms": "poste, servicios, electricidad, teléfono, cable"
         },
         "amenity/place_of_worship/taoist": {
             "name": "Templo taoísta",
@@ -2425,8 +2501,8 @@
             "terms": "calle, residencial, urbanización, calle residencial, semipeatonal, zona residencial, zona 30, vía compartida"
         },
         "attraction/bumper_car": {
-            "name": "Autos chocadores",
-            "terms": "autos, carros, coches, chocadores, choque, locos, chocones, autos chocadores, autos chocones, autos locos, juego mecánico, juego de feria"
+            "name": "Coches de choque",
+            "terms": "atracción, atraccion, coche de choque, autos chocadores, autitos chocadores, carros chocones, parque de atracciones"
         },
         "attraction/roller_coaster": {
             "name": "Montaña rusa",
@@ -2869,10 +2945,6 @@
             "name": "Monumento grande",
             "terms": "monumento, monolito, obelisco, pirámide, estatua, túmulo, panteón, mausoleo, menhir, dolmen"
         },
-        "manhole": {
-            "name": "Pozo de inspección",
-            "terms": "Cubierta, tapa, agujero, alcantarillado, telecomunicaciones, pozo, sumidero, boca de alcantarilla, boca de inspección, pozo de registro, abertura, boca de acceso"
-        },
         "type/route/bicycle": {
             "name": "Ruta de bicicleta",
             "terms": "ruta ciclista, ciclovía, bicicarril, carril bici, ciclosenda, bicicleta, bicisenda, ciclopista"
@@ -2932,6 +3004,10 @@
         "healthcare/optometrist": {
             "name": "Optometrista",
             "terms": "Optometrista, ojo, vidrios, LASIK, lentes, visión"
+        },
+        "man_made/manhole/power": {
+            "name": "Pozo de red eléctrica",
+            "terms": "cubierta, agujero, eléctrico, electricidad, pozo, inspección"
         },
         "building/kindergarten": {
             "name": "Edificio de Preescolar / Jardín de infantes ",
@@ -3600,6 +3676,10 @@
             "name": "Línea de costa",
             "terms": "costa, litoral, playa, orilla, margen, línea de costa"
         },
+        "amenity/studio/television": {
+            "name": "Estación de televisión",
+            "terms": "transmisión de televisión, estudio de televisión, canal de televisión, estación de televisión, tv"
+        },
         "building/carport": {
             "name": "Cochera cubierta",
             "terms": "estacionamiento cubierto, garaje, coche, auto, vehículo, porche"
@@ -3621,8 +3701,8 @@
             "terms": "al aire libre, fuera de casa, exterior, excursión, campamento"
         },
         "highway/raceway": {
-            "name": "Pista de carreras (automovilismo)",
-            "terms": "circuito, pista, carrera, competición, automovilismo, autódromo, formula uno, formula 1, karting, motocross, nascar, bicicross"
+            "name": "Pista de carreras de automovilismo",
+            "terms": "auto*, fórmula uno, f1, kart, motocross, nascar, carrera, pista"
         },
         "emergency/designated": {
             "name": "Acceso de emergencia designado"
@@ -3739,6 +3819,10 @@
             "name": "Almacén al por mayor",
             "terms": "Almacén al por mayor, por mayor"
         },
+        "amenity/loading_dock": {
+            "name": "Muelle de carga",
+            "terms": "puerto, puerta, almacén, almacen, envío, envio, descarga, bahía de carga, bahia"
+        },
         "building/stadium": {
             "name": "Edificio del estadio",
             "terms": "Edificio del estadio, estadio"
@@ -3779,7 +3863,8 @@
             "terms": "detención, drenaje, desbordamiento, lluvia, retención"
         },
         "public_transport/platform/tram_point": {
-            "name": "Parada / Plataforma de tranvía"
+            "name": "Parada / Plataforma de tranvía",
+            "terms": "Eléctrico, tren ligero, plataforma, transporte público, ferrocarril, tranvía, pista, tránsito, transporte"
         },
         "amenity/fast_food/donut": {
             "name": "Comida rápida de rosquilla",
@@ -3816,6 +3901,10 @@
         "barrier/fence/railing": {
             "name": "Reja",
             "terms": "Reja, verja, barandilla"
+        },
+        "amenity/vending_machine/ice_cubes": {
+            "name": "Máquina expendedora de hielo",
+            "terms": "hielo, Cubitos de hielo"
         },
         "golf/hole": {
             "name": "Hoyo de golf",
@@ -3927,6 +4016,10 @@
         "amenity/vending_machine/public_transport_tickets": {
             "name": "Máquina expendedora del boleto de transporte",
             "terms": "ticket, boleto, recibo, transporte público, autobús, bus, colectivo, micro, guagua, expendedor"
+        },
+        "man_made/manhole/gas": {
+            "name": "Pozo de servicio de gas",
+            "terms": "cubierta, gas, calefacción, agujero, inspección, pozo"
         },
         "man_made/embankment": {
             "name": "Terraplén",
@@ -4294,8 +4387,8 @@
             "terms": "alfombra mágica, alfombra rodante, cinta transportadora"
         },
         "amenity/post_box": {
-            "name": "Buzón de correos",
-            "terms": "buzón, casillero, apartado, correo, carta, encomienda"
+            "name": "Buzón de correo",
+            "terms": "correo, buzón, paquetes, honguito"
         },
         "public_transport/station_tram": {
             "name": "Estación de tranvía",
@@ -4359,6 +4452,10 @@
             "name": "Tienda de enmarcación",
             "terms": "enmarcado, enmarcaciones, encuadrado, encuadre, marcos, cuadro"
         },
+        "amenity/weighbridge": {
+            "name": "Báscula de camiones",
+            "terms": "estación de pesaje, báscula"
+        },
         "barrier/kerb": {
             "name": "Bordillo/Cordón",
             "terms": "bordillo, acera, borde, cuneta, sardinel, cordón, vereda"
@@ -4406,6 +4503,10 @@
         "amenity/dive_centre": {
             "name": "Centro de buceo",
             "terms": "Centro de buceo, buceo"
+        },
+        "highway/raceway/karting": {
+            "name": "Pista de carreras de karting",
+            "terms": "karts, go karts, carreras de karts, pista de karting, automovilismo, superkarts, karting, kartódromos"
         },
         "amenity/vending_machine/feminine_hygiene": {
             "name": "Máquina expendedora de higiene femenina",
@@ -4473,6 +4574,10 @@
         "leisure/marina": {
             "name": "Puerto deportivo",
             "terms": "marina, puerto, embarcadero, puerto deportivo, dársena"
+        },
+        "man_made/manhole/water": {
+            "name": "Pozo de servicio de agua",
+            "terms": "cubierta, bebida, agujero, utilidad, agua, pozo, inspección"
         },
         "craft/tailor": {
             "name": "Sastre"
@@ -4693,6 +4798,10 @@
             "name": "Estación de ambulancias",
             "terms": "Estación de ambulancia, ambulacias"
         },
+        "barrier/wall/noise_barrier": {
+            "name": "Barrera de ruido",
+            "terms": "barrera acústica, muro de ruido, pared de ruido, barrera de sonido, berma de sonido, muro de sonido"
+        },
         "healthcare/podiatrist": {
             "name": "Podólogo",
             "terms": "Podólogo, pie, pies, uñas"
@@ -4813,8 +4922,8 @@
             "terms": "artesano, artesanía, destreza manual, trabajos manuales"
         },
         "landuse/construction": {
-            "name": "Área en construcción",
-            "terms": "construcción, obras, excavaciones, edificaciones, instalaciones"
+            "name": "Área de construcción",
+            "terms": "edificio, excavadora, sitio de construcción, zona de construcción, grúa, demolición, desarrollo, infraestructura, construcción"
         },
         "shop/trade": {
             "name": "Tienda de comercio / Corralón",
