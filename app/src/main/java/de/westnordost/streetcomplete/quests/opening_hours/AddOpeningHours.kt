@@ -28,7 +28,7 @@ class AddOpeningHours (o: OverpassMapDataDao) : SimpleOverpassQuestType<OpeningH
             "amenity" to arrayOf(
                 // common
                 "restaurant", "cafe", "ice_cream", "fast_food", "bar", "pub", "biergarten", "food_court", "nightclub", // eat & drink
-                "cinema", "planetarium", "casino", "arts_centre",                                                      // amenities
+                "cinema", "planetarium", "casino",                                                                     // amenities
                 "townhall", "courthouse", "embassy", "community_centre", "youth_centre", "library",                    // civic
                 // not ATM because too often it's simply 24/7 and too often it is confused with
                 // a bank that might be just next door because the app does not tell the user what

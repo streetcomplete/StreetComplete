@@ -25,17 +25,17 @@ class AddWheelchairAccessBusiness(o: OverpassMapDataDao) : SimpleOverpassQuestTy
             "amenity" to arrayOf(
                 // common
                 "restaurant", "cafe", "ice_cream", "fast_food", "bar", "pub", "biergarten", "food_court", "nightclub", // eat & drink
-                "cinema", "planetarium", "casino", "arts_centre",                                                      // amenities
+                "cinema", "planetarium", "casino",                                                                     // amenities
                 "townhall", "courthouse", "embassy", "community_centre", "youth_centre", "library",                    // civic
                 "bank", /*atm,*/ "bureau_de_change", "money_transfer", "post_office", "marketplace", "internet_cafe",  // commercial
                 "car_wash", "car_rental", "boat_rental", "fuel",                                                       // car stuff
                 "dentist", "doctors", "clinic", "pharmacy", "veterinary",                                              // health
 
                 // wheelchair only
-                "theatre", "conference_centre",
+                "theatre", "conference_centre", "arts_centre",
                 "police", "ranger_station","prison",
-                "kindergarten", "school", "college", "university", "research_institute",                                                // education
-                "driving_school", "dive_centre", "language_school", "music_school",                                                     // learning
+                "kindergarten", "school", "college", "university", "research_institute",                               // education
+                "driving_school", "dive_centre", "language_school", "music_school",                                    // learning
                 "ferry_terminal",
                 "place_of_worship",
                 "hospital"

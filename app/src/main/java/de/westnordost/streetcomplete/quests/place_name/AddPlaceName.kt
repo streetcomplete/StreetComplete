@@ -36,14 +36,14 @@ class AddPlaceName(
             "amenity" to arrayOf(
                 // common
                 "restaurant", "cafe", "ice_cream", "fast_food", "bar", "pub", "biergarten", "food_court", "nightclub", // eat & drink
-                "cinema", "planetarium", "casino", "arts_centre",                                                      // amenities
+                "cinema", "planetarium", "casino",                                                                     // amenities
                 "townhall", "courthouse", "embassy", "community_centre", "youth_centre", "library",                    // civic
                 "bank", /*atm,*/ "bureau_de_change", "money_transfer", "post_office", "marketplace", "internet_cafe",  // commercial
                 "car_wash", "car_rental", "boat_rental", "fuel",                                                       // car stuff
                 "dentist", "doctors", "clinic", "pharmacy", "veterinary",                                              // health
 
                 //name only
-                "theatre", "studio",                                                               // culture
+                "theatre", "studio", "arts_centre",                                                 // culture
                 "events_venue", "conference_centre", "exhibition_centre", "music_venue",            // events
                 "prison", "police", "fire_station", "ranger_station",                               // civic
                 "social_facility", "nursing_home", "childcare", "retirement_home", "social_centre", // social
