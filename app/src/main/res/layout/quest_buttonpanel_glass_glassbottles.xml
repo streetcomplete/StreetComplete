@@ -15,6 +15,6 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         style="@style/BottomSheetButtonBarItem"
-        android:text="@string/quest_recycling_type_glass_bottles" />
+        android:text="@string/quest_recycling_type_glass_bottles_short" />
 
 </merge>
