@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.quests.recycling_glass.RecyclingGlass.*
 
 
 class DetermineRecyclingGlassForm : AbstractQuestAnswerFragment<RecyclingGlass>() {
+    override val contentLayoutResId = R.layout.quest_determine_recycling_glass_explanation
 
     override val buttonsResId = R.layout.quest_buttonpanel_glass_glassbottles
 
