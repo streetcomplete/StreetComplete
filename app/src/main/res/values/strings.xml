@@ -706,6 +706,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_recycling_type_scrap_metal">Scrap metal</string>
     <string name="quest_recycling_type_any_glass">Any glass</string>
     <string name="quest_recycling_glass_title">Can only glass bottles and jars be recycled here, or any type of glass?</string>
-    <string name="quest_determineRecyclingGlass_description_any_glass">Examples of glass that is often not accepted is such glass as from window panes, glassware, light bulbs or mirrors.</string>
+    <string name="quest_determineRecyclingGlass_description_any_glass">Examples of glass that is often not accepted: tempered glass, window panes, glassware, light bulbs or mirrors.</string>
 
 </resources>
