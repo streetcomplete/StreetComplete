@@ -80,7 +80,8 @@ class ShowQuestFormsActivity : AppCompatActivity(), OsmQuestAnswerListener {
         val lng = Double.fromBits(prefs.getLong(Prefs.MAP_LONGITUDE, 0.0.toBits()))
         val pos = OsmLatLon(lat, lng)
         val elementGeometry = ElementPointGeometry(pos)
-        val element = OsmNode(1, 1, pos, mapOf("highway" to "cycleway", "building" to "residential"))
+        val tags =  mapOf("highway" to "cycleway", "building" to "residential", "name" to "<object name>")
+        val element = OsmNode(1, 1, pos, tags)
 
         val f = questType.createForm()
         val args = QuestAnswerComponent.createArguments(1, QuestGroup.OSM)
