@@ -12,11 +12,11 @@ internal constructor(overpassServer: OverpassMapDataDao, dateString: String) :
     private val date: Date = DateUtil.basicISO8601().parse(dateString)
 
     override fun getCurrentDateString(): String {
-        return DateUtil.getOffsetDateStringFromDate(0, date) + "T00:00:00Z"
+        return DateUtil.getOffsetDateStringFromDate(0, date)
     }
 
     override fun getOffsetDateString(offset: Int): String {
-        return DateUtil.getOffsetDateStringFromDate(offset, date) + "T00:00:00Z"
+        return DateUtil.getOffsetDateStringFromDate(offset, date)
     }
 
 }

@@ -7,11 +7,13 @@ import de.westnordost.streetcomplete.quests.DateUtil
 
 abstract class AMarkCompletedConstruction<T> : OsmElementQuestType<T> {
 
+    // this function exists to allow setting date in tests
     protected open fun getCurrentDateString() =
-        DateUtil.getCurrentDateString() + "T00:00:00Z"
+        DateUtil.getCurrentDateString()
 
+    // this function exists to allow setting date in tests
     protected open fun getOffsetDateString(offset: Int) =
-        DateUtil.getOffsetDateString(offset) + "T00:00:00Z"
+        DateUtil.getOffsetDateString(offset)
 
     // Note that newer segment will ensure that any edit,
     // including adding or updating review marker like check_date or survey:date tags
