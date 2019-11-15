@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.housenumber
+package de.westnordost.streetcomplete.quests.address
 
 import android.util.Log
 
@@ -21,7 +21,7 @@ import de.westnordost.streetcomplete.util.SphericalEarthMath
 
 class AddHousenumber(private val overpass: OverpassMapDataDao) : OsmElementQuestType<HousenumberAnswer> {
 
-    override val commitMessage = "Add housenumbers"
+    override val commitMessage = "Add address"
     override val icon = R.drawable.ic_quest_housenumber
 
     // See overview here: https://ent8r.github.io/blacklistr/?streetcomplete=housenumber/AddHousenumber.kt

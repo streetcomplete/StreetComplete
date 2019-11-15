@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.housenumber
+package de.westnordost.streetcomplete.quests.address
 
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog

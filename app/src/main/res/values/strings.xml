@@ -677,6 +677,8 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="about_contributing">Your answers are directly improving OpenStreetMap. Contributed data is open, everyone can use it. Many great projects are already using it.</string>
     <string name="about_missing_stars">Currently, the star count is not shared across devices, but answers are added directly to the OpenStreetMap database.</string>
     <string name="how_to_get_stars">Choose one of the markers on the map and answer the question. This way you will improve OpenStreetMap data and get stars. If you see no markers you may need to zoom out the map.</string>
+    <string name="quest_address_street_title">What is the street of this address?</string>
+    <string name="quest_address_street_no_named_streets">This address has no assigned named street</string>
     <string name="quest_cyclewayPartSurface_title">What\'s the surface of the cycleway here?</string>
     <string name="quest_footwayPartSurface_title">What\'s the surface of the footway here?</string>
     <string name="quest_generic_answer_differs_along_the_way">"Differs along the way…"</string>

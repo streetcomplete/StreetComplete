@@ -12,6 +12,7 @@ import de.westnordost.streetcomplete.data.QuestType;
 import de.westnordost.streetcomplete.data.QuestTypeRegistry;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestType;
+import de.westnordost.streetcomplete.quests.address.AddAddressStreet;
 import de.westnordost.streetcomplete.quests.baby_changing_table.AddBabyChangingTable;
 import de.westnordost.streetcomplete.quests.bike_parking_capacity.AddBikeParkingCapacity;
 import de.westnordost.streetcomplete.quests.bike_parking_cover.AddBikeParkingCover;
@@ -67,7 +68,7 @@ import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingCross
 import de.westnordost.streetcomplete.quests.toilet_availability.AddToiletAvailability;
 import de.westnordost.streetcomplete.quests.toilets_fee.AddToiletsFee;
 import de.westnordost.streetcomplete.quests.tracktype.AddTracktype;
-import de.westnordost.streetcomplete.quests.housenumber.AddHousenumber;
+import de.westnordost.streetcomplete.quests.address.AddHousenumber;
 import de.westnordost.streetcomplete.quests.max_speed.AddMaxSpeed;
 import de.westnordost.streetcomplete.quests.opening_hours.AddOpeningHours;
 import de.westnordost.streetcomplete.quests.localized_name.AddRoadName;
@@ -107,6 +108,7 @@ public class QuestModule
 				new AddBusStopName(o),
 				new AddIsBuildingUnderground(o), //to avoid asking AddHousenumber and other for underground buildings
 				new AddHousenumber(o),
+				new AddAddressStreet(o),
 				new MarkCompletedHighwayConstruction(o),
 				new AddReligionToPlaceOfWorship(o), // icons on maps are different - OSM Carto, mapy.cz, OsmAnd, Sputnik etc
 				new AddParkingAccess(o), //OSM Carto, mapy.cz, OSMand, Sputnik etc
