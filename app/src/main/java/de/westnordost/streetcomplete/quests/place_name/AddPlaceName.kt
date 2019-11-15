@@ -103,7 +103,7 @@ class AddPlaceName(
     override val icon = R.drawable.ic_quest_label
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_placeName_title_name
-    override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>) = arrayOf(featureName.value)
+    override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>) = if (featureName.value == null) arrayOf() else arrayOf(featureName.value!!)
 
     override fun download(bbox: BoundingBox, handler: MapDataWithGeometryHandler): Boolean {
         val overpassQuery = bbox.toGlobalOverpassBBox() + "\n" + filter.toOverpassQLString() + getQuestPrintStatement()
