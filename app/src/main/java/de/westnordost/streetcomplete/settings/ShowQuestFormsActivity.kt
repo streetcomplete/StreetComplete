@@ -71,7 +71,7 @@ class ShowQuestFormsActivity : AppCompatActivity(), OsmQuestAnswerListener {
         private inner class ViewHolder(itemView: View) : ListAdapter.ViewHolder<QuestType<*>>(itemView) {
             override fun onBind(with: QuestType<*>) {
                 itemView.questIcon.setImageResource(with.icon)
-                itemView.questTitle.text = itemView.resources.getString(with.title, "…")
+                itemView.questTitle.text = genericQuestTitle(itemView, with)
                 itemView.setOnClickListener { onClickQuestType(with) }
             }
         }
