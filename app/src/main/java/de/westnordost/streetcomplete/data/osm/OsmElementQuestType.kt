@@ -8,7 +8,7 @@ import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandle
 
 interface OsmElementQuestType<T> : QuestType<T> {
 
-    fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String?> {
+    fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> {
         val name = tags["name"] ?: tags["brand"]
         return if (name != null) arrayOf(name) else arrayOf()
     }
