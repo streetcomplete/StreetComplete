@@ -11,6 +11,9 @@ object DateUtil {
 
     fun basicISO8601() = SimpleDateFormat("yyyy-MM-dd", Locale.US)
 
+    /**
+     * negative offsetInDays returns dates from past, positive from future
+     */
     fun getOffsetDateStringFromDate(offsetInDays: Int, date: Date): String {
         val modifiedCalendar = Calendar.getInstance()
         modifiedCalendar.time = date
@@ -18,6 +21,9 @@ object DateUtil {
         return basicISO8601().format(modifiedCalendar.time)
     }
 
+    /**
+     * negative offsetInDays returns dates from past, positive from future
+     */
     fun getOffsetDateString(offsetInDays: Int) =
         getOffsetDateStringFromDate(offsetInDays, Calendar.getInstance().time)
 }
