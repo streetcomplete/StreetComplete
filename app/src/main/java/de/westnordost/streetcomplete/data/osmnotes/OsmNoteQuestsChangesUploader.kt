@@ -47,7 +47,7 @@ class OsmNoteQuestsChangesUploader @Inject constructor(
                 Log.d(TAG, "Uploaded note comment ${quest.logString}")
                 uploadedChangeListener?.onUploaded()
                 created++
-                AttachPhotoUtils.deleteImages(quest.imagePaths)
+                deleteImages(quest.imagePaths)
             } catch (e: ConflictException) {
                 questDB.delete(quest.id!!)
                 noteDB.delete(quest.note.id)
@@ -55,7 +55,7 @@ class OsmNoteQuestsChangesUploader @Inject constructor(
                 Log.d(TAG, "Dropped note comment ${quest.logString}: ${e.message}")
                 uploadedChangeListener?.onDiscarded()
                 obsolete++
-                AttachPhotoUtils.deleteImages(quest.imagePaths)
+                deleteImages(quest.imagePaths)
             } catch (e: ImageUploadException) {
                 Log.e(TAG, "Error uploading image attached to note comment ${quest.logString}", e)
             }

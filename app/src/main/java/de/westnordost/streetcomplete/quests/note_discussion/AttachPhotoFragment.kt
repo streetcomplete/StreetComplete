@@ -22,15 +22,15 @@ import java.io.IOException
 import java.util.ArrayList
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osmnotes.AttachPhotoUtils
 
 import android.app.Activity.RESULT_OK
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.ApplicationConstants.*
+import de.westnordost.streetcomplete.data.osmnotes.deleteImages
 import de.westnordost.streetcomplete.ktx.toast
 import de.westnordost.streetcomplete.util.AdapterDataChangedWatcher
-import de.westnordost.streetcomplete.util.BitmapFactoryUtils
+import de.westnordost.streetcomplete.util.decodeScaledBitmapAndNormalize
 import kotlinx.android.synthetic.main.fragment_attach_photo.*
 
 class AttachPhotoFragment : Fragment() {
@@ -126,7 +126,7 @@ class AttachPhotoFragment : Fragment() {
             if (resultCode == RESULT_OK) {
                 try {
                     val path = currentImagePath!!
-                    val bitmap = BitmapFactoryUtils.decodeScaledBitmapAndNormalize(path, ATTACH_PHOTO_MAXWIDTH, ATTACH_PHOTO_MAXHEIGHT) ?: throw IOException()
+                    val bitmap = decodeScaledBitmapAndNormalize(path, ATTACH_PHOTO_MAXWIDTH, ATTACH_PHOTO_MAXHEIGHT) ?: throw IOException()
                     val out = FileOutputStream(path)
                     bitmap.compress(Bitmap.CompressFormat.JPEG, ATTACH_PHOTO_QUALITY, out)
 
@@ -160,7 +160,7 @@ class AttachPhotoFragment : Fragment() {
     }
 
     fun deleteImages() {
-        AttachPhotoUtils.deleteImages(imagePaths)
+        deleteImages(imagePaths)
     }
 
     companion object {

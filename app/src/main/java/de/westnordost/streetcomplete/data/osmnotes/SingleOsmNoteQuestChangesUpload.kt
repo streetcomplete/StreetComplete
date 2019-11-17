@@ -16,7 +16,7 @@ class SingleOsmNoteQuestChangesUpload @Inject constructor(
 
     fun upload(quest: OsmNoteQuest): Note {
         try {
-            val attachedPhotosText = AttachPhotoUtils.uploadAndGetAttachedPhotosText(imageUploader, quest.imagePaths)
+            val attachedPhotosText = uploadAndGetAttachedPhotosText(imageUploader, quest.imagePaths)
             val newNote = osmDao.comment(quest.note.id, quest.comment + attachedPhotosText)
             if (!quest.imagePaths.isNullOrEmpty()) {
                 activateImages(newNote.id)

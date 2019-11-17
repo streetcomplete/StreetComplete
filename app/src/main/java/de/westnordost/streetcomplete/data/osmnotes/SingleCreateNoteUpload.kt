@@ -31,7 +31,7 @@ class SingleCreateNoteUpload @Inject constructor(
     }
 
     private fun createNote(n: CreateNote): Note {
-        val attachedPhotosText = AttachPhotoUtils.uploadAndGetAttachedPhotosText(imageUploader, n.imagePaths)
+        val attachedPhotosText = uploadAndGetAttachedPhotosText(imageUploader, n.imagePaths)
         val result = osmDao.create(n.position, n.fullNoteText + attachedPhotosText)
         if (!n.imagePaths.isNullOrEmpty()) {
             activateImages(result.id)
@@ -42,7 +42,7 @@ class SingleCreateNoteUpload @Inject constructor(
     private fun commentNote(note: Note, text: String, attachedImagePaths: List<String>?): Note {
         return if (note.isOpen) {
             try {
-                val attachedPhotosText = AttachPhotoUtils.uploadAndGetAttachedPhotosText(imageUploader, attachedImagePaths)
+                val attachedPhotosText = uploadAndGetAttachedPhotosText(imageUploader, attachedImagePaths)
                 val result = osmDao.comment(note.id, text + attachedPhotosText)
                 if (!attachedImagePaths.isNullOrEmpty()) {
                     activateImages(result.id)

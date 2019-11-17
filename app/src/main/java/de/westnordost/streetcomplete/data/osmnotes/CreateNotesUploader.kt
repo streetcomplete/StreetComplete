@@ -52,13 +52,13 @@ class CreateNotesUploader @Inject constructor(
                 uploadedChangeListener?.onUploaded()
                 created++
                 createNoteDB.delete(createNote.id!!)
-                AttachPhotoUtils.deleteImages(createNote.imagePaths)
+                deleteImages(createNote.imagePaths)
             } catch (e: ConflictException) {
                 Log.d(TAG, "Dropped note ${createNote.logString}: ${e.message}")
                 uploadedChangeListener?.onDiscarded()
                 obsolete++
                 createNoteDB.delete(createNote.id!!)
-                AttachPhotoUtils.deleteImages(createNote.imagePaths)
+                deleteImages(createNote.imagePaths)
             } catch (e: ImageUploadException) {
                 Log.e(TAG, "Error uploading image attached to note ${createNote.logString}", e)
             }
