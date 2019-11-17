@@ -1,5 +1,9 @@
 {
     "presets": {
+        "amenity/parking/park_ride": {
+            "name": "Pendelparkeringsplats",
+            "terms": "Pendelparkeringsplats, Pendelparkering, pendlarparkering, Parkering, parkeringsplats, p-plats, parkeringsområde, bilparkering, bil, infartsparkering, pendling, pendlare"
+        },
         "shop/caravan": {
             "name": "Husvagnsförsäljare",
             "terms": "Husvagnsförsäljare, husbilsförsäljare, husvagn, husbil, tältvagn"
@@ -26,6 +30,10 @@
         "craft/dressmaker": {
             "name": "Sömmerska",
             "terms": "Sömmerska, skräddare, Dressmaker, Klädsömmare, sömnad, sy, kvinnokläder, kläder, klädtillverkning, klänning"
+        },
+        "military/nuclear_explosion_site": {
+            "name": "Område för kärnvapenprov",
+            "terms": "Område för kärnvapenprov, kärnvapenprov, kärnvapen, vapentest"
         },
         "barrier/lift_gate": {
             "name": "Bom",
@@ -64,6 +72,10 @@
         "amenity/waste_disposal": {
             "name": "Soptunna (hushålls- eller industrisopor)",
             "terms": "Soptunna, avfallstunna, sopkärl, sopor, hushållssopor, industrisopor, avfall, avfallskärl, avfallskontainer"
+        },
+        "amenity/post_depot": {
+            "name": "Postsorteringskontor",
+            "terms": "Postsorteringskontor, post, postsortering, sortering, postdistribution, postterminal, brev, brevsortering, brevdistribution"
         },
         "type/restriction/only_right_turn": {
             "name": "Enbart högersväng",
@@ -106,7 +118,7 @@
         },
         "aeroway/runway": {
             "name": "Start- och landningsbana",
-            "terms": "Startbana, landningsbana, rullbana, landa, landning"
+            "terms": "Startbana, landningsbana, rullbana, landa, landning, RWY, landningsfällt, flygplats, flyg"
         },
         "amenity/studio": {
             "name": "Studio",
@@ -152,6 +164,10 @@
             "name": "Administrativ gräns",
             "terms": "Gräns, administrativ gräns, gränslinje"
         },
+        "historic/memorial/plaque": {
+            "name": "Minnestavla",
+            "terms": "Minnestavla, Jubileumsplatta, minne, inskription"
+        },
         "man_made/surveillance": {
             "name": "Övervakning",
             "terms": "Övervakning, övervakningskamera, övervakningsutrustning, kamera, bevakning, bevakningskamera, bevakning, bevakningskamera"
@@ -163,6 +179,10 @@
         "leisure/pitch/american_football": {
             "name": "Plan för amerikansk fotboll",
             "terms": "Amerikansk fotboll, Amerikansk fotbollsplan, football"
+        },
+        "historic/manor": {
+            "name": "Herrgård",
+            "terms": "herrgård, Mansion, herrskap, adel, egendom, gods, herresäte, slot"
         },
         "leisure/fitness_station/horizontal_ladder": {
             "name": "Armgång",
@@ -275,6 +295,10 @@
             "name": "Hårfrisör",
             "terms": "Hårfrisör, frisör, hår, hårklippning, hårtvätt, rakning, hårfärgning, skägg, hårförlängning, skönhet, skönhetssalong, salong, barberare, stylist, hårkreatör, hårkonstnär"
         },
+        "building/houseboat": {
+            "name": "Husbåt",
+            "terms": "Husbåt, båt, hem, bostad"
+        },
         "building/school": {
             "name": "Skolbyggnad",
             "terms": "Skolbyggnad, skola, läroanstalt, undervisningsanstalt, lärosäte, grundskola, gymnasium, folkhögskola, läroverk, skolhus, skolväsen, undervisning, utbildning, mellanstadium, lågstadium, högstadium, komvux"
@@ -352,6 +376,10 @@
         "allotments/plot": {
             "name": "Kolonilott",
             "terms": "Kolonilott, lott, täppa, koloniträdgård, odlingslott, koloniområde, koloni"
+        },
+        "historic/castle/palace": {
+            "name": "Palats",
+            "terms": "palats, slott, borg, château, palä, residens, praktfull byggnad, kunglig bostad, kunglig, kung, drottning, borg"
         },
         "tourism/aquarium": {
             "name": "Akvarium",
@@ -471,6 +499,10 @@
             "name": "Minigolf",
             "terms": "Minigolf, bangolf, miniatyrgolf, äventyrsgolf"
         },
+        "tourism/zoo/petting": {
+            "name": "Barn-zoo",
+            "terms": "barn-zoo, klapp-zoo, zoo, djurpark, lantgårdsdjur, klappa, barn, djur, mini-zoo, minidjurpark, barndjurpark"
+        },
         "amenity/vending_machine/ice_cream": {
             "name": "Glassautomat",
             "terms": "Glassautomat, glass, isglass, Varuautomat, varumaskin"
@@ -507,6 +539,10 @@
             "name": "Fartkamera",
             "terms": "Fartkamera, fartkontroll, Trafiksäkerhetskamera, hastighetskamera"
         },
+        "amenity/studio/radio": {
+            "name": "Radiostation",
+            "terms": "Radiostation, radio, am, fm, radiosändning, sändning, radiostudio, studio"
+        },
         "public_transport/station_monorail": {
             "name": "Monorailstation",
             "terms": "monorailstation, station, terminal, monorail, plattform, räls, spår, kollektivtrafik, linjetrafik, enskensbana, balkbana, transport"
@@ -539,6 +575,10 @@
             "name": "Kommunhus",
             "terms": "Stadshus, förvaltning, myndighet, ämbetsverk, representation, fullmäktige, riksdag, parlament, kommunalhus, samlingsplats, folkets hus, samlingslokal, by, stad, kommunstyrelse, domstolsbyggnad, kommun"
         },
+        "shop/rental": {
+            "name": "Hyrbutik",
+            "terms": "Hyrbutik, hyra, uthyrning, låna"
+        },
         "public_transport/stop_position_bus": {
             "name": "Stopposition för buss",
             "terms": "Stopposition för buss, stopposition, buss, kollektivtrafik, linjetrafik, transport, hållplats, busshållplats, busstopp, bussterminal"
@@ -569,6 +609,10 @@
         "amenity/biergarten": {
             "name": "Ölträdgård",
             "terms": "ölträdgård, Biergarten, uteservering, servering, ölcafé, utecafé, trädgårdspub, utepub, pub, öl, sprit, utebar, trädgårdsbar, bar, krog"
+        },
+        "amenity/karaoke": {
+            "name": "Kkaraoke box",
+            "terms": "karaoke box,  karaoke,  karaokeklubb,  karaoke-klubb, karaokerum,  karaoke-rum,  karaoke-tv, KTV"
         },
         "amenity/vending_machine/elongated_coin": {
             "name": "Elongated coin-maskin (myntpressmaskin)",
@@ -663,10 +707,6 @@
         "man_made/mast/communication/mobile_phone": {
             "name": "Mobilmast",
             "terms": "mast, antenn, mobilmast, mobilantenn,  mobiltelefon, kommunikationsmast, kommunikationstorn, transmissionsmast, överföringstorn, överföringsmast"
-        },
-        "manhole/drain": {
-            "name": "Dagvattenbrunn",
-            "terms": "Dagvatten, dagvattenbrunn, dränering, regn, regnvatten, dagbrunn, avlopp, avloppsvatten, avloppsbrunn, smältvatten, spillvatten, avrinning"
         },
         "traffic_calming/island": {
             "name": "Refug",
@@ -807,6 +847,10 @@
             "name": "Nödtelefon",
             "terms": "Nödtelefon, brandtelefon"
         },
+        "shop/clothes/underwear": {
+            "name": "Underklädersaffär",
+            "terms": "Underklädersaffär, underkläder, bh, trosor, kalsonger, mode, underklänning, sockar, strumpor, lingeri, damunderkläder"
+        },
         "amenity/place_of_worship/jewish": {
             "name": "Judisk synagoga",
             "terms": "Synagoga, tempel, gudshus, bönehus, böneplats, missionshus, dom, katedral, helgedom, gudstjänstlokal,tro, religion, helgedom, Jude, Judendom, judisk, tillbedjan, predikan"
@@ -822,6 +866,10 @@
         "aerialway/cable_car": {
             "name": "Kabinbana",
             "terms": "Kabinbana, pendelbana, linbana"
+        },
+        "craft/floorer": {
+            "name": "Golvläggare",
+            "terms": "Golvläggare, golv, mattläggare, parkett, heltäckningsmatta, matta"
         },
         "landuse/military/airfield": {
             "name": "Militär flygfält",
@@ -866,9 +914,17 @@
             "name": "Hälsokost",
             "terms": "Hälsokost, hälsa, viktminskning, hälsoprodukter, vitaminer, mineraler, hälsoörter"
         },
+        "amenity/studio/video": {
+            "name": "Filmstudio",
+            "terms": "Filmstudio, film, filmproduktion, video, videoproduktion, videoinspelning, filminspelning"
+        },
         "craft/gardener": {
             "name": "Trädgårdsmästare",
             "terms": "Trädgårdsmästare, trädgård, handelsträdgård, landskapsarkitekt"
+        },
+        "indoor/stairs": {
+            "name": "Inomhustrappa",
+            "terms": "Inomhustrappa, trappa, trapp, trappor, trappuppgång, trappnedgång, trapphus, steg"
         },
         "building/church": {
             "name": "Kyrkobyggnad",
@@ -905,6 +961,9 @@
         "natural/wetland": {
             "name": "Våtmark",
             "terms": "Våtmark, sankmark, myr, sump, kärr, mosse, torvmark, sumpmark, träsk, moras, mad"
+        },
+        "leisure/track/cycling_point": {
+            "name": "Tävlingsbana (Cykel)"
         },
         "landuse/military/naval_base": {
             "name": "Marinbas",
@@ -997,6 +1056,10 @@
             "name": "Katedral",
             "terms": "Katedral, domkyrka, biskop, dom, biskopskyrka, kyrka, Huvudkyrka, stiftskyrka, andligt område, basilika, dyrkan, fristad, gud, guds hus, gudshus, gudstjänst, helgedom, kloster, kristen, kristendom, kyrkbyggnad, kyrkobyggnad, kyrkogård, kyrkorum, kyrksal, predikan, religion, religiös, religiös anläggning, religiöst område, tillbedjan, tro, vallfärdsort, vallfärgsplats"
         },
+        "aeroway/jet_bridge": {
+            "name": "Ombordstigningsbrygga",
+            "terms": "Ombordstigningsbrygga, jet bridge, jetbridge, landgång, gate, PBB, skybridge, embarkeringsbrygga, landgång, brygga, passagerarbrygga"
+        },
         "office/notary": {
             "name": "Notarie",
             "terms": "Notariekontor, Notarie, Notarius, Notarius publicus, signatur, fullmakt, namnteckning, påskrift, underskrift, bevittna, testamente, arv, handlingar, kontrakt, avtal, egendom, dödsbo, värdehandlningar"
@@ -1028,6 +1091,10 @@
         "traffic_calming/hump": {
             "name": "Normalt fartgupp",
             "terms": "Cirkulärt gupp, GP-gupp, Wattska guppet, Wattgupp, standardgupp, normalt fartgupp, puckel, fartpuckel, gupp, farthinder, fartgupp"
+        },
+        "amenity/place_of_worship/christian/jehovahs_witness": {
+            "name": "Rikets sal för Jehovas vittne",
+            "terms": "Rikets sal för Jehovas vittne, Rikets sal, jehovas vittne, kristen, kristendom, kyrka, guds hus, bönehus, hus för tillbedjan, bön, tillbedjan"
         },
         "man_made/clearcut": {
             "name": "Kalhygge",
@@ -1103,6 +1170,10 @@
             "name": "Häck",
             "terms": "Häck, buskar"
         },
+        "shop/swimming_pool": {
+            "name": "Butik för pooltillbehör",
+            "terms": "Pooltillbehörsbutik, badtunna, poolbutik, poolutrustningsbutik, poolinstallationsbutik, poolunderhållsbutik, poolbutikleveransbutik´, poolinstallation, poolunderhåll, poolservice, pool, basäng, jacussy"
+        },
         "shop/kitchen": {
             "name": "Köksinredning",
             "terms": "Köksinredning, kök, bänkskivor, köksskåp, skåpluckor"
@@ -1138,6 +1209,10 @@
         "leisure/common": {
             "name": "Allmänning",
             "terms": "Allmänning, allmän mark, fritt tillträde, öppet område"
+        },
+        "amenity/parking/underground": {
+            "name": "Underjordisk parkering",
+            "terms": "Underjordisk parkering, parkering, parkeringsplats, p-plats, parkeringsområde, bilparkering, Underjordisk, fordonsparkering, parkeringshus, parkeringsgarage"
         },
         "type/route/horse": {
             "name": "Hästspår",
@@ -1214,6 +1289,10 @@
             "name": "Väggmålning",
             "terms": "väggmålning, mural, fresco, målning"
         },
+        "highway/raceway/motocross": {
+            "name": "Motocrossbana",
+            "terms": "Motocrossbana, motorcross, off road-bana, off-road, off road, motorcykelbana, motorsport"
+        },
         "man_made/chimney": {
             "name": "Skorsten",
             "terms": "skorsten, rökgång"
@@ -1257,6 +1336,10 @@
         "aerialway/drag_lift": {
             "name": "Släplift",
             "terms": "Släplift, Draglift, skidlift, lift, linbana"
+        },
+        "amenity/letter_box": {
+            "name": "Postlåda",
+            "terms": "Postlåda, brevinkast, brevlåda, postlucka"
         },
         "bridge/support/pier": {
             "name": "Stödpelare",
@@ -1350,6 +1433,10 @@
         },
         "junction/jughandle": {
             "name": "Spansk sväng"
+        },
+        "shop/printer_ink": {
+            "name": "Butik för skrivarbläck",
+            "terms": "Butik för skrivarbläck, kopieringsbläck, skrivarbläck, faxbläck, bläck, skrivartoner, toner, skrivare, kopiator, fax"
         },
         "attraction/pirate_ship": {
             "name": "Båtgunga",
@@ -1478,6 +1565,10 @@
             "name": "Välgörenhetsorganisation",
             "terms": "Välgörenhetsorganisation, Välgörenhet, hjälpverksamhet, bistånd, biståndsorganisation"
         },
+        "landuse/winter_sports": {
+            "name": "Vintersportområde",
+            "terms": "Vintersportområde, vintersport, pist, pistområde, skidområde, skidbacke, skidort, snöbrädesområde, snowboardområde, skidor, alpint, snowboard, skidåkning"
+        },
         "office/foundation": {
             "name": "Stiftelse",
             "terms": "Stiftelse, fond, donation"
@@ -1526,6 +1617,10 @@
             "name": "Mellanstor stad",
             "terms": "stad, samhälle, ort"
         },
+        "amenity/place_of_worship/christian/la_luz_del_mundo": {
+            "name": "La Luz del Mundo-tempel",
+            "terms": "La Luz del Mundo-tempel, La Luz del Mundo, tempel, kristen, kristendom, kyrka, guds hus, bönehus, hus för bön, the light of the world-kyrka, världens ljuskyrka"
+        },
         "highway/tertiary_link": {
             "name": "Anslutning, tertiär väg",
             "terms": "Anslutning, påfart, avfart, länsväg, huvudgata, tertiär väg"
@@ -1569,6 +1664,10 @@
         "power/minor_line": {
             "name": "Mindre kraftledning",
             "terms": "Kraftledning, elledning"
+        },
+        "shop/hobby": {
+            "name": "Hobbyaffär",
+            "terms": "Hobbyaffär, hobby, manga, model, modellbygge, modellflyg, modelljärnväg"
         },
         "amenity/social_facility/nursing_home": {
             "name": "Seniorboende",
@@ -1687,6 +1786,10 @@
             "name": "Stadsport",
             "terms": "Stadsport, ringmur, port"
         },
+        "tourism/zoo/safari": {
+            "name": "Safaridjurpark",
+            "terms": "Safaripark, safari, genomkörningsdjurpark, djurpark, zoo, safaridjurpark"
+        },
         "shop/watches": {
             "name": "Klockaffär",
             "terms": "Klockaffär, klockbutik, urbutik, uraffär, ur, klocka , klockor"
@@ -1713,6 +1816,10 @@
             "name": "Snabbmat – Fish & Chips",
             "terms": "Snabbmat, skräpmat, gatuköksmat, bukfylla, junk-food, gatukök, restaurang, takeaway, hämtmat, drive-in, mat, äta, grill, lunch, Fish & chips, Fish and chips, fisk och chips"
         },
+        "amenity/bicycle_parking/building": {
+            "name": "Cykelparkeringsgarage",
+            "terms": "Cykelparkeringsgarage, cykelparkering, cykel, parkering, garage, flervåningscykelparkering, flervåningscykelgarage"
+        },
         "barrier/toll_booth": {
             "name": "Tullstation",
             "terms": "Tullstation, införselavgift, importavgift, skatt,  tullhus, tullmyndighet, gränstull, tullkontroll, tullvisitation, vägavgift"
@@ -1731,6 +1838,10 @@
         },
         "aerialway": {
             "name": "Linbana"
+        },
+        "amenity/bicycle_parking/lockers": {
+            "name": "Cykellås",
+            "terms": "Cykellås, cykel, lås, fastlåsning, fastlåsning av cykel"
         },
         "amenity/nightclub": {
             "name": "Nattklubb",
@@ -1780,6 +1891,10 @@
             "name": "Flyttfirma",
             "terms": "Flyttfirma, flyttning, transport, flytt, flyttlass,flyttkarl,bärare,"
         },
+        "tourism/artwork/graffiti": {
+            "name": "Graffiti",
+            "terms": "Graffiti, gatukonst, graffitikonst, kladd, klotter, spray, sprayfärg"
+        },
         "highway/bridleway": {
             "name": "Ridväg",
             "terms": "Ridväg, ridstig, häst, rida, ridning, ryttare,"
@@ -1820,6 +1935,9 @@
             "name": "Rastplats",
             "terms": "Rastplats, bensinstation"
         },
+        "leisure/pitch/horseshoes": {
+            "name": "Kasta hästsko"
+        },
         "amenity/vending_machine/stamps": {
             "name": "Frimärksautomat",
             "terms": "Frimärksautomat, frimärke, frankering, frankeringsautomat, porto, post, brev, vykort, Varuautomat, varumaskin"
@@ -1835,10 +1953,6 @@
         "craft/electrician": {
             "name": "Elektriker",
             "terms": "Elektriker, elmontör, elreparatör, montör, el, elmontör, starkströmsmontör, systembyggare, kabeldragning, elkraft"
-        },
-        "manhole/telecom": {
-            "name": "Manhålslucka för telekom",
-            "terms": "Manhålslucka för telekom, gatubrunn, brunn, telekom, telefoni, manhålslucka, Brunnslock, manlucka, manhål, tele, tele-brunn"
         },
         "attraction/drop_tower": {
             "name": "Fritt fall",
@@ -1875,6 +1989,10 @@
         "leisure/fitness_station/box": {
             "name": "Träningsplattform/trapsteg",
             "terms": "låda, hoppövning, plattform, hopp, träning, fitness, gym, utomhusgym, utegym, naturgym, motion"
+        },
+        "amenity/fast_food/hot_dog": {
+            "name": "Snabbmat – Korv med bröd",
+            "terms": "Korv med bröd, snabbmat, korv, korvbröd, varmkorv"
         },
         "amenity/sanitary_dump_station": {
             "name": "Latrintömning för campingfordon",
@@ -1930,6 +2048,9 @@
         "amenity/embassy": {
             "name": "Ambassad"
         },
+        "leisure/track/cycling": {
+            "name": "Tävlingsbana (Cykel)"
+        },
         "place/islet": {
             "name": "Holme",
             "terms": "holme, skärgård, atoll, ö, rev, kobbe, liten ö, skär,  grynna, havsklippa, grund"
@@ -1954,6 +2075,10 @@
             "name": "Vattensport/simning ",
             "terms": "Vattensport, simning, badkläder"
         },
+        "shop/general": {
+            "name": "Generell affär",
+            "terms": "Generell affär, byaffär"
+        },
         "building_part": {
             "name": "Byggnadsdel",
             "terms": "byggnadsdel, tak, enkla 3D-byggnader, 3D"
@@ -1961,6 +2086,10 @@
         "shop/lottery": {
             "name": "Lotteri",
             "terms": "Lotteri, lottdragning, bingospel, hasardspel, hasard, tombola, lottförsäljningen, lottstånd"
+        },
+        "amenity/dressing_room": {
+            "name": "Omklädningsrum",
+            "terms": "Omklädningsrum, omklädning, ombyte, påklädning, påklädningsrum, loge, avklädning, avklädningsrum"
         },
         "leisure/dog_park": {
             "name": "Hundpark",
@@ -2084,6 +2213,10 @@
             "name": "Yogastudio",
             "terms": "Yogastudio, Yoga studio, meditation, joga"
         },
+        "tourism/zoo/wildlife": {
+            "name": "Vilddjurspark",
+            "terms": "Vilddjurspark, vilddjur, djurpark, zoo, inhemska djur"
+        },
         "leisure/track/running": {
             "name": "Tävlingsbana (Löpning)",
             "terms": "Tävlingsbana, Löpning, kapplöpningsbana, löpbana, löparbana, sprint, språng, springa"
@@ -2164,10 +2297,6 @@
         "highway/living_street": {
             "name": "Gångfartsområde",
             "terms": "Gångfartsområde, gårdsgata, torg"
-        },
-        "attraction/bumper_car": {
-            "name": "Radiobilar",
-            "terms": "Radiobilar, radiobil, nöjespark, temapark, tivoli, åkattraktion"
         },
         "attraction/roller_coaster": {
             "name": "Berg- och dalbana",
@@ -2293,6 +2422,10 @@
             "name": "Riggare",
             "terms": "Riggare, tackling, rigg, segel, segelfartyg, mast, tågvirke, segelbåt"
         },
+        "military/checkpoint": {
+            "name": "Kontrollpunkt",
+            "terms": "Kontrollpunkt, kontrollstation, militär kontroll, luftvapen, luftförsvar, militär, armé, bas, flotta, marin, soldat, krig, försvar, trupp, vakt"
+        },
         "man_made/water_works": {
             "name": "Vattenverk",
             "terms": "Vattenverk, vattenreningsanläggning, vattenreningsverk,\nvattenanläggning, vatten"
@@ -2381,6 +2514,9 @@
         "type/route/ferry": {
             "name": "Färjerutt",
             "terms": "Färjerutt, båtrutt, båtlinjetrafik"
+        },
+        "ford_line": {
+            "name": "Vadställe"
         },
         "emergency": {
             "name": "Nödutrustning"
@@ -2519,6 +2655,10 @@
             "name": "Tunnelbaneingång",
             "terms": "Tunnelbaneingång, tunnelbanenergång, t-baneingång, t-banenedgång"
         },
+        "aeroway/windsock": {
+            "name": "Vindstrut",
+            "terms": "vindstrut, vindmätning, strut, vind, vindriktning, vindstyrka"
+        },
         "emergency/fire_extinguisher": {
             "name": "Brandsläckare",
             "terms": "Brandsläckare, Brandpost, brand, vattenpost, brandsläckning, vattenpost, brandslang, eldsläckare, handbrandsläckare, skumsläckare, pulversläckare, vattensläckare, kolsyresläckare, koldioxidsläckare"
@@ -2538,6 +2678,10 @@
         "craft/scaffolder": {
             "name": "Ställningsbyggare",
             "terms": "Ställningsbyggare, byggnadsställning, ställning"
+        },
+        "public_transport/platform/ferry": {
+            "name": "Färjeplattform",
+            "terms": "färjeplattform, plattform, stopp, båtstopp, färjestopp, båthållplats, Färjeterminal, terminal, färja, båtterminal, båthållplats, Färjehållplats, Färjestation, båt, brygga, pir, kollektivtrafik, linjetrafik, station, transit, transport"
         },
         "shop/locksmith": {
             "name": "Låssmed",
@@ -2563,10 +2707,6 @@
             "name": "Monument",
             "terms": "monument, Minnesmärke, monument"
         },
-        "manhole": {
-            "name": "Gatubrunn",
-            "terms": "Gatubrunn, brunn, dagvattenbrunn, dagvatten, avlopp, telekom, telefoni, manhålslucka, Brunnslock, manlucka, manhål, avloppsbrunn, a-brunn, Brandpost, Rensbrunn"
-        },
         "type/route/bicycle": {
             "name": "Cykelrutt",
             "terms": "Cykelrutt, cykelled, cykelförbindelse, cykelnät"
@@ -2590,6 +2730,10 @@
         "historic": {
             "name": "Historisk plats",
             "terms": "Historisk plats, historia, arv, historik"
+        },
+        "aeroway/holding_position": {
+            "name": "Väntplats för flygplan",
+            "terms": "Väntplats för flygplan, väntplats, holding, holding position, ILS, MLS"
         },
         "type/enforcement": {
             "name": "Trafiksäkerhetsutrustning",
@@ -2615,6 +2759,10 @@
             "name": "Korridor inomhus",
             "terms": "Korridor inomhus, inomhuskorridor, korridor, inomhus, gång,förbindelsegång, gångpassage"
         },
+        "amenity/events_venue": {
+            "name": "Evenemangsplats/festlokal",
+            "terms": "evenemangsplats, festlokal, evenemangslokal, festplats, bankettsal, dop, födelsedag, fest, konferens, konfirmation, möten, möteslokal, bröllop"
+        },
         "healthcare/optometrist": {
             "name": "Optometri (ögon)",
             "terms": "Optometri, Optometrier , ögon, glasögon, ögonlaser, linser, syn, synfel, korrektionsglas, synhjälpmedel"
@@ -2626,6 +2774,9 @@
         "indoor/room": {
             "name": "Rum",
             "terms": "Rum, inomhusrum, cell, kammare, foajé, lobby"
+        },
+        "amenity/fast_food/ice_cream": {
+            "name": "Snabbmat – Glass"
         },
         "leisure/playground": {
             "name": "Lekplats",
@@ -2659,6 +2810,10 @@
             "name": "Permanent vallokal",
             "terms": "vallokal, valurna, valsedel, val, rösta, röstning, folkomröstning, omröstning, röstmaskin, valmaskin, omröstningsapparat, valbås"
         },
+        "amenity/toilets/disposal/flush": {
+            "name": "Vattentoalett",
+            "terms": "Vattentoalett, toalett, spoltoalett, badrum, WC"
+        },
         "highway/service/parking_aisle": {
             "name": "Parkeringsväg",
             "terms": "Parkeringsväg, parkeringsplats, parkeringsgata"
@@ -2682,6 +2837,10 @@
         "waterway/boatyard": {
             "name": "Båtvarv",
             "terms": "Båtvarv, varv, båtställplats, vinterförvaring,uppläggningsplats"
+        },
+        "man_made/mineshaft": {
+            "name": "Gruvschakt",
+            "terms": "Gruvschakt, gruva, grotta, tunnel, underjordisk, gruvgång"
         },
         "power/line": {
             "name": "Högspänningsledning",
@@ -2810,6 +2969,10 @@
             "name": "Frivilligorganisation",
             "terms": "Frivilligorganisation, Frivillig, volontär, frivilligarbetare,  biståndsarbetare, förening, ideell, icke vinstdrivande, organisation, samhälle"
         },
+        "amenity/bicycle_parking/shed": {
+            "name": "Cykelskydd",
+            "terms": "Cykelskydd, cykel, cykelparkering, cykelparkeringsskydd, cykeltak, tak, cykelparkeringstak"
+        },
         "highway/services": {
             "name": "Rastplats med försäljning",
             "terms": "Rastplats, restaurang, bensinstation, vägmat, snabbmat"
@@ -2865,9 +3028,17 @@
             "name": "Milsten",
             "terms": "Milsten, milstolpe, Väghållningsten, postament"
         },
+        "tourism/information/route_marker": {
+            "name": "Spårmarkör",
+            "terms": "Spårmarkör, ledmarkör, stigmarkör, ruttmarkör, spår, led, stig, rutt, ruttflagga, stenhög, vägmarkör, vandringsled, vandring, skoterled, skidled, ridled"
+        },
         "leisure/bleachers": {
             "name": "Läktare",
             "terms": "läktare, åskådarplats, åskådare, publik, sittplats, bänk,  sport"
+        },
+        "amenity/social_centre": {
+            "name": "Medborgarhus",
+            "terms": "Medborgarhus, allaktivitetshus, lokal, kulturverksamhet, kultur, kulturskola, möteslokal, möte, nöje, utbildning, kurser, kurs, föreningslokal, föreningsgård, folkets park, evenemang, event, fest, förening, förbund, musikskola"
         },
         "amenity/bar": {
             "name": "Bar",
@@ -2938,6 +3109,10 @@
         },
         "building_point": {
             "name": "Byggnad"
+        },
+        "shop/cannabis": {
+            "name": "Cannabisaffär",
+            "terms": "Cannabisaffär, Cannabis, 420, marijuana,pot,reefer,weed"
         },
         "leisure/pitch/boules": {
             "name": "Boule/Bocce-plan",
@@ -3184,6 +3359,14 @@
             "name": "Fisk- och skaldjursrestaurang",
             "terms": "Restaurang, matservering, matställe, servering, restauration, näringsställe, grillbar, bar, krog, värdshus, pub, bodega, brasserie, rotisseri, pizzeria, kafé, cafeteria, sylta, café. matsal, kaffe, lunch, Fisk- och skaldjursrestaurang, fiskerestaurang, skaldjursrestaurang, seafood, fisk, skaldjur, blötdjur, kräftdjur, musslor, ostron, hummer, krabba, krabbor, räkor, bläckfisk"
         },
+        "amenity/recycling/container/electrical_items": {
+            "name": "Elektronikskrot",
+            "terms": "Elektronikskrot, datorer, elektroniskt avfall, elektronikåtervinning, telefoner, surfplattor, elskrot, elektronik, återvinning, återbruk, återvinningsstation"
+        },
+        "tourism/information/terminal": {
+            "name": "Informationsterminal",
+            "terms": "Informationsterminal, terminal, information, informationskälla, turistbyrå, turistkartor, karta, informationskarta, infokarta"
+        },
         "public_transport/station_train": {
             "name": "Järnvägsstation",
             "terms": "Järnvägsstation, centralstation, central, huvudbangård, tågstation, järnvägshållplats, tåghållplats, trafikplats, hållställe, linjeplats, hållplats,"
@@ -3215,6 +3398,10 @@
             "name": "Kustlinje",
             "terms": "kustlinje, kustremsa, kust, hav, ö, strand, kust"
         },
+        "amenity/studio/television": {
+            "name": "TV-studio",
+            "terms": "TV-studio, TV, television, TV-sändning, TV-station, studio"
+        },
         "building/carport": {
             "name": "Carport",
             "terms": "Carport, biltak, garage, övertäckt parkering, parkering, bilparkering"
@@ -3237,7 +3424,7 @@
         },
         "highway/raceway": {
             "name": "Motorracerbana",
-            "terms": "racerbana, motorracerbana, motorbana, tävlingsbana, motortävling, rally, rallybana, kappkörning, gokart, go-kart, tävlingsbana"
+            "terms": "racerbana, motorracerbana, motorbana, tävlingsbana, motortävling, rally, rallybana, kappkörning, gokart, go-kart, tävlingsbana, bil*, formula one, F1, F-1, race*"
         },
         "emergency/designated": {
             "name": "Åtkomst för utryckningsfordon – Avsedd för"
@@ -3257,6 +3444,10 @@
         "leisure/beach_resort": {
             "name": "Strandresort",
             "terms": "Strandresort, strand, Resort, turistanläggning, hotellanläggning, semesterresort, semesteranläggning, rekreationsort, kurort, badort, turist, turism, hotell"
+        },
+        "shop/lighting": {
+            "name": "Belysningsbutik",
+            "terms": "Belysningsbutik, belysning, lampor, LED, glödlampor"
         },
         "amenity/vending_machine/drinks": {
             "name": "Dryckesautomat ",
@@ -3287,6 +3478,10 @@
         "emergency/defibrillator": {
             "name": "Defibrillator",
             "terms": "Defibrillator, hjärtstartare, hjärthjälp"
+        },
+        "historic/castle/stately": {
+            "name": "Château",
+            "terms": "Château, slott, adel, palats, palä, slottsvin, vingård, vinslott, praktfull byggnad, residens, borg"
         },
         "aeroway/helipad": {
             "name": "Helikopterplatta",
@@ -3330,6 +3525,10 @@
             "name": "Grosistaffär",
             "terms": "grosist, Grosistaffär, Partihandel, grosshandel, grossistverksamhet, grosshandel, engros, mängdhandel, grossistlager, lagerklubb, grossistklubb"
         },
+        "amenity/loading_dock": {
+            "name": "Lastkaj",
+            "terms": "lastkaj, lastbrygga, gods, lastning, utlastning, inlastning, dörr, frakt, fraktbrygga, lagerhus, lager"
+        },
         "building/stadium": {
             "name": "Stadionbyggnad",
             "terms": "stadium, Stadion, arena, Stadionbyggnad, arenabyggnad, byggnad, stadion, friidrottsstadion"
@@ -3366,7 +3565,12 @@
             "terms": "avrinning, avrinningsområde, bassäng, infiltration, infiltrering, dagvatten, dagvattenbassäng"
         },
         "public_transport/platform/tram_point": {
-            "name": "Spårvagnshållplats / -plattform"
+            "name": "Spårvagnshållplats / -plattform",
+            "terms": "Spårvägshållplats, spårvagnshållplats, hållplats, spårvagnsplattform, plattform, spårvagn, spårväg, spårvagnsterminal, terminal, järnväg, kollektivtrafik, kollektivtrafik, vagn, transit, transport"
+        },
+        "amenity/fast_food/donut": {
+            "name": "Snabbmat – Munkar",
+            "terms": "Snabbmat, skräpmat, gatuköksmat, bukfylla, junk-food, gatukök, restaurang, takeaway, hämtmat, drive-in, mat, äta, munk, munkar, donut, frukost, brunch, café, kaffe"
         },
         "building/transportation": {
             "name": "Byggnad för kollektivtrafik",
@@ -3478,7 +3682,11 @@
         },
         "aeroway/taxiway": {
             "name": "Taxibana",
-            "terms": "Taxibana, transportbana, flygplansväg, transportsträcka"
+            "terms": "Taxibana, transportbana, flygplansväg, transportsträcka,Taxiway"
+        },
+        "amenity/prep_school": {
+            "name": "Pluggskola",
+            "terms": "Kvälsskola, pluggskola, läxhjälp, akademisk, läxa, matematik, läsning, testförberedelse, handledning, skrivning"
         },
         "craft/optician": {
             "name": "Optiker"
@@ -3636,6 +3844,10 @@
             "name": "Hed",
             "terms": "hed, äng, gräs, slättmark, slätt, tundra, stäpp, alvar, kalmark"
         },
+        "aeroway/parking_position": {
+            "name": "Parkeringsplats för flygplan",
+            "terms": "Parkeringsplats för flygplan, flyg, flygplan, parkering, flygparkering"
+        },
         "amenity/fast_food/kebab": {
             "name": "Snabbmat – Kebab",
             "terms": "Snabbmat, skräpmat, gatuköksmat, bukfylla, junk-food, gatukök, restaurang, takeaway, hämtmat, drive-in, mat, äta, grill, lunch, kebab"
@@ -3662,6 +3874,9 @@
         "historic/wreck": {
             "name": "Skeppsvrak",
             "terms": "Skeppsvrak, vrak, skrov, mast, skepp, båt"
+        },
+        "leisure/pitch/shuffleboard": {
+            "name": "Shuffleboardbana"
         },
         "club/sport": {
             "name": "Idrottsklubb",
@@ -3743,8 +3958,12 @@
             "terms": "alkohol,bourbon,sprit,brandy,gin,sprit,mezcal,spritdryck,rom,scotch,sprit,tequila,vodka,whisky,whisky, Destilleri, spritdestillering, hembränning, alkoholdestillering, sprittillverkning, alkoholtillverkning"
         },
         "aeroway/apron": {
-            "name": "Parkering av flygplan (Apron)",
+            "name": "Parkering för flygplan (Apron)",
             "terms": "Flygplansparkering, flygplansplatta, flygplatsplatta, flygparkering, parkering av flygplan, parkering av plan, apron"
+        },
+        "historic/castle/fortress": {
+            "name": "Historisk fästning",
+            "terms": "Historiskt fort, historisk fästning, slott, borg, militär, citadell, fästning, historisk fäste, fästning, befästning, försvar, skans, bunker, befästningsverk, fortifikation, ringmur"
         },
         "shop/tattoo": {
             "name": "Tatueringsstudio",
@@ -3769,6 +3988,10 @@
         "shop/optician": {
             "name": "Optiker",
             "terms": "Optiker, synundersökning, glasögon, linser, ögon"
+        },
+        "leisure/track/running_point": {
+            "name": "Tävlingsbana (Löpning)",
+            "terms": "Tävlingsbana, Löpning, kapplöpningsbana, löpbana, löparbana, sprint, språng, springa"
         },
         "type/route/foot": {
             "name": "Vandringsled",
@@ -3802,6 +4025,9 @@
             "name": "Brewpub",
             "terms": "Brewpub, alkohol, drink, öl, sprit, hantverksbryggeri, mikrobryggeri, bryggeri, ölframställning, öltillverkning, bar, pub"
         },
+        "leisure/pitch/field_hockey": {
+            "name": "Landhockeyplan"
+        },
         "amenity/recycling": {
             "name": "Återvinning"
         },
@@ -3823,10 +4049,6 @@
         "aerialway/magic_carpet": {
             "name": "Rullband",
             "terms": "Rullband, släplift, skidliften, lift, magisk matta"
-        },
-        "amenity/post_box": {
-            "name": "Postlåda",
-            "terms": "Brevlåda, postlåda, brevinkast, brev, post"
         },
         "public_transport/station_tram": {
             "name": "Spårvagnsstation",
@@ -3875,6 +4097,10 @@
             "name": "Plattsättare",
             "terms": "Plattläggare, golvläggare, plattsättare"
         },
+        "leisure/track/horse_racing_point": {
+            "name": "Tävlingsbana (Hästkapplöpning)",
+            "terms": "Hästkapplöpningsbana, Hästkapplöpning, kapplöpningsbana, häst, kapplöpning, trav, galopp"
+        },
         "indoor": {
             "name": "Inomhusobjekt"
         },
@@ -3918,6 +4144,10 @@
             "name": "Affär för elektroniska cigaretter",
             "terms": "Affär för elektroniska cigaretter, e-cigarett, elektrisk cigarett, elcigarett"
         },
+        "historic/fort": {
+            "name": "Historiskt fort",
+            "terms": "Historiskt fort, historisk fästning, slott, borg, militär, citadell, fästning, historisk fäste, fästning, befästning, försvar, skans, bunker, befästningsverk, fortifikation"
+        },
         "tourism/wilderness_hut": {
             "name": "Stuga (för vandrare o.d.)",
             "terms": "Stuga (för vandrare o.d.), stuga, fjällstuga, fjällstation, koja, skydd, hydda, kyffe, barack, vildmarksstuga, vandring, hajk, övernattning, Ödestuga"
@@ -3925,6 +4155,10 @@
         "amenity/dive_centre": {
             "name": "Dykcenter",
             "terms": "Dykcenter, dykare, dykning, scuba, grodman, sportdykare, sportdykning"
+        },
+        "highway/raceway/karting": {
+            "name": "Kartingbana (Gokart)",
+            "terms": "Kartingbana, karting, Gokart, go kart, kart, karting, motorsport"
         },
         "amenity/vending_machine/feminine_hygiene": {
             "name": "Varumaskin för mensskydd",
@@ -3945,6 +4179,10 @@
         "amenity/bicycle_rental": {
             "name": "Cykeluthyrning",
             "terms": "Cykeluthyrning, cykellån, cykelleasing, lånecykel, hyrcykel, cykel"
+        },
+        "shop/boat": {
+            "name": "Båtaffär",
+            "terms": "Båtaffär, fiskebåt, jetski, jet-ski, vattenskoter, motorboat, eka, roddbåt, segelbåt, segel, båt, båttillbehör"
         },
         "shop/gift": {
             "name": "Presentbutik",
@@ -4003,6 +4241,10 @@
         "barrier/gate": {
             "name": "Grind",
             "terms": "Grind"
+        },
+        "amenity/conference_centre": {
+            "name": "Kongresscenter",
+            "terms": "Kongresscenter, Kongresshall, auditorium , konferens, utställning, föreläsning, mässa, mässhall, mässcenter"
         },
         "shop/motorcycle": {
             "name": "Återförsäljare av motorcyklar",
@@ -4094,6 +4336,10 @@
             "name": "Äventyrsbad / Vattenpark",
             "terms": "Äventyrsbad, Vattenpark, vattenlekpark, vattenland"
         },
+        "tourism/camp_pitch": {
+            "name": "Tältplats/husvagnsplats",
+            "terms": "Tältplats, husvagnsplats, camping, Campingplats, camping, husvagn, tält"
+        },
         "shop/sewing": {
             "name": "Sybutik",
             "terms": "sybutik. sömnadsbutik, sy, sömnad, nå, tråd, tyg, garn, symaskin"
@@ -4105,6 +4351,10 @@
         "landuse/meadow": {
             "name": "Äng",
             "terms": "Äng, slåttermark"
+        },
+        "military/office": {
+            "name": "Militärkontor",
+            "terms": "militärkontor, flygvapen, armé, bas, värva, flotta, marin, rekrytera, rekrytering, soldat, krig, militär, försvar, befälskontor"
         },
         "shop/convenience": {
             "name": "Närbutik",
@@ -4168,6 +4418,10 @@
             "name": "Dricksvatten för djur",
             "terms": "dricksvatten för djur, vattenhåll, vattenkar, dricksvatten, djur, djurutfodring, utfodring"
         },
+        "tourism/artwork/bust": {
+            "name": "Byst",
+            "terms": "byst, figur, staty"
+        },
         "public_transport/station_train_halt": {
             "name": "Mindre järnvägshållplats",
             "terms": "Mindre järnvägshållplats, järnvägshållplats, hållplats, järnvägsstation, station, plattform, avstigning, påstigning, kollektivtrafik, järnväg, spår, tåg, transit, transport, hållställe"
@@ -4196,6 +4450,10 @@
             "name": "Fordonsbesiktning",
             "terms": "Bilprovning, bilprovningen, Bilbesiktning, besiktning, Fordonsbesiktning, bilinspektion, fordonsinspektion,"
         },
+        "amenity/recycling/container/green_waste": {
+            "name": "Komposterbart",
+            "terms": "Komposterbart, Trädgårdsavfall, biologiskt nedbrytbart, biologiskt, kompost, nedbrytbart, sopor, trädgårdsavfall, organiskt, skräp, matavfall, trädgård"
+        },
         "amenity/kindergarten": {
             "name": "Förskoleområde",
             "terms": "Förskola, dagis, daghem, lekskola, kindergarten, lekis, lekplats,"
@@ -4203,6 +4461,10 @@
         "man_made/tower/observation": {
             "name": "Utkikstorn",
             "terms": "Utkikstorn, utsiktstorn, observationstorn, utsiktspost, observationspost, brandtorn"
+        },
+        "tourism/artwork/installation": {
+            "name": "Konstinstallation",
+            "terms": "Konstinstallation, interaktiv konst, modern konst, konst, installation, kultur"
         },
         "waterway/weir": {
             "name": "Damm",
@@ -4251,6 +4513,10 @@
             "name": "Situp-ramp",
             "terms": "träning, träna, fitness, gym, utomhusgym, utegym, naturgym, motion, situp, sit up, sit-up, crunch, Sit-up-ramp. situp-ramp"
         },
+        "amenity/place_of_worship/christian/quaker": {
+            "name": "Kväkarevännernas möteshus",
+            "terms": "Kväkare, Vännernas samfund, Kväkarevännernas möteshus, kristen, kristendom, guds hus, bönehus, hus för bön"
+        },
         "public_transport/station_subway": {
             "name": "Tunnelbanestation",
             "terms": "Tunnelbanestation,  tunnelbana, metro, , kollektivtrafik, järnväg, spår, transport, tunnelbana, underjordisk, station, terminal"
@@ -4282,10 +4548,6 @@
         "craft/handicraft": {
             "name": "Hantverk",
             "terms": "Hantverkare, hantverk, konsthantverk, slöjd, handarbete, hantverk, snideri, sömnad, hemslöjd, vävning, textil, vävstuga, snickeri"
-        },
-        "landuse/construction": {
-            "name": "Byggarbetsplats",
-            "terms": "Byggarbetsplats, bygge, Byggnad under konstruktion, Byggnad under uppförande, byggarbete,  byggnation, byggnadsplats"
         },
         "shop/trade": {
             "name": "Proffshandel",

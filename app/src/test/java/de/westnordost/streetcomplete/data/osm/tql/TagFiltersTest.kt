@@ -92,6 +92,21 @@ class HasTagValueLikeTest {
         assertFalse(like.matches(mapOf()))
     }
 
+    @Test fun `groups values properly`() {
+        val like = HasTagValueLike("highway", "residential|unclassified")
+
+        assertEquals("highway ~ '^(residential|unclassified)$'",like.toOverpassQLString())
+    }
+
+    @Test fun `key value to string`() {
+        val eq = HasTagValueLike("highway", ".*")
+        assertEquals("highway ~ '^(.*)$'", eq.toOverpassQLString())
+    }
+
+}
+
+class NotHasTagValueLikeTest {
+
     @Test fun `matches not like dot`() {
         val notlike = NotHasTagValueLike("highway", ".*")
 
@@ -107,14 +122,15 @@ class HasTagValueLikeTest {
         assertTrue(notlike.matches(mapOf()))
     }
 
-    @Test fun `key value to string`() {
-        val eq = HasTagValueLike("highway", ".*")
-        assertEquals("highway ~ '^.*$'", eq.toOverpassQLString())
+    @Test fun `groups values properly`() {
+        val like = NotHasTagValueLike("highway", "residential|unclassified")
+
+        assertEquals("highway !~ '^(residential|unclassified)$'",like.toOverpassQLString())
     }
 
     @Test fun `key not value to string`() {
         val neq = NotHasTagValueLike("highway", ".*")
-        assertEquals("highway !~ '^.*$'", neq.toOverpassQLString())
+        assertEquals("highway !~ '^(.*)$'", neq.toOverpassQLString())
     }
 }
 
@@ -134,6 +150,6 @@ class HasTagLikeTest {
 
     @Test fun `to string`() {
         val eq = HasTagLike(".ame", "y.s")
-        assertEquals("~'^.ame$' ~ '^y.s$'", eq.toOverpassQLString())
+        assertEquals("~'^(.ame)$' ~ '^(y.s)$'", eq.toOverpassQLString())
     }
 }

@@ -343,7 +343,6 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="quest_crossing_type_unmarked">"Passadeira sem qualquer tipo de marcação"</string>
     <string name="compass_north_one_letter">"N"</string>
     <string name="action_undo">"Desfazer"</string>
-    <string name="no_changes_to_undo">"Nada a desfazer"</string>
     <string name="undo_confirm_title">"Desfazer a última resposta?"</string>
     <string name="produce_mangosteen">"Mangostim"</string>
     <string name="produce_tomatoes">"Tomates"</string>
@@ -366,6 +365,8 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="quest_buildingLevels_roofLevelsLabel2">"nº de pisos do telhado"</string>
     <string name="quest_buildingLevels_levelsLabel2">"nº de pisos (sem o telhado)"</string>
     <string name="pref_title_authorized_summary">"Autorizado"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingLevels_answer_multipleLevels">"Difere em diferentes partes do edifício"</string>
     <string name="quest_buildingLevels_answer_description">"Neste caso, coloque o valor da parte mais alta do edifício"</string>
     <string name="unglue_hint">"Tocar para deslocar a visualização"</string>
@@ -648,4 +649,17 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="theme_dark">"Escuro"</string>
     <string name="theme_system_default">"Padrão do sistema"</string>
     <string name="quest_placeName_title_name">"Qual é o nome deste local? (%s)"</string>
+    <string name="action_open_location">"Abrir a localização noutra app"</string>
+    <string name="map_application_missing">"Não há outra app de mapas instalada"</string>
+    <string name="pref_title_overpass_url_select">"Alterar servidor Overpass"</string>
+    <string name="pref_title_overpass_url_info">"Requer que a app seja reiniciada. Pode contornar a censura, como por exemplo na Rússia"</string>
+    <string name="label_housenumber">"número de porta"</string>
+    <string name="label_blocknumber">"número do bloco"</string>
+    <string name="quest_busStopShelter_covered">"Toda a paragem é coberta"</string>
+    <string name="quest_ferry_pedestrian_name_title">"%s transporta passageiros em pé?"</string>
+    <string name="quest_ferry_pedestrian_title">"Esta rota de ferry transporta passageiros em pé?"</string>
+    <string name="quest_ferry_motor_vehicle_name_title">"%s transporto veículos motorizados?"</string>
+    <string name="quest_ferry_motor_vehicle_title">"Esta rota de ferry transporta veículos motorizados?"</string>
+    <string name="quest_leave_new_note_photos_are_useful">"Adicionar uma foto, fará com que a sua nota seja ainda mais útil."</string>
+    <string name="oauth_remove_authorization_confirmation">"Remover"</string>
 </resources>

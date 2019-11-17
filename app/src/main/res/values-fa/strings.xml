@@ -396,7 +396,6 @@
     <string name="quest_crossing_type_unmarked">"تقاطع بدون علائم در مسیر"</string>
     <string name="compass_north_one_letter">"شمال"</string>
     <string name="action_undo">"برگشت"</string>
-    <string name="no_changes_to_undo">"موردی برای لغو نیست"</string>
     <string name="undo_confirm_title">"برگشت برای مشاهده آخرین پاسخ؟"</string>
     <string name="produce_mangosteen">"ترگیل"</string>
     <string name="produce_tomatoes">"گوجه فرنگی"</string>
@@ -419,6 +418,8 @@
     <string name="quest_buildingLevels_roofLevelsLabel2">"طبقات دارای پشت بام"</string>
     <string name="quest_buildingLevels_levelsLabel2">"طبقات بدون پشت بام"</string>
     <string name="pref_title_authorized_summary">"اختیاری"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingLevels_answer_multipleLevels">"متفاوت در هر بخش از ساختمان"</string>
     <string name="quest_buildingLevels_answer_description">"در این بخش ، ارتفاع این قسمت از ساختمان را وارد نمایید"</string>
     <string name="unglue_hint">"یک نما را برای این مکان انتخاب کنید"</string>
@@ -734,7 +735,19 @@
     <string name="quest_split_way_description">"اگر در طول راه تناقض وجود داشته باشد، اولین گام تفکیک راه است. پس از آن می‌توان برای هر قسمت تفکیک شده به طور جداگانه پاسخ جُستار را ارائه نمود. توجه داشته باشید که جُستارهای بخش‌های تفکیک‌شده ممکن است بعداً ارائه شوند. اکنون تفکیک کنید؟"</string>
     <string name="quest_split_way_tutorial">"روی مسیر ضربه بزنید و در نقطه ای (هایی) که چند پاسخ وجود دارد، آن مسیر را تفکیک کنید. سعی کنید تا حد ممکن دقیق باشید ، می توانید طبق معمول بزرگنمایی کنید."</string>
     <string name="quest_split_way_too_imprecise">"لطفاً بیشتر بزرگنمایی کنید."</string>
-    <string name="quest_split_way_many_splits_confirmation_description">"اینها به چند مسیر تفکیک شده است. همیشه بعداً هم می‌توانید راه را تفکیک کنید."</string>
+    <string name="quest_split_way_many_splits_confirmation_description">"این راه‌ها به چند بخش تفکیک شده است. همیشه بعداً هم می‌توانید راه را تفکیک کنید."</string>
     <string name="quest_footwayPartSurface_title">"سطح این پیاده‌راه از چه جنسی است؟"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title">"آیا دستشویی با صندلی چرخدار %s قابل دسترسی است؟"</string>
+    <string name="quest_tactilePaving_title_tram">"آیا این توقف‌گاه خودرو دارای سنگفرش های برجسته است؟"</string>
+    <string name="quest_tactilePaving_title_name_tram">"آیا توقف‌گاه خودرو %s، سنگفرش های برجسته دارد؟"</string>
+    <string name="quest_maxweight_title">"در اینجا محدودیت وزن چه مقدار است؟"</string>
+    <string name="quest_maxweight_answer_noSign">"هیچ علائمی وجود ندارد"</string>
+    <string name="quest_maxweight_unusualInput_confirmation_description">"این وزن غیرممکن به نظر می رسد. آیا مطمئن هستید که صحیح است؟"</string>
+    <string name="quest_maxweight_answer_other_sign">"با علائم تفاوت دارد ..."</string>
+    <string name="quest_maxweight_unsupported_sign_request_photo">"آیا می خواهید یک یادداشت بگذارید؟ یک یادداشت با یک عکس
+ نقشه‌کش‌های دیگر را مجاب به نگهداری اطلاعات می‌کند."</string>
+    <string name="confirmation_authorize_now_note">"می توانید این کار را بعداً در صفحه تنظیمات انجام دهید."</string>
+    <string name="quest_generalFee_title">"آیا برای ورود به %s هزینه پرداخت می‌شود؟"</string>
+    <string name="quest_laundrySelfService_title">"آیا این خشکشویی یک خشکشویی مشتری محور (کار بوسیله شخص) است؟"</string>
+    <string name="quest_handrail_title">"آیا این راه‌پله نرده جان‌پناه دارد؟"</string>
 </resources>

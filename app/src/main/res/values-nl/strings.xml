@@ -402,7 +402,6 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetse
     <string name="quest_crossing_type_unmarked">"Kruispunt zonder wegmarkeringen."</string>
     <string name="compass_north_one_letter">"N"</string>
     <string name="action_undo">"Ongedaan maken"</string>
-    <string name="no_changes_to_undo">"Er is niets om ongedaan te maken"</string>
     <string name="undo_confirm_title">"Maak het vorige antwoord ongedaan"</string>
     <string name="produce_mangosteen">"Mangosteen"</string>
     <string name="produce_tomatoes">"Tomaten"</string>
@@ -425,6 +424,8 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetse
     <string name="quest_buildingLevels_roofLevelsLabel2">"aantal etages in het dak"</string>
     <string name="quest_buildingLevels_levelsLabel2">"aantal etages (in het dak niet mee gerekend)"</string>
     <string name="pref_title_authorized_summary">"Toegestaan"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingLevels_answer_multipleLevels">"Verschilt per gebouwdeel"</string>
     <string name="quest_buildingLevels_answer_description">"Vul in dit geval gewoon de waarde  van het hoogste gebouwdeel in."</string>
     <string name="unglue_hint">"Tik hier om de kaart los te maken van je positie"</string>
@@ -750,6 +751,20 @@ Bijvoorbeeld 1m3 of 2-6."</string>
     <string name="quest_split_way_description">"Als het onderweg verschilt is de eerste stap om de weg te splitsen. Nadat de weg gesplitst is kan de vraag voor ieder deel apart beantwoord worden. Le op! De vragen voor de gesplitste delen komen mogelijk pas veel later. Nu splitsen? "</string>
     <string name="quest_split_way_tutorial">"Tik op die punten van de weg waar het antwoord veranderd. Probeer zo precies mogelijk te zijn. Je kan als normaal inzoemen. "</string>
     <string name="quest_split_way_too_imprecise">"Zoem verder in."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_split_way_many_splits_confirmation_description">"Dat zijn een aardig aantal splits. Je kan de weg later altijd verder splitsen."</string>
     <string name="quest_footwayPartSurface_title">"Welke bedekking heeft dit voetpad hier?"</string>
+    <string name="quest_wheelchairAccess_toiletsPart_title">"Is het toilet op %s toegankelijk voor rolstoelen?"</string>
+    <string name="quest_tactilePaving_title_tram">"Heeft deze tramhalte blindengeleide tegels?"</string>
+    <string name="quest_tactilePaving_title_name_tram">"Heeft de tramhalte %s blindengeleide tegels?"</string>
+    <string name="quest_maxweight_title">"Wat is hier het maximum gewicht van de asdruk?"</string>
+    <string name="quest_maxweight_answer_noSign">"er is geen bord"</string>
+    <string name="quest_maxweight_unusualInput_confirmation_description">"Dit gewicht lijkt niet waarschijnlijk, weet je zeker dat dit correct is?"</string>
+    <string name="quest_maxweight_answer_other_sign">"borden geven iets anders aan..."</string>
+    <string name="quest_maxweight_unsupported_sign_request_photo">"Wil je een notitie maken? Met een notitie en een foto kunnen andere mappers dit verwerken."</string>
+    <string name="confirmation_authorize_now_note">"Je kan dit later in het instellingenscherm doen."</string>
+    <string name="quest_generalFee_title">"Kost het geld om %s binnen te gaan?"</string>
+    <string name="quest_laundrySelfService_title">"Is deze wasserij een zelfservice wasserij?"</string>
+    <string name="quest_handrail_title">"Heeft deze trap een leuning?"</string>
 </resources>

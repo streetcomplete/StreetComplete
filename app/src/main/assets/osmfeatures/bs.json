@@ -961,10 +961,6 @@
         "natural": {
             "name": "Prirodno područje"
         },
-        "amenity/post_box": {
-            "name": "Poštansko_sanduče",
-            "terms": "poštansko sanduče,poštanski sandučić"
-        },
         "natural/water/lake": {
             "name": "Jezero",
             "terms": "jezero,vodom ispunjena kopnena depresija"
@@ -1297,10 +1293,6 @@
         "office/lawyer": {
             "name": "Pravni ured",
             "terms": "pravni ured,pravna kancelarija"
-        },
-        "landuse/construction": {
-            "name": "Građevinsko područje",
-            "terms": "građevinsko područje,područje gradnje"
         },
         "highway/trunk_link": {
             "name": "Poveznica na brzu cestu",

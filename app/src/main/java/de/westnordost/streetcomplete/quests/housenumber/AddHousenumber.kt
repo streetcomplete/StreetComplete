@@ -63,7 +63,7 @@ class AddHousenumber(private val overpass: OverpassMapDataDao) : OsmElementQuest
 
         // exclude buildings that are contained in an area with a housenumber
         for (addrArea in addrAreas) {
-            for (buildingPos in buildingPositions.getAll(addrArea.bounds)) {
+            for (buildingPos in buildingPositions.getAll(addrArea.getBounds())) {
                 if (SphericalEarthMath.isInMultipolygon(buildingPos, addrArea.polygons)) {
                     buildings.remove(buildingPos)
                 }
@@ -121,7 +121,7 @@ class AddHousenumber(private val overpass: OverpassMapDataDao) : OsmElementQuest
     }
 
     private fun getPositionContainedInBuilding(building: ElementPolygonsGeometry, positions: LatLonRaster): LatLon? {
-        for (pos in positions.getAll(building.bounds)) {
+        for (pos in positions.getAll(building.getBounds())) {
             if (SphericalEarthMath.isInMultipolygon(pos, building.polygons)) return pos
         }
         return null

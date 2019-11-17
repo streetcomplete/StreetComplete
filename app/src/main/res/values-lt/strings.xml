@@ -354,7 +354,6 @@ Priešingu atveju galite atsisiųsti kitą klaviatūrą programėlių parduotuv�
     <string name="quest_crossing_type_unmarked">"Perėja be horizontalaus žymėjimo"</string>
     <string name="compass_north_one_letter">"Š"</string>
     <string name="action_undo">"Atšaukti"</string>
-    <string name="no_changes_to_undo">"Nėra ko atšaukti"</string>
     <string name="undo_confirm_title">"Atšaukti šį paskutinį atsakymą?"</string>
     <string name="produce_mangosteen">"Mangostaninė garcinija"</string>
     <string name="produce_tomatoes">"Pomidorai"</string>
@@ -377,6 +376,8 @@ Priešingu atveju galite atsisiųsti kitą klaviatūrą programėlių parduotuv�
     <string name="quest_buildingLevels_roofLevelsLabel2">"aukštų stoge"</string>
     <string name="quest_buildingLevels_levelsLabel2">"paprasti aukštai (neskaičiuojant stogo)"</string>
     <string name="pref_title_authorized_summary">"Autorizuota"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingLevels_answer_multipleLevels">"skiriasi skirtingose pastato dalyse"</string>
     <string name="quest_buildingLevels_answer_description">"Tokiu atveju tiesiog įveskite aukščiausios pastato dalies reikšmę."</string>
     <string name="unglue_hint">"Spustelėkite, kad atklijuotumėte rodinį nuo pozicijos"</string>
@@ -683,6 +684,8 @@ Pavyzdžiui 1,3 arba 2-6."</string>
     <string name="quest_split_way_description">"Jei skirtingose vietose skirtinga, pirmas žingsnis yra padalinti kelią. Po to bus galima atsakyti į užduotį kiekvienai daliai atskirai. Pastebėtina, kad užduotys padalintoms dalims gali pasirodyti daug vėliau. Padalinti dabar?"</string>
     <string name="quest_split_way_tutorial">"Spustelėkite ant kelio toje vietoje, kur atsakymai skiriasi. Pabandykite skirtumo vietą nurodyti kiek galima tiksliau, priartinkite kaip visada."</string>
     <string name="quest_split_way_too_imprecise">"Prašome labiau pirartinti"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_split_way_many_splits_confirmation_description">"Čia jau yra pakankamai padalinimų. Visada kelią galite dar dalinti vėliau."</string>
     <string name="quest_footwayPartSurface_title">"Koks šioje vietoje pėsčiųjų tako paviršius?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title">"Ar poilsio kambarys %s prieinamas neįgaliųjų vežimėliu?"</string>

@@ -339,7 +339,6 @@ W przeciwnym wypadku możesz ściągnąć dodatkowe aplikacje klawiatury ze skle
     <string name="quest_crossing_type_unmarked">"Przejście nieoznaczone"</string>
     <string name="compass_north_one_letter">"N"</string>
     <string name="action_undo">"Cofnij"</string>
-    <string name="no_changes_to_undo">"Nic do cofnięcia"</string>
     <string name="undo_confirm_title">"Cofnąć następującą ostatnią odpowiedź?"</string>
     <string name="produce_mangosteen">"Mangostan"</string>
     <string name="produce_tomatoes">"Pomidory"</string>
@@ -362,6 +361,8 @@ W przeciwnym wypadku możesz ściągnąć dodatkowe aplikacje klawiatury ze skle
     <string name="quest_buildingLevels_roofLevelsLabel2">"kondygnacje w poddaszu"</string>
     <string name="quest_buildingLevels_levelsLabel2">"zwykłe kondygnacje (bez poddasza)"</string>
     <string name="pref_title_authorized_summary">"Autoryzowany"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingLevels_answer_multipleLevels">"inaczej w różnych częściach budynku"</string>
     <string name="quest_buildingLevels_answer_description">"W takim razie po prostu wpisz wartość najwyżej części budynku."</string>
     <string name="unglue_hint">"Dotknij, by umożliwić przesuwanie mapy"</string>
@@ -669,15 +670,17 @@ Na przykład 1,3 lub 2-6."</string>
     <string name="quest_leaf_type_needles">"Iglaste"</string>
     <string name="quest_leaf_type_broadleaved">"Liściaste"</string>
     <string name="quest_leaf_type_mixed">"Występują oba"</string>
-    <string name="quest_cyclewayPartSurface_title">"Jaka jest nawierzchnia części będącą drogą dla rowerów?"</string>
+    <string name="quest_cyclewayPartSurface_title">"Jaka jest nawierzchnia części będącej drogą dla rowerów?"</string>
     <string name="quest_generic_answer_differs_along_the_way">"Zmienia się..."</string>
     <string name="quest_split_way_description">"Jeśli nawierzchnia jest różna w poszczególnych częściach to pierwszym krokiem jest podzielenie drogi na fragmenty. Gdy to się zrobi będzie możliwe odpowiedzenie na to pytanie dla każdego fragmentu z osobna.
 
 Pytania dla poszczególnych fragmentów mogą się pojawić z sporym opóźnieniem.
 
 Podzielić?"</string>
-    <string name="quest_split_way_tutorial">"Dotknij linię w miejscach gdzie trzeba ją podzielić ponieważ odpowiedź się zmienia. Próbij by jak najbardziej dokładny, możesz przybliżyć w taki sam sposób jak zazwyczaj."</string>
+    <string name="quest_split_way_tutorial">"Dotknij linię w miejscach gdzie trzeba ją podzielić ponieważ odpowiedź się zmienia. Próbuj być jak najbardziej dokładny, możesz przybliżyć w taki sam sposób jak zazwyczaj."</string>
     <string name="quest_split_way_too_imprecise">"Proszę, zbliż bardziej"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_split_way_many_splits_confirmation_description">"To jest sporo podziałów! Zawsze możesz podzielić linię bardziej przy odpowiadaniu na poszczególne zadania."</string>
     <string name="quest_footwayPartSurface_title">"Jak jest nawierzchnia części będącej chodnikiem dla pieszych?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title">"Czy toalety w %s jest dostępna dla osób na wózku inwalidzkim?"</string>

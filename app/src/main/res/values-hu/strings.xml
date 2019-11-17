@@ -217,7 +217,7 @@ A megadott adatok közvetlenül az OpenStreetMapre kerülnek a nevedben, ehhez n
     <string name="quest_bicycleParkingCoveredStatus_title">"Fedett ez a kerékpártároló (védett az esőtől)?"</string>
     <string name="dialog_session_dont_show_again">"Ne mutasd többször ebben a munkamenetben"</string>
     <string name="quest_streetSurface_name_title">"Milyen a burkolata itt ennek az útnak: %s?"</string>
-    <string name="quest_maxspeed_unusualInput_confirmation_description">"Ez a sebességkorlátozás valószínűtlennek tűnik."</string>
+    <string name="quest_maxspeed_unusualInput_confirmation_description">"Ez a sebességkorlátozás valószínűtlen."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Biztos, hogy nincs sebességkorlátozó tábla?"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation">"Megnézted az utca végein?
 Ha az utcában az egész kijelölt szakaszon nincs jelzőtábla, akkor az alapértelmezett sebességkorlátozás érvényes."</string>
@@ -341,7 +341,6 @@ Vagy le is tölthetsz egy másik billentyűzetet az áruházból. Népszerű bil
     <string name="quest_crossing_type_unmarked">"Útburkolati jel nélküli"</string>
     <string name="compass_north_one_letter">"É"</string>
     <string name="action_undo">"Visszavonás"</string>
-    <string name="no_changes_to_undo">"Nincs mit visszavonni"</string>
     <string name="undo_confirm_title">"Visszavonod a legutóbbi választ?"</string>
     <string name="produce_mangosteen">"Mangosztán"</string>
     <string name="produce_tomatoes">"Paradicsom"</string>
@@ -364,6 +363,8 @@ Vagy le is tölthetsz egy másik billentyűzetet az áruházból. Népszerű bil
     <string name="quest_buildingLevels_roofLevelsLabel2">"tetőtér szintjei"</string>
     <string name="quest_buildingLevels_levelsLabel2">"normál szintek (tetőtér nélkül)"</string>
     <string name="pref_title_authorized_summary">"Hitelesített"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingLevels_answer_multipleLevels">"épületrészenként különböző"</string>
     <string name="quest_buildingLevels_answer_description">"Ebben az esetben egyszerűen a legmagasabb épületrész emeleteit add meg."</string>
     <string name="unglue_hint">"Pozíció rögzítésének feloldása"</string>
@@ -461,7 +462,7 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="quest_parking_access_customers">"Csak ügyfeleknek"</string>
     <string name="quest_streetName_pedestrian_title">"Mi a neve ennek a sétálóutcának?"</string>
     <string name="quest_streetSurface_square_title">"Milyen a burkolata ennek a térnek?"</string>
-    <string name="quest_streetSurface_square_name_title">"Milyen a burkolata a(z) %s térnek?"</string>
+    <string name="quest_streetSurface_square_name_title">"Milyen a burkolata ennek a térnek: %s?"</string>
     <string name="quest_fee_answer_hours">"Naptól és napszaktól függ…"</string>
     <string name="quest_fee_add_times">"Időpontok hozzáadása"</string>
     <string name="quest_fee_only_at_hours">"Igen, de csak..."</string>
@@ -585,7 +586,7 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="quest_buildingType_toilets">"WC"</string>
     <string name="quest_maxspeed_sign_question">"Mi határozza meg a sebességkorlátozást?"</string>
     <string name="notification_channel_download">"Letöltés"</string>
-    <string name="quest_playground_access_title">"Nyilvánosan használható-e ez a játszótér?"</string>
+    <string name="quest_playground_access_title">"Nyilvánosan használható ez a játszótér?"</string>
     <string name="quest_segregated_title">"Hogyan néz ki itt a gyalog- és a kerékpárút?"</string>
     <string name="dialog_tutorial_upload">"Módosításaid kézi feltöltéséhez használd az eszköztárban lévő gombot, amely így néz ki."</string>
     <string name="quest_segregated_separated">"El vannak választva"</string>
@@ -595,7 +596,7 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="quest_maxheight_height_restrictor_title">"Milyen magas ezt a magasságkorlátozó?"</string>
     <string name="quest_maxheight_tunnel_title">"Milyen magas ez az alagút?"</string>
     <string name="quest_maxheight_answer_noSign">"Nincs jelzőtábla…"</string>
-    <string name="quest_maxheight_answer_noSign_question">"Van-e elég hely alatta akár a legmagasabb teherautóknak is (legalább 4,5 m)?"</string>
+    <string name="quest_maxheight_answer_noSign_question">"Van elég hely alatta akár a legmagasabb teherautóknak is (legalább 4,5 m)?"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"Ez a magasság valószínűtlen. Biztosan helyes?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_closed2">"Lezárta %1$s, %2$s"</string>
@@ -614,8 +615,8 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="quest_tracktype_grade4">"Viszonylag puha"</string>
     <string name="quest_tracktype_grade5">"Puha"</string>
     <string name="quest_building_underground_name_title">"Teljesen a föld alatt van ez: %s?"</string>
-    <string name="quest_building_underground_title">"Teljesen a föld alatt van-e ez az épület?"</string>
-    <string name="quest_traffic_signals_sound_title">"Van-e itt vakoknak szóló hangjelzés?"</string>
+    <string name="quest_building_underground_title">"Teljesen a föld alatt van ez az épület?"</string>
+    <string name="quest_traffic_signals_sound_title">"Van itt vakoknak szóló hangjelzés?"</string>
     <string name="quest_wheelchairAccess_limited_description_outside">"A „részben” azt jelenti, hogy legfeljebb egy lépcsőfokkal el lehet érni."</string>
     <string name="quest_wheelchairAccess_outside_title">"Akadálymentes ez a hely?"</string>
     <string name="quest_traffic_signals_button_title">"Van ezen a jelzőlámpán olyan gomb, amellyel zöld jelzést lehet kérni?"</string>
@@ -672,7 +673,20 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="quest_split_way_description">"Ha az út mentén változik, akkor először fel kell osztani az utat. Utána a kérdést meg tudod válaszolni az egyes darabokra külön-külön. Lehet, hogy a darabokra vonatkozó új kérdések esetleg jóval később jelennek meg. Felosztod most?"</string>
     <string name="quest_split_way_tutorial">"Koppints az út azon pontja(i)ra, ahol a válasz megváltozik. Próbálj meg a lehető legpontosabb lenni, ráközelíthetsz, mint mindig."</string>
     <string name="quest_split_way_too_imprecise">"Kérlek közelíts rá jobban"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_split_way_many_splits_confirmation_description">"Ez jó pár új darab. Később is ugyanúgy tovább oszthatod az utat."</string>
     <string name="quest_footwayPartSurface_title">"Mi a járda anyaga?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title">"Az itt levő wc: %s kerekesszékkel is használható?"</string>
+    <string name="quest_tactilePaving_title_tram">"Van vakvezető burkolat ebben a villamosmegállóban?"</string>
+    <string name="quest_tactilePaving_title_name_tram">"Van vakvezető burkolat ebben a villamosmegállóban: %s?"</string>
+    <string name="quest_maxweight_title">"Mekkora itt a tömegkorlátozás?"</string>
+    <string name="quest_maxweight_answer_noSign">"Nincs jelzőtábla"</string>
+    <string name="quest_maxweight_unusualInput_confirmation_description">"Ez a tömeg valószínűtlen. Biztosan helyes?"</string>
+    <string name="quest_maxweight_answer_other_sign">"A tábla máshogy néz ki…"</string>
+    <string name="quest_maxweight_unsupported_sign_request_photo">"Szeretnél megjegyzést hagyni? Egy megjegyzés és egy hozzá csatolt fénykép lehetővé teszi a többi szerkesztőnek, hogy megoldják."</string>
+    <string name="confirmation_authorize_now_note">"Ezt később a beállítások képernyőn megteheted."</string>
+    <string name="quest_generalFee_title">"Fizetni kell ahhoz, hogy ide belépj: %s?"</string>
+    <string name="quest_laundrySelfService_title">"Ez a mosoda önkiszolgáló?"</string>
+    <string name="quest_handrail_title">"Ez a lépcső rendelkezik korláttal?"</string>
 </resources>

@@ -402,9 +402,6 @@
             "name": "Letališka vrata",
             "terms": "vrata,gate,letališče"
         },
-        "manhole/drain": {
-            "name": "Odtočni kanal"
-        },
         "traffic_calming/island": {
             "name": "Prometni otok"
         },
@@ -1599,10 +1596,6 @@
             "name": "Spomenik",
             "terms": "spominska zgradba"
         },
-        "manhole": {
-            "name": "Jašek",
-            "terms": "jašek, vhodna odprtina, kanalizacija, elektro, vodovod, telekom, cestni jašek"
-        },
         "type/route/bicycle": {
             "name": "Kolesarska pot",
             "terms": "kolesarska proga"
@@ -1935,10 +1928,6 @@
         },
         "shop/outdoor": {
             "name": "Trgovina za dejavosti na prostem"
-        },
-        "highway/raceway": {
-            "name": "Dirkališče (motošport)",
-            "terms": "moto-steza (motokros) ,kros steza,dirkališče,hipodrom,rally"
         },
         "emergency/designated": {
             "name": "Označen dostop v sili"
@@ -2279,10 +2268,6 @@
             "name": "Preproga",
             "terms": "vlečnica,čarobna preproga,tekoči trak"
         },
-        "amenity/post_box": {
-            "name": "Poštni nabiralnik",
-            "terms": "poštni predal,pošta"
-        },
         "emergency/official": {
             "name": "Uradni dostop v sili"
         },
@@ -2541,10 +2526,6 @@
         "craft/handicraft": {
             "name": "Rokodelstvo",
             "terms": "izdelano ročno"
-        },
-        "landuse/construction": {
-            "name": "Gradbišče",
-            "terms": "gradnja"
         },
         "aeroway": {
             "name": "Letalstvo"

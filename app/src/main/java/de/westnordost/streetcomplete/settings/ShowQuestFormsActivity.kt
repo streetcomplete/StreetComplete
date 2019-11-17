@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.osmapi.map.data.OsmNode
+import de.westnordost.osmapi.map.data.OsmWay
 
 import javax.inject.Inject
 import de.westnordost.streetcomplete.Injector
@@ -19,6 +20,7 @@ import de.westnordost.streetcomplete.data.QuestGroup
 import de.westnordost.streetcomplete.data.QuestType
 import de.westnordost.streetcomplete.data.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.osm.ElementPointGeometry
+import de.westnordost.streetcomplete.data.osm.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.OsmQuestAnswerListener
 import de.westnordost.streetcomplete.quests.QuestAnswerComponent
@@ -76,11 +78,22 @@ class ShowQuestFormsActivity : AppCompatActivity(), OsmQuestAnswerListener {
     }
 
     private fun onClickQuestType(questType: QuestType<*>) {
-        val lat = Double.fromBits(prefs.getLong(Prefs.MAP_LATITUDE, 0.0.toBits()))
-        val lng = Double.fromBits(prefs.getLong(Prefs.MAP_LONGITUDE, 0.0.toBits()))
-        val pos = OsmLatLon(lat, lng)
-        val elementGeometry = ElementPointGeometry(pos)
-        val element = OsmNode(1, 1, pos, mapOf("highway" to "cycleway", "building" to "residential"))
+        val latititudeDelta = 0
+        val longitudeDelta = 0
+        val firstLat = Double.fromBits(prefs.getLong(Prefs.MAP_LATITUDE, 0.0.toBits()))
+        val firstLng = Double.fromBits(prefs.getLong(Prefs.MAP_LONGITUDE, 0.0.toBits()))
+        val firstPos = OsmLatLon(firstLat, firstLng)
+        val secondLat = Double.fromBits(prefs.getLong(Prefs.MAP_LATITUDE, (0.0 + latititudeDelta).toBits()))
+        val secondLng = Double.fromBits(prefs.getLong(Prefs.MAP_LONGITUDE, (0.0 + longitudeDelta).toBits()))
+        val secondPos = OsmLatLon(secondLat, secondLng)
+        val centerLat = Double.fromBits(prefs.getLong(Prefs.MAP_LATITUDE, (0.0 + latititudeDelta/2).toBits()))
+        val centerLng = Double.fromBits(prefs.getLong(Prefs.MAP_LONGITUDE, (0.0 + longitudeDelta/2).toBits()))
+        val centerPos = OsmLatLon(centerLat, centerLng)
+        val tags =  mapOf("highway" to "cycleway", "building" to "residential", "name" to "<object name>")
+        val firstNode = OsmNode(1, 1, firstPos, tags)
+        val secondNode = OsmNode(2, 1, secondPos, tags)
+        val element = OsmWay(1, 1, mutableListOf(1, 2), tags)
+        val elementGeometry = ElementPolylinesGeometry(listOf(listOf(firstPos, secondPos)), centerPos)
 
         val f = questType.createForm()
         val args = QuestAnswerComponent.createArguments(1, QuestGroup.OSM)

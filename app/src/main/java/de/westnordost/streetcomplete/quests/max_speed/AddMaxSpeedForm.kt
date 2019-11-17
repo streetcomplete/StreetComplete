@@ -71,7 +71,7 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
         }
     }
 
-    override fun isFormComplete() = getSpeedFromInput() != null
+    override fun isFormComplete() = speedType == NO_SIGN || getSpeedFromInput() != null
 
     /* ---------------------------------------- With sign --------------------------------------- */
 
@@ -108,8 +108,9 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
     }
 
     private fun userSelectedUnusualSpeed(): Boolean {
-        val kmh = getSpeedFromInput()?.toKmh() ?: return false
-        return kmh > 140 || kmh > 20 && kmh % 5 != 0
+        val speed = getSpeedFromInput() ?: return false
+        val kmh = speed.toKmh()
+        return kmh > 140 || kmh > 20 && speed.toValue() % 5 != 0
     }
 
     private fun switchToAdvisorySpeedLimit() {

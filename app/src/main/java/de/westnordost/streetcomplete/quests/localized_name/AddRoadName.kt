@@ -44,8 +44,8 @@ class AddRoadName(
         bbox.toGlobalOverpassBBox() + "\n" +
         ROADS_WITHOUT_NAMES + "->.unnamed;\n" +
         "(\n" +
-        "  way.unnamed['access' !~ '^private|no$'];\n" +
-        "  way.unnamed['foot']['foot' !~ '^private|no$'];\n" +
+        "  way.unnamed['access' !~ '^(private|no)$'];\n" +
+        "  way.unnamed['foot']['foot' !~ '^(private|no)$'];\n" +
         "); " +
         getQuestPrintStatement()
 
@@ -105,12 +105,12 @@ class AddRoadName(
 
         private const val ROADS =
             "primary|secondary|tertiary|unclassified|residential|living_street|pedestrian"
-        private const val ROADS_WITH_NAMES = "way[highway~\"^($ROADS)$\"][name]"
+        private const val ROADS_WITH_NAMES = "way[highway ~ \"^($ROADS)$\"][name]"
         private const val ROADS_WITHOUT_NAMES =
-            "way[highway~\"^($ROADS)$\"][!name][!ref][noname != yes][!junction][area != yes]"
+            "way[highway ~ \"^($ROADS)$\"][!name][!ref][noname != yes][!junction][area != yes]"
         // this must be the same as above but in tag filter expression syntax
         private val ROADS_WITHOUT_NAMES_TFE by lazy { FiltersParser().parse(
-            "ways with highway~$ROADS and !name and !ref and noname != yes and !junction and area != yes"
+            "ways with highway ~ $ROADS and !name and !ref and noname != yes and !junction and area != yes"
         )}
     }
 }

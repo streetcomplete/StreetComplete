@@ -391,7 +391,6 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
     <string name="quest_crossing_type_unmarked">"Ylityspaikassa ei ole tiemerkintöjä"</string>
     <string name="compass_north_one_letter">"P"</string>
     <string name="action_undo">"Kumoa"</string>
-    <string name="no_changes_to_undo">"Ei kumottavaa"</string>
     <string name="undo_confirm_title">"Kumoa seuraava viimeisin vastaus?"</string>
     <string name="produce_mangosteen">"Mangostaneja"</string>
     <string name="produce_tomatoes">"Tomaatteja"</string>
@@ -414,6 +413,8 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
     <string name="quest_buildingLevels_roofLevelsLabel2">"katolla tasoja"</string>
     <string name="quest_buildingLevels_levelsLabel2">"tavallisia tasoja (katto luettuna)"</string>
     <string name="pref_title_authorized_summary">"Valtuutettu"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingLevels_answer_multipleLevels">"vaihtelee rakennuksen osan mukaan"</string>
     <string name="quest_buildingLevels_answer_description">"Tässä tapauksessa, syötä yksinkertaisesti korkeimman rakennuksen arvot"</string>
     <string name="unglue_hint">"Täppää irroittaaksesi näkymä kohdasta"</string>
@@ -708,4 +709,31 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
     <string name="quest_placeName_title_name">"Mikä on tämän paikan nimi? (%s)"</string>
     <string name="action_open_location">"Avaa sijainti toisessa sovelluksessa"</string>
     <string name="map_application_missing">"Muita karttasovelluksia ei ole asennettu"</string>
+    <string name="pref_title_overpass_url_info">"Sovellus vaatii uudelleenkäynnistyksen. Saattaa ohittaa sensuroinnin, esimerkiksi Venäjällä. "</string>
+    <string name="label_housenumber">"talon numero"</string>
+    <string name="label_blocknumber">"osaston numero"</string>
+    <string name="quest_busStopShelter_covered">"Koko pysäkki on katettu"</string>
+    <string name="quest_ferry_pedestrian_name_title">"Kuljettaako %s liikenneväline jalankulkijoita?"</string>
+    <string name="quest_ferry_pedestrian_title">"Sopiiko tämä lauttareitti jalakulkioille?"</string>
+    <string name="quest_ferry_motor_vehicle_name_title">"Kuljettaako %s liikenneväline moottoriajoneuvoja?"</string>
+    <string name="quest_ferry_motor_vehicle_title">"Sopiiko tämä lautta moottoriajoneuvojen reitiksi?"</string>
+    <string name="quest_leave_new_note_photos_are_useful">"Kuvan lisääminen tekee huomautuksesta paljon käyttökelpoisemman."</string>
+    <string name="quest_postboxCollectionTimes_name_title">"Mitkä ovattämän %s postilaatikon tyhjennysajat?"</string>
+    <string name="create_new_note_hint">"Paras on kirjoittaa huomautus paikallisella kielellä, tai toisena vaihtoehtona englanniksi. "</string>
+    <string name="about_contributing">"Vastauksesi parantaa suoraan OpenStreetMapia. Lähetetyt tiedot ovat avoimia, ja kuka tahansa voi käyttää niitä. Monet hienot projektit hyödyntävät jo sitä. "</string>
+    <string name="about_missing_stars">"Parhaillaan tähtiä ei jaeta laitteiden välillä, mutta vastaukset lisätään suoraan OpenStreetMap:n tietokantaan."</string>
+    <string name="how_to_get_stars">"Valitse kartalla näkyvä merkki vastataksesi kysymykseen. Näin parannat OpenStreetMap kartta-aineistoa ja saat tähtiä. Jos et näe merkkejä, niin zoomaa kartalla kauemmaksi. "</string>
+    <string name="oauth_remove_authorization_confirmation">"Poista"</string>
+    <string name="quest_leafType_title">"Onko puissa neulaset vai lehdet?"</string>
+    <string name="quest_leaf_type_needles">"neulaset"</string>
+    <string name="quest_leaf_type_broadleaved">"Lehtipuita"</string>
+    <string name="quest_leaf_type_mixed">"Molempia esiintyy"</string>
+    <string name="quest_cyclewayPartSurface_title">"Mikä päällyste on tällä pyörätiellä?"</string>
+    <string name="quest_generic_answer_differs_along_the_way">"Eroaa pitkin matkaa.."</string>
+    <string name="quest_split_way_description">"Jos tiellä on eroja, niin ensimmäinen vaihe on jakaa tie osiin. Sen jälkeen voit vastata tien jaetuille osille erikseen. Huomioi, että kysymykset jaetuille tien osille voi tulla näkyviin paljon myöhemmin.
+Jaetaanko nyt?"</string>
+    <string name="quest_split_way_tutorial">"Napauta tieta jakaaksesi se siitä kohtaa osiin. Yritä olla mahdollisimman tarkka. Voit zoomata tavalliseen tapaan. "</string>
+    <string name="quest_split_way_too_imprecise">"Zoomaa kauemmaksi"</string>
+    <string name="quest_footwayPartSurface_title">"Mikä päällyste on tällä jalkakäytävällä?"</string>
+    <string name="quest_wheelchairAccess_toiletsPart_title">"Onko tämän s% WC pyörätuolilla saavutettavissa?"</string>
 </resources>

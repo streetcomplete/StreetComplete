@@ -341,9 +341,6 @@
         "power/pole": {
             "name": "Tiang Elektrik"
         },
-        "amenity/post_box": {
-            "name": "Peti Surat"
-        },
         "highway/tertiary": {
             "name": "Jalan Tertiari"
         },

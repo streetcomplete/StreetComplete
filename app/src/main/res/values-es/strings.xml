@@ -373,7 +373,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
     <string name="quest_crossing_type_unmarked">"Cruce sin señalizar"</string>
     <string name="compass_north_one_letter">"N"</string>
     <string name="action_undo">"Deshacer"</string>
-    <string name="no_changes_to_undo">"No hay nada que deshacer"</string>
     <string name="undo_confirm_title">"¿Quieres deshacer la última pregunta respondida?"</string>
     <string name="produce_mangosteen">"Mangostino"</string>
     <string name="produce_tomatoes">"Tomates"</string>
@@ -396,6 +395,8 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
     <string name="quest_buildingLevels_roofLevelsLabel2">"plantas del tejado"</string>
     <string name="quest_buildingLevels_levelsLabel2">"plantas (sin contar el tejado)"</string>
     <string name="pref_title_authorized_summary">"Autorizado"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingLevels_answer_multipleLevels">"el número de plantas no es uniforme"</string>
     <string name="quest_buildingLevels_answer_description">"En ese caso limítate a poner la planta de la parte más alta del edificio."</string>
     <string name="unglue_hint">"Toca la pantalla para soltar la vista de la posición"</string>
@@ -707,7 +708,7 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
     <string name="create_new_note_hint">"Mejor escribe la nota en el idioma local o si no, en inglés."</string>
     <string name="about_contributing">"Tus respuestas están directamente mejorando OpenStreetMap. Los datos aportados son abiertos, todos el mundo puede usarlos. Muchos grandes proyectos están ya utilizándolos."</string>
     <string name="about_missing_stars">"Actualmente, la cuenta de estrellas no es compartida a través de los dispositivos, sino que las respuestas son añadidas directamente a la base de datos OpenStreetMap."</string>
-    <string name="how_to_get_stars">"Escoge uno de los marcadores del mapa y response la pregunta. De esta manera mejorarás los datos de OpenStreetMap y conseguirás estrellas. Si no ves marcadores, puede que tengas que hacer menos zoom al mapa."</string>
+    <string name="how_to_get_stars">"Escoge uno de los marcadores del mapa y responde la pregunta. De esta manera mejorarás los datos de OpenStreetMap y conseguirás estrellas. Si no ves marcadores, puede que tengas que hacer menos zoom al mapa."</string>
     <string name="oauth_remove_authorization_dialog_message">"¿Quieres eliminar la autorización de tu cuenta OSM?"</string>
     <string name="oauth_remove_authorization_confirmation">"Eliminar"</string>
     <string name="quest_leafType_title">"¿Tienen los árboles aquí agujas u hojas?"</string>
@@ -719,7 +720,18 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
     <string name="quest_split_way_description">"Si difiere a lo largo de la vía, el primer paso es dividir la vía. Tras eso, el objetivo puede ser respondido para cada parte por separado. Date cuenta que los objetivos para las partes divididas pueden aparecen mucho más tarde. ¿Dividirlas ahora?"</string>
     <string name="quest_split_way_tutorial">"Toca en la vía para dividirla en el(los) punto(s) donde la respuesta difiere. Intenta ser lo más preciso posible, puedes hacer más zoom como de costumbre."</string>
     <string name="quest_split_way_too_imprecise">"Por favor, haz más zoom"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_split_way_many_splits_confirmation_description">"Estas son un buen número de divisiones. Puedes siempre dividir aún más la vía más adelante."</string>
     <string name="quest_footwayPartSurface_title">"¿Cuál es la superficie de la acera aquí?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title">"¿Es el servicio accesible para %s sillas de ruedas?"</string>
+    <string name="quest_tactilePaving_title_tram">"¿Esta parada de tranvía tiene pavimento táctil?"</string>
+    <string name="quest_maxweight_title">"¿Cuál es el límite de peso?"</string>
+    <string name="quest_maxweight_answer_noSign">"No hay señal"</string>
+    <string name="quest_maxweight_unusualInput_confirmation_description">"Este peso parece inverosímil. ¿Estás seguro de que es correcto?"</string>
+    <string name="quest_maxweight_answer_other_sign">"La señal se ve diferente..."</string>
+    <string name="quest_maxweight_unsupported_sign_request_photo">"¿Te gustaría dejar una nota? Una nota con una foto permitirá que otros mapeadores se encarguen de ello."</string>
+    <string name="confirmation_authorize_now_note">"Puedes hacerlo más tarde en la pantalla de configuración."</string>
+    <string name="quest_laundrySelfService_title">"¿Esta lavandería es una lavandería de autoservicio?"</string>
+    <string name="quest_handrail_title">"¿Estas escaleras tienen barandilla?"</string>
 </resources>

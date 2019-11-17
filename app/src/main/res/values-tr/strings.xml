@@ -12,7 +12,7 @@
     <string name="pref_title_authorization">"OSM erişimine izin ver"</string>
     <string name="pref_title_not_authorized_summary">"Henüz yetkili değil"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
-    <string name="pref_tilecache_size_message">"Harici depolama biriminde önbellek harita fayanslarına ayrılmış megabaytlık alan"</string>
+    <string name="pref_tilecache_size_message">"Harita döşemelerini önbelleğe almak için harici depolamaya ayrılan megabayt alan"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Tüm notları göster"</string>
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Sorularla ifade edilmeyen notları da gösteriliyor"</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Sorularla ifade edilmeyen notları yoksayma"</string>
@@ -22,14 +22,14 @@
     <string name="map_attribution_osm">"© OpenStreetMap katkıda bulunan kullanıcılar"</string>
     <string name="quest_generic_otherAnswers">"Diğer cevaplar…"</string>
     <string name="quest_generic_answer_notApplicable">"Söyleyemem…"</string>
-    <string name="quest_generic_confirmation_title">"Emin misiniz?"</string>
+    <string name="quest_generic_confirmation_title">"Emin misin?"</string>
     <string name="quest_generic_confirmation_yes">"Evet eminim"</string>
     <string name="quest_generic_confirmation_no">"Kontrol edeceğim"</string>
     <string name="quest_generic_error_field_empty">"Bu alanı boş bıraktın"</string>
-    <string name="quest_leave_new_note_title">"Bunun yerine bir not bırakmak mı?"</string>
+    <string name="quest_leave_new_note_title">"Bunun yerine bir not bırakmak istermisin?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_leave_new_note_description">"Diğer haritacıların yorum yapabileceği ve umarım çözeceği bu konuma ortak bir not bırakabilirsiniz:"</string>
+    <string name="quest_leave_new_note_description">"Bu noktada diğer haritacıların yorum yazabileceği, umarım çözebileceği veya alternatif olarak sadece arayışı gizleyebileceğin bir not bırakabilirsin."</string>
     <string name="quest_leave_new_note_yes">"Tamam"</string>
     <string name="quest_leave_new_note_no">"Hayır, sadece gizle"</string>
     <string name="quest_streetName_title">"Bu yolun adı ne?"</string>
@@ -43,7 +43,7 @@
     <string name="quest_openingHours_add_months">"Ay ekle"</string>
     <string name="quest_openingHours_add_hours">"Saat ekle"</string>
     <string name="quest_openingHours_add_weekdays">"Hafta içi gün ekle"</string>
-    <string name="quest_openingHours_chooseMonthsTitle">"Ayları seçin"</string>
+    <string name="quest_openingHours_chooseMonthsTitle">"Ay seçin"</string>
     <string name="quest_openingHours_chooseWeekdaysTitle">"Hafta içi seç"</string>
     <string name="quest_openingHours_24_7_confirmation">"Bir başka deyişle, her gün herzaman açık mı?"</string>
     <string name="quest_noteDiscussion_title">"Bu nota katkıda bulunabilir misiniz?"</string>
@@ -51,20 +51,20 @@
     <string name="quest_noteDiscussion_anonymous">"Anonim"</string>
     <string name="confirmation_discard_title">"Girdi silinsin mi?"</string>
     <string name="confirmation_discard_positive">"Terket"</string>
-    <string name="confirmation_discard_negative">"İptal etmek"</string>
-    <string name="action_download">"Görevleri burada tara"</string>
+    <string name="confirmation_discard_negative">"İptal"</string>
+    <string name="action_download">"Buradaki görevleri tara"</string>
     <string name="action_upload">"Yanıtları Yükle"</string>
 
     <!-- Fuzzy -->
-    <string name="no_changes">"Formu boş bıraktın"</string>
-    <string name="close">"Kapat"</string>
+    <string name="no_changes">"Cevap vermedin"</string>
+    <string name="close">"kapat"</string>
     <string name="download_error">"Görevler için tarama yapılırken hata oluştu"</string>
     <string name="upload_error">"Yanıtlar yüklenirken hata oluştu"</string>
     <string name="download_area_too_big">"Lütfen yakınlaştırın."</string>
-    <string name="confirmation_cancel_prev_download_title">"Geçerli aramayı iptal et ve bunun yerine buraya tarama yapalım mı?"</string>
-    <string name="notification_downloading">"Görevleri Taramak…"</string>
-    <string name="now_downloading_toast">"Daha fazla görev taramak için…"</string>
-    <string name="turn_on_location_request">"Yer kapalı. Şimdi açmak için Ayarlar'a gidin mi?"</string>
+    <string name="confirmation_cancel_prev_download_title">"Geçerli arama durdurulup burada tarama yapılsın mı?"</string>
+    <string name="notification_downloading">"Görevler aranıyor…"</string>
+    <string name="now_downloading_toast">"Daha fazla görev için taranıyor…"</string>
+    <string name="turn_on_location_request">"Yer bulma kapalı. Açmak için Ayarlar'a gidilsin mi?"</string>
     <string name="no_location_permission_warning">"Çevrenizdeki görevleri taramak için konumunuz gerekiyor."</string>
     <string name="action_about">"StreetComplete Hakkında"</string>
     <string name="about_title_version">"Sürüm"</string>
@@ -72,7 +72,7 @@
     <!-- Fuzzy -->
     <string name="about_title_authors">"Yazarlar"</string>
     <string name="about_summary_authors">"© 2016–2019 Tobias Zwick ve katkıda bulunan kişiler"</string>
-    <string name="about_title_repository">"Kaynak havuzu"</string>
+    <string name="about_title_repository">"Kaynak Deposu"</string>
     <string name="about_summary_repository">"GitHub'da"</string>
     <string name="about_title_report_error">"Hata bildir"</string>
     <string name="about_title_feedback">"Geri bildirim ver"</string>
@@ -82,31 +82,31 @@
 
     <!-- Fuzzy -->
     <string name="confirmation_authorize_now">"Verdiğiniz cevaplardan herhangi birisini uygulamak için OSM kullanıcı hesabınızla yetkilendirmeniz gerekir. Şimdi yetkilendirilsin mi?"</string>
-    <string name="not_authorized">"Yetkili değil"</string>
+    <string name="not_authorized">"Yetkilendirilmedi"</string>
 
     <!-- Fuzzy -->
-    <string name="version_banned_message">"StreetComplete'in bu sürümü, herhangi bir yanıt yüklemekten yasaklandı! Lütfen sürümünüzü güncelleyin!"</string>
+    <string name="version_banned_message">"StreetComplete’in bu sürümü çok eski.  Lütfen güncelle!"</string>
     <string name="no_gps_no_quests">"Çevrenizdeki görevleri otomatik olarak taramak için, konumu açın"</string>
     <string name="nothing_more_to_download">"Başka görev yok"</string>
     <string name="later">"Sonra"</string>
-    <string name="quest_streetName_answer_noProperStreet_link">"Sadece iki yolu birbirine bağlar"</string>
+    <string name="quest_streetName_answer_noProperStreet_link">"Sadece iki yolu birbirine bağlıyor"</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Başka bir şey (not bırak)"</string>
     <string name="about_title_privacy_statement">"Gizlilik Beyanı"</string>
-    <string name="about_summary_privacy_statement">"Ve Veri Kullanımı"</string>
+    <string name="about_summary_privacy_statement">"ve veri kullanımı"</string>
     <string name="quest_openingHours_public_holidays">"Resmi tatil"</string>
-    <string name="quest_openingHours_public_holidays_short">"PH"</string>
+    <string name="quest_openingHours_public_holidays_short">"RT"</string>
     <string name="quest_openingHours_open_end">"Açık uç"</string>
     <string name="quest_openingHours_answer_247">"7/24 açık"</string>
-    <string name="quest_openingHours_answer_seasonal_opening_hours">"Aylara göre değişir…"</string>
+    <string name="quest_openingHours_answer_seasonal_opening_hours">"Aya göre farklılık gösteriyor..."</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">"Düzenli açılış saatleri yok…"</string>
-    <string name="quest_openingHours_comment_title">"Açılış saatlerini açıkla"</string>
+    <string name="quest_openingHours_comment_title">"Çalışma saatlerini açıkla"</string>
     <string name="quest_openingHours_comment_description">"Özlü olun, ideal olarak işaretten gelen ifadeyi kullanın. Ben. \"randevu ile\". İşaretin olmaması, mutlaka düzenli bir çalışma saatinin olmadığı anlamına gelmez."</string>
-    <string name="quest_buildingLevels_title">"Bu bina kaç katlıdır?"</string>
+    <string name="quest_buildingLevels_title">"Bu binanın kaç katı var?"</string>
     <string name="quest_buildingLevels_title_buildingPart">"Bu bina katmanı kaç katlıdır?"</string>
     <string name="quest_roofShape_title">"Bu bina çatısının temel şekli nedir?"</string>
     <string name="quest_roofShape_select_one">"Birini seç:"</string>
     <string name="quest_roofShape_show_more">"Daha fazla göster…"</string>
-    <string name="quest_roofShape_answer_many">"Birkaç farklı şekli vardır"</string>
+    <string name="quest_roofShape_answer_many">"Birkaç farklı şekli var"</string>
     <string name="pref_title_sync">"Otomatik Senkronizasyon"</string>
     <string name="map_btn_zoom_out">"Uzaklaştır"</string>
     <string name="map_btn_zoom_in">"Yakınlaştır"</string>
@@ -141,51 +141,48 @@ Haritayı görüntülemek için vektör karoları, anonim olan &lt;a href=\"http
     <string name="autosync_on">"Açık"</string>
     <string name="autosync_only_on_wifi">"Sadece Wifi'de"</string>
     <string name="autosync_off">"Kapalı"</string>
-    <string name="quest_streetSurface_title">"Bu yol parçası hangi yüzeye sahip?"</string>
-    <string name="quest_surface_value_paved">"Kaplamalı (jenerik)"</string>
-    <string name="quest_surface_value_unpaved">"Doldurulmamış (jenerik)"</string>
-    <string name="quest_surface_value_ground">"Zemin (jenerik)"</string>
+    <string name="quest_streetSurface_title">"Bu yol hangi yüzeye sahip?"</string>
+    <string name="quest_surface_value_paved">"Döşeli (genel)"</string>
+    <string name="quest_surface_value_unpaved">"Asfaltsız (genel)"</string>
+    <string name="quest_surface_value_ground">"Zemin (genel)"</string>
     <string name="quest_surface_value_asphalt">"Asfalt"</string>
-    <string name="quest_surface_value_compacted">"Sıkıştırılmış"</string>
+    <string name="quest_surface_value_compacted">"Sert toprak"</string>
     <string name="quest_surface_value_concrete">"Beton"</string>
-    <string name="quest_surface_value_dirt">"Kir"</string>
+    <string name="quest_surface_value_dirt">"Toprak"</string>
     <string name="quest_surface_value_fine_gravel">"İnce çakıl"</string>
     <string name="quest_surface_value_grass">"Çim"</string>
-    <string name="quest_surface_value_grass_paver">"Çim finişer"</string>
     <string name="quest_surface_value_gravel">"Çakıl"</string>
-    <string name="quest_surface_value_paving_stones">"Kaldırım taşları"</string>
-    <string name="quest_surface_value_pebblestone">"Çakıl Taşları"</string>
+    <string name="quest_surface_value_paving_stones">"Parke taşı"</string>
+    <string name="quest_surface_value_pebblestone">"Çakıl Taşı"</string>
     <string name="quest_surface_value_sand">"Kum"</string>
-    <string name="quest_surface_value_sett">"Ayarla"</string>
+    <string name="quest_surface_value_sett">"Kaldırım taşı"</string>
     <string name="quest_surface_value_wood">"Ahşap"</string>
     <string name="quest_placeName_title">"Buranın adı ne?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_sidewalk_title">"Bu caddede kaldırım var mı?"</string>
-    <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Bu cadde nerede"</string>
+    <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Bu sokak nerde?"</string>
     <string name="quest_cyclewaySurface_title">"Burada bisiklet yolunun yüzeyi nedir?"</string>
-    <string name="quest_serviceType_title">"Bu yol nasıl bir hizmet şeklidir?"</string>
+    <string name="quest_serviceType_title">"Burası nasıl bir servis yolu?"</string>
     <string name="quest_streetLanes_title">"Bu yolda kaç şerit var?"</string>
     <string name="quest_streetLanes_description">"Yol işareti yoksa şeritte yoktur."</string>
     <string name="quest_streetLanes_answer_noLanes">"Hiçbir belirgin şeritleri yok"</string>
     <string name="quest_streetLanes_noLanes_estWidth">"Lütfen bu yolda kaç araba birbirine uyacağını tahmin edin."</string>
-    <string name="quest_oneway_title">"Bu bir tek yönlü cadde mi?"</string>
-    <string name="quest_address_title">"Bu binanın kapı numarası nedir?"</string>
-    <string name="store_listing_short_description">"OpenStreetMap surveyor uygulaması"</string>
+    <string name="quest_oneway_title">"Burası tek yönlü cadde mi?"</string>
+    <string name="quest_address_title">"Bu binanın kapı numarası kaç?"</string>
     <string name="store_listing_full_description">"StreetComplete ile OpenStreetMap'in geliştirilmesine yardım edin!
 
 Bu uygulama, çevrenizdeki tamamlanmamış ve genişletilebilir verileri bulur ve bir harita üzerinde işaretleyiciler olarak görüntüler. Her biri, sitedeki bilgiyi tamamlamak için basit bir soruyu yanıtlayarak çözülebilir.
 
 Girdiğiniz bilgiler daha sonra başka bir editör kullanmak zorunda kalmadan adınıza doğrudan OpenStreetMap'a eklenir."</string>
     <string name="quest_name_answer_noName">"Adı yok.…"</string>
-    <string name="quest_name_answer_noName_confirmation_title">"Gerçekten adı yok mu"</string>
+    <string name="quest_name_answer_noName_confirmation_title">"Gerçekten adı yok mu?"</string>
     <string name="quest_name_noName_confirmation_positive">"Evet, isim yok"</string>
     <string name="quest_openingHours_add_times">"Açılış saatlerini ekle"</string>
-    <string name="crash_message">"Lütfen hata raporunu geliştiriciye gönderir misiniz?"</string>
+    <string name="crash_message">"Hata raporunu geliştiriciye gönderir misin?"</string>
     <string name="crash_title">"Oh hayır, StreetComplete son kez düştü!"</string>
     <string name="crash_compose_email">"E-posta oluştur"</string>
-    <string name="no_email_client">"
-Hiçbir e-posta istemcisi kurulu değil."</string>
+    <string name="no_email_client">"e-posta istemcisi kurulu değil."</string>
     <string name="pref_title_keep_screen_on">"Ekranı açık tut"</string>
     <string name="download_server_error">"Görevler taranırken bağlantı hatası oluştu. Tekrar deneyin."</string>
     <string name="upload_server_error">"Yanıtlar yüklenirken bağlantı hatası. Daha sonra tekrar deneyin."</string>
@@ -194,23 +191,22 @@ Hiçbir e-posta istemcisi kurulu değil."</string>
     <string name="quest_busStopShelter_title">"Bu otobüs durağının üstü kapalı mı?"</string>
     <string name="quest_bikeParkingCapacity_title">"Burada kaç bisiklet park edilebilir?"</string>
     <string name="quest_address_unusualHousenumber_confirmation_description">"Bu numara çok sıradışı gözüküyor."</string>
-    <string name="quest_sport_title">"Burada ne gibi bir spor oynuyor?"</string>
+    <string name="quest_sport_title">"Burada hangi spor yapılıyor?"</string>
     <string name="quest_sport_answer_multi">"Spesifik bir spor değil"</string>
     <string name="quest_sport_soccer">"Futbol"</string>
     <string name="quest_sport_tennis">"Tenis"</string>
     <string name="quest_sport_baseball">"Beyzbol"</string>
     <string name="quest_sport_basketball">"Basketbol"</string>
     <string name="quest_sport_golf">"Golf"</string>
-    <string name="quest_sport_equestrian">"Atlı"</string>
+    <string name="quest_sport_equestrian">"Binicilik sporları"</string>
     <string name="quest_sport_athletics">"Atletizm"</string>
     <string name="quest_sport_volleyball">"Voleybol"</string>
     <string name="quest_sport_beachvolleyball">"Plaj Voleybolu"</string>
     <string name="quest_sport_american_football">"Amerikan Futbolu"</string>
     <string name="quest_sport_skateboard">"Kaykay"</string>
     <string name="quest_sport_bowls">"Çim Topu"</string>
-    <string name="quest_sport_boules">"Petank Oyunu"</string>
     <string name="quest_sport_shooting">"Atış"</string>
-    <string name="quest_sport_cricket">"Kriket Oyunu"</string>
+    <string name="quest_sport_cricket">"Kriket"</string>
     <string name="quest_sport_table_tennis">"Masa Tenisi"</string>
     <string name="quest_sport_gymnastics">"Jimnastik"</string>
     <string name="quest_sport_archery">"Okçuluk"</string>
@@ -223,53 +219,54 @@ Hiçbir e-posta istemcisi kurulu değil."</string>
     <string name="quest_sport_netball">"Netbol"</string>
     <string name="quest_sport_rugby">"Rugby"</string>
     <string name="quest_select_hint">"Seçin:"</string>
-    <string name="quest_sport_manySports_confirmation_description">"Bu saha özellikle bu sporlar için mi tasarlandı (ibareler ve malzemeler var mı?) yoksa tüm oyunlar için genel bir saha mı?"</string>
+    <string name="quest_sport_manySports_confirmation_description">"Bu spor sahası tam olarak bu sporlar için özel olarak mı tasarlandı (işaretler ve donanımlar var) veya her türlü oyun için genel amaçlı bir spor alanı mı?"</string>
     <string name="quest_manySports_confirmation_specific">"Özellikle bunlar"</string>
-    <string name="quest_manySports_confirmation_generic">"Genel Amaç"</string>
-    <string name="quest_sport_manySports_confirmation_title">"Birçok spor seçtiniz"</string>
+    <string name="quest_manySports_confirmation_generic">"Genel amaçlı"</string>
+    <string name="quest_sport_manySports_confirmation_title">"Birçok spor seçtin"</string>
 
     <!-- Fuzzy -->
     <string name="quest_busStopShelter_name_title">"%s otobüs durağının üstü kapalı mı?"</string>
-    <string name="quest_toiletsFee_title">"Bu tuvaletler ücret istiyor mu?"</string>
+    <string name="quest_toiletsFee_title">"Bu tuvalet ücretli mi?"</string>
     <string name="quest_tactilePaving_title_bus">"Bu otobüs durağında dokunmatik kaplamalar var mı?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"Bu geçit dokunsal kaplamalara sahip mi?"</string>
-    <string name="quest_source_dialog_title">"Bunu yerinde kontrol ettiğinden emin misin?"</string>
+    <string name="quest_source_dialog_title">"Bu yeri kontrol ettiğinden emin misin?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_name_bus">"%s otobüs durağının dokunsal döşemeleri var mı?"</string>
     <string name="quest_source_dialog_note">"Sadece bir inceleme ile bulunan bilgiler girilmelidir."</string>
-    <string name="quest_bicycleParkingCoveredStatus_title">"Bu bisiklet park yeri kapalı mı (yağmur korumalı)?"</string>
+    <string name="quest_bicycleParkingCoveredStatus_title">"Burası kapalı bisiklet park yeri mi(yağmurdan korunuyor)?"</string>
     <string name="dialog_session_dont_show_again">"Bu oturum için tekrar gösterme"</string>
 
     <!-- Fuzzy -->
     <string name="quest_streetSurface_name_title">"%s yolunun yüzeyi nedir?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Bu hız limiti mantıksız gözüküyor."</string>
-    <string name="quest_maxspeed_answer_noSign_confirmation_title">"Hiçbir hız limiti belirtilmediğine emin misiniz?"</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation_title">"Hız limiti belirtilmediğine emin misin?"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation">"Sokağın sonuna baktın mı?
 Tüm cadde boyunca vurgulanan bölüm için geçerli hiçbir işaret yoksa, varsayılan hız limitleri uygulanır."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Evet, işaret yok"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"Şehiriçi yolların hız limiti, şehirdışı yollardan farklıdır."</string>
+    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"Yerleşim bölgelerindeki yollar, kırsal yollara göre daha düşük bir varsayılan hız sınırına sahiptir."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_maxspeed_answer_noSign_urbanOk">"Kasabada"</string>
-    <string name="quest_maxspeed_answer_noSign_ruralOk">"Şehir Dışında"</string>
+    <string name="quest_maxspeed_answer_noSign_urbanOk">"Yerleşim yeri"</string>
+    <string name="quest_maxspeed_answer_noSign_ruralOk">"Kırsal"</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">"Eğer ana kavşakta bunun gibi bir işaret varsa farklı tabelalara gerek yoktur, bu işaret tüm alandaki hız sınırı için geçerlidir."</string>
-    <string name="quest_sport_softball">"Softball"</string>
+    <string name="quest_sport_softball">"Bi çeşit beyzbol"</string>
     <string name="quest_sport_racquet">"Raketbol"</string>
     <string name="quest_sport_ice_skating">"Buz Pateni"</string>
+    <string name="quest_sport_sepak_takraw">"Ayak voleybolu"</string>
 
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_name_title">"%s tekerlekli sandalye ile erişilebilir mi?"</string>
     <string name="quest_wheelchairAccess_limited">"Kısmen"</string>
     <string name="quest_bikeParkingCapacity_hint">"Çoğu normal standın, her iki taraftan da bisiklet park etmek için kullanılabileceğini unutmayın."</string>
-    <string name="quest_sport_roller_skating">"Tekerlekli patenle kayma"</string>
+    <string name="quest_sport_roller_skating">"Tekerlekli paten"</string>
     <string name="quest_wheelchairAccess_bus_station_title">"Bu otobüs durağı, terlekli sandalye ile erişilebilir mi?"</string>
     <string name="quest_wheelchairAccess_subway_entrance_title">"Bu metro girişi, tekerlekli sandalye ile erişilebilir mi?"</string>
-    <string name="quest_wheelchairAccess_railway_station_title">"Bu demiryolu istasyonuna tekerlekli sandalyeye erişilebilir mi?"</string>
+    <string name="quest_wheelchairAccess_railway_station_title">"Bu demiryolu istasyonuna tekerlekli sandalye erişilebilir mi?"</string>
     <string name="quest_wheelchairAccess_location_title">"Bu yer tekerlekli sandalye ile erişilebilir mi?"</string>
 
     <!-- Fuzzy -->
@@ -292,7 +289,7 @@ Tüm cadde boyunca vurgulanan bölüm için geçerli hiçbir işaret yoksa, vars
 
     <!-- Fuzzy -->
     <string name="quest_baby_changing_table_title">"%s mekanında bebek bezi değiştirme imkanı var mı?"</string>
-    <string name="quest_recycling_type_title">"Ne tür bir geridönüşüm tesisi?"</string>
+    <string name="quest_recycling_type_title">"Ne tür bir geri dönüşüm tesisi?"</string>
     <string name="recycling_centre">"Merkez"</string>
     <string name="overground_recycling_container">"Konteyner"</string>
     <string name="underground_recycling_container">"Yeraltı Konteyneri"</string>
@@ -303,23 +300,19 @@ Tüm cadde boyunca vurgulanan bölüm için geçerli hiçbir işaret yoksa, vars
     <string name="quest_streetName_cantType_title">"Klavye düzeni eksik mi?"</string>
     <string name="quest_streetName_cantType_open_settings">"Ayarları Aç"</string>
     <string name="quest_streetName_cantType_open_store">"Mağazayı Aç"</string>
-    <string name="quest_streetName_cantType_description">"
-Varsayılan klavyeyi kullanırsanız, giriş yöntemi ayarlarında ihtiyacınız olan dilde klavye düzenini etkinleştirebilirsiniz.
+    <string name="quest_streetName_cantType_description">"Varsayılan klavye kullanıyorsanız, giriş yöntemi ayarlarında ihtiyacınız olan dil için klavye düzenini kolayca etkinleştirebilme ihtimaliniz vardır.
 
-
-Aksi takdirde, uygulama mağazasında başka bir klavye indirebilirsiniz. Birçok dili destekleyen popüler klavyeler Google Gboard, SwiftKey Klavye ve Çok Amaçlı Klavye'dir.
-
-"</string>
-    <string name="quest_streetName_menuItem_nolanguage">"(Tanımlanmamış)"</string>
-    <string name="quest_fireHydrant_type_title">"Bu nasıl bir yangın söndürücüdür?"</string>
+ Aksi takdirde, başka bir klavyeyi uygulama mağazasından indirebilirsiniz.  Birçok dili destekleyen popüler klavyeler Google Gboard, SwiftKey ve Anysoft Klavye'dir."</string>
+    <string name="quest_streetName_menuItem_nolanguage">"(belirtilmemiş)"</string>
+    <string name="quest_fireHydrant_type_title">"Bu ne tür bir yangın musluğu?"</string>
     <string name="quest_fireHydrant_type_pillar">"Sütun"</string>
     <string name="quest_fireHydrant_type_underground">"Yeraltı"</string>
     <string name="quest_fireHydrant_type_wall">"Duvar"</string>
     <string name="quest_fireHydrant_type_pond">"Gölet"</string>
     <string name="credits_contributors">"Tüm listeyi &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;GitHub'da görebilirsin&lt;/a&gt;. "</string>
-    <string name="credits_translations">"Tüm liste için &lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;POEditor'deki projeye bak&lt;/a&gt;."</string>
+    <string name="credits_translations">"Tüm liste için &lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;POEditor'de projeye bak&lt;/a&gt;."</string>
     <string name="credits_translations_title">"Çeviriler"</string>
-    <string name="credits_contributors_title">"Kod Katkıda Bulurlar"</string>
+    <string name="credits_contributors_title">"Kod Katkıcıları"</string>
     <string name="credits_author_title">"Hazırlayan ve Sürdüren"</string>
     <string name="credits_and_more">"ve dahası..."</string>
     <string name="quest_maxspeed_answer_living_street">"Bu yaşayan bir sokak"</string>
@@ -332,39 +325,39 @@ Aksi takdirde, uygulama mağazasında başka bir klavye indirebilirsiniz. Birço
     <string name="produce_apricots">"Kayısı"</string>
     <string name="produce_avocados">"Avokado"</string>
     <string name="produce_bananas">"Muz"</string>
-    <string name="produce_blueberries">"Yabanmersini"</string>
+    <string name="produce_blueberries">"Yaban mersini"</string>
     <string name="produce_cacao">"Kakao"</string>
     <string name="produce_cashew_nuts">"Kaju fıstığı"</string>
-    <string name="produce_cherries">"Kirazlar"</string>
+    <string name="produce_cherries">"Kiraz"</string>
     <string name="produce_chestnuts">"Kestane"</string>
     <string name="produce_coconuts">"Hindistan Cevizi"</string>
     <string name="produce_coffee">"Kahve"</string>
     <string name="produce_cranberries">"Kızılcık"</string>
-    <string name="produce_dates">"Tarih"</string>
+    <string name="produce_dates">"Hurma"</string>
     <string name="produce_figs">"İncir"</string>
     <string name="produce_grapefruits">"Greyfurt"</string>
     <string name="produce_guavas">"Guava"</string>
-    <string name="produce_hazelnuts">"Fındıklar"</string>
+    <string name="produce_hazelnuts">"Fındık"</string>
     <string name="produce_hops">"Şerbetçiotu"</string>
     <string name="produce_jojoba">"Jojoba"</string>
     <string name="produce_kiwis">"Kivi"</string>
-    <string name="produce_kola_nuts">"Kola fıstığı"</string>
-    <string name="produce_lemons">"Limonlar"</string>
+    <string name="produce_kola_nuts">"Kola cevizi"</string>
+    <string name="produce_lemons">"Limon"</string>
     <string name="produce_limes">"Misket limonu"</string>
     <string name="produce_mangos">"Mango"</string>
-    <string name="produce_mate">"Dostum"</string>
-    <string name="produce_nutmeg">"Küçük Hindistan Cevizi"</string>
-    <string name="produce_oil_palms">"Yağlı avuç içi"</string>
+    <string name="produce_mate">"Mate otu"</string>
+    <string name="produce_nutmeg">"Muskat"</string>
+    <string name="produce_oil_palms">"Palmiye"</string>
     <string name="produce_olives">"Zeytin"</string>
     <string name="produce_oranges">"Portakal"</string>
-    <string name="produce_papayas">"Kavunağacı"</string>
+    <string name="produce_papayas">"Papaya"</string>
     <string name="produce_peaches">"Şeftali"</string>
     <string name="produce_pears">"Armut"</string>
     <string name="produce_chili">"Kırmızı biber"</string>
-    <string name="produce_persimmons">"Trabzon hurması"</string>
+    <string name="produce_persimmons">"Cennet elması"</string>
     <string name="produce_pineapples">"Ananas"</string>
     <string name="produce_pepper">"Yeşil biber"</string>
-    <string name="produce_pistachios">"Şamfıstığı"</string>
+    <string name="produce_pistachios">"Fıstık"</string>
     <string name="produce_plums">"Erik"</string>
     <string name="produce_raspberries">"Ahududu"</string>
     <string name="produce_rubber">"Kauçuk"</string>
@@ -375,32 +368,29 @@ Aksi takdirde, uygulama mağazasında başka bir klavye indirebilirsiniz. Birço
     <string name="produce_sisal">"Sisal"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_way_lit_title">"Bu bölüm aydınlatılmış mı?"</string>
+    <string name="quest_way_lit_title">"Bu yol aydınlatılmış mı?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_way_lit_road_title">"Yolun bu bölümü aydınlatılmış mı?"</string>
-    <string name="quest_way_lit_automatic">"Hareket algılama kullanır"</string>
-    <string name="quest_way_lit_24_7">"Gece gündüz aydınlandı"</string>
+    <string name="quest_way_lit_automatic">"Harekete duyarlı"</string>
+    <string name="quest_way_lit_24_7">"Gece gündüz yanıyor"</string>
     <string name="pref_title_authorized_username_summary">"İzin verilen hesap: %s"</string>
-    <string name="cannot_find_bbox_or_reduce_tilt">"Burada aranamıyor. Biraz yaklaşmayı veya haritayı eğmemeyi dene."</string>
+    <string name="cannot_find_bbox_or_reduce_tilt">"Burada tarama yapamıyorum.  Daha fazla yakınlaştırmayı deneyin veya haritayı daha az eğin."</string>
     <string name="quest_crossing_type_title">"Bu ne tür bir geçiş?"</string>
     <string name="quest_crossing_type_signals">"Trafik ışıklı geçiş"</string>
     <string name="quest_crossing_type_uncontrolled">"Kontrolsüz geçiş"</string>
     <string name="quest_crossing_type_unmarked">"Yol işaretleri olmayan geçiş"</string>
     <string name="compass_north_one_letter">"K"</string>
     <string name="action_undo">"Geri al"</string>
-    <string name="no_changes_to_undo">"Geri alınacak bir şey yok"</string>
     <string name="undo_confirm_title">"Son cevabı geri almak istiyor musun?"</string>
     <string name="produce_mangosteen">"Mangostan"</string>
     <string name="produce_tomatoes">"Domates"</string>
-    <string name="produce_areca_nuts">"Areca nut"</string>
     <string name="produce_sweet_peppers">"Tatlı biber"</string>
     <string name="produce_brazil_nuts">"Brezilya fındığı"</string>
-    <string name="produce_tung_nuts">"Tung fındığı"</string>
     <string name="quest_parkingType_title">"Bu ne tür bir park alanı?"</string>
-    <string name="quest_parkingType_surface">"Normal"</string>
+    <string name="quest_parkingType_surface">"Otopark"</string>
     <string name="quest_parkingType_underground">"Yeraltı otoparkı"</string>
-    <string name="quest_parkingType_multiStorage">"Otopark"</string>
+    <string name="quest_parkingType_multiStorage">"Kapalı Otopark"</string>
     <string name="quest_toiletAvailability_name_title">"%s alanında tuvalet var mı?"</string>
     <string name="quest_powerPolesMaterial_title">"Bu elektrik direğinin malzemesi ne?"</string>
     <string name="quest_powerPolesMaterial_wood">"Ahşap"</string>
@@ -412,11 +402,13 @@ Aksi takdirde, uygulama mağazasında başka bir klavye indirebilirsiniz. Birço
     <string name="quest_buildingLevels_roofLevelsLabel2">"Çatı katı sayısı"</string>
     <string name="quest_buildingLevels_levelsLabel2">"Kat sayısı (çatı katı hariç)"</string>
     <string name="pref_title_authorized_summary">"İzin verildi"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingLevels_answer_multipleLevels">"Binanın bölümüne göre değişiyor"</string>
     <string name="quest_buildingLevels_answer_description">"Bu durumda en yüksek bölümün değerlerini girin"</string>
     <string name="unglue_hint">"Görüntüyü konumdan ayırmak için dokun"</string>
     <string name="pref_title_not_authorized_summary2">"İzin vermek için tarayıcınızdan giriş yapın"</string>
-    <string name="about_category_feedback">"Geribildirim"</string>
+    <string name="about_category_feedback">"Geri bildirim"</string>
     <string name="quest_leave_new_note_photo">"Fotoğraf ekle"</string>
     <string name="quest_leave_new_note_photo_delete_title">"Bu resmi silmek istiyor musun?"</string>
     <string name="quest_cycleway_value_track">"Bisiklet parkuru"</string>
@@ -425,7 +417,7 @@ Aksi takdirde, uygulama mağazasında başka bir klavye indirebilirsiniz. Birço
     <string name="quest_cycleway_value_shared">"trafikteki diğer araçlarla paylaşılıyor"</string>
     <string name="quest_cycleway_value_bus_lane">"otobüs yolunda"</string>
     <string name="quest_cycleway_value_sidewalk">"kaldırım ile paylaşılıyor"</string>
-    <string name="quest_leave_new_note_create_image_error">"Fotoğraf için dosya yaratılamadı"</string>
+    <string name="quest_leave_new_note_create_image_error">"Fotoğraf için dosya oluşturulamıyor"</string>
     <string name="quest_cycleway_value_lane_dual">"iki yönde de bisiklet şeridi"</string>
     <string name="quest_cycleway_value_track_dual">"iki yönde de bisiklet parkuru"</string>
     <string name="quest_cycleway_value_sidewalk_allowed">"Yok, ama bisikletliler kaldırımda sürebilir"</string>

@@ -46,14 +46,14 @@ layers:
                     sprite_default: quest
                     offset: [-16px, -64px]
         dots_no_collide:
-            filter: { $zoom: { min: 17 } }
+            filter: { $zoom: { min: 16 } }
             draw:
                 quest-dots:
                     size: 16px
                     collide: false
                     offset: [-2.5px, -22px]
         dots:
-            filter: { $zoom: { min: 13, max: 16.999 } }
+            filter: { $zoom: { min: 13, max: 15.999 } }
             draw:
                 quest-dots:
                     size: 16px

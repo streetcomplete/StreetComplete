@@ -341,7 +341,6 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="quest_crossing_type_unmarked">"Incrocio senza segnaletica stradale"</string>
     <string name="compass_north_one_letter">"N"</string>
     <string name="action_undo">"Annulla"</string>
-    <string name="no_changes_to_undo">"Niente da annullare"</string>
     <string name="undo_confirm_title">"Annullare quest'ultima risposta?"</string>
     <string name="produce_mangosteen">"Mangostano"</string>
     <string name="produce_tomatoes">"Pomodori"</string>
@@ -364,6 +363,8 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="quest_buildingLevels_roofLevelsLabel2">"Piani nel tetto"</string>
     <string name="quest_buildingLevels_levelsLabel2">"Piani (senza contare il tetto)"</string>
     <string name="pref_title_authorized_summary">"Autorizzato"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingLevels_answer_multipleLevels">"differisce per parte dell'edificio"</string>
     <string name="quest_buildingLevels_answer_description">"In questo caso, inserisci semplicemente i valori della parte più alta dell'edificio."</string>
     <string name="unglue_hint">"Tocca per scollare la vista dalla posizione"</string>
@@ -679,7 +680,12 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="quest_split_way_description">"Se cambia lungo il tragitto la prima cosa da fare è suddividere il percorso. Dopo di che sarà possibile rispondere separatamente per ogni tratto. Tieni presente che le missioni per le parti divise potrebbero apparire dopo molto tempo. Suddividere?"</string>
     <string name="quest_split_way_tutorial">"Tocca il percorso da dividere dove la risposta cambia. Cerca di essere più preciso possibile; se necessario, come sempre, puoi ingrandire."</string>
     <string name="quest_split_way_too_imprecise">"Per favore ingrandisci di più"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_split_way_many_splits_confirmation_description">"Queste sono parecchie divisioni. Puoi dividere ancora la strada più tardi."</string>
     <string name="quest_footwayPartSurface_title">"Qual è la superficie di questo passaggio pedonale?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title">"I servizi igienici in %s sono accessibili con la sedia a rotelle?"</string>
+    <string name="quest_maxweight_title">"Qual è il limite di peso qui?"</string>
+    <string name="quest_maxweight_answer_noSign">"Non c'è alcun segnale"</string>
+    <string name="quest_maxweight_unusualInput_confirmation_description">"Il peso inserito sembra erroneo. Sei sicuro sia corretto?"</string>
 </resources>

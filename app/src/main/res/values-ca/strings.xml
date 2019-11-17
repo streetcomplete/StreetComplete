@@ -346,7 +346,6 @@ En cas contrari, podeu baixar un altre teclat a la botiga d'aplicacions. Els tec
     <string name="quest_crossing_type_unmarked">"Encreuament sense senyals horitzontals"</string>
     <string name="compass_north_one_letter">"N"</string>
     <string name="action_undo">"Desfer"</string>
-    <string name="no_changes_to_undo">"Res a desfer"</string>
     <string name="undo_confirm_title">"Desfer la darrera resposta?"</string>
     <string name="produce_mangosteen">"Mangostà"</string>
     <string name="produce_tomatoes">"Tomàquets"</string>
@@ -369,6 +368,8 @@ En cas contrari, podeu baixar un altre teclat a la botiga d'aplicacions. Els tec
     <string name="quest_buildingLevels_roofLevelsLabel2">"nivell en la teulada"</string>
     <string name="quest_buildingLevels_levelsLabel2">"nivells normals (sense comptar la teulada)"</string>
     <string name="pref_title_authorized_summary">"Autoritzat"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingLevels_answer_multipleLevels">"És diferent a vàries parts de l'edifici"</string>
     <string name="quest_buildingLevels_answer_description">"En aquest cas, senzillament entreu els valors de la part d'edifici més alta."</string>
     <string name="unglue_hint">"Toca per desenganxar la vista des de la posició"</string>
@@ -682,6 +683,8 @@ Per example 1,3 o 2-6."</string>
     <string name="quest_split_way_description">"Si varia al llarg de la via, el primer pas és dividir la via. Després de fer-ho, es pot respondre la missió per a cada tram separadament. Tingueu en compte que les missions per als trams poden aparèixer molt més tard. Voleu dividir-la ara?"</string>
     <string name="quest_split_way_tutorial">"Toqueu en la via per a dividir-la en els punts on la resposta varia. Intenteu de ser tan precís com sigui possible, podeu apropar-vos-hi com és habitual."</string>
     <string name="quest_split_way_too_imprecise">"Apropeu-vos més"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_split_way_many_splits_confirmation_description">"Ja hi ha unes quantes divisions. Sempre podeu afegir-ne més endavant."</string>
     <string name="quest_footwayPartSurface_title">"Quin tipus de superfície té el camí de vianants aquí?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title">"Els serveis de %s són accessibles amb cadira de rodes?"</string>

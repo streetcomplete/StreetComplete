@@ -300,9 +300,6 @@
         "natural": {
             "name": "প্রাকৃতিক"
         },
-        "amenity/post_box": {
-            "name": "ডাকবাক্স"
-        },
         "natural/peak": {
             "name": "চূড়া"
         },
@@ -518,9 +515,6 @@
         },
         "shop/car_parts": {
             "name": "গাড়ির যন্ত্রাংশের দোকান"
-        },
-        "landuse/construction": {
-            "name": "মেরামত"
         },
         "building/garage": {
             "name": "গ্যারেজ"

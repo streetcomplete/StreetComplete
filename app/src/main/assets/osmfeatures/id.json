@@ -1108,10 +1108,6 @@
         "natural": {
             "name": "Alami"
         },
-        "amenity/post_box": {
-            "name": "Kotak Surat",
-            "terms": "Kotak Pos"
-        },
         "natural/water/lake": {
             "name": "Danau",
             "terms": "Situ"
@@ -1489,10 +1485,6 @@
         },
         "office/lawyer": {
             "name": "Kantor Hukum"
-        },
-        "landuse/construction": {
-            "name": "Konstruksi",
-            "terms": "Sedang Dibangun"
         },
         "highway/trunk_link": {
             "name": "Jalan Raya Penghubung",

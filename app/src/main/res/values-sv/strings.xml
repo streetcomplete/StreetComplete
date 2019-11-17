@@ -382,7 +382,6 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_crossing_type_unmarked">"Övergångsställe utan vägmarkeringar"</string>
     <string name="compass_north_one_letter">"N"</string>
     <string name="action_undo">"Ångra"</string>
-    <string name="no_changes_to_undo">"Finns inget att ångra"</string>
     <string name="undo_confirm_title">"Ångra det senaste svaret?"</string>
     <string name="produce_mangosteen">"Mangostan"</string>
     <string name="produce_tomatoes">"Tomater"</string>
@@ -405,6 +404,8 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_buildingLevels_roofLevelsLabel2">"takvåningar"</string>
     <string name="quest_buildingLevels_levelsLabel2">"vanliga våningar (räknar inte takvåningar)"</string>
     <string name="pref_title_authorized_summary">"Godkänd"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingLevels_answer_multipleLevels">"varierar mellan olika husdelar"</string>
     <string name="quest_buildingLevels_answer_description">"I sådana fall, fyll i värdet för den högsta husdelen"</string>
     <string name="unglue_hint">"Klicka för att lossa fixerad vy"</string>

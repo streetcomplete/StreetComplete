@@ -351,7 +351,6 @@ Caso contrário, pode baixar outro teclado na loja de aplicativos. Alguns dos te
     <string name="quest_crossing_type_unmarked">"Cruzamento sem marcação na pista"</string>
     <string name="compass_north_one_letter">"N"</string>
     <string name="action_undo">"Desfazer"</string>
-    <string name="no_changes_to_undo">"Nada para desfazer"</string>
     <string name="undo_confirm_title">"Desfazer a última resposta?"</string>
     <string name="produce_mangosteen">"Mangostão"</string>
     <string name="produce_tomatoes">"Tomates"</string>
@@ -376,6 +375,8 @@ Caso contrário, pode baixar outro teclado na loja de aplicativos. Alguns dos te
     <string name="quest_buildingLevels_roofLevelsLabel2">"andares no telhado"</string>
     <string name="quest_buildingLevels_levelsLabel2">"andares comuns (sem contar o telhado)"</string>
     <string name="pref_title_authorized_summary">"Autorizado"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingLevels_answer_multipleLevels">"Difere por parte do edifício"</string>
     <string name="quest_buildingLevels_answer_description">"Neste caso é só inserir os valores da parte mais alta da construção."</string>
     <string name="unglue_hint">"Toque para de selecionar a visão da posição"</string>
@@ -735,6 +736,8 @@ Is "Altar" really fitting here? It is about a building type after all. -->
     <string name="quest_leaf_type_mixed">"Ambas"</string>
     <string name="quest_cyclewayPartSurface_title">"Que tipo de pavimento tem a ciclovia aqui?"</string>
     <string name="quest_split_way_too_imprecise">"Por favor aproxime mais"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_split_way_many_splits_confirmation_description">"Parecem muitas divisões.  Você pode dividir mais depois se precisar."</string>
     <string name="quest_footwayPartSurface_title">"Que tipo de pavimento tem o caminho de pedestre aqui?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title">"O banheiro em %s é acessível para cadeirantes?"</string>

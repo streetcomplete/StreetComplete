@@ -106,17 +106,21 @@ produce_tomato.jpg             CC-BY-SA 3.0      https://commons.wikimedia.org/w
 
 snip.wav                       CC0               https://freesound.org/people/Godowan/sounds/240473/
 
-surface_asphalt.jpg            Public Domain     https://commons.wikimedia.org/wiki/File:Ground_frost_damages.JPG
-surface_cobblestone.jpg        CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Bad_Radkersburg_Murgasse_IMG_0583.jpg
-surface_compacted.jpg          CC-BY 2.0         https://www.flickr.com/photos/ian_munroe/3633361321
-surface_concrete.jpg           CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:2014-08-29_15_33_15_View_across_Stuyvesant_Avenue_in_Ewing,_New_Jersey,_with_concrete_pavement_likely_dating_to_the_1950s.JPG
-surface_dirt.jpg               CC-BY 3.0         https://commons.wikimedia.org/wiki/File:Dirt_road_towards_the_south_and_Ndara_Borehole_in_the_Tsavo_East_National_Park,_Kenya.jpg
-surface_grass_paver.jpg        Public Domain     https://commons.wikimedia.org/wiki/File:Rasenpflasterstein_1.jpg
-surface_pebblestone.jpg        CC-BY-SA 2.0      https://wiki.openstreetmap.org/wiki/File:Dscf1829-800.jpg
-surface_sand.jpg               CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:2013-08-21_12_04_26_View_south_towards_Barnegat_Lighthouse_along_the_sand_road_to_Barnegat_Inlet_in_Island_Beach_State_Park.jpg
-surface_sett.jpg               CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Brusteinshalden.JPG
-surface_wood.jpg               CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Wooden_Bridge_In_Midst_of_Kaziranga_Wild_life_Sanctuary.jpg
-surface_metal.jpg              Public Domain     https://commons.wikimedia.org/wiki/File:Metal_steel_surface.jpg
+surface_asphalt.jpg            Public Domain     https://commons.wikimedia.org/wiki/File:Ground_frost_damages.JPG (SeppVei)
+surface_cobblestone.jpg        CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Bad_Radkersburg_Murgasse_IMG_0583.jpg (E.mil.mil)
+surface_compacted.jpg          CC-BY 2.0         https://www.flickr.com/photos/ian_munroe/3633361321 (Ian Munroe)
+surface_concrete.jpg           CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:2014-08-29_15_33_15_View_across_Stuyvesant_Avenue_in_Ewing,_New_Jersey,_with_concrete_pavement_likely_dating_to_the_1950s.JPG (Famartin)
+surface_dirt.jpg               CC-BY 3.0         https://commons.wikimedia.org/wiki/File:Dirt_road_towards_the_south_and_Ndara_Borehole_in_the_Tsavo_East_National_Park,_Kenya.jpg (CT Cooper)
+surface_grass_paver.jpg        Public Domain     https://commons.wikimedia.org/wiki/File:Rasenpflasterstein_1.jpg (Immanuel Giel)
+surface_pebblestone.jpg        CC-BY-SA 2.0      https://wiki.openstreetmap.org/wiki/File:Dscf1829-800.jpg (FrankM)
+surface_sand.jpg               CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:2013-08-21_12_04_26_View_south_towards_Barnegat_Lighthouse_along_the_sand_road_to_Barnegat_Inlet_in_Island_Beach_State_Park.jpg (Famartin )
+surface_sett.jpg               CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Brusteinshalden.JPG (Øyvind Holmstad )
+surface_wood.jpg               CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Wooden_Bridge_In_Midst_of_Kaziranga_Wild_life_Sanctuary.jpg (Pavan Goswami )
+surface_metal.jpg              Public Domain     https://commons.wikimedia.org/wiki/File:Metal_steel_surface.jpg (Titus Tscharntke)
+surface_paving_stones.jpg      CC0               https://commons.wikimedia.org/wiki/File:PUB.DOM.DED.Pixa_AcerPics_Dec.'17_01-12-17_Brick_street_stones_LOW_RES_(25052487258).jpg (MabelAmber)
+surface_gravel.jpg             CC-BY 3.0         https://commons.wikimedia.org/wiki/File:Gravel_at_the_top_of_Vidova_gora,_island_of_Bra%C4%8D,_Croatia.jpg (Ante Perkovic)
+surface_fine_gravel.jpg        CC0               https://commons.wikimedia.org/wiki/File:Schottertextur_20160312_1.jpg (Sebastian Rittau)
+surface_grass.jpg              CC-BY-SA 2.0      https://upload.wikimedia.org/wikipedia/commons/d/d9/Footpath_through_the_long_grass_near_Southorpe_Bottom_%28geograph_4621359%29.jpg (Richard Humphrey)
 
 tactile_paving_illustration... CC-BY 2.0         https://www.flickr.com/photos/jeanlouis_zimmermann/10072029534/in/album-72157635218804514/
                                CC-BY 2.0         https://www.flickr.com/photos/jeanlouis_zimmermann/10493532264/in/album-72157635218804514/

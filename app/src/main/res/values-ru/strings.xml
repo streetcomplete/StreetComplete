@@ -29,13 +29,13 @@
     <string name="quest_leave_new_note_title">"Оставить заметку взамен?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_leave_new_note_description">"Можно оставить заметку на этом месте, о которой смогут позаботиться другие пользователи:"</string>
+    <string name="quest_leave_new_note_description">"Можно оставить в этой точке заметку, о которой смогут позаботиться другие пользователи, либо просто сделать, чтобы этот квест вам больше не показывался"</string>
     <string name="quest_leave_new_note_yes">"OK"</string>
     <string name="quest_leave_new_note_no">"Нет, просто скрыть"</string>
     <string name="quest_streetName_title">"Как называется эта дорога?"</string>
     <string name="quest_streetName_description">"как написано на дорожных знаках, сокращения должны быть раскрыты:"</string>
     <string name="quest_streetName_answer_noName_confirmation_description">"Иногда знаки и таблички могут быть только на одном конце улицы. Иногда их отсутствие означает, что это просто боковая улица, которая принадлежит основной. Обычно, если на улице есть какие-либо строения, то у неё есть и название."</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Если название может быть написано без сокращений, то так и следует сделать. Многие распространённые сокращения уже раскрываются в процессе ввода, но не все."</string>
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Если название может быть написано без сокращений, так и следует его писать. Многие распространённые сокращения уже раскрываются в процессе ввода, но не все."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Нет сокращений"</string>
 
     <!-- Fuzzy -->
@@ -81,11 +81,9 @@
     <string name="offline">"Нет подключения к сети"</string>
 
     <!-- Fuzzy -->
-    <string name="confirmation_authorize_now">"Необходимо войти в аккаунт OSM для выгрузки ваших ответов. Хотите войти сейчас?"</string>
+    <string name="confirmation_authorize_now">"Для того, чтобы ваши ответы были переданы в базу данных OSM, необходимо войти в свою учетную запись в OSM. Сделаем это сейчас?"</string>
     <string name="not_authorized">"Не авторизовано"</string>
-
-    <!-- Fuzzy -->
-    <string name="version_banned_message">"Этой версии StreetComplete было запрещено отправлять ответы! Обновите StreetComplete!"</string>
+    <string name="version_banned_message">"Эта версия StreetComplete устарела. Пожалуйста, обновите ее!"</string>
     <string name="no_gps_no_quests">"Для автоматического сканирования заданий поблизости включите определение местоположения"</string>
     <string name="nothing_more_to_download">"Больше квестов нет"</string>
     <string name="later">"Не сейчас"</string>
@@ -130,7 +128,7 @@
 &lt;p&gt;&lt;b&gt;Использование данных&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 Как уже было сказано, приложение использует инфраструктуру OSM напрямую. А именно, &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;Overpass API&lt;/a&gt; для загрузки квестов (анонимно) и &lt;a href=\"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM API&lt;/a&gt; для отправки изменений.&lt;br/&gt;
-Однако перед отправкой изменений приложение проверяет &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;простой текстовый файл&lt;/a&gt; на моём сервере, чтобы определить, не было ли запрещено этой версии приложения отправлять изменения. Это позволит избежать возможного повреждения данных OSM версиями приложения, которые могут содержать критические ошибки.&lt;br/&gt;
+Однако перед отправкой изменений приложение проверяет &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;простой текстовый файл&lt;/a&gt; на моём сервере, чтобы определить, не было ли запрещено этой версии приложения отправлять изменения. Это позволит избежать возможного повреждения данных OSM теми версиями приложения, в которых обнаружены критические ошибки.&lt;br/&gt;
 &lt;/p&gt;
 &lt;p&gt;
 Векторные изображения для отображения карты анонимно загружаются с &lt;a href=\"https://mapzen.com/projects/vector-tiles/\"&gt;сервиса векторных карт Mapzen&lt;/a&gt;. Данный сервис запоминает запросы, чтобы оценить популярность определённых районов для кэширования и повышения скорости работы. Платформа Mapzen также запоминает IP-адреса и полностью находится на Amazon, поэтому подчиняется условиям использования хостинга этой компании.
@@ -142,18 +140,18 @@
     <string name="autosync_only_on_wifi">"Только по Wi-Fi"</string>
     <string name="autosync_off">"Выключена"</string>
     <string name="quest_streetSurface_title">"Какое покрытие у данного участка дороги?"</string>
-    <string name="quest_surface_value_paved">"Твердое (generic)"</string>
-    <string name="quest_surface_value_unpaved">"Сыпучее (generic)"</string>
-    <string name="quest_surface_value_ground">"Нет покрытия (generic)"</string>
+    <string name="quest_surface_value_paved">"Твердое (без конкретики)"</string>
+    <string name="quest_surface_value_unpaved">"Сыпучее (без конкретики)"</string>
+    <string name="quest_surface_value_ground">"Нет покрытия (без конкретики)"</string>
     <string name="quest_surface_value_asphalt">"Асфальт"</string>
-    <string name="quest_surface_value_compacted">"Грунт"</string>
+    <string name="quest_surface_value_compacted">"Уплотнённое"</string>
     <string name="quest_surface_value_concrete">"Бетон"</string>
     <string name="quest_surface_value_dirt">"Грязь"</string>
     <string name="quest_surface_value_fine_gravel">"Мелкий гравий"</string>
     <string name="quest_surface_value_grass">"Трава"</string>
     <string name="quest_surface_value_grass_paver">"Газонная решетка"</string>
     <string name="quest_surface_value_gravel">"Гравий"</string>
-    <string name="quest_surface_value_paving_stones">"Тротуарная плитка"</string>
+    <string name="quest_surface_value_paving_stones">"Мощение плиткой"</string>
     <string name="quest_surface_value_pebblestone">"Галька"</string>
     <string name="quest_surface_value_sand">"Песок"</string>
     <string name="quest_surface_value_sett">"Брусчатка"</string>
@@ -164,9 +162,9 @@
     <string name="quest_sidewalk_title">"На этой улице есть тротуар?"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Где находится эта улица?"</string>
     <string name="quest_cyclewaySurface_title">"Какое покрытие у этой велодорожки?"</string>
-    <string name="quest_serviceType_title">"Какой тип служебного проезда?"</string>
+    <string name="quest_serviceType_title">"Какой тип у этого проезда?"</string>
     <string name="quest_streetLanes_title">"Сколько полос у этой дороги?"</string>
-    <string name="quest_streetLanes_description">"Если разметки нет, значит полосы не размечены."</string>
+    <string name="quest_streetLanes_description">"Если разметки нет, значит полос нет."</string>
     <string name="quest_streetLanes_answer_noLanes">"Полосы не размечены"</string>
     <string name="quest_streetLanes_noLanes_estWidth">"Пожалуйста, оцените сколько машин поместится на данной дороге бок о бок."</string>
     <string name="quest_oneway_title">"Это односторонняя улица?"</string>
@@ -174,9 +172,9 @@
     <string name="store_listing_short_description">"Приложение-топограф для OpenStreetMap"</string>
     <string name="store_listing_full_description">"Помогите улучшить OpenStreetMap вместе с StreetComplete!
 
-Данное приложение ищет неполные и расширяемые данные в округе и отображает их на карте в виде маркеров. Каждое из этих заданий можно решить, ответив на простой вопрос.
+Данное приложение ищет неполные и потенциально уточняемые данные в округе и отображает их на карте в виде маркеров. Каждое из таких заданий можно решить, ответив на один простой вопрос.
 
-Данные, которые вы вводите, добавляются в OpenStreetMap под вашим именем, без необходимости использовать другой редактор."</string>
+Данные, которые вы вводите, добавляются непосредственно в базу OpenStreetMap под вашим именем, без необходимости использования других редакторов."</string>
     <string name="quest_name_answer_noName">"Нет названия…"</string>
     <string name="quest_name_answer_noName_confirmation_title">"Действительно нет названия?"</string>
     <string name="quest_name_noName_confirmation_positive">"Да, нет названия"</string>
@@ -190,9 +188,9 @@
     <string name="upload_server_error">"Ошибка сети при отправке ответов. Повторите попытку позже."</string>
     <string name="quest_generic_hasFeature_yes">"Да"</string>
     <string name="quest_generic_hasFeature_no">"Нет"</string>
-    <string name="quest_busStopShelter_title">"Защищена ли эта автобусная остановка от погодных условий?"</string>
+    <string name="quest_busStopShelter_title">"Эта автобусная остановка имеет укрытие от дождя?"</string>
     <string name="quest_bikeParkingCapacity_title">"Сколько велосипедов можно здесь припарковать?"</string>
-    <string name="quest_address_unusualHousenumber_confirmation_description">"Номер дома выглядит очень странно."</string>
+    <string name="quest_address_unusualHousenumber_confirmation_description">"Номер дома выглядит очень необычно."</string>
     <string name="quest_sport_title">"Для какого вида спорта предназначено это поле?"</string>
     <string name="quest_sport_answer_multi">"Не для конкретного вида спорта"</string>
     <string name="quest_sport_soccer">"Футбол"</string>
@@ -228,12 +226,12 @@
     <string name="quest_sport_manySports_confirmation_title">"Вы выбрали несколько видов спорта"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_busStopShelter_name_title">"Защищена ли автобусная остановка %s от погодных условий?"</string>
+    <string name="quest_busStopShelter_name_title">"Имеет ли автобусная остановка %s укрытие от дождя?"</string>
     <string name="quest_toiletsFee_title">"Это платные туалеты?"</string>
     <string name="quest_tactilePaving_title_bus">"Есть ли на этой автобусной остановке тактильная разметка?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_tactilePaving_title_crosswalk">"Есть ли на этом пешеходном переходе тактильная разметка?"</string>
+    <string name="quest_tactilePaving_title_crosswalk">"Есть ли на этом пешеходном переходе тактильная разметка с обеих сторон?"</string>
     <string name="quest_source_dialog_title">"Вы точно проверили это на месте?"</string>
 
     <!-- Fuzzy -->
@@ -246,7 +244,7 @@
     <string name="quest_streetSurface_name_title">"Какое покрытие у этого участка дороги %s?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Это ограничение скорости выглядит неправдоподобно."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Ограничение точно не установлено?"</string>
-    <string name="quest_maxspeed_answer_noSign_confirmation">"Вы проверили на концах улицы? Если нет знаков вдоль всей улицы которые применимы для выбранного участка, укажите стандартное ограничение скорости."</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation">"Вы проверили на обоих концах улицы? Если вдоль всей улицы нет ни одного знака, относящегося к выбранному участку дороги, укажите стандартное ограничение скорости."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Да, знаков нет"</string>
 
     <!-- Fuzzy -->
@@ -266,7 +264,7 @@
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_name_title">"Доступно ли %s для инвалидных колясок?"</string>
     <string name="quest_wheelchairAccess_limited">"Частично"</string>
-    <string name="quest_bikeParkingCapacity_hint">"Заметьте, что к большинству обычных стоек можно закрепить по велосипеду с каждой стороны."</string>
+    <string name="quest_bikeParkingCapacity_hint">"Учтите, что к большинству обычных стоек можно закрепить по велосипеду с каждой стороны."</string>
     <string name="quest_sport_roller_skating">"Катание на роликах"</string>
     <string name="quest_wheelchairAccess_bus_station_title">"Доступна ли эта автобусная остановка для инвалидных колясок?"</string>
     <string name="quest_wheelchairAccess_subway_entrance_title">"Этот вход в метро оборудован для инвалидных колясок?"</string>
@@ -277,7 +275,7 @@
     <string name="quest_wheelchairAccess_bus_station_name_title">"Доступна ли автобусная остановка %s для инвалидных колясок?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_subway_entrance_name_title">"Этот вход в метро %s оборудован для инвалидных колясок?"</string>
+    <string name="quest_wheelchairAccess_subway_entrance_name_title">"Этот вход в метро на станцию %s оборудован для инвалидных колясок?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_railway_station_name_title">"Доступна ли железнодорожная станция %s для инвалидных колясок?"</string>
@@ -288,11 +286,11 @@
     <string name="quest_wheelchairAccess_limited_description_public_transport">"«Частично» значит, что нужно преодолеть не более одной ступеньки."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Сокращение в названии %s?"</string>
-    <string name="quest_baby_changing_table_toilets_title">"В этом туалете есть столик для смены пелёнок?"</string>
+    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"В названии %s есть сокращение?"</string>
+    <string name="quest_baby_changing_table_toilets_title">"В этом туалете есть пеленальный столик?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_baby_changing_table_title">"В %s есть столик для смены пелёнок?"</string>
+    <string name="quest_baby_changing_table_title">"В %s есть пеленальный столик?"</string>
     <string name="quest_recycling_type_title">"Какого типа этот пункт переработки отходов?"</string>
     <string name="recycling_centre">"Центр"</string>
     <string name="overground_recycling_container">"Контейнер"</string>
@@ -303,19 +301,19 @@
     <string name="quest_streetName_answer_cantType">"Не могу ввести символы на знаке"</string>
     <string name="quest_streetName_cantType_title">"Нет нужной раскладки?"</string>
     <string name="quest_streetName_cantType_open_settings">"Открыть настройки"</string>
-    <string name="quest_streetName_cantType_open_store">"Открыть магазин"</string>
+    <string name="quest_streetName_cantType_open_store">"Открыть магазин приложений"</string>
     <string name="quest_streetName_cantType_description">"Если у вас клавиатура по умолчанию, скорее всего, нужно лишь добавить раскладку клавиатуры для нужного языка в настройках ввода.
 
-В противном случае можно загрузить другую клавиатуру. Популярные клавиатуры, которые поддерживают множество языков: Google Gboard, SwiftKey Keyboard и Multiling O Keyboard."</string>
+В противном случае можно загрузить другую клавиатуру. Популярные клавиатуры, которые поддерживают многоязычность: Google Gboard, SwiftKey Keyboard и Multiling O Keyboard."</string>
     <string name="quest_streetName_menuItem_nolanguage">"(не указано)"</string>
     <string name="quest_fireHydrant_type_title">"Какого типа этот пожарный гидрант?"</string>
-    <string name="quest_fireHydrant_type_pillar">"Надземный"</string>
-    <string name="quest_fireHydrant_type_underground">"Подземный"</string>
-    <string name="quest_fireHydrant_type_wall">"Пожарный кран"</string>
-    <string name="quest_fireHydrant_type_pond">"Пруд"</string>
+    <string name="quest_fireHydrant_type_pillar">"Надземный (гидрант)"</string>
+    <string name="quest_fireHydrant_type_underground">"Подземный (люк)"</string>
+    <string name="quest_fireHydrant_type_wall">"Пожарный кран на стене"</string>
+    <string name="quest_fireHydrant_type_pond">"Пожарный пруд"</string>
     <string name="credits_contributors">"Смотрите &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;полный список на GitHub&lt;/a&gt;"</string>
     <string name="credits_translations">"Смотрите &lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;проект на POEditor&lt;/a&gt;, где есть полный список."</string>
-    <string name="credits_translations_title">"Перевод"</string>
+    <string name="credits_translations_title">"Переводы"</string>
     <string name="credits_contributors_title">"Вклад в код внесли"</string>
     <string name="credits_author_title">"Автор и сопровождающий"</string>
     <string name="credits_and_more">"и другие…"</string>
@@ -379,7 +377,7 @@
 
     <!-- Fuzzy -->
     <string name="quest_way_lit_road_title">"Освещена ли эта часть дороги?"</string>
-    <string name="quest_way_lit_automatic">"Используется обнаружение присутствия"</string>
+    <string name="quest_way_lit_automatic">"Используется датчик движения"</string>
     <string name="quest_way_lit_24_7">"Освещается днём и ночью"</string>
     <string name="pref_title_authorized_username_summary">"Авторизованная учётная запись: %s"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Поиск невозможен. Попробуйте приблизить ещё или повернуть карту под меньшим углом."</string>
@@ -389,12 +387,11 @@
     <string name="quest_crossing_type_unmarked">"Переход без дорожной разметки"</string>
     <string name="compass_north_one_letter">"С"</string>
     <string name="action_undo">"Отменить"</string>
-    <string name="no_changes_to_undo">"Отменять нечего"</string>
     <string name="undo_confirm_title">"Отменить последний ответ на вопрос?"</string>
     <string name="produce_mangosteen">"Мангостан"</string>
     <string name="produce_tomatoes">"Томаты"</string>
     <string name="produce_areca_nuts">"Орехи бетель"</string>
-    <string name="produce_sweet_peppers">"Сладкие перцы"</string>
+    <string name="produce_sweet_peppers">"Сладкий перец"</string>
     <string name="produce_brazil_nuts">"Бразильские орехи"</string>
     <string name="produce_tung_nuts">"Орехи тунга"</string>
     <string name="quest_parkingType_title">"Какого типа эта парковка?"</string>
@@ -414,11 +411,13 @@
     <string name="quest_buildingLevels_roofLevelsLabel2">"этажи в составе крыши"</string>
     <string name="quest_buildingLevels_levelsLabel2">"обычные этажи (исключая крышу)"</string>
     <string name="pref_title_authorized_summary">"Авторизовано"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingLevels_answer_multipleLevels">"По-разному для разных частей здания"</string>
     <string name="quest_buildingLevels_answer_description">"В этом случае просто введите значения для самой высокой части здания."</string>
 
     <!-- s/position/location/ for consistency? -->
-    <string name="unglue_hint">"Отвязать карту от местоположения"</string>
+    <string name="unglue_hint">"Коснитесь чтобы отвязать карту от местоположения"</string>
     <string name="pref_title_not_authorized_summary2">"Войти через браузер и авторизовать"</string>
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Разделены ли полосы противоположных направлений физически (барьером или островком безопасности)? От этого зависит ограничение скорости по умолчанию."</string>
     <string name="about_category_feedback">"Обратная связь"</string>
@@ -430,12 +429,12 @@
     <string name="quest_cycleway_value_lane">"полоса для велосипедистов"</string>
     <string name="quest_cycleway_value_none">"нет"</string>
     <string name="quest_cycleway_value_shared">"полоса явно указанная для совместного движения"</string>
-    <string name="quest_cycleway_value_bus_lane">"на выделенной для автобусов полосе"</string>
-    <string name="quest_cycleway_value_sidewalk">"тротуар для пешеходов и велосипедистов"</string>
+    <string name="quest_cycleway_value_bus_lane">"на выделенной полосе для автобусов"</string>
+    <string name="quest_cycleway_value_sidewalk">"разрешённый знаками тротуар для пешеходов и велосипедистов"</string>
     <string name="quest_leave_new_note_create_image_error">"Не удалось создать файл для фото"</string>
     <string name="quest_cycleway_value_lane_dual">"велосипедная полоса, движение в обе стороны"</string>
-    <string name="quest_cycleway_value_track_dual">"велодорожка, в обе стороны"</string>
-    <string name="quest_cycleway_value_sidewalk_allowed">"нет, но велосипеды разрешены на тротуаре"</string>
+    <string name="quest_cycleway_value_track_dual">"велодорожка, движение в обе стороны"</string>
+    <string name="quest_cycleway_value_sidewalk_allowed">"нет, но знаки разрешают движение велосипедистов по тротуару"</string>
     <string name="pref_category_advanced">"Расширенные"</string>
     <string name="pref_title_quests">"Выбор квестов"</string>
     <string name="quest_enabled">"Включён"</string>
@@ -444,16 +443,16 @@
     <string name="reorder_quest_priority_hint">"Долгое нажатие и перетаскивание квестов меняет их приоритет при загрузке и отображении на карте."</string>
     <string name="undo_confirm_positive">"Отменить"</string>
     <string name="undo_confirm_negative">"Оставить"</string>
-    <string name="quest_dietType_vegetarian_name_title">"Если ли у \"%s\" вегетарианские блюда в меню?"</string>
-    <string name="quest_dietType_vegan_name_title">"Если ли у \"%s\" веганские блюда в меню?"</string>
+    <string name="quest_dietType_vegetarian_name_title">"Если ли в \"%s\" вегетарианские блюда в меню?"</string>
+    <string name="quest_dietType_vegan_name_title">"Если ли в \"%s\" веганские блюда в меню?"</string>
     <string name="quest_hasFeature_only">"Только"</string>
     <string name="quest_dietType_explanation_vegan">"Веганские блюда не содержат продуктов животного происхождения (мяса, молочных продуктов, яиц и т.д.)."</string>
-    <string name="quest_dietType_explanation_vegetarian">"Вегетарианские блюда не содержат мяса."</string>
+    <string name="quest_dietType_explanation_vegetarian">"Вегетарианские блюда не содержат мяса или рыбы."</string>
     <string name="quest_dietType_explanation">"Отвечайте «Да» только в том случае, если заведение имеет диетические варианты блюд, отсутствие закусок и т.д."</string>
     <string name="quest_carWashType_title">"Какого типа эта автомойка?"</string>
     <string name="quest_carWashType_automated">"Автоматическая"</string>
-    <string name="quest_carWashType_selfService">"Самообслуживания"</string>
-    <string name="quest_carWashType_service">"Обслуживаемая персоналом"</string>
+    <string name="quest_carWashType_selfService">"Самообслуживание"</string>
+    <string name="quest_carWashType_service">"Мытьё машины мойщиками"</string>
     <string name="enable_quest_confirmation_title">"Включить этот тип квестов?"</string>
     <string name="default_disabled_msg_go_inside">"Этот тип квестов выключен по умолчанию, потому что для ответа на такие вопросы, скорее всего, нужно войти в заведение."</string>
 
@@ -464,20 +463,19 @@
     <string name="quest_openingHours_emptyAnswer">"Вам надо описать, что вывеске. Если нет вывески, вы должны спросить о режиме работы внутри."</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"никаких, но велосипедисты могут ехать во всех направлениях."</string>
     <string name="quest_streetName_answer_noName_question">"Почему у этой улицы нет названия?"</string>
-    <string name="quest_streetName_answer_noProperStreet_service2">"Это дворовой проезд или подъезд для парковки"</string>
+    <string name="quest_streetName_answer_noProperStreet_service2">"Это дворовый проезд или подъезд для парковки"</string>
     <string name="quest_streetName_answer_noProperStreet_track2">"Это полевая или лесная дорога"</string>
     <string name="quest_streetName_answer_noName_noname">"Ничего из выше перечисленных, просто у неё нет названия."</string>
-    <string name="quest_wheelchairAccess_toilets_title">"Эти туалеты доступны для инвалидных колясок."</string>
-    <string name="quest_wheelchairAccess_toilets_name_title">"Туалет %s доступен для инвалидной коляски?"</string>
-    <string name="quest_wheelchairAccess_description_toilets">"Знак инвалидной коляски, подобный этому, может быть виден, если туалет доступен.
-    Частично это означает, что инвалидная коляска может вводить и пользоваться туалетом, но нет поручней или адаптированного ручного бассейна."</string>
+    <string name="quest_wheelchairAccess_toilets_title">"Эти туалеты доступны для инвалидных колясок?"</string>
+    <string name="quest_wheelchairAccess_toilets_name_title">"Туалет %s доступен для инвалидных колясок?"</string>
+    <string name="quest_wheelchairAccess_description_toilets">"Подобный знак инвалидной коляски может быть виден только если туалет свободен. Обычно такое означает, что инвалид-колясочник может вкатиться и воспользоваться туалетом, но туалет не оборудован поручнями и пониженной раковиной."</string>
     <string name="map_btn_create_note">"Создать новую заметку"</string>
     <string name="create_new_note_unprecise">"Увеличьте масштаб для создания заметки"</string>
-    <string name="create_new_note_description">"Оставьте заметку, чтобы указать картографами на ошибку в этом месте. Отрегулируйте позицию заметки на карте:"</string>
+    <string name="create_new_note_description">"Вы можете оставить заметку, указывающую картографам на ошибку в этой точке. Двигая карту, отрегулируйте точное размещение оставляемой заметки:"</string>
     <string name="pref_title_quests_invalidation">"Перезаписать кеш квестов"</string>
     <string name="pref_title_quests_invalidation_summary">"Полезно, если думаете, что часть квестов устарела"</string>
     <string name="invalidate_confirmation">"Перезаписать"</string>
-    <string name="invalidation_dialog_message">"Недействительность кеша приводит к тому, что квесты обновляются при следующей загрузке. Кэш квеста автоматически аннулируется через неделю и сразу же, когда квест, на который вы решили, уже получил ответ от кого-то другого."</string>
+    <string name="invalidation_dialog_message">"Недействительность кеша приводит к тому, что квесты обновляются при следующей загрузке. Кэш квеста автоматически обновляется через неделю, или сразу же, если на полученный вами квест пришёл ответ от кого-то ещё."</string>
     <string name="quest_generic_looks_like_this">"Обычно выглядит так:"</string>
     <string name="quest_surface_value_metal">"мета́лл"</string>
     <string name="quest_cycleway_title2">"Здесь есть велодорожка? Какого типа?"</string>
@@ -487,45 +485,45 @@
     <string name="quest_internet_access_wired">"Проводной (LAN)"</string>
     <string name="quest_internet_access_terminal">"Компьютер с доступом в интернет"</string>
     <string name="quest_internet_access_no">"Нет соединения"</string>
-    <string name="quest_busStopShelter_tram_name_title">"Защищена ли трамвайная остановка %s от погодных условий?"</string>
-    <string name="quest_busStopShelter_tram_title">"Защищена ли эта трамвайная остановка от погодных условий?"</string>
+    <string name="quest_busStopShelter_tram_name_title">"Имеет ли трамвайная остановка %s крышу от дождя?"</string>
+    <string name="quest_busStopShelter_tram_title">"Имеет ли эта трамвайная остановка крышу от дождя?"</string>
     <string name="quest_bench_backrest_title">"Есть ли у этой скамейки спинка?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_bench_answer_picnic_table">"Это стол для пикника"</string>
-    <string name="quest_religion_for_place_of_worship_title">"Какая религия в %s?"</string>
+    <string name="quest_religion_for_place_of_worship_title">"Какая религия исповедуется в месте поклонения %s?"</string>
     <string name="quest_religion_christian">"Христианство"</string>
     <string name="quest_religion_muslim">"Ислам"</string>
     <string name="quest_religion_hindu">"Индуизм"</string>
     <string name="quest_religion_buddhist">"Буддизм"</string>
-    <string name="quest_religion_shinto">"Синто"</string>
+    <string name="quest_religion_shinto">"Синтоизм"</string>
     <string name="quest_religion_jewish">"Иудаизм"</string>
     <string name="quest_religion_taoist">"Даосизм"</string>
-    <string name="quest_religion_for_place_of_worship_answer_multi">"для использования любой религией"</string>
+    <string name="quest_religion_for_place_of_worship_answer_multi">"место для использования любой религией"</string>
     <string name="quest_religion_sikh">"Сикхизм"</string>
     <string name="quest_religion_jain">"Джайнизм"</string>
     <string name="quest_religion_bahai">"Вера Бахаи"</string>
     <string name="quest_religion_caodaist">"Каодай"</string>
     <string name="quest_religion_chinese_folk">"Китайская народная религия"</string>
-    <string name="quest_religion_for_wayside_shrine_title">"Какой религии храм?"</string>
-    <string name="quest_parking_fee_title">"Есть плата за парковку?"</string>
+    <string name="quest_religion_for_wayside_shrine_title">"К какой религии относится этот храм?"</string>
+    <string name="quest_parking_fee_title">"Эта парковка платная?"</string>
     <string name="quest_cycleway_value_lane_soft">"велосипедная полоса (пунктирная разметка)"</string>
     <string name="quest_surface_value_unhewn_cobblestone">"Необработанный булыжник"</string>
 
     <!-- Fuzzy -->
     <string name="quest_parking_access_title">"Имеются ли здесь ограничения на парковку?"</string>
     <string name="quest_parking_access_private">"Это частное"</string>
-    <string name="quest_parking_access_yes">"Открыта для всех (платная или бесплатная)"</string>
+    <string name="quest_parking_access_yes">"Открыта для всех (платно или бесплатно)"</string>
     <string name="quest_parking_access_customers">"Только для клиентов"</string>
-    <string name="quest_streetName_pedestrian_title">"Какое название этой пешеходной улицы?"</string>
+    <string name="quest_streetName_pedestrian_title">"Какое называется эта пешеходная улица?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_streetSurface_square_title">"Какой тип покрытия у этой площади?"</string>
-    <string name="quest_streetSurface_square_name_title">"Какая поверхность у площади %s?"</string>
+    <string name="quest_streetSurface_square_name_title">"Какой тип покрытия у площади %s?"</string>
     <string name="quest_fee_answer_hours">"Зависит от времени суток и дня…"</string>
     <string name="quest_fee_add_times">"Добавьте время"</string>
     <string name="quest_fee_only_at_hours">"Да, но только если"</string>
-    <string name="quest_fee_not_at_hours">"Да, но нет..."</string>
+    <string name="quest_fee_not_at_hours">"Да, кроме как..."</string>
     <string name="quest_fee_hours_title">"в такие часы:"</string>
     <string name="quest_busStopName_title">"Какое название у автобусной остановки?"</string>
     <string name="quest_tramStopName_title">"Какое название у трамвайной остановки?"</string>
@@ -543,22 +541,22 @@
     <string name="quest_collectionTimes_add_times">"Добавить время выемки"</string>
     <string name="quest_collectionTimes_answer_no_times_specified">"Время не указано"</string>
     <string name="quest_construction_road_title">"Дорожные работы завершены?"</string>
-    <string name="quest_construction_cycleway_title">"Работы на велодорожке завершены?"</string>
-    <string name="quest_construction_footway_title">"Работы на пешеходной дорожке завершены?"</string>
-    <string name="quest_construction_generic_title">"Дорожные работы завершены?"</string>
-    <string name="quest_construction_building_title">"Работы в здании завершены?"</string>
-    <string name="questList_disabled_in_country">"Не показывать в %s"</string>
+    <string name="quest_construction_cycleway_title">"Ремонт этой велодорожки завершён?"</string>
+    <string name="quest_construction_footway_title">"Ремонт этой пешеходной дорожки завершён?"</string>
+    <string name="quest_construction_generic_title">"Ремонт этой дорожки завершён?"</string>
+    <string name="quest_construction_building_title">"Это здание достроено?"</string>
+    <string name="questList_disabled_in_country">"Никогда не показываются в стране %s"</string>
     <string name="quest_toiletAvailability_rest_area_title">"В этой зоне отдыха есть туалеты?"</string>
     <string name="quest_pathSurface_title_steps">"Какое покрытие у этих ступеней?"</string>
-    <string name="quest_pathSurface_title_bridleway">"Какая поверхность у этого уздечка здесь?"</string>
-    <string name="quest_pathSurface_title">"Какая поверхность имеет этот путь здесь?"</string>
+    <string name="quest_pathSurface_title_bridleway">"Какое покрытие у этой тропы для лошадей?"</string>
+    <string name="quest_pathSurface_title">"Какое покрытие у этой тропы?"</string>
     <string name="quest_select_hint_most_specific">"Выберите наиболее подходящий вариант:"</string>
     <string name="quest_generic_item_confirmation">"Вы уверены, что не можете дать более точное описание?"</string>
-    <string name="privacy_html_tileserver">"&lt;p&gt; Чтобы отобразить карту, векторные фрагменты извлекаются из &lt;a href=\"https://tiles.map-data.de\"&gt; map-data.de &lt;/a&gt;. Служба регистрирует запросы на черепицу для анонимной статистики и для обнаружения проблем, но удаляет журналы через несколько дней. &lt;/ P&gt;"</string>
-    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt; Для некоторых квестов загружаются некоторые дополнительные данные от третьих сторон. В частности, квест oneway запрашивает API, также размещенный на westnordost.de, о вероятных кандидатах на oneways. &lt;/ P&gt;"</string>
+    <string name="privacy_html_tileserver">"&lt;p&gt; Чтобы отобразить карту, векторные тайлы запрашиваются с сайта из &lt;a href=\"https://tiles.map-data.de\"&gt; map-data.de &lt;/a&gt;. Этот сервис собирает информацию о том, какие тайлы запрашиваются для сбора анонимной статистики и выявления проблем. Журналы удаляются через несколько дней. &lt;/ P&gt;"</string>
+    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt; Для некоторых квестов загружаются дополнительные данные из прочих источников. В частности, квест \"эта улица односторонняя?\" запрашивает сервис westnordost.de на предмет вероятно односторонних улиц. &lt;/ P&gt;"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"Нет (оставьте заметку)"</string>
-    <string name="pref_quests_reset">"Сбросить видимость и последовательность квестов?"</string>
-    <string name="quest_buildingType_title2">"Какое это здание было построено?"</string>
+    <string name="pref_quests_reset">"Сбросить выбор и приоритет квестов на дефолтные значения?"</string>
+    <string name="quest_buildingType_title2">"Что за здание здесь построили?"</string>
     <string name="quest_generic_item_invalid_value">"Пожалуйста, выберите более конкретное значение"</string>
     <string name="quest_buildingType_answer_multiple_types">"Многоцелевое здание"</string>
     <string name="quest_buildingType_answer_multiple_types_description">"Просто выберите основное назначение здания. Например, если есть магазин на первом этаже с квартирами над над ним, то всё равно это многоквартирный дом."</string>
@@ -574,14 +572,14 @@
     <string name="quest_buildingType_detached_description">"отдельностоящий дом для одной семьи"</string>
     <string name="quest_buildingType_semi_detached">"Двухквартирный дом"</string>
     <string name="quest_buildingType_semi_detached_description">"для проживания двух семей"</string>
-    <string name="quest_buildingType_terrace">"Дом ленточной застройки"</string>
-    <string name="quest_buildingType_terrace_description">"линейный ряд подобных односемейных домов"</string>
+    <string name="quest_buildingType_terrace">"Жилые дома блокированной застройки"</string>
+    <string name="quest_buildingType_terrace_description">"Расположенные в ряд однотипные жилые дома на 1 семью, блокированные друг с другом боковыми стенами"</string>
     <string name="quest_buildingType_hotel">"Гостиница"</string>
     <string name="quest_buildingType_dormitory">"Общежитие"</string>
     <string name="quest_buildingType_houseboat">"Плавучий дом"</string>
     <string name="quest_buildingType_bungalow">"Бунгало"</string>
-    <string name="quest_buildingType_bungalow_description">"маленький отдельностоящий дом (дача, дача, ...)"</string>
-    <string name="quest_buildingType_static_caravan">"Передвижной дом"</string>
+    <string name="quest_buildingType_bungalow_description">"Дача (летний домик)"</string>
+    <string name="quest_buildingType_static_caravan">"Трейлер на постоянной стоянке"</string>
     <string name="quest_buildingType_commercial">"Коммерческая недвижимость"</string>
     <string name="quest_buildingType_commercial_generic_description">"здание где работают люди, магазины или любая другая коммерческая недвижимость"</string>
     <string name="quest_buildingType_industrial">"Промышленное здание"</string>
@@ -599,8 +597,8 @@
     <string name="quest_buildingType_temple">"Храм"</string>
     <string name="quest_buildingType_pagoda">"Пагода"</string>
     <string name="quest_buildingType_synagogue">"Синагога"</string>
-    <string name="quest_buildingType_civic">"Гражданское строительство"</string>
-    <string name="quest_buildingType_civic_description">"общественное здание обычно снабжает удобствами"</string>
+    <string name="quest_buildingType_civic">"Общественное здание"</string>
+    <string name="quest_buildingType_civic_description">"Общественное здание: мэрия, библиотека, бассейн..."</string>
     <string name="quest_buildingType_kindergarten">"Детский сад"</string>
     <string name="quest_buildingType_school">"Школа"</string>
     <string name="quest_buildingType_college">"Колледж"</string>
@@ -617,9 +615,9 @@
     <string name="quest_buildingType_garages">"Гаражи"</string>
     <string name="quest_buildingType_parking">"Паркинг"</string>
     <string name="quest_buildingType_farm">"На ферме"</string>
-    <string name="quest_buildingType_farmhouse">"Жилой дом"</string>
+    <string name="quest_buildingType_farmhouse">"Жилое строение"</string>
     <string name="quest_buildingType_farmhouse_description">"жилой дом на ферме"</string>
-    <string name="quest_buildingType_farm_auxiliary">"Нежилой дом"</string>
+    <string name="quest_buildingType_farm_auxiliary">"Нежилое строение"</string>
     <string name="quest_buildingType_farm_auxiliary_description">"нежилые здания на ферме"</string>
     <string name="quest_buildingType_greenhouse">"Теплица"</string>
     <string name="quest_buildingType_other">"Другие"</string>
@@ -634,28 +632,28 @@
     <string name="quest_buildingType_bunker">"Бункер"</string>
     <string name="quest_address_answer_no_housenumber">"Нет номера дома…"</string>
     <string name="quest_address_answer_no_housenumber_message1">"Строению были добавлены теги:"</string>
-    <string name="quest_address_answer_no_housenumber_message2">"Правильно ли это и не только часть здания?"</string>
+    <string name="quest_address_answer_no_housenumber_message2">"Верно ли указано и не относится ли только к части данного здания?"</string>
     <string name="quest_buildingType_shrine">"усыпальница"</string>
     <string name="quest_maxspeed_title_short2">"Каков предел скорости для этой улицы?"</string>
     <string name="quest_maxspeed_answer_sign">"Знак"</string>
-    <string name="quest_maxspeed_answer_zone2">"Он находится в зоне (медленной)"</string>
-    <string name="quest_maxspeed_answer_noSign2">"Нет знака, применяются по умолчанию"</string>
+    <string name="quest_maxspeed_answer_zone2">"Он находится в (медленной) зоне"</string>
+    <string name="quest_maxspeed_answer_noSign2">"Нет знака, указываем скорость по умолчанию"</string>
     <string name="quest_openingHours_no_sign">"Часы работы не обозначены"</string>
-    <string name="quest_maxspeed_name_title2">"Каково ограничение скорости для %s здесь?"</string>
+    <string name="quest_maxspeed_name_title2">"Каково ограничение скорости для дороги %s?"</string>
     <string name="quest_buildingType_sports_centre">"Спортивный центр"</string>
     <string name="quest_buildingType_toilets">"Туалеты"</string>
     <string name="quest_maxspeed_sign_question">"Что определяет ограничение скорости?"</string>
     <string name="notification_channel_download">"Скачать"</string>
-    <string name="quest_playground_access_title">"Доступна ли эта детская площадка?"</string>
-    <string name="quest_segregated_title">"Как здесь выложены дорожка и велосипедная дорожка?"</string>
+    <string name="quest_playground_access_title">"Эта детская площадка доступна для всех?"</string>
+    <string name="quest_segregated_title">"Как здесь расположены пешеходная и велосипедная дорожки?"</string>
     <string name="dialog_tutorial_upload">"Чтобы загрузить изменения вручную, используйте кнопку на панели инструментов, которая выглядит так."</string>
-    <string name="quest_segregated_separated">"Разделяются друг от друга"</string>
-    <string name="quest_segregated_mixed">"Велосипедисты и пешеходы используют общее пространство"</string>
+    <string name="quest_segregated_separated">"Отделены друг от друга"</string>
+    <string name="quest_segregated_mixed">"Велосипедисты и пешеходы движутся по одной дороге"</string>
     <string name="quest_maxheight_title">"Какой здесь предел высоты?"</string>
     <string name="quest_maxheight_parking_entrance_title">"Каков максимальный лимит парковки?"</string>
     <string name="quest_maxheight_height_restrictor_title">"Каков предел высоты этого ограничителя высоты?"</string>
     <string name="quest_maxheight_tunnel_title">"Каков предел высоты этого туннеля?"</string>
-    <string name="quest_maxheight_answer_noSign">"Нет знака…"</string>
+    <string name="quest_maxheight_answer_noSign">"Здесь нет знака…"</string>
     <string name="quest_maxheight_answer_noSign_question">"Достаточно ли высоты для даже самых больших грузовиков (минимум 4.5 метра)?"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"Эта высота выглядит неправдоподобной. Вы уверены, что это правильно?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
@@ -665,35 +663,79 @@
     <string name="quest_railway_crossing_barrier_title">"Чем защищён этот железнодорожный переезд?"</string>
     <string name="quest_railway_crossing_barrier_none">"Ничем"</string>
     <string name="privacy_html_image_upload2">"&lt;p&gt;Приложенные фотографии загружаются на мой сервер и удаляются через несколько дней после того, как заметка будет рассмотрена. Все метаданные фотографий удаляются.&lt;/p&gt;"</string>
-    <string name="action_deselect_all">"Снять выделение"</string>
+    <string name="action_deselect_all">"Снять выделение со всех"</string>
     <string name="quest_buildingType_retail_description">"включая здания ресторанов, кафе, ..."</string>
     <string name="quest_openingHours_timeSelect_next">"Следующий"</string>
-    <string name="quest_tracktype_title">"Насколько твердое покрытие на трассе?"</string>
-    <string name="quest_tracktype_grade1">"Твёрдое"</string>
-    <string name="quest_tracktype_grade2">"Преимущественно твердое"</string>
-    <string name="quest_tracktype_grade3">"Смешанный"</string>
-    <string name="quest_tracktype_grade4">"Преимущественно мягкое"</string>
-    <string name="quest_tracktype_grade5">"Мягкое"</string>
-    <string name="quest_building_underground_name_title">"Находится ли %s полностью под землей?"</string>
+    <string name="quest_tracktype_title">"Насколько мягкая поверхность этой колеи?"</string>
+    <string name="quest_tracktype_grade1">"Твёрдая"</string>
+    <string name="quest_tracktype_grade2">"Преимущественно твердая"</string>
+    <string name="quest_tracktype_grade3">"Средне"</string>
+    <string name="quest_tracktype_grade4">"Преимущественно мягкая"</string>
+    <string name="quest_tracktype_grade5">"Мягкая"</string>
+    <string name="quest_building_underground_name_title">"Находится ли строение %s полностью под землей?"</string>
     <string name="quest_building_underground_title">"Находится ли это строение полностью под землей?"</string>
     <string name="quest_traffic_signals_sound_title">"Есть ли здесь звуковые сигналы для слепых?"</string>
     <string name="quest_wheelchairAccess_limited_description_outside">"«Частично» означает, что нужно преодолеть не более одной ступеньки для доступа в заведение."</string>
     <string name="quest_wheelchairAccess_outside_title">"Доступно ли это место для инвалидных колясок?"</string>
     <string name="quest_traffic_signals_button_title">"Есть ли у этого светофора кнопка для запроса перехода?"</string>
-    <string name="quest_motorcycleParkingCapacity_title">"Сколько мотоциклов может быть запарковано тут:"</string>
-    <string name="quest_motorcycleParkingCoveredStatus_title">"Снабжена ли эта парковка для мотоциклов укрытием (защита от дождя)?"</string>
-    <string name="default_disabled_msg_maxspeed">"Это задание выключено по умолчанию, потому что обычно требует проверить всю улицу на знаки ограничения скорости, не только подсвеченный сегмент. Это может быть слишком долгим для одного задания."</string>
+    <string name="quest_motorcycleParkingCapacity_title">"Сколько мотоциклов может быть тут запарковано?"</string>
+    <string name="quest_motorcycleParkingCoveredStatus_title">"Снабжена ли эта парковка для мотоциклов навесом от дождя?"</string>
+    <string name="default_disabled_msg_maxspeed">"Это задание выключено по умолчанию, потому что обычно требует проверить всю улицу на знаки ограничения скорости, не только подсвеченный сегмент. Это может быть достаточно долгим для одного задания."</string>
     <string name="pref_title_quests_restore_hidden">"Показать скрытые квесты"</string>
     <string name="restore_hidden_success">"Показано %d скрытых квестов"</string>
+
+    <!-- caution: This is not necessarily the floor and level=0 is not necessarily at street level
+    as it may follow the numbering scheme of the building operator. Try to use a generic wording
+    that does not carry an implicit meaning of where it is located in respect to the ground floor.
+    The context is usually shopping centres, train stations or airport terminals -->
+    <string name="on_level">"на уровне %s:"</string>
+
+    <!-- as in: "Where is the metro station?" - "It is underground" -->
+    <string name="underground">"Подземное:"</string>
     <string name="quest_sidewalk_value_yes">"тротуар"</string>
     <string name="quest_sidewalk_value_no">"нет тротуара"</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">"Запрещается ли пешеходам ходить по этой дороге?"</string>
+    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Эта улица была отмечена как не имеющая тротуара с обеих сторон. В случае, если все-таки тротуар есть, но он нарисован как отдельная дорога, пожалуйста, ответьте \"тротуар\"."</string>
     <string name="quest_buildingType_title">"Какого типа это здание?"</string>
     <string name="pref_title_theme_select">"Выберите тему"</string>
     <string name="theme_automatic">"Автоматически"</string>
     <string name="theme_light">"Светлая"</string>
     <string name="theme_dark">"Темная"</string>
-    <string name="theme_system_default">"Система по умолчанию"</string>
-    <string name="pref_title_overpass_url_info">"Требуется перезапуск приложения, чтобы применить. Может обойти цензуру, например в России."</string>
+    <string name="theme_system_default">"Согласно настройкам системы"</string>
+    <string name="quest_placeName_title_name">"Как называется это место?"</string>
+    <string name="action_open_location">"Посмотреть местоположение в другом приложении"</string>
+    <string name="map_application_missing">"Другие картографические приложения не установлены"</string>
+    <string name="pref_title_overpass_url_select">"Изменить сервер Overpass"</string>
+    <string name="pref_title_overpass_url_info">"Может обойти цензуру, например в России. После изменения необходим перезапуск приложения."</string>
     <string name="label_housenumber">"номер дома"</string>
+    <string name="label_blocknumber">"номер корпуса"</string>
+    <string name="quest_busStopShelter_covered">"У остановки есть навес"</string>
+    <string name="quest_ferry_pedestrian_name_title">"Перевозит ли паром %s пешеходов?"</string>
+    <string name="quest_ferry_pedestrian_title">"Этот паром перевозит пешеходов?"</string>
+    <string name="quest_ferry_motor_vehicle_name_title">"Перевозит ли паром %s механические транспортные средства"</string>
+    <string name="quest_ferry_motor_vehicle_title">"Этот паром перевозит механические транспортные средства?"</string>
+    <string name="quest_leave_new_note_photos_are_useful">"Фото сделает вашу заметку намного информативнее"</string>
+    <string name="quest_postboxCollectionTimes_name_title">"Когда из этого почтового ящика %s забирают корреспонденцию?"</string>
+    <string name="create_new_note_hint">"В заметке используйте либо местный язык этой территории, либо английский."</string>
+    <string name="about_contributing">"Ваши ответы делают карту OpenStreetMap точнее и лучше. Все данные в OSM свободны и открыты, ими могут пользоваться все. Многие крупные проекты уже используют OSM."</string>
+    <string name="about_missing_stars">"В настоящее время количество полученных очков не переносится с одного устройства на другое, так как ваши ответы записываются напрямую в базу данных OpenStreetMap."</string>
+    <string name="how_to_get_stars">"Выберите один из маркеров на карте и ответьте на вопрос. Таким образом, вы улучшите OpenStreetMap и получите очки. Если вы не видите маркеров, попробуйте приблизить карту."</string>
+    <string name="oauth_remove_authorization_dialog_message">"Выйти из аккаунта OSM?"</string>
+    <string name="oauth_remove_authorization_confirmation">"Выйти"</string>
+    <string name="quest_leafType_title">"Здесь растут хвойные деревья или лиственные?"</string>
+    <string name="quest_leaf_type_needles">"Хвойные"</string>
+    <string name="quest_leaf_type_broadleaved">"Лиственные
+"</string>
+    <string name="quest_leaf_type_mixed">"Есть и те и те"</string>
+    <string name="quest_cyclewayPartSurface_title">"Какое покрытие у этой велодорожки?"</string>
+    <string name="quest_generic_answer_differs_along_the_way">"Отличается на разных участках (необходимо разбить линию на части)"</string>
+    <string name="quest_split_way_description">"Если ответ отличается на разных участках этой дороги, тогда необходимо разбить её на части. После этого можно будет снова ответить на вопрос, уже для каждой из частей. Обратите внимание, в случае разделения линии на части, задание для каждой из частей может появиться несколько позже.
+Разбиваем на части?"</string>
+    <string name="quest_split_way_tutorial">"Нажмите на линию, чтобы разделить ее в том месте, начиная с которого ответ будет отличаться. Постарайтесь указать место как можно точнее, если необходимо, увеличьте карту."</string>
+    <string name="quest_split_way_too_imprecise">"Пожалуйста, увеличьте масштаб"</string>
+
+    <!-- Fuzzy -->
+    <string name="quest_split_way_many_splits_confirmation_description">"Это достаточно много частей. Вы всегда можете разделить эту линию на части позже."</string>
+    <string name="quest_footwayPartSurface_title">"Какое покрытие у пешеходной дорожки?"</string>
+    <string name="quest_wheelchairAccess_toiletsPart_title">"Этот туалет %s доступен для инвалидных колясок?"</string>
 </resources>

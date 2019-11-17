@@ -99,7 +99,6 @@
     <string name="quest_roofShape_select_one">"Επιλέξτε ένα:"</string>
     <string name="quest_roofShape_show_more">"Δείξε περισσότερα..."</string>
     <string name="quest_roofShape_answer_many">"Έχει πολλά διαφορετικά σχήματα"</string>
-    <string name="pref_category_cache">"μνήμη "</string>
     <string name="pref_title_sync">"Αυτόματος Συγχρονισμός"</string>
     <string name="map_btn_zoom_out">"Σμίκρυνση"</string>
     <string name="map_btn_zoom_in">"Μεγέθυνση"</string>
@@ -349,7 +348,6 @@
     <string name="quest_crossing_type_unmarked">"Διασταύρωση χωρίς οδικές σημάνσεις"</string>
     <string name="compass_north_one_letter">"Ν"</string>
     <string name="action_undo">"Αναίρεση"</string>
-    <string name="no_changes_to_undo">"Τίποτα για αναίρεση"</string>
     <string name="undo_confirm_title">"Αναίρεση της ακόλουθης τελευταίας απάντησης;"</string>
     <string name="produce_mangosteen">"Μανγκοστίν"</string>
     <string name="produce_tomatoes">"Ντομάτες"</string>
@@ -374,6 +372,8 @@
     <string name="quest_buildingLevels_roofLevelsLabel2">"επίπεδα στην οροφή"</string>
     <string name="quest_buildingLevels_levelsLabel2">"κανονικά επίπεδα (χωρίς να υπολογίζουμε την οροφή)"</string>
     <string name="pref_title_authorized_summary">"Εξουσιοδοτημένο"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingLevels_answer_multipleLevels">"διαφέρει ανά τμήμα κτιρίου"</string>
     <string name="quest_buildingLevels_answer_description">"Σε αυτή την περίπτωση, απλώς εισάγετε τις τιμές του υψηλότερου μέρους του κτιρίου."</string>
     <string name="unglue_hint">"Πατήστε για απεμπλοκή προβολής από την τοποθεσία"</string>
@@ -634,5 +634,53 @@
     <string name="quest_traffic_signals_button_title">"Έχουν αυτά τα φανάρια κουμπί για να ανάψει το πράσινο φως;"</string>
     <string name="quest_motorcycleParkingCapacity_title">"Πόσες μοτοσυκλέτες μπορούν να σταθμεύσουν εδώ;"</string>
     <string name="quest_motorcycleParkingCoveredStatus_title">"Αυτό το πάρκινγκ μοτοσυκλετών καλύπτεται (προστατεύεται από τη βροχή);"</string>
+    <string name="pref_title_quests_restore_hidden">"Επαναφορά κρυφών αναζητήσεων"</string>
+    <string name="restore_hidden_success">"Επαναφορά %d κρυφών αναζητήσεων"</string>
+
+    <!-- caution: This is not necessarily the floor and level=0 is not necessarily at street level
+    as it may follow the numbering scheme of the building operator. Try to use a generic wording
+    that does not carry an implicit meaning of where it is located in respect to the ground floor.
+    The context is usually shopping centres, train stations or airport terminals -->
+    <string name="on_level">"στο επίπεδο %s:"</string>
+
+    <!-- as in: "Where is the metro station?" - "It is underground" -->
+    <string name="underground">"Υπόγειος"</string>
+    <string name="quest_sidewalk_value_yes">"πεζοδρόμιο"</string>
+    <string name="quest_sidewalk_value_no">"χωρίς πεζοδρόμιο"</string>
+    <string name="quest_accessible_for_pedestrians_title_prohibited">"Απαγορεύεται οι πεζοί να περπατούν στον δρόμο εδώ;"</string>
+    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"Αυτός ο δρόμος χαρακτηρίστηκε ως χωρίς πεζοδρόμιο και στις δύο πλευρές. Στην περίπτωση που υπάρχει πεζοδρόμιο, αλλά εμφανίζεται ξεχωριστά, παρακαλούμε απαντήστε \"πεζοδρόμιο\"."</string>
     <string name="quest_buildingType_title">"Τι είδους κτίριο είναι αυτό;"</string>
+    <string name="pref_title_theme_select">"Επιλέξτε θέμα"</string>
+    <string name="theme_automatic">"Αυτόματο"</string>
+    <string name="theme_light">"Φωτεινό"</string>
+    <string name="theme_dark">"Σκούρο"</string>
+    <string name="theme_system_default">"Προεπιλεγμένο σύστημα"</string>
+    <string name="quest_placeName_title_name">"Ποιο είναι το όνομα αυτού του μέρους; (%s)"</string>
+    <string name="action_open_location">"Ανοίξτε την τοποθεσία σε άλλη εφαρμογή"</string>
+    <string name="map_application_missing">"Δεν έχει εγκατασταθεί άλλη εφαρμογή χάρτη"</string>
+    <string name="label_housenumber">"αριθμός σπιτιού"</string>
+    <string name="label_blocknumber">"αριθμός οικοδομικού τετραγώνου"</string>
+    <string name="quest_busStopShelter_covered">"Ολόκληρη η στάση καλύπτεται"</string>
+    <string name="quest_ferry_pedestrian_name_title">"Αυτό το %s μεταφέρει πεζούς; "</string>
+    <string name="quest_ferry_pedestrian_title">"Αυτή η πορθμειακή διαδρομή μεταφέρει πεζούς;"</string>
+    <string name="quest_ferry_motor_vehicle_name_title">"Αυτό το %s μεταφέρει μηχανοκίνητα οχήματα?"</string>
+    <string name="quest_ferry_motor_vehicle_title">"Αυτή η πορθμειακή διαδρομή μεταφέρει μηχανοκίνητα οχήματα?"</string>
+    <string name="quest_leave_new_note_photos_are_useful">"Η προσθήκη μιας φωτογραφίας θα κάνει τη σημείωση πολύ πιο χρήσιμη."</string>
+    <string name="quest_postboxCollectionTimes_name_title">"Ποιοί είναι οι χρόνοι συλλογής αυτού του %s γραμματοκιβωτίου;"</string>
+    <string name="create_new_note_hint">"Καλύτερα γράψτε τη σημείωση στην τοπική γλώσσα ή αλλιώς στην Αγγλική."</string>
+    <string name="about_contributing">"Οι απαντήσεις σας βελτιώνουν άμεσα το OpenStreetMap. Τα εισερχόμενα δεδομένα είναι ανοιχτά, ο καθένας μπορεί να τα χρησιμοποιήσει. Πολλά μεγάλα έργα τα χρησιμοποιούν ήδη."</string>
+    <string name="oauth_remove_authorization_dialog_message">"Θέλετε να καταργήσετε την εξουσιοδότηση του λογαριασμό σας στο OSM;"</string>
+    <string name="oauth_remove_authorization_confirmation">"Αφαίρεση"</string>
+    <string name="quest_leafType_title">"Τα δέντρα εδώ έχουν βελόνες ή φύλλα;"</string>
+    <string name="quest_leaf_type_needles">"Βελόνες"</string>
+    <string name="quest_leaf_type_broadleaved">"Πλατύφυλλα"</string>
+    <string name="quest_leaf_type_mixed">"Υπάρχουν και τα δύο"</string>
+    <string name="quest_cyclewayPartSurface_title">"Ποια είναι η επιφάνεια του ποδηλατόδρομου εδώ;"</string>
+    <string name="quest_generic_answer_differs_along_the_way">"Διαφορές κατά μήκος του δρόμου..."</string>
+    <string name="quest_split_way_description">"Αν υπάρχουν διαφορές κατά μήκος της διαδρομής, το πρώτο βήμα είναι να την χωρίσουμε. Μετά από αυτό, η αναζήτηση μπορεί να απαντηθεί ξεχωριστά για κάθε διαχωρισμένο τμήμα. Λάβετε υπόψη ότι οι αναζητήσεις για τα διαχωρισμένα μέρη ενδέχεται να εμφανιστούν πολύ αργότερα. Διαχωρισμός τώρα;"</string>
+    <string name="quest_split_way_tutorial">"Χτυπήστε στη διαδρομή για να τη χωρίσετε στο σημείο (σημεία) όπου η απάντηση διαφέρει. Προσπαθήστε να είστε όσο το δυνατόν ακριβέστεροι, μπορείτε να κάνετε μεγέθυνση ως συνήθως."</string>
+    <string name="quest_split_way_too_imprecise">"Παρακαλώ μεγεθύνετε κι άλλο
+"</string>
+    <string name="quest_footwayPartSurface_title">"Ποια είναι η επιφάνεια του πεζόδρομου εδώ;"</string>
+    <string name="quest_wheelchairAccess_toiletsPart_title">"Είναι προσβάσιμη η τουαλέτα σε %s αναπηρικό αμαξίδιο;"</string>
 </resources>
