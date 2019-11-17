@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.quests.opening_hours
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.OsmTaggings
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
@@ -19,35 +18,51 @@ class AddOpeningHours (o: OverpassMapDataDao) : SimpleOverpassQuestType<OpeningH
          or amenity = recycling and recycling_type = centre
          or tourism = information and information = office
          or """.trimIndent() +
+
+        // The common list is shared by the name quest, the opening hours quest and the wheelchair quest.
+        // So when adding other tags to the common list keep in mind that they need to be appropriate for all those quests.
+        // Independent tags can by added in the "opening_hours only" tab.
+
         mapOf(
             "amenity" to arrayOf(
+                // common
                 "restaurant", "cafe", "ice_cream", "fast_food", "bar", "pub", "biergarten", "food_court", "nightclub", // eat & drink
-                "cinema", "planetarium", "casino", "library",                                                          // amenities
-                "townhall", "courthouse", "embassy", "community_centre", "youth_centre",                               // civic
+                "cinema", "planetarium", "casino",                                                                     // amenities
+                "townhall", "courthouse", "embassy", "community_centre", "youth_centre", "library",                    // civic
+                "bank", "bureau_de_change", "money_transfer", "post_office", "marketplace", "internet_cafe",           // commercial
+                "car_wash", "car_rental", "fuel",                                                                      // car stuff
+                "dentist", "doctors", "clinic", "pharmacy", "veterinary",                                              // health
+                "animal_boarding", "animal_shelter", "animal_breeding",                                                // animals
+
+                // name & opening hours
+                "boat_rental"
+
                 // not ATM because too often it's simply 24/7 and too often it is confused with
                 // a bank that might be just next door because the app does not tell the user what
                 // kind of object this is about
-                "bank", /*atm,*/ "bureau_de_change", "money_transfer", "post_office", "marketplace", "internet_cafe",  // commercial
-                "car_wash", "car_rental", "boat_rental", "fuel",                                                       // car stuff
-                "dentist", "doctors", "clinic", "pharmacy", "veterinary"                                               // health
             ),
             "tourism" to arrayOf(
+                // common
                 "zoo", "aquarium", "theme_park", "gallery", "museum"
-                // and tourism=information, see above
+                // and tourism = information, see above
             ),
             "leisure" to arrayOf(
-                // not sports_centre because these are often sports clubs which have no walk-in
-                // opening hours but training times
-                "fitness_centre", "dance", "golf_course", "water_park",
-                "miniature_golf", "bowling_alley", "horse_riding",  "amusement_arcade",
-                "adult_gaming_centre", "tanning_salon"
+                // common
+                "fitness_centre", "golf_course", "water_park", "miniature_golf", "bowling_alley",
+                "amusement_arcade", "adult_gaming_centre", "tanning_salon",
+
+                // name & opening hours
+                "horse_riding"
+
+                // not sports_centre, dance etc because these are often sports clubs which have no
+                // walk-in opening hours but training times
             ),
             "office" to arrayOf(
-                // also listed for AddWheelchair quest
+                // common
                 "insurance", "government", "travel_agent", "tax_advisor", "religion", "employment_agency"
             ),
             "craft" to arrayOf(
-                // also listed for AddWheelchair quest
+                // common
                 "carpenter", "shoemaker", "tailor", "photographer", "dressmaker",
                 "electronics_repair", "key_cutter", "stonemason"
             )

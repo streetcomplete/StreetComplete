@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.quests.wheelchair_access
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.OsmTaggings
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
@@ -16,36 +15,64 @@ class AddWheelchairAccessBusiness(o: OverpassMapDataDao) : SimpleOverpassQuestTy
          or amenity = recycling and recycling_type = centre
          or tourism = information and information = office
          or """.trimIndent() +
+
+        // The common list is shared by the name quest, the opening hours quest and the wheelchair quest.
+        // So when adding other tags to the common list keep in mind that they need to be appropriate for all those quests.
+        // Independent tags can by added in the "wheelchair only" tab.
+
         mapOf(
             "amenity" to arrayOf(
-                "restaurant", "cafe", "ice_cream", "fast_food", "bar", "pub", "biergarten", "food_court", "nightclub",
-                "cinema", "library", "theatre", "arts_centre", "casino", "conference_centre",
-                "bank", "bureau_de_change", "money_transfer", "post_office", "internet_cafe", "marketplace",
-                "police", "ranger_station", "courthouse", "embassy", "townhall", "community_centre", "youth_centre",
-                "car_wash", "car_rental", "fuel", "driving_school",
-                "doctors", "clinic", "pharmacy", "veterinary", "dentist",
-                "place_of_worship"
+                // common
+                "restaurant", "cafe", "ice_cream", "fast_food", "bar", "pub", "biergarten", "food_court", "nightclub", // eat & drink
+                "cinema", "planetarium", "casino",                                                                     // amenities
+                "townhall", "courthouse", "embassy", "community_centre", "youth_centre", "library",                    // civic
+                "bank", "bureau_de_change", "money_transfer", "post_office", "marketplace", "internet_cafe",           // commercial
+                "car_wash", "car_rental", "fuel",                                                                      // car stuff
+                "dentist", "doctors", "clinic", "pharmacy", "veterinary",                                              // health
+                "animal_boarding", "animal_shelter", "animal_breeding",                                                // animals
+
+                // name & wheelchair only
+                "theatre",                             // culture
+                "conference_centre", "arts_centre",    // events
+                "police", "ranger_station",            // civic
+                "ferry_terminal",                      // transport
+                "place_of_worship",                    // religious
+                "hospital"                             // health care
             ),
             "tourism" to arrayOf(
-                "zoo", "aquarium", "theme_park", "gallery", "attraction", "viewpoint",
-                "museum", "hotel", "guest_house", "hostel", "motel", "apartment", "chalet"
+                // common
+                "zoo", "aquarium", "theme_park", "gallery", "museum",
+
+                // name & wheelchair
+                "attraction",
+                "hotel", "guest_house", "motel", "hostel", "alpine_hut", "apartment", "resort", "camp_site", "caravan_site", "chalet", // accommodations
+
+                // wheelchair only
+                "viewpoint"
+
+                // and tourism = information, see above
             ),
             "leisure" to arrayOf(
-                "golf_course", "water_park", "miniature_golf", "dance",
-                "bowling_alley", "horse_riding", "sports_centre", "fitness_centre",
-                "amusement_arcade", "adult_gaming_centre", "tanning_salon"
+                // common
+                "fitness_centre", "golf_course", "water_park", "miniature_golf", "bowling_alley",
+                "amusement_arcade", "adult_gaming_centre", "tanning_salon",
+
+                // name & wheelchair
+                "sports_centre", "stadium", "marina"
             ),
             "office" to arrayOf(
-                // also listed for AddOpeningHours quest
+                // common
                 "insurance", "government", "travel_agent", "tax_advisor", "religion", "employment_agency",
-                // not listed manually for other quests
+
+                // name & wheelchair
                 "lawyer", "estate_agent", "political_party", "therapist"
             ),
             "craft" to arrayOf(
-                // also listed for AddOpeningHours quest
+                // common
                 "carpenter", "shoemaker", "tailor", "photographer", "dressmaker",
                 "electronics_repair", "key_cutter", "stonemason",
-                // not listed manually for other quests
+
+                // name & wheelchair
                 "winery"
             )
         ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n or ") +

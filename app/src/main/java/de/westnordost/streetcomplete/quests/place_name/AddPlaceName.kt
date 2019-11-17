@@ -4,7 +4,6 @@ import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.OsmTaggings
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandler
@@ -27,34 +26,69 @@ class AddPlaceName(
           or office
           or tourism = information and information = office 
           or """.trimIndent() +
+
+        // The common list is shared by the name quest, the opening hours quest and the wheelchair quest.
+        // So when adding other tags to the common list keep in mind that they need to be appropriate for all those quests.
+        // Independent tags can by added in the "name only" tab.
+
         mapOf(
             "amenity" to arrayOf(
-                "restaurant", "cafe", "ice_cream", "fast_food", "bar", "pub", "biergarten", "food_court", "nightclub",                  // eat & drink
-                "cinema", "theatre", "planetarium", "arts_centre", "studio",                                                            // culture
-                "events_venue", "conference_centre", "exhibition_centre", "music_venue",                                                // events
-                "townhall", "prison", "courthouse", "embassy", "police", "fire_station", "ranger_station",                              // civic
-                "bank", "bureau_de_change", "money_transfer", "post_office", "library", "marketplace", "internet_cafe",                 // commercial
-                "community_centre", "social_facility", "nursing_home", "childcare", "retirement_home", "social_centre", "youth_centre", // social
-                "car_wash", "car_rental", "boat_rental", "fuel", "ferry_terminal",                                                      // transport
-                "dentist", "doctors", "clinic", "pharmacy", "hospital",                                                                 // health care
-                "place_of_worship", "monastery",                                                                                        // religious
-                "kindergarten", "school", "college", "university", "research_institute",                                                // education
-                "driving_school", "dive_centre", "language_school", "music_school",                                                     // learning
-                "casino", "brothel", "gambling", "love_hotel", "stripclub",                                                             // bad stuff
-                "animal_boarding", "animal_shelter", "animal_breeding", "veterinary"                                                    // animals
+                // common
+                "restaurant", "cafe", "ice_cream", "fast_food", "bar", "pub", "biergarten", "food_court", "nightclub", // eat & drink
+                "cinema", "planetarium", "casino",                                                                     // amenities
+                "townhall", "courthouse", "embassy", "community_centre", "youth_centre", "library",                    // civic
+                "bank", "bureau_de_change", "money_transfer", "post_office", "marketplace", "internet_cafe",           // commercial
+                "car_wash", "car_rental", "fuel",                                                                      // car stuff
+                "dentist", "doctors", "clinic", "pharmacy", "veterinary",                                              // health
+                "animal_boarding", "animal_shelter", "animal_breeding",                                                // animals
+
+                // name & opening hours
+                "boat_rental",
+
+                // name & wheelchair
+                "theatre",                             // culture
+                "conference_centre", "arts_centre",    // events
+                "police", "ranger_station",            // civic
+                "ferry_terminal",                      // transport
+                "place_of_worship",                    // religious
+                "hospital",                            // health care
+
+                // name only
+                "studio",                                                                // culture
+                "events_venue", "exhibition_centre", "music_venue",                      // events
+                "prison", "fire_station",                                                // civic
+                "social_facility", "nursing_home", "childcare", "retirement_home", "social_centre", // social
+                "monastery",                                                             // religious
+                "kindergarten", "school", "college", "university", "research_institute", // education
+                "driving_school", "dive_centre", "language_school", "music_school",      // learning
+                "brothel", "gambling", "love_hotel", "stripclub"                         // bad stuff
             ),
             "tourism" to arrayOf(
-                "attraction", "zoo", "aquarium", "theme_park", "gallery", "museum",                                                     // attractions
-                "hotel", "guest_house", "motel", "hostel", "alpine_hut", "apartment", "resort", "camp_site", "caravan_site", "chalet"   // accommodations
-                // and tourism=information, see above
+                // common
+                "zoo", "aquarium", "theme_park", "gallery", "museum",
+
+                // name & wheelchair
+                "attraction",
+                "hotel", "guest_house", "motel", "hostel", "alpine_hut", "apartment", "resort", "camp_site", "caravan_site", "chalet" // accommodations
+
+                // and tourism = information, see above
             ),
             "leisure" to arrayOf(
-                "nature_reserve", "sports_centre", "fitness_centre", "dance", "golf_course",
-                "water_park", "miniature_golf", "stadium", "marina", "bowling_alley",
-                "amusement_arcade", "adult_gaming_centre", "tanning_salon", "horse_riding"
+                // common
+                "fitness_centre", "golf_course", "water_park", "miniature_golf", "bowling_alley",
+                "amusement_arcade", "adult_gaming_centre", "tanning_salon",
+
+                // name & wheelchair
+                "sports_centre", "stadium", "marina",
+
+                // name & opening hours
+                "horse_riding",
+
+                // name only
+                "dance", "nature_reserve"
             ),
             "landuse" to arrayOf(
-                    "cemetery", "allotments"
+                "cemetery", "allotments"
             ),
             "military" to arrayOf(
                 "airfield", "barracks", "training_area"
