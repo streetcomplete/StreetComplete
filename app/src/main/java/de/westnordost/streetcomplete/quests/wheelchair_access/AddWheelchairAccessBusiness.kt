@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.quests.wheelchair_access
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.OsmTaggings
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
@@ -27,39 +26,45 @@ class AddWheelchairAccessBusiness(o: OverpassMapDataDao) : SimpleOverpassQuestTy
                 "restaurant", "cafe", "ice_cream", "fast_food", "bar", "pub", "biergarten", "food_court", "nightclub", // eat & drink
                 "cinema", "planetarium", "casino",                                                                     // amenities
                 "townhall", "courthouse", "embassy", "community_centre", "youth_centre", "library",                    // civic
-                "bank", /*atm,*/ "bureau_de_change", "money_transfer", "post_office", "marketplace", "internet_cafe",  // commercial
-                "car_wash", "car_rental", "boat_rental", "fuel",                                                       // car stuff
+                "bank", "bureau_de_change", "money_transfer", "post_office", "marketplace", "internet_cafe",           // commercial
+                "car_wash", "car_rental", "fuel",                                                                      // car stuff
                 "dentist", "doctors", "clinic", "pharmacy", "veterinary",                                              // health
+                "animal_boarding", "animal_shelter", "animal_breeding",                                                // animals
 
-                // wheelchair only
-                "theatre", "conference_centre", "arts_centre",
-                "police", "ranger_station","prison",
-                "kindergarten", "school", "college", "university", "research_institute",                               // education
-                "driving_school", "dive_centre", "language_school", "music_school",                                    // learning
-                "ferry_terminal",
-                "place_of_worship",
-                "hospital"
+                // name & wheelchair only
+                "theatre",                             // culture
+                "conference_centre", "arts_centre",    // events
+                "police", "ranger_station",            // civic
+                "ferry_terminal",                      // transport
+                "place_of_worship",                    // religious
+                "hospital"                             // health care
             ),
             "tourism" to arrayOf(
                 // common
                 "zoo", "aquarium", "theme_park", "gallery", "museum",
+
+                // name & wheelchair
+                "attraction",
+                "hotel", "guest_house", "motel", "hostel", "alpine_hut", "apartment", "resort", "camp_site", "caravan_site", "chalet", // accommodations
+
                 // wheelchair only
-                "attraction", "viewpoint",
-                "hotel", "guest_house", "hostel", "motel", "apartment", "chalet"
+                "viewpoint"
+
+                // and tourism = information, see above
             ),
             "leisure" to arrayOf(
                 // common
-                "fitness_centre", "dance", "golf_course", "water_park",
-                "miniature_golf", "bowling_alley", "horse_riding",  "amusement_arcade",
-                "adult_gaming_centre", "tanning_salon",
-                // wheelchair only
-                "sports_centre"
+                "fitness_centre", "golf_course", "water_park", "miniature_golf", "bowling_alley",
+                "amusement_arcade", "adult_gaming_centre", "tanning_salon",
+
+                // name & wheelchair
+                "sports_centre", "stadium", "marina"
             ),
             "office" to arrayOf(
                 // common
                 "insurance", "government", "travel_agent", "tax_advisor", "religion", "employment_agency",
 
-                // name and wheelchair
+                // name & wheelchair
                 "lawyer", "estate_agent", "political_party", "therapist"
             ),
             "craft" to arrayOf(
@@ -67,7 +72,7 @@ class AddWheelchairAccessBusiness(o: OverpassMapDataDao) : SimpleOverpassQuestTy
                 "carpenter", "shoemaker", "tailor", "photographer", "dressmaker",
                 "electronics_repair", "key_cutter", "stonemason",
 
-                // name and wheelchair
+                // name & wheelchair
                 "winery"
             )
         ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n or ") +
