@@ -21,6 +21,7 @@ import de.westnordost.osmapi.map.data.OsmLatLon;
 import de.westnordost.osmapi.map.data.OsmNode;
 import de.westnordost.streetcomplete.data.QuestStatus;
 import de.westnordost.streetcomplete.data.VisibleQuestListener;
+import de.westnordost.streetcomplete.data.osm.AllCountries;
 import de.westnordost.streetcomplete.data.osm.Countries;
 import de.westnordost.streetcomplete.data.osm.ElementGeometry;
 import de.westnordost.streetcomplete.data.osm.ElementPointGeometry;
@@ -154,7 +155,7 @@ public class OsmQuestDownloadTest
 		@Override @NonNull public String getCommitMessage() { return ""; }
 		@Nullable @Override public Boolean isApplicableTo(@NonNull Element element) { return false; }
 
-		@NonNull @Override public Countries getEnabledForCountries() { return Countries.ALL; }
+		@NonNull @Override public Countries getEnabledInCountries() { return AllCountries.INSTANCE; }
 		@Override public boolean getHasMarkersAtEnds() { return false; }
 		@Override public int getTitle() { return 0; }
 		@Override public void cleanMetadata() {}

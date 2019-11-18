@@ -4,11 +4,11 @@ import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.OsmTaggings
-import de.westnordost.streetcomplete.data.osm.Countries
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.osmapi.overpass.OverpassMapDataDao
 import de.westnordost.streetcomplete.data.osm.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.NoCountriesExcept
 import de.westnordost.streetcomplete.data.osm.tql.getQuestPrintStatement
 import de.westnordost.streetcomplete.data.osm.tql.toGlobalOverpassBBox
 
@@ -24,7 +24,7 @@ class AddCycleway(private val overpassServer: OverpassMapDataDao) : OsmElementQu
     // Google Street View (driving around in virtual car)
     // https://en.wikivoyage.org/wiki/Cycling
     // http://peopleforbikes.org/get-local/ (US)
-    override val enabledForCountries = Countries.noneExcept(
+    override val enabledInCountries = NoCountriesExcept(
         // all of Northern and Western Europe, most of Central Europe, some of Southern Europe
         "NO","SE","FI","IS","DK",
         "GB","IE","NL","BE","FR","LU",

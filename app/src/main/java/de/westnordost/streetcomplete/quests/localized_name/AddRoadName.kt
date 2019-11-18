@@ -3,10 +3,10 @@ package de.westnordost.streetcomplete.quests.localized_name
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.Countries
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.osmapi.overpass.OverpassMapDataDao
+import de.westnordost.streetcomplete.data.osm.AllCountriesExcept
 import de.westnordost.streetcomplete.data.osm.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.tql.FiltersParser
 import de.westnordost.streetcomplete.data.osm.tql.getQuestPrintStatement
@@ -20,7 +20,7 @@ class AddRoadName(
     private val putRoadNameSuggestionsHandler: PutRoadNameSuggestionsHandler
 ) : OsmElementQuestType<RoadNameAnswer> {
 
-    override val enabledForCountries: Countries get() = Countries.allExcept("JP")
+    override val enabledInCountries = AllCountriesExcept("JP")
     override val commitMessage = "Determine road names and types"
     override val icon = R.drawable.ic_quest_street_name
     override val hasMarkersAtEnds = true

@@ -6,12 +6,9 @@ import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.Countries
-import de.westnordost.streetcomplete.data.osm.ElementPolygonsGeometry
-import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.osmapi.overpass.OverpassMapDataDao
-import de.westnordost.streetcomplete.data.osm.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.*
 import de.westnordost.streetcomplete.data.osm.tql.DEFAULT_MAX_QUESTS
 import de.westnordost.streetcomplete.data.osm.tql.toGlobalOverpassBBox
 import de.westnordost.streetcomplete.data.osm.tql.toOverpassBboxFilter
@@ -25,7 +22,7 @@ class AddHousenumber(private val overpass: OverpassMapDataDao) : OsmElementQuest
     override val icon = R.drawable.ic_quest_housenumber
 
     // See overview here: https://ent8r.github.io/blacklistr/?streetcomplete=housenumber/AddHousenumber.kt
-    override val enabledForCountries = Countries.allExcept(
+    override val enabledInCountries = AllCountriesExcept(
         "NL", // https://forum.openstreetmap.org/viewtopic.php?id=60356
         "DK", // https://lists.openstreetmap.org/pipermail/talk-dk/2017-November/004898.html
         "NO", // https://forum.openstreetmap.org/viewtopic.php?id=60357

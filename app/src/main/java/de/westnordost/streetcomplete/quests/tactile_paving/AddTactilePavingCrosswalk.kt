@@ -1,10 +1,10 @@
 package de.westnordost.streetcomplete.quests.tactile_paving
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.Countries
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.osmapi.overpass.OverpassMapDataDao
+import de.westnordost.streetcomplete.data.osm.NoCountriesExcept
 
 class AddTactilePavingCrosswalk(o: OverpassMapDataDao) : SimpleOverpassQuestType<Boolean>(o) {
 
@@ -14,7 +14,7 @@ class AddTactilePavingCrosswalk(o: OverpassMapDataDao) : SimpleOverpassQuestType
 
     // See overview here: https://ent8r.github.io/blacklistr/?streetcomplete=tactile_paving/AddTactilePavingCrosswalk.kt
     // #750
-    override val enabledForCountries = ENABLED_FOR_COUNTRIES
+    override val enabledInCountries = ENABLED_IN_COUNTRIES
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_tactilePaving_title_crosswalk
 
@@ -25,7 +25,7 @@ class AddTactilePavingCrosswalk(o: OverpassMapDataDao) : SimpleOverpassQuestType
     }
 
     companion object {
-        internal val ENABLED_FOR_COUNTRIES = Countries.noneExcept(
+        internal val ENABLED_IN_COUNTRIES = NoCountriesExcept(
             // Europe
             "NO","SE",
             "GB","IE","NL","BE","FR","ES",

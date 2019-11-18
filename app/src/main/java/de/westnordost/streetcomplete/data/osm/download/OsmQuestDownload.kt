@@ -8,26 +8,18 @@ import java.util.concurrent.FutureTask
 import javax.inject.Inject
 
 import de.westnordost.countryboundaries.CountryBoundaries
-import de.westnordost.countryboundaries.getContainingIds
-import de.westnordost.countryboundaries.getIntersectingIds
-import de.westnordost.countryboundaries.isInAny
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.data.QuestGroup
 import de.westnordost.streetcomplete.data.QuestType
 import de.westnordost.streetcomplete.data.VisibleQuestListener
-import de.westnordost.streetcomplete.data.osm.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
-import de.westnordost.streetcomplete.data.osm.OsmQuest
 import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao
 import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryEntry
 import de.westnordost.streetcomplete.data.osm.persist.MergedElementDao
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao
-import de.westnordost.streetcomplete.data.osm.ElementKey
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.LatLon
-import de.westnordost.streetcomplete.ktx.containsAny
+import de.westnordost.streetcomplete.data.osm.*
 import de.westnordost.streetcomplete.util.SphericalEarthMath
 
 const val MAX_GEOMETRY_LENGTH_IN_METERS = 500
@@ -47,7 +39,7 @@ class OsmQuestDownload @Inject constructor(
     fun download(questType: OsmElementQuestType<*>, bbox: BoundingBox, blacklistedPositions: Set<LatLon>): Boolean {
         val questTypeName = questType.getName()
 
-        if (!isQuestTypeEnabledForBoundingBox(questType, bbox)) {
+        if (!questType.enabledInCountries.intersectsBBox(bbox, countryBoundaries)) {
             Log.i(TAG, "$questTypeName: Skipped because it is disabled for this country")
             return true
         }
@@ -104,40 +96,9 @@ class OsmQuestDownload @Inject constructor(
         return true
     }
 
-    private fun isQuestTypeEnabledForBoundingBox(questType: OsmElementQuestType<*>, bbox: BoundingBox): Boolean {
-        val countries = questType.enabledForCountries
-        return when {
-            countries.isAllCountries -> true
-            countries.isAllExcept -> !countryBoundaries.getContainingIds(bbox).containsAny(countries.exceptions)
-            else ->                  countryBoundaries.getIntersectingIds(bbox).containsAny(countries.exceptions)
-        }
-    }
-
-    private fun isQuestTypeEnabledForPosition(questType: OsmElementQuestType<*>, pos: LatLon): Boolean {
-        val countries = questType.enabledForCountries
-        return when {
-            countries.isAllCountries -> true
-            countries.isNoCountries -> false
-            else -> countryBoundaries.isInAny(pos, countries.exceptions) != countries.isAllExcept
-        }
-    }
-
-    private fun isGeometryTooLarge(geometry: ElementGeometry): Boolean {
-        if (geometry is ElementPolylinesGeometry) {
-            val distance = geometry.polylines.sumByDouble { SphericalEarthMath.distance(it) }
-            return distance > MAX_GEOMETRY_LENGTH_IN_METERS
-        }
-        return false
-    }
-
-    private fun isAtBlacklistedPosition(geometry: ElementGeometry, blacklistedPositions: Set<LatLon>?): Boolean {
-        val truncatedCenter = geometry.center.truncateTo5Decimals()
-        return blacklistedPositions?.contains(truncatedCenter) == true
-    }
-
     private fun mayCreateQuestFrom(
         questType: OsmElementQuestType<*>, element: Element, geometry: ElementGeometry?,
-        blacklistedPositions: Set<LatLon>?
+        blacklistedPositions: Set<LatLon>
     ): Boolean {
         val questTypeName = questType.getName()
 
@@ -147,22 +108,26 @@ class OsmQuestDownload @Inject constructor(
             Log.w(TAG, "$questTypeName: Not adding a quest because the element ${element.toLogString()} has no valid geometry")
             return false
         }
+        val pos = geometry.center
 
         // do not create quests that refer to geometry that is too long for a surveyor to be expected to survey
-        if (isGeometryTooLarge(geometry)) {
-            Log.d(TAG, "$questTypeName: Not adding a quest at ${geometry.center.toLogString()} because the geometry is too long")
-            return false
+        if (geometry is ElementPolylinesGeometry) {
+            val distance = geometry.polylines.sumByDouble { SphericalEarthMath.distance(it) }
+            if (distance > MAX_GEOMETRY_LENGTH_IN_METERS) {
+                Log.d(TAG, "$questTypeName: Not adding a quest at ${pos.toLogString()} because the geometry is too long")
+                return false
+            }
         }
 
         // do not create quests whose marker is at/near a blacklisted position
-        if (isAtBlacklistedPosition(geometry, blacklistedPositions)) {
-            Log.d(TAG, "$questTypeName: Not adding a quest at ${geometry.center.toLogString()} because there is a note at that position")
+        if (blacklistedPositions.contains(pos.truncateTo5Decimals())) {
+            Log.d(TAG, "$questTypeName: Not adding a quest at ${pos.toLogString()} because there is a note at that position")
             return false
         }
 
         // do not create quests in countries where the quest is not activated
-        if (!isQuestTypeEnabledForPosition(questType, geometry.center)) {
-            Log.d(TAG, "$questTypeName: Not adding a quest at ${geometry.center.toLogString()} because the quest is disabled in this country")
+        if (!questType.enabledInCountries.containsPosition(pos, countryBoundaries)) {
+            Log.d(TAG, "$questTypeName: Not adding a quest at ${pos.toLogString()} because the quest is disabled in this country")
             return false
         }
 
@@ -171,7 +136,6 @@ class OsmQuestDownload @Inject constructor(
 }
 
 private fun QuestType<*>.getName() = javaClass.simpleName
-
 
 // the resulting precision is about ~1 meter (see #1089)
 private fun LatLon.truncateTo5Decimals() = OsmLatLon(latitude.truncateTo5Decimals(), longitude.truncateTo5Decimals())

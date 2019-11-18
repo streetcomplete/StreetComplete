@@ -2,10 +2,10 @@ package de.westnordost.streetcomplete.quests.max_speed
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.OsmTaggings
-import de.westnordost.streetcomplete.data.osm.Countries
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.osmapi.overpass.OverpassMapDataDao
+import de.westnordost.streetcomplete.data.osm.AllCountriesExcept
 
 class AddMaxSpeed(o: OverpassMapDataDao) : SimpleOverpassQuestType<MaxSpeedAnswer>(o) {
 
@@ -25,7 +25,7 @@ class AddMaxSpeed(o: OverpassMapDataDao) : SimpleOverpassQuestType<MaxSpeedAnswe
     override val isSplitWayEnabled = true
 
     // see #813: US has different rules for each different state which need to be respected
-    override val enabledForCountries = Countries.allExcept("US")
+    override val enabledInCountries = AllCountriesExcept("US")
     override val defaultDisabledMessage = R.string.default_disabled_msg_maxspeed
 
     override fun getTitle(tags: Map<String, String>) =

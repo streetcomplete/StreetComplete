@@ -19,7 +19,7 @@ class AddTactilePavingBusStop(o: OverpassMapDataDao) : SimpleOverpassQuestType<B
 
     // See overview here: https://ent8r.github.io/blacklistr/?streetcomplete=tactile_paving/AddTactilePavingCrosswalk.kt
     // #750
-    override val enabledForCountries = AddTactilePavingCrosswalk.ENABLED_FOR_COUNTRIES
+    override val enabledInCountries = AddTactilePavingCrosswalk.ENABLED_IN_COUNTRIES
 
     override fun getTitle(tags: Map<String, String>): Int {
         val hasName = tags.containsKey("name")
