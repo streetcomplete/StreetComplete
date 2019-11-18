@@ -6,6 +6,7 @@ import de.westnordost.countryboundaries.CountryBoundaries
 
 import javax.inject.Inject
 
+import de.westnordost.countryboundaries.isInAny
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.data.QuestStatus
@@ -51,9 +52,7 @@ class OsmQuestGiver @Inject constructor(
             val appliesToElement = questType.isApplicableTo(element) ?: continue
             val countries = questType.enabledForCountries
             val isEnabledForCountry = !countries.isNoCountries && (countries.isAllCountries || countryBoundariesFuture.get().isInAny(
-                geometry.center.longitude,
-                geometry.center.latitude,
-                countries.exceptions) != countries.isAllExcept)
+                geometry.center, countries.exceptions) != countries.isAllExcept)
 
             val hasQuest = currentQuests.containsKey(questType)
             if (appliesToElement && !hasQuest && !hasNote && isEnabledForCountry) {

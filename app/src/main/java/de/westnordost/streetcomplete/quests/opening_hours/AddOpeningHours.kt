@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.quests.opening_hours
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.osmapi.overpass.OverpassMapDataDao
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 
 class AddOpeningHours (o: OverpassMapDataDao) : SimpleOverpassQuestType<OpeningHoursAnswer>(o) {

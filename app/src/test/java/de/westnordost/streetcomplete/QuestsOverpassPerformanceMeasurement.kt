@@ -1,11 +1,13 @@
 package de.westnordost.streetcomplete
 
+import de.westnordost.osmapi.overpass.OverpassMapDataDao
+import de.westnordost.osmapi.overpass.OverpassStatus
+import de.westnordost.osmapi.overpass.OverpassStatusParser
 import de.westnordost.osmapi.ApiRequestWriter
 import de.westnordost.osmapi.OsmConnection
 import de.westnordost.osmapi.common.errors.OsmApiException
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
-import de.westnordost.streetcomplete.data.osm.download.*
 import de.westnordost.streetcomplete.quests.QuestModule
 import java.io.OutputStream
 import java.lang.Thread.sleep

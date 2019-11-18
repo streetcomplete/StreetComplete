@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.osmapi.overpass.OverpassMapDataDao
 import de.westnordost.streetcomplete.quests.QuestModule
 
 fun main() {

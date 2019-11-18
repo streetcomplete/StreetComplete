@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.download
 
+import de.westnordost.osmapi.overpass.WayGeometrySource
 import de.westnordost.osmapi.map.data.*
 import org.junit.Test
 

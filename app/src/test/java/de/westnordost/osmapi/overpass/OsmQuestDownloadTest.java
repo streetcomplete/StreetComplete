@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.data.osm.download;
+package de.westnordost.osmapi.overpass;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -27,6 +27,7 @@ import de.westnordost.streetcomplete.data.osm.ElementPointGeometry;
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType;
 import de.westnordost.streetcomplete.data.osm.OsmQuest;
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder;
+import de.westnordost.streetcomplete.data.osm.download.OsmQuestDownload;
 import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao;
 import de.westnordost.streetcomplete.data.osm.persist.MergedElementDao;
 import de.westnordost.osmapi.map.data.BoundingBox;
@@ -35,6 +36,8 @@ import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 import kotlin.Lazy;
+import kotlin.Unit;
+import kotlin.jvm.functions.Function2;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
@@ -151,16 +154,6 @@ public class OsmQuestDownloadTest
 		@Override @NonNull public String getCommitMessage() { return ""; }
 		@Nullable @Override public Boolean isApplicableTo(@NonNull Element element) { return false; }
 
-		@Override public boolean download(@NonNull BoundingBox bbox, @NonNull
-			MapDataWithGeometryHandler handler)
-		{
-			for (ElementWithGeometry e : list)
-			{
-				handler.handle(e.element, e.geometry);
-			}
-			return true;
-		}
-
 		@NonNull @Override public Countries getEnabledForCountries() { return Countries.ALL; }
 		@Override public boolean getHasMarkersAtEnds() { return false; }
 		@Override public int getTitle() { return 0; }
@@ -181,5 +174,16 @@ public class OsmQuestDownloadTest
 		@Override public void applyAnswerToUnsafe(
 			@NotNull Object answer, @NotNull StringMapChangesBuilder changes)
 		{}
+
+		@Override public boolean download(
+			@NotNull BoundingBox bbox,
+			@NotNull Function2<? super Element, ? super ElementGeometry, Unit> handler)
+		{
+			for (ElementWithGeometry e : list)
+			{
+				handler.invoke(e.element, e.geometry);
+			}
+			return true;
+		}
 	}
 }

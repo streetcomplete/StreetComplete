@@ -4,7 +4,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.OsmTaggings
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.osmapi.overpass.OverpassMapDataDao
 import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.*
 
 class AddProhibitedForPedestrians(o: OverpassMapDataDao) : SimpleOverpassQuestType<ProhibitedForPedestriansAnswer>(o) {

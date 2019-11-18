@@ -6,8 +6,8 @@ import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandler
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.osmapi.overpass.OverpassMapDataDao
+import de.westnordost.streetcomplete.data.osm.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.tql.FiltersParser
 import de.westnordost.streetcomplete.data.osm.tql.getQuestPrintStatement
 import de.westnordost.streetcomplete.data.osm.tql.toGlobalOverpassBBox
@@ -105,13 +105,13 @@ class AddPlaceName(
     override fun getTitle(tags: Map<String, String>) = R.string.quest_placeName_title_name
     override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>) = arrayOf(featureName.value)
 
-    override fun download(bbox: BoundingBox, handler: MapDataWithGeometryHandler): Boolean {
+    override fun download(bbox: BoundingBox, handler: (element: Element, geometry: ElementGeometry?) -> Unit): Boolean {
         val overpassQuery = bbox.toGlobalOverpassBBox() + "\n" + filter.toOverpassQLString() + getQuestPrintStatement()
         return overpassServer.getAndHandleQuota(overpassQuery) { element, geometry ->
             if(element.tags != null) {
                 // only show places without names as quests for which a feature name is available
                 if (featureDictionaryFuture.get().byTags(element.tags).find().isNotEmpty()) {
-                    handler.handle(element, geometry)
+                    handler(element, geometry)
                 }
             }
         }

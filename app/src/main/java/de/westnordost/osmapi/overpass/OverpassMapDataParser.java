@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.data.osm.download;
+package de.westnordost.osmapi.overpass;
 
 import android.util.LongSparseArray;
 
@@ -22,6 +22,7 @@ import de.westnordost.osmapi.map.data.OsmLatLon;
 import de.westnordost.osmapi.map.data.Relation;
 import de.westnordost.osmapi.map.data.RelationMember;
 import de.westnordost.osmapi.map.data.Way;
+import de.westnordost.streetcomplete.data.osm.download.ElementGeometryCreator;
 
 /** A map data parser that also parses the geometry of elements. (Overpass parameter "geom")*/
 public class OverpassMapDataParser extends XmlParser implements ApiResponseReader<Void>, WayGeometrySource

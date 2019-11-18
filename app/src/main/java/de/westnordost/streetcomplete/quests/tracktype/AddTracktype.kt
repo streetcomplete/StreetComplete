@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.quests.tracktype
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.osmapi.overpass.OverpassMapDataDao
 
 class AddTracktype(o: OverpassMapDataDao) : SimpleOverpassQuestType<String>(o) {
 

@@ -6,8 +6,8 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.Countries
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandler
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.osmapi.overpass.OverpassMapDataDao
+import de.westnordost.streetcomplete.data.osm.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.tql.FiltersParser
 import de.westnordost.streetcomplete.data.osm.tql.getQuestPrintStatement
 import de.westnordost.streetcomplete.data.osm.tql.toGlobalOverpassBBox
@@ -34,9 +34,9 @@ class AddRoadName(
 
     override fun isApplicableTo(element: Element) = ROADS_WITHOUT_NAMES_TFE.matches(element)
 
-    override fun download(bbox: BoundingBox, handler: MapDataWithGeometryHandler): Boolean {
+    override fun download(bbox: BoundingBox, handler: (element: Element, geometry: ElementGeometry?) -> Unit): Boolean {
         return overpassServer.getAndHandleQuota(getOverpassQuery(bbox), handler)
-            && overpassServer.getAndHandleQuota(getStreetNameSuggestionsOverpassQuery(bbox),putRoadNameSuggestionsHandler)
+            && overpassServer.getAndHandleQuota(getStreetNameSuggestionsOverpassQuery(bbox), putRoadNameSuggestionsHandler)
     }
 
     /** returns overpass query string for creating the quests */

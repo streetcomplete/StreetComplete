@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.quests.motorcycle_parking_cover
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.osmapi.overpass.OverpassMapDataDao
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
 class AddMotorcycleParkingCover(o: OverpassMapDataDao) : SimpleOverpassQuestType<Boolean>(o) {

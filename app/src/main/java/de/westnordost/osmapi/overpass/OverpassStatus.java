@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.data.osm.download;
+package de.westnordost.osmapi.overpass;
 
 public class OverpassStatus
 {

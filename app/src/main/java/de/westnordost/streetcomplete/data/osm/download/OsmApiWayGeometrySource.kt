@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.download
 
 import android.util.LongSparseArray
+import de.westnordost.osmapi.overpass.WayGeometrySource
 
 import de.westnordost.osmapi.map.MapDataDao
 import de.westnordost.osmapi.map.data.BoundingBox

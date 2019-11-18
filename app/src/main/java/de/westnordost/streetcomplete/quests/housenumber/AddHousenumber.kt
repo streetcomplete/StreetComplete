@@ -10,8 +10,8 @@ import de.westnordost.streetcomplete.data.osm.Countries
 import de.westnordost.streetcomplete.data.osm.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandler
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.osmapi.overpass.OverpassMapDataDao
+import de.westnordost.streetcomplete.data.osm.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.tql.DEFAULT_MAX_QUESTS
 import de.westnordost.streetcomplete.data.osm.tql.toGlobalOverpassBBox
 import de.westnordost.streetcomplete.data.osm.tql.toOverpassBboxFilter
@@ -37,7 +37,7 @@ class AddHousenumber(private val overpass: OverpassMapDataDao) : OsmElementQuest
 
     override fun isApplicableTo(element: Element) = null
 
-    override fun download(bbox: BoundingBox, handler: MapDataWithGeometryHandler): Boolean {
+    override fun download(bbox: BoundingBox, handler: (element: Element, geometry: ElementGeometry?) -> Unit): Boolean {
         var ms = System.currentTimeMillis()
 
         val buildings = downloadBuildingsWithoutAddresses(bbox) ?: return false
@@ -83,7 +83,7 @@ class AddHousenumber(private val overpass: OverpassMapDataDao) : OsmElementQuest
                 continue
             }
 
-            handler.handle(building.element, building.geometry)
+            handler(building.element, building.geometry)
         }
 
         Log.d("AddHousenumber", "Processing data took ${System.currentTimeMillis() - ms}ms")
