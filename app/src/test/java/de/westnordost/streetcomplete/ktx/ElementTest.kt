@@ -16,7 +16,7 @@ class ElementTest {
     }
 
     @Test fun `way is not closed`() {
-        assertTrue(createWay(null).isClosed())
+        assertFalse(createWay(null).isClosed())
     }
 
     @Test fun `multipolygon relation is an area`() {

@@ -26,7 +26,7 @@ fun Element.isArea(): Boolean {
 
 private val IS_AREA_EXPR = FiltersParser().parse("""
     ways with area = yes or area != no and (
-    or aeroway
+    aeroway
     or amenity
     or boundary
     or building
