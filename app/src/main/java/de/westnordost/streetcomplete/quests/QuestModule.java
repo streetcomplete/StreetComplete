@@ -108,7 +108,7 @@ public class QuestModule
 				new AddBusStopName(o),
 				new AddIsBuildingUnderground(o), //to avoid asking AddHousenumber and other for underground buildings
 				new AddHousenumber(o),
-				new AddAddressStreet(o),
+				new AddAddressStreet(o, roadNameSuggestionsDao, putRoadNameSuggestionsHandler),
 				new MarkCompletedHighwayConstruction(o),
 				new AddReligionToPlaceOfWorship(o), // icons on maps are different - OSM Carto, mapy.cz, OsmAnd, Sputnik etc
 				new AddParkingAccess(o), //OSM Carto, mapy.cz, OSMand, Sputnik etc

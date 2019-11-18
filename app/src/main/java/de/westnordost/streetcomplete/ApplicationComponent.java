@@ -17,6 +17,7 @@ import de.westnordost.streetcomplete.oauth.OsmOAuthDialogFragment;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 import de.westnordost.streetcomplete.quests.QuestModule;
 import de.westnordost.streetcomplete.quests.SplitWayFragment;
+import de.westnordost.streetcomplete.quests.address.AddAddressStreetForm;
 import de.westnordost.streetcomplete.quests.building_levels.AddBuildingLevelsForm;
 import de.westnordost.streetcomplete.quests.localized_name.AAddLocalizedNameForm;
 import de.westnordost.streetcomplete.quests.oneway.AddOnewayForm;
@@ -55,6 +56,7 @@ public interface ApplicationComponent
 
 	void inject(AddOpeningHoursForm addOpeningHoursForm);
 	void inject(AddRoadNameForm addRoadNameForm);
+	void inject(AddAddressStreetForm addAddressStreetForm);
 	void inject(AddParkingFeeForm parkingFeeForm);
 	void inject(AddOnewayForm addOnewayForm);
 	void inject(AddCollectionTimesForm addCollectionTimesForm);
