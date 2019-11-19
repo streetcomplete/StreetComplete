@@ -113,11 +113,11 @@ abstract class AImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnswerFragm
         imageSelector.items = if(showAll) sortedItems else sortedItems.subList(0, initiallyShow)
     }
 
-    private fun moveFavouritesToFront(orignalList: List<Item<I>>): List<Item<I>> {
-        val result: LinkedList<Item<I>> = LinkedList(orignalList)
+    private fun moveFavouritesToFront(originalList: List<Item<I>>): List<Item<I>> {
+        val result: LinkedList<Item<I>> = LinkedList(originalList)
 
         if (result.size > itemsPerRow) {
-            favs.moveLastPickedToFront(javaClass.simpleName, result, orignalList)
+            favs.moveLastPickedToFront(javaClass.simpleName, result, originalList)
         }
         return result
     }
