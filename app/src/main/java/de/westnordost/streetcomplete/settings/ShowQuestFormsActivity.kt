@@ -89,7 +89,7 @@ class ShowQuestFormsActivity : AppCompatActivity(), OsmQuestAnswerListener {
         val centerLat = Double.fromBits(prefs.getLong(Prefs.MAP_LATITUDE, (0.0 + latititudeDelta/2).toBits()))
         val centerLng = Double.fromBits(prefs.getLong(Prefs.MAP_LONGITUDE, (0.0 + longitudeDelta/2).toBits()))
         val centerPos = OsmLatLon(centerLat, centerLng)
-        val tags =  mapOf("highway" to "cycleway", "building" to "residential", "name" to "<object name>")
+        val tags =  mapOf("highway" to "cycleway", "building" to "residential", "name" to "<object name>", "opening_hours" to "Mo-Fr 08:00-12:00,13:00-17:30; Sa 08:00-12:00")
         val firstNode = OsmNode(1, 1, firstPos, tags)
         val secondNode = OsmNode(2, 1, secondPos, tags)
         val element = OsmWay(1, 1, mutableListOf(1, 2), tags)
