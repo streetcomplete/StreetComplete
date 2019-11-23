@@ -22,10 +22,6 @@ import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.data.osm.*
 import de.westnordost.streetcomplete.util.SphericalEarthMath
 
-const val MAX_GEOMETRY_LENGTH_IN_METERS = 500
-
-private const val TAG = "QuestDownload"
-
 class OsmQuestDownload @Inject constructor(
     private val geometryDB: ElementGeometryDao,
     private val elementDB: MergedElementDao,
@@ -39,7 +35,8 @@ class OsmQuestDownload @Inject constructor(
     fun download(questType: OsmElementQuestType<*>, bbox: BoundingBox, blacklistedPositions: Set<LatLon>): Boolean {
         val questTypeName = questType.getName()
 
-        if (!questType.enabledInCountries.intersectsBBox(bbox, countryBoundaries)) {
+        val countries = questType.enabledInCountries
+        if (!countries.intersectsBBox(bbox, countryBoundaries)) {
             Log.i(TAG, "$questTypeName: Skipped because it is disabled for this country")
             return true
         }
@@ -126,7 +123,8 @@ class OsmQuestDownload @Inject constructor(
         }
 
         // do not create quests in countries where the quest is not activated
-        if (!questType.enabledInCountries.containsPosition(pos, countryBoundaries)) {
+        val countries = questType.enabledInCountries
+        if (!countries.containsPosition(pos, countryBoundaries)) {
             Log.d(TAG, "$questTypeName: Not adding a quest at ${pos.toLogString()} because the quest is disabled in this country")
             return false
         }
@@ -134,6 +132,10 @@ class OsmQuestDownload @Inject constructor(
         return true
     }
 }
+
+const val MAX_GEOMETRY_LENGTH_IN_METERS = 500
+
+private const val TAG = "QuestDownload"
 
 private fun QuestType<*>.getName() = javaClass.simpleName
 
