@@ -21,7 +21,7 @@ class ResurveyOpeningHours (private val overpassServer: OverpassMapDataDao) : Os
     override val icon = R.drawable.ic_quest_guidepost
     override fun getTitle(tags: Map<String, String>) = R.string.resurvey_opening_hours_title
     override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> {
-        val name = tags["name"] ?: featureName.value ?: "UNKNOWN OBJECT"
+        val name = tags["name"]!!
         val openingHours = tags.getValue("opening_hours")
         var parsed = ""
         try {
@@ -73,9 +73,9 @@ class ResurveyOpeningHours (private val overpassServer: OverpassMapDataDao) : Os
     // objects where tag was surveyed and confirmed to be correct by adding check_date tags
     // are with larger delay, as it means this info on this specific object is relatively stable
     protected fun getQueryPart(objectType: String, nameOfGeneratedGroup: String, reviewIntervalInDays: Int) =
-        "$objectType[opening_hours]['opening_hours:signed'!='no'](if:!is_date(t['check_date:opening_hours']) || date(t['check_date:opening_hours']) < " +
+        "$objectType[name][opening_hours]['opening_hours:signed'!='no'](if:!is_date(t['check_date:opening_hours']) || date(t['check_date:opening_hours']) < " +
         "date('${DateUtil.getOffsetDateString(-reviewIntervalInDays * 3)}T00:00:00Z')) -> .old_opening_hours_tag;\n" +
-        "$objectType[opening_hours](newer: '${DateUtil.getOffsetDateString(-reviewIntervalInDays)}T00:00:00Z') -> .recently_edited_objects_with_opening_hours;\n" +
+        "$objectType[name][opening_hours](newer: '${DateUtil.getOffsetDateString(-reviewIntervalInDays)}T00:00:00Z') -> .recently_edited_objects_with_opening_hours;\n" +
         "(.old_opening_hours_tag; - .recently_edited_objects_with_opening_hours;)-> $nameOfGeneratedGroup;\n"
 
     override fun isApplicableTo(element: Element) = null
