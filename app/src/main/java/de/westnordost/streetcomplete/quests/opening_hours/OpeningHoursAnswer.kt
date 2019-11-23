@@ -8,3 +8,4 @@ data class RegularOpeningHours(val times:List<OpeningMonths>) : OpeningHoursAnsw
 object AlwaysOpen : OpeningHoursAnswer()
 object NoOpeningHoursSign : OpeningHoursAnswer()
 data class DescribeOpeningHours(val text:String) : OpeningHoursAnswer()
+object UnmodifiedOpeningHours : OpeningHoursAnswer()

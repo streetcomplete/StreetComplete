@@ -22,6 +22,7 @@ import de.westnordost.streetcomplete.quests.localized_name.AAddLocalizedNameForm
 import de.westnordost.streetcomplete.quests.oneway.AddOnewayForm;
 import de.westnordost.streetcomplete.quests.opening_hours.AddOpeningHoursForm;
 import de.westnordost.streetcomplete.quests.localized_name.AddRoadNameForm;
+import de.westnordost.streetcomplete.quests.opening_hours.ResurveyOpeningHoursForm;
 import de.westnordost.streetcomplete.quests.parking_fee.AddParkingFeeForm;
 import de.westnordost.streetcomplete.quests.note_discussion.NoteDiscussionForm;
 import de.westnordost.streetcomplete.quests.postbox_collection_times.AddCollectionTimesForm;
@@ -54,6 +55,7 @@ public interface ApplicationComponent
 	void inject(AnswersCounter answersCounter);
 
 	void inject(AddOpeningHoursForm addOpeningHoursForm);
+	void inject(ResurveyOpeningHoursForm resurveyOpeningHoursForm);
 	void inject(AddRoadNameForm addRoadNameForm);
 	void inject(AddParkingFeeForm parkingFeeForm);
 	void inject(AddOnewayForm addOnewayForm);

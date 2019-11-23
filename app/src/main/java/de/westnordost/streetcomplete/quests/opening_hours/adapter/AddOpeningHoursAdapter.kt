@@ -146,7 +146,7 @@ class AddOpeningHoursAdapter(
         }
     }
 
-    private fun addWeekdays(weekdays: Weekdays, timeRange: TimeRange) {
+    fun addWeekdays(weekdays: Weekdays, timeRange: TimeRange) {
         val insertIndex = itemCount
         monthsRows[monthsRows.size - 1].weekdaysList.add(OpeningWeekdaysRow(weekdays, timeRange))
         notifyItemInserted(insertIndex)

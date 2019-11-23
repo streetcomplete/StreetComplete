@@ -56,6 +56,7 @@ import de.westnordost.streetcomplete.quests.religion.AddReligionToPlaceOfWorship
 import de.westnordost.streetcomplete.quests.religion.AddReligionToWaysideShrine;
 import de.westnordost.streetcomplete.quests.localized_name.data.PutRoadNameSuggestionsHandler;
 import de.westnordost.streetcomplete.quests.localized_name.data.RoadNameSuggestionsDao;
+import de.westnordost.streetcomplete.quests.opening_hours.ResurveyOpeningHours;
 import de.westnordost.streetcomplete.quests.segregated.AddCyclewaySegregation;
 import de.westnordost.streetcomplete.quests.self_service.AddSelfServiceLaundry;
 import de.westnordost.streetcomplete.quests.sidewalk.AddSidewalk;
@@ -120,6 +121,7 @@ public class QuestModule
 				new AddRailwayCrossingBarrier(o), // useful for routing
 				new AddPostboxCollectionTimes(o),
 				new AddOpeningHours(o),
+				new ResurveyOpeningHours(o),
 				new AddBikeParkingCapacity(o), // cycle map layer on osm.org
 				new AddOrchardProduce(o),
 				new AddCycleway(o),
