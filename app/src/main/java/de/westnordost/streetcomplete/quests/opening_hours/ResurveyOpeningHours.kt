@@ -44,7 +44,7 @@ class ResurveyOpeningHours (private val overpassServer: OverpassMapDataDao) : Os
         return overpassServer.getAndHandleQuota(getOverpassQuery(bbox)) { element, geometry ->
             if(element.tags != null) {
                 // require opening hours that are supported
-                if (element.tags["opening_hours"]?.let { OpeningHoursTagParser.parse(it) } != null) {
+                if (OpeningHoursTagParser.parse(element.tags["opening_hours"]!!) != null) {
                     handler.handle(element, geometry)
                 } else {
                     Log.wtf("AAAA", "opening_hours=" + element.tags["opening_hours"] + " was rejected as not representable in SC")
