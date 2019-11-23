@@ -75,17 +75,7 @@ class ResurveyOpeningHoursForm : AbstractQuestFormAnswerFragment<OpeningHoursAns
             if (savedInstanceState != null) {
                 serializer.toObject<ArrayList<OpeningMonthsRow>>(savedInstanceState.getByteArray(OPENING_HOURS_DATA)!!)
             } else {
-                val dayData = BooleanArray(7)
-                dayData[0] = true
-                dayData[1] = false
-                dayData[2] = true
-                dayData[3] = false
-                dayData[4] = true
-                dayData[5] = false
-                dayData[6] = true
-                var data = listOf(OpeningMonthsRow())
-                data[0].weekdaysList.add(OpeningWeekdaysRow(Weekdays(dayData), TimeRange(10, 20)))
-                data
+                osmElement!!.tags["opening_hours"]?.let { OpeningHoursTagParser.parse(it) }!!
             }
 
     private fun onClickAddButton(v: View) {

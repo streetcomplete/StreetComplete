@@ -16,7 +16,7 @@ import de.westnordost.streetcomplete.data.osm.tql.toGlobalOverpassBBox
 import de.westnordost.streetcomplete.quests.DateUtil
 import java.io.ByteArrayInputStream
 
-class ResurveyOpeningHours (private val overpass: OverpassMapDataDao) : OsmElementQuestType<OpeningHoursAnswer> {
+class ResurveyOpeningHours (private val overpassServer: OverpassMapDataDao) : OsmElementQuestType<OpeningHoursAnswer> {
     override val commitMessage = "resurvey opening hours"
     override val icon = R.drawable.ic_quest_guidepost
     override fun getTitle(tags: Map<String, String>) = R.string.resurvey_opening_hours_title
@@ -40,7 +40,15 @@ class ResurveyOpeningHours (private val overpass: OverpassMapDataDao) : OsmEleme
     }
 
     override fun download(bbox: BoundingBox, handler: MapDataWithGeometryHandler): Boolean {
-        return overpass.getAndHandleQuota(getOverpassQuery(bbox), handler)
+        return overpassServer.getAndHandleQuota(getOverpassQuery(bbox)) { element, geometry ->
+            if(element.tags != null) {
+                // require opening hours that are supported
+                if (element.tags["opening_hours"]?.let { OpeningHoursTagParser.parse(it) } == null) {
+                    handler.handle(element, geometry)
+                }
+            }
+
+        }
     }
 
     private fun getOverpassQuery(bbox: BoundingBox): String {
