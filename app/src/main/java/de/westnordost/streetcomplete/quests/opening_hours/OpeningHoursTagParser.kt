@@ -42,7 +42,6 @@ object OpeningHoursTagParser {
             for(day in WeekDay.values()) {
                 if(day >= startDay) {
                     if(day <= endDay) {
-                        //TODO: check whatever indexing of both is from Monday
                         dayData[day.ordinal] = true
                     }
                 }
