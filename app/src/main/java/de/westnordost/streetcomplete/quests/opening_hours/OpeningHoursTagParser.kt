@@ -47,8 +47,9 @@ object OpeningHoursTagParser {
                     }
                 }
             }
-            assert(rule.times.size == 1) // TODO eliminate this asssert and fix code that requires it
-            data[0].weekdaysList.add(OpeningWeekdaysRow(Weekdays(dayData), TimeRange(rule.times[0].start, rule.times[0].end)))
+            for(time in rule.times){
+                data[0].weekdaysList.add(OpeningWeekdaysRow(Weekdays(dayData), TimeRange(time.start, time.end)))
+            }
         }
 
         return data
@@ -94,9 +95,7 @@ object OpeningHoursTagParser {
                 val simplifiedTimespan = reduceTimeRangeToSimpleTime(time) ?: return null
                 simplifiedTimespans.add(simplifiedTimespan)
             }
-            if(simplifiedTimespans.size > 1){
-                return null // TODO - how this may happen? Is it representable in SC?
-            }
+            // multiple timespans may happen for rules such as "Mo-Su 09:00-12:00, 13:00-14:00"
             returned.times = simplifiedTimespans
         }
         if (rule.modifier != null) {
