@@ -67,7 +67,7 @@ class OsmQuestDownload @Inject constructor(
         geometryDB.putAll(geometryRows)
         elementDB.putAll(elements.values)
 
-        val newQuestsByQuestType = osmQuestDB.addAll(quests)
+        val newAmount = osmQuestDB.addAll(quests)
 
         if (questListener != null) {
             // it is null if this quest is already in the DB, so don't call onQuestCreated
@@ -76,8 +76,9 @@ class OsmQuestDownload @Inject constructor(
         }
 
         if (previousQuestIdsByElement.isNotEmpty()) {
-            questListener?.onQuestsRemoved(previousQuestIdsByElement.values, QuestGroup.OSM)
-            osmQuestDB.deleteAllIds(previousQuestIdsByElement.values)
+            val previousQuestIds = previousQuestIdsByElement.values.toList()
+            questListener?.onQuestsRemoved(previousQuestIds, QuestGroup.OSM)
+            osmQuestDB.deleteAllIds(previousQuestIds)
         }
 
         // note: this could be done after ALL osm quest types have been downloaded if this
@@ -88,7 +89,7 @@ class OsmQuestDownload @Inject constructor(
 
         val obsoleteAmount = previousQuestIdsByElement.size
         val secondsSpent = (System.currentTimeMillis() - time) / 1000
-        Log.i(TAG,"$questTypeName: Added $newQuestsByQuestType new and removed $obsoleteAmount already resolved quests. (Total: ${quests.size}) in ${secondsSpent}s")
+        Log.i(TAG,"$questTypeName: Added $newAmount new and removed $obsoleteAmount already resolved quests. (Total: ${quests.size}) in ${secondsSpent}s")
 
         return true
     }

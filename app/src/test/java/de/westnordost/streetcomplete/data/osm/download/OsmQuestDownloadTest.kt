@@ -1,7 +1,10 @@
 package de.westnordost.streetcomplete.data.osm.download
 
 import de.westnordost.countryboundaries.CountryBoundaries
-import de.westnordost.osmapi.map.data.*
+import de.westnordost.osmapi.map.data.BoundingBox
+import de.westnordost.osmapi.map.data.Element
+import de.westnordost.osmapi.map.data.OsmLatLon
+import de.westnordost.osmapi.map.data.OsmNode
 import de.westnordost.streetcomplete.any
 import de.westnordost.streetcomplete.data.QuestStatus
 import de.westnordost.streetcomplete.data.VisibleQuestListener
@@ -10,16 +13,20 @@ import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao
 import de.westnordost.streetcomplete.data.osm.persist.MergedElementDao
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao
+import de.westnordost.streetcomplete.eq
 import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.on
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
+import org.mockito.ArgumentMatchers.isNull
 import org.mockito.Mockito.*
 import org.mockito.invocation.InvocationOnMock
 import java.util.*
 import java.util.concurrent.FutureTask
+
 
 class OsmQuestDownloadTest {
     private lateinit var geometryDb: ElementGeometryDao
@@ -55,7 +62,7 @@ class OsmQuestDownloadTest {
         verify(listener, times(0)).onQuestsCreated(any(), any())
     }
 
-    @Test fun `ignore blacklisted position`() {
+    @Test fun `ignore at blacklisted position`() {
         val blacklistPos = OsmLatLon(0.3, 0.4)
         val blacklistElement = ElementWithGeometry(
             OsmNode(0, 0, blacklistPos, null),
@@ -80,8 +87,8 @@ class OsmQuestDownloadTest {
         val questType = ListBackedQuestType(listOf(inDisabledCountryElement))
         questType.enabledInCountries = AllCountriesExcept("AA")
         // country boundaries say that position is in AA
-        on(countryBoundaries.isInAny(any(),any(),any())).thenReturn(true)
-        on(countryBoundaries.getContainingIds(any(),any(),any(),any())).thenReturn(setOf())
+        on(countryBoundaries.isInAny(anyDouble(),anyDouble(),any())).thenReturn(true)
+        on(countryBoundaries.getContainingIds(anyDouble(),anyDouble(),anyDouble(),anyDouble())).thenReturn(setOf())
         setPreviousQuests(emptyList())
 
         download.download(questType, BoundingBox(0.0, 0.0, 1.0, 1.0), setOf())
@@ -99,6 +106,15 @@ class OsmQuestDownloadTest {
         val questType = ListBackedQuestType(listOf(normalElement))
         setPreviousQuests(emptyList())
 
+        doAnswer { invocation ->
+            val quests = invocation.arguments[0] as Collection<OsmQuest>
+            var i = 0L
+            for (quest in quests) {
+                quest.id =  i++
+            }
+            quests.size
+        }.on(osmQuestDao).addAll(any())
+
         download.download(questType, BoundingBox(0.0, 0.0, 1.0, 1.0), setOf())
 
         verify(listener).onQuestsCreated(any(), any())
@@ -114,24 +130,16 @@ class OsmQuestDownloadTest {
             ElementPointGeometry(pos)
         )
         // questType mock will only "find" the Node #4
-        val questType =ListBackedQuestType(listOf(node4))
+        val questType = ListBackedQuestType(listOf(node4))
         // in the quest database mock, there are quests for node 4 and node 5
         setPreviousQuests(listOf(
             OsmQuest(12L,questType,Element.Type.NODE,4,QuestStatus.NEW,null,null,Date(),ElementPointGeometry(pos)),
             OsmQuest(13L,questType,Element.Type.NODE,5,QuestStatus.NEW,null,null,Date(),ElementPointGeometry(pos))
         ))
 
-        // TODO VERIFY?!
-        doAnswer { invocation: InvocationOnMock ->
-            val deletedQuests = invocation.arguments[0] as Collection<Long>
-            assertEquals(1, deletedQuests.size)
-            assertEquals(13L, deletedQuests.iterator().next())
-            1
-        }.on(osmQuestDao).deleteAllIds(any())
-
         // -> we expect that quest with node #5 is removed
         download.download(questType, BoundingBox(0.0, 0.0, 1.0, 1.0), emptySet())
-        verify(osmQuestDao).deleteAllIds(any())
+        verify(osmQuestDao).deleteAllIds(listOf(13L))
         verify(listener).onQuestsRemoved(any(), any())
     }
 
