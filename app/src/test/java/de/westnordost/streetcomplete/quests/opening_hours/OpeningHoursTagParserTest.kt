@@ -161,4 +161,9 @@ class OpeningHoursTagParserTest {
     fun `allow end day on earlier day of week than the start day`() {
         Assert.assertNotEquals(OpeningHoursTagParser.parse("Su-Mo 09:00-12:00"), null)
     }
+
+    @Test
+    fun `reject multiple lists of days in a single rule, as it would change form on processing, possibly with unexpected and unwanted results`() {
+        Assert.assertNotEquals(OpeningHoursTagParser.parse("Mo-Fr 7:30-18:00, Sa-Su 9:00-18:00"), null)
+    }
 }
