@@ -36,10 +36,12 @@ object OpeningHoursTagParser {
         for (rule in rules) {
             val dayData = BooleanArray(7) {false}
             assert(rule.days.size == 1)
-            assert(rule.days[0].startDay <= rule.days[0].endDay) //TODO: add support for not requiring it
+            val startDay = rule.days[0].startDay
+            val endDay = rule.days[0].endDay ?: startDay // endDay will be null for single day ranges
+            assert(startDay <= endDay ) //TODO: add support for not requiring it
             for(day in WeekDay.values()) {
-                if(day >= rule.days[0].startDay) {
-                    if(day <= rule.days[0].endDay) {
+                if(day >= startDay) {
+                    if(day <= endDay) {
                         //TODO: check whatever indexing of both is from Monday
                         dayData[day.ordinal] = true
                     }
@@ -58,7 +60,7 @@ object OpeningHoursTagParser {
     // and there is any risk of loss of any data
     fun reduceRuleToStreetCompleteSupported(rule: Rule): Rule? { // following are ignored:
         val returned = emptyRule()
-        if(returned.days == null) {
+        if(rule.days == null) {
             return null // SC requires explicit specification of days of a week
         } else {
             val simplifiedWeekDayRanges: MutableList<WeekDayRange> = ArrayList()
@@ -83,7 +85,10 @@ object OpeningHoursTagParser {
             // TODO: replace by setDates from https://github.com/simonpoole/OpeningHoursParser/releases/tag/0.17.0 once available
             returned.setMonthdays(simplifiedDateRanges)
         }
-        if (rule.times != null) { //what about UNDEFINED_TIME and extended time?
+        if (rule.times == null) {
+            // explicit opening hours are required by SC
+            return null
+        } else {
             val simplifiedTimespans: ArrayList<TimeSpan> = ArrayList()
             for (time in rule.times) {
                 val simplifiedTimespan = reduceTimeRangeToSimpleTime(time) ?: return null
@@ -115,8 +120,13 @@ object OpeningHoursTagParser {
     // StreetComplete is not supporting offsets, indexing by nth day of week etc
     // function may return identical or modified object or null
     // null or modified object indicates that original object was not representable in SC
-    private fun reduceWeekDayRangeToSimpleDays(weekDayRange: WeekDayRange): WeekDayRange {
+    private fun reduceWeekDayRangeToSimpleDays(weekDayRange: WeekDayRange): WeekDayRange? {
         val returned = WeekDayRange()
+        if(weekDayRange.startDay == null){
+            // invalid range
+            return null
+        }
+        // returned.endDay may be null for range containing just a single day
         returned.endDay = weekDayRange.endDay
         returned.startDay = weekDayRange.startDay
         return returned
