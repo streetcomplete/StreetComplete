@@ -7,7 +7,6 @@ import de.westnordost.streetcomplete.quests.opening_hours.model.TimeRange
 import de.westnordost.streetcomplete.quests.opening_hours.model.Weekdays
 import java.io.ByteArrayInputStream
 
-
 object OpeningHoursTagParser {
     // returns null for values that are invalid or not representable in
     // StreetComplete opening hours edit widget
@@ -19,18 +18,18 @@ object OpeningHoursTagParser {
             val input = ByteArrayInputStream(openingHours.toByteArray())
             val parser = OpeningHoursParser(input)
             rules = parser.rules(false)
-            for (rule in rules) {
-                if(reduceRuleToStreetCompleteSupported(rule) == null) {
-                    // parsable, not handled by StreetComplete
-                    return null
-                }
-            }
         } catch (e: ParseException) {
             // parsing failed, value is malformed
             return null
         }
+        if(isRulesetToStreetCompleteSupported(rules) == false) {
+            // parsable, not handled by StreetComplete
+            return null
+        }
+        return transformStreetCompleteCompatibleRulesetIntoInternalForm(rules)
+    }
 
-
+    private fun transformStreetCompleteCompatibleRulesetIntoInternalForm(rules: ArrayList<Rule>): List<OpeningMonthsRow>? {
         val data = listOf(OpeningMonthsRow())
 
         for (rule in rules) {
@@ -64,8 +63,19 @@ object OpeningHoursTagParser {
         return data
     }
 
+    // Returns true iff supported by StreetComplete
+    // Returns false otherwise, in cases where it is not directly representable
+    fun isRulesetToStreetCompleteSupported(ruleset: ArrayList<Rule>): Boolean {
+        for (rule in ruleset) {
+            if(reduceRuleToStreetCompleteSupported(rule) == null) {
+                return false
+            }
+        }
+        return true
+    }
+
     // Reduces rule to a subset supported by StreetComplete
-    // in case of any info that would be lost it return null
+    // in case of any info that would be lost it returns null
     // null is also returned in cases where conversion would be necessary
     // and there is any risk of loss of any data
     fun reduceRuleToStreetCompleteSupported(rule: Rule): Rule? { // following are ignored:
