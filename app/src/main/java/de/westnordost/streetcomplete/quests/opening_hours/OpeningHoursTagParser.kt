@@ -84,6 +84,7 @@ object OpeningHoursTagParser {
                 return null // TODO - how this may happen? Is it representable in SC?
             }
             // TODO: replace by setDates from https://github.com/simonpoole/OpeningHoursParser/releases/tag/0.17.0 once available
+            // it should appear on for example https://bintray.com/simonpoole/osm/OpeningHoursParser once uploaded
             returned.setMonthdays(simplifiedDateRanges)
         }
         if (rule.times == null) {
