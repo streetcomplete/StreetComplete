@@ -34,17 +34,27 @@ object OpeningHoursTagParser {
         val data = listOf(OpeningMonthsRow())
 
         for (rule in rules) {
-            val dayData = BooleanArray(7) {false}
-            assert(rule.days.size == 1)
-            val startDay = rule.days[0].startDay
-            val endDay = rule.days[0].endDay ?: startDay // endDay will be null for single day ranges
-            assert(startDay <= endDay ) //TODO: add support for not requiring it
-            for(day in WeekDay.values()) {
-                if(day >= startDay) {
-                    if(day <= endDay) {
-                        dayData[day.ordinal] = true
+            val dayData = BooleanArray(8) {false}
+            assert(rule.holidays != null || rule.days.size >= 0)
+            if(rule.days != null) {
+                assert(rule.days.size == 1)
+                val startDay = rule.days[0].startDay
+                val endDay = rule.days[0].endDay ?: startDay // endDay will be null for single day ranges
+                assert(startDay <= endDay ) //TODO: add support for not requiring it
+                for(day in WeekDay.values()) {
+                    if(day >= startDay) {
+                        if(day <= endDay) {
+                            dayData[day.ordinal] = true
+                        }
                     }
                 }
+            }
+            if(rule.holidays != null) {
+                assert(rule.holidays.size == 1)
+                assert(rule.holidays[0].type == Holiday.Type.PH)
+                assert(rule.holidays[0].offset == 0)
+                assert(rule.holidays[0].useAsWeekDay == true)
+                dayData[7] = true
             }
             for(time in rule.times){
                 data[0].weekdaysList.add(OpeningWeekdaysRow(Weekdays(dayData), TimeRange(time.start, time.end)))
@@ -60,9 +70,13 @@ object OpeningHoursTagParser {
     // and there is any risk of loss of any data
     fun reduceRuleToStreetCompleteSupported(rule: Rule): Rule? { // following are ignored:
         val returned = emptyRule()
-        if(rule.days == null) {
-            return null // SC requires explicit specification of days of a week
-        } else {
+        if(rule.days == null && rule.holidays == null) {
+            // SC requires explicit specification of days of a week or PH
+            // holidays may contain some other holidays, but such cases will
+            // fail a holiday-specific check
+            return null
+        }
+        if(rule.days != null) {
             val simplifiedWeekDayRanges: MutableList<WeekDayRange> = ArrayList()
             for (weekDayRange in rule.days) {
                 val simplifiedDateRange = reduceWeekDayRangeToSimpleDays(weekDayRange) ?: return null
@@ -107,6 +121,13 @@ object OpeningHoursTagParser {
                 return null
             }
         }
+        if (rule.holidays != null) {
+            val holidays = reduceHolidaysToAcceptedBySC(rule.holidays)
+            if(holidays == null) {
+                return null
+            }
+            returned.holidays = holidays
+        }
         return if (rule == returned) {
             // original rule is representable in SC UI without any loss
             returned
@@ -114,6 +135,28 @@ object OpeningHoursTagParser {
             // not representable in SC UI
             null
         }
+    }
+
+    private fun reduceHolidaysToAcceptedBySC(holidays: List<Holiday>): List<Holiday>? {
+        // PH, with set opening hours variant is supported by SC
+        // many other variants are not, holidays list longer than 1 entry
+        // indicates unsupported use
+        if(holidays.size > 1) {
+            return null
+        }
+        val holiday = holidays[0]
+        val returned = Holiday()
+        if(!holiday.useAsWeekDay) {
+            // SC is not supporting "public holidays on Mondays" combinations
+            return null
+        }
+        returned.useAsWeekDay = true
+        if(holiday.type != Holiday.Type.PH) {
+            // SC is not supporting SH
+            return null
+        }
+        returned.type = Holiday.Type.PH
+        return listOf(returned)
     }
 
     // StreetComplete is not supporting offsets, indexing by nth day of week etc
