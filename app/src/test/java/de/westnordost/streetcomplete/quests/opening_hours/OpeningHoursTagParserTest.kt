@@ -164,6 +164,41 @@ class OpeningHoursTagParserTest {
 
     @Test
     fun `reject multiple lists of days in a single rule, as it would change form on processing, possibly with unexpected and unwanted results`() {
-        Assert.assertNotEquals(OpeningHoursTagParser.parse("Mo-Fr 7:30-18:00, Sa-Su 9:00-18:00"), null)
+        Assert.assertEquals(OpeningHoursTagParser.parse("Mo-Fr 7:30-18:00, Sa-Su 9:00-18:00"), null)
+    }
+
+    @Test
+    fun `reject indexing day of week within month ("first monday") as not supported by SC`() {
+        Assert.assertEquals(OpeningHoursTagParser.parse("Mo[1] 09:00-18:30"), null)
+    }
+
+    @Test
+    fun `reject open ended as not supported by SC`() {
+        Assert.assertEquals(OpeningHoursTagParser.parse("Mo 06:00+"), null)
+    }
+
+    @Test
+    fun `reject week indexing as not supported by SC`() {
+        Assert.assertEquals(OpeningHoursTagParser.parse("week 01-51 Mo 06:00-11:30"), null)
+    }
+
+    @Test
+    fun `reject year ranges as not supported by SC`() {
+        Assert.assertEquals(OpeningHoursTagParser.parse("2000-2044 Mo,Tu,Th,Fr 09:00-18:30"), null)
+    }
+
+    @Test
+    fun `reject comments as not supported by SC`() {
+        Assert.assertEquals(OpeningHoursTagParser.parse("Mo-Fr 09:00-18:30 \"comment text\""), null)
+    }
+
+    @Test
+    fun `reject open ended months as not supported by SC`() {
+        Assert.assertEquals(OpeningHoursTagParser.parse("Jan+ Mo-Fr 09:00-18:30"), null)
+    }
+
+    @Test
+    fun `reject easter in opening hours as not supported by SC`() {
+        Assert.assertEquals(OpeningHoursTagParser.parse("easter 09:00-18:00"), null)
     }
 }
