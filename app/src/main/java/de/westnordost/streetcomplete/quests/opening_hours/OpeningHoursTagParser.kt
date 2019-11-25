@@ -131,10 +131,7 @@ object OpeningHoursTagParser {
             returned.modifier = modifier
         }
         if (rule.holidays != null) {
-            val holidays = reduceHolidaysToAcceptedBySC(rule.holidays)
-            if(holidays == null) {
-                return null
-            }
+            val holidays = reduceHolidaysToAcceptedBySC(rule.holidays) ?: return null
             returned.holidays = holidays
         }
         return if (rule == returned) {
