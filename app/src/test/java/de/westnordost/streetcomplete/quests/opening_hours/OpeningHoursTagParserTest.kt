@@ -136,9 +136,8 @@ class OpeningHoursTagParserTest {
     }
 
     @Test
-    fun `reject overflow rules specified with over 24 hours`() {
-        // TODO, maybe this should be accepted after all? Note conflict with the next rule
-        Assert.assertEquals(OpeningHoursTagParser.parse("Su 09:00-26:00"), null)
+    fun `allow next day rules specified as over 24 hours, for objects open also during early part of the next day, in this case Monday`() {
+        Assert.assertNotEquals(OpeningHoursTagParser.parse("Su 09:00-26:00"), null)
     }
 
     @Test
