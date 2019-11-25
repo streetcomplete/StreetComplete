@@ -203,7 +203,10 @@ object OpeningHoursTagParser {
             if (date.isOpenEnded) {
                 return null //TODO: it may be supported by StreetComplete
             }
-            if (date.isWeekDayOffsetPositive) {
+            if (date.weekDayOffset != null) {
+                return null
+            }
+            if (date.dayOffset != 0) {
                 return null
             }
         }
