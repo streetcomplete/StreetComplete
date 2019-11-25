@@ -33,7 +33,7 @@ data class OpeningMonthsRow(var months: CircularSection = CircularSection(0, MAX
     }
 
     companion object {
-        private val MAX_MONTH_INDEX = 11
+        internal val MAX_MONTH_INDEX = 11
     }
 }
 
