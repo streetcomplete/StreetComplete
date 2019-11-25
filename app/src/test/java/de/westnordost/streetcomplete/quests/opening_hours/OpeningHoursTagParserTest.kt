@@ -16,6 +16,11 @@ class OpeningHoursTagParserTest {
     }
 
     @Test
+    fun `month limit has some impact on parser output`() {
+        Assert.assertNotEquals(OpeningHoursTagParser.parse("Jan Mo 09:00-20:00"), OpeningHoursTagParser.parse("Mo 09:00-20:00"))
+    }
+
+    @Test
     fun `accept opening hours covering multiple days`() {
         Assert.assertNotEquals(OpeningHoursTagParser.parse("Tu-Su 10:00-17:30"), null)
     }
@@ -53,6 +58,11 @@ class OpeningHoursTagParserTest {
     @Test
     fun `reject rules overriding earlier rules`() {
         Assert.assertEquals(OpeningHoursTagParser.parse("Th 17:30-19:30; Th 17:00-19:00"), null)
+    }
+
+    @Test
+    fun `reject rules overriding earlier rules in the month mode`() {
+        Assert.assertEquals(OpeningHoursTagParser.parse("Oct Mon 08:30-08:31;Oct Mon 08:30-10:30"), null)
     }
 
     @Test
@@ -127,6 +137,7 @@ class OpeningHoursTagParserTest {
 
     @Test
     fun `reject overflow rules specified with over 24 hours`() {
+        // TODO, maybe this should be accepted after all? Note conflict with the next rule
         Assert.assertEquals(OpeningHoursTagParser.parse("Su 09:00-26:00"), null)
     }
 
