@@ -246,9 +246,6 @@ object OpeningHoursTagParser {
         if (endInMinutesSinceMidnight < 0) {
             return null
         }
-        if (endInMinutesSinceMidnight > 24 * 60) {
-            return null
-        }
         simplifiedTimespan.end = endInMinutesSinceMidnight
         return simplifiedTimespan
     }
