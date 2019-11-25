@@ -77,7 +77,8 @@ class ResurveyOpeningHours (private val overpassServer: OverpassMapDataDao) : Os
             is AlwaysOpen -> changes.modify("opening_hours", "24/7")
             is NoOpeningHoursSign -> changes.add("opening_hours:signed", "no")
             is UnmodifiedOpeningHours -> changes.addOrModify(OsmTaggings.SURVEY_MARK_KEY + ":opening_hours", DateUtil.getCurrentDateString())
-            is RegularOpeningHours -> changes.add("opening_hours", answer.times.joinToString(";"))
+            is RegularOpeningHours -> changes.modify("opening_hours", answer.times.joinToString(";"))
+            else -> assert(false)
         }
     }
 }
