@@ -127,13 +127,8 @@ object OpeningHoursTagParser {
             returned.times = simplifiedTimespans
         }
         if (rule.modifier != null) {
-            // public holidays with "off" specified explicitly are incompatible with SC due to
-            // https://github.com/westnordost/StreetComplete/issues/276
-            // other opening hours using "off" are rare and would require automated conversion
-            // that would drop off part, what may cause issues in weird cases
-            if (rule.modifier.modifier != RuleModifier.Modifier.OPEN) {
-                return null
-            }
+            val modifier = reduceModifierToAcceptedBySC(rule.modifier) ?: return null
+            returned.modifier = modifier
         }
         if (rule.holidays != null) {
             val holidays = reduceHolidaysToAcceptedBySC(rule.holidays)
@@ -149,6 +144,17 @@ object OpeningHoursTagParser {
             // not representable in SC UI
             null
         }
+    }
+
+    private fun reduceModifierToAcceptedBySC(modifier: RuleModifier): RuleModifier? {
+        // public holidays with "off" specified explicitly are incompatible with SC due to
+        // https://github.com/westnordost/StreetComplete/issues/276
+        // other opening hours using "off" are rare and would require automated conversion
+        // that would drop off part, what may cause issues in weird cases
+        if (modifier.modifier != RuleModifier.Modifier.OPEN) {
+            return null
+        }
+        return modifier
     }
 
     private fun reduceHolidaysToAcceptedBySC(holidays: List<Holiday>): List<Holiday>? {
