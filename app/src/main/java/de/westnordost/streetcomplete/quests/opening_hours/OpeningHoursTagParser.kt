@@ -199,7 +199,7 @@ object OpeningHoursTagParser {
     // function may return identical or modified object or null
     // null or modified object indicates that original object was not representable in SC
     private fun reduceDateRangeToFullMonths(dateRange: DateRange): DateRange? {
-        for (date in arrayOf(dateRange.startDate, dateRange.endDate)) {
+        for (date in arrayOf(dateRange.startDate, dateRange.endDate).filterNotNull()) {
             if (date.isOpenEnded) {
                 return null //TODO: it may be supported by StreetComplete
             }
@@ -213,9 +213,12 @@ object OpeningHoursTagParser {
         startDate.month = dateRange.startDate.month
         newDateRange.startDate = startDate
 
-        val endDate = DateWithOffset()
-        endDate.month = dateRange.endDate.month
-        newDateRange.endDate = endDate
+        if(dateRange.endDate != null) {
+            // range with just single month will have endDate unset
+            val endDate = DateWithOffset()
+            endDate.month = dateRange.endDate.month
+            newDateRange.endDate = endDate
+        }
         return newDateRange
     }
 
