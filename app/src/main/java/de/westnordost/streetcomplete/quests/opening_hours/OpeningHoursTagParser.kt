@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.opening_hours
 import ch.poole.openinghoursparser.*
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningMonthsRow
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningWeekdaysRow
+import de.westnordost.streetcomplete.quests.opening_hours.model.CircularSection
 import de.westnordost.streetcomplete.quests.opening_hours.model.TimeRange
 import de.westnordost.streetcomplete.quests.opening_hours.model.Weekdays
 import java.io.ByteArrayInputStream
@@ -30,39 +31,74 @@ object OpeningHoursTagParser {
     }
 
     private fun transformStreetCompleteCompatibleRulesetIntoInternalForm(rules: ArrayList<Rule>): List<OpeningMonthsRow>? {
-        val data = listOf(OpeningMonthsRow())
+        var data = mutableListOf(OpeningMonthsRow())
+        for (rule in rules) {
+            if(rule.dates != null) {
+                // month based rules, so we need month-limited rows that will be added later
+                data = mutableListOf()
+            }
+        }
 
         for (rule in rules) {
-            val dayData = BooleanArray(8) {false}
-            assert(rule.holidays != null || rule.days.size >= 0)
-            if(rule.days != null) {
-                assert(rule.days.size == 1)
-                val startDay = rule.days[0].startDay
-                val endDay = rule.days[0].endDay ?: startDay // endDay will be null for single day ranges
-                assert(startDay <= endDay ) //TODO: add support for not requiring it
-                for(day in WeekDay.values()) {
-                    if(day >= startDay) {
-                        if(day <= endDay) {
-                            dayData[day.ordinal] = true
-                        }
-                    }
+            var index = 0
+            if(rule.dates != null) {
+                assert(rule.dates.size == 1)
+                val start = rule.dates[0].startDate
+                val end = rule.dates[0].endDate ?: start
+                index = getIndexOfOurMonthsRow(data, start.month.ordinal, end.month.ordinal)
+                if(index == -1) {
+                    data.add(OpeningMonthsRow(CircularSection(start.month.ordinal, end.month.ordinal)))
+                    index = data.size - 1
                 }
             }
-            if(rule.holidays != null) {
-                assert(rule.holidays.size == 1)
-                assert(rule.holidays[0].type == Holiday.Type.PH)
-                assert(rule.holidays[0].offset == 0)
-                assert(rule.holidays[0].useAsWeekDay == true)
-                dayData[7] = true
-            }
             for(time in rule.times){
-                data[0].weekdaysList.add(OpeningWeekdaysRow(Weekdays(dayData), TimeRange(time.start, time.end)))
+                val dayData = daysWhenRuleApplies(rule)
+                data[index].weekdaysList.add(OpeningWeekdaysRow(Weekdays(dayData), TimeRange(time.start, time.end)))
             }
         }
 
         return data
     }
 
+    fun getIndexOfOurMonthsRow(monthRows: List<OpeningMonthsRow>, startMonth: Int, endMonth: Int): Int {
+        var index = 0
+        for(row in monthRows) {
+            if(row.months.start == startMonth) {
+                if(row.months.start == endMonth) {
+                    return index
+                }
+            }
+            index++
+        }
+        return -1
+    }
+
+    //returns array that can be used to initialize OpeningWeekdaysRow
+    fun daysWhenRuleApplies(rule: Rule): BooleanArray {
+        val dayData = BooleanArray(8) {false}
+        assert(rule.holidays != null || rule.days.size >= 0)
+        if(rule.days != null) {
+            assert(rule.days.size == 1)
+            val startDay = rule.days[0].startDay
+            val endDay = rule.days[0].endDay ?: startDay // endDay will be null for single day ranges
+            assert(startDay <= endDay ) //TODO: add support for not requiring it
+            for(day in WeekDay.values()) {
+                if(day >= startDay) {
+                    if(day <= endDay) {
+                        dayData[day.ordinal] = true
+                    }
+                }
+            }
+        }
+        if(rule.holidays != null) {
+            assert(rule.holidays.size == 1)
+            assert(rule.holidays[0].type == Holiday.Type.PH)
+            assert(rule.holidays[0].offset == 0)
+            assert(rule.holidays[0].useAsWeekDay == true)
+            dayData[7] = true
+        }
+        return dayData
+    }
     // Returns true iff supported by StreetComplete
     // Returns false otherwise, in cases where it is not directly representable
     fun isRulesetToStreetCompleteSupported(ruleset: ArrayList<Rule>): Boolean {
@@ -71,8 +107,29 @@ object OpeningHoursTagParser {
                 return false
             }
         }
+        if(areOnlySomeRulesMonthBased(ruleset)) {
+            // StreetComplete can handle month based rules, but requires all of them to be month based
+            return false
+        }
         return true
     }
+
+    fun areOnlySomeRulesMonthBased(ruleset: ArrayList<Rule>): Boolean {
+        var rulesWithMonthLimits = 0
+        for (rule in ruleset) {
+            if(rule.dates != null) {
+                rulesWithMonthLimits += 1
+            }
+        }
+        if(rulesWithMonthLimits == 0) {
+            return false
+        }
+        if (rulesWithMonthLimits == ruleset.size) {
+            return false
+        }
+        return true
+    }
+
 
     // Reduces rule to a subset supported by StreetComplete
     // in case of any info that would be lost it returns null

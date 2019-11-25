@@ -54,6 +54,11 @@ class ResurveyOpeningHoursForm : AbstractQuestFormAnswerFragment<OpeningHoursAns
 
         val isAlsoAddingMonths = savedInstanceState?.getBoolean(IS_ADD_MONTHS_MODE) == true
         val viewData = loadOpeningHoursData(savedInstanceState)
+        if(viewData.size > 1 && savedInstanceState == null) {
+            // loading opening hours state from opening_hours tag
+            // it may be in month mode from a start
+            isAlsoAddingMonths = true
+        }
 
         openingHoursAdapter = AddOpeningHoursAdapter(viewData, activity!!, countryInfo)
         openingHoursAdapter.isDisplayMonths = isAlsoAddingMonths
