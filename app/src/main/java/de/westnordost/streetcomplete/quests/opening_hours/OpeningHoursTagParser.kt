@@ -23,7 +23,7 @@ object OpeningHoursTagParser {
             // parsing failed, value is malformed
             return null
         }
-        if(isRulesetToStreetCompleteSupported(rules) == false) {
+        if(!isRulesetToStreetCompleteSupported(rules)) {
             // parsable, not handled by StreetComplete
             return null
         }
