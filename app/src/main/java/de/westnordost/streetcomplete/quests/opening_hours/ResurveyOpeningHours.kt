@@ -24,20 +24,7 @@ class ResurveyOpeningHours (private val overpassServer: OverpassMapDataDao) : Os
     override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> {
         val name = tags["name"]!!
         val openingHours = tags.getValue("opening_hours")
-        var parsed = ""
-        try {
-            val input = ByteArrayInputStream(openingHours.toByteArray())
-            val parser = OpeningHoursParser(input)
-            val rules: ArrayList<Rule> = parser.rules(false)
-            for (rule in rules) {
-                parsed += rule.toDebugString()
-            }
-        } catch (e: ParseException) {
-            e.printStackTrace()
-            parsed = "parsing failed"
-        }
-        val displayed = "$openingHours \n\n<$parsed>\n\n"
-        return arrayOf(displayed, name)
+        return arrayOf(openingHours, name)
     }
 
     override fun download(bbox: BoundingBox, handler: MapDataWithGeometryHandler): Boolean {
