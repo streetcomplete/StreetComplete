@@ -43,7 +43,8 @@ class ResurveyOpeningHoursForm : AbstractQuestFormAnswerFragment<OpeningHoursAns
 
     private lateinit var openingHoursAdapter: AddOpeningHoursAdapter
 
-    @Inject internal lateinit var serializer: Serializer
+    @Inject
+    internal lateinit var serializer: Serializer
 
     init {
         Injector.instance.applicationComponent.inject(this)
@@ -54,8 +55,8 @@ class ResurveyOpeningHoursForm : AbstractQuestFormAnswerFragment<OpeningHoursAns
 
         var isAlsoAddingMonths = savedInstanceState?.getBoolean(IS_ADD_MONTHS_MODE) == true
         val viewData = loadOpeningHoursData(savedInstanceState)
-        if(viewData.size >= 1 && savedInstanceState == null) {
-            if(viewData[0].months.start != 0 || viewData[0].months.end != OpeningMonthsRow.MAX_MONTH_INDEX) {
+        if (viewData.size >= 1 && savedInstanceState == null) {
+            if (viewData[0].months.start != 0 || viewData[0].months.end != OpeningMonthsRow.MAX_MONTH_INDEX) {
                 // loading opening hours state from opening_hours tag
                 // it is in the month mode from a start
                 isAlsoAddingMonths = true
@@ -93,7 +94,7 @@ class ResurveyOpeningHoursForm : AbstractQuestFormAnswerFragment<OpeningHoursAns
             popup.menu.add(NONE, 0, NONE, R.string.quest_openingHours_add_weekdays)
             popup.menu.add(NONE, 1, NONE, R.string.quest_openingHours_add_months)
             popup.setOnMenuItemClickListener { item ->
-                when(item.itemId) {
+                when (item.itemId) {
                     0 -> openingHoursAdapter.addNewWeekdays()
                     1 -> openingHoursAdapter.addNewMonths()
                 }
@@ -112,7 +113,7 @@ class ResurveyOpeningHoursForm : AbstractQuestFormAnswerFragment<OpeningHoursAns
 
     override fun onClickOk() {
         val answer = RegularOpeningHours(openingHoursAdapter.createOpeningMonths())
-        if(osmElement!!.tags["opening_hours"] == answer.times.joinToString(";")) {
+        if (osmElement!!.tags["opening_hours"] == answer.times.joinToString(";")) {
             applyAnswer(UnmodifiedOpeningHours)
         } else {
             applyAnswer(answer)
@@ -127,7 +128,7 @@ class ResurveyOpeningHoursForm : AbstractQuestFormAnswerFragment<OpeningHoursAns
                 .setTitle(R.string.quest_openingHours_comment_title)
                 .setView(view)
                 .setPositiveButton(android.R.string.ok) { _, _ ->
-                    val txt = commentInput.text.toString().replace("\"","").trim()
+                    val txt = commentInput.text.toString().replace("\"", "").trim()
                     if (txt.isEmpty()) {
                         AlertDialog.Builder(context!!)
                                 .setMessage(R.string.quest_openingHours_emptyAnswer)

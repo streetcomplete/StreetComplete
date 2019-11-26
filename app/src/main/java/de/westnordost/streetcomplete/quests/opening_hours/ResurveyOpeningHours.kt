@@ -17,7 +17,7 @@ import de.westnordost.streetcomplete.data.osm.tql.toGlobalOverpassBBox
 import de.westnordost.streetcomplete.quests.DateUtil
 import java.io.ByteArrayInputStream
 
-class ResurveyOpeningHours (private val overpassServer: OverpassMapDataDao) : OsmElementQuestType<OpeningHoursAnswer> {
+class ResurveyOpeningHours(private val overpassServer: OverpassMapDataDao) : OsmElementQuestType<OpeningHoursAnswer> {
     override val commitMessage = "resurvey opening hours"
     override val icon = R.drawable.ic_quest_guidepost
     override fun getTitle(tags: Map<String, String>) = R.string.resurvey_opening_hours_title
@@ -29,7 +29,7 @@ class ResurveyOpeningHours (private val overpassServer: OverpassMapDataDao) : Os
 
     override fun download(bbox: BoundingBox, handler: MapDataWithGeometryHandler): Boolean {
         return overpassServer.getAndHandleQuota(getOverpassQuery(bbox)) { element, geometry ->
-            if(element.tags != null) {
+            if (element.tags != null) {
                 // require opening hours that are supported
                 if (OpeningHoursTagParser.parse(element.tags["opening_hours"]!!) != null) {
                     handler.handle(element, geometry)
@@ -63,17 +63,17 @@ class ResurveyOpeningHours (private val overpassServer: OverpassMapDataDao) : Os
     // objects where tag was surveyed and confirmed to be correct by adding check_date tags
     // are with larger delay, as it means this info on this specific object is relatively stable
     protected fun getQueryPart(objectType: String, nameOfGeneratedGroup: String, reviewIntervalInDays: Int) =
-        "$objectType[name][opening_hours]['opening_hours:signed'!='no'](if:!is_date(t['check_date:opening_hours']) || date(t['check_date:opening_hours']) < " +
-        "date('${DateUtil.getOffsetDateString(-reviewIntervalInDays * 3)}T00:00:00Z')) -> .old_opening_hours_tag;\n" +
-        "$objectType[name][opening_hours](newer: '${DateUtil.getOffsetDateString(-reviewIntervalInDays)}T00:00:00Z') -> .recently_edited_objects_with_opening_hours;\n" +
-        "(.old_opening_hours_tag; - .recently_edited_objects_with_opening_hours;)-> $nameOfGeneratedGroup;\n"
+            "$objectType[name][opening_hours]['opening_hours:signed'!='no'](if:!is_date(t['check_date:opening_hours']) || date(t['check_date:opening_hours']) < " +
+                    "date('${DateUtil.getOffsetDateString(-reviewIntervalInDays * 3)}T00:00:00Z')) -> .old_opening_hours_tag;\n" +
+                    "$objectType[name][opening_hours](newer: '${DateUtil.getOffsetDateString(-reviewIntervalInDays)}T00:00:00Z') -> .recently_edited_objects_with_opening_hours;\n" +
+                    "(.old_opening_hours_tag; - .recently_edited_objects_with_opening_hours;)-> $nameOfGeneratedGroup;\n"
 
     override fun isApplicableTo(element: Element) = null
 
     override fun createForm() = ResurveyOpeningHoursForm()
 
     override fun applyAnswerTo(answer: OpeningHoursAnswer, changes: StringMapChangesBuilder) {
-        when(answer) {
+        when (answer) {
             is AlwaysOpen -> changes.modify("opening_hours", "24/7")
             is NoOpeningHoursSign -> changes.add("opening_hours:signed", "no")
             is UnmodifiedOpeningHours -> changes.addOrModify(OsmTaggings.SURVEY_MARK_KEY + ":opening_hours", DateUtil.getCurrentDateString())
