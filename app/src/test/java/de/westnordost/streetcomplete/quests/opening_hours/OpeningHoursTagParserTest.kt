@@ -61,8 +61,28 @@ class OpeningHoursTagParserTest {
     }
 
     @Test
+    fun `reject rules overriding earlier rules, with both specified as the same range`() {
+        Assert.assertEquals(OpeningHoursTagParser.parse("Mo-Th 17:30-19:30; Mo-Th 17:00-19:00"), null)
+    }
+
+    @Test
+    fun `reject rules overriding earlier rules, with intersecting ranges`() {
+        Assert.assertEquals(OpeningHoursTagParser.parse("Mo-Th 17:30-19:30; Tu-Su 17:00-19:00"), null)
+    }
+
+    @Test
+    fun `reject rules overriding earlier rules, with range overriden by a single day rule`() {
+        Assert.assertEquals(OpeningHoursTagParser.parse("Mo-Th 17:30-19:30; Tu 17:00-19:00"), null)
+    }
+
+    @Test
     fun `reject rules overriding earlier rules in the month mode`() {
-        Assert.assertEquals(OpeningHoursTagParser.parse("Oct Mon 08:30-08:31;Oct Mon 08:30-10:30"), null)
+        Assert.assertEquals(OpeningHoursTagParser.parse("Oct Mo 08:30-08:31;Oct Mo 08:30-10:30"), null)
+    }
+
+    @Test
+    fun `reject rules overriding earlier rules with month range going over new year`() {
+        Assert.assertEquals(OpeningHoursTagParser.parse("Jan-Feb Mo 08:30-08:31;Oct-Jan Mo 08:30-10:30"), null)
     }
 
     @Test
@@ -168,8 +188,13 @@ class OpeningHoursTagParserTest {
     }
 
     @Test
-    fun `allow end day on earlier day of week than the start day`() {
+    fun `allow end day on earlier day of week than the start day, with Sunday as the first day of the week`() {
         Assert.assertNotEquals(OpeningHoursTagParser.parse("Su-Mo 09:00-12:00"), null)
+    }
+
+    @Test
+    fun `allow end day on earlier day of week than the start day, with Sunday as the last day of week`() {
+        Assert.assertNotEquals(OpeningHoursTagParser.parse("Fr-Mo 09:00-12:00"), null)
     }
 
     @Test
@@ -210,5 +235,10 @@ class OpeningHoursTagParserTest {
     @Test
     fun `reject easter in opening hours as not supported by SC`() {
         Assert.assertEquals(OpeningHoursTagParser.parse("easter 09:00-18:00"), null)
+    }
+
+    @Test
+    fun `reject intervals`() {
+        Assert.assertEquals(OpeningHoursTagParser.parse("Mo 10:00-16:00/90"), null)
     }
 }
