@@ -86,6 +86,16 @@ class OpeningHoursTagParserTest {
     }
 
     @Test
+    fun `reject rules with month range going over new year as not straightforwardly representable`() {
+        Assert.assertEquals(OpeningHoursTagParser.parse("Oct-Jan Mo 08:30-10:30"), null)
+    }
+
+    @Test
+    fun `reject rules with month range going over new year with multiple rules triggering override check`() {
+        Assert.assertEquals(OpeningHoursTagParser.parse("Oct-Jan Mo 08:30-10:30; Feb Mo 08:30-11:30"), null)
+    }
+
+    @Test
     fun `accept rules not overriding earlier rules`() {
         Assert.assertNotEquals(OpeningHoursTagParser.parse("Mo 17:30-19:30; Th 17:00-19:00"), null)
     }
@@ -195,6 +205,16 @@ class OpeningHoursTagParserTest {
     @Test
     fun `allow end day on earlier day of week than the start day, with Sunday as the last day of week`() {
         Assert.assertNotEquals(OpeningHoursTagParser.parse("Fr-Mo 09:00-12:00"), null)
+    }
+
+    @Test
+    fun `allow end day on earlier day of week than the start day, with Sunday as the first day of the week without triggering collision detector`() {
+        Assert.assertNotEquals(OpeningHoursTagParser.parse("Su-Mo 09:00-12:00; Tu-Sa 10:10-10:11"), null)
+    }
+
+    @Test
+    fun `allow end day on earlier day of week than the start day, with Sunday as the last day of week without triggering collision detector`() {
+        Assert.assertNotEquals(OpeningHoursTagParser.parse("Fr-Mo 09:00-12:00; Tu-Th 10:10-10:11"), null)
     }
 
     @Test
