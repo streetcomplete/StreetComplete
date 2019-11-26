@@ -114,8 +114,9 @@ class ResurveyOpeningHoursForm : AbstractQuestFormAnswerFragment<OpeningHoursAns
         val answer = RegularOpeningHours(openingHoursAdapter.createOpeningMonths())
         if(osmElement!!.tags["opening_hours"] == answer.times.joinToString(";")) {
             applyAnswer(UnmodifiedOpeningHours)
+        } else {
+            applyAnswer(answer)
         }
-        applyAnswer(answer)
     }
 
     private fun showInputCommentDialog() {
