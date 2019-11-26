@@ -34,7 +34,8 @@ object OpeningHoursTagParser {
         var data = mutableListOf(OpeningMonthsRow())
         for (rule in rules) {
             if(rule.dates != null) {
-                // month based rules, so we need month-limited rows that will be added later
+                // month based rules, so we need OpeningMonthsRow objects that will be created
+                // and added later rather than a single catch-all row
                 data = mutableListOf()
             }
         }
@@ -47,6 +48,7 @@ object OpeningHoursTagParser {
                 val end = rule.dates[0].endDate ?: start
                 index = getIndexOfOurMonthsRow(data, start.month.ordinal, end.month.ordinal)
                 if(index == -1) {
+                    // there is no reusable row matching out entry, we need to create a new one
                     data.add(OpeningMonthsRow(CircularSection(start.month.ordinal, end.month.ordinal)))
                     index = data.size - 1
                 }
@@ -60,21 +62,19 @@ object OpeningHoursTagParser {
         return data
     }
 
-    fun getIndexOfOurMonthsRow(monthRows: List<OpeningMonthsRow>, startMonth: Int, endMonth: Int): Int {
-        var index = 0
-        for(row in monthRows) {
+    private fun getIndexOfOurMonthsRow(monthRows: List<OpeningMonthsRow>, startMonth: Int, endMonth: Int): Int {
+        for((index, row) in monthRows.withIndex()) {
             if(row.months.start == startMonth) {
                 if(row.months.start == endMonth) {
                     return index
                 }
             }
-            index++
         }
         return -1
     }
 
     //returns array that can be used to initialize OpeningWeekdaysRow
-    fun daysWhenRuleApplies(rule: Rule): BooleanArray {
+    private fun daysWhenRuleApplies(rule: Rule): BooleanArray {
         val dayData = BooleanArray(8) {false}
         Assert.assert(rule.holidays != null || rule.days.size >= 0)
         if(rule.days != null) {
@@ -103,14 +103,18 @@ object OpeningHoursTagParser {
             Assert.assert(rule.holidays.size == 1)
             Assert.assert(rule.holidays[0].type == Holiday.Type.PH)
             Assert.assert(rule.holidays[0].offset == 0)
-            Assert.assert(rule.holidays[0].useAsWeekDay == true)
+            Assert.assert(rule.holidays[0].useAsWeekDay)
             dayData[7] = true
         }
         return dayData
     }
     // Returns true iff supported by StreetComplete
     // Returns false otherwise, in cases where it is not directly representable
-    fun isRulesetToStreetCompleteSupported(ruleset: ArrayList<Rule>): Boolean {
+    //
+    // It is first checking each rule (parts of opening_hours tag separated by ; sign)
+    // is it possible to recreate it by taking only supported parts
+    // later it checks also some additional limitations imposed by SC
+    private fun isRulesetToStreetCompleteSupported(ruleset: ArrayList<Rule>): Boolean {
         for (rule in ruleset) {
             if(reduceRuleToStreetCompleteSupported(rule) == null) {
                 return false
@@ -159,7 +163,6 @@ object OpeningHoursTagParser {
                         if(areMonthRangesIntersecting(firstDateRange, secondDateRange)){
                             return areDayRangesIntersecting(ruleset[checkedRuleIndex], ruleset[competingRuleIndex])
                         }
-
                     } else {
                         Assert.assert(ruleset[competingRuleIndex].dates == null)
                         return areDayRangesIntersecting(ruleset[checkedRuleIndex], ruleset[competingRuleIndex])
@@ -170,7 +173,7 @@ object OpeningHoursTagParser {
         return false
     }
 
-    fun areDayRangesIntersecting(ruleA: Rule, ruleB: Rule): Boolean {
+    private fun areDayRangesIntersecting(ruleA: Rule, ruleB: Rule): Boolean {
         if(areHolidaysIntersecting(ruleA.holidays, ruleB.holidays)) {
             return true
         }
@@ -190,7 +193,7 @@ object OpeningHoursTagParser {
         return rangeA.intersects(rangeB)
     }
 
-    fun areHolidaysIntersecting(firstHolidays: MutableList<Holiday>?, secondHolidays: MutableList<Holiday>?): Boolean {
+    private fun areHolidaysIntersecting(firstHolidays: MutableList<Holiday>?, secondHolidays: MutableList<Holiday>?): Boolean {
         if(firstHolidays == null || secondHolidays == null) {
             return false
         }
@@ -209,7 +212,7 @@ object OpeningHoursTagParser {
     }
 
     // all info in dates, except months is ignored!
-    fun areMonthRangesIntersecting(aDateRange: DateRange?, bDateRange: DateRange?): Boolean {
+    private fun areMonthRangesIntersecting(aDateRange: DateRange?, bDateRange: DateRange?): Boolean {
         if(aDateRange == null || bDateRange == null) {
             return false
         }
@@ -222,7 +225,7 @@ object OpeningHoursTagParser {
         return rangeA.intersects(rangeB)
     }
 
-    fun areOnlySomeRulesMonthBased(ruleset: ArrayList<Rule>): Boolean {
+    private fun areOnlySomeRulesMonthBased(ruleset: ArrayList<Rule>): Boolean {
         var rulesWithMonthLimits = 0
         for (rule in ruleset) {
             if(rule.dates != null) {
@@ -243,7 +246,7 @@ object OpeningHoursTagParser {
     // in case of any info that would be lost it returns null
     // null is also returned in cases where conversion would be necessary
     // and there is any risk of loss of any data
-    fun reduceRuleToStreetCompleteSupported(rule: Rule): Rule? { // following are ignored:
+    private fun reduceRuleToStreetCompleteSupported(rule: Rule): Rule? { // following are ignored:
         val returned = emptyRule()
         if(rule.days == null && rule.holidays == null) {
             // SC requires explicit specification of days of a week or PH
@@ -258,7 +261,8 @@ object OpeningHoursTagParser {
                 simplifiedWeekDayRanges.add(simplifiedDateRange)
             }
             if(simplifiedWeekDayRanges.size > 1){
-                return null // TODO - how this may happen? Is it representable in SC?
+                //TODO: support also Fr,Sa 11:00-00:00 kind of rules
+                return null
             }
             returned.days = simplifiedWeekDayRanges // copy days of the week from the input rule
         }
@@ -300,10 +304,10 @@ object OpeningHoursTagParser {
             returned.holidays = holidays
         }
         return if (rule == returned) {
-            // original rule is representable in SC UI without any loss
+            // original rule is matching reduced rule as no special constructions were used
             returned
         } else {
-            // not representable in SC UI
+            // not representable given our limitations
             null
         }
     }
