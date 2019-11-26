@@ -42,7 +42,7 @@ object OpeningHoursTagParser {
         for (rule in rules) {
             var index = 0
             if(rule.dates != null) {
-                assert(rule.dates.size == 1)
+                Assert.assert(rule.dates.size == 1)
                 val start = rule.dates[0].startDate
                 val end = rule.dates[0].endDate ?: start
                 index = getIndexOfOurMonthsRow(data, start.month.ordinal, end.month.ordinal)
@@ -76,12 +76,12 @@ object OpeningHoursTagParser {
     //returns array that can be used to initialize OpeningWeekdaysRow
     fun daysWhenRuleApplies(rule: Rule): BooleanArray {
         val dayData = BooleanArray(8) {false}
-        assert(rule.holidays != null || rule.days.size >= 0)
+        Assert.assert(rule.holidays != null || rule.days.size >= 0)
         if(rule.days != null) {
-            assert(rule.days.size == 1)
+            Assert.assert(rule.days.size == 1)
             val startDay = rule.days[0].startDay
             val endDay = rule.days[0].endDay ?: startDay // endDay will be null for single day ranges
-            assert(startDay <= endDay ) //TODO: add support for not requiring it
+            Assert.assert(startDay <= endDay ) //TODO: add support for not requiring it
             for(day in WeekDay.values()) {
                 if(day >= startDay) {
                     if(day <= endDay) {
@@ -91,10 +91,10 @@ object OpeningHoursTagParser {
             }
         }
         if(rule.holidays != null) {
-            assert(rule.holidays.size == 1)
-            assert(rule.holidays[0].type == Holiday.Type.PH)
-            assert(rule.holidays[0].offset == 0)
-            assert(rule.holidays[0].useAsWeekDay == true)
+            Assert.assert(rule.holidays.size == 1)
+            Assert.assert(rule.holidays[0].type == Holiday.Type.PH)
+            Assert.assert(rule.holidays[0].offset == 0)
+            Assert.assert(rule.holidays[0].useAsWeekDay == true)
             dayData[7] = true
         }
         return dayData
