@@ -81,10 +81,19 @@ object OpeningHoursTagParser {
             Assert.assert(rule.days.size == 1)
             val startDay = rule.days[0].startDay
             val endDay = rule.days[0].endDay ?: startDay // endDay will be null for single day ranges
-            Assert.assert(startDay <= endDay ) //TODO: add support for not requiring it
-            for(day in WeekDay.values()) {
-                if(day >= startDay) {
-                    if(day <= endDay) {
+            if(startDay <= endDay) {
+                // ranges like Tuesday-Saturday
+                for(day in WeekDay.values()) {
+                    if(day >= startDay) {
+                        if(day <= endDay) {
+                            dayData[day.ordinal] = true
+                        }
+                    }
+                }
+            } else {
+                // ranges like Saturday-Tuesday
+                for (day in WeekDay.values()) {
+                    if (day <= endDay || day >= startDay) {
                         dayData[day.ordinal] = true
                     }
                 }
