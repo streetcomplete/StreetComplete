@@ -116,11 +116,110 @@ object OpeningHoursTagParser {
                 return false
             }
         }
+        if(includesMonthsRangeCrossingNewYearBoundary(ruleset)) {
+            // strictly speaking this kind of ranges are supported, but not in an obvious way
+            return false
+        }
         if(areOnlySomeRulesMonthBased(ruleset)) {
             // StreetComplete can handle month based rules, but requires all of them to be month based
             return false
         }
+        if(rulesAreOverridingOtherRules(ruleset)) {
+            // this kind of opening hours specification likely require fix
+            // anyway, it is not representable directly by SC
+            return false
+        }
         return true
+    }
+
+    private fun includesMonthsRangeCrossingNewYearBoundary(ruleset: ArrayList<Rule>): Boolean {
+        for(rule in ruleset) {
+            if(rule.dates != null) {
+                Assert.assert(rule.dates.size == 1)
+                if(rule.dates[0].endDate != null) {
+                    if(rule.dates[0].startDate.month > rule.dates[0].endDate.month) {
+                        return true
+                    }
+                }
+            }
+        }
+        return false
+    }
+
+    private fun rulesAreOverridingOtherRules(ruleset: ArrayList<Rule>): Boolean {
+        for (checkedRuleIndex in 0 until ruleset.size) {
+            for (competingRuleIndex in 0 until ruleset.size) {
+                if(checkedRuleIndex != competingRuleIndex) {
+                    if(ruleset[checkedRuleIndex].dates != null) {
+                        Assert.assert(ruleset[competingRuleIndex].dates != null)
+                        Assert.assert(ruleset[checkedRuleIndex].dates.size == 1)
+                        Assert.assert(ruleset[competingRuleIndex].dates.size == 1)
+                        val firstDateRange = ruleset[checkedRuleIndex].dates[0]
+                        val secondDateRange = ruleset[competingRuleIndex].dates[0]
+                        if(areMonthRangesIntersecting(firstDateRange, secondDateRange)){
+                            return areDayRangesIntersecting(ruleset[checkedRuleIndex], ruleset[competingRuleIndex])
+                        }
+
+                    } else {
+                        Assert.assert(ruleset[competingRuleIndex].dates == null)
+                        return areDayRangesIntersecting(ruleset[checkedRuleIndex], ruleset[competingRuleIndex])
+                    }
+                }
+            }
+        }
+        return false
+    }
+
+    fun areDayRangesIntersecting(ruleA: Rule, ruleB: Rule): Boolean {
+        if(areHolidaysIntersecting(ruleA.holidays, ruleB.holidays)) {
+            return true
+        }
+        if(ruleA.days == null || ruleB.days == null) {
+            return false
+        }
+        Assert.assert(ruleA.days.size == 1)
+        Assert.assert(ruleB.days.size == 1)
+        val weekDayRangeA = ruleA.days[0]
+        val weekDayRangeB = ruleB.days[0]
+        val startA = weekDayRangeA.startDay
+        val endA = weekDayRangeA.endDay ?: startA
+        val startB = weekDayRangeB.startDay
+        val endB = weekDayRangeB.endDay ?: startB
+        val rangeA = CircularSection(startA.ordinal, endA.ordinal)
+        val rangeB = CircularSection(startB.ordinal, endB.ordinal)
+        return rangeA.intersects(rangeB)
+    }
+
+    fun areHolidaysIntersecting(firstHolidays: MutableList<Holiday>?, secondHolidays: MutableList<Holiday>?): Boolean {
+        if(firstHolidays == null || secondHolidays == null) {
+            return false
+        }
+        for(holiday in firstHolidays) {
+            for(holidayCompeting in secondHolidays) {
+                Assert.assert(holiday.useAsWeekDay)
+                Assert.assert(holidayCompeting.useAsWeekDay)
+                Assert.assert(holiday.offset == 0)
+                Assert.assert(holidayCompeting.offset == 0)
+                if(holiday.type == holidayCompeting.type) {
+                    return true
+                }
+            }
+        }
+        return false
+    }
+
+    // all info in dates, except months is ignored!
+    fun areMonthRangesIntersecting(aDateRange: DateRange?, bDateRange: DateRange?): Boolean {
+        if(aDateRange == null || bDateRange == null) {
+            return false
+        }
+        val startA = aDateRange.startDate
+        val endA = aDateRange.endDate ?: aDateRange.startDate
+        val startB = bDateRange.startDate
+        val endB = bDateRange.endDate ?: bDateRange.startDate
+        val rangeA = CircularSection(startA.month.ordinal, endA.month.ordinal)
+        val rangeB = CircularSection(startB.month.ordinal, endB.month.ordinal)
+        return rangeA.intersects(rangeB)
     }
 
     fun areOnlySomeRulesMonthBased(ruleset: ArrayList<Rule>): Boolean {
