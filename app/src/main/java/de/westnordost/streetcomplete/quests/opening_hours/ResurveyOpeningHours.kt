@@ -1,21 +1,17 @@
 package de.westnordost.streetcomplete.quests.opening_hours
 
 import android.util.Log
-import ch.poole.openinghoursparser.OpeningHoursParser
-import ch.poole.openinghoursparser.ParseException
-import ch.poole.openinghoursparser.Rule
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.OsmTaggings
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandler
+import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
 import de.westnordost.streetcomplete.data.osm.tql.getQuestPrintStatement
 import de.westnordost.streetcomplete.data.osm.tql.toGlobalOverpassBBox
 import de.westnordost.streetcomplete.quests.DateUtil
-import java.io.ByteArrayInputStream
 
 class ResurveyOpeningHours(private val overpassServer: OverpassMapDataDao) : OsmElementQuestType<OpeningHoursAnswer> {
     override val commitMessage = "resurvey opening hours"
