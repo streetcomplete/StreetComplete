@@ -276,4 +276,9 @@ class OpeningHoursTagParserTest {
     fun `reject intervals`() {
         Assert.assertEquals(OpeningHoursTagParser.parse("Mo 10:00-16:00/90"), null)
     }
+
+    @Test
+    fun `either fix or workaround is present for issue #26 in OpeningHoursParser`() {
+        Assert.assertEquals(OpeningHoursTagParser.parse("8095652114"), null)
+    }
 }
