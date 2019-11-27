@@ -42,10 +42,11 @@ object OpeningHoursTagParser {
 
         for (rule in rules) {
             var index = 0
-            if (rule.dates != null) {
-                Assert.assert(rule.dates.size == 1)
-                val start = rule.dates[0].startDate
-                val end = rule.dates[0].endDate ?: start
+            val dates = rule.dates
+            if (dates != null) {
+                Assert.assert(dates.size == 1)
+                val start = dates[0].startDate
+                val end = dates[0].endDate ?: start
                 index = getIndexOfOurMonthsRow(data, start.month.ordinal, end.month.ordinal)
                 if (index == -1) {
                     // there is no reusable row matching out entry, we need to create a new one
@@ -53,7 +54,7 @@ object OpeningHoursTagParser {
                     index = data.size - 1
                 }
             }
-            for (time in rule.times) {
+            for (time in rule.times!!) {
                 val dayData = daysWhenRuleApplies(rule)
                 data[index].weekdaysList.add(OpeningWeekdaysRow(Weekdays(dayData), TimeRange(time.start, time.end)))
             }
@@ -76,11 +77,12 @@ object OpeningHoursTagParser {
     //returns array that can be used to initialize OpeningWeekdaysRow
     private fun daysWhenRuleApplies(rule: Rule): BooleanArray {
         val dayData = BooleanArray(8) { false }
-        Assert.assert(rule.holidays != null || rule.days.size >= 0)
-        if (rule.days != null) {
-            Assert.assert(rule.days.size == 1)
-            val startDay = rule.days[0].startDay
-            val endDay = rule.days[0].endDay
+        Assert.assert(rule.holidays != null || rule.days!!.size >= 0)
+        val days = rule.days
+        if (days != null) {
+            Assert.assert(days.size == 1)
+            val startDay = days[0].startDay
+            val endDay = days[0].endDay
                     ?: startDay // endDay will be null for single day ranges
             if (startDay <= endDay) {
                 // ranges like Tuesday-Saturday
@@ -100,11 +102,12 @@ object OpeningHoursTagParser {
                 }
             }
         }
-        if (rule.holidays != null) {
-            Assert.assert(rule.holidays.size == 1)
-            Assert.assert(rule.holidays[0].type == Holiday.Type.PH)
-            Assert.assert(rule.holidays[0].offset == 0)
-            Assert.assert(rule.holidays[0].useAsWeekDay)
+        val holidays = rule.holidays
+        if (holidays != null) {
+            Assert.assert(holidays.size == 1)
+            Assert.assert(holidays[0].type == Holiday.Type.PH)
+            Assert.assert(holidays[0].offset == 0)
+            Assert.assert(holidays[0].useAsWeekDay)
             dayData[7] = true
         }
         return dayData
@@ -140,10 +143,12 @@ object OpeningHoursTagParser {
 
     private fun includesMonthsRangeCrossingNewYearBoundary(ruleset: ArrayList<Rule>): Boolean {
         for (rule in ruleset) {
-            if (rule.dates != null) {
-                Assert.assert(rule.dates.size == 1)
-                if (rule.dates[0].endDate != null) {
-                    if (rule.dates[0].startDate.month > rule.dates[0].endDate.month) {
+            val dates = rule.dates
+            if (dates != null) {
+                Assert.assert(dates.size == 1)
+                val endDate = dates[0].endDate
+                if (endDate != null) {
+                    if (dates[0].startDate.month > endDate.month) {
                         return true
                     }
                 }
@@ -158,10 +163,12 @@ object OpeningHoursTagParser {
                 if (checkedRuleIndex != competingRuleIndex) {
                     if (ruleset[checkedRuleIndex].dates != null) {
                         Assert.assert(ruleset[competingRuleIndex].dates != null)
-                        Assert.assert(ruleset[checkedRuleIndex].dates.size == 1)
-                        Assert.assert(ruleset[competingRuleIndex].dates.size == 1)
-                        val firstDateRange = ruleset[checkedRuleIndex].dates[0]
-                        val secondDateRange = ruleset[competingRuleIndex].dates[0]
+                        val checkedRuleDate = ruleset[checkedRuleIndex].dates
+                        val competingRuleDate = ruleset[competingRuleIndex].dates
+                        Assert.assert(checkedRuleDate!!.size == 1)
+                        Assert.assert(competingRuleDate!!.size == 1)
+                        val firstDateRange = checkedRuleDate[0]
+                        val secondDateRange = competingRuleDate[0]
                         if (areMonthRangesIntersecting(firstDateRange, secondDateRange)) {
                             return areDayRangesIntersecting(ruleset[checkedRuleIndex], ruleset[competingRuleIndex])
                         }
@@ -179,13 +186,15 @@ object OpeningHoursTagParser {
         if (areHolidaysIntersecting(ruleA.holidays, ruleB.holidays)) {
             return true
         }
-        if (ruleA.days == null || ruleB.days == null) {
+        val daysA = ruleA.days
+        val daysB = ruleB.days
+        if (daysA == null || daysB == null) {
             return false
         }
-        Assert.assert(ruleA.days.size == 1)
-        Assert.assert(ruleB.days.size == 1)
-        val weekDayRangeA = ruleA.days[0]
-        val weekDayRangeB = ruleB.days[0]
+        Assert.assert(daysA.size == 1)
+        Assert.assert(daysB.size == 1)
+        val weekDayRangeA = daysA[0]
+        val weekDayRangeB = daysB[0]
         val startA = weekDayRangeA.startDay
         val endA = weekDayRangeA.endDay ?: startA
         val startB = weekDayRangeB.startDay
@@ -250,15 +259,16 @@ object OpeningHoursTagParser {
     // and there is any risk of loss of any data
     private fun reduceRuleToStreetCompleteSupported(rule: Rule): Rule? { // following are ignored:
         val returned = emptyRule()
-        if (rule.days == null && rule.holidays == null) {
+        val days = rule.days
+        if (days == null && rule.holidays == null) {
             // SC requires explicit specification of days of a week or PH
             // holidays may contain some other holidays, but such cases will
             // fail a holiday-specific check
             return null
         }
-        if (rule.days != null) {
+        if (days != null) {
             val simplifiedWeekDayRanges: MutableList<WeekDayRange> = ArrayList()
-            for (weekDayRange in rule.days) {
+            for (weekDayRange in days) {
                 val simplifiedDateRange = reduceWeekDayRangeToSimpleDays(weekDayRange)
                         ?: return null
                 simplifiedWeekDayRanges.add(simplifiedDateRange)
@@ -269,9 +279,10 @@ object OpeningHoursTagParser {
             }
             returned.days = simplifiedWeekDayRanges // copy days of the week from the input rule
         }
-        if (rule.dates != null) {
+        val dates = rule.dates
+        if (dates != null) {
             val simplifiedDateRanges: MutableList<DateRange> = ArrayList()
-            for (dateRange in rule.dates) {
+            for (dateRange in dates) {
                 val simplifiedDateRange = reduceDateRangeToFullMonths(dateRange) ?: return null
                 simplifiedDateRanges.add(simplifiedDateRange)
             }
@@ -282,29 +293,30 @@ object OpeningHoursTagParser {
                 // what is unwanted
                 return null
             }
-            // TODO: replace by setDates from https://github.com/simonpoole/OpeningHoursParser/releases/tag/0.17.0 once available
-            // it should appear on for example https://bintray.com/simonpoole/osm/OpeningHoursParser once uploaded
-            returned.setMonthdays(simplifiedDateRanges)
+            returned.setDates(simplifiedDateRanges)
         }
-        if (rule.times == null) {
+        val times = rule.times
+        if (times == null) {
             // explicit opening hours are required by SC
             return null
         } else {
             val simplifiedTimespans: ArrayList<TimeSpan> = ArrayList()
-            for (time in rule.times) {
+            for (time in times) {
                 val simplifiedTimespan = reduceTimeRangeToSimpleTime(time) ?: return null
                 simplifiedTimespans.add(simplifiedTimespan)
             }
             // multiple timespans may happen for rules such as "Mo-Su 09:00-12:00, 13:00-14:00"
             returned.times = simplifiedTimespans
         }
-        if (rule.modifier != null) {
-            val modifier = reduceModifierToAcceptedBySC(rule.modifier) ?: return null
-            returned.modifier = modifier
+        val modifier = rule.modifier
+        if (modifier != null) {
+            val reducedModifier = reduceModifierToAcceptedBySC(modifier) ?: return null
+            returned.modifier = reducedModifier
         }
-        if (rule.holidays != null) {
-            val holidays = reduceHolidaysToAcceptedBySC(rule.holidays) ?: return null
-            returned.holidays = holidays
+        val holidays = rule.holidays
+        if (holidays != null) {
+            val reducedHolidays = reduceHolidaysToAcceptedBySC(holidays) ?: return null
+            returned.holidays = reducedHolidays
         }
         return if (rule == returned) {
             // original rule is matching reduced rule as no special constructions were used
@@ -385,11 +397,12 @@ object OpeningHoursTagParser {
         startDate.month = dateRange.startDate.month
         newDateRange.startDate = startDate
 
-        if (dateRange.endDate != null) {
+        val endDate = dateRange.endDate
+        if (endDate != null) {
             // range with just single month will have endDate unset
-            val endDate = DateWithOffset()
-            endDate.month = dateRange.endDate.month
-            newDateRange.endDate = endDate
+            val newEndDate = DateWithOffset()
+            newEndDate.month = endDate.month
+            newDateRange.endDate = newEndDate
         }
         return newDateRange
     }

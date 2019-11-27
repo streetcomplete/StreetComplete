@@ -278,7 +278,7 @@ class OpeningHoursTagParserTest {
     }
 
     @Test
-    fun `either fix or workaround is present for issue #26 in OpeningHoursParser`() {
+    fun `issue #26 in OpeningHoursParser is not crashing parser`() {
         Assert.assertEquals(OpeningHoursTagParser.parse("8095652114"), null)
     }
 }

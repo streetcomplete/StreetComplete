@@ -148,7 +148,7 @@ dependencies {
     implementation 'com.esotericsoftware.yamlbeans:yamlbeans:1.13'
 
     // opening hours parser
-    implementation "ch.poole:OpeningHoursParser:0.16.1"
+    implementation "ch.poole:OpeningHoursParser:0.17.1"
 }
 
 task generateMetadata(type: Exec) {
