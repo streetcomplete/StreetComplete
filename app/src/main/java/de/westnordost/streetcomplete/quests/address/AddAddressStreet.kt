@@ -29,7 +29,6 @@ class AddAddressStreet(
     override fun isApplicableTo(element: Element): Boolean? = null
 
     override fun download(bbox: BoundingBox, handler: MapDataWithGeometryHandler): Boolean {
-        Log.wtf("AAA", getStreetNameSuggestionsOverpassQuery(bbox))
         return overpassServer.getAndHandleQuota(getOverpassQuery(bbox), handler)
                 && overpassServer.getAndHandleQuota(getStreetNameSuggestionsOverpassQuery(bbox),putRoadNameSuggestionsHandler)
     }
