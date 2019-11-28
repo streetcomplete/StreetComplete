@@ -15,12 +15,10 @@ import de.westnordost.streetcomplete.quests.DateUtil
 
 class ResurveyOpeningHours(private val overpassServer: OverpassMapDataDao) : OsmElementQuestType<OpeningHoursAnswer> {
     override val commitMessage = "resurvey opening hours"
-    override val icon = R.drawable.ic_quest_guidepost
+    override val icon = R.drawable.ic_quest_opening_hours
     override fun getTitle(tags: Map<String, String>) = R.string.resurvey_opening_hours_title
     override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> {
-        val name = tags["name"]!!
-        val openingHours = tags.getValue("opening_hours")
-        return arrayOf(openingHours, name)
+        return arrayOf(tags["name"]!!)
     }
 
     override fun download(bbox: BoundingBox, handler: MapDataWithGeometryHandler): Boolean {
