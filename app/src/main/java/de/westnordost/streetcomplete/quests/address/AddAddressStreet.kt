@@ -60,6 +60,6 @@ class AddAddressStreet(
     }
 
     companion object {
-        const val MAX_DIST_FOR_ROAD_NAME_SUGGESTION_IN_METERS = 150.0
+        const val MAX_DIST_FOR_ROAD_NAME_SUGGESTION_IN_METERS = 100.0
     }
 }
