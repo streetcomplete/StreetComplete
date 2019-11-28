@@ -688,5 +688,5 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_generalFee_title">Does it cost a fee to enter %s?</string>
     <string name="quest_laundrySelfService_title">Is this laundry a self service laundry?</string>
     <string name="quest_handrail_title">Do these steps have a handrail?</string>
-    <string name="quest_street_side_puzzle_tutorial">Tap question marks and select an answer for given side of the road.</string>
+    <string name="quest_street_side_puzzle_tutorial">Tap question marks and select an answer for the given side of the road.</string>
 </resources>
