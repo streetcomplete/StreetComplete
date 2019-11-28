@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/namesList"
+        android:background="@drawable/background_roadname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        />
+
+    <EditText
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nameInput"
+    android:textSize="40sp"
+    tools:text="Świętokrzyska"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"/>
+    <Button
+    android:id="@+id/addLanguageButton"
+    android:text="➕"
+    android:layout_width="50dp"
+    android:layout_height="wrap_content"
+    tools:ignore="HardcodedText"
+    android:visibility="gone"
+    />
+</LinearLayout>

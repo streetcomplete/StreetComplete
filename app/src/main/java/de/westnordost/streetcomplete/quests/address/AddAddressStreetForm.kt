@@ -4,11 +4,14 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AlertDialog
+import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.AbbreviationsByLocale
+import de.westnordost.streetcomplete.data.osm.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.ElementPointGeometry
+import de.westnordost.streetcomplete.data.osm.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.quests.localized_name.*
 import de.westnordost.streetcomplete.quests.localized_name.data.RoadNameSuggestionsDao
@@ -33,7 +36,7 @@ class AddAddressStreetForm : AAddLocalizedNameForm<AddressStreetAnswer>() {
         }
     }
 
-    override val contentLayoutResId = R.layout.quest_placename
+    override val contentLayoutResId = R.layout.quest_streetname
 
     override val otherAnswers = listOf(
             OtherAnswer(R.string.quest_address_street_no_named_streets) { confirmNoName() }
@@ -62,11 +65,28 @@ class AddAddressStreetForm : AAddLocalizedNameForm<AddressStreetAnswer>() {
     }
 
     private fun getRoadNameSuggestions(): List<MutableMap<String, String>> {
-        val polyline = (elementGeometry as ElementPolylinesGeometry).polylines.first()
         return roadNameSuggestionsDao.getNames(
-                listOf(polyline.first(), polyline.last()),
+                geometryToMajorPoints(elementGeometry),
                 AddRoadName.MAX_DIST_FOR_ROAD_NAME_SUGGESTION
         )
+    }
+
+    private fun geometryToMajorPoints(geometry: ElementGeometry): List<LatLon> {
+        when(geometry) {
+            is ElementPolylinesGeometry -> {
+                val polyline = geometry.polylines.first()
+                return listOf(polyline.first(), polyline.last())
+            }
+            is ElementPolygonsGeometry -> {
+                // return center and one of nodes from the way constructing area
+                return listOf(geometry.center, geometry.polygons.first().last())
+            }
+            is ElementPointGeometry -> {
+                return listOf(geometry.center)
+            }
+        }
+
+
     }
 
     private fun confirmNoName() {
