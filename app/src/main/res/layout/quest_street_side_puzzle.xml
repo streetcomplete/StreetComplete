@@ -42,4 +42,11 @@
             android:layout_below="@+id/compassNorth"
             />
     </RelativeLayout>
+    <TextView
+        android:id="@+id/descriptionLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/quest_street_side_puzzle_tutorial"
+        android:labelFor="@+id/nameInput"
+        android:layout_below="@+id/puzzleView" />
 </RelativeLayout>
