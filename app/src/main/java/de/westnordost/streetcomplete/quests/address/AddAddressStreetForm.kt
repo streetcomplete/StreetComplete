@@ -67,7 +67,7 @@ class AddAddressStreetForm : AAddLocalizedNameForm<AddressStreetAnswer>() {
     private fun getRoadNameSuggestions(): List<MutableMap<String, String>> {
         return roadNameSuggestionsDao.getNames(
                 geometryToMajorPoints(elementGeometry),
-                AddRoadName.MAX_DIST_FOR_ROAD_NAME_SUGGESTION
+                AddAddressStreet.MAX_DIST_FOR_ROAD_NAME_SUGGESTION_IN_METERS
         )
     }
 

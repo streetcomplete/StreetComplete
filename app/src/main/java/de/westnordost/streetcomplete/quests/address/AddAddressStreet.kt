@@ -58,4 +58,8 @@ class AddAddressStreet(
             is PlaceName -> {changes.add("addr:place", answer.name)}
         }
     }
+
+    companion object {
+        const val MAX_DIST_FOR_ROAD_NAME_SUGGESTION_IN_METERS = 150.0
+    }
 }
