@@ -61,7 +61,7 @@ class AddAddressStreetForm : AAddLocalizedNameForm<AddressStreetAnswer>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        nameInput.addTextChangedListener(TextChangedWatcher { checkIsFormComplete() })
+        //namesList.addTextChangedListener(TextChangedWatcher { checkIsFormComplete() })
     }
 
     private fun getRoadNameSuggestions(): List<MutableMap<String, String>> {
