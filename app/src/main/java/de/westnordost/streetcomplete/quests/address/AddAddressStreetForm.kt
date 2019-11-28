@@ -91,8 +91,8 @@ class AddAddressStreetForm : AAddLocalizedNameForm<AddressStreetAnswer>() {
 
     private fun confirmNoName() {
         AlertDialog.Builder(activity!!)
-                .setTitle(R.string.quest_name_answer_noName_confirmation_title)
-                .setPositiveButton(R.string.quest_name_noName_confirmation_positive) { _, _ -> applyAnswer(PlaceName("TODO")) } //TODO!
+                .setTitle(R.string.quest_address_street_noStreet_confirmation_title)
+                .setPositiveButton(R.string.quest_address_street_noStreet_confirmation_positive) { _, _ -> applyAnswer(PlaceName("TODO")) } //TODO!
                 .setNegativeButton(R.string.quest_generic_confirmation_no, null)
                 .show()
     }
