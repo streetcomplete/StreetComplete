@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests.opening_hours
 
+import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningMonthsRow
 import org.junit.Assert
 import org.junit.Test
 
@@ -188,6 +189,18 @@ class OpeningHoursTagParserTest {
     @Test
     fun `allow next day rules specified as over 24 hours, for objects open also during early part of the next day, in this case Monday`() {
         Assert.assertNotEquals(OpeningHoursTagParser.parse("Su 09:00-26:00"), null)
+    }
+
+    @Test
+    fun `next day rules specified as over 24 hours should be formatted as below 24 hours`() {
+        val returned = OpeningHoursTagParser.parse("Su 09:00-26:00")
+        Assert.assertNotEquals(returned, null)
+        Assert.assertEquals(returned!!.size, 1)
+        Assert.assertEquals(returned[0].months, OpeningMonthsRow().months)
+        Assert.assertEquals(returned[0].weekdaysList.size, 1)
+        Assert.assertEquals(returned[0].weekdaysList[0].timeRange.start, 9 * 60)
+        Assert.assertNotEquals(returned[0].weekdaysList[0].timeRange.end, 26 * 60)
+        Assert.assertEquals(returned[0].weekdaysList[0].timeRange.end, 2 * 60)
     }
 
     @Test
