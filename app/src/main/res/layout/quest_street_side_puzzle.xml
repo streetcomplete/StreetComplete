@@ -48,5 +48,8 @@
         android:layout_height="wrap_content"
         android:text="@string/quest_street_side_puzzle_tutorial"
         android:labelFor="@+id/nameInput"
-        android:layout_below="@+id/puzzleView" />
+        android:layout_below="@+id/puzzleView"
+        android:layout_marginRight="12dp"
+        android:layout_marginLeft="12dp"
+        />
 </RelativeLayout>
