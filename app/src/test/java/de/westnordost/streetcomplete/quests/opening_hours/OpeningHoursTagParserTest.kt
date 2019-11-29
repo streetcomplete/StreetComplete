@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.opening_hours
 
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningMonthsRow
+import de.westnordost.streetcomplete.quests.opening_hours.model.Weekdays
 import org.junit.Assert
 import org.junit.Test
 
@@ -14,6 +15,38 @@ class OpeningHoursTagParserTest {
     @Test
     fun `accept simple valid opening hours`() {
         Assert.assertNotEquals(OpeningHoursTagParser.parse("Mo 09:00-20:00"), null)
+    }
+
+    @Test
+    fun `test full structure of a simple opening hour`() {
+        val returned = OpeningHoursTagParser.parse("Mo 09:00-20:00")
+        Assert.assertNotEquals(returned, null)
+        Assert.assertEquals(returned!!.size, 1)
+        Assert.assertEquals(returned[0].months, OpeningMonthsRow().months)
+        Assert.assertEquals(returned[0].weekdaysList.size, 1)
+        Assert.assertEquals(returned[0].weekdaysList[0].timeRange.start, 9 * 60)
+        Assert.assertEquals(returned[0].weekdaysList[0].timeRange.end, 20 * 60)
+        Assert.assertEquals(returned[0].weekdaysList[0].timeRange.isOpenEnded, false)
+        val weekData = BooleanArray(8) { false }
+        weekData.set(0, true)
+        Assert.assertEquals(returned[0].weekdaysList[0].weekdays, Weekdays(weekData))
+    }
+
+    @Test
+    fun `test full structure of a multiday opening hour with a gap`() {
+        val returned = OpeningHoursTagParser.parse("Mo-Su 09:00-12:00, 13:00-14:00")
+        Assert.assertNotEquals(returned, null)
+        Assert.assertEquals(returned!!.size, 1)
+        Assert.assertEquals(returned[0].months, OpeningMonthsRow().months)
+        Assert.assertEquals(returned[0].weekdaysList.size, 2)
+        Assert.assertEquals(returned[0].weekdaysList[0].timeRange.start, 9 * 60)
+        Assert.assertEquals(returned[0].weekdaysList[0].timeRange.end, 12 * 60)
+        Assert.assertEquals(returned[0].weekdaysList[0].timeRange.isOpenEnded, false)
+        Assert.assertEquals(returned[0].weekdaysList[1].timeRange.start, 13 * 60)
+        Assert.assertEquals(returned[0].weekdaysList[1].timeRange.end, 14 * 60)
+        Assert.assertEquals(returned[0].weekdaysList[1].timeRange.isOpenEnded, false)
+        val weekData = BooleanArray(7) { true }
+        Assert.assertEquals(returned[0].weekdaysList[0].weekdays, Weekdays(weekData))
     }
 
     @Test
