@@ -4,6 +4,7 @@ import ch.poole.openinghoursparser.*
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningMonthsRow
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningWeekdaysRow
 import de.westnordost.streetcomplete.quests.opening_hours.model.CircularSection
+import de.westnordost.streetcomplete.quests.opening_hours.model.OpeningMonths
 import de.westnordost.streetcomplete.quests.opening_hours.model.TimeRange
 import de.westnordost.streetcomplete.quests.opening_hours.model.Weekdays
 import java.io.ByteArrayInputStream
@@ -450,4 +451,7 @@ object OpeningHoursTagParser {
         }
     }
 
+    fun internalFormIntoTag(openingHours: List<OpeningMonths>): String {
+        return openingHours.joinToString(";")
+    }
 }
