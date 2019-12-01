@@ -31,6 +31,8 @@ object OpeningHoursTagParser {
         return transformCompatibleRulesetToInternalForm(rules)
     }
 
+    // transforms output of a Vespucci parser (assumed to not caontain weird constructs)
+    // into SC internal format
     private fun transformCompatibleRulesetToInternalForm(rules: ArrayList<Rule>): List<OpeningMonthsRow>? {
         var data = mutableListOf(OpeningMonthsRow())
         for (rule in rules) {
@@ -454,6 +456,7 @@ object OpeningHoursTagParser {
         }
     }
 
+    // turns frmat returned by opening hours editing widget into an OSM tag
     fun internalIntoTag(openingHours: List<OpeningMonths>): String {
         return openingHours.joinToString(";")
     }
