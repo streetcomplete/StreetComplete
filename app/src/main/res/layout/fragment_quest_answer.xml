@@ -113,10 +113,10 @@
                                     android:layout_height="wrap_content"
                                     android:layout_width="match_parent"
                                     android:orientation="vertical"
-                                    android:paddingStart="16dp"
-                                    android:paddingEnd="16dp"
-                                    android:paddingTop="10dp"
-                                    android:paddingBottom="10dp"/>
+                                    android:paddingStart="@dimen/quest_form_horizontal_padding"
+                                    android:paddingEnd="@dimen/quest_form_horizontal_padding"
+                                    android:paddingTop="@dimen/quest_form_vertical_padding"
+                                    android:paddingBottom="@dimen/quest_form_vertical_padding"/>
 
                                 <LinearLayout
                                     android:id="@+id/buttonPanel"

@@ -13,8 +13,10 @@
         android:layout_height="wrap_content"
         android:text="@string/quest_street_side_puzzle_tutorial"
         android:labelFor="@+id/nameInput"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:paddingStart="@dimen/quest_form_horizontal_padding"
+        android:paddingEnd="@dimen/quest_form_horizontal_padding"
+        android:paddingTop="@dimen/quest_form_vertical_padding"
+        android:paddingBottom="@dimen/quest_form_vertical_padding"
         />
     <RelativeLayout
         android:layout_width="match_parent"
