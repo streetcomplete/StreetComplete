@@ -51,6 +51,31 @@ class OpeningHoursTagParserTest {
     }
 
     @Test
+    fun `saving data to a tag without data loss`() {
+        Assert.assertEquals(OpeningHoursTagParser.internalIntoTag((OpeningHoursTagParser.parse("Mo 09:00-20:00")!!.toOpeningMonthsList())), "Mo 09:00-20:00")
+    }
+
+    @Test
+    fun `saving data to a tag without data loss also on multiple rules`() {
+        Assert.assertEquals(OpeningHoursTagParser.internalIntoTag((OpeningHoursTagParser.parse("Mo 09:00-20:00; Tu 00:00-24:00")!!.toOpeningMonthsList())), "Mo 09:00-20:00; Tu 00:00-24:00")
+    }
+
+    @Test
+    fun `accept additional whitespace and allow its removal`() {
+        Assert.assertEquals(OpeningHoursTagParser.internalIntoTag((OpeningHoursTagParser.parse("Tu-Su   10:30    -   18:00")!!.toOpeningMonthsList())), "Tu-Su 10:30-18:00")
+    }
+
+    @Test
+    fun `do not merge separate rules with the same hours`() {
+        Assert.assertEquals(OpeningHoursTagParser.internalIntoTag((OpeningHoursTagParser.parse("Mo 09:00-20:00; Tu 09:00-20:00")!!.toOpeningMonthsList())), "Mo 09:00-20:00; Tu 09:00-20:00")
+    }
+
+    @Test
+    fun `do not reorder rules`() {
+        Assert.assertEquals(OpeningHoursTagParser.internalIntoTag((OpeningHoursTagParser.parse("Mo 09:00-20:00; Su 10:00-11:00; Tu 09:00-20:00")!!.toOpeningMonthsList())), "Mo 09:00-20:00; Su 10:00-11:00; Tu 09:00-20:00")
+    }
+
+    @Test
     fun `reject unimplemented for now 'till last client' variant`() {
         Assert.assertEquals(OpeningHoursTagParser.parse("Mo 09:00-20:00+"), null)
     }
@@ -99,6 +124,16 @@ class OpeningHoursTagParserTest {
     @Test
     fun `reject open all day, every day specified in shortcut form as not representable`() {
         Assert.assertEquals(OpeningHoursTagParser.parse("24/7"), null)
+    }
+
+    @Test
+    fun `allow opening hours without explicitly specified minutes`() {
+        Assert.assertNotEquals(OpeningHoursTagParser.parse("Mo 9-20"), null)
+    }
+
+    @Test
+    fun `eadd explicit minutes on a conversion`() {
+        Assert.assertEquals(OpeningHoursTagParser.internalIntoTag((OpeningHoursTagParser.parse("Mo 9-20")!!.toOpeningMonthsList())), "Mo 09:00-20:00")
     }
 
     @Test
@@ -239,6 +274,11 @@ class OpeningHoursTagParserTest {
     @Test
     fun `next day rules specified as over 24 hours, and sub 24 hours are treated equally`() {
         Assert.assertEquals(OpeningHoursTagParser.parse("Su 09:00-26:00"), OpeningHoursTagParser.parse("Su 09:00-02:00"))
+    }
+
+    @Test
+    fun `next day rules specified as over 24 hours will be converted on saving`() {
+        Assert.assertEquals(OpeningHoursTagParser.internalIntoTag((OpeningHoursTagParser.parse("Mo 09:00-26:00")!!.toOpeningMonthsList())), "Mo 09:00-02:00")
     }
 
     @Test
