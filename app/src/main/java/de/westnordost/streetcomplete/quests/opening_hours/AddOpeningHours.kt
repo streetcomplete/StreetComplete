@@ -81,7 +81,7 @@ class AddOpeningHours (o: OverpassMapDataDao) : SimpleOverpassQuestType<OpeningH
 
     override fun applyAnswerTo(answer: OpeningHoursAnswer, changes: StringMapChangesBuilder) {
         when(answer) {
-            is RegularOpeningHours -> changes.add("opening_hours", OpeningHoursTagParser.internalFormIntoTag(answer.times))
+            is RegularOpeningHours -> changes.add("opening_hours", OpeningHoursTagParser.internalIntoTag(answer.times))
             is AlwaysOpen          -> changes.add("opening_hours", "24/7")
             is NoOpeningHoursSign  -> changes.add("opening_hours:signed", "no")
             is DescribeOpeningHours -> {

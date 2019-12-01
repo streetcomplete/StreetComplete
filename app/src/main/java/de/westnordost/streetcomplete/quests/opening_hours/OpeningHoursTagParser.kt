@@ -451,7 +451,7 @@ object OpeningHoursTagParser {
         }
     }
 
-    fun internalFormIntoTag(openingHours: List<OpeningMonths>): String {
+    fun internalIntoTag(openingHours: List<OpeningMonths>): String {
         return openingHours.joinToString(";")
     }
 }
