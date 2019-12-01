@@ -23,7 +23,7 @@ import kotlinx.android.synthetic.main.quest_opening_hours.*
 import java.util.*
 import javax.inject.Inject
 
-class ResurveyOpeningHoursForm : OpeningHoursForm<OpeningHoursAnswer>() {
+class ResurveyOpeningHoursForm : OpeningHoursForm() {
     init {
         Injector.instance.applicationComponent.inject(this)
     }
@@ -58,43 +58,5 @@ class ResurveyOpeningHoursForm : OpeningHoursForm<OpeningHoursAnswer>() {
         } else {
             applyAnswer(answer)
         }
-    }
-
-    override fun showInputCommentDialog() {
-        val view = LayoutInflater.from(activity).inflate(R.layout.quest_opening_hours_comment, null)
-        val commentInput = view.findViewById<EditText>(R.id.commentInput)
-
-        AlertDialog.Builder(context!!)
-                .setTitle(R.string.quest_openingHours_comment_title)
-                .setView(view)
-                .setPositiveButton(android.R.string.ok) { _, _ ->
-                    val txt = commentInput.text.toString().replace("\"","").trim()
-                    if (txt.isEmpty()) {
-                        AlertDialog.Builder(context!!)
-                                .setMessage(R.string.quest_openingHours_emptyAnswer)
-                                .setPositiveButton(R.string.ok, null)
-                                .show()
-                    } else {
-                        applyAnswer(DescribeOpeningHours(txt))
-                    }
-                }
-                .setNegativeButton(android.R.string.cancel, null)
-                .show()
-    }
-
-    override fun showConfirm24_7Dialog() {
-        AlertDialog.Builder(activity!!)
-                .setMessage(R.string.quest_openingHours_24_7_confirmation)
-                .setPositiveButton(android.R.string.yes) { _, _ -> applyAnswer(AlwaysOpen) }
-                .setNegativeButton(android.R.string.no, null)
-                .show()
-    }
-
-    override fun confirmNoSign() {
-        AlertDialog.Builder(activity!!)
-                .setTitle(R.string.quest_generic_confirmation_title)
-                .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> applyAnswer(NoOpeningHoursSign) }
-                .setNegativeButton(R.string.quest_generic_confirmation_no, null)
-                .show()
     }
 }
