@@ -27,10 +27,10 @@ object OpeningHoursTagParser {
             // parsable, not handled by StreetComplete
             return null
         }
-        return transformStreetCompleteCompatibleRulesetIntoInternalForm(rules)
+        return transformCompatibleRulesetToInternalForm(rules)
     }
 
-    private fun transformStreetCompleteCompatibleRulesetIntoInternalForm(rules: ArrayList<Rule>): List<OpeningMonthsRow>? {
+    private fun transformCompatibleRulesetToInternalForm(rules: ArrayList<Rule>): List<OpeningMonthsRow>? {
         var data = mutableListOf(OpeningMonthsRow())
         for (rule in rules) {
             if (rule.dates != null) {
