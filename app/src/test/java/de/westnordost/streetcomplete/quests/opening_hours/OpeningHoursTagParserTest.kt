@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.opening_hours
 
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningMonthsRow
+import de.westnordost.streetcomplete.quests.opening_hours.adapter.toOpeningMonthsList
 import de.westnordost.streetcomplete.quests.opening_hours.model.Weekdays
 import org.junit.Assert
 import org.junit.Test
@@ -56,6 +57,7 @@ class OpeningHoursTagParserTest {
 
     @Test
     fun `reject unimplemented for now pairs of days`() {
+        // note cases like "Mo,Tu,We 9:00-10:00" that will be either reject or transformed into "Mo-We 9:00-10:00"
         Assert.assertEquals(OpeningHoursTagParser.parse("Mo,Tu 09:00-20:00"), null)
     }
 
@@ -205,6 +207,16 @@ class OpeningHoursTagParserTest {
     }
 
     @Test
+    fun `accept adding colon suffixes for month ranges`() {
+        Assert.assertEquals(OpeningHoursTagParser.internalIntoTag((OpeningHoursTagParser.parse("Mar-Oct Tu-Su 10:30-18:00")!!.toOpeningMonthsList())), "Mar-Oct: Tu-Su 10:30-18:00")
+    }
+
+    @Test
+    fun `accept colon suffixes for month ranges`() {
+        Assert.assertEquals(OpeningHoursTagParser.internalIntoTag((OpeningHoursTagParser.parse("Mar-Oct: Tu-Su 10:30-18:00")!!.toOpeningMonthsList())), "Mar-Oct: Tu-Su 10:30-18:00")
+    }
+
+    @Test
     fun `reject rules with off part as not representable`() {
         Assert.assertEquals(OpeningHoursTagParser.parse("Th 17:30-19:30; Mo off"), null)
     }
@@ -254,8 +266,13 @@ class OpeningHoursTagParserTest {
     }
 
     @Test
-    fun `rules with explicit open are rejected`() {
-        Assert.assertEquals(OpeningHoursTagParser.parse("Th 17:30-19:30 open"), null)
+    fun `rules with explicit open are accepted`() {
+        Assert.assertNotEquals(OpeningHoursTagParser.parse("Th 17:30-19:30 open"), null)
+    }
+
+    @Test
+    fun `accept dropping explicit open`() {
+        Assert.assertEquals(OpeningHoursTagParser.internalIntoTag((OpeningHoursTagParser.parse("Th 17:30-19:30 open")!!.toOpeningMonthsList())), "Th 17:30-19:30")
     }
 
     @Test
