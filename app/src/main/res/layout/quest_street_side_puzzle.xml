@@ -1,45 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:showDividers="middle"
+    android:divider="@drawable/button_bar_divider">
 
-    <de.westnordost.streetcomplete.view.StreetSideSelectPuzzle
-        android:id="@+id/puzzleView"
-        android:layout_width="match_parent"
-        android:layout_height="112dp"
-        android:clipChildren="false"
-        android:clipToPadding="false"/>
-
+    <TextView
+        android:id="@+id/descriptionLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/quest_street_side_puzzle_tutorial"
+        android:labelFor="@+id/nameInput"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        />
     <RelativeLayout
-        android:id="@+id/compassView"
-        android:layout_width="38dp"
-        android:layout_height="38dp"
-        android:background="@drawable/background_white_circle_1dp_stroke"
-        android:textColor="#000"
-        android:padding="4dp"
-        android:layout_margin="8dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <de.westnordost.streetcomplete.view.StreetSideSelectPuzzle
+            android:id="@+id/puzzleView"
+            android:layout_width="match_parent"
+            android:layout_height="112dp"
+            android:clipChildren="false"
+            android:clipToPadding="false"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:id="@+id/compassNorth"
-            android:layout_alignParentTop="true"
-            android:text="@string/compass_north_one_letter"
+        <RelativeLayout
+            android:id="@+id/compassView"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:background="@drawable/background_white_circle_1dp_stroke"
             android:textColor="#000"
-            android:textSize="10dp"/>
+            android:padding="4dp"
+            android:layout_margin="8dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true">
 
-        <ImageView
-            android:layout_width="16dp"
-            android:layout_height="16dp"
-            android:layout_centerHorizontal="true"
-            android:src="@drawable/ic_compass_needle_black_24dp"
-            android:tint="#cc3333"
-            android:id="@+id/compassNeedle"
-            android:layout_below="@+id/compassNorth"
-            />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/compassNorth"
+                android:layout_alignParentTop="true"
+                android:text="@string/compass_north_one_letter"
+                android:textColor="#000"
+                android:textSize="10dp"/>
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/ic_compass_needle_black_24dp"
+                android:tint="#cc3333"
+                android:id="@+id/compassNeedle"
+                android:layout_below="@+id/compassNorth"
+                />
+        </RelativeLayout>
     </RelativeLayout>
-</RelativeLayout>
+</LinearLayout>
