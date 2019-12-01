@@ -689,4 +689,5 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_laundrySelfService_title">Is this laundry a self service laundry?</string>
     <string name="quest_handrail_title">Do these steps have a handrail?</string>
     <string name="resurvey_opening_hours_title">"What are the opening hours of %s? Correct them if necessary."</string>
+    <string name="quest_street_side_puzzle_tutorial">Tap the question marks and select an answer for the given side of the road.</string>
 </resources>
