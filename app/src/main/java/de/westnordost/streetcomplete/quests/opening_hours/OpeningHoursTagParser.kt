@@ -57,6 +57,9 @@ object OpeningHoursTagParser {
             }
             for (time in rule.times!!) {
                 val dayData = daysWhenRuleApplies(rule)
+                if(time.end >= 48 * 50) {
+                    return null
+                }
                 data[index].weekdaysList.add(OpeningWeekdaysRow(Weekdays(dayData), TimeRange(time.start, time.end % (24 * 60))))
             }
         }

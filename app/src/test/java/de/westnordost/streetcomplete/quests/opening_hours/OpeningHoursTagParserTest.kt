@@ -237,6 +237,16 @@ class OpeningHoursTagParserTest {
     }
 
     @Test
+    fun `next day rules specified as over 24 hours, and sub 24 hours are treated equally`() {
+        Assert.assertEquals(OpeningHoursTagParser.parse("Su 09:00-26:00"), OpeningHoursTagParser.parse("Su 09:00-02:00"))
+    }
+
+    @Test
+    fun `reject hour rules going to far into the future`() {
+        Assert.assertEquals(OpeningHoursTagParser.parse("Su 09:00-48:00"), null)
+    }
+
+    @Test
     fun `next day rules specified as over 24 hours should be formatted as below 24 hours`() {
         val returned = OpeningHoursTagParser.parse("Su 09:00-26:00")
         Assert.assertNotEquals(returned, null)
