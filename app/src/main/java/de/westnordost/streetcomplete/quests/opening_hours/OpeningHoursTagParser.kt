@@ -47,7 +47,7 @@ object OpeningHoursTagParser {
             var index = 0
             val dates = rule.dates
             if (dates != null) {
-                Assert.assert(dates.size == 1)
+                require(dates.size == 1)
                 val start = dates[0].startDate
                 val end = dates[0].endDate ?: start
                 index = getIndexOfOurMonthsRow(data, start.month.ordinal, end.month.ordinal)
@@ -83,10 +83,10 @@ object OpeningHoursTagParser {
     //returns array that can be used to initialize OpeningWeekdaysRow
     private fun daysWhenRuleApplies(rule: Rule): BooleanArray {
         val dayData = BooleanArray(8) { false }
-        Assert.assert(rule.holidays != null || rule.days!!.size >= 0)
+        require(rule.holidays != null || rule.days!!.size >= 0)
         val days = rule.days
         if (days != null) {
-            Assert.assert(days.size == 1)
+            require(days.size == 1)
             val startDay = days[0].startDay
             val endDay = days[0].endDay
                     ?: startDay // endDay will be null for single day ranges
@@ -110,10 +110,10 @@ object OpeningHoursTagParser {
         }
         val holidays = rule.holidays
         if (holidays != null) {
-            Assert.assert(holidays.size == 1)
-            Assert.assert(holidays[0].type == Holiday.Type.PH)
-            Assert.assert(holidays[0].offset == 0)
-            Assert.assert(holidays[0].useAsWeekDay)
+            require(holidays.size == 1)
+            require(holidays[0].type == Holiday.Type.PH)
+            require(holidays[0].offset == 0)
+            require(holidays[0].useAsWeekDay)
             dayData[7] = true
         }
         return dayData
@@ -151,7 +151,7 @@ object OpeningHoursTagParser {
         for (rule in ruleset) {
             val dates = rule.dates
             if (dates != null) {
-                Assert.assert(dates.size == 1)
+                require(dates.size == 1)
                 val endDate = dates[0].endDate
                 if (endDate != null) {
                     if (dates[0].startDate.month > endDate.month) {
@@ -168,18 +168,18 @@ object OpeningHoursTagParser {
             for (competingRuleIndex in 0 until ruleset.size) {
                 if (checkedRuleIndex != competingRuleIndex) {
                     if (ruleset[checkedRuleIndex].dates != null) {
-                        Assert.assert(ruleset[competingRuleIndex].dates != null)
+                        require(ruleset[competingRuleIndex].dates != null)
                         val checkedRuleDate = ruleset[checkedRuleIndex].dates
                         val competingRuleDate = ruleset[competingRuleIndex].dates
-                        Assert.assert(checkedRuleDate!!.size == 1)
-                        Assert.assert(competingRuleDate!!.size == 1)
+                        require(checkedRuleDate!!.size == 1)
+                        require(competingRuleDate!!.size == 1)
                         val firstDateRange = checkedRuleDate[0]
                         val secondDateRange = competingRuleDate[0]
                         if (areMonthRangesIntersecting(firstDateRange, secondDateRange)) {
                             return areDayRangesIntersecting(ruleset[checkedRuleIndex], ruleset[competingRuleIndex])
                         }
                     } else {
-                        Assert.assert(ruleset[competingRuleIndex].dates == null)
+                        require(ruleset[competingRuleIndex].dates == null)
                         return areDayRangesIntersecting(ruleset[checkedRuleIndex], ruleset[competingRuleIndex])
                     }
                 }
@@ -197,8 +197,8 @@ object OpeningHoursTagParser {
         if (daysA == null || daysB == null) {
             return false
         }
-        Assert.assert(daysA.size == 1)
-        Assert.assert(daysB.size == 1)
+        require(daysA.size == 1)
+        require(daysB.size == 1)
         val weekDayRangeA = daysA[0]
         val weekDayRangeB = daysB[0]
         val startA = weekDayRangeA.startDay
@@ -216,10 +216,10 @@ object OpeningHoursTagParser {
         }
         for (holiday in firstHolidays) {
             for (holidayCompeting in secondHolidays) {
-                Assert.assert(holiday.useAsWeekDay)
-                Assert.assert(holidayCompeting.useAsWeekDay)
-                Assert.assert(holiday.offset == 0)
-                Assert.assert(holidayCompeting.offset == 0)
+                require(holiday.useAsWeekDay)
+                require(holidayCompeting.useAsWeekDay)
+                require(holiday.offset == 0)
+                require(holidayCompeting.offset == 0)
                 if (holiday.type == holidayCompeting.type) {
                     return true
                 }
