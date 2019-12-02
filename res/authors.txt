@@ -57,7 +57,17 @@ building_icons.svg
 
 building_levels_illustration.svg
 
+cycleways.svg
+
+cycleway_segregation.svg
+
+feature_graphic.xcf             Maximilian Dörrbecker (CC-BY-SA-2.5 photo), Tobias Zwick (icons)
+
+ic_building_levels_illustration.svg
+
 living_street.svg
+
+osm_anon_avatar.svg
 
 roof_shape_icons.svg
 
