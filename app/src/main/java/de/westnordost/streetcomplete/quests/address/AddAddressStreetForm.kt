@@ -17,10 +17,13 @@ import de.westnordost.streetcomplete.quests.localized_name.*
 import de.westnordost.streetcomplete.quests.localized_name.data.RoadNameSuggestionsDao
 import de.westnordost.streetcomplete.util.TextChangedWatcher
 import kotlinx.android.synthetic.main.quest_placename.*
+import kotlinx.android.synthetic.main.quest_streetname.*
 import java.util.*
 import javax.inject.Inject
 
 class AddAddressStreetForm : AAddLocalizedNameForm<AddressStreetAnswer>() {
+    private var isPlacename = false
+
     override fun onClickOk(names: List<LocalizedName>) {
         assert(names.size == 1)
         val name = names[0].name
@@ -32,14 +35,18 @@ class AddAddressStreetForm : AAddLocalizedNameForm<AddressStreetAnswer>() {
             possibleAbbreviations.add(name)
         }
         confirmPossibleAbbreviationsIfAny(possibleAbbreviations) {
-            applyAnswer(StreetName(name))
+            if(isPlacename) {
+                applyAnswer(PlaceName(name))
+            } else {
+                applyAnswer(StreetName(name))
+            }
         }
     }
 
     override val contentLayoutResId = R.layout.quest_streetname
 
     override val otherAnswers = listOf(
-            OtherAnswer(R.string.quest_address_street_no_named_streets) { confirmNoName() }
+            OtherAnswer(R.string.quest_address_street_no_named_streets) { switchToPlaceName() }
     )
 
     @Inject
@@ -89,11 +96,41 @@ class AddAddressStreetForm : AAddLocalizedNameForm<AddressStreetAnswer>() {
 
     }
 
-    private fun confirmNoName() {
+    private fun switchToPlaceName() {
         AlertDialog.Builder(activity!!)
                 .setTitle(R.string.quest_address_street_noStreet_confirmation_title)
-                .setPositiveButton(R.string.quest_address_street_noStreet_confirmation_positive) { _, _ -> applyAnswer(PlaceName("TODO")) } //TODO!
+                .setPositiveButton(R.string.quest_address_street_noStreet_confirmation_positive) {_, _ -> switchToPlaceNameLayout() } //
                 .setNegativeButton(R.string.quest_generic_confirmation_no, null)
                 .show()
+    }
+
+    private fun switchToPlaceNameLayout() {
+        isPlacename = true
+        setLayout(R.layout.quest_streetname_place)
+    }
+
+    private fun setLayout(layoutResourceId: Int) {
+        val view = setContentView(layoutResourceId)
+
+        /*
+        houseNumberInput = view.findViewById(R.id.houseNumberInput)
+        houseNameInput = view.findViewById(R.id.houseNameInput)
+        conscriptionNumberInput = view.findViewById(R.id.conscriptionNumberInput)
+        streetNumberInput = view.findViewById(R.id.streetNumberInput)
+        blockNumberInput = view.findViewById(R.id.blockNumberInput)
+
+        val onChanged = TextChangedWatcher { checkIsFormComplete() }
+        houseNumberInput?.addTextChangedListener(onChanged)
+        houseNameInput?.addTextChangedListener(onChanged)
+        conscriptionNumberInput?.addTextChangedListener(onChanged)
+        streetNumberInput?.addTextChangedListener(onChanged)
+        blockNumberInput?.addTextChangedListener(onChanged)
+
+        // streetNumber is always optional
+        val input = AddHousenumberForm.getFirstNonNull(blockNumberInput, houseNumberInput, houseNameInput, conscriptionNumberInput)
+        input?.requestFocus()
+
+        initKeyboardButton(view)
+         */
     }
 }
