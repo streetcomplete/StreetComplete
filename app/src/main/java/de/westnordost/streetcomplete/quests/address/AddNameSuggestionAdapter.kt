@@ -100,17 +100,6 @@ class AddNameSuggestionAdapter(
         if (NameSuggestions != null) {
             for (NameSuggestion in NameSuggestions) {
                 val name = NameSuggestion[languageCode] ?: continue
-
-                // "unspecified language" suggestions
-                if (languageCode.isEmpty()) {
-                    var defaultNameOccurances = 0
-                    for (other in NameSuggestion.values) {
-                        if (name == other) defaultNameOccurances++
-                    }
-                    // name=A, name:de=A -> do not consider "A" for "unspecified language" suggestion
-                    if (defaultNameOccurances >= 2) continue
-                    // only for name=A, name:de=B, name:en=C,...
-                }
                 NameSuggestionsMap[name] = NameSuggestion
             }
         }
@@ -181,11 +170,7 @@ class AddNameSuggestionAdapter(
             // put default name first
             // (i.e. name=A, name:en=B, name:de=A -> name:de goes first and name is not shown)
             val Name = Name(key, value)
-            if (Name.name == defaultName) {
-                if (Name.languageCode.isNotEmpty()) result.add(0, Name)
-            } else {
-                result.add(Name)
-            }
+            result.add(Name)
         }
         // this is for the case: name=A, name:de=B, name:en=C -> name goes first
         if (result[0].name != defaultName && defaultName != null) {
