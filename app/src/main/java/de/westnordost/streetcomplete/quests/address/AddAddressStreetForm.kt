@@ -20,14 +20,9 @@ import de.westnordost.streetcomplete.data.osm.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.ktx.toObject
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.OtherAnswer
-import de.westnordost.streetcomplete.quests.localized_name.*
 import de.westnordost.streetcomplete.quests.localized_name.data.RoadNameSuggestionsDao
 import de.westnordost.streetcomplete.util.AdapterDataChangedWatcher
 import de.westnordost.streetcomplete.util.Serializer
-import de.westnordost.streetcomplete.util.TextChangedWatcher
-import kotlinx.android.synthetic.main.quest_localizedname.*
-import kotlinx.android.synthetic.main.quest_placename.*
-import kotlinx.android.synthetic.main.quest_streetname.*
 import kotlinx.android.synthetic.main.quest_streetname.addLanguageButton
 import kotlinx.android.synthetic.main.quest_streetname.namesList
 import java.util.*
@@ -38,7 +33,7 @@ class AddAddressStreetForm : AbstractQuestFormAnswerFragment<AddressStreetAnswer
 
     private val serializer: Serializer
 
-    protected lateinit var adapter: AddLocalizedNameAdapter
+    protected lateinit var adapter: AddNameSuggestionAdapter
 
     init {
         val fields = InjectedFields()
@@ -50,7 +45,7 @@ class AddAddressStreetForm : AbstractQuestFormAnswerFragment<AddressStreetAnswer
         onClickOk(createOsmModel())
     }
 
-    fun onClickOk(names: List<LocalizedName>) {
+    fun onClickOk(names: List<Name>) {
         assert(names.size == 1)
         val name = names[0].name
         val possibleAbbreviations = LinkedList<String>()
@@ -84,8 +79,8 @@ class AddAddressStreetForm : AbstractQuestFormAnswerFragment<AddressStreetAnswer
         Injector.instance.applicationComponent.inject(this)
     }
 
-    fun setupNameAdapter(data: List<LocalizedName>, addLanguageButton: Button): AddLocalizedNameAdapter {
-        return AddLocalizedNameAdapter(
+    fun setupNameAdapter(data: List<Name>, addLanguageButton: Button): AddNameSuggestionAdapter {
+        return AddNameSuggestionAdapter(
                 data, activity!!, listOf("dummy"), //FIX this horrific hack
                 abbreviationsByLocale, getRoadNameSuggestions(), addLanguageButton
         )
@@ -97,7 +92,7 @@ class AddAddressStreetForm : AbstractQuestFormAnswerFragment<AddressStreetAnswer
     }
 
     private fun initLocalizedNameAdapter(savedInstanceState: Bundle?) {
-        val data: ArrayList<LocalizedName> = if (savedInstanceState != null) {
+        val data: ArrayList<Name> = if (savedInstanceState != null) {
             serializer.toObject(savedInstanceState.getByteArray(LOCALIZED_NAMES_DATA)!!)
         } else {
             ArrayList()
@@ -125,7 +120,7 @@ class AddAddressStreetForm : AbstractQuestFormAnswerFragment<AddressStreetAnswer
         outState.putByteArray(LOCALIZED_NAMES_DATA, serializedNames)
     }
 
-    private fun createOsmModel(): List<LocalizedName> {
+    private fun createOsmModel(): List<Name> {
         val data = adapter.localizedNames.toMutableList()
         // language is only specified explicitly in OSM (usually) if there is more than one name specified
         if(data.size == 1) {
@@ -136,7 +131,7 @@ class AddAddressStreetForm : AbstractQuestFormAnswerFragment<AddressStreetAnswer
             val mainLanguageIsSpecified = data.indexOfFirst { it.languageCode == "" } >= 0
             // use the name specified in the top row for that
             if(!mainLanguageIsSpecified) {
-                data.add(LocalizedName("", data[0].name))
+                data.add(Name("", data[0].name))
             }
         }
         return data
