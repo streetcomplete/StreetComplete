@@ -64,6 +64,7 @@ public interface ApplicationComponent
 	void inject(OsmOAuthDialogFragment osmOAuthDialogFragment);
 
 	void inject(AAddLocalizedNameForm.InjectedFields fields);
+	void inject(AddAddressStreetForm.InjectedFields fields);
 	void inject(AbstractQuestAnswerFragment.InjectedFields fields);
 
 	void inject(QuestsMapFragment questsMapFragment);

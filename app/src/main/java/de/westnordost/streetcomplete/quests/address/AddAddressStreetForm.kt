@@ -1,9 +1,14 @@
 package de.westnordost.streetcomplete.quests.address
 
+import android.content.Intent
 import android.os.Bundle
+import android.provider.Settings
+import android.text.Html
 import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AlertDialog
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
@@ -12,19 +17,40 @@ import de.westnordost.streetcomplete.data.osm.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.ktx.toObject
+import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.quests.localized_name.*
 import de.westnordost.streetcomplete.quests.localized_name.data.RoadNameSuggestionsDao
+import de.westnordost.streetcomplete.util.AdapterDataChangedWatcher
+import de.westnordost.streetcomplete.util.Serializer
 import de.westnordost.streetcomplete.util.TextChangedWatcher
+import kotlinx.android.synthetic.main.quest_localizedname.*
 import kotlinx.android.synthetic.main.quest_placename.*
 import kotlinx.android.synthetic.main.quest_streetname.*
+import kotlinx.android.synthetic.main.quest_streetname.addLanguageButton
+import kotlinx.android.synthetic.main.quest_streetname.namesList
 import java.util.*
 import javax.inject.Inject
 
-class AddAddressStreetForm : AAddLocalizedNameForm<AddressStreetAnswer>() {
+class AddAddressStreetForm : AbstractQuestFormAnswerFragment<AddressStreetAnswer>() {
     private var isPlacename = false
 
-    override fun onClickOk(names: List<LocalizedName>) {
+    private val serializer: Serializer
+
+    protected lateinit var adapter: AddLocalizedNameAdapter
+
+    init {
+        val fields = InjectedFields()
+        Injector.instance.applicationComponent.inject(fields)
+        serializer = fields.serializer
+    }
+
+    override fun onClickOk() {
+        onClickOk(createOsmModel())
+    }
+
+    fun onClickOk(names: List<LocalizedName>) {
         assert(names.size == 1)
         val name = names[0].name
         val possibleAbbreviations = LinkedList<String>()
@@ -58,7 +84,7 @@ class AddAddressStreetForm : AAddLocalizedNameForm<AddressStreetAnswer>() {
         Injector.instance.applicationComponent.inject(this)
     }
 
-    override fun setupNameAdapter(data: List<LocalizedName>, addLanguageButton: Button): AddLocalizedNameAdapter {
+    fun setupNameAdapter(data: List<LocalizedName>, addLanguageButton: Button): AddLocalizedNameAdapter {
         return AddLocalizedNameAdapter(
                 data, activity!!, listOf("dummy"), //FIX this horrific hack
                 abbreviationsByLocale, getRoadNameSuggestions(), addLanguageButton
@@ -67,8 +93,53 @@ class AddAddressStreetForm : AAddLocalizedNameForm<AddressStreetAnswer>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initLocalizedNameAdapter(savedInstanceState)
+    }
 
-        //namesList.addTextChangedListener(TextChangedWatcher { checkIsFormComplete() })
+    private fun initLocalizedNameAdapter(savedInstanceState: Bundle?) {
+        val data: ArrayList<LocalizedName> = if (savedInstanceState != null) {
+            serializer.toObject(savedInstanceState.getByteArray(LOCALIZED_NAMES_DATA)!!)
+        } else {
+            ArrayList()
+        }
+
+        adapter = setupNameAdapter(data, addLanguageButton)
+        adapter.addOnNameChangedListener { checkIsFormComplete() }
+        adapter.registerAdapterDataObserver(AdapterDataChangedWatcher { checkIsFormComplete() })
+        namesList.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
+        namesList.adapter = adapter
+        namesList.isNestedScrollingEnabled = false
+        checkIsFormComplete()
+    }
+
+    protected fun getPossibleStreetsignLanguages(): List<String> {
+        val result = mutableListOf<String>()
+        result.addAll(countryInfo.officialLanguages)
+        result.addAll(countryInfo.additionalStreetsignLanguages)
+        return result.distinct()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        val serializedNames = serializer.toBytes(ArrayList(adapter.localizedNames))
+        outState.putByteArray(LOCALIZED_NAMES_DATA, serializedNames)
+    }
+
+    private fun createOsmModel(): List<LocalizedName> {
+        val data = adapter.localizedNames.toMutableList()
+        // language is only specified explicitly in OSM (usually) if there is more than one name specified
+        if(data.size == 1) {
+            data[0].languageCode = ""
+        }
+        // but if there is more than one language, ensure that a "main" name is also specified
+        else {
+            val mainLanguageIsSpecified = data.indexOfFirst { it.languageCode == "" } >= 0
+            // use the name specified in the top row for that
+            if(!mainLanguageIsSpecified) {
+                data.add(LocalizedName("", data[0].name))
+            }
+        }
+        return data
     }
 
     private fun getRoadNameSuggestions(): List<MutableMap<String, String>> {
@@ -133,4 +204,61 @@ class AddAddressStreetForm : AAddLocalizedNameForm<AddressStreetAnswer>() {
         initKeyboardButton(view)
          */
     }
+
+    protected fun confirmPossibleAbbreviationsIfAny(names: Queue<String>, onConfirmedAll: () -> Unit) {
+        if (names.isEmpty()) {
+            onConfirmedAll()
+        } else {
+            /* recursively call self on confirm until the list of not-abbreviations to confirm is
+               through */
+            val name = names.remove()
+            confirmPossibleAbbreviation(name) { confirmPossibleAbbreviationsIfAny(names, onConfirmedAll) }
+        }
+    }
+
+    protected fun confirmPossibleAbbreviation(name: String, onConfirmed: () -> Unit) {
+        val title = Html.fromHtml(
+                resources.getString(
+                        R.string.quest_streetName_nameWithAbbreviations_confirmation_title_name,
+                        "<i>" + Html.escapeHtml(name) + "</i>"
+                )
+        )
+
+        AlertDialog.Builder(activity!!)
+                .setTitle(title)
+                .setMessage(R.string.quest_streetName_nameWithAbbreviations_confirmation_description)
+                .setPositiveButton(R.string.quest_streetName_nameWithAbbreviations_confirmation_positive) { _, _ -> onConfirmed() }
+                .setNegativeButton(R.string.quest_generic_confirmation_no, null)
+                .show()
+    }
+
+    protected fun showKeyboardInfo() {
+        AlertDialog.Builder(activity!!)
+                .setTitle(R.string.quest_streetName_cantType_title)
+                .setMessage(R.string.quest_streetName_cantType_description)
+                .setPositiveButton(R.string.quest_streetName_cantType_open_settings) { _, _ ->
+                    startActivity(Intent(Settings.ACTION_SETTINGS))
+                }
+                .setNeutralButton(R.string.quest_streetName_cantType_open_store) { _, _ ->
+                    val intent = Intent(Intent.ACTION_MAIN)
+                    intent.addCategory(Intent.CATEGORY_APP_MARKET)
+                    startActivity(intent)
+                }
+                .setNegativeButton(android.R.string.cancel, null)
+                .show()
+    }
+
+    // all added name rows are not empty
+    override fun isFormComplete() = adapter.localizedNames.isNotEmpty()
+            && adapter.localizedNames.all { it.name.trim().isNotEmpty() }
+
+
+    internal class InjectedFields {
+        @Inject internal lateinit var serializer: Serializer
+    }
+
+    companion object {
+        private const val LOCALIZED_NAMES_DATA = "localized_names_data"
+    }
+
 }
