@@ -90,15 +90,15 @@ class AddNameSuggestionAdapter(
         popup.show()
     }
 
-    private fun getNameSuggestionsByLanguageCode(languageCode: String): Map<String, Map<String, String>> {
-        val NameSuggestionsMap = mutableMapOf<String, Map<String,String>>()
+    private fun getNameSuggestionsByLanguageCode(languageCode: String): List<String> {
+        val nameSuggestionsList = mutableListOf<String>()
         if (NameSuggestions != null) {
             for (NameSuggestion in NameSuggestions) {
                 val name = NameSuggestion[languageCode] ?: continue
-                NameSuggestionsMap[name] = NameSuggestion
+                nameSuggestionsList += name
             }
         }
-        return NameSuggestionsMap
+        return nameSuggestionsList
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -135,7 +135,7 @@ class AddNameSuggestionAdapter(
         }
 
         private fun updateNameSuggestions() {
-            val nameSuggestionList = getNameSuggestionsByLanguageCode(Name.languageCode).keys.toList()
+            val nameSuggestionList = getNameSuggestionsByLanguageCode(Name.languageCode)
 
             val nameInputNotEmpty = autoCorrectInput.text.toString().trim().isNotEmpty()
             val hasNoNameSuggestions = nameSuggestionList.isEmpty()
