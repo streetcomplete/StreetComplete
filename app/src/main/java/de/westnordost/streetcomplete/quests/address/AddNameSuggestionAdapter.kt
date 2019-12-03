@@ -19,7 +19,6 @@ import de.westnordost.streetcomplete.util.DefaultTextWatcher
 import android.view.Menu.NONE
 import de.westnordost.streetcomplete.view.AutoCorrectAbbreviationsEditText
 
-/** Carries the data language code + name in that language  */
 data class Name(var languageCode: String, var name: String)
 
 class AddNameSuggestionAdapter(
@@ -28,15 +27,12 @@ class AddNameSuggestionAdapter(
         private val NameSuggestions: List<MutableMap<String, String>>?
 ) : RecyclerView.Adapter<AddNameSuggestionAdapter.ViewHolder>() {
 
-    var names: MutableList<Name>
+    var name: String
         private set
     private val listeners = mutableListOf<(Name) -> Unit>()
 
     init {
-        names = initialNames.toMutableList()
-        if (names.isEmpty()) {
-            names.add(Name("dummy", "")) // TODO: eradicate hack
-        }
+        name = initialNames.toMutableList().firstOrNull()?.name ?: ""
         putDefaultNameSuggestion()
     }
 
@@ -68,10 +64,10 @@ class AddNameSuggestionAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.update(position, names[position])
+        holder.update(position, Name("", name))
     }
 
-    override fun getItemCount() = names.size
+    override fun getItemCount() = 1 // what if name is null TODO
 
     /** Show a context menu above the given [view] where the user can select one key from the
      * [NameSuggestionsMap]. The value of the selected key will be passed to the
@@ -79,7 +75,8 @@ class AddNameSuggestionAdapter(
     private fun showNameSuggestionsMenu(
             view: View,
             NameSuggestionsMap: Map<String, Map<String, String>>,
-            callback: (Map<String, String>) -> Unit
+            NameSuggestionList: List<String>,
+            callback: (String) -> Unit
     ) {
         val popup = PopupMenu(context, view)
 
@@ -89,7 +86,7 @@ class AddNameSuggestionAdapter(
 
         popup.setOnMenuItemClickListener { item ->
             val selected = NameSuggestionsMap[item.title.toString()]
-            callback(selected!!)
+            callback(item.title.toString())
             true
         }
         popup.show()
@@ -153,9 +150,10 @@ class AddNameSuggestionAdapter(
             buttonNameSuggestions.visibility =
                     if (hasNoNameSuggestions || nameInputNotEmpty) View.GONE else View.VISIBLE
 
+            val nameSuggestionList = NameSuggestionsMap.keys.toList()
             buttonNameSuggestions.setOnClickListener { v ->
-                showNameSuggestionsMenu(v, NameSuggestionsMap) { selection ->
-                    names = selection.toNameList()
+                showNameSuggestionsMenu(v, NameSuggestionsMap, nameSuggestionList) { selected ->
+                    name = selected
                     notifyDataSetChanged()
                 }
             }

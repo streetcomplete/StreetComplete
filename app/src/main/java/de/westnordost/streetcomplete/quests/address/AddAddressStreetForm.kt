@@ -40,19 +40,10 @@ class AddAddressStreetForm : AbstractQuestFormAnswerFragment<AddressStreetAnswer
     }
 
     override fun onClickOk() {
-        onClickOk(createOsmModel())
+        onClickOk(adapter.name)
     }
 
-    fun onClickOk(names: List<Name>) {
-        assert(names.size == 1)
-        val name = names[0].name
-        val possibleAbbreviations = LinkedList<String>()
-        val locale = countryInfo.locale
-        val abbr = abbreviationsByLocale.get(locale)
-        val containsAbbreviations = abbr?.containsAbbreviations(name) == true
-        if (name.contains(".") || containsAbbreviations) {
-            possibleAbbreviations.add(name)
-        }
+    fun onClickOk(name: String) {
         if(isPlacename) {
             applyAnswer(PlaceName(name))
         } else {
@@ -111,25 +102,12 @@ class AddAddressStreetForm : AbstractQuestFormAnswerFragment<AddressStreetAnswer
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        val serializedNames = serializer.toBytes(ArrayList(adapter.names))
-        outState.putByteArray(NAMES_DATA, serializedNames)
+        val serializedName = serializer.toBytes(adapter.name)
+        outState.putByteArray(NAMES_DATA, serializedName)
     }
 
-    private fun createOsmModel(): List<Name> {
-        val data = adapter.names.toMutableList()
-        // language is only specified explicitly in OSM (usually) if there is more than one name specified
-        if(data.size == 1) {
-            data[0].languageCode = ""
-        }
-        // but if there is more than one language, ensure that a "main" name is also specified
-        else {
-            val mainLanguageIsSpecified = data.indexOfFirst { it.languageCode == "" } >= 0
-            // use the name specified in the top row for that
-            if(!mainLanguageIsSpecified) {
-                data.add(Name("", data[0].name))
-            }
-        }
-        return data
+    private fun createOsmModel(): String {
+        return adapter.name
     }
 
     private fun getRoadNameSuggestions(): List<MutableMap<String, String>> {
@@ -239,8 +217,7 @@ class AddAddressStreetForm : AbstractQuestFormAnswerFragment<AddressStreetAnswer
     }
 
     // all added name rows are not empty
-    override fun isFormComplete() = adapter.names.isNotEmpty()
-            && adapter.names.all { it.name.trim().isNotEmpty() }
+    override fun isFormComplete() = adapter.name.trim() != ""
 
 
     internal class InjectedFields {
