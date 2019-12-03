@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.provider.Settings
 import android.text.Html
 import android.view.View
-import android.widget.Button
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -92,7 +91,7 @@ class AddAddressStreetForm : AbstractQuestFormAnswerFragment<AddressStreetAnswer
 
     private fun initLocalizedNameAdapter(savedInstanceState: Bundle?) {
         val data: ArrayList<Name> = if (savedInstanceState != null) {
-            serializer.toObject(savedInstanceState.getByteArray(LOCALIZED_NAMES_DATA)!!)
+            serializer.toObject(savedInstanceState.getByteArray(NAMES_DATA)!!)
         } else {
             ArrayList()
         }
@@ -116,7 +115,7 @@ class AddAddressStreetForm : AbstractQuestFormAnswerFragment<AddressStreetAnswer
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         val serializedNames = serializer.toBytes(ArrayList(adapter.localizedNames))
-        outState.putByteArray(LOCALIZED_NAMES_DATA, serializedNames)
+        outState.putByteArray(NAMES_DATA, serializedNames)
     }
 
     private fun createOsmModel(): List<Name> {
@@ -252,7 +251,7 @@ class AddAddressStreetForm : AbstractQuestFormAnswerFragment<AddressStreetAnswer
     }
 
     companion object {
-        private const val LOCALIZED_NAMES_DATA = "localized_names_data"
+        private const val NAMES_DATA = "names_data"
     }
 
 }

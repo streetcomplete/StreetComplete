@@ -44,19 +44,6 @@ class AddLocalizedNameAdapter(
             localizedNames.add(LocalizedName(languages[0], ""))
         }
         putDefaultLocalizedNameSuggestion()
-        addLanguageButton.setOnClickListener { v ->
-            showLanguageSelectMenu(v, getNotAddedLanguages()) { add(it) }
-        }
-
-        updateAddLanguageButtonVisibility()
-    }
-
-    private fun getNotAddedLanguages(): List<String> {
-        val result = languages.toMutableList()
-        for (localizedName in localizedNames) {
-            result.remove(localizedName.languageCode)
-        }
-        return result
     }
 
     fun addOnNameChangedListener(listener: (LocalizedName) -> Unit) {
@@ -92,24 +79,16 @@ class AddLocalizedNameAdapter(
 
     override fun getItemCount() = localizedNames.size
 
-    private fun updateAddLanguageButtonVisibility() {
-        addLanguageButton.visibility = if (getNotAddedLanguages().isEmpty()) View.GONE else View.VISIBLE
-    }
-
     private fun remove(index: Int) {
         if (index < 1) return
         localizedNames.removeAt(index)
         notifyItemRemoved(index)
-
-        updateAddLanguageButtonVisibility()
     }
 
     private fun add(languageCode: String) {
         val insertIndex = itemCount
         localizedNames.add(LocalizedName(languageCode, ""))
         notifyItemInserted(insertIndex)
-
-        updateAddLanguageButtonVisibility()
     }
 
     /** Show a context menu above the given [view] where the user can select one language from the
@@ -242,28 +221,7 @@ class AddLocalizedNameAdapter(
             autoCorrectInput.requestFocus()
             buttonLanguage.text = localizedName.languageCode
 
-            // first entry is bold (the first entry is supposed to be the "default language", I
-            // hope that comes across to the users like this. Otherwise, a text hint is necessary)
-            buttonLanguage.setTypeface(null, if (isFirst) Typeface.BOLD else Typeface.NORMAL)
             autoCorrectInput.setTypeface(null, if (isFirst) Typeface.BOLD else Typeface.NORMAL)
-
-            buttonLanguage.setOnClickListener { v: View ->
-                val notAddedLanguages = getNotAddedLanguages().toMutableList()
-                // in first entry user may select "unspecified language" to cover cases where
-                // the default name is no specific language. I.e. see
-                // https://wiki.openstreetmap.org/wiki/Multilingual_names#Sardegna_.28Sardinia.29
-                if (isFirst) {
-                    notAddedLanguages.add(0, "")
-                }
-
-                showLanguageSelectMenu(v, notAddedLanguages) { languageCode ->
-                    localizedName.languageCode = languageCode
-                    buttonLanguage.text = languageCode
-                    updateAddLanguageButtonVisibility()
-                    updateNameSuggestions()
-                }
-            }
-
             updateNameSuggestions()
 
             // load abbreviations from file in separate thread
@@ -290,7 +248,6 @@ class AddLocalizedNameAdapter(
                 showNameSuggestionsMenu(v, localizedNameSuggestionsMap) { selection ->
                     localizedNames = selection.toLocalizedNameList()
                     notifyDataSetChanged()
-                    updateAddLanguageButtonVisibility()
                 }
             }
         }
