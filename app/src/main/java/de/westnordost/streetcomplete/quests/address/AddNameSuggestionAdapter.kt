@@ -73,32 +73,6 @@ class AddNameSuggestionAdapter(
 
     override fun getItemCount() = names.size
 
-    private fun remove(index: Int) {
-        if (index < 1) return
-        names.removeAt(index)
-        notifyItemRemoved(index)
-    }
-
-    private fun getLanguageMenuItemTitle(languageCode: String): String {
-        if (languageCode.isEmpty()) return context.getString(R.string.quest_streetName_menuItem_nolanguage)
-
-        val locale = Locale(languageCode)
-
-        val displayLanguage = locale.displayLanguage
-        val nativeDisplayLanguage = locale.getDisplayLanguage(locale)
-        return if (displayLanguage == nativeDisplayLanguage) {
-            String.format(
-                    context.getString(R.string.quest_streetName_menuItem_language_simple),
-                    languageCode, displayLanguage
-            )
-        } else {
-            String.format(
-                    context.getString(R.string.quest_streetName_menuItem_language_native),
-                    languageCode, nativeDisplayLanguage, displayLanguage
-            )
-        }
-    }
-
     /** Show a context menu above the given [view] where the user can select one key from the
      * [NameSuggestionsMap]. The value of the selected key will be passed to the
      * [callback] */
