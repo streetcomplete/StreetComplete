@@ -159,21 +159,4 @@ class AddNameSuggestionAdapter(
             }
         }
     }
-
-    /** Turn a map of language code to name into a list of Name */
-    private fun Map<String, String>.toNameList(): MutableList<Name> {
-        val result = mutableListOf<Name>()
-        val defaultName = this[""]
-        for ((key, value) in this) {
-            // put default name first
-            // (i.e. name=A, name:en=B, name:de=A -> name:de goes first and name is not shown)
-            val Name = Name(key, value)
-            result.add(Name)
-        }
-        // this is for the case: name=A, name:de=B, name:en=C -> name goes first
-        if (result[0].name != defaultName && defaultName != null) {
-            result.add(0, Name("", defaultName))
-        }
-        return result
-    }
 }
