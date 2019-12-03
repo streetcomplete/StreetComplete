@@ -53,12 +53,10 @@ class AddAddressStreetForm : AbstractQuestFormAnswerFragment<AddressStreetAnswer
         if (name.contains(".") || containsAbbreviations) {
             possibleAbbreviations.add(name)
         }
-        confirmPossibleAbbreviationsIfAny(possibleAbbreviations) {
-            if(isPlacename) {
-                applyAnswer(PlaceName(name))
-            } else {
-                applyAnswer(StreetName(name))
-            }
+        if(isPlacename) {
+            applyAnswer(PlaceName(name))
+        } else {
+            applyAnswer(StreetName(name))
         }
     }
 
@@ -80,7 +78,7 @@ class AddAddressStreetForm : AbstractQuestFormAnswerFragment<AddressStreetAnswer
     fun setupNameAdapter(data: List<Name>): AddNameSuggestionAdapter {
         return AddNameSuggestionAdapter(
                 data, activity!!, listOf("dummy"), //FIX this horrific hack
-                abbreviationsByLocale, getRoadNameSuggestions()
+                getRoadNameSuggestions()
         )
     }
 
@@ -114,12 +112,12 @@ class AddAddressStreetForm : AbstractQuestFormAnswerFragment<AddressStreetAnswer
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        val serializedNames = serializer.toBytes(ArrayList(adapter.localizedNames))
+        val serializedNames = serializer.toBytes(ArrayList(adapter.names))
         outState.putByteArray(NAMES_DATA, serializedNames)
     }
 
     private fun createOsmModel(): List<Name> {
-        val data = adapter.localizedNames.toMutableList()
+        val data = adapter.names.toMutableList()
         // language is only specified explicitly in OSM (usually) if there is more than one name specified
         if(data.size == 1) {
             data[0].languageCode = ""
@@ -242,8 +240,8 @@ class AddAddressStreetForm : AbstractQuestFormAnswerFragment<AddressStreetAnswer
     }
 
     // all added name rows are not empty
-    override fun isFormComplete() = adapter.localizedNames.isNotEmpty()
-            && adapter.localizedNames.all { it.name.trim().isNotEmpty() }
+    override fun isFormComplete() = adapter.names.isNotEmpty()
+            && adapter.names.all { it.name.trim().isNotEmpty() }
 
 
     internal class InjectedFields {

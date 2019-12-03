@@ -9,14 +9,11 @@ import android.text.Editable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.TextView
 
 import java.util.Locale
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.Abbreviations
-import de.westnordost.streetcomplete.data.meta.AbbreviationsByLocale
 import de.westnordost.streetcomplete.util.DefaultTextWatcher
 
 import android.view.Menu.NONE
@@ -29,28 +26,19 @@ class AddNameSuggestionAdapter(
         initialNames: List<Name>,
         private val context: Context,
         private val languages: List<String>,
-        private val abbreviationsByLocale: AbbreviationsByLocale?,
         private val NameSuggestions: List<MutableMap<String, String>>?
 ) : RecyclerView.Adapter<AddNameSuggestionAdapter.ViewHolder>() {
 
-    var localizedNames: MutableList<Name>
+    var names: MutableList<Name>
         private set
     private val listeners = mutableListOf<(Name) -> Unit>()
 
     init {
-        localizedNames = initialNames.toMutableList()
-        if (localizedNames.isEmpty()) {
-            localizedNames.add(Name(languages[0], ""))
+        names = initialNames.toMutableList()
+        if (names.isEmpty()) {
+            names.add(Name(languages[0], ""))
         }
         putDefaultNameSuggestion()
-    }
-
-    private fun getNotAddedLanguages(): List<String> {
-        val result = languages.toMutableList()
-        for (Name in localizedNames) {
-            result.remove(Name.languageCode)
-        }
-        return result
     }
 
     fun addOnNameChangedListener(listener: (Name) -> Unit) {
@@ -81,36 +69,15 @@ class AddNameSuggestionAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.update(position, localizedNames[position])
+        holder.update(position, names[position])
     }
 
-    override fun getItemCount() = localizedNames.size
+    override fun getItemCount() = names.size
 
     private fun remove(index: Int) {
         if (index < 1) return
-        localizedNames.removeAt(index)
+        names.removeAt(index)
         notifyItemRemoved(index)
-    }
-
-    /** Show a context menu above the given [view] where the user can select one language from the
-     * [languageList], which will be passed to the [callback] */
-    private fun showLanguageSelectMenu(
-            view: View,
-            languageList: List<String>,
-            callback: (String) -> Unit
-    ) {
-        if (languageList.isEmpty()) return
-
-        val popup = PopupMenu(context, view)
-        for ((i, languageCode) in languageList.withIndex()) {
-            popup.menu.add(NONE, i, NONE, getLanguageMenuItemTitle(languageCode))
-        }
-
-        popup.setOnMenuItemClickListener { item ->
-            callback(languageList[item.itemId])
-            true
-        }
-        popup.show()
     }
 
     private fun getLanguageMenuItemTitle(languageCode: String): String {
@@ -182,8 +149,6 @@ class AddNameSuggestionAdapter(
         private lateinit var Name: Name
 
         private val autoCorrectInput : AutoCorrectAbbreviationsEditText = itemView.findViewById(R.id.autoCorrectInput)
-        private val buttonLanguage : TextView = itemView.findViewById(R.id.languageButton)
-        private val buttonDelete : TextView = itemView.findViewById(R.id.deleteButton)
         private val buttonNameSuggestions : View = itemView.findViewById(R.id.nameSuggestionsButton)
 
         init {
@@ -202,12 +167,6 @@ class AddNameSuggestionAdapter(
                     }
                 }
             })
-
-            buttonDelete.setOnClickListener {
-                // clearing focus is very necessary, otherwise crash
-                autoCorrectInput.clearFocus()
-                remove(adapterPosition)
-            }
         }
 
         fun update(index: Int, ln: Name) {
@@ -215,46 +174,13 @@ class AddNameSuggestionAdapter(
 
             val isFirst = index == 0
 
-            buttonDelete.visibility = if (isFirst) View.INVISIBLE else View.VISIBLE
-            buttonLanguage.visibility = if (languages.size > 1) View.VISIBLE else View.INVISIBLE
 
             autoCorrectInput.setText(Name.name)
             autoCorrectInput.requestFocus()
-            buttonLanguage.text = Name.languageCode
 
-            // first entry is bold (the first entry is supposed to be the "default language", I
-            // hope that comes across to the users like this. Otherwise, a text hint is necessary)
-            buttonLanguage.setTypeface(null, if (isFirst) Typeface.BOLD else Typeface.NORMAL)
             autoCorrectInput.setTypeface(null, if (isFirst) Typeface.BOLD else Typeface.NORMAL)
 
-            buttonLanguage.setOnClickListener { v: View ->
-                val notAddedLanguages = getNotAddedLanguages().toMutableList()
-                // in first entry user may select "unspecified language" to cover cases where
-                // the default name is no specific language. I.e. see
-                // https://wiki.openstreetmap.org/wiki/Multilingual_names#Sardegna_.28Sardinia.29
-                if (isFirst) {
-                    notAddedLanguages.add(0, "")
-                }
-
-                showLanguageSelectMenu(v, notAddedLanguages) { languageCode ->
-                    Name.languageCode = languageCode
-                    buttonLanguage.text = languageCode
-                    updateNameSuggestions()
-                }
-            }
-
             updateNameSuggestions()
-
-            // load abbreviations from file in separate thread
-            object : AsyncTask<Void, Void, Abbreviations>() {
-                override fun doInBackground(vararg params: Void): Abbreviations? {
-                    return abbreviationsByLocale?.get(Locale(Name.languageCode))
-                }
-
-                override fun onPostExecute(abbreviations: Abbreviations?) {
-                    autoCorrectInput.abbreviations = abbreviations
-                }
-            }.execute()
         }
 
         private fun updateNameSuggestions() {
@@ -267,7 +193,7 @@ class AddNameSuggestionAdapter(
 
             buttonNameSuggestions.setOnClickListener { v ->
                 showNameSuggestionsMenu(v, NameSuggestionsMap) { selection ->
-                    localizedNames = selection.toNameList()
+                    names = selection.toNameList()
                     notifyDataSetChanged()
                 }
             }
