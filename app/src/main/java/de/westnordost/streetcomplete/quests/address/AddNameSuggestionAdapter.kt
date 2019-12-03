@@ -74,18 +74,16 @@ class AddNameSuggestionAdapter(
      * [callback] */
     private fun showNameSuggestionsMenu(
             view: View,
-            NameSuggestionsMap: Map<String, Map<String, String>>,
             NameSuggestionList: List<String>,
             callback: (String) -> Unit
     ) {
         val popup = PopupMenu(context, view)
 
-        for ((i, key) in NameSuggestionsMap.keys.withIndex()) {
+        for ((i, key) in NameSuggestionList.withIndex()) {
             popup.menu.add(NONE, i, NONE, key)
         }
 
         popup.setOnMenuItemClickListener { item ->
-            val selected = NameSuggestionsMap[item.title.toString()]
             callback(item.title.toString())
             true
         }
@@ -130,29 +128,22 @@ class AddNameSuggestionAdapter(
 
         fun update(index: Int, ln: Name) {
             Name = ln
-
-            val isFirst = index == 0
-
-
             autoCorrectInput.setText(Name.name)
             autoCorrectInput.requestFocus()
-
-            autoCorrectInput.setTypeface(null, if (isFirst) Typeface.BOLD else Typeface.NORMAL)
-
+            autoCorrectInput.setTypeface(null, Typeface.BOLD)
             updateNameSuggestions()
         }
 
         private fun updateNameSuggestions() {
-            val NameSuggestionsMap = getNameSuggestionsByLanguageCode(Name.languageCode)
+            val nameSuggestionList = getNameSuggestionsByLanguageCode(Name.languageCode).keys.toList()
 
             val nameInputNotEmpty = autoCorrectInput.text.toString().trim().isNotEmpty()
-            val hasNoNameSuggestions = NameSuggestionsMap.isEmpty()
+            val hasNoNameSuggestions = nameSuggestionList.isEmpty()
             buttonNameSuggestions.visibility =
                     if (hasNoNameSuggestions || nameInputNotEmpty) View.GONE else View.VISIBLE
 
-            val nameSuggestionList = NameSuggestionsMap.keys.toList()
             buttonNameSuggestions.setOnClickListener { v ->
-                showNameSuggestionsMenu(v, NameSuggestionsMap, nameSuggestionList) { selected ->
+                showNameSuggestionsMenu(v, nameSuggestionList) { selected ->
                     name = selected
                     notifyDataSetChanged()
                 }
