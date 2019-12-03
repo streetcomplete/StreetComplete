@@ -23,7 +23,6 @@ import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.quests.localized_name.data.RoadNameSuggestionsDao
 import de.westnordost.streetcomplete.util.AdapterDataChangedWatcher
 import de.westnordost.streetcomplete.util.Serializer
-import kotlinx.android.synthetic.main.quest_streetname.addLanguageButton
 import kotlinx.android.synthetic.main.quest_streetname.namesList
 import java.util.*
 import javax.inject.Inject
@@ -79,10 +78,10 @@ class AddAddressStreetForm : AbstractQuestFormAnswerFragment<AddressStreetAnswer
         Injector.instance.applicationComponent.inject(this)
     }
 
-    fun setupNameAdapter(data: List<Name>, addLanguageButton: Button): AddNameSuggestionAdapter {
+    fun setupNameAdapter(data: List<Name>): AddNameSuggestionAdapter {
         return AddNameSuggestionAdapter(
                 data, activity!!, listOf("dummy"), //FIX this horrific hack
-                abbreviationsByLocale, getRoadNameSuggestions(), addLanguageButton
+                abbreviationsByLocale, getRoadNameSuggestions()
         )
     }
 
@@ -98,7 +97,7 @@ class AddAddressStreetForm : AbstractQuestFormAnswerFragment<AddressStreetAnswer
             ArrayList()
         }
 
-        adapter = setupNameAdapter(data, addLanguageButton)
+        adapter = setupNameAdapter(data)
         adapter.addOnNameChangedListener { checkIsFormComplete() }
         adapter.registerAdapterDataObserver(AdapterDataChangedWatcher { checkIsFormComplete() })
         namesList.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)

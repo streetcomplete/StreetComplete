@@ -30,8 +30,7 @@ class AddNameSuggestionAdapter(
         private val context: Context,
         private val languages: List<String>,
         private val abbreviationsByLocale: AbbreviationsByLocale?,
-        private val NameSuggestions: List<MutableMap<String, String>>?,
-        private val addLanguageButton: Button
+        private val NameSuggestions: List<MutableMap<String, String>>?
 ) : RecyclerView.Adapter<AddNameSuggestionAdapter.ViewHolder>() {
 
     var localizedNames: MutableList<Name>
@@ -44,11 +43,6 @@ class AddNameSuggestionAdapter(
             localizedNames.add(Name(languages[0], ""))
         }
         putDefaultNameSuggestion()
-        addLanguageButton.setOnClickListener { v ->
-            showLanguageSelectMenu(v, getNotAddedLanguages()) { add(it) }
-        }
-
-        updateAddLanguageButtonVisibility()
     }
 
     private fun getNotAddedLanguages(): List<String> {
@@ -92,24 +86,10 @@ class AddNameSuggestionAdapter(
 
     override fun getItemCount() = localizedNames.size
 
-    private fun updateAddLanguageButtonVisibility() {
-        addLanguageButton.visibility = if (getNotAddedLanguages().isEmpty()) View.GONE else View.VISIBLE
-    }
-
     private fun remove(index: Int) {
         if (index < 1) return
         localizedNames.removeAt(index)
         notifyItemRemoved(index)
-
-        updateAddLanguageButtonVisibility()
-    }
-
-    private fun add(languageCode: String) {
-        val insertIndex = itemCount
-        localizedNames.add(Name(languageCode, ""))
-        notifyItemInserted(insertIndex)
-
-        updateAddLanguageButtonVisibility()
     }
 
     /** Show a context menu above the given [view] where the user can select one language from the
@@ -259,7 +239,6 @@ class AddNameSuggestionAdapter(
                 showLanguageSelectMenu(v, notAddedLanguages) { languageCode ->
                     Name.languageCode = languageCode
                     buttonLanguage.text = languageCode
-                    updateAddLanguageButtonVisibility()
                     updateNameSuggestions()
                 }
             }
@@ -290,7 +269,6 @@ class AddNameSuggestionAdapter(
                 showNameSuggestionsMenu(v, NameSuggestionsMap) { selection ->
                     localizedNames = selection.toNameList()
                     notifyDataSetChanged()
-                    updateAddLanguageButtonVisibility()
                 }
             }
         }

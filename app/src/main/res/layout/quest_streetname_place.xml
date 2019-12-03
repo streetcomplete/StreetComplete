@@ -18,13 +18,4 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         />
-    <!--following button is required by used class, but deliberately hidden as addr:street is not multilingual-->
-    <Button
-    android:id="@+id/addLanguageButton"
-    android:text="➕"
-    android:layout_width="50dp"
-    android:layout_height="wrap_content"
-    tools:ignore="HardcodedText"
-    android:visibility="gone"
-    />
 </LinearLayout>
