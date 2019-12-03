@@ -25,7 +25,6 @@ data class Name(var languageCode: String, var name: String)
 class AddNameSuggestionAdapter(
         initialNames: List<Name>,
         private val context: Context,
-        private val languages: List<String>,
         private val NameSuggestions: List<MutableMap<String, String>>?
 ) : RecyclerView.Adapter<AddNameSuggestionAdapter.ViewHolder>() {
 
@@ -36,7 +35,7 @@ class AddNameSuggestionAdapter(
     init {
         names = initialNames.toMutableList()
         if (names.isEmpty()) {
-            names.add(Name(languages[0], ""))
+            names.add(Name("dummy", "")) // TODO: eradicate hack
         }
         putDefaultNameSuggestion()
     }
@@ -49,7 +48,7 @@ class AddNameSuggestionAdapter(
      * meaningful name suggestions per language, it must then be determined in which language this
      * name tag is. */
     private fun putDefaultNameSuggestion() {
-        val defaultLanguage = languages[0]
+        val defaultLanguage = "dummy" // TODO: eradicate hack
         if (NameSuggestions != null) {
             for (names in NameSuggestions) {
                 val defaultName = names[""]

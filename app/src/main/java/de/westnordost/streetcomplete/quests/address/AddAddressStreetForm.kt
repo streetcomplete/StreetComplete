@@ -77,8 +77,7 @@ class AddAddressStreetForm : AbstractQuestFormAnswerFragment<AddressStreetAnswer
 
     fun setupNameAdapter(data: List<Name>): AddNameSuggestionAdapter {
         return AddNameSuggestionAdapter(
-                data, activity!!, listOf("dummy"), //FIX this horrific hack
-                getRoadNameSuggestions()
+                data, activity!!, getRoadNameSuggestions()
         )
     }
 
