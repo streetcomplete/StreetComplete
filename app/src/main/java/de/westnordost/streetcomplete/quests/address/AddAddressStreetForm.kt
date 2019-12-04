@@ -106,10 +106,6 @@ class AddAddressStreetForm : AbstractQuestFormAnswerFragment<AddressStreetAnswer
         outState.putByteArray(NAMES_DATA, serializedName)
     }
 
-    private fun createOsmModel(): String {
-        return adapter.name
-    }
-
     private fun getRoadNameSuggestions(): List<MutableMap<String, String>> {
         return roadNameSuggestionsDao.getNames(
                 geometryToMajorPoints(elementGeometry),
@@ -171,33 +167,6 @@ class AddAddressStreetForm : AbstractQuestFormAnswerFragment<AddressStreetAnswer
 
         initKeyboardButton(view)
          */
-    }
-
-    protected fun confirmPossibleAbbreviationsIfAny(names: Queue<String>, onConfirmedAll: () -> Unit) {
-        if (names.isEmpty()) {
-            onConfirmedAll()
-        } else {
-            /* recursively call self on confirm until the list of not-abbreviations to confirm is
-               through */
-            val name = names.remove()
-            confirmPossibleAbbreviation(name) { confirmPossibleAbbreviationsIfAny(names, onConfirmedAll) }
-        }
-    }
-
-    protected fun confirmPossibleAbbreviation(name: String, onConfirmed: () -> Unit) {
-        val title = Html.fromHtml(
-                resources.getString(
-                        R.string.quest_streetName_nameWithAbbreviations_confirmation_title_name,
-                        "<i>" + Html.escapeHtml(name) + "</i>"
-                )
-        )
-
-        AlertDialog.Builder(activity!!)
-                .setTitle(title)
-                .setMessage(R.string.quest_streetName_nameWithAbbreviations_confirmation_description)
-                .setPositiveButton(R.string.quest_streetName_nameWithAbbreviations_confirmation_positive) { _, _ -> onConfirmed() }
-                .setNegativeButton(R.string.quest_generic_confirmation_no, null)
-                .show()
     }
 
     protected fun showKeyboardInfo() {
