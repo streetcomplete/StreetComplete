@@ -79,7 +79,7 @@ class AddNameSuggestionAdapter(
                 nameSuggestionsList += name
             }
         }
-        return nameSuggestionsList
+        return nameSuggestionsList.toSet().toList()
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
