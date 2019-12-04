@@ -33,29 +33,10 @@ class AddNameSuggestionAdapter(
 
     init {
         name = initialNames.toMutableList().firstOrNull()?.name ?: ""
-        putDefaultNameSuggestion()
     }
 
     fun addOnNameChangedListener(listener: (Name) -> Unit) {
         listeners.add(listener)
-    }
-
-    /* Names are usually specified without language information (name=My Street). To provide
-     * meaningful name suggestions per language, it must then be determined in which language this
-     * name tag is. */
-    private fun putDefaultNameSuggestion() {
-        val defaultLanguage = "dummy" // TODO: eradicate hack
-        if (NameSuggestions != null) {
-            for (names in NameSuggestions) {
-                val defaultName = names[""]
-                if (defaultName != null) {
-                    // name=A -> name=A, name:de=A (in Germany)
-                    if (!names.containsKey(defaultLanguage)) {
-                        names[defaultLanguage] = defaultName
-                    }
-                }
-            }
-        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
