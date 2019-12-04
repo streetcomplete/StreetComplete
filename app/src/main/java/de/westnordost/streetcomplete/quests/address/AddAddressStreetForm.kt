@@ -64,8 +64,7 @@ class AddAddressStreetForm : AbstractQuestFormAnswerFragment<AddressStreetAnswer
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val view = getView()
-        val buttonNameSuggestions : View = view!!.findViewById(R.id.nameSuggestionsButton)
+        val buttonNameSuggestions : View = view.findViewById(R.id.nameSuggestionsButton)
         val nameSuggestionsMap = getRoadNameSuggestions()
         val nameSuggestionsList = mutableListOf<String>()
         for (NameSuggestion in nameSuggestionsMap) {
@@ -74,18 +73,11 @@ class AddAddressStreetForm : AbstractQuestFormAnswerFragment<AddressStreetAnswer
         }
         textField = view.findViewById(R.id.name)
         buttonNameSuggestions.setOnClickListener { v ->
-            showNameSuggestionsMenu(v, nameSuggestionsList) { selected -> ;
+            showNameSuggestionsMenu(v, nameSuggestionsList) { selected ->
                 textField!!.setText(selected)
             }
         }
         textField!!.addTextChangedListener(TextChangedWatcher { checkIsFormComplete() })
-    }
-
-    protected fun getPossibleStreetsignLanguages(): List<String> {
-        val result = mutableListOf<String>()
-        result.addAll(countryInfo.officialLanguages)
-        result.addAll(countryInfo.additionalStreetsignLanguages)
-        return result.distinct()
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -102,17 +94,17 @@ class AddAddressStreetForm : AbstractQuestFormAnswerFragment<AddressStreetAnswer
     }
 
     private fun geometryToMajorPoints(geometry: ElementGeometry): List<LatLon> {
-        when(geometry) {
+        return when(geometry) {
             is ElementPolylinesGeometry -> {
                 val polyline = geometry.polylines.first()
-                return listOf(polyline.first(), polyline.last())
+                listOf(polyline.first(), polyline.last())
             }
             is ElementPolygonsGeometry -> {
                 // return center and one of nodes from the way constructing area
-                return listOf(geometry.center, geometry.polygons.first().last())
+                listOf(geometry.center, geometry.polygons.first().last())
             }
             is ElementPointGeometry -> {
-                return listOf(geometry.center)
+                listOf(geometry.center)
             }
         }
 
@@ -142,21 +134,6 @@ class AddAddressStreetForm : AbstractQuestFormAnswerFragment<AddressStreetAnswer
             }
         }
         textField!!.addTextChangedListener(TextChangedWatcher { checkIsFormComplete() })
-
-        /*
-        val onChanged = TextChangedWatcher { checkIsFormComplete() }
-        houseNumberInput?.addTextChangedListener(onChanged)
-        houseNameInput?.addTextChangedListener(onChanged)
-        conscriptionNumberInput?.addTextChangedListener(onChanged)
-        streetNumberInput?.addTextChangedListener(onChanged)
-        blockNumberInput?.addTextChangedListener(onChanged)
-
-        // streetNumber is always optional
-        val input = AddHousenumberForm.getFirstNonNull(blockNumberInput, houseNumberInput, houseNameInput, conscriptionNumberInput)
-        input?.requestFocus()
-
-        initKeyboardButton(view)
-         */
     }
 
     protected fun showKeyboardInfo() {
