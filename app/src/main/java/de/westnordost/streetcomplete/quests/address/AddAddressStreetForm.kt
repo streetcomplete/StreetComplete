@@ -4,8 +4,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings
 import android.text.Html
+import android.view.Menu
 import android.view.View
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.widget.PopupMenu
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.osmapi.map.data.LatLon
@@ -146,6 +148,13 @@ class AddAddressStreetForm : AbstractQuestFormAnswerFragment<AddressStreetAnswer
 
     private fun setLayout(layoutResourceId: Int) {
         val view = setContentView(layoutResourceId)
+        val buttonNameSuggestions : View = view.findViewById(R.id.nameSuggestionsButton)
+        buttonNameSuggestions.setOnClickListener { v ->
+            showNameSuggestionsMenu(v, listOf("dummy", "trololol")) { selected -> ;
+                //name = selected
+                //notifyDataSetChanged()
+            }
+        }
 
         /*
         houseNumberInput = view.findViewById(R.id.houseNumberInput)
@@ -195,6 +204,27 @@ class AddAddressStreetForm : AbstractQuestFormAnswerFragment<AddressStreetAnswer
 
     companion object {
         private const val NAMES_DATA = "names_data"
+    }
+
+    /** Show a context menu above the given [view] where the user can select one key from the
+     * [NameSuggestionsMap]. The value of the selected key will be passed to the
+     * [callback] */
+    private fun showNameSuggestionsMenu(
+            view: View,
+            nameSuggestionList: List<String>,
+            callback: (String) -> Unit
+    ) {
+        val popup = PopupMenu(activity!!, view)
+
+        for ((i, key) in nameSuggestionList.withIndex()) {
+            popup.menu.add(Menu.NONE, i, Menu.NONE, key)
+        }
+
+        popup.setOnMenuItemClickListener { item ->
+            callback(item.title.toString())
+            true
+        }
+        popup.show()
     }
 
 }
