@@ -25,7 +25,7 @@ import javax.inject.Inject
 
 class AddAddressStreetForm : AbstractQuestFormAnswerFragment<AddressStreetAnswer>() {
     private var textField: EditText? = null
-    private var isPlacename = false
+    private var isPlaceName = false
 
     private val serializer: Serializer
 
@@ -40,7 +40,7 @@ class AddAddressStreetForm : AbstractQuestFormAnswerFragment<AddressStreetAnswer
     }
 
     fun onClickOk(name: String) {
-        if(isPlacename) {
+        if(isPlaceName) {
             applyAnswer(PlaceName(name))
         } else {
             applyAnswer(StreetName(name))
@@ -120,7 +120,7 @@ class AddAddressStreetForm : AbstractQuestFormAnswerFragment<AddressStreetAnswer
     }
 
     private fun switchToPlaceNameLayout() {
-        isPlacename = true
+        isPlaceName = true
         setLayout(R.layout.quest_streetname_place)
     }
 
@@ -128,8 +128,17 @@ class AddAddressStreetForm : AbstractQuestFormAnswerFragment<AddressStreetAnswer
         val view = setContentView(layoutResourceId)
         val buttonNameSuggestions : View = view.findViewById(R.id.nameSuggestionsButton)
         textField = view.findViewById(R.id.name)
+
+        //TODO - use actual place names
+        val nameSuggestionsMap = getRoadNameSuggestions()
+        val nameSuggestionsList = mutableListOf<String>()
+        for (NameSuggestion in nameSuggestionsMap) {
+            val name = NameSuggestion[""] ?: continue // just default language names
+            nameSuggestionsList += name
+        }
+
         buttonNameSuggestions.setOnClickListener { v ->
-            showNameSuggestionsMenu(v, listOf("dummy", "trololol")) { selected -> ;
+            showNameSuggestionsMenu(v, nameSuggestionsList) { selected -> ;
                 textField!!.setText(selected)
             }
         }
