@@ -24,7 +24,7 @@ data class Name(var languageCode: String, var name: String)
 class AddNameSuggestionAdapter(
         initialNames: List<Name>,
         private val context: Context,
-        private val NameSuggestions: List<MutableMap<String, String>>?
+        private val NameSuggestions: List<MutableMap<String, String>>? /** something like [{"": "17th Street", "de": "17. Straße", "en": "17th Street" }, ...] */
 ) : RecyclerView.Adapter<AddNameSuggestionAdapter.ViewHolder>() {
 
     var name: String
