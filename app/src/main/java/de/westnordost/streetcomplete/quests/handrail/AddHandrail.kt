@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.quests.handrail
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.osmapi.overpass.OverpassMapDataDao
+import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
 /**
@@ -13,7 +13,7 @@ import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
  * The details would only slow down the answering in a survey by requiring more thought and a more
  * complex GUI (interpreting the direction of the OSM way for example).
  */
-class AddHandrail(overpassServer: OverpassMapDataDao) : SimpleOverpassQuestType<Boolean>(overpassServer) {
+class AddHandrail(overpassServer: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<Boolean>(overpassServer) {
     // Do not include nodes and relations, even though these exist with the right tags, because
     // according to the wiki page for `highway=steps` [1] it can only be applied to ways. It also
     // does not make much sense for other types of elements and it is more likely to be a tagging

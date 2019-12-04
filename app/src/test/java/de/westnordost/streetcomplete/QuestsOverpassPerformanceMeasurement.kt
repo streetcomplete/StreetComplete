@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete
 
-import de.westnordost.osmapi.overpass.OverpassMapDataDao
+import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
 import de.westnordost.osmapi.overpass.OverpassStatus
 import de.westnordost.osmapi.overpass.OverpassStatusParser
 import de.westnordost.osmapi.ApiRequestWriter
@@ -18,13 +18,13 @@ fun main() {
 
     val overpassMapDataDao = TestOverpassMapDataDao()
 
-    val overpassMock: OverpassMapDataDao = mock()
-    on(overpassMock.getAndHandleQuota(any(), any())).then { invocation ->
+    val overpassMock: OverpassMapDataAndGeometryDao = mock()
+    on(overpassMock.query(any(), any())).then { invocation ->
         overpassMapDataDao.get(invocation.getArgument(0) as String)
         true
     }
 
-    val registry = QuestModule.questTypeRegistry(mock(), overpassMock, mock(), mock(), mock(), mock(), mock())
+    val registry = QuestModule.questTypeRegistry(mock(), overpassMock, mock(), mock(), mock(), mock())
 
     val hamburg = BoundingBox(53.5, 9.9, 53.6, 10.0)
 

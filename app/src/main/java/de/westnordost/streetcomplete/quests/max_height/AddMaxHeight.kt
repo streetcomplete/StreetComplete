@@ -3,15 +3,15 @@ package de.westnordost.streetcomplete.quests.max_height
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.osmapi.overpass.OverpassMapDataDao
-import de.westnordost.streetcomplete.data.osm.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
 import de.westnordost.streetcomplete.data.osm.tql.FiltersParser
 import de.westnordost.streetcomplete.data.osm.tql.getQuestPrintStatement
 import de.westnordost.streetcomplete.data.osm.tql.toGlobalOverpassBBox
 
-class AddMaxHeight(private val overpassServer: OverpassMapDataDao) : OsmElementQuestType<MaxHeightAnswer> {
+class AddMaxHeight(private val overpassServer: OverpassMapDataAndGeometryDao) : OsmElementQuestType<MaxHeightAnswer> {
 
     private val nodeFilter by lazy { FiltersParser().parse("""
         nodes with
@@ -48,8 +48,8 @@ class AddMaxHeight(private val overpassServer: OverpassMapDataDao) : OsmElementQ
         nodeFilter.matches(element) || wayFilter.matches(element)
 
     override fun download(bbox: BoundingBox, handler: (element: Element, geometry: ElementGeometry?) -> Unit): Boolean {
-        return overpassServer.getAndHandleQuota(getNodeOverpassQuery(bbox), handler)
-               && overpassServer.getAndHandleQuota(getWayOverpassQuery(bbox), handler)
+        return overpassServer.query(getNodeOverpassQuery(bbox), handler)
+               && overpassServer.query(getWayOverpassQuery(bbox), handler)
     }
 
     private fun getNodeOverpassQuery(bbox: BoundingBox) =

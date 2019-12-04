@@ -3,9 +3,9 @@ package de.westnordost.streetcomplete.quests.parking_fee
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.osmapi.overpass.OverpassMapDataDao
+import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
 
-class AddParkingFee(o: OverpassMapDataDao) : SimpleOverpassQuestType<FeeAnswer>(o) {
+class AddParkingFee(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<FeeAnswer>(o) {
 
     override val tagFilters = """
         nodes, ways, relations with

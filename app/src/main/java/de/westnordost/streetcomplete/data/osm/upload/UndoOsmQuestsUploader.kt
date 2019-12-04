@@ -4,7 +4,7 @@ import android.util.Log
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.data.osm.OsmQuestGiver
 import de.westnordost.streetcomplete.data.osm.UndoOsmQuest
-import de.westnordost.streetcomplete.data.osm.download.ElementGeometryCreator
+import de.westnordost.streetcomplete.data.osm.download.OsmApiElementGeometryCreator
 import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao
 import javax.inject.Inject
 
@@ -21,11 +21,11 @@ class UndoOsmQuestsUploader @Inject constructor(
     changesetManager: OpenQuestChangesetsManager,
     questGiver: OsmQuestGiver,
     statisticsDB: QuestStatisticsDao,
-    elementGeometryCreator: ElementGeometryCreator,
+    osmApiElementGeometryCreator: OsmApiElementGeometryCreator,
     private val undoQuestDB: UndoOsmQuestDao,
     private val singleChangeUpload: SingleOsmElementTagChangesUpload
 ) : OsmInChangesetsUploader<UndoOsmQuest>(elementDB, elementGeometryDB, changesetManager, questGiver,
-    statisticsDB, elementGeometryCreator) {
+    statisticsDB, osmApiElementGeometryCreator) {
 
     private val TAG = "UndoOsmQuestUpload"
 

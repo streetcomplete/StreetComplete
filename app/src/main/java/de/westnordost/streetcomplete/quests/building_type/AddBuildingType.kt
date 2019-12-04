@@ -3,9 +3,9 @@ package de.westnordost.streetcomplete.quests.building_type
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.osmapi.overpass.OverpassMapDataDao
+import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
 
-class AddBuildingType (o: OverpassMapDataDao) : SimpleOverpassQuestType<String>(o) {
+class AddBuildingType (o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<String>(o) {
 
     // in the case of man_made, historic, military and power, these tags already contain
     // information about the purpose of the building, so no need to force asking it

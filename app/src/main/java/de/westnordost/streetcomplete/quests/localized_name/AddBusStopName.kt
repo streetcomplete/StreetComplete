@@ -3,9 +3,9 @@ package de.westnordost.streetcomplete.quests.localized_name
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.osmapi.overpass.OverpassMapDataDao
+import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
 
-class AddBusStopName(o: OverpassMapDataDao) : SimpleOverpassQuestType<BusStopNameAnswer>(o) {
+class AddBusStopName(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<BusStopNameAnswer>(o) {
 
     override val tagFilters = """
         nodes with

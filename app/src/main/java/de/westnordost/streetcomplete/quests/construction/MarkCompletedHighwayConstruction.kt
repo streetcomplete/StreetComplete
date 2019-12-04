@@ -4,15 +4,15 @@ import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.OsmTaggings
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.osmapi.overpass.OverpassMapDataDao
 import de.westnordost.streetcomplete.data.osm.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
 import de.westnordost.streetcomplete.data.osm.tql.getQuestPrintStatement
 import de.westnordost.streetcomplete.data.osm.tql.toGlobalOverpassBBox
 import de.westnordost.streetcomplete.quests.DateUtil
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
-open class MarkCompletedHighwayConstruction(private val overpass: OverpassMapDataDao)
+open class MarkCompletedHighwayConstruction(private val overpass: OverpassMapDataAndGeometryDao)
     : AMarkCompletedConstruction<Boolean>() {
 
     override val commitMessage = "Determine whether construction is now completed"
@@ -35,7 +35,7 @@ open class MarkCompletedHighwayConstruction(private val overpass: OverpassMapDat
     override fun isApplicableTo(element: Element) = null
 
     override fun download(bbox: BoundingBox, handler: (element: Element, geometry: ElementGeometry?) -> Unit): Boolean {
-        return overpass.getAndHandleQuota(getOverpassQuery(bbox), handler)
+        return overpass.query(getOverpassQuery(bbox), handler)
     }
 
     /** @return overpass query string to get streets marked as under construction but excluding ones

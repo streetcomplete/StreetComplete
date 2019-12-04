@@ -3,9 +3,9 @@ package de.westnordost.streetcomplete.quests.tactile_paving
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.osmapi.overpass.OverpassMapDataDao
+import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
 
-class AddTactilePavingBusStop(o: OverpassMapDataDao) : SimpleOverpassQuestType<Boolean>(o) {
+class AddTactilePavingBusStop(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<Boolean>(o) {
 
     override val tagFilters = """
         nodes, ways with

@@ -3,10 +3,10 @@ package de.westnordost.streetcomplete.quests.tactile_paving
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.osmapi.overpass.OverpassMapDataDao
+import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
 import de.westnordost.streetcomplete.data.osm.NoCountriesExcept
 
-class AddTactilePavingCrosswalk(o: OverpassMapDataDao) : SimpleOverpassQuestType<Boolean>(o) {
+class AddTactilePavingCrosswalk(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<Boolean>(o) {
 
     override val tagFilters = "nodes with highway = crossing and !tactile_paving and foot != no"
     override val commitMessage = "Add tactile pavings on crosswalks"

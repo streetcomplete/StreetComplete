@@ -72,6 +72,16 @@ repositories {
     maven { url "https://jitpack.io" }
 }
 
+configurations {
+    // it's already included in Android
+    all*.exclude group: 'net.sf.kxml', module: 'kxml2'
+
+    cleanedAnnotations
+    compile.exclude group: 'org.jetbrains', module:'annotations'
+    compile.exclude group: 'com.intellij', module:'annotations'
+    compile.exclude group: 'org.intellij', module:'annotations'
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
@@ -117,18 +127,16 @@ dependencies {
     // scheduling background jobs
     implementation 'android.arch.work:work-runtime:1.0.1'
 
-    // geometry
+    // finding in which country we are for country-specific logic
     implementation 'de.westnordost:countryboundaries:1.5'
-
-    // dictionary of OSM map features
+    // finding a name for a feature without a name tag
     implementation 'de.westnordost:osmfeatures-android:1.0'
-
-    // talking with OSM Api
-    implementation 'oauth.signpost:signpost-core:1.2.1.2'
-    implementation ('de.westnordost:osmapi:3.4') {
-        // it's already included in Android
-        exclude group: 'net.sf.kxml', module: 'kxml2'
-    }
+    // talking with the OSM API
+    implementation 'de.westnordost:osmapi-overpass:1.0'
+    implementation 'de.westnordost:osmapi-map:1.1'
+    implementation 'de.westnordost:osmapi-changesets:1.1'
+    implementation 'de.westnordost:osmapi-notes:1.0'
+    implementation 'de.westnordost:osmapi-user:1.0'
 
     // widgets
     implementation 'me.grantland:autofittextview:0.2.1'

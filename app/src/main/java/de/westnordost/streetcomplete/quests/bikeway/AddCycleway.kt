@@ -4,17 +4,17 @@ import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.OsmTaggings
+import de.westnordost.streetcomplete.data.osm.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.osmapi.overpass.OverpassMapDataDao
-import de.westnordost.streetcomplete.data.osm.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.NoCountriesExcept
+import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
 import de.westnordost.streetcomplete.data.osm.tql.getQuestPrintStatement
 import de.westnordost.streetcomplete.data.osm.tql.toGlobalOverpassBBox
 
 import de.westnordost.streetcomplete.quests.bikeway.Cycleway.*
 
-class AddCycleway(private val overpassServer: OverpassMapDataDao) : OsmElementQuestType<CyclewayAnswer> {
+class AddCycleway(private val overpassServer: OverpassMapDataAndGeometryDao) : OsmElementQuestType<CyclewayAnswer> {
 
     override val commitMessage = "Add whether there are cycleways"
     override val icon = R.drawable.ic_quest_bicycleway
@@ -54,7 +54,7 @@ class AddCycleway(private val overpassServer: OverpassMapDataDao) : OsmElementQu
     override fun isApplicableTo(element: Element):Boolean? = null
 
     override fun download(bbox: BoundingBox, handler: (element: Element, geometry: ElementGeometry?) -> Unit): Boolean {
-        return overpassServer.getAndHandleQuota(getOverpassQuery(bbox), handler)
+        return overpassServer.query(getOverpassQuery(bbox), handler)
     }
 
     /** returns overpass query string to get streets without cycleway info not near paths for

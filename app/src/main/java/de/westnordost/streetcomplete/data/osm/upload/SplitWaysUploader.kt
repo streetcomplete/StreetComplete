@@ -5,7 +5,7 @@ import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.Way
 import de.westnordost.streetcomplete.data.osm.OsmQuestGiver
 import de.westnordost.streetcomplete.data.osm.OsmQuestSplitWay
-import de.westnordost.streetcomplete.data.osm.download.ElementGeometryCreator
+import de.westnordost.streetcomplete.data.osm.download.OsmApiElementGeometryCreator
 import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao
 import de.westnordost.streetcomplete.data.osm.persist.MergedElementDao
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestSplitWayDao
@@ -20,11 +20,11 @@ class SplitWaysUploader @Inject constructor(
     changesetManager: OpenQuestChangesetsManager,
     questGiver: OsmQuestGiver,
     statisticsDB: QuestStatisticsDao,
-    elementGeometryCreator: ElementGeometryCreator,
+    osmApiElementGeometryCreator: OsmApiElementGeometryCreator,
     private val splitWayDB: OsmQuestSplitWayDao,
     private val splitSingleOsmWayUpload: SplitSingleWayUpload
 ) : OsmInChangesetsUploader<OsmQuestSplitWay>(elementDB, elementGeometryDB, changesetManager,
-    questGiver, statisticsDB, elementGeometryCreator) {
+    questGiver, statisticsDB, osmApiElementGeometryCreator) {
 
     private val TAG = "SplitOsmWayUpload"
 

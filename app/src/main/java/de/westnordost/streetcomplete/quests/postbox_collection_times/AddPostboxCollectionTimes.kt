@@ -3,10 +3,10 @@ package de.westnordost.streetcomplete.quests.postbox_collection_times
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.osmapi.overpass.OverpassMapDataDao
+import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
 import de.westnordost.streetcomplete.data.osm.NoCountriesExcept
 
-class AddPostboxCollectionTimes(o: OverpassMapDataDao) : SimpleOverpassQuestType<CollectionTimesAnswer>(o) {
+class AddPostboxCollectionTimes(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<CollectionTimesAnswer>(o) {
 
     override val tagFilters = """
         nodes with amenity=post_box and !collection_times

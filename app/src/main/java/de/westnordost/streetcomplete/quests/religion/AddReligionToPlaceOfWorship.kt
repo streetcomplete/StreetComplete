@@ -3,9 +3,9 @@ package de.westnordost.streetcomplete.quests.religion
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.osmapi.overpass.OverpassMapDataDao
+import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
 
-class AddReligionToPlaceOfWorship(o: OverpassMapDataDao) : SimpleOverpassQuestType<String>(o) {
+class AddReligionToPlaceOfWorship(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<String>(o) {
 
     override val tagFilters =
         "nodes, ways, relations with amenity=place_of_worship and !religion and name"

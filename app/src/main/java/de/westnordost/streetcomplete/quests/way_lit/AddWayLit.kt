@@ -3,9 +3,9 @@ package de.westnordost.streetcomplete.quests.way_lit
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.osmapi.overpass.OverpassMapDataDao
+import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
 
-class AddWayLit(o: OverpassMapDataDao) : SimpleOverpassQuestType<String>(o) {
+class AddWayLit(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<String>(o) {
 
     /* Using sidewalk as a tell-tale tag for (urban) streets which reached a certain level of
        development. I.e. non-urban streets will usually not even be lit in industrialized

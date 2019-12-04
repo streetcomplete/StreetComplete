@@ -7,39 +7,24 @@ import java.io.File;
 import java.util.Arrays;
 import java.util.List;
 
-import javax.inject.Provider;
 import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import de.westnordost.osmapi.overpass.OverpassMapDataDao;
 import de.westnordost.osmapi.user.UserDao;
 import de.westnordost.streetcomplete.ApplicationConstants;
 import de.westnordost.streetcomplete.Prefs;
-import de.westnordost.streetcomplete.data.osm.OsmQuestGiver;
 import de.westnordost.streetcomplete.data.osm.download.ElementGeometryCreator;
-import de.westnordost.streetcomplete.data.osm.download.OsmApiWayGeometrySource;
-import de.westnordost.osmapi.overpass.OverpassOldMapDataDao;
-import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao;
-import de.westnordost.streetcomplete.data.osm.persist.MergedElementDao;
-import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
-import de.westnordost.streetcomplete.data.osm.persist.OsmQuestSplitWayDao;
-import de.westnordost.streetcomplete.data.osm.persist.UndoOsmQuestDao;
-import de.westnordost.streetcomplete.data.osm.upload.OpenQuestChangesetsManager;
 import de.westnordost.streetcomplete.data.osm.upload.OsmQuestsUploader;
-import de.westnordost.streetcomplete.data.osm.upload.SingleOsmElementTagChangesUpload;
-import de.westnordost.streetcomplete.data.osm.upload.SplitSingleWayUpload;
 import de.westnordost.streetcomplete.data.osm.upload.SplitWaysUploader;
 import de.westnordost.streetcomplete.data.osm.upload.UndoOsmQuestsUploader;
 import de.westnordost.streetcomplete.data.osmnotes.CreateNotesUploader;
 import de.westnordost.streetcomplete.data.osmnotes.OsmAvatarsDownload;
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestsChangesUploader;
-import de.westnordost.streetcomplete.data.statistics.QuestStatisticsDao;
-import de.westnordost.streetcomplete.data.tiles.DownloadedTilesDao;
 import de.westnordost.streetcomplete.data.upload.Uploader;
 import de.westnordost.streetcomplete.data.upload.VersionIsBannedChecker;
 import de.westnordost.streetcomplete.oauth.OAuthPrefs;
-import de.westnordost.osmapi.overpass.OverpassMapDataDao;
-import de.westnordost.osmapi.overpass.OverpassMapDataParser;
 import de.westnordost.osmapi.OsmConnection;
 import de.westnordost.osmapi.changesets.ChangesetsDao;
 import de.westnordost.osmapi.map.MapDataDao;
@@ -82,32 +67,24 @@ public class OsmModule
 	// or maybe a bit late response rather than trigger timeout exception
 	private static int OVERPASS_QUERY_TIMEOUT_IN_MILISECONDS = (180 + 4) * 1000;
 
-	@Provides public static OverpassMapDataDao overpassMapDataDao(
-			Provider<OverpassMapDataParser> parserProvider, SharedPreferences prefs)
-	{
+	@Provides public static OverpassMapDataDao overpassMapDataDao(SharedPreferences prefs) {
 		Integer timeout = OVERPASS_QUERY_TIMEOUT_IN_MILISECONDS;
 		OsmConnection overpassConnection = new OsmConnection(
-			prefs.getString(Prefs.OVERPASS_URL, OVERPASS_API_WITH_ATTIC_DATA_URL), ApplicationConstants.USER_AGENT, null, timeout);
-		return new OverpassMapDataDao(overpassConnection, parserProvider);
+			prefs.getString(Prefs.OVERPASS_URL, OVERPASS_API_WITH_ATTIC_DATA_URL),
+			ApplicationConstants.USER_AGENT,
+			null,
+			timeout);
+		return new OverpassMapDataDao(overpassConnection);
 	}
 
-	@Provides public static OverpassOldMapDataDao overpassOldMapDataDao(
-		Provider<OverpassMapDataParser> parserProvider, String date)
+	@Provides public static ElementGeometryCreator elementGeometryCreator()
 	{
-		Integer timeout = OVERPASS_QUERY_TIMEOUT_IN_MILISECONDS;
-		OsmConnection overpassConnection = new OsmConnection(
-			OVERPASS_API_WITH_ATTIC_DATA_URL, ApplicationConstants.USER_AGENT, null, timeout);
-		return new OverpassOldMapDataDao(overpassConnection, parserProvider, date);
+		return new ElementGeometryCreator();
 	}
 
 	@Provides public static TrafficFlowSegmentsDao trafficFlowSegmentsDao()
 	{
 		return new TrafficFlowSegmentsDao(ONEWAY_API_URL);
-	}
-
-	@Provides public static OverpassMapDataParser overpassMapDataParser()
-	{
-		return new OverpassMapDataParser(new OsmMapDataFactory());
 	}
 
 	@Provides public static ChangesetsDao changesetsDao(OsmConnection osm)
@@ -128,35 +105,6 @@ public class OsmModule
 	@Provides public static MapDataDao mapDataDao(OsmConnection osm)
 	{
 		return new MapDataDao(osm);
-	}
-
-	@Provides public static OsmQuestsUploader osmQuestsUpload(
-		MergedElementDao elementDB, ElementGeometryDao elementGeometryDB,
-		OpenQuestChangesetsManager changesetManager, OsmQuestGiver questGiver,
-		QuestStatisticsDao statisticsDB, OsmApiWayGeometrySource wayGeometrySource,
-		OsmQuestDao questDB, SingleOsmElementTagChangesUpload singleChangeUpload,
-		DownloadedTilesDao downloadedTilesDao) {
-		return new OsmQuestsUploader(elementDB, elementGeometryDB, changesetManager, questGiver,
-			statisticsDB, new ElementGeometryCreator(wayGeometrySource), questDB,
-			singleChangeUpload, downloadedTilesDao);
-	}
-
-	@Provides public static UndoOsmQuestsUploader undoOsmQuestsUpload(
-		MergedElementDao elementDB, ElementGeometryDao elementGeometryDB,
-		OpenQuestChangesetsManager changesetManager, OsmQuestGiver questGiver,
-		QuestStatisticsDao statisticsDB, OsmApiWayGeometrySource wayGeometrySource,
-		UndoOsmQuestDao questDB, SingleOsmElementTagChangesUpload singleChangeUpload) {
-		return new UndoOsmQuestsUploader(elementDB, elementGeometryDB, changesetManager, questGiver,
-			statisticsDB, new ElementGeometryCreator(wayGeometrySource), questDB, singleChangeUpload);
-	}
-
-	@Provides public static SplitWaysUploader splitWaysUpload(
-		MergedElementDao elementDB, ElementGeometryDao elementGeometryDB,
-		OpenQuestChangesetsManager changesetManager, OsmQuestGiver questGiver,
-		QuestStatisticsDao statisticsDB, OsmApiWayGeometrySource wayGeometrySource,
-		OsmQuestSplitWayDao questDB, SplitSingleWayUpload singleUpload) {
-		return new SplitWaysUploader(elementDB, elementGeometryDB, changesetManager, questGiver,
-			statisticsDB, new ElementGeometryCreator(wayGeometrySource), questDB, singleUpload);
 	}
 
 	@Provides public static OsmAvatarsDownload avatarsDownload(UserDao userDao, Context context)

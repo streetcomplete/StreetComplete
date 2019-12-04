@@ -7,7 +7,7 @@ import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.osmapi.overpass.OverpassMapDataDao
+import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
 import de.westnordost.streetcomplete.data.osm.*
 import de.westnordost.streetcomplete.data.osm.tql.DEFAULT_MAX_QUESTS
 import de.westnordost.streetcomplete.data.osm.tql.toGlobalOverpassBBox
@@ -16,7 +16,7 @@ import de.westnordost.streetcomplete.util.FlattenIterable
 import de.westnordost.streetcomplete.util.LatLonRaster
 import de.westnordost.streetcomplete.util.SphericalEarthMath
 
-class AddHousenumber(private val overpass: OverpassMapDataDao) : OsmElementQuestType<HousenumberAnswer> {
+class AddHousenumber(private val overpass: OverpassMapDataAndGeometryDao) : OsmElementQuestType<HousenumberAnswer> {
 
     override val commitMessage = "Add housenumbers"
     override val icon = R.drawable.ic_quest_housenumber
@@ -91,7 +91,7 @@ class AddHousenumber(private val overpass: OverpassMapDataDao) : OsmElementQuest
     private fun downloadBuildingsWithoutAddresses(bbox: BoundingBox): MutableMap<LatLon, ElementWithGeometry>? {
         val buildingsByCenterPoint = mutableMapOf<LatLon, ElementWithGeometry>()
         val query = getBuildingsWithoutAddressesOverpassQuery(bbox)
-        val success = overpass.getAndHandleQuota(query) { element, geometry ->
+        val success = overpass.query(query) { element, geometry ->
             if (geometry is ElementPolygonsGeometry) {
                 buildingsByCenterPoint[geometry.center] = ElementWithGeometry(element, geometry)
             }
@@ -102,7 +102,7 @@ class AddHousenumber(private val overpass: OverpassMapDataDao) : OsmElementQuest
     private fun downloadFreeFloatingPositionsWithAddresses(bbox: BoundingBox): LatLonRaster? {
         val grid = LatLonRaster(bbox, 0.0005)
         val query = getFreeFloatingAddressesOverpassQuery(bbox)
-        val success = overpass.getAndHandleQuota(query) { _, geometry ->
+        val success = overpass.query(query) { _, geometry ->
             if (geometry != null) grid.insert(geometry.center)
         }
         return if (success) grid else null
@@ -111,7 +111,7 @@ class AddHousenumber(private val overpass: OverpassMapDataDao) : OsmElementQuest
     private fun downloadAreasWithAddresses(bbox: BoundingBox): List<ElementPolygonsGeometry>? {
         val areas = mutableListOf<ElementPolygonsGeometry>()
         val query = getNonBuildingAreasWithAddressesOverpassQuery(bbox)
-        val success = overpass.getAndHandleQuota(query) { _, geometry ->
+        val success = overpass.query(query) { _, geometry ->
             if (geometry is ElementPolygonsGeometry) areas.add(geometry)
         }
         return if (success) areas else null

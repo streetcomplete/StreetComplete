@@ -8,7 +8,7 @@ import de.westnordost.streetcomplete.data.VisibleQuestListener
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.OsmQuest
 import de.westnordost.streetcomplete.data.osm.OsmQuestGiver
-import de.westnordost.streetcomplete.data.osm.download.ElementGeometryCreator
+import de.westnordost.streetcomplete.data.osm.download.OsmApiElementGeometryCreator
 import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao
 import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryEntry
 import de.westnordost.streetcomplete.data.osm.persist.MergedElementDao
@@ -24,7 +24,7 @@ abstract class OsmInChangesetsUploader<T : UploadableInChangeset>(
     private val changesetManager: OpenQuestChangesetsManager,
     private val questGiver: OsmQuestGiver,
     private val statisticsDB: QuestStatisticsDao,
-    private val elementGeometryCreator: ElementGeometryCreator
+    private val osmApiElementGeometryCreator: OsmApiElementGeometryCreator
     ): Uploader {
 
     override var visibleQuestListener: VisibleQuestListener? = null
@@ -85,7 +85,7 @@ abstract class OsmInChangesetsUploader<T : UploadableInChangeset>(
     }
 
     private fun updateElement(newElement: Element): OsmQuestGiver.QuestUpdates {
-        val geometry = elementGeometryCreator.create(newElement)
+        val geometry = osmApiElementGeometryCreator.create(newElement)
         if (geometry != null) {
             elementGeometryDB.put(ElementGeometryEntry(newElement.type, newElement.id, geometry))
             elementDB.put(newElement)
