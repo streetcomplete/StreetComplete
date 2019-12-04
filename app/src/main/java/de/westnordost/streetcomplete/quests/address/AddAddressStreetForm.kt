@@ -6,6 +6,7 @@ import android.provider.Settings
 import android.text.Html
 import android.view.Menu
 import android.view.View
+import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.PopupMenu
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -151,8 +152,8 @@ class AddAddressStreetForm : AbstractQuestFormAnswerFragment<AddressStreetAnswer
         val buttonNameSuggestions : View = view.findViewById(R.id.nameSuggestionsButton)
         buttonNameSuggestions.setOnClickListener { v ->
             showNameSuggestionsMenu(v, listOf("dummy", "trololol")) { selected -> ;
-                //name = selected
-                //notifyDataSetChanged()
+                val textField : EditText = view.findViewById(R.id.namesList)
+                textField.setText(selected)
             }
         }
 
