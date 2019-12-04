@@ -72,7 +72,7 @@ object OpeningHoursTagParser {
     private fun getIndexOfOurMonthsRow(monthRows: List<OpeningMonthsRow>, startMonth: Int, endMonth: Int): Int {
         for ((index, row) in monthRows.withIndex()) {
             if (row.months.start == startMonth) {
-                if (row.months.start == endMonth) {
+                if (row.months.end == endMonth) {
                     return index
                 }
             }
