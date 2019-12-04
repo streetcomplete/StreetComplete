@@ -51,16 +51,16 @@ class AddNameSuggestionAdapter(
     override fun getItemCount() = 1 // what if name is null TODO
 
     /** Show a context menu above the given [view] where the user can select one key from the
-     * [NameSuggestionsMap]. The value of the selected key will be passed to the
+     * [nameSuggestionsList]. The value of the selected key will be passed to the
      * [callback] */
     private fun showNameSuggestionsMenu(
             view: View,
-            NameSuggestionList: List<String>,
+            nameSuggestionList: List<String>,
             callback: (String) -> Unit
     ) {
         val popup = PopupMenu(context, view)
 
-        for ((i, key) in NameSuggestionList.withIndex()) {
+        for ((i, key) in nameSuggestionList.withIndex()) {
             popup.menu.add(NONE, i, NONE, key)
         }
 
