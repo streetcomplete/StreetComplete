@@ -3,14 +3,11 @@ package de.westnordost.streetcomplete.quests.address
 import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings
-import android.text.Html
 import android.view.Menu
 import android.view.View
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.PopupMenu
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
@@ -19,22 +16,18 @@ import de.westnordost.streetcomplete.data.osm.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.ktx.toObject
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.quests.localized_name.data.RoadNameSuggestionsDao
-import de.westnordost.streetcomplete.util.AdapterDataChangedWatcher
 import de.westnordost.streetcomplete.util.Serializer
-import kotlinx.android.synthetic.main.quest_streetname.namesList
-import java.util.*
+import de.westnordost.streetcomplete.util.TextChangedWatcher
 import javax.inject.Inject
 
 class AddAddressStreetForm : AbstractQuestFormAnswerFragment<AddressStreetAnswer>() {
+    private var textField: EditText? = null
     private var isPlacename = false
 
     private val serializer: Serializer
-
-    protected lateinit var adapter: AddNameSuggestionAdapter
 
     init {
         val fields = InjectedFields()
@@ -43,7 +36,7 @@ class AddAddressStreetForm : AbstractQuestFormAnswerFragment<AddressStreetAnswer
     }
 
     override fun onClickOk() {
-        onClickOk(adapter.name)
+        onClickOk(textField!!.text.toString())
     }
 
     fun onClickOk(name: String) {
@@ -69,31 +62,23 @@ class AddAddressStreetForm : AbstractQuestFormAnswerFragment<AddressStreetAnswer
         Injector.instance.applicationComponent.inject(this)
     }
 
-    fun setupNameAdapter(data: List<Name>): AddNameSuggestionAdapter {
-        return AddNameSuggestionAdapter(
-                data, activity!!, getRoadNameSuggestions()
-        )
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initLocalizedNameAdapter(savedInstanceState)
-    }
-
-    private fun initLocalizedNameAdapter(savedInstanceState: Bundle?) {
-        val data: ArrayList<Name> = if (savedInstanceState != null) {
-            serializer.toObject(savedInstanceState.getByteArray(NAMES_DATA)!!)
-        } else {
-            ArrayList()
+        val view = getView()
+        val buttonNameSuggestions : View = view!!.findViewById(R.id.nameSuggestionsButton)
+        val nameSuggestionsMap = getRoadNameSuggestions()
+        val nameSuggestionsList = mutableListOf<String>()
+        for (NameSuggestion in nameSuggestionsMap) {
+            val name = NameSuggestion[""] ?: continue // just default language names
+            nameSuggestionsList += name
         }
-
-        adapter = setupNameAdapter(data)
-        adapter.addOnNameChangedListener { checkIsFormComplete() }
-        adapter.registerAdapterDataObserver(AdapterDataChangedWatcher { checkIsFormComplete() })
-        namesList.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
-        namesList.adapter = adapter
-        namesList.isNestedScrollingEnabled = false
-        checkIsFormComplete()
+        textField = view.findViewById(R.id.name)
+        buttonNameSuggestions.setOnClickListener { v ->
+            showNameSuggestionsMenu(v, nameSuggestionsList) { selected -> ;
+                textField!!.setText(selected)
+            }
+        }
+        textField!!.addTextChangedListener(TextChangedWatcher { checkIsFormComplete() })
     }
 
     protected fun getPossibleStreetsignLanguages(): List<String> {
@@ -105,7 +90,7 @@ class AddAddressStreetForm : AbstractQuestFormAnswerFragment<AddressStreetAnswer
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        val serializedName = serializer.toBytes(adapter.name)
+        val serializedName = serializer.toBytes(textField!!.text.toString())
         outState.putByteArray(NAMES_DATA, serializedName)
     }
 
@@ -150,20 +135,15 @@ class AddAddressStreetForm : AbstractQuestFormAnswerFragment<AddressStreetAnswer
     private fun setLayout(layoutResourceId: Int) {
         val view = setContentView(layoutResourceId)
         val buttonNameSuggestions : View = view.findViewById(R.id.nameSuggestionsButton)
+        textField = view.findViewById(R.id.name)
         buttonNameSuggestions.setOnClickListener { v ->
             showNameSuggestionsMenu(v, listOf("dummy", "trololol")) { selected -> ;
-                val textField : EditText = view.findViewById(R.id.namesList)
-                textField.setText(selected)
+                textField!!.setText(selected)
             }
         }
+        textField!!.addTextChangedListener(TextChangedWatcher { checkIsFormComplete() })
 
         /*
-        houseNumberInput = view.findViewById(R.id.houseNumberInput)
-        houseNameInput = view.findViewById(R.id.houseNameInput)
-        conscriptionNumberInput = view.findViewById(R.id.conscriptionNumberInput)
-        streetNumberInput = view.findViewById(R.id.streetNumberInput)
-        blockNumberInput = view.findViewById(R.id.blockNumberInput)
-
         val onChanged = TextChangedWatcher { checkIsFormComplete() }
         houseNumberInput?.addTextChangedListener(onChanged)
         houseNameInput?.addTextChangedListener(onChanged)
@@ -196,7 +176,7 @@ class AddAddressStreetForm : AbstractQuestFormAnswerFragment<AddressStreetAnswer
     }
 
     // all added name rows are not empty
-    override fun isFormComplete() = adapter.name.trim() != ""
+    override fun isFormComplete() = textField!!.text.toString().trim() != ""
 
 
     internal class InjectedFields {
@@ -208,7 +188,7 @@ class AddAddressStreetForm : AbstractQuestFormAnswerFragment<AddressStreetAnswer
     }
 
     /** Show a context menu above the given [view] where the user can select one key from the
-     * [NameSuggestionsMap]. The value of the selected key will be passed to the
+     * [nameSuggestionList]. The value of the selected key will be passed to the
      * [callback] */
     private fun showNameSuggestionsMenu(
             view: View,

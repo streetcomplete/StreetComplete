@@ -6,8 +6,25 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
+    <EditText
+        android:id="@+id/name"
+        android:textSize="40sp"
+        tools:text="Ochotnica Górna"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+    <ImageView
+        android:id="@+id/nameSuggestionsButton"
+        style="@style/Base.Widget.AppCompat.Button.Borderless"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_arrow_drop_down_white_24dp"
+        android:layout_toEndOf="@+id/namesList"
+        android:layout_centerVertical="true"
+        android:tint="#000000"
+        />
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/namesList"
+        android:id="@+id/nameOld"
         android:background="@drawable/background_roadname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
