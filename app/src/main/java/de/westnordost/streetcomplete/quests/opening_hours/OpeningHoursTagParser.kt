@@ -456,7 +456,7 @@ object OpeningHoursTagParser {
         }
     }
 
-    // turns frmat returned by opening hours editing widget into an OSM tag
+    // turns format returned by opening hours editing widget into an OSM tag
     fun internalIntoTag(openingHours: List<OpeningMonths>): String {
         return openingHours.joinToString(";")
     }
