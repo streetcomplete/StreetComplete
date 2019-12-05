@@ -56,6 +56,16 @@ class ResurveyOpeningHours(private val overpassServer: OverpassMapDataDao) : Osm
             """.trimIndent() + getQuestPrintStatement()
     }
 
+    /** Technically, it is possible to run a check using element.timestamp and element.tags, but...
+     * Checking timestamp will fail any check with recent edit - including undo and adding other tags
+     * So, implementing isApplicableTo would never cause this quest to appear, including after undos
+     * and may it cause to disappear when it would be not desirable.
+     *
+     * For example POI with name and opening_hours tags, not edited for a long time would stop matching
+     * after adding unrelated tags like wheelchair.
+     *
+     * And not checking timestamp would cause it to appear after, for example, adding opening_hours tag
+     */
     override fun isApplicableTo(element: Element): Boolean? = null
 
     override fun createForm() = ResurveyOpeningHoursForm()
