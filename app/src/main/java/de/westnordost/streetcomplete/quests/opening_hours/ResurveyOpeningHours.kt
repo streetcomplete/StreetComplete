@@ -17,9 +17,6 @@ class ResurveyOpeningHours(private val overpassServer: OverpassMapDataDao) : Osm
     override val commitMessage = "resurvey opening hours"
     override val icon = R.drawable.ic_quest_opening_hours
     override fun getTitle(tags: Map<String, String>) = R.string.resurvey_opening_hours_title
-    override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> {
-        return arrayOf(tags["name"]!!)
-    }
 
     override fun download(bbox: BoundingBox, handler: MapDataWithGeometryHandler): Boolean {
         return overpassServer.getAndHandleQuota(getOverpassQuery(bbox)) { element, geometry ->
