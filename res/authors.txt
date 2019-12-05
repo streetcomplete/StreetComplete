@@ -160,6 +160,8 @@ quest_icons.svg
     wheelchair
     wheelchair_shop
 
+quest_pin.xcf
+
 railway_crossing_double_half.svg (c) 2018 ServusWorld - License: CC0
 railway_crossing_full.svg        (c) 2018 ServusWorld - License: CC0
 railway_crossing_half.svg        (c) 2018 ServusWorld - License: CC0
@@ -197,11 +199,21 @@ religion_icons.svg
     chinese                      https://commons.wikimedia.org/wiki/File:Chinese_lu_symbol_-_%E7%A6%84.svg
     caodai
 
+roadtype_dual_carriageway.svg
+roadtype_lit.svg
+roadtype_lit_no.svg
+roadtype_urban.svg
+
 scissors.svg
 
 slow_zone.svg
 
 slow_zone_us.svg
+
+speech_bubble_left.9.svg
+speech_bubble_none.9.png
+speech_bubble_none.9.svg
+speech_bubble_top.9.svg
 
 sport_icons.svg
     american_football
