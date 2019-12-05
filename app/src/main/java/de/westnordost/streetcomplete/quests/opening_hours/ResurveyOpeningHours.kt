@@ -32,32 +32,21 @@ class ResurveyOpeningHours(private val overpassServer: OverpassMapDataDao) : Osm
         }
     }
 
+    /** Note that 'newer:' query part will ensure that any edit,
+     * including adding or updating review marker like check_date or survey:date tags
+     * will cause OSM elements to become ineligible for this quest for reviewIntervalInDays days.
+     * It allows supporting check_date and any other survey markers without parsing of any tags.
+     * In addition, objects where tag was surveyed and confirmed to be correct by adding check_date:opening_hours
+     * are with larger delay, as it means this info on this specific object is relatively stable
+     */
     private fun getOverpassQuery(bbox: BoundingBox): String {
-        val groupName = ".old_opening_hours"
-        val nodeGroupName = groupName + "_nodes"
-        val wayGroupName = groupName + "_ways"
-        val relationGroupName = groupName + "_relations"
         val reviewIntervalInDays = 380
-        return bbox.toGlobalOverpassBBox() + "\n" +
-                getQueryPart("node", nodeGroupName, reviewIntervalInDays) +
-                getQueryPart("way", wayGroupName, reviewIntervalInDays) +
-                getQueryPart("relation", relationGroupName, reviewIntervalInDays) +
-                "($nodeGroupName; $wayGroupName; $relationGroupName;);\n" +
-                getQuestPrintStatement()
+        return bbox.toGlobalOverpassBBox() + """
+            nwr[name][opening_hours]['opening_hours:signed'!='no'](if:!is_date(t['check_date:opening_hours']) || date(t['check_date:opening_hours']) < date('${DateUtil.getOffsetDateString(-reviewIntervalInDays * 3)}T00:00:00Z')) -> .old_opening_hours_tag;
+            nwr[name][opening_hours](newer: '${DateUtil.getOffsetDateString(-reviewIntervalInDays)}T00:00:00Z') -> .recently_edited_objects_with_opening_hours;
+            (.old_opening_hours_tag; - .recently_edited_objects_with_opening_hours;);
+            """.trimIndent() + getQuestPrintStatement()
     }
-
-    // Note that newer segment will ensure that any edit,
-    // including adding or updating review marker like check_date or survey:date tags
-    // will cause OSM elements to become ineligible for this quest for reviewIntervalInDays days.
-    // It allows supporting check_date and any other survey markers without parsing of any tags.
-    //
-    // objects where tag was surveyed and confirmed to be correct by adding check_date tags
-    // are with larger delay, as it means this info on this specific object is relatively stable
-    protected fun getQueryPart(objectType: String, nameOfGeneratedGroup: String, reviewIntervalInDays: Int) =
-            "$objectType[name][opening_hours]['opening_hours:signed'!='no'](if:!is_date(t['check_date:opening_hours']) || date(t['check_date:opening_hours']) < " +
-                    "date('${DateUtil.getOffsetDateString(-reviewIntervalInDays * 3)}T00:00:00Z')) -> .old_opening_hours_tag;\n" +
-                    "$objectType[name][opening_hours](newer: '${DateUtil.getOffsetDateString(-reviewIntervalInDays)}T00:00:00Z') -> .recently_edited_objects_with_opening_hours;\n" +
-                    "(.old_opening_hours_tag; - .recently_edited_objects_with_opening_hours;)-> $nameOfGeneratedGroup;\n"
 
     override fun isApplicableTo(element: Element) = null
 
