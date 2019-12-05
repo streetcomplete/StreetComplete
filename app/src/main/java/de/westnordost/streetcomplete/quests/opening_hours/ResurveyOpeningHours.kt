@@ -41,9 +41,17 @@ class ResurveyOpeningHours(private val overpassServer: OverpassMapDataDao) : Osm
      */
     private fun getOverpassQuery(bbox: BoundingBox): String {
         val reviewIntervalInDays = 380
+        val date = "'${DateUtil.getOffsetDateString(-reviewIntervalInDays * 3)}T00:00:00Z'"
+        val dateTrippledTime = "'${DateUtil.getOffsetDateString(-reviewIntervalInDays * 3)}T00:00:00Z'"
         return bbox.toGlobalOverpassBBox() + """
-            nwr[name][opening_hours]['opening_hours:signed'!='no'](if:!is_date(t['check_date:opening_hours']) || date(t['check_date:opening_hours']) < date('${DateUtil.getOffsetDateString(-reviewIntervalInDays * 3)}T00:00:00Z')) -> .old_opening_hours_tag;
-            nwr[name][opening_hours](newer: '${DateUtil.getOffsetDateString(-reviewIntervalInDays)}T00:00:00Z') -> .recently_edited_objects_with_opening_hours;
+            nwr[name][opening_hours]['opening_hours:signed'!='no']
+                (if:
+                    !is_date(t['check_date:opening_hours']) ||
+                    date(t['check_date:opening_hours']) < date($dateTrippledTime)
+                ) -> .old_opening_hours_tag;
+
+            nwr[name][opening_hours](newer: $date) -> .recently_edited_objects_with_opening_hours;
+
             (.old_opening_hours_tag; - .recently_edited_objects_with_opening_hours;);
             """.trimIndent() + getQuestPrintStatement()
     }
