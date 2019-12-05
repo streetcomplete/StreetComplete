@@ -10,10 +10,10 @@ import de.westnordost.streetcomplete.quests.opening_hours.model.Weekdays
 import java.io.ByteArrayInputStream
 
 object OpeningHoursTagParser {
-    // returns null for values that are invalid or not representable in
-    // StreetComplete opening hours edit widget
-    // otherwise returns data structure that can be directly used to
-    // initialize this editing widget
+    /** returns null for values that are invalid or not representable in
+     * StreetComplete opening hours edit widget
+     * otherwise returns data structure that can be directly used to
+     * initialize this editing widget */
     fun parse(openingHours: String): List<OpeningMonthsRow>? {
         val rules: ArrayList<Rule>
         try {
@@ -31,8 +31,8 @@ object OpeningHoursTagParser {
         return transformCompatibleRulesetToInternalForm(rules)
     }
 
-    // transforms output of a Vespucci parser (assumed to not caontain weird constructs)
-    // into SC internal format
+    /** transforms output of a Vespucci parser (assumed to not caontain weird constructs)
+     * into SC internal format */
     private fun transformCompatibleRulesetToInternalForm(rules: ArrayList<Rule>): List<OpeningMonthsRow>? {
         var data = mutableListOf(OpeningMonthsRow())
         for (rule in rules) {
@@ -80,7 +80,7 @@ object OpeningHoursTagParser {
         return -1
     }
 
-    //returns array that can be used to initialize OpeningWeekdaysRow
+    /** returns array that can be used to initialize OpeningWeekdaysRow */
     private fun daysWhenRuleApplies(rule: Rule): BooleanArray {
         val dayData = BooleanArray(8) { false }
         require(rule.holidays != null || rule.days!!.size >= 0)
@@ -119,12 +119,12 @@ object OpeningHoursTagParser {
         return dayData
     }
 
-    // Returns true iff supported by StreetComplete
-    // Returns false otherwise, in cases where it is not directly representable
-    //
-    // It is first checking each rule (parts of opening_hours tag separated by ; sign)
-    // is it possible to recreate it by taking only supported parts
-    // later it checks also some additional limitations imposed by SC
+    /** Returns true iff supported by StreetComplete
+     * Returns false otherwise, in cases where it is not directly representable
+     *
+     * It is first checking each rule (parts of opening_hours tag separated by ; sign)
+     * is it possible to recreate it by taking only supported parts
+     * later it checks also some additional limitations imposed by SC */
     private fun isRulesetToStreetCompleteSupported(ruleset: ArrayList<Rule>): Boolean {
         for (rule in ruleset) {
             if (reduceRuleToStreetCompleteSupported(rule) == null) {
@@ -259,10 +259,10 @@ object OpeningHoursTagParser {
     }
 
 
-    // Reduces rule to a subset supported by StreetComplete
-    // in case of any info that would be lost it returns null
-    // null is also returned in cases where conversion would be necessary
-    // and there is any risk of loss of any data
+    /** Reduces rule to a subset supported by StreetComplete
+     * in case of any info that would be lost it returns null
+     * null is also returned in cases where conversion would be necessary
+     * and there is any risk of loss of any data */
     private fun reduceRuleToStreetCompleteSupported(rule: Rule): Rule? { // following are ignored:
         val returned = emptyRule()
         val days = rule.days
@@ -366,9 +366,9 @@ object OpeningHoursTagParser {
         return listOf(returned)
     }
 
-    // StreetComplete is not supporting offsets, indexing by nth day of week etc
-    // function may return identical or modified object or null
-    // null or modified object indicates that original object was not representable in SC
+    /** StreetComplete is not supporting offsets, indexing by nth day of week etc
+     * function may return identical or modified object or null
+     * null or modified object indicates that original object was not representable in SC */
     private fun reduceWeekDayRangeToSimpleDays(weekDayRange: WeekDayRange): WeekDayRange? {
         val returned = WeekDayRange()
         if (weekDayRange.startDay == null) {
@@ -381,10 +381,10 @@ object OpeningHoursTagParser {
         return returned
     }
 
-    // StreetComplete supports solely date changing based on month
-    // without any support for any other data ranges
-    // function may return identical or modified object or null
-    // null or modified object indicates that original object was not representable in SC
+    /** StreetComplete supports solely date changing based on month
+     * without any support for any other data ranges
+     * function may return identical or modified object or null
+     * null or modified object indicates that original object was not representable in SC */
     private fun reduceDateRangeToFullMonths(dateRange: DateRange): DateRange? {
         for (date in arrayOf(dateRange.startDate, dateRange.endDate).filterNotNull()) {
             if (date.isOpenEnded) {
@@ -413,10 +413,10 @@ object OpeningHoursTagParser {
         return newDateRange
     }
 
-    // StreetComplete has no support for times like "from sunrise to sunset"
-    // this function throws away any info over "from hour X to hour Y"
-    // function may return identical or modified object or null
-    // null or modified object indicates that original object was not representable in SC
+    /** StreetComplete has no support for times like "from sunrise to sunset"
+     * this function throws away any info over "from hour X to hour Y"
+     * function may return identical or modified object or null
+     * null or modified object indicates that original object was not representable in SC */
     private fun reduceTimeRangeToSimpleTime(timeSpan: TimeSpan): TimeSpan? {
         val simplifiedTimespan = TimeSpan()
         if (timeSpan.startEvent != null) {
@@ -456,7 +456,7 @@ object OpeningHoursTagParser {
         }
     }
 
-    // turns format returned by opening hours editing widget into an OSM tag
+    /** turns format returned by opening hours editing widget into an OSM tag */
     fun internalIntoTag(openingHours: List<OpeningMonths>): String {
         return openingHours.joinToString(";")
     }
