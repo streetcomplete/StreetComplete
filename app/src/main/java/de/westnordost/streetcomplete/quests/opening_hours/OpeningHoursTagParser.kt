@@ -31,7 +31,7 @@ object OpeningHoursTagParser {
         return transformCompatibleRulesetToInternalForm(rules)
     }
 
-    /** transforms output of a Vespucci parser (assumed to not caontain weird constructs)
+    /** transforms output of a Vespucci parser (assumed to not contain weird constructs)
      * into SC internal format */
     private fun transformCompatibleRulesetToInternalForm(rules: ArrayList<Rule>): List<OpeningMonthsRow>? {
         var data = mutableListOf(OpeningMonthsRow())
@@ -299,20 +299,20 @@ object OpeningHoursTagParser {
                 // what is unwanted
                 return null
             }
-            returned.setDates(simplifiedDateRanges)
+            returned.dates = simplifiedDateRanges
         }
         val times = rule.times
         if (times == null) {
             // explicit opening hours are required by SC
             return null
         } else {
-            val simplifiedTimespans: ArrayList<TimeSpan> = ArrayList()
+            val simplifiedTimeSpans: ArrayList<TimeSpan> = ArrayList()
             for (time in times) {
-                val simplifiedTimespan = reduceTimeRangeToSimpleTime(time) ?: return null
-                simplifiedTimespans.add(simplifiedTimespan)
+                val simplifiedTimeSpan = reduceTimeRangeToSimpleTime(time) ?: return null
+                simplifiedTimeSpans.add(simplifiedTimeSpan)
             }
             // multiple timespans may happen for rules such as "Mo-Su 09:00-12:00, 13:00-14:00"
-            returned.times = simplifiedTimespans
+            returned.times = simplifiedTimeSpans
         }
         val modifier = rule.modifier
         if (modifier != null) {
@@ -418,7 +418,7 @@ object OpeningHoursTagParser {
      * function may return identical or modified object or null
      * null or modified object indicates that original object was not representable in SC */
     private fun reduceTimeRangeToSimpleTime(timeSpan: TimeSpan): TimeSpan? {
-        val simplifiedTimespan = TimeSpan()
+        val simplifiedTimeSpan = TimeSpan()
         if (timeSpan.startEvent != null) {
             return null
         }
@@ -432,13 +432,13 @@ object OpeningHoursTagParser {
         if (startInMinutesSinceMidnight > 24 * 60) {
             return null
         }
-        simplifiedTimespan.start = startInMinutesSinceMidnight
+        simplifiedTimeSpan.start = startInMinutesSinceMidnight
         val endInMinutesSinceMidnight = timeSpan.end
         if (endInMinutesSinceMidnight < 0) {
             return null
         }
-        simplifiedTimespan.end = endInMinutesSinceMidnight
-        return simplifiedTimespan
+        simplifiedTimeSpan.end = endInMinutesSinceMidnight
+        return simplifiedTimeSpan
     }
 
     private fun emptyRule(): Rule {

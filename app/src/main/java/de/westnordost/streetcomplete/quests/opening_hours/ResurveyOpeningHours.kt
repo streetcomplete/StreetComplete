@@ -48,7 +48,7 @@ class ResurveyOpeningHours(private val overpassServer: OverpassMapDataDao) : Osm
             """.trimIndent() + getQuestPrintStatement()
     }
 
-    override fun isApplicableTo(element: Element) = null
+    override fun isApplicableTo(element: Element): Boolean? = null
 
     override fun createForm() = ResurveyOpeningHoursForm()
 
