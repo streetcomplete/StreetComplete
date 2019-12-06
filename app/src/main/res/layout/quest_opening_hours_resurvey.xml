@@ -8,7 +8,9 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:id="@+id/initialButtons"
+        >
     <Button
         android:id="@+id/noButton"
         android:layout_width="wrap_content"

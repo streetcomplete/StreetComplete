@@ -2,11 +2,19 @@ package de.westnordost.streetcomplete.quests.opening_hours
 
 
 import android.os.Bundle
+import android.view.View
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.ktx.popIn
+import de.westnordost.streetcomplete.ktx.popOut
 import de.westnordost.streetcomplete.ktx.toObject
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.AddOpeningHoursAdapter
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningMonthsRow
+import kotlinx.android.synthetic.main.fragment_quest_answer.*
+import kotlinx.android.synthetic.main.quest_buttonpanel_yes_no.*
+import kotlinx.android.synthetic.main.quest_buttonpanel_yes_no.noButton
+import kotlinx.android.synthetic.main.quest_buttonpanel_yes_no.yesButton
+import kotlinx.android.synthetic.main.quest_opening_hours_resurvey.*
 import java.util.*
 
 class ResurveyOpeningHoursForm : OpeningHoursForm() {
@@ -30,6 +38,16 @@ class ResurveyOpeningHoursForm : OpeningHoursForm() {
             openingHoursAdapter = AddOpeningHoursAdapter(viewData, activity!!, countryInfo)
             openingHoursAdapter.isDisplayMonths = isAlsoAddingMonths
         }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        yesButton.setOnClickListener { onClickOk() }
+        noButton.setOnClickListener {
+            okButton.popIn()
+            initialButtons.visibility = View.GONE
+        }
+        okButton.popOut()
     }
 
     override fun loadOpeningHoursData(savedInstanceState: Bundle?): List<OpeningMonthsRow> =
