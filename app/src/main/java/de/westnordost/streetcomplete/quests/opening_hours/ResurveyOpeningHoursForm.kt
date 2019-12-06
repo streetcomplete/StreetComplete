@@ -14,6 +14,7 @@ import kotlinx.android.synthetic.main.fragment_quest_answer.*
 import kotlinx.android.synthetic.main.quest_buttonpanel_yes_no.*
 import kotlinx.android.synthetic.main.quest_buttonpanel_yes_no.noButton
 import kotlinx.android.synthetic.main.quest_buttonpanel_yes_no.yesButton
+import kotlinx.android.synthetic.main.quest_opening_hours.*
 import kotlinx.android.synthetic.main.quest_opening_hours_resurvey.*
 import java.util.*
 
@@ -23,7 +24,7 @@ class ResurveyOpeningHoursForm : OpeningHoursForm() {
     }
 
     override val contentLayoutResId = R.layout.quest_opening_hours_resurvey
-
+    private var noActionMade = true
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -42,10 +43,13 @@ class ResurveyOpeningHoursForm : OpeningHoursForm() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        addTimesButton.visibility = View.GONE
         yesButton.setOnClickListener { onClickOk() }
         noButton.setOnClickListener {
             okButton.popIn()
             initialButtons.visibility = View.GONE
+            addTimesButton.visibility = View.VISIBLE
+            noActionMade = false
         }
         okButton.popOut()
     }
@@ -64,5 +68,12 @@ class ResurveyOpeningHoursForm : OpeningHoursForm() {
         } else {
             applyAnswer(answer)
         }
+    }
+
+    override fun isFormComplete(): Boolean {
+        if(noActionMade) {
+            return false
+        }
+        return super.isFormComplete()
     }
 }
