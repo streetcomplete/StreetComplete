@@ -29,6 +29,7 @@ class AddAddressStreet(
     override fun isApplicableTo(element: Element): Boolean? = null
 
     override fun download(bbox: BoundingBox, handler: MapDataWithGeometryHandler): Boolean {
+        Log.wtf("aaa", getOverpassQuery(bbox))
         return overpassServer.getAndHandleQuota(getOverpassQuery(bbox), handler)
                 && overpassServer.getAndHandleQuota(getStreetNameSuggestionsOverpassQuery(bbox),putRoadNameSuggestionsHandler)
     }
@@ -38,7 +39,9 @@ class AddAddressStreet(
             relation["type"="associatedStreet"];
             > -> .inStreetRelation;
 
-            nwr["addr:street"!~".*"]["addr:housenumber"]["addr:place"!~".*"] -> .missing_data;
+            way["highway" ~ "^(${OsmTaggings.ALL_ROADS.joinToString("|")})$"]["name"] -> .named_roads;
+
+            nwr["addr:street"!~".*"]["addr:housenumber"]["addr:place"!~".*"](around.named_roads:150) -> .missing_data;
 
             (.missing_data; - .inStreetRelation;);""" +
                     getQuestPrintStatement()
