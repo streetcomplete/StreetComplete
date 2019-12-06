@@ -67,30 +67,31 @@ class OpeningHoursTagParserTest {
         assertNull(parse("Mo-Fr 7:30-18:00, Sa-Su 9:00-18:00"))
     }
 
+    private fun parsesAndSavesUnchanged(openingHoursTag: String) {
+        assertEquals(openingHoursTag, parseAndSave(openingHoursTag))
+    }
+
     @Test
     fun `accept valid opening hours`() {
-        assertNotNull(parse("Mo-Su 00:00-24:00"))
-        assertNotNull(parse("Mo 09:00-20:00"))
-        assertNotNull(parse("Tu-Su 10:00-17:30"))
-        assertNotNull(parse("We-Sa 09:30-15:00; Tu 12:00-18:30"))
-        assertNotNull(parse("Mo 9-20")) //without explicitly specified minutes
-        assertNotNull(parse("Mo-Sa 07:00-20:00; PH 7:00-7:05"))
-        assertNotNull(parse("Jun Th 17:30-19:30"))
-        assertNotNull(parse("Jul-Sep Mo 17:00-19:00"))
-        assertNotNull(parse("Jun Th 17:30-19:30; Jul-Sep Mo 17:00-19:00"))
-        assertNotNull(parse("Su 09:00-02:00")) // over midnight rules
-        assertNotNull(parse("Su 09:00-26:00")) // over midnight, +24 syntax
-        assertNotNull(parse("Mar-Oct Tu-Su 10:30-18:00; Nov-Dec Tu-Su 11:00-17:00"))
-        assertNotNull(parse("Mar-Oct Tu-Su 10:30-18:00; Mar-Oct Mo 10:30-14:00; Nov-Dec Tu-Su 11:00-17:00; Nov-Dec Mo 11:00-14:00"))
-        assertNotNull(parse("Th 17:30-19:30 open"))
-        assertNotNull(parse("Mo-Su 09:00-12:00, 13:00-14:00")) // allow time gap
-        assertNotNull(parse("Su-Mo 09:00-12:00")) // try to trigger bugs with range going end of week
-        assertNotNull(parse("Fr-Mo 09:00-12:00")) // try to trigger bugs with range going end of week
-        assertNotNull(parse("Mo 17:30-19:30; Th 17:00-19:00")) // multiple rules, no overrides
+        parsesAndSavesUnchanged("Mo-Su 00:00-24:00")
+        parsesAndSavesUnchanged("Mo 09:00-20:00")
+        parsesAndSavesUnchanged("Tu-Su 10:00-17:30")
+        parsesAndSavesUnchanged("We-Sa 09:30-15:00; Tu 12:00-18:30")
+        parsesAndSavesUnchanged("Mo-Sa 07:00-20:00; PH 07:00-07:05")
+        parsesAndSavesUnchanged("Jun: Th 17:30-19:30")
+        parsesAndSavesUnchanged("Jul-Sep: Mo 17:00-19:00")
+        parsesAndSavesUnchanged("Jun: Th 17:30-19:30; Jul-Sep: Mo 17:00-19:00")
+        parsesAndSavesUnchanged("Su 09:00-02:00") // over midnight rules
+        parsesAndSavesUnchanged("Mar-Oct: Tu-Su 10:30-18:00; Nov-Dec: Tu-Su 11:00-17:00")
+        parsesAndSavesUnchanged("Mar-Oct: Tu-Su 10:30-18:00; Mar-Oct: Mo 10:30-14:00; Nov-Dec: Tu-Su 11:00-17:00; Nov-Dec: Mo 11:00-14:00")
+        parsesAndSavesUnchanged("Mo-Su 09:00-12:00,13:00-14:00") // allow time gap
+        parsesAndSavesUnchanged("Su-Tu 09:00-12:00") // try to trigger bugs with range going end of week
+        parsesAndSavesUnchanged("Fr-Tu 09:00-12:00") // try to trigger bugs with range going end of week
+        parsesAndSavesUnchanged("Mo 17:30-19:30; Th 17:00-19:00") // multiple rules, no overrides
 
         // over weekend rules, without triggering collision detector
-        assertNotNull(parse("Su-Mo 09:00-12:00; Tu-Sa 10:10-10:11"))
-        assertNotNull(parse("Fr-Mo 09:00-12:00; Tu-Th 10:10-10:11"))
+        parsesAndSavesUnchanged("Su-Tu 09:00-12:00; We-Sa 10:10-10:11")
+        parsesAndSavesUnchanged("Sa-Tu 09:00-12:00; We-Fr 10:10-10:11")
     }
 
     private fun parse(openingHoursTag: String): List<OpeningMonthsRow>? {
@@ -121,6 +122,9 @@ class OpeningHoursTagParserTest {
         assertEquals("Mar-Oct: Tu-Su 10:30-18:00", parseAndSave("Mar-Oct: Tu-Su 10:30-18:00")) // keep :
         assertEquals("Mo 09:00-02:00", parseAndSave("Mo 09:00-26:00")) //26 -> 02
         assertEquals("Th 17:30-19:30", parseAndSave("Th 17:30-19:30 open")) // drop explicit open
+        assertEquals("Mo 09:00-20:00", parseAndSave("Mo 9-20")) // add explicit minutes and 0-prefix
+        assertEquals("Mo,Tu 09:00-20:00", parseAndSave("Mo-Tu 9:00-20:00")) // day ranges with just two days to pairs
+        assertEquals("PH 07:00-07:05", parseAndSave("PH 7:00-7:05")) // 0-prefix
     }
 
     @Test
