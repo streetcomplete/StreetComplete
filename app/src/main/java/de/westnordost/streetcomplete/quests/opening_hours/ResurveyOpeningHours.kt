@@ -71,6 +71,7 @@ class ResurveyOpeningHours(private val overpassServer: OverpassMapDataDao) : Osm
     override fun createForm() = ResurveyOpeningHoursForm()
 
     override fun applyAnswerTo(answer: OpeningHoursAnswer, changes: StringMapChangesBuilder) {
+        changes.deleteIfExists("opening_hours:lastcheck")
         when (answer) {
             is AlwaysOpen -> changes.modify("opening_hours", "24/7")
             is NoOpeningHoursSign -> changes.add("opening_hours:signed", "no")
