@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.opening_hours
 
 import android.os.Bundle
 import de.westnordost.streetcomplete.Injector
+import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.toObject
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.AddOpeningHoursAdapter
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningMonthsRow
@@ -12,6 +13,8 @@ class ResurveyOpeningHoursForm : OpeningHoursForm() {
     init {
         Injector.instance.applicationComponent.inject(this)
     }
+
+    override val contentLayoutResId = R.layout.quest_opening_hours_resurvey
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
