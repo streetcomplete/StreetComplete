@@ -136,12 +136,12 @@ class OpeningHoursTagParserTest {
     fun `next day rules specified as over 24 hours should be formatted as below 24 hours`() {
         val returned = parse("Su 09:00-26:00")
         assertNotEquals(returned, null)
-        assertEquals(returned!!.size, 1)
-        assertEquals(returned[0].months, OpeningMonthsRow().months)
-        assertEquals(returned[0].weekdaysList.size, 1)
-        assertEquals(returned[0].weekdaysList[0].timeRange.start, 9 * 60)
-        assertNotEquals(returned[0].weekdaysList[0].timeRange.end, 26 * 60)
-        assertEquals(returned[0].weekdaysList[0].timeRange.end, 2 * 60)
+        assertEquals(1, returned!!.size)
+        assertEquals(OpeningMonthsRow().months, returned[0].months)
+        assertEquals(1, returned[0].weekdaysList.size)
+        assertEquals(9 * 60, returned[0].weekdaysList[0].timeRange.start)
+        assertNotEquals(26 * 60, returned[0].weekdaysList[0].timeRange.end)
+        assertEquals(2 * 60, returned[0].weekdaysList[0].timeRange.end)
     }
 
     @Test
@@ -149,30 +149,30 @@ class OpeningHoursTagParserTest {
         val returned = parse("Mo 09:00-20:00")
         assertNotEquals(returned, null)
         assertEquals(returned!!.size, 1)
-        assertEquals(returned[0].months, OpeningMonthsRow().months)
-        assertEquals(returned[0].weekdaysList.size, 1)
-        assertEquals(returned[0].weekdaysList[0].timeRange.start, 9 * 60)
-        assertEquals(returned[0].weekdaysList[0].timeRange.end, 20 * 60)
-        assertEquals(returned[0].weekdaysList[0].timeRange.isOpenEnded, false)
+        assertEquals(OpeningMonthsRow().months, returned[0].months)
+        assertEquals(1, returned[0].weekdaysList.size)
+        assertEquals(9 * 60, returned[0].weekdaysList[0].timeRange.start)
+        assertEquals(20 * 60, returned[0].weekdaysList[0].timeRange.end)
+        assertEquals(false, returned[0].weekdaysList[0].timeRange.isOpenEnded)
         val weekData = BooleanArray(8) { false }
         weekData.set(0, true)
-        assertEquals(returned[0].weekdaysList[0].weekdays, Weekdays(weekData))
+        assertEquals(Weekdays(weekData), returned[0].weekdaysList[0].weekdays)
     }
 
     @Test
     fun `test full structure of a multiday opening hour with a gap`() {
         val returned = parse("Mo-Su 09:00-12:00, 13:00-14:00")
-        assertNotEquals(returned, null)
-        assertEquals(returned!!.size, 1)
-        assertEquals(returned[0].months, OpeningMonthsRow().months)
-        assertEquals(returned[0].weekdaysList.size, 2)
-        assertEquals(returned[0].weekdaysList[0].timeRange.start, 9 * 60)
-        assertEquals(returned[0].weekdaysList[0].timeRange.end, 12 * 60)
-        assertEquals(returned[0].weekdaysList[0].timeRange.isOpenEnded, false)
-        assertEquals(returned[0].weekdaysList[1].timeRange.start, 13 * 60)
-        assertEquals(returned[0].weekdaysList[1].timeRange.end, 14 * 60)
-        assertEquals(returned[0].weekdaysList[1].timeRange.isOpenEnded, false)
+        assertNotEquals(null, returned)
+        assertEquals(1, returned!!.size)
+        assertEquals(OpeningMonthsRow().months, returned[0].months)
+        assertEquals(2, returned[0].weekdaysList.size)
+        assertEquals(9 * 60, returned[0].weekdaysList[0].timeRange.start)
+        assertEquals(12 * 60, returned[0].weekdaysList[0].timeRange.end)
+        assertEquals(false, returned[0].weekdaysList[0].timeRange.isOpenEnded)
+        assertEquals(13 * 60, returned[0].weekdaysList[1].timeRange.start)
+        assertEquals(14 * 60, returned[0].weekdaysList[1].timeRange.end)
+        assertEquals(false, returned[0].weekdaysList[1].timeRange.isOpenEnded)
         val weekData = BooleanArray(7) { true }
-        assertEquals(returned[0].weekdaysList[0].weekdays, Weekdays(weekData))
+        assertEquals(Weekdays(weekData), returned[0].weekdaysList[0].weekdays)
     }
 }
