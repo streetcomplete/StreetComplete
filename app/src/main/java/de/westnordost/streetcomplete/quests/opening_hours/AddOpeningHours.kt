@@ -5,7 +5,7 @@ import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 
-class AddOpeningHours (o: OverpassMapDataDao) : SimpleOverpassQuestType<OpeningHoursAnswer>(o) {
+class AddOpeningHours (o: OverpassMapDataDao, private val parser: OpeningHoursTagParser) : SimpleOverpassQuestType<OpeningHoursAnswer>(o) {
 
     /* See also AddWheelchairAccessBusiness and AddPlaceName, which has a similar list and is/should
        be ordered in the same way for better overview */
@@ -81,7 +81,7 @@ class AddOpeningHours (o: OverpassMapDataDao) : SimpleOverpassQuestType<OpeningH
 
     override fun applyAnswerTo(answer: OpeningHoursAnswer, changes: StringMapChangesBuilder) {
         when(answer) {
-            is RegularOpeningHours -> changes.add("opening_hours", OpeningHoursTagParser.internalIntoTag(answer.times))
+            is RegularOpeningHours -> changes.add("opening_hours", parser.internalIntoTag(answer.times))
             is AlwaysOpen          -> changes.add("opening_hours", "24/7")
             is NoOpeningHoursSign  -> changes.add("opening_hours:signed", "no")
             is DescribeOpeningHours -> {

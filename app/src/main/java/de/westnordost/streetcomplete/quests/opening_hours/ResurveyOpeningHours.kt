@@ -13,7 +13,7 @@ import de.westnordost.streetcomplete.data.osm.tql.getQuestPrintStatement
 import de.westnordost.streetcomplete.data.osm.tql.toGlobalOverpassBBox
 import de.westnordost.streetcomplete.quests.DateUtil
 
-class ResurveyOpeningHours(private val overpassServer: OverpassMapDataDao) : OsmElementQuestType<OpeningHoursAnswer> {
+class ResurveyOpeningHours(private val overpassServer: OverpassMapDataDao, private val parser: OpeningHoursTagParser) : OsmElementQuestType<OpeningHoursAnswer> {
     override val commitMessage = "resurvey opening hours"
     override val icon = R.drawable.ic_quest_opening_hours
     override fun getTitle(tags: Map<String, String>) = R.string.resurvey_opening_hours_title
@@ -22,7 +22,7 @@ class ResurveyOpeningHours(private val overpassServer: OverpassMapDataDao) : Osm
         return overpassServer.getAndHandleQuota(getOverpassQuery(bbox)) { element, geometry ->
             if (element.tags != null) {
                 // require opening hours that are supported
-                if (OpeningHoursTagParser.parse(element.tags["opening_hours"]!!) != null) {
+                if (parser.parse(element.tags["opening_hours"]!!) != null) {
                     handler.handle(element, geometry)
                 } else {
                     Log.wtf("AAAA", "opening_hours=" + element.tags["opening_hours"] + " was rejected as not representable in SC")
@@ -68,7 +68,7 @@ class ResurveyOpeningHours(private val overpassServer: OverpassMapDataDao) : Osm
      */
     override fun isApplicableTo(element: Element): Boolean? = null
 
-    override fun createForm() = ResurveyOpeningHoursForm()
+    override fun createForm() = ResurveyOpeningHoursForm(parser)
 
     override fun applyAnswerTo(answer: OpeningHoursAnswer, changes: StringMapChangesBuilder) {
         changes.deleteIfExists("opening_hours:lastcheck")
@@ -76,7 +76,7 @@ class ResurveyOpeningHours(private val overpassServer: OverpassMapDataDao) : Osm
             is AlwaysOpen -> changes.modify("opening_hours", "24/7")
             is NoOpeningHoursSign -> changes.add("opening_hours:signed", "no")
             is UnmodifiedOpeningHours -> changes.addOrModify(OsmTaggings.SURVEY_MARK_KEY + ":opening_hours", DateUtil.getCurrentDateString())
-            is RegularOpeningHours -> changes.modify("opening_hours", OpeningHoursTagParser.internalIntoTag(answer.times))
+            is RegularOpeningHours -> changes.modify("opening_hours", parser.internalIntoTag(answer.times))
             else -> throw AssertionError()
         }
     }

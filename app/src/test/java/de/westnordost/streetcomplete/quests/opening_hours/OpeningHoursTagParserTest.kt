@@ -95,11 +95,11 @@ class OpeningHoursTagParserTest {
     }
 
     private fun parse(openingHoursTag: String): List<OpeningMonthsRow>? {
-        return OpeningHoursTagParser.parse(openingHoursTag)
+        return OpeningHoursTagParser().parse(openingHoursTag)
     }
 
     private fun parseAndSave(openingHoursTag: String):String {
-        return OpeningHoursTagParser.internalIntoTag((parse(openingHoursTag)!!.toOpeningMonthsList()))
+        return OpeningHoursTagParser().internalIntoTag((parse(openingHoursTag)!!.toOpeningMonthsList()))
     }
 
 

@@ -8,8 +8,9 @@ import de.westnordost.streetcomplete.quests.opening_hours.model.OpeningMonths
 import de.westnordost.streetcomplete.quests.opening_hours.model.TimeRange
 import de.westnordost.streetcomplete.quests.opening_hours.model.Weekdays
 import java.io.ByteArrayInputStream
+import javax.inject.Inject
 
-object OpeningHoursTagParser {
+class OpeningHoursTagParser @Inject constructor() {
     /** returns null for values that are invalid or not representable in
      * StreetComplete opening hours edit widget
      * otherwise returns data structure that can be directly used to

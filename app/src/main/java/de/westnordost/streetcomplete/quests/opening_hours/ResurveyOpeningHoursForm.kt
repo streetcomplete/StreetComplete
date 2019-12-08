@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.quest_opening_hours.*
 import kotlinx.android.synthetic.main.quest_opening_hours_resurvey.*
 import java.util.*
 
-class ResurveyOpeningHoursForm : OpeningHoursForm() {
+class ResurveyOpeningHoursForm(val parser : OpeningHoursTagParser) : OpeningHoursForm() {
     init {
         Injector.instance.applicationComponent.inject(this)
     }
@@ -58,7 +58,7 @@ class ResurveyOpeningHoursForm : OpeningHoursForm() {
             if (savedInstanceState != null) {
                 serializer.toObject<ArrayList<OpeningMonthsRow>>(savedInstanceState.getByteArray(OPENING_HOURS_DATA)!!)
             } else {
-                osmElement!!.tags["opening_hours"]?.let { OpeningHoursTagParser.parse(it) }!!
+                osmElement!!.tags["opening_hours"]?.let { parser.parse(it) }!!
             }
 
     override fun onClickOk() {

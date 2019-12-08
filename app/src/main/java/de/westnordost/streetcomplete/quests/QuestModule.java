@@ -42,6 +42,7 @@ import de.westnordost.streetcomplete.quests.motorcycle_parking_cover.AddMotorcyc
 import de.westnordost.streetcomplete.quests.oneway.AddOneway;
 import de.westnordost.streetcomplete.quests.oneway.data.TrafficFlowSegmentsDao;
 import de.westnordost.streetcomplete.quests.oneway.data.WayTrafficFlowDao;
+import de.westnordost.streetcomplete.quests.opening_hours.OpeningHoursTagParser;
 import de.westnordost.streetcomplete.quests.parking_access.AddParkingAccess;
 import de.westnordost.streetcomplete.quests.parking_fee.AddParkingFee;
 import de.westnordost.streetcomplete.quests.parking_type.AddParkingType;
@@ -95,7 +96,8 @@ public class QuestModule
 		RoadNameSuggestionsDao roadNameSuggestionsDao,
 		PutRoadNameSuggestionsHandler putRoadNameSuggestionsHandler,
 		TrafficFlowSegmentsDao trafficFlowSegmentsDao, WayTrafficFlowDao trafficFlowDao,
-		FutureTask<FeatureDictionary> featureDictionaryFuture)
+		FutureTask<FeatureDictionary> featureDictionaryFuture,
+		OpeningHoursTagParser parser)
 	{
 		QuestType<?>[] questTypesOrderedByImportance = {
 				// ↓ 1. notes
@@ -120,8 +122,8 @@ public class QuestModule
 				new AddMaxHeight(o),
 				new AddRailwayCrossingBarrier(o), // useful for routing
 				new AddPostboxCollectionTimes(o),
-				new AddOpeningHours(o),
-				new ResurveyOpeningHours(o),
+				new AddOpeningHours(o, parser),
+				new ResurveyOpeningHours(o, parser),
 				new AddBikeParkingCapacity(o), // cycle map layer on osm.org
 				new AddOrchardProduce(o),
 				new AddCycleway(o),
