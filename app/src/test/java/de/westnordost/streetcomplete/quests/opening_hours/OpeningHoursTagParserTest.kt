@@ -38,10 +38,12 @@ class OpeningHoursTagParserTest {
     fun `reject unimplemented for now syntax, supported by StreetComplete UI`() {
         assertNull(parse("Mo 09:00-20:00+")) //till last client
 
-        // multiple days, not specified as range
+        // more than a single range with a rule, all with the same hours
         // note cases like "Mo,Tu,We 9:00-10:00" that will be either reject or transformed into "Mo-We 9:00-10:00"
         assertNull(parse("Mo,Tu 09:00-20:00"))
         assertNull(parse("Mo,Tu,Sa 09:00-20:00"))
+        assertNull(parse("Mo-Th,Sa 09:00-20:00"))
+        assertNull(parse("Mo-Th,PH 09:00-20:00"))
     }
 
     @Test
@@ -62,7 +64,8 @@ class OpeningHoursTagParserTest {
         assertNull(parse("Mo-Fr 09:00-18:30 \"comment text\"")) // comments
         assertNull(parse("Jan+ Mo-Fr 09:00-18:30")) //open ended month ranges
         assertNull(parse("easter 09:00-18:00")) // easter
-        // reject multiple lists of days in a single rule, as it would change form on processing
+        // reject multiple lists of days in a single rule, with different opening hours
+        // it would change form on processing
         // possibly with unexpected and unwanted results
         assertNull(parse("Mo-Fr 7:30-18:00, Sa-Su 9:00-18:00"))
     }
