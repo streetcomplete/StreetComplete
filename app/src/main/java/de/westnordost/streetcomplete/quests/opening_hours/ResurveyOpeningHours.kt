@@ -71,12 +71,25 @@ class ResurveyOpeningHours(private val overpassServer: OverpassMapDataDao, priva
     override fun createForm() = ResurveyOpeningHoursForm(parser)
 
     override fun applyAnswerTo(answer: OpeningHoursAnswer, changes: StringMapChangesBuilder) {
+        val checkTag = OsmTaggings.SURVEY_MARK_KEY + ":opening_hours"
         changes.deleteIfExists("opening_hours:lastcheck")
         when (answer) {
-            is AlwaysOpen -> changes.modify("opening_hours", "24/7")
-            is NoOpeningHoursSign -> changes.add("opening_hours:signed", "no")
-            is UnmodifiedOpeningHours -> changes.addOrModify(OsmTaggings.SURVEY_MARK_KEY + ":opening_hours", DateUtil.getCurrentDateString())
-            is RegularOpeningHours -> changes.modify("opening_hours", parser.internalIntoTag(answer.times))
+            is AlwaysOpen -> {
+                changes.deleteIfExists(checkTag)
+                // assuming modify is OK as
+                // opening_hours=24/7 is never present on any elements qualified for this quest
+                changes.modify("opening_hours", "24/7")
+            }
+            is NoOpeningHoursSign -> {
+                changes.add("opening_hours:signed", "no")
+            }
+            is UnmodifiedOpeningHours -> {
+                changes.addOrModify(checkTag, DateUtil.getCurrentDateString())
+            }
+            is RegularOpeningHours -> {
+                changes.deleteIfExists(checkTag)
+                changes.modify("opening_hours", parser.internalIntoTag(answer.times))
+            }
             else -> throw AssertionError()
         }
     }

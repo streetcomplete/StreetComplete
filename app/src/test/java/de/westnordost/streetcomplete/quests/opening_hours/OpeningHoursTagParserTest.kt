@@ -27,7 +27,7 @@ class OpeningHoursTagParserTest {
 
     @Test
     fun `reject rules that are currently not supported but can be reasonably added`() {
-        assertNull(parse("24/7"))
+        assertNull(parse("24/7")) // remember to modify applyAnswerTo 24/7 section on changing that
 
         // month range going over new year is not trivially added
         assertNull(parse("Oct-Jan Mo 08:30-10:30"))
