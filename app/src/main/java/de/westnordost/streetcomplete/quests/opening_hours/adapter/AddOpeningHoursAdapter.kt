@@ -39,7 +39,7 @@ data class OpeningMonthsRow(var months: CircularSection = CircularSection(0, MAX
 
 data class OpeningWeekdaysRow(var weekdays: Weekdays, var timeRange: TimeRange)
 
-class AddOpeningHoursAdapter(
+open class AddOpeningHoursAdapter(
     initialMonthsRows: List<OpeningMonthsRow>,
     private val context: Context,
     private val countryInfo: CountryInfo
@@ -79,7 +79,7 @@ class AddOpeningHoursAdapter(
     override fun getItemViewType(position: Int) =
         if (getHierarchicPosition(position).size == 1) MONTHS else WEEKDAYS
 
-    private fun getHierarchicPosition(position: Int): IntArray {
+    internal fun getHierarchicPosition(position: Int): IntArray {
         var count = 0
         for (i in monthsRows.indices) {
             val om = monthsRows[i]
@@ -98,7 +98,7 @@ class AddOpeningHoursAdapter(
 
     /* ------------------------------------------------------------------------------------------ */
 
-    private fun remove(position: Int) {
+    internal fun remove(position: Int) {
         val p = getHierarchicPosition(position)
         if (p.size != 2) throw IllegalArgumentException("May only directly remove weekdays, not months")
 
@@ -121,7 +121,7 @@ class AddOpeningHoursAdapter(
         }
     }
 
-    fun addNewMonths() {
+    open fun addNewMonths() {
         openSetMonthsRangeDialog(getMonthsRangeSuggestion()) { startIndex, endIndex ->
             val months = CircularSection(startIndex, endIndex)
             openSetWeekdaysDialog(getWeekdaysSuggestion(true)) { weekdays ->
@@ -138,7 +138,7 @@ class AddOpeningHoursAdapter(
         notifyItemRangeInserted(insertIndex, 2) // 2 = opening month + opening weekday
     }
 
-    fun addNewWeekdays() {
+    open fun addNewWeekdays() {
         val isFirst = monthsRows[monthsRows.size - 1].weekdaysList.isEmpty()
         openSetWeekdaysDialog(getWeekdaysSuggestion(isFirst)) { weekdays ->
             openSetTimeRangeDialog(getOpeningHoursSuggestion()) { timeRange ->
@@ -146,7 +146,7 @@ class AddOpeningHoursAdapter(
         }
     }
 
-    fun addWeekdays(weekdays: Weekdays, timeRange: TimeRange) {
+    open fun addWeekdays(weekdays: Weekdays, timeRange: TimeRange) {
         val insertIndex = itemCount
         monthsRows[monthsRows.size - 1].weekdaysList.add(OpeningWeekdaysRow(weekdays, timeRange))
         notifyItemInserted(insertIndex)

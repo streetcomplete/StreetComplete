@@ -3,12 +3,15 @@ package de.westnordost.streetcomplete.quests.opening_hours
 
 import android.os.Bundle
 import android.view.View
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.popIn
 import de.westnordost.streetcomplete.ktx.popOut
 import de.westnordost.streetcomplete.ktx.toObject
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.AddOpeningHoursAdapter
+import de.westnordost.streetcomplete.quests.opening_hours.adapter.AddReadOnlyOpeningHoursAdapter
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningMonthsRow
 import kotlinx.android.synthetic.main.fragment_quest_answer.*
 import kotlinx.android.synthetic.main.quest_buttonpanel_yes_no.*
@@ -22,6 +25,8 @@ class ResurveyOpeningHoursForm(val parser : OpeningHoursTagParser) : OpeningHour
     init {
         Injector.instance.applicationComponent.inject(this)
     }
+
+    internal lateinit var readOnlyOpeningHoursAdapter: AddOpeningHoursAdapter
 
     override val contentLayoutResId = R.layout.quest_opening_hours_resurvey
     private var noActionMade = true
@@ -38,6 +43,8 @@ class ResurveyOpeningHoursForm(val parser : OpeningHoursTagParser) : OpeningHour
             }
             openingHoursAdapter = AddOpeningHoursAdapter(viewData, activity!!, countryInfo)
             openingHoursAdapter.isDisplayMonths = isAlsoAddingMonths
+            readOnlyOpeningHoursAdapter = AddReadOnlyOpeningHoursAdapter(viewData, activity!!, countryInfo) // AddReadOnlyOpeningHoursAdapter
+            readOnlyOpeningHoursAdapter.isDisplayMonths = isAlsoAddingMonths
         }
     }
 
@@ -51,6 +58,9 @@ class ResurveyOpeningHoursForm(val parser : OpeningHoursTagParser) : OpeningHour
             addTimesButton.visibility = View.VISIBLE
             noActionMade = false
         }
+        readOnlyOpeningHoursList.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
+        readOnlyOpeningHoursList.adapter = readOnlyOpeningHoursAdapter
+        readOnlyOpeningHoursList.isNestedScrollingEnabled = false
         okButton.popOut()
     }
 
