@@ -56,6 +56,8 @@ class ResurveyOpeningHoursForm(val parser : OpeningHoursTagParser) : OpeningHour
             okButton.popIn()
             initialButtons.visibility = View.GONE
             addTimesButton.visibility = View.VISIBLE
+            readOnlyOpeningHoursList.visibility = View.GONE
+            openingHoursLayout.visibility = View.VISIBLE
             noActionMade = false
         }
         readOnlyOpeningHoursList.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)

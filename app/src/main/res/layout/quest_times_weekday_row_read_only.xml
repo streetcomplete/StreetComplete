@@ -11,6 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout="@+id/hoursLabel"
+        android:clickable="false"
         style="@style/TimesField"/>
 
     <TextView
@@ -19,6 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_toEndOf="@+id/weekdaysLabel"
         android:layout_alignParentEnd="true"
+        android:clickable="false"
         style="@style/TimesField"/>
 
 </RelativeLayout>
