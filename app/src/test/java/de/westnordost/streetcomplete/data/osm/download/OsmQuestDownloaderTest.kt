@@ -24,12 +24,12 @@ import java.util.*
 import java.util.concurrent.FutureTask
 
 
-class OsmQuestDownloadTest {
+class OsmQuestDownloaderTest {
     private lateinit var geometryDb: ElementGeometryDao
     private lateinit var elementDb: MergedElementDao
     private lateinit var osmQuestDao: OsmQuestDao
     private lateinit var countryBoundaries: CountryBoundaries
-    private lateinit var download: OsmQuestDownload
+    private lateinit var downloader: OsmQuestDownloader
     private lateinit var listener: VisibleQuestListener
 
     @Before fun setUp() {
@@ -40,8 +40,8 @@ class OsmQuestDownloadTest {
         val countryBoundariesFuture = FutureTask { countryBoundaries }
         countryBoundariesFuture.run()
         listener = mock()
-        download = OsmQuestDownload(geometryDb, elementDb, osmQuestDao, countryBoundariesFuture)
-        download.questListener = listener
+        downloader = OsmQuestDownloader(geometryDb, elementDb, osmQuestDao, countryBoundariesFuture)
+        downloader.questListener = listener
     }
 
     @Test fun `ignore element with invalid geometry`() {
@@ -53,7 +53,7 @@ class OsmQuestDownloadTest {
         val questType = ListBackedQuestType(listOf(invalidGeometryElement))
         setPreviousQuests(emptyList())
 
-        download.download(questType, BoundingBox(0.0, 0.0, 1.0, 1.0), setOf())
+        downloader.download(questType, BoundingBox(0.0, 0.0, 1.0, 1.0), setOf())
 
         verify(listener, times(0)).onQuestsCreated(any(), any())
     }
@@ -68,7 +68,7 @@ class OsmQuestDownloadTest {
         val questType = ListBackedQuestType(listOf(blacklistElement))
         setPreviousQuests(emptyList())
 
-        download.download(questType, BoundingBox(0.0, 0.0, 1.0, 1.0), setOf(blacklistPos))
+        downloader.download(questType, BoundingBox(0.0, 0.0, 1.0, 1.0), setOf(blacklistPos))
 
         verify(listener, times(0)).onQuestsCreated(any(), any())
     }
@@ -87,7 +87,7 @@ class OsmQuestDownloadTest {
         on(countryBoundaries.getContainingIds(anyDouble(),anyDouble(),anyDouble(),anyDouble())).thenReturn(setOf())
         setPreviousQuests(emptyList())
 
-        download.download(questType, BoundingBox(0.0, 0.0, 1.0, 1.0), setOf())
+        downloader.download(questType, BoundingBox(0.0, 0.0, 1.0, 1.0), setOf())
 
         verify(listener, times(0)).onQuestsCreated(any(), any())
     }
@@ -111,7 +111,7 @@ class OsmQuestDownloadTest {
             quests.size
         }.on(osmQuestDao).addAll(any())
 
-        download.download(questType, BoundingBox(0.0, 0.0, 1.0, 1.0), setOf())
+        downloader.download(questType, BoundingBox(0.0, 0.0, 1.0, 1.0), setOf())
 
         verify(listener).onQuestsCreated(any(), any())
         verify(geometryDb).putAll(any())
@@ -134,7 +134,7 @@ class OsmQuestDownloadTest {
         ))
 
         // -> we expect that quest with node #5 is removed
-        download.download(questType, BoundingBox(0.0, 0.0, 1.0, 1.0), emptySet())
+        downloader.download(questType, BoundingBox(0.0, 0.0, 1.0, 1.0), emptySet())
         verify(osmQuestDao).deleteAllIds(listOf(13L))
         verify(listener).onQuestsRemoved(any(), any())
     }

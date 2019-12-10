@@ -16,14 +16,14 @@ import de.westnordost.osmapi.notes.Note
 import de.westnordost.osmapi.notes.NoteComment
 import de.westnordost.osmapi.notes.NotesDao
 
-class OsmNotesDownload @Inject constructor(
+class OsmNotesDownloader @Inject constructor(
     private val noteServer: NotesDao,
     private val noteDB: NoteDao,
     private val noteQuestDB: OsmNoteQuestDao,
     private val createNoteDB: CreateNoteDao,
     private val preferences: SharedPreferences,
     private val questType: OsmNoteQuestType,
-    private val avatarsDownload: OsmAvatarsDownload
+    private val avatarsDownloader: OsmAvatarsDownloader
 ) {
 
     var questListener: VisibleQuestListener? = null
@@ -93,7 +93,7 @@ class OsmNotesDownload @Inject constructor(
             " ($hiddenAmount of ${hiddenAmount + visibleAmount} notes are hidden)"
         )
 
-        avatarsDownload.download(noteCommentUserIds)
+        avatarsDownloader.download(noteCommentUserIds)
 
         return positions
     }

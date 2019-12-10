@@ -20,7 +20,7 @@ import de.westnordost.streetcomplete.data.osm.upload.OsmQuestsUploader;
 import de.westnordost.streetcomplete.data.osm.upload.SplitWaysUploader;
 import de.westnordost.streetcomplete.data.osm.upload.UndoOsmQuestsUploader;
 import de.westnordost.streetcomplete.data.osmnotes.CreateNotesUploader;
-import de.westnordost.streetcomplete.data.osmnotes.OsmAvatarsDownload;
+import de.westnordost.streetcomplete.data.osmnotes.OsmAvatarsDownloader;
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestsChangesUploader;
 import de.westnordost.streetcomplete.data.upload.Uploader;
 import de.westnordost.streetcomplete.data.upload.VersionIsBannedChecker;
@@ -107,9 +107,9 @@ public class OsmModule
 		return new MapDataDao(osm);
 	}
 
-	@Provides public static OsmAvatarsDownload avatarsDownload(UserDao userDao, Context context)
+	@Provides public static OsmAvatarsDownloader avatarsDownload(UserDao userDao, Context context)
 	{
-		return new OsmAvatarsDownload(userDao, getAvatarsCacheDirectory(context));
+		return new OsmAvatarsDownloader(userDao, getAvatarsCacheDirectory(context));
 	}
 
 	@Provides public static StreetCompleteImageUploader imageUploader()

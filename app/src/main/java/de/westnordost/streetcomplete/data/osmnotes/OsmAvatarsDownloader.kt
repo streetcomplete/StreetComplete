@@ -12,7 +12,7 @@ import javax.inject.Inject
 import de.westnordost.osmapi.user.UserDao
 import de.westnordost.streetcomplete.ktx.saveToFile
 
-class OsmAvatarsDownload @Inject constructor(
+class OsmAvatarsDownloader @Inject constructor(
     private val userDao: UserDao,
     private val cacheDir: File
 ) {

@@ -23,13 +23,13 @@ import de.westnordost.streetcomplete.data.VisibleQuestListener;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
-public class OsmNotesDownloadTest
+public class OsmNotesDownloaderTest
 {
 	private NoteDao noteDB;
 	private OsmNoteQuestDao noteQuestDB;
 	private CreateNoteDao createNoteDB;
 	private SharedPreferences preferences;
-	private OsmAvatarsDownload avatarsDownload;
+	private OsmAvatarsDownloader avatarsDownload;
 
 	@Before public void setUp()
 	{
@@ -37,7 +37,7 @@ public class OsmNotesDownloadTest
 		noteQuestDB = mock(OsmNoteQuestDao.class);
 		createNoteDB = mock(CreateNoteDao.class);
 		preferences = mock(SharedPreferences.class);
-		avatarsDownload = mock(OsmAvatarsDownload.class);
+		avatarsDownload = mock(OsmAvatarsDownloader.class);
 	}
 
 	@Test public void deleteObsoleteQuests()
@@ -67,7 +67,7 @@ public class OsmNotesDownloadTest
 		notes.add(note1);
 		NotesDao noteServer = new TestListBasedNotesDao(notes);
 
-		OsmNotesDownload dl = new OsmNotesDownload(
+		OsmNotesDownloader dl = new OsmNotesDownloader(
 				noteServer, noteDB, noteQuestDB, createNoteDB, preferences, new OsmNoteQuestType(), avatarsDownload);
 
 		VisibleQuestListener listener = mock(VisibleQuestListener.class);

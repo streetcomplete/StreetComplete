@@ -22,7 +22,7 @@ import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.data.osm.*
 import de.westnordost.streetcomplete.util.SphericalEarthMath
 
-class OsmQuestDownload @Inject constructor(
+class OsmQuestDownloader @Inject constructor(
     private val geometryDB: ElementGeometryDao,
     private val elementDB: MergedElementDao,
     private val osmQuestDB: OsmQuestDao,

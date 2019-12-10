@@ -113,7 +113,7 @@ class QuestAutoSyncer @Inject constructor(
         if (!isAllowedByPreference) return
         val pos = pos ?: return
         if (!isConnected) return
-        if (questController.isPriorityDownloadRunning) return
+        if (questController.isPriorityDownloadInProgress) return
 
         Log.i(TAG, "Checking whether to automatically download new quests at ${pos.latitude},${pos.longitude}")
 

@@ -554,7 +554,7 @@ public class MainActivity extends AppCompatActivity implements
 			}
 			else
 			{
-				if (questController.isPriorityDownloadRunning())
+				if (questController.isPriorityDownloadInProgress())
 				{
 					new AlertDialog.Builder(this)
 							.setMessage(R.string.confirmation_cancel_prev_download_title)
@@ -761,7 +761,7 @@ public class MainActivity extends AppCompatActivity implements
 		{
 			runOnUiThread(() ->
 			{
-				if (downloadService.currentDownloadHasPriority())
+				if (questController.isPriorityDownloadInProgress())
 				{
 					Toast.makeText(MainActivity.this, R.string.nothing_more_to_download, Toast.LENGTH_SHORT).show();
 				}
