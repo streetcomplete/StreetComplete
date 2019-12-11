@@ -9,10 +9,20 @@ import de.westnordost.streetcomplete.ktx.isArea
 import de.westnordost.streetcomplete.util.SphericalEarthMath.*
 import kotlin.collections.ArrayList
 
+/** Creates an ElementGeometry from an element and a collection of positions. */
 class ElementGeometryCreator {
 
+    /** Create an ElementPointGeometry for a node. */
     fun create(node: Node) = ElementPointGeometry(node.position)
 
+    /**
+     * Create an ElementGeometry for a way
+     *
+     * @param way the way to create the geometry for
+     * @param wayGeometry the geometry of the way: A list of positions of its nodes.
+     *
+     * @return an ElementPolygonsGeometry if the way is an area or an ElementPolylinesGeometry
+     *          if the way is a linear feature */
     fun create(way: Way, wayGeometry: List<LatLon>): ElementGeometry? {
         val polyline = ArrayList(wayGeometry)
         polyline.eliminateDuplicates()
@@ -28,6 +38,15 @@ class ElementGeometryCreator {
         }
     }
 
+    /**
+     * Create an ElementGeometry for a relation
+     *
+     * @param relation the relation to create the geometry for
+     * @param wayGeometries the geometries of the ways that are members of the relation. It is a
+     *                      map of way ids to a list of positions.
+     *
+     * @return an ElementPolygonsGeometry if the relation describes an area or an
+     *         ElementPolylinesGeometry if it describes is a linear feature */
     fun create(relation: Relation, wayGeometries: Map<Long, List<LatLon>>): ElementGeometry? {
         return if (relation.isArea()) {
             createMultipolygonGeometry(relation, wayGeometries)

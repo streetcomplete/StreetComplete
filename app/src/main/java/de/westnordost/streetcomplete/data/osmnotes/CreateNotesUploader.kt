@@ -29,6 +29,11 @@ class CreateNotesUploader @Inject constructor(
 
     override var uploadedChangeListener: OnUploadedChangeListener? = null
 
+    /** Uploads all create notes from local DB and deletes them on successful upload.
+     *
+     *  Drops any notes where the upload failed because of a conflict but keeps any notes where
+     *  the upload failed because attached photos could not be uploaded (so it can try again
+     *  later). */
     @Synchronized override fun upload(cancelled: AtomicBoolean) {
         var created = 0
         var obsolete = 0

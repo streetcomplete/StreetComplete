@@ -11,10 +11,14 @@ import java.net.URLConnection
 
 import de.westnordost.streetcomplete.ApplicationConstants
 
-/** Upload and activate a list of image paths to an instance of https://github.com/exploide/sc-photo-service */
+/** Upload and activate a list of image paths to an instance of the
+ * <a href="https://github.com/exploide/sc-photo-service">StreetComplete image hosting service</a>
+ */
 class StreetCompleteImageUploader(private val baseUrl: String) {
 
-    /** Upload list of images. Throws a ImageUploadException if there was any error */
+    /** Upload list of images.
+     *
+     *  @throws ImageUploadException if there was any error */
     fun upload(imagePaths: List<String>?): List<String> {
         val imageLinks = ArrayList<String>()
 
@@ -57,7 +61,8 @@ class StreetCompleteImageUploader(private val baseUrl: String) {
         return imageLinks
     }
 
-    /** Activate the images in the given note. Throws a ImageActivationException if there was any error */
+    /** Activate the images in the given note.
+     *  @throws ImageActivationException if there was any error */
     fun activate(noteId: Long) {
         try {
             val connection = createConnection("activate.php")
