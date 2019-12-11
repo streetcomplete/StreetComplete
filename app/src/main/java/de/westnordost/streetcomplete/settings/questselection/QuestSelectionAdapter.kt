@@ -32,6 +32,7 @@ import androidx.recyclerview.widget.ItemTouchHelper.DOWN
 import androidx.recyclerview.widget.ItemTouchHelper.UP
 import de.westnordost.streetcomplete.data.osm.*
 import de.westnordost.streetcomplete.ktx.containsAny
+import de.westnordost.streetcomplete.settings.genericQuestTitle
 import kotlinx.android.synthetic.main.row_quest_selection.view.*
 
 class QuestSelectionAdapter @Inject constructor(
@@ -135,7 +136,7 @@ class QuestSelectionAdapter @Inject constructor(
             val colorResId = if (item.isInteractionEnabled) android.R.color.transparent else R.color.greyed_out
             itemView.setBackgroundResource(colorResId)
             questIcon.setImageResource(item.questType.icon)
-            questTitle.text = questTitle.resources.getString(item.questType.title, "…")
+            questTitle.text = genericQuestTitle(questTitle, item.questType)
             visibilityCheckBox.setOnCheckedChangeListener(null)
             visibilityCheckBox.isChecked = item.visible
             visibilityCheckBox.isEnabled = item.isInteractionEnabled
