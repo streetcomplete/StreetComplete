@@ -88,12 +88,12 @@ class AddHousenumber(private val overpass: OverpassMapDataAndGeometryDao) : OsmE
         return true
     }
 
-    private fun downloadBuildingsWithoutAddresses(bbox: BoundingBox): MutableMap<LatLon, ElementWithGeometry>? {
-        val buildingsByCenterPoint = mutableMapOf<LatLon, ElementWithGeometry>()
+    private fun downloadBuildingsWithoutAddresses(bbox: BoundingBox): MutableMap<LatLon, ElementWithArea>? {
+        val buildingsByCenterPoint = mutableMapOf<LatLon, ElementWithArea>()
         val query = getBuildingsWithoutAddressesOverpassQuery(bbox)
         val success = overpass.query(query) { element, geometry ->
             if (geometry is ElementPolygonsGeometry) {
-                buildingsByCenterPoint[geometry.center] = ElementWithGeometry(element, geometry)
+                buildingsByCenterPoint[geometry.center] = ElementWithArea(element, geometry)
             }
         }
         return if (success) buildingsByCenterPoint else null
@@ -124,7 +124,7 @@ class AddHousenumber(private val overpass: OverpassMapDataAndGeometryDao) : OsmE
         return null
     }
 
-    private fun getBoundingBoxThatIncludes(buildings: Iterable<ElementWithGeometry>): BoundingBox {
+    private fun getBoundingBoxThatIncludes(buildings: Iterable<ElementWithArea>): BoundingBox {
         // see #885: The area in which the app should search for address nodes (and areas) must be
         // adjusted to the bounding box of all the buildings found. The found buildings may in parts
         // not be within the specified bounding box. But in exactly that part, there may be an
@@ -203,7 +203,7 @@ private fun getFreeFloatingAddressesOverpassQuery(bbox: BoundingBox): String {
             """.trimIndent()
 }
 
-private data class ElementWithGeometry(val element: Element, val geometry: ElementPolygonsGeometry)
+private data class ElementWithArea(val element: Element, val geometry: ElementPolygonsGeometry)
 
 private const val ANY_ADDRESS_FILTER =
     "[~'^addr:(housenumber|housename|conscriptionnumber|streetnumber)$'~'.']"
