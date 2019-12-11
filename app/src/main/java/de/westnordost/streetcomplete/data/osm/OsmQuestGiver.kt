@@ -50,7 +50,7 @@ class OsmQuestGiver @Inject constructor(
 
             val appliesToElement = questType.isApplicableTo(element) ?: continue
             val countries = questType.enabledInCountries
-            val isEnabledForCountry = countries.containsPosition(geometry.center, countryBoundariesFuture.get())
+            val isEnabledForCountry = countryBoundariesFuture.get().isInAny(geometry.center, countries)
 
             val hasQuest = currentQuests.containsKey(questType)
             if (appliesToElement && !hasQuest && !hasNote && isEnabledForCountry) {

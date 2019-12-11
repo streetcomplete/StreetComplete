@@ -36,7 +36,7 @@ class OsmQuestDownloader @Inject constructor(
         val questTypeName = questType.getName()
 
         val countries = questType.enabledInCountries
-        if (!countries.intersectsBBox(bbox, countryBoundaries)) {
+        if (!countryBoundaries.intersects(bbox, countries)) {
             Log.i(TAG, "$questTypeName: Skipped because it is disabled for this country")
             return true
         }
@@ -125,7 +125,7 @@ class OsmQuestDownloader @Inject constructor(
 
         // do not create quests in countries where the quest is not activated
         val countries = questType.enabledInCountries
-        if (!countries.containsPosition(pos, countryBoundaries)) {
+        if (!countryBoundaries.isInAny(pos, countries)) {
             Log.d(TAG, "$questTypeName: Not adding a quest at ${pos.toLogString()} because the quest is disabled in this country")
             return false
         }
