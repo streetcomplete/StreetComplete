@@ -21,7 +21,7 @@ class OsmNoteQuestsChangesUploaderTest {
     private lateinit var noteDB: NoteDao
     private lateinit var questDB: OsmNoteQuestDao
     private lateinit var questStatisticsDb: QuestStatisticsDao
-    private lateinit var singleNoteUploader: SingleOsmNoteQuestChangesUpload
+    private lateinit var singleNoteUploader: SingleOsmNoteQuestChangesUploader
     private lateinit var uploader: OsmNoteQuestsChangesUploader
 
     @Before fun setUp() {

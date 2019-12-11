@@ -11,15 +11,18 @@ import de.westnordost.streetcomplete.data.osm.upload.ConflictException
 import java.util.*
 import javax.inject.Inject
 
-/** Create a note at the given position, or, if there is already a note at the exact same
- * position AND its associated element is the same, adds the user's message as another comment.
- *
- * Throws a ConflictException and does not add the note comment if that note has already
- * been closed because the contribution is very likely obsolete (based on old data) */
-class SingleCreateNoteUpload @Inject constructor(
+/** Uploads a single note or note comment */
+class SingleCreateNoteUploader @Inject constructor(
     private val osmDao: NotesDao,
     private val imageUploader: StreetCompleteImageUploader
 ) {
+    /** Creates a new note or if a note at this exact position and for this element already exists,
+     *  instead adds a comment to the existing note
+     *
+     * @throws ImageUploadException if any attached photo could not be uploaded
+     * @throws ConflictException if a note has already been created for this element but that note
+     *                           has is now closed
+     */
     fun upload(n: CreateNote): Note {
         if (n.elementKey != null) {
             val oldNote = findAlreadyExistingNoteWithSameAssociatedElement(n)

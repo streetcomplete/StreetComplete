@@ -23,7 +23,7 @@ class CreateNotesUploader @Inject constructor(
     private val mapDataDao: MapDataDao,
     private val questType: OsmNoteQuestType,
     private val statisticsDB: QuestStatisticsDao,
-    private val singleCreateNoteUpload: SingleCreateNoteUpload
+    private val singleCreateNoteUploader: SingleCreateNoteUploader
 ): Uploader {
     private val TAG = "CreateNotesUpload"
 
@@ -74,7 +74,7 @@ class CreateNotesUploader @Inject constructor(
         if (n.isAssociatedElementDeleted())
             throw ElementDeletedException("Associated element deleted")
         
-        return singleCreateNoteUpload.upload(n)
+        return singleCreateNoteUploader.upload(n)
     }
 
     private fun CreateNote.isAssociatedElementDeleted(): Boolean {

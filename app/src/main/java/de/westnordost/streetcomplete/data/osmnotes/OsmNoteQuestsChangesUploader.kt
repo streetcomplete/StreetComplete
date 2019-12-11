@@ -16,7 +16,7 @@ class OsmNoteQuestsChangesUploader @Inject constructor(
         private val questDB: OsmNoteQuestDao,
         private val statisticsDB: QuestStatisticsDao,
         private val noteDB: NoteDao,
-        private val singleNoteUpload: SingleOsmNoteQuestChangesUpload
+        private val singleNoteUploader: SingleOsmNoteQuestChangesUploader
 ): Uploader {
     private val TAG = "CommentNoteUpload"
 
@@ -30,7 +30,7 @@ class OsmNoteQuestsChangesUploader @Inject constructor(
             if (cancelled.get()) break
 
             try {
-                val newNote = singleNoteUpload.upload(quest)
+                val newNote = singleNoteUploader.upload(quest)
 
                 /* Unlike OSM quests, note quests are never deleted when the user contributed to it
                    but must remain in the database with the status CLOSED as long as they are not

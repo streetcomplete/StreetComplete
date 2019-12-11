@@ -16,16 +16,16 @@ import org.mockito.Mockito
 import org.mockito.Mockito.never
 import org.mockito.Mockito.verify
 
-class SingleOsmNoteQuestChangesUploadTest {
+class SingleOsmNoteQuestChangesUploaderTest {
     private lateinit var osmDao: NotesDao
     private lateinit var imageUploader: StreetCompleteImageUploader
-    private lateinit var noteUploader: SingleOsmNoteQuestChangesUpload
+    private lateinit var noteUploader: SingleOsmNoteQuestChangesUploader
 
     @Before fun setUp() {
         osmDao = mock()
         on(osmDao.comment(anyLong(), any())).thenReturn(createNote())
         imageUploader = mock()
-        noteUploader = SingleOsmNoteQuestChangesUpload(osmDao, imageUploader)
+        noteUploader = SingleOsmNoteQuestChangesUploader(osmDao, imageUploader)
     }
 
     @Test fun `uploads comment with no pictures`() {

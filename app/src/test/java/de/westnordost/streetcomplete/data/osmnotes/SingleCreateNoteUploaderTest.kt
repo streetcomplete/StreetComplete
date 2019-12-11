@@ -18,15 +18,15 @@ import org.junit.Test
 import org.mockito.Mockito.*
 import java.util.*
 
-class SingleCreateNoteUploadTest {
+class SingleCreateNoteUploaderTest {
     private lateinit var notesDao: NotesDao
     private lateinit var imageUploader: StreetCompleteImageUploader
-    private lateinit var uploader: SingleCreateNoteUpload
+    private lateinit var uploader: SingleCreateNoteUploader
 
     @Before fun setUp() {
         notesDao = mock()
         imageUploader = mock()
-        uploader = SingleCreateNoteUpload(notesDao, imageUploader)
+        uploader = SingleCreateNoteUploader(notesDao, imageUploader)
     }
 
     @Test fun `upload createNote on existing note will comment on existing note`() {
