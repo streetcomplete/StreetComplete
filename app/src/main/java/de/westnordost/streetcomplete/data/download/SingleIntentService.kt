@@ -84,7 +84,7 @@ abstract class SingleIntentService(private val name: String) : Service() {
     @WorkerThread protected abstract fun onHandleIntent(intent: Intent?, cancelState: AtomicBoolean)
 
     fun cancel() {
-	    serviceHandler.removeCallbacksAndMessages(null)
-	    cancelState.set(true)
+        serviceHandler.removeCallbacksAndMessages(null)
+        cancelState.set(true)
     }
 }

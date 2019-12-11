@@ -19,10 +19,10 @@ class OverpassMapDataAndGeometryDaoTest {
         val provider = mock<Provider<MapDataWithGeometryParser>>()
         on(provider.get()).thenReturn(mock())
 
-	    val status = OverpassStatus()
-	    status.availableSlots = 0
-	    status.nextAvailableSlotIn = 1
-	    status.maxAvailableSlots = 2
+        val status = OverpassStatus()
+        status.availableSlots = 0
+        status.nextAvailableSlotIn = 1
+        status.maxAvailableSlots = 2
 
         val overpass = mock<OverpassMapDataDao>()
         on(overpass.getStatus()).thenReturn(status)
@@ -31,9 +31,9 @@ class OverpassMapDataAndGeometryDaoTest {
         // the dao will call get(), get an exception in return, ask its status
         // then and at least wait for the specified amount of time before calling again
         var result = false
-	    val dlThread = thread {
-		    result = dao.query("") { _, _ -> Unit }
-	    }
+        val dlThread = thread {
+            result = dao.query("") { _, _ -> Unit }
+        }
         // sleep the wait time: Downloader should not try to call
         // overpass again in this time
         Thread.sleep(status.nextAvailableSlotIn!! * 1000L)

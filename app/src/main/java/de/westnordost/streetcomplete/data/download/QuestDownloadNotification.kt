@@ -9,16 +9,13 @@ import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.MainActivity
 import de.westnordost.streetcomplete.R
 
+/** Shows a download progress notification */
 class QuestDownloadNotification(
     private val service: Service,
     notificationChannelId: String,
     private val notificationId: Int
 ) {
-    private val notificationBuilder: Notification.Builder
-
-    init {
-        notificationBuilder = createNotificationBuilder(notificationChannelId)
-    }
+    private val notificationBuilder = createNotificationBuilder(notificationChannelId)
 
     fun showProgress(progress: Float) {
         val progress1000 = (progress * 1000).toInt()

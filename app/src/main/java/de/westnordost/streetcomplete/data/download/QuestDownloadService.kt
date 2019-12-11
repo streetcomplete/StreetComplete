@@ -15,7 +15,7 @@ import javax.inject.Inject
 import javax.inject.Provider
 
 /** Downloads all quests in a given area asynchronously. To use, start the service with the
- * appropriate parameters. (see #onStartCommand)
+ * appropriate parameters.
  *
  * Generally, starting a new download cancels the old one. This is a feature; Consideration:
  * If the user requests a new area to be downloaded, he'll generally be more interested in his last
@@ -30,7 +30,7 @@ import javax.inject.Provider
  * download job was started by the user
  */
 class QuestDownloadService : SingleIntentService(TAG) {
-	@Inject internal lateinit var questDownloaderProvider: Provider<QuestDownloader>
+    @Inject internal lateinit var questDownloaderProvider: Provider<QuestDownloader>
 
     // interface
     private val binder: IBinder = Interface()
@@ -43,17 +43,19 @@ class QuestDownloadService : SingleIntentService(TAG) {
     private var isPriorityDownload: Boolean = false
 
     init {
-		Injector.instance.applicationComponent.inject(this)
-	}
+        Injector.instance.applicationComponent.inject(this)
+    }
 
     override fun onCreate() {
         super.onCreate()
-        progressListenerRelay = QuestDownloadProgressRelay(QuestDownloadNotification(this, ApplicationConstants.NOTIFICATIONS_CHANNEL_DOWNLOAD, 1))
+        progressListenerRelay = QuestDownloadProgressRelay(
+            QuestDownloadNotification(this, ApplicationConstants.NOTIFICATIONS_CHANNEL_DOWNLOAD, 1)
+        )
     }
 
-	override fun onBind(intent: Intent): IBinder {
-		return binder
-	}
+    override fun onBind(intent: Intent): IBinder {
+        return binder
+    }
 
     override fun onHandleIntent(intent: Intent?, cancelState: AtomicBoolean) {
         if (cancelState.get()) return
@@ -97,6 +99,7 @@ class QuestDownloadService : SingleIntentService(TAG) {
             progressListenerRelay.stopForeground()
         }
     }
+
     companion object {
         private const val TAG = "QuestDownload"
         const val ARG_TILES_RECT = "tilesRect"
@@ -107,7 +110,7 @@ class QuestDownloadService : SingleIntentService(TAG) {
             val intent = Intent(context, QuestDownloadService::class.java)
             intent.putExtra(ARG_TILES_RECT, tilesRect)
             intent.putExtra(ARG_IS_PRIORITY, isPriority)
-	        maxQuestTypesToDownload?.let { intent.putExtra(ARG_MAX_QUEST_TYPES, it) }
+            maxQuestTypesToDownload?.let { intent.putExtra(ARG_MAX_QUEST_TYPES, it) }
             return intent
         }
     }
