@@ -148,7 +148,7 @@ class QuestController @Inject constructor(
         )
 
         osmQuestDB.deleteAllIds(questIdsForThisOsmElement)
-        onQuestsRemoved(questIdsForThisOsmElement, QuestGroup.OSM)
+        listener?.onQuestsRemoved(questIdsForThisOsmElement, QuestGroup.OSM)
 
         osmElementDB.deleteUnreferenced()
         geometryDB.deleteUnreferenced()
@@ -175,7 +175,7 @@ class QuestController @Inject constructor(
             QuestGroup.OSM ->      solveOsmQuest(questId, answer, source)
             QuestGroup.OSM_NOTE -> solveOsmNoteQuest(questId, answer as NoteAnswer)
         }
-        onQuestsRemoved(listOf(questId), group)
+        listener?.onQuestsRemoved(listOf(questId), group)
         return success
     }
 
@@ -192,7 +192,7 @@ class QuestController @Inject constructor(
                 quest.undo()
                 osmQuestDB.update(quest)
                 // inform relay that the quest is visible again
-                onQuestsCreated(listOf(quest), QuestGroup.OSM)
+                listener?.onQuestsCreated(listOf(quest), QuestGroup.OSM)
             }
             // already uploaded! -> create change to reverse the previous change
             QuestStatus.CLOSED -> {
@@ -263,14 +263,14 @@ class QuestController @Inject constructor(
                 if (q?.status != QuestStatus.NEW) return
                 q.hide()
                 osmQuestDB.update(q)
-                onQuestsRemoved(listOf(q.id!!), group)
+                listener?.onQuestsRemoved(listOf(q.id!!), group)
             }
             QuestGroup.OSM_NOTE -> {
                 val q = osmNoteQuestDB.get(questId)
                 if (q?.status != QuestStatus.NEW) return
                 q.hide()
                 osmNoteQuestDB.update(q)
-                onQuestsRemoved(listOf(q.id!!), group)
+                listener?.onQuestsRemoved(listOf(q.id!!), group)
             }
         }
     }
@@ -291,12 +291,12 @@ class QuestController @Inject constructor(
                 bounds = bbox,
                 questTypes = questTypeNames
             )
-            if (osmQuests.isNotEmpty()) onQuestsCreated(osmQuests, QuestGroup.OSM)
+            if (osmQuests.isNotEmpty()) listener?.onQuestsCreated(osmQuests, QuestGroup.OSM)
 
             val osmNoteQuests = osmNoteQuestDB.getAll(
                 statusIn = listOf(QuestStatus.NEW),
                 bounds = bbox)
-            if (osmNoteQuests.isNotEmpty()) onQuestsCreated(osmNoteQuests, QuestGroup.OSM_NOTE)
+            if (osmNoteQuests.isNotEmpty()) listener?.onQuestsCreated(osmNoteQuests, QuestGroup.OSM_NOTE)
         }
     }
 
@@ -341,16 +341,8 @@ class QuestController @Inject constructor(
         }
     }
 
-    private fun onQuestsCreated(quests: Collection<Quest>, group: QuestGroup) {
-        launch(Dispatchers.Main) { listener?.onQuestsCreated(quests, group) }
-    }
-    private fun onQuestsRemoved(questIds: Collection<Long>, group: QuestGroup) {
-        launch(Dispatchers.Main) { listener?.onQuestsRemoved(questIds, group) }
-    }
-
     companion object {
         private const val TAG = "QuestController"
     }
 }
 
-// TODO post onVisibleQuestBla to UI thread?
