@@ -38,15 +38,13 @@ class QuestDownloader @Inject constructor(
     var progressListener: QuestDownloadProgressListener? = null
 
     // state
-    private lateinit var tiles: Rect
-    private lateinit var bbox: BoundingBox
     private var downloadedQuestTypes = 0
     private var totalQuestTypes = 0
 
     @Synchronized fun download(tiles: Rect, maxQuestTypes: Int?, cancelState: AtomicBoolean) {
         if (cancelState.get()) return
 
-        val questTypes = getQuestTypesToDownload(maxQuestTypes)
+        val questTypes = getQuestTypesToDownload(tiles, maxQuestTypes)
         if (questTypes.isEmpty()) {
             progressListener?.onNotStarted()
             return
@@ -54,19 +52,19 @@ class QuestDownloader @Inject constructor(
 
         totalQuestTypes = questTypes.size
         downloadedQuestTypes = 0
-        this.tiles = tiles
-        bbox = SlippyMapMath.asBoundingBox(tiles, ApplicationConstants.QUEST_TILE_ZOOM)
+
+        val bbox = SlippyMapMath.asBoundingBox(tiles, ApplicationConstants.QUEST_TILE_ZOOM)
 
         Log.i(TAG, "(${bbox.asLeftBottomRightTopString}) Starting")
         progressListener?.onStarted()
         try {
             val notesPositions =
-                if (questTypes.contains(getOsmNoteQuestType())) downloadNotes()
+                if (questTypes.contains(getOsmNoteQuestType())) downloadNotes(bbox, tiles)
                 else osmNoteQuestDb.getAllPositions(bbox).toSet()
 
             for (questType in questTypes) {
                 if (cancelState.get()) break
-                downloadQuestType(questType, notesPositions)
+                downloadQuestType(bbox, tiles, questType, notesPositions)
             }
             progressListener?.onSuccess()
         } finally {
@@ -78,7 +76,7 @@ class QuestDownloader @Inject constructor(
     private fun getOsmNoteQuestType() =
         questTypeRegistry.getByName(OsmNoteQuestType::class.java.simpleName)!!
 
-    private fun getQuestTypesToDownload(maxQuestTypes: Int?): List<QuestType<*>> {
+    private fun getQuestTypesToDownload(tiles: Rect, maxQuestTypes: Int?): List<QuestType<*>> {
         val result = questTypesProvider.get().toMutableList()
         val questExpirationTime = ApplicationConstants.REFRESH_QUESTS_AFTER
         val ignoreOlderThan = max(0, System.currentTimeMillis() - questExpirationTime)
@@ -88,13 +86,13 @@ class QuestDownloader @Inject constructor(
             result.removeAll(alreadyDownloaded)
             Log.i(TAG, "Not downloading quest types because they are in local storage already: ${alreadyDownloadedNames.joinToString()}")
         }
-        return if (maxQuestTypes != null)
+        return if (maxQuestTypes != null && maxQuestTypes < result.size)
             result.subList(0, maxQuestTypes)
         else
             result
     }
 
-    private fun downloadNotes(): Set<LatLon> {
+    private fun downloadNotes(bbox: BoundingBox, tiles: Rect): Set<LatLon> {
         val notesDownload = osmNotesDownloaderProvider.get()
         notesDownload.questListener = questListener
         val userId: Long? = prefs.getLong(Prefs.OSM_USER_ID, -1L).takeIf { it != -1L }
@@ -105,7 +103,7 @@ class QuestDownloader @Inject constructor(
         return result
     }
 
-    private fun downloadQuestType(questType: QuestType<*>, notesPositions: Set<LatLon>) {
+    private fun downloadQuestType(bbox: BoundingBox, tiles: Rect, questType: QuestType<*>, notesPositions: Set<LatLon>) {
         if (questType is OsmElementQuestType<*>) {
             val questDownload = osmQuestDownloaderProvider.get()
             questDownload.questListener = questListener
