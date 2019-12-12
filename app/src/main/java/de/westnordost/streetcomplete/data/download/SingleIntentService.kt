@@ -19,7 +19,7 @@ abstract class SingleIntentService(private val name: String) : Service() {
 
     @Volatile private lateinit var serviceLooper: Looper
     @Volatile private lateinit var serviceHandler: ServiceHandler
-    private lateinit var cancelState: AtomicBoolean
+    private var cancelState: AtomicBoolean = AtomicBoolean(false)
 
     private inner class ServiceHandler(looper: Looper?) : Handler(looper) {
         override fun handleMessage(msg: Message) {
