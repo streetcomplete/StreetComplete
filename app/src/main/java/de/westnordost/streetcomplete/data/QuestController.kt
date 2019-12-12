@@ -42,8 +42,9 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
 import kotlinx.coroutines.*
+import javax.inject.Singleton
 
-class QuestController @Inject constructor(
+@Singleton class QuestController @Inject constructor(
     private val osmQuestDB: OsmQuestDao,
     private val undoOsmQuestDB: UndoOsmQuestDao,
     private val osmElementDB: MergedElementDao,

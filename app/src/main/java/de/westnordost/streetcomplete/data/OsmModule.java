@@ -67,7 +67,7 @@ public class OsmModule
 	// or maybe a bit late response rather than trigger timeout exception
 	private static int OVERPASS_QUERY_TIMEOUT_IN_MILISECONDS = (180 + 4) * 1000;
 
-	@Provides public static OverpassMapDataDao overpassMapDataDao(SharedPreferences prefs) {
+	@Provides @Singleton public static OverpassMapDataDao overpassMapDataDao(SharedPreferences prefs) {
 		Integer timeout = OVERPASS_QUERY_TIMEOUT_IN_MILISECONDS;
 		OsmConnection overpassConnection = new OsmConnection(
 			prefs.getString(Prefs.OVERPASS_URL, OVERPASS_API_WITH_ATTIC_DATA_URL),
