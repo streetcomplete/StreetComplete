@@ -41,6 +41,7 @@ class QuestDownloadService : SingleIntentService(TAG) {
 
     // state
     private var isPriorityDownload: Boolean = false
+    private var isDownloading: Boolean = false
 
     init {
         Injector.instance.applicationComponent.inject(this)
@@ -71,8 +72,10 @@ class QuestDownloadService : SingleIntentService(TAG) {
         dl.questListener = visibleQuestRelay
         try {
             isPriorityDownload = intent.hasExtra(ARG_IS_PRIORITY)
+            isDownloading = true
             dl.download(tiles, maxQuestTypes, cancelState)
             isPriorityDownload = false
+            isDownloading = false
         } catch (e: Exception) {
             Log.e(TAG, "Unable to download quests", e)
             progressListenerRelay.onError(e)
@@ -90,6 +93,8 @@ class QuestDownloadService : SingleIntentService(TAG) {
         }
 
         val isPriorityDownloadInProgress: Boolean get() = isPriorityDownload
+
+        val isDownloadInProgress: Boolean get() = isDownloading
 
         fun startForeground() {
             progressListenerRelay.startForeground()

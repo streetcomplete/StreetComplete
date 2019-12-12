@@ -91,10 +91,13 @@ class QuestController @Inject constructor(
 
     private val questTypeNames get() = questTypesProvider.get().map { it.javaClass.simpleName }
 
-    /** @return true if a quest download triggered by the user is running
-     */
+    /** @return true if a quest download triggered by the user is running */
     val isPriorityDownloadInProgress: Boolean get() =
         downloadService?.isPriorityDownloadInProgress == true
+
+    /** @return true if a quest download is running */
+    val isDownloadInProgress: Boolean get() =
+        downloadService?.isDownloadInProgress == true
 
     @OnLifecycleEvent(Lifecycle.Event.ON_START) fun onStart() {
         downloadServiceIsBound = context.bindService(
