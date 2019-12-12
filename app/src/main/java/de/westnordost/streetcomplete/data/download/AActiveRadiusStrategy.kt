@@ -42,16 +42,19 @@ abstract class AActiveRadiusStrategy(
             Log.i(TAG, "Not downloading quests because everything has been downloaded already in ${radius}m radius")
             return false
         }
-        val areaInKm2 = SphericalEarthMath.enclosedArea(bbox) / 1000.0 / 1000.0
-        // got enough quests in vicinity
-        val visibleQuests = osmQuestDB.getCount(
-            statusIn = listOf(QuestStatus.NEW),
-            bounds = bbox,
-            questTypes = notAlreadyDownloaded
-        )
-        if (visibleQuests / areaInKm2 > minQuestsInActiveRadiusPerKm2) {
-            Log.i(TAG, "Not downloading quests because there are enough quests in ${radius}m radius")
-            return false
+
+        if (alreadyDownloaded.isNotEmpty()) {
+            val areaInKm2 = SphericalEarthMath.enclosedArea(bbox) / 1000.0 / 1000.0
+            // got enough quests in vicinity
+            val visibleQuests = osmQuestDB.getCount(
+                statusIn = listOf(QuestStatus.NEW),
+                bounds = bbox,
+                questTypes = alreadyDownloaded
+            )
+            if (visibleQuests / areaInKm2 > minQuestsInActiveRadiusPerKm2) {
+                Log.i(TAG, "Not downloading quests because there are enough quests in ${radius}m radius")
+                return false
+            }
         }
 
         return true
