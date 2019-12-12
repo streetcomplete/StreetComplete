@@ -8,6 +8,8 @@ import java.util.concurrent.FutureTask
 import javax.inject.Inject
 
 import de.westnordost.countryboundaries.CountryBoundaries
+import de.westnordost.countryboundaries.intersects
+import de.westnordost.countryboundaries.isInAny
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.data.QuestGroup
 import de.westnordost.streetcomplete.data.QuestType

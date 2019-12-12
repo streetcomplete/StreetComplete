@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.data.osm
 
 import android.util.Log
 import de.westnordost.countryboundaries.CountryBoundaries
+import de.westnordost.countryboundaries.isInAny
 
 
 import javax.inject.Inject
