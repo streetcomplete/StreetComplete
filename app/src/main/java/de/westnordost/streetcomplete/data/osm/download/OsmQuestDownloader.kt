@@ -42,7 +42,6 @@ class OsmQuestDownloader @Inject constructor(
             Log.i(TAG, "$questTypeName: Skipped because it is disabled for this country")
             return true
         }
-        Log.i(TAG, "$questTypeName: Starting")
 
         val geometryRows = ArrayList<ElementGeometryEntry>()
         val elements = HashMap<ElementKey, Element>()
@@ -91,7 +90,7 @@ class OsmQuestDownloader @Inject constructor(
 
         val obsoleteAmount = previousQuestIdsByElement.size
         val secondsSpent = (System.currentTimeMillis() - time) / 1000
-        Log.i(TAG,"$questTypeName: Added $newAmount new and removed $obsoleteAmount already resolved quests. (Total: ${quests.size}) in ${secondsSpent}s")
+        Log.i(TAG,"$questTypeName: Added $newAmount new and removed $obsoleteAmount already resolved quests (total: ${quests.size}) in ${secondsSpent}s")
 
         return true
     }

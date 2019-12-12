@@ -56,6 +56,8 @@ class QuestDownloader @Inject constructor(
         val bbox = SlippyMapMath.asBoundingBox(tiles, ApplicationConstants.QUEST_TILE_ZOOM)
 
         Log.i(TAG, "(${bbox.asLeftBottomRightTopString}) Starting")
+        Log.i(TAG, "Quest types to download: ${questTypes.joinToString { it.javaClass.simpleName }}")
+
         progressListener?.onStarted()
         try {
             val notesPositions =
@@ -84,7 +86,7 @@ class QuestDownloader @Inject constructor(
         if (alreadyDownloadedNames.isNotEmpty()) {
             val alreadyDownloaded = alreadyDownloadedNames.map { questTypeRegistry.getByName(it) }
             result.removeAll(alreadyDownloaded)
-            Log.i(TAG, "Not downloading quest types because they are in local storage already: ${alreadyDownloadedNames.joinToString()}")
+            Log.i(TAG, "Quest types already in local store: ${alreadyDownloadedNames.joinToString()}")
         }
         return if (maxQuestTypes != null && maxQuestTypes < result.size)
             result.subList(0, maxQuestTypes)
