@@ -3,13 +3,13 @@ package de.westnordost.streetcomplete
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
 import de.westnordost.streetcomplete.quests.QuestModule
 
 fun main() {
 
-    val overpassMock: OverpassMapDataDao = mock()
-    on(overpassMock.getAndHandleQuota(any(), any())).then { invocation ->
+    val overpassMock: OverpassMapDataAndGeometryDao = mock()
+    on(overpassMock.query(any(), any())).then { invocation ->
         var query = invocation.getArgument(0) as String
         // make query overpass-turbo friendly
         query = query
@@ -19,7 +19,7 @@ fun main() {
         true
     }
 
-    val registry = QuestModule.questTypeRegistry(mock(), overpassMock, mock(), mock(), mock(), mock(), mock())
+    val registry = QuestModule.questTypeRegistry(mock(), overpassMock, mock(), mock(), mock(), mock())
 
     val bbox = BoundingBox(0.0,0.0,1.0,1.0)
 

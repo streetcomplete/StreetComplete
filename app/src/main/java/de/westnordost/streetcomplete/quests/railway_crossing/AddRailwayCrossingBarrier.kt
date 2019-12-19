@@ -3,14 +3,14 @@ package de.westnordost.streetcomplete.quests.railway_crossing
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandler
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
 import de.westnordost.streetcomplete.data.osm.tql.getQuestPrintStatement
 import de.westnordost.streetcomplete.data.osm.tql.toGlobalOverpassBBox
 
-class AddRailwayCrossingBarrier(private val overpassMapDataDao: OverpassMapDataDao) : OsmElementQuestType<String> {
+class AddRailwayCrossingBarrier(private val overpassMapDataDao: OverpassMapDataAndGeometryDao) : OsmElementQuestType<String> {
     override val commitMessage = "Add type of barrier for railway crossing"
     override val icon = R.drawable.ic_quest_railway
 
@@ -18,8 +18,8 @@ class AddRailwayCrossingBarrier(private val overpassMapDataDao: OverpassMapDataD
 
     override fun createForm() = AddRailwayCrossingBarrierForm()
 
-    override fun download(bbox: BoundingBox, handler: MapDataWithGeometryHandler): Boolean {
-        return overpassMapDataDao.getAndHandleQuota(getOverpassQuery(bbox), handler);
+    override fun download(bbox: BoundingBox, handler: (element: Element, geometry: ElementGeometry?) -> Unit): Boolean {
+        return overpassMapDataDao.query(getOverpassQuery(bbox), handler);
     }
 
     override fun isApplicableTo(element: Element): Boolean? = null

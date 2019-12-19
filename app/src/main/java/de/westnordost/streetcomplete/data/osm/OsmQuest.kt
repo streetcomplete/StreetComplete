@@ -47,6 +47,30 @@ data class OsmQuest(
 
     override fun isApplicableTo(element: Element) = osmElementQuestType.isApplicableTo(element)
 
+    fun solve(changes: StringMapChanges, source: String) {
+        this.changes = changes
+        this.changesSource = source
+        status = QuestStatus.ANSWERED
+    }
+
+    fun undo() {
+        status = QuestStatus.NEW
+        changes = null
+        changesSource = null
+    }
+
+    fun revert() {
+        status = QuestStatus.REVERT
+    }
+
+    fun hide() {
+        status = QuestStatus.HIDDEN
+    }
+
+    fun close() {
+        status = QuestStatus.CLOSED
+    }
+
     /* --------------------------- UploadableInChangeset --------------------------- */
 
     override val source: String get() = changesSource!!

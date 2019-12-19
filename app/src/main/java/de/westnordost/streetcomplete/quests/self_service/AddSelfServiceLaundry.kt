@@ -3,10 +3,10 @@ package de.westnordost.streetcomplete.quests.self_service
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
-class AddSelfServiceLaundry(o: OverpassMapDataDao) : SimpleOverpassQuestType<Boolean>(o) {
+class AddSelfServiceLaundry(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<Boolean>(o) {
 
     override val tagFilters = "nodes, ways with shop=laundry and !self_service"
     override val commitMessage = "Add self service info"

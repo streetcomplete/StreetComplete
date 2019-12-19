@@ -3,9 +3,9 @@ package de.westnordost.streetcomplete.quests.orchard_produce
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
 
-class AddOrchardProduce(o: OverpassMapDataDao) : SimpleOverpassQuestType<List<String>>(o) {
+class AddOrchardProduce(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<List<String>>(o) {
 
     override val tagFilters = """
         ways, relations with

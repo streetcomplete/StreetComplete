@@ -3,9 +3,9 @@ package de.westnordost.streetcomplete.quests.wheelchair_access
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
 
-class AddWheelchairAccessPublicTransport(o: OverpassMapDataDao) : SimpleOverpassQuestType<String>(o) {
+class AddWheelchairAccessPublicTransport(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<String>(o) {
 
     override val tagFilters = """
         nodes, ways, relations with (amenity = bus_station or railway ~ station|subway_entrance)

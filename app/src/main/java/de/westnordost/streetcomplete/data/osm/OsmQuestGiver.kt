@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.data.osm
 
 import android.util.Log
 import de.westnordost.countryboundaries.CountryBoundaries
+import de.westnordost.countryboundaries.isInAny
 
 
 import javax.inject.Inject
@@ -27,8 +28,6 @@ class OsmQuestGiver @Inject constructor(
     private val countryBoundariesFuture: FutureTask<CountryBoundaries>
 ) {
 
-    private val TAG = "OsmQuestGiver"
-
     data class QuestUpdates(val createdQuests: List<OsmQuest>, val removedQuestIds: List<Long>)
 
     fun updateQuests(element: Element): QuestUpdates {
@@ -49,11 +48,8 @@ class OsmQuestGiver @Inject constructor(
             if (questType !is OsmElementQuestType<*>) continue
 
             val appliesToElement = questType.isApplicableTo(element) ?: continue
-            val countries = questType.enabledForCountries
-            val isEnabledForCountry = !countries.isNoCountries && (countries.isAllCountries || countryBoundariesFuture.get().isInAny(
-                geometry.center.longitude,
-                geometry.center.latitude,
-                countries.exceptions) != countries.isAllExcept)
+            val countries = questType.enabledInCountries
+            val isEnabledForCountry = countryBoundariesFuture.get().isInAny(geometry.center, countries)
 
             val hasQuest = currentQuests.containsKey(questType)
             if (appliesToElement && !hasQuest && !hasNote && isEnabledForCountry) {
@@ -114,5 +110,9 @@ class OsmQuestGiver @Inject constructor(
             result[quest.type] = quest
         }
         return result
+    }
+
+    companion object {
+        private const val TAG = "OsmQuestGiver"
     }
 }

@@ -3,9 +3,9 @@ package de.westnordost.streetcomplete.quests.car_wash_type
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
 
-class AddCarWashType(o: OverpassMapDataDao) : SimpleOverpassQuestType<CarWashType>(o) {
+class AddCarWashType(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<CarWashType>(o) {
 
     override val tagFilters = "nodes, ways with amenity = car_wash and !automated and !self_service"
     override val commitMessage = "Add car wash type"

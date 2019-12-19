@@ -1,12 +1,12 @@
 package de.westnordost.streetcomplete.quests.postbox_collection_times
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.Countries
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
+import de.westnordost.streetcomplete.data.osm.NoCountriesExcept
 
-class AddPostboxCollectionTimes(o: OverpassMapDataDao) : SimpleOverpassQuestType<CollectionTimesAnswer>(o) {
+class AddPostboxCollectionTimes(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<CollectionTimesAnswer>(o) {
 
     override val tagFilters = """
         nodes with amenity=post_box and !collection_times
@@ -20,7 +20,7 @@ class AddPostboxCollectionTimes(o: OverpassMapDataDao) : SimpleOverpassQuestType
     // https://www.itinerantspirit.com/home/2016/5/22/post-boxes-from-around-the-world
     // https://commons.wikimedia.org/wiki/Category:Post_boxes_by_country
     // http://wanderlustexplorers.com/youve-got-mail-23-international-postal-boxes/
-    override val enabledForCountries:Countries = Countries.noneExcept(
+    override val enabledInCountries = NoCountriesExcept(
         // definitely, seen pictures:
         "AU","NZ","VU","MY","SG","TH","VN","LA","MM","IN","BD","NP","LK","BT","PK","TW","HK",
         "MO","CN","KR","JP","RU","BY","LT","LV","FI","SE","NO","DK","GB","IE","IS","NL","BE",

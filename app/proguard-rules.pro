@@ -24,6 +24,14 @@
 # let's just keep everything
 -keep class com.esotericsoftware.kryo.** { *; }
 
+# Lifecycle
+-keep public class android.arch.lifecycle.** {
+    public protected *;
+}
+-keepclassmembers class ** {
+    @android.arch.lifecycle.OnLifecycleEvent public *;
+}
+
 # evernote/android-job
 -dontwarn com.evernote.android.job.gcm.**
 -dontwarn com.evernote.android.job.GcmAvailableHelper

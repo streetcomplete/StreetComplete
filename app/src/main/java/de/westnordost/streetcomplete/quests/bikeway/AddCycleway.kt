@@ -4,17 +4,17 @@ import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.OsmTaggings
-import de.westnordost.streetcomplete.data.osm.Countries
+import de.westnordost.streetcomplete.data.osm.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandler
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.streetcomplete.data.osm.NoCountriesExcept
+import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
 import de.westnordost.streetcomplete.data.osm.tql.getQuestPrintStatement
 import de.westnordost.streetcomplete.data.osm.tql.toGlobalOverpassBBox
 
 import de.westnordost.streetcomplete.quests.bikeway.Cycleway.*
 
-class AddCycleway(private val overpassServer: OverpassMapDataDao) : OsmElementQuestType<CyclewayAnswer> {
+class AddCycleway(private val overpassServer: OverpassMapDataAndGeometryDao) : OsmElementQuestType<CyclewayAnswer> {
 
     override val commitMessage = "Add whether there are cycleways"
     override val icon = R.drawable.ic_quest_bicycleway
@@ -24,7 +24,7 @@ class AddCycleway(private val overpassServer: OverpassMapDataDao) : OsmElementQu
     // Google Street View (driving around in virtual car)
     // https://en.wikivoyage.org/wiki/Cycling
     // http://peopleforbikes.org/get-local/ (US)
-    override val enabledForCountries = Countries.noneExcept(
+    override val enabledInCountries = NoCountriesExcept(
         // all of Northern and Western Europe, most of Central Europe, some of Southern Europe
         "NO","SE","FI","IS","DK",
         "GB","IE","NL","BE","FR","LU",
@@ -53,8 +53,8 @@ class AddCycleway(private val overpassServer: OverpassMapDataDao) : OsmElementQu
 
     override fun isApplicableTo(element: Element):Boolean? = null
 
-    override fun download(bbox: BoundingBox, handler: MapDataWithGeometryHandler): Boolean {
-        return overpassServer.getAndHandleQuota(getOverpassQuery(bbox), handler)
+    override fun download(bbox: BoundingBox, handler: (element: Element, geometry: ElementGeometry?) -> Unit): Boolean {
+        return overpassServer.query(getOverpassQuery(bbox), handler)
     }
 
     /** returns overpass query string to get streets without cycleway info not near paths for

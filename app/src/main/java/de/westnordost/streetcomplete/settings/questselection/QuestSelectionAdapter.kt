@@ -21,7 +21,6 @@ import javax.inject.Inject
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderList
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeDao
 import de.westnordost.streetcomplete.view.ListAdapter
@@ -31,6 +30,8 @@ import androidx.recyclerview.widget.ItemTouchHelper.ACTION_STATE_DRAG
 import androidx.recyclerview.widget.ItemTouchHelper.ACTION_STATE_IDLE
 import androidx.recyclerview.widget.ItemTouchHelper.DOWN
 import androidx.recyclerview.widget.ItemTouchHelper.UP
+import de.westnordost.streetcomplete.data.osm.*
+import de.westnordost.streetcomplete.ktx.containsAny
 import de.westnordost.streetcomplete.settings.genericQuestTitle
 import kotlinx.android.synthetic.main.row_quest_selection.view.*
 
@@ -121,13 +122,11 @@ class QuestSelectionAdapter @Inject constructor(
         private val isEnabledInCurrentCountry: Boolean
             get() {
                 (item.questType as? OsmElementQuestType<*>)?.let { questType ->
-                    val countries = questType.enabledForCountries
-                    for (currentCountryCode in currentCountryCodes) {
-                        if (countries.exceptions.contains(currentCountryCode)) {
-                            return !countries.isAllExcept
-                        }
+                    return when(val countries = questType.enabledInCountries) {
+                        is AllCountries -> true
+                        is AllCountriesExcept -> !countries.exceptions.containsAny(currentCountryCodes)
+                        is NoCountriesExcept -> countries.exceptions.containsAny(currentCountryCodes)
                     }
-                    return countries.isAllExcept
                 }
                 return true
             }

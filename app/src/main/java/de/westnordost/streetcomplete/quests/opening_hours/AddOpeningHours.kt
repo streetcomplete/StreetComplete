@@ -2,10 +2,10 @@ package de.westnordost.streetcomplete.quests.opening_hours
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 
-class AddOpeningHours (o: OverpassMapDataDao) : SimpleOverpassQuestType<OpeningHoursAnswer>(o) {
+class AddOpeningHours (o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<OpeningHoursAnswer>(o) {
 
     /* See also AddWheelchairAccessBusiness and AddPlaceName, which has a similar list and is/should
        be ordered in the same way for better overview */

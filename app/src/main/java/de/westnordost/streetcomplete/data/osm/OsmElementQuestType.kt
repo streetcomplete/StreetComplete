@@ -4,7 +4,6 @@ import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.data.QuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandler
 
 interface OsmElementQuestType<T> : QuestType<T> {
 
@@ -20,7 +19,7 @@ interface OsmElementQuestType<T> : QuestType<T> {
     // in the respective download/upload classes as well
 
     /** in which countries the quest should be shown */
-    val enabledForCountries: Countries get() = Countries.ALL
+    val enabledInCountries: Countries get() = AllCountries
 
     /** returns whether the markers should be at the ends instead of the center */
     val hasMarkersAtEnds: Boolean get() = false
@@ -36,7 +35,7 @@ interface OsmElementQuestType<T> : QuestType<T> {
     /** Downloads map data for this quest type for the given [bbox] and puts the received data into
      *  the [handler]. Returns whether the download was successful
      */
-    fun download(bbox: BoundingBox, handler: MapDataWithGeometryHandler): Boolean
+    fun download(bbox: BoundingBox, handler: (element: Element, geometry: ElementGeometry?) -> Unit): Boolean
 
     /** returns whether a quest of this quest type could be created out of the given [element]. If the
      * element alone does not suffice to find this out (but e.g. an Overpass query would need to be
