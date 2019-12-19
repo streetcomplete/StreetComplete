@@ -99,7 +99,7 @@ class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
             private fun onAnswer(selection: Int) {
                 val answer = answers[selection]
                 when (answer) {
-                    leaveNote -> onClickCantSay()
+                    leaveNote -> composeNote()
                     noName    -> confirmNoStreetName()
                     else      -> {
                         applyAnswer(when(answer) {

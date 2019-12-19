@@ -248,12 +248,14 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
             .setTitle(R.string.quest_leave_new_note_title)
             .setMessage(R.string.quest_leave_new_note_description)
             .setNegativeButton(R.string.quest_leave_new_note_no) { _, _ -> skipQuest() }
-            .setPositiveButton(R.string.quest_leave_new_note_yes) { _, _ ->
-                val questTitle = englishResources.getQuestTitle(questType, osmElement, featureDictionaryFuture)
-                questAnswerComponent.onComposeNote(questTitle)
-            }
+            .setPositiveButton(R.string.quest_leave_new_note_yes) { _, _ -> composeNote() }
             .show()
         }
+    }
+
+    protected fun composeNote() {
+        val questTitle = englishResources.getQuestTitle(questType, osmElement, featureDictionaryFuture)
+        questAnswerComponent.onComposeNote(questTitle)
     }
 
     private fun onClickSplitWayAnswer() {

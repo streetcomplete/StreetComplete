@@ -112,7 +112,7 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
     private fun onUnsupportedSign() {
         activity?.let { AlertDialog.Builder(it)
             .setMessage(R.string.quest_maxweight_unsupported_sign_request_photo)
-            .setPositiveButton(android.R.string.ok) { _, _ -> onClickCantSay() }
+            .setPositiveButton(android.R.string.ok) { _, _ -> composeNote() }
             .setNegativeButton(R.string.quest_leave_new_note_no) { _, _ -> skipQuest() }
             .show()
         }
