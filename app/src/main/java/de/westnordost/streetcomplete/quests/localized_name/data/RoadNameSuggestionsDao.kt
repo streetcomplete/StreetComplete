@@ -20,8 +20,7 @@ import de.westnordost.streetcomplete.util.Serializer
 import de.westnordost.streetcomplete.util.SphericalEarthMath
 import de.westnordost.streetcomplete.ktx.toObject
 
-// TODO only open in order to be able to mock it in tests
-open class RoadNameSuggestionsDao @Inject constructor(
+class RoadNameSuggestionsDao @Inject constructor(
     private val dbHelper: SQLiteOpenHelper,
     private val serializer: Serializer
 ) {
