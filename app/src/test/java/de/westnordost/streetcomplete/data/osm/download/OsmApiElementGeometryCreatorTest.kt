@@ -47,16 +47,16 @@ class OsmApiElementGeometryCreatorTest {
             }
             Any()
         }
-	    creator.create(way)
+        creator.create(way)
         verify(elementCreator).create(way, positions)
     }
 
-	@Test fun `returns null for non-existent way`() {
-		val way = OsmWay(1L, 1, listOf(1,2,3), null)
-		on(dao.getWayComplete(eq(1L), any())).thenThrow(OsmNotFoundException(404, "", ""))
-		assertNull(creator.create(way))
-		verify(elementCreator, never()).create(eq(way), any())
-	}
+    @Test fun `returns null for non-existent way`() {
+        val way = OsmWay(1L, 1, listOf(1,2,3), null)
+        on(dao.getWayComplete(eq(1L), any())).thenThrow(OsmNotFoundException(404, "", ""))
+        assertNull(creator.create(way))
+        verify(elementCreator, never()).create(eq(way), any())
+    }
 
     @Test fun `creates for relation`() {
         val relation = OsmRelation(1L, 1, listOf(
@@ -65,10 +65,10 @@ class OsmApiElementGeometryCreatorTest {
             OsmRelationMember(1L, "", Element.Type.NODE)
         ), null)
 
-	    val ways = listOf(
-		    OsmWay(1L, 1, listOf(1,2,3), null),
-		    OsmWay(2L, 1, listOf(4,5), null)
-	    )
+        val ways = listOf(
+            OsmWay(1L, 1, listOf(1,2,3), null),
+            OsmWay(2L, 1, listOf(4,5), null)
+        )
         val positions = mapOf<Long, List<LatLon>>(
             1L to listOf(
                 OsmLatLon(1.0, 2.0),
@@ -81,28 +81,28 @@ class OsmApiElementGeometryCreatorTest {
             )
         )
         on(dao.getRelationComplete(eq(1L), any())).thenAnswer { invocation ->
-	        val handler = (invocation.arguments[1]) as MapDataHandler
-	        handler.handle(relation)
-	        for (way in ways) {
-		        handler.handle(way)
-		        way.nodeIds.forEachIndexed { i, nodeId ->
-			        handler.handle(OsmNode(nodeId, 1, positions[way.id]!![i], null))
-		        }
-	        }
-	        Any()
+            val handler = (invocation.arguments[1]) as MapDataHandler
+            handler.handle(relation)
+            for (way in ways) {
+                handler.handle(way)
+                way.nodeIds.forEachIndexed { i, nodeId ->
+                    handler.handle(OsmNode(nodeId, 1, positions[way.id]!![i], null))
+                }
+            }
+            Any()
         }
-	    creator.create(relation)
-	    verify(elementCreator).create(relation, positions)
+        creator.create(relation)
+        verify(elementCreator).create(relation, positions)
     }
 
-	@Test fun `returns null for non-existent relation`() {
-		val relation = OsmRelation(1L, 1, listOf(
-			OsmRelationMember(1L, "", Element.Type.WAY),
-			OsmRelationMember(2L, "", Element.Type.WAY),
-			OsmRelationMember(1L, "", Element.Type.NODE)
-		), null)
-		on(dao.getRelationComplete(eq(1L), any())).thenThrow(OsmNotFoundException(404, "", ""))
-		assertNull(creator.create(relation))
-		verify(elementCreator, never()).create(eq(relation), any())
-	}
+    @Test fun `returns null for non-existent relation`() {
+        val relation = OsmRelation(1L, 1, listOf(
+            OsmRelationMember(1L, "", Element.Type.WAY),
+            OsmRelationMember(2L, "", Element.Type.WAY),
+            OsmRelationMember(1L, "", Element.Type.NODE)
+        ), null)
+        on(dao.getRelationComplete(eq(1L), any())).thenThrow(OsmNotFoundException(404, "", ""))
+        assertNull(creator.create(relation))
+        verify(elementCreator, never()).create(eq(relation), any())
+    }
 }

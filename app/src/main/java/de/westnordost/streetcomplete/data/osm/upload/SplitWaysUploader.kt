@@ -26,8 +26,6 @@ class SplitWaysUploader @Inject constructor(
 ) : OsmInChangesetsUploader<OsmQuestSplitWay>(elementDB, elementGeometryDB, changesetManager,
     questGiver, statisticsDB, osmApiElementGeometryCreator) {
 
-    private val TAG = "SplitOsmWayUpload"
-
     @Synchronized override fun upload(cancelled: AtomicBoolean) {
         Log.i(TAG, "Splitting ways")
         super.upload(cancelled)
@@ -47,5 +45,9 @@ class SplitWaysUploader @Inject constructor(
     override fun onUploadFailed(quest: OsmQuestSplitWay, e: Throwable) {
         splitWayDB.delete(quest.questId)
         Log.d(TAG, "Dropped split for way #${quest.wayId}: ${e.message}")
+    }
+
+    companion object {
+        private const val TAG = "SplitOsmWayUpload"
     }
 }

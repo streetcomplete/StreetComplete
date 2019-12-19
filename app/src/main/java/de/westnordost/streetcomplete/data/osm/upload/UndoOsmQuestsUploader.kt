@@ -27,8 +27,6 @@ class UndoOsmQuestsUploader @Inject constructor(
 ) : OsmInChangesetsUploader<UndoOsmQuest>(elementDB, elementGeometryDB, changesetManager, questGiver,
     statisticsDB, osmApiElementGeometryCreator) {
 
-    private val TAG = "UndoOsmQuestUpload"
-
     @Synchronized override fun upload(cancelled: AtomicBoolean) {
         Log.i(TAG, "Undoing quest changes")
         super.upload(cancelled)
@@ -49,7 +47,10 @@ class UndoOsmQuestsUploader @Inject constructor(
     override fun onUploadFailed(quest: UndoOsmQuest, e: Throwable) {
         undoQuestDB.delete(quest.id!!)
         Log.d(TAG, "Dropped undo osm quest ${quest.toLogString()}: ${e.message}")
+    }
 
+    companion object {
+        private const val TAG = "UndoOsmQuestUpload"
     }
 }
 

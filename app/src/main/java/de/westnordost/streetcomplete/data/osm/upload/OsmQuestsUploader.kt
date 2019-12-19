@@ -34,8 +34,6 @@ class OsmQuestsUploader @Inject constructor(
 ) : OsmInChangesetsUploader<OsmQuest>(elementDB, elementGeometryDB, changesetManager, questGiver,
     statisticsDB, osmApiElementGeometryCreator) {
 
-    private val TAG = "OsmQuestUpload"
-
     @Synchronized override fun upload(cancelled: AtomicBoolean) {
         Log.i(TAG, "Applying quest changes")
         super.upload(cancelled)
@@ -75,6 +73,10 @@ class OsmQuestsUploader @Inject constructor(
             statusIn = listOf(QuestStatus.CLOSED, QuestStatus.REVERT),
             changedBefore = timestamp
         )
+    }
+
+    companion object {
+        private const val TAG = "OsmQuestUpload"
     }
 }
 

@@ -28,8 +28,6 @@ class OsmQuestGiver @Inject constructor(
     private val countryBoundariesFuture: FutureTask<CountryBoundaries>
 ) {
 
-    private val TAG = "OsmQuestGiver"
-
     data class QuestUpdates(val createdQuests: List<OsmQuest>, val removedQuestIds: List<Long>)
 
     fun updateQuests(element: Element): QuestUpdates {
@@ -112,5 +110,9 @@ class OsmQuestGiver @Inject constructor(
             result[quest.type] = quest
         }
         return result
+    }
+
+    companion object {
+        private const val TAG = "OsmQuestGiver"
     }
 }

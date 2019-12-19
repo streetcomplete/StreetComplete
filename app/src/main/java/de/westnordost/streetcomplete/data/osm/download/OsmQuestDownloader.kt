@@ -133,11 +133,13 @@ class OsmQuestDownloader @Inject constructor(
 
         return true
     }
+
+    companion object {
+        private const val TAG = "QuestDownload"
+    }
 }
 
 const val MAX_GEOMETRY_LENGTH_IN_METERS = 500
-
-private const val TAG = "QuestDownload"
 
 private fun QuestType<*>.getName() = javaClass.simpleName
 

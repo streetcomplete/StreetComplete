@@ -25,7 +25,6 @@ class CreateNotesUploader @Inject constructor(
     private val statisticsDB: QuestStatisticsDao,
     private val singleCreateNoteUploader: SingleCreateNoteUploader
 ): Uploader {
-    private val TAG = "CreateNotesUpload"
 
     override var uploadedChangeListener: OnUploadedChangeListener? = null
 
@@ -93,6 +92,10 @@ class CreateNotesUploader @Inject constructor(
             Element.Type.WAY -> mapDataDao.getWay(key.elementId)
             Element.Type.RELATION -> mapDataDao.getRelation(key.elementId)
         }
+    }
+
+    companion object {
+        private const val TAG = "CreateNotesUpload"
     }
 }
 

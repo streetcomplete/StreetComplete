@@ -18,7 +18,6 @@ class OsmNoteQuestsChangesUploader @Inject constructor(
         private val noteDB: NoteDao,
         private val singleNoteUploader: SingleOsmNoteQuestChangesUploader
 ): Uploader {
-    private val TAG = "CommentNoteUpload"
 
     override var uploadedChangeListener: OnUploadedChangeListener? = null
 
@@ -70,6 +69,10 @@ class OsmNoteQuestsChangesUploader @Inject constructor(
             logMsg += " but dropped $obsolete comments because the notes have already been closed"
         }
         Log.i(TAG, logMsg)
+    }
+
+    companion object {
+        private const val TAG = "CommentNoteUpload"
     }
 }
 
