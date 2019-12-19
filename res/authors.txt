@@ -61,7 +61,7 @@ cycleways.svg
 
 cycleway_segregation.svg
 
-feature_graphic.xcf             Maximilian Dörrbecker (CC-BY-SA-2.5 photo), Tobias Zwick (icons)
+feature_graphic.xcf             parts taken from https://commons.wikimedia.org/wiki/File:M%C3%BCnchen_-_Westend.JPG
 
 ic_building_levels_illustration.svg
 
