@@ -3,19 +3,22 @@ package de.westnordost.streetcomplete.quests.recycling_material
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandler
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
 import de.westnordost.streetcomplete.data.osm.tql.getQuestPrintStatement
 import de.westnordost.streetcomplete.data.osm.tql.toGlobalOverpassBBox
 
-class AddRecyclingContainerMaterials(private val overpassServer: OverpassMapDataDao) : OsmElementQuestType<List<String>> {
+class AddRecyclingContainerMaterials(
+    private val overpassServer: OverpassMapDataAndGeometryDao)
+    : OsmElementQuestType<List<String>> {
+
     override val commitMessage = "Add recycled materials to container"
     override val icon = R.drawable.ic_quest_recycling_materials
 
-    override fun download(bbox: BoundingBox, handler: MapDataWithGeometryHandler): Boolean {
-        return overpassServer.getAndHandleQuota(getOverpassQuery(bbox), handler)
+    override fun download(bbox: BoundingBox, handler: (element: Element, geometry: ElementGeometry?) -> Unit): Boolean {
+        return overpassServer.query(getOverpassQuery(bbox), handler)
     }
 
     private fun getOverpassQuery(bbox: BoundingBox) = """
