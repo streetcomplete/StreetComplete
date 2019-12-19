@@ -12,6 +12,8 @@ import de.westnordost.streetcomplete.data.QuestType
 import de.westnordost.streetcomplete.data.changesets.OpenChangeset
 import de.westnordost.streetcomplete.data.changesets.OpenChangesetsDao
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
+import de.westnordost.streetcomplete.ktx.toBcp47LanguageTag
+import java.util.*
 
 import javax.inject.Inject
 
@@ -59,6 +61,7 @@ class OpenQuestChangesetsManager @Inject constructor(
         mapOf(
             "comment" to questType.commitMessage,
             "created_by" to USER_AGENT,
+            "locale" to Locale.getDefault().toBcp47LanguageTag(),
             QUESTTYPE_TAG_KEY to questType.name,
             "source" to source
         )
