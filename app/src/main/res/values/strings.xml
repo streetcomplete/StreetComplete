@@ -481,7 +481,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_surface_value_unhewn_cobblestone">Unhewn cobblestone</string>
     <string name="quest_parking_access_title">Is it restricted who may park here?</string>
     <string name="quest_parking_access_private">It is private</string>
-    <string name="quest_parking_access_yes">It is public (with or without fee)</string>
+    <string name="quest_parking_access_yes">It is open to the public (with or without fee)</string>
     <string name="quest_parking_access_customers">It is only for customers</string>
     <string name="quest_streetName_pedestrian_title">What is the name of this pedestrian street?</string>
     <string name="quest_streetSurface_square_title">"What surface does this square have?"</string>
