@@ -3,11 +3,11 @@ package de.westnordost.streetcomplete.quests.recycling
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
 import de.westnordost.streetcomplete.quests.recycling.RecyclingType.*
 
 
-class AddRecyclingType(o: OverpassMapDataDao) : SimpleOverpassQuestType<RecyclingType>(o) {
+class AddRecyclingType(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<RecyclingType>(o) {
 
     override val tagFilters = "nodes, ways, relations with amenity = recycling and !recycling_type"
     override val commitMessage = "Add recycling type to recycling amenity"

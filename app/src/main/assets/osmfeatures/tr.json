@@ -1606,10 +1606,6 @@
             "name": "Sokak",
             "terms": "Sokak"
         },
-        "attraction/bumper_car": {
-            "name": "Çarpışan Araba",
-            "terms": "Çarpışan Araba"
-        },
         "attraction/roller_coaster": {
             "name": "Roller Coaster",
             "terms": "Roller Coaster"
@@ -1932,9 +1928,6 @@
         "historic/monument": {
             "name": "Abide",
             "terms": "Abide"
-        },
-        "manhole": {
-            "name": "Rogar"
         },
         "type/route/bicycle": {
             "name": "Bisiklet Güzergahı",
@@ -2345,10 +2338,6 @@
             "name": "Kamp Malzemeleri Mağazası",
             "terms": "Kamp Malzemeleri Mağazası"
         },
-        "highway/raceway": {
-            "name": "Araç Yarış Yolu",
-            "terms": "Araç Yarış Yolu"
-        },
         "emergency/designated": {
             "name": "Acil Erişim"
         },
@@ -2747,10 +2736,6 @@
             "name": "Sihirli Halı Teleferiği",
             "terms": "Sihirli Halı Teleferiği"
         },
-        "amenity/post_box": {
-            "name": "Posta Kutusu",
-            "terms": "Posta Kutusu"
-        },
         "public_transport/station_tram": {
             "name": "Tramvay İstasyonu",
             "terms": "Tramvay Terminali"
@@ -3070,10 +3055,6 @@
         "craft/handicraft": {
             "name": "El Sanatı",
             "terms": "El Sanatı"
-        },
-        "landuse/construction": {
-            "name": "İnşaat Alanı",
-            "terms": "İnşaat Alanı"
         },
         "aeroway": {
             "name": "Hava Yolu"

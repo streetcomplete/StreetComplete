@@ -17,6 +17,7 @@ import de.westnordost.osmapi.notes.NoteComment
 import de.westnordost.streetcomplete.data.osm.ElementKey
 import de.westnordost.streetcomplete.mock
 import java.util.*
+
 import java.util.concurrent.atomic.AtomicBoolean
 
 
@@ -27,7 +28,7 @@ class CreateNotesUploaderTest {
     private lateinit var mapDataDao: MapDataDao
     private lateinit var questType: OsmNoteQuestType
     private lateinit var statisticsDB: QuestStatisticsDao
-    private lateinit var singleCreateNoteUpload: SingleCreateNoteUpload
+    private lateinit var singleCreateNoteUploader: SingleCreateNoteUploader
 
     private lateinit var uploader: CreateNotesUploader
 
@@ -38,22 +39,22 @@ class CreateNotesUploaderTest {
         createNoteDB = mock()
         questType = mock()
         statisticsDB = mock()
-        singleCreateNoteUpload = mock()
+        singleCreateNoteUploader = mock()
 
         uploader = CreateNotesUploader(createNoteDB, noteDB, noteQuestDB, mapDataDao, questType,
-            statisticsDB, singleCreateNoteUpload)
+            statisticsDB, singleCreateNoteUploader)
     }
 
     @Test fun `cancel upload works`() {
         val cancelled = AtomicBoolean(true)
         uploader.upload(cancelled)
         verifyZeroInteractions(createNoteDB, noteDB, noteQuestDB, mapDataDao, questType,
-            statisticsDB, singleCreateNoteUpload)
+            statisticsDB, singleCreateNoteUploader)
     }
 
     @Test fun `catches conflict exception`() {
         on(createNoteDB.getAll()).thenReturn(listOf(newCreateNote()))
-        on(singleCreateNoteUpload.upload(any())).thenThrow(ConflictException())
+        on(singleCreateNoteUploader.upload(any())).thenThrow(ConflictException())
 
         uploader.upload(AtomicBoolean(false))
 
@@ -64,7 +65,7 @@ class CreateNotesUploaderTest {
         val createNotes = listOf( newCreateNote(), newCreateNote())
 
         on(createNoteDB.getAll()).thenReturn(createNotes)
-        on(singleCreateNoteUpload.upload(any())).thenReturn(newNote())
+        on(singleCreateNoteUploader.upload(any())).thenReturn(newNote())
 
         uploader.uploadedChangeListener = mock()
         uploader.upload(AtomicBoolean(false))
@@ -80,7 +81,7 @@ class CreateNotesUploaderTest {
         val createNotes = listOf( newCreateNote(), newCreateNote())
 
         on(createNoteDB.getAll()).thenReturn(createNotes)
-        on(singleCreateNoteUpload.upload(any())).thenThrow(ConflictException())
+        on(singleCreateNoteUploader.upload(any())).thenThrow(ConflictException())
 
         uploader.uploadedChangeListener = mock()
         uploader.upload(AtomicBoolean(false))
@@ -100,6 +101,17 @@ class CreateNotesUploaderTest {
         uploader.upload(AtomicBoolean(false))
 
         verify(uploader.uploadedChangeListener)?.onDiscarded()
+    }
+
+    @Test fun `catches image upload exception`() {
+        val note = CreateNote(1, "jo ho", OsmLatLon(1.0, 2.0), null, null, listOf("hello"))
+        on(createNoteDB.getAll()).thenReturn(listOf(note))
+        on(singleCreateNoteUploader.upload(any())).thenThrow(ImageUploadException())
+
+        uploader.upload(AtomicBoolean(false))
+
+        verify(createNoteDB, never()).delete(anyLong())
+        // will not throw ElementConflictException and not delete the note from db
     }
 }
 

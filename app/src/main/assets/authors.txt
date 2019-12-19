@@ -3,6 +3,6 @@ File                  License / Source (if not given, follow link for license in
 
 boundaries.ser        ODbL 1.0            from https://josm.openstreetmap.de/browser/josm/trunk/data/boundaries.osm
                                           which is traced from the OpenStreetMap
-map_theme/fonts/*.*   Apache License 2.0  from https://github.com/ENT8R/streetcomplete-mapstyle/tree/master/fonts
+map_theme/fonts/*.*   SIL  OFL-1.1        from https://github.com/ENT8R/streetcomplete-mapstyle/tree/master/fonts (The Montserrat Project Authors)
 map_theme/*.*         GPL 3.0             from https://github.com/ENT8R/streetcomplete-mapstyle/
 osmfeatures/*.json    ISC license         from https://github.com/openstreetmap/iD/tree/master/dist/locales

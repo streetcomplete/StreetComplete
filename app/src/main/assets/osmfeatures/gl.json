@@ -1,10 +1,14 @@
 {
     "presets": {
+        "amenity/parking/park_ride": {
+            "name": "Aparcadoiro disuasorio",
+            "terms": "cercanías, incentivo, estacionamento, P + R, park, ride, transporte público, bus, metro, subte, disuasivo"
+        },
         "office/administrative": {
             "name": "Administración local"
         },
         "amenity/car_rental": {
-            "name": "Alugamento de automóbiles",
+            "name": "Alugueiro de automóbiles",
             "terms": "alugueiro, alugamento, locación, coche, automóbil, vehículo, rent-a-car"
         },
         "place/city": {
@@ -31,7 +35,8 @@
             "name": "Tenda de subministracións agrícolas"
         },
         "landuse/garages": {
-            "name": "Uso da terra: Garaxes"
+            "name": "Zona de garaxes privados",
+            "terms": "terreo, garaxe, almacenamento, almacenaxe, cocheiras, cocheira, área, area, uso da terra, soar, solar"
         },
         "internet_access/wlan": {
             "name": "Punto de acceso Wi-Fi"
@@ -68,8 +73,8 @@
             "terms": "autovía, autopista, autoestrada"
         },
         "natural/bay": {
-            "name": "Baía",
-            "terms": "baía, golfo, enseada"
+            "name": "Badía",
+            "terms": "baía, baia, golfo, enseada, bahía, bahia, badia, abra, arnela, cala, enseada, golfo, rada"
         },
         "amenity/fast_food/mexican": {
             "name": "Comida rápida mexicana"
@@ -89,7 +94,8 @@
             "name": "Estudio"
         },
         "landuse/military": {
-            "name": "Zona militar"
+            "name": "Zona militar",
+            "terms": "área militar, terreo militar, zona militar, base aérea, municións, barracas, bunkers, control militar, base naval, zona de perigo, área perigosa, sitio de explosión nuclear, oficinas militares, reximentos, polígonos de tiro, áreas de adestramento, liceos militares, cuarteis"
         },
         "shop/seafood": {
             "name": "Peixaría",
@@ -126,10 +132,11 @@
         },
         "man_made/surveillance": {
             "name": "Vixilancia",
-            "terms": "vixilancia, cámara, vídeo, recoñecemento facial, lector de matrículas, cctv, seguridade, webcam"
+            "terms": "vixilancia, cámara, vídeo, recoñecemento facial, lector de matrículas, cctv, seguridade, webcam, seguranza, vixiar, zona videovixiada"
         },
         "building/ruins": {
-            "name": "Edificio en ruínas"
+            "name": "Edificio en ruínas",
+            "terms": "ruina, ruinas, restos"
         },
         "leisure/pitch/american_football": {
             "name": "Campo de fútbol americano"
@@ -229,6 +236,10 @@
         "shop/hairdresser": {
             "name": "Perrucaría"
         },
+        "building/houseboat": {
+            "name": "Casa flotante",
+            "terms": "fogar, familia, residencia, vivenda, lar"
+        },
         "building/school": {
             "name": "Edificio escolar"
         },
@@ -239,14 +250,14 @@
             "name": "Restaurante francés"
         },
         "amenity/ferry_terminal": {
-            "name": "Estación de ferry"
+            "name": "Estación / Terminal de ferri"
         },
         "shop/furnace": {
             "name": "Forneiro"
         },
         "landuse/industrial": {
             "name": "Zona industrial",
-            "terms": "industrial, polígono, fábricas"
+            "terms": "área industrial, parque industrial, industria, fábrica, area industrial, terreo industrial, poligono, polígono, fabrica, fábricas, industrial"
         },
         "type/route/hiking": {
             "name": "Roteiro de sendeirismo"
@@ -285,7 +296,7 @@
         },
         "area": {
             "name": "Área",
-            "terms": "área, zona"
+            "terms": "superficie, extensión, espazo, zona, sector, campo, dominio, territorio, terra, parcela, terreo"
         },
         "landuse/landfill": {
             "name": "Vertedoiro",
@@ -331,12 +342,12 @@
             "terms": "bolsas de excremento, caca, feces, merda, refugallos, can, animal"
         },
         "amenity/smoking_area": {
-            "name": "Área de fumadoiro",
+            "name": "Zona de fumadores",
             "terms": "área de fumadoiro, fumadoiro, fumar, área de fume, fume"
         },
         "man_made/water_tower": {
             "name": "Torre de auga",
-            "terms": "torre de auga, depósito de auga, tanque de agua"
+            "terms": "torre de auga, depósito de auga elevado, tanque de auga"
         },
         "railway/train_wash": {
             "name": "Lava Tren"
@@ -404,6 +415,10 @@
             "name": "Hospital",
             "terms": "clínica, urxencias, sanidade, saúde, médico, clinica, saude, ambulatorio"
         },
+        "public_transport/stop_position_monorail": {
+            "name": "Ubicación de paraxe do monorraíl",
+            "terms": "punto detención, transporte público, tránsito, transporte, tren, ferrocarril, monorraíl, monocarril, bus, parada"
+        },
         "amenity/telephone": {
             "name": "Teléfono",
             "terms": "teléfono, chamadas, cabina"
@@ -416,7 +431,8 @@
             "name": "Ferreiro"
         },
         "landuse/residential": {
-            "name": "Zona residencial"
+            "name": "Zona residencial",
+            "terms": "área residencial, zona residencial, zona urbana, mancha urbana, urbanización, condominio, rua"
         },
         "leisure/stadium": {
             "name": "Estadio"
@@ -425,8 +441,8 @@
             "name": "Rádar de velocidade"
         },
         "amenity/drinking_water": {
-            "name": "Fonte",
-            "terms": "fonte, auga, potábel, bebíbel, beber, potable, bebible"
+            "name": "Fonte de auga potábel",
+            "terms": "fonte, auga, potábel, bebíbel, beber, potable, bebible, manantial, manancial, fontana, fontanal, hontanar, venero, bebedero"
         },
         "amenity/pharmacy": {
             "name": "Farmacia",
@@ -448,14 +464,20 @@
             "name": "Casa do Concello",
             "terms": "casa do concello, concello, consistorio, municipio, municipal, cabido"
         },
+        "shop/rental": {
+            "name": "Tenda de alugueiro",
+            "terms": "alugueiro, arrendamento, arrendo, locación, alugamento, alquilar, alquiler, vehículos, equipos"
+        },
         "public_transport/stop_position_bus": {
-            "name": "Punto de parada de autobús"
+            "name": "Punto de parada de autobús",
+            "terms": "punto detención, transporte público, tránsito, transporte, autobús, bus, minibús, parada"
         },
         "traffic_sign/city_limit_vertex": {
             "name": "Sinal de límite de cidade"
         },
         "natural/water": {
-            "name": "Auga"
+            "name": "Auga",
+            "terms": "río, auga, lago, laguna, albufeira, ibón, lagoa, estanque, embalse, encoro, pantano, balsa, corpo de auga, augas, lámina de auga, poza de auga, charca, agua, regato, rego, pozo, poza, burgas, termas"
         },
         "barrier/cycle_barrier": {
             "name": "Barreira ciclista",
@@ -475,11 +497,16 @@
             "name": "Consulado",
             "terms": "consulado, cónsul"
         },
+        "amenity/karaoke": {
+            "name": "Caixa de karaoke",
+            "terms": "clube de karaoke, sala de karaoke, televisión karaoke, KTV, club de karaoke"
+        },
         "amenity/vending_machine/elongated_coin": {
             "name": "Máquina expendedora de moedas planas"
         },
         "type/waterway": {
-            "name": "Canle fluvial"
+            "name": "Canle fluvial",
+            "terms": "vía fluvial, fluvial, acuático, acuatico, acuática, acuatica, cauce, marítima, maritima, navegable, navegábel, canle, canal"
         },
         "emergency/destination": {
             "name": "Acceso de emerxencia como destino"
@@ -489,13 +516,15 @@
             "terms": "lagar, adega, prensa, lagareta, viño, uva"
         },
         "public_transport/stop_position_train": {
-            "name": "Punto de parada de tren"
+            "name": "Ubicación de paraxe do tren",
+            "terms": "punto detención, transporte público, tránsito, transporte, tren, ferrocarril, parada"
         },
         "shop/laundry": {
             "name": "Lavandaría"
         },
         "amenity/grit_bin": {
-            "name": "Contenedor de sal"
+            "name": "Contedor de grava",
+            "terms": "depósito, contedor, grava, gravilla, area, arenilla, sal, grixo, pedregullo, pedrullo"
         },
         "amenity/bank": {
             "name": "Banco",
@@ -547,9 +576,6 @@
             "name": "Porta de embarque",
             "terms": "porta, embarque, saída, aeroporto"
         },
-        "manhole/drain": {
-            "name": "Tapa de rexistro de pluviais"
-        },
         "traffic_calming/island": {
             "name": "Illa de Tráfico"
         },
@@ -584,13 +610,15 @@
             "name": "Espacio de cotraballo"
         },
         "natural/water/wastewater": {
-            "name": "Conca de augas residuais"
+            "name": "Conca de augas residuais",
+            "terms": "bazofia, desperdicio, desproveito, reboutallo, sobra, varredura, refugo, excrementos, caca, feces, merda, refugallo, mierda, augas residuais, residuos, conca de asentamento, conca clarificadora, cuenca"
         },
         "tourism/museum": {
             "name": "Museo"
         },
         "railway/buffer_stop": {
-            "name": "Parada de Buffer"
+            "name": "Toupeira (parada de buffer)",
+            "terms": "parachoques deslizante, tope, amortiguador, quitamedos, topera, topeira, toupeira"
         },
         "aerialway/pylon": {
             "name": "Pilón Vía Aérea",
@@ -603,8 +631,8 @@
             "name": "Tenda de cortinas"
         },
         "amenity/recycling_container": {
-            "name": "Colector de reciclaxe",
-            "terms": "reciclaxe, colector, contenedor, contedor, lixo, basura"
+            "name": "Contedor de reciclaxe",
+            "terms": "reciclaxe, colector, contenedor, contedor, lixo, basura, vidro, papel, carton"
         },
         "leisure/pitch/tennis": {
             "name": "Cancha de tenis"
@@ -656,7 +684,7 @@
         },
         "amenity/place_of_worship/jewish": {
             "name": "Sinagoga xudía",
-            "terms": "xudeu , xudía, hebreo, hebrea, israelita, xudia"
+            "terms": "xudeu, xudía, hebreo, hebrea, israelita, xudia, xudaico, xudaica"
         },
         "highway/construction": {
             "name": "Estrada cortada"
@@ -676,8 +704,8 @@
             "name": "Aeródromo militar"
         },
         "craft/boatbuilder": {
-            "name": "Carpinteiro de ribeira",
-            "terms": "carpinteiro de ribeira, barco, astillero"
+            "name": "Construtor de embarcacións",
+            "terms": "carpinteiro de ribeira, barco, astillero, estaleiro, barcos, barco, embarcacion, constructor"
         },
         "craft/shoemaker": {
             "name": "Zapateiro",
@@ -698,7 +726,7 @@
             "name": "Labirinto"
         },
         "amenity/place_of_worship/sikh": {
-            "name": "Templo Sikh"
+            "name": "Templo sikh"
         },
         "amenity/social_facility/food_bank": {
             "name": "Banco de Alimentos",
@@ -736,7 +764,8 @@
             "name": "Transformador"
         },
         "power/generator": {
-            "name": "Xerador de enerxía"
+            "name": "Xerador de enerxía",
+            "terms": "subestación, xerador, xenerador, xenerador eléctrico, xenerador de electricidade, xenerador de potencia, xerador de enerxia, estación eléctrica, planta de electridade, central eléctrica, electricidade, eléctrica, electrica"
         },
         "natural/wetland": {
             "name": "Pantano"
@@ -775,7 +804,8 @@
             "name": "Glaciar"
         },
         "shop/storage_rental": {
-            "name": "Alugamento de almacéns"
+            "name": "Alugueiro de almacéns",
+            "terms": "almacenamento, almacén, almacenaxe, depósito, baulera, aluguer, renta, arrendamento, locación, arrendo, alugamento"
         },
         "shop/fashion": {
             "name": "Tenda de moda"
@@ -791,7 +821,8 @@
             "terms": "comida rápida, comida ferralla, comida lixo, comida preparada, pratos preparados, comida na rúa, comida de paso, hamburguesa, hotdog, pancho, polos fritidos, tacos, patacas fritidas, pizza, choripán, sandwitch, bocadillos, salchipapas, burrito, sopaipillas, quesadilla, nachos, arepa"
         },
         "type/route/pipeline": {
-            "name": "Rota de tubaxe"
+            "name": "Rota de tubaxe",
+            "terms": "ruta, rota, tubería, tubaría, gasoduto, oleoduto, conduto, cañería, duto, ducto, tubaxe, tubo"
         },
         "landuse/religious": {
             "name": "Zona relixiosa"
@@ -885,7 +916,8 @@
             "name": "Máquina expendedora de electrónica"
         },
         "waterway/water_point": {
-            "name": "Auga potábel para embarcacións"
+            "name": "Auga potábel para embarcacións",
+            "terms": "auga potable, auga, agua, porto, embarcación, porto deportivo, mariña, marina, barco, paquebote, nave, paquete, lancha, peirao"
         },
         "shop/garden_centre": {
             "name": "Centro de xardinaría"
@@ -902,7 +934,8 @@
             "name": "Tenda de deseño de cociñas"
         },
         "building/garages": {
-            "name": "Garaxes"
+            "name": "Garaxes",
+            "terms": "garaxes, cocheiras, garaxe, cocheira"
         },
         "leisure/pitch/rugby_league": {
             "name": "Campo de rugby league",
@@ -972,12 +1005,24 @@
             "name": "Comida rápida de polo",
             "terms": "almorzo, cea, comedor, cea, xantar, grella, churrasco, comida, mesa, café, cafe"
         },
+        "man_made/pipeline/valve": {
+            "name": "Válvula de tubaxe",
+            "terms": "petróleo, gas natural, auga, alcantarillado, augas residuais, pluviais, oleoduto"
+        },
         "leisure/pitch/beachvolleyball": {
             "name": "Cancha de voley praia"
+        },
+        "man_made/street_cabinet": {
+            "name": "Armario de telecomunicacións",
+            "terms": "televisión por cable, caixa de monitoreo, caixa técnica, telecomunicaciones, telecomunicacións, comunicacións, gabinete, caixa, caseta, cabina, rúa, rua, calle, estrada, avenida, control de sinais de tráfico, caja, carretera, semaforo, semáforos, caixa de rúa, armario se rúa, armario de instalacións, armario de instalaciones, armario outdoor, bastidor, cuadro, cadro, teleco, eléctrico, electrico, eletrico, enerxía, rexistro, nicho, cabinet, cabinete, cabinets"
         },
         "highway/footway/marked-raised": {
             "name": "Paso de peóns marcado (Levantado)",
             "terms": "paso de cebra, cruzamento marcado, paso de peóns, lombo de burro, lombada, velocidade, calmador, redutor"
+        },
+        "public_transport/stop_position_aerialway": {
+            "name": "Ubicación de paraxe da vía aérea",
+            "terms": "punto detención, transporte público, tránsito, transporte, teleférico, telecabina, góndola, transportador, parada"
         },
         "tourism/artwork/mural": {
             "name": "Mural"
@@ -1016,6 +1061,10 @@
             "name": "Ascensor de Arrastre",
             "terms": "elevador, remonta pendentes, telesquí, esquí, deslizador, snowboarder"
         },
+        "amenity/letter_box": {
+            "name": "Caixa do correo",
+            "terms": "buzon, buzón, receptáculo, casilleiro, casilla, compartimento, caixa, abertura, ranura, orificio, fendedura, correo, buraco, burato"
+        },
         "amenity/social_facility/ambulatory_care": {
             "name": "Ambulatory Care"
         },
@@ -1028,6 +1077,10 @@
         },
         "building/retail": {
             "name": "Edificio de comercios"
+        },
+        "golf/lateral_water_hazard": {
+            "name": "Óbice lateral de auga",
+            "terms": "atranco, dificultade, empezo, estorbo, impedimento, tropezo, obxección, pexa, traba, obstáculo, risco, riesgo, perigo, peligro, auga, agua, lateral, golf"
         },
         "highway/motorway_link": {
             "name": "Ligazón da autoestrada",
@@ -1055,6 +1108,10 @@
         },
         "junction/circular": {
             "name": "Círculo de tráfico"
+        },
+        "public_transport/platform/bus_point": {
+            "name": "Paraxe de bus",
+            "terms": "autobús, bus, colectivo, plataforma, transporte público, parada"
         },
         "building/pavilion": {
             "name": "Edificio do pavillón"
@@ -1122,7 +1179,7 @@
         },
         "landuse/military/danger_area": {
             "name": "Área perigosa",
-            "terms": "área perigosa, zona de exclusión"
+            "terms": "zona de perigo, bombas, minas, munición, explosivo, militar, exército, forza aérea, mariña, armada, forza naval, área perigosa, zona de exclusión"
         },
         "shop/confectionery": {
             "name": "Tenda de larpeiradas",
@@ -1145,8 +1202,12 @@
             "name": "Clínica ou centro de saúde",
             "terms": "clínica, médico, saúde, urxencias, clinica, ambulatorio, saude"
         },
+        "public_transport/stop_position_light_rail": {
+            "name": "Ubicación de paraxe do tren lixeiro",
+            "terms": "punto detención, transporte público, tránsito, transporte, tren, ferrocarril, tren lixeiro, parada"
+        },
         "amenity/place_of_worship/buddhist": {
-            "name": "Templo Budista"
+            "name": "Templo budista"
         },
         "natural/bare_rock": {
             "name": "Rocha núa",
@@ -1162,6 +1223,9 @@
         },
         "building/farm_auxiliary": {
             "name": "Edificio agrícola"
+        },
+        "power/switch": {
+            "name": "Interruptor de enerxía"
         },
         "natural/water/moat": {
             "name": "Foso",
@@ -1182,7 +1246,7 @@
             "terms": "caridade, beneficencia"
         },
         "landuse/winter_sports": {
-            "name": "Área de deportes de inverno"
+            "name": "Zona de deportes de inverno"
         },
         "office/foundation": {
             "name": "Oficina de fundación"
@@ -1235,7 +1299,8 @@
             "terms": "café, máquina, expendedora, cafetera"
         },
         "landuse/military/training_area": {
-            "name": "Área de adestramento militar"
+            "name": "Área de adestramento militar",
+            "terms": "área de probas, zona de probas, sitio de probas, tiro, disparo, proba de armas, proba táctica militar, tecnoloxía militar, demostración de terreo, militar, exército, forza aérea, mariña, armada, forza naval"
         },
         "natural/water/lake": {
             "name": "Lagoa",
@@ -1255,7 +1320,8 @@
             "name": "Tranvía"
         },
         "power/minor_line": {
-            "name": "Liña eléctrica de baixa tensión"
+            "name": "Liña eléctrica de media ou baixa tensión",
+            "terms": "media tensión, baixa tensión, enerxía, electrica"
         },
         "amenity/social_facility/nursing_home": {
             "name": "Residencia de Anciáns"
@@ -1316,10 +1382,15 @@
             "terms": "animal, aloxamento, hotel, gardería"
         },
         "highway/stop": {
-            "name": "Sinal de Stop"
+            "name": "Sinal de Stop",
+            "terms": "sinal, cartel, stop, deterse, parada, pare, alto, stop, paraxe"
         },
         "emergency/no": {
             "name": "Sen acceso de emerxencia"
+        },
+        "public_transport/stop_position_ferry": {
+            "name": "Ubicación de paraxe do ferri",
+            "terms": "punto detención, transporte público, tránsito, transporte, naval, marítimo, bote, barco, ferry, buque, lancha, muelle, dársena, ferri, peirao, parada"
         },
         "tourism": {
             "name": "Turismo"
@@ -1336,7 +1407,7 @@
             "terms": "lavado, limpeza, coche, automóbil, autolavado"
         },
         "highway/street_lamp": {
-            "name": "Farola"
+            "name": "Farol"
         },
         "playground/zipwire": {
             "name": "Tirolina",
@@ -1356,7 +1427,7 @@
             "name": "Reloxaría"
         },
         "amenity/parking_entrance": {
-            "name": "Entrada/Saída a garaxe de aparcadoiro"
+            "name": "Entrada/Saída de garaxe de aparcadoiro"
         },
         "landuse": {
             "name": "Uso da terra"
@@ -1385,6 +1456,9 @@
             "name": "Paso de peóns sen marcar",
             "terms": "paso de peóns sen marcar"
         },
+        "man_made/storage_tank/water": {
+            "name": "Depósito de auga"
+        },
         "craft/stonemason": {
             "name": "Albanel",
             "terms": "albanel, canteiro, pedra"
@@ -1393,7 +1467,7 @@
             "name": "Vía aérea"
         },
         "amenity/nightclub": {
-            "name": "Clube nocturno",
+            "name": "Clube nocturno ou discoteca",
             "terms": "clube nocturno, discoteca, after, sala de baile, bailar, bebidas, alcol, club nocturno, clube, club, alcohol, música"
         },
         "waterway/dam": {
@@ -1404,7 +1478,8 @@
             "terms": "escola, colexio, instituto, educación, ensinanza, primaria, secundaria, ESO, bacharelato"
         },
         "public_transport/stop_position_tram": {
-            "name": "Punto de parada de tranvía"
+            "name": "Ubicación de paraxe do tranvía",
+            "terms": "punto detención, transporte público, tránsito, transporte, tren, ferrocarril, tranvía, parada"
         },
         "shop/photo": {
             "name": "Tenda de fotografía"
@@ -1415,6 +1490,10 @@
         },
         "building/static_caravan": {
             "name": "Caravana estática"
+        },
+        "waterway/milestone": {
+            "name": "Fito de canle fluvial",
+            "terms": "fita de vías navegables, mollón, mollon, marco, mouteira, chito, marcote, mojón, mojon, marcaxe, marca, navegábel, navegable, canal, canle"
         },
         "leisure/pitch/skateboard": {
             "name": "Parque de patinaxe",
@@ -1465,14 +1544,12 @@
             "terms": "picnic, esparcemento, merendeiro, sitio de picnic, lugar de picnic, zona de picnic"
         },
         "highway/rest_area": {
-            "name": "Área de descanso"
+            "name": "Zona de descanso",
+            "terms": "área de descanso, apartadeiro"
         },
         "craft/electrician": {
             "name": "Electricista",
             "terms": "electricista, electricidade, eléctrico"
-        },
-        "manhole/telecom": {
-            "name": "Tapa de rexistro de telecomunicacións"
         },
         "attraction/drop_tower": {
             "name": "Torre de caída",
@@ -1507,6 +1584,14 @@
         "shop/hearing_aids": {
             "name": "Tenda de audífonos"
         },
+        "shop/water": {
+            "name": "Tenda de auga potábel",
+            "terms": "auga, agua, potable, bebible, potábel"
+        },
+        "public_transport/platform/trolleybus_point": {
+            "name": "Paraxe de trolebús",
+            "terms": "autobús, eléctrico, plataforma, transporte público, tranvía, sen rieles, trolley, trolebús, transporte, bus, trollei, trole, sen raís, bus, parada"
+        },
         "craft/confectionery": {
             "name": "Confeiteiro",
             "terms": "confeito, facer confeito, confite, doce, fabricación de doces, caramelos duros, caramelos de goma, gomitas, goma de mascar, chicles, regaliz, algodón de azucre, chocolates, trufas de chocolate, graxeas, doce de azucre, caramelos, toffees"
@@ -1527,7 +1612,8 @@
             "terms": "bar gay, bar lésbico, bar lgbtq, bar lgbt, bar lgb, homosexual"
         },
         "amenity/love_hotel": {
-            "name": "Hotel para parellas"
+            "name": "Hotel para parellas",
+            "terms": "hotel para parellas, parellas, telo, albergue transitorio, hotel aloxamento, motel"
         },
         "office/adoption_agency": {
             "name": "Axencia de adopción"
@@ -1555,7 +1641,8 @@
             "terms": "poboación, aldea, vila, poboado"
         },
         "shop/water_sports": {
-            "name": "Deportes acuáticos/tenda de natación"
+            "name": "Tenda de deportes acuáticos / natación",
+            "terms": "acuático, natación, goggles, lentes natación, bañador, bikini, biquini, neopreno, auga"
         },
         "building_part": {
             "name": "Parte de edificio"
@@ -1577,11 +1664,11 @@
             "name": "Tenda de queixos"
         },
         "amenity/boat_rental": {
-            "name": "Alugamento de embarcacións",
+            "name": "Alugueiro de embarcacións",
             "terms": "alugueiro, alugamento, locación, bote, barca, lancha, embarcación, embarcacións"
         },
         "amenity/place_of_worship/taoist": {
-            "name": "Templo Taoísta"
+            "name": "Templo taoísta"
         },
         "building/mosque": {
             "name": "Edificio da mesquita"
@@ -1595,6 +1682,10 @@
         },
         "highway/footway/sidewalk": {
             "name": "Beirarrúa"
+        },
+        "power/generator/source/hydro": {
+            "name": "Turbina de auga",
+            "terms": "encalco, encoro, represa, vaira, xerador, xenerador, turbina francis, hidroelectricidade, turbina kaplan, turbina pelton"
         },
         "amenity/animal_shelter": {
             "name": "Abeiro de animais",
@@ -1638,11 +1729,15 @@
         "leisure/adult_gaming_centre": {
             "name": "Centro recreativo para adultos"
         },
+        "public_transport/platform_point": {
+            "name": "Paraxe / Plataforma de transporte público",
+            "terms": "plataforma, transporte público, tránsito, transporte, parada"
+        },
         "shop/car_parts": {
             "name": "Tenda de recambios de automóbiles"
         },
         "leisure/outdoor_seating": {
-            "name": "Área de asentos ó exterior",
+            "name": "Zona de asentos ó exterior",
             "terms": "ó ar libre, ó aire libre, ao ar libre, ao aire libre, xardín de cervexa, comedor, cafetería, cafetaría, cafeteria, restaurante, pub, bar, patio, terraza, mesas, estar, sombrilla, parasol, antuca, catasol"
         },
         "office/lawyer": {
@@ -1679,8 +1774,8 @@
             "terms": "parque, zona verde, xardín, alameda"
         },
         "amenity/internet_cafe": {
-            "name": "Cibercafé",
-            "terms": "ciber, internet, ordenador"
+            "name": "Internet café",
+            "terms": "internet, terminais, cafe, cyber, cyber cafe, cybercafe, ciber, ciber café, cibercafé, xogos, xogos en rede"
         },
         "landuse/reservoir": {
             "name": "Encoro"
@@ -1690,6 +1785,10 @@
         },
         "historic/memorial": {
             "name": "Monumento conmemorativo"
+        },
+        "golf/water_hazard": {
+            "name": "Óbice de auga",
+            "terms": "atranco, dificultade, empezo, estorbo, impedimento, tropezo, obxección, pexa, traba, obstáculo, risco, riesgo, perigo, peligro, auga, agua, lateral, golf"
         },
         "shop/cosmetics": {
             "name": "Tenda de cosméticos"
@@ -1708,9 +1807,12 @@
             "name": "Edificio universitario",
             "terms": "universidade, facultade, escola, colexio"
         },
+        "public_transport/platform/train_point": {
+            "name": "Paraxe / Plataforma de tren"
+        },
         "amenity/library": {
             "name": "Biblioteca",
-            "terms": "biblioteca, libros, lectura"
+            "terms": "biblioteca, libros, lectura, arquivo, hemeroteca, filmoteca, libro"
         },
         "shop/stationery": {
             "name": "Papelaría"
@@ -1722,11 +1824,8 @@
             "name": "Axencia de publicidade"
         },
         "highway/living_street": {
-            "name": "Rúa semipeonil"
-        },
-        "attraction/bumper_car": {
-            "name": "Coches de choque",
-            "terms": "coches, cochitos, atracción"
+            "name": "Rúa semipeonil",
+            "terms": "rua, residencial, urbanización, residencial, semipeatonal, zona residencial, zona 30, vía compartida, calle"
         },
         "attraction/roller_coaster": {
             "name": "Montaña rusa",
@@ -1740,6 +1839,10 @@
         },
         "leisure/firepit": {
             "name": "Fogueira"
+        },
+        "public_transport/station_ferry": {
+            "name": "Estación / Terminal de ferri",
+            "terms": "barco, muelle, transbordador, ferry, buque, transporte público, transporte publico, estación, terminal, tránsito, transporte, ferri, peirao, barco"
         },
         "leisure/pitch/baseball": {
             "name": "Campo de béisbol"
@@ -1757,23 +1860,30 @@
             "name": "Tenda de bicicletas"
         },
         "public_transport/stop_position_subway": {
-            "name": "Punto de parada de metro"
+            "name": "Ubicación de paraxe do metro",
+            "terms": "punto detención, transporte público, tránsito, transporte, tren, ferrocarril, metro, subterráneo, parada"
         },
         "tourism/apartment": {
             "name": "Apartamento de hóspedes"
         },
         "amenity/hunting_stand": {
-            "name": "Stand de Caza"
+            "name": "Posto de caza",
+            "terms": "caza, posto, caseta, caseto"
         },
         "tourism/guest_house": {
             "name": "Hostal",
             "terms": "hostal, pensión, hospedaxe, fonda, pousada, aloxamento, habitación"
         },
         "amenity/nightclub/lgbtq": {
-            "name": "Discoteca LGBTQ+"
+            "name": "Discoteca LGBTQ+",
+            "terms": "discoteca gay, discoteca lésbica, discoteca lgbtq, discoteca lgbt, discoteca lgb"
         },
         "healthcare/laboratory": {
             "name": "Laboratorio médico"
+        },
+        "shop/party": {
+            "name": "Tenda de artigos para festas",
+            "terms": "globos, disfraces, decoracións, invitacións, festas, convites, esmorga, algueirada, carallada, chola, folía, foliada, gandaina, pándega, rexouba, riola, ruada, troula, trouleo, xolda, rua, garulada, festividade"
         },
         "highway/cycleway/crossing": {
             "name": "Paso de bicicletas"
@@ -1819,11 +1929,12 @@
             "terms": "Aparellador"
         },
         "man_made/water_works": {
-            "name": "Planta potabilizadora"
+            "name": "Planta potabilizadora de auga",
+            "terms": "potabilizadora, ETAP, planta potabilizadora, abastecemento de auga, auga potable, auga potábel"
         },
         "amenity/pub": {
-            "name": "Bar",
-            "terms": "Pub, bar, café, cafetería, bebidas, alcohol, cervexa, bar de tapas, pinchos"
+            "name": "Bar ou cervexaría",
+            "terms": "bar, café, cafetería, bebidas, alcohol, cervexa, bar de tapas, pinchos, alcol, furancho, cervexeria, cervexería, cervexaria, cervexaría, tapa, pincho, cerveceria, cervecería"
         },
         "building/entrance": {
             "name": "Entrada/Saída"
@@ -1835,8 +1946,8 @@
             "name": "Duro"
         },
         "man_made/breakwater": {
-            "name": "Rompeondas",
-            "terms": "rompeolas, rompeondas, quebraondas, crebaondas, dique"
+            "name": "Crebaondas",
+            "terms": "rompeolas, rompeondas, quebraondas, crebaondas, dique, espigón, malecón"
         },
         "shop/shoes": {
             "name": "Zapataría"
@@ -1855,7 +1966,7 @@
             "name": "Oficina de empresa enerxética"
         },
         "amenity/place_of_worship/hindu": {
-            "name": "Templo Hindú"
+            "name": "Templo hindú"
         },
         "aerialway/platter": {
             "name": "Plataforma Elevadora",
@@ -1883,7 +1994,8 @@
             "name": "Floraría"
         },
         "type/route/ferry": {
-            "name": "Liña do ferri"
+            "name": "Liña de ferri",
+            "terms": "ruta, rota, liña, ferri, itinerario, rumbo, dirección, traxecto, ferry, transbordador, buque, barco"
         },
         "emergency": {
             "name": "Elemento de emerxencia"
@@ -1920,7 +2032,7 @@
             "name": "Aldea"
         },
         "amenity/recycling_centre": {
-            "name": "Centro de Reciclaxe",
+            "name": "Centro de reciclaxe",
             "terms": "centro de reciclaxe, punto limpo"
         },
         "club": {
@@ -1944,7 +2056,7 @@
         },
         "highway/pedestrian_line": {
             "name": "Rúa peonil",
-            "terms": "peón, peon, peonil, rúa peonil, rúa de peóns, pasarela"
+            "terms": "peón, peon, peonil, rua peonil, rua de peóns, pasarela, peatonal, comercial, so garaxes, praza"
         },
         "man_made/lighthouse": {
             "name": "Faro",
@@ -2002,7 +2114,8 @@
             "name": "Entrada de metro"
         },
         "highway/emergency_bay": {
-            "name": "Lugar de paraxe de emerxencia"
+            "name": "Lugar de paraxe de emerxencia",
+            "terms": "autopista, parada de emerxencia, autoestrada, autovía"
         },
         "aeroway/windsock": {
             "name": "Manga de vento",
@@ -2023,6 +2136,10 @@
             "name": "Andamista",
             "terms": "andamios, andamista"
         },
+        "public_transport/platform/ferry": {
+            "name": "Plataforma de ferri",
+            "terms": "bote, muelle, transbordador, plataforma, transporte público, peirao, barco"
+        },
         "shop/locksmith": {
             "name": "Cerralleiro",
             "terms": "cerralleiro, zarralleiro, cerraxeiro, chaves, duplicado de chaves, copia de chaves"
@@ -2034,15 +2151,15 @@
         "leisure/pitch": {
             "name": "Campo deportivo"
         },
+        "public_transport/stop_position_trolleybus": {
+            "name": "Ubicación de paraxe do trolebús",
+            "terms": "punto detención, transporte público, tránsito, transporte, tren, ferrocarril, bus, autobús, trolebús, bus, parada"
+        },
         "tourism/hotel": {
             "name": "Hotel"
         },
         "historic/monument": {
             "name": "Monumento"
-        },
-        "manhole": {
-            "name": "Tapa de rexistro",
-            "terms": "alcantarilla, sumidoiro, tapa de rexistro"
         },
         "type/route/bicycle": {
             "name": "Roteiro ciclista"
@@ -2082,6 +2199,10 @@
             "name": "Parque infantil",
             "terms": "parque infantil, área de recreo, columpios, tobogán"
         },
+        "emergency/water_tank": {
+            "name": "Depósito de auga de emerxencia",
+            "terms": "tanque de agua, cisterna, depósito, deposito, urxencia, bombeiros, lumes, incendios, fogos, fogueiras, lapas, cacharelas"
+        },
         "shop/erotic": {
             "name": "Tenda erótica"
         },
@@ -2105,7 +2226,8 @@
             "name": "Corredor do aparcadoiro"
         },
         "indoor/area": {
-            "name": "Área interior"
+            "name": "Zona interior",
+            "terms": "espazo interior, interior, área, area"
         },
         "amenity/bbq": {
             "name": "Barbacoa/Grella",
@@ -2119,20 +2241,23 @@
             "terms": "evento LGBTQ, sala de LGBTQ, salón de eventos LGB, LGB"
         },
         "waterway/boatyard": {
-            "name": "Estaleiro"
+            "name": "Estaleiro",
+            "terms": "astillero, varadeiro, bote, lancha, embarcación, varadoiro, barco, barcos, embarcacion"
         },
         "power/line": {
-            "name": "Liña de alta tensión"
+            "name": "Liña eléctrica de alta tensión",
+            "terms": "enerxía, liña, eléctrica, liñas eléctricas, liña electrica, liñas electricas"
         },
         "amenity/ice_cream": {
             "name": "Xeadaría",
-            "terms": "xeadería, xeadaría, xeados"
+            "terms": "nevería, xeado, sorbete, neve, granizado, raspadillo, frozen, yogur, iogur, copas, tarta xeada, postre, sobremesa, xeadería, xeadaría, xeados, xeaderia, xeadaria"
         },
         "leisure/horse_riding": {
             "name": "Centro de equitación"
         },
         "power/pole": {
-            "name": "Poste eléctrico"
+            "name": "Piar eléctrico",
+            "terms": "poste, electricidade, postes de electricidade, poste de electricidade, piar de enerxía"
         },
         "barrier/chain": {
             "name": "Cadea",
@@ -2145,6 +2270,9 @@
         "natural/peak": {
             "name": "Cumio",
             "terms": "pico, cumio, cume, montaña, monte, cúspide"
+        },
+        "public_transport/platform/monorail_point": {
+            "name": "Paraxe / Plataforma de monorraíl"
         },
         "highway/tertiary": {
             "name": "Estrada terciaria",
@@ -2223,8 +2351,8 @@
             "terms": "pendello para bicicletas, bici"
         },
         "highway/services": {
-            "name": "Área de servizo",
-            "terms": "área de servicio, estación de servicio"
+            "name": "Zona de servizo",
+            "terms": "área de servizo, estación de servizo, área de servicio, estación de servicio"
         },
         "amenity/bureau_de_change": {
             "name": "Troco de divisas",
@@ -2243,11 +2371,12 @@
             "name": "Ocio"
         },
         "amenity/post_office": {
-            "name": "Oficina de Correos",
+            "name": "Oficina de correos",
             "terms": "oficina, correos, mensaxería, paquetería"
         },
         "public_transport/stop_position": {
-            "name": "Punto de parada de transporte público"
+            "name": "Ubicación de paraxe do transporte público",
+            "terms": "punto detención, transporte público, tránsito, transporte, aéreo, autobús, ferry, tren lixeiro, tranvía, tren, monorraíl, metro, trolebús, parada, bus, ferri"
         },
         "aerialway/zip_line": {
             "name": "Tirolina"
@@ -2270,8 +2399,8 @@
             "name": "Centro social"
         },
         "amenity/bar": {
-            "name": "Bar de copas",
-            "terms": "pub, bar, bar de copas, bebidas, alcohol, cantina, taberna, cervexa"
+            "name": "Bar de copas ou pub",
+            "terms": "pub, bar, bar de copas, bebidas, alcohol, cantina, taberna, cervexa, alcol, furancho, chill, coctel"
         },
         "traffic_calming/cushion": {
             "name": "Banda de freado"
@@ -2311,7 +2440,8 @@
             "name": "Edificio"
         },
         "power/cable/underground": {
-            "name": "Liña eléctrica subterránea"
+            "name": "Liña eléctrica subterránea",
+            "terms": "cable, alimentación, enerxía, electricidade, subterráneo, cabo, rede, alta, baixa, tensión, tension"
         },
         "golf/tee": {
             "name": "Caixa de Te"
@@ -2348,7 +2478,7 @@
         },
         "attraction/water_slide": {
             "name": "Tobogán de auga",
-            "terms": "tobogán, auga, escorregadoiro, esvaradoiro"
+            "terms": "tobogán, auga, escorregadoiro, esvaradoiro, acuático, acuatico, agua"
         },
         "shop/vacuum_cleaner": {
             "name": "Tenda de aspiradoras"
@@ -2364,7 +2494,7 @@
         },
         "amenity/marketplace": {
             "name": "Mercado",
-            "terms": "mercado, mercadillo, plaza"
+            "terms": "mercado, mercadillo, plaza, praza, publico, feira, feirón"
         },
         "building/industrial": {
             "name": "Edificio industrial"
@@ -2372,12 +2502,16 @@
         "amenity/restaurant/german": {
             "name": "Restaurante alemán"
         },
+        "public_transport/platform/aerialway_point": {
+            "name": "Paraxe / Plataforma de vía aérea"
+        },
         "amenity/university": {
             "name": "Zona universitaria",
             "terms": "campus, universidade"
         },
         "building/public": {
-            "name": "Edificio público"
+            "name": "Edificio público",
+            "terms": "edificio publico, construción, centro cultural, centro social, delegación"
         },
         "highway/crossing/zebra-raised": {
             "name": "Paso de peóns marcado (Levantado)"
@@ -2397,7 +2531,8 @@
             "name": "Sinal de límite da velocidade"
         },
         "man_made/watermill": {
-            "name": "Muíño de auga"
+            "name": "Muíño de auga",
+            "terms": "auga, agua, hidráulico, hidraulico, caz, azud, aceña, roda, turbina, paleta, molino, noria, moler, moer, muíño hidráulico"
         },
         "amenity/college": {
             "name": "Zona de educación superior",
@@ -2414,10 +2549,15 @@
             "terms": "xardín, comunitario, horta, horto, urbano"
         },
         "office/water_utility": {
-            "name": "Oficina de servizos públicos de auga"
+            "name": "Oficina de servizos públicos de auga",
+            "terms": "servizo público, servicio público, publico, auga, agua, saneamento"
+        },
+        "railway/tram_stop": {
+            "name": "Paraxe de tranvía"
         },
         "highway/pedestrian_area": {
-            "name": "Área peonil"
+            "name": "Zona peonil",
+            "terms": "área, area, centro, praza, pasarela, peatón, peaton, peatonal, peón, peon, peonil, plaza"
         },
         "amenity/vending_machine/food": {
             "name": "Expendedora de comida"
@@ -2467,7 +2607,8 @@
             "name": "Rotonda"
         },
         "type/route/power": {
-            "name": "Rota da rede de enerxía"
+            "name": "Rota de rede eléctrica",
+            "terms": "liña de alta tensión, cable, cabo, electricidade, enerxía, rede elećtrica, liña electrica, ruta"
         },
         "highway/service/alley": {
             "name": "Calexón"
@@ -2478,6 +2619,10 @@
         },
         "amenity/restaurant/seafood": {
             "name": "Restaurante de mariscos"
+        },
+        "amenity/recycling/container/electrical_items": {
+            "name": "Contedor de residuos electrónicos",
+            "terms": "computadoras, residuos electrónicos, reciclaxe de produtos electrónicos, electrónicos, teléfonos, tabletas, tablets, notebooks, ordenadores, desfeitos, lixo, refugallos"
         },
         "public_transport/station_train": {
             "name": "Estación de tren"
@@ -2515,14 +2660,12 @@
             "name": "Tenda de anime"
         },
         "route/ferry": {
-            "name": "Liña de ferri"
+            "name": "Liña de ferri",
+            "terms": "ruta, rota, liña, ferry, ferri, buque, transbordador, lancha, embarcación, trasbordador, barco"
         },
         "shop/outdoor": {
             "name": "Tenda de actividades ó ar libre",
             "terms": "alpinismo, montañismo, sendeirismo, acampada, escalada, excursión, GPS"
-        },
-        "highway/raceway": {
-            "name": "Pista de carreiras (Motorsport)"
         },
         "emergency/designated": {
             "name": "Acceso de emerxencia designado"
@@ -2554,6 +2697,10 @@
         "amenity/shelter/picnic_shelter": {
             "name": "Abeiro de pícnic",
             "terms": "pícnic, refuxio, pavillón, picnic, abeiro"
+        },
+        "type/public_transport/stop_area_group": {
+            "name": "Grupo de área da paraxe de transporte",
+            "terms": "transporte público, parada, punto de detención"
         },
         "shop/chocolate": {
             "name": "Chocolataría"
@@ -2591,7 +2738,8 @@
             "name": "Complexo de apartamentos"
         },
         "amenity/place_of_worship/muslim": {
-            "name": "Mesquita musulmá"
+            "name": "Mesquita musulmá",
+            "terms": "musulmán, musulman, musulmano, musulmana, musulmá, musulma"
         },
         "shop/tea": {
             "name": "Tenda de té"
@@ -2605,6 +2753,10 @@
         },
         "shop/supermarket": {
             "name": "Supermercado"
+        },
+        "office/political_party": {
+            "name": "Oficina do partido político",
+            "terms": "oficina de partido político, partido político, politico, politica, sede"
         },
         "shop/wholesale": {
             "name": "Almacén ó por maior"
@@ -2625,6 +2777,9 @@
             "name": "Silo",
             "terms": "silo, depósito, gran, almacenar"
         },
+        "man_made/surveillance/camera": {
+            "name": "Cámara de vixilancia"
+        },
         "building/hut": {
             "name": "Refuxio",
             "terms": "refuxio, choza, cabaña, cabana"
@@ -2638,6 +2793,10 @@
         },
         "natural/water/basin": {
             "name": "Conca"
+        },
+        "public_transport/platform/tram_point": {
+            "name": "Paraxe / Plataforma de tranvía",
+            "terms": "eléctrico, tren lixeiro, plataforma, transporte público, ferrocarril, tranvía, pista, tránsito, transporte"
         },
         "amenity/fast_food/donut": {
             "name": "Tenda de rosquillas"
@@ -2686,7 +2845,8 @@
             "name": "Salón de bronceado"
         },
         "amenity/water_point": {
-            "name": "Auga potábel para caravanas"
+            "name": "Auga potábel para caravanas",
+            "terms": "casa rodante, autocaravana, caravana, motorhome, camper, auga potable, agua, auga, recarga"
         },
         "public_transport/station": {
             "name": "Estación de transporte público"
@@ -2696,7 +2856,8 @@
             "terms": "talla, tala, bosque, madeira, árbore, arbore"
         },
         "amenity/food_court": {
-            "name": "Zona de comidas"
+            "name": "Zona de comidas",
+            "terms": "patio de comida, xantar rápido, comida rápida, zona de comida, área de restaurantes, feira de comidas, almorzo"
         },
         "natural/beach": {
             "name": "Praia"
@@ -2725,7 +2886,8 @@
             "name": "Óptico"
         },
         "waterway/waterfall": {
-            "name": "Fervenza"
+            "name": "Fervenza",
+            "terms": "abanqueiro, cadoiro, freixa, ruxida, ruxidoira, salto, salto de auga, seimeira, cachoada, cachoeira, cachón, callón, catarata, cascada, caída de auga, brinco de auga, torrente, brinco, férveda, ferveda, brinco"
         },
         "office/guide": {
             "name": "Oficina de guías turísticos"
@@ -2763,8 +2925,8 @@
             "name": "Senda ciclista e peonil"
         },
         "man_made/wastewater_plant": {
-            "name": "Depuradora de augas",
-            "terms": "depuradora, auga, planta depuradora, EDAR, augas residuais"
+            "name": "Depuradora de augas residuais",
+            "terms": "depuradora, auga, planta depuradora, EDAR, augas residuais, saneamento, tratamento de augas residuais, depuración, PTAR"
         },
         "landuse/plant_nursery": {
             "name": "Viveiro de plantas",
@@ -2802,6 +2964,9 @@
             "name": "Canteira",
             "terms": "canteira, pedra, minaría, mina, pedra, rocha, minerais"
         },
+        "public_transport/platform/subway_point": {
+            "name": "Paraxe / Plataforma de metro"
+        },
         "barrier/border_control": {
             "name": "Alfándega",
             "terms": "alfándega, aduana, fronteira"
@@ -2820,7 +2985,8 @@
             "name": "Tenda de pinturas"
         },
         "historic/ruins": {
-            "name": "Ruinas"
+            "name": "Ruínas",
+            "terms": "restos, ruina, ruinas, vestixios, destruido"
         },
         "highway/secondary": {
             "name": "Estrada secundaria",
@@ -2873,7 +3039,8 @@
             "terms": "aire, pneumáticos, inflado de rodas, inchado de rodas"
         },
         "man_made/water_well": {
-            "name": "Pozo"
+            "name": "Pozo de auga",
+            "terms": "auga en pozo, goio"
         },
         "shop/organic": {
             "name": "Tenda de produtos ecolóxicos"
@@ -2912,7 +3079,7 @@
             "terms": "bosque, fraga, foresta, monte, árbores"
         },
         "amenity/restaurant/chinese": {
-            "name": "Restaurante chino"
+            "name": "Restaurante chinés"
         },
         "leisure/pitch/rugby_union": {
             "name": "Campo de rugby union",
@@ -2923,8 +3090,8 @@
             "terms": "destilaría, alcohol, alcol, bebida, whisky, ron, ginebra, vodka, brandy, licor, tequila, augardente, licor café"
         },
         "aeroway/apron": {
-            "name": "Diantal",
-            "terms": "plataforma, vía de aparcamento"
+            "name": "Plataforma aeroportuaria",
+            "terms": "plataforma, vía de aparcamento, aparcadoiro, avion, avións, avions, aeronaves, lado aire, ar, lado terra, tierra, rampla, rampa, patio"
         },
         "shop/tattoo": {
             "name": "Salón de tatuaxes"
@@ -2964,7 +3131,8 @@
             "name": "Depósito de ferralla"
         },
         "amenity/pub/microbrewery": {
-            "name": "Bar cervexeiro"
+            "name": "Bar cervexeiro",
+            "terms": "alcol, bebida, cervexa, cervexaría artesá, cervexaría de pequenos lotes"
         },
         "building/hangar": {
             "name": "Edificio do hangar"
@@ -2976,7 +3144,8 @@
             "name": "Tenda de bombonas de gas"
         },
         "landuse/commercial": {
-            "name": "Zona de oficinas"
+            "name": "Zona de oficinas",
+            "terms": "área comercial, área de oficinas, área de negocios, parques empresariais, área de venda de produtos, área de servizos, empresa, oficina"
         },
         "natural/ridge": {
             "name": "Crista"
@@ -2987,10 +3156,6 @@
         "aerialway/magic_carpet": {
             "name": "Ascensor Magic Carpet",
             "terms": "alfombra máxica, alfombra rodante, fita transportadora"
-        },
-        "amenity/post_box": {
-            "name": "Caixa do correo",
-            "terms": "correo, buzón, correos, mensaxería, postal"
         },
         "public_transport/station_tram": {
             "name": "Estación de tranvía"
@@ -3088,8 +3253,12 @@
             "terms": "aeroporto, avión, aeródromo, terminal"
         },
         "amenity/bicycle_rental": {
-            "name": "Alugamento de bicicletas",
+            "name": "Alugueiro de bicicletas",
             "terms": "bici, bicicleta, alugueiro, préstamo, alugamento, locación"
+        },
+        "shop/boat": {
+            "name": "Tenda de embarcacións",
+            "terms": "barco, bote, lancha, barco de pesca, jetski, bote de remos, veleiro, embarcacion, barcos"
         },
         "shop/gift": {
             "name": "Tenda de agasallos"
@@ -3105,7 +3274,7 @@
             "name": "Lugar"
         },
         "power": {
-            "name": "Rede eléctrica"
+            "name": "Liña eléctrica"
         },
         "aerialway/station": {
             "name": "Estación de teleférico"
@@ -3142,13 +3311,14 @@
             "name": "Arquitecto"
         },
         "leisure/swimming_area": {
-            "name": "Área de natación natural"
+            "name": "Zona de natación natural"
         },
         "railway/subway": {
             "name": "Metro"
         },
         "amenity/money_transfer": {
-            "name": "Estación de transferencia de diñeiro"
+            "name": "Estación de transferencia de diñeiro",
+            "terms": "xiro postal, cheque, factura, moeda, finanzas, transferencia bancaria, cable, cabo, persoa a persoa, efectivo a efectivo, intercambio, troco"
         },
         "highway/elevator": {
             "name": "Montacargas",
@@ -3174,6 +3344,9 @@
             "name": "Bolardo",
             "terms": "bolardo, poste, obstáculo"
         },
+        "public_transport/platform/ferry_point": {
+            "name": "Paraxe / Plataforma de ferri"
+        },
         "leisure/golf_course": {
             "name": "Campo de golf"
         },
@@ -3198,7 +3371,12 @@
             "name": "Corredor interior"
         },
         "leisure/water_park": {
-            "name": "Parque acuático"
+            "name": "Parque acuático",
+            "terms": "parque de auga, auga, agua, aquapark"
+        },
+        "shop/sewing": {
+            "name": "Tenda de artigos de costura",
+            "terms": "tenda de subministros de costura, costura, mercería, merzaría, artigos, obxectos, cosedura, confeccion, corte"
         },
         "attraction/train": {
             "name": "Tren turístico",
@@ -3229,10 +3407,16 @@
             "name": "Estrada de servizo"
         },
         "waterway/drain": {
-            "name": "Cuneta"
+            "name": "Cuneta",
+            "terms": "drenaxe, sumidoiro, sumideiro, acougadoiro, desacougadoiro, pluviais, augas, chuvia, chuva, choiva, desagüe, sumidero, alcantarilla, alcantarillado, resumidero"
+        },
+        "man_made/pipeline/underground": {
+            "name": "Tubaxe subterránea",
+            "terms": "petróleo, gas natural, auga, alcantarillado, augas residuais, desechos, refugallos, tubería, gasoduto, oleoduto, tubaxe, tubaría, tuberia, tubo"
         },
         "highway/residential": {
-            "name": "Estrada ou rúa residencial"
+            "name": "Rúa urbana",
+            "terms": "calle, avenida, ruta, vía, boulevar, bulevar, paseo, residencial, urbana, domiciliaria, rua"
         },
         "public_transport/platform/light_rail": {
             "name": "Plataforma de tren lixeiro"
@@ -3247,7 +3431,8 @@
             "name": "Límite administrativo"
         },
         "amenity/watering_place": {
-            "name": "Bebedoiro de animais"
+            "name": "Bebedoiro de animais",
+            "terms": "auga, agua, animales, animais, bebedero, estanque, posa, abrevadero, pilón, fonte, manantial, pozo, manancial, bebedeiro"
         },
         "tourism/artwork/bust": {
             "name": "Busto"
@@ -3271,9 +3456,13 @@
         "amenity/vehicle_inspection": {
             "name": "Inspección de vehículo"
         },
+        "amenity/recycling/container/green_waste": {
+            "name": "Contedor de residuos orgánicos",
+            "terms": "biodegradable, biolóxico, compost, descomponible, basureiro, desperdicio de xardín, orgánico, basura, restos de comida, verde, residuo, lixo, esterco"
+        },
         "amenity/kindergarten": {
-            "name": "Zona de gardería ou xardín de infancia",
-            "terms": "preescolar, xardín de infancia, guardería, infantil, párvulos"
+            "name": "Zona de gardaría ou xardín de infancia",
+            "terms": "preescolar, xardín de infancia, guardería, infantil, párvulos, garderia, gardería, gardaria, parvulos"
         },
         "man_made/tower/observation": {
             "name": "Torre de observación",
@@ -3293,7 +3482,8 @@
             "name": "Pintor"
         },
         "public_transport/stop_area": {
-            "name": "Zona de parada de transporte público"
+            "name": "Zona de paraxe do transporte público",
+            "terms": "transporte público, parada, punto de detención"
         },
         "craft/carpet_layer": {
             "name": "Alfombreiro",
@@ -3337,11 +3527,12 @@
             "name": "Artesán",
             "terms": "artesanía, artesán"
         },
-        "landuse/construction": {
-            "name": "Zona baixo construción"
-        },
         "office/diplomatic": {
             "name": "Oficina diplomática"
+        },
+        "piste/downhill/halfpipe": {
+            "name": "Mediotubo",
+            "terms": "esquí, alpino, halfpipe, half pipe, snowboard, costa abaixo, pista, medio tubo, medio-tubo, meio-tubo, meio tubo, skate, patín, patinete, monopatín, longboard, board, bici, bmx, bicicleta de competición"
         },
         "shop/motorcycle_repair": {
             "name": "Taller de arranxo de motocicletas"

@@ -1786,10 +1786,6 @@
             "name": "Pásový vlek",
             "terms": "pasovy vlek"
         },
-        "amenity/post_box": {
-            "name": "Poštová schránka",
-            "terms": "schránka,list,zásielka,výber zásielok,schranka,zasielka,vyber zasielok"
-        },
         "emergency/official": {
             "name": "Núdzový vstup oficiálny"
         },
@@ -2371,10 +2367,6 @@
         "office/lawyer": {
             "name": "Právna kancelária",
             "terms": "pravna kancelaria"
-        },
-        "landuse/construction": {
-            "name": "Stavenisko",
-            "terms": "stavba,konstrukcia,konštrukcia,výstavba,vystavba"
         },
         "highway/trunk_link": {
             "name": "Privádzač rýchlostnej cesty",

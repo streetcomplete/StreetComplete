@@ -3,10 +3,10 @@ package de.westnordost.streetcomplete.quests.toilets_fee
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
-class AddToiletsFee(o: OverpassMapDataDao) : SimpleOverpassQuestType<Boolean>(o) {
+class AddToiletsFee(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<Boolean>(o) {
 
     override val tagFilters = "nodes, ways with amenity = toilets and access !~ private|customers and !fee"
     override val commitMessage = "Add toilets fee"

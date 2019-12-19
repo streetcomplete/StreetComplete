@@ -10,7 +10,7 @@ import dagger.Provides;
 import de.westnordost.osmfeatures.FeatureDictionary;
 import de.westnordost.streetcomplete.data.QuestType;
 import de.westnordost.streetcomplete.data.QuestTypeRegistry;
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
+import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao;
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestType;
 import de.westnordost.streetcomplete.quests.baby_changing_table.AddBabyChangingTable;
 import de.westnordost.streetcomplete.quests.bike_parking_capacity.AddBikeParkingCapacity;
@@ -55,7 +55,6 @@ import de.westnordost.streetcomplete.quests.railway_crossing.AddRailwayCrossingB
 import de.westnordost.streetcomplete.quests.recycling.AddRecyclingType;
 import de.westnordost.streetcomplete.quests.religion.AddReligionToPlaceOfWorship;
 import de.westnordost.streetcomplete.quests.religion.AddReligionToWaysideShrine;
-import de.westnordost.streetcomplete.quests.localized_name.data.PutRoadNameSuggestionsHandler;
 import de.westnordost.streetcomplete.quests.localized_name.data.RoadNameSuggestionsDao;
 import de.westnordost.streetcomplete.quests.segregated.AddCyclewaySegregation;
 import de.westnordost.streetcomplete.quests.self_service.AddSelfServiceLaundry;
@@ -91,9 +90,8 @@ import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAcces
 public class QuestModule
 {
 	@Provides @Singleton public static QuestTypeRegistry questTypeRegistry(
-		OsmNoteQuestType osmNoteQuestType, OverpassMapDataDao o,
+		OsmNoteQuestType osmNoteQuestType, OverpassMapDataAndGeometryDao o,
 		RoadNameSuggestionsDao roadNameSuggestionsDao,
-		PutRoadNameSuggestionsHandler putRoadNameSuggestionsHandler,
 		TrafficFlowSegmentsDao trafficFlowSegmentsDao, WayTrafficFlowDao trafficFlowDao,
 		FutureTask<FeatureDictionary> featureDictionaryFuture)
 	{
@@ -102,7 +100,7 @@ public class QuestModule
 				osmNoteQuestType,
 
 				// ↓ 2. important data that is used by many data consumers
-				new AddRoadName(o, roadNameSuggestionsDao, putRoadNameSuggestionsHandler),
+				new AddRoadName(o, roadNameSuggestionsDao),
 				new AddPlaceName(o, featureDictionaryFuture),
 				new AddOneway(o, trafficFlowSegmentsDao, trafficFlowDao),
 				new AddBusStopName(o),

@@ -51,9 +51,6 @@
         "natural": {
             "name": "ನೈಸರ್ಗಿಕ"
         },
-        "amenity/post_box": {
-            "name": "ಅಂಚೆಪೆಟ್ಟಿಗೆ"
-        },
         "shop/laundry": {
             "name": "ಧೋಬಿಖಾನೆ"
         },

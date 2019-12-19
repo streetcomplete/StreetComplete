@@ -523,10 +523,6 @@
             "name": "登機閘",
             "terms": "Airport Gate,登機門,登機口"
         },
-        "manhole/drain": {
-            "name": "雨水渠",
-            "terms": "Storm Drain,排水道"
-        },
         "traffic_calming/island": {
             "name": "交通島",
             "terms": "Traffic island, 分隔島, 安全島"
@@ -1384,10 +1380,6 @@
             "name": "電工",
             "terms": "電氣工程,電業工匠"
         },
-        "manhole/telecom": {
-            "name": "電訊沙井",
-            "terms": "Telecom Manhole,電訊人孔,電信沙井"
-        },
         "attraction/drop_tower": {
             "name": "跳樓機",
             "terms": "Drop Tower,自由落體"
@@ -1626,10 +1618,6 @@
         "highway/living_street": {
             "name": "生活街道",
             "terms": "Living Street,居住街道,生活街道"
-        },
-        "attraction/bumper_car": {
-            "name": "碰碰車",
-            "terms": "Bumper Car,碰碰車"
         },
         "attraction/roller_coaster": {
             "name": "過山車",
@@ -1935,10 +1923,6 @@
         "historic/monument": {
             "name": "大紀念碑",
             "terms": "Monument,古跡,古蹟,大紀念碑,碑,紀念碑"
-        },
-        "manhole": {
-            "name": "沙井",
-            "terms": "Manhole,人孔,溝糟"
         },
         "type/route/bicycle": {
             "name": "單車路綫",
@@ -2380,10 +2364,6 @@
             "name": "戶外用品店",
             "terms": "戶外用品店"
         },
-        "highway/raceway": {
-            "name": "賽道(小型賽車)",
-            "terms": "Racetrack (Motorsport), 賽道, 賽車車道"
-        },
         "emergency/designated": {
             "name": "指定緊急通道"
         },
@@ -2783,10 +2763,6 @@
             "name": "輸送帶",
             "terms": "Magic Carpet Lift,輸送帶"
         },
-        "amenity/post_box": {
-            "name": "郵筒",
-            "terms": "Mailbox,Post,Post Box,郵筒,郵箱"
-        },
         "public_transport/station_tram": {
             "name": "電車站",
             "terms": "Tram Station, 電車大站"
@@ -3114,10 +3090,6 @@
         "craft/handicraft": {
             "name": "手工藝",
             "terms": "手工藝,手作"
-        },
-        "landuse/construction": {
-            "name": "地盤",
-            "terms": "Construction,地盤,建築工程,建築物"
         },
         "aeroway": {
             "name": "航空設施"

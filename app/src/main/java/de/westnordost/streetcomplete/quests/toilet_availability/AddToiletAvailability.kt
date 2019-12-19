@@ -3,10 +3,10 @@ package de.westnordost.streetcomplete.quests.toilet_availability
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
-class AddToiletAvailability(o: OverpassMapDataDao) : SimpleOverpassQuestType<Boolean>(o) {
+class AddToiletAvailability(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<Boolean>(o) {
 
     // only for malls, big stores and rest areas because users should not need to go inside a non-public
     // place to solve the quest. (Considering malls and department stores public enough)

@@ -588,10 +588,6 @@
             "name": "登机口",
             "terms": "登机口,登机门"
         },
-        "manhole/drain": {
-            "name": "窨井口",
-            "terms": "窨井盖,窨井口,窨井,下水道,盖,下水管,排水,排水道,污水,排水管,排水沟,洞,井,孔,雨,雷雨,台风,沙井,沙井盖"
-        },
         "traffic_calming/island": {
             "name": "交通分隔岛",
             "terms": "交通岛,导流岛,安全岛,中心岛,分隔岛"
@@ -1602,10 +1598,6 @@
             "name": "电工",
             "terms": "电工"
         },
-        "manhole/telecom": {
-            "name": "电信检查井",
-            "terms": "井盖,井,检查,人孔,手机,盖,通讯,通信,移动,联通,电信,电话,洞,孔,下水道,基站"
-        },
         "attraction/drop_tower": {
             "name": "跳楼机",
             "terms": "跳楼机,跳楼,自由落体,蹦极,太空梭,垂直极限,天地双雄,穿越云霄,大怒神,下落,下坠,坠落,跌落,高塔,飞天,游乐设施,游乐,游艺,娱乐,乐园,游乐园,主题乐园,儿童乐园,景点"
@@ -1912,10 +1904,6 @@
         "highway/living_street": {
             "name": "生活性街道",
             "terms": "居住街道"
-        },
-        "attraction/bumper_car": {
-            "name": "碰碰车",
-            "terms": "碰碰车,碰,撞,碰撞,游乐设施,游乐,游艺,娱乐,乐园,游乐园,主题乐园,儿童乐园,景点"
         },
         "attraction/roller_coaster": {
             "name": "过山车",
@@ -2294,10 +2282,6 @@
             "name": "纪念堂",
             "terms": "纪念堂,纪念塔,纪念碑,古迹"
         },
-        "manhole": {
-            "name": "人井",
-            "terms": "人井,人孔,检修,探孔,入孔,盖,洞,孔,下水道,排水,污水,通信,电信,电缆,通讯,人孔井,手井,穿线,下水管"
-        },
         "type/route/bicycle": {
             "name": "自行车线路",
             "terms": "单车线路,自行车,单车,路线,线路"
@@ -2577,6 +2561,9 @@
             "name": "日晷",
             "terms": "日晷,日晷钟,晷影,晷影器,影子,晷针,日规"
         },
+        "building_point": {
+            "name": "建筑物"
+        },
         "public_transport/platform/trolleybus": {
             "name": "无轨电车站台",
             "terms": "电车,无轨电车,电车站,公交,公交站,公交车,巴士,站台,月台,公共交通,交通,无轨"
@@ -2823,10 +2810,6 @@
         "shop/outdoor": {
             "name": "户外用品店",
             "terms": "户外用品店,销售户外活动用品的商店"
-        },
-        "highway/raceway": {
-            "name": "跑道(赛车)",
-            "terms": "跑道,赛车,赛道"
         },
         "emergency/designated": {
             "name": "紧急设施：指定"
@@ -3324,10 +3307,6 @@
             "name": "滑雪场魔毯传送带",
             "terms": "魔毯,传送带式电梯"
         },
-        "amenity/post_box": {
-            "name": "信箱",
-            "terms": "邮箱,邮筒"
-        },
         "public_transport/station_tram": {
             "name": "有轨电车站",
             "terms": "电车,有轨电车,车站"
@@ -3723,10 +3702,6 @@
         "craft/handicraft": {
             "name": "手工匠",
             "terms": "手工匠"
-        },
-        "landuse/construction": {
-            "name": "建设用地",
-            "terms": "建设,建造,施工,工地,在建,建筑,构筑,构建,承建,用地,建设用地"
         },
         "shop/trade": {
             "name": "材料商店",

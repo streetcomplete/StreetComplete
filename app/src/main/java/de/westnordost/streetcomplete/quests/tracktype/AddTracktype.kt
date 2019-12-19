@@ -3,9 +3,9 @@ package de.westnordost.streetcomplete.quests.tracktype
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
 
-class AddTracktype(o: OverpassMapDataDao) : SimpleOverpassQuestType<String>(o) {
+class AddTracktype(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<String>(o) {
 
     override val tagFilters = """
         ways with highway=track and !tracktype

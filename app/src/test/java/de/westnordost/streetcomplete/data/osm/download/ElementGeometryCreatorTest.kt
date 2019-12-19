@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.data.osm.download
 import de.westnordost.osmapi.map.data.*
 import org.junit.Test
 
-import de.westnordost.streetcomplete.data.osm.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.ElementPolylinesGeometry
 
@@ -12,17 +11,12 @@ import org.junit.Assert.*
 class ElementGeometryCreatorTest {
 
     @Test fun `create for node`() {
-        val g = create(N0) as ElementPointGeometry
+        val g = create(OsmNode(0L, 0, P0, null))
         assertEquals(P0, g.center)
     }
 
     @Test fun `create for empty way`() {
         val geom = create(EMPTY_WAY)
-        assertNull(geom)
-    }
-
-    @Test fun `create for way with unavailable node positions`() {
-        val geom = create(WAY_WITH_UNAVAILABLE_NODE_POSITIONS)
         assertNull(geom)
     }
 
@@ -50,11 +44,6 @@ class ElementGeometryCreatorTest {
 
     @Test fun `create for multipolygon relation with single empty way`() {
         val geom = create(areaRelation(outer(EMPTY_WAY)))
-        assertNull(geom)
-    }
-
-    @Test fun `create for multipolygon relation with single unusable way`() {
-        val geom = create(areaRelation(outer(WAY_WITH_UNAVAILABLE_NODE_POSITIONS)))
         assertNull(geom)
     }
 
@@ -104,8 +93,8 @@ class ElementGeometryCreatorTest {
 
     @Test fun `creating for multipolygon relation ignores unusable parts`() {
         val geom = create(areaRelation(
-            outer(EMPTY_WAY, WAY_WITH_UNAVAILABLE_NODE_POSITIONS, AREA_WAY, SIMPLE_WAY1) +
-            inner(EMPTY_WAY, WAY_WITH_UNAVAILABLE_NODE_POSITIONS) +
+            outer(EMPTY_WAY, AREA_WAY, SIMPLE_WAY1) +
+            inner(EMPTY_WAY) +
             member(AREA_WAY))) as ElementPolygonsGeometry
         assertEquals(CCW_RING, geom.polygons.single())
         assertEquals(O, geom.center)
@@ -113,11 +102,6 @@ class ElementGeometryCreatorTest {
 
     @Test fun `create for polyline relation with single empty way`() {
         val geom = create(relation(member(EMPTY_WAY)))
-        assertNull(geom)
-    }
-
-    @Test fun `create for polyline relation with single unusable way`() {
-        val geom = create(relation(member(WAY_WITH_UNAVAILABLE_NODE_POSITIONS)))
         assertNull(geom)
     }
 
@@ -135,42 +119,24 @@ class ElementGeometryCreatorTest {
         val geom = create(relation(member(SIMPLE_WAY1, SIMPLE_WAY2, SIMPLE_WAY3, WAY_DUPLICATE_NODES))) as ElementPolylinesGeometry
         assertTrue(geom.polylines.containsAll(listOf(CCW_RING, listOf(P0, P1, P2))))
     }
-
-    @Test fun `creating for polyline relation ignores unusable parts`() {
-        val geom = create(relation(member(EMPTY_WAY, WAY_WITH_UNAVAILABLE_NODE_POSITIONS, SIMPLE_WAY1))) as ElementPolylinesGeometry
-        assertEquals(listOf(P0, P1), geom.polylines.single())
-    }
 }
 
-private fun create(element: Element) = ElementGeometryCreator(object : WayGeometrySource {
-    private val ways = listOf(
-        SIMPLE_WAY1,
-        SIMPLE_WAY2,
-        SIMPLE_WAY3,
-        AREA_WAY,
-        WAY_DUPLICATE_NODES,
-        EMPTY_WAY,
-        AREA_WAY_CLOCKWISE).associateBy { it.id }
+private fun create(node: Node) =
+    ElementGeometryCreator().create(node)
 
-    private val nodes = listOf(N0, N1, N2, N3).associateBy { it.id }
+private fun create(way: Way) =
+    ElementGeometryCreator().create(way, WAY_GEOMETRIES[way.id] ?: emptyList())
 
-    override fun getNodePositions(wayId: Long) =
-        ways[wayId]?.nodeIds?.mapNotNull { nodes[it]?.position } ?: listOf()
-
-}).create(element)
+private fun create(relation: Relation) =
+    ElementGeometryCreator().create(relation, WAY_GEOMETRIES)
 
 private val WAY_AREA = mapOf("area" to "yes")
 
-private val O = OsmLatLon(1.0, 1.0)
-private val P0 = OsmLatLon(0.0, 2.0)
-private val P1 = OsmLatLon(0.0, 0.0)
-private val P2 = OsmLatLon(2.0, 0.0)
-private val P3 = OsmLatLon(2.0, 2.0)
-
-private val N0 = OsmNode(0L, 0, P0, null)
-private val N1 = OsmNode(1L, 0, P1, null)
-private val N2 = OsmNode(2L, 0, P2, null)
-private val N3 = OsmNode(3L, 0, P3, null)
+private val O: LatLon = OsmLatLon(1.0, 1.0)
+private val P0: LatLon = OsmLatLon(0.0, 2.0)
+private val P1: LatLon = OsmLatLon(0.0, 0.0)
+private val P2: LatLon = OsmLatLon(2.0, 0.0)
+private val P3: LatLon = OsmLatLon(2.0, 2.0)
 
 private val SIMPLE_WAY1 = OsmWay(0, 0, listOf(0,1), null)
 private val SIMPLE_WAY2 = OsmWay(1, 0, listOf(1,2,3), null)
@@ -179,10 +145,19 @@ private val AREA_WAY = OsmWay(4, 0, listOf(0,1,2,3,0), WAY_AREA)
 private val AREA_WAY_CLOCKWISE = OsmWay(5, 0, listOf(0,3,2,1,0), WAY_AREA)
 private val WAY_DUPLICATE_NODES = OsmWay(6, 0, listOf(0,1,1,2), null)
 private val EMPTY_WAY = OsmWay(7, 0, emptyList(), null)
-private val WAY_WITH_UNAVAILABLE_NODE_POSITIONS = OsmWay(8, 0, listOf(7,8,9), null)
 
 private val CCW_RING = listOf(P0, P1, P2, P3, P0)
 private val CW_RING = listOf(P0, P3, P2, P1, P0)
+
+private val WAY_GEOMETRIES = mapOf(
+    0L to listOf(P0, P1),
+    1L to listOf(P1, P2, P3),
+    2L to listOf(P0, P3),
+    4L to listOf(P0, P1, P2, P3, P0),
+    5L to listOf(P0, P3, P2, P1, P0),
+    6L to listOf(P0, P1, P1, P2),
+    7L to listOf()
+)
 
 private fun areaRelation(members: List<RelationMember>) =
     OsmRelation(0,0, members, mapOf("type" to "multipolygon"))

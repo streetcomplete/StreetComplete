@@ -23,12 +23,16 @@ class CreateNotesUploader @Inject constructor(
     private val mapDataDao: MapDataDao,
     private val questType: OsmNoteQuestType,
     private val statisticsDB: QuestStatisticsDao,
-    private val singleCreateNoteUpload: SingleCreateNoteUpload
+    private val singleCreateNoteUploader: SingleCreateNoteUploader
 ): Uploader {
-    private val TAG = "CreateNotesUpload"
 
     override var uploadedChangeListener: OnUploadedChangeListener? = null
 
+    /** Uploads all create notes from local DB and deletes them on successful upload.
+     *
+     *  Drops any notes where the upload failed because of a conflict but keeps any notes where
+     *  the upload failed because attached photos could not be uploaded (so it can try again
+     *  later). */
     @Synchronized override fun upload(cancelled: AtomicBoolean) {
         var created = 0
         var obsolete = 0
@@ -51,14 +55,17 @@ class CreateNotesUploader @Inject constructor(
                 Log.d(TAG, "Uploaded note ${createNote.logString}")
                 uploadedChangeListener?.onUploaded()
                 created++
+                createNoteDB.delete(createNote.id!!)
+                deleteImages(createNote.imagePaths)
             } catch (e: ConflictException) {
                 Log.d(TAG, "Dropped note ${createNote.logString}: ${e.message}")
                 uploadedChangeListener?.onDiscarded()
                 obsolete++
+                createNoteDB.delete(createNote.id!!)
+                deleteImages(createNote.imagePaths)
+            } catch (e: ImageUploadException) {
+                Log.e(TAG, "Error uploading image attached to note ${createNote.logString}", e)
             }
-
-            createNoteDB.delete(createNote.id!!)
-            AttachPhotoUtils.deleteImages(createNote.imagePaths)
         }
         var logMsg = "Created $created notes"
         if (obsolete > 0) {
@@ -71,7 +78,7 @@ class CreateNotesUploader @Inject constructor(
         if (n.isAssociatedElementDeleted())
             throw ElementDeletedException("Associated element deleted")
         
-        return singleCreateNoteUpload.upload(n)
+        return singleCreateNoteUploader.upload(n)
     }
 
     private fun CreateNote.isAssociatedElementDeleted(): Boolean {
@@ -85,6 +92,10 @@ class CreateNotesUploader @Inject constructor(
             Element.Type.WAY -> mapDataDao.getWay(key.elementId)
             Element.Type.RELATION -> mapDataDao.getRelation(key.elementId)
         }
+    }
+
+    companion object {
+        private const val TAG = "CreateNotesUpload"
     }
 }
 

@@ -5,7 +5,7 @@ import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.Way
 import de.westnordost.streetcomplete.data.osm.OsmQuestGiver
 import de.westnordost.streetcomplete.data.osm.OsmQuestSplitWay
-import de.westnordost.streetcomplete.data.osm.download.ElementGeometryCreator
+import de.westnordost.streetcomplete.data.osm.download.OsmApiElementGeometryCreator
 import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao
 import de.westnordost.streetcomplete.data.osm.persist.MergedElementDao
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestSplitWayDao
@@ -20,13 +20,11 @@ class SplitWaysUploader @Inject constructor(
     changesetManager: OpenQuestChangesetsManager,
     questGiver: OsmQuestGiver,
     statisticsDB: QuestStatisticsDao,
-    elementGeometryCreator: ElementGeometryCreator,
+    osmApiElementGeometryCreator: OsmApiElementGeometryCreator,
     private val splitWayDB: OsmQuestSplitWayDao,
     private val splitSingleOsmWayUpload: SplitSingleWayUpload
 ) : OsmInChangesetsUploader<OsmQuestSplitWay>(elementDB, elementGeometryDB, changesetManager,
-    questGiver, statisticsDB, elementGeometryCreator) {
-
-    private val TAG = "SplitOsmWayUpload"
+    questGiver, statisticsDB, osmApiElementGeometryCreator) {
 
     @Synchronized override fun upload(cancelled: AtomicBoolean) {
         Log.i(TAG, "Splitting ways")
@@ -47,5 +45,9 @@ class SplitWaysUploader @Inject constructor(
     override fun onUploadFailed(quest: OsmQuestSplitWay, e: Throwable) {
         splitWayDB.delete(quest.questId)
         Log.d(TAG, "Dropped split for way #${quest.wayId}: ${e.message}")
+    }
+
+    companion object {
+        private const val TAG = "SplitOsmWayUpload"
     }
 }

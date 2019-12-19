@@ -473,9 +473,6 @@
         "natural": {
             "name": "Natuur"
         },
-        "amenity/post_box": {
-            "name": "Posbus"
-        },
         "shop/laundry": {
             "name": "Wassery"
         },
@@ -806,10 +803,6 @@
         },
         "tourism/viewpoint": {
             "name": "Uitkykpunt"
-        },
-        "landuse/construction": {
-            "name": "Konstruksie",
-            "terms": "Konstruksie"
         },
         "highway/footway": {
             "name": "Voetslaanpad"

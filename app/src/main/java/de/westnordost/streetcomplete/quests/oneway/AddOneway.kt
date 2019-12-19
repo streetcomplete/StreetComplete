@@ -11,15 +11,14 @@ import de.westnordost.streetcomplete.data.osm.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandler
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
 import de.westnordost.streetcomplete.data.osm.tql.FiltersParser
 import de.westnordost.streetcomplete.quests.oneway.data.TrafficFlowSegment
 import de.westnordost.streetcomplete.quests.oneway.data.TrafficFlowSegmentsDao
 import de.westnordost.streetcomplete.quests.oneway.data.WayTrafficFlowDao
 
 class AddOneway(
-    private val overpassMapDataDao: OverpassMapDataDao,
+    private val overpassMapDataDao: OverpassMapDataAndGeometryDao,
     private val trafficFlowSegmentsDao: TrafficFlowSegmentsDao,
     private val db: WayTrafficFlowDao
 ) : OsmElementQuestType<OnewayAnswer> {
@@ -43,7 +42,7 @@ class AddOneway(
     override fun isApplicableTo(element: Element) =
         filter.matches(element) && db.isForward(element.id) != null
 
-    override fun download(bbox: BoundingBox, handler: MapDataWithGeometryHandler): Boolean {
+    override fun download(bbox: BoundingBox, handler: (element: Element, geometry: ElementGeometry?) -> Unit): Boolean {
         val trafficDirectionMap: Map<Long, List<TrafficFlowSegment>>
         try {
             trafficDirectionMap = trafficFlowSegmentsDao.get(bbox)
@@ -55,8 +54,8 @@ class AddOneway(
         if (trafficDirectionMap.isEmpty()) return true
 
         val query = "way(id:${trafficDirectionMap.keys.joinToString(",")}); out meta geom;"
-        overpassMapDataDao.getAndHandleQuota(query) { element, geometry ->
-            fun handle(element: Element, geometry: ElementGeometry?) {
+        overpassMapDataDao.query(query) { element, geometry ->
+            fun checkValidAndHandle(element: Element, geometry: ElementGeometry?) {
                 if (geometry == null) return
                 if (geometry !is ElementPolylinesGeometry) return
                 // filter the data as ImproveOSM data may be outdated or catching too much
@@ -77,9 +76,9 @@ class AddOneway(
                 val isForward = isForward(geometry.polylines.first(), segments) ?: return
 
                 db.put(way.id, isForward)
-                handler.handle(element, geometry)
+                handler(element, geometry)
             }
-            handle(element, geometry)
+            checkValidAndHandle(element, geometry)
         }
 
         return true

@@ -1535,10 +1535,6 @@
         "natural": {
             "name": "Natūralus"
         },
-        "amenity/post_box": {
-            "name": "Pašto dėžutė",
-            "terms": "paštadėžė,pašto dėžė"
-        },
         "natural/water/lake": {
             "name": "Ežeras",
             "terms": "ežeras"
@@ -1993,10 +1989,6 @@
         },
         "office/lawyer": {
             "name": "Advokatų kontora"
-        },
-        "landuse/construction": {
-            "name": "Statybos",
-            "terms": "statybos"
         },
         "emergency/lifeguard": {
             "name": "Gelbėtojas"

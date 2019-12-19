@@ -430,9 +430,6 @@
         "aeroway/gate": {
             "name": "Airport Gate"
         },
-        "manhole/drain": {
-            "name": "Storm Drain"
-        },
         "traffic_calming/island": {
             "name": "Traffic Island"
         },
@@ -1169,9 +1166,6 @@
         "craft/electrician": {
             "name": "Electrician"
         },
-        "manhole/telecom": {
-            "name": "Telecom Manhole"
-        },
         "attraction/drop_tower": {
             "name": "Drop Tower"
         },
@@ -1372,9 +1366,6 @@
         },
         "highway/living_street": {
             "name": "Living Street"
-        },
-        "attraction/bumper_car": {
-            "name": "Bumper Car"
         },
         "attraction/roller_coaster": {
             "name": "Roller Coaster"
@@ -1643,9 +1634,6 @@
         },
         "historic/monument": {
             "name": "Monument"
-        },
-        "manhole": {
-            "name": "Manhole"
         },
         "type/route/bicycle": {
             "name": "Cycle Route"
@@ -2022,9 +2010,6 @@
         "shop/outdoor": {
             "name": "Outdoors Shop"
         },
-        "highway/raceway": {
-            "name": "Racetrack (Motorsport)"
-        },
         "emergency/designated": {
             "name": "Emergency Access Designated"
         },
@@ -2367,10 +2352,6 @@
         "aerialway/magic_carpet": {
             "name": "Magic Carpet Lift"
         },
-        "amenity/post_box": {
-            "name": "Post Box",
-            "terms": "Mailbox"
-        },
         "public_transport/station_tram": {
             "name": "Tram Station"
         },
@@ -2649,9 +2630,6 @@
         },
         "craft/handicraft": {
             "name": "Handicraft"
-        },
-        "landuse/construction": {
-            "name": "Construction"
         },
         "shop/trade": {
             "name": "Trade Shop"

@@ -7,9 +7,11 @@ import de.westnordost.streetcomplete.quests.DateUtil
 
 abstract class AMarkCompletedConstruction<T> : OsmElementQuestType<T> {
 
+    // this function exists to allow setting date in tests
     protected open fun getCurrentDateString() =
         DateUtil.getCurrentDateString() + "T00:00:00Z"
 
+    // this function exists to allow setting date in tests
     protected open fun getOffsetDateString(offset: Int) =
         DateUtil.getOffsetDateString(offset) + "T00:00:00Z"
 

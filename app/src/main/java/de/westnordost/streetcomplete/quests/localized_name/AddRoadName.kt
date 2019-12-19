@@ -3,24 +3,24 @@ package de.westnordost.streetcomplete.quests.localized_name
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.Countries
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandler
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
+import de.westnordost.streetcomplete.data.osm.AllCountriesExcept
+import de.westnordost.streetcomplete.data.osm.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.tql.FiltersParser
 import de.westnordost.streetcomplete.data.osm.tql.getQuestPrintStatement
 import de.westnordost.streetcomplete.data.osm.tql.toGlobalOverpassBBox
-import de.westnordost.streetcomplete.quests.localized_name.data.PutRoadNameSuggestionsHandler
 import de.westnordost.streetcomplete.quests.localized_name.data.RoadNameSuggestionsDao
+import java.util.regex.Pattern
 
 class AddRoadName(
-    private val overpassServer: OverpassMapDataDao,
-    private val roadNameSuggestionsDao: RoadNameSuggestionsDao,
-    private val putRoadNameSuggestionsHandler: PutRoadNameSuggestionsHandler
+    private val overpassServer: OverpassMapDataAndGeometryDao,
+    private val roadNameSuggestionsDao: RoadNameSuggestionsDao
 ) : OsmElementQuestType<RoadNameAnswer> {
 
-    override val enabledForCountries: Countries get() = Countries.allExcept("JP")
+    override val enabledInCountries = AllCountriesExcept("JP")
     override val commitMessage = "Determine road names and types"
     override val icon = R.drawable.ic_quest_street_name
     override val hasMarkersAtEnds = true
@@ -34,9 +34,10 @@ class AddRoadName(
 
     override fun isApplicableTo(element: Element) = ROADS_WITHOUT_NAMES_TFE.matches(element)
 
-    override fun download(bbox: BoundingBox, handler: MapDataWithGeometryHandler): Boolean {
-        return overpassServer.getAndHandleQuota(getOverpassQuery(bbox), handler)
-            && overpassServer.getAndHandleQuota(getStreetNameSuggestionsOverpassQuery(bbox),putRoadNameSuggestionsHandler)
+    override fun download(bbox: BoundingBox, handler: (element: Element, geometry: ElementGeometry?) -> Unit): Boolean {
+        if (!overpassServer.query(getOverpassQuery(bbox), handler)) return false
+        if (!overpassServer.query(getStreetNameSuggestionsOverpassQuery(bbox), this::putRoadNameSuggestion)) return false
+        return true
     }
 
     /** returns overpass query string for creating the quests */
@@ -100,6 +101,14 @@ class AddRoadName(
         roadNameSuggestionsDao.putRoad( answer.wayId, roadNameByLanguage, points)
     }
 
+    private fun putRoadNameSuggestion(element: Element, geometry: ElementGeometry?) {
+        if (element.type != Element.Type.WAY) return
+        if (geometry !is ElementPolylinesGeometry) return
+        val namesByLanguage = element.tags?.toRoadNameByLanguage() ?: return
+
+        roadNameSuggestionsDao.putRoad(element.id, namesByLanguage, geometry.polylines.first())
+    }
+
     companion object {
         const val MAX_DIST_FOR_ROAD_NAME_SUGGESTION = 30.0 //m
 
@@ -117,3 +126,17 @@ class AddRoadName(
 
 private fun LocalizedName.isRef() =
     languageCode.isEmpty() && name.matches("[A-Z]{0,3}[ -]?[0-9]{0,5}".toRegex())
+
+/** OSM tags (i.e. name:de=Bäckergang) to map of language code -> name (i.e. de=Bäckergang) */
+private fun Map<String,String>.toRoadNameByLanguage(): Map<String, String>? {
+    val result = mutableMapOf<String,String>()
+    val namePattern = Pattern.compile("name(:(.*))?")
+    for ((key, value) in this) {
+        val m = namePattern.matcher(key)
+        if (m.matches()) {
+            val languageCode = m.group(2) ?: ""
+            result[languageCode] = value
+        }
+    }
+    return if (result.isEmpty()) null else result
+}

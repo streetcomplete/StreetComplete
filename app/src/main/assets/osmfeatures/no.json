@@ -1153,9 +1153,6 @@
         "highway/living_street": {
             "name": "Beboelsesgate"
         },
-        "attraction/bumper_car": {
-            "name": "Radiobiler"
-        },
         "attraction/roller_coaster": {
             "name": "Berg-og-dal-bane"
         },
@@ -1273,6 +1270,9 @@
         "type/route/ferry": {
             "name": "Fergerute"
         },
+        "emergency": {
+            "name": "Nødssituasjon-egenskap"
+        },
         "highway/crossing/marked": {
             "name": "Fotgjengerovergang"
         },
@@ -1368,9 +1368,6 @@
         },
         "historic/monument": {
             "name": "Monument"
-        },
-        "manhole": {
-            "name": "Kumlokk"
         },
         "type/route/bicycle": {
             "name": "Sykkelrute"
@@ -1708,9 +1705,6 @@
         "shop/outdoor": {
             "name": "Villmarksbutikk"
         },
-        "highway/raceway": {
-            "name": "Bilbane"
-        },
         "highway/steps": {
             "name": "Trapp"
         },
@@ -2005,9 +1999,6 @@
         "natural": {
             "name": "Naturlig"
         },
-        "amenity/post_box": {
-            "name": "Postkasse"
-        },
         "playground/sandpit": {
             "name": "Sandkasse"
         },
@@ -2028,6 +2019,9 @@
         },
         "craft/tiler": {
             "name": "Flislegger"
+        },
+        "indoor": {
+            "name": "Innendørsegenskap"
         },
         "shop/frame": {
             "name": "Innrammingsbutikk"
@@ -2235,9 +2229,6 @@
         },
         "craft/handicraft": {
             "name": "Kunsthåndverk"
-        },
-        "landuse/construction": {
-            "name": "Konstruksjon"
         },
         "piste/downhill/halfpipe": {
             "name": "Halfpipe"

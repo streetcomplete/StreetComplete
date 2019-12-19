@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.osm
 
+import de.westnordost.countryboundaries.CountryBoundaries
 import org.junit.Before
 import org.junit.Test
 
@@ -18,7 +19,9 @@ import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.on
 
 import org.junit.Assert.*
+import org.mockito.ArgumentMatchers.anyDouble
 import org.mockito.Mockito.verify
+import java.util.concurrent.FutureTask
 
 class OsmQuestGiverTest {
 
@@ -26,6 +29,7 @@ class OsmQuestGiverTest {
     private lateinit var osmQuestDao: OsmQuestDao
     private lateinit var osmQuestUnlocker: OsmQuestGiver
     private lateinit var questType: OsmElementQuestType<*>
+    private lateinit var countryBoundaries: CountryBoundaries
 
     @Before fun setUp() {
         val elementGeometryDao: ElementGeometryDao = mock()
@@ -38,11 +42,16 @@ class OsmQuestGiverTest {
         on(osmQuestDao.getAll(element = ElementKey(Element.Type.NODE, 1))).thenReturn(emptyList())
 
         questType = mock()
+        on(questType.enabledInCountries).thenReturn(AllCountries)
+
+        countryBoundaries = mock()
+        val future = FutureTask { countryBoundaries }
+        future.run()
 
         val questTypeProvider: OrderedVisibleQuestTypesProvider = mock()
         on(questTypeProvider.get()).thenReturn(listOf(questType))
 
-        osmQuestUnlocker = OsmQuestGiver(osmNoteQuestDao, osmQuestDao, elementGeometryDao, questTypeProvider)
+        osmQuestUnlocker = OsmQuestGiver(osmNoteQuestDao, osmQuestDao, elementGeometryDao, questTypeProvider, future)
     }
 
     @Test fun `note blocks new quests`() {
@@ -92,6 +101,38 @@ class OsmQuestGiverTest {
 
         verify(osmQuestDao).deleteAll(statusIn = listOf(QuestStatus.REVERT), element = ElementKey(Element.Type.NODE, 1))
         verify(osmQuestDao).addAll(listOf(quest))
+    }
+
+    @Test fun `quest is only enabled in the country the element is in`() {
+        on(questType.isApplicableTo(NODE)).thenReturn(true)
+        on(questType.enabledInCountries).thenReturn(NoCountriesExcept("DE"))
+        on(countryBoundaries.isInAny(anyDouble(), anyDouble(), any())).thenReturn(true)
+
+        assertEquals(1, osmQuestUnlocker.updateQuests(NODE).createdQuests.size)
+    }
+
+    @Test fun `quest is only enabled in a country the element is not in`() {
+        on(questType.isApplicableTo(NODE)).thenReturn(true)
+        on(questType.enabledInCountries).thenReturn(NoCountriesExcept("DE"))
+        on(countryBoundaries.isInAny(anyDouble(), anyDouble(), any())).thenReturn(false)
+
+        assertTrue(osmQuestUnlocker.updateQuests(NODE).createdQuests.isEmpty())
+    }
+
+    @Test fun `quest is disabled in the country the element is in`() {
+        on(questType.isApplicableTo(NODE)).thenReturn(true)
+        on(questType.enabledInCountries).thenReturn(AllCountriesExcept("DE"))
+        on(countryBoundaries.isInAny(anyDouble(), anyDouble(), any())).thenReturn(true)
+
+        assertTrue(osmQuestUnlocker.updateQuests(NODE).createdQuests.isEmpty())
+    }
+
+    @Test fun `quest is disabled in the country the element is not in`() {
+        on(questType.isApplicableTo(NODE)).thenReturn(true)
+        on(questType.enabledInCountries).thenReturn(AllCountriesExcept("DE"))
+        on(countryBoundaries.isInAny(anyDouble(), anyDouble(), any())).thenReturn(false)
+
+        assertEquals(1, osmQuestUnlocker.updateQuests(NODE).createdQuests.size)
     }
 }
 

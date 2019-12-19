@@ -529,9 +529,6 @@
         "man_made/mast/communication/mobile_phone": {
             "name": "Ιστός Κινητής Τηλεφωνίας"
         },
-        "manhole/drain": {
-            "name": "Αποστραγγιστήρας"
-        },
         "traffic_calming/island": {
             "name": "Νησίδα Κυκλοφορίας"
         },
@@ -1463,9 +1460,6 @@
             "name": "Ηλεκτρολόγος",
             "terms": "ηλεκτροτεχνίτης"
         },
-        "manhole/telecom": {
-            "name": "Τηλεπικοινωνιακό Φρεάτιο"
-        },
         "attraction/drop_tower": {
             "name": "Πύργος Πτώσης"
         },
@@ -1724,9 +1718,6 @@
         },
         "highway/living_street": {
             "name": "Οδός Ήπιας Κυκλοφορίας"
-        },
-        "attraction/bumper_car": {
-            "name": "Συγκρουόμενα"
         },
         "attraction/roller_coaster": {
             "name": "Roller Coaster"
@@ -2048,9 +2039,6 @@
         "historic/monument": {
             "name": "Μνημείο - Κτίριο",
             "terms": "Ηρώο, Μνημείο, μαυσωλείο, ιστορικό κτίσμα"
-        },
-        "manhole": {
-            "name": "Ανθρωποθυρίδα"
         },
         "type/route/bicycle": {
             "name": "Διαδρομή Ποδηλάτου",
@@ -2556,9 +2544,6 @@
         "shop/outdoor": {
             "name": "Κατάστημα με Είδη Εξοπλισμού Υπαίθρου"
         },
-        "highway/raceway": {
-            "name": "Αγωνιστική Πίστα (Μηχανοκίνησης)"
-        },
         "emergency/designated": {
             "name": "Καθορισμένη Επείγουσα Πρόσβαση"
         },
@@ -3022,10 +3007,6 @@
         "aerialway/magic_carpet": {
             "name": "Αναβατήρας Ιμάντας"
         },
-        "amenity/post_box": {
-            "name": "Γραμματοκιβώτιο",
-            "terms": "Ταχυδρομικό κουτί, Γραμματοκιβώτιο"
-        },
         "public_transport/station_tram": {
             "name": "Σταθμός Τραμ"
         },
@@ -3382,10 +3363,6 @@
         },
         "craft/handicraft": {
             "name": "Χειροτεχνία"
-        },
-        "landuse/construction": {
-            "name": "Κατασκευές",
-            "terms": "Κατασκευές"
         },
         "shop/trade": {
             "name": "Εμπορικό Κατάστημα"

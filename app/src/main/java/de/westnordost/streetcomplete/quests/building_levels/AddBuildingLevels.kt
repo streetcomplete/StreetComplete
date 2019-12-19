@@ -3,9 +3,9 @@ package de.westnordost.streetcomplete.quests.building_levels
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
 
-class AddBuildingLevels(o: OverpassMapDataDao) : SimpleOverpassQuestType<BuildingLevelsAnswer>(o) {
+class AddBuildingLevels(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<BuildingLevelsAnswer>(o) {
 
     // building:height is undocumented, but used the same way as height and currently over 50k times
     override val tagFilters =

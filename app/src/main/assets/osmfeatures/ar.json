@@ -1523,10 +1523,6 @@
             "name": "شارع سكني",
             "terms": "شارع سكني"
         },
-        "attraction/bumper_car": {
-            "name": "سيارة اصطدامية",
-            "terms": "سيارة اصطدامية"
-        },
         "attraction/roller_coaster": {
             "name": "السفينة الدوارة",
             "terms": "سفينة دوارة"
@@ -2259,10 +2255,6 @@
             "name": "متجر ملابس ومعدات الأنشطة في الهواء الطلق",
             "terms": "متجر ملابس ومعدات الأنشطة في الهواء الطلق"
         },
-        "highway/raceway": {
-            "name": "مضمار سباق السيارات والدراجات النارية",
-            "terms": "مضمار سباق، سيارات، دراجات نارية"
-        },
         "highway/steps": {
             "name": "درج",
             "terms": "درج"
@@ -2668,10 +2660,6 @@
         "natural": {
             "name": "طبيعي"
         },
-        "amenity/post_box": {
-            "name": "صندوق البريد",
-            "terms": "صندوق البريد"
-        },
         "public_transport/station_tram": {
             "name": "محطة ترام"
         },
@@ -2965,10 +2953,6 @@
         "craft/handicraft": {
             "name": "حرفي",
             "terms": "حرفي"
-        },
-        "landuse/construction": {
-            "name": "إنشاءات",
-            "terms": "إنشاءات, تشييد, تعمير"
         },
         "shop/motorcycle_repair": {
             "name": "ورشة تصليح الدراجات النارية"

@@ -2,11 +2,11 @@ package de.westnordost.streetcomplete.quests.construction
 
 import java.util.Date
 
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
 import de.westnordost.streetcomplete.quests.DateUtil
 
 class MarkCompletedHighwayConstructionOldData
-internal constructor(overpassServer: OverpassMapDataDao, dateString: String) :
+internal constructor(overpassServer: OverpassMapDataAndGeometryDao, dateString: String) :
     MarkCompletedHighwayConstruction(overpassServer) {
 
     private val date: Date = DateUtil.basicISO8601().parse(dateString)

@@ -1,13 +1,12 @@
 package de.westnordost.streetcomplete.data.osm.upload
 
-import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.OsmWay
 import de.westnordost.streetcomplete.data.osm.OsmQuestSplitWay
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestSplitWayDao
 import de.westnordost.streetcomplete.on
 import de.westnordost.streetcomplete.any
 import de.westnordost.streetcomplete.data.osm.OsmQuestGiver
-import de.westnordost.streetcomplete.data.osm.download.ElementGeometryCreator
+import de.westnordost.streetcomplete.data.osm.download.OsmApiElementGeometryCreator
 import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao
 import de.westnordost.streetcomplete.data.osm.persist.MergedElementDao
 import de.westnordost.streetcomplete.data.statistics.QuestStatisticsDao
@@ -25,7 +24,7 @@ class SplitWaysUploaderTest {
     private lateinit var elementGeometryDB: ElementGeometryDao
     private lateinit var questGiver: OsmQuestGiver
     private lateinit var statisticsDB: QuestStatisticsDao
-    private lateinit var elementGeometryCreator: ElementGeometryCreator
+    private lateinit var elementGeometryCreator: OsmApiElementGeometryCreator
     private lateinit var splitSingleOsmWayUpload: SplitSingleWayUpload
     private lateinit var uploader: SplitWaysUploader
 
@@ -40,7 +39,7 @@ class SplitWaysUploaderTest {
         on(questGiver.updateQuests(any())).thenReturn(OsmQuestGiver.QuestUpdates(listOf(), listOf()))
         statisticsDB = mock()
         elementGeometryCreator = mock()
-        on(elementGeometryCreator.create(any<Element>())).thenReturn(mock())
+        on(elementGeometryCreator.create(any())).thenReturn(mock())
         uploader = SplitWaysUploader(elementDB, elementGeometryDB, changesetManager, questGiver,
             statisticsDB, elementGeometryCreator, splitWayDB, splitSingleOsmWayUpload)
     }

@@ -643,10 +643,6 @@
             "name": "Mobieletelefoonmast",
             "terms": "GSM-mast"
         },
-        "manhole/drain": {
-            "name": "Kolk (rioolput)",
-            "terms": "straatkolk,trottoirkolk,afvoerputje,putje,rioolputje"
-        },
         "traffic_calming/island": {
             "name": "Verkeerseiland",
             "terms": "rotonde,cirkel,langzaam"
@@ -1755,10 +1751,6 @@
             "name": "Elektricien",
             "terms": "monteur,elektriciteit,installatie,stielman,elektrisch"
         },
-        "manhole/telecom": {
-            "name": "Telefonieputdeksel",
-            "terms": "man-gat,deksel,telecomdeksel,putdeksel,telecomputdeksel,mangat voor telefonie,telefoniestraatpot,telefoniestraatpot"
-        },
         "attraction/drop_tower": {
             "name": "Valtoren",
             "terms": "valattractie,grote val"
@@ -2064,10 +2056,6 @@
         "highway/living_street": {
             "name": "Woonerf",
             "terms": "erf,woonzone"
-        },
-        "attraction/bumper_car": {
-            "name": "Botsautootjes",
-            "terms": "botsauto's"
         },
         "attraction/roller_coaster": {
             "name": "Achtbaan",
@@ -2444,10 +2432,6 @@
         "historic/monument": {
             "name": "Monument",
             "terms": "gedenkplaats"
-        },
-        "manhole": {
-            "name": "Putdeksel",
-            "terms": "mangat,man-gat,straatpot"
         },
         "type/route/bicycle": {
             "name": "Fietsroute",
@@ -3058,10 +3042,6 @@
             "name": "Winkel voor Benodigdheden voor Buitenactiviteiten",
             "terms": "trekking,fietsen,hike,gps,kamperen,tent"
         },
-        "highway/raceway": {
-            "name": "Racepiste (motorsport)",
-            "terms": "formule 1,auto,nascar,karting,motorsport,motorwedstrijd"
-        },
         "emergency/designated": {
             "name": "Toegang voor hulpdiensten: geadviseerd"
         },
@@ -3613,10 +3593,6 @@
             "name": "Tapijtlift",
             "terms": "skilift"
         },
-        "amenity/post_box": {
-            "name": "Brievenbus",
-            "terms": "postbus,bpost,posterijen,postnl"
-        },
         "public_transport/station_tram": {
             "name": "Tramstation",
             "terms": "spoorwegstation"
@@ -4038,10 +4014,6 @@
         "craft/handicraft": {
             "name": "Handwerkatelier",
             "terms": "nijverheidsatelier,handenarbeid,handgemaakt,handvaardigheid,artisanaal atelier,brei-atelier"
-        },
-        "landuse/construction": {
-            "name": "Bouwterrein",
-            "terms": "constructie,werken,bouwput,bouwkuip"
         },
         "shop/trade": {
             "name": "Bouwmaterialenhandel",
