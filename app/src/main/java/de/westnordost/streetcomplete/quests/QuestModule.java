@@ -53,6 +53,8 @@ import de.westnordost.streetcomplete.quests.powerpoles_material.AddPowerPolesMat
 import de.westnordost.streetcomplete.quests.orchard_produce.AddOrchardProduce;
 import de.westnordost.streetcomplete.quests.railway_crossing.AddRailwayCrossingBarrier;
 import de.westnordost.streetcomplete.quests.recycling.AddRecyclingType;
+import de.westnordost.streetcomplete.quests.recycling_glass.DetermineRecyclingGlass;
+import de.westnordost.streetcomplete.quests.recycling_material.AddRecyclingContainerMaterials;
 import de.westnordost.streetcomplete.quests.religion.AddReligionToPlaceOfWorship;
 import de.westnordost.streetcomplete.quests.religion.AddReligionToWaysideShrine;
 import de.westnordost.streetcomplete.quests.localized_name.data.RoadNameSuggestionsDao;
@@ -112,6 +114,7 @@ public class QuestModule
 
 				// ↓ 3. useful data that is used by some data consumers
 				new AddRecyclingType(o),
+				new AddRecyclingContainerMaterials(o),
 				new AddSport(o),
 				new AddRoadSurface(o),
 				new AddMaxSpeed(o), // should best be after road surface because it excludes unpaved roads
@@ -147,6 +150,7 @@ public class QuestModule
 				// ↓ 4. definitely shown as errors in QA tools
 
 				// ↓ 5. may be shown as missing in QA tools
+				new DetermineRecyclingGlass(o), // because most recycling:glass=yes is a tagging mistake
 				new AddBuildingType(o), // because housenumber, building levels etc. depend on it
 
 				// ↓ 6. may be shown as possibly missing in QA tools

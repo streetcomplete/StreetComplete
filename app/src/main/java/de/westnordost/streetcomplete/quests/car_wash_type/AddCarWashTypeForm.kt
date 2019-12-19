@@ -7,13 +7,14 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
 import de.westnordost.streetcomplete.view.ImageSelectAdapter
 import de.westnordost.streetcomplete.view.Item
+import de.westnordost.streetcomplete.quests.car_wash_type.AddCarWashTypeForm.CarWashOption.*
 
 class AddCarWashTypeForm : AImageListQuestAnswerFragment<AddCarWashTypeForm.CarWashOption, CarWashType>() {
 
     override val items = listOf(
-        Item(CarWashOption.AUTOMATED, R.drawable.car_wash_automated, R.string.quest_carWashType_automated),
-        Item(CarWashOption.SELF_SERVICE, R.drawable.car_wash_self_service, R.string.quest_carWashType_selfService),
-        Item(CarWashOption.SERVICE, R.drawable.car_wash_service, R.string.quest_carWashType_service)
+        Item(AUTOMATED, R.drawable.car_wash_automated, R.string.quest_carWashType_automated),
+        Item(SELF_SERVICE, R.drawable.car_wash_self_service, R.string.quest_carWashType_selfService),
+        Item(SERVICE, R.drawable.car_wash_service, R.string.quest_carWashType_service)
     )
 
     override val itemsPerRow = 3
@@ -22,15 +23,15 @@ class AddCarWashTypeForm : AImageListQuestAnswerFragment<AddCarWashTypeForm.CarW
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        imageSelector.listeners.add(object :
-            ImageSelectAdapter.OnItemSelectionListener {
+        imageSelector.listeners.add(object : ImageSelectAdapter.OnItemSelectionListener {
             override fun onIndexSelected(index: Int) {
+                val value = imageSelector.items[index].value!!
                 // service is exclusive with everything else
-                if (index == 2) {
-                    imageSelector.deselect(0)
-                    imageSelector.deselect(1)
+                if (value == SERVICE) {
+                    imageSelector.deselect(imageSelector.indexOf(AUTOMATED))
+                    imageSelector.deselect(imageSelector.indexOf(SELF_SERVICE))
                 } else {
-                    imageSelector.deselect(2)
+                    imageSelector.deselect(imageSelector.indexOf(SERVICE))
                 }
             }
 
@@ -40,8 +41,8 @@ class AddCarWashTypeForm : AImageListQuestAnswerFragment<AddCarWashTypeForm.CarW
 
     override fun onClickOk(selectedItems: List<CarWashOption>) {
         applyAnswer(CarWashType(
-            isSelfService = selectedItems.contains(CarWashOption.SELF_SERVICE),
-            isAutomated = selectedItems.contains(CarWashOption.AUTOMATED)
+            isSelfService = selectedItems.contains(SELF_SERVICE),
+            isAutomated = selectedItems.contains(AUTOMATED)
         ))
     }
 

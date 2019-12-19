@@ -1,21 +1,14 @@
 package de.westnordost.streetcomplete.quests.sidewalk
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.view.ViewGroup.LayoutParams.MATCH_PARENT
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.annotation.AnyThread
-import androidx.appcompat.app.AlertDialog
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.StreetSideRotater
-import de.westnordost.streetcomplete.view.ListAdapter
+import de.westnordost.streetcomplete.view.Item
+import de.westnordost.streetcomplete.view.dialogs.ImageListPickerDialog
 import kotlinx.android.synthetic.main.quest_street_side_puzzle.*
 
 class AddSidewalkForm : AbstractQuestFormAnswerFragment<SidewalkAnswer>() {
@@ -48,8 +41,8 @@ class AddSidewalkForm : AbstractQuestFormAnswerFragment<SidewalkAnswer>() {
             if (isLeftHandTraffic) R.drawable.ic_sidewalk_unknown_l
             else                   R.drawable.ic_sidewalk_unknown
 
-        puzzleView.setLeftSideImageResource(leftSide?.iconResId ?: defaultResId)
-        puzzleView.setRightSideImageResource(rightSide?.iconResId ?: defaultResId)
+        puzzleView.setLeftSideImageResource(leftSide?.puzzleResId ?: defaultResId)
+        puzzleView.setRightSideImageResource(rightSide?.puzzleResId ?: defaultResId)
 
         checkIsFormComplete()
     }
@@ -60,8 +53,7 @@ class AddSidewalkForm : AbstractQuestFormAnswerFragment<SidewalkAnswer>() {
         leftSide?.let { outState.putString(SIDEWALK_LEFT, it.name) }
     }
 
-    @AnyThread
-    override fun onMapOrientation(rotation: Float, tilt: Float) {
+    @AnyThread override fun onMapOrientation(rotation: Float, tilt: Float) {
         streetSideRotater?.onMapOrientation(rotation, tilt)
     }
 
@@ -77,18 +69,11 @@ class AddSidewalkForm : AbstractQuestFormAnswerFragment<SidewalkAnswer>() {
     override fun isRejectingClose() = leftSide != null || rightSide != null
 
     private fun showSidewalkSelectionDialog(isRight: Boolean) {
-        val recyclerView = RecyclerView(activity!!)
-        recyclerView.layoutParams = RecyclerView.LayoutParams(MATCH_PARENT, MATCH_PARENT)
-        recyclerView.layoutManager = GridLayoutManager(activity, 2)
+        val ctx = context ?: return
 
-        val alertDialog = AlertDialog.Builder(activity!!)
-            .setTitle(R.string.quest_select_hint)
-            .setView(recyclerView)
-            .create()
-
-        recyclerView.adapter = createAdapter(Sidewalk.values().toList()) { sidewalk ->
-            alertDialog.dismiss()
-
+        val items = Sidewalk.values().map { it.asItem() }
+        ImageListPickerDialog(ctx, items, R.layout.labeled_icon_button_cell, 2) { selected ->
+            val sidewalk = selected.value!!
             if (isRight) {
                 puzzleView.replaceRightSideImageResource(sidewalk.puzzleResId)
                 rightSide = sidewalk
@@ -97,29 +82,14 @@ class AddSidewalkForm : AbstractQuestFormAnswerFragment<SidewalkAnswer>() {
                 leftSide = sidewalk
             }
             checkIsFormComplete()
-        }
-        alertDialog.show()
+        }.show()
     }
-
-    private fun createAdapter(items: List<Sidewalk>, callback: (Sidewalk) -> Unit) =
-        object : ListAdapter<Sidewalk>(items) {
-            override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-                object : ListAdapter.ViewHolder<Sidewalk>(
-                    LayoutInflater.from(parent.context).inflate(R.layout.labeled_icon_button_cell, parent, false)
-                ) {
-                    override fun onBind(with: Sidewalk) {
-                        val imageView = itemView.findViewById<ImageView>(R.id.imageView)
-                        val textView = itemView.findViewById<TextView>(R.id.textView)
-                        imageView.setImageDrawable(resources.getDrawable(with.iconResId))
-                        textView.setText(with.nameResId)
-                        itemView.setOnClickListener { callback(with) }
-                    }
-                }
-        }
 
     private enum class Sidewalk(val iconResId: Int, val puzzleResId: Int, val nameResId: Int) {
         NO(R.drawable.ic_sidewalk_no, R.drawable.ic_sidewalk_puzzle_no, R.string.quest_sidewalk_value_no),
-        YES(R.drawable.ic_sidewalk_yes, R.drawable.ic_sidewalk_puzzle_yes, R.string.quest_sidewalk_value_yes)
+        YES(R.drawable.ic_sidewalk_yes, R.drawable.ic_sidewalk_puzzle_yes, R.string.quest_sidewalk_value_yes);
+
+        fun asItem() = Item(this, iconResId, nameResId)
     }
 
     companion object {

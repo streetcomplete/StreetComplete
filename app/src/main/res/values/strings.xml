@@ -692,4 +692,24 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_laundrySelfService_title">Is this laundry a self service laundry?</string>
     <string name="quest_handrail_title">Do these steps have a handrail?</string>
     <string name="quest_street_side_puzzle_tutorial">Tap the question marks and select an answer for the given side of the road.</string>
+    <string name="quest_recycling_materials_title">What can be left here for recycling?</string>
+    <string name="quest_recycling_materials_note">If anything different can be recycled than selectable here, please leave a note instead.</string>
+    <string name="quest_recycling_type_batteries">Batteries</string>
+    <string name="quest_recycling_type_cans">Cans</string>
+    <string name="quest_recycling_type_clothes">Clothes</string>
+    <string name="quest_recycling_type_green_waste">Garden waste</string>
+    <string name="quest_recycling_type_glass_bottles">Glass bottles and jars</string>
+    <string name="quest_recycling_type_glass_bottles_short">Bottles and jars</string>
+    <string name="quest_recycling_type_paper">Paper</string>
+    <string name="quest_recycling_type_plastic_generic">Plastic</string>
+    <string name="quest_recycling_type_plastic">Any plastic</string>
+    <string name="quest_recycling_type_shoes">Shoes</string>
+    <string name="quest_recycling_type_electric_appliances">Electric appliances</string>
+    <string name="quest_recycling_type_plastic_bottles">Plastic bottles only</string>
+    <string name="quest_recycling_type_plastic_packaging">Plastic packaging only</string>
+    <string name="quest_recycling_type_scrap_metal">Scrap metal</string>
+    <string name="quest_recycling_type_any_glass">Any glass</string>
+    <string name="quest_recycling_glass_title">Can only glass bottles and jars be recycled here, or any type of glass?</string>
+    <string name="quest_determineRecyclingGlass_description_any_glass">Examples of glass that is often not accepted: tempered glass, window panes, glassware, light bulbs or mirrors.</string>
+
 </resources>
