@@ -32,7 +32,8 @@ class AddPlaceNameForm : AbstractQuestFormAnswerFragment<PlaceNameAnswer>() {
     }
 
     private fun confirmNoName() {
-        AlertDialog.Builder(activity!!)
+        val ctx = context ?: return
+        AlertDialog.Builder(ctx)
             .setTitle(R.string.quest_name_answer_noName_confirmation_title)
             .setPositiveButton(R.string.quest_name_noName_confirmation_positive) { _, _ -> applyAnswer(NoPlaceNameSign) }
             .setNegativeButton(R.string.quest_generic_confirmation_no, null)

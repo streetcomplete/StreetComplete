@@ -48,6 +48,7 @@ import de.westnordost.streetcomplete.quests.parking_type.AddParkingType;
 import de.westnordost.streetcomplete.quests.place_name.AddPlaceName;
 import de.westnordost.streetcomplete.quests.playground_access.AddPlaygroundAccess;
 import de.westnordost.streetcomplete.quests.postbox_collection_times.AddPostboxCollectionTimes;
+import de.westnordost.streetcomplete.quests.postbox_ref.AddPostboxRef;
 import de.westnordost.streetcomplete.quests.powerpoles_material.AddPowerPolesMaterial;
 import de.westnordost.streetcomplete.quests.orchard_produce.AddOrchardProduce;
 import de.westnordost.streetcomplete.quests.railway_crossing.AddRailwayCrossingBarrier;
@@ -176,6 +177,7 @@ public class QuestModule
 				new AddMotorcycleParkingCover(o),
 				new AddFireHydrantType(o),
 				new AddParkingType(o),
+				new AddPostboxRef(o),
 				new AddWheelchairAccessToiletsPart(o),
 				new AddPowerPolesMaterial(o),
 				new AddCarWashType(o),
