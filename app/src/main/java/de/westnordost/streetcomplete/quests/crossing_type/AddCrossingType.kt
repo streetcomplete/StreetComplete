@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometr
 
 class AddCrossingType(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<String>(o) {
 
-    override val tagFilters = "nodes with highway=crossing and !crossing"
+    override val tagFilters = "nodes with highway = crossing and !crossing"
     override val commitMessage = "Add crossing type"
     override val icon = R.drawable.ic_quest_pedestrian_crossing
 

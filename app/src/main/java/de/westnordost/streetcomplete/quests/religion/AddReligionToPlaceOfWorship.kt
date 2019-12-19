@@ -8,7 +8,7 @@ import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometr
 class AddReligionToPlaceOfWorship(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<String>(o) {
 
     override val tagFilters =
-        "nodes, ways, relations with amenity=place_of_worship and !religion and name"
+        "nodes, ways, relations with amenity = place_of_worship and !religion and name"
     override val commitMessage = "Add religion for place of worship"
     override val icon = R.drawable.ic_quest_religion
 

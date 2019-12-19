@@ -10,9 +10,11 @@ class AddBusStopShelter(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestT
 
     override val tagFilters = """
         nodes with 
-        ((public_transport = platform and ~bus|trolleybus|tram ~ yes)
-        or
-        (highway = bus_stop and public_transport != stop_position))
+        (
+          (public_transport = platform and ~bus|trolleybus|tram ~ yes)
+          or
+          (highway = bus_stop and public_transport != stop_position)
+        )
         and !shelter and !covered
     """
     override val commitMessage = "Add bus stop shelter"

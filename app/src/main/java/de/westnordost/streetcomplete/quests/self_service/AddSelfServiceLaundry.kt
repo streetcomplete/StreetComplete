@@ -8,7 +8,7 @@ import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
 class AddSelfServiceLaundry(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<Boolean>(o) {
 
-    override val tagFilters = "nodes, ways with shop=laundry and !self_service"
+    override val tagFilters = "nodes, ways with shop = laundry and !self_service"
     override val commitMessage = "Add self service info"
     override val icon = R.drawable.ic_quest_laundry
 

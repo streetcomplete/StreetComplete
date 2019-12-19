@@ -8,8 +8,9 @@ import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometr
 class AddOrchardProduce(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<List<String>>(o) {
 
     override val tagFilters = """
-        ways, relations with
-        landuse = orchard and !trees and !produce and !crop and orchard != meadow_orchard
+        ways, relations with landuse = orchard
+        and !trees and !produce and !crop
+        and orchard != meadow_orchard
     """
     override val commitMessage = "Add orchard produces"
     override val icon = R.drawable.ic_quest_apple

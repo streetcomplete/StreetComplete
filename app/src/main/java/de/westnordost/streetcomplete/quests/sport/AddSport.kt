@@ -15,7 +15,7 @@ class AddSport(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<List<
     )
 
     override val tagFilters = """
-        nodes, ways with leisure=pitch and
+        nodes, ways with leisure = pitch and
         (!sport or sport ~ ${ambiguousSportValues.joinToString("|")} )
         and (access !~ private|no)
     """

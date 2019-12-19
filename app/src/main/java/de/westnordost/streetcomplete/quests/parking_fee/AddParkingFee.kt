@@ -8,9 +8,10 @@ import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometr
 class AddParkingFee(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<FeeAnswer>(o) {
 
     override val tagFilters = """
-        nodes, ways, relations with
-        amenity = parking and !fee and !fee:conditional and
-        access ~ yes|customers|public
+        nodes, ways, relations with amenity = parking
+        and !fee
+        and !fee:conditional
+        and access ~ yes|customers|public
     """
     override val commitMessage = "Add whether there is a parking fee"
     override val icon = R.drawable.ic_quest_parking_fee

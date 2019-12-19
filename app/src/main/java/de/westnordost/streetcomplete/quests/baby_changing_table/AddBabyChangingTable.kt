@@ -9,8 +9,16 @@ import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 class AddBabyChangingTable(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<Boolean>(o) {
 
     override val tagFilters = """
-        nodes, ways with (((amenity ~ restaurant|cafe|fuel|fast_food or shop ~ mall|department_store)
-        and name and toilets=yes) or amenity=toilets) and !diaper and !changing_table
+        nodes, ways with
+        (
+          (
+            (amenity ~ restaurant|cafe|fuel|fast_food or shop ~ mall|department_store)
+            and name
+            and toilets = yes
+          )
+          or amenity = toilets
+        )
+        and !diaper and !changing_table
     """
     override val commitMessage = "Add baby changing table"
     override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside

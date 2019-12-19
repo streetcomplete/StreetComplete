@@ -15,9 +15,11 @@ class AddWayLit(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<Stri
 
         See #427 for discussion. */
     override val tagFilters = """
-        ways with (
+        ways with
+        (
           highway ~ ${LIT_RESIDENTIAL_ROADS.joinToString("|")}
-          or highway ~ ${LIT_NON_RESIDENTIAL_ROADS.joinToString("|")} and (
+          or highway ~ ${LIT_NON_RESIDENTIAL_ROADS.joinToString("|")} and
+          (
             sidewalk ~ both|left|right|yes|separate
             or ~source:maxspeed|maxspeed:type|zone:maxspeed|zone:traffic ~ .+:urban
           )

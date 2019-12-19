@@ -10,7 +10,9 @@ class AddMotorcycleParkingCover(o: OverpassMapDataAndGeometryDao) : SimpleOverpa
 
     override val tagFilters = """
         nodes, ways with amenity = motorcycle_parking
-        and access !~ private|no and !covered and motorcycle_parking !~ shed|garage_boxes|building
+        and access !~ private|no
+        and !covered
+        and motorcycle_parking !~ shed|garage_boxes|building
     """
     override val commitMessage = "Add motorcycle parkings cover"
     override val icon = R.drawable.ic_quest_motorcycle_parking_cover

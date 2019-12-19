@@ -15,13 +15,17 @@ class AddMaxHeight(private val overpassServer: OverpassMapDataAndGeometryDao) : 
 
     private val nodeFilter by lazy { FiltersParser().parse("""
         nodes with
-        (barrier = height_restrictor or amenity = parking_entrance and parking ~ underground|multi-storey)
+        (
+          barrier = height_restrictor
+          or amenity = parking_entrance and parking ~ underground|multi-storey
+        )
         and !maxheight and !maxheight:physical
     """)}
 
     private val wayFilter by lazy { FiltersParser().parse("""
         ways with
-        (highway ~ motorway|motorway_link|trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|living_street|track|road
+        (
+          highway ~ motorway|motorway_link|trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|living_street|track|road
           or (highway = service and access !~ private|no and vehicle !~ private|no)
         )
         and (covered = yes or tunnel ~ yes|building_passage|avalanche_protector)

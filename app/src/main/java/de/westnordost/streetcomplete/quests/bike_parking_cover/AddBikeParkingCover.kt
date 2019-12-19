@@ -8,8 +8,11 @@ import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
 class AddBikeParkingCover(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<Boolean>(o) {
     override val tagFilters = """
-        nodes, ways with amenity=bicycle_parking and access !~ private|no and !covered
-        and bicycle_parking !~ shed|lockers|building
+        nodes, ways with 
+         amenity = bicycle_parking
+         and access !~ private|no
+         and !covered
+         and bicycle_parking !~ shed|lockers|building
     """
     override val commitMessage = "Add bicycle parkings cover"
     override val icon = R.drawable.ic_quest_bicycle_parking_cover

@@ -8,9 +8,13 @@ import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
 class AddGeneralFee(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<Boolean>(o) {
 
-    override val tagFilters = "nodes, ways, relations with " +
-            "(tourism=museum or leisure=beach_resort or tourism=gallery) " +
-            "and access !~ private|no and !fee and name"
+    override val tagFilters = """
+        nodes, ways, relations with 
+         (tourism = museum or leisure = beach_resort or tourism = gallery)
+         and access !~ private|no
+         and !fee
+         and name
+    """
     override val commitMessage = "Add fee info"
     override val icon = R.drawable.ic_quest_fee
 

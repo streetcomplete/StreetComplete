@@ -10,8 +10,10 @@ import de.westnordost.streetcomplete.data.osm.NoCountriesExcept
 class AddPostboxCollectionTimes(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<CollectionTimesAnswer>(o) {
 
     override val tagFilters = """
-        nodes with amenity = post_box and !collection_times
-        and collection_times:signed != no and access !~ private|no
+        nodes with amenity = post_box
+        and !collection_times
+        and collection_times:signed != no
+        and access !~ private|no
     """
     override val icon = R.drawable.ic_quest_mail
     override val commitMessage = "Add postbox collection times"

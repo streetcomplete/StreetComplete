@@ -9,7 +9,7 @@ class AddRoofShape(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<S
 
     override val tagFilters = """
         ways, relations with roof:levels
-        and roof:levels!=0 and !roof:shape and !3dr:type and !3dr:roof
+        and roof:levels != 0 and !roof:shape and !3dr:type and !3dr:roof
     """
     override val commitMessage = "Add roof shapes"
     override val icon = R.drawable.ic_quest_roof_shape
