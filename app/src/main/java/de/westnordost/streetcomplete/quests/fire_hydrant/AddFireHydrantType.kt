@@ -3,9 +3,9 @@ package de.westnordost.streetcomplete.quests.fire_hydrant
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
 
-class AddFireHydrantType(o: OverpassMapDataDao) : SimpleOverpassQuestType<String>(o) {
+class AddFireHydrantType(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<String>(o) {
 
     override val tagFilters = "nodes with emergency = fire_hydrant and !fire_hydrant:type"
     override val commitMessage = "Add fire hydrant type"

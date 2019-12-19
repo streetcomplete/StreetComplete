@@ -2,12 +2,12 @@ package de.westnordost.streetcomplete.quests.max_speed
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.OsmTaggings
-import de.westnordost.streetcomplete.data.osm.Countries
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
+import de.westnordost.streetcomplete.data.osm.AllCountriesExcept
 
-class AddMaxSpeed(o: OverpassMapDataDao) : SimpleOverpassQuestType<MaxSpeedAnswer>(o) {
+class AddMaxSpeed(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<MaxSpeedAnswer>(o) {
 
     override val tagFilters = """
         ways with highway ~ motorway|motorway_link|trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential
@@ -25,7 +25,7 @@ class AddMaxSpeed(o: OverpassMapDataDao) : SimpleOverpassQuestType<MaxSpeedAnswe
     override val isSplitWayEnabled = true
 
     // see #813: US has different rules for each different state which need to be respected
-    override val enabledForCountries = Countries.allExcept("US")
+    override val enabledInCountries = AllCountriesExcept("US")
     override val defaultDisabledMessage = R.string.default_disabled_msg_maxspeed
 
     override fun getTitle(tags: Map<String, String>) =

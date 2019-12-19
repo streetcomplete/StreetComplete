@@ -21,7 +21,7 @@ class OsmNoteQuestsChangesUploaderTest {
     private lateinit var noteDB: NoteDao
     private lateinit var questDB: OsmNoteQuestDao
     private lateinit var questStatisticsDb: QuestStatisticsDao
-    private lateinit var singleNoteUploader: SingleOsmNoteQuestChangesUpload
+    private lateinit var singleNoteUploader: SingleOsmNoteQuestChangesUploader
     private lateinit var uploader: OsmNoteQuestsChangesUploader
 
     @Before fun setUp() {
@@ -77,6 +77,21 @@ class OsmNoteQuestsChangesUploaderTest {
         verify(noteDB, times(quests.size)).delete(anyLong())
         verifyZeroInteractions(questStatisticsDb)
         verify(uploader.uploadedChangeListener, times(quests.size))?.onDiscarded()
+    }
+
+    @Test fun `catches image upload exception`() {
+        val quest = createQuest()
+        quest.imagePaths = listOf("hello")
+        on(questDB.getAll(statusIn = listOf(QuestStatus.ANSWERED))).thenReturn(listOf(quest))
+        on(singleNoteUploader.upload(any())).thenThrow(ImageUploadException())
+
+        uploader.upload(AtomicBoolean(false))
+
+        // will not throw ElementConflictException, nor delete the note from db, nor update it
+        verify(questDB, never()).delete(anyLong())
+        verify(questDB, never()).update(any())
+        verify(noteDB, never()).delete(anyLong())
+        verify(noteDB, never()).put(any())
     }
 }
 

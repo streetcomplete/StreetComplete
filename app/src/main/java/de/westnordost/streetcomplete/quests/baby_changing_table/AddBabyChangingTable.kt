@@ -3,10 +3,10 @@ package de.westnordost.streetcomplete.quests.baby_changing_table
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
-class AddBabyChangingTable(o: OverpassMapDataDao) : SimpleOverpassQuestType<Boolean>(o) {
+class AddBabyChangingTable(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<Boolean>(o) {
 
     override val tagFilters = """
         nodes, ways with (((amenity ~ restaurant|cafe|fuel|fast_food or shop ~ mall|department_store)

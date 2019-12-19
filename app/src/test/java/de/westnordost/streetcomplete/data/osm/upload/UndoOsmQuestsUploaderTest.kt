@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.any
 import de.westnordost.streetcomplete.data.osm.*
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
-import de.westnordost.streetcomplete.data.osm.download.ElementGeometryCreator
+import de.westnordost.streetcomplete.data.osm.download.OsmApiElementGeometryCreator
 import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao
 import de.westnordost.streetcomplete.data.osm.persist.MergedElementDao
 import de.westnordost.streetcomplete.data.osm.persist.UndoOsmQuestDao
@@ -27,7 +27,7 @@ class UndoOsmQuestsUploaderTest {
     private lateinit var elementGeometryDB: ElementGeometryDao
     private lateinit var questGiver: OsmQuestGiver
     private lateinit var statisticsDB: QuestStatisticsDao
-    private lateinit var elementGeometryCreator: ElementGeometryCreator
+    private lateinit var elementGeometryCreator: OsmApiElementGeometryCreator
     private lateinit var singleChangeUpload: SingleOsmElementTagChangesUpload
     private lateinit var uploader: UndoOsmQuestsUploader
 
@@ -42,7 +42,7 @@ class UndoOsmQuestsUploaderTest {
         on(questGiver.updateQuests(any())).thenReturn(OsmQuestGiver.QuestUpdates(listOf(), listOf()))
         statisticsDB = mock()
         elementGeometryCreator = mock()
-        on(elementGeometryCreator.create(any<Element>())).thenReturn(mock())
+        on(elementGeometryCreator.create(any())).thenReturn(mock())
         uploader = UndoOsmQuestsUploader(elementDB, elementGeometryDB, changesetManager, questGiver,
             statisticsDB, elementGeometryCreator, undoQuestDB, singleChangeUpload)
     }

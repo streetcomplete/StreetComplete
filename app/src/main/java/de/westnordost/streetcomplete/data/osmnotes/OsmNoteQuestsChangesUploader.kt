@@ -16,12 +16,16 @@ class OsmNoteQuestsChangesUploader @Inject constructor(
         private val questDB: OsmNoteQuestDao,
         private val statisticsDB: QuestStatisticsDao,
         private val noteDB: NoteDao,
-        private val singleNoteUpload: SingleOsmNoteQuestChangesUpload
+        private val singleNoteUploader: SingleOsmNoteQuestChangesUploader
 ): Uploader {
-    private val TAG = "CommentNoteUpload"
 
     override var uploadedChangeListener: OnUploadedChangeListener? = null
 
+    /** Uploads all note quests from local DB and closes them on successful upload.
+     *
+     *  Drops any notes where the upload failed because of a conflict but keeps any notes where
+     *  the upload failed because attached photos could not be uploaded (so it can try again
+     *  later). */
     @Synchronized override fun upload(cancelled: AtomicBoolean) {
         var created = 0
         var obsolete = 0
@@ -30,7 +34,7 @@ class OsmNoteQuestsChangesUploader @Inject constructor(
             if (cancelled.get()) break
 
             try {
-                val newNote = singleNoteUpload.upload(quest)
+                val newNote = singleNoteUploader.upload(quest)
 
                 /* Unlike OSM quests, note quests are never deleted when the user contributed to it
                    but must remain in the database with the status CLOSED as long as they are not
@@ -39,7 +43,7 @@ class OsmNoteQuestsChangesUploader @Inject constructor(
                    (Reminder: Note quests block other quests)
                   */
                 // so, not this: questDB.delete(quest.getId());
-                quest.status = QuestStatus.CLOSED
+                quest.close()
                 questDB.update(quest)
                 noteDB.put(newNote)
                 statisticsDB.addOneNote()
@@ -47,6 +51,7 @@ class OsmNoteQuestsChangesUploader @Inject constructor(
                 Log.d(TAG, "Uploaded note comment ${quest.logString}")
                 uploadedChangeListener?.onUploaded()
                 created++
+                deleteImages(quest.imagePaths)
             } catch (e: ConflictException) {
                 questDB.delete(quest.id!!)
                 noteDB.delete(quest.note.id)
@@ -54,14 +59,20 @@ class OsmNoteQuestsChangesUploader @Inject constructor(
                 Log.d(TAG, "Dropped note comment ${quest.logString}: ${e.message}")
                 uploadedChangeListener?.onDiscarded()
                 obsolete++
+                deleteImages(quest.imagePaths)
+            } catch (e: ImageUploadException) {
+                Log.e(TAG, "Error uploading image attached to note comment ${quest.logString}", e)
             }
-            AttachPhotoUtils.deleteImages(quest.imagePaths)
         }
         var logMsg = "Commented on $created notes"
         if (obsolete > 0) {
             logMsg += " but dropped $obsolete comments because the notes have already been closed"
         }
         Log.i(TAG, logMsg)
+    }
+
+    companion object {
+        private const val TAG = "CommentNoteUpload"
     }
 }
 
