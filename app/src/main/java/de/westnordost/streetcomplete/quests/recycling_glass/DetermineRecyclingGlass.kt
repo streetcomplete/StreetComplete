@@ -3,10 +3,10 @@ package de.westnordost.streetcomplete.quests.recycling_glass
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
 import de.westnordost.streetcomplete.quests.recycling_glass.RecyclingGlass.*
 
-class DetermineRecyclingGlass(overpassServer: OverpassMapDataDao) :
+class DetermineRecyclingGlass(overpassServer: OverpassMapDataAndGeometryDao) :
     SimpleOverpassQuestType<RecyclingGlass>(overpassServer) {
 
     override val tagFilters = """
