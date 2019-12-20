@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometr
 
 class AddCrossingType(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<String>(o) {
 
-    override val tagFilters = "nodes with highway = crossing and !crossing"
+    override val tagFilters = "nodes with highway = crossing and (!crossing or crossing = island)"
     override val commitMessage = "Add crossing type"
     override val icon = R.drawable.ic_quest_pedestrian_crossing
 
@@ -16,6 +16,11 @@ class AddCrossingType(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestTyp
     override fun createForm() = AddCrossingTypeForm()
 
     override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {
-        changes.add("crossing", answer)
+        if(changes.getPreviousValue("crossing") == "island") {
+            changes.modify("crossing", answer)
+            changes.addOrModify("crossing:island", "yes")
+        } else {
+            changes.add("crossing", answer)
+        }
     }
 }
