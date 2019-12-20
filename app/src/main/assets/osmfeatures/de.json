@@ -1793,6 +1793,10 @@
             "name": "Militärischer Übungsplatz",
             "terms": "Militärischer Übungsplatz"
         },
+        "leisure/pitch/chess": {
+            "name": "Grosses Freiluft-Schachspiel",
+            "terms": "Grosses Freiluft-Schachspiel"
+        },
         "playground/horizontal_bar": {
             "name": "Klimmzugstange",
             "terms": "Klimmzugstange"
