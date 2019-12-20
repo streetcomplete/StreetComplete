@@ -121,7 +121,7 @@ public class QuestModule
 				new AddMaxHeight(o),
 				new AddRailwayCrossingBarrier(o), // useful for routing
 				new AddPostboxCollectionTimes(o),
-				new AddOpeningHours(o),
+				new AddOpeningHours(o, featureDictionaryFuture),
 				new AddBikeParkingCapacity(o), // cycle map layer on osm.org
 				new AddOrchardProduce(o),
 				new AddCycleway(o),

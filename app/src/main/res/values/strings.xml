@@ -45,6 +45,7 @@
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"If the name can be spelled without an abbreviation, then it should be expanded. Many common abbreviations are expanded automatically while you type, but probably not all."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"No abbreviation"</string>
     <string name="quest_openingHours_name_title">"What are the opening hours of %s?"</string>
+    <string name="quest_openingHours_no_name_title">"What are the opening hours of this place? (%s)"</string>
     <string name="quest_openingHours_start_time">"opening time"</string>
     <string name="quest_openingHours_end_time">"closing time"</string>
     <string name="quest_openingHours_timeSelect_next">Next</string>

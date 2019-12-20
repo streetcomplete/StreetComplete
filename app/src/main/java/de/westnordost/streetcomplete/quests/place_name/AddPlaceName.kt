@@ -103,21 +103,19 @@ class AddPlaceName(
     override val icon = R.drawable.ic_quest_label
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_placeName_title_name
-    override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>) = featureName.value?.let { arrayOf(it) } ?: arrayOf()
+
+    override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>) =
+        featureName.value?.let { arrayOf(it) } ?: arrayOf()
 
     override fun download(bbox: BoundingBox, handler: (element: Element, geometry: ElementGeometry?) -> Unit): Boolean {
-        val overpassQuery = bbox.toGlobalOverpassBBox() + "\n" + filter.toOverpassQLString() + getQuestPrintStatement()
-        return overpassServer.query(overpassQuery) { element, geometry ->
-            if(element.tags != null) {
-                // only show places without names as quests for which a feature name is available
-                if (featureDictionaryFuture.get().byTags(element.tags).find().isNotEmpty()) {
-                    handler(element, geometry)
-                }
-            }
+        return overpassServer.query(getOverpassQuery(bbox)) { element, geometry ->
+            // only show places without names as quests for which a feature name is available
+            if (hasFeatureName(element.tags)) handler(element, geometry)
         }
     }
 
-    override fun isApplicableTo(element: Element) = filter.matches(element)
+    override fun isApplicableTo(element: Element) =
+        filter.matches(element) && hasFeatureName(element.tags)
 
     override fun createForm() = AddPlaceNameForm()
 
@@ -127,4 +125,10 @@ class AddPlaceName(
             is PlaceName -> changes.add("name", answer.name)
         }
     }
+
+    private fun getOverpassQuery(bbox: BoundingBox) =
+        bbox.toGlobalOverpassBBox() + "\n" + filter.toOverpassQLString() + getQuestPrintStatement()
+
+    private fun hasFeatureName(tags: Map<String, String>?): Boolean =
+        tags?.let { featureDictionaryFuture.get().byTags(it).find().isNotEmpty() } ?: false
 }
