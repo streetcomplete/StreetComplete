@@ -3,7 +3,8 @@
 
     <Preference
         android:key="version"
-        android:title="@string/about_title_version"/>
+        android:title="@string/about_title_changelog"
+        android:widgetLayout="@layout/widget_image_next"/>
 
     <Preference
         android:key="authors"

@@ -54,7 +54,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"/>
 
-            <TextView
+            <org.sufficientlysecure.htmltextview.HtmlTextView
                 android:id="@+id/contributorMore"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -81,7 +81,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"/>
 
-            <TextView
+            <org.sufficientlysecure.htmltextview.HtmlTextView
                 android:id="@+id/translationCreditsMore"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>

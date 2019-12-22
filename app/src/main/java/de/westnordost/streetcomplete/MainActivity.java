@@ -73,6 +73,7 @@ import de.westnordost.osmapi.map.data.OsmElement;
 import de.westnordost.osmapi.map.data.Way;
 import de.westnordost.osmfeatures.FeatureDictionary;
 import de.westnordost.streetcomplete.about.AboutFragment;
+import de.westnordost.streetcomplete.about.WhatsNewDialog;
 import de.westnordost.streetcomplete.data.Quest;
 import de.westnordost.streetcomplete.data.QuestAutoSyncer;
 import de.westnordost.streetcomplete.data.QuestController;
@@ -112,6 +113,7 @@ import de.westnordost.streetcomplete.util.SlippyMapMath;
 import de.westnordost.streetcomplete.util.SphericalEarthMath;
 
 
+import static de.westnordost.streetcomplete.ApplicationConstants.LAST_VERSION_WITHOUT_CHANGELOG;
 import static de.westnordost.streetcomplete.ApplicationConstants.MANUAL_DOWNLOAD_QUEST_TYPE_COUNT;
 
 public class MainActivity extends AppCompatActivity implements
@@ -308,6 +310,12 @@ public class MainActivity extends AppCompatActivity implements
 	@Override public void onStart()
 	{
 		super.onStart();
+
+		String lastVersion = prefs.getString(Prefs.LAST_VERSION, LAST_VERSION_WITHOUT_CHANGELOG);
+		if (!(BuildConfig.VERSION_NAME).equals(lastVersion)) {
+			prefs.edit().putString(Prefs.LAST_VERSION, BuildConfig.VERSION_NAME).apply();
+			new WhatsNewDialog(this, "v" + lastVersion).show();
+		}
 
 		boolean isAutosync = Prefs.Autosync.valueOf(prefs.getString(Prefs.AUTOSYNC,"ON")) == Prefs.Autosync.ON;
 		ProgressBar uploadedAnswersProgressBar = findViewById(R.id.uploadedAnswersProgress);

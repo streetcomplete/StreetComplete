@@ -28,7 +28,8 @@ public class Prefs
 			MAP_LATITUDE = "map.latitude",
 			MAP_LONGITUDE = "map.longitude",
 			LAST_PICKED_PREFIX = "imageListLastPicked.",
-			LAST_LOCATION_REQUEST_DENIED = "location.denied";
+			LAST_LOCATION_REQUEST_DENIED = "location.denied",
+			LAST_VERSION = "lastVersion";
 
 	public static final String HAS_SHOWN_UNDO_FUCKUP_WARNING = "alert.undo_fuckup_warning";
 

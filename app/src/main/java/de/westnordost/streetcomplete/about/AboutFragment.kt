@@ -19,7 +19,11 @@ class AboutFragment : PreferenceFragmentCompat() {
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         addPreferencesFromResource(R.xml.about)
 
-        findPreference("version").summary = BuildConfig.VERSION_NAME
+        findPreference("version").summary = getString(R.string.about_summary_current_version, "v" + BuildConfig.VERSION_NAME)
+        findPreference("version").setOnPreferenceClickListener {
+            fragmentActivity?.setCurrentFragment(ChangelogFragment())
+            true
+        }
 
         findPreference("license").setOnPreferenceClickListener {
             val browserIntent = Intent(
