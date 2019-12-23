@@ -685,7 +685,15 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="quest_split_way_many_splits_confirmation_description">"Queste sono parecchie divisioni. Puoi dividere ancora la strada più tardi."</string>
     <string name="quest_footwayPartSurface_title">"Qual è la superficie di questo passaggio pedonale?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title">"I servizi igienici in %s sono accessibili con la sedia a rotelle?"</string>
+    <string name="quest_tactilePaving_title_tram">"Questa fermata di tram ha del pavimento tattile?"</string>
+    <string name="quest_tactilePaving_title_name_tram">"La fermata di tram %s ha del pavimento tattile?"</string>
     <string name="quest_maxweight_title">"Qual è il limite di peso qui?"</string>
     <string name="quest_maxweight_answer_noSign">"Non c'è alcun segnale"</string>
     <string name="quest_maxweight_unusualInput_confirmation_description">"Il peso inserito sembra erroneo. Sei sicuro sia corretto?"</string>
+    <string name="quest_maxweight_answer_other_sign">"Il segnale sembra differente..."</string>
+    <string name="quest_maxweight_unsupported_sign_request_photo">"Vorresti lasciare una nota? Una nota con una foto permetterà a d altri mappatori di occuparsene."</string>
+    <string name="confirmation_authorize_now_note">"Puoi farlo in seguito nel menu impostazioni."</string>
+    <string name="quest_generalFee_title">"C'è un costo per l'ingresso a %s?"</string>
+    <string name="quest_laundrySelfService_title">"Questa lavanderia è self service?"</string>
+    <string name="quest_handrail_title">"Queste scale hanno un corrimano?"</string>
 </resources>

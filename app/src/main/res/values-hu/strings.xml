@@ -608,7 +608,7 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="action_deselect_all">"Kijelölés megszüntetése"</string>
     <string name="quest_buildingType_retail_description">"többek között éttermek, kávéházak stb. épületei"</string>
     <string name="quest_openingHours_timeSelect_next">"Következő"</string>
-    <string name="quest_tracktype_title">"Mennyire szilárd ennek a pályának a felszíne?"</string>
+    <string name="quest_tracktype_title">"Mennyire szilárd ennek az útnak a felszíne?"</string>
     <string name="quest_tracktype_grade1">"Szilárd"</string>
     <string name="quest_tracktype_grade2">"Viszonylag szilárd"</string>
     <string name="quest_tracktype_grade3">"Vegyes"</string>

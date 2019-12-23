@@ -515,7 +515,7 @@
     <string name="quest_parking_access_private">"Это частное"</string>
     <string name="quest_parking_access_yes">"Открыта для всех (платно или бесплатно)"</string>
     <string name="quest_parking_access_customers">"Только для клиентов"</string>
-    <string name="quest_streetName_pedestrian_title">"Какое называется эта пешеходная улица?"</string>
+    <string name="quest_streetName_pedestrian_title">"Как называется эта пешеходная улица?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_streetSurface_square_title">"Какой тип покрытия у этой площади?"</string>
@@ -623,7 +623,7 @@
     <string name="quest_buildingType_other">"Другие"</string>
     <string name="quest_buildingType_shed">"Сарай"</string>
     <string name="quest_buildingType_hut">"хижина"</string>
-    <string name="quest_buildingType_hut_description">"маленькое, простое жилье или жилье"</string>
+    <string name="quest_buildingType_hut_description">"маленькое, простое жилье или укрытие"</string>
     <string name="quest_buildingType_roof">"Навес"</string>
     <string name="quest_buildingType_service">"Служебная постройка"</string>
     <string name="quest_buildingType_service_description">"здание с работающим оборудованием (насосы, трансформаторы и т.п.)"</string>
@@ -633,8 +633,8 @@
     <string name="quest_address_answer_no_housenumber">"Нет номера дома…"</string>
     <string name="quest_address_answer_no_housenumber_message1">"Строению были добавлены теги:"</string>
     <string name="quest_address_answer_no_housenumber_message2">"Верно ли указано и не относится ли только к части данного здания?"</string>
-    <string name="quest_buildingType_shrine">"усыпальница"</string>
-    <string name="quest_maxspeed_title_short2">"Каков предел скорости для этой улицы?"</string>
+    <string name="quest_buildingType_shrine">"Святилище"</string>
+    <string name="quest_maxspeed_title_short2">"Какая максимальная разрешенная скорости для этой улицы?"</string>
     <string name="quest_maxspeed_answer_sign">"Знак"</string>
     <string name="quest_maxspeed_answer_zone2">"Он находится в (медленной) зоне"</string>
     <string name="quest_maxspeed_answer_noSign2">"Нет знака, указываем скорость по умолчанию"</string>
@@ -649,10 +649,10 @@
     <string name="dialog_tutorial_upload">"Чтобы загрузить изменения вручную, используйте кнопку на панели инструментов, которая выглядит так."</string>
     <string name="quest_segregated_separated">"Отделены друг от друга"</string>
     <string name="quest_segregated_mixed">"Велосипедисты и пешеходы движутся по одной дороге"</string>
-    <string name="quest_maxheight_title">"Какой здесь предел высоты?"</string>
-    <string name="quest_maxheight_parking_entrance_title">"Каков максимальный лимит парковки?"</string>
-    <string name="quest_maxheight_height_restrictor_title">"Каков предел высоты этого ограничителя высоты?"</string>
-    <string name="quest_maxheight_tunnel_title">"Каков предел высоты этого туннеля?"</string>
+    <string name="quest_maxheight_title">"Какой здесь ограничение по высоте?"</string>
+    <string name="quest_maxheight_parking_entrance_title">"Какое ограничение по высоте на этом вьезде в парковку?"</string>
+    <string name="quest_maxheight_height_restrictor_title">"Какая максимальная допустимая высота у этого ограничителя высоты?"</string>
+    <string name="quest_maxheight_tunnel_title">"Какое ограничение по высоте у этого туннеля?"</string>
     <string name="quest_maxheight_answer_noSign">"Здесь нет знака…"</string>
     <string name="quest_maxheight_answer_noSign_question">"Достаточно ли высоты для даже самых больших грузовиков (минимум 4.5 метра)?"</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">"Эта высота выглядит неправдоподобной. Вы уверены, что это правильно?"</string>
@@ -702,7 +702,7 @@
     <string name="theme_light">"Светлая"</string>
     <string name="theme_dark">"Темная"</string>
     <string name="theme_system_default">"Согласно настройкам системы"</string>
-    <string name="quest_placeName_title_name">"Как называется это место?"</string>
+    <string name="quest_placeName_title_name">"Как называется это место? (%s)"</string>
     <string name="action_open_location">"Посмотреть местоположение в другом приложении"</string>
     <string name="map_application_missing">"Другие картографические приложения не установлены"</string>
     <string name="pref_title_overpass_url_select">"Изменить сервер Overpass"</string>
@@ -738,4 +738,15 @@
     <string name="quest_split_way_many_splits_confirmation_description">"Это достаточно много частей. Вы всегда можете разделить эту линию на части позже."</string>
     <string name="quest_footwayPartSurface_title">"Какое покрытие у пешеходной дорожки?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title">"Этот туалет %s доступен для инвалидных колясок?"</string>
+    <string name="quest_tactilePaving_title_tram">"У этой остановки трамвая есть тактильное покрытие?"</string>
+    <string name="quest_tactilePaving_title_name_tram">"У остановки трамвая %s есть тактильное покрытие?"</string>
+    <string name="quest_maxweight_title">"Какое ограничение по весу установлено здесь?"</string>
+    <string name="quest_maxweight_answer_noSign">"Знак отсутствует"</string>
+    <string name="quest_maxweight_unusualInput_confirmation_description">"Этот вес выглядит неправдоподобным. Вы уверены, что это правильно?"</string>
+    <string name="quest_maxweight_answer_other_sign">"Знак выглядит по-другому ..."</string>
+    <string name="quest_maxweight_unsupported_sign_request_photo">"Хотите оставить заметку? Заметка с фотографией позволит другим картографам позаботиться об этом."</string>
+    <string name="confirmation_authorize_now_note">"Вы можете сделать это позже на экране настроек."</string>
+    <string name="quest_generalFee_title">"Нужно ли платить за вход в %s?"</string>
+    <string name="quest_laundrySelfService_title">"Это прачечная самообслуживания?"</string>
+    <string name="quest_handrail_title">"Есть ли у этой лестницы поручень?"</string>
 </resources>

@@ -688,4 +688,15 @@ Per example 1,3 o 2-6."</string>
     <string name="quest_split_way_many_splits_confirmation_description">"Ja hi ha unes quantes divisions. Sempre podeu afegir-ne més endavant."</string>
     <string name="quest_footwayPartSurface_title">"Quin tipus de superfície té el camí de vianants aquí?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title">"Els serveis de %s són accessibles amb cadira de rodes?"</string>
+    <string name="quest_tactilePaving_title_tram">"Aquesta parada de tramvia té paviment tàctil?"</string>
+    <string name="quest_tactilePaving_title_name_tram">"Aquesta parada de tramvia %s té paviment tàctil?"</string>
+    <string name="quest_maxweight_title">"Quin és el límit de pes aquí?"</string>
+    <string name="quest_maxweight_answer_noSign">"No hi ha cap senyal"</string>
+    <string name="quest_maxweight_unusualInput_confirmation_description">"Aquest pes no sembla plausible. Esteu segur que és correcte?"</string>
+    <string name="quest_maxweight_answer_other_sign">"El senyal sembla diferent..."</string>
+    <string name="quest_maxweight_unsupported_sign_request_photo">"Voleu deixar una nota? Una nota amb una fotografia permetrà a altres cartògrafs de fer-se'n càrrec."</string>
+    <string name="confirmation_authorize_now_note">"Això ho podeu fer més tard a la pantalla de configuració."</string>
+    <string name="quest_generalFee_title">"Cal pagar per a entrar a %s?"</string>
+    <string name="quest_laundrySelfService_title">"Aquesta bugaderia és d'autoservei?"</string>
+    <string name="quest_handrail_title">"Les escales tenen barana?"</string>
 </resources>

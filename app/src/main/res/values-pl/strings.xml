@@ -363,7 +363,7 @@ W przeciwnym wypadku możesz ściągnąć dodatkowe aplikacje klawiatury ze skle
     <string name="pref_title_authorized_summary">"Autoryzowany"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingLevels_answer_multipleLevels">"inaczej w różnych częściach budynku"</string>
+    <string name="quest_buildingLevels_answer_multipleLevels">"Inaczej w różnych częściach budynku"</string>
     <string name="quest_buildingLevels_answer_description">"W takim razie po prostu wpisz wartość najwyżej części budynku."</string>
     <string name="unglue_hint">"Dotknij, by umożliwić przesuwanie mapy"</string>
     <string name="pref_title_not_authorized_summary2">"Zaloguj się przez przeglądarkę"</string>
@@ -396,8 +396,8 @@ W przeciwnym wypadku możesz ściągnąć dodatkowe aplikacje klawiatury ze skle
     <string name="quest_dietType_explanation_vegetarian">"Dania wegetariańskie nie zawierają mięsa."</string>
     <string name="quest_dietType_explanation">"Zaznacz tylko jeśli miejsce oferuje pełnoprawne danie dla tej diety, wykluczając przystawki itp."</string>
     <string name="quest_carWashType_title">"Jaki to rodzaj myjni samochodowej?"</string>
-    <string name="quest_carWashType_automated">"Automatyczne"</string>
-    <string name="quest_carWashType_selfService">"Samoobsługowe"</string>
+    <string name="quest_carWashType_automated">"Automatyczna"</string>
+    <string name="quest_carWashType_selfService">"Samoobsługowa"</string>
     <string name="quest_carWashType_service">"Myje obsługa"</string>
     <string name="enable_quest_confirmation_title">"Aktywować ten rodzaj zadań?"</string>
     <string name="default_disabled_msg_go_inside">"To zadanie jest domyślnie nieaktywne, ponieważ odpowiedź jest często niemożliwa bez wejścia do danego miejsca"</string>
@@ -684,4 +684,15 @@ Podzielić?"</string>
     <string name="quest_split_way_many_splits_confirmation_description">"To jest sporo podziałów! Zawsze możesz podzielić linię bardziej przy odpowiadaniu na poszczególne zadania."</string>
     <string name="quest_footwayPartSurface_title">"Jak jest nawierzchnia części będącej chodnikiem dla pieszych?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title">"Czy toalety w %s jest dostępna dla osób na wózku inwalidzkim?"</string>
+    <string name="quest_tactilePaving_title_tram">"Czy ten przystanek tramwajowy ma oznaczenia dla niewidomych?"</string>
+    <string name="quest_tactilePaving_title_name_tram">"Czy przystanek tramwajowy %s ma oznaczenia dla niewidomych?"</string>
+    <string name="quest_maxweight_title">"Czy jest tu ograniczenie wagi pojazdów?"</string>
+    <string name="quest_maxweight_answer_noSign">"Nie ma znaku"</string>
+    <string name="quest_maxweight_unusualInput_confirmation_description">"Ta waga wygląda podejrzanie. Jesteś pewien że jest ona poprawna?"</string>
+    <string name="quest_maxweight_answer_other_sign">"Znak wygląda inaczej…"</string>
+    <string name="quest_maxweight_unsupported_sign_request_photo">"Czy chciałbyś zostawić notatkę ze zdjęciem? Umożliwi to innym mapującym zaznaczyć ten przypadek."</string>
+    <string name="confirmation_authorize_now_note">"Możesz zrobić to też później, w ustawieniach."</string>
+    <string name="quest_generalFee_title">"Czy trzeba płacić by wejść do %s?"</string>
+    <string name="quest_laundrySelfService_title">"Czy jest to pralnia samoobsługowa?"</string>
+    <string name="quest_handrail_title">"Czy te schody mają poręcz?"</string>
 </resources>

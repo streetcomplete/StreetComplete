@@ -683,7 +683,7 @@ Pavyzdžiui 1,3 arba 2-6."</string>
     <string name="quest_generic_answer_differs_along_the_way">"Skirtingose vietose skirtinga..."</string>
     <string name="quest_split_way_description">"Jei skirtingose vietose skirtinga, pirmas žingsnis yra padalinti kelią. Po to bus galima atsakyti į užduotį kiekvienai daliai atskirai. Pastebėtina, kad užduotys padalintoms dalims gali pasirodyti daug vėliau. Padalinti dabar?"</string>
     <string name="quest_split_way_tutorial">"Spustelėkite ant kelio toje vietoje, kur atsakymai skiriasi. Pabandykite skirtumo vietą nurodyti kiek galima tiksliau, priartinkite kaip visada."</string>
-    <string name="quest_split_way_too_imprecise">"Prašome labiau pirartinti"</string>
+    <string name="quest_split_way_too_imprecise">"Prašome labiau priartinti"</string>
 
     <!-- Fuzzy -->
     <string name="quest_split_way_many_splits_confirmation_description">"Čia jau yra pakankamai padalinimų. Visada kelią galite dar dalinti vėliau."</string>

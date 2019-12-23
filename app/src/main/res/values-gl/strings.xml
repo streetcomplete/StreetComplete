@@ -688,4 +688,15 @@ Ten en conta que as tarefas a escoller para eses treitos divididos poden aparece
     <string name="quest_split_way_many_splits_confirmation_description">"Estas son divisións dabondo. Sempre pode dividirse a vía aínda máis despois."</string>
     <string name="quest_footwayPartSurface_title">"Cal é a superficie da senda peonil aquí?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title">"É o baño de %s accesíbel para cadeiras de rodas?"</string>
+    <string name="quest_tactilePaving_title_tram">"Esta parada do tranvía ten pavemento táctil?"</string>
+    <string name="quest_tactilePaving_title_name_tram">"A parada do tranvía %s ten pavemento táctil?"</string>
+    <string name="quest_maxweight_title">"Cal é o límite de peso aquí?"</string>
+    <string name="quest_maxweight_answer_noSign">"Non hai sinal"</string>
+    <string name="quest_maxweight_unusualInput_confirmation_description">"Este peso semella creíbel. Estás na certeza de que é correcto?"</string>
+    <string name="quest_maxweight_answer_other_sign">"O sinal semella diferente..."</string>
+    <string name="quest_maxweight_unsupported_sign_request_photo">"Che gostaría deixar unha nota? Unha nota cunha imaxe permitirá que outros cartógrafos entendan mellor."</string>
+    <string name="confirmation_authorize_now_note">"Podes facelo máis tarde na pantalla dos axustes."</string>
+    <string name="quest_generalFee_title">"De canto é a taxa para entrar %s?"</string>
+    <string name="quest_laundrySelfService_title">"Esta lavandaría é unha lavandaría de autoservizo?"</string>
+    <string name="quest_handrail_title">"Estas escadas teñen pasamáns?"</string>
 </resources>
