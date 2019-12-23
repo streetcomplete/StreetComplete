@@ -12,11 +12,8 @@ import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
 
-import com.esotericsoftware.yamlbeans.YamlReader
-
-import java.io.InputStreamReader
-
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.ktx.getYamlObject
 import de.westnordost.streetcomplete.ktx.subListOfBeforeFirst
 import de.westnordost.streetcomplete.view.ListAdapter
 import kotlinx.android.synthetic.main.row_changelog.view.*
@@ -73,9 +70,6 @@ class ChangelogAdapter(changelog: List<Release>) : ListAdapter<Release>(changelo
 
 data class Release(val title: String, val description: String)
 
-private fun readChangelog(resources: Resources): List<Release> {
-    val inputStream = resources.openRawResource(R.raw.changelog)
-    val reader = YamlReader(InputStreamReader(inputStream))
-    val changelog = (reader.read(LinkedHashMap::class.java) as LinkedHashMap<String, String>)
-    return changelog.map { Release(it.key, it.value) }
-}
+private fun readChangelog(resources: Resources) =
+    resources.getYamlObject<LinkedHashMap<String, String>>(R.raw.changelog)
+        .map { Release(it.key, it.value) }
