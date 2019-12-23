@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.about
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 
 import de.westnordost.streetcomplete.ApplicationConstants
@@ -19,13 +20,13 @@ class AboutFragment : PreferenceFragmentCompat() {
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         addPreferencesFromResource(R.xml.about)
 
-        findPreference("version").summary = getString(R.string.about_summary_current_version, "v" + BuildConfig.VERSION_NAME)
-        findPreference("version").setOnPreferenceClickListener {
+        findPreference<Preference>("version")?.summary = getString(R.string.about_summary_current_version, "v" + BuildConfig.VERSION_NAME)
+        findPreference<Preference>("version")?.setOnPreferenceClickListener {
             fragmentActivity?.setCurrentFragment(ChangelogFragment())
             true
         }
 
-        findPreference("license").setOnPreferenceClickListener {
+        findPreference<Preference>("license")?.setOnPreferenceClickListener {
             val browserIntent = Intent(
                 Intent.ACTION_VIEW,
                 Uri.parse("https://www.gnu.org/licenses/gpl-3.0.html")
@@ -34,12 +35,12 @@ class AboutFragment : PreferenceFragmentCompat() {
             true
         }
 
-        findPreference("authors").setOnPreferenceClickListener {
+        findPreference<Preference>("authors")?.setOnPreferenceClickListener {
             fragmentActivity?.setCurrentFragment(CreditsFragment())
             true
         }
 
-        findPreference("privacy").setOnPreferenceClickListener {
+        findPreference<Preference>("privacy")?.setOnPreferenceClickListener {
             val f = ShowHtmlFragment.create(
                 resources.getString(R.string.privacy_html) +
                 getString(R.string.privacy_html_tileserver) +
@@ -51,7 +52,7 @@ class AboutFragment : PreferenceFragmentCompat() {
             true
         }
 
-        findPreference("repository").setOnPreferenceClickListener {
+        findPreference<Preference>("repository")?.setOnPreferenceClickListener {
             val browserIntent = Intent(
                 Intent.ACTION_VIEW,
                 Uri.parse("https://github.com/westnordost/StreetComplete/")
@@ -60,7 +61,7 @@ class AboutFragment : PreferenceFragmentCompat() {
             true
         }
 
-        findPreference("report_error").setOnPreferenceClickListener {
+        findPreference<Preference>("report_error")?.setOnPreferenceClickListener {
             val browserIntent = Intent(
                 Intent.ACTION_VIEW,
                 Uri.parse("https://github.com/westnordost/StreetComplete/issues/")
@@ -69,7 +70,7 @@ class AboutFragment : PreferenceFragmentCompat() {
             true
         }
 
-        findPreference("email_feedback").setOnPreferenceClickListener {
+        findPreference<Preference>("email_feedback")?.setOnPreferenceClickListener {
             val intent = Intent(Intent.ACTION_SENDTO)
             intent.data = Uri.parse("mailto:")
             intent.putExtra(Intent.EXTRA_EMAIL, arrayOf("osm@westnordost.de"))

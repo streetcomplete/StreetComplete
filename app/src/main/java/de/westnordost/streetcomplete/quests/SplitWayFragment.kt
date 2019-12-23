@@ -94,7 +94,7 @@ class SplitWayFragment : Fragment(), IsCloseableBottomSheet, IsShowingQuestDetai
         }
     }
 
-    override fun onConfigurationChanged(newConfig: Configuration?) {
+    override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
         // see rant comment in AbstractBottomSheetFragment
         resources.updateConfiguration(newConfig, resources.displayMetrics)

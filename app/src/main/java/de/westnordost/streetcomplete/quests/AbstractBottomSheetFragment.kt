@@ -80,7 +80,7 @@ abstract class AbstractBottomSheetFragment : Fragment(), IsCloseableBottomSheet 
         mainHandler.removeCallbacksAndMessages(null)
     }
 
-    override fun onConfigurationChanged(newConfig: Configuration?) {
+    override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
         // I need to do everything myself... (AppCompactActivity only does this after calling this
         // method. Genius!)
