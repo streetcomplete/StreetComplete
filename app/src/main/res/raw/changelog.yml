@@ -1,3 +1,34 @@
+v16.0-beta1: |
+  <h3>New Features</h3>
+  <ul>
+  <li>📰 You now see this changelog in the app after each app update and in the about menu</li>
+  <li>❤️ You can now sponsor the development of this app on <a href="https://github.com/sponsors/westnordost">GitHub Sponsors</a>, <a href="https://liberapay.com/westnordost">liberapay</a> or <a href="https://www.patreon.com/westnordost">Patreon</a>. Thanks to anyone considering it!</li>
+  </ul>
+  <h3>New Quests</h3>
+  <ul>
+  <li>What is the reference number of this postbox? (<a href="https://github.com/westnordost/StreetComplete/issues/1556">#1556</a>, <a href="https://github.com/westnordost/StreetComplete/pull/1628">#1628</a>)</li>
+  <li>What can be left here for recycling? (<a href="https://github.com/westnordost/StreetComplete/issues/223">#223</a>, <a href="https://github.com/westnordost/StreetComplete/pull/1627">#1627</a>)</li>
+  <li>Can only glass bottles and jars be recycled here, or any type of glass?</li>
+  </ul>
+  <h3>Enhanced Quests</h3>
+  <ul>
+  <li>ask about internet access for more types of accomodations (<a href="https://github.com/westnordost/StreetComplete/pull/1620">#1620</a>), thanks <a href="https://github.com/wvanderp">@wvanderp</a></li>
+  <li>ask opening hours, names and wheelchair accessibility for more types of places (<a href="https://github.com/westnordost/StreetComplete/pull/1621">#1621</a>), thanks <a href="https://github.com/wvanderp">@wvanderp</a></li>
+  <li>do not ask for handrails of escalators by <a href="https://github.com/matkoniecz">@matkoniecz</a></li>
+  <li>add hint how to answer the cycleway and sidewalk question (<a href="https://github.com/westnordost/StreetComplete/pull/1671">#1671</a>) by <a href="https://github.com/matkoniecz">@matkoniecz</a></li>
+  <li>clearer wording for parking access quest (<a href="https://github.com/westnordost/StreetComplete/issues/1685">#1685</a>)</li>
+  <li>ask opening hours also for shops with no name (<a href="https://github.com/westnordost/StreetComplete/issues/1647">#1647</a>)</li>
+  <li>let the user specify the type of crossing if before it was simply specified as an island (<a href="https://github.com/westnordost/StreetComplete/issues/1637">#1637</a>)</li>
+  </ul>
+  <h3>General Enhancements</h3>
+  <ul>
+  <li>better visibility of some icons in dark mode (<a href="https://github.com/westnordost/StreetComplete/pull/1663">#1663</a>, <a href="https://github.com/westnordost/StreetComplete/pull/1664">#1664</a>, <a href="https://github.com/westnordost/StreetComplete/pull/1665">#1665</a>, <a href="https://github.com/westnordost/StreetComplete/pull/1668">#1668</a>, <a href="https://github.com/westnordost/StreetComplete/issues/1659">#1659</a>, <a href="https://github.com/westnordost/StreetComplete/issues/1658">#1658</a>), thanks <a href="https://github.com/matkoniecz">@matkoniecz</a></li>
+  <li>fix dark mode for right-to-left layouts (<a href="https://github.com/westnordost/StreetComplete/issues/1634">#1634</a>)</li>
+  <li>fix strange behavior in auto download of quests</li>
+  <li>try again later if the upload of attached photos to a note failed (<a href="https://github.com/westnordost/StreetComplete/issues/1575">#1575</a>)</li>
+  <li>indicate the user's locale for each changeset (<a href="https://github.com/westnordost/StreetComplete/issues/1674">#1674</a>)</li>
+  </ul>
+
 v15.0: |
   <h3>New Translation</h3>
   <p>Norwegian Bokmål by Mats Randgaard and Simen Heggestøyl</p>
