@@ -3,19 +3,22 @@ Thanks for your interest in contributing to StreetComplete! 👍 There are many 
 Even if you do not find something to do in this list, using StreetComplete, testing it and giving constructive feedback is always a valuable contribution too.
 
 Content:
-* [Translating the app](#translating-the-app)
-* [Solving notes](#solving-notes)
-* [Testing and reporting issues](#testing-and-reporting-issues)
+
+   * [Translating the app](#translating-the-app)
+   * [Solving notes](#solving-notes)
+   * [Testing and reporting issues](#testing-and-reporting-issues)
    * [Issues of dependencies](#issues-of-dependencies)
    * [Suggesting new quests](#suggesting-new-quests)
-* [Improving documentation](#improving-documentation)
-* [Development](#development)
+   * [Improving documentation](#improving-documentation)
+   * [Development](#development)
    * [Developing new quests](#developing-new-quests)
    * [StreetComplete-related projects](#streetcomplete-related-projects).
 
 ## Translating the app
 
-You can translate StreetComplete at POEditor. You can add a translation in your own language or improve other translations. Note that manual translations as Pull Requests will not be merged and do not help the project.
+You can translate StreetComplete at POEditor. You can add missing translations and improve existing ones.
+
+The only required skills here are ability to read English text and write in your own language.
 
 Follow [**this link** to improve the translations](https://poeditor.com/join/project/IE4GC127Ki):
 
@@ -23,7 +26,7 @@ Follow [**this link** to improve the translations](https://poeditor.com/join/pro
 
 After joining [main site of the POEditor](https://poeditor.com/projects/) should list StreetComplete for logged in users.
 
-Before each release, translations are pulled in from POEditor.
+Before each release, translations are pulled in from POEditor. Please, use POEditor for translating. Manual changes submitted as Pull Requests will not be merged and do not help the project.
 
 ## Solving notes
 
