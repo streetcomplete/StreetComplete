@@ -15,7 +15,7 @@ Content:
 
 ## Translating the app
 
-You can translate StreetComplete at POEditor. You can add a translation in your own language or improve other translations. Note that manual translations as Pull Requests will not be merged and do not help the project.
+You can translate StreetComplete at POEditor. You can add a translation in your own language or improve other translations.
 
 Follow [**this link** to improve the translations](https://poeditor.com/join/project/IE4GC127Ki):
 
@@ -23,7 +23,7 @@ Follow [**this link** to improve the translations](https://poeditor.com/join/pro
 
 After joining [main site of the POEditor](https://poeditor.com/projects/) should list StreetComplete for logged in users.
 
-Before each release, translations are pulled in from POEditor.
+Before each release, translations are pulled in from POEditor. Please, use POEditor for translating. Manual changes submitted as Pull Requests will not be merged and do not help the project.
 
 ## Solving notes
 
