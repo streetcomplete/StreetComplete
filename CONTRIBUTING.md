@@ -15,7 +15,9 @@ Content:
 
 ## Translating the app
 
-You can translate StreetComplete at POEditor. You can add a translation in your own language or improve other translations.
+You can translate StreetComplete at POEditor. You can add missing translations and improve existing ones.
+
+The only required skills here are ability to read English text and write in your own language.
 
 Follow [**this link** to improve the translations](https://poeditor.com/join/project/IE4GC127Ki):
 
