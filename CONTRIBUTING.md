@@ -3,13 +3,14 @@ Thanks for your interest in contributing to StreetComplete! 👍 There are many 
 Even if you do not find something to do in this list, using StreetComplete, testing it and giving constructive feedback is always a valuable contribution too.
 
 Content:
-* [Translating the app](#translating-the-app)
-* [Solving notes](#solving-notes)
-* [Testing and reporting issues](#testing-and-reporting-issues)
+
+   * [Translating the app](#translating-the-app)
+   * [Solving notes](#solving-notes)
+   * [Testing and reporting issues](#testing-and-reporting-issues)
    * [Issues of dependencies](#issues-of-dependencies)
    * [Suggesting new quests](#suggesting-new-quests)
-* [Improving documentation](#improving-documentation)
-* [Development](#development)
+   * [Improving documentation](#improving-documentation)
+   * [Development](#development)
    * [Developing new quests](#developing-new-quests)
    * [StreetComplete-related projects](#streetcomplete-related-projects).
 
