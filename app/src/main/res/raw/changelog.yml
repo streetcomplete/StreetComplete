@@ -33,7 +33,7 @@ v16.0: |
   <li>Add donate to this app button in the about menu</li>
   </ul>
   <h3>Fixes</h3>
-  <ul>Maxspeed quest: Tag motorway and trunk link implicit speed limits correctly</ul>
+  <p>Maxspeed quest: Tag motorway and trunk link implicit speed limits correctly</p>
 
 v15.0: |
   <h3>New Translation</h3>
