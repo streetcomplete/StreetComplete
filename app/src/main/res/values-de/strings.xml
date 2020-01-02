@@ -702,7 +702,7 @@ Jetzt aufspalten?"</string>
     <string name="quest_recycling_materials_note">"Wenn noch Anderes entsorgt werden kann als man hier angeben kann, bitte hinterlasse stattdessen eine Notiz."</string>
     <string name="quest_recycling_type_batteries">"Batterien"</string>
     <string name="quest_recycling_type_cans">"Blechdosen"</string>
-    <string name="quest_recycling_type_clothes">"Kleider"</string>
+    <string name="quest_recycling_type_clothes">"Kleidung"</string>
     <string name="quest_recycling_type_green_waste">"Gartenabfälle"</string>
     <string name="quest_recycling_type_glass_bottles">"Glasflaschen und -gläser"</string>
     <string name="quest_recycling_type_glass_bottles_short">"Flaschen und Gläser"</string>
@@ -719,4 +719,9 @@ Jetzt aufspalten?"</string>
     <string name="quest_determineRecyclingGlass_description_any_glass">"Beispiele von Glas das oft nicht akzeptiert wird: Sicherheitsglas, Fensterglas, Glasgeschirr, Glühbirnen oder Spiegel."</string>
     <string name="about_title_changelog">"Versionshistorie"</string>
     <string name="title_whats_new">"Was ist neu?"</string>
+    <string name="about_title_rate">"Diese App bewerten"</string>
+    <string name="about_summary_rate">"auf Google Play"</string>
+    <string name="about_title_donate">"Spenden"</string>
+    <string name="about_summary_donate">"Zeige dich erkenntlich! ❤️"</string>
+    <string name="about_description_donate">"Danke dass du erwägst, diese App zu unterstützen! Um die laufenden Spenden zu sehen, oder selbst zu spenden, tippe auf die jeweilige Plattform:"</string>
 </resources>
