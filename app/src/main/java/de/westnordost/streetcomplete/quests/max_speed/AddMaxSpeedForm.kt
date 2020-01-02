@@ -198,8 +198,9 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
 
     private fun determineImplicitMaxspeedType() {
         val highwayTag = osmElement!!.tags["highway"]!!
-        if (ROADS_WITH_DEFINITE_SPEED_LIMIT.contains(highwayTag)) {
-            applyNoSignAnswer(highwayTag)
+        val highwayType = ROADS_WITH_DEFINITE_SPEED_LIMIT[highwayTag]
+        if (highwayType != null) {
+            applyNoSignAnswer(highwayType)
         } else {
             if (countryInfo.countryCode == "GB") {
                 determineLit(
@@ -265,7 +266,13 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
     companion object {
         private val POSSIBLY_SLOWZONE_ROADS = listOf("residential", "unclassified", "tertiary" /*#1133*/)
         private val MAYBE_LIVING_STREET = listOf("residential", "unclassified")
-        private val ROADS_WITH_DEFINITE_SPEED_LIMIT = listOf("trunk", "motorway", "living_street")
+        private val ROADS_WITH_DEFINITE_SPEED_LIMIT = mapOf(
+                "trunk" to "trunk",
+                "trunk_link" to "trunk",
+                "motorway" to "motorway",
+                "motorway_link" to "motorway",
+                "living_street" to "living_street"
+        )
     }
 }
 
