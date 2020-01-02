@@ -1,9 +1,11 @@
-v16.0-beta1: |
+v16.0: |
   <h3>New Features</h3>
   <ul>
   <li>📰 You now see this changelog in the app after each app update and in the about menu</li>
   <li>❤️ You can now sponsor the development of this app on <a href="https://github.com/sponsors/westnordost">GitHub Sponsors</a>, <a href="https://liberapay.com/westnordost">liberapay</a> or <a href="https://www.patreon.com/westnordost">Patreon</a>. Thanks to anyone considering it!</li>
   </ul>
+  <h3>New Translation</h3>
+  <p>Vietnamese by Minh Nguyễn</p>
   <h3>New Quests</h3>
   <ul>
   <li>What is the reference number of this postbox? (<a href="https://github.com/westnordost/StreetComplete/issues/1556">#1556</a>, <a href="https://github.com/westnordost/StreetComplete/pull/1628">#1628</a>)</li>
@@ -27,7 +29,11 @@ v16.0-beta1: |
   <li>fix strange behavior in auto download of quests</li>
   <li>try again later if the upload of attached photos to a note failed (<a href="https://github.com/westnordost/StreetComplete/issues/1575">#1575</a>)</li>
   <li>indicate the user's locale for each changeset (<a href="https://github.com/westnordost/StreetComplete/issues/1674">#1674</a>)</li>
+  <li>Add rate this app on Google Play button in the about menu</li>
+  <li>Add donate to this app button in the about menu</li>
   </ul>
+  <h3>Fixes</h3>
+  <ul>Maxspeed quest: Tag motorway and trunk link implicit speed limits correctly</ul>
 
 v15.0: |
   <h3>New Translation</h3>
