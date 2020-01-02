@@ -306,10 +306,6 @@
             "name": "Speelhal",
             "terms": "lunapark"
         },
-        "craft/pottery": {
-            "name": "Pottenbakkerij",
-            "terms": "pottendraaierij,pottenmakerij"
-        },
         "craft/roofer": {
             "name": "Dakwerker",
             "terms": "dakwerker"
@@ -429,9 +425,6 @@
         "leisure/pitch/soccer": {
             "name": "Voetbalveld",
             "terms": "voetbalveld,voetbalterrein"
-        },
-        "natural/water/river": {
-            "name": "Rivier"
         },
         "type/multipolygon": {
             "name": "Meervoudige polygoon"
@@ -927,9 +920,6 @@
         "shop/fashion": {
             "name": "Modewinkel"
         },
-        "natural/water/canal": {
-            "name": "Kanaal"
-        },
         "power/substation": {
             "name": "Transformatiestation",
             "terms": "stroom,elektriciteit,energievoorzieningen,transformator,distributie,transformatiecabine,laagspanning,hoogspanning,voltage,spanning,onderstation,klein onderstation,distributiecabine,ondercentrale"
@@ -1014,9 +1004,6 @@
         },
         "highway/footway/unmarked-raised": {
             "name": "Ongemarkeerde oversteekplaats (op drempel)"
-        },
-        "craft/jeweler": {
-            "name": "Juwelier"
         },
         "landuse/industrial/slaughterhouse": {
             "name": "Slachthuis",
@@ -1151,9 +1138,6 @@
         "highway/footway/marked-raised": {
             "name": "Voetgangersoversteekplaats (op drempel)"
         },
-        "man_made/tunnel": {
-            "name": "Tunnel"
-        },
         "public_transport/stop_position_aerialway": {
             "name": "Kabelbaanstopplaats"
         },
@@ -1163,6 +1147,9 @@
         "tourism/artwork/mural": {
             "name": "Muurschildering",
             "terms": "fresco"
+        },
+        "network/type/node_network": {
+            "name": "Knooppunt van recreatief netwerk"
         },
         "man_made/chimney": {
             "name": "Industriële schoorsteen",
@@ -1229,10 +1216,6 @@
             "name": "Verbindingsweg van autosnelweg",
             "terms": "autostrade,snelweg,autosnelweg,link,invoegstrook,afslag"
         },
-        "amenity/car_pooling": {
-            "name": "Oppikplaats voor carpooling",
-            "terms": "carpooling,samenrijden,afzetplaats voor samenrijden,oppikplaats voor carpooling,carpoolparking,carpoolstopplaats"
-        },
         "place/isolated_dwelling": {
             "name": "Alleenstaande woning"
         },
@@ -1247,9 +1230,6 @@
         "craft/photographer": {
             "name": "Fotograaf",
             "terms": "portetten,pasfoto's,fotografie,fotokunstenaar"
-        },
-        "junction/circular": {
-            "name": "Rotonde, verkeer erop niet steeds voorrang"
         },
         "public_transport/platform/bus_point": {
             "name": "Bushalte"
@@ -1282,13 +1262,6 @@
         "man_made/observatory": {
             "name": "Observatorium",
             "terms": "sterrenwacht,astronomisch observatorium,meteorologisch observatorium"
-        },
-        "junction/jughandle": {
-            "name": "Jughandle"
-        },
-        "attraction/pirate_ship": {
-            "name": "Piratenschip",
-            "terms": "piratenboot"
         },
         "healthcare/alternative/chiropractic": {
             "name": "Chiropractor",
@@ -1354,9 +1327,6 @@
         "shop/electronics": {
             "name": "Huishoudtoestellen-/Witgoedwinkel",
             "terms": "huishoudelektro,witgoed,elektro,electro,wasmachine,keuken,vaatwasmachine,afwasmachine"
-        },
-        "waterway": {
-            "name": "Waterloop"
         },
         "amenity/clinic": {
             "name": "Dagkliniek",
@@ -1541,10 +1511,6 @@
             "name": "Bouwmarkt",
             "terms": "bouwcentrum,bouwmaterialenspeciaalzaak"
         },
-        "amenity/car_sharing": {
-            "name": "Autodelen",
-            "terms": "gedeelde auto"
-        },
         "shop/funeral_directors": {
             "name": "Begrafenisondernemer",
             "terms": "rouwcentrum"
@@ -1583,9 +1549,6 @@
             "name": "Veerbootstopplaats",
             "terms": "ferrystopplaats,veerbootaanmeerplaats,ferryaanmeerplaats,aanmeerplaats"
         },
-        "tourism": {
-            "name": "Toerisme"
-        },
         "traffic_sign": {
             "name": "Verkeersbord"
         },
@@ -1618,9 +1581,6 @@
         "amenity/parking_entrance": {
             "name": "Ingang/Uitgang van parkeergelegenheid",
             "terms": "inrit,uitrit"
-        },
-        "landuse": {
-            "name": "Landgebruik"
         },
         "waterway/riverbank": {
             "name": "Rivieroever"
@@ -1750,10 +1710,6 @@
         "craft/electrician": {
             "name": "Elektricien",
             "terms": "monteur,elektriciteit,installatie,stielman,elektrisch"
-        },
-        "attraction/drop_tower": {
-            "name": "Valtoren",
-            "terms": "valattractie,grote val"
         },
         "historic/archaeological_site": {
             "name": "Archeologische opgraving",
@@ -1987,10 +1943,6 @@
             "name": "Hardloopbaan",
             "terms": "hardlooppiste,looppiste,atletiekpiste"
         },
-        "aerialway/t-bar": {
-            "name": "Skilift met handvaten",
-            "terms": "T-bar,skilift"
-        },
         "historic/boundary_stone": {
             "name": "Historische grenspaal",
             "terms": "grenssteen"
@@ -2030,9 +1982,6 @@
             "name": "Beek",
             "terms": "stroom,rivier"
         },
-        "railway": {
-            "name": "Spoorweg"
-        },
         "building/university": {
             "name": "Gebouw van universiteit of hogeschool",
             "terms": "universiteit,hogeschool,onderwijs,hoger onderwijs"
@@ -2068,10 +2017,6 @@
             "name": "Copyshop",
             "terms": "kopieshop,kopieerwinkel"
         },
-        "leisure/firepit": {
-            "name": "Kampvuur",
-            "terms": "vuurplaats"
-        },
         "public_transport/station_ferry": {
             "name": "Veerbootstation",
             "terms": "ferrystation"
@@ -2079,10 +2024,6 @@
         "leisure/pitch/baseball": {
             "name": "Honkbalveld",
             "terms": "baseballveld,baseballterrein"
-        },
-        "man_made/bridge": {
-            "name": "Brug",
-            "terms": "tunnel,overspanning,brugomtrek,brugoppervlak"
         },
         "railway/monorail": {
             "name": "Monorail",
@@ -2313,9 +2254,6 @@
         "waterway/fuel": {
             "name": "Maritiem tankstation",
             "terms": "schip,brandstof"
-        },
-        "highway": {
-            "name": "Weg"
         },
         "shop/pastry": {
             "name": "Fijnbakkerij",
@@ -2674,9 +2612,6 @@
         "public_transport/station_trolleybus": {
             "name": "Trolleybusstation"
         },
-        "leisure": {
-            "name": "Vrije tijd"
-        },
         "amenity/post_office": {
             "name": "Postkantoor",
             "terms": "postbus,brievenbus,bpost,posterijen,postnl"
@@ -2737,10 +2672,6 @@
         },
         "shop/boutique": {
             "name": "Boetiek"
-        },
-        "area/highway": {
-            "name": "Wegdek",
-            "terms": "rand van weg,gebied,wegoppervlak"
         },
         "amenity/vending_machine/parcel_pickup_dropoff": {
             "name": "Pakketautomaat",
@@ -2969,9 +2900,6 @@
         "man_made/survey_point": {
             "name": "Landmeetkundig referentiepunt",
             "terms": "geodesisch punt,geodesisch referentiepunt"
-        },
-        "junction/roundabout": {
-            "name": "Rotonde"
         },
         "type/route/power": {
             "name": "Elektriciteitsleidingstraject",
@@ -3270,9 +3198,6 @@
             "name": "Taxibaan",
             "terms": "taxiën"
         },
-        "craft/optician": {
-            "name": "Opticien"
-        },
         "seamark/beacon_isolated_danger": {
             "name": "Gevaarsbaken"
         },
@@ -3482,9 +3407,6 @@
             "name": "Bustraject",
             "terms": "busroute,buslijn,lijn"
         },
-        "natural/water/stream": {
-            "name": "Stroom"
-        },
         "type/route_master": {
             "name": "Openbaarvervoerstraject",
             "terms": "lijn,buslijn,tramlijn,metrolijn,treintraject,treinlijn"
@@ -3494,10 +3416,6 @@
         },
         "place/city_block": {
             "name": "Huizenblok"
-        },
-        "natural/wood": {
-            "name": "Bos",
-            "terms": "bomen,oerbos,oerwoud,woud"
         },
         "amenity/restaurant/chinese": {
             "name": "Chinees restaurant"
@@ -3586,9 +3504,6 @@
             "name": "Bergkam",
             "terms": "kam,bergtop,top"
         },
-        "natural": {
-            "name": "Natuurlijk"
-        },
         "aerialway/magic_carpet": {
             "name": "Tapijtlift",
             "terms": "skilift"
@@ -3614,10 +3529,6 @@
         "man_made/mast": {
             "name": "Mast",
             "terms": "zendmast,antenne,zendtoren,gsm-mast,toren,communicatiemast,radiomast,tv-mast"
-        },
-        "attraction/river_rafting": {
-            "name": "Wildwaterbaan",
-            "terms": "rivierraftride,boomstammetjes,rapid river,shoot-the-chute,spillwater,river splash,splash"
         },
         "amenity/payment_terminal": {
             "name": "Betalingsterminal"
@@ -3719,15 +3630,9 @@
         "place": {
             "name": "Plaats"
         },
-        "power": {
-            "name": "Stroomvoorziening"
-        },
         "leisure/fitness_station/push-up": {
             "name": "Push-upstation",
             "terms": "push-upstang,push-upbalk,push-upstang,fitness"
-        },
-        "aerialway/station": {
-            "name": "Kabelbaanstation"
         },
         "building/house": {
             "name": "Huis",
@@ -3972,9 +3877,6 @@
         "tourism/attraction": {
             "name": "Toeristische attractie",
             "terms": "bezienswaardigheid,toeristische trekpleister,trekpleister"
-        },
-        "man_made": {
-            "name": "Aangelegd"
         },
         "barrier/kerb/lowered": {
             "name": "Verlaagde stoeprand",

@@ -37,9 +37,6 @@
             "name": "Fluviu",
             "terms": "q"
         },
-        "railway": {
-            "name": "Cale Ferată"
-        },
         "building/university": {
             "name": "Universitate"
         },
@@ -66,9 +63,6 @@
         },
         "building/terrace": {
             "name": "Case în Rând"
-        },
-        "man_made/bridge": {
-            "name": "Pod"
         },
         "railway/monorail": {
             "name": "Monoșină"
@@ -249,9 +243,6 @@
         },
         "club": {
             "name": "Club"
-        },
-        "highway": {
-            "name": "Autostradă"
         },
         "shop/massage": {
             "name": "Masaj"
@@ -781,9 +772,6 @@
         "office/travel_agent": {
             "name": "Agenție de Călătorii"
         },
-        "craft/jeweler": {
-            "name": "Giuvaer"
-        },
         "office/telecommunication": {
             "name": "Oficiu Telecom"
         },
@@ -904,9 +892,6 @@
         "type/boundary": {
             "name": "Graniță"
         },
-        "craft/optician": {
-            "name": "Optician"
-        },
         "waterway/waterfall": {
             "name": "Cascadă"
         },
@@ -1024,9 +1009,6 @@
         "shop/electronics": {
             "name": "Magazin de Electronice"
         },
-        "waterway": {
-            "name": "Drum Marin"
-        },
         "amenity/clinic": {
             "name": "Clinică"
         },
@@ -1047,9 +1029,6 @@
         },
         "amenity/crematorium": {
             "name": "Crematoriu"
-        },
-        "natural/wood": {
-            "name": "Pădure"
         },
         "building/construction": {
             "name": "Clădire în Construcție"
@@ -1105,9 +1084,6 @@
         "natural/ridge": {
             "name": "Creastă"
         },
-        "natural": {
-            "name": "Natural"
-        },
         "landuse/military/training_area": {
             "name": "Zonă de Training"
         },
@@ -1137,9 +1113,6 @@
         },
         "highway/cycleway": {
             "name": "Pistă biciclete"
-        },
-        "amenity/car_sharing": {
-            "name": "Car Sharing"
         },
         "leisure/nature_reserve": {
             "name": "Rezervat Natural"
@@ -1180,9 +1153,6 @@
         "shop/e-cigarette": {
             "name": "Magazin de Țigarete Electrice"
         },
-        "tourism": {
-            "name": "Turism"
-        },
         "amenity/public_bath": {
             "name": "Baie Publică"
         },
@@ -1210,9 +1180,6 @@
         "amenity/parking_entrance": {
             "name": "Intrare/Ieșire Garaj"
         },
-        "landuse": {
-            "name": "Utilizare Teren"
-        },
         "shop/gift": {
             "name": "Magazin de Cadouri"
         },
@@ -1224,9 +1191,6 @@
         },
         "place": {
             "name": "Loc"
-        },
-        "power": {
-            "name": "Energie"
         },
         "shop/music": {
             "name": "Magazin de Muzică"

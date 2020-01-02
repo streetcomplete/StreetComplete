@@ -45,9 +45,6 @@
         "waterway/stream": {
             "name": "Aliran"
         },
-        "railway": {
-            "name": "Jalur Rel"
-        },
         "building/university": {
             "name": "Bangunan Universitas",
             "terms": "Universitas, Kampus"
@@ -78,9 +75,6 @@
         },
         "natural/bay": {
             "name": "Teluk"
-        },
-        "leisure/firepit": {
-            "name": "Api Unggun"
         },
         "aeroway/runway": {
             "name": "Landas pacu"
@@ -241,15 +235,8 @@
         "place/hamlet": {
             "name": "Dusun"
         },
-        "craft/pottery": {
-            "name": "Tembikar",
-            "terms": "Tanah Liat"
-        },
         "craft/roofer": {
             "name": "Tukang Atap"
-        },
-        "highway": {
-            "name": "Jalan Raya"
         },
         "shop/massage": {
             "name": "Panti Pijat"
@@ -497,9 +484,6 @@
         "shop/tyres": {
             "name": "Toko Ban"
         },
-        "leisure": {
-            "name": "Rekreasi"
-        },
         "amenity/post_office": {
             "name": "Kantor Pos",
             "terms": "Surat"
@@ -535,9 +519,6 @@
         "shop/curtain": {
             "name": "Toko Gorden",
             "terms": "Toko Tirai"
-        },
-        "area/highway": {
-            "name": "Permukaan Jalan"
         },
         "leisure/pitch/tennis": {
             "name": "Lapangan Tenis",
@@ -786,9 +767,6 @@
         "office/travel_agent": {
             "name": "Biro Perjalanan"
         },
-        "craft/jeweler": {
-            "name": "Berlian"
-        },
         "office/telecommunication": {
             "name": "Kantor Telekomunikasi"
         },
@@ -1020,9 +998,6 @@
         "shop/electronics": {
             "name": "Toko Elektronik"
         },
-        "waterway": {
-            "name": "Jalur Air"
-        },
         "amenity/clinic": {
             "name": "Klinik"
         },
@@ -1039,9 +1014,6 @@
         },
         "landuse/farm": {
             "name": "Pertanian"
-        },
-        "natural/wood": {
-            "name": "Hutan"
         },
         "amenity/waste_basket": {
             "name": "Tong Sampah"
@@ -1104,9 +1076,6 @@
         },
         "tourism/information": {
             "name": "Informasi"
-        },
-        "natural": {
-            "name": "Alami"
         },
         "natural/water/lake": {
             "name": "Danau",
@@ -1182,9 +1151,6 @@
             "name": "Putaran",
             "terms": "Putar Balik"
         },
-        "tourism": {
-            "name": "Pariwisata"
-        },
         "amenity/car_wash": {
             "name": "Pencucian Mobil",
             "terms": "Cuci Mobil"
@@ -1209,9 +1175,6 @@
         "amenity/parking_entrance": {
             "name": "Pintu Masuk/Keluar Area Parkir"
         },
-        "landuse": {
-            "name": "Guna Lahan"
-        },
         "shop/gift": {
             "name": "Toko Hadiah",
             "terms": "Suvenir, Cenderamata, Cinderamata"
@@ -1224,9 +1187,6 @@
         },
         "place": {
             "name": "Tempat"
-        },
-        "power": {
-            "name": "Listrik"
         },
         "shop/music": {
             "name": "Toko Musik"
@@ -1461,9 +1421,6 @@
         },
         "amenity/register_office": {
             "name": "Dinas Catatan Sipil"
-        },
-        "man_made": {
-            "name": "Buatan manusia"
         },
         "golf/fairway": {
             "name": "Jalan damai"

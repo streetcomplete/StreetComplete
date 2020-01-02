@@ -30,9 +30,6 @@
         "office/notary": {
             "name": "Pejabat Penyaksi Awam"
         },
-        "railway": {
-            "name": "Jalan Kereta Api"
-        },
         "building/university": {
             "name": "Bangunan Universiti"
         },
@@ -295,9 +292,6 @@
         "shop/electronics": {
             "name": "Kedai Elektronik"
         },
-        "waterway": {
-            "name": "Jalan Air"
-        },
         "amenity/place_of_worship/buddhist": {
             "name": "Tokong Buddha"
         },
@@ -381,9 +375,6 @@
             "name": "Kedai Rokok Elektronik",
             "terms": "Kedai E-Rokok, Vape"
         },
-        "tourism": {
-            "name": "Pelancongan"
-        },
         "building/residential": {
             "name": "Bangunan Kediaman"
         },
@@ -398,9 +389,6 @@
         },
         "place": {
             "name": "Tempat"
-        },
-        "power": {
-            "name": "Tenaga Elektrik"
         },
         "shop/music": {
             "name": "Kedai Muzik"
@@ -444,9 +432,6 @@
         },
         "railway/narrow_gauge": {
             "name": "Rel Landasan Sempit"
-        },
-        "area/highway": {
-            "name": "Permukaaan Jalan"
         },
         "waterway/river": {
             "name": "Sungai"

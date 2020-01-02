@@ -1,10 +1,34 @@
 {
     "presets": {
-        "area": {
-            "name": "एरिया"
-        },
         "landuse/grass": {
             "name": "घास"
+        },
+        "shop": {
+            "name": "दुकान"
+        },
+        "line": {
+            "name": "रेखा"
+        },
+        "amenity/drinking_water": {
+            "name": "पीने का पानी"
+        },
+        "building/hut": {
+            "name": "झोपड़ी"
+        },
+        "point": {
+            "name": "बिंदु"
+        },
+        "waterway/waterfall": {
+            "name": "झरना"
+        },
+        "natural/water/pond": {
+            "name": "तलाब"
+        },
+        "natural/water": {
+            "name": "पानी"
+        },
+        "area": {
+            "name": "एरिया"
         },
         "natural/tree": {
             "name": "पेड़"
@@ -15,11 +39,8 @@
         "address": {
             "name": "पता"
         },
-        "line": {
-            "name": "रेखा"
-        },
-        "amenity/drinking_water": {
-            "name": "पीने का पानी"
+        "shop/books": {
+            "name": "किताबों की दुकान"
         },
         "craft/tailor": {
             "name": "दऱजी"
@@ -27,26 +48,11 @@
         "natural/water/lake": {
             "name": "झील"
         },
-        "building/hut": {
-            "name": "झोपड़ी"
-        },
         "golf/rough": {
             "name": "खुरदुरा"
         },
-        "point": {
-            "name": "बिंदु"
-        },
         "amenity/clock": {
             "name": "घडी"
-        },
-        "waterway/waterfall": {
-            "name": "झरना"
-        },
-        "natural/water/pond": {
-            "name": "तलाब"
-        },
-        "natural/water": {
-            "name": "पानी"
         },
         "tourism/zoo": {
             "name": "चिड़िया घर"

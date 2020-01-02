@@ -23,11 +23,14 @@
             "terms": "μοδίστρα, μόδιστρος, ράφτης, ράπτης, σχεδιάστρια μόδας, σχεδιαστής μόδας, μοντελίστ, ενδυματοποιός, ρούχα, φορέματα"
         },
         "barrier/lift_gate": {
-            "name": "Ανυψούμενη Πύλη",
+            "name": "Ανυψούμενη Μπάρα",
             "terms": "Μπάρα, Αναρτούμενη πύλη"
         },
         "railway/halt": {
             "name": "Σιδηροδρομικός Σταθμός ( Σε Παραγγελία Στάσης )"
+        },
+        "amenity/vending_machine/eggs": {
+            "name": "Αυτόματος Πωλητής Αυγών"
         },
         "shop/agrarian": {
             "name": "Προμήθειες Φάρμας"
@@ -142,7 +145,7 @@
             "terms": "μαραγκός, ξυλουργός"
         },
         "railway/level_crossing": {
-            "name": "Ισόπεδη Σιδηροδρομική Διάβαση (Οχημάτων)"
+            "name": "Ισόπεδη Σιδηροδρομική Διάβαση (Δρόμου)"
         },
         "amenity/restaurant/greek": {
             "name": "Ελληνικό Εστιατόριο"
@@ -159,6 +162,9 @@
         },
         "shop/farm": {
             "name": "Πάγκος Παραγωγής"
+        },
+        "aeroway/spaceport": {
+            "name": "Διαστημοδρόμιο"
         },
         "waterway/stream_intermittent": {
             "name": "Διαλείπουσα Ροή"
@@ -178,7 +184,7 @@
             "terms": "Οπωροπώλης, Μανάβης, μανάβικο, φρούτα, λαχανικά"
         },
         "highway/traffic_mirror": {
-            "name": "Οδικός Καθρέπτης"
+            "name": "Κυρτοί Καθρέπτες Δρόμου"
         },
         "railway/station": {
             "name": "Σταθμός Τρένου δίπλα στη διαδρομή"
@@ -205,10 +211,13 @@
             "name": "Γραφείο Οικονομικών"
         },
         "highway/track": {
-            "name": "Ανώμαλη Χωμάτινη Διαδρομή"
+            "name": "Αγροτικός Δρόμος"
         },
         "shop/wine": {
             "name": "Κάβα Κρασιών"
+        },
+        "demolished/building": {
+            "name": "Προσφάτως Κατεδαφισμένο Κτίριο"
         },
         "shop/hairdresser": {
             "name": "Κομμωτήριο",
@@ -253,9 +262,6 @@
         "leisure/amusement_arcade": {
             "name": "Αίθουσα Ψυχαγωγίας"
         },
-        "craft/pottery": {
-            "name": "Αγγειοπλάστης"
-        },
         "craft/roofer": {
             "name": "Στεγαστής"
         },
@@ -275,6 +281,12 @@
         "landuse/landfill": {
             "name": "Χωματερή",
             "terms": "Χωματερή, Σκουπιδότοπος, Σκουπιδαριό"
+        },
+        "shop/military_surplus": {
+            "name": "Κατάστημα Στρατιωτικού Εξοπλισμού"
+        },
+        "historic/castle/palace": {
+            "name": "Παλάτι"
         },
         "tourism/aquarium": {
             "name": "Ενυδρείο"
@@ -320,6 +332,9 @@
             "name": "Πάρκο τροχόσπιτων",
             "terms": "Πάρκο τροχόσπιτων"
         },
+        "natural/valley": {
+            "name": "Κοιλάδα"
+        },
         "craft/clockmaker": {
             "name": "Ωρολογοποιός",
             "terms": "ρολογάς"
@@ -329,6 +344,9 @@
         },
         "shop/furniture": {
             "name": "Κατάστημα Επίπλων"
+        },
+        "disused/railway": {
+            "name": "Στοιχεία Αχρηστευμένου Σιδηρόδρομου"
         },
         "advertising/billboard": {
             "name": "Πινακίδα"
@@ -351,9 +369,6 @@
             "name": "Γήπεδο Ποδοσφαίρου",
             "terms": "Γήπεδο ποδοσφαίρου"
         },
-        "natural/water/river": {
-            "name": "Ποτάμι"
-        },
         "type/multipolygon": {
             "name": "Πολύ-Πολύγωνο"
         },
@@ -371,6 +386,9 @@
         },
         "amenity/vending_machine/ice_cream": {
             "name": "Αυτόματος Πωλητής Παγωτού"
+        },
+        "man_made/tower/defensive": {
+            "name": "Οχυρωμένος Πύργος"
         },
         "amenity/hospital": {
             "name": "Χώρος Νοσοκομείου"
@@ -398,12 +416,15 @@
             "name": "Κάμερα Παρακολούθησης Ταχύτητας",
             "terms": "Κάμερα Ορίου Ταχύτητας, Κάμερα επιτήρησης/ελέγχου Ορίου Ταχύτητας,"
         },
+        "amenity/studio/radio": {
+            "name": "Ραδιοφωνικός Σταθμός"
+        },
         "amenity/drinking_water": {
             "name": "Πόσιμο Νερό",
             "terms": "Πόσιμο νερό, Βρύση, Ψύκτης, Ψύκτης Νερού, Πηγή, Κρήνη"
         },
         "amenity/pharmacy": {
-            "name": "Πάγκος Φαρμακείου"
+            "name": "Γκισέ Φαρμακείου"
         },
         "barrier/kissing_gate": {
             "name": "Πόρτα Παγίδευσης"
@@ -446,11 +467,14 @@
             "name": "Κατάστημα Αθλητικών Ειδών",
             "terms": "Κατάστημα αθλητικών ειδών"
         },
+        "office/diplomatic/consulate": {
+            "name": "Προξενείο"
+        },
         "amenity/vending_machine/elongated_coin": {
             "name": "Αυτόματης Πωλητής με Κέρματα"
         },
         "type/waterway": {
-            "name": "Υδάτινος Δρόμος"
+            "name": "Διαδρομή του Νερού"
         },
         "emergency/destination": {
             "name": "Προορισμός Επείγουσας Πρόσβασης"
@@ -530,7 +554,7 @@
             "name": "Ιστός Κινητής Τηλεφωνίας"
         },
         "traffic_calming/island": {
-            "name": "Νησίδα Κυκλοφορίας"
+            "name": "Νησίδα Δρόμου"
         },
         "playground/cushion": {
             "name": "Φουσκωτές Εγκαταστάσεις"
@@ -565,12 +589,21 @@
         "amenity/coworking_space": {
             "name": "Χώρος Συνεργατών"
         },
+        "natural/water/wastewater": {
+            "name": "Δεξαμενή Λυμάτων"
+        },
         "tourism/museum": {
             "name": "Μουσείο",
             "terms": "Μουσείο"
         },
         "railway/buffer_stop": {
             "name": "Ταμπονιέρα"
+        },
+        "leisure/escape_game": {
+            "name": "Δωμάτιο Απόδρασης"
+        },
+        "aerialway/pylon": {
+            "name": "Πυλώνας Τελεφερίκ"
         },
         "craft/chimney_sweeper": {
             "name": "Καπνοδοχοκαθαριστής"
@@ -634,6 +667,9 @@
         "emergency/fire_alarm": {
             "name": "Πυροσβεστικός Συναγερμός"
         },
+        "shop/clothes/underwear": {
+            "name": "Κατάστημα Εσωρούχων"
+        },
         "amenity/place_of_worship/jewish": {
             "name": "Εβραϊκή Συναγωγή"
         },
@@ -680,14 +716,23 @@
         "amenity/social_facility/food_bank": {
             "name": "Τράπεζα Τροφίμων"
         },
+        "amenity/vending_machine/bread": {
+            "name": "Αυτόματος Πωλητής Ψωμιού"
+        },
         "boundary": {
             "name": "Οριο"
         },
         "shop/nutrition_supplements": {
             "name": "Κατάστημα με Συμπληρώματα Διατροφής"
         },
+        "amenity/studio/video": {
+            "name": "Κινηματογραφικό Studio"
+        },
         "craft/gardener": {
             "name": "Κηπουρός"
+        },
+        "indoor/stairs": {
+            "name": "Εσωτερική Σκάλα"
         },
         "building/church": {
             "name": "Κτίριο Εκκλησίας",
@@ -719,6 +764,9 @@
         "natural/wetland": {
             "name": "Έλος",
             "terms": "Υγρότοπος"
+        },
+        "leisure/track/cycling_point": {
+            "name": "Ποδηλατική Πίστα"
         },
         "landuse/military/naval_base": {
             "name": "Ναυτική Βάση",
@@ -764,9 +812,6 @@
         "shop/fashion": {
             "name": "Κατάστημα Μόδας"
         },
-        "natural/water/canal": {
-            "name": "Κανάλι"
-        },
         "power/substation": {
             "name": "Υποσταθμός"
         },
@@ -789,6 +834,9 @@
         "tourism/motel": {
             "name": "Μοτέλ",
             "terms": "Πανδοχείο, Χάνι"
+        },
+        "amenity/vending_machine/bottle_return": {
+            "name": "Μηχανή Επιστροφής Φιαλών"
         },
         "building/cathedral": {
             "name": "Κτίριο Καθεδρικού",
@@ -839,10 +887,13 @@
             "name": "Κατηφορική Πίστα / Πίστα Σκι"
         },
         "highway/footway/unmarked-raised": {
-            "name": "Μη Επισημασμένη Διασταύρωση (Υπερυψωμένη)"
+            "name": "Μη Επισημασμένη Διάβαση (Υπερυψωμένη)"
         },
-        "craft/jeweler": {
-            "name": "Κοσμηματοπώλης"
+        "indoor/door": {
+            "name": "Εσωτερική Πόρτα"
+        },
+        "amenity/toy_library": {
+            "name": "Βιβλιοθήκη Παιγνίων"
         },
         "landuse/industrial/slaughterhouse": {
             "name": "Σφαγείο"
@@ -864,7 +915,7 @@
             "name": "Γήπεδο Netball"
         },
         "waterway/water_point": {
-            "name": "Θαλάσσιο Πόσιμο Νερό"
+            "name": "Πόσιμο Νερό"
         },
         "shop/garden_centre": {
             "name": "Κέντρο Κήπου",
@@ -900,7 +951,7 @@
             "name": "Κεραία"
         },
         "waterway/canal": {
-            "name": "Πλωτό Κανάλι",
+            "name": "Κανάλι Νερού",
             "terms": "Κανάλι"
         },
         "leisure/common": {
@@ -944,6 +995,9 @@
         "amenity/fast_food/chicken": {
             "name": "Ταχυφαγείο για Κοτόπουλο"
         },
+        "man_made/pipeline/valve": {
+            "name": "Βαλβίδα Σωλήνα"
+        },
         "playground/slide": {
             "name": "Τσουλίθρα"
         },
@@ -956,14 +1010,20 @@
         "highway/footway/marked-raised": {
             "name": "Διάβαση Πεζών (Υπερυψωμένη)"
         },
+        "man_made/tunnel": {
+            "name": "Περιοχή Σήραγγας"
+        },
         "public_transport/stop_position_aerialway": {
-            "name": "Τοποθεσία Στάσης Αεροσκαφών"
+            "name": "Τοποθεσία Στάθμευσης Τελεφερίκ"
         },
         "playground/climbing_frame": {
             "name": "Αναρρίχηση"
         },
         "tourism/artwork/mural": {
             "name": "Τοιχογραφία"
+        },
+        "highway/raceway/motocross": {
+            "name": "Πίστα Motocross"
         },
         "man_made/chimney": {
             "name": "Καμινάδα",
@@ -979,6 +1039,9 @@
         },
         "craft/insulator": {
             "name": "Απομονωτήρας"
+        },
+        "man_made/water_tap": {
+            "name": "Τάπα Νερού"
         },
         "shop/herbalist": {
             "name": "Βοτανολόγος"
@@ -1024,8 +1087,8 @@
         "highway/motorway_link": {
             "name": "Σύνδεση Αυτοκινητόδρομου"
         },
-        "amenity/car_pooling": {
-            "name": "Συγκέντρωση αυτοκινήτων"
+        "highway/crossing": {
+            "name": "Διασταύρωση"
         },
         "place/isolated_dwelling": {
             "name": "Απομονωμένες Κατοικίες"
@@ -1070,11 +1133,14 @@
         "man_made/observatory": {
             "name": "Παρατηρητήριο"
         },
-        "attraction/pirate_ship": {
-            "name": "Πειρατικό Πλοίο"
+        "shop/printer_ink": {
+            "name": "Κατάστημα για Μελάνια Εκτυπωτών"
         },
         "healthcare/alternative/chiropractic": {
             "name": "Χειροπράκτορας"
+        },
+        "amenity/townhall/city": {
+            "name": "Δημαρχείο"
         },
         "attraction/summer_toboggan": {
             "name": "Καλοκαιρινό Έλκυθρο"
@@ -1125,7 +1191,7 @@
             "terms": "Κατάστημα ηλεκτρονικών"
         },
         "waterway": {
-            "name": "Υδάτινος Δρόμος"
+            "name": "Διαδρομή Νερού"
         },
         "amenity/clinic": {
             "name": "Κλινική"
@@ -1162,10 +1228,13 @@
             "terms": "Κτήριο Υπό Κατασκευή, οικοδομή"
         },
         "highway/unclassified": {
-            "name": "Δρόμος σε μη κατοικημένη περιοχή"
+            "name": "Απλός Δρόμος"
         },
         "office/charity": {
             "name": "Γραφείο Φιλανθρωπίας"
+        },
+        "landuse/winter_sports": {
+            "name": "Περιοχή Χειμερινών Αθλημάτων"
         },
         "office/foundation": {
             "name": "Γραφείο Ιδρύματος"
@@ -1205,6 +1274,9 @@
         "place/town": {
             "name": "Κωμόπολη",
             "terms": "Κωμόπολη"
+        },
+        "man_made/obelisk": {
+            "name": "Οβελίσκος"
         },
         "highway/tertiary_link": {
             "name": "Σύνδεση Τοπικού Δρόμου",
@@ -1277,10 +1349,6 @@
             "name": "Χρωματοπωλείο",
             "terms": "Κατάστημα τεχνικού εξοπλισμού, Σιδηροπωλείο, υδραυλικά, χρώματα, σιδηρικά"
         },
-        "amenity/car_sharing": {
-            "name": "Συνεπιβατισμός",
-            "terms": "Διαμοιρασμός αυτοκινήτων, συνεπιβατισμός, συνοδήγηση"
-        },
         "shop/funeral_directors": {
             "name": "Γραφείο Τελετών",
             "terms": "Γραφείο κηδειών"
@@ -1313,14 +1381,14 @@
         "emergency/no": {
             "name": "Πρόσβαση Εκτάκτου Ανάγκης Όχι"
         },
+        "man_made/manhole/drain": {
+            "name": "Υπόνομος Ομβρίων Υδάτων"
+        },
         "public_transport/stop_position_ferry": {
             "name": "Τοποθεσία Στάσης Ferry Boat"
         },
-        "tourism": {
-            "name": "Τουρισμός"
-        },
         "traffic_sign": {
-            "name": "Σήμανση Κυκλοφορίας"
+            "name": "Πινακίδα Σήμανσης ΚΟΚ"
         },
         "amenity/public_bath": {
             "name": "Δημόσιο Λουτρό"
@@ -1339,15 +1407,15 @@
         "emergency/siren": {
             "name": "Σειρήνα"
         },
+        "tourism/zoo/safari": {
+            "name": "Πάρκο για Σαφάρι"
+        },
         "shop/watches": {
             "name": "Κατάστημα Ρολογιών"
         },
         "amenity/parking_entrance": {
             "name": "Είσοδος/Εξοδος Χώρου Στάθμευσης",
             "terms": "Είσοδος/έξοδος γκαράζ, Είσοδος/έξοδος πάρκινγκ"
-        },
-        "landuse": {
-            "name": "Χρήση Γης"
         },
         "waterway/riverbank": {
             "name": "Όχθη Ποταμού"
@@ -1369,11 +1437,17 @@
         "highway/crossing/unmarked": {
             "name": "Μη Επισημασμένη Διάβαση Πεζών"
         },
+        "man_made/storage_tank/water": {
+            "name": "Δεξαμενή Νερού"
+        },
         "craft/stonemason": {
             "name": "Λιθοποιός"
         },
         "aerialway": {
-            "name": "Αεροδίοδος"
+            "name": "Τελεφερίκ"
+        },
+        "amenity/bicycle_parking/lockers": {
+            "name": "Κλειδαριές Ποδηλάτων"
         },
         "amenity/nightclub": {
             "name": "Νυχτερινό Κέντρο",
@@ -1404,7 +1478,7 @@
             "name": "Ελατήρια ζωάκια"
         },
         "waterway/milestone": {
-            "name": "Χιλιομετρικό Σημείο Υδάτινου Δρόμου"
+            "name": "Χιλιομετρικό Διαδρομής Νερού"
         },
         "leisure/pitch/skateboard": {
             "name": "Πίστα Skate"
@@ -1453,15 +1527,15 @@
         "amenity/vending_machine/stamps": {
             "name": "Αυτόματος Πωλητής Γραμματοσήμων"
         },
+        "public_transport/station_aerialway": {
+            "name": "Σταθμός Τελεφερίκ"
+        },
         "playground/swing": {
             "name": "Κούνια"
         },
         "craft/electrician": {
             "name": "Ηλεκτρολόγος",
             "terms": "ηλεκτροτεχνίτης"
-        },
-        "attraction/drop_tower": {
-            "name": "Πύργος Πτώσης"
         },
         "historic/archaeological_site": {
             "name": "Αρχαιολογικός Χώρος",
@@ -1482,12 +1556,18 @@
             "name": "Μελισοκόμος",
             "terms": "Μελισσοκομία"
         },
+        "leisure/track/horse_racing": {
+            "name": "Πίστα Ιπποδρομιών"
+        },
         "amenity/toilets": {
             "name": "Τουαλέτες",
             "terms": "Τουαλέτες"
         },
         "leisure/fitness_station/box": {
             "name": "Κουτί Εξάσκησης"
+        },
+        "amenity/fast_food/hot_dog": {
+            "name": "Ταχυφαγείο Hot Dog"
         },
         "shop/hearing_aids": {
             "name": "Κατάστημα ακουστικών βαρηκοΐας",
@@ -1509,11 +1589,17 @@
             "name": "Χώρος Λατρείας",
             "terms": "Τόπος λατρείας, Ναός, ιερός ναός, μοναστήρι, ιερά μονή, προσκύνημα, οίκος προσευχής"
         },
+        "aerialway/goods": {
+            "name": "Τελεφερίκ Αγαθών"
+        },
         "railway/platform": {
             "name": "Αποβάθρα Τρένου δίπλα στη διαδρομή"
         },
         "barrier/retaining_wall": {
             "name": "Τοίχος Αντιστήριξης"
+        },
+        "amenity/bar/lgbtq": {
+            "name": "ΛΟΑΤΚΙ Μπαρ"
         },
         "amenity/love_hotel": {
             "name": "Ξενοδοχείο Ημιδιαμονής"
@@ -1522,11 +1608,14 @@
             "name": "Οργανισμός Υιοθεσίας"
         },
         "highway/traffic_signals": {
-            "name": "Φανάρια",
+            "name": "Φωτεινός Σηματοδότης",
             "terms": "Φανάρια κυκλοφορίας, φωτεινός σηματοδότης"
         },
         "amenity/embassy": {
             "name": "Πρεσβεία"
+        },
+        "leisure/track/cycling": {
+            "name": "Ποδηλατική Πίστα"
         },
         "place/islet": {
             "name": "Νησίδα"
@@ -1547,12 +1636,18 @@
         "shop/water_sports": {
             "name": "Κατάστημα Ειδών Θαλάσσιων Σπορ / Κολύμβησης"
         },
+        "amenity/studio/audio": {
+            "name": "Studio Ηχογράφησης"
+        },
         "building_part": {
             "name": "Μέρος Κτιρίου"
         },
         "shop/lottery": {
             "name": "Κατάστημα λαχείων",
             "terms": "εθνικό λαχείο, κρατικό λαχείο, λαχνοί"
+        },
+        "amenity/dressing_room": {
+            "name": "Αποδυτήρια"
         },
         "leisure/dog_park": {
             "name": "Πάρκο Σκύλων",
@@ -1588,6 +1683,9 @@
         "highway/footway/sidewalk": {
             "name": "Πεζοδρόμιο"
         },
+        "power/generator/source/hydro": {
+            "name": "Κινητήρας Νερού"
+        },
         "amenity/animal_shelter": {
             "name": "Καταφύγιο Ζώων"
         },
@@ -1605,7 +1703,7 @@
             "terms": "Υαλουργός, τζαμάς, τζάμια, βιτρό, γυάλινα αντικείμενα, παράθυρα, υαλογραφία"
         },
         "highway/footway/unmarked": {
-            "name": "Μη Επισημασμένη Διασταύρωση"
+            "name": "Μη Επισημασμένη Διάβαση Πεζών"
         },
         "highway/motorway_junction": {
             "name": "Κόμβος / Έξοδος Αυτοκινητόδρομου"
@@ -1619,6 +1717,9 @@
         },
         "highway/crossing/marked-raised": {
             "name": "Διάβαση Πεζών (Υπερυψωμένη)"
+        },
+        "indoor/wall": {
+            "name": "Εσωτερικός Τοίχος"
         },
         "leisure/adult_gaming_centre": {
             "name": "Κέντρο Παιχνιδιών Ενηλίκων"
@@ -1649,12 +1750,24 @@
         "emergency/lifeguard": {
             "name": "Ναυαγοσώστης"
         },
+        "office/financial_advisor": {
+            "name": "Οικονομικός Σύμβουλος"
+        },
         "shop/bookmaker": {
             "name": "Πρακτορείο στοιχημάτων",
             "terms": "ΟΠΑΠ, ιππόδρομος, προπο, προπατζίδικο, προποτζίδικο"
         },
         "leisure/fitness_centre/yoga": {
             "name": "Στούντιο Γιόγκα"
+        },
+        "public_transport/platform/aerialway": {
+            "name": "Αποβάθρα Τελεφερίκ"
+        },
+        "tourism/zoo/wildlife": {
+            "name": "Πάρκο Άγριων Ζώων"
+        },
+        "leisure/track/running": {
+            "name": "Στίβος"
         },
         "historic/boundary_stone": {
             "name": "Βράχος Ορόσημο"
@@ -1677,6 +1790,9 @@
             "name": "Μνημείο - Άγαλμα, Ανάθημα",
             "terms": "Μνημείο, ανάθημα, αναθηματική στήλη, προτομή, ανδριάντας, άγαλμα"
         },
+        "golf/water_hazard": {
+            "name": "Κίνδυνος από το Νερό"
+        },
         "shop/cosmetics": {
             "name": "Κατάστημα καλλυντικών",
             "terms": "κρέμες, σαπούνια, σαμπουάν, αφρόλουτρα, γαλακτώματα, μακιγιάζ, βαφές μαλλιών"
@@ -1691,9 +1807,6 @@
         "waterway/stream": {
             "name": "Ρέμα",
             "terms": "Ρέμα"
-        },
-        "railway": {
-            "name": "Σιδηροδρομικός Διάδρομος"
         },
         "building/university": {
             "name": "Κτίριο Πανεπιστημίου",
@@ -1717,7 +1830,10 @@
             "name": "Διαφημιστική"
         },
         "highway/living_street": {
-            "name": "Οδός Ήπιας Κυκλοφορίας"
+            "name": "Δρόμος Ήπιας Κυκλοφορίας"
+        },
+        "attraction/bumper_car": {
+            "name": "Συγκρουόμενα Αυτοκίνητα"
         },
         "attraction/roller_coaster": {
             "name": "Roller Coaster"
@@ -1728,18 +1844,11 @@
         "shop/copyshop": {
             "name": "Κατάστημα Φωτοτυπιών"
         },
-        "leisure/firepit": {
-            "name": "Εστία Φωτιάς"
-        },
         "public_transport/station_ferry": {
             "name": "Πορθμείο Φέρι Μπωτ"
         },
         "leisure/pitch/baseball": {
             "name": "Γήπεδο Baseball"
-        },
-        "man_made/bridge": {
-            "name": "Γέφυρα",
-            "terms": "Γέφυρα, Γεφύρι"
         },
         "office/physician": {
             "name": "Ιατρός"
@@ -1761,11 +1870,17 @@
             "name": "Ξενώνας",
             "terms": "Ξενώνας"
         },
+        "amenity/nightclub/lgbtq": {
+            "name": "ΛΟΑΤΚΙ  Νυχτερινό Κέντρο"
+        },
         "healthcare/laboratory": {
             "name": "Ιατρικό Εργαστήριο"
         },
         "shop/party": {
             "name": "Κατάστημα Προμηθειών για Πάρτυ"
+        },
+        "highway/cycleway/crossing": {
+            "name": "Διάβαση Δικύκλων"
         },
         "power/plant": {
             "name": "Ηλεκτρικός Σταθμός"
@@ -1855,8 +1970,11 @@
         "amenity/place_of_worship/hindu": {
             "name": "Ινδουιστικός Ναός"
         },
+        "waterway/canal/lock": {
+            "name": "Φράγμα Καναλιού Νερού"
+        },
         "traffic_sign_vertex": {
-            "name": "Πινακίδα Κυκλοφορίας"
+            "name": "Πινακίδα Σήμανσης ΚΟΚ"
         },
         "aerialway/platter": {
             "name": "Αναβατήρας Έλξης"
@@ -1884,6 +2002,12 @@
         "type/route/ferry": {
             "name": "Διαδρομή Πορθμείου",
             "terms": "Διαδρομή πορθμείου, Δρομολόγιο πορθμείου"
+        },
+        "ford_line": {
+            "name": "Πέρασμα"
+        },
+        "emergency": {
+            "name": "Στοιχείο Εκτάκτου Ανάγκης"
         },
         "highway/crossing/marked": {
             "name": "Διάβαση Πεζών / Ζέβρα"
@@ -1923,6 +2047,9 @@
         "club": {
             "name": "Λέσχη"
         },
+        "waterway/fish_pass": {
+            "name": "Πέρασμα Ψαριών"
+        },
         "office/private_investigator": {
             "name": "Γραφείο Ιδιωτικού Ερευνητή"
         },
@@ -1930,7 +2057,7 @@
             "name": "Πρατήριο Καυσίμων Λιμένα"
         },
         "highway": {
-            "name": "Αυτοκινητόδρομος"
+            "name": "Στοιχεία Αυτοκινητοδρόμου"
         },
         "shop/pastry": {
             "name": "Ζαχαροπλαστείο"
@@ -1940,7 +2067,7 @@
             "terms": "Θέατρο"
         },
         "highway/pedestrian_line": {
-            "name": "Πεζοδρομημένος Δρόμος"
+            "name": "Πεζοδρομημένη Οδός"
         },
         "man_made/lighthouse": {
             "name": "Φάρος",
@@ -2078,6 +2205,12 @@
         "building/kindergarten": {
             "name": "Κτίριο Νηπιαγωγείου/Παιδικού Σταθμού"
         },
+        "indoor/room": {
+            "name": "Δωμάτιο"
+        },
+        "amenity/fast_food/ice_cream": {
+            "name": "Παγωτατζίδικο"
+        },
         "leisure/playground": {
             "name": "Παιδική Χαρά",
             "terms": "Παιδότοπος, Παιδική χαρά, κούνιες"
@@ -2102,6 +2235,9 @@
         "amenity/monastery": {
             "name": "Ιερά Μονή"
         },
+        "amenity/toilets/disposal/flush": {
+            "name": "Τουαλέτες με καζανάκι"
+        },
         "highway/service/parking_aisle": {
             "name": "Διάδρομος Στάθμευσης",
             "terms": "Λωρίδα χώρου στάθμευσης"
@@ -2109,6 +2245,9 @@
         "amenity/bbq": {
             "name": "Ψησταριά/Σκάρα",
             "terms": "Μπάρμπεκιου, γκριλ"
+        },
+        "amenity/community_centre/lgbtq": {
+            "name": "Κέντρο Κοινότητας ΛΟΑΤΚΙ"
         },
         "waterway/boatyard": {
             "name": "Ναυπηγείο"
@@ -2190,7 +2329,7 @@
             "name": "Κατάστημα Καλλωπισμού Κατοικίδιων"
         },
         "railway/crossing": {
-            "name": "Ισόπεδη Σιδηροδρομική Διάβαση (με Μονοπάτι)"
+            "name": "Ισόπεδη Σιδηροδρομική Διάβαση (Μονοπατιού)"
         },
         "shop/travel_agency": {
             "name": "Ταξιδιωτικό Γραφείο",
@@ -2227,14 +2366,14 @@
         "tourism/chalet": {
             "name": "Εξοχική Κατοικία"
         },
+        "office/diplomatic/embassy": {
+            "name": "Πρεσβεία"
+        },
         "leisure/dancing_school": {
             "name": "Σχολή Χωρού"
         },
         "public_transport/station_trolleybus": {
             "name": "Σταθμός / Τέρμα Τρόλεϊ"
-        },
-        "leisure": {
-            "name": "Αναψυχή"
         },
         "amenity/post_office": {
             "name": "Ταχυδρομείο",
@@ -2262,6 +2401,9 @@
         "leisure/bleachers": {
             "name": "Εξέδρα Χωρίς Σκεπή"
         },
+        "amenity/social_centre": {
+            "name": "Κοινωνικό Κέντρο"
+        },
         "amenity/bar": {
             "name": "Μπαρ",
             "terms": "Μπαρ, διασκέδαση, ποτά, μπύρα, μπίρα"
@@ -2279,11 +2421,14 @@
             "name": "Σιλό"
         },
         "traffic_calming": {
-            "name": "Ελάφρυνση Κυκλοφορίας"
+            "name": "Τρόπος Ελάττωσης Κυκλοφορίας"
         },
         "barrier/stile": {
             "name": "Στύλος",
             "terms": "Στύλος, Κολόνα"
+        },
+        "railway/construction": {
+            "name": "Σιδηρόδρομος Υπό Κατασκευή"
         },
         "type/route/piste": {
             "name": "Πίστα / Διαδρομή Σκι"
@@ -2291,8 +2436,11 @@
         "shop/boutique": {
             "name": "Μπουτίκ"
         },
+        "shop/fashion_accessories": {
+            "name": "Κατάστημα για Αξεσουάρ Μόδας"
+        },
         "area/highway": {
-            "name": "Οδόστρωμα"
+            "name": "Περιοχή Δρόμου"
         },
         "amenity/vending_machine/parcel_pickup_dropoff": {
             "name": "Ντουλάπι Παραλαβής / Εναπόθεσης Δέματος"
@@ -2387,7 +2535,7 @@
             "name": "Γερμανικό Εστιατόριο"
         },
         "public_transport/platform/aerialway_point": {
-            "name": "Στάση / Αποβάθρα Αερομεταφοράς"
+            "name": "Στάση / Αποβάθρα Τελεφερίκ"
         },
         "amenity/university": {
             "name": "Χώρος Πανεπιστημίου",
@@ -2399,6 +2547,9 @@
         },
         "highway/crossing/zebra-raised": {
             "name": "Διάβαση Πεζών / Ζέβρα (Υπερυψωμένη)"
+        },
+        "highway/cycleway/crossing/unmarked": {
+            "name": "Μη Επισημασμένη Διάβαση Δικύκλων"
         },
         "emergency/first_aid_kit": {
             "name": "Κουτί Πρώτων Βοηθειών"
@@ -2438,6 +2589,9 @@
         "highway/passing_place": {
             "name": "Πέρασμα"
         },
+        "shop/spices": {
+            "name": "Κατάστημα Μπαχαρικών"
+        },
         "shop/tiles": {
             "name": "Κατάστημα Πλακιδίων"
         },
@@ -2446,6 +2600,9 @@
         },
         "amenity/vending_machine/food": {
             "name": "Αυτόματος Πωλητής Τροφίμων"
+        },
+        "advertising/totem": {
+            "name": "Διαφημιστικό Στύλος"
         },
         "amenity/cafe": {
             "name": "Καφετέρια",
@@ -2499,8 +2656,14 @@
         "man_made/mast/communication/radio": {
             "name": "Ιστός Ραδιοφωνικής Εκπομπής"
         },
+        "amenity/pub/lgbtq": {
+            "name": "ΛΟΑΤΚΙ Καπηλειό"
+        },
         "amenity/restaurant/seafood": {
             "name": "Ψαροταβέρνα"
+        },
+        "tourism/information/terminal": {
+            "name": "Περίπτερο Πληροφοριών"
         },
         "public_transport/station_train": {
             "name": "Σιδηροδρομικός Σταθμός δίπλα στη διαδρομή"
@@ -2530,6 +2693,9 @@
             "name": "Ακτογραμμή",
             "terms": "Ακτογραμμή"
         },
+        "amenity/studio/television": {
+            "name": "Τηλεοπτικός Σταθμός"
+        },
         "building/carport": {
             "name": "Στέγασμα για Αυτοκίνητο"
         },
@@ -2543,6 +2709,10 @@
         },
         "shop/outdoor": {
             "name": "Κατάστημα με Είδη Εξοπλισμού Υπαίθρου"
+        },
+        "highway/raceway": {
+            "name": "Πίστα Μηχανοκίνητου Αθλητισμού",
+            "terms": "Πίστα Kart"
         },
         "emergency/designated": {
             "name": "Καθορισμένη Επείγουσα Πρόσβαση"
@@ -2559,6 +2729,9 @@
         },
         "leisure/beach_resort": {
             "name": "Παραθαλάσσιο Θέρετρο"
+        },
+        "shop/lighting": {
+            "name": "Κατάστημα Λάμπας"
         },
         "amenity/vending_machine/drinks": {
             "name": "Αυτόματος Πωλητής Ποτών",
@@ -2579,6 +2752,9 @@
         "man_made/pumping_station": {
             "name": "Αντλιοστάσιο"
         },
+        "telecom/data_center": {
+            "name": "Κέντρο Δεδομένων"
+        },
         "building/bunker": {
             "name": "Καταφύγιο"
         },
@@ -2592,6 +2768,9 @@
         "amenity/dentist": {
             "name": "Οδοντιατρείο",
             "terms": "οδοντίατρος, οδοντογιατρός"
+        },
+        "highway/cycleway/crossing/marked": {
+            "name": "Επισημασμένη Διάβαση Δικύκλων"
         },
         "highway/footway/zebra-raised": {
             "name": "Διάβαση Πεζών (Υπερυψωμένη)"
@@ -2620,11 +2799,17 @@
         "shop/wholesale": {
             "name": "Κατάστημα Χονδρικής"
         },
+        "amenity/loading_dock": {
+            "name": "Αποβάθρα Φόρτωσης"
+        },
         "building/stadium": {
             "name": "Στάδιο"
         },
         "leisure/slipway_point": {
             "name": "Γλίστρα"
+        },
+        "highway/footway/crossing": {
+            "name": "Διάβαση Πεζών"
         },
         "landuse/military/range": {
             "name": "Στρατιωτικό Πεδίο Βολής",
@@ -2648,10 +2833,13 @@
             "terms": "Αυχένας"
         },
         "natural/water/basin": {
-            "name": "Λεκανοπέδιο"
+            "name": "Αυλάκι"
         },
         "public_transport/platform/tram_point": {
             "name": "Στάση / Αποβάθρα Τραμ"
+        },
+        "amenity/fast_food/donut": {
+            "name": "Ταχυφαγείο Donut"
         },
         "building/transportation": {
             "name": "Κτίριο Μεταφορών"
@@ -2679,6 +2867,9 @@
         "barrier/fence/railing": {
             "name": "Κιγκλίδωμα"
         },
+        "amenity/vending_machine/ice_cubes": {
+            "name": "Αυτόματος Πωλητής Πάγου"
+        },
         "golf/hole": {
             "name": "Τρύπα Γηπέδου Γκολφ",
             "terms": "Τρύπα Γηπέδου Γκολφ"
@@ -2702,6 +2893,9 @@
         },
         "shop/beauty/tanning": {
             "name": "Σαλόνι Μαυρίσματος"
+        },
+        "amenity/water_point": {
+            "name": "Πόσιμο Νερό Αυτοκινούμενου Τροχόσπιτου"
         },
         "public_transport/station": {
             "name": "Σταθμός Μετεπιβίβασης"
@@ -2741,9 +2935,6 @@
         "aeroway/taxiway": {
             "name": "Τροχιόδρομος",
             "terms": "Τροχιόδρομος"
-        },
-        "craft/optician": {
-            "name": "Οπτικός"
         },
         "seamark/beacon_isolated_danger": {
             "name": "Φάρος Κινδύνου"
@@ -2827,7 +3018,7 @@
             "name": "Συνοριακός Έλεγχος"
         },
         "landuse/basin": {
-            "name": "Κανάλι Αποστράγγισης"
+            "name": "Δεξαμενή"
         },
         "leisure/track": {
             "name": "Αγωνιστική Πίστα (Για Μη Μηχανοκίνηση)"
@@ -2917,18 +3108,11 @@
             "name": "Δρομολόγιο Λεωφορείου",
             "terms": "Διαδρομή Λεωφορείου"
         },
-        "natural/water/stream": {
-            "name": "Ρέμα"
-        },
         "landuse/farm": {
             "name": "Καλλιεργήσιμη Έκταση"
         },
         "place/city_block": {
             "name": "Οικοδομικό Τετράγωνο"
-        },
-        "natural/wood": {
-            "name": "Δάσος",
-            "terms": "Άλσος, Αλσύλιο, Δασάκι"
         },
         "amenity/restaurant/chinese": {
             "name": "Κινεζικό Εστιατόριο"
@@ -2942,6 +3126,9 @@
         "aeroway/apron": {
             "name": "Χώρος ελιγμών",
             "terms": "Χώρος ελιγμών, Χώρος φόρτωσης, Χώρος στάθμευσης"
+        },
+        "historic/castle/fortress": {
+            "name": "Ιστορική Οχύρωση"
         },
         "shop/tattoo": {
             "name": "Στούντιο Τατουάζ",
@@ -2962,6 +3149,9 @@
         "shop/optician": {
             "name": "Οπτικός",
             "terms": "Οπτικός"
+        },
+        "leisure/track/running_point": {
+            "name": "Στίβος"
         },
         "type/route/foot": {
             "name": "Διαδρομή Πεζοπόρων"
@@ -2986,6 +3176,9 @@
         "landuse/industrial/scrap_yard": {
             "name": "Μάντρα"
         },
+        "leisure/pitch/field_hockey": {
+            "name": "Γήπεδο Χόκεϋ"
+        },
         "amenity/recycling": {
             "name": "Ανακύκλωση"
         },
@@ -3000,9 +3193,6 @@
         },
         "natural/ridge": {
             "name": "Κορυφογραμμή"
-        },
-        "natural": {
-            "name": "Φυσικό"
         },
         "aerialway/magic_carpet": {
             "name": "Αναβατήρας Ιμάντας"
@@ -3022,9 +3212,6 @@
         "man_made/mast": {
             "name": "Ιστός"
         },
-        "attraction/river_rafting": {
-            "name": "Κατάβαση Ποταμού με Φουσκωτή Βάρκα"
-        },
         "amenity/payment_terminal": {
             "name": "Τερματικό Πληρωμών"
         },
@@ -3039,6 +3226,9 @@
         },
         "craft/tiler": {
             "name": "Κεραμιδωτής"
+        },
+        "leisure/track/horse_racing_point": {
+            "name": "Πίστα Ιπποδρομιών"
         },
         "barrier/kerb": {
             "name": "Κράσπεδο"
@@ -3066,6 +3256,9 @@
         },
         "shop/e-cigarette": {
             "name": "Κατάστημα Ηλεκτρονικού Τσιγάρου"
+        },
+        "historic/fort": {
+            "name": "Ιστορική Οχύρωση"
         },
         "tourism/wilderness_hut": {
             "name": "Ερημική Καλύβα"
@@ -3105,9 +3298,6 @@
         "place": {
             "name": "Τόπος"
         },
-        "power": {
-            "name": "Ενέργεια"
-        },
         "leisure/fitness_station/push-up": {
             "name": "Όργανο Κάμψεων"
         },
@@ -3142,6 +3332,9 @@
         },
         "office/architect": {
             "name": "Αρχιτεκτονικό Γραφείο"
+        },
+        "leisure/swimming_area": {
+            "name": "Φυσική Περιοχή Κολύμβησης"
         },
         "railway/subway": {
             "name": "Μετρό",
@@ -3184,6 +3377,9 @@
         "leisure/golf_course": {
             "name": "Γήπεδο Γκολφ",
             "terms": "Γήπεδο γκολφ"
+        },
+        "shop/electrical": {
+            "name": "Κατάστημα Ηλεκτρολογικού Εξοπλισμού"
         },
         "barrier": {
             "name": "Εμπόδιο",
@@ -3238,17 +3434,20 @@
             "terms": "Παλαιοβιβλιοπωλείο"
         },
         "highway/service": {
-            "name": "Ειδική Οδός",
+            "name": "Ειδικός Δρόμος",
             "terms": "Δρόμος εξυπηρέτησης, Βοηθητικός δρόμος, βοηθητική οδός"
         },
         "waterway/drain": {
             "name": "Οχετός"
         },
+        "man_made/pipeline/underground": {
+            "name": "Υπόγειος Σωλήνας"
+        },
         "public_transport/platform/subway": {
             "name": "Αποβάθρα Υπόγειου Σιδηροδρόμου"
         },
         "highway/residential": {
-            "name": "Οδός σε κατοικημένη περιοχή",
+            "name": "Οικιστικός Δρόμος",
             "terms": "Αστική οδός, Τοπική οδός, Οδός εντός αστικού ιστού"
         },
         "public_transport/platform/tram": {
@@ -3322,14 +3521,14 @@
             "terms": "Κοντάρι σημαίας, σημαιάκι"
         },
         "highway/crossing/unmarked-raised": {
-            "name": "Μη Επισημασμένη Διάβαση Πεζών (Υπερυψωμένη)"
+            "name": "Μη Επισημασμένη Διάβαση (Υπερυψωμένη)"
         },
         "tourism/attraction": {
             "name": "Τ",
             "terms": "Τουριστικό Αξιοθέατο"
         },
         "man_made": {
-            "name": "Ανθρώπινη Κατασκευή"
+            "name": "Τεχνητό Στοιχείο"
         },
         "barrier/kerb/lowered": {
             "name": "Χαμηλωμένο Κράσπεδο"
@@ -3364,8 +3563,14 @@
         "craft/handicraft": {
             "name": "Χειροτεχνία"
         },
+        "landuse/construction": {
+            "name": "Περιοχή Κατασκευής"
+        },
         "shop/trade": {
             "name": "Εμπορικό Κατάστημα"
+        },
+        "office/diplomatic": {
+            "name": "Διπλωματικό Γραφείο"
         },
         "piste/downhill/halfpipe": {
             "name": "Πίστα με Κλίσεις"

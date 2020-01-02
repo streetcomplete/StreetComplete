@@ -325,10 +325,6 @@
             "name": "Sala giochi",
             "terms": "Videogiochi"
         },
-        "craft/pottery": {
-            "name": "Negozio di ceramica",
-            "terms": "ceramica"
-        },
         "craft/roofer": {
             "name": "Riparatore tetti",
             "terms": "Riparatore di tetti,Addetto alla riparazione dei tetti"
@@ -457,10 +453,6 @@
         "leisure/pitch/soccer": {
             "name": "Campo di calcio",
             "terms": "Campo da calcio"
-        },
-        "natural/water/river": {
-            "name": "Fiume",
-            "terms": "ramo,ruscello,torrente,corso,estuario,sponda,argine,rigagnolo"
         },
         "type/multipolygon": {
             "name": "Multipoligono"
@@ -982,10 +974,6 @@
         "shop/fashion": {
             "name": "Negozio di moda"
         },
-        "natural/water/canal": {
-            "name": "Canale",
-            "terms": "canale,fosso"
-        },
         "power/substation": {
             "name": "Sottostazione",
             "terms": "Sottostazione"
@@ -1088,9 +1076,6 @@
         "amenity/toy_library": {
             "name": "Ludoteca",
             "terms": "giochi,giocattoli,giocattolo,gioco,lego,pupazzi,bambini,legno,bambole"
-        },
-        "craft/jeweler": {
-            "name": "Gioielliere"
         },
         "landuse/industrial/slaughterhouse": {
             "name": "Macello",
@@ -1235,10 +1220,6 @@
             "name": "Strisce  pedonali (rialzate)",
             "terms": "incrocio,attraversamento,strisce,zebra,rialzato,scalino,limitatore,velocità,piano,lento,sicurezza"
         },
-        "man_made/tunnel": {
-            "name": "Galleria",
-            "terms": "scavo,foro,traforo,tunnel,passaggio sotterraneo,sottopasso,sottovia,sottopassaggio"
-        },
         "public_transport/stop_position_aerialway": {
             "name": "Punto di stop del trasporto a fune"
         },
@@ -1320,10 +1301,6 @@
             "name": "Svincolo autostradale",
             "terms": "svincolo,rampa,uscita,autostrada,ingresso"
         },
-        "amenity/car_pooling": {
-            "name": "Condivisione automobile",
-            "terms": "car pooling,auto di gruppo,concarreggio,condivisione auto"
-        },
         "highway/crossing": {
             "name": "Attraversamento"
         },
@@ -1343,16 +1320,13 @@
             "name": "Fotografo",
             "terms": "fotografia,stampe"
         },
-        "junction/circular": {
-            "name": "Circolare"
-        },
         "public_transport/platform/bus_point": {
             "name": "Fermata autobus",
             "terms": "bus,autobus,piattaforma,trasporto pubblico,transito pubblico,transito,trasporto,fermata"
         },
         "building/pavilion": {
-            "name": "Servizi sportivi (spogliatoi, depositi ecc)",
-            "terms": "spogliatoi,deposito attrezzature"
+            "name": "Edificio primario servizi di campi sportivi",
+            "terms": "spogliatoio,deposito attrezzature"
         },
         "shop": {
             "name": "Negozio",
@@ -1381,15 +1355,8 @@
             "name": "Osservatorio",
             "terms": "osservatorio,astronomico,meteorologico,vulcanologico,osservatorio meteorologico,osservatorio astronomico,radiotelescopio,specola"
         },
-        "junction/jughandle": {
-            "name": "Jughandle"
-        },
         "shop/printer_ink": {
             "name": "Negozio di cartucce per stampanti"
-        },
-        "attraction/pirate_ship": {
-            "name": "Nave dei pirati",
-            "terms": "nave dei pirati,pirata,barca,parco a tema,attrazioni,divertimento,divertimenti,giostra,luna park"
         },
         "healthcare/alternative/chiropractic": {
             "name": "Chiropratico",
@@ -1460,9 +1427,6 @@
         "shop/electronics": {
             "name": "Negozio di elettronica",
             "terms": "Negozio di elettronica"
-        },
-        "waterway": {
-            "name": "Corso d'acqua"
         },
         "amenity/clinic": {
             "name": "Clinica medica",
@@ -1648,10 +1612,6 @@
             "name": "Ferramenta",
             "terms": "Negozio di ferramenta"
         },
-        "amenity/car_sharing": {
-            "name": "Car Sharing",
-            "terms": "car sharing"
-        },
         "shop/funeral_directors": {
             "name": "Casa funeraria",
             "terms": "funerale,cimitero"
@@ -1689,9 +1649,6 @@
         },
         "public_transport/stop_position_ferry": {
             "name": "Fermata battello"
-        },
-        "tourism": {
-            "name": "Turismo"
         },
         "traffic_sign": {
             "name": "Segnale stradale",
@@ -1733,9 +1690,6 @@
         "amenity/parking_entrance": {
             "name": "Entrata/Uscita Garage",
             "terms": "garage,posto auto,posteggio,parcheggio"
-        },
-        "landuse": {
-            "name": "Utilizzi del terreno"
         },
         "waterway/riverbank": {
             "name": "Argine"
@@ -1875,10 +1829,6 @@
         "craft/electrician": {
             "name": "Elettricista",
             "terms": "elettronica,elettricità"
-        },
-        "attraction/drop_tower": {
-            "name": "Torre a caduta libera",
-            "terms": "torre di caduta libera,caduta libera,free fall,gravità,parco a tema,attrazioni,divertimento,divertimenti,giostra,luna park"
         },
         "historic/archaeological_site": {
             "name": "Sito archeologico",
@@ -2138,10 +2088,6 @@
             "name": "Pista da corsa",
             "terms": "pista di atletica,decathlon,gara podistica,distanza,maratona,sprint,camminata,camminare,pista"
         },
-        "aerialway/t-bar": {
-            "name": "Skilift ad ancora",
-            "terms": "skilift,sciovia"
-        },
         "historic/boundary_stone": {
             "name": "Pietra di confine",
             "terms": "Perimetro di pietra"
@@ -2183,9 +2129,6 @@
         "waterway/stream": {
             "name": "Torrente"
         },
-        "railway": {
-            "name": "Ferrovia"
-        },
         "building/university": {
             "name": "Edificio universitario",
             "terms": "college,alma"
@@ -2223,19 +2166,11 @@
             "name": "Copisteria",
             "terms": "Copisteria"
         },
-        "leisure/firepit": {
-            "name": "Focolare",
-            "terms": "fuoco,campeggio,griglia,bracere,braciere"
-        },
         "public_transport/station_ferry": {
             "name": "Stazione / Terminal dei traghetti"
         },
         "leisure/pitch/baseball": {
             "name": "Campo da baseball"
-        },
-        "man_made/bridge": {
-            "name": "Ponte",
-            "terms": "ponte,viadotto,pontile,arco,strallato,cavalcavia"
         },
         "railway/monorail": {
             "name": "Monorotaia",
@@ -2490,9 +2425,6 @@
         "waterway/fuel": {
             "name": "Stazione di rifornimento marittima",
             "terms": "distributore,gas, benzina,diesel,gpl,carburante,benzinaio,gasolio,nafta,barca,barche"
-        },
-        "highway": {
-            "name": "Strada"
         },
         "shop/pastry": {
             "name": "Pasticceria",
@@ -2894,9 +2826,6 @@
         "public_transport/station_trolleybus": {
             "name": "Stazione / Terminal dei filobus"
         },
-        "leisure": {
-            "name": "Svago"
-        },
         "amenity/post_office": {
             "name": "Ufficio Postale",
             "terms": "ufficio postale,lettere,spedizione,pacco,poste"
@@ -2977,10 +2906,6 @@
         "waterway/lock_gate": {
             "name": "Porta di una chiusa",
             "terms": "canale,chiusa,sbarramento,porta,portone,cancello"
-        },
-        "area/highway": {
-            "name": "Superficie stradale",
-            "terms": "superficie,manto stradale,materiale"
         },
         "amenity/vending_machine/parcel_pickup_dropoff": {
             "name": "Punto di ritiro/spedizione self-service",
@@ -3229,9 +3154,6 @@
             "name": "Punto geodetico",
             "terms": "Punto geodetico o altra stazione fissa"
         },
-        "junction/roundabout": {
-            "name": "Rotatoria"
-        },
         "type/route/power": {
             "name": "Linea elettrica",
             "terms": "Ininerario elettricità"
@@ -3470,7 +3392,7 @@
             "terms": "Concessionaria auto"
         },
         "building/stable": {
-            "name": "Stalla",
+            "name": "Edificio di scuderia per alloggio animali",
             "terms": "stalla,ricovero,scuderia"
         },
         "amenity/public_bookcase": {
@@ -3562,9 +3484,6 @@
         "aeroway/taxiway": {
             "name": "Pista di rullaggio",
             "terms": "rullaggio,pista,aeroporto,manovra"
-        },
-        "craft/optician": {
-            "name": "Ottico"
         },
         "seamark/beacon_isolated_danger": {
             "name": "Fanale di pericolo isolato",
@@ -3795,10 +3714,6 @@
             "name": "Linea autobus",
             "terms": "Itinerario,linea,percorso,rotta,autobus,bus"
         },
-        "natural/water/stream": {
-            "name": "Ruscello",
-            "terms": "fiumiciattolo,ramo,ruscello,corso,torrente,corrente,deriva,flusso,rivolo,rigagnolo,tributario,botro,rio"
-        },
         "type/route_master": {
             "name": "Percorso Principale",
             "terms": "Route Master"
@@ -3809,10 +3724,6 @@
         "place/city_block": {
             "name": "Isolato",
             "terms": "isolato,blocco,manzana,gruppo"
-        },
-        "natural/wood": {
-            "name": "Foresta",
-            "terms": "Bosco"
         },
         "amenity/restaurant/chinese": {
             "name": "Ristorante cinese",
@@ -3913,9 +3824,6 @@
             "name": "Crinale",
             "terms": "cresta"
         },
-        "natural": {
-            "name": "Naturale"
-        },
         "aerialway/magic_carpet": {
             "name": "Tapis roulant",
             "terms": "tappeto scorrevole"
@@ -3940,10 +3848,6 @@
         "man_made/mast": {
             "name": "Palo",
             "terms": "albero,torre,comunicazione,radio,cellulari,antenna,trasmissioni,tv,televisione,telefoni"
-        },
-        "attraction/river_rafting": {
-            "name": "Rafting",
-            "terms": "rafting,discesa fluviale,fiume,canotto,parco acquatico,acqua,rapide,canoa,kayak,parco a tema,attrazioni,divertimento,divertimenti,giostra,luna park"
         },
         "amenity/payment_terminal": {
             "name": "Terminale pagamenti",
@@ -4057,14 +3961,8 @@
         "place": {
             "name": "Luogo"
         },
-        "power": {
-            "name": "Energia"
-        },
         "leisure/fitness_station/push-up": {
             "name": "Stazione per piegamenti sulle braccia"
-        },
-        "aerialway/station": {
-            "name": "Stazione trasporto a fune"
         },
         "building/house": {
             "name": "Casa",
@@ -4275,6 +4173,10 @@
             "name": "Abbeveratoio",
             "terms": "acqua,fontana,fontanella,abbeveratoio,animale,animali"
         },
+        "tourism/artwork/bust": {
+            "name": "Busto",
+            "terms": "scultura,figura,raffigurazione,statua"
+        },
         "public_transport/station_train_halt": {
             "name": "Fermata del treno a richiesta"
         },
@@ -4308,6 +4210,9 @@
         "man_made/tower/observation": {
             "name": "Torre di osservazione"
         },
+        "tourism/artwork/installation": {
+            "name": "Installazione artistica"
+        },
         "waterway/weir": {
             "name": "Sbarramento",
             "terms": "Briglia"
@@ -4338,9 +4243,6 @@
         "tourism/attraction": {
             "name": "Attrazione turistica",
             "terms": "Attrazione turistica"
-        },
-        "man_made": {
-            "name": "Costruzioni civili"
         },
         "barrier/kerb/lowered": {
             "name": "Cordolo ribassato",
@@ -4381,6 +4283,9 @@
         "craft/handicraft": {
             "name": "Artigiano",
             "terms": "Artigianato,Artigiano"
+        },
+        "landuse/construction": {
+            "name": "Cantiere"
         },
         "shop/trade": {
             "name": "Materiali da edilizia",

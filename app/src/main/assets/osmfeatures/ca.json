@@ -207,9 +207,6 @@
         "amenity/veterinary": {
             "name": "Veterinari"
         },
-        "craft/pottery": {
-            "name": "Terrisseria"
-        },
         "craft/roofer": {
             "name": "Constructor de teulades"
         },
@@ -639,9 +636,6 @@
         "office/travel_agent": {
             "name": "Agència de viatges"
         },
-        "craft/jeweler": {
-            "name": "Joieria"
-        },
         "landuse/industrial/slaughterhouse": {
             "name": "Escorxador"
         },
@@ -754,9 +748,6 @@
             "name": "Enllaç d'autopista",
             "terms": "Rampa, entrada, incorporació, baixada, addició, autopista, autovia, eix"
         },
-        "amenity/car_pooling": {
-            "name": "Compartició de cotxes"
-        },
         "place/isolated_dwelling": {
             "name": "Vivenda aïllada"
         },
@@ -782,9 +773,6 @@
         "man_made/pipeline": {
             "name": "Canonada",
             "terms": "Gàseoducte,Oleoducte,Canonades"
-        },
-        "attraction/pirate_ship": {
-            "name": "Vaixell pirata"
         },
         "healthcare/alternative/chiropractic": {
             "name": "Quiropràctic"
@@ -816,9 +804,6 @@
         "shop/electronics": {
             "name": "Botiga d'electrònica",
             "terms": "Botiga d'electrònica, Botiga de components electrònics"
-        },
-        "waterway": {
-            "name": "Via aqüífera"
         },
         "amenity/clinic": {
             "name": "Clínica"
@@ -937,10 +922,6 @@
         "shop/hardware": {
             "name": "Drogueria"
         },
-        "amenity/car_sharing": {
-            "name": "Servei de compartició de cotxe",
-            "terms": "Servei de compartició de cotxe, compartició de cotxes"
-        },
         "shop/funeral_directors": {
             "name": "Tanatori"
         },
@@ -968,9 +949,6 @@
         "emergency/no": {
             "name": "Accés per a emergències prohibit"
         },
-        "tourism": {
-            "name": "Turisme"
-        },
         "amenity/public_bath": {
             "name": "Banys públic",
             "terms": "Banys públic, bany públic, banys, bany"
@@ -991,9 +969,6 @@
         },
         "amenity/parking_entrance": {
             "name": "Entrada de Garatge/Sortida"
-        },
-        "landuse": {
-            "name": "Ús de la terra"
         },
         "waterway/riverbank": {
             "name": "Banc fluvial"
@@ -1163,6 +1138,10 @@
         "building/cabin": {
             "name": "Cabana"
         },
+        "highway/footway/sidewalk": {
+            "name": "Vorera",
+            "terms": "Vorera, voravia"
+        },
         "amenity/animal_shelter": {
             "name": "Refugi d'animals",
             "terms": "Refugi d'animals, protectora"
@@ -1211,9 +1190,6 @@
         "leisure/fitness_centre/yoga": {
             "name": "Estudi de Yoga"
         },
-        "aerialway/t-bar": {
-            "name": "Teleesquí doble"
-        },
         "historic/boundary_stone": {
             "name": "Fita de terme",
             "terms": "Fita de frontera"
@@ -1245,9 +1221,6 @@
         "waterway/stream": {
             "name": "Rierol",
             "terms": "Séquia, rierol, Fil d'aigua, Rajolí, Riuet, Ramal, Reguer, Segla, Canal, Rec, Regueró, Sequiola, Sequió, Cavim."
-        },
-        "railway": {
-            "name": "Ferrocarril"
         },
         "building/university": {
             "name": "Edifici universitari",
@@ -1281,14 +1254,8 @@
             "name": "Copisteria",
             "terms": "Botiga, fotocòpies, fulls, impressora"
         },
-        "leisure/firepit": {
-            "name": "Lloc per a fogueres"
-        },
         "leisure/pitch/baseball": {
             "name": "Camp de beisbol"
-        },
-        "man_made/bridge": {
-            "name": "Pont"
         },
         "railway/monorail": {
             "name": "Monocarril",
@@ -1424,9 +1391,6 @@
         },
         "waterway/fuel": {
             "name": "Benzinera per a embarcacions"
-        },
-        "highway": {
-            "name": "Via"
         },
         "shop/pastry": {
             "name": "Pastisseria"
@@ -1626,9 +1590,6 @@
         "amenity/bureau_de_change": {
             "name": "Canvi de divisa"
         },
-        "leisure": {
-            "name": "Esbarjo"
-        },
         "amenity/post_office": {
             "name": "Oficina de correus",
             "terms": "Oficina de Correus, Correus, Edifici de Correus, Cartes, Carters"
@@ -1655,9 +1616,6 @@
         },
         "shop/boutique": {
             "name": "Boutique"
-        },
-        "area/highway": {
-            "name": "Superfície de la carretera"
         },
         "amenity/vending_machine/parking_tickets": {
             "name": "Màquina de cobrament de tiquet d'aparcament"
@@ -1949,9 +1907,6 @@
             "name": "Plataforma de rodada",
             "terms": "Plataforma de Rodada, Carrer de Taxi, Pista de Taxi, Carrer de Rodament, Carrer de Rodatge, Carril de Rodada, Carril de Rodatge"
         },
-        "craft/optician": {
-            "name": "Òptica"
-        },
         "waterway/waterfall": {
             "name": "Cascada",
             "terms": "Salt d'aigua, saltant, sallent, fall"
@@ -2089,10 +2044,6 @@
         "landuse/farm": {
             "name": "Zona Agrícola"
         },
-        "natural/wood": {
-            "name": "Bosc",
-            "terms": "Bosc, Forest"
-        },
         "leisure/pitch/rugby_union": {
             "name": "Camp de la Unió de Rugbi"
         },
@@ -2128,9 +2079,6 @@
         },
         "landuse/commercial": {
             "name": "Zona Comercial"
-        },
-        "natural": {
-            "name": "Natural"
         },
         "aerialway/magic_carpet": {
             "name": "Cinta remuntadora",
@@ -2204,12 +2152,6 @@
         },
         "place": {
             "name": "Lloc"
-        },
-        "power": {
-            "name": "Electricitat"
-        },
-        "aerialway/station": {
-            "name": "Estació de transport per cable"
         },
         "building/house": {
             "name": "Casa",
@@ -2367,9 +2309,6 @@
         },
         "tourism/attraction": {
             "name": "Atracció turística"
-        },
-        "man_made": {
-            "name": "Fet per l'home"
         },
         "golf/fairway": {
             "name": "Fairway"

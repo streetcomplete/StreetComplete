@@ -245,10 +245,6 @@
             "name": "Spillehal",
             "terms": "spil, game, gaming, pinball, flipper, videospil"
         },
-        "craft/pottery": {
-            "name": "Pottemager",
-            "terms": "Pottemager, Keramiker"
-        },
         "craft/roofer": {
             "name": "Tagdækker",
             "terms": "Tagdækker, Tagdækningsfirma"
@@ -360,6 +356,10 @@
         "amenity/vending_machine/ice_cream": {
             "name": "Isautomat",
             "terms": "is,ispind"
+        },
+        "man_made/tower/defensive": {
+            "name": "Befæstningstårn",
+            "terms": "militær,fort,slot,forsvar"
         },
         "amenity/hospital": {
             "name": "Hospitalsområde",
@@ -494,6 +494,10 @@
         "aeroway/gate": {
             "name": "Lufthavnsgate",
             "terms": "Lufthavnsgate"
+        },
+        "man_made/mast/communication/mobile_phone": {
+            "name": "Mobilmast",
+            "terms": "mast,tårn,kommunikation,antenne,telefon,mobil,gsm,lte"
         },
         "traffic_calming/island": {
             "name": "Helleanlæg",
@@ -649,6 +653,10 @@
             "name": "Kirkebygning",
             "terms": "Kirkebygning"
         },
+        "man_made/tower/bell_tower": {
+            "name": "Klokketårn",
+            "terms": "kirke,religion,kirketårn"
+        },
         "shop/video_games": {
             "name": "Videospilbutik",
             "terms": "Videospilbutik, Videospilforretning, gaming"
@@ -796,9 +804,6 @@
         },
         "office/travel_agent": {
             "name": "Rejsebureau"
-        },
-        "craft/jeweler": {
-            "name": "Juvelér"
         },
         "landuse/industrial/slaughterhouse": {
             "name": "Slagteri"
@@ -965,10 +970,6 @@
             "name": "Motorvejsafkørsel",
             "terms": "Motorvejsafkørsel"
         },
-        "amenity/car_pooling": {
-            "name": "Samkørselsplads",
-            "terms": "samkørsel,bildeling,deling,deleøkonomi"
-        },
         "place/isolated_dwelling": {
             "name": "Lille beboet område (1-2 hustande)",
             "terms": "Lille beboet område (1-2 hustande)"
@@ -1008,10 +1009,6 @@
         "man_made/observatory": {
             "name": "Observatorie",
             "terms": "astronomi, astrofysik, meteorologi"
-        },
-        "attraction/pirate_ship": {
-            "name": "Piratskib",
-            "terms": "sørøver"
         },
         "healthcare/alternative/chiropractic": {
             "name": "Kiropraktor"
@@ -1063,9 +1060,6 @@
         "shop/electronics": {
             "name": "Elektronikbutik",
             "terms": "Elektronikbutik"
-        },
-        "waterway": {
-            "name": "Vandvej"
         },
         "amenity/clinic": {
             "name": "Klinik",
@@ -1206,10 +1200,6 @@
             "name": "Værktøjsbutik",
             "terms": "Værktøjsbutik, Byggemarked"
         },
-        "amenity/car_sharing": {
-            "name": "Delebil",
-            "terms": "Delebil, Delebilsordning"
-        },
         "shop/funeral_directors": {
             "name": "Bedemandsforretning",
             "terms": "Bedemandsforretning, Begravelsesbutik, Begravelsesforretning"
@@ -1241,9 +1231,6 @@
         "emergency/no": {
             "name": "Udrykningskørsel Nej"
         },
-        "tourism": {
-            "name": "Turisme"
-        },
         "amenity/public_bath": {
             "name": "Offentligt bad",
             "terms": "Offentligt bad"
@@ -1267,9 +1254,6 @@
         "amenity/parking_entrance": {
             "name": "Parkeringsgarage Indgang/Udgang",
             "terms": "Parkeringsgarage Indgang/Udgang, Parkeringskælder Indgang/Udgang"
-        },
-        "landuse": {
-            "name": "Arealanvendelse"
         },
         "waterway/riverbank": {
             "name": "Flodbred"
@@ -1558,10 +1542,6 @@
             "name": "Yogastudio",
             "terms": "Yogastudio"
         },
-        "aerialway/t-bar": {
-            "name": "Træklift",
-            "terms": "Træklift"
-        },
         "historic/boundary_stone": {
             "name": "Grænsesten",
             "terms": "Grænsesten"
@@ -1593,9 +1573,6 @@
         "waterway/stream": {
             "name": "Bæk",
             "terms": "Bæk"
-        },
-        "railway": {
-            "name": "Jernbane"
         },
         "building/university": {
             "name": "Universitetsbygning",
@@ -1629,14 +1606,6 @@
         "shop/copyshop": {
             "name": "Fotokopishop",
             "terms": "Fotokopishop"
-        },
-        "leisure/firepit": {
-            "name": "Lejrbålsplads",
-            "terms": "lejrbålsplads,bålplads,bålsted,lejrbål,ild,ildsted,bål"
-        },
-        "man_made/bridge": {
-            "name": "Bro",
-            "terms": "Bro"
         },
         "railway/monorail": {
             "name": "Monorail",
@@ -1683,6 +1652,10 @@
         "type/route/tram": {
             "name": "Sporvognsrute",
             "terms": "Sporvognsrute"
+        },
+        "man_made/mast/communication/television": {
+            "name": "Fjernsynsudsendelsesmast",
+            "terms": "mast,tårn,kommunikation,antenne,tv,fjernsyn,television"
         },
         "shop/second_hand": {
             "name": "Genbrugsbutik",
@@ -1819,9 +1792,6 @@
             "name": "Søtankstation",
             "terms": "Søtankstation, Bunkerolie"
         },
-        "highway": {
-            "name": "Vej"
-        },
         "shop/pastry": {
             "name": "Konditori",
             "terms": "Konditori"
@@ -1928,6 +1898,10 @@
             "name": "Advarselsskilt",
             "terms": "Advarselsskilt, stopskilt"
         },
+        "man_made/mast/communication": {
+            "name": "Kommunikartionsmast",
+            "terms": "mast,tårn,kommunikation,antenne,telefon,mobil"
+        },
         "amenity/place_of_worship/shinto": {
             "name": "Shinto-tempel",
             "terms": "tempel,shinto,shin,kami"
@@ -1938,6 +1912,10 @@
         },
         "railway/switch": {
             "name": "Jernbaneskiftespor"
+        },
+        "man_made/tower/communication": {
+            "name": "Kommunikationstårn",
+            "terms": "tårn,mast,kommunikation,antenne,tv,radio,rf"
         },
         "healthcare/optometrist": {
             "name": "Optiker",
@@ -2084,9 +2062,6 @@
         "leisure/dancing_school": {
             "name": "Danseskole"
         },
-        "leisure": {
-            "name": "Fritids"
-        },
         "amenity/post_office": {
             "name": "Postkontor",
             "terms": "Posthus, Postkontor"
@@ -2121,10 +2096,6 @@
         },
         "shop/boutique": {
             "name": "Boutique"
-        },
-        "area/highway": {
-            "name": "Vejbelægning",
-            "terms": "Vejbelægning, Vejoverflade"
         },
         "amenity/vending_machine/parking_tickets": {
             "name": "Parkeringsbilletautomat",
@@ -2309,6 +2280,10 @@
         "highway/service/alley": {
             "name": "Stræde (gade)",
             "terms": "Stræde (gade)"
+        },
+        "man_made/mast/communication/radio": {
+            "name": "Radioudsendelsesmast",
+            "terms": "mast,tårn,kommunikation,antenne,radio"
         },
         "shop/tailor": {
             "name": "Skrædder",
@@ -2504,9 +2479,6 @@
             "name": "Taxiway",
             "terms": "Taxiway"
         },
-        "craft/optician": {
-            "name": "Optiker"
-        },
         "waterway/waterfall": {
             "name": "Vandfald",
             "terms": "Vandfald"
@@ -2675,10 +2647,6 @@
         "landuse/farm": {
             "name": "Landbrugsjord"
         },
-        "natural/wood": {
-            "name": "Naturskov",
-            "terms": "træ,natur,skov,vild,fredsskov"
-        },
         "leisure/pitch/rugby_union": {
             "name": "Rugby bane",
             "terms": "Rugby bane"
@@ -2737,9 +2705,6 @@
         "natural/ridge": {
             "name": "Højderyg",
             "terms": "Højderyg, Bjergryg, Bjergkam, Bakkekam"
-        },
-        "natural": {
-            "name": "Naturlig"
         },
         "aerialway/magic_carpet": {
             "name": "Rullebane",
@@ -2849,12 +2814,6 @@
         },
         "place": {
             "name": "Lokalitet"
-        },
-        "power": {
-            "name": "Energi"
-        },
-        "aerialway/station": {
-            "name": "Skiliftstation"
         },
         "building/house": {
             "name": "Hus",
@@ -3013,6 +2972,10 @@
             "name": "Børnehavegrund",
             "terms": "Børnehavegrund"
         },
+        "man_made/tower/observation": {
+            "name": "Observationstårn",
+            "terms": "overvågning,overvåg,vagt,vagttårn"
+        },
         "waterway/weir": {
             "name": "Stemmeværk",
             "terms": "Stemmeværk"
@@ -3040,9 +3003,6 @@
         "tourism/attraction": {
             "name": "Turistattraktion",
             "terms": "Turistattraktion, Seværdighed"
-        },
-        "man_made": {
-            "name": "Menneskeskabt"
         },
         "barrier/kerb/lowered": {
             "name": "Sænket kantsten",

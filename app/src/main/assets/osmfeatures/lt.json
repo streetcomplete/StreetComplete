@@ -56,9 +56,6 @@
         "landuse/garages": {
             "name": "Garažų plotas"
         },
-        "railway": {
-            "name": "Geležinkelis"
-        },
         "building/university": {
             "name": "Universiteto pastatas",
             "terms": "universiteto pastatas,universitetas"
@@ -106,12 +103,6 @@
         "natural/bay": {
             "name": "Įlanka",
             "terms": "įlanka"
-        },
-        "leisure/firepit": {
-            "name": "Ugniaduobė"
-        },
-        "man_made/bridge": {
-            "name": "Tiltas"
         },
         "aeroway/runway": {
             "name": "Pakilimo takas",
@@ -341,19 +332,12 @@
         "amenity/recycling_centre": {
             "name": "Rūšiavimo centras"
         },
-        "craft/pottery": {
-            "name": "Keramikos amatininkas",
-            "terms": "Puodų amatininkas"
-        },
         "club": {
             "name": "Klubas"
         },
         "craft/roofer": {
             "name": "Stogdengys",
             "terms": "stogdengys"
-        },
-        "highway": {
-            "name": "Greitkelis"
         },
         "shop/massage": {
             "name": "Masažo parduotuvė"
@@ -708,9 +692,6 @@
         "leisure/dancing_school": {
             "name": "Šokių mokykla"
         },
-        "leisure": {
-            "name": "Laisvalaikis"
-        },
         "amenity/post_office": {
             "name": "Paštas",
             "terms": "paštas,pašto skyrius"
@@ -764,9 +745,6 @@
         },
         "shop/curtain": {
             "name": "Užuolaidų parduotuvė"
-        },
-        "area/highway": {
-            "name": "Kelio danga"
         },
         "leisure/pitch/tennis": {
             "name": "Teniso aikštelė",
@@ -1113,9 +1091,6 @@
         "office/travel_agent": {
             "name": "Kelionių agentūra"
         },
-        "craft/jeweler": {
-            "name": "Juvelyrikas"
-        },
         "office/telecommunication": {
             "name": "Telekomunikacijų biuras"
         },
@@ -1254,9 +1229,6 @@
             "name": "Siena",
             "terms": "Riba,Siena"
         },
-        "craft/optician": {
-            "name": "Optikas"
-        },
         "waterway/waterfall": {
             "name": "Krioklys"
         },
@@ -1376,9 +1348,6 @@
             "name": "Komercinis pastatas",
             "terms": "komercinis,pastatas,statinys"
         },
-        "attraction/pirate_ship": {
-            "name": "Piratų laivas"
-        },
         "office/educational_institution": {
             "name": "Edukacinis institutas",
             "terms": "Mokslo institutas,Mokslo įstaiga"
@@ -1424,9 +1393,6 @@
         "shop/electronics": {
             "name": "Elektronikos parduotuvė"
         },
-        "waterway": {
-            "name": "Vandens kelias"
-        },
         "amenity/clinic": {
             "name": "Klinika",
             "terms": "Klinika"
@@ -1457,10 +1423,6 @@
         },
         "building/farm_auxiliary": {
             "name": "Fermos pastatas"
-        },
-        "natural/wood": {
-            "name": "Miškas",
-            "terms": "medžiai"
         },
         "amenity/waste_basket": {
             "name": "Šiukšliadėžė",
@@ -1532,9 +1494,6 @@
             "name": "Informacija",
             "terms": "Informacija,Informacinis stendas"
         },
-        "natural": {
-            "name": "Natūralus"
-        },
         "natural/water/lake": {
             "name": "Ežeras",
             "terms": "ežeras"
@@ -1573,9 +1532,6 @@
         },
         "shop/hardware": {
             "name": "Techninės įrangos parduotuvė"
-        },
-        "amenity/car_sharing": {
-            "name": "Automobilių dalinimasis"
         },
         "leisure/nature_reserve": {
             "name": "Draustinis",
@@ -1621,9 +1577,6 @@
         "shop/e-cigarette": {
             "name": "El. cigarečių parduotuvė"
         },
-        "tourism": {
-            "name": "Turizmas"
-        },
         "amenity/public_bath": {
             "name": "Vieša vonia"
         },
@@ -1656,9 +1609,6 @@
         "shop/watches": {
             "name": "Laikrodžių parduotuvė"
         },
-        "landuse": {
-            "name": "Žemėnauda"
-        },
         "shop/gift": {
             "name": "Dovanų parduotuvė"
         },
@@ -1670,9 +1620,6 @@
         },
         "place": {
             "name": "Vietovė"
-        },
-        "power": {
-            "name": "Energija"
         },
         "shop/music": {
             "name": "Muzikos parduotuvė",
@@ -1963,9 +1910,6 @@
         },
         "amenity/register_office": {
             "name": "Registravimo biūras"
-        },
-        "man_made": {
-            "name": "Žmogaus sukurtas"
         },
         "leisure/adult_gaming_centre": {
             "name": "Suaugusiųjų lošimų vieta"

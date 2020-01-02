@@ -52,9 +52,6 @@
         "waterway/stream": {
             "name": "Stroom"
         },
-        "railway": {
-            "name": "Spoorlyn"
-        },
         "amenity/library": {
             "name": "Biblioteek"
         },
@@ -231,9 +228,6 @@
         "type/route": {
             "name": "Roete"
         },
-        "highway": {
-            "name": "Snelweg"
-        },
         "area": {
             "name": "Area"
         },
@@ -378,9 +372,6 @@
         "shop/electronics": {
             "name": "Elektronikawinkel"
         },
-        "waterway": {
-            "name": "Waterweg"
-        },
         "amenity/place_of_worship/buddhist": {
             "name": "Boeddhiste tempel"
         },
@@ -390,10 +381,6 @@
         },
         "type/route/bus": {
             "name": "Busroete"
-        },
-        "natural/wood": {
-            "name": "Woud",
-            "terms": "Woud"
         },
         "amenity/waste_basket": {
             "name": "Asblik"
@@ -470,9 +457,6 @@
         "tourism/information": {
             "name": "Inligting"
         },
-        "natural": {
-            "name": "Natuur"
-        },
         "shop/laundry": {
             "name": "Wassery"
         },
@@ -507,9 +491,6 @@
         },
         "shop/hardware": {
             "name": "Hardewarewinkel"
-        },
-        "amenity/car_sharing": {
-            "name": "Kardeel"
         },
         "shop/travel_agency": {
             "name": "Reisagentskap"
@@ -546,9 +527,6 @@
             "name": "Basketbalbaan",
             "terms": "Korfbalbaan"
         },
-        "tourism": {
-            "name": "Toerisme"
-        },
         "amenity/car_wash": {
             "name": "Karwas"
         },
@@ -575,12 +553,6 @@
         },
         "place": {
             "name": "Plek"
-        },
-        "power": {
-            "name": "Krag"
-        },
-        "leisure": {
-            "name": "Gemak"
         },
         "shop/music": {
             "name": "Musiekwinkel"
@@ -784,9 +756,6 @@
         },
         "historic/wayside_cross": {
             "name": "Padteken"
-        },
-        "man_made": {
-            "name": "Mens gemaak"
         },
         "shop/car_parts": {
             "name": "Onderdelewinkel"

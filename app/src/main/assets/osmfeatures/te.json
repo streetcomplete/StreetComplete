@@ -45,9 +45,6 @@
         "place/town": {
             "name": "పట్టణం"
         },
-        "railway": {
-            "name": "రైల్వే"
-        },
         "amenity/library": {
             "name": "గ్రంథాలయం"
         },

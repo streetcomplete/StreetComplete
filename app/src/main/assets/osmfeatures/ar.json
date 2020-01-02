@@ -244,10 +244,6 @@
             "name": "طبيب بيطري",
             "terms": "بيطري، طبيب حيوانات"
         },
-        "craft/pottery": {
-            "name": "مصنع فخار وخزف",
-            "terms": "فخار; خزف; بورسلين"
-        },
         "craft/roofer": {
             "name": "بنّاء السقف",
             "terms": "بنّاء السقف"
@@ -752,9 +748,6 @@
         "office/travel_agent": {
             "name": "وكالة السفر"
         },
-        "craft/jeweler": {
-            "name": "بائع مجوهرات"
-        },
         "landuse/industrial/slaughterhouse": {
             "name": "مسلخ",
             "terms": "مسلخ"
@@ -914,9 +907,6 @@
             "name": "رابط لطريق سريع",
             "terms": "رابط لطريق سريع"
         },
-        "amenity/car_pooling": {
-            "name": "مشاركة السيارة"
-        },
         "place/isolated_dwelling": {
             "name": "مساكن متفرقة",
             "terms": "مساكن متفرقة"
@@ -951,10 +941,6 @@
         "man_made/observatory": {
             "name": "مرصد",
             "terms": "مرصد"
-        },
-        "attraction/pirate_ship": {
-            "name": "سفينة قراصنة",
-            "terms": "سفينة قراصنة"
         },
         "healthcare/alternative/chiropractic": {
             "name": "المعالج للأمراض يدويا",
@@ -1006,9 +992,6 @@
         "shop/electronics": {
             "name": "محل إلكترونيات",
             "terms": "محل إلكترونيات"
-        },
-        "waterway": {
-            "name": "مجرى مائي"
         },
         "amenity/clinic": {
             "name": "عيادة",
@@ -1153,10 +1136,6 @@
             "name": "محل أجهزة",
             "terms": "محل بيع عتاد"
         },
-        "amenity/car_sharing": {
-            "name": "محل مشاركة سيارة",
-            "terms": "محل مشاركة السيارات"
-        },
         "tourism/zoo": {
             "name": "حديقة حيوانات",
             "terms": "حديقة الحيوانات"
@@ -1186,9 +1165,6 @@
         "public_transport/stop_position_ferry": {
             "name": "موقع وقوف عبّارات"
         },
-        "tourism": {
-            "name": "سياحي"
-        },
         "amenity/public_bath": {
             "name": "حمام عام"
         },
@@ -1211,9 +1187,6 @@
         "amenity/parking_entrance": {
             "name": "مدخل ومخرج جراج وقوف",
             "terms": "مدخل, مخرج"
-        },
-        "landuse": {
-            "name": "أرض"
         },
         "waterway/riverbank": {
             "name": "ضفة نهر"
@@ -1496,9 +1469,6 @@
             "name": "مجرى",
             "terms": "مجرى، جدول مائي"
         },
-        "railway": {
-            "name": "سكة حديد"
-        },
         "building/university": {
             "name": "مبنى جامعي",
             "terms": "جامعة; كلية"
@@ -1533,16 +1503,8 @@
         "shop/copyshop": {
             "name": "متجر نسخ وتصوير"
         },
-        "leisure/firepit": {
-            "name": "موقد نار",
-            "terms": "موقد"
-        },
         "public_transport/station_ferry": {
             "name": "محطة عبّارة"
-        },
-        "man_made/bridge": {
-            "name": "جسر",
-            "terms": "جسر"
         },
         "railway/monorail": {
             "name": "سكة حديدة مفردة",
@@ -1721,9 +1683,6 @@
         "waterway/fuel": {
             "name": "محطة وقود بحري",
             "terms": "وقود بحري"
-        },
-        "highway": {
-            "name": "طريق سريع"
         },
         "shop/pastry": {
             "name": "متجر حلويات",
@@ -2000,9 +1959,6 @@
         "public_transport/station_trolleybus": {
             "name": "محطة حافلة كهربائية"
         },
-        "leisure": {
-            "name": "الترفيه"
-        },
         "amenity/post_office": {
             "name": "مكتب البريد",
             "terms": "دائرة البريد, مكتب البريد, مكتب بريد"
@@ -2044,9 +2000,6 @@
         },
         "shop/boutique": {
             "name": "بوتيك"
-        },
-        "area/highway": {
-            "name": "سطح الطريق"
         },
         "amenity/vending_machine/parking_tickets": {
             "name": "ماكينة بيع تذاكر وقوف",
@@ -2593,10 +2546,6 @@
         "landuse/farm": {
             "name": "أرض زراعية"
         },
-        "natural/wood": {
-            "name": "غابة أخشاب",
-            "terms": "غابة أخشاب"
-        },
         "amenity/restaurant/chinese": {
             "name": "مطعم صيني"
         },
@@ -2656,9 +2605,6 @@
         "natural/ridge": {
             "name": "نتوء جبلي",
             "terms": "نتوء جبلي، قمة جبل"
-        },
-        "natural": {
-            "name": "طبيعي"
         },
         "public_transport/station_tram": {
             "name": "محطة ترام"
@@ -2735,12 +2681,6 @@
         },
         "place": {
             "name": "قصر"
-        },
-        "power": {
-            "name": "الطاقة"
-        },
-        "aerialway/station": {
-            "name": "محطة النقل بالكابلات"
         },
         "building/house": {
             "name": "منزل",
@@ -2926,9 +2866,6 @@
         "tourism/attraction": {
             "name": "معلم سياحي",
             "terms": "معلم سياحي, مكان سياحي"
-        },
-        "man_made": {
-            "name": "مباني صناعية"
         },
         "public_transport/station_subway": {
             "name": "محطة مترو",

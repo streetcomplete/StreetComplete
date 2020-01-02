@@ -260,10 +260,6 @@
             "name": "獸醫",
             "terms": "獸醫, 動物醫生"
         },
-        "craft/pottery": {
-            "name": "陶器",
-            "terms": "陶器,陶瓷,陶藝"
-        },
         "craft/roofer": {
             "name": "屋頂工程",
             "terms": "屋頂工,蓋屋頂"
@@ -804,9 +800,6 @@
         "office/travel_agent": {
             "name": "旅行社"
         },
-        "craft/jeweler": {
-            "name": "珠寶店"
-        },
         "landuse/industrial/slaughterhouse": {
             "name": "屠場",
             "terms": "Slaughterhouse,屠宰場"
@@ -966,10 +959,6 @@
             "name": "快速公路連接路",
             "terms": "Motorway Link,高速公路匝道,高速公路引道,高速公路駁路,高速公路連接路"
         },
-        "amenity/car_pooling": {
-            "name": "汽車共乘",
-            "terms": "Car Pooling, 汽車共乘"
-        },
         "place/isolated_dwelling": {
             "name": "孤立民居",
             "terms": "Isolated Dwelling,孤立居所,孤立民居,孤離居所"
@@ -1005,10 +994,6 @@
         "man_made/pipeline": {
             "name": "管道",
             "terms": "Pipeline,水管,管道,\t導管,管線"
-        },
-        "attraction/pirate_ship": {
-            "name": "海盜船",
-            "terms": "Pirate Ship,海盜船"
         },
         "healthcare/alternative/chiropractic": {
             "name": "脊醫",
@@ -1065,9 +1050,6 @@
         "shop/electronics": {
             "name": "電子舖",
             "terms": "Electronics Store,電器店,電子舖"
-        },
-        "waterway": {
-            "name": "水道"
         },
         "amenity/clinic": {
             "name": "診所",
@@ -1217,10 +1199,6 @@
             "name": "五金店",
             "terms": "Hardware Store,五金店,五金舖"
         },
-        "amenity/car_sharing": {
-            "name": "汽車共享站",
-            "terms": "Car Sharing,共用車,共用車處,汽車共享站"
-        },
         "shop/funeral_directors": {
             "name": "殯儀館",
             "terms": "殯儀館"
@@ -1260,9 +1238,6 @@
             "name": "渡輪停止位置",
             "terms": "Ferry Stopping Location, 小輪停止位置"
         },
-        "tourism": {
-            "name": "旅遊設施"
-        },
         "amenity/public_bath": {
             "name": "公共浴室",
             "terms": "Public Bath,公共澡堂,公共浴池,錢湯,公共浴場"
@@ -1286,9 +1261,6 @@
         "amenity/parking_entrance": {
             "name": "停車場入口/出口",
             "terms": "停車場入口,停車場出口"
-        },
-        "landuse": {
-            "name": "土地利用"
         },
         "waterway/riverbank": {
             "name": "河岸"
@@ -1379,10 +1351,6 @@
         "craft/electrician": {
             "name": "電工",
             "terms": "電氣工程,電業工匠"
-        },
-        "attraction/drop_tower": {
-            "name": "跳樓機",
-            "terms": "Drop Tower,自由落體"
         },
         "historic/archaeological_site": {
             "name": "考古地點",
@@ -1560,10 +1528,6 @@
             "name": "瑜伽中心",
             "terms": "Yoga Studio, 瑜伽中心, 瑜伽教室"
         },
-        "aerialway/t-bar": {
-            "name": "T型吊桿",
-            "terms": "T型吊桿"
-        },
         "historic/boundary_stone": {
             "name": "界石",
             "terms": "Boundary Stone,界樁,界石"
@@ -1596,9 +1560,6 @@
             "name": "溪流",
             "terms": "Stream,小河,小溪,涌,溪,溪流, 河溪,溪澗"
         },
-        "railway": {
-            "name": "鐵路"
-        },
         "building/university": {
             "name": "大學建築物",
             "terms": "大學校舍"
@@ -1629,14 +1590,6 @@
         "shop/copyshop": {
             "name": "影印店",
             "terms": "影印店"
-        },
-        "leisure/firepit": {
-            "name": "火坑",
-            "terms": "營火坑"
-        },
-        "man_made/bridge": {
-            "name": "橋樑",
-            "terms": "bridge,橋"
         },
         "railway/monorail": {
             "name": "單軌鐵路",
@@ -1813,9 +1766,6 @@
         "waterway/fuel": {
             "name": "船舶加油站",
             "terms": "船隻加燃料站,船隻加油站,船用加油站"
-        },
-        "highway": {
-            "name": "公路"
         },
         "shop/pastry": {
             "name": "榚點店",
@@ -2088,9 +2038,6 @@
             "name": "外幣兌換",
             "terms": "錢幣兌換,換錢"
         },
-        "leisure": {
-            "name": "消閒"
-        },
         "amenity/post_office": {
             "name": "郵政局",
             "terms": "Post Office,郵局,郵政局,香港郵政"
@@ -2133,10 +2080,6 @@
         },
         "shop/boutique": {
             "name": "時裝店"
-        },
-        "area/highway": {
-            "name": "路面物質",
-            "terms": "路面材質,路面"
         },
         "amenity/vending_machine/parking_tickets": {
             "name": "泊車票售賣機",
@@ -2510,9 +2453,6 @@
             "name": "滑行道",
             "terms": "Taxiway,滑行道,機場滑行道,停機坪滑行道"
         },
-        "craft/optician": {
-            "name": "眼鏡店"
-        },
         "waterway/waterfall": {
             "name": "瀑布",
             "terms": "Waterfall,瀑布"
@@ -2693,10 +2633,6 @@
         "landuse/farm": {
             "name": "農地"
         },
-        "natural/wood": {
-            "name": "樹林",
-            "terms": "Wood,林,樹林"
-        },
         "amenity/restaurant/chinese": {
             "name": "中式餐廳",
             "terms": "中國餐廳"
@@ -2756,9 +2692,6 @@
             "name": "山脊",
             "terms": "Ridge,山脊"
         },
-        "natural": {
-            "name": "自然景觀"
-        },
         "aerialway/magic_carpet": {
             "name": "輸送帶",
             "terms": "Magic Carpet Lift,輸送帶"
@@ -2781,10 +2714,6 @@
         "man_made/mast": {
             "name": "天線塔",
             "terms": "Mast,天線桿"
-        },
-        "attraction/river_rafting": {
-            "name": "激流",
-            "terms": "River Rafting,激流"
         },
         "amenity/payment_terminal": {
             "name": "繳費終端機",
@@ -2871,12 +2800,6 @@
         },
         "place": {
             "name": "地方"
-        },
-        "power": {
-            "name": "發電廠"
-        },
-        "aerialway/station": {
-            "name": "纜車站"
         },
         "building/house": {
             "name": "洋房",
@@ -3063,9 +2986,6 @@
         "tourism/attraction": {
             "name": "觀光名勝",
             "terms": "Tourist Attraction,旅行名勝,旅遊名勝,觀光點,觀光景點"
-        },
-        "man_made": {
-            "name": "人造"
         },
         "golf/fairway": {
             "name": "球道",

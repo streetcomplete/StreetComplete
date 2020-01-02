@@ -48,9 +48,6 @@
         "waterway/stream": {
             "name": "溪流"
         },
-        "railway": {
-            "name": "铁路"
-        },
         "amenity/library": {
             "name": "图书馆"
         },
@@ -225,9 +222,6 @@
         "type/route": {
             "name": "路线"
         },
-        "highway": {
-            "name": "公路"
-        },
         "area": {
             "name": "面"
         },
@@ -363,17 +357,11 @@
         "shop/electronics": {
             "name": "电器店"
         },
-        "waterway": {
-            "name": "航道"
-        },
         "amenity/cinema": {
             "name": "电影院"
         },
         "type/route/bus": {
             "name": "公共汽车路线"
-        },
-        "natural/wood": {
-            "name": "树林"
         },
         "amenity/waste_basket": {
             "name": "垃圾箱"
@@ -444,9 +432,6 @@
         "tourism/information": {
             "name": "资讯"
         },
-        "natural": {
-            "name": "自然物件"
-        },
         "shop/laundry": {
             "name": "洗衣店"
         },
@@ -513,9 +498,6 @@
         "leisure/pitch/basketball": {
             "name": "篮球场"
         },
-        "tourism": {
-            "name": "旅游设施"
-        },
         "amenity/car_wash": {
             "name": "洗车"
         },
@@ -542,12 +524,6 @@
         },
         "place": {
             "name": "地点"
-        },
-        "power": {
-            "name": "电力设施"
-        },
-        "leisure": {
-            "name": "休闲场所"
         },
         "shop/music": {
             "name": "音乐店"
@@ -737,9 +713,6 @@
         },
         "historic/wayside_cross": {
             "name": "路边十字架"
-        },
-        "man_made": {
-            "name": "人造物"
         },
         "shop/car_parts": {
             "name": "汽车配件店"

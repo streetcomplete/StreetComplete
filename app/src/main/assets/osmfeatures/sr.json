@@ -161,10 +161,6 @@
             "name": "Ветеринарница",
             "terms": "ветеринарница,ветеринар"
         },
-        "craft/pottery": {
-            "name": "Грнчар",
-            "terms": "грнчар, грнчарија"
-        },
         "craft/roofer": {
             "name": "Кровар"
         },
@@ -234,9 +230,6 @@
         },
         "leisure/pitch/soccer": {
             "name": "Фудбалски терен"
-        },
-        "natural/water/river": {
-            "name": "Река"
         },
         "type/multipolygon": {
             "name": "Мултиполигон"
@@ -513,9 +506,6 @@
         "shop/fashion": {
             "name": "Бутик"
         },
-        "natural/water/canal": {
-            "name": "Канал"
-        },
         "power/substation": {
             "name": "Трафо-станица",
             "terms": "трафо-станица,подцентрала,испостава,електро-испостава"
@@ -558,9 +548,6 @@
         },
         "office/travel_agent": {
             "name": "Туристичка агенција"
-        },
-        "craft/jeweler": {
-            "name": "Златар"
         },
         "historic/tomb": {
             "name": "Гроб",
@@ -625,9 +612,6 @@
             "name": "Одбојкашки терен на песку",
             "terms": "терен за одбојку на песку,одбојкашки терен на песку"
         },
-        "man_made/tunnel": {
-            "name": "Тунел"
-        },
         "tourism/artwork/mural": {
             "name": "Мурал"
         },
@@ -690,10 +674,6 @@
         "man_made/observatory": {
             "name": "Обзерваторија"
         },
-        "attraction/pirate_ship": {
-            "name": "Гусарски брод",
-            "terms": "гусарски брод,пиратски брод,gusarski brod,piratski brod"
-        },
         "healthcare/alternative/chiropractic": {
             "name": "Киропрактичар"
         },
@@ -733,9 +713,6 @@
         },
         "shop/electronics": {
             "name": "Електроника"
-        },
-        "waterway": {
-            "name": "Водоток"
         },
         "amenity/clinic": {
             "name": "Клиника"
@@ -832,9 +809,6 @@
         "shop/hardware": {
             "name": "Гвожђара"
         },
-        "amenity/car_sharing": {
-            "name": "Дељење возила"
-        },
         "shop/funeral_directors": {
             "name": "Загробна опрема"
         },
@@ -854,9 +828,6 @@
         },
         "highway/stop": {
             "name": "Стоп"
-        },
-        "tourism": {
-            "name": "Туризам"
         },
         "traffic_sign": {
             "name": "Саобраћајни знак"
@@ -878,9 +849,6 @@
         },
         "amenity/parking_entrance": {
             "name": "Улаз/излаз јавне гараже"
-        },
-        "landuse": {
-            "name": "Намена земљишта"
         },
         "waterway/riverbank": {
             "name": "Речно корито"
@@ -937,10 +905,6 @@
         },
         "craft/electrician": {
             "name": "Електричар"
-        },
-        "attraction/drop_tower": {
-            "name": "Чекић-торањ",
-            "terms": "чекић-торањ"
         },
         "historic/archaeological_site": {
             "name": "Археолошко налазиште"
@@ -1071,9 +1035,6 @@
         "waterway/stream": {
             "name": "Поток"
         },
-        "railway": {
-            "name": "Железничка пруга"
-        },
         "building/university": {
             "name": "Универзитетска зграда"
         },
@@ -1096,15 +1057,8 @@
             "name": "Копирница",
             "terms": "копирница, фотокомпирница"
         },
-        "leisure/firepit": {
-            "name": "Огњиште"
-        },
         "leisure/pitch/baseball": {
             "name": "Терен за бејзбол"
-        },
-        "man_made/bridge": {
-            "name": "Мост",
-            "terms": "мост,кобилица,мостић"
         },
         "railway/monorail": {
             "name": "Пруга са једним колосеком"
@@ -1218,9 +1172,6 @@
         },
         "club": {
             "name": "Клуб"
-        },
-        "highway": {
-            "name": "Ауто-пут"
         },
         "shop/pastry": {
             "name": "Посластичарница",
@@ -1407,9 +1358,6 @@
             "name": "Викендица",
             "terms": "викендица,одмориште"
         },
-        "leisure": {
-            "name": "Рекреација"
-        },
         "amenity/post_office": {
             "name": "Пошта"
         },
@@ -1430,9 +1378,6 @@
         },
         "shop/boutique": {
             "name": "Бутик"
-        },
-        "area/highway": {
-            "name": "Површина пута"
         },
         "amenity/vending_machine/parking_tickets": {
             "name": "Аутомат за паркинг"
@@ -1696,9 +1641,6 @@
         "aeroway/taxiway": {
             "name": "Такси пут"
         },
-        "craft/optician": {
-            "name": "Оптичар"
-        },
         "waterway/waterfall": {
             "name": "Водопад",
             "terms": "водопад, слап"
@@ -1814,9 +1756,6 @@
         "type/route/bus": {
             "name": "Линија аутобуса"
         },
-        "natural/wood": {
-            "name": "Шума"
-        },
         "amenity/restaurant/chinese": {
             "name": "Кинески ресторан"
         },
@@ -1860,16 +1799,9 @@
             "name": "Гребен",
             "terms": "гребен,грба носа,слеме"
         },
-        "natural": {
-            "name": "Природно"
-        },
         "man_made/mast": {
             "name": "Бандера",
             "terms": "бандера,јарбол,стуб"
-        },
-        "attraction/river_rafting": {
-            "name": "Сплаварење",
-            "terms": "сплаварење,рафтинг,речни рафтинг,речно сплаварење"
         },
         "amenity/vending_machine/cigarettes": {
             "name": "Аутомат за цигарете"
@@ -1927,9 +1859,6 @@
         },
         "place": {
             "name": "Место"
-        },
-        "power": {
-            "name": "Енергија"
         },
         "building/house": {
             "name": "Кућа",
@@ -2061,9 +1990,6 @@
         },
         "tourism/attraction": {
             "name": "Туристичка атракција"
-        },
-        "man_made": {
-            "name": "Људска творевина"
         },
         "golf/fairway": {
             "name": "Пловни канал"

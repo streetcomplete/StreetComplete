@@ -229,9 +229,6 @@
         "leisure/amusement_arcade": {
             "name": "Spilasalur"
         },
-        "craft/pottery": {
-            "name": "Leirkeragerð"
-        },
         "craft/roofer": {
             "name": "Þaksmíði"
         },
@@ -315,9 +312,6 @@
         },
         "leisure/pitch/soccer": {
             "name": "Knattspyrnuvöllur"
-        },
-        "natural/water/river": {
-            "name": "Á"
         },
         "type/multipolygon": {
             "name": "Fjölhyrningur"
@@ -679,9 +673,6 @@
         "shop/fashion": {
             "name": "Tískuverslun"
         },
-        "natural/water/canal": {
-            "name": "Síki"
-        },
         "power/substation": {
             "name": "Undirstöð"
         },
@@ -744,9 +735,6 @@
         },
         "highway/footway/unmarked-raised": {
             "name": "Ómerkt gangbraut (upphækkuð)"
-        },
-        "craft/jeweler": {
-            "name": "Skartgripasali"
         },
         "landuse/industrial/slaughterhouse": {
             "name": "Sláturhús"
@@ -841,9 +829,6 @@
         "highway/footway/marked-raised": {
             "name": "Merkt gangbraut (upphækkuð)"
         },
-        "man_made/tunnel": {
-            "name": "Göng"
-        },
         "public_transport/stop_position_aerialway": {
             "name": "Staðsetning stöðvunar víralyftu"
         },
@@ -901,9 +886,6 @@
         "highway/motorway_link": {
             "name": "Hraðbrautarrein"
         },
-        "amenity/car_pooling": {
-            "name": "Bílasamnýting"
-        },
         "place/isolated_dwelling": {
             "name": "Einöngruð búseta"
         },
@@ -936,9 +918,6 @@
         },
         "man_made/observatory": {
             "name": "Skoðunarstöð"
-        },
-        "attraction/pirate_ship": {
-            "name": "Sjóræningjaskip"
         },
         "healthcare/alternative/chiropractic": {
             "name": "Hnykkjalæknir"
@@ -984,9 +963,6 @@
         },
         "shop/electronics": {
             "name": "Rafeindatækjaverslun"
-        },
-        "waterway": {
-            "name": "Siglingaleið"
         },
         "amenity/clinic": {
             "name": "Læknastofa"
@@ -1123,9 +1099,6 @@
         "shop/hardware": {
             "name": "Byggingavöruverslun"
         },
-        "amenity/car_sharing": {
-            "name": "Bíladeiling"
-        },
         "shop/funeral_directors": {
             "name": "Útfararheimili"
         },
@@ -1153,9 +1126,6 @@
         "public_transport/stop_position_ferry": {
             "name": "Staðsetning stöðvunar ferju"
         },
-        "tourism": {
-            "name": "Ferðaþjónusta"
-        },
         "traffic_sign": {
             "name": "Umferðarmerki"
         },
@@ -1182,9 +1152,6 @@
         },
         "amenity/parking_entrance": {
             "name": "Inngangur/Útgangur bílastæðahúss"
-        },
-        "landuse": {
-            "name": "Landnotkun"
         },
         "waterway/riverbank": {
             "name": "Árbakki"
@@ -1284,9 +1251,6 @@
         },
         "craft/electrician": {
             "name": "Rafvirki"
-        },
-        "attraction/drop_tower": {
-            "name": "Fallturn"
         },
         "historic/archaeological_site": {
             "name": "Fornleifar"
@@ -1453,9 +1417,6 @@
         "leisure/track/running": {
             "name": "Hlaupabraut"
         },
-        "aerialway/t-bar": {
-            "name": "T-lyfta"
-        },
         "historic/boundary_stone": {
             "name": "Landamerkjasteinn"
         },
@@ -1486,9 +1447,6 @@
         "waterway/stream": {
             "name": "Straumvatn"
         },
-        "railway": {
-            "name": "Lest"
-        },
         "building/university": {
             "name": "Háskólabygging"
         },
@@ -1516,17 +1474,11 @@
         "shop/copyshop": {
             "name": "Ljósritunarstofa"
         },
-        "leisure/firepit": {
-            "name": "Eldstæði"
-        },
         "public_transport/station_ferry": {
             "name": "Ferjustöð / Umferðarmiðstöð"
         },
         "leisure/pitch/baseball": {
             "name": "Hafnaboltavöllur"
-        },
-        "man_made/bridge": {
-            "name": "Brú"
         },
         "railway/monorail": {
             "name": "Einteinungur"
@@ -1698,9 +1650,6 @@
         },
         "waterway/fuel": {
             "name": "Eldsneytisstöð fyrir báta"
-        },
-        "highway": {
-            "name": "Þjóðvegur"
         },
         "shop/pastry": {
             "name": "Kökubúð"
@@ -1963,9 +1912,6 @@
         "public_transport/station_trolleybus": {
             "name": "Strætisvagnastöð / Umferðarmiðstöð"
         },
-        "leisure": {
-            "name": "Skemmtun"
-        },
         "amenity/post_office": {
             "name": "Pósthús"
         },
@@ -2007,9 +1953,6 @@
         },
         "shop/boutique": {
             "name": "Búð"
-        },
-        "area/highway": {
-            "name": "Yfirborð vegar"
         },
         "amenity/vending_machine/parking_tickets": {
             "name": "Bílastæðamiðasjálfsali"
@@ -2179,9 +2122,6 @@
         },
         "man_made/survey_point": {
             "name": "Útsýnisstaður"
-        },
-        "junction/roundabout": {
-            "name": "Hringtorg"
         },
         "type/route/power": {
             "name": "Orkuflutningsleið"
@@ -2399,9 +2339,6 @@
             "name": "Akbraut flugvéla",
             "terms": "flugrein,færslubraut"
         },
-        "craft/optician": {
-            "name": "Gleraugnasali"
-        },
         "seamark/beacon_isolated_danger": {
             "name": "Hættuviti"
         },
@@ -2563,9 +2500,6 @@
         "type/route/bus": {
             "name": "Strætóleið"
         },
-        "natural/water/stream": {
-            "name": "Lækur"
-        },
         "type/route_master": {
             "name": "Leiðastjóri"
         },
@@ -2574,9 +2508,6 @@
         },
         "place/city_block": {
             "name": "Byggingareitur"
-        },
-        "natural/wood": {
-            "name": "Skógur"
         },
         "amenity/restaurant/chinese": {
             "name": "Kínverskt veitingahús"
@@ -2638,9 +2569,6 @@
         "natural/ridge": {
             "name": "Hryggur"
         },
-        "natural": {
-            "name": "Náttúrulegt"
-        },
         "aerialway/magic_carpet": {
             "name": "Töfrateppi"
         },
@@ -2662,9 +2590,6 @@
         },
         "man_made/mast": {
             "name": "Mastur"
-        },
-        "attraction/river_rafting": {
-            "name": "Flúðasiglingar"
         },
         "leisure/bird_hide": {
             "name": "Fuglaskoðunarskýli"
@@ -2738,14 +2663,8 @@
         "place": {
             "name": "Staður"
         },
-        "power": {
-            "name": "Orka"
-        },
         "leisure/fitness_station/push-up": {
             "name": "Armbeygjustöð"
-        },
-        "aerialway/station": {
-            "name": "Lyftustöð"
         },
         "building/house": {
             "name": "Einbýlishús"
@@ -2923,9 +2842,6 @@
         },
         "tourism/attraction": {
             "name": "Ferðamannagildra"
-        },
-        "man_made": {
-            "name": "Manngert"
         },
         "barrier/kerb/lowered": {
             "name": "Lágur kantur"

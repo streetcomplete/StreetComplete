@@ -176,9 +176,6 @@
             "name": "Veterinariu",
             "terms": "Clínica veterinaria"
         },
-        "craft/pottery": {
-            "name": "Alfarería"
-        },
         "craft/roofer": {
             "name": "Reteyador",
             "terms": "Reparación de teyaos, Cubiertes"
@@ -594,9 +591,6 @@
         "office/travel_agent": {
             "name": "Axencia de viaxes"
         },
-        "craft/jeweler": {
-            "name": "Xoyería"
-        },
         "landuse/industrial/slaughterhouse": {
             "name": "Mataderu"
         },
@@ -766,9 +760,6 @@
         "shop/electronics": {
             "name": "Electrónica"
         },
-        "waterway": {
-            "name": "Vía acuática"
-        },
         "amenity/clinic": {
             "name": "Clínica",
             "terms": "Urxencies,Hospital"
@@ -879,9 +870,6 @@
         "shop/hardware": {
             "name": "Ferretería"
         },
-        "amenity/car_sharing": {
-            "name": "Compartir coche"
-        },
         "shop/funeral_directors": {
             "name": "Velatoriu",
             "terms": "Tanatoriu, Funeraria"
@@ -908,9 +896,6 @@
         "emergency/no": {
             "name": "Accesu d'emerxencia Non"
         },
-        "tourism": {
-            "name": "Turismu"
-        },
         "amenity/public_bath": {
             "name": "Baños públicos"
         },
@@ -928,9 +913,6 @@
         },
         "amenity/parking_entrance": {
             "name": "Entrada/Salida de garaxe"
-        },
-        "landuse": {
-            "name": "Usu del terrén"
         },
         "waterway/riverbank": {
             "name": "Ribera"
@@ -1131,9 +1113,6 @@
         "leisure/fitness_centre/yoga": {
             "name": "Centru de yoga"
         },
-        "aerialway/t-bar": {
-            "name": "Telesquí de T"
-        },
         "historic/boundary_stone": {
             "name": "Finxu"
         },
@@ -1156,9 +1135,6 @@
         "waterway/stream": {
             "name": "Regueru",
             "terms": "Regatu, regueru"
-        },
-        "railway": {
-            "name": "Ferrocarril"
         },
         "building/university": {
             "name": "Edificiu universitariu"
@@ -1191,15 +1167,8 @@
         "shop/copyshop": {
             "name": "Copistería"
         },
-        "leisure/firepit": {
-            "name": "Llar",
-            "terms": "Parrilla, asador, fueu"
-        },
         "public_transport/station_ferry": {
             "name": "Estación / Terminal de ferry"
-        },
-        "man_made/bridge": {
-            "name": "Ponte"
         },
         "railway/monorail": {
             "name": "Monocarril"
@@ -1334,9 +1303,6 @@
         "waterway/fuel": {
             "name": "Bomba de combustible marín",
             "terms": "gasolinera de combustible marín"
-        },
-        "highway": {
-            "name": "Estrada"
         },
         "shop/pastry": {
             "name": "Pastelería"
@@ -1527,9 +1493,6 @@
             "name": "Cambiu de moneda",
             "terms": "Divisa, cambiu"
         },
-        "leisure": {
-            "name": "Recréu"
-        },
         "amenity/post_office": {
             "name": "Oficina de correos",
             "terms": "Oficina de correos, Carta, Paquete, Postal"
@@ -1558,10 +1521,6 @@
         },
         "shop/boutique": {
             "name": "Boutique"
-        },
-        "area/highway": {
-            "name": "Superficie de la carretera",
-            "terms": "firme,pisu,suelu"
         },
         "amenity/vending_machine/parking_tickets": {
             "name": "Máquina de pagu d'aparcamientu",
@@ -1851,9 +1810,6 @@
         "aeroway/taxiway": {
             "name": "Cai de rodaxe"
         },
-        "craft/optician": {
-            "name": "Óptica"
-        },
         "waterway/waterfall": {
             "name": "Tabayón",
             "terms": "cascada, semeira"
@@ -1987,9 +1943,6 @@
         "landuse/farm": {
             "name": "Tierra de llabor"
         },
-        "natural/wood": {
-            "name": "Viesca"
-        },
         "leisure/pitch/rugby_union": {
             "name": "Campu de rugby a 15"
         },
@@ -2028,9 +1981,6 @@
         },
         "landuse/commercial": {
             "name": "Área comercial"
-        },
-        "natural": {
-            "name": "Natural"
         },
         "aerialway/magic_carpet": {
             "name": "Alfombra máxica",
@@ -2103,12 +2053,6 @@
         },
         "place": {
             "name": "Llugar"
-        },
-        "power": {
-            "name": "Enerxía"
-        },
-        "aerialway/station": {
-            "name": "Estación de remonte"
         },
         "building/house": {
             "name": "Casa"
@@ -2245,9 +2189,6 @@
         },
         "tourism/attraction": {
             "name": "Atracción turística"
-        },
-        "man_made": {
-            "name": "Construcciones"
         },
         "golf/fairway": {
             "name": "Cai de golf"

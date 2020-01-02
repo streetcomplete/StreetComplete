@@ -118,6 +118,9 @@
         "amenity/planetarium": {
             "name": "Planetarium"
         },
+        "highway/track": {
+            "name": "Traktorvei"
+        },
         "shop/wine": {
             "name": "Vinbutikk"
         },
@@ -156,9 +159,6 @@
         },
         "amenity/veterinary": {
             "name": "Veterinær"
-        },
-        "craft/pottery": {
-            "name": "Keramikk"
         },
         "craft/roofer": {
             "name": "Taktekker"
@@ -228,9 +228,6 @@
         },
         "leisure/pitch/soccer": {
             "name": "Fotballbane"
-        },
-        "natural/water/river": {
-            "name": "Elv"
         },
         "type/multipolygon": {
             "name": "Multipolygon"
@@ -502,9 +499,6 @@
         "shop/fashion": {
             "name": "Motebutikk"
         },
-        "natural/water/canal": {
-            "name": "Kanal"
-        },
         "amenity/fast_food": {
             "name": "Hurtigmat"
         },
@@ -549,9 +543,6 @@
         },
         "piste/downhill": {
             "name": "Slalåmbakke"
-        },
-        "craft/jeweler": {
-            "name": "Gullsmed"
         },
         "landuse/industrial/slaughterhouse": {
             "name": "Slakteri"
@@ -682,9 +673,6 @@
         "craft/photographer": {
             "name": "Fotograf"
         },
-        "junction/circular": {
-            "name": "Rundkjøring"
-        },
         "public_transport/platform/bus_point": {
             "name": "Busstopp"
         },
@@ -705,9 +693,6 @@
         },
         "man_made/observatory": {
             "name": "Observatorium"
-        },
-        "attraction/pirate_ship": {
-            "name": "Piratskip"
         },
         "healthcare/alternative/chiropractic": {
             "name": "Kiropraktor"
@@ -738,9 +723,6 @@
         },
         "shop/electronics": {
             "name": "Elektronikkbutikk"
-        },
-        "waterway": {
-            "name": "Vannvei"
         },
         "amenity/clinic": {
             "name": "Klinikk"
@@ -853,9 +835,6 @@
         "shop/hardware": {
             "name": "Jernvarehandel"
         },
-        "amenity/car_sharing": {
-            "name": "Bildeling"
-        },
         "shop/funeral_directors": {
             "name": "Begravelsesagent"
         },
@@ -873,9 +852,6 @@
         },
         "highway/stop": {
             "name": "Stoppskilt"
-        },
-        "tourism": {
-            "name": "Turisme"
         },
         "traffic_sign": {
             "name": "Trafikkskilt"
@@ -900,9 +876,6 @@
         },
         "amenity/parking_entrance": {
             "name": "Innkjøring/utkjøring parkeringsgarasje"
-        },
-        "landuse": {
-            "name": "Arealbruk"
         },
         "waterway/riverbank": {
             "name": "Elvebredd"
@@ -1102,9 +1075,6 @@
         "leisure/fitness_centre/yoga": {
             "name": "Yogasenter"
         },
-        "aerialway/t-bar": {
-            "name": "T-krok"
-        },
         "historic/boundary_stone": {
             "name": "Grensestein"
         },
@@ -1135,9 +1105,6 @@
         "waterway/stream": {
             "name": "Bekk"
         },
-        "railway": {
-            "name": "Jernbane"
-        },
         "building/university": {
             "name": "Universitetsbygning"
         },
@@ -1159,14 +1126,8 @@
         "shop/copyshop": {
             "name": "Printsjappe"
         },
-        "leisure/firepit": {
-            "name": "Bålsted"
-        },
         "leisure/pitch/baseball": {
             "name": "Baseballbane"
-        },
-        "man_made/bridge": {
-            "name": "Bru"
         },
         "railway/monorail": {
             "name": "Monorail"
@@ -1296,9 +1257,6 @@
         },
         "club": {
             "name": "Klubb"
-        },
-        "highway": {
-            "name": "Vei"
         },
         "shop/pastry": {
             "name": "Bakeri"
@@ -1480,9 +1438,6 @@
         "leisure/dancing_school": {
             "name": "Danseskole"
         },
-        "leisure": {
-            "name": "Fritid"
-        },
         "amenity/post_office": {
             "name": "Postkontor"
         },
@@ -1653,9 +1608,6 @@
         },
         "man_made/survey_point": {
             "name": "Oppmålingspunkt"
-        },
-        "junction/roundabout": {
-            "name": "Rundkjøring"
         },
         "type/route/power": {
             "name": "Kraftlinje"
@@ -1828,9 +1780,6 @@
         "aeroway/taxiway": {
             "name": "Taxibane"
         },
-        "craft/optician": {
-            "name": "Optiker"
-        },
         "waterway/waterfall": {
             "name": "Foss"
         },
@@ -1951,9 +1900,6 @@
         "place/city_block": {
             "name": "Bykvartal"
         },
-        "natural/wood": {
-            "name": "Skog"
-        },
         "amenity/restaurant/chinese": {
             "name": "Kinesisk restaurant"
         },
@@ -1996,9 +1942,6 @@
         "landuse/commercial": {
             "name": "Kommersielt område"
         },
-        "natural": {
-            "name": "Naturlig"
-        },
         "playground/sandpit": {
             "name": "Sandkasse"
         },
@@ -2007,9 +1950,6 @@
         },
         "man_made/mast": {
             "name": "Mast"
-        },
-        "attraction/river_rafting": {
-            "name": "Rafting"
         },
         "shop/fishing": {
             "name": "Fiskebutikk"
@@ -2061,9 +2001,6 @@
         },
         "place": {
             "name": "Sted"
-        },
-        "power": {
-            "name": "Strøm"
         },
         "building/house": {
             "name": "Hus"
@@ -2205,9 +2142,6 @@
         },
         "tourism/attraction": {
             "name": "Turistattraksjon"
-        },
-        "man_made": {
-            "name": "Menneskeskapt"
         },
         "golf/fairway": {
             "name": "Golfbane"

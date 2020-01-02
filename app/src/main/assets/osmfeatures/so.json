@@ -6,11 +6,20 @@
         "leisure/stadium": {
             "name": "Garoon"
         },
+        "type/route/ferry": {
+            "name": "Wadada Doonta"
+        },
+        "building/school": {
+            "name": "Dhismo Dugsiyada"
+        },
         "leisure/park": {
             "name": "Jardiino"
         },
         "place/city": {
             "name": "Magaalo"
+        },
+        "ford": {
+            "name": "Tog"
         },
         "amenity/fast_food": {
             "name": "Cuntooyinka Fudud"
@@ -20,6 +29,24 @@
         },
         "building": {
             "name": "Dhismo"
+        },
+        "landuse/industrial": {
+            "name": "Aagga Warshadaha"
+        },
+        "place/locality": {
+            "name": "Deegaanka"
+        },
+        "barrier": {
+            "name": "Xannibaadaha"
+        },
+        "natural/water/pond": {
+            "name": "Balli"
+        },
+        "shop/car_repair": {
+            "name": "Garaash"
+        },
+        "highway/path": {
+            "name": "Waddo"
         },
         "natural/water": {
             "name": "Biyaha"
@@ -45,8 +72,20 @@
         "type/waterway": {
             "name": "Biyo Mareen"
         },
-        "natural": {
-            "name": "Dabiiciga"
+        "landuse/landfill": {
+            "name": "Qashin-qub"
+        },
+        "building/industrial": {
+            "name": "Dhismaha Warshadaha"
+        },
+        "amenity/toilets": {
+            "name": "Musqulo"
+        },
+        "building/public": {
+            "name": "Dhismaha Dadweynaha"
+        },
+        "highway/service": {
+            "name": "Jidka Shaqaalaha"
         },
         "highway/tertiary": {
             "name": "Waddada Sarre"
@@ -54,8 +93,17 @@
         "natural/water/lake": {
             "name": "Haro"
         },
+        "building/retail": {
+            "name": "Dhismo Tafaariiqda"
+        },
+        "landuse/cemetery": {
+            "name": "Xabaalaha"
+        },
         "amenity/bank": {
             "name": "Bangi"
+        },
+        "office/government": {
+            "name": "Xafiis Dowladeed"
         },
         "landuse/retail": {
             "name": "Goobta Tafaariiqda"
@@ -63,8 +111,11 @@
         "office/travel_agent": {
             "name": "Wakaalad Socdaal"
         },
-        "man_made/bridge": {
-            "name": "Buundo"
+        "highway/residential": {
+            "name": "Waddada Guryaha"
+        },
+        "amenity/place_of_worship": {
+            "name": "Goobta Cibaadada"
         },
         "aeroway/runway": {
             "name": "Gegada diyaaradaha"
@@ -93,8 +144,17 @@
         "landuse/grass": {
             "name": "Aag cagaaran"
         },
+        "shop": {
+            "name": "Dukaan"
+        },
         "landuse/aquaculture": {
             "name": "Xarumaha biyo-ku-noolka"
+        },
+        "line": {
+            "name": "Khad"
+        },
+        "amenity/cafe": {
+            "name": "Kafateeriya"
         },
         "building/residential": {
             "name": "Dhismo Degaan"
@@ -105,11 +165,17 @@
         "waterway/canal": {
             "name": "Kanaal"
         },
+        "building/commercial": {
+            "name": "Dhismaha Ganacsiga"
+        },
+        "tourism/hotel": {
+            "name": "Huteel"
+        },
+        "building/mosque": {
+            "name": "Dhismaha Masaajid"
+        },
         "place/island": {
             "name": "Jasiirad"
-        },
-        "landuse": {
-            "name": "Isticmaalka Dhulka"
         },
         "landuse/farmland": {
             "name": "Dhul beereed"
@@ -123,6 +189,9 @@
         "man_made/pier": {
             "name": "Dekedyaro"
         },
+        "natural/wetland": {
+            "name": "Dhul biyo-fadhiyaan"
+        },
         "building/house": {
             "name": "Guri"
         },
@@ -132,119 +201,26 @@
         "leisure/marina": {
             "name": "Deked"
         },
-        "amenity/school": {
-            "name": "Goobaha Dugsiyada"
-        },
-        "amenity/bar": {
-            "name": "Makhaayad"
-        },
-        "highway/track": {
-            "name": "Jidka Jayga aan la Dayactirin"
-        },
-        "area/highway": {
-            "name": "Sagxada"
-        },
-        "natural/beach": {
-            "name": "Xeeb"
-        },
-        "type/route/ferry": {
-            "name": "Wadada Doonta"
-        },
-        "building/school": {
-            "name": "Dhismo Dugsiyada"
-        },
-        "ford": {
-            "name": "Tog"
-        },
-        "landuse/industrial": {
-            "name": "Aagga Warshadaha"
-        },
-        "place/locality": {
-            "name": "Deegaanka"
-        },
-        "barrier": {
-            "name": "Xannibaadaha"
-        },
-        "natural/water/pond": {
-            "name": "Balli"
-        },
-        "shop/car_repair": {
-            "name": "Garaash"
-        },
-        "highway/path": {
-            "name": "Waddo"
-        },
-        "highway": {
-            "name": "Wadada Halboowlaha"
-        },
-        "landuse/landfill": {
-            "name": "Qashin-qub"
-        },
-        "building/industrial": {
-            "name": "Dhismaha Warshadaha"
-        },
-        "amenity/toilets": {
-            "name": "Musqulo"
-        },
-        "building/public": {
-            "name": "Dhismaha Dadweynaha"
-        },
-        "highway/service": {
-            "name": "Jidka Shaqaalaha"
-        },
-        "building/retail": {
-            "name": "Dhismo Tafaariiqda"
-        },
-        "landuse/cemetery": {
-            "name": "Xabaalaha"
-        },
-        "office/government": {
-            "name": "Xafiis Dowladeed"
-        },
-        "highway/residential": {
-            "name": "Waddada Guryaha"
-        },
-        "amenity/place_of_worship": {
-            "name": "Goobta Cibaadada"
-        },
-        "shop": {
-            "name": "Dukaan"
-        },
-        "line": {
-            "name": "Khad"
-        },
-        "amenity/cafe": {
-            "name": "Kafateeriya"
-        },
-        "building/commercial": {
-            "name": "Dhismaha Ganacsiga"
-        },
-        "tourism/hotel": {
-            "name": "Huteel"
-        },
-        "building/mosque": {
-            "name": "Dhismaha Masaajid"
-        },
-        "natural/wetland": {
-            "name": "Dhul biyo-fadhiyaan"
-        },
-        "waterway": {
-            "name": "Biyo Mareen"
-        },
         "amenity/cinema": {
             "name": "Shaneemo"
         },
         "natural/bare_rock": {
             "name": "Dhagax Weyn"
         },
+        "amenity/school": {
+            "name": "Goobaha Dugsiyada"
+        },
         "landuse/farm": {
             "name": "Dhul beereed"
         },
-        "natural/wood": {
-            "name": "Duur"
+        "amenity/bar": {
+            "name": "Makhaayad"
         },
         "natural/coastline": {
             "name": "Xeeb"
+        },
+        "highway/track": {
+            "name": "Jidka Jayga aan la Dayactirin"
         },
         "highway/unclassified": {
             "name": "Waddo Yar/La cayimin"
@@ -257,6 +233,9 @@
         },
         "landuse/residential": {
             "name": "Aag Degaan"
+        },
+        "natural/beach": {
+            "name": "Xeeb"
         }
     }
 }

@@ -41,9 +41,6 @@
         "waterway/stream": {
             "name": "ஓடை"
         },
-        "railway": {
-            "name": "இரயில்வே"
-        },
         "building/university": {
             "name": "பல்கலைக்கழக கட்டிடம்"
         },
@@ -85,14 +82,8 @@
         "office/travel_agent": {
             "name": "பயண முகவர்"
         },
-        "man_made/bridge": {
-            "name": "பாலம்"
-        },
         "aeroway/runway": {
             "name": "ஓடுதளம்"
-        },
-        "craft/jeweler": {
-            "name": "பத்தர்"
         },
         "office/telecommunication": {
             "name": "தொலைத்தொடர்பு அலுவலகம்"
@@ -377,9 +368,6 @@
         "leisure/pitch/soccer": {
             "name": "காற்பந்து அரங்கம்"
         },
-        "waterway": {
-            "name": "நீர்வழி"
-        },
         "public_transport/stop_position_light_rail": {
             "name": "இலகு இரயில் நிறுத்தம் இடம்"
         },
@@ -404,9 +392,6 @@
         },
         "building/farm_auxiliary": {
             "name": "பண்ணைக் கட்டிடம்"
-        },
-        "natural/wood": {
-            "name": "மரம்"
         },
         "building/construction": {
             "name": "கட்டிடம் கட்டப்பட்டுக் கொண்டிருக்கிறது"
@@ -476,9 +461,6 @@
         "tourism/information": {
             "name": "தகவல்"
         },
-        "natural": {
-            "name": "இயற்கையான"
-        },
         "shop/laundry": {
             "name": "சலவையகம்"
         },
@@ -544,9 +526,6 @@
         },
         "place/farm": {
             "name": "பண்ணை"
-        },
-        "tourism": {
-            "name": "சுற்றுலா"
         },
         "building/residential": {
             "name": "குடியிருப்புக் கட்டிடம்"
@@ -814,9 +793,6 @@
         },
         "amenity/register_office": {
             "name": "பதிவு அலுவலகம்"
-        },
-        "man_made": {
-            "name": "மனிதனால் கட்டப்பட்டது"
         },
         "man_made/petroleum_well": {
             "name": "எண்ணெய் கிணறு"

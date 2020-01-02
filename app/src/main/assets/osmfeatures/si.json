@@ -1,11 +1,5 @@
 {
     "presets": {
-        "amenity/drinking_water": {
-            "name": "බොනවතුර"
-        },
-        "waterway": {
-            "name": "ජල මාර්ගය"
-        },
         "natural/water": {
             "name": "ජලය"
         },
@@ -17,6 +11,9 @@
         },
         "shop/water_sports": {
             "name": "ජල ක්‍රීඩා/ පිහිනුම් තටාකය"
+        },
+        "amenity/drinking_water": {
+            "name": "බොනවතුර"
         }
     }
 }

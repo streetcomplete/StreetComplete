@@ -46,9 +46,6 @@
             "name": "涌",
             "terms": "Stream,小河,小溪,涌,溪,溪流"
         },
-        "railway": {
-            "name": "鐵路"
-        },
         "amenity/library": {
             "name": "圖書館",
             "terms": "Library,圖書館,拉記"
@@ -260,9 +257,6 @@
         "place/hamlet": {
             "name": "村仔",
             "terms": "Hamlet,村仔,村莊"
-        },
-        "highway": {
-            "name": "公路"
         },
         "area": {
             "name": "範圍",
@@ -525,9 +519,6 @@
             "name": "軚舖",
             "terms": "Tire Store,軚舖,輪胎店"
         },
-        "leisure": {
-            "name": "消閒"
-        },
         "amenity/post_office": {
             "name": "郵政局",
             "terms": "Post Office,書信館,郵局,郵政局"
@@ -562,9 +553,6 @@
         "railway/narrow_gauge": {
             "name": "窄軌火車",
             "terms": "Narrow Gauge Rails,窄軌火車,窄軌,窄軌鐵路"
-        },
-        "area/highway": {
-            "name": "道面"
         },
         "leisure/pitch/tennis": {
             "name": "網球場",
@@ -945,9 +933,6 @@
             "name": "電器舖",
             "terms": "Electronics Store,電器舖,電器店,電子產品舖"
         },
-        "waterway": {
-            "name": "水路"
-        },
         "amenity/place_of_worship/buddhist": {
             "name": "佛寺",
             "terms": "Buddhist Temple,佛堂,佛寺,佛廟,和尚寺,寶殿,寺,寺廟,尼姑庵,尼庵,庵堂,廟,精舍,閣,靜院"
@@ -969,10 +954,6 @@
         },
         "landuse/farm": {
             "name": "田地"
-        },
-        "natural/wood": {
-            "name": "林",
-            "terms": "Wood,林,樹林"
         },
         "amenity/waste_basket": {
             "name": "垃圾桶",
@@ -1035,9 +1016,6 @@
             "name": "資訊處",
             "terms": "Information,資訊,資訊處"
         },
-        "natural": {
-            "name": "天然"
-        },
         "aerialway/magic_carpet": {
             "name": "輸送帶",
             "terms": "Magic Carpet Lift,輸送帶"
@@ -1073,10 +1051,6 @@
             "name": "五金舖",
             "terms": "Hardware Store,五金店,五金舖"
         },
-        "amenity/car_sharing": {
-            "name": "共用車處",
-            "terms": "Car Sharing,公用車處,共用車,共用車處,汽車共享站"
-        },
         "shop/funeral_directors": {
             "name": "殯儀館",
             "terms": "Funeral Home,殯儀館"
@@ -1104,9 +1078,6 @@
         "highway/turning_circle": {
             "name": "迴旋處",
             "terms": "Turning Circle,回轉圈,廻旋處,環島,迴旋處"
-        },
-        "tourism": {
-            "name": "旅行"
         },
         "amenity/car_wash": {
             "name": "洗車舖",
@@ -1141,9 +1112,6 @@
         },
         "place": {
             "name": "地"
-        },
-        "power": {
-            "name": "發電廠"
         },
         "shop/music": {
             "name": "唱片舖",
@@ -1353,9 +1321,6 @@
         "tourism/attraction": {
             "name": "旅行名勝",
             "terms": "Tourist Attraction,旅行名勝,旅遊名勝,觀光點"
-        },
-        "man_made": {
-            "name": "人造"
         },
         "golf/fairway": {
             "name": "球道",

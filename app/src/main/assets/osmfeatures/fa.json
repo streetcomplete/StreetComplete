@@ -147,7 +147,7 @@
             "terms": "رمپ, لچکی, خیابان, درجه ۱, اتصال, لینک, درجه 1"
         },
         "shop/greengrocer": {
-            "name": "سبزی فروشی",
+            "name": "سبزی و میوه فروشی",
             "terms": "تره بار, میوه فروشی"
         },
         "highway/traffic_mirror": {
@@ -214,9 +214,6 @@
         },
         "amenity/veterinary": {
             "name": "دامپزشکی"
-        },
-        "craft/pottery": {
-            "name": "سفالگری"
         },
         "craft/roofer": {
             "name": "سقف ساز"
@@ -300,10 +297,6 @@
         },
         "leisure/pitch/soccer": {
             "name": "میدان فوتبال"
-        },
-        "natural/water/river": {
-            "name": "رودخانه",
-            "terms": "جریان"
         },
         "type/multipolygon": {
             "name": "چندچندضلعی"
@@ -644,10 +637,6 @@
         "shop/fashion": {
             "name": "فروشگاه مد"
         },
-        "natural/water/canal": {
-            "name": "کانال",
-            "terms": "کانال"
-        },
         "power/substation": {
             "name": "ایستگاه فرعی"
         },
@@ -703,9 +692,6 @@
         "highway/footway/unmarked-raised": {
             "name": "گذرگاه پیاده بدون نشانه‌گذاری (برآمده)",
             "terms": "سرعتکاه تخت, سرعتگیر تخت"
-        },
-        "craft/jeweler": {
-            "name": "جواهر سازی"
         },
         "landuse/industrial/slaughterhouse": {
             "name": "کشتارگاه"
@@ -882,9 +868,6 @@
         "man_made/observatory": {
             "name": "رصد خانه"
         },
-        "attraction/pirate_ship": {
-            "name": "کشتی دزدان دریایی"
-        },
         "amenity/childcare": {
             "name": "مهدکودک/مراقبت از کودکان"
         },
@@ -923,10 +906,7 @@
         },
         "shop/electronics": {
             "name": "فروشگاه لوازم برقی",
-            "terms": "یخچال, لوازم خانگی, رادیو, صوتی, دوربین, کامپیوتر, سینمای خانگی, ویدیو, تلویزیون, تی وی"
-        },
-        "waterway": {
-            "name": "مسیر آب"
+            "terms": "یخچال, لوازم خانگی, رادیو, صوتی, دوربین, کامپیوتر, سینمای خانگی, ویدیو, تلویزیون, تی وی, بلندگو, اسپیکر, سی دی, دی وی دی, بلوری"
         },
         "amenity/clinic": {
             "name": "کلینیک"
@@ -1049,9 +1029,6 @@
             "name": "فروشگاه ابزارآلات و یراق",
             "terms": "ابزار فروشی, یراق, لوازم ساختمانی"
         },
-        "amenity/car_sharing": {
-            "name": "به اشتراک گذاری خودرو"
-        },
         "shop/funeral_directors": {
             "name": "غسالخانه"
         },
@@ -1077,9 +1054,6 @@
         "emergency/no": {
             "name": "دسترسی اظطراری خیر"
         },
-        "tourism": {
-            "name": "گردشگری"
-        },
         "amenity/public_bath": {
             "name": "حمام عمومی"
         },
@@ -1098,9 +1072,6 @@
         },
         "amenity/parking_entrance": {
             "name": "ورودی/خروجی پارکینگ"
-        },
-        "landuse": {
-            "name": "کاربری زمین"
         },
         "waterway/riverbank": {
             "name": "دامنه رودخانه"
@@ -1365,10 +1336,6 @@
             "name": "مسیر مسابقه دو",
             "terms": "دو میدانی، دونده، دویدن، پیاده"
         },
-        "aerialway/t-bar": {
-            "name": "بالابر میله‌ای T شکل",
-            "terms": "نوار T"
-        },
         "historic/boundary_stone": {
             "name": "سنگ مرزی"
         },
@@ -1399,9 +1366,6 @@
         "waterway/stream": {
             "name": "نهر",
             "terms": "نهر, جریان, جوی طبیعی"
-        },
-        "railway": {
-            "name": "راه آهن"
         },
         "building/university": {
             "name": "ساختمان دانشگاه"
@@ -1436,15 +1400,9 @@
             "name": "چاپ و تکثیر",
             "terms": "کپی, فتوکپی, فوتوکپی, زیراکس, پرینت, چاپ"
         },
-        "leisure/firepit": {
-            "name": "گودال آتش"
-        },
         "leisure/pitch/baseball": {
             "name": "زمین بیس بال",
             "terms": "بیسبال"
-        },
-        "man_made/bridge": {
-            "name": "پل"
         },
         "railway/monorail": {
             "name": "مونوریل"
@@ -1603,9 +1561,6 @@
         },
         "waterway/fuel": {
             "name": "جایگاه سوخت دریایی"
-        },
-        "highway": {
-            "name": "معبر"
         },
         "shop/pastry": {
             "name": "شیرینی فروشی"
@@ -1840,9 +1795,6 @@
             "name": "آموزشگاه رقص",
             "terms": "رقص، مدرسه، آکادمی"
         },
-        "leisure": {
-            "name": "اوقات فراغت"
-        },
         "amenity/post_office": {
             "name": "اداره پست"
         },
@@ -1875,10 +1827,6 @@
         },
         "shop/boutique": {
             "name": "بوتیک"
-        },
-        "area/highway": {
-            "name": "سطح جاده",
-            "terms": "پوشش راه, کفپوش, آسفالت, روسازی"
         },
         "amenity/vending_machine/parking_tickets": {
             "name": "دستگاه فروش خودکار کارت پارکینگ"
@@ -2026,9 +1974,6 @@
         "man_made/survey_point": {
             "name": "نقطه مطالعاتی"
         },
-        "junction/roundabout": {
-            "name": "فلکه (میدان)"
-        },
         "type/route/power": {
             "name": "مسیر برق",
             "terms": "خط انتقال برق"
@@ -2136,7 +2081,8 @@
             "terms": "تله سیژ, تله سی یژ, بالابر"
         },
         "shop/supermarket": {
-            "name": "فروشگاه بزرگ"
+            "name": "فروشگاه بزرگ",
+            "terms": "supermarket, سوپرمارکت"
         },
         "building/stadium": {
             "name": "ساختمان استادیوم"
@@ -2232,9 +2178,6 @@
             "name": "خزشراه",
             "terms": "مسیر خزش, تاکسیوی, تاکسی وی"
         },
-        "craft/optician": {
-            "name": "عینک سازی"
-        },
         "waterway/waterfall": {
             "name": "آبشار"
         },
@@ -2276,7 +2219,8 @@
             "name": "وام دهنده پول"
         },
         "shop/radiotechnics": {
-            "name": "فروشگاه رادیو/اجزای الکترونیکی"
+            "name": "فروشگاه رادیو/اجزای الکترونیکی",
+            "terms": "آنتن, ترانزیستور"
         },
         "building/college": {
             "name": "ساختمان دانشکده",
@@ -2383,19 +2327,12 @@
         "type/route/bus": {
             "name": "مسیر اتوبوس"
         },
-        "natural/water/stream": {
-            "name": "نهر",
-            "terms": "رود"
-        },
         "type/route_master": {
             "name": "مسیر اصلی",
             "terms": "مسیر مستر"
         },
         "landuse/farm": {
             "name": "زمین‌های کشاورزی"
-        },
-        "natural/wood": {
-            "name": "چوب"
         },
         "amenity/restaurant/chinese": {
             "name": "رستوران چینی"
@@ -2453,9 +2390,6 @@
         },
         "natural/ridge": {
             "name": "پرتگاه"
-        },
-        "natural": {
-            "name": "طبیعی"
         },
         "aerialway/magic_carpet": {
             "name": "نوار نقاله بالابر",
@@ -2543,14 +2477,8 @@
         "place": {
             "name": "محل"
         },
-        "power": {
-            "name": "نیرو"
-        },
         "leisure/fitness_station/push-up": {
             "name": "محل شنا رفتن"
-        },
-        "aerialway/station": {
-            "name": "ایستگاه راه هوایی"
         },
         "building/house": {
             "name": "خانه"
@@ -2609,12 +2537,20 @@
         "leisure/golf_course": {
             "name": "زمین گلف"
         },
+        "shop/electrical": {
+            "name": "فروشگاه کالای برق",
+            "terms": "کابل فروشی, فن, ال ای دی, لامپ, روشنایی, سیم,الکتریکی"
+        },
         "barrier": {
             "name": "مانع"
         },
         "historic/castle": {
             "name": "قلعه",
             "terms": "دژ"
+        },
+        "office/surveyor": {
+            "name": "دفتر نظرسنجی",
+            "terms": "دفتر افکارسنجی, ممیزی, ارزیابی, ارزیاب"
         },
         "shop/car_repair": {
             "name": "تعمیرگاه خودرو",
@@ -2640,7 +2576,7 @@
             "terms": "چراگاه، علوفه، یونجه زار"
         },
         "shop/convenience": {
-            "name": "فروشگاه کوچک / سوپرمارکت",
+            "name": "سوپرمارکت / فروشگاه کوچک",
             "terms": "سوپری, سوپرمارکت, بقالی, خواربارفروشی"
         },
         "amenity/bus_station": {
@@ -2730,9 +2666,6 @@
         "tourism/attraction": {
             "name": "جاذبه گردشگری",
             "terms": "جاذبه توریستی"
-        },
-        "man_made": {
-            "name": "سازه ی انسانی"
         },
         "golf/fairway": {
             "name": "چمن راه راه"

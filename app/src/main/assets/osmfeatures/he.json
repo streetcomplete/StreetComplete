@@ -303,6 +303,9 @@
             "name": "חנות יינות",
             "terms": "חנות יינות"
         },
+        "demolished/building": {
+            "name": "בניין שנהרס לאחרונה"
+        },
         "shop/hairdresser": {
             "name": "מעצב שיער",
             "terms": "מעצב שער"
@@ -356,10 +359,6 @@
         "leisure/amusement_arcade": {
             "name": "משחקי ארקייד",
             "terms": "מתחם משחקים"
-        },
-        "craft/pottery": {
-            "name": "קדרות",
-            "terms": "כלי חרס"
         },
         "craft/roofer": {
             "name": "מתקין גגות",
@@ -503,10 +502,6 @@
             "name": "מגרש כדורגל",
             "terms": "מגרש כדורגל"
         },
-        "natural/water/river": {
-            "name": "נהר",
-            "terms": "יובל,פלג,נחל,נהר,זרם"
-        },
         "type/multipolygon": {
             "name": "רב־מצולעים"
         },
@@ -647,10 +642,6 @@
         "office/diplomatic/consulate": {
             "name": "קונסוליה",
             "terms": "שגרירות,קונסוליה,דיפלומטיה,דיפלומטים,נציגות"
-        },
-        "amenity/karaoke": {
-            "name": "תיבת קריוקי",
-            "terms": "מכונת קריוקי,מכשיר קריוקי,בידורית"
         },
         "amenity/vending_machine/elongated_coin": {
             "name": "מכונת השטחת מטבעות",
@@ -1110,9 +1101,6 @@
         "shop/fashion": {
             "name": "חנות אופנה"
         },
-        "natural/water/canal": {
-            "name": "תעלת מים"
-        },
         "power/substation": {
             "name": "תחנה תת קרקעית",
             "terms": "תת־קרקעית"
@@ -1227,9 +1215,6 @@
         "amenity/toy_library": {
             "name": "ספריית צעצועים",
             "terms": "צעצוע,משחק,הנאה,פנאי,כיף,למידה,חשיבה"
-        },
-        "craft/jeweler": {
-            "name": "תכשיטן"
         },
         "landuse/industrial/slaughterhouse": {
             "name": "משחטה",
@@ -1386,10 +1371,6 @@
             "name": "מעבר חצייה מסומן (מוגבה)",
             "terms": "מעבר חציה מוגבה מסומן,מעבר חצייה מוגבה"
         },
-        "man_made/tunnel": {
-            "name": "מנהרה",
-            "terms": "מעבר תת־קרקעי,מעבר תחתי"
-        },
         "public_transport/stop_position_aerialway": {
             "name": "תחנת עצירה לרכבל",
             "terms": "תחנת עצירה לרכבל"
@@ -1417,6 +1398,10 @@
         "craft/insulator": {
             "name": "מבודד",
             "terms": "מבודד"
+        },
+        "man_made/water_tap": {
+            "name": "ברז מים",
+            "terms": "מים לשתייה,מי ברז,נקודת מים,מקור מים,ברז,מי שתייה"
         },
         "shop/herbalist": {
             "name": "חנות צמחי מרפא",
@@ -1483,8 +1468,8 @@
             "terms": "חיבור לכביש מהיר"
         },
         "amenity/car_pooling": {
-            "name": "קארפול",
-            "terms": "קארפול"
+            "name": "תחנת שיתוף נסיעות",
+            "terms": "קארפולינג,קארפול,שיתוף נסיעות,שיתוף מכוניות"
         },
         "highway/crossing": {
             "name": "מעבר"
@@ -1504,9 +1489,6 @@
         "craft/photographer": {
             "name": "צלם",
             "terms": "צלמת"
-        },
-        "junction/circular": {
-            "name": "מעגל תנועה"
         },
         "public_transport/platform/bus_point": {
             "name": "תחנת אוטובוס"
@@ -1543,16 +1525,13 @@
             "name": "מצפה כוכבים",
             "terms": "מצפה כוכבים"
         },
-        "junction/jughandle": {
-            "name": "ידית כד"
-        },
         "shop/printer_ink": {
             "name": "חנות דיו למדפסות",
             "terms": "דיו,פקס,מדפסת,הדפסה,לייזר"
         },
         "attraction/pirate_ship": {
-            "name": "ספינת פיראטים",
-            "terms": "ספינת פיראטים"
+            "name": "מתקן ספינת פיראטים",
+            "terms": "פירטים,ספינת פירטים,מתקן ספינת פירטים,מתקן שעשועים,לונה פארק"
         },
         "healthcare/alternative/chiropractic": {
             "name": "כירופרקט",
@@ -1631,7 +1610,7 @@
             "terms": "חנות אלקטרוניקה"
         },
         "waterway": {
-            "name": "נתיב מים"
+            "name": "תכונת הולכת מים"
         },
         "amenity/clinic": {
             "name": "מרפאה",
@@ -1768,6 +1747,10 @@
             "name": "אזור אימונים",
             "terms": "אזור אימונים"
         },
+        "leisure/pitch/chess": {
+            "name": "לוח שח ענק",
+            "terms": "לוח שחמט,לוח דמקה,דמקה,שח גינה,שח ענק,שח גדול,שח מוגדל,דמקה ענקית,דמקה גדולה,דמקה לגינה,דמקה בגינה,דמקה גינה"
+        },
         "playground/horizontal_bar": {
             "name": "מוט משחק אופקי",
             "terms": "מתח,טיפוס,קורת טיפוס,קורת מתח"
@@ -1839,8 +1822,8 @@
             "terms": "חנות כלי חומרה"
         },
         "amenity/car_sharing": {
-            "name": "קארפול",
-            "terms": "קארפול"
+            "name": "תחנת שיתוף מכוניות",
+            "terms": "שיתוף נסיעות,שיתוף מכוניות"
         },
         "shop/funeral_directors": {
             "name": "קברן",
@@ -1882,7 +1865,7 @@
             "terms": "שטח עצירת מעבורת"
         },
         "tourism": {
-            "name": "תיירות"
+            "name": "תכונת תיירות"
         },
         "traffic_sign": {
             "name": "תמרור",
@@ -1927,9 +1910,6 @@
         "amenity/parking_entrance": {
             "name": "כניסה לחניון",
             "terms": "כניסה לחניון"
-        },
-        "landuse": {
-            "name": "שימוש בקרקע"
         },
         "waterway/riverbank": {
             "name": "גדות נהר"
@@ -2080,10 +2060,6 @@
         "craft/electrician": {
             "name": "חשמלאי",
             "terms": "חשמלאית"
-        },
-        "attraction/drop_tower": {
-            "name": "מגדל נפילה",
-            "terms": "מגדל שעשועים"
         },
         "historic/archaeological_site": {
             "name": "אתר ארכיאולוגי",
@@ -2382,10 +2358,6 @@
             "name": "מסלול ריצה",
             "terms": "כושר,התעמלות,מסלול אתלטיקה,ריצה,ריצה למרחקים ארוכים,מרתון,ספרינט,מסלול,הליכה"
         },
-        "aerialway/t-bar": {
-            "name": "רכבל שטחי",
-            "terms": "רכבל שטחי"
-        },
         "historic/boundary_stone": {
             "name": "אבן תוחמת",
             "terms": "אבן גבול"
@@ -2410,7 +2382,8 @@
             "terms": "אתר הנצחה"
         },
         "golf/water_hazard": {
-            "name": "מכשול מים"
+            "name": "מכשול מים",
+            "terms": "חורבות,חורבן,פירוק מבנה"
         },
         "shop/cosmetics": {
             "name": "חנות קוסמטיקה",
@@ -2429,7 +2402,7 @@
             "terms": "פלג,יובל"
         },
         "railway": {
-            "name": "מסילת רכבת"
+            "name": "תכונת מסילה"
         },
         "building/university": {
             "name": "בניין אוניברסיטה",
@@ -2473,10 +2446,6 @@
             "name": "חנות  העתקות",
             "terms": "חנות עותקים,חנות שכפולים"
         },
-        "leisure/firepit": {
-            "name": "שוחה למדורה",
-            "terms": "מדורה,אש,להבה,קומזיץ"
-        },
         "public_transport/station_ferry": {
             "name": "מסוף מעבורת",
             "terms": "מסוף מעבורת"
@@ -2484,10 +2453,6 @@
         "leisure/pitch/baseball": {
             "name": "מגרש בייסבול",
             "terms": "מגרש כדור בסיס"
-        },
-        "man_made/bridge": {
-            "name": "גשר",
-            "terms": "גשר"
         },
         "railway/monorail": {
             "name": "מונורייל",
@@ -2573,6 +2538,10 @@
         "place/island": {
             "name": "אי",
             "terms": "אי"
+        },
+        "amenity/karaoke_box": {
+            "name": "תיבת קריוקי",
+            "terms": "מועדון קריוקי, חדר קריוקי,קראוקי,טלוויזיית קריוקי,מסך קריוקי,טלוויזית קריוקי,פלאג אין"
         },
         "attraction/bungee_jumping": {
             "name": "באנג׳י",
@@ -2755,9 +2724,6 @@
         "waterway/fuel": {
             "name": "תחנת תדלוק ימית",
             "terms": "תחנת תדלוק ימית"
-        },
-        "highway": {
-            "name": "כביש בין־עירוני"
         },
         "shop/pastry": {
             "name": "בית מאפה",
@@ -3072,6 +3038,10 @@
             "name": "אומנות",
             "terms": "אומנות"
         },
+        "attraction/swing_carousel": {
+            "name": "קרוסלת נדנדות",
+            "terms": "לונה פארק,מתקן שעשועים,פארק שעשועים,מגדל נדנדות"
+        },
         "amenity/vending_machine/sweets": {
             "name": "מכונת חטיפים",
             "terms": "אוטומט מכירת חטיפים"
@@ -3168,6 +3138,10 @@
             "name": "מתחם שירות",
             "terms": "מתחם שרות"
         },
+        "office/consulting": {
+            "name": "משרד ייעוץ",
+            "terms": "סוכנות ייעוץ,חברת ייעוץ,יועצים,יועצות,ייעוץ,יעוץ"
+        },
         "amenity/bureau_de_change": {
             "name": "המרת מט״ח",
             "terms": "חלפן כספים, צ׳יינג׳, צ'יינג', המרת כסף זר, המרת מט\"ח"
@@ -3187,9 +3161,6 @@
         "public_transport/station_trolleybus": {
             "name": "תחנת / מסוף טרוליבוס",
             "terms": "מסוף / תחנת טרוליבוס"
-        },
-        "leisure": {
-            "name": "אזור פנאי"
         },
         "amenity/post_office": {
             "name": "סניף דואר",
@@ -3280,10 +3251,6 @@
         "shop/fashion_accessories": {
             "name": "חנות אביזרי אופנה",
             "terms": "אקססוריז,תיק,בושם,קולון,כובע,תכשיט,תכשיטים,פרפום,ארנק,צעיף,משקפיים,מטריה,שעון,תיק יד,תיק צד"
-        },
-        "area/highway": {
-            "name": "משטח כביש",
-            "terms": "משטח כביש"
         },
         "amenity/vending_machine/parcel_pickup_dropoff": {
             "name": "תיבת איסוף/חלוקת טובין",
@@ -3479,6 +3446,10 @@
             "name": "מקטע החלפה",
             "terms": "אזור החלפה בכביש חד־נתיבי"
         },
+        "shop/spices": {
+            "name": "חנות תבלינים",
+            "terms": "צ׳ילי,צ'ילי,קינמון,קארי,זנגביל,ג׳ינג׳ר,ג'ינג'ר,תבלינים,תבלין,זעפרן,וסאבי,כורכום,כמון,פלפל,חריף,לימון פרסי,זעתר"
+        },
         "shop/tiles": {
             "name": "חנות מרצפות",
             "terms": "חנות מרצפות"
@@ -3552,9 +3523,6 @@
         "man_made/survey_point": {
             "name": "נקודת גבול",
             "terms": "נקודת מדד,נקודת מדידה"
-        },
-        "junction/roundabout": {
-            "name": "כיכר"
         },
         "type/route/power": {
             "name": "נתיב חשמל",
@@ -3922,9 +3890,6 @@
             "name": "לימודי נהיגה",
             "terms": "בית ספר לנהיגה,מורה נהיגה,טסט,מכונית,תאוריה,אוטו,נהיגה,מבחן נהירה"
         },
-        "craft/optician": {
-            "name": "אופטיקאי"
-        },
         "seamark/beacon_isolated_danger": {
             "name": "מצוף תמרור סכנה",
             "terms": "מצוף סכנה"
@@ -3952,10 +3917,6 @@
         "shop/tobacco": {
             "name": "חנות טבק",
             "terms": "חנות טבק"
-        },
-        "aerialway/j-bar": {
-            "name": "רכבל זרוע",
-            "terms": "רכבל J"
         },
         "building/shed": {
             "name": "צריף",
@@ -4074,6 +4035,10 @@
             "name": "תל",
             "terms": "תל"
         },
+        "amenity/research_institute": {
+            "name": "מתחם מכון מחקר",
+            "terms": "מכון מחקר,מופ,מו״פ,מו\"פ,מחקר ופיתוח,מחקר,מעבדות מחקר,ניסויים"
+        },
         "barrier/kerb/rolled": {
             "name": "תעלה חד־שיפועית",
             "terms": "תעלת ניקוז,מרזב"
@@ -4172,9 +4137,6 @@
             "name": "נתיב אוטובוסים",
             "terms": "נתיב אוטובוסים"
         },
-        "natural/water/stream": {
-            "name": "נחל"
-        },
         "type/route_master": {
             "name": "תחנת מעבר אחודה",
             "terms": "תחנת מעבר מאוחדת"
@@ -4188,7 +4150,7 @@
         },
         "natural/wood": {
             "name": "חורש טבעי",
-            "terms": "יער"
+            "terms": "עצים,חורשה,יער,עץ"
         },
         "amenity/restaurant/chinese": {
             "name": "מסעדה סינית",
@@ -4298,7 +4260,7 @@
             "terms": "רכס"
         },
         "natural": {
-            "name": "מאפייני טבע"
+            "name": "תכונה טבעית"
         },
         "aerialway/magic_carpet": {
             "name": "מסוע קרקעי",
@@ -4330,10 +4292,6 @@
         "man_made/mast": {
             "name": "תורן",
             "terms": "תורן"
-        },
-        "attraction/river_rafting": {
-            "name": "חתירה בנהר",
-            "terms": "חתירה בנהר"
         },
         "leisure/disc_golf_course": {
             "name": "מגרש דיסק גולף",
@@ -4461,14 +4419,11 @@
             "name": "מקום"
         },
         "power": {
-            "name": "חשמל"
+            "name": "תכונת חשמל"
         },
         "leisure/fitness_station/push-up": {
             "name": "עמדת שכיבות סמיכה",
             "terms": "עמדת שכיבות שמיכה,שכיבות סמיכה"
-        },
-        "aerialway/station": {
-            "name": "תחנת רכבל"
         },
         "building/house": {
             "name": "בית",
@@ -4569,6 +4524,10 @@
         "leisure/golf_course": {
             "name": "מגרש גולף",
             "terms": "מגרש גולף"
+        },
+        "shop/electrical": {
+            "name": "חנות מוצרי חשמל",
+            "terms": "חנות חשמל,חנות תאורה,מאווררים,כבל,חשמל,תאורה"
         },
         "barrier": {
             "name": "מחסום",
@@ -4766,9 +4725,6 @@
         "tourism/attraction": {
             "name": "אתר תיירותי",
             "terms": "אתר תיירותי"
-        },
-        "man_made": {
-            "name": "מעשה ידי אדם"
         },
         "barrier/kerb/lowered": {
             "name": "שפת מדרכה מונמכת",

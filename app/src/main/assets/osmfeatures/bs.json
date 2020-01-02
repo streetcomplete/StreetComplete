@@ -46,9 +46,6 @@
             "name": "Potok",
             "terms": "potok,manji vodotok"
         },
-        "railway": {
-            "name": "Željeznička pruga"
-        },
         "amenity/library": {
             "name": "Biblioteka",
             "terms": "biblioteka,knjižnica"
@@ -235,14 +232,8 @@
             "name": "Zaselak",
             "terms": "seoce,malo selo,zaselak"
         },
-        "craft/pottery": {
-            "name": "Grnčarija"
-        },
         "craft/roofer": {
             "name": "Krovopokrivač"
-        },
-        "highway": {
-            "name": "Put"
         },
         "area": {
             "name": "Područje",
@@ -490,9 +481,6 @@
             "name": "Prodavnica guma",
             "terms": "prodavnica guma, radnja za prodaju auto-guma"
         },
-        "leisure": {
-            "name": "Rekreacija"
-        },
         "amenity/post_office": {
             "name": "Pošta",
             "terms": "pošta,poštanski ured,ispostava pošte"
@@ -693,9 +681,6 @@
         "office/travel_agent": {
             "name": "Putnička agencija"
         },
-        "craft/jeweler": {
-            "name": "Zlatar"
-        },
         "office/telecommunication": {
             "name": "Ured telekoma",
             "terms": "ured telekoma,ured telekom operatera,kancelarija telekom operatera"
@@ -777,9 +762,6 @@
         "aeroway/taxiway": {
             "name": "Staza za vožnju",
             "terms": "rulna staza,staza za vožnju aviona"
-        },
-        "craft/optician": {
-            "name": "Optičar"
         },
         "type/route": {
             "name": "Ruta",
@@ -881,9 +863,6 @@
             "name": "Prodavnica elektronike",
             "terms": "prodavnica elektronike,radnja za prodaju elektronskih uređaja"
         },
-        "waterway": {
-            "name": "Vodotok"
-        },
         "amenity/clinic": {
             "name": "Klinika"
         },
@@ -902,10 +881,6 @@
         "type/route_master": {
             "name": "Informacije o rutama",
             "terms": "informacije o rutama,informacije o trasama"
-        },
-        "natural/wood": {
-            "name": "Šuma",
-            "terms": "šuma,drvo"
         },
         "amenity/waste_basket": {
             "name": "Kanta za otpatke",
@@ -958,9 +933,6 @@
             "name": "Informacije",
             "terms": "informacije,turističke informacije"
         },
-        "natural": {
-            "name": "Prirodno područje"
-        },
         "natural/water/lake": {
             "name": "Jezero",
             "terms": "jezero,vodom ispunjena kopnena depresija"
@@ -992,10 +964,6 @@
             "name": "Prodavnica željezarije",
             "terms": "prodavnica željezarije,gvožđara"
         },
-        "amenity/car_sharing": {
-            "name": "\"Car Sharing\"",
-            "terms": "razmjena automobila,dijeljenje automobila"
-        },
         "tourism/zoo": {
             "name": "Zoološki vrt",
             "terms": "zoološki vrt,zoo vrt"
@@ -1022,9 +990,6 @@
         "highway/turning_circle": {
             "name": "Krug za okretanje",
             "terms": "krug za okretanje,polukružno okretanje"
-        },
-        "tourism": {
-            "name": "Turizam"
         },
         "amenity/car_wash": {
             "name": "Autopraonica",
@@ -1058,9 +1023,6 @@
         },
         "place": {
             "name": "Mjesto"
-        },
-        "power": {
-            "name": "Energija"
         },
         "shop/music": {
             "name": "Muzička prodavnica",
@@ -1266,9 +1228,6 @@
         "tourism/attraction": {
             "name": "Turistička atrakcija",
             "terms": "turistička atrakcija,spomenici kulture i prirode"
-        },
-        "man_made": {
-            "name": "Napravljeno ljudskom rukom"
         },
         "golf/fairway": {
             "name": "Fairway",

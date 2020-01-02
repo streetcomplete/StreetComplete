@@ -41,6 +41,9 @@
         "railway/halt": {
             "name": "Seisake"
         },
+        "amenity/vending_machine/eggs": {
+            "name": "Muna-automaatti"
+        },
         "shop/agrarian": {
             "name": "Maataloustarvikeliike",
             "terms": "maatila, maatalous, maa, myymälä, liike, kauppa, putiikki,"
@@ -172,6 +175,9 @@
         "amenity/restaurant/greek": {
             "name": "Kreikkalainen ravintola"
         },
+        "shop/psychic": {
+            "name": "Psyykikko"
+        },
         "attraction/amusement_ride": {
             "name": "Huvipuistolaite",
             "terms": "huvipuisto, elämyspuisto, laite, härveli, vuoristorata, karuselli, vimpain, vitkutin, huvilaite"
@@ -248,6 +254,9 @@
         "shop/wine": {
             "name": "Viinikauppa"
         },
+        "demolished/building": {
+            "name": "Äskettäin purettu rakennus"
+        },
         "shop/hairdresser": {
             "name": "Parturi-kampaamo",
             "terms": "parturi, kampaaja, kampaamo, parturi-kampaamo, hiustenleikkuu, hiukset, hiusliike, hiusmyymälä, hiustenvärjäys, parranajo, parta"
@@ -294,9 +303,6 @@
             "name": "Pelihalli",
             "terms": "kolikko, peli, pelikone, peliautomaatti, automaatti"
         },
-        "craft/pottery": {
-            "name": "Savenvalamo"
-        },
         "craft/roofer": {
             "name": "Kattoseppä"
         },
@@ -326,6 +332,9 @@
         },
         "tourism/aquarium": {
             "name": "Akvaario"
+        },
+        "man_made/manhole": {
+            "name": "Katukaivo"
         },
         "type/site": {
             "name": "Ryhmä"
@@ -384,6 +393,9 @@
         "shop/furniture": {
             "name": "Huonekaluliike"
         },
+        "disused/railway": {
+            "name": "Käytöstä poistettu rautatiekohde"
+        },
         "advertising/billboard": {
             "name": "Tienvarsimainos",
             "terms": "mainos, mainostaminen, mainostus, mainostaulu, valomainos, mainosnäyttö, taulu, juliste, näyttö"
@@ -408,9 +420,6 @@
         "leisure/pitch/soccer": {
             "name": "Jalkapallokenttä",
             "terms": "jalkapallo, urheilu, liikunta, kenttä, areena, futis, futiskenttä"
-        },
-        "natural/water/river": {
-            "name": "Joentörmä"
         },
         "type/multipolygon": {
             "name": "Monikulmiot"
@@ -440,7 +449,8 @@
             "terms": "sairaala, hoito, ensiapu, apu, sairas, klinikka, terveys, terveyskeskus, kipu, lääkäri, sairaanhoitaja, sairaanhoito"
         },
         "public_transport/stop_position_monorail": {
-            "name": "Monorailin pysähtymiskohta"
+            "name": "Kohoratajunan pysähtymiskohta",
+            "terms": "monorail"
         },
         "amenity/telephone": {
             "name": "Yleinen puhelin",
@@ -462,8 +472,12 @@
             "name": "Nopeuskamera",
             "terms": "nopeusvalvonta, nopeudenvalvonta, liikenne, kamera, valvonta"
         },
+        "amenity/studio/radio": {
+            "name": "Radioasema"
+        },
         "public_transport/station_monorail": {
-            "name": "Monorailasema"
+            "name": "Kohorata-asema",
+            "terms": "monorail"
         },
         "amenity/drinking_water": {
             "name": "Juomavesipiste",
@@ -518,9 +532,6 @@
         "office/diplomatic/consulate": {
             "name": "Konsulaatti"
         },
-        "amenity/karaoke": {
-            "name": "Karaokekoppi"
-        },
         "type/waterway": {
             "name": "Vesireitti"
         },
@@ -546,6 +557,9 @@
             "name": "Pankki",
             "terms": "pankki, pankkikonttori, pankkitoimisto, pankkitoimipiste"
         },
+        "highway/path/informal": {
+            "name": "Epävirallinen polku"
+        },
         "shop/outpost": {
             "name": "Verkkokaupan noutopiste"
         },
@@ -566,7 +580,8 @@
             "name": "Maatila"
         },
         "highway/service/driveway": {
-            "name": "Ajoväylä"
+            "name": "Ajoväylä",
+            "terms": "Pihatie"
         },
         "leisure/pitch/basketball": {
             "name": "Koripallokenttä"
@@ -599,7 +614,8 @@
             "name": "Matkapuhelinverkkomasto"
         },
         "traffic_calming/island": {
-            "name": "Saareke"
+            "name": "Liikenteenjakaja",
+            "terms": "saareke,keskisaareke"
         },
         "playground/cushion": {
             "name": "Pomppulinna"
@@ -770,11 +786,17 @@
             "name": "Ruokapankki",
             "terms": "ruokajako, ruokajakelu, leipäjono"
         },
+        "amenity/vending_machine/bread": {
+            "name": "Leipäautomaatti"
+        },
         "boundary": {
             "name": "Raja"
         },
         "shop/nutrition_supplements": {
             "name": "Lisäravinnemyymälä"
+        },
+        "amenity/studio/video": {
+            "name": "Elokuvastudio"
         },
         "craft/gardener": {
             "name": "Puutarhuri",
@@ -864,11 +886,11 @@
         "shop/fashion": {
             "name": "Muotiliike"
         },
-        "natural/water/canal": {
-            "name": "Kanava"
-        },
         "power/substation": {
             "name": "Sähköasema"
+        },
+        "shop/telecommunication": {
+            "name": "Teleoperaattorin myymälä"
         },
         "amenity/fast_food": {
             "name": "Pikaruokaravintola",
@@ -952,16 +974,13 @@
             "terms": "hiihto, laskettelu, latu, rinne, hiihtäminen, alppi, alppilajit, talvi, talviurheilu, lumetus, lumetettu, sukset, suksi, lauta, lumilauta"
         },
         "highway/footway/unmarked-raised": {
-            "name": "Merkitsemätön ja korotettu suojatie"
+            "name": "Merkitsemätön korotettu suojatie"
         },
         "indoor/door": {
             "name": "Sisäovi"
         },
         "amenity/toy_library": {
             "name": "Lelukirjasto"
-        },
-        "craft/jeweler": {
-            "name": "Kultaseppä"
         },
         "landuse/industrial/slaughterhouse": {
             "name": "Teurastamo"
@@ -996,6 +1015,9 @@
         "barrier/hedge": {
             "name": "Pensasaita"
         },
+        "shop/swimming_pool": {
+            "name": "Uima-allasliike"
+        },
         "shop/kitchen": {
             "name": "Keittiöliike"
         },
@@ -1011,7 +1033,7 @@
         },
         "amenity/charging_station": {
             "name": "Latauspiste",
-            "terms": "sähköauto, sähkönlataus, sähköpiste, latauspiste, lataaminen, lataus"
+            "terms": "sähköauto, sähkönlataus, sähköpiste, latauspiste, lataaminen, lataus, sähkö"
         },
         "amenity/music_school": {
             "name": "Musiikkikoulu",
@@ -1036,7 +1058,7 @@
             "name": "Ratsastusreitti"
         },
         "amenity/dojo": {
-            "name": "Itsepuolustuslajien harjoittelupaikka",
+            "name": "Japanilaisten itsepuolustuslajien harjoittelupaikka",
             "terms": "taistelulaji, taistelu, itsepuolustus, laji, lajit, urheilu, kamppailu, kamppailulaji, itsepuolustuslaji, taekwondo, taekwon-do, judo, karate, taiji, jujutsu, aikido, kravmaga, krav maga, hapkido"
         },
         "landuse/farmland": {
@@ -1057,7 +1079,7 @@
             "name": "Korotettu reunakivi"
         },
         "amenity/shelter/gazebo": {
-            "name": "huvimaja"
+            "name": "Huvimaja"
         },
         "man_made/storage_tank": {
             "name": "Varastosäiliö"
@@ -1088,7 +1110,7 @@
             "name": "Merkitty ja korotettu suojatie"
         },
         "man_made/tunnel": {
-            "name": "Tunneli"
+            "name": "Tunnelialue"
         },
         "public_transport/stop_position_aerialway": {
             "name": "Ilmaradan vaunun pysähtymiskohta",
@@ -1127,7 +1149,7 @@
             "name": "Suuri katsomokatos"
         },
         "traffic_calming/rumble_strip": {
-            "name": "Väristysviivahidaste"
+            "name": "Heräteraidat"
         },
         "leisure/pitch/badminton": {
             "name": "Sulkapallokenttä"
@@ -1157,10 +1179,6 @@
         "highway/motorway_link": {
             "name": "Moottoritien ramppi"
         },
-        "amenity/car_pooling": {
-            "name": "Kimppakyyti",
-            "terms": "yhteiskäyttö, jako, jakaminen, jakamis, auto, jakoauto, yhteisauto, vuokra, vuokra-auto, vuokraaminen, vuokraus, ajoneuvo, kimppa"
-        },
         "highway/crossing": {
             "name": "Suojatie"
         },
@@ -1176,9 +1194,6 @@
         },
         "craft/photographer": {
             "name": "Valokuvaaja"
-        },
-        "junction/circular": {
-            "name": "Liikenneympyrä (eri väistämisvelvollisuussäännöt, ei käytössä Suomessa)"
         },
         "public_transport/platform/bus_point": {
             "name": "Linja-autopysäkki",
@@ -1212,18 +1227,14 @@
             "name": "Tähtitorni",
             "terms": "observatorio,astronominen,meterologinen"
         },
-        "junction/jughandle": {
-            "name": "Jughandle-liittymä"
-        },
         "shop/printer_ink": {
             "name": "Tulostinmustemyymälä"
         },
-        "attraction/pirate_ship": {
-            "name": "Viikinkilaiva",
-            "terms": "huvipuisto, elämyspuisto, laite, härveli, viikinki, merirosvo, laiva, vene, vimpain, vitkutin, huvilaite"
-        },
         "healthcare/alternative/chiropractic": {
             "name": "Kiropraktikko"
+        },
+        "amenity/townhall/city": {
+            "name": "Kaupungintalo"
         },
         "amenity/childcare": {
             "name": "Päiväkoti",
@@ -1272,9 +1283,6 @@
         },
         "shop/electronics": {
             "name": "Elektroniikkamyymälä"
-        },
-        "waterway": {
-            "name": "Vesiväylä"
         },
         "amenity/clinic": {
             "name": "Terveyskeskus",
@@ -1372,6 +1380,9 @@
         "man_made/obelisk": {
             "name": "Obeliski"
         },
+        "railway/yard": {
+            "name": "Ratapiha"
+        },
         "highway/tertiary_link": {
             "name": "Yhdystien ramppi"
         },
@@ -1405,6 +1416,10 @@
             "name": "Matalajännitelinja",
             "terms": "sähköjohto, sähkölinja, sähkö, ilmajohto, jännite, hengenvaara, matalajännite"
         },
+        "shop/hobby": {
+            "name": "Harrastuskauppa",
+            "terms": "harrastus, harrastukset, harrastaa, kauppa, liike, myymälä, putiikki, puoti"
+        },
         "amenity/social_facility/nursing_home": {
             "name": "Hoitokoti"
         },
@@ -1434,10 +1449,6 @@
         },
         "shop/hardware": {
             "name": "Rautakauppa"
-        },
-        "amenity/car_sharing": {
-            "name": "Yhteiskäyttöauto",
-            "terms": "yhteiskäyttö, jako, jakaminen, jakamis, auto, jakoauto, yhteisauto, vuokra, vuokra-auto, vuokraaminen, vuokraus, ajoneuvo, sunfleet, drivenow"
         },
         "shop/funeral_directors": {
             "name": "Hautaustoimisto",
@@ -1471,11 +1482,11 @@
         "emergency/no": {
             "name": "Ei pelastusajoa"
         },
+        "man_made/manhole/drain": {
+            "name": "Sadevesikaivo"
+        },
         "public_transport/stop_position_ferry": {
             "name": "Laivan pysähtymiskohta"
-        },
-        "tourism": {
-            "name": "Turismi"
         },
         "traffic_sign": {
             "name": "Liikennemerkki"
@@ -1505,6 +1516,9 @@
         "historic/city_gate": {
             "name": "Kaupunginportti"
         },
+        "tourism/zoo/safari": {
+            "name": "Safaripuisto"
+        },
         "shop/watches": {
             "name": "Kellokauppa",
             "terms": "kello, rannekello, myymälä, liike, kauppa, putiikki"
@@ -1514,7 +1528,7 @@
             "terms": "pysäköinti, parkkipaikka, pysäköintipaikka, parkki, pysäköintitalo, parkkitalo, ulosajo, sisäänajo, ajo, ulos, sisään, ramppi"
         },
         "landuse": {
-            "name": "Maankäyttö"
+            "name": "Maankäyttökohde"
         },
         "waterway/riverbank": {
             "name": "Joentörmä"
@@ -1640,8 +1654,7 @@
             "name": "Sähköasentaja"
         },
         "attraction/drop_tower": {
-            "name": "Vapaapudotuslaite",
-            "terms": "huvipuisto, elämyspuisto, laite, härveli, vimpain, vitkutin, huvilaite, raketti, vapaa, pudotus, torni"
+            "name": "Vapaapudotuslaite"
         },
         "historic/archaeological_site": {
             "name": "Muinaisjäännös"
@@ -1798,7 +1811,7 @@
             "name": "Vesivoimala"
         },
         "amenity/animal_shelter": {
-            "name": "Eläinkatos"
+            "name": "Eläinhoitola"
         },
         "emergency/private": {
             "name": "Yksityinen pelastustie"
@@ -1875,12 +1888,11 @@
         "public_transport/platform/aerialway": {
             "name": "Ilmaradan laituri"
         },
+        "tourism/zoo/wildlife": {
+            "name": "Villieläinpuisto"
+        },
         "leisure/track/running": {
             "name": "Kuntorata"
-        },
-        "aerialway/t-bar": {
-            "name": "Ankkurihissi",
-            "terms": "hissi, hiihtohissi, lasketteluhissi, laskettelu, ankkuri, parihissi"
         },
         "historic/boundary_stone": {
             "name": "Rajamerkki"
@@ -1919,7 +1931,7 @@
             "name": "Puro"
         },
         "railway": {
-            "name": "Rautatie"
+            "name": "Rautatiekohde"
         },
         "building/university": {
             "name": "Yliopistorakennus",
@@ -1959,10 +1971,6 @@
             "name": "Kopiointiliike",
             "terms": "kopiokone, kopio, kopiointi, kopioida"
         },
-        "leisure/firepit": {
-            "name": "Nuotiopaikka",
-            "terms": "nuotio, ruoanlaitto, ruoka, piste, grilli, grillaus, tulipiste, tulipesä, tuli"
-        },
         "public_transport/station_ferry": {
             "name": "Laivaterminaali"
         },
@@ -1970,10 +1978,10 @@
             "name": "Pesäpallokenttä"
         },
         "man_made/bridge": {
-            "name": "Silta"
+            "name": "Silta-alue"
         },
         "railway/monorail": {
-            "name": "Monorail"
+            "name": "Kohorata"
         },
         "office/physician": {
             "name": "Lääkäri"
@@ -2058,6 +2066,9 @@
         "craft/rigger": {
             "name": "Nosturi"
         },
+        "military/checkpoint": {
+            "name": "Sotilasalueen tarkastuspiste"
+        },
         "man_made/water_works": {
             "name": "Vesilaitos"
         },
@@ -2140,6 +2151,9 @@
         "type/route/ferry": {
             "name": "Lauttareitti"
         },
+        "ford_line": {
+            "name": "Kahlauspaikka"
+        },
         "emergency": {
             "name": "Hätätilanteisiin liittyvä kohde"
         },
@@ -2190,7 +2204,7 @@
             "terms": "veneily, vene, laiva, polttoaine, polttoneste, bensiini, diesel, tankkaus, tankkaaminen, vesi, järvi, meri, alus"
         },
         "highway": {
-            "name": "Tie"
+            "name": "Tiekohde"
         },
         "shop/pastry": {
             "name": "Leipomokonditoria"
@@ -2223,7 +2237,7 @@
             "terms": "kivikko, rakka, kivikasa, kasa, kivikumpu, maakasa, vyörylohkareikko, lohkareikko"
         },
         "office/government": {
-            "name": "Valtionhallinnon toimisto",
+            "name": "Julkishallinnon toimisto",
             "terms": "valtio, valtion, osavaltio, osavaltion, lääni, läänin, seutu, seudullinen, valtiollinen, läänillinen, kunnan, toimisto, hallinto, hallitus"
         },
         "office/it": {
@@ -2233,8 +2247,8 @@
             "name": "Käyttämätön rautatie"
         },
         "amenity/grave_yard": {
-            "name": "Hautausmaa",
-            "terms": "hautausmaa, kalmisto, luutarha"
+            "name": "Kirkkomaa",
+            "terms": "hautausmaa, kalmisto, luutarha, kirkkomaa"
         },
         "railway/light_rail": {
             "name": "Pikaraitiotie"
@@ -2429,6 +2443,9 @@
             "name": "Vuorenhuippu",
             "terms": "Huippu, Vuorenhuippu, Korkein kohta, Vuoren huippu"
         },
+        "public_transport/platform/monorail_point": {
+            "name": "Kohoradan pysäkki"
+        },
         "highway/tertiary": {
             "name": "Yhdystie/kokoojakatu"
         },
@@ -2515,6 +2532,9 @@
         "highway/services": {
             "name": "Täyden palvelun huoltoasema"
         },
+        "office/consulting": {
+            "name": "Konsulttitoimisto"
+        },
         "amenity/bureau_de_change": {
             "name": "Valuutanvaihtopiste",
             "terms": "valuutta, raha, vaihto, vaihtaminen, valuutanvaihto, valuutanvaihtaminen, rahanvaihto, rahanvaihtaminen, Forex"
@@ -2534,7 +2554,7 @@
             "name": "Johdinautoasema/-terminaali"
         },
         "leisure": {
-            "name": "Vapaa-aika"
+            "name": "Vapaa-ajan kohde"
         },
         "amenity/post_office": {
             "name": "Postitoimisto",
@@ -2588,9 +2608,11 @@
         "waterway/lock_gate": {
             "name": "Sulkuportti"
         },
+        "shop/fashion_accessories": {
+            "name": "Muotitarvikekauppa"
+        },
         "area/highway": {
-            "name": "Tien päällyste",
-            "terms": "pinnoite, pinta"
+            "name": "Tien alue"
         },
         "amenity/vending_machine/parcel_pickup_dropoff": {
             "name": "Pakettiautomaatti"
@@ -2622,6 +2644,9 @@
         "shop/cannabis": {
             "name": "Kannabiskauppa"
         },
+        "cycleway/asl": {
+            "name": "Pyörätasku"
+        },
         "public_transport/platform/trolleybus": {
             "name": "Johdinautolaituri"
         },
@@ -2652,7 +2677,7 @@
             "terms": "paloposti, vedensyöttö, vesisyöttö, palokunta, vesiposti"
         },
         "noexit/yes": {
-            "name": "Ei uloskäyntiä"
+            "name": "Umpikuja"
         },
         "shop/scuba_diving": {
             "name": "Sukellusliike",
@@ -2746,7 +2771,7 @@
             "terms": "siirtolapuutarha"
         },
         "office/water_utility": {
-            "name": "Vesilaitos",
+            "name": "Vesilaitostoimisto",
             "terms": "vesipalvelu, vesihuoltolaitos, vesihuolto, vedenjakelu, vesiosuuskunta, vesikunta, viemäröintilaitos, vesi, toimisto"
         },
         "railway/tram_stop": {
@@ -2754,6 +2779,9 @@
         },
         "highway/passing_place": {
             "name": "Ajoneuvojen kohtauspaikka"
+        },
+        "shop/spices": {
+            "name": "Maustekauppa"
         },
         "shop/tiles": {
             "name": "Laattamyymälä"
@@ -2768,6 +2796,9 @@
         "man_made/cairn": {
             "name": "Kiviröykkiö"
         },
+        "advertising/totem": {
+            "name": "Mainostaulu"
+        },
         "amenity/cafe": {
             "name": "Kahvila",
             "terms": "Kahvila, Kahvitupa, Teehuone"
@@ -2776,7 +2807,7 @@
             "name": "Mailapeliviheriö"
         },
         "highway/service/emergency_access": {
-            "name": "Pelastustie"
+            "name": "Tie hälytysajoneuvoille"
         },
         "natural/mud": {
             "name": "Muta"
@@ -2815,9 +2846,6 @@
         },
         "man_made/survey_point": {
             "name": "Mittauspiste"
-        },
-        "junction/roundabout": {
-            "name": "Kiertoliittymä"
         },
         "type/route/power": {
             "name": "Voimalinja"
@@ -2867,6 +2895,9 @@
         "natural/coastline": {
             "name": "Rannikko",
             "terms": "Rantaviiva"
+        },
+        "amenity/studio/television": {
+            "name": "Televisiostudio"
         },
         "building/carport": {
             "name": "Autokatos"
@@ -3051,6 +3082,9 @@
         "barrier/fence/railing": {
             "name": "Kaide"
         },
+        "amenity/vending_machine/ice_cubes": {
+            "name": "Jääautomaatti"
+        },
         "golf/hole": {
             "name": "Golf-reikä"
         },
@@ -3110,15 +3144,15 @@
         "type/boundary": {
             "name": "Raja"
         },
+        "type/route/monorail": {
+            "name": "Kohoratareitti"
+        },
         "man_made/monitoring_station": {
             "name": "Havaintoasema"
         },
         "aeroway/taxiway": {
             "name": "Rullaustie",
             "terms": "rullaustie, lentokone, lentokenttä, lentoasema, siirtymätie"
-        },
-        "craft/optician": {
-            "name": "optikko"
         },
         "waterway/waterfall": {
             "name": "Vesiputous"
@@ -3231,6 +3265,9 @@
         "natural/fell": {
             "name": "Tunturi"
         },
+        "amenity/research_institute": {
+            "name": "Tutkimuslaitos"
+        },
         "barrier/kerb/rolled": {
             "name": "Pyöristetty reunakivi"
         },
@@ -3314,9 +3351,6 @@
             "name": "Linja-autolinja",
             "terms": "linja-autolinja, linja-autoreitti, bussireitti, bussilinja"
         },
-        "natural/water/stream": {
-            "name": "Puro"
-        },
         "type/route_master": {
             "name": "Pääreitti"
         },
@@ -3325,9 +3359,6 @@
         },
         "place/city_block": {
             "name": "Kortteli"
-        },
-        "natural/wood": {
-            "name": "Luonnonvarainen metsä"
         },
         "amenity/restaurant/chinese": {
             "name": "Kiinalainen ravintola"
@@ -3419,12 +3450,12 @@
             "name": "Harju",
             "terms": "harju, reunamuodostuma, salpausselkä, harjanne, selänne, mäki"
         },
-        "natural": {
-            "name": "Luonto"
-        },
         "aerialway/magic_carpet": {
             "name": "Mattohissi",
             "terms": "hissi, hiihtohissi, lasketteluhissi, laskettelu, liukuhihna, hihna, hihnahissi, liukuhihnahissi"
+        },
+        "amenity/post_box": {
+            "name": "Postilaatikko"
         },
         "public_transport/station_tram": {
             "name": "Katuraitiotieasema"
@@ -3444,10 +3475,6 @@
         },
         "man_made/mast": {
             "name": "Masto"
-        },
-        "attraction/river_rafting": {
-            "name": "Huvipuiston vesilaite",
-            "terms": "tukkijoki, koski, vesilaite, kastuminen, kastua, huvipuisto, huvilaite, elämyspuisto, joki, kanava, tukki"
         },
         "leisure/disc_golf_course": {
             "name": "Frisbeegolfkenttä"
@@ -3557,20 +3584,14 @@
         "place": {
             "name": "Paikka"
         },
-        "power": {
-            "name": "Sähkö"
-        },
         "leisure/fitness_station/push-up": {
             "name": "Punnerruspaikka"
         },
         "natural/shingle": {
             "name": "Kivikko"
         },
-        "aerialway/station": {
-            "name": "Ilmarata-asema"
-        },
         "building/house": {
-            "name": "Omakotitalo",
+            "name": "Pientalo",
             "terms": "omakotitalo, omakoti, yksityisasunto, yksityistalo, talo, asunto"
         },
         "piste/sleigh": {
@@ -3651,6 +3672,9 @@
         },
         "leisure/golf_course": {
             "name": "Golfkenttä"
+        },
+        "shop/electrical": {
+            "name": "Sähkötarvikekauppa"
         },
         "barrier": {
             "name": "Muuri"
@@ -3759,6 +3783,9 @@
             "name": "Ambulanssiasema",
             "terms": "ambulanssi, ambulanssit, hälytysajoneuvo, ambulanssihalli, ambulanssivarasto, ambulanssitalli, hälytysajoneuvohalli, hälytysajoneuvotalli, hälytysajoneuvovarasto"
         },
+        "barrier/wall/noise_barrier": {
+            "name": "Melueste"
+        },
         "healthcare/podiatrist": {
             "name": "Jalkaterapeutti"
         },
@@ -3811,13 +3838,13 @@
             "terms": "lippu, liputus, salko, lippusalko, tanko, tolppa, lipputolppa, liputuspäivä, liputtaa"
         },
         "highway/crossing/unmarked-raised": {
-            "name": "Merkitsemätön suojatie korokkeella"
+            "name": "Merkitsemätön korotettu suojatie"
         },
         "tourism/attraction": {
             "name": "Turistikohde"
         },
         "man_made": {
-            "name": "Ihmisen tekemä"
+            "name": "Rakennelma"
         },
         "barrier/kerb/lowered": {
             "name": "Madallettu reunakivi"
@@ -3836,6 +3863,10 @@
             "name": "Alppimaja",
             "terms": "alppimaja, alppimökki, alppitalo, vuorimaja, vuoritalo, vuorimökki, vuoristomaja, vuoristomökki, vuoristotalo"
         },
+        "public_transport/platform/monorail": {
+            "name": "Kohoradan laituri",
+            "terms": "monorail"
+        },
         "tourism/information/office": {
             "name": "Matkailuneuvonta",
             "terms": "info, turismi, matkailu, turisti, neuvonta"
@@ -3853,6 +3884,9 @@
         "craft/handicraft": {
             "name": "Käsityöt",
             "terms": "käsityö, käsityöläinen"
+        },
+        "landuse/construction": {
+            "name": "Rakennustyömaa"
         },
         "shop/motorcycle_repair": {
             "name": "Moottoripyöräkorjaamo"
