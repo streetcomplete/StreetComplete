@@ -62,8 +62,3 @@ inline fun <T, R : Comparable<R>> Iterable<T>.indexOfMaxBy(selector: (T) -> R): 
     }
     return indexOfMaxElem
 }
-
-fun <T> List<T>.subListOfBeforeFirst(predicate: (T) -> Boolean): List<T> {
-    val index = indexOfFirst(predicate)
-    return if (index != -1) subList(0, index) else this
-}

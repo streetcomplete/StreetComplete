@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.getYamlObject
-import de.westnordost.streetcomplete.ktx.subListOfBeforeFirst
 import de.westnordost.streetcomplete.view.ListAdapter
 import kotlinx.android.synthetic.main.row_changelog.view.*
 
@@ -42,7 +41,11 @@ class WhatsNewDialog(context: Context, sinceVersion: String)
     : AlertDialog(context, R.style.Theme_Bubble_Dialog) {
 
     init {
-        val changelog = readChangelog(context.resources).subListOfBeforeFirst { it.title == sinceVersion }
+        val fullChangelog = readChangelog(context.resources)
+        var currentVersionIndex = fullChangelog.indexOfFirst { it.title == sinceVersion }
+        // if version not found, just show the last one
+        if (currentVersionIndex == -1) currentVersionIndex = 1
+        val changelog = fullChangelog.subList(0, currentVersionIndex)
 
         val view = LayoutInflater.from(context).inflate(R.layout.fragment_changelog, null, false)
         val changelogList = view.findViewById<RecyclerView>(R.id.changelogList)
