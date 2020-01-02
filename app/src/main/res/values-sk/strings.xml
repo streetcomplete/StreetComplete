@@ -67,7 +67,6 @@
     <string name="turn_on_location_request">"Lokalizácia je vypnutá. Otvoriť nastavenia teraz?"</string>
     <string name="no_location_permission_warning">"Vaša poloha je potrebná pre vyhľadávanie úloh vo vašom okolí."</string>
     <string name="action_about">"O StreetComplete"</string>
-    <string name="about_title_version">"Verzia"</string>
     <string name="about_title_authors">"Autori"</string>
     <string name="about_summary_authors">"© 2016–2019 Tobias Zwick a prispievatelia"</string>
     <string name="about_title_repository">"Zdrojový repozitár"</string>
@@ -101,7 +100,6 @@
     <string name="quest_roofShape_select_one">"Vyberte jeden:"</string>
     <string name="quest_roofShape_show_more">"Zobraziť viac..."</string>
     <string name="quest_roofShape_answer_many">"Má viacero rôznych tvarov"</string>
-    <string name="pref_category_cache">"Vyrovnávacia pamäť"</string>
     <string name="pref_title_sync">"Auto synchronizácia"</string>
     <string name="map_btn_zoom_out">"Oddialiť"</string>
     <string name="map_btn_zoom_in">"Priblížiť"</string>
@@ -349,7 +347,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="quest_crossing_type_unmarked">"Prechod bez označenia na ceste"</string>
     <string name="compass_north_one_letter">"S"</string>
     <string name="action_undo">"Späť"</string>
-    <string name="no_changes_to_undo">"Nie je čo vrátiť späť"</string>
     <string name="undo_confirm_title">"Odvolať nasledujúcu poslednú odpoveď?"</string>
     <string name="produce_mangosteen">"Mangostány"</string>
     <string name="produce_tomatoes">"Paradajky"</string>
@@ -372,6 +369,8 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="quest_buildingLevels_roofLevelsLabel2">"poschodí v streche"</string>
     <string name="quest_buildingLevels_levelsLabel2">"normálne poschodia (bez strechy)"</string>
     <string name="pref_title_authorized_summary">"Autorizované"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingLevels_answer_multipleLevels">"závisí od časti budovy"</string>
     <string name="quest_buildingLevels_answer_description">"V tom prípade zadajte hodnoty pre najvyššiu časť budovy."</string>
     <string name="unglue_hint">"Ťapnutím odlepíte z pozície"</string>

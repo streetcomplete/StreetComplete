@@ -73,7 +73,6 @@
     <string name="turn_on_location_request">"موقعیت مکانی خاموش است. آیا منوی تنظیمات را برای روشن کردن آن باز می‌کنید؟"</string>
     <string name="no_location_permission_warning">"موقعیت مکانی شما برای کاوش جُستارهای اطرافتان مورد نیاز می باشد."</string>
     <string name="action_about">"درباره برنامه"</string>
-    <string name="about_title_version">"نسخه"</string>
     <string name="about_title_authors">"اعتبار"</string>
     <string name="about_summary_authors">"© 2016–2019 Tobias Zwick و همکاران"</string>
     <string name="about_title_repository">"منبع برنامه"</string>
@@ -133,7 +132,7 @@
 
 &lt;p&gt; &lt;b&gt; استفاده از داده &lt;/ b&gt; &lt;/ p&gt;
 &lt;p&gt;
-همانطور که ذکر شد، برنامه به طور مستقیم برای بارگذاری تغییرات با زیرساخت OSM ارتباط برقرار می کند. یعنی با &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;Overpass API&lt;/a&gt; برای&lt;a href=\"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM API&lt;/a&gt;
+همانطور که ذکر شد، برنامه به طور مستقیم برای بارگذاری تغییرات با زیرساخت OSM ارتباط برقرار می کند. یعنی با &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;Overpass API&lt;/a&gt; برای&lt;a href=\"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM API&lt;/a&gt; 
 &lt;br/&gt;
 با این حال، قبل از بارگذاری تغییرات شما ، برنامه با یک &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt; سند متنی ساده &lt;/a&gt; در سرور بررسی  می کند، برای بارگذاری هر تغییری آیا این تغییرات مجاز هست یا خیر . این یک اقدام امنیتی است که می تواند ویرایش های برنامه را از خرابکاری های احتمالی حفظ کند و از اشکالات بحرانی در داده‌های OSM جلوگیری نماید. &lt;br/&gt;
 &lt;/p&gt;
@@ -744,7 +743,7 @@
     <string name="quest_maxweight_answer_noSign">"هیچ علائمی وجود ندارد"</string>
     <string name="quest_maxweight_unusualInput_confirmation_description">"این وزن غیرممکن به نظر می رسد. آیا مطمئن هستید که صحیح است؟"</string>
     <string name="quest_maxweight_answer_other_sign">"با علائم تفاوت دارد ..."</string>
-    <string name="quest_maxweight_unsupported_sign_request_photo">"آیا می خواهید یک یادداشت بگذارید؟ یک یادداشت با یک عکس
+    <string name="quest_maxweight_unsupported_sign_request_photo">"آیا می خواهید یک یادداشت بگذارید؟ یک یادداشت با یک عکس 
  نقشه‌کش‌های دیگر را مجاب به نگهداری اطلاعات می‌کند."</string>
     <string name="confirmation_authorize_now_note">"می توانید این کار را بعداً در صفحه تنظیمات انجام دهید."</string>
     <string name="quest_generalFee_title">"آیا برای ورود به %s هزینه پرداخت می‌شود؟"</string>

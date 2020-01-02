@@ -69,7 +69,6 @@
     <string name="turn_on_location_request">"Určování polohy je vypnuté. Chcete přejít na nastavení, abyste ho mohli zapnout?"</string>
     <string name="no_location_permission_warning">"Vaše poloha se používá pro vyhledávání úkolů ve vašem okolí."</string>
     <string name="action_about">"O StreetComplete"</string>
-    <string name="about_title_version">"Verze"</string>
     <string name="about_title_authors">"Autoři"</string>
     <string name="about_summary_authors">"© 2016–2019 Tobias Zwick a přispěvatelé"</string>
     <string name="about_title_repository">"Zdrojový kód"</string>
@@ -122,7 +121,7 @@ OpenStreetMap nelze upravovat anonymně, proto jsou všechny vaše změny proved
 
 &lt;b&gt;Poloha&lt;/b&gt;&lt;br/&gt;
 &lt;p&gt;
-Aplikace s nikým nesdílí vaši GPS polohu. Vaše poloha se používá jen pro automatické vyhledávání „úkolů“ ve vašem okolí a pro vycentrování mapy (a její stahování) na základě vaší polohy.
+Aplikace s nikým nesdílí vaši GPS polohu. Vaše poloha se používá jen pro automatické vyhledávání „úkolů“ ve vašem okolí a pro vycentrování mapy (a její stahování) na základě vaší polohy. 
 &lt;/p&gt;
 
 &lt;p&gt;&lt;b&gt;Použití dat&lt;/b&gt;&lt;/p&gt;
@@ -749,4 +748,31 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_generalFee_title">"Je zde poplatek pro vstup do  %s?"</string>
     <string name="quest_laundrySelfService_title">"Je tato prádelna samoobslužná?"</string>
     <string name="quest_handrail_title">"Mají tyto schody zábradlí?"</string>
+    <string name="quest_openingHours_no_name_title">"Jaká je otevírací doba tohoto místa? (%s)"</string>
+    <string name="about_summary_current_version">"Aktuální verze: %s"</string>
+    <string name="quest_postboxRef_title">"Jaké je referenční číslo této poštovní schránky?"</string>
+    <string name="quest_postboxRef_name_title">"Jaké je referenční číslo této poštovní schránky %s?"</string>
+    <string name="quest_ref_answer_noRef">"Není tu žádné referenční číslo..."</string>
+    <string name="quest_street_side_puzzle_tutorial">"Klepněte na otázníky a vyberte odpověď pro určenou stranu cesty."</string>
+    <string name="quest_recycling_materials_title">"Co tu lze recyklovat?"</string>
+    <string name="quest_recycling_materials_note">"Pokud tu lze recyklovat i jiné věci, než které můžete vybrat, uveďte je prosím do poznámky."</string>
+    <string name="quest_recycling_type_batteries">"Baterie"</string>
+    <string name="quest_recycling_type_cans">"Plechovky"</string>
+    <string name="quest_recycling_type_clothes">"Oblečení"</string>
+    <string name="quest_recycling_type_green_waste">"Zahradní odpad"</string>
+    <string name="quest_recycling_type_glass_bottles">"Skleněné lahve"</string>
+    <string name="quest_recycling_type_glass_bottles_short">"Láhve"</string>
+    <string name="quest_recycling_type_paper">"Papír"</string>
+    <string name="quest_recycling_type_plastic_generic">"Plasty"</string>
+    <string name="quest_recycling_type_plastic">"Jakékoliv plasty"</string>
+    <string name="quest_recycling_type_shoes">"Obuv"</string>
+    <string name="quest_recycling_type_electric_appliances">"Elektrické spotřebiče"</string>
+    <string name="quest_recycling_type_plastic_bottles">"Pouze plastové lahve"</string>
+    <string name="quest_recycling_type_plastic_packaging">"Pouze plastové obaly"</string>
+    <string name="quest_recycling_type_scrap_metal">"Kovový šrot"</string>
+    <string name="quest_recycling_type_any_glass">"Jakékoliv sklo"</string>
+    <string name="quest_recycling_glass_title">"Lze zde recyklovat pouze skleněné láhve, nebo jakýkoliv druh skla?"</string>
+    <string name="quest_determineRecyclingGlass_description_any_glass">"Příklady skla, které často není akceptováno: tvrzené sklo, okenní tabule, skleničky, žárovky, nebo zrcadla."</string>
+    <string name="about_title_changelog">"Historie verzí"</string>
+    <string name="title_whats_new">"Co je nového?"</string>
 </resources>

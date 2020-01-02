@@ -71,7 +71,6 @@
     <string name="turn_on_location_request">"Sijainti on pois käytöstä. Haluatko laittaa päälle asetuksista?"</string>
     <string name="no_location_permission_warning">"Sijaintiasi tarvitaan täydennyksien hakuun lähiympäristöstäsi."</string>
     <string name="action_about">"Tietoja StreetCompletesta"</string>
-    <string name="about_title_version">"Versio"</string>
 
     <!-- Fuzzy -->
     <string name="about_title_authors">"Tekijät"</string>
@@ -177,9 +176,9 @@ Näytettäessä karttaa, vektoritiilet haetaan &lt;a href=\"https://mapzen.com/p
     <string name="quest_oneway_title">"Onko tämä yksisuuntainen tie?"</string>
     <string name="quest_address_title">"Mikä on tämän rakennuksen numero?"</string>
     <string name="store_listing_short_description">"OpenStreetMap maanmittaussovellus"</string>
-    <string name="store_listing_full_description">"Auta parantamaan OpenStreetMapia StreetCompletella! Voit näin osallistua vapaan kartan kehittämiseen helposti.
+    <string name="store_listing_full_description">"Auta parantamaan OpenStreetMapia StreetCompletella! Voit näin osallistua vapaan kartan kehittämiseen helposti. 
 
-Sovelluksella löydät puuttuvia ja täydennettäviä tietoja lähiympäristöstäsi. Sovellus näyttää puuttuvat tiedot karttamerkkeinä, ja esittää niistä yksinkertaisesti ratkaistavia kysymyksiä.
+Sovelluksella löydät puuttuvia ja täydennettäviä tietoja lähiympäristöstäsi. Sovellus näyttää puuttuvat tiedot karttamerkkeinä, ja esittää niistä yksinkertaisesti ratkaistavia kysymyksiä.  
 
 Vastauksesi täydentävät OpenStreetMapsiä omalla nimelläsi. Et tarvi sovelluksen lisäksi erillistä OpenStreetMaps editoria."</string>
     <string name="quest_name_answer_noName">"Sillä ei ole nimeä…"</string>
@@ -466,7 +465,7 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
 
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_toilets_name_title">"Ovatko vessat %s pyörätuolille sopivia?"</string>
-    <string name="quest_wheelchairAccess_description_toilets">"Tämmöinen merkki voi olla näkyvissä, jos vessaan pääsee pyörätuolilla.
+    <string name="quest_wheelchairAccess_description_toilets">"Tämmöinen merkki voi olla näkyvissä, jos vessaan pääsee pyörätuolilla. 
      Kyseisessä WC:ssä ei kuitenkaan välttämättä ole apuvälineita, kuten apurautoja, laskettavaa allasta tms."</string>
     <string name="map_btn_create_note">"Luo uusi huomautus"</string>
     <string name="create_new_note_unprecise">"Zoomaa kauemmaksi ja luo huomautus"</string>
@@ -731,7 +730,7 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
     <string name="quest_leaf_type_mixed">"Molempia esiintyy"</string>
     <string name="quest_cyclewayPartSurface_title">"Mikä päällyste on tällä pyörätiellä?"</string>
     <string name="quest_generic_answer_differs_along_the_way">"Eroaa pitkin matkaa.."</string>
-    <string name="quest_split_way_description">"Jos tiellä on eroja, niin ensimmäinen vaihe on jakaa tie osiin. Sen jälkeen voit vastata tien jaetuille osille erikseen. Huomioi, että kysymykset jaetuille tien osille voi tulla näkyviin paljon myöhemmin.
+    <string name="quest_split_way_description">"Jos tiellä on eroja, niin ensimmäinen vaihe on jakaa tie osiin. Sen jälkeen voit vastata tien jaetuille osille erikseen. Huomioi, että kysymykset jaetuille tien osille voi tulla näkyviin paljon myöhemmin. 
 Jaetaanko nyt?"</string>
     <string name="quest_split_way_tutorial">"Napauta tieta jakaaksesi se siitä kohtaa osiin. Yritä olla mahdollisimman tarkka. Voit zoomata tavalliseen tapaan. "</string>
     <string name="quest_split_way_too_imprecise">"Zoomaa kauemmaksi"</string>

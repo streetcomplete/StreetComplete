@@ -69,7 +69,6 @@
     <string name="turn_on_location_request">"Locatie is uitgeschakeld. Instellingen openen om het aan te zetten?"</string>
     <string name="no_location_permission_warning">"Je locatie is nodig om in je omgeving vragen te downloaden."</string>
     <string name="action_about">"Over StreetComplete"</string>
-    <string name="about_title_version">"Versie"</string>
 
     <!-- Fuzzy -->
     <string name="about_title_authors">"Auteurs"</string>
@@ -296,7 +295,7 @@ De informatie die je ingeeft wordt meteen toegevoegd aan OpenStreetMap in jouw n
     <string name="quest_wheelchairAccess_location_name_title">"Is de locatie %s rolstoel toegankelijk?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_limited_description_business">"\"Gedeeltelijk\" betekent dat er maar 1 enkele opstap is om het gebouw te betreden en dat de meeste ruimtes binnen rolstoel toegankelijk zijn.
+    <string name="quest_wheelchairAccess_limited_description_business">"\"Gedeeltelijk\" betekent dat er maar 1 enkele opstap is om het gebouw te betreden en dat de meeste ruimtes binnen rolstoel toegankelijk zijn. 
 "</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"\"Gedeeltelijk\" betekent dat er maar 1 enkele opstap moet genomen worden om naar binnen te gaan."</string>
 
@@ -317,7 +316,7 @@ De informatie die je ingeeft wordt meteen toegevoegd aan OpenStreetMap in jouw n
     <string name="quest_streetName_cantType_title">"Niet de juiste toetsenbordlayout?"</string>
     <string name="quest_streetName_cantType_open_settings">"Open instellingen"</string>
     <string name="quest_streetName_cantType_open_store">"Open app store"</string>
-    <string name="quest_streetName_cantType_description">"Als je een standaard toetsenbord gebruikt, kan je eenvoudig in de instellingen via \"taal en invoer\" de instellingen van het toetsenbord wijzigen.
+    <string name="quest_streetName_cantType_description">"Als je een standaard toetsenbord gebruikt, kan je eenvoudig in de instellingen via \"taal en invoer\" de instellingen van het toetsenbord wijzigen. 
 
 Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetsenborden die veel talen ondersteunen zijn Google Gboard, Swiftkey Keyboard, AnySoftKeyboard en Multiling O Keyboard."</string>
     <string name="quest_streetName_menuItem_nolanguage">"(niet gespecificeerd)"</string>

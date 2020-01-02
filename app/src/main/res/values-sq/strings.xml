@@ -69,7 +69,6 @@
     <string name="turn_on_location_request">"Vendndodhja është ndalur. Shko në Rregullime për ta aktivizuar?"</string>
     <string name="no_location_permission_warning">"Duhet vendndodhja për të gjurmuar në afërsinë tuaj."</string>
     <string name="action_about">"Për StreetComplete"</string>
-    <string name="about_title_version">"Versioni"</string>
 
     <!-- Fuzzy -->
     <string name="about_title_authors">"Autorët"</string>
@@ -109,7 +108,6 @@
     <string name="quest_roofShape_select_one">"Zgjedh një:"</string>
     <string name="quest_roofShape_show_more">"Trego më shumë…"</string>
     <string name="quest_roofShape_answer_many">"Ka disa format të ndryshme"</string>
-    <string name="pref_category_cache">"Memorie"</string>
     <string name="pref_title_sync">"Auto-sinkronizim"</string>
     <string name="map_btn_zoom_out">"Zvogloni"</string>
     <string name="map_btn_zoom_in">"Zmadhoni"</string>
@@ -240,7 +238,7 @@ Informacioni që futni shtohet direkt në OpenStreetMap në emrin tuaj, pa nevoj
     <string name="quest_source_dialog_title">"A jeni i sigurt që e keni konfirmuar këtë në vend?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_tactilePaving_title_name_bus">"A ka ndalesa e autobusit %s shtresë taktile?
+    <string name="quest_tactilePaving_title_name_bus">"A ka ndalesa e autobusit %s shtresë taktile? 
 "</string>
     <string name="quest_source_dialog_note">"Vetëm informacioni që është gjetur në vështrim duhet të futet."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"A është ky parking për biçikleta i mbuluar (i mbrojtur nga shiu)?"</string>
@@ -394,7 +392,6 @@ Përndryshe, mund të shkarkoni një tastierë tjetër në dyqanin e aplikacione
     <string name="quest_crossing_type_unmarked">"Kalim pa shënim në rrugë"</string>
     <string name="compass_north_one_letter">"N"</string>
     <string name="action_undo">"Zhbëje"</string>
-    <string name="no_changes_to_undo">"Asgjë për të zhbërë"</string>
     <string name="undo_confirm_title">"Zhbëje përgjigjen e fundit?"</string>
     <string name="produce_mangosteen">"Mongosten"</string>
     <string name="produce_tomatoes">"Domate"</string>
@@ -417,6 +414,8 @@ Përndryshe, mund të shkarkoni një tastierë tjetër në dyqanin e aplikacione
     <string name="quest_buildingLevels_roofLevelsLabel2">"nivelet në kulm"</string>
     <string name="quest_buildingLevels_levelsLabel2">"nivelet e rregullta (pa numruar kulmin)"</string>
     <string name="pref_title_authorized_summary">"Autorizuar"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingLevels_answer_multipleLevels">"ndryshon për pjesën e ndërtesës"</string>
     <string name="quest_buildingLevels_answer_description">"Në këtë rast, thjesht jepni vlerat e pjesës më të lartë të ndërtesës."</string>
     <string name="unglue_hint">"Shtypni për të zhbllokuar pamjen nga pozicioni"</string>

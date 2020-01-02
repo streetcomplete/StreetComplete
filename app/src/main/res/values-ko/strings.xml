@@ -63,7 +63,6 @@
     <string name="turn_on_location_request">"위치 탐색이 꺼져 있습니다. 설정 화면을 여시겠습니까?"</string>
     <string name="no_location_permission_warning">"주변에 있는 퀘스트를 찾으려면 현재 위치가 필요합니다."</string>
     <string name="action_about">"StreetComplete란"</string>
-    <string name="about_title_version">"버전"</string>
     <string name="about_title_authors">"제작자들"</string>
     <string name="about_summary_authors">"© 2016–2019 Tobias Zwick와 기여자들"</string>
     <string name="about_title_repository">"소스 레포지토리"</string>
@@ -323,7 +322,6 @@
     <string name="quest_crossing_type_unmarked">"도로에 표시가 없는 횡단보도"</string>
     <string name="compass_north_one_letter">"북"</string>
     <string name="action_undo">"되돌리기"</string>
-    <string name="no_changes_to_undo">"되돌릴 작업이 없습니다"</string>
     <string name="undo_confirm_title">"마지막 답변을 되돌리시겠습니까?"</string>
     <string name="produce_mangosteen">"망고스틴"</string>
     <string name="produce_tomatoes">"토마토"</string>
@@ -346,6 +344,8 @@
     <string name="quest_buildingLevels_roofLevelsLabel2">"지붕 층수"</string>
     <string name="quest_buildingLevels_levelsLabel2">"기본 층수(지붕 층수는 제외)"</string>
     <string name="pref_title_authorized_summary">"인증됨"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingLevels_answer_multipleLevels">"건물 부분별로 다름"</string>
     <string name="quest_buildingLevels_answer_description">"부분별로 층수가 다르다면 가장 높은 부분의 값을 입력하세요."</string>
     <string name="unglue_hint">"고정을 해제하려면 탭하세요"</string>

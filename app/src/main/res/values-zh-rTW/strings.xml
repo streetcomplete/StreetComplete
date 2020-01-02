@@ -67,7 +67,6 @@
     <string name="turn_on_location_request">"定位已關閉。到設定中開啟它？"</string>
     <string name="no_location_permission_warning">"你的位置會被用在搜尋身邊的任務上"</string>
     <string name="action_about">"關於 StreetComplete"</string>
-    <string name="about_title_version">"版本"</string>
 
     <!-- Fuzzy -->
     <string name="about_title_authors">"作者"</string>
@@ -740,4 +739,42 @@
     <string name="quest_split_way_many_splits_confirmation_description">"有可分割多個地方，你總是可以稍後再度分割路徑。"</string>
     <string name="quest_footwayPartSurface_title">"人行步道的鋪面材質是什麼？"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title">"這裡的廁所是否是輪椅可通行的？"</string>
+    <string name="quest_tactilePaving_title_tram">"街車停靠站有特殊舖面嗎？"</string>
+    <string name="quest_tactilePaving_title_name_tram">"街車停靠站%s有特殊舖面嗎"</string>
+    <string name="quest_maxweight_title">"這裡的承重有上線嗎？"</string>
+    <string name="quest_maxweight_answer_noSign">"這裡沒有指標"</string>
+    <string name="quest_maxweight_unusualInput_confirmation_description">"重量的數量看來怪怪的，你確定輸入正確數值嗎？"</string>
+    <string name="quest_maxweight_answer_other_sign">"指標看來不同…"</string>
+    <string name="quest_maxweight_unsupported_sign_request_photo">"你想要留下註解嗎？像是有留下留片的註解，能夠讓其他圖客接手處理。"</string>
+    <string name="confirmation_authorize_now_note">"你可以稍後在設定頁面進行。"</string>
+    <string name="quest_generalFee_title">"進去需要費用嗎？"</string>
+    <string name="quest_laundrySelfService_title">"這個洗衣店是自助服務嗎？"</string>
+    <string name="quest_handrail_title">"這條階梯有扶手嗎？"</string>
+    <string name="quest_openingHours_no_name_title">"這地方的開放時間是？(%s)"</string>
+    <string name="about_summary_current_version">"目前版本：%s"</string>
+    <string name="quest_postboxRef_title">"這個郵筒的編號是？"</string>
+    <string name="quest_postboxRef_name_title">"這個郵筒 %s 的編號是？"</string>
+    <string name="quest_ref_answer_noRef">"看不到編號…"</string>
+    <string name="quest_street_side_puzzle_tutorial">"按住問號，然後選擇道路那一側的答案。"</string>
+    <string name="quest_recycling_materials_title">"這裡能拿過去那些回收物品？"</string>
+    <string name="quest_recycling_materials_note">"如果有沒有列出的回收項目，請留下註解。"</string>
+    <string name="quest_recycling_type_batteries">"電池"</string>
+    <string name="quest_recycling_type_cans">"鐵鋁罐"</string>
+    <string name="quest_recycling_type_clothes">"衣服"</string>
+    <string name="quest_recycling_type_green_waste">"花園垃圾"</string>
+    <string name="quest_recycling_type_glass_bottles">"玻璃瓶罐"</string>
+    <string name="quest_recycling_type_glass_bottles_short">"瓶子和罐子"</string>
+    <string name="quest_recycling_type_paper">"紙張"</string>
+    <string name="quest_recycling_type_plastic_generic">"塑膠"</string>
+    <string name="quest_recycling_type_plastic">"任何塑膠類"</string>
+    <string name="quest_recycling_type_shoes">"鞋子"</string>
+    <string name="quest_recycling_type_electric_appliances">"電子產品"</string>
+    <string name="quest_recycling_type_plastic_bottles">"只有塑膠瓶"</string>
+    <string name="quest_recycling_type_plastic_packaging">"只有塑膠包裝"</string>
+    <string name="quest_recycling_type_scrap_metal">"廢金屬"</string>
+    <string name="quest_recycling_type_any_glass">"任何玻璃類"</string>
+    <string name="quest_recycling_glass_title">"是只有玻璃瓶罐能回收，還是任何類型的玻璃？"</string>
+    <string name="quest_determineRecyclingGlass_description_any_glass">"這些類型的玻璃並不被接受：鋼化玻璃，窗玻璃，玻璃器皿，燈泡或鏡子。"</string>
+    <string name="about_title_changelog">"版本歷史"</string>
+    <string name="title_whats_new">"最新功能？"</string>
 </resources>

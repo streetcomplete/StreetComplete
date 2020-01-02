@@ -67,7 +67,6 @@
     <string name="turn_on_location_request">"Yer bulma kapalı. Açmak için Ayarlar'a gidilsin mi?"</string>
     <string name="no_location_permission_warning">"Çevrenizdeki görevleri taramak için konumunuz gerekiyor."</string>
     <string name="action_about">"StreetComplete Hakkında"</string>
-    <string name="about_title_version">"Sürüm"</string>
 
     <!-- Fuzzy -->
     <string name="about_title_authors">"Yazarlar"</string>
@@ -463,9 +462,14 @@ Tüm cadde boyunca vurgulanan bölüm için geçerli hiçbir işaret yoksa, vars
     <string name="quest_surface_value_metal">"Metal"</string>
     <string name="quest_cycleway_title2">"Burada bisiklet yolu var mı? Hangi tip?"</string>
     <string name="quest_bridge_structure_title">"Bu köprünün yapısı nedir?"</string>
+    <string name="quest_internet_access_name_title">"%s ne tür bir internet bağlantısı sunuyor?"</string>
     <string name="quest_internet_access_wlan">"Wifi"</string>
+    <string name="quest_internet_access_wired">"Kablolu (LAN)"</string>
+    <string name="quest_internet_access_terminal">"İnternet erişimli bilgisayar"</string>
     <string name="quest_internet_access_no">"Bağlantı yok"</string>
+    <string name="quest_bench_backrest_title">"Bu bankın sırtlığı var mı?"</string>
     <string name="quest_bench_answer_picnic_table">"Piknik masası var mı?"</string>
+    <string name="quest_religion_for_place_of_worship_title">"%s hangi din için?"</string>
     <string name="quest_religion_christian">"Hristiyanlık"</string>
     <string name="quest_religion_muslim">"İslam"</string>
     <string name="quest_religion_hindu">"Hinduizm"</string>
@@ -617,4 +621,35 @@ Tüm cadde boyunca vurgulanan bölüm için geçerli hiçbir işaret yoksa, vars
     <string name="quest_leave_new_note_photos_are_useful">"Bir fotoğraf eklemek notu çok daha kullanışlı hale getirecektir."</string>
     <string name="quest_postboxCollectionTimes_name_title">"%s posta kutusunun toplanma zamanı nedir?"</string>
     <string name="create_new_note_hint">"Notu en iyi konuşulan yerel dilde veya İngilizce yazınız."</string>
+    <string name="quest_maxweight_answer_noSign">"İşaret yok"</string>
+    <string name="quest_maxweight_answer_other_sign">"İşaret farklı görünüyor…"</string>
+    <string name="quest_maxweight_unsupported_sign_request_photo">"Not bırakmak ister misiniz?  Fotoğraflı bir not, diğer haritacıların onu görmesini sağlar."</string>
+    <string name="confirmation_authorize_now_note">"Bu daha sonra ayarlar ekranından yapılabilir."</string>
+    <string name="quest_generalFee_title">"%s giriş ücretli mi?"</string>
+    <string name="quest_laundrySelfService_title">"Bu çamaşırhane self servis mi?"</string>
+    <string name="quest_handrail_title">"Bu basamaklarda parmaklık var mı?"</string>
+    <string name="quest_openingHours_no_name_title">"Bu yerin çalışma saatleri?  (%s)"</string>
+    <string name="quest_ref_answer_noRef">"Görünen referans numarası yok…"</string>
+    <string name="quest_street_side_puzzle_tutorial">"Soru işaretlerine dokunun ve yolun belirli bir yanı için bir cevap seçin."</string>
+    <string name="quest_recycling_materials_title">"Buraya geri dönüşüm için neler bırakılabilir?"</string>
+    <string name="quest_recycling_materials_note">"Listelenenlerden farklı bir şey geri dönüştürülüyorsa, seçmek yerine lütfen bir not bırakın."</string>
+    <string name="quest_recycling_type_batteries">"Pil"</string>
+    <string name="quest_recycling_type_cans">"Kutu"</string>
+    <string name="quest_recycling_type_clothes">"Çamaşır"</string>
+    <string name="quest_recycling_type_green_waste">"Bahçe atıkları"</string>
+    <string name="quest_recycling_type_glass_bottles">"Cam şişe ve kavanozlar"</string>
+    <string name="quest_recycling_type_glass_bottles_short">"Şişe ve kavanozlar"</string>
+    <string name="quest_recycling_type_paper">"Kağıt"</string>
+    <string name="quest_recycling_type_plastic_generic">"Plastik"</string>
+    <string name="quest_recycling_type_plastic">"Herhangi plastik"</string>
+    <string name="quest_recycling_type_shoes">"Ayakkabı"</string>
+    <string name="quest_recycling_type_electric_appliances">"Elektronik"</string>
+    <string name="quest_recycling_type_plastic_bottles">"Sadece plastik şişeler"</string>
+    <string name="quest_recycling_type_plastic_packaging">"Sadece plastik ambalaj"</string>
+    <string name="quest_recycling_type_scrap_metal">"Hurda metal"</string>
+    <string name="quest_recycling_type_any_glass">"Herhangi bir cam"</string>
+    <string name="quest_recycling_glass_title">"Burada sadece cam şişeler, kavanozlar veya herhangi bir cam türü geri dönüştürülebilir mi?"</string>
+    <string name="quest_determineRecyclingGlass_description_any_glass">"Genellikle kabul edilmeyen cam örnekleri: temperli cam, pencere camları, cam eşyalar, ampuller veya aynalar."</string>
+    <string name="about_title_changelog">"Sürüm geçmişi"</string>
+    <string name="title_whats_new">"Neler yeni?"</string>
 </resources>

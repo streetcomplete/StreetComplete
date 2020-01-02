@@ -67,7 +67,6 @@
     <string name="turn_on_location_request">"Lokation er fra. Gå til indstillinger og tænd nu?"</string>
     <string name="no_location_permission_warning">"Din lokation er nødvendig for at skanne efter opgaver i dit nærområde."</string>
     <string name="action_about">"Om StreetComplete"</string>
-    <string name="about_title_version">"Version"</string>
 
     <!-- Fuzzy -->
     <string name="about_title_authors">"Udviklere"</string>

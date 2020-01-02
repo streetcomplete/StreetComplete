@@ -65,7 +65,6 @@
     <string name="turn_on_location_request">"Positionshämtning är avstängd. Öppna inställningar för att slå på det nu?"</string>
     <string name="no_location_permission_warning">"Din plats är nödvändigt för att söka efter uppdrag i din närhet."</string>
     <string name="action_about">"Om StreetComplete"</string>
-    <string name="about_title_version">"Version"</string>
 
     <!-- Fuzzy -->
     <string name="about_title_authors">"Erkännande"</string>
@@ -455,7 +454,7 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_streetName_answer_noName_noname">"Inget av ovanstående, den har helt enkelt inget namn"</string>
     <string name="quest_wheelchairAccess_toilets_title">"Är de här toaletterna tillgängliga med rullstol?"</string>
     <string name="quest_wheelchairAccess_toilets_name_title">"Är toaletterna %s tillgängliga med rullstol?"</string>
-    <string name="quest_wheelchairAccess_description_toilets">"Om toaletten är tillgänglig för rullstolsanvändare finns det oftast en sådan skylt.
+    <string name="quest_wheelchairAccess_description_toilets">"Om toaletten är tillgänglig för rullstolsanvändare finns det oftast en sådan skylt. 
     Delvis betyder att rullstolsanvändare kan komma in och använda toaletten men att det inte finns stödhandtag eller anpassad tvättho."</string>
     <string name="map_btn_create_note">"Skapa en ny anteckning"</string>
     <string name="create_new_note_unprecise">"Zooma in ytterligare för att skapa en anteckning"</string>

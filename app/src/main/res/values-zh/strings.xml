@@ -67,7 +67,6 @@
     <string name="turn_on_location_request">"处已关闭。到设定中开启它？"</string>
     <string name="no_location_permission_warning">"你的位置会被用在搜寻身边的任务上"</string>
     <string name="action_about">"关于"</string>
-    <string name="about_title_version">"版本"</string>
 
     <!-- Fuzzy -->
     <string name="about_title_authors">"作者"</string>
@@ -83,7 +82,7 @@
     <string name="not_authorized">"未认证"</string>
 
     <!-- Fuzzy -->
-    <string name="version_banned_message">"您正使用的 StreetComplete 版本过旧，已无法上传数据，请更新至最新版本。"</string>
+    <string name="version_banned_message">"您正使用的 StreetComplete 版本过旧。请更新！"</string>
     <string name="no_gps_no_quests">"如果要自动寻找你附近的任务，请启用定位"</string>
     <string name="nothing_more_to_download">"没有更多的任务了"</string>
     <string name="later">"稍后"</string>
@@ -105,7 +104,6 @@
     <string name="quest_roofShape_select_one">"请挑选："</string>
     <string name="quest_roofShape_show_more">"显示更多…"</string>
     <string name="quest_roofShape_answer_many">"它有多种不同形状"</string>
-    <string name="pref_category_cache">"缓存"</string>
     <string name="pref_title_sync">"自动同步"</string>
     <string name="map_btn_zoom_out">"缩小"</string>
     <string name="map_btn_zoom_in">"放大"</string>
@@ -292,8 +290,6 @@ OpenStreetMap不接受匿名编辑，您需要登录您的OpenStreetMap帐号。
     <!-- Fuzzy -->
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"%s 的简称或缩写是？"</string>
     <string name="quest_baby_changing_table_toilets_title">"此洗手间有婴儿尿布更换桌吗？"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_baby_changing_table_title">"%s 有婴儿尿布更换桌吗？"</string>
     <string name="quest_recycling_type_title">"这是哪一种资源回收设施？"</string>
     <string name="recycling_centre">"资源回收中心"</string>
@@ -391,7 +387,6 @@ OpenStreetMap不接受匿名编辑，您需要登录您的OpenStreetMap帐号。
     <string name="quest_crossing_type_unmarked">"无道路标记的路口"</string>
     <string name="compass_north_one_letter">"北"</string>
     <string name="action_undo">"撤销"</string>
-    <string name="no_changes_to_undo">"没有可供撤销的回答"</string>
     <string name="undo_confirm_title">"复原上个回答？"</string>
     <string name="produce_mangosteen">"山竹"</string>
     <string name="produce_tomatoes">"西红柿"</string>
@@ -414,6 +409,8 @@ OpenStreetMap不接受匿名编辑，您需要登录您的OpenStreetMap帐号。
     <string name="quest_buildingLevels_roofLevelsLabel2">"屋顶楼层数"</string>
     <string name="quest_buildingLevels_levelsLabel2">"一般的楼层数 (不计算屋顶)"</string>
     <string name="pref_title_authorized_summary">"验证"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingLevels_answer_multipleLevels">"建筑物各个部分的不同"</string>
     <string name="quest_buildingLevels_answer_description">"在这一个例子，简单填写建筑部分最高楼层数值。"</string>
     <string name="unglue_hint">"从位置点取消界限视图"</string>
@@ -478,8 +475,6 @@ OpenStreetMap不接受匿名编辑，您需要登录您的OpenStreetMap帐号。
     <string name="quest_surface_value_metal">"金属材质表面"</string>
     <string name="quest_cycleway_title2">"这里有自行车车道吗？是哪一种类型的？"</string>
     <string name="quest_bridge_structure_title">"这座桥梁的结构是？"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_internet_access_name_title">"%s 提供哪种网络连接方式？"</string>
     <string name="quest_internet_access_wlan">"Wi-Fi"</string>
     <string name="quest_internet_access_wired">"有线 (LAN)"</string>
@@ -491,8 +486,6 @@ OpenStreetMap不接受匿名编辑，您需要登录您的OpenStreetMap帐号。
     <string name="quest_busStopShelter_tram_title">"这座路面电车站是否有遮荫？"</string>
     <string name="quest_bench_backrest_title">"此长椅是否有靠背？"</string>
     <string name="quest_bench_answer_picnic_table">"这是一个野餐桌"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_religion_for_place_of_worship_title">"%s 隶属于哪一个宗教？"</string>
     <string name="quest_religion_christian">"基督教"</string>
     <string name="quest_religion_muslim">"伊斯兰教"</string>
@@ -662,5 +655,30 @@ OpenStreetMap不接受匿名编辑，您需要登录您的OpenStreetMap帐号。
     <string name="privacy_html_image_upload2">"&lt;p&gt;你附加在注记的照片会上传到我的伺服器，有一天会在注记解决之后删除，meta-data 会在上传前移除。&lt;/p&gt;"</string>
     <string name="action_deselect_all">"取消选取全部"</string>
     <string name="quest_buildingType_retail_description">"包含有餐厅、咖啡厅等的建筑"</string>
+    <string name="quest_openingHours_timeSelect_next">"下一个"</string>
     <string name="quest_buildingType_title">"这栋建筑物的种类是?"</string>
+    <string name="pref_title_theme_select">"选择主题"</string>
+    <string name="theme_automatic">"自动"</string>
+    <string name="theme_light">"亮色"</string>
+    <string name="theme_dark">"暗色"</string>
+    <string name="theme_system_default">"跟随系统设置"</string>
+    <string name="label_housenumber">"房屋数量"</string>
+    <string name="label_blocknumber">"楼道数量"</string>
+    <string name="oauth_remove_authorization_confirmation">"移除"</string>
+    <string name="quest_leafType_title">"这些树是针叶树还是阔叶树？"</string>
+    <string name="quest_leaf_type_needles">"针叶"</string>
+    <string name="quest_leaf_type_broadleaved">"阔叶"</string>
+    <string name="quest_leaf_type_mixed">"两种都有"</string>
+    <string name="about_summary_current_version">"当前版本：%s"</string>
+    <string name="quest_recycling_type_batteries">"电池"</string>
+    <string name="quest_recycling_type_cans">"易拉罐"</string>
+    <string name="quest_recycling_type_clothes">"衣物"</string>
+    <string name="quest_recycling_type_glass_bottles">"塑料瓶罐"</string>
+    <string name="quest_recycling_type_glass_bottles_short">"瓶罐"</string>
+    <string name="quest_recycling_type_paper">"纸张"</string>
+    <string name="quest_recycling_type_plastic_generic">"塑料"</string>
+    <string name="quest_recycling_type_plastic">"各种塑料"</string>
+    <string name="quest_recycling_type_shoes">"鞋子"</string>
+    <string name="quest_recycling_type_plastic_bottles">"仅塑料瓶"</string>
+    <string name="quest_recycling_type_plastic_packaging">"仅塑料包装"</string>
 </resources>
