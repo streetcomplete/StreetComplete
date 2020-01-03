@@ -25,7 +25,7 @@ class AddForestLeafType(private val overpassServer: OverpassMapDataAndGeometryDa
           relation[landuse = forest][!leaf_type](if: length()<700.0);
           way[natural = wood][!leaf_type](if: length()<700.0);
           relation[natural = wood][!leaf_type](if: length()<700.0);
-	  way[natural = tree_row][!leaf_type](if: length()<700.0);
+          way[natural = tree_row][!leaf_type](if: length()<700.0);
         );
         ${getQuestPrintStatement()}""".trimIndent()
 
