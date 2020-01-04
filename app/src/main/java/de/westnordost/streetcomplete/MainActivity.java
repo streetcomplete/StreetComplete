@@ -381,6 +381,7 @@ public class MainActivity extends AppCompatActivity implements
 		questController.setListener(null);
 
 		if (downloadServiceIsBound) unbindService(downloadServiceConnection);
+		downloadServiceIsBound = false;
 		if (downloadService != null)
 		{
 			downloadService.setProgressListener(null);
@@ -391,6 +392,7 @@ public class MainActivity extends AppCompatActivity implements
 		}
 
 		if (uploadServiceIsBound) unbindService(uploadServiceConnection);
+		uploadServiceIsBound = false;
 		if (uploadService != null)
 		{
 			uploadService.setProgressListener(null);
