@@ -29,7 +29,7 @@ class AddProhibitedForPedestrians(o: OverpassMapDataAndGeometryDao) : SimpleOver
         // fuzzy filter for above mentioned situations + developed-enough / non-rural roads
         "and ( oneway~yes|-1 or bridge=yes or tunnel=yes or bicycle~no|use_sidepath or lit=yes )"
 
-    override val commitMessage = "Add whether roads are accessible for pedestrians"
+    override val commitMessage = "Add whether roads are prohibited for pedestrians"
     override val icon = R.drawable.ic_quest_no_pedestrians
     override val isSplitWayEnabled = true
 
