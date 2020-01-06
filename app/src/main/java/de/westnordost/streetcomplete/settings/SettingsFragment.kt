@@ -15,19 +15,19 @@ import javax.inject.Provider
 
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao
 import de.westnordost.streetcomplete.data.tiles.DownloadedTilesDao
-import de.westnordost.streetcomplete.oauth.OAuthPrefs
 import de.westnordost.streetcomplete.ktx.toast
 import de.westnordost.streetcomplete.oauth.OsmOAuthDialogFragment
 import de.westnordost.streetcomplete.settings.questselection.QuestSelectionFragment
 import javax.inject.Inject
 import de.westnordost.streetcomplete.*
+import de.westnordost.streetcomplete.data.user.UserController
 
 
 class SettingsFragment : PreferenceFragmentCompat(),
     SharedPreferences.OnSharedPreferenceChangeListener, IntentListener {
 
     @Inject internal lateinit var prefs: SharedPreferences
-    @Inject internal lateinit var oAuth: OAuthPrefs
+    @Inject internal lateinit var userController: UserController
     @Inject internal lateinit var applyNoteVisibilityChangedTask: Provider<ApplyNoteVisibilityChangedTask>
     @Inject internal lateinit var downloadedTilesDao: DownloadedTilesDao
     @Inject internal lateinit var osmQuestDao: OsmQuestDao
@@ -44,12 +44,12 @@ class SettingsFragment : PreferenceFragmentCompat(),
         addPreferencesFromResource(R.xml.preferences)
 
         findPreference<Preference>("oauth")?.setOnPreferenceClickListener {
-            if (oAuth.isAuthorized) {
+            if (userController.isUserAuthorized) {
                 context?.let {
                     AlertDialog.Builder(it)
                         .setMessage(R.string.oauth_remove_authorization_dialog_message)
                         .setPositiveButton(R.string.oauth_remove_authorization_confirmation) { _, _ ->
-                            oAuth.saveConsumer(null)
+                            userController.logOut()
                         }
                         .setNegativeButton(android.R.string.cancel, null)
                         .show()
@@ -100,8 +100,8 @@ class SettingsFragment : PreferenceFragmentCompat(),
 
     private fun updateOsmAuthSummary() {
         val oauth = preferenceScreen?.findPreference<Preference>("oauth")
-        val username = prefs.getString(Prefs.OSM_USER_NAME, null)
-        oauth?.summary = if (oAuth.isAuthorized) {
+        val username = userController.userName
+        oauth?.summary = if (userController.isUserAuthorized) {
             if (username != null) resources.getString(R.string.pref_title_authorized_username_summary, username)
             else resources.getString(R.string.pref_title_authorized_summary)
         } else {

@@ -15,14 +15,14 @@ import de.westnordost.osmapi.common.errors.OsmAuthorizationException
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.data.VisibleQuestListener
 import de.westnordost.streetcomplete.data.VisibleQuestRelay
-import de.westnordost.streetcomplete.oauth.OAuthPrefs
+import de.westnordost.streetcomplete.data.user.UserController
 
 /** Collects and uploads all changes the user has done: notes he left, comments he left on existing
  * notes and quests he answered  */
 class QuestChangesUploadService : IntentService(TAG) {
     @Inject internal lateinit var uploaders: List<Uploader>
     @Inject internal lateinit var versionIsBannedCheck: VersionIsBannedChecker
-    @Inject internal lateinit var oAuth: OAuthPrefs
+    @Inject internal lateinit var userController: UserController
 
     private val binder = Interface()
 
@@ -73,7 +73,7 @@ class QuestChangesUploadService : IntentService(TAG) {
             }
 
             // let's fail early in case of no authorization
-            if (!oAuth.isAuthorized) {
+            if (!userController.isUserAuthorized) {
                 throw OsmAuthorizationException(401, "Unauthorized", "User is not authorized")
             }
 

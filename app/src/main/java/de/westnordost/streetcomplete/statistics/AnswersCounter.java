@@ -16,7 +16,7 @@ import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestSplitWayDao;
 import de.westnordost.streetcomplete.data.osmnotes.CreateNoteDao;
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestDao;
-import de.westnordost.streetcomplete.data.statistics.QuestStatisticsDao;
+import de.westnordost.streetcomplete.data.user.QuestStatisticsDao;
 
 public class AnswersCounter
 {

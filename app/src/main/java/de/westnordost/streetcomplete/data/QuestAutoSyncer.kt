@@ -24,7 +24,7 @@ import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.download.MobileDataAutoDownloadStrategy
 import de.westnordost.streetcomplete.data.download.WifiAutoDownloadStrategy
-import de.westnordost.streetcomplete.oauth.OAuthPrefs
+import de.westnordost.streetcomplete.data.user.UserController
 import kotlinx.coroutines.*
 
 /** Automatically downloads and uploads new quests around the user's location and uploads quests.
@@ -37,7 +37,7 @@ class QuestAutoSyncer @Inject constructor(
     private val wifiDownloadStrategy: WifiAutoDownloadStrategy,
     private val context: Context,
     private val prefs: SharedPreferences,
-    private val oAuth: OAuthPrefs
+    private val userController: UserController
 ) : LocationListener, LifecycleObserver, CoroutineScope by CoroutineScope(Dispatchers.Default) {
 
     private var pos: LatLon? = null
@@ -137,7 +137,7 @@ class QuestAutoSyncer @Inject constructor(
     fun triggerAutoUpload() {
         if (!isAllowedByPreference) return
         if (!isConnected) return
-        if (!oAuth.isAuthorized) return
+        if (!userController.isUserAuthorized) return
 
         try {
             questController.upload()

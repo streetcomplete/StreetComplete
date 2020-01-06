@@ -1,12 +1,10 @@
 package de.westnordost.streetcomplete.data.download
 
-import android.content.SharedPreferences
 import android.graphics.Rect
 import android.util.Log
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.QuestType
 import de.westnordost.streetcomplete.data.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.VisibleQuestListener
@@ -16,6 +14,7 @@ import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestDao
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestType
 import de.westnordost.streetcomplete.data.osmnotes.OsmNotesDownloader
 import de.westnordost.streetcomplete.data.tiles.DownloadedTilesDao
+import de.westnordost.streetcomplete.data.user.UserController
 import de.westnordost.streetcomplete.data.visiblequests.OrderedVisibleQuestTypesProvider
 import de.westnordost.streetcomplete.util.SlippyMapMath
 import java.util.concurrent.atomic.AtomicBoolean
@@ -30,8 +29,8 @@ class QuestDownloader @Inject constructor(
     private val downloadedTilesDao: DownloadedTilesDao,
     private val osmNoteQuestDb: OsmNoteQuestDao,
     private val questTypeRegistry: QuestTypeRegistry,
-    private val prefs: SharedPreferences,
-    private val questTypesProvider: OrderedVisibleQuestTypesProvider
+    private val questTypesProvider: OrderedVisibleQuestTypesProvider,
+    private val userController: UserController
 ) {
     // listeners
     var questListener: VisibleQuestListener? = null
@@ -97,7 +96,7 @@ class QuestDownloader @Inject constructor(
     private fun downloadNotes(bbox: BoundingBox, tiles: Rect): Set<LatLon> {
         val notesDownload = osmNotesDownloaderProvider.get()
         notesDownload.questListener = questListener
-        val userId: Long? = prefs.getLong(Prefs.OSM_USER_ID, -1L).takeIf { it != -1L }
+        val userId: Long? = userController.userId.takeIf { it != -1L }
         val maxNotes = 10000
         val result = notesDownload.download(bbox, userId, maxNotes)
         downloadedTilesDao.put(tiles, OsmNoteQuestType::class.java.simpleName)

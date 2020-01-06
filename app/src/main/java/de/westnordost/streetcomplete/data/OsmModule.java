@@ -24,7 +24,8 @@ import de.westnordost.streetcomplete.data.osmnotes.OsmAvatarsDownloader;
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestsChangesUploader;
 import de.westnordost.streetcomplete.data.upload.Uploader;
 import de.westnordost.streetcomplete.data.upload.VersionIsBannedChecker;
-import de.westnordost.streetcomplete.oauth.OAuthPrefs;
+import de.westnordost.streetcomplete.data.user.OAuthStore;
+import de.westnordost.streetcomplete.data.user.UserStore;
 import de.westnordost.osmapi.OsmConnection;
 import de.westnordost.osmapi.changesets.ChangesetsDao;
 import de.westnordost.osmapi.map.MapDataDao;
@@ -45,9 +46,9 @@ public class OsmModule
 
 
 	/** Returns the osm connection singleton used for all daos with the saved oauth consumer */
-	@Provides @Singleton public static OsmConnection osmConnection(OAuthPrefs oAuth)
+	@Provides @Singleton public static OsmConnection osmConnection(OAuthStore oAuthStore)
 	{
-		return osmConnection(oAuth.loadConsumer());
+		return osmConnection(oAuthStore.getOAuthConsumer());
 	}
 
 	/** Returns an osm connection with the supplied consumer (note the difference to the above function) */

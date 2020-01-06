@@ -25,7 +25,7 @@ class OsmAvatarsDownloader @Inject constructor(
 
     private fun downloadUserAvatars(userAvatars: Map<Long, String>) {
         if (!cacheDir.exists() && !cacheDir.mkdirs()) {
-            Log.w("OsmAvatarsDownload", "Unable to create directories for avatars")
+            Log.w(TAG, "Unable to create directories for avatars")
             return
         }
 
@@ -33,9 +33,9 @@ class OsmAvatarsDownloader @Inject constructor(
             try {
                 val avatarFile = File(cacheDir, "$userId")
                 URL(avatarUrl).saveToFile(avatarFile)
-                Log.i("OsmAvatarsDownload", "Saved file: ${avatarFile.path}")
+                Log.i(TAG, "Saved file: ${avatarFile.path}")
             } catch (e: IOException) {
-                Log.w("OsmAvatarsDownload", "Unable to download avatar for user id $userId")
+                Log.w(TAG, "Unable to download avatar for user id $userId")
             }
         }
     }
@@ -49,5 +49,9 @@ class OsmAvatarsDownloader @Inject constructor(
             }
         }
         return userAvatars
+    }
+
+    companion object {
+        private const val TAG = "OsmAvatarsDownload"
     }
 }

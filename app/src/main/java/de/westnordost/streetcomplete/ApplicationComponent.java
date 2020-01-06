@@ -8,11 +8,11 @@ import androidx.annotation.NonNull;
 import dagger.Component;
 import de.westnordost.streetcomplete.data.DbModule;
 import de.westnordost.streetcomplete.data.OsmModule;
+import de.westnordost.streetcomplete.data.user.UserModule;
 import de.westnordost.streetcomplete.data.osm.upload.ChangesetAutoCloserWorker;
 import de.westnordost.streetcomplete.data.upload.QuestChangesUploadService;
 import de.westnordost.streetcomplete.data.download.QuestDownloadService;
 import de.westnordost.streetcomplete.data.meta.MetadataModule;
-import de.westnordost.streetcomplete.oauth.OAuthModule;
 import de.westnordost.streetcomplete.oauth.OsmOAuthDialogFragment;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 import de.westnordost.streetcomplete.quests.QuestModule;
@@ -35,8 +35,8 @@ import de.westnordost.streetcomplete.tangram.QuestsMapFragment;
 import de.westnordost.streetcomplete.util.SerializedSavedState;
 
 @Singleton
-@Component(modules = {ApplicationModule.class, OAuthModule.class, OsmModule.class, QuestModule.class,
-		DbModule.class, MetadataModule.class})
+@Component(modules = {ApplicationModule.class, OsmModule.class, QuestModule.class,
+		DbModule.class, MetadataModule.class, UserModule.class})
 public interface ApplicationComponent
 {
 	void inject(StreetCompleteApplication app);

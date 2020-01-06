@@ -88,10 +88,10 @@ import de.westnordost.streetcomplete.data.upload.QuestChangesUploadProgressListe
 import de.westnordost.streetcomplete.data.upload.QuestChangesUploadService;
 import de.westnordost.streetcomplete.data.upload.VersionBannedException;
 import de.westnordost.streetcomplete.data.osmnotes.CreateNoteFragment;
+import de.westnordost.streetcomplete.data.user.UserController;
 import de.westnordost.streetcomplete.location.LocationRequestFragment;
 import de.westnordost.streetcomplete.location.LocationState;
 import de.westnordost.streetcomplete.location.LocationUtil;
-import de.westnordost.streetcomplete.oauth.OAuthPrefs;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 import de.westnordost.streetcomplete.quests.IsCloseableBottomSheet;
 import de.westnordost.streetcomplete.quests.IsShowingQuestDetails;
@@ -129,7 +129,7 @@ public class MainActivity extends AppCompatActivity implements
 	@Inject QuestController questController;
 
 	@Inject SharedPreferences prefs;
-	@Inject OAuthPrefs oAuth;
+	@Inject UserController userController;
 
 	@Inject FindQuestSourceComponent questSource;
 
@@ -516,7 +516,7 @@ public class MainActivity extends AppCompatActivity implements
 	@UiThread private void uploadChanges()
 	{
 		// because the app should ask for permission even if there is nothing to upload right now
-		if(!oAuth.isAuthorized())
+		if(!userController.isUserAuthorized())
 		{
 			requestOAuthorized();
 		}
@@ -600,7 +600,7 @@ public class MainActivity extends AppCompatActivity implements
 	{
 		if(questAutoSyncer.isAllowedByPreference())
 		{
-			if (!oAuth.isAuthorized()) {
+			if (!userController.isUserAuthorized()) {
 				// new users should not be immediately pestered to login after each change (#1446)
 				if(answersCounter.waitingForUpload() >= 3) {
 					requestOAuthorized();
@@ -674,7 +674,7 @@ public class MainActivity extends AppCompatActivity implements
 				else if(e instanceof OsmAuthorizationException)
 				{
 					// delete secret in case it failed while already having a token -> token is invalid
-					oAuth.saveConsumer(null);
+					userController.logOut();
 					requestOAuthorized();
 				}
 				else
