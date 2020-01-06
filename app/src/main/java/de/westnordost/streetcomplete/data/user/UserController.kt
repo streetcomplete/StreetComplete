@@ -28,6 +28,7 @@ class UserController @Inject constructor(
         private val userStore: UserStore,
         private val avatarCacheDir: File,
         private val statisticsDownloader: StatisticsDownloader,
+        private val statisticsDao: QuestStatisticsDao,
         private val osmConnection: OsmConnection
 ) : LifecycleObserver, CoroutineScope by CoroutineScope(Dispatchers.Default) {
 
@@ -40,16 +41,18 @@ class UserController @Inject constructor(
     val userId: Long get() = userStore.userId
     val userName: String? get() = userStore.userName
 
-    suspend fun logIn(consumer: OAuthConsumer) { withContext(Dispatchers.IO) {
-        require(hasRequiredPermissions(consumer)) { "The access does not have the required permissions" }
+    suspend fun logIn(consumer: OAuthConsumer) {
+        withContext(Dispatchers.IO) {
+            require(hasRequiredPermissions(consumer)) { "The access does not have the required permissions" }
 
-        oAuthStore.oAuthConsumer = consumer
-        osmConnection.oAuth = consumer
-        val userDetails = userDao.getMine()
-        userStore.setDetails(userDetails)
-        downloadAvatar(userDetails.profileImageUrl, userDetails.id)
-        statisticsDownloader.register(userDetails.id)
-    } }
+            oAuthStore.oAuthConsumer = consumer
+            osmConnection.oAuth = consumer
+            val userDetails = userDao.getMine()
+            userStore.setDetails(userDetails)
+            downloadAvatar(userDetails.profileImageUrl, userDetails.id)
+            statisticsDownloader.register(userDetails.id)
+        }
+    }
 
     suspend fun hasRequiredPermissions(consumer: OAuthConsumer): Boolean {
         return withContext(Dispatchers.IO) {
@@ -62,6 +65,7 @@ class UserController @Inject constructor(
         userStore.clear()
         oAuthStore.oAuthConsumer = null
         osmConnection.oAuth = null
+        statisticsDao.clear()
     }
 
     private fun downloadAvatar(avatarUrl: String, userId: Long) {

@@ -29,9 +29,13 @@ class QuestStatisticsDao @Inject constructor(private val dbHelper: SQLiteOpenHel
         }.toMap()
     }
 
+    fun clear() {
+        db.delete(NAME, null, null)
+    }
+
     fun replaceAll(amounts: Map<String, Int>) {
         db.transaction {
-            db.delete(NAME, null, null)
+            clear()
             for ((key, value) in amounts) {
                 db.insert(NAME, null, contentValuesOf(
                     QUEST_TYPE to key,
