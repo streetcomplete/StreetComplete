@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 
 import dagger.Module;
 import dagger.Provides;
+import de.westnordost.osmapi.OsmConnection;
 import de.westnordost.osmapi.user.UserDao;
 import de.westnordost.streetcomplete.data.OsmModule;
 import oauth.signpost.OAuthConsumer;
@@ -45,10 +46,10 @@ import oauth.signpost.basic.DefaultOAuthProvider;
 	}
 
 	@Provides public static UserController userController(
-		SharedPreferences prefs, UserDao userDao, UserStore userStore, Context context,
-		StatisticsDownloader statisticsDownloader
+		SharedPreferences prefs, UserDao userDao, UserStore userStore, OAuthStore oAuthStore,
+		Context context, StatisticsDownloader statisticsDownloader, OsmConnection osmConnection
 	)
 	{
-		return new UserController(userDao, userStore, OsmModule.getAvatarsCacheDirectory(context), statisticsDownloader);
+		return new UserController(userDao, oAuthStore, userStore, OsmModule.getAvatarsCacheDirectory(context), statisticsDownloader, osmConnection);
 	}
 }

@@ -125,7 +125,7 @@ class OsmOAuthDialogFragment
 
 	private suspend fun retrieveRequestToken() {
 		try {
-			val authorizeUrl: String = withContext(Dispatchers.IO) {
+			val authorizeUrl = withContext(Dispatchers.IO) {
 				provider.retrieveRequestToken(consumer, CALLBACK_URL)
 			}
 			if (state == State.CANCELLED) return

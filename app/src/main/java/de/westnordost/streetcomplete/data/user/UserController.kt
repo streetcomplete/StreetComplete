@@ -13,7 +13,7 @@ import de.westnordost.streetcomplete.ktx.saveToFile
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import oauth.signpost.OAuthConsumer
 import java.io.File
 import java.io.IOException
@@ -40,14 +40,8 @@ class UserController @Inject constructor(
     val userId: Long get() = userStore.userId
     val userName: String? get() = userStore.userName
 
-    suspend fun logIn(consumer: OAuthConsumer) {
-        val permissions = PermissionsDao(OsmModule.osmConnection(consumer)).get()
-        if (!permissions.containsAll(REQUIRED_PERMISSIONS)) {
-            // TODO! -> feedback about success or failure of login!
-            // activity?.toast(R.string.oauth_failed_permissions, Toast.LENGTH_LONG)
-// 			activity?.toast(R.string.pref_title_authorized_summary, Toast.LENGTH_LONG)
-
-        }
+    suspend fun logIn(consumer: OAuthConsumer) { withContext(Dispatchers.IO) {
+        require(hasRequiredPermissions(consumer)) { "The access does not have the required permissions" }
 
         oAuthStore.oAuthConsumer = consumer
         osmConnection.oAuth = consumer
@@ -55,9 +49,14 @@ class UserController @Inject constructor(
         userStore.setDetails(userDetails)
         downloadAvatar(userDetails.profileImageUrl, userDetails.id)
         statisticsDownloader.register(userDetails.id)
+    } }
+
+    suspend fun hasRequiredPermissions(consumer: OAuthConsumer): Boolean {
+        return withContext(Dispatchers.IO) {
+            val permissionDao = PermissionsDao(OsmModule.osmConnection(consumer))
+            permissionDao.get().containsAll(REQUIRED_OSM_PERMISSIONS)
+        }
     }
-
-
 
     fun logOut() {
         userStore.clear()
@@ -77,7 +76,7 @@ class UserController @Inject constructor(
     companion object {
         private const val TAG = "UserController"
 
-        private val REQUIRED_PERMISSIONS = listOf(
+        private val REQUIRED_OSM_PERMISSIONS = listOf(
                 Permission.READ_PREFERENCES_AND_USER_DETAILS,
                 Permission.MODIFY_MAP,
                 Permission.WRITE_NOTES
