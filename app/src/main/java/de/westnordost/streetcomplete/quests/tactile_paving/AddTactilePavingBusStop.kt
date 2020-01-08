@@ -4,6 +4,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
+import de.westnordost.streetcomplete.data.osm.NoCountriesExcept
 
 class AddTactilePavingBusStop(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<Boolean>(o) {
 
@@ -21,7 +22,7 @@ class AddTactilePavingBusStop(o: OverpassMapDataAndGeometryDao) : SimpleOverpass
 
     // See overview here: https://ent8r.github.io/blacklistr/?streetcomplete=tactile_paving/AddTactilePavingCrosswalk.kt
     // #750
-    override val enabledInCountries = AddTactilePavingCrosswalk.ENABLED_IN_COUNTRIES
+    override val enabledInCountries = ENABLED_IN_COUNTRIES
 
     override fun getTitle(tags: Map<String, String>): Int {
         val hasName = tags.containsKey("name")
@@ -39,5 +40,21 @@ class AddTactilePavingBusStop(o: OverpassMapDataAndGeometryDao) : SimpleOverpass
 
     override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
         changes.add("tactile_paving", if (answer) "yes" else "no")
+    }
+
+    companion object {
+        internal val ENABLED_IN_COUNTRIES = NoCountriesExcept(
+            // Europe
+            "NO","SE",
+            "GB","IE","NL","BE","FR","ES",
+            "DE","PL","CZ","SK","HU","AT","CH",
+            "LV","LT","LU","EE","RU",
+            // America
+            "US","CA","AR",
+            // Asia
+            "HK","SG","KR","JP",
+            // Oceania
+            "AU","NZ"
+        )
     }
 }
