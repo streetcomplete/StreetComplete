@@ -20,9 +20,21 @@ class AddTactilePavingBusStop(o: OverpassMapDataAndGeometryDao) : SimpleOverpass
     override val commitMessage = "Add tactile pavings on bus stops"
     override val icon = R.drawable.ic_quest_blind_bus
 
-    // See overview here: https://ent8r.github.io/blacklistr/?streetcomplete=tactile_paving/AddTactilePavingCrosswalk.kt
+    // See overview here: https://ent8r.github.io/blacklistr/?streetcomplete=tactile_paving/AddTactilePavinBusStop.kt
     // #750
-    override val enabledInCountries = ENABLED_IN_COUNTRIES
+    override val enabledInCountries = NoCountriesExcept(
+        // Europe
+        "NO","SE",
+        "GB","IE","NL","BE","FR","ES",
+        "DE","PL","CZ","SK","HU","AT","CH",
+        "LV","LT","LU","EE","RU",
+        // America
+        "US","CA","AR",
+        // Asia
+        "HK","SG","KR","JP",
+        // Oceania
+        "AU","NZ"
+    )
 
     override fun getTitle(tags: Map<String, String>): Int {
         val hasName = tags.containsKey("name")
@@ -40,21 +52,5 @@ class AddTactilePavingBusStop(o: OverpassMapDataAndGeometryDao) : SimpleOverpass
 
     override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
         changes.add("tactile_paving", if (answer) "yes" else "no")
-    }
-
-    companion object {
-        internal val ENABLED_IN_COUNTRIES = NoCountriesExcept(
-            // Europe
-            "NO","SE",
-            "GB","IE","NL","BE","FR","ES",
-            "DE","PL","CZ","SK","HU","AT","CH",
-            "LV","LT","LU","EE","RU",
-            // America
-            "US","CA","AR",
-            // Asia
-            "HK","SG","KR","JP",
-            // Oceania
-            "AU","NZ"
-        )
     }
 }

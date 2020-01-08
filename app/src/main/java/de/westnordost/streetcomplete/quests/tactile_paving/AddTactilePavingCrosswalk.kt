@@ -14,7 +14,19 @@ class AddTactilePavingCrosswalk(o: OverpassMapDataAndGeometryDao) : SimpleOverpa
 
     // See overview here: https://ent8r.github.io/blacklistr/?streetcomplete=tactile_paving/AddTactilePavingCrosswalk.kt
     // #750
-    override val enabledInCountries = ENABLED_IN_COUNTRIES
+    override val enabledInCountries = NoCountriesExcept(
+        // Europe
+        "NO","SE",
+        "GB","IE","NL","BE","FR","ES",
+        "DE","PL","CZ","SK","HU","AT","CH",
+        "LV","LT","EE","RU",
+        // America
+        "US","CA","AR",
+        // Asia
+        "HK","SG","KR","JP",
+        // Oceania
+        "AU","NZ"
+    )
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_tactilePaving_title_crosswalk
 
@@ -22,21 +34,5 @@ class AddTactilePavingCrosswalk(o: OverpassMapDataAndGeometryDao) : SimpleOverpa
 
     override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
         changes.add("tactile_paving", if (answer) "yes" else "no")
-    }
-
-    companion object {
-        internal val ENABLED_IN_COUNTRIES = NoCountriesExcept(
-            // Europe
-            "NO","SE",
-            "GB","IE","NL","BE","FR","ES",
-            "DE","PL","CZ","SK","HU","AT","CH",
-            "LV","LT","EE","RU",
-            // America
-            "US","CA","AR",
-            // Asia
-            "HK","SG","KR","JP",
-            // Oceania
-            "AU","NZ"
-        )
     }
 }
