@@ -32,6 +32,7 @@ import de.westnordost.streetcomplete.settings.questselection.QuestSelectionFragm
 import de.westnordost.streetcomplete.statistics.AnswersCounter;
 import de.westnordost.streetcomplete.tangram.MapControlsFragment;
 import de.westnordost.streetcomplete.tangram.QuestsMapFragment;
+import de.westnordost.streetcomplete.user.QuestStatisticsFragment;
 import de.westnordost.streetcomplete.util.SerializedSavedState;
 
 @Singleton
@@ -60,6 +61,8 @@ public interface ApplicationComponent
 	void inject(AddCollectionTimesForm addCollectionTimesForm);
 
 	void inject(OsmOAuthDialogFragment osmOAuthDialogFragment);
+
+	void inject(QuestStatisticsFragment questStatisticsFragment);
 
 	void inject(AAddLocalizedNameForm.InjectedFields fields);
 	void inject(AbstractQuestAnswerFragment.InjectedFields fields);

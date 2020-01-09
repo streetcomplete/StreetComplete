@@ -147,6 +147,9 @@ dependencies {
     implementation 'com.github.florent37:viewtooltip:1.1.0'
     implementation 'androidx.exifinterface:exifinterface:1.1.0'
 
+    // box2d view
+    implementation 'org.jbox2d:jbox2d-library:2.2.1.1'
+
     // serialization
     implementation 'com.esotericsoftware:kryo:4.0.2'
     implementation 'org.objenesis:objenesis:2.6'
