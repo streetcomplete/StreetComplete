@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.data.statistics
+package de.westnordost.streetcomplete.data.user
 
 object QuestStatisticsTable {
     const val NAME = "quest_statistics"

@@ -5,7 +5,7 @@ import org.junit.Before
 
 import de.westnordost.streetcomplete.data.QuestStatus
 import de.westnordost.streetcomplete.data.osm.upload.ConflictException
-import de.westnordost.streetcomplete.data.statistics.QuestStatisticsDao
+import de.westnordost.streetcomplete.data.user.QuestStatisticsDao
 import de.westnordost.streetcomplete.on
 import de.westnordost.streetcomplete.any
 import org.junit.Test

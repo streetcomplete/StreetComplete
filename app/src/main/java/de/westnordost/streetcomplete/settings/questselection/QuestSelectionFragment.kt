@@ -21,7 +21,8 @@ import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestType
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderList
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeDao
 
-class QuestSelectionFragment : Fragment() {
+class QuestSelectionFragment : Fragment(R.layout.fragment_quest_selection) {
+
     @Inject internal lateinit var questSelectionAdapter: QuestSelectionAdapter
     @Inject internal lateinit var questTypeRegistry: QuestTypeRegistry
     @Inject internal lateinit var visibleQuestTypeDao: VisibleQuestTypeDao
@@ -32,13 +33,9 @@ class QuestSelectionFragment : Fragment() {
         questSelectionAdapter.list = createQuestTypeVisibilityList()
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        setHasOptionsMenu(true)
-        return inflater.inflate(R.layout.fragment_quest_selection, container, false)
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setHasOptionsMenu(true)
         view.findViewById<RecyclerView>(R.id.questSelectionList).apply {
             addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
             layoutManager = LinearLayoutManager(context)

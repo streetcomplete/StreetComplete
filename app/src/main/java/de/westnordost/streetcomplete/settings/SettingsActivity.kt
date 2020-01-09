@@ -1,11 +1,32 @@
 package de.westnordost.streetcomplete.settings
 
 import android.os.Bundle
-
+import android.widget.Toast
 import de.westnordost.streetcomplete.FragmentContainerActivity
+import de.westnordost.streetcomplete.Injector
+import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.user.UserController
+import de.westnordost.streetcomplete.ktx.toast
 import de.westnordost.streetcomplete.oauth.OsmOAuthDialogFragment
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.launch
+import oauth.signpost.OAuthConsumer
+import javax.inject.Inject
 
-class SettingsActivity : FragmentContainerActivity() {
+
+class SettingsActivity :
+        FragmentContainerActivity(),
+        OsmOAuthDialogFragment.Listener,
+        CoroutineScope by CoroutineScope(Dispatchers.Main)
+{
+
+    @Inject lateinit var userController: UserController
+
+    init {
+        Injector.instance.applicationComponent.inject(this)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -13,6 +34,24 @@ class SettingsActivity : FragmentContainerActivity() {
             OsmOAuthDialogFragment().show(supportFragmentManager, OsmOAuthDialogFragment.TAG)
         }
         intent.putExtra(EXTRA_FRAGMENT_CLASS, SettingsFragment::class.java.name)
+    }
+
+    override fun onOAuthSuccess(consumer: OAuthConsumer) { launch {
+        if (userController.hasRequiredPermissions(consumer)) {
+            toast(R.string.pref_title_authorized_summary, Toast.LENGTH_LONG)
+            userController.logIn(consumer)
+        } else {
+            toast(R.string.oauth_failed_permissions, Toast.LENGTH_LONG)
+        }
+    }}
+
+    override fun onOAuthFailed(e: Exception?) {
+        userController.logOut()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        coroutineContext.cancel()
     }
 
     companion object {

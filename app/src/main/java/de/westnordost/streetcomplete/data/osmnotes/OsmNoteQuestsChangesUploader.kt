@@ -6,7 +6,7 @@ import javax.inject.Inject
 
 import de.westnordost.streetcomplete.data.QuestStatus
 import de.westnordost.streetcomplete.data.osm.upload.ConflictException
-import de.westnordost.streetcomplete.data.statistics.QuestStatisticsDao
+import de.westnordost.streetcomplete.data.user.QuestStatisticsDao
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
 import de.westnordost.streetcomplete.data.upload.Uploader
 import java.util.concurrent.atomic.AtomicBoolean

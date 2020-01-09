@@ -10,7 +10,7 @@ import javax.inject.Inject
 
 import de.westnordost.streetcomplete.data.osm.persist.MergedElementDao
 import de.westnordost.streetcomplete.data.osm.persist.UndoOsmQuestDao
-import de.westnordost.streetcomplete.data.statistics.QuestStatisticsDao
+import de.westnordost.streetcomplete.data.user.QuestStatisticsDao
 import java.util.*
 import java.util.concurrent.atomic.AtomicBoolean
 

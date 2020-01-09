@@ -11,9 +11,6 @@ public class ApplicationConstants
 		USER_AGENT = NAME + " " + BuildConfig.VERSION_NAME,
 		QUESTTYPE_TAG_KEY = NAME + ":quest_type";
 
-	// date of birth of StreetComplete ;-) (first Google Play version)
-	public final static Date DATE_OF_BIRTH = new GregorianCalendar(2017,Calendar.FEBRUARY,20).getTime();
-
 	public final static double
 		MAX_DOWNLOADABLE_AREA_IN_SQKM = 20,
 		MIN_DOWNLOADABLE_AREA_IN_SQKM = 1;

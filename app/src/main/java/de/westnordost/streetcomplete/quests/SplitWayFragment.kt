@@ -32,7 +32,8 @@ import de.westnordost.streetcomplete.util.SphericalEarthMath.*
 import kotlinx.android.synthetic.main.fragment_split_way.*
 import javax.inject.Inject
 
-class SplitWayFragment : Fragment(), IsCloseableBottomSheet, IsShowingQuestDetails {
+class SplitWayFragment
+    : Fragment(R.layout.fragment_split_way), IsCloseableBottomSheet, IsShowingQuestDetails {
 
     interface Listener {
         fun onAddSplit(point: LatLon)
@@ -66,10 +67,6 @@ class SplitWayFragment : Fragment(), IsCloseableBottomSheet, IsShowingQuestDetai
         positions = elementGeometry.polylines.single().map { OsmLatLon(it.latitude, it.longitude) }
         soundFx.prepare(R.raw.snip)
         soundFx.prepare(R.raw.plop2)
-    }
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_split_way, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

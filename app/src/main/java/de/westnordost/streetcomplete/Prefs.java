@@ -10,8 +10,6 @@ public class Prefs
 			OAUTH_ACCESS_TOKEN = "oauth.accessToken",
 			OAUTH_ACCESS_TOKEN_SECRET = "oauth.accessTokenSecret",
 			MAP_TILECACHE = "map.tilecache",
-			OSM_USER_ID = "osm.userid",
-			OSM_USER_NAME = "osm.username",
 			SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS = "display.nonQuestionNotes",
 			AUTOSYNC = "autosync",
 			KEEP_SCREEN_ON = "display.keepScreenOn",
@@ -19,6 +17,11 @@ public class Prefs
 			THEME_SELECT = "theme.select",
 			OVERPASS_URL = "overpass_url";
 
+
+	public static final String
+		OSM_USER_ID = "osm.userid",
+		OSM_USER_NAME = "osm.username",
+		OSM_UNREAD_MESSAGES = "osm.unread_messages";
 
 	// not shown anywhere directly
 	public static final String

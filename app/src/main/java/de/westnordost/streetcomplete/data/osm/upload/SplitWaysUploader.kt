@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.data.osm.download.OsmApiElementGeometryCrea
 import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao
 import de.westnordost.streetcomplete.data.osm.persist.MergedElementDao
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestSplitWayDao
-import de.westnordost.streetcomplete.data.statistics.QuestStatisticsDao
+import de.westnordost.streetcomplete.data.user.QuestStatisticsDao
 import java.util.concurrent.atomic.AtomicBoolean
 import javax.inject.Inject
 

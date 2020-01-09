@@ -1,19 +1,17 @@
-package de.westnordost.streetcomplete.data.statistics
+package de.westnordost.streetcomplete.data.user
 
-import de.westnordost.osmapi.changesets.ChangesetsDao
 import org.junit.Before
 import org.junit.Test
 
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
 
 import org.junit.Assert.*
-import org.mockito.Mockito.mock
 
 class QuestStatisticsDaoTest : ApplicationDbTestCase() {
     private lateinit var dao: QuestStatisticsDao
 
     @Before fun createDao() {
-        dao = QuestStatisticsDao(dbHelper, UserChangesetsDao(mock(ChangesetsDao::class.java)))
+        dao = QuestStatisticsDao(dbHelper)
     }
 
     @Test fun getZero() {
@@ -37,7 +35,30 @@ class QuestStatisticsDaoTest : ApplicationDbTestCase() {
         dao.addOne(TWO)
         assertEquals(3, dao.getTotalAmount())
     }
+
+    @Test fun replaceAll() {
+        dao.addOne(ONE)
+        dao.addOne(TWO)
+        dao.replaceAll(mapOf(
+                ONE to 4,
+                THREE to 1
+        ))
+        assertEquals(4, dao.getAmount(ONE))
+        assertEquals(0, dao.getAmount(TWO))
+        assertEquals(1, dao.getAmount(THREE))
+    }
+
+    @Test fun getAll() {
+        dao.addOne(ONE)
+        dao.addOne(ONE)
+        dao.addOne(TWO)
+        assertEquals(mapOf(
+            ONE to 2,
+            TWO to 1
+        ),dao.getAll())
+    }
 }
 
 private const val ONE = "one"
 private const val TWO = "two"
+private const val THREE = "three"

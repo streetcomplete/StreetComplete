@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.data.osm.OsmQuestGiver
 import de.westnordost.streetcomplete.data.osm.download.OsmApiElementGeometryCreator
 import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao
 import de.westnordost.streetcomplete.data.osm.persist.MergedElementDao
-import de.westnordost.streetcomplete.data.statistics.QuestStatisticsDao
+import de.westnordost.streetcomplete.data.user.QuestStatisticsDao
 import de.westnordost.streetcomplete.mock
 import org.junit.Before
 import org.junit.Test

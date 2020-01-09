@@ -18,7 +18,7 @@ import de.westnordost.streetcomplete.data.osm.persist.RelationTable
 import de.westnordost.streetcomplete.data.osm.persist.WayTable
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestTable
 import de.westnordost.streetcomplete.data.visiblequests.QuestVisibilityTable
-import de.westnordost.streetcomplete.data.statistics.QuestStatisticsTable
+import de.westnordost.streetcomplete.data.user.QuestStatisticsTable
 import de.westnordost.streetcomplete.data.tiles.DownloadedTilesTable
 import de.westnordost.streetcomplete.ktx.hasColumn
 import de.westnordost.streetcomplete.quests.localized_name.data.RoadNamesTable
