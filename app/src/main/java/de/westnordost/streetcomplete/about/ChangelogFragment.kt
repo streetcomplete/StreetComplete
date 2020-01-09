@@ -18,10 +18,7 @@ import de.westnordost.streetcomplete.view.ListAdapter
 import kotlinx.android.synthetic.main.row_changelog.view.*
 
 /** Shows the full changelog */
-class ChangelogFragment : Fragment() {
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-        inflater.inflate(R.layout.fragment_changelog, container, false)
+class ChangelogFragment : Fragment(R.layout.fragment_changelog) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val changelog = readChangelog(resources)

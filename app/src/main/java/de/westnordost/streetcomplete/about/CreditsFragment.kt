@@ -13,10 +13,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.getYamlObject
 import org.sufficientlysecure.htmltextview.HtmlTextView
 
-class CreditsFragment : Fragment() {
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-        inflater.inflate(R.layout.fragment_credits, container, false)
+class CreditsFragment : Fragment(R.layout.fragment_credits) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val contributorCredits = view.findViewById<LinearLayout>(R.id.contributorCredits)
