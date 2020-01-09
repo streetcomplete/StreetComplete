@@ -55,6 +55,7 @@
         <activity android:name=".FragmentContainerActivity"/>
         <activity android:name=".settings.ShowQuestFormsActivity"
             android:configChanges="orientation|screenSize|uiMode"/>
+        <activity android:name=".user.UserActivity"/>
         <service android:name=".data.download.QuestDownloadService" />
         <service android:name=".data.upload.QuestChangesUploadService" />
         <provider

@@ -108,6 +108,7 @@ import de.westnordost.streetcomplete.tangram.MapFragment;
 import de.westnordost.streetcomplete.tangram.QuestsMapFragment;
 import de.westnordost.streetcomplete.tangram.TangramConst;
 import de.westnordost.streetcomplete.tools.CrashReportExceptionHandler;
+import de.westnordost.streetcomplete.user.UserActivity;
 import de.westnordost.streetcomplete.util.DpUtil;
 import de.westnordost.streetcomplete.util.SlippyMapMath;
 import de.westnordost.streetcomplete.util.SphericalEarthMath;
@@ -507,6 +508,9 @@ public class MainActivity extends AppCompatActivity implements
 				} else {
 					Toast.makeText(this, R.string.map_application_missing, Toast.LENGTH_LONG).show();
 				}
+				return true;
+			case R.id.action_stats:
+				startActivity(new Intent(this, UserActivity.class));
 				return true;
 		}
 

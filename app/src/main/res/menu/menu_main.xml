@@ -2,6 +2,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
 
+    <item android:id="@+id/action_stats"
+        android:icon="@drawable/ic_living_street_france" android:orderInCategory="0" app:showAsAction="always" />
     <item android:id="@+id/action_undo" android:title="@string/action_undo"
           android:icon="@drawable/ic_undo_white_24dp" android:orderInCategory="1" app:showAsAction="ifRoom" />
     <item android:id="@+id/action_download" android:title="@string/action_download"

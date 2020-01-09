@@ -49,6 +49,7 @@ class UserController @Inject constructor(
             osmConnection.oAuth = consumer
             val userDetails = userDao.getMine()
             userStore.setDetails(userDetails)
+            // TODO need to remember if it registered + dl the avatar once already for existing users that upgrade
             downloadAvatar(userDetails.profileImageUrl, userDetails.id)
             statisticsDownloader.register(userDetails.id)
         }

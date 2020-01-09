@@ -19,19 +19,28 @@ class PhysicsWorldController(gravity: Vec2) : CoroutineScope by CoroutineScope(D
 
 	private var isRunning = false
 
+    interface Listener {
+        fun onWorldStep()
+    }
+    var listener: Listener? = null
+
 	init {
         thread.start()
 		handler = Handler(thread.looper)
 	}
 
     fun resume() {
-        isRunning = true
-        handler.postDelayed(this::loop, DELAY.toLong())
+        if (!isRunning) {
+            isRunning = true
+            handler.postDelayed(this::loop, DELAY.toLong())
+        }
     }
 
     fun pause() {
-        isRunning = false
-        handler.removeCallbacks(this::loop)
+        if (isRunning) {
+            isRunning = false
+            handler.removeCallbacks(this::loop)
+        }
     }
 
     fun destroy() {
@@ -43,6 +52,7 @@ class PhysicsWorldController(gravity: Vec2) : CoroutineScope by CoroutineScope(D
 		val startTime = System.currentTimeMillis()
 		world.step(DELAY /1000f, 6, 2)
 		val executionTime = System.currentTimeMillis() - startTime
+        listener?.onWorldStep()
 		if (isRunning) {
 			handler.postDelayed(this::loop, max(0, DELAY - executionTime))
 		}
