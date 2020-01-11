@@ -8,8 +8,11 @@ import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometr
 class AddVegan(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<String>(o) {
 
     override val tagFilters = """
-        nodes, ways with amenity ~ restaurant|cafe|fast_food
-        and name and diet:vegetarian ~ yes|only and !diet:vegan
+        nodes, ways with (amenity ~ restaurant|cafe|fast_food
+        and name and diet:vegetarian ~ yes|only and !diet:vegan)
+        or
+        (amenity ~ ice_cream
+        and name and !diet:vegan)
     """
     override val commitMessage = "Add vegan diet type"
     override val icon = R.drawable.ic_quest_restaurant_vegan
