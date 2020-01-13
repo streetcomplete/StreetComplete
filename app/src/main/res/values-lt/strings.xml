@@ -66,7 +66,7 @@
     <string name="no_location_permission_warning">"Jūsų vietos reikia tam, kad būtų galima ieškoti užduočių šalia jūsų."</string>
     <string name="action_about">"Apie StreetComplete"</string>
     <string name="about_title_authors">"Autoriai"</string>
-    <string name="about_summary_authors">"© 2016–2019 Tobias Zwick ir talkininkai"</string>
+    <string name="about_summary_authors">"© 2016–2020 Tobias Zwick ir talkininkai"</string>
     <string name="about_title_repository">"Išeities kodo repozitorija"</string>
     <string name="about_summary_repository">"GitHub'e"</string>
     <string name="about_title_report_error">"Pranešti apie klaidą"</string>

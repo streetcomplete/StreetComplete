@@ -64,7 +64,7 @@
     <string name="no_location_permission_warning">"Potrzebuję lokalizacji, żeby poszukać zadań w okolicy."</string>
     <string name="action_about">"O StreetComplete"</string>
     <string name="about_title_authors">"Autorzy"</string>
-    <string name="about_summary_authors">"© 2016–2019 Tobias Zwick i współautorzy"</string>
+    <string name="about_summary_authors">"© 2016–2020 Tobias Zwick i współautorzy"</string>
     <string name="about_title_repository">"Repozytorium kodu źródłowego"</string>
     <string name="about_summary_repository">"na GitHubie"</string>
     <string name="about_title_report_error">"Zgłoś błąd"</string>
@@ -720,4 +720,7 @@ Podzielić?"</string>
     <string name="quest_determineRecyclingGlass_description_any_glass">"Szkło żaroodporne, szyby, szklana zastawa stołowa, żarówki czy lustra to przykłady szkła które zazwyczaj nie jest akceptowane."</string>
     <string name="about_title_changelog">"Historia wersji"</string>
     <string name="title_whats_new">"Co nowego?"</string>
+    <string name="about_title_rate">"Oceń tą aplikację"</string>
+    <string name="about_summary_rate">"na Google Play"</string>
+    <string name="about_title_donate">"Wspomóż"</string>
 </resources>

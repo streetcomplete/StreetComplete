@@ -52,7 +52,7 @@
     <string name="download_area_too_big">"Hãy phóng to hơn"</string>
     <string name="action_about">"Giới thiệu về StreetComplete"</string>
     <string name="about_title_authors">"Ghi công"</string>
-    <string name="about_summary_authors">"© 2016–2019 Tobias Zwick và những người đóng góp"</string>
+    <string name="about_summary_authors">"© 2016–2020 Tobias Zwick và những người đóng góp"</string>
     <string name="about_title_repository">"Kho mã nguồn"</string>
     <string name="about_summary_repository">"tại GitHub"</string>
     <string name="about_title_report_error">"Báo cáo lỗi"</string>

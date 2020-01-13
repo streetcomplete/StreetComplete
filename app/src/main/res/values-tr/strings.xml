@@ -70,7 +70,7 @@
 
     <!-- Fuzzy -->
     <string name="about_title_authors">"Yazarlar"</string>
-    <string name="about_summary_authors">"© 2016–2019 Tobias Zwick ve katkıda bulunan kişiler"</string>
+    <string name="about_summary_authors">"© 2016–2020 Tobias Zwick ve katkıda bulunan kişiler"</string>
     <string name="about_title_repository">"Kaynak Deposu"</string>
     <string name="about_summary_repository">"GitHub'da"</string>
     <string name="about_title_report_error">"Hata bildir"</string>
@@ -150,6 +150,7 @@ Haritayı görüntülemek için vektör karoları, anonim olan &lt;a href=\"http
     <string name="quest_surface_value_dirt">"Toprak"</string>
     <string name="quest_surface_value_fine_gravel">"İnce çakıl"</string>
     <string name="quest_surface_value_grass">"Çim"</string>
+    <string name="quest_surface_value_grass_paver">"Çim"</string>
     <string name="quest_surface_value_gravel">"Çakıl"</string>
     <string name="quest_surface_value_paving_stones">"Parke taşı"</string>
     <string name="quest_surface_value_pebblestone">"Çakıl Taşı"</string>
@@ -368,6 +369,7 @@ Tüm cadde boyunca vurgulanan bölüm için geçerli hiçbir işaret yoksa, vars
 
     <!-- Fuzzy -->
     <string name="quest_way_lit_title">"Bu yol aydınlatılmış mı?"</string>
+    <string name="quest_way_lit_named_title">"Burada %s yanıyor mu?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_way_lit_road_title">"Yolun bu bölümü aydınlatılmış mı?"</string>
@@ -467,6 +469,8 @@ Tüm cadde boyunca vurgulanan bölüm için geçerli hiçbir işaret yoksa, vars
     <string name="quest_internet_access_wired">"Kablolu (LAN)"</string>
     <string name="quest_internet_access_terminal">"İnternet erişimli bilgisayar"</string>
     <string name="quest_internet_access_no">"Bağlantı yok"</string>
+    <string name="quest_busStopShelter_tram_name_title">"%s tramvay durağında bir sığınak var mı?"</string>
+    <string name="quest_busStopShelter_tram_title">"Bu tramvay durağında bir sığınak var mı?"</string>
     <string name="quest_bench_backrest_title">"Bu bankın sırtlığı var mı?"</string>
     <string name="quest_bench_answer_picnic_table">"Piknik masası var mı?"</string>
     <string name="quest_religion_for_place_of_worship_title">"%s hangi din için?"</string>
@@ -478,10 +482,13 @@ Tüm cadde boyunca vurgulanan bölüm için geçerli hiçbir işaret yoksa, vars
     <string name="quest_religion_jewish">"Musevilik"</string>
     <string name="quest_religion_taoist">"Taoculuk"</string>
     <string name="quest_religion_for_place_of_worship_answer_multi">"herhangi bir dinin kullanımı için"</string>
+    <string name="quest_religion_bahai">"Bahai Dini"</string>
+    <string name="quest_religion_caodaist">"Kaodaizm"</string>
     <string name="quest_religion_chinese_folk">"Çin halk dini"</string>
     <string name="quest_religion_for_wayside_shrine_title">"Bu tapınakta hangi din temsil ediliyor?"</string>
     <string name="quest_parking_fee_title">"Park ücreti var mı?"</string>
     <string name="quest_cycleway_value_lane_soft">"bisiklet şeridi (kesik işaretler)"</string>
+    <string name="quest_parking_access_title">"Buraya kimlerin park edebileceği sınırlandırılmış mı?"</string>
     <string name="quest_parking_access_private">"Özel"</string>
     <string name="quest_parking_access_yes">"Halka açık (ücretli veya ücretsiz)"</string>
     <string name="quest_parking_access_customers">"Müşterilere ait otopark"</string>

@@ -74,7 +74,7 @@
 
     <!-- Fuzzy -->
     <string name="about_title_authors">"Tekijät"</string>
-    <string name="about_summary_authors">"© 2016–2019 Tobias Zwick ja avustajat"</string>
+    <string name="about_summary_authors">"© 2016–2020 Tobias Zwick ja avustajat"</string>
     <string name="about_title_repository">"Lähdekoodin sijainti"</string>
     <string name="about_summary_repository">"GitHubissa"</string>
     <string name="about_title_report_error">"Ilmoita virheestä"</string>
@@ -736,7 +736,7 @@ Jaetaanko nyt?"</string>
     <string name="quest_split_way_too_imprecise">"Zoomaa kauemmaksi"</string>
     <string name="quest_split_way_many_splits_confirmation_description">"Täällä on muutamia jakoja. Voit jakaa tien myös myöhemmin osiin. "</string>
     <string name="quest_footwayPartSurface_title">"Mikä päällyste on tällä jalkakäytävällä?"</string>
-    <string name="quest_wheelchairAccess_toiletsPart_title">"Onko tämän s% WC pyörätuolilla saavutettavissa?"</string>
+    <string name="quest_wheelchairAccess_toiletsPart_title">"Onko tämän %s WC pyörätuolilla saavutettavissa?"</string>
     <string name="quest_tactilePaving_title_tram">"Onko tällä raitiovaunupysäkillä kosketuspäällysteitä?"</string>
     <string name="quest_tactilePaving_title_name_tram">"Onko tällä %s raitiovaunupysäkillä kosketuspäällysteitä?"</string>
     <string name="quest_maxweight_title">"Mikä painorajoitus täällä on?"</string>
