@@ -49,8 +49,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.mapzen.tangram.LngLat;
-
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -70,6 +68,7 @@ import de.westnordost.osmapi.map.data.BoundingBox;
 import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.osmapi.map.data.OsmElement;
+import de.westnordost.osmapi.map.data.OsmLatLon;
 import de.westnordost.osmapi.map.data.Way;
 import de.westnordost.osmfeatures.FeatureDictionary;
 import de.westnordost.streetcomplete.about.AboutFragment;
@@ -103,10 +102,10 @@ import de.westnordost.streetcomplete.quests.SplitWayFragment;
 import de.westnordost.streetcomplete.settings.SettingsActivity;
 import de.westnordost.streetcomplete.sound.SoundFx;
 import de.westnordost.streetcomplete.statistics.AnswersCounter;
-import de.westnordost.streetcomplete.tangram.MapControlsFragment;
-import de.westnordost.streetcomplete.tangram.MapFragment;
-import de.westnordost.streetcomplete.tangram.QuestsMapFragment;
-import de.westnordost.streetcomplete.tangram.TangramConst;
+import de.westnordost.streetcomplete.map.tangram.CameraPosition;
+import de.westnordost.streetcomplete.map.MapControlsFragment;
+import de.westnordost.streetcomplete.map.MapFragment;
+import de.westnordost.streetcomplete.map.QuestsMapFragment;
 import de.westnordost.streetcomplete.tools.CrashReportExceptionHandler;
 import de.westnordost.streetcomplete.util.DpUtil;
 import de.westnordost.streetcomplete.util.SlippyMapMath;
@@ -265,7 +264,6 @@ public class MainActivity extends AppCompatActivity implements
 		starMenu.setOnClickListener(this::starInfoMenu);
 
 		mapFragment = (QuestsMapFragment) getSupportFragmentManager().findFragmentById(R.id.map_fragment);
-		mapFragment.getMapAsync(BuildConfig.MAPZEN_API_KEY);
 		updateMapQuestOffsets();
 
 		if(savedInstanceState == null)
@@ -296,11 +294,16 @@ public class MainActivity extends AppCompatActivity implements
 					if (longitude >= -180 && longitude <= +180
 						&& latitude >= -90  && latitude <= +90)
 					{
-						mapFragment.setIsFollowingPosition(false);
-						mapFragment.setPosition(new LngLat(longitude,  latitude));
+						mapFragment.setFollowingPosition(false);
 
 						if (zoom < 14) zoom = 18;
-						mapFragment.setZoom(zoom);
+						final float finalZoom = zoom;
+
+						mapFragment.updateCameraPosition(cameraUpdate -> {
+							cameraUpdate.setZoom(finalZoom);
+							cameraUpdate.setPosition(new OsmLatLon(latitude, longitude));
+							return null;
+						});
 					}
 				}
 			}
@@ -362,10 +365,10 @@ public class MainActivity extends AppCompatActivity implements
 	{
 		super.onPause();
 
-		LngLat pos = mapFragment.getPosition();
+		LatLon pos = mapFragment.getCameraPosition().getPosition();
 		prefs.edit()
-			.putLong(Prefs.MAP_LATITUDE, Double.doubleToRawLongBits(pos.latitude))
-			.putLong(Prefs.MAP_LONGITUDE, Double.doubleToRawLongBits(pos.longitude))
+			.putLong(Prefs.MAP_LATITUDE, Double.doubleToRawLongBits(pos.getLatitude()))
+			.putLong(Prefs.MAP_LONGITUDE, Double.doubleToRawLongBits(pos.getLongitude()))
 			.apply();
 	}
 
@@ -397,7 +400,7 @@ public class MainActivity extends AppCompatActivity implements
 		}
 	}
 
-	@Override public void onConfigurationChanged(Configuration newConfig) {
+	@Override public void onConfigurationChanged(@NonNull Configuration newConfig) {
 		super.onConfigurationChanged(newConfig);
 		findViewById(R.id.main).requestLayout();
 		updateMapQuestOffsets();
@@ -405,7 +408,7 @@ public class MainActivity extends AppCompatActivity implements
 
 	private void updateMapQuestOffsets()
 	{
-		mapFragment.setQuestOffsets(new Rect(
+		mapFragment.setQuestOffset(new Rect(
 			getResources().getDimensionPixelSize(R.dimen.quest_form_leftOffset),
 			0,
 			getResources().getDimensionPixelSize(R.dimen.quest_form_rightOffset),
@@ -490,12 +493,13 @@ public class MainActivity extends AppCompatActivity implements
 				else              Toast.makeText(this, R.string.offline, Toast.LENGTH_SHORT).show();
 				return true;
 			case R.id.action_open_location:
-				LngLat position = mapFragment.getPosition();
-				float zoom = mapFragment.getZoom();
+				CameraPosition cameraPosition = mapFragment.getCameraPosition();
+				LatLon position = cameraPosition.getPosition();
+				float zoom = cameraPosition.getZoom();
 
 				Uri uri = Uri.parse(String.format(Locale.US, "geo:%f,%f?z=%f",
-					position.latitude,
-					position.longitude,
+					position.getLatitude(),
+					position.getLongitude(),
 					zoom
 				));
 
@@ -584,10 +588,11 @@ public class MainActivity extends AppCompatActivity implements
 		// below a certain threshold, it does not make sense to download, so let's enlarge it
 		if (areaInSqKm < ApplicationConstants.MIN_DOWNLOADABLE_AREA_IN_SQKM)
 		{
-			LngLat pos = mapFragment.getPosition();
-			if (pos != null)
+			CameraPosition cameraPosition = mapFragment.getCameraPosition();
+			if (cameraPosition != null)
 			{
-				bbox = SphericalEarthMath.enclosingBoundingBox(TangramConst.toLatLon(pos),
+				LatLon pos = cameraPosition.getPosition();
+				bbox = SphericalEarthMath.enclosingBoundingBox(pos,
 						ApplicationConstants.MIN_DOWNLOADABLE_RADIUS_IN_METERS);
 			}
 		}
@@ -806,7 +811,7 @@ public class MainActivity extends AppCompatActivity implements
 		if (quest == null) return;
 		OsmElement element = questController.getOsmElement((OsmQuest) quest);
 		if (!(element instanceof Way)) return;
-		mapFragment.setIsShowingQuests(false);
+		mapFragment.setShowingQuestPins(false);
 		showInBottomSheet(SplitWayFragment.create(
 			osmQuestId, (Way) element, (ElementPolylinesGeometry) quest.getGeometry()
 		));
@@ -852,9 +857,9 @@ public class MainActivity extends AppCompatActivity implements
 		PointF notePosition = new PointF(screenPosition);
 		notePosition.offset(-mapPosition[0], -mapPosition[1]);
 
-		LngLat position = mapFragment.getPositionAt(notePosition);
+		LatLon position = mapFragment.getPositionAt(notePosition);
 		if(position == null) throw new NullPointerException();
-		questController.createNote(note, imagePaths, TangramConst.toLatLon(position));
+		questController.createNote(note, imagePaths, position);
 		triggerAutoUploadByUserInteraction();
 	}
 
@@ -894,7 +899,7 @@ public class MainActivity extends AppCompatActivity implements
 		int size = (int) DpUtil.toPx(42, this);
 		int[] offset = new int[2];
 		mapFragment.getView().getLocationOnScreen(offset);
-		PointF startPos = mapFragment.getPointOf(TangramConst.toLngLat(quest.getCenter()));
+		PointF startPos = mapFragment.getPointOf(quest.getCenter());
 		startPos.x += offset[0] - size/2;
 		startPos.y += offset[1] - size*1.5;
 		showMarkerSolvedAnimation(quest.getType().getIcon(), startPos, source);
@@ -941,7 +946,7 @@ public class MainActivity extends AppCompatActivity implements
 
 	@Override public void onClickCreateNote()
 	{
-		if (mapFragment.getZoom() < ApplicationConstants.NOTE_MIN_ZOOM)
+		if (mapFragment.getCameraPosition().getZoom() < ApplicationConstants.NOTE_MIN_ZOOM)
 		{
 			Toast.makeText(this, R.string.create_new_note_unprecise, Toast.LENGTH_LONG).show();
 			return;
@@ -966,7 +971,7 @@ public class MainActivity extends AppCompatActivity implements
 	@AnyThread @Override
 	public void onQuestsCreated(@NonNull final Collection<? extends Quest> quests, @NonNull final QuestGroup group)
 	{
-		runOnUiThread(() -> mapFragment.addQuests(quests, group));
+		runOnUiThread(() -> mapFragment.addQuestPins(quests, group));
 		// to recreate element geometry of selected quest (if any) after recreation of activity
 		Fragment f = getBottomSheetFragment();
 		if(f instanceof IsShowingQuestDetails)
@@ -985,7 +990,7 @@ public class MainActivity extends AppCompatActivity implements
 	@AnyThread @Override
 	public synchronized void onQuestsRemoved(Collection<Long> questIds, @NonNull QuestGroup group)
 	{
-		runOnUiThread(() -> mapFragment.removeQuests(questIds, group));
+		runOnUiThread(() -> mapFragment.removeQuestPins(questIds, group));
 
 		// amount of quests is reduced -> check if redownloding now makes sense
 		questAutoSyncer.triggerAutoDownload();
@@ -1066,7 +1071,7 @@ public class MainActivity extends AppCompatActivity implements
 			closeBottomSheet();
 		}
 
-		mapFragment.addQuestGeometry(quest.getGeometry());
+		mapFragment.startFocusQuest(quest.getGeometry());
 
 		AbstractQuestAnswerFragment f = quest.getType().createForm();
 		Bundle args = QuestAnswerComponent.Companion.createArguments(quest.getId(), group);
@@ -1105,18 +1110,18 @@ public class MainActivity extends AppCompatActivity implements
 	{
 		isFollowingPosition = mapFragment.isFollowingPosition();
 		isCompassMode = mapFragment.isCompassMode();
-		mapFragment.setIsFollowingPosition(false);
+		mapFragment.setFollowingPosition(false);
 		mapFragment.setCompassMode(false);
 		mapFragment.hideMapControls();
 	}
 
 	private void unfreezeMap()
 	{
-		mapFragment.setIsFollowingPosition(isFollowingPosition);
+		mapFragment.setFollowingPosition(isFollowingPosition);
 		mapFragment.setCompassMode(isCompassMode);
-		mapFragment.removeQuestGeometry();
+		mapFragment.endFocusQuest();
 		mapFragment.showMapControls();
-		mapFragment.setIsShowingQuests(true);
+		mapFragment.setShowingQuestPins(true);
 	}
 
 	/* ---------------------------------- MapFragment.Listener ---------------------------------- */

@@ -13,7 +13,7 @@ import de.westnordost.countryboundaries.CountryBoundaries;
 import de.westnordost.osmfeatures.AndroidFeatureDictionary;
 import de.westnordost.osmfeatures.FeatureDictionary;
 import de.westnordost.streetcomplete.data.QuestTypeRegistry;
-import de.westnordost.streetcomplete.tangram.TangramQuestSpriteSheetCreator;
+import de.westnordost.streetcomplete.map.TangramQuestSpriteSheetCreator;
 
 @Module
 public class MetadataModule

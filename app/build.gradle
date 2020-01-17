@@ -142,9 +142,6 @@ dependencies {
     implementation 'me.grantland:autofittextview:0.2.1'
     implementation 'org.sufficientlysecure:html-textview:3.9'
     implementation 'com.duolingo.open:rtl-viewpager:1.0.2'
-    // versions above 1.1.0 (i.e. 1.1.3) have unsolved crash issues - https://github.com/florent37/ViewTooltip/issues/30
-    // 1.2.0 misplaces tooltip - https://github.com/florent37/ViewTooltip/issues/64
-    implementation 'com.github.florent37:viewtooltip:1.1.0'
     implementation 'androidx.exifinterface:exifinterface:1.1.0'
 
     // serialization

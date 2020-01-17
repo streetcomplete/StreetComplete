@@ -13,7 +13,7 @@ import javax.inject.Inject;
 import androidx.appcompat.app.AppCompatDelegate;
 import de.westnordost.countryboundaries.CountryBoundaries;
 import de.westnordost.osmfeatures.FeatureDictionary;
-import de.westnordost.streetcomplete.tangram.TangramQuestSpriteSheetCreator;
+import de.westnordost.streetcomplete.map.TangramQuestSpriteSheetCreator;
 
 public class StreetCompleteApplication extends Application
 {

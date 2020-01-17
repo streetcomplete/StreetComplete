@@ -1,10 +1,10 @@
-package de.westnordost.streetcomplete.tangram
+package de.westnordost.streetcomplete.map
 
 import org.junit.Test
 
 import de.westnordost.osmapi.map.data.OsmLatLon
-import de.westnordost.streetcomplete.tangram.TangramConst.toLatLon
-import de.westnordost.streetcomplete.tangram.TangramConst.toLngLat
+import de.westnordost.streetcomplete.map.TangramConst.toLatLon
+import de.westnordost.streetcomplete.map.TangramConst.toLngLat
 
 import org.junit.Assert.*
 

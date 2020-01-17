@@ -69,7 +69,7 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
 
         puzzleView.listener = { isRight -> showCyclewaySelectionDialog(isRight) }
 
-        streetSideRotater = StreetSideRotater(puzzleView, compassNeedle, elementGeometry as ElementPolylinesGeometry)
+        streetSideRotater = StreetSideRotater(puzzleView, compassNeedleView, elementGeometry as ElementPolylinesGeometry)
 
         if (!isDefiningBothSides) {
             if (isLeftHandTraffic) puzzleView.showOnlyLeftSide()

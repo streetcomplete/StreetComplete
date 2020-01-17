@@ -30,7 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:id="@+id/compassNeedle"
+            android:id="@+id/compassNeedleView"
             android:src="@drawable/ic_compass_needle_black_24dp"
             android:tint="#cc3333"
             android:layout_below="@+id/compassNorth"
@@ -39,7 +39,7 @@
     </RelativeLayout>
 
     <LinearLayout
-        android:id="@+id/rightSide"
+        android:id="@+id/rightSideContainer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -50,7 +50,7 @@
         tools:ignore="RtlHardcoded,RtlSymmetry">
 
         <ImageButton
-            android:id="@+id/zoom_in"
+            android:id="@+id/zoomInButton"
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:scaleType="center"
@@ -59,7 +59,7 @@
             android:contentDescription="@string/map_btn_zoom_in"/>
 
         <ImageButton
-            android:id="@+id/zoom_out"
+            android:id="@+id/zoomOutButton"
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:scaleType="center"
@@ -68,7 +68,7 @@
             android:contentDescription="@string/map_btn_zoom_out"/>
 
         <de.westnordost.streetcomplete.location.LocationStateButton
-            android:id="@+id/gps_tracking"
+            android:id="@+id/gpsTrackingButton"
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:scaleType="center"
@@ -80,7 +80,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/leftSide"
+        android:id="@+id/leftSideContainer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -91,7 +91,7 @@
         tools:ignore="RtlHardcoded,RtlSymmetry">
 
         <ImageButton
-            android:id="@+id/create_note"
+            android:id="@+id/createNoteButton"
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:scaleType="center"
@@ -100,7 +100,5 @@
             android:contentDescription="@string/map_btn_create_note"/>
 
     </LinearLayout>
-
-
 
 </RelativeLayout>
