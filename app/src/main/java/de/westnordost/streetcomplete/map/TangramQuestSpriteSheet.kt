@@ -1,9 +1,13 @@
 package de.westnordost.streetcomplete.map
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.graphics.Canvas
+import androidx.core.content.edit
 import com.mapzen.tangram.SceneUpdate
+import de.westnordost.streetcomplete.BuildConfig
+import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.QuestTypeRegistry
 import java.util.*
@@ -11,18 +15,26 @@ import javax.inject.Inject
 import kotlin.math.ceil
 import kotlin.math.sqrt
 
-class TangramQuestSpriteSheetCreator @Inject constructor(
+class TangramQuestSpriteSheet @Inject constructor(
     private val context: Context,
-    private val questTypeRegistry: QuestTypeRegistry
+    private val questTypeRegistry: QuestTypeRegistry,
+    private val prefs: SharedPreferences
 ) {
-    private val sceneUpdates: List<SceneUpdate> by lazy {
-	    val allIconIds = questTypeRegistry.all.map { it.icon }.toSet()
-	    create(allIconIds)
+	fun get(): List<SceneUpdate> {
+        val isSpriteSheetCurrent = prefs.getInt(Prefs.QUEST_SPRITES_VERSION, 0) == BuildConfig.VERSION_CODE
+
+        val spriteSheet =
+            if (isSpriteSheetCurrent && !BuildConfig.DEBUG)
+                prefs.getString(Prefs.QUEST_SPRITES, "")!!
+            else
+                createSpritesheet()
+
+        return createSceneUpdates(spriteSheet)
     }
 
-	fun get(): List<SceneUpdate> = sceneUpdates
+    private fun createSpritesheet(): String {
+        val questIconResIds = questTypeRegistry.all.map { it.icon }.toSortedSet()
 
-    private fun create(questIconResIds: Collection<Int>): List<SceneUpdate> {
         val spriteSheetEntries: MutableList<String> = ArrayList(questIconResIds.size)
         val questPin = context.resources.getDrawable(R.drawable.quest_pin)
         val iconSize = questPin.intrinsicWidth
@@ -53,11 +65,20 @@ class TangramQuestSpriteSheetCreator @Inject constructor(
         spriteSheet.compress(Bitmap.CompressFormat.PNG, 0, spriteSheetIconsFile)
         spriteSheetIconsFile.close()
 
-        return listOf(
-            SceneUpdate("textures.quests.url", "file://${context.filesDir}/$QUEST_ICONS_FILE"),
-            SceneUpdate("textures.quests.sprites", "{${spriteSheetEntries.joinToString(", ")}}")
-        )
+        val questSprites = "{${spriteSheetEntries.joinToString(",")}}"
+
+        prefs.edit {
+            putInt(Prefs.QUEST_SPRITES_VERSION, BuildConfig.VERSION_CODE)
+            putString(Prefs.QUEST_SPRITES, questSprites)
+        }
+
+        return questSprites
     }
+
+    private fun createSceneUpdates(questSprites: String): List<SceneUpdate> = listOf(
+        SceneUpdate("textures.quests.url", "file://${context.filesDir}/$QUEST_ICONS_FILE"),
+        SceneUpdate("textures.quests.sprites", questSprites)
+    )
 
     companion object {
         private const val QUEST_ICONS_FILE = "quests.png"

@@ -22,11 +22,14 @@ import de.westnordost.streetcomplete.map.tangram.CameraPosition
 import de.westnordost.streetcomplete.map.tangram.toTangramGeometry
 import de.westnordost.streetcomplete.util.SlippyMapMath
 import de.westnordost.streetcomplete.util.SphericalEarthMath
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.util.*
 import javax.inject.Inject
 
-class QuestsMapFragment : MapWithLocationFragment() {
+/** Manages a map that shows the quest pins, quest geometry */
+class QuestsMapFragment : LocationAwareMapFragment() {
 
     // layers
     private var questsLayer: MapData? = null
@@ -45,7 +48,7 @@ class QuestsMapFragment : MapWithLocationFragment() {
 
     var questOffset: Rect = Rect(0, 0, 0, 0)
 
-    @Inject internal lateinit var spriteSheetCreator: TangramQuestSpriteSheetCreator
+    @Inject internal lateinit var spriteSheet: TangramQuestSpriteSheet
     @Inject internal lateinit var questPinCollection: QuestPinCollection
 
     interface Listener {
@@ -63,7 +66,7 @@ class QuestsMapFragment : MapWithLocationFragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        listener = context as Listener
+        listener = parentFragment as? Listener ?: activity as? Listener
     }
 
     override fun onStart() {
@@ -104,8 +107,8 @@ class QuestsMapFragment : MapWithLocationFragment() {
 
     /* ------------------------------------- Map setup ------------------------------------------ */
 
-    override fun getSceneUpdates(): List<SceneUpdate> {
-        return super.getSceneUpdates() + spriteSheetCreator.get()
+    override suspend fun getSceneUpdates(): List<SceneUpdate> {
+        return super.getSceneUpdates() + withContext(Dispatchers.IO) { spriteSheet.get() }
     }
 
     /* -------------------------------- Picking quest pins -------------------------------------- */
@@ -228,8 +231,8 @@ class QuestsMapFragment : MapWithLocationFragment() {
 
     /* --------------------------------  Quest Pin Layer on map --------------------------------- */
 
-    override fun onRegionIsChanging() {
-        super.onRegionIsChanging()
+    override fun onMapIsChanging() {
+        super.onMapIsChanging()
         if (controller?.cameraPosition?.zoom ?: 0f < TILES_ZOOM) return
         val displayedArea = controller?.screenAreaToBoundingBox(RectF()) ?: return
         val tilesRect = SlippyMapMath.enclosingTiles(displayedArea, TILES_ZOOM)
@@ -254,24 +257,31 @@ class QuestsMapFragment : MapWithLocationFragment() {
         retrievedTiles.addAll(tiles)
     }
 
-    fun setShowingQuestPins(toggleOn: Boolean) {
-        val toggle = if (toggleOn) "true" else "false"
-        val sceneUpdate = SceneUpdate("layers.$QUESTS_LAYER.enabled", toggle)
-        launch { controller?.updateScene(listOf(sceneUpdate)) }
+    var isShowingQuestPins: Boolean = true
+    set(value) {
+        if (field == value) return
+        field = value
+
+        if (!value) {
+            questsLayer?.clear()
+        }
+        else {
+            questsLayer?.setFeatures(questPinCollection.getPoints())
+        }
     }
 
     fun addQuestPins(quests: Iterable<Quest>, group: QuestGroup) {
         for (quest in quests) {
             questPinCollection.add(quest, group)
         }
-        questsLayer?.setFeatures(questPinCollection.getPoints())
+        if (isShowingQuestPins) questsLayer?.setFeatures(questPinCollection.getPoints())
     }
 
     fun removeQuestPins(questIds: Collection<Long>, group: QuestGroup) {
         for (questId in questIds) {
             questPinCollection.remove(questId, group)
         }
-        questsLayer?.setFeatures(questPinCollection.getPoints())
+        if (isShowingQuestPins) questsLayer?.setFeatures(questPinCollection.getPoints())
     }
 
     private fun clearQuestPins() {

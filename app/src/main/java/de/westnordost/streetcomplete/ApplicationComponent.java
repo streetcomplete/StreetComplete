@@ -30,7 +30,6 @@ import de.westnordost.streetcomplete.settings.SettingsFragment;
 import de.westnordost.streetcomplete.settings.ShowQuestFormsActivity;
 import de.westnordost.streetcomplete.settings.questselection.QuestSelectionFragment;
 import de.westnordost.streetcomplete.statistics.AnswersCounter;
-import de.westnordost.streetcomplete.map.MapControlsFragment;
 import de.westnordost.streetcomplete.map.QuestsMapFragment;
 import de.westnordost.streetcomplete.util.SerializedSavedState;
 
@@ -65,8 +64,6 @@ public interface ApplicationComponent
 	void inject(AbstractQuestAnswerFragment.InjectedFields fields);
 
 	void inject(QuestsMapFragment questsMapFragment);
-
-	void inject(MapControlsFragment mapControlsFragment);
 
 	void inject(QuestSelectionFragment questSelectionFragment);
 

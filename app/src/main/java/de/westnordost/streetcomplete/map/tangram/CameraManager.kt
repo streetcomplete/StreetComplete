@@ -5,6 +5,7 @@ import android.animation.PropertyValuesHolder
 import android.animation.TypeEvaluator
 import android.os.Handler
 import android.os.Looper
+import android.util.Property
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.Interpolator
 import com.mapzen.tangram.CameraUpdateFactory
@@ -70,8 +71,8 @@ class CameraManager(private val c: MapController) {
     private fun cancelCameraAnimations(update: CameraUpdate) {
         if(update.rotation != null) cancelAnimation("rotation")
         if(update.tilt != null) cancelAnimation("tilt")
-        if(update.zoom != null) cancelAnimation("rotation")
-        if(update.position != null) cancelAnimation("rotation")
+        if(update.zoom != null) cancelAnimation("zoom")
+        if(update.position != null) cancelAnimation("position")
     }
 
     private fun applyCameraUpdate(update: CameraUpdate) {
@@ -92,20 +93,20 @@ class CameraManager(private val c: MapController) {
         val animator = ObjectAnimator()
         val propValues = mutableListOf<PropertyValuesHolder>()
         update.rotation?.let {
-            propValues.add(PropertyValuesHolder.ofFloat("rotation", it))
+            propValues.add(PropertyValuesHolder.ofFloat(TangramRotationProperty, it))
             assignAnimation("rotation", animator)
         }
         update.tilt?.let {
-            propValues.add(PropertyValuesHolder.ofFloat("tilt", it))
+            propValues.add(PropertyValuesHolder.ofFloat(TangramTiltProperty, it))
             assignAnimation("tilt", animator)
         }
         update.zoom?.let {
-            propValues.add(PropertyValuesHolder.ofFloat("zoom", it))
+            propValues.add(PropertyValuesHolder.ofFloat(TangramZoomProperty, it))
             assignAnimation("zoom", animator)
         }
         update.position?.let {
-            propValues.add(PropertyValuesHolder.ofObject("latitude", doubleTypeEvaluator))
-            propValues.add(PropertyValuesHolder.ofObject("longitude", doubleTypeEvaluator))
+            propValues.add(PropertyValuesHolder.ofObject(TangramLatitudeProperty, doubleTypeEvaluator, it.latitude))
+            propValues.add(PropertyValuesHolder.ofObject(TangramLongitudeProperty, doubleTypeEvaluator, it.longitude))
             assignAnimation("position", animator)
         }
         animator.target = _tangramCamera
@@ -126,6 +127,7 @@ class CameraManager(private val c: MapController) {
 
     private fun pushCameraPositionToController() {
         c.updateCameraPosition(CameraUpdateFactory.newCameraPosition(_tangramCamera))
+        // TODO https://github.com/tangrams/tangram-es/issues/2129
     }
 
     private fun cancelAnimation(key: String) {
@@ -146,16 +148,6 @@ class CameraManager(private val c: MapController) {
     }
 }
 
-data class CameraPosition(
-    val position: LatLon,
-    val rotation: Float,
-    val tilt: Float,
-    val zoom: Float) {
-
-    constructor(p: com.mapzen.tangram.CameraPosition)
-            : this(OsmLatLon(p.latitude, p.longitude), p.rotation, p.tilt, p.zoom)
-}
-
 class CameraUpdate {
     var position: LatLon? = null
     var rotation: Float? = null
@@ -167,7 +159,18 @@ class CameraUpdate {
     var rotationBy: Float? = null
 }
 
-private fun CameraUpdate.resolveDeltas(pos: com.mapzen.tangram.CameraPosition) {
+typealias TangramCameraPosition = com.mapzen.tangram.CameraPosition
+
+data class CameraPosition(
+    val position: LatLon,
+    val rotation: Float,
+    val tilt: Float,
+    val zoom: Float) {
+
+    constructor(p: TangramCameraPosition) : this(OsmLatLon(p.latitude, p.longitude), p.rotation, p.tilt, p.zoom)
+}
+
+private fun CameraUpdate.resolveDeltas(pos: TangramCameraPosition) {
     zoomBy?.let { zoom = pos.zoom + (zoom ?: 0f) + it }
     tiltBy?.let { tilt = pos.tilt + (tilt ?: 0f) + it }
     rotationBy?.let { rotation = pos.rotation + (rotation ?: 0f) + it }
@@ -175,4 +178,29 @@ private fun CameraUpdate.resolveDeltas(pos: com.mapzen.tangram.CameraPosition) {
 
 class DoubleTypeEvaluator : TypeEvaluator<Double> {
     override fun evaluate(t: Float, x0: Double, x1: Double) = x0 + t * (x1 - x0)
+}
+
+object TangramRotationProperty : Property<TangramCameraPosition, Float>(Float::class.java, "rotation") {
+    override fun get(obj: TangramCameraPosition) = obj.rotation
+    override fun set(obj: TangramCameraPosition, value: Float) { obj.rotation = value }
+}
+
+object TangramTiltProperty : Property<TangramCameraPosition, Float>(Float::class.java, "tilt") {
+    override fun get(obj: TangramCameraPosition) = obj.tilt
+    override fun set(obj: TangramCameraPosition, value: Float) { obj.tilt = value }
+}
+
+object TangramZoomProperty : Property<TangramCameraPosition, Float>(Float::class.java, "zoom") {
+    override fun get(obj: TangramCameraPosition) = obj.zoom
+    override fun set(obj: TangramCameraPosition, value: Float) { obj.zoom = value }
+}
+
+object TangramLatitudeProperty : Property<TangramCameraPosition, Double>(Double::class.java, "latitude") {
+    override fun get(obj: TangramCameraPosition) = obj.latitude
+    override fun set(obj: TangramCameraPosition, value: Double) { obj.latitude = value }
+}
+
+object TangramLongitudeProperty : Property<TangramCameraPosition, Double>(Double::class.java, "longitude") {
+    override fun get(obj: TangramCameraPosition) = obj.longitude
+    override fun set(obj: TangramCameraPosition, value: Double) { obj.longitude = value }
 }

@@ -90,6 +90,7 @@ import de.westnordost.streetcomplete.data.osmnotes.CreateNoteFragment;
 import de.westnordost.streetcomplete.location.LocationRequestFragment;
 import de.westnordost.streetcomplete.location.LocationState;
 import de.westnordost.streetcomplete.location.LocationUtil;
+import de.westnordost.streetcomplete.map.MainFragment;
 import de.westnordost.streetcomplete.oauth.OAuthPrefs;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 import de.westnordost.streetcomplete.quests.IsCloseableBottomSheet;
@@ -103,8 +104,6 @@ import de.westnordost.streetcomplete.settings.SettingsActivity;
 import de.westnordost.streetcomplete.sound.SoundFx;
 import de.westnordost.streetcomplete.statistics.AnswersCounter;
 import de.westnordost.streetcomplete.map.tangram.CameraPosition;
-import de.westnordost.streetcomplete.map.MapControlsFragment;
-import de.westnordost.streetcomplete.map.MapFragment;
 import de.westnordost.streetcomplete.map.QuestsMapFragment;
 import de.westnordost.streetcomplete.tools.CrashReportExceptionHandler;
 import de.westnordost.streetcomplete.util.DpUtil;
@@ -117,7 +116,7 @@ import static de.westnordost.streetcomplete.ApplicationConstants.MANUAL_DOWNLOAD
 
 public class MainActivity extends AppCompatActivity implements
 		OsmQuestAnswerListener, CreateNoteFragment.Listener, VisibleQuestListener,
-		QuestsMapFragment.Listener, MapFragment.Listener, MapControlsFragment.Listener,
+		QuestsMapFragment.Listener, MainFragment.Listener,
 		SplitWayFragment.Listener, LeaveNoteInsteadFragment.Listener
 {
 	@Inject CrashReportExceptionHandler crashReportExceptionHandler;
@@ -144,7 +143,7 @@ public class MainActivity extends AppCompatActivity implements
 	private static boolean hasAskedForLocation = false;
 	private static boolean dontShowRequestAuthorizationAgain = false;
 
-	private QuestsMapFragment mapFragment;
+	private MainFragment mapFragment;
 
 	private ProgressBar downloadProgressBar;
 	private ProgressBar uploadProgressBar;
@@ -154,8 +153,7 @@ public class MainActivity extends AppCompatActivity implements
 
 	private float mapRotation, mapTilt;
 	private Location locationWhenOpenedQuest;
-	private boolean isFollowingPosition;
-	private boolean isCompassMode;
+
 
 	private boolean downloadServiceIsBound;
 	private QuestDownloadService.Interface downloadService;
@@ -263,7 +261,7 @@ public class MainActivity extends AppCompatActivity implements
 		RelativeLayout starMenu = findViewById(R.id.uploadedAnswersContainer);
 		starMenu.setOnClickListener(this::starInfoMenu);
 
-		mapFragment = (QuestsMapFragment) getSupportFragmentManager().findFragmentById(R.id.map_fragment);
+		mapFragment = (MainFragment) getSupportFragmentManager().findFragmentById(R.id.map_fragment);
 		updateMapQuestOffsets();
 
 		if(savedInstanceState == null)
@@ -364,12 +362,18 @@ public class MainActivity extends AppCompatActivity implements
 	@Override public void onPause()
 	{
 		super.onPause();
+		if (mapFragment != null) {
+			CameraPosition camera = mapFragment.getCameraPosition();
+			if (camera != null)
+			{
+				LatLon pos = camera.getPosition();
+				prefs.edit()
+					.putLong(Prefs.MAP_LATITUDE, Double.doubleToRawLongBits(pos.getLatitude()))
+					.putLong(Prefs.MAP_LONGITUDE, Double.doubleToRawLongBits(pos.getLongitude()))
+					.apply();
+			}
+		}
 
-		LatLon pos = mapFragment.getCameraPosition().getPosition();
-		prefs.edit()
-			.putLong(Prefs.MAP_LATITUDE, Double.doubleToRawLongBits(pos.getLatitude()))
-			.putLong(Prefs.MAP_LONGITUDE, Double.doubleToRawLongBits(pos.getLongitude()))
-			.apply();
 	}
 
 	@Override public void onStop()
@@ -551,7 +555,7 @@ public class MainActivity extends AppCompatActivity implements
 	@UiThread private void downloadDisplayedArea()
 	{
 		BoundingBox displayArea;
-		if ((displayArea = mapFragment.getDisplayedArea(new Rect())) == null)
+		if ((displayArea = mapFragment.getDisplayedArea()) == null)
 		{
 			Toast.makeText(this, R.string.cannot_find_bbox_or_reduce_tilt, Toast.LENGTH_LONG).show();
 		}
@@ -961,9 +965,8 @@ public class MainActivity extends AppCompatActivity implements
 
 	private void composeNote()
 	{
-		freezeMap();
+		mapFragment.freezeMap();
 		showInBottomSheet(new CreateNoteFragment());
-		mapFragment.setShow3DBuildings(false);
 	}
 
 	/* ---------------------------------- VisibleQuestListener ---------------------------------- */
@@ -1013,8 +1016,7 @@ public class MainActivity extends AppCompatActivity implements
 			((IsCloseableBottomSheet)f).onClickClose(() ->
 			{
 				getSupportFragmentManager().popBackStackImmediate(BOTTOM_SHEET, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-				mapFragment.setShow3DBuildings(true);
-				unfreezeMap();
+				mapFragment.unfreezeMap();
 			});
 		}
 		else
@@ -1051,7 +1053,7 @@ public class MainActivity extends AppCompatActivity implements
 		}
 
 		getSupportFragmentManager().popBackStackImmediate(BOTTOM_SHEET, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-		unfreezeMap();
+		mapFragment.unfreezeMap();
 	}
 
 	private boolean isQuestDetailsCurrentlyDisplayedFor(long questId, QuestGroup group)
@@ -1086,7 +1088,7 @@ public class MainActivity extends AppCompatActivity implements
 		args.putFloat(AbstractQuestAnswerFragment.ARG_MAP_TILT, mapTilt);
 		f.setArguments(args);
 
-		freezeMap();
+		mapFragment.freezeMap();
 		locationWhenOpenedQuest = mapFragment.getDisplayedLocation();
 		showInBottomSheet(f);
 	}
@@ -1106,26 +1108,9 @@ public class MainActivity extends AppCompatActivity implements
 		return getSupportFragmentManager().findFragmentByTag(BOTTOM_SHEET);
 	}
 
-	private void freezeMap()
-	{
-		isFollowingPosition = mapFragment.isFollowingPosition();
-		isCompassMode = mapFragment.isCompassMode();
-		mapFragment.setFollowingPosition(false);
-		mapFragment.setCompassMode(false);
-		mapFragment.hideMapControls();
-	}
-
-	private void unfreezeMap()
-	{
-		mapFragment.setFollowingPosition(isFollowingPosition);
-		mapFragment.setCompassMode(isCompassMode);
-		mapFragment.endFocusQuest();
-		mapFragment.showMapControls();
-		mapFragment.setShowingQuestPins(true);
-	}
-
 	/* ---------------------------------- MapFragment.Listener ---------------------------------- */
-
+/*
+	TODO
 	@AnyThread @Override public void onMapOrientation(float rotation, float tilt)
 	{
 		mapRotation = rotation;
@@ -1136,6 +1121,7 @@ public class MainActivity extends AppCompatActivity implements
 			((AbstractQuestAnswerFragment)f).onMapOrientation(rotation, tilt);
 		}
 	}
+	*/
 
 	/* ------------------------------- QuestsMapFragment.Listener ------------------------------- */
 

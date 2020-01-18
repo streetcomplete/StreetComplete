@@ -1,18 +1,18 @@
 package de.westnordost.streetcomplete.map.tangram
 
-import android.graphics.PointF
 import android.graphics.drawable.Drawable
 import com.mapzen.tangram.LngLat
 import com.mapzen.tangram.MapController
 import com.mapzen.tangram.geometry.Polygon
 import com.mapzen.tangram.geometry.Polyline
 import de.westnordost.osmapi.map.data.LatLon
+import java.util.concurrent.ConcurrentLinkedQueue
 import kotlin.coroutines.Continuation
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
 
 /** Controls the marker management. Use in place of the Tangram MapController.addMarker, pickMarker
- *  etc. methods to enable markers that survive a scene update / reload scene.
+ *  etc. methods to enable markers that survive a scene reload.
  *
  *  The Tangram Markers are wrapped into own Marker objects with a similar interface that are able
  *  to recreate the Tangram Markers after the scene has successfully loaded.
@@ -24,11 +24,10 @@ class MarkerManager(private val c: MapController) {
     private var markerIdCounter = 0L
     private val markers = mutableMapOf<Long, Marker>()
 
-    private val markerPickContinuations = mutableMapOf<PointF, Continuation<MarkerPickResult?>>()
+    private val markerPickContinuations = ConcurrentLinkedQueue<Continuation<MarkerPickResult?>>()
 
     init {
         c.setMarkerPickListener { tangramMarkerPickResult: com.mapzen.tangram.MarkerPickResult?, positionX, positionY ->
-            val p = PointF(positionX, positionY)
             val tangramMarkerId = tangramMarkerPickResult?.marker?.markerId
             var markerPickResult: MarkerPickResult? = null
             if (tangramMarkerId != null) {
@@ -37,12 +36,12 @@ class MarkerManager(private val c: MapController) {
                     markerPickResult = MarkerPickResult(marker, tangramMarkerPickResult.coordinates)
                 }
             }
-            markerPickContinuations.remove(p)?.resume(markerPickResult)
+            markerPickContinuations.poll()?.resume(markerPickResult)
         }
     }
 
     suspend fun pickMarker(posX: Float, posY: Float): MarkerPickResult? = suspendCoroutine { cont ->
-        markerPickContinuations[PointF(posX, posY)] = cont
+        markerPickContinuations.offer(cont)
         c.pickMarker(posX, posY)
     }
 
@@ -89,7 +88,7 @@ class Marker(val markerId: Long, tangramMarker: com.mapzen.tangram.Marker) {
         set(value) {
             field = value
             if (value != null) {
-                value.isVisible = isVisible
+                isVisible = value.isVisible
                 drawOrder?.let { value.setDrawOrder(it) }
                 stylingFromPath?.let { value.setStylingFromPath(it) }
                 stylingFromString?.let { value.setStylingFromString(it) }

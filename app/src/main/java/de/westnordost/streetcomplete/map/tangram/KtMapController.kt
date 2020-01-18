@@ -17,6 +17,7 @@ import de.westnordost.streetcomplete.data.osm.ElementGeometry
 import de.westnordost.streetcomplete.util.SphericalEarthMath.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.SphericalEarthMath.normalizeLongitude
 import java.util.*
+import java.util.concurrent.ConcurrentLinkedQueue
 import kotlin.coroutines.Continuation
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
@@ -28,7 +29,6 @@ import kotlin.math.min
 /** Wrapper around the Tangram MapController. Features over the Tangram MapController (0.11.2):
  *  <br><br>
  *  <ul>
- *      <li>Update current scene with a list of scene updates (like in 0.9.6, see https://github.com/tangrams/tangram-es/issues/2107)</li>
  *      <li>Markers survive a scene updates</li>
  *      <li>Simultaneous camera animations are possible with a short and easy interface</li>
  *      <li>A simpler interface to touchInput - easy defaulting to default touch gesture behavior</li>
@@ -44,13 +44,8 @@ class KtMapController(private val c: MapController) {
     private val defaultInterpolator = AccelerateDecelerateInterpolator()
 
     private val sceneUpdateContinuations = mutableMapOf<Int, Continuation<Int>>()
-    private val pickLabelContinuations = mutableMapOf<PointF, Continuation<LabelPickResult?>>()
-    private val featurePickContinuations = mutableMapOf<PointF, Continuation<Map<String, String>?>>()
-
-    private var lastScenePath: String? = null
-    private var lastSceneYaml: String? = null
-    private var lastResourceRoot: String? = null
-    private var lastSceneUpdates: List<SceneUpdate>? = null
+    private val pickLabelContinuations = ConcurrentLinkedQueue<Continuation<LabelPickResult?>>()
+    private val featurePickContinuations = ConcurrentLinkedQueue<Continuation<Map<String, String>?>>()
 
     init {
         c.setSceneLoadListener { sceneId, sceneError ->
@@ -63,55 +58,18 @@ class KtMapController(private val c: MapController) {
             }
         }
 
-        c.setLabelPickListener { labelPickResult: LabelPickResult?, positionX, positionY ->
-            val p = PointF(positionX, positionY)
-            pickLabelContinuations.remove(p)?.resume(labelPickResult)
+        c.setLabelPickListener { labelPickResult: LabelPickResult?, _, _ ->
+            pickLabelContinuations.poll()?.resume(labelPickResult)
         }
 
-        c.setFeaturePickListener { properties: Map<String, String>?, positionX, positionY ->
-            val p = PointF(positionX, positionY)
-            featurePickContinuations.remove(p)?.resume(properties)
+        c.setFeaturePickListener { properties: Map<String, String>?, _, _ ->
+            featurePickContinuations.poll()?.resume(properties)
         }
     }
 
     /* ----------------------------- Loading and Updating Scene --------------------------------- */
 
-    suspend fun loadSceneFile(path: String, sceneUpdates: List<SceneUpdate>? = null): Int {
-        lastSceneYaml = null
-        lastResourceRoot = null
-        lastScenePath = path
-        lastSceneUpdates = sceneUpdates
-
-        return internalLoadSceneFile(path, sceneUpdates)
-    }
-
-    suspend fun loadSceneYaml(yaml: String, resourceRoot: String, sceneUpdates: List<SceneUpdate>? = null): Int {
-        lastScenePath = null
-        lastSceneYaml = yaml
-        lastResourceRoot = resourceRoot
-        lastSceneUpdates = sceneUpdates
-
-        return internalLoadSceneYaml(yaml, resourceRoot, sceneUpdates)
-    }
-
-    suspend fun updateScene(sceneUpdates: List<SceneUpdate>): Int? {
-        val path = lastScenePath
-        val yaml = lastSceneYaml
-        val resourceRoot = lastResourceRoot
-
-        val newSceneUpdates = lastSceneUpdates.orEmpty() + sceneUpdates
-        lastSceneUpdates = newSceneUpdates
-
-        return if (path != null) {
-            internalLoadSceneFile(path, newSceneUpdates)
-        } else if(yaml != null && resourceRoot != null) {
-            internalLoadSceneYaml(yaml, resourceRoot, newSceneUpdates)
-        } else {
-            null
-        }
-    }
-
-    private suspend fun internalLoadSceneFile(
+    suspend fun loadSceneFile(
         path: String,
         sceneUpdates: List<SceneUpdate>? = null
     ): Int = suspendCoroutine { cont ->
@@ -120,7 +78,7 @@ class KtMapController(private val c: MapController) {
         sceneUpdateContinuations[sceneId] = cont
     }
 
-    private suspend fun internalLoadSceneYaml(
+    suspend fun loadSceneYaml(
         yaml: String,
         resourceRoot: String,
         sceneUpdates: List<SceneUpdate>? = null
@@ -156,6 +114,7 @@ class KtMapController(private val c: MapController) {
     fun latLonToScreenPosition(latLon: LatLon): PointF = c.lngLatToScreenPosition(latLon.toLngLat())
 
     fun screenAreaToBoundingBox(padding: RectF): BoundingBox? {
+
         val view = glViewHolder?.view ?: return null
         val w = view.width
         val h = view.height
@@ -210,8 +169,8 @@ class KtMapController(private val c: MapController) {
             )
         ) ?: return null
         return OsmLatLon(
-            geometry.center.latitude - offsetCenter.latitude - normalCenter.latitude,
-            normalizeLongitude(geometry.center.longitude - offsetCenter.longitude - normalCenter.longitude)
+            geometry.center.latitude - (offsetCenter.latitude - normalCenter.latitude),
+            normalizeLongitude(geometry.center.longitude - (offsetCenter.longitude - normalCenter.longitude))
         )
     }
 
@@ -232,22 +191,20 @@ class KtMapController(private val c: MapController) {
     fun setPickRadius(radius: Float) = c.setPickRadius(radius)
 
     suspend fun pickLabel(posX: Float, posY: Float): LabelPickResult? = suspendCoroutine { cont ->
-        pickLabelContinuations[PointF(posX, posY)] = cont
+        pickLabelContinuations.offer(cont)
         c.pickLabel(posX, posY)
     }
 
     suspend fun pickMarker(posX: Float, posY: Float): MarkerPickResult? = markerManager.pickMarker(posX, posY)
 
     suspend fun pickFeature(posX: Float, posY: Float): Map<String, String>? = suspendCoroutine { cont ->
-        featurePickContinuations[PointF(posX, posY)] = cont
+        featurePickContinuations.offer(cont)
         c.pickFeature(posX, posY)
     }
 
-    fun setMapChangeListener(listener: MapChangeListener?) = c.setMapChangeListener(listener)
-
-    // TODO interaction listener
-
-
+    fun setMapChangeListener(listener: MapChangeListener?) {
+        c.setMapChangeListener(listener)
+    }
 
     /* -------------------------------------- Touch input --------------------------------------- */
 

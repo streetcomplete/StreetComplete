@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.map
 import android.app.Activity
 import android.content.res.Configuration
 import android.graphics.PointF
+import android.graphics.RectF
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,6 +16,7 @@ import androidx.preference.PreferenceManager
 import com.mapzen.tangram.*
 import com.mapzen.tangram.TouchInput.*
 import com.mapzen.tangram.networking.HttpHandler
+import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.BuildConfig.MAPZEN_API_KEY
@@ -34,14 +36,25 @@ import java.util.*
 open class MapFragment : Fragment(),
     CoroutineScope by CoroutineScope(Dispatchers.Main),
     TapResponder, DoubleTapResponder, LongPressResponder,
-    PanResponder, ScaleResponder, ShoveResponder, RotateResponder,
-    MapChangeListener {
+    PanResponder, ScaleResponder, ShoveResponder, RotateResponder {
 
     private lateinit var mapView: MapView
 
     protected var controller: KtMapController? = null
 
     private val defaultCameraInterpolator = AccelerateDecelerateInterpolator()
+
+    private var loadedSceneFilePath: String? = null
+
+    interface Listener {
+        /** Called when the map has been completely initialized */
+        fun onMapInitialized()
+        /** Called during camera animation and while the map is being controlled by a user */
+        fun onMapIsChanging()
+        /** Called after camera animation or after the map was controlled by a user */
+        fun onMapDidChange(animated: Boolean)
+    }
+    private val listener get() = parentFragment as? Listener ?: activity as? Listener
 
     /* ------------------------------------ Lifecycle ------------------------------------------- */
 
@@ -88,8 +101,11 @@ open class MapFragment : Fragment(),
         onMapControllerReady()
         restoreMapState()
 
-        ctrl.loadSceneFile(getSceneFilePath(), getSceneUpdates())
+        val sceneFilePath = getSceneFilePath()
+        ctrl.loadSceneFile(sceneFilePath, getSceneUpdates())
+        loadedSceneFilePath = sceneFilePath
         onSceneReady()
+        listener?.onMapInitialized()
     }
 
     private fun registerResponders() {
@@ -102,10 +118,21 @@ open class MapFragment : Fragment(),
         controller?.setShoveResponder(this)
 
 
-        controller?.setMapChangeListener(this)
+        controller?.setMapChangeListener(object : MapChangeListener {
+            override fun onViewComplete() {}
+            override fun onRegionWillChange(animated: Boolean) {}
+            override fun onRegionIsChanging() {
+                onMapIsChanging()
+                listener?.onMapIsChanging()
+            }
+            override fun onRegionDidChange(animated: Boolean) {
+                onMapDidChange(animated)
+                listener?.onMapDidChange(animated)
+            }
+        })
     }
 
-    protected open fun getSceneUpdates(): List<SceneUpdate> {
+    protected open suspend fun getSceneUpdates(): List<SceneUpdate> {
         return listOf(SceneUpdate("global.language", Locale.getDefault().language))
     }
 
@@ -130,13 +157,9 @@ open class MapFragment : Fragment(),
 
     protected open fun onSceneReady() {}
 
-    override fun onViewComplete() {}
+    protected open fun onMapIsChanging() {}
 
-    override fun onRegionWillChange(animated: Boolean) {}
-
-    override fun onRegionIsChanging() {}
-
-    override fun onRegionDidChange(animated: Boolean) {}
+    protected open fun onMapDidChange(animated: Boolean) {}
 
     /* ---------------------- Overrideable callbacks for map interaction ------------------------ */
 
@@ -211,7 +234,6 @@ open class MapFragment : Fragment(),
     val cameraPosition: CameraPosition?
         get() = controller?.cameraPosition
 
-    @JvmOverloads
     fun updateCameraPosition(
         duration: Long = 0,
         interpolator: Interpolator = defaultCameraInterpolator,
@@ -220,17 +242,7 @@ open class MapFragment : Fragment(),
         controller?.updateCameraPosition(duration, interpolator, builder)
     }
 
-    /* ---------------------------------- 3D buildings toggle  ---------------------------------- */
-
-    fun setShow3DBuildings(toggleOn: Boolean) {
-        launch {
-            val toggle = if (toggleOn) "true" else "false"
-            controller?.updateScene(listOf(
-                SceneUpdate("layers.buildings.draw.buildings-style.extrude", toggle),
-                SceneUpdate("layers.buildings.draw.buildings-outline-style.extrude", toggle)
-            ))
-        }
-    }
+    fun getDisplayedArea(): BoundingBox? = controller?.screenAreaToBoundingBox(RectF())
 
     companion object {
         const val PREF_ROTATION = "map_rotation"

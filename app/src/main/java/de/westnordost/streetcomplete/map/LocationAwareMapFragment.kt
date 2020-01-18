@@ -22,7 +22,7 @@ import kotlin.math.*
 
 /** Manages a map that shows the device's GPS location and orientation as markers on the map with
  *  the option to let the screen follow the location and rotation */
-open class MapWithLocationFragment : MapFragment() {
+open class LocationAwareMapFragment : MapFragment() {
 
     private var locationProviderClient: LostApiClient? = null
     private var compass: Compass? = null
@@ -42,7 +42,7 @@ open class MapWithLocationFragment : MapFragment() {
 
     private var directionMarkerSize: PointF? = null
 
-    private val displayedPosition: LatLon? = displayedLocation?.let { OsmLatLon(it.latitude, it.longitude) }
+    private val displayedPosition: LatLon? get() = displayedLocation?.let { OsmLatLon(it.latitude, it.longitude) }
 
     /** Whether the view should automatically center on the GPS location */
     var isFollowingPosition = false
@@ -116,17 +116,9 @@ open class MapWithLocationFragment : MapFragment() {
         showLocation()
     }
 
-    override fun onRegionIsChanging() {
-        super.onRegionIsChanging()
+    override fun onMapIsChanging() {
+        super.onMapIsChanging()
         updateAccuracy()
-    }
-
-    override fun onRegionDidChange(animated: Boolean) {
-        super.onRegionDidChange(animated)
-        if (shouldCenterCurrentPosition()) {
-            val pos = displayedPosition ?: return
-            controller?.updateCameraPosition(500) {  it.position = pos  }
-        }
     }
 
     /* ---------------------------------------- Markers ----------------------------------------- */
@@ -264,7 +256,7 @@ open class MapWithLocationFragment : MapFragment() {
             .setInterval(2000)
             .setSmallestDisplacement(5f)
             .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
-        LocationServices.FusedLocationApi.requestLocationUpdates(client, request, this@MapWithLocationFragment::onLocationChanged)
+        LocationServices.FusedLocationApi.requestLocationUpdates(client, request, this@LocationAwareMapFragment::onLocationChanged)
     }
 
     private fun onLocationChanged(location: Location) {
