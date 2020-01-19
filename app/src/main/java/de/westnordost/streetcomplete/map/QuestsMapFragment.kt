@@ -160,23 +160,13 @@ class QuestsMapFragment : LocationAwareMapFragment() {
 
         cameraPositionBeforeShowingQuest = controller.cameraPosition
 
-        controller.updateCameraPosition(500) {
-            it.position = pos.position
-            it.zoom = pos.zoom
-            it.tilt = pos.tilt
-            it.rotation = pos.rotation
-        }
+        controller.updateCameraPosition(500, pos)
     }
 
     private fun restoreCameraPosition() {
         val cameraPos = cameraPositionBeforeShowingQuest
         if (cameraPos != null) {
-            controller?.updateCameraPosition(500) {
-                it.position = cameraPos.position
-                it.rotation = cameraPos.rotation
-                it.tilt = cameraPos.tilt
-                it.zoom = cameraPos.zoom
-            }
+            controller?.updateCameraPosition(500, cameraPos)
         }
         cameraPositionBeforeShowingQuest = null
     }

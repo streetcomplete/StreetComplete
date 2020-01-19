@@ -91,9 +91,9 @@ open class MapFragment : Fragment(),
 
     override fun onDestroy() {
         super.onDestroy()
-        coroutineContext.cancel()
         mapView.onDestroy()
         controller = null
+        coroutineContext.cancel()
     }
 
     override fun onLowMemory() {
@@ -208,16 +208,8 @@ open class MapFragment : Fragment(),
 
     override fun onSingleTapConfirmed(x: Float, y: Float): Boolean { return false }
 
-    override fun onDoubleTap(x: Float, y: Float): Boolean {
-        val zoomTo = controller?.screenPositionToLatLon(PointF(x, y))
-        if (zoomTo != null) {
-            controller?.updateCameraPosition(500) {
-                it.position = zoomTo
-                it.zoomBy = 1.5f
-            }
-        }
-        return true
-    }
+    override fun onDoubleTap(x: Float, y: Float): Boolean { return false }
+
     override fun onLongPress(x: Float, y: Float) { }
 
     /* -------------------------------- Save and Restore State ---------------------------------- */
@@ -225,11 +217,11 @@ open class MapFragment : Fragment(),
     private fun restoreMapState() {
         val prefs = activity?.getPreferences(Activity.MODE_PRIVATE) ?: return
         controller?.updateCameraPosition {
-            if (prefs.contains(PREF_ROTATION)) it.rotation = prefs.getFloat(PREF_ROTATION, 0f)
-            if (prefs.contains(PREF_TILT)) it.tilt = prefs.getFloat(PREF_TILT, 0f)
-            if (prefs.contains(PREF_ZOOM)) it.zoom = prefs.getFloat(PREF_ZOOM, 0f)
+            if (prefs.contains(PREF_ROTATION)) rotation = prefs.getFloat(PREF_ROTATION, 0f)
+            if (prefs.contains(PREF_TILT)) tilt = prefs.getFloat(PREF_TILT, 0f)
+            if (prefs.contains(PREF_ZOOM)) zoom = prefs.getFloat(PREF_ZOOM, 0f)
             if (prefs.contains(PREF_LAT) && prefs.contains(PREF_LON)) {
-                it.position = OsmLatLon(
+                position = OsmLatLon(
                     java.lang.Double.longBitsToDouble(prefs.getLong(PREF_LAT, 0)),
                     java.lang.Double.longBitsToDouble(prefs.getLong(PREF_LON, 0))
                 )
@@ -260,7 +252,7 @@ open class MapFragment : Fragment(),
     fun updateCameraPosition(
         duration: Long = 0,
         interpolator: Interpolator = defaultCameraInterpolator,
-        builder: (CameraUpdate) -> Unit) {
+        builder: CameraUpdate.() -> Unit) {
         
         controller?.updateCameraPosition(duration, interpolator, builder)
     }

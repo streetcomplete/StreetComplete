@@ -12,6 +12,7 @@ import com.mapzen.tangram.CameraUpdateFactory
 import com.mapzen.tangram.MapController
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.map.data.OsmLatLon
+import kotlin.math.PI
 
 /**
  *  Controls the camera of a Tangram MapController. Use in place of the
@@ -44,17 +45,15 @@ class CameraManager(private val c: MapController) {
             }
         }
 
-    fun updateCamera(duration: Long = 0, interpolator: Interpolator = defaultInterpolator, builder: (CameraUpdate) -> Unit) {
-        val cameraUpdate = CameraUpdate()
-        builder(cameraUpdate)
+    fun updateCamera(duration: Long = 0, interpolator: Interpolator = defaultInterpolator, update: CameraUpdate) {
         synchronized(_tangramCamera) {
             pullCameraPositionFromController()
-            cameraUpdate.resolveDeltas(_tangramCamera)
-            cancelCameraAnimations(cameraUpdate)
+            update.resolveDeltas(_tangramCamera)
+            cancelCameraAnimations(update)
             if (duration == 0L) {
-                applyCameraUpdate(cameraUpdate)
+                applyCameraUpdate(update)
             } else {
-                animateCameraUpdate(cameraUpdate, duration, interpolator)
+                animateCameraUpdate(update, duration, interpolator)
             }
         }
     }
@@ -76,24 +75,26 @@ class CameraManager(private val c: MapController) {
     }
 
     private fun applyCameraUpdate(update: CameraUpdate) {
-        synchronized(_tangramCamera) {
-            pullCameraPositionFromController()
-            update.position?.let {
-                _tangramCamera.latitude = it.latitude
-                _tangramCamera.longitude = it.longitude
-            }
-            update.rotation?.let { _tangramCamera.rotation = it }
-            update.tilt?.let { _tangramCamera.tilt = it }
-            update.zoom?.let { _tangramCamera.zoom = it }
-            pushCameraPositionToController()
+        update.position?.let {
+            _tangramCamera.latitude = it.latitude
+            _tangramCamera.longitude = it.longitude
         }
+        update.rotation?.let { _tangramCamera.rotation = it }
+        update.tilt?.let { _tangramCamera.tilt = it }
+        update.zoom?.let { _tangramCamera.zoom = it }
+        pushCameraPositionToController()
     }
 
     private fun animateCameraUpdate(update: CameraUpdate, duration: Long, interpolator: Interpolator) {
         val animator = ObjectAnimator()
         val propValues = mutableListOf<PropertyValuesHolder>()
         update.rotation?.let {
-            propValues.add(PropertyValuesHolder.ofFloat(TangramRotationProperty, it))
+            val currentRotation = _tangramCamera.rotation
+            var targetRotation = it
+            while (targetRotation - PI > currentRotation) targetRotation -= PI.toFloat()
+            while (targetRotation + PI < currentRotation) targetRotation += PI.toFloat()
+
+            propValues.add(PropertyValuesHolder.ofFloat(TangramRotationProperty, targetRotation))
             assignAnimation("rotation", animator)
         }
         update.tilt?.let {
@@ -118,7 +119,7 @@ class CameraManager(private val c: MapController) {
                 pushCameraPositionToController()
             }
         }
-        mainHandler.run { animator.start() }
+        mainHandler.post { animator.start() }
     }
 
     private fun pullCameraPositionFromController() {
@@ -138,7 +139,7 @@ class CameraManager(private val c: MapController) {
                 currentAnimations.entries.removeAll { (_, anim) -> animator == anim }
             }
         }
-        mainHandler.run { animator?.cancel() }
+        mainHandler.post { animator?.cancel() }
     }
 
     private fun assignAnimation(key: String, animator: ObjectAnimator) {
@@ -168,6 +169,13 @@ data class CameraPosition(
     val zoom: Float) {
 
     constructor(p: TangramCameraPosition) : this(OsmLatLon(p.latitude, p.longitude), p.rotation, p.tilt, p.zoom)
+
+    fun toUpdate() = CameraUpdate().also {
+        it.position = position
+        it.rotation = rotation
+        it.tilt = tilt
+        it.zoom = zoom
+    }
 }
 
 private fun CameraUpdate.resolveDeltas(pos: TangramCameraPosition) {

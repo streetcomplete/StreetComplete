@@ -189,11 +189,11 @@ class MainFragment : Fragment(R.layout.fragment_map_with_controls),
     /* --------------------------------- Map control buttons------------------------------------- */
 
     private fun onClickZoomOut() {
-        mapFragment?.updateCameraPosition(500) { it.zoomBy = -1f }
+        mapFragment?.updateCameraPosition(500) { zoomBy = -1f }
     }
 
     private fun onClickZoomIn() {
-        mapFragment?.updateCameraPosition(500) { it.zoomBy = +1f }
+        mapFragment?.updateCameraPosition(500) { zoomBy = +1f }
     }
 
     private fun onClickCompassButton() {
@@ -201,8 +201,8 @@ class MainFragment : Fragment(R.layout.fragment_map_with_controls),
         val isNorthUp = mapFragment.cameraPosition?.rotation == 0f
         if (!isNorthUp) {
             mapFragment.updateCameraPosition {
-                it.rotation = 0f
-                it.tilt = 0f
+                rotation = 0f
+                tilt = 0f
             }
         }
         if (mapFragment.isFollowingPosition) {

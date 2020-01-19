@@ -90,8 +90,12 @@ class KtMapController(private val c: MapController) {
 
     val cameraPosition: CameraPosition get() = cameraManager.camera
 
-    fun updateCameraPosition(duration: Long = 0, interpolator: Interpolator = defaultInterpolator, builder: (CameraUpdate) -> Unit) {
-        cameraManager.updateCamera(duration, interpolator, builder)
+    fun updateCameraPosition(duration: Long = 0, interpolator: Interpolator = defaultInterpolator, builder: CameraUpdate.() -> Unit) {
+        cameraManager.updateCamera(duration, interpolator, CameraUpdate().apply(builder))
+    }
+
+    fun updateCameraPosition(duration: Long = 0, position: CameraPosition, interpolator: Interpolator = defaultInterpolator) {
+        cameraManager.updateCamera(duration, interpolator, position.toUpdate())
     }
 
     fun cancelAllCameraAnimations() = cameraManager.cancelAllCameraAnimations()

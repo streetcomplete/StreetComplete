@@ -59,7 +59,7 @@ open class LocationAwareMapFragment : MapFragment() {
         set(value) {
             field = value
             if (value) {
-                controller?.updateCameraPosition { it.tilt = PI.toFloat() / 5f }
+                controller?.updateCameraPosition { tilt = PI.toFloat() / 5f }
             }
         }
 
@@ -240,10 +240,10 @@ open class LocationAwareMapFragment : MapFragment() {
         val pos = displayedPosition ?: return
 
         controller?.updateCameraPosition(500) {
-            it.position = pos
+            position = pos
             if (!zoomedYet) {
                 zoomedYet = true
-                it.zoom = 19f
+                zoom = 19f
             }
         }
     }
@@ -268,12 +268,12 @@ open class LocationAwareMapFragment : MapFragment() {
 
     /* --------------------------------- Rotation tracking -------------------------------------- */
 
-    private fun onCompassRotationChanged(rotation: Float, tilt: Float) {
+    private fun onCompassRotationChanged(rot: Float, tilt: Float) {
         // we received an event from the compass, so compass is working - direction can be displayed on screen
         isShowingDirection = true
         directionMarker?.let {
             if (!it.isVisible) it.isVisible = true
-            val angle = rotation * 180 / PI
+            val angle = rot * 180 / PI
             val size = directionMarkerSize
             if (size != null) {
                 it.setStylingFromString(
@@ -283,8 +283,7 @@ open class LocationAwareMapFragment : MapFragment() {
         }
 
         if (isCompassMode) {
-            val mapRotation = -rotation
-            controller?.updateCameraPosition { it.rotation = mapRotation }
+            controller?.updateCameraPosition { rotation = -rot }
         }
     }
 
