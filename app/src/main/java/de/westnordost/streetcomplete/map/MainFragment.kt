@@ -148,6 +148,10 @@ class MainFragment : Fragment(R.layout.fragment_map_with_controls),
         compassNeedleView.rotationX = (180 * cameraPos.tilt / Math.PI).toFloat()
     }
 
+    override fun onPanBegin() {
+        setIsFollowingPosition(false)
+    }
+
     override fun onMapDidChange(animated: Boolean) { }
 
     /* --------------------------------------- Location ----------------------------------------- */

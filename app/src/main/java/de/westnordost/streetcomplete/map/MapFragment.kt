@@ -53,6 +53,8 @@ open class MapFragment : Fragment(),
         fun onMapIsChanging()
         /** Called after camera animation or after the map was controlled by a user */
         fun onMapDidChange(animated: Boolean)
+        /** Called when the user begins to pan the map */
+        fun onPanBegin()
     }
     private val listener get() = parentFragment as? Listener ?: activity as? Listener
 
@@ -163,9 +165,13 @@ open class MapFragment : Fragment(),
 
     /* ---------------------- Overrideable callbacks for map interaction ------------------------ */
 
-    override fun onPanBegin(): Boolean { return false }
+    override fun onPanBegin(): Boolean {
+        listener?.onPanBegin()
+        return false
+    }
     override fun onPan(startX: Float, startY: Float, endX: Float, endY: Float): Boolean { return false }
     override fun onPanEnd(): Boolean { return false }
+
     override fun onFling(posX: Float, posY: Float, velocityX: Float, velocityY: Float): Boolean { return false }
     override fun onCancelFling(): Boolean { return false }
 
@@ -177,9 +183,9 @@ open class MapFragment : Fragment(),
     override fun onShove(distance: Float): Boolean { return false }
     override fun onShoveEnd(): Boolean { return false }
 
-    override fun onRotateEnd(): Boolean { return false }
-    override fun onRotate(x: Float, y: Float, rotation: Float): Boolean { return false }
     override fun onRotateBegin(): Boolean { return false }
+    override fun onRotate(x: Float, y: Float, rotation: Float): Boolean { return false }
+    override fun onRotateEnd(): Boolean { return false }
 
     override fun onSingleTapUp(x: Float, y: Float): Boolean { return false }
 
