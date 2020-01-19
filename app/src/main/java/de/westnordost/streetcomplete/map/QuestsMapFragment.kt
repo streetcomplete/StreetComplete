@@ -5,7 +5,6 @@ import android.graphics.Point
 import android.graphics.PointF
 import android.graphics.Rect
 import android.graphics.RectF
-import android.util.Log
 import androidx.core.graphics.toRectF
 import com.mapzen.tangram.*
 import de.westnordost.osmapi.map.data.BoundingBox
@@ -155,6 +154,33 @@ class QuestsMapFragment : LocationAwareMapFragment() {
         followPosition()
     }
 
+    private fun zoomAndMoveToContain(g: ElementGeometry) {
+        val controller = controller ?: return
+        val pos = controller.getEnclosingCameraPosition(g.getBounds(), questOffset.toRectF()) ?: return
+
+        cameraPositionBeforeShowingQuest = controller.cameraPosition
+
+        controller.updateCameraPosition(500) {
+            it.position = pos.position
+            it.zoom = pos.zoom
+            it.tilt = pos.tilt
+            it.rotation = pos.rotation
+        }
+    }
+
+    private fun restoreCameraPosition() {
+        val cameraPos = cameraPositionBeforeShowingQuest
+        if (cameraPos != null) {
+            controller?.updateCameraPosition(500) {
+                it.position = cameraPos.position
+                it.rotation = cameraPos.rotation
+                it.tilt = cameraPos.tilt
+                it.zoom = cameraPos.zoom
+            }
+        }
+        cameraPositionBeforeShowingQuest = null
+    }
+
     /* ------------------------------  Geometry for current quest ------------------------------- */
 
     private fun putQuestGeometry(geometry: ElementGeometry) {
@@ -189,46 +215,6 @@ class QuestsMapFragment : LocationAwareMapFragment() {
         markerIds.clear()
     }
 
-    /* ----------------------- Zoom to quest and restore camera position ------------------------ */
-
-    private fun zoomAndMoveToContain(g: ElementGeometry) {
-        val controller = controller ?: return
-
-        cameraPositionBeforeShowingQuest = controller.cameraPosition
-
-        var targetZoom = controller.getMaxZoomThatContainsGeometry(g, questOffset.toRectF())
-        if (targetZoom == null || targetZoom > MAX_QUEST_ZOOM) {
-            targetZoom = MAX_QUEST_ZOOM
-        } else {
-            // zoom out a bit
-            targetZoom -= 0.4f
-        }
-
-        val currentZoom = controller.cameraPosition.zoom
-
-        controller.updateCameraPosition { it.zoom = targetZoom }
-        val pos = controller.getLatLonThatCentersGeometry(g, questOffset.toRectF())
-        controller.updateCameraPosition { it.zoom = currentZoom }
-
-        controller.updateCameraPosition(500) {
-            if (pos != null) it.position = pos
-            it.zoom = targetZoom
-        }
-    }
-
-    private fun restoreCameraPosition() {
-        val cameraPos = cameraPositionBeforeShowingQuest
-        if (cameraPos != null) {
-            controller?.updateCameraPosition(500) {
-                it.position = cameraPos.position
-                it.rotation = cameraPos.rotation
-                it.tilt = cameraPos.tilt
-                it.zoom = cameraPos.zoom
-            }
-        }
-        cameraPositionBeforeShowingQuest = null
-    }
-
     /* --------------------------------  Quest Pin Layer on map --------------------------------- */
 
     override fun onMapIsChanging() {
@@ -244,7 +230,6 @@ class QuestsMapFragment : LocationAwareMapFragment() {
 
     private fun updateQuestsInRect(tilesRect: Rect) {
         // area too big -> skip
-        Log.d("MAPFRAGMENT", "tiles:" + (tilesRect.width() * tilesRect.height()))
         if (tilesRect.width() * tilesRect.height() > 4) {
             return
         }
@@ -301,7 +286,6 @@ class QuestsMapFragment : LocationAwareMapFragment() {
         private const val GEOMETRY_LAYER = "streetcomplete_geometry"
         private const val QUESTS_LAYER = "streetcomplete_quests"
         private const val TILES_ZOOM = 14
-        private const val MAX_QUEST_ZOOM = 19f
         private const val CLICK_AREA_SIZE_IN_DP = 48
     }
 }

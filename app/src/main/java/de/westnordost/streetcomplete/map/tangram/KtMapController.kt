@@ -12,10 +12,7 @@ import com.mapzen.tangram.viewholder.GLViewHolder
 import com.mapzen.tangram.viewholder.GLViewHolderFactory
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.LatLon
-import de.westnordost.osmapi.map.data.OsmLatLon
-import de.westnordost.streetcomplete.data.osm.ElementGeometry
-import de.westnordost.streetcomplete.util.SphericalEarthMath.enclosingBoundingBox
-import de.westnordost.streetcomplete.util.SphericalEarthMath.normalizeLongitude
+import de.westnordost.streetcomplete.util.SphericalEarthMath.*
 import java.util.*
 import java.util.concurrent.ConcurrentLinkedQueue
 import kotlin.coroutines.Continuation
@@ -25,6 +22,7 @@ import kotlin.coroutines.suspendCoroutine
 import kotlin.math.log10
 import kotlin.math.max
 import kotlin.math.min
+import kotlin.math.pow
 
 /** Wrapper around the Tangram MapController. Features over the Tangram MapController (0.11.2):
  *  <br><br>
@@ -138,40 +136,51 @@ class KtMapController(private val c: MapController) {
         return enclosingBoundingBox(positions)
     }
 
-    fun getMaxZoomThatContainsGeometry(geometry: ElementGeometry, padding: RectF): Float? {
-        val objectBounds: BoundingBox = geometry.getBounds()
+    fun getEnclosingCameraPosition(bounds: BoundingBox, padding: RectF): CameraPosition? {
+        val zoom = getMaxZoomThatContainsBounds(bounds, padding) ?: return null
+        val boundsCenter = centerPointOfPolyline(listOf(bounds.min, bounds.max))
+        val pos = getLatLonThatCentersLatLon(boundsCenter, padding, zoom) ?: return null
+        val camera = cameraPosition
+        return CameraPosition(pos, camera.rotation, camera.tilt, zoom.toFloat())
+    }
+
+    private fun getMaxZoomThatContainsBounds(bounds: BoundingBox, padding: RectF): Double? {
         val screenBounds: BoundingBox
         val currentZoom: Float
-        synchronized(this) {
+        synchronized(c) {
             screenBounds = screenAreaToBoundingBox(padding) ?: return null
             currentZoom = cameraPosition.zoom
         }
         val screenWidth = normalizeLongitude(screenBounds.maxLongitude - screenBounds.minLongitude)
         val screenHeight = screenBounds.maxLatitude - screenBounds.minLatitude
-        val objectWidth = normalizeLongitude(objectBounds.maxLongitude - objectBounds.minLongitude)
-        val objectHeight = objectBounds.maxLatitude - objectBounds.minLatitude
+        val objectWidth = normalizeLongitude(bounds.maxLongitude - bounds.minLongitude)
+        val objectHeight = bounds.maxLatitude - bounds.minLatitude
+
         val zoomDeltaX = log10(screenWidth / objectWidth) / log10(2.0)
         val zoomDeltaY = log10(screenHeight / objectHeight) / log10(2.0)
-        return max( 1.0, currentZoom + min(zoomDeltaX, zoomDeltaY)).toFloat()
+        val zoomDelta = min(zoomDeltaX, zoomDeltaY)
+        return max( 1.0, min(currentZoom + zoomDelta, 19.0))
     }
 
-    fun getLatLonThatCentersGeometry(geometry: ElementGeometry, padding: RectF): LatLon? {
+    private fun getLatLonThatCentersLatLon(position: LatLon, padding: RectF, zoom: Double): LatLon? {
         val view = glViewHolder?.view ?: return null
         val w = view.width
         val h = view.height
         if (w == 0 || h == 0) return null
 
-        val normalCenter = screenPositionToLatLon(PointF(w / 2f, h / 2f)) ?: return null
-        val offsetCenter = screenPositionToLatLon(
+        val screenCenter = screenPositionToLatLon(PointF(w / 2f, h / 2f)) ?: return null
+        val offsetScreenCenter = screenPositionToLatLon(
             PointF(
                 padding.left + (w - padding.left - padding.right) / 2,
                 padding.top + (h - padding.top - padding.bottom) / 2
             )
         ) ?: return null
-        return OsmLatLon(
-            geometry.center.latitude - (offsetCenter.latitude - normalCenter.latitude),
-            normalizeLongitude(geometry.center.longitude - (offsetCenter.longitude - normalCenter.longitude))
-        )
+
+        val zoomDelta = zoom - cameraPosition.zoom
+        val distance = distance(offsetScreenCenter, screenCenter)
+        val angle = bearing(offsetScreenCenter, screenCenter)
+        val distanceAfterZoom = distance * (2.0).pow(-zoomDelta)
+        return translate(position, distanceAfterZoom, angle)
     }
 
     /* -------------------------------------- Data Layers --------------------------------------- */
