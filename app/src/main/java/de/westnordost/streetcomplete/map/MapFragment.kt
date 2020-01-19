@@ -46,6 +46,8 @@ open class MapFragment : Fragment(),
 
     private var loadedSceneFilePath: String? = null
 
+    private var isMapInitialized: Boolean = false
+
     interface Listener {
         /** Called when the map has been completely initialized */
         fun onMapInitialized()
@@ -69,6 +71,11 @@ open class MapFragment : Fragment(),
         mapView = view.findViewById(R.id.map)
         mapView.onCreate(savedInstanceState)
         launch { initMap() }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        launch { reinitializeMapIfNecessary() }
     }
 
     override fun onResume() {
@@ -108,6 +115,16 @@ open class MapFragment : Fragment(),
         loadedSceneFilePath = sceneFilePath
         onSceneReady()
         listener?.onMapInitialized()
+    }
+
+    private suspend fun reinitializeMapIfNecessary() {
+        if (loadedSceneFilePath != null) {
+            val sceneFilePath = getSceneFilePath()
+            if (sceneFilePath != loadedSceneFilePath) {
+                controller?.loadSceneFile(sceneFilePath, getSceneUpdates())
+                loadedSceneFilePath = sceneFilePath
+            }
+        }
     }
 
     private fun registerResponders() {

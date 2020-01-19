@@ -20,7 +20,7 @@ class TangramQuestSpriteSheet @Inject constructor(
     private val questTypeRegistry: QuestTypeRegistry,
     private val prefs: SharedPreferences
 ) {
-	fun get(): List<SceneUpdate> {
+    val sceneUpdates: List<SceneUpdate> by lazy {
         val isSpriteSheetCurrent = prefs.getInt(Prefs.QUEST_SPRITES_VERSION, 0) == BuildConfig.VERSION_CODE
 
         val spriteSheet =
@@ -29,7 +29,7 @@ class TangramQuestSpriteSheet @Inject constructor(
             else
                 createSpritesheet()
 
-        return createSceneUpdates(spriteSheet)
+        createSceneUpdates(spriteSheet)
     }
 
     private fun createSpritesheet(): String {

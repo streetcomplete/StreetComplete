@@ -108,7 +108,7 @@ class QuestsMapFragment : LocationAwareMapFragment() {
     /* ------------------------------------- Map setup ------------------------------------------ */
 
     override suspend fun getSceneUpdates(): List<SceneUpdate> {
-        return super.getSceneUpdates() + withContext(Dispatchers.IO) { spriteSheet.get() }
+        return super.getSceneUpdates() + withContext(Dispatchers.IO) { spriteSheet.sceneUpdates }
     }
 
     /* -------------------------------- Picking quest pins -------------------------------------- */
@@ -219,7 +219,7 @@ class QuestsMapFragment : LocationAwareMapFragment() {
     private fun restoreCameraPosition() {
         val cameraPos = cameraPositionBeforeShowingQuest
         if (cameraPos != null) {
-            controller?.updateCameraPosition {
+            controller?.updateCameraPosition(500) {
                 it.position = cameraPos.position
                 it.rotation = cameraPos.rotation
                 it.tilt = cameraPos.tilt
