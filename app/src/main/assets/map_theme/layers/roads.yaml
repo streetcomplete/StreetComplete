@@ -22,7 +22,7 @@ layers:
 
     highway:
         data: { source: mapzen, layer: roads }
-        filter: { kind: highway, not: { is_link: true } }
+        filter: { kind: highway, is_link: false }
         draw:
             lines-highway-style:
                 order: global.sort_rank
@@ -30,14 +30,26 @@ layers:
                 cap: round
                 color: global.highway_color
                 width: [[8, 1px], [14, 5px], [15, 30m]]
+                outline:
+                    color: global.highway_outline_color
+                    width: function () { return 1/4 * Math.log($zoom); }
+                    order: 200
 
+        bridges:
+            filter: { is_bridge: true }
+            draw:
+                lines:
+                    outline:
+                        cap: butt
+                        order: 400
 
     roads:
         data: { source: mapzen }
         filter:
             not:
-                - kind: [rail, ferry, aerialway, piste, highway]
+                - kind: [rail, ferry, aerialway, piste]
                 - kind_detail: [sidewalk]
+                - { kind: highway, is_link: false }
         draw:
             lines:
                 order: global.sort_rank

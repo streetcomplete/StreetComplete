@@ -18,7 +18,8 @@ global:
 
     railway_color: '#903'
     road_color: '#559'
-    highway_color: '#023'
+    highway_color: '#033'
+    highway_outline_color: '#000'
     road_outline_color: '#99f'
     path_color: global.road_color
     path_outline_color: '#547'
