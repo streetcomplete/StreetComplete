@@ -52,6 +52,7 @@ class MainFragment : Fragment(R.layout.fragment_map_with_controls),
 
     interface Listener {
         fun onClickCreateNote()
+        fun onMapIsChanging(position: LatLon, rotation: Float, tilt: Float, zoom: Float)
     }
 
     private val locationAvailabilityReceiver: BroadcastReceiver = object : BroadcastReceiver() {
@@ -142,17 +143,17 @@ class MainFragment : Fragment(R.layout.fragment_map_with_controls),
         gpsTrackingButton.isCompassMode = mapFragment?.isCompassMode ?: false
     }
 
-    override fun onMapIsChanging() {
-        val cameraPos = mapFragment?.cameraPosition ?: return
-        compassNeedleView.rotation = (180 * cameraPos.rotation / Math.PI).toFloat()
-        compassNeedleView.rotationX = (180 * cameraPos.tilt / Math.PI).toFloat()
+    override fun onMapIsChanging(position: LatLon, rotation: Float, tilt: Float, zoom: Float) {
+        compassNeedleView.rotation = (180 * rotation / Math.PI).toFloat()
+        compassNeedleView.rotationX = (180 * tilt / Math.PI).toFloat()
+        listener?.onMapIsChanging(position, rotation, tilt, zoom)
     }
 
     override fun onPanBegin() {
         setIsFollowingPosition(false)
     }
 
-    override fun onMapDidChange(animated: Boolean) { }
+    override fun onMapDidChange(position: LatLon, rotation: Float, tilt: Float, zoom: Float, animated: Boolean) { }
 
     /* --------------------------------------- Location ----------------------------------------- */
 
@@ -189,18 +190,18 @@ class MainFragment : Fragment(R.layout.fragment_map_with_controls),
     /* --------------------------------- Map control buttons------------------------------------- */
 
     private fun onClickZoomOut() {
-        mapFragment?.updateCameraPosition(500) { zoomBy = -1f }
+        mapFragment?.updateCameraPosition(300) { zoomBy = -1f }
     }
 
     private fun onClickZoomIn() {
-        mapFragment?.updateCameraPosition(500) { zoomBy = +1f }
+        mapFragment?.updateCameraPosition(300) { zoomBy = +1f }
     }
 
     private fun onClickCompassButton() {
         val mapFragment = mapFragment ?: return
         val isNorthUp = mapFragment.cameraPosition?.rotation == 0f
         if (!isNorthUp) {
-            mapFragment.updateCameraPosition {
+            mapFragment.updateCameraPosition(300) {
                 rotation = 0f
                 tilt = 0f
             }

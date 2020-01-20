@@ -5,6 +5,7 @@ import android.graphics.Point
 import android.graphics.PointF
 import android.graphics.Rect
 import android.graphics.RectF
+import android.view.animation.*
 import androidx.core.graphics.toRectF
 import com.mapzen.tangram.*
 import de.westnordost.osmapi.map.data.BoundingBox
@@ -207,9 +208,10 @@ class QuestsMapFragment : LocationAwareMapFragment() {
 
     /* --------------------------------  Quest Pin Layer on map --------------------------------- */
 
-    override fun onMapIsChanging() {
-        super.onMapIsChanging()
-        if (controller?.cameraPosition?.zoom ?: 0f < TILES_ZOOM) return
+    override fun onMapIsChanging(position: LatLon, rotation: Float, tilt: Float, zoom: Float) {
+        super.onMapIsChanging(position, rotation, tilt, zoom)
+
+        if (zoom < TILES_ZOOM) return
         val displayedArea = controller?.screenAreaToBoundingBox(RectF()) ?: return
         val tilesRect = SlippyMapMath.enclosingTiles(displayedArea, TILES_ZOOM)
         if (lastDisplayedRect != tilesRect) {

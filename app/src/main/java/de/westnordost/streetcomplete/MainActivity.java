@@ -1109,9 +1109,8 @@ public class MainActivity extends AppCompatActivity implements
 	}
 
 	/* ---------------------------------- MapFragment.Listener ---------------------------------- */
-/*
-	TODO
-	@AnyThread @Override public void onMapOrientation(float rotation, float tilt)
+
+	@AnyThread @Override public void onMapIsChanging(@NonNull LatLon position, float rotation, float tilt, float zoom)
 	{
 		mapRotation = rotation;
 		mapTilt = tilt;
@@ -1121,7 +1120,6 @@ public class MainActivity extends AppCompatActivity implements
 			((AbstractQuestAnswerFragment)f).onMapOrientation(rotation, tilt);
 		}
 	}
-	*/
 
 	/* ------------------------------- QuestsMapFragment.Listener ------------------------------- */
 
