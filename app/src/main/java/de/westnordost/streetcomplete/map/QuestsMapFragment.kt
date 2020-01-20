@@ -5,6 +5,7 @@ import android.graphics.Point
 import android.graphics.PointF
 import android.graphics.Rect
 import android.graphics.RectF
+import android.util.Log
 import android.view.animation.*
 import androidx.core.graphics.toRectF
 import com.mapzen.tangram.*
@@ -89,7 +90,6 @@ class QuestsMapFragment : LocationAwareMapFragment() {
     }
 
     override fun onSceneReady() {
-        retrievedTiles.clear()
         geometryLayer = controller?.addDataLayer(GEOMETRY_LAYER)
         questsLayer = controller?.addDataLayer(QUESTS_LAYER)
         super.onSceneReady()
@@ -285,6 +285,7 @@ class QuestsMapFragment : LocationAwareMapFragment() {
     }
 
     private fun clearQuestPins() {
+        retrievedTiles.clear()
         questsLayer?.clear()
         questPinCollection.clear()
         lastDisplayedRect = null
