@@ -43,7 +43,7 @@ class KtMapController(private val c: MapController) {
 
     private val sceneUpdateContinuations = mutableMapOf<Int, Continuation<Int>>()
     private val pickLabelContinuations = ConcurrentLinkedQueue<Continuation<LabelPickResult?>>()
-    private val featurePickContinuations = ConcurrentLinkedQueue<Continuation<Map<String, String>?>>()
+    private val featurePickContinuations = ConcurrentLinkedQueue<Continuation<FeaturePickResult?>>()
 
     init {
         c.setSceneLoadListener { sceneId, sceneError ->
@@ -56,12 +56,12 @@ class KtMapController(private val c: MapController) {
             }
         }
 
-        c.setLabelPickListener { labelPickResult: LabelPickResult?, _, _ ->
+        c.setLabelPickListener { labelPickResult: LabelPickResult? ->
             pickLabelContinuations.poll()?.resume(labelPickResult)
         }
 
-        c.setFeaturePickListener { properties: Map<String, String>?, _, _ ->
-            featurePickContinuations.poll()?.resume(properties)
+        c.setFeaturePickListener { featurePickResult: FeaturePickResult? ->
+            featurePickContinuations.poll()?.resume(featurePickResult)
         }
     }
 
@@ -210,7 +210,7 @@ class KtMapController(private val c: MapController) {
 
     suspend fun pickMarker(posX: Float, posY: Float): MarkerPickResult? = markerManager.pickMarker(posX, posY)
 
-    suspend fun pickFeature(posX: Float, posY: Float): Map<String, String>? = suspendCoroutine { cont ->
+    suspend fun pickFeature(posX: Float, posY: Float): FeaturePickResult? = suspendCoroutine { cont ->
         featurePickContinuations.offer(cont)
         c.pickFeature(posX, posY)
     }
