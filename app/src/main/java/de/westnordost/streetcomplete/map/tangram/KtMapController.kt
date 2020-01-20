@@ -45,6 +45,8 @@ class KtMapController(private val c: MapController) {
     private val pickLabelContinuations = ConcurrentLinkedQueue<Continuation<LabelPickResult?>>()
     private val featurePickContinuations = ConcurrentLinkedQueue<Continuation<FeaturePickResult?>>()
 
+    private var mapChangeListener: MapChangeListener? = null
+
     init {
         c.setSceneLoadListener { sceneId, sceneError ->
             val cont = sceneUpdateContinuations.remove(sceneId)
@@ -63,6 +65,38 @@ class KtMapController(private val c: MapController) {
         c.setFeaturePickListener { featurePickResult: FeaturePickResult? ->
             featurePickContinuations.poll()?.resume(featurePickResult)
         }
+
+        cameraManager.listener = object : CameraManager.AnimationsListener {
+            override fun onAnimationsStarted() {
+                mapChangeListener?.onRegionWillChange(true)
+            }
+
+            override fun onAnimating() {
+                mapChangeListener?.onRegionIsChanging()
+            }
+
+            override fun onAnimationsEnded() {
+                mapChangeListener?.onRegionDidChange(true)
+            }
+        }
+
+        c.setMapChangeListener(object : MapChangeListener {
+            override fun onViewComplete() {
+                mapChangeListener?.onViewComplete()
+            }
+
+            override fun onRegionWillChange(animated: Boolean) {
+                if (!cameraManager.isAnimating) mapChangeListener?.onRegionWillChange(false)
+            }
+
+            override fun onRegionIsChanging() {
+                if (!cameraManager.isAnimating) mapChangeListener?.onRegionIsChanging()
+            }
+
+            override fun onRegionDidChange(animated: Boolean) {
+                if (!cameraManager.isAnimating) mapChangeListener?.onRegionDidChange(false)
+            }
+        })
     }
 
     /* ----------------------------- Loading and Updating Scene --------------------------------- */
@@ -92,10 +126,11 @@ class KtMapController(private val c: MapController) {
 
     fun updateCameraPosition(duration: Long = 0, interpolator: Interpolator = defaultInterpolator, builder: CameraUpdate.() -> Unit) {
         cameraManager.updateCamera(duration, interpolator, CameraUpdate().apply(builder))
-    }
-
-    fun updateCameraPosition(duration: Long = 0, position: CameraPosition, interpolator: Interpolator = defaultInterpolator) {
-        cameraManager.updateCamera(duration, interpolator, position.toUpdate())
+        // workaround https://github.com/tangrams/tangram-es/issues/2129
+        if (duration == 0L) {
+            mapChangeListener?.onRegionIsChanging()
+            mapChangeListener?.onRegionDidChange(false)
+        }
     }
 
     fun cancelAllCameraAnimations() = cameraManager.cancelAllCameraAnimations()
@@ -215,9 +250,7 @@ class KtMapController(private val c: MapController) {
         c.pickFeature(posX, posY)
     }
 
-    fun setMapChangeListener(listener: MapChangeListener?) {
-        c.setMapChangeListener(listener)
-    }
+    fun setMapChangeListener(listener: MapChangeListener?) { mapChangeListener = listener }
 
     /* -------------------------------------- Touch input --------------------------------------- */
 

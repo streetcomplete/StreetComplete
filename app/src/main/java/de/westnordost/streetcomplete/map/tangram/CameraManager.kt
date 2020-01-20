@@ -1,13 +1,12 @@
 package de.westnordost.streetcomplete.map.tangram
 
-import android.animation.ObjectAnimator
-import android.animation.PropertyValuesHolder
-import android.animation.TypeEvaluator
+import android.animation.*
 import android.os.Handler
 import android.os.Looper
 import android.util.Property
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.Interpolator
+import androidx.core.animation.addListener
 import com.mapzen.tangram.CameraUpdateFactory
 import com.mapzen.tangram.MapController
 import de.westnordost.osmapi.map.data.LatLon
@@ -33,8 +32,19 @@ import kotlin.math.PI
 class CameraManager(private val c: MapController) {
     private val defaultInterpolator = AccelerateDecelerateInterpolator()
     private val doubleTypeEvaluator = DoubleTypeEvaluator()
-    private val currentAnimations = mutableMapOf<String, ObjectAnimator>()
+    private val currentAnimations = mutableMapOf<String, Animator>()
     private val mainHandler = Handler(Looper.getMainLooper())
+    private var lastAnimator: ValueAnimator? = null
+    set(value) {
+        if (field == value) return
+        if (field == null) {
+            listener?.onAnimationsStarted()
+        } else if(value == null) {
+            listener?.onAnimationsEnded()
+        }
+        field = value
+    }
+    private var lastAnimatorEndTime: Long = 0
 
     private val _tangramCamera = com.mapzen.tangram.CameraPosition()
     val camera: CameraPosition
@@ -44,6 +54,15 @@ class CameraManager(private val c: MapController) {
                 return CameraPosition(_tangramCamera)
             }
         }
+
+    val isAnimating: Boolean get() = lastAnimator != null
+
+    interface AnimationsListener {
+        fun onAnimationsStarted()
+        fun onAnimating()
+        fun onAnimationsEnded()
+    }
+    var listener: AnimationsListener? = null
 
     fun updateCamera(duration: Long = 0, interpolator: Interpolator = defaultInterpolator, update: CameraUpdate) {
         synchronized(_tangramCamera) {
@@ -91,8 +110,8 @@ class CameraManager(private val c: MapController) {
         update.rotation?.let {
             val currentRotation = _tangramCamera.rotation
             var targetRotation = it
-            while (targetRotation - PI > currentRotation) targetRotation -= PI.toFloat()
-            while (targetRotation + PI < currentRotation) targetRotation += PI.toFloat()
+            while (targetRotation - PI > currentRotation) targetRotation -= 2*PI.toFloat()
+            while (targetRotation + PI < currentRotation) targetRotation += 2*PI.toFloat()
 
             propValues.add(PropertyValuesHolder.ofFloat(TangramRotationProperty, targetRotation))
             assignAnimation("rotation", animator)
@@ -114,10 +133,14 @@ class CameraManager(private val c: MapController) {
         animator.setValues(*propValues.toTypedArray())
         animator.duration = duration
         animator.interpolator = interpolator
-        animator.addUpdateListener {
-            synchronized(_tangramCamera) {
-                pushCameraPositionToController()
-            }
+        animator.addListener(onEnd = this::unassignAnimator)
+
+        val endTime = System.currentTimeMillis() + duration
+        if (lastAnimatorEndTime < endTime) {
+            lastAnimator?.removeAllUpdateListeners()
+            lastAnimator = animator
+            animator.addUpdateListener(this::animate)
+            lastAnimatorEndTime = endTime
         }
         mainHandler.post { animator.start() }
     }
@@ -128,18 +151,31 @@ class CameraManager(private val c: MapController) {
 
     private fun pushCameraPositionToController() {
         c.updateCameraPosition(CameraUpdateFactory.newCameraPosition(_tangramCamera))
-        // TODO https://github.com/tangrams/tangram-es/issues/2129
+    }
+
+    private fun animate(animator: ValueAnimator) {
+        synchronized(_tangramCamera) {
+            pushCameraPositionToController()
+        }
+        listener?.onAnimating()
     }
 
     private fun cancelAnimation(key: String) {
-        var animator: ObjectAnimator?
+        var animator: Animator?
         synchronized(currentAnimations) {
             animator = currentAnimations[key]
-            if (animator != null) {
-                currentAnimations.entries.removeAll { (_, anim) -> animator == anim }
-            }
+            animator?.let { unassignAnimator(it) }
         }
         mainHandler.post { animator?.cancel() }
+    }
+
+    private fun unassignAnimator(animator: Animator) {
+        synchronized(currentAnimations) {
+            currentAnimations.entries.removeAll { (_, anim) -> animator == anim }
+        }
+        if (animator == lastAnimator) {
+            lastAnimator = null
+        }
     }
 
     private fun assignAnimation(key: String, animator: ObjectAnimator) {
@@ -169,13 +205,6 @@ data class CameraPosition(
     val zoom: Float) {
 
     constructor(p: TangramCameraPosition) : this(OsmLatLon(p.latitude, p.longitude), p.rotation, p.tilt, p.zoom)
-
-    fun toUpdate() = CameraUpdate().also {
-        it.position = position
-        it.rotation = rotation
-        it.tilt = tilt
-        it.zoom = zoom
-    }
 }
 
 private fun CameraUpdate.resolveDeltas(pos: TangramCameraPosition) {
