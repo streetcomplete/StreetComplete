@@ -27,6 +27,9 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.util.*
 import javax.inject.Inject
+import kotlin.math.abs
+import kotlin.math.max
+import kotlin.math.roundToLong
 
 /** Manages a map that shows the quest pins, quest geometry */
 class QuestsMapFragment : LocationAwareMapFragment() {
@@ -159,15 +162,35 @@ class QuestsMapFragment : LocationAwareMapFragment() {
         val controller = controller ?: return
         val pos = controller.getEnclosingCameraPosition(g.getBounds(), questOffset.toRectF()) ?: return
 
-        cameraPositionBeforeShowingQuest = controller.cameraPosition
+        val currentPos = controller.cameraPosition
+        cameraPositionBeforeShowingQuest = currentPos
 
-        controller.updateCameraPosition(500, pos)
+        val zoomTime = max(300L, (abs(currentPos.zoom - pos.zoom) * 300).roundToLong())
+
+        controller.updateCameraPosition(zoomTime, DecelerateInterpolator()) {
+            position = pos.position
+        }
+        controller.updateCameraPosition(zoomTime, AccelerateDecelerateInterpolator()) {
+            zoom = pos.zoom
+        }
     }
 
     private fun restoreCameraPosition() {
-        val cameraPos = cameraPositionBeforeShowingQuest
-        if (cameraPos != null) {
-            controller?.updateCameraPosition(500, cameraPos)
+        val controller = controller ?: return
+
+        val pos = cameraPositionBeforeShowingQuest
+        if (pos != null) {
+            val currentPos = controller.cameraPosition
+            val zoomTime = max(300L, (abs(currentPos.zoom - pos.zoom) * 300).roundToLong())
+
+            controller.updateCameraPosition(zoomTime, AccelerateDecelerateInterpolator()) {
+                position = pos.position
+            }
+            controller.updateCameraPosition(zoomTime, DecelerateInterpolator()) {
+                zoom = pos.zoom
+                tilt = pos.tilt
+                rotation = pos.rotation
+            }
         }
         cameraPositionBeforeShowingQuest = null
     }
