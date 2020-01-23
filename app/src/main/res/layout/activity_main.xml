@@ -124,11 +124,4 @@
 
     </LinearLayout>
 
-    <FrameLayout
-        android:id="@+id/map_bottom_sheet_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clipChildren="false">
-    </FrameLayout>
-
  </RelativeLayout >

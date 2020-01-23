@@ -12,6 +12,7 @@ import de.westnordost.streetcomplete.data.osm.upload.ChangesetAutoCloserWorker;
 import de.westnordost.streetcomplete.data.upload.QuestChangesUploadService;
 import de.westnordost.streetcomplete.data.download.QuestDownloadService;
 import de.westnordost.streetcomplete.data.meta.MetadataModule;
+import de.westnordost.streetcomplete.map.MainFragment;
 import de.westnordost.streetcomplete.oauth.OAuthModule;
 import de.westnordost.streetcomplete.oauth.OsmOAuthDialogFragment;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
@@ -73,4 +74,6 @@ public interface ApplicationComponent
 	void inject(@NonNull SplitWayFragment splitWayFragment);
 
 	void inject(@NotNull ShowQuestFormsActivity showQuestFormsActivity);
+
+	void inject(@NotNull MainFragment mainFragment);
 }

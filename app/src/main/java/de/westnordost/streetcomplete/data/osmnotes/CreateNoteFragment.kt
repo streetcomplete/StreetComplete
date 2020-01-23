@@ -24,6 +24,7 @@ class CreateNoteFragment : AbstractCreateNoteFragment() {
         /** Called when the user wants to leave a note which is not related to a quest  */
         fun onCreatedNote(note: String, imagePaths: List<String>?, screenPosition: Point)
     }
+    private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
     override val layoutResId = R.layout.fragment_create_note
 
@@ -80,7 +81,7 @@ class CreateNoteFragment : AbstractCreateNoteFragment() {
 
         markerLayoutContainer?.visibility = View.INVISIBLE
 
-        (activity as Listener).onCreatedNote(text, imagePaths, screenPos)
+        listener?.onCreatedNote(text, imagePaths, screenPos)
     }
 
     private fun closeKeyboard(): Boolean {

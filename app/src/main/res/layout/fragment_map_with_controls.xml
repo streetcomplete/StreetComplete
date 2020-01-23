@@ -16,7 +16,7 @@
         android:layout_width="64dp"
         android:layout_height="64dp"
         style="@style/RoundWhiteButton"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="12dp"
         android:layout_marginRight="4dp"
         tools:ignore="RtlHardcoded"
         android:layout_alignParentRight="true"
@@ -108,5 +108,12 @@
             android:contentDescription="@string/map_btn_create_note"/>
 
     </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/map_bottom_sheet_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipChildren="false">
+    </FrameLayout>
 
 </RelativeLayout>

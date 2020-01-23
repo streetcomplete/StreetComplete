@@ -1,5 +1,8 @@
 package de.westnordost.streetcomplete.quests;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+
 import java.util.Arrays;
 import java.util.concurrent.FutureTask;
 
@@ -8,10 +11,19 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 import de.westnordost.osmfeatures.FeatureDictionary;
+import de.westnordost.streetcomplete.data.QuestController;
 import de.westnordost.streetcomplete.data.QuestType;
 import de.westnordost.streetcomplete.data.QuestTypeRegistry;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao;
+import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao;
+import de.westnordost.streetcomplete.data.osm.persist.MergedElementDao;
+import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao;
+import de.westnordost.streetcomplete.data.osm.persist.OsmQuestSplitWayDao;
+import de.westnordost.streetcomplete.data.osm.persist.UndoOsmQuestDao;
+import de.westnordost.streetcomplete.data.osmnotes.CreateNoteDao;
+import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestDao;
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestType;
+import de.westnordost.streetcomplete.data.visiblequests.OrderedVisibleQuestTypesProvider;
 import de.westnordost.streetcomplete.quests.baby_changing_table.AddBabyChangingTable;
 import de.westnordost.streetcomplete.quests.bike_parking_capacity.AddBikeParkingCapacity;
 import de.westnordost.streetcomplete.quests.bike_parking_cover.AddBikeParkingCover;
@@ -196,4 +208,18 @@ public class QuestModule
 	{
 		return new OsmNoteQuestType();
 	}
+/*
+	@Provides @Singleton public static QuestController questController(
+		OsmQuestDao osmQuestDao, UndoOsmQuestDao undoOsmQuestDao, MergedElementDao mergedElementDao,
+		ElementGeometryDao elementGeometryDao, OsmNoteQuestDao osmNoteQuestDao,
+		OsmQuestSplitWayDao osmQuestSplitWayDao, CreateNoteDao createNoteDao,
+		SharedPreferences prefs, OrderedVisibleQuestTypesProvider questTypesProvider,
+		Context context
+	)
+	{
+		return new QuestController(osmQuestDao, undoOsmQuestDao, mergedElementDao,
+			elementGeometryDao, osmNoteQuestDao, osmQuestSplitWayDao, createNoteDao, prefs,
+			questTypesProvider, context);
+	}
+	*/
 }

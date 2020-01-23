@@ -58,7 +58,7 @@ open class MapFragment : Fragment(),
         /** Called when the user begins to pan the map */
         fun onPanBegin()
     }
-    private val listener get() = parentFragment as? Listener ?: activity as? Listener
+    private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
     /* ------------------------------------ Lifecycle ------------------------------------------- */
 
@@ -257,6 +257,24 @@ open class MapFragment : Fragment(),
         builder: CameraUpdate.() -> Unit) {
         
         controller?.updateCameraPosition(duration, interpolator, builder)
+    }
+
+    var show3DBuildings: Boolean = true
+    set(value) {
+        if (field == value) return
+        field = value
+        launch {
+            val sceneFile = loadedSceneFilePath
+            if (sceneFile != null) {
+                val toggle = if (value) "true" else "false"
+                controller?.loadSceneFile(
+                    sceneFile, getSceneUpdates() + listOf(
+                        SceneUpdate("layers.buildings.draw.buildings-style.extrude", toggle),
+                        SceneUpdate("layers.buildings.draw.buildings-outline-style.extrude", toggle)
+                    )
+                )
+            }
+        }
     }
 
     fun getDisplayedArea(): BoundingBox? = controller?.screenAreaToBoundingBox(RectF())

@@ -34,11 +34,7 @@ import javax.inject.Inject
 
 class SplitWayFragment : Fragment(), IsCloseableBottomSheet, IsShowingQuestDetails {
 
-    interface Listener {
-        fun onAddSplit(point: LatLon)
-        fun onRemoveSplit(point: LatLon)
-        fun onSplittedWay(osmQuestId: Long, splits: List<SplitPolylineAtPosition>)
-    }
+
     private val splits: MutableList<Pair<SplitPolylineAtPosition, LatLon>> = mutableListOf()
 
     @Inject internal lateinit var soundFx: SoundFx
@@ -53,6 +49,13 @@ class SplitWayFragment : Fragment(), IsCloseableBottomSheet, IsShowingQuestDetai
 
     private val hasChanges get() = splits.isNotEmpty()
     private val isFormComplete get() = splits.size >= if (way.isClosed()) 2 else 1
+
+    interface Listener {
+        fun onAddSplit(point: LatLon)
+        fun onRemoveSplit(point: LatLon)
+        fun onSplittedWay(osmQuestId: Long, splits: List<SplitPolylineAtPosition>)
+    }
+    private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
     init {
         Injector.instance.applicationComponent.inject(this)
@@ -112,11 +115,11 @@ class SplitWayFragment : Fragment(), IsCloseableBottomSheet, IsShowingQuestDetai
     }
 
     private fun onSplittedWayConfirmed() {
-        (activity as Listener).onSplittedWay(osmQuestId, splits.map { it.first })
+        listener?.onSplittedWay(osmQuestId, splits.map { it.first })
     }
 
     private fun confirmManySplits(callback: () -> (Unit)) {
-        activity?.let {
+        context?.let {
             AlertDialog.Builder(it)
                 .setTitle(R.string.quest_generic_confirmation_title)
                 .setMessage(R.string.quest_split_way_many_splits_confirmation_description)
@@ -131,7 +134,7 @@ class SplitWayFragment : Fragment(), IsCloseableBottomSheet, IsShowingQuestDetai
             val item = splits.removeAt(splits.lastIndex)
             animateButtonVisibilities()
             soundFx.play(R.raw.plop2)
-            (activity as? Listener)?.onRemoveSplit(item.second)
+            listener?.onRemoveSplit(item.second)
         }
     }
 
@@ -155,7 +158,7 @@ class SplitWayFragment : Fragment(), IsCloseableBottomSheet, IsShowingQuestDetai
             splits.add(Pair(splitWay, splitPosition))
             animateButtonVisibilities()
             animateScissors()
-            (activity as? Listener)?.onAddSplit(splitPosition)
+            listener?.onAddSplit(splitPosition)
         }
 
         // always consume event. User should press the cancel button to exit
@@ -215,15 +218,15 @@ class SplitWayFragment : Fragment(), IsCloseableBottomSheet, IsShowingQuestDetai
         return result
     }
 
-    @UiThread override fun onClickClose(onConfirmed: Runnable) {
+    @UiThread override fun onClickClose(onConfirmed: () -> Unit) {
         if (!hasChanges) {
-            onConfirmed.run()
+            onConfirmed()
         } else {
             activity?.let {
                 AlertDialog.Builder(it)
                     .setMessage(R.string.confirmation_discard_title)
                     .setPositiveButton(R.string.confirmation_discard_positive) { _, _ ->
-                        onConfirmed.run()
+                        onConfirmed()
                     }
                     .setNegativeButton(R.string.confirmation_discard_negative, null)
                     .show()
@@ -243,7 +246,6 @@ class SplitWayFragment : Fragment(), IsCloseableBottomSheet, IsShowingQuestDetai
         private const val ARG_WAY = "way"
         private const val ARG_ELEMENT_GEOMETRY = "elementGeometry"
 
-        @JvmStatic
         fun create(osmQuestId: Long, way: Way, elementGeometry: ElementPolylinesGeometry): SplitWayFragment {
             val f = SplitWayFragment()
             f.arguments = bundleOf(

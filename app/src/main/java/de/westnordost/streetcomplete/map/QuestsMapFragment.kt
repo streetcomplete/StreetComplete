@@ -1,11 +1,9 @@
 package de.westnordost.streetcomplete.map
 
-import android.content.Context
 import android.graphics.Point
 import android.graphics.PointF
 import android.graphics.Rect
 import android.graphics.RectF
-import android.util.Log
 import android.view.animation.*
 import androidx.core.graphics.toRectF
 import com.mapzen.tangram.*
@@ -35,6 +33,9 @@ import kotlin.math.roundToLong
 /** Manages a map that shows the quest pins, quest geometry */
 class QuestsMapFragment : LocationAwareMapFragment() {
 
+    @Inject internal lateinit var spriteSheet: TangramQuestSpriteSheet
+    @Inject internal lateinit var questPinCollection: QuestPinCollection
+
     // layers
     private var questsLayer: MapData? = null
     private var geometryLayer: MapData? = null
@@ -42,35 +43,26 @@ class QuestsMapFragment : LocationAwareMapFragment() {
     // markers: LatLon -> Marker Id
     private val markerIds: MutableMap<LatLon, Long> = HashMap()
 
+    // for restoring position
     private var cameraPositionBeforeShowingQuest: CameraPosition? = null
 
     private val retrievedTiles: MutableSet<Point> = mutableSetOf()
-
     private var lastDisplayedRect: Rect? = null
-
-    private var listener: Listener? = null
 
     var questOffset: Rect = Rect(0, 0, 0, 0)
 
-    @Inject internal lateinit var spriteSheet: TangramQuestSpriteSheet
-    @Inject internal lateinit var questPinCollection: QuestPinCollection
-
     interface Listener {
-        fun onClickedQuest(questGroup: QuestGroup?, questId: Long?)
+        fun onClickedQuest(questGroup: QuestGroup, questId: Long)
         fun onClickedMapAt(position: LatLon, clickAreaSizeInMeters: Double)
         /** Called once the given bbox comes into view first (listener should get quests there)  */
-        fun onFirstInView(bbox: BoundingBox?)
+        fun onFirstInView(bbox: BoundingBox)
     }
+    private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
     /* ------------------------------------ Lifecycle ------------------------------------------- */
 
     init {
         Injector.instance.applicationComponent.inject(this)
-    }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        listener = parentFragment as? Listener ?: activity as? Listener
     }
 
     override fun onStart() {
