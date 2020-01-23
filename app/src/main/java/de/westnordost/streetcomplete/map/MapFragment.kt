@@ -22,6 +22,7 @@ import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.BuildConfig.MAPZEN_API_KEY
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.ktx.containsAll
 import de.westnordost.streetcomplete.map.tangram.*
 import de.westnordost.streetcomplete.map.tangram.CameraPosition
 import de.westnordost.streetcomplete.map.tangram.CameraUpdate
@@ -218,22 +219,32 @@ open class MapFragment : Fragment(),
 
     private fun restoreMapState() {
         val prefs = activity?.getPreferences(Activity.MODE_PRIVATE) ?: return
-        controller?.updateCameraPosition {
-            if (prefs.contains(PREF_ROTATION)) rotation = prefs.getFloat(PREF_ROTATION, 0f)
-            if (prefs.contains(PREF_TILT)) tilt = prefs.getFloat(PREF_TILT, 0f)
-            if (prefs.contains(PREF_ZOOM)) zoom = prefs.getFloat(PREF_ZOOM, 0f)
-            if (prefs.contains(PREF_LAT) && prefs.contains(PREF_LON)) {
-                position = OsmLatLon(
-                    java.lang.Double.longBitsToDouble(prefs.getLong(PREF_LAT, 0)),
-                    java.lang.Double.longBitsToDouble(prefs.getLong(PREF_LON, 0))
-                )
-            }
-        }
+        val camera = loadCameraPosition() ?: return
+        controller?.setCameraPosition(camera)
     }
 
     private fun saveMapState() {
         val camera = controller?.cameraPosition ?: return
-        activity?.getPreferences(Activity.MODE_PRIVATE)?.edit {
+        saveCameraPosition(camera, false)
+    }
+
+    private fun loadCameraPosition(): CameraPosition? {
+        val prefs = activity?.getPreferences(Activity.MODE_PRIVATE) ?: return null
+        if (!prefs.containsAll(listOf(PREF_LAT, PREF_LON, PREF_ROTATION, PREF_TILT, PREF_ZOOM))) return null
+
+        return CameraPosition(
+            OsmLatLon(
+                java.lang.Double.longBitsToDouble(prefs.getLong(PREF_LAT, 0)),
+                java.lang.Double.longBitsToDouble(prefs.getLong(PREF_LON, 0))
+            ),
+            prefs.getFloat(PREF_ROTATION, 0f),
+            prefs.getFloat(PREF_TILT, 0f),
+            prefs.getFloat(PREF_ZOOM, 0f)
+        )
+    }
+
+    private fun saveCameraPosition(camera: CameraPosition, saveNow: Boolean) {
+        activity?.getPreferences(Activity.MODE_PRIVATE)?.edit(saveNow) {
             putFloat(PREF_ROTATION, camera.rotation)
             putFloat(PREF_TILT, camera.tilt)
             putFloat(PREF_ZOOM, camera.zoom)
@@ -257,6 +268,15 @@ open class MapFragment : Fragment(),
         builder: CameraUpdate.() -> Unit) {
         
         controller?.updateCameraPosition(duration, interpolator, builder)
+    }
+
+    fun setInitialCameraPosition(camera: CameraPosition) {
+        val controller = controller
+        if (controller != null) {
+            controller.setCameraPosition(camera)
+        } else {
+            saveCameraPosition(camera, true)
+        }
     }
 
     var show3DBuildings: Boolean = true

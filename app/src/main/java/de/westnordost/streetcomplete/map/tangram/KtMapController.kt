@@ -125,12 +125,25 @@ class KtMapController(private val c: MapController) {
     val cameraPosition: CameraPosition get() = cameraManager.camera
 
     fun updateCameraPosition(duration: Long = 0, interpolator: Interpolator = defaultInterpolator, builder: CameraUpdate.() -> Unit) {
-        cameraManager.updateCamera(duration, interpolator, CameraUpdate().apply(builder))
+        updateCameraPosition(duration, interpolator, CameraUpdate().apply(builder))
+    }
+
+    fun updateCameraPosition(duration: Long = 0, interpolator: Interpolator = defaultInterpolator, update: CameraUpdate) {
+        cameraManager.updateCamera(duration, interpolator, update)
         // workaround https://github.com/tangrams/tangram-es/issues/2129
         if (duration == 0L) {
             mapChangeListener?.onRegionIsChanging()
             mapChangeListener?.onRegionDidChange(false)
         }
+    }
+
+    fun setCameraPosition(camera: CameraPosition) {
+        val update = CameraUpdate()
+        update.position = camera.position
+        update.rotation = camera.rotation
+        update.tilt = camera.tilt
+        update.zoom = camera.zoom
+        updateCameraPosition(0L, defaultInterpolator, update)
     }
 
     fun cancelAllCameraAnimations() = cameraManager.cancelAllCameraAnimations()

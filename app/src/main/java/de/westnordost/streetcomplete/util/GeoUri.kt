@@ -5,7 +5,7 @@ import android.net.Uri
 fun parseGeoUri(uri: Uri): GeoLocation? {
     if (uri.scheme != "geo") return null
 
-    val geoUriRegex = Regex("(-?[0-9]*\\.?[0-9]+),(-?[0-9]*\\.?[0-9]+).*")
+    val geoUriRegex = Regex("(-?[0-9]*\\.?[0-9]+),(-?[0-9]*\\.?[0-9]+).*?(?:\\?z=([0-9]*\\.?[0-9]+))?")
     val match = geoUriRegex.matchEntire(uri.schemeSpecificPart) ?: return null
 
     val latitude = match.groupValues[1].toDoubleOrNull() ?: return null
@@ -14,7 +14,7 @@ fun parseGeoUri(uri: Uri): GeoLocation? {
     if (longitude < -180 && longitude > +180) return null
 
     // zoom is optional. If it is invalid, we treat it the same as if it is not there
-    val zoom = uri.getQueryParameter("z")?.toFloatOrNull()
+    val zoom = match.groupValues[3].toFloatOrNull()
 
     return GeoLocation(latitude, longitude, zoom)
 }

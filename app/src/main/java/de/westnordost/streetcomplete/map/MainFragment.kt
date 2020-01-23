@@ -572,13 +572,10 @@ class MainFragment : Fragment(R.layout.fragment_map_with_controls),
         return mapFragment?.getDisplayedArea()
     }
 
-    fun setCameraPosition(p: LatLon, z: Float?) {
+    fun setCameraPosition(position: LatLon, zoom: Float) {
         mapFragment?.isFollowingPosition = false
         mapFragment?.isCompassMode = false
-        mapFragment?.updateCameraPosition {
-            position = p
-            zoom = z
-        }
+        mapFragment?.setInitialCameraPosition(CameraPosition(position, 0f, 0f, zoom))
     }
 
     fun getPointOf(pos: LatLon): PointF? {
