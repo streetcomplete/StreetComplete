@@ -55,7 +55,7 @@ import javax.inject.Singleton
     private val prefs: SharedPreferences,
     private val questTypesProvider: OrderedVisibleQuestTypesProvider,
     private val context: Context
-): LifecycleObserver, CoroutineScope by CoroutineScope(Dispatchers.Default) {
+): LifecycleObserver, CoroutineScope by CoroutineScope(Dispatchers.IO) {
 
     private val listeners: MutableList<VisibleQuestListener> = mutableListOf()
     private val relay = object : VisibleQuestListener {
@@ -297,7 +297,6 @@ import javax.inject.Singleton
     /** Retrieve all visible (=new) quests in the given bounding box from local database
      * asynchronously.  */
     fun retrieve(bbox: BoundingBox) {
-        // TODO with coroutines, this could maybe be an async to return them directly
         launch {
             val osmQuests = osmQuestDB.getAll(
                 statusIn = listOf(QuestStatus.NEW),

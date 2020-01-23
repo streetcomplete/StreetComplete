@@ -7,7 +7,7 @@ import com.mapzen.tangram.TouchInput
  *  Manages touch gesture responders. Use in place of directly setting the responders on the
  *  touchInput.
  *
- *  TouchInput Responders set via the Tangram MapController.touchInput (0.11.2) completely override
+ *  TouchInput Responders set via the Tangram MapController.touchInput (0.12.0) completely override
  *  the default behavior, independent of what they return in on*Begin().
  *
  *  A responder set via this class will default to the built-in gesture handling behavior

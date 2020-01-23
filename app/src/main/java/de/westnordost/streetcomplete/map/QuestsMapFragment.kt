@@ -1,25 +1,23 @@
 package de.westnordost.streetcomplete.map
 
-import android.graphics.Point
 import android.graphics.PointF
 import android.graphics.Rect
-import android.graphics.RectF
-import android.view.animation.*
+import android.os.Bundle
+import android.view.animation.AccelerateDecelerateInterpolator
+import android.view.animation.DecelerateInterpolator
 import androidx.core.graphics.toRectF
-import com.mapzen.tangram.*
-import de.westnordost.osmapi.map.data.BoundingBox
+import com.mapzen.tangram.MapData
+import com.mapzen.tangram.SceneUpdate
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.Quest
 import de.westnordost.streetcomplete.data.QuestGroup
 import de.westnordost.streetcomplete.data.osm.ElementGeometry
 import de.westnordost.streetcomplete.ktx.toPx
-import de.westnordost.streetcomplete.map.QuestPinCollection.Companion.MARKER_QUEST_GROUP
-import de.westnordost.streetcomplete.map.QuestPinCollection.Companion.MARKER_QUEST_ID
+import de.westnordost.streetcomplete.map.QuestPinLayerManager.Companion.MARKER_QUEST_GROUP
+import de.westnordost.streetcomplete.map.QuestPinLayerManager.Companion.MARKER_QUEST_ID
 import de.westnordost.streetcomplete.map.tangram.CameraPosition
 import de.westnordost.streetcomplete.map.tangram.toTangramGeometry
-import de.westnordost.streetcomplete.util.SlippyMapMath
 import de.westnordost.streetcomplete.util.SphericalEarthMath
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -34,7 +32,7 @@ import kotlin.math.roundToLong
 class QuestsMapFragment : LocationAwareMapFragment() {
 
     @Inject internal lateinit var spriteSheet: TangramQuestSpriteSheet
-    @Inject internal lateinit var questPinCollection: QuestPinCollection
+    @Inject internal lateinit var questPinLayerManager: QuestPinLayerManager
 
     // layers
     private var questsLayer: MapData? = null
@@ -46,16 +44,11 @@ class QuestsMapFragment : LocationAwareMapFragment() {
     // for restoring position
     private var cameraPositionBeforeShowingQuest: CameraPosition? = null
 
-    private val retrievedTiles: MutableSet<Point> = mutableSetOf()
-    private var lastDisplayedRect: Rect? = null
-
     var questOffset: Rect = Rect(0, 0, 0, 0)
 
     interface Listener {
         fun onClickedQuest(questGroup: QuestGroup, questId: Long)
         fun onClickedMapAt(position: LatLon, clickAreaSizeInMeters: Double)
-        /** Called once the given bbox comes into view first (listener should get quests there)  */
-        fun onFirstInView(bbox: BoundingBox)
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
@@ -65,15 +58,10 @@ class QuestsMapFragment : LocationAwareMapFragment() {
         Injector.instance.applicationComponent.inject(this)
     }
 
-    override fun onStart() {
-        super.onStart()
-
-        val displayedArea = controller?.screenAreaToBoundingBox(RectF())
-        if (displayedArea != null) {
-            val tilesRect = SlippyMapMath.enclosingTiles(displayedArea, TILES_ZOOM)
-            lastDisplayedRect = tilesRect
-            updateQuestsInRect(tilesRect)
-        }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        lifecycle.addObserver(questPinLayerManager)
+        questPinLayerManager.mapFragment = this
     }
 
     override fun onMapControllerReady() {
@@ -84,14 +72,12 @@ class QuestsMapFragment : LocationAwareMapFragment() {
     override fun onSceneReady() {
         geometryLayer = controller?.addDataLayer(GEOMETRY_LAYER)
         questsLayer = controller?.addDataLayer(QUESTS_LAYER)
+        questPinLayerManager.questsLayer = questsLayer
         super.onSceneReady()
     }
 
-    override fun onStop() {
-        super.onStop()
-        /* When reentering the fragment, the database may have changed (quest download in
-        *  background or change in settings), so the quests must be pulled from DB again */
-        clearQuestPins()
+    override fun onMapIsChanging(position: LatLon, rotation: Float, tilt: Float, zoom: Float) {
+        questPinLayerManager.onNewScreenPosition()
     }
 
     override fun onDestroy() {
@@ -187,6 +173,12 @@ class QuestsMapFragment : LocationAwareMapFragment() {
         cameraPositionBeforeShowingQuest = null
     }
 
+    /* --------------------------------------  Quest Pins --------------------------------------- */
+
+    var isShowingQuestPins: Boolean
+        get() = questPinLayerManager.isVisible
+        set(value) { questPinLayerManager.isVisible = value }
+
     /* ------------------------------  Geometry for current quest ------------------------------- */
 
     private fun putQuestGeometry(geometry: ElementGeometry) {
@@ -221,68 +213,6 @@ class QuestsMapFragment : LocationAwareMapFragment() {
         markerIds.clear()
     }
 
-    /* --------------------------------  Quest Pin Layer on map --------------------------------- */
-
-    override fun onMapIsChanging(position: LatLon, rotation: Float, tilt: Float, zoom: Float) {
-        super.onMapIsChanging(position, rotation, tilt, zoom)
-
-        if (zoom < TILES_ZOOM) return
-        val displayedArea = controller?.screenAreaToBoundingBox(RectF()) ?: return
-        val tilesRect = SlippyMapMath.enclosingTiles(displayedArea, TILES_ZOOM)
-        if (lastDisplayedRect != tilesRect) {
-            lastDisplayedRect = tilesRect
-            updateQuestsInRect(tilesRect)
-        }
-    }
-
-    private fun updateQuestsInRect(tilesRect: Rect) {
-        // area too big -> skip
-        if (tilesRect.width() * tilesRect.height() > 4) {
-            return
-        }
-        val tiles = SlippyMapMath.asTileList(tilesRect)
-        tiles.removeAll(retrievedTiles)
-        val minRect = SlippyMapMath.minRect(tiles) ?: return
-        val bbox = SlippyMapMath.asBoundingBox(minRect, TILES_ZOOM)
-        listener?.onFirstInView(bbox)
-
-        retrievedTiles.addAll(tiles)
-    }
-
-    var isShowingQuestPins: Boolean = true
-    set(value) {
-        if (field == value) return
-        field = value
-
-        if (!value) {
-            questsLayer?.clear()
-        }
-        else {
-            questsLayer?.setFeatures(questPinCollection.getPoints())
-        }
-    }
-
-    fun addQuestPins(quests: Iterable<Quest>, group: QuestGroup) {
-        for (quest in quests) {
-            questPinCollection.add(quest, group)
-        }
-        if (isShowingQuestPins) questsLayer?.setFeatures(questPinCollection.getPoints())
-    }
-
-    fun removeQuestPins(questIds: Collection<Long>, group: QuestGroup) {
-        for (questId in questIds) {
-            questPinCollection.remove(questId, group)
-        }
-        if (isShowingQuestPins) questsLayer?.setFeatures(questPinCollection.getPoints())
-    }
-
-    private fun clearQuestPins() {
-        retrievedTiles.clear()
-        questsLayer?.clear()
-        questPinCollection.clear()
-        lastDisplayedRect = null
-    }
-
     /* --------------------------------- Position tracking -------------------------------------- */
 
     override fun shouldCenterCurrentPosition(): Boolean {
@@ -293,7 +223,6 @@ class QuestsMapFragment : LocationAwareMapFragment() {
     companion object {
         private const val GEOMETRY_LAYER = "streetcomplete_geometry"
         private const val QUESTS_LAYER = "streetcomplete_quests"
-        private const val TILES_ZOOM = 14
         private const val CLICK_AREA_SIZE_IN_DP = 48
     }
 }

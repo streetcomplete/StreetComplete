@@ -24,7 +24,7 @@ import kotlin.math.max
 import kotlin.math.min
 import kotlin.math.pow
 
-/** Wrapper around the Tangram MapController. Features over the Tangram MapController (0.11.2):
+/** Wrapper around the Tangram MapController. Features over the Tangram MapController (0.12.0):
  *  <br><br>
  *  <ul>
  *      <li>Markers survive a scene updates</li>

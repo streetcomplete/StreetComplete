@@ -194,11 +194,6 @@ class MainFragment : Fragment(R.layout.fragment_map_with_controls),
 
     /* ------------------------------- QuestsMapFragment.Listener ------------------------------- */
 
-    // TODO this shall be obsolete!
-    override fun onFirstInView(bbox: BoundingBox) {
-        questController.retrieve(bbox)
-    }
-
     override fun onClickedQuest(questGroup: QuestGroup, questId: Long) {
         if (isQuestDetailsCurrentlyDisplayedFor(questId, questGroup)) return
         val retrieveQuest: () -> Unit = {
@@ -310,27 +305,23 @@ class MainFragment : Fragment(R.layout.fragment_map_with_controls),
 
     /* ---------------------------------- VisibleQuestListener ---------------------------------- */
 
-    // TODO register as listener!
-
     @AnyThread override fun onQuestsCreated(quests: Collection<Quest>, group: QuestGroup) {
-        mapFragment?.addQuestPins(quests, group)
         // to recreate element geometry of selected quest (if any) after recreation of activity
         val f = bottomSheetFragment
-        if (f is IsShowingQuestDetails) {
-            for (q in quests) {
-                if (isQuestDetailsCurrentlyDisplayedFor(q.id!!, group)) {
-                    mainHandler.post { showQuestDetails(q, group) }
-                    return
-                }
-            }
-        }
+        if (f !is IsShowingQuestDetails) return
+        if (group != f.questGroup) return
+        val quest = quests.find { it.id == f.questId } ?: return
+
+        mainHandler.post { showQuestDetails(quest, group) }
     }
 
     @AnyThread override fun onQuestsRemoved(questIds: Collection<Long>, group: QuestGroup) {
-        mapFragment?.removeQuestPins(questIds, group)
-        for (questId in questIds) {
-            mainHandler.post { closeQuestDetailsFor(questId, group) }
-        }
+        val f = bottomSheetFragment
+        if (f !is IsShowingQuestDetails) return
+        if (group != f.questGroup) return
+        if (!questIds.contains(f.questId)) return
+
+        mainHandler.post { closeBottomSheet() }
     }
 
     /* --------------------------------------- Location ----------------------------------------- */
