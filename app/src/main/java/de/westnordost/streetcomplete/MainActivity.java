@@ -45,7 +45,6 @@ import android.widget.Toast;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Collection;
 import java.util.Random;
 import java.util.concurrent.FutureTask;
 
@@ -65,8 +64,6 @@ import de.westnordost.streetcomplete.about.WhatsNewDialog;
 import de.westnordost.streetcomplete.data.Quest;
 import de.westnordost.streetcomplete.data.QuestAutoSyncer;
 import de.westnordost.streetcomplete.data.QuestController;
-import de.westnordost.streetcomplete.data.QuestGroup;
-import de.westnordost.streetcomplete.data.VisibleQuestListener;
 import de.westnordost.streetcomplete.data.download.QuestDownloadProgressListener;
 import de.westnordost.streetcomplete.data.download.QuestDownloadService;
 import de.westnordost.streetcomplete.data.osm.OsmQuest;
@@ -94,8 +91,7 @@ import de.westnordost.streetcomplete.util.SphericalEarthMath;
 import static de.westnordost.streetcomplete.ApplicationConstants.LAST_VERSION_WITHOUT_CHANGELOG;
 import static de.westnordost.streetcomplete.ApplicationConstants.MANUAL_DOWNLOAD_QUEST_TYPE_COUNT;
 
-public class MainActivity extends AppCompatActivity
-	implements VisibleQuestListener, MainFragment.Listener
+public class MainActivity extends AppCompatActivity implements  MainFragment.Listener
 {
 	@Inject CrashReportExceptionHandler crashReportExceptionHandler;
 
@@ -291,8 +287,6 @@ public class MainActivity extends AppCompatActivity
 		localBroadcaster.registerReceiver(locationRequestFinishedReceiver,
 				new IntentFilter(LocationRequestFragment.ACTION_FINISHED));
 
-		questController.addListener(this);
-
 		downloadProgressBar.setAlpha(0f);
 		downloadServiceIsBound = bindService(new Intent(this, QuestDownloadService.class),
 				downloadServiceConnection, BIND_AUTO_CREATE);
@@ -345,8 +339,6 @@ public class MainActivity extends AppCompatActivity
 		localBroadcaster.unregisterReceiver(locationRequestFinishedReceiver);
 
 		unregisterReceiver(locationAvailabilityReceiver);
-
-		questController.removeListener(this);
 
 		if (downloadServiceIsBound) unbindService(downloadServiceConnection);
 		if (downloadService != null)
@@ -799,21 +791,6 @@ public class MainActivity extends AppCompatActivity
 					.setInterpolator(new AccelerateInterpolator())
 					.withEndAction(onFinished);
 			});
-	}
-
-	/* ---------------------------------- VisibleQuestListener ---------------------------------- */
-
-	@AnyThread @Override
-	public void onQuestsCreated(@NonNull final Collection<? extends Quest> quests, @NonNull final QuestGroup group)
-	{
-
-	}
-
-	@AnyThread @Override
-	public synchronized void onQuestsRemoved(Collection<Long> questIds, @NonNull QuestGroup group)
-	{
-		// amount of quests is reduced -> check if redownloding now makes sense
-		questAutoSyncer.triggerAutoDownload();
 	}
 
 	/* ------------------------------------ Location listener ----------------------------------- */

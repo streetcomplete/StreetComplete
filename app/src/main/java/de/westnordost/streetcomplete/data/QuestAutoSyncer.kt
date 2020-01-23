@@ -38,7 +38,7 @@ class QuestAutoSyncer @Inject constructor(
     private val context: Context,
     private val prefs: SharedPreferences,
     private val oAuth: OAuthPrefs
-) : LocationListener, LifecycleObserver, CoroutineScope by CoroutineScope(Dispatchers.Default) {
+) : LocationListener, VisibleQuestListener, LifecycleObserver, CoroutineScope by CoroutineScope(Dispatchers.Default) {
 
     private var pos: LatLon? = null
 
@@ -78,14 +78,19 @@ class QuestAutoSyncer @Inject constructor(
             return p == Prefs.Autosync.ON || p == Prefs.Autosync.WIFI && isWifi
         }
 
+    /* ---------------------------------------- Lifecycle --------------------------------------- */
+
+
     @OnLifecycleEvent(Lifecycle.Event.ON_RESUME) fun onResume() {
         updateConnectionState()
         context.registerReceiver(connectivityReceiver, IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION))
+        questController.addListener(this)
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE) fun onPause() {
         stopPositionTracking()
         context.unregisterReceiver(connectivityReceiver)
+        questController.removeListener(this)
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY) fun onDestroy() {
@@ -103,11 +108,24 @@ class QuestAutoSyncer @Inject constructor(
         lostApiClient.disconnect()
     }
 
+    /* ---------------------------------- VisibleQuestListener ---------------------------------- */
+
+    override fun onQuestsCreated(quests: Collection<Quest>, group: QuestGroup) { }
+
+    override fun onQuestsRemoved(questIds: Collection<Long>, group: QuestGroup) {
+        // amount of quests is reduced -> check if redownloding now makes sense
+        triggerAutoDownload()
+    }
+
+    /* ------------------------------------ LocationListener ------------------------------------ */
+
     override fun onLocationChanged(location: Location?) {
         if(location == null) return
         pos = OsmLatLon(location.latitude, location.longitude)
         triggerAutoDownload()
     }
+
+    /* ------------------------------------------------------------------------------------------ */
 
     fun triggerAutoDownload() {
         if (!isAllowedByPreference) return
@@ -165,4 +183,5 @@ class QuestAutoSyncer @Inject constructor(
     companion object {
         private const val TAG = "QuestAutoSyncer"
     }
+
 }
