@@ -214,7 +214,7 @@ class KtMapController(private val c: MapController) {
         return max( 1.0, min(currentZoom + zoomDelta, 19.0))
     }
 
-    private fun getLatLonThatCentersLatLon(position: LatLon, padding: RectF, zoom: Double): LatLon? {
+    fun getLatLonThatCentersLatLon(position: LatLon, padding: RectF, zoom: Double): LatLon? {
         val view = glViewHolder?.view ?: return null
         val w = view.width
         val h = view.height

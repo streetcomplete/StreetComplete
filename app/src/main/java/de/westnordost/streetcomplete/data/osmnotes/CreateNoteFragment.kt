@@ -14,6 +14,7 @@ import android.view.inputmethod.InputMethodManager
 import androidx.core.content.getSystemService
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.ktx.getLocationInWindow
 import kotlinx.android.synthetic.main.form_leave_note.*
 import kotlinx.android.synthetic.main.fragment_quest_answer.*
 import kotlinx.android.synthetic.main.marker_create_note.*
@@ -74,9 +75,7 @@ class CreateNoteFragment : AbstractCreateNoteFragment() {
     override fun onComposedNote(text: String, imagePaths: List<String>?) {
         if (closeKeyboard()) return
 
-        val point = IntArray(2)
-        createNoteMarker.getLocationInWindow(point)
-        val screenPos = Point(point[0], point[1])
+        val screenPos = createNoteMarker.getLocationInWindow()
         screenPos.offset(createNoteMarker.width / 2, createNoteMarker.height / 2)
 
         markerLayoutContainer?.visibility = View.INVISIBLE

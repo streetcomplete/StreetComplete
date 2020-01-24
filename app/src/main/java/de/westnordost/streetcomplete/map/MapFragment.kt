@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.map
 import android.app.Activity
 import android.content.res.Configuration
 import android.graphics.PointF
+import android.graphics.Rect
 import android.graphics.RectF
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -259,6 +260,12 @@ open class MapFragment : Fragment(),
 
     fun getPointOf(pos: LatLon): PointF? = controller?.latLonToScreenPosition(pos)
 
+    fun isPositionInView(pos: LatLon): Boolean {
+        val controller = controller ?: return false
+        val p = controller.latLonToScreenPosition(pos)
+        return p.x >= 0 && p.y >= 0 && p.x < mapView.width && p.y < mapView.height
+    }
+
     val cameraPosition: CameraPosition?
         get() = controller?.cameraPosition
 
@@ -277,6 +284,12 @@ open class MapFragment : Fragment(),
         } else {
             saveCameraPosition(camera, true)
         }
+    }
+
+    fun getPositionWithOffset(pos: LatLon, offset: RectF): LatLon? {
+        val controller = controller ?: return null
+        val camera = controller.cameraPosition
+        return controller.getLatLonThatCentersLatLon(pos, offset, camera.zoom.toDouble() )
     }
 
     var show3DBuildings: Boolean = true

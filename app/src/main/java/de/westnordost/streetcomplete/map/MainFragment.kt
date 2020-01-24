@@ -20,6 +20,7 @@ import android.view.inputmethod.InputMethodManager
 import androidx.annotation.AnyThread
 import androidx.annotation.UiThread
 import androidx.core.graphics.toPointF
+import androidx.core.graphics.toRectF
 import androidx.core.view.doOnLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE
@@ -28,6 +29,7 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.mapzen.android.lost.api.LocationRequest
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.LatLon
+import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.osmapi.map.data.Way
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Injector
@@ -72,6 +74,8 @@ class MainFragment : Fragment(R.layout.fragment_map_with_controls),
 
     private var mapFragment: QuestsMapFragment? = null
     private val bottomSheetFragment: Fragment? get() = childFragmentManager.findFragmentByTag(BOTTOM_SHEET)
+
+    private var questOffset: Rect = Rect(0, 0, 0, 0)
 
     interface Listener {
         fun onQuestSolved(quest: Quest?, source: String?)
@@ -405,8 +409,21 @@ class MainFragment : Fragment(R.layout.fragment_map_with_controls),
     private fun composeNote() {
         val mapFragment = mapFragment ?: return
         mapFragment.show3DBuildings = false
+        focusOnCurrentLocationIfInView()
         freezeMap()
         showInBottomSheet(CreateNoteFragment())
+    }
+
+    private fun focusOnCurrentLocationIfInView() {
+        val mapFragment = mapFragment ?: return
+        val location = mapFragment.displayedLocation
+        if (location != null) {
+            val displayedPosition = OsmLatLon(location.latitude, location.longitude)
+            if (mapFragment.isPositionInView(displayedPosition)) {
+                val offsetPos = mapFragment.getPositionWithOffset(displayedPosition, questOffset.toRectF())
+                mapFragment.updateCameraPosition { position = offsetPos }
+            }
+        }
     }
 
     private fun setIsFollowingPosition(follow: Boolean) {
@@ -544,12 +561,13 @@ class MainFragment : Fragment(R.layout.fragment_map_with_controls),
     }
 
     private fun updateMapQuestOffsets() {
-        mapFragment?.questOffset = Rect(
+        questOffset = Rect(
             resources.getDimensionPixelSize(R.dimen.quest_form_leftOffset),
             0,
             resources.getDimensionPixelSize(R.dimen.quest_form_rightOffset),
             resources.getDimensionPixelSize(R.dimen.quest_form_bottomOffset)
         )
+        mapFragment?.questOffset = questOffset
     }
 
 
