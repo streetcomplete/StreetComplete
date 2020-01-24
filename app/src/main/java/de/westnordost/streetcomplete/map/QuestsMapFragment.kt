@@ -77,6 +77,7 @@ class QuestsMapFragment : LocationAwareMapFragment() {
     }
 
     override fun onMapIsChanging(position: LatLon, rotation: Float, tilt: Float, zoom: Float) {
+        super.onMapIsChanging(position, rotation, tilt, zoom)
         questPinLayerManager.onNewScreenPosition()
     }
 
