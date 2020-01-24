@@ -8,6 +8,7 @@ import android.content.res.Configuration
 import android.graphics.Point
 import android.graphics.PointF
 import android.graphics.Rect
+import android.graphics.RectF
 import android.location.Location
 import android.os.Bundle
 import android.os.Handler
@@ -75,7 +76,7 @@ class MainFragment : Fragment(R.layout.fragment_map_with_controls),
     private var mapFragment: QuestsMapFragment? = null
     private val bottomSheetFragment: Fragment? get() = childFragmentManager.findFragmentByTag(BOTTOM_SHEET)
 
-    private var questOffset: Rect = Rect(0, 0, 0, 0)
+    private var mapOffsetWithOpenBottomSheet: RectF = RectF(0f, 0f, 0f, 0f)
 
     interface Listener {
         fun onQuestSolved(quest: Quest?, source: String?)
@@ -141,7 +142,20 @@ class MainFragment : Fragment(R.layout.fragment_map_with_controls),
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
-        updateMapQuestOffsets()
+        val mapFragment = mapFragment ?: return
+        /* when rotating the screen and the bottom sheet is open, the view should not rotate around
+           its proper center but around the center of the part of the map that is not occluded by
+           the bottom sheet */
+        if (bottomSheetFragment != null) {
+            val currentPos = mapFragment.getViewPosition(mapOffsetWithOpenBottomSheet)
+            updateMapQuestOffsets()
+            if (currentPos != null) {
+                val offsetPos = mapFragment.getPositionThatCentersPosition(currentPos, mapOffsetWithOpenBottomSheet)
+                mapFragment.updateCameraPosition { position = offsetPos }
+            }
+        } else {
+            updateMapQuestOffsets()
+        }
     }
 
     override fun onStart() {
@@ -420,7 +434,7 @@ class MainFragment : Fragment(R.layout.fragment_map_with_controls),
         if (location != null) {
             val displayedPosition = OsmLatLon(location.latitude, location.longitude)
             if (mapFragment.isPositionInView(displayedPosition)) {
-                val offsetPos = mapFragment.getPositionWithOffset(displayedPosition, questOffset.toRectF())
+                val offsetPos = mapFragment.getPositionThatCentersPosition(displayedPosition, mapOffsetWithOpenBottomSheet)
                 mapFragment.updateCameraPosition { position = offsetPos }
             }
         }
@@ -470,7 +484,7 @@ class MainFragment : Fragment(R.layout.fragment_map_with_controls),
             closeBottomSheet()
         }
 
-        mapFragment.startFocusQuest(quest.geometry)
+        mapFragment.startFocusQuest(quest.geometry, mapOffsetWithOpenBottomSheet)
         freezeMap()
         locationWhenOpenedQuest = mapFragment.displayedLocation
 
@@ -561,13 +575,12 @@ class MainFragment : Fragment(R.layout.fragment_map_with_controls),
     }
 
     private fun updateMapQuestOffsets() {
-        questOffset = Rect(
+        mapOffsetWithOpenBottomSheet = Rect(
             resources.getDimensionPixelSize(R.dimen.quest_form_leftOffset),
             0,
             resources.getDimensionPixelSize(R.dimen.quest_form_rightOffset),
             resources.getDimensionPixelSize(R.dimen.quest_form_bottomOffset)
-        )
-        mapFragment?.questOffset = questOffset
+        ).toRectF()
     }
 
 

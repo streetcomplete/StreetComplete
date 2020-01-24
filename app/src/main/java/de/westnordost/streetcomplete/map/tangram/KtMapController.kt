@@ -163,8 +163,19 @@ class KtMapController(private val c: MapController) {
     fun screenPositionToLatLon(screenPosition: PointF): LatLon? = c.screenPositionToLngLat(screenPosition)?.toLatLon()
     fun latLonToScreenPosition(latLon: LatLon): PointF = c.lngLatToScreenPosition(latLon.toLngLat())
 
-    fun screenAreaToBoundingBox(padding: RectF): BoundingBox? {
+    fun screenCenterToLatLon(padding: RectF): LatLon? {
+        val view = glViewHolder?.view ?: return null
+        val w = view.width
+        val h = view.height
+        if (w == 0 || h == 0) return null
 
+        return screenPositionToLatLon(PointF(
+            padding.left + (w - padding.left - padding.right)/2f,
+            padding.top + (h - padding.top - padding.bottom)/2f
+        ))
+    }
+
+    fun screenAreaToBoundingBox(padding: RectF): BoundingBox? {
         val view = glViewHolder?.view ?: return null
         val w = view.width
         val h = view.height
@@ -193,10 +204,10 @@ class KtMapController(private val c: MapController) {
         val boundsCenter = centerPointOfPolyline(listOf(bounds.min, bounds.max))
         val pos = getLatLonThatCentersLatLon(boundsCenter, padding, zoom) ?: return null
         val camera = cameraPosition
-        return CameraPosition(pos, camera.rotation, camera.tilt, zoom.toFloat())
+        return CameraPosition(pos, camera.rotation, camera.tilt, zoom)
     }
 
-    private fun getMaxZoomThatContainsBounds(bounds: BoundingBox, padding: RectF): Double? {
+    private fun getMaxZoomThatContainsBounds(bounds: BoundingBox, padding: RectF): Float? {
         val screenBounds: BoundingBox
         val currentZoom: Float
         synchronized(c) {
@@ -211,10 +222,10 @@ class KtMapController(private val c: MapController) {
         val zoomDeltaX = log10(screenWidth / objectWidth) / log10(2.0)
         val zoomDeltaY = log10(screenHeight / objectHeight) / log10(2.0)
         val zoomDelta = min(zoomDeltaX, zoomDeltaY)
-        return max( 1.0, min(currentZoom + zoomDelta, 19.0))
+        return max( 1.0, min(currentZoom + zoomDelta, 19.0)).toFloat()
     }
 
-    fun getLatLonThatCentersLatLon(position: LatLon, padding: RectF, zoom: Double): LatLon? {
+    fun getLatLonThatCentersLatLon(position: LatLon, padding: RectF, zoom: Float = cameraPosition.zoom): LatLon? {
         val view = glViewHolder?.view ?: return null
         val w = view.width
         val h = view.height
@@ -228,7 +239,7 @@ class KtMapController(private val c: MapController) {
             )
         ) ?: return null
 
-        val zoomDelta = zoom - cameraPosition.zoom
+        val zoomDelta = zoom.toDouble() - cameraPosition.zoom
         val distance = distance(offsetScreenCenter, screenCenter)
         val angle = bearing(offsetScreenCenter, screenCenter)
         val distanceAfterZoom = distance * (2.0).pow(-zoomDelta)

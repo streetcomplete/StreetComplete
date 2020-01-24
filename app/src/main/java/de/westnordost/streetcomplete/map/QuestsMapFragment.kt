@@ -1,11 +1,10 @@
 package de.westnordost.streetcomplete.map
 
 import android.graphics.PointF
-import android.graphics.Rect
+import android.graphics.RectF
 import android.os.Bundle
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.DecelerateInterpolator
-import androidx.core.graphics.toRectF
 import com.mapzen.tangram.MapData
 import com.mapzen.tangram.SceneUpdate
 import de.westnordost.osmapi.map.data.LatLon
@@ -43,8 +42,6 @@ class QuestsMapFragment : LocationAwareMapFragment() {
 
     // for restoring position
     private var cameraPositionBeforeShowingQuest: CameraPosition? = null
-
-    var questOffset: Rect = Rect(0, 0, 0, 0)
 
     interface Listener {
         fun onClickedQuest(questGroup: QuestGroup, questId: Long)
@@ -125,8 +122,8 @@ class QuestsMapFragment : LocationAwareMapFragment() {
 
     /* --------------------------------- Focusing on quest -------------------------------------- */
 
-    fun startFocusQuest(geometry: ElementGeometry) {
-        zoomAndMoveToContain(geometry)
+    fun startFocusQuest(geometry: ElementGeometry, offset: RectF) {
+        zoomAndMoveToContain(geometry, offset)
         putQuestGeometry(geometry)
     }
 
@@ -137,9 +134,9 @@ class QuestsMapFragment : LocationAwareMapFragment() {
         followPosition()
     }
 
-    private fun zoomAndMoveToContain(g: ElementGeometry) {
+    private fun zoomAndMoveToContain(g: ElementGeometry, offset: RectF) {
         val controller = controller ?: return
-        val pos = controller.getEnclosingCameraPosition(g.getBounds(), questOffset.toRectF()) ?: return
+        val pos = controller.getEnclosingCameraPosition(g.getBounds(), offset) ?: return
 
         val currentPos = controller.cameraPosition
         cameraPositionBeforeShowingQuest = currentPos
