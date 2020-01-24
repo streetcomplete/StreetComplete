@@ -12,102 +12,109 @@
         android:layout_height="match_parent"/>
 
     <RelativeLayout
-        android:id="@+id/compassView"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        style="@style/RoundWhiteButton"
-        android:layout_marginTop="12dp"
-        android:layout_marginRight="4dp"
-        tools:ignore="RtlHardcoded"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        >
+        android:id="@+id/mapControls"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:id="@+id/compassNorth"
-            android:textColor="#000"
+        <RelativeLayout
+            android:id="@+id/compassView"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            style="@style/RoundWhiteButton"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="4dp"
+            tools:ignore="RtlHardcoded"
+            android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
-            android:text="@string/compass_north_one_letter"/>
+            >
 
-        <ImageView
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/compassNorth"
+                android:textColor="#000"
+                android:layout_alignParentTop="true"
+                android:text="@string/compass_north_one_letter"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/compassNeedleView"
+                android:src="@drawable/ic_compass_needle_black_24dp"
+                android:tint="#cc3333"
+                android:layout_below="@+id/compassNorth"
+                />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/rightSideContainer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:id="@+id/compassNeedleView"
-            android:src="@drawable/ic_compass_needle_black_24dp"
-            android:tint="#cc3333"
-            android:layout_below="@+id/compassNorth"
-            />
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="4dp"
+            android:layout_marginBottom="22dp"
+            android:orientation="vertical"
+            android:clipToPadding="false"
+            tools:ignore="RtlHardcoded,RtlSymmetry">
+
+            <ImageButton
+                android:id="@+id/zoomInButton"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:scaleType="center"
+                style="@style/RoundWhiteButton"
+                android:src="@drawable/ic_add_black_24dp"
+                android:contentDescription="@string/map_btn_zoom_in"/>
+
+            <ImageButton
+                android:id="@+id/zoomOutButton"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:scaleType="center"
+                style="@style/RoundWhiteButton"
+                android:src="@drawable/ic_remove_black_24dp"
+                android:contentDescription="@string/map_btn_zoom_out"/>
+
+            <de.westnordost.streetcomplete.location.LocationStateButton
+                android:id="@+id/gpsTrackingButton"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:scaleType="center"
+                style="@style/RoundWhiteButton"
+                android:src="@drawable/ic_location_24dp"
+                app:tint="@color/activated_tint"
+                android:contentDescription="@string/map_btn_gps_tracking"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/leftSideContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:orientation="vertical"
+            android:layout_marginLeft="4dp"
+            android:layout_marginBottom="22dp"
+            android:clipToPadding="false"
+            tools:ignore="RtlHardcoded,RtlSymmetry">
+
+            <ImageButton
+                android:id="@+id/createNoteButton"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:scaleType="center"
+                style="@style/RoundWhiteButton"
+                android:src="@drawable/ic_create_note_black_24dp"
+                android:contentDescription="@string/map_btn_create_note"/>
+
+        </LinearLayout>
 
     </RelativeLayout>
-
-    <LinearLayout
-        android:id="@+id/rightSideContainer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="4dp"
-        android:layout_marginBottom="22dp"
-        android:orientation="vertical"
-        android:clipToPadding="false"
-        tools:ignore="RtlHardcoded,RtlSymmetry">
-
-        <ImageButton
-            android:id="@+id/zoomInButton"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:scaleType="center"
-            style="@style/RoundWhiteButton"
-            android:src="@drawable/ic_add_black_24dp"
-            android:contentDescription="@string/map_btn_zoom_in"/>
-
-        <ImageButton
-            android:id="@+id/zoomOutButton"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:scaleType="center"
-            style="@style/RoundWhiteButton"
-            android:src="@drawable/ic_remove_black_24dp"
-            android:contentDescription="@string/map_btn_zoom_out"/>
-
-        <de.westnordost.streetcomplete.location.LocationStateButton
-            android:id="@+id/gpsTrackingButton"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:scaleType="center"
-            style="@style/RoundWhiteButton"
-            android:src="@drawable/ic_location_24dp"
-            app:tint="@color/activated_tint"
-            android:contentDescription="@string/map_btn_gps_tracking"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/leftSideContainer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:orientation="vertical"
-        android:layout_marginLeft="4dp"
-        android:layout_marginBottom="22dp"
-        android:clipToPadding="false"
-        tools:ignore="RtlHardcoded,RtlSymmetry">
-
-        <ImageButton
-            android:id="@+id/createNoteButton"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:scaleType="center"
-            style="@style/RoundWhiteButton"
-            android:src="@drawable/ic_create_note_black_24dp"
-            android:contentDescription="@string/map_btn_create_note"/>
-
-    </LinearLayout>
 
     <FrameLayout
         android:id="@+id/map_bottom_sheet_container"
