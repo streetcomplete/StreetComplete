@@ -16,20 +16,33 @@ import android.view.ViewGroup
 import javax.inject.Inject
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.QuestType
 import de.westnordost.streetcomplete.data.QuestTypeRegistry
+import de.westnordost.streetcomplete.data.download.QuestDownloadService
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestType
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderList
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeDao
 
-class QuestSelectionFragment : Fragment() {
+class QuestSelectionFragment : Fragment(), QuestSelectionAdapter.Listener {
     @Inject internal lateinit var questSelectionAdapter: QuestSelectionAdapter
     @Inject internal lateinit var questTypeRegistry: QuestTypeRegistry
     @Inject internal lateinit var visibleQuestTypeDao: VisibleQuestTypeDao
     @Inject internal lateinit var questTypeOrderList: QuestTypeOrderList
 
+    private var hasChangedSomething: Boolean = false
+    set(value) {
+        if (field == value) return
+        field = value
+        /* because if the user changed the visibility or order of quests, he might
+           be surprised if the quests currently in the download queue are continued to be
+           downloaded.  */
+        cancelCurrentDownload()
+    }
+
     init {
         Injector.instance.applicationComponent.inject(this)
         questSelectionAdapter.list = createQuestTypeVisibilityList()
+        questSelectionAdapter.listener = this
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -49,6 +62,7 @@ class QuestSelectionFragment : Fragment() {
     override fun onStart() {
         super.onStart()
         activity?.title = getString(R.string.pref_title_quests)
+        hasChangedSomething = false
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -76,10 +90,21 @@ class QuestSelectionFragment : Fragment() {
         return super.onOptionsItemSelected(item)
     }
 
+    override fun onReorderedQuests(before: QuestType<*>, after: QuestType<*>) {
+        questTypeOrderList.apply(before, after)
+        hasChangedSomething = true
+    }
+
+    override fun onChangedQuestVisibility(questType: QuestType<*>, visible: Boolean) {
+        visibleQuestTypeDao.setVisible(questType, visible)
+        hasChangedSomething = true
+    }
+
     private fun onReset() {
         questTypeOrderList.clear()
         visibleQuestTypeDao.clear()
         questSelectionAdapter.list = createQuestTypeVisibilityList()
+        hasChangedSomething = true
     }
 
     private fun onDeselectAll() {
@@ -89,11 +114,16 @@ class QuestSelectionFragment : Fragment() {
             }
         }
         questSelectionAdapter.list = createQuestTypeVisibilityList()
+        hasChangedSomething = true
     }
 
     private fun createQuestTypeVisibilityList(): MutableList<QuestVisibility> {
         val questTypes = questTypeRegistry.all.toMutableList()
         questTypeOrderList.sort(questTypes)
         return questTypes.map { QuestVisibility(it, visibleQuestTypeDao.isVisible(it)) }.toMutableList()
+    }
+
+    private fun cancelCurrentDownload() {
+        context?.let { it.startService(QuestDownloadService.createCancelIntent(it)) }
     }
 }

@@ -21,8 +21,6 @@ import javax.inject.Inject
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderList
-import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeDao
 import de.westnordost.streetcomplete.view.ListAdapter
 
 
@@ -30,18 +28,23 @@ import androidx.recyclerview.widget.ItemTouchHelper.ACTION_STATE_DRAG
 import androidx.recyclerview.widget.ItemTouchHelper.ACTION_STATE_IDLE
 import androidx.recyclerview.widget.ItemTouchHelper.DOWN
 import androidx.recyclerview.widget.ItemTouchHelper.UP
+import de.westnordost.streetcomplete.data.QuestType
 import de.westnordost.streetcomplete.data.osm.*
 import de.westnordost.streetcomplete.ktx.containsAny
 import de.westnordost.streetcomplete.settings.genericQuestTitle
 import kotlinx.android.synthetic.main.row_quest_selection.view.*
 
 class QuestSelectionAdapter @Inject constructor(
-    private val visibleQuestTypeDao: VisibleQuestTypeDao,
-    private val questTypeOrderList: QuestTypeOrderList,
     countryBoundaries: FutureTask<CountryBoundaries>,
     prefs: SharedPreferences
 ) : ListAdapter<QuestVisibility>() {
     private val currentCountryCodes: List<String>
+
+    interface Listener {
+        fun onReorderedQuests(before: QuestType<*>, after: QuestType<*>)
+        fun onChangedQuestVisibility(questType: QuestType<*>, visible: Boolean)
+    }
+    var listener: Listener? = null
 
     init {
         val lat = Double.fromBits(prefs.getLong(Prefs.MAP_LATITUDE, 0.0.toBits()))
@@ -98,7 +101,7 @@ class QuestSelectionAdapter @Inject constructor(
                 val before = list[pos - 1].questType
                 val after = list[pos].questType
 
-                questTypeOrderList.apply(before, after)
+                listener?.onReorderedQuests(before, after)
 
                 draggedFrom = -1
                 draggedTo = draggedFrom
@@ -167,7 +170,7 @@ class QuestSelectionAdapter @Inject constructor(
         override fun onCheckedChanged(compoundButton: CompoundButton, b: Boolean) {
             item.visible = b
             updateSelectionStatus()
-            visibleQuestTypeDao.setVisible(item.questType, item.visible)
+            listener?.onChangedQuestVisibility(item.questType, item.visible)
             if (b && item.questType.defaultDisabledMessage > 0) {
                 AlertDialog.Builder(compoundButton.context)
                     .setTitle(R.string.enable_quest_confirmation_title)
