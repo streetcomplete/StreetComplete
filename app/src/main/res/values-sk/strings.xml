@@ -68,7 +68,7 @@
     <string name="no_location_permission_warning">"Vaša poloha je potrebná pre vyhľadávanie úloh vo vašom okolí."</string>
     <string name="action_about">"O StreetComplete"</string>
     <string name="about_title_authors">"Autori"</string>
-    <string name="about_summary_authors">"© 2016–2019 Tobias Zwick a prispievatelia"</string>
+    <string name="about_summary_authors">"© 2016–2020 Tobias Zwick a prispievatelia"</string>
     <string name="about_title_repository">"Zdrojový repozitár"</string>
     <string name="about_summary_repository">"na GitHub-e"</string>
     <string name="about_title_report_error">"Nahlásiť chybu"</string>

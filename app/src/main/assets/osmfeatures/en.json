@@ -345,6 +345,10 @@
             "name": "Consulate",
             "terms": ""
         },
+        "barrier/swing_gate": {
+            "name": "Swing Gate",
+            "terms": ""
+        },
         "shop/laundry": {
             "name": "Laundry",
             "terms": ""
@@ -551,6 +555,10 @@
         "railway/rail/highspeed": {
             "name": "High-Speed Rail",
             "terms": "bullet train,fast rail,high speed rail,highspeed rail,HSR"
+        },
+        "shop/clothes/second_hand": {
+            "name": "Secondhand Clothing Store",
+            "terms": "blouses,clothes,consignment,dresses,pants,second hand,shirts,shorts,skirts,slacks,suits,used"
         },
         "highway/footway": {
             "name": "Foot Path",
@@ -993,7 +1001,7 @@
             "terms": "Drive-Through Zoo,Drive-In Zoo"
         },
         "amenity/parking_entrance": {
-            "name": "Parking Garage Entrance/Exit",
+            "name": "Parking Garage Entrance / Exit",
             "terms": ""
         },
         "type/route/light_rail": {
@@ -1192,7 +1200,7 @@
         },
         "shop/bookmaker": {
             "name": "Bookmaker",
-            "terms": "betting,bookie"
+            "terms": "betting,bookie,gamble,gambling,turf accountant"
         },
         "leisure/fitness_centre/yoga": {
             "name": "Yoga Studio",
@@ -1213,6 +1221,10 @@
         "shop/cosmetics": {
             "name": "Cosmetics Store",
             "terms": "make-up,makeup"
+        },
+        "tourism/museum/history": {
+            "name": "History Museum",
+            "terms": "artifacts,dioramas,exhibits,exhibitions,foundation,hall,institution"
         },
         "leisure/swimming_pool": {
             "name": "Swimming Pool",
@@ -1472,7 +1484,7 @@
             "terms": "antenna,broadcast tower,cell phone tower,cell tower,communication mast,communication tower,guyed tower,mobile phone tower,radio mast,radio tower,television tower,transmission mast,transmission tower,tv tower"
         },
         "building/kindergarten": {
-            "name": "Preschool/Kindergarten Building",
+            "name": "Preschool / Kindergarten Building",
             "terms": "kindergarden,pre-school"
         },
         "indoor/room": {
@@ -1856,6 +1868,10 @@
             "name": "Tea Store",
             "terms": ""
         },
+        "emergency/landing_site": {
+            "name": "Emergency Landing Site",
+            "terms": "helicopter,helipad,heliport"
+        },
         "aerialway/chair_lift": {
             "name": "Chair Lift",
             "terms": ""
@@ -1887,6 +1903,10 @@
         "man_made/surveillance/camera": {
             "name": "Surveillance Camera",
             "terms": "anpr,alpr,camera,car plate recognition,cctv,guard,license plate recognition,monitoring,number plate recognition,security,video,webcam"
+        },
+        "amenity/gambling": {
+            "name": "Gambling Hall",
+            "terms": "betting,bingo,blackjack,casino,craps,gamble,gambling,keno,lottery,pachinko,poker,roulette,slot machines,slots"
         },
         "natural/saddle": {
             "name": "Saddle",
@@ -1939,6 +1959,10 @@
         "building/semidetached_house": {
             "name": "Semi-Detached House",
             "terms": "home,double,duplex,twin,family,residence,dwelling"
+        },
+        "shop/clothes/wedding": {
+            "name": "Wedding Clothes Store",
+            "terms": "boutique,bridal,bride,bridegroom,bridesmaid,groom,groomsman,tuxedo,wedding dress,wedding gown"
         },
         "playground/seesaw": {
             "name": "Seesaw",
@@ -2052,6 +2076,10 @@
         "natural/fell": {
             "name": "Fell",
             "terms": ""
+        },
+        "type/enforcement/maxspeed": {
+            "name": "Speed Limit Enforcement",
+            "terms": "maxspeed,radar,speed camera"
         },
         "amenity/research_institute": {
             "name": "Research Institute Grounds",
@@ -2190,6 +2218,10 @@
         "amenity/vending_machine/cigarettes": {
             "name": "Cigarette Vending Machine",
             "terms": "cigarette"
+        },
+        "historic/building": {
+            "name": "Historic Building",
+            "terms": ""
         },
         "leisure/track/horse_racing_point": {
             "name": "Horse Racing Track",
@@ -2380,7 +2412,7 @@
             "terms": "foot,feet,nails"
         },
         "amenity/kindergarten": {
-            "name": "Preschool/Kindergarten Grounds",
+            "name": "Preschool / Kindergarten Grounds",
             "terms": "kindergarden,pre-school"
         },
         "craft/carpet_layer": {
@@ -2580,6 +2612,10 @@
             "name": "Traffic Mirror",
             "terms": "blind spot,convex,corner,curved,roadside,round,safety,sphere,visibility"
         },
+        "shop/car/second_hand": {
+            "name": "Used Car Dealership",
+            "terms": "automobile,automotive"
+        },
         "railway/station": {
             "name": "Train Station"
         },
@@ -2602,6 +2638,10 @@
         "attraction/dark_ride": {
             "name": "Dark Ride",
             "terms": "theme park,ghost train"
+        },
+        "office/government/prosecutor": {
+            "name": "Public Prosecutor's Office",
+            "terms": "attorney general,district attorney,prosecution"
         },
         "building/school": {
             "name": "School Building",
@@ -2828,6 +2868,10 @@
             "name": "Newspaper/Magazine Shop",
             "terms": ""
         },
+        "waterway/tidal_channel": {
+            "name": "Tidal Channel",
+            "terms": "coastal,pill,intertidal,mangroves,marine,salt marsh,tidal creek,tidal flat,tidal inlet,waterway"
+        },
         "healthcare": {
             "name": "Healthcare Facility",
             "terms": "clinic,doctor,disease,health,institution,sick,surgery,wellness"
@@ -2936,7 +2980,7 @@
             "terms": "drinks"
         },
         "entrance": {
-            "name": "Entrance/Exit",
+            "name": "Entrance / Exit",
             "terms": "entrance,exit,door"
         },
         "emergency/fire_alarm": {
@@ -3628,7 +3672,7 @@
         },
         "shop/lottery": {
             "name": "Lottery Shop",
-            "terms": ""
+            "terms": "lotto tickets,gamble,gambling,scratch-offs"
         },
         "amenity/dressing_room": {
             "name": "Changing Room",
@@ -3694,7 +3738,7 @@
         },
         "office/lawyer": {
             "name": "Law Office",
-            "terms": ""
+            "terms": "advocate,attorney,barrister,counsellor,counselor,defender,lawyer,legal,prosecutor"
         },
         "building/apartments": {
             "name": "Apartment Building",
@@ -4425,7 +4469,7 @@
             "terms": ""
         },
         "shop/anime": {
-            "name": "Anime Shop",
+            "name": "Anime / Manga Shop",
             "terms": "manga,japan,cosplay,figurine,dakimakura"
         },
         "route/ferry": {
@@ -4680,7 +4724,7 @@
         },
         "man_made/water_well": {
             "name": "Water Well",
-            "terms": "aquifer,drinking water,water point,water source"
+            "terms": "aquifer,drinking water,water pump,water point,water source"
         },
         "waterway/ditch": {
             "name": "Ditch",
@@ -4986,7 +5030,7 @@
             "terms": ""
         },
         "shop/craft": {
-            "name": "Arts and Crafts Store",
+            "name": "Arts & Crafts Store",
             "terms": "art*,paint*,frame"
         },
         "line": {

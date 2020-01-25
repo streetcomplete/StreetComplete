@@ -1,3 +1,14 @@
+v16.1: |
+  <ul>
+  <li>fix crash on viewing a wheelchair quest when language is Finnish</li>
+  <li>fix possible crash on sending app to background</li>
+  <li>update translations</li>
+  <li>Leaf type is now asked for tree rows as well (#1694) by @MegaArthur</li>
+  <li>Ask for tactile pavings at bus stops in Luxembourg as well (#1696) by @dwaxweiler</li>
+  <li>Do not ask for speed limits on trunk link and motorway links</li>
+  <li>clearer wording for a changeset commit message (#1691)</li>
+  </ul>
+
 v16.0: |
   <h3>New Features</h3>
   <ul>
@@ -8,27 +19,27 @@ v16.0: |
   <p>Vietnamese by Minh Nguyễn</p>
   <h3>New Quests</h3>
   <ul>
-  <li>What is the reference number of this postbox? (<a href="https://github.com/westnordost/StreetComplete/issues/1556">#1556</a>, <a href="https://github.com/westnordost/StreetComplete/pull/1628">#1628</a>)</li>
-  <li>What can be left here for recycling? (<a href="https://github.com/westnordost/StreetComplete/issues/223">#223</a>, <a href="https://github.com/westnordost/StreetComplete/pull/1627">#1627</a>)</li>
+  <li>What is the reference number of this postbox? (#1556, #1628)</li>
+  <li>What can be left here for recycling? (#223, #1627)</li>
   <li>Can only glass bottles and jars be recycled here, or any type of glass?</li>
   </ul>
   <h3>Enhanced Quests</h3>
   <ul>
-  <li>ask about internet access for more types of accomodations (<a href="https://github.com/westnordost/StreetComplete/pull/1620">#1620</a>), thanks <a href="https://github.com/wvanderp">@wvanderp</a></li>
-  <li>ask opening hours, names and wheelchair accessibility for more types of places (<a href="https://github.com/westnordost/StreetComplete/pull/1621">#1621</a>), thanks <a href="https://github.com/wvanderp">@wvanderp</a></li>
-  <li>do not ask for handrails of escalators by <a href="https://github.com/matkoniecz">@matkoniecz</a></li>
-  <li>add hint how to answer the cycleway and sidewalk question (<a href="https://github.com/westnordost/StreetComplete/pull/1671">#1671</a>) by <a href="https://github.com/matkoniecz">@matkoniecz</a></li>
-  <li>clearer wording for parking access quest (<a href="https://github.com/westnordost/StreetComplete/issues/1685">#1685</a>)</li>
-  <li>ask opening hours also for shops with no name (<a href="https://github.com/westnordost/StreetComplete/issues/1647">#1647</a>)</li>
-  <li>let the user specify the type of crossing if before it was simply specified as an island (<a href="https://github.com/westnordost/StreetComplete/issues/1637">#1637</a>)</li>
+  <li>ask about internet access for more types of accomodations (#1620), thanks @wvanderp</li>
+  <li>ask opening hours, names and wheelchair accessibility for more types of places (#1621), thanks @wvanderp</li>
+  <li>do not ask for handrails of escalators by @matkoniecz</li>
+  <li>add hint how to answer the cycleway and sidewalk question (#1671) by @matkoniecz</li>
+  <li>clearer wording for parking access quest (#1685)</li>
+  <li>ask opening hours also for shops with no name (#1647)</li>
+  <li>let the user specify the type of crossing if before it was simply specified as an island (#1637)</li>
   </ul>
   <h3>General Enhancements</h3>
   <ul>
-  <li>better visibility of some icons in dark mode (<a href="https://github.com/westnordost/StreetComplete/pull/1663">#1663</a>, <a href="https://github.com/westnordost/StreetComplete/pull/1664">#1664</a>, <a href="https://github.com/westnordost/StreetComplete/pull/1665">#1665</a>, <a href="https://github.com/westnordost/StreetComplete/pull/1668">#1668</a>, <a href="https://github.com/westnordost/StreetComplete/issues/1659">#1659</a>, <a href="https://github.com/westnordost/StreetComplete/issues/1658">#1658</a>), thanks <a href="https://github.com/matkoniecz">@matkoniecz</a></li>
-  <li>fix dark mode for right-to-left layouts (<a href="https://github.com/westnordost/StreetComplete/issues/1634">#1634</a>)</li>
+  <li>better visibility of some icons in dark mode (#1663, #1664, #1665, #1668, #1659, #1658), thanks @matkoniecz</li>
+  <li>fix dark mode for right-to-left layouts (#1634)</li>
   <li>fix strange behavior in auto download of quests</li>
-  <li>try again later if the upload of attached photos to a note failed (<a href="https://github.com/westnordost/StreetComplete/issues/1575">#1575</a>)</li>
-  <li>indicate the user's locale for each changeset (<a href="https://github.com/westnordost/StreetComplete/issues/1674">#1674</a>)</li>
+  <li>try again later if the upload of attached photos to a note failed (#1575)</li>
+  <li>indicate the user's locale for each changeset (#1674)</li>
   <li>Add rate this app on Google Play button in the about menu</li>
   <li>Add donate to this app button in the about menu</li>
   </ul>
@@ -40,33 +51,33 @@ v15.0: |
   <p>Norwegian Bokmål by Mats Randgaard and Simen Heggestøyl</p>
   <h3>New Quests</h3>
   <ul>
-  <li><strong>Does it cost a fee to enter ...?</strong> (<a href="https://github.com/westnordost/StreetComplete/issues/873">#873</a>,  <a href="https://github.com/westnordost/StreetComplete/pull/1600">#1600</a>) by <a href="https://github.com/matkoniecz">@matkoniecz</a></li>
-  <li><strong>Is this laundry a self service laundry?</strong> (<a href="https://github.com/westnordost/StreetComplete/issues/1385">#1385</a>, <a href="https://github.com/westnordost/StreetComplete/pull/1608">#1608</a>) by <a href="https://github.com/matkoniecz">@matkoniecz</a></li>
-  <li><strong>Do these steps have a handrail?</strong> (<a href="https://github.com/westnordost/StreetComplete/issues/1390">#1390</a>, <a href="https://github.com/westnordost/StreetComplete/pull/1616">#1616</a>)  by <a href="https://github.com/xuiqzy">@xuiqzy</a></li>
-  <li><strong>What is the weight limit here?</strong> (<a href="https://github.com/westnordost/StreetComplete/pull/1622">#1622</a>, <a href="https://github.com/westnordost/StreetComplete/pull/1467">#1467</a>, <a href="https://github.com/westnordost/StreetComplete/issues/361">#361</a>) thanks <a href="https://github.com/matkoniecz">@matkoniecz</a></li>
+  <li><strong>Does it cost a fee to enter ...?</strong> (#873,  #1600) by @matkoniecz</li>
+  <li><strong>Is this laundry a self service laundry?</strong> (#1385, #1608) by @matkoniecz</li>
+  <li><strong>Do these steps have a handrail?</strong> (#1390, #1616)  by @xuiqzy</li>
+  <li><strong>What is the weight limit here?</strong> (#1622, #1467, #361) thanks @matkoniecz</li>
   </ul>
   <h3>Enhanced Quests</h3>
   <ul>
-  <li>Do not ask for the surface of escalators or indoor pathways (<a href="https://github.com/westnordost/StreetComplete/issues/1604">#1604</a>, <a href="https://github.com/westnordost/StreetComplete/issues/1594">#1594</a>)</li>
-  <li>Do not ask for the bridge structure of movable bridges (<a href="https://github.com/westnordost/StreetComplete/issues/1595">#1595</a>)</li>
-  <li>Improve wording when asking for tactile paving on streetcar stops (<a href="https://github.com/westnordost/StreetComplete/issues/1584">#1584</a>)</li>
-  <li>Allow to select multiple produces for orchards (<a href="https://github.com/westnordost/StreetComplete/issues/1568">#1568</a>)</li>
-  <li>Ask for the name of cemeteries, allotments, airfields, barracks and training areas (<a href="https://github.com/westnordost/StreetComplete/pull/1618">#1618</a>) by <a href="https://github.com/wvanderp">@wvanderp</a></li>
-  <li>Do not require paved surface for asking about the surface of the footway / cycleway part of a segregated path (<a href="https://github.com/westnordost/StreetComplete/issues/1587">#1587</a>)</li>
+  <li>Do not ask for the surface of escalators or indoor pathways (#1604, #1594)</li>
+  <li>Do not ask for the bridge structure of movable bridges (#1595)</li>
+  <li>Improve wording when asking for tactile paving on streetcar stops (#1584)</li>
+  <li>Allow to select multiple produces for orchards (#1568)</li>
+  <li>Ask for the name of cemeteries, allotments, airfields, barracks and training areas (#1618) by @wvanderp</li>
+  <li>Do not require paved surface for asking about the surface of the footway / cycleway part of a segregated path (#1587)</li>
   </ul>
   <h3>UX Enhancements</h3>
   <ul>
-  <li>Ask earlier for authorization and clarify that it can be done later in the settings (<a href="https://github.com/westnordost/StreetComplete/issues/1557">#1557</a>, <a href="https://github.com/westnordost/StreetComplete/pull/1563">#1563</a>)</li>
-  <li>"Did you check on-site?" warning not shown anymore if the user was on-site when he opened the form (<a href="https://github.com/westnordost/StreetComplete/issues/1591">#1591</a>)</li>
-  <li>Hide quest pins while splitting a way (<a href="https://github.com/westnordost/StreetComplete/issues/1581">#1581</a>)</li>
-  <li>Show dots for quests where there is no space for pins (<a href="https://github.com/westnordost/StreetComplete/issues/1615">#1615</a>)</li>
-  <li>Disable 3D buildings when creating notes (<a href="https://github.com/westnordost/StreetComplete/pull/1607">#1607</a>, <a href="https://github.com/westnordost/StreetComplete/issues/1589">#1589</a>) by <a href="https://github.com/typebrook">@typebrook</a></li>
+  <li>Ask earlier for authorization and clarify that it can be done later in the settings (#1557, #1563)</li>
+  <li>"Did you check on-site?" warning not shown anymore if the user was on-site when he opened the form (#1591)</li>
+  <li>Hide quest pins while splitting a way (#1581)</li>
+  <li>Show dots for quests where there is no space for pins (#1615)</li>
+  <li>Disable 3D buildings when creating notes (#1607, #1589) by @typebrook</li>
   <li>Less ugly texts in the create note form</li>
   </ul>
   <h3>Fixes</h3>
   <ul>
   <li>Fix generation of overpass QL</li>
-  <li>Fix maxspeed quest - OK button did not show and (from v15.0-beta1) (<a href="https://github.com/westnordost/StreetComplete/pull/1632">#1632</a>, <a href="https://github.com/westnordost/StreetComplete/pull/1636">#1636</a>) thanks <a href="https://github.com/peternewman">@peternewman</a> and <a href="https://github.com/matkoniecz">@matkoniecz</a></li>
+  <li>Fix maxspeed quest - OK button did not show and (from v15.0-beta1) (#1632, #1636) thanks @peternewman and @matkoniecz</li>
   </ul>
   <h3>Technical</h3>
   <ul>
@@ -78,11 +89,11 @@ v15.0: |
 v14.1: |
   <h3>Fixes</h3>
   <ul>
-  <li>disable upload button when uploading, only show when there is something to undo (<a href="https://github.com/westnordost/StreetComplete/issues/1433">#1433</a>, <a href="https://github.com/westnordost/StreetComplete/issues/1480">#1480</a>)</li>
-  <li>fix pins on the maps sometimes vanished after sending app to background (<a href="https://github.com/westnordost/StreetComplete/pull/1571">#1571</a>, <a href="https://github.com/westnordost/StreetComplete/issues/1415">#1415</a>), thanks <a href="https://github.com/matkoniecz">@matkoniecz</a></li>
-  <li>fix changes not properly grouped into changesets don't close open changesets (fixes <a href="https://github.com/westnordost/StreetComplete/issues/1579">#1579</a>)</li>
+  <li>disable upload button when uploading, only show when there is something to undo (#1433, #1480)</li>
+  <li>fix pins on the maps sometimes vanished after sending app to background (#1571, #1415), thanks @matkoniecz</li>
+  <li>fix changes not properly grouped into changesets don't close open changesets (fixes #1579)</li>
   <li>fix crash when taking a photo on not being able to answer a quest</li>
-  <li>fix auto-sync not working correctly when many quest types are disabled (fixes <a href="https://github.com/westnordost/StreetComplete/issues/1561">#1561</a>)</li>
+  <li>fix auto-sync not working correctly when many quest types are disabled (fixes #1561)</li>
   </ul>
   <h3>More</h3>
   <ul>
@@ -92,104 +103,104 @@ v14.1: |
 v14.0: |
   <h3>Major Features</h3>
   <ul>
-  <li><strong>🚀 quest download now more than 4 times as fast as before!</strong> (<a href="https://github.com/westnordost/StreetComplete/issues/1479">#1479</a>, <a href="https://github.com/westnordost/StreetComplete/issues/1514">#1514</a>, <a href="https://github.com/westnordost/StreetComplete/pull/1516">#1516</a>)</li>
-  <li><strong>✂️ Splitting ways is now possible!</strong> (<a href="https://github.com/westnordost/StreetComplete/pull/1329">#1329</a>)</li>
+  <li><strong>🚀 quest download now more than 4 times as fast as before!</strong> (#1479, #1514, #1516)</li>
+  <li><strong>✂️ Splitting ways is now possible!</strong> (#1329)</li>
   </ul>
   <h3>New Quests</h3>
   <ul>
-  <li><strong>Do the trees here have needles or leaves?</strong> (<a href="https://github.com/westnordost/StreetComplete/issues/366">#366</a>, <a href="https://github.com/westnordost/StreetComplete/pull/1465">#1465</a>) by <a href="https://github.com/matkoniecz">@matkoniecz</a></li>
-  <li><strong>What's the surface of the cycleway here?</strong> - asked for segregated paved foot- and cycleways (<a href="https://github.com/westnordost/StreetComplete/pull/1493">#1493</a>) by <a href="https://github.com/matkoniecz">@matkoniecz</a></li>
-  <li><strong>What's the surface of the footway here?</strong> - asked for segregated paved foot- and cycleways (<a href="https://github.com/westnordost/StreetComplete/pull/1544">#1544</a>, <a href="https://github.com/westnordost/StreetComplete/issues/1489">#1489</a>) by <a href="https://github.com/matkoniecz">@matkoniecz</a></li>
-  <li><strong>Is the restroom at ... wheelchair accessible?</strong> - asked for places that have toilets (<a href="https://github.com/westnordost/StreetComplete/issues/1391">#1391</a>, <a href="https://github.com/westnordost/StreetComplete/pull/1547">#1547</a>) by <a href="https://github.com/matkoniecz">@matkoniecz</a></li>
+  <li><strong>Do the trees here have needles or leaves?</strong> (#366, #1465) by @matkoniecz</li>
+  <li><strong>What's the surface of the cycleway here?</strong> - asked for segregated paved foot- and cycleways (#1493) by @matkoniecz</li>
+  <li><strong>What's the surface of the footway here?</strong> - asked for segregated paved foot- and cycleways (#1544, #1489) by @matkoniecz</li>
+  <li><strong>Is the restroom at ... wheelchair accessible?</strong> - asked for places that have toilets (#1391, #1547) by @matkoniecz</li>
   </ul>
   <h3>Enhanced Quests</h3>
   <ul>
-  <li><strong>roads prohibited for pedestrians</strong>: Switched icon - old one was leading to misunderstandings (<a href="https://github.com/westnordost/StreetComplete/issues/1342">#1342</a>)</li>
-  <li><strong>lit roads, max speed</strong>: Also ask for link roads (<a href="https://github.com/westnordost/StreetComplete/pull/1520">#1520</a>) by <a href="https://github.com/matkoniecz">@matkoniecz</a></li>
-  <li><strong>bicycle parking type</strong>: Do not ask for private bicycle parkings (<a href="https://github.com/westnordost/StreetComplete/pull/1521">#1521</a>) by <a href="https://github.com/matkoniecz">@matkoniecz</a></li>
-  <li><strong>place name</strong>: Also ask for the name of <code>tourism=chalet</code>s (<a href="https://github.com/westnordost/StreetComplete/pull/1519">#1519</a>) by <a href="https://github.com/matkoniecz">@matkoniecz</a></li>
-  <li><strong>opening hours, place name, wheelchair access</strong>: Ask for more <code>office=*</code> and <code>craft=*</code> places (<a href="https://github.com/westnordost/StreetComplete/pull/1522">#1522</a>, <a href="https://github.com/westnordost/StreetComplete/pull/1526">#1526</a>) by <a href="https://github.com/matkoniecz">@matkoniecz</a></li>
-  <li><strong>road name</strong>: Do not ask for names of private roads (<a href="https://github.com/westnordost/StreetComplete/issues/1529">#1529</a>, <a href="https://github.com/westnordost/StreetComplete/issues/1533">#1533</a>) by <a href="https://github.com/matkoniecz">@matkoniecz</a></li>
-  <li><strong>housenumber</strong>: tag <code>nohousenumber=yes</code> instead of <code>noaddress=yes</code> (<a href="https://github.com/westnordost/StreetComplete/issues/1553">#1553</a>)</li>
-  <li><strong>all building-related</strong>: Do not ask for ruins (<a href="https://github.com/westnordost/StreetComplete/pull/1543">#1543</a>, <a href="https://github.com/westnordost/StreetComplete/issues/1541">#1541</a>) by <a href="https://github.com/matkoniecz">@matkoniecz</a></li>
-  <li><strong>road name</strong>: If the user enters a ref instead, it will be tagged as such (<a href="https://github.com/westnordost/StreetComplete/issues/1490">#1490</a>)</li>
+  <li><strong>roads prohibited for pedestrians</strong>: Switched icon - old one was leading to misunderstandings (#1342)</li>
+  <li><strong>lit roads, max speed</strong>: Also ask for link roads (#1520) by @matkoniecz</li>
+  <li><strong>bicycle parking type</strong>: Do not ask for private bicycle parkings (#1521) by @matkoniecz</li>
+  <li><strong>place name</strong>: Also ask for the name of <code>tourism=chalet</code>s (#1519) by @matkoniecz</li>
+  <li><strong>opening hours, place name, wheelchair access</strong>: Ask for more <code>office=*</code> and <code>craft=*</code> places (#1522, #1526) by @matkoniecz</li>
+  <li><strong>road name</strong>: Do not ask for names of private roads (#1529, #1533) by @matkoniecz</li>
+  <li><strong>housenumber</strong>: tag <code>nohousenumber=yes</code> instead of <code>noaddress=yes</code> (#1553)</li>
+  <li><strong>all building-related</strong>: Do not ask for ruins (#1543, #1541) by @matkoniecz</li>
+  <li><strong>road name</strong>: If the user enters a ref instead, it will be tagged as such (#1490)</li>
   </ul>
   <h3>Enhancements</h3>
   <ul>
-  <li>Show confirmation dialog when removing authorization for the app in the settings (<a href="https://github.com/westnordost/StreetComplete/issues/1534">#1534</a>, <a href="https://github.com/westnordost/StreetComplete/pull/1535">#1535</a>) by <a href="https://github.com/typebrook">@typebrook</a></li>
-  <li>improve icons for dark mode (<a href="https://github.com/westnordost/StreetComplete/issues/1545">#1545</a>)</li>
+  <li>Show confirmation dialog when removing authorization for the app in the settings (#1534, #1535) by @typebrook</li>
+  <li>improve icons for dark mode (#1545)</li>
   </ul>
   <h3>Fixes</h3>
   <ul>
-  <li>Show only labels from OpenStreetMap on the background map (<a href="https://github.com/westnordost/StreetComplete/issues/1527">#1527</a>)</li>
+  <li>Show only labels from OpenStreetMap on the background map (#1527)</li>
   </ul>
   <p>A portion of this update is credit to Mateusz Konieczny, powered by a <a href="https://www.openstreetmap.org/user/Mateusz%20Konieczny/diary/368849">NGI Zero Discovery grant</a>.</p>
 
 v13.0: |
   <h3>New Quests</h3>
   <ul>
-  <li><strong>Does this ferry route transport pedestrians?</strong> (<a href="https://github.com/westnordost/StreetComplete/issues/39">#39</a>, <a href="https://github.com/westnordost/StreetComplete/pull/1432">#1432</a>) by <a href="https://github.com/matkoniecz">@matkoniecz</a></li>
-  <li><strong>Does this ferry route transport motor vehicles?</strong> (<a href="https://github.com/westnordost/StreetComplete/issues/39">#39</a>, <a href="https://github.com/westnordost/StreetComplete/pull/1432">#1432</a>) by <a href="https://github.com/matkoniecz">@matkoniecz</a></li>
+  <li><strong>Does this ferry route transport pedestrians?</strong> (#39, #1432) by @matkoniecz</li>
+  <li><strong>Does this ferry route transport motor vehicles?</strong> (#39, #1432) by @matkoniecz</li>
   </ul>
   <h3>Enhanced Quests</h3>
   <ul>
-  <li>Ask about names of ferry terminals (<a href="https://github.com/westnordost/StreetComplete/pull/1477">#1477</a>) by <a href="https://github.com/matkoniecz">@matkoniecz</a></li>
-  <li>Show <code>operator</code> name in question for collection times of postboxes (<a href="https://github.com/westnordost/StreetComplete/issues/1473">#1473</a>, <a href="https://github.com/westnordost/StreetComplete/pull/1474">#1474</a>, <a href="https://github.com/westnordost/StreetComplete/pull/1484">#1484</a> ) by <a href="https://github.com/matkoniecz">@matkoniecz</a></li>
+  <li>Ask about names of ferry terminals (#1477) by @matkoniecz</li>
+  <li>Show <code>operator</code> name in question for collection times of postboxes (#1473, #1474, #1484 ) by @matkoniecz</li>
   </ul>
   <h3>UX Enhancements and Features</h3>
   <ul>
-  <li>make it clearer how cycleway and sidewalk quest UI works (<a href="https://github.com/westnordost/StreetComplete/pull/1450">#1450</a>) by <a href="https://github.com/matkoniecz">@matkoniecz</a></li>
-  <li>explain what is the preferred language for notes (<a href="https://github.com/westnordost/StreetComplete/pull/1471">#1471</a>) by <a href="https://github.com/matkoniecz">@matkoniecz</a></li>
-  <li>explain that adding photos is always useful for notes (<a href="https://github.com/westnordost/StreetComplete/pull/1452">#1452</a>) by <a href="https://github.com/matkoniecz">@matkoniecz</a></li>
-  <li>Increase height of download bar (<a href="https://github.com/westnordost/StreetComplete/pull/1460">#1460</a>) by <a href="https://github.com/matkoniecz">@matkoniecz</a></li>
-  <li>Show some helpful information when clicking the star icon (<a href="https://github.com/westnordost/StreetComplete/pull/1478">#1478</a>) by <a href="https://github.com/matkoniecz">@matkoniecz</a></li>
-  <li>Offer user to change download server in order to bypass blocking of overpass-api.de in Russia (<a href="https://github.com/westnordost/StreetComplete/issues/1389">#1389</a>, <a href="https://github.com/westnordost/StreetComplete/pull/1438">#1438</a>) by <a href="https://github.com/matkoniecz">@matkoniecz</a></li>
+  <li>make it clearer how cycleway and sidewalk quest UI works (#1450) by @matkoniecz</li>
+  <li>explain what is the preferred language for notes (#1471) by @matkoniecz</li>
+  <li>explain that adding photos is always useful for notes (#1452) by @matkoniecz</li>
+  <li>Increase height of download bar (#1460) by @matkoniecz</li>
+  <li>Show some helpful information when clicking the star icon (#1478) by @matkoniecz</li>
+  <li>Offer user to change download server in order to bypass blocking of overpass-api.de in Russia (#1389, #1438) by @matkoniecz</li>
   </ul>
   <h3>Fixes</h3>
   <ul>
-  <li>On download, only timeout after 180 seconds (<a href="https://github.com/westnordost/StreetComplete/issues/1010">#1010</a>, <a href="https://github.com/westnordost/StreetComplete/issues/1466">#1466</a>, <a href="https://github.com/westnordost/StreetComplete/pull/1472">#1472</a>) by <a href="https://github.com/matkoniecz">@matkoniecz</a></li>
-  <li>Quest marker of selected quest will never disappear any more when zooming in (<a href="https://github.com/westnordost/StreetComplete/pull/1462">#1462</a>) by <a href="https://github.com/matkoniecz">@matkoniecz</a></li>
-  <li>Fix <code>natural=water</code> was not detected as an area - bug had no effect though (<a href="https://github.com/westnordost/StreetComplete/pull/1476">#1476</a>) by <a href="https://github.com/matkoniecz">@matkoniecz</a></li>
-  <li>Fix upload button was not working if a user that is not logged in tries to upload (<a href="https://github.com/westnordost/StreetComplete/pull/1446">#1446</a>, <a href="https://github.com/westnordost/StreetComplete/pull/1475">#1475</a>) by <a href="https://github.com/matkoniecz">@matkoniecz</a></li>
-  <li>Fix theoretical incorrect display of highlighted multipolygon or multi-polyline (<a href="https://github.com/westnordost/StreetComplete/pull/1498">#1498</a>) by <a href="https://github.com/matkoniecz">@matkoniecz</a></li>
-  <li>Show quests that come into view also when rotating or tilting (<a href="https://github.com/westnordost/StreetComplete/issues/1496">#1496</a>)</li>
-  <li>Auto download was not triggered when there were too many quests that were deactivated in the settings around (<a href="https://github.com/westnordost/StreetComplete/issues/1497">#1497</a>)</li>
+  <li>On download, only timeout after 180 seconds (#1010, #1466, #1472) by @matkoniecz</li>
+  <li>Quest marker of selected quest will never disappear any more when zooming in (#1462) by @matkoniecz</li>
+  <li>Fix <code>natural=water</code> was not detected as an area - bug had no effect though (#1476) by @matkoniecz</li>
+  <li>Fix upload button was not working if a user that is not logged in tries to upload (#1446, #1475) by @matkoniecz</li>
+  <li>Fix theoretical incorrect display of highlighted multipolygon or multi-polyline (#1498) by @matkoniecz</li>
+  <li>Show quests that come into view also when rotating or tilting (#1496)</li>
+  <li>Auto download was not triggered when there were too many quests that were deactivated in the settings around (#1497)</li>
   </ul>
   <p>This update is almost entirely credit to Mateusz Konieczny, powered by a <a href="https://www.openstreetmap.org/user/Mateusz%20Konieczny/diary/368849" >NGI Zero Discovery grant</a>.</p>
 
 v12.2: |
   <h3>Enhancements</h3>
   <ul>
-  <li><strong>address</strong>: support for house numbers in Japan (<a href="https://github.com/westnordost/StreetComplete/issues/1407">#1407</a>)</li>
-  <li><strong>railway crossing barrier</strong>: do not ask for abandoned railways (<a href="https://github.com/westnordost/StreetComplete/issues/1413">#1413</a>)</li>
-  <li><strong>bus stop shelter</strong>: add <em>"whole stop is covered"</em> answer option (<a href="https://github.com/westnordost/StreetComplete/issues/1417">#1417</a>, <a href="https://github.com/westnordost/StreetComplete/issues/1395">#1395</a>)</li>
-  <li><strong>diaper changing table</strong>: use <code>changing_table</code> key instead of <code>diaper</code> key (<a href="https://github.com/westnordost/StreetComplete/issues/1424">#1424</a>)</li>
-  <li><strong>opening hours</strong>: do not ask for <code>leisure=sports_centre</code> (<a href="https://github.com/westnordost/StreetComplete/issues/1423">#1423</a>)</li>
-  <li>reorder priority of quests by importance and ease-of-answer (<a href="https://github.com/westnordost/StreetComplete/pull/1437">#1437</a>, <a href="https://github.com/westnordost/StreetComplete/pull/1441">#1441</a>, <a href="https://github.com/westnordost/StreetComplete/pull/1442">#1442</a>, <a href="https://github.com/westnordost/StreetComplete/pull/1444">#1444</a>) by <a href="https://github.com/matkoniecz">@matkoniecz</a></li>
-  <li>postpone nagging new users to register until they answered a few quests (<a href="https://github.com/westnordost/StreetComplete/pull/1446">#1446</a>) by <a href="https://github.com/matkoniecz">@matkoniecz</a></li>
-  <li>reorder settings, frequently used up, less used down (<a href="https://github.com/westnordost/StreetComplete/pull/1448">#1448</a>) by <a href="https://github.com/matkoniecz">@matkoniecz</a></li>
-  <li>enforce a minimum zoom level (of 14) on opening geo intent (<a href="https://github.com/westnordost/StreetComplete/issues/1425">#1425</a>)</li>
-  <li>reduce default, min and max tile cache sizes to more realistic values (<a href="https://github.com/westnordost/StreetComplete/issues/1398">#1398</a>)</li>
+  <li><strong>address</strong>: support for house numbers in Japan (#1407)</li>
+  <li><strong>railway crossing barrier</strong>: do not ask for abandoned railways (#1413)</li>
+  <li><strong>bus stop shelter</strong>: add <em>"whole stop is covered"</em> answer option (#1417, #1395)</li>
+  <li><strong>diaper changing table</strong>: use <code>changing_table</code> key instead of <code>diaper</code> key (#1424)</li>
+  <li><strong>opening hours</strong>: do not ask for <code>leisure=sports_centre</code> (#1423)</li>
+  <li>reorder priority of quests by importance and ease-of-answer (#1437, #1441, #1442, #1444) by @matkoniecz</li>
+  <li>postpone nagging new users to register until they answered a few quests (#1446) by @matkoniecz</li>
+  <li>reorder settings, frequently used up, less used down (#1448) by @matkoniecz</li>
+  <li>enforce a minimum zoom level (of 14) on opening geo intent (#1425)</li>
+  <li>reduce default, min and max tile cache sizes to more realistic values (#1398)</li>
   <li>update translations</li>
   </ul>
   <h3>Fixes</h3>
   <ul>
-  <li>switch off following GPS-position on open geo intent (<a href="https://github.com/westnordost/StreetComplete/issues/1426">#1426</a>)</li>
-  <li><strong>sidewalk</strong>: warn user before closing a half-completed answer (<a href="https://github.com/westnordost/StreetComplete/pull/1451">#1451</a>)</li>
+  <li>switch off following GPS-position on open geo intent (#1426)</li>
+  <li><strong>sidewalk</strong>: warn user before closing a half-completed answer (#1451)</li>
   </ul>
   <p>A portion of the work done for this update is powered by a <a href="https://www.openstreetmap.org/user/Mateusz%20Konieczny/diary/368849" >NGI Zero Discovery grant</a> given to Mateusz Konieczny.</p>
 
 v12.1: |
   <h3>Fixes</h3>
   <ul>
-  <li>Fix error when uploading answer for railway crossings (<a href="https://github.com/westnordost/StreetComplete/issues/1408">#1408</a>)</li>
+  <li>Fix error when uploading answer for railway crossings (#1408)</li>
   </ul>
   <h3>Minor Enhancements</h3>
   <ul>
-  <li>Add the option to open the location in another app (<a href="https://github.com/westnordost/StreetComplete/issues/190">#190</a>, <a href="https://github.com/westnordost/StreetComplete/pull/1396">#1396</a>) by <a href="https://github.com/ENT8R">@ENT8R</a></li>
-  <li>reduce the size of downloaded areas so that quests are closer to the user (<a href="https://github.com/westnordost/StreetComplete/issues/1357">#1357</a>)</li>
-  <li>Enlarge maximum map cache and cache step size (<a href="https://github.com/westnordost/StreetComplete/issues/1398">#1398</a>)</li>
-  <li>Don't ask for road names in Japan (<a href="https://github.com/westnordost/StreetComplete/issues/1407">#1407</a>)</li>
+  <li>Add the option to open the location in another app (#190, #1396) by @ENT8R</li>
+  <li>reduce the size of downloaded areas so that quests are closer to the user (#1357)</li>
+  <li>Enlarge maximum map cache and cache step size (#1398)</li>
+  <li>Don't ask for road names in Japan (#1407)</li>
   <li>Don't send crash report in case of a request timeout during download</li>
   <li>Update translations</li>
   </ul>
@@ -197,27 +208,27 @@ v12.1: |
 v12.0: |
   <h3>New Quest</h3>
   <ul>
-  <li><strong>What is the name of this place?</strong> Asked for unnamed shops, amenities etc. (<a href="https://github.com/westnordost/StreetComplete/issues/309">#309</a>, <a href="https://github.com/westnordost/StreetComplete/pull/1376">#1376</a>)</li>
+  <li><strong>What is the name of this place?</strong> Asked for unnamed shops, amenities etc. (#309, #1376)</li>
   </ul>
   <h3>Minor fixes and Enhancements</h3>
   <ul>
   <li>fix color of close button in night mode</li>
   <li>show the placeholder avatar if an avatar cannot be decoded (crash fix)</li>
-  <li>don't ask for location on startup when user last denied it (fixes <a href="https://github.com/westnordost/StreetComplete/issues/1382">#1382</a>)</li>
-  <li>don't ask for railway crossing barriers for tram lines (fixes <a href="https://github.com/westnordost/StreetComplete/issues/1387">#1387</a>)</li>
+  <li>don't ask for location on startup when user last denied it (fixes #1382)</li>
+  <li>don't ask for railway crossing barriers for tram lines (fixes #1387)</li>
   </ul>
 
 v11.0: |
   <h3>Dark Theme (night mode)</h3>
   <h3>Fixes</h3>
   <ul>
-  <li>fix a few sources for crashes and other small fixes (<a href="https://github.com/westnordost/StreetComplete/issues/1307">#1307</a>, ...)</li>
+  <li>fix a few sources for crashes and other small fixes (#1307, ...)</li>
   </ul>
   <h3>Enhancements</h3>
   <ul>
-  <li>Opening hours and wheelchairs quest: Also ask for <code>office=religion</code> (<a href="https://github.com/westnordost/StreetComplete/pull/1365">#1365</a>) by <a href="https://github.com/matkoniecz">@matkoniecz</a></li>
-  <li>Do not ask about railway crossings on private roads (<a href="https://github.com/westnordost/StreetComplete/pull/1366">#1366</a>, <a href="https://github.com/westnordost/StreetComplete/issues/1321">#1321</a>) by <a href="https://github.com/matkoniecz">@matkoniecz</a></li>
-  <li>slightly better wordings for a few quests (<a href="https://github.com/westnordost/StreetComplete/issues/1349">#1349</a>, <a href="https://github.com/westnordost/StreetComplete/issues/1353">#1353</a>)</li>
+  <li>Opening hours and wheelchairs quest: Also ask for <code>office=religion</code> (#1365) by @matkoniecz</li>
+  <li>Do not ask about railway crossings on private roads (#1366, #1321) by @matkoniecz</li>
+  <li>slightly better wordings for a few quests (#1349, #1353)</li>
   <li>quest upload now treats situations where the geometry of the element in question changed significantly as an unsolvable conflict</li>
   </ul>
 
@@ -230,25 +241,25 @@ v10.2: |
   <ul>
   <li>update translations</li>
   <li>never show the prohibited for pedestrians quest for residential and service roads</li>
-  <li>support to tag <code>foot=use_sidepath</code> and <code>sidewalk=separate</code> in prohibited for pedestrians quest (<a href="https://github.com/westnordost/StreetComplete/issues/1345">#1345</a>)</li>
-  <li>OK button is now visibly disabled when the note text is empty (fixes <a href="https://github.com/westnordost/StreetComplete/issues/1340">#1340</a>)</li>
+  <li>support to tag <code>foot=use_sidepath</code> and <code>sidewalk=separate</code> in prohibited for pedestrians quest (#1345)</li>
+  <li>OK button is now visibly disabled when the note text is empty (fixes #1340)</li>
   <li>do not show the description for leaving a note after showing it already in the confirmation dialog</li>
-  <li>Increase visual distinction of images of sidewalk quest (fixes <a href="https://github.com/westnordost/StreetComplete/issues/1339">#1339</a>)</li>
+  <li>Increase visual distinction of images of sidewalk quest (fixes #1339)</li>
   </ul>
 
 v10.1: |
   <h3>Fixes</h3>
   <ul>
   <li>fix crash when trying to enter non-numbers (also: empty string) into the height limit form for imperial units</li>
-  <li>fix crash for Android 5.x devices on auto-closing changesets (require wake lock permission) (<a href="https://github.com/westnordost/StreetComplete/issues/1333">#1333</a>)</li>
+  <li>fix crash for Android 5.x devices on auto-closing changesets (require wake lock permission) (#1333)</li>
   <li>workaround for Android 9 bug, fixes crash when trying to upload/download automatically</li>
   <li>fix a possible cause for IllegalStateExceptions - remove messages from handlers when activity/fragment is destroyed</li>
-  <li>fix crash when trying to download an invalid note (<a href="https://github.com/westnordost/StreetComplete/issues/1338">#1338</a>)</li>
+  <li>fix crash when trying to download an invalid note (#1338)</li>
   </ul>
   <h3>Enhancements</h3>
   <ul>
   <li>Sidewalk quest: Only ask for lit roads</li>
-  <li>Pedestrian prohibited quest: greatly reduce the number of streets for which this information is asked and clarify wording (<a href="https://github.com/westnordost/StreetComplete/issues/1336">#1336</a> and <a href="https://lists.openstreetmap.org/pipermail/tagging/2019-February/042852.html" >mailing list discussion</a>)</li>
+  <li>Pedestrian prohibited quest: greatly reduce the number of streets for which this information is asked and clarify wording (#1336 and <a href="https://lists.openstreetmap.org/pipermail/tagging/2019-February/042852.html" >mailing list discussion</a>)</li>
   <li>update translations</li>
   </ul>
 
@@ -259,23 +270,23 @@ v10.0: |
   </ul>
   <h3>New quests</h3>
   <ul>
-  <li><strong>Add sidewalk</strong>: Does this street have a sidewalk? (<a href="https://github.com/westnordost/StreetComplete/issues/152">#152</a>)</li>
+  <li><strong>Add sidewalk</strong>: Does this street have a sidewalk? (#152)</li>
   <li><strong>Add accessible on foot</strong>: Is this street accessible for pedestrians here?</li>
   </ul>
   <h3>Improvements</h3>
   <ul>
-  <li>Quests previously hidden can now be made visible again through an option in the settings (<a href="https://github.com/westnordost/StreetComplete/issues/302">#302</a>, <a href="https://github.com/westnordost/StreetComplete/pull/1302">#1302</a>) by <a href="https://github.com/ENT8R">@ENT8R</a></li>
-  <li>All "other answer..." options that lead to another dialog, the text now ends with a "..." (<a href="https://github.com/westnordost/StreetComplete/issues/1296">#1296</a>, <a href="https://github.com/westnordost/StreetComplete/issues/1274">#1274</a>)</li>
-  <li>clarify wording in maxspeed quest (use "built-up area" instead of "urban") (<a href="https://github.com/westnordost/StreetComplete/issues/1314">#1314</a>)</li>
-  <li>the choices in the crops quest are now sorted with new UN FAO data (<a href="https://github.com/westnordost/StreetComplete/pull/1319">#1319</a>) by <a href="https://github.com/rugk">@rugk</a></li>
-  <li>Show the tactile paving bus stop quests for ways as well (<a href="https://github.com/westnordost/StreetComplete/pull/1309">#1309</a>) by <a href="https://github.com/MrKrisKrisu">@MrKrisKrisu</a></li>
-  <li>when showing a quest for an element (e.g. a shop) that is not at street level, show additionally on which floor it is located (<a href="https://github.com/westnordost/StreetComplete/issues/1270">#1270</a>, <a href="https://github.com/westnordost/StreetComplete/issues/1326">#1326</a>)</li>
+  <li>Quests previously hidden can now be made visible again through an option in the settings (#302, #1302) by @ENT8R</li>
+  <li>All "other answer..." options that lead to another dialog, the text now ends with a "..." (#1296, #1274)</li>
+  <li>clarify wording in maxspeed quest (use "built-up area" instead of "urban") (#1314)</li>
+  <li>the choices in the crops quest are now sorted with new UN FAO data (#1319) by @rugk</li>
+  <li>Show the tactile paving bus stop quests for ways as well (#1309) by @MrKrisKrisu</li>
+  <li>when showing a quest for an element (e.g. a shop) that is not at street level, show additionally on which floor it is located (#1270, #1326)</li>
   </ul>
   <h3>Fixes</h3>
   <ul>
-  <li>fix missing pictures in building type and surface selection quests in Android 4.4 and below (<a href="https://github.com/westnordost/StreetComplete/issues/1317">#1317</a>)</li>
-  <li>fix sometimes quests were still being generated even though there was a note for that element  (<a href="https://github.com/westnordost/StreetComplete/issues/1089">#1089</a>)</li>
-  <li>exclude roads from the oneway quest where its direction can not be determined reliably (<a href="https://github.com/westnordost/StreetComplete/issues/1320">#1320</a>)</li>
+  <li>fix missing pictures in building type and surface selection quests in Android 4.4 and below (#1317)</li>
+  <li>fix sometimes quests were still being generated even though there was a note for that element  (#1089)</li>
+  <li>exclude roads from the oneway quest where its direction can not be determined reliably (#1320)</li>
   </ul>
   <h3>Technical</h3>
   <ul>
@@ -288,23 +299,23 @@ v10.0: |
 v9.0: |
   <h3>New Quests</h3>
   <ul>
-  <li><strong>Track type</strong>: What is the surface firmness of this track? (<a href="https://github.com/westnordost/StreetComplete/pull/959">#959</a>) by <a href="https://github.com/ENT8R">@ENT8R</a></li>
-  <li><strong>Underground building</strong>:  Is this building completely underground? (<a href="https://github.com/westnordost/StreetComplete/issues/912">#912</a>)</li>
-  <li><strong>Traffic signals sounds</strong>: Are there sound signals for the blind here? (<a href="https://github.com/westnordost/StreetComplete/pull/1268">#1268</a>, <a href="https://github.com/westnordost/StreetComplete/issues/574">#574</a>) by <a href="https://github.com/matkoniecz">@matkoniecz</a></li>
-  <li><strong>Traffic signals button</strong>: Do these traffic lights have a button to request green light? (<a href="https://github.com/westnordost/StreetComplete/pull/1269">#1269</a>, <a href="https://github.com/westnordost/StreetComplete/issues/574">#574</a>) by <a href="https://github.com/matkoniecz">@matkoniecz</a></li>
-  <li><strong>Motorcycle parking capacity</strong>: How many motorcycles can be parked here? (<a href="https://github.com/westnordost/StreetComplete/issues/1181">#1181</a>)</li>
+  <li><strong>Track type</strong>: What is the surface firmness of this track? (#959) by @ENT8R</li>
+  <li><strong>Underground building</strong>:  Is this building completely underground? (#912)</li>
+  <li><strong>Traffic signals sounds</strong>: Are there sound signals for the blind here? (#1268, #574) by @matkoniecz</li>
+  <li><strong>Traffic signals button</strong>: Do these traffic lights have a button to request green light? (#1269, #574) by @matkoniecz</li>
+  <li><strong>Motorcycle parking capacity</strong>: How many motorcycles can be parked here? (#1181)</li>
   <li><strong>Motorcycle parking covered</strong>: Is this motorcycle parking covered (protected from rain)?</li>
   </ul>
   <h3>Disabled Quests</h3>
   <ul>
-  <li>Disabled the max speed quest by default. You can re-enable it in the settings. Rationale and discussion: <a href="https://github.com/westnordost/StreetComplete/issues/1281">#1281</a></li>
+  <li>Disabled the max speed quest by default. You can re-enable it in the settings. Rationale and discussion: #1281</li>
   </ul>
   <h3>Enhanced Quests</h3>
   <ul>
-  <li>Max height: do not ask for pedestrian streets (<a href="https://github.com/westnordost/StreetComplete/issues/1261">#1261</a>)</li>
+  <li>Max height: do not ask for pedestrian streets (#1261)</li>
   <li>Building levels:
   <ul>
-  <li>also ask for cabins (<a href="https://github.com/westnordost/StreetComplete/issues/1248">#1248</a>)</li>
+  <li>also ask for cabins (#1248)</li>
   <li>remember the last chosen values and offer to prefill the form with it</li>
   </ul>
   </li>
@@ -313,13 +324,13 @@ v9.0: |
   </ul>
   <h3>Enhancements</h3>
   <ul>
-  <li>The app now deletes cached unsolved quests downloaded more than one month ago (<a href="https://github.com/westnordost/StreetComplete/issues/766">#766</a>)</li>
-  <li>When exiting the quest details, return view position to where it was before (fixes <a href="https://github.com/westnordost/StreetComplete/issues/1257">#1257</a>)</li>
-  <li>Quest markers for some quests are now shown at the end of the street rather than the center (<a href="https://github.com/westnordost/StreetComplete/issues/733">#733</a>)</li>
+  <li>The app now deletes cached unsolved quests downloaded more than one month ago (#766)</li>
+  <li>When exiting the quest details, return view position to where it was before (fixes #1257)</li>
+  <li>Quest markers for some quests are now shown at the end of the street rather than the center (#733)</li>
   </ul>
   <h3>Fixes</h3>
   <ul>
-  <li>Opening hours quest: use "," instead of ";" to separate opening hours rules whose time extend to another day  (<a href="https://github.com/westnordost/StreetComplete/issues/1292">#1292</a>)</li>
+  <li>Opening hours quest: use "," instead of ";" to separate opening hours rules whose time extend to another day  (#1292)</li>
   </ul>
 
 v8.4: |
@@ -336,9 +347,9 @@ v8.4: |
   </ul>
   <h3>Fixes</h3>
   <ul>
-  <li>do not trigger automatic upload if not authorized yet (fixes  <a href="https://github.com/westnordost/StreetComplete/issues/1253">#1253</a>)</li>
+  <li>do not trigger automatic upload if not authorized yet (fixes  #1253)</li>
   <li>avoid outputting lat/long coordinates in scientific notation because Overpass-API cannot parse this</li>
-  <li>fix max height quest did not show for height restrictors and parking entrances (fixes <a href="https://github.com/westnordost/StreetComplete/issues/1245">#1245</a>)</li>
+  <li>fix max height quest did not show for height restrictors and parking entrances (fixes #1245)</li>
   </ul>
 
 v8.3: |
@@ -346,8 +357,8 @@ v8.3: |
   <p>Asturian by Víctor Suárez</p>
   <h3>Enhancements</h3>
   <ul>
-  <li>Wheelchair quest: Also ask for arts centres (<a href="https://github.com/westnordost/StreetComplete/pull/1235">#1235</a>) by <a href="https://github.com/matkoniecz">@matkoniecz</a></li>
-  <li>Tactile paving quest: Exclude crossings not for pedestrians (<a href="https://github.com/westnordost/StreetComplete/pull/1238">#1238</a>) by <a href="https://github.com/matkoniecz">@matkoniecz</a></li>
+  <li>Wheelchair quest: Also ask for arts centres (#1235) by @matkoniecz</li>
+  <li>Tactile paving quest: Exclude crossings not for pedestrians (#1238) by @matkoniecz</li>
   <li>Cycleway segregation quest: do not ask for areas</li>
   <li>Oneway quest: Also ask for private roads that are still accessible on foot</li>
   <li>Maxspeed quest: do not ask for areas</li>
@@ -363,7 +374,7 @@ v8.3: |
   </ul>
   <h3>Fixes</h3>
   <ul>
-  <li>Opening hours quest: if the phone's locale is on Arabic, do not use Arabic numbers for tagging opening hours times (<a href="https://github.com/westnordost/StreetComplete/issues/1234">#1234</a>)</li>
+  <li>Opening hours quest: if the phone's locale is on Arabic, do not use Arabic numbers for tagging opening hours times (#1234)</li>
   <li>fix IllegalArgumentException on Android Oreo and up when trying to auto-upload changes on application start</li>
   </ul>
 
@@ -375,11 +386,11 @@ v8.2: |
   <li>in Spain, offer to add Asturian to street sign</li>
   <li>do not show maxspeed quests for roads that are tagged with <code>zone:traffic</code></li>
   <li>do not show building level quest for underground buildings and <code>man_made</code></li>
-  <li>make the (other answers) context menu also look like a speech bubble (<a href="https://github.com/westnordost/StreetComplete/issues/1211">#1211</a>)</li>
+  <li>make the (other answers) context menu also look like a speech bubble (#1211)</li>
   </ul>
   <h3>Fixes</h3>
   <ul>
-  <li>fix black boxes sometimes being displayed in place of quest icons (<a href="https://github.com/westnordost/StreetComplete/issues/850">#850</a>)</li>
+  <li>fix black boxes sometimes being displayed in place of quest icons (#850)</li>
   <li>workaround bug in Android 5.0.x that results in a crash when rotating device to landscape mode</li>
   <li>workaround crash in AppCompat library for Android 7.x that results in a crash when tapping on a underlined in red word (because of the spellchecker)</li>
   <li>fix various possible exceptions when uploading</li>
@@ -387,24 +398,24 @@ v8.2: |
 
 v8.1: |
   <ul>
-  <li>Building type quest: clarify that buildings constructed to house restaurants &amp; co should also be tagged as retail (<a href="https://github.com/westnordost/StreetComplete/issues/1204">#1204</a>)</li>
-  <li>do not show quests for elements longer than 500m because users cannot be expected to survey such long ways (<a href="https://github.com/westnordost/StreetComplete/issues/1207">#1207</a>)</li>
-  <li>Performance improvement on rotating the screen (portrait / landscape) - should happen now almost instantaneously (<a href="https://github.com/westnordost/StreetComplete/issues/1217">#1217</a>)</li>
-  <li>fix detection in which country the user is located (<a href="https://github.com/westnordost/StreetComplete/issues/1215">#1215</a>)</li>
-  <li>auto upload also triggers whenever app comes back into foreground or the user creates a note (fixes <a href="https://github.com/westnordost/StreetComplete/issues/1206">#1206</a>)</li>
+  <li>Building type quest: clarify that buildings constructed to house restaurants &amp; co should also be tagged as retail (#1204)</li>
+  <li>do not show quests for elements longer than 500m because users cannot be expected to survey such long ways (#1207)</li>
+  <li>Performance improvement on rotating the screen (portrait / landscape) - should happen now almost instantaneously (#1217)</li>
+  <li>fix detection in which country the user is located (#1215)</li>
+  <li>auto upload also triggers whenever app comes back into foreground or the user creates a note (fixes #1206)</li>
   </ul>
 
 v8.0: |
   <h3>UX Enhancements</h3>
   <ul>
-  <li><strong>Redesign quest forms and dialogs to a new look</strong> (this is quite huge) (<a href="https://github.com/westnordost/StreetComplete/pull/1158">#1158</a>)</li>
+  <li><strong>Redesign quest forms and dialogs to a new look</strong> (this is quite huge) (#1158)</li>
   <li>when leaving a note, it is done in the bottom sheet instead of in a dialog now so that you can still see the quest geometry</li>
   <li>solve performance problems when downloading quests (especially housenumbers and building types)</li>
-  <li>only play sound effects when system setting for that is enabled (fixes <a href="https://github.com/westnordost/StreetComplete/issues/1187">#1187</a>) and in "media" instead of "notification" stream (<a href="https://github.com/westnordost/StreetComplete/issues/1167">#1167</a>)</li>
-  <li>In notes, shortcut the link to the element to <a href="https://osm.org/way/" >https://osm.org/way/</a>... for better readability of notes left by SC users (<a href="https://github.com/westnordost/StreetComplete/issues/1178">#1178</a>)</li>
+  <li>only play sound effects when system setting for that is enabled (fixes #1187) and in "media" instead of "notification" stream (#1167)</li>
+  <li>In notes, shortcut the link to the element to https://osm.org/way/... for better readability of notes left by SC users (#1178)</li>
   <li>tapping on the quest title now toggles expanding the quest to full size and back</li>
   <li>it is now again possible to attach photos to notes</li>
-  <li>add "deselect all" button in the quest selection screen (<a href="https://github.com/westnordost/StreetComplete/issues/1203">#1203</a>)</li>
+  <li>add "deselect all" button in the quest selection screen (#1203)</li>
   </ul>
   <h3>Quests</h3>
   <ul>
@@ -425,97 +436,97 @@ v7.1: |
 v7.0: |
   <h3>Un-Features:</h3>
   <ul>
-  <li>disabled support to put photos into notes, because framapic.org service has discontinued until further notice. (see <a href="https://github.com/westnordost/StreetComplete/issues/1161">#1161</a>)</li>
+  <li>disabled support to put photos into notes, because framapic.org service has discontinued until further notice. (see #1161)</li>
   <li>expect hiccups and/or old maps being displayed in the coming week as the tileserver goes into maintenance and tiles from nextzen are displayed instead</li>
   </ul>
   <h3>New Quests:</h3>
   <ul>
-  <li>Playground access: <em>Is this playground publicly accessible?</em> (<a href="https://github.com/westnordost/StreetComplete/pull/1134">#1134</a>) by <a href="https://github.com/matkoniecz">@matkoniecz</a></li>
-  <li>Max height: <em>What is the height limit of this tunnel/parking entrance/height restrictor?</em> (<a href="https://github.com/westnordost/StreetComplete/pull/960">#960</a>, <a href="https://github.com/westnordost/StreetComplete/issues/399">#399</a>, <a href="https://github.com/westnordost/StreetComplete/issues/421">#421</a>, <a href="https://github.com/westnordost/StreetComplete/issues/447">#447</a>) by <a href="https://github.com/ENT8R">@ENT8R</a></li>
-  <li>Cycleway segregation: <em>"How are the footway and cycleway laid out here?"</em> (<a href="https://github.com/westnordost/StreetComplete/issues/527">#527</a>, <a href="https://github.com/westnordost/StreetComplete/pull/1135">#1135</a>) by <a href="https://github.com/matkoniecz">@matkoniecz</a></li>
+  <li>Playground access: <em>Is this playground publicly accessible?</em> (#1134) by @matkoniecz</li>
+  <li>Max height: <em>What is the height limit of this tunnel/parking entrance/height restrictor?</em> (#960, #399, #421, #447) by @ENT8R</li>
+  <li>Cycleway segregation: <em>"How are the footway and cycleway laid out here?"</em> (#527, #1135) by @matkoniecz</li>
   </ul>
   <h3>Enhanced Quests:</h3>
   <ul>
-  <li>Building type: Added toilets and sport centres to selectable building types (<a href="https://github.com/westnordost/StreetComplete/issues/1124">#1124</a>, <a href="https://github.com/westnordost/StreetComplete/issues/1125">#1125</a>)</li>
+  <li>Building type: Added toilets and sport centres to selectable building types (#1124, #1125)</li>
   <li>Max speed:
   <ul>
   <li>Added pictograms for living street signs in Portugal, France and Israel, added pictogram for slow zones in Israel and speed limit signs in general for Iceland, Sweden and Finland</li>
   <li>Can now also add living streets in Israel and Azerbaijan and slow zones in Mauritius</li>
-  <li>Redesigned to force the user to make a deliberate choice to either specify what is written on the sign or state that there is no sign. Also, beautified the input for specifying slow zones (<a href="https://github.com/westnordost/StreetComplete/issues/1085">#1085</a>, <a href="https://github.com/westnordost/StreetComplete/pull/1149">#1149</a>)</li>
+  <li>Redesigned to force the user to make a deliberate choice to either specify what is written on the sign or state that there is no sign. Also, beautified the input for specifying slow zones (#1085, #1149)</li>
   </ul>
   </li>
-  <li>Road name: Detecting more abbreviations in Portuguese (<a href="https://github.com/westnordost/StreetComplete/pull/1143">#1143</a>) by <a href="https://github.com/xendez">@xendez</a></li>
+  <li>Road name: Detecting more abbreviations in Portuguese (#1143) by @xendez</li>
   <li>Housenumber:
   <ul>
-  <li>Disabled for Italy (<a href="https://github.com/westnordost/StreetComplete/issues/714">#714</a>)</li>
+  <li>Disabled for Italy (#714)</li>
   <li>The app will not suggest that an input like "5,5a,6" may be wrong</li>
   </ul>
   </li>
-  <li>Postbox collection times: Allow marking the postbox as having no signed collection times (<a href="https://github.com/westnordost/StreetComplete/pull/1118">#1118</a>, <a href="https://github.com/westnordost/StreetComplete/issues/1076">#1076</a> ) by <a href="https://github.com/matkoniecz">@matkoniecz</a></li>
-  <li>Opening hours: Allow marking a shop as having no signed opening hours (<a href="https://github.com/westnordost/StreetComplete/pull/1118">#1118</a>) by <a href="https://github.com/matkoniecz">@matkoniecz</a></li>
-  <li>Any quest with selection of images: The last choices are remembered and displayed as first items (<a href="https://github.com/westnordost/StreetComplete/issues/1072">#1072</a>, <a href="https://github.com/westnordost/StreetComplete/issues/73">#73</a>, <a href="https://github.com/westnordost/StreetComplete/issues/826">#826</a>)</li>
+  <li>Postbox collection times: Allow marking the postbox as having no signed collection times (#1118, #1076 ) by @matkoniecz</li>
+  <li>Opening hours: Allow marking a shop as having no signed opening hours (#1118) by @matkoniecz</li>
+  <li>Any quest with selection of images: The last choices are remembered and displayed as first items (#1072, #73, #826)</li>
   </ul>
   <h3>Small Enhancements and Fixes:</h3>
   <ul>
-  <li>Orchard quest used to tag <code>produce=tomatoe</code>. Corrected to <code>produce=tomato</code> (<a href="https://github.com/westnordost/StreetComplete/issues/1171">#1171</a>)</li>
-  <li>Increase number of quests that are downloaded in one go (<a href="https://github.com/westnordost/StreetComplete/issues/1091">#1091</a>)</li>
-  <li>Undoing quests now removed quests that are no longer applicable because of that (<a href="https://github.com/westnordost/StreetComplete/issues/1131">#1131</a>, <a href="https://github.com/westnordost/StreetComplete/issues/746">#746</a>)</li>
-  <li>Fix crash on attaching a photo (<a href="https://github.com/westnordost/StreetComplete/issues/1144">#1144</a>)</li>
-  <li>Fix some quests were wrongly displayed as being disabled in France (<a href="https://github.com/westnordost/StreetComplete/issues/1150">#1150</a>)</li>
+  <li>Orchard quest used to tag <code>produce=tomatoe</code>. Corrected to <code>produce=tomato</code> (#1171)</li>
+  <li>Increase number of quests that are downloaded in one go (#1091)</li>
+  <li>Undoing quests now removed quests that are no longer applicable because of that (#1131, #746)</li>
+  <li>Fix crash on attaching a photo (#1144)</li>
+  <li>Fix some quests were wrongly displayed as being disabled in France (#1150)</li>
   <li>Fix an error when downloading the oneway quest for roads tagged as areas</li>
-  <li>Added a nice animation when solving a quest (amongst others <a href="https://github.com/westnordost/StreetComplete/issues/944">#944</a>)</li>
+  <li>Added a nice animation when solving a quest (amongst others #944)</li>
   <li>Better feedback when manually uploading changes, do only show the upload-button when autosync is off</li>
-  <li>Show the blinking cursor within the housenumber, speed limit etc. input field signs (<a href="https://github.com/westnordost/StreetComplete/issues/1154">#1154</a>)</li>
-  <li>When exiting the quest details, always zoom back to the previous zoom (<a href="https://github.com/westnordost/StreetComplete/issues/965">#965</a>)</li>
+  <li>Show the blinking cursor within the housenumber, speed limit etc. input field signs (#1154)</li>
+  <li>When exiting the quest details, always zoom back to the previous zoom (#965)</li>
   <li>The app will not automatically open the next quest for the element for which the user just answered the quest any more</li>
   </ul>
 
 v6.1: |
   <ul>
-  <li><strong>fix crash when app goes into background while downloading quests for Android 8+ (<a href="https://github.com/westnordost/StreetComplete/issues/1123">#1123</a>)</strong></li>
+  <li><strong>fix crash when app goes into background while downloading quests for Android 8+ (#1123)</strong></li>
   <li>fix crash when rotating display in bus stop name quest</li>
-  <li>fix crash when showing a note that was moderated (hidden) (<a href="https://github.com/westnordost/StreetComplete/issues/1116">#1116</a>)</li>
+  <li>fix crash when showing a note that was moderated (hidden) (#1116)</li>
   <li>update translations</li>
   </ul>
 
 v6.0: |
   <h3>New Quests:</h3>
   <ul>
-  <li>Add building type: <em>"What was this building constructed as?"</em> (<a href="https://github.com/westnordost/StreetComplete/issues/25">#25</a>, <a href="https://github.com/westnordost/StreetComplete/pull/774">#774</a>, <a href="https://github.com/westnordost/StreetComplete/pull/1092">#1092</a>) thanks <a href="https://github.com/ENT8R">@ENT8R</a></li>
-  <li>Add path surface: <em>"What surface does this path have here?"</em> (<a href="https://github.com/westnordost/StreetComplete/issues/133">#133</a>)</li>
-  <li>Add one-way road: <em>"Is this a one-way street?"</em> (<a href="https://github.com/westnordost/StreetComplete/issues/370">#370</a>)</li>
+  <li>Add building type: <em>"What was this building constructed as?"</em> (#25, #774, #1092) thanks @ENT8R</li>
+  <li>Add path surface: <em>"What surface does this path have here?"</em> (#133)</li>
+  <li>Add one-way road: <em>"Is this a one-way street?"</em> (#370)</li>
   </ul>
   <h3>Enhanced Quests:</h3>
   <ul>
-  <li>House numbers: Can now answer that the building has no house number (<a href="https://github.com/westnordost/StreetComplete/issues/351">#351</a>)</li>
-  <li>Parking type, fee and access: Include relations in search for parking areas (<a href="https://github.com/westnordost/StreetComplete/issues/1033">#1033</a>)</li>
+  <li>House numbers: Can now answer that the building has no house number (#351)</li>
+  <li>Parking type, fee and access: Include relations in search for parking areas (#1033)</li>
   <li>Add road surface: Show different surfaces initially for different types of roads, e.g. for tracks more unpaved surfaces</li>
-  <li>Add cycleway: Now understands <code>bicycle=use_sidepath</code> and will not show the cycleway quest in that case (<a href="https://github.com/westnordost/StreetComplete/issues/1084">#1084</a>, <a href="https://github.com/westnordost/StreetComplete/pull/1087">#1087</a>) by <a href="https://github.com/ENT8R">@ENT8R</a></li>
-  <li>Wheelchair access: Added internet cafes, theatres and casinos (<a href="https://github.com/westnordost/StreetComplete/pull/1086">#1086</a>) by <a href="https://github.com/matkoniecz">@matkoniecz</a></li>
-  <li>Bicycle parking: Clearer wording (<a href="https://github.com/westnordost/StreetComplete/issues/1038">#1038</a>)</li>
+  <li>Add cycleway: Now understands <code>bicycle=use_sidepath</code> and will not show the cycleway quest in that case (#1084, #1087) by @ENT8R</li>
+  <li>Wheelchair access: Added internet cafes, theatres and casinos (#1086) by @matkoniecz</li>
+  <li>Bicycle parking: Clearer wording (#1038)</li>
   </ul>
   <h3>Small Enhancements and Fixes:</h3>
   <ul>
   <li>split up English into US-English and UK-English</li>
   <li>Update privacy statement</li>
-  <li>Add confirmation dialogue on resetting quest enablement to default (<a href="https://github.com/westnordost/StreetComplete/issues/1095">#1095</a>)</li>
-  <li>Make background of compass needle not flicker any more (<a href="https://github.com/westnordost/StreetComplete/issues/1057">#1057</a>)</li>
-  <li>Cursor does not jump to the start of the input any more when pressing [abc]-button in house number quest (<a href="https://github.com/westnordost/StreetComplete/issues/1093">#1093</a>)</li>
+  <li>Add confirmation dialogue on resetting quest enablement to default (#1095)</li>
+  <li>Make background of compass needle not flicker any more (#1057)</li>
+  <li>Cursor does not jump to the start of the input any more when pressing [abc]-button in house number quest (#1093)</li>
   <li>Correct wording in mark completed construction quest</li>
   </ul>
 
 v5.2: |
-  <p>Fix a regression bug of the implementation for making the map rendering more performant (<a href="https://github.com/westnordost/StreetComplete/issues/1036">#1036</a>), which ironically led to a serious performance issue on (at least) Android 8 (<a href="https://github.com/westnordost/StreetComplete/issues/1047">#1047</a>)</p>
+  <p>Fix a regression bug of the implementation for making the map rendering more performant (#1036), which ironically led to a serious performance issue on (at least) Android 8 (#1047)</p>
   <p>Otherwise identical to v5.1.</p>
 
 v5.1: |
   <ul>
-  <li><strong>fix battery drain/performance problem</strong> (<a href="https://github.com/westnordost/StreetComplete/issues/1036">#1036</a>)</li>
-  <li><strong>fix crash on downloading construction quest</strong> (<a href="https://github.com/westnordost/StreetComplete/issues/1041">#1041</a>)</li>
-  <li>distinguish implicit speed limits in built-up (=lit) areas and in other places in GB (<a href="https://github.com/westnordost/StreetComplete/issues/1037">#1037</a>)</li>
-  <li>avoid possible user mistake when placing a new note (<a href="https://github.com/westnordost/StreetComplete/issues/1039">#1039</a>)</li>
-  <li>the compass now changes its direction more smoothly (<a href="https://github.com/westnordost/StreetComplete/pull/982">#982</a>)</li>
-  <li>the compass now shows true North, not magnetic North (<a href="https://github.com/westnordost/StreetComplete/pull/982">#982</a>) thanks <a href="https://github.com/hochwasser">@hochwasser</a></li>
+  <li><strong>fix battery drain/performance problem</strong> (#1036)</li>
+  <li><strong>fix crash on downloading construction quest</strong> (#1041)</li>
+  <li>distinguish implicit speed limits in built-up (=lit) areas and in other places in GB (#1037)</li>
+  <li>avoid possible user mistake when placing a new note (#1039)</li>
+  <li>the compass now changes its direction more smoothly (#982)</li>
+  <li>the compass now shows true North, not magnetic North (#982) thanks @hochwasser</li>
   <li>add Greek translations by Gerasimos Maris</li>
   </ul>
 
@@ -525,34 +536,34 @@ v5.0: |
   <li>some wording changes for clarity</li>
   <li>add Slovenian translations</li>
   <li>Performance Improvement: Use fast country detection library <a href="https://github.com/westnordost/countryboundaries">https://github.com/westnordost/countryboundaries</a></li>
-  <li>Now uses HTTPS for all connections (<a href="https://github.com/westnordost/StreetComplete/issues/63">#63</a>)</li>
-  <li>Always mention StreetComplete in created notes (<a href="https://github.com/westnordost/StreetComplete/issues/1012">#1012</a>)</li>
-  <li>add icons for bus stop shelter and bicycle parking capacity quest (<a href="https://github.com/westnordost/StreetComplete/issues/997">#997</a>, <a href="https://github.com/westnordost/StreetComplete/issues/999">#999</a>, <a href="https://github.com/westnordost/StreetComplete/pull/1004">#1004</a>) thanks <a href="https://github.com/rugk">@rugk</a></li>
+  <li>Now uses HTTPS for all connections (#63)</li>
+  <li>Always mention StreetComplete in created notes (#1012)</li>
+  <li>add icons for bus stop shelter and bicycle parking capacity quest (#997, #999, #1004) thanks @rugk</li>
   </ul>
   <h3>Fixes:</h3>
   <ul>
   <li>Fix crash on rotating the phone while parking fee quest was open</li>
-  <li>Fix duplicate opening of quests (i.e. on rotate, or when a new quest is unlocked) (<a href="https://github.com/westnordost/StreetComplete/issues/973">#973</a>)</li>
+  <li>Fix duplicate opening of quests (i.e. on rotate, or when a new quest is unlocked) (#973)</li>
   </ul>
   <h3>New Quests:</h3>
   <ul>
-  <li>Bicycle parking type: <em>"What is the type of this bicycle parking?"</em> (<a href="https://github.com/westnordost/StreetComplete/pull/923">#923</a>) by <a href="https://github.com/matkoniecz">@matkoniecz</a></li>
-  <li>Bus stop names: <em>"What is the name of this bus stop?</em>" (<a href="https://github.com/westnordost/StreetComplete/pull/986">#986</a> / <a href="https://github.com/westnordost/StreetComplete/issues/551">#551</a>) by <a href="https://github.com/PanierAvide">@PanierAvide</a></li>
-  <li>Postbox collection times: <em>"What are the collection times of this postbox?"</em> (<a href="https://github.com/westnordost/StreetComplete/issues/85">#85</a>)</li>
-  <li>Construction Site complete: <em>"Is this road completed?"</em> and <em>"Is this building completed?"</em> (<a href="https://github.com/westnordost/StreetComplete/pull/920">#920</a>) by <a href="https://github.com/matkoniecz">@matkoniecz</a></li>
+  <li>Bicycle parking type: <em>"What is the type of this bicycle parking?"</em> (#923) by @matkoniecz</li>
+  <li>Bus stop names: <em>"What is the name of this bus stop?</em>" (#986 / #551) by @PanierAvide</li>
+  <li>Postbox collection times: <em>"What are the collection times of this postbox?"</em> (#85)</li>
+  <li>Construction Site complete: <em>"Is this road completed?"</em> and <em>"Is this building completed?"</em> (#920) by @matkoniecz</li>
   </ul>
   <h3>Enhanced Quests:</h3>
   <ul>
   <li>
-  <p>Housenumbers: Add clarification that it is OK to tag ranges and comma-separated housenumbers (<a href="https://github.com/westnordost/StreetComplete/pull/939">#939</a>, <a href="https://github.com/westnordost/StreetComplete/issues/1015">#1015</a>) by <a href="https://github.com/ENT8R">@ENT8R</a></p>
+  <p>Housenumbers: Add clarification that it is OK to tag ranges and comma-separated housenumbers (#939, #1015) by @ENT8R</p>
   </li>
   <li>
   <p>Cycleways:</p>
   <ul>
-  <li>Surveyors can now tag dashed cycle lanes (aka advisory cycle lanes) (<a href="https://github.com/westnordost/StreetComplete/issues/888">#888</a>)</li>
-  <li>Surveyors in Netherlands and Belgium can now tag suggestion cycle lanes (Fietssuggestiestrooken) (<a href="https://github.com/westnordost/StreetComplete/issues/888">#888</a>)</li>
-  <li>Improved the illustrations for the cycleway selection (<a href="https://github.com/westnordost/StreetComplete/issues/888">#888</a>)</li>
-  <li>Do not ask for cycleways on residential roads, but do ask in other roads with speed limits as low as 30km/h (<a href="https://github.com/westnordost/StreetComplete/issues/1013">#1013</a>)</li>
+  <li>Surveyors can now tag dashed cycle lanes (aka advisory cycle lanes) (#888)</li>
+  <li>Surveyors in Netherlands and Belgium can now tag suggestion cycle lanes (Fietssuggestiestrooken) (#888)</li>
+  <li>Improved the illustrations for the cycleway selection (#888)</li>
+  <li>Do not ask for cycleways on residential roads, but do ask in other roads with speed limits as low as 30km/h (#1013)</li>
   </ul>
   </li>
   <li>
@@ -566,23 +577,23 @@ v4.1: |
   <li>fix crash when clicking "in the sky" on a map tilted to the max</li>
   <li>fix crash with the map rendering (by reverting back to older tangram-es version)</li>
   <li>fix sometimes-crash when showing a tooltip</li>
-  <li>show in italics and remove quotation marks around names in quest questions (<a href="https://github.com/westnordost/StreetComplete/issues/876">#876</a>) thanks <a href="https://github.com/huftis">@huftis</a></li>
+  <li>show in italics and remove quotation marks around names in quest questions (#876) thanks @huftis</li>
   <li>update translations</li>
   </ul>
   <h3>Enhanced Quests</h3>
   <h4>Housenumber quest:</h4>
   <ul>
-  <li>do not show for underground buildings (<a href="https://github.com/westnordost/StreetComplete/issues/907">#907</a>)</li>
+  <li>do not show for underground buildings (#907)</li>
   <li>substantially increase performance for download</li>
-  <li>fix bug where buildings with housenumbers on entrances were sometimes not excluded (<a href="https://github.com/westnordost/StreetComplete/issues/885">#885</a>)</li>
+  <li>fix bug where buildings with housenumbers on entrances were sometimes not excluded (#885)</li>
   </ul>
   <h4>Bicycle parking quest:</h4>
   <ul>
-  <li>do not show for private bicycle parkings (<a href="https://github.com/westnordost/StreetComplete/pull/895">#895</a>) by <a href="https://github.com/ENT8R">@ENT8R</a></li>
+  <li>do not show for private bicycle parkings (#895) by @ENT8R</li>
   </ul>
   <h4>Roof Shape quest:</h4>
   <ul>
-  <li>do not show for buildings with alternative roof shape tagging scheme given (<a href="https://github.com/westnordost/StreetComplete/issues/896">#896</a>)</li>
+  <li>do not show for buildings with alternative roof shape tagging scheme given (#896)</li>
   </ul>
   <h4>Cycleway quest:</h4>
   <ul>
@@ -590,30 +601,30 @@ v4.1: |
   </ul>
   <h4>Opening hours quest:</h4>
   <ul>
-  <li>expect Swedish opening hours to be different on Saturdays (<a href="https://github.com/westnordost/StreetComplete/pull/919">#919</a>) by <a href="https://github.com/andreasn">@andreasn</a></li>
+  <li>expect Swedish opening hours to be different on Saturdays (#919) by @andreasn</li>
   </ul>
 
 v4.0: |
   <h3>Highlights:</h3>
   <ul>
-  <li>Add a note anywhere, like on openstreetmap.org but you can also attach a photo (<a href="https://github.com/westnordost/StreetComplete/pull/732">#732</a>) by <a href="https://github.com/ENT8R">@ENT8R</a></li>
-  <li>New simple map style that shows only what is important for surveyors (<a href="https://github.com/westnordost/StreetComplete/issues/183">#183</a>)</li>
+  <li>Add a note anywhere, like on openstreetmap.org but you can also attach a photo (#732) by @ENT8R</li>
+  <li>New simple map style that shows only what is important for surveyors (#183)</li>
   </ul>
   <h3>More Features:</h3>
   <ul>
-  <li>Added unsynced changes counter, click to upload changes manually (<a href="https://github.com/westnordost/StreetComplete/issues/75">#75</a>)</li>
-  <li>Immediately open next quest for same element after answering (<a href="https://github.com/westnordost/StreetComplete/issues/164">#164</a>)</li>
-  <li>Unglue map while quest details or note input form is shown (<a href="https://github.com/westnordost/StreetComplete/issues/795">#795</a>)</li>
+  <li>Added unsynced changes counter, click to upload changes manually (#75)</li>
+  <li>Immediately open next quest for same element after answering (#164)</li>
+  <li>Unglue map while quest details or note input form is shown (#795)</li>
   </ul>
   <h3>New Quests:</h3>
   <ul>
-  <li>Internet connection: <em>"What kind of internet connection does ... offer?"</em> (<a href="https://github.com/westnordost/StreetComplete/pull/784">#784</a>) by <a href="https://github.com/ENT8R">@ENT8R</a></li>
-  <li>Religion of place of worship: <em>"What religion is practised at ...?"</em> (<a href="https://github.com/westnordost/StreetComplete/issues/777">#777</a>)</li>
-  <li>Religion of shrine: <em>"What religion is represented at this shrine?"</em> (<a href="https://github.com/westnordost/StreetComplete/issues/799">#799</a>)</li>
-  <li>Parking fee: <em>"Does it cost a fee to park here?"</em> (<a href="https://github.com/westnordost/StreetComplete/pull/825">#825</a>) by <a href="https://github.com/ENT8R">@ENT8R</a></li>
-  <li>Parking access: <em>"Is it restricted who may park here?"</em> (<a href="https://github.com/westnordost/StreetComplete/pull/839">#839</a>) by <a href="https://github.com/ENT8R">@ENT8R</a></li>
-  <li>Bench backrest: <em>"Does this bench have a backrest?"</em> (<a href="https://github.com/westnordost/StreetComplete/pull/830">#830</a>) by <a href="https://github.com/Map3428">@Map3428</a></li>
-  <li>Bridge structure: <em>"What is the structure of this bridge?"</em> (<a href="https://github.com/westnordost/StreetComplete/pull/709">#709</a>) thanks <a href="https://github.com/Southernswampfrog">@Southernswampfrog</a></li>
+  <li>Internet connection: <em>"What kind of internet connection does ... offer?"</em> (#784) by @ENT8R</li>
+  <li>Religion of place of worship: <em>"What religion is practised at ...?"</em> (#777)</li>
+  <li>Religion of shrine: <em>"What religion is represented at this shrine?"</em> (#799)</li>
+  <li>Parking fee: <em>"Does it cost a fee to park here?"</em> (#825) by @ENT8R</li>
+  <li>Parking access: <em>"Is it restricted who may park here?"</em> (#839) by @ENT8R</li>
+  <li>Bench backrest: <em>"Does this bench have a backrest?"</em> (#830) by @Map3428</li>
+  <li>Bridge structure: <em>"What is the structure of this bridge?"</em> (#709) thanks @Southernswampfrog</li>
   <li>Wheelchair toilet access: <em>"Are these toilets wheelchair accessible?"</em></li>
   </ul>
   <h3>Languages:</h3>
@@ -623,62 +634,62 @@ v4.0: |
   <h3>Enhanced Quests</h3>
   <h4>Cycleway Quest:</h4>
   <ul>
-  <li>Clearer wording of question (<a href="https://github.com/westnordost/StreetComplete/issues/768">#768</a>)</li>
-  <li>Do not ask for a cycleway when a separately mapped sidewalk exists (<a href="https://github.com/westnordost/StreetComplete/issues/718">#718</a>)</li>
-  <li><a href="https://ent8r.github.io/blacklistr/?java=bikeway/AddCycleway.java" >Show only in a limited set of countries</a> (<a href="https://github.com/westnordost/StreetComplete/issues/749">#749</a>)</li>
+  <li>Clearer wording of question (#768)</li>
+  <li>Do not ask for a cycleway when a separately mapped sidewalk exists (#718)</li>
+  <li><a href="https://ent8r.github.io/blacklistr/?java=bikeway/AddCycleway.java" >Show only in a limited set of countries</a> (#749)</li>
   </ul>
   <h4>Tactile Pavings Quests:</h4>
   <ul>
-  <li>Clearer description (<a href="https://github.com/westnordost/StreetComplete/issues/762">#762</a>)</li>
-  <li><a href="https://ent8r.github.io/blacklistr/?java=tactile_paving/AddTactilePavingCrosswalk.java" >Show only in a limited set of countries</a> (<a href="https://github.com/westnordost/StreetComplete/issues/750">#750</a>)</li>
+  <li>Clearer description (#762)</li>
+  <li><a href="https://ent8r.github.io/blacklistr/?java=tactile_paving/AddTactilePavingCrosswalk.java" >Show only in a limited set of countries</a> (#750)</li>
   </ul>
   <h4>Max Speed quest:</h4>
   <ul>
-  <li>Clearer English wording when asking if the road is in or out of town (<a href="https://github.com/westnordost/StreetComplete/issues/757">#757</a>)</li>
-  <li>Still disabled for the US (<a href="https://github.com/westnordost/StreetComplete/issues/813">#813</a>)</li>
+  <li>Clearer English wording when asking if the road is in or out of town (#757)</li>
+  <li>Still disabled for the US (#813)</li>
   </ul>
   <h4>Street surface quest:</h4>
   <ul>
-  <li>Improve street surface quest UI (<a href="https://github.com/westnordost/StreetComplete/issues/76">#76</a>)</li>
-  <li>Clearer wording for pedestrian streets (<a href="https://github.com/westnordost/StreetComplete/pull/862">#862</a>) by <a href="https://github.com/ENT8R">@ENT8R</a></li>
-  <li>Add "metal" as answer option (<a href="https://github.com/westnordost/StreetComplete/issues/568">#568</a>)</li>
+  <li>Improve street surface quest UI (#76)</li>
+  <li>Clearer wording for pedestrian streets (#862) by @ENT8R</li>
+  <li>Add "metal" as answer option (#568)</li>
   <li>tag either sett or unhewn_cobblestone, not cobblestone</li>
   </ul>
   <h4>Road name quest:</h4>
   <ul>
-  <li>Clearer UI flow when answering the road has no name (<a href="https://github.com/westnordost/StreetComplete/issues/756">#756</a>)</li>
-  <li>Clearer OSM changeset comment message (<a href="https://github.com/westnordost/StreetComplete/issues/158">#158</a>)</li>
-  <li>Clearer wording for pedestrian streets (<a href="https://github.com/westnordost/StreetComplete/pull/862">#862</a>)</li>
+  <li>Clearer UI flow when answering the road has no name (#756)</li>
+  <li>Clearer OSM changeset comment message (#158)</li>
+  <li>Clearer wording for pedestrian streets (#862)</li>
   </ul>
   <h4>Bus stop shelter quest:</h4>
   <ul>
-  <li>Only show for actual bus and tram stops, clearer wording (<a href="https://github.com/westnordost/StreetComplete/issues/806">#806</a>)</li>
+  <li>Only show for actual bus and tram stops, clearer wording (#806)</li>
   </ul>
   <h4>Vegetarian quest:</h4>
   <ul>
-  <li>Clearer English wording (<a href="https://github.com/westnordost/StreetComplete/issues/883">#883</a>)</li>
+  <li>Clearer English wording (#883)</li>
   </ul>
   <h4>Parking fee quest:</h4>
   <ul>
-  <li>Able to select the times where the fee applies / does not apply (<a href="https://github.com/westnordost/StreetComplete/issues/848">#848</a>)</li>
+  <li>Able to select the times where the fee applies / does not apply (#848)</li>
   </ul>
 
 v3.7: |
   <p>fix critical bug that led to the undo feature not working properly
-  (<a href="https://github.com/westnordost/StreetComplete/issues/849">#849</a>)</p>
+  (#849)</p>
 
 v3.6: |
   <ul>
   <li>fix country-detection of Arunchal Pradesh</li>
-  <li>disable max-speed quest for the United States (<a href="https://github.com/westnordost/StreetComplete/issues/813">#813</a>)</li>
-  <li>fix undo not working when conflict arised during upload (<a href="https://github.com/westnordost/StreetComplete/issues/812">#812</a>)</li>
+  <li>disable max-speed quest for the United States (#813)</li>
+  <li>fix undo not working when conflict arised during upload (#812)</li>
   <li>fix clearing quest changes on undo (bug had no adverse effect)</li>
   <li>updated translations</li>
   </ul>
 
 v3.5: |
   <ul>
-  <li><em>use another tileserver for map display</em> (fixes <a href="https://github.com/westnordost/StreetComplete/issues/747">#747</a> for now) thanks <a href="https://github.com/Akasch">@Akasch</a></li>
+  <li><em>use another tileserver for map display</em> (fixes #747 for now) thanks @Akasch</li>
   <li>fix possible error during conflict handling</li>
   <li>change the default priority of some quests</li>
   <li>update translations</li>
@@ -695,7 +706,7 @@ v3.5: |
   <p><em>Cycleway quest</em>:</p>
   <ul>
   <li>imply <code>oneway=yes</code> on <code>junction=roundabout</code></li>
-  <li>set correct initial rotation of compass (fixes <a href="https://github.com/westnordost/StreetComplete/issues/760">#760</a>)</li>
+  <li>set correct initial rotation of compass (fixes #760)</li>
   </ul>
 
 v3.4: |
@@ -704,46 +715,46 @@ v3.4: |
 v3.3: |
   <p>A pretty long list for a bugfix update! To be honest, I squeezed in some tiny features:</p>
   <ul>
-  <li>on handling a conflict, recheck if the quest still applies to the updated element (<a href="https://github.com/westnordost/StreetComplete/issues/720">#720</a>)</li>
+  <li>on handling a conflict, recheck if the quest still applies to the updated element (#720)</li>
   <li>fix another crash and a memory leak</li>
   <li>fix crash when unable to create file for taking a photo</li>
   <li>add new language Slovak by Vlado Jendrol and updated other languages</li>
   </ul>
   <p><strong>Add opening hours quest:</strong></p>
   <ul>
-  <li>don't allow the user add an empty opening hours description (<a href="https://github.com/westnordost/StreetComplete/issues/721">#721</a>)</li>
+  <li>don't allow the user add an empty opening hours description (#721)</li>
   </ul>
   <p><strong>Add maxspeed quest:</strong></p>
   <ul>
-  <li>clearer wording on confirmation of no sign posted for a street (<a href="https://github.com/westnordost/StreetComplete/issues/715">#715</a>)</li>
-  <li>exclude unpaved roads from maxspeed quest (<a href="https://github.com/westnordost/StreetComplete/issues/752">#752</a>)</li>
+  <li>clearer wording on confirmation of no sign posted for a street (#715)</li>
+  <li>exclude unpaved roads from maxspeed quest (#752)</li>
   <li>allow the user to specify the speed unit in certain currently-mph countries</li>
   </ul>
   <p><strong>Add cycleway quest:</strong></p>
   <ul>
-  <li>don't ask for a cycleway on areas (<a href="https://github.com/westnordost/StreetComplete/issues/711">#711</a>)</li>
-  <li>fix crash when inputting certain values for cycleways (<a href="https://github.com/westnordost/StreetComplete/issues/740">#740</a>)</li>
+  <li>don't ask for a cycleway on areas (#711)</li>
+  <li>fix crash when inputting certain values for cycleways (#740)</li>
   <li>fix rare crash when rotating the map while specifying the cycleway</li>
-  <li>don't display the quest for Android &lt;4.4 users (<a href="https://github.com/westnordost/StreetComplete/issues/713">#713</a>)</li>
-  <li>always tag oneway:bicycle=no for oneways with bicycle infrastructure for contraflow direction (<a href="https://github.com/westnordost/StreetComplete/issues/717">#717</a>)</li>
-  <li>for oneways in contraflow, replace "sharrows" option with option to state that a oneway road is not oneway for cyclists (but has still no dedicated cycleway) (<a href="https://github.com/westnordost/StreetComplete/issues/717">#717</a>)</li>
-  <li>show compass needle in cycleway form (<a href="https://github.com/westnordost/StreetComplete/issues/723">#723</a>)</li>
-  <li>limit cycleway quests to a few countries which are likely to have any bicycle infrastructure (<a href="https://github.com/westnordost/StreetComplete/issues/749">#749</a>)</li>
+  <li>don't display the quest for Android &lt;4.4 users (#713)</li>
+  <li>always tag oneway:bicycle=no for oneways with bicycle infrastructure for contraflow direction (#717)</li>
+  <li>for oneways in contraflow, replace "sharrows" option with option to state that a oneway road is not oneway for cyclists (but has still no dedicated cycleway) (#717)</li>
+  <li>show compass needle in cycleway form (#723)</li>
+  <li>limit cycleway quests to a few countries which are likely to have any bicycle infrastructure (#749)</li>
   </ul>
 
 v3.2: |
   <ul>
   <li>translation updates</li>
-  <li>Explicitly state in cycleway quest that both sides need to be filled (<a href="https://github.com/westnordost/StreetComplete/issues/700">#700</a>)</li>
-  <li>fix crash when reordering quest priorities (<a href="https://github.com/westnordost/StreetComplete/issues/704">#704</a>)</li>
+  <li>Explicitly state in cycleway quest that both sides need to be filled (#700)</li>
+  <li>fix crash when reordering quest priorities (#704)</li>
   </ul>
 
 v3.1: |
   <ul>
   <li>solve many warnings and possible problems found with Lint and FindBugs</li>
   <li>fixed build for F-Droid</li>
-  <li>fixes for quest selection and reordering (<a href="https://github.com/westnordost/StreetComplete/issues/694">#694</a>, <a href="https://github.com/westnordost/StreetComplete/issues/693">#693</a>)</li>
-  <li>cycleway quest: avoid asking for both sides of one side of dual carriageways (<a href="https://github.com/westnordost/StreetComplete/issues/689">#689</a>, <a href="https://github.com/westnordost/StreetComplete/issues/690">#690</a>)</li>
+  <li>fixes for quest selection and reordering (#694, #693)</li>
+  <li>cycleway quest: avoid asking for both sides of one side of dual carriageways (#689, #690)</li>
   <li>translation update</li>
   </ul>
 
@@ -770,7 +781,7 @@ v3.0: |
 
 v2.4: |
   <ul>
-  <li>slightly change wording of tactile quest question (<a href="https://github.com/westnordost/StreetComplete/issues/547">#547</a>)</li>
+  <li>slightly change wording of tactile quest question (#547)</li>
   <li>do not assume roads tagged as residential are always urban (following German forum discussion)</li>
   <li>fix a memory leak</li>
   </ul>
@@ -780,10 +791,10 @@ v2.3: |
 
 v2.2: |
   <ul>
-  <li>bugfixes (<a href="https://github.com/westnordost/StreetComplete/issues/628">#628</a>, <a href="https://github.com/westnordost/StreetComplete/issues/624">#624</a>, <a href="https://github.com/westnordost/StreetComplete/pull/638">#638</a>, <a href="https://github.com/westnordost/StreetComplete/issues/593">#593</a>, <a href="https://github.com/westnordost/StreetComplete/issues/627">#627</a>, <a href="https://github.com/westnordost/StreetComplete/issues/645">#645</a>, <a href="https://github.com/westnordost/StreetComplete/issues/640">#640</a> and crash bugs) thanks <a href="https://github.com/dbdean">@dbdean</a></li>
-  <li>lit quest is now shown also for steps (<a href="https://github.com/westnordost/StreetComplete/pull/631">#631</a>) by <a href="https://github.com/dbdean">@dbdean</a></li>
-  <li>reorder the importance of bus stop shelters (<a href="https://github.com/westnordost/StreetComplete/issues/637">#637</a>) and bicycle parkings up (<a href="https://github.com/westnordost/StreetComplete/issues/641">#641</a>), because this data is actually used</li>
-  <li>use maxspeed:type to tag implicit speed limits and properly ask for single/dual carriageways in GB (<a href="https://github.com/westnordost/StreetComplete/issues/492">#492</a>)</li>
+  <li>bugfixes (#628, #624, #638, #593, #627, #645, #640 and crash bugs) thanks @dbdean</li>
+  <li>lit quest is now shown also for steps (#631) by @dbdean</li>
+  <li>reorder the importance of bus stop shelters (#637) and bicycle parkings up (#641), because this data is actually used</li>
+  <li>use maxspeed:type to tag implicit speed limits and properly ask for single/dual carriageways in GB (#492)</li>
   </ul>
 
 v2.1: |
@@ -896,7 +907,7 @@ v0.11: |
   </ul>
 
 v0.10: |
-  <p>fixed <a href="https://github.com/westnordost/StreetComplete/issues/108">#108</a>: opening_hours used wrong separator</p>
+  <p>fixed #108: opening_hours used wrong separator</p>
 
 v0.9: |
   <ul>

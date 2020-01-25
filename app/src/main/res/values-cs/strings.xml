@@ -70,7 +70,7 @@
     <string name="no_location_permission_warning">"Vaše poloha se používá pro vyhledávání úkolů ve vašem okolí."</string>
     <string name="action_about">"O StreetComplete"</string>
     <string name="about_title_authors">"Autoři"</string>
-    <string name="about_summary_authors">"© 2016–2019 Tobias Zwick a přispěvatelé"</string>
+    <string name="about_summary_authors">"© 2016–2020 Tobias Zwick a přispěvatelé"</string>
     <string name="about_title_repository">"Zdrojový kód"</string>
     <string name="about_summary_repository">"Na GitHubu"</string>
     <string name="about_title_report_error">"Nahlásit chybu"</string>
@@ -775,4 +775,10 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_determineRecyclingGlass_description_any_glass">"Příklady skla, které často není akceptováno: tvrzené sklo, okenní tabule, skleničky, žárovky, nebo zrcadla."</string>
     <string name="about_title_changelog">"Historie verzí"</string>
     <string name="title_whats_new">"Co je nového?"</string>
+    <string name="about_title_rate">"Ohodnoťte tuto aplikaci"</string>
+    <string name="about_summary_rate">"na Google Play"</string>
+    <string name="about_title_donate">"Přispět"</string>
+    <string name="about_summary_donate">"Ukažte své uznání! ❤️
+"</string>
+    <string name="about_description_donate">"Děkuji Vám, že jste uvážili podporu této aplikace! Pro zobrazení aktuálních darů a pro poslání Vašeho daru, klepněte na jednu z následujících platforem:"</string>
 </resources>

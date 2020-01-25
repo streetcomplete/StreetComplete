@@ -64,7 +64,7 @@
     <string name="no_location_permission_warning">"Szükség van a pozíciódra a környéked kérdéseinek lekéréséhez"</string>
     <string name="action_about">"A StreetComplete névjegye"</string>
     <string name="about_title_authors">"Szerzők"</string>
-    <string name="about_summary_authors">"© 2016–2019 Tobias Zwick és közreműködők"</string>
+    <string name="about_summary_authors">"© 2016–2020 Tobias Zwick és közreműködők"</string>
     <string name="about_title_repository">"Források"</string>
     <string name="about_summary_repository">"a GitHubon"</string>
     <string name="about_title_report_error">"Hiba bejelentése"</string>
@@ -715,4 +715,9 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="quest_determineRecyclingGlass_description_any_glass">"Ezeket az üvegtípusokat például gyakran nem fogadják el: edzett üveg, ablaktábla, üvegáru, villanykörte vagy tükör."</string>
     <string name="about_title_changelog">"Verziótörténet"</string>
     <string name="title_whats_new">"Újdonságok"</string>
+    <string name="about_title_rate">"Értékeld az alkalmazást"</string>
+    <string name="about_summary_rate">"a Google Play-en"</string>
+    <string name="about_title_donate">"Támogatás"</string>
+    <string name="about_summary_donate">"Fejezd ki az elismerésedet! ❤️"</string>
+    <string name="about_description_donate">"Köszönjük, hogy az alkalmazás támogatására készülsz! A jelenlegi támogatások megtekintéséhez és a támogatáshoz koppints a megfelelő platformra:"</string>
 </resources>

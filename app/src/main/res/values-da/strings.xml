@@ -70,7 +70,7 @@
 
     <!-- Fuzzy -->
     <string name="about_title_authors">"Udviklere"</string>
-    <string name="about_summary_authors">"© 2016–2019 Tobias Zwick og bidragsydere"</string>
+    <string name="about_summary_authors">"© 2016–2020 Tobias Zwick og bidragsydere"</string>
     <string name="about_title_repository">"Kildekode"</string>
     <string name="about_summary_repository">"på GitHub"</string>
     <string name="about_title_report_error">"Rapporter fejl"</string>
@@ -616,7 +616,27 @@ F.eks. 1,3 eller 2-6."</string>
     <string name="quest_buildingType_shrine">"Helligdom"</string>
     <string name="quest_maxspeed_title_short2">"Hvad er fartgrænsen for denne vej?"</string>
     <string name="quest_maxspeed_answer_sign">"Et skilt"</string>
+    <string name="quest_buildingType_sports_centre">"Sportscenter"</string>
+    <string name="notification_channel_download">"Download"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
+    <string name="quest_noteDiscussion_closed2">"Lukket af %1$s, %2$s"</string>
     <string name="action_deselect_all">"Fravælg alle"</string>
+    <string name="quest_openingHours_timeSelect_next">"Næste"</string>
+    <string name="quest_sidewalk_value_yes">"fortov"</string>
+    <string name="quest_sidewalk_value_no">"ingen fortov"</string>
     <string name="quest_buildingType_title">"Hvilken slags bygning er dette?"</string>
+    <string name="pref_title_overpass_url_select">"Skift Overpass server"</string>
+    <string name="label_housenumber">"husnummer"</string>
+    <string name="quest_split_way_too_imprecise">"Zoom venligst længere ind"</string>
+    <string name="quest_maxweight_answer_noSign">"Der er intet skilt"</string>
+    <string name="quest_recycling_type_batteries">"Batterier"</string>
+    <string name="quest_recycling_type_cans">"Dåser"</string>
+    <string name="quest_recycling_type_clothes">"Tøj"</string>
+    <string name="quest_recycling_type_green_waste">"Haveaffald"</string>
+    <string name="quest_recycling_type_paper">"Papir"</string>
+    <string name="quest_recycling_type_shoes">"Sko"</string>
+    <string name="quest_recycling_type_any_glass">"Alt glas"</string>
+    <string name="about_title_changelog">"Versionshistorie"</string>
+    <string name="title_whats_new">"Hvad er nyt?"</string>
+    <string name="about_summary_rate">"på Google Play"</string>
 </resources>

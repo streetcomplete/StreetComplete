@@ -66,7 +66,7 @@
     <string name="no_location_permission_warning">"Η τοποθεσία σας είναι απαραίτητη για την σάρωση αναζητήσεων στην περιοχή σας."</string>
     <string name="action_about">"Σχετικά με το StreetComplete"</string>
     <string name="about_title_authors">"Ευχαριστίες"</string>
-    <string name="about_summary_authors">"2016-2019 Tobias Zwick και συνεργάτες"</string>
+    <string name="about_summary_authors">"© 2016–2020 Tobias Zwick και συνεργάτες"</string>
     <string name="about_title_repository">"Πηγή αποθήκευσης"</string>
     <string name="about_summary_repository">"στο GitHub"</string>
     <string name="about_title_report_error">"Αναφορά σφάλματος"</string>

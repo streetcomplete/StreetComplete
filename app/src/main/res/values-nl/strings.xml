@@ -26,7 +26,7 @@
     <string name="quest_generic_confirmation_yes">"Ja, ik ben er zeker van"</string>
     <string name="quest_generic_confirmation_no">"Zal ik nagaan"</string>
     <string name="quest_generic_error_field_empty">"Je hebt dit veld leeg gelaten"</string>
-    <string name="quest_leave_new_note_title">"Maak in plaats hiervan een aantekening"</string>
+    <string name="quest_leave_new_note_title">"Maak in plaats hiervan een opmerking"</string>
 
     <!-- Fuzzy -->
     <string name="quest_leave_new_note_description">"Je kan een openbare opmerking maken op deze locatie waar andere mappers op kunnen reageren en hopelijk kunnen oplossen."</string>
@@ -72,7 +72,7 @@
 
     <!-- Fuzzy -->
     <string name="about_title_authors">"Auteurs"</string>
-    <string name="about_summary_authors">"© 2016–2019 Tobias Zwick en medewerkenden"</string>
+    <string name="about_summary_authors">"© 2016–2020 Tobias Zwick en medewerkenden"</string>
     <string name="about_title_repository">"Broncode-repo"</string>
     <string name="about_summary_repository">"op GitHub"</string>
     <string name="about_title_report_error">"Fout rapporteren"</string>
@@ -766,4 +766,36 @@ Bijvoorbeeld 1m3 of 2-6."</string>
     <string name="quest_generalFee_title">"Kost het geld om %s binnen te gaan?"</string>
     <string name="quest_laundrySelfService_title">"Is deze wasserij een zelfservice wasserij?"</string>
     <string name="quest_handrail_title">"Heeft deze trap een leuning?"</string>
+    <string name="quest_openingHours_no_name_title">"Wat zijn de openingstijden van deze plaats? (%s)"</string>
+    <string name="about_summary_current_version">"Huidige versie: %s"</string>
+    <string name="quest_postboxRef_title">"Wat is het referentienummer van deze brievenbus?"</string>
+    <string name="quest_postboxRef_name_title">"Wat is het referentienummer van deze %s brievenbus?"</string>
+    <string name="quest_ref_answer_noRef">"Geen referentienummer zichtbaar…"</string>
+    <string name="quest_street_side_puzzle_tutorial">"Tik op de vraagtekens en selecteer een antwoord voor de corresponderende kant van de weg."</string>
+    <string name="quest_recycling_materials_title">"Wat kan hier achtergelaten worden voor recycling?"</string>
+    <string name="quest_recycling_materials_note">"Als iets anders dan hier kiesbaar gerecycled kan worden, geef dan een notitie."</string>
+    <string name="quest_recycling_type_batteries">"Batterijen"</string>
+    <string name="quest_recycling_type_cans">"Blikjes"</string>
+    <string name="quest_recycling_type_clothes">"Kleding"</string>
+    <string name="quest_recycling_type_green_waste">"Tuinafval"</string>
+    <string name="quest_recycling_type_glass_bottles">"Glazen flessen en potten"</string>
+    <string name="quest_recycling_type_glass_bottles_short">"Flessen en potten"</string>
+    <string name="quest_recycling_type_paper">"Papier"</string>
+    <string name="quest_recycling_type_plastic_generic">"Plastic"</string>
+    <string name="quest_recycling_type_plastic">"Elk plastic"</string>
+    <string name="quest_recycling_type_shoes">"Schoenen"</string>
+    <string name="quest_recycling_type_electric_appliances">"Elektrische apparaten"</string>
+    <string name="quest_recycling_type_plastic_bottles">"Alleen plastic flessen"</string>
+    <string name="quest_recycling_type_plastic_packaging">"Alleen plastic verpakkingen"</string>
+    <string name="quest_recycling_type_scrap_metal">"Oud metaal"</string>
+    <string name="quest_recycling_type_any_glass">"Elk glas"</string>
+    <string name="quest_recycling_glass_title">"Kunnen alleen glazen flessen en potten hier gerecycled worden, of elk type glas?"</string>
+    <string name="quest_determineRecyclingGlass_description_any_glass">"Voorbeelden van glas die vaak niet geaccepteerd zijn: gehard glas, vensterglas, glaswerk, lampen of spiegels."</string>
+    <string name="about_title_changelog">"Versiehistorie"</string>
+    <string name="title_whats_new">"Wat is er nieuw?"</string>
+    <string name="about_title_rate">"Beoordeel deze app"</string>
+    <string name="about_summary_rate">"op Google Play"</string>
+    <string name="about_title_donate">"Doneer"</string>
+    <string name="about_summary_donate">"Toon je waardering! ❤️"</string>
+    <string name="about_description_donate">"Bedankt voor het overwegen van het ondersteunen van deze app! Om huidige donaties te zien en zelf te doneren, tik op het respectieve platform:"</string>
 </resources>

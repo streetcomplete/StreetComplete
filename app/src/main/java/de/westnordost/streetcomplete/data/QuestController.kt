@@ -121,7 +121,9 @@ import javax.inject.Singleton
 
     @OnLifecycleEvent(Lifecycle.Event.ON_STOP) fun onStop() {
         if (downloadServiceIsBound) context.unbindService(downloadServiceConnection)
+        downloadServiceIsBound = false
         if (uploadServiceIsBound) context.unbindService(uploadServiceConnection)
+        uploadServiceIsBound = false
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY) fun onDestroy() {

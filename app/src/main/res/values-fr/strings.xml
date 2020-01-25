@@ -75,7 +75,7 @@ That is not very clear to me. Any further explanations? -->
     <string name="no_location_permission_warning">"Votre position est nécessaire pour rechercher des quêtes"</string>
     <string name="action_about">"À propos de StreetComplete"</string>
     <string name="about_title_authors">"Auteurs"</string>
-    <string name="about_summary_authors">"© 2016–2019 Tobias Zwick et contributeurs"</string>
+    <string name="about_summary_authors">"© 2016–2020 Tobias Zwick et contributeurs"</string>
     <string name="about_title_repository">"Code Source"</string>
     <string name="about_summary_repository">"sur GitHub"</string>
     <string name="about_title_report_error">"Signaler une erreur"</string>
@@ -401,9 +401,7 @@ Sinon, vous pouvez télécharger un autre clavier dans la boutique d’applicati
     <string name="quest_buildingLevels_roofLevelsLabel2">"Niveaux dans le toit"</string>
     <string name="quest_buildingLevels_levelsLabel2">"Niveaux (sans compter ceux du toit)"</string>
     <string name="pref_title_authorized_summary">"Autorisé"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingLevels_answer_multipleLevels">"diffère selon la partie du bâtiment"</string>
+    <string name="quest_buildingLevels_answer_multipleLevels">"Diffère selon la partie du bâtiment"</string>
     <string name="quest_buildingLevels_answer_description">"Dans ce cas, entrez simplement les valeurs de la partie du bâtiment la plus grande."</string>
     <string name="unglue_hint">"Appuyer pour ne plus fixer la vue sur la position"</string>
     <string name="pref_title_not_authorized_summary2">"Connectez-vous depuis votre navigateur pour autoriser"</string>
@@ -713,16 +711,12 @@ Partiellement signifie qu’un fauteuil roulant peut entrer et utiliser les toil
 
     <!-- I'm not sure about my translation. -->
     <!-- Fuzzy -->
-    <string name="label_blocknumber">"Numéro d'entrée"</string>
+    <string name="label_blocknumber">"numéro d'entrée"</string>
     <string name="quest_busStopShelter_covered">"L'arrêt de bus est couvert complétement."</string>
     <string name="quest_ferry_pedestrian_name_title">"Est-ce que %s transporte des passagers ?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_ferry_pedestrian_title">"Transporte-t-il des passagers ?"</string>
+    <string name="quest_ferry_pedestrian_title">"Cette ligne de ferry transporte-t-elle des passagers ?"</string>
     <string name="quest_ferry_motor_vehicle_name_title">"Est-ce que %s transporte des véhicules à moteur ?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_ferry_motor_vehicle_title">"Transporte-t-il des véhicules à moteur ?"</string>
+    <string name="quest_ferry_motor_vehicle_title">"Cette ligne de ferry transporte-t-elle des véhicules à moteur ?"</string>
     <string name="quest_leave_new_note_photos_are_useful">"Ajouter une photo rendra la note beaucoup plus utile."</string>
     <string name="quest_postboxCollectionTimes_name_title">"Quelles sont les heures de relève pour cette boîte postale %s?"</string>
     <string name="create_new_note_hint">"Il est préférable d’écrire la note dans la langue parlée localement ou autrement en anglais."</string>
@@ -744,8 +738,6 @@ Notez que les quêtes pour les parties scindées peuvent apparaître beaucoup pl
 Le séparer maintenant ?"</string>
     <string name="quest_split_way_tutorial">"Cliquez sur le chemin au(x) point(s) où la réponse diffère. Essayez d'être aussi précis que possible, vous pouvez zoomer comme d'habitude."</string>
     <string name="quest_split_way_too_imprecise">"Veuillez zoomer davantage"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_split_way_many_splits_confirmation_description">"Il y a beaucoup de divisions. Vous pourrez toujours rediviser le chemin plus tard."</string>
     <string name="quest_footwayPartSurface_title">"Quelle est la surface du chemin piéton ici?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title">"Est-ce que les toilettes de %s sont accessibles aux fauteuils roulants ?"</string>
@@ -787,4 +779,16 @@ Le séparer maintenant ?"</string>
     <string name="quest_determineRecyclingGlass_description_any_glass">"Exemples de verre souvent refusé: verre trempé, vitres, verrerie, ampoules ou miroirs."</string>
     <string name="about_title_changelog">"Historique des versions"</string>
     <string name="title_whats_new">"Quoi de neuf ?"</string>
+
+    <!-- Ou "Évaluez..." -->
+    <!-- Fuzzy -->
+    <string name="about_title_rate">"Évaluez cette application"</string>
+    <string name="about_summary_rate">"sur Google Play"</string>
+    <string name="about_title_donate">"Donnez"</string>
+
+    <!-- Fuzzy -->
+    <string name="about_summary_donate">"Exprimez votre gratitude !❤️"</string>
+
+    <!-- Fuzzy -->
+    <string name="about_description_donate">"Merci de songer à soutenir cette application ! Pour voir l'état actuel des dons, cliquez sur la plateforme correspondante :"</string>
 </resources>

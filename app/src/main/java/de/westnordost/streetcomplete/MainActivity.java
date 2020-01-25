@@ -341,6 +341,7 @@ public class MainActivity extends AppCompatActivity implements  MainFragment.Lis
 		unregisterReceiver(locationAvailabilityReceiver);
 
 		if (downloadServiceIsBound) unbindService(downloadServiceConnection);
+		downloadServiceIsBound = false;
 		if (downloadService != null)
 		{
 			downloadService.setProgressListener(null);
@@ -351,6 +352,7 @@ public class MainActivity extends AppCompatActivity implements  MainFragment.Lis
 		}
 
 		if (uploadServiceIsBound) unbindService(uploadServiceConnection);
+		uploadServiceIsBound = false;
 		if (uploadService != null)
 		{
 			uploadService.setProgressListener(null);

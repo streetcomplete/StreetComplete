@@ -66,7 +66,7 @@ class ChangelogAdapter(changelog: List<Release>) : ListAdapter<Release>(changelo
     inner class ViewHolder(itemView: View) : ListAdapter.ViewHolder<Release>(itemView) {
         override fun onBind(with: Release) {
             itemView.titleLabel.text = with.title
-            itemView.descriptionLabel.setHtml(with.description)
+            itemView.descriptionLabel.setHtml(addedLinks(with.description))
         }
     }
 }
@@ -76,3 +76,17 @@ data class Release(val title: String, val description: String)
 private fun readChangelog(resources: Resources) =
     resources.getYamlObject<LinkedHashMap<String, String>>(R.raw.changelog)
         .map { Release(it.key, it.value) }
+
+private fun addedLinks(description: String): String {
+    return description
+        .replace(Regex("([\\s,(])#([0-9]*)")) { matchResult ->
+            val s = matchResult.groupValues[1]
+            val issue = matchResult.groupValues[2]
+            "$s<a href=\"https://github.com/westnordost/StreetComplete/issues/$issue\">#$issue</a>"
+        }
+        .replace(Regex("([\\s,(])@(\\w*)")) { matchResult ->
+            val s = matchResult.groupValues[1]
+            val contributor = matchResult.groupValues[2]
+            "$s<a href=\"https://github.com/$contributor\">@$contributor</a>"
+        }
+}
