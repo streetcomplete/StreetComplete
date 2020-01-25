@@ -167,10 +167,9 @@ import groovy.json.JsonOutput
 
 task downloadPresets {
     doLast {
-        def targetDir = "src/main/assets/osmfeatures"
+        def targetDir = "app/src/main/assets/osmfeatures"
         def presetsUrl = new URL("https://raw.githubusercontent.com/openstreetmap/iD/master/data/presets/presets.json")
         def contentsUrl = new URL("https://api.github.com/repos/openstreetmap/iD/contents/dist/locales")
-
         new File("$targetDir/presets.json").withOutputStream { it << presetsUrl.openStream() }
 
         def slurper = new JsonSlurper()
@@ -270,7 +269,7 @@ task pullTranslations {
                     fileUrl = new JsonSlurper().parse(inputStream).result.url
                 }
                 def androidResCode = languageToAndroidResCode[language] ?: language
-                def targetFile = "src/main/res/values-$androidResCode/strings.xml"
+                def targetFile = "app/src/main/res/values-$androidResCode/strings.xml"
                 new File(targetFile).newWriter().withWriter {
                     it << new URL(fileUrl).openStream()
                 }
