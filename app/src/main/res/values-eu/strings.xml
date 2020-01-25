@@ -722,4 +722,9 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_determineRecyclingGlass_description_any_glass">"Maiz onartzen ez den beiraren adibideak: Tenperatutako beira, leihoak, kristaleria, bonbillak edo ispiluak."</string>
     <string name="about_title_changelog">"Bertsioen historiala"</string>
     <string name="title_whats_new">"Zer dago berri?"</string>
+    <string name="about_title_rate">"Baloratu aplikazio hau"</string>
+    <string name="about_summary_rate">"Google Play dendan"</string>
+    <string name="about_title_donate">"Dohaintza"</string>
+    <string name="about_summary_donate">"Erakutsi zure babesa! ❤️"</string>
+    <string name="about_description_donate">"Eskerrik asko aplikazio hau babestea hausnartzeagatik! Oraingo dohaintzak ikusteko eta zurea egiteko, sakatu dagokion plataforman:"</string>
 </resources>

@@ -698,4 +698,16 @@ Per example 1,3 o 2-6."</string>
     <string name="quest_generalFee_title">"Cal pagar per a entrar a %s?"</string>
     <string name="quest_laundrySelfService_title">"Aquesta bugaderia és d'autoservei?"</string>
     <string name="quest_handrail_title">"Les escales tenen barana?"</string>
+    <string name="quest_postboxRef_title">"Quin és el número de referència d'aquesta bústia?"</string>
+    <string name="quest_postboxRef_name_title">"Quin és el número de referència d'aquesta bústia %s?"</string>
+    <string name="quest_ref_answer_noRef">"No hi ha cap número de referència visible..."</string>
+    <string name="quest_recycling_type_batteries">"Bateries"</string>
+    <string name="quest_recycling_type_cans">"Llaunes"</string>
+    <string name="quest_recycling_type_clothes">"Roba"</string>
+    <string name="quest_recycling_type_paper">"Paper"</string>
+    <string name="quest_recycling_type_plastic_generic">"Plàstic"</string>
+    <string name="quest_recycling_type_plastic">"Qualsevol tipus de plàstic"</string>
+    <string name="quest_recycling_type_shoes">"Calçat"</string>
+    <string name="quest_recycling_type_plastic_bottles">"Només ampolles de plàstic"</string>
+    <string name="quest_recycling_type_any_glass">"Qualsevol tipus de vidre"</string>
 </resources>

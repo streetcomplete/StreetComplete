@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="action_settings">"Opções"</string>
-    <string name="oauth_communication_error">"Não foi possível conectar com o servidor de autorização"</string>
+    <string name="oauth_communication_error">"Não foi possível conectar-se ao servidor de autorização"</string>
     <string name="loading">"Carregando"</string>
     <string name="retry">"Repetir"</string>
     <string name="oauth_cancelled">"Autorização cancelada"</string>
@@ -47,7 +47,7 @@
     <string name="quest_openingHours_chooseWeekdaysTitle">"Selecione dias da semana"</string>
     <string name="quest_openingHours_24_7_confirmation">"Em outras palavras, está sempre aberto qualquer hora, todos os dias?"</string>
     <string name="quest_noteDiscussion_title">"Você pode contribuir com essa nota?"</string>
-    <string name="quest_noteDiscussion_no">"Não, esconada"</string>
+    <string name="quest_noteDiscussion_no">"Não, esconda"</string>
     <string name="quest_noteDiscussion_anonymous">"Anônimo"</string>
     <string name="confirmation_discard_title">"Descartar mudanças?"</string>
     <string name="confirmation_discard_positive">"Decartar"</string>
@@ -95,7 +95,7 @@
     <string name="quest_openingHours_answer_seasonal_opening_hours">"Varia pelo mês…"</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">"Sem horários regulares…"</string>
     <string name="quest_openingHours_comment_title">"Descreva o horário de funcionamento"</string>
-    <string name="quest_openingHours_comment_description">"Seja preciso, idealmente use a frese da placa. I.e. \"por consulta\". A ausência de uma placa não significa necessariamente que não há horários de abertura regulares."</string>
+    <string name="quest_openingHours_comment_description">"Seja conciso, de preferência use a frase da placa, ex. “por consulta”. A ausência de uma placa não significa necessariamente que não há horários de abertura regulares."</string>
     <string name="quest_buildingLevels_title">"Quantos andares esse edifício tem?"</string>
     <string name="quest_buildingLevels_title_buildingPart">"Quantos andares essa parte do edifício tem?"</string>
     <string name="quest_roofShape_title">"Que forma básica tem o telhado deste edifício?"</string>
@@ -166,11 +166,11 @@ As informações inseridas são adicionadas diretamente ao OpenStreetMap em seu 
     <string name="quest_name_answer_noName">"Não há nome…"</string>
     <string name="quest_name_answer_noName_confirmation_title">"Certeza, sem nome?"</string>
     <string name="quest_name_noName_confirmation_positive">"Sim, sem nome"</string>
-    <string name="quest_openingHours_add_times">"Adicionar horário de início"</string>
+    <string name="quest_openingHours_add_times">"Adicionar horário de funcionamento"</string>
     <string name="crash_message">"Você gostaria de enviar um relatório de erro para o desenvolvedor?"</string>
-    <string name="crash_title">"Ah não, o StreetComplete pendurou da última vez!"</string>
+    <string name="crash_title">"Ah não, o StreetComplete travou da última vez!"</string>
     <string name="crash_compose_email">"Compor e-mail"</string>
-    <string name="no_email_client">"Você não tem nenhum cliente de email instalado."</string>
+    <string name="no_email_client">"Você não tem um cliente de email instalado."</string>
     <string name="pref_title_keep_screen_on">"Manter a tela ligada"</string>
     <string name="download_server_error">"Erro de conexão buscando missões. Tente novamente mais tarde."</string>
     <string name="upload_server_error">"Erro de conexão subindo respostas. Tente novamente mais tarde."</string>
@@ -715,6 +715,10 @@ Is "Altar" really fitting here? It is about a building type after all. -->
     <string name="label_housenumber">"número da casa"</string>
     <string name="label_blocknumber">"número da quadra"</string>
     <string name="quest_busStopShelter_covered">"Toda a parada é coberta"</string>
+    <string name="quest_ferry_pedestrian_name_title">"%s transporta pedestres?"</string>
+    <string name="quest_ferry_pedestrian_title">"Esta rota de balsa transporta pedestres?"</string>
+    <string name="quest_ferry_motor_vehicle_name_title">"%s transporta veículos automotivos?"</string>
+    <string name="quest_ferry_motor_vehicle_title">"Esta rota de balsa transporta veículos automotivos?"</string>
     <string name="quest_leave_new_note_photos_are_useful">"Adicinar uma foto tornará a nota muito mais útil."</string>
     <string name="quest_postboxCollectionTimes_name_title">"Quais os horários de coleta dessa caixa postal %s?"</string>
 
@@ -734,6 +738,11 @@ Is "Altar" really fitting here? It is about a building type after all. -->
     <string name="quest_leaf_type_broadleaved">"Folhas"</string>
     <string name="quest_leaf_type_mixed">"Ambas"</string>
     <string name="quest_cyclewayPartSurface_title">"Que tipo de pavimento tem a ciclovia aqui?"</string>
+    <string name="quest_generic_answer_differs_along_the_way">"Difere ao longo do caminho…"</string>
+    <string name="quest_split_way_description">"Se difere ao longo do caminho, o primeiro passo é dividi-lo. Depois disso, a missão pode ser resolvida para cada parte separadamente.
+Note que as missões para partes divididas podem demorar a aparecer.
+Dividir agora?"</string>
+    <string name="quest_split_way_tutorial">"Toque no caminho para dividi-lo no(s) ponto(s) em que a resposta difere. Tente ser o mais preciso possível usando o zoom."</string>
     <string name="quest_split_way_too_imprecise">"Por favor aproxime mais"</string>
 
     <!-- Fuzzy -->
@@ -743,4 +752,30 @@ Is "Altar" really fitting here? It is about a building type after all. -->
     <string name="quest_tactilePaving_title_tram">"Esta parada de bonde tem pavimentos táteis?"</string>
     <string name="quest_maxweight_title">"Qual é o limite de peso aqui"</string>
     <string name="quest_maxweight_answer_noSign">"Não há sinal"</string>
+    <string name="quest_maxweight_unusualInput_confirmation_description">"Este peso parece implausível. Tem certeza de que está correto?"</string>
+    <string name="quest_maxweight_answer_other_sign">"A placa é diferente…"</string>
+    <string name="quest_maxweight_unsupported_sign_request_photo">"Você gostaria de deixar uma nota? Uma nota com uma foto ajudará outros mapeadores a cuidar disto."</string>
+    <string name="confirmation_authorize_now_note">"Você pode fazer isto depois nas opções."</string>
+    <string name="quest_generalFee_title">"É cobrada uma taxa para entrar em %s?"</string>
+    <string name="quest_handrail_title">"Esta escada tem corrimão?"</string>
+    <string name="quest_openingHours_no_name_title">"Em que horários este lugar funciona? (%s)"</string>
+    <string name="about_summary_current_version">"Versão atual: %s"</string>
+    <string name="quest_recycling_materials_title">"O que pode ser deixado aqui para reciclagem?"</string>
+    <string name="quest_recycling_materials_note">"Se algo diferente das opções puder ser reciclado aqui, deixe uma nota."</string>
+    <string name="quest_recycling_type_batteries">"Baterias"</string>
+    <string name="quest_recycling_type_cans">"Latas"</string>
+    <string name="quest_recycling_type_clothes">"Roupas"</string>
+    <string name="quest_recycling_type_glass_bottles">"Garrafas e potes de vidro"</string>
+    <string name="quest_recycling_type_paper">"Papel"</string>
+    <string name="quest_recycling_type_plastic_generic">"Plástico"</string>
+    <string name="quest_recycling_type_plastic">"Qualquer plástico"</string>
+    <string name="quest_recycling_type_shoes">"Calçados"</string>
+    <string name="quest_recycling_type_plastic_bottles">"Apenas garrafas de plástico"</string>
+    <string name="quest_recycling_type_plastic_packaging">"Apenas embalagens de plástico"</string>
+    <string name="quest_recycling_type_any_glass">"Qualquer vidro"</string>
+    <string name="about_title_changelog">"Histórico de versões"</string>
+    <string name="title_whats_new">"Novidades"</string>
+    <string name="about_title_rate">"Avalie este app"</string>
+    <string name="about_summary_rate">"no Google Play"</string>
+    <string name="about_title_donate">"Fazer doação"</string>
 </resources>
