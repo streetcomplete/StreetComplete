@@ -1,3 +1,25 @@
+v17.0-beta1: |
+  <p>This release includes a major update of the map rendering library (in order to satisfy new
+  Google Play guidelines). I took this as an oppurtunity to re-do most of the things that concern
+  the map view (#1279, #1606) and thus solve some long-standing issues with it. If any new have been
+  introduced, please report them!</p>
+  <h3>Enhancements</h3>
+  <ul>
+  <li>Faster start-up time of map, better performance</li>
+  <li>Smoother zoom to a quest pin and back</li>
+  <li>No or less of a flash when a solved quest pin is removed from the map</li>
+  <li>Removed the confusing "glued to your location" functionality</li>
+  <li>Create new note marker is now initially on users location if it is in view (#1422)</li>
+  <li>Map now retains map focus on current quest / note when rotating the screen (#1524)</li>
+  <li>Stop downloading quests when user changed activated quests in the settings (#1681)</li>
+  </ul>
+  <h3>Fixes</h3>
+  <ul>
+  <li>Location accuracy now displayed at correct scale during zooming (#1684)</li>
+  <li>Quests pins should not disappear under certain circumstances anymore (#1698, #1689)</li>
+  <li>Quest pin is removed from the map when splitting up the way (#1701)</li>
+  </ul>
+
 v16.1: |
   <ul>
   <li>fix crash on viewing a wheelchair quest when language is Finnish</li>
