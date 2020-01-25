@@ -867,10 +867,6 @@
             "name": "Trinkaĵa vendejo",
             "terms": "trinkaĵoj,trinkajhoj,trinkajxoj,sukoj,drinkaĵoj"
         },
-        "entrance": {
-            "name": "Enirejo/elirejo",
-            "terms": "eniro,eliro,pordego,pordo"
-        },
         "emergency/fire_alarm": {
             "name": "Alarmilo kontraŭfajra",
             "terms": "fajro,alarmbudo,budo"
@@ -1147,10 +1143,6 @@
         },
         "office/travel_agent": {
             "name": "Vojaĝa oficejo"
-        },
-        "piste/downhill": {
-            "name": "Skivojo alpa (malsuprenira)",
-            "terms": "skivojo,skitrako,alpa skiado"
         },
         "highway/footway/unmarked-raised": {
             "name": "Stratpasejo (kun stratĝibo longa)",
@@ -1820,10 +1812,6 @@
             "name": "Horloĝa vendejo",
             "terms": "horloĝoj,horloghoj,horlogxoj,poŝhorloĝoj"
         },
-        "amenity/parking_entrance": {
-            "name": "Parkumeja/garaĝa enveturejo/elveturejo",
-            "terms": "alirejo,enirejo,elirejo"
-        },
         "waterway/riverbank": {
             "name": "Riverbordo"
         },
@@ -1939,8 +1927,7 @@
             "terms": "trancheo,trancxeo,foso,fosaĵo"
         },
         "landuse/churchyard": {
-            "name": "Preĝeja korto",
-            "terms": "preĝejkorto,preghejkorto,pregxejkorto,kirko,korto"
+            "name": "Preĝeja korto"
         },
         "amenity/shelter": {
             "name": "Ŝirmejo",
@@ -2336,9 +2323,6 @@
             "name": "Onda fervojo",
             "terms": "reltobogano"
         },
-        "power/sub_station": {
-            "name": "Elektrosubcentralo"
-        },
         "shop/copyshop": {
             "name": "Fotokopiilejo",
             "terms": "fotokopiilo,lumkopiilo,kopiilo,ksero,xero"
@@ -2447,10 +2431,6 @@
         "shop/games": {
             "name": "Tabullud‑vendejo",
             "terms": "tabulludoj,kartludoj,rolludoj,rpg"
-        },
-        "piste/piste": {
-            "name": "Vintrosporta kurso",
-            "terms": "vintra sporto,skikurso,skivego,neĝtabulado"
         },
         "railway/signal": {
             "name": "Fervojaj trafiklumoj",
@@ -2817,10 +2797,6 @@
         "healthcare/optometrist": {
             "name": "Optometriisto",
             "terms": "okulisto"
-        },
-        "building/kindergarten": {
-            "name": "Konstruaĵo de infanvartejo",
-            "terms": "infanghardeno,infangxardeno,infanoĝardeno,antaŭlernejo,kindergarteno,infanĝardeno,infanvartejo"
         },
         "indoor/room": {
             "name": "Enkostruaĵa ĉambro (kun muroj)",
@@ -3378,10 +3354,6 @@
             "name": "Stukista laborejo",
             "terms": "stukisto,gipsisto,brikmasonisto"
         },
-        "piste/hike": {
-            "name": "Skivojo marŝada",
-            "terms": "bastonmarŝado,skiŝuado,marŝado,vintra marŝado"
-        },
         "amenity/parking_space": {
             "name": "Parkumeja loko (detala)",
             "terms": "parkumejo"
@@ -3474,10 +3446,6 @@
         "building/hotel": {
             "name": "Hotela konstruaĵo",
             "terms": "hotelo"
-        },
-        "shop/anime": {
-            "name": "Animea vendejo",
-            "terms": "mangao,anime,manga,japanbildrakontoj"
         },
         "route/ferry": {
             "name": "Prama kurso",
@@ -3885,10 +3853,6 @@
             "name": "Telfero plurspeca",
             "terms": "skilifto miksa,skilifto plurspeca"
         },
-        "piste/nordic": {
-            "name": "Skivojo nordia (skikurada)",
-            "terms": "nordia skiado,skikurado"
-        },
         "shop/paint": {
             "name": "Farba vendejo",
             "terms": "farboj,kolorigiloj,lakoj,pentriloj"
@@ -4282,10 +4246,6 @@
             "name": "Domo",
             "terms": "loĝejo,konstruaĵo,hejmo"
         },
-        "piste/sleigh": {
-            "name": "Skivojo glitveturila (tirata de hundoj)",
-            "terms": "sledado,glitveturilado,hundosledado"
-        },
         "addr/interpolation": {
             "name": "Interpolado de adresoj"
         },
@@ -4299,10 +4259,6 @@
         "amenity/restaurant/american": {
             "name": "Restoracio (Amerika kuirarto)",
             "terms": "amerika restoracio,usona restoracio"
-        },
-        "piste/sled": {
-            "name": "Skivojo glitveturila",
-            "terms": "sledado,glitveturilado"
         },
         "public_transport/platform/bus": {
             "name": "Haltejo aŭtobusa (atendejo)",
@@ -4452,10 +4408,6 @@
             "name": "Vojo alira",
             "terms": "alirvojo,alirejo,enveturejo,serva vojo"
         },
-        "piste/ice_skate": {
-            "name": "Skivojo glitkurada",
-            "terms": "glitkurado,sketado,glitado"
-        },
         "waterway/drain": {
             "name": "Fosaĵo defluiga",
             "terms": "fosajho defluiga,fosajx defluiga,foso,fosakvo"
@@ -4520,10 +4472,6 @@
             "name": "Motorcikla parkumejo",
             "terms": "motorciklejo,motociklejo"
         },
-        "shop/craft": {
-            "name": "Materialoj-por-metio vendejo",
-            "terms": "metio,metiado,manmetio,artisto,plastikisto,artaĵo"
-        },
         "line": {
             "name": "Linio",
             "terms": "linio"
@@ -4531,10 +4479,6 @@
         "amenity/vehicle_inspection": {
             "name": "Aŭtomobil-kontrolejo",
             "terms": "kontrolstacio,inspektejo"
-        },
-        "amenity/kindergarten": {
-            "name": "Infanvartejo (ISCED 0)",
-            "terms": "infanoghardeno,infanogxardeno,antaŭlernejo,kindergarteno,infanĝardeno,infanghardeno,infangxardeno,infanvartejo,lernludejo"
         },
         "man_made/tower/observation": {
             "name": "Turo observada",
@@ -4631,10 +4575,6 @@
         "office/diplomatic": {
             "name": "Oficejo diplomatia",
             "terms": "diplomatia oficejo"
-        },
-        "piste/downhill/halfpipe": {
-            "name": "Duontubo",
-            "terms": "neĝtabulado,neĝparko"
         },
         "shop/motorcycle_repair": {
             "name": "Motorcikl-riparejo",

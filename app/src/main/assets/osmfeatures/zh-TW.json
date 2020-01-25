@@ -344,6 +344,10 @@
             "name": "領事館",
             "terms": "領事館"
         },
+        "barrier/swing_gate": {
+            "name": "回旋式柵門",
+            "terms": "回旋式柵門"
+        },
         "shop/laundry": {
             "name": "洗衣店",
             "terms": "洗衣店"
@@ -549,6 +553,10 @@
             "name": "高速鐵路",
             "terms": "高速鐵路,高鐵"
         },
+        "shop/clothes/second_hand": {
+            "name": "二手服飾店",
+            "terms": "二手服飾店,二手服裝店"
+        },
         "highway/footway": {
             "name": "步道",
             "terms": "步行徑,人行步道"
@@ -604,8 +612,8 @@
             "terms": "小聖堂"
         },
         "piste/downhill": {
-            "name": "下坡滑雪路線 ",
-            "terms": "下坡滑雪路線"
+            "name": "下坡滑雪道",
+            "terms": "下坡滑雪道"
         },
         "highway/footway/unmarked-raised": {
             "name": "無標記人行穿越道（凸起）",
@@ -654,6 +662,10 @@
         "waterway/canal": {
             "name": "運河",
             "terms": "運河"
+        },
+        "power/plant/source/nuclear": {
+            "name": "核能發電廠",
+            "terms": "核能發電廠"
         },
         "barrier/kerb/raised": {
             "name": "高路緣",
@@ -753,6 +765,10 @@
         "place/quarter": {
             "name": "自治市區",
             "terms": "自治市區"
+        },
+        "power/plant/source/hydro": {
+            "name": "水力發電廠",
+            "terms": "水力發電廠"
         },
         "shop/perfumery": {
             "name": "香水店",
@@ -986,8 +1002,8 @@
             "name": "野生動物園"
         },
         "amenity/parking_entrance": {
-            "name": "停車場入口/出口",
-            "terms": "停車場入口/出口,停車塔入口/出口,立體停車場入口/出口"
+            "name": "停車場入口／出口",
+            "terms": "停車場入口／出口"
         },
         "type/route/light_rail": {
             "name": "輕軌路線",
@@ -1084,6 +1100,10 @@
         "shop/hearing_aids": {
             "name": "助聽器店",
             "terms": "助聽器商店"
+        },
+        "power/plant/source/wind": {
+            "name": "風場",
+            "terms": "風力場"
         },
         "public_transport/platform/trolleybus_point": {
             "name": "無軌電車站",
@@ -1190,6 +1210,10 @@
             "name": "瑜珈教室",
             "terms": "瑜珈教室,瑜珈中心"
         },
+        "power/plant/source/coal": {
+            "name": "燃煤發電廠",
+            "terms": "燃煤發電"
+        },
         "aerialway/t-bar": {
             "name": "T 形纜車",
             "terms": "T 形纜車"
@@ -1205,6 +1229,10 @@
         "shop/cosmetics": {
             "name": "化妝品店",
             "terms": "化妝品店,保養品店,化妝品商店"
+        },
+        "tourism/museum/history": {
+            "name": "歷史博物館",
+            "terms": "歷史博物館"
         },
         "leisure/swimming_pool": {
             "name": "游泳池",
@@ -1464,8 +1492,8 @@
             "terms": "無線通訊塔"
         },
         "building/kindergarten": {
-            "name": "育幼院/幼兒園校舍",
-            "terms": "育幼院/幼兒園校舍,育幼院校舍,幼兒園校舍,幼稚園校舍"
+            "name": "幼稚園建築物",
+            "terms": "幼稚園建築物,幼兒園建築物"
         },
         "indoor/room": {
             "name": "房間",
@@ -1848,6 +1876,10 @@
             "name": "茶行",
             "terms": "茶葉店"
         },
+        "emergency/landing_site": {
+            "name": "緊急著陸區",
+            "terms": "緊急著陸區"
+        },
         "aerialway/chair_lift": {
             "name": "吊椅",
             "terms": "纜椅"
@@ -1879,6 +1911,10 @@
         "man_made/surveillance/camera": {
             "name": "監視攝影機",
             "terms": "監視器"
+        },
+        "amenity/gambling": {
+            "name": "賭博場所",
+            "terms": "賭博場所"
         },
         "natural/saddle": {
             "name": "埡口",
@@ -1931,6 +1967,10 @@
         "building/semidetached_house": {
             "name": "半獨立式房屋",
             "terms": "半獨立式住宅,半獨立式房子"
+        },
+        "shop/clothes/wedding": {
+            "name": "婚紗店",
+            "terms": "婚紗店"
         },
         "playground/seesaw": {
             "name": "蹺蹺板",
@@ -2029,8 +2069,8 @@
             "name": "水池"
         },
         "piste/nordic": {
-            "name": "北歐或越野滑雪道/滑雪道",
-            "terms": "北歐或越野滑雪道/滑雪道"
+            "name": "越野滑雪道",
+            "terms": "越野滑雪道"
         },
         "shop/paint": {
             "name": "油漆行",
@@ -2043,6 +2083,10 @@
         "natural/fell": {
             "name": "高原荒地",
             "terms": "高原荒地"
+        },
+        "type/enforcement/maxspeed": {
+            "name": "法定速限",
+            "terms": "法定速限"
         },
         "amenity/research_institute": {
             "name": "研究機構場地",
@@ -2181,6 +2225,10 @@
         "amenity/vending_machine/cigarettes": {
             "name": "香菸販賣機",
             "terms": "香菸自動販賣機,販賣機"
+        },
+        "historic/building": {
+            "name": "歷史建築",
+            "terms": "歷史建築"
         },
         "leisure/track/horse_racing_point": {
             "name": "賽馬道",
@@ -2331,8 +2379,8 @@
             "terms": "服務性道路、設施道路、場域道路、輔助道路"
         },
         "piste/ice_skate": {
-            "name": "滑冰滑雪道",
-            "terms": "滑冰滑雪道"
+            "name": "溜冰路徑",
+            "terms": "溜冰路徑"
         },
         "public_transport/platform/tram": {
             "name": "電車月台",
@@ -2371,8 +2419,8 @@
             "terms": "足科醫師,足科醫生"
         },
         "amenity/kindergarten": {
-            "name": "育幼院/幼兒園範圍",
-            "terms": "育幼院/幼稚園,育幼院/幼稚園用地,育幼院,幼兒園,幼稚園,Preschool,Kindergarten"
+            "name": "幼稚園",
+            "terms": "幼稚園,幼兒園"
         },
         "craft/carpet_layer": {
             "name": "地氈工程",
@@ -2422,8 +2470,8 @@
             "terms": "手工藝"
         },
         "piste/downhill/halfpipe": {
-            "name": "半管",
-            "terms": "U 型管"
+            "name": "半管道滑雪",
+            "terms": "半管道滑雪"
         },
         "shop/motorcycle_repair": {
             "name": "摩托車維修店",
@@ -2569,8 +2617,16 @@
             "name": "道路反射鏡",
             "terms": "反射鏡,交通反射鏡"
         },
+        "shop/car/second_hand": {
+            "name": "二手車經銷商",
+            "terms": "二手車經銷商"
+        },
         "railway/station": {
             "name": "火車站"
+        },
+        "amenity/lavoir": {
+            "name": "洗手台",
+            "terms": "洗手設施"
         },
         "office/therapist": {
             "name": "治療師辦公室",
@@ -2591,6 +2647,10 @@
         "attraction/dark_ride": {
             "name": "黑暗探險",
             "terms": "黑暗探險"
+        },
+        "office/government/prosecutor": {
+            "name": "檢查署",
+            "terms": "檢查署,檢察署"
         },
         "building/school": {
             "name": "中小學建築物",
@@ -2816,6 +2876,10 @@
             "name": "報紙/雜誌攤",
             "terms": "報刊攤,報刊商店"
         },
+        "waterway/tidal_channel": {
+            "name": "潮流道",
+            "terms": "潮流道"
+        },
         "healthcare": {
             "name": "醫療設施",
             "terms": "醫療設施"
@@ -2922,8 +2986,8 @@
             "terms": "飲料店,手搖杯"
         },
         "entrance": {
-            "name": "入口/出口",
-            "terms": "入口/出口"
+            "name": "入口／出口",
+            "terms": "入口／出口"
         },
         "emergency/fire_alarm": {
             "name": "火災警鈴",
@@ -3497,9 +3561,12 @@
             "name": "塗鴉",
             "terms": "塗鴉"
         },
+        "power/plant/source/gas": {
+            "name": "燃氣發電廠",
+            "terms": "燃氣發電廠"
+        },
         "landuse/churchyard": {
-            "name": "教堂院落",
-            "terms": "教堂用地"
+            "name": "教堂院落"
         },
         "amenity/shelter": {
             "name": "涼亭",
@@ -3736,9 +3803,6 @@
             "name": "碰碰車",
             "terms": "碰碰車"
         },
-        "power/sub_station": {
-            "name": "變電所"
-        },
         "shop/copyshop": {
             "name": "影印店",
             "terms": "影印行"
@@ -3790,8 +3854,8 @@
             "terms": "桌遊店"
         },
         "piste/piste": {
-            "name": "冬季運動步道",
-            "terms": "冬季運動步道"
+            "name": "滑雪道",
+            "terms": "滑雪道"
         },
         "craft/rigger": {
             "name": "吊運服務",
@@ -3815,6 +3879,10 @@
         "shop/shoes": {
             "name": "鞋店",
             "terms": "鞋店"
+        },
+        "power/plant/source/solar": {
+            "name": "太陽能農場",
+            "terms": "太陽能農場"
         },
         "shop/laundry/self_service": {
             "name": "自助洗衣",
@@ -4339,8 +4407,8 @@
             "terms": "泥地"
         },
         "piste/hike": {
-            "name": "雪鞋或冬季健行步道",
-            "terms": "雪鞋或冬季健行步道"
+            "name": "雪靴行走／冬季健行路徑",
+            "terms": "雪靴行走／冬季健行路徑"
         },
         "building/greenhouse": {
             "name": "溫室",
@@ -4402,8 +4470,8 @@
             "terms": "酒店建築物,旅店建築物,賓館建築物"
         },
         "shop/anime": {
-            "name": "動漫店",
-            "terms": "動漫店"
+            "name": "動畫／漫畫店",
+            "terms": "動畫／漫畫店"
         },
         "route/ferry": {
             "name": "渡輪航線",
@@ -4837,8 +4905,8 @@
             "name": "礫灘"
         },
         "piste/sleigh": {
-            "name": "雪橇滑雪道",
-            "terms": "雪橇滑雪道"
+            "name": "非自行雪橇滑雪道",
+            "terms": "非自行雪橇滑雪道"
         },
         "leisure/marina": {
             "name": "遊艇碼頭",
@@ -4958,8 +5026,8 @@
             "terms": "機車停車場,速克達停車場,摩托車停車場"
         },
         "shop/craft": {
-            "name": "工藝品店",
-            "terms": "工藝品店,工藝品商店,手工藝店,手作工坊"
+            "name": "手工藝品店",
+            "terms": "手工藝品店"
         },
         "line": {
             "name": "線段",

@@ -70,9 +70,6 @@
         "craft/sawmill": {
             "name": "மரம் அறுக்கும் ஆலை"
         },
-        "power/sub_station": {
-            "name": "துணைநிலையம்"
-        },
         "office/research": {
             "name": "ஆராய்ச்சி அலுவலகம்"
         },
@@ -673,9 +670,6 @@
         "amenity/bench": {
             "name": "விசுப்பலகை"
         },
-        "entrance": {
-            "name": "நுழைவு / வெளியேறு"
-        },
         "shop/chemist": {
             "name": "மருந்தகம்"
         },
@@ -838,9 +832,6 @@
         },
         "building/hotel": {
             "name": "விடுதிக் கட்டிடம்"
-        },
-        "shop/anime": {
-            "name": "பசைக் கடை"
         }
     }
 }

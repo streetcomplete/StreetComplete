@@ -903,10 +903,6 @@
             "name": "חנות משקאות",
             "terms": "חנות משקאות"
         },
-        "entrance": {
-            "name": "כניסה/יציאה",
-            "terms": "כניסה/יציאה"
-        },
         "emergency/fire_alarm": {
             "name": "תיבת שיחה לכיבוי אש",
             "terms": "מכבי אש,לוחמי אש,לוחמת אש,כיבוי אש"
@@ -1199,10 +1195,6 @@
         },
         "office/travel_agent": {
             "name": "סוכנות נסיעות"
-        },
-        "piste/downhill": {
-            "name": "סקי אלפיני",
-            "terms": "גלישת מורד,סקי ראן,דאונהיל,אלפיני"
         },
         "highway/footway/unmarked-raised": {
             "name": "מעבר חצייה בלתי מסומן (מוגבה)",
@@ -1907,10 +1899,6 @@
             "name": "שען",
             "terms": "שענית"
         },
-        "amenity/parking_entrance": {
-            "name": "כניסה לחניון",
-            "terms": "כניסה לחניון"
-        },
         "waterway/riverbank": {
             "name": "גדות נהר"
         },
@@ -2026,8 +2014,7 @@
             "terms": "חפיר,חפירה,חפרה,מחפורת,ביצור,בצור"
         },
         "landuse/churchyard": {
-            "name": "חצר כנסייה",
-            "terms": "חצר כנסייה"
+            "name": "חצר כנסייה"
         },
         "amenity/shelter": {
             "name": "מקלט",
@@ -2393,6 +2380,10 @@
             "name": "פרסה בלבד",
             "terms": "פרסה בלבד"
         },
+        "tourism/museum/history": {
+            "name": "מוזיאון היסטוריה",
+            "terms": "מוצגים,היסטוריה,היכל,מוסד"
+        },
         "leisure/swimming_pool": {
             "name": "בריכת שחייה",
             "terms": "בריכת שחייה"
@@ -2438,9 +2429,6 @@
         "attraction/roller_coaster": {
             "name": "רכבת הרים",
             "terms": "רכבת הרים"
-        },
-        "power/sub_station": {
-            "name": "תחנה תת קרקעית"
         },
         "shop/copyshop": {
             "name": "חנות  העתקות",
@@ -2550,10 +2538,6 @@
         "shop/games": {
             "name": "חנות משחקי קופסה",
             "terms": "חנות גיקים,חנות פנזטיה,פנטזיה,הרפתקאות מבוכים ודרקונים,קלפים,קלפי משחק,משחקי תפקידים,משחקי אסטרטגיה,משחקי מלחמה,חנות משחקים"
-        },
-        "piste/piste": {
-            "name": "שבילי ספורט חורף",
-            "terms": "שבילי ספורט חורפי,שבילי טיולי חורף,מסלול טיול חורף,מסלול טיול שלג"
         },
         "railway/signal": {
             "name": "תמרור רכבת",
@@ -2716,6 +2700,10 @@
         "club": {
             "name": "מועדון",
             "terms": "מועדון"
+        },
+        "waterway/fish_pass": {
+            "name": "מעבר דגים",
+            "terms": "מעבר צלופחים,מעבר דגה,מדרגות דגים,דרך דגים,סולם דגים,נדידת דגים"
         },
         "office/private_investigator": {
             "name": "משרד חוקר פרטי",
@@ -2917,10 +2905,6 @@
         "healthcare/optometrist": {
             "name": "אופטומטריסט",
             "terms": "אופטומטריסטית"
-        },
-        "building/kindergarten": {
-            "name": "גן חובה",
-            "terms": "גן חובה"
         },
         "indoor/room": {
             "name": "חדר"
@@ -3490,10 +3474,6 @@
             "name": "עבודת גבס",
             "terms": "מגבס,גבס,איש גבס"
         },
-        "piste/hike": {
-            "name": "שביל חורף",
-            "terms": "שביל שלג"
-        },
         "amenity/parking_space": {
             "name": "אזור חניה",
             "terms": "אזור חניה"
@@ -3593,10 +3573,6 @@
         "building/hotel": {
             "name": "מלון",
             "terms": "מלון"
-        },
-        "shop/anime": {
-            "name": "חנות אנימה",
-            "terms": "חנות סרטים מצוירים יפנים"
         },
         "route/ferry": {
             "name": "נתיב מעבורת",
@@ -3747,6 +3723,10 @@
         "man_made/surveillance/camera": {
             "name": "מצלמת מעקב",
             "terms": "מצלמת ריגול,מצלמת אבטחה,מצלמת אינטרנט,זיהוי לוחיות רישוי, מעקב,מעגל סגור"
+        },
+        "amenity/gambling": {
+            "name": "היכל הימורים",
+            "terms": "קזינו,הימורים,סלוט מאשין,קולטה,פוקר,סלוטס,מכונות הימורים,בלק ג׳ק,בינגו,התערבות"
         },
         "building/hut": {
             "name": "בקתה",
@@ -4015,10 +3995,6 @@
             "name": "רכבל מעורב",
             "terms": "רכבל מעורב"
         },
-        "piste/nordic": {
-            "name": "שביל סקי חורף",
-            "terms": "שביל סקי חורף,שביל סקי נורדי"
-        },
         "shop/paint": {
             "name": "חנות צבע",
             "terms": "חנות צבע"
@@ -4034,6 +4010,10 @@
         "natural/fell": {
             "name": "תל",
             "terms": "תל"
+        },
+        "type/enforcement/maxspeed": {
+            "name": "אכיפת מגבלת מהירות",
+            "terms": "רדאר,מכמונת,מצלמה,מצלמת מהירות,מהירות מרבית,מהירות מקסימלית,מהירות מקסימאלית"
         },
         "amenity/research_institute": {
             "name": "מתחם מכון מחקר",
@@ -4429,10 +4409,6 @@
             "name": "בית",
             "terms": "בית"
         },
-        "piste/sleigh": {
-            "name": "מסלול מזחלות סגורות",
-            "terms": "מסלול מזחלות,מזחלת"
-        },
         "addr/interpolation": {
             "name": "שיטת חלוקת כתובות"
         },
@@ -4446,10 +4422,6 @@
         "amenity/restaurant/american": {
             "name": "מסעדה אמריקאית",
             "terms": "דיינר,גריל,פנקייק"
-        },
-        "piste/sled": {
-            "name": "מסלול מזחלות פתוחות",
-            "terms": "מסלול מזחלות,מזחלת"
         },
         "public_transport/platform/bus": {
             "name": "רציף אוטובוסים"
@@ -4602,10 +4574,6 @@
             "name": "כביש שירות",
             "terms": "כביש שירות"
         },
-        "piste/ice_skate": {
-            "name": "מסלול החלקה על הקרח",
-            "terms": "מסלול מחליקיים,החלקה"
-        },
         "waterway/drain": {
             "name": "נקז",
             "terms": "נקז"
@@ -4666,10 +4634,6 @@
             "name": "חניית אופנועים",
             "terms": "חניית אופנועים"
         },
-        "shop/craft": {
-            "name": "חנות חפצי אומנות",
-            "terms": "חנות דברי אומנות"
-        },
         "line": {
             "name": "קו",
             "terms": "קו"
@@ -4681,10 +4645,6 @@
         "amenity/recycling/container/green_waste": {
             "name": "מכל פסולת ירוקה",
             "terms": "קומפוסט,ריקבון,פסולת אורגנית"
-        },
-        "amenity/kindergarten": {
-            "name": "גן חובה",
-            "terms": "גן חובה"
         },
         "man_made/tower/observation": {
             "name": "מגדל תצפית",
@@ -4784,10 +4744,6 @@
         "office/diplomatic": {
             "name": "משרד דיפלומטי",
             "terms": "משרד שגרירות,בית שגריר"
-        },
-        "piste/downhill/halfpipe": {
-            "name": "חצי צינור",
-            "terms": "סקי,חצי צינור,גלישה"
         },
         "shop/motorcycle_repair": {
             "name": "מוסך אופנועים",

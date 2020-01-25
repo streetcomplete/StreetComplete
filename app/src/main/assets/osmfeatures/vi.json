@@ -849,10 +849,6 @@
             "name": "Tiệm Đồ uống",
             "terms": "tiệm đồ uống, tiệm thức uống, tiệm nước uống, nơi bán đồ uống, chỗ bán đồ uống, quầy bán đồ uống, cửa hàng đồ uống, cửa hàng bán đồ uống, tiệm bán đồ uống, tiem do uong, tiem thuc uong, tiem nuoc uong, noi ban do uong, cho ban do uong, quay ban do uong, cua hang do uong, cua hang ban do uong, tiem ban do uong"
         },
-        "entrance": {
-            "name": "Lối Ra vào",
-            "terms": "lối vào, cửa ra vào, cửa ra, cửa vào, cổng vào, loi vao, cua ra vao, cua ra, cua vao, cong vao"
-        },
         "emergency/fire_alarm": {
             "name": "Hộp Điện thoại Báo cháy",
             "terms": "hộp điện thoại báo cháy, hộp cuộc gọi báo cháy, hộp khẩn cấp cứu hỏa, hộp khẩn cấp cứu hoả"
@@ -1130,10 +1126,6 @@
         "office/travel_agent": {
             "name": "Văn phòng Du lịch"
         },
-        "piste/downhill": {
-            "name": "Tuyến đường Trượt tuyết Dốc xuống",
-            "terms": "tuyến đường trượt tuyết dốc xuống, tuyến đường mòn trượt tuyết dốc xuống, tuyen duong truot tuyet doc xuong, tuyen duong mon truot tuyet, doc xuong"
-        },
         "highway/footway/unmarked-raised": {
             "name": "Lối Qua đường Nổi lên Không có Vạch",
             "terms": "lối băng qua đường nổi lên không có vạch, lối qua đường nổi lên không có vạch, loi bang qua duong noi len khong co vach, loi qua duong noi len khong co vach"
@@ -1187,8 +1179,8 @@
             "terms": "hàng rào cây, hàng cây, hang rao cay, hang cay"
         },
         "shop/kitchen": {
-            "name": "Tiệm Trang trí Nội thất",
-            "terms": "tiem trang tri noi that, cua hang trang tri noi that, cua hieu trang tri noi that"
+            "name": "Tiệm Thiết kế Phòng bếp",
+            "terms": "tiệm thiết kế phòng bếp, cửa hàng thiết kế phòng bếp, tiệm trang trí nội thất phòng bếp, cửa hàng trang trí nội thất phòng bếp, tiem thiet ke phong bep, cua hang thiet ke phong bep, tiem trang tri noi that phong bep, cua hang trang tri noi that phong bep"
         },
         "building/garages": {
             "name": "Dãy Ga ra",
@@ -1767,8 +1759,8 @@
             "terms": "tiệm đồng hồ đeo tay, cửa hàng đồng hồ đeo tay, tiem dong ho deo tay, cua hang dong ho deo tay"
         },
         "amenity/parking_entrance": {
-            "name": "Lối Ra vào Ga ra",
-            "terms": "lối ra vào ga ra, lối ra vào ga-ra, lối ra ga ra, lối vào ga ra, lối ra ga-ra, lối ra ga-ra, loi ra vao ga ra, loi ra vao ga-ra, loi ra ga ra, loi vao ga ra, loi ra ga-ra, loi ra ga-ra"
+            "name": "Lối Ra vào Bãi Đậu xe Cao tầng",
+            "terms": "lối ra vào bãi đậu xe cao tầng, lối ra vào bãi đỗ xe cao tầng, lối ra vào bãi giữ xe cao tầng, lối ra vào bãi đậu xe nhiều tầng, lối ra vào bãi đỗ xe nhiều tầng, lối ra vào bãi giữ xe nhiều tầng, loi ra vao bai dau xe cao tang, loi ra vao bai do xe cao tang, loi ra vao bai giu xe cao tang, loi ra vao bai dau xe nhieu tang, loi ra vao bai do xe nhieu tang, loi ra vao bai giu xe nhieu tang"
         },
         "landuse": {
             "name": "Sử dụng Đất"
@@ -1876,8 +1868,7 @@
             "terms": "mương, hào, rãnh, muong, hao, ranh"
         },
         "landuse/churchyard": {
-            "name": "Sân Nhà thờ",
-            "terms": "sân nhà thờ, khu đất nhà thờ, sân nhà thờ chính tòa, khu đất nhà thờ chính tòa, sân nhà thờ chính toà, khu đất nhà thờ chính toà, sân nhà thờ chánh tòa, khu đất nhà thờ chánh tòa, sân nhà thờ chánh toà, khu đất nhà thờ chánh tòa, san nha tho, khu dat nha tho, san nha tho chinh toa, khu dat nha tho chinh toa, san nha tho chanh toa, khu dat nha tho chanh toa"
+            "name": "Sân Nhà thờ"
         },
         "amenity/shelter": {
             "name": "Nhà trú",
@@ -2040,6 +2031,10 @@
         "shop/lottery": {
             "name": "Tiệm Xổ số",
             "terms": "quầy xổ số, quầy vé xổ số, tiệm xổ số, tiệm vé xổ số, cửa hàng xổ số, cửa hàng vé xổ số, quán xổ số, quán vé xổ số, nơi bán vé xổ số, nơi mua vé xổ số, quay xo so, quay ve xo so, tiem xo so, tiem ve xo so, cua hang xo so, cua hang ve xo so, quan xo so, quan ve xo so, noi ban ve xo so, noi mua ve xo so"
+        },
+        "amenity/dressing_room": {
+            "name": "Phòng Thay đồ",
+            "terms": "phòng thay đồ, phòng thay áo, phòng thay quần áo, phong thay do, phong thay ao, phong thay quan ao"
         },
         "leisure/dog_park": {
             "name": "Công viên dành cho Chó",
@@ -2256,9 +2251,6 @@
             "name": "Tàu lượn Siêu tốc",
             "terms": "tàu lượn siêu tốc, tàu lộn siêu tốc, tàu lượn vòng siêu tốc, tàu lộn vòng siêu tốc, tau luon sieu toc, tau lon sieu toc, tau luon vong sieu toc, tau lon vong sieu toc"
         },
-        "power/sub_station": {
-            "name": "Trạm Điện Phụ"
-        },
         "shop/copyshop": {
             "name": "Tiệm Sao chép",
             "terms": "tiệm sao chép, cửa hàng sao chép, cửa hiệu sao chép, in ấn, máy in, máy quét, fax, tiem sao chep, cua hang sao chep, cua hieu sao chep, in an, may in, may quet"
@@ -2367,10 +2359,6 @@
         "attraction/bungee_jumping": {
             "name": "Nhảy Bungee",
             "terms": "nhảy bungee, nhảy bungy, nhảy dây bungee, nhảy dây bungy, nhay bungee, nhay bungy, nhay day bungee, nhay day bungy"
-        },
-        "piste/piste": {
-            "name": "Đường mòn Thể thao Mùa đông",
-            "terms": "đường mòn thể thao mùa đông, trượt tuyết, ski, xki, nordic, băng đồng, việt dã, xuống dốc, an pơ, an-pơ, anpơ, trượt ván trên tuyết, xe trượt tuyết, giày tuyết, trượt băng, duong mon the thao mua dong, truot tuyet, bang dong, viet da, xuong doc, an po, an-po, anpo, truot van tren tuyet, xe truot tuyet, giay tuyet, truot bang"
         },
         "railway/signal": {
             "name": "Đèn Đường sắt",
@@ -2725,10 +2713,6 @@
             "name": "Đo mắt",
             "terms": "người đo mắt, nhân viên đo thị lực, nhà nhãn khoa, bác sĩ nhãn khoa, bác sỹ nhãn khoa, nguoi do mat, nhan vien do thi luc, nha nhan khoa, bac si nhan khoa, bac sy nhan khoa"
         },
-        "building/kindergarten": {
-            "name": "Nhà trẻ",
-            "terms": "nhà trẻ, nhà giữ trẻ, trường mẫu giáo, trường mầm non, nha tre, nha giu tre, truong mau giao, truong mam non"
-        },
         "indoor/room": {
             "name": "Phòng",
             "terms": "phòng, buồng, phòng ngoài, tiền sảnh, buồng ngủ, phong, buong, phong ngoai, tien sanh, buong ngu"
@@ -2906,6 +2890,10 @@
         "office/association": {
             "name": "Tổ chức Phi lợi nhuận",
             "terms": "tổ chức phi lợi nhuận, tổ chức bất vụ lợi, to chuc phi loi nhuan, to chuc bat vu loi"
+        },
+        "entrance/emergency": {
+            "name": "Lối thoát Khẩn cấp",
+            "terms": "lối thoát khẩn cấp, lối ra khẩn cấp, loi thoat khan cap, loi ra khan cap"
         },
         "highway/services": {
             "name": "Trạm Dừng chân",
@@ -3240,10 +3228,6 @@
             "name": "Trát Vữa",
             "terms": "thợ trát vữa, người trát vữa, tho trat vua, nguoi trat vua"
         },
-        "piste/hike": {
-            "name": "Đường mòn Giày tuyết",
-            "terms": "đường mòn giày tuyết, đường mòn đi bộ giày tuyết, đường mòn mùa đông, duong mon giay tuyet, duong mon di bo giay tuyet, duong mon mua dong"
-        },
         "amenity/parking_space": {
             "name": "Chỗ Đậu xe",
             "terms": "chỗ đậu xe, chỗ đỗ xe, nơi đậu xe, nơi đỗ xe, cho dau xe, cho do xe, noi dau xe, noi do xe"
@@ -3333,10 +3317,6 @@
             "name": "Tòa nhà Khách sạn",
             "terms": "tòa nhà khách sạn, toà nhà khách sạn"
         },
-        "shop/anime": {
-            "name": "Tiệm Anime",
-            "terms": "tiệm anime, cửa hàng anime, cửa hiệu anime, quán anime, tiem anime, cua hang anime, cua hieu anime, quan anime"
-        },
         "route/ferry": {
             "name": "Tuyến đường Phà",
             "terms": "phà, chuyến phà, bến phà, lộ trình phà, tuyến đường phà, đường phà, pha, chuyen pha, ben pha, lo trinh pha, tuyen duong pha, duong pha"
@@ -3351,6 +3331,10 @@
         },
         "emergency/designated": {
             "name": "Chỉ định cho Dịch vụ Khẩn cấp"
+        },
+        "man_made/beehive": {
+            "name": "Tổ ong",
+            "terms": "tổ ong, to ong"
         },
         "highway/steps": {
             "name": "Cầu thang",
@@ -4011,6 +3995,10 @@
             "name": "Lợp Ngói",
             "terms": "thợ lợp ngói, thợ lợp mái, thợ lắp ngói, thợ lắp ngói, thợ lát ngói, thợ lát mái, người lợp ngói, người lợp mái, người lắp ngói, người lắp ngói, người lát ngói, người lát mái, tho lop ngoi, tho lop mai, tho lap ngoi, tho lap ngoi, tho lat ngoi, tho lat mai, nguoi lop ngoi, nguoi lop mai, nguoi lap ngoi, nguoi lap ngoi, nguoi lat ngoi, nguoi lat mai"
         },
+        "historic/building": {
+            "name": "Tòa nhà Lịch sử",
+            "terms": "tòa nhà lịch sử, toà nhà lịch sử, toa nha lich su"
+        },
         "leisure/track/horse_racing_point": {
             "name": "Đường Đua Ngựa",
             "terms": "đường đua ngựa, trường đua ngựa, duong dua ngua, truong dua ngua"
@@ -4321,10 +4309,6 @@
             "name": "Chỗ Đậu Xe máy",
             "terms": "chỗ đậu xe máy, đậu xe máy, chỗ đậu mô-tô, chỗ đậu mô tô, đậu mô-tô, chỗ đậu mô tô, chỗ đậu xe hai bánh, đậu xe hai bánh, chỗ đậu xe ba bánh, đậu xe ba bánh, cho dau xe may, dau xe may, cho dau mo-to, cho dau mo to, dau mo-to, dau mo to, cho dau xe hai banh, dau xe hai banh, cho dau xe ba banh, dau xe ba banh"
         },
-        "shop/craft": {
-            "name": "Tiệm Bán đồ Thủ công",
-            "terms": "tiệm bán đồ thủ công, cửa hàng bán đồ thủ công, cửa hiệu bán đồ thủ công, thủ công mỹ nghệ, nội thất, sơn, hoa giả, giấy, bút, khắc gỗ, tiem ban do thu cong, cua hang ban do thu cong, cua hieu ban do thu cong, thu cong my nghe, noi that, son, hoa gia, giay, but, khac go"
-        },
         "line": {
             "name": "Đường kẻ",
             "terms": "đường kẻ, đường, lối, duong ke, duong, loi"
@@ -4332,10 +4316,6 @@
         "amenity/vehicle_inspection": {
             "name": "Trạm Kiểm tra Xe",
             "terms": "trạm kiểm tra xe, trạm kiểm tra ô tô, trạm kiểm tra ô-tô, trạm kiểm tra ôtô, trạm kiểm tra khí thải, tram kiem tra xe, tram kiem tra o to, tram kiem tra o-to, tram kiem tra oto, tram kiem tra khi thai"
-        },
-        "amenity/kindergarten": {
-            "name": "Sân Nhà trẻ",
-            "terms": "sân nhà trẻ, sân nhà giữ trẻ, sân trường mẫu giáo, sân trường mầm non, san nha tre, san nha giu tre, san truong mau giao, san truong mam non"
         },
         "man_made/tower/observation": {
             "name": "Tháp Quan sát",
@@ -4372,6 +4352,10 @@
         "tourism/attraction": {
             "name": "Điểm Thu hút Du lịch",
             "terms": "điểm thu hút khách du lịch, khu vực thu hút khách du lịch, chỗ thu hút khách du lịch, nơi thu hút khách du lịch, diem thu hut khach du lich, khu vuc thu hut khach du lich, cho thu hut khach du lich, noi thu hut khach du lich"
+        },
+        "advertising/board": {
+            "name": "Bảng Tin nhắn",
+            "terms": "bảng tin nhắn, bảng nhắn tin, bang tin nhan, bang nhan tin"
         },
         "man_made": {
             "name": "Công trình"
@@ -4427,10 +4411,6 @@
         "shop/trade": {
             "name": "Tiệm Công nghiệp",
             "terms": "tiệm công nghiệp, cửa hàng công nghiệp, tiệm vật liệu công nghiệp, cửa hàng vật liệu công nghiệp, tiệm máy móc công nghiệp, cửa hàng máy móc công nghiệp, tiem cong nghiẹp, cua hang cong nghiep, tiem vat lieu cong nghiep, cua hang vat lieu cong nghiep, tiem may moc cong nghiep, cua hang may moc cong nghiep"
-        },
-        "piste/downhill/halfpipe": {
-            "name": "Nửa ống",
-            "terms": "nửa ống, trượt nửa ống, nua ong, truot nua ong"
         },
         "shop/motorcycle_repair": {
             "name": "Tiệm Sửa Xe máy",

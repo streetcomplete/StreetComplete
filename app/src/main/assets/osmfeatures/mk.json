@@ -264,6 +264,9 @@
         "office/diplomatic/consulate": {
             "name": "Конзулат"
         },
+        "barrier/swing_gate": {
+            "name": "Крилна порта"
+        },
         "shop/laundry": {
             "name": "Перачница"
         },
@@ -420,6 +423,9 @@
         "railway/rail/highspeed": {
             "name": "Големобрзинска железница"
         },
+        "shop/clothes/second_hand": {
+            "name": "Продавница за половна облека"
+        },
         "highway/footway": {
             "name": "Пешачка патека"
         },
@@ -501,6 +507,9 @@
         "waterway/canal": {
             "name": "Канал"
         },
+        "power/plant/source/nuclear": {
+            "name": "Нуклеарна електрана"
+        },
         "barrier/kerb/raised": {
             "name": "Подигнат рабник"
         },
@@ -575,6 +584,9 @@
         },
         "place/quarter": {
             "name": "Маало / Четврт"
+        },
+        "power/plant/source/hydro": {
+            "name": "Хидроелектрана"
         },
         "shop/perfumery": {
             "name": "Парфимерија"
@@ -829,6 +841,9 @@
         "shop/hearing_aids": {
             "name": "Продавница за слушни помагала"
         },
+        "power/plant/source/wind": {
+            "name": "Ветропарк"
+        },
         "public_transport/platform/trolleybus_point": {
             "name": "Тролејбуска постојка"
         },
@@ -910,6 +925,9 @@
         "leisure/fitness_centre/yoga": {
             "name": "Јога"
         },
+        "power/plant/source/coal": {
+            "name": "Јаглена електрана"
+        },
         "aerialway/t-bar": {
             "name": "Влекач „Т“"
         },
@@ -921,6 +939,9 @@
         },
         "shop/cosmetics": {
             "name": "Продавница за козметика"
+        },
+        "tourism/museum/history": {
+            "name": "Историски музеј"
         },
         "leisure/swimming_pool": {
             "name": "Базен"
@@ -1417,6 +1438,9 @@
         "shop/tea": {
             "name": "Продавница за чај"
         },
+        "emergency/landing_site": {
+            "name": "Итно слетувалиште"
+        },
         "aerialway/chair_lift": {
             "name": "Жичничка клупа"
         },
@@ -1440,6 +1464,9 @@
         },
         "man_made/surveillance/camera": {
             "name": "Видеонадзор"
+        },
+        "amenity/gambling": {
+            "name": "Сала за коцкање"
         },
         "natural/saddle": {
             "name": "Седло"
@@ -1479,6 +1506,9 @@
         },
         "building/semidetached_house": {
             "name": "Двојна куќа"
+        },
+        "shop/clothes/wedding": {
+            "name": "Продавница за свадбена облека"
         },
         "playground/seesaw": {
             "name": "Клацкалка"
@@ -1556,7 +1586,7 @@
             "name": "Слив"
         },
         "piste/nordic": {
-            "name": "Патека за норидско скијање или скијачко трчање"
+            "name": "Патека за норидско скијање"
         },
         "shop/paint": {
             "name": "Бои и лакови"
@@ -1566,6 +1596,9 @@
         },
         "natural/fell": {
             "name": "Фјал"
+        },
+        "type/enforcement/maxspeed": {
+            "name": "Надзор на брзина"
         },
         "amenity/research_institute": {
             "name": "Истражувачки институт"
@@ -1672,6 +1705,9 @@
         "amenity/vending_machine/cigarettes": {
             "name": "Автомат за цигари"
         },
+        "historic/building": {
+            "name": "Историска градба"
+        },
         "leisure/track/horse_racing_point": {
             "name": "Хиподромска патека"
         },
@@ -1727,7 +1763,7 @@
             "name": "Американски ресторан"
         },
         "piste/sled": {
-            "name": "Патека за санки"
+            "name": "Спуст за санки"
         },
         "public_transport/platform/bus": {
             "name": "Автобуски перон"
@@ -1787,7 +1823,7 @@
             "name": "Опслужен пат"
         },
         "piste/ice_skate": {
-            "name": "Лизгачка патека"
+            "name": "Лизгачка патека на отворено"
         },
         "public_transport/platform/tram": {
             "name": "Трамвајски перон"
@@ -1856,7 +1892,7 @@
             "name": "Ракотворби"
         },
         "piste/downhill/halfpipe": {
-            "name": "Полуцевка"
+            "name": "Полуцевка за зимски спортови"
         },
         "shop/motorcycle_repair": {
             "name": "Поправка на мотоцикли"
@@ -1969,8 +2005,14 @@
         "highway/traffic_mirror": {
             "name": "Сообраќајно огледало"
         },
+        "shop/car/second_hand": {
+            "name": "Салон за половни возила"
+        },
         "railway/station": {
             "name": "Железничка саница"
+        },
+        "amenity/lavoir": {
+            "name": "Пералница"
         },
         "office/therapist": {
             "name": "Терапевт"
@@ -1986,6 +2028,9 @@
         },
         "attraction/dark_ride": {
             "name": "Возење низ куќа на стравот"
+        },
+        "office/government/prosecutor": {
+            "name": "Јавно обвинителство"
         },
         "building/school": {
             "name": "Училиште"
@@ -2157,6 +2202,9 @@
         },
         "shop/newsagent": {
             "name": "Весникарница"
+        },
+        "waterway/tidal_channel": {
+            "name": "Плимен канал"
         },
         "healthcare": {
             "name": "Здравствена установа"
@@ -2680,6 +2728,9 @@
         "tourism/artwork/graffiti": {
             "name": "Графити"
         },
+        "power/plant/source/gas": {
+            "name": "Гасна електрана"
+        },
         "landuse/churchyard": {
             "name": "Црковен двор"
         },
@@ -2864,9 +2915,6 @@
         "attraction/bumper_car": {
             "name": "Автодром"
         },
-        "power/sub_station": {
-            "name": "Трафостаница"
-        },
         "shop/copyshop": {
             "name": "Копирница"
         },
@@ -2907,7 +2955,7 @@
             "name": "Продавница за столни игри"
         },
         "piste/piste": {
-            "name": "Патеки за зимски спортови"
+            "name": "Патека / писта за зимски спортови"
         },
         "craft/rigger": {
             "name": "Подигач"
@@ -2926,6 +2974,9 @@
         },
         "shop/shoes": {
             "name": "Продавница за обувки"
+        },
+        "power/plant/source/solar": {
+            "name": "Сончева фарма"
         },
         "shop/laundry/self_service": {
             "name": "Самоуслужна пералница"
@@ -3327,7 +3378,7 @@
             "name": "Кал"
         },
         "piste/hike": {
-            "name": "Патека за зимско планинарство или снегоодалки"
+            "name": "Патека за зимско планинарство / снегоодалки"
         },
         "building/greenhouse": {
             "name": "Стакленик"
@@ -3375,7 +3426,7 @@
             "name": "Хотел"
         },
         "shop/anime": {
-            "name": "Продавница за аниме"
+            "name": "Продавница за аниме/манга"
         },
         "route/ferry": {
             "name": "Траектен патен правец"
@@ -3711,7 +3762,7 @@
             "name": "Чакал"
         },
         "piste/sleigh": {
-            "name": "Патека за санки"
+            "name": "Патека за санки во природа"
         },
         "leisure/marina": {
             "name": "Сидриште"

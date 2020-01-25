@@ -42,9 +42,6 @@
         "building/chapel": {
             "name": "Bangunan Gereja Kecil"
         },
-        "power/sub_station": {
-            "name": "Pencawang"
-        },
         "office/research": {
             "name": "Pejabat Penyelidikan"
         },
@@ -294,9 +291,6 @@
         },
         "amenity/place_of_worship/buddhist": {
             "name": "Tokong Buddha"
-        },
-        "building/kindergarten": {
-            "name": "Bangunan Prasekolah/Tadika"
         },
         "building/construction": {
             "name": "Bangunan Dalam Pembinaan"

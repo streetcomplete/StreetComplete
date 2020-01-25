@@ -529,9 +529,6 @@
             "name": "فروشگاه آشامیدنی",
             "terms": "فروشگاه نوشیدنی, نوشابه"
         },
-        "entrance": {
-            "name": "ورود/خروج"
-        },
         "highway/construction": {
             "name": "راه بسته است",
             "terms": "کلاوژر, بسته, عملیات عمرانی , در حال ساخت, در حال تعمیر, کارگران مشغول کارند, در دست تعمیر,closure,construction"
@@ -1070,9 +1067,6 @@
         "shop/watches": {
             "name": "ساعت فروشی"
         },
-        "amenity/parking_entrance": {
-            "name": "ورودی/خروجی پارکینگ"
-        },
         "waterway/riverbank": {
             "name": "دامنه رودخانه"
         },
@@ -1393,9 +1387,6 @@
         "attraction/roller_coaster": {
             "name": "ترن هوایی"
         },
-        "power/sub_station": {
-            "name": "ایستگاه فرعی"
-        },
         "shop/copyshop": {
             "name": "چاپ و تکثیر",
             "terms": "کپی, فتوکپی, فوتوکپی, زیراکس, پرینت, چاپ"
@@ -1666,10 +1657,6 @@
         },
         "healthcare/optometrist": {
             "name": "چشم پزشک"
-        },
-        "building/kindergarten": {
-            "name": "ساختمان پیش دبستانی / کودکستان",
-            "terms": "پیش دبستانی، مهد کودک، مدرسه، کودکستان"
         },
         "leisure/playground": {
             "name": "زمین بازی"
@@ -2009,10 +1996,6 @@
         },
         "building/hotel": {
             "name": "ساختمان هتل"
-        },
-        "shop/anime": {
-            "name": "فروشگاه انیمه",
-            "terms": "مانگا, ژاپن"
         },
         "route/ferry": {
             "name": "مسیر فَرابر",
@@ -2628,19 +2611,12 @@
             "name": "پارکینگ موتور سیکلت",
             "terms": "موتورسیکلت"
         },
-        "shop/craft": {
-            "name": "فروشگاه هنر و صنایع دستی"
-        },
         "line": {
             "name": "خط"
         },
         "amenity/vehicle_inspection": {
             "name": "مرکز معاینه فنی خودرو",
             "terms": "معاینه فنی"
-        },
-        "amenity/kindergarten": {
-            "name": "محوطه پیش دبستانی / مهدکودک",
-            "terms": "پیش دبستانی، مهد کودک، مدرسه، کودکستان"
         },
         "waterway/weir": {
             "name": "بند آب",

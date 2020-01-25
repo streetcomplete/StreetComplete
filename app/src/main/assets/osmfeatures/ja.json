@@ -345,6 +345,10 @@
             "name": "領事館",
             "terms": "領事館, 外交"
         },
+        "barrier/swing_gate": {
+            "name": "スイングゲート",
+            "terms": "スイングゲート, 旋回ゲート"
+        },
         "shop/laundry": {
             "name": "洗濯屋・ランドリー(非セルフ)",
             "terms": "洗濯屋, コインランドリー, ランドリー, 洗濯屋・ランドリー(非セルフ)"
@@ -548,6 +552,10 @@
             "name": "高速鉄道",
             "terms": "高速鉄道, 鉄道"
         },
+        "shop/clothes/second_hand": {
+            "name": "衣料品店（リサイクル）",
+            "terms": "リサイクル店, 古着屋, 中古屋, リサイクルショップ, 衣料品店（リサイクル）, 衣料品店"
+        },
         "highway/footway": {
             "name": "歩道",
             "terms": "歩道, 歩行者用道路, 遊歩道, 緑道, 自然歩道, プロムナード"
@@ -605,7 +613,7 @@
         },
         "piste/downhill": {
             "name": "ダウンヒル",
-            "terms": "ダウンヒル, スキールート"
+            "terms": "ダウンヒル, スキールート, スキー, スノーボード"
         },
         "highway/footway/unmarked-raised": {
             "name": "横断歩道（隆起あり・マークなし）",
@@ -1209,6 +1217,10 @@
         "shop/cosmetics": {
             "name": "化粧品店",
             "terms": "化粧品, 美容, コスメ"
+        },
+        "tourism/museum/history": {
+            "name": "歴史博物館",
+            "terms": "歴史博物館, 歴史館, 博物館"
         },
         "leisure/swimming_pool": {
             "name": "遊泳プール（屋外）",
@@ -1852,6 +1864,10 @@
             "name": "茶舗",
             "terms": "茶舗, 茶店, 食品, お茶, 緑茶, 飲み物"
         },
+        "emergency/landing_site": {
+            "name": "緊急着陸地点",
+            "terms": "緊急着陸地点, 救命"
+        },
         "aerialway/chair_lift": {
             "name": "チェアリフト",
             "terms": "チェアリフト, 椅子リフト, いすリフト"
@@ -1883,6 +1899,10 @@
         "man_made/surveillance/camera": {
             "name": "監視カメラ",
             "terms": "監視カメラ, 監視"
+        },
+        "amenity/gambling": {
+            "name": "ギャンブル場",
+            "terms": "ギャンブル場, 賭博場, カジノ"
         },
         "natural/saddle": {
             "name": "鞍部",
@@ -1935,6 +1955,10 @@
         "building/semidetached_house": {
             "name": "二世帯住宅",
             "terms": "セミデタッチドハウス, 二世帯住宅, 住居, 住宅, 民家"
+        },
+        "shop/clothes/wedding": {
+            "name": "衣料品店（婚礼）",
+            "terms": "衣料品店（婚礼）, ウェディングドレス, 結婚, 衣料品店"
         },
         "playground/seesaw": {
             "name": "シーソー",
@@ -2048,6 +2072,10 @@
         "natural/fell": {
             "name": "高原",
             "terms": "高原"
+        },
+        "type/enforcement/maxspeed": {
+            "name": "速度制限",
+            "terms": "交通取締り, 取締り, 交通安全, 交通違反取締り, レーダー, 速度制限"
         },
         "amenity/research_institute": {
             "name": "研究所",
@@ -2187,6 +2215,10 @@
             "name": "たばこ自動販売機",
             "terms": "たばこ, 自動販売機, 自販機, 嗜好品, タバコ, 煙草"
         },
+        "historic/building": {
+            "name": "歴史的建築物",
+            "terms": "歴史的建築物, 歴史的家屋, 史跡, 保存家屋"
+        },
         "leisure/track/horse_racing_point": {
             "name": "競馬トラック",
             "terms": "競馬トラック, 競馬場, 競馬, レース, トラック, 馬場, ギャンブル"
@@ -2256,10 +2288,6 @@
         "amenity/restaurant/american": {
             "name": "レストラン・アメリカ料理",
             "terms": "レストラン, アメリカ料理, アメリカン, 飲食店, 食事, 食べる, 料理, ランチ"
-        },
-        "piste/sled": {
-            "name": "そり（小型）",
-            "terms": "そり, 橇, スキーコース"
         },
         "public_transport/platform/bus": {
             "name": "バスプラットホーム",
@@ -2428,7 +2456,7 @@
         },
         "piste/downhill/halfpipe": {
             "name": "ハーフパイプ",
-            "terms": "ハーフパイプ, スノーボード, スキー, スポーツ, ウィンタースポーツ, スキー場"
+            "terms": "ハーフパイプ, スノーボード, スキー"
         },
         "shop/motorcycle_repair": {
             "name": "バイク修理店",
@@ -2576,6 +2604,10 @@
             "name": "カーブミラー",
             "terms": "カーブミラー, ミラー, 道路反射鏡, 道路設備, 交通安全"
         },
+        "shop/car/second_hand": {
+            "name": "中古車店",
+            "terms": "中古車店, 中古屋, カーディーラー"
+        },
         "railway/station": {
             "name": "鉄道駅"
         },
@@ -2598,6 +2630,10 @@
         "attraction/dark_ride": {
             "name": "ダークライド",
             "terms": "ダークライド, アトラクション"
+        },
+        "office/government/prosecutor": {
+            "name": "検察庁",
+            "terms": "検察庁, 検察, 検察官, 法"
         },
         "building/school": {
             "name": "学校（建物）",
@@ -2823,6 +2859,10 @@
         "shop/newsagent": {
             "name": "新聞・雑誌店",
             "terms": "新聞, 雑誌, マガジン, ニュース, スタンド"
+        },
+        "waterway/tidal_channel": {
+            "name": "感潮水路",
+            "terms": "感潮水路, クリーク, 水路"
         },
         "healthcare": {
             "name": "医療",
@@ -3512,8 +3552,7 @@
             "terms": "落書きアート, 落書き, アート, 屋外アート, 美術, 芸術, 作品"
         },
         "landuse/churchyard": {
-            "name": "教会（土地区画）",
-            "terms": "教会, 教会の敷地"
+            "name": "教会（土地区画）"
         },
         "amenity/shelter": {
             "name": "シェルター全般（休憩所、避難所）",
@@ -3752,9 +3791,6 @@
             "name": "バンパーカー",
             "terms": "バンパーカー, バンプカー"
         },
-        "power/sub_station": {
-            "name": "変電所"
-        },
         "shop/copyshop": {
             "name": "コピー店",
             "terms": "コピー店"
@@ -3805,10 +3841,6 @@
         "shop/games": {
             "name": "ボードゲーム販売店",
             "terms": "ボードゲーム販売店, ボードゲーム, カードゲーム, ロールプレイングゲーム, トレーディングカード, ゲーム, 店舗, お店, 娯楽"
-        },
-        "piste/piste": {
-            "name": "種類",
-            "terms": "種類"
         },
         "craft/rigger": {
             "name": "艤装者",
@@ -4359,8 +4391,8 @@
             "terms": "泥地, 泥"
         },
         "piste/hike": {
-            "name": "ハイキング",
-            "terms": "ハイキング, スキーコース"
+            "name": "冬季ハイキング",
+            "terms": "冬季ハイキング, ハイキング"
         },
         "building/greenhouse": {
             "name": "温室（建物）",
@@ -4423,7 +4455,7 @@
         },
         "shop/anime": {
             "name": "アニメショップ",
-            "terms": "アニメショップ, 娯楽, アニメ, コスプレ, マンガ, まんが"
+            "terms": "アニメショップ, 娯楽, アニメ, コスプレ, マンガ, まんが, アニメ店"
         },
         "route/ferry": {
             "name": "フェリールート",
@@ -4859,10 +4891,6 @@
         "natural/shingle": {
             "name": "小石浜",
             "terms": "小石浜, 河川敷, 小石"
-        },
-        "piste/sleigh": {
-            "name": "そり（中型）",
-            "terms": "そり, 橇, スキーコース"
         },
         "leisure/marina": {
             "name": "マリーナ",

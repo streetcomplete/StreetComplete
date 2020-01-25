@@ -713,10 +713,6 @@
             "name": "Prodejna nápojů",
             "terms": "prodejna nápojů,obchod s nápoji,nápoje,pití,malinovka,kofola,občerstvení,nealkoholické nápoje"
         },
-        "entrance": {
-            "name": "Vchod/východ",
-            "terms": "vchod,východ,vjezd,výjezd,vlez,výlez,vstup"
-        },
         "emergency/fire_alarm": {
             "name": "Ohlašovna požárů"
         },
@@ -948,9 +944,6 @@
         },
         "office/travel_agent": {
             "name": "Cestovní kancelář"
-        },
-        "piste/downhill": {
-            "name": "Sjezdovka"
         },
         "highway/footway/unmarked-raised": {
             "name": "Neoznačený přechod (zvýšený)"
@@ -1489,10 +1482,6 @@
             "name": "Hodinářství",
             "terms": "Hodinářství"
         },
-        "amenity/parking_entrance": {
-            "name": "Vjezd do/výjezd z garáží",
-            "terms": "parkoviště,parking,parkování,stání,garáž,garáže,vjezd,výjezd"
-        },
         "waterway/riverbank": {
             "name": "Břeh řeky"
         },
@@ -1585,8 +1574,7 @@
             "terms": "příkop,zákop"
         },
         "landuse/churchyard": {
-            "name": "Prostor kolem kostela",
-            "terms": "kostel,kaple,kaplička,hřbitov,krchov,krematorium"
+            "name": "Prostor kolem kostela"
         },
         "amenity/shelter": {
             "name": "Přístřešek",
@@ -1909,9 +1897,6 @@
         "attraction/roller_coaster": {
             "name": "Horská dráha"
         },
-        "power/sub_station": {
-            "name": "Transformátorová stanice"
-        },
         "shop/copyshop": {
             "name": "Kopírování",
             "terms": "kopírování,kopírka,kopírky,copy centrum,copy studio,kopírovací centrum,kopírárna,xerox"
@@ -1999,9 +1984,6 @@
         },
         "attraction/bungee_jumping": {
             "name": "Bungee jumping"
-        },
-        "piste/piste": {
-            "name": "Zimní sportovní stezky"
         },
         "railway/signal": {
             "name": "Proměnné návěstidlo",
@@ -2292,10 +2274,6 @@
         "healthcare/optometrist": {
             "name": "Optik",
             "terms": "oko,oči,brýle,lasik,čočky,zrak"
-        },
-        "building/kindergarten": {
-            "name": "Budova školky/jeslí",
-            "terms": "jesle,školka,kindergarten,předškolní,mateřská školka"
         },
         "indoor/room": {
             "name": "Pokoj"
@@ -2792,10 +2770,6 @@
         "building/hotel": {
             "name": "Budova hotelu",
             "terms": "hotel,ubytování,motel,penzion,hostel"
-        },
-        "shop/anime": {
-            "name": "Prodejna anime",
-            "terms": "anime,manga,cosplay"
         },
         "route/ferry": {
             "name": "Trasa trajektu",
@@ -3442,9 +3416,6 @@
             "name": "Rodinný dům",
             "terms": "dům,rodinný dům,řadový dům,domek"
         },
-        "piste/sleigh": {
-            "name": "Sáňková dráha"
-        },
         "leisure/marina": {
             "name": "Přístaviště",
             "terms": "přístav,jachta,jachty,loď"
@@ -3454,9 +3425,6 @@
         },
         "amenity/restaurant/american": {
             "name": "Americká restaurace"
-        },
-        "piste/sled": {
-            "name": "Bobová dráha"
         },
         "public_transport/platform/bus": {
             "name": "Autobusové nástupiště"
@@ -3622,20 +3590,12 @@
             "name": "Parkování pro motorky",
             "terms": "parking,parkování,garáž,motorka,motocykl"
         },
-        "shop/craft": {
-            "name": "Výtvarné potřeby",
-            "terms": "kreslení,malování,řezbářství,umění,umělecký"
-        },
         "line": {
             "name": "Linie",
             "terms": "čára,cesta,trať,kanál,trasa"
         },
         "amenity/vehicle_inspection": {
             "name": "Kontrola vozidel"
-        },
-        "amenity/kindergarten": {
-            "name": "Prostor školky/jeslí",
-            "terms": "jesle,školka,kindergarten,předškolní,mateřská školka"
         },
         "man_made/tower/observation": {
             "name": "Vyhlídková věž"

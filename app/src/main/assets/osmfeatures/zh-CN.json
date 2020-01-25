@@ -33,6 +33,10 @@
         "railway/halt": {
             "name": "列车站 (小站 / 招呼)"
         },
+        "landuse/garages": {
+            "name": "车库土地利用",
+            "terms": "车库土地利用"
+        },
         "internet_access/wlan": {
             "name": "无线热点"
         },
@@ -291,6 +295,10 @@
             "name": "动物医院",
             "terms": "兽医,动物,宠物,医院,家畜,治疗,医疗,急救,手术,猫,狗,犬,门诊"
         },
+        "craft/pottery": {
+            "name": "制陶机",
+            "terms": "制陶机"
+        },
         "craft/roofer": {
             "name": "屋顶工",
             "terms": "屋顶工,盖屋顶的人"
@@ -346,6 +354,10 @@
             "name": "出租车停车处",
             "terms": "出租车停车处,的士停车处,计程车停车处"
         },
+        "amenity/vending_machine/excrement_bags": {
+            "name": "排便袋提供处",
+            "terms": "排便袋提供处"
+        },
         "amenity/smoking_area": {
             "name": "吸烟区域",
             "terms": "吸烟,抽烟,烟,香烟,烟草"
@@ -365,6 +377,10 @@
         "tourism/caravan_site": {
             "name": "房车营地",
             "terms": "房车营地"
+        },
+        "natural/valley": {
+            "name": "山谷",
+            "terms": "山谷,峡谷,峡,谷,咽喉,沟,沟壑,山涧"
         },
         "craft/clockmaker": {
             "name": "钟表匠",
@@ -582,6 +598,10 @@
             "name": "住宅建筑物",
             "terms": "住宅建筑物,住宅建筑"
         },
+        "landuse/greenhouse_horticulture": {
+            "name": "温室园艺",
+            "terms": "温室,花,园艺,植物,种植,生长,栽培"
+        },
         "healthcare": {
             "name": "医疗机构",
             "terms": "医疗,诊所,机构,卫生,医院,医务,医生,治疗,门诊,急诊,病,健康,保健,外科"
@@ -709,7 +729,7 @@
         },
         "entrance": {
             "name": "入口/出口",
-            "terms": "入口/出口,出入口"
+            "terms": "入口,出口,出入口,门"
         },
         "amenity/place_of_worship/jewish": {
             "name": "犹太教堂",
@@ -769,6 +789,10 @@
         "shop/nutrition_supplements": {
             "name": "保健品店",
             "terms": "保健品店"
+        },
+        "amenity/studio/video": {
+            "name": "电影制片厂",
+            "terms": "电影,影片,影像,映画,制片,录制,录音,后期,工作室,制片厂"
         },
         "craft/gardener": {
             "name": "园艺工",
@@ -857,6 +881,10 @@
         "shop/fashion": {
             "name": "服装店"
         },
+        "natural/water/canal": {
+            "name": "运河区域",
+            "terms": "运河,支流,水路,水道,河,河流,水,航运"
+        },
         "power/substation": {
             "name": "变电站",
             "terms": "变电站,配电所"
@@ -893,6 +921,10 @@
             "name": "公证处",
             "terms": "公证,公证处,契约,保证,签名,学历,学位,成绩,刑事,婚姻,出生,委托,遗嘱,遗产,继承,声明,机构,抽奖,拍卖,证据"
         },
+        "natural/reef": {
+            "name": "礁",
+            "terms": "礁,珊瑚,岩礁,暗礁,沙洲,沙滩,海滩,沙,滩,海洋,浅水"
+        },
         "craft/photographic_laboratory": {
             "name": "照片冲洗店",
             "terms": "照片冲洗店"
@@ -912,6 +944,10 @@
         "traffic_calming/hump": {
             "name": "减速丘",
             "terms": "减速,减速丘,交通稳静化"
+        },
+        "amenity/place_of_worship/christian/jehovahs_witness": {
+            "name": "耶和华见证人王国会馆",
+            "terms": "耶和华见证人,耶证,王国会馆,御国会馆,基督教,教堂,神,祈祷,祷告,敬神,崇拜,礼拜"
         },
         "building/chapel": {
             "name": "小型教堂",
@@ -1250,6 +1286,9 @@
             "name": "电器店",
             "terms": "电器店"
         },
+        "waterway": {
+            "name": "航道要素"
+        },
         "amenity/clinic": {
             "name": "诊所",
             "terms": "诊所,医务室,医务所,医院,门诊,急诊,治疗,医疗,医生"
@@ -1337,6 +1376,10 @@
             "name": "城镇",
             "terms": "镇,城镇,乡镇"
         },
+        "amenity/place_of_worship/christian/la_luz_del_mundo": {
+            "name": "拉鲁兹德尔蒙多教堂",
+            "terms": "拉鲁兹德尔蒙多,基督教,教堂,神,祈祷,祷告,敬神,崇拜,礼拜,世界之光"
+        },
         "highway/tertiary_link": {
             "name": "三级道路连接路",
             "terms": "三级道路连接路,连接路,匝道,道路,路,公路,马路"
@@ -1420,6 +1463,10 @@
             "name": "五金店",
             "terms": "五金店"
         },
+        "amenity/car_sharing": {
+            "name": "共享汽车站点",
+            "terms": "共享汽车站点"
+        },
         "shop/funeral_directors": {
             "name": "殡仪馆",
             "terms": "殡仪馆,墓园,墓地,坟墓,丧葬承办人,殡葬业者,殡葬,死亡,逝世,丧礼,葬"
@@ -1455,6 +1502,9 @@
             "name": "轮船泊位",
             "terms": "轮船,泊位,停泊点,停车处,停车点"
         },
+        "tourism": {
+            "name": "旅游要素"
+        },
         "traffic_sign": {
             "name": "交通标志"
         },
@@ -1487,8 +1537,11 @@
             "terms": "手表店,钟表店,Watches Shop"
         },
         "amenity/parking_entrance": {
-            "name": "车库出入口",
-            "terms": "停车场出入口,地下车库出入口,多层车库出入口"
+            "name": "车库入口 / 出口",
+            "terms": "停车场,停车库,车库,停车,地下车库,出入口,出口,入口"
+        },
+        "landuse": {
+            "name": "土地利用要素"
         },
         "waterway/riverbank": {
             "name": "堤"
@@ -1500,6 +1553,10 @@
         "shop/music": {
             "name": "音乐店",
             "terms": "音乐店"
+        },
+        "amenity/fast_food/fish_and_chips": {
+            "name": "炸鱼薯条快餐",
+            "terms": "鱼,炸鱼,薯条,马铃薯,土豆,快餐,快餐店,餐厅,早餐,早饭,午餐,午饭,中饭,食物,晚餐,晚饭,食物,美食"
         },
         "barrier/toll_booth": {
             "name": "收费站",
@@ -1580,12 +1637,15 @@
             "terms": "沟,壕沟,堑壕"
         },
         "landuse/churchyard": {
-            "name": "教堂庭院",
-            "terms": "教堂庭院"
+            "name": "教堂庭院"
         },
         "amenity/shelter": {
             "name": "亭",
             "terms": "棚,棚屋"
+        },
+        "shop/frozen_food": {
+            "name": "冷冻食品",
+            "terms": "冷冻食品,冷冻,速冻,冷藏,生鲜,海鲜,超市,市场,卖场"
         },
         "tourism/picnic_site": {
             "name": "野餐地",
@@ -1760,6 +1820,10 @@
             "name": "人行道",
             "terms": "人行道,人行通道,路缘,路边,路牙,盲道"
         },
+        "power/generator/source/hydro": {
+            "name": "水轮机",
+            "terms": "水轮机,水力机,水轮,水力,水力电,水电站,水电,水坝,大坝,坝,发电,涡轮机,珀尔顿,卡普兰,水能"
+        },
         "amenity/animal_shelter": {
             "name": "动物收容救助所",
             "terms": "动物,收容,救助,机构,流浪,猫,狗,犬,收养,救护,宠物,兽医,急救"
@@ -1855,6 +1919,10 @@
             "name": "体育跑道",
             "terms": "跑道,田径,跑步,跑,马拉松,冲刺,竞走,健身,操场跑道"
         },
+        "aerialway/t-bar": {
+            "name": "滑雪缆车",
+            "terms": "滑雪缆车"
+        },
         "historic/boundary_stone": {
             "name": "界碑",
             "terms": "界桩"
@@ -1886,6 +1954,10 @@
             "name": "仅限掉头",
             "terms": "掉头,仅掉头,禁止左转,禁止直行,禁止右转"
         },
+        "tourism/museum/history": {
+            "name": "历史博物馆",
+            "terms": "历史,博物馆,展览,展品,化石,文物,藏品,古物,博览"
+        },
         "leisure/swimming_pool": {
             "name": "游泳池",
             "terms": "游泳池"
@@ -1893,6 +1965,9 @@
         "waterway/stream": {
             "name": "溪",
             "terms": "小河,小溪,涧,溪流"
+        },
+        "railway": {
+            "name": "铁路要素"
         },
         "building/university": {
             "name": "大学建筑",
@@ -1925,12 +2000,13 @@
             "name": "过山车",
             "terms": "过山车,云霄飞车,云霄,飞车,矿车,轨道,铁轨,窄轨,火车,列车,弹射,木质,垂直,下坠,跌落,坠落,下落,飞行,翻转,游乐设施,游乐,游艺,娱乐,乐园,游乐园,主题乐园,儿童乐园,景点"
         },
-        "power/sub_station": {
-            "name": "变电站"
-        },
         "shop/copyshop": {
             "name": "打印店",
             "terms": "打印社,复印店"
+        },
+        "leisure/firepit": {
+            "name": "火坑",
+            "terms": "火坑"
         },
         "public_transport/station_ferry": {
             "name": "轮船渡口 / 码头",
@@ -2008,6 +2084,10 @@
             "name": "岛屿",
             "terms": "岛屿"
         },
+        "amenity/karaoke_box": {
+            "name": "KTV亭",
+            "terms": "卡拉ok,卡拉,ktv,迷你ktv,迷你卡拉ok,k歌,点唱,唱歌,唱吧,点唱亭,唱"
+        },
         "attraction/bungee_jumping": {
             "name": "蹦极",
             "terms": "蹦极,蹦极跳,机索跳,笨猪跳,俯冲跳,自由落体,高空弹跳,弹跳,跳,跳跃,前扑,坠落,跌落,下坠,飞天,户外,塔顶,高楼,跳楼,跳水,橡皮绳,游乐设施,游乐,游艺,娱乐,乐园,游乐园,主题乐园,儿童乐园,景点"
@@ -2064,7 +2144,8 @@
             "terms": "非政府,民意,民间,政府,组织,自治,自主,非盈利,非营利"
         },
         "amenity/parking": {
-            "name": "停车场"
+            "name": "停车场",
+            "terms": "停车场,停车,rv"
         },
         "highway/bus_stop": {
             "name": "公交站"
@@ -2114,6 +2195,9 @@
         "type/route/ferry": {
             "name": "渡轮航线",
             "terms": "渡轮航线"
+        },
+        "ford_line": {
+            "name": "过水路面"
         },
         "emergency": {
             "name": "应急要素"
@@ -2173,6 +2257,9 @@
         "waterway/fuel": {
             "name": "船舶加油站",
             "terms": "船舶加油站,加油,船,航海"
+        },
+        "highway": {
+            "name": "公路要素"
         },
         "shop/pastry": {
             "name": "糕饼店",
@@ -2316,6 +2403,10 @@
             "name": "历史地点",
             "terms": "历史遗迹,史迹"
         },
+        "aeroway/holding_position": {
+            "name": "跑道等待位置",
+            "terms": "跑道,滑行道,飞机等待"
+        },
         "type/enforcement": {
             "name": "执行措施",
             "terms": "执行,规定,规则,措施,法规,交通,交通规定,交通规则,交通法规,超速,限速,测速,检查,检查站,测速照相"
@@ -2339,8 +2430,12 @@
             "terms": "验光,视光,光学,视力,视觉,晶体,测定,瞳,眼睛,眼镜,眼科,镜片,眼科,眼,近视,远视,散光,老视,老花,屈光,矫正,诊所,医院,医学,医疗,疗法,卫生,医生,外科"
         },
         "building/kindergarten": {
-            "name": "学前班/幼儿园建筑",
-            "terms": "学前班建筑,幼儿园建筑"
+            "name": "幼儿园建筑",
+            "terms": "幼儿园,幼稚园,学前班,学龄前,托儿所,学校,校园,建筑"
+        },
+        "indoor/room": {
+            "name": "房间",
+            "terms": "房间,室内,前厅,前庭,门厅,大厅,大堂,小间,门廊,私室,卧室,卧房,接待厅,候见室"
         },
         "amenity/fast_food/ice_cream": {
             "name": "冰淇淋快餐"
@@ -2490,6 +2585,10 @@
             "name": "非营利机构办公室",
             "terms": "非盈利机构办公室"
         },
+        "entrance/emergency": {
+            "name": "紧急出口",
+            "terms": "紧急出口,消防出口,应急出口,非常口,消防门,火灾,火情,紧急,应急,消防,疏散,撤离,逃离,避难,安全出口,门"
+        },
         "highway/services": {
             "name": "服务区",
             "terms": "服务区"
@@ -2510,6 +2609,9 @@
             "name": "无轨电车站 / 枢纽站",
             "terms": "电车,无轨电车,车站,枢纽,枢纽站,终点站,站台"
         },
+        "leisure": {
+            "name": "休闲要素"
+        },
         "amenity/post_office": {
             "name": "邮局",
             "terms": "邮局,邮政局"
@@ -2517,6 +2619,10 @@
         "public_transport/stop_position": {
             "name": "公共交通停泊点",
             "terms": "公共交通,停车点,泊位,停泊点,停车处"
+        },
+        "aerialway/zip_line": {
+            "name": "滑索",
+            "terms": "滑索,飞索,绳索,滑缆,飞人,空中,高空,滑翔"
         },
         "natural/volcano": {
             "name": "火山",
@@ -2724,6 +2830,10 @@
         "railway/tram_stop": {
             "name": "有轨电车停车处"
         },
+        "shop/spices": {
+            "name": "香料店",
+            "terms": "香料,桂皮,肉桂,咖喱,药草,香草,草本,胡椒,胡椒粉,盐,味精,藏红花,香精,芥末,姜,姜黄,商店"
+        },
         "shop/tiles": {
             "name": "瓷砖商店",
             "terms": "磁磚商店"
@@ -2794,6 +2904,10 @@
             "name": "窄路/巷",
             "terms": "胡同,巷,弄堂,里弄,小巷,弄,窄路,巷弄（可通行机动车）"
         },
+        "amenity/pub/lgbtq": {
+            "name": "LGBTQ+ 酒吧",
+            "terms": "lgb,lgbt,lgbtq,同性恋,双性恋,双性,跨性别,酷儿,同性恋酒吧"
+        },
         "amenity/restaurant/seafood": {
             "name": "海鲜餐馆",
             "terms": "海鲜,餐馆,餐厅,鱼,章鱼,鱿鱼,虾,龙虾,贝,蛤蜊,螺,蚌,蟹,饭店,烧烤,酒吧,早餐,早点,早饭,午餐,午饭,下午茶,晚餐,晚饭,食物,食堂"
@@ -2834,8 +2948,8 @@
             "terms": "宾馆建筑"
         },
         "shop/anime": {
-            "name": "动漫店",
-            "terms": "动漫店"
+            "name": "动漫/漫画店",
+            "terms": "漫画,动漫,日漫,日本,cosplay,cos"
         },
         "route/ferry": {
             "name": "航线",
@@ -2844,6 +2958,10 @@
         "shop/outdoor": {
             "name": "户外用品店",
             "terms": "户外用品店,销售户外活动用品的商店"
+        },
+        "highway/raceway": {
+            "name": "赛车场",
+            "terms": "赛车场"
         },
         "emergency/designated": {
             "name": "紧急设施：指定"
@@ -2917,6 +3035,10 @@
             "name": "公寓区",
             "terms": "公寓区,楼区,公寓楼,公寓,住宅,住宅区,住所,套间"
         },
+        "amenity/place_of_worship/muslim": {
+            "name": "穆斯林清真寺",
+            "terms": "清真寺,回教寺,伊斯兰教,伊斯兰,寺庙,穆斯林,大食,天方,回教,回回教,清真,寺坊,庙宇,礼拜,拜倒,宗教"
+        },
         "shop/tea": {
             "name": "茶叶商店",
             "terms": "茶,茶叶,茶店,茶品,红茶,黄茶,清茶,青茶,绿茶,花茶,黑茶,白茶,乌龙,商店"
@@ -2931,6 +3053,10 @@
         "shop/supermarket": {
             "name": "超市",
             "terms": "超级市场"
+        },
+        "office/political_party": {
+            "name": "政党办公室",
+            "terms": "政党办公室"
         },
         "shop/wholesale": {
             "name": "批发市场",
@@ -2949,6 +3075,10 @@
         "man_made/silo": {
             "name": "粮食库",
             "terms": "粮食库,粮食仓"
+        },
+        "amenity/gambling": {
+            "name": "赌场厅",
+            "terms": "赌场,赌博,赌,赌注,下注,宾果,纸牌,扑克,中彩,老虎机"
         },
         "building/hut": {
             "name": "棚屋",
@@ -3213,6 +3343,10 @@
             "name": "荒野",
             "terms": "荒野"
         },
+        "aeroway/parking_position": {
+            "name": "停机位",
+            "terms": "停机位,机位,飞机"
+        },
         "landuse/greenfield": {
             "name": "待开发荒地",
             "terms": "未开发过的土地"
@@ -3220,6 +3354,9 @@
         "office/accountant": {
             "name": "会计师事务所",
             "terms": "会计,事务所,会计师,审计,会计,咨询,税务,账"
+        },
+        "seamark": {
+            "name": "航标"
         },
         "shop/leather": {
             "name": "皮具店",
@@ -3251,6 +3388,10 @@
         "waterway/ditch": {
             "name": "水沟",
             "terms": "沟,沟渠,涧"
+        },
+        "power/generator/source/wind": {
+            "name": "风力发电机",
+            "terms": "风力发电机,风力,发电,风力机,风车,涡轮机,风能,风轮,风"
         },
         "landuse/railway": {
             "name": "铁路用地",
@@ -3298,6 +3439,10 @@
         "playground/roundabout": {
             "name": "旋转平台 (儿童游乐)",
             "terms": "旋转,旋转木马,氹氹转,团团转,转圈圈,儿童,小孩,游乐,游乐设施,游乐园,游乐场,乐园,儿童乐园"
+        },
+        "amenity/shelter/public_transport": {
+            "name": "候车亭",
+            "terms": "候车亭,候车厅,候车,等车,等候,棚,公交站,地铁站,公共交通,庇护所,站台,月台,车站,站点"
         },
         "shop/optician": {
             "name": "眼镜店",
@@ -3349,9 +3494,16 @@
             "name": "山脊",
             "terms": "山脊,山高,凸,坡,斜坡,山峰,山冈,山"
         },
+        "natural": {
+            "name": "自然要素"
+        },
         "aerialway/magic_carpet": {
             "name": "滑雪场魔毯传送带",
             "terms": "魔毯,传送带式电梯"
+        },
+        "amenity/post_box": {
+            "name": "邮件投递箱",
+            "terms": "投递箱,邮箱,信箱,邮件,信件,邮政,投递,包裹,邮筒,支柱箱"
         },
         "public_transport/station_tram": {
             "name": "有轨电车站",
@@ -3471,6 +3623,9 @@
         },
         "place": {
             "name": "地点"
+        },
+        "power": {
+            "name": "电力要素"
         },
         "building/house": {
             "name": "洋房",
@@ -3665,17 +3820,13 @@
             "name": "摩托车停车场",
             "terms": "摩托车场"
         },
-        "shop/craft": {
-            "name": "艺术/手工艺品店",
-            "terms": "艺术/手工艺品店"
-        },
         "line": {
             "name": "线",
             "terms": "线"
         },
         "amenity/kindergarten": {
-            "name": "幼儿园",
-            "terms": "幼儿园,学前班,托儿所,幼稚园,学校,校园,学习"
+            "name": "幼儿园场地",
+            "terms": "幼儿园,幼稚园,学前班,学龄前,托儿所,学校,校园"
         },
         "waterway/weir": {
             "name": "堰",
@@ -3708,6 +3859,9 @@
         "tourism/attraction": {
             "name": "旅游名胜",
             "terms": "旅游名胜,景点"
+        },
+        "man_made": {
+            "name": "人造要素"
         },
         "barrier/kerb/lowered": {
             "name": "下降式路缘",

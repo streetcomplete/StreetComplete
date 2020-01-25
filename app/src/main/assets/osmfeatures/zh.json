@@ -66,9 +66,6 @@
         "highway/living_street": {
             "name": "生活街道"
         },
-        "power/sub_station": {
-            "name": "变电站"
-        },
         "highway/motorway": {
             "name": "高速公路"
         },

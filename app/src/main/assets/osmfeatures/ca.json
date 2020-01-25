@@ -482,10 +482,6 @@
             "name": "Botiga de begudes",
             "terms": "Licoreria"
         },
-        "entrance": {
-            "name": "Entrada/Sortida",
-            "terms": "Entrada/Sortida"
-        },
         "amenity/place_of_worship/jewish": {
             "name": "Sinagoga jueva"
         },
@@ -967,9 +963,6 @@
             "name": "Òptica",
             "terms": "Botiga d'ulleres"
         },
-        "amenity/parking_entrance": {
-            "name": "Entrada de Garatge/Sortida"
-        },
         "waterway/riverbank": {
             "name": "Banc fluvial"
         },
@@ -1247,9 +1240,6 @@
         "attraction/roller_coaster": {
             "name": "Muntanya russa"
         },
-        "power/sub_station": {
-            "name": "Subestació"
-        },
         "shop/copyshop": {
             "name": "Copisteria",
             "terms": "Botiga, fotocòpies, fulls, impressora"
@@ -1487,9 +1477,6 @@
         "historic": {
             "name": "Lloc històric",
             "terms": "Lloc històric"
-        },
-        "building/kindergarten": {
-            "name": "Edifici de preescolar"
         },
         "leisure/playground": {
             "name": "Zona de jocs infantils",
@@ -1768,9 +1755,6 @@
         },
         "building/hotel": {
             "name": "Edifici hoteler"
-        },
-        "shop/anime": {
-            "name": "Botiga de còmics"
         },
         "route/ferry": {
             "name": "Ruta de ferri"
@@ -2277,10 +2261,6 @@
         "amenity/motorcycle_parking": {
             "name": "Aparcament per a motocicletes"
         },
-        "shop/craft": {
-            "name": "Botiga per a les arts plàstiques",
-            "terms": "Botiga de manualitats, Manualitats, Arts plàstiques"
-        },
         "line": {
             "name": "Línia",
             "terms": "Línia"
@@ -2288,9 +2268,6 @@
         "amenity/vehicle_inspection": {
             "name": "Inspecció de vehicles",
             "terms": "ITV"
-        },
-        "amenity/kindergarten": {
-            "name": "Centre preescolar"
         },
         "waterway/weir": {
             "name": "Assut"

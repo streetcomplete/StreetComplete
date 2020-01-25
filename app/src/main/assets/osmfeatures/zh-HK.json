@@ -610,10 +610,6 @@
             "name": "飲品店",
             "terms": "Beverage Store,飲品店,飲品舖,飲料店"
         },
-        "entrance": {
-            "name": "入口/出口",
-            "terms": "出入口,出口,入口"
-        },
         "emergency/fire_alarm": {
             "name": "火警召喚",
             "terms": "火警召喚箱,火警鐘"
@@ -1258,10 +1254,6 @@
             "name": "手錶店",
             "terms": "Watches Shop,錶店,手表店,錶行,表行"
         },
-        "amenity/parking_entrance": {
-            "name": "停車場入口/出口",
-            "terms": "停車場入口,停車場出口"
-        },
         "waterway/riverbank": {
             "name": "河岸"
         },
@@ -1333,8 +1325,7 @@
             "terms": "Ditch,溝,溝渠,明溝"
         },
         "landuse/churchyard": {
-            "name": "教堂庭院",
-            "terms": "教堂用地"
+            "name": "教堂庭院"
         },
         "amenity/shelter": {
             "name": "涼亭",
@@ -1583,9 +1574,6 @@
         "attraction/roller_coaster": {
             "name": "過山車",
             "terms": "Roller Coaster,雲霄飛車"
-        },
-        "power/sub_station": {
-            "name": "配電站"
         },
         "shop/copyshop": {
             "name": "影印店",
@@ -1905,10 +1893,6 @@
         "healthcare/optometrist": {
             "name": "視光師",
             "terms": "Optometrist,視光師"
-        },
-        "building/kindergarten": {
-            "name": "學前照顧/幼稚園建築物",
-            "terms": "幼兒園校舍,幼稚園校舍"
         },
         "leisure/playground": {
             "name": "遊樂場",
@@ -2294,10 +2278,6 @@
         "building/hotel": {
             "name": "酒店建築物",
             "terms": "旅館建築物,旅店建築物,賓館建築物"
-        },
-        "shop/anime": {
-            "name": "動漫店",
-            "terms": "動漫店"
         },
         "route/ferry": {
             "name": "渡輪航綫",
@@ -2947,17 +2927,9 @@
             "name": "電單車停車位",
             "terms": "摩托車停車場,電單車停車場"
         },
-        "shop/craft": {
-            "name": "工藝品店",
-            "terms": "工藝品店,工藝品商店,手工藝店,手作坊"
-        },
         "line": {
             "name": "綫",
             "terms": "Line,綫,線"
-        },
-        "amenity/kindergarten": {
-            "name": "學前照顧/幼稚園範圍",
-            "terms": "幼兒園,幼稚園用地,幼稚園"
         },
         "waterway/weir": {
             "name": "塘堰",

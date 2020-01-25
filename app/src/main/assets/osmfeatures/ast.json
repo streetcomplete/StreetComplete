@@ -436,10 +436,6 @@
         "shop/beverages": {
             "name": "Venta de bebíes"
         },
-        "entrance": {
-            "name": "Entrada/Salida",
-            "terms": "Accesu, puerta"
-        },
         "power/tower": {
             "name": "Torre d'alta tensión"
         },
@@ -911,9 +907,6 @@
         "shop/watches": {
             "name": "Reloxería"
         },
-        "amenity/parking_entrance": {
-            "name": "Entrada/Salida de garaxe"
-        },
         "waterway/riverbank": {
             "name": "Ribera"
         },
@@ -1161,9 +1154,6 @@
             "name": "Montaña rusa",
             "terms": "rusa,atracciones,feria"
         },
-        "power/sub_station": {
-            "name": "Subestación"
-        },
         "shop/copyshop": {
             "name": "Copistería"
         },
@@ -1393,9 +1383,6 @@
         },
         "healthcare/optometrist": {
             "name": "Ópticu"
-        },
-        "building/kindergarten": {
-            "name": "Edificiu de preescolar/guardería"
         },
         "leisure/playground": {
             "name": "Xuegos infantiles"
@@ -1689,9 +1676,6 @@
         },
         "building/hotel": {
             "name": "Edificiu d'hotel"
-        },
-        "shop/anime": {
-            "name": "Tienda d'anime"
         },
         "route/ferry": {
             "name": "Ruta de ferry"
@@ -2160,14 +2144,8 @@
         "amenity/motorcycle_parking": {
             "name": "Aparcaderu de motos"
         },
-        "shop/craft": {
-            "name": "Tienda de manualidaes"
-        },
         "line": {
             "name": "Llinia"
-        },
-        "amenity/kindergarten": {
-            "name": "Antoxana d'escuela infantil/preescolar"
         },
         "waterway/weir": {
             "name": "Ñora",

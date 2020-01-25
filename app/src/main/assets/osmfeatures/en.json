@@ -132,7 +132,7 @@
         },
         "aerialway/rope_tow": {
             "name": "Rope Tow Lift",
-            "terms": "handle tow,bugel lift"
+            "terms": "bugel lift,drag lift,handle tow,skiing,snowboarding,surface cable"
         },
         "office/company": {
             "name": "Corporate Office",
@@ -406,7 +406,7 @@
         },
         "aerialway/gondola": {
             "name": "Gondola",
-            "terms": ""
+            "terms": "aerial cable,lift,skiing,snowboarding"
         },
         "shop/window_blind": {
             "name": "Window Blind Store",
@@ -470,7 +470,7 @@
         },
         "aerialway/cable_car": {
             "name": "Cable Car",
-            "terms": "tramway,ropeway"
+            "terms": "aerial cable,lift,ropeway,skiing,snowboarding,tramway"
         },
         "craft/floorer": {
             "name": "Floorer",
@@ -616,8 +616,8 @@
             "terms": ""
         },
         "piste/downhill": {
-            "name": "Downhill Piste/Ski Run",
-            "terms": "ski,alpine,snowboard,downhill,piste"
+            "name": "Downhill Ski Run",
+            "terms": "alpine skiing,piste,ski hill,skiing,snowboarding"
         },
         "highway/footway/unmarked-raised": {
             "name": "Unmarked Crossing (Raised)",
@@ -666,6 +666,10 @@
         "waterway/canal": {
             "name": "Canal",
             "terms": ""
+        },
+        "power/plant/source/nuclear": {
+            "name": "Nuclear Power Plant",
+            "terms": "atomic,fission,power station,nuclear reactor"
         },
         "barrier/kerb/raised": {
             "name": "Raised Curb",
@@ -766,6 +770,10 @@
         "place/quarter": {
             "name": "Sub-Borough / Quarter",
             "terms": "boro,borough,quarter"
+        },
+        "power/plant/source/hydro": {
+            "name": "Hydroelectric Power Station",
+            "terms": "dam,power plant,run-of-the-river,tidal,water turbine"
         },
         "shop/perfumery": {
             "name": "Perfume Store",
@@ -1100,6 +1108,10 @@
             "name": "Hearing Aids Store",
             "terms": ""
         },
+        "power/plant/source/wind": {
+            "name": "Wind Farm",
+            "terms": "offshore wind,wind park,wind power plant,wind power station,wind turbines,windmills"
+        },
         "public_transport/platform/trolleybus_point": {
             "name": "Trolleybus Stop",
             "terms": "bus,electric,platform,public transit,public transportation,streetcar,trackless,tram,trolley,transit,transportation"
@@ -1206,9 +1218,13 @@
             "name": "Yoga Studio",
             "terms": "asanas,meditation,modern yoga,studio"
         },
+        "power/plant/source/coal": {
+            "name": "Coal-Fired Power Plant",
+            "terms": "carbon,combustion,fossil fuel,coalfired,power station"
+        },
         "aerialway/t-bar": {
             "name": "T-Bar Lift",
-            "terms": "tbar"
+            "terms": "drag lift,skiing,surface cable,tbar"
         },
         "historic/memorial": {
             "name": "Memorial",
@@ -1368,7 +1384,7 @@
         },
         "aerialway/platter": {
             "name": "Platter Lift",
-            "terms": "button lift,poma lift"
+            "terms": "button lift,disc lift,drag lift,poma lift,skiing,snowboarding,surface cable"
         },
         "amenity/vending_machine/condoms": {
             "name": "Condom Vending Machine",
@@ -1874,7 +1890,7 @@
         },
         "aerialway/chair_lift": {
             "name": "Chair Lift",
-            "terms": ""
+            "terms": "aerial cable,skiing,snowboarding"
         },
         "shop/supermarket": {
             "name": "Supermarket",
@@ -2022,7 +2038,7 @@
         },
         "aerialway/j-bar": {
             "name": "J-Bar Lift",
-            "terms": "jbar"
+            "terms": "drag lift,skiing,snowboarding,surface cable,jaybar,jbar"
         },
         "shop/charity": {
             "name": "Charity Store",
@@ -2062,8 +2078,8 @@
             "name": "Basin"
         },
         "piste/nordic": {
-            "name": "Nordic or Crosscountry Piste/Ski Trail",
-            "terms": "ski,nordic,crosscountry,skating,piste"
+            "name": "Cross-Country Ski Trail",
+            "terms": "crosscountry,nordic skiing,piste,skate skiing,skiing,xc"
         },
         "shop/paint": {
             "name": "Paint Store",
@@ -2239,6 +2255,10 @@
             "name": "Basket Spinner",
             "terms": "basket rotator"
         },
+        "amenity/exhibition_centre": {
+            "name": "Exposition Center",
+            "terms": "exhibition center,fair,exhibition,exposition,trade fair,trade show,trade exhibition,expo,tradeshow"
+        },
         "shop/fabric": {
             "name": "Fabric Store",
             "terms": "sew"
@@ -2294,8 +2314,8 @@
             "terms": "bar,breakfast,cafe,café,canteen,coffee,dine,dining,dinner,drive-in,eat,grill,lunch,table"
         },
         "piste/sled": {
-            "name": "Sled Piste",
-            "terms": "ski,sled,luge,sleigh,sledge,piste"
+            "name": "Sled Run",
+            "terms": "bobsled,luge,piste,skeleton,sledge,sleigh,toboggan"
         },
         "public_transport/platform/bus": {
             "name": "Bus Platform",
@@ -2342,7 +2362,7 @@
         },
         "shop/car_repair": {
             "name": "Car Repair Shop",
-            "terms": "automobile,automotive,garage,service"
+            "terms": "auto mechanic,automechanic,automobile,automotive,garage,inspection,oil change,service"
         },
         "craft/hvac": {
             "name": "HVAC",
@@ -2372,8 +2392,8 @@
             "terms": "road,street"
         },
         "piste/ice_skate": {
-            "name": "Ice Skating Piste",
-            "terms": "ice,skating,ski,piste"
+            "name": "Ice Skating Trail",
+            "terms": "ice rink,ice track,iceskating,piste,skates"
         },
         "public_transport/platform/tram": {
             "name": "Tram Platform",
@@ -2463,7 +2483,7 @@
             "terms": ""
         },
         "piste/downhill/halfpipe": {
-            "name": "Halfpipe",
+            "name": "Snowsports Half-Pipe",
             "terms": "ski,alpine,halfpipe,half pipe,snowboard,downhill,piste"
         },
         "shop/motorcycle_repair": {
@@ -2618,6 +2638,10 @@
         },
         "railway/station": {
             "name": "Train Station"
+        },
+        "amenity/lavoir": {
+            "name": "Lavoir",
+            "terms": "clothing,laundry,washing"
         },
         "office/therapist": {
             "name": "Therapist Office",
@@ -2917,7 +2941,7 @@
         },
         "aerialway/pylon": {
             "name": "Aerialway Pylon",
-            "terms": ""
+            "terms": "chair lift pole,skiing,snowboarding,lift tower"
         },
         "craft/chimney_sweeper": {
             "name": "Chimney Sweeper",
@@ -3140,7 +3164,7 @@
         },
         "office/research": {
             "name": "Research Office",
-            "terms": "R and D,research and development,research lab"
+            "terms": "R and D,research and development,research lab,r&d,rnd"
         },
         "office/travel_agent": {
             "name": "Travel Agency"
@@ -3298,7 +3322,7 @@
         },
         "aerialway/drag_lift": {
             "name": "Drag Lift",
-            "terms": ""
+            "terms": "skiing,snowboarding,surface cable"
         },
         "amenity/letter_box": {
             "name": "Letter Box",
@@ -3559,6 +3583,10 @@
             "name": "Graffiti",
             "terms": "Street Artwork,Guerilla Artwork,Graffiti Artwork"
         },
+        "power/plant/source/gas": {
+            "name": "Gas-Fired Power Plant",
+            "terms": "carbon,combustion,fossil fuel,gasfired,power station,natural gas"
+        },
         "landuse/churchyard": {
             "name": "Churchyard"
         },
@@ -3624,7 +3652,7 @@
         },
         "aerialway/goods": {
             "name": "Goods Aerialway",
-            "terms": ""
+            "terms": "aerial cable"
         },
         "barrier/retaining_wall": {
             "name": "Retaining Wall",
@@ -3799,9 +3827,6 @@
             "name": "Bumper Cars",
             "terms": "theme park,dodgem cars,autoscooter"
         },
-        "power/sub_station": {
-            "name": "Substation"
-        },
         "shop/copyshop": {
             "name": "Copy Store",
             "terms": "print,scan"
@@ -3854,7 +3879,7 @@
             "terms": "board game,card game,dice game,game shop,live action role-playing game,miniatures wargame,strategy game"
         },
         "piste/piste": {
-            "name": "Winter Sport Trails",
+            "name": "Snowsports Trail / Piste",
             "terms": "ski,nordic,crosscountry,downhill,alpine,snowboard,skitour,ski touring,sled,luge,sleigh,sledge,ski-joring,husky,horse,winter hiking,snowshoe,snowshoeing,ice,skating"
         },
         "craft/rigger": {
@@ -3879,6 +3904,10 @@
         "shop/shoes": {
             "name": "Shoe Store",
             "terms": "boots,cleats,clogs,heels,loafers,oxfords,sneakers"
+        },
+        "power/plant/source/solar": {
+            "name": "Solar Farm",
+            "terms": "photovoltaic power station,solar panels,solar park,utility-scale solar"
         },
         "shop/laundry/self_service": {
             "name": "Self-Service Laundry",
@@ -4406,8 +4435,8 @@
             "terms": "wetland"
         },
         "piste/hike": {
-            "name": "Snowshoeing or Winter Hiking Trail",
-            "terms": "hike,winter hiking,snowshoe,snowshoeing,piste,ski"
+            "name": "Snowshoeing / Winter Hiking Trail",
+            "terms": "hike,nordic walking,piste,show shoeing,snowshoe,snowshoeing"
         },
         "building/greenhouse": {
             "name": "Greenhouse",
@@ -4684,7 +4713,7 @@
         },
         "aerialway/mixed_lift": {
             "name": "Mixed Lift",
-            "terms": ""
+            "terms": "aerial cable,skiing,snowboarding"
         },
         "highway/secondary": {
             "name": "Secondary Road",
@@ -4810,7 +4839,7 @@
         },
         "aerialway/magic_carpet": {
             "name": "Magic Carpet Lift",
-            "terms": ""
+            "terms": "conveyor belt,skiing,snowboarding,surface lift"
         },
         "public_transport/station_tram": {
             "name": "Tram Station",
@@ -4908,8 +4937,8 @@
             "terms": "beach,gravel,pebbles,riverbed,rounded rock fragments"
         },
         "piste/sleigh": {
-            "name": "Sleigh Piste",
-            "terms": "ski,piste,sled,luge,sleigh,sledge,ski-joring,husky,horse"
+            "name": "Sleigh Trail",
+            "terms": "dogsledding,husky,horse,piste,sled,sledge,ski-joring,skijoring"
         },
         "leisure/marina": {
             "name": "Marina",

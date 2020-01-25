@@ -590,10 +590,6 @@
             "name": "Vinforhandler",
             "terms": "Vinforhandler, Vinforretning"
         },
-        "entrance": {
-            "name": "Indgang/Udgang",
-            "terms": "Indgang/Udgang"
-        },
         "power/tower": {
             "name": "Højspændingsmast",
             "terms": "Højspændingsmast"
@@ -970,6 +966,9 @@
             "name": "Motorvejsafkørsel",
             "terms": "Motorvejsafkørsel"
         },
+        "highway/crossing": {
+            "name": "Fodgængerovergang"
+        },
         "place/isolated_dwelling": {
             "name": "Lille beboet område (1-2 hustande)",
             "terms": "Lille beboet område (1-2 hustande)"
@@ -1251,10 +1250,6 @@
             "name": "Urbutik",
             "terms": "Urbutik, Urmager"
         },
-        "amenity/parking_entrance": {
-            "name": "Parkeringsgarage Indgang/Udgang",
-            "terms": "Parkeringsgarage Indgang/Udgang, Parkeringskælder Indgang/Udgang"
-        },
         "waterway/riverbank": {
             "name": "Flodbred"
         },
@@ -1267,7 +1262,8 @@
             "terms": "Vejafgifthus, Betalingsanlæg"
         },
         "highway/crossing/unmarked": {
-            "name": "Fodgængerovergang"
+            "name": "Umarkeret fodgængerovergang",
+            "terms": "overgang,fodgænger,fodgængerovergang"
         },
         "craft/stonemason": {
             "name": "Stenhugger",
@@ -1325,8 +1321,7 @@
             "terms": "Grøft"
         },
         "landuse/churchyard": {
-            "name": "Kirkeområde",
-            "terms": "Kirkegård"
+            "name": "Kirkeområde"
         },
         "amenity/shelter": {
             "name": "Læsted",
@@ -1599,9 +1594,6 @@
         },
         "attraction/roller_coaster": {
             "name": "Rutchebane"
-        },
-        "power/sub_station": {
-            "name": "Transformatorstation"
         },
         "shop/copyshop": {
             "name": "Fotokopishop",
@@ -1920,10 +1912,6 @@
         "healthcare/optometrist": {
             "name": "Optiker",
             "terms": "briller,øjne,optik,linser,syn"
-        },
-        "building/kindergarten": {
-            "name": "Børnehavebygning",
-            "terms": "Børnehavebygning"
         },
         "leisure/playground": {
             "name": "Legeplads",
@@ -2308,10 +2296,6 @@
         "building/hotel": {
             "name": "Hotelbygning",
             "terms": "Hotelbygning"
-        },
-        "shop/anime": {
-            "name": "Animebutik",
-            "terms": "Animebutik, Animeforretning"
         },
         "route/ferry": {
             "name": "Færgerute",
@@ -2960,17 +2944,9 @@
             "name": "Motorcykelparkering",
             "terms": "Motorcykelparkering,mc,parkering,motorcykel"
         },
-        "shop/craft": {
-            "name": "Hobbyforretning",
-            "terms": "Hobbyforretning"
-        },
         "line": {
             "name": "Linje",
             "terms": "Linje"
-        },
-        "amenity/kindergarten": {
-            "name": "Børnehavegrund",
-            "terms": "Børnehavegrund"
         },
         "man_made/tower/observation": {
             "name": "Observationstårn",
@@ -2999,6 +2975,10 @@
         "man_made/flagpole": {
             "name": "Flagstang",
             "terms": "Flagstang"
+        },
+        "highway/crossing/unmarked-raised": {
+            "name": "Umarkeret fodgængerovergang (hævet)",
+            "terms": "overgang,fodgænger,fodgængerovergang,bump,hævet"
         },
         "tourism/attraction": {
             "name": "Turistattraktion",

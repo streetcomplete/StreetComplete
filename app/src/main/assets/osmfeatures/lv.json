@@ -68,9 +68,6 @@
             "name": "Amerikāņu Kalniņi",
             "terms": "atrakcija,brauciens,ātrs"
         },
-        "power/sub_station": {
-            "name": "Metro stacija"
-        },
         "shop/copyshop": {
             "name": "Printēšanas veikals"
         },
@@ -392,9 +389,6 @@
         "healthcare/optometrist": {
             "name": "Optometrists"
         },
-        "building/kindergarten": {
-            "name": "Bērnudārza / Pirmskolas ēka"
-        },
         "leisure/playground": {
             "name": "Spēļlaukums"
         },
@@ -647,9 +641,6 @@
         },
         "shop/vacuum_cleaner": {
             "name": "Putekļusūcēju veikals"
-        },
-        "entrance": {
-            "name": "Ieeja/Izeja"
         },
         "shop/chemist": {
             "name": "Aptieka"
@@ -1297,10 +1288,6 @@
         "shop/watches": {
             "name": "Pulksteņu Veikals"
         },
-        "amenity/parking_entrance": {
-            "name": "Daudzlīmeņu Stāvvietas Ieeja/Izeja",
-            "terms": "daudzstāvu stāvvieta, ieeja, izeja, iebrauktuve, izbrauktuve"
-        },
         "shop/gift": {
             "name": "Dāvanu veikals"
         },
@@ -1512,18 +1499,11 @@
         "amenity/motorcycle_parking": {
             "name": "Motociklu stāvvieta"
         },
-        "shop/craft": {
-            "name": "Mākslas piederumu veikals",
-            "terms": "māksla, resursi, krāsas, rāmji, zīmēt"
-        },
         "line": {
             "name": "Līnija"
         },
         "shop/lottery": {
             "name": "Loterijas veikals"
-        },
-        "amenity/kindergarten": {
-            "terms": "bēŗnudārzs,pirmskola"
         },
         "leisure/dog_park": {
             "name": "Suņu parks"

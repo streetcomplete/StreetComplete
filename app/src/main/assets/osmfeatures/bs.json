@@ -62,9 +62,6 @@
             "name": "Stambena ulica",
             "terms": "ulica u stambenom naselju"
         },
-        "power/sub_station": {
-            "name": "Trafo stanica"
-        },
         "highway/motorway": {
             "name": "Autoput",
             "terms": "autoput,autocesta"

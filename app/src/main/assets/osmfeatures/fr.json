@@ -919,8 +919,8 @@
             "terms": "Magasin de vins et spiritueux"
         },
         "entrance": {
-            "name": "Entrée/Sortie",
-            "terms": "Entrée/Sortie,Évacuation,Porte d'entrée"
+            "name": "Entrée / sortie",
+            "terms": "entrée, entree, porte, sortie, issue"
         },
         "emergency/fire_alarm": {
             "name": "Boîte d'alarme incendie",
@@ -1230,10 +1230,6 @@
         "office/travel_agent": {
             "name": "Agence de voyage"
         },
-        "piste/downhill": {
-            "name": "Ski de Descente / Alpin",
-            "terms": "ski, piste, alpin, descente, snowboard"
-        },
         "highway/footway/unmarked-raised": {
             "name": "Passage piéton non marqué (surélevé)",
             "terms": "passage piéton non marqué (surélevé)"
@@ -1508,6 +1504,9 @@
         "highway/motorway_link": {
             "name": "Bretelle d'autoroute",
             "terms": "Bretelle d'autoroute"
+        },
+        "amenity/car_pooling": {
+            "name": "Aire de covoiturage"
         },
         "highway/crossing": {
             "name": "Passage piéton"
@@ -1947,8 +1946,8 @@
             "terms": "horloger,vente de montres"
         },
         "amenity/parking_entrance": {
-            "name": "Entrée ou sortie de parking",
-            "terms": "Entrée/Sortie de parking"
+            "name": "Entrée / sortie de garage ou parking",
+            "terms": "parking, garage, entrée, sortie, entree, stationnement, parc de stationnement"
         },
         "waterway/riverbank": {
             "name": "Berge"
@@ -2069,8 +2068,7 @@
             "terms": "tranchée, tranchee, fossé, fosse, cheminement, retranchement, boyau, barrier ditch, ditch, trench"
         },
         "landuse/churchyard": {
-            "name": "Terrain entourant une église",
-            "terms": "Cimetière"
+            "name": "Terrain entourant une église"
         },
         "amenity/shelter": {
             "name": "Abri",
@@ -2486,9 +2484,6 @@
             "name": "Montagnes russes",
             "terms": "montagnes russes,attraction,parc d'attraction"
         },
-        "power/sub_station": {
-            "name": "Poste de transformation"
-        },
         "shop/copyshop": {
             "name": "Reprographie",
             "terms": "Photocopies, Impression"
@@ -2601,10 +2596,6 @@
         "shop/games": {
             "name": "Magasin de jeux de plateau",
             "terms": "jeux de plateau,jeu de plateau,jeu de cartes,jeux de cartes,game shop,jeu de rôle,miniature,stratégie,plateau,cartes,figurines"
-        },
-        "piste/piste": {
-            "name": "Piste Sports d'Hiver",
-            "terms": "ski, nordique, fond, alpin, descente, snowboard, randonnée, rando, luge, traîneau, ski-joring, husky, cheval, raquette, piéton, glace, patin à glace"
         },
         "railway/signal": {
             "name": "Feux tricolores ferroviaires",
@@ -2984,10 +2975,6 @@
             "name": "Accès de maintenance pour des conduites de câbles électriques",
             "terms": "bouche d'égout,égout,télécommunication,plaque,électricité,câbles souterrains"
         },
-        "building/kindergarten": {
-            "name": "Bâtiment pré-scolaire - école maternelle, jardin d'enfants",
-            "terms": "école maternelle, école enfantine, jardin d'enfants, école primaire, école, écoliers,  petite section, moyenne section, grande section, PS-MS-GS, kindergarten, crèche, halte-garderie"
-        },
         "indoor/room": {
             "name": "Pièce",
             "terms": "pièce en intérieur,antichambre,atrium,chambre,foyer,intérieur"
@@ -3201,6 +3188,10 @@
         "amenity/bicycle_parking/shed": {
             "name": "Abri vélos",
             "terms": "Parc à vélos,Parking à vélo, Parking à bicyclette, Stationnement à vélo,abri à vélos,bâtiment pour vélos"
+        },
+        "entrance/emergency": {
+            "name": "Sortie de secours",
+            "terms": "sortie de secours, porte, issue de secours, évacuation, urgence, incendie"
         },
         "highway/services": {
             "name": "Aire de service",
@@ -3576,10 +3567,6 @@
             "name": "Plâtrier",
             "terms": "Gâcheur, Plafonneur"
         },
-        "piste/hike": {
-            "name": "Piste Raquette ou Piétons",
-            "terms": "ski, piste, marche, randonnée, raquette, piéton"
-        },
         "amenity/parking_space": {
             "name": "Place de parking",
             "terms": "Parking, Zone de stationnement"
@@ -3682,8 +3669,7 @@
             "terms": "hôtel,hotel"
         },
         "shop/anime": {
-            "name": "Boutique d'« animes »",
-            "terms": "Vente de mangas, de CD et DVD, déguisements, accessoires"
+            "name": "Boutique de manga et anime"
         },
         "route/ferry": {
             "name": "Trajet de ferry",
@@ -4116,10 +4102,6 @@
             "name": "Téléporté mixte",
             "terms": "Télémix, Télécombi, télécabines et télésièges, telecabines et telesieges, mixed lift, teleporte mixte, télésiège"
         },
-        "piste/nordic": {
-            "name": "Piste de Ski Nordique / Ski de Fond",
-            "terms": "ski, piste, fond, nordique, classique, skating"
-        },
         "shop/paint": {
             "name": "Magasin de peintures",
             "terms": "Vente de peintures"
@@ -4253,6 +4235,9 @@
         "place/city_block": {
             "name": "Îlot urbain",
             "terms": "ilot urbain,îlot urbain,bloc"
+        },
+        "natural/wood": {
+            "name": "Bois naturel"
         },
         "amenity/restaurant/chinese": {
             "name": "Restaurant chinois",
@@ -4537,8 +4522,7 @@
             "terms": "maison mitoyenne, maison de ville, maison en rangée, maison en bande, maisons mitoyennes, maisons de ville, maisons en rangée, maisons en bande, logements, résidences, habitations, maisons, building house, house"
         },
         "piste/sleigh": {
-            "name": "Piste pour Traîneaux",
-            "terms": "ski, piste, luge, traîneau, ski-joring, husky, cheval"
+            "name": "Piste de traîneau"
         },
         "addr/interpolation": {
             "name": "Interpolation d'adresse"
@@ -4557,10 +4541,6 @@
         "amenity/restaurant/american": {
             "name": "Restaurant américain",
             "terms": "restaurant américain,café,diner,bar,grill"
-        },
-        "piste/sled": {
-            "name": "Piste de Luge",
-            "terms": "ski, piste, luge, traîneau"
         },
         "public_transport/platform/bus": {
             "name": "Arrêt de bus",
@@ -4715,8 +4695,7 @@
             "terms": "Route de service"
         },
         "piste/ice_skate": {
-            "name": "Piste Patins à Glace",
-            "terms": "ski, piste, patin, glace"
+            "name": "Piste de patin à glace"
         },
         "waterway/drain": {
             "name": "Canal d'évacuation des eaux pluviales",
@@ -4786,10 +4765,6 @@
             "name": "Parking pour motocyclettes",
             "terms": "Parc à motos,Stationnement motos"
         },
-        "shop/craft": {
-            "name": "Magasin d'arts et loisirs créatifs",
-            "terms": "Magasin des Beaux-Arts, Magasin d'arts graphiques"
-        },
         "line": {
             "name": "Ligne",
             "terms": "Ligne"
@@ -4801,10 +4776,6 @@
         "amenity/recycling/container/green_waste": {
             "name": "Benne pour déchets verts",
             "terms": "compost,biodégradable,biologique,décomposable,recyclage,jardinage,déchets organiques,organiques,nourriture,restes de nourriture"
-        },
-        "amenity/kindergarten": {
-            "name": "Établissement pré-scolaire - école maternelle, jardin d'enfants",
-            "terms": "école maternelle, école enfantine, jardin d'enfants, école primaire, école, écoliers,  petite section, moyenne section, grande section, PS-MS-GS, kindergarten, crèche, halte-garderie"
         },
         "man_made/tower/observation": {
             "name": "Tour d'observation",
@@ -4909,10 +4880,6 @@
         "office/diplomatic": {
             "name": "Bâtiment diplomatique",
             "terms": "Bâtiment, bureau diplomatique"
-        },
-        "piste/downhill/halfpipe": {
-            "name": "Tremplin",
-            "terms": "demi-lune,tremplin,halfpipe"
         },
         "shop/motorcycle_repair": {
             "name": "Réparateur de motos",
