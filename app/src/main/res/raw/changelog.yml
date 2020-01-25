@@ -19,6 +19,10 @@ v17.0-beta1: |
   <li>Quests pins should not disappear under certain circumstances anymore (#1698, #1689)</li>
   <li>Quest pin is removed from the map when splitting up the way (#1701)</li>
   </ul>
+  <h3>Enhanced Quests</h3>
+  <ul>
+  <li>Do not reorder last picked options for the track type quest form to the front (#1692)</li>
+  </ul>
 
 v16.1: |
   <ul>
