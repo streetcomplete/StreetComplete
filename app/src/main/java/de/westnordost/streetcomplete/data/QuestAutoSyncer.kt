@@ -168,10 +168,12 @@ class QuestAutoSyncer @Inject constructor(
 
     private fun updateConnectionState(): Boolean {
         val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        val info = connectivityManager.activeNetworkInfo
+        val info = connectivityManager.activeNetworkInfo ?: return false
 
-        val newIsConnected = info?.isConnected == true
-        val newIsWifi = newIsConnected && info?.type == ConnectivityManager.TYPE_WIFI
+        val newIsConnected = info.isConnected
+        // metered (usually ad-hoc hotspots) do not count as proper wifis
+        val isMetered = connectivityManager.isActiveNetworkMetered
+        val newIsWifi = newIsConnected && info.type == ConnectivityManager.TYPE_WIFI && !isMetered
 
         val result = newIsConnected != isConnected || newIsWifi != isWifi
 
