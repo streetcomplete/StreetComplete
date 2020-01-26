@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.localized_name
 
 import android.content.DialogInterface
+import android.view.View
 import androidx.appcompat.app.AlertDialog
 import android.widget.Button
 
@@ -32,7 +33,7 @@ class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
         Injector.instance.applicationComponent.inject(this)
     }
 
-    override fun setupNameAdapter(data: List<LocalizedName>, addLanguageButton: Button): AddLocalizedNameAdapter {
+    override fun setupNameAdapter(data: List<LocalizedName>, addLanguageButton: View): AddLocalizedNameAdapter {
         return AddLocalizedNameAdapter(
             data, activity!!, getPossibleStreetsignLanguages(),
             abbreviationsByLocale, getRoadNameSuggestions(), addLanguageButton

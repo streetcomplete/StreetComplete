@@ -31,7 +31,7 @@ class AddLocalizedNameAdapter(
     private val languages: List<String>,
     private val abbreviationsByLocale: AbbreviationsByLocale?,
     private val localizedNameSuggestions: List<MutableMap<String, String>>?,
-    private val addLanguageButton: Button
+    private val addLanguageButton: View
 ) : RecyclerView.Adapter<AddLocalizedNameAdapter.ViewHolder>() {
 
     var localizedNames: MutableList<LocalizedName>
