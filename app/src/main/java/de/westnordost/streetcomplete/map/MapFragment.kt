@@ -166,7 +166,7 @@ open class MapFragment : Fragment(),
     }
 
     private fun createHttpHandler(): HttpHandler {
-        val cacheSize = PreferenceManager.getDefaultSharedPreferences(context).getLong(Prefs.MAP_TILECACHE, 50)
+        val cacheSize = PreferenceManager.getDefaultSharedPreferences(context).getInt(Prefs.MAP_TILECACHE_IN_MB, 50)
         val cacheDir = context!!.externalCacheDir
         val tileCacheDir: File?
         tileCacheDir = cacheDir?.let { File(cacheDir, "tile_cache") }
