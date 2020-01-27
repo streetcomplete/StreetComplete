@@ -19,6 +19,8 @@ public class SphericalEarthMath
 	 */
 	public static final double EARTH_RADIUS = 6371000;
 
+	public static final double EARTH_CIRCUMFERENCE = 40000000;
+
 	/**
 	 * Calculate a bounding box that contains the given circle. In other words, it is a square
 	 * centered at the given position and with a side length of radius*2.

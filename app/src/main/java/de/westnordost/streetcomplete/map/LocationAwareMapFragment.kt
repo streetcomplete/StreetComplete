@@ -187,25 +187,17 @@ open class LocationAwareMapFragment : MapFragment() {
         val location = displayedLocation ?: return
         if (accuracyMarker?.isVisible != true) return
 
-        val pos = OsmLatLon(location.latitude, location.longitude)
-        val size = meters2Pixels(pos, location.accuracy)
+        val zoom = controller!!.cameraPosition.zoom
+        val size = location.accuracy * pixelsPerMeter(location.latitude, zoom)
         accuracyMarker?.setStylingFromString(
-            "{ style: 'points', color: 'white', size: [${size}px, ${size}px], order: 2000, flat: true, collide: false }"
+            "{ style: 'points', color: 'white', size: ${size}px, order: 2000, flat: true, collide: false }"
         )
     }
 
-    private fun meters2Pixels(at: LatLon, meters: Float): Float {
-        val pos0 = at
-        val pos1 = SphericalEarthMath.translate(pos0, meters.toDouble(), 0.0)
-        val screenPos0 = controller!!.latLonToScreenPosition(pos0)
-        val screenPos1 = controller!!.latLonToScreenPosition(pos1)
-        val camera = controller!!.cameraPosition
-        val tiltFactor = (sin(camera.tilt / 2.0) * cos(camera.rotation)).toFloat()
-        return (1f / (1f - abs(tiltFactor)) *
-                sqrt(
-                    (screenPos1.y - screenPos0.y).pow(2f) +
-                    (screenPos1.x - screenPos0.x).pow(2f)
-                ))
+    private fun pixelsPerMeter(latitude: Double, zoom: Float): Double {
+        val numberOfTiles = (2.0).pow(zoom.toDouble())
+        val metersPerTile = cos(latitude * PI / 180.0) * SphericalEarthMath.EARTH_CIRCUMFERENCE / numberOfTiles
+        return 256 / metersPerTile
     }
 
     /* --------------------------------- Position tracking -------------------------------------- */
