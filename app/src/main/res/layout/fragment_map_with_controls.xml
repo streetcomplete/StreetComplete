@@ -67,7 +67,7 @@
                 android:layout_height="64dp"
                 android:scaleType="center"
                 style="@style/RoundWhiteButton"
-                android:src="@drawable/ic_add_black_24dp"
+                android:src="@drawable/ic_zoom_plus_black_24dp"
                 android:contentDescription="@string/map_btn_zoom_in"/>
 
             <ImageButton
@@ -76,7 +76,7 @@
                 android:layout_height="64dp"
                 android:scaleType="center"
                 style="@style/RoundWhiteButton"
-                android:src="@drawable/ic_remove_black_24dp"
+                android:src="@drawable/ic_zoom_minus_black_24dp"
                 android:contentDescription="@string/map_btn_zoom_out"/>
 
             <de.westnordost.streetcomplete.location.LocationStateButton
