@@ -1,3 +1,6 @@
+v17.0-beta2: |
+  <p>Fixed a crash on startup, thanks @RubenKelevra, @Atrate (#1704)</p>
+
 v17.0-beta1: |
   <p>This release includes a major update of the map rendering library (in order to satisfy new
   Google Play guidelines). I took this as an oppurtunity to re-do most of the things that concern
