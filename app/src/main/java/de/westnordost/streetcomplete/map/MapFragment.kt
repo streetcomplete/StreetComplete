@@ -5,6 +5,7 @@ import android.content.res.Configuration
 import android.graphics.PointF
 import android.graphics.RectF
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,6 +33,7 @@ import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import java.io.File
 import java.util.*
+import kotlin.Exception
 
 /** Manages a map that remembers its last location*/
 open class MapFragment : Fragment(),
@@ -92,7 +94,12 @@ open class MapFragment : Fragment(),
 
     override fun onDestroy() {
         super.onDestroy()
-        mapView.onDestroy()
+        try {
+            mapView.onDestroy()
+        } catch (e : Exception) {
+            // workaround for https://github.com/tangrams/tangram-es/issues/2136
+            Log.e(TAG, "Error on disposing map", e)
+        }
         controller = null
         coroutineContext.cancel()
     }
@@ -318,5 +325,7 @@ open class MapFragment : Fragment(),
         const val PREF_ZOOM = "map_zoom"
         const val PREF_LAT = "map_lat"
         const val PREF_LON = "map_lon"
+
+        private const val TAG = "MapFragment"
     }
 }
