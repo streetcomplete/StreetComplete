@@ -170,7 +170,7 @@ open class MapFragment : Fragment(),
         val cacheDir = context!!.externalCacheDir
         val tileCacheDir: File?
         tileCacheDir = cacheDir?.let { File(cacheDir, "tile_cache") }
-        return CachingHttpHandler(MAPZEN_API_KEY, tileCacheDir, (cacheSize * 1024 * 1024))
+        return CachingHttpHandler(MAPZEN_API_KEY, tileCacheDir, (cacheSize * 1024L * 1024L))
     }
 
     /* ----------------------------- Overrideable map callbacks --------------------------------- */
