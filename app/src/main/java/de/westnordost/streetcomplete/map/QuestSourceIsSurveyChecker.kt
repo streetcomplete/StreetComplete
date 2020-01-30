@@ -15,7 +15,7 @@ import de.westnordost.streetcomplete.data.osm.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestDao
-import de.westnordost.streetcomplete.util.SphericalEarthMath
+import de.westnordost.streetcomplete.util.crossTrackDistanceTo
 import javax.inject.Inject
 
 /** Checks if the quest was solved on a survey, either by looking at the GPS position or asking
@@ -55,7 +55,7 @@ class QuestSourceIsSurveyChecker @Inject constructor(
 		        else -> listOf(listOf(geometry.center))
 	        }
             for (polyLine in polyLines) {
-                val distance = SphericalEarthMath.crossTrackDistance(polyLine, pos)
+                val distance = pos.crossTrackDistanceTo(polyLine)
                 if (distance < location.accuracy + MAX_DISTANCE_TO_ELEMENT_FOR_SURVEY) return true
             }
         }

@@ -22,7 +22,7 @@ import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.data.osm.*
-import de.westnordost.streetcomplete.util.SphericalEarthMath
+import de.westnordost.streetcomplete.util.measuredLength
 
 class OsmQuestDownloader @Inject constructor(
     private val geometryDB: ElementGeometryDao,
@@ -111,8 +111,8 @@ class OsmQuestDownloader @Inject constructor(
 
         // do not create quests that refer to geometry that is too long for a surveyor to be expected to survey
         if (geometry is ElementPolylinesGeometry) {
-            val distance = geometry.polylines.sumByDouble { SphericalEarthMath.distance(it) }
-            if (distance > MAX_GEOMETRY_LENGTH_IN_METERS) {
+            val totalLength = geometry.polylines.sumByDouble { it.measuredLength() }
+            if (totalLength > MAX_GEOMETRY_LENGTH_IN_METERS) {
                 Log.d(TAG, "$questTypeName: Not adding a quest at ${pos.toLogString()} because the geometry is too long")
                 return false
             }

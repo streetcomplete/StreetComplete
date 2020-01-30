@@ -6,7 +6,7 @@ import de.westnordost.osmapi.map.MapDataDao
 import de.westnordost.osmapi.map.data.*
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChanges
 import de.westnordost.streetcomplete.ktx.copy
-import de.westnordost.streetcomplete.util.SphericalEarthMath
+import de.westnordost.streetcomplete.util.distanceTo
 
 import java.net.HttpURLConnection.HTTP_CONFLICT
 
@@ -90,7 +90,7 @@ private fun isNodeGeometrySubstantiallyDifferent(node: Node, newNode: Node) =
     /* Moving the node a distance beyond what would pass as adjusting the position within a
        building counts as substantial change. Also, the maximum distance should be not (much)
        bigger than the usual GPS inaccuracy in the city. */
-    SphericalEarthMath.distance(node.position, newNode.position) > 20
+    node.position.distanceTo(newNode.position) > 20
 
 private fun isWayGeometrySubstantiallyDifferent(way: Way, newWay: Way) =
     /* if the first or last node is different, it means that the way has either been extended or

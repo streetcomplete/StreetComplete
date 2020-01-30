@@ -12,7 +12,7 @@ import com.mapzen.tangram.viewholder.GLViewHolder
 import com.mapzen.tangram.viewholder.GLViewHolderFactory
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.LatLon
-import de.westnordost.streetcomplete.util.SphericalEarthMath.*
+import de.westnordost.streetcomplete.util.*
 import java.util.*
 import java.util.concurrent.ConcurrentLinkedQueue
 import kotlin.coroutines.Continuation
@@ -196,12 +196,12 @@ class KtMapController(private val c: MapController) {
             screenPositionToLatLon(PointF(padding.left + size.x, padding.top + size.y))
         ).filterNotNull()
 
-        return enclosingBoundingBox(positions)
+        return positions.enclosingBoundingBox()
     }
 
     fun getEnclosingCameraPosition(bounds: BoundingBox, padding: RectF): CameraPosition? {
         val zoom = getMaxZoomThatContainsBounds(bounds, padding) ?: return null
-        val boundsCenter = centerPointOfPolyline(listOf(bounds.min, bounds.max))
+        val boundsCenter = listOf(bounds.min, bounds.max).centerPointOfPolyline()
         val pos = getLatLonThatCentersLatLon(boundsCenter, padding, zoom) ?: return null
         val camera = cameraPosition
         return CameraPosition(pos, camera.rotation, camera.tilt, zoom)
@@ -240,10 +240,10 @@ class KtMapController(private val c: MapController) {
         ) ?: return null
 
         val zoomDelta = zoom.toDouble() - cameraPosition.zoom
-        val distance = distance(offsetScreenCenter, screenCenter)
-        val angle = bearing(offsetScreenCenter, screenCenter)
+        val distance = offsetScreenCenter.distanceTo(screenCenter)
+        val angle = offsetScreenCenter.initialBearingTo(screenCenter)
         val distanceAfterZoom = distance * (2.0).pow(-zoomDelta)
-        return translate(position, distanceAfterZoom, angle)
+        return position.translate(distanceAfterZoom, angle)
     }
 
     /* -------------------------------------- Data Layers --------------------------------------- */

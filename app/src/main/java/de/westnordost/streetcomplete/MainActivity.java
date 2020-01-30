@@ -85,7 +85,7 @@ import de.westnordost.streetcomplete.util.DpUtil;
 import de.westnordost.streetcomplete.util.GeoLocation;
 import de.westnordost.streetcomplete.util.GeoUriKt;
 import de.westnordost.streetcomplete.util.SlippyMapMath;
-import de.westnordost.streetcomplete.util.SphericalEarthMath;
+import de.westnordost.streetcomplete.util.SphericalEarthMathKt;
 
 
 import static de.westnordost.streetcomplete.ApplicationConstants.LAST_VERSION_WITHOUT_CHANGELOG;
@@ -504,7 +504,7 @@ public class MainActivity extends AppCompatActivity implements  MainFragment.Lis
 		{
 			final BoundingBox enclosingBBox = SlippyMapMath.asBoundingBoxOfEnclosingTiles(
 					displayArea, ApplicationConstants.QUEST_TILE_ZOOM);
-			double areaInSqKm = SphericalEarthMath.enclosedArea(enclosingBBox) / 1000000;
+			double areaInSqKm = SphericalEarthMathKt.area(enclosingBBox, SphericalEarthMathKt.EARTH_RADIUS) / 1000000;
 			if (areaInSqKm > ApplicationConstants.MAX_DOWNLOADABLE_AREA_IN_SQKM)
 			{
 				Toast.makeText(this, R.string.download_area_too_big, Toast.LENGTH_LONG).show();
@@ -529,7 +529,7 @@ public class MainActivity extends AppCompatActivity implements  MainFragment.Lis
 
 	private void downloadAreaConfirmed(BoundingBox bbox)
 	{
-		double areaInSqKm = SphericalEarthMath.enclosedArea(bbox) / 1000000;
+		double areaInSqKm = SphericalEarthMathKt.area(bbox, SphericalEarthMathKt.EARTH_RADIUS) / 1000000;
 		// below a certain threshold, it does not make sense to download, so let's enlarge it
 		if (areaInSqKm < ApplicationConstants.MIN_DOWNLOADABLE_AREA_IN_SQKM)
 		{
@@ -537,8 +537,9 @@ public class MainActivity extends AppCompatActivity implements  MainFragment.Lis
 			if (cameraPosition != null)
 			{
 				LatLon pos = cameraPosition.getPosition();
-				bbox = SphericalEarthMath.enclosingBoundingBox(pos,
-						ApplicationConstants.MIN_DOWNLOADABLE_RADIUS_IN_METERS);
+				bbox = SphericalEarthMathKt.enclosingBoundingBox(pos,
+					ApplicationConstants.MIN_DOWNLOADABLE_RADIUS_IN_METERS,
+					SphericalEarthMathKt.EARTH_RADIUS);
 			}
 		}
 		questController.download(bbox, MANUAL_DOWNLOAD_QUEST_TYPE_COUNT, true);

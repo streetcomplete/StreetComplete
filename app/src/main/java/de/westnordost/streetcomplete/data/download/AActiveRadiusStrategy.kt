@@ -8,9 +8,10 @@ import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao
 import de.westnordost.streetcomplete.data.tiles.DownloadedTilesDao
 import de.westnordost.streetcomplete.data.visiblequests.OrderedVisibleQuestTypesProvider
 import de.westnordost.streetcomplete.util.SlippyMapMath
-import de.westnordost.streetcomplete.util.SphericalEarthMath
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.LatLon
+import de.westnordost.streetcomplete.util.area
+import de.westnordost.streetcomplete.util.enclosingBoundingBox
 import kotlin.math.max
 
 /** Quest auto download strategy that observes that a minimum amount of quests in a predefined
@@ -26,7 +27,7 @@ abstract class AActiveRadiusStrategy(
     protected abstract val downloadRadius: Int
 
     private fun mayDownloadHere(pos: LatLon, radius: Int, questTypeNames: List<String>): Boolean {
-        val bbox = SphericalEarthMath.enclosingBoundingBox(pos, radius.toDouble())
+        val bbox = pos.enclosingBoundingBox(radius.toDouble())
 
         // nothing more to download
         val tiles = SlippyMapMath.enclosingTiles(bbox, ApplicationConstants.QUEST_TILE_ZOOM)
@@ -44,7 +45,7 @@ abstract class AActiveRadiusStrategy(
         }
 
         if (alreadyDownloaded.isNotEmpty()) {
-            val areaInKm2 = SphericalEarthMath.enclosedArea(bbox) / 1000.0 / 1000.0
+            val areaInKm2 = bbox.area() / 1000.0 / 1000.0
             // got enough quests in vicinity
             val visibleQuests = osmQuestDB.getCount(
                 statusIn = listOf(QuestStatus.NEW),
@@ -68,7 +69,7 @@ abstract class AActiveRadiusStrategy(
     }
 
     override fun getDownloadBoundingBox(pos: LatLon): BoundingBox {
-        return SphericalEarthMath.enclosingBoundingBox(pos, downloadRadius.toDouble())
+        return pos.enclosingBoundingBox(downloadRadius.toDouble())
     }
 
     companion object {

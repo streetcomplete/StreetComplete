@@ -5,8 +5,6 @@ import org.junit.Test
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.map.data.OsmLatLon
 
-import de.westnordost.streetcomplete.util.SphericalEarthMath.*
-import org.assertj.core.api.Assertions.assertThat
 import org.junit.Assert.*
 import kotlin.math.PI
 import kotlin.math.roundToInt
@@ -48,17 +46,17 @@ class SphericalEarthMathTest {
     @Test fun `short distance`() {
         val one = p(9.9782365, 53.5712482)
         val two = p(9.9782517, 53.5712528)
-        assertEquals(1, distance(one, two).toInt())
+        assertEquals(1, one.distanceTo(two).toInt())
     }
 
     @Test fun `distance of polyline is zero for one position`() {
-        assertEquals(0.0, distance(listOf(p(0.0, 0.0))), 0.0)
+        assertEquals(0.0, listOf(p(0.0, 0.0)).measuredLength(), 0.0)
     }
 
     @Test fun `distance of polyline for two positions`() {
         val p0 = p(0.0, 0.0)
         val p1 = p(1.0, 1.0)
-        assertEquals(distance(p0, p1), distance(listOf(p0, p1)), 0.0)
+        assertEquals(p0.distanceTo(p1), listOf(p0, p1).measuredLength(), 0.0)
     }
 
     @Test fun `distance of polyline for three positions`() {
@@ -67,8 +65,8 @@ class SphericalEarthMathTest {
         val p2 = p(2.0, 2.0)
         val positions = listOf(p0, p1, p2)
         assertEquals(
-            distance(p0, p1) + distance(p1, p2),
-            distance(positions),
+            p0.distanceTo(p1) + p1.distanceTo(p2),
+            positions.measuredLength(),
             1e-16
         )
     }
@@ -76,12 +74,11 @@ class SphericalEarthMathTest {
     private fun checkHamburgTo(lat: Double, lon: Double, dist: Int, angle: Int, angle2: Int?) {
         val t = p(lon, lat)
 
-        assertEquals(dist, (distance(HH, t) / 1000).roundToInt())
-        assertEquals(dist, (distance(t, HH) / 1000).roundToInt())
+        assertEquals(dist, (HH.distanceTo(t) / 1000).roundToInt())
+        assertEquals(dist, (t.distanceTo(HH) / 1000).roundToInt())
 
-        assertEquals(angle, bearing(HH, t).roundToInt())
-        if (angle2 != null)
-            assertEquals(angle2, finalBearing(HH, t).roundToInt())
+        assertEquals(angle, HH.initialBearingTo(t).roundToInt())
+        if (angle2 != null) assertEquals(angle2, HH.finalBearingTo(t).roundToInt())
     }
 
     /* ++++++++++++++++++++++++++++++ test distance to arc distance +++++++++++++++++++++++++++++ */
@@ -91,8 +88,8 @@ class SphericalEarthMathTest {
         val end = OsmLatLon(0.0, +0.01)
         val point = OsmLatLon(0.01, 0.0)
         val intersect = OsmLatLon(0.0, 0.0)
-        assertEquals(distance(point, intersect), crossTrackDistance(start, end, point), 0.01)
-        assertEquals(distance(start, intersect), alongTrackDistance(start, end, point), 0.01)
+        assertEquals(point.distanceTo(intersect), point.crossTrackDistanceTo(start, end), 0.01)
+        assertEquals(start.distanceTo(intersect), point.alongTrackDistanceTo(start, end), 0.01)
     }
 
     @Test fun `simple distance to vertical arc`() {
@@ -100,8 +97,8 @@ class SphericalEarthMathTest {
         val end = OsmLatLon(+0.01, 0.0)
         val point = OsmLatLon(0.0, 0.01)
         val intersect = OsmLatLon(0.0, 0.0)
-        assertEquals(distance(point, intersect), crossTrackDistance(start, end, point), 0.01)
-        assertEquals(distance(start, intersect), alongTrackDistance(start, end, point), 0.01)
+        assertEquals(point.distanceTo(intersect), point.crossTrackDistanceTo(start, end), 0.01)
+        assertEquals(start.distanceTo(intersect), point.alongTrackDistanceTo(start, end), 0.01)
     }
 
     @Test fun `simple distance to sloped arc`() {
@@ -109,8 +106,8 @@ class SphericalEarthMathTest {
         val end = OsmLatLon(+0.01, +0.01)
         val point = OsmLatLon(-0.01, +0.01)
         val intersect = OsmLatLon(0.0, 0.0)
-        assertEquals(distance(point, intersect), crossTrackDistance(start, end, point), 0.01)
-        assertEquals(distance(start, intersect), alongTrackDistance(start, end, point), 0.01)
+        assertEquals(point.distanceTo(intersect), point.crossTrackDistanceTo(start, end), 0.01)
+        assertEquals(start.distanceTo(intersect), point.alongTrackDistanceTo(start, end), 0.01)
     }
 
     @Test fun `distance to horizontal arc crossing 180th meridian`() {
@@ -118,8 +115,8 @@ class SphericalEarthMathTest {
         val end = OsmLatLon(0.0, -170.0)
         val point = OsmLatLon(0.01, -175.0)
         val intersect = OsmLatLon(0.0, -175.0)
-        assertEquals(distance(point, intersect), crossTrackDistance(start, end, point), 0.01)
-        assertEquals(distance(start, intersect), alongTrackDistance(start, end, point), 0.01)
+        assertEquals(point.distanceTo(intersect), point.crossTrackDistanceTo(start, end), 0.01)
+        assertEquals(start.distanceTo(intersect), point.alongTrackDistanceTo(start, end), 0.01)
     }
 
     @Test fun `distance to vertical arc crossing north pole`() {
@@ -127,16 +124,16 @@ class SphericalEarthMathTest {
         val end = OsmLatLon(0.0, 180.0)
         val point = OsmLatLon(85.0, 179.99)
         val intersect = OsmLatLon(85.0, 180.0)
-        assertEquals(distance(point, intersect), crossTrackDistance(start, end, point), 0.01)
-        assertEquals(distance(start, intersect), alongTrackDistance(start, end, point), 0.01)
+        assertEquals(point.distanceTo(intersect), point.crossTrackDistanceTo(start, end), 0.01)
+        assertEquals(start.distanceTo(intersect), point.alongTrackDistanceTo(start, end), 0.01)
     }
 
     @Test fun `distance to single position`() {
         val point = OsmLatLon(0.01, 0.0)
         val intersect = OsmLatLon(0.0, 0.0)
         assertEquals(
-            distance(intersect, point),
-            crossTrackDistance(listOf(intersect), point),
+            point.distanceTo(intersect),
+            point.crossTrackDistanceTo(listOf(intersect)),
             0.01
         )
     }
@@ -146,8 +143,8 @@ class SphericalEarthMathTest {
         val end = OsmLatLon(0.0, +0.01)
         val point = OsmLatLon(0.01, 0.0)
         assertEquals(
-            crossTrackDistance(start, end, point),
-            crossTrackDistance(listOf(start, end), point),
+            point.crossTrackDistanceTo(start, end),
+            point.crossTrackDistanceTo(listOf(start, end)),
             0.01
         )
     }
@@ -158,13 +155,13 @@ class SphericalEarthMathTest {
         val p2 = OsmLatLon(0.0, +0.02)
         val point = OsmLatLon(0.01, 0.0)
         assertEquals(
-            crossTrackDistance(p0, p1, point),
-            crossTrackDistance(listOf(p0, p1, p2), point),
+            point.crossTrackDistanceTo(p0, p1),
+            point.crossTrackDistanceTo(listOf(p0, p1, p2)),
             0.01
         )
         assertEquals(
-            crossTrackDistance(p0, p1, point),
-            crossTrackDistance(listOf(p2, p1, p0), point),
+            point.crossTrackDistanceTo(p0, p1),
+            point.crossTrackDistanceTo(listOf(p2, p1, p0)),
             0.01
         )
     }
@@ -173,41 +170,40 @@ class SphericalEarthMathTest {
 
     @Test fun `enclosingBoundingBox radius`() {
         val pos = p(0.0, 0.0)
-        val bbox = enclosingBoundingBox(pos, 5000.0)
+        val bbox = pos.enclosingBoundingBox(5000.0)
 
         val dist = (sqrt(2.0) * 5000).toInt()
 
         // all four corners of the bbox should be 'radius' away
-        assertEquals(dist, distance(pos, bbox.min).roundToInt())
-        assertEquals(dist, distance(pos, bbox.max).roundToInt())
+        assertEquals(dist, pos.distanceTo(bbox.min).roundToInt())
+        assertEquals(dist, pos.distanceTo(bbox.max).roundToInt())
         assertEquals(
             dist,
-            distance(pos, p(bbox.maxLongitude, bbox.minLatitude)).roundToInt()
+            pos.distanceTo(p(bbox.maxLongitude, bbox.minLatitude)).roundToInt()
         )
         assertEquals(
             dist,
-            distance(pos, p(bbox.minLongitude, bbox.maxLatitude)).roundToInt()
+            pos.distanceTo(p(bbox.minLongitude, bbox.maxLatitude)).roundToInt()
         )
 
-        assertEquals(225, bearing(pos, bbox.min).roundToInt())
-        assertEquals(45, bearing(pos, bbox.max).roundToInt())
+        assertEquals(225, pos.initialBearingTo(bbox.min).roundToInt())
+        assertEquals(45, pos.initialBearingTo(bbox.max).roundToInt())
     }
 
     @Test fun `enclosingBoundingBox crosses 180th meridian`() {
-        val pos = p(180.0, 0.0)
-        val bbox = enclosingBoundingBox(pos, 5000.0)
+        val bbox = p(180.0, 0.0).enclosingBoundingBox(5000.0)
 
         assertTrue(bbox.crosses180thMeridian())
     }
 
     @Test(expected = IllegalArgumentException::class)
     fun `enclosingBoundingBox fails for empty line`() {
-        enclosingBoundingBox(listOf<LatLon>())
+        listOf<LatLon>().enclosingBoundingBox()
     }
 
     @Test fun `enclosingBoundingBox for line`() {
         val positions = listOf(p(0.0, -4.0), p(3.0, 12.0), p(16.0, 1.0),p(-6.0, 0.0))
-        val bbox = enclosingBoundingBox(positions)
+        val bbox = positions.enclosingBoundingBox()
         assertEquals(-4.0, bbox.minLatitude, 0.0)
         assertEquals(12.0, bbox.maxLatitude, 0.0)
         assertEquals(16.0, bbox.maxLongitude, 0.0)
@@ -216,7 +212,7 @@ class SphericalEarthMathTest {
 
     @Test fun `enclosingBoundingBox for line crosses 180th meridian`() {
         val positions = listOf(p(160.0, 10.0),p(-150.0, 0.0),p(180.0, -10.0))
-        val bbox = enclosingBoundingBox(positions)
+        val bbox = positions.enclosingBoundingBox()
         assertTrue(bbox.crosses180thMeridian())
         assertEquals(-10.0, bbox.minLatitude, 0.0)
         assertEquals(10.0, bbox.maxLatitude, 0.0)
@@ -248,10 +244,10 @@ class SphericalEarthMathTest {
     }
 
     private fun checkTranslate(one: LatLon, distance: Int, angle: Int) {
-        val two = translate(one, distance.toDouble(), angle.toDouble())
+        val two = one.translate(distance.toDouble(), angle.toDouble())
 
-        assertEquals(distance, distance(one, two).roundToInt())
-        assertEquals(angle, bearing(one, two).roundToInt())
+        assertEquals(distance, one.distanceTo(two).roundToInt())
+        assertEquals(angle, one.initialBearingTo(two).roundToInt())
     }
 
     private fun checkTranslate(distance: Int, angle: Int) {
@@ -263,20 +259,20 @@ class SphericalEarthMathTest {
 
     @Test(expected = IllegalArgumentException::class)
     fun `centerLineOfPolyline for point fails`() {
-        centerLineOfPolyline(listOf(p(0.0,0.0)))
+        listOf(p(0.0,0.0)).centerLineOfPolyline()
     }
 
     @Test fun `centerLineOfPolyline for a line with zero length`() {
         val p0 = p(0.0, 0.0)
         val p1 = p(0.0, 0.0)
         val p2 = p(0.0, 0.0)
-        assertThat(centerLineOfPolyline(listOf(p0, p1, p2))).containsExactly(p0, p1)
+        assertEquals(Pair(p0, p1), listOf(p0, p1, p2).centerLineOfPolyline())
     }
 
     @Test fun `centerLineOfPolyline for a single line`() {
         val p0 = p(0.0, 0.0)
         val p1 = p(1.0, 1.0)
-        assertThat(centerLineOfPolyline(listOf(p0, p1))).containsExactly(p0, p1)
+        assertEquals(Pair(p0, p1), listOf(p0, p1).centerLineOfPolyline())
     }
 
     @Test fun `centerLineOfPolyline for a polyline where the center is the middle line`() {
@@ -284,7 +280,7 @@ class SphericalEarthMathTest {
         val p1 = p(1.0, 1.0)
         val p2 = p(2.0, 2.0)
         val p3 = p(3.0, 3.0)
-        assertThat(centerLineOfPolyline(listOf(p0, p1, p2, p3))).containsExactly(p1, p2)
+        assertEquals(Pair(p1, p2), listOf(p0, p1, p2, p3).centerLineOfPolyline())
     }
 
     @Test fun `centerLineOfPolyline for a polyline where the center is not the middle line`() {
@@ -292,68 +288,68 @@ class SphericalEarthMathTest {
         val p1 = p(10.0, 10.0)
         val p2 = p(11.0, 11.0)
         val p3 = p(12.0, 12.0)
-        assertThat(centerLineOfPolyline(listOf(p0, p1, p2, p3))).containsExactly(p0, p1)
+        assertEquals(Pair(p0, p1), listOf(p0, p1, p2, p3).centerLineOfPolyline())
     }
 
     /* +++++++++++++++++++++++++ test calculation of center point of line +++++++++++++++++++++++ */
 
     @Test(expected = IllegalArgumentException::class)
     fun `centerPointOfPolyline fails for empty list`() {
-        centerPointOfPolyline(listOf<LatLon>())
+        listOf<LatLon>().centerPointOfPolyline()
     }
 
     @Test fun `centerPointOfPolyline for line with zero length`() {
         val p0 = p(20.0, 20.0)
-        assertEquals(p0, centerPointOfPolyline(listOf(p0,p0)))
+        assertEquals(p0, listOf(p0,p0).centerPointOfPolyline())
     }
 
     @Test fun `centerPointOfPolyline for simple line`() {
         val polyline = listOf(p(-20.0, 80.0), p(20.0, -60.0))
-        assertEquals(p(0.0, 10.0), centerPointOfPolyline(polyline))
+        assertEquals(p(0.0, 10.0), polyline.centerPointOfPolyline())
     }
 
     @Test fun `centerPointOfPolyline for line that crosses 180th meridian`() {
-        assertEquals(p(-170.0, 0.0), centerPointOfPolyline(listOf(p(170.0, 0.0), p(-150.0, 0.0))))
-        assertEquals(p(170.0, 0.0), centerPointOfPolyline(listOf(p(150.0, 0.0), p(-170.0, 0.0))))
+        assertEquals(p(-170.0, 0.0), listOf(p(170.0, 0.0), p(-150.0, 0.0)).centerPointOfPolyline())
+        assertEquals(p(170.0, 0.0), listOf(p(150.0, 0.0), p(-170.0, 0.0)).centerPointOfPolyline())
     }
 
     /* +++++++++++++++++++++++ test calculation of center point of polygon ++++++++++++++++++++++ */
 
     @Test(expected = IllegalArgumentException::class)
     fun `centerPointOfPolygon for empty polygon fails`() {
-        centerPointOfPolygon(listOf<LatLon>())
+        listOf<LatLon>().centerPointOfPolygon()
     }
 
     @Test fun `centerPointOfPolygon with no area simply returns first point`() {
         val positions = listOf(p(10.0, 10.0), p(10.0, 20.0), p(10.0, 30.0))
-        assertEquals(p(10.0, 10.0), centerPointOfPolygon(positions))
+        assertEquals(p(10.0, 10.0), positions.centerPointOfPolygon())
     }
 
     @Test fun `centerPointOfPolygon at origin`() {
         val center = p(0.0, 0.0)
-        assertEquals(center, centerPointOfPolygon(center.createRhombus(1.0)))
+        assertEquals(center, center.createRhombus(1.0).centerPointOfPolygon())
     }
 
     @Test fun `centerPointOfPolygon at 180th meridian`() {
         val center = p(179.9, 0.0)
-        assertEquals(center, centerPointOfPolygon(center.createRhombus(1.0)))
+        assertEquals(center, center.createRhombus(1.0).centerPointOfPolygon())
     }
 
     /* +++++++++++++++++++++++++ test calculation of point in line string +++++++++++++++++++++++ */
 
     @Test fun `pointOnPolylineFromStart for single line`() {
         val list = listOf(p(0.0, 0.0), p(10.0, 0.0))
-        assertEquals(p(2.5, 0.0), pointOnPolylineFromStart(list, distance(list) * 0.25))
+        assertEquals(p(2.5, 0.0), list.pointOnPolylineFromStart(list.measuredLength() * 0.25))
     }
 
     @Test fun `pointOnPolylineFromStart for polyline`() {
         val list = listOf(p(0.0, 0.0), p(5.0, 0.0), p(10.0, 0.0))
-        assertEquals(p(2.5, 0.0), pointOnPolylineFromStart(list, distance(list) * 0.25))
+        assertEquals(p(2.5, 0.0), list.pointOnPolylineFromStart(list.measuredLength() * 0.25))
     }
 
     @Test fun `pointOnPolylineFromStart for line that crosses 180th meridian`() {
         val list = listOf(p(179.0, 0.0), p(-179.0, 0.0))
-        assertEquals(p(-180.0, 0.0), pointOnPolylineFromStart(list, distance(list) * 0.5))
+        assertEquals(p(-180.0, 0.0), list.pointOnPolylineFromStart(list.measuredLength() * 0.5))
     }
 
     /* +++++++++++++++++++++++++++++++ test point in polygon check ++++++++++++++++++++++++++++++ */
@@ -361,43 +357,41 @@ class SphericalEarthMathTest {
     @Test fun `point at polygon vertex is in polygon`() {
         val square = p(0.0, 0.0).createSquareWithPointsAtCenterOfEdges(10.0)
         for (pos in square) {
-            assertTrue(isInPolygon(pos, square))
+            assertTrue(pos.isInPolygon(square))
         }
     }
 
     @Test fun `point at polygon vertex at 180th meridian is in polygon`() {
         val square = p(180.0, 0.0).createSquareWithPointsAtCenterOfEdges(10.0)
         for (pos in square) {
-            assertTrue(isInPolygon(pos, square))
+            assertTrue(pos.isInPolygon(square))
         }
     }
 
     @Test fun `point at polygon edge is in polygon`() {
         val square = p(0.0, 0.0).createSquare(10.0)
-        assertTrue(isInPolygon(p(0.0, 10.0), square))
-        assertTrue(isInPolygon(p(10.0, 0.0), square))
-        assertTrue(isInPolygon(p(-10.0, 0.0), square))
-        assertTrue(isInPolygon(p(0.0, -10.0), square))
+        assertTrue(p(0.0, 10.0).isInPolygon(square))
+        assertTrue(p(10.0, 0.0).isInPolygon(square))
+        assertTrue(p(-10.0, 0.0).isInPolygon(square))
+        assertTrue(p(0.0, -10.0).isInPolygon(square))
     }
 
     @Test fun `point at polygon edge at 180th meridian is in polygon`() {
         val square = p(180.0, 0.0).createSquare(10.0)
-        assertTrue(isInPolygon(p(180.0, 10.0), square))
-        assertTrue(isInPolygon(p(-170.0, 0.0), square))
-        assertTrue(isInPolygon(p(170.0, 0.0), square))
-        assertTrue(isInPolygon(p(180.0, -10.0), square))
+        assertTrue(p(180.0, 10.0).isInPolygon(square))
+        assertTrue(p(-170.0, 0.0).isInPolygon(square))
+        assertTrue(p(170.0, 0.0).isInPolygon(square))
+        assertTrue(p(180.0, -10.0).isInPolygon(square))
     }
 
     @Test fun `point in polygon is in polygon`() {
-        assertTrue(isInPolygon(
-            p(0.0, 0.0),
+        assertTrue(p(0.0, 0.0).isInPolygon(
             listOf(p(1.0, 1.0), p(1.0, -2.0), p(-2.0, 1.0))
         ))
     }
 
     @Test fun `point in polygon at 180th meridian is in polygon`() {
-        assertTrue(isInPolygon(
-            p(180.0, 0.0),
+        assertTrue(p(180.0, 0.0).isInPolygon(
             listOf(p(-179.0, 1.0), p(-179.0, -2.0), p(178.0, 1.0))
         ))
     }
@@ -406,118 +400,118 @@ class SphericalEarthMathTest {
     // intersects the polygon in a polygon vertex
 
     @Test fun `point in polygon whose ray insersects a vertex is in polygon`() {
-        assertTrue(isInPolygon(p(0.0, 0.0), p(0.0, 0.0).createRhombus(1.0)))
+        assertTrue(p(0.0, 0.0).isInPolygon(p(0.0, 0.0).createRhombus(1.0)))
     }
 
     @Test fun `point in polygon whose ray intersects a vertex at 180th meridian is in polygon`() {
-        assertTrue(isInPolygon(p(180.0, 0.0), p(180.0, 0.0).createRhombus(1.0)))
+        assertTrue(p(180.0, 0.0).isInPolygon(p(180.0, 0.0).createRhombus(1.0)))
     }
 
     @Test fun `point outside polygon whose ray intersects a vertex is outside polygon`() {
         val rhombus = p(0.0, 0.0).createRhombus(1.0)
         // four checks here because the ray could be cast in any direction
-        assertFalse(isInPolygon(p(-2.0, 1.0), rhombus))
-        assertFalse(isInPolygon(p(-2.0, 0.0), rhombus))
-        assertFalse(isInPolygon(p(1.0, -2.0), rhombus))
-        assertFalse(isInPolygon(p(0.0, -2.0), rhombus))
+        assertFalse(p(-2.0, 1.0).isInPolygon(rhombus))
+        assertFalse(p(-2.0, 0.0).isInPolygon(rhombus))
+        assertFalse(p(1.0, -2.0).isInPolygon(rhombus))
+        assertFalse(p(0.0, -2.0).isInPolygon(rhombus))
     }
 
     @Test fun `point outside polygon whose ray intersects a vertex at 180th meridian is outside polygon`() {
         val rhombus = p(180.0, 0.0).createRhombus(1.0)
         // four checks here because the ray could be cast in any direction
-        assertFalse(isInPolygon(p(178.0, 1.0), rhombus))
-        assertFalse(isInPolygon(p(178.0, 0.0), rhombus))
-        assertFalse(isInPolygon(p(-179.0, -2.0), rhombus))
-        assertFalse(isInPolygon(p(180.0, -2.0), rhombus))
+        assertFalse(p(178.0, 1.0).isInPolygon(rhombus))
+        assertFalse(p(178.0, 0.0).isInPolygon(rhombus))
+        assertFalse(p(-179.0, -2.0).isInPolygon(rhombus))
+        assertFalse(p(180.0, -2.0).isInPolygon(rhombus))
     }
 
     @Test fun `point in polygon whose ray intersects polygon edges is inside polygon`() {
         val bonbon = p(0.0, 0.0).createBonbon()
-        assertTrue(isInPolygon(p(0.0, 0.0), bonbon))
+        assertTrue(p(0.0, 0.0).isInPolygon(bonbon))
     }
 
     @Test fun `point in polygon whose ray intersects polygon edges at 180th meridian is inside polygon`() {
         val bonbon = p(180.0, 0.0).createBonbon()
-        assertTrue(isInPolygon(p(180.0, 0.0), bonbon))
+        assertTrue(p(180.0, 0.0).isInPolygon(bonbon))
     }
 
     @Test fun `point outside polygon whose ray intersects polygon edges is outside polygon`() {
         val bonbon = p(0.0, 0.0).createBonbon()
         // four checks here because the ray could be cast in any direction
-        assertFalse(isInPolygon(p(-3.0, 0.0), bonbon))
-        assertFalse(isInPolygon(p(+3.0, 0.0), bonbon))
-        assertFalse(isInPolygon(p(0.0, +3.0), bonbon))
-        assertFalse(isInPolygon(p(0.0, -3.0), bonbon))
+        assertFalse(p(-3.0, 0.0).isInPolygon(bonbon))
+        assertFalse(p(+3.0, 0.0).isInPolygon(bonbon))
+        assertFalse(p(0.0, +3.0).isInPolygon(bonbon))
+        assertFalse(p(0.0, -3.0).isInPolygon(bonbon))
     }
 
     @Test fun `point outside polygon whose ray intersects polygon edges at 180th meridian is outside polygon`() {
         val bonbon = p(180.0, 0.0).createBonbon()
         // four checks here because the ray could be cast in any direction
-        assertFalse(isInPolygon(p(177.0, 0.0), bonbon))
-        assertFalse(isInPolygon(p(-177.0, 0.0), bonbon))
-        assertFalse(isInPolygon(p(180.0, +3.0), bonbon))
-        assertFalse(isInPolygon(p(180.0, -3.0), bonbon))
+        assertFalse(p(177.0, 0.0).isInPolygon(bonbon))
+        assertFalse(p(-177.0, 0.0).isInPolygon(bonbon))
+        assertFalse(p(180.0, +3.0).isInPolygon(bonbon))
+        assertFalse(p(180.0, -3.0).isInPolygon(bonbon))
     }
 
     @Test fun `point outside polygon is outside polygon`() {
-        assertFalse(isInPolygon(p(0.0, 11.0), p(0.0, 0.0).createSquare(10.0)))
+        assertFalse(p(0.0, 11.0).isInPolygon(p(0.0, 0.0).createSquare(10.0)))
     }
 
     @Test fun `point outside polygon is outside polygon at 180th meridian`() {
-        assertFalse(isInPolygon(p(-169.0, 0.0), p(180.0, 0.0).createSquare(10.0)))
+        assertFalse(p(-169.0, 0.0).isInPolygon(p(180.0, 0.0).createSquare(10.0)))
     }
 
     @Test fun `polygon direction does not matter for point-in-polygon check`() {
         val square = p(0.0, 0.0).createSquare(10.0).reversed()
-        assertTrue(isInPolygon(p(5.0, 5.0), square))
+        assertTrue(p(5.0, 5.0).isInPolygon(square))
     }
 
     @Test fun `polygon direction does not matter for point-in-polygon check at 180th meridian`() {
         val square = p(180.0, 0.0).createSquare(10.0).reversed()
-        assertTrue(isInPolygon(p(-175.0, 5.0), square))
+        assertTrue(p(-175.0, 5.0).isInPolygon(square))
     }
 
     @Test fun `point in hole of concave polygon is outside polygon`() {
         val r = p(0.0, 0.0).createRhombusWithHoleAround()
-        assertFalse(isInPolygon(p(0.0, 0.0), r))
-        assertFalse(isInPolygon(p(0.0, 0.5), r))
+        assertFalse(p(0.0, 0.0).isInPolygon(r))
+        assertFalse(p(0.0, 0.5).isInPolygon(r))
     }
 
     @Test fun `point in hole of concave polygon is outside polygon at 180th meridian`() {
         val r = p(180.0, 0.0).createRhombusWithHoleAround()
-        assertFalse(isInPolygon(p(180.0, 0.0), r))
-        assertFalse(isInPolygon(p(180.0, 0.5), r))
+        assertFalse(p(180.0, 0.0).isInPolygon(r))
+        assertFalse(p(180.0, 0.5).isInPolygon(r))
     }
 
     @Test fun `point in shell of concave polygon is inside polygon`() {
         val r = p(0.0, 0.0).createRhombusWithHoleAround()
-        assertTrue(isInPolygon(p(0.75, 0.75), r))
-        assertTrue(isInPolygon(p(1.5, 0.0), r))
+        assertTrue(p(0.75, 0.75).isInPolygon(r))
+        assertTrue(p(1.5, 0.0).isInPolygon(r))
     }
 
     @Test fun `point in shell of concave polygon is inside polygon at 180th meridian`() {
         val r = p(180.0, 0.0).createRhombusWithHoleAround()
-        assertTrue(isInPolygon(p(-179.25, 0.75), r))
-        assertTrue(isInPolygon(p(-178.5, 0.0), r))
+        assertTrue(p(-179.25, 0.75).isInPolygon(r))
+        assertTrue(p(-178.5, 0.0).isInPolygon(r))
     }
 
     /* +++++++++++++++++++++++++++++ test point in multipolygon check +++++++++++++++++++++++++++ */
 
     @Test(expected = IllegalArgumentException::class)
     fun `isRingDefinedClockwise for empty list fails`() {
-        isRingDefinedClockwise(emptyList())
+        emptyList<LatLon>().isRingDefinedClockwise()
     }
 
     @Test fun isRingDefinedClockwise() {
         val polygon = p(0.0, 0.0).createRhombus(1.0)
-        assertFalse(isRingDefinedClockwise(polygon))
-        assertTrue(isRingDefinedClockwise(polygon.reversed()))
+        assertFalse(polygon.isRingDefinedClockwise())
+        assertTrue(polygon.reversed().isRingDefinedClockwise())
     }
 
     @Test fun `isRingDefinedClockwise for ring on 180th meridian`() {
         val polygon = p(180.0, 0.0).createRhombus(1.0)
-        assertFalse(isRingDefinedClockwise(polygon))
-        assertTrue(isRingDefinedClockwise(polygon.reversed()))
+        assertFalse(polygon.isRingDefinedClockwise())
+        assertTrue(polygon.reversed().isRingDefinedClockwise())
     }
 
     @Test fun isInMultipolygon() {
@@ -528,10 +522,10 @@ class SphericalEarthMathTest {
         val shell = origin.createRhombus(5.0)
         val mp = listOf(shell, hole, shellInHole)
 
-        assertTrue(isInMultipolygon(origin, mp))
-        assertFalse(isInMultipolygon(p(0.0, 2.0), mp))
-        assertTrue(isInMultipolygon(p(0.0, 4.0), mp))
-        assertFalse(isInMultipolygon(p(0.0, 6.0), mp))
+        assertTrue(origin.isInMultipolygon(mp))
+        assertFalse(p(0.0, 2.0).isInMultipolygon(mp))
+        assertTrue(p(0.0, 4.0).isInMultipolygon(mp))
+        assertFalse(p(0.0, 6.0).isInMultipolygon(mp))
     }
 
     companion object {

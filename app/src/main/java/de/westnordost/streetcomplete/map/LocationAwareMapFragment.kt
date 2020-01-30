@@ -16,8 +16,8 @@ import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.toDp
 import de.westnordost.streetcomplete.util.BitmapUtil
-import de.westnordost.streetcomplete.util.SphericalEarthMath
 import de.westnordost.streetcomplete.map.tangram.Marker
+import de.westnordost.streetcomplete.util.EARTH_CIRCUMFERENCE
 import kotlin.math.*
 
 /** Manages a map that shows the device's GPS location and orientation as markers on the map with
@@ -196,7 +196,7 @@ open class LocationAwareMapFragment : MapFragment() {
 
     private fun pixelsPerMeter(latitude: Double, zoom: Float): Double {
         val numberOfTiles = (2.0).pow(zoom.toDouble())
-        val metersPerTile = cos(latitude * PI / 180.0) * SphericalEarthMath.EARTH_CIRCUMFERENCE / numberOfTiles
+        val metersPerTile = cos(latitude * PI / 180.0) * EARTH_CIRCUMFERENCE / numberOfTiles
         return 256 / metersPerTile
     }
 

@@ -4,7 +4,7 @@ import java.io.Serializable
 
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.LatLon
-import de.westnordost.streetcomplete.util.SphericalEarthMath.*
+import de.westnordost.streetcomplete.util.enclosingBoundingBox
 
 /** Information on the geometry of a quest  */
 sealed class ElementGeometry : Serializable {
@@ -14,16 +14,16 @@ sealed class ElementGeometry : Serializable {
 }
 
 data class ElementPolylinesGeometry(val polylines: List<List<LatLon>>, override val center: LatLon) : ElementGeometry() {
-    @delegate:Transient private val bbox by lazy { enclosingBoundingBox(polylines.flatten()) }
+    @delegate:Transient private val bbox by lazy { polylines.flatten().enclosingBoundingBox() }
     override fun getBounds(): BoundingBox = bbox
 }
 
 data class ElementPolygonsGeometry(val polygons: List<List<LatLon>>, override val center: LatLon) : ElementGeometry() {
-    @delegate:Transient private val bbox by lazy { enclosingBoundingBox(polygons.flatten()) }
+    @delegate:Transient private val bbox by lazy { polygons.flatten().enclosingBoundingBox() }
     override fun getBounds(): BoundingBox = bbox
 }
 
 data class ElementPointGeometry(override val center: LatLon) : ElementGeometry() {
-    @delegate:Transient private val bbox by lazy { enclosingBoundingBox(listOf(center)) }
+    @delegate:Transient private val bbox by lazy { listOf(center).enclosingBoundingBox() }
     override fun getBounds(): BoundingBox = bbox
 }

@@ -28,7 +28,9 @@ import de.westnordost.streetcomplete.data.osm.changes.SplitAtPoint
 import de.westnordost.streetcomplete.data.osm.changes.SplitPolylineAtPosition
 import de.westnordost.streetcomplete.ktx.*
 import de.westnordost.streetcomplete.sound.SoundFx
-import de.westnordost.streetcomplete.util.SphericalEarthMath.*
+import de.westnordost.streetcomplete.util.alongTrackDistanceTo
+import de.westnordost.streetcomplete.util.crossTrackDistanceTo
+import de.westnordost.streetcomplete.util.distanceTo
 import kotlinx.android.synthetic.main.fragment_split_way.*
 import javax.inject.Inject
 
@@ -148,11 +150,11 @@ class SplitWayFragment : Fragment(), IsCloseableBottomSheet, IsShowingQuestDetai
         if (splitWayCandidates.size > 1 && clickAreaSizeInMeters > CLICK_AREA_SIZE_AT_MAX_ZOOM) {
             context?.toast(R.string.quest_split_way_too_imprecise)
         }
-        val splitWay = splitWayCandidates.minBy { distance(it.pos, position) }!!
+        val splitWay = splitWayCandidates.minBy { it.pos.distanceTo(position) }!!
         val splitPosition = splitWay.pos
 
         // new split point is too close to existing split points
-        if (splits.any { distance(it.second, splitPosition) < clickAreaSizeInMeters } ) {
+        if (splits.any { it.second.distanceTo(splitPosition) < clickAreaSizeInMeters } ) {
             context?.toast(R.string.quest_split_way_too_imprecise)
         } else {
             splits.add(Pair(splitWay, splitPosition))
@@ -194,7 +196,7 @@ class SplitWayFragment : Fragment(), IsCloseableBottomSheet, IsShowingQuestDetai
         // ignore first and last node (cannot be split at the very start or end)
         val result = mutableSetOf<SplitAtPoint>()
         for (pos in positions.subList(1, positions.size - 1)) {
-            val nodeDistance = distance(clickPosition, pos)
+            val nodeDistance = clickPosition.distanceTo(pos)
             if (clickAreaSizeInMeters > nodeDistance) {
                 result.add(SplitAtPoint(pos))
             }
@@ -205,10 +207,10 @@ class SplitWayFragment : Fragment(), IsCloseableBottomSheet, IsShowingQuestDetai
     private fun createSplitsForLines(clickPosition: LatLon, clickAreaSizeInMeters: Double): Set<SplitAtLinePosition> {
         val result = mutableSetOf<SplitAtLinePosition>()
         positions.forEachPair { first, second ->
-            val crossTrackDistance = crossTrackDistance(first, second, clickPosition)
+            val crossTrackDistance = clickPosition.crossTrackDistanceTo(first, second)
             if (clickAreaSizeInMeters > crossTrackDistance) {
-                val alongTrackDistance = alongTrackDistance(first, second, clickPosition)
-                val distance = distance(first, second)
+                val alongTrackDistance = clickPosition.alongTrackDistanceTo(first, second)
+                val distance = first.distanceTo(second)
                 if (distance > alongTrackDistance && alongTrackDistance > 0) {
                     val delta = alongTrackDistance / distance
                     result.add(SplitAtLinePosition(first, second, delta))

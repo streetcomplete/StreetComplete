@@ -10,8 +10,8 @@ import de.westnordost.streetcomplete.data.osm.changes.SplitAtLinePosition
 import de.westnordost.streetcomplete.data.osm.changes.SplitAtPoint
 import de.westnordost.streetcomplete.data.osm.changes.SplitPolylineAtPosition
 import de.westnordost.streetcomplete.ktx.*
-import de.westnordost.streetcomplete.util.SphericalEarthMath.distance
-import de.westnordost.streetcomplete.util.SphericalEarthMath.pointOnPolylineFromStart
+import de.westnordost.streetcomplete.util.measuredLength
+import de.westnordost.streetcomplete.util.pointOnPolylineFromStart
 import kotlin.math.sign
 
 /** Uploads one split way
@@ -247,7 +247,7 @@ private data class SplitWayAtLinePosition( val pos1: LatLon, val index1: Int,
     override val index get() = index1
     override val pos: LatLon get() {
         val line = listOf(pos1, pos2)
-        return pointOnPolylineFromStart(line, distance(line) * delta)!!
+        return line.pointOnPolylineFromStart(line.measuredLength() * delta)!!
     }
 }
 

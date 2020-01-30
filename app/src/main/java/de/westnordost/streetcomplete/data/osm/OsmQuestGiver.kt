@@ -15,7 +15,7 @@ import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestDao
 import de.westnordost.streetcomplete.data.visiblequests.OrderedVisibleQuestTypesProvider
-import de.westnordost.streetcomplete.util.SphericalEarthMath
+import de.westnordost.streetcomplete.util.enclosingBoundingBox
 import java.util.concurrent.FutureTask
 
 /** Manages creating new quests and removing quests that are no longer applicable for an OSM
@@ -98,7 +98,7 @@ class OsmQuestGiver @Inject constructor(
     private fun hasNoteAt(pos: LatLon): Boolean {
         // note about one meter around the center of an element still count as at this point as to
         // deal with imprecision of the center calculation of geometry (see #1089)
-        val bbox = SphericalEarthMath.enclosingBoundingBox(pos, 1.0)
+        val bbox = pos.enclosingBoundingBox(1.0)
         return osmNoteQuestDb.getAllPositions(bbox).isNotEmpty()
     }
 
