@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 
 import de.westnordost.streetcomplete.R
+import java.util.concurrent.CopyOnWriteArrayList
 
 /** Select a number of items from a list of items  */
 class ImageSelectAdapter<T>(private val maxSelectableIndices: Int = -1) :
@@ -21,7 +22,7 @@ class ImageSelectAdapter<T>(private val maxSelectableIndices: Int = -1) :
 
     var cellLayoutId = R.layout.cell_labeled_image_select
 
-    val listeners = mutableListOf<OnItemSelectionListener>()
+    val listeners: MutableList<OnItemSelectionListener> = CopyOnWriteArrayList()
 
     val selectedItems get() = _selectedIndices.map { i -> items[i].value!! }
 

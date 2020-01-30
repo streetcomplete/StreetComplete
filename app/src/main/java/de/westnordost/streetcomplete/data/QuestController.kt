@@ -42,6 +42,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
 import kotlinx.coroutines.*
+import java.util.concurrent.CopyOnWriteArrayList
 import javax.inject.Singleton
 
 @Singleton class QuestController @Inject constructor(
@@ -57,7 +58,7 @@ import javax.inject.Singleton
     private val context: Context
 ): LifecycleObserver, CoroutineScope by CoroutineScope(Dispatchers.IO) {
 
-    private val listeners: MutableList<VisibleQuestListener> = mutableListOf()
+    private val listeners: MutableList<VisibleQuestListener> = CopyOnWriteArrayList()
     private val relay = object : VisibleQuestListener {
         override fun onQuestsCreated(quests: Collection<Quest>, group: QuestGroup) {
             for (listener in listeners) {
