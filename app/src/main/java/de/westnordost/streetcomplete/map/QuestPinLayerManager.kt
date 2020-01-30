@@ -62,12 +62,11 @@ class QuestPinLayerManager @Inject constructor(
         /* When reentering the fragment, the database may have changed (quest download in
         * background or change in settings), so the quests must be pulled from DB again */
         initializeQuestTypeOrders()
+        clear()
         onNewScreenPosition()
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_STOP) fun onStop() {
-        /* When reentering the fragment, the database may have changed (quest download in
-        * background or change in settings), so the quests must be pulled from DB again */
         clear()
     }
 
@@ -107,11 +106,11 @@ class QuestPinLayerManager @Inject constructor(
             return
         }
         val tiles = SlippyMapMath.asTileList(tilesRect)
-        tiles.removeAll(retrievedTiles)
+        synchronized(retrievedTiles) { tiles.removeAll(retrievedTiles) }
         val minRect = SlippyMapMath.minRect(tiles) ?: return
         val bbox = SlippyMapMath.asBoundingBox(minRect, TILES_ZOOM)
         questController.retrieve(bbox)
-        retrievedTiles.addAll(tiles)
+        synchronized(retrievedTiles) { retrievedTiles.addAll(tiles) }
     }
 
     private fun add(quest: Quest, group: QuestGroup) {
@@ -131,8 +130,10 @@ class QuestPinLayerManager @Inject constructor(
             )
             Point(position.toLngLat(), properties)
         }
-        if (quests[group] == null) quests[group] = LongSparseArray(256)
-        quests[group]?.put(quest.id!!, points)
+        synchronized(quests) {
+            if (quests[group] == null) quests[group] = LongSparseArray(256)
+            quests[group]?.put(quest.id!!, points)
+        }
     }
 
     private fun remove(questId: Long, group: QuestGroup) {
@@ -140,10 +141,14 @@ class QuestPinLayerManager @Inject constructor(
     }
 
     private fun clear() {
-        for (value in quests.values) {
-            value.clear()
+        synchronized(quests) {
+            for (value in quests.values) {
+                value.clear()
+            }
         }
-        retrievedTiles.clear()
+        synchronized(retrievedTiles) {
+            retrievedTiles.clear()
+        }
         questsLayer?.clear()
         lastDisplayedRect = null
     }
@@ -156,8 +161,12 @@ class QuestPinLayerManager @Inject constructor(
         }
     }
 
-    private fun getPoints(): List<Point> = quests.values.flatMap { questsById ->
-        questsById.values.flatten()
+    private fun getPoints(): List<Point> {
+        synchronized(quests) {
+            return quests.values.flatMap { questsById ->
+                questsById.values.flatten()
+            }
+        }
     }
 
     private fun initializeQuestTypeOrders() {
