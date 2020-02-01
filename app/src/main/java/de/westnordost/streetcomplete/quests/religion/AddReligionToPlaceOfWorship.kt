@@ -10,9 +10,9 @@ class AddReligionToPlaceOfWorship(o: OverpassMapDataAndGeometryDao) : SimpleOver
     override val tagFilters = """
         nodes, ways, relations with 
         (
-            (amenity = place_of_worship)
+            amenity = place_of_worship
             or
-            (amenity = monastery)
+            amenity = monastery
         )
         and !religion
     """
