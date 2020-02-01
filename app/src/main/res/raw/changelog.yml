@@ -1,3 +1,9 @@
+v17.0-beta3: |
+  <ul>
+  <li>Fixed several crashes</li>
+  <li>Fixed buttons not working if animations are disabled (#1706)</li>
+  </ul>
+
 v17.0-beta2: |
   <ul>
   <li>Fixed a crash on startup, thanks @RubenKelevra, @Atrate (#1704)</li>
