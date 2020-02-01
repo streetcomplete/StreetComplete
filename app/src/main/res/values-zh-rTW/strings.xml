@@ -70,6 +70,8 @@
 
     <!-- Fuzzy -->
     <string name="about_title_authors">"作者"</string>
+
+    <!-- Fuzzy -->
     <string name="about_summary_authors">"© 2016–2020 Tobias Zwick 和貢獻者們"</string>
     <string name="about_title_repository">"原始碼倉儲"</string>
     <string name="about_summary_repository">"GitHub 上"</string>
@@ -671,6 +673,8 @@
     <string name="quest_openingHours_timeSelect_next">"下一個"</string>
     <string name="quest_tracktype_title">"這一段路徑的表面硬度為何？"</string>
     <string name="quest_tracktype_grade1">"剛性路面"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tracktype_grade2">"偏剛性路面"</string>
     <string name="quest_tracktype_grade3">"混合型路面"</string>
     <string name="quest_tracktype_grade4">"偏柔性路面"</string>

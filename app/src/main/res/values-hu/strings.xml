@@ -64,6 +64,8 @@
     <string name="no_location_permission_warning">"Szükség van a pozíciódra a környéked kérdéseinek lekéréséhez"</string>
     <string name="action_about">"A StreetComplete névjegye"</string>
     <string name="about_title_authors">"Szerzők"</string>
+
+    <!-- Fuzzy -->
     <string name="about_summary_authors">"© 2016–2020 Tobias Zwick és közreműködők"</string>
     <string name="about_title_repository">"Források"</string>
     <string name="about_summary_repository">"a GitHubon"</string>
@@ -609,6 +611,8 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="quest_openingHours_timeSelect_next">"Következő"</string>
     <string name="quest_tracktype_title">"Mennyire szilárd ennek az útnak a felszíne?"</string>
     <string name="quest_tracktype_grade1">"Szilárd"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tracktype_grade2">"Viszonylag szilárd"</string>
     <string name="quest_tracktype_grade3">"Vegyes"</string>
     <string name="quest_tracktype_grade4">"Viszonylag puha"</string>

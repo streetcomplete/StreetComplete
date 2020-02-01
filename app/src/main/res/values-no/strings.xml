@@ -64,6 +64,8 @@
     <string name="no_location_permission_warning">"Posisjonen din trengs for å lete etter oppdrag i nærheten."</string>
     <string name="action_about">"Om StreetComplete"</string>
     <string name="about_title_authors">"Bidragsytere"</string>
+
+    <!-- Fuzzy -->
     <string name="about_summary_authors">"© 2016–2020 Tobias Zwick og bidragsytere"</string>
     <string name="about_title_repository">"Kodelager"</string>
     <string name="about_summary_repository">"på GitHub"</string>
@@ -582,6 +584,8 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk som for ekse
     <string name="quest_openingHours_timeSelect_next">"Neste"</string>
     <string name="quest_tracktype_title">"Hvor fast er overflaten på denne stien?"</string>
     <string name="quest_tracktype_grade1">"Fast"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tracktype_grade2">"Mest fast"</string>
     <string name="quest_tracktype_grade3">"Blandet"</string>
     <string name="quest_tracktype_grade4">"Mest mykt"</string>

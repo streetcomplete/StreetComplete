@@ -70,6 +70,8 @@
 
     <!-- Fuzzy -->
     <string name="about_title_authors">"Yazarlar"</string>
+
+    <!-- Fuzzy -->
     <string name="about_summary_authors">"© 2016–2020 Tobias Zwick ve katkıda bulunan kişiler"</string>
     <string name="about_title_repository">"Kaynak Deposu"</string>
     <string name="about_summary_repository">"GitHub'da"</string>
@@ -597,6 +599,8 @@ Tüm cadde boyunca vurgulanan bölüm için geçerli hiçbir işaret yoksa, vars
     <string name="action_deselect_all">"Hiçbirini seçme"</string>
     <string name="quest_openingHours_timeSelect_next">"İleri"</string>
     <string name="quest_tracktype_grade1">"Katı"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tracktype_grade2">"Çoğunlukla katı"</string>
     <string name="quest_tracktype_grade3">"Karışık"</string>
     <string name="quest_tracktype_grade4">"Çoğunlukla yumuşak"</string>

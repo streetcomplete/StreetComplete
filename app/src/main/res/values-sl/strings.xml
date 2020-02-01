@@ -66,6 +66,8 @@
     <string name="no_location_permission_warning">"Za iskanje nalog v vaši bližini potrebujem podatek o lokaciji."</string>
     <string name="action_about">"O programu StreetComplete"</string>
     <string name="about_title_authors">"Zasluge"</string>
+
+    <!-- Fuzzy -->
     <string name="about_summary_authors">"© 2016–2020 Tobias Zwick s sodelavci"</string>
     <string name="about_title_repository">"Izvorna koda"</string>
     <string name="about_summary_repository">"na GitHub-u"</string>
@@ -472,6 +474,8 @@ Na primer 1,3 ali 2-6."</string>
     <string name="quest_railway_crossing_barrier_none">"Ni zaščite"</string>
     <string name="quest_tracktype_title">"Kakšna je trdnost površine na tej poti?"</string>
     <string name="quest_tracktype_grade1">"Trda"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tracktype_grade2">"Pretežno trda"</string>
     <string name="quest_tracktype_grade3">"Mešana"</string>
     <string name="quest_tracktype_grade4">"Pretežno mehka"</string>

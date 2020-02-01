@@ -68,6 +68,8 @@
 
     <!-- Fuzzy -->
     <string name="about_title_authors">"Erkännande"</string>
+
+    <!-- Fuzzy -->
     <string name="about_summary_authors">"© 2016–2020 Tobias Zwick och bidragsgivare"</string>
     <string name="about_title_repository">"Källkodsarkiv"</string>
     <string name="about_summary_repository">"på GitHub"</string>
@@ -653,6 +655,8 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_openingHours_timeSelect_next">"Nästa"</string>
     <string name="quest_tracktype_title">"Vad är ytans fasthet av detta spår?"</string>
     <string name="quest_tracktype_grade1">"Fast"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tracktype_grade2">"Mestadels fast"</string>
     <string name="quest_tracktype_grade3">"Blandning"</string>
     <string name="quest_tracktype_grade4">"Mestadels mjuk"</string>

@@ -66,6 +66,8 @@
     <string name="no_location_permission_warning">"Cal la teva ubicació per a cercar missions prop teu."</string>
     <string name="action_about">"Quant a l'StreetComplete"</string>
     <string name="about_title_authors">"Crèdits"</string>
+
+    <!-- Fuzzy -->
     <string name="about_summary_authors">"© 2016–2020 Tobias Zwick i col·laboradors"</string>
     <string name="about_title_repository">"Dipòsit font"</string>
     <string name="about_summary_repository">"a GitHub"</string>
@@ -615,6 +617,8 @@ Per example 1,3 o 2-6."</string>
     <string name="quest_openingHours_timeSelect_next">"Endavant"</string>
     <string name="quest_tracktype_title">"Quin tipus de superfície té aquesta pista?"</string>
     <string name="quest_tracktype_grade1">"Pavimentada o compactada"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tracktype_grade2">"Graveta, terra o sorra compactada"</string>
     <string name="quest_tracktype_grade3">"Barreja de materials durs i tous"</string>
     <string name="quest_tracktype_grade4">"Principalment de tera, amb algunes pedres o materials durs"</string>

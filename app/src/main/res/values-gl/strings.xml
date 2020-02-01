@@ -64,6 +64,8 @@
     <string name="no_location_permission_warning">"A túa ubicación é precisada para procurar tarefas preto de ti."</string>
     <string name="action_about">"Acerca do StreetComplete"</string>
     <string name="about_title_authors">"Cretos"</string>
+
+    <!-- Fuzzy -->
     <string name="about_summary_authors">"© 2016–2020 Tobias Zwick e os contribuíntes"</string>
     <string name="about_title_repository">"Repositorio do código"</string>
     <string name="about_summary_repository">"no GitHub"</string>
@@ -614,6 +616,8 @@ Por exemplo 1,3 ou 2-6."</string>
     <string name="quest_openingHours_timeSelect_next">"Seguinte"</string>
     <string name="quest_tracktype_title">"Cal é a solidez da superficie deste camiño?"</string>
     <string name="quest_tracktype_grade1">"Sólido"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tracktype_grade2">"Moi sólido"</string>
     <string name="quest_tracktype_grade3">"Mestura"</string>
     <string name="quest_tracktype_grade4">"Moi brando"</string>

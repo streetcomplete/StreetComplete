@@ -64,6 +64,8 @@
     <string name="no_location_permission_warning">"Dein Standort wird benötigt, um nach Aufgaben in deiner Nähe zu suchen."</string>
     <string name="action_about">"Über StreetComplete"</string>
     <string name="about_title_authors">"Autoren"</string>
+
+    <!-- Fuzzy -->
     <string name="about_summary_authors">"© 2016–2020 Tobias Zwick und Mitwirkende"</string>
     <string name="about_title_repository">"Quellcode-Repository"</string>
     <string name="about_summary_repository">"auf GitHub"</string>
@@ -440,7 +442,7 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_busStopShelter_tram_title">"Hat diese Straßenbahnhaltestelle einen Unterstand?"</string>
     <string name="quest_bench_backrest_title">"Hat diese Bank eine Rückenlehne?"</string>
     <string name="quest_bench_answer_picnic_table">"Das ist ein Picknicktisch"</string>
-    <string name="quest_religion_for_place_of_worship_title">"Welcher Religion ist %s gewidmet?"</string>
+    <string name="quest_religion_for_place_of_worship_title">"Welcher Religion ist dieser Ort gewidmet?"</string>
     <string name="quest_religion_christian">"Christentum"</string>
     <string name="quest_religion_muslim">"Islam"</string>
     <string name="quest_religion_hindu">"Hinduismus"</string>
@@ -613,6 +615,8 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_openingHours_timeSelect_next">"Weiter"</string>
     <string name="quest_tracktype_title">"Wie gut ist dieser Weg befestigt?"</string>
     <string name="quest_tracktype_grade1">"Befestigt"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tracktype_grade2">"Größtenteils befestigt"</string>
     <string name="quest_tracktype_grade3">"Gemischt"</string>
     <string name="quest_tracktype_grade4">"Größtenteils unbefestigt"</string>
@@ -724,4 +728,5 @@ Jetzt aufspalten?"</string>
     <string name="about_title_donate">"Spenden"</string>
     <string name="about_summary_donate">"Zeige dich erkenntlich! ❤️"</string>
     <string name="about_description_donate">"Danke dass du erwägst, diese App zu unterstützen! Um die laufenden Spenden zu sehen, oder selbst zu spenden, tippe auf die jeweilige Plattform:"</string>
+    <string name="quest_religion_for_place_of_worship_name_title">"Welcher Religion ist %s gewidmet?"</string>
 </resources>

@@ -66,6 +66,8 @@
     <string name="no_location_permission_warning">"Programmet treng posisjonen din for å kunna søkja opp oppdrag i nærleiken."</string>
     <string name="action_about">"Om StreetComplete"</string>
     <string name="about_title_authors">"Bidragsytarar"</string>
+
+    <!-- Fuzzy -->
     <string name="about_summary_authors">"© 2016–2020 Tobias Zwick og andre bidragsytarar"</string>
     <string name="about_title_repository">"Kjeldekode"</string>
     <string name="about_summary_repository">"på GitHub"</string>

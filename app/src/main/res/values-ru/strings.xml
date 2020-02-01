@@ -70,6 +70,8 @@
     <string name="no_location_permission_warning">"Местоположение нужно для поиска квестов поблизости."</string>
     <string name="action_about">"О приложении"</string>
     <string name="about_title_authors">"Участники"</string>
+
+    <!-- Fuzzy -->
     <string name="about_summary_authors">"© 2016–2020 Тобиас Цвик и другие"</string>
     <string name="about_title_repository">"Исходный код"</string>
     <string name="about_summary_repository">"на GitHub"</string>
@@ -667,6 +669,8 @@
     <string name="quest_openingHours_timeSelect_next">"Следующий"</string>
     <string name="quest_tracktype_title">"Насколько мягкая поверхность этой колеи?"</string>
     <string name="quest_tracktype_grade1">"Твёрдая"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tracktype_grade2">"Преимущественно твердая"</string>
     <string name="quest_tracktype_grade3">"Средне"</string>
     <string name="quest_tracktype_grade4">"Преимущественно мягкая"</string>

@@ -72,6 +72,8 @@
 
     <!-- Fuzzy -->
     <string name="about_title_authors">"Auteurs"</string>
+
+    <!-- Fuzzy -->
     <string name="about_summary_authors">"© 2016–2020 Tobias Zwick en medewerkenden"</string>
     <string name="about_title_repository">"Broncode-repo"</string>
     <string name="about_summary_repository">"op GitHub"</string>
@@ -681,6 +683,8 @@ Bijvoorbeeld 1m3 of 2-6."</string>
     <string name="quest_openingHours_timeSelect_next">"Volgende"</string>
     <string name="quest_tracktype_title">"Wat is de hardheid van de ondergrond van dit pad"</string>
     <string name="quest_tracktype_grade1">"Hard"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tracktype_grade2">"Voornamelijk hard"</string>
     <string name="quest_tracktype_grade3">"niet hard / niet zacht"</string>
     <string name="quest_tracktype_grade4">"Voornamelijk zacht"</string>

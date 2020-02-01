@@ -68,6 +68,8 @@
     <string name="no_location_permission_warning">"Позиціювання потрібне для пошуку завдань поруч з вами."</string>
     <string name="action_about">"Про StreetComplete"</string>
     <string name="about_title_authors">"Автори"</string>
+
+    <!-- Fuzzy -->
     <string name="about_summary_authors">"© 2016–2020 Тобіас Звік та інші"</string>
     <string name="about_title_repository">"Репозиторій проекту"</string>
     <string name="about_summary_repository">"на GitHub"</string>
@@ -641,6 +643,8 @@
     <string name="action_deselect_all">"Зняти вибір з усіх"</string>
     <string name="quest_tracktype_title">"Наскільки тверде покриття цього шляху?"</string>
     <string name="quest_tracktype_grade1">"Тверде"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tracktype_grade2">"В основному тверде"</string>
     <string name="quest_tracktype_grade3">"Змішане"</string>
     <string name="quest_tracktype_grade4">"В основному м'яке"</string>

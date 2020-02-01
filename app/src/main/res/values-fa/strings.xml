@@ -74,6 +74,8 @@
     <string name="no_location_permission_warning">"موقعیت مکانی شما برای کاوش جُستارهای اطرافتان مورد نیاز می باشد."</string>
     <string name="action_about">"درباره برنامه"</string>
     <string name="about_title_authors">"اعتبار"</string>
+
+    <!-- Fuzzy -->
     <string name="about_summary_authors">"© 2016–2020 Tobias Zwick و همکاران"</string>
     <string name="about_title_repository">"منبع برنامه"</string>
     <string name="about_summary_repository">"روی گیت‌هاب"</string>
@@ -666,6 +668,8 @@
     <string name="quest_openingHours_timeSelect_next">"بعدی"</string>
     <string name="quest_tracktype_title">"استحکام سطح این مسیر چگونه است؟"</string>
     <string name="quest_tracktype_grade1">"سخت"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tracktype_grade2">"خیلی سخت"</string>
     <string name="quest_tracktype_grade3">"مخلوط"</string>
     <string name="quest_tracktype_grade4">"خیلی نرم"</string>

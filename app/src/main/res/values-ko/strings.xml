@@ -64,6 +64,8 @@
     <string name="no_location_permission_warning">"주변에 있는 퀘스트를 찾으려면 현재 위치가 필요합니다."</string>
     <string name="action_about">"StreetComplete란"</string>
     <string name="about_title_authors">"제작자들"</string>
+
+    <!-- Fuzzy -->
     <string name="about_summary_authors">"© 2016–2020 Tobias Zwick와 기여자들"</string>
     <string name="about_title_repository">"소스 레포지토리"</string>
     <string name="about_summary_repository">"GitHub으로 열기"</string>
@@ -588,6 +590,8 @@
     <string name="quest_openingHours_timeSelect_next">"다음"</string>
     <string name="quest_tracktype_title">"이 농로는 얼마나 단단합니까?"</string>
     <string name="quest_tracktype_grade1">"단단함"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tracktype_grade2">"거의 단단함"</string>
     <string name="quest_tracktype_grade3">"혼합"</string>
     <string name="quest_tracktype_grade4">"거의 부드러움"</string>

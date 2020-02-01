@@ -68,6 +68,8 @@
     <string name="no_location_permission_warning">"É necessária a sua localização para pesquisar desafios na sua área favorita."</string>
     <string name="action_about">"Sobre o StreetComplete"</string>
     <string name="about_title_authors">"Créditos"</string>
+
+    <!-- Fuzzy -->
     <string name="about_summary_authors">"© 2016–2020 Tobias Zwick e colaboradores"</string>
     <string name="about_title_repository">"Repositório do código-fonte"</string>
     <string name="about_summary_repository">"No site do GitHub"</string>
@@ -613,6 +615,8 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="quest_openingHours_timeSelect_next">"Próximo"</string>
     <string name="quest_tracktype_title">"Qual o tipo de firmeza da superfície deste trilho?"</string>
     <string name="quest_tracktype_grade1">"Sólido"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tracktype_grade2">"Praticamente sólido"</string>
     <string name="quest_tracktype_grade3">"Mistura"</string>
     <string name="quest_tracktype_grade4">"Praticamente brando"</string>

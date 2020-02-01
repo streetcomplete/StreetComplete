@@ -75,6 +75,8 @@ That is not very clear to me. Any further explanations? -->
     <string name="no_location_permission_warning">"Votre position est nécessaire pour rechercher des quêtes"</string>
     <string name="action_about">"À propos de StreetComplete"</string>
     <string name="about_title_authors">"Auteurs"</string>
+
+    <!-- Fuzzy -->
     <string name="about_summary_authors">"© 2016–2020 Tobias Zwick et contributeurs"</string>
     <string name="about_title_repository">"Code Source"</string>
     <string name="about_summary_repository">"sur GitHub"</string>
@@ -668,6 +670,8 @@ Partiellement signifie qu’un fauteuil roulant peut entrer et utiliser les toil
     <string name="quest_openingHours_timeSelect_next">"Suivant"</string>
     <string name="quest_tracktype_title">"Quelle est la fermeté de cette piste ?"</string>
     <string name="quest_tracktype_grade1">"Très compact"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tracktype_grade2">"Compact, sans revêtement"</string>
     <string name="quest_tracktype_grade3">"Assez compact"</string>
     <string name="quest_tracktype_grade4">"Principalement mou, terre"</string>

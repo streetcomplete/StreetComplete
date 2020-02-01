@@ -74,6 +74,8 @@
 
     <!-- Fuzzy -->
     <string name="about_title_authors">"Tekijät"</string>
+
+    <!-- Fuzzy -->
     <string name="about_summary_authors">"© 2016–2020 Tobias Zwick ja avustajat"</string>
     <string name="about_title_repository">"Lähdekoodin sijainti"</string>
     <string name="about_summary_repository">"GitHubissa"</string>
@@ -671,6 +673,8 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
     <string name="quest_openingHours_timeSelect_next">"Seuraava"</string>
     <string name="quest_tracktype_title">"Millainen on tienpinnan kovuus?"</string>
     <string name="quest_tracktype_grade1">"Kiinteä"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tracktype_grade2">"Enimmäkseen kiinteä"</string>
     <string name="quest_tracktype_grade3">"Yhdistelmä"</string>
     <string name="quest_tracktype_grade4">"Enimmäkseen pehmeää"</string>

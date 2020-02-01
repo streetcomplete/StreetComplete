@@ -66,6 +66,8 @@
     <string name="no_location_permission_warning">"Tu ubicación es necesaria para descargar tareas cercanas."</string>
     <string name="action_about">"Acerca de StreetComplete"</string>
     <string name="about_title_authors">"Agradecimientos"</string>
+
+    <!-- Fuzzy -->
     <string name="about_summary_authors">"© 2016–2020 Tobias Zwick y demás colaboradores"</string>
     <string name="about_title_repository">"Repositorio de código"</string>
     <string name="about_summary_repository">"en GitHub"</string>
@@ -648,6 +650,8 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
     <string name="quest_openingHours_timeSelect_next">"Siguiente"</string>
     <string name="quest_tracktype_title">"¿Cuál es la firmeza de esta vía?"</string>
     <string name="quest_tracktype_grade1">"Sólido"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tracktype_grade2">"Bastante sólido"</string>
     <string name="quest_tracktype_grade3">"Mezcla"</string>
     <string name="quest_tracktype_grade4">"Bastante suave"</string>

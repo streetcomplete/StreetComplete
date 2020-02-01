@@ -66,6 +66,8 @@
     <string name="no_location_permission_warning">"Zure kokalekua behar da inguruko erronkak bilatzeko."</string>
     <string name="action_about">"StreetComplete-i buruz"</string>
     <string name="about_title_authors">"Kredituak"</string>
+
+    <!-- Fuzzy -->
     <string name="about_summary_authors">"© 2016–2020 Tobias Zwick eta beste"</string>
     <string name="about_title_repository">"Iturburu-kodearen biltegia"</string>
     <string name="about_summary_repository">"GitHub-en"</string>
@@ -618,6 +620,8 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_openingHours_timeSelect_next">"Hurrengoa"</string>
     <string name="quest_tracktype_title">"Zein da bide honen gainazalaren irmotasuna"</string>
     <string name="quest_tracktype_grade1">"Trinkoa"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tracktype_grade2">"Gehienbat trinkoa"</string>
     <string name="quest_tracktype_grade3">"Nahasia"</string>
     <string name="quest_tracktype_grade4">"Gehienbat malgua"</string>

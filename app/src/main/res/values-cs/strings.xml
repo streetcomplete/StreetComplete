@@ -70,6 +70,8 @@
     <string name="no_location_permission_warning">"Vaše poloha se používá pro vyhledávání úkolů ve vašem okolí."</string>
     <string name="action_about">"O StreetComplete"</string>
     <string name="about_title_authors">"Autoři"</string>
+
+    <!-- Fuzzy -->
     <string name="about_summary_authors">"© 2016–2020 Tobias Zwick a přispěvatelé"</string>
     <string name="about_title_repository">"Zdrojový kód"</string>
     <string name="about_summary_repository">"Na GitHubu"</string>
@@ -665,6 +667,8 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_openingHours_timeSelect_next">"Další"</string>
     <string name="quest_tracktype_title">"Jaká je pevnost povrchu této stezky/cesty?"</string>
     <string name="quest_tracktype_grade1">"Pevný"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tracktype_grade2">"Víceméně pevný"</string>
     <string name="quest_tracktype_grade3">"Mix tvrdých a měkkých materiálů"</string>
     <string name="quest_tracktype_grade4">"Spíše měkký"</string>

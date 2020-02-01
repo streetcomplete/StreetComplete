@@ -66,6 +66,8 @@
     <string name="no_location_permission_warning">"Η τοποθεσία σας είναι απαραίτητη για την σάρωση αναζητήσεων στην περιοχή σας."</string>
     <string name="action_about">"Σχετικά με το StreetComplete"</string>
     <string name="about_title_authors">"Ευχαριστίες"</string>
+
+    <!-- Fuzzy -->
     <string name="about_summary_authors">"© 2016–2020 Tobias Zwick και συνεργάτες"</string>
     <string name="about_title_repository">"Πηγή αποθήκευσης"</string>
     <string name="about_summary_repository">"στο GitHub"</string>
@@ -621,6 +623,8 @@
     <string name="quest_buildingType_retail_description">"συμπεριλαμβανομένων κτιρίων για εστιατόρια, καφέ, ..."</string>
     <string name="quest_openingHours_timeSelect_next">"Επόμενο"</string>
     <string name="quest_tracktype_grade1">"Στερεό"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tracktype_grade2">"Κυρίως στερεό"</string>
     <string name="quest_tracktype_grade3">"Μίγμα"</string>
     <string name="quest_tracktype_grade4">"Κυρίως μαλακό"</string>

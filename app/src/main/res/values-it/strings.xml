@@ -68,6 +68,8 @@
     <string name="no_location_permission_warning">"La tua posizione è necessaria per capire cosa aggiornare intorno a te"</string>
     <string name="action_about">"Informazioni su StreetComplete"</string>
     <string name="about_title_authors">"Ringraziamenti"</string>
+
+    <!-- Fuzzy -->
     <string name="about_summary_authors">"© 2016–2020 Tobias Zwick e contributori"</string>
     <string name="about_title_repository">"Repository codice sorgente"</string>
     <string name="about_summary_repository">"su GitHub"</string>
@@ -612,6 +614,8 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="quest_openingHours_timeSelect_next">"Prossimo"</string>
     <string name="quest_tracktype_title">"Com'è il grado di solidità della superficie di questa strada?"</string>
     <string name="quest_tracktype_grade1">"Solido"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tracktype_grade2">"Per lo più solido"</string>
     <string name="quest_tracktype_grade3">"Misto"</string>
     <string name="quest_tracktype_grade4">"Per lo più soffice"</string>

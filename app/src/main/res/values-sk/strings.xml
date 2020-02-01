@@ -68,6 +68,8 @@
     <string name="no_location_permission_warning">"Vaša poloha je potrebná pre vyhľadávanie úloh vo vašom okolí."</string>
     <string name="action_about">"O StreetComplete"</string>
     <string name="about_title_authors">"Autori"</string>
+
+    <!-- Fuzzy -->
     <string name="about_summary_authors">"© 2016–2020 Tobias Zwick a prispievatelia"</string>
     <string name="about_title_repository">"Zdrojový repozitár"</string>
     <string name="about_summary_repository">"na GitHub-e"</string>
@@ -616,6 +618,8 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="quest_openingHours_timeSelect_next">"Ďalej"</string>
     <string name="quest_tracktype_title">"Aká je pevnosť povrchu tejto cesty?"</string>
     <string name="quest_tracktype_grade1">"Pevný"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tracktype_grade2">"Zväčša pevný"</string>
     <string name="quest_tracktype_grade3">"Zmiešaný"</string>
     <string name="quest_tracktype_grade4">"Zväčša mäkký"</string>
