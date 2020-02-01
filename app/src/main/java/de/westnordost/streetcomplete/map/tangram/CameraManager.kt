@@ -1,8 +1,10 @@
 package de.westnordost.streetcomplete.map.tangram
 
 import android.animation.*
+import android.content.ContentResolver
 import android.os.Handler
 import android.os.Looper
+import android.provider.Settings
 import android.util.Property
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.Interpolator
@@ -29,7 +31,7 @@ import kotlin.math.PI
  *
  *  See https://github.com/tangrams/tangram-es/issues/1962
  *  */
-class CameraManager(private val c: MapController) {
+class CameraManager(private val c: MapController, private val contentResolver: ContentResolver) {
     private val defaultInterpolator = AccelerateDecelerateInterpolator()
     private val doubleTypeEvaluator = DoubleTypeEvaluator()
     private val currentAnimations = mutableMapOf<String, Animator>()
@@ -69,8 +71,11 @@ class CameraManager(private val c: MapController) {
             pullCameraPositionFromController()
             update.resolveDeltas(_tangramCamera)
             cancelCameraAnimations(update)
-            if (duration == 0L) {
+            if (duration == 0L || isAnimationsOff) {
                 applyCameraUpdate(update)
+                // workaround https://github.com/tangrams/tangram-es/issues/2129
+                listener?.onAnimating()
+                listener?.onAnimationsEnded()
             } else {
                 animateCameraUpdate(update, duration, interpolator)
             }
@@ -85,6 +90,9 @@ class CameraManager(private val c: MapController) {
             currentAnimations.clear()
         }
     }
+
+    private val isAnimationsOff get() =
+        Settings.Global.getFloat(contentResolver, Settings.Global.ANIMATOR_DURATION_SCALE, 1f) == 0f
 
     private fun cancelCameraAnimations(update: CameraUpdate) {
         if(update.rotation != null) cancelAnimation("rotation")

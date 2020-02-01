@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.map.tangram
 
+import android.content.ContentResolver
 import android.graphics.Bitmap
 import android.graphics.PointF
 import android.graphics.RectF
@@ -34,8 +35,8 @@ import kotlin.math.pow
  *      <li>Use LatLon instead of LngLat</li>
  *  </ul>
  *  */
-class KtMapController(private val c: MapController) {
-    private val cameraManager = CameraManager(c)
+class KtMapController(private val c: MapController, contentResolver: ContentResolver) {
+    private val cameraManager = CameraManager(c, contentResolver)
     private val markerManager = MarkerManager(c)
     private val gestureManager = TouchGestureManager(c)
 
@@ -130,11 +131,6 @@ class KtMapController(private val c: MapController) {
 
     fun updateCameraPosition(duration: Long = 0, interpolator: Interpolator = defaultInterpolator, update: CameraUpdate) {
         cameraManager.updateCamera(duration, interpolator, update)
-        // workaround https://github.com/tangrams/tangram-es/issues/2129
-        if (duration == 0L) {
-            mapChangeListener?.onRegionIsChanging()
-            mapChangeListener?.onRegionDidChange(false)
-        }
     }
 
     fun setCameraPosition(camera: CameraPosition) {
@@ -334,7 +330,7 @@ suspend fun MapView.initMap(
     suspendCoroutine<KtMapController?> { cont ->
         getMapAsync(MapView.MapReadyCallback { mapController ->
             cont.resume(mapController?.let {
-                KtMapController(it)
+                KtMapController(it, context.contentResolver)
             })
         }, glViewHolderFactory, httpHandler)
     }
