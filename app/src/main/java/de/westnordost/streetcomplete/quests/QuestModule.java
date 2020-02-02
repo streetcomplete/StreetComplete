@@ -68,6 +68,7 @@ import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingBusSt
 import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingCrosswalk;
 import de.westnordost.streetcomplete.quests.toilet_availability.AddToiletAvailability;
 import de.westnordost.streetcomplete.quests.toilets_fee.AddToiletsFee;
+import de.westnordost.streetcomplete.quests.tourism_information.AddInformationToTourism;
 import de.westnordost.streetcomplete.quests.tracktype.AddTracktype;
 import de.westnordost.streetcomplete.quests.housenumber.AddHousenumber;
 import de.westnordost.streetcomplete.quests.max_speed.AddMaxSpeed;
@@ -173,6 +174,7 @@ public class QuestModule
 				new AddGeneralFee(o),
 				new AddSelfServiceLaundry(o),
 				new AddHandrail(o), // for accessibility of pedestrian routing
+				new AddInformationToTourism(o),
 
 				// ↓ 8. defined in the wiki, but not really used by anyone yet. Just collected for
 				//      the sake of mapping it in case it makes sense later
