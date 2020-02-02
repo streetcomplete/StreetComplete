@@ -19,8 +19,8 @@ class Compass(
     private val callback: (rotation: Float, tilt: Float) -> Unit
 ) : SensorEventListener {
 
-    private val accelerometer: Sensor
-    private val magnetometer: Sensor
+    private val accelerometer: Sensor?
+    private val magnetometer: Sensor?
 
     private val sensorThread: HandlerThread
     private val sensorHandler: Handler
@@ -68,8 +68,8 @@ class Compass(
     }
 
     fun onResume() {
-        sensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_UI, sensorHandler)
-        sensorManager.registerListener(this, magnetometer, SensorManager.SENSOR_DELAY_UI, sensorHandler)
+        accelerometer?.let { sensorManager.registerListener(this, it, SensorManager.SENSOR_DELAY_UI, sensorHandler) }
+        magnetometer?.let { sensorManager.registerListener(this, it, SensorManager.SENSOR_DELAY_UI, sensorHandler) }
 
         dispatcherThread = Thread(Runnable { dispatchLoop() }, "Compass Dispatcher Thread")
         dispatcherThread?.start()
