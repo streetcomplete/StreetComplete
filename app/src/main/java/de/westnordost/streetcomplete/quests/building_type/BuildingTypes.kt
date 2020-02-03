@@ -45,7 +45,7 @@ enum class BuildingType(val item:Item<String>) {
 
     CARPORT       (Item("carport",    R.drawable.ic_building_carport,    R.string.quest_buildingType_carport, R.string.quest_buildingType_carport_description)),
     GARAGE        (Item("garage",     R.drawable.ic_building_garage,     R.string.quest_buildingType_garage)),
-    GARAGES       (Item("garages",    R.drawable.ic_building_garages,    R.string.quest_buildingType_garages)),
+    GARAGES       (Item("garages",    R.drawable.ic_building_garages,    R.string.quest_buildingType_garages, R.string.quest_buildingType_garages_description)),
     PARKING       (Item("parking",    R.drawable.ic_building_parking,    R.string.quest_buildingType_parking)),
 
     FARM          (Item("farm",       R.drawable.ic_building_farm_house, R.string.quest_buildingType_farmhouse, R.string.quest_buildingType_farmhouse_description)),
