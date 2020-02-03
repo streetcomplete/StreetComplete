@@ -60,7 +60,7 @@ enum class BuildingType(val item:Item<String>) {
     BUNKER        (Item("bunker",     R.drawable.ic_building_bunker,     R.string.quest_buildingType_bunker)),
 
     RESIDENTIAL   (Item("residential", R.drawable.ic_building_apartments, R.string.quest_buildingType_residential, R.string.quest_buildingType_residential_description,
-        listOf( DETACHED, APARTMENTS, SEMI_DETACHED, TERRACE, FARM, HOUSE, HUT, BUNGALOW, HOUSEBOAT, STATIC_CARAVAN, DORMITORY).toItems())),
+        listOf( DETACHED, APARTMENTS, SEMI_DETACHED, TERRACE, HOUSE, FARM, HUT, BUNGALOW, HOUSEBOAT, STATIC_CARAVAN, DORMITORY).toItems())),
 
     COMMERCIAL    (Item("commercial", R.drawable.ic_building_office, R.string.quest_buildingType_commercial, R.string.quest_buildingType_commercial_generic_description,
         listOf( OFFICE, INDUSTRIAL, RETAIL, WAREHOUSE, KIOSK, HOTEL, STORAGE_TANK ).toItems())),
