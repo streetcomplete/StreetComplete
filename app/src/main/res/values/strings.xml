@@ -584,6 +584,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_buildingType_carport_description">roof for a car</string>
     <string name="quest_buildingType_garage">Single garage</string>
     <string name="quest_buildingType_garages">Multiple garages</string>
+    <string name="quest_buildingType_garages_description">Separate spaces for different owners/tenants</string>
     <string name="quest_buildingType_parking">Parking building</string>
 
 
