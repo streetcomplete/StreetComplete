@@ -441,7 +441,7 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="quest_busStopShelter_tram_title">"Questa fermata del tram ha una pensilina?"</string>
     <string name="quest_bench_backrest_title">"Questa panchina ha lo schienale?"</string>
     <string name="quest_bench_answer_picnic_table">"È un tavolo da picnic"</string>
-    <string name="quest_religion_for_place_of_worship_title">"Quale religione è praticata a %s?"</string>
+    <string name="quest_religion_for_place_of_worship_title">"Quale religione è praticata in questo luogo?"</string>
     <string name="quest_religion_christian">"Cristianesimo"</string>
     <string name="quest_religion_muslim">"Islamismo"</string>
     <string name="quest_religion_hindu">"Induismo"</string>
@@ -731,4 +731,5 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="about_title_donate">"Fai una donazione"</string>
     <string name="about_summary_donate">"Mostra il tuo apprezzamento! ❤️"</string>
     <string name="about_description_donate">"Grazie per aver dato supporto all'app! Per vedere le donazioni attuali e per donare tu stesso, premi sulle rispettive piattaforme:"</string>
+    <string name="quest_religion_for_place_of_worship_name_title">"Quale religione è praticata a %s?"</string>
 </resources>

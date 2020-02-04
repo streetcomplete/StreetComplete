@@ -439,7 +439,7 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="quest_busStopShelter_tram_title">"Van esőbeálló ebben a villamosmegállóban?"</string>
     <string name="quest_bench_backrest_title">"Van támlája ennek a padnak?"</string>
     <string name="quest_bench_answer_picnic_table">"Ez egy piknikezőasztal"</string>
-    <string name="quest_religion_for_place_of_worship_title">"Milyen vallást gyakorolnak itt: %s?"</string>
+    <string name="quest_religion_for_place_of_worship_title">"Milyen vallást gyakorolnak itt?"</string>
     <string name="quest_religion_christian">"keresztény"</string>
     <string name="quest_religion_muslim">"iszlám"</string>
     <string name="quest_religion_hindu">"hindu"</string>
@@ -724,4 +724,5 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="about_title_donate">"Támogatás"</string>
     <string name="about_summary_donate">"Fejezd ki az elismerésedet! ❤️"</string>
     <string name="about_description_donate">"Köszönjük, hogy az alkalmazás támogatására készülsz! A jelenlegi támogatások megtekintéséhez és a támogatáshoz koppints a megfelelő platformra:"</string>
+    <string name="quest_religion_for_place_of_worship_name_title">"Milyen vallást gyakorolnak itt: %s?"</string>
 </resources>
