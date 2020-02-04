@@ -90,9 +90,6 @@
             "name": "Lentpjūvė",
             "terms": "lentpjūvė"
         },
-        "power/sub_station": {
-            "name": "Pastotė"
-        },
         "shop/copyshop": {
             "name": "Kopijavimo parduotuvė"
         },
@@ -497,10 +494,6 @@
         "leisure/miniature_golf": {
             "name": "Minigolfas"
         },
-        "building/kindergarten": {
-            "name": "Vaikų darželio pastatas",
-            "terms": "vaikų darželis,darželio pastatas"
-        },
         "amenity/hospital": {
             "name": "Ligoninės kiemas"
         },
@@ -800,10 +793,6 @@
             "name": "Gėrimų parduotuvė",
             "terms": "gėrimų parduotuvė"
         },
-        "entrance": {
-            "name": "Įėjimas/Išėjimas",
-            "terms": "įėjimas,išėjimas"
-        },
         "shop/chemist": {
             "name": "Vaistinė"
         },
@@ -1002,9 +991,6 @@
         "building/hotel": {
             "name": "Viešbučio pastatas",
             "terms": "viešbučio pastatas,viešbutis"
-        },
-        "shop/anime": {
-            "name": "Anime parduotuvė"
         },
         "route/ferry": {
             "name": "Kelto maršrutas",
@@ -1843,18 +1829,11 @@
             "name": "Motociklų stovėjimo aikštelė",
             "terms": "Motociklų stovėjimo aikštelė"
         },
-        "shop/craft": {
-            "name": "Meno ir amatų parduotuvė"
-        },
         "line": {
             "name": "Linija"
         },
         "shop/lottery": {
             "name": "Loterijų parduotuvė"
-        },
-        "amenity/kindergarten": {
-            "name": "Vaikų darželio plotas",
-            "terms": "vaikų darželis,darželio plotas"
         },
         "leisure/dog_park": {
             "name": "Šunų parkas",

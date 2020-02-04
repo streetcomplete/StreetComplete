@@ -729,10 +729,6 @@
         "shop/beverages": {
             "name": "Viinakauppa"
         },
-        "entrance": {
-            "name": "Sisään- tai uloskäynti",
-            "terms": "ovi, portti, sisään, ulos, sisäänkäynti, uloskäynti"
-        },
         "emergency/fire_alarm": {
             "name": "Paloilmoituspainike"
         },
@@ -968,10 +964,6 @@
         },
         "office/travel_agent": {
             "name": "Matkatoimisto"
-        },
-        "piste/downhill": {
-            "name": "Laskettelurinne/hiihtolatu",
-            "terms": "hiihto, laskettelu, latu, rinne, hiihtäminen, alppi, alppilajit, talvi, talviurheilu, lumetus, lumetettu, sukset, suksi, lauta, lumilauta"
         },
         "highway/footway/unmarked-raised": {
             "name": "Merkitsemätön korotettu suojatie"
@@ -1523,10 +1515,6 @@
             "name": "Kellokauppa",
             "terms": "kello, rannekello, myymälä, liike, kauppa, putiikki"
         },
-        "amenity/parking_entrance": {
-            "name": "Pysäköintihallin ajoramppi",
-            "terms": "pysäköinti, parkkipaikka, pysäköintipaikka, parkki, pysäköintitalo, parkkitalo, ulosajo, sisäänajo, ajo, ulos, sisään, ramppi"
-        },
         "landuse": {
             "name": "Maankäyttökohde"
         },
@@ -1621,8 +1609,7 @@
             "terms": "oja, juoksuhauta, syvä, vajoama, kanjoni"
         },
         "landuse/churchyard": {
-            "name": "Kirkkomaa",
-            "terms": "hautaaminen, vainaja, kuollut, ruumis, hautuumaa, hautaus, hauta, haudat"
+            "name": "Kirkkomaa"
         },
         "amenity/shelter": {
             "name": "Katos",
@@ -1964,9 +1951,6 @@
             "name": "Vuoristorata",
             "terms": "huvipuisto, elämyspuisto, laite, härveli, vuoristorata, vimpain, vitkutin, huvilaite"
         },
-        "power/sub_station": {
-            "name": "Sähköasema"
-        },
         "shop/copyshop": {
             "name": "Kopiointiliike",
             "terms": "kopiokone, kopio, kopiointi, kopioida"
@@ -2055,9 +2039,6 @@
         "shop/games": {
             "name": "Lautapeliliike",
             "terms": "lautapeli,korttipeli,noppapeli,pelikauppa,live-roolipelaaminen,LARP,sotapeli,strategiapeli"
-        },
-        "piste/piste": {
-            "name": "Talviurheilulatu"
         },
         "railway/signal": {
             "name": "Rautatieopastin",
@@ -2358,9 +2339,6 @@
         },
         "healthcare/optometrist": {
             "name": "Optometri"
-        },
-        "building/kindergarten": {
-            "name": "Esikoulurakennus"
         },
         "indoor/room": {
             "name": "Huone"
@@ -2818,9 +2796,6 @@
         "craft/plasterer": {
             "name": "Rappaaja"
         },
-        "piste/hike": {
-            "name": "Talvivaellusreitti"
-        },
         "amenity/parking_space": {
             "name": "Pysäköintiruutu",
             "terms": "pysäköinti, pysäköintipaikka, pysäköintiruutu, parkkipaikka, parkkeeraus, autopysäköinti, autopaikka"
@@ -2904,10 +2879,6 @@
         },
         "building/hotel": {
             "name": "Hotellirakennus"
-        },
-        "shop/anime": {
-            "name": "Animemyymälä",
-            "terms": "cosplay, anime, manga, pukeutuminen"
         },
         "route/ferry": {
             "name": "Lauttareitti"
@@ -3248,9 +3219,6 @@
         "aerialway/mixed_lift": {
             "name": "Gondoli-tuoli-hissi"
         },
-        "piste/nordic": {
-            "name": "Hiihtolatu"
-        },
         "shop/paint": {
             "name": "Maalikauppa",
             "terms": "maalaaminen, maali, maalit, maalaus, rautakauppa, maalimyymälä, maaliliike"
@@ -3287,7 +3255,7 @@
             "name": "Kebabpikaruokaravintola"
         },
         "landuse/greenfield": {
-            "name": "Viheralue"
+            "name": "Tyhjä tontti"
         },
         "office/accountant": {
             "name": "Tilintarkastustoimisto",
@@ -3594,9 +3562,6 @@
             "name": "Pientalo",
             "terms": "omakotitalo, omakoti, yksityisasunto, yksityistalo, talo, asunto"
         },
-        "piste/sleigh": {
-            "name": "Rekipolku"
-        },
         "addr/interpolation": {
             "name": "Osoitteen interpolointi"
         },
@@ -3608,10 +3573,6 @@
         },
         "amenity/restaurant/american": {
             "name": "Amerikkalainen ravintola"
-        },
-        "piste/sled": {
-            "name": "Pulkkamäki",
-            "terms": "kelkkailu"
         },
         "public_transport/platform/bus": {
             "name": "Linja-autolaituri"
@@ -3737,9 +3698,6 @@
         "highway/service": {
             "name": "Huoltotie"
         },
-        "piste/ice_skate": {
-            "name": "Luistelurata"
-        },
         "waterway/drain": {
             "name": "Viemäri"
         },
@@ -3792,9 +3750,6 @@
         "amenity/motorcycle_parking": {
             "name": "Moottoripyöräpysäköinti"
         },
-        "shop/craft": {
-            "name": "Käsityöliike"
-        },
         "line": {
             "name": "Viiva"
         },
@@ -3803,10 +3758,6 @@
         },
         "amenity/recycling/container/green_waste": {
             "name": "Biojätteen keräysastia"
-        },
-        "amenity/kindergarten": {
-            "name": "Esikoulu",
-            "terms": "eskari, leikkikoulu, koulu, nollaluokka, 0. luokka, 0 luokka, 0-luokka"
         },
         "man_made/tower/observation": {
             "name": "Näkötorni"

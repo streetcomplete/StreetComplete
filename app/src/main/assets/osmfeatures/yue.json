@@ -65,9 +65,6 @@
         "type/restriction/only_right_turn": {
             "name": "只能右轉"
         },
-        "power/sub_station": {
-            "name": "配電站"
-        },
         "highway/motorway": {
             "name": "高速公路",
             "terms": "Motorway,高速公路"

@@ -55,7 +55,7 @@
                 android:layout_centerHorizontal="true"
                 android:src="@drawable/ic_compass_needle_black_24dp"
                 android:tint="#cc3333"
-                android:id="@+id/compassNeedle"
+                android:id="@+id/compassNeedleView"
                 android:layout_below="@+id/compassNorth"
                 />
         </RelativeLayout>

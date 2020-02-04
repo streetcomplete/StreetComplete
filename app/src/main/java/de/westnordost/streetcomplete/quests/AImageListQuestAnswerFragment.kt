@@ -36,6 +36,9 @@ abstract class AImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnswerFragm
     protected open val maxSelectableItems = 1
     /** return -1 for showing all items at once. Default: -1  */
     protected open val maxNumberOfInitiallyShownItems = -1
+    /** return true to move last picked items to the front. On by default. Only respected if the
+     *  items do not all fit into one line */
+    protected open val moveFavoritesToFront = true
 
     protected abstract val items: List<Item<I>>
 
@@ -116,7 +119,7 @@ abstract class AImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnswerFragm
     private fun moveFavouritesToFront(originalList: List<Item<I>>): List<Item<I>> {
         val result: LinkedList<Item<I>> = LinkedList(originalList)
 
-        if (result.size > itemsPerRow) {
+        if (result.size > itemsPerRow && moveFavoritesToFront) {
             favs.moveLastPickedToFront(javaClass.simpleName, result, originalList)
         }
         return result

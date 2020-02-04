@@ -256,7 +256,7 @@
             "terms": "telefon,alarmowy,alarm"
         },
         "golf/bunker": {
-            "name": "Bunkier",
+            "name": "Bunkier (golf)",
             "terms": "sand trap"
         },
         "shop/houseware": {
@@ -344,6 +344,10 @@
         "office/diplomatic/consulate": {
             "name": "Konsulat",
             "terms": "konsulat generalny, konsulat honorowy"
+        },
+        "barrier/swing_gate": {
+            "name": "Szlaban (przesuwany w poziomie)",
+            "terms": "szlaban, bariera"
         },
         "shop/laundry": {
             "name": "Pralnia",
@@ -552,6 +556,10 @@
             "name": "Tor kolei dużych prędkości",
             "terms": "tor kolei dużych prędkości, szybka kolej, Shinkansen, TGV"
         },
+        "shop/clothes/second_hand": {
+            "name": "Sklep z odzieżą używaną",
+            "terms": "odzież używana, lumpeks, ciuchland, ciucholand, ciuchy, ubrania"
+        },
         "highway/footway": {
             "name": "Droga/ścieżka dla pieszych",
             "terms": "pobocze,bulwar,ścieżka,deptak,szosa,spacer,chodnik"
@@ -609,7 +617,7 @@
         },
         "piste/downhill": {
             "name": "Narciarska trasa donwhillowa",
-            "terms": "narciarska trasa downhillowa,narty,alpy,snowboard,downhill,trasa narciarska"
+            "terms": "narciarska trasa downhillowa, narty, snowboard, alpy, downhill, trasa narciarska, narciarstwo"
         },
         "highway/footway/unmarked-raised": {
             "name": "Nieoznakowane przejście (podwyższone)",
@@ -658,6 +666,10 @@
         "waterway/canal": {
             "name": "Kanał",
             "terms": "kanał"
+        },
+        "power/plant/source/nuclear": {
+            "name": "Elektrownia jądrowa",
+            "terms": "elektrownia jądrowa, elektrownia atomowa, reaktor jądrowy"
         },
         "barrier/kerb/raised": {
             "name": "Podwyższony krawężnik",
@@ -758,6 +770,10 @@
         "place/quarter": {
             "name": "Kwartał",
             "terms": "kwartał,osiedle,dzielnica"
+        },
+        "power/plant/source/hydro": {
+            "name": "Elektrownia wodna",
+            "terms": "elektrownia wodna, hydroelektrownia przepływowa, zapora wodna, elektrownia szczytowo-pompowa"
         },
         "shop/perfumery": {
             "name": "Perfumeria",
@@ -1092,6 +1108,10 @@
             "name": "Sklep z aparatami słuchowymi",
             "terms": "aparaty słuchowe"
         },
+        "power/plant/source/wind": {
+            "name": "Elektrownia wiatrowa",
+            "terms": "elektrownia wiatrowa, farma wiatrowa, siłownia wiatrowa"
+        },
         "public_transport/platform/trolleybus_point": {
             "name": "Przystanek trolejbusowy",
             "terms": "przystanek trolejbusowy, peron, przystanek, trolejbus"
@@ -1120,7 +1140,7 @@
         },
         "leisure/ice_rink": {
             "name": "Lodowisko",
-            "terms": "lodowisko, ślizgawka"
+            "terms": "lodowisko, ślizgawka, łyżwy, łyżwiarstwo, hokej na lodzie, curling"
         },
         "shop/water_sports": {
             "name": "Sklep ze sprzętem do sportów wodnych",
@@ -1176,7 +1196,7 @@
         },
         "leisure/adult_gaming_centre": {
             "name": "Salon gier hazardowych",
-            "terms": "automat do gier"
+            "terms": "salon gier hazardowych, automat do gier, automaty do gier, hazard"
         },
         "public_transport/platform_point": {
             "name": "Przystanek / Peron",
@@ -1198,6 +1218,10 @@
             "name": "Szkoła jogi",
             "terms": "joga, szkoła jogi, centrum jogi, praktyka jogi"
         },
+        "power/plant/source/coal": {
+            "name": "Elektrownia węglowa",
+            "terms": "elektrownia węglowa"
+        },
         "aerialway/t-bar": {
             "name": "Wyciąg orczykowy podwójny",
             "terms": "wyciąg orczykowy podwójny, orczyk podwójny, wyciąg narciarski t-bar"
@@ -1213,6 +1237,10 @@
         "shop/cosmetics": {
             "name": "Sklep z kosmetykami",
             "terms": "kosmetyki, makijaż, make-up, Sephora, Inglot, Ziaja"
+        },
+        "tourism/museum/history": {
+            "name": "Muzeum historyczne",
+            "terms": "muzeum historyczne"
         },
         "leisure/swimming_pool": {
             "name": "Basen",
@@ -1364,7 +1392,7 @@
         },
         "craft/electronics_repair": {
             "name": "Punkt napraw sprzętu elektronicznego",
-            "terms": "naprawa RTV, naprawa elektroniki, naprawa telewizorów, serwis, serwis RTV, sprzęt RTV, rzemiosło, rzemieślnik, rzemieślnicy"
+            "terms": "naprawa RTV, naprawa elektroniki, naprawa telewizorów, naprawy, serwis RTV, sprzęt RTV, rzemiosło, rzemieślnik, rzemieślnicy"
         },
         "man_made/adit": {
             "name": "Sztolnia",
@@ -1856,6 +1884,10 @@
             "name": "Sklep z herbatą",
             "terms": "sklep z herbatami,herbaty"
         },
+        "emergency/landing_site": {
+            "name": "Awaryjne lądowisko",
+            "terms": "awaryjne lądowisko dla helikopterów, awaryjne lądowisko dla śmigłowców, śmigłowiec, lotnisko"
+        },
         "aerialway/chair_lift": {
             "name": "Wyciag krzesełkowy",
             "terms": "wyciąg narciarski krzesełkowy"
@@ -1888,6 +1920,10 @@
             "name": "Kamera monitoringu",
             "terms": "kamera,rozpoznawanie tablic samochodowych,cctv,ochroniarz,rozpoznawanie tablic rejestracyjnych,monitoring,rozpoznawanie numerów rejestracyjnych,ochrona,wideo,kamera internetowa"
         },
+        "amenity/gambling": {
+            "name": "Salon pachinko/bingo",
+            "terms": "pachinko, bingo, automaty do gry, hazard, kasyno"
+        },
         "natural/saddle": {
             "name": "Przełęcz",
             "terms": "przełęcz górska"
@@ -1910,7 +1946,7 @@
         },
         "shop/car": {
             "name": "Sprzedaż samochodów",
-            "terms": "sprzedawca samochodów, dealer samochodowy, salon samochodowy, komis samochodowy, autokomis, używane samochody"
+            "terms": "sprzedawca samochodów, dealer samochodowy, salon samochodowy, sprzedaż samochodów, sprzedaż aut, samochody, auta"
         },
         "building/stable": {
             "name": "Stajnia",
@@ -1940,13 +1976,17 @@
             "name": "Bliźniak",
             "terms": "Dom bliźniaczy"
         },
+        "shop/clothes/wedding": {
+            "name": "Salon sukien ślubnych",
+            "terms": "salon sukien ślubnych, suknie ślubne, sukienki ślubne, odzież, ubrania"
+        },
         "playground/seesaw": {
             "name": "Huśtawka",
             "terms": "huśtawka"
         },
         "shop/bathroom_furnishing": {
             "name": "Sklep z wyposażeniem łazienek",
-            "terms": "łazienki"
+            "terms": "łazienki, wyposażenie łazienek, meble łazienkowe, akcesoria łazienkowe, armatura sanitarna, wanny, prysznice, baterie, brodziki, zlewy, zlewozmywaki, umywalki"
         },
         "shop/beauty/tanning": {
             "name": "Solarium",
@@ -2039,7 +2079,7 @@
         },
         "piste/nordic": {
             "name": "Trasa narciarstwa klasycznego lub przełajowego",
-            "terms": "szlak narciarstwa klasycznego lub przełajowego,narty,klasyczne,przełajowe,narciarstwo,trasa narciarska"
+            "terms": "szlak narciarstwa klasycznego, szlak narciarstwa przełajowego, narty, klasyczne, przełajowe, narciarstwo, trasa narciarska"
         },
         "shop/paint": {
             "name": "Sklep z farbami",
@@ -2052,6 +2092,10 @@
         "natural/fell": {
             "name": "Wzgórza",
             "terms": "pagórki"
+        },
+        "type/enforcement/maxspeed": {
+            "name": "Egzekwowanie ograniczenia prędkości",
+            "terms": "egzekwowanie ograniczenia prędkości, ograniczenie prędkości, fotoradar"
         },
         "amenity/research_institute": {
             "name": "Instytut badawczy",
@@ -2191,6 +2235,10 @@
             "name": "Automat z papierosami",
             "terms": "automat z papierosami, papierosy"
         },
+        "historic/building": {
+            "name": "Zabytkowy budynek",
+            "terms": "zabytkowy budynek, historyczny budynek, budynek zabytkowy, budynek historyczny, zabytek"
+        },
         "leisure/track/horse_racing_point": {
             "name": "Hipodrom (Wyścigi konne)",
             "terms": "hipodrom, wyścigi, konne, konie, tor wyścigowy"
@@ -2263,7 +2311,7 @@
         },
         "piste/sled": {
             "name": "Trasa saneczkowa",
-            "terms": "trasa saneczkowa,narty,sanki,saneczki,sanie,kulig,trasa narciarska"
+            "terms": "trasa saneczkowa, sanki, saneczki, sanie, kulig, bobsleje, narty, trasa narciarska, narciarstwo"
         },
         "public_transport/platform/bus": {
             "name": "Przystanek autobusowy (peron)",
@@ -2310,7 +2358,7 @@
         },
         "shop/car_repair": {
             "name": "Warsztat samochodowy",
-            "terms": "warsztat samochodowy, auto serwis, autoserwis, auto-serwis, mechanik, naprawa, serwis, garaż, samochód, auto, samochodowy"
+            "terms": "warsztat samochodowy, auto serwis, autoserwis, auto-serwis, mechanik, naprawa, naprawy, serwis, garaż, samochód, auto, samochodowy"
         },
         "craft/hvac": {
             "name": "Ogrzewanie / wentylacja",
@@ -2341,7 +2389,7 @@
         },
         "piste/ice_skate": {
             "name": "Trasa łyżwiarska",
-            "terms": "trasa łyżwiarska,lód,łyżwiarstwo,narty,trasa narciarska"
+            "terms": "trasa łyżwiarska, łyżwiarstwo, lód, lodowisko, narty, trasa narciarska, narciarstwo"
         },
         "public_transport/platform/tram": {
             "name": "Przystanek tramwajowy (peron)",
@@ -2381,7 +2429,7 @@
         },
         "amenity/kindergarten": {
             "name": "Teren przedszkola/żłobka",
-            "terms": "teren żłobka, teren przedszkola"
+            "terms": "teren przedszkola, teren żłobka, przedszkole, żłobek, dzieci"
         },
         "craft/carpet_layer": {
             "name": "Układanie dywanów",
@@ -2436,7 +2484,7 @@
         },
         "shop/motorcycle_repair": {
             "name": "Warsztat motocyklowy",
-            "terms": "warsztat motocyklowy, mechanik, naprawa, serwis, garaż, motocykl, motor, samochód, auto, rower"
+            "terms": "warsztat motocyklowy, mechanik, naprawa, naprawy, serwis, garaż, motocykl, motor, samochód, auto, rower"
         },
         "shop/tool_hire": {
             "name": "Wypożyczalnia narzędzi",
@@ -2538,7 +2586,7 @@
         },
         "office/government/register_office": {
             "name": "Urząd stanu cywilnego",
-            "terms": "USC, stan cywilny,śluby,metryki,rejestracja urodzin"
+            "terms": "urząd stanu cywilnego, USC, stan cywilny, śluby, metryki, rejestracja urodzin"
         },
         "boundary/administrative": {
             "name": "Granica administracyjna",
@@ -2580,8 +2628,16 @@
             "name": "Lustro drogowe",
             "terms": "lustro przy ulicy"
         },
+        "shop/car/second_hand": {
+            "name": "Komis samochodowy",
+            "terms": "komis samochodowy, autokomis, używane samochody, używane auta, sprzedawca samochodów, dealer samochodowy, sprzedaż samochodów, sprzedaż aut, samochody, auta"
+        },
         "railway/station": {
             "name": "Stacja kolejowa, osobowa lub osobowo-towarowa"
+        },
+        "amenity/lavoir": {
+            "name": "Pralnia (przy rzece)",
+            "terms": "pralnia zewnętrzna, pranie"
         },
         "office/therapist": {
             "name": "Terapeuta",
@@ -2602,6 +2658,10 @@
         "attraction/dark_ride": {
             "name": "Mroczna przejażdżka",
             "terms": "dark ride, mroczna przejażdżka, mroczny przejazd, pałac strachów, park rozrywki, lunapark, wesołe miasteczko"
+        },
+        "office/government/prosecutor": {
+            "name": "Prokuratura",
+            "terms": "prokuratura, prokurator, urząd"
         },
         "building/school": {
             "name": "Budynek szkolny",
@@ -2828,6 +2888,10 @@
             "name": "Sklep z prasą",
             "terms": "prasa, gazety, czasopisma, lotto, kolporter, inmedio, ruch"
         },
+        "waterway/tidal_channel": {
+            "name": "Kanał pływowy",
+            "terms": "kanał pływowy, pływy, ciek"
+        },
         "healthcare": {
             "name": "Placówka służby zdrowia",
             "terms": "placówka służby zdrowia"
@@ -2858,7 +2922,7 @@
         },
         "amenity/casino": {
             "name": "Kasyno",
-            "terms": "kasyno, ruletka"
+            "terms": "kasyno, ruletka, poker, bakarat, blackjack, hazard"
         },
         "amenity/coworking_space": {
             "name": "Coworking"
@@ -2937,7 +3001,7 @@
         },
         "entrance": {
             "name": "Wejście/wyjście",
-            "terms": "Wejście, Wyjście"
+            "terms": "wejście, wyjście"
         },
         "emergency/fire_alarm": {
             "name": "Skrzynka z alarmem przeciwpożarowym",
@@ -3043,8 +3107,8 @@
             "terms": "znak granicy miasta,miasto,wieś,przysiółek,granica,krawędź,droga,ulica"
         },
         "barrier/cattle_grid": {
-            "name": "Przeszkoda dla bydła",
-            "terms": "kratka,bydło"
+            "name": "Przeszkoda dla zwierząt",
+            "terms": "przeszkoda dla zwierząt, przeszkoda dla bydła, bydło, psy, kratka"
         },
         "tourism/motel": {
             "name": "Motel",
@@ -3515,9 +3579,12 @@
             "name": "Graffiti",
             "terms": "graffiti"
         },
+        "power/plant/source/gas": {
+            "name": "Elektrownia gazowa",
+            "terms": "elektrownia gazowa"
+        },
         "landuse/churchyard": {
-            "name": "Dziedziniec kościelny",
-            "terms": "Plac kościelny"
+            "name": "Dziedziniec kościelny"
         },
         "amenity/shelter": {
             "name": "Schronienie",
@@ -3629,7 +3696,7 @@
         },
         "shop/lottery": {
             "name": "Kolektura",
-            "terms": "lotto"
+            "terms": "kolektura, loteria, lotto, hazard"
         },
         "amenity/dressing_room": {
             "name": "Przebieralnia",
@@ -3756,9 +3823,6 @@
             "name": "Autodrom (w parku rozrywki)",
             "terms": "autodrom, samochodziki, park rozrywki, lunapark, wesołe miasteczko"
         },
-        "power/sub_station": {
-            "name": "Podstacja"
-        },
         "shop/copyshop": {
             "name": "Punkt ksero",
             "terms": "punkt ksero, kopiowanie, skanowanie, drukowanie, drukarnia"
@@ -3812,7 +3876,7 @@
         },
         "piste/piste": {
             "name": "Szlaki sportów zimowych",
-            "terms": "szlaki sportów zimowych, narty, klasyczne, przełajowe, downhill, alpejskie, snowboard, wycieczki narciarskie, sanki, saneczki,sanie, kulig, skijöring, husky, koń, zimowa wspinaczka, rakiety śniegowe, lód, łyżwiarstwo"
+            "terms": "szlaki sportów zimowych, narty, klasyczne, przełajowe, downhill, alpejskie, snowboard, wycieczki narciarskie, sanki, saneczki, sanie, kulig, skijöring, husky, koń, zimowa wspinaczka, rakiety śniegowe, lód, łyżwiarstwo"
         },
         "craft/rigger": {
             "name": "Takielarz",
@@ -3836,6 +3900,10 @@
         "shop/shoes": {
             "name": "Sklep obuwniczy",
             "terms": "buty,obuwie"
+        },
+        "power/plant/source/solar": {
+            "name": "Elektrownia słoneczna",
+            "terms": "elektrownia słoneczna, farma fotowoltaiczna"
         },
         "shop/laundry/self_service": {
             "name": "Pralnia samoobsługowa",
@@ -3933,7 +4001,7 @@
         },
         "office/government": {
             "name": "Biuro rządowe lub samorządowe",
-            "terms": "urząd, urzędnik"
+            "terms": "biuro rządowe, biuro samorządowe, urząd miasta, urząd gminy, starostwo powiatowe, urząd wojewódzki, urząd marszałkowski, sejmik województwa, rada powiatu, rada gminy, rada sołecka, rada dzielnicy, rada osiedla, urząd pracy, ministerstwo, administracja publiczna, władze administracyjne, władze samorządowe"
         },
         "office/it": {
             "name": "Firma informatyczna",
@@ -4172,7 +4240,7 @@
         },
         "amenity/bicycle_repair_station": {
             "name": "Samoobsługowa stacja naprawy rowerów",
-            "terms": "naprawa rowerów, serwis, rowery"
+            "terms": "naprawa rowerów, serwis, rowery, naprawy"
         },
         "amenity/vending_machine/parcel_pickup": {
             "name": "Paczkomat",
@@ -4363,8 +4431,8 @@
             "terms": "błotne"
         },
         "piste/hike": {
-            "name": "Rakiety śniegowe lub zimowy szlak wspinaczkowy",
-            "terms": "rakiety śnieżne lub zimowy szlak wspinaczkowy,wspinaczka,zimowa wspinaczka,rakiety śniegowe,trasa narciarska,narty"
+            "name": "Zimowy szlak wspinaczkowy / rakiety śnieżne",
+            "terms": "zimowy szlak wspinaczkowy, rakiety śnieżne, wspinaczka, zimowa wspinaczka, trasa narciarska, narty, narciarstwo"
         },
         "building/greenhouse": {
             "name": "Szklarnia",
@@ -4723,8 +4791,8 @@
             "terms": "tatuażysta,tatuaż"
         },
         "playground/roundabout": {
-            "name": "Karuzela",
-            "terms": "karuzela"
+            "name": "Karuzela (na placu zabaw)",
+            "terms": "karuzela, plac zabaw"
         },
         "power/generator/method/photovoltaic": {
             "name": "Panel słoneczny",
@@ -4841,7 +4909,7 @@
         },
         "shop/clothes": {
             "name": "Sklep odzieżowy",
-            "terms": "odzież, ubrania, ciuchy, odzież używana, lumpeks, suknie ślubne, garnitury, bielizna, sklep z bielizną"
+            "terms": "odzież, ubrania, ciuchy, butik, suknie ślubne, garnitury"
         },
         "amenity/restaurant/noodle": {
             "name": "Restauracja z makaronem",
@@ -4866,7 +4934,7 @@
         },
         "piste/sleigh": {
             "name": "Trasa do kuligów",
-            "terms": "trasa do kuligów,narty,trasa narciarska,sanki,saneczki,sanie,skijöring,husky,koń"
+            "terms": "trasa do kuligów, narty, trasa narciarska, narciarstwo, sanki, saneczki, sanie, skijöring, husky, koń"
         },
         "leisure/marina": {
             "name": "Przystań",
@@ -4988,7 +5056,7 @@
         },
         "shop/craft": {
             "name": "Sklep z artykułami dla artystów",
-            "terms": "sklep z artykułami dla artystów, artykuły dla artystów, artykuły dla plastyków, farby, sztalugi, papiery, kartony, tektury, płótna, pastele, pędzle, ramy, ramki, drewno, narzędzia, papierniczy"
+            "terms": "sklep z artykułami dla artystów, artykuły dla artystów, artykuły dla plastyków, farby, sztalugi, papiery, kartony, tektury, płótna, pastele, pędzle, ramy, ramki, drewno, narzędzia, papierniczy, sklep papierniczy"
         },
         "line": {
             "name": "Linia",

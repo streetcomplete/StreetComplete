@@ -63,9 +63,6 @@
         "highway/living_street": {
             "name": "Jalan Tinggal"
         },
-        "power/sub_station": {
-            "name": "Terminal"
-        },
         "shop/copyshop": {
             "name": "Tempat Fotokopi"
         },
@@ -352,9 +349,6 @@
             "name": "Situs Bersejarah",
             "terms": "Situs Sejarah"
         },
-        "building/kindergarten": {
-            "name": "Bangunan Prasekolah/Taman Kanak-kanak"
-        },
         "amenity/hospital": {
             "name": "Lingkungan Rumah Sakit"
         },
@@ -573,9 +567,6 @@
         "shop/vacuum_cleaner": {
             "name": "Toko Pengisap Debu"
         },
-        "entrance": {
-            "name": "Pintu Masuk/Keluar"
-        },
         "building/hospital": {
             "name": "Bangunan Rumah Sakit"
         },
@@ -702,10 +693,6 @@
         },
         "building/hotel": {
             "name": "Bangunan Hotel"
-        },
-        "shop/anime": {
-            "name": "Toko Anime",
-            "terms": "Manga, Komik"
         },
         "route/ferry": {
             "name": "Rute Feri",
@@ -1172,9 +1159,6 @@
             "name": "Penyewaan Sepeda",
             "terms": "Penyewaan Sepeda"
         },
-        "amenity/parking_entrance": {
-            "name": "Pintu Masuk/Keluar Area Parkir"
-        },
         "shop/gift": {
             "name": "Toko Hadiah",
             "terms": "Suvenir, Cenderamata, Cinderamata"
@@ -1243,8 +1227,7 @@
             "name": "Pengrajin"
         },
         "landuse/churchyard": {
-            "name": "Halaman Gereja",
-            "terms": "Lahan Gereja"
+            "name": "Halaman Gereja"
         },
         "shop/butcher": {
             "name": "Penjagalan"
@@ -1361,18 +1344,12 @@
         "amenity/motorcycle_parking": {
             "name": "Parkir Motor"
         },
-        "shop/craft": {
-            "name": "Toko Kesenian dan Kerajinan Tangan"
-        },
         "line": {
             "name": "Garis",
             "terms": "Garis"
         },
         "shop/lottery": {
             "name": "Toko Lotre"
-        },
-        "amenity/kindergarten": {
-            "name": "Lingkungan Prasekolah/Taman Kanak-kanak"
         },
         "leisure/dog_park": {
             "name": "Taman Anjing"

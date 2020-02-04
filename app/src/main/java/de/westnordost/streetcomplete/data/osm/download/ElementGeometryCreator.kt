@@ -6,7 +6,9 @@ import de.westnordost.streetcomplete.data.osm.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.ktx.isArea
-import de.westnordost.streetcomplete.util.SphericalEarthMath.*
+import de.westnordost.streetcomplete.util.centerPointOfPolygon
+import de.westnordost.streetcomplete.util.centerPointOfPolyline
+import de.westnordost.streetcomplete.util.isRingDefinedClockwise
 import kotlin.collections.ArrayList
 
 /** Creates an ElementGeometry from an element and a collection of positions. */
@@ -31,10 +33,10 @@ class ElementGeometryCreator {
         return if (way.isArea()) {
             /* ElementGeometry considers polygons that are defined clockwise holes, so ensure that
                it is defined CCW here. */
-            if (isRingDefinedClockwise(polyline)) polyline.reverse()
-            ElementPolygonsGeometry(arrayListOf(polyline), centerPointOfPolygon(polyline))
+            if (polyline.isRingDefinedClockwise()) polyline.reverse()
+            ElementPolygonsGeometry(arrayListOf(polyline), polyline.centerPointOfPolygon())
         } else {
-            ElementPolylinesGeometry(arrayListOf(polyline), centerPointOfPolyline(polyline))
+            ElementPolylinesGeometry(arrayListOf(polyline), polyline.centerPointOfPolyline())
         }
     }
 
@@ -70,7 +72,7 @@ class ElementGeometryCreator {
 
         /* only use first ring that is not a hole if there are multiple
            this is the same behavior as Leaflet or Tangram */
-        return ElementPolygonsGeometry(rings, centerPointOfPolygon(outer.first()))
+        return ElementPolygonsGeometry(rings, outer.first().centerPointOfPolygon())
     }
 
     private fun createPolylinesGeometry(
@@ -89,7 +91,7 @@ class ElementGeometryCreator {
            so there is no way to find a reasonable "center point". In most cases however, there
            is only one polyline, so let's just take the first one...
            This is the same behavior as Leaflet or Tangram */
-        return ElementPolylinesGeometry(polylines, centerPointOfPolyline(polylines.first()))
+        return ElementPolylinesGeometry(polylines, polylines.first().centerPointOfPolyline())
     }
 
     private fun createNormalizedRingGeometry(
@@ -132,7 +134,7 @@ class ElementGeometryCreator {
 /** Ensures that all given rings are defined in clockwise/counter-clockwise direction  */
 private fun List<MutableList<LatLon>>.setOrientation(clockwise: Boolean) {
     for (ring in this) {
-        if (isRingDefinedClockwise(ring) != clockwise) {
+        if (ring.isRingDefinedClockwise() != clockwise) {
             ring.reverse()
         }
     }

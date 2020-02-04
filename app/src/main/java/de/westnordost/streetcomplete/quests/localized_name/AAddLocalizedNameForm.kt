@@ -58,7 +58,7 @@ abstract class AAddLocalizedNameForm<T> : AbstractQuestFormAnswerFragment<T>() {
         checkIsFormComplete()
     }
 
-    protected open fun setupNameAdapter(data: List<LocalizedName>, addLanguageButton: Button) =
+    protected open fun setupNameAdapter(data: List<LocalizedName>, addLanguageButton: View) =
         AddLocalizedNameAdapter(data, activity!!, getPossibleStreetsignLanguages(), null, null, addLanguageButton)
 
     protected fun getPossibleStreetsignLanguages(): List<String> {

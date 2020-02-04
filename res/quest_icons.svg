@@ -371,9 +371,9 @@
      inkscape:window-height="1377"
      id="namedview4499"
      showgrid="true"
-     inkscape:zoom="0.26763108"
-     inkscape:cx="-1568.9887"
-     inkscape:cy="74.216471"
+     inkscape:zoom="0.75697501"
+     inkscape:cx="311.33278"
+     inkscape:cy="516.86787"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
@@ -11044,5 +11044,61 @@
        transform="translate(952,-496)"
        d="m 320.38867,1316.6797 c -1.11518,0.025 -2.21662,0.069 -3.27929,0.1113 l -0.1875,1.5938 c 3.61359,0.9859 4.1991,14.7644 0,16.455 l 0.125,1.5957 c 11.8764,0.5839 19.4788,1.0741 19.6914,-10.4394 -0.093,-8.7298 -8.54334,-9.4891 -16.34961,-9.3164 z m -14.93945,0.1113 -0.15625,1.5625 c 3.8894,1.1427 4.2381,14.7206 0.0957,16.4863 l 0.0606,1.5957 h 8.83008 l 0.14062,-1.5957 c -3.6964,-1.0523 -4.23017,-14.6998 -0.0469,-16.4863 l -0.125,-1.5625 z m 18.57031,2.1094 c 4.9749,0 8.0013,2.0711 7.9043,7.9394 -0.0273,4.7321 -2.0816,7.7764 -7.47071,7.3653 -0.97209,-4.7868 -0.81519,-10.1022 -0.43359,-15.3047 z"
        style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:32.00653458px;line-height:1.25;font-family:'Hadassah Friedlaender';-inkscape-font-specification:'Hadassah Friedlaender Bold';letter-spacing:0px;word-spacing:0px;fill:#555555;fill-opacity:1;stroke:none;stroke-width:0.85731792" />
+  </g>
+  <g
+     transform="matrix(0.86588196,0.49991722,-0.49991718,0.86588203,1054.639,1472.5532)"
+     id="information"
+     inkscape:export-xdpi="95.983444"
+     inkscape:export-ydpi="95.983444"
+     inkscape:label="#g8992-6-57-4-4">
+    <path
+       inkscape:connector-curvature="0"
+       d="m -303.99992,63.999782 c 0,35.346 -28.654,63.999998 -64.00002,63.999998 -35.346,0 -64,-28.653998 -64,-63.999998 0,-35.346 28.654,-64 64,-64 35.34602,0 64.00002,28.654 64.00002,64"
+       id="path4485-6-6-3-4-8-58-5"
+       style="fill:#9bbe55;fill-opacity:1;stroke-width:0.2" />
+    <rect
+       style="opacity:1;vector-effect:none;fill:none;fill-opacity:1;stroke:#000000;stroke-width:7.99981833;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.2;paint-order:normal"
+       id="rect5107-9-1-8-8"
+       width="71.888527"
+       height="80.120438"
+       x="-386.70383"
+       y="-168.68755"
+       ry="8.4847107"
+       rx="8.4588413"
+       transform="rotate(-30)" />
+    <rect
+       style="opacity:1;vector-effect:none;fill:#495aad;fill-opacity:1;stroke:#ffffff;stroke-width:7.99981833;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.98994978;paint-order:normal"
+       id="rect5107-6-4-0"
+       width="71.888527"
+       height="80.120438"
+       x="-386.57892"
+       y="-172.58253"
+       ry="8.4847107"
+       rx="8.4588413"
+       transform="rotate(-30)" />
+    <g
+       id="g6465"
+       transform="matrix(1.2979575,0,0,1.2979575,109.53791,-21.111929)">
+      <g
+         id="text6466-4"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40.00662613px;line-height:1.25;font-family:'Book Antiqua';-inkscape-font-specification:'Book Antiqua';letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.00016558"
+         transform="rotate(-30,4.8860705,6.1566049)"
+         aria-label="i">
+        <path
+           sodipodi:nodetypes="ccccccccccccc"
+           inkscape:connector-curvature="0"
+           id="path6468-7"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:53.3421669px;font-family:Georgia;-inkscape-font-specification:'Georgia Bold';letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke-width:1.00016558"
+           d="m -336.46252,-110.29357 h -20.46172 v -3.90168 c 2.19863,-0.0532 3.69824,-0.64604 3.95899,-2.83901 v -7.15744 c -0.2298,-2.66101 -2.40309,-3.27721 -4.61014,-3.67249 v -5.90201 l 16.76319,-0.6772 0.39069,0.39069 v 16.67985 c 0.0651,1.81461 1.20814,2.41727 2.65669,2.91715 0.41673,0.12155 0.85083,0.20837 1.3023,0.26046 z" />
+      </g>
+      <ellipse
+         ry="7.6475463"
+         rx="7.6475468"
+         transform="rotate(-30)"
+         cy="-144.72379"
+         cx="-350.78909"
+         id="path6471-5"
+         style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:8.00132465;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke" />
+    </g>
   </g>
 </svg>

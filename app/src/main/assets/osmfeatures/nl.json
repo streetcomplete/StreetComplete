@@ -764,10 +764,6 @@
             "name": "Drankenwinkel",
             "terms": "drankenhandel,bierhuis,drankenhuis,drankhandel,wijnhandel,drankenwinkel,slijterij"
         },
-        "entrance": {
-            "name": "Ingang/Uitgang",
-            "terms": "ingang,uitgang"
-        },
         "emergency/fire_alarm": {
             "name": "Brandmeldknop",
             "terms": "brandmelder,brandalarm,brandweeroproep"
@@ -998,9 +994,6 @@
         },
         "office/travel_agent": {
             "name": "Reisbureau"
-        },
-        "piste/downhill": {
-            "name": "Downhillpiste"
         },
         "highway/footway/unmarked-raised": {
             "name": "Ongemarkeerde oversteekplaats (op drempel)"
@@ -1578,10 +1571,6 @@
             "name": "Horlogewinkel",
             "terms": "uurwerkwinkel,klokkenwinkel"
         },
-        "amenity/parking_entrance": {
-            "name": "Ingang/Uitgang van parkeergelegenheid",
-            "terms": "inrit,uitrit"
-        },
         "waterway/riverbank": {
             "name": "Rivieroever"
         },
@@ -1679,8 +1668,7 @@
             "terms": "loopgraaf,loopgraven"
         },
         "landuse/churchyard": {
-            "name": "Kerkhof",
-            "terms": "begraafplaats,zerken,dood,graf"
+            "name": "Kerkhof"
         },
         "amenity/shelter": {
             "name": "Beschutting",
@@ -2010,9 +1998,6 @@
             "name": "Achtbaan",
             "terms": "roetsjbaan,rollercoaster"
         },
-        "power/sub_station": {
-            "name": "Klein onderstation"
-        },
         "shop/copyshop": {
             "name": "Copyshop",
             "terms": "kopieshop,kopieerwinkel"
@@ -2105,10 +2090,6 @@
         },
         "shop/games": {
             "name": "Bordspellenwinkel"
-        },
-        "piste/piste": {
-            "name": "Wintersportpad",
-            "terms": "wintersportpiste"
         },
         "railway/signal": {
             "name": "Spoorwegsein",
@@ -2416,10 +2397,6 @@
         "healthcare/optometrist": {
             "name": "Optometrist",
             "terms": "oogarts,opticien"
-        },
-        "building/kindergarten": {
-            "name": "Kleuterschool/Gebouw van crèche",
-            "terms": "kleuterschool,kinderdagverblijf,peuterspeelzaal"
         },
         "leisure/playground": {
             "name": "Speeltuin",
@@ -2871,9 +2848,6 @@
             "name": "Stukadoor",
             "terms": "pleister,plaaster,stucadoor,stucwerker,plakwerker,pleisterwerker,stiel"
         },
-        "piste/hike": {
-            "name": "Sneeuwschoenrennen- of winterwandelpad"
-        },
         "amenity/parking_space": {
             "name": "Parkeerplaats binnen parkeergelegenheid",
             "terms": "individuele parkeerplaats, parkeervak"
@@ -2957,10 +2931,6 @@
         "building/hotel": {
             "name": "Hotelgebouw",
             "terms": "hotel,kamers"
-        },
-        "shop/anime": {
-            "name": "Animewinkel",
-            "terms": "cosplay,mangawinkel,japans,stripwinkel,dakimakura"
         },
         "route/ferry": {
             "name": "Veerboottraject",
@@ -3307,10 +3277,6 @@
             "name": "Gemengde skilift",
             "terms": "skilift,stoeltjeslift,gondellift,gondola"
         },
-        "piste/nordic": {
-            "name": "Langlaufpiste",
-            "terms": "noordse skipiste,noords skiën,loipe"
-        },
         "shop/paint": {
             "name": "Verfwinkel",
             "terms": "verfhandel,verfzaak"
@@ -3638,10 +3604,6 @@
             "name": "Huis",
             "terms": "woning,woonst,woongebied,huizen,residentieel,wonen,woonwijk,gebouw"
         },
-        "piste/sleigh": {
-            "name": "Arrenslee-piste",
-            "terms": "sledepiste,sleepiste,trekdiersleepiste"
-        },
         "leisure/marina": {
             "name": "Jachthaven",
             "terms": "marina"
@@ -3651,10 +3613,6 @@
         },
         "amenity/restaurant/american": {
             "name": "Amerikaans restaurant"
-        },
-        "piste/sled": {
-            "name": "Slee-piste",
-            "terms": "sledepiste"
         },
         "barrier/gate": {
             "name": "Poort",
@@ -3773,9 +3731,6 @@
             "name": "Toegangsweg",
             "terms": "privéweg"
         },
-        "piste/ice_skate": {
-            "name": "Schaatsring"
-        },
         "waterway/drain": {
             "name": "Afvoer",
             "terms": "greppel,gracht"
@@ -3824,10 +3779,6 @@
             "name": "Motorfietsparking",
             "terms": "motorparking,motoparking,motostalling,motorstalling,motorfietsparking,motoren,moto's,parking voor motoren,parking voor moto's,parking voor motorfietsen"
         },
-        "shop/craft": {
-            "name": "Schilder- en Tekengereedschapswinkel",
-            "terms": "kunstbenodigdhedenwinkel,knutselwinkel"
-        },
         "line": {
             "name": "Lijn",
             "terms": "anders,overige,iets anders,algemeen"
@@ -3835,10 +3786,6 @@
         "amenity/vehicle_inspection": {
             "name": "Voertuigkeuring",
             "terms": "autokeuring,automobielkeuring,voertuiginspectie"
-        },
-        "amenity/kindergarten": {
-            "name": "Gebied van Crèche/Kleuterschool",
-            "terms": "kleuterschool,kinderdagverblijf,peuterspeelzaal"
         },
         "man_made/tower/observation": {
             "name": "Observatietoren"
@@ -3920,9 +3867,6 @@
         "shop/trade": {
             "name": "Bouwmaterialenhandel",
             "terms": "bouwmaterialenwinkel,bouwmaterialenzaak,bouwmaterialengroothandel,vensterhandel,ruitenhandel,glashandel,ramenhandel,tegelhandel,tegelgroothandel,loodgieterswinkel,houthandel,houtgroothandel,plankenhandel"
-        },
-        "piste/downhill/halfpipe": {
-            "name": "Halfpipe"
         },
         "shop/motorcycle_repair": {
             "name": "Motorreparatie"

@@ -559,9 +559,6 @@
         "shop/beverages": {
             "name": "Drykkjarbúð"
         },
-        "entrance": {
-            "name": "Inngangur/Útgangur"
-        },
         "amenity/place_of_worship/jewish": {
             "name": "Bænahús gyðinga"
         },
@@ -729,9 +726,6 @@
         },
         "office/travel_agent": {
             "name": "Ferðaskrifstofa"
-        },
-        "piste/downhill": {
-            "name": "Rennslis/gönguskíðaleið"
         },
         "highway/footway/unmarked-raised": {
             "name": "Ómerkt gangbraut (upphækkuð)"
@@ -1150,9 +1144,6 @@
         "shop/watches": {
             "name": "Úraverslun"
         },
-        "amenity/parking_entrance": {
-            "name": "Inngangur/Útgangur bílastæðahúss"
-        },
         "waterway/riverbank": {
             "name": "Árbakki"
         },
@@ -1468,9 +1459,6 @@
         "attraction/roller_coaster": {
             "name": "Rússíbani"
         },
-        "power/sub_station": {
-            "name": "Undirstöð"
-        },
         "shop/copyshop": {
             "name": "Ljósritunarstofa"
         },
@@ -1533,9 +1521,6 @@
         },
         "attraction/bungee_jumping": {
             "name": "Teygjustökk"
-        },
-        "piste/piste": {
-            "name": "Vetraríþróttaleiðir"
         },
         "railway/signal": {
             "name": "Lestarmerki"
@@ -1773,9 +1758,6 @@
         },
         "healthcare/optometrist": {
             "name": "Sjóntækjafræðingur"
-        },
-        "building/kindergarten": {
-            "name": "Forskóla-/Leikskólabygging"
         },
         "indoor/room": {
             "name": "Herbergi"
@@ -2099,9 +2081,6 @@
         "craft/plasterer": {
             "name": "Gifslagningar"
         },
-        "piste/hike": {
-            "name": "Snjóþrúgu eða vetrargönguleið"
-        },
         "amenity/parking_space": {
             "name": "Bílastæðarými"
         },
@@ -2164,9 +2143,6 @@
         },
         "building/hotel": {
             "name": "Hótelbygging"
-        },
-        "shop/anime": {
-            "name": "Anime-búð"
         },
         "route/ferry": {
             "name": "Ferjuleið"
@@ -2421,9 +2397,6 @@
         "aerialway/mixed_lift": {
             "name": "Blönduð gerð víralyftu"
         },
-        "piste/nordic": {
-            "name": "Gönguskíðaleið"
-        },
         "shop/paint": {
             "name": "Málningarvöruverslun"
         },
@@ -2669,9 +2642,6 @@
         "building/house": {
             "name": "Einbýlishús"
         },
-        "piste/sleigh": {
-            "name": "Sleðabraut"
-        },
         "leisure/marina": {
             "name": "Bátahöfn"
         },
@@ -2680,9 +2650,6 @@
         },
         "amenity/restaurant/american": {
             "name": "Amerískt veitingahús"
-        },
-        "piste/sled": {
-            "name": "Sleðabraut"
         },
         "barrier/gate": {
             "name": "Hlið"
@@ -2774,9 +2741,6 @@
         "highway/service": {
             "name": "Þjónustugata"
         },
-        "piste/ice_skate": {
-            "name": "Skautabraut"
-        },
         "waterway/drain": {
             "name": "Frárennsli"
         },
@@ -2807,17 +2771,11 @@
         "amenity/motorcycle_parking": {
             "name": "Mótorhjólastæði"
         },
-        "shop/craft": {
-            "name": "Handverksverslun"
-        },
         "line": {
             "name": "Lína"
         },
         "amenity/vehicle_inspection": {
             "name": "Skoðun farartækja"
-        },
-        "amenity/kindergarten": {
-            "name": "Forskóla-/Leikskólalóð"
         },
         "waterway/weir": {
             "name": "Yfirfall"

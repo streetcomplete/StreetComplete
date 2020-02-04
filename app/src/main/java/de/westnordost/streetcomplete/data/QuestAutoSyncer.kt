@@ -38,7 +38,7 @@ class QuestAutoSyncer @Inject constructor(
     private val context: Context,
     private val prefs: SharedPreferences,
     private val userController: UserController
-) : LocationListener, LifecycleObserver, CoroutineScope by CoroutineScope(Dispatchers.Default) {
+) : LocationListener, LifecycleObserver, VisibleQuestListener, CoroutineScope by CoroutineScope(Dispatchers.Default) {
 
     private var pos: LatLon? = null
 
@@ -78,14 +78,19 @@ class QuestAutoSyncer @Inject constructor(
             return p == Prefs.Autosync.ON || p == Prefs.Autosync.WIFI && isWifi
         }
 
+    /* ---------------------------------------- Lifecycle --------------------------------------- */
+
+
     @OnLifecycleEvent(Lifecycle.Event.ON_RESUME) fun onResume() {
         updateConnectionState()
         context.registerReceiver(connectivityReceiver, IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION))
+        questController.addListener(this)
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE) fun onPause() {
         stopPositionTracking()
         context.unregisterReceiver(connectivityReceiver)
+        questController.removeListener(this)
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY) fun onDestroy() {
@@ -103,11 +108,24 @@ class QuestAutoSyncer @Inject constructor(
         lostApiClient.disconnect()
     }
 
+    /* ---------------------------------- VisibleQuestListener ---------------------------------- */
+
+    override fun onQuestsCreated(quests: Collection<Quest>, group: QuestGroup) { }
+
+    override fun onQuestsRemoved(questIds: Collection<Long>, group: QuestGroup) {
+        // amount of quests is reduced -> check if redownloding now makes sense
+        triggerAutoDownload()
+    }
+
+    /* ------------------------------------ LocationListener ------------------------------------ */
+
     override fun onLocationChanged(location: Location?) {
         if(location == null) return
         pos = OsmLatLon(location.latitude, location.longitude)
         triggerAutoDownload()
     }
+
+    /* ------------------------------------------------------------------------------------------ */
 
     fun triggerAutoDownload() {
         if (!isAllowedByPreference) return
@@ -150,10 +168,12 @@ class QuestAutoSyncer @Inject constructor(
 
     private fun updateConnectionState(): Boolean {
         val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        val info = connectivityManager.activeNetworkInfo
+        val info = connectivityManager.activeNetworkInfo ?: return false
 
-        val newIsConnected = info?.isConnected == true
-        val newIsWifi = newIsConnected && info?.type == ConnectivityManager.TYPE_WIFI
+        val newIsConnected = info.isConnected
+        // metered (usually ad-hoc hotspots) do not count as proper wifis
+        val isMetered = connectivityManager.isActiveNetworkMetered
+        val newIsWifi = newIsConnected && info.type == ConnectivityManager.TYPE_WIFI && !isMetered
 
         val result = newIsConnected != isConnected || newIsWifi != isWifi
 
@@ -165,4 +185,5 @@ class QuestAutoSyncer @Inject constructor(
     companion object {
         private const val TAG = "QuestAutoSyncer"
     }
+
 }

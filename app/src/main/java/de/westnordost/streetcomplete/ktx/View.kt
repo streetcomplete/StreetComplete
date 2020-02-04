@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.ktx
 
+import android.graphics.Point
 import android.view.View
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
@@ -25,3 +26,9 @@ fun View.popOut() {
 }
 
 suspend fun View.awaitLayout() = suspendCoroutine<Unit> { cont -> doOnLayout { cont.resume(Unit) }}
+
+fun View.getLocationInWindow(): Point {
+    val mapPosition = IntArray(2)
+    getLocationInWindow(mapPosition)
+    return Point(mapPosition[0], mapPosition[1])
+}

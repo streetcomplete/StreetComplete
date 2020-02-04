@@ -156,9 +156,6 @@
         "amenity/bicycle_rental": {
             "name": "Bizikleten Alokairua "
         },
-        "amenity/parking_entrance": {
-            "name": "Aparkaleku garajearen Sarrera/Irteera"
-        },
         "aeroway/gate": {
             "name": "Aireportuko ate"
         },
@@ -380,9 +377,6 @@
         },
         "line": {
             "name": "lerro"
-        },
-        "amenity/kindergarten": {
-            "name": "Aurreskola/Haurtzandegi"
         },
         "amenity/cafe": {
             "name": "Kafetegi"

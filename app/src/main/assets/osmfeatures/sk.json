@@ -82,9 +82,6 @@
         "emergency/yes": {
             "name": "Núdzový vstup áno"
         },
-        "power/sub_station": {
-            "name": "Rozvodná stanica"
-        },
         "shop/copyshop": {
             "name": "Fotokopírovanie",
             "terms": "fotokopirovanie,fotokopírka,fotokopirka"
@@ -562,10 +559,6 @@
             "name": "Historické miesto",
             "terms": "historicke miesto,hrad,pevnosť,pevnost,kaštieľ,kastiel,zámok,zamok,rujna,hradisko,archeologické miesto,archeologicke miesto"
         },
-        "building/kindergarten": {
-            "name": "Budova škôlky",
-            "terms": "budova skolky,skolka,škôlka"
-        },
         "amenity/hospital": {
             "name": "Nemocničný areál",
             "terms": "nemocnicny areal,nemocnica,poliklinika"
@@ -892,10 +885,6 @@
             "name": "Obchod s vysavačmi",
             "terms": "bchod s vysavacmi,vysavače,vysavace,vysavač,vysavac"
         },
-        "entrance": {
-            "name": "Vchod/východ",
-            "terms": "vchod/vychod,vchod,vychod,východ,vstup,výstup,vchodové dvere,vchodove dvere"
-        },
         "shop/chemist": {
             "name": "Drogéria"
         },
@@ -1107,10 +1096,6 @@
         "building/hotel": {
             "name": "Budova hotelu",
             "terms": "budova hotelu"
-        },
-        "shop/anime": {
-            "name": "Obchod s anime",
-            "terms": "anime"
         },
         "route/ferry": {
             "name": "Trajektová trasa",
@@ -1901,10 +1886,6 @@
             "name": "Obchod s hodinkami",
             "terms": "hodinky,náramkové hodinky,naramkove hodinky"
         },
-        "amenity/parking_entrance": {
-            "name": "Vhod/východ do garáže",
-            "terms": "vchod/vychod do garaze,vchod,vychod,garáž,garaz,parkovanie"
-        },
         "shop/gift": {
             "name": "Darčekový obchod",
             "terms": "darcekovy obchod,obchod s darcekmi,obchod s darčekmi,suveníry,suveniry"
@@ -2009,8 +1990,7 @@
             "terms": "zručnosť,remeselníctvo,cech"
         },
         "landuse/churchyard": {
-            "name": "Kostolný pozemok",
-            "terms": "kostolny pozemok,kostol"
+            "name": "Kostolný pozemok"
         },
         "shop/butcher": {
             "name": "Mäsiarstvo",
@@ -2171,10 +2151,6 @@
             "name": "Parkovanie pre motocykle",
             "terms": "parkovisko,motorky,stojan,stojan pre motorky,moped,babeta,parkovanie pre motorky"
         },
-        "shop/craft": {
-            "name": "Obchod s umeleckými potrebami",
-            "terms": "Obchod s umeleckymi potrebami,umelecké potreby,umelecke potreby"
-        },
         "line": {
             "name": "Čiara",
             "terms": "ciara,cesta,trat,kanal,trasa,trať,trat"
@@ -2182,10 +2158,6 @@
         "shop/lottery": {
             "name": "Lotéria",
             "terms": "loteria"
-        },
-        "amenity/kindergarten": {
-            "name": "Detská škôlka",
-            "terms": "detska skolka,škôlka,skolka"
         },
         "leisure/dog_park": {
             "name": "Psí park",

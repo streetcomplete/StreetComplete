@@ -323,6 +323,10 @@
         "tourism/aquarium": {
             "name": "Acuario"
         },
+        "man_made/manhole": {
+            "name": "Pozo de inspección",
+            "terms": "cuberta, buraco, burato, sumidoiro, tapa de sumidoiro, rede de sumidoiro, alcantarilla, alcantarillado, telecomunicacións, boca de sumidoiro, rexistro, colector, colectores, foxo, foxos, furaco, furado"
+        },
         "type/site": {
             "name": "Lugar"
         },
@@ -721,9 +725,6 @@
         "shop/beverages": {
             "name": "Tenda de bebidas"
         },
-        "entrance": {
-            "name": "Entrada/Saída"
-        },
         "amenity/place_of_worship/jewish": {
             "name": "Sinagoga xudía",
             "terms": "xudeu, xudía, hebreo, hebrea, israelita, xudia, xudaico, xudaica"
@@ -863,6 +864,10 @@
         "craft/upholsterer": {
             "name": "Tapiceiro",
             "terms": "tapiceiro, tapizado, tapizaría, tapicería"
+        },
+        "man_made/manhole/sewer": {
+            "name": "Pozo de inspección de sumidoiro",
+            "terms": "cuberta, desagüe, buraco, burato, alcantarillado, pozo, inspección, sumidoiro, rede de sumidoiro, tapa de sumidoiro, inspeccion, auga, augas negras, alcantarilla, augas residuais, residual, refugallo, refugallos"
         },
         "natural/glacier": {
             "name": "Glaciar"
@@ -1458,6 +1463,10 @@
         "emergency/no": {
             "name": "Sen acceso de emerxencia"
         },
+        "man_made/manhole/telecom": {
+            "name": "Pozo de inspección de telecomunicacións",
+            "terms": "cable, cabo, cuberta, teléfono, buraco, burato, telecomunicacións, pozo, inspección"
+        },
         "public_transport/stop_position_ferry": {
             "name": "Ubicación de paraxe do ferri",
             "terms": "punto detención, transporte público, tránsito, transporte, naval, marítimo, bote, barco, ferry, buque, lancha, muelle, dársena, ferri, peirao, parada"
@@ -1492,9 +1501,6 @@
         },
         "shop/watches": {
             "name": "Reloxaría"
-        },
-        "amenity/parking_entrance": {
-            "name": "Entrada/Saída de garaxe de aparcadoiro"
         },
         "waterway/riverbank": {
             "name": "Beira do río"
@@ -1596,8 +1602,7 @@
             "terms": "foso, trincheira"
         },
         "landuse/churchyard": {
-            "name": "Adro",
-            "terms": "adro, igrexa"
+            "name": "Adro"
         },
         "amenity/shelter": {
             "name": "Abeiro",
@@ -1789,7 +1794,8 @@
             "terms": "saída, entrada, autopista, autovía, autoestrada"
         },
         "natural/tree": {
-            "name": "Árbore"
+            "name": "Árbore",
+            "terms": "arbore, árbore, árvore, árbol, arbol, arbusto"
         },
         "amenity/register_office": {
             "name": "Oficina do rexistro"
@@ -1909,9 +1915,6 @@
             "name": "Montaña rusa",
             "terms": "montaña rusa, atracción"
         },
-        "power/sub_station": {
-            "name": "Subestación"
-        },
         "shop/copyshop": {
             "name": "Copistaría"
         },
@@ -2001,9 +2004,6 @@
         "attraction/bungee_jumping": {
             "name": "Puenting"
         },
-        "piste/piste": {
-            "name": "Pistas de deportes de inverno"
-        },
         "railway/signal": {
             "name": "Sinal ferroviaria"
         },
@@ -2072,6 +2072,10 @@
         "man_made/tower": {
             "name": "Torre",
             "terms": "torre, mastro, edificio, estrutura alta"
+        },
+        "natural/stone": {
+            "name": "Pedra solta",
+            "terms": "rocha, pedra, pena, penedo, roca, con, farallón"
         },
         "shop/florist": {
             "name": "Floraría"
@@ -2288,9 +2292,9 @@
         "healthcare/optometrist": {
             "name": "Optometrista"
         },
-        "building/kindergarten": {
-            "name": "Edificio de preescolar/xardín de infancia",
-            "terms": "preescolar, parvulario, párvulos, xardín, xardín de infancia, xardín infantil, edificio, kinder"
+        "man_made/manhole/power": {
+            "name": "Pozo de inspección de rede eléctrica",
+            "terms": "cuberta, buraco, burato, eléctrico, electricidade, pozo, inspección"
         },
         "indoor/room": {
             "name": "Habitación"
@@ -2811,9 +2815,6 @@
         "building/hotel": {
             "name": "Edificio de hotel"
         },
-        "shop/anime": {
-            "name": "Tenda de anime"
-        },
         "route/ferry": {
             "name": "Liña de ferri",
             "terms": "ruta, rota, liña, ferry, ferri, buque, transbordador, lancha, embarcación, trasbordador, barco"
@@ -3062,6 +3063,10 @@
         },
         "amenity/vending_machine/public_transport_tickets": {
             "name": "Expendedora de billetes de transporte público"
+        },
+        "man_made/manhole/gas": {
+            "name": "Pozo de inspección de servizo de gas",
+            "terms": "cuberta, gas, calefacción, buraco, burato, inspección, pozo"
         },
         "man_made/embankment": {
             "name": "Terraplén"
@@ -3457,6 +3462,10 @@
         "leisure/marina": {
             "name": "Porto deportivo"
         },
+        "man_made/manhole/water": {
+            "name": "Pozo de inspección de servizo de agua",
+            "terms": "cuberta, bebida, burato, buraco, utilidade, auga, pozo, inspección, inspeccion, tapa de sumidoiro, sumidoiro"
+        },
         "craft/tailor": {
             "name": "Xastre"
         },
@@ -3589,6 +3598,10 @@
             "name": "Tubaxe subterránea",
             "terms": "petróleo, gas natural, auga, alcantarillado, augas residuais, desechos, refugallos, tubería, gasoduto, oleoduto, tubaxe, tubaría, tuberia, tubo"
         },
+        "natural/rock": {
+            "name": "Rocha incrustada",
+            "terms": "rocha, pedra, pena, penedo, roca, con, farallón"
+        },
         "highway/residential": {
             "name": "Rúa urbana",
             "terms": "calle, avenida, ruta, vía, boulevar, bulevar, paseo, residencial, urbana, domiciliaria, rua"
@@ -3622,9 +3635,6 @@
             "name": "Aparcadoiro de motos",
             "terms": "aparcadoiro, parking, motos, motocicletas, ciclomotores, aparcamento, estacionamento"
         },
-        "shop/craft": {
-            "name": "Tenda de artes e oficios"
-        },
         "line": {
             "name": "Liña"
         },
@@ -3634,10 +3644,6 @@
         "amenity/recycling/container/green_waste": {
             "name": "Contedor de residuos orgánicos",
             "terms": "biodegradable, biolóxico, compost, descomponible, basureiro, desperdicio de xardín, orgánico, basura, restos de comida, verde, residuo, lixo, esterco"
-        },
-        "amenity/kindergarten": {
-            "name": "Zona de gardaría ou xardín de infancia",
-            "terms": "preescolar, xardín de infancia, guardería, infantil, párvulos, garderia, gardería, gardaria, parvulos, gardaría"
         },
         "man_made/tower/observation": {
             "name": "Torre de observación",
@@ -3708,10 +3714,6 @@
         },
         "office/diplomatic": {
             "name": "Oficina diplomática"
-        },
-        "piste/downhill/halfpipe": {
-            "name": "Mediotubo",
-            "terms": "esquí, alpino, halfpipe, half pipe, snowboard, costa abaixo, pista, medio tubo, medio-tubo, meio-tubo, meio tubo, skate, patín, patinete, monopatín, longboard, board, bici, bmx, bicicleta de competición"
         },
         "shop/motorcycle_repair": {
             "name": "Taller de arranxo de motocicletas"

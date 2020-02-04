@@ -6,8 +6,7 @@ import android.graphics.Matrix
 import android.graphics.Shader
 import android.graphics.drawable.BitmapDrawable
 import android.util.AttributeSet
-import android.view.LayoutInflater
-import android.view.View
+import android.view.*
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.RelativeLayout
@@ -25,8 +24,8 @@ class StreetSideSelectPuzzle @JvmOverloads constructor(
     var listener: ((isRight:Boolean) -> Unit)? = null
     set(value) {
         field = value
-        leftSide.setOnClickListener { listener?.invoke(false) }
-        rightSide.setOnClickListener { listener?.invoke(true) }
+        leftSideContainer.setOnClickListener { listener?.invoke(false) }
+        rightSideContainer.setOnClickListener { listener?.invoke(true) }
     }
 
     private var leftImageResId: Int = 0

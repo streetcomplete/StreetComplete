@@ -506,9 +506,6 @@
         "shop/beverages": {
             "name": "Beverages Shop"
         },
-        "entrance": {
-            "name": "Entrance/Exit"
-        },
         "power/tower": {
             "name": "High-Voltage Tower"
         },
@@ -1049,9 +1046,6 @@
         "shop/watches": {
             "name": "Watches Shop"
         },
-        "amenity/parking_entrance": {
-            "name": "Parking Garage Entrance/Exit"
-        },
         "waterway/riverbank": {
             "name": "Riverbank"
         },
@@ -1337,9 +1331,6 @@
         "attraction/roller_coaster": {
             "name": "Roller Coaster"
         },
-        "power/sub_station": {
-            "name": "Substation"
-        },
         "shop/copyshop": {
             "name": "Copyshop"
         },
@@ -1613,9 +1604,6 @@
         },
         "healthcare/optometrist": {
             "name": "Optometrist"
-        },
-        "building/kindergarten": {
-            "name": "Preschool/Kindergarten Building"
         },
         "leisure/playground": {
             "name": "Playground"
@@ -1952,9 +1940,6 @@
         },
         "building/hotel": {
             "name": "Hotel Building"
-        },
-        "shop/anime": {
-            "name": "Anime Shop"
         },
         "route/ferry": {
             "name": "Ferry Route"
@@ -2505,14 +2490,8 @@
         "amenity/motorcycle_parking": {
             "name": "Motorcycle Parking"
         },
-        "shop/craft": {
-            "name": "Art and Craft Supplies Shop"
-        },
         "line": {
             "name": "Line"
-        },
-        "amenity/kindergarten": {
-            "name": "Preschool/Kindergarten Grounds"
         },
         "waterway/weir": {
             "name": "Weir"

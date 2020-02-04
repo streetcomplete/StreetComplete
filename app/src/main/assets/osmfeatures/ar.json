@@ -574,10 +574,6 @@
             "name": "محل مشروبات",
             "terms": "محل مشروبات"
         },
-        "entrance": {
-            "name": "مدخل ومخرج",
-            "terms": "دخول; خروج; مدخل; مخرج"
-        },
         "amenity/place_of_worship/jewish": {
             "name": "كنيس يهودي"
         },
@@ -1184,10 +1180,6 @@
             "name": "متجر الساعات اليدوية",
             "terms": "متجر الساعات اليدوية"
         },
-        "amenity/parking_entrance": {
-            "name": "مدخل ومخرج جراج وقوف",
-            "terms": "مدخل, مخرج"
-        },
         "waterway/riverbank": {
             "name": "ضفة نهر"
         },
@@ -1496,9 +1488,6 @@
         "attraction/roller_coaster": {
             "name": "السفينة الدوارة",
             "terms": "سفينة دوارة"
-        },
-        "power/sub_station": {
-            "name": "محطة فرعية"
         },
         "shop/copyshop": {
             "name": "متجر نسخ وتصوير"
@@ -1817,10 +1806,6 @@
         "healthcare/optometrist": {
             "name": "أخصائي البصريات",
             "terms": "أخصائي البصريات"
-        },
-        "building/kindergarten": {
-            "name": "مبنى روضة أطفال",
-            "terms": "روضة; أطفال"
         },
         "amenity/fast_food/ice_cream": {
             "name": "أيس كريم وجبة سريعة"
@@ -2196,9 +2181,6 @@
         "building/hotel": {
             "name": "مبنى فندق",
             "terms": "فندق"
-        },
-        "shop/anime": {
-            "name": "متجر أفلام رسوم متحركة"
         },
         "route/ferry": {
             "name": "مسار عبّارة",
@@ -2829,20 +2811,12 @@
             "name": "موقف دراجات نارية",
             "terms": "دراجة نارية, دراجة بخارية; موقف; مواقف; ركن"
         },
-        "shop/craft": {
-            "name": "متجر الفنون والحرف",
-            "terms": "متجر الفنون والحرف"
-        },
         "line": {
             "name": "طريق",
             "terms": "طريق"
         },
         "amenity/vehicle_inspection": {
             "name": "فحص مركبات"
-        },
-        "amenity/kindergarten": {
-            "name": "روضة أطفال",
-            "terms": "روضة أطفال"
         },
         "waterway/weir": {
             "name": "هدار - سد صغير",

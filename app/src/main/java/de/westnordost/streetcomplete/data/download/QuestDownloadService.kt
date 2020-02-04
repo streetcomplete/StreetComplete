@@ -61,6 +61,11 @@ class QuestDownloadService : SingleIntentService(TAG) {
     override fun onHandleIntent(intent: Intent?, cancelState: AtomicBoolean) {
         if (cancelState.get()) return
         if (intent == null) return
+        if (intent.getBooleanExtra(ARG_CANCEL, false)) {
+            cancel()
+            Log.i(TAG, "Download cancelled")
+            return
+        }
 
         val tiles = intent.getParcelableExtra<Rect>(ARG_TILES_RECT)
         val maxQuestTypes =
@@ -110,12 +115,19 @@ class QuestDownloadService : SingleIntentService(TAG) {
         const val ARG_TILES_RECT = "tilesRect"
         const val ARG_MAX_QUEST_TYPES = "maxQuestTypes"
         const val ARG_IS_PRIORITY = "isPriority"
+        const val ARG_CANCEL = "cancel"
 
         fun createIntent(context: Context, tilesRect: Rect?, maxQuestTypesToDownload: Int?, isPriority: Boolean): Intent {
             val intent = Intent(context, QuestDownloadService::class.java)
             intent.putExtra(ARG_TILES_RECT, tilesRect)
             intent.putExtra(ARG_IS_PRIORITY, isPriority)
             maxQuestTypesToDownload?.let { intent.putExtra(ARG_MAX_QUEST_TYPES, it) }
+            return intent
+        }
+
+        fun createCancelIntent(context: Context): Intent {
+            val intent = Intent(context, QuestDownloadService::class.java)
+            intent.putExtra(ARG_CANCEL, true)
             return intent
         }
     }

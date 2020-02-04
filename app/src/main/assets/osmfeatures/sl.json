@@ -467,10 +467,6 @@
             "name": "Trgovina s pijačami",
             "terms": "pijače"
         },
-        "entrance": {
-            "name": "Vhod/Izhod",
-            "terms": "vstop/izstop"
-        },
         "power/tower": {
             "name": "Steber visokonapetostnega daljnovoda",
             "terms": "kandelaber"
@@ -1019,10 +1015,6 @@
         "shop/watches": {
             "name": "Trgovina z urami"
         },
-        "amenity/parking_entrance": {
-            "name": "Vzhod/izhod v parkirno hišo",
-            "terms": "Uvoz/izvoz iz parkirne hiše"
-        },
         "waterway/riverbank": {
             "name": "Rečni breg"
         },
@@ -1085,8 +1077,7 @@
             "name": "Jarek"
         },
         "landuse/churchyard": {
-            "name": "Cerkveno dvorišče",
-            "terms": "cerkvena okolica"
+            "name": "Cerkveno dvorišče"
         },
         "amenity/shelter": {
             "name": "Zavetišče",
@@ -1303,9 +1294,6 @@
         "highway/living_street": {
             "name": "Ulica z umirjenim prometom",
             "terms": "mirna cona,cona umirjenega prometa"
-        },
-        "power/sub_station": {
-            "name": "Razdelilna transformatorska postaja"
         },
         "shop/copyshop": {
             "name": "Fotokopirnica"
@@ -1572,10 +1560,6 @@
         },
         "railway/switch": {
             "name": "Kretnica"
-        },
-        "building/kindergarten": {
-            "name": "Vrtec",
-            "terms": "vrtec,otroci,vzgoja,plenice,predšolsk*"
         },
         "leisure/playground": {
             "name": "Otroško igrišče",
@@ -1874,10 +1858,6 @@
         "building/hotel": {
             "name": "Hotel",
             "terms": "hotelska stavba,hotel"
-        },
-        "shop/anime": {
-            "name": "Trgovina Anime",
-            "terms": "Anime, manga, kostumi, maske"
         },
         "route/ferry": {
             "name": "Trajektna linija",
@@ -2407,16 +2387,9 @@
         "amenity/motorcycle_parking": {
             "name": "Parkirišče za motorje"
         },
-        "shop/craft": {
-            "name": "Trgovina z ročnimi izdelki"
-        },
         "line": {
             "name": "Črta",
             "terms": "linija,daljica,lomljenka"
-        },
-        "amenity/kindergarten": {
-            "name": "Vrtčevsko območje",
-            "terms": "vzgojno,varstveni,zavod,vrtec"
         },
         "waterway/weir": {
             "name": "Zapornica",

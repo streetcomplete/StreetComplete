@@ -30,8 +30,8 @@ android {
         applicationId "de.westnordost.streetcomplete"
         minSdkVersion 17
         targetSdkVersion 28
-        versionCode 1601
-        versionName "16.0"
+        versionCode 1703
+        versionName "17.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField "String", "MAPZEN_API_KEY", MAPZEN_API_KEY
     }
@@ -142,9 +142,6 @@ dependencies {
     implementation 'me.grantland:autofittextview:0.2.1'
     implementation 'org.sufficientlysecure:html-textview:3.9'
     implementation 'com.duolingo.open:rtl-viewpager:1.0.2'
-    // versions above 1.1.0 (i.e. 1.1.3) have unsolved crash issues - https://github.com/florent37/ViewTooltip/issues/30
-    // 1.2.0 misplaces tooltip - https://github.com/florent37/ViewTooltip/issues/64
-    implementation 'com.github.florent37:viewtooltip:1.1.0'
     implementation 'androidx.exifinterface:exifinterface:1.1.0'
 
     // box2d view
@@ -155,7 +152,7 @@ dependencies {
     implementation 'org.objenesis:objenesis:2.6'
 
     // map and location
-    implementation 'com.mapzen.tangram:tangram:0.9.6'
+    implementation 'com.mapzen.tangram:tangram:0.12.0'
     implementation 'com.mapzen.android:lost:3.0.4'
 
     // config files
@@ -173,10 +170,9 @@ import groovy.json.JsonOutput
 
 task downloadPresets {
     doLast {
-        def targetDir = "src/main/assets/osmfeatures"
+        def targetDir = "app/src/main/assets/osmfeatures"
         def presetsUrl = new URL("https://raw.githubusercontent.com/openstreetmap/iD/master/data/presets/presets.json")
         def contentsUrl = new URL("https://api.github.com/repos/openstreetmap/iD/contents/dist/locales")
-
         new File("$targetDir/presets.json").withOutputStream { it << presetsUrl.openStream() }
 
         def slurper = new JsonSlurper()
@@ -276,7 +272,7 @@ task pullTranslations {
                     fileUrl = new JsonSlurper().parse(inputStream).result.url
                 }
                 def androidResCode = languageToAndroidResCode[language] ?: language
-                def targetFile = "src/main/res/values-$androidResCode/strings.xml"
+                def targetFile = "app/src/main/res/values-$androidResCode/strings.xml"
                 new File(targetFile).newWriter().withWriter {
                     it << new URL(fileUrl).openStream()
                 }

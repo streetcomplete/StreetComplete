@@ -461,9 +461,6 @@
             "name": "Trgovina s pićima",
             "terms": "podrum pića,trgovina za piće"
         },
-        "entrance": {
-            "name": "Ulaz/izlaz"
-        },
         "power/tower": {
             "name": "Visokonaponski stup",
             "terms": "električni stup,stup dalekovoda,dalekovod"
@@ -933,9 +930,6 @@
         "shop/watches": {
             "name": "Trgovina Satovima"
         },
-        "amenity/parking_entrance": {
-            "name": "Parking garaža Ulaz/Izlaz"
-        },
         "waterway/riverbank": {
             "name": "Riječna obala"
         },
@@ -1217,9 +1211,6 @@
         "highway/living_street": {
             "name": "Područje smirenog prometa"
         },
-        "power/sub_station": {
-            "name": "Trafostanica"
-        },
         "shop/copyshop": {
             "name": "Fotokopiraona",
             "terms": "Copy dućan, trgovina za kopiranje, kopiraonica"
@@ -1481,9 +1472,6 @@
         },
         "man_made/tower/communication": {
             "name": "Komunikacijski toranj"
-        },
-        "building/kindergarten": {
-            "name": "Zgrada vrtića"
         },
         "indoor/room": {
             "name": "Soba"
@@ -2319,19 +2307,12 @@
         "amenity/motorcycle_parking": {
             "name": "Parkiralište za motocikle"
         },
-        "shop/craft": {
-            "name": "Hobby & art trgovina",
-            "terms": "dućan za hobije, slikarski dućan, kistovi"
-        },
         "line": {
             "name": "Linija",
             "terms": "linija,crta"
         },
         "amenity/vehicle_inspection": {
             "name": "Tehnički pregled vozila"
-        },
-        "amenity/kindergarten": {
-            "name": "Dvorište vrtića"
         },
         "man_made/tower/observation": {
             "name": "Toranj za promatranje"

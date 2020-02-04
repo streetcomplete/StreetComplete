@@ -18,7 +18,7 @@ class MultiIterableTest {
     }
 
     @Test fun `list allows nulls`() {
-        val itb = MultiIterable<String>()
+        val itb = MultiIterable<String?>()
         itb.add(listOf("a", null, "c"))
         assertEquals("a null c", itb.joinToString(" "))
     }

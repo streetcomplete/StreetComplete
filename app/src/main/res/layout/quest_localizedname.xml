@@ -18,11 +18,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
+        tools:listitem="@layout/quest_localizedname_row"
         />
 
-    <Button
+    <ImageButton
         android:id="@+id/addLanguageButton"
-        android:text="➕"
+        android:src="@drawable/ic_add_24dp"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         tools:ignore="HardcodedText"/>

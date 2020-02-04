@@ -817,10 +817,6 @@
             "name": "Italbolt",
             "terms": "pálinka,wiskey,wiski,vodka,bor,konyak"
         },
-        "entrance": {
-            "name": "Bejárat/Kijárat",
-            "terms": "Bejárat/Kijárat"
-        },
         "emergency/fire_alarm": {
             "name": "Tűzriasztó gomb"
         },
@@ -1723,10 +1719,6 @@
             "name": "Órabolt (karóra)",
             "terms": "órabolt, órás"
         },
-        "amenity/parking_entrance": {
-            "name": "Parkolóház be-/kijárat",
-            "terms": "garázsbejárat, parkolóház"
-        },
         "waterway/riverbank": {
             "name": "Folyópart"
         },
@@ -1827,8 +1819,7 @@
             "terms": "árok, gödör"
         },
         "landuse/churchyard": {
-            "name": "Templomkert",
-            "terms": "templomudvar, narthex, kerengő"
+            "name": "Templomkert"
         },
         "amenity/shelter": {
             "name": "Esőbeálló",
@@ -2201,9 +2192,6 @@
         "attraction/roller_coaster": {
             "name": "Hullámvasút",
             "terms": "vasút,hullám"
-        },
-        "power/sub_station": {
-            "name": "Áramelosztó alállomás"
         },
         "shop/copyshop": {
             "name": "Fénymásoló",
@@ -2637,10 +2625,6 @@
         "healthcare/optometrist": {
             "name": "Optometrista",
             "terms": "szem,szemüveg,lencse,látás"
-        },
-        "building/kindergarten": {
-            "name": "Óvodaépület",
-            "terms": "Iskolai előkészítő épület,  ovi épület, bölcsőde épület, kisdedóvó épület, dedó épület"
         },
         "indoor/room": {
             "name": "Szoba",
@@ -3236,10 +3220,6 @@
         "building/hotel": {
             "name": "Szállodaépület",
             "terms": "Hotel, szálloda, panzió, szálláshely, fogadó"
-        },
-        "shop/anime": {
-            "name": "Anime képregényekkel kapcsolatos bolt",
-            "terms": "képregény,anime"
         },
         "route/ferry": {
             "name": "Kompútvonal",
@@ -3996,9 +3976,6 @@
             "name": "Családi ház",
             "terms": "Ház"
         },
-        "piste/sleigh": {
-            "name": "Szánkópálya"
-        },
         "addr/interpolation": {
             "name": "Lakcím interpoláció"
         },
@@ -4011,9 +3988,6 @@
         },
         "amenity/restaurant/american": {
             "name": "Amerikai étterem"
-        },
-        "piste/sled": {
-            "name": "Szánkópálya"
         },
         "public_transport/platform/bus": {
             "name": "Buszmegálló"
@@ -4155,10 +4129,6 @@
             "name": "Szervizút",
             "terms": "szervizút,bekötő,út"
         },
-        "piste/ice_skate": {
-            "name": "Jégkorcsolya pálya",
-            "terms": "korcsolya, műjég, jégpálya"
-        },
         "waterway/drain": {
             "name": "Vízelvezető csatorna",
             "terms": "Ér, alagcső"
@@ -4218,10 +4188,6 @@
             "name": "Motorkerékpár-parkoló",
             "terms": "motoros parkoló, motor parkoló"
         },
-        "shop/craft": {
-            "name": "Kézműveskellék-bolt",
-            "terms": "hobbyművész, kreatív, dekoráció, művészellátó, kézműves"
-        },
         "line": {
             "name": "Vonal",
             "terms": "Vonal"
@@ -4231,10 +4197,6 @@
         },
         "amenity/recycling/container/green_waste": {
             "name": "Zöldhulladék tárolója"
-        },
-        "amenity/kindergarten": {
-            "name": "Óvoda",
-            "terms": "ovi"
         },
         "man_made/tower/observation": {
             "name": "Kilátótorony"
@@ -4321,10 +4283,6 @@
         },
         "office/diplomatic": {
             "name": "Diplomáciai iroda"
-        },
-        "piste/downhill/halfpipe": {
-            "name": "Félcső",
-            "terms": "kerékpár, BMX"
         },
         "shop/motorcycle_repair": {
             "name": "Motorkerékpár alkatrész bolt"

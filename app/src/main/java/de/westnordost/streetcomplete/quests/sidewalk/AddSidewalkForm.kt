@@ -35,7 +35,7 @@ class AddSidewalkForm : AbstractQuestFormAnswerFragment<SidewalkAnswer>() {
 
         puzzleView.listener = { isRight -> showSidewalkSelectionDialog(isRight) }
 
-        streetSideRotater = StreetSideRotater(puzzleView, compassNeedle, elementGeometry as ElementPolylinesGeometry)
+        streetSideRotater = StreetSideRotater(puzzleView, compassNeedleView, elementGeometry as ElementPolylinesGeometry)
 
         val defaultResId =
             if (isLeftHandTraffic) R.drawable.ic_sidewalk_unknown_l

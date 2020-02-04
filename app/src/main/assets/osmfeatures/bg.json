@@ -69,9 +69,6 @@
         "highway/living_street": {
             "name": "Жилищна улица"
         },
-        "power/sub_station": {
-            "name": "Подстанция"
-        },
         "highway/motorway": {
             "name": "Автомагистрала"
         },

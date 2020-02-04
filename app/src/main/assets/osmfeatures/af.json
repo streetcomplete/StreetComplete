@@ -65,9 +65,6 @@
             "name": "Inglipbaan",
             "terms": "inglipbaan,oprit,afrit"
         },
-        "power/sub_station": {
-            "name": "Substasie"
-        },
         "highway/motorway": {
             "name": "Snelweg"
         },

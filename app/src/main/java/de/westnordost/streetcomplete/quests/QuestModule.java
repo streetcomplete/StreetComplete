@@ -124,8 +124,9 @@ public class QuestModule
 				new AddOpeningHours(o, featureDictionaryFuture),
 				new AddBikeParkingCapacity(o), // cycle map layer on osm.org
 				new AddOrchardProduce(o),
-				new AddCycleway(o),
-				new AddSidewalk(o),
+				new AddBuildingType(o), // because housenumber, building levels etc. depend on it
+				new AddCycleway(o), // SLOW QUERY
+				new AddSidewalk(o), // SLOW QUERY
 				new AddProhibitedForPedestrians(o), // uses info from AddSidewalk quest, should be after it
 				new AddCrossingType(o),
 				new AddBuildingLevels(o),
@@ -151,7 +152,6 @@ public class QuestModule
 
 				// ↓ 5. may be shown as missing in QA tools
 				new DetermineRecyclingGlass(o), // because most recycling:glass=yes is a tagging mistake
-				new AddBuildingType(o), // because housenumber, building levels etc. depend on it
 
 				// ↓ 6. may be shown as possibly missing in QA tools
 
@@ -196,4 +196,18 @@ public class QuestModule
 	{
 		return new OsmNoteQuestType();
 	}
+/*
+	@Provides @Singleton public static QuestController questController(
+		OsmQuestDao osmQuestDao, UndoOsmQuestDao undoOsmQuestDao, MergedElementDao mergedElementDao,
+		ElementGeometryDao elementGeometryDao, OsmNoteQuestDao osmNoteQuestDao,
+		OsmQuestSplitWayDao osmQuestSplitWayDao, CreateNoteDao createNoteDao,
+		SharedPreferences prefs, OrderedVisibleQuestTypesProvider questTypesProvider,
+		Context context
+	)
+	{
+		return new QuestController(osmQuestDao, undoOsmQuestDao, mergedElementDao,
+			elementGeometryDao, osmNoteQuestDao, osmQuestSplitWayDao, createNoteDao, prefs,
+			questTypesProvider, context);
+	}
+	*/
 }

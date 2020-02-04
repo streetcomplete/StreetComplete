@@ -483,9 +483,6 @@
             "name": "Joogikauplus",
             "terms": "karastusjoogid"
         },
-        "entrance": {
-            "name": "Sisse- ja Väljapääs"
-        },
         "amenity/place_of_worship/jewish": {
             "name": "Juudi sünagoog",
             "terms": "sünagoog,juudi,juut,judaism"
@@ -985,9 +982,6 @@
         "shop/watches": {
             "name": "Kellapood"
         },
-        "amenity/parking_entrance": {
-            "name": "Parkimismaja sisse/väljapääs"
-        },
         "waterway/riverbank": {
             "name": "Jõekallas"
         },
@@ -1242,9 +1236,6 @@
             "name": "Õueala tee",
             "terms": "Majadevaheline,elutänav,elamu,linna"
         },
-        "power/sub_station": {
-            "name": "Alajaam"
-        },
         "shop/copyshop": {
             "name": "Koopiateenuse kauplus"
         },
@@ -1482,9 +1473,6 @@
         },
         "man_made/manhole/power": {
             "name": "Elektrivõrgukaev"
-        },
-        "building/kindergarten": {
-            "name": "Lasteaiahoone"
         },
         "leisure/playground": {
             "name": "Mänguväljak"
@@ -2345,16 +2333,8 @@
         "amenity/motorcycle_parking": {
             "name": "Mootorratta parkla"
         },
-        "shop/craft": {
-            "name": "Käsitöökauplus",
-            "terms": "Kuntsitarvete kauplus"
-        },
         "line": {
             "name": "Joon"
-        },
-        "amenity/kindergarten": {
-            "name": "Lasteaed",
-            "terms": "Eelkool"
         },
         "tourism/artwork/installation": {
             "name": "Kunstiinstallatsioon",

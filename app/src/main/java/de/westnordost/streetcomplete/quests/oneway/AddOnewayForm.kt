@@ -37,7 +37,7 @@ class AddOnewayForm : AYesNoQuestAnswerFragment<OnewayAnswer>() {
             else R.drawable.ic_oneway_lane_reverse
         )
 
-        streetSideRotater = StreetSideRotater(puzzleView, compassNeedle, elementGeometry as ElementPolylinesGeometry)
+        streetSideRotater = StreetSideRotater(puzzleView, compassNeedleView, elementGeometry as ElementPolylinesGeometry)
     }
 
     override fun onClick(answer: Boolean) {

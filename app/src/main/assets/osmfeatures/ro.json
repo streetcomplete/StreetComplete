@@ -49,9 +49,6 @@
         "amenity/waste_disposal": {
             "name": "Container de Gunoi"
         },
-        "power/sub_station": {
-            "name": "SubStație"
-        },
         "shop/copyshop": {
             "name": "Atelier de Copiere"
         },
@@ -355,9 +352,6 @@
         "leisure/miniature_golf": {
             "name": "Minigolf"
         },
-        "building/kindergarten": {
-            "name": "Preșcoală/Grădiniță"
-        },
         "amenity/hospital": {
             "name": "Spital"
         },
@@ -568,9 +562,6 @@
         "shop/vacuum_cleaner": {
             "name": "Magazin de Aspiratoare"
         },
-        "entrance": {
-            "name": "Intrare/Ieșire"
-        },
         "shop/chemist": {
             "name": "Drogărie"
         },
@@ -702,9 +693,6 @@
         },
         "building/hotel": {
             "name": "Hotel"
-        },
-        "shop/anime": {
-            "name": "Magazin Anime"
         },
         "route/ferry": {
             "name": "Rută de Bac"
@@ -1177,9 +1165,6 @@
         "shop/watches": {
             "name": "Magazin de Ceasuri"
         },
-        "amenity/parking_entrance": {
-            "name": "Intrare/Ieșire Garaj"
-        },
         "shop/gift": {
             "name": "Magazin de Cadouri"
         },
@@ -1335,9 +1320,6 @@
         },
         "shop/lottery": {
             "name": "Loterie"
-        },
-        "amenity/kindergarten": {
-            "name": "Preșcoală/Grădiniță"
         },
         "leisure/dog_park": {
             "name": "Parc de Câini"

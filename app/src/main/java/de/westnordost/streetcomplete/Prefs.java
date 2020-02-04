@@ -9,7 +9,7 @@ public class Prefs
 			OAUTH = "oauth",
 			OAUTH_ACCESS_TOKEN = "oauth.accessToken",
 			OAUTH_ACCESS_TOKEN_SECRET = "oauth.accessTokenSecret",
-			MAP_TILECACHE = "map.tilecache",
+			MAP_TILECACHE_IN_MB = "map.tilecache",
 			SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS = "display.nonQuestionNotes",
 			AUTOSYNC = "autosync",
 			KEEP_SCREEN_ON = "display.keepScreenOn",
@@ -35,6 +35,9 @@ public class Prefs
 			LAST_VERSION = "lastVersion";
 
 	public static final String HAS_SHOWN_UNDO_FUCKUP_WARNING = "alert.undo_fuckup_warning";
+
+	public static final String QUEST_SPRITES_VERSION = "TangramQuestSpriteSheet.version";
+	public static final String QUEST_SPRITES = "TangramQuestSpriteSheet.questSprites";
 
 	public enum Autosync
 	{

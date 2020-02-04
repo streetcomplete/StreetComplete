@@ -42,6 +42,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
 import kotlinx.coroutines.*
+import java.util.concurrent.CopyOnWriteArrayList
 import javax.inject.Singleton
 
 @Singleton class QuestController @Inject constructor(
@@ -55,13 +56,21 @@ import javax.inject.Singleton
     private val prefs: SharedPreferences,
     private val questTypesProvider: OrderedVisibleQuestTypesProvider,
     private val context: Context
-): LifecycleObserver, CoroutineScope by CoroutineScope(Dispatchers.Default) {
+): LifecycleObserver, CoroutineScope by CoroutineScope(Dispatchers.IO) {
 
-    var listener: VisibleQuestListener? = null
-    set(value) {
-        downloadService?.setQuestListener(value)
-        uploadService?.setQuestListener(value)
-        field = value
+    private val listeners: MutableList<VisibleQuestListener> = CopyOnWriteArrayList()
+    private val relay = object : VisibleQuestListener {
+        override fun onQuestsCreated(quests: Collection<Quest>, group: QuestGroup) {
+            for (listener in listeners) {
+                listener.onQuestsCreated(quests, group)
+            }
+        }
+
+        override fun onQuestsRemoved(questIds: Collection<Long>, group: QuestGroup) {
+            for (listener in listeners) {
+                listener.onQuestsRemoved(questIds, group)
+            }
+        }
     }
 
     private var downloadServiceIsBound: Boolean = false
@@ -69,7 +78,7 @@ import javax.inject.Singleton
     private val downloadServiceConnection = object : ServiceConnection {
         override fun onServiceConnected(className: ComponentName, service: IBinder) {
             downloadService = service as QuestDownloadService.Interface
-            downloadService?.setQuestListener(listener)
+            downloadService?.setQuestListener(relay)
         }
 
         override fun onServiceDisconnected(className: ComponentName) {
@@ -82,7 +91,7 @@ import javax.inject.Singleton
     private val uploadServiceConnection = object : ServiceConnection {
         override fun onServiceConnected(className: ComponentName, service: IBinder) {
             uploadService = service as QuestChangesUploadService.Interface
-            uploadService?.setQuestListener(listener)
+            uploadService?.setQuestListener(relay)
         }
 
         override fun onServiceDisconnected(className: ComponentName) {
@@ -154,7 +163,7 @@ import javax.inject.Singleton
         )
 
         osmQuestDB.deleteAllIds(questIdsForThisOsmElement)
-        listener?.onQuestsRemoved(questIdsForThisOsmElement, QuestGroup.OSM)
+        relay.onQuestsRemoved(questIdsForThisOsmElement, QuestGroup.OSM)
 
         osmElementDB.deleteUnreferenced()
         geometryDB.deleteUnreferenced()
@@ -181,7 +190,8 @@ import javax.inject.Singleton
             QuestGroup.OSM ->      solveOsmQuest(questId, answer, source)
             QuestGroup.OSM_NOTE -> solveOsmNoteQuest(questId, answer as NoteAnswer)
         }
-        listener?.onQuestsRemoved(listOf(questId), group)
+        relay.onQuestsRemoved(listOf(questId), group)
+
         return success
     }
 
@@ -198,7 +208,7 @@ import javax.inject.Singleton
                 quest.undo()
                 osmQuestDB.update(quest)
                 // inform relay that the quest is visible again
-                listener?.onQuestsCreated(listOf(quest), QuestGroup.OSM)
+                relay.onQuestsCreated(listOf(quest), QuestGroup.OSM)
             }
             // already uploaded! -> create change to reverse the previous change
             QuestStatus.CLOSED -> {
@@ -269,14 +279,14 @@ import javax.inject.Singleton
                 if (q?.status != QuestStatus.NEW) return
                 q.hide()
                 osmQuestDB.update(q)
-                listener?.onQuestsRemoved(listOf(q.id!!), group)
+                relay.onQuestsRemoved(listOf(q.id!!), group)
             }
             QuestGroup.OSM_NOTE -> {
                 val q = osmNoteQuestDB.get(questId)
                 if (q?.status != QuestStatus.NEW) return
                 q.hide()
                 osmNoteQuestDB.update(q)
-                listener?.onQuestsRemoved(listOf(q.id!!), group)
+                relay.onQuestsRemoved(listOf(q.id!!), group)
             }
         }
     }
@@ -290,19 +300,22 @@ import javax.inject.Singleton
     /** Retrieve all visible (=new) quests in the given bounding box from local database
      * asynchronously.  */
     fun retrieve(bbox: BoundingBox) {
-        // TODO with coroutines, this could maybe be an async to return them directly
         launch {
             val osmQuests = osmQuestDB.getAll(
                 statusIn = listOf(QuestStatus.NEW),
                 bounds = bbox,
                 questTypes = questTypeNames
             )
-            if (osmQuests.isNotEmpty()) listener?.onQuestsCreated(osmQuests, QuestGroup.OSM)
+            if (osmQuests.isNotEmpty()) {
+                relay.onQuestsCreated(osmQuests, QuestGroup.OSM)
+            }
 
             val osmNoteQuests = osmNoteQuestDB.getAll(
                 statusIn = listOf(QuestStatus.NEW),
                 bounds = bbox)
-            if (osmNoteQuests.isNotEmpty()) listener?.onQuestsCreated(osmNoteQuests, QuestGroup.OSM_NOTE)
+            if (osmNoteQuests.isNotEmpty()) {
+                relay.onQuestsCreated(osmNoteQuests, QuestGroup.OSM_NOTE)
+            }
         }
     }
 
@@ -347,8 +360,14 @@ import javax.inject.Singleton
         }
     }
 
+    fun addListener(listener: VisibleQuestListener) {
+        listeners.add(listener)
+    }
+    fun removeListener(listener: VisibleQuestListener) {
+        listeners.remove(listener)
+    }
+
     companion object {
         private const val TAG = "QuestController"
     }
 }
-

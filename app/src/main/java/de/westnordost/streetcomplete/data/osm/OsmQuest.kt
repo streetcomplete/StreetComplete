@@ -10,7 +10,9 @@ import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.data.osm.upload.HasElementTagChanges
 import de.westnordost.streetcomplete.data.osm.upload.UploadableInChangeset
-import de.westnordost.streetcomplete.util.SphericalEarthMath
+import de.westnordost.streetcomplete.util.measuredLength
+import de.westnordost.streetcomplete.util.pointOnPolylineFromEnd
+import de.westnordost.streetcomplete.util.pointOnPolylineFromStart
 
 /** Represents one task for the user to complete/correct the data based on one OSM element  */
 data class OsmQuest(
@@ -34,11 +36,11 @@ data class OsmQuest(
     override val markerLocations: Array<LatLon> get() {
         if (osmElementQuestType.hasMarkersAtEnds && geometry is ElementPolylinesGeometry) {
             val polyline = geometry.polylines[0]
-            val length = SphericalEarthMath.distance(polyline)
+            val length = polyline.measuredLength()
             if (length > 15 * 4) {
                 return arrayOf(
-                    SphericalEarthMath.pointOnPolylineFromStart(polyline, 15.0),
-                    SphericalEarthMath.pointOnPolylineFromEnd(polyline, 15.0)
+                    polyline.pointOnPolylineFromStart(15.0)!!,
+                    polyline.pointOnPolylineFromEnd(15.0)!!
                 )
             }
         }

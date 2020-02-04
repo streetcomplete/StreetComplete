@@ -295,8 +295,8 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
     <string name="quest_wheelchairAccess_limited_description_business">Partially means that there is no more than a single step to access the place and that most rooms inside are wheelchair accessible.</string>
     <string name="quest_wheelchairAccess_limited_description_outside">Partially means that there is no more than a single step to access it.</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">Partially means that there is no more than a single step to access it.</string>
-    <string name="quest_wheelchairAccess_description_toilets">A wheelchair sign like this might be visible if the restroom is accessible.
-    Partially means that a wheelchair can enter and use the restroom, but no handrail or adapted hand basin is present.</string>
+    <string name="quest_wheelchairAccess_description_toilets">"A wheelchair sign like this might be visible if the restroom is accessible.
+Partially means that a wheelchair can enter and use the restroom, but no handrail or adapted hand basin is present."</string>
     <string name="quest_recycling_type_title">What type of recycling facility is this?</string>
     <string name="recycling_centre">Center</string>
     <string name="overground_recycling_container">Container</string>
@@ -463,7 +463,8 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_busStopShelter_tram_title">"Does this streetcar stop have a shelter?"</string>
     <string name="quest_bench_backrest_title">Does this bench have a backrest?</string>
     <string name="quest_bench_answer_picnic_table">It’s a picnic table</string>
-    <string name="quest_religion_for_place_of_worship_title">What religion is practiced at %s?</string>
+    <string name="quest_religion_for_place_of_worship_name_title">What religion is practiced at %s?</string>
+    <string name="quest_religion_for_place_of_worship_title">What religion is practiced at this place?</string>
     <string name="quest_religion_christian">Christianity</string>
     <string name="quest_religion_muslim">Islam</string>
     <string name="quest_religion_hindu">Hinduism</string>

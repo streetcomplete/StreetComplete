@@ -215,6 +215,9 @@
             "name": "Şarap Mağazası",
             "terms": "Şarap Mağazası"
         },
+        "demolished/building": {
+            "name": "Son Zamanlarda Yıkılmış Bina"
+        },
         "shop/hairdresser": {
             "name": "Kuaför",
             "terms": "Kuaför, Berber"
@@ -311,6 +314,9 @@
         "man_made/water_tower": {
             "name": "Su Kulesi",
             "terms": "Su Kulesi"
+        },
+        "railway/train_wash": {
+            "name": "Tren Yıkama"
         },
         "shop/dry_cleaning": {
             "name": "Kuru Temizleme Mağazası",
@@ -643,10 +649,6 @@
         "shop/beverages": {
             "name": "İçecek Dükkanı",
             "terms": "İçecek Dükkanı"
-        },
-        "entrance": {
-            "name": "Giriş/Çıkış",
-            "terms": "Giriş/Çıkış"
         },
         "amenity/place_of_worship/jewish": {
             "name": "Yahudi Sinagogu"
@@ -1034,6 +1036,9 @@
         "public_transport/platform/bus_point": {
             "name": "Otobüs Durağı"
         },
+        "building/pavilion": {
+            "name": "Köşk"
+        },
         "shop": {
             "name": "Dükkan",
             "terms": "Dükkan, Mağaza"
@@ -1129,6 +1134,9 @@
             "name": "Cesed Yakma Yeri",
             "terms": "Cesed Yakma Yeri"
         },
+        "building/farm_auxiliary": {
+            "name": "Çiftlik Binası"
+        },
         "amenity/waste_basket": {
             "name": "Çöp Kutusu",
             "terms": "Çöp Kutusu"
@@ -1193,6 +1201,9 @@
             "name": "Kasaba",
             "terms": "Kasaba, İlçe"
         },
+        "railway/yard": {
+            "name": "Demir Yolu Sahası"
+        },
         "highway/tertiary_link": {
             "name": "Üçüncül Bağlantı Yolu",
             "terms": "Üçüncül Bağlantı Yolu, Üçüncül Yola Bağlanan Yol"
@@ -1232,6 +1243,9 @@
         "amenity/social_facility/nursing_home": {
             "name": "Bakım Evi",
             "terms": "Bakım Evi"
+        },
+        "building/train_station": {
+            "name": "Tren İstasyonu Binası"
         },
         "amenity/restaurant/thai": {
             "name": "Tayland Restoranı"
@@ -1322,10 +1336,6 @@
             "name": "Saatçi",
             "terms": "Saatçi"
         },
-        "amenity/parking_entrance": {
-            "name": "Garaj Giriş/Çıkışı",
-            "terms": "Garaj Giriş/Çıkışı, Park Yeri Giriş/Çıkışı"
-        },
         "landuse": {
             "name": "Arazi Kullanım Özelliği"
         },
@@ -1335,6 +1345,9 @@
         "shop/music": {
             "name": "Müzik Mağazası",
             "terms": "Müzik Mağazası"
+        },
+        "amenity/bicycle_parking/building": {
+            "name": "Bisiklet Park Yeri"
         },
         "barrier/toll_booth": {
             "name": "Gişe",
@@ -1390,6 +1403,10 @@
             "name": "Taşıma Şirketi Ofisi",
             "terms": "Nakliye Şubesi"
         },
+        "tourism/artwork/graffiti": {
+            "name": "Duvar Yazısı",
+            "terms": "Graffiti, Duvar Resmi"
+        },
         "highway/bridleway": {
             "name": "At Yolu",
             "terms": "At Yolu, At Yürüyüş Yolu"
@@ -1397,6 +1414,9 @@
         "shop/variety_store": {
             "name": "Herşey 1 TL Mağazası",
             "terms": "Herşey 1 TL Mağazası"
+        },
+        "amenity/parking/multi-storey": {
+            "name": "Çok Katlı Otopark"
         },
         "amenity/doctors": {
             "name": "Doktor",
@@ -1407,8 +1427,7 @@
             "terms": "Hendek, Suyolu"
         },
         "landuse/churchyard": {
-            "name": "Kilise Bahçesi",
-            "terms": "Kilise Bahçesi"
+            "name": "Kilise Bahçesi"
         },
         "amenity/shelter": {
             "name": "Barınak",
@@ -1550,8 +1569,8 @@
             "terms": "Taoist Tapınağı"
         },
         "building/mosque": {
-            "name": "Camii",
-            "terms": "Camii"
+            "name": "Cami",
+            "terms": "Cami"
         },
         "building/cabin": {
             "name": "Kabin",
@@ -1653,6 +1672,10 @@
             "name": "Kozmetik Mağazası",
             "terms": "Kozmetik Mağazası"
         },
+        "type/restriction/only_u_turn": {
+            "name": "Sadece U Dönüşü",
+            "terms": "Sadece U-Dönüşü"
+        },
         "leisure/swimming_pool": {
             "name": "Yüzme Havuzu",
             "terms": "Yüzme Havuzu"
@@ -1688,9 +1711,6 @@
         "attraction/roller_coaster": {
             "name": "Roller Coaster",
             "terms": "Roller Coaster"
-        },
-        "power/sub_station": {
-            "name": "Ara İstasyon"
         },
         "shop/copyshop": {
             "name": "Kırtasiye",
@@ -1981,6 +2001,10 @@
             "name": "Metro Girişi",
             "terms": "Metro Girişi"
         },
+        "aeroway/windsock": {
+            "name": "Rüzgâr hortumu",
+            "terms": "rüzgar hortumu"
+        },
         "healthcare/speech_therapist": {
             "name": "Konuşma Terapisti",
             "terms": "Konuşma Uzmanı"
@@ -2043,10 +2067,6 @@
         "healthcare/optometrist": {
             "name": "Göz Doktoru",
             "terms": "Optometri Uzmanı"
-        },
-        "building/kindergarten": {
-            "name": "Anaokulu",
-            "terms": "Kreş"
         },
         "leisure/playground": {
             "name": "Çocuk Parkı",
@@ -2186,6 +2206,10 @@
             "name": "Döviz Bürosu",
             "terms": "Döviz Bürosu"
         },
+        "office/diplomatic/embassy": {
+            "name": "Büyükelçilik",
+            "terms": "Elçilik"
+        },
         "public_transport/station_trolleybus": {
             "name": "Troleybüs Terminali",
             "terms": "Raysız Tramvay Terminali"
@@ -2240,6 +2264,9 @@
         "highway/trunk": {
             "name": "Duble Yol",
             "terms": "Duble Yol"
+        },
+        "building_point": {
+            "name": "Bina"
         },
         "public_transport/platform/trolleybus": {
             "name": "Troleybüs Platformu"
@@ -2303,8 +2330,8 @@
             "terms": "Çarşı, Pazar Yeri"
         },
         "building/industrial": {
-            "name": "Sanayi",
-            "terms": "Endüstriyel Bina"
+            "name": "Endüstriyel Bina",
+            "terms": "Sanayi Binası"
         },
         "amenity/restaurant/german": {
             "name": "Alman Restoranı"
@@ -2446,10 +2473,6 @@
         "building/hotel": {
             "name": "Otel",
             "terms": "Otel"
-        },
-        "shop/anime": {
-            "name": "Animasyon Mağazası",
-            "terms": "Animasyon Mağazası"
         },
         "route/ferry": {
             "name": "Feribot Güzergahı",
@@ -2704,6 +2727,9 @@
             "name": "Yüksekokul",
             "terms": "Yüksekokul"
         },
+        "man_made/beacon": {
+            "name": "Fener"
+        },
         "amenity/nursing_home": {
             "name": "Bakım Evi"
         },
@@ -2867,6 +2893,9 @@
         "landuse/industrial/scrap_yard": {
             "name": "Hurdalık"
         },
+        "building/hangar": {
+            "name": "Hangar"
+        },
         "amenity/recycling": {
             "name": "Geri Dönüşüm"
         },
@@ -2915,6 +2944,9 @@
         "craft/tiler": {
             "name": "Kiremetçi",
             "terms": "Kiremetçi"
+        },
+        "historic/building": {
+            "name": "Tarihi Bina"
         },
         "shop/frame": {
             "name": "Çerçeve Mağazası",
@@ -3149,17 +3181,9 @@
             "name": "Motosiklet Parkı",
             "terms": "Motosiklet Parkı, Motosiklet Park Yeri"
         },
-        "shop/craft": {
-            "name": "Nalbant",
-            "terms": "Nalbant"
-        },
         "line": {
             "name": "Çizgi",
             "terms": "Çizgi"
-        },
-        "amenity/kindergarten": {
-            "name": "Anaokulu",
-            "terms": "Anaokulu, Kreş"
         },
         "waterway/weir": {
             "name": "Su Bendi",

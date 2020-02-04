@@ -14,7 +14,8 @@ import de.westnordost.streetcomplete.data.osm.tql.toGlobalOverpassBBox
 import de.westnordost.streetcomplete.data.osm.tql.toOverpassBboxFilter
 import de.westnordost.streetcomplete.util.FlattenIterable
 import de.westnordost.streetcomplete.util.LatLonRaster
-import de.westnordost.streetcomplete.util.SphericalEarthMath
+import de.westnordost.streetcomplete.util.enclosingBoundingBox
+import de.westnordost.streetcomplete.util.isInMultipolygon
 
 class AddHousenumber(private val overpass: OverpassMapDataAndGeometryDao) : OsmElementQuestType<HousenumberAnswer> {
 
@@ -61,7 +62,7 @@ class AddHousenumber(private val overpass: OverpassMapDataAndGeometryDao) : OsmE
         // exclude buildings that are contained in an area with a housenumber
         for (addrArea in addrAreas) {
             for (buildingPos in buildingPositions.getAll(addrArea.getBounds())) {
-                if (SphericalEarthMath.isInMultipolygon(buildingPos, addrArea.polygons)) {
+                if (buildingPos.isInMultipolygon(addrArea.polygons)) {
                     buildings.remove(buildingPos)
                 }
             }
@@ -119,7 +120,7 @@ class AddHousenumber(private val overpass: OverpassMapDataAndGeometryDao) : OsmE
 
     private fun getPositionContainedInBuilding(building: ElementPolygonsGeometry, positions: LatLonRaster): LatLon? {
         for (pos in positions.getAll(building.getBounds())) {
-            if (SphericalEarthMath.isInMultipolygon(pos, building.polygons)) return pos
+            if (pos.isInMultipolygon(building.polygons)) return pos
         }
         return null
     }
@@ -129,11 +130,12 @@ class AddHousenumber(private val overpass: OverpassMapDataAndGeometryDao) : OsmE
         // adjusted to the bounding box of all the buildings found. The found buildings may in parts
         // not be within the specified bounding box. But in exactly that part, there may be an
         // address
+
         val allThePoints = FlattenIterable(LatLon::class.java)
         for (building in buildings) {
             allThePoints.add(building.geometry.polygons)
         }
-        return SphericalEarthMath.enclosingBoundingBox(allThePoints)
+        return allThePoints.enclosingBoundingBox()
     }
 
     override fun createForm() = AddHousenumberForm()

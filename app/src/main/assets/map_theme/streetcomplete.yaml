@@ -41,10 +41,10 @@ layers:
                 quest-icons:
                     interactive: true
                     priority: function() { return feature.order }
-                    size: 64px
+                    size: 66px
                     sprite: function() { return feature.kind }
                     sprite_default: quest
-                    offset: [-16px, -64px]
+                    offset: [-17px, -66px]
         dots_no_collide:
             filter: { $zoom: { min: 16 } }
             draw:
