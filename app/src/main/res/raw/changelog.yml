@@ -1,16 +1,4 @@
-v17.0-beta3: |
-  <ul>
-  <li>Fixed several crashes</li>
-  <li>Fixed buttons not working if animations are disabled (#1706)</li>
-  </ul>
-
-v17.0-beta2: |
-  <ul>
-  <li>Fixed a crash on startup, thanks @RubenKelevra, @Atrate (#1704)</li>
-  <li>Fixed a crash on exiting the app</li>
-  </ul>
-
-v17.0-beta1: |
+v17.0: |
   <p>This release includes a major update of the map rendering library (in order to satisfy new
   Google Play guidelines). I took this as an oppurtunity to re-do most of the things that concern
   the map view (#1279, #1606) and thus solve some long-standing issues with it. If any new have been
@@ -36,6 +24,7 @@ v17.0-beta1: |
   <h3>Enhanced Quests</h3>
   <ul>
   <li>Do not reorder last picked options for the track type quest form to the front (#1692)</li>
+  <li>Moved building type quest importance up a bit because the housenumber quest is only shown after this one has been answered (#1717)</li>
   </ul>
 
 v16.1: |
