@@ -716,15 +716,11 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
 
     <string name="quest_tourism_information_title">What type of tourist information is this?</string>
     <string name="quest_tourism_information_name_title">What type of tourist information is %s?</string>
-    <string name="quest_tourism_information_office">Office</string>
-    <string name="quest_tourism_information_board">Board</string>
-    <string name="quest_tourism_information_terminal">Terminal</string>
-    <string name="quest_tourism_information_audio_guide">Audio guide</string>
+    <string name="quest_tourism_information_office">Tourist information office</string>
+    <string name="quest_tourism_information_board">Information board</string>
+    <string name="quest_tourism_information_terminal">Information terminal</string>
     <string name="quest_tourism_information_map">Map</string>
-    <string name="quest_tourism_information_tactile_map">Tactile map</string>
-    <string name="quest_tourism_information_tactile_model">Tactile model</string>
     <string name="quest_tourism_information_guidepost">Guidepost</string>
-    <string name="quest_tourism_information_route_marker">Route marker</string>
 
     <string name="about_title_changelog">Version history</string>
     <string name="title_whats_new">What\'s New?</string>

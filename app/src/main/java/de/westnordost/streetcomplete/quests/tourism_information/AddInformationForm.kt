@@ -12,15 +12,11 @@ class AddInformationForm : AImageListQuestAnswerFragment<String,String>() {
     override val maxNumberOfInitiallyShownItems = 4
 
     override val items get() = listOf(
-        Item("guidepost", R.drawable.tourism_information_guidepost, R.string.quest_tourism_information_guidepost),
-        Item("board", R.drawable.tourism_information_board, R.string.quest_tourism_information_board),
-        Item("map", R.drawable.tourism_information_map, R.string.quest_tourism_information_map),
         Item("office", R.drawable.tourism_information_office, R.string.quest_tourism_information_office),
-        Item("route_marker", R.drawable.tourism_information_route_marker, R.string.quest_tourism_information_route_marker),
+        Item("board", R.drawable.tourism_information_board, R.string.quest_tourism_information_board),
         Item("terminal", R.drawable.tourism_information_terminal, R.string.quest_tourism_information_terminal),
-        Item("audioguide", R.drawable.tourism_information_audio_guide, R.string.quest_tourism_information_audio_guide),
-        Item("tactile_map", R.drawable.tourism_information_tactile_map, R.string.quest_tourism_information_tactile_map),
-        Item("tactile_model", R.drawable.tourism_information_tactile_model, R.string.quest_tourism_information_tactile_model)
+        Item("guidepost", R.drawable.tourism_information_guidepost, R.string.quest_tourism_information_guidepost),
+        Item("map", R.drawable.tourism_information_map, R.string.quest_tourism_information_map)
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
