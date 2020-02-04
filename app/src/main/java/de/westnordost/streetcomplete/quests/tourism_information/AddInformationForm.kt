@@ -9,14 +9,13 @@ import de.westnordost.streetcomplete.view.Item
 class AddInformationForm : AImageListQuestAnswerFragment<String,String>() {
 
     override val itemsPerRow = 2
-    override val maxNumberOfInitiallyShownItems = 4
 
     override val items get() = listOf(
         Item("office", R.drawable.tourism_information_office, R.string.quest_tourism_information_office),
         Item("board", R.drawable.tourism_information_board, R.string.quest_tourism_information_board),
         Item("terminal", R.drawable.tourism_information_terminal, R.string.quest_tourism_information_terminal),
-        Item("guidepost", R.drawable.tourism_information_guidepost, R.string.quest_tourism_information_guidepost),
-        Item("map", R.drawable.tourism_information_map, R.string.quest_tourism_information_map)
+        Item("map", R.drawable.tourism_information_map, R.string.quest_tourism_information_map),
+        Item("guidepost", R.drawable.tourism_information_guidepost, R.string.quest_tourism_information_guidepost)
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
