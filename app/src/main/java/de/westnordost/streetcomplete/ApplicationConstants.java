@@ -1,9 +1,5 @@
 package de.westnordost.streetcomplete;
 
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-
 public class ApplicationConstants
 {
 	public final static String

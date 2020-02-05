@@ -46,21 +46,21 @@ class PhysicsWorldView @JvmOverloads constructor(
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         for ((view, body) in bodies.entries) {
-			val pixelWidth = view.width.toFloat()
-			val pixelHeight = view.height.toFloat()
-			if (pixelWidth == 0f || pixelHeight == 0f) continue
+            val pixelWidth = view.width.toFloat()
+            val pixelHeight = view.height.toFloat()
+            if (pixelWidth == 0f || pixelHeight == 0f) continue
 
             val bbox = body.computeBoundingBox() ?: continue
             val widthInMeters = bbox.upperBound.x - bbox.lowerBound.x
             val heightInMeters = bbox.upperBound.y - bbox.lowerBound.y
 
             view.scaleX = widthInMeters * pixelsPerMeter / pixelWidth
-			view.scaleY = heightInMeters * pixelsPerMeter / pixelHeight
+            view.scaleY = heightInMeters * pixelsPerMeter / pixelHeight
 
             val centerInMeters = body.position
-			view.x = +(centerInMeters.x - offsetInMetersX) * pixelsPerMeter - pixelWidth / 2f
+            view.x = +(centerInMeters.x - offsetInMetersX) * pixelsPerMeter - pixelWidth / 2f
             // ui coordinate system: +y = down, physics coordinate system: +y = up
-			view.y = -(centerInMeters.y - offsetInMetersY) * pixelsPerMeter - pixelHeight / 2f + height
+            view.y = -(centerInMeters.y - offsetInMetersY) * pixelsPerMeter - pixelHeight / 2f + height
 
             view.rotation = -body.angle * 180f / Math.PI.toFloat()
         }

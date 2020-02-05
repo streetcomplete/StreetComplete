@@ -46,7 +46,7 @@ class TangramQuestSpriteSheet @Inject constructor(
         val spriteSheet = Bitmap.createBitmap(bitmapLength, bitmapLength, Bitmap.Config.ARGB_8888)
         val canvas = Canvas(spriteSheet)
 
-	    for ((i, questIconResId) in questIconResIds.withIndex()) {
+        for ((i, questIconResId) in questIconResIds.withIndex()) {
             val x = i % sheetSideLength * iconSize
             val y = i / sheetSideLength * iconSize
             questPin.setBounds(x, y, x + iconSize, y + iconSize)
@@ -58,7 +58,7 @@ class TangramQuestSpriteSheet @Inject constructor(
             questIcon.draw(canvas)
             val questIconName = context.resources.getResourceEntryName(questIconResId)
             spriteSheetEntries.add("$questIconName: [$x,$y,$iconSize,$iconSize]")
-	    }
+        }
 
         context.deleteFile(QUEST_ICONS_FILE)
         val spriteSheetIconsFile = context.openFileOutput(QUEST_ICONS_FILE, Context.MODE_PRIVATE)

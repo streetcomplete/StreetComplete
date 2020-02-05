@@ -6,12 +6,11 @@ import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
-import android.view.ViewGroup
+import de.westnordost.streetcomplete.HasTitle
 
 import javax.inject.Inject
 import de.westnordost.streetcomplete.Injector
@@ -24,7 +23,7 @@ import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderList
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeDao
 
 class QuestSelectionFragment
-    : Fragment(R.layout.fragment_quest_selection), QuestSelectionAdapter.Listener {
+    : Fragment(R.layout.fragment_quest_selection), HasTitle, QuestSelectionAdapter.Listener {
 
     @Inject internal lateinit var questSelectionAdapter: QuestSelectionAdapter
     @Inject internal lateinit var questTypeRegistry: QuestTypeRegistry
@@ -40,6 +39,8 @@ class QuestSelectionFragment
            downloaded.  */
         cancelCurrentDownload()
     }
+
+    override val title: String get() = getString(R.string.pref_title_quests)
 
     init {
         Injector.instance.applicationComponent.inject(this)
@@ -59,7 +60,6 @@ class QuestSelectionFragment
 
     override fun onStart() {
         super.onStart()
-        activity?.title = getString(R.string.pref_title_quests)
         hasChangedSomething = false
     }
 

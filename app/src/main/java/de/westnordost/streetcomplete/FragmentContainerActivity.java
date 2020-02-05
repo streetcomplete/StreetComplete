@@ -2,6 +2,8 @@ package de.westnordost.streetcomplete;
 
 import android.content.Intent;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -62,17 +64,36 @@ public class FragmentContainerActivity extends AppCompatActivity
 		tr.commit();
 	}
 
-	private Fragment getCurrentFragment()
+	@Override public void onAttachFragment(@NonNull Fragment fragment)
+	{
+		if (fragment.getId() == R.id.fragment_container)
+		{
+			if (fragment instanceof HasTitle)
+			{
+				setTitle(((HasTitle) fragment).getTitle());
+			}
+		}
+	}
+
+	public Fragment getCurrentFragment()
 	{
 		return getSupportFragmentManager().findFragmentById(R.id.fragment_container);
 	}
 
-	@Override public void onBackPressed() {
-		if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
-			getSupportFragmentManager().popBackStack();
-		} else {
-			super.onBackPressed();
+	@Override public void onBackPressed()
+	{
+		Fragment f = getCurrentFragment();
+		if (f instanceof BackPressedListener)
+		{
+			if (((BackPressedListener) f).onBackPressed())
+				return;
 		}
+		if (getSupportFragmentManager().getBackStackEntryCount() > 0)
+		{
+			getSupportFragmentManager().popBackStack();
+			return;
+		}
+		super.onBackPressed();
 	}
 
 	@Override public boolean onOptionsItemSelected(MenuItem item) {

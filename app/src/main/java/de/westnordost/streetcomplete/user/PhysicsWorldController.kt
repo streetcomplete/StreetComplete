@@ -17,17 +17,17 @@ class PhysicsWorldController(gravity: Vec2) : CoroutineScope by CoroutineScope(D
     private val thread: HandlerThread = HandlerThread("Physics thread")
     private val handler: Handler
 
-	private var isRunning = false
+    private var isRunning = false
 
     interface Listener {
         fun onWorldStep()
     }
     var listener: Listener? = null
 
-	init {
+    init {
         thread.start()
-		handler = Handler(thread.looper)
-	}
+        handler = Handler(thread.looper)
+    }
 
     fun resume() {
         if (!isRunning) {
@@ -48,15 +48,15 @@ class PhysicsWorldController(gravity: Vec2) : CoroutineScope by CoroutineScope(D
         thread.quit()
     }
 
-	private fun loop() {
-		val startTime = System.currentTimeMillis()
-		world.step(DELAY /1000f, 6, 2)
-		val executionTime = System.currentTimeMillis() - startTime
+    private fun loop() {
+        val startTime = System.currentTimeMillis()
+        world.step(DELAY /1000f, 6, 2)
+        val executionTime = System.currentTimeMillis() - startTime
         listener?.onWorldStep()
-		if (isRunning) {
-			handler.postDelayed(this::loop, max(0, DELAY - executionTime))
-		}
-	}
+        if (isRunning) {
+            handler.postDelayed(this::loop, max(0, DELAY - executionTime))
+        }
+    }
 
     suspend fun createBody(def: BodyDef, shape: Shape, density: Float): Body {
         // creating bodies cannot be done while the World is locked (= while world.step(...) is
@@ -68,7 +68,7 @@ class PhysicsWorldController(gravity: Vec2) : CoroutineScope by CoroutineScope(D
         }
     }
 
-	companion object {
-		private const val DELAY = 16 // 60 fps
-	}
+    companion object {
+        private const val DELAY = 16 // 60 fps
+    }
 }

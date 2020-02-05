@@ -16,7 +16,6 @@ import javax.inject.Provider
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao
 import de.westnordost.streetcomplete.data.tiles.DownloadedTilesDao
 import de.westnordost.streetcomplete.ktx.toast
-import de.westnordost.streetcomplete.oauth.OsmOAuthDialogFragment
 import de.westnordost.streetcomplete.settings.questselection.QuestSelectionFragment
 import javax.inject.Inject
 import de.westnordost.streetcomplete.*
@@ -24,7 +23,7 @@ import de.westnordost.streetcomplete.data.user.UserController
 
 
 class SettingsFragment : PreferenceFragmentCompat(),
-    SharedPreferences.OnSharedPreferenceChangeListener, IntentListener {
+    SharedPreferences.OnSharedPreferenceChangeListener {
 
     @Inject internal lateinit var prefs: SharedPreferences
     @Inject internal lateinit var userController: UserController
@@ -55,13 +54,14 @@ class SettingsFragment : PreferenceFragmentCompat(),
                         .show()
                 }
             } else {
-                fragmentManager?.let { OsmOAuthDialogFragment().show(it, OsmOAuthDialogFragment.TAG) }
+                fragmentActivity?.currentFragment =
+                    OAuthFragment()
             }
             true
         }
 
         findPreference<Preference>("quests")?.setOnPreferenceClickListener {
-            fragmentActivity?.setCurrentFragment(QuestSelectionFragment())
+            fragmentActivity?.currentFragment = QuestSelectionFragment()
             true
         }
 
@@ -105,7 +105,7 @@ class SettingsFragment : PreferenceFragmentCompat(),
             if (username != null) resources.getString(R.string.pref_title_authorized_username_summary, username)
             else resources.getString(R.string.pref_title_authorized_summary)
         } else {
-            resources.getString(R.string.pref_title_not_authorized_summary2)
+            resources.getString(R.string.pref_title_not_authorized_summary)
         }
     }
 
@@ -161,10 +161,5 @@ class SettingsFragment : PreferenceFragmentCompat(),
         } else {
             super.onDisplayPreferenceDialog(preference)
         }
-    }
-
-    override fun onNewIntent(intent: Intent) {
-        val oauthFragment = fragmentManager?.findFragmentByTag(OsmOAuthDialogFragment.TAG) as OsmOAuthDialogFragment?
-        oauthFragment?.onNewIntent(intent)
     }
 }

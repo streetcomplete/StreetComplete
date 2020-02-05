@@ -6,6 +6,7 @@
         <item name="colorPrimary">@color/primary</item>
         <item name="colorPrimaryDark">@color/primary_dark</item>
         <item name="colorAccent">@color/accent</item>
+        <item name="colorControlActivated">@color/accent</item>
         <!-- to workaround a bug in Android (AppCompat?), see
              https://stackoverflow.com/questions/41727729/fatal-exception-java-lang-unsupportedoperationexception-failed-to-resolve-attr -->
         <item name="android:colorPrimary" tools:targetApi="lollipop">@color/primary</item>

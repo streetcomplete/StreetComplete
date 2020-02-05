@@ -14,7 +14,7 @@ import de.westnordost.streetcomplete.data.upload.QuestChangesUploadService;
 import de.westnordost.streetcomplete.data.download.QuestDownloadService;
 import de.westnordost.streetcomplete.data.meta.MetadataModule;
 import de.westnordost.streetcomplete.map.MainFragment;
-import de.westnordost.streetcomplete.oauth.OsmOAuthDialogFragment;
+import de.westnordost.streetcomplete.settings.OAuthFragment;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 import de.westnordost.streetcomplete.quests.QuestModule;
 import de.westnordost.streetcomplete.quests.SplitWayFragment;
@@ -60,7 +60,7 @@ public interface ApplicationComponent
 	void inject(AddOnewayForm addOnewayForm);
 	void inject(AddCollectionTimesForm addCollectionTimesForm);
 
-	void inject(OsmOAuthDialogFragment osmOAuthDialogFragment);
+	void inject(OAuthFragment OAuthFragment);
 
 	void inject(QuestStatisticsFragment questStatisticsFragment);
 

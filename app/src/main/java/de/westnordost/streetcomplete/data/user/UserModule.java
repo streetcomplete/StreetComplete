@@ -3,6 +3,8 @@ package de.westnordost.streetcomplete.data.user;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import javax.inject.Named;
+
 import dagger.Module;
 import dagger.Provides;
 import de.westnordost.osmapi.OsmConnection;
@@ -15,12 +17,15 @@ import oauth.signpost.basic.DefaultOAuthProvider;
 
 @Module public class UserModule
 {
-	public static final String STATISTICS_BACKEND_URL = ":-D";
+	public static final String STATISTICS_BACKEND_URL = "https://www.westnordost.de/stats/";
 
 	private static final String BASE_OAUTH_URL = "https://www.openstreetmap.org/oauth/";
 
 	private static final String CONSUMER_KEY = "L3JyJMjVk6g5atwACVySRWgmnrkBAH7u0U18ALO7";
 	private static final String CONSUMER_SECRET = "uNjPaXZw15CPHdCSeMzttRm20tyFGaBPO7jHt52c";
+
+	private static final String CALLBACK_SCHEME = "streetcomplete";
+	private static final String CALLBACK_HOST = "oauth";
 
 	@Provides public static StatisticsDownloader statisticsDownloader()
 	{
@@ -43,6 +48,16 @@ import oauth.signpost.basic.DefaultOAuthProvider;
 	@Provides public static OAuthConsumer defaultOAuthConsumer()
 	{
 		return new DefaultOAuthConsumer(CONSUMER_KEY, CONSUMER_SECRET);
+	}
+
+	@Provides @Named("OAuthCallbackScheme") public static String oAuthCallbackScheme()
+	{
+		return CALLBACK_SCHEME;
+	}
+
+	@Provides @Named("OAuthCallbackHost") public static String oAuthCallbackHost()
+	{
+		return CALLBACK_HOST;
 	}
 
 	@Provides public static UserController userController(
