@@ -54,6 +54,8 @@ import de.westnordost.streetcomplete.quests.*
 import kotlinx.android.synthetic.main.fragment_map_with_controls.*
 import javax.inject.Inject
 import kotlin.math.max
+import kotlin.math.absoluteValue
+import kotlin.math.PI
 
 /** Contains the quests map and the controls for it. */
 class MainFragment : Fragment(R.layout.fragment_map_with_controls),
@@ -397,7 +399,16 @@ class MainFragment : Fragment(R.layout.fragment_map_with_controls),
 
     private fun onClickCompassButton() {
         val mapFragment = mapFragment ?: return
-        val isNorthUp = mapFragment.cameraPosition?.rotation == 0f
+        // Allow a small margin of error around north/flat. This both matches
+        // UX expectations ("it looks straight..") and works around a bug where
+        // the rotation/tilt are not set to perfectly 0 during animation
+        val margin = 0.025f // About 4%
+        // 2PI radians = full circle of rotation = also north
+        val isNorthUp = mapFragment.cameraPosition?.rotation?.let {
+            it <= margin || 2f*PI.toFloat()-it <= margin
+        } ?: false
+        // Camera cannot rotate upside down => full circle check not needed
+        val isFlat = mapFragment.cameraPosition?.tilt?.let { it <= margin } ?: false
         if (!isNorthUp) {
             mapFragment.updateCameraPosition(300) {
                 rotation = 0f
@@ -406,6 +417,12 @@ class MainFragment : Fragment(R.layout.fragment_map_with_controls),
         }
         if (mapFragment.isFollowingPosition) {
             setIsCompassMode(!mapFragment.isCompassMode)
+        } else {
+            if (isNorthUp) {
+                mapFragment.updateCameraPosition(300) {
+                    tilt = if (isFlat) PI.toFloat() / 5f else 0f
+                }
+            }
         }
     }
 
