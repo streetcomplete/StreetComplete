@@ -20,8 +20,20 @@ class PhysicsWorldView @JvmOverloads constructor(
 ) : FrameLayout(context, attrs, defStyleAttr) {
 
     var offsetInMetersX = 0f
+        set(value) {
+            field = value
+            invalidate()
+        }
     var offsetInMetersY = 0f
+        set(value) {
+            field = value
+            invalidate()
+        }
     var pixelsPerMeter = 1f
+        set(value) {
+            field = value
+            invalidate()
+        }
 
     private val bodies: MutableMap<View, Body> = HashMap()
 

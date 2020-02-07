@@ -11,6 +11,7 @@ import org.jbox2d.dynamics.BodyDef
 import org.jbox2d.dynamics.World
 import kotlin.math.max
 
+/** Contains the physics simulation world and the physics simulation loop */
 class PhysicsWorldController(gravity: Vec2) : CoroutineScope by CoroutineScope(Dispatchers.Main) {
 
     private val world: World = World(gravity)
@@ -18,6 +19,18 @@ class PhysicsWorldController(gravity: Vec2) : CoroutineScope by CoroutineScope(D
     private val handler: Handler
 
     private var isRunning = false
+
+    var gravity: Vec2
+        get() = world.gravity
+        set(value) {
+            // wake up everyone if the gravity changed
+            world.gravity = value
+            var bodyIt = world.bodyList
+            while(bodyIt != null) {
+                bodyIt.isAwake = true
+                bodyIt = bodyIt.next
+            }
+        }
 
     interface Listener {
         fun onWorldStep()
