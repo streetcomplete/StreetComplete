@@ -8,7 +8,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="These are your solved quests. The bigger the bubble, the more quests of this type you solved"
+        android:text="@string/user_statistics_description"
         android:padding="32dp"
         android:textAlignment="center"
         app:layout_constraintVertical_bias="0.15"
@@ -23,5 +23,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:visibility="invisible"/>
+
+    <fragment
+        android:name="de.westnordost.streetcomplete.user.QuestTypeInfoFragment"
+        android:id="@+id/detailsFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

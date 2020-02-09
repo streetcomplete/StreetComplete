@@ -10,6 +10,7 @@ class AddReligionToWaysideShrine(o: OverpassMapDataAndGeometryDao) : SimpleOverp
     override val tagFilters =
         "nodes, ways, relations with historic = wayside_shrine and !religion and (access !~ private|no)"
     override val commitMessage = "Add religion for wayside shrine"
+    override val wikiLink = "Key:religion"
     override val icon = R.drawable.ic_quest_religion
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_religion_for_wayside_shrine_title

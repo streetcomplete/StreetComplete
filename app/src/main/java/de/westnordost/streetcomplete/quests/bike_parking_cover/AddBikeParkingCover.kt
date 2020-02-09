@@ -15,6 +15,7 @@ class AddBikeParkingCover(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQues
          and bicycle_parking !~ shed|lockers|building
     """
     override val commitMessage = "Add bicycle parkings cover"
+    override val wikiLink = "Tag:amenity=bicycle_parking"
     override val icon = R.drawable.ic_quest_bicycle_parking_cover
 
     override fun getTitle(tags: Map<String, String>) =

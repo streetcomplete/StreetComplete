@@ -9,6 +9,7 @@ class AddCarWashType(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType
 
     override val tagFilters = "nodes, ways with amenity = car_wash and !automated and !self_service"
     override val commitMessage = "Add car wash type"
+    override val wikiLink = "Tag:amenity=car_wash"
     override val icon = R.drawable.ic_quest_car_wash
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_carWashType_title

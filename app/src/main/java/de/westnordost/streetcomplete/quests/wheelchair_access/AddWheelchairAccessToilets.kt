@@ -10,6 +10,7 @@ class AddWheelchairAccessToilets(o: OverpassMapDataAndGeometryDao) : SimpleOverp
     override val tagFilters =
         " nodes, ways with  amenity=toilets and access !~ private|customers and !wheelchair"
     override val commitMessage = "Add wheelchair access to toilets"
+    override val wikiLink = "Key:wheelchair"
     override val icon = R.drawable.ic_quest_toilets_wheelchair
 
     override fun getTitle(tags: Map<String, String>) =

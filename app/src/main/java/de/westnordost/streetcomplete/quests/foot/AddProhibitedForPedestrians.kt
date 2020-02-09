@@ -30,6 +30,7 @@ class AddProhibitedForPedestrians(o: OverpassMapDataAndGeometryDao) : SimpleOver
         "and ( oneway~yes|-1 or bridge=yes or tunnel=yes or bicycle~no|use_sidepath or lit=yes )"
 
     override val commitMessage = "Add whether roads are prohibited for pedestrians"
+    override val wikiLink = "Key:foot"
     override val icon = R.drawable.ic_quest_no_pedestrians
     override val isSplitWayEnabled = true
 

@@ -31,6 +31,7 @@ class AddOneway(
 
     override val commitMessage =
         "Add whether this road is a one-way road, this road was marked as likely oneway by improveosm.org"
+    override val wikiLink = "Key:oneway"
     override val icon = R.drawable.ic_quest_oneway
     override val hasMarkersAtEnds = true
     override val isSplitWayEnabled = true

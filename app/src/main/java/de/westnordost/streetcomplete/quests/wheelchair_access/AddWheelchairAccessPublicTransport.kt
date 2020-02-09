@@ -12,6 +12,7 @@ class AddWheelchairAccessPublicTransport(o: OverpassMapDataAndGeometryDao) : Sim
         and !wheelchair
     """
     override val commitMessage = "Add wheelchair access to public transport platforms"
+    override val wikiLink = "Key:wheelchair"
     override val icon = R.drawable.ic_quest_wheelchair
 
     override fun getTitle(tags: Map<String, String>): Int {

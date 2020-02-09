@@ -16,6 +16,7 @@ open class MarkCompletedHighwayConstruction(private val overpass: OverpassMapDat
     : AMarkCompletedConstruction<Boolean>() {
 
     override val commitMessage = "Determine whether construction is now completed"
+    override val wikiLink = "Tag:highway=construction"
     override val icon = R.drawable.ic_quest_road_construction
     override val hasMarkersAtEnds = true
 

@@ -10,6 +10,7 @@ class AddIsBuildingUnderground(o: OverpassMapDataAndGeometryDao) : SimpleOverpas
 
     override val tagFilters = "ways, relations with building and !location and layer~-[0-9]+"
     override val commitMessage = "Determine whatever building is fully underground"
+    override val wikiLink = "Key:location"
     override val icon = R.drawable.ic_quest_building_underground
 
     override fun getTitle(tags: Map<String, String>): Int {

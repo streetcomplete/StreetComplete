@@ -87,6 +87,7 @@ class AddOpeningHours (
     )}
 
     override val commitMessage = "Add opening hours"
+    override val wikiLink = "Key:opening_hours"
     override val icon = R.drawable.ic_quest_opening_hours
 
     override fun getTitle(tags: Map<String, String>) =

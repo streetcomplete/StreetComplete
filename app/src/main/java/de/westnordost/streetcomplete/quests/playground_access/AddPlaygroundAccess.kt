@@ -10,6 +10,7 @@ class AddPlaygroundAccess(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQues
 
     override val tagFilters = "nodes, ways, relations with leisure = playground and (!access or access = unknown)"
     override val commitMessage = "Add playground access"
+    override val wikiLink = "Tag:leisure=playground"
     override val icon = R.drawable.ic_quest_playground
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_playground_access_title

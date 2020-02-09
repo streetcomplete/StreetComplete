@@ -10,6 +10,7 @@ class AddTactilePavingCrosswalk(o: OverpassMapDataAndGeometryDao) : SimpleOverpa
 
     override val tagFilters = "nodes with highway = crossing and !tactile_paving and foot != no"
     override val commitMessage = "Add tactile pavings on crosswalks"
+    override val wikiLink = "Key:tactile_paving"
     override val icon = R.drawable.ic_quest_blind_pedestrian_crossing
 
     // See overview here: https://ent8r.github.io/blacklistr/?streetcomplete=tactile_paving/AddTactilePavingCrosswalk.kt

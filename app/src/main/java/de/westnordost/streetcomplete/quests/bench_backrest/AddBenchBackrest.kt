@@ -10,6 +10,7 @@ class AddBenchBackrest(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestTy
 
     override val tagFilters = "nodes with amenity = bench and !backrest"
     override val commitMessage = "Add backrest information to benches"
+    override val wikiLink = "Tag:amenity=bench"
     override val icon = R.drawable.ic_quest_bench
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_bench_backrest_title

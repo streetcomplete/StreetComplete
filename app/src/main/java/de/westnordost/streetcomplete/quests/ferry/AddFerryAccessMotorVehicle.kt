@@ -12,6 +12,7 @@ class AddFerryAccessMotorVehicle(o: OverpassMapDataAndGeometryDao) : SimpleOverp
 
     override val tagFilters = "ways, relations with route = ferry and !motor_vehicle"
     override val commitMessage = "Specify ferry access for motor vehicles"
+    override val wikiLink = "Tag:route=ferry"
     override val icon = R.drawable.ic_quest_ferry
     override val hasMarkersAtEnds = true
 

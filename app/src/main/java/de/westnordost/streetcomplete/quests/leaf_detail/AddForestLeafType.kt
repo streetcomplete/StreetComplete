@@ -12,6 +12,7 @@ import de.westnordost.streetcomplete.data.osm.tql.toGlobalOverpassBBox
 
 class AddForestLeafType(private val overpassServer: OverpassMapDataAndGeometryDao) : OsmElementQuestType<String> {
     override val commitMessage = "Add leaf type"
+    override val wikiLink = "Key:leaf_type"
     override val icon = R.drawable.ic_quest_leaf
     override val isSplitWayEnabled = true
 

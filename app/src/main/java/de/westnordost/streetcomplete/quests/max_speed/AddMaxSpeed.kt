@@ -20,6 +20,7 @@ class AddMaxSpeed(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<Ma
          and (access !~ private|no or (foot and foot !~ private|no))
     """
     override val commitMessage = "Add speed limits"
+    override val wikiLink = "Key:maxspeed"
     override val icon = R.drawable.ic_quest_max_speed
     override val hasMarkersAtEnds = true
     override val isSplitWayEnabled = true

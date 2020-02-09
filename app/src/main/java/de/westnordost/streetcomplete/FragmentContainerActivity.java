@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -13,17 +14,29 @@ import android.view.MenuItem;
 
 public class FragmentContainerActivity extends AppCompatActivity
 {
+	public FragmentContainerActivity()
+	{
+		super(R.layout.activity_fragment_container);
+	}
+
+	public FragmentContainerActivity(@LayoutRes int contentLayoutId)
+	{
+		super(contentLayoutId);
+	}
+
 	public static final String EXTRA_FRAGMENT_CLASS = "de.westnordost.streetcomplete.fragment_class";
 
 	@Override protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_fragment_container);
 
 		Toolbar toolbar = findViewById(R.id.toolbar);
-		setSupportActionBar(toolbar);
-		getSupportActionBar().setDisplayShowHomeEnabled(true);
-		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		if (toolbar != null)
+		{
+			setSupportActionBar(toolbar);
+			getSupportActionBar().setDisplayShowHomeEnabled(true);
+			getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		}
 	}
 
 	@Override protected void onPostCreate(@Nullable Bundle savedInstanceState)

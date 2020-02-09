@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/dialogAndBackgroundContainer"
+    android:visibility="invisible"
+    tools:visibility="visible"
+    android:clipToPadding="false"
+    android:clipChildren="false">
+
+    <View
+        android:id="@+id/dialogBackground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/dialog_shadow"
+        />
+
+    <LinearLayout
+        android:id="@+id/dialogContainer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/speech_bubble_none"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintVertical_bias="0.6"
+        app:layout_constraintWidth_max="360dp"
+        android:paddingTop="@dimen/quest_statistics_quest_type_icon_offset"
+        android:paddingStart="@dimen/dialog_horizontal_margin"
+        android:paddingEnd="@dimen/dialog_horizontal_margin"
+        android:paddingBottom="@dimen/dialog_vertical_margin"
+        android:layout_margin="16dp"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:clickable="true"
+        android:focusable="true"
+        android:showDividers="beginning|middle|end"
+        android:divider="@drawable/space_8dp"
+        android:elevation="24dp">
+
+        <TextView
+            android:id="@+id/questTitleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.Title"
+            tools:text="@string/quest_maxheight_title"/>
+
+        <LinearLayout
+            android:id="@+id/solvedQuestsContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="96dp"
+            android:scaleX="1.0"
+            android:scaleY="1.0"
+            android:gravity="center_vertical"
+            android:divider="@drawable/space_4dp"
+            android:showDividers="middle"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_star_48dp"/>
+
+            <TextView
+                android:id="@+id/solvedQuestsText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:maxLines="1"
+                android:textAlignment="gravity"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:textSize="48dp"
+                tools:text="1021" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/wikiLinkButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_open_in_browser_24dp"
+            android:drawablePadding="8dp"
+            android:text="@string/user_statistics_quest_wiki_link"
+            android:textColor="@color/accent"/>
+
+    </LinearLayout>
+
+    <Space
+        android:id="@+id/spacer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/dialogContainer"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginBottom="@dimen/quest_statistics_quest_type_icon_offset"
+        />
+
+    <ImageView
+        android:id="@+id/questIconView"
+        android:layout_width="@dimen/quest_statistics_quest_type_icon_size"
+        android:layout_height="@dimen/quest_statistics_quest_type_icon_size"
+        app:layout_constraintTop_toBottomOf="@+id/spacer"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:src="@drawable/ic_quest_max_height"
+        android:textAlignment="center"
+        android:transitionName="QuestIcon"
+        android:elevation="24dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

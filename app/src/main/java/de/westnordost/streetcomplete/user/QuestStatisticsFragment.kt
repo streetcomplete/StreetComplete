@@ -18,13 +18,13 @@ import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.FrameLayout
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
+import de.westnordost.streetcomplete.BackPressedListener
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.QuestType
 import de.westnordost.streetcomplete.data.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.user.QuestStatisticsDao
 import de.westnordost.streetcomplete.ktx.awaitLayout
-import de.westnordost.streetcomplete.ktx.toast
 import kotlinx.android.synthetic.main.fragment_quest_statistics.*
 import kotlinx.coroutines.*
 import org.jbox2d.collision.shapes.ChainShape
@@ -41,9 +41,10 @@ import kotlin.math.sqrt
 
 
 class QuestStatisticsFragment :
-        Fragment(R.layout.fragment_quest_statistics),
-        CoroutineScope by CoroutineScope(Dispatchers.Main),
-        SensorEventListener
+    Fragment(R.layout.fragment_quest_statistics),
+    CoroutineScope by CoroutineScope(Dispatchers.Main),
+    SensorEventListener,
+    BackPressedListener
 {
     @Inject internal lateinit var questStatisticsDao: QuestStatisticsDao
     @Inject internal lateinit var questTypeRegistry: QuestTypeRegistry
@@ -51,6 +52,8 @@ class QuestStatisticsFragment :
     private val mainHandler = Handler(Looper.getMainLooper())
     private val physicsController: PhysicsWorldController
 
+    private val detailsFragment: QuestTypeInfoFragment?
+        get() = childFragmentManager.findFragmentById(R.id.detailsFragment) as QuestTypeInfoFragment
 
     private val questBodyDef: BodyDef
 
@@ -70,6 +73,7 @@ class QuestStatisticsFragment :
 
         questBodyDef = BodyDef()
         questBodyDef.type = BodyType.DYNAMIC
+        questBodyDef.fixedRotation = false
     }
 
     /* --------------------------------------- Lifecycle ---------------------------------------- */
@@ -91,7 +95,7 @@ class QuestStatisticsFragment :
         }
 
         physicsView.alpha = 0f
-        physicsView.animate().alpha(1f).setDuration(3000L).setStartDelay(1000L).start()
+        physicsView.animate().alpha(1f).setDuration(2000L).setStartDelay(600L).start()
 
         launch {
             withContext(Dispatchers.IO) {
@@ -128,6 +132,15 @@ class QuestStatisticsFragment :
         super.onPause()
         sensorManager.unregisterListener(this)
         physicsController.pause()
+    }
+
+    override fun onBackPressed(): Boolean {
+        val detailsFragment = detailsFragment
+        if (detailsFragment != null && detailsFragment.isShowing) {
+            detailsFragment.dismiss()
+            return true
+        }
+        return false
     }
 
     override fun onDestroy() {
@@ -223,8 +236,9 @@ class QuestStatisticsFragment :
 
     /* ---------------------------- Interaction with quest bubbles  ----------------------------- */
 
-    private fun onClickedQuestType(view: View, questType: QuestType<*>) {
-        context?.toast("clicked!")
+    private fun onClickedQuestType(questBubbleView: View, questType: QuestType<*>) {
+        val detailsFragment = detailsFragment ?: return
+        detailsFragment.show(questBubbleView, questType, solvedQuestsByQuestType.getValue(questType))
     }
 
     private fun onFlingQuestType(body: Body, velocityX: Float, velocityY: Float) {
@@ -251,8 +265,6 @@ class QuestStatisticsFragment :
             else -> Vec2(-x,-y)
         }
     }
-
-    /* -------------------------------- Touch gesture listener ---------------------------------- */
 
     companion object {
         private const val ONE_QUEST_SIZE_IN_M2 = 0.01f

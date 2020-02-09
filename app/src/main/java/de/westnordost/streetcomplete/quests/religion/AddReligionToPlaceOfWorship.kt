@@ -17,6 +17,7 @@ class AddReligionToPlaceOfWorship(o: OverpassMapDataAndGeometryDao) : SimpleOver
         and !religion
     """
     override val commitMessage = "Add religion for place of worship"
+    override val wikiLink = "Key:religion"
     override val icon = R.drawable.ic_quest_religion
 
     override fun getTitle(tags: Map<String, String>): Int {

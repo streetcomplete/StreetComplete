@@ -14,6 +14,7 @@ class AddBuildingLevels(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestT
          and !man_made and location != underground and ruins != yes
     """
     override val commitMessage = "Add building and roof levels"
+    override val wikiLink = "Key:building:levels"
     override val icon = R.drawable.ic_quest_building_levels
 
     override fun getTitle(tags: Map<String, String>) =

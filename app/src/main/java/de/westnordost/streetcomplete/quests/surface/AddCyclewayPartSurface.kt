@@ -18,6 +18,7 @@ class AddCyclewayPartSurface(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQ
         and !cycleway:surface and !surface:cycleway
     """
     override val commitMessage = "Add path surfaces"
+    override val wikiLink = "Key:surface"
     override val icon = R.drawable.ic_quest_bicycleway_surface
     override val isSplitWayEnabled = true
 

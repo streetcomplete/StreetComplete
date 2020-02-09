@@ -9,6 +9,7 @@ class AddFireHydrantType(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuest
 
     override val tagFilters = "nodes with emergency = fire_hydrant and !fire_hydrant:type"
     override val commitMessage = "Add fire hydrant type"
+    override val wikiLink = "Tag:emergency=fire_hydrant"
     override val icon = R.drawable.ic_quest_fire_hydrant
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_fireHydrant_type_title

@@ -13,4 +13,9 @@
     <!-- Tables -->
     <dimen name="table_icon_size">48dp</dimen>
 
+    <!-- user screen -->
+
+    <dimen name="quest_statistics_quest_type_icon_size">112dp</dimen>
+    <dimen name="quest_statistics_quest_type_icon_offset">56dp</dimen>
+
 </resources>

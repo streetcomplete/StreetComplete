@@ -9,6 +9,7 @@ class AddPowerPolesMaterial(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQu
 
     override val tagFilters = "nodes with power = pole and !material"
     override val commitMessage = "Add powerpoles material type"
+    override val wikiLink = "Tag:power=pole"
     override val icon = R.drawable.ic_quest_power
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_powerPolesMaterial_title

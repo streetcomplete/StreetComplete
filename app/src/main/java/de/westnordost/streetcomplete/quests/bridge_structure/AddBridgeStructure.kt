@@ -10,6 +10,7 @@ class AddBridgeStructure(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuest
     override val tagFilters = "ways with man_made = bridge and !bridge:structure and !bridge:movable"
     override val icon = R.drawable.ic_quest_bridge
     override val commitMessage = "Add bridge structures"
+    override val wikiLink = "Key:bridge:structure"
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_bridge_structure_title
 

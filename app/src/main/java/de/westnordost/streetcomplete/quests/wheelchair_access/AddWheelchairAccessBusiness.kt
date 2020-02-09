@@ -79,6 +79,7 @@ class AddWheelchairAccessBusiness(o: OverpassMapDataAndGeometryDao) : SimpleOver
         "\n) and !wheelchair and name"
 
     override val commitMessage = "Add wheelchair access"
+    override val wikiLink = "Key:wheelchair"
     override val icon = R.drawable.ic_quest_wheelchair_shop
     override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
 

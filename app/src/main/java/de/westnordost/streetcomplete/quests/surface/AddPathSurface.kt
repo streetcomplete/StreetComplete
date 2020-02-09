@@ -15,6 +15,7 @@ class AddPathSurface(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType
         and access !~ private|no
     """
     override val commitMessage = "Add path surfaces"
+    override val wikiLink = "Key:surface"
     override val icon = R.drawable.ic_quest_way_surface
     override val isSplitWayEnabled = true
 

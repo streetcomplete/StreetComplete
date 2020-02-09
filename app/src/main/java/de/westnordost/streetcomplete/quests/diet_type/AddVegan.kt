@@ -16,6 +16,7 @@ class AddVegan(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<Strin
         and name and !diet:vegan
     """
     override val commitMessage = "Add vegan diet type"
+    override val wikiLink = "Key:diet"
     override val icon = R.drawable.ic_quest_restaurant_vegan
     override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
 

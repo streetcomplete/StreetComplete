@@ -18,6 +18,7 @@ class AddBusStopShelter(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestT
         and !shelter and !covered
     """
     override val commitMessage = "Add bus stop shelter"
+    override val wikiLink = "Key:shelter"
     override val icon = R.drawable.ic_quest_bus_stop_shelter
 
     override fun getTitle(tags: Map<String, String>): Int {

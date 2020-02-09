@@ -14,6 +14,7 @@ class DetermineRecyclingGlass(overpassServer: OverpassMapDataAndGeometryDao) :
          and recycling:glass = yes and !recycling:glass_bottles
     """
     override val commitMessage = "Determine whether any glass or just glass bottles can be recycled here"
+    override val wikiLink = "Key:recycling"
     override val icon = R.drawable.ic_quest_recycling_glass
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_recycling_glass_title

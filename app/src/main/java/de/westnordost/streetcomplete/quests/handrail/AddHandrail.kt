@@ -34,6 +34,7 @@ class AddHandrail(overpassServer: OverpassMapDataAndGeometryDao) : SimpleOverpas
          and !handrail and !handrail:left and !handrail:center and !handrail:right
     """
     override val commitMessage = "Add whether steps have a handrail"
+    override val wikiLink = "Key:handrail"
 
     override val icon = R.drawable.ic_quest_handrail
 

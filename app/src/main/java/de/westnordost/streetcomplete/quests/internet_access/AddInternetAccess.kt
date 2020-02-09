@@ -16,6 +16,7 @@ class AddInternetAccess(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestT
         and !internet_access and !wifi and name
     """
     override val commitMessage = "Add internet access"
+    override val wikiLink = "Key:internet_access"
     override val icon = R.drawable.ic_quest_wifi
     override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
 

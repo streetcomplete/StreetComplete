@@ -11,6 +11,7 @@ class AddTrafficSignalsButton(o: OverpassMapDataAndGeometryDao) : SimpleOverpass
     override val tagFilters =
         "nodes with highway = crossing and crossing = traffic_signals and !button_operated"
     override val commitMessage = "add whether traffic signals have a button for pedestrians"
+    override val wikiLink = "Tag:highway=traffic_signals"
     override val icon = R.drawable.ic_quest_traffic_lights
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_traffic_signals_button_title

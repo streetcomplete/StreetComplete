@@ -12,6 +12,7 @@ import de.westnordost.streetcomplete.data.osm.tql.toGlobalOverpassBBox
 
 class AddRailwayCrossingBarrier(private val overpassMapDataDao: OverpassMapDataAndGeometryDao) : OsmElementQuestType<String> {
     override val commitMessage = "Add type of barrier for railway crossing"
+    override val wikiLink = "Key:crossing:barrier"
     override val icon = R.drawable.ic_quest_railway
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_railway_crossing_barrier_title

@@ -35,4 +35,9 @@
 
     <dimen name="rounded_selection_radius">10dp</dimen>
 
+    <!-- user screen -->
+
+    <dimen name="quest_statistics_quest_type_icon_size">192dp</dimen>
+    <dimen name="quest_statistics_quest_type_icon_offset">96dp</dimen>
+
 </resources>

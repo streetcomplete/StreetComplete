@@ -10,6 +10,7 @@ class AddToiletsFee(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<
 
     override val tagFilters = "nodes, ways with amenity = toilets and access !~ private|customers and !fee"
     override val commitMessage = "Add toilets fee"
+    override val wikiLink = "Key:fee"
     override val icon = R.drawable.ic_quest_toilet_fee
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_toiletsFee_title

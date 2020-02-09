@@ -15,6 +15,7 @@ class AddMotorcycleParkingCover(o: OverpassMapDataAndGeometryDao) : SimpleOverpa
         and motorcycle_parking !~ shed|garage_boxes|building
     """
     override val commitMessage = "Add motorcycle parkings cover"
+    override val wikiLink = "Tag:amenity=motorcycle_parking"
     override val icon = R.drawable.ic_quest_motorcycle_parking_cover
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_motorcycleParkingCoveredStatus_title

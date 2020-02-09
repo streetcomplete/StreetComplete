@@ -33,6 +33,7 @@ class AddMaxHeight(private val overpassServer: OverpassMapDataAndGeometryDao) : 
     """)}
 
     override val commitMessage = "Add maximum heights"
+    override val wikiLink = "Key:maxheight"
     override val icon = R.drawable.ic_quest_max_height
 
     override fun getTitle(tags: Map<String, String>): Int {

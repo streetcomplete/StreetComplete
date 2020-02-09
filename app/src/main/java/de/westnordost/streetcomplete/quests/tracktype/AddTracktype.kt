@@ -12,6 +12,7 @@ class AddTracktype(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<S
         and (access !~ private|no or (foot and foot !~ private|no))
     """
     override val commitMessage = "Add tracktype"
+    override val wikiLink = "Key:tracktype"
     override val icon = R.drawable.ic_quest_tractor
     override val isSplitWayEnabled = true
 

@@ -9,6 +9,7 @@ class AddParkingType(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType
 
     override val tagFilters = "nodes, ways, relations with amenity = parking and !parking"
     override val commitMessage = "Add parking type"
+    override val wikiLink = "Tag:amenity=parking"
     override val icon = R.drawable.ic_quest_parking
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_parkingType_title

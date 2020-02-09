@@ -17,6 +17,7 @@ import de.westnordost.streetcomplete.quests.bikeway.Cycleway.*
 class AddCycleway(private val overpassServer: OverpassMapDataAndGeometryDao) : OsmElementQuestType<CyclewayAnswer> {
 
     override val commitMessage = "Add whether there are cycleways"
+    override val wikiLink = "Key:cycleway"
     override val icon = R.drawable.ic_quest_bicycleway
 
     // See overview here: https://ent8r.github.io/blacklistr/?streetcomplete=bikeway/AddCycleway.kt

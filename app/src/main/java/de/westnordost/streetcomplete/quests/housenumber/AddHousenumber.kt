@@ -20,6 +20,7 @@ import de.westnordost.streetcomplete.util.isInMultipolygon
 class AddHousenumber(private val overpass: OverpassMapDataAndGeometryDao) : OsmElementQuestType<HousenumberAnswer> {
 
     override val commitMessage = "Add housenumbers"
+    override val wikiLink = "Key:addr"
     override val icon = R.drawable.ic_quest_housenumber
 
     // See overview here: https://ent8r.github.io/blacklistr/?streetcomplete=housenumber/AddHousenumber.kt

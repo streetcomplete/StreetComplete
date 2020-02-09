@@ -14,6 +14,7 @@ import de.westnordost.streetcomplete.data.osm.tql.toGlobalOverpassBBox
 class AddSidewalk(private val overpassServer: OverpassMapDataAndGeometryDao) : OsmElementQuestType<SidewalkAnswer> {
 
     override val commitMessage = "Add whether there are sidewalks"
+    override val wikiLink = "Key:sidewalk"
     override val icon = R.drawable.ic_quest_sidewalk
     override val isSplitWayEnabled = true
 

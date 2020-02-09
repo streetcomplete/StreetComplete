@@ -18,6 +18,7 @@ class AddBusStopName(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType
     """
 
     override val commitMessage = "Determine bus/tram stop names"
+    override val wikiLink = "Tag:public_transport=platform"
     override val icon = R.drawable.ic_quest_bus_stop_name
 
     override fun getTitle(tags: Map<String, String>) =

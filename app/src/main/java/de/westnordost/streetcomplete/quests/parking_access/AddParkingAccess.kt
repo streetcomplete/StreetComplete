@@ -9,6 +9,7 @@ class AddParkingAccess(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestTy
 
     override val tagFilters = "nodes, ways, relations with amenity=parking and (!access or access=unknown)"
     override val commitMessage = "Add type of parking access"
+    override val wikiLink = "Tag:amenity=parking"
     override val icon = R.drawable.ic_quest_parking_access
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_parking_access_title

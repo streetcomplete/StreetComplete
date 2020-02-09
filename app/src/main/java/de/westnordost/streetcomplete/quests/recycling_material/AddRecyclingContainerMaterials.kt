@@ -15,6 +15,7 @@ class AddRecyclingContainerMaterials(
     : OsmElementQuestType<List<String>> {
 
     override val commitMessage = "Add recycled materials to container"
+    override val wikiLink = "Key:recycling"
     override val icon = R.drawable.ic_quest_recycling_materials
 
     override fun download(bbox: BoundingBox, handler: (element: Element, geometry: ElementGeometry?) -> Unit): Boolean {
@@ -43,7 +44,7 @@ class AddRecyclingContainerMaterials(
         for (accepted in answer) {
             changes.add(accepted, "yes")
         }
-        // if the user chosse deliberately not "all plastic", be explicit about it
+        // if the user chose deliberately not "all plastic", be explicit about it
         if (answer.contains("recycling:plastic_packaging")) {
             changes.add("recycling:plastic", "no")
         }

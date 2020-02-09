@@ -17,6 +17,8 @@
 
     <color name="greyed_out">#66999999</color>
 
+    <color name="dialog_shadow">#99000000</color>
+
     <color name="divider">#66999999</color>
 
     <color name="traffic_red">#C1121C</color>

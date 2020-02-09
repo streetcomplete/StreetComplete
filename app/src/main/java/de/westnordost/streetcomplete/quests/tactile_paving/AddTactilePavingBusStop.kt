@@ -18,6 +18,7 @@ class AddTactilePavingBusStop(o: OverpassMapDataAndGeometryDao) : SimpleOverpass
         and !tactile_paving
     """
     override val commitMessage = "Add tactile pavings on bus stops"
+    override val wikiLink = "Key:tactile_paving"
     override val icon = R.drawable.ic_quest_blind_bus
 
     // See overview here: https://ent8r.github.io/blacklistr/?streetcomplete=tactile_paving/AddTactilePavinBusStop.kt

@@ -10,6 +10,7 @@ class AddWheelchairAccessToiletsPart(o: OverpassMapDataAndGeometryDao) : SimpleO
         nodes, ways, relations with name and toilets = yes and !toilets:wheelchair
     """
     override val commitMessage = "Add wheelchair access to toilets"
+    override val wikiLink = "Key:toilets:wheelchair"
     override val icon = R.drawable.ic_quest_toilets_wheelchair
     override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
 

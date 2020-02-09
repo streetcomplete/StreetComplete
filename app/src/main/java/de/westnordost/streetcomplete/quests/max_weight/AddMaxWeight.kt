@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.osm.AllCountriesExcept
 class AddMaxWeight(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<MaxWeightAnswer>(o) {
 
     override val commitMessage = "Add maximum allowed weight"
+    override val wikiLink = "Key:maxweight"
     override val icon = R.drawable.ic_quest_max_weight
     override val hasMarkersAtEnds = true
 

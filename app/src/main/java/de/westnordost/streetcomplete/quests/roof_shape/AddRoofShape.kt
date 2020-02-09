@@ -12,6 +12,7 @@ class AddRoofShape(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<S
         and roof:levels != 0 and !roof:shape and !3dr:type and !3dr:roof
     """
     override val commitMessage = "Add roof shapes"
+    override val wikiLink = "Key:roof:shape"
     override val icon = R.drawable.ic_quest_roof_shape
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_roofShape_title

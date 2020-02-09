@@ -20,6 +20,7 @@ class AddSport(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<List<
         and (access !~ private|no)
     """
     override val commitMessage = "Add pitches sport"
+    override val wikiLink = "Key:sport"
     override val icon = R.drawable.ic_quest_sport
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_sport_title

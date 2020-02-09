@@ -16,6 +16,7 @@ class AddGeneralFee(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<
          and name
     """
     override val commitMessage = "Add fee info"
+    override val wikiLink = "Key:fee"
     override val icon = R.drawable.ic_quest_fee
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_generalFee_title
