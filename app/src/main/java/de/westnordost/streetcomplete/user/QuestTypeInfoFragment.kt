@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewPropertyAnimator
+import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import android.view.animation.OvershootInterpolator
@@ -80,7 +81,7 @@ class QuestTypeInfoFragment : Fragment(R.layout.fragment_quest_type_info) {
         anim.duration = (questCount * 150.0).pow(0.75).toLong()
         anim.addUpdateListener { solvedQuestsText?.text = it.animatedValue.toString() }
         anim.interpolator = DecelerateInterpolator()
-        anim.startDelay = ANIMATION_TIME_MS
+        anim.startDelay = ANIMATION_TIME_IN_MS
         anim.start()
         counterAnimation = anim
     }
@@ -105,7 +106,7 @@ class QuestTypeInfoFragment : Fragment(R.layout.fragment_quest_type_info) {
                     dialogBackground.alpha = 0f
                 }
                 .alpha(1f)
-                .setDuration(ANIMATION_TIME_MS)
+                .setDuration(ANIMATION_TIME_IN_MS)
                 .setInterpolator(DecelerateInterpolator()),
             dialogContainer.animate()
                 .withStartAction {
@@ -116,10 +117,10 @@ class QuestTypeInfoFragment : Fragment(R.layout.fragment_quest_type_info) {
                 }
                 .alpha(1f)
                 .scaleX(1f).scaleY(1f)
-                .setDuration(ANIMATION_TIME_MS)
+                .setDuration(ANIMATION_TIME_IN_MS)
                 .setInterpolator(OvershootInterpolator()),
             questIconView.animateFrom(questBubbleView, root)
-                .setDuration(ANIMATION_TIME_MS)
+                .setDuration(ANIMATION_TIME_IN_MS)
                 .setInterpolator(OvershootInterpolator())
         ))
         currentAnimators.forEach { it.start() }
@@ -132,17 +133,17 @@ class QuestTypeInfoFragment : Fragment(R.layout.fragment_quest_type_info) {
         currentAnimators.addAll(listOf(
             dialogBackground.animate()
                 .alpha(0f)
-                .setDuration(ANIMATION_TIME_MS)
+                .setDuration(ANIMATION_TIME_OUT_MS)
                 .setInterpolator(AccelerateInterpolator()),
             dialogContainer.animate()
                 .alpha(0f)
                 .scaleX(0.5f).scaleY(0.5f)
                 .translationYBy(dialogContainer.height * 0.2f)
-                .setDuration(ANIMATION_TIME_MS)
+                .setDuration(ANIMATION_TIME_OUT_MS)
                 .setInterpolator(AccelerateInterpolator()),
             questIconView.animateTo(questBubbleView, root)
-                .setDuration(ANIMATION_TIME_MS)
-                .setInterpolator(AccelerateInterpolator())
+                .setDuration(ANIMATION_TIME_OUT_MS)
+                .setInterpolator(AccelerateDecelerateInterpolator())
                 .withEndAction {
                     dialogAndBackgroundContainer.visibility = View.INVISIBLE
                     questBubbleView.visibility = View.VISIBLE
@@ -174,6 +175,7 @@ class QuestTypeInfoFragment : Fragment(R.layout.fragment_quest_type_info) {
     }
 
     companion object {
-        const val ANIMATION_TIME_MS = 500L
+        const val ANIMATION_TIME_IN_MS = 500L
+        const val ANIMATION_TIME_OUT_MS = 300L
     }
 }
