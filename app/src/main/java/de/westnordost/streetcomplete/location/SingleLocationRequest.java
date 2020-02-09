@@ -18,6 +18,8 @@ public class SingleLocationRequest implements LocationListener, LostApiClient.Co
 	private int priority;
 	private Callback listener;
 
+	private final Handler mainHandler = new Handler(Looper.getMainLooper());
+
 	public interface Callback
 	{
 		void onLocation(Location location);
@@ -39,7 +41,7 @@ public class SingleLocationRequest implements LocationListener, LostApiClient.Co
 
 	public void stopRequest()
 	{
-		new Handler(Looper.getMainLooper()).post(() ->
+		mainHandler.post(() ->
 		{
 			if(lostApiClient.isConnected())
 			{
@@ -58,7 +60,7 @@ public class SingleLocationRequest implements LocationListener, LostApiClient.Co
 
 	@Override public void onLocationChanged(Location location)
 	{
-		listener.onLocation(location);
+		mainHandler.post(() -> { listener.onLocation(location); });
 		stopRequest();
 	}
 
