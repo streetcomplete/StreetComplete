@@ -422,8 +422,7 @@ class MainFragment : Fragment(R.layout.fragment_map_with_controls),
 
     private fun composeNote() {
         val mapFragment = mapFragment ?: return
-        // TODO #1589, see https://github.com/tangrams/tangram-es/issues/2143 reenable when fixed
-        //mapFragment.show3DBuildings = false
+        mapFragment.show3DBuildings = false
         focusOnCurrentLocationIfInView()
         freezeMap()
         showInBottomSheet(CreateNoteFragment())
@@ -538,8 +537,7 @@ class MainFragment : Fragment(R.layout.fragment_map_with_controls),
         mapFragment.isCompassMode = wasCompassMode
         mapFragment.endFocusQuest()
         showMapControls()
-        // TODO #1589, see https://github.com/tangrams/tangram-es/issues/2143 reenable when fixed
-        //mapFragment.show3DBuildings = true
+        mapFragment.show3DBuildings = true
         mapFragment.isShowingQuestPins = true
     }
 

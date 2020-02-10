@@ -16,10 +16,12 @@ import androidx.fragment.app.Fragment
 import androidx.preference.PreferenceManager
 import com.mapzen.tangram.*
 import com.mapzen.tangram.TouchInput.*
+import com.mapzen.tangram.networking.DefaultHttpHandler
 import com.mapzen.tangram.networking.HttpHandler
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.map.data.OsmLatLon
+import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.BuildConfig.MAPZEN_API_KEY
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
@@ -31,8 +33,11 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
+import okhttp3.*
+import okhttp3.internal.Version
 import java.io.File
 import java.util.*
+import java.util.concurrent.TimeUnit
 import kotlin.Exception
 
 /** Manages a map that remembers its last location*/
@@ -176,8 +181,32 @@ open class MapFragment : Fragment(),
         val cacheSize = PreferenceManager.getDefaultSharedPreferences(context).getInt(Prefs.MAP_TILECACHE_IN_MB, 50)
         val cacheDir = context!!.externalCacheDir
         val tileCacheDir: File?
-        tileCacheDir = cacheDir?.let { File(cacheDir, "tile_cache") }
-        return CachingHttpHandler(MAPZEN_API_KEY, tileCacheDir, (cacheSize * 1024L * 1024L))
+        if (cacheDir != null) {
+            tileCacheDir = File(cacheDir, "tile_cache")
+            if (!tileCacheDir.exists()) tileCacheDir.mkdir()
+        } else {
+            tileCacheDir = null
+        }
+
+        return object : DefaultHttpHandler() {
+
+            val cacheControl = CacheControl.Builder().maxStale(7, TimeUnit.DAYS).build()
+
+            override fun configureClient(builder: OkHttpClient.Builder) {
+                if (tileCacheDir?.exists() == true) {
+                    builder.cache(Cache(tileCacheDir, cacheSize * 1024L * 1024L))
+                }
+            }
+
+            override fun configureRequest(url: HttpUrl, builder: Request.Builder) {
+                if (MAPZEN_API_KEY != null)
+                    builder.url(url.newBuilder().addQueryParameter("api_key", MAPZEN_API_KEY).build())
+
+                builder
+                    .cacheControl(cacheControl)
+                    .header("User-Agent", ApplicationConstants.USER_AGENT + " / " + Version.userAgent())
+            }
+        }
     }
 
     /* ----------------------------- Overrideable map callbacks --------------------------------- */
