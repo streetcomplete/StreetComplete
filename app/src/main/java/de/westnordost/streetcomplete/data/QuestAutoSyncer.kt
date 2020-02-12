@@ -1,21 +1,18 @@
 package de.westnordost.streetcomplete.data
 
+import android.annotation.SuppressLint
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.content.SharedPreferences
 import android.location.Location
+import android.location.LocationManager
 import android.net.ConnectivityManager
 import android.util.Log
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
-
-import com.mapzen.android.lost.api.LocationListener
-import com.mapzen.android.lost.api.LocationRequest
-import com.mapzen.android.lost.api.LocationServices
-import com.mapzen.android.lost.api.LostApiClient
 
 import javax.inject.Inject
 
@@ -24,6 +21,8 @@ import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.download.MobileDataAutoDownloadStrategy
 import de.westnordost.streetcomplete.data.download.WifiAutoDownloadStrategy
+import de.westnordost.streetcomplete.location.FineLocationManager
+import de.westnordost.streetcomplete.location.LocationUpdateListener
 import de.westnordost.streetcomplete.oauth.OAuthPrefs
 import kotlinx.coroutines.*
 
@@ -38,12 +37,17 @@ class QuestAutoSyncer @Inject constructor(
     private val context: Context,
     private val prefs: SharedPreferences,
     private val oAuth: OAuthPrefs
-) : LocationListener, VisibleQuestListener, LifecycleObserver, CoroutineScope by CoroutineScope(Dispatchers.Default) {
+) : LocationUpdateListener, VisibleQuestListener, LifecycleObserver, CoroutineScope by CoroutineScope(Dispatchers.Default) {
 
     private var pos: LatLon? = null
 
     private var isConnected: Boolean = false
     private var isWifi: Boolean = false
+
+    private val locationManager = FineLocationManager(
+        context.getSystemService(Context.LOCATION_SERVICE) as LocationManager,
+        this::onLocationChanged
+    )
 
     private val connectivityReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
@@ -57,21 +61,6 @@ class QuestAutoSyncer @Inject constructor(
         }
     }
 
-    private val connectionCallbacks = object : LostApiClient.ConnectionCallbacks {
-        override fun onConnected() {
-            val request = LocationRequest.create()
-                .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
-                .setSmallestDisplacement(500f)
-                .setInterval((3 * 60 * 1000).toLong()) // 3 minutes
-
-            LocationServices.FusedLocationApi.requestLocationUpdates(lostApiClient, request, this@QuestAutoSyncer)
-        }
-
-        override fun onConnectionSuspended() {}
-    }
-
-    private val lostApiClient: LostApiClient = LostApiClient.Builder(context).addConnectionCallbacks(connectionCallbacks).build()
-
     val isAllowedByPreference: Boolean
         get() {
             val p = Prefs.Autosync.valueOf(prefs.getString(Prefs.AUTOSYNC, "ON")!!)
@@ -79,7 +68,6 @@ class QuestAutoSyncer @Inject constructor(
         }
 
     /* ---------------------------------------- Lifecycle --------------------------------------- */
-
 
     @OnLifecycleEvent(Lifecycle.Event.ON_RESUME) fun onResume() {
         updateConnectionState()
@@ -97,15 +85,13 @@ class QuestAutoSyncer @Inject constructor(
         coroutineContext.cancel()
     }
 
+    @SuppressLint("MissingPermission")
     fun startPositionTracking() {
-        if (!lostApiClient.isConnected) lostApiClient.connect()
+        locationManager.requestUpdates(3 * 60 * 1000L, 500f)
     }
 
     fun stopPositionTracking() {
-        if (lostApiClient.isConnected) {
-            LocationServices.FusedLocationApi.removeLocationUpdates(lostApiClient, this)
-        }
-        lostApiClient.disconnect()
+        locationManager.removeUpdates()
     }
 
     /* ---------------------------------- VisibleQuestListener ---------------------------------- */
@@ -117,7 +103,7 @@ class QuestAutoSyncer @Inject constructor(
         triggerAutoDownload()
     }
 
-    /* ------------------------------------ LocationListener ------------------------------------ */
+    /* --------------------------------- LocationUpdateListener --------------------------------- */
 
     override fun onLocationChanged(location: Location?) {
         if(location == null) return

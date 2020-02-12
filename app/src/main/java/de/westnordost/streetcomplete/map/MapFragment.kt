@@ -117,8 +117,9 @@ open class MapFragment : Fragment(),
     /* ------------------------------------------- Map  ----------------------------------------- */
 
     private suspend fun initMap() {
-        val ctrl = mapView.initMap(createHttpHandler())!!
+        val ctrl = mapView.initMap(createHttpHandler())
         controller = ctrl
+        if (ctrl == null) return
         registerResponders()
         onMapControllerReady()
         restoreMapState()
