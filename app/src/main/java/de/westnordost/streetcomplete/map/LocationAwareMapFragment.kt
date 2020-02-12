@@ -6,6 +6,7 @@ import android.content.Context
 import android.graphics.PointF
 import android.hardware.SensorManager
 import android.location.Location
+import android.view.animation.DecelerateInterpolator
 import android.location.LocationManager
 import android.view.WindowManager
 import androidx.core.content.edit
@@ -55,11 +56,14 @@ open class LocationAwareMapFragment : MapFragment() {
     private var zoomedYet = false
 
     /** Whether the view should automatically rotate with the compass (like during navigation) */
+    // Since the with-compass rotation happens with no animation, it's better to start the tilt
+    // animation abruptly and slide out, rather than sliding in and out (the default interpolator)
+    private val interpolator = DecelerateInterpolator()
     var isCompassMode: Boolean = false
         set(value) {
             field = value
             if (value) {
-                controller?.updateCameraPosition { tilt = PI.toFloat() / 5f }
+                controller?.updateCameraPosition(300, interpolator) { tilt = PI.toFloat() / 5f }
             }
         }
 
