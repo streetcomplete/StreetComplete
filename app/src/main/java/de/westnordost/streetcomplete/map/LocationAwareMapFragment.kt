@@ -109,13 +109,9 @@ open class LocationAwareMapFragment : MapFragment() {
 
     /* ---------------------------------- Map State Callbacks ----------------------------------- */
 
-    override fun onMapControllerReady() {
-        super.onMapControllerReady()
+    override fun onMapReady() {
+        super.onMapReady()
         restoreMapState()
-    }
-
-    override fun onSceneReady() {
-        super.onSceneReady()
         initMarkers()
         followPosition()
         showLocation()

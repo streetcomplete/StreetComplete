@@ -52,7 +52,6 @@ import de.westnordost.streetcomplete.quests.*
 import kotlinx.android.synthetic.main.fragment_map_with_controls.*
 import javax.inject.Inject
 import kotlin.math.max
-import kotlin.math.absoluteValue
 import kotlin.math.PI
 
 /** Contains the quests map and the controls for it. */

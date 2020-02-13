@@ -4,6 +4,10 @@ import android.graphics.Point
 import android.view.View
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
+import androidx.core.view.doOnLayout
+import androidx.core.view.doOnPreDraw
+import kotlin.coroutines.resume
+import kotlin.coroutines.suspendCoroutine
 
 fun View.popIn() {
     visibility = View.VISIBLE
@@ -21,6 +25,9 @@ fun View.popOut() {
         .setInterpolator(AccelerateInterpolator())
         .withEndAction { visibility = View.GONE }
 }
+
+suspend fun View.awaitLayout() = suspendCoroutine<Unit> { cont -> doOnLayout { cont.resume(Unit) }}
+suspend fun View.awaitPreDraw() = suspendCoroutine<Unit> { cont -> doOnPreDraw { cont.resume(Unit) }}
 
 fun View.getLocationInWindow(): Point {
     val mapPosition = IntArray(2)
