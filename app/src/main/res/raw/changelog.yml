@@ -1,3 +1,6 @@
+v17.2: |
+  <p>Fix: App should not require a GPS sensor (most tablets do not have one)</p>
+
 v17.1: |
   <h3>Fixes</h3>
   <ul>
