@@ -86,12 +86,20 @@ import de.westnordost.streetcomplete.util.GeoLocation;
 import de.westnordost.streetcomplete.util.GeoUriKt;
 import de.westnordost.streetcomplete.util.SlippyMapMath;
 import de.westnordost.streetcomplete.util.SphericalEarthMathKt;
+import kotlin.Unit;
+import kotlin.coroutines.Continuation;
+import kotlin.coroutines.CoroutineContext;
+import kotlinx.coroutines.CoroutineScope;
+import kotlinx.coroutines.CoroutineScopeKt;
+import kotlinx.coroutines.Dispatchers;
+import kotlinx.coroutines.DispatchersKt;
+import kotlinx.coroutines.JobKt;
 
 
 import static de.westnordost.streetcomplete.ApplicationConstants.LAST_VERSION_WITHOUT_CHANGELOG;
 import static de.westnordost.streetcomplete.ApplicationConstants.MANUAL_DOWNLOAD_QUEST_TYPE_COUNT;
 
-public class MainActivity extends AppCompatActivity implements  MainFragment.Listener
+public class MainActivity extends AppCompatActivity implements  MainFragment.Listener, CoroutineScope
 {
 	@Inject CrashReportExceptionHandler crashReportExceptionHandler;
 
@@ -123,6 +131,7 @@ public class MainActivity extends AppCompatActivity implements  MainFragment.Lis
 	private View unsyncedChangesContainer;
 	private MenuItem btnUndo;
 
+	private CoroutineScope coroutineScope = CoroutineScopeKt.CoroutineScope(Dispatchers.getMain());
 
 	private boolean downloadServiceIsBound;
 	private QuestDownloadService.Interface downloadService;
@@ -173,6 +182,11 @@ public class MainActivity extends AppCompatActivity implements  MainFragment.Lis
 		}
 	};
 
+	@NotNull @Override public CoroutineContext getCoroutineContext()
+	{
+		return coroutineScope.getCoroutineContext();
+	}
+
 	@Override protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
@@ -194,8 +208,6 @@ public class MainActivity extends AppCompatActivity implements  MainFragment.Lis
 		{
 			getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 		}
-
-		getLifecycle().addObserver(questController);
 
 		getSupportFragmentManager().beginTransaction()
 			.add(locationRequestFragment, LocationRequestFragment.class.getSimpleName())
@@ -233,7 +245,11 @@ public class MainActivity extends AppCompatActivity implements  MainFragment.Lis
 
 		if(savedInstanceState == null)
 		{
-			questController.deleteOld();
+			questController.deleteOld(new Continuation<Unit>()
+			{
+				@NotNull @Override public CoroutineContext getContext() { return coroutineScope.getCoroutineContext(); }
+				@Override public void resumeWith(@NotNull Object o){ }
+			});
 		}
 
 		handleGeoUri();
@@ -357,6 +373,12 @@ public class MainActivity extends AppCompatActivity implements  MainFragment.Lis
 		{
 			uploadService.setProgressListener(null);
 		}
+	}
+
+	@Override public void onDestroy()
+	{
+		super.onDestroy();
+		JobKt.cancel(coroutineScope.getCoroutineContext(), null);
 	}
 
 	@Override public void onConfigurationChanged(@NonNull Configuration newConfig) {

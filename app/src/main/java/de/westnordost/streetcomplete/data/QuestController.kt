@@ -38,10 +38,8 @@ import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 
 import android.content.Context.BIND_AUTO_CREATE
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleObserver
-import androidx.lifecycle.OnLifecycleEvent
-import kotlinx.coroutines.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import java.util.concurrent.CopyOnWriteArrayList
 import javax.inject.Singleton
 
@@ -56,7 +54,7 @@ import javax.inject.Singleton
     private val prefs: SharedPreferences,
     private val questTypesProvider: OrderedVisibleQuestTypesProvider,
     private val context: Context
-): LifecycleObserver, CoroutineScope by CoroutineScope(Dispatchers.IO) {
+) {
 
     private val listeners: MutableList<VisibleQuestListener> = CopyOnWriteArrayList()
     private val relay = object : VisibleQuestListener {
@@ -109,7 +107,11 @@ import javax.inject.Singleton
     val isDownloadInProgress: Boolean get() =
         downloadService?.isDownloadInProgress == true
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_START) fun onStart() {
+    init {
+        bindServices()
+    }
+
+    fun bindServices() {
         downloadServiceIsBound = context.bindService(
             Intent(context, QuestDownloadService::class.java),
             downloadServiceConnection, BIND_AUTO_CREATE
@@ -120,15 +122,11 @@ import javax.inject.Singleton
         )
     }
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_STOP) fun onStop() {
+    fun unbindServices() {
         if (downloadServiceIsBound) context.unbindService(downloadServiceConnection)
         downloadServiceIsBound = false
         if (uploadServiceIsBound) context.unbindService(uploadServiceConnection)
         uploadServiceIsBound = false
-    }
-
-    @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY) fun onDestroy() {
-        coroutineContext.cancel()
     }
 
     /** Create a note for the given OSM Quest instead of answering it. The quest will turn
@@ -299,8 +297,8 @@ import javax.inject.Singleton
 
     /** Retrieve all visible (=new) quests in the given bounding box from local database
      * asynchronously.  */
-    fun retrieve(bbox: BoundingBox) {
-        launch {
+    suspend fun retrieve(bbox: BoundingBox) {
+        withContext(Dispatchers.IO) {
             val osmQuests = osmQuestDB.getAll(
                 statusIn = listOf(QuestStatus.NEW),
                 bounds = bbox,
@@ -339,8 +337,8 @@ import javax.inject.Singleton
     }
 
     /** Delete old unsolved quests */
-    fun deleteOld() {
-        launch {
+    suspend fun deleteOld() {
+        withContext(Dispatchers.IO) {
             val timestamp = System.currentTimeMillis() - ApplicationConstants.DELETE_UNSOLVED_QUESTS_AFTER
             var deleted = osmQuestDB.deleteAll(
                 statusIn = listOf(QuestStatus.NEW, QuestStatus.HIDDEN),
