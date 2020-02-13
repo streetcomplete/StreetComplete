@@ -1,3 +1,19 @@
+v17.1: |
+  <h3>Fixes</h3>
+  <ul>
+  <li>Fix caching of the background map tiles (#1589, #1727, #1723)</li>
+  <li>Turn off GPS when app is sent to background (#1729)</li>
+  <li>Fix quests vanished when app was stopped and later restarted (#1698)</li>
+  <li>Fix crash when showing the underground building quest in Dutch</li>
+  <li>Fix some more possible crashes</li>
+  </ul>
+  <h3>More</h3>
+  <ul>
+  <li>On tapping the compass button, tilt the map (#1725), by @smichel17</li>
+  <li>Update translations</li>
+  <li>New Language: Malayalam by Muhammed Yaseen, Rajeev R R, Arun Raj, Dharwish and Mujeeb Rahman K</li>
+  </ul>
+
 v17.0: |
   <p>This release includes a major update of the map rendering library (in order to satisfy new
   Google Play guidelines). I took this as an oppurtunity to re-do most of the things that concern
