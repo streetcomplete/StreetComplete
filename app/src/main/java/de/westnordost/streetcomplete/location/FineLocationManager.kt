@@ -13,6 +13,7 @@ class FineLocationManager(private val mgr: LocationManager, private var location
     private var lastLocation: Location? = null
 
     private val deviceHasGPS: Boolean get() = mgr.allProviders.contains(GPS_PROVIDER)
+    private val deviceHasNetworkLocationProvider: Boolean get() = mgr.allProviders.contains(NETWORK_PROVIDER)
 
     private val locationListener = object : LocationUpdateListener {
         override fun onLocationChanged(location: Location) {
@@ -32,14 +33,18 @@ class FineLocationManager(private val mgr: LocationManager, private var location
 
     @RequiresPermission(ACCESS_FINE_LOCATION)
     fun requestUpdates(minTime: Long, minDistance: Float) {
-        if (deviceHasGPS) mgr.requestLocationUpdates(GPS_PROVIDER, minTime, minDistance, locationListener, Looper.getMainLooper())
-        mgr.requestLocationUpdates(NETWORK_PROVIDER, minTime, minDistance, locationListener, Looper.getMainLooper())
+        if (deviceHasGPS)
+            mgr.requestLocationUpdates(GPS_PROVIDER, minTime, minDistance, locationListener, Looper.getMainLooper())
+        if (deviceHasNetworkLocationProvider)
+            mgr.requestLocationUpdates(NETWORK_PROVIDER, minTime, minDistance, locationListener, Looper.getMainLooper())
     }
 
     @RequiresPermission(ACCESS_FINE_LOCATION)
     fun requestSingleUpdate() {
-        if (deviceHasGPS) mgr.requestSingleUpdate(GPS_PROVIDER,  singleLocationListener, Looper.getMainLooper())
-        mgr.requestSingleUpdate(NETWORK_PROVIDER, singleLocationListener, Looper.getMainLooper())
+        if (deviceHasGPS)
+            mgr.requestSingleUpdate(GPS_PROVIDER,  singleLocationListener, Looper.getMainLooper())
+        if (deviceHasNetworkLocationProvider)
+            mgr.requestSingleUpdate(NETWORK_PROVIDER, singleLocationListener, Looper.getMainLooper())
     }
 
     fun removeUpdates() {

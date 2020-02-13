@@ -1,3 +1,6 @@
+v17.3: |
+  <p>Fix: App should not require a network location provider (#1733)</p>
+
 v17.2: |
   <p>Fix: App should not require a GPS sensor (most tablets do not have one)</p>
 
