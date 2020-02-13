@@ -39,7 +39,7 @@
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Geen afkortingen"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_openingHours_name_title">"Wat zijn de openingsuren van %s?"</string>
+    <string name="quest_openingHours_name_title">"Wat zijn de openingstijden van %s?"</string>
     <string name="quest_openingHours_start_time">"openingsuur"</string>
     <string name="quest_openingHours_end_time">"sluitingstijd"</string>
     <string name="quest_openingHours_add_months">"Voeg maanden toe"</string>
@@ -166,7 +166,7 @@ Om de kaart te tonen worden vector tegels van de &lt;a href=\"https://mapzen.com
     <string name="quest_placeName_title">"Wat is de naam van deze plaats?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_sidewalk_title">"Is er een voetpad in deze straat?"</string>
+    <string name="quest_sidewalk_title">"Heeft deze straat een voetpad?"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Waar is deze straat?"</string>
     <string name="quest_cyclewaySurface_title">"Welke wegbeddeking heeft dit fietspad"</string>
     <string name="quest_serviceType_title">"Wat voor dienstweg is dit?"</string>
@@ -205,7 +205,7 @@ De informatie die je ingeeft wordt meteen toegevoegd aan OpenStreetMap in jouw n
     <string name="quest_sport_title">"Voor welke sport is dit veld gemaakt?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_sport_answer_multi">"Geen specifike sport"</string>
+    <string name="quest_sport_answer_multi">"Geen specifieke sport"</string>
     <string name="quest_sport_soccer">"Voetbal"</string>
     <string name="quest_sport_tennis">"Tennis"</string>
     <string name="quest_sport_baseball">"Honkbal"</string>
@@ -275,7 +275,7 @@ De informatie die je ingeeft wordt meteen toegevoegd aan OpenStreetMap in jouw n
     <string name="quest_sport_sepak_takraw">"Sepak takraw"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_name_title">"Is %s rolstoeltoegankelijk?"</string>
+    <string name="quest_wheelchairAccess_name_title">"Is %s toegankelijk voor rolstoelen?"</string>
     <string name="quest_wheelchairAccess_limited">"Gedeeltelijk"</string>
     <string name="quest_bikeParkingCapacity_hint">"Let op dat bij dit type fietsenstallingen langs beide kanten fietsen geparkeerd kunnen worden"</string>
     <string name="quest_sport_roller_skating">"Rolschaatsen"</string>
@@ -285,16 +285,16 @@ De informatie die je ingeeft wordt meteen toegevoegd aan OpenStreetMap in jouw n
     <string name="quest_wheelchairAccess_location_title">"Is deze locatie rolstoel toegankelijk?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_bus_station_name_title">"Is het busstation %s rolstoel toegankelijk?"</string>
+    <string name="quest_wheelchairAccess_bus_station_name_title">"Is het busstation %s toegankelijk voor rolstoelen?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_subway_entrance_name_title">"Is de metro-ingang %s rolstoel toegankelijk?"</string>
+    <string name="quest_wheelchairAccess_subway_entrance_name_title">"Is de metro-ingang %s toegankelijk voor rolstoelen?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_railway_station_name_title">"Is het treinstation %s rolstoel toegankelijk?"</string>
+    <string name="quest_wheelchairAccess_railway_station_name_title">"Is het treinstation %s toegankelijk voor rolstoelen?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_location_name_title">"Is de locatie %s rolstoel toegankelijk?"</string>
+    <string name="quest_wheelchairAccess_location_name_title">"Is de locatie %s toegankelijk voor rolstoelen?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_business">"\"Gedeeltelijk\" betekent dat er maar 1 enkele opstap is om het gebouw te betreden en dat de meeste ruimtes binnen rolstoel toegankelijk zijn. 
@@ -477,7 +477,7 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetse
     <string name="quest_wheelchairAccess_toilets_title">"Zijn deze toiletten toegankelijk voor rolstoelen?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_toilets_name_title">"Zijn de toiletten %s rolstoeltoegankelijk?"</string>
+    <string name="quest_wheelchairAccess_toilets_name_title">"Zijn de toiletten %s toegankelijk voor rolstoelen?"</string>
     <string name="quest_wheelchairAccess_description_toilets">"Een rolstoel-pictogram zoals deze kan zichtbaar zijn als de toiletten toegankelijk zijn voor rolstoelgebruikers. Gedeeltelijk (partially) betekent dat dat een rolstoel binnen kan rijden en de toilet kan gebruiken, maar dat er geen extra aanpassingen zijn (zoals een rail, verlaagde lavabo, ...)"</string>
     <string name="map_btn_create_note">"Maak een nieuwe notitie"</string>
     <string name="create_new_note_unprecise">"Zoom verder in om een notitie te maken"</string>
@@ -685,11 +685,11 @@ Bijvoorbeeld 1m3 of 2-6."</string>
     <string name="quest_tracktype_grade1">"Hard"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_tracktype_grade2">"Voornamelijk hard"</string>
+    <string name="quest_tracktype_grade2">"Voornamelijk verhard"</string>
     <string name="quest_tracktype_grade3">"niet hard / niet zacht"</string>
     <string name="quest_tracktype_grade4">"Voornamelijk zacht"</string>
     <string name="quest_tracktype_grade5">"Zacht"</string>
-    <string name="quest_building_underground_name_title">"Is %'s volledig ondergronds?"</string>
+    <string name="quest_building_underground_name_title">"Is %s volledig ondergronds?"</string>
     <string name="quest_building_underground_title">"Is dit gebouw volledig ondergronds?"</string>
     <string name="quest_traffic_signals_sound_title">"Zijn er hier geluidsignalen voor blinden"</string>
     <string name="quest_wheelchairAccess_limited_description_outside">"Gedeeltelijk betekent dat er niet meer dan één trede is om binnen te komen."</string>
@@ -734,7 +734,7 @@ Bijvoorbeeld 1m3 of 2-6."</string>
     <string name="quest_ferry_motor_vehicle_name_title">"Vervoert %s motorvoertuigen?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_ferry_motor_vehicle_title">"Vervoert Voertuigen?"</string>
+    <string name="quest_ferry_motor_vehicle_title">"Vervoert voertuigen?"</string>
     <string name="quest_leave_new_note_photos_are_useful">"Het toevoegen van een foto maakt de notitie duidelijker."</string>
     <string name="quest_postboxCollectionTimes_name_title">"Wat zijn de ophaaltijden van deze %s brievenbus."</string>
     <string name="create_new_note_hint">"Het beste is de notitie in de lokaal gesproken taal of anders in het Engels te schrijven. "</string>
@@ -743,7 +743,7 @@ Bijvoorbeeld 1m3 of 2-6."</string>
     <string name="how_to_get_stars">"Kies een van de markeringen op de kaart en beantwoord de vraag. Op deze manier verbetert u OpenStreetMap-gegevens en krijgt u sterren. Als u geen markeringen ziet, moet u mogelijk uitzoomen op de kaart."</string>
 
     <!-- I think it might be better to change the text to: Do you want to remove the connection with your OSM account? -->
-    <string name="oauth_remove_authorization_dialog_message">"Wil je de autorisatiekoppeling met je OSM account verwijderen? "</string>
+    <string name="oauth_remove_authorization_dialog_message">"Wil je de autorisatiekoppeling met je OSM-account verwijderen?"</string>
     <string name="oauth_remove_authorization_confirmation">"Verwijderen"</string>
     <string name="quest_leafType_title">"Hebben de bomen hier bladeren of naalden?"</string>
     <string name="quest_leaf_type_needles">"Naalden"</string>
@@ -802,4 +802,5 @@ Bijvoorbeeld 1m3 of 2-6."</string>
     <string name="about_title_donate">"Doneer"</string>
     <string name="about_summary_donate">"Toon je waardering! ❤️"</string>
     <string name="about_description_donate">"Bedankt voor het overwegen van het ondersteunen van deze app! Om huidige donaties te zien en zelf te doneren, tik op het respectieve platform:"</string>
+    <string name="quest_religion_for_place_of_worship_name_title">"Welke religie wordt hier beoefend?"</string>
 </resources>

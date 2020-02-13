@@ -709,7 +709,7 @@
     <string name="action_open_location">"Посмотреть местоположение в другом приложении"</string>
     <string name="map_application_missing">"Другие картографические приложения не установлены"</string>
     <string name="pref_title_overpass_url_select">"Изменить сервер Overpass"</string>
-    <string name="pref_title_overpass_url_info">"Может обойти цензуру, например в России. После изменения необходим перезапуск приложения."</string>
+    <string name="pref_title_overpass_url_info">"Поможет обойти блокировку (цензуру), например, в России. После изменения необходим перезапуск приложения."</string>
     <string name="label_housenumber">"номер дома"</string>
     <string name="label_blocknumber">"номер корпуса"</string>
     <string name="quest_busStopShelter_covered">"У остановки есть навес"</string>
@@ -784,4 +784,5 @@
     <string name="about_title_donate">"Поддержать"</string>
     <string name="about_summary_donate">"Выразите свою признательность! ❤️"</string>
     <string name="about_description_donate">"Спасибо, что решили поддержать это приложение! Чтобы увидеть текущие пожертвования и внести свое, выберите подходящую платформу:"</string>
+    <string name="quest_religion_for_place_of_worship_name_title">"К какой религии относится %?"</string>
 </resources>
