@@ -509,6 +509,8 @@ Partiellement signifie qu’un fauteuil roulant peut entrer et utiliser les toil
     <string name="quest_parking_access_customers">"Réservé aux clients"</string>
     <string name="quest_streetName_pedestrian_title">"Quel est le nom de cette rue piétonne ?"</string>
     <string name="quest_streetSurface_square_title">"Quelle est la surface de cette place ?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetSurface_square_name_title">"Quelle est la surface de la place ici ?"</string>
     <string name="quest_fee_answer_hours">"Dépend du jour et de l’heure…"</string>
     <string name="quest_fee_add_times">"Ajouter des horaires"</string>
@@ -794,4 +796,5 @@ Le séparer maintenant ?"</string>
 
     <!-- Fuzzy -->
     <string name="about_description_donate">"Merci de songer à soutenir cette application ! Pour voir l'état actuel des dons, cliquez sur la plateforme correspondante :"</string>
+    <string name="quest_religion_for_place_of_worship_name_title">"Quelle religion est pratiquée à %s ?"</string>
 </resources>

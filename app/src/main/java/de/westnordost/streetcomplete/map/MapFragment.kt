@@ -11,18 +11,22 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.Interpolator
+import androidx.annotation.CallSuper
 import androidx.core.content.edit
 import androidx.fragment.app.Fragment
 import androidx.preference.PreferenceManager
 import com.mapzen.tangram.*
 import com.mapzen.tangram.TouchInput.*
+import com.mapzen.tangram.networking.DefaultHttpHandler
 import com.mapzen.tangram.networking.HttpHandler
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.map.data.OsmLatLon
+import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.BuildConfig.MAPZEN_API_KEY
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.ktx.awaitLayout
 import de.westnordost.streetcomplete.ktx.containsAll
 import de.westnordost.streetcomplete.map.tangram.*
 import de.westnordost.streetcomplete.map.tangram.CameraPosition
@@ -31,8 +35,11 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
+import okhttp3.*
+import okhttp3.internal.Version
 import java.io.File
 import java.util.*
+import java.util.concurrent.TimeUnit
 import kotlin.Exception
 
 /** Manages a map that remembers its last location*/
@@ -112,16 +119,18 @@ open class MapFragment : Fragment(),
     /* ------------------------------------------- Map  ----------------------------------------- */
 
     private suspend fun initMap() {
-        val ctrl = mapView.initMap(createHttpHandler())!!
+        val ctrl = mapView.initMap(createHttpHandler())
         controller = ctrl
+        if (ctrl == null) return
         registerResponders()
-        onMapControllerReady()
-        restoreMapState()
 
         val sceneFilePath = getSceneFilePath()
         ctrl.loadSceneFile(sceneFilePath, getSceneUpdates())
         loadedSceneFilePath = sceneFilePath
-        onSceneReady()
+
+        ctrl.glViewHolder!!.view.awaitLayout()
+
+        onMapReady()
         listener?.onMapInitialized()
     }
 
@@ -176,15 +185,39 @@ open class MapFragment : Fragment(),
         val cacheSize = PreferenceManager.getDefaultSharedPreferences(context).getInt(Prefs.MAP_TILECACHE_IN_MB, 50)
         val cacheDir = context!!.externalCacheDir
         val tileCacheDir: File?
-        tileCacheDir = cacheDir?.let { File(cacheDir, "tile_cache") }
-        return CachingHttpHandler(MAPZEN_API_KEY, tileCacheDir, (cacheSize * 1024L * 1024L))
+        if (cacheDir != null) {
+            tileCacheDir = File(cacheDir, "tile_cache")
+            if (!tileCacheDir.exists()) tileCacheDir.mkdir()
+        } else {
+            tileCacheDir = null
+        }
+
+        return object : DefaultHttpHandler() {
+
+            val cacheControl = CacheControl.Builder().maxStale(7, TimeUnit.DAYS).build()
+
+            override fun configureClient(builder: OkHttpClient.Builder) {
+                if (tileCacheDir?.exists() == true) {
+                    builder.cache(Cache(tileCacheDir, cacheSize * 1024L * 1024L))
+                }
+            }
+
+            override fun configureRequest(url: HttpUrl, builder: Request.Builder) {
+                if (MAPZEN_API_KEY != null)
+                    builder.url(url.newBuilder().addQueryParameter("api_key", MAPZEN_API_KEY).build())
+
+                builder
+                    .cacheControl(cacheControl)
+                    .header("User-Agent", ApplicationConstants.USER_AGENT + " / " + Version.userAgent())
+            }
+        }
     }
 
     /* ----------------------------- Overrideable map callbacks --------------------------------- */
 
-    protected open fun onMapControllerReady() {}
-
-    protected open fun onSceneReady() {}
+    @CallSuper protected open fun onMapReady() {
+        restoreMapState()
+    }
 
     protected open fun onMapIsChanging(position: LatLon, rotation: Float, tilt: Float, zoom: Float) {}
 

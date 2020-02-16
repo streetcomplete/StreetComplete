@@ -15,6 +15,10 @@ import de.westnordost.streetcomplete.ktx.values
 import de.westnordost.streetcomplete.map.tangram.toLngLat
 import de.westnordost.streetcomplete.quests.bikeway.AddCycleway
 import de.westnordost.streetcomplete.util.SlippyMapMath
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.launch
 import java.util.*
 import javax.inject.Inject
 
@@ -25,7 +29,7 @@ class QuestPinLayerManager @Inject constructor(
     private val questTypesProvider: OrderedVisibleQuestTypesProvider,
     private val resources: Resources,
     private val questController: QuestController
-): LifecycleObserver, VisibleQuestListener {
+): LifecycleObserver, VisibleQuestListener, CoroutineScope by CoroutineScope(Dispatchers.Default) {
 
     // draw order in which the quest types should be rendered on the map
     private val questTypeOrders: MutableMap<QuestType<*>, Int> = mutableMapOf()
@@ -73,6 +77,7 @@ class QuestPinLayerManager @Inject constructor(
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY) fun onDestroy() {
         questsLayer = null
         questController.removeListener(this)
+        coroutineContext.cancel()
     }
 
     fun onNewScreenPosition() {
@@ -82,7 +87,7 @@ class QuestPinLayerManager @Inject constructor(
         val tilesRect = SlippyMapMath.enclosingTiles(displayedArea, TILES_ZOOM)
         if (lastDisplayedRect != tilesRect) {
             lastDisplayedRect = tilesRect
-            updateQuestsInRect(tilesRect)
+            launch { updateQuestsInRect(tilesRect) }
         }
     }
 
@@ -100,7 +105,7 @@ class QuestPinLayerManager @Inject constructor(
         updateLayer()
     }
 
-    private fun updateQuestsInRect(tilesRect: Rect) {
+    private suspend fun updateQuestsInRect(tilesRect: Rect) {
         // area too big -> skip
         if (tilesRect.width() * tilesRect.height() > 4) {
             return

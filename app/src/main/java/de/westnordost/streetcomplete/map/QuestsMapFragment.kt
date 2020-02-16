@@ -61,16 +61,12 @@ class QuestsMapFragment : LocationAwareMapFragment() {
         questPinLayerManager.mapFragment = this
     }
 
-    override fun onMapControllerReady() {
-        super.onMapControllerReady()
+    override fun onMapReady() {
         controller?.setPickRadius(1f)
-    }
-
-    override fun onSceneReady() {
         geometryLayer = controller?.addDataLayer(GEOMETRY_LAYER)
         questsLayer = controller?.addDataLayer(QUESTS_LAYER)
         questPinLayerManager.questsLayer = questsLayer
-        super.onSceneReady()
+        super.onMapReady()
     }
 
     override fun onMapIsChanging(position: LatLon, rotation: Float, tilt: Float, zoom: Float) {

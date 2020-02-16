@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="action_settings">"Rregullimet"</string>
+    <string name="action_settings">"Parametrat"</string>
     <string name="oauth_communication_error">"E pamundur të kontaktohet shërbyesi për autorizim"</string>
     <string name="loading">"Duke u ngarkuar"</string>
-    <string name="retry">"Riprovo"</string>
+    <string name="retry">"Provo përsëri"</string>
     <string name="oauth_cancelled">"Autorizimi u anulua"</string>
     <string name="oauth_failed_permissions">"Autorizimi dështoj: Të gjitha lejet duhet të jepen"</string>
     <string name="title_activity_settings">"Rregullimet"</string>
@@ -250,6 +250,8 @@ Informacioni që futni shtohet direkt në OpenStreetMap në emrin tuaj, pa nevoj
     <string name="quest_streetSurface_name_title">"Çfarë sipërfaqe ka rruga \"%\" këtu?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Ky kufizim i shpejtësisë duket i pamundur."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"A jeni i sigurt që nuk ka kufizim të vendosur?"</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation">"A keni shikuar në fillim dhe fund të rrugës?
+Nëse nuk gjendet asnjë shenjë përgjatë gjithë rrugës që vlenë për pjesën e shënjuar, atëherë vlenë kufizimi i përgjithshëm i shpejtësisë. "</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Po, nuk ka shenjë"</string>
 
     <!-- Fuzzy -->
@@ -459,6 +461,78 @@ Përndryshe, mund të shkarkoni një tastierë tjetër në dyqanin e aplikacione
     <string name="quest_housenumber_conscription_number">"Numër konskriptimi"</string>
     <string name="quest_housenumber_street_number_optional">"Numër orientimi (opcionale)"</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">"Poashtu rrugë biçiklete në anën tjetër…"</string>
+    <string name="quest_openingHours_emptyAnswer">"Ju duhet të përshkruani atë që shkruan në shenjë. Nëse nuk ka shenjë, është mirë të pyetni brenda për orarin e punës."</string>
+    <string name="quest_cycleway_value_none_but_no_oneway">"nuk ka, mirëpo çiklistët mund të ecin në të dy kahjet"</string>
+    <string name="quest_streetName_answer_noName_question">"Përse nuk ka emër?"</string>
+    <string name="quest_streetName_answer_noProperStreet_service2">"Është rrugë private apo korridor parkingu"</string>
+    <string name="quest_streetName_answer_noProperStreet_track2">"Është rrugë bujqësore ose rrugë e pyllit"</string>
+    <string name="quest_streetName_answer_noName_noname">"Asnjëra prej këtyre, thjeshtë nuk ka emër"</string>
+    <string name="quest_wheelchairAccess_toilets_title">"A është kjo nevojtore e qasshme për karrocë?"</string>
+    <string name="quest_wheelchairAccess_toilets_name_title">"A është nevojtorja %s e qasshme për karrocë?"</string>
+    <string name="map_btn_create_note">"Krijo një shënim të ri"</string>
+    <string name="create_new_note_unprecise">"Zmadho hartën më shumë për të krijuar një shënim"</string>
+    <string name="create_new_note_description">"Mund të lësh një shënim për të njoftuar hartuesit tjerë në lidhje me ndonjë problem këtu. Përshtat vendin e shënimit duke lëviz hartën:"</string>
+    <string name="invalidate_confirmation">"Zhvlerëso"</string>
+    <string name="quest_generic_looks_like_this">"Zakonisht duket kështu:"</string>
+    <string name="quest_surface_value_metal">"Metal"</string>
+    <string name="quest_cycleway_title2">"A ka shteg çiklistësh këtu? Çfarë lloji?"</string>
+    <string name="quest_bridge_structure_title">"Çfarë është struktura e kësaj ure?"</string>
+    <string name="quest_internet_access_name_title">"Çfarë lloji të lidhjes në internet ofron %s?"</string>
+    <string name="quest_internet_access_wlan">"Wi-Fi"</string>
+    <string name="quest_internet_access_wired">"LAN"</string>
+    <string name="quest_internet_access_terminal">"Kompjuter me qasje në internet"</string>
+    <string name="quest_internet_access_no">"Nuk ka lidhje"</string>
+    <string name="quest_busStopShelter_tram_name_title">"A ka strehë stacioni i tramvajit %s?"</string>
+    <string name="quest_busStopShelter_tram_title">"A ka strehë ky stacion i tramvajit?"</string>
+    <string name="quest_bench_backrest_title">"A ka mbështetëse kjo ulëse?"</string>
+    <string name="quest_bench_answer_picnic_table">"Është tryezë pikniku"</string>
+    <string name="quest_religion_for_place_of_worship_title">"Cili religjion praktikohet në këtë vend?"</string>
+    <string name="quest_religion_christian">"Krishterimi"</string>
+    <string name="quest_religion_muslim">"Islami"</string>
+    <string name="quest_religion_hindu">"Hinduizmi"</string>
+    <string name="quest_religion_buddhist">"Budizimi"</string>
+    <string name="quest_religion_shinto">"Shinto"</string>
+    <string name="quest_streetName_pedestrian_title">"Si quhet kjo rrugë këmbësorësh?"</string>
+    <string name="quest_streetSurface_square_title">"Çfarë sipërfaqe ka ky shesh?"</string>
+    <string name="quest_streetSurface_square_name_title">"Çfarë sipërfaqe ka sheshi %s këtu?"</string>
+    <string name="quest_fee_answer_hours">"Varet prej kohës dhe ditës..."</string>
+    <string name="quest_fee_add_times">"Shto orarë"</string>
+    <string name="quest_fee_only_at_hours">"Po, mirëpo vetëm..."</string>
+    <string name="quest_fee_not_at_hours">"Po, mirëpo jo..."</string>
+    <string name="quest_fee_hours_title">"në orarin vijues:"</string>
+    <string name="quest_busStopName_title">"Si quhet ky stacion autobusësh?"</string>
+    <string name="quest_tramStopName_title">"Si quhet ky stacion tramvaji?"</string>
+    <string name="quest_housenumber_multiple_numbers">"Ka numra hyrjesh të shumëfishtë"</string>
+    <string name="quest_housenumber_multiple_numbers_description">"Thjeshtë mundeni të futni numra hyrjesh të ndara me presje ose të shkruara si varg. Për shembull 1,3 ose 2-6."</string>
+
+    <!-- Muss noch ein besseres Wort dafür finden -->
+    <string name="quest_bicycle_parking_type_stand">"Mbështetëse (mbështetë trupin e biçikletës)"</string>
+    <string name="quest_bicycle_parking_type_wheelbender">"Wheelbender (mbështetë vetëm rrotën)"</string>
+    <string name="quest_bicycle_parking_type_shed">"Tezgë"</string>
+    <string name="quest_bicycle_parking_type_locker">"Dollap"</string>
+    <string name="quest_bicycle_parking_type_building">"Ndërtesë"</string>
+    <string name="quest_bicycle_parking_type_title">"Çfarë lloji parkingu biçikletash është ky?"</string>
+    <string name="quest_cycleway_value_suggestion_lane">"Shirit për biçikleta dhe automjete"</string>
+    <string name="quest_postboxCollectionTimes_title">"Cili është orari i zbrazjes së kësaj kutie postare?"</string>
+    <string name="quest_buildingType_answer_multiple_types">"Ka qëllim të shumëfishtë"</string>
+    <string name="quest_buildingType_answer_construction_site">"Ende duke u ndërtuar"</string>
+    <string name="quest_buildingType_residential">"Banimit"</string>
+    <string name="quest_buildingType_residential_description">"Ndërtesë ku jetojnë njerëzit"</string>
+    <string name="quest_buildingType_house">"Shtëpi"</string>
+    <string name="quest_buildingType_house_description">"shtëpi për një familje"</string>
+    <string name="quest_buildingType_apartments_description">"shtëpi për më shumë se një familje, mund të ketë dyqane në përdhesë"</string>
+    <string name="quest_buildingType_apartments">"Ndërtesë apartamentesh"</string>
+    <string name="quest_buildingType_detached">"Shtëpi e veçuar"</string>
+    <string name="quest_buildingType_detached_description">"Shtëpi e veçuar për një familje"</string>
+    <string name="quest_buildingType_semi_detached">"Shtëpi gjysmë e veçuar"</string>
+    <string name="quest_buildingType_semi_detached_description">"Çift i dy shtëpive të veçuara, për nga një familje"</string>
+    <string name="quest_buildingType_terrace">"Varg shtëpishë"</string>
+    <string name="quest_buildingType_terrace_description">"një varg shtëpishë të ngjashme, për nga një familje"</string>
+    <string name="quest_buildingType_hotel">"Ndërtesë hoteli"</string>
+    <string name="quest_buildingType_dormitory">"Konvikt"</string>
+    <string name="quest_buildingType_houseboat">"Shtëpi barkë"</string>
+    <string name="quest_buildingType_bungalow">"Vilë"</string>
+    <string name="quest_buildingType_bungalow_description">"Shtëpi e vogël e veçuar (vilë, shtëpi pushimi)"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
     <string name="quest_buildingType_title">"Çfarë lloj ndërtese është kjo?"</string>
 </resources>

@@ -731,4 +731,5 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="about_title_donate">"Dohaintza"</string>
     <string name="about_summary_donate">"Erakutsi zure babesa! ❤️"</string>
     <string name="about_description_donate">"Eskerrik asko aplikazio hau babestea hausnartzeagatik! Oraingo dohaintzak ikusteko eta zurea egiteko, sakatu dagokion plataforman:"</string>
+    <string name="quest_religion_for_place_of_worship_name_title">"Ze erliji praktikatzen da %s(e)n"</string>
 </resources>

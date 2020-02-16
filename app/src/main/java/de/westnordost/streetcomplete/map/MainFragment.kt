@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.map
 
+import android.annotation.SuppressLint
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
@@ -10,6 +11,7 @@ import android.graphics.PointF
 import android.graphics.Rect
 import android.graphics.RectF
 import android.location.Location
+import android.location.LocationManager
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -27,7 +29,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE
 import androidx.fragment.app.FragmentTransaction
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
-import com.mapzen.android.lost.api.LocationRequest
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.map.data.OsmLatLon
@@ -45,15 +46,13 @@ import de.westnordost.streetcomplete.data.osm.changes.SplitPolylineAtPosition
 import de.westnordost.streetcomplete.data.osmnotes.CreateNoteFragment
 import de.westnordost.streetcomplete.ktx.getLocationInWindow
 import de.westnordost.streetcomplete.ktx.toast
-import de.westnordost.streetcomplete.location.LocationRequestFragment
-import de.westnordost.streetcomplete.location.LocationState
-import de.westnordost.streetcomplete.location.LocationUtil
-import de.westnordost.streetcomplete.location.SingleLocationRequest
+import de.westnordost.streetcomplete.location.*
 import de.westnordost.streetcomplete.map.tangram.CameraPosition
 import de.westnordost.streetcomplete.quests.*
 import kotlinx.android.synthetic.main.fragment_map_with_controls.*
 import javax.inject.Inject
 import kotlin.math.max
+import kotlin.math.PI
 
 /** Contains the quests map and the controls for it. */
 class MainFragment : Fragment(R.layout.fragment_map_with_controls),
@@ -64,7 +63,7 @@ class MainFragment : Fragment(R.layout.fragment_map_with_controls),
     @Inject internal lateinit var questController: QuestController
     @Inject internal lateinit var isSurveyChecker: QuestSourceIsSurveyChecker
 
-    private var singleLocationRequest: SingleLocationRequest? = null
+    private lateinit var locationManager: FineLocationManager
     private val mainHandler = Handler(Looper.getMainLooper())
 
     private var isShowingControls = true
@@ -105,7 +104,10 @@ class MainFragment : Fragment(R.layout.fragment_map_with_controls),
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        singleLocationRequest = SingleLocationRequest(context)
+        locationManager = FineLocationManager(
+            context.getSystemService(Context.LOCATION_SERVICE) as LocationManager,
+            this::onLocationChanged
+        )
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -182,6 +184,7 @@ class MainFragment : Fragment(R.layout.fragment_map_with_controls),
         questController.removeListener(this)
         context!!.unregisterReceiver(locationAvailabilityReceiver)
         LocalBroadcastManager.getInstance(context!!).unregisterReceiver(locationRequestFinishedReceiver)
+        locationManager.removeUpdates()
     }
 
     override fun onDestroy() {
@@ -352,18 +355,17 @@ class MainFragment : Fragment(R.layout.fragment_map_with_controls),
         }
     }
 
+    @SuppressLint("MissingPermission")
     private fun onLocationIsEnabled() {
         gpsTrackingButton.state = LocationState.SEARCHING
         mapFragment!!.startPositionTracking()
-        singleLocationRequest?.startRequest(LocationRequest.PRIORITY_HIGH_ACCURACY) {
-            gpsTrackingButton.state = LocationState.UPDATING
-        }
+        locationManager.requestSingleUpdate()
     }
 
     private fun onLocationIsDisabled() {
         gpsTrackingButton.state = if (LocationUtil.hasLocationPermission(activity)) LocationState.ALLOWED else LocationState.DENIED
         mapFragment!!.stopPositionTracking()
-        singleLocationRequest?.stopRequest()
+        locationManager.removeUpdates()
     }
 
     private fun onLocationRequestFinished(state: LocationState) {
@@ -372,6 +374,10 @@ class MainFragment : Fragment(R.layout.fragment_map_with_controls),
         if (state.isEnabled) {
             updateLocationAvailability()
         }
+    }
+
+    private fun onLocationChanged(location: Location) {
+        gpsTrackingButton?.state = LocationState.UPDATING
     }
 
     /* --------------------------------- Map control buttons------------------------------------- */
@@ -397,7 +403,16 @@ class MainFragment : Fragment(R.layout.fragment_map_with_controls),
 
     private fun onClickCompassButton() {
         val mapFragment = mapFragment ?: return
-        val isNorthUp = mapFragment.cameraPosition?.rotation == 0f
+        // Allow a small margin of error around north/flat. This both matches
+        // UX expectations ("it looks straight..") and works around a bug where
+        // the rotation/tilt are not set to perfectly 0 during animation
+        val margin = 0.025f // About 4%
+        // 2PI radians = full circle of rotation = also north
+        val isNorthUp = mapFragment.cameraPosition?.rotation?.let {
+            it <= margin || 2f*PI.toFloat()-it <= margin
+        } ?: false
+        // Camera cannot rotate upside down => full circle check not needed
+        val isFlat = mapFragment.cameraPosition?.tilt?.let { it <= margin } ?: false
         if (!isNorthUp) {
             mapFragment.updateCameraPosition(300) {
                 rotation = 0f
@@ -406,6 +421,12 @@ class MainFragment : Fragment(R.layout.fragment_map_with_controls),
         }
         if (mapFragment.isFollowingPosition) {
             setIsCompassMode(!mapFragment.isCompassMode)
+        } else {
+            if (isNorthUp) {
+                mapFragment.updateCameraPosition(300) {
+                    tilt = if (isFlat) PI.toFloat() / 5f else 0f
+                }
+            }
         }
     }
 
@@ -422,8 +443,7 @@ class MainFragment : Fragment(R.layout.fragment_map_with_controls),
 
     private fun composeNote() {
         val mapFragment = mapFragment ?: return
-        // TODO #1589, see https://github.com/tangrams/tangram-es/issues/2143 reenable when fixed
-        //mapFragment.show3DBuildings = false
+        mapFragment.show3DBuildings = false
         focusOnCurrentLocationIfInView()
         freezeMap()
         showInBottomSheet(CreateNoteFragment())
@@ -538,8 +558,7 @@ class MainFragment : Fragment(R.layout.fragment_map_with_controls),
         mapFragment.isCompassMode = wasCompassMode
         mapFragment.endFocusQuest()
         showMapControls()
-        // TODO #1589, see https://github.com/tangrams/tangram-es/issues/2143 reenable when fixed
-        //mapFragment.show3DBuildings = true
+        mapFragment.show3DBuildings = true
         mapFragment.isShowingQuestPins = true
     }
 
