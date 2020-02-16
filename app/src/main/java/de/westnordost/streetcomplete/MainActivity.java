@@ -93,7 +93,6 @@ import kotlin.coroutines.CoroutineContext;
 import kotlinx.coroutines.CoroutineScope;
 import kotlinx.coroutines.CoroutineScopeKt;
 import kotlinx.coroutines.Dispatchers;
-import kotlinx.coroutines.DispatchersKt;
 import kotlinx.coroutines.JobKt;
 
 
@@ -246,6 +245,12 @@ public class MainActivity extends AppCompatActivity implements  MainFragment.Lis
 
 		if(savedInstanceState == null)
 		{
+			userController.initUser(new Continuation<Unit>()
+			{
+				@NotNull @Override public CoroutineContext getContext() { return coroutineScope.getCoroutineContext(); }
+				@Override public void resumeWith(@NotNull Object o) { }
+			});
+
 			questController.deleteOld(new Continuation<Unit>()
 			{
 				@NotNull @Override public CoroutineContext getContext() { return coroutineScope.getCoroutineContext(); }

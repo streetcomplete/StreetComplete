@@ -21,7 +21,8 @@ public class Prefs
 	public static final String
 		OSM_USER_ID = "osm.userid",
 		OSM_USER_NAME = "osm.username",
-		OSM_UNREAD_MESSAGES = "osm.unread_messages";
+		OSM_UNREAD_MESSAGES = "osm.unread_messages",
+		OSM_INIT_USER_DONE = "osm.post_login_done";
 
 	// not shown anywhere directly
 	public static final String
