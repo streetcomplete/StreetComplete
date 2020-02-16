@@ -97,6 +97,11 @@ class QuestDownloader @Inject constructor(
         val notesDownload = osmNotesDownloaderProvider.get()
         notesDownload.questListener = questListener
         val userId: Long? = userController.userId.takeIf { it != -1L }
+        // do not download notes if not logged in because notes shall only be downloaded if logged in
+        if (userId == null) {
+            onProgress()
+            return emptySet()
+        }
         val maxNotes = 10000
         val result = notesDownload.download(bbox, userId, maxNotes)
         downloadedTilesDao.put(tiles, OsmNoteQuestType::class.java.simpleName)

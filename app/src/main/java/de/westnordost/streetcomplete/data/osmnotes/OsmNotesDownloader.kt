@@ -28,7 +28,7 @@ class OsmNotesDownloader @Inject constructor(
 
     var questListener: VisibleQuestListener? = null
 
-    fun download(bbox: BoundingBox, userId: Long?, max: Int): Set<LatLon> {
+    fun download(bbox: BoundingBox, userId: Long, max: Int): Set<LatLon> {
         val positions = HashSet<LatLon>()
         val previousQuestsByNoteId = getPreviousQuestsByNoteId(bbox).toMutableMap()
         val notes = ArrayList<Note>()

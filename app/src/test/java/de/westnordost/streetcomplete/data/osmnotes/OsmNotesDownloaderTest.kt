@@ -62,7 +62,7 @@ class OsmNotesDownloaderTest {
 
         val dl = OsmNotesDownloader(noteServer, noteDB, noteQuestDB, createNoteDB, preferences, OsmNoteQuestType(), avatarsDownloader)
         dl.questListener = mock()
-        dl.download(BoundingBox(0.0, 0.0, 1.0, 1.0), null, 1000)
+        dl.download(BoundingBox(0.0, 0.0, 1.0, 1.0), 0, 1000)
 
         verify(noteQuestDB).deleteAllIds(any())
         verify(dl.questListener!!).onQuestsRemoved(any(), any())
