@@ -24,6 +24,25 @@
         <item name="android:fontFamily">sans-serif</item>
     </style>
 
+    <style name="TextAppearance.Subhead" parent="TextAppearance.AppCompat.Subhead">
+        <item name="android:textAlignment">viewStart</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">sans-serif-condensed</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextAppearance.ListItemTitle" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">sans-serif-condensed</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextAppearance.ListItemText" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">sans-serif-condensed</item>
+        <item name="android:textColor">@color/caption_text</item>
+    </style>
+
     <style name="ButtonBar" parent="Widget.AppCompat.ButtonBar">
         <item name="android:divider">@drawable/button_bar_divider</item>
         <item name="android:showDividers">middle</item>

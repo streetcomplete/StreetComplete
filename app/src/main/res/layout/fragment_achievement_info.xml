@@ -44,9 +44,9 @@
             android:background="@drawable/speech_bubble_none"/>
 
         <ImageView
-            android:id="@+id/questIconView"
-            android:layout_width="@dimen/quest_statistics_quest_type_icon_size"
-            android:layout_height="@dimen/quest_statistics_quest_type_icon_size"
+            android:id="@+id/achievementIconView"
+            android:layout_width="@dimen/achievement_icon_size"
+            android:layout_height="@dimen/achievement_icon_size"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             app:layout_constraintTop_toTopOf="parent"
@@ -59,7 +59,7 @@
             android:elevation="24dp"/>
 
         <TextView
-            android:id="@+id/questTitleText"
+            android:id="@+id/achievementTitleText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -68,59 +68,48 @@
             android:layout_marginEnd="@dimen/dialog_horizontal_margin"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.Title"
-            app:layout_constraintTop_toBottomOf="@id/questIconView"
+            app:layout_constraintTop_toBottomOf="@id/achievementIconView"
             tools:text="@string/quest_maxheight_title" />
 
-        <LinearLayout
-            android:id="@+id/solvedQuestsContainer"
-            android:layout_width="wrap_content"
-            android:layout_height="96dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            android:scaleX="1.0"
-            android:scaleY="1.0"
-            android:gravity="center_vertical"
-            android:divider="@drawable/space_4dp"
-            android:showDividers="middle"
-            android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@id/questTitleText">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_star_48dp"/>
-
-            <TextView
-                android:id="@+id/solvedQuestsText"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:maxLines="1"
-                android:textAlignment="gravity"
-                android:textColor="#000"
-                android:textStyle="bold"
-                android:textSize="48dp"
-                tools:text="1021" />
-
-        </LinearLayout>
-
-        <Button
-            android:id="@+id/wikiLinkButton"
-            android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/achievementDescriptionText"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            android:drawableStart="@drawable/ic_open_in_browser_24dp"
-            android:drawablePadding="8dp"
-            android:text="@string/user_statistics_quest_wiki_link"
-            android:textColor="@color/accent"
+            android:layout_marginStart="@dimen/dialog_horizontal_margin"
+            android:layout_marginEnd="@dimen/dialog_horizontal_margin"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.Body"
+            app:layout_constraintTop_toBottomOf="@+id/achievementTitleText"
+            tools:text="@string/quest_wheelchairAccess_description_toilets" />
+
+        <TextView
+            android:id="@+id/unlockedLinkTitleText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dialog_horizontal_margin"
+            android:layout_marginEnd="@dimen/dialog_horizontal_margin"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_gravity="start"
+            android:text="@string/achievements_unlocked_links"
+            android:textAlignment="viewStart"
+            android:textAppearance="@style/TextAppearance.Subhead"
+            app:layout_constraintTop_toBottomOf="@id/achievementDescriptionText" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/unlockedLinksList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dialog_horizontal_margin"
+            android:layout_marginEnd="@dimen/dialog_horizontal_margin"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/solvedQuestsContainer" />
+            app:layout_constraintTop_toBottomOf="@+id/unlockedLinkTitleText"
+            tools:itemCount="1"
+            tools:listitem="@layout/row_link_item" />
 
         <Space
             android:id="@+id/spacer"
@@ -129,7 +118,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginTop="@dimen/quest_statistics_quest_type_icon_offset"
+            android:layout_marginTop="@dimen/achievement_icon_offset"
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

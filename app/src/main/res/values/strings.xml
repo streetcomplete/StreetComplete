@@ -719,5 +719,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="about_description_donate">Thank you for considering to support this app! To see current donations and to donate yourself, tap on the respective platform:</string>
     <string name="user_statistics_description">These are your solved quests. The bigger the bubble, the more quests of this type you solved.</string>
     <string name="user_statistics_quest_wiki_link">Documentation</string>
+    <string name="achievements_unlocked_link">Unlocked link:</string>
+    <string name="achievements_unlocked_links">Unlocked links:</string>
 
 </resources>
