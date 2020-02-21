@@ -94,11 +94,11 @@ class SettingsFragment : PreferenceFragmentCompat(),
 
     override fun onStart() {
         super.onStart()
-        updateOsmAuthSummary()
+        updateOsmAuthDependentPrefs()
         activity?.setTitle(R.string.action_settings)
     }
 
-    private fun updateOsmAuthSummary() {
+    private fun updateOsmAuthDependentPrefs() {
         val oauth = preferenceScreen?.findPreference<Preference>("oauth")
         val username = prefs.getString(Prefs.OSM_USER_NAME, null)
         oauth?.summary = if (oAuth.isAuthorized) {
@@ -107,6 +107,8 @@ class SettingsFragment : PreferenceFragmentCompat(),
         } else {
             resources.getString(R.string.pref_title_not_authorized_summary2)
         }
+
+        findPreference<Preference>("autosync")?.setEnabled(oAuth.isAuthorized)
     }
 
     override fun onResume() {
@@ -122,7 +124,7 @@ class SettingsFragment : PreferenceFragmentCompat(),
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String) {
         when(key) {
             Prefs.OAUTH_ACCESS_TOKEN_SECRET -> {
-                updateOsmAuthSummary()
+                updateOsmAuthDependentPrefs()
             }
             Prefs.SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS -> {
                 val task = applyNoteVisibilityChangedTask.get()

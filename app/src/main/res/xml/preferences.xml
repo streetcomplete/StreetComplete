@@ -6,6 +6,14 @@
         android:key="communication"
         android:title="@string/pref_category_communication">
 
+        <Preference
+            android:key="oauth"
+            android:title="@string/pref_title_authorization"
+            android:summary="@string/pref_title_not_authorized_summary2"
+            android:persistent="true"
+            android:widgetLayout="@layout/widget_image_open_in_browser"
+            />
+
         <ListPreference
             android:key="autosync"
             android:title="@string/pref_title_sync"
@@ -14,14 +22,6 @@
             android:entries="@array/pref_entries_autosync"
             android:entryValues="@array/pref_entryvalues_autosync"
             android:persistent="true"
-            />
-
-        <Preference
-            android:key="oauth"
-            android:title="@string/pref_title_authorization"
-            android:summary="@string/pref_title_not_authorized_summary2"
-            android:persistent="true"
-            android:widgetLayout="@layout/widget_image_open_in_browser"
             />
 
     </PreferenceCategory>
