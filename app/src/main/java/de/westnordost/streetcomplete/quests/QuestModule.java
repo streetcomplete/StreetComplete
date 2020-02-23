@@ -12,6 +12,7 @@ import de.westnordost.streetcomplete.data.QuestType;
 import de.westnordost.streetcomplete.data.QuestTypeRegistry;
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao;
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestType;
+import de.westnordost.streetcomplete.quests.accepts_cash.AddAcceptsCash;
 import de.westnordost.streetcomplete.quests.baby_changing_table.AddBabyChangingTable;
 import de.westnordost.streetcomplete.quests.bike_parking_capacity.AddBikeParkingCapacity;
 import de.westnordost.streetcomplete.quests.bike_parking_cover.AddBikeParkingCover;
@@ -147,6 +148,7 @@ public class QuestModule
 				new AddToiletAvailability(o), //OSM Carto, shown in OsmAnd descriptions
 				new AddFerryAccessPedestrian(o),
 				new AddFerryAccessMotorVehicle(o),
+				new AddAcceptsCash(o),
 
 				// ↓ 4. definitely shown as errors in QA tools
 
