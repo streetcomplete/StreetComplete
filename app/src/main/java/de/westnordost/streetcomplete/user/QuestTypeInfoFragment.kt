@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.user
 import android.animation.ValueAnimator
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
@@ -21,6 +22,7 @@ import de.westnordost.streetcomplete.util.Transforms
 import de.westnordost.streetcomplete.util.animateFrom
 import de.westnordost.streetcomplete.util.animateTo
 import de.westnordost.streetcomplete.util.applyTransforms
+import de.westnordost.streetcomplete.view.CircularOutlineProvider
 import kotlinx.android.synthetic.main.fragment_quest_type_info.*
 import kotlin.math.min
 import kotlin.math.pow
@@ -40,6 +42,9 @@ class QuestTypeInfoFragment : Fragment(R.layout.fragment_quest_type_info) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         dialogAndBackgroundContainer.setOnClickListener { dismiss() }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            questIconView.outlineProvider = CircularOutlineProvider
+        }
     }
 
     override fun onDestroy() {

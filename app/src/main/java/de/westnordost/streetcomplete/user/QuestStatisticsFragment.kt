@@ -8,6 +8,7 @@ import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.hardware.SensorManager.SENSOR_STATUS_ACCURACY_LOW
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -25,6 +26,8 @@ import de.westnordost.streetcomplete.data.QuestType
 import de.westnordost.streetcomplete.data.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.user.QuestStatisticsDao
 import de.westnordost.streetcomplete.ktx.awaitLayout
+import de.westnordost.streetcomplete.ktx.toDp
+import de.westnordost.streetcomplete.view.CircularOutlineProvider
 import kotlinx.android.synthetic.main.fragment_quest_statistics.*
 import kotlinx.coroutines.*
 import org.jbox2d.collision.shapes.ChainShape
@@ -205,6 +208,10 @@ class QuestStatisticsFragment :
         val clickableContainer = FrameLayout(ctx)
         // foreground attribute only exists on FrameLayout up until KITKAT
         clickableContainer.foreground = resources.getDrawable(R.drawable.round_pressed)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            clickableContainer.elevation = 8f.toDp(ctx)
+            clickableContainer.outlineProvider = CircularOutlineProvider
+        }
         clickableContainer.addView(questView)
         clickableContainer.setOnTouchListener(object : SimpleGestureListener(clickableContainer) {
             override fun onSingleTapUp(e: MotionEvent?): Boolean {

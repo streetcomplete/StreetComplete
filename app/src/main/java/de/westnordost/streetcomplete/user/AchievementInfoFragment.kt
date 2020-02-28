@@ -5,21 +5,25 @@ import android.animation.LayoutTransition.APPEARING
 import android.animation.LayoutTransition.DISAPPEARING
 import android.animation.TimeAnimator
 import android.content.Intent
+import android.graphics.Outline
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.view.ViewPropertyAnimator
-import android.view.animation.*
+import android.view.*
+import android.view.animation.AccelerateDecelerateInterpolator
+import android.view.animation.AccelerateInterpolator
+import android.view.animation.DecelerateInterpolator
+import android.view.animation.OvershootInterpolator
 import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.achievements.*
+import de.westnordost.streetcomplete.data.achievements.Achievement
+import de.westnordost.streetcomplete.data.achievements.Link
 import de.westnordost.streetcomplete.ktx.tryStartActivity
 import de.westnordost.streetcomplete.util.Transforms
 import de.westnordost.streetcomplete.util.animateFrom
 import de.westnordost.streetcomplete.util.animateTo
 import de.westnordost.streetcomplete.util.applyTransforms
+import de.westnordost.streetcomplete.view.CircularOutlineProvider
 import de.westnordost.streetcomplete.view.ListAdapter
 import kotlinx.android.synthetic.main.fragment_achievement_info.*
 import kotlinx.android.synthetic.main.row_link_item.view.*
@@ -46,6 +50,9 @@ class AchievementInfoFragment : Fragment(R.layout.fragment_achievement_info) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         dialogAndBackgroundContainer.setOnClickListener { dismiss() }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            achievementIconView.outlineProvider = CircularOutlineProvider
+        }
     }
 
     override fun onDestroy() {
@@ -87,7 +94,7 @@ class AchievementInfoFragment : Fragment(R.layout.fragment_achievement_info) {
         achievementIconView.setImageResource(achievement.icon)
         achievementTitleText.setText(achievement.title)
 
-        val achievementLevel = achievement.levels[level]
+        val achievementLevel = achievement.levels[level-1]
 
         if (achievement.description != null) {
             achievementDescriptionText.visibility = View.VISIBLE
