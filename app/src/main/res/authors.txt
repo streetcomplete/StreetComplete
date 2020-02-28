@@ -30,6 +30,8 @@ fire_hydrant_wall.jpg          CC-BY-SA 3.0      https://commons.wikimedia.org/w
 fire_hydrant_underground.jpg   CC-BY 3.0         https://commons.wikimedia.org/wiki/File:Hydrant_MPWiK.jpg
 fire_hydrant_pond.jpg          CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Dry_hydrant.jpg
 
+ic_link_cyclosm.xml            CC-BY-SA          by Lucas Verney
+
 recycling_centre.jpg           Public Domain     http://www.afgsc.af.mil/News/Art/igphoto/2000375277/
 recycling_container_undergr... CC0               https://commons.wikimedia.org/wiki/File:San_Fernando_de_Henares_-_reciclaje_de_residuos_urbanos_04.JPG
 recycling_container.jpg        CC0               https://commons.wikimedia.org/wiki/File:Vitoria_-_Contenedores_de_reciclaje_en_la_Avenida_de_Gasteiz.jpg

@@ -196,18 +196,5 @@ public class QuestModule
 	{
 		return new OsmNoteQuestType();
 	}
-/*
-	@Provides @Singleton public static QuestController questController(
-		OsmQuestDao osmQuestDao, UndoOsmQuestDao undoOsmQuestDao, MergedElementDao mergedElementDao,
-		ElementGeometryDao elementGeometryDao, OsmNoteQuestDao osmNoteQuestDao,
-		OsmQuestSplitWayDao osmQuestSplitWayDao, CreateNoteDao createNoteDao,
-		SharedPreferences prefs, OrderedVisibleQuestTypesProvider questTypesProvider,
-		Context context
-	)
-	{
-		return new QuestController(osmQuestDao, undoOsmQuestDao, mergedElementDao,
-			elementGeometryDao, osmNoteQuestDao, osmQuestSplitWayDao, createNoteDao, prefs,
-			questTypesProvider, context);
-	}
-	*/
+
 }

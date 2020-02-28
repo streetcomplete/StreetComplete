@@ -719,7 +719,43 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="about_description_donate">Thank you for considering to support this app! To see current donations and to donate yourself, tap on the respective platform:</string>
     <string name="user_statistics_description">These are your solved quests. The bigger the bubble, the more quests of this type you solved.</string>
     <string name="user_statistics_quest_wiki_link">Documentation</string>
+
     <string name="achievements_unlocked_link">Unlocked link:</string>
     <string name="achievements_unlocked_links">Unlocked links:</string>
 
+    <string name="link_cyclosm_description">A bicycle map</string>
+    <string name="link_wheelmap_description">Map for finding wheelchair accessible places</string>
+    <string name="link_osm_buildings_description">3D building geometry viewer</string>
+    <string name="link_openvegemap_description">Find vegetarian and vegan restaurants in your city</string>
+    <string name="link_touch_mapper_description">Create tactile maps easily for any address</string>
+    <string name="link_mapy_tactile_description">Tactile maps for visually impaired in various scales</string>
+    <string name="link_josm_description">Fully-featured OSM editor for the desktop</string>
+    <string name="link_vespucci_description">Advanced OSM editor for Android</string>
+    <string name="link_ideditor_description">Easy OSM editor for the web</string>
+    <string name="link_umap_description">Create maps with custom data quickly and embed them in your site</string>
+    <string name="link_opnvkarte_description">A map of public transport routes and stops</string>
+    <string name="link_pic4review_description">Contribute to OSM simply by looking at pictures of your city</string>
+    <string name="link_wiki_description">The wiki is your starting point to everything related OpenStreetMap</string>
+    <string name="link_learnosm_description">New to OpenStreetMap? This is a beginner\'s guide</string>
+    <string name="link_openrouteservice_wheelchair_description">Turn by turn navigation for wheelchair users</string>
+    <string name="link_nominatim_description">The geocoder (find location of a place or address) for OSM data</string>
+    <string name="link_city_roads_description">Render all roads of a city, for printing on T-Shirts, mugs, …</string>
+
+    <string name="achievement_first_edit_title">First Quest Solved</string>
+    <string name="achievement_first_edit_description">Welcome to the OpenStreetMap community!</string>
+    <string name="achievement_bicyclist_title">Bicyclist</string>
+    <string name="achievement_bicyclist_solved_X">You solved %d quests that help bicyclists!</string>
+    <string name="achievement_wheelchair_title">Mobility</string>
+    <string name="achievement_wheelchair_solved_X">You solved %d quests that help wheelchair users get around town!</string>
+    <string name="achievement_postman_title">Postman</string>
+    <string name="achievement_postman_solved_X">You helped to locate %d addresses!\nThis data is essential not only for the postman but also for any navigation system.</string>
+    <string name="achievement_building_title">High-Rise</string>
+    <string name="achievement_building_solved_X">You solved %d building related quests.\nNote that this app asks for the housenumber of a building only after its type has been determined.</string>
+    <string name="achievement_blind_title">Sixth Sense</string>
+    <string name="achievement_blind_solved_X">You solved %d quests that are interesting for visually impaired.</string>
+    <string name="achievement_pedestrian_title">Runner</string>
+    <string name="achievement_pedestrian_solved_X">You solved %d quests that are interesting for people on foot!</string>
+    <string name="achievement_veg_title">Kind to Animals</string>
+    <string name="achievement_veg_solved_X">You solved %d quests that are interesting for people living on a no-meat diet!</string>
+    <string name="achievement_car_title">On the Road</string>
 </resources>

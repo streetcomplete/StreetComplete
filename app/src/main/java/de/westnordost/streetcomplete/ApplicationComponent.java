@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import dagger.Component;
 import de.westnordost.streetcomplete.data.DbModule;
 import de.westnordost.streetcomplete.data.OsmModule;
+import de.westnordost.streetcomplete.data.achievements.AchievementsModule;
 import de.westnordost.streetcomplete.data.user.UserModule;
 import de.westnordost.streetcomplete.data.osm.upload.ChangesetAutoCloserWorker;
 import de.westnordost.streetcomplete.data.upload.QuestChangesUploadService;
@@ -37,7 +38,7 @@ import de.westnordost.streetcomplete.util.SerializedSavedState;
 
 @Singleton
 @Component(modules = {ApplicationModule.class, OsmModule.class, QuestModule.class,
-		DbModule.class, MetadataModule.class, UserModule.class})
+		DbModule.class, MetadataModule.class, UserModule.class, AchievementsModule.class})
 public interface ApplicationComponent
 {
 	void inject(StreetCompleteApplication app);
