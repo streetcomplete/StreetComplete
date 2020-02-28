@@ -6,7 +6,7 @@ import de.westnordost.streetcomplete.R
 @Module
 object AchievementsModule {
 
-    private val links = mapOf(
+    val links = mapOf(
         "wiki" to Link(
             "https://wiki.openstreetmap.org",
             "OpenStreetMap Wiki",
@@ -130,7 +130,7 @@ object AchievementsModule {
 
 // TODO intro achievements / based on time...
 
-    private val achievements = mapOf(
+    val achievements = mapOf(
 
         "first_edit" to Achievement(
             R.drawable.ic_achievement_first_edit,
