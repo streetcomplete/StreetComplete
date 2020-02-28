@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.user
 
 import android.animation.ValueAnimator
-import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -17,6 +16,7 @@ import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.QuestType
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
+import de.westnordost.streetcomplete.ktx.tryStartActivity
 import de.westnordost.streetcomplete.util.Transforms
 import de.westnordost.streetcomplete.util.animateFrom
 import de.westnordost.streetcomplete.util.animateTo
@@ -53,10 +53,23 @@ class QuestTypeInfoFragment : Fragment(R.layout.fragment_quest_type_info) {
 
     /* ---------------------------------------- Interface --------------------------------------- */
 
-    fun show(questBubbleView: View, questType: QuestType<*>, questCount: Int) {
+    fun show(questType: QuestType<*>, questCount: Int, questBubbleView: View) {
         isShowing = true
         this.questBubbleView = questBubbleView
 
+        bind(questType, questCount)
+
+        animateIn(questBubbleView)
+    }
+
+    fun dismiss() {
+        isShowing = false
+        questBubbleView?.let { animateOut(it) }
+    }
+
+    /* ----------------------------------- Animating in and out --------------------------------- */
+
+    private fun bind(questType: QuestType<*>, questCount: Int) {
         questIconView.setImageResource(questType.icon)
         questTitleText.text = resources.getString(questType.title, *Array(10){"…"})
         solvedQuestsText.text = ""
@@ -73,8 +86,6 @@ class QuestTypeInfoFragment : Fragment(R.layout.fragment_quest_type_info) {
             wikiLinkButton.visibility = View.INVISIBLE
         }
 
-        animateIn(questBubbleView)
-
         val anim = ValueAnimator.ofInt(0, questCount)
 
         anim.doOnStart { solvedQuestsContainer.visibility = View.VISIBLE }
@@ -86,71 +97,91 @@ class QuestTypeInfoFragment : Fragment(R.layout.fragment_quest_type_info) {
         counterAnimation = anim
     }
 
-    fun dismiss() {
-        isShowing = false
-        questBubbleView?.let { animateOut(it) }
-    }
-
     private fun animateIn(questBubbleView: View) {
-        questBubbleView.visibility = View.INVISIBLE
-        val root = questBubbleView.rootView as ViewGroup
-
         dialogAndBackgroundContainer.visibility = View.VISIBLE
 
-        questIconView.applyTransforms(Transforms.IDENTITY)
-
         clearAnimators()
-        currentAnimators.addAll(listOf(
-            dialogBackground.animate()
-                .withStartAction {
-                    dialogBackground.alpha = 0f
-                }
-                .alpha(1f)
-                .setDuration(ANIMATION_TIME_IN_MS)
-                .setInterpolator(DecelerateInterpolator()),
-            dialogContainer.animate()
-                .withStartAction {
-                    dialogContainer.alpha = 0f
-                    dialogContainer.scaleX = 0.5f
-                    dialogContainer.scaleY = 0.5f
-                    dialogContainer.translationY = 0f
-                }
-                .alpha(1f)
-                .scaleX(1f).scaleY(1f)
-                .setDuration(ANIMATION_TIME_IN_MS)
-                .setInterpolator(OvershootInterpolator()),
-            questIconView.animateFrom(questBubbleView, root)
-                .setDuration(ANIMATION_TIME_IN_MS)
-                .setInterpolator(OvershootInterpolator())
-        ))
+        currentAnimators.addAll(
+            createDialogPopInAnimations() + listOf(
+                createQuestIconFlingInAnimation(questBubbleView),
+                createFadeInBackgroundAnimation()
+            )
+        )
         currentAnimators.forEach { it.start() }
     }
 
     private fun animateOut(questBubbleView: View) {
-        val root = questBubbleView.rootView as ViewGroup
-
         clearAnimators()
-        currentAnimators.addAll(listOf(
-            dialogBackground.animate()
-                .alpha(0f)
-                .setDuration(ANIMATION_TIME_OUT_MS)
-                .setInterpolator(AccelerateInterpolator()),
-            dialogContainer.animate()
+        currentAnimators.addAll(
+            createDialogPopOutAnimations() + listOf(
+                createQuestIconFlingOutAnimation(questBubbleView),
+                createFadeOutBackgroundAnimation()
+            )
+        )
+        currentAnimators.forEach { it.start() }
+    }
+
+    private fun createFadeInBackgroundAnimation(): ViewPropertyAnimator {
+        dialogBackground.alpha = 0f
+        return dialogBackground.animate()
+            .alpha(1f)
+            .setDuration(ANIMATION_TIME_IN_MS)
+            .setInterpolator(DecelerateInterpolator())
+    }
+
+    private fun createFadeOutBackgroundAnimation(): ViewPropertyAnimator {
+        return dialogBackground.animate()
+            .alpha(0f)
+            .setDuration(ANIMATION_TIME_OUT_MS)
+            .setInterpolator(AccelerateInterpolator())
+            .withEndAction {
+                dialogAndBackgroundContainer.visibility = View.INVISIBLE
+            }
+    }
+
+    private fun createQuestIconFlingInAnimation(sourceView: View): ViewPropertyAnimator {
+        sourceView.visibility = View.INVISIBLE
+        val root = sourceView.rootView as ViewGroup
+        questIconView.applyTransforms(Transforms.IDENTITY)
+        return questIconView.animateFrom(sourceView, root)
+            .setDuration(ANIMATION_TIME_IN_MS)
+            .setInterpolator(OvershootInterpolator())
+    }
+
+    private fun createQuestIconFlingOutAnimation(targetView: View): ViewPropertyAnimator {
+        val root = targetView.rootView as ViewGroup
+        return questIconView.animateTo(targetView, root)
+            .setDuration(ANIMATION_TIME_OUT_MS)
+            .setInterpolator(AccelerateDecelerateInterpolator())
+            .withEndAction {
+                targetView.visibility = View.VISIBLE
+                questBubbleView = null
+            }
+    }
+
+    private fun createDialogPopInAnimations(): List<ViewPropertyAnimator> {
+        return listOf(dialogContentContainer, dialogBubbleBackground).map {
+            it.alpha = 0f
+            it.scaleX = 0.5f
+            it.scaleY = 0.5f
+            it.translationY = 0f
+            it.animate()
+                .alpha(1f)
+                .scaleX(1f).scaleY(1f)
+                .setDuration(ANIMATION_TIME_IN_MS)
+                .setInterpolator(OvershootInterpolator())
+        }
+    }
+
+    private fun createDialogPopOutAnimations(): List<ViewPropertyAnimator> {
+        return listOf(dialogContentContainer, dialogBubbleBackground).map {
+            it.animate()
                 .alpha(0f)
                 .scaleX(0.5f).scaleY(0.5f)
-                .translationYBy(dialogContainer.height * 0.2f)
+                .translationYBy(it.height * 0.2f)
                 .setDuration(ANIMATION_TIME_OUT_MS)
-                .setInterpolator(AccelerateInterpolator()),
-            questIconView.animateTo(questBubbleView, root)
-                .setDuration(ANIMATION_TIME_OUT_MS)
-                .setInterpolator(AccelerateDecelerateInterpolator())
-                .withEndAction {
-                    dialogAndBackgroundContainer.visibility = View.INVISIBLE
-                    questBubbleView.visibility = View.VISIBLE
-                    this.questBubbleView = null
-                }
-        ))
-        currentAnimators.forEach { it.start() }
+                .setInterpolator(AccelerateInterpolator())
+        }
     }
 
     private fun clearAnimators() {
@@ -163,15 +194,6 @@ class QuestTypeInfoFragment : Fragment(R.layout.fragment_quest_type_info) {
     private fun openUrl(url: String): Boolean {
         val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
         return tryStartActivity(intent)
-    }
-
-    private fun tryStartActivity(intent: Intent): Boolean {
-        return try {
-            startActivity(intent)
-            true
-        } catch (e: ActivityNotFoundException) {
-            false
-        }
     }
 
     companion object {

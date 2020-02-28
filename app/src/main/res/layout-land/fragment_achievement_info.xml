@@ -47,7 +47,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintWidth_max="360dp"
+        app:layout_constraintWidth_max="640dp"
         android:layout_margin="16dp"
         android:orientation="vertical"
         android:gravity="center_horizontal"
@@ -58,9 +58,9 @@
             android:id="@+id/dialogBubbleBackground"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="@id/spacer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/spacer"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             android:background="@drawable/speech_bubble_none"/>
 
@@ -71,8 +71,8 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintVertical_chainStyle="packed"
             android:src="@drawable/ic_quest_max_height"
             android:scaleType="fitCenter"
@@ -81,15 +81,18 @@
 
         <LinearLayout
             android:id="@+id/dialogContentContainer"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_marginStart="@dimen/dialog_horizontal_margin"
             android:layout_marginEnd="@dimen/dialog_horizontal_margin"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             android:gravity="center_horizontal"
             android:divider="@drawable/space_8dp"
             android:showDividers="beginning|middle|end"
-            app:layout_constraintTop_toBottomOf="@id/achievementIconView">
+            app:layout_constraintStart_toEndOf="@id/achievementIconView">
 
             <TextView
                 android:id="@+id/achievementTitleText"
@@ -97,7 +100,7 @@
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.Title"
-                tools:text="@string/achievement_wheelchair_title" />
+                tools:text="@string/achievement_bicyclist_title" />
 
             <TextView
                 android:id="@+id/achievementDescriptionText"
@@ -105,8 +108,7 @@
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.Body"
-                tools:text="@string/achievement_wheelchair_solved_X" />
-
+                tools:text="@string/achievement_bicyclist_solved_X" />
 
             <TextView
                 android:id="@+id/unlockedLinkTitleText"
@@ -121,9 +123,9 @@
                 android:id="@+id/unlockedLinksList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                android:orientation="vertical"
                 android:nestedScrollingEnabled="false"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:itemCount="1"
                 tools:listitem="@layout/row_link_item" />
 
@@ -145,9 +147,9 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginTop="@dimen/achievement_icon_offset"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="@dimen/achievement_icon_offset"
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

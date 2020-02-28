@@ -20,6 +20,7 @@ import android.os.Bundle;
 import android.os.IBinder;
 import androidx.annotation.AnyThread;
 import androidx.annotation.UiThread;
+import androidx.fragment.app.Fragment;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -45,6 +46,7 @@ import android.widget.Toast;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Collections;
 import java.util.Random;
 import java.util.concurrent.FutureTask;
 
@@ -64,6 +66,11 @@ import de.westnordost.streetcomplete.about.WhatsNewDialog;
 import de.westnordost.streetcomplete.data.Quest;
 import de.westnordost.streetcomplete.data.QuestAutoSyncer;
 import de.westnordost.streetcomplete.data.QuestController;
+import de.westnordost.streetcomplete.data.achievements.Achievement;
+import de.westnordost.streetcomplete.data.achievements.AchievementLevel;
+import de.westnordost.streetcomplete.data.achievements.Link;
+import de.westnordost.streetcomplete.data.achievements.LinkCategory;
+import de.westnordost.streetcomplete.data.achievements.TotalSolvedQuests;
 import de.westnordost.streetcomplete.data.download.QuestDownloadProgressListener;
 import de.westnordost.streetcomplete.data.download.QuestDownloadService;
 import de.westnordost.streetcomplete.data.osm.OsmQuest;
@@ -81,6 +88,7 @@ import de.westnordost.streetcomplete.sound.SoundFx;
 import de.westnordost.streetcomplete.statistics.AnswersCounter;
 import de.westnordost.streetcomplete.map.tangram.CameraPosition;
 import de.westnordost.streetcomplete.tools.CrashReportExceptionHandler;
+import de.westnordost.streetcomplete.user.AchievementInfoFragment;
 import de.westnordost.streetcomplete.user.UserActivity;
 import de.westnordost.streetcomplete.util.DpUtil;
 import de.westnordost.streetcomplete.util.GeoLocation;
@@ -486,6 +494,24 @@ public class MainActivity extends AppCompatActivity implements  MainFragment.Lis
 			case R.id.action_stats:
 				startActivity(new Intent(this, UserActivity.class));
 				return true;
+			case R.id.action_achievement:
+				Fragment f = getSupportFragmentManager().findFragmentById(R.id.achievement_info_fragment);
+				Link link = new Link(
+					"https://www.openstreetmap.org",
+					"Open Stretmep",
+					LinkCategory.INTRO,
+					R.drawable.ic_link_wiki,
+					R.string.link_wiki_description
+				);
+
+				((AchievementInfoFragment) f).showNew(new Achievement(
+					R.drawable.ic_quest_bus_stop_name,
+					R.string.achievement_bicyclist_title,
+					R.string.achievement_bicyclist_solved_X,
+					TotalSolvedQuests.INSTANCE,
+					Collections.singletonList(new AchievementLevel(1, Collections.singletonList(link)))
+				), 1);
+
 		}
 
 		return super.onOptionsItemSelected(item);

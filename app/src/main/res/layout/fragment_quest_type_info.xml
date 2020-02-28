@@ -30,11 +30,10 @@
         android:layout_margin="16dp"
         android:orientation="vertical"
         android:gravity="center_horizontal"
-        android:clickable="true"
-        android:focusable="true"
         android:elevation="24dp">
 
         <View
+            android:id="@+id/dialogBubbleBackground"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -58,69 +57,67 @@
             android:textAlignment="center"
             android:elevation="24dp"/>
 
-        <TextView
-            android:id="@+id/questTitleText"
+        <LinearLayout
+            android:id="@+id/dialogContentContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
+            android:orientation="vertical"
             android:layout_marginStart="@dimen/dialog_horizontal_margin"
             android:layout_marginEnd="@dimen/dialog_horizontal_margin"
-            android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.Title"
-            app:layout_constraintTop_toBottomOf="@id/questIconView"
-            tools:text="@string/quest_maxheight_title" />
-
-        <LinearLayout
-            android:id="@+id/solvedQuestsContainer"
-            android:layout_width="wrap_content"
-            android:layout_height="96dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            android:scaleX="1.0"
-            android:scaleY="1.0"
-            android:gravity="center_vertical"
-            android:divider="@drawable/space_4dp"
-            android:showDividers="middle"
-            android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@id/questTitleText">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_star_48dp"/>
+            android:gravity="center_horizontal"
+            android:divider="@drawable/space_8dp"
+            android:showDividers="beginning|middle|end"
+            app:layout_constraintTop_toBottomOf="@id/questIconView">
 
             <TextView
-                android:id="@+id/solvedQuestsText"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:maxLines="1"
-                android:textAlignment="gravity"
-                android:textColor="#000"
-                android:textStyle="bold"
-                android:textSize="48dp"
-                tools:text="1021" />
+                android:id="@+id/questTitleText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.Title"
+                tools:text="@string/quest_maxheight_title" />
+
+            <LinearLayout
+                android:id="@+id/solvedQuestsContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="96dp"
+                android:scaleX="1.0"
+                android:scaleY="1.0"
+                android:gravity="center_vertical"
+                android:divider="@drawable/space_4dp"
+                android:showDividers="middle"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_star_48dp"/>
+
+                <TextView
+                    android:id="@+id/solvedQuestsText"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:textAlignment="gravity"
+                    android:textColor="#000"
+                    android:textStyle="bold"
+                    android:textSize="48dp"
+                    tools:text="1021" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/wikiLinkButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_open_in_browser_24dp"
+                android:drawablePadding="8dp"
+                android:text="@string/user_statistics_quest_wiki_link"
+                android:textColor="@color/accent" />
 
         </LinearLayout>
-
-        <Button
-            android:id="@+id/wikiLinkButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:drawableStart="@drawable/ic_open_in_browser_24dp"
-            android:drawablePadding="8dp"
-            android:text="@string/user_statistics_quest_wiki_link"
-            android:textColor="@color/accent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/solvedQuestsContainer" />
 
         <Space
             android:id="@+id/spacer"

@@ -238,7 +238,11 @@ class QuestStatisticsFragment :
 
     private fun onClickedQuestType(questBubbleView: View, questType: QuestType<*>) {
         val detailsFragment = detailsFragment ?: return
-        detailsFragment.show(questBubbleView, questType, solvedQuestsByQuestType.getValue(questType))
+        detailsFragment.show(
+            questType,
+            solvedQuestsByQuestType.getValue(questType),
+            questBubbleView
+        )
     }
 
     private fun onFlingQuestType(body: Body, velocityX: Float, velocityY: Float) {

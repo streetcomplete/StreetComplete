@@ -34,6 +34,6 @@
         android:layout_toEndOf="@id/linkIconImageView"
         android:layout_below="@id/linkTitleTextView"
         android:textAppearance="@style/TextAppearance.ListItemText"
-        tools:text="OpenStreetMap-based cyclemap" />
+        tools:text="@string/link_cyclosm_description" />
 
 </RelativeLayout>

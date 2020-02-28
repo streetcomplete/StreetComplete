@@ -63,11 +63,11 @@ import oauth.signpost.basic.DefaultOAuthProvider;
 	@Provides public static UserController userController(
 		UserDao userDao, UserStore userStore, OAuthStore oAuthStore, Context context,
 		StatisticsDownloader statisticsDownloader, QuestStatisticsDao statisticsDao,
-		OsmConnection osmConnection
+		OsmConnection osmConnection, SharedPreferences prefs
 	)
 	{
 		return new UserController(
 			userDao, oAuthStore, userStore, OsmModule.getAvatarsCacheDirectory(context),
-			statisticsDownloader, statisticsDao, osmConnection);
+			statisticsDownloader, statisticsDao, osmConnection, prefs);
 	}
 }

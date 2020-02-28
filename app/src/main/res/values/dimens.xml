@@ -40,7 +40,7 @@
     <dimen name="quest_statistics_quest_type_icon_size">192dp</dimen>
     <dimen name="quest_statistics_quest_type_icon_offset">96dp</dimen>
 
-    <dimen name="achievement_icon_size">320dp</dimen>
+    <dimen name="achievement_icon_size">288dp</dimen>
     <dimen name="achievement_icon_offset">220dp</dimen>
 
 </resources>
