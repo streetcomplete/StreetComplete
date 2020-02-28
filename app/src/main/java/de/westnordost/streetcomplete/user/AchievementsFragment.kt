@@ -81,7 +81,13 @@ class AchievementsFragment : Fragment(R.layout.fragment_achievements),
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     itemView.achievementIconView.outlineProvider = CircularOutlineProvider
                 }
-                itemView.achievementLevelText.text = level.toString()
+                if (level == 1) {
+                    itemView.achievementLevelText.visibility = View.INVISIBLE
+                    itemView.achievementLevelText.text = ""
+                } else {
+                    itemView.achievementLevelText.visibility = View.VISIBLE
+                    itemView.achievementLevelText.text = level.toString()
+                }
                 itemView.setOnClickListener {
                     onClickedAchievement(achievement, level, itemView.achievementIconView)
                 }
