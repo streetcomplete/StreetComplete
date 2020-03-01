@@ -215,7 +215,7 @@ class QuestStatisticsFragment :
         }
         clickableContainer.addView(questView)
         clickableContainer.setOnTouchListener(object : SimpleGestureListener(clickableContainer) {
-            override fun onSingleTapUp(e: MotionEvent?): Boolean {
+            override fun onSingleTapConfirmed(e: MotionEvent?): Boolean {
                 onClickedQuestType(clickableContainer, questType)
                 return true
             }
@@ -225,7 +225,7 @@ class QuestStatisticsFragment :
                 val vx = (cos(a) * velocityX - sin(a) * velocityY).toFloat()
                 val vy = (cos(a) * velocityY + sin(a) * velocityX).toFloat()
                 onFlingQuestType(body, vx, vy)
-                return false
+                return true
             }
         })
 
@@ -294,6 +294,7 @@ private open class SimpleGestureListener(private val view: View) : GestureDetect
             ACTION_DOWN -> view.isPressed = true
             ACTION_UP -> view.isPressed = false
         }
+        v?.parent?.requestDisallowInterceptTouchEvent(true)
         return gestureDetector.onTouchEvent(event)
     }
 
