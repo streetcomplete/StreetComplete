@@ -210,7 +210,7 @@ class QuestStatisticsFragment :
         // foreground attribute only exists on FrameLayout up until KITKAT
         clickableContainer.foreground = resources.getDrawable(R.drawable.round_pressed)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            clickableContainer.elevation = 8f.toDp(ctx)
+            clickableContainer.elevation = 4f.toDp(ctx)
             clickableContainer.outlineProvider = CircularOutlineProvider
         }
         clickableContainer.addView(questView)

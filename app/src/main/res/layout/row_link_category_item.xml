@@ -18,7 +18,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/linkCategoryTitleTextView"
-        android:textAppearance="@style/TextAppearance.Body"
         tools:text="Some cool OSM stuff" />
 
 </RelativeLayout>

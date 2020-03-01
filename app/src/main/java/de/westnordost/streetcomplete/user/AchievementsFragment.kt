@@ -15,6 +15,7 @@ import de.westnordost.streetcomplete.data.achievements.AchievementsModule
 import de.westnordost.streetcomplete.ktx.awaitLayout
 import de.westnordost.streetcomplete.ktx.toDp
 import de.westnordost.streetcomplete.view.CircularOutlineProvider
+import de.westnordost.streetcomplete.view.GridLayoutSpacingItemDecoration
 import de.westnordost.streetcomplete.view.ListAdapter
 import kotlinx.android.synthetic.main.cell_achievement.view.*
 import kotlinx.android.synthetic.main.fragment_achievements.*
@@ -40,12 +41,17 @@ class AchievementsFragment : Fragment(R.layout.fragment_achievements),
         super.onViewCreated(view, savedInstanceState)
         val ctx = context!!
 
+        val itemSpacing = ctx.resources.getDimensionPixelSize(R.dimen.achievements_item_margin)
+
         launch {
             view.awaitLayout()
             val spanCount = (view.width.toFloat().toDp(ctx) / 128).toInt()
-            achievementsList.layoutManager = GridLayoutManager(ctx, spanCount, RecyclerView.VERTICAL, false)
+            val layoutManager = GridLayoutManager(ctx, spanCount, RecyclerView.VERTICAL, false)
+            achievementsList.layoutManager = layoutManager
             // TODO real data...
+            achievementsList.addItemDecoration(GridLayoutSpacingItemDecoration(itemSpacing))
             achievementsList.adapter = AchievementsAdapter(AchievementsModule.achievements.values.map { it to 1 })
+            achievementsList.clipToPadding = false
         }
     }
 
@@ -83,8 +89,8 @@ class AchievementsFragment : Fragment(R.layout.fragment_achievements),
                 val level = with.second
                 itemView.achievementIconView.setImageResource(achievement.icon)
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    itemView.achievementIconView.outlineProvider = CircularOutlineProvider
-                    itemView.achievementIconView.elevation = 4f.toDp(itemView.context)
+                    itemView.outlineProvider = CircularOutlineProvider
+                    itemView.elevation = 4f.toDp(itemView.context)
                 }
                 if (level == 1) {
                     itemView.achievementLevelText.visibility = View.INVISIBLE

@@ -19,9 +19,9 @@ class GridLayoutSpacingItemDecoration(private val spacingInPx: Int) : RecyclerVi
         val span = spanSizeLookup.getSpanIndex(position, spanCount)
         val rowCount = spanSizeLookup.getSpanGroupIndex(count - 1, spanCount) + 1
 
-        outRect.left = if (span > 0) spacingInPx else 0
-        outRect.right = if (span < spanCount - 1) spacingInPx else 0
-        outRect.top = if (row > 0) spacingInPx else 0
-        outRect.bottom = if (row < rowCount - 1) spacingInPx else 0
+        outRect.left = if (span > 0) spacingInPx/2 else 0
+        outRect.right = if (span < spanCount - 1) spacingInPx/2 else 0
+        outRect.top = if (row > 0) spacingInPx/2 else 0
+        outRect.bottom = if (row < rowCount - 1) spacingInPx/2 else 0
     }
 }

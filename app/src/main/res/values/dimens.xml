@@ -46,5 +46,6 @@
     <!-- links screen -->
 
     <dimen name="links_item_margin">8dp</dimen>
+    <dimen name="achievements_item_margin">16dp</dimen>
 
 </resources>
