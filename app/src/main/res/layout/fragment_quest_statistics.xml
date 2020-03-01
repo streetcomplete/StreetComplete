@@ -22,6 +22,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:textAppearance="@style/TextAppearance.Title"
         android:textColor="@color/hint_text"
-        android:text="@string/user_quests_empty"/>
+        android:text="@string/quests_empty"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

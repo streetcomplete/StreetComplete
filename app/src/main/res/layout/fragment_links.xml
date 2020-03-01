@@ -22,6 +22,6 @@
         android:layout_centerInParent="true"
         android:textAppearance="@style/TextAppearance.Title"
         android:textColor="@color/hint_text"
-        android:text="@string/user_links_empty"/>
+        android:text="@string/links_empty"/>
 
 </RelativeLayout>

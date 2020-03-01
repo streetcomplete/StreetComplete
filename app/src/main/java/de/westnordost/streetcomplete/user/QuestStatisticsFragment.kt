@@ -98,9 +98,6 @@ class QuestStatisticsFragment :
             }
         }
 
-        physicsView.alpha = 0f
-        physicsView.animate().alpha(1f).setDuration(2000L).setStartDelay(600L).start()
-
         emptyText.visibility = View.GONE
 
         launch {
