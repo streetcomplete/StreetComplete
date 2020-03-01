@@ -24,7 +24,11 @@ class UserActivity : AppCompatActivity(R.layout.activity_user) {
         TabLayoutMediator(tabLayout, viewPager) { tab: TabLayout.Tab, position: Int ->
             val page = PAGES[position]
             tab.setIcon(page.icon)
-            tab.setText(page.title)
+            if (resources.getBoolean(R.bool.show_user_tabs_text)) {
+                tab.setText(page.title)
+            } else {
+                tab.text = ""
+            }
         }.attach()
     }
 }
