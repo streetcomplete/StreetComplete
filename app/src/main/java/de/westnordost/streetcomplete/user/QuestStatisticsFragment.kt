@@ -42,7 +42,8 @@ import kotlin.math.cos
 import kotlin.math.sin
 import kotlin.math.sqrt
 
-
+/** Shows the user's solved quests of each type in some kind of ball pit. Clicking on each opens
+ *  a QuestTypeInfoFragment that shows the quest's details. */
 class QuestStatisticsFragment :
     Fragment(R.layout.fragment_quest_statistics),
     CoroutineScope by CoroutineScope(Dispatchers.Main),

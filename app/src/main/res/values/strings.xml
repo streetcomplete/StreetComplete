@@ -723,22 +723,31 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="achievements_unlocked_link">Unlocked link:</string>
     <string name="achievements_unlocked_links">Unlocked links:</string>
 
-    <string name="link_cyclosm_description">A bicycle map</string>
-    <string name="link_wheelmap_description">Map for finding wheelchair accessible places</string>
-    <string name="link_osm_buildings_description">3D building geometry viewer</string>
-    <string name="link_openvegemap_description">Find vegetarian and vegan restaurants in your city</string>
+    <string name="link_category_intro_title">Introduction</string>
+    <string name="link_category_intro_description">Learning more about OpenStreetMap and its community.</string>
+    <string name="link_category_editors_title">Contributing</string>
+    <string name="link_category_editors_description">Editors and other ways to contribute to OpenStreetMap.</string>
+    <string name="link_category_showcase_title">Showcase</string>
+    <string name="link_category_showcase_description">Maps, services and apps that use OSM data, some of which you contributed yourself!</string>
+    <string name="link_category_goodies_title">Goodies</string>
+    <string name="link_category_goodies_description">Interesting map-related stuff, not necessarily having that much to do with OSM.</string>
+
+    <string name="link_cyclosm_description">A map for bicyclists</string>
+    <string name="link_wheelmap_description">A map for finding wheelchair accessible places</string>
+    <string name="link_osm_buildings_description">A map that shows the buildings in 3D</string>
+    <string name="link_openvegemap_description">Discover vegetarian and vegan restaurants in your city</string>
     <string name="link_touch_mapper_description">Create tactile maps easily for any address</string>
-    <string name="link_mapy_tactile_description">Tactile maps for visually impaired in various scales</string>
+    <string name="link_mapy_tactile_description">Tactile maps for the visually impaired in various scales</string>
     <string name="link_josm_description">Fully-featured OSM editor for the desktop</string>
     <string name="link_vespucci_description">Advanced OSM editor for Android</string>
-    <string name="link_ideditor_description">Easy OSM editor for the web</string>
+    <string name="link_ideditor_description">Easy OSM editor for the browser. Optimized for the desktop or large tablets</string>
     <string name="link_umap_description">Create maps with custom data quickly and embed them in your site</string>
     <string name="link_opnvkarte_description">A map of public transport routes and stops</string>
     <string name="link_pic4review_description">Contribute to OSM simply by looking at pictures of your city</string>
     <string name="link_wiki_description">The wiki is your starting point to everything related OpenStreetMap</string>
     <string name="link_learnosm_description">New to OpenStreetMap? This is a beginner\'s guide</string>
     <string name="link_openrouteservice_wheelchair_description">Turn by turn navigation for wheelchair users</string>
-    <string name="link_nominatim_description">The geocoder (find location of a place or address) for OSM data</string>
+    <string name="link_nominatim_description">The geocoder for OSM data, used by many other services</string>
     <string name="link_city_roads_description">Render all roads of a city, for printing on T-Shirts, mugs, …</string>
 
     <string name="achievement_first_edit_title">First Quest Solved</string>

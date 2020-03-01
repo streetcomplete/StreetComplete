@@ -27,13 +27,20 @@ import kotlinx.android.synthetic.main.fragment_quest_type_info.*
 import kotlin.math.min
 import kotlin.math.pow
 
+/** Shows the details for a certain quest type as a fake-dialog.
+ *
+ *  It is not a real dialog because a real dialog has its own window, or in other words, has a
+ *  different root view than the rest of the UI. However, for the calculation to animate the icon
+ *  from another view to the position in the "dialog", there must be a common root view.*/
 class QuestTypeInfoFragment : Fragment(R.layout.fragment_quest_type_info) {
 
+    /** View from which the quest icon is animated from (and back on dismissal)*/
     private var questBubbleView: View? = null
 
     var isShowing: Boolean = false
         private set
 
+    // need to keep the animators here to be able to clear them on cancel
     private val currentAnimators: MutableList<ViewPropertyAnimator> = mutableListOf()
     private var counterAnimation: ValueAnimator? = null
 

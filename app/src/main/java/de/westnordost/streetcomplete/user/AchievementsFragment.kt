@@ -23,6 +23,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 
+/** Shows the icons for all achieved achievements and opens a AchievementInfoFragment to show the
+ *  details on click. */
 class AchievementsFragment : Fragment(R.layout.fragment_achievements),
     CoroutineScope by CoroutineScope(Dispatchers.Main),
     BackPressedListener {
@@ -80,6 +82,7 @@ class AchievementsFragment : Fragment(R.layout.fragment_achievements),
                 itemView.achievementIconView.setImageResource(achievement.icon)
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     itemView.achievementIconView.outlineProvider = CircularOutlineProvider
+                    itemView.achievementIconView.elevation = 4f.toDp(itemView.context)
                 }
                 if (level == 1) {
                     itemView.achievementLevelText.visibility = View.INVISIBLE

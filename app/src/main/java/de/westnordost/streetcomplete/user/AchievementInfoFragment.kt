@@ -5,36 +5,52 @@ import android.animation.LayoutTransition.APPEARING
 import android.animation.LayoutTransition.DISAPPEARING
 import android.animation.TimeAnimator
 import android.content.Intent
-import android.graphics.Outline
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.view.*
+import android.view.View
+import android.view.ViewGroup
+import android.view.ViewPropertyAnimator
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import android.view.animation.OvershootInterpolator
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.achievements.Achievement
-import de.westnordost.streetcomplete.data.achievements.Link
 import de.westnordost.streetcomplete.ktx.tryStartActivity
 import de.westnordost.streetcomplete.util.Transforms
 import de.westnordost.streetcomplete.util.animateFrom
 import de.westnordost.streetcomplete.util.animateTo
 import de.westnordost.streetcomplete.util.applyTransforms
 import de.westnordost.streetcomplete.view.CircularOutlineProvider
-import de.westnordost.streetcomplete.view.ListAdapter
 import kotlinx.android.synthetic.main.fragment_achievement_info.*
-import kotlinx.android.synthetic.main.row_link_item.view.*
 
+
+/** Shows details for a certain level of one achievement as a fake-dialog.
+ *  There are two modes:
+ *
+ *  1. Show details of a newly achieved achievement. The achievement icon animates in in a fancy way
+ *     and some shining animation is played. The unlocked links are shown.
+ *
+ *  2. Show details of an already achieved achievement. The achievement icon animates from another
+ *     view to its current position, no shining animation is played. Also, the unlocked links are
+ *     not shown because they can be looked at in the links screen.
+ *
+ *  It is not a real dialog because a real dialog has its own window, or in other words, has a
+ *  different root view than the rest of the UI. However, for the calculation to animate the icon
+ *  from another view to the position in the "dialog", there must be a common root view.
+ *  */
 class AchievementInfoFragment : Fragment(R.layout.fragment_achievement_info) {
 
+    /** View from which the achievement icon is animated from (and back on dismissal)*/
     private var achievementIconBubble: View? = null
 
     var isShowing: Boolean = false
         private set
 
+    // need to keep the animators here to be able to clear them on cancel
     private val currentAnimators: MutableList<ViewPropertyAnimator> = mutableListOf()
     private var shineAnimation: TimeAnimator? = null
 
@@ -52,6 +68,11 @@ class AchievementInfoFragment : Fragment(R.layout.fragment_achievement_info) {
         dialogAndBackgroundContainer.setOnClickListener { dismiss() }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             achievementIconView.outlineProvider = CircularOutlineProvider
+        }
+        // in order to not show the scroll indicators
+        unlockedLinksList.isNestedScrollingEnabled = false
+        unlockedLinksList.layoutManager = object : LinearLayoutManager(context!!, VERTICAL, false) {
+            override fun canScrollVertically() = false
         }
     }
 
@@ -116,7 +137,7 @@ class AchievementInfoFragment : Fragment(R.layout.fragment_achievement_info) {
                 else R.string.achievements_unlocked_links
             )
             unlockedLinksList.visibility = View.VISIBLE
-            unlockedLinksList.adapter = AchievementLinksAdapter(achievementLevel.links)
+            unlockedLinksList.adapter = LinksAdapter(achievementLevel.links, this::openUrl)
         }
 
         if (level > 1) {
@@ -262,6 +283,11 @@ class AchievementInfoFragment : Fragment(R.layout.fragment_achievement_info) {
             it.scaleX = 0.5f
             it.scaleY = 0.5f
             it.translationY = 0f
+            /* For the "show new achievement" mode, only the icon is shown first and only after a
+            *  delay, the dialog with the description etc.
+            *  This icon is in the center at first and should animate up while the dialog becomes
+            *  visible. This movement is solved via a (default) layout transition here for which the
+            *  APPEARING transition type is disabled because we animate the alpha ourselves. */
             it.visibility = if (startDelay > 0) View.GONE else View.VISIBLE
             it.animate()
                 .setStartDelay(startDelay)
@@ -315,9 +341,9 @@ class AchievementInfoFragment : Fragment(R.layout.fragment_achievement_info) {
         currentAnimators.clear()
     }
 
-    private fun openUrl(url: String): Boolean {
+    private fun openUrl(url: String) {
         val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-        return tryStartActivity(intent)
+        tryStartActivity(intent)
     }
 
     companion object {
@@ -326,27 +352,4 @@ class AchievementInfoFragment : Fragment(R.layout.fragment_achievement_info) {
         const val DIALOG_APPEAR_DELAY_IN_MS = 2500L
         const val ANIMATION_TIME_OUT_MS = 300L
     }
-
-    private inner class AchievementLinksAdapter(links: List<Link>) : ListAdapter<Link>(links) {
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
-            ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.row_link_item, parent, false))
-
-        inner class ViewHolder(itemView: View) : ListAdapter.ViewHolder<Link>(itemView) {
-            override fun onBind(with: Link) {
-                if (with.icon != null) {
-                    itemView.linkIconImageView.setImageResource(with.icon)
-                } else {
-                    itemView.linkIconImageView.setImageDrawable(null)
-                }
-                itemView.linkTitleTextView.text = with.title
-                if (with.description != null) {
-                    itemView.linkDescriptionTextView.setText(with.description)
-                } else {
-                    itemView.linkDescriptionTextView.text = ""
-                }
-                itemView.setOnClickListener { openUrl(with.url) }
-            }
-        }
-    }
-
 }

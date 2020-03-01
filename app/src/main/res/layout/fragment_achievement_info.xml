@@ -89,6 +89,7 @@
             android:gravity="center_horizontal"
             android:divider="@drawable/space_8dp"
             android:showDividers="beginning|middle|end"
+            android:paddingBottom="@dimen/dialog_vertical_margin"
             app:layout_constraintTop_toBottomOf="@id/achievementIconView">
 
             <TextView
