@@ -40,7 +40,7 @@
     <style name="TextAppearance.ListItemText" parent="TextAppearance.AppCompat.Body1">
         <item name="android:textSize">14sp</item>
         <item name="android:fontFamily">sans-serif-condensed</item>
-        <item name="android:textColor">@color/caption_text</item>
+        <item name="android:textColor">@color/hint_text</item>
     </style>
 
     <style name="ButtonBar" parent="Widget.AppCompat.ButtonBar">

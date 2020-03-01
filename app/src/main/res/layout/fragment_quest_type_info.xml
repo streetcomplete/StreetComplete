@@ -101,8 +101,7 @@
                     android:gravity="center"
                     android:maxLines="1"
                     android:textAlignment="gravity"
-                    android:textColor="#000"
-                    android:textStyle="bold"
+                    android:textAppearance="@style/TextAppearance.Title"
                     android:textSize="48dp"
                     tools:text="1021" />
 
