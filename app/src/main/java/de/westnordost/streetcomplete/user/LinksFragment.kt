@@ -19,6 +19,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 
+// TODO show message when there are no unlocked links yet
 
 /** Shows the user's unlocked links */
 class LinksFragment : Fragment(R.layout.fragment_links),

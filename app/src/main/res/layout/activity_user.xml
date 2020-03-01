@@ -5,10 +5,14 @@
     android:layout_height="match_parent"
     >
 
-    <fragment
-        android:id="@+id/fragment_container"
-        android:name="de.westnordost.streetcomplete.user.LinksFragment"
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content" />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </LinearLayout>

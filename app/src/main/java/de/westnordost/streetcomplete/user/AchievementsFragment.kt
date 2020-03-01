@@ -23,6 +23,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 
+// TODO show message when there are no unlocked achievements yet
+
 /** Shows the icons for all achieved achievements and opens a AchievementInfoFragment to show the
  *  details on click. */
 class AchievementsFragment : Fragment(R.layout.fragment_achievements),

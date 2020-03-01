@@ -7,8 +7,8 @@ import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.achievements.Link
 import de.westnordost.streetcomplete.data.achievements.LinkCategory
+import kotlinx.android.synthetic.main.card_link_item.view.*
 import kotlinx.android.synthetic.main.row_link_category_item.view.*
-import kotlinx.android.synthetic.main.row_link_item.view.*
 
 /** Adapter for a list of links, grouped by category */
 class GroupedLinksAdapter(links: List<Link>, private val onClickLink: (url: String) -> Unit)
@@ -37,7 +37,7 @@ class GroupedLinksAdapter(links: List<Link>, private val onClickLink: (url: Stri
         val inflater = LayoutInflater.from(parent.context)
         return when(viewType) {
             CATEGORY -> CategoryViewHolder(inflater.inflate(R.layout.row_link_category_item, parent, false))
-            LINK -> LinkViewHolder(inflater.inflate(R.layout.row_link_item, parent, false))
+            LINK -> LinkViewHolder(inflater.inflate(R.layout.card_link_item, parent, false))
             else -> throw IllegalStateException("Unexpected viewType $viewType")
         }
     }
