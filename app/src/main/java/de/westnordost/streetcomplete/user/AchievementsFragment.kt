@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import de.westnordost.streetcomplete.BackPressedListener
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.achievements.Achievement
 import de.westnordost.streetcomplete.data.achievements.AchievementsModule
@@ -24,44 +23,42 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 
-// TODO show message when there are no unlocked achievements yet
-
 /** Shows the icons for all achieved achievements and opens a AchievementInfoFragment to show the
  *  details on click. */
 class AchievementsFragment : Fragment(R.layout.fragment_achievements),
-    CoroutineScope by CoroutineScope(Dispatchers.Main),
-    BackPressedListener {
+    CoroutineScope by CoroutineScope(Dispatchers.Main) {
 
-    private val detailsFragment: AchievementInfoFragment?
-        get() = childFragmentManager.findFragmentById(R.id.detailsFragment) as AchievementInfoFragment
+    interface Listener {
+        fun onClickedAchievement(achievement: Achievement, level: Int, achievementBubbleView: View)
+    }
+    private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
     /* --------------------------------------- Lifecycle ---------------------------------------- */
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val ctx = context!!
-
+        val minCellWidth = 128f
         val itemSpacing = ctx.resources.getDimensionPixelSize(R.dimen.achievements_item_margin)
 
         launch {
             view.awaitLayout()
-            val spanCount = (view.width.toFloat().toDp(ctx) / 128).toInt()
+
+            emptyText.visibility = View.GONE
+
+            val viewWidth = view.width.toFloat().toDp(ctx)
+            val spanCount = (viewWidth / minCellWidth).toInt()
+
             val layoutManager = GridLayoutManager(ctx, spanCount, RecyclerView.VERTICAL, false)
             achievementsList.layoutManager = layoutManager
-            // TODO real data...
             achievementsList.addItemDecoration(GridLayoutSpacingItemDecoration(itemSpacing))
-            achievementsList.adapter = AchievementsAdapter(AchievementsModule.achievements.values.map { it to 1 })
             achievementsList.clipToPadding = false
-        }
-    }
+            // TODO real data...
+            val achievements = AchievementsModule.achievements.values.map { it to 1 }
+            achievementsList.adapter = AchievementsAdapter(achievements)
 
-    override fun onBackPressed(): Boolean {
-        val detailsFragment = detailsFragment
-        if (detailsFragment != null && detailsFragment.isShowing) {
-            detailsFragment.dismiss()
-            return true
+            emptyText.visibility = if (achievements.isEmpty()) View.VISIBLE else View.GONE
         }
-        return false
     }
 
     override fun onDestroy() {
@@ -70,12 +67,6 @@ class AchievementsFragment : Fragment(R.layout.fragment_achievements),
     }
 
     /* -------------------------------------- Interaction --------------------------------------- */
-
-
-    private fun onClickedAchievement(achievement: Achievement, level: Int, achievementBubbleView: View) {
-        val detailsFragment = detailsFragment ?: return
-        detailsFragment.show(achievement, level, achievementBubbleView)
-    }
 
     private inner class AchievementsAdapter(achievements: List<Pair<Achievement, Int>>
     ) : ListAdapter<Pair<Achievement, Int>>(achievements) {
@@ -100,7 +91,7 @@ class AchievementsFragment : Fragment(R.layout.fragment_achievements),
                     itemView.achievementLevelText.text = level.toString()
                 }
                 itemView.setOnClickListener {
-                    onClickedAchievement(achievement, level, itemView.achievementIconView)
+                    listener?.onClickedAchievement(achievement, level, itemView.achievementIconView)
                 }
             }
         }

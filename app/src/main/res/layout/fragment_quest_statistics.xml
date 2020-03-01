@@ -6,30 +6,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/user_statistics_description"
-        android:padding="32dp"
-        android:textAlignment="center"
-        app:layout_constraintVertical_bias="0.15"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        />
-
     <de.westnordost.streetcomplete.user.PhysicsWorldView
         android:id="@+id/physicsView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:visibility="invisible"/>
 
-    <fragment
-        android:name="de.westnordost.streetcomplete.user.QuestTypeInfoFragment"
-        android:id="@+id/detailsFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        />
+    <TextView
+        android:id="@+id/emptyText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textAppearance="@style/TextAppearance.Title"
+        android:textColor="@color/hint_text"
+        android:text="@string/user_quests_empty"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

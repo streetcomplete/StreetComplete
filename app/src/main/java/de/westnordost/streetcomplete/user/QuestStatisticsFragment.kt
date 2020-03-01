@@ -19,7 +19,6 @@ import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.FrameLayout
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
-import de.westnordost.streetcomplete.BackPressedListener
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.QuestType
@@ -47,17 +46,13 @@ import kotlin.math.sqrt
 class QuestStatisticsFragment :
     Fragment(R.layout.fragment_quest_statistics),
     CoroutineScope by CoroutineScope(Dispatchers.Main),
-    SensorEventListener,
-    BackPressedListener
+    SensorEventListener
 {
     @Inject internal lateinit var questStatisticsDao: QuestStatisticsDao
     @Inject internal lateinit var questTypeRegistry: QuestTypeRegistry
 
     private val mainHandler = Handler(Looper.getMainLooper())
     private val physicsController: PhysicsWorldController
-
-    private val detailsFragment: QuestTypeInfoFragment?
-        get() = childFragmentManager.findFragmentById(R.id.detailsFragment) as QuestTypeInfoFragment
 
     private val questBodyDef: BodyDef
 
@@ -69,6 +64,11 @@ class QuestStatisticsFragment :
     private var minPixelsPerMeter: Float = 1f
 
     private lateinit var worldBounds: RectF
+
+    interface Listener {
+        fun onClickedQuestType(questType: QuestType<*>, solvedCount: Int, questBubbleView: View)
+    }
+    private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
     init {
         Injector.instance.applicationComponent.inject(this)
@@ -101,6 +101,8 @@ class QuestStatisticsFragment :
         physicsView.alpha = 0f
         physicsView.animate().alpha(1f).setDuration(2000L).setStartDelay(600L).start()
 
+        emptyText.visibility = View.GONE
+
         launch {
             withContext(Dispatchers.IO) {
                 // TODO just for testing...
@@ -118,6 +120,9 @@ class QuestStatisticsFragment :
             }
 
             val totalSolvedQuests = solvedQuestsByQuestType.values.sum()
+
+            emptyText.visibility = if (totalSolvedQuests == 0) View.VISIBLE else View.GONE
+
             var areaInMeters = ONE_QUEST_SIZE_IN_M2 * totalSolvedQuests / QUESTS_FILL_FACTOR
             if (areaInMeters == 0f) areaInMeters = 1f
             setupScene(areaInMeters)
@@ -136,15 +141,6 @@ class QuestStatisticsFragment :
         super.onPause()
         sensorManager.unregisterListener(this)
         physicsController.pause()
-    }
-
-    override fun onBackPressed(): Boolean {
-        val detailsFragment = detailsFragment
-        if (detailsFragment != null && detailsFragment.isShowing) {
-            detailsFragment.dismiss()
-            return true
-        }
-        return false
     }
 
     override fun onDestroy() {
@@ -216,7 +212,7 @@ class QuestStatisticsFragment :
         clickableContainer.addView(questView)
         clickableContainer.setOnTouchListener(object : SimpleGestureListener(clickableContainer) {
             override fun onSingleTapConfirmed(e: MotionEvent?): Boolean {
-                onClickedQuestType(clickableContainer, questType)
+                listener?.onClickedQuestType(questType, solvedQuestsByQuestType.getValue(questType), clickableContainer)
                 return true
             }
 
@@ -243,15 +239,6 @@ class QuestStatisticsFragment :
     }
 
     /* ---------------------------- Interaction with quest bubbles  ----------------------------- */
-
-    private fun onClickedQuestType(questBubbleView: View, questType: QuestType<*>) {
-        val detailsFragment = detailsFragment ?: return
-        detailsFragment.show(
-            questType,
-            solvedQuestsByQuestType.getValue(questType),
-            questBubbleView
-        )
-    }
 
     private fun onFlingQuestType(body: Body, velocityX: Float, velocityY: Float) {
         val pixelsPerMeter = physicsView?.pixelsPerMeter ?: return

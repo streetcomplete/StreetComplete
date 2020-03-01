@@ -20,13 +20,14 @@
         tools:itemCount="8"
         tools:listitem="@layout/cell_achievement" />
 
-
-    <fragment
-        android:name="de.westnordost.streetcomplete.user.AchievementInfoFragment"
-        android:id="@+id/detailsFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:visibility="gone"
+    <TextView
+        android:id="@+id/emptyText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textAppearance="@style/TextAppearance.Title"
+        android:textColor="@color/hint_text"
+        android:text="@string/user_achievements_empty"
         />
 
 </RelativeLayout>

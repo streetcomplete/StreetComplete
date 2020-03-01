@@ -19,8 +19,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 
-// TODO show message when there are no unlocked links yet
-
 /** Shows the user's unlocked links */
 class LinksFragment : Fragment(R.layout.fragment_links),
     CoroutineScope by CoroutineScope(Dispatchers.Main) {
@@ -28,17 +26,20 @@ class LinksFragment : Fragment(R.layout.fragment_links),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val ctx = context!!
+        val minCellWidth = 280f
+        val itemSpacing = ctx.resources.getDimensionPixelSize(R.dimen.links_item_margin)
 
         launch {
             view.awaitLayout()
 
+            emptyText.visibility = View.GONE
+
             val viewWidth = view.width.toFloat().toDp(ctx)
-            val minCellWidth = 280f
-            val itemSpacing = ctx.resources.getDimensionPixelSize(R.dimen.links_item_margin)
             val spanCount = (viewWidth / minCellWidth).toInt()
 
             // TODO real data...
-            val adapter = GroupedLinksAdapter(AchievementsModule.links.values.toList(), this@LinksFragment::openUrl)
+            val links = AchievementsModule.links.values.toList()
+            val adapter = GroupedLinksAdapter(links, this@LinksFragment::openUrl)
             // headers should span the whole width
             val spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
                 override fun getSpanSize(position: Int): Int =
@@ -54,6 +55,8 @@ class LinksFragment : Fragment(R.layout.fragment_links),
             linksList.layoutManager = layoutManager
             linksList.adapter = adapter
             linksList.clipToPadding = false
+
+            emptyText.visibility = if (links.isEmpty()) View.VISIBLE else View.GONE
         }
     }
 
