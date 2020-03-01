@@ -7,6 +7,8 @@ import de.westnordost.streetcomplete.R
 object AchievementsModule {
 
     val links = mapOf(
+
+        /* ---------------------------------------- Intro ----------------------------------------*/
         "wiki" to Link(
             "https://wiki.openstreetmap.org",
             "OpenStreetMap Wiki",
@@ -21,19 +23,14 @@ object AchievementsModule {
             R.drawable.ic_link_learnosm,
             R.string.link_learnosm_description
         ),
-        "josm" to Link(
-            "https://josm.openstreetmap.de",
-            "JOSM",
+
+        /* --------------------------------------- Editors ---------------------------------------*/
+        "pic4review" to Link(
+            "https://pic4review.pavie.info",
+            "Pic4Review",
             LinkCategory.EDITORS,
-            R.drawable.ic_link_josm,
-            R.string.link_josm_description
-        ),
-        "vespucci" to Link(
-            "https://vespucci.io",
-            "Vespucci",
-            LinkCategory.EDITORS,
-            R.drawable.ic_link_vespucci,
-            R.string.link_vespucci_description
+            R.drawable.ic_link_pic4review,
+            R.string.link_pic4review_description
         ),
         "ideditor" to Link(
             "http://ideditor.com",
@@ -42,13 +39,22 @@ object AchievementsModule {
             R.drawable.ic_link_ideditor,
             R.string.link_ideditor_description
         ),
-        "pic4review" to Link(
-            "https://pic4review.pavie.info",
-            "Pic4Review",
+        "vespucci" to Link(
+            "https://vespucci.io",
+            "Vespucci",
             LinkCategory.EDITORS,
-            R.drawable.ic_link_pic4review,
-            R.string.link_pic4review_description
+            R.drawable.ic_link_vespucci,
+            R.string.link_vespucci_description
         ),
+        "josm" to Link(
+            "https://josm.openstreetmap.de",
+            "JOSM",
+            LinkCategory.EDITORS,
+            R.drawable.ic_link_josm,
+            R.string.link_josm_description
+        ),
+
+        /* -------------------------------------- Showcase ---------------------------------------*/
         "cyclosm" to Link(
             "https://www.cyclosm.org",
             "CyclOSM",
@@ -56,13 +62,7 @@ object AchievementsModule {
             R.drawable.ic_link_cyclosm,
             R.string.link_cyclosm_description
         ),
-        "wheelmap" to Link(
-            "https://wheelmap.org",
-            "wheelmap.org",
-            LinkCategory.SHOWCASE,
-            R.drawable.ic_link_wheelmap,
-            R.string.link_wheelmap_description
-        ),
+
         "öpnvkarte" to Link(
             "https://öpnvkarte.de",
             "ÖPNVKarte",
@@ -70,13 +70,30 @@ object AchievementsModule {
             R.drawable.ic_link_opnvkarte,
             R.string.link_opnvkarte_description
         ),
+
+        "wheelmap" to Link(
+            "https://wheelmap.org",
+            "wheelmap.org",
+            LinkCategory.SHOWCASE,
+            R.drawable.ic_link_wheelmap,
+            R.string.link_wheelmap_description
+        ),
         "openrouteservice-wheelchair" to Link(
             "https://maps.openrouteservice.org/directions?b=3",
-            "Openrouteservice (Wheelchair Routing)",
+            "Openrouteservice (Wheelchair)",
             LinkCategory.SHOWCASE,
             R.drawable.ic_link_heigit,
             R.string.link_openrouteservice_wheelchair_description
         ),
+
+        "openvegemap" to Link(
+            "https://openvegemap.netlib.re",
+            "OpenVegeMap",
+            LinkCategory.SHOWCASE,
+            R.drawable.ic_link_openvegemap,
+            R.string.link_openvegemap_description
+        ),
+
         "osm_buildings" to Link(
             "https://osmbuildings.org",
             "OSM Buildings",
@@ -84,6 +101,7 @@ object AchievementsModule {
             R.drawable.ic_link_osm_buildings,
             R.string.link_osm_buildings_description
         ),
+
         "touch_mapper" to Link(
             "https://touch-mapper.org",
             "Touch Mapper",
@@ -98,6 +116,7 @@ object AchievementsModule {
             R.drawable.ic_link_mapy_tactile,
             R.string.link_mapy_tactile_description
         ),
+
         "nominatim" to Link(
             "https://nominatim.openstreetmap.org",
             "Nominatim",
@@ -105,13 +124,8 @@ object AchievementsModule {
             R.drawable.ic_link_openstreetmap,
             R.string.link_nominatim_description
         ),
-        "openvegemap" to Link(
-            "https://openvegemap.netlib.re",
-            "OpenVegeMap",
-            LinkCategory.SHOWCASE,
-            R.drawable.ic_link_openvegemap,
-            R.string.link_openvegemap_description
-        ),
+
+        /* -------------------------------------- Goodies ----------------------------------------*/
         "umap" to Link(
             "https://umap.openstreetmap.fr",
             "uMap",
