@@ -33,6 +33,8 @@ class UserActivity : AppCompatActivity(R.layout.activity_user),
             override fun createFragment(position: Int) = PAGES[position].creator()
         }
 
+        tabLayout.tabGravity = TabLayout.GRAVITY_FILL
+        tabLayout.tabMode = TabLayout.MODE_FIXED
         TabLayoutMediator(tabLayout, viewPager) { tab: TabLayout.Tab, position: Int ->
             val page = PAGES[position]
             tab.setIcon(page.icon)
@@ -72,6 +74,6 @@ private data class UserPage(@StringRes val title: Int, @DrawableRes val icon: In
 private val PAGES = listOf(
     // TODO proper icons
     UserPage(R.string.user_quests_title, R.drawable.ic_star_48dp) { QuestStatisticsFragment() },
-    UserPage(R.string.user_achievements_title, R.drawable.ic_star_48dp) { AchievementsFragment() },
-    UserPage(R.string.user_links_title, R.drawable.ic_star_48dp) { LinksFragment() }
+    UserPage(R.string.user_achievements_title, R.drawable.ic_achievements_48dp) { AchievementsFragment() },
+    UserPage(R.string.user_links_title, R.drawable.ic_bookmarks_48dp) { LinksFragment() }
 )
