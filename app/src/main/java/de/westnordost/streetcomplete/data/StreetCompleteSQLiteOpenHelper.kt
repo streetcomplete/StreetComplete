@@ -3,6 +3,8 @@ package de.westnordost.streetcomplete.data
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import de.westnordost.streetcomplete.data.achievements.UserAchievementsTable
+import de.westnordost.streetcomplete.data.achievements.UserLinksTable
 
 import javax.inject.Singleton
 
@@ -43,6 +45,8 @@ import de.westnordost.streetcomplete.quests.oneway.data.WayTrafficFlowTable
         db.execSQL(CreateNoteTable.CREATE)
 
         db.execSQL(QuestStatisticsTable.CREATE)
+        db.execSQL(UserAchievementsTable.CREATE)
+        db.execSQL(UserLinksTable.CREATE)
 
         db.execSQL(DownloadedTilesTable.CREATE)
 
@@ -156,9 +160,14 @@ import de.westnordost.streetcomplete.quests.oneway.data.WayTrafficFlowTable
             db.execSQL(UndoOsmQuestTable.CREATE)
             db.execSQL(UndoOsmQuestTable.MERGED_VIEW_CREATE)
         }
+
+        if (oldVersion < 13 && newVersion >= 13) {
+            db.execSQL(UserAchievementsTable.CREATE)
+            db.execSQL(UserLinksTable.CREATE)
+        }
         // for later changes to the DB
         // ...
     }
 }
 
-private const val DB_VERSION = 12
+private const val DB_VERSION = 13
