@@ -33,7 +33,7 @@ class AddHousenumber(private val overpass: OverpassMapDataAndGeometryDao) : OsmE
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_address_title
 
-    override fun isApplicableTo(element: Element) = null
+    override fun isApplicableTo(element: Element): Boolean? = null
 
     override fun download(bbox: BoundingBox, handler: (element: Element, geometry: ElementGeometry?) -> Unit): Boolean {
         var ms = System.currentTimeMillis()

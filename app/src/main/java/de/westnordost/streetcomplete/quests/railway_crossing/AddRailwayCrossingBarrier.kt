@@ -19,7 +19,7 @@ class AddRailwayCrossingBarrier(private val overpassMapDataDao: OverpassMapDataA
     override fun createForm() = AddRailwayCrossingBarrierForm()
 
     override fun download(bbox: BoundingBox, handler: (element: Element, geometry: ElementGeometry?) -> Unit): Boolean {
-        return overpassMapDataDao.query(getOverpassQuery(bbox), handler);
+        return overpassMapDataDao.query(getOverpassQuery(bbox), handler)
     }
 
     override fun isApplicableTo(element: Element): Boolean? = null

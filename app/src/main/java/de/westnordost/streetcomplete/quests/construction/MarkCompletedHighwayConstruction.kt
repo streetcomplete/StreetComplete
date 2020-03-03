@@ -32,7 +32,7 @@ open class MarkCompletedHighwayConstruction(private val overpass: OverpassMapDat
         }
     }
 
-    override fun isApplicableTo(element: Element) = null
+    override fun isApplicableTo(element: Element): Boolean? = null
 
     override fun download(bbox: BoundingBox, handler: (element: Element, geometry: ElementGeometry?) -> Unit): Boolean {
         return overpass.query(getOverpassQuery(bbox), handler)

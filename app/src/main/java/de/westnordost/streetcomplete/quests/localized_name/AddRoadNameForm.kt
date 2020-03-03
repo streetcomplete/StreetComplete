@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.quests.localized_name
 import android.content.DialogInterface
 import android.view.View
 import androidx.appcompat.app.AlertDialog
-import android.widget.Button
 
 import java.util.LinkedList
 import java.util.Locale
