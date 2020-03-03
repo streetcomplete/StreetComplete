@@ -115,7 +115,7 @@ surface_grass_paver.jpg        Public Domain     https://commons.wikimedia.org/w
 surface_pebblestone.jpg        CC-BY-SA 2.0      https://wiki.openstreetmap.org/wiki/File:Dscf1829-800.jpg (FrankM)
 surface_sand.jpg               CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:2013-08-21_12_04_26_View_south_towards_Barnegat_Lighthouse_along_the_sand_road_to_Barnegat_Inlet_in_Island_Beach_State_Park.jpg (Famartin )
 surface_sett.jpg               CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Brusteinshalden.JPG (Øyvind Holmstad )
-surface_wood.jpg               CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Wooden_Bridge_In_Midst_of_Kaziranga_Wild_life_Sanctuary.jpg (Pavan Goswami )
+surface_wood.jpg               CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Wooden_Bridge_In_Midst_of_Kaziranga_Wild_life_Sanctuary.jpg (Pavan Goswami)
 surface_metal.jpg              Public Domain     https://commons.wikimedia.org/wiki/File:Metal_steel_surface.jpg (Titus Tscharntke)
 surface_paving_stones.jpg      CC0               https://commons.wikimedia.org/wiki/File:PUB.DOM.DED.Pixa_AcerPics_Dec.'17_01-12-17_Brick_street_stones_LOW_RES_(25052487258).jpg (MabelAmber)
 surface_gravel.jpg             CC-BY 3.0         https://commons.wikimedia.org/wiki/File:Gravel_at_the_top_of_Vidova_gora,_island_of_Bra%C4%8D,_Croatia.jpg (Ante Perkovic)
@@ -135,3 +135,9 @@ tracktype_grade5.jpg           CC-BY-SA 4.0  	 https://commons.wikimedia.org/wik
 leaf_type_needleleaved.jpg     CC-BY 3.0         https://commons.wikimedia.org/wiki/File:Whitebark_pine_Pinus_albicaulis_needle_clusters.jpg (Jane Richardson)
 leaf_type_broadleaved.jpg      CC-BY-SA 2.0      https://commons.wikimedia.org/wiki/File:Populus_tremuloides_(5002308731).jpg (Matt Lavin)
 leaf_type_mixed.jpg            CC0               https://commons.wikimedia.org/wiki/File:Needleleaved_and_broadleaved_leaves_on_one_image_20190709_181925.jpg (Mateusz Konieczny)
+
+tourism_information_office.jpg CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Tourist_information_shop,_Delft_(2018).jpg (Donald Trung)
+tourism_information_board.jpg  CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Avon_Valley_Nature_Reserve_Information_Board.jpg (Richard Avery)
+tourism_information_termina... CC-BY 4.0         https://wiki.openstreetmap.org/wiki/File:Uh%C5%99%C3%ADn%C4%9Bves,_Nov%C3%A9_n%C3%A1m%C4%9Bst%C3%AD,_informa%C4%8Dn%C3%AD_stojan.jpg (ŠJů)
+tourism_information_map.jpg    CC0               https://commons.wikimedia.org/wiki/File:Myrstigen_track_information_board.jpg (W.carter)
+tourism_information_guidepo... CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Swiss_Hiking_Network_-_Guidepost_-_Tannmattegg.jpg (Gubaer)
