@@ -14,6 +14,7 @@ v18.0-beta1: |
   <h3>More</h3>
   <ul>
   <li>Clearer wording for cancelling current download, especially in French (#1741)</li>
+  <li>Do not show this dialog for new users (#1751)</li>
   </ul>
 
 v17.3: |
