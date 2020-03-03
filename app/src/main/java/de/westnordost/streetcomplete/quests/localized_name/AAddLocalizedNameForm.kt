@@ -7,7 +7,6 @@ import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import android.text.Html
 import android.view.View
-import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
 
 import java.util.ArrayList

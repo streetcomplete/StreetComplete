@@ -1,16 +1,22 @@
 package de.westnordost.streetcomplete.quests.recycling_material
 
 import android.os.Bundle
+import androidx.appcompat.app.AlertDialog
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.view.ImageSelectAdapter
 import de.westnordost.streetcomplete.view.Item
 import de.westnordost.streetcomplete.view.dialogs.ImageListPickerDialog
 
-class AddRecyclingContainerMaterialsForm : AImageListQuestAnswerFragment<String, List<String>>() {
+class AddRecyclingContainerMaterialsForm : AImageListQuestAnswerFragment<String, RecyclingContainerMaterialsAnswer>() {
 
     override val contentLayoutResId = R.layout.quest_recycling_materials
+
+    override val otherAnswers = listOf(
+        OtherAnswer(R.string.quest_recycling_materials_answer_waste) { confirmJustTrash() }
+    )
 
     override val items = listOf(
         Item("glass_bottles",       R.drawable.ic_recycling_glass_bottles,       R.string.quest_recycling_type_glass_bottles),
@@ -59,6 +65,15 @@ class AddRecyclingContainerMaterialsForm : AImageListQuestAnswerFragment<String,
     }
 
     override fun onClickOk(selectedItems: List<String>) {
-        applyAnswer(selectedItems.map { "recycling:$it" })
+        applyAnswer(RecyclingMaterials(selectedItems))
+    }
+
+    private fun confirmJustTrash() {
+        activity?.let { AlertDialog.Builder(it)
+            .setMessage(R.string.quest_recycling_materials_answer_waste_description)
+            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> applyAnswer(IsWasteContainer) }
+            .setNegativeButton(R.string.quest_generic_confirmation_no, null)
+            .show()
+        }
     }
 }

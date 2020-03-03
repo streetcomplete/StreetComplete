@@ -419,7 +419,6 @@
     <string name="quest_busStopShelter_tram_title">"이 트램 정류장에 지붕이 있습니까?"</string>
     <string name="quest_bench_backrest_title">"이 벤치에 등받이가 있습니까?"</string>
     <string name="quest_bench_answer_picnic_table">"소풍 테이블입니다"</string>
-    <string name="quest_religion_for_place_of_worship_title">"%s에 해당하는 종교는 무엇입니까?"</string>
     <string name="quest_religion_christian">"기독교"</string>
     <string name="quest_religion_muslim">"이슬람교"</string>
     <string name="quest_religion_hindu">"힌두교"</string>

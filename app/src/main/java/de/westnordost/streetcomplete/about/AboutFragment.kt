@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.about
 
 import android.content.ActivityNotFoundException
-import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Build

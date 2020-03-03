@@ -64,8 +64,6 @@
     <string name="no_location_permission_warning">"Dein Standort wird benötigt, um nach Aufgaben in deiner Nähe zu suchen."</string>
     <string name="action_about">"Über StreetComplete"</string>
     <string name="about_title_authors">"Autoren"</string>
-
-    <!-- Fuzzy -->
     <string name="about_summary_authors">"© 2016–2020 Tobias Zwick und Mitwirkende"</string>
     <string name="about_title_repository">"Quellcode-Repository"</string>
     <string name="about_summary_repository">"auf GitHub"</string>
@@ -729,4 +727,17 @@ Jetzt aufspalten?"</string>
     <string name="about_summary_donate">"Zeige dich erkenntlich! ❤️"</string>
     <string name="about_description_donate">"Danke dass du erwägst, diese App zu unterstützen! Um die laufenden Spenden zu sehen, oder selbst zu spenden, tippe auf die jeweilige Plattform:"</string>
     <string name="quest_religion_for_place_of_worship_name_title">"Welcher Religion ist %s gewidmet?"</string>
+    <string name="confirmation_cancel_prev_download_confirmed">"Hier suchen"</string>
+    <string name="confirmation_cancel_prev_download_cancel">"Aktuelle Suche fortsetzen"</string>
+    <string name="quest_buildingType_garages_description">"Getrennte Stellplätze für verschiedene Besitzer oder Mieter"</string>
+    <string name="quest_tourism_information_title">"Was für eine Touristeninformation ist das?"</string>
+    <string name="quest_tourism_information_name_title">"Was für eine Touristeninformation ist %s?"</string>
+    <string name="quest_tourism_information_office">"Tourismusbüro"</string>
+    <string name="quest_tourism_information_board">"Informationstafel"</string>
+    <string name="quest_tourism_information_terminal">"Informationsterminal"</string>
+    <string name="quest_tourism_information_map">"Karte"</string>
+    <string name="quest_tourism_information_guidepost">"Wegweiser"</string>
+    <string name="quest_recycling_materials_answer_waste">"Ist für allgemeinen Müll"</string>
+    <string name="quest_recycling_materials_answer_waste_description">"Das ist also ein Müllcontainer, wie etwa für Haus- oder Industriemüll?"</string>
+    <string name="quest_accepts_cash_title">"Aktzeptiert %s Bargeld?"</string>
 </resources>

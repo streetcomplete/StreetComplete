@@ -450,7 +450,6 @@
     <string name="quest_busStopShelter_tram_title">"Αυτή η στάση του τραμ έχει σκέπαστρο;"</string>
     <string name="quest_bench_backrest_title">"Ο πάγκος έχει πλάτη;"</string>
     <string name="quest_bench_answer_picnic_table">"Είναι ένα τραπέζι πικνίκ"</string>
-    <string name="quest_religion_for_place_of_worship_title">"Ποια θρησκεία ασκείται στην %s;"</string>
     <string name="quest_religion_christian">"Χριστιανισμός"</string>
     <string name="quest_religion_muslim">"Ισλαμισμός"</string>
     <string name="quest_religion_hindu">"Ινδουισμός"</string>

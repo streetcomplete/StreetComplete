@@ -1,3 +1,22 @@
+v18.0-beta1: |
+  <h3>New Quests</h3>
+  <ul>
+  <li><strong>Does ... accept cash payment?</strong> (#1743, #1573), by @quite. Enabled only in
+      Sweden because it cannot be taken for granted that cash is accepted there.</li>
+  <li><strong>What type of tourist information is this?</strong> (#1722, #1115), by @Dosenpfand</li>
+  </ul>
+  <h3>Enhanced Quests</h3>
+  <ul>
+  <li>Building types: Provide a description of what distinguishes a garage from garages (#1720), by @smichel17</li>
+  <li>Recycling containers: Add "it's a waste container" as answer option (#1745)</li>
+  <li>Car wash type: Allow selecting self-service + staff cleans car (#1738)</li>
+  </ul>
+  <h3>More</h3>
+  <ul>
+  <li>Clearer wording for cancelling current download, especially in French (#1741)</li>
+  <li>Do not show this dialog for new users (#1751)</li>
+  </ul>
+
 v17.3: |
   <p>Fix: App should not require a network location provider (#1733)</p>
 

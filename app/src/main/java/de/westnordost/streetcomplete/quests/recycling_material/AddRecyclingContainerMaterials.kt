@@ -12,7 +12,7 @@ import de.westnordost.streetcomplete.data.osm.tql.toGlobalOverpassBBox
 
 class AddRecyclingContainerMaterials(
     private val overpassServer: OverpassMapDataAndGeometryDao)
-    : OsmElementQuestType<List<String>> {
+    : OsmElementQuestType<RecyclingContainerMaterialsAnswer> {
 
     override val commitMessage = "Add recycled materials to container"
     override val wikiLink = "Key:recycling"
@@ -40,17 +40,23 @@ class AddRecyclingContainerMaterials(
 
     override fun createForm() = AddRecyclingContainerMaterialsForm()
 
-    override fun applyAnswerTo(answer: List<String>, changes: StringMapChangesBuilder) {
-        for (accepted in answer) {
-            changes.add(accepted, "yes")
-        }
-        // if the user chose deliberately not "all plastic", be explicit about it
-        if (answer.contains("recycling:plastic_packaging")) {
-            changes.add("recycling:plastic", "no")
-        }
-        if (answer.contains("recycling:plastic_bottles")) {
-            changes.add("recycling:plastic_packaging", "no")
-            changes.add("recycling:plastic", "no")
+    override fun applyAnswerTo(answer: RecyclingContainerMaterialsAnswer, changes: StringMapChangesBuilder) {
+        if (answer is RecyclingMaterials) {
+            val materials = answer.materials
+            for (accepted in materials) {
+                changes.add("recycling:$accepted", "yes")
+            }
+            // if the user chose deliberately not "all plastic", be explicit about it
+            if (materials.contains("plastic_packaging")) {
+                changes.add("recycling:plastic", "no")
+            }
+            if (materials.contains("plastic_bottles")) {
+                changes.add("recycling:plastic_packaging", "no")
+                changes.add("recycling:plastic", "no")
+            }
+        } else if(answer is IsWasteContainer) {
+            changes.modify("amenity","waste_disposal")
+            changes.delete("recycling_type")
         }
     }
 }

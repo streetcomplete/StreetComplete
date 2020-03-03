@@ -444,7 +444,6 @@ Pero lembra que sempre podes descarregar aplicacións de teclado diferentes dend
     <string name="quest_busStopShelter_tram_title">"Esta paraxe do tranvía ten marquesiña?"</string>
     <string name="quest_bench_backrest_title">"Ten respaldo este asento?"</string>
     <string name="quest_bench_answer_picnic_table">"É un taboleiro de picnic"</string>
-    <string name="quest_religion_for_place_of_worship_title">"Que relixión se practica en %s?"</string>
     <string name="quest_religion_christian">"Cristianismo"</string>
     <string name="quest_religion_muslim">"Islamismo"</string>
     <string name="quest_religion_hindu">"Hinduísmo"</string>
@@ -734,4 +733,5 @@ Ten en conta que as tarefas a escoller para eses treitos divididos poden aparece
     <string name="about_title_donate">"Doar"</string>
     <string name="about_summary_donate">"Amosa o teu agradecemento! ❤️"</string>
     <string name="about_description_donate">"Grazas por apoiar esta aplicación! Para ollar as doazóns actuais e doar ti mesmo, preme na plataforma correspondente:"</string>
+    <string name="quest_religion_for_place_of_worship_name_title">"Que relixión é profesada en %s?"</string>
 </resources>

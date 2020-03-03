@@ -3,10 +3,10 @@
     <string name="action_settings">"Inställningar"</string>
     <string name="oauth_communication_error">"Ingen åtkomst till servern för godkännande"</string>
     <string name="loading">"Läser in"</string>
-    <string name="retry">"Försök pånytt"</string>
+    <string name="retry">"Försök igen"</string>
     <string name="oauth_cancelled">"Godkännandet avbrutet"</string>
-    <string name="oauth_failed_permissions">"Godkännandet misslyckades: alla uppmärkta behörigheter måste beviljas"</string>
-    <string name="title_activity_settings">"Inställingar"</string>
+    <string name="oauth_failed_permissions">"Godkännandet misslyckades: alla listade behörigheter måste tillåtas"</string>
+    <string name="title_activity_settings">"Inställningar"</string>
     <string name="pref_category_communication">"Kommunikation"</string>
     <string name="pref_category_display">"Visa"</string>
     <string name="pref_title_authorization">"Ge tillgång till OSM"</string>
@@ -17,7 +17,7 @@
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Visar även anteckningar som inte är ställda som frågor"</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Ignorerar anteckningar som inte är ställda som frågor"</string>
     <string name="pref_title_map_cache">"Storlek på kartcache"</string>
-    <string name="map_btn_gps_tracking">"Följ mej"</string>
+    <string name="map_btn_gps_tracking">"Följ mig"</string>
     <string name="map_attribution_mapzen">"Tillgänglig från %s"</string>
     <string name="map_attribution_osm">"© OpenStreetMap-bidragsgivare"</string>
     <string name="quest_generic_otherAnswers">"Andra svar…"</string>
@@ -478,9 +478,6 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_busStopShelter_tram_title">"Har den här spårvagnshållplatsen ett regnskydd?"</string>
     <string name="quest_bench_backrest_title">"Har den här bänken ett ryggstöd?"</string>
     <string name="quest_bench_answer_picnic_table">"Det är ett picknickbord"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_religion_for_place_of_worship_title">"Vilken religion praktiseras vid %s?"</string>
     <string name="quest_religion_christian">"Kristendom"</string>
     <string name="quest_religion_muslim">"Islam"</string>
     <string name="quest_religion_hindu">"Hinduism"</string>
@@ -698,6 +695,7 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="pref_title_overpass_url_info">"Kräver att applikationen startas om för att gälla. Kan kringgå censur, till exempel i Ryssland."</string>
     <string name="label_housenumber">"husnummer"</string>
     <string name="label_blocknumber">"kvarternummer"</string>
+    <string name="quest_busStopShelter_covered">"Hela hållplatsen har tak"</string>
     <string name="quest_ferry_pedestrian_name_title">"Transporterar %s fotgängare?"</string>
     <string name="quest_ferry_pedestrian_title">"Transporterar denna färjelinje fotgängare?"</string>
     <string name="quest_ferry_motor_vehicle_name_title">"Transporterar %s motorfordon?"</string>
@@ -724,6 +722,8 @@ Dela den nu?"</string>
     <string name="quest_split_way_many_splits_confirmation_description">"Det här är en hel del delningar. Du kan alltid dela upp vägen senare."</string>
     <string name="quest_footwayPartSurface_title">"Vad är ytan på gångvägen här?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title">"Är toaletten på %s tillgänglig med rullstol?"</string>
+    <string name="quest_tactilePaving_title_tram">"Har den här spårvagnshållplatsen taktil markbeläggning?"</string>
+    <string name="quest_tactilePaving_title_name_tram">"Har spårvagnshållplatsen %s taktil markbeläggning?"</string>
     <string name="quest_maxweight_title">"Vad är viktgränsen här?"</string>
     <string name="quest_maxweight_answer_noSign">"Det finns ingen skylt"</string>
     <string name="quest_maxweight_unusualInput_confirmation_description">"Denna vikt ser osannolikt ut. Är du säker på att det är korrekt?"</string>
@@ -765,4 +765,5 @@ Dela den nu?"</string>
     <string name="about_title_donate">"Donera"</string>
     <string name="about_summary_donate">"Visa din uppskattning! ❤️"</string>
     <string name="about_description_donate">"Tack för att du överväger att stöda den här appen! För att se aktuella donationer och donera själv, tryck på respektive plattform:"</string>
+    <string name="quest_religion_for_place_of_worship_name_title">"Vilken religion utövas i %s?"</string>
 </resources>

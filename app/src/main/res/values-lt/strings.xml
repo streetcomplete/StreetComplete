@@ -450,7 +450,6 @@ Dalinai reiškia, kad vežimėlis gali įvažiuoti ir naudotis tualetu, bet nėr
     <string name="quest_busStopShelter_tram_title">"Ar ši tramvajaus stotelė turi stogelį?"</string>
     <string name="quest_bench_backrest_title">"Ar šis suoliukas turi atlošą?"</string>
     <string name="quest_bench_answer_picnic_table">"Tai pikniko stalas"</string>
-    <string name="quest_religion_for_place_of_worship_title">"Kokia religija praktikuojama %s?"</string>
     <string name="quest_religion_christian">"Krikščionybė"</string>
     <string name="quest_religion_muslim">"Islamas"</string>
     <string name="quest_religion_hindu">"Hinduizmas"</string>

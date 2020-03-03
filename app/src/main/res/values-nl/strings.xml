@@ -503,9 +503,6 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetse
     <string name="quest_busStopShelter_tram_title">"Heeft deze tramhalte een schuilhokje?"</string>
     <string name="quest_bench_backrest_title">"Heeft deze bank een rugleuning?"</string>
     <string name="quest_bench_answer_picnic_table">"Het is een picknicktafel."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_religion_for_place_of_worship_title">"Welke religie wordt beoefend in %s?"</string>
     <string name="quest_religion_christian">"Het Christendom"</string>
     <string name="quest_religion_muslim">"De Islam"</string>
     <string name="quest_religion_hindu">"Het Hindoeïsme"</string>
@@ -802,5 +799,4 @@ Bijvoorbeeld 1m3 of 2-6."</string>
     <string name="about_title_donate">"Doneer"</string>
     <string name="about_summary_donate">"Toon je waardering! ❤️"</string>
     <string name="about_description_donate">"Bedankt voor het overwegen van het ondersteunen van deze app! Om huidige donaties te zien en zelf te doneren, tik op het respectieve platform:"</string>
-    <string name="quest_religion_for_place_of_worship_name_title">"Welke religie wordt hier beoefend?"</string>
 </resources>

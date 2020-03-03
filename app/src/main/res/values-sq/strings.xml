@@ -247,7 +247,7 @@ Informacioni që futni shtohet direkt në OpenStreetMap në emrin tuaj, pa nevoj
     <string name="dialog_session_dont_show_again">"Mos e trego më për këtë sesion"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetSurface_name_title">"Çfarë sipërfaqe ka rruga \"%\" këtu?"</string>
+    <string name="quest_streetSurface_name_title">"Çfarë sipërfaqe ka rruga %s këtu?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Ky kufizim i shpejtësisë duket i pamundur."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"A jeni i sigurt që nuk ka kufizim të vendosur?"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation">"A keni shikuar në fillim dhe fund të rrugës?

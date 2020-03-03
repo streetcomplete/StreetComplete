@@ -136,7 +136,9 @@ To display the map, vector tiles are retrieved from the &lt;a href=\"https://map
     <string name="quest_surface_value_paved">"Paved (generic)"</string>
     <string name="quest_surface_value_unpaved">"Unpaved (generic)"</string>
     <string name="quest_surface_value_ground">"Ground (generic)"</string>
-    <string name="quest_surface_value_asphalt">"Tarmac"</string>
+
+    <!-- If I use the app in UK-English, I want to see the original tag values, no translations -->
+    <string name="quest_surface_value_asphalt">"Asphalt"</string>
     <string name="quest_surface_value_compacted">"Compacted"</string>
     <string name="quest_surface_value_concrete">"Concrete"</string>
     <string name="quest_surface_value_dirt">"Dirt"</string>
@@ -513,6 +515,7 @@ For instance 1,3 or 2-6."</string>
     <string name="quest_buildingType_house_description">"single-family home"</string>
     <string name="quest_buildingType_apartments">"Apartment building"</string>
     <string name="quest_buildingType_detached">"Detached house"</string>
+    <string name="quest_buildingType_detached_description">"free-standing single-family home"</string>
     <string name="quest_buildingType_semi_detached">"Semi-detached house"</string>
     <string name="quest_buildingType_semi_detached_description">"semi-detached house"</string>
     <string name="quest_buildingType_terrace">"Terrace"</string>
@@ -524,6 +527,7 @@ For instance 1,3 or 2-6."</string>
     <string name="quest_buildingType_static_caravan">"Static caravan"</string>
     <string name="quest_buildingType_commercial">"Commercial building"</string>
     <string name="quest_buildingType_industrial">"Industrial building"</string>
+    <string name="quest_buildingType_industrial_description">"e.g. a factory, workshop, car repair garage, …"</string>
     <string name="quest_buildingType_office">"Office building"</string>
     <string name="quest_buildingType_retail">"Shop(s)"</string>
     <string name="quest_buildingType_warehouse">"Warehouse"</string>
@@ -540,15 +544,24 @@ For instance 1,3 or 2-6."</string>
     <string name="quest_buildingType_school">"School building"</string>
     <string name="quest_buildingType_hospital">"Hospital building"</string>
     <string name="quest_buildingType_stadium">"Stadium"</string>
+    <string name="quest_buildingType_university">"University building"</string>
+    <string name="quest_buildingType_government">"Government building"</string>
+    <string name="quest_buildingType_cars">"For cars"</string>
+    <string name="quest_buildingType_carport_description">"roof for a car"</string>
     <string name="quest_buildingType_garage">"Single garage"</string>
+    <string name="quest_buildingType_garages">"Multiple garages"</string>
     <string name="quest_buildingType_farm">"On a farm"</string>
     <string name="quest_buildingType_farmhouse">"Farmhouse"</string>
+    <string name="quest_buildingType_farmhouse_description">"the residential building on a farm"</string>
     <string name="quest_buildingType_farm_auxiliary">"Farm building"</string>
+    <string name="quest_buildingType_farm_auxiliary_description">"any building on a farm that is not a residential building"</string>
     <string name="quest_buildingType_greenhouse">"Greenhouse"</string>
     <string name="quest_buildingType_other">"Other"</string>
     <string name="quest_buildingType_shed">"Shed"</string>
     <string name="quest_buildingType_hut">"Hut"</string>
     <string name="quest_buildingType_roof">"Roof"</string>
+    <string name="quest_buildingType_service">"Service building"</string>
+    <string name="quest_buildingType_service_description">"building with machinery like pumps or transformers"</string>
     <string name="quest_buildingType_hangar">"Hangar"</string>
     <string name="quest_buildingType_bunker">"Bunker"</string>
     <string name="quest_address_answer_no_housenumber">"It has no house number…"</string>
@@ -559,7 +572,9 @@ For instance 1,3 or 2-6."</string>
     <string name="quest_maxspeed_answer_noSign2">"No sign, defaults apply"</string>
     <string name="quest_openingHours_no_sign">"No opening hours sign"</string>
     <string name="quest_maxspeed_name_title2">"What is the speed limit for %s here?"</string>
+    <string name="quest_buildingType_sports_centre">"Sports centre"</string>
     <string name="quest_buildingType_toilets">"Toilets"</string>
+    <string name="quest_maxspeed_sign_question">"What defines the speed limit?"</string>
     <string name="notification_channel_download">"Download"</string>
     <string name="quest_playground_access_title">"Is this playground publicly accessible?"</string>
     <string name="quest_segregated_title">"How are the footway and cycleway laid out here?"</string>
@@ -572,6 +587,7 @@ For instance 1,3 or 2-6."</string>
     <string name="quest_railway_crossing_barrier_none">"It's not"</string>
     <string name="privacy_html_image_upload2">"&lt;p&gt;Photos you attach to a note are uploaded to my server and deleted some days after that note has been resolved. Their meta-data is stripped before upload.&lt;/p&gt;"</string>
     <string name="action_deselect_all">"Deselect all"</string>
+    <string name="quest_buildingType_retail_description">"including buildings for restaurants, cafés, …"</string>
     <string name="quest_openingHours_timeSelect_next">"Next"</string>
     <string name="quest_tracktype_grade1">"Solid"</string>
 
@@ -586,6 +602,7 @@ For instance 1,3 or 2-6."</string>
     <string name="quest_wheelchairAccess_limited_description_outside">"Partially means that there is no more than a single step to access it."</string>
     <string name="quest_wheelchairAccess_outside_title">"Is this place wheelchair accessible?"</string>
     <string name="quest_motorcycleParkingCapacity_title">"How many motorcycles can be parked here?"</string>
+    <string name="quest_motorcycleParkingCoveredStatus_title">"Is this motorcycle parking covered (protected from rain)?"</string>
 
     <!-- See discussion here regarding the word stretch:
 https://github.com/westnordost/StreetComplete/pull/1653 -->
@@ -597,6 +614,7 @@ https://github.com/westnordost/StreetComplete/pull/1653 -->
     <string name="underground">"underground:"</string>
     <string name="quest_sidewalk_value_yes">"pavement"</string>
     <string name="quest_sidewalk_value_no">"no pavement"</string>
+    <string name="quest_accessible_for_pedestrians_title_prohibited">"Are pedestrians prohibited from walking on this road here?"</string>
     <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"This street was tagged as having no pavement on either side. In the case that there is a pavement after all but it is displayed as a separate way, please answer \"pavement\"."</string>
     <string name="quest_buildingType_title">"What kind of building is this?"</string>
     <string name="pref_title_theme_select">"Select theme"</string>
@@ -608,6 +626,7 @@ https://github.com/westnordost/StreetComplete/pull/1653 -->
     <string name="action_open_location">"Open location in another app"</string>
     <string name="map_application_missing">"No other map application installed"</string>
     <string name="pref_title_overpass_url_select">"Change Overpass server"</string>
+    <string name="pref_title_overpass_url_info">"Requires application restart to apply. May bypass censorship, for example in Russia."</string>
     <string name="label_housenumber">"house number"</string>
     <string name="quest_busStopShelter_covered">"Whole stop is covered"</string>
     <string name="quest_ferry_pedestrian_name_title">"Does %s transport pedestrians?"</string>
@@ -617,8 +636,13 @@ https://github.com/westnordost/StreetComplete/pull/1653 -->
     <string name="quest_leave_new_note_photos_are_useful">"Adding a photo will make the note much more useful."</string>
     <string name="quest_postboxCollectionTimes_name_title">"What are the collection times of this %s postbox?"</string>
     <string name="about_contributing">"Your answers are directly improving OpenStreetMap. Contributed data is open, everyone can use it. Many great projects are already using it."</string>
+    <string name="about_missing_stars">"Currently, the star count is not shared across devices, but answers are added directly to the OpenStreetMap database."</string>
+    <string name="oauth_remove_authorization_dialog_message">"Do you want to remove the authorisation for your OSM account?"</string>
+    <string name="oauth_remove_authorization_confirmation">"Remove"</string>
     <string name="quest_leafType_title">"Do the trees here have needles or leaves?"</string>
     <string name="quest_leaf_type_needles">"Needles"</string>
+    <string name="quest_leaf_type_mixed">"Both are present"</string>
+    <string name="quest_generic_answer_differs_along_the_way">"Differs along the way…"</string>
     <string name="quest_split_way_too_imprecise">"Please zoom in further"</string>
     <string name="quest_footwayPartSurface_title">"What's the surface of the footway here?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title">"Is the toilet at %s wheelchair accessible?"</string>
@@ -629,5 +653,30 @@ https://github.com/westnordost/StreetComplete/pull/1653 -->
     <string name="quest_maxweight_answer_other_sign">"Sign looks different…"</string>
     <string name="confirmation_authorize_now_note">"You can do this later on the settings screen."</string>
     <string name="quest_laundrySelfService_title">"Is this laundry a self service laundry?"</string>
+    <string name="quest_handrail_title">"Do these steps have a handrail?"</string>
+    <string name="about_summary_current_version">"Current version: %s"</string>
+    <string name="quest_postboxRef_title">"What is the reference number of this postbox?"</string>
+    <string name="quest_postboxRef_name_title">"What is the reference number of this %s postbox?"</string>
+    <string name="quest_ref_answer_noRef">"No reference number visible…"</string>
+    <string name="quest_recycling_type_batteries">"Batteries"</string>
+    <string name="quest_recycling_type_cans">"Cans"</string>
+    <string name="quest_recycling_type_clothes">"Clothes"</string>
+    <string name="quest_recycling_type_green_waste">"Garden waste"</string>
+    <string name="quest_recycling_type_glass_bottles">"Glass bottles and jars"</string>
+    <string name="quest_recycling_type_glass_bottles_short">"Bottles and jars"</string>
     <string name="quest_recycling_type_paper">"Paper"</string>
+    <string name="quest_recycling_type_plastic_generic">"Plastic"</string>
+    <string name="quest_recycling_type_plastic">"Any plastic"</string>
+    <string name="quest_recycling_type_shoes">"Shoes"</string>
+    <string name="quest_recycling_type_electric_appliances">"Electric appliances"</string>
+    <string name="quest_recycling_type_plastic_bottles">"Plastic bottles only"</string>
+    <string name="quest_recycling_type_plastic_packaging">"Plastic packaging only"</string>
+    <string name="quest_recycling_type_scrap_metal">"Scrap metal"</string>
+    <string name="quest_recycling_type_any_glass">"Any glass"</string>
+    <string name="about_title_changelog">"Version history"</string>
+    <string name="title_whats_new">"What's New?"</string>
+    <string name="about_title_rate">"Rate this app"</string>
+    <string name="about_summary_rate">"on Google Play"</string>
+    <string name="about_title_donate">"Donate"</string>
+    <string name="about_summary_donate">"Show your appreciation! ❤️"</string>
 </resources>

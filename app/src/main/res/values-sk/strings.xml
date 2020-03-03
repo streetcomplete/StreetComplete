@@ -447,7 +447,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="quest_busStopShelter_tram_title">"Má táto zastávka električky prístrešok?"</string>
     <string name="quest_bench_backrest_title">"Má táto lavička operadlo?"</string>
     <string name="quest_bench_answer_picnic_table">"Je to piknikový stôl"</string>
-    <string name="quest_religion_for_place_of_worship_title">"Aké náboženstvo sa praktikuje v %s?"</string>
     <string name="quest_religion_christian">"Kresťanstvo"</string>
     <string name="quest_religion_muslim">"Islám"</string>
     <string name="quest_religion_hindu">"Hinduizmus"</string>

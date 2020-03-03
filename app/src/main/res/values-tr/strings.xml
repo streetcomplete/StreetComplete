@@ -475,7 +475,6 @@ Tüm cadde boyunca vurgulanan bölüm için geçerli hiçbir işaret yoksa, vars
     <string name="quest_busStopShelter_tram_title">"Bu tramvay durağında bir sığınak var mı?"</string>
     <string name="quest_bench_backrest_title">"Bu bankın sırtlığı var mı?"</string>
     <string name="quest_bench_answer_picnic_table">"Piknik masası var mı?"</string>
-    <string name="quest_religion_for_place_of_worship_title">"%s hangi din için?"</string>
     <string name="quest_religion_christian">"Hristiyanlık"</string>
     <string name="quest_religion_muslim">"İslam"</string>
     <string name="quest_religion_hindu">"Hinduizm"</string>

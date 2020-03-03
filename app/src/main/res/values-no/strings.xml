@@ -413,7 +413,6 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk som for ekse
     <string name="quest_busStopShelter_tram_title">"Er det et trikkeskur på dette stoppet?"</string>
     <string name="quest_bench_backrest_title">"Har denne benken ryggstøtte?"</string>
     <string name="quest_bench_answer_picnic_table">"Det er et piknikbord"</string>
-    <string name="quest_religion_for_place_of_worship_title">"Hva slags religion praktiseres ved %s?"</string>
     <string name="quest_religion_christian">"Kristendom"</string>
     <string name="quest_religion_muslim">"Islam"</string>
     <string name="quest_religion_hindu">"Hinduisme"</string>

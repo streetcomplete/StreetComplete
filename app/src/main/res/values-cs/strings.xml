@@ -484,9 +484,6 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_busStopShelter_tram_title">"Má tato tramvajová zastávka střechu?"</string>
     <string name="quest_bench_backrest_title">"Má tato lavička opěrák?"</string>
     <string name="quest_bench_answer_picnic_table">"Je to stůl pro piknik"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_religion_for_place_of_worship_title">"Jaké náboženství se praktikuje v %s?"</string>
     <string name="quest_religion_christian">"Křesťanství"</string>
     <string name="quest_religion_muslim">"Islám"</string>
     <string name="quest_religion_hindu">"Hinduismus"</string>

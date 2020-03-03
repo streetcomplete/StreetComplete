@@ -488,9 +488,6 @@
     <string name="quest_busStopShelter_tram_title">"Чи має ця трамвайна зупинка накриття?"</string>
     <string name="quest_bench_backrest_title">"Чи мая ця лавка спинку?"</string>
     <string name="quest_bench_answer_picnic_table">"Це стіл для пікніка"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_religion_for_place_of_worship_title">"Яку релігію сповідують у %s?"</string>
     <string name="quest_religion_christian">"Християнство"</string>
     <string name="quest_religion_muslim">"Іслам"</string>
     <string name="quest_religion_hindu">"Індуїзм"</string>
