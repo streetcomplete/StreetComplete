@@ -10,6 +10,9 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
 
     signingConfigs {
         release
@@ -30,8 +33,8 @@ android {
         applicationId "de.westnordost.streetcomplete"
         minSdkVersion 17
         targetSdkVersion 28
-        versionCode 1706
-        versionName "17.3"
+        versionCode 1800
+        versionName "18.0-beta1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField "String", "MAPZEN_API_KEY", MAPZEN_API_KEY
     }
@@ -105,11 +108,11 @@ dependencies {
     kapt 'com.google.dagger:dagger-compiler:2.14.1'
 
     // Android stuff
-    implementation 'com.google.android.material:material:1.0.0'
-    implementation 'androidx.core:core:1.1.0'
+    implementation 'com.google.android.material:material:1.1.0'
+    implementation 'androidx.core:core:1.2.0'
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.annotation:annotation:1.1.0'
-    implementation 'androidx.fragment:fragment:1.1.0'
+    implementation 'androidx.fragment:fragment:1.2.2'
     implementation 'androidx.preference:preference:1.1.0'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'androidx.viewpager:viewpager:1.0.0'
@@ -122,7 +125,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.2.1'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.1.1'
-    implementation "androidx.core:core-ktx:1.1.0"
+    implementation "androidx.core:core-ktx:1.2.0"
 
     // scheduling background jobs
     implementation 'android.arch.work:work-runtime:1.0.1'
