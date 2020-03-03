@@ -47,6 +47,4 @@ public class ApplicationConstants
 	public static final int ATTACH_PHOTO_MAXHEIGHT = 1280; // WXGA
 
 	public static final String NOTIFICATIONS_CHANNEL_DOWNLOAD = "downloading";
-
-	public static final String LAST_VERSION_WITHOUT_CHANGELOG = "15.0";
 }

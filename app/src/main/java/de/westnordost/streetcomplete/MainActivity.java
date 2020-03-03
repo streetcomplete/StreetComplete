@@ -96,7 +96,6 @@ import kotlinx.coroutines.DispatchersKt;
 import kotlinx.coroutines.JobKt;
 
 
-import static de.westnordost.streetcomplete.ApplicationConstants.LAST_VERSION_WITHOUT_CHANGELOG;
 import static de.westnordost.streetcomplete.ApplicationConstants.MANUAL_DOWNLOAD_QUEST_TYPE_COUNT;
 
 public class MainActivity extends AppCompatActivity implements  MainFragment.Listener, CoroutineScope
@@ -280,10 +279,14 @@ public class MainActivity extends AppCompatActivity implements  MainFragment.Lis
 	{
 		super.onStart();
 
-		String lastVersion = prefs.getString(Prefs.LAST_VERSION, LAST_VERSION_WITHOUT_CHANGELOG);
-		if (!(BuildConfig.VERSION_NAME).equals(lastVersion)) {
+		String lastVersion = prefs.getString(Prefs.LAST_VERSION, null);
+		if (!(BuildConfig.VERSION_NAME).equals(lastVersion))
+		{
 			prefs.edit().putString(Prefs.LAST_VERSION, BuildConfig.VERSION_NAME).apply();
-			new WhatsNewDialog(this, "v" + lastVersion).show();
+			if (lastVersion != null)
+			{
+				new WhatsNewDialog(this, "v" + lastVersion).show();
+			}
 		}
 
 		boolean isAutosync = Prefs.Autosync.valueOf(prefs.getString(Prefs.AUTOSYNC,"ON")) == Prefs.Autosync.ON;
