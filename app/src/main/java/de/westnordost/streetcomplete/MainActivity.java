@@ -537,8 +537,8 @@ public class MainActivity extends AppCompatActivity implements  MainFragment.Lis
 				{
 					new AlertDialog.Builder(this)
 							.setMessage(R.string.confirmation_cancel_prev_download_title)
-							.setPositiveButton(android.R.string.ok, (dialog, which) -> downloadAreaConfirmed(enclosingBBox))
-							.setNegativeButton(android.R.string.cancel, null)
+							.setPositiveButton(R.string.confirmation_cancel_prev_download_confirmed, (dialog, which) -> downloadAreaConfirmed(enclosingBBox))
+							.setNegativeButton(R.string.confirmation_cancel_prev_download_cancel, null)
 							.show();
 				}
 				else
