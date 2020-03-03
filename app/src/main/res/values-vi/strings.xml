@@ -296,7 +296,6 @@
     <string name="quest_internet_access_wlan">"Wi-Fi"</string>
     <string name="quest_internet_access_terminal">"Máy tính có truy cập Internet"</string>
     <string name="quest_internet_access_no">"Không có truy cập"</string>
-    <string name="quest_religion_for_place_of_worship_title">"%s thuộc tôn giáo nào?"</string>
     <string name="quest_religion_christian">"Kitô giáo (Thiên Chúa giáo, Cơ Đốc giáo)"</string>
     <string name="quest_religion_muslim">"Hồi giáo"</string>
     <string name="quest_religion_hindu">"Ấn Độ giáo"</string>

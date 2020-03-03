@@ -246,9 +246,6 @@ Vastauksesi täydentävät OpenStreetMapsiä omalla nimelläsi. Et tarvi sovellu
     <string name="quest_source_dialog_note">"Vain paikanpäällä tarkistetut tiedot tulisi lähettää."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Onko tämä pyöräpysäkki katoksellinen (suojattu sateelta)?"</string>
     <string name="dialog_session_dont_show_again">"Älä enää näytä tälle istunnolle."</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetSurface_name_title">"Millainen tien pinta täällä on? "</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Tämä nopeusrajoitus vaikuttaa epätodennäköiseltä."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Oletko varma että rajoituskylttiä ei ole?"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation">"Tarkistitko tien päistä? Jos tien päissä ei ole nopeusrajoitusmerkiä, niin sovelletaan yleistä nopeusrajoitusta"</string>
@@ -493,9 +490,6 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
     <string name="quest_busStopShelter_tram_title">"Onko tällä pysäkillä katos?"</string>
     <string name="quest_bench_backrest_title">"Onko tällä penkillä selkänoja?"</string>
     <string name="quest_bench_answer_picnic_table">"Se on piknik-pöytä"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_religion_for_place_of_worship_title">"Mitä uskontoa tässä %s harjoitetaan?"</string>
     <string name="quest_religion_christian">"Kristinusko"</string>
     <string name="quest_religion_muslim">"Islam"</string>
     <string name="quest_religion_hindu">"Hindulaisuus"</string>

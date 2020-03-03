@@ -448,7 +448,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de tecláu alternatives 
     <string name="quest_busStopShelter_tram_title">"¿La parada de tranvía ta a techu?"</string>
     <string name="quest_bench_backrest_title">"¿Tien respaldu esti bancu?"</string>
     <string name="quest_bench_answer_picnic_table">"Ye una mesa de picnic"</string>
-    <string name="quest_religion_for_place_of_worship_title">"¿Qué relixón se prautica en %s?"</string>
     <string name="quest_religion_christian">"Cristianismu"</string>
     <string name="quest_religion_muslim">"Islam"</string>
     <string name="quest_religion_hindu">"Hinduísmu"</string>

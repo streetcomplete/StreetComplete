@@ -494,7 +494,6 @@
     <string name="quest_busStopShelter_tram_title">"آیا این ایستگاه تراموا سایبان دارد؟"</string>
     <string name="quest_bench_backrest_title">"آیا این نیمکت دارای پشتی می‌باشد؟"</string>
     <string name="quest_bench_answer_picnic_table">"این میز پیک‌نیک است"</string>
-    <string name="quest_religion_for_place_of_worship_title">"چه مذهبی در  %s وجود دارد؟"</string>
     <string name="quest_religion_christian">"مسیحیت"</string>
     <string name="quest_religion_muslim">"اسلام"</string>
     <string name="quest_religion_hindu">"هندوئسم"</string>
@@ -785,4 +784,5 @@
     <string name="about_title_donate">"کمک‌مالی"</string>
     <string name="about_summary_donate">"قدردانی خود را نشان دهید! ❤️"</string>
     <string name="about_description_donate">"با سپاس از تصمیم شما جهت حمایت از این برنامه! برای مشاهده کمکهای فعلی و کمک مالی خود، روی مکان مربوطه ضربه بزنید:"</string>
+    <string name="quest_religion_for_place_of_worship_name_title">"چه مذهبی در %s اجرا می‌شود؟"</string>
 </resources>

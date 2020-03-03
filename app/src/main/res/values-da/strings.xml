@@ -470,7 +470,6 @@ Delvist betyder at kørestolsbrugeren kan bruge toilettet men der mangler håndt
     <string name="quest_busStopShelter_tram_title">"Har stoppestedet et læ?"</string>
     <string name="quest_bench_backrest_title">"Har bænken et rygstøtte?"</string>
     <string name="quest_bench_answer_picnic_table">"Det er et picnicbord"</string>
-    <string name="quest_religion_for_place_of_worship_title">"Hvilken religion praktiseres i %s?"</string>
     <string name="quest_religion_christian">"Kristendom"</string>
     <string name="quest_religion_muslim">"Islam"</string>
     <string name="quest_religion_hindu">"Hinduisme"</string>

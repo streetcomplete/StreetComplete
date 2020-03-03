@@ -498,9 +498,6 @@
     <string name="quest_busStopShelter_tram_title">"這座路面電車站是否有遮蔭？"</string>
     <string name="quest_bench_backrest_title">"長椅是否有靠背？"</string>
     <string name="quest_bench_answer_picnic_table">"這是野餐桌"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_religion_for_place_of_worship_title">"%s 是那個宗教？"</string>
     <string name="quest_religion_christian">"基督教"</string>
     <string name="quest_religion_muslim">"伊斯蘭教"</string>
     <string name="quest_religion_hindu">"印度教"</string>
@@ -717,12 +714,9 @@
     <string name="label_housenumber">"房屋門牌號碼"</string>
     <string name="label_blocknumber">"街區號碼"</string>
     <string name="quest_busStopShelter_covered">"整個站牌都有遮蓋"</string>
-    <string name="quest_ferry_pedestrian_name_title">"這邊的交通運輸是行人可到達嗎？"</string>
     <string name="quest_ferry_pedestrian_title">"這邊的輪船是行人可到達嗎？"</string>
-    <string name="quest_ferry_motor_vehicle_name_title">"這邊的交通運輸方式是能載運機動車輛嗎？"</string>
     <string name="quest_ferry_motor_vehicle_title">"這邊的輪船是能載運機動車輛嗎？ "</string>
     <string name="quest_leave_new_note_photos_are_useful">"如果能加上照片會讓註解更有用。"</string>
-    <string name="quest_postboxCollectionTimes_name_title">"這郵筒的收集時間是什麼時候？"</string>
     <string name="create_new_note_hint">"最好用當地的語言撰寫註解，不然就請用英文。"</string>
     <string name="about_contributing">"你的答案能夠直接增進開放街圖，貢獻的資料是開放的，每一位都能使用，許多很好的專案已經在運用了。"</string>
     <string name="about_missing_stars">"目前，星等計算不會跨裝置分享，但答案會直接加進開放街圖資料庫。"</string>
@@ -742,7 +736,6 @@
     <!-- Fuzzy -->
     <string name="quest_split_way_many_splits_confirmation_description">"有可分割多個地方，你總是可以稍後再度分割路徑。"</string>
     <string name="quest_footwayPartSurface_title">"人行步道的鋪面材質是什麼？"</string>
-    <string name="quest_wheelchairAccess_toiletsPart_title">"這裡的廁所是否是輪椅可通行的？"</string>
     <string name="quest_tactilePaving_title_tram">"街車停靠站有特殊舖面嗎？"</string>
     <string name="quest_tactilePaving_title_name_tram">"街車停靠站%s有特殊舖面嗎"</string>
     <string name="quest_maxweight_title">"這裡的承重有上線嗎？"</string>
@@ -751,7 +744,6 @@
     <string name="quest_maxweight_answer_other_sign">"指標看來不同…"</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"你想要留下註解嗎？像是有留下留片的註解，能夠讓其他圖客接手處理。"</string>
     <string name="confirmation_authorize_now_note">"你可以稍後在設定頁面進行。"</string>
-    <string name="quest_generalFee_title">"進去需要費用嗎？"</string>
     <string name="quest_laundrySelfService_title">"這個洗衣店是自助服務嗎？"</string>
     <string name="quest_handrail_title">"這條階梯有扶手嗎？"</string>
     <string name="quest_openingHours_no_name_title">"這地方的開放時間是？(%s)"</string>

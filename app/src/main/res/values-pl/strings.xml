@@ -435,7 +435,6 @@ Oznacza to, że osoba na wózku jest w stanie z niej skorzystać, ale nie ma por
     <string name="quest_busStopShelter_tram_title">"Czy ten przystanek tramwajowy jest zadaszony?"</string>
     <string name="quest_bench_backrest_title">"Czy ta ławka ma oparcie?"</string>
     <string name="quest_bench_answer_picnic_table">"To stół piknikowy"</string>
-    <string name="quest_religion_for_place_of_worship_title">"Jaka religia jest praktykowana w %s?"</string>
     <string name="quest_religion_christian">"Chrześcijaństwo"</string>
     <string name="quest_religion_muslim">"Islam"</string>
     <string name="quest_religion_hindu">"Hinduizm"</string>

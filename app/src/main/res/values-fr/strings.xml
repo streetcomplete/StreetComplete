@@ -75,8 +75,6 @@ That is not very clear to me. Any further explanations? -->
     <string name="no_location_permission_warning">"Votre position est nécessaire pour rechercher des quêtes"</string>
     <string name="action_about">"À propos de StreetComplete"</string>
     <string name="about_title_authors">"Auteurs"</string>
-
-    <!-- Fuzzy -->
     <string name="about_summary_authors">"© 2016–2020 Tobias Zwick et contributeurs"</string>
     <string name="about_title_repository">"Code Source"</string>
     <string name="about_summary_repository">"sur GitHub"</string>
@@ -481,7 +479,6 @@ Partiellement signifie qu’un fauteuil roulant peut entrer et utiliser les toil
     <string name="quest_busStopShelter_tram_title">"Cet arrêt de tram a-t-il un abri ?"</string>
     <string name="quest_bench_backrest_title">"Ce banc a-t-il un dossier ?"</string>
     <string name="quest_bench_answer_picnic_table">"C’est une table à pique-nique"</string>
-    <string name="quest_religion_for_place_of_worship_title">"Quelle religion est pratiquée à %s ?"</string>
     <string name="quest_religion_christian">"Christianisme"</string>
     <string name="quest_religion_muslim">"Islam"</string>
     <string name="quest_religion_hindu">"Hindouisme"</string>
@@ -509,9 +506,7 @@ Partiellement signifie qu’un fauteuil roulant peut entrer et utiliser les toil
     <string name="quest_parking_access_customers">"Réservé aux clients"</string>
     <string name="quest_streetName_pedestrian_title">"Quel est le nom de cette rue piétonne ?"</string>
     <string name="quest_streetSurface_square_title">"Quelle est la surface de cette place ?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_streetSurface_square_name_title">"Quelle est la surface de la place ici ?"</string>
+    <string name="quest_streetSurface_square_name_title">"Quelle est le revêtement de la place %s ?"</string>
     <string name="quest_fee_answer_hours">"Dépend du jour et de l’heure…"</string>
     <string name="quest_fee_add_times">"Ajouter des horaires"</string>
     <string name="quest_fee_only_at_hours">"Oui, mais seulement…"</string>
@@ -534,8 +529,8 @@ Partiellement signifie qu’un fauteuil roulant peut entrer et utiliser les toil
     <string name="quest_construction_road_title">"Cette route est-elle complète ?"</string>
     <string name="quest_construction_cycleway_title">"Cette piste cyclable est-elle terminée ?"</string>
     <string name="quest_construction_footway_title">"Ce trottoir est-il terminé ?"</string>
-    <string name="quest_construction_generic_title">"Ce chemin est-il complet ?"</string>
-    <string name="quest_construction_building_title">"Ce bâtiment est-il complet ?"</string>
+    <string name="quest_construction_generic_title">"Cette voie est-elle terminée ?"</string>
+    <string name="quest_construction_building_title">"Ce bâtiment est-il terminée ?"</string>
     <string name="questList_disabled_in_country">"Ne jamais afficher en %s"</string>
     <string name="quest_toiletAvailability_rest_area_title">"Est-ce que cette aire de repos a des toilettes ?"</string>
     <string name="quest_pathSurface_title_steps">"Quel revêtement ces marches ont-elles ?"</string>
@@ -790,11 +785,9 @@ Le séparer maintenant ?"</string>
     <string name="about_title_rate">"Évaluez cette application"</string>
     <string name="about_summary_rate">"sur Google Play"</string>
     <string name="about_title_donate">"Donnez"</string>
+    <string name="about_summary_donate">"Exprimez votre gratitude ! ❤️"</string>
 
     <!-- Fuzzy -->
-    <string name="about_summary_donate">"Exprimez votre gratitude !❤️"</string>
-
-    <!-- Fuzzy -->
-    <string name="about_description_donate">"Merci de songer à soutenir cette application ! Pour voir l'état actuel des dons, cliquez sur la plateforme correspondante :"</string>
+    <string name="about_description_donate">"Merci de songer à soutenir cette application ! Pour voir l'état actuel des dons et pour donner, cliquez sur la plateforme correspondante :"</string>
     <string name="quest_religion_for_place_of_worship_name_title">"Quelle religion est pratiquée à %s ?"</string>
 </resources>

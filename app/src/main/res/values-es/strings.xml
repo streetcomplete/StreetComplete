@@ -475,9 +475,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
     <string name="quest_busStopShelter_tram_title">"¿La parada de tranvía está bajo cubierto?"</string>
     <string name="quest_bench_backrest_title">"¿Tiene respaldo este banco?"</string>
     <string name="quest_bench_answer_picnic_table">"Es una mesa de picnic"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_religion_for_place_of_worship_title">"¿Qué religión se practica en %s?"</string>
     <string name="quest_religion_christian">"Cristianismo"</string>
     <string name="quest_religion_muslim">"Islam"</string>
     <string name="quest_religion_hindu">"Hinduísmo"</string>
@@ -771,4 +768,5 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
     <string name="about_title_donate">"Donar"</string>
     <string name="about_summary_donate">"¡Muestra tu agradecimiento! ❤️"</string>
     <string name="about_description_donate">"¡Gracias por considerar apoyar esta app! Para ver las donaciones actuales y donar, clica en la plataforma correspondiente:"</string>
+    <string name="quest_religion_for_place_of_worship_name_title">"¿Qué religión se practica en %s?"</string>
 </resources>

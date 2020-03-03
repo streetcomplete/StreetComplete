@@ -449,7 +449,7 @@
     <string name="quest_hasFeature_only">"Только"</string>
     <string name="quest_dietType_explanation_vegan">"Веганские блюда не содержат продуктов животного происхождения (мяса, молочных продуктов, яиц и т.д.)."</string>
     <string name="quest_dietType_explanation_vegetarian">"Вегетарианские блюда не содержат мяса или рыбы."</string>
-    <string name="quest_dietType_explanation">"Отвечайте «Да» только в том случае, если заведение имеет диетические варианты блюд, отсутствие закусок и т.д."</string>
+    <string name="quest_dietType_explanation">"Отвечайте \"да\" только в том случае, если есть полноценные блюда, а не только овощные закуски и пр."</string>
     <string name="quest_carWashType_title">"Какого типа эта автомойка?"</string>
     <string name="quest_carWashType_automated">"Автоматическая"</string>
     <string name="quest_carWashType_selfService">"Самообслуживание"</string>
@@ -492,7 +492,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_bench_answer_picnic_table">"Это стол для пикника"</string>
-    <string name="quest_religion_for_place_of_worship_title">"Какая религия исповедуется в месте поклонения %s?"</string>
     <string name="quest_religion_christian">"Христианство"</string>
     <string name="quest_religion_muslim">"Ислам"</string>
     <string name="quest_religion_hindu">"Индуизм"</string>
@@ -784,5 +783,5 @@
     <string name="about_title_donate">"Поддержать"</string>
     <string name="about_summary_donate">"Выразите свою признательность! ❤️"</string>
     <string name="about_description_donate">"Спасибо, что решили поддержать это приложение! Чтобы увидеть текущие пожертвования и внести свое, выберите подходящую платформу:"</string>
-    <string name="quest_religion_for_place_of_worship_name_title">"К какой религии относится %?"</string>
+    <string name="quest_religion_for_place_of_worship_name_title">"К какой религии относится %s?"</string>
 </resources>

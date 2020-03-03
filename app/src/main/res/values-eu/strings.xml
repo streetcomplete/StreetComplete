@@ -449,7 +449,6 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_busStopShelter_tram_title">"Tranbia geltoki honek estalpea du?"</string>
     <string name="quest_bench_backrest_title">"Banku honek bizkarrekoa du?"</string>
     <string name="quest_bench_answer_picnic_table">"Piknik taula bat da"</string>
-    <string name="quest_religion_for_place_of_worship_title">"Zein da %s-(e)n praktikatutako erlijioa?"</string>
     <string name="quest_religion_christian">"Kristautasuna"</string>
     <string name="quest_religion_muslim">"Islam"</string>
     <string name="quest_religion_hindu">"Hinduismoa"</string>

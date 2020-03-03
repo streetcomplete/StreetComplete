@@ -496,9 +496,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_busStopShelter_tram_title">"この路面電車の停留所に屋根はありますか?"</string>
     <string name="quest_bench_backrest_title">"このベンチは背もたれがありますか?"</string>
     <string name="quest_bench_answer_picnic_table">"ピクニックテーブルです"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_religion_for_place_of_worship_title">"%s はどんな宗教に使用されていますか?"</string>
     <string name="quest_religion_christian">"キリスト教"</string>
     <string name="quest_religion_muslim">"イスラム教"</string>
     <string name="quest_religion_hindu">"ヒンドゥー教"</string>

@@ -369,7 +369,6 @@ Podatki, ki jih vnesete tu, bodo dodani v OpenStreetMap v vašem imenu, brez pot
     <string name="quest_busStopShelter_tram_title">"Ali to postajališče za tramvaj nudi zavetje?"</string>
     <string name="quest_bench_backrest_title">"Ali ima ta klopca naslonjalo?"</string>
     <string name="quest_bench_answer_picnic_table">"To je miza za piknik"</string>
-    <string name="quest_religion_for_place_of_worship_title">"Kateri veria se izvaja v %s?"</string>
     <string name="quest_religion_christian">"Krščanstvo"</string>
     <string name="quest_religion_muslim">"Muslimanstvo"</string>
     <string name="quest_religion_hindu">"Hinduizem"</string>

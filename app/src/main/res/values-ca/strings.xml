@@ -442,7 +442,6 @@ En cas contrari, podeu baixar un altre teclat a la botiga d'aplicacions. Els tec
     <string name="quest_busStopShelter_tram_title">"Aquesta parada de tramvia té marquesina?"</string>
     <string name="quest_bench_backrest_title">"Aquest banc té respatller?"</string>
     <string name="quest_bench_answer_picnic_table">"És una taula de pícnic"</string>
-    <string name="quest_religion_for_place_of_worship_title">"Quina religió es practica a %s?"</string>
     <string name="quest_religion_christian">"cristianisme"</string>
     <string name="quest_religion_muslim">"islamisme"</string>
     <string name="quest_religion_hindu">"hinduisme"</string>

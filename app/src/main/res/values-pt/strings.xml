@@ -440,7 +440,6 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="quest_busStopShelter_tram_title">"A paragem do elétrico tem um abrigo?"</string>
     <string name="quest_bench_backrest_title">"Este banco tem apoio para as costas?"</string>
     <string name="quest_bench_answer_picnic_table">"É uma mesa de piquenique"</string>
-    <string name="quest_religion_for_place_of_worship_title">"Qual é a religião praticada em \"%s\"?"</string>
     <string name="quest_religion_christian">"Cristianismo"</string>
     <string name="quest_religion_muslim">"Islamismo"</string>
     <string name="quest_religion_hindu">"Hinduísmo"</string>
