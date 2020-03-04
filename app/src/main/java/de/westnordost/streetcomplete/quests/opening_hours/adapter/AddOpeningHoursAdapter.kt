@@ -158,6 +158,8 @@ open class AddOpeningHoursAdapter(
 
     fun createOpeningMonths() = monthsRows.toOpeningMonthsList()
 
+    fun createOpeningMonthsRow() = monthsRows //TODO - remove it?
+
     fun changeToMonthsMode() {
         val om = monthsRows[0]
         openSetMonthsRangeDialog(om.months) { startIndex, endIndex ->
