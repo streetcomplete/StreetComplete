@@ -3,11 +3,11 @@ package de.westnordost.streetcomplete.quests.motorcycle_parking_capacity
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
 
-class AddMotorcycleParkingCapacity(o: OverpassMapDataDao) : SimpleOverpassQuestType<Int>(o) {
+class AddMotorcycleParkingCapacity(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<Int>(o) {
 
-    override val tagFilters = "nodes, ways with amenity=motorcycle_parking and !capacity and access !~ private|no"
+    override val tagFilters = "nodes, ways with amenity = motorcycle_parking and !capacity and access !~ private|no"
     override val commitMessage = "Add motorcycle parking capacities"
     override val icon = R.drawable.ic_quest_motorcycle_parking_capacity
 

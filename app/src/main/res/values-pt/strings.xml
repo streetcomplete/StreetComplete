@@ -67,9 +67,10 @@
     <string name="turn_on_location_request">"A localização por GPS está desativada. Quer aceder agora às Opções do Android para a ativar?"</string>
     <string name="no_location_permission_warning">"É necessária a sua localização para pesquisar desafios na sua área favorita."</string>
     <string name="action_about">"Sobre o StreetComplete"</string>
-    <string name="about_title_version">"Versão"</string>
     <string name="about_title_authors">"Créditos"</string>
-    <string name="about_summary_authors">"© 2016–2019 Tobias Zwick e colaboradores"</string>
+
+    <!-- Fuzzy -->
+    <string name="about_summary_authors">"© 2016–2020 Tobias Zwick e colaboradores"</string>
     <string name="about_title_repository">"Repositório do código-fonte"</string>
     <string name="about_summary_repository">"No site do GitHub"</string>
     <string name="about_title_report_error">"Reportar erro"</string>
@@ -439,7 +440,6 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="quest_busStopShelter_tram_title">"A paragem do elétrico tem um abrigo?"</string>
     <string name="quest_bench_backrest_title">"Este banco tem apoio para as costas?"</string>
     <string name="quest_bench_answer_picnic_table">"É uma mesa de piquenique"</string>
-    <string name="quest_religion_for_place_of_worship_title">"Qual é a religião praticada em \"%s\"?"</string>
     <string name="quest_religion_christian">"Cristianismo"</string>
     <string name="quest_religion_muslim">"Islamismo"</string>
     <string name="quest_religion_hindu">"Hinduísmo"</string>
@@ -614,6 +614,8 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="quest_openingHours_timeSelect_next">"Próximo"</string>
     <string name="quest_tracktype_title">"Qual o tipo de firmeza da superfície deste trilho?"</string>
     <string name="quest_tracktype_grade1">"Sólido"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tracktype_grade2">"Praticamente sólido"</string>
     <string name="quest_tracktype_grade3">"Mistura"</string>
     <string name="quest_tracktype_grade4">"Praticamente brando"</string>
@@ -661,5 +663,31 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
     <string name="quest_ferry_motor_vehicle_name_title">"%s transporto veículos motorizados?"</string>
     <string name="quest_ferry_motor_vehicle_title">"Esta rota de ferry transporta veículos motorizados?"</string>
     <string name="quest_leave_new_note_photos_are_useful">"Adicionar uma foto, fará com que a sua nota seja ainda mais útil."</string>
+    <string name="quest_postboxCollectionTimes_name_title">"Quais as horas de recolha deste %s marco postal?"</string>
+    <string name="create_new_note_hint">"O ideal é deixar a nota no idioma local ou em inglês"</string>
+    <string name="about_contributing">"As respostas são utilizadas para melhorar o OpenStreetMap. As contribuições são dados livres e qualquer um pode utilizar. Muitos projetos já o utilizam"</string>
+    <string name="oauth_remove_authorization_dialog_message">"Quer remover a autorização da sua conta OSM?"</string>
     <string name="oauth_remove_authorization_confirmation">"Remover"</string>
+    <string name="quest_leafType_title">"Esta árvore tem agulhas ou folhas?"</string>
+    <string name="quest_leaf_type_needles">"agulhas"</string>
+    <string name="quest_leaf_type_broadleaved">"Folhas"</string>
+    <string name="quest_leaf_type_mixed">"Ambas estão presentes"</string>
+    <string name="quest_cyclewayPartSurface_title">"Qual o tipo de superfície desta ciclo via?"</string>
+    <string name="quest_generic_answer_differs_along_the_way">"Varia ao longo do trajecto..."</string>
+    <string name="quest_split_way_tutorial">"Toque na via para dividir no ponto onde a resposta é diferente. Tente ser o mais preciso possível, pode fazer zoom como habitualmente"</string>
+    <string name="quest_split_way_too_imprecise">"Por favor faça mais zoom"</string>
+    <string name="quest_split_way_many_splits_confirmation_description">"Há uma série de divisões. Pode sempre dividir a via mais tarde."</string>
+    <string name="quest_footwayPartSurface_title">"Qual o tipo de superfície deste caminho?"</string>
+    <string name="quest_wheelchairAccess_toiletsPart_title">"A casa de banho em %s é acessível por cadeira de rodas?"</string>
+    <string name="quest_tactilePaving_title_tram">"A paragem de eléctrico tem pavimento táctil?"</string>
+    <string name="quest_tactilePaving_title_name_tram">"A paragem de eléctrico %s tem pavimento táctil?"</string>
+    <string name="quest_maxweight_title">"Qual o limite de peso aqui?"</string>
+    <string name="quest_maxweight_answer_noSign">"Não há sinalização"</string>
+    <string name="quest_maxweight_unusualInput_confirmation_description">"Este limite de peso não é plausível. Tem a certeza que está correto?"</string>
+    <string name="quest_maxweight_answer_other_sign">"Sinalização é diferente..."</string>
+    <string name="quest_maxweight_unsupported_sign_request_photo">"Gostaria de deixar uma nota? Uma nota com uma foto permitirá a outros mapeadores corrigirem"</string>
+    <string name="confirmation_authorize_now_note">"Pode definir isto mais tarde nas definições"</string>
+    <string name="quest_generalFee_title">"Há custo associado para entrar em %s?"</string>
+    <string name="quest_laundrySelfService_title">"Esta lavandaria é self service?"</string>
+    <string name="quest_handrail_title">"Estas escadas têm corrimão?"</string>
 </resources>

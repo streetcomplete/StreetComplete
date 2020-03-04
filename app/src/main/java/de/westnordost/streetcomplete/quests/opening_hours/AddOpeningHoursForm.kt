@@ -35,4 +35,12 @@ class AddOpeningHoursForm : OpeningHoursForm() {
     override fun onClickOk() {
         applyAnswer(RegularOpeningHours(openingHoursAdapter.createOpeningMonths()))
     }
+
+
+    override fun isFormComplete() = openingHoursAdapter.createOpeningMonths().joinToString(";").isNotEmpty()
+
+    companion object {
+        private const val OPENING_HOURS_DATA = "oh_data"
+        private const val IS_ADD_MONTHS_MODE = "oh_add_months"
+    }
 }

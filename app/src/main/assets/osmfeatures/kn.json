@@ -48,9 +48,6 @@
         "tourism/information": {
             "name": "ಮಾಹಿತಿ"
         },
-        "natural": {
-            "name": "ನೈಸರ್ಗಿಕ"
-        },
         "shop/laundry": {
             "name": "ಧೋಬಿಖಾನೆ"
         },
@@ -220,9 +217,6 @@
         "amenity/fire_station": {
             "name": "ಅಗ್ನಿಶಾಮಕ ಕೇಂದ್ರ"
         },
-        "craft/optician": {
-            "name": "ನೇತ್ರ ತಜ್ಞ"
-        },
         "amenity/veterinary": {
             "name": "ಪಶುವೈದ್ಯಕೀಯ"
         },
@@ -330,9 +324,6 @@
         },
         "craft/handicraft": {
             "name": "ಕರಕುಶಲ ವಸ್ತು"
-        },
-        "building/kindergarten": {
-            "name": "ಶಿಶುವಿಹಾರ/ಬಾಲವಾಡಿ ಕಟ್ಟಡ"
         },
         "building/garage": {
             "name": "ಮೋಟಾರುಖಾನೆ"

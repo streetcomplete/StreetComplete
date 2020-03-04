@@ -1,16 +1,19 @@
 package de.westnordost.streetcomplete.quests.postbox_collection_times
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.Countries
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
+import de.westnordost.streetcomplete.ktx.containsAny
+import de.westnordost.streetcomplete.data.osm.NoCountriesExcept
 
-class AddPostboxCollectionTimes(o: OverpassMapDataDao) : SimpleOverpassQuestType<CollectionTimesAnswer>(o) {
+class AddPostboxCollectionTimes(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<CollectionTimesAnswer>(o) {
 
     override val tagFilters = """
-        nodes with amenity=post_box and !collection_times
-        and collection_times:signed != no and access !~ private|no
+        nodes with amenity = post_box
+        and !collection_times
+        and collection_times:signed != no
+        and access !~ private|no
     """
     override val icon = R.drawable.ic_quest_mail
     override val commitMessage = "Add postbox collection times"
@@ -20,7 +23,7 @@ class AddPostboxCollectionTimes(o: OverpassMapDataDao) : SimpleOverpassQuestType
     // https://www.itinerantspirit.com/home/2016/5/22/post-boxes-from-around-the-world
     // https://commons.wikimedia.org/wiki/Category:Post_boxes_by_country
     // http://wanderlustexplorers.com/youve-got-mail-23-international-postal-boxes/
-    override val enabledForCountries:Countries = Countries.noneExcept(
+    override val enabledInCountries = NoCountriesExcept(
         // definitely, seen pictures:
         "AU","NZ","VU","MY","SG","TH","VN","LA","MM","IN","BD","NP","LK","BT","PK","TW","HK",
         "MO","CN","KR","JP","RU","BY","LT","LV","FI","SE","NO","DK","GB","IE","IS","NL","BE",
@@ -41,9 +44,9 @@ class AddPostboxCollectionTimes(o: OverpassMapDataDao) : SimpleOverpassQuestType
     }
 
     override fun getTitle(tags: Map<String, String>): Int {
-        val hasName = tags.containsKey("name") || tags.containsKey("brand") || tags.containsKey("operator")
+        val hasName = tags.keys.containsAny(listOf("name","brand","operator"))
         return if (hasName) R.string.quest_postboxCollectionTimes_name_title
-        else         R.string.quest_postboxCollectionTimes_title
+               else         R.string.quest_postboxCollectionTimes_title
     }
 
     override fun createForm() = AddCollectionTimesForm()

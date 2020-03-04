@@ -12,6 +12,7 @@ import de.westnordost.streetcomplete.data.osm.upload.ChangesetAutoCloserWorker;
 import de.westnordost.streetcomplete.data.upload.QuestChangesUploadService;
 import de.westnordost.streetcomplete.data.download.QuestDownloadService;
 import de.westnordost.streetcomplete.data.meta.MetadataModule;
+import de.westnordost.streetcomplete.map.MainFragment;
 import de.westnordost.streetcomplete.oauth.OAuthModule;
 import de.westnordost.streetcomplete.oauth.OsmOAuthDialogFragment;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
@@ -31,8 +32,7 @@ import de.westnordost.streetcomplete.settings.SettingsFragment;
 import de.westnordost.streetcomplete.settings.ShowQuestFormsActivity;
 import de.westnordost.streetcomplete.settings.questselection.QuestSelectionFragment;
 import de.westnordost.streetcomplete.statistics.AnswersCounter;
-import de.westnordost.streetcomplete.tangram.MapControlsFragment;
-import de.westnordost.streetcomplete.tangram.QuestsMapFragment;
+import de.westnordost.streetcomplete.map.QuestsMapFragment;
 import de.westnordost.streetcomplete.util.SerializedSavedState;
 
 @Singleton
@@ -68,8 +68,6 @@ public interface ApplicationComponent
 
 	void inject(QuestsMapFragment questsMapFragment);
 
-	void inject(MapControlsFragment mapControlsFragment);
-
 	void inject(QuestSelectionFragment questSelectionFragment);
 
 	void inject(AddBuildingLevelsForm fragment);
@@ -78,4 +76,6 @@ public interface ApplicationComponent
 	void inject(@NonNull SplitWayFragment splitWayFragment);
 
 	void inject(@NotNull ShowQuestFormsActivity showQuestFormsActivity);
+
+	void inject(@NotNull MainFragment mainFragment);
 }

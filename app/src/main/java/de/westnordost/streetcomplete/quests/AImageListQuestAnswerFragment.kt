@@ -36,6 +36,9 @@ abstract class AImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnswerFragm
     protected open val maxSelectableItems = 1
     /** return -1 for showing all items at once. Default: -1  */
     protected open val maxNumberOfInitiallyShownItems = -1
+    /** return true to move last picked items to the front. On by default. Only respected if the
+     *  items do not all fit into one line */
+    protected open val moveFavoritesToFront = true
 
     protected abstract val items: List<Item<I>>
 
@@ -68,7 +71,7 @@ abstract class AImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnswerFragm
         })
 
         showMoreButton.setOnClickListener {
-            imageSelector.items = items.favouritesMovedToFront()
+            imageSelector.items = moveFavouritesToFront(items)
             showMoreButton.visibility = View.GONE
         }
 
@@ -93,7 +96,7 @@ abstract class AImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnswerFragm
         }
     }
 
-    abstract protected fun onClickOk(selectedItems: List<I>)
+    protected abstract fun onClickOk(selectedItems: List<I>)
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
@@ -109,15 +112,15 @@ abstract class AImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnswerFragm
         val showAll = initiallyShow == -1 || initiallyShow >= allItems.size
 
         showMoreButton.visibility = if(showAll) View.GONE else View.VISIBLE
-        val sortedItems = allItems.favouritesMovedToFront()
+        val sortedItems = moveFavouritesToFront(allItems)
         imageSelector.items = if(showAll) sortedItems else sortedItems.subList(0, initiallyShow)
     }
 
-    private fun List<Item<I>>.favouritesMovedToFront(): List<Item<I>> {
-        val result: LinkedList<Item<I>> = LinkedList(this)
+    private fun moveFavouritesToFront(originalList: List<Item<I>>): List<Item<I>> {
+        val result: LinkedList<Item<I>> = LinkedList(originalList)
 
-        if (result.size > itemsPerRow) {
-            favs.moveLastPickedToFront(javaClass.simpleName, result, this)
+        if (result.size > itemsPerRow && moveFavoritesToFront) {
+            favs.moveLastPickedToFront(javaClass.simpleName, result, originalList)
         }
         return result
     }

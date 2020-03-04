@@ -4,10 +4,10 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.OsmTaggings
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
 import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.*
 
-class AddProhibitedForPedestrians(o: OverpassMapDataDao) : SimpleOverpassQuestType<ProhibitedForPedestriansAnswer>(o) {
+class AddProhibitedForPedestrians(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<ProhibitedForPedestriansAnswer>(o) {
 
     override val tagFilters = """
         ways with (
@@ -29,7 +29,7 @@ class AddProhibitedForPedestrians(o: OverpassMapDataDao) : SimpleOverpassQuestTy
         // fuzzy filter for above mentioned situations + developed-enough / non-rural roads
         "and ( oneway~yes|-1 or bridge=yes or tunnel=yes or bicycle~no|use_sidepath or lit=yes )"
 
-    override val commitMessage = "Add whether roads are accessible for pedestrians"
+    override val commitMessage = "Add whether roads are prohibited for pedestrians"
     override val icon = R.drawable.ic_quest_no_pedestrians
     override val isSplitWayEnabled = true
 

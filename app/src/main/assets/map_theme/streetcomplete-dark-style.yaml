@@ -18,6 +18,8 @@ global:
 
     railway_color: '#903'
     road_color: '#559'
+    highway_color: '#033'
+    highway_outline_color: '#000'
     road_outline_color: '#99f'
     path_color: global.road_color
     path_outline_color: '#547'
@@ -30,7 +32,7 @@ global:
     building_color: [0.16, 0.36, 0.36, 0.75]
     building_outline_color: [0.12, 0.32, 0.32, 0.75]
 
-    boundary_color: '#e46'
+    boundary_color: '#e72'
 
     oneway_arrow_color: '#ccf'
     barrier_color: '#99f'
@@ -38,6 +40,9 @@ global:
     tunnel_color: [0.3, 0.2, 1.0, 0.2]
 
 styles:
+    lines-highway-style:
+        base: lines
+        blend: add
     lines-railway-style:
         base: lines
         blend: add

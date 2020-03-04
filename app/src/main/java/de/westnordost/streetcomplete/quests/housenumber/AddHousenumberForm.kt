@@ -82,7 +82,7 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
             AlertDialog.Builder(activity!!)
                 .setView(inner)
                 .setPositiveButton(R.string.quest_generic_hasFeature_yes) { _, _ -> applyAnswer(NoHouseNumber) }
-                .setNegativeButton(R.string.quest_generic_hasFeature_no_leave_note) { _, _ -> onClickCantSay() }
+                .setNegativeButton(R.string.quest_generic_hasFeature_no_leave_note) { _, _ -> composeNote() }
                 .show()
         } else {
             // fallback in case the type of building is known by Housenumber quest but not by

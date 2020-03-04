@@ -37,9 +37,6 @@
             "name": "Fluviu",
             "terms": "q"
         },
-        "railway": {
-            "name": "Cale Ferată"
-        },
         "building/university": {
             "name": "Universitate"
         },
@@ -52,9 +49,6 @@
         "amenity/waste_disposal": {
             "name": "Container de Gunoi"
         },
-        "power/sub_station": {
-            "name": "SubStație"
-        },
         "shop/copyshop": {
             "name": "Atelier de Copiere"
         },
@@ -66,9 +60,6 @@
         },
         "building/terrace": {
             "name": "Case în Rând"
-        },
-        "man_made/bridge": {
-            "name": "Pod"
         },
         "railway/monorail": {
             "name": "Monoșină"
@@ -250,9 +241,6 @@
         "club": {
             "name": "Club"
         },
-        "highway": {
-            "name": "Autostradă"
-        },
         "shop/massage": {
             "name": "Masaj"
         },
@@ -363,9 +351,6 @@
         },
         "leisure/miniature_golf": {
             "name": "Minigolf"
-        },
-        "building/kindergarten": {
-            "name": "Preșcoală/Grădiniță"
         },
         "amenity/hospital": {
             "name": "Spital"
@@ -577,9 +562,6 @@
         "shop/vacuum_cleaner": {
             "name": "Magazin de Aspiratoare"
         },
-        "entrance": {
-            "name": "Intrare/Ieșire"
-        },
         "shop/chemist": {
             "name": "Drogărie"
         },
@@ -712,9 +694,6 @@
         "building/hotel": {
             "name": "Hotel"
         },
-        "shop/anime": {
-            "name": "Magazin Anime"
-        },
         "route/ferry": {
             "name": "Rută de Bac"
         },
@@ -780,9 +759,6 @@
         },
         "office/travel_agent": {
             "name": "Agenție de Călătorii"
-        },
-        "craft/jeweler": {
-            "name": "Giuvaer"
         },
         "office/telecommunication": {
             "name": "Oficiu Telecom"
@@ -904,9 +880,6 @@
         "type/boundary": {
             "name": "Graniță"
         },
-        "craft/optician": {
-            "name": "Optician"
-        },
         "waterway/waterfall": {
             "name": "Cascadă"
         },
@@ -1024,9 +997,6 @@
         "shop/electronics": {
             "name": "Magazin de Electronice"
         },
-        "waterway": {
-            "name": "Drum Marin"
-        },
         "amenity/clinic": {
             "name": "Clinică"
         },
@@ -1047,9 +1017,6 @@
         },
         "amenity/crematorium": {
             "name": "Crematoriu"
-        },
-        "natural/wood": {
-            "name": "Pădure"
         },
         "building/construction": {
             "name": "Clădire în Construcție"
@@ -1105,9 +1072,6 @@
         "natural/ridge": {
             "name": "Creastă"
         },
-        "natural": {
-            "name": "Natural"
-        },
         "landuse/military/training_area": {
             "name": "Zonă de Training"
         },
@@ -1137,9 +1101,6 @@
         },
         "highway/cycleway": {
             "name": "Pistă biciclete"
-        },
-        "amenity/car_sharing": {
-            "name": "Car Sharing"
         },
         "leisure/nature_reserve": {
             "name": "Rezervat Natural"
@@ -1180,9 +1141,6 @@
         "shop/e-cigarette": {
             "name": "Magazin de Țigarete Electrice"
         },
-        "tourism": {
-            "name": "Turism"
-        },
         "amenity/public_bath": {
             "name": "Baie Publică"
         },
@@ -1207,12 +1165,6 @@
         "shop/watches": {
             "name": "Magazin de Ceasuri"
         },
-        "amenity/parking_entrance": {
-            "name": "Intrare/Ieșire Garaj"
-        },
-        "landuse": {
-            "name": "Utilizare Teren"
-        },
         "shop/gift": {
             "name": "Magazin de Cadouri"
         },
@@ -1224,9 +1176,6 @@
         },
         "place": {
             "name": "Loc"
-        },
-        "power": {
-            "name": "Energie"
         },
         "shop/music": {
             "name": "Magazin de Muzică"
@@ -1371,9 +1320,6 @@
         },
         "shop/lottery": {
             "name": "Loterie"
-        },
-        "amenity/kindergarten": {
-            "name": "Preșcoală/Grădiniță"
         },
         "leisure/dog_park": {
             "name": "Parc de Câini"

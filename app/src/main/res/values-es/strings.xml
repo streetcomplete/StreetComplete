@@ -65,9 +65,10 @@
     <string name="turn_on_location_request">"La ubicación esta desactivada. ¿Quieres ir a los ajustes para activarla?"</string>
     <string name="no_location_permission_warning">"Tu ubicación es necesaria para descargar tareas cercanas."</string>
     <string name="action_about">"Acerca de StreetComplete"</string>
-    <string name="about_title_version">"Versión"</string>
     <string name="about_title_authors">"Agradecimientos"</string>
-    <string name="about_summary_authors">"© 2016–2019 Tobias Zwick y demás colaboradores"</string>
+
+    <!-- Fuzzy -->
+    <string name="about_summary_authors">"© 2016–2020 Tobias Zwick y demás colaboradores"</string>
     <string name="about_title_repository">"Repositorio de código"</string>
     <string name="about_summary_repository">"en GitHub"</string>
     <string name="about_title_report_error">"Notificar errores"</string>
@@ -474,9 +475,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
     <string name="quest_busStopShelter_tram_title">"¿La parada de tranvía está bajo cubierto?"</string>
     <string name="quest_bench_backrest_title">"¿Tiene respaldo este banco?"</string>
     <string name="quest_bench_answer_picnic_table">"Es una mesa de picnic"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_religion_for_place_of_worship_title">"¿Qué religión se practica en %s?"</string>
     <string name="quest_religion_christian">"Cristianismo"</string>
     <string name="quest_religion_muslim">"Islam"</string>
     <string name="quest_religion_hindu">"Hinduísmo"</string>
@@ -519,7 +517,7 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
     <string name="quest_bicycle_parking_type_building">"Edificio"</string>
     <string name="quest_bicycle_parking_type_title">"¿Sabes el tipo de aparcamiento de bicis?"</string>
     <string name="quest_cycleway_value_suggestion_lane">"carril recomendado para bicis"</string>
-    <string name="quest_postboxCollectionTimes_title">"¿Sabes las horas de recogida de este buzón?"</string>
+    <string name="quest_postboxCollectionTimes_title">"¿Cuáles son las horas de recogida de este buzón?"</string>
     <string name="quest_collectionTimes_add_times">"Añadir hora de recogida"</string>
     <string name="quest_collectionTimes_answer_no_times_specified">"Sin información"</string>
     <string name="quest_construction_road_title">"¿Esta carretera está terminada?"</string>
@@ -649,6 +647,8 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
     <string name="quest_openingHours_timeSelect_next">"Siguiente"</string>
     <string name="quest_tracktype_title">"¿Cuál es la firmeza de esta vía?"</string>
     <string name="quest_tracktype_grade1">"Sólido"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tracktype_grade2">"Bastante sólido"</string>
     <string name="quest_tracktype_grade3">"Mezcla"</string>
     <string name="quest_tracktype_grade4">"Bastante suave"</string>
@@ -704,7 +704,7 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
     <!-- Fuzzy -->
     <string name="quest_ferry_motor_vehicle_title">"¿Transporta vehículos motorizados?"</string>
     <string name="quest_leave_new_note_photos_are_useful">"Añadir una nota hará la nota mucho más útil."</string>
-    <string name="quest_postboxCollectionTimes_name_title">"¿Cuáles son las horas de recogida de estos %s buzones?"</string>
+    <string name="quest_postboxCollectionTimes_name_title">"¿Cuáles son las horas de recogida del buzón %s?"</string>
     <string name="create_new_note_hint">"Mejor escribe la nota en el idioma local o si no, en inglés."</string>
     <string name="about_contributing">"Tus respuestas están directamente mejorando OpenStreetMap. Los datos aportados son abiertos, todos el mundo puede usarlos. Muchos grandes proyectos están ya utilizándolos."</string>
     <string name="about_missing_stars">"Actualmente, la cuenta de estrellas no es compartida a través de los dispositivos, sino que las respuestas son añadidas directamente a la base de datos OpenStreetMap."</string>
@@ -726,12 +726,47 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
     <string name="quest_footwayPartSurface_title">"¿Cuál es la superficie de la acera aquí?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title">"¿Es el servicio accesible para %s sillas de ruedas?"</string>
     <string name="quest_tactilePaving_title_tram">"¿Esta parada de tranvía tiene pavimento táctil?"</string>
+    <string name="quest_tactilePaving_title_name_tram">"¿La parada de tranvía %s tiene pavimento táctil?"</string>
     <string name="quest_maxweight_title">"¿Cuál es el límite de peso?"</string>
     <string name="quest_maxweight_answer_noSign">"No hay señal"</string>
     <string name="quest_maxweight_unusualInput_confirmation_description">"Este peso parece inverosímil. ¿Estás seguro de que es correcto?"</string>
     <string name="quest_maxweight_answer_other_sign">"La señal se ve diferente..."</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"¿Te gustaría dejar una nota? Una nota con una foto permitirá que otros mapeadores se encarguen de ello."</string>
     <string name="confirmation_authorize_now_note">"Puedes hacerlo más tarde en la pantalla de configuración."</string>
+    <string name="quest_generalFee_title">"¿Tiene coste entrar en %s?"</string>
     <string name="quest_laundrySelfService_title">"¿Esta lavandería es una lavandería de autoservicio?"</string>
     <string name="quest_handrail_title">"¿Estas escaleras tienen barandilla?"</string>
+    <string name="quest_openingHours_no_name_title">"¿Cuáles son los horarios de apertura de este lugar? (%s)"</string>
+    <string name="about_summary_current_version">"Versión actual: %s"</string>
+    <string name="quest_postboxRef_title">"¿Cuál es el número de referencia de este buzón?"</string>
+    <string name="quest_postboxRef_name_title">"¿Cuál es el número de referencia del buzón %s?"</string>
+    <string name="quest_ref_answer_noRef">"Ningún número de referencia visible..."</string>
+    <string name="quest_street_side_puzzle_tutorial">"Toque los signos de interrogación y seleccione una respuesta para cada lado de la carretera."</string>
+    <string name="quest_recycling_materials_title">"¿Qué se puede depositar para reciclar aquí?"</string>
+    <string name="quest_recycling_materials_note">"Si se puede reciclar algo diferente de lo que se puede seleccionar aquí, deje una nota en su lugar."</string>
+    <string name="quest_recycling_type_batteries">"Baterías"</string>
+    <string name="quest_recycling_type_cans">"Latas"</string>
+    <string name="quest_recycling_type_clothes">"Ropa"</string>
+    <string name="quest_recycling_type_green_waste">"Desechos del jardín"</string>
+    <string name="quest_recycling_type_glass_bottles">"Botellas y frascos de vidrio"</string>
+    <string name="quest_recycling_type_glass_bottles_short">"Botellas y frascos"</string>
+    <string name="quest_recycling_type_paper">"Papel"</string>
+    <string name="quest_recycling_type_plastic_generic">"Plástico"</string>
+    <string name="quest_recycling_type_plastic">"Cualquier plástico"</string>
+    <string name="quest_recycling_type_shoes">"Zapatos"</string>
+    <string name="quest_recycling_type_electric_appliances">"Aparatos eléctricos"</string>
+    <string name="quest_recycling_type_plastic_bottles">"Solo botellas de plástico"</string>
+    <string name="quest_recycling_type_plastic_packaging">"Solo embalaje de plástico"</string>
+    <string name="quest_recycling_type_scrap_metal">"Chatarra"</string>
+    <string name="quest_recycling_type_any_glass">"Solo vidrio"</string>
+    <string name="quest_recycling_glass_title">"¿Solo se pueden reciclar botellas y frascos de vidrio aquí, o cualquier tipo de vidrio?"</string>
+    <string name="quest_determineRecyclingGlass_description_any_glass">"Ejemplos de vidrio que a menudo no se aceptan: vidrio templado, cristales de ventanas, cristalería, bombillas o espejos."</string>
+    <string name="about_title_changelog">"Historial de versiones"</string>
+    <string name="title_whats_new">"¿Qué hay de nuevo?"</string>
+    <string name="about_title_rate">"Valora esta aplicación"</string>
+    <string name="about_summary_rate">"en Google Play"</string>
+    <string name="about_title_donate">"Donar"</string>
+    <string name="about_summary_donate">"¡Muestra tu agradecimiento! ❤️"</string>
+    <string name="about_description_donate">"¡Gracias por considerar apoyar esta app! Para ver las donaciones actuales y donar, clica en la plataforma correspondiente:"</string>
+    <string name="quest_religion_for_place_of_worship_name_title">"¿Qué religión se practica en %s?"</string>
 </resources>

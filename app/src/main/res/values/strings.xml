@@ -45,6 +45,7 @@
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"If the name can be spelled without an abbreviation, then it should be expanded. Many common abbreviations are expanded automatically while you type, but probably not all."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"No abbreviation"</string>
     <string name="quest_openingHours_name_title">"What are the opening hours of %s?"</string>
+    <string name="quest_openingHours_no_name_title">"What are the opening hours of this place? (%s)"</string>
     <string name="quest_openingHours_start_time">"opening time"</string>
     <string name="quest_openingHours_end_time">"closing time"</string>
     <string name="quest_openingHours_timeSelect_next">Next</string>
@@ -73,14 +74,16 @@
     <string name="cannot_find_bbox_or_reduce_tilt">"Can’t scan here. Try to zoom in further or tilt the map less."</string>
     <string name="download_area_too_big">"Please zoom in further"</string>
     <string name="confirmation_cancel_prev_download_title">"Stop the current search and scan here instead?"</string>
+    <string name="confirmation_cancel_prev_download_confirmed">"Scan here instead"</string>
+    <string name="confirmation_cancel_prev_download_cancel">"Continue current scan"</string>
     <string name="notification_downloading">"Scanning for quests…"</string>
     <string name="now_downloading_toast">"Scanning for more quests…"</string>
     <string name="turn_on_location_request">"Location is off. Open Settings to turn it on now?"</string>
     <string name="no_location_permission_warning">"Your location is needed to scan for quests in your vicinity."</string>
     <string name="action_about">"About StreetComplete"</string>
-    <string name="about_title_version">"Version"</string>
+    <string name="about_summary_current_version">"Current version: %s"</string>
     <string name="about_title_authors">"Credits"</string>
-    <string name="about_summary_authors">"© 2016–2019 Tobias Zwick and contributors"</string>
+    <string name="about_summary_authors">"© 2016–2020 Tobias Zwick and contributors"</string>
     <string name="about_title_repository">"Source Repository"</string>
     <string name="about_summary_repository">"on GitHub"</string>
     <string name="about_title_report_error">"Report error"</string>
@@ -294,8 +297,8 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
     <string name="quest_wheelchairAccess_limited_description_business">Partially means that there is no more than a single step to access the place and that most rooms inside are wheelchair accessible.</string>
     <string name="quest_wheelchairAccess_limited_description_outside">Partially means that there is no more than a single step to access it.</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">Partially means that there is no more than a single step to access it.</string>
-    <string name="quest_wheelchairAccess_description_toilets">A wheelchair sign like this might be visible if the restroom is accessible.
-    Partially means that a wheelchair can enter and use the restroom, but no handrail or adapted hand basin is present.</string>
+    <string name="quest_wheelchairAccess_description_toilets">"A wheelchair sign like this might be visible if the restroom is accessible.
+Partially means that a wheelchair can enter and use the restroom, but no handrail or adapted hand basin is present."</string>
     <string name="quest_recycling_type_title">What type of recycling facility is this?</string>
     <string name="recycling_centre">Center</string>
     <string name="overground_recycling_container">Container</string>
@@ -462,7 +465,8 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_busStopShelter_tram_title">"Does this streetcar stop have a shelter?"</string>
     <string name="quest_bench_backrest_title">Does this bench have a backrest?</string>
     <string name="quest_bench_answer_picnic_table">It’s a picnic table</string>
-    <string name="quest_religion_for_place_of_worship_title">What religion is practiced at %s?</string>
+    <string name="quest_religion_for_place_of_worship_name_title">What religion is practiced at %s?</string>
+    <string name="quest_religion_for_place_of_worship_title">What religion is practiced at this place?</string>
     <string name="quest_religion_christian">Christianity</string>
     <string name="quest_religion_muslim">Islam</string>
     <string name="quest_religion_hindu">Hinduism</string>
@@ -481,7 +485,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_surface_value_unhewn_cobblestone">Unhewn cobblestone</string>
     <string name="quest_parking_access_title">Is it restricted who may park here?</string>
     <string name="quest_parking_access_private">It is private</string>
-    <string name="quest_parking_access_yes">It is public (with or without fee)</string>
+    <string name="quest_parking_access_yes">It is open to the public (with or without fee)</string>
     <string name="quest_parking_access_customers">It is only for customers</string>
     <string name="quest_streetName_pedestrian_title">What is the name of this pedestrian street?</string>
     <string name="quest_streetSurface_square_title">"What surface does this square have?"</string>
@@ -502,6 +506,9 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_cycleway_value_suggestion_lane">bicycle suggestion lane</string>
     <string name="quest_postboxCollectionTimes_title">What are the collection times of this postbox?</string>
     <string name="quest_postboxCollectionTimes_name_title">What are the collection times of this %s postbox?</string>
+    <string name="quest_postboxRef_title">What is the reference number of this postbox?</string>
+    <string name="quest_postboxRef_name_title">What is the reference number of this %s postbox?</string>
+    <string name="quest_ref_answer_noRef">"No reference number visible…"</string>
     <string name="quest_collectionTimes_add_times">Add collection time</string>
     <string name="quest_collectionTimes_answer_no_times_specified">No times specified</string>
     <string name="quest_construction_road_title">Is this road completed?</string>
@@ -579,6 +586,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_buildingType_carport_description">roof for a car</string>
     <string name="quest_buildingType_garage">Single garage</string>
     <string name="quest_buildingType_garages">Multiple garages</string>
+    <string name="quest_buildingType_garages_description">Separate spaces for different owners/tenants</string>
     <string name="quest_buildingType_parking">Parking building</string>
 
 
@@ -690,4 +698,44 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_handrail_title">Do these steps have a handrail?</string>
     <string name="resurvey_opening_hours_title">"Are these opening hours for %s still correct?"</string>
     <string name="quest_street_side_puzzle_tutorial">Tap the question marks and select an answer for the given side of the road.</string>
+    <string name="quest_recycling_materials_title">What can be left here for recycling?</string>
+    <string name="quest_recycling_materials_note">If anything different can be recycled than selectable here, please leave a note instead.</string>
+    <string name="quest_recycling_type_batteries">Batteries</string>
+    <string name="quest_recycling_type_cans">Cans</string>
+    <string name="quest_recycling_type_clothes">Clothes</string>
+    <string name="quest_recycling_type_green_waste">Garden waste</string>
+    <string name="quest_recycling_type_glass_bottles">Glass bottles and jars</string>
+    <string name="quest_recycling_type_glass_bottles_short">Bottles and jars</string>
+    <string name="quest_recycling_type_paper">Paper</string>
+    <string name="quest_recycling_type_plastic_generic">Plastic</string>
+    <string name="quest_recycling_type_plastic">Any plastic</string>
+    <string name="quest_recycling_type_shoes">Shoes</string>
+    <string name="quest_recycling_type_electric_appliances">Electric appliances</string>
+    <string name="quest_recycling_type_plastic_bottles">Plastic bottles only</string>
+    <string name="quest_recycling_type_plastic_packaging">Plastic packaging only</string>
+    <string name="quest_recycling_type_scrap_metal">Scrap metal</string>
+    <string name="quest_recycling_type_any_glass">Any glass</string>
+    <string name="quest_recycling_glass_title">Can only glass bottles and jars be recycled here, or any type of glass?</string>
+    <string name="quest_determineRecyclingGlass_description_any_glass">Examples of glass that is often not accepted: tempered glass, window panes, glassware, light bulbs or mirrors.</string>
+
+    <string name="quest_tourism_information_title">What type of tourist information is this?</string>
+    <string name="quest_tourism_information_name_title">What type of tourist information is %s?</string>
+    <string name="quest_tourism_information_office">Tourist information office</string>
+    <string name="quest_tourism_information_board">Information board</string>
+    <string name="quest_tourism_information_terminal">Information terminal</string>
+    <string name="quest_tourism_information_map">Map</string>
+    <string name="quest_tourism_information_guidepost">Guidepost</string>
+
+    <string name="about_title_changelog">Version history</string>
+    <string name="title_whats_new">What\'s New?</string>
+    <string name="about_title_rate">Rate this app</string>
+    <string name="about_summary_rate">on Google Play</string>
+    <string name="about_title_donate">Donate</string>
+    <string name="about_summary_donate">Show your appreciation! ❤️</string>
+    <string name="about_description_donate">Thank you for considering to support this app! To see current donations and to donate yourself, tap on the respective platform:</string>
+
+    <string name="quest_recycling_materials_answer_waste">It\'s for general waste</string>
+    <string name="quest_recycling_materials_answer_waste_description">So, this is a container for any waste, such as bagged up household or industrial waste?</string>
+
+    <string name="quest_accepts_cash_title">"Does %s accept cash payment?"</string>
 </resources>

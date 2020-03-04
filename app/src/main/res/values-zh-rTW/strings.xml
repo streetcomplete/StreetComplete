@@ -67,11 +67,12 @@
     <string name="turn_on_location_request">"定位已關閉。到設定中開啟它？"</string>
     <string name="no_location_permission_warning">"你的位置會被用在搜尋身邊的任務上"</string>
     <string name="action_about">"關於 StreetComplete"</string>
-    <string name="about_title_version">"版本"</string>
 
     <!-- Fuzzy -->
     <string name="about_title_authors">"作者"</string>
-    <string name="about_summary_authors">"© 2016–2019 Tobias Zwick 和貢獻者們"</string>
+
+    <!-- Fuzzy -->
+    <string name="about_summary_authors">"© 2016–2020 Tobias Zwick 和貢獻者們"</string>
     <string name="about_title_repository">"原始碼倉儲"</string>
     <string name="about_summary_repository">"GitHub 上"</string>
     <string name="about_title_report_error">"回報錯誤"</string>
@@ -497,9 +498,6 @@
     <string name="quest_busStopShelter_tram_title">"這座路面電車站是否有遮蔭？"</string>
     <string name="quest_bench_backrest_title">"長椅是否有靠背？"</string>
     <string name="quest_bench_answer_picnic_table">"這是野餐桌"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_religion_for_place_of_worship_title">"%s 是那個宗教？"</string>
     <string name="quest_religion_christian">"基督教"</string>
     <string name="quest_religion_muslim">"伊斯蘭教"</string>
     <string name="quest_religion_hindu">"印度教"</string>
@@ -672,6 +670,8 @@
     <string name="quest_openingHours_timeSelect_next">"下一個"</string>
     <string name="quest_tracktype_title">"這一段路徑的表面硬度為何？"</string>
     <string name="quest_tracktype_grade1">"剛性路面"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tracktype_grade2">"偏剛性路面"</string>
     <string name="quest_tracktype_grade3">"混合型路面"</string>
     <string name="quest_tracktype_grade4">"偏柔性路面"</string>
@@ -714,12 +714,9 @@
     <string name="label_housenumber">"房屋門牌號碼"</string>
     <string name="label_blocknumber">"街區號碼"</string>
     <string name="quest_busStopShelter_covered">"整個站牌都有遮蓋"</string>
-    <string name="quest_ferry_pedestrian_name_title">"這邊的交通運輸是行人可到達嗎？"</string>
     <string name="quest_ferry_pedestrian_title">"這邊的輪船是行人可到達嗎？"</string>
-    <string name="quest_ferry_motor_vehicle_name_title">"這邊的交通運輸方式是能載運機動車輛嗎？"</string>
     <string name="quest_ferry_motor_vehicle_title">"這邊的輪船是能載運機動車輛嗎？ "</string>
     <string name="quest_leave_new_note_photos_are_useful">"如果能加上照片會讓註解更有用。"</string>
-    <string name="quest_postboxCollectionTimes_name_title">"這郵筒的收集時間是什麼時候？"</string>
     <string name="create_new_note_hint">"最好用當地的語言撰寫註解，不然就請用英文。"</string>
     <string name="about_contributing">"你的答案能夠直接增進開放街圖，貢獻的資料是開放的，每一位都能使用，許多很好的專案已經在運用了。"</string>
     <string name="about_missing_stars">"目前，星等計算不會跨裝置分享，但答案會直接加進開放街圖資料庫。"</string>
@@ -739,5 +736,41 @@
     <!-- Fuzzy -->
     <string name="quest_split_way_many_splits_confirmation_description">"有可分割多個地方，你總是可以稍後再度分割路徑。"</string>
     <string name="quest_footwayPartSurface_title">"人行步道的鋪面材質是什麼？"</string>
-    <string name="quest_wheelchairAccess_toiletsPart_title">"這裡的廁所是否是輪椅可通行的？"</string>
+    <string name="quest_tactilePaving_title_tram">"街車停靠站有特殊舖面嗎？"</string>
+    <string name="quest_tactilePaving_title_name_tram">"街車停靠站%s有特殊舖面嗎"</string>
+    <string name="quest_maxweight_title">"這裡的承重有上線嗎？"</string>
+    <string name="quest_maxweight_answer_noSign">"這裡沒有指標"</string>
+    <string name="quest_maxweight_unusualInput_confirmation_description">"重量的數量看來怪怪的，你確定輸入正確數值嗎？"</string>
+    <string name="quest_maxweight_answer_other_sign">"指標看來不同…"</string>
+    <string name="quest_maxweight_unsupported_sign_request_photo">"你想要留下註解嗎？像是有留下留片的註解，能夠讓其他圖客接手處理。"</string>
+    <string name="confirmation_authorize_now_note">"你可以稍後在設定頁面進行。"</string>
+    <string name="quest_laundrySelfService_title">"這個洗衣店是自助服務嗎？"</string>
+    <string name="quest_handrail_title">"這條階梯有扶手嗎？"</string>
+    <string name="quest_openingHours_no_name_title">"這地方的開放時間是？(%s)"</string>
+    <string name="about_summary_current_version">"目前版本：%s"</string>
+    <string name="quest_postboxRef_title">"這個郵筒的編號是？"</string>
+    <string name="quest_postboxRef_name_title">"這個郵筒 %s 的編號是？"</string>
+    <string name="quest_ref_answer_noRef">"看不到編號…"</string>
+    <string name="quest_street_side_puzzle_tutorial">"按住問號，然後選擇道路那一側的答案。"</string>
+    <string name="quest_recycling_materials_title">"這裡能拿過去那些回收物品？"</string>
+    <string name="quest_recycling_materials_note">"如果有沒有列出的回收項目，請留下註解。"</string>
+    <string name="quest_recycling_type_batteries">"電池"</string>
+    <string name="quest_recycling_type_cans">"鐵鋁罐"</string>
+    <string name="quest_recycling_type_clothes">"衣服"</string>
+    <string name="quest_recycling_type_green_waste">"花園垃圾"</string>
+    <string name="quest_recycling_type_glass_bottles">"玻璃瓶罐"</string>
+    <string name="quest_recycling_type_glass_bottles_short">"瓶子和罐子"</string>
+    <string name="quest_recycling_type_paper">"紙張"</string>
+    <string name="quest_recycling_type_plastic_generic">"塑膠"</string>
+    <string name="quest_recycling_type_plastic">"任何塑膠類"</string>
+    <string name="quest_recycling_type_shoes">"鞋子"</string>
+    <string name="quest_recycling_type_electric_appliances">"電子產品"</string>
+    <string name="quest_recycling_type_plastic_bottles">"只有塑膠瓶"</string>
+    <string name="quest_recycling_type_plastic_packaging">"只有塑膠包裝"</string>
+    <string name="quest_recycling_type_scrap_metal">"廢金屬"</string>
+    <string name="quest_recycling_type_any_glass">"任何玻璃類"</string>
+    <string name="quest_recycling_glass_title">"是只有玻璃瓶罐能回收，還是任何類型的玻璃？"</string>
+    <string name="quest_determineRecyclingGlass_description_any_glass">"這些類型的玻璃並不被接受：鋼化玻璃，窗玻璃，玻璃器皿，燈泡或鏡子。"</string>
+    <string name="about_title_changelog">"版本歷史"</string>
+    <string name="title_whats_new">"最新功能？"</string>
 </resources>

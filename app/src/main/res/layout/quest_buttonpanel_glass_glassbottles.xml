@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <Button
+        android:id="@+id/glassButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        style="@style/BottomSheetButtonBarItem"
+        android:text="@string/quest_recycling_type_any_glass" />
+
+    <Button
+        android:id="@+id/glassBottlesButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        style="@style/BottomSheetButtonBarItem"
+        android:text="@string/quest_recycling_type_glass_bottles_short" />
+
+</merge>

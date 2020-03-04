@@ -7,7 +7,6 @@ import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import android.text.Html
 import android.view.View
-import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
 
 import java.util.ArrayList
@@ -58,7 +57,7 @@ abstract class AAddLocalizedNameForm<T> : AbstractQuestFormAnswerFragment<T>() {
         checkIsFormComplete()
     }
 
-    protected open fun setupNameAdapter(data: List<LocalizedName>, addLanguageButton: Button) =
+    protected open fun setupNameAdapter(data: List<LocalizedName>, addLanguageButton: View) =
         AddLocalizedNameAdapter(data, activity!!, getPossibleStreetsignLanguages(), null, null, addLanguageButton)
 
     protected fun getPossibleStreetsignLanguages(): List<String> {

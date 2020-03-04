@@ -99,7 +99,7 @@
 
         <Button
             android:id="@+id/okButton"
-            android:text="@string/ok"
+            android:text="@android:string/ok"
             style="@style/RoundAccentButton"
             android:layout_width="72dp"
             android:layout_height="72dp"

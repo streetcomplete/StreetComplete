@@ -65,9 +65,10 @@
     <string name="turn_on_location_request">"Kokapena itzalita dago. Ezarpenak ireki orain pizteko?"</string>
     <string name="no_location_permission_warning">"Zure kokalekua behar da inguruko erronkak bilatzeko."</string>
     <string name="action_about">"StreetComplete-i buruz"</string>
-    <string name="about_title_version">"Bertsioa"</string>
     <string name="about_title_authors">"Kredituak"</string>
-    <string name="about_summary_authors">"© 2016–2019 Tobias Zwick eta beste"</string>
+
+    <!-- Fuzzy -->
+    <string name="about_summary_authors">"© 2016–2020 Tobias Zwick eta beste"</string>
     <string name="about_title_repository">"Iturburu-kodearen biltegia"</string>
     <string name="about_summary_repository">"GitHub-en"</string>
     <string name="about_title_report_error">"Jakinarazi errorea"</string>
@@ -126,7 +127,7 @@ Hala ere, zure aldaketak igo aurretik, aplikazioak nire zerbitzariko &lt;a href=
 Mapa bistaratzeko, bektore lauzak &lt;a href=\"https://mapzen.com/projects/vector-tiles/\"&gt;Mapzen bektore lauzen zerbitzu&lt;/a&gt;tik hartzen dira, anonimoa da. Zerbitzariak lauzen eskaerak egunkarian gordetzen ditu eskari handia duten zonaldeak zeintzuk diren ulertzeko eta aurrez cachean sartuz errendimendua hobetzeko. Plataformak IP helbideak ere gordetzen ditu eta dena Amazon zerbitzarietan ostatatuta dago.
 &lt;/p&gt;
 &lt;p&gt;
-(&lt;i&gt;Hau ez da oraindik inplementatu, datorrenari buruz informatzeko da!:&lt;/i&gt;)
+(&lt;i&gt;Hau ez da oraindik inplementatu, datorrenari buruz informatzeko da!:&lt;/i&gt;) 
 Sailkapenean eta profilean agertzen den informazioa OpenStreetMap-en publikoki eskuragarri dagoen informazioarekin osatu da. Datuak ez datoz aplikazio honetatik, baizik eta OSMko erabiltzaileen ekarpenen historia publikotik.&lt;/p&gt;"</string>
     <string name="autosync_on">"Bai"</string>
     <string name="autosync_only_on_wifi">"Wi-Fi bidez besterik ez"</string>
@@ -353,7 +354,6 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_crossing_type_unmarked">"Errepide-markarik gabeko bidegurutzea"</string>
     <string name="compass_north_one_letter">"I"</string>
     <string name="action_undo">"Desegin"</string>
-    <string name="no_changes_to_undo">"Ez dago ezer egiteko"</string>
     <string name="undo_confirm_title">"Desegin azken erantzun hau?"</string>
     <string name="produce_mangosteen">"Mangostanak"</string>
     <string name="produce_tomatoes">"Tomateak"</string>
@@ -376,6 +376,8 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_buildingLevels_roofLevelsLabel2">"Pisuak teilatuan"</string>
     <string name="quest_buildingLevels_levelsLabel2">"Pisu arruntak (teilatukoak zenbatu gabe)"</string>
     <string name="pref_title_authorized_summary">"Baimenduta"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingLevels_answer_multipleLevels">"desberdina eraikinaren partearen arabera"</string>
     <string name="quest_buildingLevels_answer_description">"Kasu horretan, sartu eraikinaren parte altuenaren datuak."</string>
     <string name="unglue_hint">"Sakatu ikuspegia kokalekutik deslotzeko"</string>
@@ -447,7 +449,6 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_busStopShelter_tram_title">"Tranbia geltoki honek estalpea du?"</string>
     <string name="quest_bench_backrest_title">"Banku honek bizkarrekoa du?"</string>
     <string name="quest_bench_answer_picnic_table">"Piknik taula bat da"</string>
-    <string name="quest_religion_for_place_of_worship_title">"Zein da %s-(e)n praktikatutako erlijioa?"</string>
     <string name="quest_religion_christian">"Kristautasuna"</string>
     <string name="quest_religion_muslim">"Islam"</string>
     <string name="quest_religion_hindu">"Hinduismoa"</string>
@@ -618,6 +619,8 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_openingHours_timeSelect_next">"Hurrengoa"</string>
     <string name="quest_tracktype_title">"Zein da bide honen gainazalaren irmotasuna"</string>
     <string name="quest_tracktype_grade1">"Trinkoa"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tracktype_grade2">"Gehienbat trinkoa"</string>
     <string name="quest_tracktype_grade3">"Nahasia"</string>
     <string name="quest_tracktype_grade4">"Gehienbat malgua"</string>
@@ -655,4 +658,77 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_placeName_title_name">"Zein da toki honen izena? (%s)"</string>
     <string name="action_open_location">"Ireki kokalekua beste aplikazio batekin"</string>
     <string name="map_application_missing">"Ez dago beste mapa aplikaziorik instalatuta"</string>
+    <string name="pref_title_overpass_url_select">"Aldatu Overpass zerbitzaria"</string>
+    <string name="pref_title_overpass_url_info">"Aplikazioa berrabiarazi behar da aplikatzeko. Zentzura saihestu dezake, adibidez Errusian."</string>
+    <string name="label_housenumber">"etxe zenbakia"</string>
+    <string name="label_blocknumber">"bloke zenbakia"</string>
+    <string name="quest_busStopShelter_covered">"Geltoki osoa estalita dago"</string>
+    <string name="quest_ferry_pedestrian_name_title">"%s(e)k oinezkoak garraiatzen ditu?"</string>
+    <string name="quest_ferry_pedestrian_title">"Ferry ibilbide honek oinezkoak garraiatzen ditu?"</string>
+    <string name="quest_ferry_motor_vehicle_name_title">"%s(e)k motorrezko ibilgailuak garraiatzen ditu?"</string>
+    <string name="quest_ferry_motor_vehicle_title">"Ferry ibilbide honek motorrezko ibilgailuak garraiatzen ditu?"</string>
+    <string name="quest_leave_new_note_photos_are_useful">"Argazki bat gehitzeak oharra askoz erabilgarriago bihurtuko du."</string>
+    <string name="quest_postboxCollectionTimes_name_title">"Zeintzuk dira %s postontzi honen bilketa orduak?"</string>
+    <string name="create_new_note_hint">"Hobe oharra tokiko hizkuntzan idazten baduzu, edo bestela ingelesez."</string>
+    <string name="about_contributing">"Zure erantzunek OpenStreetMap zuzenean hobetzen dute. Emandako datuak irekiak dira, edonork erabili ditzake. Proiektu zoragarri askok erabiltzen dituzte jada."</string>
+    <string name="about_missing_stars">"Orain, izarren kontaketa ez da gailuen artean partekatzen, baina erantzunak zuzenean gehitzen dira OpenStreetMap datu-basera."</string>
+    <string name="how_to_get_stars">"Hautatu mapako markatzaileren bat eta erantzun galdera. Honela OpenStreetMap-eko datuak hobetuko dituzu eta izarrak jaso. Ez baduzu markatzailerik ikusten agian maparen zooma urrundu behar duzu."</string>
+    <string name="oauth_remove_authorization_dialog_message">"Zure OSM kontua erabiltzeko baimeana kendu nahi duzu?"</string>
+    <string name="oauth_remove_authorization_confirmation">"Kendu"</string>
+    <string name="quest_leafType_title">"Zuhaitzek hostoak ala orratzak dituzte?"</string>
+    <string name="quest_leaf_type_needles">"Orratzak"</string>
+    <string name="quest_leaf_type_broadleaved">"Hosto zabalak"</string>
+    <string name="quest_leaf_type_mixed">"Biak daude."</string>
+    <string name="quest_cyclewayPartSurface_title">"Zein da bidegorri honen zoladura hemen?"</string>
+    <string name="quest_generic_answer_differs_along_the_way">"Bidean zehar aldatzen da…"</string>
+    <string name="quest_split_way_description">"Bidean zehar aldatzen bada, aurretik bidea zatitu behar da. Behin eginda, erronka zati bakoitzeko erantzun daiteke. Kontuan izan banatutako zatien erronkak askoz beranduago agertu daitezkeela. Orain zatitu?"</string>
+    <string name="quest_split_way_tutorial">"Sakatu bidean erantzuna aldatzen den tokietan zatitzeko. Saiatu ahal bezain zehatza izaten, zooma erabili dezakezu."</string>
+    <string name="quest_split_way_too_imprecise">"Urbildu zooma gehiago"</string>
+    <string name="quest_split_way_many_splits_confirmation_description">"Hauek zati askotxo dira. Bidea gero ere gehiago zatitu dezakezu."</string>
+    <string name="quest_footwayPartSurface_title">"Zein da espaloiaren zoladura hemen?"</string>
+    <string name="quest_wheelchairAccess_toiletsPart_title">"%s(e)ko komuna gurpil-aukientzat irisgarria da?"</string>
+    <string name="quest_tactilePaving_title_tram">"Tranbia geltoki honek ukitze-zoladura du?"</string>
+    <string name="quest_tactilePaving_title_name_tram">"%s tranbia-geltokiak ukitze-zoladura al du?"</string>
+    <string name="quest_maxweight_title">"Zein da pisu muga hemen?"</string>
+    <string name="quest_maxweight_answer_noSign">"Ez dago seinalerik"</string>
+    <string name="quest_maxweight_unusualInput_confirmation_description">"Pisu hori ezohikoa da. Ziur hori dela pisu zuzena?"</string>
+    <string name="quest_maxweight_answer_other_sign">"Seinalea desberdina dirudi…"</string>
+    <string name="quest_maxweight_unsupported_sign_request_photo">"Ohar bat utzi nahi duzu? Argazkia daraman ohar batek beste mapa egileei gaiari heltzen lagunduko die."</string>
+    <string name="confirmation_authorize_now_note">"Geroago egin dezakezu ezarpenen pantailan."</string>
+    <string name="quest_generalFee_title">"%s(e)n sartzeko ordaindu beharra al dago?"</string>
+    <string name="quest_laundrySelfService_title">"Garbileku honetan norberak erabiltzen ditu garbigailuak?"</string>
+    <string name="quest_handrail_title">"Eskailera hauek heldulekua daukate?"</string>
+    <string name="quest_openingHours_no_name_title">"Zeintzuk dira toki honen irekiera orduak? (%s)"</string>
+    <string name="about_summary_current_version">"Oraingo bertsioa: %s"</string>
+    <string name="quest_postboxRef_title">"Zein da postontzi honen erreferentzia zenbakia?"</string>
+    <string name="quest_postboxRef_name_title">"Zein da %s postontzi honen erreferentzia zenbakia?"</string>
+    <string name="quest_ref_answer_noRef">"Ez dago erreferentzia zenbakirik ikusgai..."</string>
+    <string name="quest_street_side_puzzle_tutorial">"Sakatu galdera ikurrak eta hautatu emandako errepidearen aldearentzako erantzuna."</string>
+    <string name="quest_recycling_materials_title">"Zer utzi daiteke hemen birziklatzeko?"</string>
+    <string name="quest_recycling_materials_note">"Hemen hautatu daitekeenaz beste zerbait birziklatu badaiteke utzi ohar bat mesedez."</string>
+    <string name="quest_recycling_type_batteries">"Pilak"</string>
+    <string name="quest_recycling_type_cans">"Latak"</string>
+    <string name="quest_recycling_type_clothes">"Arropa"</string>
+    <string name="quest_recycling_type_green_waste">"Lorategiko hondakinak"</string>
+    <string name="quest_recycling_type_glass_bottles">"Kristalezko botilak eta ontziak"</string>
+    <string name="quest_recycling_type_glass_bottles_short">"Botilak eta ontziak"</string>
+    <string name="quest_recycling_type_paper">"Papera"</string>
+    <string name="quest_recycling_type_plastic_generic">"Plastikoa"</string>
+    <string name="quest_recycling_type_plastic">"Edozein plastiko"</string>
+    <string name="quest_recycling_type_shoes">"Zapatak"</string>
+    <string name="quest_recycling_type_electric_appliances">"Elektragailuak"</string>
+    <string name="quest_recycling_type_plastic_bottles">"Plastikozko botilak soilik"</string>
+    <string name="quest_recycling_type_plastic_packaging">"Plastikozko bilgarriak"</string>
+    <string name="quest_recycling_type_scrap_metal">"Metalezko txatarra"</string>
+    <string name="quest_recycling_type_any_glass">"Edozein beira"</string>
+    <string name="quest_recycling_glass_title">"Beirazko botilak eta ontziak bakarrik birziklatu daitezke hemen, ala mota guztietako beira?"</string>
+    <string name="quest_determineRecyclingGlass_description_any_glass">"Maiz onartzen ez den beiraren adibideak: Tenperatutako beira, leihoak, kristaleria, bonbillak edo ispiluak."</string>
+    <string name="about_title_changelog">"Bertsioen historiala"</string>
+    <string name="title_whats_new">"Zer dago berri?"</string>
+    <string name="about_title_rate">"Baloratu aplikazio hau"</string>
+    <string name="about_summary_rate">"Google Play dendan"</string>
+    <string name="about_title_donate">"Dohaintza"</string>
+    <string name="about_summary_donate">"Erakutsi zure babesa! ❤️"</string>
+    <string name="about_description_donate">"Eskerrik asko aplikazio hau babestea hausnartzeagatik! Oraingo dohaintzak ikusteko eta zurea egiteko, sakatu dagokion plataforman:"</string>
+    <string name="quest_religion_for_place_of_worship_name_title">"Ze erliji praktikatzen da %s(e)n"</string>
 </resources>

@@ -10,7 +10,7 @@
 
     <fragment
         android:id="@+id/map_fragment"
-        android:name="de.westnordost.streetcomplete.tangram.QuestsMapFragment"
+        android:name="de.westnordost.streetcomplete.map.MainFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/topPanel"
@@ -123,12 +123,5 @@
             android:indeterminate="false"/>
 
     </LinearLayout>
-
-    <FrameLayout
-        android:id="@+id/map_bottom_sheet_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clipChildren="false">
-    </FrameLayout>
 
  </RelativeLayout >

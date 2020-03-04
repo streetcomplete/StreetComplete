@@ -56,9 +56,6 @@
         "landuse/garages": {
             "name": "Garažų plotas"
         },
-        "railway": {
-            "name": "Geležinkelis"
-        },
         "building/university": {
             "name": "Universiteto pastatas",
             "terms": "universiteto pastatas,universitetas"
@@ -93,9 +90,6 @@
             "name": "Lentpjūvė",
             "terms": "lentpjūvė"
         },
-        "power/sub_station": {
-            "name": "Pastotė"
-        },
         "shop/copyshop": {
             "name": "Kopijavimo parduotuvė"
         },
@@ -106,12 +100,6 @@
         "natural/bay": {
             "name": "Įlanka",
             "terms": "įlanka"
-        },
-        "leisure/firepit": {
-            "name": "Ugniaduobė"
-        },
-        "man_made/bridge": {
-            "name": "Tiltas"
         },
         "aeroway/runway": {
             "name": "Pakilimo takas",
@@ -341,19 +329,12 @@
         "amenity/recycling_centre": {
             "name": "Rūšiavimo centras"
         },
-        "craft/pottery": {
-            "name": "Keramikos amatininkas",
-            "terms": "Puodų amatininkas"
-        },
         "club": {
             "name": "Klubas"
         },
         "craft/roofer": {
             "name": "Stogdengys",
             "terms": "stogdengys"
-        },
-        "highway": {
-            "name": "Greitkelis"
         },
         "shop/massage": {
             "name": "Masažo parduotuvė"
@@ -512,10 +493,6 @@
         },
         "leisure/miniature_golf": {
             "name": "Minigolfas"
-        },
-        "building/kindergarten": {
-            "name": "Vaikų darželio pastatas",
-            "terms": "vaikų darželis,darželio pastatas"
         },
         "amenity/hospital": {
             "name": "Ligoninės kiemas"
@@ -708,9 +685,6 @@
         "leisure/dancing_school": {
             "name": "Šokių mokykla"
         },
-        "leisure": {
-            "name": "Laisvalaikis"
-        },
         "amenity/post_office": {
             "name": "Paštas",
             "terms": "paštas,pašto skyrius"
@@ -765,9 +739,6 @@
         "shop/curtain": {
             "name": "Užuolaidų parduotuvė"
         },
-        "area/highway": {
-            "name": "Kelio danga"
-        },
         "leisure/pitch/tennis": {
             "name": "Teniso aikštelė",
             "terms": "teniso kortai"
@@ -821,10 +792,6 @@
         "shop/beverages": {
             "name": "Gėrimų parduotuvė",
             "terms": "gėrimų parduotuvė"
-        },
-        "entrance": {
-            "name": "Įėjimas/Išėjimas",
-            "terms": "įėjimas,išėjimas"
         },
         "shop/chemist": {
             "name": "Vaistinė"
@@ -1025,9 +992,6 @@
             "name": "Viešbučio pastatas",
             "terms": "viešbučio pastatas,viešbutis"
         },
-        "shop/anime": {
-            "name": "Anime parduotuvė"
-        },
         "route/ferry": {
             "name": "Kelto maršrutas",
             "terms": "kelto maršrutas"
@@ -1112,9 +1076,6 @@
         },
         "office/travel_agent": {
             "name": "Kelionių agentūra"
-        },
-        "craft/jeweler": {
-            "name": "Juvelyrikas"
         },
         "office/telecommunication": {
             "name": "Telekomunikacijų biuras"
@@ -1254,9 +1215,6 @@
             "name": "Siena",
             "terms": "Riba,Siena"
         },
-        "craft/optician": {
-            "name": "Optikas"
-        },
         "waterway/waterfall": {
             "name": "Krioklys"
         },
@@ -1376,9 +1334,6 @@
             "name": "Komercinis pastatas",
             "terms": "komercinis,pastatas,statinys"
         },
-        "attraction/pirate_ship": {
-            "name": "Piratų laivas"
-        },
         "office/educational_institution": {
             "name": "Edukacinis institutas",
             "terms": "Mokslo institutas,Mokslo įstaiga"
@@ -1424,9 +1379,6 @@
         "shop/electronics": {
             "name": "Elektronikos parduotuvė"
         },
-        "waterway": {
-            "name": "Vandens kelias"
-        },
         "amenity/clinic": {
             "name": "Klinika",
             "terms": "Klinika"
@@ -1457,10 +1409,6 @@
         },
         "building/farm_auxiliary": {
             "name": "Fermos pastatas"
-        },
-        "natural/wood": {
-            "name": "Miškas",
-            "terms": "medžiai"
         },
         "amenity/waste_basket": {
             "name": "Šiukšliadėžė",
@@ -1532,9 +1480,6 @@
             "name": "Informacija",
             "terms": "Informacija,Informacinis stendas"
         },
-        "natural": {
-            "name": "Natūralus"
-        },
         "natural/water/lake": {
             "name": "Ežeras",
             "terms": "ežeras"
@@ -1573,9 +1518,6 @@
         },
         "shop/hardware": {
             "name": "Techninės įrangos parduotuvė"
-        },
-        "amenity/car_sharing": {
-            "name": "Automobilių dalinimasis"
         },
         "leisure/nature_reserve": {
             "name": "Draustinis",
@@ -1621,9 +1563,6 @@
         "shop/e-cigarette": {
             "name": "El. cigarečių parduotuvė"
         },
-        "tourism": {
-            "name": "Turizmas"
-        },
         "amenity/public_bath": {
             "name": "Vieša vonia"
         },
@@ -1656,9 +1595,6 @@
         "shop/watches": {
             "name": "Laikrodžių parduotuvė"
         },
-        "landuse": {
-            "name": "Žemėnauda"
-        },
         "shop/gift": {
             "name": "Dovanų parduotuvė"
         },
@@ -1670,9 +1606,6 @@
         },
         "place": {
             "name": "Vietovė"
-        },
-        "power": {
-            "name": "Energija"
         },
         "shop/music": {
             "name": "Muzikos parduotuvė",
@@ -1896,18 +1829,11 @@
             "name": "Motociklų stovėjimo aikštelė",
             "terms": "Motociklų stovėjimo aikštelė"
         },
-        "shop/craft": {
-            "name": "Meno ir amatų parduotuvė"
-        },
         "line": {
             "name": "Linija"
         },
         "shop/lottery": {
             "name": "Loterijų parduotuvė"
-        },
-        "amenity/kindergarten": {
-            "name": "Vaikų darželio plotas",
-            "terms": "vaikų darželis,darželio plotas"
         },
         "leisure/dog_park": {
             "name": "Šunų parkas",
@@ -1963,9 +1889,6 @@
         },
         "amenity/register_office": {
             "name": "Registravimo biūras"
-        },
-        "man_made": {
-            "name": "Žmogaus sukurtas"
         },
         "leisure/adult_gaming_centre": {
             "name": "Suaugusiųjų lošimų vieta"

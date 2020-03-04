@@ -10,8 +10,9 @@ import dagger.Provides;
 import de.westnordost.osmfeatures.FeatureDictionary;
 import de.westnordost.streetcomplete.data.QuestType;
 import de.westnordost.streetcomplete.data.QuestTypeRegistry;
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao;
+import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao;
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestType;
+import de.westnordost.streetcomplete.quests.accepts_cash.AddAcceptsCash;
 import de.westnordost.streetcomplete.quests.baby_changing_table.AddBabyChangingTable;
 import de.westnordost.streetcomplete.quests.bike_parking_capacity.AddBikeParkingCapacity;
 import de.westnordost.streetcomplete.quests.bike_parking_cover.AddBikeParkingCover;
@@ -49,13 +50,15 @@ import de.westnordost.streetcomplete.quests.parking_type.AddParkingType;
 import de.westnordost.streetcomplete.quests.place_name.AddPlaceName;
 import de.westnordost.streetcomplete.quests.playground_access.AddPlaygroundAccess;
 import de.westnordost.streetcomplete.quests.postbox_collection_times.AddPostboxCollectionTimes;
+import de.westnordost.streetcomplete.quests.postbox_ref.AddPostboxRef;
 import de.westnordost.streetcomplete.quests.powerpoles_material.AddPowerPolesMaterial;
 import de.westnordost.streetcomplete.quests.orchard_produce.AddOrchardProduce;
 import de.westnordost.streetcomplete.quests.railway_crossing.AddRailwayCrossingBarrier;
 import de.westnordost.streetcomplete.quests.recycling.AddRecyclingType;
+import de.westnordost.streetcomplete.quests.recycling_glass.DetermineRecyclingGlass;
+import de.westnordost.streetcomplete.quests.recycling_material.AddRecyclingContainerMaterials;
 import de.westnordost.streetcomplete.quests.religion.AddReligionToPlaceOfWorship;
 import de.westnordost.streetcomplete.quests.religion.AddReligionToWaysideShrine;
-import de.westnordost.streetcomplete.quests.localized_name.data.PutRoadNameSuggestionsHandler;
 import de.westnordost.streetcomplete.quests.localized_name.data.RoadNameSuggestionsDao;
 import de.westnordost.streetcomplete.quests.opening_hours.ResurveyOpeningHours;
 import de.westnordost.streetcomplete.quests.segregated.AddCyclewaySegregation;
@@ -68,6 +71,7 @@ import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingBusSt
 import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingCrosswalk;
 import de.westnordost.streetcomplete.quests.toilet_availability.AddToiletAvailability;
 import de.westnordost.streetcomplete.quests.toilets_fee.AddToiletsFee;
+import de.westnordost.streetcomplete.quests.tourism_information.AddInformationToTourism;
 import de.westnordost.streetcomplete.quests.tracktype.AddTracktype;
 import de.westnordost.streetcomplete.quests.housenumber.AddHousenumber;
 import de.westnordost.streetcomplete.quests.max_speed.AddMaxSpeed;
@@ -92,9 +96,8 @@ import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAcces
 public class QuestModule
 {
 	@Provides @Singleton public static QuestTypeRegistry questTypeRegistry(
-		OsmNoteQuestType osmNoteQuestType, OverpassMapDataDao o,
+		OsmNoteQuestType osmNoteQuestType, OverpassMapDataAndGeometryDao o,
 		RoadNameSuggestionsDao roadNameSuggestionsDao,
-		PutRoadNameSuggestionsHandler putRoadNameSuggestionsHandler,
 		TrafficFlowSegmentsDao trafficFlowSegmentsDao, WayTrafficFlowDao trafficFlowDao,
 		FutureTask<FeatureDictionary> featureDictionaryFuture,
 		OpeningHoursTagParser parser)
@@ -104,7 +107,7 @@ public class QuestModule
 				osmNoteQuestType,
 
 				// ↓ 2. important data that is used by many data consumers
-				new AddRoadName(o, roadNameSuggestionsDao, putRoadNameSuggestionsHandler),
+				new AddRoadName(o, roadNameSuggestionsDao),
 				new AddPlaceName(o, featureDictionaryFuture),
 				new AddOneway(o, trafficFlowSegmentsDao, trafficFlowDao),
 				new AddBusStopName(o),
@@ -116,18 +119,20 @@ public class QuestModule
 
 				// ↓ 3. useful data that is used by some data consumers
 				new AddRecyclingType(o),
+				new AddRecyclingContainerMaterials(o),
 				new AddSport(o),
 				new AddRoadSurface(o),
 				new AddMaxSpeed(o), // should best be after road surface because it excludes unpaved roads
 				new AddMaxHeight(o),
 				new AddRailwayCrossingBarrier(o), // useful for routing
 				new AddPostboxCollectionTimes(o),
-				new AddOpeningHours(o, parser),
-				new ResurveyOpeningHours(o, parser),
+				new AddOpeningHours(o, featureDictionaryFuture, parser),
+				new ResurveyOpeningHours(o, featureDictionaryFuture, parser),
 				new AddBikeParkingCapacity(o), // cycle map layer on osm.org
 				new AddOrchardProduce(o),
-				new AddCycleway(o),
-				new AddSidewalk(o),
+				new AddBuildingType(o), // because housenumber, building levels etc. depend on it
+				new AddCycleway(o), // SLOW QUERY
+				new AddSidewalk(o), // SLOW QUERY
 				new AddProhibitedForPedestrians(o), // uses info from AddSidewalk quest, should be after it
 				new AddCrossingType(o),
 				new AddBuildingLevels(o),
@@ -148,11 +153,12 @@ public class QuestModule
 				new AddToiletAvailability(o), //OSM Carto, shown in OsmAnd descriptions
 				new AddFerryAccessPedestrian(o),
 				new AddFerryAccessMotorVehicle(o),
+				new AddAcceptsCash(o),
 
 				// ↓ 4. definitely shown as errors in QA tools
 
 				// ↓ 5. may be shown as missing in QA tools
-				new AddBuildingType(o), // because housenumber, building levels etc. depend on it
+				new DetermineRecyclingGlass(o), // because most recycling:glass=yes is a tagging mistake
 
 				// ↓ 6. may be shown as possibly missing in QA tools
 
@@ -174,6 +180,7 @@ public class QuestModule
 				new AddGeneralFee(o),
 				new AddSelfServiceLaundry(o),
 				new AddHandrail(o), // for accessibility of pedestrian routing
+				new AddInformationToTourism(o),
 
 				// ↓ 8. defined in the wiki, but not really used by anyone yet. Just collected for
 				//      the sake of mapping it in case it makes sense later
@@ -182,6 +189,7 @@ public class QuestModule
 				new AddMotorcycleParkingCover(o),
 				new AddFireHydrantType(o),
 				new AddParkingType(o),
+				new AddPostboxRef(o),
 				new AddWheelchairAccessToiletsPart(o),
 				new AddPowerPolesMaterial(o),
 				new AddCarWashType(o),
@@ -196,4 +204,18 @@ public class QuestModule
 	{
 		return new OsmNoteQuestType();
 	}
+/*
+	@Provides @Singleton public static QuestController questController(
+		OsmQuestDao osmQuestDao, UndoOsmQuestDao undoOsmQuestDao, MergedElementDao mergedElementDao,
+		ElementGeometryDao elementGeometryDao, OsmNoteQuestDao osmNoteQuestDao,
+		OsmQuestSplitWayDao osmQuestSplitWayDao, CreateNoteDao createNoteDao,
+		SharedPreferences prefs, OrderedVisibleQuestTypesProvider questTypesProvider,
+		Context context
+	)
+	{
+		return new QuestController(osmQuestDao, undoOsmQuestDao, mergedElementDao,
+			elementGeometryDao, osmNoteQuestDao, osmQuestSplitWayDao, createNoteDao, prefs,
+			questTypesProvider, context);
+	}
+	*/
 }

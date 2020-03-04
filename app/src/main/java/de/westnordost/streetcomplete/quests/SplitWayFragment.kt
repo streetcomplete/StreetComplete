@@ -28,17 +28,15 @@ import de.westnordost.streetcomplete.data.osm.changes.SplitAtPoint
 import de.westnordost.streetcomplete.data.osm.changes.SplitPolylineAtPosition
 import de.westnordost.streetcomplete.ktx.*
 import de.westnordost.streetcomplete.sound.SoundFx
-import de.westnordost.streetcomplete.util.SphericalEarthMath.*
+import de.westnordost.streetcomplete.util.alongTrackDistanceTo
+import de.westnordost.streetcomplete.util.crossTrackDistanceTo
+import de.westnordost.streetcomplete.util.distanceTo
 import kotlinx.android.synthetic.main.fragment_split_way.*
 import javax.inject.Inject
 
 class SplitWayFragment : Fragment(), IsCloseableBottomSheet, IsShowingQuestDetails {
 
-    interface Listener {
-        fun onAddSplit(point: LatLon)
-        fun onRemoveSplit(point: LatLon)
-        fun onSplittedWay(osmQuestId: Long, splits: List<SplitPolylineAtPosition>)
-    }
+
     private val splits: MutableList<Pair<SplitPolylineAtPosition, LatLon>> = mutableListOf()
 
     @Inject internal lateinit var soundFx: SoundFx
@@ -53,6 +51,13 @@ class SplitWayFragment : Fragment(), IsCloseableBottomSheet, IsShowingQuestDetai
 
     private val hasChanges get() = splits.isNotEmpty()
     private val isFormComplete get() = splits.size >= if (way.isClosed()) 2 else 1
+
+    interface Listener {
+        fun onAddSplit(point: LatLon)
+        fun onRemoveSplit(point: LatLon)
+        fun onSplittedWay(osmQuestId: Long, splits: List<SplitPolylineAtPosition>)
+    }
+    private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
     init {
         Injector.instance.applicationComponent.inject(this)
@@ -94,7 +99,7 @@ class SplitWayFragment : Fragment(), IsCloseableBottomSheet, IsShowingQuestDetai
         }
     }
 
-    override fun onConfigurationChanged(newConfig: Configuration?) {
+    override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
         // see rant comment in AbstractBottomSheetFragment
         resources.updateConfiguration(newConfig, resources.displayMetrics)
@@ -112,11 +117,11 @@ class SplitWayFragment : Fragment(), IsCloseableBottomSheet, IsShowingQuestDetai
     }
 
     private fun onSplittedWayConfirmed() {
-        (activity as Listener).onSplittedWay(osmQuestId, splits.map { it.first })
+        listener?.onSplittedWay(osmQuestId, splits.map { it.first })
     }
 
     private fun confirmManySplits(callback: () -> (Unit)) {
-        activity?.let {
+        context?.let {
             AlertDialog.Builder(it)
                 .setTitle(R.string.quest_generic_confirmation_title)
                 .setMessage(R.string.quest_split_way_many_splits_confirmation_description)
@@ -131,7 +136,7 @@ class SplitWayFragment : Fragment(), IsCloseableBottomSheet, IsShowingQuestDetai
             val item = splits.removeAt(splits.lastIndex)
             animateButtonVisibilities()
             soundFx.play(R.raw.plop2)
-            (activity as? Listener)?.onRemoveSplit(item.second)
+            listener?.onRemoveSplit(item.second)
         }
     }
 
@@ -145,17 +150,17 @@ class SplitWayFragment : Fragment(), IsCloseableBottomSheet, IsShowingQuestDetai
         if (splitWayCandidates.size > 1 && clickAreaSizeInMeters > CLICK_AREA_SIZE_AT_MAX_ZOOM) {
             context?.toast(R.string.quest_split_way_too_imprecise)
         }
-        val splitWay = splitWayCandidates.minBy { distance(it.pos, position) }!!
+        val splitWay = splitWayCandidates.minBy { it.pos.distanceTo(position) }!!
         val splitPosition = splitWay.pos
 
         // new split point is too close to existing split points
-        if (splits.any { distance(it.second, splitPosition) < clickAreaSizeInMeters } ) {
+        if (splits.any { it.second.distanceTo(splitPosition) < clickAreaSizeInMeters } ) {
             context?.toast(R.string.quest_split_way_too_imprecise)
         } else {
             splits.add(Pair(splitWay, splitPosition))
             animateButtonVisibilities()
             animateScissors()
-            (activity as? Listener)?.onAddSplit(splitPosition)
+            listener?.onAddSplit(splitPosition)
         }
 
         // always consume event. User should press the cancel button to exit
@@ -191,7 +196,7 @@ class SplitWayFragment : Fragment(), IsCloseableBottomSheet, IsShowingQuestDetai
         // ignore first and last node (cannot be split at the very start or end)
         val result = mutableSetOf<SplitAtPoint>()
         for (pos in positions.subList(1, positions.size - 1)) {
-            val nodeDistance = distance(clickPosition, pos)
+            val nodeDistance = clickPosition.distanceTo(pos)
             if (clickAreaSizeInMeters > nodeDistance) {
                 result.add(SplitAtPoint(pos))
             }
@@ -202,10 +207,10 @@ class SplitWayFragment : Fragment(), IsCloseableBottomSheet, IsShowingQuestDetai
     private fun createSplitsForLines(clickPosition: LatLon, clickAreaSizeInMeters: Double): Set<SplitAtLinePosition> {
         val result = mutableSetOf<SplitAtLinePosition>()
         positions.forEachPair { first, second ->
-            val crossTrackDistance = crossTrackDistance(first, second, clickPosition)
+            val crossTrackDistance = clickPosition.crossTrackDistanceTo(first, second)
             if (clickAreaSizeInMeters > crossTrackDistance) {
-                val alongTrackDistance = alongTrackDistance(first, second, clickPosition)
-                val distance = distance(first, second)
+                val alongTrackDistance = clickPosition.alongTrackDistanceTo(first, second)
+                val distance = first.distanceTo(second)
                 if (distance > alongTrackDistance && alongTrackDistance > 0) {
                     val delta = alongTrackDistance / distance
                     result.add(SplitAtLinePosition(first, second, delta))
@@ -215,15 +220,15 @@ class SplitWayFragment : Fragment(), IsCloseableBottomSheet, IsShowingQuestDetai
         return result
     }
 
-    @UiThread override fun onClickClose(onConfirmed: Runnable) {
+    @UiThread override fun onClickClose(onConfirmed: () -> Unit) {
         if (!hasChanges) {
-            onConfirmed.run()
+            onConfirmed()
         } else {
             activity?.let {
                 AlertDialog.Builder(it)
                     .setMessage(R.string.confirmation_discard_title)
                     .setPositiveButton(R.string.confirmation_discard_positive) { _, _ ->
-                        onConfirmed.run()
+                        onConfirmed()
                     }
                     .setNegativeButton(R.string.confirmation_discard_negative, null)
                     .show()
@@ -243,7 +248,6 @@ class SplitWayFragment : Fragment(), IsCloseableBottomSheet, IsShowingQuestDetai
         private const val ARG_WAY = "way"
         private const val ARG_ELEMENT_GEOMETRY = "elementGeometry"
 
-        @JvmStatic
         fun create(osmQuestId: Long, way: Way, elementGeometry: ElementPolylinesGeometry): SplitWayFragment {
             val f = SplitWayFragment()
             f.arguments = bundleOf(

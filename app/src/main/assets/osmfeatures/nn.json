@@ -1,25 +1,19 @@
 {
     "presets": {
-        "amenity/dentist": {
-            "name": "Tannlege"
-        },
-        "attraction/carousel": {
-            "name": "Karusell"
-        },
         "amenity/atm": {
             "name": "Minibank"
         },
         "railway/tram": {
             "name": "Trikk"
         },
-        "natural/water/river": {
-            "name": "Elv"
-        },
-        "natural/water/stream": {
-            "name": "Straum"
-        },
         "waterway/river": {
             "name": "Elv"
+        },
+        "amenity/dentist": {
+            "name": "Tannlege"
+        },
+        "attraction/carousel": {
+            "name": "Karusell"
         }
     }
 }

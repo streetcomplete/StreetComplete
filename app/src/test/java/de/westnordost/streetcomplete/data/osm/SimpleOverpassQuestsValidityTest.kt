@@ -13,7 +13,11 @@ class SimpleOverpassQuestsValidityTest {
 
     @Test fun `query valid`() {
         val bbox = BoundingBox(0.0, 0.0, 1.0, 1.0)
+<<<<<<< HEAD
         val questTypes = QuestModule.questTypeRegistry(OsmNoteQuestType(), mock(), mock(), mock(), mock(), mock(), mock(), mock()).all
+=======
+        val questTypes = QuestModule.questTypeRegistry(OsmNoteQuestType(), mock(), mock(), mock(), mock(), mock()).all
+>>>>>>> master
 
         for (questType in questTypes) {
             if (questType is SimpleOverpassQuestType<*>) {

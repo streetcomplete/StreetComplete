@@ -3,32 +3,38 @@ package de.westnordost.streetcomplete.quests.opening_hours
 import android.util.Log
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
+import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.OsmTaggings
+import de.westnordost.streetcomplete.data.osm.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandler
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
 import de.westnordost.streetcomplete.data.osm.tql.getQuestPrintStatement
 import de.westnordost.streetcomplete.data.osm.tql.toGlobalOverpassBBox
+import de.westnordost.streetcomplete.ktx.containsAny
 import de.westnordost.streetcomplete.quests.DateUtil
+import java.util.concurrent.FutureTask
 
-class ResurveyOpeningHours(private val overpassServer: OverpassMapDataDao, private val parser: OpeningHoursTagParser) : OsmElementQuestType<OpeningHoursAnswer> {
+class ResurveyOpeningHours(
+        private val overpassServer: OverpassMapDataAndGeometryDao,
+        private val featureDictionaryFuture: FutureTask<FeatureDictionary>,
+        private val parser: OpeningHoursTagParser
+) : OsmElementQuestType<OpeningHoursAnswer> {
     override val commitMessage = "resurvey opening hours"
     override val icon = R.drawable.ic_quest_opening_hours
     override fun getTitle(tags: Map<String, String>) = R.string.resurvey_opening_hours_title
 
-    override fun download(bbox: BoundingBox, handler: MapDataWithGeometryHandler): Boolean {
-        return overpassServer.getAndHandleQuota(getOverpassQuery(bbox)) { element, geometry ->
-            if (element.tags != null) {
-                // require opening hours that are supported
+    override fun download(bbox: BoundingBox, handler: (element: Element, geometry: ElementGeometry?) -> Unit): Boolean {
+        return overpassServer.query(getOverpassQuery(bbox)) { element, geometry ->
+            // only show places that can be named somehow
+            if (hasName(element.tags)) {
                 if (parser.parse(element.tags["opening_hours"]!!) != null) {
-                    handler.handle(element, geometry)
+                    handler(element, geometry)
                 } else {
                     Log.wtf("AAAA", "opening_hours=" + element.tags["opening_hours"] + " was rejected as not representable in SC")
                 }
             }
-
         }
     }
 
@@ -93,4 +99,13 @@ class ResurveyOpeningHours(private val overpassServer: OverpassMapDataDao, priva
             else -> throw AssertionError()
         }
     }
+
+    // deduplicate with AddOpeningHours
+    private fun hasName(tags: Map<String, String>?) = hasProperName(tags) || hasFeatureName(tags)
+
+    private fun hasProperName(tags: Map<String, String>?): Boolean =
+            tags?.keys?.containsAny(listOf("name", "brand")) ?: false
+
+    private fun hasFeatureName(tags: Map<String, String>?): Boolean =
+            tags?.let { featureDictionaryFuture.get().byTags(it).find().isNotEmpty() } ?: false
 }

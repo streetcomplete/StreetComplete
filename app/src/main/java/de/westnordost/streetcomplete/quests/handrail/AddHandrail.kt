@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.quests.handrail
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
 /**
@@ -13,7 +13,7 @@ import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
  * The details would only slow down the answering in a survey by requiring more thought and a more
  * complex GUI (interpreting the direction of the OSM way for example).
  */
-class AddHandrail(overpassServer: OverpassMapDataDao) : SimpleOverpassQuestType<Boolean>(overpassServer) {
+class AddHandrail(overpassServer: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<Boolean>(overpassServer) {
     // Do not include nodes and relations, even though these exist with the right tags, because
     // according to the wiki page for `highway=steps` [1] it can only be applied to ways. It also
     // does not make much sense for other types of elements and it is more likely to be a tagging
@@ -28,9 +28,11 @@ class AddHandrail(overpassServer: OverpassMapDataDao) : SimpleOverpassQuestType<
     // [1] https://wiki.openstreetmap.org/wiki/Tag:highway%3Dsteps
     // [2] https://wiki.openstreetmap.org/wiki/Key:handrail
     // [3] https://wiki.openstreetmap.org/wiki/Quality_assurance
-    override val tagFilters = """ways with highway = steps and (!conveying or conveying = no)
-        and !handrail and !handrail:left and !handrail:center and !handrail:right"""
-
+    override val tagFilters = """
+        ways with highway = steps
+         and (!conveying or conveying = no)
+         and !handrail and !handrail:left and !handrail:center and !handrail:right
+    """
     override val commitMessage = "Add whether steps have a handrail"
 
     override val icon = R.drawable.ic_quest_handrail

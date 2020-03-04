@@ -80,7 +80,7 @@ abstract class AbstractBottomSheetFragment : Fragment(), IsCloseableBottomSheet 
         mainHandler.removeCallbacksAndMessages(null)
     }
 
-    override fun onConfigurationChanged(newConfig: Configuration?) {
+    override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
         // I need to do everything myself... (AppCompactActivity only does this after calling this
         // method. Genius!)
@@ -109,17 +109,17 @@ abstract class AbstractBottomSheetFragment : Fragment(), IsCloseableBottomSheet 
 
     /** Request to close the form through user interaction (back button, clicked other quest,..),
      * requires user confirmation if any changes have been made  */
-    @UiThread override fun onClickClose(onConfirmed: Runnable) {
+    @UiThread override fun onClickClose(onConfirmed: () -> Unit) {
         if (!isRejectingClose()) {
             onDiscard()
-            onConfirmed.run()
+            onConfirmed()
         } else {
             activity?.let {
                 AlertDialog.Builder(it)
                     .setMessage(R.string.confirmation_discard_title)
                     .setPositiveButton(R.string.confirmation_discard_positive) { _, _ ->
                         onDiscard()
-                        onConfirmed.run()
+                        onConfirmed()
                     }
                     .setNegativeButton(R.string.confirmation_discard_negative, null)
                     .show()

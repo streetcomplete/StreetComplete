@@ -48,7 +48,7 @@
             "name": "Flush Kerb"
         },
         "highway/footway/sidewalk": {
-            "name": "Footpath"
+            "name": "Footpath (sidewalk)"
         },
         "telecom/data_center": {
             "name": "Data Centre"

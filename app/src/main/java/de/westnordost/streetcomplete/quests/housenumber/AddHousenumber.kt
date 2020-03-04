@@ -6,26 +6,24 @@ import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.Countries
-import de.westnordost.streetcomplete.data.osm.ElementPolygonsGeometry
-import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandler
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
+import de.westnordost.streetcomplete.data.osm.*
 import de.westnordost.streetcomplete.data.osm.tql.DEFAULT_MAX_QUESTS
 import de.westnordost.streetcomplete.data.osm.tql.toGlobalOverpassBBox
 import de.westnordost.streetcomplete.data.osm.tql.toOverpassBboxFilter
 import de.westnordost.streetcomplete.util.FlattenIterable
 import de.westnordost.streetcomplete.util.LatLonRaster
-import de.westnordost.streetcomplete.util.SphericalEarthMath
+import de.westnordost.streetcomplete.util.enclosingBoundingBox
+import de.westnordost.streetcomplete.util.isInMultipolygon
 
-class AddHousenumber(private val overpass: OverpassMapDataDao) : OsmElementQuestType<HousenumberAnswer> {
+class AddHousenumber(private val overpass: OverpassMapDataAndGeometryDao) : OsmElementQuestType<HousenumberAnswer> {
 
     override val commitMessage = "Add housenumbers"
     override val icon = R.drawable.ic_quest_housenumber
 
     // See overview here: https://ent8r.github.io/blacklistr/?streetcomplete=housenumber/AddHousenumber.kt
-    override val enabledForCountries = Countries.allExcept(
+    override val enabledInCountries = AllCountriesExcept(
         "NL", // https://forum.openstreetmap.org/viewtopic.php?id=60356
         "DK", // https://lists.openstreetmap.org/pipermail/talk-dk/2017-November/004898.html
         "NO", // https://forum.openstreetmap.org/viewtopic.php?id=60357
@@ -35,9 +33,9 @@ class AddHousenumber(private val overpass: OverpassMapDataDao) : OsmElementQuest
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_address_title
 
-    override fun isApplicableTo(element: Element) = null
+    override fun isApplicableTo(element: Element): Boolean? = null
 
-    override fun download(bbox: BoundingBox, handler: MapDataWithGeometryHandler): Boolean {
+    override fun download(bbox: BoundingBox, handler: (element: Element, geometry: ElementGeometry?) -> Unit): Boolean {
         var ms = System.currentTimeMillis()
 
         val buildings = downloadBuildingsWithoutAddresses(bbox) ?: return false
@@ -64,7 +62,7 @@ class AddHousenumber(private val overpass: OverpassMapDataDao) : OsmElementQuest
         // exclude buildings that are contained in an area with a housenumber
         for (addrArea in addrAreas) {
             for (buildingPos in buildingPositions.getAll(addrArea.getBounds())) {
-                if (SphericalEarthMath.isInMultipolygon(buildingPos, addrArea.polygons)) {
+                if (buildingPos.isInMultipolygon(addrArea.polygons)) {
                     buildings.remove(buildingPos)
                 }
             }
@@ -83,7 +81,7 @@ class AddHousenumber(private val overpass: OverpassMapDataDao) : OsmElementQuest
                 continue
             }
 
-            handler.handle(building.element, building.geometry)
+            handler(building.element, building.geometry)
         }
 
         Log.d("AddHousenumber", "Processing data took ${System.currentTimeMillis() - ms}ms")
@@ -91,12 +89,12 @@ class AddHousenumber(private val overpass: OverpassMapDataDao) : OsmElementQuest
         return true
     }
 
-    private fun downloadBuildingsWithoutAddresses(bbox: BoundingBox): MutableMap<LatLon, ElementWithGeometry>? {
-        val buildingsByCenterPoint = mutableMapOf<LatLon, ElementWithGeometry>()
+    private fun downloadBuildingsWithoutAddresses(bbox: BoundingBox): MutableMap<LatLon, ElementWithArea>? {
+        val buildingsByCenterPoint = mutableMapOf<LatLon, ElementWithArea>()
         val query = getBuildingsWithoutAddressesOverpassQuery(bbox)
-        val success = overpass.getAndHandleQuota(query) { element, geometry ->
+        val success = overpass.query(query) { element, geometry ->
             if (geometry is ElementPolygonsGeometry) {
-                buildingsByCenterPoint[geometry.center] = ElementWithGeometry(element, geometry)
+                buildingsByCenterPoint[geometry.center] = ElementWithArea(element, geometry)
             }
         }
         return if (success) buildingsByCenterPoint else null
@@ -105,7 +103,7 @@ class AddHousenumber(private val overpass: OverpassMapDataDao) : OsmElementQuest
     private fun downloadFreeFloatingPositionsWithAddresses(bbox: BoundingBox): LatLonRaster? {
         val grid = LatLonRaster(bbox, 0.0005)
         val query = getFreeFloatingAddressesOverpassQuery(bbox)
-        val success = overpass.getAndHandleQuota(query) { _, geometry ->
+        val success = overpass.query(query) { _, geometry ->
             if (geometry != null) grid.insert(geometry.center)
         }
         return if (success) grid else null
@@ -114,7 +112,7 @@ class AddHousenumber(private val overpass: OverpassMapDataDao) : OsmElementQuest
     private fun downloadAreasWithAddresses(bbox: BoundingBox): List<ElementPolygonsGeometry>? {
         val areas = mutableListOf<ElementPolygonsGeometry>()
         val query = getNonBuildingAreasWithAddressesOverpassQuery(bbox)
-        val success = overpass.getAndHandleQuota(query) { _, geometry ->
+        val success = overpass.query(query) { _, geometry ->
             if (geometry is ElementPolygonsGeometry) areas.add(geometry)
         }
         return if (success) areas else null
@@ -122,21 +120,22 @@ class AddHousenumber(private val overpass: OverpassMapDataDao) : OsmElementQuest
 
     private fun getPositionContainedInBuilding(building: ElementPolygonsGeometry, positions: LatLonRaster): LatLon? {
         for (pos in positions.getAll(building.getBounds())) {
-            if (SphericalEarthMath.isInMultipolygon(pos, building.polygons)) return pos
+            if (pos.isInMultipolygon(building.polygons)) return pos
         }
         return null
     }
 
-    private fun getBoundingBoxThatIncludes(buildings: Iterable<ElementWithGeometry>): BoundingBox {
+    private fun getBoundingBoxThatIncludes(buildings: Iterable<ElementWithArea>): BoundingBox {
         // see #885: The area in which the app should search for address nodes (and areas) must be
         // adjusted to the bounding box of all the buildings found. The found buildings may in parts
         // not be within the specified bounding box. But in exactly that part, there may be an
         // address
+
         val allThePoints = FlattenIterable(LatLon::class.java)
         for (building in buildings) {
             allThePoints.add(building.geometry.polygons)
         }
-        return SphericalEarthMath.enclosingBoundingBox(allThePoints)
+        return allThePoints.enclosingBoundingBox()
     }
 
     override fun createForm() = AddHousenumberForm()
@@ -206,7 +205,7 @@ private fun getFreeFloatingAddressesOverpassQuery(bbox: BoundingBox): String {
             """.trimIndent()
 }
 
-private data class ElementWithGeometry(val element: Element, val geometry: ElementPolygonsGeometry)
+private data class ElementWithArea(val element: Element, val geometry: ElementPolygonsGeometry)
 
 private const val ANY_ADDRESS_FILTER =
     "[~'^addr:(housenumber|housename|conscriptionnumber|streetnumber)$'~'.']"

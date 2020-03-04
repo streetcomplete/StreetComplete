@@ -36,9 +36,6 @@
         "waterway/stream": {
             "name": "পানিস্রোত"
         },
-        "railway": {
-            "name": "রেলপথ"
-        },
         "amenity/library": {
             "name": "পাঠাগার"
         },
@@ -153,9 +150,6 @@
         "leisure/pitch/volleyball": {
             "name": "ভলিবল মাঠ"
         },
-        "highway": {
-            "name": "রাজপথ"
-        },
         "area": {
             "name": "এলাকা"
         },
@@ -249,17 +243,11 @@
         "shop/electronics": {
             "name": "ইলেকট্রনিক্স-এর দোকান"
         },
-        "waterway": {
-            "name": "পানিপথ"
-        },
         "amenity/place_of_worship/buddhist": {
             "name": "বৌদ্ধ মন্দির"
         },
         "amenity/cinema": {
             "name": "সিনেমা"
-        },
-        "natural/wood": {
-            "name": "অরন্য"
         },
         "leisure/playground": {
             "name": "খেলার মাঠ"
@@ -296,9 +284,6 @@
         },
         "tourism/information": {
             "name": "তথ্য"
-        },
-        "natural": {
-            "name": "প্রাকৃতিক"
         },
         "natural/peak": {
             "name": "চূড়া"
@@ -345,9 +330,6 @@
         "leisure/pitch/basketball": {
             "name": "বাস্কেটবল কোর্ট"
         },
-        "tourism": {
-            "name": "পর্যটন"
-        },
         "building/residential": {
             "name": "আবাসিক ভবন"
         },
@@ -371,9 +353,6 @@
         },
         "place": {
             "name": "জায়গা"
-        },
-        "leisure": {
-            "name": "অবসর"
         },
         "shop/music": {
             "name": "সঙ্গীতের দোকান"
@@ -509,9 +488,6 @@
         },
         "shop/department_store": {
             "name": "ডিপার্টমেন্ট স্টোর"
-        },
-        "man_made": {
-            "name": "মানুষ নির্মিত"
         },
         "shop/car_parts": {
             "name": "গাড়ির যন্ত্রাংশের দোকান"

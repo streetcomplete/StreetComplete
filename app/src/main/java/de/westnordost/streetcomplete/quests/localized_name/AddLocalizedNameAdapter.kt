@@ -9,7 +9,6 @@ import android.text.Editable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.TextView
 
 import java.util.Locale
@@ -31,7 +30,7 @@ class AddLocalizedNameAdapter(
     private val languages: List<String>,
     private val abbreviationsByLocale: AbbreviationsByLocale?,
     private val localizedNameSuggestions: List<MutableMap<String, String>>?,
-    private val addLanguageButton: Button
+    private val addLanguageButton: View
 ) : RecyclerView.Adapter<AddLocalizedNameAdapter.ViewHolder>() {
 
     var localizedNames: MutableList<LocalizedName>
@@ -203,7 +202,7 @@ class AddLocalizedNameAdapter(
 
         private val autoCorrectInput : AutoCorrectAbbreviationsEditText = itemView.findViewById(R.id.autoCorrectInput)
         private val buttonLanguage : TextView = itemView.findViewById(R.id.languageButton)
-        private val buttonDelete : TextView = itemView.findViewById(R.id.deleteButton)
+        private val buttonDelete : View = itemView.findViewById(R.id.deleteButton)
         private val buttonNameSuggestions : View = itemView.findViewById(R.id.nameSuggestionsButton)
 
         init {

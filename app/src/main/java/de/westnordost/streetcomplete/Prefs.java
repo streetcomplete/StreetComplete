@@ -9,7 +9,7 @@ public class Prefs
 			OAUTH = "oauth",
 			OAUTH_ACCESS_TOKEN = "oauth.accessToken",
 			OAUTH_ACCESS_TOKEN_SECRET = "oauth.accessTokenSecret",
-			MAP_TILECACHE = "map.tilecache",
+			MAP_TILECACHE_IN_MB = "map.tilecache",
 			OSM_USER_ID = "osm.userid",
 			OSM_USER_NAME = "osm.username",
 			SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS = "display.nonQuestionNotes",
@@ -28,9 +28,13 @@ public class Prefs
 			MAP_LATITUDE = "map.latitude",
 			MAP_LONGITUDE = "map.longitude",
 			LAST_PICKED_PREFIX = "imageListLastPicked.",
-			LAST_LOCATION_REQUEST_DENIED = "location.denied";
+			LAST_LOCATION_REQUEST_DENIED = "location.denied",
+			LAST_VERSION = "lastVersion";
 
 	public static final String HAS_SHOWN_UNDO_FUCKUP_WARNING = "alert.undo_fuckup_warning";
+
+	public static final String QUEST_SPRITES_VERSION = "TangramQuestSpriteSheet.version";
+	public static final String QUEST_SPRITES = "TangramQuestSpriteSheet.questSprites";
 
 	public enum Autosync
 	{

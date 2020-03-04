@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.meta;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.AssetManager;
 
 import java.util.concurrent.FutureTask;
@@ -13,7 +14,7 @@ import de.westnordost.countryboundaries.CountryBoundaries;
 import de.westnordost.osmfeatures.AndroidFeatureDictionary;
 import de.westnordost.osmfeatures.FeatureDictionary;
 import de.westnordost.streetcomplete.data.QuestTypeRegistry;
-import de.westnordost.streetcomplete.tangram.TangramQuestSpriteSheetCreator;
+import de.westnordost.streetcomplete.map.TangramQuestSpriteSheet;
 
 @Module
 public class MetadataModule
@@ -35,10 +36,10 @@ public class MetadataModule
 		return new FutureTask<>(() -> AndroidFeatureDictionary.create(assetManager, "osmfeatures"));
 	}
 
-	@Provides @Singleton public static TangramQuestSpriteSheetCreator tangramQuestSpriteSheetCreator(
-		Context context, QuestTypeRegistry questTypeRegistry
+	@Provides @Singleton public static TangramQuestSpriteSheet tangramQuestSpriteSheetCreator(
+		Context context, QuestTypeRegistry questTypeRegistry, SharedPreferences prefs
 	)
 	{
-		return new TangramQuestSpriteSheetCreator(context, questTypeRegistry);
+		return new TangramQuestSpriteSheet(context, questTypeRegistry, prefs);
 	}
 }

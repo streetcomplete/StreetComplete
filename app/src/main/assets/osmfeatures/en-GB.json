@@ -210,9 +210,6 @@
         "leisure/amusement_arcade": {
             "name": "Amusement Arcade"
         },
-        "craft/pottery": {
-            "name": "Pottery"
-        },
         "craft/roofer": {
             "name": "Roofer"
         },
@@ -280,7 +277,7 @@
             "name": "Emergency Phone"
         },
         "golf/bunker": {
-            "name": "Bunker"
+            "name": "Golf Bunker"
         },
         "shop/houseware": {
             "name": "Houseware Store",
@@ -509,9 +506,6 @@
         "shop/beverages": {
             "name": "Beverages Shop"
         },
-        "entrance": {
-            "name": "Entrance/Exit"
-        },
         "power/tower": {
             "name": "High-Voltage Tower"
         },
@@ -668,9 +662,6 @@
         "office/travel_agent": {
             "name": "Travel Agency"
         },
-        "craft/jeweler": {
-            "name": "Jeweler"
-        },
         "landuse/industrial/slaughterhouse": {
             "name": "Slaughterhouse"
         },
@@ -812,9 +803,6 @@
         "highway/motorway_link": {
             "name": "Motorway Link"
         },
-        "amenity/car_pooling": {
-            "name": "Car Pooling"
-        },
         "place/isolated_dwelling": {
             "name": "Isolated Dwelling"
         },
@@ -841,9 +829,6 @@
         },
         "man_made/pipeline": {
             "name": "Pipeline"
-        },
-        "attraction/pirate_ship": {
-            "name": "Pirate Ship"
         },
         "healthcare/alternative/chiropractic": {
             "name": "Chiropractor"
@@ -886,9 +871,6 @@
         },
         "shop/electronics": {
             "name": "Electronics Shop"
-        },
-        "waterway": {
-            "name": "Waterway"
         },
         "amenity/clinic": {
             "name": "Clinic"
@@ -1016,9 +998,6 @@
         "shop/hardware": {
             "name": "Hardware Shop"
         },
-        "amenity/car_sharing": {
-            "name": "Car Sharing"
-        },
         "shop/funeral_directors": {
             "name": "Funeral Home"
         },
@@ -1049,9 +1028,6 @@
         "public_transport/stop_position_ferry": {
             "name": "Ferry Stopping Location"
         },
-        "tourism": {
-            "name": "Tourism"
-        },
         "amenity/public_bath": {
             "name": "Public Bath"
         },
@@ -1069,12 +1045,6 @@
         },
         "shop/watches": {
             "name": "Watches Shop"
-        },
-        "amenity/parking_entrance": {
-            "name": "Parking Garage Entrance/Exit"
-        },
-        "landuse": {
-            "name": "Land Use"
         },
         "waterway/riverbank": {
             "name": "Riverbank"
@@ -1165,9 +1135,6 @@
         },
         "craft/electrician": {
             "name": "Electrician"
-        },
-        "attraction/drop_tower": {
-            "name": "Drop Tower"
         },
         "historic/archaeological_site": {
             "name": "Archaeological Site"
@@ -1316,9 +1283,6 @@
         "leisure/fitness_centre/yoga": {
             "name": "Yoga Studio"
         },
-        "aerialway/t-bar": {
-            "name": "T-bar Lift"
-        },
         "historic/boundary_stone": {
             "name": "Boundary Stone"
         },
@@ -1346,9 +1310,6 @@
         "waterway/stream": {
             "name": "Stream"
         },
-        "railway": {
-            "name": "Railway"
-        },
         "building/university": {
             "name": "University Building"
         },
@@ -1370,20 +1331,11 @@
         "attraction/roller_coaster": {
             "name": "Roller Coaster"
         },
-        "power/sub_station": {
-            "name": "Substation"
-        },
         "shop/copyshop": {
             "name": "Copyshop"
         },
-        "leisure/firepit": {
-            "name": "Firepit"
-        },
         "public_transport/station_ferry": {
             "name": "Ferry Station / Terminal"
-        },
-        "man_made/bridge": {
-            "name": "Bridge"
         },
         "railway/monorail": {
             "name": "Monorail"
@@ -1545,9 +1497,6 @@
         "waterway/fuel": {
             "name": "Marine Fuel Station"
         },
-        "highway": {
-            "name": "Highway"
-        },
         "shop/pastry": {
             "name": "Pastry Shop"
         },
@@ -1655,9 +1604,6 @@
         },
         "healthcare/optometrist": {
             "name": "Optometrist"
-        },
-        "building/kindergarten": {
-            "name": "Preschool/Kindergarten Building"
         },
         "leisure/playground": {
             "name": "Playground"
@@ -1779,9 +1725,6 @@
         "public_transport/station_trolleybus": {
             "name": "Trolleybus Station / Terminal"
         },
-        "leisure": {
-            "name": "Leisure"
-        },
         "amenity/post_office": {
             "name": "Post Office"
         },
@@ -1817,9 +1760,6 @@
         },
         "shop/boutique": {
             "name": "Boutique"
-        },
-        "area/highway": {
-            "name": "Road Surface"
         },
         "amenity/vending_machine/parking_tickets": {
             "name": "Parking Ticket Vending Machine"
@@ -2001,9 +1941,6 @@
         "building/hotel": {
             "name": "Hotel Building"
         },
-        "shop/anime": {
-            "name": "Anime Shop"
-        },
         "route/ferry": {
             "name": "Ferry Route"
         },
@@ -2154,9 +2091,6 @@
         "aeroway/taxiway": {
             "name": "Taxiway"
         },
-        "craft/optician": {
-            "name": "Optician"
-        },
         "waterway/waterfall": {
             "name": "Waterfall"
         },
@@ -2295,9 +2229,6 @@
         "landuse/farm": {
             "name": "Farmland"
         },
-        "natural/wood": {
-            "name": "Wood"
-        },
         "leisure/pitch/rugby_union": {
             "name": "Rugby Union Pitch"
         },
@@ -2346,9 +2277,6 @@
         "natural/ridge": {
             "name": "Ridge"
         },
-        "natural": {
-            "name": "Natural"
-        },
         "aerialway/magic_carpet": {
             "name": "Magic Carpet Lift"
         },
@@ -2369,9 +2297,6 @@
         },
         "man_made/mast": {
             "name": "Mast"
-        },
-        "attraction/river_rafting": {
-            "name": "River Rafting"
         },
         "leisure/bird_hide": {
             "name": "Bird Hide"
@@ -2442,14 +2367,8 @@
         "place": {
             "name": "Place"
         },
-        "power": {
-            "name": "Power"
-        },
         "leisure/fitness_station/push-up": {
             "name": "Push-Up Station"
-        },
-        "aerialway/station": {
-            "name": "Aerialway Station"
         },
         "building/house": {
             "name": "House"
@@ -2571,14 +2490,8 @@
         "amenity/motorcycle_parking": {
             "name": "Motorcycle Parking"
         },
-        "shop/craft": {
-            "name": "Art and Craft Supplies Shop"
-        },
         "line": {
             "name": "Line"
-        },
-        "amenity/kindergarten": {
-            "name": "Preschool/Kindergarten Grounds"
         },
         "waterway/weir": {
             "name": "Weir"
@@ -2600,9 +2513,6 @@
         },
         "tourism/attraction": {
             "name": "Tourist Attraction"
-        },
-        "man_made": {
-            "name": "Man Made"
         },
         "barrier/kerb/lowered": {
             "name": "Lowered Kerb"

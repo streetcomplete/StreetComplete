@@ -104,7 +104,7 @@ abstract class OpeningHoursForm : AbstractQuestFormAnswerFragment<OpeningHoursAn
                     if (txt.isEmpty()) {
                         AlertDialog.Builder(context!!)
                                 .setMessage(R.string.quest_openingHours_emptyAnswer)
-                                .setPositiveButton(R.string.ok, null)
+                                .setPositiveButton(android.R.string.ok, null)
                                 .show()
                     } else {
                         applyAnswer(DescribeOpeningHours(txt))

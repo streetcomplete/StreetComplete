@@ -65,9 +65,10 @@
     <string name="turn_on_location_request">"Vietovės aptikimas išjungtas. Eiti į nustatymus ir įjungti dabar?"</string>
     <string name="no_location_permission_warning">"Jūsų vietos reikia tam, kad būtų galima ieškoti užduočių šalia jūsų."</string>
     <string name="action_about">"Apie StreetComplete"</string>
-    <string name="about_title_version">"Versija"</string>
     <string name="about_title_authors">"Autoriai"</string>
-    <string name="about_summary_authors">"© 2016–2019 Tobias Zwick ir talkininkai"</string>
+
+    <!-- Fuzzy -->
+    <string name="about_summary_authors">"© 2016–2020 Tobias Zwick ir talkininkai"</string>
     <string name="about_title_repository">"Išeities kodo repozitorija"</string>
     <string name="about_summary_repository">"GitHub'e"</string>
     <string name="about_title_report_error">"Pranešti apie klaidą"</string>
@@ -449,7 +450,6 @@ Dalinai reiškia, kad vežimėlis gali įvažiuoti ir naudotis tualetu, bet nėr
     <string name="quest_busStopShelter_tram_title">"Ar ši tramvajaus stotelė turi stogelį?"</string>
     <string name="quest_bench_backrest_title">"Ar šis suoliukas turi atlošą?"</string>
     <string name="quest_bench_answer_picnic_table">"Tai pikniko stalas"</string>
-    <string name="quest_religion_for_place_of_worship_title">"Kokia religija praktikuojama %s?"</string>
     <string name="quest_religion_christian">"Krikščionybė"</string>
     <string name="quest_religion_muslim">"Islamas"</string>
     <string name="quest_religion_hindu">"Hinduizmas"</string>
@@ -621,6 +621,8 @@ Pavyzdžiui 1,3 arba 2-6."</string>
     <string name="quest_openingHours_timeSelect_next">"Kitas"</string>
     <string name="quest_tracktype_title">"Koks šio kelio dangos standumas?"</string>
     <string name="quest_tracktype_grade1">"Tvirtas"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tracktype_grade2">"Daugiausia tvirtas"</string>
     <string name="quest_tracktype_grade3">"Įvairus"</string>
     <string name="quest_tracktype_grade4">"Daugiausia minkštas"</string>
@@ -683,7 +685,7 @@ Pavyzdžiui 1,3 arba 2-6."</string>
     <string name="quest_generic_answer_differs_along_the_way">"Skirtingose vietose skirtinga..."</string>
     <string name="quest_split_way_description">"Jei skirtingose vietose skirtinga, pirmas žingsnis yra padalinti kelią. Po to bus galima atsakyti į užduotį kiekvienai daliai atskirai. Pastebėtina, kad užduotys padalintoms dalims gali pasirodyti daug vėliau. Padalinti dabar?"</string>
     <string name="quest_split_way_tutorial">"Spustelėkite ant kelio toje vietoje, kur atsakymai skiriasi. Pabandykite skirtumo vietą nurodyti kiek galima tiksliau, priartinkite kaip visada."</string>
-    <string name="quest_split_way_too_imprecise">"Prašome labiau pirartinti"</string>
+    <string name="quest_split_way_too_imprecise">"Prašome labiau priartinti"</string>
 
     <!-- Fuzzy -->
     <string name="quest_split_way_many_splits_confirmation_description">"Čia jau yra pakankamai padalinimų. Visada kelią galite dar dalinti vėliau."</string>

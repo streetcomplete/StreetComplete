@@ -3,13 +3,13 @@ package de.westnordost.streetcomplete.quests.roof_shape
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
 
-class AddRoofShape(o: OverpassMapDataDao) : SimpleOverpassQuestType<String>(o) {
+class AddRoofShape(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<String>(o) {
 
     override val tagFilters = """
         ways, relations with roof:levels
-        and roof:levels!=0 and !roof:shape and !3dr:type and !3dr:roof
+        and roof:levels != 0 and !roof:shape and !3dr:type and !3dr:roof
     """
     override val commitMessage = "Add roof shapes"
     override val icon = R.drawable.ic_quest_roof_shape

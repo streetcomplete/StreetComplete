@@ -65,9 +65,10 @@
     <string name="turn_on_location_request">"Posisjonsinnhenting er slått av. Ønskjer du å endra innstillingane og slå det på no?"</string>
     <string name="no_location_permission_warning">"Programmet treng posisjonen din for å kunna søkja opp oppdrag i nærleiken."</string>
     <string name="action_about">"Om StreetComplete"</string>
-    <string name="about_title_version">"Versjon"</string>
     <string name="about_title_authors">"Bidragsytarar"</string>
-    <string name="about_summary_authors">"© 2016–2019 Tobias Zwick og andre bidragsytarar"</string>
+
+    <!-- Fuzzy -->
+    <string name="about_summary_authors">"© 2016–2020 Tobias Zwick og andre bidragsytarar"</string>
     <string name="about_title_repository">"Kjeldekode"</string>
     <string name="about_summary_repository">"på GitHub"</string>
     <string name="about_title_report_error">"Meld frå om feil"</string>
@@ -420,7 +421,6 @@ Elles kan du lasta ned eit anna tastatur i appbutikken. Mykje brukte tastatur so
     <string name="quest_busStopShelter_tram_title">"Er det eit trikkeskur på dette stoppet?"</string>
     <string name="quest_bench_backrest_title">"Har denne benken ryggstø?"</string>
     <string name="quest_bench_answer_picnic_table">"Det er eit piknikbord"</string>
-    <string name="quest_religion_for_place_of_worship_title">"Kva religion vert praktisert ved %s?"</string>
     <string name="quest_religion_christian">"Kristendom"</string>
     <string name="quest_religion_muslim">"Islam"</string>
     <string name="quest_religion_hindu">"Hinduisme"</string>

@@ -19,7 +19,7 @@
             android:layout_centerHorizontal="true"/>
 
         <RelativeLayout
-            android:id="@+id/leftSide"
+            android:id="@+id/leftSideContainer"
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true"
             android:focusable="true"
@@ -42,7 +42,7 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/rightSide"
+            android:id="@+id/rightSideContainer"
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true"
             android:focusable="true"

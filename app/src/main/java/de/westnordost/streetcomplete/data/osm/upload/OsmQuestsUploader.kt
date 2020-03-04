@@ -10,7 +10,7 @@ import de.westnordost.streetcomplete.data.QuestStatus
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.OsmQuest
 import de.westnordost.streetcomplete.data.osm.OsmQuestGiver
-import de.westnordost.streetcomplete.data.osm.download.ElementGeometryCreator
+import de.westnordost.streetcomplete.data.osm.download.OsmApiElementGeometryCreator
 import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao
 import de.westnordost.streetcomplete.data.osm.persist.MergedElementDao
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao
@@ -27,14 +27,12 @@ class OsmQuestsUploader @Inject constructor(
     changesetManager: OpenQuestChangesetsManager,
     questGiver: OsmQuestGiver,
     statisticsDB: QuestStatisticsDao,
-    elementGeometryCreator: ElementGeometryCreator,
+    osmApiElementGeometryCreator: OsmApiElementGeometryCreator,
     private val questDB: OsmQuestDao,
     private val singleChangeUpload: SingleOsmElementTagChangesUpload,
     private val downloadedTilesDao: DownloadedTilesDao
 ) : OsmInChangesetsUploader<OsmQuest>(elementDB, elementGeometryDB, changesetManager, questGiver,
-    statisticsDB, elementGeometryCreator) {
-
-    private val TAG = "OsmQuestUpload"
+    statisticsDB, osmApiElementGeometryCreator) {
 
     @Synchronized override fun upload(cancelled: AtomicBoolean) {
         Log.i(TAG, "Applying quest changes")
@@ -48,7 +46,7 @@ class OsmQuestsUploader @Inject constructor(
     }
 
     override fun onUploadSuccessful(quest: OsmQuest) {
-        quest.status = QuestStatus.CLOSED
+        quest.close()
         questDB.update(quest)
         Log.d(TAG, "Uploaded osm quest ${quest.toLogString()}")
     }
@@ -75,6 +73,10 @@ class OsmQuestsUploader @Inject constructor(
             statusIn = listOf(QuestStatus.CLOSED, QuestStatus.REVERT),
             changedBefore = timestamp
         )
+    }
+
+    companion object {
+        private const val TAG = "OsmQuestUpload"
     }
 }
 
