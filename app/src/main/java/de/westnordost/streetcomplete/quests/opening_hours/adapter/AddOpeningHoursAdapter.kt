@@ -216,13 +216,13 @@ open class AddOpeningHoursAdapter(
     private fun getMonthsRangeSuggestion(): CircularSection {
         val months = getUnmentionedMonths()
         return if (months.isEmpty()) {
-            CircularSection(0, OpeningMonths.MAX_MONTH_INDEX)
+            CircularSection(0, OpeningMonthsRow.MAX_MONTH_INDEX)
         } else months[0]
     }
 
     private fun getUnmentionedMonths(): List<CircularSection> {
         val allTheMonths = monthsRows.map { it.months }
-        return NumberSystem(0, OpeningMonths.MAX_MONTH_INDEX).complemented(allTheMonths)
+        return NumberSystem(0, OpeningMonthsRow.MAX_MONTH_INDEX).complemented(allTheMonths)
     }
     private fun openSetMonthsRangeDialog(months: CircularSection, callback: RangePickedCallback) {
         val monthNames = DateFormatSymbols.getInstance().months
