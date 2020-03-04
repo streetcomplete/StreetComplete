@@ -33,25 +33,27 @@ class AddOpeningHoursTest {
     }
 
     @Test fun `apply opening hours answer`() {
-        questType.verifyAnswer(
-            RegularOpeningHours(listOf(OpeningMonths(
+        val expectedTags = StringMapEntryAdd("opening_hours", "Mo 00:00-12:00; Tu 12:00-24:00");
+        val answer =             RegularOpeningHours(listOf(OpeningMonths(
                 CircularSection(0,11),
                 listOf(
-                    listOf(
-                        OpeningWeekdays(
-                            Weekdays(booleanArrayOf(true)),
-                            mutableListOf(TimeRange(0, 12*60))
+                        listOf(
+                                OpeningWeekdays(
+                                        Weekdays(booleanArrayOf(true)),
+                                        mutableListOf(TimeRange(0, 12*60))
+                                )
+                        ),
+                        listOf(
+                                OpeningWeekdays(
+                                        Weekdays(booleanArrayOf(false, true)),
+                                        mutableListOf(TimeRange(12*60, 24*60))
+                                )
                         )
-                    ),
-                    listOf(
-                        OpeningWeekdays(
-                            Weekdays(booleanArrayOf(false, true)),
-                            mutableListOf(TimeRange(12*60, 24*60))
-                        )
-                    )
                 )
-            ))),
-            StringMapEntryAdd("opening_hours", "Mo 00:00-12:00; Tu 12:00-24:00")
+        )))
+        questType.verifyAnswer(
+            answer,
+            expectedTags
         )
     }
 }
