@@ -25,7 +25,11 @@ import de.westnordost.streetcomplete.view.dialogs.RangePickedCallback
 import de.westnordost.streetcomplete.view.dialogs.RangePickerDialog
 
 data class OpeningMonthsRow(var months: CircularSection = CircularSection(0, MAX_MONTH_INDEX)) {
-
+    // range of months (may be simply the entire year), with list of
+    // OpeningWeekdaysRows - each containing (1) weekdays (2) hours range
+    //
+    // for simple opening hours the same for the entire year, there will be
+    // a single OpeningMonthsRow covering the entire year
     var weekdaysList: MutableList<OpeningWeekdaysRow> = mutableListOf()
 
     constructor(months: CircularSection, initialWeekdays: OpeningWeekdaysRow) : this(months) {
