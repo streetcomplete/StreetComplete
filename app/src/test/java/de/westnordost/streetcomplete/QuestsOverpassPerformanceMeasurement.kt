@@ -24,11 +24,7 @@ fun main() {
         true
     }
 
-<<<<<<< HEAD
-    val registry = QuestModule.questTypeRegistry(mock(), overpassMock, mock(), mock(), mock(), mock(), mock(), mock())
-=======
-    val registry = QuestModule.questTypeRegistry(mock(), overpassMock, mock(), mock(), mock(), mock())
->>>>>>> master
+    val registry = QuestModule.questTypeRegistry(mock(), overpassMock, mock(), mock(), mock(), mock(), mock())
 
     val hamburg = BoundingBox(53.5, 9.9, 53.6, 10.0)
 
