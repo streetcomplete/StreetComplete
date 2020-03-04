@@ -36,6 +36,10 @@ data class OpeningMonthsRow(var months: CircularSection = CircularSection(0, MAX
         weekdaysList.add(initialWeekdays)
     }
 
+    constructor(months: CircularSection, initialWeekdays: MutableList<OpeningWeekdaysRow>) : this(months) {
+        weekdaysList = initialWeekdays
+    }
+
     companion object {
         internal val MAX_MONTH_INDEX = 11
     }
