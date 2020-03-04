@@ -16,9 +16,9 @@ import java.util.concurrent.FutureTask
 
 class AddOpeningHours (
     private val overpassServer: OverpassMapDataAndGeometryDao,
-    private val featureDictionaryFuture: FutureTask<FeatureDictionary>,
+    featureDictionaryFuture: FutureTask<FeatureDictionary>,
     private val parser: OpeningHoursTagParser
-) : OsmElementQuestType<OpeningHoursAnswer> {
+) : OpeningHours(featureDictionaryFuture) {
 
     /* See also AddWheelchairAccessBusiness and AddPlaceName, which has a similar list and is/should
        be ordered in the same way for better overview */
@@ -91,15 +91,10 @@ class AddOpeningHours (
     override val icon = R.drawable.ic_quest_opening_hours
 
     override fun getTitle(tags: Map<String, String>) =
-        if (hasProperName(tags))
-            R.string.quest_openingHours_name_title
-        else
-            R.string.quest_openingHours_no_name_title
-
-    override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> {
-        val name = tags["name"] ?: tags["brand"] ?: featureName.value
-        return if (name != null) arrayOf(name) else arrayOf()
-    }
+            if (hasProperName(tags))
+                R.string.quest_openingHours_name_title
+            else
+                R.string.quest_openingHours_no_name_title
 
     override fun download(bbox: BoundingBox, handler: (element: Element, geometry: ElementGeometry?) -> Unit): Boolean {
         return overpassServer.query(getOverpassQuery(bbox)) { element, geometry ->
@@ -107,6 +102,9 @@ class AddOpeningHours (
             if (hasName(element.tags)) handler(element, geometry)
         }
     }
+
+    private fun getOverpassQuery(bbox: BoundingBox) =
+            bbox.toGlobalOverpassBBox() + "\n" + filter.toOverpassQLString() + getQuestPrintStatement()
 
     override fun isApplicableTo(element: Element) =
         filter.matches(element) && hasName(element.tags)
@@ -124,15 +122,4 @@ class AddOpeningHours (
             }
         }
     }
-
-    private fun getOverpassQuery(bbox: BoundingBox) =
-        bbox.toGlobalOverpassBBox() + "\n" + filter.toOverpassQLString() + getQuestPrintStatement()
-
-    private fun hasName(tags: Map<String, String>?) = hasProperName(tags) || hasFeatureName(tags)
-
-    private fun hasProperName(tags: Map<String, String>?): Boolean =
-        tags?.keys?.containsAny(listOf("name", "brand")) ?: false
-
-    private fun hasFeatureName(tags: Map<String, String>?): Boolean =
-        tags?.let { featureDictionaryFuture.get().byTags(it).find().isNotEmpty() } ?: false
 }

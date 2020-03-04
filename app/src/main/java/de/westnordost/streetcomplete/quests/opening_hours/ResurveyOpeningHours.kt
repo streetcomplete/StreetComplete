@@ -18,12 +18,16 @@ import java.util.concurrent.FutureTask
 
 class ResurveyOpeningHours(
         private val overpassServer: OverpassMapDataAndGeometryDao,
-        private val featureDictionaryFuture: FutureTask<FeatureDictionary>,
+        featureDictionaryFuture: FutureTask<FeatureDictionary>,
         private val parser: OpeningHoursTagParser
-) : OsmElementQuestType<OpeningHoursAnswer> {
+) : OpeningHours(featureDictionaryFuture) {
     override val commitMessage = "resurvey opening hours"
     override val icon = R.drawable.ic_quest_opening_hours
-    override fun getTitle(tags: Map<String, String>) = R.string.resurvey_opening_hours_title
+    override fun getTitle(tags: Map<String, String>) =
+            if (hasProperName(tags))
+                R.string.resurvey_opening_hours_title
+            else
+                R.string.resurvey_opening_hours_no_name_title
 
     override fun download(bbox: BoundingBox, handler: (element: Element, geometry: ElementGeometry?) -> Unit): Boolean {
         return overpassServer.query(getOverpassQuery(bbox)) { element, geometry ->
@@ -50,15 +54,17 @@ class ResurveyOpeningHours(
         val resurveyCutoff = "'${DateUtil.getOffsetDateString(-reviewIntervalInDays)}T00:00:00Z'"
         val repeatedResurveyCutoff = "'${DateUtil.getOffsetDateString(-reviewIntervalInDays * 3)}T00:00:00Z'"
         return bbox.toGlobalOverpassBBox() + """
-            nwr[name][opening_hours]['opening_hours:signed'!='no']
+            nwr[opening_hours]['opening_hours:signed'!='no']
                 (if:
                     !is_date(t['check_date:opening_hours']) ||
                     date(t['check_date:opening_hours']) < date($repeatedResurveyCutoff)
-                ) -> .old_opening_hours_tag;
+                ) -> .oh_without_recent_check_date;
 
-            nwr[name][opening_hours](newer: $resurveyCutoff) -> .recently_edited_objects_with_opening_hours;
+            nwr[opening_hours](newer: $resurveyCutoff) -> .recently_edited_objects_with_oh;
+            nwr[name!~".*"][noname!=yes][opening_hours] -> .oh_with_unknown_name_state;
 
-            (.old_opening_hours_tag; - .recently_edited_objects_with_opening_hours;);
+            (.oh_without_recent_check_date; - .recently_edited_objects_with_oh;) -> .old_oh;
+            (.old_oh; - .oh_with_unknown_name_state;);
             """.trimIndent() + getQuestPrintStatement()
     }
 
@@ -99,13 +105,4 @@ class ResurveyOpeningHours(
             else -> throw AssertionError()
         }
     }
-
-    // deduplicate with AddOpeningHours
-    private fun hasName(tags: Map<String, String>?) = hasProperName(tags) || hasFeatureName(tags)
-
-    private fun hasProperName(tags: Map<String, String>?): Boolean =
-            tags?.keys?.containsAny(listOf("name", "brand")) ?: false
-
-    private fun hasFeatureName(tags: Map<String, String>?): Boolean =
-            tags?.let { featureDictionaryFuture.get().byTags(it).find().isNotEmpty() } ?: false
 }
