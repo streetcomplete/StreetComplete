@@ -25,15 +25,6 @@ class OpeningMonths(var months: CircularSection, var weekdaysClusters: List<List
         }
     }
 
-    fun containsSelfIntersectingOpeningWeekdays(): Boolean {
-        for (weekdaysCluster in weekdaysClusters) {
-            for (openingWeekdays in weekdaysCluster) {
-                if (openingWeekdays.isSelfIntersecting()) return true
-            }
-        }
-        return false
-    }
-
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (other !is OpeningMonths) return false
