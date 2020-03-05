@@ -149,8 +149,8 @@ class AddOpeningHours (
         when(answer) {
             is RegularOpeningHours -> {
                 val testInput = getFirstTestInput()
-                val testOutput = parser.internalIntoTag(testInput)
-                val retest = testInput.joinToString("; ")
+                val testOutput = parser.internalIntoTag(testInput) //returns null, functions has just ".joinToString("; ")"
+                val retest = testInput.joinToString("; ") //here ".joinToString("; ")" works
                 val testInputDuo = getSecondTestInput()
                 val testOutputDuo = parser.internalIntoTag(testInputDuo)
                 val retestDuo = testInputDuo.joinToString("; ")
