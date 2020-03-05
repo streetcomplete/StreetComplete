@@ -43,7 +43,6 @@ class OpeningHoursTagParserTest {
         assertNull(parse("Mo,Tu 09:00-20:00"))
         assertNull(parse("Mo,Tu,Sa 09:00-20:00"))
         assertNull(parse("Mo-Th,Sa 09:00-20:00"))
-        assertNull(parse("Mo-Th,PH 09:00-20:00"))
     }
 
     @Test
@@ -76,6 +75,7 @@ class OpeningHoursTagParserTest {
 
     @Test
     fun `accept valid opening hours`() {
+        parsesAndSavesUnchanged("Mo-Th,PH 09:00-20:00")
         parsesAndSavesUnchanged("Mo-Su 00:00-24:00")
         parsesAndSavesUnchanged("Mo 09:00-20:00")
         parsesAndSavesUnchanged("Tu-Su 10:00-17:30")
