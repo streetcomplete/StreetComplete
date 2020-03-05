@@ -890,7 +890,7 @@ public class MainActivity extends AppCompatActivity implements  MainFragment.Lis
 
 	/** Menu raised by clicking on the star icon */
 	public void starInfoMenu(View view) {
-		String message = getString(R.string.about_contributing) + "\n\n" + getString(R.string.about_missing_stars);
+		String message = getString(R.string.about_contributing) ;
 		if(answersCounter.waitingForUpload() + answersCounter.uploaded() == 0){
 			message = getString(R.string.how_to_get_stars) + "\n\n" + getString(R.string.about_contributing);
 		}

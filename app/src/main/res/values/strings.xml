@@ -680,7 +680,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_leaf_type_mixed">Both are present</string>
     <string name="create_new_note_hint">Best write the note in the locally spoken language or otherwise in English.</string>
     <string name="about_contributing">Your answers are directly improving OpenStreetMap. Contributed data is open, everyone can use it. Many great projects are already using it.</string>
-    <string name="about_missing_stars">Currently, the star count is not shared across devices, but answers are added directly to the OpenStreetMap database.</string>
     <string name="how_to_get_stars">Choose one of the markers on the map and answer the question. This way you will improve OpenStreetMap data and get stars. If you see no markers you may need to zoom out the map.</string>
     <string name="quest_cyclewayPartSurface_title">What\'s the surface of the cycleway here?</string>
     <string name="quest_footwayPartSurface_title">What\'s the surface of the footway here?</string>
@@ -760,7 +759,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="link_mapy_tactile_description">Tactile maps for the visually impaired in various scales</string>
     <string name="link_josm_description">Fully-featured OSM editor for the desktop</string>
     <string name="link_vespucci_description">Advanced OSM editor for Android</string>
-    <string name="link_ideditor_description">Easy OSM editor for the browser. Optimized for the desktop or large tablets</string>
+    <string name="link_ideditor_description">Simple OSM editor for the browser. Optimized for the desktop or large tablets</string>
     <string name="link_umap_description">Create maps with custom data quickly and embed them in your site</string>
     <string name="link_opnvkarte_description">A map of public transport routes and stops</string>
     <string name="link_pic4review_description">Contribute to OSM simply by looking at pictures of your city</string>
@@ -769,9 +768,16 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="link_openrouteservice_wheelchair_description">Turn by turn navigation for wheelchair users</string>
     <string name="link_nominatim_description">The geocoder for OSM data, used by many other services</string>
     <string name="link_city_roads_description">Render all roads of a city, for printing on T-Shirts, mugs, …</string>
+    <string name="link_myosmatic_description">"Generate printable city maps in a few easy steps, optionally with a street directory"</string>
+    <string name="link_brouter_description">The routing engine for bicyclists. Also available as an app for offline navigation.</string>
+    <string name="link_show_me_the_way_description">Watch OSM edits happen in real time</string>
 
     <string name="achievement_first_edit_title">First Quest Solved</string>
-    <string name="achievement_first_edit_description">Welcome to the OpenStreetMap community!</string>
+    <string name="achievement_first_edit_description">Welcome to the OpenStreetMap community! </string>
+    <string name="achievement_surveyor_title">Surveyor</string>
+    <string name="achievement_surveyor_solved_X">You solved %d quests! Keep going to unlock more achievements that contain links to OSM and other map-related apps and projects!</string>
+    <string name="achievement_regular_title">Regular</string>
+    <string name="achievement_regular_description">You contributed %d days to OSM with this app! Regular contributors are the backbone of OSM, thanks for your dedication! ❤</string>
     <string name="achievement_bicyclist_title">Bicyclist</string>
     <string name="achievement_bicyclist_solved_X">You solved %d quests that help bicyclists!</string>
     <string name="achievement_wheelchair_title">Mobility</string>
@@ -787,8 +793,10 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="achievement_veg_title">Kind to Animals</string>
     <string name="achievement_veg_solved_X">You solved %d quests that are interesting for people living on a no-meat diet!</string>
     <string name="achievement_car_title">On the Road</string>
+    <string name="achievement_car_solved_X">You solved %d quests that improve detail on the street infrastructure, putting the "street" in OpenStreetMap!</string>
 
     <string name="achievements_empty">You have no achievements yet</string>
     <string name="links_empty">You have no links yet</string>
     <string name="quests_empty">You solved no quests yet</string>
+
 </resources>

@@ -62,6 +62,13 @@ object AchievementsModule {
             R.drawable.ic_link_cyclosm,
             R.string.link_cyclosm_description
         ),
+        "brouter" to Link(
+            "https://brouter.de/brouter-web/",
+            "BRouter",
+            LinkCategory.SHOWCASE,
+            R.drawable.ic_link_brouter,
+            R.string.link_brouter_description
+        ),
 
         "öpnvkarte" to Link(
             "https://öpnvkarte.de",
@@ -139,6 +146,20 @@ object AchievementsModule {
             LinkCategory.GOODIES,
             R.drawable.ic_link_avatar_anvaka_on_github,
             R.string.link_city_roads_description
+        ),
+        "myosmatic" to Link(
+            "https://print.get-map.org",
+            "MyOSMatic",
+            LinkCategory.GOODIES,
+            R.drawable.ic_link_myosmatic,
+            R.string.link_myosmatic_description
+        ),
+        "show_me_the_way" to Link(
+            "https://osmlab.github.io/show-me-the-way",
+            "show-me-the-way",
+            LinkCategory.GOODIES,
+            R.drawable.ic_link_osmlab,
+            R.string.link_show_me_the_way_description
         )
     )
 
@@ -156,10 +177,36 @@ object AchievementsModule {
             )
         ),
 
+        "surveyor" to Achievement(
+            R.drawable.ic_achievement_surveyor,
+            R.string.achievement_surveyor_title,
+            R.string.achievement_surveyor_solved_X,
+            TotalSolvedQuests,
+            listOf(
+                level(10, listOf("wiki")),
+                level(20, listOf("umap")),
+                level(30, listOf("learnosm")),
+                level(50, listOf("show_me_the_way")),
+                level(80, listOf())
+            )
+        ),
+
+        "regular" to Achievement(
+            R.drawable.ic_achievement_regular,
+            R.string.achievement_regular_title,
+            R.string.achievement_regular_description,
+            DaysActive,
+            listOf(
+                level(3, listOf("pic4review")),
+                level(6, listOf("ideditor")),
+                level(12, listOf("vespucci", "josm"))
+            )
+        ),
+
         "car" to Achievement(
             R.drawable.ic_achievement_car,
             R.string.achievement_car_title,
-            null,
+            R.string.achievement_car_solved_X,
             SolvedQuestsOfTypes(
                 listOf(
                     "AddRoadName",
@@ -181,8 +228,8 @@ object AchievementsModule {
                 )
             ),
             listOf(
-                level(100),
-                level(200)
+                level(100, listOf("myosmatic")),
+                level(200, listOf("city_roads"))
             )
         ),
 
@@ -326,7 +373,7 @@ object AchievementsModule {
             ),
             listOf(
                 level(30, listOf("cyclosm")),
-                level(50)
+                level(50, listOf("brouter")),
             )
         )
     )
