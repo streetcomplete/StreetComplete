@@ -1061,9 +1061,6 @@
         "craft/stonemason": {
             "name": "Stonemason"
         },
-        "aerialway": {
-            "name": "Aerialway"
-        },
         "amenity/nightclub": {
             "name": "Nightclub"
         },
@@ -2546,9 +2543,6 @@
         },
         "shop/motorcycle_repair": {
             "name": "Motorcycle Repair Shop"
-        },
-        "aeroway": {
-            "name": "Aeroway"
         },
         "aeroway/terminal": {
             "name": "Airport Terminal"

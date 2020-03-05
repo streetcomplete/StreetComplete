@@ -70,7 +70,7 @@ That is not very clear to me. Any further explanations? -->
     <string name="download_area_too_big">"Veuillez zoomer un peu plus"</string>
     <string name="confirmation_cancel_prev_download_title">"Annuler la recherche en cours et rechercher ici à la place ?"</string>
     <string name="notification_downloading">"Recherche de quêtes…"</string>
-    <string name="now_downloading_toast">"Recherche de quêtes additionnelles…"</string>
+    <string name="now_downloading_toast">"Recherche de quêtes supplémentaires…"</string>
     <string name="turn_on_location_request">"La géolocalisation est désactivé. Aller dans les paramètres pour l’activer ?"</string>
     <string name="no_location_permission_warning">"Votre position est nécessaire pour rechercher des quêtes"</string>
     <string name="action_about">"À propos de StreetComplete"</string>
@@ -479,6 +479,7 @@ Partiellement signifie qu’un fauteuil roulant peut entrer et utiliser les toil
     <string name="quest_busStopShelter_tram_title">"Cet arrêt de tram a-t-il un abri ?"</string>
     <string name="quest_bench_backrest_title">"Ce banc a-t-il un dossier ?"</string>
     <string name="quest_bench_answer_picnic_table">"C’est une table à pique-nique"</string>
+    <string name="quest_religion_for_place_of_worship_title">"Quelle religion est pratiquée ici ?"</string>
     <string name="quest_religion_christian">"Christianisme"</string>
     <string name="quest_religion_muslim">"Islam"</string>
     <string name="quest_religion_hindu">"Hindouisme"</string>
@@ -790,4 +791,17 @@ Le séparer maintenant ?"</string>
     <!-- Fuzzy -->
     <string name="about_description_donate">"Merci de songer à soutenir cette application ! Pour voir l'état actuel des dons et pour donner, cliquez sur la plateforme correspondante :"</string>
     <string name="quest_religion_for_place_of_worship_name_title">"Quelle religion est pratiquée à %s ?"</string>
+    <string name="confirmation_cancel_prev_download_confirmed">"Plutôt rechercher des quêtes ici"</string>
+    <string name="confirmation_cancel_prev_download_cancel">"Continuer la recherche actuelle"</string>
+    <string name="quest_buildingType_garages_description">"Espaces séparés pour plusieurs propriétaires ou locataires"</string>
+    <string name="quest_tourism_information_title">"Quel est le type d'informations touristiques fournies par l'objet ?"</string>
+    <string name="quest_tourism_information_name_title">"Quel est le type d'informations touristiques fournies par %s ?"</string>
+    <string name="quest_tourism_information_office">"Office de tourisme"</string>
+    <string name="quest_tourism_information_board">"Panneau d'information"</string>
+    <string name="quest_tourism_information_terminal">"Terminal d'information"</string>
+    <string name="quest_tourism_information_map">"Carte"</string>
+    <string name="quest_tourism_information_guidepost">"Panneau indicateur"</string>
+    <string name="quest_recycling_materials_answer_waste">"Pour des ordures génériques"</string>
+    <string name="quest_recycling_materials_answer_waste_description">"Donc, c'est un conteneur pour n'importe quelle type d'ordures, ménagères comme industrielles ?"</string>
+    <string name="quest_accepts_cash_title">"Est-ce que %s accepte les paiements en liquide ?"</string>
 </resources>

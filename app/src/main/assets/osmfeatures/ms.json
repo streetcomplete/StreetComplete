@@ -397,9 +397,6 @@
         "building/house": {
             "name": "Rumah"
         },
-        "aerialway": {
-            "name": "Jalan Udara"
-        },
         "amenity/vending_machine": {
             "name": "Mesin Layan Diri"
         },

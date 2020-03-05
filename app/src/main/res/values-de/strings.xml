@@ -738,6 +738,6 @@ Jetzt aufspalten?"</string>
     <string name="quest_tourism_information_map">"Karte"</string>
     <string name="quest_tourism_information_guidepost">"Wegweiser"</string>
     <string name="quest_recycling_materials_answer_waste">"Ist für allgemeinen Müll"</string>
-    <string name="quest_recycling_materials_answer_waste_description">"Das ist also ein Müllcontainer, wie etwa für Haus- oder Industriemüll?"</string>
+    <string name="quest_recycling_materials_answer_waste_description">"Das ist also ein Müllcontainer, wie etwa für Haus- oder Gewerbemüll?"</string>
     <string name="quest_accepts_cash_title">"Aktzeptiert %s Bargeld?"</string>
 </resources>

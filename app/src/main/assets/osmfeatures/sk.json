@@ -1919,9 +1919,6 @@
             "name": "Kamenárstvo",
             "terms": "kamenarstvo,kamenár,kamenar"
         },
-        "aerialway": {
-            "name": "Vzdušná doprava"
-        },
         "craft/tailor": {
             "name": "Krajčír"
         },
@@ -2283,9 +2280,6 @@
         "shop/bookmaker": {
             "name": "Stávková kancelária",
             "terms": "stavkova kancelaria,stavky,tipos,sportka,bingo,stavka,stávka,kurz"
-        },
-        "aeroway": {
-            "name": "Letectvo"
         },
         "aeroway/terminal": {
             "name": "Letiskový termnál",

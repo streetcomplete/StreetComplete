@@ -780,9 +780,6 @@
         "natural/glacier": {
             "name": "Gletser",
             "terms": "gletser"
-        },
-        "aeroway": {
-            "name": "Aanloopbaan"
         }
     }
 }

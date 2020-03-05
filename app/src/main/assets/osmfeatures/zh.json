@@ -737,9 +737,6 @@
         },
         "natural/glacier": {
             "name": "冰川"
-        },
-        "aeroway": {
-            "name": "机场相关道路"
         }
     }
 }

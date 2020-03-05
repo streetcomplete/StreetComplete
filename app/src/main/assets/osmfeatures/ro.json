@@ -1393,9 +1393,6 @@
         },
         "leisure/fitness_centre/yoga": {
             "name": "Studio Yoga"
-        },
-        "aeroway": {
-            "name": "Aeroway"
         }
     }
 }

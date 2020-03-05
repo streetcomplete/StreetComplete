@@ -503,6 +503,7 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetse
     <string name="quest_busStopShelter_tram_title">"Heeft deze tramhalte een schuilhokje?"</string>
     <string name="quest_bench_backrest_title">"Heeft deze bank een rugleuning?"</string>
     <string name="quest_bench_answer_picnic_table">"Het is een picknicktafel."</string>
+    <string name="quest_religion_for_place_of_worship_title">"Welke religie wordt in deze plaats uit gedragen?"</string>
     <string name="quest_religion_christian">"Het Christendom"</string>
     <string name="quest_religion_muslim">"De Islam"</string>
     <string name="quest_religion_hindu">"Het Hindoeïsme"</string>
@@ -799,4 +800,22 @@ Bijvoorbeeld 1m3 of 2-6."</string>
     <string name="about_title_donate">"Doneer"</string>
     <string name="about_summary_donate">"Toon je waardering! ❤️"</string>
     <string name="about_description_donate">"Bedankt voor het overwegen van het ondersteunen van deze app! Om huidige donaties te zien en zelf te doneren, tik op het respectieve platform:"</string>
+    <string name="quest_religion_for_place_of_worship_name_title">"Welke religie wordt in %s uit gedragen?"</string>
+
+    <!-- need some background info to make a correct translation -->
+    <string name="confirmation_cancel_prev_download_confirmed">"Scan hier"</string>
+
+    <!-- need some background info to make a correct translation -->
+    <string name="confirmation_cancel_prev_download_cancel">"Ga door met scannen"</string>
+    <string name="quest_buildingType_garages_description">"Scheid de verschillende eigenaren door een spatie"</string>
+    <string name="quest_tourism_information_title">"Welk type toeristen informatie is dit?"</string>
+    <string name="quest_tourism_information_name_title">"Welk type toeristen informatie is %s?"</string>
+    <string name="quest_tourism_information_office">"Toeristen informatie kantoor"</string>
+    <string name="quest_tourism_information_board">"informatiebord"</string>
+    <string name="quest_tourism_information_terminal">"Infomatie terminal"</string>
+    <string name="quest_tourism_information_map">"Kaart"</string>
+    <string name="quest_tourism_information_guidepost">"Gidspost"</string>
+    <string name="quest_recycling_materials_answer_waste">"Is voor restafval"</string>
+    <string name="quest_recycling_materials_answer_waste_description">"Dus, is deze container voor alle afval, zoals vuilniszakken en commercieel afval?"</string>
+    <string name="quest_accepts_cash_title">"Accepteert %s contant geld als betaling?"</string>
 </resources>

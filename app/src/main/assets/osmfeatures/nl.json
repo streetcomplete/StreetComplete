@@ -1596,9 +1596,6 @@
             "name": "Metselaar",
             "terms": "metselaar"
         },
-        "aerialway": {
-            "name": "Kabelbaan"
-        },
         "amenity/nightclub": {
             "name": "Nachtclub",
             "terms": "dancing,bar,uitgaan,disco"
@@ -3870,9 +3867,6 @@
         },
         "shop/motorcycle_repair": {
             "name": "Motorreparatie"
-        },
-        "aeroway": {
-            "name": "Vliegveld"
         },
         "aeroway/terminal": {
             "name": "Luchthaventerminal",

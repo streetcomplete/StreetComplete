@@ -1030,9 +1030,6 @@
             "name": "Klesarstvo",
             "terms": "klesar"
         },
-        "aerialway": {
-            "name": "Žičnica"
-        },
         "amenity/nightclub": {
             "name": "Nočni klub",
             "terms": "disko,diskoteka"
@@ -2437,9 +2434,6 @@
         "craft/handicraft": {
             "name": "Rokodelstvo",
             "terms": "izdelano ročno"
-        },
-        "aeroway": {
-            "name": "Letalstvo"
         },
         "aeroway/terminal": {
             "name": "Letališki terminal",

@@ -1360,9 +1360,6 @@
             "name": "Duvarcı",
             "terms": "Duvarcı"
         },
-        "aerialway": {
-            "name": "Teleferik Yolu"
-        },
         "amenity/nightclub": {
             "name": "Gece Kulübü",
             "terms": "Gece Kulübü"
@@ -3246,9 +3243,6 @@
         },
         "landuse/construction": {
             "name": "İnşaat Alanı"
-        },
-        "aeroway": {
-            "name": "Hava Yolu"
         },
         "aeroway/terminal": {
             "name": "Terminal",

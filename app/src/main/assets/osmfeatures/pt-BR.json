@@ -343,6 +343,10 @@
             "name": "Consulado",
             "terms": "Consulado"
         },
+        "barrier/swing_gate": {
+            "name": "Balanço de portão",
+            "terms": "Balanço de portão"
+        },
         "shop/laundry": {
             "name": "Lavanderia",
             "terms": "Lavanderia"
@@ -518,6 +522,10 @@
             "name": "Loja de Vídeogames",
             "terms": "Loja de Jogos, Vídeogames, Jogos Eletrônicos, video games"
         },
+        "highway/cycleway/crossing/bicycle_foot": {
+            "name": "Ciclovia e Cruzamento do pedestres",
+            "terms": "Ciclovia e Cruzamento do pedestres"
+        },
         "traffic_calming/dip": {
             "name": "Depressão",
             "terms": "Redutor de velocidade"
@@ -609,6 +617,10 @@
             "name": "Capela",
             "terms": "Igreja, Edificação de Capela, Prédio de Capela, Capela, Lugar de Adoração, Religião, templo"
         },
+        "piste/downhill": {
+            "name": "Pista de esqui alpino",
+            "terms": "Pista de esqui alpino"
+        },
         "highway/footway/unmarked-raised": {
             "name": "Travessia de pedestres elevada",
             "terms": "Travessia de pedestres elevada"
@@ -656,6 +668,10 @@
         "waterway/canal": {
             "name": "Canal",
             "terms": "Canal"
+        },
+        "power/plant/source/nuclear": {
+            "name": "Usina nuclear",
+            "terms": "Usina nuclear"
         },
         "barrier/kerb/raised": {
             "name": "Meio-fio levantado",
@@ -756,6 +772,10 @@
         "place/quarter": {
             "name": "Sub-bairro",
             "terms": "loteamento, conjunto habitacional, residencial,"
+        },
+        "power/plant/source/hydro": {
+            "name": "Usina Hidrelétrica",
+            "terms": "Usina Hidrelétrica"
         },
         "shop/perfumery": {
             "name": "Perfumaria",
@@ -1081,6 +1101,10 @@
             "name": "Loja de Aparelhos Auditivos",
             "terms": "farmácia"
         },
+        "power/plant/source/wind": {
+            "name": "Parque eólico",
+            "terms": "Parque eólico"
+        },
         "public_transport/platform/trolleybus_point": {
             "name": "Parada de trólebus",
             "terms": "Parada de trólebus"
@@ -1186,6 +1210,10 @@
         "leisure/fitness_centre/yoga": {
             "name": "Estúdio de Yôga",
             "terms": "Estúdio de Yoga, Academia de Ioga, Academia de Yoga, Yôga, Ioga, Yoga"
+        },
+        "power/plant/source/coal": {
+            "name": "Usina de carvão",
+            "terms": "Usina de carvão"
         },
         "aerialway/t-bar": {
             "name": "Elevador de barra em T",
@@ -1338,6 +1366,10 @@
         "amenity/ranger_station": {
             "name": "Estação de Patrulha",
             "terms": "Patrulha"
+        },
+        "historic/pillory": {
+            "name": "Pelourinho histórico",
+            "terms": "Pelourinho histórico"
         },
         "office/quango": {
             "name": "Escritório de Organização Não Governamental Quase Autônoma",
@@ -1652,7 +1684,7 @@
             "terms": "Hidrante, extintor, incêndio, mangueira"
         },
         "noexit/yes": {
-            "name": "Rua sem Saída",
+            "name": "Rua sem saída",
             "terms": "sem saída, rua fechada, beco sem saída, beco, bloqueio"
         },
         "natural/water/pond": {
@@ -1892,6 +1924,10 @@
             "name": "Passo de Montanha",
             "terms": "passo, passo de montanha, topo"
         },
+        "amenity/kneipp_water_cure": {
+            "name": "Cura da água do Kneipp ",
+            "terms": "Cura da água do Kneipp"
+        },
         "natural/water/basin": {
             "name": "Bacia",
             "terms": "Bacia"
@@ -2041,6 +2077,10 @@
         "landuse/basin": {
             "name": "Bacia"
         },
+        "piste/nordic": {
+            "name": "Trilha de esqui de fundo",
+            "terms": "Trilha de esqui de fundo"
+        },
         "shop/paint": {
             "name": "Loja de Tintas",
             "terms": "loja de tintas, Produtos para Pintura, Pintura, Reforma, Construção, Materiais de Construção"
@@ -2117,8 +2157,8 @@
             "terms": "Rota de Ônibus, Transporte público"
         },
         "natural/wood": {
-            "name": "Madeira natural",
-            "terms": "Madeira natural"
+            "name": "Mata nativa",
+            "terms": "arvoredo,bosque,mata,matagal,mato,floresta,selva"
         },
         "amenity/restaurant/chinese": {
             "name": "Restaurante Chinês",
@@ -2215,9 +2255,17 @@
             "name": "Girador de cesta",
             "terms": "Girador de cesta"
         },
+        "amenity/exhibition_centre": {
+            "name": "Centro de exposições",
+            "terms": "Centro de exposições"
+        },
         "shop/fabric": {
             "name": "Loja de Tecidos",
             "terms": "loja de tecidos"
+        },
+        "barrier/spikes": {
+            "name": "Faixa de espigão",
+            "terms": "Faixa de espigão, Espigões de trânsito, Picador de pneus,Ferrões, Ferrão, Dispositivo de esvaziamento de pneus"
         },
         "shop/coffee": {
             "name": " Loja de Cafés",
@@ -2383,6 +2431,10 @@
             "name": "Podólogo",
             "terms": "podóloga, podologia, podiatria, podiatra, podopediatria, podogeriatria, pés, unhas"
         },
+        "emergency/mountain_rescue": {
+            "name": "Resgate na montanha",
+            "terms": "Resgate na montanha"
+        },
         "amenity/kindergarten": {
             "name": "Educação infantil",
             "terms": "Educação infantil"
@@ -2433,6 +2485,10 @@
         "craft/handicraft": {
             "name": "Artesão",
             "terms": "Artesanato, artesão, trabalho manual,"
+        },
+        "piste/downhill/halfpipe": {
+            "name": "Meia-tubulação para esportes de neve",
+            "terms": "Meia-tubulação para esportes de neve"
         },
         "shop/motorcycle_repair": {
             "name": "Oficina de Motocicletas",
@@ -2586,6 +2642,10 @@
         },
         "railway/station": {
             "name": "Estação Ferroviária"
+        },
+        "amenity/lavoir": {
+            "name": "Lavanderia pública",
+            "terms": "lavadeiro, lavadero, local de lavagem de roupas público"
         },
         "office/therapist": {
             "name": "Escritório de Terapeuta",
@@ -3483,7 +3543,7 @@
             "terms": "water tank, depósito de água, contentor de água, tanque de água, depósito, cisterna, caixa-d'água, caixa d'água, caixa de água, castelo d'água, castelo de água"
         },
         "aerialway": {
-            "name": "Teleférico do tipo cabine"
+            "name": "Recurso de vias aéreas"
         },
         "amenity/bicycle_parking/lockers": {
             "name": "Armários de bicicleta",
@@ -3524,6 +3584,10 @@
         "tourism/artwork/graffiti": {
             "name": "Grafíti",
             "terms": "graffiti, grafito, grafíti, grafite, graffite, grafitti, graffitti, grafiti"
+        },
+        "power/plant/source/gas": {
+            "name": "Usina a Gás",
+            "terms": "Usina a Gás"
         },
         "landuse/churchyard": {
             "name": "Adro"
@@ -3843,6 +3907,10 @@
             "name": "Loja de Calçados",
             "terms": "Loja de Calçados, Sapataria"
         },
+        "power/plant/source/solar": {
+            "name": "Central fotovoltaica",
+            "terms": "Central fotovoltaica"
+        },
         "shop/laundry/self_service": {
             "name": "Lavanderia de autosserviço",
             "terms": "Lavanderia de autosserviço"
@@ -3949,7 +4017,7 @@
             "terms": "Ferrovia em Desuso"
         },
         "amenity/grave_yard": {
-            "name": "Cemitério",
+            "name": "Cemitério paroquial",
             "terms": "Cemitério"
         },
         "railway/light_rail": {
@@ -4277,7 +4345,7 @@
         },
         "office": {
             "name": "Escritório",
-            "terms": "Escritório"
+            "terms": "escritório,gabinete,banca,estúdio,repartição,sala,seção"
         },
         "emergency/fire_hose": {
             "name": "Mangueira de incêndio",
@@ -4426,6 +4494,10 @@
         "building/hotel": {
             "name": "Edifício de Hotel",
             "terms": "Hotel, prédio de hotel"
+        },
+        "shop/anime": {
+            "name": "Loja de Anime / Manga",
+            "terms": "Loja de Anime / Manga"
         },
         "route/ferry": {
             "name": "Rota de Balsa",
@@ -4781,6 +4853,10 @@
             "name": "Torre estaiada ou monopolo",
             "terms": "Torre de comunicação estaiada, Torre de comunicação monopolo, Torre monopolo, torre, torre de comunicação, antena, torre, rádio, celular, comunicação,"
         },
+        "attraction/river_rafting": {
+            "name": "Passeio pelas corredeiras do rio",
+            "terms": "Passeio pelas corredeiras do rio"
+        },
         "leisure/disc_golf_course": {
             "name": "Percurso de golfe de disco",
             "terms": "disc golf course, disc golf, golfe de disco, golf de disco"
@@ -5055,7 +5131,7 @@
             "terms": "Escritório diplomático"
         },
         "aeroway": {
-            "name": "Aerovia"
+            "name": "Recurso aéreos "
         },
         "aeroway/terminal": {
             "name": "Terminal de Aeroporto",

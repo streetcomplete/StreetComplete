@@ -1126,9 +1126,6 @@
             "name": "遊艇碼頭",
             "terms": "Marina,碼頭,遊艇碼頭"
         },
-        "aerialway": {
-            "name": "吊道"
-        },
         "waterway/dam": {
             "name": "壩",
             "terms": "Dam,堤壩,壩,水壩"
@@ -1346,9 +1343,6 @@
         "highway/trunk_link": {
             "name": "幹道駁路",
             "terms": "Trunk Link,幹線道路匝道,幹道連接路,幹道駁路"
-        },
-        "aeroway": {
-            "name": "航空設施"
         }
     }
 }
