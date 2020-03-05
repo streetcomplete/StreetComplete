@@ -5,14 +5,14 @@ import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
+import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.tql.FiltersParser
 import de.westnordost.streetcomplete.data.osm.tql.getQuestPrintStatement
 import de.westnordost.streetcomplete.data.osm.tql.toGlobalOverpassBBox
-import de.westnordost.streetcomplete.quests.opening_hours.model.*
+import de.westnordost.streetcomplete.ktx.containsAny
 import java.util.concurrent.FutureTask
-
 
 class AddOpeningHours (
     private val overpassServer: OverpassMapDataAndGeometryDao,
@@ -111,52 +111,9 @@ class AddOpeningHours (
 
     override fun createForm() = AddOpeningHoursForm()
 
-    private fun getFirstTestInput(): List<OpeningMonths> {
-        return listOf(OpeningMonths(
-                CircularSection(0,11),
-                listOf(
-                        listOf(
-                                OpeningWeekdays(
-                                        Weekdays(booleanArrayOf(true)),
-                                        mutableListOf(TimeRange(0, 12*60))
-                                )
-                        ),
-                        listOf(
-                                OpeningWeekdays(
-                                        Weekdays(booleanArrayOf(false, true)),
-                                        mutableListOf(TimeRange(12*60, 24*60))
-                                )
-                        )
-                )
-        ))
-    }
-
-    private fun getSecondTestInput(): List<OpeningMonths> {
-        return listOf(OpeningMonths(
-                CircularSection(0,11),
-                listOf(
-                        listOf(
-                                OpeningWeekdays(
-                                        Weekdays(booleanArrayOf(true)),
-                                        mutableListOf(TimeRange(0, 12*60))
-                                )
-                        )
-                )
-        ))
-    }
-
     override fun applyAnswerTo(answer: OpeningHoursAnswer, changes: StringMapChangesBuilder) {
         when(answer) {
-            is RegularOpeningHours -> {
-                val testInput = getFirstTestInput()
-                val testOutput = parser.internalIntoTag(testInput) //returns null, functions has just ".joinToString("; ")"
-                val retest = testInput.joinToString("; ") //here ".joinToString("; ")" works
-                val testInputDuo = getSecondTestInput()
-                val testOutputDuo = parser.internalIntoTag(testInputDuo)
-                val retestDuo = testInputDuo.joinToString("; ")
-                val tagValue = parser.internalIntoTag(answer.times)
-                changes.add("opening_hours", tagValue)
-            }
+            is RegularOpeningHours -> changes.add("opening_hours", parser.internalIntoTag(answer.times))
             is AlwaysOpen          -> changes.add("opening_hours", "24/7")
             is NoOpeningHoursSign  -> changes.add("opening_hours:signed", "no")
             is DescribeOpeningHours -> {

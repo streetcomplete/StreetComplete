@@ -2,14 +2,22 @@ package de.westnordost.streetcomplete.quests.opening_hours
 
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
 import de.westnordost.streetcomplete.mock
+import de.westnordost.streetcomplete.on
 import de.westnordost.streetcomplete.quests.opening_hours.model.*
 import de.westnordost.streetcomplete.quests.verifyAnswer
+import org.junit.Before
 import org.junit.Test
 
 
 class AddOpeningHoursTest {
 
-    private val questType = AddOpeningHours(mock(), mock(), mock())
+    private lateinit var parser: OpeningHoursTagParser
+    private lateinit var questType: AddOpeningHours
+
+    @Before fun setUp() {
+        parser = mock()
+        questType = AddOpeningHours(mock(), mock(), parser)
+    }
 
     @Test fun `apply description answer`() {
         questType.verifyAnswer(
@@ -33,27 +41,11 @@ class AddOpeningHoursTest {
     }
 
     @Test fun `apply opening hours answer`() {
-        val expectedTags = StringMapEntryAdd("opening_hours", "Mo 00:00-12:00; Tu 12:00-24:00");
-        val answer =             RegularOpeningHours(listOf(OpeningMonths(
-                CircularSection(0,11),
-                listOf(
-                        listOf(
-                                OpeningWeekdays(
-                                        Weekdays(booleanArrayOf(true)),
-                                        mutableListOf(TimeRange(0, 12*60))
-                                )
-                        ),
-                        listOf(
-                                OpeningWeekdays(
-                                        Weekdays(booleanArrayOf(false, true)),
-                                        mutableListOf(TimeRange(12*60, 24*60))
-                                )
-                        )
-                )
-        )))
+        val input: List<OpeningMonths> = mock()
+        on(parser.internalIntoTag(input)).thenReturn("blubbi blob")
         questType.verifyAnswer(
-            answer,
-            expectedTags
+            RegularOpeningHours(input),
+            StringMapEntryAdd("opening_hours", "blubbi blob")
         )
     }
 }
