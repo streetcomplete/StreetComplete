@@ -41,15 +41,7 @@ class AddOpeningHoursTest {
     }
 
     @Test fun `apply opening hours answer`() {
-        val input = listOf(OpeningMonths(
-            CircularSection(0,12),
-            listOf(listOf(
-                OpeningWeekdays(
-                    Weekdays(booleanArrayOf(true)),
-                    mutableListOf(TimeRange(0, 12*60))
-                )
-            ))
-        ))
+        val input: List<OpeningMonths> = mock()
         on(parser.internalIntoTag(input)).thenReturn("blubbi blob")
         questType.verifyAnswer(
             RegularOpeningHours(input),
