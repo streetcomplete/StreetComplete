@@ -42,7 +42,17 @@ class OpeningHoursTagParserTest {
         // note cases like "Mo,Tu,We 9:00-10:00" that will be either reject or transformed into "Mo-We 9:00-10:00"
         assertNull(parse("Mo,Tu 09:00-20:00"))
         assertNull(parse("Mo,Tu,Sa 09:00-20:00"))
+        assertNull(parse("Mo,Th 09:00-20:00"))
         assertNull(parse("Mo-Th,Sa 09:00-20:00"))
+
+        // nonoverlapping rules for separate days
+        assertNull(parse("Mo 17:30-19:30, Th 17:00-19:00"))
+
+        // multiple time ranges for a single day
+        assertNull(parse("Mo 09:00-20:00,Mo 21:00-22:00"))
+
+        // two rules applying to the same day, not conflicting
+        assertNull(parse("Mo-Tu 09:00-20:00,Tu-Th 21:00-22:00"))
     }
 
     @Test
@@ -91,6 +101,11 @@ class OpeningHoursTagParserTest {
         parsesAndSavesUnchanged("Su-Tu 09:00-12:00") // try to trigger bugs with range going end of week
         parsesAndSavesUnchanged("Fr-Tu 09:00-12:00") // try to trigger bugs with range going end of week
         parsesAndSavesUnchanged("Mo 17:30-19:30; Th 17:00-19:00") // multiple rules, no overrides
+        parsesAndSavesUnchanged("Mo 17:30-19:30,20:00-21:00") // gap during a day
+        parsesAndSavesUnchanged("Mo-Th 17:30-19:30,20:00-21:00") // gap during a day range
+
+        // no merging of rules
+        parsesAndSavesUnchanged("Mo 09:00-20:00; Su 10:00-11:00; Tu 09:00-20:00")
 
         // over weekend rules, without triggering collision detector
         parsesAndSavesUnchanged("Su-Tu 09:00-12:00; We-Sa 10:10-10:11")
