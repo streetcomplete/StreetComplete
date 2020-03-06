@@ -13,6 +13,7 @@ class OpeningMonthsTest {
     private val wholeYear = CircularSection(0, 11)
     private val juneToSeptember = CircularSection(5, 8)
 
+    // TODO HIGH PRIORITY PORT - to openinghoursmodelcreatortest
     @Test fun `omit months if whole year`() {
         assertEquals("Mo 09:00-17:00",
             months(wholeYear, cluster(days(monday, hours(9, 17)))).toString()
@@ -26,6 +27,7 @@ class OpeningMonthsTest {
         )
     }
 
+    // TODO HIGH PRIORITY PORT - to openinghoursmodelcreatortest
     @Test fun `prepend months before every cluster`() {
         assertEquals("Jun-Sep: Mo 09:00-17:00",
             months(juneToSeptember, cluster(days(monday, hours(9, 17)))).toString()
@@ -39,6 +41,7 @@ class OpeningMonthsTest {
         )
     }
 
+    // TODO HIGH PRIORITY PORT - to openinghoursmodelcreatortest
     @Test fun `prepend months before every weekdays`() {
         assertEquals("Jun-Sep: Mo-Fr 09:00-17:00, Jun-Sep: Sa,Su 09:00-12:00",
             months(juneToSeptember,

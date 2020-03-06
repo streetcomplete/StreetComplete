@@ -10,11 +10,13 @@ fun List<OpeningMonthsRow>.toOpeningMonthsList() = this.map { it.toOpeningMonths
 private fun OpeningMonthsRow.toOpeningMonths() =
     OpeningMonths(months, weekdaysList.toOpeningWeekdays().toWeekdaysClusters())
 
+//TODO this one should be removable in future
 private fun List<OpeningWeekdaysRow>.toOpeningWeekdays(): List<OpeningWeekdays> {
     val result = mutableListOf<OpeningWeekdays>()
     var last: OpeningWeekdays? = null
     for ((weekdays, timeRange) in this) {
         // merging rows that have the same weekdays
+        // OpeningWeekdaysRow may have single timeRange, OpeningWeekdays may have list
         if (last != null && last.weekdays == weekdays) {
             last.timeRanges.add(timeRange)
         } else {
@@ -27,6 +29,7 @@ private fun List<OpeningWeekdaysRow>.toOpeningWeekdays(): List<OpeningWeekdays> 
     return result
 }
 
+//TODO this one should be removable in future
 private fun List<OpeningWeekdays>.toWeekdaysClusters(): List<List<OpeningWeekdays>> {
     val unsorted = toMutableList()
 

@@ -2,6 +2,8 @@ package de.westnordost.streetcomplete.quests
 
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
 import de.westnordost.streetcomplete.mock
+import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningMonthsRow
+import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningWeekdaysRow
 import de.westnordost.streetcomplete.quests.opening_hours.model.*
 import de.westnordost.streetcomplete.quests.parking_fee.*
 import org.junit.Test
@@ -10,17 +12,18 @@ class AddParkingFeeTest {
 
     private val questType = AddParkingFee(mock())
 
+
     private val openingHours = listOf(
-        OpeningMonths(CircularSection(0,11), listOf(
-            listOf(OpeningWeekdays(
-                Weekdays(booleanArrayOf(true)),
-                mutableListOf(TimeRange(0, 12*60))
-            )),
-            listOf(OpeningWeekdays(
-                Weekdays(booleanArrayOf(false, true)),
-                mutableListOf(TimeRange(12*60, 24*60))
+            OpeningMonthsRow(CircularSection(0,11), mutableListOf(
+                    OpeningWeekdaysRow(
+                            Weekdays(booleanArrayOf(true)),
+                            TimeRange(0, 12*60)
+                    ),
+                    OpeningWeekdaysRow(
+                            Weekdays(booleanArrayOf(false, true)),
+                            TimeRange(12*60, 24*60)
+                    )
             ))
-        ))
     )
     private val openingHoursString = "Mo 00:00-12:00; Tu 12:00-24:00"
 

@@ -14,12 +14,9 @@ import java.util.Locale
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.CountryInfo
-import de.westnordost.streetcomplete.quests.opening_hours.model.CircularSection
-import de.westnordost.streetcomplete.quests.opening_hours.model.NumberSystem
-import de.westnordost.streetcomplete.quests.opening_hours.model.TimeRange
 import de.westnordost.streetcomplete.quests.opening_hours.TimeRangePickerDialog
-import de.westnordost.streetcomplete.quests.opening_hours.model.Weekdays
 import de.westnordost.streetcomplete.quests.opening_hours.WeekdaysPickerDialog
+import de.westnordost.streetcomplete.quests.opening_hours.model.*
 import de.westnordost.streetcomplete.view.dialogs.RangePickedCallback
 import de.westnordost.streetcomplete.view.dialogs.RangePickerDialog
 
@@ -42,6 +39,128 @@ data class OpeningMonthsRow(var months: CircularSection = CircularSection(0, MAX
     companion object {
         internal val MAX_MONTH_INDEX = 11
     }
+
+    // TODO FIX HACK! It depends on OpeningWeekdays instead of OpeningWeekdaysRow
+    // main difference is that
+    // OpeningWeekdays has list of timeranges
+    // OpeningWeekdaysRow has single timerange
+
+    /**
+     *  this function turns OpeningMonthsRow data into text in opening_hours tag format
+     *  as OpeningMonthsRow represents single months range, full opening_hours tag
+     *  may be build from multiple OpeningMonthsRow, in case of OH changing
+     *  depending on a month
+     */
+    override fun toString(): String {
+        // the US locale is important here as this is the OSM format for dates
+        val monthsSymbols = DateFormatSymbols.getInstance(Locale.US).shortMonths
+        val months = if(isWholeYear) "" else months.toStringUsing(monthsSymbols, "-") + ": "
+
+        return clusteredWeekdays().joinToString("; ") { weekdaysCluster ->
+            weekdaysCluster.joinToString(", ") { openingWeekdays ->
+                val weekdays = openingWeekdays.weekdays.toString()
+                val times = openingWeekdays.timeRanges.joinToString(",")
+                months + weekdays + " " + times
+            }
+        }
+    }
+
+    private fun clusteredWeekdays() = weekdaysList.toOpeningWeekdays().toWeekdaysClusters()
+
+    // TODO - return List<OpeningWeekdaysRow> instead
+    // groupRowsForTheSameDays
+
+    /**
+     *  This function groups rows that have exactly the same weekday range
+     *  for example both apply to Mondays, or both apply to
+     *  Tuesday-Friday range
+     *  it allows to produce rules such as
+     *  Mo 17:30-19:30,20:00-21:00
+     *  rather than
+     *  Mo 17:30-19:30,Mo 20:00-21:00
+     *  see OpeningHoursModelCreatorTest
+     */
+    private fun List<OpeningWeekdaysRow>.toOpeningWeekdays(): List<OpeningWeekdays> {
+        val result = mutableListOf<OpeningWeekdays>()
+        var last: OpeningWeekdays? = null
+        for ((weekdays, timeRange) in this) {
+            // merging rows that have the same weekdays
+
+            // OpeningWeekdaysRow may have single timeRange, OpeningWeekdays may have list TODO
+            if (last != null && last.weekdays == weekdays) {
+                last.timeRanges.add(timeRange)
+            } else {
+                val times = mutableListOf<TimeRange>()
+                times.add(timeRange)
+                last = OpeningWeekdays(weekdays, times)
+                result.add(last)
+            }
+        }
+        return result
+    }
+
+    /**
+     * This functions groups clusters of rules that should be separated by , - not ;
+     * difference is that rules separated by , complement and ; override where conflicting
+     * for example
+     * Mo-Tu 09:00-20:00,Tu-Th 21:00-22:00
+     * means that on Tuesday something is open both 9-20 and 21-22
+     * Mo-Tu 09:00-20:00;Tu-Th 21:00-22:00
+     * means that on Tuesday something is open only 21-22
+     * see #1292
+     *
+     * note that rules where both weekdays and actual hours intersect
+     * are treated as intentionally overriding
+     * for example "Monday-Tuesday 8-12" + "Tuesday 9-12"
+     * will produce
+     * Mo,Tu 08:00-12:00; Tu 09:00-12:00
+     * with first tuesday rule being overridden and producing the same meaning as
+     * Mo 08:00-12:00; Tu 09:00-12:00
+     *
+     * In this case it is unexpected, but such input is unexpected, weird and this is a
+     * reasonable handling for it.
+     *
+     * This behavior is intentional as it allows tagging things like
+     * "open entire workweek 8-12, but on Tuesday opens on 9"
+     * with rules "Monday-Friday 8-12" + "Tuesday 9-12"
+     * producing a tag value with Tuesday overridden as expected
+     * Mo-Fr 08:00-12:00; Tu 09:00-12:00
+     */
+    private fun List<OpeningWeekdays>.toWeekdaysClusters(): List<List<OpeningWeekdays>> {
+        val unsorted = toMutableList()
+
+        val clusters = mutableListOf<List<OpeningWeekdays>>()
+
+        while (!unsorted.isEmpty()) {
+            val cluster = mutableListOf<OpeningWeekdays>()
+            cluster.add(unsorted.removeAt(0))
+            val it = unsorted.iterator()
+            while (it.hasNext()) {
+                val other = it.next()
+                var anyWeekdaysOverlap = false
+                var anyTimesOverlap = false
+                for (inThisCluster in cluster) {
+                    val weekdaysOverlaps = inThisCluster.intersectsWeekdays(other)
+                    val anyTimeRangeOverlaps = inThisCluster.intersects(other)
+                    anyTimesOverlap = anyTimesOverlap || weekdaysOverlaps && anyTimeRangeOverlaps
+                    anyWeekdaysOverlap = anyWeekdaysOverlap || weekdaysOverlaps
+                }
+                if (anyWeekdaysOverlap && !anyTimesOverlap) {
+                    cluster.add(other)
+                    it.remove()
+                }
+            }
+            clusters.add(cluster)
+        }
+
+        return clusters
+    }
+
+    private val isWholeYear: Boolean
+        get() {
+            val aYear = NumberSystem(0, OpeningMonthsRow.MAX_MONTH_INDEX)
+            return aYear.complemented(listOf(months)).isEmpty()
+        }
 }
 
 data class OpeningWeekdaysRow(var weekdays: Weekdays, var timeRange: TimeRange)
@@ -159,9 +278,9 @@ open class AddOpeningHoursAdapter(
         notifyItemInserted(insertIndex)
     }
 
-    fun createOpeningMonths() = monthsRows.toOpeningMonthsList()
+    fun createOpeningMonths() = monthsRows.toOpeningMonthsList() // TODO OH  - remove it
 
-    fun createOpeningMonthsRow() = monthsRows //TODO - remove it?
+    fun createOpeningMonthRows() = monthsRows //TODO - remove it?
 
     fun changeToMonthsMode() {
         val om = monthsRows[0]

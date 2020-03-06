@@ -81,6 +81,19 @@ class OpeningHoursTagParserTest {
 
     private fun parsesAndSavesUnchanged(openingHoursTag: String) {
         assertEquals(openingHoursTag, parseAndSave(openingHoursTag))
+        assertEquals(openingHoursTag, parseAndSaveExperimental(openingHoursTag))
+    }
+
+    private fun parse(openingHoursTag: String): List<OpeningMonthsRow>? {
+        return OpeningHoursTagParser().parse(openingHoursTag)
+    }
+
+    private fun parseAndSave(openingHoursTag: String):String {
+        return OpeningHoursTagParser().internalIntoTag((parse(openingHoursTag)!!.toOpeningMonthsList()))
+    }
+
+    private fun parseAndSaveExperimental(openingHoursTag: String):String {
+        return OpeningHoursTagParser().internalFlatIntoTag((parse(openingHoursTag)!!))
     }
 
     @Test
@@ -110,14 +123,6 @@ class OpeningHoursTagParserTest {
         // over weekend rules, without triggering collision detector
         parsesAndSavesUnchanged("Su-Tu 09:00-12:00; We-Sa 10:10-10:11")
         parsesAndSavesUnchanged("Sa-Tu 09:00-12:00; We-Fr 10:10-10:11")
-    }
-
-    private fun parse(openingHoursTag: String): List<OpeningMonthsRow>? {
-        return OpeningHoursTagParser().parse(openingHoursTag)
-    }
-
-    private fun parseAndSave(openingHoursTag: String):String {
-        return OpeningHoursTagParser().internalIntoTag((parse(openingHoursTag)!!.toOpeningMonthsList()))
     }
 
 

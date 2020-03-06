@@ -15,9 +15,11 @@ class OpeningHoursModelCreatorTest {
     private val monday = Weekdays(booleanArrayOf(true))
     private val mondayToTuesday = Weekdays(booleanArrayOf(true, true))
     private val mondayToFriday = Weekdays(booleanArrayOf(true, true, true, true, true))
+    private val tuesdayToFriday = Weekdays(booleanArrayOf(false, true, true, true, true))
     private val tuesday = Weekdays(booleanArrayOf(false, true))
 
     private val morning = TimeRange(8 * 60, 12 * 60, false)
+    private val lateMorning = TimeRange(9 * 60, 12 * 60, false)
     private val midday = TimeRange(10 * 60, 16 * 60, false)
     private val afternoon = TimeRange(14 * 60, 18 * 60, false)
     private val longAfternoon = TimeRange(13 * 60, 20 * 60, false)
@@ -25,6 +27,12 @@ class OpeningHoursModelCreatorTest {
     private val earlyMorning = TimeRange(4 * 60, 8 * 60, false)
 
     private val mondayMorning = OpeningWeekdaysRow(monday, morning)
+    private val mondayAfternoon = OpeningWeekdaysRow(monday, afternoon)
+    private val tuesdayMorning = OpeningWeekdaysRow(tuesday, morning)
+    private val tuesdayLateMorning = OpeningWeekdaysRow(tuesday, lateMorning)
+    private val mondayTuesdayMorning = OpeningWeekdaysRow(mondayToTuesday, morning)
+    private val tuesdayToFridayAfternoon = OpeningWeekdaysRow(tuesdayToFriday, afternoon)
+    private val workweekMorning = OpeningWeekdaysRow(mondayToFriday, morning)
 
     private val wholeYear = CircularSection(0, 11)
     private val januaryToJune = CircularSection(0, 6)
@@ -168,6 +176,15 @@ class OpeningHoursModelCreatorTest {
         val omr = OpeningMonthsRow()
         omr.weekdaysList.addAll(rows)
         return listOf(omr).toOpeningMonthsList()
+    }
+
+    @Test fun `test tag generation`() {
+        assertEquals("Mo 08:00-12:00", OpeningMonthsRow(wholeYear, mondayMorning).toString())
+        assertEquals("Mo 08:00-12:00,14:00-18:00", OpeningMonthsRow(wholeYear, mutableListOf(mondayMorning, mondayAfternoon)).toString())
+        assertEquals("Mo 08:00-12:00; Tu 08:00-12:00", OpeningMonthsRow(wholeYear, mutableListOf(mondayMorning, tuesdayMorning)).toString())
+        assertEquals("Mo,Tu 08:00-12:00, Tu-Fr 14:00-18:00", OpeningMonthsRow(wholeYear, mutableListOf(mondayTuesdayMorning, tuesdayToFridayAfternoon)).toString())
+        assertEquals("Mo,Tu 08:00-12:00; Tu 09:00-12:00", OpeningMonthsRow(wholeYear, mutableListOf(mondayTuesdayMorning, tuesdayLateMorning)).toString())
+        assertEquals("Mo-Fr 08:00-12:00; Tu 09:00-12:00", OpeningMonthsRow(wholeYear, mutableListOf(workweekMorning, tuesdayLateMorning)).toString())
     }
 
     private fun months(vararg ranges: OpeningMonths) = ranges.toList()

@@ -98,7 +98,7 @@ class AddParkingFeeForm : AbstractQuestFormAnswerFragment<FeeAnswer>() {
     }
 
     override fun onClickOk() {
-        val times = openingHoursAdapter.createOpeningMonths()
+        val times = openingHoursAdapter.createOpeningMonthRows()
         if (!times.isEmpty()) {
             if(isFeeOnlyAtHours) {
                 applyAnswer(HasFeeAtHours(times))

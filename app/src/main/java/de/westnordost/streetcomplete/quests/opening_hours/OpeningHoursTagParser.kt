@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.quests.opening_hours.model.TimeRange
 import de.westnordost.streetcomplete.quests.opening_hours.model.Weekdays
 import java.io.ByteArrayInputStream
 import javax.inject.Inject
+import kotlin.collections.ArrayList
 
 class OpeningHoursTagParser @Inject constructor() {
     /** returns null for values that are invalid or not representable in
@@ -457,9 +458,15 @@ class OpeningHoursTagParser @Inject constructor() {
         }
     }
 
+    //TODO remove it
     /** turns format returned by opening hours editing widget into an OSM tag */
     fun internalIntoTag(openingHours: List<OpeningMonths>): String {
         // main building of tag is in OpeningMonths, results may be joined together
+        return openingHours.joinToString("; ")
+    }
+
+    fun internalFlatIntoTag(openingHours: List<OpeningMonthsRow>): String {
+        // main building of tag is in OpeningMonthsRow, results may be joined together
         return openingHours.joinToString("; ")
     }
 }
