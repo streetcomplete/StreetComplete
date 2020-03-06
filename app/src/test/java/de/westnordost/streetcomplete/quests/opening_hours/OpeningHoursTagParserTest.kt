@@ -119,6 +119,7 @@ class OpeningHoursTagParserTest {
 
         // no merging of rules
         parsesAndSavesUnchanged("Mo 09:00-20:00; Su 10:00-11:00; Tu 09:00-20:00")
+        parsesAndSavesUnchanged("Mo 09:00-20:00; Tu 09:00-20:00")
 
         // over weekend rules, without triggering collision detector
         parsesAndSavesUnchanged("Su-Tu 09:00-12:00; We-Sa 10:10-10:11")
@@ -135,11 +136,6 @@ class OpeningHoursTagParserTest {
     @Test
     fun `accept cosmetic changes without changing structure`() {
         assertEquals("Tu-Su 10:30-18:00", parseAndSave("Tu-Su   10:30    -   18:00"))
-        assertEquals("Mo 09:00-20:00; Tu 09:00-20:00", parseAndSave("Mo 09:00-20:00; Tu 09:00-20:00"))
-
-        // no merging of rules
-        assertEquals("Mo 09:00-20:00; Su 10:00-11:00; Tu 09:00-20:00", parseAndSave("Mo 09:00-20:00; Su 10:00-11:00; Tu 09:00-20:00"))
-
         assertEquals("Mo 09:00-20:00", parseAndSave("Mo 9-20")) // add explicit minutes
         assertEquals("Mar-Oct: Tu-Su 10:30-18:00", parseAndSave("Mar-Oct Tu-Su 10:30-18:00")) // adding :
         assertEquals("Mar-Oct: Tu-Su 10:30-18:00", parseAndSave("Mar-Oct: Tu-Su 10:30-18:00")) // keep :
