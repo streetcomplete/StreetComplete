@@ -459,6 +459,7 @@ class OpeningHoursTagParser @Inject constructor() {
 
     /** turns format returned by opening hours editing widget into an OSM tag */
     fun internalIntoTag(openingHours: List<OpeningMonths>): String {
+        // main building of tag is in OpeningMonths, results may be joined together
         return openingHours.joinToString("; ")
     }
 }
