@@ -1,29 +1,19 @@
 package de.westnordost.streetcomplete.quests.opening_hours.adapter
 
 import android.content.Context
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.view.updateLayoutParams
-
-import java.text.DateFormatSymbols
-import java.util.Locale
-
+import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.CountryInfo
-import de.westnordost.streetcomplete.quests.opening_hours.model.CircularSection
-import de.westnordost.streetcomplete.quests.opening_hours.model.NumberSystem
-import de.westnordost.streetcomplete.quests.opening_hours.model.OpeningMonths
 import de.westnordost.streetcomplete.quests.opening_hours.model.TimeRange
-import de.westnordost.streetcomplete.quests.opening_hours.TimeRangePickerDialog
 import de.westnordost.streetcomplete.quests.opening_hours.model.Weekdays
-import de.westnordost.streetcomplete.quests.opening_hours.WeekdaysPickerDialog
-import de.westnordost.streetcomplete.view.dialogs.RangePickedCallback
-import de.westnordost.streetcomplete.view.dialogs.RangePickerDialog
-import java.lang.IllegalStateException
+import java.text.DateFormatSymbols
+import java.util.*
 
 class AddReadOnlyOpeningHoursAdapter(
     initialMonthsRows: List<OpeningMonthsRow>,
