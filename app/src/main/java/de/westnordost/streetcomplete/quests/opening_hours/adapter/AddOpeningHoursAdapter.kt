@@ -16,7 +16,6 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.quests.opening_hours.model.CircularSection
 import de.westnordost.streetcomplete.quests.opening_hours.model.NumberSystem
-import de.westnordost.streetcomplete.quests.opening_hours.model.OpeningMonths
 import de.westnordost.streetcomplete.quests.opening_hours.model.TimeRange
 import de.westnordost.streetcomplete.quests.opening_hours.TimeRangePickerDialog
 import de.westnordost.streetcomplete.quests.opening_hours.model.Weekdays
