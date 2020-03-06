@@ -40,11 +40,6 @@ data class OpeningMonthsRow(var months: CircularSection = CircularSection(0, MAX
         internal val MAX_MONTH_INDEX = 11
     }
 
-    // TODO FIX HACK! It depends on OpeningWeekdays instead of OpeningWeekdaysRow
-    // main difference is that
-    // OpeningWeekdays has list of timeranges
-    // OpeningWeekdaysRow has single timerange
-
     /**
      *  this function turns OpeningMonthsRow data into text in opening_hours tag format
      *  as OpeningMonthsRow represents single months range, full opening_hours tag
@@ -52,11 +47,26 @@ data class OpeningMonthsRow(var months: CircularSection = CircularSection(0, MAX
      *  depending on a month
      */
     fun toStringNew(): String {
-        return this.toString();
+        // elsewhere in app data is stored and passed in List<OpeningMonthsRow> format,
+        // here it is grouped into more complicated data structure and
+        // turned into text in opening_hours tag format
+        return clusteredWeekdays().joinToString("; ") { weekdaysCluster ->
+            weekdaysCluster.joinToString(", ") { openingWeekdays ->
+                val weekdays = openingWeekdays.weekdays.toString()
+                val times = openingWeekdays.timeRanges.joinToString(",")
+                monthsRangeText() + weekdays + " " + times
+            }
+        }
     }
 
+    private fun clusteredWeekdays() = weekdaysList.toOpeningWeekdays().toWeekdaysClusters()
+
+    // TODO FIX HACK! It depends on OpeningWeekdays instead of OpeningWeekdaysRow
+    // main difference is that
+    // OpeningWeekdays has list of timeranges
+    // OpeningWeekdaysRow has single timerange
     override fun toString(): String {
-        return clusteredWeekdays().joinToString("; ") { weekdaysCluster ->
+        return clusteredWeekdaysOldFunction().joinToString("; ") { weekdaysCluster ->
             weekdaysCluster.joinToString(", ") { openingWeekdays ->
                 val weekdays = openingWeekdays.weekdays.toString()
                 val times = openingWeekdays.timeRanges.joinToString(",")
@@ -74,7 +84,7 @@ data class OpeningMonthsRow(var months: CircularSection = CircularSection(0, MAX
         return if(isWholeYear) "" else months.toStringUsing(monthsSymbols, "-") + ": "
     }
 
-    private fun clusteredWeekdays() = weekdaysList.toOpeningWeekdays().toWeekdaysClusters()
+    private fun clusteredWeekdaysOldFunction() = weekdaysList.toOpeningWeekdays().toWeekdaysClusters()
 
     // TODO - return List<OpeningWeekdaysRow> instead
     // groupRowsForTheSameDays
