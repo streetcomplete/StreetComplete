@@ -8,10 +8,10 @@ import de.westnordost.streetcomplete.quests.opening_hours.model.TimeRange
 fun List<OpeningMonthsRow>.toOpeningMonthsList() = this.map { it.toOpeningMonths() }
 
 private fun OpeningMonthsRow.toOpeningMonths() =
-    OpeningMonths(months, weekdaysList.toOpeningWeekdays().toWeekdaysClusters())
+    OpeningMonths(months, weekdaysList.toOpeningWeekdaysOld().toWeekdaysClustersOldFunction())
 
 //TODO this one should be removable in future
-private fun List<OpeningWeekdaysRow>.toOpeningWeekdays(): List<OpeningWeekdays> {
+private fun List<OpeningWeekdaysRow>.toOpeningWeekdaysOld(): List<OpeningWeekdays> {
     val result = mutableListOf<OpeningWeekdays>()
     var last: OpeningWeekdays? = null
     for ((weekdays, timeRange) in this) {
@@ -30,7 +30,7 @@ private fun List<OpeningWeekdaysRow>.toOpeningWeekdays(): List<OpeningWeekdays> 
 }
 
 //TODO this one should be removable in future
-private fun List<OpeningWeekdays>.toWeekdaysClusters(): List<List<OpeningWeekdays>> {
+private fun List<OpeningWeekdays>.toWeekdaysClustersOldFunction(): List<List<OpeningWeekdays>> {
     val unsorted = toMutableList()
 
     val clusters = mutableListOf<List<OpeningWeekdays>>()

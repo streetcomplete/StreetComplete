@@ -59,35 +59,7 @@ data class OpeningMonthsRow(var months: CircularSection = CircularSection(0, MAX
         }
     }
 
-    private fun clusteredWeekdays() = weekdaysList.toOpeningWeekdays().toWeekdaysClusters()
-
-    // TODO FIX HACK! It depends on OpeningWeekdays instead of OpeningWeekdaysRow
-    // main difference is that
-    // OpeningWeekdays has list of timeranges
-    // OpeningWeekdaysRow has single timerange
-    override fun toString(): String {
-        return clusteredWeekdaysOldFunction().joinToString("; ") { weekdaysCluster ->
-            weekdaysCluster.joinToString(", ") { openingWeekdays ->
-                val weekdays = openingWeekdays.weekdays.toString()
-                val times = openingWeekdays.timeRanges.joinToString(",")
-                monthsRangeText() + weekdays + " " + times
-            }
-        }
-    }
-
-    /**
-     * @return prefix of opening hours tag containing info about month range
-     */
-    private fun monthsRangeText(): String {
-        // the US locale is important here as this is the OSM format for dates
-        val monthsSymbols = DateFormatSymbols.getInstance(Locale.US).shortMonths
-        return if(isWholeYear) "" else months.toStringUsing(monthsSymbols, "-") + ": "
-    }
-
-    private fun clusteredWeekdaysOldFunction() = weekdaysList.toOpeningWeekdays().toWeekdaysClusters()
-
-    // TODO - return List<OpeningWeekdaysRow> instead
-    // groupRowsForTheSameDays
+    private fun clusteredWeekdays() = weekdaysList.toOpeningWeekdays().toWeekdaysClustersOldFunction()
 
     /**
      *  This function groups rows that have exactly the same weekday range
@@ -146,6 +118,81 @@ data class OpeningMonthsRow(var months: CircularSection = CircularSection(0, MAX
      * Mo-Fr 08:00-12:00; Tu 09:00-12:00
      */
     private fun List<OpeningWeekdays>.toWeekdaysClusters(): List<List<OpeningWeekdays>> {
+        val unsorted = toMutableList()
+
+        val clusters = mutableListOf<List<OpeningWeekdays>>()
+
+        while (!unsorted.isEmpty()) {
+            val cluster = mutableListOf<OpeningWeekdays>()
+            cluster.add(unsorted.removeAt(0))
+            val it = unsorted.iterator()
+            while (it.hasNext()) {
+                val other = it.next()
+                var anyWeekdaysOverlap = false
+                var anyTimesOverlap = false
+                for (inThisCluster in cluster) {
+                    val weekdaysOverlaps = inThisCluster.intersectsWeekdays(other)
+                    val anyTimeRangeOverlaps = inThisCluster.intersects(other)
+                    anyTimesOverlap = anyTimesOverlap || weekdaysOverlaps && anyTimeRangeOverlaps
+                    anyWeekdaysOverlap = anyWeekdaysOverlap || weekdaysOverlaps
+                }
+                if (anyWeekdaysOverlap && !anyTimesOverlap) {
+                    cluster.add(other)
+                    it.remove()
+                }
+            }
+            clusters.add(cluster)
+        }
+
+        return clusters
+    }
+
+
+    // TODO - remove and replace by toStringNew that should be renamed
+    override fun toString(): String {
+        return clusteredWeekdaysOldFunction().joinToString("; ") { weekdaysCluster ->
+            weekdaysCluster.joinToString(", ") { openingWeekdays ->
+                val weekdays = openingWeekdays.weekdays.toString()
+                val times = openingWeekdays.timeRanges.joinToString(",")
+                monthsRangeText() + weekdays + " " + times
+            }
+        }
+    }
+
+    /**
+     * @return prefix of opening hours tag containing info about month range
+     */
+    private fun monthsRangeText(): String {
+        // the US locale is important here as this is the OSM format for dates
+        val monthsSymbols = DateFormatSymbols.getInstance(Locale.US).shortMonths
+        return if(isWholeYear) "" else months.toStringUsing(monthsSymbols, "-") + ": "
+    }
+
+    // TODO - remove
+    private fun clusteredWeekdaysOldFunction() = weekdaysList.toOpeningWeekdaysOldFunction().toWeekdaysClustersOldFunction()
+
+    // TODO - remove
+    private fun List<OpeningWeekdaysRow>.toOpeningWeekdaysOldFunction(): List<OpeningWeekdays> {
+        val result = mutableListOf<OpeningWeekdays>()
+        var last: OpeningWeekdays? = null
+        for ((weekdays, timeRange) in this) {
+            // merging rows that have the same weekdays
+
+            // OpeningWeekdaysRow may have single timeRange, OpeningWeekdays may have list TODO
+            if (last != null && last.weekdays == weekdays) {
+                last.timeRanges.add(timeRange)
+            } else {
+                val times = mutableListOf<TimeRange>()
+                times.add(timeRange)
+                last = OpeningWeekdays(weekdays, times)
+                result.add(last)
+            }
+        }
+        return result
+    }
+
+    // TODO - remove
+    private fun List<OpeningWeekdays>.toWeekdaysClustersOldFunction(): List<List<OpeningWeekdays>> {
         val unsorted = toMutableList()
 
         val clusters = mutableListOf<List<OpeningWeekdays>>()
