@@ -769,8 +769,11 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="link_nominatim_description">The geocoder for OSM data, used by many other services</string>
     <string name="link_city_roads_description">Render all roads of a city, for printing on T-Shirts, mugs, …</string>
     <string name="link_myosmatic_description">"Generate printable city maps in a few easy steps, optionally with a street directory"</string>
-    <string name="link_brouter_description">The routing engine for bicyclists. Also available as an app for offline navigation.</string>
+    <string name="link_brouter_description">Probably the best routing engine for bicyclists</string>
     <string name="link_show_me_the_way_description">Watch OSM edits happen in real time</string>
+    <string name="link_osrm_description">The fastest routing engine around</string>
+    <string name="link_openrouteservice_description">Routing for a variety of vehicles and on foot, each with preferences. Can also show isochrones (reachable area in X minutes from a starting point).</string>
+
 
     <string name="achievement_first_edit_title">First Quest Solved</string>
     <string name="achievement_first_edit_description">Welcome to the OpenStreetMap community! </string>

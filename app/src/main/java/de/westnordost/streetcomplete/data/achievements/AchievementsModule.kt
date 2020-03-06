@@ -132,6 +132,23 @@ object AchievementsModule {
             R.string.link_nominatim_description
         ),
 
+        "osrm" to Link(
+            "https://map.project-osrm.org",
+            "OSRM",
+            LinkCategory.SHOWCASE,
+            R.drawable.ic_link_osrm,
+            R.string.link_osrm_description
+        ),
+        "openrouteservice" to Link(
+            "https://maps.openrouteservice.org",
+            "Openrouteservice",
+            LinkCategory.SHOWCASE,
+            R.drawable.ic_link_heigit,
+            R.string.link_openrouteservice_description
+        ),
+
+
+
         /* -------------------------------------- Goodies ----------------------------------------*/
         "umap" to Link(
             "https://umap.openstreetmap.fr",
@@ -187,7 +204,8 @@ object AchievementsModule {
                 level(20, listOf("umap")),
                 level(30, listOf("learnosm")),
                 level(50, listOf("show_me_the_way")),
-                level(80, listOf())
+                level(80, listOf("myosmatic")),
+                level(100, listOf("city_roads"))
             )
         ),
 
@@ -228,8 +246,8 @@ object AchievementsModule {
                 )
             ),
             listOf(
-                level(100, listOf("myosmatic")),
-                level(200, listOf("city_roads"))
+                level(100, listOf("osrm", "openrouteservice")),
+                level(200)
             )
         ),
 
