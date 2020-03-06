@@ -56,17 +56,22 @@ data class OpeningMonthsRow(var months: CircularSection = CircularSection(0, MAX
     }
 
     override fun toString(): String {
-        // the US locale is important here as this is the OSM format for dates
-        val monthsSymbols = DateFormatSymbols.getInstance(Locale.US).shortMonths
-        val months = if(isWholeYear) "" else months.toStringUsing(monthsSymbols, "-") + ": "
-
         return clusteredWeekdays().joinToString("; ") { weekdaysCluster ->
             weekdaysCluster.joinToString(", ") { openingWeekdays ->
                 val weekdays = openingWeekdays.weekdays.toString()
                 val times = openingWeekdays.timeRanges.joinToString(",")
-                months + weekdays + " " + times
+                monthsRangeText() + weekdays + " " + times
             }
         }
+    }
+
+    /**
+     * @return prefix of opening hours tag containing info about month range
+     */
+    private fun monthsRangeText(): String {
+        // the US locale is important here as this is the OSM format for dates
+        val monthsSymbols = DateFormatSymbols.getInstance(Locale.US).shortMonths
+        return if(isWholeYear) "" else months.toStringUsing(monthsSymbols, "-") + ": "
     }
 
     private fun clusteredWeekdays() = weekdaysList.toOpeningWeekdays().toWeekdaysClusters()
