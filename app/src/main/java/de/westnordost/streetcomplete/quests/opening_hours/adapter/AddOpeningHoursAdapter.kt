@@ -51,6 +51,10 @@ data class OpeningMonthsRow(var months: CircularSection = CircularSection(0, MAX
      *  may be build from multiple OpeningMonthsRow, in case of OH changing
      *  depending on a month
      */
+    fun toStringNew(): String {
+        return this.toString();
+    }
+
     override fun toString(): String {
         // the US locale is important here as this is the OSM format for dates
         val monthsSymbols = DateFormatSymbols.getInstance(Locale.US).shortMonths

@@ -465,9 +465,14 @@ class OpeningHoursTagParser @Inject constructor() {
         return openingHours.joinToString("; ")
     }
 
-    // TODO rename to internalIntoTag
     fun internalFlatIntoTag(openingHours: List<OpeningMonthsRow>): String {
         // main building of tag is in OpeningMonthsRow, results may be joined together
         return openingHours.joinToString("; ")
+    }
+
+    // TODO rename to internalIntoTag
+    fun internalNewIntoTag(openingHours: List<OpeningMonthsRow>): String {
+        // main building of tag is in OpeningMonthsRow, results may be joined together
+        return openingHours.map{it.toStringNew()}.joinToString("; ")
     }
 }

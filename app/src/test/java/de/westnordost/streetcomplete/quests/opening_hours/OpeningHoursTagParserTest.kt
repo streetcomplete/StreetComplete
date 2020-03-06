@@ -82,6 +82,7 @@ class OpeningHoursTagParserTest {
     private fun parsesAndSavesUnchanged(openingHoursTag: String) {
         assertEquals(openingHoursTag, parseAndSave(openingHoursTag))
         assertEquals(openingHoursTag, parseAndSaveExperimental(openingHoursTag))
+        assertEquals(openingHoursTag, parseAndSaveNew(openingHoursTag))
     }
 
     private fun parse(openingHoursTag: String): List<OpeningMonthsRow>? {
@@ -93,6 +94,10 @@ class OpeningHoursTagParserTest {
     }
 
     private fun parseAndSaveExperimental(openingHoursTag: String):String {
+        return OpeningHoursTagParser().internalFlatIntoTag((parse(openingHoursTag)!!))
+    }
+
+    private fun parseAndSaveNew(openingHoursTag: String):String {
         return OpeningHoursTagParser().internalFlatIntoTag((parse(openingHoursTag)!!))
     }
 
