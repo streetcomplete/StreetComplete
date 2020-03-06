@@ -38,20 +38,6 @@ class OpeningHoursModelCreatorTest {
     private val januaryToJune = CircularSection(0, 6)
     private val julyToDecember = CircularSection(6, 11)
 
-    @Test fun `copies opening months`() {
-        val actual = listOf(
-            OpeningMonthsRow(januaryToJune, mondayMorning),
-            OpeningMonthsRow(julyToDecember, mondayMorning)
-        ).toOpeningMonthsList()
-
-        val expected = months(
-            OpeningMonths(januaryToJune, clusters(weekdays(OpeningWeekdays(monday, times(morning))))),
-            OpeningMonths(julyToDecember, clusters(weekdays(OpeningWeekdays(monday, times(morning)))))
-        )
-
-        assertEquals(expected, actual)
-    }
-
     @Test fun `merges opening weekdays rows of same day`() {
         val actual = create(
             OpeningWeekdaysRow(monday, morning),
