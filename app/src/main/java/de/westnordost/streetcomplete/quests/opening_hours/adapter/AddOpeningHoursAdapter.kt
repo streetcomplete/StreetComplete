@@ -280,7 +280,7 @@ open class AddOpeningHoursAdapter(
 
     fun createOpeningMonths() = monthsRows.toOpeningMonthsList() // TODO OH  - remove it
 
-    fun createOpeningMonthRows() = monthsRows //TODO - remove it?
+    fun createOpeningMonthsRows() = monthsRows //TODO - remove it?
 
     fun changeToMonthsMode() {
         val om = monthsRows[0]

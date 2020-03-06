@@ -14,7 +14,6 @@ import de.westnordost.streetcomplete.quests.opening_hours.adapter.AddOpeningHour
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.AddReadOnlyOpeningHoursAdapter
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningMonthsRow
 import kotlinx.android.synthetic.main.fragment_quest_answer.*
-import kotlinx.android.synthetic.main.quest_buttonpanel_yes_no.*
 import kotlinx.android.synthetic.main.quest_buttonpanel_yes_no.noButton
 import kotlinx.android.synthetic.main.quest_buttonpanel_yes_no.yesButton
 import kotlinx.android.synthetic.main.quest_opening_hours.*
@@ -74,7 +73,7 @@ class ResurveyOpeningHoursForm(val parser : OpeningHoursTagParser) : OpeningHour
             }
 
     override fun onClickOk() {
-        val answer = RegularOpeningHours(openingHoursAdapter.createOpeningMonths())
+        val answer = RegularOpeningHours(openingHoursAdapter.createOpeningMonthsRows())
         if (osmElement!!.tags["opening_hours"] == answer.times.joinToString(";")) {
             applyAnswer(UnmodifiedOpeningHours)
         } else {

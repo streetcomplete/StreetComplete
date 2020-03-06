@@ -100,7 +100,7 @@ class ResurveyOpeningHours(
             }
             is RegularOpeningHours -> {
                 changes.deleteIfExists(checkTag)
-                changes.modify("opening_hours", parser.internalIntoTag(answer.times))
+                changes.modify("opening_hours", parser.internalFlatIntoTag(answer.times))
             }
             else -> throw AssertionError()
         }

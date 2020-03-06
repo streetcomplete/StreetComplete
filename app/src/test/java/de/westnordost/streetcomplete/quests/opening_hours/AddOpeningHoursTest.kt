@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.opening_hours
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
 import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.on
+import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningMonthsRow
 import de.westnordost.streetcomplete.quests.opening_hours.model.*
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import org.junit.Before
@@ -41,8 +42,8 @@ class AddOpeningHoursTest {
     }
 
     @Test fun `apply opening hours answer`() {
-        val input: List<OpeningMonths> = mock()
-        on(parser.internalIntoTag(input)).thenReturn("blubbi blob")
+        val input: List<OpeningMonthsRow> = mock()
+        on(parser.internalFlatIntoTag(input)).thenReturn("blubbi blob")
         questType.verifyAnswer(
             RegularOpeningHours(input),
             StringMapEntryAdd("opening_hours", "blubbi blob")
