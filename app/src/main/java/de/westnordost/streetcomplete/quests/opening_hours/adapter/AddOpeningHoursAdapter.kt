@@ -51,15 +51,15 @@ data class OpeningMonthsRow(var months: CircularSection = CircularSection(0, MAX
         // here it is grouped into more complicated data structure and
         // turned into text in opening_hours tag format
         return clusteredWeekdays().joinToString("; ") { weekdaysCluster ->
-            weekdaysCluster.joinToString(", ") { openingWeekdays ->
-                val weekdays = openingWeekdays.weekdays.toString()
-                val times = openingWeekdays.timeRanges.joinToString(",")
+            weekdaysCluster.joinToString(", ") { weekdayGroup ->
+                val weekdays = weekdayGroup[0].weekdays.toString()
+                val times = weekdayGroup.map { it.timeRange }.joinToString(",") //todo - test whatever it works at all
                 monthsRangeText() + weekdays + " " + times
             }
         }
     }
 
-    private fun clusteredWeekdays() = weekdaysList.toOpeningWeekdays().toWeekdaysClustersOldFunction()
+    private fun clusteredWeekdays() = weekdaysList.mergeBlockForSingleWeeekdayGroup().toWeekdaysClusters()
 
     /**
      *  This function groups rows that have exactly the same weekday range
@@ -71,19 +71,18 @@ data class OpeningMonthsRow(var months: CircularSection = CircularSection(0, MAX
      *  Mo 17:30-19:30,Mo 20:00-21:00
      *  see OpeningHoursModelCreatorTest
      */
-    private fun List<OpeningWeekdaysRow>.toOpeningWeekdays(): List<OpeningWeekdays> {
-        val result = mutableListOf<OpeningWeekdays>()
-        var last: OpeningWeekdays? = null
-        for ((weekdays, timeRange) in this) {
+    private fun List<OpeningWeekdaysRow>.mergeBlockForSingleWeeekdayGroup(): List<List<OpeningWeekdaysRow>> {
+        val result = mutableListOf<List<OpeningWeekdaysRow>>()
+        var last = mutableListOf<OpeningWeekdaysRow>()
+        for (weekdayRow in this) {
             // merging rows that have the same weekdays
 
-            // OpeningWeekdaysRow may have single timeRange, OpeningWeekdays may have list TODO
-            if (last != null && last.weekdays == weekdays) {
-                last.timeRanges.add(timeRange)
+            if (last.isNotEmpty() && last[0].weekdays == weekdayRow.weekdays) {
+                last.add(weekdayRow)
             } else {
-                val times = mutableListOf<TimeRange>()
-                times.add(timeRange)
-                last = OpeningWeekdays(weekdays, times)
+                val match = mutableListOf<OpeningWeekdaysRow>()
+                match.add(weekdayRow)
+                last = match
                 result.add(last)
             }
         }
@@ -91,7 +90,11 @@ data class OpeningMonthsRow(var months: CircularSection = CircularSection(0, MAX
     }
 
     /**
-     * This functions groups clusters of rules that should be separated by , - not ;
+     * @param - list of lists, it is a list of groups with rules about exactly the same days
+     * @return - three levels deep list, first level groups should be separated by ;
+     * second level groups should be separated by ,
+     * third level groups should be separated by , and contain month range info if applicable
+     *
      * difference is that rules separated by , complement and ; override where conflicting
      * for example
      * Mo-Tu 09:00-20:00,Tu-Th 21:00-22:00
@@ -117,13 +120,13 @@ data class OpeningMonthsRow(var months: CircularSection = CircularSection(0, MAX
      * producing a tag value with Tuesday overridden as expected
      * Mo-Fr 08:00-12:00; Tu 09:00-12:00
      */
-    private fun List<OpeningWeekdays>.toWeekdaysClusters(): List<List<OpeningWeekdays>> {
+    private fun List<List<OpeningWeekdaysRow>>.toWeekdaysClusters(): List<List<List<OpeningWeekdaysRow>>> {
         val unsorted = toMutableList()
 
-        val clusters = mutableListOf<List<OpeningWeekdays>>()
+        val clusters = mutableListOf<List<List<OpeningWeekdaysRow>>>()
 
-        while (!unsorted.isEmpty()) {
-            val cluster = mutableListOf<OpeningWeekdays>()
+        while (unsorted.isNotEmpty()) {
+            val cluster = mutableListOf<List<OpeningWeekdaysRow>>()
             cluster.add(unsorted.removeAt(0))
             val it = unsorted.iterator()
             while (it.hasNext()) {
@@ -131,8 +134,24 @@ data class OpeningMonthsRow(var months: CircularSection = CircularSection(0, MAX
                 var anyWeekdaysOverlap = false
                 var anyTimesOverlap = false
                 for (inThisCluster in cluster) {
-                    val weekdaysOverlaps = inThisCluster.intersectsWeekdays(other)
-                    val anyTimeRangeOverlaps = inThisCluster.intersects(other)
+                    ////////TODO - usage of OpeningWeekdays for removal
+                    val times = mutableListOf<TimeRange>()
+                    for ((_, timeRange) in inThisCluster) {
+                        times.add(timeRange)
+                    }
+                    val inThisClusterWeekdays = OpeningWeekdays(inThisCluster[0].weekdays, times)
+
+                    val timesPrim = mutableListOf<TimeRange>()
+                    for ((_, timeRange) in other) {
+                        timesPrim.add(timeRange)
+                    }
+                    val otherWeekdays = OpeningWeekdays(inThisCluster[0].weekdays, timesPrim)
+
+                    val weekdaysOverlaps = inThisClusterWeekdays.intersectsWeekdays(otherWeekdays)
+                    val anyTimeRangeOverlaps = inThisClusterWeekdays.intersects(otherWeekdays)
+                    ////////TODO - for removal the end, below for reenablement
+                    //val weekdaysOverlaps = inThisCluster.intersectsWeekdays(other)
+                    //val anyTimeRangeOverlaps = inThisCluster.intersects(other)
                     anyTimesOverlap = anyTimesOverlap || weekdaysOverlaps && anyTimeRangeOverlaps
                     anyWeekdaysOverlap = anyWeekdaysOverlap || weekdaysOverlaps
                 }
