@@ -18,7 +18,13 @@ class UserLinksDaoTest : ApplicationDbTestCase() {
         dao.add(TWO)
         assertEquals(listOf(ONE, TWO), dao.getAll())
     }
+
+    @Test fun addAll() {
+        dao.add(ONE)
+        assertEquals(2, dao.addAll(listOf(ONE, TWO, THREE)))
+    }
 }
 
 private const val ONE = "one"
 private const val TWO = "two"
+private const val THREE = "three"

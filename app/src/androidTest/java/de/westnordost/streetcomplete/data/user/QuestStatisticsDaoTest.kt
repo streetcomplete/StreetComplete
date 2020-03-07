@@ -36,6 +36,14 @@ class QuestStatisticsDaoTest : ApplicationDbTestCase() {
         assertEquals(3, dao.getTotalAmount())
     }
 
+    @Test fun getAmountOfSeveral() {
+        dao.addOne(ONE)
+        dao.addOne(ONE)
+        dao.addOne(TWO)
+        dao.addOne(THREE)
+        assertEquals(3, dao.getAmount(listOf(ONE, TWO)))
+    }
+
     @Test fun replaceAll() {
         dao.addOne(ONE)
         dao.addOne(TWO)

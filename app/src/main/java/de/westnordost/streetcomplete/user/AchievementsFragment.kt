@@ -8,9 +8,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.achievements.Achievement
-import de.westnordost.streetcomplete.data.achievements.AchievementsModule
+import de.westnordost.streetcomplete.data.user.UserController
 import de.westnordost.streetcomplete.ktx.awaitLayout
 import de.westnordost.streetcomplete.ktx.toDp
 import de.westnordost.streetcomplete.view.CircularOutlineProvider
@@ -22,11 +23,18 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 /** Shows the icons for all achieved achievements and opens a AchievementInfoFragment to show the
  *  details on click. */
 class AchievementsFragment : Fragment(R.layout.fragment_achievements),
     CoroutineScope by CoroutineScope(Dispatchers.Main) {
+
+    @Inject internal lateinit var userController: UserController
+
+    init {
+        Injector.instance.applicationComponent.inject(this)
+    }
 
     interface Listener {
         fun onClickedAchievement(achievement: Achievement, level: Int, achievementBubbleView: View)
@@ -37,7 +45,7 @@ class AchievementsFragment : Fragment(R.layout.fragment_achievements),
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val ctx = context!!
+        val ctx = requireContext()
         val minCellWidth = 128f
         val itemSpacing = ctx.resources.getDimensionPixelSize(R.dimen.achievements_item_margin)
 
@@ -53,8 +61,7 @@ class AchievementsFragment : Fragment(R.layout.fragment_achievements),
             achievementsList.layoutManager = layoutManager
             achievementsList.addItemDecoration(GridLayoutSpacingItemDecoration(itemSpacing))
             achievementsList.clipToPadding = false
-            // TODO real data...
-            val achievements = AchievementsModule.achievements.values.map { it to 1 }
+            val achievements = userController.getAchievements()
             achievementsList.adapter = AchievementsAdapter(achievements)
 
             emptyText.visibility = if (achievements.isEmpty()) View.VISIBLE else View.GONE

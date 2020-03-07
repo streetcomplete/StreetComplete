@@ -33,6 +33,8 @@ import de.westnordost.streetcomplete.settings.ShowQuestFormsActivity;
 import de.westnordost.streetcomplete.settings.questselection.QuestSelectionFragment;
 import de.westnordost.streetcomplete.statistics.AnswersCounter;
 import de.westnordost.streetcomplete.map.QuestsMapFragment;
+import de.westnordost.streetcomplete.user.AchievementsFragment;
+import de.westnordost.streetcomplete.user.LinksFragment;
 import de.westnordost.streetcomplete.user.QuestStatisticsFragment;
 import de.westnordost.streetcomplete.util.SerializedSavedState;
 
@@ -80,4 +82,8 @@ public interface ApplicationComponent
 	void inject(@NotNull ShowQuestFormsActivity showQuestFormsActivity);
 
 	void inject(@NotNull MainFragment mainFragment);
+
+	void inject(@NotNull AchievementsFragment achievementsFragment);
+
+	void inject(@NotNull LinksFragment linksFragment);
 }

@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.data.user
 import android.database.sqlite.SQLiteDatabase.CONFLICT_IGNORE
 import android.database.sqlite.SQLiteOpenHelper
 import androidx.core.content.contentValuesOf
+import de.westnordost.streetcomplete.data.WhereSelectionBuilder
 
 import javax.inject.Inject
 
@@ -62,6 +63,14 @@ class QuestStatisticsDao @Inject constructor(private val dbHelper: SQLiteOpenHel
 
     fun getAmount(questType: String): Int {
         return db.queryOne(NAME, arrayOf(SUCCEEDED), "$QUEST_TYPE = ?", arrayOf(questType)) {
+            it.getInt(0)
+        } ?: 0
+    }
+
+    fun getAmount(questTypes: List<String>): Int {
+        val questionMarks = Array(questTypes.size) { "?" }.joinToString(",")
+        val query = "$QUEST_TYPE in ($questionMarks))"
+        return db.queryOne(NAME, arrayOf("total($SUCCEEDED)"), query, questTypes.toTypedArray()) {
             it.getInt(0)
         } ?: 0
     }

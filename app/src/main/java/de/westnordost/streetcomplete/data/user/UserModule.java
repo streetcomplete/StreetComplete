@@ -3,6 +3,8 @@ package de.westnordost.streetcomplete.data.user;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import java.util.List;
+
 import javax.inject.Named;
 
 import dagger.Module;
@@ -10,6 +12,10 @@ import dagger.Provides;
 import de.westnordost.osmapi.OsmConnection;
 import de.westnordost.osmapi.user.UserDao;
 import de.westnordost.streetcomplete.data.OsmModule;
+import de.westnordost.streetcomplete.data.achievements.Achievement;
+import de.westnordost.streetcomplete.data.achievements.Link;
+import de.westnordost.streetcomplete.data.achievements.UserAchievementsDao;
+import de.westnordost.streetcomplete.data.achievements.UserLinksDao;
 import oauth.signpost.OAuthConsumer;
 import oauth.signpost.OAuthProvider;
 import oauth.signpost.basic.DefaultOAuthConsumer;
@@ -61,13 +67,16 @@ import oauth.signpost.basic.DefaultOAuthProvider;
 	}
 
 	@Provides public static UserController userController(
-		UserDao userDao, UserStore userStore, OAuthStore oAuthStore, Context context,
-		StatisticsDownloader statisticsDownloader, QuestStatisticsDao statisticsDao,
-		OsmConnection osmConnection, SharedPreferences prefs
+		UserDao userDao, UserStore userStore, OAuthStore oAuthStore,
+		UserAchievementsDao userAchievementsDao, UserLinksDao userLinksDao,
+		@Named("Achievements") List<Achievement> achievements, @Named("Links") List<Link> links,
+		Context context, StatisticsDownloader statisticsDownloader,
+		QuestStatisticsDao statisticsDao, OsmConnection osmConnection, SharedPreferences prefs
 	)
 	{
 		return new UserController(
-			userDao, oAuthStore, userStore, OsmModule.getAvatarsCacheDirectory(context),
-			statisticsDownloader, statisticsDao, osmConnection, prefs);
+			userDao, oAuthStore, userStore, userAchievementsDao, userLinksDao, achievements, links,
+			OsmModule.getAvatarsCacheDirectory(context), statisticsDownloader, statisticsDao,
+			osmConnection, prefs);
 	}
 }

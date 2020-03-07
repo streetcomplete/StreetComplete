@@ -9,6 +9,10 @@ import de.westnordost.osmapi.user.PermissionsDao
 import de.westnordost.osmapi.user.UserDao
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.OsmModule
+import de.westnordost.streetcomplete.data.achievements.Achievement
+import de.westnordost.streetcomplete.data.achievements.Link
+import de.westnordost.streetcomplete.data.achievements.UserAchievementsDao
+import de.westnordost.streetcomplete.data.achievements.UserLinksDao
 import de.westnordost.streetcomplete.ktx.saveToFile
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -23,12 +27,20 @@ import javax.inject.Singleton
     private val userDao: UserDao,
     private val oAuthStore: OAuthStore,
     private val userStore: UserStore,
+    private val userAchievementsDao: UserAchievementsDao,
+    private val userLinksDao: UserLinksDao,
+    achievements: List<Achievement>,
+    links: List<Link>,
     private val avatarCacheDir: File,
     private val statisticsDownloader: StatisticsDownloader,
     private val statisticsDao: QuestStatisticsDao,
     private val osmConnection: OsmConnection,
     private val prefs: SharedPreferences
 ) {
+
+    private val achievementsById = achievements.associateBy { it.id }
+    private val linksById = links.associateBy { it.id }
+
     val isUserAuthorized: Boolean get() = oAuthStore.isAuthorized
 
     val userId: Long get() = userStore.userId
@@ -83,6 +95,17 @@ import javax.inject.Singleton
         } catch (e: IOException) {
             Log.w(TAG, "Unable to download avatar user $userId")
         }
+    }
+
+    fun getAchievements(): List<Pair<Achievement, Int>> {
+        return userAchievementsDao.getAll().mapNotNull {
+            val achievement = achievementsById[it.key]
+            if (achievement != null) achievement to it.value else null
+        }
+    }
+
+    fun getLinks(): List<Link> {
+        return userLinksDao.getAll().mapNotNull { linksById[it] }
     }
 
     companion object {

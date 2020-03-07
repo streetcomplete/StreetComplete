@@ -25,4 +25,15 @@ class UserLinksDao @Inject constructor(private val dbHelper: SQLiteOpenHelper) {
     fun add(link: String) {
         db.insertWithOnConflict(NAME, null, contentValuesOf(LINK to link), CONFLICT_IGNORE)
     }
+
+    fun addAll(links: List<String>): Int {
+        var addedRows = 0
+        db.transaction {
+            for (link in links) {
+                val rowId = db.insertWithOnConflict(NAME, null, contentValuesOf(LINK to link), CONFLICT_IGNORE)
+                if (rowId != -1L) addedRows++
+            }
+        }
+        return addedRows
+    }
 }

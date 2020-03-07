@@ -7,8 +7,9 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.achievements.AchievementsModule
+import de.westnordost.streetcomplete.data.user.UserController
 import de.westnordost.streetcomplete.ktx.awaitLayout
 import de.westnordost.streetcomplete.ktx.toDp
 import de.westnordost.streetcomplete.ktx.tryStartActivity
@@ -18,14 +19,21 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 /** Shows the user's unlocked links */
 class LinksFragment : Fragment(R.layout.fragment_links),
     CoroutineScope by CoroutineScope(Dispatchers.Main) {
 
+    @Inject internal lateinit var userController: UserController
+
+    init {
+        Injector.instance.applicationComponent.inject(this)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val ctx = context!!
+        val ctx = requireContext()
         val minCellWidth = 280f
         val itemSpacing = ctx.resources.getDimensionPixelSize(R.dimen.links_item_margin)
 
@@ -37,8 +45,7 @@ class LinksFragment : Fragment(R.layout.fragment_links),
             val viewWidth = view.width.toFloat().toDp(ctx)
             val spanCount = (viewWidth / minCellWidth).toInt()
 
-            // TODO real data...
-            val links = AchievementsModule.links.values.toList()
+            val links = userController.getLinks()
             val adapter = GroupedLinksAdapter(links, this@LinksFragment::openUrl)
             // headers should span the whole width
             val spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {

@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.achievements
 
-data class Link(val url: String,
+data class Link(val id: String,
+                val url: String,
                 val title: String,
                 val category: LinkCategory,
                 val icon: Int? = null,

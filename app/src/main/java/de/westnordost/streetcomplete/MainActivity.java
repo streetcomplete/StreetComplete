@@ -500,6 +500,7 @@ public class MainActivity extends AppCompatActivity implements  MainFragment.Lis
 			case R.id.action_achievement:
 				Fragment f = getSupportFragmentManager().findFragmentById(R.id.achievement_info_fragment);
 				Link link = new Link(
+					"abc",
 					"https://www.openstreetmap.org",
 					"Open Stretmep",
 					LinkCategory.INTRO,
@@ -508,6 +509,7 @@ public class MainActivity extends AppCompatActivity implements  MainFragment.Lis
 				);
 
 				((AchievementInfoFragment) f).showNew(new Achievement(
+					"def",
 					R.drawable.ic_quest_bus_stop_name,
 					R.string.achievement_bicyclist_title,
 					R.string.achievement_bicyclist_solved_X,
