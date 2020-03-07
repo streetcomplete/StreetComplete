@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.achievements
 
 import de.westnordost.streetcomplete.data.user.QuestStatisticsDao
+import de.westnordost.streetcomplete.data.user.UserStore
 import javax.inject.Inject
 
 /** Grants achievements  based on solved quests (or other things) and puts the links contained in
@@ -9,7 +10,8 @@ class AchievementGiver @Inject constructor(
     private val userAchievementsDao: UserAchievementsDao,
     private val userLinksDao: UserLinksDao,
     private val questStatisticsDao: QuestStatisticsDao,
-    private val achievements: List<Achievement>
+    private val achievements: List<Achievement>,
+    private val userStore: UserStore
 ) {
 
     fun updateAchievements(): List<Pair<Achievement, Int>> {
@@ -54,7 +56,7 @@ class AchievementGiver @Inject constructor(
         return achievementLevel.threshold <= when (condition) {
             is SolvedQuestsOfTypes -> questStatisticsDao.getAmount(condition.questTypes)
             is TotalSolvedQuests -> questStatisticsDao.getTotalAmount()
-            is DaysActive -> TODO()
+            is DaysActive -> userStore.daysActive
         }
     }
 }

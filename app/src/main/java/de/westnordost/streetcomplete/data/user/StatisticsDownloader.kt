@@ -2,29 +2,32 @@ package de.westnordost.streetcomplete.data.user
 
 import com.esotericsoftware.yamlbeans.YamlReader
 import de.westnordost.streetcomplete.ApplicationConstants
-import org.json.JSONException
-import org.json.JSONObject
-import java.io.InputStream
+import java.io.IOException
 import java.io.OutputStream
 import java.net.HttpURLConnection
 import java.net.URL
 
 class StatisticsDownloader(private val baseUrl: String) {
 
-    fun register(osmUserId: Long) {
-        val connection = createConnection("register")
-        connection.requestMethod = "POST"
-        connection.doInput = true
-        connection.outputStream.writeText("id=$osmUserId")
-    }
-
-    fun download(osmUserId: Long): Statistics {
+    fun download(osmUserId: Long): Statistics? {
         val connection = createConnection("download")
         connection.requestMethod = "GET"
         connection.doInput = true
         connection.doOutput = true
         connection.outputStream.writeText("id=$osmUserId")
-        return YamlReader(connection.inputStream.bufferedReader()).read(Statistics::class.java)
+        return when (connection.responseCode) {
+            HttpURLConnection.HTTP_OK -> {
+                YamlReader(connection.inputStream.bufferedReader()).read(Statistics::class.java)
+            }
+            HttpURLConnection.HTTP_ACCEPTED -> {
+                null
+            }
+            else -> {
+                val errorMessage = connection.responseMessage
+                val errorDescription = connection.errorStream?.bufferedReader()?.use { it.readText() }
+                throw IOException("${connection.responseCode} $errorMessage: $errorDescription")
+            }
+        }
     }
 
     private fun createConnection(url: String): HttpURLConnection {
