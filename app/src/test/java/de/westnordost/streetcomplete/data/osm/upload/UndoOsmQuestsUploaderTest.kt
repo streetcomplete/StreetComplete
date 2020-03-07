@@ -28,7 +28,7 @@ class UndoOsmQuestsUploaderTest {
     private lateinit var questGiver: OsmQuestGiver
     private lateinit var statisticsDB: QuestStatisticsDao
     private lateinit var elementGeometryCreator: OsmApiElementGeometryCreator
-    private lateinit var singleChangeUpload: SingleOsmElementTagChangesUpload
+    private lateinit var singleChangeUploader: SingleOsmElementTagChangesUploader
     private lateinit var uploader: UndoOsmQuestsUploader
 
     @Before fun setUp() {
@@ -36,7 +36,7 @@ class UndoOsmQuestsUploaderTest {
         elementDB = mock()
         on(elementDB.get(any(), anyLong())).thenReturn(createElement())
         changesetManager = mock()
-        singleChangeUpload = mock()
+        singleChangeUploader = mock()
         elementGeometryDB = mock()
         questGiver = mock()
         on(questGiver.updateQuests(any())).thenReturn(OsmQuestGiver.QuestUpdates(listOf(), listOf()))
@@ -44,18 +44,18 @@ class UndoOsmQuestsUploaderTest {
         elementGeometryCreator = mock()
         on(elementGeometryCreator.create(any())).thenReturn(mock())
         uploader = UndoOsmQuestsUploader(elementDB, elementGeometryDB, changesetManager, questGiver,
-            statisticsDB, elementGeometryCreator, undoQuestDB, singleChangeUpload)
+            statisticsDB, elementGeometryCreator, undoQuestDB, singleChangeUploader)
     }
 
     @Test fun `cancel upload works`() {
         val cancelled = AtomicBoolean(true)
         uploader.upload(cancelled)
-        verifyZeroInteractions(changesetManager, singleChangeUpload, elementDB, undoQuestDB)
+        verifyZeroInteractions(changesetManager, singleChangeUploader, elementDB, undoQuestDB)
     }
 
     @Test fun `catches ElementConflict exception`() {
         on(undoQuestDB.getAll()).thenReturn(listOf(createUndoQuest()))
-        on(singleChangeUpload.upload(anyLong(), any(), any()))
+        on(singleChangeUploader.upload(anyLong(), any(), any()))
             .thenThrow(ElementConflictException())
 
         uploader.upload(AtomicBoolean(false))
@@ -75,7 +75,7 @@ class UndoOsmQuestsUploaderTest {
 
     @Test fun `catches ChangesetConflictException exception and tries again once`() {
         on(undoQuestDB.getAll()).thenReturn(listOf(createUndoQuest()))
-        on(singleChangeUpload.upload(anyLong(), any(), any()))
+        on(singleChangeUploader.upload(anyLong(), any(), any()))
             .thenThrow(ChangesetConflictException())
             .thenReturn(createElement())
 
@@ -84,12 +84,12 @@ class UndoOsmQuestsUploaderTest {
         // will not throw ChangesetConflictException but instead call single upload twice
         verify(changesetManager).getOrCreateChangeset(any(), any())
         verify(changesetManager).createChangeset(any(), any())
-        verify(singleChangeUpload, times(2)).upload(anyLong(), any(), any())
+        verify(singleChangeUploader, times(2)).upload(anyLong(), any(), any())
     }
 
     @Test fun `delete each uploaded quest from local DB and calls listener`() {
         on(undoQuestDB.getAll()).thenReturn(listOf(createUndoQuest(), createUndoQuest()))
-        on(singleChangeUpload.upload(anyLong(), any(), any()))
+        on(singleChangeUploader.upload(anyLong(), any(), any()))
             .thenThrow(ElementConflictException())
             .thenReturn(createElement())
 
@@ -110,7 +110,7 @@ class UndoOsmQuestsUploaderTest {
         val quest = createUndoQuest()
 
         on(undoQuestDB.getAll()).thenReturn(listOf(quest))
-        on(singleChangeUpload.upload(anyLong(), any(), any())).thenReturn(createElement())
+        on(singleChangeUploader.upload(anyLong(), any(), any())).thenReturn(createElement())
 
         uploader.upload(AtomicBoolean(false))
 

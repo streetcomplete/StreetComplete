@@ -23,8 +23,8 @@ import org.mockito.ArgumentMatchers.anyLong
 import org.mockito.Mockito.*
 import org.mockito.invocation.InvocationOnMock
 
-class SingleOsmElementTagChangesUploadTest {
-    private lateinit var uploader: SingleOsmElementTagChangesUpload
+class SingleOsmElementTagChangesUploaderTest {
+    private lateinit var uploader: SingleOsmElementTagChangesUploader
     private lateinit var osmDao: MapDataDao
     private lateinit var quest: HasElementTagChanges
 
@@ -39,7 +39,7 @@ class SingleOsmElementTagChangesUploadTest {
         on(quest.changes).thenReturn(changes(StringMapEntryAdd("a key","a value")))
         on(quest.isApplicableTo(any())).thenReturn(true)
 
-        uploader = SingleOsmElementTagChangesUpload(osmDao)
+        uploader = SingleOsmElementTagChangesUploader(osmDao)
     }
 
     @Test fun `applies changes and uploads element`() {

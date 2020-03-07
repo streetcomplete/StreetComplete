@@ -32,7 +32,7 @@ class OsmQuestsUploaderTest {
     private lateinit var questGiver: OsmQuestGiver
     private lateinit var statisticsDB: QuestStatisticsDao
     private lateinit var elementGeometryCreator: OsmApiElementGeometryCreator
-    private lateinit var singleChangeUpload: SingleOsmElementTagChangesUpload
+    private lateinit var singleChangeUploader: SingleOsmElementTagChangesUploader
     private lateinit var downloadedTilesDao: DownloadedTilesDao
     private lateinit var uploader: OsmQuestsUploader
 
@@ -41,7 +41,7 @@ class OsmQuestsUploaderTest {
         elementDB = mock()
         on(elementDB.get(any(), anyLong())).thenReturn(createElement())
         changesetManager = mock()
-        singleChangeUpload = mock()
+        singleChangeUploader = mock()
         elementGeometryDB = mock()
         questGiver = mock()
         on(questGiver.updateQuests(any())).thenReturn(OsmQuestGiver.QuestUpdates(listOf(), listOf()))
@@ -50,17 +50,17 @@ class OsmQuestsUploaderTest {
         on(elementGeometryCreator.create(any())).thenReturn(mock())
         downloadedTilesDao = mock()
         uploader = OsmQuestsUploader(elementDB, elementGeometryDB, changesetManager, questGiver,
-            statisticsDB, elementGeometryCreator, questDB, singleChangeUpload, downloadedTilesDao)
+            statisticsDB, elementGeometryCreator, questDB, singleChangeUploader, downloadedTilesDao)
     }
 
     @Test fun `cancel upload works`() {
         uploader.upload(AtomicBoolean(true))
-        verifyZeroInteractions(changesetManager, singleChangeUpload, elementDB, questDB)
+        verifyZeroInteractions(changesetManager, singleChangeUploader, elementDB, questDB)
     }
 
     @Test fun `catches ElementConflict exception`() {
         on(questDB.getAll(statusIn = listOf(QuestStatus.ANSWERED))).thenReturn(listOf(createQuest()))
-        on(singleChangeUpload.upload(anyLong(), any(), any()))
+        on(singleChangeUploader.upload(anyLong(), any(), any()))
             .thenThrow(ElementConflictException())
 
         uploader.upload(AtomicBoolean(false))
@@ -80,7 +80,7 @@ class OsmQuestsUploaderTest {
 
     @Test fun `catches ChangesetConflictException exception and tries again once`() {
         on(questDB.getAll(statusIn = listOf(QuestStatus.ANSWERED))).thenReturn(listOf(createQuest()))
-        on(singleChangeUpload.upload(anyLong(), any(), any()))
+        on(singleChangeUploader.upload(anyLong(), any(), any()))
             .thenThrow(ChangesetConflictException())
             .thenReturn(createElement())
 
@@ -89,14 +89,14 @@ class OsmQuestsUploaderTest {
         // will not throw ChangesetConflictException but instead call single upload twice
         verify(changesetManager).getOrCreateChangeset(any(), any())
         verify(changesetManager).createChangeset(any(), any())
-        verify(singleChangeUpload, times(2)).upload(anyLong(), any(), any())
+        verify(singleChangeUploader, times(2)).upload(anyLong(), any(), any())
     }
 
     @Test fun `close each uploaded quest in local DB and call listener`() {
         val quests = listOf( createQuest(), createQuest())
 
         on(questDB.getAll(statusIn = listOf(QuestStatus.ANSWERED))).thenReturn(quests)
-        on(singleChangeUpload.upload(anyLong(), any(), any())).thenReturn(createElement())
+        on(singleChangeUploader.upload(anyLong(), any(), any())).thenReturn(createElement())
 
         uploader.uploadedChangeListener = mock()
         uploader.upload(AtomicBoolean(false))
@@ -116,7 +116,7 @@ class OsmQuestsUploaderTest {
         val quests = listOf( createQuest(), createQuest())
 
         on(questDB.getAll(statusIn = listOf(QuestStatus.ANSWERED))).thenReturn(quests)
-        on(singleChangeUpload.upload(anyLong(), any(), any()))
+        on(singleChangeUploader.upload(anyLong(), any(), any()))
             .thenThrow(ElementConflictException())
 
         uploader.uploadedChangeListener = mock()
@@ -132,7 +132,7 @@ class OsmQuestsUploaderTest {
         val quest = createQuest()
 
         on(questDB.getAll(statusIn = listOf(QuestStatus.ANSWERED))).thenReturn(listOf(quest))
-        on(singleChangeUpload.upload(anyLong(), any(), any())).thenReturn(createElement())
+        on(singleChangeUploader.upload(anyLong(), any(), any())).thenReturn(createElement())
 
         uploader.upload(AtomicBoolean(false))
 

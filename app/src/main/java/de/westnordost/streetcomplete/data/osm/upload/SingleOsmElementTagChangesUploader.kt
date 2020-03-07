@@ -12,7 +12,7 @@ import java.net.HttpURLConnection.HTTP_CONFLICT
 
 /** Uploads the changes made for one quest
  *  Returns the element that has been updated or throws a ConflictException */
-class SingleOsmElementTagChangesUpload @Inject constructor(private val osmDao: MapDataDao) {
+class SingleOsmElementTagChangesUploader @Inject constructor(private val osmDao: MapDataDao) {
 
     fun upload(changesetId: Long, quest: HasElementTagChanges, dbElement: Element): Element {
         var element = dbElement

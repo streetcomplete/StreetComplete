@@ -25,7 +25,7 @@ class SplitWaysUploaderTest {
     private lateinit var questGiver: OsmQuestGiver
     private lateinit var statisticsDB: QuestStatisticsDao
     private lateinit var elementGeometryCreator: OsmApiElementGeometryCreator
-    private lateinit var splitSingleOsmWayUpload: SplitSingleWayUpload
+    private lateinit var splitSingleOsmWayUploader: SplitSingleWayUploader
     private lateinit var uploader: SplitWaysUploader
 
     @Before fun setUp() {
@@ -33,7 +33,7 @@ class SplitWaysUploaderTest {
         elementDB = mock()
         on(elementDB.get(any(), ArgumentMatchers.anyLong())).thenReturn(createElement())
         changesetManager = mock()
-        splitSingleOsmWayUpload = mock()
+        splitSingleOsmWayUploader = mock()
         elementGeometryDB = mock()
         questGiver = mock()
         on(questGiver.updateQuests(any())).thenReturn(OsmQuestGiver.QuestUpdates(listOf(), listOf()))
@@ -41,18 +41,18 @@ class SplitWaysUploaderTest {
         elementGeometryCreator = mock()
         on(elementGeometryCreator.create(any())).thenReturn(mock())
         uploader = SplitWaysUploader(elementDB, elementGeometryDB, changesetManager, questGiver,
-            statisticsDB, elementGeometryCreator, splitWayDB, splitSingleOsmWayUpload)
+            statisticsDB, elementGeometryCreator, splitWayDB, splitSingleOsmWayUploader)
     }
 
     @Test fun `cancel upload works`() {
         val cancelled = AtomicBoolean(true)
         uploader.upload(cancelled)
-        verifyZeroInteractions(changesetManager, splitSingleOsmWayUpload, elementDB, splitWayDB)
+        verifyZeroInteractions(changesetManager, splitSingleOsmWayUploader, elementDB, splitWayDB)
     }
 
     @Test fun `catches ElementConflict exception`() {
         on(splitWayDB.getAll()).thenReturn(listOf(createOsmSplitWay()))
-        on(splitSingleOsmWayUpload.upload(anyLong(), any(), anyList()))
+        on(splitSingleOsmWayUploader.upload(anyLong(), any(), anyList()))
             .thenThrow(ElementConflictException())
 
         uploader.upload(AtomicBoolean(false))
@@ -72,7 +72,7 @@ class SplitWaysUploaderTest {
 
     @Test fun `catches ChangesetConflictException exception and tries again once`() {
         on(splitWayDB.getAll()).thenReturn(listOf(createOsmSplitWay()))
-        on(splitSingleOsmWayUpload.upload(anyLong(), any(), anyList()))
+        on(splitSingleOsmWayUploader.upload(anyLong(), any(), anyList()))
             .thenThrow(ChangesetConflictException())
             .thenReturn(listOf(createElement()))
 
@@ -81,12 +81,12 @@ class SplitWaysUploaderTest {
         // will not throw ChangesetConflictException but instead call single upload twice
         verify(changesetManager).getOrCreateChangeset(any(), any())
         verify(changesetManager).createChangeset(any(), any())
-        verify(splitSingleOsmWayUpload, times(2)).upload(anyLong(), any(), anyList())
+        verify(splitSingleOsmWayUploader, times(2)).upload(anyLong(), any(), anyList())
     }
 
     @Test fun `delete each uploaded split from local DB and calls listener`() {
         on(splitWayDB.getAll()).thenReturn(listOf(createOsmSplitWay(), createOsmSplitWay()))
-        on(splitSingleOsmWayUpload.upload(anyLong(), any(), anyList()))
+        on(splitSingleOsmWayUploader.upload(anyLong(), any(), anyList()))
             .thenThrow(ElementConflictException())
             .thenReturn(listOf(createElement()))
 
@@ -107,7 +107,7 @@ class SplitWaysUploaderTest {
         val quest = createOsmSplitWay()
 
         on(splitWayDB.getAll()).thenReturn(listOf(quest))
-        on(splitSingleOsmWayUpload.upload(anyLong(), any(), any()))
+        on(splitSingleOsmWayUploader.upload(anyLong(), any(), any()))
             .thenReturn(listOf(createElement()))
 
         uploader.upload(AtomicBoolean(false))

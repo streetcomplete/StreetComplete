@@ -22,7 +22,7 @@ class SplitWaysUploader @Inject constructor(
     statisticsDB: QuestStatisticsDao,
     osmApiElementGeometryCreator: OsmApiElementGeometryCreator,
     private val splitWayDB: OsmQuestSplitWayDao,
-    private val splitSingleOsmWayUpload: SplitSingleWayUpload
+    private val splitSingleOsmWayUploader: SplitSingleWayUploader
 ) : OsmInChangesetsUploader<OsmQuestSplitWay>(elementDB, elementGeometryDB, changesetManager,
     questGiver, statisticsDB, osmApiElementGeometryCreator) {
 
@@ -34,7 +34,7 @@ class SplitWaysUploader @Inject constructor(
     override fun getAll(): Collection<OsmQuestSplitWay> = splitWayDB.getAll()
 
     override fun uploadSingle(changesetId: Long, quest: OsmQuestSplitWay, element: Element): List<Element> {
-        return splitSingleOsmWayUpload.upload(changesetId, element as Way, quest.splits)
+        return splitSingleOsmWayUploader.upload(changesetId, element as Way, quest.splits)
     }
 
     override fun onUploadSuccessful(quest: OsmQuestSplitWay) {

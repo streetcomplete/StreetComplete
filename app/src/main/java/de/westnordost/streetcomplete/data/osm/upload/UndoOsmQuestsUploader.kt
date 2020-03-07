@@ -23,7 +23,7 @@ class UndoOsmQuestsUploader @Inject constructor(
     statisticsDB: QuestStatisticsDao,
     osmApiElementGeometryCreator: OsmApiElementGeometryCreator,
     private val undoQuestDB: UndoOsmQuestDao,
-    private val singleChangeUpload: SingleOsmElementTagChangesUpload
+    private val singleChangeUploader: SingleOsmElementTagChangesUploader
 ) : OsmInChangesetsUploader<UndoOsmQuest>(elementDB, elementGeometryDB, changesetManager, questGiver,
     statisticsDB, osmApiElementGeometryCreator) {
 
@@ -35,7 +35,7 @@ class UndoOsmQuestsUploader @Inject constructor(
     override fun getAll() = undoQuestDB.getAll()
 
     override fun uploadSingle(changesetId: Long, quest: UndoOsmQuest, element: Element): List<Element> {
-        return listOf(singleChangeUpload.upload(changesetId, quest, element))
+        return listOf(singleChangeUploader.upload(changesetId, quest, element))
     }
 
     override fun onUploadSuccessful(quest: UndoOsmQuest) {

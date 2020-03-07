@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.data.achievements
 import dagger.Module
 import dagger.Provides
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.user.QuestStatisticsDao
 import javax.inject.Named
 
 @Module

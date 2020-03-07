@@ -16,7 +16,7 @@ import kotlin.math.sign
 
 /** Uploads one split way
  *  Returns only the ways that have been updated or throws a ConflictException */
-class SplitSingleWayUpload @Inject constructor(private val osmDao: MapDataDao)  {
+class SplitSingleWayUploader @Inject constructor(private val osmDao: MapDataDao)  {
 
     fun upload(changesetId: Long, way: Way, splits: List<SplitPolylineAtPosition>): List<Way> {
         val updatedWay = way.fetchUpdated()

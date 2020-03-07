@@ -29,8 +29,8 @@ class OsmQuestsUploader @Inject constructor(
     statisticsDB: QuestStatisticsDao,
     osmApiElementGeometryCreator: OsmApiElementGeometryCreator,
     private val questDB: OsmQuestDao,
-    private val singleChangeUpload: SingleOsmElementTagChangesUpload,
-    private val downloadedTilesDao: DownloadedTilesDao
+    private val singleChangeUploader: SingleOsmElementTagChangesUploader,
+    private val downloadedTilesDB: DownloadedTilesDao
 ) : OsmInChangesetsUploader<OsmQuest>(elementDB, elementGeometryDB, changesetManager, questGiver,
     statisticsDB, osmApiElementGeometryCreator) {
 
@@ -42,7 +42,7 @@ class OsmQuestsUploader @Inject constructor(
     override fun getAll(): Collection<OsmQuest> = questDB.getAll(statusIn = listOf(QuestStatus.ANSWERED))
 
     override fun uploadSingle(changesetId: Long, quest: OsmQuest, element: Element): List<Element> {
-        return listOf(singleChangeUpload.upload(changesetId, quest, element))
+        return listOf(singleChangeUploader.upload(changesetId, quest, element))
     }
 
     override fun onUploadSuccessful(quest: OsmQuest) {
@@ -63,7 +63,7 @@ class OsmQuestsUploader @Inject constructor(
         // called after a conflict. If there is a conflict, the user is not the only one in that
         // area, so best invalidate all downloaded quests here and redownload on next occasion
         val tile = SlippyMapMath.enclosingTile(quest.center, ApplicationConstants.QUEST_TILE_ZOOM)
-        downloadedTilesDao.remove(tile)
+        downloadedTilesDB.remove(tile)
     }
 
     override fun cleanUp(questTypes: Set<OsmElementQuestType<*>>) {
