@@ -57,6 +57,48 @@ class OpeningHoursModelCreatorTest {
         assertEquals(expected, actual)
     }
 
+    @Test fun `does not merge opening weekdays rows of same day when separated by another day`() {
+        // deliberate, see https://github.com/westnordost/StreetComplete/pull/1676#issuecomment-596017148
+        val actual = create(
+                OpeningWeekdaysRow(monday, morning),
+                OpeningWeekdaysRow(tuesday, morning),
+                OpeningWeekdaysRow(monday, afternoon)
+        ).toString()
+
+        val expected = "[Mo 08:00-12:00, Mo 14:00-18:00; Tu 08:00-12:00]"
+
+        assertEquals(expected, actual)
+    }
+
+    @Test fun `does merge overlapping opening weekdays rows of same day is separated by another day`() {
+        val actual = create(
+                OpeningWeekdaysRow(monday, morning),
+                OpeningWeekdaysRow(monday, midday)
+        )
+
+        val expected = months(OpeningMonths(wholeYear, clusters(
+                weekdays(OpeningWeekdays(monday, times(morning, midday)))
+        )))
+        assertEquals(expected, actual)
+    }
+
+    @Test fun `does not merge overlapping opening weekdays rows of same day is separated by another day`() {
+        // deliberate, see https://github.com/westnordost/StreetComplete/pull/1676#issuecomment-596017148
+        val actual = create(
+                OpeningWeekdaysRow(monday, morning),
+                OpeningWeekdaysRow(tuesday, morning),
+                OpeningWeekdaysRow(monday, midday)
+        )
+
+        val expected = months(OpeningMonths(wholeYear, clusters(
+                weekdays(OpeningWeekdays(monday, times(morning))),
+                weekdays(OpeningWeekdays(tuesday, times(morning))),
+                weekdays(OpeningWeekdays(monday, times(midday)))
+        )))
+
+        assertEquals(expected, actual)
+    }
+
     @Test fun `does not cluster different weekdays`() {
         val actual = create(
             OpeningWeekdaysRow(monday, morning),
