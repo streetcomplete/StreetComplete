@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.quests.opening_hours
 
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningMonthsRow
-import de.westnordost.streetcomplete.quests.opening_hours.adapter.toOpeningMonthsList
 import de.westnordost.streetcomplete.quests.opening_hours.model.Weekdays
 import org.junit.Assert.*
 import org.junit.Test
@@ -81,7 +80,6 @@ class OpeningHoursTagParserTest {
 
     private fun parsesAndSavesUnchanged(openingHoursTag: String) {
         assertEquals(openingHoursTag, parseAndSave(openingHoursTag))
-        assertEquals(openingHoursTag, parseAndSaveExperimental(openingHoursTag))
         assertEquals(openingHoursTag, parseAndSaveNew(openingHoursTag))
     }
 
@@ -90,15 +88,11 @@ class OpeningHoursTagParserTest {
     }
 
     private fun parseAndSave(openingHoursTag: String):String {
-        return OpeningHoursTagParser().internalIntoTag((parse(openingHoursTag)!!.toOpeningMonthsList()))
-    }
-
-    private fun parseAndSaveExperimental(openingHoursTag: String):String {
         return OpeningHoursTagParser().internalFlatIntoTag((parse(openingHoursTag)!!))
     }
 
     private fun parseAndSaveNew(openingHoursTag: String):String {
-        return OpeningHoursTagParser().internalFlatIntoTag((parse(openingHoursTag)!!))
+        return OpeningHoursTagParser().internalNewIntoTag((parse(openingHoursTag)!!))
     }
 
     @Test
