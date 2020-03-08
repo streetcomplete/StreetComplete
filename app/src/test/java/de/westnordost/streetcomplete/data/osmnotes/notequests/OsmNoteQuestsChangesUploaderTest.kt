@@ -13,6 +13,7 @@ import org.mockito.Mockito.*
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.data.osmnotes.ImageUploadException
 import de.westnordost.streetcomplete.data.osmnotes.NoteDao
+import de.westnordost.streetcomplete.data.osmnotes.OsmNoteWithPhotosUploader
 import de.westnordost.streetcomplete.data.user.StatisticsManager
 import de.westnordost.streetcomplete.mock
 import org.junit.Assert.assertEquals
@@ -23,7 +24,7 @@ class OsmNoteQuestsChangesUploaderTest {
     private lateinit var noteDB: NoteDao
     private lateinit var questDB: OsmNoteQuestDao
     private lateinit var statisticsManager: StatisticsManager
-    private lateinit var singleNoteUploader: SingleOsmNoteQuestChangesUploader
+    private lateinit var singleNoteUploader: OsmNoteWithPhotosUploader
     private lateinit var uploader: OsmNoteQuestsChangesUploader
 
     @Before fun setUp() {
@@ -41,7 +42,7 @@ class OsmNoteQuestsChangesUploaderTest {
 
     @Test fun `catches conflict exception`() {
         on(questDB.getAll(statusIn = listOf(QuestStatus.ANSWERED))).thenReturn(listOf(createQuest()))
-        on(singleNoteUploader.upload(any())).thenThrow(ConflictException())
+        on(singleNoteUploader.comment(anyLong(),any(),any())).thenThrow(ConflictException())
 
         uploader.upload(AtomicBoolean(false))
 
@@ -52,7 +53,7 @@ class OsmNoteQuestsChangesUploaderTest {
         val quests = listOf(createQuest(), createQuest())
 
         on(questDB.getAll(statusIn = listOf(QuestStatus.ANSWERED))).thenReturn(quests)
-        on(singleNoteUploader.upload(any())).thenReturn(createNote())
+        on(singleNoteUploader.comment(anyLong(),any(),any())).thenReturn(createNote())
 
         uploader.uploadedChangeListener = mock()
         uploader.upload(AtomicBoolean(false))
@@ -70,7 +71,7 @@ class OsmNoteQuestsChangesUploaderTest {
         val quests = listOf(createQuest(), createQuest())
 
         on(questDB.getAll(statusIn = listOf(QuestStatus.ANSWERED))).thenReturn(quests)
-        on(singleNoteUploader.upload(any())).thenThrow(ConflictException())
+        on(singleNoteUploader.comment(anyLong(),any(),any())).thenThrow(ConflictException())
 
         uploader.uploadedChangeListener = mock()
         uploader.upload(AtomicBoolean(false))
@@ -85,7 +86,7 @@ class OsmNoteQuestsChangesUploaderTest {
         val quest = createQuest()
         quest.imagePaths = listOf("hello")
         on(questDB.getAll(statusIn = listOf(QuestStatus.ANSWERED))).thenReturn(listOf(quest))
-        on(singleNoteUploader.upload(any())).thenThrow(ImageUploadException())
+        on(singleNoteUploader.comment(anyLong(),any(),any())).thenThrow(ImageUploadException())
 
         uploader.upload(AtomicBoolean(false))
 

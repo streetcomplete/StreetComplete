@@ -1,23 +1,20 @@
 package de.westnordost.streetcomplete.data.osmnotes.createnotes
 
-import android.util.Log
 import de.westnordost.osmapi.common.SingleElementHandler
-import de.westnordost.osmapi.common.errors.OsmConflictException
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.notes.Note
 import de.westnordost.osmapi.notes.NotesDao
 import de.westnordost.streetcomplete.ApplicationConstants.USER_AGENT
 import de.westnordost.streetcomplete.data.osm.upload.ConflictException
-import de.westnordost.streetcomplete.data.osmnotes.ImageActivationException
-import de.westnordost.streetcomplete.data.osmnotes.StreetCompleteImageUploader
-import de.westnordost.streetcomplete.data.osmnotes.uploadAndGetAttachedPhotosText
+import de.westnordost.streetcomplete.data.osmnotes.OsmNoteWithPhotosUploader
 import java.util.*
 import javax.inject.Inject
 
-/** Uploads a single note or note comment */
+/** Uploads a single note or note comment, depending if a note at the given position, referencing
+ *  the same element already exists or not */
 class SingleCreateNoteUploader @Inject constructor(
-    private val osmDao: NotesDao,
-    private val imageUploader: StreetCompleteImageUploader
+    private val uploader: OsmNoteWithPhotosUploader,
+    private val notesDao: NotesDao
 ) {
     /** Creates a new note or if a note at this exact position and for this element already exists,
      *  instead adds a comment to the existing note
@@ -30,42 +27,10 @@ class SingleCreateNoteUploader @Inject constructor(
         if (n.elementKey != null) {
             val oldNote = findAlreadyExistingNoteWithSameAssociatedElement(n)
             if (oldNote != null) {
-                return commentNote(oldNote, n.text, n.imagePaths)
+                return uploader.comment(oldNote.id, n.text, n.imagePaths)
             }
         }
-        return createNote(n)
-    }
-
-    private fun createNote(n: CreateNote): Note {
-        val attachedPhotosText = uploadAndGetAttachedPhotosText(imageUploader, n.imagePaths)
-        val result = osmDao.create(n.position, n.fullNoteText + attachedPhotosText)
-        if (!n.imagePaths.isNullOrEmpty()) {
-            activateImages(result.id)
-        }
-        return result
-    }
-
-    private fun commentNote(note: Note, text: String, attachedImagePaths: List<String>?): Note {
-        return if (note.isOpen) {
-            try {
-                val attachedPhotosText = uploadAndGetAttachedPhotosText(imageUploader, attachedImagePaths)
-                val result = osmDao.comment(note.id, text + attachedPhotosText)
-                if (!attachedImagePaths.isNullOrEmpty()) {
-                    activateImages(result.id)
-                }
-                result
-            } catch (e: OsmConflictException) {
-                throw ConflictException(e.message, e)
-            }
-        } else throw ConflictException("Note already closed")
-    }
-
-    private fun activateImages(noteId: Long) {
-        try {
-            imageUploader.activate(noteId)
-        } catch (e: ImageActivationException) {
-            Log.e("NoteImageUpload", "Image activation failed", e)
-        }
+        return uploader.create(n.position, n.fullNoteText, n.imagePaths)
     }
 
     private fun findAlreadyExistingNoteWithSameAssociatedElement(newNote: CreateNote): Note? {
@@ -85,7 +50,7 @@ class SingleCreateNoteUploader @Inject constructor(
             newNote.position.latitude, newNote.position.longitude
         )
         val hideClosedNoteAfter = 7
-        osmDao.getAll(bbox, handler, 10, hideClosedNoteAfter)
+        notesDao.getAll(bbox, handler, 10, hideClosedNoteAfter)
         return handler.get()
     }
 }

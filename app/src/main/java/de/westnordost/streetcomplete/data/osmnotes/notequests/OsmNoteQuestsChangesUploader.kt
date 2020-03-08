@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.data.quest.QuestStatus
 import de.westnordost.streetcomplete.data.osm.upload.ConflictException
 import de.westnordost.streetcomplete.data.osmnotes.ImageUploadException
 import de.westnordost.streetcomplete.data.osmnotes.NoteDao
+import de.westnordost.streetcomplete.data.osmnotes.OsmNoteWithPhotosUploader
 import de.westnordost.streetcomplete.data.osmnotes.deleteImages
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
 import de.westnordost.streetcomplete.data.upload.Uploader
@@ -19,7 +20,7 @@ class OsmNoteQuestsChangesUploader @Inject constructor(
         private val questDB: OsmNoteQuestDao,
         private val statisticsManager: StatisticsManager,
         private val noteDB: NoteDao,
-        private val singleNoteUploader: SingleOsmNoteQuestChangesUploader
+        private val singleNoteUploader: OsmNoteWithPhotosUploader
 ): Uploader {
 
     override var uploadedChangeListener: OnUploadedChangeListener? = null
@@ -37,7 +38,7 @@ class OsmNoteQuestsChangesUploader @Inject constructor(
             if (cancelled.get()) break
 
             try {
-                val newNote = singleNoteUploader.upload(quest)
+                val newNote = singleNoteUploader.comment(quest.note.id, quest.comment ?: "", quest.imagePaths)
 
                 /* Unlike OSM quests, note quests are never deleted when the user contributed to it
                    but must remain in the database with the status CLOSED as long as they are not

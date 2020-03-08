@@ -1,18 +1,16 @@
 package de.westnordost.streetcomplete.data.osmnotes.createnotes
 
 import de.westnordost.osmapi.common.Handler
-import de.westnordost.osmapi.common.errors.OsmConflictException
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.osmapi.notes.Note
 import de.westnordost.osmapi.notes.NoteComment
 import de.westnordost.osmapi.notes.NotesDao
 import de.westnordost.streetcomplete.ApplicationConstants.USER_AGENT
+import de.westnordost.streetcomplete.any
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.upload.ConflictException
-import de.westnordost.streetcomplete.data.osmnotes.ImageActivationException
-import de.westnordost.streetcomplete.data.osmnotes.ImageUploadException
-import de.westnordost.streetcomplete.data.osmnotes.StreetCompleteImageUploader
+import de.westnordost.streetcomplete.data.osmnotes.OsmNoteWithPhotosUploader
 import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.on
 import org.junit.Assert.*
@@ -22,14 +20,14 @@ import org.mockito.Mockito.*
 import java.util.*
 
 class SingleCreateNoteUploaderTest {
+    private lateinit var osmNoteUploader: OsmNoteWithPhotosUploader
     private lateinit var notesDao: NotesDao
-    private lateinit var imageUploader: StreetCompleteImageUploader
     private lateinit var uploader: SingleCreateNoteUploader
 
     @Before fun setUp() {
         notesDao = mock()
-        imageUploader = mock()
-        uploader = SingleCreateNoteUploader(notesDao, imageUploader)
+        osmNoteUploader = mock()
+        uploader = SingleCreateNoteUploader(osmNoteUploader, notesDao)
     }
 
     @Test fun `upload createNote on existing note will comment on existing note`() {
@@ -37,11 +35,11 @@ class SingleCreateNoteUploaderTest {
 
         val existingNote = newNote(createNote)
         setUpExistingNote(existingNote)
-        on(notesDao.comment(anyLong(),anyString())).thenReturn(existingNote)
+        on(osmNoteUploader.comment(anyLong(), anyString(), isNull())).thenReturn(existingNote)
 
         assertEquals(existingNote, uploader.upload(createNote))
 
-        verify(notesDao).comment(existingNote.id, createNote.text)
+        verify(osmNoteUploader).comment(existingNote.id, createNote.text, null)
     }
 
     @Test(expected = ConflictException::class)
@@ -52,38 +50,26 @@ class SingleCreateNoteUploaderTest {
         existingNote.status = Note.Status.CLOSED
         setUpExistingNote(existingNote)
 
+        on(osmNoteUploader.comment(anyLong(), anyString(), isNull())).thenThrow(ConflictException())
+
         uploader.upload(createNote)
 
         verify(notesDao).getAll(any(),any(),anyInt(),anyInt())
         verifyNoMoreInteractions(notesDao)
     }
 
-    @Test(expected = ConflictException::class)
-    fun `upload createNote on existing note will throw along a conflict exception`() {
-        val createNote = CreateNote(1, "jo", OsmLatLon(1.0, 2.0), null, ElementKey(Element.Type.WAY, 5L))
-
-        val existingNote = newNote(createNote)
-        setUpExistingNote(existingNote)
-        on(notesDao.comment(anyLong(),anyString()))
-            .thenThrow(OsmConflictException::class.java)
-
-        uploader.upload(createNote)
-
-        verify(notesDao).getAll(any(),any(),anyInt(),anyInt())
-        verify(notesDao).comment(existingNote.id, createNote.text)
-    }
-
     @Test fun `upload createNote with no associated element works`() {
         val createNote = CreateNote(1, "jo", OsmLatLon(1.0, 2.0))
         val note = newNote(null)
 
-        on(notesDao.create(any(), anyString())).thenReturn(note)
+        on(osmNoteUploader.create(any(), anyString(), isNull())).thenReturn(note)
 
         assertEquals(note, uploader.upload(createNote))
 
-        verify(notesDao).create(
+        verify(osmNoteUploader).create(
             createNote.position,
-            createNote.text + "\n\nvia " + USER_AGENT
+            createNote.text + "\n\nvia " + USER_AGENT,
+            null
         )
     }
 
@@ -91,13 +77,14 @@ class SingleCreateNoteUploaderTest {
         val createNote = CreateNote(1, "jo", OsmLatLon(1.0, 2.0), null, ElementKey(Element.Type.WAY, 5L))
         val note = newNote(null)
 
-        on(notesDao.create(any(), anyString())).thenReturn(note)
+        on(osmNoteUploader.create(any(), anyString(), isNull())).thenReturn(note)
 
         assertEquals(note, uploader.upload(createNote))
 
-        verify(notesDao).create(
+        verify(osmNoteUploader).create(
             createNote.position,
-            "for https://osm.org/way/5 via " + USER_AGENT + ":\n\n" + createNote.text
+            "for https://osm.org/way/5 via " + USER_AGENT + ":\n\n" + createNote.text,
+            null
         )
     }
 
@@ -106,61 +93,15 @@ class SingleCreateNoteUploaderTest {
 
         val note = newNote(createNote)
 
-        on(notesDao.create(any(), anyString())).thenReturn(note)
+        on(osmNoteUploader.create(any(), anyString(), isNull())).thenReturn(note)
 
         assertEquals(note, uploader.upload(createNote))
 
-        verify(notesDao).create(
+        verify(osmNoteUploader).create(
             createNote.position,
-            "Unable to answer \"What?\" for https://osm.org/way/5 via " + USER_AGENT + ":\n\n" + createNote.text
+            "Unable to answer \"What?\" for https://osm.org/way/5 via " + USER_AGENT + ":\n\n" + createNote.text,
+            null
         )
-    }
-
-    @Test fun `upload createNote uploads images and displays links`() {
-        val createNote = CreateNote(1, "jo", OsmLatLon(1.0, 2.0), null, null, listOf("hello"))
-
-        val note = newNote(null)
-        on(notesDao.create(any(), anyString())).thenReturn(note)
-        on(imageUploader.upload(createNote.imagePaths)).thenReturn(listOf("hello, too"))
-
-        assertEquals(note, uploader.upload(createNote))
-
-        verify(imageUploader).upload(createNote.imagePaths)
-        verify(notesDao).create(
-            createNote.position,
-            createNote.text + "\n\nvia " + USER_AGENT + "\n\nAttached photo(s):\nhello, too"
-        )
-    }
-
-    @Test fun `upload createNote as comment uploads images and displays links`() {
-        val createNote = CreateNote(1, "jo", OsmLatLon(1.0, 2.0), null, ElementKey(Element.Type.WAY, 5L), listOf("hello"))
-
-        val existingNote = newNote(createNote)
-        setUpExistingNote(existingNote)
-
-        on(notesDao.comment(anyLong(),anyString())).thenReturn(existingNote)
-        on(imageUploader.upload(createNote.imagePaths)).thenReturn(listOf("hello, too"))
-
-        assertEquals(existingNote, uploader.upload(createNote))
-
-        verify(notesDao).comment(existingNote.id, createNote.text + "\n\nAttached photo(s):\nhello, too")
-    }
-
-    @Test fun `error on activation of images is caught`() {
-        val createNote = CreateNote(1, "jo", OsmLatLon(1.0, 2.0), null, null, listOf("hello"))
-        on(notesDao.create(any(), anyString())).thenReturn(newNote(null))
-        on(imageUploader.activate(anyLong())).thenThrow(ImageActivationException())
-
-        uploader.upload(createNote)
-    }
-
-    @Test(expected = ImageUploadException::class)
-    fun `error on upload of images is not caught`() {
-        val createNote = CreateNote(1, "jo", OsmLatLon(1.0, 2.0), null, null, listOf("hello"))
-        on(notesDao.create(any(), anyString())).thenReturn(newNote(null))
-        on(imageUploader.activate(anyLong())).thenThrow(ImageUploadException())
-
-        uploader.upload(createNote)
     }
 
     private fun setUpExistingNote(note: Note) {
