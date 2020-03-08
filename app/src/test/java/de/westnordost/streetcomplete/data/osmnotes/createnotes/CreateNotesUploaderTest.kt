@@ -92,7 +92,7 @@ class CreateNotesUploaderTest {
 
         verify(createNoteDB, times(createNotes.size)).delete(anyLong())
         verifyZeroInteractions(statisticsManager, noteQuestDB, noteDB)
-        verify(uploader.uploadedChangeListener, times(createNotes.size))?.onDiscarded()
+        verify(uploader.uploadedChangeListener, times(2))?.onDiscarded(any())
     }
 
     @Test fun `discard if element was deleted`() {
@@ -104,7 +104,7 @@ class CreateNotesUploaderTest {
         uploader.uploadedChangeListener = mock()
         uploader.upload(AtomicBoolean(false))
 
-        verify(uploader.uploadedChangeListener)?.onDiscarded()
+        verify(uploader.uploadedChangeListener)?.onDiscarded(createNote.position)
     }
 
     @Test fun `catches image upload exception`() {

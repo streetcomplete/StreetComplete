@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.data.osm.osmquest
 
 import android.util.Log
 import de.westnordost.osmapi.map.data.Element
-import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.ApplicationConstants.MAX_QUEST_UNDO_HISTORY_AGE
 import javax.inject.Inject
 
@@ -12,9 +11,7 @@ import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryDao
 import de.westnordost.streetcomplete.data.osm.mapdata.MergedElementDao
 import de.westnordost.streetcomplete.data.osm.upload.changesets.OpenQuestChangesetsManager
 import de.westnordost.streetcomplete.data.osm.upload.OsmInChangesetsUploader
-import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
 import de.westnordost.streetcomplete.data.user.StatisticsManager
-import de.westnordost.streetcomplete.util.SlippyMapMath
 import java.util.*
 import java.util.concurrent.atomic.AtomicBoolean
 
@@ -27,8 +24,7 @@ class OsmQuestsUploader @Inject constructor(
         statisticsManager: StatisticsManager,
         osmApiElementGeometryCreator: OsmApiElementGeometryCreator,
         private val questDB: OsmQuestDao,
-        private val singleChangeUploader: SingleOsmElementTagChangesUploader,
-        private val downloadedTilesDB: DownloadedTilesDao
+        private val singleChangeUploader: SingleOsmElementTagChangesUploader
 ) : OsmInChangesetsUploader<OsmQuest>(elementDB, elementGeometryDB, changesetManager, questGiver,
     statisticsManager, osmApiElementGeometryCreator) {
 
@@ -53,15 +49,7 @@ class OsmQuestsUploader @Inject constructor(
         /* #812 conflicting quests may not reside in the database, otherwise they would
            wrongfully be candidates for an undo - even though nothing was changed */
         questDB.delete(quest.id!!)
-        invalidateAreaAroundQuest(quest)
         Log.d(TAG, "Dropped osm quest ${quest.toLogString()}: ${e.message}")
-    }
-
-    private fun invalidateAreaAroundQuest(quest: OsmQuest) {
-        // called after a conflict. If there is a conflict, the user is not the only one in that
-        // area, so best invalidate all downloaded quests here and redownload on next occasion
-        val tile = SlippyMapMath.enclosingTile(quest.center, ApplicationConstants.QUEST_TILE_ZOOM)
-        downloadedTilesDB.remove(tile)
     }
 
     override fun cleanUp(questTypes: Set<OsmElementQuestType<*>>) {

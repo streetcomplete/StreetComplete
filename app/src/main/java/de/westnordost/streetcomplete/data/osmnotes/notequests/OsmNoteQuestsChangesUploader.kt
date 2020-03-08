@@ -61,7 +61,7 @@ class OsmNoteQuestsChangesUploader @Inject constructor(
                 noteDB.delete(quest.note.id)
 
                 Log.d(TAG, "Dropped note comment ${quest.logString}: ${e.message}")
-                uploadedChangeListener?.onDiscarded()
+                uploadedChangeListener?.onDiscarded(quest.center)
                 obsolete++
                 deleteImages(quest.imagePaths)
             } catch (e: ImageUploadException) {

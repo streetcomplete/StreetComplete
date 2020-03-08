@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.splitway
 
 import de.westnordost.osmapi.map.data.Element
+import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.upload.UploadableInChangeset
 
@@ -14,4 +15,5 @@ data class OsmQuestSplitWay(
     override val osmElementQuestType get() = questType
     override val elementType get() = Element.Type.WAY
     override val elementId get() = wayId
+    override val position: LatLon get() = splits.first().pos
 }

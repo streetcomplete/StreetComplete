@@ -34,6 +34,7 @@ data class OsmQuest(
 
     override val center: LatLon get() = geometry.center
     override val type: QuestType<*> get() = osmElementQuestType
+    override val position: LatLon get() = center
 
     override val markerLocations: Array<LatLon> get() {
         if (osmElementQuestType.hasMarkersAtEnds && geometry is ElementPolylinesGeometry) {

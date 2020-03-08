@@ -79,7 +79,7 @@ class OsmNoteQuestsChangesUploaderTest {
         verify(questDB, times(quests.size)).delete(anyLong())
         verify(noteDB, times(quests.size)).delete(anyLong())
         verifyZeroInteractions(statisticsManager)
-        verify(uploader.uploadedChangeListener, times(quests.size))?.onDiscarded()
+        verify(uploader.uploadedChangeListener, times(2))?.onDiscarded(any())
     }
 
     @Test fun `catches image upload exception`() {

@@ -63,7 +63,7 @@ class CreateNotesUploader @Inject constructor(
                 deleteImages(createNote.imagePaths)
             } catch (e: ConflictException) {
                 Log.d(TAG, "Dropped note ${createNote.logString}: ${e.message}")
-                uploadedChangeListener?.onDiscarded()
+                uploadedChangeListener?.onDiscarded(createNote.position)
                 obsolete++
                 createNoteDB.delete(createNote.id!!)
                 deleteImages(createNote.imagePaths)

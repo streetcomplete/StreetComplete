@@ -12,7 +12,6 @@ import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryDao
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.MergedElementDao
 import de.westnordost.streetcomplete.data.osm.upload.changesets.OpenQuestChangesetsManager
-import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
 import de.westnordost.streetcomplete.data.osm.upload.ChangesetConflictException
 import de.westnordost.streetcomplete.data.osm.upload.ElementConflictException
 import de.westnordost.streetcomplete.data.user.StatisticsManager
@@ -35,7 +34,6 @@ class OsmQuestsUploaderTest {
     private lateinit var statisticsManager: StatisticsManager
     private lateinit var elementGeometryCreator: OsmApiElementGeometryCreator
     private lateinit var singleChangeUploader: SingleOsmElementTagChangesUploader
-    private lateinit var downloadedTilesDao: DownloadedTilesDao
     private lateinit var uploader: OsmQuestsUploader
 
     @Before fun setUp() {
@@ -50,9 +48,8 @@ class OsmQuestsUploaderTest {
         statisticsManager = mock()
         elementGeometryCreator = mock()
         on(elementGeometryCreator.create(any())).thenReturn(mock())
-        downloadedTilesDao = mock()
         uploader = OsmQuestsUploader(elementDB, elementGeometryDB, changesetManager, questGiver,
-                statisticsManager, elementGeometryCreator, questDB, singleChangeUploader, downloadedTilesDao)
+                statisticsManager, elementGeometryCreator, questDB, singleChangeUploader)
     }
 
     @Test fun `cancel upload works`() {
@@ -71,13 +68,14 @@ class OsmQuestsUploaderTest {
     }
 
     @Test fun `discard if element was deleted`() {
-        on(questDB.getAll(statusIn = listOf(QuestStatus.ANSWERED))).thenReturn(listOf(createQuest()))
+        val q = createQuest()
+        on(questDB.getAll(statusIn = listOf(QuestStatus.ANSWERED))).thenReturn(listOf(q))
         on(elementDB.get(any(), anyLong())).thenReturn(null)
 
         uploader.uploadedChangeListener = mock()
         uploader.upload(AtomicBoolean(false))
 
-        verify(uploader.uploadedChangeListener)?.onDiscarded()
+        verify(uploader.uploadedChangeListener)?.onDiscarded(q.position)
     }
 
     @Test fun `catches ChangesetConflictException exception and tries again once`() {
@@ -111,7 +109,6 @@ class OsmQuestsUploaderTest {
         verify(elementDB, times(2)).put(any())
         verify(elementGeometryDB, times(2)).put(any())
         verify(questGiver, times(2)).updateQuests(any())
-        verifyZeroInteractions(downloadedTilesDao)
     }
 
     @Test fun `delete each unsuccessful upload from local DB and call listener`() {
@@ -125,8 +122,7 @@ class OsmQuestsUploaderTest {
         uploader.upload(AtomicBoolean(false))
 
         verify(questDB, times(2)).delete(anyLong())
-        verify(uploader.uploadedChangeListener, times(2))?.onDiscarded()
-        verify(downloadedTilesDao, times(2)).remove(any())
+        verify(uploader.uploadedChangeListener,times(2))?.onDiscarded(any())
         verifyZeroInteractions(questGiver, elementGeometryCreator)
     }
 

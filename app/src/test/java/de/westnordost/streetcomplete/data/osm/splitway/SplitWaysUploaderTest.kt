@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.splitway
 
+import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.osmapi.map.data.OsmWay
 import de.westnordost.streetcomplete.on
 import de.westnordost.streetcomplete.any
@@ -62,13 +63,14 @@ class SplitWaysUploaderTest {
     }
 
     @Test fun `discard if element was deleted`() {
-        on(splitWayDB.getAll()).thenReturn(listOf(createOsmSplitWay()))
+        val q = createOsmSplitWay()
+        on(splitWayDB.getAll()).thenReturn(listOf(q))
         on(elementDB.get(any(),anyLong())).thenReturn(null)
 
         uploader.uploadedChangeListener = mock()
         uploader.upload(AtomicBoolean(false))
 
-        verify(uploader.uploadedChangeListener)?.onDiscarded()
+        verify(uploader.uploadedChangeListener)?.onDiscarded(q.position)
     }
 
     @Test fun `catches ChangesetConflictException exception and tries again once`() {
@@ -86,7 +88,8 @@ class SplitWaysUploaderTest {
     }
 
     @Test fun `delete each uploaded split from local DB and calls listener`() {
-        on(splitWayDB.getAll()).thenReturn(listOf(createOsmSplitWay(), createOsmSplitWay()))
+        val quests = listOf(createOsmSplitWay(), createOsmSplitWay())
+        on(splitWayDB.getAll()).thenReturn(quests)
         on(splitSingleOsmWayUploader.upload(anyLong(), any(), anyList()))
             .thenThrow(ElementConflictException())
             .thenReturn(listOf(createElement()))
@@ -96,7 +99,7 @@ class SplitWaysUploaderTest {
 
         verify(splitWayDB, times(2)).delete(anyLong())
         verify(uploader.uploadedChangeListener)?.onUploaded()
-        verify(uploader.uploadedChangeListener)?.onDiscarded()
+        verify(uploader.uploadedChangeListener)?.onDiscarded(quests[1].position)
 
         verify(elementDB, times(1)).put(any())
         verify(elementGeometryDB, times(1)).put(any())
@@ -119,6 +122,6 @@ class SplitWaysUploaderTest {
     }
 }
 
-private fun createOsmSplitWay() = OsmQuestSplitWay(1, mock(), 1, "survey", listOf())
+private fun createOsmSplitWay() = OsmQuestSplitWay(1, mock(), 1, "survey", listOf(SplitAtPoint(OsmLatLon(1.0,0.1))))
 
 private fun createElement() = OsmWay(1,1, listOf(1,2,3), null)

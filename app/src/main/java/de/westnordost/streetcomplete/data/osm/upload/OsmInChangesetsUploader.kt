@@ -56,10 +56,10 @@ abstract class OsmInChangesetsUploader<T : UploadableInChangeset>(
                 val questIds = deleteElement(quest.elementType, quest.elementId)
                 removedOsmQuestIds.addAll(questIds)
                 onUploadFailed(quest, e)
-                uploadedChangeListener?.onDiscarded()
+                uploadedChangeListener?.onDiscarded(quest.position)
             } catch (e: ElementConflictException) {
                 onUploadFailed(quest, e)
-                uploadedChangeListener?.onDiscarded()
+                uploadedChangeListener?.onDiscarded(quest.position)
             }
         }
         cleanUp(uploadedQuestTypes)

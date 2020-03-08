@@ -68,13 +68,14 @@ class UndoOsmQuestsUploaderTest {
     }
 
     @Test fun `discard if element was deleted`() {
-        on(undoQuestDB.getAll()).thenReturn(listOf(createUndoQuest()))
+        val q = createUndoQuest()
+        on(undoQuestDB.getAll()).thenReturn(listOf(q))
         on(elementDB.get(any(), anyLong())).thenReturn(null)
 
         uploader.uploadedChangeListener = mock()
         uploader.upload(AtomicBoolean(false))
 
-        verify(uploader.uploadedChangeListener)?.onDiscarded()
+        verify(uploader.uploadedChangeListener)?.onDiscarded(q.position)
     }
 
     @Test fun `catches ChangesetConflictException exception and tries again once`() {
@@ -92,7 +93,8 @@ class UndoOsmQuestsUploaderTest {
     }
 
     @Test fun `delete each uploaded quest from local DB and calls listener`() {
-        on(undoQuestDB.getAll()).thenReturn(listOf(createUndoQuest(), createUndoQuest()))
+        val quests = listOf(createUndoQuest(), createUndoQuest())
+        on(undoQuestDB.getAll()).thenReturn(quests)
         on(singleChangeUploader.upload(anyLong(), any(), any()))
             .thenThrow(ElementConflictException())
             .thenReturn(createElement())
@@ -102,7 +104,7 @@ class UndoOsmQuestsUploaderTest {
 
         verify(undoQuestDB, times(2)).delete(anyLong())
         verify(uploader.uploadedChangeListener)?.onUploaded()
-        verify(uploader.uploadedChangeListener)?.onDiscarded()
+        verify(uploader.uploadedChangeListener)?.onDiscarded(quests[1].position)
 
         verify(elementDB, times(1)).put(any())
         verify(elementGeometryDB, times(1)).put(any())

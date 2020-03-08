@@ -12,10 +12,14 @@ import java.util.concurrent.atomic.AtomicBoolean
 import javax.inject.Inject
 
 import de.westnordost.osmapi.common.errors.OsmAuthorizationException
+import de.westnordost.osmapi.map.data.LatLon
+import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.data.VisibleQuestListener
 import de.westnordost.streetcomplete.data.VisibleQuestRelay
+import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
 import de.westnordost.streetcomplete.data.user.UserController
+import de.westnordost.streetcomplete.util.SlippyMapMath
 
 /** Collects and uploads all changes the user has done: notes he left, comments he left on existing
  * notes and quests he answered  */
@@ -23,6 +27,7 @@ class QuestChangesUploadService : IntentService(TAG) {
     @Inject internal lateinit var uploaders: List<Uploader>
     @Inject internal lateinit var versionIsBannedCheck: VersionIsBannedChecker
     @Inject internal lateinit var userController: UserController
+    @Inject internal lateinit var downloadedTilesDB: DownloadedTilesDao
 
     private val binder = Interface()
 
@@ -33,7 +38,8 @@ class QuestChangesUploadService : IntentService(TAG) {
             progressListener?.onProgress(true)
         }
 
-        override fun onDiscarded() {
+        override fun onDiscarded(at: LatLon) {
+            invalidateArea(at)
             progressListener?.onProgress(false)
         }
     }
@@ -94,6 +100,13 @@ class QuestChangesUploadService : IntentService(TAG) {
         progressListener?.onFinished()
 
         Log.i(TAG, "Finished upload")
+    }
+
+    private fun invalidateArea(pos: LatLon) {
+        // called after a conflict. If there is a conflict, the user is not the only one in that
+        // area, so best invalidate all downloaded quests here and redownload on next occasion
+        val tile = SlippyMapMath.enclosingTile(pos, ApplicationConstants.QUEST_TILE_ZOOM)
+        downloadedTilesDB.remove(tile)
     }
 
     /** Public interface to classes that are bound to this service  */
