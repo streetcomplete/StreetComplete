@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.data.osm.OsmQuestGiver
 import de.westnordost.streetcomplete.data.osm.download.OsmApiElementGeometryCreator
 import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao
 import de.westnordost.streetcomplete.data.osm.persist.MergedElementDao
-import de.westnordost.streetcomplete.data.user.QuestStatisticsDao
+import de.westnordost.streetcomplete.data.user.StatisticsManager
 import de.westnordost.streetcomplete.mock
 import org.junit.Before
 import org.junit.Test
@@ -23,7 +23,7 @@ class SplitWaysUploaderTest {
     private lateinit var changesetManager: OpenQuestChangesetsManager
     private lateinit var elementGeometryDB: ElementGeometryDao
     private lateinit var questGiver: OsmQuestGiver
-    private lateinit var statisticsDB: QuestStatisticsDao
+    private lateinit var statisticsManager: StatisticsManager
     private lateinit var elementGeometryCreator: OsmApiElementGeometryCreator
     private lateinit var splitSingleOsmWayUploader: SplitSingleWayUploader
     private lateinit var uploader: SplitWaysUploader
@@ -37,11 +37,11 @@ class SplitWaysUploaderTest {
         elementGeometryDB = mock()
         questGiver = mock()
         on(questGiver.updateQuests(any())).thenReturn(OsmQuestGiver.QuestUpdates(listOf(), listOf()))
-        statisticsDB = mock()
+        statisticsManager = mock()
         elementGeometryCreator = mock()
         on(elementGeometryCreator.create(any())).thenReturn(mock())
         uploader = SplitWaysUploader(elementDB, elementGeometryDB, changesetManager, questGiver,
-            statisticsDB, elementGeometryCreator, splitWayDB, splitSingleOsmWayUploader)
+            statisticsManager, elementGeometryCreator, splitWayDB, splitSingleOsmWayUploader)
     }
 
     @Test fun `cancel upload works`() {

@@ -12,9 +12,9 @@ import de.westnordost.streetcomplete.data.osm.download.OsmApiElementGeometryCrea
 import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao
 import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryEntry
 import de.westnordost.streetcomplete.data.osm.persist.MergedElementDao
-import de.westnordost.streetcomplete.data.user.QuestStatisticsDao
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
 import de.westnordost.streetcomplete.data.upload.Uploader
+import de.westnordost.streetcomplete.data.user.StatisticsManager
 
 import java.util.concurrent.atomic.AtomicBoolean
 
@@ -23,7 +23,7 @@ abstract class OsmInChangesetsUploader<T : UploadableInChangeset>(
     private val elementGeometryDB: ElementGeometryDao,
     private val changesetManager: OpenQuestChangesetsManager,
     private val questGiver: OsmQuestGiver,
-    private val statisticsDB: QuestStatisticsDao,
+    private val statisticsManager: StatisticsManager,
     private val osmApiElementGeometryCreator: OsmApiElementGeometryCreator
     ): Uploader {
 
@@ -50,7 +50,7 @@ abstract class OsmInChangesetsUploader<T : UploadableInChangeset>(
                 uploadedQuestTypes.add(quest.osmElementQuestType)
                 onUploadSuccessful(quest)
                 uploadedChangeListener?.onUploaded()
-                statisticsDB.addOne(quest.osmElementQuestType.name)
+                statisticsManager.addOne(quest.osmElementQuestType.name)
             } catch (e: ElementIncompatibleException) {
                 val questIds = deleteElement(quest.elementType, quest.elementId)
                 removedOsmQuestIds.addAll(questIds)

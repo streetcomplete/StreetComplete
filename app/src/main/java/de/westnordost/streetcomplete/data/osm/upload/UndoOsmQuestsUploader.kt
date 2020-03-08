@@ -10,7 +10,7 @@ import javax.inject.Inject
 
 import de.westnordost.streetcomplete.data.osm.persist.MergedElementDao
 import de.westnordost.streetcomplete.data.osm.persist.UndoOsmQuestDao
-import de.westnordost.streetcomplete.data.user.QuestStatisticsDao
+import de.westnordost.streetcomplete.data.user.StatisticsManager
 import java.util.*
 import java.util.concurrent.atomic.AtomicBoolean
 
@@ -20,12 +20,12 @@ class UndoOsmQuestsUploader @Inject constructor(
     elementGeometryDB: ElementGeometryDao,
     changesetManager: OpenQuestChangesetsManager,
     questGiver: OsmQuestGiver,
-    statisticsDB: QuestStatisticsDao,
+    statisticsManager: StatisticsManager,
     osmApiElementGeometryCreator: OsmApiElementGeometryCreator,
     private val undoQuestDB: UndoOsmQuestDao,
     private val singleChangeUploader: SingleOsmElementTagChangesUploader
 ) : OsmInChangesetsUploader<UndoOsmQuest>(elementDB, elementGeometryDB, changesetManager, questGiver,
-    statisticsDB, osmApiElementGeometryCreator) {
+    statisticsManager, osmApiElementGeometryCreator) {
 
     @Synchronized override fun upload(cancelled: AtomicBoolean) {
         Log.i(TAG, "Undoing quest changes")

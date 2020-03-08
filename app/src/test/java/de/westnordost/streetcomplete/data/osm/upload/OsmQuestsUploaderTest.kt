@@ -12,8 +12,8 @@ import de.westnordost.streetcomplete.data.osm.download.OsmApiElementGeometryCrea
 import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao
 import de.westnordost.streetcomplete.data.osm.persist.MergedElementDao
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao
-import de.westnordost.streetcomplete.data.user.QuestStatisticsDao
 import de.westnordost.streetcomplete.data.tiles.DownloadedTilesDao
+import de.westnordost.streetcomplete.data.user.StatisticsManager
 import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.on
 import org.junit.Assert.assertEquals
@@ -30,7 +30,7 @@ class OsmQuestsUploaderTest {
     private lateinit var changesetManager: OpenQuestChangesetsManager
     private lateinit var elementGeometryDB: ElementGeometryDao
     private lateinit var questGiver: OsmQuestGiver
-    private lateinit var statisticsDB: QuestStatisticsDao
+    private lateinit var statisticsManager: StatisticsManager
     private lateinit var elementGeometryCreator: OsmApiElementGeometryCreator
     private lateinit var singleChangeUploader: SingleOsmElementTagChangesUploader
     private lateinit var downloadedTilesDao: DownloadedTilesDao
@@ -45,12 +45,12 @@ class OsmQuestsUploaderTest {
         elementGeometryDB = mock()
         questGiver = mock()
         on(questGiver.updateQuests(any())).thenReturn(OsmQuestGiver.QuestUpdates(listOf(), listOf()))
-        statisticsDB = mock()
+        statisticsManager = mock()
         elementGeometryCreator = mock()
         on(elementGeometryCreator.create(any())).thenReturn(mock())
         downloadedTilesDao = mock()
         uploader = OsmQuestsUploader(elementDB, elementGeometryDB, changesetManager, questGiver,
-            statisticsDB, elementGeometryCreator, questDB, singleChangeUploader, downloadedTilesDao)
+            statisticsManager, elementGeometryCreator, questDB, singleChangeUploader, downloadedTilesDao)
     }
 
     @Test fun `cancel upload works`() {

@@ -4,17 +4,38 @@ import de.westnordost.streetcomplete.data.user.QuestStatisticsDao
 import de.westnordost.streetcomplete.data.user.UserStore
 import javax.inject.Inject
 
-/** Grants achievements  based on solved quests (or other things) and puts the links contained in
+/** Grants achievements based on solved quests (or other things) and puts the links contained in
  * these in the link collection */
 class AchievementGiver @Inject constructor(
     private val userAchievementsDao: UserAchievementsDao,
     private val userLinksDao: UserLinksDao,
     private val questStatisticsDao: QuestStatisticsDao,
-    private val achievements: List<Achievement>,
+    private val allAchievements: List<Achievement>,
     private val userStore: UserStore
 ) {
 
+    /** Look at and grant all achievements */
     fun updateAchievements(): List<Pair<Achievement, Int>> {
+        return updateAchievements(allAchievements)
+    }
+
+    /** Look at and grant only the achievements that have anything to do with the given quest type */
+    fun updateAchievements(questType: String): List<Pair<Achievement, Int>> {
+        return updateAchievements(allAchievements.filter {
+            when (it.condition) {
+                is SolvedQuestsOfTypes -> it.condition.questTypes.contains(questType)
+                is TotalSolvedQuests -> true
+                else -> false
+            }
+        })
+    }
+
+    /** Look at and grant only the achievements that have anything to do with days active */
+    fun updateAchievements(daysActive: Int): List<Pair<Achievement, Int>> {
+        return updateAchievements(allAchievements.filter { it.condition is DaysActive })
+    }
+
+    private fun updateAchievements(achievements: List<Achievement>): List<Pair<Achievement, Int>> {
         val newAchievements = mutableListOf<Pair<Achievement, Int>>()
         val currentAchievementLevels = userAchievementsDao.getAll()
         // look at all defined achievements
@@ -42,7 +63,7 @@ class AchievementGiver @Inject constructor(
     fun updateAchievementLinks() {
         val allGrantedLinks = mutableListOf<Link>()
         val currentAchievementLevels = userAchievementsDao.getAll()
-        for (achievement in achievements) {
+        for (achievement in allAchievements) {
             val currentLevel = currentAchievementLevels[achievement.id] ?: 0
             for (levelIndex in 0 until currentLevel) {
                 val achievementLevel = achievement.levels[levelIndex]

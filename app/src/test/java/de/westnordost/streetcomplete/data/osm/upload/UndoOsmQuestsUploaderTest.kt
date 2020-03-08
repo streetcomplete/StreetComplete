@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.data.osm.download.OsmApiElementGeometryCrea
 import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao
 import de.westnordost.streetcomplete.data.osm.persist.MergedElementDao
 import de.westnordost.streetcomplete.data.osm.persist.UndoOsmQuestDao
-import de.westnordost.streetcomplete.data.user.QuestStatisticsDao
+import de.westnordost.streetcomplete.data.user.StatisticsManager
 import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.on
 import org.junit.Before
@@ -26,7 +26,7 @@ class UndoOsmQuestsUploaderTest {
     private lateinit var changesetManager: OpenQuestChangesetsManager
     private lateinit var elementGeometryDB: ElementGeometryDao
     private lateinit var questGiver: OsmQuestGiver
-    private lateinit var statisticsDB: QuestStatisticsDao
+    private lateinit var statisticsManager: StatisticsManager
     private lateinit var elementGeometryCreator: OsmApiElementGeometryCreator
     private lateinit var singleChangeUploader: SingleOsmElementTagChangesUploader
     private lateinit var uploader: UndoOsmQuestsUploader
@@ -40,11 +40,11 @@ class UndoOsmQuestsUploaderTest {
         elementGeometryDB = mock()
         questGiver = mock()
         on(questGiver.updateQuests(any())).thenReturn(OsmQuestGiver.QuestUpdates(listOf(), listOf()))
-        statisticsDB = mock()
+        statisticsManager = mock()
         elementGeometryCreator = mock()
         on(elementGeometryCreator.create(any())).thenReturn(mock())
         uploader = UndoOsmQuestsUploader(elementDB, elementGeometryDB, changesetManager, questGiver,
-            statisticsDB, elementGeometryCreator, undoQuestDB, singleChangeUploader)
+                statisticsManager, elementGeometryCreator, undoQuestDB, singleChangeUploader)
     }
 
     @Test fun `cancel upload works`() {
