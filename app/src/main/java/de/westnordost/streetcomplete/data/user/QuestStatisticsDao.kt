@@ -69,7 +69,7 @@ class QuestStatisticsDao @Inject constructor(private val dbHelper: SQLiteOpenHel
 
     fun getAmount(questTypes: List<String>): Int {
         val questionMarks = Array(questTypes.size) { "?" }.joinToString(",")
-        val query = "$QUEST_TYPE in ($questionMarks))"
+        val query = "$QUEST_TYPE in ($questionMarks)"
         return db.queryOne(NAME, arrayOf("total($SUCCEEDED)"), query, questTypes.toTypedArray()) {
             it.getInt(0)
         } ?: 0
