@@ -9,7 +9,6 @@ import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryDao
 import de.westnordost.streetcomplete.data.osm.mapdata.MergedElementDao
 import de.westnordost.streetcomplete.data.osm.upload.changesets.OpenQuestChangesetsManager
 import de.westnordost.streetcomplete.data.osm.upload.OsmInChangesetsUploader
-import de.westnordost.streetcomplete.data.user.StatisticsManager
 import java.util.concurrent.atomic.AtomicBoolean
 import javax.inject.Inject
 
@@ -19,12 +18,11 @@ class SplitWaysUploader @Inject constructor(
         elementGeometryDB: ElementGeometryDao,
         changesetManager: OpenQuestChangesetsManager,
         questGiver: OsmQuestGiver,
-        statisticsManager: StatisticsManager,
         osmApiElementGeometryCreator: OsmApiElementGeometryCreator,
         private val splitWayDB: OsmQuestSplitWayDao,
         private val splitSingleOsmWayUploader: SplitSingleWayUploader
 ) : OsmInChangesetsUploader<OsmQuestSplitWay>(elementDB, elementGeometryDB, changesetManager,
-    questGiver, statisticsManager, osmApiElementGeometryCreator) {
+    questGiver, osmApiElementGeometryCreator) {
 
     @Synchronized override fun upload(cancelled: AtomicBoolean) {
         Log.i(TAG, "Splitting ways")

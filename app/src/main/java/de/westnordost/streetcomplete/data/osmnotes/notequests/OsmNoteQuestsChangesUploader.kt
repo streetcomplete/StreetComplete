@@ -12,13 +12,11 @@ import de.westnordost.streetcomplete.data.osmnotes.OsmNoteWithPhotosUploader
 import de.westnordost.streetcomplete.data.osmnotes.deleteImages
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
 import de.westnordost.streetcomplete.data.upload.Uploader
-import de.westnordost.streetcomplete.data.user.StatisticsManager
 import java.util.concurrent.atomic.AtomicBoolean
 
 /** Gets all note quests from local DB and uploads them via the OSM API */
 class OsmNoteQuestsChangesUploader @Inject constructor(
         private val questDB: OsmNoteQuestDao,
-        private val statisticsManager: StatisticsManager,
         private val noteDB: NoteDao,
         private val singleNoteUploader: OsmNoteWithPhotosUploader
 ): Uploader {
@@ -50,10 +48,9 @@ class OsmNoteQuestsChangesUploader @Inject constructor(
                 quest.close()
                 questDB.update(quest)
                 noteDB.put(newNote)
-                statisticsManager.addOneNote()
 
                 Log.d(TAG, "Uploaded note comment ${quest.logString}")
-                uploadedChangeListener?.onUploaded()
+                uploadedChangeListener?.onUploaded(NOTE, quest.center)
                 created++
                 deleteImages(quest.imagePaths)
             } catch (e: ConflictException) {
@@ -61,7 +58,7 @@ class OsmNoteQuestsChangesUploader @Inject constructor(
                 noteDB.delete(quest.note.id)
 
                 Log.d(TAG, "Dropped note comment ${quest.logString}: ${e.message}")
-                uploadedChangeListener?.onDiscarded(quest.center)
+                uploadedChangeListener?.onDiscarded(NOTE, quest.center)
                 obsolete++
                 deleteImages(quest.imagePaths)
             } catch (e: ImageUploadException) {
@@ -77,6 +74,7 @@ class OsmNoteQuestsChangesUploader @Inject constructor(
 
     companion object {
         private const val TAG = "CommentNoteUpload"
+        private const val NOTE = "NOTE"
     }
 }
 

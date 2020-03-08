@@ -18,6 +18,7 @@ import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.data.VisibleQuestListener
 import de.westnordost.streetcomplete.data.VisibleQuestRelay
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
+import de.westnordost.streetcomplete.data.user.StatisticsManager
 import de.westnordost.streetcomplete.data.user.UserController
 import de.westnordost.streetcomplete.util.SlippyMapMath
 
@@ -25,20 +26,22 @@ import de.westnordost.streetcomplete.util.SlippyMapMath
  * notes and quests he answered  */
 class QuestChangesUploadService : IntentService(TAG) {
     @Inject internal lateinit var uploaders: List<Uploader>
-    @Inject internal lateinit var versionIsBannedCheck: VersionIsBannedChecker
+    @Inject internal lateinit var versionIsBannedChecker: VersionIsBannedChecker
     @Inject internal lateinit var userController: UserController
     @Inject internal lateinit var downloadedTilesDB: DownloadedTilesDao
+    @Inject internal lateinit var statisticsManager: StatisticsManager
 
     private val binder = Interface()
 
     // listeners
     private val visibleQuestRelay = VisibleQuestRelay()
     private val uploadedChangeRelay = object : OnUploadedChangeListener {
-        override fun onUploaded() {
+        override fun onUploaded(questType: String, at: LatLon) {
+            statisticsManager.addOne(questType)
             progressListener?.onProgress(true)
         }
 
-        override fun onDiscarded(at: LatLon) {
+        override fun onDiscarded(questType: String, at: LatLon) {
             invalidateArea(at)
             progressListener?.onProgress(false)
         }
@@ -47,7 +50,7 @@ class QuestChangesUploadService : IntentService(TAG) {
 
     private val cancelState = AtomicBoolean(false)
 
-    private val bannedInfo: BannedInfo by lazy { versionIsBannedCheck.get() }
+    private val bannedInfo: BannedInfo by lazy { versionIsBannedChecker.get() }
 
     init {
         Injector.instance.applicationComponent.inject(this)

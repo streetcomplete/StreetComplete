@@ -15,7 +15,6 @@ import de.westnordost.streetcomplete.data.osm.osmquest.SingleOsmElementTagChange
 import de.westnordost.streetcomplete.data.osm.upload.ChangesetConflictException
 import de.westnordost.streetcomplete.data.osm.upload.ElementConflictException
 import de.westnordost.streetcomplete.data.osm.upload.changesets.OpenQuestChangesetsManager
-import de.westnordost.streetcomplete.data.user.StatisticsManager
 import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.on
 import org.junit.Before
@@ -30,7 +29,6 @@ class UndoOsmQuestsUploaderTest {
     private lateinit var changesetManager: OpenQuestChangesetsManager
     private lateinit var elementGeometryDB: ElementGeometryDao
     private lateinit var questGiver: OsmQuestGiver
-    private lateinit var statisticsManager: StatisticsManager
     private lateinit var elementGeometryCreator: OsmApiElementGeometryCreator
     private lateinit var singleChangeUploader: SingleOsmElementTagChangesUploader
     private lateinit var uploader: UndoOsmQuestsUploader
@@ -44,11 +42,10 @@ class UndoOsmQuestsUploaderTest {
         elementGeometryDB = mock()
         questGiver = mock()
         on(questGiver.updateQuests(any())).thenReturn(OsmQuestGiver.QuestUpdates(listOf(), listOf()))
-        statisticsManager = mock()
         elementGeometryCreator = mock()
         on(elementGeometryCreator.create(any())).thenReturn(mock())
         uploader = UndoOsmQuestsUploader(elementDB, elementGeometryDB, changesetManager, questGiver,
-                statisticsManager, elementGeometryCreator, undoQuestDB, singleChangeUploader)
+                elementGeometryCreator, undoQuestDB, singleChangeUploader)
     }
 
     @Test fun `cancel upload works`() {
@@ -75,7 +72,7 @@ class UndoOsmQuestsUploaderTest {
         uploader.uploadedChangeListener = mock()
         uploader.upload(AtomicBoolean(false))
 
-        verify(uploader.uploadedChangeListener)?.onDiscarded(q.position)
+        verify(uploader.uploadedChangeListener)?.onDiscarded(q.osmElementQuestType.javaClass.simpleName, q.position)
     }
 
     @Test fun `catches ChangesetConflictException exception and tries again once`() {
@@ -103,8 +100,8 @@ class UndoOsmQuestsUploaderTest {
         uploader.upload(AtomicBoolean(false))
 
         verify(undoQuestDB, times(2)).delete(anyLong())
-        verify(uploader.uploadedChangeListener)?.onUploaded()
-        verify(uploader.uploadedChangeListener)?.onDiscarded(quests[1].position)
+        verify(uploader.uploadedChangeListener)?.onUploaded(quests[0].osmElementQuestType.javaClass.simpleName, quests[0].position)
+        verify(uploader.uploadedChangeListener)?.onDiscarded(quests[1].osmElementQuestType.javaClass.simpleName, quests[1].position)
 
         verify(elementDB, times(1)).put(any())
         verify(elementGeometryDB, times(1)).put(any())

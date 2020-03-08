@@ -12,12 +12,6 @@ class StatisticsManager @Inject constructor(
         achievementGiver.updateAchievements(questType)
         // TODO and days active!?
     }
-
-    fun addOneNote() {
-        questStatisticsDao.addOneNote()
-        // TODO need to decide what to do with the note quests anyway...
-        achievementGiver.updateAchievements("NOTE")
-    }
 }
-
+// TODO need to decide what to do with the note quests anyway...
 // TODO path back for granted achievements...

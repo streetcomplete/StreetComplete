@@ -16,7 +16,6 @@ import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestDao
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestType
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
 import de.westnordost.streetcomplete.data.upload.Uploader
-import de.westnordost.streetcomplete.data.user.StatisticsManager
 import java.util.concurrent.atomic.AtomicBoolean
 
 /** Gets all create notes from local DB and uploads them via the OSM API */
@@ -26,7 +25,6 @@ class CreateNotesUploader @Inject constructor(
         private val noteQuestDB: OsmNoteQuestDao,
         private val mapDataDao: MapDataDao,
         private val questType: OsmNoteQuestType,
-        private val statisticsManager: StatisticsManager,
         private val singleCreateNoteUploader: SingleCreateNoteUploader
 ): Uploader {
 
@@ -54,16 +52,15 @@ class CreateNotesUploader @Inject constructor(
                 noteQuest.status = QuestStatus.CLOSED
                 noteDB.put(newNote)
                 noteQuestDB.add(noteQuest)
-                statisticsManager.addOneNote()
 
                 Log.d(TAG, "Uploaded note ${createNote.logString}")
-                uploadedChangeListener?.onUploaded()
+                uploadedChangeListener?.onUploaded(NOTE, createNote.position)
                 created++
                 createNoteDB.delete(createNote.id!!)
                 deleteImages(createNote.imagePaths)
             } catch (e: ConflictException) {
                 Log.d(TAG, "Dropped note ${createNote.logString}: ${e.message}")
-                uploadedChangeListener?.onDiscarded(createNote.position)
+                uploadedChangeListener?.onDiscarded(NOTE, createNote.position)
                 obsolete++
                 createNoteDB.delete(createNote.id!!)
                 deleteImages(createNote.imagePaths)
@@ -100,6 +97,7 @@ class CreateNotesUploader @Inject constructor(
 
     companion object {
         private const val TAG = "CreateNotesUpload"
+        private const val NOTE = "NOTE"
     }
 }
 

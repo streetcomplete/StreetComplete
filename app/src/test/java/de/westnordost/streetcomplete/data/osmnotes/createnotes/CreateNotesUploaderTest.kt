@@ -18,7 +18,6 @@ import de.westnordost.streetcomplete.data.osmnotes.ImageUploadException
 import de.westnordost.streetcomplete.data.osmnotes.NoteDao
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestDao
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestType
-import de.westnordost.streetcomplete.data.user.StatisticsManager
 import de.westnordost.streetcomplete.mock
 import java.util.*
 
@@ -31,7 +30,6 @@ class CreateNotesUploaderTest {
     private lateinit var noteQuestDB: OsmNoteQuestDao
     private lateinit var mapDataDao: MapDataDao
     private lateinit var questType: OsmNoteQuestType
-    private lateinit var statisticsManager: StatisticsManager
     private lateinit var singleCreateNoteUploader: SingleCreateNoteUploader
 
     private lateinit var uploader: CreateNotesUploader
@@ -42,18 +40,17 @@ class CreateNotesUploaderTest {
         noteDB = mock()
         createNoteDB = mock()
         questType = mock()
-        statisticsManager = mock()
         singleCreateNoteUploader = mock()
 
         uploader = CreateNotesUploader(createNoteDB, noteDB, noteQuestDB, mapDataDao, questType,
-                statisticsManager, singleCreateNoteUploader)
+                singleCreateNoteUploader)
     }
 
     @Test fun `cancel upload works`() {
         val cancelled = AtomicBoolean(true)
         uploader.upload(cancelled)
         verifyZeroInteractions(createNoteDB, noteDB, noteQuestDB, mapDataDao, questType,
-            statisticsManager, singleCreateNoteUploader)
+            singleCreateNoteUploader)
     }
 
     @Test fun `catches conflict exception`() {
@@ -77,8 +74,7 @@ class CreateNotesUploaderTest {
         verify(createNoteDB, times(createNotes.size)).delete(anyLong())
         verify(noteDB, times(createNotes.size)).put(any())
         verify(noteQuestDB, times(createNotes.size)).add(any())
-        verify(statisticsManager, times(createNotes.size)).addOneNote()
-        verify(uploader.uploadedChangeListener, times(createNotes.size))?.onUploaded()
+        verify(uploader.uploadedChangeListener, times(createNotes.size))?.onUploaded(any(), any())
     }
 
     @Test fun `delete each unsuccessfully uploaded quest in local DB and call listener`() {
@@ -91,8 +87,7 @@ class CreateNotesUploaderTest {
         uploader.upload(AtomicBoolean(false))
 
         verify(createNoteDB, times(createNotes.size)).delete(anyLong())
-        verifyZeroInteractions(statisticsManager, noteQuestDB, noteDB)
-        verify(uploader.uploadedChangeListener, times(2))?.onDiscarded(any())
+        verify(uploader.uploadedChangeListener, times(2))?.onDiscarded(any(), any())
     }
 
     @Test fun `discard if element was deleted`() {
@@ -104,7 +99,7 @@ class CreateNotesUploaderTest {
         uploader.uploadedChangeListener = mock()
         uploader.upload(AtomicBoolean(false))
 
-        verify(uploader.uploadedChangeListener)?.onDiscarded(createNote.position)
+        verify(uploader.uploadedChangeListener)?.onDiscarded("NOTE", createNote.position)
     }
 
     @Test fun `catches image upload exception`() {

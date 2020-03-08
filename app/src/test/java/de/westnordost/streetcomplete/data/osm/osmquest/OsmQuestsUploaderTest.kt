@@ -14,7 +14,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MergedElementDao
 import de.westnordost.streetcomplete.data.osm.upload.changesets.OpenQuestChangesetsManager
 import de.westnordost.streetcomplete.data.osm.upload.ChangesetConflictException
 import de.westnordost.streetcomplete.data.osm.upload.ElementConflictException
-import de.westnordost.streetcomplete.data.user.StatisticsManager
 import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.on
 import org.junit.Assert.assertEquals
@@ -31,7 +30,6 @@ class OsmQuestsUploaderTest {
     private lateinit var changesetManager: OpenQuestChangesetsManager
     private lateinit var elementGeometryDB: ElementGeometryDao
     private lateinit var questGiver: OsmQuestGiver
-    private lateinit var statisticsManager: StatisticsManager
     private lateinit var elementGeometryCreator: OsmApiElementGeometryCreator
     private lateinit var singleChangeUploader: SingleOsmElementTagChangesUploader
     private lateinit var uploader: OsmQuestsUploader
@@ -45,11 +43,10 @@ class OsmQuestsUploaderTest {
         elementGeometryDB = mock()
         questGiver = mock()
         on(questGiver.updateQuests(any())).thenReturn(OsmQuestGiver.QuestUpdates(listOf(), listOf()))
-        statisticsManager = mock()
         elementGeometryCreator = mock()
         on(elementGeometryCreator.create(any())).thenReturn(mock())
         uploader = OsmQuestsUploader(elementDB, elementGeometryDB, changesetManager, questGiver,
-                statisticsManager, elementGeometryCreator, questDB, singleChangeUploader)
+                elementGeometryCreator, questDB, singleChangeUploader)
     }
 
     @Test fun `cancel upload works`() {
@@ -75,7 +72,7 @@ class OsmQuestsUploaderTest {
         uploader.uploadedChangeListener = mock()
         uploader.upload(AtomicBoolean(false))
 
-        verify(uploader.uploadedChangeListener)?.onDiscarded(q.position)
+        verify(uploader.uploadedChangeListener)?.onDiscarded(q.osmElementQuestType.javaClass.simpleName, q.position)
     }
 
     @Test fun `catches ChangesetConflictException exception and tries again once`() {
@@ -105,7 +102,7 @@ class OsmQuestsUploaderTest {
             assertEquals(QuestStatus.CLOSED, quest.status)
         }
         verify(questDB, times(2)).update(any())
-        verify(uploader.uploadedChangeListener, times(2))?.onUploaded()
+        verify(uploader.uploadedChangeListener, times(2))?.onUploaded(any(), any())
         verify(elementDB, times(2)).put(any())
         verify(elementGeometryDB, times(2)).put(any())
         verify(questGiver, times(2)).updateQuests(any())
@@ -122,7 +119,7 @@ class OsmQuestsUploaderTest {
         uploader.upload(AtomicBoolean(false))
 
         verify(questDB, times(2)).delete(anyLong())
-        verify(uploader.uploadedChangeListener,times(2))?.onDiscarded(any())
+        verify(uploader.uploadedChangeListener,times(2))?.onDiscarded(any(), any())
         verifyZeroInteractions(questGiver, elementGeometryCreator)
     }
 

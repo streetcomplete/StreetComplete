@@ -11,7 +11,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MergedElementDao
 import de.westnordost.streetcomplete.data.osm.upload.ChangesetConflictException
 import de.westnordost.streetcomplete.data.osm.upload.ElementConflictException
 import de.westnordost.streetcomplete.data.osm.upload.changesets.OpenQuestChangesetsManager
-import de.westnordost.streetcomplete.data.user.StatisticsManager
 import de.westnordost.streetcomplete.mock
 import org.junit.Before
 import org.junit.Test
@@ -25,7 +24,6 @@ class SplitWaysUploaderTest {
     private lateinit var changesetManager: OpenQuestChangesetsManager
     private lateinit var elementGeometryDB: ElementGeometryDao
     private lateinit var questGiver: OsmQuestGiver
-    private lateinit var statisticsManager: StatisticsManager
     private lateinit var elementGeometryCreator: OsmApiElementGeometryCreator
     private lateinit var splitSingleOsmWayUploader: SplitSingleWayUploader
     private lateinit var uploader: SplitWaysUploader
@@ -39,11 +37,10 @@ class SplitWaysUploaderTest {
         elementGeometryDB = mock()
         questGiver = mock()
         on(questGiver.updateQuests(any())).thenReturn(OsmQuestGiver.QuestUpdates(listOf(), listOf()))
-        statisticsManager = mock()
         elementGeometryCreator = mock()
         on(elementGeometryCreator.create(any())).thenReturn(mock())
         uploader = SplitWaysUploader(elementDB, elementGeometryDB, changesetManager, questGiver,
-                statisticsManager, elementGeometryCreator, splitWayDB, splitSingleOsmWayUploader)
+                elementGeometryCreator, splitWayDB, splitSingleOsmWayUploader)
     }
 
     @Test fun `cancel upload works`() {
@@ -70,7 +67,7 @@ class SplitWaysUploaderTest {
         uploader.uploadedChangeListener = mock()
         uploader.upload(AtomicBoolean(false))
 
-        verify(uploader.uploadedChangeListener)?.onDiscarded(q.position)
+        verify(uploader.uploadedChangeListener)?.onDiscarded(q.questType.javaClass.simpleName, q.position)
     }
 
     @Test fun `catches ChangesetConflictException exception and tries again once`() {
@@ -98,8 +95,8 @@ class SplitWaysUploaderTest {
         uploader.upload(AtomicBoolean(false))
 
         verify(splitWayDB, times(2)).delete(anyLong())
-        verify(uploader.uploadedChangeListener)?.onUploaded()
-        verify(uploader.uploadedChangeListener)?.onDiscarded(quests[1].position)
+        verify(uploader.uploadedChangeListener)?.onUploaded(quests[0].questType.javaClass.simpleName, quests[0].position)
+        verify(uploader.uploadedChangeListener)?.onDiscarded(quests[1].questType.javaClass.simpleName,quests[1].position)
 
         verify(elementDB, times(1)).put(any())
         verify(elementGeometryDB, times(1)).put(any())

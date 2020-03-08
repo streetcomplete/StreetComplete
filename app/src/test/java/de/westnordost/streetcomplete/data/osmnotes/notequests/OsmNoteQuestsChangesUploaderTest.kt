@@ -14,7 +14,6 @@ import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.data.osmnotes.ImageUploadException
 import de.westnordost.streetcomplete.data.osmnotes.NoteDao
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteWithPhotosUploader
-import de.westnordost.streetcomplete.data.user.StatisticsManager
 import de.westnordost.streetcomplete.mock
 import org.junit.Assert.assertEquals
 import java.util.concurrent.atomic.AtomicBoolean
@@ -23,21 +22,19 @@ import java.util.concurrent.atomic.AtomicBoolean
 class OsmNoteQuestsChangesUploaderTest {
     private lateinit var noteDB: NoteDao
     private lateinit var questDB: OsmNoteQuestDao
-    private lateinit var statisticsManager: StatisticsManager
     private lateinit var singleNoteUploader: OsmNoteWithPhotosUploader
     private lateinit var uploader: OsmNoteQuestsChangesUploader
 
     @Before fun setUp() {
         noteDB = mock()
         questDB = mock()
-        statisticsManager = mock()
         singleNoteUploader = mock()
-        uploader = OsmNoteQuestsChangesUploader(questDB, statisticsManager, noteDB, singleNoteUploader)
+        uploader = OsmNoteQuestsChangesUploader(questDB, noteDB, singleNoteUploader)
     }
 
     @Test fun `cancel upload works`() {
         uploader.upload(AtomicBoolean(true))
-        verifyZeroInteractions(singleNoteUploader, statisticsManager, questDB, noteDB)
+        verifyZeroInteractions(singleNoteUploader, questDB, noteDB)
     }
 
     @Test fun `catches conflict exception`() {
@@ -63,8 +60,7 @@ class OsmNoteQuestsChangesUploaderTest {
             verify(questDB).update(quest)
         }
         verify(noteDB, times(quests.size)).put(any())
-        verify(statisticsManager, times(quests.size)).addOneNote()
-        verify(uploader.uploadedChangeListener, times(quests.size))?.onUploaded()
+        verify(uploader.uploadedChangeListener, times(quests.size))?.onUploaded(any(), any())
     }
 
     @Test fun `delete each unsuccessfully uploaded quest in local DB and call listener`() {
@@ -78,8 +74,7 @@ class OsmNoteQuestsChangesUploaderTest {
 
         verify(questDB, times(quests.size)).delete(anyLong())
         verify(noteDB, times(quests.size)).delete(anyLong())
-        verifyZeroInteractions(statisticsManager)
-        verify(uploader.uploadedChangeListener, times(2))?.onDiscarded(any())
+        verify(uploader.uploadedChangeListener, times(2))?.onDiscarded(any(), any())
     }
 
     @Test fun `catches image upload exception`() {
