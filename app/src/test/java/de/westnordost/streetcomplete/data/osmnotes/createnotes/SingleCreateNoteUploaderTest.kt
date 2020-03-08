@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.data.osmnotes
+package de.westnordost.streetcomplete.data.osmnotes.createnotes
 
 import de.westnordost.osmapi.common.Handler
 import de.westnordost.osmapi.common.errors.OsmConflictException
@@ -10,6 +10,9 @@ import de.westnordost.osmapi.notes.NotesDao
 import de.westnordost.streetcomplete.ApplicationConstants.USER_AGENT
 import de.westnordost.streetcomplete.data.osm.ElementKey
 import de.westnordost.streetcomplete.data.osm.upload.ConflictException
+import de.westnordost.streetcomplete.data.osmnotes.ImageActivationException
+import de.westnordost.streetcomplete.data.osmnotes.ImageUploadException
+import de.westnordost.streetcomplete.data.osmnotes.StreetCompleteImageUploader
 import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.on
 import org.junit.Assert.*

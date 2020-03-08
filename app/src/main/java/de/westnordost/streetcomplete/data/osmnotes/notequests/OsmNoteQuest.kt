@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.data.osmnotes
+package de.westnordost.streetcomplete.data.osmnotes.notequests
 
 import java.util.Date
 import de.westnordost.streetcomplete.data.Quest
@@ -10,13 +10,13 @@ import de.westnordost.osmapi.notes.Note
 import de.westnordost.streetcomplete.data.osm.ElementPointGeometry
 
 data class OsmNoteQuest(
-    override var id: Long?,
-    val note: Note,
-    override var status: QuestStatus,
-    var comment: String?,
-    override var lastUpdate: Date,
-    private val questType: OsmNoteQuestType,
-    var imagePaths: List<String>?
+        override var id: Long?,
+        val note: Note,
+        override var status: QuestStatus,
+        var comment: String?,
+        override var lastUpdate: Date,
+        private val questType: OsmNoteQuestType,
+        var imagePaths: List<String>?
 ) : Quest {
 
     constructor(note: Note, osmNoteQuestType: OsmNoteQuestType)

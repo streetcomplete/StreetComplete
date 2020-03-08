@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.data.osmnotes
+package de.westnordost.streetcomplete.data.osmnotes.createnotes
 
 import org.junit.Before
 import org.junit.Test
@@ -14,6 +14,10 @@ import org.mockito.Mockito.*
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.osmapi.notes.NoteComment
 import de.westnordost.streetcomplete.data.osm.ElementKey
+import de.westnordost.streetcomplete.data.osmnotes.ImageUploadException
+import de.westnordost.streetcomplete.data.osmnotes.NoteDao
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestDao
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestType
 import de.westnordost.streetcomplete.data.user.StatisticsManager
 import de.westnordost.streetcomplete.mock
 import java.util.*
@@ -42,7 +46,7 @@ class CreateNotesUploaderTest {
         singleCreateNoteUploader = mock()
 
         uploader = CreateNotesUploader(createNoteDB, noteDB, noteQuestDB, mapDataDao, questType,
-            statisticsManager, singleCreateNoteUploader)
+                statisticsManager, singleCreateNoteUploader)
     }
 
     @Test fun `cancel upload works`() {
@@ -62,7 +66,7 @@ class CreateNotesUploaderTest {
     }
 
     @Test fun `delete each uploaded quest in local DB and call listener`() {
-        val createNotes = listOf( newCreateNote(), newCreateNote())
+        val createNotes = listOf(newCreateNote(), newCreateNote())
 
         on(createNoteDB.getAll()).thenReturn(createNotes)
         on(singleCreateNoteUploader.upload(any())).thenReturn(newNote())
@@ -78,7 +82,7 @@ class CreateNotesUploaderTest {
     }
 
     @Test fun `delete each unsuccessfully uploaded quest in local DB and call listener`() {
-        val createNotes = listOf( newCreateNote(), newCreateNote())
+        val createNotes = listOf(newCreateNote(), newCreateNote())
 
         on(createNoteDB.getAll()).thenReturn(createNotes)
         on(singleCreateNoteUploader.upload(any())).thenThrow(ConflictException())

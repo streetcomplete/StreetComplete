@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.data.osm
 import org.junit.Test
 
 import de.westnordost.osmapi.map.data.BoundingBox
-import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestType
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestType
 import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.quests.QuestModule
 

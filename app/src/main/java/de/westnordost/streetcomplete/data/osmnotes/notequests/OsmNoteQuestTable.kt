@@ -1,4 +1,6 @@
-package de.westnordost.streetcomplete.data.osmnotes
+package de.westnordost.streetcomplete.data.osmnotes.notequests
+
+import de.westnordost.streetcomplete.data.osmnotes.NoteTable
 
 object OsmNoteQuestTable {
     const val NAME = "osm_notequests"

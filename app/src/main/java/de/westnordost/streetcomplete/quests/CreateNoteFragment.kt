@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.data.osmnotes
+package de.westnordost.streetcomplete.quests
 
 import android.content.res.Configuration
 import android.graphics.Point
@@ -25,7 +25,8 @@ class CreateNoteFragment : AbstractCreateNoteFragment() {
         /** Called when the user wants to leave a note which is not related to a quest  */
         fun onCreatedNote(note: String, imagePaths: List<String>?, screenPosition: Point)
     }
-    private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
+    private val listener: Listener? get() = parentFragment as? Listener
+            ?: activity as? Listener
 
     override val layoutResId = R.layout.fragment_create_note
 

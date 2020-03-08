@@ -27,9 +27,9 @@ import de.westnordost.streetcomplete.data.osm.persist.MergedElementDao
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestSplitWayDao
 import de.westnordost.streetcomplete.data.osm.persist.UndoOsmQuestDao
-import de.westnordost.streetcomplete.data.osmnotes.CreateNote
-import de.westnordost.streetcomplete.data.osmnotes.CreateNoteDao
-import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestDao
+import de.westnordost.streetcomplete.data.osmnotes.createnotes.CreateNote
+import de.westnordost.streetcomplete.data.osmnotes.createnotes.CreateNoteDao
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestDao
 import de.westnordost.streetcomplete.data.upload.QuestChangesUploadService
 import de.westnordost.streetcomplete.data.visiblequests.OrderedVisibleQuestTypesProvider
 import de.westnordost.streetcomplete.quests.note_discussion.NoteAnswer
@@ -44,16 +44,16 @@ import java.util.concurrent.CopyOnWriteArrayList
 import javax.inject.Singleton
 
 @Singleton class QuestController @Inject constructor(
-    private val osmQuestDB: OsmQuestDao,
-    private val undoOsmQuestDB: UndoOsmQuestDao,
-    private val osmElementDB: MergedElementDao,
-    private val geometryDB: ElementGeometryDao,
-    private val osmNoteQuestDB: OsmNoteQuestDao,
-    private val splitWayDB: OsmQuestSplitWayDao,
-    private val createNoteDB: CreateNoteDao,
-    private val prefs: SharedPreferences,
-    private val questTypesProvider: OrderedVisibleQuestTypesProvider,
-    private val context: Context
+        private val osmQuestDB: OsmQuestDao,
+        private val undoOsmQuestDB: UndoOsmQuestDao,
+        private val osmElementDB: MergedElementDao,
+        private val geometryDB: ElementGeometryDao,
+        private val osmNoteQuestDB: OsmNoteQuestDao,
+        private val splitWayDB: OsmQuestSplitWayDao,
+        private val createNoteDB: CreateNoteDao,
+        private val prefs: SharedPreferences,
+        private val questTypesProvider: OrderedVisibleQuestTypesProvider,
+        private val context: Context
 ) {
 
     private val listeners: MutableList<VisibleQuestListener> = CopyOnWriteArrayList()

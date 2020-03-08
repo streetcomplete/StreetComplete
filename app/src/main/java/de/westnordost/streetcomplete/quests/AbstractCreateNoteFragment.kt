@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.data.osmnotes
+package de.westnordost.streetcomplete.quests
 
 import android.content.res.Configuration
 import android.os.Bundle
@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AbstractBottomSheetFragment
 import de.westnordost.streetcomplete.quests.note_discussion.AttachPhotoFragment
 import de.westnordost.streetcomplete.util.TextChangedWatcher
 import kotlinx.android.synthetic.main.form_leave_note.*

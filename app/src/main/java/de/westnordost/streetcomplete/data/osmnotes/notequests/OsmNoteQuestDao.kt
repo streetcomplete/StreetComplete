@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.data.osmnotes
+package de.westnordost.streetcomplete.data.osmnotes.notequests
 
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase.CONFLICT_IGNORE
@@ -16,15 +16,17 @@ import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.data.ObjectRelationalMapping
+import de.westnordost.streetcomplete.data.osmnotes.NoteMapping
+import de.westnordost.streetcomplete.data.osmnotes.NoteTable
 
-import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestTable.Columns.COMMENT
-import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestTable.Columns.IMAGE_PATHS
-import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestTable.Columns.LAST_UPDATE
-import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestTable.Columns.NOTE_ID
-import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestTable.Columns.QUEST_ID
-import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestTable.Columns.QUEST_STATUS
-import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestTable.NAME
-import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestTable.NAME_MERGED_VIEW
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestTable.Columns.COMMENT
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestTable.Columns.IMAGE_PATHS
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestTable.Columns.LAST_UPDATE
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestTable.Columns.NOTE_ID
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestTable.Columns.QUEST_ID
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestTable.Columns.QUEST_STATUS
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestTable.NAME
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestTable.NAME_MERGED_VIEW
 import de.westnordost.streetcomplete.ktx.*
 
 class OsmNoteQuestDao @Inject constructor(
@@ -147,22 +149,22 @@ private fun createQuery(
 }
 
 class OsmNoteQuestMapping @Inject constructor(
-    private val serializer: Serializer,
-    private val questType: OsmNoteQuestType,
-    private val noteMapping: NoteMapping
+        private val serializer: Serializer,
+        private val questType: OsmNoteQuestType,
+        private val noteMapping: NoteMapping
 ) : ObjectRelationalMapping<OsmNoteQuest> {
 
     override fun toContentValues(obj: OsmNoteQuest) =
         toConstantContentValues(obj) + toUpdatableContentValues(obj)
 
     override fun toObject(cursor: Cursor) = OsmNoteQuest(
-        cursor.getLong(QUEST_ID),
-        noteMapping.toObject(cursor),
-        QuestStatus.valueOf(cursor.getString(QUEST_STATUS)),
-        cursor.getStringOrNull(COMMENT),
-        Date(cursor.getLong(LAST_UPDATE)),
-        questType,
-        cursor.getBlobOrNull(IMAGE_PATHS)?.let { serializer.toObject<ArrayList<String>>(it) }
+            cursor.getLong(QUEST_ID),
+            noteMapping.toObject(cursor),
+            QuestStatus.valueOf(cursor.getString(QUEST_STATUS)),
+            cursor.getStringOrNull(COMMENT),
+            Date(cursor.getLong(LAST_UPDATE)),
+            questType,
+            cursor.getBlobOrNull(IMAGE_PATHS)?.let { serializer.toObject<ArrayList<String>>(it) }
     )
 
     fun toUpdatableContentValues(obj: OsmNoteQuest) = contentValuesOf(

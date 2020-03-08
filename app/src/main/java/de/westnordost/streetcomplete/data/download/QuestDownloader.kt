@@ -10,8 +10,8 @@ import de.westnordost.streetcomplete.data.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.VisibleQuestListener
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.download.OsmQuestDownloader
-import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestDao
-import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestType
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestDao
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestType
 import de.westnordost.streetcomplete.data.osmnotes.OsmNotesDownloader
 import de.westnordost.streetcomplete.data.tiles.DownloadedTilesDao
 import de.westnordost.streetcomplete.data.user.UserController
@@ -24,13 +24,13 @@ import kotlin.math.max
 import kotlin.math.min
 
 class QuestDownloader @Inject constructor(
-    private val osmNotesDownloaderProvider: Provider<OsmNotesDownloader>,
-    private val osmQuestDownloaderProvider: Provider<OsmQuestDownloader>,
-    private val downloadedTilesDao: DownloadedTilesDao,
-    private val osmNoteQuestDb: OsmNoteQuestDao,
-    private val questTypeRegistry: QuestTypeRegistry,
-    private val questTypesProvider: OrderedVisibleQuestTypesProvider,
-    private val userController: UserController
+        private val osmNotesDownloaderProvider: Provider<OsmNotesDownloader>,
+        private val osmQuestDownloaderProvider: Provider<OsmQuestDownloader>,
+        private val downloadedTilesDao: DownloadedTilesDao,
+        private val osmNoteQuestDb: OsmNoteQuestDao,
+        private val questTypeRegistry: QuestTypeRegistry,
+        private val questTypesProvider: OrderedVisibleQuestTypesProvider,
+        private val userController: UserController
 ) {
     // listeners
     var questListener: VisibleQuestListener? = null

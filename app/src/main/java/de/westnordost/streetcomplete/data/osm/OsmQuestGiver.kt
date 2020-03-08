@@ -13,7 +13,7 @@ import de.westnordost.streetcomplete.data.QuestStatus
 import de.westnordost.streetcomplete.data.QuestType
 import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao
-import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestDao
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestDao
 import de.westnordost.streetcomplete.data.visiblequests.OrderedVisibleQuestTypesProvider
 import de.westnordost.streetcomplete.util.enclosingBoundingBox
 import java.util.concurrent.FutureTask
@@ -21,11 +21,11 @@ import java.util.concurrent.FutureTask
 /** Manages creating new quests and removing quests that are no longer applicable for an OSM
  * element locally  */
 class OsmQuestGiver @Inject constructor(
-    private val osmNoteQuestDb: OsmNoteQuestDao,
-    private val questDB: OsmQuestDao,
-    private val elementGeometryDB: ElementGeometryDao,
-    private val questTypesProvider: OrderedVisibleQuestTypesProvider,
-    private val countryBoundariesFuture: FutureTask<CountryBoundaries>
+        private val osmNoteQuestDb: OsmNoteQuestDao,
+        private val questDB: OsmQuestDao,
+        private val elementGeometryDB: ElementGeometryDao,
+        private val questTypesProvider: OrderedVisibleQuestTypesProvider,
+        private val countryBoundariesFuture: FutureTask<CountryBoundaries>
 ) {
 
     data class QuestUpdates(val createdQuests: List<OsmQuest>, val removedQuestIds: List<Long>)

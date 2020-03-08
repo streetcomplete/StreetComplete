@@ -14,11 +14,11 @@ import de.westnordost.streetcomplete.data.osm.persist.NodeTable
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestTable
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestSplitWayTable
 import de.westnordost.streetcomplete.data.osm.persist.UndoOsmQuestTable
-import de.westnordost.streetcomplete.data.osmnotes.CreateNoteTable
+import de.westnordost.streetcomplete.data.osmnotes.createnotes.CreateNoteTable
 import de.westnordost.streetcomplete.data.osmnotes.NoteTable
 import de.westnordost.streetcomplete.data.osm.persist.RelationTable
 import de.westnordost.streetcomplete.data.osm.persist.WayTable
-import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestTable
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestTable
 import de.westnordost.streetcomplete.data.visiblequests.QuestVisibilityTable
 import de.westnordost.streetcomplete.data.user.QuestStatisticsTable
 import de.westnordost.streetcomplete.data.tiles.DownloadedTilesTable

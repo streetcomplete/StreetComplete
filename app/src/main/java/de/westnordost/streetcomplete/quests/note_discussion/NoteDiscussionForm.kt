@@ -20,7 +20,7 @@ import javax.inject.Inject
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.OsmModule
-import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestDao
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestDao
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
 import de.westnordost.osmapi.notes.NoteComment
 import de.westnordost.streetcomplete.util.BitmapUtil

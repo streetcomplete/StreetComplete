@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.data.osmnotes
+package de.westnordost.streetcomplete.data.osmnotes.notequests
 
 import de.westnordost.osmapi.notes.Note
 import org.junit.Before
@@ -11,6 +11,8 @@ import org.junit.Test
 
 import org.mockito.Mockito.*
 import de.westnordost.osmapi.map.data.OsmLatLon
+import de.westnordost.streetcomplete.data.osmnotes.ImageUploadException
+import de.westnordost.streetcomplete.data.osmnotes.NoteDao
 import de.westnordost.streetcomplete.data.user.StatisticsManager
 import de.westnordost.streetcomplete.mock
 import org.junit.Assert.assertEquals
@@ -47,7 +49,7 @@ class OsmNoteQuestsChangesUploaderTest {
     }
 
     @Test fun `close each uploaded quest in local DB and call listener`() {
-        val quests = listOf( createQuest(), createQuest())
+        val quests = listOf(createQuest(), createQuest())
 
         on(questDB.getAll(statusIn = listOf(QuestStatus.ANSWERED))).thenReturn(quests)
         on(singleNoteUploader.upload(any())).thenReturn(createNote())
@@ -65,7 +67,7 @@ class OsmNoteQuestsChangesUploaderTest {
     }
 
     @Test fun `delete each unsuccessfully uploaded quest in local DB and call listener`() {
-        val quests = listOf( createQuest(), createQuest())
+        val quests = listOf(createQuest(), createQuest())
 
         on(questDB.getAll(statusIn = listOf(QuestStatus.ANSWERED))).thenReturn(quests)
         on(singleNoteUploader.upload(any())).thenThrow(ConflictException())

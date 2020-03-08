@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.data.osmnotes
+package de.westnordost.streetcomplete.data.osmnotes.createnotes
 
 import android.util.Log
 import de.westnordost.osmapi.common.SingleElementHandler
@@ -8,6 +8,9 @@ import de.westnordost.osmapi.notes.Note
 import de.westnordost.osmapi.notes.NotesDao
 import de.westnordost.streetcomplete.ApplicationConstants.USER_AGENT
 import de.westnordost.streetcomplete.data.osm.upload.ConflictException
+import de.westnordost.streetcomplete.data.osmnotes.ImageActivationException
+import de.westnordost.streetcomplete.data.osmnotes.StreetCompleteImageUploader
+import de.westnordost.streetcomplete.data.osmnotes.uploadAndGetAttachedPhotosText
 import java.util.*
 import javax.inject.Inject
 

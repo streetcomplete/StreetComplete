@@ -9,8 +9,8 @@ import javax.inject.Inject;
 
 import de.westnordost.streetcomplete.Prefs;
 import de.westnordost.streetcomplete.data.QuestStatus;
-import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuest;
-import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestDao;
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest;
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestDao;
 
 public class ApplyNoteVisibilityChangedTask extends AsyncTask<Void, Void, Void>
 {

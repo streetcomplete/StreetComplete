@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.data.osmnotes
+package de.westnordost.streetcomplete.data.osmnotes.createnotes
 
 object CreateNoteTable {
     const val NAME = "osm_create_notes"

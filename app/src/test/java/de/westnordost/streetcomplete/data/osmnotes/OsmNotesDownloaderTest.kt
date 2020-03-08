@@ -10,6 +10,10 @@ import de.westnordost.osmapi.notes.NotesDao
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.any
 import de.westnordost.streetcomplete.data.QuestStatus
+import de.westnordost.streetcomplete.data.osmnotes.createnotes.CreateNoteDao
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestDao
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestType
 import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.on
 import org.junit.Assert.assertEquals
@@ -46,8 +50,8 @@ class OsmNotesDownloaderTest {
         val note2 = createANote(5L)
 
         on(noteQuestDB.getAll(isNull(), any(), isNull())).thenReturn(listOf(
-            OsmNoteQuest(12L, note1, QuestStatus.NEW, null, Date(), OsmNoteQuestType(), null),
-            OsmNoteQuest(13L, note2, QuestStatus.NEW, null, Date(), OsmNoteQuestType(), null)
+                OsmNoteQuest(12L, note1, QuestStatus.NEW, null, Date(), OsmNoteQuestType(), null),
+                OsmNoteQuest(13L, note2, QuestStatus.NEW, null, Date(), OsmNoteQuestType(), null)
         ))
 
         doAnswer { invocation: InvocationOnMock ->

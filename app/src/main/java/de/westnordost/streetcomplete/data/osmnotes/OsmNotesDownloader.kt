@@ -15,15 +15,19 @@ import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.notes.Note
 import de.westnordost.osmapi.notes.NoteComment
 import de.westnordost.osmapi.notes.NotesDao
+import de.westnordost.streetcomplete.data.osmnotes.createnotes.CreateNoteDao
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestDao
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestType
 
 class OsmNotesDownloader @Inject constructor(
-    private val noteServer: NotesDao,
-    private val noteDB: NoteDao,
-    private val noteQuestDB: OsmNoteQuestDao,
-    private val createNoteDB: CreateNoteDao,
-    private val preferences: SharedPreferences,
-    private val questType: OsmNoteQuestType,
-    private val avatarsDownloader: OsmAvatarsDownloader
+        private val noteServer: NotesDao,
+        private val noteDB: NoteDao,
+        private val noteQuestDB: OsmNoteQuestDao,
+        private val createNoteDB: CreateNoteDao,
+        private val preferences: SharedPreferences,
+        private val questType: OsmNoteQuestType,
+        private val avatarsDownloader: OsmAvatarsDownloader
 ) {
 
     var questListener: VisibleQuestListener? = null

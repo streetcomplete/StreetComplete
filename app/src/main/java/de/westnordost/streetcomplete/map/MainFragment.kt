@@ -43,7 +43,7 @@ import de.westnordost.streetcomplete.data.VisibleQuestListener
 import de.westnordost.streetcomplete.data.osm.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.OsmQuest
 import de.westnordost.streetcomplete.data.osm.changes.SplitPolylineAtPosition
-import de.westnordost.streetcomplete.data.osmnotes.CreateNoteFragment
+import de.westnordost.streetcomplete.quests.CreateNoteFragment
 import de.westnordost.streetcomplete.ktx.getLocationInWindow
 import de.westnordost.streetcomplete.ktx.toast
 import de.westnordost.streetcomplete.location.*

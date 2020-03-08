@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.data.osmnotes
+package de.westnordost.streetcomplete.data.osmnotes.createnotes
 
 import android.database.Cursor
 import android.database.sqlite.SQLiteOpenHelper
@@ -12,15 +12,15 @@ import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.data.ObjectRelationalMapping
 import de.westnordost.streetcomplete.data.osm.ElementKey
-import de.westnordost.streetcomplete.data.osmnotes.CreateNoteTable.Columns.ELEMENT_ID
-import de.westnordost.streetcomplete.data.osmnotes.CreateNoteTable.Columns.ELEMENT_TYPE
-import de.westnordost.streetcomplete.data.osmnotes.CreateNoteTable.Columns.ID
-import de.westnordost.streetcomplete.data.osmnotes.CreateNoteTable.Columns.IMAGE_PATHS
-import de.westnordost.streetcomplete.data.osmnotes.CreateNoteTable.Columns.LATITUDE
-import de.westnordost.streetcomplete.data.osmnotes.CreateNoteTable.Columns.LONGITUDE
-import de.westnordost.streetcomplete.data.osmnotes.CreateNoteTable.Columns.QUEST_TITLE
-import de.westnordost.streetcomplete.data.osmnotes.CreateNoteTable.Columns.TEXT
-import de.westnordost.streetcomplete.data.osmnotes.CreateNoteTable.NAME
+import de.westnordost.streetcomplete.data.osmnotes.createnotes.CreateNoteTable.Columns.ELEMENT_ID
+import de.westnordost.streetcomplete.data.osmnotes.createnotes.CreateNoteTable.Columns.ELEMENT_TYPE
+import de.westnordost.streetcomplete.data.osmnotes.createnotes.CreateNoteTable.Columns.ID
+import de.westnordost.streetcomplete.data.osmnotes.createnotes.CreateNoteTable.Columns.IMAGE_PATHS
+import de.westnordost.streetcomplete.data.osmnotes.createnotes.CreateNoteTable.Columns.LATITUDE
+import de.westnordost.streetcomplete.data.osmnotes.createnotes.CreateNoteTable.Columns.LONGITUDE
+import de.westnordost.streetcomplete.data.osmnotes.createnotes.CreateNoteTable.Columns.QUEST_TITLE
+import de.westnordost.streetcomplete.data.osmnotes.createnotes.CreateNoteTable.Columns.TEXT
+import de.westnordost.streetcomplete.data.osmnotes.createnotes.CreateNoteTable.NAME
 import de.westnordost.streetcomplete.ktx.*
 import de.westnordost.streetcomplete.util.Serializer
 
@@ -88,15 +88,15 @@ class CreateNoteMapping @Inject constructor(private val serializer: Serializer)
     )
 
     override fun toObject(cursor: Cursor) = CreateNote(
-        cursor.getLong(ID),
-        cursor.getString(TEXT),
-        OsmLatLon(cursor.getDouble(LATITUDE), cursor.getDouble(LONGITUDE)),
-        cursor.getStringOrNull(QUEST_TITLE),
-        cursor.getStringOrNull(ELEMENT_TYPE)?.let { type ->
-            cursor.getLongOrNull(ELEMENT_ID)?.let { id ->
-                ElementKey(Element.Type.valueOf(type), id)
-            }
-        },
-        cursor.getBlobOrNull(IMAGE_PATHS)?.let { serializer.toObject<ArrayList<String>>(it) }
+            cursor.getLong(ID),
+            cursor.getString(TEXT),
+            OsmLatLon(cursor.getDouble(LATITUDE), cursor.getDouble(LONGITUDE)),
+            cursor.getStringOrNull(QUEST_TITLE),
+            cursor.getStringOrNull(ELEMENT_TYPE)?.let { type ->
+                cursor.getLongOrNull(ELEMENT_ID)?.let { id ->
+                    ElementKey(Element.Type.valueOf(type), id)
+                }
+            },
+            cursor.getBlobOrNull(IMAGE_PATHS)?.let { serializer.toObject<ArrayList<String>>(it) }
     )
 }

@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.data.osmnotes
+package de.westnordost.streetcomplete.data.osmnotes.createnotes
 
 import org.junit.Before
 import org.junit.Test
@@ -8,6 +8,9 @@ import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.data.osm.ElementKey
+import de.westnordost.streetcomplete.data.osmnotes.createnotes.CreateNote
+import de.westnordost.streetcomplete.data.osmnotes.createnotes.CreateNoteDao
+import de.westnordost.streetcomplete.data.osmnotes.createnotes.CreateNoteMapping
 
 import org.junit.Assert.*
 
@@ -28,7 +31,7 @@ class CreateNoteDaoTest : ApplicationDbTestCase() {
 
     @Test fun addAndGet() {
         val note = CreateNote(null, "text", OsmLatLon(3.0, 5.0), "title",
-            ElementKey(Element.Type.NODE, 132L), arrayListOf("hello","hey"))
+                ElementKey(Element.Type.NODE, 132L), arrayListOf("hello", "hey"))
 
         assertTrue(dao.add(note))
         val dbNote = dao.get(note.id!!)!!

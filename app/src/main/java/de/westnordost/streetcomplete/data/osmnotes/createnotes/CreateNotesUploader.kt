@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.data.osmnotes
+package de.westnordost.streetcomplete.data.osmnotes.createnotes
 
 import android.util.Log
 
@@ -10,6 +10,10 @@ import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.notes.Note
 import de.westnordost.streetcomplete.data.osm.upload.ConflictException
 import de.westnordost.streetcomplete.data.osm.upload.ElementDeletedException
+import de.westnordost.streetcomplete.data.osmnotes.*
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestDao
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestType
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
 import de.westnordost.streetcomplete.data.upload.Uploader
 import de.westnordost.streetcomplete.data.user.StatisticsManager
@@ -17,13 +21,13 @@ import java.util.concurrent.atomic.AtomicBoolean
 
 /** Gets all create notes from local DB and uploads them via the OSM API */
 class CreateNotesUploader @Inject constructor(
-    private val createNoteDB: CreateNoteDao,
-    private val noteDB: NoteDao,
-    private val noteQuestDB: OsmNoteQuestDao,
-    private val mapDataDao: MapDataDao,
-    private val questType: OsmNoteQuestType,
-    private val statisticsManager: StatisticsManager,
-    private val singleCreateNoteUploader: SingleCreateNoteUploader
+        private val createNoteDB: CreateNoteDao,
+        private val noteDB: NoteDao,
+        private val noteQuestDB: OsmNoteQuestDao,
+        private val mapDataDao: MapDataDao,
+        private val questType: OsmNoteQuestType,
+        private val statisticsManager: StatisticsManager,
+        private val singleCreateNoteUploader: SingleCreateNoteUploader
 ): Uploader {
 
     override var uploadedChangeListener: OnUploadedChangeListener? = null

@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.data.osmnotes
+package de.westnordost.streetcomplete.data.osmnotes.notequests
 
 import org.junit.Before
 import org.junit.Test
@@ -10,6 +10,8 @@ import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.osmapi.notes.Note
+import de.westnordost.streetcomplete.data.osmnotes.NoteDao
+import de.westnordost.streetcomplete.data.osmnotes.NoteMapping
 
 import org.junit.Assert.*
 
@@ -178,7 +180,7 @@ class OsmNoteQuestDaoTest : ApplicationDbTestCase() {
         status: QuestStatus = QuestStatus.NEW,
         comment: String? = null,
         imagePaths: List<String>? = null
-    ) = OsmNoteQuest( null, note, status, comment, Date(5000), questType, imagePaths)
+    ) = OsmNoteQuest(null, note, status, comment, Date(5000), questType, imagePaths)
 
     private fun addToDaos(vararg quests: OsmNoteQuest) {
         for (quest in quests) {
