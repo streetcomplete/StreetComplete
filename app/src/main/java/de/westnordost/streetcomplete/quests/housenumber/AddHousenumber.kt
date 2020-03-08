@@ -9,9 +9,9 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
 import de.westnordost.streetcomplete.data.osm.*
-import de.westnordost.streetcomplete.data.osm.tql.DEFAULT_MAX_QUESTS
-import de.westnordost.streetcomplete.data.osm.tql.toGlobalOverpassBBox
-import de.westnordost.streetcomplete.data.osm.tql.toOverpassBboxFilter
+import de.westnordost.streetcomplete.data.tagfilters.DEFAULT_MAX_QUESTS
+import de.westnordost.streetcomplete.data.tagfilters.toGlobalOverpassBBox
+import de.westnordost.streetcomplete.data.tagfilters.toOverpassBboxFilter
 import de.westnordost.streetcomplete.util.FlattenIterable
 import de.westnordost.streetcomplete.util.LatLonRaster
 import de.westnordost.streetcomplete.util.enclosingBoundingBox

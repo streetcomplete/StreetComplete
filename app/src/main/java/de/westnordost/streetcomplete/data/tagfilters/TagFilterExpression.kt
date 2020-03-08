@@ -1,9 +1,9 @@
-package de.westnordost.streetcomplete.data.osm.tql
+package de.westnordost.streetcomplete.data.tagfilters
 
 import de.westnordost.osmapi.map.data.Element
-import de.westnordost.streetcomplete.data.osm.tql.ElementsTypeFilter.NODES
-import de.westnordost.streetcomplete.data.osm.tql.ElementsTypeFilter.WAYS
-import de.westnordost.streetcomplete.data.osm.tql.ElementsTypeFilter.RELATIONS
+import de.westnordost.streetcomplete.data.tagfilters.ElementsTypeFilter.NODES
+import de.westnordost.streetcomplete.data.tagfilters.ElementsTypeFilter.WAYS
+import de.westnordost.streetcomplete.data.tagfilters.ElementsTypeFilter.RELATIONS
 
 /** Represents a parse result of a string in filter syntax, i.e.
  *  "ways with (highway = residential or highway = tertiary) and !name"  */

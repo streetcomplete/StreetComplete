@@ -7,8 +7,8 @@ import de.westnordost.streetcomplete.data.meta.OsmTaggings
 import de.westnordost.streetcomplete.data.osm.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
-import de.westnordost.streetcomplete.data.osm.tql.getQuestPrintStatement
-import de.westnordost.streetcomplete.data.osm.tql.toGlobalOverpassBBox
+import de.westnordost.streetcomplete.data.tagfilters.getQuestPrintStatement
+import de.westnordost.streetcomplete.data.tagfilters.toGlobalOverpassBBox
 import de.westnordost.streetcomplete.quests.DateUtil
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 

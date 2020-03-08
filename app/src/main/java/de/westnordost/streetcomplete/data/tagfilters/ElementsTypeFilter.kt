@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.data.osm.tql
+package de.westnordost.streetcomplete.data.tagfilters
 
 /** Enum that specifies which type(s) of elements to retrieve  */
 enum class ElementsTypeFilter(val tqlName: String, val oqlName: String) {

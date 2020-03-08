@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.data.osm.tql
+package de.westnordost.streetcomplete.data.tagfilters
 
 /** Builds a boolean expression. Basically a BooleanExpression with a cursor.  */
 class BooleanExpressionBuilder<I : Matcher<T>, T> {

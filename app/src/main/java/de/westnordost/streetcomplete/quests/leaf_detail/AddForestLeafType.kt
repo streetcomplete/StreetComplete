@@ -7,8 +7,8 @@ import de.westnordost.streetcomplete.data.osm.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
-import de.westnordost.streetcomplete.data.osm.tql.getQuestPrintStatement
-import de.westnordost.streetcomplete.data.osm.tql.toGlobalOverpassBBox
+import de.westnordost.streetcomplete.data.tagfilters.getQuestPrintStatement
+import de.westnordost.streetcomplete.data.tagfilters.toGlobalOverpassBBox
 
 class AddForestLeafType(private val overpassServer: OverpassMapDataAndGeometryDao) : OsmElementQuestType<String> {
     override val commitMessage = "Add leaf type"
