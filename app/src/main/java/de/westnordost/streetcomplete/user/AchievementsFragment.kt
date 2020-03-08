@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.achievements.Achievement
+import de.westnordost.streetcomplete.data.user.achievements.Achievement
 import de.westnordost.streetcomplete.data.user.UserController
 import de.westnordost.streetcomplete.ktx.awaitLayout
 import de.westnordost.streetcomplete.ktx.toDp

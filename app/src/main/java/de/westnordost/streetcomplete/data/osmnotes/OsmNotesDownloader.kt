@@ -6,8 +6,8 @@ import android.util.Log
 import javax.inject.Inject
 
 import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.data.QuestGroup
-import de.westnordost.streetcomplete.data.QuestStatus
+import de.westnordost.streetcomplete.data.quest.QuestGroup
+import de.westnordost.streetcomplete.data.quest.QuestStatus
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.VisibleQuestListener
 import de.westnordost.osmapi.map.data.BoundingBox

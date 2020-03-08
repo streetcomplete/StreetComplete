@@ -5,7 +5,7 @@ import androidx.core.content.contentValuesOf
 
 import javax.inject.Inject
 
-import de.westnordost.streetcomplete.data.QuestType
+import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.visiblequests.QuestVisibilityTable.Columns.QUEST_TYPE
 import de.westnordost.streetcomplete.data.visiblequests.QuestVisibilityTable.Columns.VISIBILITY
 import de.westnordost.streetcomplete.data.visiblequests.QuestVisibilityTable.NAME

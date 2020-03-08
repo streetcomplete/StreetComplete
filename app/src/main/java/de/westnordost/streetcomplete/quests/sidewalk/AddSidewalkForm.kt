@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.annotation.AnyThread
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.StreetSideRotater
 import de.westnordost.streetcomplete.view.Item

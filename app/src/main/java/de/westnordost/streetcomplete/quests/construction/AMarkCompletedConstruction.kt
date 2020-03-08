@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.quests.construction
 
 import de.westnordost.streetcomplete.data.meta.OsmTaggings
-import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.quests.DateUtil
 

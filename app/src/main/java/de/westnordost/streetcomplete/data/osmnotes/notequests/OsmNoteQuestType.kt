@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.data.osmnotes.notequests
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.QuestType
+import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.quests.note_discussion.NoteAnswer
 import de.westnordost.streetcomplete.quests.note_discussion.NoteDiscussionForm
 

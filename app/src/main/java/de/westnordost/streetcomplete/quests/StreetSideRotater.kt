@@ -5,7 +5,7 @@ import android.os.Looper
 import androidx.annotation.AnyThread
 import android.view.View
 
-import de.westnordost.streetcomplete.data.osm.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.util.centerLineOfPolyline
 import de.westnordost.streetcomplete.util.initialBearingTo
 import de.westnordost.streetcomplete.view.StreetSideSelectPuzzle

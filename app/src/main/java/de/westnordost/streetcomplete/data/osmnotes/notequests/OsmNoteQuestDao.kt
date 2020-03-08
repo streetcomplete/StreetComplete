@@ -9,7 +9,7 @@ import androidx.core.content.contentValuesOf
 import java.util.Date
 
 import javax.inject.Inject
-import de.westnordost.streetcomplete.data.QuestStatus
+import de.westnordost.streetcomplete.data.quest.QuestStatus
 import de.westnordost.streetcomplete.data.WhereSelectionBuilder
 import de.westnordost.streetcomplete.util.Serializer
 import de.westnordost.osmapi.map.data.BoundingBox
@@ -75,27 +75,27 @@ class OsmNoteQuestDao @Inject constructor(
     }
 
     fun getAll(
-        statusIn: Collection<QuestStatus>? = null,
-        bounds: BoundingBox? = null,
-        changedBefore: Long? = null
+            statusIn: Collection<QuestStatus>? = null,
+            bounds: BoundingBox? = null,
+            changedBefore: Long? = null
     ): List<OsmNoteQuest> {
         val qb = createQuery(statusIn, bounds, changedBefore)
         return db.query(NAME_MERGED_VIEW, null, qb) { mapping.toObject(it) }
     }
 
     fun getCount(
-        statusIn: Collection<QuestStatus>? = null,
-        bounds: BoundingBox? = null,
-        changedBefore: Long? = null
+            statusIn: Collection<QuestStatus>? = null,
+            bounds: BoundingBox? = null,
+            changedBefore: Long? = null
     ): Int {
         val qb = createQuery(statusIn, bounds, changedBefore)
         return db.queryOne(NAME_MERGED_VIEW, arrayOf("COUNT(*)"), qb) { it.getInt(0) } ?: 0
     }
 
     fun deleteAll(
-        statusIn: Collection<QuestStatus>? = null,
-        bounds: BoundingBox? = null,
-        changedBefore: Long? = null
+            statusIn: Collection<QuestStatus>? = null,
+            bounds: BoundingBox? = null,
+            changedBefore: Long? = null
     ): Int {
         val qb = createQuery(statusIn, bounds, changedBefore)
         return db.delete(NAME, qb.where, qb.args)
@@ -119,9 +119,9 @@ class OsmNoteQuestDao @Inject constructor(
 }
 
 private fun createQuery(
-    statusIn: Collection<QuestStatus>? = null,
-    bounds: BoundingBox? = null,
-    changedBefore: Long? = null
+        statusIn: Collection<QuestStatus>? = null,
+        bounds: BoundingBox? = null,
+        changedBefore: Long? = null
 ) = WhereSelectionBuilder().apply {
     if (statusIn != null && statusIn.isNotEmpty()) {
         if (statusIn.size == 1) {

@@ -2,10 +2,10 @@ package de.westnordost.streetcomplete.quests.max_speed
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.OsmTaggings
-import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
-import de.westnordost.streetcomplete.data.osm.AllCountriesExcept
+import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryDao
+import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 
 class AddMaxSpeed(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<MaxSpeedAnswer>(o) {
 

@@ -18,7 +18,7 @@ import android.view.animation.OvershootInterpolator
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.achievements.Achievement
+import de.westnordost.streetcomplete.data.user.achievements.Achievement
 import de.westnordost.streetcomplete.ktx.tryStartActivity
 import de.westnordost.streetcomplete.util.Transforms
 import de.westnordost.streetcomplete.util.animateFrom

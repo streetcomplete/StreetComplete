@@ -9,6 +9,7 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 import de.westnordost.streetcomplete.ApplicationConstants;
+import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry;
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderList;
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeDao;
 import de.westnordost.streetcomplete.util.KryoSerializer;

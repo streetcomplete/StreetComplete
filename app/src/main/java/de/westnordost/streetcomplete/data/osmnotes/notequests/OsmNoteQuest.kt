@@ -1,13 +1,13 @@
 package de.westnordost.streetcomplete.data.osmnotes.notequests
 
 import java.util.Date
-import de.westnordost.streetcomplete.data.Quest
-import de.westnordost.streetcomplete.data.QuestStatus
-import de.westnordost.streetcomplete.data.QuestType
-import de.westnordost.streetcomplete.data.osm.ElementGeometry
+import de.westnordost.streetcomplete.data.quest.Quest
+import de.westnordost.streetcomplete.data.quest.QuestStatus
+import de.westnordost.streetcomplete.data.quest.QuestType
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.notes.Note
-import de.westnordost.streetcomplete.data.osm.ElementPointGeometry
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPointGeometry
 
 data class OsmNoteQuest(
         override var id: Long?,

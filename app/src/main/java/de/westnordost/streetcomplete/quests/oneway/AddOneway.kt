@@ -7,20 +7,20 @@ import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.map.data.Way
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
+import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryDao
 import de.westnordost.streetcomplete.data.tagfilters.FiltersParser
 import de.westnordost.streetcomplete.quests.oneway.data.TrafficFlowSegment
 import de.westnordost.streetcomplete.quests.oneway.data.TrafficFlowSegmentsDao
 import de.westnordost.streetcomplete.quests.oneway.data.WayTrafficFlowDao
 
 class AddOneway(
-    private val overpassMapDataDao: OverpassMapDataAndGeometryDao,
-    private val trafficFlowSegmentsDao: TrafficFlowSegmentsDao,
-    private val db: WayTrafficFlowDao
+        private val overpassMapDataDao: OverpassMapDataAndGeometryDao,
+        private val trafficFlowSegmentsDao: TrafficFlowSegmentsDao,
+        private val db: WayTrafficFlowDao
 ) : OsmElementQuestType<OnewayAnswer> {
 
     private val tagFilters = """

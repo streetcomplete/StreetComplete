@@ -13,8 +13,8 @@ import android.widget.Toast
 
 import javax.inject.Provider
 
-import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao
-import de.westnordost.streetcomplete.data.tiles.DownloadedTilesDao
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestDao
+import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
 import de.westnordost.streetcomplete.ktx.toast
 import de.westnordost.streetcomplete.settings.questselection.QuestSelectionFragment
 import javax.inject.Inject

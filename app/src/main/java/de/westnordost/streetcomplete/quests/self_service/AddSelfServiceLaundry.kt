@@ -1,9 +1,9 @@
 package de.westnordost.streetcomplete.quests.self_service
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
+import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryDao
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
 class AddSelfServiceLaundry(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<Boolean>(o) {

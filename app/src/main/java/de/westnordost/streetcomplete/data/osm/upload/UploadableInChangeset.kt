@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.upload
 
 import de.westnordost.osmapi.map.data.Element
-import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 
 interface UploadableInChangeset {
     val source: String

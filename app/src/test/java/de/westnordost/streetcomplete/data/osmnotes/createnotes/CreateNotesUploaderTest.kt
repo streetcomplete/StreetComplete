@@ -13,7 +13,7 @@ import de.westnordost.streetcomplete.any
 import org.mockito.Mockito.*
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.osmapi.notes.NoteComment
-import de.westnordost.streetcomplete.data.osm.ElementKey
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osmnotes.ImageUploadException
 import de.westnordost.streetcomplete.data.osmnotes.NoteDao
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestDao

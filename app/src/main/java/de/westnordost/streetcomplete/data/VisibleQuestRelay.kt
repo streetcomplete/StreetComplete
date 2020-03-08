@@ -1,5 +1,8 @@
 package de.westnordost.streetcomplete.data
 
+import de.westnordost.streetcomplete.data.quest.Quest
+import de.westnordost.streetcomplete.data.quest.QuestGroup
+
 /** Threadsafe relay for VisibleQuestListener
  * (setting the listener and calling the listener methods can safely be done from different threads)  */
 class VisibleQuestRelay : VisibleQuestListener {

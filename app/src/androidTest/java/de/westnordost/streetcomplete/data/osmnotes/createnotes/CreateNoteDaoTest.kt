@@ -7,10 +7,7 @@ import de.westnordost.streetcomplete.data.ApplicationDbTestCase
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.OsmLatLon
-import de.westnordost.streetcomplete.data.osm.ElementKey
-import de.westnordost.streetcomplete.data.osmnotes.createnotes.CreateNote
-import de.westnordost.streetcomplete.data.osmnotes.createnotes.CreateNoteDao
-import de.westnordost.streetcomplete.data.osmnotes.createnotes.CreateNoteMapping
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 
 import org.junit.Assert.*
 

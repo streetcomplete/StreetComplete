@@ -21,8 +21,8 @@ import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.QuestType
-import de.westnordost.streetcomplete.data.QuestTypeRegistry
+import de.westnordost.streetcomplete.data.quest.QuestType
+import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.user.QuestStatisticsDao
 import de.westnordost.streetcomplete.ktx.awaitLayout
 import de.westnordost.streetcomplete.ktx.toDp

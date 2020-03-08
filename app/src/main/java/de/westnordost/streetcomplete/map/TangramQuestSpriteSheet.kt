@@ -9,16 +9,16 @@ import com.mapzen.tangram.SceneUpdate
 import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.QuestTypeRegistry
+import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import java.util.*
 import javax.inject.Inject
 import kotlin.math.ceil
 import kotlin.math.sqrt
 
 class TangramQuestSpriteSheet @Inject constructor(
-    private val context: Context,
-    private val questTypeRegistry: QuestTypeRegistry,
-    private val prefs: SharedPreferences
+        private val context: Context,
+        private val questTypeRegistry: QuestTypeRegistry,
+        private val prefs: SharedPreferences
 ) {
     val sceneUpdates: List<SceneUpdate> by lazy {
         val isSpriteSheetCurrent = prefs.getInt(Prefs.QUEST_SPRITES_VERSION, 0) == BuildConfig.VERSION_CODE

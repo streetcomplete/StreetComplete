@@ -15,8 +15,8 @@ import de.westnordost.streetcomplete.HasTitle
 import javax.inject.Inject
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.QuestType
-import de.westnordost.streetcomplete.data.QuestTypeRegistry
+import de.westnordost.streetcomplete.data.quest.QuestType
+import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.download.QuestDownloadService
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestType
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderList

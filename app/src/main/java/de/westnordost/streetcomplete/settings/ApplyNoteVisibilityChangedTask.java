@@ -8,7 +8,7 @@ import java.lang.ref.WeakReference;
 import javax.inject.Inject;
 
 import de.westnordost.streetcomplete.Prefs;
-import de.westnordost.streetcomplete.data.QuestStatus;
+import de.westnordost.streetcomplete.data.quest.QuestStatus;
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest;
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestDao;
 

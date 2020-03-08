@@ -3,13 +3,13 @@ package de.westnordost.streetcomplete.data.download
 
 import javax.inject.Inject
 
-import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao
-import de.westnordost.streetcomplete.data.tiles.DownloadedTilesDao
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestDao
+import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
 import de.westnordost.streetcomplete.data.visiblequests.OrderedVisibleQuestTypesProvider
 
 class WifiAutoDownloadStrategy @Inject constructor(
-    osmQuestDB: OsmQuestDao, downloadedTilesDao: DownloadedTilesDao,
-    questTypes: OrderedVisibleQuestTypesProvider
+        osmQuestDB: OsmQuestDao, downloadedTilesDao: DownloadedTilesDao,
+        questTypes: OrderedVisibleQuestTypesProvider
 ) : AActiveRadiusStrategy(osmQuestDB, downloadedTilesDao, questTypes) {
 
     /** Let's assume that if the user is on wifi, he is either at home, at work, in the hotel, at a

@@ -5,9 +5,7 @@ import android.content.res.Configuration
 import android.graphics.PointF
 import android.graphics.drawable.Animatable
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import android.widget.RelativeLayout
 import androidx.annotation.UiThread
@@ -21,11 +19,11 @@ import de.westnordost.osmapi.map.data.Way
 import de.westnordost.streetcomplete.Injector
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.QuestGroup
-import de.westnordost.streetcomplete.data.osm.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.data.osm.changes.SplitAtLinePosition
-import de.westnordost.streetcomplete.data.osm.changes.SplitAtPoint
-import de.westnordost.streetcomplete.data.osm.changes.SplitPolylineAtPosition
+import de.westnordost.streetcomplete.data.quest.QuestGroup
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.data.osm.splitway.SplitAtLinePosition
+import de.westnordost.streetcomplete.data.osm.splitway.SplitAtPoint
+import de.westnordost.streetcomplete.data.osm.splitway.SplitPolylineAtPosition
 import de.westnordost.streetcomplete.ktx.*
 import de.westnordost.streetcomplete.sound.SoundFx
 import de.westnordost.streetcomplete.util.alongTrackDistanceTo

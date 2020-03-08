@@ -15,8 +15,8 @@ import android.view.animation.OvershootInterpolator
 import androidx.core.animation.doOnStart
 import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.QuestType
-import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
+import de.westnordost.streetcomplete.data.quest.QuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.ktx.tryStartActivity
 import de.westnordost.streetcomplete.util.Transforms
 import de.westnordost.streetcomplete.util.animateFrom

@@ -3,10 +3,10 @@ package de.westnordost.streetcomplete.quests.leaf_detail
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
+import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryDao
 import de.westnordost.streetcomplete.data.tagfilters.getQuestPrintStatement
 import de.westnordost.streetcomplete.data.tagfilters.toGlobalOverpassBBox
 

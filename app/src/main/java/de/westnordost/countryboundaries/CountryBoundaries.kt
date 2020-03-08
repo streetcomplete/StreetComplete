@@ -2,10 +2,10 @@ package de.westnordost.countryboundaries
 
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.LatLon
-import de.westnordost.streetcomplete.data.osm.AllCountries
-import de.westnordost.streetcomplete.data.osm.AllCountriesExcept
-import de.westnordost.streetcomplete.data.osm.Countries
-import de.westnordost.streetcomplete.data.osm.NoCountriesExcept
+import de.westnordost.streetcomplete.data.quest.AllCountries
+import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
+import de.westnordost.streetcomplete.data.quest.Countries
+import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.ktx.containsAny
 
 /** Whether the given position is in any of the given countries */

@@ -10,8 +10,8 @@ import com.mapzen.tangram.SceneUpdate
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.QuestGroup
-import de.westnordost.streetcomplete.data.osm.ElementGeometry
+import de.westnordost.streetcomplete.data.quest.QuestGroup
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.ktx.toPx
 import de.westnordost.streetcomplete.map.QuestPinLayerManager.Companion.MARKER_QUEST_GROUP
 import de.westnordost.streetcomplete.map.QuestPinLayerManager.Companion.MARKER_QUEST_ID

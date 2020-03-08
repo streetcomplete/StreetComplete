@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete;
 
+import de.westnordost.streetcomplete.data.user.achievements.AchievementsModule;
+
 public enum Injector
 {
 	instance;
@@ -10,6 +12,7 @@ public enum Injector
 	{
 		applicationComponent = DaggerApplicationComponent.builder()
 				.applicationModule(new ApplicationModule(app))
+				.achievementsModule(AchievementsModule.INSTANCE)
 				.build();
 	}
 

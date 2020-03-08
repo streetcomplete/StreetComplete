@@ -9,7 +9,7 @@ import de.westnordost.osmapi.notes.NoteComment
 import de.westnordost.osmapi.notes.NotesDao
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.any
-import de.westnordost.streetcomplete.data.QuestStatus
+import de.westnordost.streetcomplete.data.quest.QuestStatus
 import de.westnordost.streetcomplete.data.osmnotes.createnotes.CreateNoteDao
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestDao

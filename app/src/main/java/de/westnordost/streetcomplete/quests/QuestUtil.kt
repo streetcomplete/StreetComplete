@@ -6,8 +6,8 @@ import android.text.Spanned
 
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmfeatures.FeatureDictionary
-import de.westnordost.streetcomplete.data.QuestType
-import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
+import de.westnordost.streetcomplete.data.quest.QuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import java.util.*
 import java.util.concurrent.FutureTask
 

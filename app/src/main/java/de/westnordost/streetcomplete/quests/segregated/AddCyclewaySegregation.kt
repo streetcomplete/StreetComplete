@@ -2,9 +2,9 @@ package de.westnordost.streetcomplete.quests.segregated
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.OsmTaggings
-import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
+import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryDao
 
 class AddCyclewaySegregation(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<Boolean>(o) {
 

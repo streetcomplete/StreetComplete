@@ -10,6 +10,10 @@ import androidx.lifecycle.OnLifecycleEvent
 import com.mapzen.tangram.MapData
 import com.mapzen.tangram.geometry.Point
 import de.westnordost.streetcomplete.data.*
+import de.westnordost.streetcomplete.data.quest.Quest
+import de.westnordost.streetcomplete.data.quest.QuestController
+import de.westnordost.streetcomplete.data.quest.QuestGroup
+import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.visiblequests.OrderedVisibleQuestTypesProvider
 import de.westnordost.streetcomplete.ktx.values
 import de.westnordost.streetcomplete.map.tangram.toLngLat

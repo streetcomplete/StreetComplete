@@ -2,11 +2,10 @@ package de.westnordost.streetcomplete.quests.oneway
 
 import de.westnordost.osmapi.map.data.OsmWay
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
-import de.westnordost.streetcomplete.data.osm.persist.WayDao
-import de.westnordost.streetcomplete.data.osm.persist.WayMapping
+import de.westnordost.streetcomplete.data.osm.mapdata.WayDao
+import de.westnordost.streetcomplete.data.osm.mapdata.WayMapping
 import de.westnordost.streetcomplete.quests.oneway.data.WayTrafficFlowDao
 import de.westnordost.streetcomplete.util.KryoSerializer
-import de.westnordost.streetcomplete.util.Serializer
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test

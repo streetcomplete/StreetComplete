@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.data.osmnotes.notequests
 import de.westnordost.osmapi.notes.Note
 import org.junit.Before
 
-import de.westnordost.streetcomplete.data.QuestStatus
+import de.westnordost.streetcomplete.data.quest.QuestStatus
 import de.westnordost.streetcomplete.data.osm.upload.ConflictException
 import de.westnordost.streetcomplete.on
 import de.westnordost.streetcomplete.any

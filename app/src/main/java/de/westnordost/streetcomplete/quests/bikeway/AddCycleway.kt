@@ -4,11 +4,11 @@ import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.OsmTaggings
-import de.westnordost.streetcomplete.data.osm.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.NoCountriesExcept
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
+import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
+import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryDao
 import de.westnordost.streetcomplete.data.tagfilters.getQuestPrintStatement
 import de.westnordost.streetcomplete.data.tagfilters.toGlobalOverpassBBox
 
@@ -26,26 +26,26 @@ class AddCycleway(private val overpassServer: OverpassMapDataAndGeometryDao) : O
     // https://en.wikivoyage.org/wiki/Cycling
     // http://peopleforbikes.org/get-local/ (US)
     override val enabledInCountries = NoCountriesExcept(
-        // all of Northern and Western Europe, most of Central Europe, some of Southern Europe
-        "NO","SE","FI","IS","DK",
-        "GB","IE","NL","BE","FR","LU",
-        "DE","PL","CZ","HU","AT","CH","LI",
-        "ES","IT",
-        // East Asia
-        "JP","KR","TW",
-        // some of China (East Coast)
-        "CN-BJ","CN-TJ","CN-SD","CN-JS","CN-SH",
-        "CN-ZJ","CN-FJ","CN-GD","CN-CQ",
-        // Australia etc
-        "NZ","AU",
-        // some of Canada
-        "CA-BC","CA-QC","CA-ON","CA-NS","CA-PE",
-        // some of the US
-        // West Coast, East Coast, Center, South
-        "US-WA","US-OR","US-CA",
-        "US-MA","US-NJ","US-NY","US-DC","US-CT","US-FL",
-        "US-MN","US-MI","US-IL","US-WI","US-IN",
-        "US-AZ","US-TX"
+            // all of Northern and Western Europe, most of Central Europe, some of Southern Europe
+            "NO", "SE", "FI", "IS", "DK",
+            "GB", "IE", "NL", "BE", "FR", "LU",
+            "DE", "PL", "CZ", "HU", "AT", "CH", "LI",
+            "ES", "IT",
+            // East Asia
+            "JP", "KR", "TW",
+            // some of China (East Coast)
+            "CN-BJ", "CN-TJ", "CN-SD", "CN-JS", "CN-SH",
+            "CN-ZJ", "CN-FJ", "CN-GD", "CN-CQ",
+            // Australia etc
+            "NZ", "AU",
+            // some of Canada
+            "CA-BC", "CA-QC", "CA-ON", "CA-NS", "CA-PE",
+            // some of the US
+            // West Coast, East Coast, Center, South
+            "US-WA", "US-OR", "US-CA",
+            "US-MA", "US-NJ", "US-NY", "US-DC", "US-CT", "US-FL",
+            "US-MN", "US-MI", "US-IL", "US-WI", "US-IN",
+            "US-AZ", "US-TX"
     )
 
     override val isSplitWayEnabled = true

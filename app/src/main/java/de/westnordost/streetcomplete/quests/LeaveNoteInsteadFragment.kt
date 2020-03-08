@@ -5,7 +5,7 @@ import android.view.View
 import androidx.core.os.bundleOf
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.QuestGroup
+import de.westnordost.streetcomplete.data.quest.QuestGroup
 import kotlinx.android.synthetic.main.form_leave_note.*
 import kotlinx.android.synthetic.main.fragment_quest_answer.*
 

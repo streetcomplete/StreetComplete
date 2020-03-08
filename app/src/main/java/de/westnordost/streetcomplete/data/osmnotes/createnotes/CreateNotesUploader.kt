@@ -4,7 +4,7 @@ import android.util.Log
 
 import javax.inject.Inject
 
-import de.westnordost.streetcomplete.data.QuestStatus
+import de.westnordost.streetcomplete.data.quest.QuestStatus
 import de.westnordost.osmapi.map.MapDataDao
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.notes.Note
@@ -81,7 +81,7 @@ class CreateNotesUploader @Inject constructor(
     private fun uploadSingle(n: CreateNote): Note {
         if (n.isAssociatedElementDeleted())
             throw ElementDeletedException("Associated element deleted")
-        
+
         return singleCreateNoteUploader.upload(n)
     }
 

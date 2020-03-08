@@ -4,9 +4,9 @@ import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryDao
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.tagfilters.FiltersParser
 import de.westnordost.streetcomplete.data.tagfilters.getQuestPrintStatement
@@ -15,8 +15,8 @@ import de.westnordost.streetcomplete.ktx.containsAny
 import java.util.concurrent.FutureTask
 
 class AddOpeningHours (
-    private val overpassServer: OverpassMapDataAndGeometryDao,
-    private val featureDictionaryFuture: FutureTask<FeatureDictionary>
+        private val overpassServer: OverpassMapDataAndGeometryDao,
+        private val featureDictionaryFuture: FutureTask<FeatureDictionary>
 ) : OsmElementQuestType<OpeningHoursAnswer> {
 
     /* See also AddWheelchairAccessBusiness and AddPlaceName, which has a similar list and is/should

@@ -12,8 +12,8 @@ import com.google.android.material.tabs.TabLayout.TAB_LABEL_VISIBILITY_LABELED
 import com.google.android.material.tabs.TabLayout.TAB_LABEL_VISIBILITY_UNLABELED
 import com.google.android.material.tabs.TabLayoutMediator
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.QuestType
-import de.westnordost.streetcomplete.data.achievements.Achievement
+import de.westnordost.streetcomplete.data.quest.QuestType
+import de.westnordost.streetcomplete.data.user.achievements.Achievement
 import kotlinx.android.synthetic.main.activity_user.*
 
 class UserActivity : AppCompatActivity(R.layout.activity_user),

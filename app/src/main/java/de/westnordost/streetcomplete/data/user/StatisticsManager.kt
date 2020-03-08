@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.user
 
-import de.westnordost.streetcomplete.data.achievements.AchievementGiver
+import de.westnordost.streetcomplete.data.user.achievements.AchievementGiver
 import javax.inject.Inject
 
 class StatisticsManager @Inject constructor(

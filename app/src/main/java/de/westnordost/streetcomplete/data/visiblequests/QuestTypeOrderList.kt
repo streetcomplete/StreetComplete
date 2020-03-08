@@ -6,8 +6,8 @@ import androidx.core.content.edit
 import javax.inject.Inject
 
 import de.westnordost.streetcomplete.Prefs
-import de.westnordost.streetcomplete.data.QuestType
-import de.westnordost.streetcomplete.data.QuestTypeRegistry
+import de.westnordost.streetcomplete.data.quest.QuestType
+import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 
 class QuestTypeOrderList @Inject constructor(
     private val prefs: SharedPreferences,

@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.achievements.Link
+import de.westnordost.streetcomplete.data.user.achievements.Link
 import de.westnordost.streetcomplete.view.ListAdapter
 import kotlinx.android.synthetic.main.row_link_item.view.*
 

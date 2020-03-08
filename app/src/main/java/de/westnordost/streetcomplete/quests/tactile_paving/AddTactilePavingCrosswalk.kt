@@ -1,10 +1,10 @@
 package de.westnordost.streetcomplete.quests.tactile_paving
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
-import de.westnordost.streetcomplete.data.osm.NoCountriesExcept
+import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryDao
+import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 
 class AddTactilePavingCrosswalk(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<Boolean>(o) {
 
@@ -16,17 +16,17 @@ class AddTactilePavingCrosswalk(o: OverpassMapDataAndGeometryDao) : SimpleOverpa
     // See overview here: https://ent8r.github.io/blacklistr/?streetcomplete=tactile_paving/AddTactilePavingCrosswalk.kt
     // #750
     override val enabledInCountries = NoCountriesExcept(
-        // Europe
-        "NO","SE",
-        "GB","IE","NL","BE","FR","ES",
-        "DE","PL","CZ","SK","HU","AT","CH",
-        "LV","LT","EE","RU",
-        // America
-        "US","CA","AR",
-        // Asia
-        "HK","SG","KR","JP",
-        // Oceania
-        "AU","NZ"
+            // Europe
+            "NO", "SE",
+            "GB", "IE", "NL", "BE", "FR", "ES",
+            "DE", "PL", "CZ", "SK", "HU", "AT", "CH",
+            "LV", "LT", "EE", "RU",
+            // America
+            "US", "CA", "AR",
+            // Asia
+            "HK", "SG", "KR", "JP",
+            // Oceania
+            "AU", "NZ"
     )
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_tactilePaving_title_crosswalk

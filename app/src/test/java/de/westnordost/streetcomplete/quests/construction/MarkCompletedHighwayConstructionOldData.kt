@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.quests.construction
 
 import java.util.Date
 
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
+import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryDao
 import de.westnordost.streetcomplete.quests.DateUtil
 
 class MarkCompletedHighwayConstructionOldData

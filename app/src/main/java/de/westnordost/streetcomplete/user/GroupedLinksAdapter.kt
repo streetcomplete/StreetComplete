@@ -5,8 +5,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.achievements.Link
-import de.westnordost.streetcomplete.data.achievements.LinkCategory
+import de.westnordost.streetcomplete.data.user.achievements.Link
+import de.westnordost.streetcomplete.data.user.achievements.LinkCategory
 import kotlinx.android.synthetic.main.card_link_item.view.*
 import kotlinx.android.synthetic.main.row_link_category_item.view.*
 

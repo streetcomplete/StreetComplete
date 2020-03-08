@@ -9,7 +9,7 @@ import de.westnordost.osmapi.user.PermissionsDao
 import de.westnordost.osmapi.user.UserDao
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.OsmModule
-import de.westnordost.streetcomplete.data.achievements.*
+import de.westnordost.streetcomplete.data.user.achievements.*
 import de.westnordost.streetcomplete.ktx.saveToFile
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -18,22 +18,23 @@ import java.io.File
 import java.io.IOException
 import java.net.URL
 import javax.inject.Inject
+import javax.inject.Named
 import javax.inject.Singleton
 
 @Singleton class UserController @Inject constructor(
-    private val userDao: UserDao,
-    private val oAuthStore: OAuthStore,
-    private val userStore: UserStore,
-    private val achievementGiver: AchievementGiver,
-    private val userAchievementsDao: UserAchievementsDao,
-    private val userLinksDao: UserLinksDao,
-    achievements: List<Achievement>,
-    links: List<Link>,
-    private val avatarCacheDir: File,
-    private val statisticsDownloader: StatisticsDownloader,
-    private val statisticsDao: QuestStatisticsDao,
-    private val osmConnection: OsmConnection,
-    private val prefs: SharedPreferences
+        private val userDao: UserDao,
+        private val oAuthStore: OAuthStore,
+        private val userStore: UserStore,
+        private val achievementGiver: AchievementGiver,
+        private val userAchievementsDao: UserAchievementsDao,
+        private val userLinksDao: UserLinksDao,
+        @Named("Achievements") achievements: List<Achievement>,
+        @Named("Links") links: List<Link>,
+        private val avatarCacheDir: File,
+        private val statisticsDownloader: StatisticsDownloader,
+        private val statisticsDao: QuestStatisticsDao,
+        private val osmConnection: OsmConnection,
+        private val prefs: SharedPreferences
 ) {
 
     private val achievementsById = achievements.associateBy { it.id }

@@ -1,10 +1,10 @@
 package de.westnordost.streetcomplete.quests.accepts_cash
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.NoCountriesExcept
-import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
+import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
+import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryDao
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
 class AddAcceptsCash(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<Boolean>(o) {
@@ -41,8 +41,8 @@ class AddAcceptsCash(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType
     override val icon = R.drawable.ic_quest_cash
 
     override val enabledInCountries = NoCountriesExcept(
-        // Europe
-        "SE"
+            // Europe
+            "SE"
     )
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_accepts_cash_title

@@ -2,16 +2,17 @@ package de.westnordost.streetcomplete.data.osm.upload
 
 import androidx.annotation.CallSuper
 import de.westnordost.osmapi.map.data.Element
-import de.westnordost.streetcomplete.data.QuestGroup
-import de.westnordost.streetcomplete.data.QuestType
+import de.westnordost.streetcomplete.data.quest.QuestGroup
+import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.VisibleQuestListener
-import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
-import de.westnordost.streetcomplete.data.osm.OsmQuest
-import de.westnordost.streetcomplete.data.osm.OsmQuestGiver
-import de.westnordost.streetcomplete.data.osm.download.OsmApiElementGeometryCreator
-import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao
-import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryEntry
-import de.westnordost.streetcomplete.data.osm.persist.MergedElementDao
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuest
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestGiver
+import de.westnordost.streetcomplete.data.osm.elementgeometry.OsmApiElementGeometryCreator
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryDao
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryEntry
+import de.westnordost.streetcomplete.data.osm.mapdata.MergedElementDao
+import de.westnordost.streetcomplete.data.osm.upload.changesets.OpenQuestChangesetsManager
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
 import de.westnordost.streetcomplete.data.upload.Uploader
 import de.westnordost.streetcomplete.data.user.StatisticsManager
@@ -19,12 +20,12 @@ import de.westnordost.streetcomplete.data.user.StatisticsManager
 import java.util.concurrent.atomic.AtomicBoolean
 
 abstract class OsmInChangesetsUploader<T : UploadableInChangeset>(
-    private val elementDB: MergedElementDao,
-    private val elementGeometryDB: ElementGeometryDao,
-    private val changesetManager: OpenQuestChangesetsManager,
-    private val questGiver: OsmQuestGiver,
-    private val statisticsManager: StatisticsManager,
-    private val osmApiElementGeometryCreator: OsmApiElementGeometryCreator
+        private val elementDB: MergedElementDao,
+        private val elementGeometryDB: ElementGeometryDao,
+        private val changesetManager: OpenQuestChangesetsManager,
+        private val questGiver: OsmQuestGiver,
+        private val statisticsManager: StatisticsManager,
+        private val osmApiElementGeometryCreator: OsmApiElementGeometryCreator
     ): Uploader {
 
     override var visibleQuestListener: VisibleQuestListener? = null

@@ -4,7 +4,7 @@ import android.util.Log
 
 import javax.inject.Inject
 
-import de.westnordost.streetcomplete.data.QuestStatus
+import de.westnordost.streetcomplete.data.quest.QuestStatus
 import de.westnordost.streetcomplete.data.osm.upload.ConflictException
 import de.westnordost.streetcomplete.data.osmnotes.ImageUploadException
 import de.westnordost.streetcomplete.data.osmnotes.NoteDao

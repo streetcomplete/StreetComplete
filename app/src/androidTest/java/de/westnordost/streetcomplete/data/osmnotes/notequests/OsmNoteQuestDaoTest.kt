@@ -5,7 +5,7 @@ import org.junit.Test
 
 import java.util.Date
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
-import de.westnordost.streetcomplete.data.QuestStatus
+import de.westnordost.streetcomplete.data.quest.QuestStatus
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.map.data.OsmLatLon
@@ -168,18 +168,18 @@ class OsmNoteQuestDaoTest : ApplicationDbTestCase() {
     }
 
     private fun create(
-        noteId: Long = 1,
-        status: QuestStatus = QuestStatus.NEW,
-        notePosition: LatLon = OsmLatLon(1.0, 1.0),
-        comment: String? = null,
-        imagePaths: List<String>? = null
+            noteId: Long = 1,
+            status: QuestStatus = QuestStatus.NEW,
+            notePosition: LatLon = OsmLatLon(1.0, 1.0),
+            comment: String? = null,
+            imagePaths: List<String>? = null
     ) = create( createNote(noteId, notePosition), status, comment, imagePaths)
 
     private fun create(
-        note: Note,
-        status: QuestStatus = QuestStatus.NEW,
-        comment: String? = null,
-        imagePaths: List<String>? = null
+            note: Note,
+            status: QuestStatus = QuestStatus.NEW,
+            comment: String? = null,
+            imagePaths: List<String>? = null
     ) = OsmNoteQuest(null, note, status, comment, Date(5000), questType, imagePaths)
 
     private fun addToDaos(vararg quests: OsmNoteQuest) {

@@ -11,7 +11,7 @@ import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.data.ObjectRelationalMapping
-import de.westnordost.streetcomplete.data.osm.ElementKey
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osmnotes.createnotes.CreateNoteTable.Columns.ELEMENT_ID
 import de.westnordost.streetcomplete.data.osmnotes.createnotes.CreateNoteTable.Columns.ELEMENT_TYPE
 import de.westnordost.streetcomplete.data.osmnotes.createnotes.CreateNoteTable.Columns.ID

@@ -3,9 +3,9 @@ package de.westnordost.streetcomplete.data.download
 import android.util.Log
 
 import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.data.QuestStatus
-import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao
-import de.westnordost.streetcomplete.data.tiles.DownloadedTilesDao
+import de.westnordost.streetcomplete.data.quest.QuestStatus
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestDao
+import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
 import de.westnordost.streetcomplete.data.visiblequests.OrderedVisibleQuestTypesProvider
 import de.westnordost.streetcomplete.util.SlippyMapMath
 import de.westnordost.osmapi.map.data.BoundingBox
@@ -17,9 +17,9 @@ import kotlin.math.max
 /** Quest auto download strategy that observes that a minimum amount of quests in a predefined
  * radius around the user is not undercut  */
 abstract class AActiveRadiusStrategy(
-    private val osmQuestDB: OsmQuestDao,
-    private val downloadedTilesDao: DownloadedTilesDao,
-    private val questTypesProvider: OrderedVisibleQuestTypesProvider
+        private val osmQuestDB: OsmQuestDao,
+        private val downloadedTilesDao: DownloadedTilesDao,
+        private val questTypesProvider: OrderedVisibleQuestTypesProvider
 ) : QuestAutoDownloadStrategy {
 
     protected abstract val minQuestsInActiveRadiusPerKm2: Int

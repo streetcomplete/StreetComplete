@@ -9,11 +9,11 @@ import androidx.appcompat.app.AlertDialog
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.QuestGroup
-import de.westnordost.streetcomplete.data.osm.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.ElementPolygonsGeometry
-import de.westnordost.streetcomplete.data.osm.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao
+import de.westnordost.streetcomplete.data.quest.QuestGroup
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolygonsGeometry
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestDao
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestDao
 import de.westnordost.streetcomplete.util.crossTrackDistanceTo
 import javax.inject.Inject
@@ -21,8 +21,8 @@ import javax.inject.Inject
 /** Checks if the quest was solved on a survey, either by looking at the GPS position or asking
  *  the user  */
 class QuestSourceIsSurveyChecker @Inject constructor(
-    private val osmQuestDB: OsmQuestDao,
-    private val osmNoteQuestDao: OsmNoteQuestDao
+        private val osmQuestDB: OsmQuestDao,
+        private val osmNoteQuestDao: OsmNoteQuestDao
 ) {
     fun assureIsSurvey(context: Context, questId: Long, group: QuestGroup, locations: List<Location>, isSurveyCallback: () -> Unit) {
         if (dontShowAgain || isWithinSurveyDistance(questId, group, locations)) {
