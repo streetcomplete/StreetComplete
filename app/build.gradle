@@ -33,8 +33,8 @@ android {
         applicationId "de.westnordost.streetcomplete"
         minSdkVersion 17
         targetSdkVersion 28
-        versionCode 1800
-        versionName "18.0-beta1"
+        versionCode 1801
+        versionName "18.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField "String", "MAPZEN_API_KEY", MAPZEN_API_KEY
     }
@@ -230,7 +230,7 @@ task pullTranslations {
         def baseUrl = "https://api.poeditor.com/v2"
         def baseParams = "api_token=$POEditorAPIToken&id=97843"
         def exportLanguages = [
-                "ast","ca","cs","da","de","el","en-gb","es","eu","fa","fi","fr","gl","hu","it",
+                "ast","ca","cs","da","de","el","en-gb","es","eu","fa","fi","fr","gl","hu","id","it",
                 "ja","ko","lt","ml","nb","nl","nn","pl","pt","pt-br","ru","sk","sl","sq","sv","tr",
                 "uk","vi","zh-cn","zh-tw"
         ].toSet()

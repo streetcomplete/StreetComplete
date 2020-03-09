@@ -1,10 +1,12 @@
-v18.0-beta1: |
+v18.0: |
   <h3>New Quests</h3>
   <ul>
   <li><strong>Does ... accept cash payment?</strong> (#1743, #1573), by @quite. Enabled only in
       Sweden because it cannot be taken for granted that cash is accepted there.</li>
   <li><strong>What type of tourist information is this?</strong> (#1722, #1115), by @Dosenpfand</li>
   </ul>
+  <h3>New Translation</h3>
+  <p>Indonesian by Froyobread, Agha Pradipta, Wijayaa16d and Suryamudti0128</p>
   <h3>Enhanced Quests</h3>
   <ul>
   <li>Building types: Provide a description of what distinguishes a garage from garages (#1720), by @smichel17</li>
@@ -15,6 +17,7 @@ v18.0-beta1: |
   <ul>
   <li>Clearer wording for cancelling current download, especially in French (#1741)</li>
   <li>Do not show this dialog for new users (#1751)</li>
+  <li>Remove "show more" button for certain quests, instead show all choices right away (#1692, #1754)</li>
   </ul>
 
 v17.3: |
