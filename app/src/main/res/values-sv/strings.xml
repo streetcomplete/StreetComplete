@@ -456,7 +456,7 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_streetName_answer_noName_noname">"Inget av ovanstående, den har helt enkelt inget namn"</string>
     <string name="quest_wheelchairAccess_toilets_title">"Är de här toaletterna tillgängliga med rullstol?"</string>
     <string name="quest_wheelchairAccess_toilets_name_title">"Är toaletterna %s tillgängliga med rullstol?"</string>
-    <string name="quest_wheelchairAccess_description_toilets">"Om toaletten är tillgänglig för rullstolsanvändare finns det oftast en sådan skylt.
+    <string name="quest_wheelchairAccess_description_toilets">"Om toaletten är tillgänglig för rullstolsanvändare finns det oftast en sådan skylt. 
     Delvis betyder att rullstolsanvändare kan komma in och använda toaletten men att det inte finns stödhandtag eller anpassad tvättho."</string>
     <string name="map_btn_create_note">"Skapa en ny anteckning"</string>
     <string name="create_new_note_unprecise">"Zooma in ytterligare för att skapa en anteckning"</string>
@@ -693,7 +693,7 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="action_open_location">"Öppna plats i en annan app"</string>
     <string name="map_application_missing">"Ingen annan kartapplikation installerad"</string>
     <string name="pref_title_overpass_url_select">"Ändra Overpass-server"</string>
-    <string name="pref_title_overpass_url_info">"Kräver att applikationen startas om för att gälla. Kan kringgå censur, till exempel i Ryssland."</string>
+    <string name="pref_title_overpass_url_info">"Kräver att applikationen startas om för att träda i kraft. Kan kringgå censur, till exempel i Ryssland."</string>
     <string name="label_housenumber">"husnummer"</string>
     <string name="label_blocknumber">"kvarternummer"</string>
     <string name="quest_busStopShelter_covered">"Hela hållplatsen har tak"</string>
@@ -779,8 +779,6 @@ Dela den nu?"</string>
 
     <!-- Nog inte vidare vedertaget.. -->
     <string name="quest_tourism_information_guidepost">"Informationsstolpe"</string>
-
-    <!-- Assuming with "general waste" is meant residual waste - waste that typically aren't recycled. -->
     <string name="quest_recycling_materials_answer_waste">"Den är för restavfall."</string>
     <string name="quest_recycling_materials_answer_waste_description">"Så det här kärlet är för alla sorters avfall, t.ex. hushålls- och kommersiellt avfall?"</string>
     <string name="quest_accepts_cash_title">"Tar %s emot kontanter?"</string>

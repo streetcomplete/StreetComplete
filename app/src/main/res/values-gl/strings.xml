@@ -444,6 +444,7 @@ Pero lembra que sempre podes descarregar aplicacións de teclado diferentes dend
     <string name="quest_busStopShelter_tram_title">"Esta paraxe do tranvía ten marquesiña?"</string>
     <string name="quest_bench_backrest_title">"Ten respaldo este asento?"</string>
     <string name="quest_bench_answer_picnic_table">"É un taboleiro de picnic"</string>
+    <string name="quest_religion_for_place_of_worship_title">"Que relixión é profesada neste lugar?"</string>
     <string name="quest_religion_christian">"Cristianismo"</string>
     <string name="quest_religion_muslim">"Islamismo"</string>
     <string name="quest_religion_hindu">"Hinduísmo"</string>
@@ -734,4 +735,17 @@ Ten en conta que as tarefas a escoller para eses treitos divididos poden aparece
     <string name="about_summary_donate">"Amosa o teu agradecemento! ❤️"</string>
     <string name="about_description_donate">"Grazas por apoiar esta aplicación! Para ollar as doazóns actuais e doar ti mesmo, preme na plataforma correspondente:"</string>
     <string name="quest_religion_for_place_of_worship_name_title">"Que relixión é profesada en %s?"</string>
+    <string name="confirmation_cancel_prev_download_confirmed">"Escanear aquí"</string>
+    <string name="confirmation_cancel_prev_download_cancel">"Continuar escaneo actual"</string>
+    <string name="quest_buildingType_garages_description">"Espazos separados para diferentes donos/inquilinos"</string>
+    <string name="quest_tourism_information_title">"Que tipo de información turística é esta?"</string>
+    <string name="quest_tourism_information_name_title">"Qué tipo de información turística é %s?"</string>
+    <string name="quest_tourism_information_office">"Oficina de Información turística"</string>
+    <string name="quest_tourism_information_board">"Taboleiro de información"</string>
+    <string name="quest_tourism_information_terminal">"Terminal de información"</string>
+    <string name="quest_tourism_information_map">"Mapa"</string>
+    <string name="quest_tourism_information_guidepost">"Poste guía"</string>
+    <string name="quest_recycling_materials_answer_waste">"É para lixo xeral"</string>
+    <string name="quest_recycling_materials_answer_waste_description">"Entón, este é un contedor para calquera lixo, como refugallos domésticos ou comerciais en bolsas?"</string>
+    <string name="quest_accepts_cash_title">"%s acepta pagamentos en efectivo?"</string>
 </resources>

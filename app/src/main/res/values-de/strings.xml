@@ -613,8 +613,6 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_openingHours_timeSelect_next">"Weiter"</string>
     <string name="quest_tracktype_title">"Wie gut ist dieser Weg befestigt?"</string>
     <string name="quest_tracktype_grade1">"Befestigt"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tracktype_grade2">"Größtenteils befestigt"</string>
     <string name="quest_tracktype_grade3">"Gemischt"</string>
     <string name="quest_tracktype_grade4">"Größtenteils unbefestigt"</string>
