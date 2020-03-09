@@ -26,6 +26,7 @@ import androidx.core.graphics.toPointF
 import androidx.core.graphics.toRectF
 import androidx.core.view.doOnLayout
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE
 import androidx.fragment.app.FragmentTransaction
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
@@ -73,9 +74,12 @@ class MainFragment : Fragment(R.layout.fragment_map_with_controls),
     private var locationWhenOpenedQuest: Location? = null
 
     private var mapFragment: QuestsMapFragment? = null
-    private val bottomSheetFragment: Fragment? get() = childFragmentManager.findFragmentByTag(BOTTOM_SHEET)
+    private val bottomSheetFragment: Fragment? get() = childFragmentManagerOrNull?.findFragmentByTag(BOTTOM_SHEET)
 
     private var mapOffsetWithOpenBottomSheet: RectF = RectF(0f, 0f, 0f, 0f)
+
+    private val childFragmentManagerOrNull: FragmentManager? get() =
+        if (host != null) childFragmentManager else null
 
     interface Listener {
         fun onQuestSolved(quest: Quest?, source: String?)
