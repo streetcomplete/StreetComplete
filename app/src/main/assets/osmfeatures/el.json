@@ -1439,9 +1439,6 @@
         "craft/stonemason": {
             "name": "Λιθοποιός"
         },
-        "aerialway": {
-            "name": "Τελεφερίκ"
-        },
         "amenity/bicycle_parking/lockers": {
             "name": "Κλειδαριές Ποδηλάτων"
         },
@@ -2260,7 +2257,7 @@
             "name": "Αλυσίδα"
         },
         "barrier/guard_rail": {
-            "name": "Σιδηροδρομικός Φράχτης"
+            "name": "Μεταλλικό Στηθαίο Ασφαλείας Οδών"
         },
         "natural/peak": {
             "name": "Κορυφή",
@@ -3475,6 +3472,9 @@
             "name": "Σταθμός Ασθενοφόρων",
             "terms": "Σταθμός ασθενοφόρων"
         },
+        "barrier/wall/noise_barrier": {
+            "name": "Ηχοπέτασμα"
+        },
         "healthcare/podiatrist": {
             "name": "Ποδίατρος"
         },
@@ -3568,9 +3568,6 @@
         },
         "shop/motorcycle_repair": {
             "name": "Συνεργείο Μοτοσυκλετών"
-        },
-        "aeroway": {
-            "name": "Αεροδιάδρομος"
         },
         "aeroway/terminal": {
             "name": "Σταθμός Αεροναυτιλίας"

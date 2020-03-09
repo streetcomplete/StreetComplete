@@ -730,7 +730,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="about_description_donate">Thank you for considering to support this app! To see current donations and to donate yourself, tap on the respective platform:</string>
 
     <string name="quest_recycling_materials_answer_waste">It\'s for general waste</string>
-    <string name="quest_recycling_materials_answer_waste_description">So, this is a container for any waste, such as bagged up household or industrial waste?</string>
+    <string name="quest_recycling_materials_answer_waste_description">So, this is a container for any waste, such as bagged up household or commercial waste?</string>
 
     <string name="quest_accepts_cash_title">"Does %s accept cash payment?"</string>
     <string name="user_quests_title">Solved Quests</string>

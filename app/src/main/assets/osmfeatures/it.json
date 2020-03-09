@@ -846,7 +846,7 @@
             "terms": "scarpe,scarpino,calzature"
         },
         "shop/interior_decoration": {
-            "name": "Negozio di casalinghi",
+            "name": "Negozio di decorazioni per interni",
             "terms": "decorazioni,interni,casalinghi"
         },
         "man_made/crane": {
@@ -1730,9 +1730,6 @@
         "craft/stonemason": {
             "name": "Tagliapietre",
             "terms": "muratura"
-        },
-        "aerialway": {
-            "name": "Trasporto a fune"
         },
         "amenity/bicycle_parking/lockers": {
             "name": "Rastrelliere"
@@ -4285,9 +4282,6 @@
         "shop/motorcycle_repair": {
             "name": "Officina riparazione motocicli",
             "terms": "auto,veicolo,moto,bici,garage,motocicletta,motorino,scooter,riparazione,riparatore,officina,servizio"
-        },
-        "aeroway": {
-            "name": "Aeroporto"
         },
         "aeroway/terminal": {
             "name": "Terminal aeroportuale",

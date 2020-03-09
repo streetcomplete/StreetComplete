@@ -49,7 +49,7 @@
     <string name="quest_noteDiscussion_title">"Kan du bidra till denna anteckning?"</string>
     <string name="quest_noteDiscussion_no">"Nej, dölj"</string>
     <string name="quest_noteDiscussion_anonymous">"Anonym"</string>
-    <string name="confirmation_discard_title">"Släng svar?"</string>
+    <string name="confirmation_discard_title">"Ångra inmatningen?"</string>
     <string name="confirmation_discard_positive">"Släng"</string>
     <string name="confirmation_discard_negative">"Avbryt"</string>
     <string name="action_download">"Sök efter uppdrag här"</string>
@@ -93,7 +93,7 @@
     <string name="quest_openingHours_public_holidays">"Allmänna helgdagar"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_openingHours_public_holidays_short">"Allmänna helgdagar"</string>
+    <string name="quest_openingHours_public_holidays_short">"Röda dagar"</string>
     <string name="quest_openingHours_open_end">"Ingen fast stängningstid"</string>
     <string name="quest_openingHours_answer_247">"Öppet dygnet runt"</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">"Varierar från månad till månad…"</string>
@@ -478,6 +478,7 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_busStopShelter_tram_title">"Har den här spårvagnshållplatsen ett regnskydd?"</string>
     <string name="quest_bench_backrest_title">"Har den här bänken ett ryggstöd?"</string>
     <string name="quest_bench_answer_picnic_table">"Det är ett picknickbord"</string>
+    <string name="quest_religion_for_place_of_worship_title">"Vilken religion utövas här?"</string>
     <string name="quest_religion_christian">"Kristendom"</string>
     <string name="quest_religion_muslim">"Islam"</string>
     <string name="quest_religion_hindu">"Hinduism"</string>
@@ -692,7 +693,7 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="action_open_location">"Öppna plats i en annan app"</string>
     <string name="map_application_missing">"Ingen annan kartapplikation installerad"</string>
     <string name="pref_title_overpass_url_select">"Ändra Overpass-server"</string>
-    <string name="pref_title_overpass_url_info">"Kräver att applikationen startas om för att gälla. Kan kringgå censur, till exempel i Ryssland."</string>
+    <string name="pref_title_overpass_url_info">"Kräver att applikationen startas om för att träda i kraft. Kan kringgå censur, till exempel i Ryssland."</string>
     <string name="label_housenumber">"husnummer"</string>
     <string name="label_blocknumber">"kvarternummer"</string>
     <string name="quest_busStopShelter_covered">"Hela hållplatsen har tak"</string>
@@ -766,4 +767,19 @@ Dela den nu?"</string>
     <string name="about_summary_donate">"Visa din uppskattning! ❤️"</string>
     <string name="about_description_donate">"Tack för att du överväger att stöda den här appen! För att se aktuella donationer och donera själv, tryck på respektive plattform:"</string>
     <string name="quest_religion_for_place_of_worship_name_title">"Vilken religion utövas i %s?"</string>
+    <string name="confirmation_cancel_prev_download_confirmed">"Skanna här istället"</string>
+    <string name="confirmation_cancel_prev_download_cancel">"Återuppta pågående skanning"</string>
+    <string name="quest_buildingType_garages_description">"Separata platser för olika ägare/hyresgäster"</string>
+    <string name="quest_tourism_information_title">"Vad för slags turistinformation är det här?"</string>
+    <string name="quest_tourism_information_name_title">"Vad för slags turistinformation är %s?"</string>
+    <string name="quest_tourism_information_office">"Turistinformationskontor"</string>
+    <string name="quest_tourism_information_board">"Informationsskylt"</string>
+    <string name="quest_tourism_information_terminal">"Informationsskärm"</string>
+    <string name="quest_tourism_information_map">"Karta"</string>
+
+    <!-- Nog inte vidare vedertaget.. -->
+    <string name="quest_tourism_information_guidepost">"Informationsstolpe"</string>
+    <string name="quest_recycling_materials_answer_waste">"Den är för restavfall."</string>
+    <string name="quest_recycling_materials_answer_waste_description">"Så det här kärlet är för alla sorters avfall, t.ex. hushålls- och kommersiellt avfall?"</string>
+    <string name="quest_accepts_cash_title">"Tar %s emot kontanter?"</string>
 </resources>

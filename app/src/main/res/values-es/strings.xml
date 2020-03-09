@@ -475,6 +475,7 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
     <string name="quest_busStopShelter_tram_title">"¿La parada de tranvía está bajo cubierto?"</string>
     <string name="quest_bench_backrest_title">"¿Tiene respaldo este banco?"</string>
     <string name="quest_bench_answer_picnic_table">"Es una mesa de picnic"</string>
+    <string name="quest_religion_for_place_of_worship_title">"¿Qué religión se practica en este lugar?"</string>
     <string name="quest_religion_christian">"Cristianismo"</string>
     <string name="quest_religion_muslim">"Islam"</string>
     <string name="quest_religion_hindu">"Hinduísmo"</string>
@@ -769,4 +770,17 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
     <string name="about_summary_donate">"¡Muestra tu agradecimiento! ❤️"</string>
     <string name="about_description_donate">"¡Gracias por considerar apoyar esta app! Para ver las donaciones actuales y donar, clica en la plataforma correspondiente:"</string>
     <string name="quest_religion_for_place_of_worship_name_title">"¿Qué religión se practica en %s?"</string>
+    <string name="confirmation_cancel_prev_download_confirmed">"Descargar aquí en su lugar"</string>
+    <string name="confirmation_cancel_prev_download_cancel">"Continuar descarga actual"</string>
+    <string name="quest_buildingType_garages_description">"Espacios separados para diferentes propietarios/inquilinos"</string>
+    <string name="quest_tourism_information_title">"¿Qué tipo de información turística es esta?"</string>
+    <string name="quest_tourism_information_name_title">"¿Qué tipo de información turística es %s?"</string>
+    <string name="quest_tourism_information_office">"Oficina de información turística"</string>
+    <string name="quest_tourism_information_board">"Tablero con información"</string>
+    <string name="quest_tourism_information_terminal">"Terminal de información"</string>
+    <string name="quest_tourism_information_map">"Mapa"</string>
+    <string name="quest_tourism_information_guidepost">"Poste de señalización"</string>
+    <string name="quest_recycling_materials_answer_waste">"Es para desperdicio general"</string>
+    <string name="quest_recycling_materials_answer_waste_description">"Entonces, ¿este es un contenedor para cualquier desperdicio, como desperdicios domésticos o comerciales en bolsas?"</string>
+    <string name="quest_accepts_cash_title">"¿%s acepta pagos en efectivo?"</string>
 </resources>

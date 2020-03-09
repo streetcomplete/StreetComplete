@@ -521,6 +521,10 @@
             "name": "電子遊戲店",
             "terms": "電子遊戲商店,電玩店"
         },
+        "highway/cycleway/crossing/bicycle_foot": {
+            "name": "自行車與行人穿越道",
+            "terms": "自行車與行人穿越道"
+        },
         "traffic_calming/dip": {
             "name": "減速坡",
             "terms": "減速坡,斜坡"
@@ -1366,6 +1370,10 @@
             "name": "國家公園管理站",
             "terms": "郊野公園管理站,自然保護區管理站"
         },
+        "historic/pillory": {
+            "name": "頸手枷",
+            "terms": "頸手枷"
+        },
         "office/quango": {
             "name": "準非政府組織辦公室",
             "terms": "準非政府組織辦公室"
@@ -1920,6 +1928,10 @@
             "name": "埡口",
             "terms": "埡口,山口,鞍部"
         },
+        "amenity/kneipp_water_cure": {
+            "name": "Kneipp 水療",
+            "terms": "Kneipp 水療"
+        },
         "natural/water/basin": {
             "name": "水池",
             "terms": "水池"
@@ -2246,9 +2258,17 @@
             "name": "籃子旋轉器",
             "terms": "籃子旋轉器"
         },
+        "amenity/exhibition_centre": {
+            "name": "展覽中心",
+            "terms": "展覽中心"
+        },
         "shop/fabric": {
             "name": "帆布店",
             "terms": "織布店,布店"
+        },
+        "barrier/spikes": {
+            "name": "地釘",
+            "terms": "地釘"
         },
         "shop/coffee": {
             "name": "咖啡店",
@@ -2417,6 +2437,10 @@
         "healthcare/podiatrist": {
             "name": "足科醫師",
             "terms": "足科醫師,足科醫生"
+        },
+        "emergency/mountain_rescue": {
+            "name": "山區救援站",
+            "terms": "山區救援站"
         },
         "amenity/kindergarten": {
             "name": "幼稚園",
@@ -3519,7 +3543,7 @@
             "terms": "水塔"
         },
         "aerialway": {
-            "name": "纜車路線"
+            "name": "纜車圖徽"
         },
         "amenity/bicycle_parking/lockers": {
             "name": "自行車儲物櫃",
@@ -5102,7 +5126,7 @@
             "terms": "外交辦公室"
         },
         "aeroway": {
-            "name": "機場相關設施"
+            "name": "航空圖徽"
         },
         "aeroway/terminal": {
             "name": "機場航廈",

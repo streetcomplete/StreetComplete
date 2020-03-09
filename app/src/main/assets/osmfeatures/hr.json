@@ -949,9 +949,6 @@
         "craft/stonemason": {
             "name": "Zidar"
         },
-        "aerialway": {
-            "name": "Žičara"
-        },
         "amenity/nightclub": {
             "name": "Noćni klub"
         },
@@ -2368,9 +2365,6 @@
         },
         "shop/motorcycle_repair": {
             "name": "Ormarići za bicikle"
-        },
-        "aeroway": {
-            "name": "Zračni promet"
         }
     }
 }

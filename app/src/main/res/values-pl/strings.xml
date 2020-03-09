@@ -435,6 +435,7 @@ Oznacza to, że osoba na wózku jest w stanie z niej skorzystać, ale nie ma por
     <string name="quest_busStopShelter_tram_title">"Czy ten przystanek tramwajowy jest zadaszony?"</string>
     <string name="quest_bench_backrest_title">"Czy ta ławka ma oparcie?"</string>
     <string name="quest_bench_answer_picnic_table">"To stół piknikowy"</string>
+    <string name="quest_religion_for_place_of_worship_title">"Jaka religia jest praktykowana w tym miejscu?"</string>
     <string name="quest_religion_christian">"Chrześcijaństwo"</string>
     <string name="quest_religion_muslim">"Islam"</string>
     <string name="quest_religion_hindu">"Hinduizm"</string>
@@ -708,6 +709,7 @@ Podzielić?"</string>
     <string name="quest_recycling_type_batteries">"Baterie"</string>
     <string name="quest_recycling_type_cans">"Puszki"</string>
     <string name="quest_recycling_type_clothes">"Ubrania"</string>
+    <string name="quest_recycling_type_green_waste">"Śmieci bio poza mięsem"</string>
     <string name="quest_recycling_type_glass_bottles">"Szklane butelki i słoiki"</string>
     <string name="quest_recycling_type_glass_bottles_short">"Butelki i słoiki"</string>
     <string name="quest_recycling_type_paper">"Papier"</string>
@@ -726,4 +728,20 @@ Podzielić?"</string>
     <string name="about_title_rate">"Oceń tą aplikację"</string>
     <string name="about_summary_rate">"na Google Play"</string>
     <string name="about_title_donate">"Wspomóż"</string>
+    <string name="about_summary_donate">"Wspomóż tą aplikację ❤️"</string>
+    <string name="about_description_donate">"Dzięki za rozważenie wsparcia! Wybierz platformę by wspomóc lub zobaczyć co zrobili inni:"</string>
+    <string name="quest_religion_for_place_of_worship_name_title">"Jaka religia jest praktykowana w %s?"</string>
+    <string name="confirmation_cancel_prev_download_confirmed">"Skanuj tutaj"</string>
+    <string name="confirmation_cancel_prev_download_cancel">"Kontynuuj trwający już skan"</string>
+    <string name="quest_buildingType_garages_description">"Osobne miejsca dla różnych użytkowników."</string>
+    <string name="quest_tourism_information_title">"Jaki rodzaj informacji turystycznej jest tutaj?"</string>
+    <string name="quest_tourism_information_name_title">"Jakim rodzajem informacji turystycznej jest %s?"</string>
+    <string name="quest_tourism_information_office">"Biuro informacji turystycznej"</string>
+    <string name="quest_tourism_information_board">"Tablica informacyjna"</string>
+    <string name="quest_tourism_information_terminal">"Terminal informacyjny"</string>
+    <string name="quest_tourism_information_map">"Mapa"</string>
+    <string name="quest_tourism_information_guidepost">"Drogowskaz"</string>
+    <string name="quest_recycling_materials_answer_waste">"Jest to na wszelakie śmieci"</string>
+    <string name="quest_recycling_materials_answer_waste_description">"Czy jest to pojemnik na dowolne śmieci, w tym śmieci zmieszane?"</string>
+    <string name="quest_accepts_cash_title">"Czy %s akceptuje płatność gotówką?"</string>
 </resources>

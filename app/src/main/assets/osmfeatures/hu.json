@@ -1750,9 +1750,6 @@
             "name": "Kőfaragó",
             "terms": "Kőfaragó műhely"
         },
-        "aerialway": {
-            "name": "Drótkötélpálya"
-        },
         "amenity/bicycle_parking/lockers": {
             "name": "Kerékpártároló"
         },
@@ -4286,9 +4283,6 @@
         },
         "shop/motorcycle_repair": {
             "name": "Motorkerékpár alkatrész bolt"
-        },
-        "aeroway": {
-            "name": "Légi közeledés"
         },
         "aeroway/terminal": {
             "name": "Repülőtéri terminál",

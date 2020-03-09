@@ -524,6 +524,10 @@
             "name": "Video Game Store",
             "terms": ""
         },
+        "highway/cycleway/crossing/bicycle_foot": {
+            "name": "Cycle & Foot Crossing",
+            "terms": "bicycle and foot crosswalk,bike and pedestrian crossing,cycleway,cycling,cyclist"
+        },
         "traffic_calming/dip": {
             "name": "Dip",
             "terms": "speed,slow"
@@ -531,10 +535,6 @@
         "power/transformer": {
             "name": "Transformer",
             "terms": ""
-        },
-        "leisure/track/cycling_point": {
-            "name": "Cycling Track",
-            "terms": "bicycle track,bicycling track,cycle racetrack,velodrome"
         },
         "landuse/military/naval_base": {
             "name": "Naval Base",
@@ -717,7 +717,7 @@
         },
         "building/retail": {
             "name": "Retail Building",
-            "terms": ""
+            "terms": "shop building,store building"
         },
         "golf/lateral_water_hazard": {
             "name": "Lateral Water Hazard",
@@ -833,7 +833,7 @@
         },
         "building/farm_auxiliary": {
             "name": "Farm Building",
-            "terms": ""
+            "terms": "agriculture,auxilary,chicken coop,farm auxiliary,pigsty,sty"
         },
         "power/switch": {
             "name": "Power Switch",
@@ -1373,6 +1373,10 @@
         "amenity/ranger_station": {
             "name": "Ranger Station",
             "terms": "visitor center,visitor centre,permit center,permit centre,backcountry office,warden office,warden center"
+        },
+        "historic/pillory": {
+            "name": "Historic Pillory",
+            "terms": "attraction"
         },
         "office/quango": {
             "name": "Quasi-NGO Office",
@@ -1928,6 +1932,10 @@
             "name": "Saddle",
             "terms": "pass,mountain pass,top"
         },
+        "amenity/kneipp_water_cure": {
+            "name": "Kneipp Water Cure",
+            "terms": ""
+        },
         "natural/water/basin": {
             "name": "Basin",
             "terms": "detention,drain,overflow,rain,retention"
@@ -2072,7 +2080,7 @@
         },
         "barrier/border_control": {
             "name": "Border Control",
-            "terms": ""
+            "terms": "checkpoint,customs,international boundary,passport check,port of entry,visa"
         },
         "landuse/basin": {
             "name": "Basin"
@@ -2184,10 +2192,6 @@
             "name": "Optician",
             "terms": "eye,glasses"
         },
-        "leisure/track/running_point": {
-            "name": "Running Track",
-            "terms": "athletics track,decathlon,foot race,long distance running,marathon,middle distance running,racetrack,running,sprint,track,walking"
-        },
         "barrier/block": {
             "name": "Block",
             "terms": ""
@@ -2239,10 +2243,6 @@
             "name": "Historic Building",
             "terms": ""
         },
-        "leisure/track/horse_racing_point": {
-            "name": "Horse Racing Track",
-            "terms": "equestrian race track,horse race betting,horseracing,horsetrack,horse racetrack"
-        },
         "shop/frame": {
             "name": "Framing Shop",
             "terms": "art*,paint*,photo*,frame"
@@ -2262,6 +2262,10 @@
         "shop/fabric": {
             "name": "Fabric Store",
             "terms": "sew"
+        },
+        "barrier/spikes": {
+            "name": "Spike Strip",
+            "terms": "one-way traffic treadles,stingers,stop sticks,tire deflation device,tire shredders,traffic spikes"
         },
         "shop/coffee": {
             "name": "Coffee Store",
@@ -2431,6 +2435,10 @@
             "name": "Podiatrist",
             "terms": "foot,feet,nails"
         },
+        "emergency/mountain_rescue": {
+            "name": "Mountain Rescue",
+            "terms": "EMS,EMT,rescue"
+        },
         "amenity/kindergarten": {
             "name": "Preschool / Kindergarten Grounds",
             "terms": "kindergarden,pre-school"
@@ -2441,7 +2449,7 @@
         },
         "advertising/board": {
             "name": "Notice Board",
-            "terms": ""
+            "terms": "advertising,announcements,blackboard,bulletin board,bulletinboard,cork board,corkboard,fliers,flyers,noticeboard,pin board,pinboard,sign,whiteboard"
         },
         "man_made": {
             "name": "Man Made Feature"
@@ -3541,7 +3549,7 @@
             "terms": "cistern,water tower"
         },
         "aerialway": {
-            "name": "Aerialway"
+            "name": "Aerialway Feature"
         },
         "amenity/bicycle_parking/lockers": {
             "name": "Bicycle Lockers",
@@ -3565,7 +3573,7 @@
         },
         "building/static_caravan": {
             "name": "Static Mobile Home",
-            "terms": ""
+            "terms": "house trailer,manufactured home,mobile home,prefabricated home,residential caravan,static caravan,trailer home"
         },
         "leisure/pitch/skateboard": {
             "name": "Skate Park",
@@ -3641,6 +3649,10 @@
         "shop/water": {
             "name": "Drinking Water Shop",
             "terms": ""
+        },
+        "telecom/exchange": {
+            "name": "Telecom Exchange",
+            "terms": "telecommunications,telephone exchange,telephone switch"
         },
         "public_transport/platform": {
             "name": "Transit Platform",
@@ -3887,7 +3899,7 @@
             "terms": ""
         },
         "military/checkpoint": {
-            "name": "Checkpoint",
+            "name": "Military Checkpoint",
             "terms": "air force,army,base,force,guard,marine,navy,troop,war"
         },
         "man_made/water_works": {
@@ -5135,7 +5147,7 @@
             "terms": ""
         },
         "aeroway": {
-            "name": "Aeroway"
+            "name": "Aeroway Feature"
         },
         "aeroway/terminal": {
             "name": "Airport Terminal",

@@ -449,6 +449,7 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_busStopShelter_tram_title">"Tranbia geltoki honek estalpea du?"</string>
     <string name="quest_bench_backrest_title">"Banku honek bizkarrekoa du?"</string>
     <string name="quest_bench_answer_picnic_table">"Piknik taula bat da"</string>
+    <string name="quest_religion_for_place_of_worship_title">"Zein erlijio praktikatzen da toki honetan?"</string>
     <string name="quest_religion_christian">"Kristautasuna"</string>
     <string name="quest_religion_muslim">"Islam"</string>
     <string name="quest_religion_hindu">"Hinduismoa"</string>
@@ -731,4 +732,17 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="about_summary_donate">"Erakutsi zure babesa! ❤️"</string>
     <string name="about_description_donate">"Eskerrik asko aplikazio hau babestea hausnartzeagatik! Oraingo dohaintzak ikusteko eta zurea egiteko, sakatu dagokion plataforman:"</string>
     <string name="quest_religion_for_place_of_worship_name_title">"Ze erliji praktikatzen da %s(e)n"</string>
+    <string name="confirmation_cancel_prev_download_confirmed">"Eskaneatu hemen ordez"</string>
+    <string name="confirmation_cancel_prev_download_cancel">"Jarraitu oraingo eskaneaoa"</string>
+    <string name="quest_buildingType_garages_description">"Espazio berezituak jabe edo maizter bakoitzarentzat"</string>
+    <string name="quest_tourism_information_title">"Ze motako turismo informazioa da hau?"</string>
+    <string name="quest_tourism_information_name_title">"Ze motako turismo informazioa da %s? "</string>
+    <string name="quest_tourism_information_office">"Turistentzako informazio bulegoa"</string>
+    <string name="quest_tourism_information_board">"Informazio taula"</string>
+    <string name="quest_tourism_information_terminal">"Informazio terminala"</string>
+    <string name="quest_tourism_information_map">"Mapa"</string>
+    <string name="quest_tourism_information_guidepost">"Gida-zutoina"</string>
+    <string name="quest_recycling_materials_answer_waste">"Zabor orokorrarentzat da"</string>
+    <string name="quest_recycling_materials_answer_waste_description">"Beraz, hau denetariko zaborrarentzako edukiontzi bat da, esaterako etxeko-zabor poltsak edo dendetako zaborra?"</string>
+    <string name="quest_accepts_cash_title">"%s(e)k eskudiruz ordaintzea onartzen du?"</string>
 </resources>

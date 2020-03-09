@@ -220,8 +220,8 @@
             "terms": "linha metro, rota metro, rede metro, metro de lisboa, estações de metro, linha do metro, metro, metropolitano, rota, rede,carris,caminhos de ferro, caminhos-de-ferro,linha férrea"
         },
         "amenity/fountain": {
-            "name": "Fonte decorativa",
-            "terms": "Fonte,Fonte de Água,fontenário,fontanário"
+            "name": "Fonte",
+            "terms": "fontes,fonte de água,fontenário,fontanário,chafariz,bica"
         },
         "amenity/smoking_area": {
             "name": "Área para fumadores",
@@ -260,7 +260,7 @@
             "terms": "Sand Trap,areia,caixa de areia"
         },
         "shop/houseware": {
-            "name": "Loja de artigos para a casa",
+            "name": "Loja de artigos para o lar",
             "terms": "houseware,utensílios domésticos,artigos para o lar,artigos para casa,utensílios,cozinha,decoração"
         },
         "leisure/pitch/soccer": {
@@ -519,6 +519,10 @@
         "shop/video_games": {
             "name": "Loja de videojogos",
             "terms": "jogos de computador,consola"
+        },
+        "highway/cycleway/crossing/bicycle_foot": {
+            "name": "Passadeira p/bicicletas e peões",
+            "terms": "passadeira,faixa de segurança, ciclovia,ciclistas,bicicletas,travessia,pedestres,peões"
         },
         "traffic_calming/dip": {
             "name": "Depressão rodoviária",
@@ -1060,6 +1064,10 @@
             "name": "Consultório médico",
             "terms": "Doctor, Médico, Médicos, Consultório, Médico Privado, Doutor"
         },
+        "attraction/kiddie_ride": {
+            "name": "Máquina de diversão infantil",
+            "terms": "cavalinho,cavalo,balanço,moedas,autómato,brinquedo,kiddie ride,crianças,parque temático,feira,entretenimento,diversão,atrações,atração"
+        },
         "barrier/ditch": {
             "name": "Vala",
             "terms": "Fosso,trincheira,valeta,sarjeta"
@@ -1365,6 +1373,10 @@
         "amenity/ranger_station": {
             "name": "Posto de guarda florestal",
             "terms": "ranger,Guarda Florestal,floresta,parque"
+        },
+        "historic/pillory": {
+            "name": "Pelourinho",
+            "terms": "pelourinhos,picota,peloirinho"
         },
         "office/quango": {
             "name": "ONG subsidiada",
@@ -1695,6 +1707,10 @@
             "name": "Loja de aspiradores",
             "terms": "Vacuum Cleaner,aspirador,aspiradores,aspirar"
         },
+        "attraction/log_flume": {
+            "name": "Tobogã",
+            "terms": "escorrega,tobogãs,parque temático,feira,flume,entretenimento,diversão,atrações,atração"
+        },
         "tourism/information/map": {
             "name": "Mapa",
             "terms": "esquema,planta,carta"
@@ -1911,6 +1927,10 @@
         "natural/saddle": {
             "name": "Passo de montanha",
             "terms": "Saddle,colo,porto, portela,selada,depressão oblonga em montanha"
+        },
+        "amenity/kneipp_water_cure": {
+            "name": "Balneário Kneippiano",
+            "terms": "termas,balneário,Kneippiano,Kneipp,termas"
         },
         "natural/water/basin": {
             "name": "Bacia artificial",
@@ -2239,9 +2259,17 @@
             "name": "Cesto rotativo",
             "terms": "Cesto, Rotativo, Cesta"
         },
+        "amenity/exhibition_centre": {
+            "name": "Centro de exposições",
+            "terms": "feira de exposições,centro de eventos,expo"
+        },
         "shop/fabric": {
             "name": "Loja de tecidos",
             "terms": "tecido,tecidos"
+        },
+        "barrier/spikes": {
+            "name": "Linha de espigões",
+            "terms": "Espigão,espinhos,agulhas,barreira"
         },
         "shop/coffee": {
             "name": "Loja de café",
@@ -2411,6 +2439,10 @@
             "name": "Podólogo",
             "terms": "podiatria, podologista, podologia, pés, pé,podiatra,quiropodista"
         },
+        "emergency/mountain_rescue": {
+            "name": "Posto de resgate de montanha",
+            "terms": "EMS,INEM,estação de resgate,salvamento,sos"
+        },
         "amenity/kindergarten": {
             "name": "Infantário / pré-escola",
             "terms": "preschool, kindergarten, grounds, pré-escola, pré escola, creche, jardim de infância, jardim-de-infância, jardim infantil, pré-escola, pré-escolar, infantário"
@@ -2549,7 +2581,7 @@
             "terms": "Military, Exército, Marinha, Forças Especiais, Força Aérea, Forças Armadas, Militar, Quartel,tropa,polícia"
         },
         "shop/seafood": {
-            "name": "Peixaria",
+            "name": "Loja de marisco",
             "terms": "seafood,camarão,lagosta,caranguejo,ameijoas,mexilhões,peixes,polvo,lulas,peixe fresco,congelados"
         },
         "waterway/sanitary_dump_station": {
@@ -4831,6 +4863,10 @@
         "man_made/mast": {
             "name": "Mastro",
             "terms": "antena, parabólica, transmissor móvel, transmissor de telemóvel, mastro de transmissão, torre de transmissão, torre de satélite, transmissor de rádio, transmissor de televisão, torre de tv, torre de televisão,telecomunicação,telecomunicações,para-raios,pára raios,pararaios"
+        },
+        "attraction/river_rafting": {
+            "name": "Rafting",
+            "terms": "parque temático,feira,simulador,parque aquático,entretenimento,diversão,atrações,atração,rápidos"
         },
         "leisure/disc_golf_course": {
             "name": "Campo de golfe de disco",

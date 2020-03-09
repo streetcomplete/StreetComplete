@@ -1165,9 +1165,6 @@
         "craft/stonemason": {
             "name": "Steinsmiður"
         },
-        "aerialway": {
-            "name": "Víralyfta"
-        },
         "amenity/nightclub": {
             "name": "Næturklúbbur"
         },
@@ -2833,9 +2830,6 @@
         },
         "shop/motorcycle_repair": {
             "name": "Mótorhjólaviðgerðaverslun"
-        },
-        "aeroway": {
-            "name": "Loftlína"
         },
         "aeroway/terminal": {
             "name": "Flugstöð"

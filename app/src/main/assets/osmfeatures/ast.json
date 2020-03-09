@@ -922,9 +922,6 @@
         "craft/stonemason": {
             "name": "Canteru"
         },
-        "aerialway": {
-            "name": "Tendíu aéreu"
-        },
         "amenity/nightclub": {
             "name": "Discoteca",
             "terms": "Disco, discobar, baille"
@@ -2189,9 +2186,6 @@
         },
         "craft/handicraft": {
             "name": "Manualidaes"
-        },
-        "aeroway": {
-            "name": "Via d'aviación"
         },
         "aeroway/terminal": {
             "name": "Terminal d'aeropuertu"

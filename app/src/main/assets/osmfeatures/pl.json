@@ -108,7 +108,7 @@
         },
         "barrier/height_restrictor": {
             "name": "Ogranicznik wysokości",
-            "terms": "ogranicznik wysokości, ograniczenie wysokości"
+            "terms": "ogranicznik wysokości, ograniczenie wysokości, bariera"
         },
         "place/suburb": {
             "name": "Dzielnica",
@@ -136,7 +136,7 @@
         },
         "office/company": {
             "name": "Biuro firmy",
-            "terms": "biuro firmy"
+            "terms": "biuro firmy, firma, przedsiębiorstwo"
         },
         "shop/dairy": {
             "name": "Sklep z nabiałem",
@@ -185,7 +185,7 @@
         },
         "amenity/veterinary": {
             "name": "Weterynarz",
-            "terms": "Zakład weterynaryjny, lecznica dla zwierząt"
+            "terms": "weterynarz, zakład weterynaryjny, gabinet weterynajryjny, przychodnia weterynaryjna, klinika weterynaryjna, lecznica dla zwierząt, leczenie, zwierzęta"
         },
         "craft/pottery": {
             "name": "Pracownia garncarska",
@@ -524,6 +524,10 @@
             "name": "Sklep z grami wideo",
             "terms": "sklep z grami wideo, gry wideo, gry video, gry komputerowe, gry konsolowe, gry na konsole"
         },
+        "highway/cycleway/crossing/bicycle_foot": {
+            "name": "Przejazd pieszo-rowerowy",
+            "terms": "przejazd pieszo-rowerowy"
+        },
         "traffic_calming/dip": {
             "name": "Zagłębienie",
             "terms": "Zagłębienie, spadek"
@@ -645,7 +649,7 @@
         },
         "barrier/hedge": {
             "name": "Żywopłot",
-            "terms": "żywopłot"
+            "terms": "żywopłot, krzewy, bariera"
         },
         "building/garages": {
             "name": "Garaże",
@@ -697,7 +701,7 @@
         },
         "barrier/wall": {
             "name": "Mur",
-            "terms": "ściana,mur"
+            "terms": "mur, ściana, bariera"
         },
         "man_made/water_tap": {
             "name": "Kran z wodą",
@@ -861,7 +865,7 @@
         },
         "amenity/social_facility": {
             "name": "Placówka pomocy społecznej",
-            "terms": "opieka społeczna, mops, gops, mopr, ośrodek opieki społecznej"
+            "terms": "opieka społeczna, mops, gops, mopr, ośrodek opieki społecznej, dzienny dom pomocy społecznej, dom seniora, jadłodajnia, noclegownia, bezdomni"
         },
         "shop/hifi": {
             "name": "Sklep ze sprzętem hi-fi",
@@ -1022,7 +1026,7 @@
         },
         "barrier/toll_booth": {
             "name": "Punkt poboru opłat",
-            "terms": "punkt,poboru,opłat"
+            "terms": "punkt poboru opłat, bariera"
         },
         "highway/crossing/unmarked": {
             "name": "Nieoznakowane przejście",
@@ -1374,6 +1378,10 @@
             "name": "Baza strażników rezerwatu/parku",
             "terms": "straż rezerwatu, straż parku narodowego"
         },
+        "historic/pillory": {
+            "name": "Pręgierz",
+            "terms": "pręgierz, słup, kolumna, zabytek"
+        },
         "office/quango": {
             "name": "Biuro organizacji prawie pozarządowej",
             "terms": "biuro organizacji quasi-ngo,ngo,organizacja pozarządowa,pozarządowa,organizacja,prawie niezależna"
@@ -1532,7 +1540,7 @@
         },
         "barrier/chain": {
             "name": "Łańcuch",
-            "terms": "łańcuch"
+            "terms": "łańcuch, bariera"
         },
         "barrier/guard_rail": {
             "name": "Barierka",
@@ -1563,7 +1571,7 @@
         },
         "leisure/picnic_table/chess": {
             "name": "Stolik szachowy",
-            "terms": "stół szachowy, szachownica"
+            "terms": "stół szachowy, szachownica, szachy"
         },
         "leisure/sauna": {
             "name": "Sauna",
@@ -1928,6 +1936,10 @@
             "name": "Przełęcz",
             "terms": "przełęcz górska"
         },
+        "amenity/kneipp_water_cure": {
+            "name": "Basen Kneippa",
+            "terms": "basen kneippa, brodzik kneippa, hydroterapia kneippa"
+        },
         "natural/water/basin": {
             "name": "Sztuczny zbiornik wodny",
             "terms": "zbiornik, drenaż, retencja, retencyjny"
@@ -2072,7 +2084,7 @@
         },
         "barrier/border_control": {
             "name": "Kontrola graniczna",
-            "terms": "kontrola graniczna"
+            "terms": "kontrola graniczna, granica, bariera"
         },
         "landuse/basin": {
             "name": "Zbiornik wodny lub suchy"
@@ -2190,7 +2202,7 @@
         },
         "barrier/block": {
             "name": "Blok",
-            "terms": "blok"
+            "terms": "blok, bariera"
         },
         "relation": {
             "name": "Relacja",
@@ -2255,9 +2267,17 @@
             "name": "Kosz obrotowy",
             "terms": "kosz obrotowy"
         },
+        "amenity/exhibition_centre": {
+            "name": "Centrum targowo-wystawiennicze",
+            "terms": "centrum wystawowe, centrum wystawiennicze, centrum targowo-wystawiennicze, centrum targowe, wystawy, targi"
+        },
         "shop/fabric": {
             "name": "Sklep z tkaninami",
             "terms": "tkaniny"
+        },
+        "barrier/spikes": {
+            "name": "Kolczatka",
+            "terms": "kolczatka, bariera"
         },
         "shop/coffee": {
             "name": "Sklep z kawą",
@@ -2361,7 +2381,7 @@
             "terms": "warsztat samochodowy, auto serwis, autoserwis, auto-serwis, mechanik, naprawa, naprawy, serwis, garaż, samochód, auto, samochodowy"
         },
         "craft/hvac": {
-            "name": "Ogrzewanie / wentylacja",
+            "name": "Ogrzewanie / wentylacja (firma)",
             "terms": "ogrzewanie, wentylacja, klimatyzacja, rzemiosło, rzemieślnik, rzemieślnicy"
         },
         "leisure/water_park": {
@@ -2426,6 +2446,10 @@
         "healthcare/podiatrist": {
             "name": "Podolog",
             "terms": "podolog,podiatra"
+        },
+        "emergency/mountain_rescue": {
+            "name": "Stacja ratownictwa górskiego",
+            "terms": "stacja ratownictwa górskiego, górskie ochotniczne pogotowie ratunkowe, gopr, topr, góry, pomoc"
         },
         "amenity/kindergarten": {
             "name": "Teren przedszkola/żłobka",
@@ -2515,7 +2539,7 @@
         },
         "barrier/lift_gate": {
             "name": "Szlaban",
-            "terms": "szlaban"
+            "terms": "szlaban, bariera"
         },
         "public_transport/platform/light_rail_point": {
             "name": "Przystanek / Peron kolei miejskiej"
@@ -2574,7 +2598,7 @@
         },
         "barrier/city_wall": {
             "name": "Mur miejski",
-            "terms": "mur,ściana,miejski"
+            "terms": "mur, ściana, bariera"
         },
         "office/employment_agency": {
             "name": "Agencja zatrudnienia",
@@ -2811,7 +2835,7 @@
         },
         "barrier/kissing_gate": {
             "name": "Kissing gate",
-            "terms": "kissing gate"
+            "terms": "kissing gate, bariera"
         },
         "office/newspaper": {
             "name": "Siedziba wydawcy gazety",
@@ -2831,7 +2855,7 @@
         },
         "barrier/cycle_barrier": {
             "name": "Przegroda antyrowerowa",
-            "terms": "przeszkoda antyrowerowa"
+            "terms": "przeszkoda antyrowerowa, bariera"
         },
         "amenity/vending_machine/elongated_coin": {
             "name": "Automat do sprzedaży monet pamiątkowych",
@@ -3092,7 +3116,7 @@
         },
         "barrier/bollard_line": {
             "name": "Rząd słupków",
-            "terms": "rząd słupków, rząd pachołków, słupki, pachołki, słupek, pachołek"
+            "terms": "rząd słupków, rząd pachołków, słupki, pachołki, słupek, pachołek, bariera"
         },
         "power/substation": {
             "name": "Podstacja",
@@ -3108,7 +3132,7 @@
         },
         "barrier/cattle_grid": {
             "name": "Przeszkoda dla zwierząt",
-            "terms": "przeszkoda dla zwierząt, przeszkoda dla bydła, bydło, psy, kratka"
+            "terms": "przeszkoda dla zwierząt, przeszkoda dla bydła, bydło, psy, kratka, bariera"
         },
         "tourism/motel": {
             "name": "Motel",
@@ -3231,7 +3255,7 @@
         },
         "shop/baby_goods": {
             "name": "Sklep z artykułami dla dzieci i niemowląt",
-            "terms": "sklep niemowlęcy"
+            "terms": "akcesoria dla dzieci i niemowląt, sklep dziecięcy, artykuły dziecięce, wózki dziecięce, dzieci"
         },
         "shop/fishmonger": {
             "name": "Sklep rybny"
@@ -3537,7 +3561,7 @@
             "terms": "zbiornik na wodę, zbiornik wody, woda"
         },
         "aerialway": {
-            "name": "Wyciąg narciarski"
+            "name": "Transport napowietrzny"
         },
         "amenity/bicycle_parking/lockers": {
             "name": "Szafki na rowery",
@@ -3652,7 +3676,7 @@
         },
         "barrier/retaining_wall": {
             "name": "Mur oporowy",
-            "terms": "mur,oporowy"
+            "terms": "mur oporowy, bariera"
         },
         "amenity/bar/lgbtq": {
             "name": "Bar LGBT",
@@ -3761,8 +3785,8 @@
             "terms": "ogródek,al fresco,ogródek piwny,posiłki,kawa,kawiarnia,restauracja,pub,bar,patio,ogród"
         },
         "office/lawyer": {
-            "name": "Biuro prawnicze",
-            "terms": "prawnik, kancelaria, adwokat, radca"
+            "name": "Biuro prawnika",
+            "terms": "biuro prawnika, kancelaria, prawnik, adwokat, radca prawny, notariusz, komornik, rzeczoznawca"
         },
         "building/apartments": {
             "name": "Budynek mieszkalny wielorodzinny",
@@ -3993,7 +4017,7 @@
         },
         "barrier/fence": {
             "name": "Płot",
-            "terms": "ogrodzenie,płot"
+            "terms": "płot, ogrodzenie, bariera"
         },
         "natural/scree": {
             "name": "Rumowisko",
@@ -4288,7 +4312,7 @@
         },
         "amenity/bar": {
             "name": "Bar alkoholowy",
-            "terms": "bar, bar koktajlowy, koktajl bar, koktajle, drinki, wyszynk, wino, wódka, piwo"
+            "terms": "bar, bar koktajlowy, koktajl bar, koktajle, drinki, wyszynk, winiarnia, wino, wódka, piwo"
         },
         "traffic_calming/cushion": {
             "name": "Poduszka",
@@ -4343,7 +4367,7 @@
         },
         "office": {
             "name": "Biuro",
-            "terms": "Biuro,"
+            "terms": "biuro"
         },
         "emergency/fire_hose": {
             "name": "Wąż strażacki",
@@ -4551,7 +4575,7 @@
         },
         "amenity/place_of_worship/muslim": {
             "name": "Meczet (czynny)",
-            "terms": "meczet"
+            "terms": "meczet, świątynia muzułmańska, islam"
         },
         "landuse/pond": {
             "name": "Staw"
@@ -4689,7 +4713,7 @@
         },
         "shop/ticket": {
             "name": "Sprzedaż biletów",
-            "terms": "kasa biletowa"
+            "terms": "kasa biletowa, bilety"
         },
         "amenity/social_facility/group_home": {
             "name": "Dom spokojnej starości",
@@ -4749,7 +4773,7 @@
         },
         "man_made/water_well": {
             "name": "Studnia",
-            "terms": "studnia"
+            "terms": "studnia, ujęcie wody, woda"
         },
         "waterway/ditch": {
             "name": "Rów",
@@ -4946,7 +4970,7 @@
         },
         "barrier/gate": {
             "name": "Brama",
-            "terms": "brama,bramka,przejście,furtka"
+            "terms": "brama, bramka, przejście, furtka, bariera"
         },
         "amenity/conference_centre": {
             "name": "Centrum konferencyjne",
@@ -5048,7 +5072,7 @@
         },
         "barrier/wall/noise_barrier": {
             "name": "Ekrany akustyczne",
-            "terms": "ekrany akustyczne, ekran akustyczny, ekran dźwiękochłonny"
+            "terms": "ekrany akustyczne, ekran akustyczny, ekran dźwiękochłonny, bariera"
         },
         "amenity/motorcycle_parking": {
             "name": "Parking dla motocykli",

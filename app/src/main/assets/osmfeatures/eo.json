@@ -1847,9 +1847,6 @@
             "name": "Ŝton-tranĉista laborejo",
             "terms": "ŝtontranĉisto,shtontranchisto,sxtontrancxisto,ŝtonisto,shtonisto,sxtonisto"
         },
-        "aerialway": {
-            "name": "Kablotransporto"
-        },
         "amenity/bicycle_parking/lockers": {
             "name": "Bicikla parkumejo: ŝranketoj",
             "terms": "ŝranketoj biciklaj,shranketoj biicklaj,sxranketoj biciklaj"
@@ -4579,9 +4576,6 @@
         "shop/motorcycle_repair": {
             "name": "Motorcikl-riparejo",
             "terms": "motocikloj,motorcikloj,riparejo"
-        },
-        "aeroway": {
-            "name": "Aertransporto"
         },
         "aeroway/terminal": {
             "name": "Flugstacio",

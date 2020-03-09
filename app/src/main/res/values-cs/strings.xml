@@ -783,4 +783,13 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
 "</string>
     <string name="about_description_donate">"Děkuji Vám, že jste uvážili podporu této aplikace! Pro zobrazení aktuálních darů a pro poslání Vašeho daru, klepněte na jednu z následujících platforem:"</string>
     <string name="quest_religion_for_place_of_worship_name_title">"Jaké náboženství je praktikováno v %s?"</string>
+    <string name="quest_buildingType_garages_description">"Samostatné prostory pro různé majitele/nájemníky"</string>
+    <string name="quest_tourism_information_title">"Jaký je tohle druh turistických informací?"</string>
+    <string name="quest_tourism_information_name_title">"Jaký druh turistických informací je %s?"</string>
+    <string name="quest_tourism_information_office">"Informační centrum"</string>
+    <string name="quest_tourism_information_board">"Informační cedule"</string>
+    <string name="quest_tourism_information_terminal">"Elektronický informační kiosek"</string>
+    <string name="quest_tourism_information_map">"Tabule s mapou"</string>
+    <string name="quest_tourism_information_guidepost">"Rozcestník"</string>
+    <string name="quest_accepts_cash_title">"Přijímá %s platbu v hotovosti?"</string>
 </resources>

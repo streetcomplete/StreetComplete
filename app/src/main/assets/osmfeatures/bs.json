@@ -1253,9 +1253,6 @@
         "highway/trunk_link": {
             "name": "Poveznica na brzu cestu",
             "terms": "poveznica na brzu cestu,poveznica na državnu cestu"
-        },
-        "aeroway": {
-            "name": "Avio-put"
         }
     }
 }

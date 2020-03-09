@@ -713,6 +713,9 @@
             "name": "Prodejna nápojů",
             "terms": "prodejna nápojů,obchod s nápoji,nápoje,pití,malinovka,kofola,občerstvení,nealkoholické nápoje"
         },
+        "entrance": {
+            "name": "Vchod / Východ"
+        },
         "emergency/fire_alarm": {
             "name": "Ohlašovna požárů"
         },
@@ -836,6 +839,9 @@
         },
         "healthcare/alternative": {
             "name": "Alternativní medicína"
+        },
+        "leisure/fitness_station/parallel_bars": {
+            "name": "Rovnoběžné tyče"
         },
         "railway/rail/highspeed": {
             "name": "Vysokorychlostní železnice"
@@ -1482,6 +1488,9 @@
             "name": "Hodinářství",
             "terms": "Hodinářství"
         },
+        "amenity/parking_entrance": {
+            "name": "Vjezd / Výjezd krytého parkoviště"
+        },
         "waterway/riverbank": {
             "name": "Břeh řeky"
         },
@@ -1505,9 +1514,6 @@
         "craft/stonemason": {
             "name": "Kameník",
             "terms": "kameník,kamenictví"
-        },
-        "aerialway": {
-            "name": "Lanovka/vlek"
         },
         "amenity/nightclub": {
             "name": "Diskotéka",
@@ -1907,6 +1913,9 @@
         "leisure/pitch/baseball": {
             "name": "Basebalové hřiště"
         },
+        "man_made/bridge": {
+            "name": "Plocha mostu"
+        },
         "railway/monorail": {
             "name": "Jednokolejka",
             "terms": "jednokolejka,monorail,jednokolejná trať"
@@ -2258,6 +2267,9 @@
         "amenity/place_of_worship/shinto": {
             "name": "Džindža (šintoistická svatyně)"
         },
+        "leisure/fitness_station/horizontal_bar": {
+            "name": "Vodorovná tyč"
+        },
         "historic": {
             "name": "Památné místo",
             "terms": "historické místo"
@@ -2502,6 +2514,9 @@
         },
         "shop/boutique": {
             "name": "Módní butik"
+        },
+        "area/highway": {
+            "name": "Plocha silnice"
         },
         "amenity/vending_machine/parcel_pickup_dropoff": {
             "name": "Schránka na vyzvednutí / zanechání zásilky"
@@ -2770,6 +2785,9 @@
         "building/hotel": {
             "name": "Budova hotelu",
             "terms": "hotel,ubytování,motel,penzion,hostel"
+        },
+        "shop/anime": {
+            "name": "obchod s Anime / Manga"
         },
         "route/ferry": {
             "name": "Trasa trajektu",
@@ -3315,6 +3333,9 @@
             "name": "Stožár",
             "terms": "anténa,vysílací věž,BTS,BTSka,mobilní vysílač,vysílač GSM,televizní vysílač,rozhlasový vysílač"
         },
+        "attraction/river_rafting": {
+            "name": "Jízda na divoké řece"
+        },
         "amenity/payment_terminal": {
             "name": "Platební terminál"
         },
@@ -3590,6 +3611,9 @@
             "name": "Parkování pro motorky",
             "terms": "parking,parkování,garáž,motorka,motocykl"
         },
+        "shop/craft": {
+            "name": "Obchod s řemeslnými výrobky"
+        },
         "line": {
             "name": "Linie",
             "terms": "čára,cesta,trať,kanál,trasa"
@@ -3668,9 +3692,6 @@
         },
         "shop/motorcycle_repair": {
             "name": "Opravna motocyklů"
-        },
-        "aeroway": {
-            "name": "Přistávací dráha"
         },
         "aeroway/terminal": {
             "name": "Letištní terminál",
