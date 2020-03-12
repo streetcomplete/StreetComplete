@@ -22,7 +22,6 @@ public class Prefs
 		OSM_USER_ID = "osm.userid",
 		OSM_USER_NAME = "osm.username",
 		OSM_UNREAD_MESSAGES = "osm.unread_messages",
-		OSM_INIT_USER_DONE = "osm.post_login_done",
 		USER_DAYS_ACTIVE = "days_active";
 
 	// not shown anywhere directly

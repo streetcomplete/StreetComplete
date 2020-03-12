@@ -2,22 +2,33 @@ package de.westnordost.streetcomplete.user
 
 import android.os.Bundle
 import android.view.View
-import androidx.annotation.DrawableRes
-import androidx.annotation.StringRes
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayout.TAB_LABEL_VISIBILITY_LABELED
-import com.google.android.material.tabs.TabLayout.TAB_LABEL_VISIBILITY_UNLABELED
-import com.google.android.material.tabs.TabLayoutMediator
+import androidx.fragment.app.FragmentManager
+import de.westnordost.streetcomplete.FragmentContainerActivity
+import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.quest.QuestType
+import de.westnordost.streetcomplete.data.user.UserController
 import de.westnordost.streetcomplete.data.user.achievements.Achievement
-import kotlinx.android.synthetic.main.activity_user.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.cancel
+import javax.inject.Inject
 
-class UserActivity : AppCompatActivity(R.layout.activity_user),
-    AchievementsFragment.Listener, QuestStatisticsFragment.Listener {
+/** Shows all the user information, login etc.
+ *  This activity coordinates quite a number of fragments, which all call back to this one. In order
+ *  of appearance:
+ *  The LoginFragment, the UserFragment (which contains the viewpager with more
+ *  fragments) and the "fake" dialogs AchievementInfoFragment and QuestTypeInfoFragment.
+ * */
+class UserActivity : FragmentContainerActivity(R.layout.activity_user),
+    CoroutineScope by CoroutineScope(Dispatchers.Main),
+    AchievementsFragment.Listener,
+    QuestStatisticsFragment.Listener,
+    ProfileFragment.Listener,
+    LoginFragment.Listener {
+
+    @Inject internal lateinit var userController: UserController
 
     private val questTypeDetailsFragment: QuestTypeInfoFragment?
         get() = supportFragmentManager.findFragmentById(R.id.questTypeDetailsFragment) as QuestTypeInfoFragment
@@ -25,26 +36,22 @@ class UserActivity : AppCompatActivity(R.layout.activity_user),
     private val achievementDetailsFragment: AchievementInfoFragment?
         get() = supportFragmentManager.findFragmentById(R.id.achievementDetailsFragment) as AchievementInfoFragment
 
+    init {
+        Injector.instance.applicationComponent.inject(this)
+    }
+
+    /* --------------------------------------- Lifecycle --------------------------------------- */
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewPager.adapter = object : FragmentStateAdapter(this) {
-            override fun getItemCount() = PAGES.size
-            override fun createFragment(position: Int) = PAGES[position].creator()
+        if (savedInstanceState == null) {
+            mainFragment = when {
+                intent.getBooleanExtra(EXTRA_LAUNCH_AUTH, false) -> LoginFragment.create(true)
+                userController.isUserAuthorized -> UserFragment()
+                else -> LoginFragment.create()
+            }
         }
-
-        tabLayout.tabGravity = TabLayout.GRAVITY_FILL
-        tabLayout.tabMode = TabLayout.MODE_FIXED
-        TabLayoutMediator(tabLayout, viewPager) { tab: TabLayout.Tab, position: Int ->
-            val page = PAGES[position]
-            tab.setIcon(page.icon)
-            tab.setText(page.title)
-            tab.tabLabelVisibility =
-                if (resources.getBoolean(R.bool.show_user_tabs_text)) TAB_LABEL_VISIBILITY_LABELED
-                else TAB_LABEL_VISIBILITY_UNLABELED
-        }.attach()
     }
-
 
     override fun onBackPressed() {
         val questTypeDetailsFragment = questTypeDetailsFragment
@@ -60,20 +67,51 @@ class UserActivity : AppCompatActivity(R.layout.activity_user),
         super.onBackPressed()
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        coroutineContext.cancel()
+    }
+
+    /* -------------------------------- LoginFragment.Listener ---------------------------------- */
+
+    override fun onLoggedIn() {
+        replaceMainFragment(UserFragment())
+    }
+
+    /* ------------------------------- ProfileFragment.Listener --------------------------------- */
+
+    override fun onLoggedOut() {
+        replaceMainFragment(LoginFragment())
+    }
+
+    /* ---------------------------- AchievementsFragment.Listener ------------------------------- */
+
     override fun onClickedAchievement(achievement: Achievement, level: Int, achievementBubbleView: View) {
         achievementDetailsFragment?.show(achievement, level, achievementBubbleView)
     }
 
-    override fun onClickedQuestType(questType: QuestType<*>, questCount: Int, questBubbleView: View) {
-        questTypeDetailsFragment?.show(questType, questCount, questBubbleView)
+    /* --------------------------- QuestStatisticsFragment.Listener ----------------------------- */
+
+    override fun onClickedQuestType(questType: QuestType<*>, solvedCount: Int, questBubbleView: View) {
+        questTypeDetailsFragment?.show(questType, solvedCount, questBubbleView)
+    }
+
+    /* ------------------------------------------------------------------------------------------ */
+
+    private fun replaceMainFragment(fragment: Fragment) {
+        supportFragmentManager.popBackStack("main", FragmentManager.POP_BACK_STACK_INCLUSIVE)
+        supportFragmentManager.beginTransaction()
+            .setCustomAnimations(
+                R.anim.fade_in_from_bottom, R.anim.fade_out_to_top,
+                R.anim.fade_in_from_bottom, R.anim.fade_out_to_top
+            )
+            .replace(R.id.fragment_container, fragment)
+            .commit()
+    }
+
+    companion object {
+        const val EXTRA_LAUNCH_AUTH = "de.westnordost.streetcomplete.user.launch_auth"
     }
 }
 
-private data class UserPage(@StringRes val title: Int, @DrawableRes val icon: Int, val creator: () -> Fragment)
 
-private val PAGES = listOf(
-    // TODO proper icons
-    UserPage(R.string.user_quests_title, R.drawable.ic_star_48dp) { QuestStatisticsFragment() },
-    UserPage(R.string.user_achievements_title, R.drawable.ic_achievements_48dp) { AchievementsFragment() },
-    UserPage(R.string.user_links_title, R.drawable.ic_bookmarks_48dp) { LinksFragment() }
-)

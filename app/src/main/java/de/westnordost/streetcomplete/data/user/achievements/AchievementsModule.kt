@@ -3,8 +3,6 @@ package de.westnordost.streetcomplete.data.user.achievements
 import dagger.Module
 import dagger.Provides
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.user.QuestStatisticsDao
-import de.westnordost.streetcomplete.data.user.UserStore
 import javax.inject.Named
 
 @Module
@@ -179,7 +177,7 @@ object AchievementsModule {
             "https://anvaka.github.io/city-roads",
             "city roads",
             LinkCategory.GOODIES,
-            R.drawable.ic_link_avatar_anvaka_on_github,
+            R.drawable.ic_link_city_roads,
             R.string.link_city_roads_description
         ),
         Link(

@@ -98,6 +98,7 @@ class QuestTypeInfoFragment : Fragment(R.layout.fragment_quest_type_info) {
             wikiLinkButton.visibility = View.INVISIBLE
         }
 
+        counterAnimation?.cancel()
         val anim = ValueAnimator.ofInt(0, questCount)
 
         anim.doOnStart { solvedQuestsContainer.visibility = View.VISIBLE }
@@ -209,7 +210,7 @@ class QuestTypeInfoFragment : Fragment(R.layout.fragment_quest_type_info) {
     }
 
     companion object {
-        const val ANIMATION_TIME_IN_MS = 500L
+        const val ANIMATION_TIME_IN_MS = 600L
         const val ANIMATION_TIME_OUT_MS = 300L
     }
 }

@@ -2,12 +2,10 @@ package de.westnordost.streetcomplete.data.user
 
 import android.content.SharedPreferences
 import android.util.Log
-import androidx.core.content.edit
 import de.westnordost.osmapi.OsmConnection
 import de.westnordost.osmapi.user.Permission
 import de.westnordost.osmapi.user.PermissionsDao
 import de.westnordost.osmapi.user.UserDao
-import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.OsmModule
 import de.westnordost.streetcomplete.data.user.achievements.*
 import de.westnordost.streetcomplete.ktx.saveToFile
@@ -46,19 +44,12 @@ import javax.inject.Singleton
     val userName: String? get() = userStore.userName
     val unreadMessagesCount: Int get() = userStore.unreadMessagesCount
 
-    suspend fun initUser() {
-        // existing users will have logged in but not have all this metadata
-        if (!prefs.getBoolean(Prefs.OSM_INIT_USER_DONE, false)) {
-            postLogin()
-        }
-    }
-
     suspend fun logIn(consumer: OAuthConsumer) {
         withContext(Dispatchers.IO) {
             require(hasRequiredPermissions(consumer)) { "The access does not have the required permissions" }
             oAuthStore.oAuthConsumer = consumer
             osmConnection.oAuth = consumer
-            postLogin()
+            updateUser()
         }
     }
 
@@ -67,7 +58,8 @@ import javax.inject.Singleton
         oAuthStore.oAuthConsumer = null
         osmConnection.oAuth = null
         statisticsDao.clear()
-        prefs.edit { putBoolean(Prefs.OSM_INIT_USER_DONE, false) }
+        userAchievementsDao.clear()
+        userLinksDao.clear()
     }
 
     fun getAchievements(): List<Pair<Achievement, Int>> {
@@ -81,13 +73,12 @@ import javax.inject.Singleton
         return userLinksDao.getAll().mapNotNull { linksById[it] }
     }
 
-    private suspend fun postLogin() {
+    suspend fun updateUser() {
         withContext(Dispatchers.IO) {
             val userDetails = userDao.getMine()
             userStore.setDetails(userDetails)
             downloadAvatar(userDetails.profileImageUrl, userDetails.id)
             syncStatistics(userDetails.id)
-            prefs.edit { putBoolean(Prefs.OSM_INIT_USER_DONE, true) }
         }
     }
 

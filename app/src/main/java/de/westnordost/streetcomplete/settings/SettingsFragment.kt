@@ -16,11 +16,9 @@ import javax.inject.Provider
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestDao
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
 import de.westnordost.streetcomplete.ktx.toast
-import de.westnordost.streetcomplete.settings.questselection.QuestSelectionFragment
 import javax.inject.Inject
 import de.westnordost.streetcomplete.*
 import de.westnordost.streetcomplete.data.user.UserController
-
 
 class SettingsFragment : PreferenceFragmentCompat(),
     SharedPreferences.OnSharedPreferenceChangeListener {
@@ -31,37 +29,21 @@ class SettingsFragment : PreferenceFragmentCompat(),
     @Inject internal lateinit var downloadedTilesDao: DownloadedTilesDao
     @Inject internal lateinit var osmQuestDao: OsmQuestDao
 
-    private val fragmentActivity: FragmentContainerActivity?
-        get() = activity as FragmentContainerActivity?
+    interface Listener {
+        fun onClickedQuestSelection()
+    }
+    private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
     init {
         Injector.instance.applicationComponent.inject(this)
     }
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
-        PreferenceManager.setDefaultValues(context!!, R.xml.preferences, false)
+        PreferenceManager.setDefaultValues(requireContext(), R.xml.preferences, false)
         addPreferencesFromResource(R.xml.preferences)
 
-        findPreference<Preference>("oauth")?.setOnPreferenceClickListener {
-            if (userController.isUserAuthorized) {
-                context?.let {
-                    AlertDialog.Builder(it)
-                        .setMessage(R.string.oauth_remove_authorization_dialog_message)
-                        .setPositiveButton(R.string.oauth_remove_authorization_confirmation) { _, _ ->
-                            userController.logOut()
-                        }
-                        .setNegativeButton(android.R.string.cancel, null)
-                        .show()
-                }
-            } else {
-                fragmentActivity?.currentFragment =
-                    OAuthFragment()
-            }
-            true
-        }
-
         findPreference<Preference>("quests")?.setOnPreferenceClickListener {
-            fragmentActivity?.currentFragment = QuestSelectionFragment()
+            listener?.onClickedQuestSelection()
             true
         }
 
@@ -94,19 +76,7 @@ class SettingsFragment : PreferenceFragmentCompat(),
 
     override fun onStart() {
         super.onStart()
-        updateOsmAuthSummary()
         activity?.setTitle(R.string.action_settings)
-    }
-
-    private fun updateOsmAuthSummary() {
-        val oauth = preferenceScreen?.findPreference<Preference>("oauth")
-        val username = userController.userName
-        oauth?.summary = if (userController.isUserAuthorized) {
-            if (username != null) resources.getString(R.string.pref_title_authorized_username_summary, username)
-            else resources.getString(R.string.pref_title_authorized_summary)
-        } else {
-            resources.getString(R.string.pref_title_not_authorized_summary)
-        }
     }
 
     override fun onResume() {
@@ -121,9 +91,6 @@ class SettingsFragment : PreferenceFragmentCompat(),
 
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String) {
         when(key) {
-            Prefs.OAUTH_ACCESS_TOKEN_SECRET -> {
-                updateOsmAuthSummary()
-            }
             Prefs.SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS -> {
                 val task = applyNoteVisibilityChangedTask.get()
                 task.setPreference(preferenceScreen.findPreference(Prefs.SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS))

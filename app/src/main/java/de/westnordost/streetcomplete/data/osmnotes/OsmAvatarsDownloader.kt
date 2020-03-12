@@ -2,19 +2,17 @@ package de.westnordost.streetcomplete.data.osmnotes
 
 import android.annotation.SuppressLint
 import android.util.Log
-
+import de.westnordost.osmapi.user.UserDao
+import de.westnordost.streetcomplete.ktx.saveToFile
 import java.io.File
 import java.io.IOException
 import java.net.URL
-
 import javax.inject.Inject
-
-import de.westnordost.osmapi.user.UserDao
-import de.westnordost.streetcomplete.ktx.saveToFile
+import javax.inject.Named
 
 class OsmAvatarsDownloader @Inject constructor(
     private val userDao: UserDao,
-    private val cacheDir: File
+    @Named("AvatarsCacheDirectory") private val cacheDir: File
 ) {
 
     fun download(userIds: Collection<Long>) {

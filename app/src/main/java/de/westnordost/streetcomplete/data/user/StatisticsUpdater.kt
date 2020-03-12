@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.data.user
 import de.westnordost.streetcomplete.data.user.achievements.AchievementGiver
 import javax.inject.Inject
 
-class StatisticsManager @Inject constructor(
+class StatisticsUpdater @Inject constructor(
         private val questStatisticsDao: QuestStatisticsDao,
         private val achievementGiver: AchievementGiver
 ){

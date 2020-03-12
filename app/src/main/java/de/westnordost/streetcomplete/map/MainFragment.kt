@@ -44,6 +44,7 @@ import de.westnordost.streetcomplete.data.VisibleQuestListener
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuest
 import de.westnordost.streetcomplete.data.osm.splitway.SplitPolylineAtPosition
+import de.westnordost.streetcomplete.ktx.childFragmentManagerOrNull
 import de.westnordost.streetcomplete.quests.CreateNoteFragment
 import de.westnordost.streetcomplete.ktx.getLocationInWindow
 import de.westnordost.streetcomplete.ktx.toast
@@ -78,8 +79,7 @@ class MainFragment : Fragment(R.layout.fragment_map_with_controls),
 
     private var mapOffsetWithOpenBottomSheet: RectF = RectF(0f, 0f, 0f, 0f)
 
-    private val childFragmentManagerOrNull: FragmentManager? get() =
-        if (host != null) childFragmentManager else null
+
 
     interface Listener {
         fun onQuestSolved(quest: Quest?, source: String?)

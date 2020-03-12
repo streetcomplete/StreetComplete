@@ -18,7 +18,7 @@ import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.data.VisibleQuestListener
 import de.westnordost.streetcomplete.data.VisibleQuestRelay
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
-import de.westnordost.streetcomplete.data.user.StatisticsManager
+import de.westnordost.streetcomplete.data.user.StatisticsUpdater
 import de.westnordost.streetcomplete.data.user.UserController
 import de.westnordost.streetcomplete.util.SlippyMapMath
 
@@ -29,7 +29,7 @@ class QuestChangesUploadService : IntentService(TAG) {
     @Inject internal lateinit var versionIsBannedChecker: VersionIsBannedChecker
     @Inject internal lateinit var userController: UserController
     @Inject internal lateinit var downloadedTilesDB: DownloadedTilesDao
-    @Inject internal lateinit var statisticsManager: StatisticsManager
+    @Inject internal lateinit var statisticsUpdater: StatisticsUpdater
 
     private val binder = Interface()
 
@@ -37,7 +37,7 @@ class QuestChangesUploadService : IntentService(TAG) {
     private val visibleQuestRelay = VisibleQuestRelay()
     private val uploadedChangeRelay = object : OnUploadedChangeListener {
         override fun onUploaded(questType: String, at: LatLon) {
-            statisticsManager.addOne(questType)
+            statisticsUpdater.addOne(questType)
             progressListener?.onProgress(true)
         }
 

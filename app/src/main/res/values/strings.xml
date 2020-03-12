@@ -2,17 +2,15 @@
 <resources>
     <string name="action_settings">"Settings"</string>
     <string name="oauth_communication_error">"Unable to reach the authorization server"</string>
-    <string name="oauth_remove_authorization_dialog_message">"Do you want to remove the authorization for your OSM account?"</string>
-    <string name="oauth_remove_authorization_confirmation">"Remove"</string>
+    <string name="user_profile">My Profile</string>
+    <string name="user_login">Login</string>
+    <string name="user_logout">Logout</string>
+    <string name="osm_profile">OSM Profile</string>
     <string name="retry">"Retry"</string>
     <string name="oauth_failed_permissions">"Authorization failed: All listed permissions need to be granted"</string>
     <string name="title_activity_settings">"Settings"</string>
     <string name="pref_category_communication">"Communication"</string>
     <string name="pref_category_display">"Display"</string>
-    <string name="pref_title_authorization">"Authorize OSM access"</string>
-    <string name="pref_title_authorized_username_summary">"Authorized account: %s"</string>
-    <string name="pref_title_authorized_summary">"Authorized"</string>
-    <string name="pref_title_not_authorized_summary">"Not yet authorized"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
     <string name="pref_tilecache_size_message">"Space in megabytes reserved on external storage to cache map tiles"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Show all notes"</string>
@@ -736,6 +734,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="user_quests_title">Solved Quests</string>
     <string name="user_achievements_title">Achievements</string>
     <string name="user_links_title">Link Collection</string>
+    <string name="user_profile_title">Profile</string>
 
     <string name="user_statistics_quest_wiki_link">Documentation</string>
 
@@ -800,6 +799,10 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
 
     <string name="achievements_empty">You have no achievements yet</string>
     <string name="links_empty">You have no links yet</string>
-    <string name="quests_empty">You solved no quests yet</string>
+    <string name="quests_empty">You published no quest answers yet</string>
+
+    <string name="unsynced_quests_description">plus %d not yet published changes.</string>
+    <string name="unsynced_quests_not_logged_in_description">You have %d not yet published changes. You need to login to have them uploaded.</string>
+
 
 </resources>

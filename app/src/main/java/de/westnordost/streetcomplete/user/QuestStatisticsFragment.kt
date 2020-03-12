@@ -15,7 +15,8 @@ import android.os.Looper
 import android.view.*
 import android.view.MotionEvent.ACTION_DOWN
 import android.view.MotionEvent.ACTION_UP
-import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
+import android.view.ViewGroup.LayoutParams.MATCH_PARENT
+import android.view.animation.DecelerateInterpolator
 import android.widget.FrameLayout
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
@@ -36,10 +37,7 @@ import org.jbox2d.dynamics.Body
 import org.jbox2d.dynamics.BodyDef
 import org.jbox2d.dynamics.BodyType
 import javax.inject.Inject
-import kotlin.math.PI
-import kotlin.math.cos
-import kotlin.math.sin
-import kotlin.math.sqrt
+import kotlin.math.*
 
 /** Shows the user's solved quests of each type in some kind of ball pit. Clicking on each opens
  *  a QuestTypeInfoFragment that shows the quest's details. */
@@ -102,16 +100,7 @@ class QuestStatisticsFragment :
 
         launch {
             withContext(Dispatchers.IO) {
-                // TODO just for testing...
-                solvedQuestsByQuestType = mapOf(
-                    "AddMaxHeight" to 12,
-                    "AddParkingFee" to 18,
-                    "AddRailwayCrossingBarrier" to 8,
-                    "AddWayLit" to 4,
-                    "AddToiletsFee" to 20,
-                    "AddSidewalk" to 1
-                )
-                    //questStatisticsDao.getAll()
+                solvedQuestsByQuestType = questStatisticsDao.getAll()
                         .filterKeys { questTypeRegistry.getByName(it) != null }
                         .mapKeys { questTypeRegistry.getByName(it.key)!! }
             }
@@ -164,12 +153,15 @@ class QuestStatisticsFragment :
     }
 
     private suspend fun addQuestsToScene() {
-        for ((questType, solved) in solvedQuestsByQuestType) {
-            val length = (sqrt(solved * ONE_QUEST_SIZE_IN_M2/PI) * 2).toFloat()
+        // add the biggest quest bubbles first so that the smaller ones have a higher z rank
+        // because they are added later. So, they will still be clickable
+        val sortedBySolvedQuestTypes = solvedQuestsByQuestType.toList().sortedByDescending { it.second }
+        for ((questType, amountSolved) in sortedBySolvedQuestTypes) {
+            val radius = sqrt((amountSolved * ONE_QUEST_SIZE_IN_M2)/PI).toFloat()
             val spawnPos = Vec2(
-                length + Math.random().toFloat() * (worldBounds.width() - 2 * length),
-                length + Math.random().toFloat() * (worldBounds.height() - 2 * length))
-            addQuestType(questType, solved, spawnPos)
+                radius + Math.random().toFloat() * (worldBounds.width() - 2 * radius),
+                radius + Math.random().toFloat() * (worldBounds.height() - 2 * radius))
+            addQuestType(questType, amountSolved, spawnPos)
         }
     }
 
@@ -190,16 +182,18 @@ class QuestStatisticsFragment :
 
     @SuppressLint("ClickableViewAccessibility")
     private suspend fun addQuestType(questType: QuestType<*>, amountSolved: Int, position: Vec2) {
-        val ctx = context!!
+        val ctx = requireContext()
 
         val radius = sqrt((amountSolved * ONE_QUEST_SIZE_IN_M2)/PI)
         val body = createQuestBody(position, radius.toFloat())
         val questView = ImageView(ctx)
         questView.id = View.generateViewId()
-        questView.layoutParams = ViewGroup.LayoutParams(WRAP_CONTENT, WRAP_CONTENT)
+        questView.layoutParams = ViewGroup.LayoutParams(MATCH_PARENT, MATCH_PARENT)
+        questView.scaleType = ImageView.ScaleType.FIT_XY
         questView.setImageResource(questType.icon)
 
         val clickableContainer = FrameLayout(ctx)
+        clickableContainer.layoutParams = ViewGroup.LayoutParams(256,256)
         // foreground attribute only exists on FrameLayout up until KITKAT
         clickableContainer.foreground = resources.getDrawable(R.drawable.round_pressed)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -221,6 +215,17 @@ class QuestStatisticsFragment :
                 return true
             }
         })
+
+        clickableContainer.scaleX = 0.3f
+        clickableContainer.alpha = 0f
+        clickableContainer.scaleY = 0.3f
+        clickableContainer.animate()
+            .scaleX(1f).scaleY(1f)
+            .alpha(1f)
+            .setStartDelay((1600 * position.y / worldBounds.height()).toLong())
+            .setDuration((200 + (amountSolved * 150.0).pow(0.75)).toLong())
+            .setInterpolator(DecelerateInterpolator())
+            .start()
 
         physicsView.addView(clickableContainer, body)
     }
@@ -264,7 +269,7 @@ class QuestStatisticsFragment :
 
     companion object {
         private const val ONE_QUEST_SIZE_IN_M2 = 0.01f
-        private const val QUESTS_FILL_FACTOR = 0.5f
+        private const val QUESTS_FILL_FACTOR = 0.55f
         private const val FLING_SPEED_FACTOR = 0.3f
     }
 }

@@ -61,7 +61,6 @@ import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.osmapi.map.data.OsmLatLon;
 import de.westnordost.osmfeatures.FeatureDictionary;
-import de.westnordost.streetcomplete.about.AboutFragment;
 import de.westnordost.streetcomplete.about.WhatsNewDialog;
 import de.westnordost.streetcomplete.data.quest.Quest;
 import de.westnordost.streetcomplete.data.quest.QuestAutoSyncer;
@@ -83,6 +82,7 @@ import de.westnordost.streetcomplete.location.LocationState;
 import de.westnordost.streetcomplete.location.LocationUtil;
 import de.westnordost.streetcomplete.map.MainFragment;
 import de.westnordost.streetcomplete.quests.QuestUtilKt;
+import de.westnordost.streetcomplete.settings.AboutActivity;
 import de.westnordost.streetcomplete.settings.SettingsActivity;
 import de.westnordost.streetcomplete.sound.SoundFx;
 import de.westnordost.streetcomplete.statistics.AnswersCounter;
@@ -252,12 +252,6 @@ public class MainActivity extends AppCompatActivity implements  MainFragment.Lis
 
 		if(savedInstanceState == null)
 		{
-			userController.initUser(new Continuation<Unit>()
-			{
-				@NotNull @Override public CoroutineContext getContext() { return coroutineScope.getCoroutineContext(); }
-				@Override public void resumeWith(@NotNull Object o) { }
-			});
-
 			questController.deleteOld(new Continuation<Unit>()
 			{
 				@NotNull @Override public CoroutineContext getContext() { return coroutineScope.getCoroutineContext(); }
@@ -472,8 +466,7 @@ public class MainActivity extends AppCompatActivity implements  MainFragment.Lis
 				startActivity(intent);
 				return true;
 			case R.id.action_about:
-				intent = new Intent(this, FragmentContainerActivity.class);
-				intent.putExtra(FragmentContainerActivity.EXTRA_FRAGMENT_CLASS, AboutFragment.class.getName());
+				intent = new Intent(this, AboutActivity.class);
 				startActivity(intent);
 				return true;
 			case R.id.action_download:
@@ -494,7 +487,7 @@ public class MainActivity extends AppCompatActivity implements  MainFragment.Lis
 					Toast.makeText(this, R.string.map_application_missing, Toast.LENGTH_LONG).show();
 				}
 				return true;
-			case R.id.action_stats:
+			case R.id.action_user:
 				startActivity(new Intent(this, UserActivity.class));
 				return true;
 			case R.id.action_achievement:
@@ -545,8 +538,8 @@ public class MainActivity extends AppCompatActivity implements  MainFragment.Lis
 				.setView(inner)
 				.setPositiveButton(android.R.string.ok, (dialog, which) ->
 				{
-					Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
-					intent.putExtra(SettingsActivity.EXTRA_LAUNCH_AUTH, true);
+					Intent intent = new Intent(MainActivity.this, UserActivity.class);
+					intent.putExtra(UserActivity.EXTRA_LAUNCH_AUTH, true);
 					startActivity(intent);
 				})
 				.setNegativeButton(R.string.later, (dialog, which) ->

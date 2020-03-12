@@ -17,6 +17,7 @@
         android:paddingRight="@dimen/activity_horizontal_margin"
         tools:spanCount="2"
         android:orientation="vertical"
+        android:layoutAnimation="@anim/layout_items_fade_in_from_bottom"
         tools:itemCount="8"
         tools:listitem="@layout/cell_achievement" />
 

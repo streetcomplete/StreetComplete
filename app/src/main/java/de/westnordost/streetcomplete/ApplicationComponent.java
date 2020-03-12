@@ -35,7 +35,10 @@ import de.westnordost.streetcomplete.statistics.AnswersCounter;
 import de.westnordost.streetcomplete.map.QuestsMapFragment;
 import de.westnordost.streetcomplete.user.AchievementsFragment;
 import de.westnordost.streetcomplete.user.LinksFragment;
+import de.westnordost.streetcomplete.user.LoginFragment;
+import de.westnordost.streetcomplete.user.ProfileFragment;
 import de.westnordost.streetcomplete.user.QuestStatisticsFragment;
+import de.westnordost.streetcomplete.user.UserActivity;
 import de.westnordost.streetcomplete.util.SerializedSavedState;
 
 @Singleton
@@ -86,4 +89,10 @@ public interface ApplicationComponent
 	void inject(@NotNull AchievementsFragment achievementsFragment);
 
 	void inject(@NotNull LinksFragment linksFragment);
+
+	void inject(@NotNull ProfileFragment profileFragment);
+
+	void inject(@NotNull UserActivity userActivity);
+
+	void inject(@NotNull LoginFragment loginFragment);
 }

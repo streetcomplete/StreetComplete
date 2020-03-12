@@ -25,7 +25,9 @@ import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
 
-class OAuthFragment : Fragment(R.layout.fragment_oauth), BackPressedListener, HasTitle,
+class OAuthFragment : Fragment(R.layout.fragment_oauth),
+    BackPressedListener,
+    HasTitle,
     CoroutineScope by CoroutineScope(Dispatchers.Main)
 {
     @Inject internal lateinit var consumerProvider: Provider<OAuthConsumer>
@@ -37,16 +39,15 @@ class OAuthFragment : Fragment(R.layout.fragment_oauth), BackPressedListener, Ha
         fun onOAuthSuccess(consumer: OAuthConsumer)
         fun onOAuthFailed(e: Exception?)
     }
-    private val listener: Listener? get() = parentFragment as? Listener
-        ?: activity as? Listener
+    private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
     private val callbackUrl get() = "$callbackScheme://$callbackHost"
     private val webViewClient: OAuthWebViewClient = OAuthWebViewClient()
+
+    override val title: String get() = getString(R.string.user_login)
 
     private lateinit var consumer: OAuthConsumer
     private var authorizeUrl: String? = null
     private var oAuthVerifier: String? = null
-
-    override val title: String get() = getString(R.string.pref_title_quests)
 
     init {
         Injector.instance.applicationComponent.inject(this)
@@ -75,11 +76,6 @@ class OAuthFragment : Fragment(R.layout.fragment_oauth), BackPressedListener, Ha
         webView.settings.allowContentAccess = true
         webView.settings.setSupportZoom(false)
         webView.webViewClient = webViewClient
-    }
-
-    override fun onStart() {
-        super.onStart()
-        activity?.title = getString(R.string.pref_title_authorization)
     }
 
     override fun onPause() {
@@ -134,8 +130,8 @@ class OAuthFragment : Fragment(R.layout.fragment_oauth), BackPressedListener, Ha
                 withContext(Dispatchers.IO) {
                     provider.retrieveAccessToken(consumer, oAuthVerifier)
                 }
-                progressView?.visibility = View.INVISIBLE
                 listener?.onOAuthSuccess(consumer)
+                progressView?.visibility = View.INVISIBLE
             }
         }
         catch (e: Exception) {

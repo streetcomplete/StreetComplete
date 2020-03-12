@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.ktx
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 
 fun Fragment.tryStartActivity(intent: Intent): Boolean {
     return try {
@@ -12,3 +13,6 @@ fun Fragment.tryStartActivity(intent: Intent): Boolean {
         false
     }
 }
+
+val Fragment.childFragmentManagerOrNull: FragmentManager? get() =
+    if (host != null) childFragmentManager else null

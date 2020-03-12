@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="de.westnordost.streetcomplete"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="de.westnordost.streetcomplete"
     >
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -12,6 +13,7 @@
 
     <uses-feature android:name="android.hardware.camera" android:required="false" />
     <uses-feature android:name="android.hardware.location.gps" android:required="false" />
+    <uses-feature android:name="android.hardware.screen.portrait"/>
 
     <application
         android:name=".StreetCompleteApplication"
@@ -54,9 +56,13 @@
             </intent-filter>
         </activity>
         <activity android:name=".FragmentContainerActivity"/>
+        <activity android:name=".settings.AboutActivity"/>
         <activity android:name=".settings.ShowQuestFormsActivity"
             android:configChanges="orientation|screenSize|uiMode"/>
-        <activity android:name=".user.UserActivity"/>
+        <activity
+            android:name=".user.UserActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <service android:name=".data.download.QuestDownloadService" />
         <service android:name=".data.upload.QuestChangesUploadService" />
         <provider

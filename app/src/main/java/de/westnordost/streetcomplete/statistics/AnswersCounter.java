@@ -7,23 +7,14 @@ import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.TextView;
 
-import java.util.Arrays;
-
 import javax.inject.Inject;
 
-import de.westnordost.streetcomplete.data.quest.QuestStatus;
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestDao;
-import de.westnordost.streetcomplete.data.osm.splitway.OsmQuestSplitWayDao;
-import de.westnordost.streetcomplete.data.osmnotes.createnotes.CreateNoteDao;
-import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestDao;
+import de.westnordost.streetcomplete.data.quest.UnsyncedChangesDao;
 import de.westnordost.streetcomplete.data.user.QuestStatisticsDao;
 
 public class AnswersCounter
 {
-	private final OsmQuestDao questDB;
-	private final OsmNoteQuestDao noteQuestDB;
-	private final CreateNoteDao createNoteDB;
-	private final OsmQuestSplitWayDao splitWayDB;
+	private final UnsyncedChangesDao unsyncedChangesDB;
 	private final QuestStatisticsDao questStatisticsDB;
 
 	private int uploaded;
@@ -36,14 +27,10 @@ public class AnswersCounter
 	private boolean isFirstUpdateDone;
 	private boolean isAutosync;
 
-	@Inject public AnswersCounter(OsmQuestDao questDB, OsmNoteQuestDao noteQuestDB,
-								  CreateNoteDao createNoteDB, OsmQuestSplitWayDao splitWayDB,
+	@Inject public AnswersCounter(UnsyncedChangesDao unsyncedChangesDB,
 								  QuestStatisticsDao questStatisticsDB)
 	{
-		this.questDB = questDB;
-		this.noteQuestDB = noteQuestDB;
-		this.createNoteDB = createNoteDB;
-		this.splitWayDB = splitWayDB;
+		this.unsyncedChangesDB = unsyncedChangesDB;
 		this.questStatisticsDB = questStatisticsDB;
 	}
 
@@ -107,11 +94,7 @@ public class AnswersCounter
 			@Override protected Void doInBackground(Void... params)
 			{
 				uploaded = questStatisticsDB.getTotalAmount();
-				unsynced = 0;
-				unsynced += questDB.getCount(Arrays.asList(QuestStatus.ANSWERED), null, null, null, null);
-				unsynced += noteQuestDB.getCount(Arrays.asList(QuestStatus.ANSWERED), null, null);
-				unsynced += splitWayDB.getCount();
-				unsynced += createNoteDB.getCount();
+				unsynced = unsyncedChangesDB.getCount();
 				return null;
 			}
 

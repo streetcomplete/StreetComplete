@@ -2,8 +2,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
 
-    <item android:id="@+id/action_stats"
-        android:icon="@drawable/ic_living_street_france" android:orderInCategory="0" app:showAsAction="always" />
+    <item android:id="@+id/action_user"
+        android:icon="@drawable/ic_profile_white_48dp" android:orderInCategory="0" app:showAsAction="always" />
     <item android:id="@+id/action_achievement"
         android:icon="@drawable/ic_building_kindergarten" android:orderInCategory="0" app:showAsAction="always" />
     <item android:id="@+id/action_undo" android:title="@string/action_undo"

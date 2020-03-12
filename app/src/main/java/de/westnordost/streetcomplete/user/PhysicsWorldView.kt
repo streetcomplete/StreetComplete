@@ -6,6 +6,7 @@ import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.FrameLayout
+import androidx.core.view.updateLayoutParams
 import org.jbox2d.collision.AABB
 import org.jbox2d.common.Transform
 import org.jbox2d.dynamics.Body
@@ -58,16 +59,23 @@ class PhysicsWorldView @JvmOverloads constructor(
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         for ((view, body) in bodies.entries) {
-            val pixelWidth = view.width.toFloat()
-            val pixelHeight = view.height.toFloat()
-            if (pixelWidth == 0f || pixelHeight == 0f) continue
+            val pixelWidth = view.width
+            val pixelHeight = view.height
+            if (pixelWidth == 0 || pixelHeight == 0) continue
 
             val bbox = body.computeBoundingBox() ?: continue
             val widthInMeters = bbox.upperBound.x - bbox.lowerBound.x
             val heightInMeters = bbox.upperBound.y - bbox.lowerBound.y
 
-            view.scaleX = widthInMeters * pixelsPerMeter / pixelWidth
-            view.scaleY = heightInMeters * pixelsPerMeter / pixelHeight
+            val desiredPixelWidth = (widthInMeters * pixelsPerMeter).toInt()
+            val desiredPixelHeight = (heightInMeters * pixelsPerMeter).toInt()
+
+            if (desiredPixelHeight != pixelHeight || desiredPixelWidth != pixelWidth) {
+                view.updateLayoutParams {
+                    width = desiredPixelWidth
+                    height = desiredPixelHeight
+                }
+            }
 
             val centerInMeters = body.position
             view.x = +(centerInMeters.x - offsetInMetersX) * pixelsPerMeter - pixelWidth / 2f

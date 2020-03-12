@@ -16,7 +16,6 @@ import androidx.recyclerview.widget.RecyclerView
 
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.BuildConfig
-import de.westnordost.streetcomplete.FragmentContainerActivity
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.view.ListAdapter
 import kotlinx.android.synthetic.main.cell_labeled_icon_select_right.view.*
@@ -24,16 +23,19 @@ import kotlinx.android.synthetic.main.cell_labeled_icon_select_right.view.*
 
 class AboutFragment : PreferenceFragmentCompat() {
 
-    private val fragmentActivity: FragmentContainerActivity?
-        get() = activity as FragmentContainerActivity?
-
+    interface Listener {
+        fun onClickedChangelog()
+        fun onClickedCredits()
+        fun onClickedPrivacyStatement()
+    }
+    private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         addPreferencesFromResource(R.xml.about)
 
         findPreference<Preference>("version")?.summary = getString(R.string.about_summary_current_version, "v" + BuildConfig.VERSION_NAME)
         findPreference<Preference>("version")?.setOnPreferenceClickListener {
-            fragmentActivity?.setCurrentFragment(ChangelogFragment())
+            listener?.onClickedChangelog()
             true
         }
 
@@ -42,19 +44,12 @@ class AboutFragment : PreferenceFragmentCompat() {
         }
 
         findPreference<Preference>("authors")?.setOnPreferenceClickListener {
-            fragmentActivity?.setCurrentFragment(CreditsFragment())
+            listener?.onClickedCredits()
             true
         }
 
         findPreference<Preference>("privacy")?.setOnPreferenceClickListener {
-            val f = ShowHtmlFragment.create(
-                getString(R.string.privacy_html) +
-                getString(R.string.privacy_html_tileserver) +
-                getString(R.string.privacy_html_third_party_quest_sources) +
-                getString(R.string.privacy_html_image_upload2),
-                R.string.about_title_privacy_statement
-            )
-            fragmentActivity?.setCurrentFragment(f)
+            listener?.onClickedPrivacyStatement()
             true
         }
 

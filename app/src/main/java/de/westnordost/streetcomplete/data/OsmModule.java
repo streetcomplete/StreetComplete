@@ -7,6 +7,7 @@ import java.io.File;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.inject.Named;
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -107,11 +108,6 @@ public class OsmModule
 		return new MapDataDao(osm);
 	}
 
-	@Provides public static OsmAvatarsDownloader avatarsDownload(UserDao userDao, Context context)
-	{
-		return new OsmAvatarsDownloader(userDao, getAvatarsCacheDirectory(context));
-	}
-
 	@Provides public static StreetCompleteImageUploader imageUploader()
 	{
 		return new StreetCompleteImageUploader(ApplicationConstants.SC_PHOTO_SERVICE_URL);
@@ -126,7 +122,7 @@ public class OsmModule
 			splitWaysUploader, createNotesUploader);
 	}
 
-	public static File getAvatarsCacheDirectory(Context context)
+	@Provides @Named("AvatarsCacheDirectory") public static File getAvatarsCacheDirectory(Context context)
 	{
 		return new File(context.getCacheDir(), ApplicationConstants.AVATARS_CACHE_DIRECTORY);
 	}
