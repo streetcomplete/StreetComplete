@@ -116,7 +116,7 @@
                 android:layout_gravity="start"
                 android:text="@string/achievements_unlocked_links"
                 android:textAlignment="viewStart"
-                android:textAppearance="@style/TextAppearance.Subhead" />
+                android:textAppearance="@style/TextAppearance.Title2" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/unlockedLinksList"

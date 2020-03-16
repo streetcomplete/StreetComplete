@@ -7,40 +7,11 @@
         <item name="android:maxHeight">6dip</item>
     </style>
 
+    <!-- +++++++++++++++++++++++++++++++++++ Dialogs +++++++++++++++++++++++++++++++++++++++++++ -->
+
     <style name="DialogWindowTitle.Bubble" parent="android:Widget">
         <item name="android:textAppearance">@style/TextAppearance.Title</item>
         <item name="android:paddingBottom">8dp</item>
-    </style>
-
-    <style name="TextAppearance.Title" parent="TextAppearance.AppCompat.Title">
-        <item name="android:textAlignment">viewStart</item>
-        <item name="android:textSize">20sp</item>
-        <item name="android:fontFamily">sans-serif-condensed</item>
-        <item name="android:textStyle">bold</item>
-    </style>
-
-    <style name="TextAppearance.Body" parent="TextAppearance.AppCompat.Body1">
-        <item name="android:textSize">14sp</item>
-        <item name="android:fontFamily">sans-serif</item>
-    </style>
-
-    <style name="TextAppearance.Subhead" parent="TextAppearance.AppCompat.Subhead">
-        <item name="android:textAlignment">viewStart</item>
-        <item name="android:textSize">16sp</item>
-        <item name="android:fontFamily">sans-serif-condensed</item>
-        <item name="android:textStyle">bold</item>
-    </style>
-
-    <style name="TextAppearance.ListItemTitle" parent="TextAppearance.AppCompat.Body1">
-        <item name="android:textSize">14sp</item>
-        <item name="android:fontFamily">sans-serif-condensed</item>
-        <item name="android:textStyle">bold</item>
-    </style>
-
-    <style name="TextAppearance.ListItemText" parent="TextAppearance.AppCompat.Body1">
-        <item name="android:textSize">14sp</item>
-        <item name="android:fontFamily">sans-serif-condensed</item>
-        <item name="android:textColor">@color/hint_text</item>
     </style>
 
     <style name="ButtonBar" parent="Widget.AppCompat.ButtonBar">
@@ -66,6 +37,8 @@
         <item name="android:windowExitAnimation">@anim/deflate_popup_bubble</item>
     </style>
 
+    <!-- +++++++++++++++++++++++++++++ Opening hours input +++++++++++++++++++++++++++++++++++++ -->
+
     <style name="TimesField">
         <item name="android:focusable">true</item>
         <item name="android:clickable">true</item>
@@ -84,6 +57,8 @@
         <item name="android:paddingTop">6dp</item>
         <item name="android:paddingBottom">6dp</item>
     </style>
+
+    <!-- ++++++++++++++++++++++++++++++ Address edit texts +++++++++++++++++++++++++++++++++++++ -->
 
     <style name="HousenumberEditText">
         <item name="android:textColor">#fff</item>
@@ -107,6 +82,8 @@
         <item name="android:background">@null</item>
     </style>
 
+    <!-- ++++++++++++++++++++++++++++++++ FAB-like buttons +++++++++++++++++++++++++++++++++++++ -->
+
     <style name="RoundWhiteButton">
         <item name="android:background">@drawable/round_white_button</item>
         <item name="android:textColor">#000</item>
@@ -120,6 +97,8 @@
         <item name="android:clickable">true</item>
         <item name="android:elevation" tools:targetApi="21">4dp</item>
     </style>
+
+    <!-- +++++++++++++++++++++++++++++++++ Image selector ++++++++++++++++++++++++++++++++++++++ -->
 
     <style name="ImageSelectLabel">
         <item name="android:textColor">#ffffff</item>
@@ -149,6 +128,8 @@
         <item name="android:textStyle">normal</item>
     </style>
 
+    <!-- ++++++++++++++++++++++++++++++++++++++ Table ++++++++++++++++++++++++++++++++++++++++++ -->
+
     <style name="TableHeaderCell">
         <item name="android:textSize">14sp</item>
         <item name="android:textStyle">bold</item>
@@ -159,11 +140,15 @@
         <item name="android:padding">8dp</item>
     </style>
 
+    <!-- +++++++++++++++++++++++++++++++++++ Bottom sheet ++++++++++++++++++++++++++++++++++++++ -->
+
     <style name="BottomSheetButtonBarItem">
         <item name="android:background">?android:attr/selectableItemBackground</item>
         <item name="android:textColor">@color/button_bar_button_text</item>
         <item name="android:padding">16dp</item>
     </style>
+
+    <!-- ++++++++++++++++++++++++++++++++++ Note discussion ++++++++++++++++++++++++++++++++++++ -->
 
     <style name="NoteDiscussion">
         <item name="android:textAlignment">viewStart</item>

@@ -48,4 +48,8 @@
     <dimen name="links_item_margin">8dp</dimen>
     <dimen name="achievements_item_margin">16dp</dimen>
 
+    <!-- tutorial screen -->
+
+    <dimen name="textbox_width">320dp</dimen>
+
 </resources>

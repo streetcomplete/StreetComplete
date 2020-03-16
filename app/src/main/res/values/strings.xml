@@ -6,6 +6,14 @@
     <string name="user_login">Login</string>
     <string name="user_logout">Logout</string>
     <string name="osm_profile">OSM Profile</string>
+    <string name="next">Next</string>
+    <string name="letsgo">Let\'s go!</string>
+    <string name="tutorial_welcome_to_osm">Welcome to OpenStreetMap</string>
+    <string name="tutorial_welcome_to_osm_subtitle">the free wiki world map</string>
+    <string name="tutorial_intro">StreetComplete makes it easy to contribute to OpenStreetMap.\nIt automatically looks for missing details in your vicinity: bicycle lanes, house numbers, opening hours and much more…</string>
+    <string name="tutorial_solving_quests">Once found, the missing details will appear on your map as quests.\n\nYou can start solving them right away and later login to publish your answers.</string>
+    <string name="tutorial_stay_safe">Whenever you are uncertain, you can always reply \"Can\'t Say\" and leave a note.\n\nFinally, remember to stay safe: Be aware of your surroundings and don\'t enter private property.</string>
+    <string name="tutorial_happy_mapping">Happy Mapping!</string>
     <string name="retry">"Retry"</string>
     <string name="oauth_failed_permissions">"Authorization failed: All listed permissions need to be granted"</string>
     <string name="title_activity_settings">"Settings"</string>
@@ -775,7 +783,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
 
 
     <string name="achievement_first_edit_title">First Quest Solved</string>
-    <string name="achievement_first_edit_description">Welcome to the OpenStreetMap community! </string>
+    <string name="achievement_first_edit_description">Welcome to the OpenStreetMap community! In your profile screen, you can see more info for each quest type you solved.</string>
     <string name="achievement_surveyor_title">Surveyor</string>
     <string name="achievement_surveyor_solved_X">You solved %d quests! Keep going to unlock more achievements that contain links to OSM and other map-related apps and projects!</string>
     <string name="achievement_regular_title">Regular</string>
@@ -803,6 +811,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
 
     <string name="unsynced_quests_description">plus %d not yet published changes.</string>
     <string name="unsynced_quests_not_logged_in_description">You have %d not yet published changes. You need to login to have them uploaded.</string>
+
 
 
 </resources>

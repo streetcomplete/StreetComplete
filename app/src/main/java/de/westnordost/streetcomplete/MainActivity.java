@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete;
 
 import android.animation.ObjectAnimator;
+import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.graphics.Point;
 import android.graphics.PointF;
@@ -46,7 +47,6 @@ import android.widget.Toast;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Collections;
 import java.util.Random;
 import java.util.concurrent.FutureTask;
 
@@ -65,11 +65,6 @@ import de.westnordost.streetcomplete.about.WhatsNewDialog;
 import de.westnordost.streetcomplete.data.quest.Quest;
 import de.westnordost.streetcomplete.data.quest.QuestAutoSyncer;
 import de.westnordost.streetcomplete.data.quest.QuestController;
-import de.westnordost.streetcomplete.data.user.achievements.Achievement;
-import de.westnordost.streetcomplete.data.user.achievements.AchievementLevel;
-import de.westnordost.streetcomplete.data.user.achievements.Link;
-import de.westnordost.streetcomplete.data.user.achievements.LinkCategory;
-import de.westnordost.streetcomplete.data.user.achievements.TotalSolvedQuests;
 import de.westnordost.streetcomplete.data.download.QuestDownloadProgressListener;
 import de.westnordost.streetcomplete.data.download.QuestDownloadService;
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuest;
@@ -88,6 +83,7 @@ import de.westnordost.streetcomplete.sound.SoundFx;
 import de.westnordost.streetcomplete.statistics.AnswersCounter;
 import de.westnordost.streetcomplete.map.tangram.CameraPosition;
 import de.westnordost.streetcomplete.tools.CrashReportExceptionHandler;
+import de.westnordost.streetcomplete.tutorial.TutorialFragment;
 import de.westnordost.streetcomplete.user.AchievementInfoFragment;
 import de.westnordost.streetcomplete.user.UserActivity;
 import de.westnordost.streetcomplete.util.DpUtil;
@@ -104,9 +100,13 @@ import kotlinx.coroutines.Dispatchers;
 import kotlinx.coroutines.JobKt;
 
 
+import static android.view.Window.FEATURE_CONTENT_TRANSITIONS;
 import static de.westnordost.streetcomplete.ApplicationConstants.MANUAL_DOWNLOAD_QUEST_TYPE_COUNT;
 
-public class MainActivity extends AppCompatActivity implements  MainFragment.Listener, CoroutineScope
+public class MainActivity extends AppCompatActivity implements
+		MainFragment.Listener,
+		TutorialFragment.Listener,
+		CoroutineScope
 {
 	@Inject CrashReportExceptionHandler crashReportExceptionHandler;
 
@@ -288,6 +288,18 @@ public class MainActivity extends AppCompatActivity implements  MainFragment.Lis
 		super.onStart();
 
 		String lastVersion = prefs.getString(Prefs.LAST_VERSION, null);
+		boolean hasShownTutorial = prefs.getBoolean(Prefs.HAS_SHOWN_TUTORIAL, false);
+
+		if (!hasShownTutorial) {
+			prefs.edit().putBoolean(Prefs.HAS_SHOWN_TUTORIAL, true).apply();
+			if (lastVersion == null) {
+				getSupportFragmentManager().beginTransaction()
+						.setCustomAnimations(R.anim.fade_in_from_bottom, R.anim.fade_out_to_bottom)
+						.add(R.id.fragment_container, new TutorialFragment())
+						.commit();
+			}
+		}
+
 		if (!(BuildConfig.VERSION_NAME).equals(lastVersion))
 		{
 			prefs.edit().putString(Prefs.LAST_VERSION, BuildConfig.VERSION_NAME).apply();
@@ -491,25 +503,11 @@ public class MainActivity extends AppCompatActivity implements  MainFragment.Lis
 				startActivity(new Intent(this, UserActivity.class));
 				return true;
 			case R.id.action_achievement:
-				Fragment f = getSupportFragmentManager().findFragmentById(R.id.achievement_info_fragment);
-				Link link = new Link(
-					"abc",
-					"https://www.openstreetmap.org",
-					"Open Stretmep",
-					LinkCategory.INTRO,
-					R.drawable.ic_link_wiki,
-					R.string.link_wiki_description
-				);
-
-				((AchievementInfoFragment) f).showNew(new Achievement(
-					"def",
-					R.drawable.ic_quest_bus_stop_name,
-					R.string.achievement_bicyclist_title,
-					R.string.achievement_bicyclist_solved_X,
-					TotalSolvedQuests.INSTANCE,
-					Collections.singletonList(new AchievementLevel(1, Collections.singletonList(link)))
-				), 1);
-
+				getSupportFragmentManager().beginTransaction()
+						.setCustomAnimations(R.anim.fade_in_from_bottom, R.anim.fade_out_to_bottom)
+						.add(R.id.fragment_container, new TutorialFragment())
+						.commit();
+				return true;
 		}
 
 		return super.onOptionsItemSelected(item);
@@ -798,6 +796,21 @@ public class MainActivity extends AppCompatActivity implements  MainFragment.Lis
 		triggerAutoUploadByUserInteraction();
 	}
 
+	/* ------------------------------- TutorialFragment.Listener -------------------------------- */
+
+
+	@Override public void onFinishedTutorial()
+	{
+		Fragment tutorialFragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+		if (tutorialFragment != null)
+		{
+			getSupportFragmentManager().beginTransaction()
+					.setCustomAnimations(R.anim.fade_in_from_bottom, R.anim.fade_out_to_bottom)
+					.remove(tutorialFragment)
+					.commit();
+		}
+	}
+
 	/* ---------------------------------------- Animation ---------------------------------------- */
 
 
@@ -906,4 +919,5 @@ public class MainActivity extends AppCompatActivity implements  MainFragment.Lis
 		NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
 		return activeNetworkInfo != null && activeNetworkInfo.isConnected();
 	}
+
 }

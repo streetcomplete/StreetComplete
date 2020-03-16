@@ -33,7 +33,8 @@ public class Prefs
 			MAP_LONGITUDE = "map.longitude",
 			LAST_PICKED_PREFIX = "imageListLastPicked.",
 			LAST_LOCATION_REQUEST_DENIED = "location.denied",
-			LAST_VERSION = "lastVersion";
+			LAST_VERSION = "lastVersion",
+			HAS_SHOWN_TUTORIAL = "hasShownTutorial";
 
 	public static final String HAS_SHOWN_UNDO_FUCKUP_WARNING = "alert.undo_fuckup_warning";
 

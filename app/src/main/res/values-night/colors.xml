@@ -3,4 +3,8 @@
     <color name="attribution_text">#ccc</color>
 
     <color name="hint_text">#666</color>
+
+    <color name="background">#000</color>
+    <color name="background_transparent">#0000</color>
+
 </resources>
