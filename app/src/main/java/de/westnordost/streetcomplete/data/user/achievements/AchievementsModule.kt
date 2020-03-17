@@ -23,12 +23,39 @@ object AchievementsModule {
             R.string.link_wiki_description
         ),
         Link(
+            "welcomemat",
+            "https://welcome.openstreetmap.org",
+            "Welcome Mat",
+            LinkCategory.INTRO,
+            R.drawable.ic_link_welcome_mat,
+            R.string.link_welcome_mat_description
+        ),
+        Link(
             "learnosm",
             "https://learnosm.org/en/beginner/",
             "learnOSM",
             LinkCategory.INTRO,
             R.drawable.ic_link_learnosm,
             R.string.link_learnosm_description
+        ),
+
+        // TODO not sure where to put these links
+        Link(
+            "mapillary",
+            "https://www.mapillary.com",
+            "Mapillary",
+            LinkCategory.INTRO,
+            R.drawable.ic_link_mapillary,
+            R.string.link_mapillary_description
+        ),
+        // TODO not sure where to put these links
+        Link(
+            "openstreetcam",
+            "https://openstreetcam.org",
+            "OpenStreetCam",
+            LinkCategory.INTRO,
+            R.drawable.ic_link_openstreetcam,
+            R.string.link_openstreetcam_description
         ),
 
         /* --------------------------------------- Editors ---------------------------------------*/
@@ -65,15 +92,74 @@ object AchievementsModule {
             R.string.link_josm_description
         ),
 
-        /* -------------------------------------- Showcase ---------------------------------------*/
+        /* ---------------------------------------- Maps -----------------------------------------*/
+
+        Link( // TODO no achievement yet
+            "openstreetbrowser",
+            "https://openstreetbrowser.org",
+            "OpenStreetBrowser",
+            LinkCategory.MAPS,
+            R.drawable.ic_link_openstreetbrowser,
+            R.string.link_openstreetbrowser_description
+        ),
         Link(
             "cyclosm",
             "https://www.cyclosm.org",
             "CyclOSM",
-            LinkCategory.SHOWCASE,
+            LinkCategory.MAPS,
             R.drawable.ic_link_cyclosm,
             R.string.link_cyclosm_description
         ),
+        Link(
+            "öpnvkarte",
+            "https://öpnvkarte.de",
+            "ÖPNVKarte",
+            LinkCategory.MAPS,
+            R.drawable.ic_link_opnvkarte,
+            R.string.link_opnvkarte_description
+        ),
+        Link(
+            "wheelmap",
+            "https://wheelmap.org",
+            "wheelmap.org",
+            LinkCategory.MAPS,
+            R.drawable.ic_link_wheelmap,
+            R.string.link_wheelmap_description
+        ),
+        Link(
+            "openvegemap",
+            "https://openvegemap.netlib.re",
+            "OpenVegeMap",
+            LinkCategory.MAPS,
+            R.drawable.ic_link_openvegemap,
+            R.string.link_openvegemap_description
+        ),
+        Link(
+            "osm_buildings",
+            "https://osmbuildings.org",
+            "OSM Buildings",
+            LinkCategory.MAPS,
+            R.drawable.ic_link_osm_buildings,
+            R.string.link_osm_buildings_description
+        ),
+        Link(
+            "mapy_tactile",
+            "https://hapticke.mapy.cz/?x=14.4343228&y=50.0652972&z=19&lang=en",
+            "Mapy.cz Tactile",
+            LinkCategory.MAPS,
+            R.drawable.ic_link_mapy_tactile,
+            R.string.link_mapy_tactile_description
+        ),
+        Link( // TODO no achievement yet
+            "openinframap",
+            "https://openinframap.org",
+            "Open Infrastructure Map",
+            LinkCategory.MAPS,
+            null,
+            R.string.link_openinframap_description
+        ),
+
+        /* -------------------------------------- Showcase ---------------------------------------*/
         Link(
             "brouter",
             "https://brouter.de/brouter-web/",
@@ -82,22 +168,7 @@ object AchievementsModule {
             R.drawable.ic_link_brouter,
             R.string.link_brouter_description
         ),
-        Link(
-            "öpnvkarte",
-            "https://öpnvkarte.de",
-            "ÖPNVKarte",
-            LinkCategory.SHOWCASE,
-            R.drawable.ic_link_opnvkarte,
-            R.string.link_opnvkarte_description
-        ),
-        Link(
-            "wheelmap",
-            "https://wheelmap.org",
-            "wheelmap.org",
-            LinkCategory.SHOWCASE,
-            R.drawable.ic_link_wheelmap,
-            R.string.link_wheelmap_description
-        ),
+
         Link(
             "openrouteservice-wheelchair",
             "https://maps.openrouteservice.org/directions?b=3",
@@ -107,36 +178,12 @@ object AchievementsModule {
             R.string.link_openrouteservice_wheelchair_description
         ),
         Link(
-            "openvegemap",
-            "https://openvegemap.netlib.re",
-            "OpenVegeMap",
-            LinkCategory.SHOWCASE,
-            R.drawable.ic_link_openvegemap,
-            R.string.link_openvegemap_description
-        ),
-        Link(
-            "osm_buildings",
-            "https://osmbuildings.org",
-            "OSM Buildings",
-            LinkCategory.SHOWCASE,
-            R.drawable.ic_link_osm_buildings,
-            R.string.link_osm_buildings_description
-        ),
-        Link(
             "touch_mapper",
             "https://touch-mapper.org",
             "Touch Mapper",
             LinkCategory.SHOWCASE,
             R.drawable.ic_link_touch_mapper,
             R.string.link_touch_mapper_description
-        ),
-        Link(
-            "mapy_tactile",
-            "https://hapticke.mapy.cz/?x=14.4343228&y=50.0652972&z=19&lang=en",
-            "Mapy.cz Tactile",
-            LinkCategory.SHOWCASE,
-            R.drawable.ic_link_mapy_tactile,
-            R.string.link_mapy_tactile_description
         ),
         Link(
             "nominatim",
@@ -162,6 +209,7 @@ object AchievementsModule {
             R.drawable.ic_link_heigit,
             R.string.link_openrouteservice_description
         ),
+
 
         /* -------------------------------------- Goodies ----------------------------------------*/
         Link(
@@ -195,6 +243,22 @@ object AchievementsModule {
             LinkCategory.GOODIES,
             R.drawable.ic_link_osmlab,
             R.string.link_show_me_the_way_description
+        ),
+        Link(
+            "osm-haiku",
+            "https://satellitestud.io/osm-haiku/app",
+            "OpenStreetMap Haiku",
+            LinkCategory.GOODIES,
+            R.drawable.ic_link_haiku,
+            R.string.link_osm_haiku_description
+        ),
+        Link(
+            "openorienteeringmap",
+            "https://oomap.co.uk/global/",
+            "OpenOrienteeringMap",
+            LinkCategory.GOODIES,
+            null,
+            R.string.link_openorienteeringmap_description
         )
     )
 
@@ -223,11 +287,13 @@ object AchievementsModule {
             TotalSolvedQuests,
             listOf(
                 level(10, listOf("wiki")),
-                level(20, listOf("umap")),
-                level(30, listOf("learnosm")),
-                level(50, listOf("show_me_the_way")),
-                level(80, listOf("myosmatic")),
-                level(100, listOf("city_roads"))
+                level(20, listOf("welcomemat")),
+                level(30, listOf("umap")),
+                level(50, listOf("learnosm")),
+                level(80, listOf("show_me_the_way")),
+                level(130, listOf("myosmatic")),
+                level(210, listOf("city_roads")),
+                level(340, listOf("osm-haiku"))
             )
         ),
 
@@ -317,7 +383,7 @@ object AchievementsModule {
             listOf(
                 // TODO or own achievement for public transport?
                 level(100, listOf("öpnvkarte")),
-                level(200)
+                level(200, listOf("openorienteeringmap"))
             )
         ),
 

@@ -72,6 +72,7 @@ import de.westnordost.streetcomplete.data.upload.QuestChangesUploadProgressListe
 import de.westnordost.streetcomplete.data.upload.QuestChangesUploadService;
 import de.westnordost.streetcomplete.data.upload.VersionBannedException;
 import de.westnordost.streetcomplete.data.user.UserController;
+import de.westnordost.streetcomplete.data.user.achievements.AchievementsModule;
 import de.westnordost.streetcomplete.location.LocationRequestFragment;
 import de.westnordost.streetcomplete.location.LocationState;
 import de.westnordost.streetcomplete.location.LocationUtil;
@@ -503,6 +504,10 @@ public class MainActivity extends AppCompatActivity implements
 				startActivity(new Intent(this, UserActivity.class));
 				return true;
 			case R.id.action_achievement:
+				//Fragment f = getSupportFragmentManager().findFragmentById(R.id.achievement_info_fragment);
+				//((AchievementInfoFragment) f).showNew(AchievementsModule.INSTANCE.achievements().get(8),1);
+
+
 				getSupportFragmentManager().beginTransaction()
 						.setCustomAnimations(R.anim.fade_in_from_bottom, R.anim.fade_out_to_bottom)
 						.add(R.id.fragment_container, new TutorialFragment())

@@ -94,6 +94,7 @@ private data class LinkItem(val link: Link) : Item()
 private val LinkCategory.title: Int get() = when(this) {
     LinkCategory.INTRO -> R.string.link_category_intro_title
     LinkCategory.EDITORS -> R.string.link_category_editors_title
+    LinkCategory.MAPS -> R.string.link_category_maps_title
     LinkCategory.SHOWCASE -> R.string.link_category_showcase_title
     LinkCategory.GOODIES -> R.string.link_category_goodies_title
 }
@@ -102,5 +103,6 @@ private val LinkCategory.description: Int? get() = when(this) {
     LinkCategory.INTRO -> R.string.link_category_intro_description
     LinkCategory.EDITORS -> R.string.link_category_editors_description
     LinkCategory.SHOWCASE -> R.string.link_category_showcase_description
+    LinkCategory.MAPS -> R.string.link_category_maps_description
     LinkCategory.GOODIES -> R.string.link_category_goodies_description
 }

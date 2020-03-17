@@ -10,6 +10,7 @@ data class Link(val id: String,
 enum class LinkCategory {
     INTRO,
     EDITORS,
+    MAPS,
     SHOWCASE,
     GOODIES
 }

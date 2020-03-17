@@ -16,6 +16,11 @@
     <string name="tutorial_happy_mapping">Happy Mapping!</string>
     <string name="retry">"Retry"</string>
     <string name="oauth_failed_permissions">"Authorization failed: All listed permissions need to be granted"</string>
+    <string name="achievements_empty">You have no achievements yet</string>
+    <string name="links_empty">You have no links yet</string>
+    <string name="quests_empty">You published no quest answers yet</string>
+    <string name="unsynced_quests_description">plus %d not yet published changes.</string>
+    <string name="unsynced_quests_not_logged_in_description">You have %d not yet published changes. You need to login to have them uploaded.</string>
     <string name="title_activity_settings">"Settings"</string>
     <string name="pref_category_communication">"Communication"</string>
     <string name="pref_category_display">"Display"</string>
@@ -750,13 +755,15 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="achievements_unlocked_links">Unlocked links:</string>
 
     <string name="link_category_intro_title">Introduction</string>
-    <string name="link_category_intro_description">Learning more about OpenStreetMap and its community.</string>
+    <string name="link_category_intro_description">Learning more about OSM and its community</string>
     <string name="link_category_editors_title">Contributing</string>
-    <string name="link_category_editors_description">Editors and other ways to contribute to OpenStreetMap.</string>
+    <string name="link_category_editors_description">Editors and other ways to contribute to OpenStreetMap</string>
+    <string name="link_category_maps_title">Maps</string>
+    <string name="link_category_maps_description">OpenStreetMap-based maps</string>
     <string name="link_category_showcase_title">Showcase</string>
-    <string name="link_category_showcase_description">Maps, services and apps that use OSM data, some of which you contributed yourself!</string>
+    <string name="link_category_showcase_description">OpenStreetMap-based services and apps</string>
     <string name="link_category_goodies_title">Goodies</string>
-    <string name="link_category_goodies_description">Interesting map-related stuff, not necessarily having that much to do with OSM.</string>
+    <string name="link_category_goodies_description">Interesting map-related stuff for you to try out</string>
 
     <string name="link_cyclosm_description">A map for bicyclists</string>
     <string name="link_wheelmap_description">A map for finding wheelchair accessible places</string>
@@ -772,6 +779,9 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="link_pic4review_description">Contribute to OSM simply by looking at pictures of your city</string>
     <string name="link_wiki_description">The wiki is your starting point to everything related OpenStreetMap</string>
     <string name="link_learnosm_description">New to OpenStreetMap? This is a beginner\'s guide</string>
+    <string name="link_welcome_mat_description">General information about OpenStreetMap and how to work with OSM as an organization</string>
+    <string name="link_mapillary_description">A service and app for sharing crowdsourced street-level photos, with explicit permission to use them for contributing to OSM</string>
+    <string name="link_openstreetcam_description">A service and app for sharing crowdsourced street-level photos, with explicit permission to use them for contributing to OSM</string>
     <string name="link_openrouteservice_wheelchair_description">Turn by turn navigation for wheelchair users</string>
     <string name="link_nominatim_description">The geocoder for OSM data, used by many other services</string>
     <string name="link_city_roads_description">Render all roads of a city, for printing on T-Shirts, mugs, …</string>
@@ -780,7 +790,10 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="link_show_me_the_way_description">Watch OSM edits happen in real time</string>
     <string name="link_osrm_description">The fastest routing engine around</string>
     <string name="link_openrouteservice_description">Routing for a variety of vehicles and on foot, each with preferences. Can also show isochrones (reachable area in X minutes from a starting point).</string>
-
+    <string name="link_osm_haiku_description">Using OSM data to generate a haiku (a form of Japanese poetry)</string>
+    <string name="link_openinframap_description">A map showing power, telecoms, gas, and oil infrastructure</string>
+    <string name="link_openorienteeringmap_description">Create printable maps for the orienteering sport</string>
+    <string name="link_openstreetbrowser_description">A map to browse OpenStreetMap map features by category</string>
 
     <string name="achievement_first_edit_title">First Quest Solved</string>
     <string name="achievement_first_edit_description">Welcome to the OpenStreetMap community! In your profile screen, you can see more info for each quest type you solved.</string>
@@ -804,14 +817,5 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="achievement_veg_solved_X">You solved %d quests that are interesting for people living on a no-meat diet!</string>
     <string name="achievement_car_title">On the Road</string>
     <string name="achievement_car_solved_X">You solved %d quests that improve detail on the street infrastructure, putting the "street" in OpenStreetMap!</string>
-
-    <string name="achievements_empty">You have no achievements yet</string>
-    <string name="links_empty">You have no links yet</string>
-    <string name="quests_empty">You published no quest answers yet</string>
-
-    <string name="unsynced_quests_description">plus %d not yet published changes.</string>
-    <string name="unsynced_quests_not_logged_in_description">You have %d not yet published changes. You need to login to have them uploaded.</string>
-
-
 
 </resources>

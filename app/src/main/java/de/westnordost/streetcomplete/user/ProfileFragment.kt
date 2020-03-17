@@ -69,7 +69,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                 "AddRoofShape" to 17,
                 "AddCyclewaySegregation" to 4,
                 "AddSelfServiceLaundry" to 1,
-                "AddWheelchairAccessBusiness" to 411
+                "AddWheelchairAccessBusiness" to 121
             ))
         }
 
