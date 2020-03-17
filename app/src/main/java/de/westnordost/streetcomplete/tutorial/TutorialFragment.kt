@@ -13,6 +13,7 @@ import android.view.animation.BounceInterpolator
 import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.toDp
+import de.westnordost.streetcomplete.ktx.toPx
 import de.westnordost.streetcomplete.location.LocationState
 import kotlinx.android.synthetic.main.fragment_tutorial.*
 
@@ -75,25 +76,25 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
 
 
         // map zooms in and tilts
-        val mapScale = 2.5f
-        val mapTranslate = (-400f).toDp(ctx)
+        val mapTranslate = (-50f).toPx(ctx)
         val mapRotate = 50f
+        val mapScale = 1.5f
 
         mapImageView.animate()
             .setDuration(800)
             .setInterpolator(AccelerateDecelerateInterpolator())
             .rotationX(mapRotate)
+            .scaleY(mapScale).scaleX(mapScale)
             .translationY(mapTranslate)
-            .scaleX(mapScale).scaleY(mapScale)
             .start()
 
         mapLightingImageView.animate()
             .setDuration(800)
             .setInterpolator(AccelerateDecelerateInterpolator())
             .rotationX(mapRotate)
-            .translationY(mapTranslate)
-            .scaleX(mapScale).scaleY(mapScale)
             .alpha(0f)
+            .scaleY(mapScale).scaleX(mapScale)
+            .translationY(mapTranslate)
             .start()
 
         // 1st text fade out
