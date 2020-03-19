@@ -95,7 +95,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:drawableStart="@drawable/ic_open_in_browser_24dp"
-            android:drawablePadding="6dp"
+            android:drawablePadding="8dp"
             android:text="@string/osm_profile" />
 
         <Button

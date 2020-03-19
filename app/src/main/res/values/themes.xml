@@ -43,4 +43,9 @@
 
     <style name="Theme.Bubble.Dialog.Alert"/>
 
+    <style name="Theme.CustomDialog" parent="Theme.AppCompat.DayNight.Dialog">
+        <item name="android:windowBackground">@color/background_transparent</item>
+        <item name="android:windowAnimationStyle">@style/Animation.Dialog.Custom</item>
+    </style>
+
 </resources>

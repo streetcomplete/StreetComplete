@@ -37,6 +37,10 @@
         <item name="android:windowExitAnimation">@anim/deflate_popup_bubble</item>
     </style>
 
+    <style name="Animation.Dialog.Custom" parent="android:Animation">
+        <item name="android:windowExitAnimation">@anim/deflate_popup_bubble</item>
+    </style>
+
     <!-- +++++++++++++++++++++++++++++ Opening hours input +++++++++++++++++++++++++++++++++++++ -->
 
     <style name="TimesField">

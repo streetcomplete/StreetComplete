@@ -818,4 +818,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="achievement_car_title">On the Road</string>
     <string name="achievement_car_solved_X">You solved %d quests that improve detail on the street infrastructure, putting the "street" in OpenStreetMap!</string>
 
+    <string name="unread_messages_message">You have %d unread messages in your inbox</string>
+    <string name="unread_messages_button">Open Inbox</string>
+
 </resources>
