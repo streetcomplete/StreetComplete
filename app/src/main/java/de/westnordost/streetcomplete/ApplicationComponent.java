@@ -15,6 +15,7 @@ import de.westnordost.streetcomplete.data.upload.QuestChangesUploadService;
 import de.westnordost.streetcomplete.data.download.QuestDownloadService;
 import de.westnordost.streetcomplete.data.meta.MetadataModule;
 import de.westnordost.streetcomplete.map.MainFragment;
+import de.westnordost.streetcomplete.messages.OsmUnreadMessagesFragment;
 import de.westnordost.streetcomplete.settings.OAuthFragment;
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment;
 import de.westnordost.streetcomplete.quests.QuestModule;
@@ -95,4 +96,6 @@ public interface ApplicationComponent
 	void inject(@NotNull UserActivity userActivity);
 
 	void inject(@NotNull LoginFragment loginFragment);
+
+	void inject(@NotNull OsmUnreadMessagesFragment osmUnreadMessagesFragment);
 }

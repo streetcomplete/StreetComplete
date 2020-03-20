@@ -34,11 +34,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
     private lateinit var anonAvatar: Bitmap
 
-    interface Listener {
-        fun onLoggedOut()
-    }
-    private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
-
     init {
         Injector.instance.applicationComponent.inject(this)
     }
@@ -75,7 +70,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
         logoutButton.setOnClickListener {
             userController.logOut()
-            listener?.onLoggedOut()
         }
         profileButton.setOnClickListener {
             openUrl("https://www.openstreetmap.org/user/" + userController.userName)

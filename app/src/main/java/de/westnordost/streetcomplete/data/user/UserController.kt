@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.data.user
 
-import android.content.SharedPreferences
 import android.util.Log
 import de.westnordost.osmapi.OsmConnection
 import de.westnordost.osmapi.user.Permission
@@ -15,6 +14,7 @@ import oauth.signpost.OAuthConsumer
 import java.io.File
 import java.io.IOException
 import java.net.URL
+import java.util.concurrent.CopyOnWriteArrayList
 import javax.inject.Inject
 import javax.inject.Named
 import javax.inject.Singleton
@@ -31,9 +31,9 @@ import javax.inject.Singleton
         private val avatarCacheDir: File,
         private val statisticsDownloader: StatisticsDownloader,
         private val statisticsDao: QuestStatisticsDao,
-        private val osmConnection: OsmConnection,
-        private val prefs: SharedPreferences
+        private val osmConnection: OsmConnection
 ) {
+    private val listeners: MutableList<UserLoginStatusListener> = CopyOnWriteArrayList()
 
     private val achievementsById = achievements.associateBy { it.id }
     private val linksById = links.associateBy { it.id }
@@ -42,7 +42,6 @@ import javax.inject.Singleton
 
     val userId: Long get() = userStore.userId
     val userName: String? get() = userStore.userName
-    val unreadMessagesCount: Int get() = userStore.unreadMessagesCount
 
     suspend fun logIn(consumer: OAuthConsumer) {
         withContext(Dispatchers.IO) {
@@ -51,6 +50,7 @@ import javax.inject.Singleton
             osmConnection.oAuth = consumer
             updateUser()
         }
+        onLoggedIn()
     }
 
     fun logOut() {
@@ -60,6 +60,7 @@ import javax.inject.Singleton
         statisticsDao.clear()
         userAchievementsDao.clear()
         userLinksDao.clear()
+        onLoggedOut()
     }
 
     fun getAchievements(): List<Pair<Achievement, Int>> {
@@ -97,6 +98,13 @@ import javax.inject.Singleton
         }
     }
 
+    fun addListener(listener: UserLoginStatusListener) {
+        listeners.add(listener)
+    }
+    fun removeListener(listener: UserLoginStatusListener) {
+        listeners.remove(listener)
+    }
+
     suspend fun hasRequiredPermissions(consumer: OAuthConsumer): Boolean {
         return withContext(Dispatchers.IO) {
             val permissionDao = PermissionsDao(OsmModule.osmConnection(consumer))
@@ -113,6 +121,18 @@ import javax.inject.Singleton
         }
     }
 
+    private fun onLoggedIn() {
+        for (listener in listeners) {
+            listener.onLoggedIn()
+        }
+    }
+
+    private fun onLoggedOut() {
+        for (listener in listeners) {
+            listener.onLoggedOut()
+        }
+    }
+
     companion object {
         private const val TAG = "UserController"
 
@@ -122,4 +142,9 @@ import javax.inject.Singleton
                 Permission.WRITE_NOTES
         )
     }
+}
+
+interface UserLoginStatusListener {
+    fun onLoggedIn()
+    fun onLoggedOut()
 }

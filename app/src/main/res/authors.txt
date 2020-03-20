@@ -108,6 +108,7 @@ produce_mate.jpg               CC-BY-SA 3.0      https://commons.wikimedia.org/w
 produce_jojoba.jpg             CC-BY 2.0         https://de.wikipedia.org/wiki/Datei:Jojoba_Nut_-_Flickr_-_treegrow.jpg
 produce_tomato.jpg             CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Solanum_lycopersicum_%27Cronos%27,_tomaat_%27Cronos%27.jpg
 
+sliding_envelope.wav           CC0               https://freesound.org/people/MTJohnson/sounds/444431/
 snip.wav                       CC0               https://freesound.org/people/Godowan/sounds/240473/
 
 surface_asphalt.jpg            Public Domain     https://commons.wikimedia.org/wiki/File:Ground_frost_damages.JPG (SeppVei)

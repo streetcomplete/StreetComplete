@@ -22,6 +22,7 @@ import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestTable
 import de.westnordost.streetcomplete.data.visiblequests.QuestVisibilityTable
 import de.westnordost.streetcomplete.data.user.QuestStatisticsTable
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesTable
+import de.westnordost.streetcomplete.data.notifications.NewUserAchievementsTable
 import de.westnordost.streetcomplete.ktx.hasColumn
 import de.westnordost.streetcomplete.quests.localized_name.data.RoadNamesTable
 import de.westnordost.streetcomplete.quests.oneway.AddOneway
@@ -47,6 +48,7 @@ import de.westnordost.streetcomplete.quests.oneway.data.WayTrafficFlowTable
         db.execSQL(QuestStatisticsTable.CREATE)
         db.execSQL(UserAchievementsTable.CREATE)
         db.execSQL(UserLinksTable.CREATE)
+        db.execSQL(NewUserAchievementsTable.CREATE)
 
         db.execSQL(DownloadedTilesTable.CREATE)
 
@@ -164,6 +166,7 @@ import de.westnordost.streetcomplete.quests.oneway.data.WayTrafficFlowTable
         if (oldVersion < 13 && newVersion >= 13) {
             db.execSQL(UserAchievementsTable.CREATE)
             db.execSQL(UserLinksTable.CREATE)
+            db.execSQL(NewUserAchievementsTable.CREATE)
         }
         // for later changes to the DB
         // ...

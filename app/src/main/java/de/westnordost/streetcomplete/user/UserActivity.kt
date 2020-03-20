@@ -9,10 +9,12 @@ import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.user.UserController
+import de.westnordost.streetcomplete.data.user.UserLoginStatusListener
 import de.westnordost.streetcomplete.data.user.achievements.Achievement
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 /** Shows all the user information, login etc.
@@ -25,8 +27,7 @@ class UserActivity : FragmentContainerActivity(R.layout.activity_user),
     CoroutineScope by CoroutineScope(Dispatchers.Main),
     AchievementsFragment.Listener,
     QuestStatisticsFragment.Listener,
-    ProfileFragment.Listener,
-    LoginFragment.Listener {
+    UserLoginStatusListener {
 
     @Inject internal lateinit var userController: UserController
 
@@ -51,6 +52,7 @@ class UserActivity : FragmentContainerActivity(R.layout.activity_user),
                 else -> LoginFragment.create()
             }
         }
+        userController.addListener(this)
     }
 
     override fun onBackPressed() {
@@ -69,19 +71,22 @@ class UserActivity : FragmentContainerActivity(R.layout.activity_user),
 
     override fun onDestroy() {
         super.onDestroy()
+        userController.removeListener(this)
         coroutineContext.cancel()
     }
 
-    /* -------------------------------- LoginFragment.Listener ---------------------------------- */
+    /* -------------------------------- UserLoginStatusListener --------------------------------- */
 
     override fun onLoggedIn() {
-        replaceMainFragment(UserFragment())
+        launch(Dispatchers.Main) {
+            replaceMainFragment(UserFragment())
+        }
     }
 
-    /* ------------------------------- ProfileFragment.Listener --------------------------------- */
-
     override fun onLoggedOut() {
-        replaceMainFragment(LoginFragment())
+        launch(Dispatchers.Main) {
+            replaceMainFragment(LoginFragment())
+        }
     }
 
     /* ---------------------------- AchievementsFragment.Listener ------------------------------- */

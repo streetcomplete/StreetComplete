@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete;
 
 import android.animation.ObjectAnimator;
-import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.graphics.Point;
 import android.graphics.PointF;
@@ -62,6 +61,11 @@ import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.osmapi.map.data.OsmLatLon;
 import de.westnordost.osmfeatures.FeatureDictionary;
 import de.westnordost.streetcomplete.about.WhatsNewDialog;
+import de.westnordost.streetcomplete.data.notifications.NewAchievementNotification;
+import de.westnordost.streetcomplete.data.notifications.NewVersionNotification;
+import de.westnordost.streetcomplete.data.notifications.Notification;
+import de.westnordost.streetcomplete.data.notifications.NotificationsDao;
+import de.westnordost.streetcomplete.data.notifications.OsmUnreadMessagesNotification;
 import de.westnordost.streetcomplete.data.quest.Quest;
 import de.westnordost.streetcomplete.data.quest.QuestAutoSyncer;
 import de.westnordost.streetcomplete.data.quest.QuestController;
@@ -72,11 +76,11 @@ import de.westnordost.streetcomplete.data.upload.QuestChangesUploadProgressListe
 import de.westnordost.streetcomplete.data.upload.QuestChangesUploadService;
 import de.westnordost.streetcomplete.data.upload.VersionBannedException;
 import de.westnordost.streetcomplete.data.user.UserController;
-import de.westnordost.streetcomplete.data.user.achievements.AchievementsModule;
 import de.westnordost.streetcomplete.location.LocationRequestFragment;
 import de.westnordost.streetcomplete.location.LocationState;
 import de.westnordost.streetcomplete.location.LocationUtil;
 import de.westnordost.streetcomplete.map.MainFragment;
+import de.westnordost.streetcomplete.messages.OsmUnreadMessagesFragment;
 import de.westnordost.streetcomplete.quests.QuestUtilKt;
 import de.westnordost.streetcomplete.settings.AboutActivity;
 import de.westnordost.streetcomplete.settings.SettingsActivity;
@@ -101,12 +105,12 @@ import kotlinx.coroutines.Dispatchers;
 import kotlinx.coroutines.JobKt;
 
 
-import static android.view.Window.FEATURE_CONTENT_TRANSITIONS;
 import static de.westnordost.streetcomplete.ApplicationConstants.MANUAL_DOWNLOAD_QUEST_TYPE_COUNT;
 
 public class MainActivity extends AppCompatActivity implements
 		MainFragment.Listener,
 		TutorialFragment.Listener,
+		NotificationsDao.UpdateListener,
 		CoroutineScope
 {
 	@Inject CrashReportExceptionHandler crashReportExceptionHandler;
@@ -115,6 +119,7 @@ public class MainActivity extends AppCompatActivity implements
 	@Inject QuestAutoSyncer questAutoSyncer;
 
 	@Inject QuestController questController;
+	@Inject NotificationsDao notificationsDao;
 
 	@Inject SharedPreferences prefs;
 	@Inject UserController userController;
@@ -138,6 +143,9 @@ public class MainActivity extends AppCompatActivity implements
 
 	private View unsyncedChangesContainer;
 	private MenuItem btnUndo;
+
+	private View notificationsContainer;
+	private TextView notificationsCounterTextView;
 
 	private CoroutineScope coroutineScope = CoroutineScopeKt.CoroutineScope(Dispatchers.getMain());
 
@@ -243,6 +251,30 @@ public class MainActivity extends AppCompatActivity implements
 			}
 		});
 
+		notificationsContainer = findViewById(R.id.notificationsContainer);
+		notificationsCounterTextView = findViewById(R.id.notificationsCounterTextView);
+		notificationsContainer.setOnClickListener(view ->
+		{
+			Notification notification = notificationsDao.popNextNotification();
+			if (notification != null) {
+				if (notification instanceof OsmUnreadMessagesNotification) {
+					int unreadMessages = ((OsmUnreadMessagesNotification) notification).getUnreadMessages();
+					OsmUnreadMessagesFragment.Companion.create(unreadMessages).show(getSupportFragmentManager(), null);
+				} else if(notification instanceof NewVersionNotification) {
+					String sinceVersion = ((NewVersionNotification) notification).getSinceVersion();
+					new WhatsNewDialog(this, sinceVersion).show();
+				} else if(notification instanceof NewAchievementNotification) {
+					NewAchievementNotification achievementNotification = ((NewAchievementNotification) notification);
+					Fragment f = getSupportFragmentManager().findFragmentById(R.id.achievement_info_fragment);
+					((AchievementInfoFragment) f).showNew(
+							achievementNotification.getAchievement(),
+							achievementNotification.getLevel()
+					);
+				}
+			}
+		});
+
+
 		downloadProgressBar = findViewById(R.id.download_progress);
 		downloadProgressBar.setMax(1000);
 
@@ -301,15 +333,6 @@ public class MainActivity extends AppCompatActivity implements
 			}
 		}
 
-		if (!(BuildConfig.VERSION_NAME).equals(lastVersion))
-		{
-			prefs.edit().putString(Prefs.LAST_VERSION, BuildConfig.VERSION_NAME).apply();
-			if (lastVersion != null)
-			{
-				new WhatsNewDialog(this, "v" + lastVersion).show();
-			}
-		}
-
 		boolean isAutosync = Prefs.Autosync.valueOf(prefs.getString(Prefs.AUTOSYNC,"ON")) == Prefs.Autosync.ON;
 		ProgressBar uploadedAnswersProgressBar = findViewById(R.id.uploadedAnswersProgress);
 		ProgressBar unsyncedAnswersProgressBar = findViewById(R.id.unsyncedAnswersProgress);
@@ -332,6 +355,9 @@ public class MainActivity extends AppCompatActivity implements
 				downloadServiceConnection, BIND_AUTO_CREATE);
 		uploadServiceIsBound = bindService(new Intent(this, QuestChangesUploadService.class),
 				uploadServiceConnection, BIND_AUTO_CREATE);
+
+		onNumberOfNotificationsUpdated(notificationsDao.getNumberOfNotifications());
+		notificationsDao.addListener(this);
 
 		if(!hasAskedForLocation && !prefs.getBoolean(Prefs.LAST_LOCATION_REQUEST_DENIED, false))
 		{
@@ -390,6 +416,8 @@ public class MainActivity extends AppCompatActivity implements
 			// the onStarted call when we return to this activity when the service is rebound
 			downloadProgressBar.setAlpha(0f);
 		}
+
+		notificationsDao.removeListener(this);
 
 		if (uploadServiceIsBound) unbindService(uploadServiceConnection);
 		uploadServiceIsBound = false;
@@ -504,14 +532,7 @@ public class MainActivity extends AppCompatActivity implements
 				startActivity(new Intent(this, UserActivity.class));
 				return true;
 			case R.id.action_achievement:
-				//Fragment f = getSupportFragmentManager().findFragmentById(R.id.achievement_info_fragment);
-				//((AchievementInfoFragment) f).showNew(AchievementsModule.INSTANCE.achievements().get(8),1);
-
-
-				getSupportFragmentManager().beginTransaction()
-						.setCustomAnimations(R.anim.fade_in_from_bottom, R.anim.fade_out_to_bottom)
-						.add(R.id.fragment_container, new TutorialFragment())
-						.commit();
+				new OsmUnreadMessagesFragment().show(getSupportFragmentManager(), null);
 				return true;
 		}
 
@@ -785,6 +806,13 @@ public class MainActivity extends AppCompatActivity implements
 			});
 		}
 	};
+
+	/* ---------------------------------- NotificationsListener --------------------------------- */
+
+	@Override public void onNumberOfNotificationsUpdated(int numberOfNotifications) {
+		notificationsContainer.setVisibility(numberOfNotifications > 0 ? View.VISIBLE : View.GONE);
+		notificationsCounterTextView.setText(String.valueOf(numberOfNotifications));
+	}
 
 	/* --------------------------------- MainFragment.Listener ---------------------------------- */
 

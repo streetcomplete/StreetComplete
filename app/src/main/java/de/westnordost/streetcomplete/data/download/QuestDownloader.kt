@@ -14,7 +14,7 @@ import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestDao
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestType
 import de.westnordost.streetcomplete.data.osmnotes.OsmNotesDownloader
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
-import de.westnordost.streetcomplete.data.user.UserController
+import de.westnordost.streetcomplete.data.user.UserStore
 import de.westnordost.streetcomplete.data.visiblequests.OrderedVisibleQuestTypesProvider
 import de.westnordost.streetcomplete.util.SlippyMapMath
 import java.util.concurrent.atomic.AtomicBoolean
@@ -30,7 +30,7 @@ class QuestDownloader @Inject constructor(
         private val osmNoteQuestDb: OsmNoteQuestDao,
         private val questTypeRegistry: QuestTypeRegistry,
         private val questTypesProvider: OrderedVisibleQuestTypesProvider,
-        private val userController: UserController
+        private val userStore: UserStore
 ) {
     // listeners
     var questListener: VisibleQuestListener? = null
@@ -96,7 +96,7 @@ class QuestDownloader @Inject constructor(
     private fun downloadNotes(bbox: BoundingBox, tiles: Rect): Set<LatLon> {
         val notesDownload = osmNotesDownloaderProvider.get()
         notesDownload.questListener = questListener
-        val userId: Long? = userController.userId.takeIf { it != -1L }
+        val userId: Long? = userStore.userId.takeIf { it != -1L }
         // do not download notes if not logged in because notes shall only be downloaded if logged in
         if (userId == null) {
             onProgress()

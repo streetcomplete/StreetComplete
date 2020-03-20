@@ -33,11 +33,6 @@ class LoginFragment : Fragment(R.layout.fragment_login),
 
     override val title: String get() = getString(R.string.user_login)
 
-    interface Listener {
-        fun onLoggedIn()
-    }
-    private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
-
     private val oAuthFragment: OAuthFragment? get() =
         childFragmentManagerOrNull?.findFragmentById(R.id.oauthFragmentContainer) as? OAuthFragment
 
@@ -87,7 +82,6 @@ class LoginFragment : Fragment(R.layout.fragment_login),
         launch {
             if (userController.hasRequiredPermissions(consumer)) {
                 userController.logIn(consumer)
-                listener?.onLoggedIn()
             } else {
                 context?.toast(R.string.oauth_failed_permissions, Toast.LENGTH_LONG)
                 loginButton.visibility = View.VISIBLE

@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import java.util.List;
 
 import javax.inject.Named;
+import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
@@ -67,17 +68,17 @@ import oauth.signpost.basic.DefaultOAuthProvider;
 		return CALLBACK_HOST;
 	}
 
-	@Provides public static UserController userController(
+	@Provides @Singleton public static UserController userController(
 		UserDao userDao, UserStore userStore, AchievementGiver achievementGiver,
 		OAuthStore oAuthStore, UserAchievementsDao userAchievementsDao, UserLinksDao userLinksDao,
 		@Named("Achievements") List<Achievement> achievements, @Named("Links") List<Link> links,
 		Context context, StatisticsDownloader statisticsDownloader,
-		QuestStatisticsDao statisticsDao, OsmConnection osmConnection, SharedPreferences prefs
+		QuestStatisticsDao statisticsDao, OsmConnection osmConnection
 	)
 	{
 		return new UserController(
 			userDao, oAuthStore, userStore, achievementGiver, userAchievementsDao, userLinksDao,
 			achievements, links, OsmModule.getAvatarsCacheDirectory(context), statisticsDownloader,
-			statisticsDao, osmConnection, prefs);
+			statisticsDao, osmConnection);
 	}
 }
