@@ -117,6 +117,8 @@ public class AnswersCounter
 		{
 			updateText(uploadedText, uploaded);
 			updateText(unsyncedText, unsynced);
+			if(unsynced > 0) unsyncedText.setVisibility(View.VISIBLE);
+			else unsyncedText.setVisibility(View.GONE);
 		}
 	}
 
