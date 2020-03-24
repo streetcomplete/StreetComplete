@@ -79,7 +79,6 @@ import javax.inject.Singleton
         val unreadOsmMessages = userStore.unreadMessagesCount
         if (unreadOsmMessages > 0) {
             userStore.unreadMessagesCount = 0
-            onNumberOfNotificationsUpdated()
             return OsmUnreadMessagesNotification(unreadOsmMessages)
         }
 

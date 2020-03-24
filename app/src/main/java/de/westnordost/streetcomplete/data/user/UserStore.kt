@@ -25,19 +25,19 @@ import javax.inject.Singleton
     var daysActive: Int
         get() = prefs.getInt(Prefs.USER_DAYS_ACTIVE, 0)
         set(value) {
-            prefs.edit { putInt(Prefs.USER_DAYS_ACTIVE, value) }
+            prefs.edit(true) { putInt(Prefs.USER_DAYS_ACTIVE, value) }
             onUserDataUpdated()
         }
 
     var unreadMessagesCount: Int
     get() = prefs.getInt(Prefs.OSM_UNREAD_MESSAGES, 0)
     set(value) {
-        prefs.edit { putInt(Prefs.OSM_UNREAD_MESSAGES, value) }
+        prefs.edit(true) { putInt(Prefs.OSM_UNREAD_MESSAGES, value) }
         onUserDataUpdated()
     }
 
     fun setDetails(userDetails: UserDetails) {
-        prefs.edit {
+        prefs.edit(true) {
             putLong(Prefs.OSM_USER_ID, userDetails.id)
             putString(Prefs.OSM_USER_NAME, userDetails.displayName)
             putInt(Prefs.OSM_UNREAD_MESSAGES, userDetails.unreadMessagesCount)
@@ -46,7 +46,7 @@ import javax.inject.Singleton
     }
 
     fun clear() {
-        prefs.edit {
+        prefs.edit(true) {
             remove(Prefs.OSM_USER_ID)
             remove(Prefs.OSM_USER_NAME)
             remove(Prefs.OSM_UNREAD_MESSAGES)

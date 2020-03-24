@@ -48,7 +48,7 @@ class UserActivity : FragmentContainerActivity(R.layout.activity_user),
         if (savedInstanceState == null) {
             mainFragment = when {
                 intent.getBooleanExtra(EXTRA_LAUNCH_AUTH, false) -> LoginFragment.create(true)
-                userController.isUserAuthorized -> UserFragment()
+                userController.isLoggedIn -> UserFragment()
                 else -> LoginFragment.create()
             }
         }

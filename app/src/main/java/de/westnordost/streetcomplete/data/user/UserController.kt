@@ -38,7 +38,7 @@ import javax.inject.Singleton
     private val achievementsById = achievements.associateBy { it.id }
     private val linksById = links.associateBy { it.id }
 
-    val isUserAuthorized: Boolean get() = oAuthStore.isAuthorized
+    val isLoggedIn: Boolean get() = oAuthStore.isAuthorized
 
     val userId: Long get() = userStore.userId
     val userName: String? get() = userStore.userName

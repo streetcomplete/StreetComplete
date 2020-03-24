@@ -82,7 +82,7 @@ class QuestChangesUploadService : IntentService(TAG) {
             }
 
             // let's fail early in case of no authorization
-            if (!userController.isUserAuthorized) {
+            if (!userController.isLoggedIn) {
                 throw OsmAuthorizationException(401, "Unauthorized", "User is not authorized")
             }
 

@@ -142,7 +142,7 @@ class QuestAutoSyncer @Inject constructor(
     fun triggerAutoUpload() {
         if (!isAllowedByPreference) return
         if (!isConnected) return
-        if (!userController.isUserAuthorized) return
+        if (!userController.isLoggedIn) return
 
         try {
             questController.upload()

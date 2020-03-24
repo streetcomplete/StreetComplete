@@ -290,6 +290,13 @@ public class MainActivity extends AppCompatActivity implements
 				@NotNull @Override public CoroutineContext getContext() { return coroutineScope.getCoroutineContext(); }
 				@Override public void resumeWith(@NotNull Object o){ }
 			});
+			if (userController.isLoggedIn()) {
+				userController.updateUser(new Continuation<Unit>()
+				{
+					@NotNull @Override public CoroutineContext getContext() { return coroutineScope.getCoroutineContext(); }
+					@Override public void resumeWith(@NotNull Object o){ }
+				});
+			}
 		}
 
 		handleGeoUri();
@@ -542,7 +549,7 @@ public class MainActivity extends AppCompatActivity implements
 	@UiThread private void uploadChanges()
 	{
 		// because the app should ask for permission even if there is nothing to upload right now
-		if(!userController.isUserAuthorized())
+		if(!userController.isLoggedIn())
 		{
 			requestOAuthorized();
 		}
@@ -628,7 +635,7 @@ public class MainActivity extends AppCompatActivity implements
 	{
 		if(questAutoSyncer.isAllowedByPreference())
 		{
-			if (!userController.isUserAuthorized()) {
+			if (!userController.isLoggedIn()) {
 				// new users should not be immediately pestered to login after each change (#1446)
 				if(answersCounter.waitingForUpload() >= 3) {
 					requestOAuthorized();
