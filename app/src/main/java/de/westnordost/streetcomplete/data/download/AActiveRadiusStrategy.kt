@@ -7,11 +7,11 @@ import de.westnordost.streetcomplete.data.quest.QuestStatus
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestDao
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
 import de.westnordost.streetcomplete.data.visiblequests.OrderedVisibleQuestTypesProvider
-import de.westnordost.streetcomplete.util.SlippyMapMath
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.util.area
 import de.westnordost.streetcomplete.util.enclosingBoundingBox
+import de.westnordost.streetcomplete.util.enclosingTilesRect
 import kotlin.math.max
 
 /** Quest auto download strategy that observes that a minimum amount of quests in a predefined
@@ -30,7 +30,7 @@ abstract class AActiveRadiusStrategy(
         val bbox = pos.enclosingBoundingBox(radius.toDouble())
 
         // nothing more to download
-        val tiles = SlippyMapMath.enclosingTiles(bbox, ApplicationConstants.QUEST_TILE_ZOOM)
+        val tiles = bbox.enclosingTilesRect(ApplicationConstants.QUEST_TILE_ZOOM)
         val questExpirationTime = ApplicationConstants.REFRESH_QUESTS_AFTER
         val ignoreOlderThan = max(0, System.currentTimeMillis() - questExpirationTime)
         val alreadyDownloaded = downloadedTilesDao.get(tiles, ignoreOlderThan).toSet()

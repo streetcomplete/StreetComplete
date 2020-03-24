@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.data.download
 
 import android.content.Context
 import android.content.Intent
-import android.graphics.Rect
 import android.os.Binder
 import android.os.IBinder
 import android.util.Log
@@ -10,6 +9,7 @@ import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.data.VisibleQuestListener
 import de.westnordost.streetcomplete.data.VisibleQuestRelay
+import de.westnordost.streetcomplete.util.TilesRect
 import java.util.concurrent.atomic.AtomicBoolean
 import javax.inject.Inject
 import javax.inject.Provider
@@ -67,7 +67,7 @@ class QuestDownloadService : SingleIntentService(TAG) {
             return
         }
 
-        val tiles = intent.getParcelableExtra<Rect>(ARG_TILES_RECT)
+        val tiles = intent.getSerializableExtra(ARG_TILES_RECT) as TilesRect
         val maxQuestTypes =
             if (intent.hasExtra(ARG_MAX_QUEST_TYPES)) intent.getIntExtra(ARG_MAX_QUEST_TYPES, 0)
             else null
@@ -117,7 +117,7 @@ class QuestDownloadService : SingleIntentService(TAG) {
         const val ARG_IS_PRIORITY = "isPriority"
         const val ARG_CANCEL = "cancel"
 
-        fun createIntent(context: Context, tilesRect: Rect?, maxQuestTypesToDownload: Int?, isPriority: Boolean): Intent {
+        fun createIntent(context: Context, tilesRect: TilesRect?, maxQuestTypesToDownload: Int?, isPriority: Boolean): Intent {
             val intent = Intent(context, QuestDownloadService::class.java)
             intent.putExtra(ARG_TILES_RECT, tilesRect)
             intent.putExtra(ARG_IS_PRIORITY, isPriority)

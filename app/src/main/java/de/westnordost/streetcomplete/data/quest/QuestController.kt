@@ -33,11 +33,11 @@ import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestDao
 import de.westnordost.streetcomplete.data.upload.QuestChangesUploadService
 import de.westnordost.streetcomplete.data.visiblequests.OrderedVisibleQuestTypesProvider
 import de.westnordost.streetcomplete.quests.note_discussion.NoteAnswer
-import de.westnordost.streetcomplete.util.SlippyMapMath
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 
 import android.content.Context.BIND_AUTO_CREATE
+import de.westnordost.streetcomplete.util.enclosingTilesRect
 import de.westnordost.streetcomplete.data.VisibleQuestListener
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -328,7 +328,7 @@ import javax.inject.Singleton
      * puts itself in the front)
      */
     fun download(bbox: BoundingBox, maxQuestTypesToDownload: Int? = null, isPriority: Boolean = false) {
-        val tilesRect = SlippyMapMath.enclosingTiles(bbox, ApplicationConstants.QUEST_TILE_ZOOM)
+        val tilesRect = bbox.enclosingTilesRect(ApplicationConstants.QUEST_TILE_ZOOM)
         context.startService(QuestDownloadService.createIntent(context, tilesRect, maxQuestTypesToDownload, isPriority))
     }
 

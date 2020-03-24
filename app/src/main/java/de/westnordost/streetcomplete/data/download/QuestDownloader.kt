@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.download
 
 import android.graphics.Rect
+import android.content.SharedPreferences
 import android.util.Log
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.LatLon
@@ -16,7 +17,7 @@ import de.westnordost.streetcomplete.data.osmnotes.OsmNotesDownloader
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
 import de.westnordost.streetcomplete.data.user.UserStore
 import de.westnordost.streetcomplete.data.visiblequests.OrderedVisibleQuestTypesProvider
-import de.westnordost.streetcomplete.util.SlippyMapMath
+import de.westnordost.streetcomplete.util.TilesRect
 import java.util.concurrent.atomic.AtomicBoolean
 import javax.inject.Inject
 import javax.inject.Provider
@@ -40,7 +41,7 @@ class QuestDownloader @Inject constructor(
     private var downloadedQuestTypes = 0
     private var totalQuestTypes = 0
 
-    @Synchronized fun download(tiles: Rect, maxQuestTypes: Int?, cancelState: AtomicBoolean) {
+    @Synchronized fun download(tiles: TilesRect, maxQuestTypes: Int?, cancelState: AtomicBoolean) {
         if (cancelState.get()) return
 
         val questTypes = getQuestTypesToDownload(tiles, maxQuestTypes)
@@ -52,7 +53,7 @@ class QuestDownloader @Inject constructor(
         totalQuestTypes = questTypes.size
         downloadedQuestTypes = 0
 
-        val bbox = SlippyMapMath.asBoundingBox(tiles, ApplicationConstants.QUEST_TILE_ZOOM)
+        val bbox = tiles.asBoundingBox(ApplicationConstants.QUEST_TILE_ZOOM)
 
         Log.i(TAG, "(${bbox.asLeftBottomRightTopString}) Starting")
         Log.i(TAG, "Quest types to download: ${questTypes.joinToString { it.javaClass.simpleName }}")
@@ -77,7 +78,7 @@ class QuestDownloader @Inject constructor(
     private fun getOsmNoteQuestType() =
         questTypeRegistry.getByName(OsmNoteQuestType::class.java.simpleName)!!
 
-    private fun getQuestTypesToDownload(tiles: Rect, maxQuestTypes: Int?): List<QuestType<*>> {
+    private fun getQuestTypesToDownload(tiles: TilesRect, maxQuestTypes: Int?): List<QuestType<*>> {
         val result = questTypesProvider.get().toMutableList()
         val questExpirationTime = ApplicationConstants.REFRESH_QUESTS_AFTER
         val ignoreOlderThan = max(0, System.currentTimeMillis() - questExpirationTime)
@@ -93,7 +94,7 @@ class QuestDownloader @Inject constructor(
             result
     }
 
-    private fun downloadNotes(bbox: BoundingBox, tiles: Rect): Set<LatLon> {
+    private fun downloadNotes(bbox: BoundingBox, tiles: TilesRect): Set<LatLon> {
         val notesDownload = osmNotesDownloaderProvider.get()
         notesDownload.questListener = questListener
         val userId: Long? = userStore.userId.takeIf { it != -1L }
@@ -109,7 +110,7 @@ class QuestDownloader @Inject constructor(
         return result
     }
 
-    private fun downloadQuestType(bbox: BoundingBox, tiles: Rect, questType: QuestType<*>, notesPositions: Set<LatLon>) {
+    private fun downloadQuestType(bbox: BoundingBox, tiles: TilesRect, questType: QuestType<*>, notesPositions: Set<LatLon>) {
         if (questType is OsmElementQuestType<*>) {
             val questDownload = osmQuestDownloaderProvider.get()
             questDownload.questListener = questListener

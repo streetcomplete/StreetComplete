@@ -20,7 +20,7 @@ import de.westnordost.streetcomplete.data.VisibleQuestRelay
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
 import de.westnordost.streetcomplete.data.user.StatisticsUpdater
 import de.westnordost.streetcomplete.data.user.UserController
-import de.westnordost.streetcomplete.util.SlippyMapMath
+import de.westnordost.streetcomplete.util.enclosingTile
 
 /** Collects and uploads all changes the user has done: notes he left, comments he left on existing
  * notes and quests he answered  */
@@ -108,7 +108,7 @@ class QuestChangesUploadService : IntentService(TAG) {
     private fun invalidateArea(pos: LatLon) {
         // called after a conflict. If there is a conflict, the user is not the only one in that
         // area, so best invalidate all downloaded quests here and redownload on next occasion
-        val tile = SlippyMapMath.enclosingTile(pos, ApplicationConstants.QUEST_TILE_ZOOM)
+        val tile = pos.enclosingTile(ApplicationConstants.QUEST_TILE_ZOOM)
         downloadedTilesDB.remove(tile)
     }
 

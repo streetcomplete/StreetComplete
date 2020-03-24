@@ -11,6 +11,7 @@ import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryDao
 import de.westnordost.streetcomplete.data.osm.mapdata.MergedElementDao
 import de.westnordost.streetcomplete.data.osm.upload.changesets.OpenQuestChangesetsManager
 import de.westnordost.streetcomplete.data.osm.upload.OsmInChangesetsUploader
+import de.westnordost.streetcomplete.util.enclosingTile
 import java.util.*
 import java.util.concurrent.atomic.AtomicBoolean
 
