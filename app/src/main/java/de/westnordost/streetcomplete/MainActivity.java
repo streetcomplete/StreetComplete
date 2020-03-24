@@ -279,7 +279,6 @@ public class MainActivity extends AppCompatActivity implements
 		downloadProgressBar.setMax(1000);
 
 		RelativeLayout starMenu = findViewById(R.id.uploadedAnswersContainer);
-		starMenu.setOnClickListener(this::starInfoMenu);
 
 		mapFragment = (MainFragment) getSupportFragmentManager().findFragmentById(R.id.map_fragment);
 
@@ -934,19 +933,6 @@ public class MainActivity extends AppCompatActivity implements
 		}
 	}
 
-	// ---------------------------------------------------------------------------------------------
-
-	/** Menu raised by clicking on the star icon */
-	public void starInfoMenu(View view) {
-		String message = getString(R.string.about_contributing) ;
-		if(answersCounter.waitingForUpload() + answersCounter.uploaded() == 0){
-			message = getString(R.string.how_to_get_stars) + "\n\n" + getString(R.string.about_contributing);
-		}
-		new AlertDialog.Builder(MainActivity.this)
-			.setMessage(message)
-			.show();
-	}
-
 
 	// ---------------------------------------------------------------------------------------------
 
@@ -959,5 +945,4 @@ public class MainActivity extends AppCompatActivity implements
 		NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
 		return activeNetworkInfo != null && activeNetworkInfo.isConnected();
 	}
-
 }
