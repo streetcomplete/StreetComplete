@@ -1,8 +1,6 @@
 package de.westnordost.streetcomplete.data.tiles
 
 import android.database.sqlite.SQLiteOpenHelper
-import android.graphics.Point
-import android.graphics.Rect
 import androidx.core.content.contentValuesOf
 import de.westnordost.streetcomplete.data.tiles.DownloadedTilesTable.Columns.X
 import de.westnordost.streetcomplete.data.tiles.DownloadedTilesTable.Columns.Y
@@ -11,6 +9,8 @@ import de.westnordost.streetcomplete.data.tiles.DownloadedTilesTable.Columns.DAT
 import de.westnordost.streetcomplete.data.tiles.DownloadedTilesTable.NAME
 import de.westnordost.streetcomplete.ktx.query
 import de.westnordost.streetcomplete.ktx.transaction
+import de.westnordost.streetcomplete.util.Tile
+import de.westnordost.streetcomplete.util.TilesRect
 
 import javax.inject.Inject
 
@@ -21,25 +21,23 @@ class DownloadedTilesDao @Inject constructor(private val dbHelper: SQLiteOpenHel
     private val db get() = dbHelper.writableDatabase
 
     /** Persist that the given quest type has been downloaded in every tile in the given tile range  */
-    fun put(tiles: Rect, questTypeName: String) {
+    fun put(tilesRect: TilesRect, questTypeName: String) {
         db.transaction {
             val time = System.currentTimeMillis()
-            for (x in tiles.left..tiles.right) {
-                for (y in tiles.top..tiles.bottom) {
-                    val values = contentValuesOf(
-                        X to x,
-                        Y to y,
-                        QUEST_TYPE to questTypeName,
-                        DATE to time
-                    )
-                    db.replaceOrThrow(NAME, null, values)
-                }
+            for (tile in tilesRect.asTileSequence()) {
+                val values = contentValuesOf(
+                    X to tile.x,
+                    Y to tile.y,
+                    QUEST_TYPE to questTypeName,
+                    DATE to time
+                )
+                db.replaceOrThrow(NAME, null, values)
             }
         }
     }
 
     /** Invalidate all quest types within the given tile. (consider them as not-downloaded) */
-    fun remove(tile: Point): Int {
+    fun remove(tile: Tile): Int {
         return db.delete(NAME, "$X = ? AND $Y = ?", arrayOf(tile.x.toString(), tile.y.toString()))
     }
 
@@ -48,18 +46,18 @@ class DownloadedTilesDao @Inject constructor(private val dbHelper: SQLiteOpenHel
     }
 
     /** @return a list of quest type names which have already been downloaded in every tile in the
-     * given tile range
+     *  given tile range
      */
-    fun get(tiles: Rect, ignoreOlderThan: Long): List<String> {
-        val tileCount = (1 + tiles.width()) * (1 + tiles.height())
+    fun get(tilesRect: TilesRect, ignoreOlderThan: Long): List<String> {
+        val tileCount = tilesRect.size
         return db.query(NAME,
             columns = arrayOf(QUEST_TYPE),
             selection = "$X BETWEEN ? AND ? AND $Y BETWEEN ? AND ? AND $DATE > ?",
             selectionArgs = arrayOf(
-                tiles.left.toString(),
-                tiles.right.toString(),
-                tiles.top.toString(),
-                tiles.bottom.toString(),
+                tilesRect.left.toString(),
+                tilesRect.right.toString(),
+                tilesRect.top.toString(),
+                tilesRect.bottom.toString(),
                 ignoreOlderThan.toString()
             ),
             groupBy = QUEST_TYPE,

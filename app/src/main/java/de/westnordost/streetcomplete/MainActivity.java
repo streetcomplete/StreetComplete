@@ -84,7 +84,7 @@ import de.westnordost.streetcomplete.tools.CrashReportExceptionHandler;
 import de.westnordost.streetcomplete.util.DpUtil;
 import de.westnordost.streetcomplete.util.GeoLocation;
 import de.westnordost.streetcomplete.util.GeoUriKt;
-import de.westnordost.streetcomplete.util.SlippyMapMath;
+import de.westnordost.streetcomplete.util.SlippyMapMathKt;
 import de.westnordost.streetcomplete.util.SphericalEarthMathKt;
 import kotlin.Unit;
 import kotlin.coroutines.Continuation;
@@ -526,7 +526,7 @@ public class MainActivity extends AppCompatActivity implements  MainFragment.Lis
 		}
 		else
 		{
-			final BoundingBox enclosingBBox = SlippyMapMath.asBoundingBoxOfEnclosingTiles(
+			final BoundingBox enclosingBBox = SlippyMapMathKt.asBoundingBoxOfEnclosingTiles(
 					displayArea, ApplicationConstants.QUEST_TILE_ZOOM);
 			double areaInSqKm = SphericalEarthMathKt.area(enclosingBBox, SphericalEarthMathKt.EARTH_RADIUS) / 1000000;
 			if (areaInSqKm > ApplicationConstants.MAX_DOWNLOADABLE_AREA_IN_SQKM)

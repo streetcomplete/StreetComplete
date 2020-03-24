@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.map
 
 import android.content.res.Resources
-import android.graphics.Rect
 import android.os.Build
 import androidx.collection.LongSparseArray
 import androidx.lifecycle.Lifecycle
@@ -14,7 +13,7 @@ import de.westnordost.streetcomplete.data.visiblequests.OrderedVisibleQuestTypes
 import de.westnordost.streetcomplete.ktx.values
 import de.westnordost.streetcomplete.map.tangram.toLngLat
 import de.westnordost.streetcomplete.quests.bikeway.AddCycleway
-import de.westnordost.streetcomplete.util.SlippyMapMath
+import de.westnordost.streetcomplete.util.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
@@ -34,9 +33,9 @@ class QuestPinLayerManager @Inject constructor(
     // draw order in which the quest types should be rendered on the map
     private val questTypeOrders: MutableMap<QuestType<*>, Int> = mutableMapOf()
     // all the (zoom 14) tiles that have been retrieved from DB into memory already
-    private val retrievedTiles: MutableSet<android.graphics.Point> = mutableSetOf()
+    private val retrievedTiles: MutableSet<Tile> = mutableSetOf()
     // last displayed rect of (zoom 14) tiles
-    private var lastDisplayedRect: Rect? = null
+    private var lastDisplayedRect: TilesRect? = null
 
     // quest group -> ( quest Id -> [point, ...] )
     private val quests: EnumMap<QuestGroup, LongSparseArray<List<Point>>> = EnumMap(QuestGroup::class.java)
@@ -84,7 +83,7 @@ class QuestPinLayerManager @Inject constructor(
         val zoom = mapFragment.cameraPosition?.zoom ?: return
         if (zoom < TILES_ZOOM) return
         val displayedArea = mapFragment.getDisplayedArea() ?: return
-        val tilesRect = SlippyMapMath.enclosingTiles(displayedArea, TILES_ZOOM)
+        val tilesRect = displayedArea.enclosingTilesRect(TILES_ZOOM)
         if (lastDisplayedRect != tilesRect) {
             lastDisplayedRect = tilesRect
             launch { updateQuestsInRect(tilesRect) }
@@ -105,15 +104,17 @@ class QuestPinLayerManager @Inject constructor(
         updateLayer()
     }
 
-    private suspend fun updateQuestsInRect(tilesRect: Rect) {
-        // area too big -> skip
-        if (tilesRect.width() * tilesRect.height() > 4) {
+    private suspend fun updateQuestsInRect(tilesRect: TilesRect) {
+        // area too big -> skip (performance)
+        if (tilesRect.size > 4) {
             return
         }
-        val tiles = SlippyMapMath.asTileList(tilesRect)
-        synchronized(retrievedTiles) { tiles.removeAll(retrievedTiles) }
-        val minRect = SlippyMapMath.minRect(tiles) ?: return
-        val bbox = SlippyMapMath.asBoundingBox(minRect, TILES_ZOOM)
+        var tiles: List<Tile>
+        synchronized(retrievedTiles) {
+            tiles = tilesRect.asTileSequence().filter { !retrievedTiles.contains(it) }.toList()
+        }
+        val minRect = tiles.minTileRect() ?: return
+        val bbox = minRect.asBoundingBox(TILES_ZOOM)
         questController.retrieve(bbox)
         synchronized(retrievedTiles) { retrievedTiles.addAll(tiles) }
     }

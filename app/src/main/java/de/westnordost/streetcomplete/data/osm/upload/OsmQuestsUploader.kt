@@ -16,7 +16,7 @@ import de.westnordost.streetcomplete.data.osm.persist.MergedElementDao
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao
 import de.westnordost.streetcomplete.data.statistics.QuestStatisticsDao
 import de.westnordost.streetcomplete.data.tiles.DownloadedTilesDao
-import de.westnordost.streetcomplete.util.SlippyMapMath
+import de.westnordost.streetcomplete.util.enclosingTile
 import java.util.*
 import java.util.concurrent.atomic.AtomicBoolean
 
@@ -62,7 +62,7 @@ class OsmQuestsUploader @Inject constructor(
     private fun invalidateAreaAroundQuest(quest: OsmQuest) {
         // called after a conflict. If there is a conflict, the user is not the only one in that
         // area, so best invalidate all downloaded quests here and redownload on next occasion
-        val tile = SlippyMapMath.enclosingTile(quest.center, ApplicationConstants.QUEST_TILE_ZOOM)
+        val tile = quest.center.enclosingTile(ApplicationConstants.QUEST_TILE_ZOOM)
         downloadedTilesDao.remove(tile)
     }
 
