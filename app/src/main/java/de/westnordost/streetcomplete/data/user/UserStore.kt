@@ -4,6 +4,8 @@ import android.content.SharedPreferences
 import androidx.core.content.edit
 import de.westnordost.osmapi.user.UserDetails
 import de.westnordost.streetcomplete.Prefs
+import java.text.SimpleDateFormat
+import java.util.*
 import java.util.concurrent.CopyOnWriteArrayList
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -19,6 +21,8 @@ import javax.inject.Singleton
     }
     private val listeners: MutableList<UpdateListener> = CopyOnWriteArrayList()
 
+    private val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.US)
+
     val userId: Long get() = prefs.getLong(Prefs.OSM_USER_ID, -1)
     val userName: String? get() = prefs.getString(Prefs.OSM_USER_NAME, null)
 
@@ -28,6 +32,13 @@ import javax.inject.Singleton
             prefs.edit(true) { putInt(Prefs.USER_DAYS_ACTIVE, value) }
             onUserDataUpdated()
         }
+
+    var lastDateActive: Date?
+    get() = prefs.getString(Prefs.USER_LAST_DATE_ACTIVE, null)?.let { dateFormat.parse(it) }
+    set(value) {
+        prefs.edit(true) { putString(Prefs.USER_LAST_DATE_ACTIVE, dateFormat.format(value)) }
+        onUserDataUpdated()
+    }
 
     var unreadMessagesCount: Int
     get() = prefs.getInt(Prefs.OSM_UNREAD_MESSAGES, 0)

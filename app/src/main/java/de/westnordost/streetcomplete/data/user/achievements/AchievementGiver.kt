@@ -21,7 +21,7 @@ class AchievementGiver @Inject constructor(
     }
 
     /** Look at and grant only the achievements that have anything to do with the given quest type */
-    fun updateAchievements(questType: String): List<Pair<Achievement, Int>> {
+    fun updateQuestTypeAchievements(questType: String): List<Pair<Achievement, Int>> {
         return updateAchievements(allAchievements.filter {
             when (it.condition) {
                 is SolvedQuestsOfTypes -> it.condition.questTypes.contains(questType)
@@ -32,7 +32,7 @@ class AchievementGiver @Inject constructor(
     }
 
     /** Look at and grant only the achievements that have anything to do with days active */
-    fun updateAchievements(daysActive: Int): List<Pair<Achievement, Int>> {
+    fun updateDaysActiveAchievements(): List<Pair<Achievement, Int>> {
         return updateAchievements(allAchievements.filter { it.condition is DaysActive })
     }
 

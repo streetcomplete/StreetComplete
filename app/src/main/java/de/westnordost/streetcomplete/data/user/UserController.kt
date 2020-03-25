@@ -14,6 +14,8 @@ import oauth.signpost.OAuthConsumer
 import java.io.File
 import java.io.IOException
 import java.net.URL
+import java.text.SimpleDateFormat
+import java.util.*
 import java.util.concurrent.CopyOnWriteArrayList
 import javax.inject.Inject
 import javax.inject.Named
@@ -37,6 +39,8 @@ import javax.inject.Singleton
 
     private val achievementsById = achievements.associateBy { it.id }
     private val linksById = links.associateBy { it.id }
+
+    private val lastDateActiveDateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.US)
 
     val isLoggedIn: Boolean get() = oAuthStore.isAuthorized
 
@@ -90,6 +94,7 @@ import javax.inject.Singleton
                 // TODO maybe only replace if the date is newer than mine...? (Or if there are more?)
                 statisticsDao.replaceAll(statistics.amounts)
                 userStore.daysActive = statistics.daysActive
+                userStore.lastDateActive = lastDateActiveDateFormat.parse(statistics.lastDateActive)
                 achievementGiver.updateAchievements()
                 achievementGiver.updateAchievementLinks()
             }
