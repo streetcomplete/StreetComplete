@@ -4,8 +4,6 @@
 
     <item android:id="@+id/action_user"
         android:icon="@drawable/ic_profile_white_48dp" android:orderInCategory="0" app:showAsAction="always" />
-    <item android:id="@+id/action_achievement"
-        android:icon="@drawable/ic_building_kindergarten" android:orderInCategory="0" app:showAsAction="always" />
     <item android:id="@+id/action_undo" android:title="@string/action_undo"
           android:icon="@drawable/ic_undo_white_24dp" android:orderInCategory="1" app:showAsAction="ifRoom" />
     <item android:id="@+id/action_download" android:title="@string/action_download"

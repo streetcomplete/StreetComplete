@@ -39,7 +39,6 @@ import android.view.animation.AccelerateInterpolator;
 import android.view.animation.OvershootInterpolator;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -277,8 +276,6 @@ public class MainActivity extends AppCompatActivity implements
 
 		downloadProgressBar = findViewById(R.id.download_progress);
 		downloadProgressBar.setMax(1000);
-
-		RelativeLayout starMenu = findViewById(R.id.uploadedAnswersContainer);
 
 		mapFragment = (MainFragment) getSupportFragmentManager().findFragmentById(R.id.map_fragment);
 
@@ -536,9 +533,6 @@ public class MainActivity extends AppCompatActivity implements
 				return true;
 			case R.id.action_user:
 				startActivity(new Intent(this, UserActivity.class));
-				return true;
-			case R.id.action_achievement:
-				new OsmUnreadMessagesFragment().show(getSupportFragmentManager(), null);
 				return true;
 		}
 
