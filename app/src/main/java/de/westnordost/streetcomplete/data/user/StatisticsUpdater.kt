@@ -26,7 +26,6 @@ class StatisticsUpdater @Inject constructor(
     }
 }
 // TODO need to decide what to do with the note quests anyway...
-// TODO path back for granted achievements...
 
 private fun Calendar.isSameDay(other: Calendar): Boolean =
     get(Calendar.DAY_OF_YEAR) == other.get(Calendar.DAY_OF_YEAR) &&

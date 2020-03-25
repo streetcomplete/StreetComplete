@@ -14,6 +14,9 @@ import javax.inject.Singleton
 
 /** Stores which achievements have *newly* been unlocked by the user and which levels. */
 @Singleton class NewUserAchievementsDao @Inject constructor(private val dbHelper: SQLiteOpenHelper) {
+    /* Must be a singleton because there is a listener that should respond to a change in the
+     *  database table */
+
     private val db get() = dbHelper.writableDatabase
 
     interface UpdateListener {

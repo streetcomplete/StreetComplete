@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.user.achievements
 
+import de.westnordost.streetcomplete.data.notifications.NewUserAchievementsDao
 import de.westnordost.streetcomplete.data.user.QuestStatisticsDao
 import de.westnordost.streetcomplete.data.user.UserStore
 import javax.inject.Inject
@@ -9,6 +10,7 @@ import javax.inject.Named
  * these in the link collection */
 class AchievementGiver @Inject constructor(
         private val userAchievementsDao: UserAchievementsDao,
+        private val newUserAchievementsDao: NewUserAchievementsDao,
         private val userLinksDao: UserLinksDao,
         private val questStatisticsDao: QuestStatisticsDao,
         @Named("Achievements") private val allAchievements: List<Achievement>,
@@ -16,12 +18,12 @@ class AchievementGiver @Inject constructor(
 ) {
 
     /** Look at and grant all achievements */
-    fun updateAchievements(): List<Pair<Achievement, Int>> {
+    fun updateAchievements() {
         return updateAchievements(allAchievements)
     }
 
     /** Look at and grant only the achievements that have anything to do with the given quest type */
-    fun updateQuestTypeAchievements(questType: String): List<Pair<Achievement, Int>> {
+    fun updateQuestTypeAchievements(questType: String) {
         return updateAchievements(allAchievements.filter {
             when (it.condition) {
                 is SolvedQuestsOfTypes -> it.condition.questTypes.contains(questType)
@@ -32,12 +34,11 @@ class AchievementGiver @Inject constructor(
     }
 
     /** Look at and grant only the achievements that have anything to do with days active */
-    fun updateDaysActiveAchievements(): List<Pair<Achievement, Int>> {
+    fun updateDaysActiveAchievements() {
         return updateAchievements(allAchievements.filter { it.condition is DaysActive })
     }
 
-    private fun updateAchievements(achievements: List<Achievement>): List<Pair<Achievement, Int>> {
-        val newAchievements = mutableListOf<Pair<Achievement, Int>>()
+    private fun updateAchievements(achievements: List<Achievement>) {
         val currentAchievementLevels = userAchievementsDao.getAll()
         // look at all defined achievements
         for (achievement in achievements) {
@@ -50,11 +51,10 @@ class AchievementGiver @Inject constructor(
                     val level = levelIndex + 1
                     userAchievementsDao.put(achievement.id, level)
                     userLinksDao.addAll(achievementLevel.links.map { it.id })
-                    newAchievements.add(achievement to level)
+                    newUserAchievementsDao.push(achievement.id to level)
                 }
             }
         }
-        return newAchievements
     }
 
     /** Goes through all granted achievements and gives the included links to the user if he doesn't

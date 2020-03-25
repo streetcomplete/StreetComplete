@@ -20,6 +20,9 @@ import javax.inject.Singleton
     @Named("Achievements") achievements: List<Achievement>,
     private val prefs: SharedPreferences
 ) {
+    /* Must be a singleton because there is a listener that should respond to a change in the
+    *  database table*/
+
     interface UpdateListener {
         fun onNumberOfNotificationsUpdated(numberOfNotifications: Int)
     }
