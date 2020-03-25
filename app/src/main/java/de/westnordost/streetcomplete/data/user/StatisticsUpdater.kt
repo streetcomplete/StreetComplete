@@ -12,11 +12,11 @@ class StatisticsUpdater @Inject constructor(
     fun addOne(questType: String) {
         val now = Date()
         val cal1 = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
-        cal1.time = userStore.lastDateActive
+        cal1.time = userStore.lastStatisticsUpdate
         val cal2 = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
         cal2.time = now
+        userStore.lastStatisticsUpdate = now
         if (!cal1.isSameDay(cal2)) {
-            userStore.lastDateActive = now
             userStore.daysActive++
             achievementGiver.updateDaysActiveAchievements()
         }
@@ -25,7 +25,6 @@ class StatisticsUpdater @Inject constructor(
         achievementGiver.updateQuestTypeAchievements(questType)
     }
 }
-// TODO need to decide what to do with the note quests anyway...
 
 private fun Calendar.isSameDay(other: Calendar): Boolean =
     get(Calendar.DAY_OF_YEAR) == other.get(Calendar.DAY_OF_YEAR) &&

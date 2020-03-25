@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.data.user
 
 import android.util.Log
 import de.westnordost.osmapi.OsmConnection
+import de.westnordost.osmapi.common.Iso8601CompatibleDateFormat
 import de.westnordost.osmapi.user.Permission
 import de.westnordost.osmapi.user.PermissionsDao
 import de.westnordost.osmapi.user.UserDao
@@ -14,8 +15,6 @@ import oauth.signpost.OAuthConsumer
 import java.io.File
 import java.io.IOException
 import java.net.URL
-import java.text.SimpleDateFormat
-import java.util.*
 import java.util.concurrent.CopyOnWriteArrayList
 import javax.inject.Inject
 import javax.inject.Named
@@ -40,7 +39,7 @@ import javax.inject.Singleton
     private val achievementsById = achievements.associateBy { it.id }
     private val linksById = links.associateBy { it.id }
 
-    private val lastDateActiveDateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.US)
+    private val lastActivityDateFormat = Iso8601CompatibleDateFormat("yyyy-MM-dd HH:mm:ss z")
 
     val isLoggedIn: Boolean get() = oAuthStore.isAuthorized
 
@@ -91,12 +90,19 @@ import javax.inject.Singleton
         try {
             val statistics = statisticsDownloader.download(userId)
             if (statistics != null) {
-                // TODO maybe only replace if the date is newer than mine...? (Or if there are more?)
-                statisticsDao.replaceAll(statistics.amounts)
-                userStore.daysActive = statistics.daysActive
-                userStore.lastDateActive = lastDateActiveDateFormat.parse(statistics.lastDateActive)
-                achievementGiver.updateAchievements()
-                achievementGiver.updateAchievementLinks()
+                val lastUpdate = lastActivityDateFormat.parse(statistics.lastUpdate)
+                // only update from server if more up-to-date than local statistics
+                if (lastUpdate.time >= userStore.lastStatisticsUpdate.time) {
+                    statisticsDao.replaceAll(statistics.amounts)
+                    userStore.daysActive = statistics.daysActive
+                    userStore.lastStatisticsUpdate = lastUpdate
+                    achievementGiver.updateAchievements()
+                    achievementGiver.updateAchievementLinks()
+                } else {
+                    Log.i(TAG, "Statistics were not up-to-date")
+                }
+            } else {
+                Log.i(TAG, "Statistics haven't been calculated yet")
             }
         } catch (e: IOException) {
             Log.w(TAG, "Unable to download statistics", e)

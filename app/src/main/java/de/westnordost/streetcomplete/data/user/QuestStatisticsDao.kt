@@ -16,10 +16,6 @@ import de.westnordost.streetcomplete.ktx.*
 class QuestStatisticsDao @Inject constructor(private val dbHelper: SQLiteOpenHelper) {
     private val db get() = dbHelper.writableDatabase
 
-    fun getNoteAmount(): Int {
-        return getAmount(NOTE)
-    }
-
     fun getTotalAmount(): Int {
         return db.queryOne(NAME, arrayOf("total($SUCCEEDED)")) { it.getInt(0) } ?: 0
     }
@@ -44,10 +40,6 @@ class QuestStatisticsDao @Inject constructor(private val dbHelper: SQLiteOpenHel
                 ))
             }
         }
-    }
-
-    fun addOneNote() {
-        addOne(NOTE)
     }
 
     fun addOne(questType: String) {

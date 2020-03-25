@@ -264,8 +264,6 @@ object AchievementsModule {
 
     private val linksById = links.associateBy { it.id }
 
-// TODO intro achievements / based on time...
-
     private val achievements = listOf(
 
         Achievement(
