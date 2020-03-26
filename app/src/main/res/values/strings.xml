@@ -769,7 +769,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="link_openvegemap_description">Discover vegetarian and vegan restaurants in your city</string>
     <string name="link_touch_mapper_description">Create tactile maps easily for any address</string>
     <string name="link_mapy_tactile_description">Tactile maps for the visually impaired in various scales</string>
-    <string name="link_josm_description">Fully-featured OSM editor for the desktop</string>
+    <string name="link_josm_description">Fully-featured OSM editor for the desktop. This is the power tool for regular contributors.</string>
     <string name="link_vespucci_description">Advanced OSM editor for Android</string>
     <string name="link_ideditor_description">Simple OSM editor for the browser. Optimized for the desktop or large tablets</string>
     <string name="link_umap_description">Create maps with custom data quickly and embed them in your site</string>
@@ -777,6 +777,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="link_pic4review_description">Contribute to OSM simply by looking at pictures of your city</string>
     <string name="link_wiki_description">The wiki is your starting point to everything related OpenStreetMap</string>
     <string name="link_learnosm_description">New to OpenStreetMap? This is a beginner\'s guide</string>
+    <string name="link_neis_one_description">A huge collection of statistics for OpenStreetMap contributors, like where and how you contributed, who else is around you plus leaderboards</string>
     <string name="link_welcome_mat_description">General information about OpenStreetMap and how to work with OSM as an organization</string>
     <string name="link_mapillary_description">A service and app for sharing crowdsourced street-level photos, with explicit permission to use them for contributing to OSM</string>
     <string name="link_openstreetcam_description">A service and app for sharing crowdsourced street-level photos, with explicit permission to use them for contributing to OSM</string>
@@ -792,6 +793,8 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="link_openinframap_description">A map showing power, telecoms, gas, and oil infrastructure</string>
     <string name="link_openorienteeringmap_description">Create printable maps for the orienteering sport</string>
     <string name="link_openstreetbrowser_description">A map to browse OpenStreetMap map features by category</string>
+    <string name="link_weeklyosm_description">The weekly news blog about what\'s happening in the OpenStreetMap world</string>
+    <string name="link_figuregrounder_description">Create figure-ground diagram posters of a city or neighbourhood</string>
 
     <string name="achievement_first_edit_title">First Quest Solved</string>
     <string name="achievement_first_edit_description">Welcome to the OpenStreetMap community! In your profile screen, you can see more info for each quest type you solved.</string>

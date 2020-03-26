@@ -38,6 +38,22 @@ object AchievementsModule {
             R.drawable.ic_link_learnosm,
             R.string.link_learnosm_description
         ),
+        Link( // TODO no achievement yet
+            "weeklyosm",
+            "https://weeklyosm.eu/",
+            "weeklyOSM",
+            LinkCategory.INTRO,
+            R.drawable.ic_link_weeklyosm,
+            R.string.link_weeklyosm_description
+        ),
+        Link( // TODO no achievement yet
+            "neis-one",
+            "https://resultmaps.neis-one.org/",
+            "ResultMaps",
+            LinkCategory.INTRO,
+            R.drawable.ic_link_neis_one,
+            R.string.link_neis_one_description
+        ),
 
         // TODO not sure where to put these links
         Link(
@@ -259,7 +275,15 @@ object AchievementsModule {
             LinkCategory.GOODIES,
             null,
             R.string.link_openorienteeringmap_description
-        )
+        ),
+        Link( // TODO no achievement yet
+            "figuregrounder",
+            "https://hanshack.com/figuregrounder/",
+            "Figuregrounder",
+            LinkCategory.GOODIES,
+            R.drawable.ic_link_figuregrounder,
+            R.string.link_figuregrounder_description
+            )
     )
 
     private val linksById = links.associateBy { it.id }
