@@ -10,6 +10,14 @@ object AchievementsModule {
 
     @Provides @Named("Links") fun links(): List<Link> = links
     @Provides @Named("Achievements") fun achievements(): List<Achievement> = achievements
+    @Provides @Named("QuestAliases") fun questAliases(): List<Pair<String, String>> = questAliases
+
+    private val questAliases = listOf(
+        "AddAccessibleForPedestrians"        to "AddProhibitedForPedestrians",
+        "AddWheelChairAccessPublicTransport" to "AddWheelchairAccessPublicTransport",
+        "AddWheelChairAccessToilets"         to "AddWheelchairAccessToilets",
+        "AddSidewalks"                       to "AddSidewalk"
+    )
 
     private val links = listOf(
 

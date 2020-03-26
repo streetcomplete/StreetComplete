@@ -29,6 +29,7 @@ import javax.inject.Singleton
         private val userLinksDao: UserLinksDao,
         @Named("Achievements") achievements: List<Achievement>,
         @Named("Links") links: List<Link>,
+        @Named("QuestAliases") private val questAliases: List<Pair<String, String>>,
         private val avatarCacheDir: File,
         private val statisticsDownloader: StatisticsDownloader,
         private val statisticsDao: QuestStatisticsDao,
@@ -93,7 +94,9 @@ import javax.inject.Singleton
                 val lastUpdate = lastActivityDateFormat.parse(statistics.lastUpdate)
                 // only update from server if more up-to-date than local statistics
                 if (lastUpdate.time >= userStore.lastStatisticsUpdate.time) {
-                    statisticsDao.replaceAll(statistics.amounts)
+                    val newStatistics = statistics.amounts.toMutableMap()
+                    mergeQuestAliases(newStatistics)
+                    statisticsDao.replaceAll(newStatistics)
                     userStore.daysActive = statistics.daysActive
                     userStore.lastStatisticsUpdate = lastUpdate
                     achievementGiver.updateAchievements()
@@ -141,6 +144,16 @@ import javax.inject.Singleton
     private fun onLoggedOut() {
         for (listener in listeners) {
             listener.onLoggedOut()
+        }
+    }
+
+    private fun mergeQuestAliases(map: MutableMap<String, Int>)  {
+        for ((oldName, newName) in questAliases) {
+            val count = map[oldName]
+            if (count != null) {
+                map.remove(oldName)
+                map[newName] = (map[newName] ?: 0) + count
+            }
         }
     }
 

@@ -18,6 +18,7 @@ import de.westnordost.streetcomplete.data.user.achievements.AchievementGiver;
 import de.westnordost.streetcomplete.data.user.achievements.Link;
 import de.westnordost.streetcomplete.data.user.achievements.UserAchievementsDao;
 import de.westnordost.streetcomplete.data.user.achievements.UserLinksDao;
+import kotlin.Pair;
 import oauth.signpost.OAuthConsumer;
 import oauth.signpost.OAuthProvider;
 import oauth.signpost.basic.DefaultOAuthConsumer;
@@ -72,13 +73,14 @@ import oauth.signpost.basic.DefaultOAuthProvider;
 		UserDao userDao, UserStore userStore, AchievementGiver achievementGiver,
 		OAuthStore oAuthStore, UserAchievementsDao userAchievementsDao, UserLinksDao userLinksDao,
 		@Named("Achievements") List<Achievement> achievements, @Named("Links") List<Link> links,
+		@Named("QuestAliases") List<Pair<String, String>> questAliases,
 		Context context, StatisticsDownloader statisticsDownloader,
 		QuestStatisticsDao statisticsDao, OsmConnection osmConnection
 	)
 	{
 		return new UserController(
 			userDao, oAuthStore, userStore, achievementGiver, userAchievementsDao, userLinksDao,
-			achievements, links, OsmModule.getAvatarsCacheDirectory(context), statisticsDownloader,
+			achievements, links, questAliases, OsmModule.getAvatarsCacheDirectory(context), statisticsDownloader,
 			statisticsDao, osmConnection);
 	}
 }
