@@ -6,6 +6,8 @@ import de.westnordost.streetcomplete.data.user.UserStore
 import javax.inject.Inject
 import javax.inject.Named
 
+// TODO TEST
+
 /** Grants achievements based on solved quests (or other things) and puts the links contained in
  * these in the link collection */
 class AchievementGiver @Inject constructor(
@@ -43,16 +45,18 @@ class AchievementGiver @Inject constructor(
         // look at all defined achievements
         for (achievement in achievements) {
             val currentLevel = currentAchievementLevels[achievement.id] ?: 0
-            val totalLevels = achievement.levels.size
-            // and check for the levels that haven't been granted yet, if the condition now resolves
-            for (levelIndex in currentLevel until totalLevels) {
-                val achievementLevel = achievement.levels[levelIndex]
-                if (isAchieved(achievementLevel, achievement.condition)) {
-                    val level = levelIndex + 1
-                    userAchievementsDao.put(achievement.id, level)
-                    userLinksDao.addAll(achievementLevel.links.map { it.id })
+            if (achievement.maxLevel != -1 && currentLevel >= achievement.maxLevel) continue
+
+            val achievedLevel = getAchievedLevel(achievement)
+            if (achievedLevel > currentLevel) {
+                userAchievementsDao.put(achievement.id, achievedLevel)
+
+                val unlockedLinkIds = mutableListOf<String>()
+                for (level in (currentLevel + 1)..achievedLevel) {
+                    achievement.unlockedLinks[level]?.map { it.id }?.let { unlockedLinkIds.addAll(it) }
                     newUserAchievementsDao.push(achievement.id to level)
                 }
+                if (unlockedLinkIds.isNotEmpty()) userLinksDao.addAll(unlockedLinkIds)
             }
         }
     }
@@ -62,20 +66,30 @@ class AchievementGiver @Inject constructor(
      *  existing achievement levels from one StreetComplete version to another. So, this only needs
      *  to be done once after each app update */
     fun updateAchievementLinks() {
-        val allGrantedLinks = mutableListOf<Link>()
+        val unlockedLinkIds = mutableListOf<String>()
         val currentAchievementLevels = userAchievementsDao.getAll()
         for (achievement in allAchievements) {
             val currentLevel = currentAchievementLevels[achievement.id] ?: 0
-            for (levelIndex in 0 until currentLevel) {
-                val achievementLevel = achievement.levels[levelIndex]
-                allGrantedLinks.addAll(achievementLevel.links)
+            for (level in 1..currentLevel) {
+                achievement.unlockedLinks[level]?.map { it.id }?.let { unlockedLinkIds.addAll(it) }
             }
         }
-        userLinksDao.addAll(allGrantedLinks.map { it.id })
+        if (unlockedLinkIds.isNotEmpty()) userLinksDao.addAll(unlockedLinkIds)
     }
 
-    private fun isAchieved(achievementLevel: AchievementLevel, condition: AchievementCondition): Boolean {
-        return achievementLevel.threshold <= when (condition) {
+    private fun getAchievedLevel(achievement: Achievement): Int {
+        val func = achievement.pointsNeededToAdvanceFunction
+        var level = 0
+        var threshold = 0
+        do {
+            threshold += func(level)
+            level++
+        } while (isAchieved(threshold, achievement.condition))
+        return level - 1
+    }
+
+    private fun isAchieved(threshold: Int, condition: AchievementCondition): Boolean {
+        return threshold <= when (condition) {
             is SolvedQuestsOfTypes -> questStatisticsDao.getAmount(condition.questTypes)
             is TotalSolvedQuests -> questStatisticsDao.getTotalAmount()
             is DaysActive -> userStore.daysActive

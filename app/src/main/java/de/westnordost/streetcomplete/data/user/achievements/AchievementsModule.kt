@@ -46,7 +46,7 @@ object AchievementsModule {
             R.drawable.ic_link_learnosm,
             R.string.link_learnosm_description
         ),
-        Link( // TODO no achievement yet
+        Link(
             "weeklyosm",
             "https://weeklyosm.eu/",
             "weeklyOSM",
@@ -54,7 +54,7 @@ object AchievementsModule {
             R.drawable.ic_link_weeklyosm,
             R.string.link_weeklyosm_description
         ),
-        Link( // TODO no achievement yet
+        Link(
             "neis-one",
             "https://resultmaps.neis-one.org/",
             "ResultMaps",
@@ -284,14 +284,14 @@ object AchievementsModule {
             null,
             R.string.link_openorienteeringmap_description
         ),
-        Link( // TODO no achievement yet
+        Link(
             "figuregrounder",
             "https://hanshack.com/figuregrounder/",
             "Figuregrounder",
             LinkCategory.GOODIES,
             R.drawable.ic_link_figuregrounder,
             R.string.link_figuregrounder_description
-            )
+        )
     )
 
     private val linksById = links.associateBy { it.id }
@@ -304,9 +304,9 @@ object AchievementsModule {
             R.string.achievement_first_edit_title,
             R.string.achievement_first_edit_description,
             TotalSolvedQuests,
-            listOf(
-                level(1)
-            )
+            { 1 },
+            mapOf(),
+            1
         ),
 
         Achievement(
@@ -315,15 +315,17 @@ object AchievementsModule {
             R.string.achievement_surveyor_title,
             R.string.achievement_surveyor_solved_X,
             TotalSolvedQuests,
-            listOf(
-                level(10, listOf("wiki")),
-                level(20, listOf("welcomemat")),
-                level(30, listOf("umap")),
-                level(50, listOf("learnosm")),
-                level(80, listOf("show_me_the_way")),
-                level(130, listOf("myosmatic")),
-                level(210, listOf("city_roads")),
-                level(340, listOf("osm-haiku"))
+            // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
+            { lvl -> (lvl + 1)*10 },
+            mapOf(
+                /* Achievements rewarded for general activity should first cover introduction to OSM
+                   and then most of all goodies and general (OSM) showcases */
+                1 to links("wiki"), // most important link
+                2 to links("welcomemat"),
+                4 to links("show_me_the_way"),
+                5 to links("myosmatic"),
+                6 to links("osm-haiku"),
+                8 to links("umap")
             )
         ),
 
@@ -333,10 +335,19 @@ object AchievementsModule {
             R.string.achievement_regular_title,
             R.string.achievement_regular_description,
             DaysActive,
-            listOf(
-                level(3, listOf("pic4review")),
-                level(6, listOf("ideditor")),
-                level(12, listOf("vespucci", "josm"))
+            // levels: 4, 8, 12, 16, 20, 24, 28, 32, 36, 40, ...
+            { 4 },
+            mapOf(
+                /* Achievements rewarded for regular activity should focus mostly on introducing
+                   user to the community and other editors. Introducing editors should be delayed
+                   because users should not get sidetracked too early - best first show community
+                   intro links */
+                1 to links("weeklyosm"), // newspaper first
+                2 to links("pic4review"), // mentioning it early because it is super-easy
+                3 to links("neis-one"), // who-is-around-me, leaderboards etc fits into "community intro"
+                4 to links("ideditor"),
+                5 to links("learnosm"), // learnosm mostly concerns itself with tutorials about how to use editors
+                6 to links("vespucci", "josm") // together because both are full-featured-editors for each their platform
             )
         ),
 
@@ -365,9 +376,12 @@ object AchievementsModule {
                     "AddCarWashType"
                 )
             ),
-            listOf(
-                level(100, listOf("osrm", "openrouteservice")),
-                level(200)
+            // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
+            { lvl -> (lvl + 1)*10 },
+            mapOf(
+                2 to links("city_roads"),
+                3 to links("osrm"),
+                4 to links("openrouteservice")
             )
         ),
 
@@ -382,9 +396,10 @@ object AchievementsModule {
                     "AddVegan"
                 )
             ),
-            listOf(
-                level(100, listOf("openvegemap")),
-                level(200)
+            // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
+            { lvl -> (lvl + 1)*10 },
+            mapOf(
+                1 to links("openvegemap")
             )
         ),
 
@@ -410,10 +425,11 @@ object AchievementsModule {
                     "AddBusStopShelter"
                 )
             ),
-            listOf(
-                // TODO or own achievement for public transport?
-                level(100, listOf("öpnvkarte")),
-                level(200, listOf("openorienteeringmap"))
+            // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
+            { lvl -> (lvl + 1)*10 },
+            mapOf(
+                1 to links("öpnvkarte"),
+                2 to links("openorienteeringmap")
             )
         ),
 
@@ -433,9 +449,11 @@ object AchievementsModule {
                     "AddRoofShape"
                 )
             ),
-            listOf(
-                level(100, listOf("osm_buildings")),
-                level(200)
+            // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
+            { lvl -> (lvl + 1)*10 },
+            mapOf(
+                1 to links("osm_buildings"),
+                2 to links("figuregrounder")
             )
         ),
 
@@ -452,11 +470,12 @@ object AchievementsModule {
                     "AddPostboxCollectionTimes"
                 )
             ),
-            listOf(
-                level(30),
+            // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
+            { lvl -> (lvl + 1)*10 },
+            mapOf(
                 // Nominatim should not appear too early because it is a bit technical, the functionality
                 // itself is often integrated into other services
-                level(100, listOf("nominatim"))
+                4 to links("nominatim")
             )
         ),
 
@@ -472,9 +491,10 @@ object AchievementsModule {
                     "AddTactilePavingBusStop"
                 )
             ),
-            listOf(
-                level(30),
-                level(100, listOf("touch_mapper", "mapy_tactile"))
+            // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
+            { lvl -> (lvl + 1)*10 },
+            mapOf(
+                1 to links("touch_mapper", "mapy_tactile")
             )
         ),
 
@@ -494,9 +514,11 @@ object AchievementsModule {
                     "AddPathSurface"
                 )
             ),
-            listOf(
-                level(30, listOf("wheelmap")),
-                level(50, listOf("openrouteservice-wheelchair"))
+            // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
+            { lvl -> (lvl + 1)*10 },
+            mapOf(
+                1 to links("wheelmap"),
+                2 to links("openrouteservice-wheelchair")
             )
         ),
 
@@ -516,15 +538,17 @@ object AchievementsModule {
                     "AddPathSurface"
                 )
             ),
-            listOf(
-                level(30, listOf("cyclosm")),
-                level(50, listOf("brouter"))
+            // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
+            { lvl -> (lvl + 1)*10 },
+            mapOf(
+                1 to links("cyclosm"),
+                2 to links("brouter")
             )
         )
     )
 
-    private fun level(threshold: Int, linksKeys: List<String> = emptyList()) =
-        AchievementLevel(threshold, linksKeys.map { linksById.getValue(it) })
+    private fun links(vararg linksKeys: String = emptyArray()): List<Link> =
+        linksKeys.map { linksById.getValue(it) }
 
     // Quests not mentioned in any achievements:
     // AddFireHydrantType AddGeneralFee AddSelfServiceLaundry AddReligionToWaysideShrine AddToiletsFee

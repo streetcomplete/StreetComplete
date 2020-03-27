@@ -3,16 +3,26 @@ package de.westnordost.streetcomplete.data.user.achievements
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 
+//TODO TEST
+
 data class Achievement(
     val id: String,
     @DrawableRes val icon: Int,
     @StringRes val title: Int,
     @StringRes val description: Int?,
     val condition: AchievementCondition,
-    val levels: List<AchievementLevel>
-)
-
-data class AchievementLevel(val threshold: Int, val links: List<Link>)
+    val pointsNeededToAdvanceFunction: (Int) -> Int,
+    val unlockedLinks: Map<Int, List<Link>>,
+    val maxLevel: Int = -1
+) {
+    fun getPointThreshold(level: Int): Int {
+        var threshold = 0
+        for(i in 0 until level) {
+            threshold += pointsNeededToAdvanceFunction(level)
+        }
+        return threshold
+    }
+}
 
 sealed class AchievementCondition
 
