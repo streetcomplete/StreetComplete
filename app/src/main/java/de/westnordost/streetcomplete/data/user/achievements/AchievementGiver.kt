@@ -6,8 +6,6 @@ import de.westnordost.streetcomplete.data.user.UserStore
 import javax.inject.Inject
 import javax.inject.Named
 
-// TODO TEST
-
 /** Grants achievements based on solved quests (or other things) and puts the links contained in
  * these in the link collection */
 class AchievementGiver @Inject constructor(
@@ -84,6 +82,7 @@ class AchievementGiver @Inject constructor(
         do {
             threshold += func(level)
             level++
+            if (achievement.maxLevel != -1 && level > achievement.maxLevel) break
         } while (isAchieved(threshold, achievement.condition))
         return level - 1
     }

@@ -3,8 +3,6 @@ package de.westnordost.streetcomplete.data.user.achievements
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 
-//TODO TEST
-
 data class Achievement(
     val id: String,
     @DrawableRes val icon: Int,
