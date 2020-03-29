@@ -29,6 +29,7 @@ class AboutActivity : FragmentContainerActivity(), AboutFragment.Listener
         pushMainFragment(ShowHtmlFragment.create(
             getString(R.string.privacy_html) +
             getString(R.string.privacy_html_tileserver) +
+            getString(R.string.privacy_html_statistics) +
             getString(R.string.privacy_html_third_party_quest_sources) +
             getString(R.string.privacy_html_image_upload2),
             R.string.about_title_privacy_statement

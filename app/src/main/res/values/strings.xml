@@ -181,6 +181,8 @@ However, before uploading your changes, the app checks with a &lt;a href=\"https
     <string name="privacy_html_tileserver">"&lt;p&gt;To display the map, vector tiles are retrieved from &lt;a href=\"https://tiles.map-data.de\"&gt;map-data.de&lt;/a&gt;. The service logs tile requests for anonymous statistics and for detecting issues but deletes the logs after a few days.&lt;/p&gt;"</string>
     <string name="privacy_html_image_upload2">&lt;p&gt;Photos you attach to a note are uploaded to my server and deleted some days after that note has been resolved. Their meta-data is stripped before upload.&lt;/p&gt;</string>
     <string name="privacy_html_third_party_quest_sources">&lt;p&gt;For some quests, some additional data from third parties is downloaded. In particular, the oneway quest queries an API, also hosted on westnordost.de, about likely candidates for oneways.&lt;/p&gt;</string>
+    <string name="privacy_html_statistics">&lt;p&gt;The data shown in your profile is aggregated from your publicly available contribution history to OpenStreetMap and then hosted on my server.&lt;/p&gt;</string>
+
     <string name="autosync_on">"On"</string>
     <string name="autosync_only_on_wifi">"Only on Wi-Fi"</string>
     <string name="autosync_off">"Off"</string>
