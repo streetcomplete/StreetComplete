@@ -40,7 +40,7 @@ class AchievementGiverTest {
         on(userStore.daysActive).thenReturn(1)
         allAchievements.addAll(listOf(achievement("daysActive", DaysActive)))
 
-        achievementGiver.updateAchievements()
+        achievementGiver.updateAllAchievements()
 
         verify(userAchievementsDao).put("daysActive", 1)
         verify(newUserAchievementsDao).push("daysActive" to 1)
@@ -50,7 +50,7 @@ class AchievementGiverTest {
         on(questStatisticsDao.getTotalAmount()).thenReturn(1)
         allAchievements.addAll(listOf(achievement("allQuests", TotalSolvedQuests)))
 
-        achievementGiver.updateAchievements()
+        achievementGiver.updateAllAchievements()
         verify(userAchievementsDao).put("allQuests", 1)
         verify(newUserAchievementsDao).push("allQuests" to 1)
     }
@@ -60,7 +60,7 @@ class AchievementGiverTest {
 
         allAchievements.addAll(listOf(achievement("questsAbc", SolvedQuestsOfTypes(listOf("a","b")))))
 
-        achievementGiver.updateAchievements()
+        achievementGiver.updateAllAchievements()
 
         verify(userAchievementsDao).put("questsAbc", 1)
         verify(newUserAchievementsDao).push("questsAbc" to 1)
@@ -80,7 +80,7 @@ class AchievementGiverTest {
                 5 to links("e","f") // 5 has two links
             ))))
 
-        achievementGiver.updateAchievements()
+        achievementGiver.updateAllAchievements()
 
         verify(userAchievementsDao).put("allQuests", 5)
         verify(newUserAchievementsDao).push("allQuests" to 3)
@@ -115,7 +115,7 @@ class AchievementGiverTest {
             maxLevel = 5
         )))
 
-        achievementGiver.updateAchievements()
+        achievementGiver.updateAllAchievements()
 
         verify(userAchievementsDao).put("daysActive", 5)
         verify(newUserAchievementsDao).push("daysActive" to 1)

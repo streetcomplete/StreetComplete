@@ -99,7 +99,9 @@ import javax.inject.Singleton
                     statisticsDao.replaceAll(newStatistics)
                     userStore.daysActive = statistics.daysActive
                     userStore.lastStatisticsUpdate = lastUpdate
-                    achievementGiver.updateAchievements()
+                    // when syncing statistics from server, any granted achievements should be
+                    // granted silently (without notification) because no user action was involved
+                    achievementGiver.updateAllAchievements(silent = true)
                     achievementGiver.updateAchievementLinks()
                 } else {
                     Log.i(TAG, "Statistics were not up-to-date")

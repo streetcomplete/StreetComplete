@@ -18,8 +18,8 @@ class AchievementGiver @Inject constructor(
 ) {
 
     /** Look at and grant all achievements */
-    fun updateAchievements() {
-        return updateAchievements(allAchievements)
+    fun updateAllAchievements(silent: Boolean = false) {
+        return updateAchievements(allAchievements, silent)
     }
 
     /** Look at and grant only the achievements that have anything to do with the given quest type */
@@ -38,7 +38,7 @@ class AchievementGiver @Inject constructor(
         return updateAchievements(allAchievements.filter { it.condition is DaysActive })
     }
 
-    private fun updateAchievements(achievements: List<Achievement>) {
+    private fun updateAchievements(achievements: List<Achievement>, silent: Boolean = false) {
         val currentAchievementLevels = userAchievementsDao.getAll()
         // look at all defined achievements
         for (achievement in achievements) {
@@ -52,7 +52,7 @@ class AchievementGiver @Inject constructor(
                 val unlockedLinkIds = mutableListOf<String>()
                 for (level in (currentLevel + 1)..achievedLevel) {
                     achievement.unlockedLinks[level]?.map { it.id }?.let { unlockedLinkIds.addAll(it) }
-                    newUserAchievementsDao.push(achievement.id to level)
+                    if (!silent) newUserAchievementsDao.push(achievement.id to level)
                 }
                 if (unlockedLinkIds.isNotEmpty()) userLinksDao.addAll(unlockedLinkIds)
             }

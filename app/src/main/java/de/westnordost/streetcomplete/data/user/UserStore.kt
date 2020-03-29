@@ -5,7 +5,6 @@ import androidx.core.content.edit
 import de.westnordost.osmapi.common.Iso8601CompatibleDateFormat
 import de.westnordost.osmapi.user.UserDetails
 import de.westnordost.streetcomplete.Prefs
-import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.CopyOnWriteArrayList
 import javax.inject.Inject
@@ -31,21 +30,19 @@ import javax.inject.Singleton
         get() = prefs.getInt(Prefs.USER_DAYS_ACTIVE, 0)
         set(value) {
             prefs.edit(true) { putInt(Prefs.USER_DAYS_ACTIVE, value) }
-            onUserDataUpdated()
         }
 
     var lastStatisticsUpdate: Date
     get() = prefs.getString(Prefs.USER_LAST_DATE_ACTIVE, null)?.let { dateFormat.parse(it) } ?: Date(0)
     set(value) {
         prefs.edit(true) { putString(Prefs.USER_LAST_DATE_ACTIVE, dateFormat.format(value)) }
-        onUserDataUpdated()
     }
 
     var unreadMessagesCount: Int
     get() = prefs.getInt(Prefs.OSM_UNREAD_MESSAGES, 0)
     set(value) {
         prefs.edit(true) { putInt(Prefs.OSM_UNREAD_MESSAGES, value) }
-        onUserDataUpdated()
+        onUserDetailsUpdated()
     }
 
     fun setDetails(userDetails: UserDetails) {
@@ -54,7 +51,7 @@ import javax.inject.Singleton
             putString(Prefs.OSM_USER_NAME, userDetails.displayName)
             putInt(Prefs.OSM_UNREAD_MESSAGES, userDetails.unreadMessagesCount)
         }
-        onUserDataUpdated()
+        onUserDetailsUpdated()
     }
 
     fun clear() {
@@ -64,7 +61,6 @@ import javax.inject.Singleton
             remove(Prefs.OSM_UNREAD_MESSAGES)
             remove(Prefs.USER_DAYS_ACTIVE)
         }
-
     }
 
     fun addListener(listener: UpdateListener) {
@@ -74,10 +70,9 @@ import javax.inject.Singleton
         listeners.remove(listener)
     }
 
-    private fun onUserDataUpdated() {
+    private fun onUserDetailsUpdated() {
         for (listener in listeners) {
             listener.onUserDataUpdated()
         }
     }
 }
-
