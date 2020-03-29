@@ -67,6 +67,8 @@ open class MapFragment : Fragment(),
         fun onMapDidChange(position: LatLon, rotation: Float, tilt: Float, zoom: Float, animated: Boolean)
         /** Called when the user begins to pan the map */
         fun onPanBegin()
+        /** Called when the user long-presses the map */
+        fun onLongPress(x: Float, y: Float)
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
@@ -253,7 +255,9 @@ open class MapFragment : Fragment(),
 
     override fun onDoubleTap(x: Float, y: Float): Boolean { return false }
 
-    override fun onLongPress(x: Float, y: Float) { }
+    override fun onLongPress(x: Float, y: Float) {
+        listener?.onLongPress(x, y)
+    }
 
     /* -------------------------------- Save and Restore State ---------------------------------- */
 

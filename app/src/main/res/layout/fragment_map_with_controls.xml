@@ -103,16 +103,12 @@
             android:clipToPadding="false"
             tools:ignore="RtlHardcoded,RtlSymmetry">
 
-            <ImageButton
-                android:id="@+id/createNoteButton"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:scaleType="center"
-                style="@style/RoundWhiteButton"
-                android:src="@drawable/ic_create_note_black_24dp"
-                android:contentDescription="@string/map_btn_create_note"/>
-
         </LinearLayout>
+
+        <View
+            android:id="@+id/contextMenuView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"/>
 
     </RelativeLayout>
 

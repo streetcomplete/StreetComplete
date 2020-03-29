@@ -20,41 +20,44 @@ import android.view.ViewGroup
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 import androidx.annotation.AnyThread
 import androidx.annotation.UiThread
+import androidx.appcompat.widget.PopupMenu
 import androidx.core.graphics.toPointF
 import androidx.core.graphics.toRectF
 import androidx.core.view.doOnLayout
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE
 import androidx.fragment.app.FragmentTransaction
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.LatLon
-import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.osmapi.map.data.Way
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.quest.Quest
-import de.westnordost.streetcomplete.data.quest.QuestController
-import de.westnordost.streetcomplete.data.quest.QuestGroup
 import de.westnordost.streetcomplete.data.VisibleQuestListener
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuest
 import de.westnordost.streetcomplete.data.osm.splitway.SplitPolylineAtPosition
+import de.westnordost.streetcomplete.data.quest.Quest
+import de.westnordost.streetcomplete.data.quest.QuestController
+import de.westnordost.streetcomplete.data.quest.QuestGroup
 import de.westnordost.streetcomplete.ktx.childFragmentManagerOrNull
-import de.westnordost.streetcomplete.quests.CreateNoteFragment
 import de.westnordost.streetcomplete.ktx.getLocationInWindow
 import de.westnordost.streetcomplete.ktx.toast
-import de.westnordost.streetcomplete.location.*
+import de.westnordost.streetcomplete.location.FineLocationManager
+import de.westnordost.streetcomplete.location.LocationRequestFragment
+import de.westnordost.streetcomplete.location.LocationState
+import de.westnordost.streetcomplete.location.LocationUtil
 import de.westnordost.streetcomplete.map.tangram.CameraPosition
 import de.westnordost.streetcomplete.quests.*
+import de.westnordost.streetcomplete.util.buildGeoUri
 import kotlinx.android.synthetic.main.fragment_map_with_controls.*
 import javax.inject.Inject
-import kotlin.math.max
 import kotlin.math.PI
+import kotlin.math.max
 
 /** Contains the quests map and the controls for it. */
 class MainFragment : Fragment(R.layout.fragment_map_with_controls),
@@ -121,11 +124,6 @@ class MainFragment : Fragment(R.layout.fragment_map_with_controls),
         gpsTrackingButton.setOnClickListener { onClickTrackingButton() }
         zoomInButton.setOnClickListener { onClickZoomIn() }
         zoomOutButton.setOnClickListener { onClickZoomOut() }
-        createNoteButton.setOnClickListener { v ->
-            v.isEnabled = false
-            mainHandler.postDelayed({ v.isEnabled = true }, 200)
-            onClickCreateNote()
-        }
 
         isShowingControls = savedInstanceState?.getBoolean(SHOW_CONTROLS) ?: true
 
@@ -167,11 +165,11 @@ class MainFragment : Fragment(R.layout.fragment_map_with_controls),
     override fun onStart() {
         super.onStart()
         questController.addListener(this)
-        context!!.registerReceiver(
+        requireContext().registerReceiver(
             locationAvailabilityReceiver,
             LocationUtil.createLocationAvailabilityIntentFilter()
         )
-        LocalBroadcastManager.getInstance(context!!).registerReceiver(
+        LocalBroadcastManager.getInstance(requireContext()).registerReceiver(
             locationRequestFinishedReceiver,
             IntentFilter(LocationRequestFragment.ACTION_FINISHED)
         )
@@ -186,8 +184,8 @@ class MainFragment : Fragment(R.layout.fragment_map_with_controls),
     override fun onStop() {
         super.onStop()
         questController.removeListener(this)
-        context!!.unregisterReceiver(locationAvailabilityReceiver)
-        LocalBroadcastManager.getInstance(context!!).unregisterReceiver(locationRequestFinishedReceiver)
+        requireContext().unregisterReceiver(locationAvailabilityReceiver)
+        LocalBroadcastManager.getInstance(requireContext()).unregisterReceiver(locationRequestFinishedReceiver)
         locationManager.removeUpdates()
     }
 
@@ -216,6 +214,25 @@ class MainFragment : Fragment(R.layout.fragment_map_with_controls),
     }
 
     override fun onMapDidChange(position: LatLon, rotation: Float, tilt: Float, zoom: Float, animated: Boolean) { }
+
+    override fun onLongPress(x: Float, y: Float) {
+        val point = PointF(x, y)
+        val position = mapFragment?.getPositionAt(point) ?: return
+
+        contextMenuView.translationX = x
+        contextMenuView.translationY = y
+
+        val popupMenu = PopupMenu(requireContext(), contextMenuView)
+        popupMenu.inflate(R.menu.menu_map_context)
+        popupMenu.setOnMenuItemClickListener { item ->
+            when(item.itemId) {
+                R.id.action_create_note -> onClickCreateNote(position)
+                R.id.action_open_location -> onClickOpenLocationInOtherApp(position)
+            }
+            true
+        }
+        popupMenu.show()
+    }
 
     /* ------------------------------- QuestsMapFragment.Listener ------------------------------- */
 
@@ -386,15 +403,29 @@ class MainFragment : Fragment(R.layout.fragment_map_with_controls),
 
     /* --------------------------------- Map control buttons------------------------------------- */
 
-    private fun onClickCreateNote() {
+    private fun onClickOpenLocationInOtherApp(pos: LatLon) {
+        val ctx = context ?: return
+
+        val zoom = mapFragment?.cameraPosition?.zoom
+        val uri = buildGeoUri(pos.latitude, pos.longitude, zoom)
+
+        val intent = Intent(Intent.ACTION_VIEW, uri)
+        if (intent.resolveActivity(ctx.packageManager) != null) {
+            startActivity(intent)
+        } else {
+            ctx.toast(R.string.map_application_missing, Toast.LENGTH_LONG)
+        }
+    }
+
+    private fun onClickCreateNote(pos: LatLon) {
         if (mapFragment?.cameraPosition?.zoom ?: 0f < ApplicationConstants.NOTE_MIN_ZOOM) {
             context?.toast(R.string.create_new_note_unprecise)
             return
         }
 
         val f = bottomSheetFragment
-        if (f is IsCloseableBottomSheet) f.onClickClose { composeNote() }
-        else composeNote()
+        if (f is IsCloseableBottomSheet) f.onClickClose { composeNote(pos) }
+        else composeNote(pos)
     }
 
     private fun onClickZoomOut() {
@@ -445,24 +476,14 @@ class MainFragment : Fragment(R.layout.fragment_map_with_controls),
         }
     }
 
-    private fun composeNote() {
+    private fun composeNote(pos: LatLon) {
         val mapFragment = mapFragment ?: return
         mapFragment.show3DBuildings = false
-        focusOnCurrentLocationIfInView()
+        val offsetPos = mapFragment.getPositionThatCentersPosition(pos, mapOffsetWithOpenBottomSheet)
+        mapFragment.updateCameraPosition { position = offsetPos }
+
         freezeMap()
         showInBottomSheet(CreateNoteFragment())
-    }
-
-    private fun focusOnCurrentLocationIfInView() {
-        val mapFragment = mapFragment ?: return
-        val location = mapFragment.displayedLocation
-        if (location != null) {
-            val displayedPosition = OsmLatLon(location.latitude, location.longitude)
-            if (mapFragment.isPositionInView(displayedPosition)) {
-                val offsetPos = mapFragment.getPositionThatCentersPosition(displayedPosition, mapOffsetWithOpenBottomSheet)
-                mapFragment.updateCameraPosition { position = offsetPos }
-            }
-        }
     }
 
     private fun setIsFollowingPosition(follow: Boolean) {

@@ -517,20 +517,6 @@ public class MainActivity extends AppCompatActivity implements
 				if(isConnected()) downloadDisplayedArea();
 				else              Toast.makeText(this, R.string.offline, Toast.LENGTH_SHORT).show();
 				return true;
-			case R.id.action_open_location:
-				CameraPosition camera = mapFragment.getCameraPosition();
-				if (camera == null) return true;
-
-				LatLon position = camera.getPosition();
-				float zoom = camera.getZoom();
-				Uri uri = GeoUriKt.buildGeoUri(position.getLatitude(), position.getLongitude(), zoom);
-				intent = new Intent(Intent.ACTION_VIEW, uri);
-				if (intent.resolveActivity(getPackageManager()) != null) {
-					startActivity(intent);
-				} else {
-					Toast.makeText(this, R.string.map_application_missing, Toast.LENGTH_LONG).show();
-				}
-				return true;
 			case R.id.action_user:
 				startActivity(new Intent(this, UserActivity.class));
 				return true;
