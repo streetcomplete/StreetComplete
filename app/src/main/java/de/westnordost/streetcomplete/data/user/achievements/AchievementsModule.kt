@@ -118,7 +118,7 @@ object AchievementsModule {
 
         /* ---------------------------------------- Maps -----------------------------------------*/
 
-        Link( // TODO no achievement yet
+        Link(
             "openstreetbrowser",
             "https://openstreetbrowser.org",
             "OpenStreetBrowser",
@@ -322,9 +322,13 @@ object AchievementsModule {
                    and then most of all goodies and general (OSM) showcases */
                 1 to links("wiki"), // most important link
                 2 to links("welcomemat"),
+                3 to links("openstreetbrowser"),
                 4 to links("show_me_the_way"),
+
                 5 to links("myosmatic"),
+
                 6 to links("osm-haiku"),
+
                 8 to links("umap")
             )
         ),
@@ -343,7 +347,7 @@ object AchievementsModule {
                    because users should not get sidetracked too early - best first show community
                    intro links */
                 1 to links("weeklyosm"), // newspaper first
-                2 to links("pic4review"), // mentioning it early because it is super-easy
+                2 to links("pic4review"), // mentioning it early because it is very easy to use
                 3 to links("neis-one"), // who-is-around-me, leaderboards etc fits into "community intro"
                 4 to links("ideditor"),
                 5 to links("learnosm"), // learnosm mostly concerns itself with tutorials about how to use editors
@@ -379,9 +383,11 @@ object AchievementsModule {
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
             { lvl -> (lvl + 1)*10 },
             mapOf(
-                2 to links("city_roads"),
-                3 to links("osrm"),
-                4 to links("openrouteservice")
+                2 to links("city_roads"), // put it here because it shows roads
+
+
+                5 to links("osrm"), // routing engines are not that interesting for end users
+                6 to links("openrouteservice")
             )
         ),
 
@@ -475,7 +481,7 @@ object AchievementsModule {
             mapOf(
                 // Nominatim should not appear too early because it is a bit technical, the functionality
                 // itself is often integrated into other services
-                4 to links("nominatim")
+                3 to links("nominatim")
             )
         ),
 
@@ -494,7 +500,8 @@ object AchievementsModule {
             // levels: 10, 30, 60, 100, 150, 210, 280, 360, 450, 550, 660, 780, 910, 1050, ...
             { lvl -> (lvl + 1)*10 },
             mapOf(
-                1 to links("touch_mapper", "mapy_tactile")
+                1 to links("touch_mapper"),
+                2 to links("mapy_tactile")
             )
         ),
 
