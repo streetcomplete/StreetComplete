@@ -57,13 +57,9 @@ import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.osmapi.map.data.OsmLatLon;
 import de.westnordost.osmfeatures.FeatureDictionary;
-import de.westnordost.streetcomplete.about.WhatsNewDialog;
 import de.westnordost.streetcomplete.controls.MainMenuDialog;
-import de.westnordost.streetcomplete.data.notifications.NewAchievementNotification;
-import de.westnordost.streetcomplete.data.notifications.NewVersionNotification;
 import de.westnordost.streetcomplete.data.notifications.Notification;
 import de.westnordost.streetcomplete.data.notifications.NotificationsDao;
-import de.westnordost.streetcomplete.data.notifications.OsmUnreadMessagesNotification;
 import de.westnordost.streetcomplete.data.quest.Quest;
 import de.westnordost.streetcomplete.data.quest.QuestAutoSyncer;
 import de.westnordost.streetcomplete.data.quest.QuestController;
@@ -78,14 +74,13 @@ import de.westnordost.streetcomplete.location.LocationRequestFragment;
 import de.westnordost.streetcomplete.location.LocationState;
 import de.westnordost.streetcomplete.location.LocationUtil;
 import de.westnordost.streetcomplete.map.MainFragment;
-import de.westnordost.streetcomplete.notifications.OsmUnreadMessagesFragment;
+import de.westnordost.streetcomplete.notifications.NotificationsContainerFragment;
 import de.westnordost.streetcomplete.quests.QuestUtilKt;
 import de.westnordost.streetcomplete.sound.SoundFx;
 import de.westnordost.streetcomplete.statistics.AnswersCounter;
 import de.westnordost.streetcomplete.map.tangram.CameraPosition;
 import de.westnordost.streetcomplete.tools.CrashReportExceptionHandler;
 import de.westnordost.streetcomplete.tutorial.TutorialFragment;
-import de.westnordost.streetcomplete.user.AchievementInfoFragment;
 import de.westnordost.streetcomplete.user.UserActivity;
 import de.westnordost.streetcomplete.util.DpUtil;
 import de.westnordost.streetcomplete.util.GeoLocation;
@@ -269,24 +264,12 @@ public class MainActivity extends AppCompatActivity implements
 		notificationsContainer.setOnClickListener(view ->
 		{
 			Notification notification = notificationsDao.popNextNotification();
-			if (notification != null) {
-				if (notification instanceof OsmUnreadMessagesNotification) {
-					int unreadMessages = ((OsmUnreadMessagesNotification) notification).getUnreadMessages();
-					OsmUnreadMessagesFragment.Companion.create(unreadMessages).show(getSupportFragmentManager(), null);
-				} else if(notification instanceof NewVersionNotification) {
-					String sinceVersion = ((NewVersionNotification) notification).getSinceVersion();
-					new WhatsNewDialog(this, sinceVersion).show();
-				} else if(notification instanceof NewAchievementNotification) {
-					NewAchievementNotification achievementNotification = ((NewAchievementNotification) notification);
-					Fragment f = getSupportFragmentManager().findFragmentById(R.id.achievement_info_fragment);
-					((AchievementInfoFragment) f).showNew(
-							achievementNotification.getAchievement(),
-							achievementNotification.getLevel()
-					);
-				}
+			if (notification != null)
+			{
+				Fragment f = getSupportFragmentManager().findFragmentById(R.id.notifications_container_fragment);
+				((NotificationsContainerFragment) f).showNotification(notification);
 			}
 		});
-
 
 		downloadProgressBar = findViewById(R.id.download_progress);
 		downloadProgressBar.setMax(1000);

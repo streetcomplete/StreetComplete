@@ -160,13 +160,6 @@
 
     </LinearLayout>
 
-    <fragment
-        android:id="@+id/achievement_info_fragment"
-        android:name="de.westnordost.streetcomplete.user.AchievementInfoFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:visibility="gone"/>
-
     <ImageButton
         android:id="@+id/mainMenuButton"
         android:layout_width="@dimen/map_button_size"
@@ -201,5 +194,12 @@
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
+
+    <fragment
+        android:id="@+id/notifications_container_fragment"
+        android:name="de.westnordost.streetcomplete.notifications.NotificationsContainerFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:visibility="gone"/>
 
  </RelativeLayout >
