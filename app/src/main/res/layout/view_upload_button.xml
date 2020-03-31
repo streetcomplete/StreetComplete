@@ -2,10 +2,7 @@
 <merge
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="@dimen/map_button_size"
-    android:layout_height="@dimen/map_button_size"
-    tools:parentTag="android.widget.RelativeLayout"
-    style="@style/RoundWhiteButton">
+    tools:parentTag="android.widget.RelativeLayout">
 
     <ProgressBar
         android:id="@+id/progressView"

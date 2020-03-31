@@ -1,14 +1,12 @@
 package de.westnordost.streetcomplete.statistics;
 
-import android.annotation.SuppressLint;
 import android.os.AsyncTask;
 import android.view.View;
-import android.view.animation.AccelerateDecelerateInterpolator;
-import android.view.animation.DecelerateInterpolator;
-import android.widget.TextView;
 
 import javax.inject.Inject;
 
+import de.westnordost.streetcomplete.controls.AnswersCounterView;
+import de.westnordost.streetcomplete.controls.UploadButton;
 import de.westnordost.streetcomplete.data.quest.UnsyncedChangesDao;
 import de.westnordost.streetcomplete.data.user.QuestStatisticsDao;
 
@@ -20,11 +18,9 @@ public class AnswersCounter
 	private int uploaded;
 	private int unsynced;
 
-	private TextView uploadedText;
-	private TextView unsyncedText;
-	private View unsyncedContainer;
+	private UploadButton uploadButton;
+	private AnswersCounterView answersCounterView;
 
-	private boolean isFirstUpdateDone;
 	private boolean isAutosync;
 
 	@Inject public AnswersCounter(UnsyncedChangesDao unsyncedChangesDB,
@@ -34,33 +30,31 @@ public class AnswersCounter
 		this.questStatisticsDB = questStatisticsDB;
 	}
 
-	public void setViews(TextView uploadedAnswersTextView, TextView unsyncedAnswersTextView,
-						 View unsyncedContainer)
+	public void setViews(UploadButton uploadButton, AnswersCounterView answersCounterView)
 	{
-		this.uploadedText = uploadedAnswersTextView;
-		this.unsyncedText = unsyncedAnswersTextView;
-		this.unsyncedContainer = unsyncedContainer;
+		this.uploadButton = uploadButton;
+		this.answersCounterView = answersCounterView;
 	}
 
 	public void setAutosync(boolean autosync)
 	{
 		isAutosync = autosync;
-		unsyncedContainer.setVisibility(autosync ? View.GONE : View.VISIBLE);
+		uploadButton.setVisibility(autosync ? View.INVISIBLE : View.VISIBLE);
 		updateTexts();
 	}
 
 	public View getAnswerTarget()
 	{
-		return isAutosync ? uploadedText : unsyncedText;
+		return isAutosync ? answersCounterView : uploadButton;
 	}
 
-	public void addOneUnsynced(String source)
+	public void addOneUnsynced()
 	{
 		unsynced++;
 		updateTexts();
 	}
 
-	public void subtractOneUnsynced(String source)
+	public void subtractOneUnsynced()
 	{
 		unsynced--;
 		updateTexts();
@@ -79,15 +73,13 @@ public class AnswersCounter
 		updateTexts();
 	}
 
+	// should instead query himself...
+	@Deprecated
 	public Integer waitingForUpload(){
 		return unsynced;
 	}
 
-	public Integer uploaded(){
-		return unsynced;
-	}
-
-	@SuppressLint("StaticFieldLeak") public void update()
+	public void update()
 	{
 		new AsyncTask<Void, Void, Void>()
 		{
@@ -101,7 +93,6 @@ public class AnswersCounter
 			@Override protected void onPostExecute(Void result)
 			{
 				updateTexts();
-				isFirstUpdateDone = true;
 			}
 		}.execute();
 	}
@@ -111,42 +102,12 @@ public class AnswersCounter
 	{
 		if(isAutosync)
 		{
-			updateText(uploadedText, uploaded + unsynced);
+			answersCounterView.setUploadedCount(uploaded + unsynced);
 		}
 		else
 		{
-			updateText(uploadedText, uploaded);
-			updateText(unsyncedText, unsynced);
-			if(unsynced > 0) unsyncedText.setVisibility(View.VISIBLE);
-			else unsyncedText.setVisibility(View.GONE);
+			answersCounterView.setUploadedCount(uploaded);
+			uploadButton.setUploadableCount(unsynced);
 		}
-	}
-
-	private void updateText(TextView view, int value)
-	{
-		if(isFirstUpdateDone) try
-		{
-			int previous = Integer.parseInt(view.getText().toString());
-			if(previous < value) animateChange(view, 1.6f);
-			// not important to highlight that and looks better IMO if only the positive changes are animated
-			//else if(previous > value) animateChange(view, 0.6f);
-		}
-		catch (NumberFormatException ignore) { }
-		view.setText(String.valueOf(value));
-	}
-
-	private void animateChange(View view, float scale)
-	{
-		view.animate()
-			.scaleX(scale).scaleY(scale)
-			.setInterpolator(new DecelerateInterpolator(2f))
-			.setDuration(100)
-			.withEndAction(() ->
-			{
-				view.animate()
-					.scaleX(1).scaleY(1)
-					.setInterpolator(new AccelerateDecelerateInterpolator())
-					.setDuration(100);
-			});
 	}
 }

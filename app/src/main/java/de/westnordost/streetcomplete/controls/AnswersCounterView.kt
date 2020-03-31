@@ -3,6 +3,8 @@ package de.westnordost.streetcomplete.controls
 import android.content.Context
 import android.util.AttributeSet
 import android.view.View
+import android.view.animation.AccelerateDecelerateInterpolator
+import android.view.animation.DecelerateInterpolator
 import android.widget.RelativeLayout
 import de.westnordost.streetcomplete.R
 import kotlinx.android.synthetic.main.view_answers_counter.view.*
@@ -15,6 +17,9 @@ class AnswersCounterView @JvmOverloads constructor(
 
     var uploadedCount: Int = 0
         set(value) {
+            if (value > field) {
+                animateChange()
+            }
             field = value
             textView.text = value.toString()
         }
@@ -27,5 +32,17 @@ class AnswersCounterView @JvmOverloads constructor(
 
     init {
         inflate(context, R.layout.view_answers_counter, this)
+    }
+
+    private fun animateChange() {
+        textView.animate()
+            .scaleX(1.6f).scaleY(1.6f)
+            .setInterpolator(DecelerateInterpolator(2f))
+            .setDuration(100)
+            .withEndAction {
+                textView.animate()
+                    .scaleX(1f).scaleY(1f)
+                    .setInterpolator(AccelerateDecelerateInterpolator()).duration = 100
+            }
     }
 }

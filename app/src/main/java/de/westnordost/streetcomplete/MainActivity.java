@@ -57,8 +57,10 @@ import de.westnordost.osmapi.map.data.Element;
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.osmapi.map.data.OsmLatLon;
 import de.westnordost.osmfeatures.FeatureDictionary;
+import de.westnordost.streetcomplete.controls.AnswersCounterView;
 import de.westnordost.streetcomplete.controls.MainMenuDialog;
 import de.westnordost.streetcomplete.controls.NotificationButton;
+import de.westnordost.streetcomplete.controls.UploadButton;
 import de.westnordost.streetcomplete.data.notifications.Notification;
 import de.westnordost.streetcomplete.data.notifications.NotificationsDao;
 import de.westnordost.streetcomplete.data.quest.Quest;
@@ -131,12 +133,13 @@ public class MainActivity extends AppCompatActivity implements
 	private MainFragment mapFragment;
 
 	private ProgressBar downloadProgressBar;
-	private ProgressBar uploadProgressBar;
 
 	private View undoButton;
-	private View unsyncedChangesContainer;
-
+	private UploadButton uploadButton;
+	private AnswersCounterView answersCounterView;
 	private NotificationButton notificationButton;
+
+	private boolean isAutosync = false;
 
 	private CoroutineScope coroutineScope = CoroutineScopeKt.CoroutineScope(Dispatchers.getMain());
 
@@ -243,11 +246,10 @@ public class MainActivity extends AppCompatActivity implements
 			new MainMenuDialog(this).show();
 		});
 
-		TextView uploadedAnswersView = findViewById(R.id.uploadedAnswersCounter);
-		TextView unsyncedChangesView = findViewById(R.id.unsyncedAnswersCounter);
-		unsyncedChangesContainer = findViewById(R.id.unsyncedAnswersContainer);
-		answersCounter.setViews(uploadedAnswersView, unsyncedChangesView, unsyncedChangesContainer);
-		unsyncedChangesContainer.setOnClickListener(view ->
+		uploadButton = findViewById(R.id.uploadButton);
+		answersCounterView = findViewById(R.id.answersCounterView);
+		answersCounter.setViews(uploadButton, answersCounterView);
+		uploadButton.setOnClickListener(view ->
 		{
 			if (isConnected())
 			{
@@ -332,13 +334,7 @@ public class MainActivity extends AppCompatActivity implements
 			}
 		}
 
-		boolean isAutosync = Prefs.Autosync.valueOf(prefs.getString(Prefs.AUTOSYNC,"ON")) == Prefs.Autosync.ON;
-		ProgressBar uploadedAnswersProgressBar = findViewById(R.id.uploadedAnswersProgress);
-		ProgressBar unsyncedAnswersProgressBar = findViewById(R.id.unsyncedAnswersProgress);
-		uploadedAnswersProgressBar.setVisibility(View.INVISIBLE);
-		unsyncedAnswersProgressBar.setVisibility(View.INVISIBLE);
-
-		uploadProgressBar = isAutosync ? uploadedAnswersProgressBar : unsyncedAnswersProgressBar;
+		isAutosync = Prefs.Autosync.valueOf(prefs.getString(Prefs.AUTOSYNC,"ON")) == Prefs.Autosync.ON;
 		answersCounter.setAutosync(isAutosync);
 		answersCounter.update();
 
@@ -455,7 +451,7 @@ public class MainActivity extends AppCompatActivity implements
 			{
 				questController.undo(quest);
 				questAutoSyncer.triggerAutoUpload();
-				answersCounter.subtractOneUnsynced(quest.getChangesSource());
+				answersCounter.subtractOneUnsynced();
 				updateUndoButtonVisibility();
 				setUndoButtonEnabled(true);
 			})
@@ -585,9 +581,10 @@ public class MainActivity extends AppCompatActivity implements
 		{
 			runOnUiThread(() ->
 			{
-				unsyncedChangesContainer.setEnabled(false);
+				uploadButton.setEnabled(false);
 				setUndoButtonEnabled(false);
-				if(uploadProgressBar != null) uploadProgressBar.setVisibility(View.VISIBLE);
+				if(isAutosync) answersCounterView.setShowProgress(true);
+				else uploadButton.setShowProgress(true);
 			});
 		}
 
@@ -653,9 +650,11 @@ public class MainActivity extends AppCompatActivity implements
 		{
 			runOnUiThread(() ->
 			{
-				unsyncedChangesContainer.setEnabled(true);
+				uploadButton.setEnabled(true);
 				setUndoButtonEnabled(true);
-				if(uploadProgressBar != null) uploadProgressBar.setVisibility(View.INVISIBLE);
+
+				if(isAutosync) answersCounterView.setShowProgress(false);
+				else uploadButton.setShowProgress(false);
 			});
 			answersCounter.update();
 		}
@@ -755,13 +754,13 @@ public class MainActivity extends AppCompatActivity implements
 	@Override public void onQuestSolved(@Nullable Quest quest, @Nullable String source)
 	{
 		updateUndoButtonVisibility();
-		showQuestSolvedAnimation(quest, source);
+		showQuestSolvedAnimation(quest);
 		triggerAutoUploadByUserInteraction();
 	}
 
 	@Override public void onCreatedNote(@NotNull Point screenPosition)
 	{
-		showMarkerSolvedAnimation(R.drawable.ic_quest_create_note, new PointF(screenPosition), null);
+		showMarkerSolvedAnimation(R.drawable.ic_quest_create_note, new PointF(screenPosition));
 		triggerAutoUploadByUserInteraction();
 	}
 
@@ -783,7 +782,7 @@ public class MainActivity extends AppCompatActivity implements
 	/* ---------------------------------------- Animation ---------------------------------------- */
 
 
-	private void showQuestSolvedAnimation(Quest quest, String source)
+	private void showQuestSolvedAnimation(Quest quest)
 	{
 		if(quest == null) return;
 
@@ -793,10 +792,10 @@ public class MainActivity extends AppCompatActivity implements
 		PointF startPos = mapFragment.getPointOf(quest.getCenter());
 		startPos.x += offset[0] - size/2;
 		startPos.y += offset[1] - size*1.5;
-		showMarkerSolvedAnimation(quest.getType().getIcon(), startPos, source);
+		showMarkerSolvedAnimation(quest.getType().getIcon(), startPos);
 	}
 
-	private void showMarkerSolvedAnimation(@DrawableRes int iconResId, PointF startScreenPos, String source)
+	private void showMarkerSolvedAnimation(@DrawableRes int iconResId, PointF startScreenPos)
 	{
 		soundFx.play(getResources().getIdentifier("plop"+random.nextInt(4), "raw", getPackageName()));
 
@@ -809,7 +808,7 @@ public class MainActivity extends AppCompatActivity implements
 
 		flingQuestMarkerTo(img, answersCounter.getAnswerTarget(), () -> {
 			root.removeView(img);
-			answersCounter.addOneUnsynced(source);
+			answersCounter.addOneUnsynced();
 		});
 	}
 

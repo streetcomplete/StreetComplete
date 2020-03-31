@@ -32,87 +32,6 @@
             app:theme="@style/ThemeOverlay.AppCompat.Dark"
             app:popupTheme="@style/Theme.Bubble.ToolbarPopup">
 
-            <RelativeLayout
-                android:id="@+id/uploadedAnswersContainer"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:paddingStart="0dp"
-                android:paddingEnd="12dp"
-                android:clipChildren="false"
-                android:minWidth="84dp"
-                android:gravity="center_vertical"
-                android:clickable="true">
-
-                <ProgressBar
-                    android:id="@+id/uploadedAnswersProgress"
-                    android:layout_width="42dp"
-                    android:layout_height="42dp"
-                    android:indeterminate="true"
-                    android:layout_centerVertical="true"
-                    android:visibility="invisible"
-                    tools:visibility="visible"/>
-
-                <ImageView
-                    android:id="@+id/uploadedAnswersIcon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="8dp"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/ic_star_white_24dp"/>
-
-                <TextView
-                    android:id="@+id/uploadedAnswersCounter"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_toEndOf="@id/uploadedAnswersIcon"
-                    tools:text="8888"
-                    />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/unsyncedAnswersContainer"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="?android:attr/actionBarItemBackground"
-                android:layout_marginStart="0dp"
-                android:layout_marginEnd="12dp"
-                android:clipChildren="false"
-                android:gravity="center_vertical">
-
-                <ProgressBar
-                    android:id="@+id/unsyncedAnswersProgress"
-                    android:layout_width="42dp"
-                    android:layout_height="42dp"
-                    android:indeterminate="true"
-                    android:layout_centerVertical="true"
-                    android:visibility="invisible"
-                    tools:visibility="visible"/>
-
-                <ImageView
-                    android:id="@+id/unsyncedAnswersIcon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="8dp"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/ic_file_upload_24dp"/>
-
-                <TextView
-                    android:id="@+id/unsyncedAnswersCounter"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/notification_background"
-                    android:gravity="center"
-                    android:textColor="@color/button_white"
-                    android:textSize="10dp"
-                    android:layout_alignTop="@id/unsyncedAnswersIcon"
-                    android:layout_alignEnd="@id/unsyncedAnswersIcon"
-                    tools:ignore="SpUsage"
-                    tools:text="88"/>
-
-            </RelativeLayout>
-
         </androidx.appcompat.widget.Toolbar>
 
         <ProgressBar
@@ -163,6 +82,21 @@
         android:src="@drawable/ic_file_download_black_24dp"
         android:contentDescription="@string/action_download"
         android:layout_toLeftOf="@id/undoButton"/>
+
+    <de.westnordost.streetcomplete.controls.UploadButton
+        android:id="@+id/uploadButton"
+        android:layout_width="@dimen/map_button_size"
+        android:layout_height="@dimen/map_button_size"
+        style="@style/RoundWhiteButton"
+        android:layout_toLeftOf="@id/downloadButton"
+        />
+
+    <de.westnordost.streetcomplete.controls.AnswersCounterView
+        android:id="@+id/answersCounterView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"/>
 
     <FrameLayout
         android:id="@+id/fragment_container"
