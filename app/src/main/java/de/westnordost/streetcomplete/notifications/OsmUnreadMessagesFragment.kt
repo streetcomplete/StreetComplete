@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.messages
+package de.westnordost.streetcomplete.notifications
 
 import android.content.Intent
 import android.graphics.drawable.AnimatedVectorDrawable
@@ -20,6 +20,7 @@ import de.westnordost.streetcomplete.sound.SoundFx
 import kotlinx.android.synthetic.main.fragment_unread_osm_message.*
 import javax.inject.Inject
 
+/** Fragment that shows a notification that the user has X unread messages in his OSM inbox */
 class OsmUnreadMessagesFragment : DialogFragment() {
 
     @Inject lateinit var soundFx: SoundFx
