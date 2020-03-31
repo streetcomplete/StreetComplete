@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_gravity="center"
+    android:columnCount="2"
+    android:padding="@dimen/dialog_horizontal_margin"
+    >
+
+    <Button
+        android:id="@+id/profileButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="@android:style/TextAppearance.Theme.Dialog"
+        android:text="@string/user_profile"
+        android:layout_gravity="center"
+        android:drawableTop="@drawable/ic_profile_48dp"
+        style="?android:attr/borderlessButtonStyle" />
+
+    <Button
+        android:id="@+id/settingsButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="@android:style/TextAppearance.Theme.Dialog"
+        android:layout_gravity="center"
+        android:text="@string/action_settings"
+        android:drawableTop="@drawable/ic_settings_48dp"
+        style="?android:attr/borderlessButtonStyle" />
+
+    <Button
+        android:id="@+id/aboutButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="@android:style/TextAppearance.Theme.Dialog"
+        android:layout_gravity="center"
+        android:text="@string/action_about2"
+        android:drawableTop="@drawable/ic_info_outline_48dp"
+        style="?android:attr/borderlessButtonStyle" />
+
+</GridLayout>
+
