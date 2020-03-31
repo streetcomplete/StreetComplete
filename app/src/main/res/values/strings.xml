@@ -88,7 +88,7 @@
     <string name="now_downloading_toast">"Scanning for more quests…"</string>
     <string name="turn_on_location_request">"Location is off. Open Settings to turn it on now?"</string>
     <string name="no_location_permission_warning">"Your location is needed to scan for quests in your vicinity."</string>
-    <string name="action_about">"About StreetComplete"</string>
+    <string name="action_about2">"About"</string>
     <string name="about_summary_current_version">"Current version: %s"</string>
     <string name="about_title_authors">"Credits"</string>
     <string name="about_summary_authors">"© 2016–2020 Tobias Zwick and contributors"</string>
@@ -159,6 +159,7 @@
     <string name="pref_title_sync">"Auto-sync"</string>
     <string name="map_btn_zoom_out">"Zoom out"</string>
     <string name="map_btn_zoom_in">"Zoom in"</string>
+    <string name="map_btn_menu">"Menu"</string>
     <string name="privacy_html">"&lt;p&gt;Ah, someone who cares about privacy, nice! I think I have only good news for you:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Direct Contributions&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;

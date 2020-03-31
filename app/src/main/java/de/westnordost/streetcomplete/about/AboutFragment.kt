@@ -78,7 +78,7 @@ class AboutFragment : PreferenceFragmentCompat() {
 
     override fun onStart() {
         super.onStart()
-        activity?.setTitle(R.string.action_about)
+        activity?.setTitle(R.string.action_about2)
     }
 
     private fun isInstalledViaGooglePlay(): Boolean {
