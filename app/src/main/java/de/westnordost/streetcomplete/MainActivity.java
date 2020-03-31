@@ -79,7 +79,7 @@ import de.westnordost.streetcomplete.location.LocationRequestFragment;
 import de.westnordost.streetcomplete.location.LocationState;
 import de.westnordost.streetcomplete.location.LocationUtil;
 import de.westnordost.streetcomplete.map.MainFragment;
-import de.westnordost.streetcomplete.messages.OsmUnreadMessagesFragment;
+import de.westnordost.streetcomplete.notifications.OsmUnreadMessagesFragment;
 import de.westnordost.streetcomplete.quests.QuestUtilKt;
 import de.westnordost.streetcomplete.settings.AboutActivity;
 import de.westnordost.streetcomplete.settings.SettingsActivity;
