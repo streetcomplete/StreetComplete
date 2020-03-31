@@ -165,7 +165,7 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
         } else {
             otherAnswersButton.setText(R.string.quest_generic_otherAnswers)
             otherAnswersButton.setOnClickListener {
-                val popup = PopupMenu(activity, otherAnswersButton)
+                val popup = PopupMenu(requireContext(), otherAnswersButton)
                 for (i in answers.indices) {
                     val otherAnswer = answers[i]
                     val order = answers.size - i

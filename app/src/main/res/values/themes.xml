@@ -21,7 +21,9 @@
         <item name="windowNoTitle">true</item>
         <item name="dividerVertical">@drawable/button_bar_divider</item>
         <item name="dividerHorizontal">@drawable/button_bar_divider</item>
+
         <item name="android:popupMenuStyle">@style/Theme.Bubble.Popup</item>
+        <item name="popupMenuStyle">@style/Theme.Bubble.Popup</item>
     </style>
 
     <style name="Theme.Bubble.ToolbarPopup"  parent="Theme.AppCompat.DayNight.NoActionBar"/>
