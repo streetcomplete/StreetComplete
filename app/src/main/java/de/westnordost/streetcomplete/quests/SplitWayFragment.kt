@@ -4,14 +4,18 @@ import android.animation.AnimatorInflater
 import android.content.res.Configuration
 import android.graphics.PointF
 import android.graphics.drawable.Animatable
+import android.os.Build
 import android.os.Bundle
 import android.view.View
+import android.view.ViewGroup
+import android.view.WindowInsets
 import android.view.animation.AnimationUtils
 import android.widget.RelativeLayout
 import androidx.annotation.UiThread
 import androidx.appcompat.app.AlertDialog
 import androidx.core.os.bundleOf
 import androidx.core.view.updateLayoutParams
+import androidx.core.view.updateMargins
 import androidx.fragment.app.Fragment
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.map.data.OsmLatLon
@@ -75,6 +79,8 @@ class SplitWayFragment
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setupFittingToSystemWindowInsets()
+
         splitWayRoot.setOnTouchListener { _, event ->
             clickPos = PointF(event.x, event.y)
             false
@@ -91,6 +97,24 @@ class SplitWayFragment
             view.findViewById<View>(R.id.speechbubbleContentContainer).startAnimation(
                 AnimationUtils.loadAnimation(context, R.anim.inflate_answer_bubble)
             )
+        }
+    }
+
+    private fun setupFittingToSystemWindowInsets() {
+        if (Build.VERSION.SDK_INT >= 21) {
+            view?.setOnApplyWindowInsetsListener { v: View, insets: WindowInsets ->
+
+                bottomSheetContainer.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                    setMargins(
+                        insets.systemWindowInsetLeft,
+                        insets.systemWindowInsetTop,
+                        insets.systemWindowInsetRight,
+                        insets.systemWindowInsetBottom
+                    )
+                }
+
+                insets
+            }
         }
     }
 

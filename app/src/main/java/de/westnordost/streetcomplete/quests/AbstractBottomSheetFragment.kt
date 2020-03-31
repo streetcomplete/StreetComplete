@@ -7,57 +7,46 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.View
+import android.view.ViewGroup
 import android.view.WindowInsets
 import android.view.animation.AnimationUtils
-import android.widget.LinearLayout
 import androidx.annotation.UiThread
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.updateLayoutParams
+import androidx.core.view.updateMargins
+import androidx.core.view.updatePadding
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_COLLAPSED
 import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_EXPANDED
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.ktx.toDp
+import kotlinx.android.synthetic.main.fragment_quest_answer.*
 
+/* Note: The AbstractBottomSheetFragment currently assumes that it will be inflated with the views
+   that are in fragment_quest_answer by any subclass!*/
 abstract class AbstractBottomSheetFragment : Fragment(), IsCloseableBottomSheet {
-    private lateinit var bottomSheet: LinearLayout
-    private lateinit var bottomSheetBehavior: BottomSheetBehavior<*>
-    private lateinit var closeButton: View
-    private val mainHandler = Handler(Looper.getMainLooper())
 
-    private fun setupFittingToSystemWindowInsets() {
-        if (Build.VERSION.SDK_INT >= 21) {
-            view?.setOnApplyWindowInsetsListener { v: View?, insets: WindowInsets ->
-                view?.findViewById<View>(R.id.bottomSheetContainer)?.setPadding(
-                    insets.systemWindowInsetLeft,
-                    insets.systemWindowInsetTop,
-                    insets.systemWindowInsetRight,
-                    insets.systemWindowInsetBottom
-                )
-                insets
-            }
-        }
-    }
+    private lateinit var bottomSheetBehavior: BottomSheetBehavior<*>
+
+    private val mainHandler = Handler(Looper.getMainLooper())
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        bottomSheet = view.findViewById(R.id.bottomSheet)
         bottomSheet.addOnLayoutChangeListener { _, _, _, _, _, _, _, _, _ ->
             // not immediately because this is called during layout change (view.getTop() == 0)
             mainHandler.post { this.updateCloseButtonVisibility() }
         }
 
-        closeButton = view.findViewById(R.id.closeButton)
         closeButton.setOnClickListener { activity?.onBackPressed() }
 
         setupFittingToSystemWindowInsets()
 
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
 
-        val titleSpeechBubble = view.findViewById<View>(R.id.speechBubbleTitleContainer)
-        titleSpeechBubble.setOnClickListener {
+        speechBubbleTitleContainer.setOnClickListener {
             bottomSheetBehavior.apply {
                 if (state == STATE_EXPANDED)
                     state = STATE_COLLAPSED
@@ -66,7 +55,7 @@ abstract class AbstractBottomSheetFragment : Fragment(), IsCloseableBottomSheet 
             }
         }
 
-        bottomSheetBehavior.setBottomSheetCallback(object :
+        bottomSheetBehavior.addBottomSheetCallback(object :
             BottomSheetBehavior.BottomSheetCallback() {
             override fun onStateChanged(bottomSheet: View, newState: Int) {}
 
@@ -80,11 +69,11 @@ abstract class AbstractBottomSheetFragment : Fragment(), IsCloseableBottomSheet 
         }
 
         if (savedInstanceState == null) {
-            view.findViewById<View>(R.id.speechBubbleTitleContainer).startAnimation(
+            speechBubbleTitleContainer.startAnimation(
                 AnimationUtils.loadAnimation(context, R.anim.inflate_title_bubble)
             )
 
-            view.findViewById<View>(R.id.speechbubbleContentContainer).startAnimation(
+            speechbubbleContentContainer.startAnimation(
                 AnimationUtils.loadAnimation(context, R.anim.inflate_answer_bubble)
             )
         }
@@ -102,9 +91,33 @@ abstract class AbstractBottomSheetFragment : Fragment(), IsCloseableBottomSheet 
         resources.updateConfiguration(newConfig, resources.displayMetrics)
 
         bottomSheetBehavior.peekHeight = resources.getDimensionPixelSize(R.dimen.quest_form_peekHeight)
-        view?.findViewById<View>(R.id.bottomSheetContainer)?.let {
+        bottomSheetContainer?.let {
             it.setBackgroundResource(R.drawable.speechbubbles_gradient_background)
             it.updateLayoutParams { width = resources.getDimensionPixelSize(R.dimen.quest_form_width) }
+        }
+    }
+
+    private fun setupFittingToSystemWindowInsets() {
+        if (Build.VERSION.SDK_INT >= 21) {
+            view?.setOnApplyWindowInsetsListener { v: View, insets: WindowInsets ->
+
+                scrollViewChild.updatePadding(bottom = insets.systemWindowInsetBottom)
+
+                okButton.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                    val defaultMargin = 8f.toDp(v.context).toInt()
+                    updateMargins(bottom = insets.systemWindowInsetBottom + defaultMargin)
+                }
+
+                bottomSheetContainer.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                    updateMargins(
+                        top = insets.systemWindowInsetTop,
+                        left = insets.systemWindowInsetLeft,
+                        right = insets.systemWindowInsetRight
+                    )
+                }
+
+                insets
+            }
         }
     }
 

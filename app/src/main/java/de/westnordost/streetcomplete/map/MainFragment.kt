@@ -12,6 +12,7 @@ import android.graphics.Rect
 import android.graphics.RectF
 import android.location.Location
 import android.location.LocationManager
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -27,6 +28,7 @@ import androidx.appcompat.widget.PopupMenu
 import androidx.core.graphics.toPointF
 import androidx.core.graphics.toRectF
 import androidx.core.view.doOnLayout
+import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE
 import androidx.fragment.app.FragmentTransaction
@@ -120,6 +122,8 @@ class MainFragment : Fragment(R.layout.fragment_map_with_controls),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setupFittingToSystemWindowInsets()
+
         compassView.setOnClickListener { onClickCompassButton() }
         gpsTrackingButton.setOnClickListener { onClickTrackingButton() }
         zoomInButton.setOnClickListener { onClickZoomIn() }
@@ -133,6 +137,22 @@ class MainFragment : Fragment(R.layout.fragment_map_with_controls),
             if (!isShowingControls) {
                 hideAll(leftSideContainer, -1)
                 hideAll(rightSideContainer, +1)
+            }
+        }
+    }
+
+    private fun setupFittingToSystemWindowInsets() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            view?.setOnApplyWindowInsetsListener { _, insets ->
+                mapControls.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                    setMargins(
+                        insets.systemWindowInsetLeft,
+                        insets.systemWindowInsetTop,
+                        insets.systemWindowInsetRight,
+                        insets.systemWindowInsetBottom
+                    )
+                }
+                insets
             }
         }
     }

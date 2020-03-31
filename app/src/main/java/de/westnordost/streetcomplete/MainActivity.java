@@ -16,6 +16,7 @@ import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
 import androidx.annotation.AnyThread;
@@ -31,6 +32,7 @@ import android.text.util.Linkify;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowInsets;
 import android.view.WindowManager;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.AccelerateInterpolator;
@@ -214,6 +216,12 @@ public class MainActivity extends AppCompatActivity implements
 
 		PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
 
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+		{
+			getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+			getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+		}
+
 		if(prefs.getBoolean(Prefs.KEEP_SCREEN_ON, false))
 		{
 			getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
@@ -224,6 +232,7 @@ public class MainActivity extends AppCompatActivity implements
 			.commit();
 
 		setContentView(R.layout.activity_main);
+		setupFittingToSystemWindowInsets();
 
 		undoButton = findViewById(R.id.undoButton);
 		undoButton.setOnClickListener(v -> {
@@ -290,6 +299,28 @@ public class MainActivity extends AppCompatActivity implements
 		}
 
 		handleGeoUri();
+	}
+
+	private void setupFittingToSystemWindowInsets() {
+		ViewGroup buttonsContainer = findViewById(R.id.buttonsContainer);
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+			findViewById(R.id.main).setOnApplyWindowInsetsListener((v, insets) -> {
+				ViewGroup.MarginLayoutParams buttonsParams = (ViewGroup.MarginLayoutParams) buttonsContainer.getLayoutParams();
+				buttonsParams.setMargins(
+						insets.getSystemWindowInsetLeft(),
+						insets.getSystemWindowInsetTop(),
+						insets.getSystemWindowInsetRight(),
+						insets.getSystemWindowInsetBottom()
+				);
+				buttonsContainer.setLayoutParams(buttonsParams);
+
+				// download progress will be behind the status bar
+				ViewGroup.LayoutParams downloadProgressParams = downloadProgressBar.getLayoutParams();
+				downloadProgressParams.height = insets.getSystemWindowInsetTop();
+				downloadProgressBar.setLayoutParams(downloadProgressParams);
+				return insets;
+			});
+		}
 	}
 
 	private void handleGeoUri()
