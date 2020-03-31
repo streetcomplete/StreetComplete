@@ -19,7 +19,7 @@
     <dimen name="quest_form_rightOffset">0dp</dimen>
     <dimen name="quest_form_bottomOffset">@dimen/quest_form_peekHeight</dimen>
 
-    <dimen name="quest_form_peekHeight">304dp</dimen>
+    <dimen name="quest_form_peekHeight">352dp</dimen>
     <dimen name="quest_form_width">@dimen/match_parent</dimen>
 
     <dimen name="quest_form_speech_bubble_top_margin">-27dp</dimen>
