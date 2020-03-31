@@ -30,7 +30,7 @@ import de.westnordost.streetcomplete.data.osm.osmquest.undo.UndoOsmQuestDao
 import de.westnordost.streetcomplete.data.osmnotes.createnotes.CreateNote
 import de.westnordost.streetcomplete.data.osmnotes.createnotes.CreateNoteDao
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestDao
-import de.westnordost.streetcomplete.data.upload.QuestChangesUploadService
+import de.westnordost.streetcomplete.data.upload.UploadService
 import de.westnordost.streetcomplete.data.visiblequests.OrderedVisibleQuestTypesProvider
 import de.westnordost.streetcomplete.quests.note_discussion.NoteAnswer
 import de.westnordost.osmapi.map.data.BoundingBox
@@ -86,10 +86,10 @@ import javax.inject.Singleton
     }
 
     private var uploadServiceIsBound: Boolean = false
-    private var uploadService: QuestChangesUploadService.Interface? = null
+    private var uploadService: UploadService.Interface? = null
     private val uploadServiceConnection = object : ServiceConnection {
         override fun onServiceConnected(className: ComponentName, service: IBinder) {
-            uploadService = service as QuestChangesUploadService.Interface
+            uploadService = service as UploadService.Interface
             uploadService?.setQuestListener(relay)
         }
 
@@ -118,7 +118,7 @@ import javax.inject.Singleton
             downloadServiceConnection, BIND_AUTO_CREATE
         )
         uploadServiceIsBound = context.bindService(
-            Intent(context, QuestChangesUploadService::class.java),
+            Intent(context, UploadService::class.java),
             uploadServiceConnection, BIND_AUTO_CREATE
         )
     }
@@ -334,7 +334,7 @@ import javax.inject.Singleton
 
     /** Collect and upload all changes made by the user  */
     fun upload() {
-        context.startService(QuestChangesUploadService.createIntent(context))
+        context.startService(UploadService.createIntent(context))
     }
 
     /** Delete old unsolved quests */

@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.upload
 
-interface QuestChangesUploadProgressListener {
+interface UploadProgressListener {
     fun onStarted()
     fun onProgress(success: Boolean)
     fun onError(e: Exception)

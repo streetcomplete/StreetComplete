@@ -24,7 +24,7 @@ import de.westnordost.streetcomplete.util.enclosingTile
 
 /** Collects and uploads all changes the user has done: notes he left, comments he left on existing
  * notes and quests he answered  */
-class QuestChangesUploadService : IntentService(TAG) {
+class UploadService : IntentService(TAG) {
     @Inject internal lateinit var uploaders: List<Uploader>
     @Inject internal lateinit var versionIsBannedChecker: VersionIsBannedChecker
     @Inject internal lateinit var userController: UserController
@@ -46,7 +46,7 @@ class QuestChangesUploadService : IntentService(TAG) {
             progressListener?.onProgress(false)
         }
     }
-    private var progressListener: QuestChangesUploadProgressListener? = null
+    private var progressListener: UploadProgressListener? = null
 
     private val cancelState = AtomicBoolean(false)
 
@@ -114,7 +114,7 @@ class QuestChangesUploadService : IntentService(TAG) {
 
     /** Public interface to classes that are bound to this service  */
     inner class Interface : Binder() {
-        fun setProgressListener(listener: QuestChangesUploadProgressListener?) {
+        fun setProgressListener(listener: UploadProgressListener?) {
             progressListener = listener
         }
 
@@ -125,7 +125,7 @@ class QuestChangesUploadService : IntentService(TAG) {
 
     companion object {
         fun createIntent(context: Context): Intent {
-            return Intent(context, QuestChangesUploadService::class.java)
+            return Intent(context, UploadService::class.java)
         }
 
         private const val TAG = "Upload"

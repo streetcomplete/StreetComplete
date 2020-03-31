@@ -71,8 +71,8 @@ import de.westnordost.streetcomplete.data.quest.QuestController;
 import de.westnordost.streetcomplete.data.download.QuestDownloadProgressListener;
 import de.westnordost.streetcomplete.data.download.QuestDownloadService;
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuest;
-import de.westnordost.streetcomplete.data.upload.QuestChangesUploadProgressListener;
-import de.westnordost.streetcomplete.data.upload.QuestChangesUploadService;
+import de.westnordost.streetcomplete.data.upload.UploadProgressListener;
+import de.westnordost.streetcomplete.data.upload.UploadService;
 import de.westnordost.streetcomplete.data.upload.VersionBannedException;
 import de.westnordost.streetcomplete.data.user.UserController;
 import de.westnordost.streetcomplete.location.LocationRequestFragment;
@@ -165,12 +165,12 @@ public class MainActivity extends AppCompatActivity implements
 		}
 	};
 	private boolean uploadServiceIsBound;
-	private QuestChangesUploadService.Interface uploadService;
+	private UploadService.Interface uploadService;
 	private final ServiceConnection uploadServiceConnection = new ServiceConnection()
 	{
 		public void onServiceConnected(ComponentName className, IBinder service)
 		{
-			uploadService = (QuestChangesUploadService.Interface) service;
+			uploadService = (UploadService.Interface) service;
 			uploadService.setProgressListener(uploadProgressListener);
 		}
 
@@ -356,7 +356,7 @@ public class MainActivity extends AppCompatActivity implements
 		downloadProgressBar.setAlpha(0f);
 		downloadServiceIsBound = bindService(new Intent(this, QuestDownloadService.class),
 				downloadServiceConnection, BIND_AUTO_CREATE);
-		uploadServiceIsBound = bindService(new Intent(this, QuestChangesUploadService.class),
+		uploadServiceIsBound = bindService(new Intent(this, UploadService.class),
 				uploadServiceConnection, BIND_AUTO_CREATE);
 
 		onNumberOfNotificationsUpdated(notificationsDao.getNumberOfNotifications());
@@ -628,8 +628,8 @@ public class MainActivity extends AppCompatActivity implements
 
 	/* ------------------------------ Upload progress listener ---------------------------------- */
 
-	private final QuestChangesUploadProgressListener uploadProgressListener
-			= new QuestChangesUploadProgressListener()
+	private final UploadProgressListener uploadProgressListener
+			= new UploadProgressListener()
 	{
 		@AnyThread @Override public void onStarted()
 		{

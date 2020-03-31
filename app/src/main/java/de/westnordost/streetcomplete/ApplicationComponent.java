@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.data.OsmModule;
 import de.westnordost.streetcomplete.data.user.achievements.AchievementsModule;
 import de.westnordost.streetcomplete.data.user.UserModule;
 import de.westnordost.streetcomplete.data.osm.upload.changesets.ChangesetAutoCloserWorker;
-import de.westnordost.streetcomplete.data.upload.QuestChangesUploadService;
+import de.westnordost.streetcomplete.data.upload.UploadService;
 import de.westnordost.streetcomplete.data.download.QuestDownloadService;
 import de.westnordost.streetcomplete.data.meta.MetadataModule;
 import de.westnordost.streetcomplete.map.MainFragment;
@@ -53,7 +53,7 @@ public interface ApplicationComponent
 	void inject(NoteDiscussionForm noteDiscussionForm);
 	void inject(SerializedSavedState tSerializedSavedState);
 
-	void inject(QuestChangesUploadService questChangesUploadService);
+	void inject(UploadService uploadService);
 	void inject(QuestDownloadService questChangesDownloadService);
 
 	void inject(SettingsFragment settingsFragment);
