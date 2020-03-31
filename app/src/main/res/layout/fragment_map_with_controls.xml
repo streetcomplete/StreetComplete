@@ -18,8 +18,8 @@
 
         <RelativeLayout
             android:id="@+id/compassView"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
+            android:layout_width="@dimen/map_button_size"
+            android:layout_height="@dimen/map_button_size"
             style="@style/RoundWhiteButton"
             android:layout_marginTop="12dp"
             android:layout_marginRight="4dp"
@@ -63,8 +63,8 @@
 
             <ImageButton
                 android:id="@+id/zoomInButton"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
+                android:layout_width="@dimen/map_button_size"
+                android:layout_height="@dimen/map_button_size"
                 android:scaleType="center"
                 style="@style/RoundWhiteButton"
                 android:src="@drawable/ic_zoom_plus_black_24dp"
@@ -72,8 +72,8 @@
 
             <ImageButton
                 android:id="@+id/zoomOutButton"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
+                android:layout_width="@dimen/map_button_size"
+                android:layout_height="@dimen/map_button_size"
                 android:scaleType="center"
                 style="@style/RoundWhiteButton"
                 android:src="@drawable/ic_zoom_minus_black_24dp"
@@ -81,8 +81,8 @@
 
             <de.westnordost.streetcomplete.location.LocationStateButton
                 android:id="@+id/gpsTrackingButton"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
+                android:layout_width="@dimen/map_button_size"
+                android:layout_height="@dimen/map_button_size"
                 android:scaleType="center"
                 style="@style/RoundWhiteButton"
                 android:src="@drawable/ic_location_24dp"
