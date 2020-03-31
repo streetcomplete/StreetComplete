@@ -12,39 +12,17 @@
         android:id="@+id/map_fragment"
         android:name="de.westnordost.streetcomplete.map.MainFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/topPanel"
-        android:layout_marginTop="-8dp"/>
+        android:layout_height="match_parent"/>
 
-    <LinearLayout
+    <ProgressBar
+        android:id="@+id/download_progress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/topPanel"
-        android:orientation="vertical">
-        <!-- the toolbar somehow always wants to be in front in its layout, so let's ban it into
-             a sub frame layout -->
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            android:elevation="4dp"
-            app:theme="@style/ThemeOverlay.AppCompat.Dark"
-            app:popupTheme="@style/Theme.Bubble.ToolbarPopup">
-
-        </androidx.appcompat.widget.Toolbar>
-
-        <ProgressBar
-            android:id="@+id/download_progress"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/MapProgressBar.Horizontal"
-            android:visibility="visible"
-            android:progress="50"
-            android:max = "100"
-            android:indeterminate="false"/>
-
-    </LinearLayout>
+        style="@style/MapProgressBar.Horizontal"
+        android:visibility="visible"
+        android:progress="50"
+        android:max = "100"
+        android:indeterminate="false"/>
 
     <ImageButton
         android:id="@+id/mainMenuButton"

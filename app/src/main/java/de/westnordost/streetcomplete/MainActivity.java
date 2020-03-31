@@ -225,10 +225,6 @@ public class MainActivity extends AppCompatActivity implements
 
 		setContentView(R.layout.activity_main);
 
-		Toolbar toolbar = findViewById(R.id.toolbar);
-		toolbar.setTitle("");
-		setSupportActionBar(toolbar);
-
 		undoButton = findViewById(R.id.undoButton);
 		undoButton.setOnClickListener(v -> {
 			setUndoButtonEnabled(false);

@@ -6,24 +6,24 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
+    <ImageView
+        android:id="@+id/iconView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:src="@drawable/ic_star_48dp"/>
+
     <ProgressBar
         android:id="@+id/progressView"
         android:layout_width="42dp"
         android:layout_height="42dp"
         android:indeterminate="true"
-        android:layout_alignRight="@id/iconView"
-        android:layout_alignLeft="@id/iconView"
+        android:layout_alignEnd="@id/iconView"
+        android:layout_alignStart="@id/iconView"
         android:layout_alignTop="@id/iconView"
         android:layout_alignBottom="@id/iconView"
         android:visibility="invisible"
         tools:visibility="visible"/>
-
-    <ImageView
-        android:id="@+id/iconView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="12dp"
-        android:src="@drawable/ic_star_48dp"/>
 
     <TextView
         android:id="@+id/textView"
@@ -32,10 +32,13 @@
         android:layout_centerHorizontal="true"
         android:gravity="center"
         android:layout_below="@id/iconView"
-        android:layout_alignRight="@id/iconView"
-        android:layout_alignLeft="@id/iconView"
+        android:layout_alignEnd="@id/iconView"
+        android:layout_alignStart="@id/iconView"
+        android:layout_marginTop="-8dp"
         android:textAppearance="@style/TextAppearance.BigBody"
         android:textStyle="bold"
+        android:shadowColor="#fff"
+        android:shadowRadius="3"
         tools:text="88888"
         />
 
