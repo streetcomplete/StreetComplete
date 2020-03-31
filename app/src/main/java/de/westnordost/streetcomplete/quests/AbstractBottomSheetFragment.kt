@@ -1,31 +1,44 @@
 package de.westnordost.streetcomplete.quests
 
+
 import android.content.res.Configuration
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
-import androidx.annotation.UiThread
-import com.google.android.material.bottomsheet.BottomSheetBehavior
-import androidx.fragment.app.Fragment
-import androidx.appcompat.app.AlertDialog
-
 import android.os.Looper
 import android.view.View
+import android.view.WindowInsets
 import android.view.animation.AnimationUtils
 import android.widget.LinearLayout
+import androidx.annotation.UiThread
+import androidx.appcompat.app.AlertDialog
 import androidx.core.view.updateLayoutParams
-
-import de.westnordost.streetcomplete.R
-
-
+import androidx.fragment.app.Fragment
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_COLLAPSED
 import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_EXPANDED
 import de.westnordost.osmapi.map.data.LatLon
+import de.westnordost.streetcomplete.R
 
 abstract class AbstractBottomSheetFragment : Fragment(), IsCloseableBottomSheet {
     private lateinit var bottomSheet: LinearLayout
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<*>
     private lateinit var closeButton: View
     private val mainHandler = Handler(Looper.getMainLooper())
+
+    private fun setupFittingToSystemWindowInsets() {
+        if (Build.VERSION.SDK_INT >= 21) {
+            view?.setOnApplyWindowInsetsListener { v: View?, insets: WindowInsets ->
+                view?.findViewById<View>(R.id.bottomSheetContainer)?.setPadding(
+                    insets.systemWindowInsetLeft,
+                    insets.systemWindowInsetTop,
+                    insets.systemWindowInsetRight,
+                    insets.systemWindowInsetBottom
+                )
+                insets
+            }
+        }
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -38,6 +51,8 @@ abstract class AbstractBottomSheetFragment : Fragment(), IsCloseableBottomSheet 
 
         closeButton = view.findViewById(R.id.closeButton)
         closeButton.setOnClickListener { activity?.onBackPressed() }
+
+        setupFittingToSystemWindowInsets()
 
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
 
@@ -96,10 +111,8 @@ abstract class AbstractBottomSheetFragment : Fragment(), IsCloseableBottomSheet 
     private fun updateCloseButtonVisibility() {
         // this is called asynchronously. It may happen that the activity is already gone when this
         // method is finally called
-        val activity = activity?: return
-        val toolbarHeight = activity.findViewById<View>(R.id.toolbar).height
         val speechBubbleTopMargin = resources.getDimension(R.dimen.quest_form_speech_bubble_top_margin)
-        val coversToolbar = bottomSheet.top < speechBubbleTopMargin + toolbarHeight
+        val coversToolbar = bottomSheet.top < speechBubbleTopMargin
         closeButton.visibility = if (coversToolbar) View.VISIBLE else View.INVISIBLE
     }
 

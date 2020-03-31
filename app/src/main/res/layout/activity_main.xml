@@ -167,6 +167,36 @@
         android:layout_height="match_parent"
         tools:visibility="gone"/>
 
+    <ImageButton
+        android:id="@+id/mainMenuButton"
+        android:layout_width="@dimen/map_button_size"
+        android:layout_height="@dimen/map_button_size"
+        android:scaleType="center"
+        style="@style/RoundWhiteButton"
+        android:src="@drawable/ic_menu_black_24dp"
+        android:contentDescription="@string/map_btn_menu"
+        android:layout_alignParentRight="true"/>
+
+    <ImageButton
+        android:id="@+id/undoButton"
+        android:layout_width="@dimen/map_button_size"
+        android:layout_height="@dimen/map_button_size"
+        android:scaleType="center"
+        style="@style/RoundWhiteButton"
+        android:src="@drawable/ic_undo_black_24dp"
+        android:contentDescription="@string/action_undo"
+        android:layout_toLeftOf="@id/mainMenuButton"/>
+
+    <ImageButton
+        android:id="@+id/downloadButton"
+        android:layout_width="@dimen/map_button_size"
+        android:layout_height="@dimen/map_button_size"
+        android:scaleType="center"
+        style="@style/RoundWhiteButton"
+        android:src="@drawable/ic_file_download_black_24dp"
+        android:contentDescription="@string/action_download"
+        android:layout_toLeftOf="@id/undoButton"/>
+
     <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"

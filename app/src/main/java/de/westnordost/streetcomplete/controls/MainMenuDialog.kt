@@ -17,14 +17,17 @@ class MainMenuDialog(context: Context) : AlertDialog(context, R.style.Theme_Bubb
         view.profileButton.setOnClickListener {
             val intent = Intent(context, UserActivity::class.java)
             context.startActivity(intent)
+            dismiss()
         }
         view.settingsButton.setOnClickListener {
             val intent = Intent(context, SettingsActivity::class.java)
             context.startActivity(intent)
+            dismiss()
         }
         view.aboutButton.setOnClickListener {
             val intent = Intent(context, AboutActivity::class.java)
             context.startActivity(intent)
+            dismiss()
         }
         setView(view)
     }

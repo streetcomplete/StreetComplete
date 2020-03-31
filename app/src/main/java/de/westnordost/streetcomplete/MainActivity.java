@@ -29,8 +29,6 @@ import androidx.appcompat.widget.Toolbar;
 import android.text.method.LinkMovementMethod;
 import android.text.util.Linkify;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -60,6 +58,7 @@ import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.osmapi.map.data.OsmLatLon;
 import de.westnordost.osmfeatures.FeatureDictionary;
 import de.westnordost.streetcomplete.about.WhatsNewDialog;
+import de.westnordost.streetcomplete.controls.MainMenuDialog;
 import de.westnordost.streetcomplete.data.notifications.NewAchievementNotification;
 import de.westnordost.streetcomplete.data.notifications.NewVersionNotification;
 import de.westnordost.streetcomplete.data.notifications.Notification;
@@ -81,8 +80,6 @@ import de.westnordost.streetcomplete.location.LocationUtil;
 import de.westnordost.streetcomplete.map.MainFragment;
 import de.westnordost.streetcomplete.notifications.OsmUnreadMessagesFragment;
 import de.westnordost.streetcomplete.quests.QuestUtilKt;
-import de.westnordost.streetcomplete.settings.AboutActivity;
-import de.westnordost.streetcomplete.settings.SettingsActivity;
 import de.westnordost.streetcomplete.sound.SoundFx;
 import de.westnordost.streetcomplete.statistics.AnswersCounter;
 import de.westnordost.streetcomplete.map.tangram.CameraPosition;
@@ -140,8 +137,8 @@ public class MainActivity extends AppCompatActivity implements
 	private ProgressBar downloadProgressBar;
 	private ProgressBar uploadProgressBar;
 
+	private View undoButton;
 	private View unsyncedChangesContainer;
-	private MenuItem btnUndo;
 
 	private View notificationsContainer;
 	private TextView notificationsCounterTextView;
@@ -233,6 +230,23 @@ public class MainActivity extends AppCompatActivity implements
 		Toolbar toolbar = findViewById(R.id.toolbar);
 		toolbar.setTitle("");
 		setSupportActionBar(toolbar);
+
+		undoButton = findViewById(R.id.undoButton);
+		undoButton.setOnClickListener(v -> {
+			setUndoButtonEnabled(false);
+			OsmQuest quest = questController.getLastSolvedOsmQuest();
+			if (quest != null) confirmUndo(quest);
+			else setUndoButtonEnabled(true);
+		});
+
+		findViewById(R.id.downloadButton).setOnClickListener(v -> {
+			if(isConnected()) downloadDisplayedArea();
+			else              Toast.makeText(this, R.string.offline, Toast.LENGTH_SHORT).show();
+		});
+
+		findViewById(R.id.mainMenuButton).setOnClickListener(v -> {
+			new MainMenuDialog(this).show();
+		});
 
 		TextView uploadedAnswersView = findViewById(R.id.uploadedAnswersCounter);
 		TextView unsyncedChangesView = findViewById(R.id.unsyncedAnswersCounter);
@@ -441,19 +455,6 @@ public class MainActivity extends AppCompatActivity implements
 		findViewById(R.id.main).requestLayout();
 	}
 
-	@Override public boolean onCreateOptionsMenu(Menu menu)
-	{
-		getMenuInflater().inflate(R.menu.menu_main, menu);
-		btnUndo = menu.findItem(R.id.action_undo);
-		updateUndoButtonVisibility();
-		return true;
-	}
-
-	public boolean onPrepareOptionsMenu(Menu menu) {
-		super.onPrepareOptionsMenu(menu);
-		return true;
-	}
-
 	private void confirmUndo(final OsmQuest quest)
 	{
 		Element element = questController.getOsmElement(quest);
@@ -483,46 +484,13 @@ public class MainActivity extends AppCompatActivity implements
 
 	private void updateUndoButtonVisibility()
 	{
-		btnUndo.setVisible(questController.getLastSolvedOsmQuest() != null);
+		undoButton.setVisibility(questController.getLastSolvedOsmQuest() != null ? View.VISIBLE : View.INVISIBLE);
 	}
 
 	private void setUndoButtonEnabled(boolean enabled)
 	{
-		btnUndo.setEnabled(enabled);
-		btnUndo.getIcon().setAlpha(enabled ? 255 : 127);
-	}
-
-	@Override public boolean onOptionsItemSelected(MenuItem item)
-	{
-		int id = item.getItemId();
-		Intent intent;
-
-		switch (id)
-		{
-			case R.id.action_undo:
-				setUndoButtonEnabled(false);
-				OsmQuest quest = questController.getLastSolvedOsmQuest();
-				if (quest != null) confirmUndo(quest);
-				else setUndoButtonEnabled(true);
-				return true;
-			case R.id.action_settings:
-				intent = new Intent(this, SettingsActivity.class);
-				startActivity(intent);
-				return true;
-			case R.id.action_about:
-				intent = new Intent(this, AboutActivity.class);
-				startActivity(intent);
-				return true;
-			case R.id.action_download:
-				if(isConnected()) downloadDisplayedArea();
-				else              Toast.makeText(this, R.string.offline, Toast.LENGTH_SHORT).show();
-				return true;
-			case R.id.action_user:
-				startActivity(new Intent(this, UserActivity.class));
-				return true;
-		}
-
-		return super.onOptionsItemSelected(item);
+		undoButton.setEnabled(enabled);
+		undoButton.setAlpha(enabled ? 1f : 0.5f);
 	}
 
 	@UiThread private void uploadChanges()

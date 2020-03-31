@@ -12,7 +12,7 @@
 
     <Button
         android:id="@+id/profileButton"
-        android:layout_width="match_parent"
+        android:layout_width="128dp"
         android:layout_height="wrap_content"
         android:textAppearance="@android:style/TextAppearance.Theme.Dialog"
         android:text="@string/user_profile"
@@ -22,7 +22,7 @@
 
     <Button
         android:id="@+id/settingsButton"
-        android:layout_width="match_parent"
+        android:layout_width="128dp"
         android:layout_height="wrap_content"
         android:textAppearance="@android:style/TextAppearance.Theme.Dialog"
         android:layout_gravity="center"
@@ -32,7 +32,7 @@
 
     <Button
         android:id="@+id/aboutButton"
-        android:layout_width="match_parent"
+        android:layout_width="128dp"
         android:layout_height="wrap_content"
         android:textAppearance="@android:style/TextAppearance.Theme.Dialog"
         android:layout_gravity="center"
