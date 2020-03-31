@@ -113,39 +113,6 @@
 
             </RelativeLayout>
 
-            <RelativeLayout
-                android:id="@+id/notificationsContainer"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="?android:attr/actionBarItemBackground"
-                android:layout_marginStart="0dp"
-                android:layout_marginEnd="12dp"
-                android:clipChildren="false"
-                android:gravity="center_vertical">
-
-                <ImageView
-                    android:id="@+id/notificationsIconImageView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="8dp"
-                    android:layout_centerInParent="true"
-                    android:src="@drawable/ic_notifications_white_24dp"/>
-
-                <TextView
-                    android:id="@+id/notificationsCounterTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/notification_background"
-                    android:gravity="center"
-                    android:textColor="@color/button_white"
-                    android:textSize="10dp"
-                    android:layout_alignTop="@id/notificationsIconImageView"
-                    android:layout_alignEnd="@id/notificationsIconImageView"
-                    tools:ignore="SpUsage"
-                    tools:text="8" />
-
-            </RelativeLayout>
-
         </androidx.appcompat.widget.Toolbar>
 
         <ProgressBar
@@ -170,6 +137,13 @@
         android:contentDescription="@string/map_btn_menu"
         android:layout_alignParentRight="true"/>
 
+    <de.westnordost.streetcomplete.controls.NotificationButton
+        android:id="@+id/notificationButton"
+        android:layout_width="@dimen/map_button_size"
+        android:layout_height="@dimen/map_button_size"
+        style="@style/RoundWhiteButton"
+        android:layout_toLeftOf="@id/mainMenuButton"/>
+
     <ImageButton
         android:id="@+id/undoButton"
         android:layout_width="@dimen/map_button_size"
@@ -178,7 +152,7 @@
         style="@style/RoundWhiteButton"
         android:src="@drawable/ic_undo_black_24dp"
         android:contentDescription="@string/action_undo"
-        android:layout_toLeftOf="@id/mainMenuButton"/>
+        android:layout_toLeftOf="@id/notificationButton"/>
 
     <ImageButton
         android:id="@+id/downloadButton"

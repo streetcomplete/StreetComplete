@@ -58,6 +58,7 @@ import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.osmapi.map.data.OsmLatLon;
 import de.westnordost.osmfeatures.FeatureDictionary;
 import de.westnordost.streetcomplete.controls.MainMenuDialog;
+import de.westnordost.streetcomplete.controls.NotificationButton;
 import de.westnordost.streetcomplete.data.notifications.Notification;
 import de.westnordost.streetcomplete.data.notifications.NotificationsDao;
 import de.westnordost.streetcomplete.data.quest.Quest;
@@ -135,8 +136,7 @@ public class MainActivity extends AppCompatActivity implements
 	private View undoButton;
 	private View unsyncedChangesContainer;
 
-	private View notificationsContainer;
-	private TextView notificationsCounterTextView;
+	private NotificationButton notificationButton;
 
 	private CoroutineScope coroutineScope = CoroutineScopeKt.CoroutineScope(Dispatchers.getMain());
 
@@ -259,9 +259,8 @@ public class MainActivity extends AppCompatActivity implements
 			}
 		});
 
-		notificationsContainer = findViewById(R.id.notificationsContainer);
-		notificationsCounterTextView = findViewById(R.id.notificationsCounterTextView);
-		notificationsContainer.setOnClickListener(view ->
+		notificationButton = findViewById(R.id.notificationButton);
+		notificationButton.setOnClickListener(view ->
 		{
 			Notification notification = notificationsDao.popNextNotification();
 			if (notification != null)
@@ -747,8 +746,8 @@ public class MainActivity extends AppCompatActivity implements
 	/* ---------------------------------- NotificationsListener --------------------------------- */
 
 	@Override public void onNumberOfNotificationsUpdated(int numberOfNotifications) {
-		notificationsContainer.setVisibility(numberOfNotifications > 0 ? View.VISIBLE : View.GONE);
-		notificationsCounterTextView.setText(String.valueOf(numberOfNotifications));
+		notificationButton.setVisibility(numberOfNotifications > 0 ? View.VISIBLE : View.INVISIBLE);
+		notificationButton.setNotificationsCount(numberOfNotifications);
 	}
 
 	/* --------------------------------- MainFragment.Listener ---------------------------------- */
