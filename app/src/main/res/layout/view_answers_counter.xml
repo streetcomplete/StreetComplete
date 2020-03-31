@@ -37,7 +37,7 @@
         android:layout_marginTop="-8dp"
         android:textAppearance="@style/TextAppearance.BigBody"
         android:textStyle="bold"
-        android:shadowColor="#fff"
+        android:shadowColor="@color/inverse"
         android:shadowRadius="3"
         tools:text="88888"
         />

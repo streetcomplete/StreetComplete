@@ -4,6 +4,8 @@
     <color name="primary_dark">#3939a3</color>
     <color name="accent">#ff6600</color>
 
+    <color name="inverse">#fff</color>
+
     <color name="selection">#66ff6600</color>
     <color name="selection_frame">#bbff6600</color>
 
