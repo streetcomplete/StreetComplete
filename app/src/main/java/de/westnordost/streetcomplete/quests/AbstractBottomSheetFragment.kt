@@ -22,6 +22,7 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_EXPANDE
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.toDp
+import de.westnordost.streetcomplete.ktx.toPx
 import kotlinx.android.synthetic.main.fragment_quest_answer.*
 
 /* Note: The AbstractBottomSheetFragment currently assumes that it will be inflated with the views
@@ -104,7 +105,7 @@ abstract class AbstractBottomSheetFragment : Fragment(), IsCloseableBottomSheet 
                 scrollViewChild.updatePadding(bottom = insets.systemWindowInsetBottom)
 
                 okButton.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-                    val defaultMargin = 8f.toDp(v.context).toInt()
+                    val defaultMargin = 8f.toPx(v.context).toInt()
                     updateMargins(bottom = insets.systemWindowInsetBottom + defaultMargin)
                 }
 
