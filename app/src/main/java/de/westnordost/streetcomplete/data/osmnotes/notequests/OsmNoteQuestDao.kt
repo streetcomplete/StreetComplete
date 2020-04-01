@@ -28,13 +28,29 @@ import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestTable.
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestTable.NAME
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestTable.NAME_MERGED_VIEW
 import de.westnordost.streetcomplete.ktx.*
+import java.util.concurrent.CopyOnWriteArrayList
+import javax.inject.Singleton
 
-class OsmNoteQuestDao @Inject constructor(
 /** Stores OsmNoteQuest objects - quests and answers to these for contributing to a note */
+@Singleton class OsmNoteQuestDao @Inject constructor(
     private val dbHelper: SQLiteOpenHelper,
     private val mapping: OsmNoteQuestMapping
 ) {
+    /* Must be a singleton because there is a listener that should respond to a change in the
+     *  database table */
+
     private val db get() = dbHelper.writableDatabase
+
+    /** Listener on answered note quests */
+    interface AnsweredQuestCountListener {
+        fun onAnsweredNoteQuestCountIncreased()
+        fun onAnsweredNoteQuestCountDecreased()
+    }
+
+    private val answeredQuestCountListeners: MutableList<AnsweredQuestCountListener> = CopyOnWriteArrayList()
+
+    var answeredCount: Int = getCount(statusIn = listOf(QuestStatus.ANSWERED))
+        private set
 
     fun add(quest: OsmNoteQuest): Boolean {
         return insertAll(listOf(quest), CONFLICT_IGNORE) == 1
@@ -50,11 +66,17 @@ class OsmNoteQuestDao @Inject constructor(
 
     fun update(quest: OsmNoteQuest): Boolean {
         quest.lastUpdate = Date()
-        return db.update(NAME, mapping.toUpdatableContentValues(quest), "$QUEST_ID = ${quest.id}", null) == 1
+        val query = "$QUEST_ID = ?"
+        val args = arrayOf(quest.id.toString())
+        val result = db.update(NAME, mapping.toUpdatableContentValues(quest), query, args) == 1
+        if (result) onUpdated()
+        return result
     }
 
     fun delete(id: Long): Boolean {
-        return db.delete(NAME, "$QUEST_ID = $id", null) == 1
+        val result = db.delete(NAME, "$QUEST_ID = $id", null) == 1
+        if (result) onUpdated()
+        return result
     }
 
     fun addAll(quests: Collection<OsmNoteQuest>): Int {
@@ -66,7 +88,9 @@ class OsmNoteQuestDao @Inject constructor(
     }
 
     fun deleteAllIds(ids: Collection<Long>): Int {
-        return db.delete(NAME, "$QUEST_ID IN (${ids.joinToString(",")})", null)
+        val result = db.delete(NAME, "$QUEST_ID IN (${ids.joinToString(",")})", null)
+        if (result > 0) onUpdated()
+        return result
     }
 
     fun getAllPositions(bounds: BoundingBox): List<LatLon> {
@@ -99,7 +123,16 @@ class OsmNoteQuestDao @Inject constructor(
             changedBefore: Long? = null
     ): Int {
         val qb = createQuery(statusIn, bounds, changedBefore)
-        return db.delete(NAME, qb.where, qb.args)
+        val result = db.delete(NAME, qb.where, qb.args)
+        if (result > 0) onUpdated()
+        return result
+    }
+
+    fun addAnsweredQuestCountListener(listener: AnsweredQuestCountListener) {
+        answeredQuestCountListeners.add(listener)
+    }
+    fun removeAnsweredQuestCountListener(listener: AnsweredQuestCountListener) {
+        answeredQuestCountListeners.remove(listener)
     }
 
     private fun insertAll(quests: Collection<OsmNoteQuest>, conflictAlgorithm: Int): Int {
@@ -114,8 +147,21 @@ class OsmNoteQuestDao @Inject constructor(
                 }
             }
         }
+        if (addedRows > 0) onUpdated()
 
         return addedRows
+    }
+
+    private fun onUpdated() {
+        val newAnsweredQuestCount = getCount(statusIn = listOf(QuestStatus.ANSWERED))
+        if (newAnsweredQuestCount != answeredCount) {
+            if (newAnsweredQuestCount > answeredCount) {
+                answeredQuestCountListeners.forEach { it.onAnsweredNoteQuestCountIncreased() }
+            } else {
+                answeredQuestCountListeners.forEach { it.onAnsweredNoteQuestCountDecreased() }
+            }
+            answeredCount = newAnsweredQuestCount
+        }
     }
 }
 

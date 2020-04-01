@@ -14,6 +14,8 @@ import de.westnordost.streetcomplete.data.osm.osmquest.TestQuestType
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
+import org.mockito.Mockito.mock
+import org.mockito.Mockito.verify
 
 class UndoOsmQuestDaoTest : ApplicationDbTestCase() {
 
@@ -36,8 +38,12 @@ class UndoOsmQuestDaoTest : ApplicationDbTestCase() {
     }
 
     @Test fun addAndGet() {
+        val listener = mock(UndoOsmQuestDao.Listener::class.java)
+        dao.addListener(listener)
+
         val id = 1L
         val input = addUndoQuest(id)
+        verify(listener).onAddedUndoOsmQuest()
         val output = dao.get(id)!!
 
         assertEquals(input.id, output.id)
@@ -52,14 +58,34 @@ class UndoOsmQuestDaoTest : ApplicationDbTestCase() {
     @Test fun delete() {
         val id = 1L
         addUndoQuest(id)
+
+        val listener = mock(UndoOsmQuestDao.Listener::class.java)
+        dao.addListener(listener)
+
         dao.delete(id)
         assertNull(dao.get(id))
+        verify(listener).onDeletedUndoOsmQuest()
     }
 
     @Test fun getAll() {
         addUndoQuest(1L, 1L)
         addUndoQuest(2L, 2L)
         assertEquals(2, dao.getAll().size)
+    }
+
+    @Test fun getCount0() {
+        assertEquals(0, dao.getCount())
+    }
+
+    @Test fun getCount1() {
+        addUndoQuest(1L)
+        assertEquals(1, dao.getCount())
+    }
+
+    @Test fun getCount2() {
+        addUndoQuest(1L, 1L)
+        addUndoQuest(2L, 2L)
+        assertEquals(2, dao.getCount())
     }
 
     private fun addUndoQuest(id: Long, elementId: Long = 1L): UndoOsmQuest {

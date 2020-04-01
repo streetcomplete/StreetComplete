@@ -6,7 +6,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.content.SharedPreferences
-import android.location.Location
 import android.location.LocationManager
 import android.net.ConnectivityManager
 import android.util.Log
@@ -23,33 +22,45 @@ import de.westnordost.streetcomplete.data.VisibleQuestListener
 import de.westnordost.streetcomplete.data.download.MobileDataAutoDownloadStrategy
 import de.westnordost.streetcomplete.data.download.WifiAutoDownloadStrategy
 import de.westnordost.streetcomplete.location.FineLocationManager
-import de.westnordost.streetcomplete.location.LocationUpdateListener
 import de.westnordost.streetcomplete.data.user.UserController
 import kotlinx.coroutines.*
+import javax.inject.Singleton
 
-/** Automatically downloads and uploads new quests around the user's location and uploads quests.
+/** Automatically downloads new quests around the user's location and uploads quests.
  *
  * Respects the user preference to only sync on wifi or not sync automatically at all
  */
-class QuestAutoSyncer @Inject constructor(
+@Singleton class QuestAutoSyncer @Inject constructor(
         private val questController: QuestController,
         private val mobileDataDownloadStrategy: MobileDataAutoDownloadStrategy,
         private val wifiDownloadStrategy: WifiAutoDownloadStrategy,
         private val context: Context,
+        private val unsyncedChangesDao: UnsyncedChangesDao,
         private val prefs: SharedPreferences,
         private val userController: UserController
-) : LocationUpdateListener, LifecycleObserver, VisibleQuestListener, CoroutineScope by CoroutineScope(Dispatchers.Default) {
+) : LifecycleObserver, CoroutineScope by CoroutineScope(Dispatchers.Default) {
 
     private var pos: LatLon? = null
 
     private var isConnected: Boolean = false
     private var isWifi: Boolean = false
 
-    private val locationManager = FineLocationManager(
-        context.getSystemService(Context.LOCATION_SERVICE) as LocationManager,
-        this::onLocationChanged
-    )
+    // amount of quests is reduced -> check if re-downloading makes sense now
+    private val visibleQuestListener = object : VisibleQuestListener {
+        override fun onQuestsCreated(quests: Collection<Quest>, group: QuestGroup) {}
+        override fun onQuestsRemoved(questIds: Collection<Long>, group: QuestGroup) {
+            triggerAutoDownload()
+        }
+    }
 
+    // new location is known -> check if downloading makes sense now
+    private val locationManager = FineLocationManager(
+        context.getSystemService(Context.LOCATION_SERVICE) as LocationManager) { location ->
+        pos = OsmLatLon(location.latitude, location.longitude)
+        triggerAutoDownload()
+    }
+
+    // connection state changed -> check if downloading or uploading is allowed now
     private val connectivityReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
             val connectionStateChanged = updateConnectionState()
@@ -62,6 +73,15 @@ class QuestAutoSyncer @Inject constructor(
         }
     }
 
+    // there are unsynced changes -> try uploading now
+    private val unsyncedChangesListener = object : UnsyncedChangesDao.Listener {
+        override fun onUnsyncedChangesCountIncreased() {
+            triggerAutoUpload()
+        }
+
+        override fun onUnsyncedChangesCountDecreased() {}
+    }
+
     val isAllowedByPreference: Boolean
         get() {
             val p = Prefs.Autosync.valueOf(prefs.getString(Prefs.AUTOSYNC, "ON")!!)
@@ -70,19 +90,28 @@ class QuestAutoSyncer @Inject constructor(
 
     /* ---------------------------------------- Lifecycle --------------------------------------- */
 
+    init {
+        questController.addListener(visibleQuestListener)
+        unsyncedChangesDao.addListener(unsyncedChangesListener)
+    }
+
     @OnLifecycleEvent(Lifecycle.Event.ON_RESUME) fun onResume() {
         updateConnectionState()
+        if (isConnected) {
+            triggerAutoDownload()
+            triggerAutoUpload()
+        }
         context.registerReceiver(connectivityReceiver, IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION))
-        questController.addListener(this)
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE) fun onPause() {
         stopPositionTracking()
         context.unregisterReceiver(connectivityReceiver)
-        questController.removeListener(this)
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY) fun onDestroy() {
+        questController.removeListener(visibleQuestListener)
+        unsyncedChangesDao.removeListener(unsyncedChangesListener)
         coroutineContext.cancel()
     }
 
@@ -93,23 +122,6 @@ class QuestAutoSyncer @Inject constructor(
 
     fun stopPositionTracking() {
         locationManager.removeUpdates()
-    }
-
-    /* ---------------------------------- VisibleQuestListener ---------------------------------- */
-
-    override fun onQuestsCreated(quests: Collection<Quest>, group: QuestGroup) { }
-
-    override fun onQuestsRemoved(questIds: Collection<Long>, group: QuestGroup) {
-        // amount of quests is reduced -> check if redownloding now makes sense
-        triggerAutoDownload()
-    }
-
-    /* --------------------------------- LocationUpdateListener --------------------------------- */
-
-    override fun onLocationChanged(location: Location?) {
-        if(location == null) return
-        pos = OsmLatLon(location.latitude, location.longitude)
-        triggerAutoDownload()
     }
 
     /* ------------------------------------------------------------------------------------------ */

@@ -53,7 +53,7 @@ class LoginFragment : Fragment(R.layout.fragment_login),
     override fun onStart() {
         super.onStart()
 
-        val unsyncedChanges = unsyncedChangesDao.getCount()
+        val unsyncedChanges = unsyncedChangesDao.count
         unpublishedQuestsText.text = getString(R.string.unsynced_quests_not_logged_in_description, unsyncedChanges)
         unpublishedQuestsText.visibility = if (unsyncedChanges > 0) View.VISIBLE else View.GONE
     }

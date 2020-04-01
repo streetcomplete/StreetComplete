@@ -10,6 +10,8 @@ import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 
 import org.junit.Assert.*
+import org.mockito.Mockito.mock
+import org.mockito.Mockito.verify
 
 class CreateNoteDaoTest : ApplicationDbTestCase() {
     private lateinit var dao: CreateNoteDao
@@ -26,32 +28,45 @@ class CreateNoteDaoTest : ApplicationDbTestCase() {
         assertEquals(listOf<CreateNote>(), dao.getAll())
     }
 
-    @Test fun addAndGet() {
+    @Test fun addGetAndDelete() {
+        val listener = mock(CreateNoteDao.Listener::class.java)
+        dao.addListener(listener)
+
         val note = CreateNote(null, "text", OsmLatLon(3.0, 5.0), "title",
                 ElementKey(Element.Type.NODE, 132L), arrayListOf("hello", "hey"))
 
         assertTrue(dao.add(note))
+        verify(listener).onAddedCreateNote()
         val dbNote = dao.get(note.id!!)!!
 
         assertEquals(note, dbNote)
 
         assertTrue(dao.delete(note.id!!))
+        verify(listener).onDeletedCreateNote()
 
         assertNull(dao.get(note.id!!))
     }
 
     @Test fun delete() {
+        val listener = mock(CreateNoteDao.Listener::class.java)
+        dao.addListener(listener)
+
         val note = CreateNote(null, "text", OsmLatLon(3.0, 5.0))
 
         assertTrue(dao.add(note))
+        verify(listener).onAddedCreateNote()
         assertTrue(dao.delete(note.id!!))
+        verify(listener).onDeletedCreateNote()
         assertNull(dao.get(note.id!!))
     }
 
     @Test fun addAndGetNullableFields() {
+        val listener = mock(CreateNoteDao.Listener::class.java)
+        dao.addListener(listener)
         val note = CreateNote(null, "text", OsmLatLon(3.0, 5.0))
 
         assertTrue(dao.add(note))
+        verify(listener).onAddedCreateNote()
         val dbNote = dao.get(note.id!!)!!
 
         assertNull(dbNote.elementKey)

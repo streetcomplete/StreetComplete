@@ -86,7 +86,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
         solvedQuestsText.text = questStatisticsDao.getTotalAmount().toString()
 
-        val unsyncedChanges = unsyncedChangesDao.getCount()
+        val unsyncedChanges = unsyncedChangesDao.count
         unpublishedQuestsText.text = getString(R.string.unsynced_quests_description, unsyncedChanges)
         unpublishedQuestsText.visibility = if (unsyncedChanges > 0) View.VISIBLE else View.GONE
     }

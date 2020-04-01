@@ -8,6 +8,7 @@ import org.junit.Test
 
 import org.junit.Assert.*
 import org.junit.Before
+import org.mockito.Mockito.*
 
 class OsmQuestSplitWayDaoTest : ApplicationDbTestCase() {
 
@@ -27,10 +28,14 @@ class OsmQuestSplitWayDaoTest : ApplicationDbTestCase() {
         assertEquals(listOf<OsmQuestSplitWay>(), dao.getAll())
     }
 
-    @Test fun putAndGet() {
+    @Test fun addAndGet() {
+        val listener = mock(OsmQuestSplitWayDao.Listener::class.java)
+        dao.addListener(listener)
+
         val id = 1L
         val input = createOsmQuestSplitWay(id)
-        dao.put(input)
+        dao.add(input)
+        verify(listener).onAddedSplitWay()
         val output = dao.get(id)!!
 
         assertEquals(input.questType, output.questType)
@@ -47,24 +52,29 @@ class OsmQuestSplitWayDaoTest : ApplicationDbTestCase() {
     }
 
     @Test fun delete() {
+        val listener: OsmQuestSplitWayDao.Listener = mock(OsmQuestSplitWayDao.Listener::class.java)
+        dao.addListener(listener)
+
         val id = 1L
+        assertFalse(dao.delete(id))
         val input = createOsmQuestSplitWay(id)
-        dao.put(input)
-        dao.delete(id)
+        dao.add(input)
+        verify(listener).onAddedSplitWay()
+        assertTrue(dao.delete(id))
+        verify(listener).onDeletedSplitWay()
         assertNull(dao.get(id))
     }
 
-    @Test fun putReplaces() {
+    @Test(expected = Exception::class)
+    fun addingTwiceThrowsException() {
         val id = 1L
-        dao.put(createOsmQuestSplitWay(id, 1L))
-        dao.put(createOsmQuestSplitWay(id, 123L))
-        assertEquals(123L, dao.get(id)?.wayId)
-        assertEquals(1, dao.getAll().size)
+        dao.add(createOsmQuestSplitWay(id, 1L))
+        dao.add(createOsmQuestSplitWay(id, 123L))
     }
 
     @Test fun getAll() {
-        dao.put(createOsmQuestSplitWay(1L, 1L))
-        dao.put(createOsmQuestSplitWay(2L, 2L))
+        dao.add(createOsmQuestSplitWay(1L, 1L))
+        dao.add(createOsmQuestSplitWay(2L, 2L))
         assertEquals(2, dao.getAll().size)
     }
 
@@ -73,13 +83,13 @@ class OsmQuestSplitWayDaoTest : ApplicationDbTestCase() {
     }
 
     @Test fun getCount1() {
-        dao.put(createOsmQuestSplitWay(1L, 1L))
+        dao.add(createOsmQuestSplitWay(1L, 1L))
         assertEquals(1, dao.getCount())
     }
 
     @Test fun getCount2() {
-        dao.put(createOsmQuestSplitWay(1L, 1L))
-        dao.put(createOsmQuestSplitWay(2L, 2L))
+        dao.add(createOsmQuestSplitWay(1L, 1L))
+        dao.add(createOsmQuestSplitWay(2L, 2L))
         assertEquals(2, dao.getCount())
     }
 

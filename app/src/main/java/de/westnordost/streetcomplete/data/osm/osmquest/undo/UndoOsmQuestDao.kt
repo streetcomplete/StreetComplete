@@ -21,12 +21,25 @@ import de.westnordost.streetcomplete.data.osm.osmquest.undo.UndoOsmQuestTable.NA
 import de.westnordost.streetcomplete.data.osm.osmquest.undo.UndoOsmQuestTable.NAME_MERGED_VIEW
 import de.westnordost.streetcomplete.ktx.*
 import de.westnordost.streetcomplete.util.Serializer
+import java.util.concurrent.CopyOnWriteArrayList
+import javax.inject.Singleton
 
-class UndoOsmQuestDao @Inject constructor(
+/** Stores UndoOsmQuest objects - to reverse a previously already uploaded change through OsmQuest */
+@Singleton class UndoOsmQuestDao @Inject constructor(
     private val dbHelper: SQLiteOpenHelper,
     private val mapping: UndoOsmQuestMapping
 ) {
+    /* Must be a singleton because there is a listener that should respond to a change in the
+     *  database table */
+
     private val db get() = dbHelper.writableDatabase
+
+    interface Listener {
+        fun onAddedUndoOsmQuest()
+        fun onDeletedUndoOsmQuest()
+    }
+
+    private val listeners: MutableList<Listener> = CopyOnWriteArrayList()
 
     fun getAll(): List<UndoOsmQuest> {
         return db.query(NAME_MERGED_VIEW) { mapping.toObject(it) }
@@ -38,12 +51,26 @@ class UndoOsmQuestDao @Inject constructor(
         return db.queryOne(NAME_MERGED_VIEW, null, selection, args) { mapping.toObject(it) }
     }
 
-    fun delete(questId: Long) {
-        db.delete(NAME, "$QUEST_ID = $questId", null)
+    fun getCount(): Int {
+        return db.queryOne(NAME, arrayOf("COUNT(*)")) { it.getInt(0) } ?: 0
+    }
+
+    fun delete(questId: Long): Boolean {
+        val result = db.delete(NAME, "$QUEST_ID = ?", arrayOf(questId.toString())) == 1
+        if (result) listeners.forEach { it.onDeletedUndoOsmQuest() }
+        return result
     }
 
     fun add(quest: UndoOsmQuest) {
-        db.insert(NAME, null, mapping.toContentValues(quest))
+        db.insertOrThrow(NAME, null, mapping.toContentValues(quest))
+        listeners.forEach { it.onAddedUndoOsmQuest() }
+    }
+
+    fun addListener(listener: Listener) {
+        listeners.add(listener)
+    }
+    fun removeListener(listener: Listener) {
+        listeners.remove(listener)
     }
 }
 

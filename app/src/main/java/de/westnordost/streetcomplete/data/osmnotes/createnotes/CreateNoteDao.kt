@@ -23,19 +23,33 @@ import de.westnordost.streetcomplete.data.osmnotes.createnotes.CreateNoteTable.C
 import de.westnordost.streetcomplete.data.osmnotes.createnotes.CreateNoteTable.NAME
 import de.westnordost.streetcomplete.ktx.*
 import de.westnordost.streetcomplete.util.Serializer
+import java.util.concurrent.CopyOnWriteArrayList
+import javax.inject.Singleton
 
-class CreateNoteDao @Inject constructor(
 /** Stores CreateNote objects - for creating OSM notes */
+@Singleton class CreateNoteDao @Inject constructor(
     private val dbHelper: SQLiteOpenHelper,
     private val mapping: CreateNoteMapping
 ) {
+    /* Must be a singleton because there is a listener that should respond to a change in the
+     *  database table */
+
     private val db get() = dbHelper.writableDatabase
+
+    interface Listener {
+        fun onAddedCreateNote()
+        fun onDeletedCreateNote()
+    }
+
+    private val listeners: MutableList<Listener> = CopyOnWriteArrayList()
 
     fun add(note: CreateNote): Boolean {
         val rowId = db.insert(NAME, null, mapping.toContentValues(note))
         if (rowId == -1L) return false
 
         note.id = rowId
+        listeners.forEach { it.onAddedCreateNote() }
+
         return true
     }
 
@@ -48,7 +62,10 @@ class CreateNoteDao @Inject constructor(
     }
 
     fun delete(id: Long): Boolean {
-        return db.delete(NAME, "$ID = $id", null) == 1
+        val success = db.delete(NAME, "$ID = $id", null) == 1
+        if (!success) return false
+        listeners.forEach { it.onDeletedCreateNote() }
+        return true
     }
 
     fun getAll(): List<CreateNote> {
@@ -60,6 +77,13 @@ class CreateNoteDao @Inject constructor(
         builder.appendBounds(bbox)
 
         return db.query(NAME, null, builder.where, builder.args) { mapping.toObject(it) }
+    }
+
+    fun addListener(listener: Listener) {
+        listeners.add(listener)
+    }
+    fun removeListener(listener: Listener) {
+        listeners.remove(listener)
     }
 }
 

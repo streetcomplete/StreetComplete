@@ -20,6 +20,7 @@ import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.data.osm.elementgeometry.*
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
+import org.mockito.Mockito.*
 
 class OsmQuestDaoTest : ApplicationDbTestCase() {
     private lateinit var geometryDao: ElementGeometryDao
@@ -47,11 +48,20 @@ class OsmQuestDaoTest : ApplicationDbTestCase() {
                         StringMapEntryModify("modify", "this", "to that")
                 )),
                 changesSource = "bla",
-                status = QuestStatus.ANSWERED
+                status = QuestStatus.CLOSED
         )
         addToDaos(quest)
 
         assertEquals(quest, dao.get(quest.id!!))
+    }
+
+    @Test fun addAnsweredQuestTriggersListener() {
+        val listener = mock(OsmQuestDao.AnsweredQuestCountListener::class.java)
+        dao.addAnsweredQuestCountListener(listener)
+
+        addToDaos(create(status = QuestStatus.ANSWERED))
+
+        verify(listener).onAnsweredQuestCountIncreased()
     }
 
     @Test fun deleteButNothingIsThere() {
@@ -59,15 +69,35 @@ class OsmQuestDaoTest : ApplicationDbTestCase() {
     }
 
     @Test fun addAndDelete() {
+        val listener = mock(OsmQuestDao.AnsweredQuestCountListener::class.java)
+        dao.addAnsweredQuestCountListener(listener)
+
         val quest = create()
         addToDaos(quest)
 
         assertTrue(dao.delete(quest.id!!))
         assertNull(dao.get(quest.id!!))
         assertFalse(dao.delete(quest.id!!))
+
+        // because the quests never had the status ANSWERED in the first place
+        verifyZeroInteractions(listener)
+    }
+
+    @Test fun deleteAnsweredQuestTriggersListener() {
+        val quest = create(status = QuestStatus.ANSWERED)
+        addToDaos(quest)
+
+        val listener = mock(OsmQuestDao.AnsweredQuestCountListener::class.java)
+        dao.addAnsweredQuestCountListener(listener)
+        dao.delete(quest.id!!)
+
+        verify(listener).onAnsweredQuestCountDecreased()
     }
 
     @Test fun update() {
+        val listener = mock(OsmQuestDao.AnsweredQuestCountListener::class.java)
+        dao.addAnsweredQuestCountListener(listener)
+
         val quest = create()
         addToDaos(quest)
 
@@ -78,9 +108,41 @@ class OsmQuestDaoTest : ApplicationDbTestCase() {
         dao.update(quest)
 
         assertEquals(quest, dao.get(quest.id!!))
+
+        // because the quests never had the status ANSWERED in the first place
+        verifyZeroInteractions(listener)
+    }
+
+    @Test fun updateToAnsweredQuestTriggersListener() {
+        val quest = create()
+        addToDaos(quest)
+
+        val listener = mock(OsmQuestDao.AnsweredQuestCountListener::class.java)
+        dao.addAnsweredQuestCountListener(listener)
+
+        quest.status = QuestStatus.ANSWERED
+        dao.update(quest)
+
+        verify(listener).onAnsweredQuestCountIncreased()
+    }
+
+    @Test fun updateFromAnsweredQuestTriggersListener() {
+        val quest = create(status = QuestStatus.ANSWERED)
+        addToDaos(quest)
+
+        val listener = mock(OsmQuestDao.AnsweredQuestCountListener::class.java)
+        dao.addAnsweredQuestCountListener(listener)
+
+        quest.status = QuestStatus.NEW
+        dao.update(quest)
+
+        verify(listener).onAnsweredQuestCountDecreased()
     }
 
     @Test fun addAllAndDeleteAll() {
+        val listener = mock(OsmQuestDao.AnsweredQuestCountListener::class.java)
+        dao.addAnsweredQuestCountListener(listener)
+
         val quests = listOf(
                 create(elementId = 1),
                 create(elementId = 2),
@@ -96,6 +158,27 @@ class OsmQuestDaoTest : ApplicationDbTestCase() {
 
         assertEquals(3, dao.deleteAllIds(quests.map { it.id!! }))
         assertEquals(0, dao.getCount())
+
+        // because the added quests were not ANSWERED in the first place
+        verifyZeroInteractions(listener)
+    }
+
+    @Test fun addAllAndDeleteAllTriggersListenerIfAtLeastOneIsOfStatusAnswered() {
+        val listener = mock(OsmQuestDao.AnsweredQuestCountListener::class.java)
+        dao.addAnsweredQuestCountListener(listener)
+
+        val quests = listOf(
+            create(elementId = 1),
+            create(elementId = 2, status = QuestStatus.ANSWERED)
+        )
+
+        addToDaos(*quests.toTypedArray())
+
+        verify(listener).onAnsweredQuestCountIncreased()
+
+        dao.deleteAllIds(quests.map { it.id!! })
+
+        verify(listener).onAnsweredQuestCountDecreased()
     }
 
     @Test fun unhideAll() {
@@ -106,9 +189,15 @@ class OsmQuestDaoTest : ApplicationDbTestCase() {
 
         assertEquals(0, dao.getCount(listOf(QuestStatus.NEW)))
 
+        val listener = mock(OsmQuestDao.AnsweredQuestCountListener::class.java)
+        dao.addAnsweredQuestCountListener(listener)
+
         dao.unhideAll()
 
         assertEquals(2, dao.getCount(listOf(QuestStatus.NEW)))
+
+        // because the added quests were not ANSWERED in the first place
+        verifyZeroInteractions(listener)
     }
 
     @Test fun getAllByBBox() {
@@ -170,12 +259,42 @@ class OsmQuestDaoTest : ApplicationDbTestCase() {
         assertEquals(2, dao.getCount())
     }
 
+    @Test fun getAnsweredCount() {
+        assertEquals(0, dao.answeredCount)
+        addToDaos(create(questType = TEST_QUEST_TYPE))
+        assertEquals(0, dao.answeredCount)
+        val quest2 = create(questType = TEST_QUEST_TYPE2, status = QuestStatus.ANSWERED)
+        addToDaos(quest2)
+        assertEquals(1, dao.answeredCount)
+        dao.delete(quest2.id!!)
+        assertEquals(0, dao.answeredCount)
+    }
+
     @Test fun deleteAll() {
         addToDaos(
                 create(questType = TEST_QUEST_TYPE),
                 create(questType = TEST_QUEST_TYPE2)
         )
+        val listener = mock(OsmQuestDao.AnsweredQuestCountListener::class.java)
+        dao.addAnsweredQuestCountListener(listener)
+
         assertEquals(2, dao.deleteAll())
+        // because the added quests were not ANSWERED in the first place
+        verifyZeroInteractions(listener)
+    }
+
+    @Test fun deleteAllTriggersListenerIfAtLeastOneIsOfStatusAnswered() {
+        addToDaos(
+            create(questType = TEST_QUEST_TYPE),
+            create(questType = TEST_QUEST_TYPE2, status = QuestStatus.ANSWERED)
+        )
+
+        val listener = mock(OsmQuestDao.AnsweredQuestCountListener::class.java)
+        dao.addAnsweredQuestCountListener(listener)
+
+        dao.deleteAll()
+
+        verify(listener).onAnsweredQuestCountDecreased()
     }
 
     private fun addToDaos(vararg quests: OsmQuest) {

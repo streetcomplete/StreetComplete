@@ -394,12 +394,6 @@ public class MainActivity extends AppCompatActivity implements
 		if(!mapFragment.onBackPressed()) super.onBackPressed();
 	}
 
-	@Override protected void onResume()
-	{
-		super.onResume();
-		questAutoSyncer.triggerAutoUpload();
-	}
-
 	@Override public void onPause()
 	{
 		super.onPause();
@@ -475,7 +469,6 @@ public class MainActivity extends AppCompatActivity implements
 			.setPositiveButton(R.string.undo_confirm_positive, (dialog, which) ->
 			{
 				questController.undo(quest);
-				questAutoSyncer.triggerAutoUpload();
 				answersCounter.subtractOneUnsynced();
 				updateUndoButtonVisibility();
 				setUndoButtonEnabled(true);
@@ -590,9 +583,6 @@ public class MainActivity extends AppCompatActivity implements
 				if(answersCounter.waitingForUpload() >= 3) {
 					requestOAuthorized();
 				}
-			}
-			else {
-				questAutoSyncer.triggerAutoUpload();
 			}
 		}
 	}

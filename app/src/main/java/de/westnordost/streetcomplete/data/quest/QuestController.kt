@@ -175,7 +175,7 @@ import javax.inject.Singleton
         val q = osmQuestDB.get(osmQuestId)
         if (q?.status != QuestStatus.NEW) return false
 
-        splitWayDB.put(OsmQuestSplitWay(osmQuestId, q.osmElementQuestType, q.elementId, source, splits))
+        splitWayDB.add(OsmQuestSplitWay(osmQuestId, q.osmElementQuestType, q.elementId, source, splits))
 
         removeQuestsForElement(q.elementType, q.elementId)
         return true
