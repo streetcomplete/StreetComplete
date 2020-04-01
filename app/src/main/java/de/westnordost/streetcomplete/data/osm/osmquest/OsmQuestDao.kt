@@ -32,6 +32,7 @@ import de.westnordost.streetcomplete.ktx.*
 import de.westnordost.streetcomplete.util.Serializer
 
 class OsmQuestDao @Inject constructor(
+/** Stores OsmQuest objects - quests and answers to these for adding data to OSM */
     private val dbHelper: SQLiteOpenHelper,
     private val mapping: OsmQuestMapping
 ) {

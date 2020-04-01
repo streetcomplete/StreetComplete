@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.osmnotes.createnotes.CreateNoteDao
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestDao
 import javax.inject.Inject
 
+/** Access and listen to how many unsynced (=uploadable) changes there are */
 class UnsyncedChangesDao @Inject constructor(
     private val questDao: OsmQuestDao,
     private val noteQuestDao: OsmNoteQuestDao,

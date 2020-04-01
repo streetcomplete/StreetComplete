@@ -25,6 +25,7 @@ import de.westnordost.streetcomplete.ktx.*
 import de.westnordost.streetcomplete.util.Serializer
 
 class CreateNoteDao @Inject constructor(
+/** Stores CreateNote objects - for creating OSM notes */
     private val dbHelper: SQLiteOpenHelper,
     private val mapping: CreateNoteMapping
 ) {

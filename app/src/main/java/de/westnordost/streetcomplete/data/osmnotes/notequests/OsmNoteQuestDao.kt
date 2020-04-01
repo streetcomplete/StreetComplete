@@ -30,6 +30,7 @@ import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestTable.
 import de.westnordost.streetcomplete.ktx.*
 
 class OsmNoteQuestDao @Inject constructor(
+/** Stores OsmNoteQuest objects - quests and answers to these for contributing to a note */
     private val dbHelper: SQLiteOpenHelper,
     private val mapping: OsmNoteQuestMapping
 ) {

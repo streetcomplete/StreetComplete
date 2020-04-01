@@ -18,6 +18,8 @@ import javax.inject.Inject
 import kotlin.collections.ArrayList
 
 class OsmQuestSplitWayDao @Inject constructor(
+/** Stores OsmQuestSplitWay objects by quest ID - the solutions of "differs along the way" quest
+ *  answers. */
     private val dbHelper: SQLiteOpenHelper,
     private val mapping: OsmQuestSplitWayMapping
 ) {
