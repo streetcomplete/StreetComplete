@@ -9,7 +9,7 @@ import java.util.concurrent.CopyOnWriteArrayList
 import javax.inject.Inject
 
 /** Access and listen to how many unsynced (=uploadable) changes there are */
-class UnsyncedChangesDao @Inject constructor(
+class UnsyncedChangesController @Inject constructor(
     private val questDao: OsmQuestDao,
     private val noteQuestDao: OsmNoteQuestDao,
     private val createNoteDao: CreateNoteDao,

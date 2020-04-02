@@ -10,7 +10,7 @@ import de.westnordost.streetcomplete.BackPressedListener
 import de.westnordost.streetcomplete.HasTitle
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.quest.UnsyncedChangesDao
+import de.westnordost.streetcomplete.data.quest.UnsyncedChangesController
 import de.westnordost.streetcomplete.data.user.UserController
 import de.westnordost.streetcomplete.ktx.childFragmentManagerOrNull
 import de.westnordost.streetcomplete.ktx.toast
@@ -28,7 +28,7 @@ class LoginFragment : Fragment(R.layout.fragment_login),
     BackPressedListener,
     OAuthFragment.Listener {
 
-    @Inject internal lateinit var unsyncedChangesDao: UnsyncedChangesDao
+    @Inject internal lateinit var unsyncedChangesController: UnsyncedChangesController
     @Inject internal lateinit var userController: UserController
 
     override val title: String get() = getString(R.string.user_login)
@@ -53,7 +53,7 @@ class LoginFragment : Fragment(R.layout.fragment_login),
     override fun onStart() {
         super.onStart()
 
-        val unsyncedChanges = unsyncedChangesDao.count
+        val unsyncedChanges = unsyncedChangesController.count
         unpublishedQuestsText.text = getString(R.string.unsynced_quests_not_logged_in_description, unsyncedChanges)
         unpublishedQuestsText.visibility = if (unsyncedChanges > 0) View.VISIBLE else View.GONE
     }

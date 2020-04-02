@@ -31,13 +31,13 @@ import javax.inject.Singleton
  * Respects the user preference to only sync on wifi or not sync automatically at all
  */
 @Singleton class QuestAutoSyncer @Inject constructor(
-        private val questController: QuestController,
-        private val mobileDataDownloadStrategy: MobileDataAutoDownloadStrategy,
-        private val wifiDownloadStrategy: WifiAutoDownloadStrategy,
-        private val context: Context,
-        private val unsyncedChangesDao: UnsyncedChangesDao,
-        private val prefs: SharedPreferences,
-        private val userController: UserController
+    private val questController: QuestController,
+    private val mobileDataDownloadStrategy: MobileDataAutoDownloadStrategy,
+    private val wifiDownloadStrategy: WifiAutoDownloadStrategy,
+    private val context: Context,
+    private val unsyncedChangesController: UnsyncedChangesController,
+    private val prefs: SharedPreferences,
+    private val userController: UserController
 ) : LifecycleObserver, CoroutineScope by CoroutineScope(Dispatchers.Default) {
 
     private var pos: LatLon? = null
@@ -74,7 +74,7 @@ import javax.inject.Singleton
     }
 
     // there are unsynced changes -> try uploading now
-    private val unsyncedChangesListener = object : UnsyncedChangesDao.Listener {
+    private val unsyncedChangesListener = object : UnsyncedChangesController.Listener {
         override fun onUnsyncedChangesCountIncreased() {
             triggerAutoUpload()
         }
@@ -92,7 +92,7 @@ import javax.inject.Singleton
 
     init {
         questController.addListener(visibleQuestListener)
-        unsyncedChangesDao.addListener(unsyncedChangesListener)
+        unsyncedChangesController.addListener(unsyncedChangesListener)
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_RESUME) fun onResume() {
@@ -111,7 +111,7 @@ import javax.inject.Singleton
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY) fun onDestroy() {
         questController.removeListener(visibleQuestListener)
-        unsyncedChangesDao.removeListener(unsyncedChangesListener)
+        unsyncedChangesController.removeListener(unsyncedChangesListener)
         coroutineContext.cancel()
     }
 

@@ -7,12 +7,12 @@ import javax.inject.Inject;
 
 import de.westnordost.streetcomplete.controls.AnswersCounterView;
 import de.westnordost.streetcomplete.controls.UploadButton;
-import de.westnordost.streetcomplete.data.quest.UnsyncedChangesDao;
+import de.westnordost.streetcomplete.data.quest.UnsyncedChangesController;
 import de.westnordost.streetcomplete.data.user.QuestStatisticsDao;
 
 public class AnswersCounter
 {
-	private final UnsyncedChangesDao unsyncedChangesDB;
+	private final UnsyncedChangesController unsyncedChangesDB;
 	private final QuestStatisticsDao questStatisticsDB;
 
 	private int uploaded;
@@ -23,7 +23,7 @@ public class AnswersCounter
 
 	private boolean isAutosync;
 
-	@Inject public AnswersCounter(UnsyncedChangesDao unsyncedChangesDB,
+	@Inject public AnswersCounter(UnsyncedChangesController unsyncedChangesDB,
 								  QuestStatisticsDao questStatisticsDB)
 	{
 		this.unsyncedChangesDB = unsyncedChangesDB;
