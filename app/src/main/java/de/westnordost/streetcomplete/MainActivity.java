@@ -66,6 +66,8 @@ import de.westnordost.streetcomplete.data.quest.QuestController;
 import de.westnordost.streetcomplete.data.download.QuestDownloadProgressListener;
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuest;
 import de.westnordost.streetcomplete.data.quest.QuestUploadDownloadController;
+import de.westnordost.streetcomplete.data.quest.UndoableOsmQuestsCountListener;
+import de.westnordost.streetcomplete.data.quest.UndoableOsmQuestsSource;
 import de.westnordost.streetcomplete.data.upload.UploadProgressListener;
 import de.westnordost.streetcomplete.data.upload.VersionBannedException;
 import de.westnordost.streetcomplete.data.user.UserController;
@@ -110,6 +112,7 @@ public class MainActivity extends AppCompatActivity implements
 
 	@Inject QuestController questController;
 	@Inject QuestUploadDownloadController questUploadDownloadController;
+	@Inject UndoableOsmQuestsSource undoableOsmQuestsSource;
 	@Inject NotificationsDao notificationsDao;
 
 	@Inject SharedPreferences prefs;
@@ -347,6 +350,9 @@ public class MainActivity extends AppCompatActivity implements
 		questUploadDownloadController.addUploadProgressListener(uploadProgressListener);
 		questUploadDownloadController.addQuestDownloadProgressListener(downloadProgressListener);
 
+		undoButton.setVisibility(undoableOsmQuestsSource.getCount() > 0 ? View.VISIBLE : View.INVISIBLE);
+		undoableOsmQuestsSource.addListener(undoableOsmQuestsCountListener);
+
 		onNumberOfNotificationsUpdated(notificationsDao.getNumberOfNotifications());
 		notificationsDao.addListener(this);
 
@@ -392,6 +398,8 @@ public class MainActivity extends AppCompatActivity implements
 
 		questUploadDownloadController.setShowNotification(true);
 
+		undoableOsmQuestsSource.removeListener(undoableOsmQuestsCountListener);
+
 		questUploadDownloadController.removeUploadProgressListener(uploadProgressListener);
 		questUploadDownloadController.removeQuestDownloadProgressListener(downloadProgressListener);
 
@@ -429,17 +437,11 @@ public class MainActivity extends AppCompatActivity implements
 			{
 				questController.undo(quest);
 				answersCounter.subtractOneUnsynced();
-				updateUndoButtonVisibility();
 				setUndoButtonEnabled(true);
 			})
 			.setNegativeButton(R.string.undo_confirm_negative, (dialog, which) -> { setUndoButtonEnabled(true); })
 			.setOnCancelListener(dialog -> { setUndoButtonEnabled(true); })
 			.show();
-	}
-
-	private void updateUndoButtonVisibility()
-	{
-		undoButton.setVisibility(questController.getLastSolvedOsmQuest() != null ? View.VISIBLE : View.INVISIBLE);
 	}
 
 	private void setUndoButtonEnabled(boolean enabled)
@@ -634,6 +636,23 @@ public class MainActivity extends AppCompatActivity implements
 		}
 	};
 
+	/* --------------------------- UndoableOsmQuestsCountListener  ------------------------------ */
+
+	private final UndoableOsmQuestsCountListener undoableOsmQuestsCountListener = new UndoableOsmQuestsCountListener() {
+
+		@AnyThread @Override public void onUndoableOsmQuestsCountDecreased()
+		{
+			if (undoableOsmQuestsSource.getCount() <= 0) {
+				runOnUiThread(() -> undoButton.setVisibility(View.INVISIBLE));
+			}
+		}
+
+		@AnyThread @Override public void onUndoableOsmQuestsCountIncreased()
+		{
+			runOnUiThread(() -> undoButton.setVisibility(View.VISIBLE));
+		}
+	};
+
 	/* ----------------------------- Download Progress listener  -------------------------------- */
 
 	private final QuestDownloadProgressListener downloadProgressListener
@@ -727,7 +746,6 @@ public class MainActivity extends AppCompatActivity implements
 
 	@Override public void onQuestSolved(@Nullable Quest quest, @Nullable String source)
 	{
-		updateUndoButtonVisibility();
 		showQuestSolvedAnimation(quest);
 		triggerAutoUploadByUserInteraction();
 	}

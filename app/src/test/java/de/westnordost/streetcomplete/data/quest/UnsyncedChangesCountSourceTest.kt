@@ -39,7 +39,7 @@ class UnsyncedChangesCountSourceTest {
 
     private lateinit var source: UnsyncedChangesCountSource
 
-    private var baseCount = 1+2+3+4+5
+    private val baseCount = 1+2+3+4+5
 
     @Before fun setUp() {
         osmQuestController = mock()
@@ -118,8 +118,6 @@ class UnsyncedChangesCountSourceTest {
         verifyDecreased()
     }
 
-    // TODO...
-
     @Test fun `remove answered osm quest triggers listener`() {
         questStatusListener.onRemoved(1L, QuestStatus.ANSWERED)
         verifyDecreased()
@@ -155,8 +153,6 @@ class UnsyncedChangesCountSourceTest {
         verify(listener).onUnsyncedChangesCountIncreased()
         assertEquals(baseCount + 100, source.count)
     }
-
-    // TODO TESTS FOR QUEST AND NOTEQUEST!
 
     @Test fun `remove answered osm note quest triggers listener`() {
         noteQuestStatusListener.onRemoved(1L, QuestStatus.ANSWERED)

@@ -22,3 +22,6 @@ class OrderedVisibleQuestTypesProvider @Inject constructor(
         return visibleQuestTypes
     }
 }
+/* TODO there should actually be a listener on visible quest types and the quest type order, so that
+*  as a response to this, the map display (and other things) can be updated. For example, the
+*  visible quest types affects any VisibleQuestListener as well. */

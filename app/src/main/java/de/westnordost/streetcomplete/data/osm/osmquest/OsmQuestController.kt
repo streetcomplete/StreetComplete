@@ -233,8 +233,13 @@ import javax.inject.Singleton
     /** Get single quest by id */
     fun get(id: Long): OsmQuest? = dao.get(id)
 
-    /** Get the last solved quest (includes answered, hidden and uploaded) */
-    fun getLastSolved(): OsmQuest? = dao.getLastSolved()
+    /** Get the last undoable quest (includes answered, hidden and uploaded) */
+    fun getLastUndoable(): OsmQuest? = dao.getLastSolved()
+
+    /** Get all undoable quests count */
+    fun getAllUndoableCount(): Int = dao.getCount(statusIn = listOf(
+        QuestStatus.ANSWERED, QuestStatus.CLOSED, QuestStatus.HIDDEN
+    ))
 
     /** Get all answered quests */
     fun getAllAnswered(): List<OsmQuest> = dao.getAll(statusIn = listOf(QuestStatus.ANSWERED))
