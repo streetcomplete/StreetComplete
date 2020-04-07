@@ -12,7 +12,7 @@ import de.westnordost.streetcomplete.data.osm.upload.ConflictException
 import de.westnordost.streetcomplete.data.osm.upload.ElementDeletedException
 import de.westnordost.streetcomplete.data.osmnotes.*
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
-import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestDao
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestController
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestType
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
 import de.westnordost.streetcomplete.data.upload.Uploader
@@ -20,12 +20,11 @@ import java.util.concurrent.atomic.AtomicBoolean
 
 /** Gets all create notes from local DB and uploads them via the OSM API */
 class CreateNotesUploader @Inject constructor(
-        private val createNoteDB: CreateNoteDao,
-        private val noteDB: NoteDao,
-        private val noteQuestDB: OsmNoteQuestDao,
-        private val mapDataDao: MapDataDao,
-        private val questType: OsmNoteQuestType,
-        private val singleCreateNoteUploader: SingleCreateNoteUploader
+    private val createNoteDB: CreateNoteDao,
+    private val osmNoteQuestController: OsmNoteQuestController,
+    private val mapDataDao: MapDataDao,
+    private val questType: OsmNoteQuestType,
+    private val singleCreateNoteUploader: SingleCreateNoteUploader
 ): Uploader {
 
     override var uploadedChangeListener: OnUploadedChangeListener? = null
@@ -50,8 +49,7 @@ class CreateNotesUploader @Inject constructor(
                 // if the note was not added, don't do this (see below) -> probably based on old data
                 val noteQuest = OsmNoteQuest(newNote, questType)
                 noteQuest.status = QuestStatus.CLOSED
-                noteDB.put(newNote)
-                noteQuestDB.add(noteQuest)
+                osmNoteQuestController.add(noteQuest)
 
                 Log.d(TAG, "Uploaded note ${createNote.logString}")
                 uploadedChangeListener?.onUploaded(NOTE, createNote.position)

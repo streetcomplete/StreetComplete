@@ -10,7 +10,7 @@ import de.westnordost.streetcomplete.MainActivity
 import de.westnordost.streetcomplete.R
 
 /** Shows a download progress notification */
-class QuestDownloadNotification(
+class QuestDownloadNotificationController(
     private val service: Service,
     notificationChannelId: String,
     private val notificationId: Int

@@ -19,7 +19,6 @@ import javax.inject.Inject
 
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestDao
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
 import de.westnordost.osmapi.notes.NoteComment
 import de.westnordost.streetcomplete.util.BitmapUtil
@@ -29,6 +28,7 @@ import de.westnordost.streetcomplete.view.ListAdapter
 import android.text.format.DateUtils.MINUTE_IN_MILLIS
 import de.westnordost.osmapi.user.User
 import de.westnordost.streetcomplete.data.OsmModule
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestController
 import kotlinx.android.synthetic.main.fragment_quest_answer.*
 import kotlinx.android.synthetic.main.quest_buttonpanel_note_discussion.*
 import kotlinx.android.synthetic.main.quest_note_discussion_content.*
@@ -40,7 +40,7 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment<NoteAnswer>() {
 
     private lateinit var anonAvatar: Bitmap
 
-    @Inject internal lateinit var noteDb: OsmNoteQuestDao
+    @Inject internal lateinit var osmNoteQuestController: OsmNoteQuestController
 
     private val attachPhotoFragment get() =
         childFragmentManager.findFragmentById(R.id.attachPhotoFragment) as? AttachPhotoFragment
@@ -65,7 +65,7 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment<NoteAnswer>() {
 
         anonAvatar = BitmapUtil.createBitmapFrom(resources.getDrawable(R.drawable.ic_osm_anon_avatar))
 
-        inflateNoteDiscussion(noteDb.get(questId)!!.note.comments)
+        inflateNoteDiscussion(osmNoteQuestController.get(questId)!!.note.comments)
 
         if (savedInstanceState == null) {
             childFragmentManager.beginTransaction()

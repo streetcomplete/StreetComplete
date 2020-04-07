@@ -39,13 +39,10 @@ import de.westnordost.osmapi.map.data.Way
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.VisibleQuestListener
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuest
 import de.westnordost.streetcomplete.data.osm.splitway.SplitPolylineAtPosition
-import de.westnordost.streetcomplete.data.quest.Quest
-import de.westnordost.streetcomplete.data.quest.QuestController
-import de.westnordost.streetcomplete.data.quest.QuestGroup
+import de.westnordost.streetcomplete.data.quest.*
 import de.westnordost.streetcomplete.ktx.childFragmentManagerOrNull
 import de.westnordost.streetcomplete.ktx.getLocationInWindow
 import de.westnordost.streetcomplete.ktx.toast
@@ -69,6 +66,7 @@ class MainFragment : Fragment(R.layout.fragment_map_with_controls),
 
     @Inject internal lateinit var questController: QuestController
     @Inject internal lateinit var isSurveyChecker: QuestSourceIsSurveyChecker
+    @Inject internal lateinit var visibleQuestsSource: VisibleQuestsSource
 
     private lateinit var locationManager: FineLocationManager
     private val mainHandler = Handler(Looper.getMainLooper())
@@ -184,7 +182,7 @@ class MainFragment : Fragment(R.layout.fragment_map_with_controls),
 
     override fun onStart() {
         super.onStart()
-        questController.addListener(this)
+        visibleQuestsSource.addListener(this)
         requireContext().registerReceiver(
             locationAvailabilityReceiver,
             LocationUtil.createLocationAvailabilityIntentFilter()
@@ -203,7 +201,7 @@ class MainFragment : Fragment(R.layout.fragment_map_with_controls),
 
     override fun onStop() {
         super.onStop()
-        questController.removeListener(this)
+        visibleQuestsSource.removeListener(this)
         requireContext().unregisterReceiver(locationAvailabilityReceiver)
         LocalBroadcastManager.getInstance(requireContext()).unregisterReceiver(locationRequestFinishedReceiver)
         locationManager.removeUpdates()
@@ -367,23 +365,26 @@ class MainFragment : Fragment(R.layout.fragment_map_with_controls),
 
     /* ---------------------------------- VisibleQuestListener ---------------------------------- */
 
-    @AnyThread override fun onQuestsCreated(quests: Collection<Quest>, group: QuestGroup) {
-        // to recreate element geometry of selected quest (if any) after recreation of activity
+    @AnyThread override fun onUpdatedVisibleQuests(
+        added: Collection<Quest>,
+        removed: Collection<Long>,
+        group: QuestGroup
+    ) {
         val f = bottomSheetFragment
         if (f !is IsShowingQuestDetails) return
         if (group != f.questGroup) return
-        val quest = quests.find { it.id == f.questId } ?: return
 
-        mainHandler.post { showQuestDetails(quest, group) }
-    }
-
-    @AnyThread override fun onQuestsRemoved(questIds: Collection<Long>, group: QuestGroup) {
-        val f = bottomSheetFragment
-        if (f !is IsShowingQuestDetails) return
-        if (group != f.questGroup) return
-        if (!questIds.contains(f.questId)) return
-
-        mainHandler.post { closeBottomSheet() }
+        // open quest does not exist anymore!
+        if (removed.contains(f.questId)) {
+            mainHandler.post { closeBottomSheet() }
+        } else {
+            // TODO maybe this is not necessary anymore because the activity is not recreated on configuration change
+            // to recreate element geometry of selected quest (if any) after recreation of activity
+            val quest = added.find { it.id == f.questId }
+            if (quest != null) {
+                mainHandler.post { showQuestDetails(quest, group) }
+            }
+        }
     }
 
     /* --------------------------------------- Location ----------------------------------------- */
@@ -491,7 +492,7 @@ class MainFragment : Fragment(R.layout.fragment_map_with_controls),
             setIsFollowingPosition(!mapFragment.isFollowingPosition)
         } else {
             val tag = LocationRequestFragment::class.java.simpleName
-            val locationRequestFragment = activity!!.supportFragmentManager.findFragmentByTag(tag) as LocationRequestFragment?
+            val locationRequestFragment = activity?.supportFragmentManager?.findFragmentByTag(tag) as LocationRequestFragment?
             locationRequestFragment?.startRequest()
         }
     }

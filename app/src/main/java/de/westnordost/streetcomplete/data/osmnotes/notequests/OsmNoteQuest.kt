@@ -9,6 +9,7 @@ import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.notes.Note
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPointGeometry
 
+/** Represents one task for the user to contribute to a public OSM note */
 data class OsmNoteQuest(
         override var id: Long?,
         val note: Note,
@@ -45,19 +46,5 @@ data class OsmNoteQuest(
 
         val text = note.comments?.firstOrNull()?.text
         return text?.matches(".*$questionMarksAroundTheWorld.*".toRegex()) ?: false
-    }
-
-    fun solve(text: String, imagePaths: List<String>?) {
-        this.comment = text
-        this.imagePaths = imagePaths
-        status = QuestStatus.ANSWERED
-    }
-
-    fun hide() {
-        status = QuestStatus.HIDDEN
-    }
-
-    fun close() {
-        status = QuestStatus.CLOSED
     }
 }

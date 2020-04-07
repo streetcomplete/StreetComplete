@@ -30,29 +30,17 @@ import de.westnordost.streetcomplete.data.quest.QuestStatus
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.ktx.*
 import de.westnordost.streetcomplete.util.Serializer
-import java.util.concurrent.CopyOnWriteArrayList
-import javax.inject.Singleton
 
-/** Stores OsmQuest objects - quests and answers to these for adding data to OSM */
-@Singleton class OsmQuestDao @Inject constructor(
+/** Stores OsmQuest objects - quests and answers to these for adding data to OSM.
+ *
+ *  This is just a simple CRUD-like DAO, use OsmQuestController to access the data from the
+ *  application logic.
+ *  */
+internal class OsmQuestDao @Inject constructor(
     private val dbHelper: SQLiteOpenHelper,
     private val mapping: OsmQuestMapping
 ) {
-    /* Must be a singleton because there is a listener that should respond to a change in the
-     *  database table */
-
     private val db get() = dbHelper.writableDatabase
-
-    /** Listener on solved quests */
-    interface AnsweredQuestCountListener {
-        fun onAnsweredQuestCountIncreased()
-        fun onAnsweredQuestCountDecreased()
-    }
-
-    private val answeredQuestCountListeners: MutableList<AnsweredQuestCountListener> = CopyOnWriteArrayList()
-
-    var answeredCount: Int = getCount(statusIn = listOf(ANSWERED))
-        private set
 
     fun add(quest: OsmQuest): Boolean {
         return addAll(listOf(quest)) == 1
@@ -64,15 +52,21 @@ import javax.inject.Singleton
 
     fun update(quest: OsmQuest): Boolean {
         quest.lastUpdate = Date()
-        val result = db.update(NAME, mapping.toUpdatableContentValues(quest), "$QUEST_ID = ${quest.id}", null) == 1
-        if (result) onUpdated()
-        return result
+        return db.update(NAME, mapping.toUpdatableContentValues(quest), "$QUEST_ID = ${quest.id}", null) == 1
+    }
+
+    fun updateAll(quests: List<OsmQuest>): Int {
+        var rows = 0
+        db.transaction {
+            quests.forEach {
+                if (update(it)) rows++
+            }
+        }
+        return rows
     }
 
     fun delete(id: Long): Boolean {
-        val result = db.delete(NAME, "$QUEST_ID = $id", null) == 1
-        if (result) onUpdated()
-        return result
+        return db.delete(NAME, "$QUEST_ID = $id", null) == 1
     }
 
     fun addAll(quests: Collection<OsmQuest>): Int {
@@ -87,21 +81,11 @@ import javax.inject.Singleton
                 }
             }
         }
-        if (addedRows > 0) onUpdated()
         return addedRows
     }
 
     fun deleteAllIds(ids: Collection<Long>): Int {
-        val result = db.delete(NAME, "$QUEST_ID IN (${ids.joinToString(",")})", null)
-        if (result > 0) onUpdated()
-        return result
-    }
-
-    fun unhideAll(): Int {
-        val values = contentValuesOf(QUEST_STATUS to NEW.name)
-        val result = db.update(NAME, values, "$QUEST_STATUS = ?", arrayOf(HIDDEN.name))
-        if (result > 0) onUpdated()
-        return result
+        return db.delete(NAME, "$QUEST_ID IN (${ids.joinToString(",")})", null)
     }
 
     fun getLastSolved(): OsmQuest? {
@@ -150,28 +134,7 @@ import javax.inject.Singleton
             changedBefore: Long? = null
     ): Int {
         val qb = createQuery(statusIn, bounds, element, questTypes, changedBefore)
-        val result = db.delete(NAME, qb.where, qb.args)
-        if (result > 0) onUpdated()
-        return result
-    }
-
-    fun addAnsweredQuestCountListener(listener: AnsweredQuestCountListener) {
-        answeredQuestCountListeners.add(listener)
-    }
-    fun removeSolvedQuestCountListener(listener: AnsweredQuestCountListener) {
-        answeredQuestCountListeners.remove(listener)
-    }
-
-    private fun onUpdated() {
-        val newAnsweredQuestCount = getCount(statusIn = listOf(ANSWERED))
-        if (newAnsweredQuestCount != answeredCount) {
-            if (newAnsweredQuestCount > answeredCount) {
-                answeredQuestCountListeners.forEach { it.onAnsweredQuestCountIncreased() }
-            } else {
-                answeredQuestCountListeners.forEach { it.onAnsweredQuestCountDecreased() }
-            }
-            answeredCount = newAnsweredQuestCount
-        }
+        return db.delete(NAME, qb.where, qb.args)
     }
 }
 

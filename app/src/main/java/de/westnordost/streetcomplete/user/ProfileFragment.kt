@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.OsmModule
-import de.westnordost.streetcomplete.data.quest.UnsyncedChangesController
+import de.westnordost.streetcomplete.data.quest.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.user.QuestStatisticsDao
 import de.westnordost.streetcomplete.data.user.UserController
 import de.westnordost.streetcomplete.data.user.achievements.AchievementsModule
@@ -30,7 +30,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     @Inject internal lateinit var questStatisticsDao: QuestStatisticsDao
     @Inject internal lateinit var userAchievementDao: UserAchievementsDao
     @Inject internal lateinit var userLinksDao: UserLinksDao
-    @Inject internal lateinit var unsyncedChangesController: UnsyncedChangesController
+    @Inject internal lateinit var unsyncedChangesCountSource: UnsyncedChangesCountSource
 
     private lateinit var anonAvatar: Bitmap
 
@@ -86,7 +86,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
         solvedQuestsText.text = questStatisticsDao.getTotalAmount().toString()
 
-        val unsyncedChanges = unsyncedChangesController.count
+        val unsyncedChanges = unsyncedChangesCountSource.count
         unpublishedQuestsText.text = getString(R.string.unsynced_quests_description, unsyncedChanges)
         unpublishedQuestsText.visibility = if (unsyncedChanges > 0) View.VISIBLE else View.GONE
     }

@@ -15,8 +15,6 @@ import de.westnordost.osmapi.common.errors.OsmAuthorizationException
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Injector
-import de.westnordost.streetcomplete.data.VisibleQuestListener
-import de.westnordost.streetcomplete.data.VisibleQuestRelay
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
 import de.westnordost.streetcomplete.data.user.StatisticsUpdater
 import de.westnordost.streetcomplete.data.user.UserController
@@ -34,7 +32,6 @@ class UploadService : IntentService(TAG) {
     private val binder = Interface()
 
     // listeners
-    private val visibleQuestRelay = VisibleQuestRelay()
     private val uploadedChangeRelay = object : OnUploadedChangeListener {
         override fun onUploaded(questType: String, at: LatLon) {
             statisticsUpdater.addOne(questType)
@@ -91,7 +88,6 @@ class UploadService : IntentService(TAG) {
             for (uploader in uploaders) {
                 if (cancelState.get()) return
                 uploader.uploadedChangeListener = uploadedChangeRelay
-                uploader.visibleQuestListener = visibleQuestRelay
                 uploader.upload(cancelState)
             }
 
@@ -116,10 +112,6 @@ class UploadService : IntentService(TAG) {
     inner class Interface : Binder() {
         fun setProgressListener(listener: UploadProgressListener?) {
             progressListener = listener
-        }
-
-        fun setQuestListener(listener: VisibleQuestListener?) {
-            visibleQuestRelay.listener = listener
         }
     }
 

@@ -11,29 +11,21 @@ import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.countryboundaries.intersects
 import de.westnordost.countryboundaries.isInAny
 import de.westnordost.osmapi.map.data.OsmLatLon
-import de.westnordost.streetcomplete.data.quest.QuestGroup
 import de.westnordost.streetcomplete.data.quest.QuestType
-import de.westnordost.streetcomplete.data.VisibleQuestListener
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryDao
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryEntry
 import de.westnordost.streetcomplete.data.osm.mapdata.MergedElementDao
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.util.measuredLength
 
 class OsmQuestDownloader @Inject constructor(
-        private val geometryDB: ElementGeometryDao,
         private val elementDB: MergedElementDao,
-        private val osmQuestDB: OsmQuestDao,
+        private val osmQuestController: OsmQuestController,
         private val countryBoundariesFuture: FutureTask<CountryBoundaries>
 ) {
     private val countryBoundaries: CountryBoundaries get() = countryBoundariesFuture.get()
-
-    var questListener: VisibleQuestListener? = null
 
     fun download(questType: OsmElementQuestType<*>, bbox: BoundingBox, blacklistedPositions: Set<LatLon>): Boolean {
         val questTypeName = questType.getName()
@@ -44,11 +36,8 @@ class OsmQuestDownloader @Inject constructor(
             return true
         }
 
-        val geometryRows = ArrayList<ElementGeometryEntry>()
-        val elements = HashMap<ElementKey, Element>()
+        val elements = mutableListOf<Element>()
         val quests = ArrayList<OsmQuest>()
-        val previousQuestIdsByElement = osmQuestDB.getAll( bounds = bbox, questTypes = listOf(questTypeName))
-            .associate { ElementKey(it.elementType, it.elementId) to it.id!! }.toMutableMap()
         val truncatedBlacklistedPositions = blacklistedPositions.map { it.truncateTo5Decimals() }.toSet()
 
         val time = System.currentTimeMillis()
@@ -56,42 +45,24 @@ class OsmQuestDownloader @Inject constructor(
             if (mayCreateQuestFrom(questType, element, geometry, truncatedBlacklistedPositions)) {
                 val quest = OsmQuest(questType, element.type, element.id, geometry!!)
 
-                geometryRows.add(ElementGeometryEntry(element.type, element.id, quest.geometry))
                 quests.add(quest)
-                val elementKey = ElementKey(element.type, element.id)
-                elements[elementKey] = element
-                previousQuestIdsByElement.remove(elementKey)
+                elements.add(element)
             }
         }
         if (!success) return false
 
-        // geometry and elements must be put into DB first because quests have foreign keys on it
-        geometryDB.putAll(geometryRows)
-        elementDB.putAll(elements.values)
+        // elements must be put into DB first because quests have foreign keys on it
+        elementDB.putAll(elements)
 
-        val newAmount = osmQuestDB.addAll(quests)
-
-        if (questListener != null) {
-            // it is null if this quest is already in the DB, so don't call onQuestCreated
-            quests.removeAll { it.id == null }
-            if (quests.isNotEmpty()) questListener?.onQuestsCreated(quests, QuestGroup.OSM)
-        }
-
-        if (previousQuestIdsByElement.isNotEmpty()) {
-            val previousQuestIds = previousQuestIdsByElement.values.toList()
-            questListener?.onQuestsRemoved(previousQuestIds, QuestGroup.OSM)
-            osmQuestDB.deleteAllIds(previousQuestIds)
-        }
+        val replaceResult = osmQuestController.replaceInBBox(quests, bbox, questTypeName)
 
         // note: this could be done after ALL osm quest types have been downloaded if this
         // turns out to be slow if done for every quest type
-        geometryDB.deleteUnreferenced()
         elementDB.deleteUnreferenced()
         questType.cleanMetadata()
 
-        val obsoleteAmount = previousQuestIdsByElement.size
         val secondsSpent = (System.currentTimeMillis() - time) / 1000
-        Log.i(TAG,"$questTypeName: Added $newAmount new and removed $obsoleteAmount already resolved quests (total: ${quests.size}) in ${secondsSpent}s")
+        Log.i(TAG,"$questTypeName: Added ${replaceResult.added} new and removed ${replaceResult.deleted} already resolved quests (total: ${quests.size}) in ${secondsSpent}s")
 
         return true
     }

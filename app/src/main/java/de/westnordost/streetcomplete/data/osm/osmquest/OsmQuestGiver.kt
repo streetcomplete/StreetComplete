@@ -9,11 +9,9 @@ import javax.inject.Inject
 
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.LatLon
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osmnotes.NotePositionsSource
 import de.westnordost.streetcomplete.data.quest.QuestStatus
-import de.westnordost.streetcomplete.data.quest.QuestType
-import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryDao
-import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestDao
 import de.westnordost.streetcomplete.data.visiblequests.OrderedVisibleQuestTypesProvider
 import de.westnordost.streetcomplete.util.enclosingBoundingBox
 import java.util.concurrent.FutureTask
@@ -21,26 +19,20 @@ import java.util.concurrent.FutureTask
 /** Manages creating new quests and removing quests that are no longer applicable for an OSM
  * element locally  */
 class OsmQuestGiver @Inject constructor(
-        private val osmNoteQuestDb: OsmNoteQuestDao,
-        private val questDB: OsmQuestDao,
-        private val elementGeometryDB: ElementGeometryDao,
-        private val questTypesProvider: OrderedVisibleQuestTypesProvider,
-        private val countryBoundariesFuture: FutureTask<CountryBoundaries>
+    private val notePositionsSource: NotePositionsSource,
+    private val osmQuestController: OsmQuestController,
+    private val questTypesProvider: OrderedVisibleQuestTypesProvider,
+    private val countryBoundariesFuture: FutureTask<CountryBoundaries>
 ) {
 
-    data class QuestUpdates(val createdQuests: List<OsmQuest>, val removedQuestIds: List<Long>)
-
-    fun updateQuests(element: Element): QuestUpdates {
+    /** Update quests for the given element (assuming the element has just been updated) */
+    fun updateQuests(element: Element, geometry: ElementGeometry) {
         val createdQuests: MutableList<OsmQuest> = ArrayList()
         val removedQuestIds: MutableList<Long> = ArrayList()
 
-        val geometry = elementGeometryDB.get(element.type, element.id) ?: return QuestUpdates(
-                emptyList(), emptyList()
-        )
-
         val hasNote = hasNoteAt(geometry.center)
 
-        val currentQuests = getCurrentQuests(element)
+        val currentQuestsByType = osmQuestController.getAllForElement(element.type, element.id).associateBy { it.type }
         val createdQuestsLog = ArrayList<String>()
         val removedQuestsLog = ArrayList<String>()
 
@@ -51,14 +43,14 @@ class OsmQuestGiver @Inject constructor(
             val countries = questType.enabledInCountries
             val isEnabledForCountry = countryBoundariesFuture.get().isInAny(geometry.center, countries)
 
-            val hasQuest = currentQuests.containsKey(questType)
+            val hasQuest = currentQuestsByType.containsKey(questType)
             if (appliesToElement && !hasQuest && !hasNote && isEnabledForCountry) {
                 val quest = OsmQuest(questType, element.type, element.id, geometry)
                 createdQuests.add(quest)
                 createdQuestsLog.add(questType.javaClass.simpleName)
             }
             if (!appliesToElement && hasQuest) {
-                val quest = currentQuests.getValue(questType)
+                val quest = currentQuestsByType.getValue(questType)
                 // only remove "fresh" unanswered quests because answered/closed quests by definition
                 // do not apply to the element anymore. E.g. after adding the name to the street,
                 // there shan't be any AddRoadName quest for that street anymore
@@ -68,48 +60,27 @@ class OsmQuestGiver @Inject constructor(
                 }
             }
         }
+        val updates = osmQuestController.updateForElement(createdQuests, removedQuestIds, element.type, element.id)
 
-        if (createdQuests.isNotEmpty()) {
-            // Before new quests are unlocked, all reverted quests need to be removed for
-            // this element so that they can be created anew as the case may be
-            questDB.deleteAll(
-                statusIn = listOf(QuestStatus.REVERT),
-                element = ElementKey(element.type, element.id)
-            )
-            questDB.addAll(createdQuests)
-            Log.d(TAG, "Created new quests for ${element.type.name}#${element.id}: ${createdQuestsLog.joinToString()}")
+        if (updates.added > 0) {
+            Log.d(TAG, "Created ${updates.added} new quests for ${element.type.name}#${element.id}: ${createdQuestsLog.joinToString()}")
         }
-        if (removedQuestIds.isNotEmpty()) {
-            questDB.deleteAllIds(removedQuestIds)
-            Log.d(TAG, "Removed quests no longer applicable for ${element.type.name}#${element.id}: ${removedQuestsLog.joinToString()}")
+        if (updates.deleted > 0) {
+            Log.d(TAG, "Removed ${updates.deleted} quests no longer applicable for ${element.type.name}#${element.id}: ${removedQuestsLog.joinToString()}")
         }
-
-        return QuestUpdates(createdQuests, removedQuestIds)
     }
 
-    fun deleteQuests(elementType: Element.Type, elementId: Long): List<Long> {
-        val ids = questDB.getAllIds(element = ElementKey(elementType, elementId))
-        questDB.deleteAllIds(ids)
-
-        Log.d(TAG, "Removed all quests for deleted element " + elementType.name + "#" + elementId)
-        return ids
+    /** Delete quests for the given element (assuming the element has just been deleted or has
+     * invalid geometry) */
+    fun deleteQuests(elementType: Element.Type, elementId: Long) {
+        osmQuestController.deleteAllForElement(elementType, elementId)
     }
 
     private fun hasNoteAt(pos: LatLon): Boolean {
         // note about one meter around the center of an element still count as at this point as to
         // deal with imprecision of the center calculation of geometry (see #1089)
         val bbox = pos.enclosingBoundingBox(1.0)
-        return osmNoteQuestDb.getAllPositions(bbox).isNotEmpty()
-    }
-
-    private fun getCurrentQuests(element: Element): Map<QuestType<*>, OsmQuest> {
-        val quests = questDB.getAll(element = ElementKey(element.type, element.id))
-        val result = HashMap<QuestType<*>, OsmQuest>(quests.size)
-        for (quest in quests) {
-            if (quest.status == QuestStatus.REVERT) continue
-            result[quest.type] = quest
-        }
-        return result
+        return notePositionsSource.getAllPositions(bbox).isNotEmpty()
     }
 
     companion object {

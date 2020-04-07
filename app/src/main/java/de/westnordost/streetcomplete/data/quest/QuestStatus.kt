@@ -19,5 +19,7 @@ enum class QuestStatus {
      * is basically the same as CLOSED, only that it will not turn up in the list of (revertable)
      * changes. Note, that the revert-change is done via another Quest upload, this state is only
      * to mark this quest as that a revert-quest has already been created */
-    REVERT
+    REVERT;
+
+    val isVisible: Boolean get() = this == NEW
 }

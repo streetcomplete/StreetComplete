@@ -9,6 +9,7 @@ import javax.inject.Inject
 import de.westnordost.streetcomplete.data.WhereSelectionBuilder
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
+import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.data.ObjectRelationalMapping
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
@@ -77,6 +78,13 @@ import javax.inject.Singleton
         builder.appendBounds(bbox)
 
         return db.query(NAME, null, builder.where, builder.args) { mapping.toObject(it) }
+    }
+
+    fun getAllPositions(bbox: BoundingBox): List<LatLon> {
+        val builder = WhereSelectionBuilder()
+        builder.appendBounds(bbox)
+        val cols = arrayOf(LATITUDE, LONGITUDE)
+        return db.query(NAME, cols, builder.where, builder.args) { OsmLatLon(it.getDouble(0), it.getDouble(1)) }
     }
 
     fun addListener(listener: Listener) {

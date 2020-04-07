@@ -18,7 +18,6 @@ import javax.inject.Inject
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.Prefs
-import de.westnordost.streetcomplete.data.VisibleQuestListener
 import de.westnordost.streetcomplete.data.download.MobileDataAutoDownloadStrategy
 import de.westnordost.streetcomplete.data.download.WifiAutoDownloadStrategy
 import de.westnordost.streetcomplete.location.FineLocationManager
@@ -31,11 +30,12 @@ import javax.inject.Singleton
  * Respects the user preference to only sync on wifi or not sync automatically at all
  */
 @Singleton class QuestAutoSyncer @Inject constructor(
-    private val questController: QuestController,
+    private val questUploadDownloadController: QuestUploadDownloadController,
     private val mobileDataDownloadStrategy: MobileDataAutoDownloadStrategy,
     private val wifiDownloadStrategy: WifiAutoDownloadStrategy,
     private val context: Context,
-    private val unsyncedChangesController: UnsyncedChangesController,
+    private val visibleQuestsSource: VisibleQuestsSource,
+    private val unsyncedChangesCountSource: UnsyncedChangesCountSource,
     private val prefs: SharedPreferences,
     private val userController: UserController
 ) : LifecycleObserver, CoroutineScope by CoroutineScope(Dispatchers.Default) {
@@ -45,11 +45,10 @@ import javax.inject.Singleton
     private var isConnected: Boolean = false
     private var isWifi: Boolean = false
 
-    // amount of quests is reduced -> check if re-downloading makes sense now
+    // amount of visible quests is reduced -> check if re-downloading makes sense now
     private val visibleQuestListener = object : VisibleQuestListener {
-        override fun onQuestsCreated(quests: Collection<Quest>, group: QuestGroup) {}
-        override fun onQuestsRemoved(questIds: Collection<Long>, group: QuestGroup) {
-            triggerAutoDownload()
+        override fun onUpdatedVisibleQuests(added: Collection<Quest>, removed: Collection<Long>, group: QuestGroup) {
+            if (removed.isNotEmpty()) { triggerAutoDownload() }
         }
     }
 
@@ -74,11 +73,8 @@ import javax.inject.Singleton
     }
 
     // there are unsynced changes -> try uploading now
-    private val unsyncedChangesListener = object : UnsyncedChangesController.Listener {
-        override fun onUnsyncedChangesCountIncreased() {
-            triggerAutoUpload()
-        }
-
+    private val unsyncedChangesListener = object : UnsyncedChangesCountListener {
+        override fun onUnsyncedChangesCountIncreased() { triggerAutoUpload() }
         override fun onUnsyncedChangesCountDecreased() {}
     }
 
@@ -91,8 +87,8 @@ import javax.inject.Singleton
     /* ---------------------------------------- Lifecycle --------------------------------------- */
 
     init {
-        questController.addListener(visibleQuestListener)
-        unsyncedChangesController.addListener(unsyncedChangesListener)
+        visibleQuestsSource.addListener(visibleQuestListener)
+        unsyncedChangesCountSource.addListener(unsyncedChangesListener)
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_RESUME) fun onResume() {
@@ -110,8 +106,8 @@ import javax.inject.Singleton
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY) fun onDestroy() {
-        questController.removeListener(visibleQuestListener)
-        unsyncedChangesController.removeListener(unsyncedChangesListener)
+        visibleQuestsSource.removeListener(visibleQuestListener)
+        unsyncedChangesCountSource.removeListener(unsyncedChangesListener)
         coroutineContext.cancel()
     }
 
@@ -130,7 +126,7 @@ import javax.inject.Singleton
         if (!isAllowedByPreference) return
         val pos = pos ?: return
         if (!isConnected) return
-        if (questController.isDownloadInProgress) return
+        if (questUploadDownloadController.isDownloadInProgress) return
 
         Log.i(TAG, "Checking whether to automatically download new quests at ${pos.latitude},${pos.longitude}")
 
@@ -138,7 +134,7 @@ import javax.inject.Singleton
             val downloadStrategy = if (isWifi) wifiDownloadStrategy else mobileDataDownloadStrategy
             if (downloadStrategy.mayDownloadHere(pos)) {
                 try {
-                    questController.download(
+                    questUploadDownloadController.download(
                         downloadStrategy.getDownloadBoundingBox(pos),
                         downloadStrategy.questTypeDownloadCount
                     )
@@ -157,7 +153,7 @@ import javax.inject.Singleton
         if (!userController.isLoggedIn) return
 
         try {
-            questController.upload()
+            questUploadDownloadController.upload()
         } catch (e: IllegalStateException) {
             // The Android 9 bug described here should not result in a hard crash of the app
             // https://stackoverflow.com/questions/52013545/android-9-0-not-allowed-to-start-service-app-is-in-background-after-onresume

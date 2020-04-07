@@ -1,15 +1,15 @@
 package de.westnordost.streetcomplete.data.download
 
 import javax.inject.Inject
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestDao
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
+import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
 import de.westnordost.streetcomplete.data.visiblequests.OrderedVisibleQuestTypesProvider
 
 class MobileDataAutoDownloadStrategy @Inject constructor(
-        osmQuestDB: OsmQuestDao,
-        downloadedTilesDao: DownloadedTilesDao,
-        questTypesProvider: OrderedVisibleQuestTypesProvider
-) : AActiveRadiusStrategy(osmQuestDB, downloadedTilesDao, questTypesProvider) {
+    visibleQuestsSource: VisibleQuestsSource,
+    downloadedTilesDao: DownloadedTilesDao,
+    questTypesProvider: OrderedVisibleQuestTypesProvider
+) : AActiveRadiusStrategy(visibleQuestsSource, downloadedTilesDao, questTypesProvider) {
 
     override val questTypeDownloadCount = 4
     override val minQuestsInActiveRadiusPerKm2 = 8

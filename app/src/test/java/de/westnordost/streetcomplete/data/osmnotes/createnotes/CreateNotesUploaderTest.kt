@@ -15,8 +15,7 @@ import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.osmapi.notes.NoteComment
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osmnotes.ImageUploadException
-import de.westnordost.streetcomplete.data.osmnotes.NoteDao
-import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestDao
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestController
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestType
 import de.westnordost.streetcomplete.mock
 import java.util.*
@@ -26,8 +25,7 @@ import java.util.concurrent.atomic.AtomicBoolean
 
 class CreateNotesUploaderTest {
     private lateinit var createNoteDB: CreateNoteDao
-    private lateinit var noteDB: NoteDao
-    private lateinit var noteQuestDB: OsmNoteQuestDao
+    private lateinit var osmNoteQuestController: OsmNoteQuestController
     private lateinit var mapDataDao: MapDataDao
     private lateinit var questType: OsmNoteQuestType
     private lateinit var singleCreateNoteUploader: SingleCreateNoteUploader
@@ -36,20 +34,19 @@ class CreateNotesUploaderTest {
 
     @Before fun setUp() {
         mapDataDao = mock()
-        noteQuestDB = mock()
-        noteDB = mock()
+        osmNoteQuestController = mock()
         createNoteDB = mock()
         questType = mock()
         singleCreateNoteUploader = mock()
 
-        uploader = CreateNotesUploader(createNoteDB, noteDB, noteQuestDB, mapDataDao, questType,
+        uploader = CreateNotesUploader(createNoteDB, osmNoteQuestController, mapDataDao, questType,
                 singleCreateNoteUploader)
     }
 
     @Test fun `cancel upload works`() {
         val cancelled = AtomicBoolean(true)
         uploader.upload(cancelled)
-        verifyZeroInteractions(createNoteDB, noteDB, noteQuestDB, mapDataDao, questType,
+        verifyZeroInteractions(createNoteDB, osmNoteQuestController, mapDataDao, questType,
             singleCreateNoteUploader)
     }
 
@@ -72,8 +69,7 @@ class CreateNotesUploaderTest {
         uploader.upload(AtomicBoolean(false))
 
         verify(createNoteDB, times(createNotes.size)).delete(anyLong())
-        verify(noteDB, times(createNotes.size)).put(any())
-        verify(noteQuestDB, times(createNotes.size)).add(any())
+        verify(osmNoteQuestController, times(createNotes.size)).add(any())
         verify(uploader.uploadedChangeListener, times(createNotes.size))?.onUploaded(any(), any())
     }
 

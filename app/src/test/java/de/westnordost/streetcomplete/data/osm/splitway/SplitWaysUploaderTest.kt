@@ -36,7 +36,6 @@ class SplitWaysUploaderTest {
         splitSingleOsmWayUploader = mock()
         elementGeometryDB = mock()
         questGiver = mock()
-        on(questGiver.updateQuests(any())).thenReturn(OsmQuestGiver.QuestUpdates(listOf(), listOf()))
         elementGeometryCreator = mock()
         on(elementGeometryCreator.create(any())).thenReturn(mock())
         uploader = SplitWaysUploader(elementDB, elementGeometryDB, changesetManager, questGiver,
@@ -100,7 +99,7 @@ class SplitWaysUploaderTest {
 
         verify(elementDB, times(1)).put(any())
         verify(elementGeometryDB, times(1)).put(any())
-        verify(questGiver, times(1)).updateQuests(any())
+        verify(questGiver, times(1)).updateQuests(any(), any())
         verifyNoMoreInteractions(questGiver)
     }
 
@@ -113,7 +112,6 @@ class SplitWaysUploaderTest {
 
         uploader.upload(AtomicBoolean(false))
 
-        verify(elementGeometryDB).deleteUnreferenced()
         verify(elementDB).deleteUnreferenced()
         verify(quest.osmElementQuestType).cleanMetadata()
     }

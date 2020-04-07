@@ -82,6 +82,14 @@ class CreateNoteDaoTest : ApplicationDbTestCase() {
         assertEquals(2, dao.getAll().size)
     }
 
+    @Test fun getAllPositions() {
+        dao.add(CreateNote(null, "this is in", OsmLatLon(0.5, 0.5)))
+        dao.add(CreateNote(null, "this is out", OsmLatLon(-0.5, 0.5)))
+
+        val positions = dao.getAllPositions(BoundingBox(0.0, 0.0, 1.0, 1.0))
+        assertEquals(OsmLatLon(0.5, 0.5), positions.single())
+    }
+
     @Test fun getCount0() {
         assertEquals(0, dao.getCount())
     }

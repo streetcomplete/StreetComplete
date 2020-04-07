@@ -6,11 +6,8 @@ import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.osmapi.map.data.OsmNode
 import de.westnordost.streetcomplete.any
-import de.westnordost.streetcomplete.data.quest.QuestStatus
-import de.westnordost.streetcomplete.data.VisibleQuestListener
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryDao
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.MergedElementDao
 import de.westnordost.streetcomplete.data.quest.AllCountries
@@ -21,30 +18,24 @@ import de.westnordost.streetcomplete.on
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
 import org.junit.Before
 import org.junit.Test
-import org.mockito.ArgumentMatchers.isNull
 import org.mockito.Mockito.*
-import java.util.*
 import java.util.concurrent.FutureTask
 
 
 class OsmQuestDownloaderTest {
-    private lateinit var geometryDb: ElementGeometryDao
     private lateinit var elementDb: MergedElementDao
-    private lateinit var osmQuestDao: OsmQuestDao
+    private lateinit var osmQuestController: OsmQuestController
     private lateinit var countryBoundaries: CountryBoundaries
     private lateinit var downloader: OsmQuestDownloader
-    private lateinit var listener: VisibleQuestListener
 
     @Before fun setUp() {
-        geometryDb = mock()
         elementDb = mock()
-        osmQuestDao = mock()
+        osmQuestController = mock()
+        on(osmQuestController.replaceInBBox(any(), any(), any())).thenReturn(OsmQuestController.UpdateResult(0,0))
         countryBoundaries = mock()
         val countryBoundariesFuture = FutureTask { countryBoundaries }
         countryBoundariesFuture.run()
-        listener = mock()
-        downloader = OsmQuestDownloader(geometryDb, elementDb, osmQuestDao, countryBoundariesFuture)
-        downloader.questListener = listener
+        downloader = OsmQuestDownloader(elementDb, osmQuestController, countryBoundariesFuture)
     }
 
     @Test fun `ignore element with invalid geometry`() {
@@ -54,11 +45,8 @@ class OsmQuestDownloaderTest {
         )
 
         val questType = ListBackedQuestType(listOf(invalidGeometryElement))
-        setPreviousQuests(emptyList())
 
         downloader.download(questType, BoundingBox(0.0, 0.0, 1.0, 1.0), setOf())
-
-        verify(listener, times(0)).onQuestsCreated(any(), any())
     }
 
     @Test fun `ignore at blacklisted position`() {
@@ -69,11 +57,8 @@ class OsmQuestDownloaderTest {
         )
 
         val questType = ListBackedQuestType(listOf(blacklistElement))
-        setPreviousQuests(emptyList())
 
         downloader.download(questType, BoundingBox(0.0, 0.0, 1.0, 1.0), setOf(blacklistPos))
-
-        verify(listener, times(0)).onQuestsCreated(any(), any())
     }
 
     @Test fun `ignore element in country for which this quest is disabled`() {
@@ -88,11 +73,8 @@ class OsmQuestDownloaderTest {
         // country boundaries say that position is in AA
         on(countryBoundaries.isInAny(anyDouble(),anyDouble(),any())).thenReturn(true)
         on(countryBoundaries.getContainingIds(anyDouble(),anyDouble(),anyDouble(),anyDouble())).thenReturn(setOf())
-        setPreviousQuests(emptyList())
 
         downloader.download(questType, BoundingBox(0.0, 0.0, 1.0, 1.0), setOf())
-
-        verify(listener, times(0)).onQuestsCreated(any(), any())
     }
 
     @Test fun `creates quest for element`() {
@@ -103,47 +85,13 @@ class OsmQuestDownloaderTest {
         )
 
         val questType = ListBackedQuestType(listOf(normalElement))
-        setPreviousQuests(emptyList())
 
-        doAnswer { invocation ->
-            val quests = invocation.arguments[0] as Collection<OsmQuest>
-            var i = 0L
-            for (quest in quests) {
-                quest.id =  i++
-            }
-            quests.size
-        }.on(osmQuestDao).addAll(any())
+        on(osmQuestController.replaceInBBox(any(), any(), any())).thenReturn(OsmQuestController.UpdateResult(0,0))
 
         downloader.download(questType, BoundingBox(0.0, 0.0, 1.0, 1.0), setOf())
 
-        verify(listener).onQuestsCreated(any(), any())
-        verify(geometryDb).putAll(any())
         verify(elementDb).putAll(any())
-        verify(osmQuestDao).addAll(any())
-    }
-
-    @Test fun `deletes obsolete quests`() {
-        val pos = OsmLatLon(3.0, 4.0)
-        val node4 = ElementWithGeometry(
-                OsmNode(4, 0, pos, null),
-                ElementPointGeometry(pos)
-        )
-        // questType mock will only "find" the Node #4
-        val questType = ListBackedQuestType(listOf(node4))
-        // in the quest database mock, there are quests for node 4 and node 5
-        setPreviousQuests(listOf(
-                OsmQuest(12L, questType, Element.Type.NODE, 4, QuestStatus.NEW, null, null, Date(), ElementPointGeometry(pos)),
-                OsmQuest(13L, questType, Element.Type.NODE, 5, QuestStatus.NEW, null, null, Date(), ElementPointGeometry(pos))
-        ))
-
-        // -> we expect that quest with node #5 is removed
-        downloader.download(questType, BoundingBox(0.0, 0.0, 1.0, 1.0), emptySet())
-        verify(osmQuestDao).deleteAllIds(listOf(13L))
-        verify(listener).onQuestsRemoved(any(), any())
-    }
-
-    private fun setPreviousQuests(list: List<OsmQuest>) {
-        on(osmQuestDao.getAll(isNull(), any(), isNull(), any(), isNull())).thenReturn(list)
+        verify(osmQuestController).replaceInBBox(any(), any(), any())
     }
 }
 

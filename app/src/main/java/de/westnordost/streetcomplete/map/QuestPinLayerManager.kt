@@ -8,11 +8,7 @@ import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
 import com.mapzen.tangram.MapData
 import com.mapzen.tangram.geometry.Point
-import de.westnordost.streetcomplete.data.*
-import de.westnordost.streetcomplete.data.quest.Quest
-import de.westnordost.streetcomplete.data.quest.QuestController
-import de.westnordost.streetcomplete.data.quest.QuestGroup
-import de.westnordost.streetcomplete.data.quest.QuestType
+import de.westnordost.streetcomplete.data.quest.*
 import de.westnordost.streetcomplete.data.visiblequests.OrderedVisibleQuestTypesProvider
 import de.westnordost.streetcomplete.ktx.values
 import de.westnordost.streetcomplete.map.tangram.toLngLat
@@ -31,7 +27,7 @@ import javax.inject.Inject
 class QuestPinLayerManager @Inject constructor(
     private val questTypesProvider: OrderedVisibleQuestTypesProvider,
     private val resources: Resources,
-    private val questController: QuestController
+    private val visibleQuestsSource: VisibleQuestsSource
 ): LifecycleObserver, VisibleQuestListener, CoroutineScope by CoroutineScope(Dispatchers.Default) {
 
     // draw order in which the quest types should be rendered on the map
@@ -62,7 +58,7 @@ class QuestPinLayerManager @Inject constructor(
         }
 
     init {
-        questController.addListener(this)
+        visibleQuestsSource.addListener(this)
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_START) fun onStart() {
@@ -79,7 +75,7 @@ class QuestPinLayerManager @Inject constructor(
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY) fun onDestroy() {
         questsLayer = null
-        questController.removeListener(this)
+        visibleQuestsSource.removeListener(this)
         coroutineContext.cancel()
     }
 
@@ -90,25 +86,17 @@ class QuestPinLayerManager @Inject constructor(
         val tilesRect = displayedArea.enclosingTilesRect(TILES_ZOOM)
         if (lastDisplayedRect != tilesRect) {
             lastDisplayedRect = tilesRect
-            launch { updateQuestsInRect(tilesRect) }
+            updateQuestsInRect(tilesRect)
         }
     }
 
-    override fun onQuestsCreated(quests: Collection<Quest>, group: QuestGroup) {
-        for (quest in quests) {
-            add(quest, group)
-        }
+    override fun onUpdatedVisibleQuests(added: Collection<Quest>, removed: Collection<Long>, group: QuestGroup) {
+        added.forEach { add(it, group) }
+        removed.forEach { remove(it, group) }
         updateLayer()
     }
 
-    override fun onQuestsRemoved(questIds: Collection<Long>, group: QuestGroup) {
-        for (questId in questIds) {
-            remove(questId, group)
-        }
-        updateLayer()
-    }
-
-    private suspend fun updateQuestsInRect(tilesRect: TilesRect) {
+    private fun updateQuestsInRect(tilesRect: TilesRect) {
         // area too big -> skip (performance)
         if (tilesRect.size > 4) {
             return
@@ -119,7 +107,13 @@ class QuestPinLayerManager @Inject constructor(
         }
         val minRect = tiles.minTileRect() ?: return
         val bbox = minRect.asBoundingBox(TILES_ZOOM)
-        questController.retrieve(bbox)
+        val questTypeNames = questTypesProvider.get().map { it.javaClass.simpleName }
+        launch(Dispatchers.IO) {
+            visibleQuestsSource.getAllVisible(bbox, questTypeNames).forEach {
+                add(it.quest, it.group)
+            }
+            updateLayer()
+        }
         synchronized(retrievedTiles) { retrievedTiles.addAll(tiles) }
     }
 

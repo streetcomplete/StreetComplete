@@ -2,11 +2,8 @@ package de.westnordost.streetcomplete.data.osm.upload
 
 import androidx.annotation.CallSuper
 import de.westnordost.osmapi.map.data.Element
-import de.westnordost.streetcomplete.data.quest.QuestGroup
 import de.westnordost.streetcomplete.data.quest.QuestType
-import de.westnordost.streetcomplete.data.VisibleQuestListener
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuest
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestGiver
 import de.westnordost.streetcomplete.data.osm.elementgeometry.OsmApiElementGeometryCreator
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryDao
@@ -26,15 +23,12 @@ abstract class OsmInChangesetsUploader<T : UploadableInChangeset>(
         private val osmApiElementGeometryCreator: OsmApiElementGeometryCreator
     ): Uploader {
 
-    override var visibleQuestListener: VisibleQuestListener? = null
     override var uploadedChangeListener: OnUploadedChangeListener? = null
 
     @Synchronized @CallSuper override fun upload(cancelled: AtomicBoolean) {
         if (cancelled.get()) return
 
         val uploadedQuestTypes = mutableSetOf<OsmElementQuestType<*>>()
-        val createdOsmQuests = mutableListOf<OsmQuest>()
-        val removedOsmQuestIds = mutableListOf<Long>()
 
         for (quest in getAll()) {
             if (cancelled.get()) break
@@ -42,16 +36,13 @@ abstract class OsmInChangesetsUploader<T : UploadableInChangeset>(
             try {
                 val uploadedElements = uploadSingle(quest)
                 for (element in uploadedElements) {
-                    val questUpdates = updateElement(element)
-                    createdOsmQuests.addAll(questUpdates.createdQuests)
-                    removedOsmQuestIds.addAll(questUpdates.removedQuestIds)
+                    updateElement(element)
                 }
                 uploadedQuestTypes.add(quest.osmElementQuestType)
                 onUploadSuccessful(quest)
                 uploadedChangeListener?.onUploaded(quest.osmElementQuestType.name, quest.position)
             } catch (e: ElementIncompatibleException) {
-                val questIds = deleteElement(quest.elementType, quest.elementId)
-                removedOsmQuestIds.addAll(questIds)
+                deleteElement(quest.elementType, quest.elementId)
                 onUploadFailed(quest, e)
                 uploadedChangeListener?.onDiscarded(quest.osmElementQuestType.name, quest.position)
             } catch (e: ElementConflictException) {
@@ -60,13 +51,6 @@ abstract class OsmInChangesetsUploader<T : UploadableInChangeset>(
             }
         }
         cleanUp(uploadedQuestTypes)
-
-        if (createdOsmQuests.isNotEmpty()) {
-            visibleQuestListener?.onQuestsCreated(createdOsmQuests, QuestGroup.OSM)
-        }
-        if (removedOsmQuestIds.isNotEmpty()) {
-            visibleQuestListener?.onQuestsRemoved(removedOsmQuestIds, QuestGroup.OSM)
-        }
     }
 
     private fun uploadSingle(quest: T) : List<Element> {
@@ -82,26 +66,30 @@ abstract class OsmInChangesetsUploader<T : UploadableInChangeset>(
         }
     }
 
-    private fun updateElement(newElement: Element): OsmQuestGiver.QuestUpdates {
+    /* TODO REFACTOR: It shouldn't be the duty of OsmInChangesetsUploader to do (or delegate) the
+     *                work necessary that entails when updating an element (grant/remove quests,
+     *                update element geometry). Instead, there should be an observer on the
+     *                ElementDao (or a controller in front of it) that takes care of that.
+     *
+     * This will remove the dependencies to  elementGeometryDB, questGiver etc */
+    private fun updateElement(newElement: Element) {
         val geometry = osmApiElementGeometryCreator.create(newElement)
         if (geometry != null) {
             elementGeometryDB.put(ElementGeometryEntry(newElement.type, newElement.id, geometry))
             elementDB.put(newElement)
-            return questGiver.updateQuests(newElement)
+            questGiver.updateQuests(newElement, geometry)
         } else {
             // new element has invalid geometry
-            return OsmQuestGiver.QuestUpdates(listOf(), deleteElement(newElement.type, newElement.id))
+            deleteElement(newElement.type, newElement.id)
         }
     }
 
-    private fun deleteElement(elementType: Element.Type, elementId: Long): List<Long> {
+    private fun deleteElement(elementType: Element.Type, elementId: Long) {
         elementDB.delete(elementType, elementId)
-        elementGeometryDB.delete(elementType, elementId)
-        return questGiver.deleteQuests(elementType, elementId)
+        questGiver.deleteQuests(elementType, elementId)
     }
 
     @CallSuper protected open fun cleanUp(questTypes: Set<OsmElementQuestType<*>>) {
-        elementGeometryDB.deleteUnreferenced()
         elementDB.deleteUnreferenced()
         // must be after unreferenced elements have been deleted
         for (questType in questTypes) {

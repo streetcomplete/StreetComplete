@@ -7,18 +7,15 @@ import android.graphics.PointF;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import android.content.BroadcastReceiver;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.IBinder;
 import androidx.annotation.AnyThread;
 import androidx.annotation.UiThread;
 import androidx.fragment.app.Fragment;
@@ -67,10 +64,9 @@ import de.westnordost.streetcomplete.data.quest.Quest;
 import de.westnordost.streetcomplete.data.quest.QuestAutoSyncer;
 import de.westnordost.streetcomplete.data.quest.QuestController;
 import de.westnordost.streetcomplete.data.download.QuestDownloadProgressListener;
-import de.westnordost.streetcomplete.data.download.QuestDownloadService;
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuest;
+import de.westnordost.streetcomplete.data.quest.QuestUploadDownloadController;
 import de.westnordost.streetcomplete.data.upload.UploadProgressListener;
-import de.westnordost.streetcomplete.data.upload.UploadService;
 import de.westnordost.streetcomplete.data.upload.VersionBannedException;
 import de.westnordost.streetcomplete.data.user.UserController;
 import de.westnordost.streetcomplete.location.LocationRequestFragment;
@@ -113,6 +109,7 @@ public class MainActivity extends AppCompatActivity implements
 	@Inject QuestAutoSyncer questAutoSyncer;
 
 	@Inject QuestController questController;
+	@Inject QuestUploadDownloadController questUploadDownloadController;
 	@Inject NotificationsDao notificationsDao;
 
 	@Inject SharedPreferences prefs;
@@ -142,38 +139,6 @@ public class MainActivity extends AppCompatActivity implements
 	private boolean isAutosync = false;
 
 	private CoroutineScope coroutineScope = CoroutineScopeKt.CoroutineScope(Dispatchers.getMain());
-
-	private boolean downloadServiceIsBound;
-	private QuestDownloadService.Interface downloadService;
-	private final ServiceConnection downloadServiceConnection = new ServiceConnection()
-	{
-		public void onServiceConnected(ComponentName className, IBinder service)
-		{
-			downloadService = (QuestDownloadService.Interface) service;
-			downloadService.setProgressListener(downloadProgressListener);
-			downloadService.stopForeground();
-		}
-
-		public void onServiceDisconnected(ComponentName className)
-		{
-			downloadService = null;
-		}
-	};
-	private boolean uploadServiceIsBound;
-	private UploadService.Interface uploadService;
-	private final ServiceConnection uploadServiceConnection = new ServiceConnection()
-	{
-		public void onServiceConnected(ComponentName className, IBinder service)
-		{
-			uploadService = (UploadService.Interface) service;
-			uploadService.setProgressListener(uploadProgressListener);
-		}
-
-		public void onServiceDisconnected(ComponentName className)
-		{
-			uploadService = null;
-		}
-	};
 
 	private final BroadcastReceiver locationAvailabilityReceiver = new BroadcastReceiver()
 	{
@@ -282,7 +247,7 @@ public class MainActivity extends AppCompatActivity implements
 
 		if(savedInstanceState == null)
 		{
-			questController.deleteOld(new Continuation<Unit>()
+			questController.cleanUp(new Continuation<Unit>()
 			{
 				@NotNull @Override public CoroutineContext getContext() { return coroutineScope.getCoroutineContext(); }
 				@Override public void resumeWith(@NotNull Object o){ }
@@ -370,11 +335,17 @@ public class MainActivity extends AppCompatActivity implements
 		localBroadcaster.registerReceiver(locationRequestFinishedReceiver,
 				new IntentFilter(LocationRequestFragment.ACTION_FINISHED));
 
-		downloadProgressBar.setAlpha(0f);
-		downloadServiceIsBound = bindService(new Intent(this, QuestDownloadService.class),
-				downloadServiceConnection, BIND_AUTO_CREATE);
-		uploadServiceIsBound = bindService(new Intent(this, UploadService.class),
-				uploadServiceConnection, BIND_AUTO_CREATE);
+		questUploadDownloadController.setShowNotification(false);
+
+		if (questUploadDownloadController.isDownloadInProgress()) {
+			downloadProgressBar.setAlpha(1f);
+			downloadProgressBar.setProgress((int)(questUploadDownloadController.getDownloadProgress() * 1000));
+		} else {
+			downloadProgressBar.setAlpha(0f);
+		}
+
+		questUploadDownloadController.addUploadProgressListener(uploadProgressListener);
+		questUploadDownloadController.addQuestDownloadProgressListener(downloadProgressListener);
 
 		onNumberOfNotificationsUpdated(notificationsDao.getNumberOfNotifications());
 		notificationsDao.addListener(this);
@@ -408,7 +379,6 @@ public class MainActivity extends AppCompatActivity implements
 					.apply();
 			}
 		}
-
 	}
 
 	@Override public void onStop()
@@ -420,25 +390,14 @@ public class MainActivity extends AppCompatActivity implements
 
 		unregisterReceiver(locationAvailabilityReceiver);
 
-		if (downloadServiceIsBound) unbindService(downloadServiceConnection);
-		downloadServiceIsBound = false;
-		if (downloadService != null)
-		{
-			downloadService.setProgressListener(null);
-			downloadService.startForeground();
-			// since we unbound from the service, we won't get the onFinished call. But we will get
-			// the onStarted call when we return to this activity when the service is rebound
-			downloadProgressBar.setAlpha(0f);
-		}
+		questUploadDownloadController.setShowNotification(true);
+
+		questUploadDownloadController.removeUploadProgressListener(uploadProgressListener);
+		questUploadDownloadController.removeQuestDownloadProgressListener(downloadProgressListener);
+
+		downloadProgressBar.setAlpha(0f);
 
 		notificationsDao.removeListener(this);
-
-		if (uploadServiceIsBound) unbindService(uploadServiceConnection);
-		uploadServiceIsBound = false;
-		if (uploadService != null)
-		{
-			uploadService.setProgressListener(null);
-		}
 	}
 
 	@Override public void onDestroy()
@@ -498,7 +457,7 @@ public class MainActivity extends AppCompatActivity implements
 		}
 		else
 		{
-			questController.upload();
+			questUploadDownloadController.upload();
 		}
 	}
 
@@ -540,7 +499,7 @@ public class MainActivity extends AppCompatActivity implements
 			}
 			else
 			{
-				if (questController.isPriorityDownloadInProgress())
+				if (questUploadDownloadController.isPriorityDownloadInProgress())
 				{
 					new AlertDialog.Builder(this)
 							.setMessage(R.string.confirmation_cancel_prev_download_title)
@@ -571,7 +530,7 @@ public class MainActivity extends AppCompatActivity implements
 					SphericalEarthMathKt.EARTH_RADIUS);
 			}
 		}
-		questController.download(bbox, MANUAL_DOWNLOAD_QUEST_TYPE_COUNT, true);
+		questUploadDownloadController.download(bbox, MANUAL_DOWNLOAD_QUEST_TYPE_COUNT, true);
 	}
 
 	private void triggerAutoUploadByUserInteraction()
@@ -749,7 +708,7 @@ public class MainActivity extends AppCompatActivity implements
 		{
 			runOnUiThread(() ->
 			{
-				if (questController.isPriorityDownloadInProgress())
+				if (questUploadDownloadController.isPriorityDownloadInProgress())
 				{
 					Toast.makeText(MainActivity.this, R.string.nothing_more_to_download, Toast.LENGTH_SHORT).show();
 				}

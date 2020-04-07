@@ -13,16 +13,16 @@ import de.westnordost.streetcomplete.data.quest.QuestGroup
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestDao
-import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestDao
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestController
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestController
 import de.westnordost.streetcomplete.util.crossTrackDistanceTo
 import javax.inject.Inject
 
 /** Checks if the quest was solved on a survey, either by looking at the GPS position or asking
  *  the user  */
 class QuestSourceIsSurveyChecker @Inject constructor(
-        private val osmQuestDB: OsmQuestDao,
-        private val osmNoteQuestDao: OsmNoteQuestDao
+        private val osmQuestController: OsmQuestController,
+        private val osmNoteQuestController: OsmNoteQuestController
 ) {
     fun assureIsSurvey(context: Context, questId: Long, group: QuestGroup, locations: List<Location>, isSurveyCallback: () -> Unit) {
         if (dontShowAgain || isWithinSurveyDistance(questId, group, locations)) {
@@ -64,8 +64,8 @@ class QuestSourceIsSurveyChecker @Inject constructor(
 
     private fun getQuestGeometry(questId: Long, group: QuestGroup): ElementGeometry? =
         when (group) {
-            QuestGroup.OSM -> osmQuestDB.get(questId)?.geometry
-            QuestGroup.OSM_NOTE -> osmNoteQuestDao.get(questId)?.geometry
+            QuestGroup.OSM -> osmQuestController.get(questId)?.geometry
+            QuestGroup.OSM_NOTE -> osmNoteQuestController.get(questId)?.geometry
         }
 
     companion object {
