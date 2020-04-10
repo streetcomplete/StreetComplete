@@ -3,10 +3,10 @@ package de.westnordost.streetcomplete.quests.playground_access
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryDao
+import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
-class AddPlaygroundAccess(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<Boolean>(o) {
+class AddPlaygroundAccess(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<Boolean>(o) {
 
     override val tagFilters = "nodes, ways, relations with leisure = playground and (!access or access = unknown)"
     override val commitMessage = "Add playground access"

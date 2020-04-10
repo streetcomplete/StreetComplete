@@ -3,11 +3,11 @@ package de.westnordost.streetcomplete.quests.postbox_collection_times
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryDao
+import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 import de.westnordost.streetcomplete.ktx.containsAny
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 
-class AddPostboxCollectionTimes(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<CollectionTimesAnswer>(o) {
+class AddPostboxCollectionTimes(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<CollectionTimesAnswer>(o) {
 
     override val tagFilters = """
         nodes with amenity = post_box

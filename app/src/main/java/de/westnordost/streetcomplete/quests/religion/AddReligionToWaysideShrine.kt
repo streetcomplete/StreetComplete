@@ -3,9 +3,9 @@ package de.westnordost.streetcomplete.quests.religion
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryDao
+import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 
-class AddReligionToWaysideShrine(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<String>(o) {
+class AddReligionToWaysideShrine(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<String>(o) {
 
     override val tagFilters =
         "nodes, ways, relations with historic = wayside_shrine and !religion and (access !~ private|no)"

@@ -4,10 +4,10 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.ANYTHING_PAVED
 import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryDao
+import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.*
 
-class AddProhibitedForPedestrians(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<ProhibitedForPedestriansAnswer>(o) {
+class AddProhibitedForPedestrians(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<ProhibitedForPedestriansAnswer>(o) {
 
     override val tagFilters = """
         ways with (

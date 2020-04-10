@@ -3,11 +3,11 @@ package de.westnordost.streetcomplete.quests.recycling_glass
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryDao
+import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 import de.westnordost.streetcomplete.quests.recycling_glass.RecyclingGlass.*
 
-class DetermineRecyclingGlass(overpassServer: OverpassMapDataAndGeometryDao) :
-    SimpleOverpassQuestType<RecyclingGlass>(overpassServer) {
+class DetermineRecyclingGlass(overpassApi: OverpassMapDataAndGeometryApi) :
+    SimpleOverpassQuestType<RecyclingGlass>(overpassApi) {
 
     override val tagFilters = """
         nodes with amenity = recycling and recycling_type = container

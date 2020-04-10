@@ -8,13 +8,13 @@ import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryDao
+import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 import de.westnordost.streetcomplete.data.tagfilters.getQuestPrintStatement
 import de.westnordost.streetcomplete.data.tagfilters.toGlobalOverpassBBox
 
 import de.westnordost.streetcomplete.quests.bikeway.Cycleway.*
 
-class AddCycleway(private val overpassServer: OverpassMapDataAndGeometryDao) : OsmElementQuestType<CyclewayAnswer> {
+class AddCycleway(private val overpassApi: OverpassMapDataAndGeometryApi) : OsmElementQuestType<CyclewayAnswer> {
 
     override val commitMessage = "Add whether there are cycleways"
     override val wikiLink = "Key:cycleway"
@@ -55,7 +55,7 @@ class AddCycleway(private val overpassServer: OverpassMapDataAndGeometryDao) : O
     override fun isApplicableTo(element: Element):Boolean? = null
 
     override fun download(bbox: BoundingBox, handler: (element: Element, geometry: ElementGeometry?) -> Unit): Boolean {
-        return overpassServer.query(getOverpassQuery(bbox), handler)
+        return overpassApi.query(getOverpassQuery(bbox), handler)
     }
 
     /** returns overpass query string to get streets without cycleway info not near paths for

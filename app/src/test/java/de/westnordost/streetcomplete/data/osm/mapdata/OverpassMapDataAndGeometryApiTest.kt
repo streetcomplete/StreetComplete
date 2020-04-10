@@ -13,7 +13,7 @@ import org.mockito.Mockito.*
 import javax.inject.Provider
 import kotlin.concurrent.thread
 
-class OverpassMapDataAndGeometryDaoTest {
+class OverpassMapDataAndGeometryApiTest {
 
     @Test fun handleOverpassQuota() {
         val provider = mock<Provider<MapDataWithGeometryParser>>()
@@ -27,7 +27,7 @@ class OverpassMapDataAndGeometryDaoTest {
         val overpass = mock<OverpassMapDataDao>()
         on(overpass.getStatus()).thenReturn(status)
         doThrow(OsmTooManyRequestsException::class.java).on(overpass).queryElementsWithGeometry(any(), any())
-        val dao = OverpassMapDataAndGeometryDao(overpass, mock())
+        val dao = OverpassMapDataAndGeometryApi(overpass, mock())
         // the dao will call get(), get an exception in return, ask its status
         // then and at least wait for the specified amount of time before calling again
         var result = false

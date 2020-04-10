@@ -11,7 +11,7 @@ import javax.inject.Inject
 
 /** Queries data from the Overpass API and handles quota by suspending the thread until it has
  *  replenished.*/
-class OverpassMapDataAndGeometryDao @Inject constructor(
+class OverpassMapDataAndGeometryApi @Inject constructor(
     private val dao: OverpassMapDataDao,
     private val elementGeometryCreator: ElementGeometryCreator
 ) {

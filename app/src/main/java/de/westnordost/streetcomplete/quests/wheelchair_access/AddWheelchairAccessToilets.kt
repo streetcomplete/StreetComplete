@@ -3,9 +3,9 @@ package de.westnordost.streetcomplete.quests.wheelchair_access
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryDao
+import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 
-class AddWheelchairAccessToilets(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<String>(o) {
+class AddWheelchairAccessToilets(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<String>(o) {
 
     override val tagFilters =
         " nodes, ways with  amenity=toilets and access !~ private|customers and !wheelchair"

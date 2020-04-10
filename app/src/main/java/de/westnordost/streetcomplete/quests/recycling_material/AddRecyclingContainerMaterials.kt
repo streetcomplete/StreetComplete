@@ -6,12 +6,12 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryDao
+import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 import de.westnordost.streetcomplete.data.tagfilters.getQuestPrintStatement
 import de.westnordost.streetcomplete.data.tagfilters.toGlobalOverpassBBox
 
 class AddRecyclingContainerMaterials(
-    private val overpassServer: OverpassMapDataAndGeometryDao)
+    private val overpassApi: OverpassMapDataAndGeometryApi)
     : OsmElementQuestType<RecyclingContainerMaterialsAnswer> {
 
     override val commitMessage = "Add recycled materials to container"
@@ -19,7 +19,7 @@ class AddRecyclingContainerMaterials(
     override val icon = R.drawable.ic_quest_recycling_materials
 
     override fun download(bbox: BoundingBox, handler: (element: Element, geometry: ElementGeometry?) -> Unit): Boolean {
-        return overpassServer.query(getOverpassQuery(bbox), handler)
+        return overpassApi.query(getOverpassQuery(bbox), handler)
     }
 
     private fun getOverpassQuery(bbox: BoundingBox) = """

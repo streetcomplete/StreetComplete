@@ -4,10 +4,10 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryDao
+import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 
-class AddMaxSpeed(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<MaxSpeedAnswer>(o) {
+class AddMaxSpeed(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<MaxSpeedAnswer>(o) {
 
     override val tagFilters = """
         ways with highway ~ motorway|trunk|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential

@@ -11,16 +11,16 @@ import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryDao
+import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 import de.westnordost.streetcomplete.data.tagfilters.FiltersParser
 import de.westnordost.streetcomplete.quests.oneway.data.TrafficFlowSegment
 import de.westnordost.streetcomplete.quests.oneway.data.TrafficFlowSegmentsDao
 import de.westnordost.streetcomplete.quests.oneway.data.WayTrafficFlowDao
 
 class AddOneway(
-        private val overpassMapDataDao: OverpassMapDataAndGeometryDao,
-        private val trafficFlowSegmentsDao: TrafficFlowSegmentsDao,
-        private val db: WayTrafficFlowDao
+    private val overpassMapDataApi: OverpassMapDataAndGeometryApi,
+    private val trafficFlowSegmentsDao: TrafficFlowSegmentsDao,
+    private val db: WayTrafficFlowDao
 ) : OsmElementQuestType<OnewayAnswer> {
 
     private val tagFilters = """
@@ -55,7 +55,7 @@ class AddOneway(
         if (trafficDirectionMap.isEmpty()) return true
 
         val query = "way(id:${trafficDirectionMap.keys.joinToString(",")}); out meta geom;"
-        overpassMapDataDao.query(query) { element, geometry ->
+        overpassMapDataApi.query(query) { element, geometry ->
             fun checkValidAndHandle(element: Element, geometry: ElementGeometry?) {
                 if (geometry == null) return
                 if (geometry !is ElementPolylinesGeometry) return

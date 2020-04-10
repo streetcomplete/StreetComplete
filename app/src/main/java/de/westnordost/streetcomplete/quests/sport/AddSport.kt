@@ -3,9 +3,9 @@ package de.westnordost.streetcomplete.quests.sport
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryDao
+import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 
-class AddSport(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<List<String>>(o) {
+class AddSport(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<List<String>>(o) {
 
     private val ambiguousSportValues = listOf(
         "team_handball", // -> not really ambiguous but same as handball

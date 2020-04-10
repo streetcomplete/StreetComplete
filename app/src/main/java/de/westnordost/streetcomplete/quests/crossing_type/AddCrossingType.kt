@@ -3,9 +3,9 @@ package de.westnordost.streetcomplete.quests.crossing_type
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryDao
+import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 
-class AddCrossingType(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<String>(o) {
+class AddCrossingType(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<String>(o) {
 
     override val tagFilters = "nodes with highway = crossing and (!crossing or crossing = island)"
     override val commitMessage = "Add crossing type"

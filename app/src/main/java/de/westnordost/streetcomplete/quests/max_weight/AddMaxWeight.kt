@@ -3,10 +3,10 @@ package de.westnordost.streetcomplete.quests.max_weight
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryDao
+import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 
-class AddMaxWeight(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<MaxWeightAnswer>(o) {
+class AddMaxWeight(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<MaxWeightAnswer>(o) {
 
     override val commitMessage = "Add maximum allowed weight"
     override val wikiLink = "Key:maxweight"

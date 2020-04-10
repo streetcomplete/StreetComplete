@@ -4,10 +4,10 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryDao
+import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 import de.westnordost.streetcomplete.ktx.containsAny
 
-class AddPostboxRef(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<PostboxRefAnswer>(o) {
+class AddPostboxRef(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<PostboxRefAnswer>(o) {
 
     override val tagFilters = "nodes with amenity = post_box and !ref and !ref:signed"
 

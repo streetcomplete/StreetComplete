@@ -4,10 +4,10 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryDao
+import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
-class AddAcceptsCash(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<Boolean>(o) {
+class AddAcceptsCash(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<Boolean>(o) {
     private val amenity = listOf(
         "bar", "cafe", "fast_food", "food_court", "ice_cream", "pub", "biergarten",
         "restaurant", "cinema", "nightclub", "planetarium", "theatre", "marketplace",

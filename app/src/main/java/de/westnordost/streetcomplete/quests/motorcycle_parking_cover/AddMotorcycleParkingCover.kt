@@ -3,10 +3,10 @@ package de.westnordost.streetcomplete.quests.motorcycle_parking_cover
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryDao
+import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
-class AddMotorcycleParkingCover(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<Boolean>(o) {
+class AddMotorcycleParkingCover(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<Boolean>(o) {
 
     override val tagFilters = """
         nodes, ways with amenity = motorcycle_parking

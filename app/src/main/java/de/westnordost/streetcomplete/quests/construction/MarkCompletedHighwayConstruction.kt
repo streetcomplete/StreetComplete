@@ -7,13 +7,13 @@ import de.westnordost.streetcomplete.data.meta.ALL_ROADS
 import de.westnordost.streetcomplete.data.meta.SURVEY_MARK_KEY
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryDao
+import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 import de.westnordost.streetcomplete.data.tagfilters.getQuestPrintStatement
 import de.westnordost.streetcomplete.data.tagfilters.toGlobalOverpassBBox
 import de.westnordost.streetcomplete.quests.DateUtil
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
-open class MarkCompletedHighwayConstruction(private val overpass: OverpassMapDataAndGeometryDao)
+open class MarkCompletedHighwayConstruction(private val overpass: OverpassMapDataAndGeometryApi)
     : AMarkCompletedConstruction<Boolean>() {
 
     override val commitMessage = "Determine whether construction is now completed"

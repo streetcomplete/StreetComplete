@@ -5,7 +5,7 @@ import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryDao
+import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
@@ -16,8 +16,8 @@ import de.westnordost.streetcomplete.quests.localized_name.data.RoadNameSuggesti
 import java.util.regex.Pattern
 
 class AddRoadName(
-        private val overpassServer: OverpassMapDataAndGeometryDao,
-        private val roadNameSuggestionsDao: RoadNameSuggestionsDao
+    private val overpassApi: OverpassMapDataAndGeometryApi,
+    private val roadNameSuggestionsDao: RoadNameSuggestionsDao
 ) : OsmElementQuestType<RoadNameAnswer> {
 
     override val enabledInCountries = AllCountriesExcept("JP")
@@ -36,8 +36,8 @@ class AddRoadName(
     override fun isApplicableTo(element: Element) = ROADS_WITHOUT_NAMES_TFE.matches(element)
 
     override fun download(bbox: BoundingBox, handler: (element: Element, geometry: ElementGeometry?) -> Unit): Boolean {
-        if (!overpassServer.query(getOverpassQuery(bbox), handler)) return false
-        if (!overpassServer.query(getStreetNameSuggestionsOverpassQuery(bbox), this::putRoadNameSuggestion)) return false
+        if (!overpassApi.query(getOverpassQuery(bbox), handler)) return false
+        if (!overpassApi.query(getStreetNameSuggestionsOverpassQuery(bbox), this::putRoadNameSuggestion)) return false
         return true
     }
 

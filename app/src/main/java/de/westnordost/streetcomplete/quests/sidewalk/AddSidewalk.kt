@@ -7,11 +7,11 @@ import de.westnordost.streetcomplete.data.meta.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryDao
+import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 import de.westnordost.streetcomplete.data.tagfilters.getQuestPrintStatement
 import de.westnordost.streetcomplete.data.tagfilters.toGlobalOverpassBBox
 
-class AddSidewalk(private val overpassServer: OverpassMapDataAndGeometryDao) : OsmElementQuestType<SidewalkAnswer> {
+class AddSidewalk(private val overpassApi: OverpassMapDataAndGeometryApi) : OsmElementQuestType<SidewalkAnswer> {
 
     override val commitMessage = "Add whether there are sidewalks"
     override val wikiLink = "Key:sidewalk"
@@ -21,7 +21,7 @@ class AddSidewalk(private val overpassServer: OverpassMapDataAndGeometryDao) : O
     override fun getTitle(tags: Map<String, String>) = R.string.quest_sidewalk_title
 
     override fun download(bbox: BoundingBox, handler: (element: Element, geometry: ElementGeometry?) -> Unit): Boolean {
-        return overpassServer.query(getOverpassQuery(bbox), handler)
+        return overpassApi.query(getOverpassQuery(bbox), handler)
     }
 
     /** returns overpass query string to get streets without sidewalk info not near separately mapped

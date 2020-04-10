@@ -3,10 +3,10 @@ package de.westnordost.streetcomplete.quests.traffic_signals_sound
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryDao
+import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
-class AddTrafficSignalsSound(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<Boolean>(o) {
+class AddTrafficSignalsSound(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<Boolean>(o) {
 
     override val tagFilters =
         "nodes with highway = crossing and crossing = traffic_signals and !traffic_signals:sound"

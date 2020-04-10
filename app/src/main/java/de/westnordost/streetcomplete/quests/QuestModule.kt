@@ -8,7 +8,7 @@ import dagger.Module
 import dagger.Provides
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryDao
+import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestType
 import de.westnordost.streetcomplete.quests.accepts_cash.AddAcceptsCash
 import de.westnordost.streetcomplete.quests.baby_changing_table.AddBabyChangingTable
@@ -92,7 +92,7 @@ import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAcces
 object QuestModule
 {
     @Provides @Singleton fun questTypeRegistry(
-        osmNoteQuestType: OsmNoteQuestType, o: OverpassMapDataAndGeometryDao,
+        osmNoteQuestType: OsmNoteQuestType, o: OverpassMapDataAndGeometryApi,
         roadNameSuggestionsDao: RoadNameSuggestionsDao,
         trafficFlowSegmentsDao: TrafficFlowSegmentsDao, trafficFlowDao: WayTrafficFlowDao,
         featureDictionaryFuture: FutureTask<FeatureDictionary>

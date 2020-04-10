@@ -7,7 +7,7 @@ import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryDao
+import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
@@ -20,7 +20,7 @@ import de.westnordost.streetcomplete.util.LatLonRaster
 import de.westnordost.streetcomplete.util.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.isInMultipolygon
 
-class AddHousenumber(private val overpass: OverpassMapDataAndGeometryDao) : OsmElementQuestType<HousenumberAnswer> {
+class AddHousenumber(private val overpass: OverpassMapDataAndGeometryApi) : OsmElementQuestType<HousenumberAnswer> {
 
     override val commitMessage = "Add housenumbers"
     override val wikiLink = "Key:addr"
