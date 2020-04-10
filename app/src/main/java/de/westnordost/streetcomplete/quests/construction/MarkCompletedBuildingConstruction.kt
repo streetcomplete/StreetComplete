@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.quests.construction
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.OsmTaggings
+import de.westnordost.streetcomplete.data.meta.SURVEY_MARK_KEY
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryDao
@@ -50,7 +50,7 @@ open class MarkCompletedBuildingConstruction(private val overpass: OverpassMapDa
             changes.modify("building", constructionValue)
             removeTagsDescribingConstruction(changes)
         } else {
-            changes.addOrModify(OsmTaggings.SURVEY_MARK_KEY, DateUtil.getCurrentDateString())
+            changes.addOrModify(SURVEY_MARK_KEY, DateUtil.getCurrentDateString())
         }
     }
 }

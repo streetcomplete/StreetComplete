@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.quests.construction
 
-import de.westnordost.streetcomplete.data.meta.OsmTaggings
+import de.westnordost.streetcomplete.data.meta.SURVEY_MARK_KEY
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.quests.DateUtil
@@ -38,7 +38,7 @@ abstract class AMarkCompletedConstruction<T> : OsmElementQuestType<T> {
         changes.deleteIfExists("source:construction")
         changes.deleteIfExists("opening_date")
         changes.deleteIfExists("source:opening_date")
-        changes.deleteIfExists(OsmTaggings.SURVEY_MARK_KEY)
-        changes.deleteIfExists("source:" + OsmTaggings.SURVEY_MARK_KEY)
+        changes.deleteIfExists(SURVEY_MARK_KEY)
+        changes.deleteIfExists("source:$SURVEY_MARK_KEY")
     }
 }

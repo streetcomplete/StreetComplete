@@ -3,7 +3,8 @@ package de.westnordost.streetcomplete.quests.construction
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.OsmTaggings
+import de.westnordost.streetcomplete.data.meta.ALL_ROADS
+import de.westnordost.streetcomplete.data.meta.SURVEY_MARK_KEY
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryDao
@@ -21,7 +22,7 @@ open class MarkCompletedHighwayConstruction(private val overpass: OverpassMapDat
     override val hasMarkersAtEnds = true
 
     override fun getTitle(tags: Map<String, String>): Int {
-        val isRoad = OsmTaggings.ALL_ROADS.contains(tags["construction"])
+        val isRoad = ALL_ROADS.contains(tags["construction"])
         val isCycleway = tags["construction"] == "cycleway"
         val isFootway = tags["construction"] == "footway"
 
@@ -59,7 +60,7 @@ open class MarkCompletedHighwayConstruction(private val overpass: OverpassMapDat
             changes.modify("highway", constructionValue)
             removeTagsDescribingConstruction(changes)
         } else {
-            changes.addOrModify(OsmTaggings.SURVEY_MARK_KEY, DateUtil.getCurrentDateString())
+            changes.addOrModify(SURVEY_MARK_KEY, DateUtil.getCurrentDateString())
         }
     }
 }

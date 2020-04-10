@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.quests.segregated
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.OsmTaggings
+import de.westnordost.streetcomplete.data.meta.ANYTHING_PAVED
 import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryDao
@@ -16,7 +16,7 @@ class AddCyclewaySegregation(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQ
           or (highway = cycleway and foot ~ designated|yes)
         )
         and !segregated and area != yes
-        and surface ~ ${OsmTaggings.ANYTHING_PAVED.joinToString("|")}
+        and surface ~ ${ANYTHING_PAVED.joinToString("|")}
     """
 
     override val commitMessage = "Add segregated status for combined footway with cycleway"

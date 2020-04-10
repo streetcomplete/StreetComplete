@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.quests.max_speed
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.OsmTaggings
+import de.westnordost.streetcomplete.data.meta.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryDao
@@ -13,7 +13,7 @@ class AddMaxSpeed(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<Ma
         ways with highway ~ motorway|trunk|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential
          and !maxspeed and !maxspeed:forward and !maxspeed:backward
          and !source:maxspeed and !zone:maxspeed and !maxspeed:type and !zone:traffic
-         and surface !~ ${OsmTaggings.ANYTHING_UNPAVED.joinToString("|")}
+         and surface !~ ${ANYTHING_UNPAVED.joinToString("|")}
          and motor_vehicle !~ private|no
          and vehicle !~ private|no
          and area != yes

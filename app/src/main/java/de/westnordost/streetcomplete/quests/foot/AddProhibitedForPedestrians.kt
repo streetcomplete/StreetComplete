@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.quests.foot
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.OsmTaggings
+import de.westnordost.streetcomplete.data.meta.ANYTHING_PAVED
 import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryDao
@@ -25,7 +25,7 @@ class AddProhibitedForPedestrians(o: OverpassMapDataAndGeometryDao) : SimpleOver
         "and motorroad != yes " +
         "and highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified " +
         // road probably not developed enough to issue a prohibition for pedestrians
-        "and surface ~ ${OsmTaggings.ANYTHING_PAVED.joinToString("|")} " +
+        "and surface ~ ${ANYTHING_PAVED.joinToString("|")} " +
         // fuzzy filter for above mentioned situations + developed-enough / non-rural roads
         "and ( oneway~yes|-1 or bridge=yes or tunnel=yes or bicycle~no|use_sidepath or lit=yes )"
 

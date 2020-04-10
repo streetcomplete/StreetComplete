@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.quests.sidewalk
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.OsmTaggings
+import de.westnordost.streetcomplete.data.meta.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
@@ -41,7 +41,7 @@ class AddSidewalk(private val overpassServer: OverpassMapDataAndGeometryDao) : O
             // not any with very low speed limit because they not very likely to have sidewalks
             "[maxspeed !~ '^(8|7|6|5|5 mph|walk)$']" +
             // not any unpaved because of the same reason
-            "[surface !~ '^(" + OsmTaggings.ANYTHING_UNPAVED.joinToString("|") + ")$']" +
+            "[surface !~ '^(" + ANYTHING_UNPAVED.joinToString("|") + ")$']" +
             "[lit = yes]" +
             // not any explicitly tagged as no pedestrians
             "[foot != no]" +

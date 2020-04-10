@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.quests.bikeway
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.OsmTaggings
+import de.westnordost.streetcomplete.data.meta.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
@@ -75,7 +75,7 @@ class AddCycleway(private val overpassServer: OverpassMapDataAndGeometryDao) : O
             // not any with low speed limit because they not very likely to have cycleway infrastructure
             "[maxspeed !~ '^(20|15|10|8|7|6|5|10 mph|5 mph|walk)$']" +
             // not any unpaved because of the same reason
-            "[surface !~ '^(" + OsmTaggings.ANYTHING_UNPAVED.joinToString("|") + ")$']" +
+            "[surface !~ '^(" + ANYTHING_UNPAVED.joinToString("|") + ")$']" +
             // not any explicitly tagged as no bicycles
             "[bicycle != no]" +
             "[access !~ '^(private|no)$']" +
