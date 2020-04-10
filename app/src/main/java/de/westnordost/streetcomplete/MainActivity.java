@@ -46,8 +46,9 @@ import de.westnordost.streetcomplete.data.quest.Quest;
 import de.westnordost.streetcomplete.data.quest.QuestAutoSyncer;
 import de.westnordost.streetcomplete.data.quest.QuestController;
 import de.westnordost.streetcomplete.data.download.QuestDownloadProgressListener;
-import de.westnordost.streetcomplete.data.quest.QuestUploadDownloadController;
+import de.westnordost.streetcomplete.data.download.QuestDownloadController;
 import de.westnordost.streetcomplete.data.quest.UnsyncedChangesCountSource;
+import de.westnordost.streetcomplete.data.upload.UploadController;
 import de.westnordost.streetcomplete.data.upload.UploadProgressListener;
 import de.westnordost.streetcomplete.data.upload.VersionBannedException;
 import de.westnordost.streetcomplete.data.user.UserController;
@@ -83,7 +84,8 @@ public class MainActivity extends AppCompatActivity implements
 	@Inject QuestAutoSyncer questAutoSyncer;
 
 	@Inject QuestController questController;
-	@Inject QuestUploadDownloadController questUploadDownloadController;
+	@Inject QuestDownloadController questDownloadController;
+	@Inject UploadController uploadController;
 	@Inject NotificationsSource notificationsSource;
 	@Inject UnsyncedChangesCountSource unsyncedChangesCountSource;
 
@@ -234,17 +236,17 @@ public class MainActivity extends AppCompatActivity implements
 		localBroadcaster.registerReceiver(locationRequestFinishedReceiver,
 				new IntentFilter(LocationRequestFragment.ACTION_FINISHED));
 
-		questUploadDownloadController.setShowNotification(false);
+		questDownloadController.setShowNotification(false);
 
-		if (questUploadDownloadController.isDownloadInProgress()) {
+		if (questDownloadController.isDownloadInProgress()) {
 			downloadProgressBar.setAlpha(1f);
-			downloadProgressBar.setProgress((int)(questUploadDownloadController.getDownloadProgress() * 1000));
+			downloadProgressBar.setProgress((int)(questDownloadController.getDownloadProgress() * 1000));
 		} else {
 			downloadProgressBar.setAlpha(0f);
 		}
 
-		questUploadDownloadController.addUploadProgressListener(uploadProgressListener);
-		questUploadDownloadController.addQuestDownloadProgressListener(downloadProgressListener);
+		uploadController.addUploadProgressListener(uploadProgressListener);
+		questDownloadController.addQuestDownloadProgressListener(downloadProgressListener);
 
 		if(!hasAskedForLocation && !prefs.getBoolean(Prefs.LAST_LOCATION_REQUEST_DENIED, false))
 		{
@@ -286,10 +288,10 @@ public class MainActivity extends AppCompatActivity implements
 
 		unregisterReceiver(locationAvailabilityReceiver);
 
-		questUploadDownloadController.setShowNotification(true);
+		questDownloadController.setShowNotification(true);
 
-		questUploadDownloadController.removeUploadProgressListener(uploadProgressListener);
-		questUploadDownloadController.removeQuestDownloadProgressListener(downloadProgressListener);
+		uploadController.removeUploadProgressListener(uploadProgressListener);
+		questDownloadController.removeQuestDownloadProgressListener(downloadProgressListener);
 
 		downloadProgressBar.setAlpha(0f);
 	}
@@ -449,7 +451,7 @@ public class MainActivity extends AppCompatActivity implements
 		{
 			runOnUiThread(() ->
 			{
-				if (questUploadDownloadController.isPriorityDownloadInProgress())
+				if (questDownloadController.isPriorityDownloadInProgress())
 				{
 					Toast.makeText(MainActivity.this, R.string.nothing_more_to_download, Toast.LENGTH_SHORT).show();
 				}

@@ -22,9 +22,9 @@ import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestsUploader;
 import de.westnordost.streetcomplete.data.osm.splitway.SplitWaysUploader;
 import de.westnordost.streetcomplete.data.osm.osmquest.undo.UndoOsmQuestsUploader;
 import de.westnordost.streetcomplete.data.osmnotes.createnotes.CreateNotesUploader;
-import de.westnordost.streetcomplete.data.osmnotes.OsmAvatarsDownloader;
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestsChangesUploader;
-import de.westnordost.streetcomplete.data.quest.QuestUploadDownloadController;
+import de.westnordost.streetcomplete.data.download.QuestDownloadController;
+import de.westnordost.streetcomplete.data.upload.UploadController;
 import de.westnordost.streetcomplete.data.upload.UploadProgressSource;
 import de.westnordost.streetcomplete.data.upload.Uploader;
 import de.westnordost.streetcomplete.data.upload.VersionIsBannedChecker;
@@ -136,11 +136,11 @@ public class OsmModule
 			ApplicationConstants.USER_AGENT);
 	}
 
-	@Provides public static UploadProgressSource uploadProgressSource(QuestUploadDownloadController uploadDownloadController) {
-		return uploadDownloadController;
+	@Provides public static UploadProgressSource uploadProgressSource(UploadController uploadController) {
+		return uploadController;
 	}
 
-	@Provides public static QuestDownloadProgressSource downloadProgressSource(QuestUploadDownloadController uploadDownloadController) {
-		return uploadDownloadController;
+	@Provides public static QuestDownloadProgressSource downloadProgressSource(QuestDownloadController downloadController) {
+		return downloadController;
 	}
 }

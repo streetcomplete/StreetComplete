@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.data.quest
+package de.westnordost.streetcomplete.data.download
 
 import android.content.ComponentName
 import android.content.Context
@@ -7,18 +7,14 @@ import android.content.ServiceConnection
 import android.os.IBinder
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.data.download.*
-import de.westnordost.streetcomplete.data.upload.UploadProgressListener
-import de.westnordost.streetcomplete.data.upload.UploadProgressRelay
-import de.westnordost.streetcomplete.data.upload.UploadProgressSource
-import de.westnordost.streetcomplete.data.upload.UploadService
 import de.westnordost.streetcomplete.util.enclosingTilesRect
 import javax.inject.Inject
 import javax.inject.Singleton
 
-@Singleton class QuestUploadDownloadController @Inject constructor(
+/** Controls quest downloading */
+@Singleton class QuestDownloadController @Inject constructor(
     private val context: Context
-): UploadProgressSource, QuestDownloadProgressSource {
+): QuestDownloadProgressSource {
 
     private var downloadServiceIsBound: Boolean = false
     private var downloadService: QuestDownloadService.Interface? = null
@@ -34,20 +30,6 @@ import javax.inject.Singleton
     }
     private val downloadProgressRelay = QuestDownloadProgressRelay()
 
-    private var uploadServiceIsBound = false
-    private var uploadService: UploadService.Interface? = null
-    private val uploadServiceConnection: ServiceConnection = object : ServiceConnection {
-        override fun onServiceConnected(className: ComponentName, service: IBinder) {
-            uploadService = service as UploadService.Interface
-            uploadService?.setProgressListener(uploadProgressRelay)
-        }
-
-        override fun onServiceDisconnected(className: ComponentName) {
-            uploadService = null
-        }
-    }
-    private val uploadProgressRelay = UploadProgressRelay()
-
     /** @return true if a quest download triggered by the user is running */
     override val isPriorityDownloadInProgress: Boolean get() =
         downloadService?.isPriorityDownloadInProgress == true
@@ -57,9 +39,6 @@ import javax.inject.Singleton
         downloadService?.isDownloadInProgress == true
 
     override val downloadProgress: Float get() = downloadService?.downloadProgress ?: 0f
-
-    override val isUploadInProgress: Boolean get() =
-        uploadService?.isUploadInProgress == true
 
     var showNotification: Boolean
         get() = downloadService?.showDownloadNotification == true
@@ -83,35 +62,18 @@ import javax.inject.Singleton
         context.startService(QuestDownloadService.createIntent(context, tilesRect, maxQuestTypesToDownload, isPriority))
     }
 
-    /** Collect and upload all changes made by the user  */
-    fun upload() {
-        context.startService(UploadService.createIntent(context))
-    }
-
     private fun bindServices() {
         downloadServiceIsBound = context.bindService(
             Intent(context, QuestDownloadService::class.java),
             downloadServiceConnection, Context.BIND_AUTO_CREATE
-        )
-        uploadServiceIsBound = context.bindService(
-            Intent(context, UploadService::class.java),
-            uploadServiceConnection, Context.BIND_AUTO_CREATE
         )
     }
 
     private fun unbindServices() {
         if (downloadServiceIsBound) context.unbindService(downloadServiceConnection)
         downloadServiceIsBound = false
-        if (uploadServiceIsBound) context.unbindService(uploadServiceConnection)
-        uploadServiceIsBound = false
     }
 
-    override fun addUploadProgressListener(listener: UploadProgressListener) {
-        uploadProgressRelay.addListener(listener)
-    }
-    override fun removeUploadProgressListener(listener: UploadProgressListener) {
-        uploadProgressRelay.removeListener(listener)
-    }
     override fun addQuestDownloadProgressListener(listener: QuestDownloadProgressListener) {
         downloadProgressRelay.addListener(listener)
     }

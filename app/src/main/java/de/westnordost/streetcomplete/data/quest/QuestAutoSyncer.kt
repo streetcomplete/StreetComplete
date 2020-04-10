@@ -18,10 +18,8 @@ import javax.inject.Inject
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.Prefs
-import de.westnordost.streetcomplete.data.download.MobileDataAutoDownloadStrategy
-import de.westnordost.streetcomplete.data.download.QuestDownloadProgressListener
-import de.westnordost.streetcomplete.data.download.QuestDownloadProgressSource
-import de.westnordost.streetcomplete.data.download.WifiAutoDownloadStrategy
+import de.westnordost.streetcomplete.data.download.*
+import de.westnordost.streetcomplete.data.upload.UploadController
 import de.westnordost.streetcomplete.location.FineLocationManager
 import de.westnordost.streetcomplete.data.user.UserController
 import kotlinx.coroutines.*
@@ -32,7 +30,8 @@ import javax.inject.Singleton
  * Respects the user preference to only sync on wifi or not sync automatically at all
  */
 @Singleton class QuestAutoSyncer @Inject constructor(
-    private val questUploadDownloadController: QuestUploadDownloadController,
+    private val questDownloadController: QuestDownloadController,
+    private val uploadController: UploadController,
     private val mobileDataDownloadStrategy: MobileDataAutoDownloadStrategy,
     private val wifiDownloadStrategy: WifiAutoDownloadStrategy,
     private val context: Context,
@@ -138,7 +137,7 @@ import javax.inject.Singleton
         if (!isAllowedByPreference) return
         val pos = pos ?: return
         if (!isConnected) return
-        if (questUploadDownloadController.isDownloadInProgress) return
+        if (questDownloadController.isDownloadInProgress) return
 
         Log.i(TAG, "Checking whether to automatically download new quests at ${pos.latitude},${pos.longitude}")
 
@@ -146,7 +145,7 @@ import javax.inject.Singleton
             val downloadStrategy = if (isWifi) wifiDownloadStrategy else mobileDataDownloadStrategy
             if (downloadStrategy.mayDownloadHere(pos)) {
                 try {
-                    questUploadDownloadController.download(
+                    questDownloadController.download(
                         downloadStrategy.getDownloadBoundingBox(pos),
                         downloadStrategy.questTypeDownloadCount
                     )
@@ -165,7 +164,7 @@ import javax.inject.Singleton
         if (!userController.isLoggedIn) return
 
         try {
-            questUploadDownloadController.upload()
+            uploadController.upload()
         } catch (e: IllegalStateException) {
             // The Android 9 bug described here should not result in a hard crash of the app
             // https://stackoverflow.com/questions/52013545/android-9-0-not-allowed-to-start-service-app-is-in-background-after-onresume

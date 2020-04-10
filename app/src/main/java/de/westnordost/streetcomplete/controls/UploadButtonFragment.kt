@@ -9,9 +9,9 @@ import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.quest.QuestUploadDownloadController
 import de.westnordost.streetcomplete.data.quest.UnsyncedChangesCountListener
 import de.westnordost.streetcomplete.data.quest.UnsyncedChangesCountSource
+import de.westnordost.streetcomplete.data.upload.UploadController
 import de.westnordost.streetcomplete.data.upload.UploadProgressListener
 import de.westnordost.streetcomplete.data.user.UserController
 import de.westnordost.streetcomplete.ktx.toast
@@ -23,7 +23,7 @@ import javax.inject.Inject
 class UploadButtonFragment : Fragment(R.layout.fragment_upload_button),
     CoroutineScope by CoroutineScope(Dispatchers.Main) {
 
-    @Inject internal lateinit var uploadDownloadController: QuestUploadDownloadController
+    @Inject internal lateinit var uploadController: UploadController
     @Inject internal lateinit var userController: UserController
     @Inject internal lateinit var unsyncedChangesCountSource: UnsyncedChangesCountSource
     @Inject internal lateinit var prefs: SharedPreferences
@@ -64,8 +64,8 @@ class UploadButtonFragment : Fragment(R.layout.fragment_upload_button),
         if (!isAutosync) {
             uploadButton.visibility = View.VISIBLE
             updateCount()
-            updateProgress(uploadDownloadController.isUploadInProgress)
-            uploadDownloadController.addUploadProgressListener(uploadProgressListener)
+            updateProgress(uploadController.isUploadInProgress)
+            uploadController.addUploadProgressListener(uploadProgressListener)
             unsyncedChangesCountSource.addListener(unsyncedChangesCountListener)
         } else {
             uploadButton.visibility = View.GONE
@@ -74,7 +74,7 @@ class UploadButtonFragment : Fragment(R.layout.fragment_upload_button),
 
     override fun onStop() {
         super.onStop()
-        uploadDownloadController.removeUploadProgressListener(uploadProgressListener)
+        uploadController.removeUploadProgressListener(uploadProgressListener)
         unsyncedChangesCountSource.removeListener(unsyncedChangesCountListener)
     }
 
@@ -107,7 +107,7 @@ class UploadButtonFragment : Fragment(R.layout.fragment_upload_button),
         if (!userController.isLoggedIn) {
             context?.let { RequestLoginDialog(it).show() }
         } else {
-            uploadDownloadController.upload()
+            uploadController.upload()
         }
     }
 

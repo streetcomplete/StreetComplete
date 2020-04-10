@@ -43,6 +43,7 @@ import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.controls.MainMenuDialog
+import de.westnordost.streetcomplete.data.download.QuestDownloadController
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuest
 import de.westnordost.streetcomplete.data.osm.splitway.SplitPolylineAtPosition
@@ -72,7 +73,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
     VisibleQuestListener {
 
     @Inject internal lateinit var questController: QuestController
-    @Inject internal lateinit var questUploadDownloadController: QuestUploadDownloadController
+    @Inject internal lateinit var questDownloadController: QuestDownloadController
     @Inject internal lateinit var isSurveyChecker: QuestSourceIsSurveyChecker
     @Inject internal lateinit var visibleQuestsSource: VisibleQuestsSource
     @Inject internal lateinit var soundFx: SoundFx
@@ -561,7 +562,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
             if (areaInSqKm > ApplicationConstants.MAX_DOWNLOADABLE_AREA_IN_SQKM) {
                 context?.toast(R.string.download_area_too_big, Toast.LENGTH_LONG)
             } else {
-                if (questUploadDownloadController.isPriorityDownloadInProgress) {
+                if (questDownloadController.isPriorityDownloadInProgress) {
                     context?.let {
                         AlertDialog.Builder(it)
                             .setMessage(R.string.confirmation_cancel_prev_download_title)
@@ -591,7 +592,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
                 )
             }
         }
-        questUploadDownloadController.download(bbox, ApplicationConstants.MANUAL_DOWNLOAD_QUEST_TYPE_COUNT, true)
+        questDownloadController.download(bbox, ApplicationConstants.MANUAL_DOWNLOAD_QUEST_TYPE_COUNT, true)
     }
 
     /* --------------------------------- Managing bottom sheet  --------------------------------- */
