@@ -50,12 +50,10 @@ class UploadButtonFragment : Fragment(R.layout.fragment_upload_button),
         super.onViewCreated(view, savedInstanceState)
 
         uploadButton.setOnClickListener {
-            uploadButton.isEnabled = false
             if (isConnected()) {
                 uploadChanges()
             } else {
                 context?.toast(R.string.offline)
-                uploadButton.isEnabled = true
             }
         }
     }

@@ -116,7 +116,13 @@ import javax.inject.Singleton
         val deletedCount = removeObsolete(obsoleteQuestIds)
         val addedCount = addNew(addedQuests)
 
-        onUpdated(added = addedQuests, deleted = obsoleteQuestIds)
+        /* Only send quests to listener that were really added, i.e. have an ID. How could quests
+        *  not be added at this point? If they exist in the DB but outside the bounding box,
+        *  so usually either if the geometry has been moved in the meantime, or, some quests
+        *  also extend the bbox in which they download the quests, like the housenumber quest */
+        val reallyAddedQuests = addedQuests.filter { it.id != null }
+
+        onUpdated(added = reallyAddedQuests, deleted = obsoleteQuestIds)
 
         return UpdateResult(added = addedCount, deleted = deletedCount)
     }
