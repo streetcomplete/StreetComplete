@@ -113,14 +113,14 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation 'androidx.annotation:annotation:1.1.0'
-    implementation 'androidx.fragment:fragment:1.2.2'
+    implementation 'androidx.fragment:fragment:1.2.4'
     implementation 'androidx.preference:preference:1.1.0'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'androidx.viewpager:viewpager:1.0.0'
     implementation 'androidx.localbroadcastmanager:localbroadcastmanager:1.0.0'
 
     // photos
-    implementation 'androidx.exifinterface:exifinterface:1.1.0'
+    implementation 'androidx.exifinterface:exifinterface:1.2.0'
 
     // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -147,7 +147,6 @@ dependencies {
     implementation 'me.grantland:autofittextview:0.2.1'
     implementation 'org.sufficientlysecure:html-textview:3.9'
     implementation 'com.duolingo.open:rtl-viewpager:1.0.2'
-    implementation 'androidx.exifinterface:exifinterface:1.1.0'
 
     // box2d view
     implementation 'org.jbox2d:jbox2d-library:2.2.1.1'
