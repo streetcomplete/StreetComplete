@@ -399,13 +399,6 @@ class MainFragment : Fragment(R.layout.fragment_main),
         // open quest does not exist anymore!
         if (removed.contains(f.questId)) {
             mainHandler.post { closeBottomSheet() }
-        } else {
-            // TODO maybe this is not necessary anymore because the activity is not recreated on configuration change
-            // to recreate element geometry of selected quest (if any) after recreation of activity
-            val quest = added.find { it.id == f.questId }
-            if (quest != null) {
-                mainHandler.post { showQuestDetails(quest, group) }
-            }
         }
     }
 
