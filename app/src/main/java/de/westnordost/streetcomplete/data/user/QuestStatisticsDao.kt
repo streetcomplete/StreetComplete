@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.data.user
 import android.database.sqlite.SQLiteDatabase.CONFLICT_IGNORE
 import android.database.sqlite.SQLiteOpenHelper
 import androidx.core.content.contentValuesOf
-import de.westnordost.streetcomplete.data.WhereSelectionBuilder
 
 import javax.inject.Inject
 
@@ -11,10 +10,18 @@ import de.westnordost.streetcomplete.data.user.QuestStatisticsTable.Columns.QUES
 import de.westnordost.streetcomplete.data.user.QuestStatisticsTable.Columns.SUCCEEDED
 import de.westnordost.streetcomplete.data.user.QuestStatisticsTable.NAME
 import de.westnordost.streetcomplete.ktx.*
+import java.util.concurrent.CopyOnWriteArrayList
 
 /** Stores how many quests of which quest types the user solved */
 class QuestStatisticsDao @Inject constructor(private val dbHelper: SQLiteOpenHelper) {
     private val db get() = dbHelper.writableDatabase
+
+    interface Listener {
+        fun onAddedOne(questType: String)
+        fun onReplacedAll()
+    }
+
+    private val listeners: MutableList<Listener> = CopyOnWriteArrayList()
 
     fun getTotalAmount(): Int {
         return db.queryOne(NAME, arrayOf("total($SUCCEEDED)")) { it.getInt(0) } ?: 0
@@ -40,6 +47,7 @@ class QuestStatisticsDao @Inject constructor(private val dbHelper: SQLiteOpenHel
                 ))
             }
         }
+        listeners.forEach { it.onReplacedAll() }
     }
 
     fun addOne(questType: String) {
@@ -51,6 +59,7 @@ class QuestStatisticsDao @Inject constructor(private val dbHelper: SQLiteOpenHel
 
         // then increase by one
         db.execSQL("UPDATE $NAME SET $SUCCEEDED = $SUCCEEDED + 1 WHERE $QUEST_TYPE = ?", arrayOf(questType))
+        listeners.forEach { it.onAddedOne(questType) }
     }
 
     fun getAmount(questType: String): Int {
@@ -66,6 +75,11 @@ class QuestStatisticsDao @Inject constructor(private val dbHelper: SQLiteOpenHel
             it.getInt(0)
         } ?: 0
     }
-}
 
-private const val NOTE = "NOTE"
+    fun addListener(listener: Listener) {
+        listeners.add(listener)
+    }
+    fun removeListener(listener: Listener) {
+        listeners.remove(listener)
+    }
+}

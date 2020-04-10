@@ -30,8 +30,7 @@ import javax.inject.Provider
 class QuestDownloadService : SingleIntentService(TAG) {
     @Inject internal lateinit var questDownloaderProvider: Provider<QuestDownloader>
 
-    private val notificationController = QuestDownloadNotificationController(
-        this, ApplicationConstants.NOTIFICATIONS_CHANNEL_DOWNLOAD, 1)
+    private lateinit var notificationController: QuestDownloadNotificationController
 
     // interface
     private val binder: IBinder = Interface()
@@ -87,6 +86,12 @@ class QuestDownloadService : SingleIntentService(TAG) {
 
     init {
         Injector.instance.applicationComponent.inject(this)
+    }
+
+    override fun onCreate() {
+        super.onCreate()
+        notificationController = QuestDownloadNotificationController(
+            this, ApplicationConstants.NOTIFICATIONS_CHANNEL_DOWNLOAD, 1)
     }
 
     override fun onBind(intent: Intent): IBinder {

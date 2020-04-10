@@ -14,17 +14,64 @@
     <RelativeLayout
         android:id="@+id/mapControls"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:ignore="RtlHardcoded">
+
+        <fragment
+            android:id="@+id/answers_counter_fragment"
+            android:name="de.westnordost.streetcomplete.controls.AnswersCounterFragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:layout="@layout/fragment_answers_counter"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            />
+
+        <ImageButton
+            android:id="@+id/downloadButton"
+            android:layout_width="@dimen/map_button_size"
+            android:layout_height="@dimen/map_button_size"
+            android:scaleType="center"
+            style="@style/RoundWhiteButton"
+            android:src="@drawable/ic_file_download_black_24dp"
+            android:contentDescription="@string/action_download"
+            android:layout_toRightOf="@id/answers_counter_fragment"/>
+
+        <fragment
+            android:id="@+id/upload_button_fragment"
+            android:name="de.westnordost.streetcomplete.controls.UploadButtonFragment"
+            android:layout_width="@dimen/map_button_size"
+            android:layout_height="@dimen/map_button_size"
+            tools:layout="@layout/fragment_upload_button"
+            android:layout_toRightOf="@id/downloadButton"
+            />
+
+        <ImageButton
+            android:id="@+id/mainMenuButton"
+            android:layout_width="@dimen/map_button_size"
+            android:layout_height="@dimen/map_button_size"
+            android:scaleType="center"
+            style="@style/RoundWhiteButton"
+            android:src="@drawable/ic_menu_black_24dp"
+            android:contentDescription="@string/map_btn_menu"
+            android:layout_alignParentRight="true"/>
+
+        <fragment
+            android:id="@+id/notification_button_fragment"
+            android:name="de.westnordost.streetcomplete.controls.NotificationButtonFragment"
+            android:layout_width="@dimen/map_button_size"
+            android:layout_height="@dimen/map_button_size"
+            tools:layout="@layout/fragment_notification_button"
+            android:layout_toLeftOf="@id/mainMenuButton"
+            />
 
         <RelativeLayout
             android:id="@+id/compassView"
             android:layout_width="@dimen/map_button_size"
             android:layout_height="@dimen/map_button_size"
             style="@style/RoundWhiteButton"
-            android:layout_marginTop="76dp"
-            tools:ignore="RtlHardcoded"
+            android:layout_below="@id/mainMenuButton"
             android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
             >
 
             <TextView
@@ -96,10 +143,17 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:orientation="vertical"
-            android:layout_marginLeft="4dp"
             android:layout_marginBottom="22dp"
             android:clipToPadding="false"
             tools:ignore="RtlHardcoded,RtlSymmetry">
+
+            <fragment
+                android:id="@+id/undo_button_fragment"
+                android:name="de.westnordost.streetcomplete.controls.UndoButtonFragment"
+                android:layout_width="@dimen/map_button_size"
+                android:layout_height="@dimen/map_button_size"
+                tools:layout="@layout/fragment_undo_button"
+                />
 
         </LinearLayout>
 

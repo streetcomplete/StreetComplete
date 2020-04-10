@@ -91,8 +91,6 @@ import javax.inject.Singleton
         }
     }
 
-    fun getLastSolvedOsmQuest(): OsmQuest? = osmQuestController.getLastUndoable()
-
     fun getOsmElement(quest: OsmQuest): OsmElement? =
         osmElementDB.get(quest.elementType, quest.elementId) as OsmElement?
 

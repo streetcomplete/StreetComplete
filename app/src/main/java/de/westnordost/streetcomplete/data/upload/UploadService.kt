@@ -43,6 +43,7 @@ class UploadService : IntentService(TAG) {
             progressListener?.onProgress(false)
         }
     }
+    private var isUploading: Boolean = false
     private var progressListener: UploadProgressListener? = null
 
     private val cancelState = AtomicBoolean(false)
@@ -70,6 +71,7 @@ class UploadService : IntentService(TAG) {
     override fun onHandleIntent(intent: Intent?) {
         if (cancelState.get()) return
 
+        isUploading = true
         progressListener?.onStarted()
 
         try {
@@ -96,6 +98,7 @@ class UploadService : IntentService(TAG) {
             progressListener?.onError(e)
         }
 
+        isUploading = false
         progressListener?.onFinished()
 
         Log.i(TAG, "Finished upload")
@@ -113,6 +116,8 @@ class UploadService : IntentService(TAG) {
         fun setProgressListener(listener: UploadProgressListener?) {
             progressListener = listener
         }
+
+        val isUploadInProgress: Boolean get() = isUploading
     }
 
     companion object {

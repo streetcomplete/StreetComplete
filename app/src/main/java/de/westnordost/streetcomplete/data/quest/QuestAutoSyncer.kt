@@ -19,6 +19,8 @@ import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.download.MobileDataAutoDownloadStrategy
+import de.westnordost.streetcomplete.data.download.QuestDownloadProgressListener
+import de.westnordost.streetcomplete.data.download.QuestDownloadProgressSource
 import de.westnordost.streetcomplete.data.download.WifiAutoDownloadStrategy
 import de.westnordost.streetcomplete.location.FineLocationManager
 import de.westnordost.streetcomplete.data.user.UserController
@@ -36,6 +38,7 @@ import javax.inject.Singleton
     private val context: Context,
     private val visibleQuestsSource: VisibleQuestsSource,
     private val unsyncedChangesCountSource: UnsyncedChangesCountSource,
+    private val downloadProgressSource: QuestDownloadProgressSource,
     private val prefs: SharedPreferences,
     private val userController: UserController
 ) : LifecycleObserver, CoroutineScope by CoroutineScope(Dispatchers.Default) {
@@ -78,6 +81,13 @@ import javax.inject.Singleton
         override fun onUnsyncedChangesCountDecreased() {}
     }
 
+    // on download finished, should recheck conditions for download
+    private val downloadProgressListener = object : QuestDownloadProgressListener {
+        override fun onSuccess() {
+            triggerAutoDownload()
+        }
+    }
+
     val isAllowedByPreference: Boolean
         get() {
             val p = Prefs.Autosync.valueOf(prefs.getString(Prefs.AUTOSYNC, "ON")!!)
@@ -89,6 +99,7 @@ import javax.inject.Singleton
     init {
         visibleQuestsSource.addListener(visibleQuestListener)
         unsyncedChangesCountSource.addListener(unsyncedChangesListener)
+        downloadProgressSource.addQuestDownloadProgressListener(downloadProgressListener)
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_RESUME) fun onResume() {
@@ -108,6 +119,7 @@ import javax.inject.Singleton
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY) fun onDestroy() {
         visibleQuestsSource.removeListener(visibleQuestListener)
         unsyncedChangesCountSource.removeListener(unsyncedChangesListener)
+        downloadProgressSource.removeQuestDownloadProgressListener(downloadProgressListener)
         coroutineContext.cancel()
     }
 

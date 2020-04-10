@@ -14,7 +14,7 @@ import javax.inject.Singleton
  *  itself, really.
  *  This class is to access user notifications, which are basically dialogs that pop up when
  *  clicking on the bell icon, such as "you have a new OSM message in your inbox" etc. */
-@Singleton class NotificationsDao @Inject constructor(
+@Singleton class NotificationsSource @Inject constructor(
     private val userStore: UserStore,
     private val newUserAchievementsDao: NewUserAchievementsDao,
     @Named("Achievements") achievements: List<Achievement>,

@@ -1,10 +1,7 @@
 package de.westnordost.streetcomplete.map
 
 import android.annotation.SuppressLint
-import android.content.BroadcastReceiver
-import android.content.Context
-import android.content.Intent
-import android.content.IntentFilter
+import android.content.*
 import android.content.res.Configuration
 import android.graphics.Point
 import android.graphics.PointF
@@ -12,6 +9,7 @@ import android.graphics.Rect
 import android.graphics.RectF
 import android.location.Location
 import android.location.LocationManager
+import android.net.ConnectivityManager
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
@@ -20,10 +18,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
+import android.view.animation.OvershootInterpolator
 import android.view.inputmethod.InputMethodManager
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.annotation.AnyThread
+import androidx.annotation.DrawableRes
 import androidx.annotation.UiThread
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.PopupMenu
 import androidx.core.graphics.toPointF
 import androidx.core.graphics.toRectF
@@ -38,13 +40,16 @@ import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.map.data.Way
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Injector
+import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.controls.MainMenuDialog
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuest
 import de.westnordost.streetcomplete.data.osm.splitway.SplitPolylineAtPosition
 import de.westnordost.streetcomplete.data.quest.*
 import de.westnordost.streetcomplete.ktx.childFragmentManagerOrNull
 import de.westnordost.streetcomplete.ktx.getLocationInWindow
+import de.westnordost.streetcomplete.ktx.toPx
 import de.westnordost.streetcomplete.ktx.toast
 import de.westnordost.streetcomplete.location.FineLocationManager
 import de.westnordost.streetcomplete.location.LocationRequestFragment
@@ -52,21 +57,28 @@ import de.westnordost.streetcomplete.location.LocationState
 import de.westnordost.streetcomplete.location.LocationUtil
 import de.westnordost.streetcomplete.map.tangram.CameraPosition
 import de.westnordost.streetcomplete.quests.*
-import de.westnordost.streetcomplete.util.buildGeoUri
-import kotlinx.android.synthetic.main.fragment_map_with_controls.*
+import de.westnordost.streetcomplete.sound.SoundFx
+import de.westnordost.streetcomplete.util.*
+import kotlinx.android.synthetic.main.fragment_main.*
+import java.util.*
 import javax.inject.Inject
 import kotlin.math.PI
 import kotlin.math.max
 
 /** Contains the quests map and the controls for it. */
-class MainFragment : Fragment(R.layout.fragment_map_with_controls),
+class MainFragment : Fragment(R.layout.fragment_main),
     MapFragment.Listener, QuestsMapFragment.Listener, AbstractQuestAnswerFragment.Listener,
     SplitWayFragment.Listener, LeaveNoteInsteadFragment.Listener, CreateNoteFragment.Listener,
     VisibleQuestListener {
 
     @Inject internal lateinit var questController: QuestController
+    @Inject internal lateinit var questUploadDownloadController: QuestUploadDownloadController
     @Inject internal lateinit var isSurveyChecker: QuestSourceIsSurveyChecker
     @Inject internal lateinit var visibleQuestsSource: VisibleQuestsSource
+    @Inject internal lateinit var soundFx: SoundFx
+    @Inject internal lateinit var prefs: SharedPreferences
+
+    private val random = Random()
 
     private lateinit var locationManager: FineLocationManager
     private val mainHandler = Handler(Looper.getMainLooper())
@@ -81,8 +93,6 @@ class MainFragment : Fragment(R.layout.fragment_map_with_controls),
     private val bottomSheetFragment: Fragment? get() = childFragmentManagerOrNull?.findFragmentByTag(BOTTOM_SHEET)
 
     private var mapOffsetWithOpenBottomSheet: RectF = RectF(0f, 0f, 0f, 0f)
-
-
 
     interface Listener {
         fun onQuestSolved(quest: Quest?, source: String?)
@@ -111,6 +121,12 @@ class MainFragment : Fragment(R.layout.fragment_map_with_controls),
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
+
+        soundFx.prepare(R.raw.plop0)
+        soundFx.prepare(R.raw.plop1)
+        soundFx.prepare(R.raw.plop2)
+        soundFx.prepare(R.raw.plop3)
+
         locationManager = FineLocationManager(
             context.getSystemService(Context.LOCATION_SERVICE) as LocationManager,
             this::onLocationChanged
@@ -126,6 +142,8 @@ class MainFragment : Fragment(R.layout.fragment_map_with_controls),
         gpsTrackingButton.setOnClickListener { onClickTrackingButton() }
         zoomInButton.setOnClickListener { onClickZoomIn() }
         zoomOutButton.setOnClickListener { onClickZoomOut() }
+        mainMenuButton.setOnClickListener { onClickMainMenu() }
+        downloadButton.setOnClickListener { onClickDownload() }
 
         isShowingControls = savedInstanceState?.getBoolean(SHOW_CONTROLS) ?: true
 
@@ -288,6 +306,7 @@ class MainFragment : Fragment(R.layout.fragment_map_with_controls),
             closeQuestDetailsFor(questId, group)
             if (questController.solve(questId, group, answer, "survey")) {
                 listener?.onQuestSolved(quest, "survey")
+                quest?.let { showQuestSolvedAnimation(it) }
             }
         }
     }
@@ -322,6 +341,7 @@ class MainFragment : Fragment(R.layout.fragment_map_with_controls),
             closeQuestDetailsFor(osmQuestId, QuestGroup.OSM)
             if (questController.splitWay(osmQuestId, splits, "survey")) {
                 listener?.onQuestSolved(quest, "survey")
+                quest?.let { showQuestSolvedAnimation(it) }
             }
         }
     }
@@ -342,6 +362,7 @@ class MainFragment : Fragment(R.layout.fragment_map_with_controls),
         val quest = questController.get(questId, group)
         if (questController.createNote(questId, questTitle, note, imagePaths)) {
             listener?.onQuestSolved(quest, null)
+            quest?.let { showQuestSolvedAnimation(it) }
         }
     }
 
@@ -361,6 +382,7 @@ class MainFragment : Fragment(R.layout.fragment_map_with_controls),
         questController.createNote(note, imagePaths, position)
 
         listener?.onCreatedNote(screenPosition)
+        showMarkerSolvedAnimation(R.drawable.ic_quest_create_note, PointF(screenPosition))
     }
 
     /* ---------------------------------- VisibleQuestListener ---------------------------------- */
@@ -423,6 +445,15 @@ class MainFragment : Fragment(R.layout.fragment_map_with_controls),
     }
 
     /* --------------------------------- Map control buttons------------------------------------- */
+
+    private fun onClickMainMenu() {
+        context?.let { MainMenuDialog(it).show() }
+    }
+
+    private fun onClickDownload() {
+        if (isConnected()) downloadDisplayedArea()
+        else context?.toast(R.string.offline)
+    }
 
     private fun onClickOpenLocationInOtherApp(pos: LatLon) {
         val ctx = context ?: return
@@ -497,6 +528,12 @@ class MainFragment : Fragment(R.layout.fragment_map_with_controls),
         }
     }
 
+    private fun isConnected(): Boolean {
+        val connectivityManager = context?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager?
+        val activeNetworkInfo = connectivityManager?.activeNetworkInfo
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected
+    }
+
     private fun composeNote(pos: LatLon) {
         val mapFragment = mapFragment ?: return
         mapFragment.show3DBuildings = false
@@ -519,6 +556,49 @@ class MainFragment : Fragment(R.layout.fragment_map_with_controls),
         val mapFragment = mapFragment ?: return
         mapFragment.isCompassMode = compassMode
         gpsTrackingButton.isCompassMode = compassMode
+    }
+
+    private fun downloadDisplayedArea() {
+        val displayArea = mapFragment?.getDisplayedArea()
+        if (displayArea == null) {
+            context?.toast(R.string.cannot_find_bbox_or_reduce_tilt, Toast.LENGTH_LONG)
+        } else {
+            val enclosingBBox = displayArea.asBoundingBoxOfEnclosingTiles(ApplicationConstants.QUEST_TILE_ZOOM)
+            val areaInSqKm = enclosingBBox.area(EARTH_RADIUS) / 1000000
+            if (areaInSqKm > ApplicationConstants.MAX_DOWNLOADABLE_AREA_IN_SQKM) {
+                context?.toast(R.string.download_area_too_big, Toast.LENGTH_LONG)
+            } else {
+                if (questUploadDownloadController.isPriorityDownloadInProgress) {
+                    context?.let {
+                        AlertDialog.Builder(it)
+                            .setMessage(R.string.confirmation_cancel_prev_download_title)
+                            .setPositiveButton(R.string.confirmation_cancel_prev_download_confirmed) { _, _ ->
+                                downloadAreaConfirmed(enclosingBBox)
+                            }
+                            .setNegativeButton(R.string.confirmation_cancel_prev_download_cancel, null)
+                            .show()
+                    }
+                } else {
+                    downloadAreaConfirmed(enclosingBBox)
+                }
+            }
+        }
+    }
+
+    private fun downloadAreaConfirmed(bbox: BoundingBox) {
+        var bbox = bbox
+        val areaInSqKm = bbox.area(EARTH_RADIUS) / 1000000
+        // below a certain threshold, it does not make sense to download, so let's enlarge it
+        if (areaInSqKm < ApplicationConstants.MIN_DOWNLOADABLE_AREA_IN_SQKM) {
+            val cameraPosition = mapFragment?.cameraPosition
+            if (cameraPosition != null) {
+                bbox = cameraPosition.position.enclosingBoundingBox(
+                    ApplicationConstants.MIN_DOWNLOADABLE_RADIUS_IN_METERS,
+                    EARTH_RADIUS
+                )
+            }
+        }
+        questUploadDownloadController.download(bbox, ApplicationConstants.MANUAL_DOWNLOAD_QUEST_TYPE_COUNT, true)
     }
 
     /* --------------------------------- Managing bottom sheet  --------------------------------- */
@@ -585,6 +665,59 @@ class MainFragment : Fragment(R.layout.fragment_map_with_controls),
         return f is IsShowingQuestDetails && f.questId == questId && f.questGroup == group
     }
 
+    /* ---------------------------------------- Animation ---------------------------------------- */
+
+    private fun showQuestSolvedAnimation(quest: Quest) {
+        val ctx = context ?: return
+        val offset = view?.getLocationInWindow() ?: return
+        val startPos = mapFragment?.getPointOf(quest.center) ?: return
+
+        val size = 42f.toPx(ctx).toInt()
+        startPos.x += offset.x - size / 2f
+        startPos.y += offset.y - size * 1.5f
+
+        showMarkerSolvedAnimation(quest.type.icon, startPos)
+    }
+
+    private fun showMarkerSolvedAnimation(@DrawableRes iconResId: Int, startScreenPos: PointF) {
+        val ctx = context ?: return
+        val activity = activity ?: return
+        val view = view ?: return
+
+        soundFx.play(resources.getIdentifier("plop" + random.nextInt(4), "raw", ctx.packageName))
+
+        val root = activity.window.decorView as ViewGroup
+        val img = layoutInflater.inflate(R.layout.effect_quest_plop, root, false) as ImageView
+        img.x = startScreenPos.x
+        img.y = startScreenPos.y
+        img.setImageResource(iconResId)
+        root.addView(img)
+
+        val answerTarget = view.findViewById<View>(
+            if (isAutosync) R.id.answers_counter_fragment else R.id.upload_button_fragment)
+        flingQuestMarkerTo(img, answerTarget) { root.removeView(img) }
+    }
+
+    private val isAutosync: Boolean get() =
+        Prefs.Autosync.valueOf(prefs.getString(Prefs.AUTOSYNC, "ON")!!) == Prefs.Autosync.ON
+
+    private fun flingQuestMarkerTo(quest: View, target: View, onFinished: () -> Unit) {
+        val targetPos = target.getLocationInWindow().toPointF()
+        quest.animate()
+            .scaleX(1.6f).scaleY(1.6f)
+            .setInterpolator(OvershootInterpolator(8f))
+            .setDuration(250)
+            .withEndAction {
+                quest.animate()
+                    .scaleX(0.2f).scaleY(0.2f)
+                    .alpha(0.8f)
+                    .x(targetPos.x).y(targetPos.y)
+                    .setDuration(250)
+                    .setInterpolator(AccelerateInterpolator())
+                    .withEndAction(onFinished)
+            }
+    }
+
     /* ------------------------------------------------------------------------------------------ */
 
     private fun freezeMap() {
@@ -629,7 +762,9 @@ class MainFragment : Fragment(R.layout.fragment_map_with_controls),
             val duration = minDuration + (maxDuration - minDuration) / max(1, childCount - 1) * order
             val animator = v.animate().translationX(w * dir.toFloat())
             animator.duration = duration.toLong()
-            animator.interpolator = if (dir != 0) AccelerateInterpolator() else DecelerateInterpolator()
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1) {
+                animator.interpolator = if (dir != 0) AccelerateInterpolator() else DecelerateInterpolator()
+            }
         }
     }
 
@@ -657,18 +792,10 @@ class MainFragment : Fragment(R.layout.fragment_map_with_controls),
         return mapFragment?.cameraPosition
     }
 
-    fun getDisplayedArea(): BoundingBox? {
-        return mapFragment?.getDisplayedArea()
-    }
-
     fun setCameraPosition(position: LatLon, zoom: Float) {
         mapFragment?.isFollowingPosition = false
         mapFragment?.isCompassMode = false
         mapFragment?.setInitialCameraPosition(CameraPosition(position, 0f, 0f, zoom))
-    }
-
-    fun getPointOf(pos: LatLon): PointF? {
-        return mapFragment?.getPointOf(pos)
     }
 
     companion object {

@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.ktx
 
 import android.graphics.Point
 import android.view.View
+import android.view.ViewPropertyAnimator
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import androidx.core.view.doOnLayout
@@ -9,17 +10,17 @@ import androidx.core.view.doOnPreDraw
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
 
-fun View.popIn() {
+fun View.popIn(): ViewPropertyAnimator {
     visibility = View.VISIBLE
-    animate()
+    return animate()
         .alpha(1f).scaleX(1f).scaleY(1f)
         .setDuration(100)
         .setInterpolator(DecelerateInterpolator())
         .withEndAction(null)
 }
 
-fun View.popOut() {
-    animate()
+fun View.popOut(): ViewPropertyAnimator {
+    return animate()
         .alpha(0f).scaleX(0.5f).scaleY(0.5f)
         .setDuration(100)
         .setInterpolator(AccelerateInterpolator())

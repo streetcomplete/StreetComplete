@@ -6,6 +6,10 @@ import javax.inject.Singleton;
 
 import androidx.annotation.NonNull;
 import dagger.Component;
+import de.westnordost.streetcomplete.controls.AnswersCounterFragment;
+import de.westnordost.streetcomplete.controls.NotificationButtonFragment;
+import de.westnordost.streetcomplete.controls.UndoButtonFragment;
+import de.westnordost.streetcomplete.controls.UploadButtonFragment;
 import de.westnordost.streetcomplete.data.DbModule;
 import de.westnordost.streetcomplete.data.OsmModule;
 import de.westnordost.streetcomplete.data.user.achievements.AchievementsModule;
@@ -32,7 +36,6 @@ import de.westnordost.streetcomplete.settings.SettingsActivity;
 import de.westnordost.streetcomplete.settings.SettingsFragment;
 import de.westnordost.streetcomplete.settings.ShowQuestFormsActivity;
 import de.westnordost.streetcomplete.settings.questselection.QuestSelectionFragment;
-import de.westnordost.streetcomplete.statistics.AnswersCounter;
 import de.westnordost.streetcomplete.map.QuestsMapFragment;
 import de.westnordost.streetcomplete.user.AchievementsFragment;
 import de.westnordost.streetcomplete.user.LinksFragment;
@@ -58,8 +61,6 @@ public interface ApplicationComponent
 
 	void inject(SettingsFragment settingsFragment);
 	void inject(SettingsActivity settingsActivity);
-
-	void inject(AnswersCounter answersCounter);
 
 	void inject(AddOpeningHoursForm addOpeningHoursForm);
 	void inject(AddRoadNameForm addRoadNameForm);
@@ -98,4 +99,12 @@ public interface ApplicationComponent
 	void inject(@NotNull LoginFragment loginFragment);
 
 	void inject(@NotNull OsmUnreadMessagesFragment osmUnreadMessagesFragment);
+
+	void inject(@NotNull NotificationButtonFragment notificationButtonFragment);
+
+	void inject(@NotNull UndoButtonFragment undoButtonFragment);
+
+	void inject(@NotNull UploadButtonFragment uploadButtonFragment);
+
+	void inject(@NotNull AnswersCounterFragment answersCounterFragment);
 }

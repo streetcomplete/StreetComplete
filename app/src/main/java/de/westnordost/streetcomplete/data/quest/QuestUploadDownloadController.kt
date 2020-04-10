@@ -58,6 +58,9 @@ import javax.inject.Singleton
 
     override val downloadProgress: Float get() = downloadService?.downloadProgress ?: 0f
 
+    override val isUploadInProgress: Boolean get() =
+        uploadService?.isUploadInProgress == true
+
     var showNotification: Boolean
         get() = downloadService?.showDownloadNotification == true
         set(value) { downloadService?.showDownloadNotification = value }

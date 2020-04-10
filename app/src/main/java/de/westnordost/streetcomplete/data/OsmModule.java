@@ -16,6 +16,7 @@ import de.westnordost.osmapi.overpass.OverpassMapDataDao;
 import de.westnordost.osmapi.user.UserDao;
 import de.westnordost.streetcomplete.ApplicationConstants;
 import de.westnordost.streetcomplete.Prefs;
+import de.westnordost.streetcomplete.data.download.QuestDownloadProgressSource;
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryCreator;
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestsUploader;
 import de.westnordost.streetcomplete.data.osm.splitway.SplitWaysUploader;
@@ -23,6 +24,8 @@ import de.westnordost.streetcomplete.data.osm.osmquest.undo.UndoOsmQuestsUploade
 import de.westnordost.streetcomplete.data.osmnotes.createnotes.CreateNotesUploader;
 import de.westnordost.streetcomplete.data.osmnotes.OsmAvatarsDownloader;
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestsChangesUploader;
+import de.westnordost.streetcomplete.data.quest.QuestUploadDownloadController;
+import de.westnordost.streetcomplete.data.upload.UploadProgressSource;
 import de.westnordost.streetcomplete.data.upload.Uploader;
 import de.westnordost.streetcomplete.data.upload.VersionIsBannedChecker;
 import de.westnordost.streetcomplete.data.user.OAuthStore;
@@ -131,5 +134,13 @@ public class OsmModule
 		return new VersionIsBannedChecker(
 			"https://www.westnordost.de/streetcomplete/banned_versions.txt",
 			ApplicationConstants.USER_AGENT);
+	}
+
+	@Provides public static UploadProgressSource uploadProgressSource(QuestUploadDownloadController uploadDownloadController) {
+		return uploadDownloadController;
+	}
+
+	@Provides public static QuestDownloadProgressSource downloadProgressSource(QuestUploadDownloadController uploadDownloadController) {
+		return uploadDownloadController;
 	}
 }

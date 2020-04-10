@@ -6,6 +6,7 @@ import org.junit.Test
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
 
 import org.junit.Assert.*
+import org.mockito.Mockito.*
 
 class QuestStatisticsDaoTest : ApplicationDbTestCase() {
     private lateinit var dao: QuestStatisticsDao
@@ -19,14 +20,20 @@ class QuestStatisticsDaoTest : ApplicationDbTestCase() {
     }
 
     @Test fun getOne() {
+        val listener = mock(QuestStatisticsDao.Listener::class.java)
+        dao.addListener(listener)
         dao.addOne(ONE)
         assertEquals(1, dao.getAmount(ONE))
+        verify(listener).onAddedOne(ONE)
     }
 
     @Test fun getTwo() {
+        val listener = mock(QuestStatisticsDao.Listener::class.java)
+        dao.addListener(listener)
         dao.addOne(ONE)
         dao.addOne(ONE)
         assertEquals(2, dao.getAmount(ONE))
+        verify(listener, times(2)).onAddedOne(ONE)
     }
 
     @Test fun getTotal() {
@@ -47,10 +54,13 @@ class QuestStatisticsDaoTest : ApplicationDbTestCase() {
     @Test fun replaceAll() {
         dao.addOne(ONE)
         dao.addOne(TWO)
+        val listener = mock(QuestStatisticsDao.Listener::class.java)
+        dao.addListener(listener)
         dao.replaceAll(mapOf(
                 ONE to 4,
                 THREE to 1
         ))
+        verify(listener).onReplacedAll()
         assertEquals(4, dao.getAmount(ONE))
         assertEquals(0, dao.getAmount(TWO))
         assertEquals(1, dao.getAmount(THREE))
