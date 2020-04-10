@@ -12,10 +12,11 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import java.util.*
 import javax.inject.Inject
+import javax.inject.Singleton
 import kotlin.math.ceil
 import kotlin.math.sqrt
 
-class TangramQuestSpriteSheet @Inject constructor(
+@Singleton class TangramQuestSpriteSheet @Inject constructor(
         private val context: Context,
         private val questTypeRegistry: QuestTypeRegistry,
         private val prefs: SharedPreferences
