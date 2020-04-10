@@ -35,7 +35,7 @@ import de.westnordost.osmapi.map.MapDataDao;
 import de.westnordost.osmapi.map.MapDataFactory;
 import de.westnordost.osmapi.map.OsmMapDataFactory;
 import de.westnordost.osmapi.notes.NotesDao;
-import de.westnordost.streetcomplete.quests.oneway.data.TrafficFlowSegmentsDao;
+import de.westnordost.streetcomplete.quests.oneway.data.TrafficFlowSegmentsApi;
 import de.westnordost.streetcomplete.data.osmnotes.StreetCompleteImageUploader;
 import oauth.signpost.OAuthConsumer;
 
@@ -86,9 +86,9 @@ public class OsmModule
 		return new ElementGeometryCreator();
 	}
 
-	@Provides public static TrafficFlowSegmentsDao trafficFlowSegmentsDao()
+	@Provides public static TrafficFlowSegmentsApi trafficFlowSegmentsDao()
 	{
-		return new TrafficFlowSegmentsDao(ONEWAY_API_URL);
+		return new TrafficFlowSegmentsApi(ONEWAY_API_URL);
 	}
 
 	@Provides public static ChangesetsDao changesetsDao(OsmConnection osm)

@@ -10,7 +10,7 @@ import de.westnordost.streetcomplete.util.StreamUtils
 import org.json.JSONObject
 
 /** Dao for using this API: https://github.com/ENT8R/oneway-data-api  */
-class TrafficFlowSegmentsDao(private val apiUrl: String) {
+class TrafficFlowSegmentsApi(private val apiUrl: String) {
 
     fun get(bbox: BoundingBox): Map<Long, List<TrafficFlowSegment>> {
         val url = URL("$apiUrl?bbox=${bbox.asLeftBottomRightTopString}")

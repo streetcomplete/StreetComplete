@@ -14,12 +14,12 @@ import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 import de.westnordost.streetcomplete.data.tagfilters.FiltersParser
 import de.westnordost.streetcomplete.quests.oneway.data.TrafficFlowSegment
-import de.westnordost.streetcomplete.quests.oneway.data.TrafficFlowSegmentsDao
+import de.westnordost.streetcomplete.quests.oneway.data.TrafficFlowSegmentsApi
 import de.westnordost.streetcomplete.quests.oneway.data.WayTrafficFlowDao
 
 class AddOneway(
     private val overpassMapDataApi: OverpassMapDataAndGeometryApi,
-    private val trafficFlowSegmentsDao: TrafficFlowSegmentsDao,
+    private val trafficFlowSegmentsApi: TrafficFlowSegmentsApi,
     private val db: WayTrafficFlowDao
 ) : OsmElementQuestType<OnewayAnswer> {
 
@@ -46,7 +46,7 @@ class AddOneway(
     override fun download(bbox: BoundingBox, handler: (element: Element, geometry: ElementGeometry?) -> Unit): Boolean {
         val trafficDirectionMap: Map<Long, List<TrafficFlowSegment>>
         try {
-            trafficDirectionMap = trafficFlowSegmentsDao.get(bbox)
+            trafficDirectionMap = trafficFlowSegmentsApi.get(bbox)
         } catch (e: Exception) {
             Log.e("AddOneway", "Unable to download traffic metadata", e)
             return false

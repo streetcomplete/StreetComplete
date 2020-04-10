@@ -39,7 +39,7 @@ import de.westnordost.streetcomplete.quests.max_weight.AddMaxWeight
 import de.westnordost.streetcomplete.quests.motorcycle_parking_capacity.AddMotorcycleParkingCapacity
 import de.westnordost.streetcomplete.quests.motorcycle_parking_cover.AddMotorcycleParkingCover
 import de.westnordost.streetcomplete.quests.oneway.AddOneway
-import de.westnordost.streetcomplete.quests.oneway.data.TrafficFlowSegmentsDao
+import de.westnordost.streetcomplete.quests.oneway.data.TrafficFlowSegmentsApi
 import de.westnordost.streetcomplete.quests.oneway.data.WayTrafficFlowDao
 import de.westnordost.streetcomplete.quests.parking_access.AddParkingAccess
 import de.westnordost.streetcomplete.quests.parking_fee.AddParkingFee
@@ -94,7 +94,7 @@ object QuestModule
     @Provides @Singleton fun questTypeRegistry(
         osmNoteQuestType: OsmNoteQuestType, o: OverpassMapDataAndGeometryApi,
         roadNameSuggestionsDao: RoadNameSuggestionsDao,
-        trafficFlowSegmentsDao: TrafficFlowSegmentsDao, trafficFlowDao: WayTrafficFlowDao,
+        trafficFlowSegmentsApi: TrafficFlowSegmentsApi, trafficFlowDao: WayTrafficFlowDao,
         featureDictionaryFuture: FutureTask<FeatureDictionary>
     ): QuestTypeRegistry = QuestTypeRegistry(listOf(
         
@@ -104,7 +104,7 @@ object QuestModule
         // ↓ 2. important data that is used by many data consumers
         AddRoadName(o, roadNameSuggestionsDao),
         AddPlaceName(o, featureDictionaryFuture),
-        AddOneway(o, trafficFlowSegmentsDao, trafficFlowDao),
+        AddOneway(o, trafficFlowSegmentsApi, trafficFlowDao),
         AddBusStopName(o),
         AddIsBuildingUnderground(o), //to avoid asking AddHousenumber and other for underground buildings
         AddHousenumber(o),

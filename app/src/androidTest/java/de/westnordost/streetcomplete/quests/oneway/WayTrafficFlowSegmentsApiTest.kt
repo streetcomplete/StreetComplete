@@ -10,7 +10,7 @@ import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
 
-class WayTrafficFlowSegmentsDaoTest : ApplicationDbTestCase() {
+class WayTrafficFlowSegmentsApiTest : ApplicationDbTestCase() {
 
     private lateinit var dao: WayTrafficFlowDao
 
