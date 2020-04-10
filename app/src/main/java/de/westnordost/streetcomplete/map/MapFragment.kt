@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.map
 
 import android.app.Activity
 import android.content.res.Configuration
+import android.graphics.Point
 import android.graphics.PointF
 import android.graphics.RectF
 import android.os.Build
@@ -275,7 +276,16 @@ open class MapFragment : Fragment(),
 
     override fun onSingleTapConfirmed(x: Float, y: Float): Boolean { return false }
 
-    override fun onDoubleTap(x: Float, y: Float): Boolean { return false }
+    override fun onDoubleTap(x: Float, y: Float): Boolean {
+        val pos = controller?.screenPositionToLatLon(PointF(x, y))
+        if (pos != null) {
+            controller?.updateCameraPosition(300L) {
+                zoomBy = 1f
+                position = pos
+            }
+        }
+        return true
+    }
 
     override fun onLongPress(x: Float, y: Float) {
         listener?.onLongPress(x, y)
