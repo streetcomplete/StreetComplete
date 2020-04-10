@@ -25,7 +25,9 @@ import de.westnordost.streetcomplete.ktx.toDp
 import de.westnordost.streetcomplete.ktx.toPx
 import kotlinx.android.synthetic.main.fragment_quest_answer.*
 
-/* Note: The AbstractBottomSheetFragment currently assumes that it will be inflated with the views
+/** Abstract base class for (quest) bottom sheets
+ *
+ * Note: The AbstractBottomSheetFragment currently assumes that it will be inflated with the views
    that are in fragment_quest_answer by any subclass!*/
 abstract class AbstractBottomSheetFragment : Fragment(), IsCloseableBottomSheet {
 

@@ -38,7 +38,7 @@ import de.westnordost.streetcomplete.ktx.isArea
 import kotlinx.android.synthetic.main.fragment_quest_answer.*
 import java.util.concurrent.FutureTask
 
-/** Abstract base class for any dialog with which the user answers a specific quest(ion)  */
+/** Abstract base class for any bottom sheet with which the user answers a specific quest(ion)  */
 abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), IsShowingQuestDetails {
 
     // dependencies

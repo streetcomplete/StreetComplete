@@ -14,6 +14,7 @@ import de.westnordost.streetcomplete.util.TextChangedWatcher
 import kotlinx.android.synthetic.main.form_leave_note.*
 import kotlinx.android.synthetic.main.quest_buttonpanel_done_cancel.*
 
+/** Abstract base class for a bottom sheet that lets the user create a note */
 abstract class AbstractCreateNoteFragment : AbstractBottomSheetFragment() {
 
     private val attachPhotoFragment: AttachPhotoFragment?
