@@ -29,6 +29,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Singleton
 
+/** Controls the workflow of quests: Solving them, hiding them instead, splitting the way instead,
+ *  undoing, etc. */
 @Singleton class QuestController @Inject constructor(
         private val osmQuestController: OsmQuestController,
         private val osmNoteQuestController: OsmNoteQuestController,

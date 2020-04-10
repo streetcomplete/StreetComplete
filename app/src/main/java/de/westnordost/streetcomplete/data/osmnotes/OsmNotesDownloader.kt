@@ -16,6 +16,7 @@ import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestController
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestType
 
+/** Takes care of downloading notes, creating quests out of them and persisting them */
 class OsmNotesDownloader @Inject constructor(
     private val noteServer: NotesDao,
     private val osmNoteQuestController: OsmNoteQuestController,

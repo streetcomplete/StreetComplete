@@ -15,6 +15,8 @@ import de.westnordost.streetcomplete.data.upload.Uploader
 
 import java.util.concurrent.atomic.AtomicBoolean
 
+/** Base class for all uploaders which upload OSM data. They all have in common that they handle
+ *  OSM data (of course), and that the data is uploaded in changesets. */
 abstract class OsmInChangesetsUploader<T : UploadableInChangeset>(
         private val elementDB: MergedElementDao,
         private val elementGeometryDB: ElementGeometryDao,

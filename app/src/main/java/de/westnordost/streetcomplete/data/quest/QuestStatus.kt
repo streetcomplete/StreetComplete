@@ -1,11 +1,11 @@
 package de.westnordost.streetcomplete.data.quest
 
 enum class QuestStatus {
-    /** just created  */
+    /** just created. AKA "open" */
     NEW,
     /** user answered the question (waiting for changes to be uploaded)  */
     ANSWERED,
-    /** user chose to hide the quest  */
+    /** user chose to hide the quest. He may un-hide it later (->NEW). */
     HIDDEN,
     /** the system (decided that it) doesn't show the quest. They may become visible again (-> NEW)  */
     INVISIBLE,
@@ -19,7 +19,7 @@ enum class QuestStatus {
      * is basically the same as CLOSED, only that it will not turn up in the list of (revertable)
      * changes. Note, that the revert-change is done via another Quest upload, this state is only
      * to mark this quest as that a revert-quest has already been created */
-    REVERT;
+    REVERT; // TODO remove completely?
 
     val isVisible: Boolean get() = this == NEW
 }

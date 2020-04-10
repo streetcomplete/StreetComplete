@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.data.quest.Countries
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 
+/** Quest type where each quest refers to an OSM element */
 interface OsmElementQuestType<T> : QuestType<T> {
 
     fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> {

@@ -20,6 +20,7 @@ import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.util.measuredLength
 
+/** Takes care of downloading one quest type in a bounding box and persisting the downloaded quests */
 class OsmQuestDownloader @Inject constructor(
         private val elementDB: MergedElementDao,
         private val osmQuestController: OsmQuestController,

@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuest
 import de.westnordost.streetcomplete.data.osm.upload.HasElementTagChanges
 import de.westnordost.streetcomplete.data.osm.upload.UploadableInChangeset
 
+/** Contains the information necessary to revert the changes made by a previously uploaded OsmQuest */
 class UndoOsmQuest(
         val id: Long?,
         val type: OsmElementQuestType<*>,
