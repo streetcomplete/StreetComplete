@@ -21,6 +21,7 @@ import javax.inject.Provider
 import kotlin.math.max
 import kotlin.math.min
 
+/** Takes care of downloading all note and osm quests */
 class QuestDownloader @Inject constructor(
     private val osmNotesDownloaderProvider: Provider<OsmNotesDownloader>,
     private val osmQuestDownloaderProvider: Provider<OsmQuestDownloader>,

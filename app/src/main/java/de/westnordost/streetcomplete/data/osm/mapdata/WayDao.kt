@@ -23,6 +23,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.WayTable.Columns.VERSION
 import de.westnordost.streetcomplete.data.osm.splitway.OsmQuestSplitWayTable
 import de.westnordost.streetcomplete.ktx.*
 
+/** Stores OSM ways */
 class WayDao @Inject constructor(private val dbHelper: SQLiteOpenHelper, override val mapping: WayMapping)
     : AOsmElementDao<Way>(dbHelper) {
 

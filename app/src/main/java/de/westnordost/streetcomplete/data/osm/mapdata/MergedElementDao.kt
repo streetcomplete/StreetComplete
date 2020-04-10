@@ -7,6 +7,7 @@ import de.westnordost.osmapi.map.data.Node
 import de.westnordost.osmapi.map.data.Relation
 import de.westnordost.osmapi.map.data.Way
 
+/** Stores OSM elements */
 class MergedElementDao @Inject
 constructor(
         private val nodeDao: NodeDao,

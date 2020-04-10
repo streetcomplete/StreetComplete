@@ -19,6 +19,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.RelationTable.Columns.VERS
 import de.westnordost.streetcomplete.data.osm.mapdata.RelationTable.NAME
 import de.westnordost.streetcomplete.ktx.*
 
+/** Stores OSM relations */
 class RelationDao @Inject constructor(dbHelper: SQLiteOpenHelper, override val mapping: RelationMapping)
     : AOsmElementDao<Relation>(dbHelper) {
 

@@ -12,6 +12,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.getYamlObject
 import org.sufficientlysecure.htmltextview.HtmlTextView
 
+/** Shows the credits of this app */
 class CreditsFragment : Fragment(R.layout.fragment_credits) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

@@ -23,6 +23,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable.Columns.VERSION
 import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable.NAME
 import de.westnordost.streetcomplete.ktx.*
 
+/** Stores OSM nodes */
 class NodeDao @Inject constructor(dbHelper: SQLiteOpenHelper, override val mapping: NodeMapping)
     : AOsmElementDao<Node>(dbHelper) {
 

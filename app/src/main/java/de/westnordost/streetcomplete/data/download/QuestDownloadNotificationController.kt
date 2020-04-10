@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.MainActivity
 import de.westnordost.streetcomplete.R
 
-/** Shows a download progress notification */
+/** Shows the download progress in the Android notifications area */
 class QuestDownloadNotificationController(
     private val service: Service,
     notificationChannelId: String,

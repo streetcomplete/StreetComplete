@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.osm.osmquest.undo.UndoOsmQuestTable
 import de.westnordost.streetcomplete.ktx.queryOne
 import de.westnordost.streetcomplete.ktx.transaction
 
+/** Abstract base class for the DAOs that store the OSM elements */
 abstract class AOsmElementDao<T : Element>(private val dbHelper: SQLiteOpenHelper) {
 
     private val db get() = dbHelper.writableDatabase

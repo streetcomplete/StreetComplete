@@ -22,6 +22,7 @@ import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestTable
 import de.westnordost.streetcomplete.data.osm.osmquest.undo.UndoOsmQuestTable
 import de.westnordost.streetcomplete.ktx.*
 
+/** Stores the geometry of elements */
 class ElementGeometryDao @Inject constructor(
     private val dbHelper: SQLiteOpenHelper,
     private val mapping: ElementGeometryMapping

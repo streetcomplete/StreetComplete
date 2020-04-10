@@ -20,7 +20,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.view.ListAdapter
 import kotlinx.android.synthetic.main.cell_labeled_icon_select_right.view.*
 
-
+/** Shows the about screen */
 class AboutFragment : PreferenceFragmentCompat() {
 
     interface Listener {
