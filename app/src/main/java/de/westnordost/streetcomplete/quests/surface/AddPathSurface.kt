@@ -3,9 +3,9 @@ package de.westnordost.streetcomplete.quests.surface
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
 
-class AddPathSurface(o: OverpassMapDataDao) : SimpleOverpassQuestType<String>(o) {
+class AddPathSurface(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<String>(o) {
 
     override val tagFilters = """
         ways with highway ~ path|footway|cycleway|bridleway|steps

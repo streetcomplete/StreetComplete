@@ -9,7 +9,7 @@ import org.junit.Test
 
 class AddOpeningHoursTest {
 
-    private val questType = AddOpeningHours(mock())
+    private val questType = AddOpeningHours(mock(), mock())
 
     @Test fun `apply description answer`() {
         questType.verifyAnswer(

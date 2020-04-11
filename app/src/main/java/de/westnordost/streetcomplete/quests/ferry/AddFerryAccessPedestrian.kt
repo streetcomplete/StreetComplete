@@ -3,12 +3,12 @@ package de.westnordost.streetcomplete.quests.ferry
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
-class AddFerryAccessPedestrian(o: OverpassMapDataDao) : SimpleOverpassQuestType<Boolean>(o) {
+class AddFerryAccessPedestrian(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<Boolean>(o) {
 
-    override val tagFilters = "ways, relations with route=ferry and !foot"
+    override val tagFilters = "ways, relations with route = ferry and !foot"
     override val commitMessage = "Specify ferry access for pedestrians"
     override val icon = R.drawable.ic_quest_ferry_pedestrian
     override val hasMarkersAtEnds = true

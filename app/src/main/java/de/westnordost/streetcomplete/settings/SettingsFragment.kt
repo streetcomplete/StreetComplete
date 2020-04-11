@@ -13,7 +13,6 @@ import android.widget.Toast
 
 import javax.inject.Provider
 
-import de.westnordost.streetcomplete.data.QuestStatus
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao
 import de.westnordost.streetcomplete.data.tiles.DownloadedTilesDao
 import de.westnordost.streetcomplete.oauth.OAuthPrefs
@@ -44,7 +43,7 @@ class SettingsFragment : PreferenceFragmentCompat(),
         PreferenceManager.setDefaultValues(context!!, R.xml.preferences, false)
         addPreferencesFromResource(R.xml.preferences)
 
-        preferenceScreen.findPreference("oauth").setOnPreferenceClickListener {
+        findPreference<Preference>("oauth")?.setOnPreferenceClickListener {
             if (oAuth.isAuthorized) {
                 context?.let {
                     AlertDialog.Builder(it)
@@ -61,12 +60,12 @@ class SettingsFragment : PreferenceFragmentCompat(),
             true
         }
 
-        preferenceScreen.findPreference("quests").setOnPreferenceClickListener {
+        findPreference<Preference>("quests")?.setOnPreferenceClickListener {
             fragmentActivity?.setCurrentFragment(QuestSelectionFragment())
             true
         }
 
-        preferenceScreen.findPreference("quests.invalidation").setOnPreferenceClickListener {
+        findPreference<Preference>("quests.invalidation")?.setOnPreferenceClickListener {
             context?.let {
                 AlertDialog.Builder(it)
                     .setMessage(R.string.invalidation_dialog_message)
@@ -79,15 +78,15 @@ class SettingsFragment : PreferenceFragmentCompat(),
             true
         }
 
-        preferenceScreen.findPreference("quests.restore.hidden").setOnPreferenceClickListener {
+        findPreference<Preference>("quests.restore.hidden")?.setOnPreferenceClickListener {
             val hidden = osmQuestDao.unhideAll()
             context?.toast(getString(R.string.restore_hidden_success, hidden), Toast.LENGTH_LONG)
             true
         }
 
-        preferenceScreen.findPreference("debug").isVisible = BuildConfig.DEBUG
+        findPreference<Preference>("debug")?.isVisible = BuildConfig.DEBUG
 
-        preferenceScreen.findPreference("debug.quests").setOnPreferenceClickListener {
+        findPreference<Preference>("debug.quests")?.setOnPreferenceClickListener {
             startActivity(Intent(context, ShowQuestFormsActivity::class.java))
             true
         }
@@ -100,9 +99,9 @@ class SettingsFragment : PreferenceFragmentCompat(),
     }
 
     private fun updateOsmAuthSummary() {
-        val oauth = preferenceScreen.findPreference("oauth")
+        val oauth = preferenceScreen?.findPreference<Preference>("oauth")
         val username = prefs.getString(Prefs.OSM_USER_NAME, null)
-        oauth.summary = if (oAuth.isAuthorized) {
+        oauth?.summary = if (oAuth.isAuthorized) {
             if (username != null) resources.getString(R.string.pref_title_authorized_username_summary, username)
             else resources.getString(R.string.pref_title_authorized_summary)
         } else {
@@ -131,7 +130,7 @@ class SettingsFragment : PreferenceFragmentCompat(),
                 task.execute()
             }
             Prefs.AUTOSYNC -> {
-                if (Prefs.Autosync.valueOf(prefs.getString(Prefs.AUTOSYNC, "ON")) != Prefs.Autosync.ON) {
+                if (Prefs.Autosync.valueOf(prefs.getString(Prefs.AUTOSYNC, "ON")!!) != Prefs.Autosync.ON) {
                     context?.let {
                         AlertDialog.Builder(it)
                             .setView(R.layout.dialog_tutorial_upload)
@@ -142,7 +141,7 @@ class SettingsFragment : PreferenceFragmentCompat(),
                 }
             }
             Prefs.THEME_SELECT -> {
-                val theme = Prefs.Theme.valueOf(prefs.getString(Prefs.THEME_SELECT, "AUTO"))
+                val theme = Prefs.Theme.valueOf(prefs.getString(Prefs.THEME_SELECT, "AUTO")!!)
                 AppCompatDelegate.setDefaultNightMode(theme.appCompatNightMode)
                 activity?.recreate()
             }

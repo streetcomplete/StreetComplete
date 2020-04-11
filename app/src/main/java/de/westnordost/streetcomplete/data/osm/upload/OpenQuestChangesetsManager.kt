@@ -12,6 +12,8 @@ import de.westnordost.streetcomplete.data.QuestType
 import de.westnordost.streetcomplete.data.changesets.OpenChangeset
 import de.westnordost.streetcomplete.data.changesets.OpenChangesetsDao
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
+import de.westnordost.streetcomplete.ktx.toBcp47LanguageTag
+import java.util.*
 
 import javax.inject.Inject
 
@@ -22,8 +24,6 @@ class OpenQuestChangesetsManager @Inject constructor(
     private val changesetAutoCloser: ChangesetAutoCloser,
     private val prefs: SharedPreferences
 ) {
-    private val TAG = "ChangesetManager"
-
     fun getOrCreateChangeset(questType: OsmElementQuestType<*>, source: String): Long {
         val openChangeset = openChangesetsDB.get(questType.name, source)
         return if (openChangeset?.changesetId != null) {
@@ -61,9 +61,14 @@ class OpenQuestChangesetsManager @Inject constructor(
         mapOf(
             "comment" to questType.commitMessage,
             "created_by" to USER_AGENT,
+            "locale" to Locale.getDefault().toBcp47LanguageTag(),
             QUESTTYPE_TAG_KEY to questType.name,
             "source" to source
         )
+
+    companion object {
+        private const val TAG = "ChangesetManager"
+    }
 }
 
 private const val CLOSE_CHANGESETS_AFTER_INACTIVITY_OF = 1000L * 60 * 20 // 20min

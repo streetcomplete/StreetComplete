@@ -10,13 +10,13 @@ import de.westnordost.streetcomplete.data.QuestStatus
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.OsmQuest
 import de.westnordost.streetcomplete.data.osm.OsmQuestGiver
-import de.westnordost.streetcomplete.data.osm.download.ElementGeometryCreator
+import de.westnordost.streetcomplete.data.osm.download.OsmApiElementGeometryCreator
 import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao
 import de.westnordost.streetcomplete.data.osm.persist.MergedElementDao
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao
 import de.westnordost.streetcomplete.data.statistics.QuestStatisticsDao
 import de.westnordost.streetcomplete.data.tiles.DownloadedTilesDao
-import de.westnordost.streetcomplete.util.SlippyMapMath
+import de.westnordost.streetcomplete.util.enclosingTile
 import java.util.*
 import java.util.concurrent.atomic.AtomicBoolean
 
@@ -27,14 +27,12 @@ class OsmQuestsUploader @Inject constructor(
     changesetManager: OpenQuestChangesetsManager,
     questGiver: OsmQuestGiver,
     statisticsDB: QuestStatisticsDao,
-    elementGeometryCreator: ElementGeometryCreator,
+    osmApiElementGeometryCreator: OsmApiElementGeometryCreator,
     private val questDB: OsmQuestDao,
     private val singleChangeUpload: SingleOsmElementTagChangesUpload,
     private val downloadedTilesDao: DownloadedTilesDao
 ) : OsmInChangesetsUploader<OsmQuest>(elementDB, elementGeometryDB, changesetManager, questGiver,
-    statisticsDB, elementGeometryCreator) {
-
-    private val TAG = "OsmQuestUpload"
+    statisticsDB, osmApiElementGeometryCreator) {
 
     @Synchronized override fun upload(cancelled: AtomicBoolean) {
         Log.i(TAG, "Applying quest changes")
@@ -48,7 +46,7 @@ class OsmQuestsUploader @Inject constructor(
     }
 
     override fun onUploadSuccessful(quest: OsmQuest) {
-        quest.status = QuestStatus.CLOSED
+        quest.close()
         questDB.update(quest)
         Log.d(TAG, "Uploaded osm quest ${quest.toLogString()}")
     }
@@ -64,7 +62,7 @@ class OsmQuestsUploader @Inject constructor(
     private fun invalidateAreaAroundQuest(quest: OsmQuest) {
         // called after a conflict. If there is a conflict, the user is not the only one in that
         // area, so best invalidate all downloaded quests here and redownload on next occasion
-        val tile = SlippyMapMath.enclosingTile(quest.center, ApplicationConstants.QUEST_TILE_ZOOM)
+        val tile = quest.center.enclosingTile(ApplicationConstants.QUEST_TILE_ZOOM)
         downloadedTilesDao.remove(tile)
     }
 
@@ -75,6 +73,10 @@ class OsmQuestsUploader @Inject constructor(
             statusIn = listOf(QuestStatus.CLOSED, QuestStatus.REVERT),
             changedBefore = timestamp
         )
+    }
+
+    companion object {
+        private const val TAG = "OsmQuestUpload"
     }
 }
 

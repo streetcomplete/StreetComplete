@@ -4,17 +4,17 @@ import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandler
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
 import de.westnordost.streetcomplete.data.osm.tql.FiltersParser
 import de.westnordost.streetcomplete.data.osm.tql.getQuestPrintStatement
 import de.westnordost.streetcomplete.data.osm.tql.toGlobalOverpassBBox
 import java.util.concurrent.FutureTask
 
 class AddPlaceName(
-    private val overpassServer: OverpassMapDataDao,
+    private val overpassServer: OverpassMapDataAndGeometryDao,
     private val featureDictionaryFuture: FutureTask<FeatureDictionary>
 ) : OsmElementQuestType<PlaceNameAnswer> {
 
@@ -103,21 +103,19 @@ class AddPlaceName(
     override val icon = R.drawable.ic_quest_label
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_placeName_title_name
-    override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>) = featureName.value?.let { arrayOf(it) } ?: arrayOf()
 
-    override fun download(bbox: BoundingBox, handler: MapDataWithGeometryHandler): Boolean {
-        val overpassQuery = bbox.toGlobalOverpassBBox() + "\n" + filter.toOverpassQLString() + getQuestPrintStatement()
-        return overpassServer.getAndHandleQuota(overpassQuery) { element, geometry ->
-            if(element.tags != null) {
-                // only show places without names as quests for which a feature name is available
-                if (featureDictionaryFuture.get().byTags(element.tags).find().isNotEmpty()) {
-                    handler.handle(element, geometry)
-                }
-            }
+    override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>) =
+        featureName.value?.let { arrayOf(it) } ?: arrayOf()
+
+    override fun download(bbox: BoundingBox, handler: (element: Element, geometry: ElementGeometry?) -> Unit): Boolean {
+        return overpassServer.query(getOverpassQuery(bbox)) { element, geometry ->
+            // only show places without names as quests for which a feature name is available
+            if (hasFeatureName(element.tags)) handler(element, geometry)
         }
     }
 
-    override fun isApplicableTo(element: Element) = filter.matches(element)
+    override fun isApplicableTo(element: Element) =
+        filter.matches(element) && hasFeatureName(element.tags)
 
     override fun createForm() = AddPlaceNameForm()
 
@@ -127,4 +125,10 @@ class AddPlaceName(
             is PlaceName -> changes.add("name", answer.name)
         }
     }
+
+    private fun getOverpassQuery(bbox: BoundingBox) =
+        bbox.toGlobalOverpassBBox() + "\n" + filter.toOverpassQLString() + getQuestPrintStatement()
+
+    private fun hasFeatureName(tags: Map<String, String>?): Boolean =
+        tags?.let { featureDictionaryFuture.get().byTags(it).find().isNotEmpty() } ?: false
 }

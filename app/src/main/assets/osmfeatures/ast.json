@@ -176,9 +176,6 @@
             "name": "Veterinariu",
             "terms": "Clínica veterinaria"
         },
-        "craft/pottery": {
-            "name": "Alfarería"
-        },
         "craft/roofer": {
             "name": "Reteyador",
             "terms": "Reparación de teyaos, Cubiertes"
@@ -439,10 +436,6 @@
         "shop/beverages": {
             "name": "Venta de bebíes"
         },
-        "entrance": {
-            "name": "Entrada/Salida",
-            "terms": "Accesu, puerta"
-        },
         "power/tower": {
             "name": "Torre d'alta tensión"
         },
@@ -593,9 +586,6 @@
         },
         "office/travel_agent": {
             "name": "Axencia de viaxes"
-        },
-        "craft/jeweler": {
-            "name": "Xoyería"
         },
         "landuse/industrial/slaughterhouse": {
             "name": "Mataderu"
@@ -766,9 +756,6 @@
         "shop/electronics": {
             "name": "Electrónica"
         },
-        "waterway": {
-            "name": "Vía acuática"
-        },
         "amenity/clinic": {
             "name": "Clínica",
             "terms": "Urxencies,Hospital"
@@ -879,9 +866,6 @@
         "shop/hardware": {
             "name": "Ferretería"
         },
-        "amenity/car_sharing": {
-            "name": "Compartir coche"
-        },
         "shop/funeral_directors": {
             "name": "Velatoriu",
             "terms": "Tanatoriu, Funeraria"
@@ -908,9 +892,6 @@
         "emergency/no": {
             "name": "Accesu d'emerxencia Non"
         },
-        "tourism": {
-            "name": "Turismu"
-        },
         "amenity/public_bath": {
             "name": "Baños públicos"
         },
@@ -926,12 +907,6 @@
         "shop/watches": {
             "name": "Reloxería"
         },
-        "amenity/parking_entrance": {
-            "name": "Entrada/Salida de garaxe"
-        },
-        "landuse": {
-            "name": "Usu del terrén"
-        },
         "waterway/riverbank": {
             "name": "Ribera"
         },
@@ -946,9 +921,6 @@
         },
         "craft/stonemason": {
             "name": "Canteru"
-        },
-        "aerialway": {
-            "name": "Tendíu aéreu"
         },
         "amenity/nightclub": {
             "name": "Discoteca",
@@ -1131,9 +1103,6 @@
         "leisure/fitness_centre/yoga": {
             "name": "Centru de yoga"
         },
-        "aerialway/t-bar": {
-            "name": "Telesquí de T"
-        },
         "historic/boundary_stone": {
             "name": "Finxu"
         },
@@ -1156,9 +1125,6 @@
         "waterway/stream": {
             "name": "Regueru",
             "terms": "Regatu, regueru"
-        },
-        "railway": {
-            "name": "Ferrocarril"
         },
         "building/university": {
             "name": "Edificiu universitariu"
@@ -1185,21 +1151,11 @@
             "name": "Montaña rusa",
             "terms": "rusa,atracciones,feria"
         },
-        "power/sub_station": {
-            "name": "Subestación"
-        },
         "shop/copyshop": {
             "name": "Copistería"
         },
-        "leisure/firepit": {
-            "name": "Llar",
-            "terms": "Parrilla, asador, fueu"
-        },
         "public_transport/station_ferry": {
             "name": "Estación / Terminal de ferry"
-        },
-        "man_made/bridge": {
-            "name": "Ponte"
         },
         "railway/monorail": {
             "name": "Monocarril"
@@ -1335,9 +1291,6 @@
             "name": "Bomba de combustible marín",
             "terms": "gasolinera de combustible marín"
         },
-        "highway": {
-            "name": "Estrada"
-        },
         "shop/pastry": {
             "name": "Pastelería"
         },
@@ -1427,9 +1380,6 @@
         },
         "healthcare/optometrist": {
             "name": "Ópticu"
-        },
-        "building/kindergarten": {
-            "name": "Edificiu de preescolar/guardería"
         },
         "leisure/playground": {
             "name": "Xuegos infantiles"
@@ -1527,9 +1477,6 @@
             "name": "Cambiu de moneda",
             "terms": "Divisa, cambiu"
         },
-        "leisure": {
-            "name": "Recréu"
-        },
         "amenity/post_office": {
             "name": "Oficina de correos",
             "terms": "Oficina de correos, Carta, Paquete, Postal"
@@ -1558,10 +1505,6 @@
         },
         "shop/boutique": {
             "name": "Boutique"
-        },
-        "area/highway": {
-            "name": "Superficie de la carretera",
-            "terms": "firme,pisu,suelu"
         },
         "amenity/vending_machine/parking_tickets": {
             "name": "Máquina de pagu d'aparcamientu",
@@ -1731,9 +1674,6 @@
         "building/hotel": {
             "name": "Edificiu d'hotel"
         },
-        "shop/anime": {
-            "name": "Tienda d'anime"
-        },
         "route/ferry": {
             "name": "Ruta de ferry"
         },
@@ -1850,9 +1790,6 @@
         },
         "aeroway/taxiway": {
             "name": "Cai de rodaxe"
-        },
-        "craft/optician": {
-            "name": "Óptica"
         },
         "waterway/waterfall": {
             "name": "Tabayón",
@@ -1987,9 +1924,6 @@
         "landuse/farm": {
             "name": "Tierra de llabor"
         },
-        "natural/wood": {
-            "name": "Viesca"
-        },
         "leisure/pitch/rugby_union": {
             "name": "Campu de rugby a 15"
         },
@@ -2028,9 +1962,6 @@
         },
         "landuse/commercial": {
             "name": "Área comercial"
-        },
-        "natural": {
-            "name": "Natural"
         },
         "aerialway/magic_carpet": {
             "name": "Alfombra máxica",
@@ -2103,12 +2034,6 @@
         },
         "place": {
             "name": "Llugar"
-        },
-        "power": {
-            "name": "Enerxía"
-        },
-        "aerialway/station": {
-            "name": "Estación de remonte"
         },
         "building/house": {
             "name": "Casa"
@@ -2216,14 +2141,8 @@
         "amenity/motorcycle_parking": {
             "name": "Aparcaderu de motos"
         },
-        "shop/craft": {
-            "name": "Tienda de manualidaes"
-        },
         "line": {
             "name": "Llinia"
-        },
-        "amenity/kindergarten": {
-            "name": "Antoxana d'escuela infantil/preescolar"
         },
         "waterway/weir": {
             "name": "Ñora",
@@ -2246,9 +2165,6 @@
         "tourism/attraction": {
             "name": "Atracción turística"
         },
-        "man_made": {
-            "name": "Construcciones"
-        },
         "golf/fairway": {
             "name": "Cai de golf"
         },
@@ -2270,9 +2186,6 @@
         },
         "craft/handicraft": {
             "name": "Manualidaes"
-        },
-        "aeroway": {
-            "name": "Via d'aviación"
         },
         "aeroway/terminal": {
             "name": "Terminal d'aeropuertu"

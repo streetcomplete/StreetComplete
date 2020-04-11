@@ -9,6 +9,8 @@ global:
 
     railway_color: '#99a'
     road_color: '#fff'
+    highway_color: '#fa8'
+    highway_outline_color: global.road_outline_color
     road_outline_color: '#cc9999'
     path_color: global.road_color
     path_outline_color: '#e0c9b3'
@@ -22,7 +24,7 @@ global:
     building_color: rgb(204,214,238)
     building_outline_color: rgb(185,195,217)
 
-    boundary_color: '#e66'
+    boundary_color: '#e39'
 
     oneway_arrow_color: '#888'
     barrier_color: '#888'

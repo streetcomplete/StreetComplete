@@ -46,4 +46,18 @@ data class OsmNoteQuest(
         val text = note.comments?.firstOrNull()?.text
         return text?.matches(".*$questionMarksAroundTheWorld.*".toRegex()) ?: false
     }
+
+    fun solve(text: String, imagePaths: List<String>?) {
+        this.comment = text
+        this.imagePaths = imagePaths
+        status = QuestStatus.ANSWERED
+    }
+
+    fun hide() {
+        status = QuestStatus.HIDDEN
+    }
+
+    fun close() {
+        status = QuestStatus.CLOSED
+    }
 }

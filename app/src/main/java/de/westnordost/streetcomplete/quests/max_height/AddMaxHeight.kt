@@ -3,25 +3,29 @@ package de.westnordost.streetcomplete.quests.max_height
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandler
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
 import de.westnordost.streetcomplete.data.osm.tql.FiltersParser
 import de.westnordost.streetcomplete.data.osm.tql.getQuestPrintStatement
 import de.westnordost.streetcomplete.data.osm.tql.toGlobalOverpassBBox
 
-class AddMaxHeight(private val overpassServer: OverpassMapDataDao) : OsmElementQuestType<MaxHeightAnswer> {
+class AddMaxHeight(private val overpassServer: OverpassMapDataAndGeometryDao) : OsmElementQuestType<MaxHeightAnswer> {
 
     private val nodeFilter by lazy { FiltersParser().parse("""
         nodes with
-        (barrier = height_restrictor or amenity = parking_entrance and parking ~ underground|multi-storey)
+        (
+          barrier = height_restrictor
+          or amenity = parking_entrance and parking ~ underground|multi-storey
+        )
         and !maxheight and !maxheight:physical
     """)}
 
     private val wayFilter by lazy { FiltersParser().parse("""
         ways with
-        (highway ~ motorway|motorway_link|trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|living_street|track|road
+        (
+          highway ~ motorway|motorway_link|trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|living_street|track|road
           or (highway = service and access !~ private|no and vehicle !~ private|no)
         )
         and (covered = yes or tunnel ~ yes|building_passage|avalanche_protector)
@@ -47,9 +51,9 @@ class AddMaxHeight(private val overpassServer: OverpassMapDataDao) : OsmElementQ
     override fun isApplicableTo(element: Element) =
         nodeFilter.matches(element) || wayFilter.matches(element)
 
-    override fun download(bbox: BoundingBox, handler: MapDataWithGeometryHandler): Boolean {
-        return overpassServer.getAndHandleQuota(getNodeOverpassQuery(bbox), handler)
-               && overpassServer.getAndHandleQuota(getWayOverpassQuery(bbox), handler)
+    override fun download(bbox: BoundingBox, handler: (element: Element, geometry: ElementGeometry?) -> Unit): Boolean {
+        return overpassServer.query(getNodeOverpassQuery(bbox), handler)
+               && overpassServer.query(getWayOverpassQuery(bbox), handler)
     }
 
     private fun getNodeOverpassQuery(bbox: BoundingBox) =

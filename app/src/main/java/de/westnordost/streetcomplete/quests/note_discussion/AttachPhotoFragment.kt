@@ -22,23 +22,22 @@ import java.io.IOException
 import java.util.ArrayList
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osmnotes.AttachPhotoUtils
 
 import android.app.Activity.RESULT_OK
-import android.database.DataSetObserver
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import de.westnordost.streetcomplete.ApplicationConstants.ATTACH_PHOTO_MAXWIDTH
-import de.westnordost.streetcomplete.ApplicationConstants.ATTACH_PHOTO_QUALITY
+import de.westnordost.streetcomplete.ApplicationConstants.*
+import de.westnordost.streetcomplete.data.osmnotes.deleteImages
 import de.westnordost.streetcomplete.ktx.toast
 import de.westnordost.streetcomplete.util.AdapterDataChangedWatcher
+import de.westnordost.streetcomplete.util.decodeScaledBitmapAndNormalize
 import kotlinx.android.synthetic.main.fragment_attach_photo.*
 
 class AttachPhotoFragment : Fragment() {
 
-    val imagePaths: List<String> get() = noteImageAdapter.list;
-    private var photosListView : RecyclerView? = null;
-    private var hintView : TextView? = null;
+    val imagePaths: List<String> get() = noteImageAdapter.list
+    private var photosListView : RecyclerView? = null
+    private var hintView : TextView? = null
 
     private var currentImagePath: String? = null
 
@@ -57,11 +56,11 @@ class AttachPhotoFragment : Fragment() {
 
     private fun updateHintVisibility(){
         if (imagePaths.isEmpty()) {
-            photosListView?.visibility = View.GONE;
-            hintView?.visibility = View.VISIBLE;
+            photosListView?.visibility = View.GONE
+            hintView?.visibility = View.VISIBLE
         } else {
-            photosListView?.visibility = View.VISIBLE;
-            hintView?.visibility = View.GONE;
+            photosListView?.visibility = View.VISIBLE
+            hintView?.visibility = View.GONE
         }
     }
 
@@ -127,7 +126,7 @@ class AttachPhotoFragment : Fragment() {
             if (resultCode == RESULT_OK) {
                 try {
                     val path = currentImagePath!!
-                    val bitmap = AttachPhotoUtils.resize(path, ATTACH_PHOTO_MAXWIDTH) ?: throw IOException()
+                    val bitmap = decodeScaledBitmapAndNormalize(path, ATTACH_PHOTO_MAXWIDTH, ATTACH_PHOTO_MAXHEIGHT) ?: throw IOException()
                     val out = FileOutputStream(path)
                     bitmap.compress(Bitmap.CompressFormat.JPEG, ATTACH_PHOTO_QUALITY, out)
 
@@ -161,7 +160,7 @@ class AttachPhotoFragment : Fragment() {
     }
 
     fun deleteImages() {
-        AttachPhotoUtils.deleteImages(imagePaths)
+        deleteImages(imagePaths)
     }
 
     companion object {

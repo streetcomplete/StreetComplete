@@ -3,10 +3,10 @@ package de.westnordost.streetcomplete.quests.bench_backrest
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
 import de.westnordost.streetcomplete.quests.bench_backrest.BenchBackrestAnswer.*
 
-class AddBenchBackrest(o: OverpassMapDataDao) : SimpleOverpassQuestType<BenchBackrestAnswer>(o) {
+class AddBenchBackrest(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<BenchBackrestAnswer>(o) {
 
     override val tagFilters = "nodes with amenity = bench and !backrest"
     override val commitMessage = "Add backrest information to benches"

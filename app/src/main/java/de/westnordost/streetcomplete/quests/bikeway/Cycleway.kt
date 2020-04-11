@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.bikeway
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.view.Item
 
 enum class Cycleway(private val iconResId: Int, private val iconResIdLeft: Int, val nameResId: Int) {
 
@@ -23,6 +24,8 @@ enum class Cycleway(private val iconResId: Int, private val iconResIdLeft: Int, 
     BUSWAY             (R.drawable.ic_cycleway_bus_lane,    R.drawable.ic_cycleway_bus_lane_l,   R.string.quest_cycleway_value_bus_lane );
 
     val isOnSidewalk get() = this == SIDEWALK_EXPLICIT || this == SIDEWALK_OK
+
+    fun asItem(isLeftHandTraffic: Boolean) = Item(this, getIconResId(isLeftHandTraffic), nameResId)
 
     fun getIconResId(isLeftHandTraffic: Boolean) =
         if (isLeftHandTraffic) iconResIdLeft else iconResId

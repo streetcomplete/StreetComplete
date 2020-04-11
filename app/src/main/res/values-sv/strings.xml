@@ -3,10 +3,10 @@
     <string name="action_settings">"Inställningar"</string>
     <string name="oauth_communication_error">"Ingen åtkomst till servern för godkännande"</string>
     <string name="loading">"Läser in"</string>
-    <string name="retry">"Försök pånytt"</string>
+    <string name="retry">"Försök igen"</string>
     <string name="oauth_cancelled">"Godkännandet avbrutet"</string>
-    <string name="oauth_failed_permissions">"Godkännandet misslyckades: alla uppmärkta behörigheter måste beviljas"</string>
-    <string name="title_activity_settings">"Inställingar"</string>
+    <string name="oauth_failed_permissions">"Godkännandet misslyckades: alla listade behörigheter måste tillåtas"</string>
+    <string name="title_activity_settings">"Inställningar"</string>
     <string name="pref_category_communication">"Kommunikation"</string>
     <string name="pref_category_display">"Visa"</string>
     <string name="pref_title_authorization">"Ge tillgång till OSM"</string>
@@ -17,9 +17,9 @@
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Visar även anteckningar som inte är ställda som frågor"</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Ignorerar anteckningar som inte är ställda som frågor"</string>
     <string name="pref_title_map_cache">"Storlek på kartcache"</string>
-    <string name="map_btn_gps_tracking">"Följ mej"</string>
+    <string name="map_btn_gps_tracking">"Följ mig"</string>
     <string name="map_attribution_mapzen">"Tillgänglig från %s"</string>
-    <string name="map_attribution_osm">"© OpenStreetMap bidragsgivare"</string>
+    <string name="map_attribution_osm">"© OpenStreetMap-bidragsgivare"</string>
     <string name="quest_generic_otherAnswers">"Andra svar…"</string>
     <string name="quest_generic_answer_notApplicable">"Svårt att säga…"</string>
     <string name="quest_generic_confirmation_title">"Är du säker?"</string>
@@ -49,27 +49,28 @@
     <string name="quest_noteDiscussion_title">"Kan du bidra till denna anteckning?"</string>
     <string name="quest_noteDiscussion_no">"Nej, dölj"</string>
     <string name="quest_noteDiscussion_anonymous">"Anonym"</string>
-    <string name="confirmation_discard_title">"Släng svar?"</string>
+    <string name="confirmation_discard_title">"Ångra inmatningen?"</string>
     <string name="confirmation_discard_positive">"Släng"</string>
     <string name="confirmation_discard_negative">"Avbryt"</string>
     <string name="action_download">"Sök efter uppdrag här"</string>
     <string name="action_upload">"Skicka svar"</string>
     <string name="no_changes">"Du lämnade formuläret tomt"</string>
     <string name="close">"stäng"</string>
-    <string name="download_error">"Fel vid sök efter uppdrag"</string>
+    <string name="download_error">"Fel vid sökning av uppdrag"</string>
     <string name="upload_error">"Fel vid sändning av svar"</string>
-    <string name="download_area_too_big">"Zooma in ytterligare"</string>
-    <string name="confirmation_cancel_prev_download_title">"Avbryta den aktuella sökningen och sök här i stället?"</string>
+    <string name="download_area_too_big">"Vänligen zooma in ytterligare"</string>
+    <string name="confirmation_cancel_prev_download_title">"Avbryt den aktuella sökningen och sök här i stället?"</string>
     <string name="notification_downloading">"Söker efter uppdrag…"</string>
     <string name="now_downloading_toast">"Söker efter fler uppdrag…"</string>
     <string name="turn_on_location_request">"Positionshämtning är avstängd. Öppna inställningar för att slå på det nu?"</string>
     <string name="no_location_permission_warning">"Din plats är nödvändigt för att söka efter uppdrag i din närhet."</string>
     <string name="action_about">"Om StreetComplete"</string>
-    <string name="about_title_version">"Version"</string>
 
     <!-- Fuzzy -->
     <string name="about_title_authors">"Erkännande"</string>
-    <string name="about_summary_authors">"© 2016–2019 Tobias Zwick och bidragsgivare"</string>
+
+    <!-- Fuzzy -->
+    <string name="about_summary_authors">"© 2016–2020 Tobias Zwick och bidragsgivare"</string>
     <string name="about_title_repository">"Källkodsarkiv"</string>
     <string name="about_summary_repository">"på GitHub"</string>
     <string name="about_title_report_error">"Rapportera fel"</string>
@@ -86,13 +87,13 @@
     <string name="nothing_more_to_download">"Det finns inga fler uppdrag här"</string>
     <string name="later">"Senare"</string>
     <string name="quest_streetName_answer_noProperStreet_link">"Den bara förbinder två vägar"</string>
-    <string name="quest_streetName_answer_noProperStreet_leaveNote">"Något annat (lämna notering)"</string>
+    <string name="quest_streetName_answer_noProperStreet_leaveNote">"Något annat (lämna anteckning)"</string>
     <string name="about_title_privacy_statement">"Sekretesspolicy"</string>
     <string name="about_summary_privacy_statement">"och dataanvändning"</string>
     <string name="quest_openingHours_public_holidays">"Allmänna helgdagar"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_openingHours_public_holidays_short">"Allmänna helgdagar"</string>
+    <string name="quest_openingHours_public_holidays_short">"Röda dagar"</string>
     <string name="quest_openingHours_open_end">"Ingen fast stängningstid"</string>
     <string name="quest_openingHours_answer_247">"Öppet dygnet runt"</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">"Varierar från månad till månad…"</string>
@@ -408,7 +409,7 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <!-- Fuzzy -->
     <string name="quest_buildingLevels_answer_multipleLevels">"varierar mellan olika husdelar"</string>
     <string name="quest_buildingLevels_answer_description">"I sådana fall, fyll i värdet för den högsta husdelen"</string>
-    <string name="unglue_hint">"Klicka för att lossa fixerad vy"</string>
+    <string name="unglue_hint">"Tryck för att lossa vy från position"</string>
     <string name="pref_title_not_authorized_summary2">"Logga in med din webbläsare för att ge programmet tillåtelse"</string>
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Är körbanorna fysiskt separerade (till exempel genom en barriär)? Bashastigheten beror på om så är fallet eller inte."</string>
     <string name="about_category_feedback">"Återkoppling"</string>
@@ -455,7 +456,7 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_streetName_answer_noName_noname">"Inget av ovanstående, den har helt enkelt inget namn"</string>
     <string name="quest_wheelchairAccess_toilets_title">"Är de här toaletterna tillgängliga med rullstol?"</string>
     <string name="quest_wheelchairAccess_toilets_name_title">"Är toaletterna %s tillgängliga med rullstol?"</string>
-    <string name="quest_wheelchairAccess_description_toilets">"Om toaletten är tillgänglig för rullstolsanvändare finns det oftast en sådan skylt.
+    <string name="quest_wheelchairAccess_description_toilets">"Om toaletten är tillgänglig för rullstolsanvändare finns det oftast en sådan skylt. 
     Delvis betyder att rullstolsanvändare kan komma in och använda toaletten men att det inte finns stödhandtag eller anpassad tvättho."</string>
     <string name="map_btn_create_note">"Skapa en ny anteckning"</string>
     <string name="create_new_note_unprecise">"Zooma in ytterligare för att skapa en anteckning"</string>
@@ -477,9 +478,7 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_busStopShelter_tram_title">"Har den här spårvagnshållplatsen ett regnskydd?"</string>
     <string name="quest_bench_backrest_title">"Har den här bänken ett ryggstöd?"</string>
     <string name="quest_bench_answer_picnic_table">"Det är ett picknickbord"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_religion_for_place_of_worship_title">"Vilken religion praktiseras vid %s?"</string>
+    <string name="quest_religion_for_place_of_worship_title">"Vilken religion utövas här?"</string>
     <string name="quest_religion_christian">"Kristendom"</string>
     <string name="quest_religion_muslim">"Islam"</string>
     <string name="quest_religion_hindu">"Hinduism"</string>
@@ -494,7 +493,7 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_religion_caodaist">"Cao Ðài"</string>
     <string name="quest_religion_chinese_folk">"Kinesisk folkreligion"</string>
     <string name="quest_religion_for_wayside_shrine_title">"Vilken religion praktiseras vid den här helgedomen?"</string>
-    <string name="quest_parking_fee_title">"Kostar det något att parkera här?"</string>
+    <string name="quest_parking_fee_title">"Kostar det att parkera här?"</string>
     <string name="quest_cycleway_value_lane_soft">"cykelkörfält (streckad markering)"</string>
     <string name="quest_surface_value_unhewn_cobblestone">"Ohuggen kullersten "</string>
     <string name="quest_parking_access_title">"Är det reglerat vem som får parkera här?"</string>
@@ -654,6 +653,8 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_openingHours_timeSelect_next">"Nästa"</string>
     <string name="quest_tracktype_title">"Vad är ytans fasthet av detta spår?"</string>
     <string name="quest_tracktype_grade1">"Fast"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tracktype_grade2">"Mestadels fast"</string>
     <string name="quest_tracktype_grade3">"Blandning"</string>
     <string name="quest_tracktype_grade4">"Mestadels mjuk"</string>
@@ -691,10 +692,11 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_placeName_title_name">"Vad heter det här stället? (%s)"</string>
     <string name="action_open_location">"Öppna plats i en annan app"</string>
     <string name="map_application_missing">"Ingen annan kartapplikation installerad"</string>
-    <string name="pref_title_overpass_url_select">"Ändra Overpass server"</string>
-    <string name="pref_title_overpass_url_info">"Kräver att applikationen startas om för att gälla. Kan kringgå censur, till exempel i Ryssland."</string>
+    <string name="pref_title_overpass_url_select">"Ändra Overpass-server"</string>
+    <string name="pref_title_overpass_url_info">"Kräver att applikationen startas om för att träda i kraft. Kan kringgå censur, till exempel i Ryssland."</string>
     <string name="label_housenumber">"husnummer"</string>
     <string name="label_blocknumber">"kvarternummer"</string>
+    <string name="quest_busStopShelter_covered">"Hela hållplatsen har tak"</string>
     <string name="quest_ferry_pedestrian_name_title">"Transporterar %s fotgängare?"</string>
     <string name="quest_ferry_pedestrian_title">"Transporterar denna färjelinje fotgängare?"</string>
     <string name="quest_ferry_motor_vehicle_name_title">"Transporterar %s motorfordon?"</string>
@@ -713,6 +715,71 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_leaf_type_mixed">"Båda är närvarande"</string>
     <string name="quest_cyclewayPartSurface_title">"Vad är ytan på cykelvägen här?"</string>
     <string name="quest_generic_answer_differs_along_the_way">"Skiljer sig längs vägen…"</string>
+    <string name="quest_split_way_description">"Om det skiljer sig längs vägen är det första steget att dela upp vägen. Därefter kan uppdraget besvaras för varje delad del separat.
+Observera att uppdrag för de delade delarna kan visas mycket senare.
+Dela den nu?"</string>
+    <string name="quest_split_way_tutorial">"Tryck på vägen för att dela upp den vid punkt(erna) där svaret skiljer sig åt. Försök att vara så exakt som möjligt, Du kan zooma in som vanligt."</string>
     <string name="quest_split_way_too_imprecise">"Vänligen zooma in ytterligare"</string>
+    <string name="quest_split_way_many_splits_confirmation_description">"Det här är en hel del delningar. Du kan alltid dela upp vägen senare."</string>
+    <string name="quest_footwayPartSurface_title">"Vad är ytan på gångvägen här?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title">"Är toaletten på %s tillgänglig med rullstol?"</string>
+    <string name="quest_tactilePaving_title_tram">"Har den här spårvagnshållplatsen taktil markbeläggning?"</string>
+    <string name="quest_tactilePaving_title_name_tram">"Har spårvagnshållplatsen %s taktil markbeläggning?"</string>
+    <string name="quest_maxweight_title">"Vad är viktgränsen här?"</string>
+    <string name="quest_maxweight_answer_noSign">"Det finns ingen skylt"</string>
+    <string name="quest_maxweight_unusualInput_confirmation_description">"Denna vikt ser osannolikt ut. Är du säker på att det är korrekt?"</string>
+    <string name="quest_maxweight_answer_other_sign">"Skylten ser annorlunda ut…"</string>
+    <string name="quest_maxweight_unsupported_sign_request_photo">"Vill du lämna en anteckning? En anteckning med ett foto gör att andra kartläggare kan ta hand om det."</string>
+    <string name="confirmation_authorize_now_note">"Du kan göra detta senare på inställningsskärmen."</string>
+    <string name="quest_generalFee_title">"Kostar inträde till %s?"</string>
+    <string name="quest_laundrySelfService_title">"Är denna tvätt en självbetjäningstvätt?"</string>
+    <string name="quest_handrail_title">"Har dessa steg ett ledstång?"</string>
+    <string name="quest_openingHours_no_name_title">"Vilka är öppettiderna för denna plats? (%s)"</string>
+    <string name="about_summary_current_version">"Aktuell version: %s"</string>
+    <string name="quest_postboxRef_title">"Vad är referensnumret för denna postlåda?"</string>
+    <string name="quest_postboxRef_name_title">"Vad är referensnumret för denna %s postlåda?"</string>
+    <string name="quest_ref_answer_noRef">"Inget referensnummer syns..."</string>
+    <string name="quest_street_side_puzzle_tutorial">"Tryck på frågetecknen och välj ett svar för den givna sidan av vägen."</string>
+    <string name="quest_recycling_materials_title">"Vad kan lämnas här för återvinning?"</string>
+    <string name="quest_recycling_materials_note">"Om något annat kan återvinnas än valbart hät, vänligen lämna en anteckning istället."</string>
+    <string name="quest_recycling_type_batteries">"Batterier"</string>
+    <string name="quest_recycling_type_cans">"Burkar"</string>
+    <string name="quest_recycling_type_clothes">"Kläder"</string>
+    <string name="quest_recycling_type_green_waste">"Trädgårdsavfall"</string>
+    <string name="quest_recycling_type_glass_bottles">"Glasflaskor och burkar"</string>
+    <string name="quest_recycling_type_glass_bottles_short">"Flaskor och burkar"</string>
+    <string name="quest_recycling_type_paper">"Papper"</string>
+    <string name="quest_recycling_type_plastic_generic">"Plast"</string>
+    <string name="quest_recycling_type_plastic">"Vilka plaster som helst"</string>
+    <string name="quest_recycling_type_shoes">"Skor"</string>
+    <string name="quest_recycling_type_electric_appliances">"Elektriska apparater"</string>
+    <string name="quest_recycling_type_plastic_bottles">"Endast plastflaskor"</string>
+    <string name="quest_recycling_type_plastic_packaging">"Endast plastförpackningar"</string>
+    <string name="quest_recycling_type_scrap_metal">"Metallskrot"</string>
+    <string name="quest_recycling_type_any_glass">"Vilka glaser som helst"</string>
+    <string name="quest_recycling_glass_title">"Kan bara glasflaskor och burkar återvinnas här eller alla typer av glas?"</string>
+    <string name="quest_determineRecyclingGlass_description_any_glass">"Exempel på glas som ofta inte accepteras: härdat glas, fönsterrutor, glasvaror, glödlampor eller speglar."</string>
+    <string name="about_title_changelog">"Versionshistorik"</string>
+    <string name="title_whats_new">"Vad är nytt?"</string>
+    <string name="about_title_rate">"Betygsätt denna app"</string>
+    <string name="about_summary_rate">"på Google Play"</string>
+    <string name="about_title_donate">"Donera"</string>
+    <string name="about_summary_donate">"Visa din uppskattning! ❤️"</string>
+    <string name="about_description_donate">"Tack för att du överväger att stöda den här appen! För att se aktuella donationer och donera själv, tryck på respektive plattform:"</string>
+    <string name="quest_religion_for_place_of_worship_name_title">"Vilken religion utövas i %s?"</string>
+    <string name="confirmation_cancel_prev_download_confirmed">"Skanna här istället"</string>
+    <string name="confirmation_cancel_prev_download_cancel">"Återuppta pågående skanning"</string>
+    <string name="quest_buildingType_garages_description">"Separata platser för olika ägare/hyresgäster"</string>
+    <string name="quest_tourism_information_title">"Vad för slags turistinformation är det här?"</string>
+    <string name="quest_tourism_information_name_title">"Vad för slags turistinformation är %s?"</string>
+    <string name="quest_tourism_information_office">"Turistinformationskontor"</string>
+    <string name="quest_tourism_information_board">"Informationsskylt"</string>
+    <string name="quest_tourism_information_terminal">"Informationsskärm"</string>
+    <string name="quest_tourism_information_map">"Karta"</string>
+
+    <!-- Nog inte vidare vedertaget.. -->
+    <string name="quest_tourism_information_guidepost">"Informationsstolpe"</string>
+    <string name="quest_recycling_materials_answer_waste">"Den är för restavfall."</string>
+    <string name="quest_recycling_materials_answer_waste_description">"Så det här kärlet är för alla sorters avfall, t.ex. hushålls- och kommersiellt avfall?"</string>
+    <string name="quest_accepts_cash_title">"Tar %s emot kontanter?"</string>
 </resources>

@@ -65,9 +65,10 @@
     <string name="turn_on_location_request">"La geolocalització està desactivada. Voleu anar a la configuració per a activar-la ara?"</string>
     <string name="no_location_permission_warning">"Cal la teva ubicació per a cercar missions prop teu."</string>
     <string name="action_about">"Quant a l'StreetComplete"</string>
-    <string name="about_title_version">"Versió"</string>
     <string name="about_title_authors">"Crèdits"</string>
-    <string name="about_summary_authors">"© 2016–2019 Tobias Zwick i col·laboradors"</string>
+
+    <!-- Fuzzy -->
+    <string name="about_summary_authors">"© 2016–2020 Tobias Zwick i col·laboradors"</string>
     <string name="about_title_repository">"Dipòsit font"</string>
     <string name="about_summary_repository">"a GitHub"</string>
     <string name="about_title_report_error">"Informa d'un error"</string>
@@ -441,7 +442,7 @@ En cas contrari, podeu baixar un altre teclat a la botiga d'aplicacions. Els tec
     <string name="quest_busStopShelter_tram_title">"Aquesta parada de tramvia té marquesina?"</string>
     <string name="quest_bench_backrest_title">"Aquest banc té respatller?"</string>
     <string name="quest_bench_answer_picnic_table">"És una taula de pícnic"</string>
-    <string name="quest_religion_for_place_of_worship_title">"Quina religió es practica a %s?"</string>
+    <string name="quest_religion_for_place_of_worship_title">"Quina religió es practica en aquest lloc?"</string>
     <string name="quest_religion_christian">"cristianisme"</string>
     <string name="quest_religion_muslim">"islamisme"</string>
     <string name="quest_religion_hindu">"hinduisme"</string>
@@ -616,6 +617,8 @@ Per example 1,3 o 2-6."</string>
     <string name="quest_openingHours_timeSelect_next">"Endavant"</string>
     <string name="quest_tracktype_title">"Quin tipus de superfície té aquesta pista?"</string>
     <string name="quest_tracktype_grade1">"Pavimentada o compactada"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tracktype_grade2">"Graveta, terra o sorra compactada"</string>
     <string name="quest_tracktype_grade3">"Barreja de materials durs i tous"</string>
     <string name="quest_tracktype_grade4">"Principalment de tera, amb algunes pedres o materials durs"</string>
@@ -688,4 +691,61 @@ Per example 1,3 o 2-6."</string>
     <string name="quest_split_way_many_splits_confirmation_description">"Ja hi ha unes quantes divisions. Sempre podeu afegir-ne més endavant."</string>
     <string name="quest_footwayPartSurface_title">"Quin tipus de superfície té el camí de vianants aquí?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title">"Els serveis de %s són accessibles amb cadira de rodes?"</string>
+    <string name="quest_tactilePaving_title_tram">"Aquesta parada de tramvia té paviment tàctil?"</string>
+    <string name="quest_tactilePaving_title_name_tram">"Aquesta parada de tramvia %s té paviment tàctil?"</string>
+    <string name="quest_maxweight_title">"Quin és el límit de pes aquí?"</string>
+    <string name="quest_maxweight_answer_noSign">"No hi ha cap senyal"</string>
+    <string name="quest_maxweight_unusualInput_confirmation_description">"Aquest pes no sembla plausible. Esteu segur que és correcte?"</string>
+    <string name="quest_maxweight_answer_other_sign">"El senyal sembla diferent..."</string>
+    <string name="quest_maxweight_unsupported_sign_request_photo">"Voleu deixar una nota? Una nota amb una fotografia permetrà a altres cartògrafs de fer-se'n càrrec."</string>
+    <string name="confirmation_authorize_now_note">"Això ho podeu fer més tard a la pantalla de configuració."</string>
+    <string name="quest_generalFee_title">"Cal pagar per a entrar a %s?"</string>
+    <string name="quest_laundrySelfService_title">"Aquesta bugaderia és d'autoservei?"</string>
+    <string name="quest_handrail_title">"Les escales tenen barana?"</string>
+    <string name="quest_openingHours_no_name_title">"Quin és l'horari d'obertura d'aquest lloc? (%s)"</string>
+    <string name="about_summary_current_version">"Versió actual: %s"</string>
+    <string name="quest_postboxRef_title">"Quin és el número de referència d'aquesta bústia?"</string>
+    <string name="quest_postboxRef_name_title">"Quin és el número de referència d'aquesta bústia %s?"</string>
+    <string name="quest_ref_answer_noRef">"No hi ha cap número de referència visible..."</string>
+    <string name="quest_street_side_puzzle_tutorial">"Toqueu les marques i seleccioneu una resposta per al costat de la via indicat."</string>
+    <string name="quest_recycling_materials_title">"Què es pot deixar aquí per a reciclar?"</string>
+    <string name="quest_recycling_materials_note">"Si hi ha res que s'hi pot reciclar, diferent del que es pot seleccionar, aleshores deixeu una nota."</string>
+    <string name="quest_recycling_type_batteries">"Bateries"</string>
+    <string name="quest_recycling_type_cans">"Llaunes"</string>
+    <string name="quest_recycling_type_clothes">"Roba"</string>
+    <string name="quest_recycling_type_green_waste">"Brossa de jardí"</string>
+    <string name="quest_recycling_type_glass_bottles">"Ampolles i gerres de vidre"</string>
+    <string name="quest_recycling_type_glass_bottles_short">"Ampolles i gerres"</string>
+    <string name="quest_recycling_type_paper">"Paper"</string>
+    <string name="quest_recycling_type_plastic_generic">"Plàstic"</string>
+    <string name="quest_recycling_type_plastic">"Qualsevol tipus de plàstic"</string>
+    <string name="quest_recycling_type_shoes">"Calçat"</string>
+    <string name="quest_recycling_type_electric_appliances">"Aparells elèctrics"</string>
+    <string name="quest_recycling_type_plastic_bottles">"Només ampolles de plàstic"</string>
+    <string name="quest_recycling_type_plastic_packaging">"Només envasos de plàstic"</string>
+    <string name="quest_recycling_type_scrap_metal">"Ferralla"</string>
+    <string name="quest_recycling_type_any_glass">"Qualsevol tipus de vidre"</string>
+    <string name="quest_recycling_glass_title">"Només s'hi poden reciclar ampolles i gerres de vidre, o qualsevol tipus de vidre?"</string>
+    <string name="quest_determineRecyclingGlass_description_any_glass">"Alguns exemples de vidre que s'accepta sovint: vidre temperat, finestres, gots o plats de vidre, bombetes i miralls."</string>
+    <string name="about_title_changelog">"Historial de la versió"</string>
+    <string name="title_whats_new">"Què hi ha de nou?"</string>
+    <string name="about_title_rate">"Valoreu aquesta aplicació"</string>
+    <string name="about_summary_rate">"al Google Play"</string>
+    <string name="about_title_donate">"Feu un donatiu"</string>
+    <string name="about_summary_donate">"Mostreu el vostre agraïment! ❤️"</string>
+    <string name="about_description_donate">"Gràcies per considerar de donar suport a aquesta aplicació! Per a veure els donatius actuals i fer-ne un vós mateix, toqueu la plataforma respectiva:"</string>
+    <string name="quest_religion_for_place_of_worship_name_title">"Quina religió es practica a %s?"</string>
+    <string name="confirmation_cancel_prev_download_confirmed">"Escanegeu aquí"</string>
+    <string name="confirmation_cancel_prev_download_cancel">"Continua amb l'escaneig actual"</string>
+    <string name="quest_buildingType_garages_description">"Espais separats per a diferents propietaris o usuaris"</string>
+    <string name="quest_tourism_information_title">"Quin tipus d'informació turística és?"</string>
+    <string name="quest_tourism_information_name_title">"Quin tipus d'informació turística és %s?"</string>
+    <string name="quest_tourism_information_office">"Oficina d'informació turística"</string>
+    <string name="quest_tourism_information_board">"Tauler informatiu"</string>
+    <string name="quest_tourism_information_terminal">"Terminal informatiu"</string>
+    <string name="quest_tourism_information_map">"Mapa"</string>
+    <string name="quest_tourism_information_guidepost">"Senyal d'indicació"</string>
+    <string name="quest_recycling_materials_answer_waste">"És per a brossa en general"</string>
+    <string name="quest_recycling_materials_answer_waste_description">"Aleshores, aquest contenidor és per a qualsevol brossa, com ara residus domèstics o brossa comercial?"</string>
+    <string name="quest_accepts_cash_title">"%s accepta pagaments en metàl·lic?"</string>
 </resources>

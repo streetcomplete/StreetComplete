@@ -42,7 +42,7 @@ class OsmQuestGiverTest {
         on(osmQuestDao.getAll(element = ElementKey(Element.Type.NODE, 1))).thenReturn(emptyList())
 
         questType = mock()
-        on(questType.enabledForCountries).thenReturn(Countries.ALL)
+        on(questType.enabledInCountries).thenReturn(AllCountries)
 
         countryBoundaries = mock()
         val future = FutureTask { countryBoundaries }
@@ -103,17 +103,9 @@ class OsmQuestGiverTest {
         verify(osmQuestDao).addAll(listOf(quest))
     }
 
-    @Test fun `quest is disabled in every country`() {
-        on(questType.isApplicableTo(NODE)).thenReturn(true)
-        on(questType.enabledForCountries).thenReturn(Countries.NONE)
-        on(countryBoundaries.isInAny(anyDouble(), anyDouble(), any())).thenReturn(true)
-
-        assertTrue(osmQuestUnlocker.updateQuests(NODE).createdQuests.isEmpty())
-    }
-
     @Test fun `quest is only enabled in the country the element is in`() {
         on(questType.isApplicableTo(NODE)).thenReturn(true)
-        on(questType.enabledForCountries).thenReturn(Countries.noneExcept("DE"))
+        on(questType.enabledInCountries).thenReturn(NoCountriesExcept("DE"))
         on(countryBoundaries.isInAny(anyDouble(), anyDouble(), any())).thenReturn(true)
 
         assertEquals(1, osmQuestUnlocker.updateQuests(NODE).createdQuests.size)
@@ -121,7 +113,7 @@ class OsmQuestGiverTest {
 
     @Test fun `quest is only enabled in a country the element is not in`() {
         on(questType.isApplicableTo(NODE)).thenReturn(true)
-        on(questType.enabledForCountries).thenReturn(Countries.noneExcept("DE"))
+        on(questType.enabledInCountries).thenReturn(NoCountriesExcept("DE"))
         on(countryBoundaries.isInAny(anyDouble(), anyDouble(), any())).thenReturn(false)
 
         assertTrue(osmQuestUnlocker.updateQuests(NODE).createdQuests.isEmpty())
@@ -129,7 +121,7 @@ class OsmQuestGiverTest {
 
     @Test fun `quest is disabled in the country the element is in`() {
         on(questType.isApplicableTo(NODE)).thenReturn(true)
-        on(questType.enabledForCountries).thenReturn(Countries.allExcept("DE"))
+        on(questType.enabledInCountries).thenReturn(AllCountriesExcept("DE"))
         on(countryBoundaries.isInAny(anyDouble(), anyDouble(), any())).thenReturn(true)
 
         assertTrue(osmQuestUnlocker.updateQuests(NODE).createdQuests.isEmpty())
@@ -137,7 +129,7 @@ class OsmQuestGiverTest {
 
     @Test fun `quest is disabled in the country the element is not in`() {
         on(questType.isApplicableTo(NODE)).thenReturn(true)
-        on(questType.enabledForCountries).thenReturn(Countries.allExcept("DE"))
+        on(questType.enabledInCountries).thenReturn(AllCountriesExcept("DE"))
         on(countryBoundaries.isInAny(anyDouble(), anyDouble(), any())).thenReturn(false)
 
         assertEquals(1, osmQuestUnlocker.updateQuests(NODE).createdQuests.size)

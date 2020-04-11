@@ -13,8 +13,6 @@
 
     <color name="disabled_text">#6666</color>
 
-    <color name="tooltip">#cc4141ba</color>
-
     <color name="button_white">#fff</color>
 
     <color name="greyed_out">#66999999</color>

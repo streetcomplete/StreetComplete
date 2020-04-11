@@ -15,7 +15,7 @@ import:
 global:
     railway_color: '#99a'
     road_color: '#fff'
-    road_outline_color: '#cc9999'
+    road_outline_color: '#c99'
     path_color: global.road_color
     path_outline_color: '#e0c9b3'
     square_color: global.road_color
@@ -27,7 +27,7 @@ global:
     building_color: rgba(204, 214, 238, .75)
     building_outline_color: rgba(185, 195, 217, .75)
 
-    boundary_color: '#e66'
+    boundary_color: '#f3c'
 
     oneway_arrow_color: '#888'
     barrier_color: '#888'

@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.data.osm.changes.SplitPolylineAtPosition
 import de.westnordost.streetcomplete.eq
 import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.on
-import de.westnordost.streetcomplete.util.SphericalEarthMath
+import de.westnordost.streetcomplete.util.createTranslated
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
@@ -175,7 +175,7 @@ class SplitSingleWayUploadTest {
         assertEquals(2, elements.ways.size)
         val node = elements.nodes.single()
         assertEquals(
-            SphericalEarthMath.createTranslated(
+            createTranslated(
                 p1.latitude + 0.5 * (p2.latitude - p1.latitude),
                 p1.longitude + 0.5 * (p2.longitude - p1.longitude)),
             node.position

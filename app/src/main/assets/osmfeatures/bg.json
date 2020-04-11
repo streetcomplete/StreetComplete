@@ -51,9 +51,6 @@
         "waterway/stream": {
             "name": "Поток"
         },
-        "railway": {
-            "name": "ЖП транспорт"
-        },
         "amenity/library": {
             "name": "Библиотека"
         },
@@ -71,9 +68,6 @@
         },
         "highway/living_street": {
             "name": "Жилищна улица"
-        },
-        "power/sub_station": {
-            "name": "Подстанция"
         },
         "highway/motorway": {
             "name": "Автомагистрала"
@@ -237,9 +231,6 @@
         "type/route": {
             "name": "Маршрут"
         },
-        "highway": {
-            "name": "Път"
-        },
         "area": {
             "name": "Площ"
         },
@@ -381,9 +372,6 @@
         "shop/electronics": {
             "name": "Магазин за електроника"
         },
-        "waterway": {
-            "name": "Води"
-        },
         "amenity/place_of_worship/buddhist": {
             "name": "Будистки храм"
         },
@@ -395,9 +383,6 @@
         },
         "type/route_master": {
             "name": "Маршрутна схема"
-        },
-        "natural/wood": {
-            "name": "Гора"
         },
         "amenity/waste_basket": {
             "name": "Кош за боклук"
@@ -474,9 +459,6 @@
         "tourism/information": {
             "name": "Информация"
         },
-        "natural": {
-            "name": "Природа"
-        },
         "shop/laundry": {
             "name": "Пералня"
         },
@@ -509,9 +491,6 @@
         },
         "shop/hardware": {
             "name": "Железария"
-        },
-        "amenity/car_sharing": {
-            "name": "Споделяне на коли"
         },
         "shop/travel_agency": {
             "name": "Туристическа агенция"
@@ -546,9 +525,6 @@
         "leisure/pitch/basketball": {
             "name": "Баскетболно игрище"
         },
-        "tourism": {
-            "name": "Туризъм"
-        },
         "amenity/car_wash": {
             "name": "Автомивка"
         },
@@ -578,12 +554,6 @@
         },
         "place": {
             "name": "Населени места"
-        },
-        "power": {
-            "name": "Енергетика"
-        },
-        "leisure": {
-            "name": "Отдих"
         },
         "shop/music": {
             "name": "Музикален магазин"
@@ -783,9 +753,6 @@
         "historic/wayside_cross": {
             "name": "Крайпътен кръст"
         },
-        "man_made": {
-            "name": "Съоръжения"
-        },
         "shop/car_parts": {
             "name": "Авточасти"
         },
@@ -812,9 +779,6 @@
         },
         "natural/glacier": {
             "name": "Ледник"
-        },
-        "aeroway": {
-            "name": "Въздухоплаване"
         }
     }
 }

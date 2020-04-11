@@ -13,13 +13,11 @@ import javax.inject.Inject;
 import androidx.appcompat.app.AppCompatDelegate;
 import de.westnordost.countryboundaries.CountryBoundaries;
 import de.westnordost.osmfeatures.FeatureDictionary;
-import de.westnordost.streetcomplete.tangram.TangramQuestSpriteSheetCreator;
 
 public class StreetCompleteApplication extends Application
 {
 	@Inject FutureTask<CountryBoundaries> countryBoundariesFuture;
 	@Inject FutureTask<FeatureDictionary> featuresDictionaryFuture;
-	@Inject TangramQuestSpriteSheetCreator spriteSheetCreator;
 	@Inject SharedPreferences prefs;
 
 	private static final String PRELOAD_TAG = "Preload";
@@ -47,12 +45,6 @@ public class StreetCompleteApplication extends Application
 	private void preload()
 	{
 		Log.i(PRELOAD_TAG, "Preloading data");
-
-		// sprite sheet is necessary to display quests
-		new Thread(() -> {
-			spriteSheetCreator.get();
-			Log.i(PRELOAD_TAG, "Created sprite sheet");
-		}).start();
 
 		// country boundaries are necessary latest for when a quest is opened
 		new Thread(() -> {

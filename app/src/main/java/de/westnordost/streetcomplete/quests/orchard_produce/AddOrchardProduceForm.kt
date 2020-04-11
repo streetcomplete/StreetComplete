@@ -75,7 +75,6 @@ class AddOrchardProduceForm : AImageListQuestAnswerFragment<String, List<String>
     override val items get() = countryInfo.orchardProduces.mapNotNull { producesMap[it] }
 
     override val itemsPerRow = 3
-    override val maxNumberOfInitiallyShownItems = -1
     override val maxSelectableItems = -1
 
     override fun onClickOk(selectedItems: List<String>) {

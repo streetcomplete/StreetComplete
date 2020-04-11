@@ -1,18 +1,18 @@
 package de.westnordost.streetcomplete.quests.max_weight
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.Countries
 import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
+import de.westnordost.streetcomplete.data.osm.AllCountriesExcept
 
-class AddMaxWeight(o: OverpassMapDataDao) : SimpleOverpassQuestType<MaxWeightAnswer>(o) {
+class AddMaxWeight(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<MaxWeightAnswer>(o) {
 
     override val commitMessage = "Add maximum allowed weight"
     override val icon = R.drawable.ic_quest_max_weight
     override val hasMarkersAtEnds = true
 
-    override val enabledForCountries = Countries.allExcept(
+    override val enabledInCountries = AllCountriesExcept(
             "CA", // requires special icons
             "US", // requires special icons - single weight sign is available, but it is a rare variant
             "AU"  // requires special icons - single weight sign is available, but it is a rare variant

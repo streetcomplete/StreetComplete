@@ -26,7 +26,7 @@ class Weekdays {
 
     override fun toString() = toStringUsing(OSM_ABBR_WEEKDAYS, ",", "-")
 
-    fun toLocalizedString(r: Resources) = toStringUsing(Weekdays.getShortNames(r), ", ", "–")
+    fun toLocalizedString(r: Resources) = toStringUsing(getShortNames(r), ", ", "–")
 
     fun toStringUsing(names: Array<String>, separator: String, range: String): String {
         val sb = StringBuilder()

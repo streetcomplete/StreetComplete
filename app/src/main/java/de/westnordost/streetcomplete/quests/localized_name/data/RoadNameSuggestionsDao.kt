@@ -17,18 +17,18 @@ import de.westnordost.streetcomplete.quests.localized_name.data.RoadNamesTable.C
 import de.westnordost.streetcomplete.quests.localized_name.data.RoadNamesTable.Columns.WAY_ID
 import de.westnordost.streetcomplete.quests.localized_name.data.RoadNamesTable.NAME
 import de.westnordost.streetcomplete.util.Serializer
-import de.westnordost.streetcomplete.util.SphericalEarthMath
 import de.westnordost.streetcomplete.ktx.toObject
+import de.westnordost.streetcomplete.util.enclosingBoundingBox
+import de.westnordost.streetcomplete.util.isWithinDistanceOf
 
-// TODO only open in order to be able to mock it in tests
-open class RoadNameSuggestionsDao @Inject constructor(
+class RoadNameSuggestionsDao @Inject constructor(
     private val dbHelper: SQLiteOpenHelper,
     private val serializer: Serializer
 ) {
     private val db get() = dbHelper.writableDatabase
 
     fun putRoad(wayId: Long, namesByLanguage: Map<String, String>, geometry: List<LatLon>) {
-        val bbox = SphericalEarthMath.enclosingBoundingBox(geometry)
+        val bbox = geometry.enclosingBoundingBox()
         val v = contentValuesOf(
             WAY_ID to wayId,
             NAMES to serializer.toBytes(HashMap(namesByLanguage)),
@@ -53,7 +53,7 @@ open class RoadNameSuggestionsDao @Inject constructor(
         val args = arrayOfNulls<String>(points.size * 4)
         for (i in points.indices) {
             val point = points[i]
-            val bbox = SphericalEarthMath.enclosingBoundingBox(point, maxDistance)
+            val bbox = point.enclosingBoundingBox(maxDistance)
             val ai = i * 4
             args[ai + 0] = "" + bbox.maxLatitude
             args[ai + 1] = "" + bbox.maxLongitude
@@ -67,7 +67,7 @@ open class RoadNameSuggestionsDao @Inject constructor(
 
         db.query(NAME, cols, query, args.requireNoNulls()) { cursor ->
             val geometry: ArrayList<LatLon> = serializer.toObject(cursor.getBlob(GEOMETRY))
-            if (SphericalEarthMath.isWithinDistance(maxDistance, points, geometry)) {
+            if (points.isWithinDistanceOf(maxDistance, geometry)) {
                 val map: HashMap<String,String> = serializer.toObject(cursor.getBlob(NAMES))
                 result.add(map)
             }

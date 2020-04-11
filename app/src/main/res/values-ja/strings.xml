@@ -69,11 +69,12 @@
     <string name="turn_on_location_request">"位置情報がオフです。 設定に移動して今すぐオンにしますか?"</string>
     <string name="no_location_permission_warning">"近くの探索をスキャンするには、あなたの場所が必要です。"</string>
     <string name="action_about">"StreetComplete について"</string>
-    <string name="about_title_version">"バージョン"</string>
 
     <!-- Fuzzy -->
     <string name="about_title_authors">"作者"</string>
-    <string name="about_summary_authors">"© 2016–2019 Tobias Zwick と貢献者"</string>
+
+    <!-- Fuzzy -->
+    <string name="about_summary_authors">"© 2016–2020 Tobias Zwick と貢献者"</string>
     <string name="about_title_repository">"ソースリポジトリ"</string>
     <string name="about_summary_repository">"GitHub で"</string>
     <string name="about_title_report_error">"エラーを報告"</string>
@@ -394,7 +395,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_crossing_type_unmarked">"道路標示のない交差点"</string>
     <string name="compass_north_one_letter">"北"</string>
     <string name="action_undo">"元に戻す"</string>
-    <string name="no_changes_to_undo">"元に戻すものはありません"</string>
     <string name="undo_confirm_title">"次の最後の回答を元に戻しますか?"</string>
     <string name="produce_mangosteen">"マンゴスチン"</string>
     <string name="produce_tomatoes">"トマト"</string>
@@ -417,6 +417,8 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_buildingLevels_roofLevelsLabel2">"屋根の階数"</string>
     <string name="quest_buildingLevels_levelsLabel2">"通常の階数 (屋根を数えない)"</string>
     <string name="pref_title_authorized_summary">"認証済"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingLevels_answer_multipleLevels">"建物ごとに異なる"</string>
     <string name="quest_buildingLevels_answer_description">"この場合、最も高い建物部分の値を入力するだけです。"</string>
     <string name="unglue_hint">"タップして位置から表示を解除"</string>
@@ -494,9 +496,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_busStopShelter_tram_title">"この路面電車の停留所に屋根はありますか?"</string>
     <string name="quest_bench_backrest_title">"このベンチは背もたれがありますか?"</string>
     <string name="quest_bench_answer_picnic_table">"ピクニックテーブルです"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_religion_for_place_of_worship_title">"%s はどんな宗教に使用されていますか?"</string>
     <string name="quest_religion_christian">"キリスト教"</string>
     <string name="quest_religion_muslim">"イスラム教"</string>
     <string name="quest_religion_hindu">"ヒンドゥー教"</string>

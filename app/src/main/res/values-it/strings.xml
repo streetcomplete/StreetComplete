@@ -67,9 +67,10 @@
     <string name="turn_on_location_request">"La localizzazione è spenta. Apro le impostazioni per abilitarla?"</string>
     <string name="no_location_permission_warning">"La tua posizione è necessaria per capire cosa aggiornare intorno a te"</string>
     <string name="action_about">"Informazioni su StreetComplete"</string>
-    <string name="about_title_version">"Versione"</string>
     <string name="about_title_authors">"Ringraziamenti"</string>
-    <string name="about_summary_authors">"© 2016–2019 Tobias Zwick e contributori"</string>
+
+    <!-- Fuzzy -->
+    <string name="about_summary_authors">"© 2016–2020 Tobias Zwick e contributori"</string>
     <string name="about_title_repository">"Repository codice sorgente"</string>
     <string name="about_summary_repository">"su GitHub"</string>
     <string name="about_title_report_error">"Segnala errore"</string>
@@ -115,7 +116,7 @@ La modifica anonima in OpenStreetMap non è possibile, pertanto tutte le modific
 
 &lt;b&gt;Posizione geografica&lt;/b&gt;&lt;br/&gt;
 &lt;p&gt;
-Questa app non condivide al tua posizione GPS con nessuno. Essa viene utilizzata solo per la ricerca automatica di missioni nei tuoi dintorni e per centrare (e quindi scaricare) la mappa dove ti trovi.
+Questa app non condivide al tua posizione GPS con nessuno. Essa viene utilizzata solo per la ricerca automatica di missioni nei tuoi dintorni e per centrare (e quindi scaricare) la mappa dove ti trovi. 
 &lt;/p&gt;
 
 &lt;p&gt;&lt;b&gt; Utilizzo dei dati&lt;/b&gt;&lt;/p&gt;
@@ -440,7 +441,7 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="quest_busStopShelter_tram_title">"Questa fermata del tram ha una pensilina?"</string>
     <string name="quest_bench_backrest_title">"Questa panchina ha lo schienale?"</string>
     <string name="quest_bench_answer_picnic_table">"È un tavolo da picnic"</string>
-    <string name="quest_religion_for_place_of_worship_title">"Quale religione è praticata a %s?"</string>
+    <string name="quest_religion_for_place_of_worship_title">"Quale religione è praticata in questo luogo?"</string>
     <string name="quest_religion_christian">"Cristianesimo"</string>
     <string name="quest_religion_muslim">"Islamismo"</string>
     <string name="quest_religion_hindu">"Induismo"</string>
@@ -613,6 +614,8 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="quest_openingHours_timeSelect_next">"Prossimo"</string>
     <string name="quest_tracktype_title">"Com'è il grado di solidità della superficie di questa strada?"</string>
     <string name="quest_tracktype_grade1">"Solido"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tracktype_grade2">"Per lo più solido"</string>
     <string name="quest_tracktype_grade3">"Misto"</string>
     <string name="quest_tracktype_grade4">"Per lo più soffice"</string>
@@ -685,7 +688,61 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="quest_split_way_many_splits_confirmation_description">"Queste sono parecchie divisioni. Puoi dividere ancora la strada più tardi."</string>
     <string name="quest_footwayPartSurface_title">"Qual è la superficie di questo passaggio pedonale?"</string>
     <string name="quest_wheelchairAccess_toiletsPart_title">"I servizi igienici in %s sono accessibili con la sedia a rotelle?"</string>
+    <string name="quest_tactilePaving_title_tram">"Questa fermata di tram ha del pavimento tattile?"</string>
+    <string name="quest_tactilePaving_title_name_tram">"La fermata di tram %s ha del pavimento tattile?"</string>
     <string name="quest_maxweight_title">"Qual è il limite di peso qui?"</string>
     <string name="quest_maxweight_answer_noSign">"Non c'è alcun segnale"</string>
     <string name="quest_maxweight_unusualInput_confirmation_description">"Il peso inserito sembra erroneo. Sei sicuro sia corretto?"</string>
+    <string name="quest_maxweight_answer_other_sign">"Il segnale sembra differente..."</string>
+    <string name="quest_maxweight_unsupported_sign_request_photo">"Vorresti lasciare una nota? Una nota con una foto permetterà a d altri mappatori di occuparsene."</string>
+    <string name="confirmation_authorize_now_note">"Puoi farlo in seguito nel menu impostazioni."</string>
+    <string name="quest_generalFee_title">"C'è un costo per l'ingresso a %s?"</string>
+    <string name="quest_laundrySelfService_title">"Questa lavanderia è self service?"</string>
+    <string name="quest_handrail_title">"Queste scale hanno un corrimano?"</string>
+    <string name="quest_openingHours_no_name_title">"Quali sono gli orari di apertura di questo luogo? (%s)"</string>
+    <string name="about_summary_current_version">"Versione corrente: %s"</string>
+    <string name="quest_postboxRef_title">"Qual è il numero di matricola di questa cassetta postale?"</string>
+    <string name="quest_postboxRef_name_title">"Qual è il numero di matricola di queste %s cassette postali?"</string>
+    <string name="quest_ref_answer_noRef">"Nessun numero di matricola visibile..."</string>
+    <string name="quest_street_side_puzzle_tutorial">"Clicca il punto di domanda e seleziona una risposta per il lato della strada indicato."</string>
+    <string name="quest_recycling_materials_title">"Cosa può essere lasciato qui per la raccolta differenziata?"</string>
+    <string name="quest_recycling_materials_note">"Se può essere lasciato qualche materiale differente da quelli selezionabili, per favore lascia una nota."</string>
+    <string name="quest_recycling_type_batteries">"Batterie"</string>
+    <string name="quest_recycling_type_cans">"Lattine"</string>
+    <string name="quest_recycling_type_clothes">"Abiti"</string>
+    <string name="quest_recycling_type_green_waste">"Rifiuti di giardinaggio"</string>
+    <string name="quest_recycling_type_glass_bottles">"Bottiglie e vasetti in vetro"</string>
+    <string name="quest_recycling_type_glass_bottles_short">"Bottiglie e vasetti"</string>
+    <string name="quest_recycling_type_paper">"Carta"</string>
+    <string name="quest_recycling_type_plastic_generic">"Plastica"</string>
+    <string name="quest_recycling_type_plastic">"Qualsiasi tipo di plastica"</string>
+    <string name="quest_recycling_type_shoes">"Scarpe"</string>
+    <string name="quest_recycling_type_electric_appliances">"Elettrodomestici"</string>
+    <string name="quest_recycling_type_plastic_bottles">"Solo bottiglie di plastica"</string>
+    <string name="quest_recycling_type_plastic_packaging">"Solo imballaggi di plastica"</string>
+    <string name="quest_recycling_type_scrap_metal">"Rottami metallici"</string>
+    <string name="quest_recycling_type_any_glass">"Vetro"</string>
+    <string name="quest_recycling_glass_title">"Possono essere gettate solo bottiglie e vasetti di vetro, o qualsiasi tipo di vetro?"</string>
+    <string name="quest_determineRecyclingGlass_description_any_glass">"Esempi di verto che spesso non è accettato: vetro temprato, finestre, stoviglie di vetro, lampadine o specchi."</string>
+    <string name="about_title_changelog">"Cronologia"</string>
+    <string name="title_whats_new">"Cosa c'è di nuovo?"</string>
+    <string name="about_title_rate">"Valuta questa app"</string>
+    <string name="about_summary_rate">"su Google Play"</string>
+    <string name="about_title_donate">"Fai una donazione"</string>
+    <string name="about_summary_donate">"Mostra il tuo apprezzamento! ❤️"</string>
+    <string name="about_description_donate">"Grazie per aver dato supporto all'app! Per vedere le donazioni attuali e per donare tu stesso, premi sulle rispettive piattaforme:"</string>
+    <string name="quest_religion_for_place_of_worship_name_title">"Quale religione è praticata a %s?"</string>
+    <string name="confirmation_cancel_prev_download_confirmed">"Scansiona qui invece"</string>
+    <string name="confirmation_cancel_prev_download_cancel">"Continua la scansione corrente"</string>
+    <string name="quest_buildingType_garages_description">"Separa gli spazi per proprietari differenti"</string>
+    <string name="quest_tourism_information_title">"Che tipo di informazioni turistiche dà?"</string>
+    <string name="quest_tourism_information_name_title">"Che tipo di informazioni turistiche dà %s?"</string>
+    <string name="quest_tourism_information_office">"Ufficio informazioni turistiche"</string>
+    <string name="quest_tourism_information_board">"Bacheca informazioni"</string>
+    <string name="quest_tourism_information_terminal">"Terminale informazioni"</string>
+    <string name="quest_tourism_information_map">"Mappa"</string>
+    <string name="quest_tourism_information_guidepost">"Cartello"</string>
+    <string name="quest_recycling_materials_answer_waste">"È per rifiuti generici"</string>
+    <string name="quest_recycling_materials_answer_waste_description">"Quindi, questo è un contenitore per qualsiasi rifiuto, come rifiuti domestici o commerciali?"</string>
+    <string name="quest_accepts_cash_title">"%s accetta pagamenti in denaro?"</string>
 </resources>

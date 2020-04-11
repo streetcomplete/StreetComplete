@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.osmapi.map.data.OsmNode
 import de.westnordost.osmapi.map.data.OsmWay
@@ -16,22 +17,20 @@ import javax.inject.Inject
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.QuestGroup
-import de.westnordost.streetcomplete.data.QuestType
-import de.westnordost.streetcomplete.data.QuestTypeRegistry
-import de.westnordost.streetcomplete.data.osm.ElementPointGeometry
+import de.westnordost.streetcomplete.data.*
 import de.westnordost.streetcomplete.data.osm.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
-import de.westnordost.streetcomplete.quests.OsmQuestAnswerListener
-import de.westnordost.streetcomplete.quests.QuestAnswerComponent
 import de.westnordost.streetcomplete.view.ListAdapter
 import kotlinx.android.synthetic.main.fragment_show_quest_forms.*
 import kotlinx.android.synthetic.main.row_quest_display.view.*
 import kotlinx.android.synthetic.main.toolbar.*
+import java.util.*
 
-class ShowQuestFormsActivity : AppCompatActivity(), OsmQuestAnswerListener {
+class ShowQuestFormsActivity : AppCompatActivity(), AbstractQuestAnswerFragment.Listener {
+
     @Inject internal lateinit var questTypeRegistry: QuestTypeRegistry
     @Inject internal lateinit var prefs: SharedPreferences
+
     private val showQuestFormAdapter: ShowQuestFormAdapter = ShowQuestFormAdapter()
 
     init {
@@ -95,11 +94,18 @@ class ShowQuestFormsActivity : AppCompatActivity(), OsmQuestAnswerListener {
         val element = OsmWay(1, 1, mutableListOf(1, 2), tags)
         val elementGeometry = ElementPolylinesGeometry(listOf(listOf(firstPos, secondPos)), centerPos)
 
+        val quest = object : Quest {
+            override var id: Long? = 1L
+            override val center = firstPos
+            override val markerLocations = arrayOf<LatLon>(firstPos)
+            override val geometry = elementGeometry
+            override val type = questType
+            override var status = QuestStatus.NEW
+            override val lastUpdate = Date()
+        }
+
         val f = questType.createForm()
-        val args = QuestAnswerComponent.createArguments(1, QuestGroup.OSM)
-        args.putSerializable(AbstractQuestAnswerFragment.ARG_ELEMENT, element)
-        args.putSerializable(AbstractQuestAnswerFragment.ARG_GEOMETRY, elementGeometry)
-        args.putString(AbstractQuestAnswerFragment.ARG_QUESTTYPE, questType.javaClass.simpleName)
+        val args = AbstractQuestAnswerFragment.createArguments(quest, QuestGroup.OSM, element, 0f, 0f)
         f.arguments = args
 
         questFormContainer.visibility = View.VISIBLE

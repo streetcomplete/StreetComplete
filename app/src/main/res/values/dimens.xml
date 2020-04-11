@@ -10,9 +10,12 @@
     <dimen name="quest_form_horizontal_margin">8dp</dimen>
     <dimen name="quest_form_vertical_margin">8dp</dimen>
 
+    <dimen name="quest_form_horizontal_padding">16dp</dimen>
+    <dimen name="quest_form_vertical_padding">10dp</dimen>
+
     <!-- Quest form offsets -->
     <dimen name="quest_form_leftOffset">0dp</dimen>
-    <dimen name="quest_form_topOffset">50dp</dimen>
+    <dimen name="quest_form_topOffset">0dp</dimen>
     <dimen name="quest_form_rightOffset">0dp</dimen>
     <dimen name="quest_form_bottomOffset">@dimen/quest_form_peekHeight</dimen>
 

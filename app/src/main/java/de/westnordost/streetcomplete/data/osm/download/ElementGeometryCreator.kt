@@ -1,52 +1,69 @@
 package de.westnordost.streetcomplete.data.osm.download
 
 import de.westnordost.osmapi.map.data.*
-import de.westnordost.streetcomplete.data.meta.OsmAreas
 import de.westnordost.streetcomplete.data.osm.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.util.SphericalEarthMath.*
+import de.westnordost.streetcomplete.ktx.isArea
+import de.westnordost.streetcomplete.util.centerPointOfPolygon
+import de.westnordost.streetcomplete.util.centerPointOfPolyline
+import de.westnordost.streetcomplete.util.isRingDefinedClockwise
 import kotlin.collections.ArrayList
 
-class ElementGeometryCreator(private val wayGeometrySource: WayGeometrySource) {
+/** Creates an ElementGeometry from an element and a collection of positions. */
+class ElementGeometryCreator {
 
-    fun create(element: Element): ElementGeometry? = when(element) {
-        is Node -> create(element)
-        is Way -> create(element)
-        is Relation -> create(element)
-        else -> throw IllegalArgumentException()
-    }
-
+    /** Create an ElementPointGeometry for a node. */
     fun create(node: Node) = ElementPointGeometry(node.position)
 
-    fun create(way: Way): ElementGeometry? {
-        val nodePositions = wayGeometrySource.getNodePositions(way.id) ?: return null
-        val polyline = ArrayList(nodePositions)
+    /**
+     * Create an ElementGeometry for a way
+     *
+     * @param way the way to create the geometry for
+     * @param wayGeometry the geometry of the way: A list of positions of its nodes.
+     *
+     * @return an ElementPolygonsGeometry if the way is an area or an ElementPolylinesGeometry
+     *          if the way is a linear feature */
+    fun create(way: Way, wayGeometry: List<LatLon>): ElementGeometry? {
+        val polyline = ArrayList(wayGeometry)
         polyline.eliminateDuplicates()
-        if (polyline.size < 2) return null
+        if (wayGeometry.size < 2) return null
 
-        return if (OsmAreas.isArea(way)) {
+        return if (way.isArea()) {
             /* ElementGeometry considers polygons that are defined clockwise holes, so ensure that
                it is defined CCW here. */
-            if (isRingDefinedClockwise(polyline)) polyline.reverse()
-            ElementPolygonsGeometry(arrayListOf(polyline), centerPointOfPolygon(polyline))
+            if (polyline.isRingDefinedClockwise()) polyline.reverse()
+            ElementPolygonsGeometry(arrayListOf(polyline), polyline.centerPointOfPolygon())
         } else {
-            ElementPolylinesGeometry(arrayListOf(polyline), centerPointOfPolyline(polyline))
+            ElementPolylinesGeometry(arrayListOf(polyline), polyline.centerPointOfPolyline())
         }
     }
 
-    fun create(relation: Relation): ElementGeometry? {
-        return if (OsmAreas.isArea(relation)) {
-            createMultipolygonGeometry(relation)
+    /**
+     * Create an ElementGeometry for a relation
+     *
+     * @param relation the relation to create the geometry for
+     * @param wayGeometries the geometries of the ways that are members of the relation. It is a
+     *                      map of way ids to a list of positions.
+     *
+     * @return an ElementPolygonsGeometry if the relation describes an area or an
+     *         ElementPolylinesGeometry if it describes is a linear feature */
+    fun create(relation: Relation, wayGeometries: Map<Long, List<LatLon>>): ElementGeometry? {
+        return if (relation.isArea()) {
+            createMultipolygonGeometry(relation, wayGeometries)
         } else {
-            createPolylinesGeometry(relation)
+            createPolylinesGeometry(relation, wayGeometries)
         }
     }
 
-    private fun createMultipolygonGeometry(relation: Relation): ElementPolygonsGeometry? {
-        val outer = createNormalizedRingGeometry(relation, "outer", false)
-        val inner = createNormalizedRingGeometry(relation, "inner", true)
+    private fun createMultipolygonGeometry(
+        relation: Relation,
+        wayGeometries: Map<Long, List<LatLon>>
+    ): ElementPolygonsGeometry? {
+
+        val outer = createNormalizedRingGeometry(relation, "outer", false, wayGeometries)
+        val inner = createNormalizedRingGeometry(relation, "inner", true, wayGeometries)
         if (outer.isEmpty()) return null
 
         val rings = ArrayList<ArrayList<LatLon>>()
@@ -55,11 +72,15 @@ class ElementGeometryCreator(private val wayGeometrySource: WayGeometrySource) {
 
         /* only use first ring that is not a hole if there are multiple
            this is the same behavior as Leaflet or Tangram */
-        return ElementPolygonsGeometry(rings, centerPointOfPolygon(outer.first()))
+        return ElementPolygonsGeometry(rings, outer.first().centerPointOfPolygon())
     }
 
-    private fun createPolylinesGeometry(relation: Relation): ElementPolylinesGeometry? {
-        val waysNodePositions = getRelationMemberWaysNodePositions(relation)
+    private fun createPolylinesGeometry(
+        relation: Relation,
+        wayGeometries: Map<Long, List<LatLon>>
+    ): ElementPolylinesGeometry? {
+
+        val waysNodePositions = getRelationMemberWaysNodePositions(relation, wayGeometries)
         val joined = waysNodePositions.joined()
 
         val polylines = joined.ways
@@ -70,30 +91,41 @@ class ElementGeometryCreator(private val wayGeometrySource: WayGeometrySource) {
            so there is no way to find a reasonable "center point". In most cases however, there
            is only one polyline, so let's just take the first one...
            This is the same behavior as Leaflet or Tangram */
-        return ElementPolylinesGeometry(polylines, centerPointOfPolyline(polylines.first()))
+        return ElementPolylinesGeometry(polylines, polylines.first().centerPointOfPolyline())
     }
 
-    private fun createNormalizedRingGeometry(relation: Relation, role: String, clockwise: Boolean): ArrayList<ArrayList<LatLon>> {
-        val waysNodePositions = getRelationMemberWaysNodePositions(relation, role)
+    private fun createNormalizedRingGeometry(
+        relation: Relation,
+        role: String,
+        clockwise: Boolean,
+        wayGeometries: Map<Long, List<LatLon>>
+    ): ArrayList<ArrayList<LatLon>> {
+
+        val waysNodePositions = getRelationMemberWaysNodePositions(relation, role, wayGeometries)
         val ringGeometry = waysNodePositions.joined().rings
         ringGeometry.setOrientation(clockwise)
         return ringGeometry
     }
 
-    private fun getRelationMemberWaysNodePositions(relation: Relation): List<List<LatLon>> {
+    private fun getRelationMemberWaysNodePositions(
+        relation: Relation, wayGeometries: Map<Long, List<LatLon>>
+    ): List<List<LatLon>> {
         return relation.members.filter { it.type == Element.Type.WAY }.mapNotNull {
-            getValidNodePositions(it.ref)
+            getValidNodePositions(wayGeometries[it.ref])
         }
     }
 
-    private fun getRelationMemberWaysNodePositions(relation: Relation, withRole: String): List<List<LatLon>> {
+    private fun getRelationMemberWaysNodePositions(
+        relation: Relation, withRole: String, wayGeometries: Map<Long, List<LatLon>>
+    ): List<List<LatLon>> {
         return relation.members.filter { it.type == Element.Type.WAY && it.role == withRole }.mapNotNull {
-            getValidNodePositions(it.ref)
+            getValidNodePositions(wayGeometries[it.ref])
         }
     }
 
-    private fun getValidNodePositions(wayId: Long): List<LatLon>? {
-        val nodePositions = wayGeometrySource.getNodePositions(wayId) ?: return null
+    private fun getValidNodePositions(wayGeometry: List<LatLon>?): List<LatLon>? {
+        if (wayGeometry == null) return null
+        val nodePositions = ArrayList(wayGeometry)
         nodePositions.eliminateDuplicates()
         return if (nodePositions.size >= 2) nodePositions else null
     }
@@ -102,7 +134,7 @@ class ElementGeometryCreator(private val wayGeometrySource: WayGeometrySource) {
 /** Ensures that all given rings are defined in clockwise/counter-clockwise direction  */
 private fun List<MutableList<LatLon>>.setOrientation(clockwise: Boolean) {
     for (ring in this) {
-        if (isRingDefinedClockwise(ring) != clockwise) {
+        if (ring.isRingDefinedClockwise() != clockwise) {
             ring.reverse()
         }
     }

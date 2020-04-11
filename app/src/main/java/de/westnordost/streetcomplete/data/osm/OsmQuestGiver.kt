@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.data.osm
 
 import android.util.Log
 import de.westnordost.countryboundaries.CountryBoundaries
+import de.westnordost.countryboundaries.isInAny
 
 
 import javax.inject.Inject
@@ -14,7 +15,7 @@ import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryDao
 import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestDao
 import de.westnordost.streetcomplete.data.visiblequests.OrderedVisibleQuestTypesProvider
-import de.westnordost.streetcomplete.util.SphericalEarthMath
+import de.westnordost.streetcomplete.util.enclosingBoundingBox
 import java.util.concurrent.FutureTask
 
 /** Manages creating new quests and removing quests that are no longer applicable for an OSM
@@ -26,8 +27,6 @@ class OsmQuestGiver @Inject constructor(
     private val questTypesProvider: OrderedVisibleQuestTypesProvider,
     private val countryBoundariesFuture: FutureTask<CountryBoundaries>
 ) {
-
-    private val TAG = "OsmQuestGiver"
 
     data class QuestUpdates(val createdQuests: List<OsmQuest>, val removedQuestIds: List<Long>)
 
@@ -49,11 +48,8 @@ class OsmQuestGiver @Inject constructor(
             if (questType !is OsmElementQuestType<*>) continue
 
             val appliesToElement = questType.isApplicableTo(element) ?: continue
-            val countries = questType.enabledForCountries
-            val isEnabledForCountry = !countries.isNoCountries && (countries.isAllCountries || countryBoundariesFuture.get().isInAny(
-                geometry.center.longitude,
-                geometry.center.latitude,
-                countries.exceptions) != countries.isAllExcept)
+            val countries = questType.enabledInCountries
+            val isEnabledForCountry = countryBoundariesFuture.get().isInAny(geometry.center, countries)
 
             val hasQuest = currentQuests.containsKey(questType)
             if (appliesToElement && !hasQuest && !hasNote && isEnabledForCountry) {
@@ -102,7 +98,7 @@ class OsmQuestGiver @Inject constructor(
     private fun hasNoteAt(pos: LatLon): Boolean {
         // note about one meter around the center of an element still count as at this point as to
         // deal with imprecision of the center calculation of geometry (see #1089)
-        val bbox = SphericalEarthMath.enclosingBoundingBox(pos, 1.0)
+        val bbox = pos.enclosingBoundingBox(1.0)
         return osmNoteQuestDb.getAllPositions(bbox).isNotEmpty()
     }
 
@@ -114,5 +110,9 @@ class OsmQuestGiver @Inject constructor(
             result[quest.type] = quest
         }
         return result
+    }
+
+    companion object {
+        private const val TAG = "OsmQuestGiver"
     }
 }
