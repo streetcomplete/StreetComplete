@@ -26,6 +26,7 @@ import kotlinx.android.synthetic.main.row_quest_display.view.*
 import kotlinx.android.synthetic.main.toolbar.*
 import java.util.*
 
+/** activity only used in debug, to show all the different forms for the different quests. */
 class ShowQuestFormsActivity : AppCompatActivity(), AbstractQuestAnswerFragment.Listener {
 
     @Inject internal lateinit var questTypeRegistry: QuestTypeRegistry

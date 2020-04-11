@@ -22,6 +22,7 @@ import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestType
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderList
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeDao
 
+/** Shows a screen in which the user can enable and disable quests as well as re-order them */
 class QuestSelectionFragment
     : Fragment(R.layout.fragment_quest_selection), HasTitle, QuestSelectionAdapter.Listener {
 

@@ -25,6 +25,7 @@ import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
 
+/** Fragment that manages the OAuth 1 authentication process in a webview*/
 class OAuthFragment : Fragment(R.layout.fragment_oauth),
     BackPressedListener,
     HasTitle,

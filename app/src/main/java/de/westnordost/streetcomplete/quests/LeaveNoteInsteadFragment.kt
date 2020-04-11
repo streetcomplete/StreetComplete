@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.quest.QuestGroup
 import kotlinx.android.synthetic.main.form_leave_note.*
 import kotlinx.android.synthetic.main.fragment_quest_answer.*
 
+/** Bottom sheet fragment with which the user can leave a note instead of solving the quest */
 class LeaveNoteInsteadFragment : AbstractCreateNoteFragment(), IsShowingQuestDetails {
 
     interface Listener {

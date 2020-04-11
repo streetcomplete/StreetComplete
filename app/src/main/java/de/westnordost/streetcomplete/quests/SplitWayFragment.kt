@@ -15,7 +15,6 @@ import androidx.annotation.UiThread
 import androidx.appcompat.app.AlertDialog
 import androidx.core.os.bundleOf
 import androidx.core.view.updateLayoutParams
-import androidx.core.view.updateMargins
 import androidx.fragment.app.Fragment
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.map.data.OsmLatLon
@@ -36,6 +35,7 @@ import de.westnordost.streetcomplete.util.distanceTo
 import kotlinx.android.synthetic.main.fragment_split_way.*
 import javax.inject.Inject
 
+/** Fragment that lets the user split an OSM way */
 class SplitWayFragment
     : Fragment(R.layout.fragment_split_way), IsCloseableBottomSheet, IsShowingQuestDetails {
 

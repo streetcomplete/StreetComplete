@@ -19,6 +19,7 @@ import kotlinx.android.synthetic.main.form_leave_note.*
 import kotlinx.android.synthetic.main.fragment_quest_answer.*
 import kotlinx.android.synthetic.main.marker_create_note.*
 
+/** Bottom sheet fragment with which the user can create a new note, including moving the note */
 class CreateNoteFragment : AbstractCreateNoteFragment() {
 
     interface Listener {

@@ -16,6 +16,8 @@ import javax.inject.Singleton
 import kotlin.math.ceil
 import kotlin.math.sqrt
 
+/** From all the quest types, creates and saves a sprite sheet of quest type pin icons, provides
+ *  the scene updates for tangram to access this sprite sheet  */
 @Singleton class TangramQuestSpriteSheet @Inject constructor(
         private val context: Context,
         private val questTypeRegistry: QuestTypeRegistry,

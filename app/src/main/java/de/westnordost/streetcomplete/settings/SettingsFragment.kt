@@ -22,6 +22,7 @@ import de.westnordost.streetcomplete.ktx.toast
 import kotlinx.coroutines.*
 import javax.inject.Inject
 
+/** Shows the settings screen */
 class SettingsFragment : PreferenceFragmentCompat(),
     SharedPreferences.OnSharedPreferenceChangeListener,
     CoroutineScope by CoroutineScope(Dispatchers.Main) {

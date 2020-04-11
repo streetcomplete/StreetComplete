@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.tutorial
 
+import android.annotation.SuppressLint
 import android.content.pm.ActivityInfo
 import android.graphics.drawable.AnimatedVectorDrawable
 import android.os.Build
@@ -17,6 +18,7 @@ import de.westnordost.streetcomplete.ktx.toPx
 import de.westnordost.streetcomplete.location.LocationState
 import kotlinx.android.synthetic.main.fragment_tutorial.*
 
+/** Shows a short tutorial for first-time users */
 class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
 
     private val mainHandler = Handler(Looper.getMainLooper())
@@ -27,6 +29,7 @@ class TutorialFragment : Fragment(R.layout.fragment_tutorial) {
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
+    @SuppressLint("SourceLockedOrientationActivity")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
