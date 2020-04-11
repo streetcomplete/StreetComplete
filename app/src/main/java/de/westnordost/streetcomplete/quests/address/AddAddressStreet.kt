@@ -7,17 +7,17 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.OsmTaggings
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.osmapi.overpass.OverpassMapDataDao
+import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
 import de.westnordost.streetcomplete.data.osm.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.tql.getQuestPrintStatement
 import de.westnordost.streetcomplete.data.osm.tql.toGlobalOverpassBBox
-import de.westnordost.streetcomplete.quests.localized_name.data.PutRoadNameSuggestionsHandler
 import de.westnordost.streetcomplete.quests.localized_name.data.RoadNameSuggestionsDao
+import java.util.regex.Pattern
 
 class AddAddressStreet(
-        private val overpassServer: OverpassMapDataDao,
-        private val roadNameSuggestionsDao: RoadNameSuggestionsDao,
-        private val putRoadNameSuggestionsHandler: PutRoadNameSuggestionsHandler
+        private val overpassServer: OverpassMapDataAndGeometryDao,
+        private val roadNameSuggestionsDao: RoadNameSuggestionsDao
 ) : OsmElementQuestType<AddressStreetAnswer> {
     override val commitMessage = "Add address"
     override val icon = R.drawable.ic_quest_housenumber_street
@@ -30,8 +30,9 @@ class AddAddressStreet(
 
     override fun download(bbox: BoundingBox, handler: (element: Element, geometry: ElementGeometry?) -> Unit): Boolean {
         Log.wtf("aaa", getOverpassQuery(bbox))
-        return overpassServer.getAndHandleQuota(getOverpassQuery(bbox), handler)
-                && overpassServer.getAndHandleQuota(getStreetNameSuggestionsOverpassQuery(bbox),putRoadNameSuggestionsHandler)
+        if (!overpassServer.query(getOverpassQuery(bbox), handler)) return false
+        if (!overpassServer.query(getStreetNameSuggestionsOverpassQuery(bbox), this::putRoadNameSuggestion)) return false
+        return true
     }
 
     private fun getOverpassQuery(bbox: BoundingBox) =
@@ -62,7 +63,29 @@ class AddAddressStreet(
         }
     }
 
+    private fun putRoadNameSuggestion(element: Element, geometry: ElementGeometry?) {
+        if (element.type != Element.Type.WAY) return
+        if (geometry !is ElementPolylinesGeometry) return
+        val namesByLanguage = element.tags?.toRoadNameByLanguage() ?: return
+
+        roadNameSuggestionsDao.putRoad(element.id, namesByLanguage, geometry.polylines.first())
+    }
+
     companion object {
         const val MAX_DIST_FOR_ROAD_NAME_SUGGESTION_IN_METERS = 100.0
     }
+}
+
+/** OSM tags (i.e. name:de=Bäckergang) to map of language code -> name (i.e. de=Bäckergang) */
+private fun Map<String,String>.toRoadNameByLanguage(): Map<String, String>? {
+    val result = mutableMapOf<String,String>()
+    val namePattern = Pattern.compile("name(:(.*))?")
+    for ((key, value) in this) {
+        val m = namePattern.matcher(key)
+        if (m.matches()) {
+            val languageCode = m.group(2) ?: ""
+            result[languageCode] = value
+        }
+    }
+    return if (result.isEmpty()) null else result
 }
