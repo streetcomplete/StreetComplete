@@ -7,8 +7,8 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.OsmTaggings
 import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandler
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.osmapi.overpass.OverpassMapDataDao
+import de.westnordost.streetcomplete.data.osm.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.tql.getQuestPrintStatement
 import de.westnordost.streetcomplete.data.osm.tql.toGlobalOverpassBBox
 import de.westnordost.streetcomplete.quests.localized_name.data.PutRoadNameSuggestionsHandler
@@ -28,7 +28,7 @@ class AddAddressStreet(
 
     override fun isApplicableTo(element: Element): Boolean? = null
 
-    override fun download(bbox: BoundingBox, handler: MapDataWithGeometryHandler): Boolean {
+    override fun download(bbox: BoundingBox, handler: (element: Element, geometry: ElementGeometry?) -> Unit): Boolean {
         Log.wtf("aaa", getOverpassQuery(bbox))
         return overpassServer.getAndHandleQuota(getOverpassQuery(bbox), handler)
                 && overpassServer.getAndHandleQuota(getStreetNameSuggestionsOverpassQuery(bbox),putRoadNameSuggestionsHandler)
