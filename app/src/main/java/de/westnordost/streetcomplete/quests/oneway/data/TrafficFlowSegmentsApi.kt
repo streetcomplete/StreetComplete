@@ -6,7 +6,6 @@ import java.net.URL
 
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.OsmLatLon
-import de.westnordost.streetcomplete.util.StreamUtils
 import org.json.JSONObject
 
 /** Dao for using this API: https://github.com/ENT8R/oneway-data-api  */
@@ -14,7 +13,7 @@ class TrafficFlowSegmentsApi(private val apiUrl: String) {
 
     fun get(bbox: BoundingBox): Map<Long, List<TrafficFlowSegment>> {
         val url = URL("$apiUrl?bbox=${bbox.asLeftBottomRightTopString}")
-        val json = StreamUtils.readToString(url.openConnection().getInputStream())
+        val json = url.openConnection().getInputStream().bufferedReader().use { it.readText() }
         return parse(json)
     }
 
