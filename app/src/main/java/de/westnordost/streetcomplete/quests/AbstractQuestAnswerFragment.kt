@@ -78,7 +78,7 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
         get() {
             val conf = Configuration(resources.configuration)
             conf.setLocale(Locale.ENGLISH)
-            val localizedContext = super.getContext()!!.createConfigurationContext(conf)
+            val localizedContext = super.requireContext().createConfigurationContext(conf)
             return localizedContext.resources
         }
 
@@ -117,7 +117,7 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val args = arguments!!
+        val args = requireArguments()
         questId = args.getLong(ARG_QUEST_ID)
         questGroup = QuestGroup.valueOf(args.getString(ARG_QUEST_GROUP)!!)
         osmElement = args.getSerializable(ARG_ELEMENT) as OsmElement?
@@ -304,11 +304,11 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
         content.setPadding(0, 0, 0, 0)
     }
 
-    protected fun setButtonsView(resourceId: Int): View {
+    protected fun setButtonsView(resourceId: Int) {
         // if other buttons are present, the other answers button should have a weight so that it
         // can be squeezed if there is not enough space for everything
         otherAnswersButton.layoutParams = LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT, 1f)
-        return activity!!.layoutInflater.inflate(resourceId, buttonPanel)
+        activity?.layoutInflater?.inflate(resourceId, buttonPanel)
     }
 
     @AnyThread open fun onMapOrientation(rotation: Float, tilt: Float) {
