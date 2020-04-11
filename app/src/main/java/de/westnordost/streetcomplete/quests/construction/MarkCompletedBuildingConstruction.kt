@@ -34,16 +34,10 @@ open class MarkCompletedBuildingConstruction(private val overpass: OverpassMapDa
     private fun getOverpassQuery(bbox: BoundingBox): String {
         val tagFilter = "building = construction"
 
-        // TODO as soon as all used overpass servers are on 0.7.56, this can be simplified, using "wr"
         return bbox.toGlobalOverpassBBox() + """
-            way[$tagFilter]${isNotInFuture("opening_date")} -> .ways_with_unknown_state;
-            way[$tagFilter]${hasRecentlyBeenEdited(180)} -> .recently_edited_ways;
-            relation[$tagFilter]${isNotInFuture("opening_date")} -> .relations_with_unknown_state;
-            relation[$tagFilter]${hasRecentlyBeenEdited(180)} -> .recently_edited_relations;
-            (
-                (.ways_with_unknown_state; - .recently_edited_ways;);
-                (.relations_with_unknown_state; - .recently_edited_relations;);
-            );
+            wr[$tagFilter]${isNotInFuture("opening_date")} -> .with_unknown_state;
+            wr[$tagFilter]${hasRecentlyBeenEdited(180)} -> .recently_edited;
+            (.with_unknown_state; - .recently_edited;);
         """.trimIndent() + "\n" + getQuestPrintStatement()
     }
 

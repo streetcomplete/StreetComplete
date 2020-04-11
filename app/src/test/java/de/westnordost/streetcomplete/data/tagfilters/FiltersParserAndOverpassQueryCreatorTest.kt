@@ -26,8 +26,9 @@ class FiltersParserAndOverpassQueryCreatorTest {
 
     @Test fun `multiple element types`() {
         check("nodes, ways, relations", "nwr;")
-        check("nodes ,ways", "(node;way;);")
-        check("nodes , ways", "(node;way;);")
+        check("nodes ,ways", "nw;")
+        check("nodes , ways", "nw;")
+        check("relations , ways", "wr;")
     }
 
     @Test fun `any quote`() {
@@ -39,7 +40,7 @@ class FiltersParserAndOverpassQueryCreatorTest {
 
     @Test fun `multiple element types with tag`() {
         check("nodes, ways, relations with shop", "nwr[shop];")
-        check("nodes, ways with shop", "node[shop]->.n1;way[shop]->.w1;(.n1;.w1;);")
+        check("nodes, relations with shop", "node[shop]->.n1;rel[shop]->.r1;(.n1;.r1;);")
     }
 
     @Test fun `whitespace in front is okay`() {
