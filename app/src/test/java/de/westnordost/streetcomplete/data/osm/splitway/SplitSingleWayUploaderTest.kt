@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.splitway
 
+import de.westnordost.streetcomplete.data.MapDataApi
 import de.westnordost.osmapi.common.errors.OsmConflictException
-import de.westnordost.osmapi.map.MapDataDao
 import de.westnordost.osmapi.map.data.*
 import de.westnordost.osmapi.map.data.Element.Type.*
 import de.westnordost.streetcomplete.argumentCaptor
@@ -18,8 +18,8 @@ import org.mockito.ArgumentCaptor
 import org.mockito.Mockito.*
 
 class SplitSingleWayUploaderTest {
-    private val osmDao: MapDataDao = mock()
-    private val uploader = SplitSingleWayUploader(osmDao)
+    private val mapDataApi: MapDataApi = mock()
+    private val uploader = SplitSingleWayUploader(mapDataApi)
 
     private val p = arrayOf(
         OsmLatLon(0.0, 0.0),
@@ -37,18 +37,18 @@ class SplitSingleWayUploaderTest {
     private var way = OsmWay(0,1, mutableListOf(0,1,2,3), null)
         set(value) {
             field = value
-            on(osmDao.getWay(0)).thenReturn(way)
+            on(mapDataApi.getWay(0)).thenReturn(way)
         }
     private val split = SplitAtLinePosition(p[1], p[2], 0.5)
 
     @Before fun setUp() {
-        reset(osmDao)
+        reset(mapDataApi)
         way = OsmWay(0,1, mutableListOf(0,1,2,3), null)
-        on(osmDao.getNodes(any())).then { invocation ->
+        on(mapDataApi.getNodes(any())).then { invocation ->
             val nodeIds = invocation.getArgument(0) as List<Long>
             nodeIds.map { nodeId -> n[nodeId.toInt()] }.shuffled()
         }
-        on(osmDao.getRelationsForWay(0)).thenReturn(listOf())
+        on(mapDataApi.getRelationsForWay(0)).thenReturn(listOf())
     }
 
     @Test(expected = ElementConflictException::class)
@@ -59,19 +59,19 @@ class SplitSingleWayUploaderTest {
 
     @Test(expected = ElementConflictException::class)
     fun `raise conflict if way was deleted`() {
-        on(osmDao.getWay(0)).thenReturn(null)
+        on(mapDataApi.getWay(0)).thenReturn(null)
         doSplit()
     }
 
     @Test(expected = ElementConflictException::class)
     fun `raise conflict if updated way was cut at the start`() {
-        on(osmDao.getWay(0)).thenReturn(updatedWayWithNodes(1,2,3))
+        on(mapDataApi.getWay(0)).thenReturn(updatedWayWithNodes(1,2,3))
         doSplit()
     }
 
     @Test(expected = ElementConflictException::class)
     fun `raise conflict if updated way was cut at the end`() {
-        on(osmDao.getWay(0)).thenReturn(updatedWayWithNodes(0,1,2))
+        on(mapDataApi.getWay(0)).thenReturn(updatedWayWithNodes(0,1,2))
         doSplit()
     }
 
@@ -111,7 +111,7 @@ class SplitSingleWayUploaderTest {
 
     @Test(expected = ChangesetConflictException::class)
     fun `raise changeset conflict on conflict of uploadChanges`() {
-        on(osmDao.uploadChanges(anyLong(), anyList(), any())).thenThrow(OsmConflictException(409, "jo", "ho"))
+        on(mapDataApi.uploadChanges(anyLong(), anyList(), any())).thenThrow(OsmConflictException(409, "jo", "ho"))
         doSplit()
     }
 
@@ -266,7 +266,7 @@ class SplitSingleWayUploaderTest {
     }
 
     @Test fun `insert all way chunks into relation the way is a member of`() {
-        on(osmDao.getRelationsForWay(0)).thenReturn(listOf(
+        on(mapDataApi.getRelationsForWay(0)).thenReturn(listOf(
             OsmRelation(0,1, membersForWays(listOf(0)), null)
         ))
         val elements = doSplit()
@@ -279,7 +279,7 @@ class SplitSingleWayUploaderTest {
     }
 
     @Test fun `insert all way chunks into multiple relations the way is a member of`() {
-        on(osmDao.getRelationsForWay(0)).thenReturn(listOf(
+        on(mapDataApi.getRelationsForWay(0)).thenReturn(listOf(
             OsmRelation(0,1, membersForWays(listOf(0)), null),
             OsmRelation(1,1, membersForWays(listOf(0)), null)
         ))
@@ -297,9 +297,9 @@ class SplitSingleWayUploaderTest {
     }
 
     @Test fun `insert all way chunks multiple times into relation the way is a member of multiple times`() {
-        on(osmDao.getWay(1)).thenReturn(OsmWay(1, 1, listOf(0,5,0), null))
-        on(osmDao.getWay(2)).thenReturn(OsmWay(2, 1, listOf(3,4,3), null))
-        on(osmDao.getRelationsForWay(0)).thenReturn(listOf(
+        on(mapDataApi.getWay(1)).thenReturn(OsmWay(1, 1, listOf(0,5,0), null))
+        on(mapDataApi.getWay(2)).thenReturn(OsmWay(2, 1, listOf(3,4,3), null))
+        on(mapDataApi.getRelationsForWay(0)).thenReturn(listOf(
             OsmRelation(0,1, membersForWays(listOf(0,1,0,2)), null)
         ))
         val elements = doSplit()
@@ -319,7 +319,7 @@ class SplitSingleWayUploaderTest {
     }
 
     @Test fun `all way chunks in updated relations have the same role as the original way`() {
-        on(osmDao.getRelationsForWay(0)).thenReturn(listOf(
+        on(mapDataApi.getRelationsForWay(0)).thenReturn(listOf(
             OsmRelation(0,1, membersForWays(listOf(0), "cool role"), null),
             OsmRelation(1,1, membersForWays(listOf(0), "not so cool role"), null)
         ))
@@ -331,9 +331,9 @@ class SplitSingleWayUploaderTest {
 
     @Test fun `insert way chunks at correct position in the updated relation`() {
         // 4 5 | 0 1 2 3 | 6 7  => 4 5 | 0 1 -1 | -1 2 3 | 6 7
-        on(osmDao.getWay(1)).thenReturn(OsmWay(1, 1, listOf(4,5), null))
-        on(osmDao.getWay(2)).thenReturn(OsmWay(2, 1, listOf(6,7), null))
-        on(osmDao.getRelationsForWay(0)).thenReturn(listOf(
+        on(mapDataApi.getWay(1)).thenReturn(OsmWay(1, 1, listOf(4,5), null))
+        on(mapDataApi.getWay(2)).thenReturn(OsmWay(2, 1, listOf(6,7), null))
+        on(mapDataApi.getRelationsForWay(0)).thenReturn(listOf(
             OsmRelation(0,1, membersForWays(listOf(1,0,2)), null)
         ))
         val elements = doSplit()
@@ -349,9 +349,9 @@ class SplitSingleWayUploaderTest {
         /* while determining the orientation of the way in the relation, the neighbouring ways are
            downloaded and analyzed - if they do not exist anymore, this should not lead to a
            nullpointer exception */
-        on(osmDao.getWay(1)).thenReturn(null)
-        on(osmDao.getWay(2)).thenReturn(null)
-        on(osmDao.getRelationsForWay(0)).thenReturn(listOf(
+        on(mapDataApi.getWay(1)).thenReturn(null)
+        on(mapDataApi.getWay(2)).thenReturn(null)
+        on(mapDataApi.getRelationsForWay(0)).thenReturn(listOf(
             OsmRelation(0,1, membersForWays(listOf(1,0,2)), null)
         ))
         doSplit()
@@ -359,8 +359,8 @@ class SplitSingleWayUploaderTest {
 
     @Test fun `insert way chunks backwards in the updated relation as end of reverse chain`() {
         // 4 3 | 0 1 2 3  =>  4 3 | -1 2 3 | 0 1 -1
-        on(osmDao.getWay(1)).thenReturn(OsmWay(1, 1, listOf(4,3), null))
-        on(osmDao.getRelationsForWay(0)).thenReturn(listOf(
+        on(mapDataApi.getWay(1)).thenReturn(OsmWay(1, 1, listOf(4,3), null))
+        on(mapDataApi.getRelationsForWay(0)).thenReturn(listOf(
             OsmRelation(0,1, membersForWays(listOf(1,0)), null)
         ))
         val elements = doSplit()
@@ -374,8 +374,8 @@ class SplitSingleWayUploaderTest {
 
     @Test fun `ignore non-way relation members when determining way orientation in relation`() {
         // 4 3 | 0 1 2 3  =>  4 3 | -1 2 3 | 0 1 -1
-        on(osmDao.getWay(1)).thenReturn(OsmWay(1, 1, listOf(4,3), null))
-        on(osmDao.getRelationsForWay(0)).thenReturn(listOf(
+        on(mapDataApi.getWay(1)).thenReturn(OsmWay(1, 1, listOf(4,3), null))
+        on(mapDataApi.getRelationsForWay(0)).thenReturn(listOf(
             OsmRelation(0,1, mutableListOf<RelationMember>(
                 OsmRelationMember(1, "", WAY),
                 OsmRelationMember(0, "", NODE),
@@ -396,8 +396,8 @@ class SplitSingleWayUploaderTest {
 
     @Test fun `insert way chunks forwards in the updated relation as end of chain`() {
         // 4 0 | 0 1 2 3  =>  4 0 | 0 1 -1 | -1 2 3
-        on(osmDao.getWay(1)).thenReturn(OsmWay(1, 1, listOf(4,0), null))
-        on(osmDao.getRelationsForWay(0)).thenReturn(listOf(
+        on(mapDataApi.getWay(1)).thenReturn(OsmWay(1, 1, listOf(4,0), null))
+        on(mapDataApi.getRelationsForWay(0)).thenReturn(listOf(
             OsmRelation(0,1, membersForWays(listOf(1,0)), null)
         ))
         val elements = doSplit()
@@ -411,8 +411,8 @@ class SplitSingleWayUploaderTest {
 
     @Test fun `insert way chunks backwards in the updated relation as start of reverse chain`() {
         // 0 1 2 3 | 4 0  =>  -1 2 3 | 0 1 -1 | 4 0
-        on(osmDao.getWay(1)).thenReturn(OsmWay(1, 1, listOf(4,0), null))
-        on(osmDao.getRelationsForWay(0)).thenReturn(listOf(
+        on(mapDataApi.getWay(1)).thenReturn(OsmWay(1, 1, listOf(4,0), null))
+        on(mapDataApi.getRelationsForWay(0)).thenReturn(listOf(
             OsmRelation(0,1, membersForWays(listOf(0,1)), null)
         ))
         val elements = doSplit()
@@ -426,8 +426,8 @@ class SplitSingleWayUploaderTest {
 
     @Test fun `insert way chunks forwards in the updated relation as start of chain`() {
         // 0 1 2 3 | 4 3  =>  0 1 -1 | -1 2 3 | 4 3
-        on(osmDao.getWay(1)).thenReturn(OsmWay(1, 1, listOf(4,3), null))
-        on(osmDao.getRelationsForWay(0)).thenReturn(listOf(
+        on(mapDataApi.getWay(1)).thenReturn(OsmWay(1, 1, listOf(4,3), null))
+        on(mapDataApi.getRelationsForWay(0)).thenReturn(listOf(
             OsmRelation(0,1, membersForWays(listOf(0,1)), null)
         ))
         val elements = doSplit()
@@ -450,8 +450,8 @@ class SplitSingleWayUploaderTest {
     private fun `update a restriction-like relation with split-way and via node`(
         relationType: String, via: String, role: String) {
         val otherRole = if (role == "from") "to" else "from"
-        on(osmDao.getWay(1)).thenReturn(OsmWay(1, 1, listOf(3,4), null))
-        on(osmDao.getRelationsForWay(0)).thenReturn(listOf(
+        on(mapDataApi.getWay(1)).thenReturn(OsmWay(1, 1, listOf(3,4), null))
+        on(mapDataApi.getRelationsForWay(0)).thenReturn(listOf(
             OsmRelation(0,1, mutableListOf<RelationMember>(
                 OsmRelationMember(0, role, WAY),
                 OsmRelationMember(1, otherRole, WAY),
@@ -485,9 +485,9 @@ class SplitSingleWayUploaderTest {
     private fun `update a restriction-like relation with split-way and via way`(
         relationType: String, via: String, role: String) {
         val otherRole = if (role == "from") "to" else "from"
-        on(osmDao.getWay(1)).thenReturn(OsmWay(1, 1, listOf(5,7), null))
-        on(osmDao.getWay(2)).thenReturn(OsmWay(2, 1, listOf(5,4,3), null))
-        on(osmDao.getRelationsForWay(0)).thenReturn(listOf(
+        on(mapDataApi.getWay(1)).thenReturn(OsmWay(1, 1, listOf(5,7), null))
+        on(mapDataApi.getWay(2)).thenReturn(OsmWay(2, 1, listOf(5,4,3), null))
+        on(mapDataApi.getRelationsForWay(0)).thenReturn(listOf(
             OsmRelation(0,1, mutableListOf<RelationMember>(
                 OsmRelationMember(0, role, WAY),
                 OsmRelationMember(1, otherRole, WAY),
@@ -507,11 +507,11 @@ class SplitSingleWayUploaderTest {
     }
 
     @Test fun `update a restriction-like relation with split-way and multiple via ways`() {
-        on(osmDao.getWay(0)).thenReturn(OsmWay(0, 1, listOf(0,1,2,3), null))
-        on(osmDao.getWay(1)).thenReturn(OsmWay(1, 1, listOf(6,7), null))
-        on(osmDao.getWay(2)).thenReturn(OsmWay(2, 1, listOf(4,5,6), null))
-        on(osmDao.getWay(3)).thenReturn(OsmWay(3, 1, listOf(3,4), null))
-        on(osmDao.getRelationsForWay(0)).thenReturn(listOf(
+        on(mapDataApi.getWay(0)).thenReturn(OsmWay(0, 1, listOf(0,1,2,3), null))
+        on(mapDataApi.getWay(1)).thenReturn(OsmWay(1, 1, listOf(6,7), null))
+        on(mapDataApi.getWay(2)).thenReturn(OsmWay(2, 1, listOf(4,5,6), null))
+        on(mapDataApi.getWay(3)).thenReturn(OsmWay(3, 1, listOf(3,4), null))
+        on(mapDataApi.getRelationsForWay(0)).thenReturn(listOf(
             OsmRelation(0,1, mutableListOf<RelationMember>(
                 OsmRelationMember(0, "from", WAY),
                 OsmRelationMember(1, "to", WAY),
@@ -532,7 +532,7 @@ class SplitSingleWayUploaderTest {
     }
 
     @Test fun `no special treatment of restriction relation if the way has another role`() {
-        on(osmDao.getRelationsForWay(0)).thenReturn(listOf(
+        on(mapDataApi.getRelationsForWay(0)).thenReturn(listOf(
             OsmRelation(0,1, mutableListOf<RelationMember>(
                 OsmRelationMember(0, "another role", WAY),
                 OsmRelationMember(1, "from", WAY),
@@ -547,7 +547,7 @@ class SplitSingleWayUploaderTest {
     }
 
     @Test fun `no special treatment of restriction relation if there is no via`() {
-        on(osmDao.getRelationsForWay(0)).thenReturn(listOf(
+        on(mapDataApi.getRelationsForWay(0)).thenReturn(listOf(
             OsmRelation(0,1, mutableListOf<RelationMember>(
                 OsmRelationMember(0, "from", WAY),
                 OsmRelationMember(1, "to", WAY)
@@ -560,7 +560,7 @@ class SplitSingleWayUploaderTest {
     }
 
     @Test fun `no special treatment of restriction relation if from-way does not touch via`() {
-        on(osmDao.getRelationsForWay(0)).thenReturn(listOf(
+        on(mapDataApi.getRelationsForWay(0)).thenReturn(listOf(
             OsmRelation(0,1, mutableListOf<RelationMember>(
                 OsmRelationMember(0, "from", WAY),
                 OsmRelationMember(4, "via", NODE),
@@ -592,7 +592,7 @@ class SplitSingleWayUploaderTest {
     private fun doSplit(vararg splits: SplitPolylineAtPosition = arrayOf(split)) : Elements {
         uploader.upload(0, way, splits.asList())
         val arg: ArgumentCaptor<Iterable<Element>> = argumentCaptor()
-        verify(osmDao).uploadChanges(eq(0), arg.capture(), any())
+        verify(mapDataApi).uploadChanges(eq(0), arg.capture(), any())
         val elements = arg.value.toList()
         for (element in elements) {
             assertTrue(element.isModified || element.isNew )
@@ -623,7 +623,7 @@ class SplitSingleWayUploaderTest {
             relations.associate { relation ->
                 relation.id to relation.members.mapNotNull { member ->
                     if (member.type != WAY) null
-                    else (waysById[member.ref] ?: osmDao.getWay(member.ref)).nodeIds.toList()
+                    else (waysById[member.ref] ?: mapDataApi.getWay(member.ref)).nodeIds.toList()
                 }
             }
     }

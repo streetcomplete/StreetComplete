@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.elementgeometry
 
+import de.westnordost.streetcomplete.data.MapDataApi
 import de.westnordost.osmapi.common.errors.OsmNotFoundException
-import de.westnordost.osmapi.map.MapDataDao
 import de.westnordost.osmapi.map.data.*
 import de.westnordost.osmapi.map.handler.MapDataHandler
 import de.westnordost.streetcomplete.any
@@ -16,14 +16,14 @@ import org.mockito.Mockito.verify
 
 class OsmApiElementGeometryCreatorTest {
 
-    private lateinit var dao: MapDataDao
+    private lateinit var api: MapDataApi
     private lateinit var elementCreator: ElementGeometryCreator
     private lateinit var creator: OsmApiElementGeometryCreator
 
     @Before fun setUp() {
-        dao = mock()
+        api = mock()
         elementCreator = mock()
-        creator = OsmApiElementGeometryCreator(dao, elementCreator)
+        creator = OsmApiElementGeometryCreator(api, elementCreator)
     }
 
     @Test fun `creates for node`() {
@@ -39,7 +39,7 @@ class OsmApiElementGeometryCreatorTest {
             OsmLatLon(2.0, 4.0),
             OsmLatLon(5.0, 6.0)
         )
-        on(dao.getWayComplete(eq(1L), any())).thenAnswer { invocation ->
+        on(api.getWayComplete(eq(1L), any())).thenAnswer { invocation ->
             val handler = (invocation.arguments[1]) as MapDataHandler
             handler.handle(way)
             way.nodeIds.forEachIndexed { i, nodeId ->
@@ -53,7 +53,7 @@ class OsmApiElementGeometryCreatorTest {
 
     @Test fun `returns null for non-existent way`() {
         val way = OsmWay(1L, 1, listOf(1,2,3), null)
-        on(dao.getWayComplete(eq(1L), any())).thenThrow(OsmNotFoundException(404, "", ""))
+        on(api.getWayComplete(eq(1L), any())).thenThrow(OsmNotFoundException(404, "", ""))
         assertNull(creator.create(way))
         verify(elementCreator, never()).create(eq(way), any())
     }
@@ -80,7 +80,7 @@ class OsmApiElementGeometryCreatorTest {
                 OsmLatLon(0.0, -1.0)
             )
         )
-        on(dao.getRelationComplete(eq(1L), any())).thenAnswer { invocation ->
+        on(api.getRelationComplete(eq(1L), any())).thenAnswer { invocation ->
             val handler = (invocation.arguments[1]) as MapDataHandler
             handler.handle(relation)
             for (way in ways) {
@@ -101,7 +101,7 @@ class OsmApiElementGeometryCreatorTest {
             OsmRelationMember(2L, "", Element.Type.WAY),
             OsmRelationMember(1L, "", Element.Type.NODE)
         ), null)
-        on(dao.getRelationComplete(eq(1L), any())).thenThrow(OsmNotFoundException(404, "", ""))
+        on(api.getRelationComplete(eq(1L), any())).thenThrow(OsmNotFoundException(404, "", ""))
         assertNull(creator.create(relation))
         verify(elementCreator, never()).create(eq(relation), any())
     }

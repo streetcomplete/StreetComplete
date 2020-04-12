@@ -11,7 +11,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.OsmModule
+import de.westnordost.streetcomplete.data.osmnotes.OsmNotesModule
 import de.westnordost.streetcomplete.data.quest.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.user.QuestStatisticsDao
 import de.westnordost.streetcomplete.data.user.UserController
@@ -79,7 +79,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     override fun onStart() {
         super.onStart()
         userNameTextView.text = userController.userName
-        val cacheDir = OsmModule.getAvatarsCacheDirectory(requireContext())
+        val cacheDir = OsmNotesModule.getAvatarsCacheDirectory(requireContext())
         val avatarFile = File(cacheDir.toString() + File.separator + userController.userId)
         val avatar = if (avatarFile.exists()) BitmapFactory.decodeFile(avatarFile.path) else anonAvatar
         userAvatarImageView.setImageBitmap(avatar)

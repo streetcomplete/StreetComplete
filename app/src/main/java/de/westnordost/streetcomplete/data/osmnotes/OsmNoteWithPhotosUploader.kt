@@ -1,17 +1,17 @@
 package de.westnordost.streetcomplete.data.osmnotes
 
 import android.util.Log
+import de.westnordost.streetcomplete.data.NotesApi
 import de.westnordost.osmapi.common.errors.OsmConflictException
 import de.westnordost.osmapi.common.errors.OsmNotFoundException
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.notes.Note
-import de.westnordost.osmapi.notes.NotesDao
 import de.westnordost.streetcomplete.data.osm.upload.ConflictException
 import javax.inject.Inject
 
 /** Uploads a new note or a note comment to OSM, with the option to attach a number of photos */
 class OsmNoteWithPhotosUploader @Inject constructor(
-    private val osmDao: NotesDao,
+    private val notesApi: NotesApi,
     private val imageUploader: StreetCompleteImageUploader
 ) {
 
@@ -21,7 +21,7 @@ class OsmNoteWithPhotosUploader @Inject constructor(
      */
     fun create(pos: LatLon, text: String, imagePaths: List<String>?): Note {
         val attachedPhotosText = uploadAndGetAttachedPhotosText(imagePaths)
-        val note = osmDao.create(pos, text + attachedPhotosText)
+        val note = notesApi.create(pos, text + attachedPhotosText)
         if (!imagePaths.isNullOrEmpty()) {
             activateImages(note.id)
         }
@@ -36,7 +36,7 @@ class OsmNoteWithPhotosUploader @Inject constructor(
     fun comment(noteId: Long, text: String, imagePaths: List<String>?): Note {
         try {
             val attachedPhotosText = uploadAndGetAttachedPhotosText(imagePaths)
-            val note = osmDao.comment(noteId, text + attachedPhotosText)
+            val note = notesApi.comment(noteId, text + attachedPhotosText)
             if (!imagePaths.isNullOrEmpty()) {
                 activateImages(note.id)
             }

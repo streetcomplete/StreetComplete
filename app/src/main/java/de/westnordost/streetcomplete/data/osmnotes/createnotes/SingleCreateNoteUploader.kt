@@ -1,9 +1,9 @@
 package de.westnordost.streetcomplete.data.osmnotes.createnotes
 
+import de.westnordost.streetcomplete.data.NotesApi
 import de.westnordost.osmapi.common.SingleElementHandler
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.notes.Note
-import de.westnordost.osmapi.notes.NotesDao
 import de.westnordost.streetcomplete.ApplicationConstants.USER_AGENT
 import de.westnordost.streetcomplete.data.osm.upload.ConflictException
 import de.westnordost.streetcomplete.data.osmnotes.OsmNoteWithPhotosUploader
@@ -14,7 +14,7 @@ import javax.inject.Inject
  *  the same element already exists or not */
 class SingleCreateNoteUploader @Inject constructor(
     private val uploader: OsmNoteWithPhotosUploader,
-    private val notesDao: NotesDao
+    private val notesApi: NotesApi
 ) {
     /** Creates a new note or if a note at this exact position and for this element already exists,
      *  instead adds a comment to the existing note
@@ -50,7 +50,7 @@ class SingleCreateNoteUploader @Inject constructor(
             newNote.position.latitude, newNote.position.longitude
         )
         val hideClosedNoteAfter = 7
-        notesDao.getAll(bbox, handler, 10, hideClosedNoteAfter)
+        notesApi.getAll(bbox, handler, 10, hideClosedNoteAfter)
         return handler.get()
     }
 }

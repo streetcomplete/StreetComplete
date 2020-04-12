@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.data.osmnotes
 
 import android.content.SharedPreferences
 import android.util.Log
+import de.westnordost.streetcomplete.data.NotesApi
 
 import javax.inject.Inject
 
@@ -11,14 +12,13 @@ import de.westnordost.streetcomplete.Prefs
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.notes.Note
 import de.westnordost.osmapi.notes.NoteComment
-import de.westnordost.osmapi.notes.NotesDao
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestController
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestType
 
 /** Takes care of downloading notes, creating quests out of them and persisting them */
 class OsmNotesDownloader @Inject constructor(
-    private val noteServer: NotesDao,
+    private val notesApi: NotesApi,
     private val osmNoteQuestController: OsmNoteQuestController,
     private val preferences: SharedPreferences,
     private val questType: OsmNoteQuestType,
@@ -28,7 +28,7 @@ class OsmNotesDownloader @Inject constructor(
         val quests = ArrayList<OsmNoteQuest>()
         val noteCommentUserIds = HashSet<Long>()
 
-        noteServer.getAll(bbox, { note ->
+        notesApi.getAll(bbox, { note ->
             if (note.comments.isNotEmpty()) { // exclude invalid notes (#1338)
                 val quest = OsmNoteQuest(note, questType)
                 if (shouldMakeNoteClosed(userId, note)) {

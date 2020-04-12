@@ -1,10 +1,10 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
 import android.util.Log
+import de.westnordost.streetcomplete.data.OverpassMapDataApi
 import de.westnordost.osmapi.map.data.*
 import de.westnordost.osmapi.overpass.MapDataWithGeometryHandler
 import de.westnordost.osmapi.overpass.OsmTooManyRequestsException
-import de.westnordost.osmapi.overpass.OverpassMapDataDao
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryCreator
 import javax.inject.Inject
@@ -12,7 +12,7 @@ import javax.inject.Inject
 /** Queries data from the Overpass API and handles quota by suspending the thread until it has
  *  replenished.*/
 class OverpassMapDataAndGeometryApi @Inject constructor(
-    private val dao: OverpassMapDataDao,
+    private val api: OverpassMapDataApi,
     private val elementGeometryCreator: ElementGeometryCreator
 ) {
 
@@ -49,9 +49,9 @@ class OverpassMapDataAndGeometryApi @Inject constructor(
         }
 
         try {
-            dao.queryElementsWithGeometry(query, handler)
+            api.queryElementsWithGeometry(query, handler)
         } catch (e: OsmTooManyRequestsException) {
-            val status = dao.getStatus()
+            val status = api.getStatus()
             if (status.availableSlots == 0) {
                 // apparently sometimes Overpass does not tell the client when the next slot is
                 // available when there is currently no slot available. So let's just wait 60s

@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
+import de.westnordost.streetcomplete.data.OverpassMapDataApi
 import de.westnordost.osmapi.overpass.MapDataWithGeometryParser
 import de.westnordost.osmapi.overpass.OsmTooManyRequestsException
-import de.westnordost.osmapi.overpass.OverpassMapDataDao
 import de.westnordost.osmapi.overpass.OverpassStatus
 import de.westnordost.streetcomplete.any
 import de.westnordost.streetcomplete.mock
@@ -24,7 +24,7 @@ class OverpassMapDataAndGeometryApiTest {
         status.nextAvailableSlotIn = 1
         status.maxAvailableSlots = 2
 
-        val overpass = mock<OverpassMapDataDao>()
+        val overpass = mock<OverpassMapDataApi>()
         on(overpass.getStatus()).thenReturn(status)
         doThrow(OsmTooManyRequestsException::class.java).on(overpass).queryElementsWithGeometry(any(), any())
         val dao = OverpassMapDataAndGeometryApi(overpass, mock())

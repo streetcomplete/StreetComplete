@@ -1,10 +1,10 @@
 package de.westnordost.streetcomplete.data.osmnotes
 
+import de.westnordost.streetcomplete.data.NotesApi
 import de.westnordost.osmapi.common.errors.OsmConflictException
 import de.westnordost.osmapi.common.errors.OsmNotFoundException
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.osmapi.notes.Note
-import de.westnordost.osmapi.notes.NotesDao
 import de.westnordost.streetcomplete.any
 import de.westnordost.streetcomplete.data.osm.upload.ConflictException
 import de.westnordost.streetcomplete.mock
@@ -16,23 +16,23 @@ import org.mockito.Mockito.never
 import org.mockito.Mockito.verify
 
 class OsmNoteWithPhotosUploaderTest {
-    private lateinit var osmDao: NotesDao
+    private lateinit var notesApi: NotesApi
     private lateinit var imageUploader: StreetCompleteImageUploader
     private lateinit var uploader: OsmNoteWithPhotosUploader
 
     @Before fun setUp() {
-        osmDao = mock()
-        on(osmDao.comment(anyLong(), any())).thenReturn(createNote())
-        on(osmDao.create(any(), any())).thenReturn(createNote())
+        notesApi = mock()
+        on(notesApi.comment(anyLong(), any())).thenReturn(createNote())
+        on(notesApi.create(any(), any())).thenReturn(createNote())
         imageUploader = mock()
-        uploader = OsmNoteWithPhotosUploader(osmDao, imageUploader)
+        uploader = OsmNoteWithPhotosUploader(notesApi, imageUploader)
     }
 
     @Test fun `uploads note with no pictures`() {
         val pos = OsmLatLon(1.0, 2.0)
         uploader.create(pos, "blablub", null)
 
-        verify(osmDao).create(pos, "blablub")
+        verify(notesApi).create(pos, "blablub")
         verify(imageUploader, never()).upload(anyList())
         verify(imageUploader, never()).activate(anyLong())
     }
@@ -40,7 +40,7 @@ class OsmNoteWithPhotosUploaderTest {
     @Test fun `uploads comment with no pictures`() {
         uploader.comment(1, "blablub", null)
 
-        verify(osmDao).comment(1, "blablub")
+        verify(notesApi).comment(1, "blablub")
         verify(imageUploader, never()).upload(anyList())
         verify(imageUploader, never()).activate(anyLong())
     }
@@ -53,11 +53,11 @@ class OsmNoteWithPhotosUploaderTest {
         val returnedImagePaths = listOf("never")
 
         on(imageUploader.upload(imagePaths)).thenReturn(returnedImagePaths)
-        on(osmDao.comment(anyLong(), anyString())).thenReturn(returnedNote)
+        on(notesApi.comment(anyLong(), anyString())).thenReturn(returnedNote)
 
         uploader.comment(1, "blablub", imagePaths)
 
-        verify(osmDao).comment(1, "blablub\n\nAttached photo(s):\nnever")
+        verify(notesApi).comment(1, "blablub\n\nAttached photo(s):\nnever")
         verify(imageUploader).activate(returnedNote.id)
     }
 
@@ -70,23 +70,23 @@ class OsmNoteWithPhotosUploaderTest {
         val returnedImagePaths = listOf("never")
 
         on(imageUploader.upload(imagePaths)).thenReturn(returnedImagePaths)
-        on(osmDao.create(any(), anyString())).thenReturn(returnedNote)
+        on(notesApi.create(any(), anyString())).thenReturn(returnedNote)
 
         uploader.create(pos, "blablub", imagePaths)
 
-        verify(osmDao).create(pos, "blablub\n\nAttached photo(s):\nnever")
+        verify(notesApi).create(pos, "blablub\n\nAttached photo(s):\nnever")
         verify(imageUploader).activate(returnedNote.id)
     }
 
     @Test(expected = ConflictException::class)
     fun `not found exception is rethrown as ConflictException`() {
-        on(osmDao.comment(anyLong(), any())).thenThrow(OsmNotFoundException(404, "title", "desc"))
+        on(notesApi.comment(anyLong(), any())).thenThrow(OsmNotFoundException(404, "title", "desc"))
         uploader.comment(1, "bla", null)
     }
 
     @Test(expected = ConflictException::class)
     fun `conflict exception is rethrown as ConflictException`() {
-        on(osmDao.comment(anyLong(), any())).thenThrow(OsmConflictException(409, "title", "desc"))
+        on(notesApi.comment(anyLong(), any())).thenThrow(OsmConflictException(409, "title", "desc"))
         uploader.comment(1, "bla", null)
     }
 

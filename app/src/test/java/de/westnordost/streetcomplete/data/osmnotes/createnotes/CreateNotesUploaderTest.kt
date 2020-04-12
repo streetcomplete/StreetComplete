@@ -1,9 +1,9 @@
 package de.westnordost.streetcomplete.data.osmnotes.createnotes
 
+import de.westnordost.streetcomplete.data.MapDataApi
 import org.junit.Before
 import org.junit.Test
 
-import de.westnordost.osmapi.map.MapDataDao
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.notes.Note
 import de.westnordost.streetcomplete.data.osm.upload.ConflictException
@@ -26,27 +26,27 @@ import java.util.concurrent.atomic.AtomicBoolean
 class CreateNotesUploaderTest {
     private lateinit var createNoteDB: CreateNoteDao
     private lateinit var osmNoteQuestController: OsmNoteQuestController
-    private lateinit var mapDataDao: MapDataDao
+    private lateinit var mapDataApi: MapDataApi
     private lateinit var questType: OsmNoteQuestType
     private lateinit var singleCreateNoteUploader: SingleCreateNoteUploader
 
     private lateinit var uploader: CreateNotesUploader
 
     @Before fun setUp() {
-        mapDataDao = mock()
+        mapDataApi = mock()
         osmNoteQuestController = mock()
         createNoteDB = mock()
         questType = mock()
         singleCreateNoteUploader = mock()
 
-        uploader = CreateNotesUploader(createNoteDB, osmNoteQuestController, mapDataDao, questType,
+        uploader = CreateNotesUploader(createNoteDB, osmNoteQuestController, mapDataApi, questType,
                 singleCreateNoteUploader)
     }
 
     @Test fun `cancel upload works`() {
         val cancelled = AtomicBoolean(true)
         uploader.upload(cancelled)
-        verifyZeroInteractions(createNoteDB, osmNoteQuestController, mapDataDao, questType,
+        verifyZeroInteractions(createNoteDB, osmNoteQuestController, mapDataApi, questType,
             singleCreateNoteUploader)
     }
 
@@ -90,7 +90,7 @@ class CreateNotesUploaderTest {
         val createNote = CreateNote(1, "jo ho", OsmLatLon(1.0, 2.0), null, ElementKey(Element.Type.NODE, 1))
 
         on(createNoteDB.getAll()).thenReturn(listOf(createNote))
-        on(mapDataDao.getNode(anyLong())).thenReturn(null)
+        on(mapDataApi.getNode(anyLong())).thenReturn(null)
 
         uploader.uploadedChangeListener = mock()
         uploader.upload(AtomicBoolean(false))

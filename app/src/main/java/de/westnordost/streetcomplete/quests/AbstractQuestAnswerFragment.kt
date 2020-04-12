@@ -315,7 +315,7 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
         // default empty implementation
     }
 
-    internal class InjectedFields {
+    class InjectedFields {
         @Inject internal lateinit var countryInfos: CountryInfos
         @Inject internal lateinit var questTypeRegistry: QuestTypeRegistry
         @Inject internal lateinit var featureDictionaryFuture: FutureTask<FeatureDictionary>

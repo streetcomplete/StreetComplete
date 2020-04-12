@@ -5,8 +5,8 @@ import android.content.SharedPreferences
 import dagger.Module
 import dagger.Provides
 import de.westnordost.osmapi.OsmConnection
-import de.westnordost.osmapi.user.UserDao
-import de.westnordost.streetcomplete.data.OsmModule
+import de.westnordost.streetcomplete.data.UserApi
+import de.westnordost.streetcomplete.data.osmnotes.OsmNotesModule
 import de.westnordost.streetcomplete.data.user.achievements.*
 import oauth.signpost.OAuthConsumer
 import oauth.signpost.OAuthProvider
@@ -50,7 +50,7 @@ object UserModule {
     /* Don't know why this is necessary, as all information is already given in UserController,
     *  but it is necessary :-/ */
 	@Provides @Singleton fun userController(
-        userDao: UserDao, userStore: UserStore, achievementGiver: AchievementGiver,
+        userApi: UserApi, userStore: UserStore, achievementGiver: AchievementGiver,
         oAuthStore: OAuthStore, userAchievementsDao: UserAchievementsDao,
         userLinksDao: UserLinksDao, @Named("Achievements") achievements: List<Achievement>,
         @Named("Links") links: List<Link>,
@@ -58,8 +58,8 @@ object UserModule {
         context: Context, statisticsDownloader: StatisticsDownloader,
         statisticsDao: QuestStatisticsDao, osmConnection: OsmConnection
     ): UserController = UserController(
-            userDao, oAuthStore, userStore, achievementGiver, userAchievementsDao, userLinksDao,
-            achievements, links, questAliases, OsmModule.getAvatarsCacheDirectory(context),
+            userApi, oAuthStore, userStore, achievementGiver, userAchievementsDao, userLinksDao,
+            achievements, links, questAliases, OsmNotesModule.getAvatarsCacheDirectory(context),
             statisticsDownloader, statisticsDao, osmConnection
         )
 }

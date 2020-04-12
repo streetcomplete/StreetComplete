@@ -1,15 +1,15 @@
 package de.westnordost.streetcomplete.data.osm.elementgeometry
 
+import de.westnordost.streetcomplete.data.MapDataApi
 import de.westnordost.osmapi.common.errors.OsmNotFoundException
 
-import de.westnordost.osmapi.map.MapDataDao
 import de.westnordost.osmapi.map.data.*
 import de.westnordost.osmapi.map.handler.DefaultMapDataHandler
 import javax.inject.Inject
 
 /** Creates the geometry for an element by fetching the necessary geometry data from the OSM API */
 class OsmApiElementGeometryCreator @Inject constructor(
-    private val osmDao: MapDataDao,
+    private val mapDataApi: MapDataApi,
     private val elementCreator: ElementGeometryCreator) {
 
     fun create(element: Element): ElementGeometry? {
@@ -38,7 +38,7 @@ class OsmApiElementGeometryCreator @Inject constructor(
         }
 
         try {
-            osmDao.getWayComplete(wayId, handler)
+            mapDataApi.getWayComplete(wayId, handler)
         } catch (e : OsmNotFoundException) {
             return null
         }
@@ -61,7 +61,7 @@ class OsmApiElementGeometryCreator @Inject constructor(
         }
 
         try {
-            osmDao.getRelationComplete(relationId, handler)
+            mapDataApi.getRelationComplete(relationId, handler)
         } catch (e : OsmNotFoundException) {
             return null
         }

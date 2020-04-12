@@ -5,10 +5,11 @@ import de.westnordost.streetcomplete.ktx.isArea
 import de.westnordost.streetcomplete.util.centerPointOfPolygon
 import de.westnordost.streetcomplete.util.centerPointOfPolyline
 import de.westnordost.streetcomplete.util.isRingDefinedClockwise
+import javax.inject.Inject
 import kotlin.collections.ArrayList
 
 /** Creates an ElementGeometry from an element and a collection of positions. */
-class ElementGeometryCreator {
+class ElementGeometryCreator @Inject constructor() {
 
     /** Create an ElementPointGeometry for a node. */
     fun create(node: Node) = ElementPointGeometry(node.position)

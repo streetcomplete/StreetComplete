@@ -1,11 +1,11 @@
 package de.westnordost.streetcomplete.data.osmnotes.createnotes
 
 import android.util.Log
+import de.westnordost.streetcomplete.data.MapDataApi
 
 import javax.inject.Inject
 
 import de.westnordost.streetcomplete.data.quest.QuestStatus
-import de.westnordost.osmapi.map.MapDataDao
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.notes.Note
 import de.westnordost.streetcomplete.data.osm.upload.ConflictException
@@ -22,7 +22,7 @@ import java.util.concurrent.atomic.AtomicBoolean
 class CreateNotesUploader @Inject constructor(
     private val createNoteDB: CreateNoteDao,
     private val osmNoteQuestController: OsmNoteQuestController,
-    private val mapDataDao: MapDataDao,
+    private val mapDataApi: MapDataApi,
     private val questType: OsmNoteQuestType,
     private val singleCreateNoteUploader: SingleCreateNoteUploader
 ): Uploader {
@@ -87,9 +87,9 @@ class CreateNotesUploader @Inject constructor(
     private fun CreateNote.fetchElement(): Element? {
         val key = elementKey ?: return null
         return when (key.elementType) {
-            Element.Type.NODE -> mapDataDao.getNode(key.elementId)
-            Element.Type.WAY -> mapDataDao.getWay(key.elementId)
-            Element.Type.RELATION -> mapDataDao.getRelation(key.elementId)
+            Element.Type.NODE -> mapDataApi.getNode(key.elementId)
+            Element.Type.WAY -> mapDataApi.getWay(key.elementId)
+            Element.Type.RELATION -> mapDataApi.getRelation(key.elementId)
         }
     }
 

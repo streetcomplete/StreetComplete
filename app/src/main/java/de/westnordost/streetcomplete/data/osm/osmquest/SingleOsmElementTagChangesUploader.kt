@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.data.osm.osmquest
 
+import de.westnordost.streetcomplete.data.MapDataApi
 import javax.inject.Inject
 import de.westnordost.osmapi.common.errors.OsmConflictException
-import de.westnordost.osmapi.map.MapDataDao
 import de.westnordost.osmapi.map.data.*
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.upload.*
@@ -13,7 +13,7 @@ import java.net.HttpURLConnection.HTTP_CONFLICT
 
 /** Uploads the changes made for one quest
  *  Returns the element that has been updated or throws a ConflictException */
-class SingleOsmElementTagChangesUploader @Inject constructor(private val osmDao: MapDataDao) {
+class SingleOsmElementTagChangesUploader @Inject constructor(private val mapDataApi: MapDataApi) {
 
     fun upload(changesetId: Long, quest: HasElementTagChanges, dbElement: Element): Element {
         var element = dbElement
@@ -33,7 +33,7 @@ class SingleOsmElementTagChangesUploader @Inject constructor(private val osmDao:
                 if (element.version < 0)
                     throw OsmConflictException(HTTP_CONFLICT, "Conflict", "Invalid element version")
 
-                osmDao.uploadChanges(changesetId, setOf(elementWithChangesApplied), handler)
+                mapDataApi.uploadChanges(changesetId, setOf(elementWithChangesApplied), handler)
 
             } catch (e: OsmConflictException) {
                 if (handlingConflict) {
@@ -72,9 +72,9 @@ class SingleOsmElementTagChangesUploader @Inject constructor(private val osmDao:
 
     private fun Element.fetchUpdated() =
         when (this) {
-            is Node -> osmDao.getNode(id)
-            is Way -> osmDao.getWay(id)
-            is Relation -> osmDao.getRelation(id)
+            is Node -> mapDataApi.getNode(id)
+            is Way -> mapDataApi.getWay(id)
+            is Relation -> mapDataApi.getRelation(id)
             else -> null
         }
 }

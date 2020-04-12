@@ -1,12 +1,12 @@
 package de.westnordost.streetcomplete.data.osm.osmquest
 
+import de.westnordost.streetcomplete.data.MapDataApi
 import de.westnordost.osmapi.common.Handler
 import org.junit.Before
 import org.junit.Test
 
 
 import de.westnordost.osmapi.common.errors.OsmConflictException
-import de.westnordost.osmapi.map.MapDataDao
 import de.westnordost.osmapi.map.changes.DiffElement
 import de.westnordost.osmapi.map.data.*
 import de.westnordost.osmapi.map.data.Element.Type.*
@@ -29,7 +29,7 @@ import org.mockito.invocation.InvocationOnMock
 
 class SingleOsmElementTagChangesUploaderTest {
     private lateinit var uploader: SingleOsmElementTagChangesUploader
-    private lateinit var osmDao: MapDataDao
+    private lateinit var mapDataApi: MapDataApi
     private lateinit var quest: HasElementTagChanges
 
     private val nodeId: Long = 5
@@ -37,13 +37,13 @@ class SingleOsmElementTagChangesUploaderTest {
     private val node: Node = OsmNode(nodeId, 1, pos, mutableMapOf())
 
     @Before fun setUp() {
-        osmDao = mock()
+        mapDataApi = mock()
 
         quest = mock()
         on(quest.changes).thenReturn(changes(StringMapEntryAdd("a key","a value")))
         on(quest.isApplicableTo(any())).thenReturn(true)
 
-        uploader = SingleOsmElementTagChangesUploader(osmDao)
+        uploader = SingleOsmElementTagChangesUploader(mapDataApi)
     }
 
     @Test fun `applies changes and uploads element`() {
@@ -60,7 +60,7 @@ class SingleOsmElementTagChangesUploaderTest {
         on(quest.changes).thenReturn(changes(StringMapEntryAdd("a key","a value")))
 
         val newNode = createNode(2, mapOf("another key" to "another value"))
-        on(osmDao.getNode(nodeId)).thenReturn(newNode)
+        on(mapDataApi.getNode(nodeId)).thenReturn(newNode)
         reportConflictOnFirstUploadButThenUploadSuccessfully(newNode)
 
         uploader.upload(0L, quest, node)
@@ -75,7 +75,7 @@ class SingleOsmElementTagChangesUploaderTest {
     @Test fun `handles a conflict caused by negative version of element`() {
         on(quest.changes).thenReturn(changes(StringMapEntryAdd("a key","a value")))
 
-        on(osmDao.getNode(nodeId)).thenReturn(createNode(1))
+        on(mapDataApi.getNode(nodeId)).thenReturn(createNode(1))
         willUploadSuccessfully(node)
 
         uploader.upload(0L, quest, createNode(-1))
@@ -88,7 +88,7 @@ class SingleOsmElementTagChangesUploaderTest {
     @Test(expected = ElementDeletedException::class)
     fun `raise conflict when element was deleted`() {
         reportConflictOnUpload()
-        on(osmDao.getNode(nodeId)).thenReturn(null)
+        on(mapDataApi.getNode(nodeId)).thenReturn(null)
 
         uploader.upload(0L, quest, node)
     }
@@ -99,7 +99,7 @@ class SingleOsmElementTagChangesUploaderTest {
         on(quest.changes).thenReturn(changes(StringMapEntryAdd("key","123")))
 
         reportConflictOnUpload()
-        on(osmDao.getNode(nodeId)).thenReturn(createNode(2, mapOf("key" to "abc")))
+        on(mapDataApi.getNode(nodeId)).thenReturn(createNode(2, mapOf("key" to "abc")))
 
         uploader.upload(0L, quest, node)
     }
@@ -114,7 +114,7 @@ class SingleOsmElementTagChangesUploaderTest {
     @Test(expected = ElementConflictException::class)
     fun `raise conflict when the updated element is no longer applicable to the quest`() {
         reportConflictOnUpload()
-        on(osmDao.getNode(nodeId)).thenReturn(createNode(2))
+        on(mapDataApi.getNode(nodeId)).thenReturn(createNode(2))
         on(quest.isApplicableTo(any())).thenReturn(false)
 
         uploader.upload(0L, quest, node)
@@ -122,7 +122,7 @@ class SingleOsmElementTagChangesUploaderTest {
 
     @Test fun `do not raise conflict when the quest is no longer applicable but is ignored by quest`() {
         val newNode = createNode(2)
-        on(osmDao.getNode(nodeId)).thenReturn(newNode)
+        on(mapDataApi.getNode(nodeId)).thenReturn(newNode)
         on(quest.isApplicableTo(any())).thenReturn(false)
         reportConflictOnFirstUploadButThenUploadSuccessfully(newNode)
 
@@ -141,7 +141,7 @@ class SingleOsmElementTagChangesUploaderTest {
         val old = OsmNode(0, 0, OsmLatLon(51.4777, 0.0), mutableMapOf())
         val new = OsmNode(0, 1, OsmLatLon(51.4780, 0.0), mutableMapOf())
         reportConflictOnUpload()
-        on(osmDao.getNode(old.id)).thenReturn(new)
+        on(mapDataApi.getNode(old.id)).thenReturn(new)
 
         uploader.upload(0L, quest, old)
     }
@@ -151,7 +151,7 @@ class SingleOsmElementTagChangesUploaderTest {
         val old = OsmWay(0, 0, listOf(1,2), mutableMapOf())
         val new = OsmWay(0, 1, listOf(4,1,2), mutableMapOf())
         reportConflictOnUpload()
-        on(osmDao.getWay(old.id)).thenReturn(new)
+        on(mapDataApi.getWay(old.id)).thenReturn(new)
 
         uploader.upload(0L, quest, old)
     }
@@ -161,7 +161,7 @@ class SingleOsmElementTagChangesUploaderTest {
         val old = OsmWay(0, 0, listOf(1,2), mutableMapOf())
         val new = OsmWay(0, 1, listOf(1,2,3), mutableMapOf())
         reportConflictOnUpload()
-        on(osmDao.getWay(old.id)).thenReturn(new)
+        on(mapDataApi.getWay(old.id)).thenReturn(new)
 
         uploader.upload(0L, quest, old)
     }
@@ -171,7 +171,7 @@ class SingleOsmElementTagChangesUploaderTest {
         val old = OsmWay(0, 0, listOf(1,2,3), mutableMapOf())
         val new = OsmWay(0, 1, listOf(2,3), mutableMapOf())
         reportConflictOnUpload()
-        on(osmDao.getWay(old.id)).thenReturn(new)
+        on(mapDataApi.getWay(old.id)).thenReturn(new)
 
         uploader.upload(0L, quest, old)
     }
@@ -181,7 +181,7 @@ class SingleOsmElementTagChangesUploaderTest {
         val old = OsmWay(0, 0, listOf(1,2,3), mutableMapOf())
         val new = OsmWay(0, 1, listOf(1,2), mutableMapOf())
         reportConflictOnUpload()
-        on(osmDao.getWay(old.id)).thenReturn(new)
+        on(mapDataApi.getWay(old.id)).thenReturn(new)
 
         uploader.upload(0L, quest, old)
     }
@@ -191,7 +191,7 @@ class SingleOsmElementTagChangesUploaderTest {
         val old = OsmRelation(0, 0, listOf(OsmRelationMember(0, "outer", WAY)), mutableMapOf())
         val new = OsmRelation(0, 1, listOf(OsmRelationMember(0, "inner", WAY)), mutableMapOf())
         reportConflictOnUpload()
-        on(osmDao.getRelation(old.id)).thenReturn(new)
+        on(mapDataApi.getRelation(old.id)).thenReturn(new)
 
         uploader.upload(0L, quest, old)
     }
@@ -199,7 +199,7 @@ class SingleOsmElementTagChangesUploaderTest {
     @Test fun `do not raise conflict when the updated way was extended not at the ends`() {
         val old = OsmWay(0, 0, listOf(1,2,3), mutableMapOf())
         val new = OsmWay(0, 1, listOf(1,2,4,5,6,3), mutableMapOf())
-        on(osmDao.getWay(old.id)).thenReturn(new)
+        on(mapDataApi.getWay(old.id)).thenReturn(new)
         reportConflictOnFirstUploadButThenUploadSuccessfully(new)
 
         uploader.upload(0L, quest, old)
@@ -209,17 +209,17 @@ class SingleOsmElementTagChangesUploaderTest {
     fun `do not catch a changeset conflict exception`() {
         // OSM Dao returns an element with the same version as in the database
         reportConflictOnUpload()
-        on(osmDao.getNode(anyLong())).thenReturn(node)
+        on(mapDataApi.getNode(anyLong())).thenReturn(node)
 
         uploader.upload(0L, quest, node)
     }
 
     @Test(expected = ElementConflictException::class)
     fun `raise runtime exception if API continues to report conflict`() {
-        on(osmDao.getNode(anyLong())).thenReturn(createNode(2), createNode(3))
+        on(mapDataApi.getNode(anyLong())).thenReturn(createNode(2), createNode(3))
 
         doThrow(OsmConflictException::class.java, OsmConflictException::class.java)
-            .on(osmDao).uploadChanges(anyLong(), any(), any())
+            .on(mapDataApi).uploadChanges(anyLong(), any(), any())
 
         uploader.upload(0L, quest, node)
     }
@@ -227,16 +227,16 @@ class SingleOsmElementTagChangesUploaderTest {
     /* shortcuts for mocking */
 
     private fun reportConflictOnUpload() {
-        doThrow(OsmConflictException::class.java).on(osmDao).uploadChanges(anyLong(), any(), any())
+        doThrow(OsmConflictException::class.java).on(mapDataApi).uploadChanges(anyLong(), any(), any())
     }
 
     private fun willUploadSuccessfully(e: Element) {
-        doAnswer(handleDiffElement(e)).on(osmDao).uploadChanges(eq(0L), any(), any())
+        doAnswer(handleDiffElement(e)).on(mapDataApi).uploadChanges(eq(0L), any(), any())
     }
 
     private fun reportConflictOnFirstUploadButThenUploadSuccessfully(e: Element) {
         doThrow(OsmConflictException::class.java).doAnswer(handleDiffElement(e))
-            .on(osmDao).uploadChanges(anyLong(), any(), any())
+            .on(mapDataApi).uploadChanges(anyLong(), any(), any())
     }
 
     private fun changes(vararg change: StringMapEntryChange) = StringMapChanges(change.toList())
@@ -246,7 +246,7 @@ class SingleOsmElementTagChangesUploaderTest {
 
     private fun getUploadedElement(calls: Int = 1): Element {
         val elementsArg: ArgumentCaptor<Iterable<Element>> = argumentCaptor()
-        verify(osmDao, times(calls)).uploadChanges(eq(0L), elementsArg.capture(), any())
+        verify(mapDataApi, times(calls)).uploadChanges(eq(0L), elementsArg.capture(), any())
         val elements = elementsArg.value.toList()
         assertEquals(1, elements.size)
         val element = elements.single()

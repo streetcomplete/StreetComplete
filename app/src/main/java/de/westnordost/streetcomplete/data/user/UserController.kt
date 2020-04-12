@@ -2,11 +2,11 @@ package de.westnordost.streetcomplete.data.user
 
 import android.util.Log
 import de.westnordost.osmapi.OsmConnection
+import de.westnordost.streetcomplete.data.PermissionsApi
+import de.westnordost.streetcomplete.data.UserApi
 import de.westnordost.osmapi.common.Iso8601CompatibleDateFormat
 import de.westnordost.osmapi.user.Permission
-import de.westnordost.osmapi.user.PermissionsDao
-import de.westnordost.osmapi.user.UserDao
-import de.westnordost.streetcomplete.data.OsmModule
+import de.westnordost.streetcomplete.data.OsmApiModule
 import de.westnordost.streetcomplete.data.user.achievements.*
 import de.westnordost.streetcomplete.ktx.saveToFile
 import kotlinx.coroutines.Dispatchers
@@ -21,19 +21,19 @@ import javax.inject.Named
 import javax.inject.Singleton
 
 @Singleton class UserController @Inject constructor(
-        private val userDao: UserDao,
-        private val oAuthStore: OAuthStore,
-        private val userStore: UserStore,
-        private val achievementGiver: AchievementGiver,
-        private val userAchievementsDao: UserAchievementsDao,
-        private val userLinksDao: UserLinksDao,
-        @Named("Achievements") achievements: List<Achievement>,
-        @Named("Links") links: List<Link>,
-        @Named("QuestAliases") private val questAliases: List<Pair<String, String>>,
-        private val avatarCacheDir: File,
-        private val statisticsDownloader: StatisticsDownloader,
-        private val statisticsDao: QuestStatisticsDao,
-        private val osmConnection: OsmConnection
+    private val userApi: UserApi,
+    private val oAuthStore: OAuthStore,
+    private val userStore: UserStore,
+    private val achievementGiver: AchievementGiver,
+    private val userAchievementsDao: UserAchievementsDao,
+    private val userLinksDao: UserLinksDao,
+    @Named("Achievements") achievements: List<Achievement>,
+    @Named("Links") links: List<Link>,
+    @Named("QuestAliases") private val questAliases: List<Pair<String, String>>,
+    private val avatarCacheDir: File,
+    private val statisticsDownloader: StatisticsDownloader,
+    private val statisticsDao: QuestStatisticsDao,
+    private val osmConnection: OsmConnection
 ) {
     private val listeners: MutableList<UserLoginStatusListener> = CopyOnWriteArrayList()
 
@@ -80,7 +80,7 @@ import javax.inject.Singleton
 
     suspend fun updateUser() {
         withContext(Dispatchers.IO) {
-            val userDetails = userDao.getMine()
+            val userDetails = userApi.getMine()
             userStore.setDetails(userDetails)
             downloadAvatar(userDetails.profileImageUrl, userDetails.id)
             syncStatistics(userDetails.id)
@@ -123,8 +123,8 @@ import javax.inject.Singleton
 
     suspend fun hasRequiredPermissions(consumer: OAuthConsumer): Boolean {
         return withContext(Dispatchers.IO) {
-            val permissionDao = PermissionsDao(OsmModule.osmConnection(consumer))
-            permissionDao.get().containsAll(REQUIRED_OSM_PERMISSIONS)
+            val permissionsApi = PermissionsApi( OsmApiModule.osmConnection(consumer))
+            permissionsApi.get().containsAll(REQUIRED_OSM_PERMISSIONS)
         }
     }
 

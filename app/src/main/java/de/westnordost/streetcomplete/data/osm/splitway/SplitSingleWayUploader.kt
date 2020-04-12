@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.data.osm.splitway
 
+import de.westnordost.streetcomplete.data.MapDataApi
 import de.westnordost.osmapi.common.errors.OsmConflictException
 import de.westnordost.osmapi.common.errors.OsmNotFoundException
-import de.westnordost.osmapi.map.MapDataDao
 import de.westnordost.osmapi.map.data.*
 import javax.inject.Inject
 import de.westnordost.osmapi.map.data.Element.Type.*
@@ -14,7 +14,7 @@ import kotlin.math.sign
 
 /** Uploads one split way
  *  Returns only the ways that have been updated or throws a ConflictException */
-class SplitSingleWayUploader @Inject constructor(private val osmDao: MapDataDao)  {
+class SplitSingleWayUploader @Inject constructor(private val mapDataApi: MapDataApi)  {
 
     fun upload(changesetId: Long, way: Way, splits: List<SplitPolylineAtPosition>): List<Way> {
         val updatedWay = way.fetchUpdated()
@@ -54,7 +54,7 @@ class SplitSingleWayUploader @Inject constructor(private val osmDao: MapDataDao)
         uploadElements.addAll(splitWayAtIndices(updatedWay, splitAtIndices))
         val handler = UpdateElementsHandler()
         try {
-            osmDao.uploadChanges(changesetId, uploadElements, handler)
+            mapDataApi.uploadChanges(changesetId, uploadElements, handler)
         } catch (e: OsmConflictException) {
             throw ChangesetConflictException(e.message, e)
         }
@@ -171,7 +171,7 @@ class SplitSingleWayUploader @Inject constructor(private val osmDao: MapDataDao)
 
     private fun Way.fetchNodes(): List<Node> {
         try {
-            val nodesMap = osmDao.getNodes(nodeIds).associateBy { node -> node.id }
+            val nodesMap = mapDataApi.getNodes(nodeIds).associateBy { node -> node.id }
             // the fetched nodes must be returned ordered in the way
             return nodeIds.map { nodeId -> nodesMap.getValue(nodeId) }
         } catch (e: OsmNotFoundException) {
@@ -179,21 +179,21 @@ class SplitSingleWayUploader @Inject constructor(private val osmDao: MapDataDao)
         }
     }
 
-    private fun Way.fetchUpdated(): Way? = osmDao.getWay(id)
+    private fun Way.fetchUpdated(): Way? = mapDataApi.getWay(id)
 
-    private fun Way.fetchParentRelations() = osmDao.getRelationsForWay(id)
+    private fun Way.fetchParentRelations() = mapDataApi.getRelationsForWay(id)
 
     /** returns null if the relation is not ordered, false if oriented backwards, true if oriented forward */
     private fun Way.isOrientedForwardInOrderedRelation(relation: Relation, indexInRelation: Int): Boolean? {
         val wayIdBefore = relation.members.findPrevious(indexInRelation) { it.type == WAY }?.ref
-        val wayBefore = wayIdBefore?.let { osmDao.getWay(it) }
+        val wayBefore = wayIdBefore?.let { mapDataApi.getWay(it) }
         if (wayBefore != null) {
             if (isAfterWayInChain(wayBefore)) return true
             if (isBeforeWayInChain(wayBefore)) return false
         }
 
         val wayIdAfter = relation.members.findNext(indexInRelation+1) { it.type == WAY }?.ref
-        val wayAfter = wayIdAfter?.let { osmDao.getWay(it) }
+        val wayAfter = wayIdAfter?.let { mapDataApi.getWay(it) }
         if (wayAfter != null) {
             if (isBeforeWayInChain(wayAfter)) return true
             if (isAfterWayInChain(wayAfter)) return false
@@ -209,7 +209,7 @@ class SplitSingleWayUploader @Inject constructor(private val osmDao: MapDataDao)
             if (via.type == NODE) {
                 nodeIds.add(via.ref)
             } else if (via.type == WAY) {
-                val way = osmDao.getWay(via.ref)
+                val way = mapDataApi.getWay(via.ref)
                 if (way != null) nodeIds.addAll(way.nodeIds.firstAndLast())
             }
         }

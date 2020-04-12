@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.data.osmnotes
 
 import android.annotation.SuppressLint
 import android.util.Log
-import de.westnordost.osmapi.user.UserDao
+import de.westnordost.streetcomplete.data.UserApi
 import de.westnordost.streetcomplete.ktx.saveToFile
 import java.io.File
 import java.io.IOException
@@ -12,7 +12,7 @@ import javax.inject.Named
 
 /** Downloads and stores the OSM avatars of users */
 class OsmAvatarsDownloader @Inject constructor(
-    private val userDao: UserDao,
+    private val userApi: UserApi,
     @Named("AvatarsCacheDirectory") private val cacheDir: File
 ) {
 
@@ -43,7 +43,7 @@ class OsmAvatarsDownloader @Inject constructor(
         @SuppressLint("UseSparseArrays")
         val userAvatars = HashMap<Long, String>()
         for (userId in userIds) {
-            userDao.get(userId)?.profileImageUrl?.let {
+            userApi.get(userId)?.profileImageUrl?.let {
                 userAvatars[userId] = it
             }
         }

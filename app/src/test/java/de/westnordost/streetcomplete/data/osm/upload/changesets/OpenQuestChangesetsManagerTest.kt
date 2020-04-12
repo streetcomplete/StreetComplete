@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.upload.changesets
 
 import android.content.SharedPreferences
-import de.westnordost.osmapi.map.MapDataDao
+import de.westnordost.streetcomplete.data.MapDataApi
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.ApplicationConstants
@@ -21,7 +21,7 @@ import java.util.*
 class OpenQuestChangesetsManagerTest {
 
     private lateinit var questType: OsmElementQuestType<*>
-    private lateinit var osmDao: MapDataDao
+    private lateinit var mapDataApi: MapDataApi
     private lateinit var openChangesetsDB: OpenChangesetsDao
     private lateinit var changesetAutoCloser: ChangesetAutoCloser
     private lateinit var manager: OpenQuestChangesetsManager
@@ -29,20 +29,20 @@ class OpenQuestChangesetsManagerTest {
 
     @Before fun setUp() {
         questType = TestQuestType()
-        osmDao = mock()
+        mapDataApi = mock()
         openChangesetsDB = mock()
         changesetAutoCloser = mock()
         prefs = mock()
-        manager = OpenQuestChangesetsManager(osmDao, openChangesetsDB, changesetAutoCloser, prefs)
+        manager = OpenQuestChangesetsManager(mapDataApi, openChangesetsDB, changesetAutoCloser, prefs)
     }
 
     @Test fun `create new changeset if none exists`() {
         on(openChangesetsDB.get(any(), any())).thenReturn(null)
-        on(osmDao.openChangeset(any())).thenReturn(123L)
+        on(mapDataApi.openChangeset(any())).thenReturn(123L)
 
         assertEquals(123L, manager.getOrCreateChangeset(questType, "my source"))
 
-        verify(osmDao).openChangeset(any())
+        verify(mapDataApi).openChangeset(any())
         verify(openChangesetsDB).put(any())
     }
 
@@ -51,7 +51,7 @@ class OpenQuestChangesetsManagerTest {
 
         assertEquals(123L, manager.getOrCreateChangeset(questType, "my source"))
 
-        verify(osmDao, never()).openChangeset(any())
+        verify(mapDataApi, never()).openChangeset(any())
     }
 
     @Test fun `create correct changeset tags`() {
@@ -63,7 +63,7 @@ class OpenQuestChangesetsManagerTest {
 
         Locale.setDefault(locale)
 
-        verify(osmDao).openChangeset(mapOf(
+        verify(mapDataApi).openChangeset(mapOf(
             "source" to "my source",
             "created_by" to ApplicationConstants.USER_AGENT,
             "comment" to "test me",

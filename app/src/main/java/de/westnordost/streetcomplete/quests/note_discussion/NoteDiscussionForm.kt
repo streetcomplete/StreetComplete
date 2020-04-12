@@ -27,7 +27,7 @@ import de.westnordost.streetcomplete.view.ListAdapter
 
 import android.text.format.DateUtils.MINUTE_IN_MILLIS
 import de.westnordost.osmapi.user.User
-import de.westnordost.streetcomplete.data.OsmModule
+import de.westnordost.streetcomplete.data.osmnotes.OsmNotesModule
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestController
 import kotlinx.android.synthetic.main.fragment_quest_answer.*
 import kotlinx.android.synthetic.main.quest_buttonpanel_note_discussion.*
@@ -155,7 +155,7 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment<NoteAnswer>() {
         }
 
         private val User.avatar: Bitmap? get() {
-            val cacheDir = OsmModule.getAvatarsCacheDirectory(requireContext())
+            val cacheDir = OsmNotesModule.getAvatarsCacheDirectory(requireContext())
             val file = File(cacheDir.toString() + File.separator + id)
             return if (file.exists()) BitmapFactory.decodeFile(file.path) else null
         }

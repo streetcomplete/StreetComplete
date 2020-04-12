@@ -1,11 +1,11 @@
 package de.westnordost.streetcomplete.data.osmnotes.createnotes
 
+import de.westnordost.streetcomplete.data.NotesApi
 import de.westnordost.osmapi.common.Handler
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.osmapi.notes.Note
 import de.westnordost.osmapi.notes.NoteComment
-import de.westnordost.osmapi.notes.NotesDao
 import de.westnordost.streetcomplete.ApplicationConstants.USER_AGENT
 import de.westnordost.streetcomplete.any
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
@@ -21,13 +21,13 @@ import java.util.*
 
 class SingleCreateNoteUploaderTest {
     private lateinit var osmNoteUploader: OsmNoteWithPhotosUploader
-    private lateinit var notesDao: NotesDao
+    private lateinit var notesApi: NotesApi
     private lateinit var uploader: SingleCreateNoteUploader
 
     @Before fun setUp() {
-        notesDao = mock()
+        notesApi = mock()
         osmNoteUploader = mock()
-        uploader = SingleCreateNoteUploader(osmNoteUploader, notesDao)
+        uploader = SingleCreateNoteUploader(osmNoteUploader, notesApi)
     }
 
     @Test fun `upload createNote on existing note will comment on existing note`() {
@@ -54,8 +54,8 @@ class SingleCreateNoteUploaderTest {
 
         uploader.upload(createNote)
 
-        verify(notesDao).getAll(any(),any(),anyInt(),anyInt())
-        verifyNoMoreInteractions(notesDao)
+        verify(notesApi).getAll(any(),any(),anyInt(),anyInt())
+        verifyNoMoreInteractions(notesApi)
     }
 
     @Test fun `upload createNote with no associated element works`() {
@@ -107,7 +107,7 @@ class SingleCreateNoteUploaderTest {
     private fun setUpExistingNote(note: Note) {
         doAnswer { invocation ->
             (invocation.arguments[1] as Handler<Note>).handle(note)
-        }.on(notesDao).getAll(any(),any(),anyInt(),anyInt())
+        }.on(notesApi).getAll(any(),any(),anyInt(),anyInt())
     }
 
     private fun newNote(fitsTo: CreateNote?): Note {

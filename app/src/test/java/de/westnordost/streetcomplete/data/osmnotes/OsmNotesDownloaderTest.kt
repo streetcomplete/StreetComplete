@@ -1,12 +1,12 @@
 package de.westnordost.streetcomplete.data.osmnotes
 
 import android.content.SharedPreferences
+import de.westnordost.streetcomplete.data.NotesApi
 import de.westnordost.osmapi.common.Handler
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.osmapi.notes.Note
 import de.westnordost.osmapi.notes.NoteComment
-import de.westnordost.osmapi.notes.NotesDao
 import de.westnordost.osmapi.user.User
 import de.westnordost.streetcomplete.any
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestController
@@ -19,13 +19,13 @@ import org.mockito.Mockito.verify
 import java.util.*
 
 class OsmNotesDownloaderTest {
-    private lateinit var notesServer: NotesDao
+    private lateinit var notesApi: NotesApi
     private lateinit var osmNoteQuestController: OsmNoteQuestController
     private lateinit var preferences: SharedPreferences
     private lateinit var avatarsDownloader: OsmAvatarsDownloader
 
     @Before fun setUp() {
-        notesServer = mock()
+        notesApi = mock()
         osmNoteQuestController = mock()
         on(osmNoteQuestController.replaceInBBox(any(), any())).thenReturn(OsmNoteQuestController.UpdateResult(0,0,0))
 
@@ -50,8 +50,8 @@ class OsmNotesDownloaderTest {
             }
         ))
 
-        val noteServer = TestListBasedNotesDao(listOf(note1))
-        val dl = OsmNotesDownloader(noteServer, osmNoteQuestController, preferences, OsmNoteQuestType(), avatarsDownloader)
+        val noteApi = TestListBasedNotesApi(listOf(note1))
+        val dl = OsmNotesDownloader(noteApi, osmNoteQuestController, preferences, OsmNoteQuestType(), avatarsDownloader)
         dl.download(BoundingBox(0.0, 0.0, 1.0, 1.0), 0, 1000)
 
         verify(avatarsDownloader).download(setOf(54, 13))
@@ -72,7 +72,7 @@ private fun createANote(id: Long): Note {
     return note
 }
 
-private class TestListBasedNotesDao(val notes: List<Note>) :  NotesDao(null) {
+private class TestListBasedNotesApi(val notes: List<Note>) :  NotesApi(null) {
     override fun getAll(bounds: BoundingBox, handler: Handler<Note>, limit: Int, hideClosedNoteAfter: Int) {
         for (note in notes) {
             handler.handle(note)
