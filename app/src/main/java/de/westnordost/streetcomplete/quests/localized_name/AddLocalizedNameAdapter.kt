@@ -30,7 +30,8 @@ class AddLocalizedNameAdapter(
     private val languages: List<String>,
     private val abbreviationsByLocale: AbbreviationsByLocale?,
     private val localizedNameSuggestions: List<MutableMap<String, String>>?,
-    private val addLanguageButton: View
+    private val addLanguageButton: View,
+    private val defaultName: String = ""
 ) : RecyclerView.Adapter<AddLocalizedNameAdapter.ViewHolder>() {
 
     var localizedNames: MutableList<LocalizedName>
@@ -40,7 +41,7 @@ class AddLocalizedNameAdapter(
     init {
         localizedNames = initialLocalizedNames.toMutableList()
         if (localizedNames.isEmpty()) {
-            localizedNames.add(LocalizedName(languages[0], ""))
+            localizedNames.add(LocalizedName(languages[0], defaultName))
         }
         putDefaultLocalizedNameSuggestion()
         addLanguageButton.setOnClickListener { v ->
@@ -210,7 +211,7 @@ class AddLocalizedNameAdapter(
                 override fun afterTextChanged(s: Editable) {
                     val name = s.toString()
                     localizedName.name = name
-                    if (name.isEmpty()) {
+                    if (name.isEmpty() || name == defaultName) {
                         val hasSuggestions = !getLocalizedNameSuggestionsByLanguageCode(localizedName.languageCode).isEmpty()
                         buttonNameSuggestions.visibility = if (hasSuggestions) View.VISIBLE else View.GONE
                     } else {
@@ -280,10 +281,11 @@ class AddLocalizedNameAdapter(
         private fun updateNameSuggestions() {
             val localizedNameSuggestionsMap = getLocalizedNameSuggestionsByLanguageCode(localizedName.languageCode)
 
-            val nameInputNotEmpty = autoCorrectInput.text.toString().trim().isNotEmpty()
-            val hasNoNameSuggestions = localizedNameSuggestionsMap.isEmpty()
+            val nameInputEmpty = autoCorrectInput.text.toString().trim().isEmpty()
+            val nameIsDefault = autoCorrectInput.text.toString() == defaultName
+            val hasNameSuggestions = localizedNameSuggestionsMap.isNotEmpty()
             buttonNameSuggestions.visibility =
-                    if (hasNoNameSuggestions || nameInputNotEmpty) View.GONE else View.VISIBLE
+                    if ((nameInputEmpty || nameIsDefault) && hasNameSuggestions) View.VISIBLE else View.GONE
 
             buttonNameSuggestions.setOnClickListener { v ->
                 showNameSuggestionsMenu(v, localizedNameSuggestionsMap) { selection ->

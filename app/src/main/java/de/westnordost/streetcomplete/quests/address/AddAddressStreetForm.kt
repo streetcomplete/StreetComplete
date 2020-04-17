@@ -14,6 +14,7 @@ import de.westnordost.streetcomplete.data.osm.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.quests.LastPickedValuesStore
 import de.westnordost.streetcomplete.quests.localized_name.AAddLocalizedNameForm
 import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.quests.localized_name.AddLocalizedNameAdapter
@@ -39,6 +40,10 @@ class AddAddressStreetForm : AAddLocalizedNameForm<AddressStreetAnswer>() {
             }
         }
 
+        // TODO, not sure if I should be saving all the names (is there every going to be more than one?)
+        favs.add(javaClass.simpleName,
+                names.first().name, max = 1)
+
         confirmPossibleAbbreviationsIfAny(possibleAbbreviations) {
             if(isPlaceName) {
                 applyAnswer(PlaceName(names))
@@ -57,14 +62,21 @@ class AddAddressStreetForm : AAddLocalizedNameForm<AddressStreetAnswer>() {
     @Inject
     internal lateinit var roadNameSuggestionsDao: RoadNameSuggestionsDao
 
+    @Inject internal lateinit var favs: LastPickedValuesStore<String>
+
     init {
         Injector.instance.applicationComponent.inject(this)
     }
 
     override fun setupNameAdapter(data: List<LocalizedName>, addLanguageButton: View): AddLocalizedNameAdapter {
+
+        val lastPickedNames = favs.get(javaClass.simpleName)
+        val defaultName = if (lastPickedNames.isEmpty()) {""} else {lastPickedNames.first}
+
         return AddLocalizedNameAdapter(
                 data, activity!!, getPossibleStreetsignLanguages(),
-                abbreviationsByLocale, getRoadNameSuggestions(), addLanguageButton
+                abbreviationsByLocale, getRoadNameSuggestions(), addLanguageButton,
+                defaultName
         )
     }
 
