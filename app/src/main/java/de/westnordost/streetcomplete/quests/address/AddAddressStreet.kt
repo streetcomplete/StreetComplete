@@ -57,9 +57,19 @@ class AddAddressStreet(
         out body geom;""".trimIndent()
 
     override fun applyAnswerTo(answer: AddressStreetAnswer, changes: StringMapChangesBuilder) {
+        var key = ""
         when(answer){
-            is StreetName -> {changes.add("addr:street", answer.name)}
-            is PlaceName -> {changes.add("addr:place", answer.name)}
+            is StreetName -> {key = "addr:street"}
+            is PlaceName -> {key = "addr:place"}
+        }
+        //TODO: can we actually get addr:street/place:langcode here, and if so,
+        // should we polute OSM with this?
+        for ((languageCode, name) in answer.localizedNames) {
+            if (languageCode.isEmpty()) {
+                changes.addOrModify(key, name)
+            } else {
+                changes.addOrModify("$key:$languageCode", name)
+            }
         }
     }
 
