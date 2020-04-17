@@ -27,6 +27,7 @@ import javax.inject.Inject
 class AddAddressStreetForm : AAddLocalizedNameForm<AddressStreetAnswer>() {
     private var textField: EditText? = null
     private var isPlaceName = false
+    private var defaultName = ""
 
     override fun onClickOk(names: List<LocalizedName>) {
         val possibleAbbreviations = LinkedList<String>()
@@ -66,12 +67,11 @@ class AddAddressStreetForm : AAddLocalizedNameForm<AddressStreetAnswer>() {
 
     init {
         Injector.instance.applicationComponent.inject(this)
+        val lastPickedNames = favs.get(javaClass.simpleName)
+        defaultName = if (lastPickedNames.isEmpty()) {""} else {lastPickedNames.first}
     }
 
     override fun setupNameAdapter(data: List<LocalizedName>, addLanguageButton: View): AddLocalizedNameAdapter {
-
-        val lastPickedNames = favs.get(javaClass.simpleName)
-        val defaultName = if (lastPickedNames.isEmpty()) {""} else {lastPickedNames.first}
 
         return AddLocalizedNameAdapter(
                 data, activity!!, getPossibleStreetsignLanguages(),
@@ -103,6 +103,19 @@ class AddAddressStreetForm : AAddLocalizedNameForm<AddressStreetAnswer>() {
         }
 
 
+    }
+
+    override fun isRejectingClose() : Boolean {
+        // if the form is complete, we will reject close, unless it is still has only the default name
+        if (isFormComplete()) {
+            if (adapter.localizedNames.size == 1 && adapter.localizedNames.first().name == defaultName) {
+                return false
+            } else {
+                return true
+            }
+        } else {
+            return false
+        }
     }
 
     private fun switchToPlaceName() {
