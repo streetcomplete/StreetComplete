@@ -24,6 +24,11 @@ class AddAddressStreet(
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_address_street_title
 
+    override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> {
+        val housenumber = tags["addr:housenumber"]
+        return if (housenumber != null) arrayOf(housenumber) else arrayOf()
+    }
+
     override fun createForm() = AddAddressStreetForm()
 
     override fun isApplicableTo(element: Element): Boolean? = null
