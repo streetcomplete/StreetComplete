@@ -19,7 +19,6 @@ import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.quests.localized_name.AddLocalizedNameAdapter
 import de.westnordost.streetcomplete.quests.localized_name.LocalizedName
 import de.westnordost.streetcomplete.quests.localized_name.data.RoadNameSuggestionsDao
-import de.westnordost.streetcomplete.util.Serializer
 import de.westnordost.streetcomplete.util.TextChangedWatcher
 import java.util.*
 import javax.inject.Inject
@@ -27,14 +26,6 @@ import javax.inject.Inject
 class AddAddressStreetForm : AAddLocalizedNameForm<AddressStreetAnswer>() {
     private var textField: EditText? = null
     private var isPlaceName = false
-
-    private val serializer: Serializer
-
-    init {
-        val fields = InjectedFields()
-        Injector.instance.applicationComponent.inject(fields)
-        serializer = fields.serializer
-    }
 
     override fun onClickOk(names: List<LocalizedName>) {
         val possibleAbbreviations = LinkedList<String>()
@@ -68,12 +59,6 @@ class AddAddressStreetForm : AAddLocalizedNameForm<AddressStreetAnswer>() {
 
     init {
         Injector.instance.applicationComponent.inject(this)
-    }
-
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        val serializedName = serializer.toBytes(textField!!.text.toString())
-        outState.putByteArray(NAMES_DATA, serializedName)
     }
 
     override fun setupNameAdapter(data: List<LocalizedName>, addLanguageButton: View): AddLocalizedNameAdapter {
@@ -140,10 +125,6 @@ class AddAddressStreetForm : AAddLocalizedNameForm<AddressStreetAnswer>() {
             }
         }
         textField!!.addTextChangedListener(TextChangedWatcher { checkIsFormComplete() })
-    }
-
-    internal class InjectedFields {
-        @Inject internal lateinit var serializer: Serializer
     }
 
     companion object {
