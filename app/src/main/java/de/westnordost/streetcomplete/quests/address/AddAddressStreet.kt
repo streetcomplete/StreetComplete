@@ -19,7 +19,7 @@ class AddAddressStreet(
         private val overpassServer: OverpassMapDataAndGeometryDao,
         private val roadNameSuggestionsDao: RoadNameSuggestionsDao
 ) : OsmElementQuestType<AddressStreetAnswer> {
-    override val commitMessage = "Add address"
+    override val commitMessage = "Add street/place names to address"
     override val icon = R.drawable.ic_quest_housenumber_street
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_address_street_title
