@@ -82,7 +82,9 @@ class AddAddressStreet(
     }
 
     companion object {
-        const val MAX_DIST_FOR_ROAD_NAME_SUGGESTION_IN_METERS = 100.0
+        //TODO: this only appears to pick up nodes, so street-name suggestions don't appear
+        // in the middle of a long straight-stretch. There might need to be a better way.
+        const val MAX_DIST_FOR_ROAD_NAME_SUGGESTION_IN_METERS = 500.0
     }
 }
 
