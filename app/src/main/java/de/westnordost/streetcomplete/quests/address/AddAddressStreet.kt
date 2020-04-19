@@ -34,7 +34,6 @@ class AddAddressStreet(
     override fun isApplicableTo(element: Element): Boolean? = null
 
     override fun download(bbox: BoundingBox, handler: (element: Element, geometry: ElementGeometry?) -> Unit): Boolean {
-        Log.wtf("aaa", getOverpassQuery(bbox))
         if (!overpassServer.query(getOverpassQuery(bbox), handler)) return false
         if (!overpassServer.query(getStreetNameSuggestionsOverpassQuery(bbox), this::putRoadNameSuggestion)) return false
         return true
