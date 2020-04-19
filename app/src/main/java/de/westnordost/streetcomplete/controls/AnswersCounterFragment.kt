@@ -41,6 +41,9 @@ class AnswersCounterFragment : Fragment(R.layout.fragment_answers_counter),
         override fun onAddedOne(questType: String) {
             launch(Dispatchers.Main) { answersCounterView.uploadedCount++ }
         }
+        override fun onSubtractedOne(questType: String) {
+            launch(Dispatchers.Main) { answersCounterView.uploadedCount-- }
+        }
         override fun onReplacedAll() {
             launch(Dispatchers.Main) { updateCount() }
         }
