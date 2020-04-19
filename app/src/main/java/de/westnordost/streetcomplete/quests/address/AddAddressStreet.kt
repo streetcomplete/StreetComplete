@@ -62,10 +62,9 @@ class AddAddressStreet(
         out body geom;""".trimIndent()
 
     override fun applyAnswerTo(answer: AddressStreetAnswer, changes: StringMapChangesBuilder) {
-        var key = ""
-        when(answer){
-            is StreetName -> {key = "addr:street"}
-            is PlaceName -> {key = "addr:place"}
+        val key = when(answer) {
+            is StreetName -> "addr:street"
+            is PlaceName -> "addr:place"
         }
         //TODO: can we actually get addr:street/place:langcode here, and if so,
         // should we polute OSM with this?
