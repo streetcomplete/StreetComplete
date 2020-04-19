@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryDao
 import de.westnordost.streetcomplete.data.osm.mapdata.MergedElementDao
 import de.westnordost.streetcomplete.data.osm.upload.changesets.OpenQuestChangesetsManager
 import de.westnordost.streetcomplete.data.osm.upload.OsmInChangesetsUploader
+import de.westnordost.streetcomplete.data.user.StatisticsUpdater
 import java.util.*
 import java.util.concurrent.atomic.AtomicBoolean
 
@@ -20,7 +21,8 @@ class OsmQuestsUploader @Inject constructor(
         questGiver: OsmQuestGiver,
         osmApiElementGeometryCreator: OsmApiElementGeometryCreator,
         private val osmQuestController: OsmQuestController,
-        private val singleChangeUploader: SingleOsmElementTagChangesUploader
+        private val singleChangeUploader: SingleOsmElementTagChangesUploader,
+        private val statisticsUpdater: StatisticsUpdater
 ) : OsmInChangesetsUploader<OsmQuest>(elementDB, elementGeometryDB, changesetManager, questGiver,
     osmApiElementGeometryCreator) {
 
@@ -37,6 +39,7 @@ class OsmQuestsUploader @Inject constructor(
 
     override fun onUploadSuccessful(quest: OsmQuest) {
         osmQuestController.success(quest)
+        statisticsUpdater.addOne(quest.osmElementQuestType.javaClass.simpleName)
         Log.d(TAG, "Uploaded osm quest ${quest.toLogString()}")
     }
 

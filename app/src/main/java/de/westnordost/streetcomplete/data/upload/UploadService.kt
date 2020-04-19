@@ -16,7 +16,6 @@ import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
-import de.westnordost.streetcomplete.data.user.StatisticsUpdater
 import de.westnordost.streetcomplete.data.user.UserController
 import de.westnordost.streetcomplete.util.enclosingTile
 
@@ -27,14 +26,12 @@ class UploadService : IntentService(TAG) {
     @Inject internal lateinit var versionIsBannedChecker: VersionIsBannedChecker
     @Inject internal lateinit var userController: UserController
     @Inject internal lateinit var downloadedTilesDB: DownloadedTilesDao
-    @Inject internal lateinit var statisticsUpdater: StatisticsUpdater
 
     private val binder = Interface()
 
     // listeners
     private val uploadedChangeRelay = object : OnUploadedChangeListener {
         override fun onUploaded(questType: String, at: LatLon) {
-            statisticsUpdater.addOne(questType)
             progressListener?.onProgress(true)
         }
 

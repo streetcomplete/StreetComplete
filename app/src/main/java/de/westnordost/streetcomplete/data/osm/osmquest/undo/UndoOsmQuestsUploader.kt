@@ -11,6 +11,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MergedElementDao
 import de.westnordost.streetcomplete.data.osm.upload.changesets.OpenQuestChangesetsManager
 import de.westnordost.streetcomplete.data.osm.upload.OsmInChangesetsUploader
 import de.westnordost.streetcomplete.data.osm.osmquest.SingleOsmElementTagChangesUploader
+import de.westnordost.streetcomplete.data.user.StatisticsUpdater
 import java.util.*
 import java.util.concurrent.atomic.AtomicBoolean
 
@@ -22,7 +23,8 @@ class UndoOsmQuestsUploader @Inject constructor(
         questGiver: OsmQuestGiver,
         osmApiElementGeometryCreator: OsmApiElementGeometryCreator,
         private val undoQuestDB: UndoOsmQuestDao,
-        private val singleChangeUploader: SingleOsmElementTagChangesUploader
+        private val singleChangeUploader: SingleOsmElementTagChangesUploader,
+        private val statisticsUpdater: StatisticsUpdater
 ) : OsmInChangesetsUploader<UndoOsmQuest>(elementDB, elementGeometryDB, changesetManager, questGiver,
     osmApiElementGeometryCreator) {
 
@@ -39,6 +41,7 @@ class UndoOsmQuestsUploader @Inject constructor(
 
     override fun onUploadSuccessful(quest: UndoOsmQuest) {
         undoQuestDB.delete(quest.id!!)
+        statisticsUpdater.subtractOne(quest.osmElementQuestType.javaClass.simpleName)
         Log.d(TAG, "Uploaded undo osm quest ${quest.toLogString()}")
 
     }

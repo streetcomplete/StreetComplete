@@ -18,6 +18,7 @@ class QuestStatisticsDao @Inject constructor(private val dbHelper: SQLiteOpenHel
 
     interface Listener {
         fun onAddedOne(questType: String)
+        fun onSubtractedOne(questType: String)
         fun onReplacedAll()
     }
 
@@ -60,6 +61,11 @@ class QuestStatisticsDao @Inject constructor(private val dbHelper: SQLiteOpenHel
         // then increase by one
         db.execSQL("UPDATE $NAME SET $SUCCEEDED = $SUCCEEDED + 1 WHERE $QUEST_TYPE = ?", arrayOf(questType))
         listeners.forEach { it.onAddedOne(questType) }
+    }
+
+    fun subtractOne(questType: String) {
+        db.execSQL("UPDATE $NAME SET $SUCCEEDED = $SUCCEEDED - 1 WHERE $QUEST_TYPE = ?", arrayOf(questType))
+        listeners.forEach { it.onSubtractedOne(questType) }
     }
 
     fun getAmount(questType: String): Int {

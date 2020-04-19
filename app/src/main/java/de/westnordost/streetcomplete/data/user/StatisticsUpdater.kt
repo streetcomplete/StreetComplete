@@ -10,6 +10,18 @@ class StatisticsUpdater @Inject constructor(
         private val userStore: UserStore
 ){
     fun addOne(questType: String) {
+        updateDaysActive()
+
+        questStatisticsDao.addOne(questType)
+        achievementGiver.updateQuestTypeAchievements(questType)
+    }
+
+    fun subtractOne(questType: String) {
+        updateDaysActive()
+        questStatisticsDao.subtractOne(questType)
+    }
+
+    private fun updateDaysActive() {
         val now = Date()
         val cal1 = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
         cal1.time = userStore.lastStatisticsUpdate
@@ -20,9 +32,6 @@ class StatisticsUpdater @Inject constructor(
             userStore.daysActive++
             achievementGiver.updateDaysActiveAchievements()
         }
-
-        questStatisticsDao.addOne(questType)
-        achievementGiver.updateQuestTypeAchievements(questType)
     }
 }
 

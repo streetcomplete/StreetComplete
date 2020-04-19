@@ -43,6 +43,16 @@ class QuestStatisticsDaoTest : ApplicationDbTestCase() {
         assertEquals(3, dao.getTotalAmount())
     }
 
+    @Test fun subtract() {
+        val listener = mock(QuestStatisticsDao.Listener::class.java)
+        dao.addListener(listener)
+        dao.addOne(ONE)
+        verify(listener).onAddedOne(ONE)
+        dao.subtractOne(ONE)
+        verify(listener).onSubtractedOne(ONE)
+        assertEquals(0, dao.getAmount(ONE))
+    }
+
     @Test fun getAmountOfSeveral() {
         dao.addOne(ONE)
         dao.addOne(ONE)
