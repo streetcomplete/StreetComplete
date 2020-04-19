@@ -46,28 +46,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // TODO remove before release
-        testDataButton.setOnClickListener {
-            for (achievement in AchievementsModule.achievements()) {
-                userAchievementDao.put(achievement.id, 1)
-            }
-            for (link in AchievementsModule.links()) {
-                userLinksDao.add(link.id)
-            }
-            questStatisticsDao.replaceAll(mapOf(
-                "AddRoadName" to 12,
-                "AddBusStopName" to 38,
-                "MarkCompletedHighwayConstruction" to 1,
-                "AddCycleway" to 21,
-                "AddParkingFee" to 4,
-                "AddTactilePavingCrosswalk" to 8,
-                "AddRoofShape" to 17,
-                "AddCyclewaySegregation" to 4,
-                "AddSelfServiceLaundry" to 1,
-                "AddWheelchairAccessBusiness" to 121
-            ))
-        }
-
         logoutButton.setOnClickListener {
             userController.logOut()
         }
