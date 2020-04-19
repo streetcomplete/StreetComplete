@@ -65,8 +65,6 @@ class AddAddressStreet(
             is StreetName -> "addr:street"
             is PlaceName -> "addr:place"
         }
-        //TODO: can we actually get addr:street/place:langcode here, and if so,
-        // should we polute OSM with this?
         for ((languageCode, name) in answer.localizedNames) {
             if (languageCode.isEmpty()) {
                 changes.addOrModify(key, name)
