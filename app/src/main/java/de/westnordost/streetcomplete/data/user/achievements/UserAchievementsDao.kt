@@ -11,7 +11,7 @@ import javax.inject.Inject
 
 import de.westnordost.streetcomplete.ktx.*
 
-/** Stores which achievements have been unlocked by the user and at which level */
+/** Stores which achievement ids have been unlocked by the user and at which level */
 class UserAchievementsDao @Inject constructor(private val dbHelper: SQLiteOpenHelper) {
     private val db get() = dbHelper.writableDatabase
 

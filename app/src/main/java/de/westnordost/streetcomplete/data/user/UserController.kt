@@ -27,8 +27,6 @@ import javax.inject.Singleton
     private val achievementGiver: AchievementGiver,
     private val userAchievementsDao: UserAchievementsDao,
     private val userLinksDao: UserLinksDao,
-    @Named("Achievements") achievements: List<Achievement>,
-    @Named("Links") links: List<Link>,
     @Named("QuestAliases") private val questAliases: List<Pair<String, String>>,
     private val avatarCacheDir: File,
     private val statisticsDownloader: StatisticsDownloader,
@@ -37,8 +35,7 @@ import javax.inject.Singleton
 ) {
     private val listeners: MutableList<UserLoginStatusListener> = CopyOnWriteArrayList()
 
-    private val achievementsById = achievements.associateBy { it.id }
-    private val linksById = links.associateBy { it.id }
+
 
     private val lastActivityDateFormat = Iso8601CompatibleDateFormat("yyyy-MM-dd HH:mm:ss z")
 
@@ -65,17 +62,6 @@ import javax.inject.Singleton
         userAchievementsDao.clear()
         userLinksDao.clear()
         onLoggedOut()
-    }
-
-    fun getAchievements(): List<Pair<Achievement, Int>> {
-        return userAchievementsDao.getAll().mapNotNull {
-            val achievement = achievementsById[it.key]
-            if (achievement != null) achievement to it.value else null
-        }
-    }
-
-    fun getLinks(): List<Link> {
-        return userLinksDao.getAll().mapNotNull { linksById[it] }
     }
 
     suspend fun updateUser() {

@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.user.achievements.Achievement
-import de.westnordost.streetcomplete.data.user.UserController
+import de.westnordost.streetcomplete.data.user.achievements.UserAchievementsSource
 import de.westnordost.streetcomplete.ktx.awaitLayout
 import de.westnordost.streetcomplete.ktx.toDp
 import de.westnordost.streetcomplete.view.CircularOutlineProvider
@@ -30,7 +30,7 @@ import javax.inject.Inject
 class AchievementsFragment : Fragment(R.layout.fragment_achievements),
     CoroutineScope by CoroutineScope(Dispatchers.Main) {
 
-    @Inject internal lateinit var userController: UserController
+    @Inject internal lateinit var userAchievementsSource: UserAchievementsSource
 
     init {
         Injector.instance.applicationComponent.inject(this)
@@ -61,7 +61,7 @@ class AchievementsFragment : Fragment(R.layout.fragment_achievements),
             achievementsList.layoutManager = layoutManager
             achievementsList.addItemDecoration(GridLayoutSpacingItemDecoration(itemSpacing))
             achievementsList.clipToPadding = false
-            val achievements = userController.getAchievements()
+            val achievements = userAchievementsSource.getAchievements()
             achievementsList.adapter = AchievementsAdapter(achievements)
 
             emptyText.visibility = if (achievements.isEmpty()) View.VISIBLE else View.GONE

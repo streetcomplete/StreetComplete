@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.user.UserController
+import de.westnordost.streetcomplete.data.user.achievements.UserLinksSource
 import de.westnordost.streetcomplete.ktx.awaitLayout
 import de.westnordost.streetcomplete.ktx.toDp
 import de.westnordost.streetcomplete.ktx.tryStartActivity
@@ -25,7 +25,7 @@ import javax.inject.Inject
 class LinksFragment : Fragment(R.layout.fragment_links),
     CoroutineScope by CoroutineScope(Dispatchers.Main) {
 
-    @Inject internal lateinit var userController: UserController
+    @Inject internal lateinit var userLinksSource: UserLinksSource
 
     init {
         Injector.instance.applicationComponent.inject(this)
@@ -45,7 +45,7 @@ class LinksFragment : Fragment(R.layout.fragment_links),
             val viewWidth = view.width.toFloat().toDp(ctx)
             val spanCount = (viewWidth / minCellWidth).toInt()
 
-            val links = userController.getLinks()
+            val links = userLinksSource.getLinks()
             val adapter = GroupedLinksAdapter(links, this@LinksFragment::openUrl)
             // headers should span the whole width
             val spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {

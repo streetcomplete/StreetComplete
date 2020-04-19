@@ -10,7 +10,7 @@ import javax.inject.Inject
 
 import de.westnordost.streetcomplete.ktx.*
 
-/** Stores which links have been unlocked by the user */
+/** Stores which link ids have been unlocked by the user */
 class UserLinksDao @Inject constructor(private val dbHelper: SQLiteOpenHelper) {
     private val db get() = dbHelper.writableDatabase
 
