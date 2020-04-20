@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.controls
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
 import android.view.View
@@ -16,12 +17,13 @@ class AnswersCounterView @JvmOverloads constructor(
 ) : RelativeLayout(context, attrs, defStyleAttr)  {
 
     var uploadedCount: Int = 0
+        @SuppressLint("SetTextI18n")
         set(value) {
             if (value > field) {
                 animateChange()
             }
             field = value
-            textView.text = value.toString()
+            textView.text = " $value "
         }
 
     var showProgress: Boolean = false

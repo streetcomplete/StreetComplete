@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:parentTag="android.widget.RelativeLayout"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
@@ -11,7 +11,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="8dp"
-        android:src="@drawable/ic_star_48dp"/>
+        android:layout_centerVertical="true"
+        android:src="@drawable/ic_star_white_outlined_32dp"/>
 
     <ProgressBar
         android:id="@+id/progressView"
@@ -25,21 +26,20 @@
         android:visibility="invisible"
         tools:visibility="visible"/>
 
-    <TextView
+    <de.westnordost.streetcomplete.view.OutlineTextView
         android:id="@+id/textView"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:layout_below="@id/iconView"
-        android:layout_alignEnd="@id/iconView"
-        android:layout_alignStart="@id/iconView"
-        android:layout_marginTop="-8dp"
+        android:layout_toRightOf="@id/iconView"
+        android:layout_centerVertical="true"
         android:textAppearance="@style/TextAppearance.BigBody"
         android:textStyle="bold"
-        android:shadowColor="@color/inverse"
-        android:shadowRadius="3"
-        tools:text="88888"
-        />
+        android:textColor="#fff"
+        app:textOutlineColor="#000"
+        app:textOutlineWidth="3dp"
+        tools:text="1234"
+        tools:ignore="RtlHardcoded" />
 
 </merge>

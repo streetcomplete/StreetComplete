@@ -73,7 +73,7 @@
             android:id="@+id/downloadButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_search_black_24dp"
+            android:drawableStart="@drawable/ic_search_24dp"
             android:text="@string/action_download"
             android:textAppearance="@android:style/TextAppearance.Theme.Dialog"
             style="?android:attr/borderlessButtonStyle"
