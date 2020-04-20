@@ -111,6 +111,7 @@ Always remember to pay attention to [the quest guidelines](https://github.com/we
 * [streetcomplete-quest-svgs](https://github.com/rugk/streetcomplete-quest-svgs) by [@rugk](https://github.com/rugk) for having minified versions of all StreetComplete quest icons for the OSM wiki
 * [streetcomplete-ad-c3](https://github.com/rugk/streetcomplete-ad-c3) by [@rugk](https://github.com/rugk) as a banner advertisement
 * [sc-photo-service](https://github.com/exploide/sc-photo-service) by [@exploide](https://github.com/exploide) allows StreetComplete to upload photos associated with OSM Notes
+* [sc-statistics-service](https://github.com/westnordost/sc-statistics-service) by [@westnordost](https://github.com/westnordost) aggregates and provides StreetComplete-related statistics about users.
 
 You may find more projects under [the StreetComplete tag](https://github.com/topics/streetcomplete) on GitHub.
 
