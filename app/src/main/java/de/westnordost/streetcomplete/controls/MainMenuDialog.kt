@@ -11,7 +11,10 @@ import de.westnordost.streetcomplete.user.UserActivity
 import kotlinx.android.synthetic.main.dialog_main_menu.view.*
 
 /** Shows a dialog containing the main menu items */
-class MainMenuDialog(context: Context) : AlertDialog(context, R.style.Theme_Bubble_Dialog) {
+class MainMenuDialog(
+    context: Context,
+    onClickDownload: () -> Unit
+) : AlertDialog(context, R.style.Theme_Bubble_Dialog) {
     init {
         val view = LayoutInflater.from(context).inflate(R.layout.dialog_main_menu, null)
         view.profileButton.setOnClickListener {
@@ -27,6 +30,10 @@ class MainMenuDialog(context: Context) : AlertDialog(context, R.style.Theme_Bubb
         view.aboutButton.setOnClickListener {
             val intent = Intent(context, AboutActivity::class.java)
             context.startActivity(intent)
+            dismiss()
+        }
+        view.downloadButton.setOnClickListener {
+            onClickDownload()
             dismiss()
         }
         setView(view)

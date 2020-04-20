@@ -1,44 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="horizontal"
-    android:layout_gravity="center"
-    android:columnCount="2"
-    android:padding="@dimen/dialog_horizontal_margin"
-    >
+    android:paddingTop="@dimen/dialog_vertical_margin"
+    android:paddingBottom="@dimen/dialog_vertical_margin"
+    android:paddingStart="@dimen/dialog_horizontal_margin"
+    android:paddingEnd="@dimen/dialog_horizontal_margin">
 
-    <Button
-        android:id="@+id/profileButton"
-        android:layout_width="128dp"
+    <GridLayout
+        android:id="@+id/bigMenuItemsContainer"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="@android:style/TextAppearance.Theme.Dialog"
-        android:text="@string/user_profile"
+        android:orientation="horizontal"
         android:layout_gravity="center"
-        android:drawableTop="@drawable/ic_profile_48dp"
-        style="?android:attr/borderlessButtonStyle" />
+        android:columnCount="2">
 
-    <Button
-        android:id="@+id/settingsButton"
-        android:layout_width="128dp"
+        <Button
+            android:id="@+id/profileButton"
+            android:layout_width="128dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="@android:style/TextAppearance.Theme.Dialog"
+            android:text="@string/user_profile"
+            android:layout_gravity="center"
+            android:drawableTop="@drawable/ic_profile_48dp"
+            style="?android:attr/borderlessButtonStyle" />
+
+        <Button
+            android:id="@+id/settingsButton"
+            android:layout_width="128dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="@android:style/TextAppearance.Theme.Dialog"
+            android:layout_gravity="center"
+            android:text="@string/action_settings"
+            android:drawableTop="@drawable/ic_settings_48dp"
+            style="?android:attr/borderlessButtonStyle" />
+
+        <Button
+            android:id="@+id/aboutButton"
+            android:layout_width="128dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="@android:style/TextAppearance.Theme.Dialog"
+            android:layout_gravity="center"
+            android:text="@string/action_about2"
+            android:drawableTop="@drawable/ic_info_outline_48dp"
+            style="?android:attr/borderlessButtonStyle" />
+
+    </GridLayout>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_below="@id/bigMenuItemsContainer"
+        android:layout_alignEnd="@id/bigMenuItemsContainer"
+        android:layout_alignStart="@id/bigMenuItemsContainer"
+        android:background="@drawable/button_bar_divider"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        />
+
+    <LinearLayout
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textAppearance="@android:style/TextAppearance.Theme.Dialog"
-        android:layout_gravity="center"
-        android:text="@string/action_settings"
-        android:drawableTop="@drawable/ic_settings_48dp"
-        style="?android:attr/borderlessButtonStyle" />
+        android:layout_alignEnd="@id/bigMenuItemsContainer"
+        android:layout_alignStart="@id/bigMenuItemsContainer"
+        android:orientation="vertical"
+        android:layout_below="@id/divider">
 
-    <Button
-        android:id="@+id/aboutButton"
-        android:layout_width="128dp"
-        android:layout_height="wrap_content"
-        android:textAppearance="@android:style/TextAppearance.Theme.Dialog"
-        android:layout_gravity="center"
-        android:text="@string/action_about2"
-        android:drawableTop="@drawable/ic_info_outline_48dp"
-        style="?android:attr/borderlessButtonStyle" />
+        <TextView
+            android:id="@+id/downloadButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_search_black_24dp"
+            android:text="@string/action_download"
+            android:textAppearance="@android:style/TextAppearance.Theme.Dialog"
+            style="?android:attr/borderlessButtonStyle"
+            />
 
-</GridLayout>
+    </LinearLayout>
+
+</RelativeLayout>
 

@@ -27,23 +27,13 @@
             android:layout_alignParentLeft="true"
             />
 
-        <ImageButton
-            android:id="@+id/downloadButton"
-            android:layout_width="@dimen/map_button_size"
-            android:layout_height="@dimen/map_button_size"
-            android:scaleType="center"
-            style="@style/RoundWhiteButton"
-            android:src="@drawable/ic_file_download_black_24dp"
-            android:contentDescription="@string/action_download"
-            android:layout_toRightOf="@id/answers_counter_fragment"/>
-
         <fragment
             android:id="@+id/upload_button_fragment"
             android:name="de.westnordost.streetcomplete.controls.UploadButtonFragment"
             android:layout_width="@dimen/map_button_size"
             android:layout_height="@dimen/map_button_size"
             tools:layout="@layout/fragment_upload_button"
-            android:layout_toRightOf="@id/downloadButton"
+            android:layout_toRightOf="@id/answers_counter_fragment"
             />
 
         <ImageButton

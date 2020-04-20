@@ -144,7 +144,6 @@ class MainFragment : Fragment(R.layout.fragment_main),
         zoomInButton.setOnClickListener { onClickZoomIn() }
         zoomOutButton.setOnClickListener { onClickZoomOut() }
         mainMenuButton.setOnClickListener { onClickMainMenu() }
-        downloadButton.setOnClickListener { onClickDownload() }
 
         isShowingControls = savedInstanceState?.getBoolean(SHOW_CONTROLS) ?: true
 
@@ -441,7 +440,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
     /* --------------------------------- Map control buttons------------------------------------- */
 
     private fun onClickMainMenu() {
-        context?.let { MainMenuDialog(it).show() }
+        context?.let { MainMenuDialog(it, this::onClickDownload).show() }
     }
 
     private fun onClickDownload() {
