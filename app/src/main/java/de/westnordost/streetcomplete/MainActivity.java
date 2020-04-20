@@ -63,19 +63,11 @@ import de.westnordost.streetcomplete.tutorial.TutorialFragment;
 import de.westnordost.streetcomplete.util.GeoLocation;
 import de.westnordost.streetcomplete.util.GeoUriKt;
 import de.westnordost.streetcomplete.view.dialogs.RequestLoginDialog;
-import kotlin.Unit;
-import kotlin.coroutines.Continuation;
-import kotlin.coroutines.CoroutineContext;
-import kotlinx.coroutines.CoroutineScope;
-import kotlinx.coroutines.CoroutineScopeKt;
-import kotlinx.coroutines.Dispatchers;
-import kotlinx.coroutines.JobKt;
 
 
 public class MainActivity extends AppCompatActivity implements
 		MainFragment.Listener,
 		TutorialFragment.Listener,
-		CoroutineScope,
 		NotificationButtonFragment.Listener
 {
 	@Inject CrashReportExceptionHandler crashReportExceptionHandler;
@@ -101,8 +93,6 @@ public class MainActivity extends AppCompatActivity implements
 
 	private ProgressBar downloadProgressBar;
 
-	private CoroutineScope coroutineScope = CoroutineScopeKt.CoroutineScope(Dispatchers.getMain());
-
 	private final BroadcastReceiver locationAvailabilityReceiver = new BroadcastReceiver()
 	{
 		@Override public void onReceive(Context context, Intent intent)
@@ -119,11 +109,6 @@ public class MainActivity extends AppCompatActivity implements
 			onLocationRequestFinished(state);
 		}
 	};
-
-	@NotNull @Override public CoroutineContext getCoroutineContext()
-	{
-		return coroutineScope.getCoroutineContext();
-	}
 
 	@Override protected void onCreate(Bundle savedInstanceState)
 	{
@@ -162,17 +147,9 @@ public class MainActivity extends AppCompatActivity implements
 
 		if(savedInstanceState == null)
 		{
-			questController.cleanUp(new Continuation<Unit>()
-			{
-				@NotNull @Override public CoroutineContext getContext() { return coroutineScope.getCoroutineContext(); }
-				@Override public void resumeWith(@NotNull Object o){ }
-			});
+			questController.cleanUp();
 			if (userController.isLoggedIn()) {
-				userController.updateUser(new Continuation<Unit>()
-				{
-					@NotNull @Override public CoroutineContext getContext() { return coroutineScope.getCoroutineContext(); }
-					@Override public void resumeWith(@NotNull Object o){ }
-				});
+				userController.updateUser();
 			}
 		}
 
@@ -294,12 +271,6 @@ public class MainActivity extends AppCompatActivity implements
 		questDownloadController.removeQuestDownloadProgressListener(downloadProgressListener);
 
 		downloadProgressBar.setAlpha(0f);
-	}
-
-	@Override public void onDestroy()
-	{
-		super.onDestroy();
-		JobKt.cancel(coroutineScope.getCoroutineContext(), null);
 	}
 
 	@Override public void onConfigurationChanged(@NonNull Configuration newConfig) {

@@ -6,10 +6,13 @@ import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE
+import de.westnordost.osmapi.user.Permission
 import de.westnordost.streetcomplete.BackPressedListener
 import de.westnordost.streetcomplete.HasTitle
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.OsmApiModule
+import de.westnordost.streetcomplete.data.PermissionsApi
 import de.westnordost.streetcomplete.data.quest.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.user.UserController
 import de.westnordost.streetcomplete.ktx.childFragmentManagerOrNull
@@ -80,7 +83,7 @@ class LoginFragment : Fragment(R.layout.fragment_login),
         loginProgress.visibility = View.VISIBLE
         childFragmentManager.popBackStack("oauth", POP_BACK_STACK_INCLUSIVE)
         launch {
-            if (userController.hasRequiredPermissions(consumer)) {
+            if (hasRequiredPermissions(consumer)) {
                 userController.logIn(consumer)
             } else {
                 context?.toast(R.string.oauth_failed_permissions, Toast.LENGTH_LONG)
@@ -93,6 +96,13 @@ class LoginFragment : Fragment(R.layout.fragment_login),
     override fun onOAuthFailed(e: Exception?) {
         childFragmentManager.popBackStack("oauth", POP_BACK_STACK_INCLUSIVE)
         userController.logOut()
+    }
+
+    suspend fun hasRequiredPermissions(consumer: OAuthConsumer): Boolean {
+        return withContext(Dispatchers.IO) {
+            val permissionsApi = PermissionsApi( OsmApiModule.osmConnection(consumer))
+            permissionsApi.get().containsAll(REQUIRED_OSM_PERMISSIONS)
+        }
     }
 
     /* ------------------------------------------------------------------------------------------ */
@@ -114,6 +124,12 @@ class LoginFragment : Fragment(R.layout.fragment_login),
             f.arguments = bundleOf(ARG_LAUNCH_AUTH to launchAuth)
             return f
         }
+
+        private val REQUIRED_OSM_PERMISSIONS = listOf(
+            Permission.READ_PREFERENCES_AND_USER_DETAILS,
+            Permission.MODIFY_MAP,
+            Permission.WRITE_NOTES
+        )
 
         private const val ARG_LAUNCH_AUTH = "launch_auth"
     }

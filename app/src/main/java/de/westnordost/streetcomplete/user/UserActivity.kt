@@ -52,7 +52,7 @@ class UserActivity : FragmentContainerActivity(R.layout.activity_user),
                 else -> LoginFragment.create()
             }
         }
-        userController.addListener(this)
+        userController.addLoginStatusListener(this)
     }
 
     override fun onBackPressed() {
@@ -71,7 +71,7 @@ class UserActivity : FragmentContainerActivity(R.layout.activity_user),
 
     override fun onDestroy() {
         super.onDestroy()
-        userController.removeListener(this)
+        userController.removeLoginStatusListener(this)
         coroutineContext.cancel()
     }
 

@@ -7,20 +7,18 @@ import java.io.OutputStream
 import java.net.HttpURLConnection
 import java.net.URL
 
+/** Downloads statistics from the backend */
 class StatisticsDownloader(private val baseUrl: String) {
 
-    fun download(osmUserId: Long): Statistics? {
+    fun download(osmUserId: Long): Statistics {
         val connection = createConnection("download")
         connection.requestMethod = "GET"
         connection.doInput = true
         connection.doOutput = true
         connection.outputStream.writeText("id=$osmUserId")
-        return when (connection.responseCode) {
+        when (connection.responseCode) {
             HttpURLConnection.HTTP_OK -> {
-                YamlReader(connection.inputStream.bufferedReader()).read(Statistics::class.java)
-            }
-            HttpURLConnection.HTTP_ACCEPTED -> {
-                null
+                return YamlReader(connection.inputStream.bufferedReader()).read(Statistics::class.java)
             }
             else -> {
                 val errorMessage = connection.responseMessage

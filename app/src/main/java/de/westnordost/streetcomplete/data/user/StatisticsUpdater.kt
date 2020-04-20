@@ -1,14 +1,23 @@
 package de.westnordost.streetcomplete.data.user
 
+import android.util.Log
+import de.westnordost.osmapi.common.Iso8601CompatibleDateFormat
 import de.westnordost.streetcomplete.data.user.achievements.AchievementGiver
+import java.io.IOException
 import java.util.*
 import javax.inject.Inject
+import javax.inject.Named
 
+/** Manages the updating of statistics, locally and pulling a complete update from backend  */
 class StatisticsUpdater @Inject constructor(
-        private val questStatisticsDao: QuestStatisticsDao,
-        private val achievementGiver: AchievementGiver,
-        private val userStore: UserStore
+    private val questStatisticsDao: QuestStatisticsDao,
+    private val achievementGiver: AchievementGiver,
+    private val userStore: UserStore,
+    private val statisticsDownloader: StatisticsDownloader,
+    @Named("QuestAliases") private val questAliases: List<Pair<String, String>>
 ){
+    private val lastActivityDateFormat = Iso8601CompatibleDateFormat("yyyy-MM-dd HH:mm:ss z")
+
     fun addOne(questType: String) {
         updateDaysActive()
 
@@ -32,6 +41,44 @@ class StatisticsUpdater @Inject constructor(
             userStore.daysActive++
             achievementGiver.updateDaysActiveAchievements()
         }
+    }
+
+    fun updateFromBackend(userId: Long) {
+        try {
+            val statistics = statisticsDownloader.download(userId)
+            val lastUpdate = lastActivityDateFormat.parse(statistics.lastUpdate)
+            val backendDataIsUpToDate = lastUpdate.time / 1000 >= userStore.lastStatisticsUpdate.time / 1000
+            if (!backendDataIsUpToDate) {
+                Log.i(TAG, "Backend data is not up-to-date")
+                return
+            }
+
+            val newStatistics = statistics.questTypes.toMutableMap()
+            mergeQuestAliases(newStatistics)
+            questStatisticsDao.replaceAll(newStatistics)
+            userStore.daysActive = statistics.daysActive
+            userStore.lastStatisticsUpdate = lastUpdate
+            // when syncing statistics from server, any granted achievements should be
+            // granted silently (without notification) because no user action was involved
+            achievementGiver.updateAllAchievements(silent = true)
+            achievementGiver.updateAchievementLinks()
+        }  catch (e: IOException) {
+            Log.w(TAG, "Unable to download statistics", e)
+        }
+    }
+
+    private fun mergeQuestAliases(map: MutableMap<String, Int>)  {
+        for ((oldName, newName) in questAliases) {
+            val count = map[oldName]
+            if (count != null) {
+                map.remove(oldName)
+                map[newName] = (map[newName] ?: 0) + count
+            }
+        }
+    }
+
+    companion object {
+        private const val TAG = "StatisticsUpdater"
     }
 }
 

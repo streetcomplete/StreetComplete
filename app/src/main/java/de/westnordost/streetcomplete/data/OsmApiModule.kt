@@ -25,11 +25,11 @@ object OsmApiModule {
 
     /** Returns the osm connection singleton used for all daos with the saved oauth consumer  */
     @Provides @Singleton fun osmConnection(oAuthStore: OAuthStore): OsmConnection {
-        return osmConnection(oAuthStore.oAuthConsumer!!)
+        return osmConnection(oAuthStore.oAuthConsumer)
     }
 
     /** Returns an osm connection with the supplied consumer (note the difference to the above function)  */
-    fun osmConnection(consumer: OAuthConsumer): OsmConnection {
+    fun osmConnection(consumer: OAuthConsumer?): OsmConnection {
         return OsmConnection(OSM_API_URL, ApplicationConstants.USER_AGENT, consumer)
     }
 

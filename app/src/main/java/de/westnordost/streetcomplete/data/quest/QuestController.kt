@@ -25,7 +25,9 @@ import de.westnordost.osmapi.map.data.Element
 
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestController
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestController
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Singleton
 
@@ -39,7 +41,7 @@ import javax.inject.Singleton
         private val splitWayDB: OsmQuestSplitWayDao,
         private val createNoteDB: CreateNoteDao,
         private val prefs: SharedPreferences
-) {
+): CoroutineScope by CoroutineScope(Dispatchers.Default) {
     /** Create a note for the given OSM Quest instead of answering it. The quest will turn
      * invisible.
      * @return true if successful
@@ -184,8 +186,8 @@ import javax.inject.Singleton
     }
 
     /** Delete old unsolved quests as well as long already uploaded quests */
-    suspend fun cleanUp() {
-        withContext(Dispatchers.IO) {
+    fun cleanUp() {
+        launch(Dispatchers.IO) {
             var deleted = osmQuestController.cleanUp()
             deleted += osmNoteQuestController.cleanUp()
 
