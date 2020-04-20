@@ -43,7 +43,7 @@ import kotlin.math.sqrt
         val iconSize = questPin.intrinsicWidth
         val questIconSize = 2 * iconSize / 3
         val questIconOffsetX = 56 * iconSize / 192
-        val questIconOffsetY = 16 * iconSize / 192
+        val questIconOffsetY = 18 * iconSize / 192
         val sheetSideLength = ceil(sqrt(questIconResIds.size.toDouble())).toInt()
         val bitmapLength = sheetSideLength * iconSize
         val spriteSheet = Bitmap.createBitmap(bitmapLength, bitmapLength, Bitmap.Config.ARGB_8888)
