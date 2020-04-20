@@ -33,5 +33,6 @@ class UploadButton @JvmOverloads constructor(
 
     init {
         inflate(context, R.layout.view_upload_button, this)
+        clipToPadding = false
     }
 }

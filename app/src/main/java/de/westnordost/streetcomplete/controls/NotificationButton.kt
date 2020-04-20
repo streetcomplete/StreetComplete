@@ -22,5 +22,6 @@ class NotificationButton @JvmOverloads constructor(
 
     init {
         inflate(context, R.layout.view_notification_button, this)
+        clipToPadding = false
     }
 }
