@@ -38,7 +38,7 @@
         android:textStyle="bold"
         android:textColor="#fff"
         app:textOutlineColor="#000"
-        app:textOutlineWidth="3dp"
+        app:textOutlineWidth="2dp"
         tools:text="1234"
         tools:ignore="RtlHardcoded" />
 

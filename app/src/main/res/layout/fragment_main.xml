@@ -25,7 +25,6 @@
             tools:layout="@layout/fragment_answers_counter"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
-            android:layout_alignBottom="@id/mainMenuButton"
             />
 
         <fragment

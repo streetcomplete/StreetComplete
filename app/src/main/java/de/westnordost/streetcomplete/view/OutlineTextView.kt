@@ -25,14 +25,10 @@ class OutlineTextView @JvmOverloads constructor(
 
     private var noInvalidate: Boolean = false
 
-    private var _textColors: ColorStateList?
-    private var _shadowRadius = 0f
-    private var _shadowDx = 0f
-    private var _shadowDy = 0f
-    private var _shadowColor = 0
+    private var _textColors: ColorStateList? = null
 
     init {
-        _textColors = this.textColors
+
         if (attrs != null) {
             val a = context.obtainStyledAttributes(attrs, R.styleable.OutlineTextView)
             outlineColor = a.getColor(R.styleable.OutlineTextView_textOutlineColor, currentTextColor)
@@ -51,47 +47,24 @@ class OutlineTextView @JvmOverloads constructor(
         super.setTextColor(colors)
     }
 
-    override fun setShadowLayer(radius: Float, dx: Float, dy: Float, color: Int) {
-        _shadowColor = color
-        _shadowDx = dx
-        _shadowDy = dy
-        _shadowRadius = radius
-        super.setShadowLayer(radius, dx, dy, color)
-    }
-
     override fun invalidate() {
         if (noInvalidate) return
         super.invalidate()
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
-        noInvalidate = true
-        setPaintToOutline()
-        noInvalidate = false
+        paint.style = Paint.Style.STROKE
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
     }
 
     override fun onDraw(canvas: Canvas) {
-        noInvalidate = true
-        setPaintToOutline()
-        super.onDraw(canvas)
-
-        setPaintToRegular()
-        super.onDraw(canvas)
-        noInvalidate = false
-    }
-
-    private fun setPaintToOutline() {
         paint.style = Paint.Style.STROKE
-        paint.strokeWidth = outlineWidth
+        noInvalidate = true
         super.setTextColor(outlineColor)
-        super.setShadowLayer(0f, 0f, 0f, Color.TRANSPARENT)
-    }
-
-    private fun setPaintToRegular() {
+        super.onDraw(canvas)
         paint.style = Paint.Style.FILL
-        paint.strokeWidth = 0f
         super.setTextColor(_textColors)
-        super.setShadowLayer(_shadowRadius, _shadowDx, _shadowDy, _shadowColor)
+        noInvalidate = false
+        super.onDraw(canvas)
     }
 }
