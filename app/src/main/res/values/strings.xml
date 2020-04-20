@@ -696,11 +696,11 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_generalFee_title">Does it cost a fee to enter %s?</string>
     <string name="quest_laundrySelfService_title">Is this laundry a self service laundry?</string>
     <string name="quest_handrail_title">Do these steps have a handrail?</string>
-    <string name="quest_address_street_title">What street does house number %s belong to</string>
-    <string name="quest_address_street_no_named_streets">This house number does not belong to a named street</string>
-    <string name="quest_address_street_noStreet_confirmation_title">Are you sure that this house number has no named street?</string>
+    <string name="quest_address_street_title">What street does address %s belong to?</string>
+    <string name="quest_address_street_no_named_streets">It does not belong to a named street</string>
+    <string name="quest_address_street_noStreet_confirmation_title">Are you sure that this address has no named street?</string>
     <string name="quest_address_street_noStreet_confirmation_positive">No named street</string>
-    <string name="quest_address_street_place_name_label">What place does this house number belong to:</string>
+    <string name="quest_address_street_place_name_label">What place does this address belong to:</string>
     <string name="quest_street_side_puzzle_tutorial">Tap the question marks and select an answer for the given side of the road.</string>
     <string name="quest_recycling_materials_title">What can be left here for recycling?</string>
     <string name="quest_recycling_materials_note">If anything different can be recycled than selectable here, please leave a note instead.</string>
