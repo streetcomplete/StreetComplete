@@ -15,8 +15,4 @@
         <attr name="state_updating" format="boolean"/>
         <attr name="compass_mode" format="boolean"/>
     </declare-styleable>
-    <declare-styleable name="OutlineTextView">
-        <attr name="textOutlineColor" format="color"/>
-        <attr name="textOutlineWidth" format="dimension"/>
-    </declare-styleable>
 </resources>

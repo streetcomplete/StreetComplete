@@ -4,15 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:parentTag="android.widget.RelativeLayout"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
-
-    <ImageView
-        android:id="@+id/iconView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:layout_centerVertical="true"
-        android:src="@drawable/ic_star_white_outlined_32dp"/>
+    android:layout_height="wrap_content"
+    tools:background="#666">
 
     <ProgressBar
         android:id="@+id/progressView"
@@ -26,7 +19,15 @@
         android:visibility="invisible"
         tools:visibility="visible"/>
 
-    <de.westnordost.streetcomplete.view.OutlineTextView
+    <ImageView
+        android:id="@+id/iconView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:layout_centerVertical="true"
+        android:src="@drawable/ic_star_white_shadow_32dp"/>
+
+    <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -37,8 +38,9 @@
         android:textAppearance="@style/TextAppearance.BigBody"
         android:textStyle="bold"
         android:textColor="#fff"
-        app:textOutlineColor="#000"
-        app:textOutlineWidth="2dp"
+        android:shadowColor="#000"
+        android:shadowRadius="8"
+        android:shadowDy="2"
         tools:text="1234"
         tools:ignore="RtlHardcoded" />
 
