@@ -85,7 +85,6 @@
     <string name="confirmation_cancel_prev_download_confirmed">"Scan here instead"</string>
     <string name="confirmation_cancel_prev_download_cancel">"Continue current scan"</string>
     <string name="notification_downloading">"Scanning for quests…"</string>
-    <string name="now_downloading_toast">"Scanning for more quests…"</string>
     <string name="turn_on_location_request">"Location is off. Open Settings to turn it on now?"</string>
     <string name="no_location_permission_warning">"Your location is needed to scan for quests in your vicinity."</string>
     <string name="action_about2">"About"</string>

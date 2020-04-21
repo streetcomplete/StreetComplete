@@ -6,7 +6,7 @@
   <target android:name="circle">
     <aapt:attr name="android:animation">
       <objectAnimator
-          android:duration="600"
+          android:duration="500"
           android:propertyName="trimPathEnd"
           android:valueFrom="0"
           android:valueTo="1" />
@@ -17,12 +17,12 @@
     <aapt:attr name="android:animation">
       <set android:ordering="sequentially">
         <objectAnimator
-            android:duration="600"
+            android:duration="500"
             android:propertyName="trimPathEnd"
             android:valueFrom="0"
             android:valueTo="0"/>
         <objectAnimator
-            android:duration="300"
+            android:duration="250"
             android:propertyName="trimPathEnd"
             android:valueFrom="0"
             android:valueTo="1"/>

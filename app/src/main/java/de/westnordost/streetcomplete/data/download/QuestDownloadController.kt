@@ -7,6 +7,7 @@ import android.content.ServiceConnection
 import android.os.IBinder
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.streetcomplete.ApplicationConstants
+import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.util.enclosingTilesRect
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -38,7 +39,9 @@ import javax.inject.Singleton
     override val isDownloadInProgress: Boolean get() =
         downloadService?.isDownloadInProgress == true
 
-    override val downloadProgress: Float get() = downloadService?.downloadProgress ?: 0f
+    /** @return the quest type that is currently being downloaded or null if nothing is downloaded */
+    override val currentDownloadingQuestType: QuestType<*>? get() =
+        downloadService?.currentDownloadingQuestType
 
     var showNotification: Boolean
         get() = downloadService?.showDownloadNotification == true

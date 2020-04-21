@@ -5,8 +5,8 @@
     android:viewportHeight="128">
   <path
       android:name="circle"
-      android:pathData="m124,64a60,60 0,0 1,-60 60,60 60,0 0,1 -60,-60 60,60 0,0 1,60 -60,60 60,0 0,1 60,60z"
-      android:strokeWidth="8"
+      android:pathData="m122,64a58,58 0,0 1,-58 58,58 58,0 0,1 -58,-58 58,58 0,0 1,58 -58,58 58,0 0,1 58,58z"
+      android:strokeWidth="12"
       android:strokeColor="#262"/>
   <path
       android:pathData="m28.459,67.862c7.344,4.501 19.241,13.97 27.571,23.732 11.064,-20.587 27.756,-39.206 44.333,-55.458"

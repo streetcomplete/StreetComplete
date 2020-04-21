@@ -19,7 +19,6 @@ import java.util.concurrent.atomic.AtomicBoolean
 import javax.inject.Inject
 import javax.inject.Provider
 import kotlin.math.max
-import kotlin.math.min
 
 /** Takes care of downloading all note and osm quests */
 class QuestDownloader @Inject constructor(
@@ -33,21 +32,13 @@ class QuestDownloader @Inject constructor(
 ) {
     var progressListener: QuestDownloadProgressListener? = null
 
-    // state
-    private var downloadedQuestTypes = 0
-    private var totalQuestTypes = 0
-
     @Synchronized fun download(tiles: TilesRect, maxQuestTypes: Int?, cancelState: AtomicBoolean) {
         if (cancelState.get()) return
 
         val questTypes = getQuestTypesToDownload(tiles, maxQuestTypes)
         if (questTypes.isEmpty()) {
-            progressListener?.onNotStarted()
             return
         }
-
-        totalQuestTypes = questTypes.size
-        downloadedQuestTypes = 0
 
         val bbox = tiles.asBoundingBox(ApplicationConstants.QUEST_TILE_ZOOM)
 
@@ -58,8 +49,10 @@ class QuestDownloader @Inject constructor(
         try {
             // always first download notes, because note positions are blockers for creating other
             // quests
-            if (questTypes.contains(getOsmNoteQuestType())) {
+            val noteQuestType = getOsmNoteQuestType()
+            if (questTypes.contains(noteQuestType)) {
                 downloadNotes(bbox, tiles)
+
             }
 
             val notesPositions = notePositionsSource.getAllPositions(bbox).toSet()
@@ -96,31 +89,25 @@ class QuestDownloader @Inject constructor(
 
     private fun downloadNotes(bbox: BoundingBox, tiles: TilesRect) {
         val notesDownload = osmNotesDownloaderProvider.get()
-        val userId: Long? = userStore.userId.takeIf { it != -1L }
+        val userId: Long = userStore.userId.takeIf { it != -1L } ?: return
         // do not download notes if not logged in because notes shall only be downloaded if logged in
-        if (userId == null) {
-            onProgress()
-            return
-        }
+        val noteQuestType = getOsmNoteQuestType()
+        progressListener?.onStarted(noteQuestType)
         val maxNotes = 10000
         notesDownload.download(bbox, userId, maxNotes)
         downloadedTilesDao.put(tiles, OsmNoteQuestType::class.java.simpleName)
-        onProgress()
+        progressListener?.onFinished(noteQuestType)
     }
 
     private fun downloadQuestType(bbox: BoundingBox, tiles: TilesRect, questType: QuestType<*>, notesPositions: Set<LatLon>) {
         if (questType is OsmElementQuestType<*>) {
+            progressListener?.onStarted(questType)
             val questDownload = osmQuestDownloaderProvider.get()
             if (questDownload.download(questType, bbox, notesPositions)) {
                 downloadedTilesDao.put(tiles, questType.javaClass.simpleName)
             }
-            onProgress()
+            progressListener?.onFinished(questType)
         }
-    }
-
-    private fun onProgress() {
-        downloadedQuestTypes++
-        progressListener?.onProgress(min(1f, downloadedQuestTypes.toFloat() / totalQuestTypes))
     }
 
     companion object {

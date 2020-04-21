@@ -17,10 +17,8 @@ class QuestDownloadNotificationController(
 ) {
     private val notificationBuilder = createNotificationBuilder(notificationChannelId)
 
-    fun showProgress(progress: Float) {
-        val progress1000 = (progress * 1000).toInt()
-        val n = notificationBuilder.setProgress(1000, progress1000, false).build()
-        service.startForeground(notificationId, n)
+    fun show() {
+        service.startForeground(notificationId, notificationBuilder.build())
     }
 
     fun hide() {

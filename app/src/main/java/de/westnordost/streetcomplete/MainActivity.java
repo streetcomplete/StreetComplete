@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete;
 
-import android.animation.ObjectAnimator;
 import android.content.res.Configuration;
 import android.graphics.Point;
 import androidx.annotation.NonNull;
@@ -21,10 +20,7 @@ import androidx.preference.PreferenceManager;
 import android.text.method.LinkMovementMethod;
 import android.text.util.Linkify;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.view.animation.AccelerateDecelerateInterpolator;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,6 +43,7 @@ import de.westnordost.streetcomplete.data.quest.QuestAutoSyncer;
 import de.westnordost.streetcomplete.data.quest.QuestController;
 import de.westnordost.streetcomplete.data.download.QuestDownloadProgressListener;
 import de.westnordost.streetcomplete.data.download.QuestDownloadController;
+import de.westnordost.streetcomplete.data.quest.QuestType;
 import de.westnordost.streetcomplete.data.quest.UnsyncedChangesCountSource;
 import de.westnordost.streetcomplete.data.upload.UploadController;
 import de.westnordost.streetcomplete.data.upload.UploadProgressListener;
@@ -90,8 +87,6 @@ public class MainActivity extends AppCompatActivity implements
 	private static boolean dontShowRequestAuthorizationAgain = false;
 
 	private MainFragment mapFragment;
-
-	private ProgressBar downloadProgressBar;
 
 	private final BroadcastReceiver locationAvailabilityReceiver = new BroadcastReceiver()
 	{
@@ -138,10 +133,6 @@ public class MainActivity extends AppCompatActivity implements
 			.commit();
 
 		setContentView(R.layout.activity_main);
-		setupFittingToSystemWindowInsets();
-
-		downloadProgressBar = findViewById(R.id.download_progress);
-		downloadProgressBar.setMax(1000);
 
 		mapFragment = (MainFragment) getSupportFragmentManager().findFragmentById(R.id.map_fragment);
 
@@ -154,18 +145,6 @@ public class MainActivity extends AppCompatActivity implements
 		}
 
 		handleGeoUri();
-	}
-
-	private void setupFittingToSystemWindowInsets() {
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-			findViewById(R.id.main).setOnApplyWindowInsetsListener((v, insets) -> {
-				// download progress will be behind the status bar
-				ViewGroup.LayoutParams downloadProgressParams = downloadProgressBar.getLayoutParams();
-				downloadProgressParams.height = insets.getSystemWindowInsetTop();
-				downloadProgressBar.setLayoutParams(downloadProgressParams);
-				return insets;
-			});
-		}
 	}
 
 	private void handleGeoUri()
@@ -215,13 +194,6 @@ public class MainActivity extends AppCompatActivity implements
 
 		questDownloadController.setShowNotification(false);
 
-		if (questDownloadController.isDownloadInProgress()) {
-			downloadProgressBar.setAlpha(1f);
-			downloadProgressBar.setProgress((int)(questDownloadController.getDownloadProgress() * 1000));
-		} else {
-			downloadProgressBar.setAlpha(0f);
-		}
-
 		uploadController.addUploadProgressListener(uploadProgressListener);
 		questDownloadController.addQuestDownloadProgressListener(downloadProgressListener);
 
@@ -269,8 +241,6 @@ public class MainActivity extends AppCompatActivity implements
 
 		uploadController.removeUploadProgressListener(uploadProgressListener);
 		questDownloadController.removeQuestDownloadProgressListener(downloadProgressListener);
-
-		downloadProgressBar.setAlpha(0f);
 	}
 
 	@Override public void onConfigurationChanged(@NonNull Configuration newConfig) {
@@ -358,33 +328,13 @@ public class MainActivity extends AppCompatActivity implements
 	private final QuestDownloadProgressListener downloadProgressListener
 			= new QuestDownloadProgressListener()
 	{
-		@AnyThread @Override public void onStarted()
-		{
-			runOnUiThread(() ->
-			{
-				downloadProgressBar.animate().alpha(1);
-				downloadProgressBar.setProgress(0);
+		@AnyThread @Override public void onStarted() {}
 
-				Toast.makeText(
-						MainActivity.this,
-						R.string.now_downloading_toast,
-						Toast.LENGTH_SHORT).show();
-			});
-		}
+		@Override public void onFinished(@NotNull QuestType<?> questType) {}
 
-		@AnyThread @Override public void onProgress(final float progress)
-		{
-			runOnUiThread(() ->
-			{
-				int intProgress = (int) (1000 * progress);
-				ObjectAnimator progressAnimator = ObjectAnimator.ofInt(downloadProgressBar, "progress", intProgress);
-				progressAnimator.setDuration(1000);
-				progressAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
-				progressAnimator.start();
-			});
-		}
+		@Override public void onStarted(@NotNull QuestType<?> questType) {}
 
-		@AnyThread @Override public void onError(final Exception e)
+		@AnyThread @Override public void onError(@NonNull final Exception e)
 		{
 			runOnUiThread(() ->
 			{
@@ -408,26 +358,9 @@ public class MainActivity extends AppCompatActivity implements
 			});
 		}
 
-		@AnyThread @Override public void onSuccess(){}
+		@AnyThread @Override public void onSuccess() {}
 
-		@AnyThread @Override public void onFinished()
-		{
-			runOnUiThread(() ->
-			{
-				downloadProgressBar.animate().alpha(0).setDuration(1000);
-			});
-		}
-
-		@AnyThread @Override public void onNotStarted()
-		{
-			runOnUiThread(() ->
-			{
-				if (questDownloadController.isPriorityDownloadInProgress())
-				{
-					Toast.makeText(MainActivity.this, R.string.nothing_more_to_download, Toast.LENGTH_SHORT).show();
-				}
-			});
-		}
+		@AnyThread @Override public void onFinished() {}
 	};
 
 	/* --------------------------------- NotificationButtonFragment.Listener ---------------------------------- */

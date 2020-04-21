@@ -7,6 +7,7 @@ import android.os.IBinder
 import android.util.Log
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Injector
+import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.util.TilesRect
 import java.util.concurrent.atomic.AtomicBoolean
 import javax.inject.Inject
@@ -37,31 +38,17 @@ class QuestDownloadService : SingleIntentService(TAG) {
 
     // listener
     private var progressListenerRelay = object : QuestDownloadProgressListener {
-        override fun onStarted() {
-            progress = 0f
-            progressListener?.onStarted()
+        override fun onStarted() { progressListener?.onStarted() }
+        override fun onError(e: Exception) { progressListener?.onError(e) }
+        override fun onSuccess() { progressListener?.onSuccess() }
+        override fun onFinished() { progressListener?.onFinished() }
+        override fun onStarted(questType: QuestType<*>) {
+            currentQuestType = questType
+            progressListener?.onStarted(questType)
         }
-
-        override fun onProgress(progress: Float) {
-            this@QuestDownloadService.progress = progress
-            progressListener?.onProgress(progress)
-        }
-
-        override fun onError(e: Exception) {
-            progressListener?.onError(e)
-        }
-
-        override fun onSuccess() {
-            progressListener?.onSuccess()
-        }
-
-        override fun onFinished() {
-            progress = null
-            progressListener?.onFinished()
-        }
-
-        override fun onNotStarted() {
-            progressListener?.onNotStarted()
+        override fun onFinished(questType: QuestType<*>) {
+            currentQuestType = null
+            progressListener?.onFinished(questType)
         }
     }
     private var progressListener: QuestDownloadProgressListener? = null
@@ -69,20 +56,20 @@ class QuestDownloadService : SingleIntentService(TAG) {
     // state
     private var isPriorityDownload: Boolean = false
     private var isDownloading: Boolean = false
-    private var progress: Float? = null
     set(value) {
         field = value
-        if (value == null || !showNotification) notificationController.hide()
-        else notificationController.showProgress(value)
+        if (!value || !showNotification) notificationController.hide()
+        else notificationController.show()
     }
 
     private var showNotification = false
     set(value) {
         field = value
-        val progress = progress
-        if (!value || progress == null) notificationController.hide()
-        else notificationController.showProgress(progress)
+        if (!value || !isDownloading) notificationController.hide()
+        else notificationController.show()
     }
+
+    private var currentQuestType: QuestType<*>? = null
 
     init {
         Injector.instance.applicationComponent.inject(this)
@@ -136,7 +123,7 @@ class QuestDownloadService : SingleIntentService(TAG) {
 
         val isDownloadInProgress: Boolean get() = isDownloading
 
-        val downloadProgress: Float? get() = progress
+        val currentDownloadingQuestType: QuestType<*>? get() = currentQuestType
 
         var showDownloadNotification: Boolean
             get() = showNotification

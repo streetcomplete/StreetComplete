@@ -14,16 +14,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
-    <ProgressBar
-        android:id="@+id/download_progress"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/MapProgressBar.Horizontal"
-        android:visibility="visible"
-        android:progress="50"
-        android:max = "100"
-        android:indeterminate="false"/>
-
     <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"

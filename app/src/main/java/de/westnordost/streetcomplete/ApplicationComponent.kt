@@ -1,10 +1,7 @@
 package de.westnordost.streetcomplete
 
 import dagger.Component
-import de.westnordost.streetcomplete.controls.AnswersCounterFragment
-import de.westnordost.streetcomplete.controls.NotificationButtonFragment
-import de.westnordost.streetcomplete.controls.UndoButtonFragment
-import de.westnordost.streetcomplete.controls.UploadButtonFragment
+import de.westnordost.streetcomplete.controls.*
 import de.westnordost.streetcomplete.data.DbModule
 import de.westnordost.streetcomplete.data.OsmApiModule
 import de.westnordost.streetcomplete.data.upload.UploadModule2
@@ -91,4 +88,5 @@ interface ApplicationComponent {
     fun inject(undoButtonFragment: UndoButtonFragment)
     fun inject(uploadButtonFragment: UploadButtonFragment)
     fun inject(answersCounterFragment: AnswersCounterFragment)
+    fun inject(questDownloadProgressFragment: QuestDownloadProgressFragment)
 }
