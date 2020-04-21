@@ -52,7 +52,8 @@ import javax.inject.Singleton
 
     fun getNumberOfNotifications(): Int {
         val hasUnreadMessages = userStore.unreadMessagesCount > 0
-        val hasNewVersion = BuildConfig.VERSION_NAME != prefs.getString(Prefs.LAST_VERSION, null)
+        val currentVersion = prefs.getString(Prefs.LAST_VERSION, null)
+        val hasNewVersion = currentVersion != null && BuildConfig.VERSION_NAME != currentVersion
 
         var notifications = 0
         if (hasUnreadMessages) notifications++
