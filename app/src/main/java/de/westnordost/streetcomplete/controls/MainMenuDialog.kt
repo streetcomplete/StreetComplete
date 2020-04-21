@@ -2,9 +2,13 @@ package de.westnordost.streetcomplete.controls
 
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import androidx.appcompat.app.AlertDialog
+import androidx.core.view.doOnLayout
+import androidx.core.view.doOnPreDraw
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.ktx.toPx
 import de.westnordost.streetcomplete.settings.AboutActivity
 import de.westnordost.streetcomplete.settings.SettingsActivity
 import de.westnordost.streetcomplete.user.UserActivity
@@ -17,6 +21,7 @@ class MainMenuDialog(
 ) : AlertDialog(context, R.style.Theme_Bubble_Dialog) {
     init {
         val view = LayoutInflater.from(context).inflate(R.layout.dialog_main_menu, null)
+
         view.profileButton.setOnClickListener {
             val intent = Intent(context, UserActivity::class.java)
             context.startActivity(intent)
@@ -36,6 +41,11 @@ class MainMenuDialog(
             onClickDownload()
             dismiss()
         }
+
+        view.doOnPreDraw {
+            view.bigMenuItemsContainer.columnCount = view.width / view.profileButton.width
+        }
+
         setView(view)
     }
 }
