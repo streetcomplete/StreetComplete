@@ -11,9 +11,10 @@ import de.westnordost.streetcomplete.data.user.QuestStatisticsTable.Columns.SUCC
 import de.westnordost.streetcomplete.data.user.QuestStatisticsTable.NAME
 import de.westnordost.streetcomplete.ktx.*
 import java.util.concurrent.CopyOnWriteArrayList
+import javax.inject.Singleton
 
 /** Stores how many quests of which quest types the user solved */
-class QuestStatisticsDao @Inject constructor(private val dbHelper: SQLiteOpenHelper) {
+@Singleton class QuestStatisticsDao @Inject constructor(private val dbHelper: SQLiteOpenHelper) {
     private val db get() = dbHelper.writableDatabase
 
     interface Listener {
@@ -41,7 +42,7 @@ class QuestStatisticsDao @Inject constructor(private val dbHelper: SQLiteOpenHel
 
     fun replaceAll(amounts: Map<String, Int>) {
         db.transaction {
-            clear()
+            db.delete(NAME, null, null)
             for ((key, value) in amounts) {
                 db.insert(NAME, null, contentValuesOf(
                     QUEST_TYPE to key,
