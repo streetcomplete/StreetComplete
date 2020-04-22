@@ -19,9 +19,6 @@ class AnswersCounterView @JvmOverloads constructor(
     var uploadedCount: Int = 0
         @SuppressLint("SetTextI18n")
         set(value) {
-            if (value > field) {
-                animateChange()
-            }
             field = value
             textView.text = " $value "
         }
@@ -34,6 +31,14 @@ class AnswersCounterView @JvmOverloads constructor(
 
     init {
         inflate(context, R.layout.view_answers_counter, this)
+    }
+
+    fun setUploadedCount(uploadedCount: Int, animate: Boolean) {
+        if (this.uploadedCount < uploadedCount && animate) {
+            animateChange()
+        }
+        this.uploadedCount = uploadedCount
+
     }
 
     private fun animateChange() {

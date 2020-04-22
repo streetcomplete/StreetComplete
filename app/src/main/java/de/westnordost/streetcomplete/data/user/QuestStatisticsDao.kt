@@ -36,6 +36,7 @@ class QuestStatisticsDao @Inject constructor(private val dbHelper: SQLiteOpenHel
 
     fun clear() {
         db.delete(NAME, null, null)
+        listeners.forEach { it.onReplacedAll() }
     }
 
     fun replaceAll(amounts: Map<String, Int>) {

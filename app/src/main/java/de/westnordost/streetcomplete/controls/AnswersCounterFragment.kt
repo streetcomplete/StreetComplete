@@ -33,19 +33,25 @@ class AnswersCounterFragment : Fragment(R.layout.fragment_answers_counter),
     }
 
     private val unsyncedChangesCountListener = object : UnsyncedChangesCountListener {
-        override fun onUnsyncedChangesCountIncreased() { launch(Dispatchers.Main) { updateCount() }}
-        override fun onUnsyncedChangesCountDecreased() { launch(Dispatchers.Main) { updateCount() }}
+        override fun onUnsyncedChangesCountIncreased() { launch(Dispatchers.Main) { updateCount(true) }}
+        override fun onUnsyncedChangesCountDecreased() { launch(Dispatchers.Main) { updateCount(true) }}
     }
 
     private val questStatisticsListener = object : QuestStatisticsDao.Listener {
         override fun onAddedOne(questType: String) {
-            launch(Dispatchers.Main) { answersCounterView.uploadedCount++ }
+            launch(Dispatchers.Main) {
+                answersCounterView.setUploadedCount(answersCounterView.uploadedCount + 1, true)
+            }
         }
         override fun onSubtractedOne(questType: String) {
-            launch(Dispatchers.Main) { answersCounterView.uploadedCount-- }
+            launch(Dispatchers.Main) {
+                launch(Dispatchers.Main) {
+                    answersCounterView.setUploadedCount(answersCounterView.uploadedCount - 1, true)
+                }
+            }
         }
         override fun onReplacedAll() {
-            launch(Dispatchers.Main) { updateCount() }
+            launch(Dispatchers.Main) { updateCount(false) }
         }
     }
 
@@ -61,7 +67,7 @@ class AnswersCounterFragment : Fragment(R.layout.fragment_answers_counter),
          *  upload button, and shows the uploaded + uploadable amount of quests.
          */
         updateProgress(uploadProgressSource.isUploadInProgress)
-        updateCount()
+        updateCount(false)
         if (isAutosync) {
             uploadProgressSource.addUploadProgressListener(uploadProgressListener)
             unsyncedChangesCountSource.addListener(unsyncedChangesCountListener)
@@ -88,13 +94,10 @@ class AnswersCounterFragment : Fragment(R.layout.fragment_answers_counter),
         answersCounterView.showProgress = isUploadInProgress && isAutosync
     }
 
-    private fun updateCount() {
+    private fun updateCount(animated: Boolean) {
         /* if autosync is on, show the uploaded count + the to-be-uploaded count (but only those
            uploadables that will be part of the statistics, so no note stuff) */
-        if (isAutosync) {
-            answersCounterView.uploadedCount = questStatisticsDao.getTotalAmount() + unsyncedChangesCountSource.questCount
-        } else {
-            answersCounterView.uploadedCount = questStatisticsDao.getTotalAmount()
-        }
+        val amount = questStatisticsDao.getTotalAmount() + if (isAutosync) unsyncedChangesCountSource.questCount else 0
+        answersCounterView.setUploadedCount(amount, animated)
     }
 }
