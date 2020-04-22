@@ -52,8 +52,8 @@ import javax.inject.Singleton
 
     fun getNumberOfNotifications(): Int {
         val hasUnreadMessages = userStore.unreadMessagesCount > 0
-        val currentVersion = prefs.getString(Prefs.LAST_VERSION, null)
-        val hasNewVersion = currentVersion != null && BuildConfig.VERSION_NAME != currentVersion
+        val lastVersion = prefs.getString(Prefs.LAST_VERSION, null)
+        val hasNewVersion = lastVersion != null && BuildConfig.VERSION_NAME != lastVersion
 
         var notifications = 0
         if (hasUnreadMessages) notifications++
@@ -67,8 +67,10 @@ import javax.inject.Singleton
         val lastVersion = prefs.getString(Prefs.LAST_VERSION, null)
         if (BuildConfig.VERSION_NAME != lastVersion) {
             prefs.edit().putString(Prefs.LAST_VERSION, BuildConfig.VERSION_NAME).apply()
-            onNumberOfNotificationsUpdated()
-            return NewVersionNotification("v$lastVersion")
+            if (lastVersion != null) {
+                onNumberOfNotificationsUpdated()
+                return NewVersionNotification("v$lastVersion")
+            }
         }
 
         val newAchievement = newUserAchievementsDao.pop()
