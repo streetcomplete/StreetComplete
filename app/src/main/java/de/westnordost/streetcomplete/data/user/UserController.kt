@@ -51,9 +51,12 @@ import javax.inject.Singleton
         launch(Dispatchers.IO) {
             val userDetails = userApi.getMine()
             userStore.setDetails(userDetails)
-            launch {
-                avatarsDownloader.download(userDetails.id, userDetails.profileImageUrl)
-                userAvatarListeners.forEach { it.onUserAvatarUpdated() }
+            val profileImageUrl = userDetails.profileImageUrl
+            if (profileImageUrl != null) {
+                launch {
+                    avatarsDownloader.download(userDetails.id, profileImageUrl)
+                    userAvatarListeners.forEach { it.onUserAvatarUpdated() }
+                }
             }
             launch {
                 statisticsUpdater.updateFromBackend(userDetails.id)
