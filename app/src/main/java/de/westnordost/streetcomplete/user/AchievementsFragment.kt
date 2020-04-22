@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -14,6 +15,7 @@ import de.westnordost.streetcomplete.data.user.achievements.Achievement
 import de.westnordost.streetcomplete.data.user.achievements.UserAchievementsSource
 import de.westnordost.streetcomplete.ktx.awaitLayout
 import de.westnordost.streetcomplete.ktx.toDp
+import de.westnordost.streetcomplete.ktx.toPx
 import de.westnordost.streetcomplete.view.CircularOutlineProvider
 import de.westnordost.streetcomplete.view.GridLayoutSpacingItemDecoration
 import de.westnordost.streetcomplete.view.ListAdapter
@@ -32,6 +34,8 @@ class AchievementsFragment : Fragment(R.layout.fragment_achievements),
 
     @Inject internal lateinit var userAchievementsSource: UserAchievementsSource
 
+    private var actualCellWidth: Int = 0
+
     init {
         Injector.instance.applicationComponent.inject(this)
     }
@@ -46,7 +50,7 @@ class AchievementsFragment : Fragment(R.layout.fragment_achievements),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val ctx = requireContext()
-        val minCellWidth = 128f
+        val minCellWidth = 144f.toPx(ctx)
         val itemSpacing = ctx.resources.getDimensionPixelSize(R.dimen.achievements_item_margin)
 
         launch {
@@ -54,8 +58,8 @@ class AchievementsFragment : Fragment(R.layout.fragment_achievements),
 
             emptyText.visibility = View.GONE
 
-            val viewWidth = view.width.toFloat().toDp(ctx)
-            val spanCount = (viewWidth / minCellWidth).toInt()
+            val spanCount = (view.width / (minCellWidth + itemSpacing)).toInt()
+            actualCellWidth = (view.width.toFloat() / spanCount - itemSpacing).toInt()
 
             val layoutManager = GridLayoutManager(ctx, spanCount, RecyclerView.VERTICAL, false)
             achievementsList.layoutManager = layoutManager
@@ -78,8 +82,14 @@ class AchievementsFragment : Fragment(R.layout.fragment_achievements),
     private inner class AchievementsAdapter(achievements: List<Pair<Achievement, Int>>
     ) : ListAdapter<Pair<Achievement, Int>>(achievements) {
 
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
-            ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.cell_achievement, parent, false))
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+            val view = LayoutInflater.from(parent.context).inflate(R.layout.cell_achievement, parent, false)
+            view.updateLayoutParams {
+                width = actualCellWidth
+                height = actualCellWidth
+            }
+            return ViewHolder(view)
+        }
 
         inner class ViewHolder(itemView: View) : ListAdapter.ViewHolder<Pair<Achievement, Int>>(itemView) {
             override fun onBind(with: Pair<Achievement, Int>) {
