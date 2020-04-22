@@ -1,46 +1,46 @@
 package de.westnordost.streetcomplete.data.user
 
-import com.esotericsoftware.yamlbeans.YamlReader
+import de.westnordost.osmapi.common.Iso8601CompatibleDateFormat
 import de.westnordost.streetcomplete.ApplicationConstants
+import org.json.JSONObject
 import java.io.IOException
-import java.io.OutputStream
 import java.net.HttpURLConnection
 import java.net.URL
 
 /** Downloads statistics from the backend */
 class StatisticsDownloader(private val baseUrl: String) {
 
+    private val lastActivityDateFormat = Iso8601CompatibleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")
+
     fun download(osmUserId: Long): Statistics {
-        val connection = createConnection("download")
-        connection.requestMethod = "GET"
-        connection.doInput = true
-        connection.doOutput = true
-        connection.outputStream.writeText("id=$osmUserId")
-        when (connection.responseCode) {
-            HttpURLConnection.HTTP_OK -> {
-                return YamlReader(connection.inputStream.bufferedReader()).read(Statistics::class.java)
-            }
-            else -> {
-                val errorMessage = connection.responseMessage
-                val errorDescription = connection.errorStream?.bufferedReader()?.use { it.readText() }
-                throw IOException("${connection.responseCode} $errorMessage: $errorDescription")
+        (URL("$baseUrl?user_id=$osmUserId").openConnection() as HttpURLConnection).run {
+            useCaches = false
+            doOutput = true
+            doInput = true
+            setRequestProperty("User-Agent", ApplicationConstants.USER_AGENT)
+            requestMethod = "GET"
+            when (responseCode) {
+                HttpURLConnection.HTTP_OK -> {
+                    return parse(inputStream.bufferedReader().use { it.readText() })
+                }
+                else -> {
+                    val errorMessage = responseMessage
+                    val errorDescription = errorStream?.bufferedReader()?.use { it.readText() }
+                    throw IOException("$responseCode $errorMessage: $errorDescription")
+                }
             }
         }
     }
 
-    private fun createConnection(url: String): HttpURLConnection {
-        val connection = URL(baseUrl + url).openConnection() as HttpURLConnection
-        connection.useCaches = false
-        connection.doOutput = true
-        connection.doInput = true
-        connection.setRequestProperty("User-Agent", ApplicationConstants.USER_AGENT)
-        return connection
-    }
-}
-
-private fun OutputStream.writeText(text: String) {
-    bufferedWriter().use { writer ->
-        writer.write(text)
-        writer.close()
+    private fun parse(json: String): Statistics {
+        val obj = JSONObject(json)
+        val questTypesJson = obj.getJSONObject("questTypes")
+        val questTypes: MutableMap<String, Int> = mutableMapOf()
+        for (questType in questTypesJson.keys()) {
+            questTypes[questType] = questTypesJson.getInt(questType)
+        }
+        val daysActive = obj.getInt("daysActive")
+        val lastUpdate = lastActivityDateFormat.parse(obj.getString("lastUpdate"))
+        return Statistics(questTypes, daysActive, lastUpdate)
     }
 }

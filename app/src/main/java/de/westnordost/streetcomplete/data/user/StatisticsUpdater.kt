@@ -1,9 +1,7 @@
 package de.westnordost.streetcomplete.data.user
 
 import android.util.Log
-import de.westnordost.osmapi.common.Iso8601CompatibleDateFormat
 import de.westnordost.streetcomplete.data.user.achievements.AchievementGiver
-import java.io.IOException
 import java.util.*
 import javax.inject.Inject
 import javax.inject.Named
@@ -16,8 +14,6 @@ class StatisticsUpdater @Inject constructor(
     private val statisticsDownloader: StatisticsDownloader,
     @Named("QuestAliases") private val questAliases: List<Pair<String, String>>
 ){
-    private val lastActivityDateFormat = Iso8601CompatibleDateFormat("yyyy-MM-dd HH:mm:ss z")
-
     fun addOne(questType: String) {
         updateDaysActive()
 
@@ -46,8 +42,7 @@ class StatisticsUpdater @Inject constructor(
     fun updateFromBackend(userId: Long) {
         try {
             val statistics = statisticsDownloader.download(userId)
-            val lastUpdate = lastActivityDateFormat.parse(statistics.lastUpdate)
-            val backendDataIsUpToDate = lastUpdate.time / 1000 >= userStore.lastStatisticsUpdate.time / 1000
+            val backendDataIsUpToDate = statistics.lastUpdate.time / 1000 >= userStore.lastStatisticsUpdate.time / 1000
             if (!backendDataIsUpToDate) {
                 Log.i(TAG, "Backend data is not up-to-date")
                 return
@@ -57,12 +52,12 @@ class StatisticsUpdater @Inject constructor(
             mergeQuestAliases(newStatistics)
             questStatisticsDao.replaceAll(newStatistics)
             userStore.daysActive = statistics.daysActive
-            userStore.lastStatisticsUpdate = lastUpdate
+            userStore.lastStatisticsUpdate = statistics.lastUpdate
             // when syncing statistics from server, any granted achievements should be
             // granted silently (without notification) because no user action was involved
             achievementGiver.updateAllAchievements(silent = true)
             achievementGiver.updateAchievementLinks()
-        }  catch (e: IOException) {
+        }  catch (e: Exception) {
             Log.w(TAG, "Unable to download statistics", e)
         }
     }
