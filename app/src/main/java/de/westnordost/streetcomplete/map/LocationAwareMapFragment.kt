@@ -9,6 +9,7 @@ import android.location.Location
 import android.view.animation.DecelerateInterpolator
 import android.location.LocationManager
 import android.view.WindowManager
+import android.view.animation.AccelerateDecelerateInterpolator
 import androidx.core.content.edit
 import com.mapzen.tangram.*
 import de.westnordost.osmapi.map.data.LatLon
@@ -228,10 +229,10 @@ open class LocationAwareMapFragment : MapFragment() {
 
     protected fun followPosition() {
         if (!shouldCenterCurrentPosition()) return
-        val pos = displayedPosition ?: return
-
-        controller?.updateCameraPosition(500) {
-            position = pos
+        val controller = controller ?: return
+        val targetPosition = displayedPosition ?: return
+        controller.updateCameraPosition {
+            position = targetPosition
             if (!zoomedYet) {
                 zoomedYet = true
                 zoom = 19f

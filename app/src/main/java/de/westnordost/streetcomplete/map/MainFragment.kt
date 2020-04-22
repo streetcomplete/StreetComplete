@@ -416,6 +416,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
     private fun onLocationIsEnabled() {
         gpsTrackingButton.state = LocationState.SEARCHING
         mapFragment!!.startPositionTracking()
+        setIsFollowingPosition(true)
         locationManager.requestSingleUpdate()
     }
 
