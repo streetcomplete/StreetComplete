@@ -33,8 +33,8 @@ android {
         applicationId "de.westnordost.streetcomplete"
         minSdkVersion 17
         targetSdkVersion 28
-        versionCode 1801
-        versionName "18.0"
+        versionCode 1900
+        versionName "19.0-alpha1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField "String", "MAPZEN_API_KEY", MAPZEN_API_KEY
     }
