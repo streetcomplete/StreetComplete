@@ -35,8 +35,11 @@ class QuestDownloader @Inject constructor(
     @Synchronized fun download(tiles: TilesRect, maxQuestTypes: Int?, cancelState: AtomicBoolean) {
         if (cancelState.get()) return
 
+        progressListener?.onStarted()
         val questTypes = getQuestTypesToDownload(tiles, maxQuestTypes)
         if (questTypes.isEmpty()) {
+            progressListener?.onSuccess()
+            progressListener?.onFinished()
             return
         }
 
@@ -45,7 +48,6 @@ class QuestDownloader @Inject constructor(
         Log.i(TAG, "(${bbox.asLeftBottomRightTopString}) Starting")
         Log.i(TAG, "Quest types to download: ${questTypes.joinToString { it.javaClass.simpleName }}")
 
-        progressListener?.onStarted()
         try {
             // always first download notes, because note positions are blockers for creating other
             // quests
