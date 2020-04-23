@@ -174,12 +174,12 @@ import javax.inject.Singleton
 
     private fun updateConnectionState(): Boolean {
         val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        val info = connectivityManager.activeNetworkInfo ?: return false
+        val info = connectivityManager.activeNetworkInfo
 
-        val newIsConnected = info.isConnected
+        val newIsConnected = info?.isConnected ?: false
         // metered (usually ad-hoc hotspots) do not count as proper wifis
         val isMetered = connectivityManager.isActiveNetworkMetered
-        val newIsWifi = newIsConnected && info.type == ConnectivityManager.TYPE_WIFI && !isMetered
+        val newIsWifi = newIsConnected && info?.type == ConnectivityManager.TYPE_WIFI && !isMetered
 
         val result = newIsConnected != isConnected || newIsWifi != isWifi
 
