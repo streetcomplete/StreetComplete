@@ -1,5 +1,5 @@
 v19.0-alpha2: |
-  <p>I am sorry about this, by accident the alpha test version of v19 ended up on F-Droid. If you do not like to be an alpha tester, you should reinstall v18.<br/>Usually, only stable versions are published on F-Droid. If you like to be on the cutting edge in the future whenever I do not botch this up, you can watch </p>
+  <p>I am sorry about this, by accident the alpha test version of v19 ended up on F-Droid. If you do not like to be an alpha tester, you should reinstall v18.<br/>Usually, only stable versions are published on F-Droid. If you like to be on the cutting edge in the future whenever I do not botch this up, you can watch releases for <a href="https://github.com/westnordost/StreetComplete/releases/">StreetComplete</a></p>
   <h3>Fixes</h3>
   <ul>
   <li><strong>fix crash on startup if user has no OSM profile image</strong></li>
