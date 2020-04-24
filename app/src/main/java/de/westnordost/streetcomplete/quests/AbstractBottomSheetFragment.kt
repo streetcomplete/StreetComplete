@@ -35,12 +35,24 @@ abstract class AbstractBottomSheetFragment : Fragment(), IsCloseableBottomSheet 
 
     private val mainHandler = Handler(Looper.getMainLooper())
 
+    private var bottomSheetBottom: Int? = null
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        bottomSheet.addOnLayoutChangeListener { _, _, _, _, _, _, _, _, _ ->
+        bottomSheet.addOnLayoutChangeListener { _, _, _, _, bottom, _, _, _, _ ->
             // not immediately because this is called during layout change (view.getTop() == 0)
-            mainHandler.post { this.updateCloseButtonVisibility() }
+            val previousBottom = bottomSheetBottom
+            mainHandler.post {
+                updateCloseButtonVisibility()
+                val ctx = context
+                if (previousBottom != null && ctx != null) {
+                    val diffInDp = (bottom - previousBottom).toFloat().toDp(ctx)
+                    if (diffInDp > 150) onKeyboardOpened()
+                    else if (diffInDp < -150) onKeyboardClosed()
+                }
+            }
+            bottomSheetBottom = bottom
         }
 
         closeButton.setOnClickListener { activity?.onBackPressed() }
@@ -122,6 +134,14 @@ abstract class AbstractBottomSheetFragment : Fragment(), IsCloseableBottomSheet 
                 insets
             }
         }
+    }
+
+    private fun onKeyboardOpened() {
+        bottomSheetBehavior.state = STATE_EXPANDED
+    }
+
+    private fun onKeyboardClosed() {
+        // nothing really...
     }
 
     private fun updateCloseButtonVisibility() {
