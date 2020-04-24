@@ -2,15 +2,11 @@
 <resources>
     <string name="action_settings">"Pengaturan"</string>
     <string name="oauth_communication_error">"Tidak dapat menjangkau server yang terotorisasi"</string>
-    <string name="loading">"Memuat"</string>
     <string name="retry">"Coba lagi"</string>
-    <string name="oauth_cancelled">"Otorisasi dibatalkan"</string>
     <string name="oauth_failed_permissions">"Otorisasi gagal: Semua izin yang terdaftar harus diaktifkan"</string>
     <string name="title_activity_settings">"Pengaturan"</string>
     <string name="pref_category_communication">"Komunikas"</string>
     <string name="pref_category_display">"Tampilan"</string>
-    <string name="pref_title_authorization">"Otorisasi akses OSM"</string>
-    <string name="pref_title_not_authorized_summary">"Belum diotorisasi"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
     <string name="pref_tilecache_size_message">"Ruang penyimpanan eksternal (dalam megabita) untuk menyimpan cache ubin peta"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Tampilkan semua catatan"</string>
@@ -59,10 +55,8 @@
     <string name="download_area_too_big">"Harap perbesar lebih lanjut"</string>
     <string name="confirmation_cancel_prev_download_title">"Hentikan pecarian saat ini dan pindai di sini?"</string>
     <string name="notification_downloading">"Memindai pencarian..."</string>
-    <string name="now_downloading_toast">"Memindai untuk lebih banyak pencarian..."</string>
     <string name="turn_on_location_request">"Lokasi tidak aktif. Ingin membuka pengaturan sekarang untuk mengaktifkan?"</string>
     <string name="no_location_permission_warning">"Lokasi anda dibutuhkan untuk memindai pencarian di sekitar Anda."</string>
-    <string name="action_about">"Tentang StreetComplete"</string>
     <string name="about_title_authors">"Kredit"</string>
     <string name="about_summary_authors">"© 2016–2020 Tobias Zwick dan kontributor"</string>
     <string name="about_title_repository">"Repositori Sumber"</string>
@@ -313,7 +307,6 @@ Jika tidak ada tanda disepanjang jalan yang dapat diterima sesuai bagian yang di
     <string name="quest_way_lit_road_title">"Apakah jalan ini diterangi"</string>
     <string name="quest_way_lit_automatic">"Ini menggunakan deteksi gerak"</string>
     <string name="quest_way_lit_24_7">"Terang siang dan malam"</string>
-    <string name="pref_title_authorized_username_summary">"Akun Diautorisasi: %s"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Tidak dapat memindai disini. Coba memperbesar peta atau kurangi kemiringannya."</string>
     <string name="quest_crossing_type_title">"Apa tipe penyeberangan ini?"</string>
     <string name="quest_crossing_type_signals">"Penyeberangan dengan lampu merah"</string>
@@ -342,11 +335,9 @@ Jika tidak ada tanda disepanjang jalan yang dapat diterima sesuai bagian yang di
     <string name="quest_address_house_name_label">"Nama rumah:"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"Jumlah lantai di atap"</string>
     <string name="quest_buildingLevels_levelsLabel2">"Jumlah lantai (atap tidak dihitung)"</string>
-    <string name="pref_title_authorized_summary">"Diverifikasi"</string>
     <string name="quest_buildingLevels_answer_multipleLevels">"Beda tiap bagian bangunan"</string>
     <string name="quest_buildingLevels_answer_description">"Dalam hal ini, cukup masukkan nilai bagian bangunan yang paling besar."</string>
     <string name="unglue_hint">"Sentuh untuk melepaskan pandangan dari posisi"</string>
-    <string name="pref_title_not_authorized_summary2">"Log in dari web browsermu untuk mengautorisasi"</string>
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Apakah lajur jalan disini dipisah secara fisik (seper)"</string>
     <string name="about_category_feedback">"Umpan balik"</string>
     <string name="quest_leave_new_note_photo">"Lampirkan foto"</string>
@@ -522,11 +513,6 @@ Jika tidak ada tanda disepanjang jalan yang dapat diterima sesuai bagian yang di
     <string name="quest_leave_new_note_photos_are_useful">"Menambah foto dapat menambah guna catatan."</string>
     <string name="quest_postboxCollectionTimes_name_title">"Kapan waktu pengambilan kotak pos %s ini?"</string>
     <string name="create_new_note_hint">"Sebaiknya tulis catatan dengan bahasa lokal atau inggris."</string>
-    <string name="about_contributing">"Jawabanmu secara langsung membantu OpenStreetMap. Data yang dikontribusi terbuka, semua bisa menggunakan. Banyak proyek besar sudah menggunakannya."</string>
-    <string name="about_missing_stars">"Saat ini, perhitungan bintang tidak dihitung sama di perangkat lain, tapi jawaban langsung ditambahkan ke database OpenStreetMap."</string>
-    <string name="how_to_get_stars">"Pilih salah satu tanda di peta dan mulai menjawab pertanyaan. Dengan ini kamu akan meningkatkan data OpenStreetMap dan mendapat bintang. Jika kamu tidak melihat ada tanda mungkin kamu perlu memperkecil peta."</string>
-    <string name="oauth_remove_authorization_dialog_message">"apa kamu ingin melepas autorisasi untuk akun OSM-mu?"</string>
-    <string name="oauth_remove_authorization_confirmation">"Lepas"</string>
     <string name="quest_leafType_title">"Apa pohon disini punya duri atau daun?"</string>
     <string name="quest_leaf_type_needles">"Duri"</string>
     <string name="quest_leaf_type_broadleaved">"Berdaun"</string>

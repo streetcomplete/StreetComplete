@@ -2,15 +2,11 @@
 <resources>
     <string name="action_settings">"Nastavenia"</string>
     <string name="oauth_communication_error">"Autorizačný server je nedostupný"</string>
-    <string name="loading">"Načítavam"</string>
     <string name="retry">"Znova"</string>
-    <string name="oauth_cancelled">"Autorizácia zrušená"</string>
     <string name="oauth_failed_permissions">"Autorizácia zlyhala: Všetky oprávnenia v zozname musia byť udelené"</string>
     <string name="title_activity_settings">"Nastavenia"</string>
     <string name="pref_category_communication">"Komunikácia"</string>
     <string name="pref_category_display">"Zobrazenie"</string>
-    <string name="pref_title_authorization">"Autorizovať prístup k OSM"</string>
-    <string name="pref_title_not_authorized_summary">"Zatiaľ neautorizované"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
     <string name="pref_tilecache_size_message">"Veľkosť v megabajtoch rezervovaná na externom zariadení, kam sa ukladajú dlaždice mapy"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Zobraziť všetky poznámky"</string>
@@ -63,10 +59,8 @@
     <string name="download_area_too_big">"Prosím, ešte priblížte"</string>
     <string name="confirmation_cancel_prev_download_title">"Zastaviť aktuálne vyhľadávanie a hľadať radšej tu?"</string>
     <string name="notification_downloading">"H"</string>
-    <string name="now_downloading_toast">"Hľadám viac úloh..."</string>
     <string name="turn_on_location_request">"Lokalizácia je vypnutá. Otvoriť nastavenia teraz?"</string>
     <string name="no_location_permission_warning">"Vaša poloha je potrebná pre vyhľadávanie úloh vo vašom okolí."</string>
-    <string name="action_about">"O StreetComplete"</string>
     <string name="about_title_authors">"Autori"</string>
 
     <!-- Fuzzy -->
@@ -341,7 +335,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="quest_way_lit_road_title">"Je tento úsek cesty osvetlený?"</string>
     <string name="quest_way_lit_automatic">"Používa detekciu pohybu"</string>
     <string name="quest_way_lit_24_7">"Osvetlené deň a noc"</string>
-    <string name="pref_title_authorized_username_summary">"Autorizovaný účet: %s"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Nie je tu možné vyhľadať úlohy. Skúste ešte priblížiť mapu alebo ju menej nakloniť."</string>
     <string name="quest_crossing_type_title">"Akého typu je tento prechod?"</string>
     <string name="quest_crossing_type_signals">"Prechod so semaforom"</string>
@@ -370,13 +363,11 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="quest_address_house_name_label">"Názov budovy:"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"poschodí v streche"</string>
     <string name="quest_buildingLevels_levelsLabel2">"normálne poschodia (bez strechy)"</string>
-    <string name="pref_title_authorized_summary">"Autorizované"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingLevels_answer_multipleLevels">"závisí od časti budovy"</string>
     <string name="quest_buildingLevels_answer_description">"V tom prípade zadajte hodnoty pre najvyššiu časť budovy."</string>
     <string name="unglue_hint">"Ťapnutím odlepíte z pozície"</string>
-    <string name="pref_title_not_authorized_summary2">"Pre autorizáciu sa prihláste z webového prehliadača"</string>
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Sú vozovky fyzicky oddelené (napr. bariérou)? Obmedzenie rýchlosti môže byť v každom prípade iné."</string>
     <string name="about_category_feedback">"Spätná väzba"</string>
     <string name="quest_leave_new_note_photo">"Pridať fotku"</string>

@@ -2,15 +2,11 @@
 <resources>
     <string name="action_settings">"設定"</string>
     <string name="oauth_communication_error">"無法連接到驗證伺服器"</string>
-    <string name="loading">"載入中"</string>
     <string name="retry">"重試"</string>
-    <string name="oauth_cancelled">"取消驗證"</string>
     <string name="oauth_failed_permissions">"驗證失敗：所有列出的請求都須許可"</string>
     <string name="title_activity_settings">"設定"</string>
     <string name="pref_category_communication">"通訊"</string>
     <string name="pref_category_display">"顯示"</string>
-    <string name="pref_title_authorization">"驗證開放街圖存取"</string>
-    <string name="pref_title_not_authorized_summary">"尚未驗證"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
     <string name="pref_tilecache_size_message">"MB為單位的空間保留用來暫存地圖圖磚"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"顯示所有註記"</string>
@@ -63,10 +59,8 @@
     <string name="download_area_too_big">"請拉近一點"</string>
     <string name="confirmation_cancel_prev_download_title">"取消目前的搜尋並以搜尋這裡取代？"</string>
     <string name="notification_downloading">"正在搜尋任務"</string>
-    <string name="now_downloading_toast">"搜尋更多任務"</string>
     <string name="turn_on_location_request">"定位已關閉。到設定中開啟它？"</string>
     <string name="no_location_permission_warning">"你的位置會被用在搜尋身邊的任務上"</string>
-    <string name="action_about">"關於 StreetComplete"</string>
 
     <!-- Fuzzy -->
     <string name="about_title_authors">"作者"</string>
@@ -389,7 +383,6 @@
     <string name="quest_way_lit_road_title">"這段道路有照明設施嗎？"</string>
     <string name="quest_way_lit_automatic">"使用動態偵測"</string>
     <string name="quest_way_lit_24_7">"不分日夜照明"</string>
-    <string name="pref_title_authorized_username_summary">"認證帳號：%s"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"在這裡無法掃描。請進一步放大或是傾斜地圖程度小點。"</string>
     <string name="quest_crossing_type_title">"這是哪種交叉口?"</string>
     <string name="quest_crossing_type_signals">"有交通號誌的路口"</string>
@@ -418,13 +411,11 @@
     <string name="quest_address_house_name_label">"房屋名稱："</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"屋頂樓層數"</string>
     <string name="quest_buildingLevels_levelsLabel2">"一般的樓層數 (不計算屋頂)"</string>
-    <string name="pref_title_authorized_summary">"驗證"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingLevels_answer_multipleLevels">"建築部分的不同"</string>
     <string name="quest_buildingLevels_answer_description">"在這一個例子，簡單填寫建築部分最高樓層數值。"</string>
     <string name="unglue_hint">"從位置點取消界限視圖"</string>
-    <string name="pref_title_not_authorized_summary2">"經由你的瀏覽器登入來認證帳號"</string>
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"這條路的車道是否實體分隔(例如有障礙物)？預設速限依照上述設定決定或為否。"</string>
     <string name="about_category_feedback">"回饋"</string>
     <string name="quest_leave_new_note_photo">"附件照片"</string>
@@ -718,11 +709,6 @@
     <string name="quest_ferry_motor_vehicle_title">"這邊的輪船是能載運機動車輛嗎？ "</string>
     <string name="quest_leave_new_note_photos_are_useful">"如果能加上照片會讓註解更有用。"</string>
     <string name="create_new_note_hint">"最好用當地的語言撰寫註解，不然就請用英文。"</string>
-    <string name="about_contributing">"你的答案能夠直接增進開放街圖，貢獻的資料是開放的，每一位都能使用，許多很好的專案已經在運用了。"</string>
-    <string name="about_missing_stars">"目前，星等計算不會跨裝置分享，但答案會直接加進開放街圖資料庫。"</string>
-    <string name="how_to_get_stars">"選擇其他一個地圖上的標記，並且回答問題，這樣你能增進開放街圖資料，並且給予星等，如果沒看到標記你需要縮小地圖。"</string>
-    <string name="oauth_remove_authorization_dialog_message">"目前已連結OSM帳號，你想撤消嗎？"</string>
-    <string name="oauth_remove_authorization_confirmation">"撤消"</string>
     <string name="quest_leafType_title">"這些樹是針葉還是闊葉？"</string>
     <string name="quest_leaf_type_needles">"針葉"</string>
     <string name="quest_leaf_type_broadleaved">"闊葉"</string>
@@ -743,7 +729,6 @@
     <string name="quest_maxweight_unusualInput_confirmation_description">"重量的數量看來怪怪的，你確定輸入正確數值嗎？"</string>
     <string name="quest_maxweight_answer_other_sign">"指標看來不同…"</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"你想要留下註解嗎？像是有留下留片的註解，能夠讓其他圖客接手處理。"</string>
-    <string name="confirmation_authorize_now_note">"你可以稍後在設定頁面進行。"</string>
     <string name="quest_laundrySelfService_title">"這個洗衣店是自助服務嗎？"</string>
     <string name="quest_handrail_title">"這條階梯有扶手嗎？"</string>
     <string name="quest_openingHours_no_name_title">"這地方的開放時間是？(%s)"</string>

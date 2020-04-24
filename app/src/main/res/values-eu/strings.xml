@@ -2,15 +2,11 @@
 <resources>
     <string name="action_settings">"Ezarpenak"</string>
     <string name="oauth_communication_error">"Ezin izan da atzitu baimen-zerbitzaria"</string>
-    <string name="loading">"Kargatzen"</string>
     <string name="retry">"Saiatu berriro"</string>
-    <string name="oauth_cancelled">"Baimena bertan behera utzi da"</string>
     <string name="oauth_failed_permissions">"Baimenak huts egin du: Zerrendako baimen guztiak eman behar dira"</string>
     <string name="title_activity_settings">"Ezarpenak"</string>
     <string name="pref_category_communication">"Komunikazioa"</string>
     <string name="pref_category_display">"Pantaila"</string>
-    <string name="pref_title_authorization">"Baimendu OSM sarrera"</string>
-    <string name="pref_title_not_authorized_summary">"Oraindik baimendu gabe"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
     <string name="pref_tilecache_size_message">"Maparen lauzak kanpo-biltegian gordetzeko espazioa megabytetan"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Erakutsi ohar guztiak"</string>
@@ -61,10 +57,8 @@
     <string name="download_area_too_big">"Hurbildu zooma gehiago"</string>
     <string name="confirmation_cancel_prev_download_title">"Utzi abian dagoen bilaketa eta bilatu hemen ordez?"</string>
     <string name="notification_downloading">"Erronkak bilatzen…"</string>
-    <string name="now_downloading_toast">"Erronka gehiago bilatzen…"</string>
     <string name="turn_on_location_request">"Kokapena itzalita dago. Ezarpenak ireki orain pizteko?"</string>
     <string name="no_location_permission_warning">"Zure kokalekua behar da inguruko erronkak bilatzeko."</string>
-    <string name="action_about">"StreetComplete-i buruz"</string>
     <string name="about_title_authors">"Kredituak"</string>
 
     <!-- Fuzzy -->
@@ -346,7 +340,6 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_way_lit_road_title">"Kalearen zati hau argituta al dago?"</string>
     <string name="quest_way_lit_automatic">"Mugimendu-antzematea darabil"</string>
     <string name="quest_way_lit_24_7">"Gau eta egunez dago argituta"</string>
-    <string name="pref_title_authorized_username_summary">"Baimendutako kontua: %s"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Ezin da hemen eskaneatu. Saiatu zooma hurbiltzen."</string>
     <string name="quest_crossing_type_title">"Zein motako bidegurutzea da hau?"</string>
     <string name="quest_crossing_type_signals">"Semaforoak dituen bidegurutzea"</string>
@@ -375,13 +368,9 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_address_house_name_label">"Etxearen izena:"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"Pisuak teilatuan"</string>
     <string name="quest_buildingLevels_levelsLabel2">"Pisu arruntak (teilatukoak zenbatu gabe)"</string>
-    <string name="pref_title_authorized_summary">"Baimenduta"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingLevels_answer_multipleLevels">"desberdina eraikinaren partearen arabera"</string>
+    <string name="quest_buildingLevels_answer_multipleLevels">"Desberdina eraikinaren partearen arabera"</string>
     <string name="quest_buildingLevels_answer_description">"Kasu horretan, sartu eraikinaren parte altuenaren datuak."</string>
     <string name="unglue_hint">"Sakatu ikuspegia kokalekutik deslotzeko"</string>
-    <string name="pref_title_not_authorized_summary2">"Hasi saioa nabigatzailetik baimena eman ahal izateko"</string>
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Errepide honetako galtzadak fisikoki banatuta daude (adib. langa baten bidez)? Lehenetsitako abiadura muga honen menpekoa da."</string>
     <string name="about_category_feedback">"Iruzkinak"</string>
     <string name="quest_leave_new_note_photo">"Erantsi argazkia"</string>
@@ -469,7 +458,7 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_surface_value_unhewn_cobblestone">"Landu gabeko galtzadarria"</string>
     <string name="quest_parking_access_title">"Hemen nork aparkatu dezakeen murriztuta dago?"</string>
     <string name="quest_parking_access_private">"Pribatua da"</string>
-    <string name="quest_parking_access_yes">"Publikoa da (sarrera ordainduz edo ez)"</string>
+    <string name="quest_parking_access_yes">"Publikoari irekia dago (sarrera ordainduz edo ez)"</string>
     <string name="quest_parking_access_customers">"Bezeroentzako soilik da"</string>
     <string name="quest_streetName_pedestrian_title">"Zein da oinezkoen kale honen izena?"</string>
     <string name="quest_streetSurface_square_title">"Zein da enparantza honen zoladura?"</string>
@@ -671,11 +660,6 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_leave_new_note_photos_are_useful">"Argazki bat gehitzeak oharra askoz erabilgarriago bihurtuko du."</string>
     <string name="quest_postboxCollectionTimes_name_title">"Zeintzuk dira %s postontzi honen bilketa orduak?"</string>
     <string name="create_new_note_hint">"Hobe oharra tokiko hizkuntzan idazten baduzu, edo bestela ingelesez."</string>
-    <string name="about_contributing">"Zure erantzunek OpenStreetMap zuzenean hobetzen dute. Emandako datuak irekiak dira, edonork erabili ditzake. Proiektu zoragarri askok erabiltzen dituzte jada."</string>
-    <string name="about_missing_stars">"Orain, izarren kontaketa ez da gailuen artean partekatzen, baina erantzunak zuzenean gehitzen dira OpenStreetMap datu-basera."</string>
-    <string name="how_to_get_stars">"Hautatu mapako markatzaileren bat eta erantzun galdera. Honela OpenStreetMap-eko datuak hobetuko dituzu eta izarrak jaso. Ez baduzu markatzailerik ikusten agian maparen zooma urrundu behar duzu."</string>
-    <string name="oauth_remove_authorization_dialog_message">"Zure OSM kontua erabiltzeko baimeana kendu nahi duzu?"</string>
-    <string name="oauth_remove_authorization_confirmation">"Kendu"</string>
     <string name="quest_leafType_title">"Zuhaitzek hostoak ala orratzak dituzte?"</string>
     <string name="quest_leaf_type_needles">"Orratzak"</string>
     <string name="quest_leaf_type_broadleaved">"Hosto zabalak"</string>
@@ -695,7 +679,6 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_maxweight_unusualInput_confirmation_description">"Pisu hori ezohikoa da. Ziur hori dela pisu zuzena?"</string>
     <string name="quest_maxweight_answer_other_sign">"Seinalea desberdina dirudi…"</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"Ohar bat utzi nahi duzu? Argazkia daraman ohar batek beste mapa egileei gaiari heltzen lagunduko die."</string>
-    <string name="confirmation_authorize_now_note">"Geroago egin dezakezu ezarpenen pantailan."</string>
     <string name="quest_generalFee_title">"%s(e)n sartzeko ordaindu beharra al dago?"</string>
     <string name="quest_laundrySelfService_title">"Garbileku honetan norberak erabiltzen ditu garbigailuak?"</string>
     <string name="quest_handrail_title">"Eskailera hauek heldulekua daukate?"</string>
@@ -745,4 +728,99 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_recycling_materials_answer_waste">"Zabor orokorrarentzat da"</string>
     <string name="quest_recycling_materials_answer_waste_description">"Beraz, hau denetariko zaborrarentzako edukiontzi bat da, esaterako etxeko-zabor poltsak edo dendetako zaborra?"</string>
     <string name="quest_accepts_cash_title">"%s(e)k eskudiruz ordaintzea onartzen du?"</string>
+    <string name="user_profile">"Nire profila"</string>
+    <string name="user_login">"Hasi saioa"</string>
+    <string name="user_logout">"Amaitu saioa"</string>
+    <string name="osm_profile">"OSM profila"</string>
+    <string name="next">"Hurrengoa"</string>
+    <string name="letsgo">"Goazen!"</string>
+    <string name="tutorial_welcome_to_osm">"Ongi etorri OpenStreetMap-era"</string>
+    <string name="tutorial_welcome_to_osm_subtitle">"munduko wiki mapa librea"</string>
+    <string name="tutorial_intro">"StreetComplete-k erraz jartzen dizu OpenStreetMap hobetzea. Automatikoki bilatzen ditu zure inguruan falta diren xehetasunak: bidegorriak, etxeen zenbakiak, irekiera orduak eta askoz gehiago..."</string>
+    <string name="tutorial_solving_quests">"Behin aurkituta, falta diren xehetasunak zure mapan agertuko dira erronka gisa.
+
+Berehala hasi zaitezke hauek ebazten eta geroago saioa hasi zure erantzunak argitaratzeko."</string>
+    <string name="tutorial_stay_safe">"Ziur ez zaudenean, \"Ez dakit\" erantzutea duzu eta ohar bat ere utzi dezakezu.
+
+Bukatzeko, tentuz ibili: Adi zure inguruneari eta ez sartu jabetza pribatuko eremuetan."</string>
+    <string name="tutorial_happy_mapping">"Ondo mapeatu!"</string>
+    <string name="achievements_empty">"Ez duzu lorpenik oraindik"</string>
+    <string name="links_empty">"Ez duzu estekarik oraindik"</string>
+    <string name="quests_empty">"Ez duzu erronkaren erantzunik argitaratu oraindik"</string>
+    <string name="unsynced_quests_description">"eta oraindik argitaratu gabeko %d aldaketa."</string>
+    <string name="unsynced_quests_not_logged_in_description">"Oraindik argitaratu gabeko %d aldaketa dituzu. Saioa hasi behar duzu hauek igotzeko."</string>
+    <string name="user_quests_title">"Ebatzitako erronkak"</string>
+    <string name="user_achievements_title">"Lorpenak"</string>
+    <string name="user_links_title">"Esteka bilduma"</string>
+    <string name="user_profile_title">"Profila"</string>
+    <string name="user_statistics_quest_wiki_link">"Dokumentazioa"</string>
+    <string name="achievements_unlocked_link">"Desblokeatutako esteka:"</string>
+    <string name="achievements_unlocked_links">"Desblokeatutako estekak:"</string>
+    <string name="link_category_intro_title">"Sarrera"</string>
+    <string name="link_category_intro_description">"OSM eta bere komunitateari buruz gehiago"</string>
+    <string name="link_category_editors_title">"Parte-hartzea"</string>
+    <string name="link_category_editors_description">"Editoreak eta OpenStreetMap-en parte-hartzeko modu gehiago"</string>
+    <string name="link_category_maps_title">"Mapak"</string>
+    <string name="link_category_maps_description">"OpenStreetMap-en oinarritutako mapak"</string>
+    <string name="link_category_showcase_title">"Erakusleihoa"</string>
+    <string name="link_category_showcase_description">"OpenStreetMap-en oinarritutako zerbitzu eta aplikazioak"</string>
+    <string name="link_category_goodies_title">"Mokaduak"</string>
+    <string name="link_category_goodies_description">"Mapekin zerikusia duten gauzak, zuk probatzeko"</string>
+    <string name="link_cyclosm_description">"Txirrindularientzako mapa"</string>
+    <string name="link_wheelmap_description">"Gurpildun aulkiarentzat irisgarriak diren tokiak aurkitzeko mapa"</string>
+    <string name="link_osm_buildings_description">"Eraikinak 3D-n erakusten dituen mapa"</string>
+    <string name="link_openvegemap_description">"Aurkitu jatetxe begetariano eta beganoak zure hirian"</string>
+    <string name="link_touch_mapper_description">"Sortu ukimen mapak erraz edozein helbiderako"</string>
+    <string name="link_mapy_tactile_description">"Ikusmen ezintasunak dituztenentzako ukimen mapak hainbat eskalatan"</string>
+    <string name="link_josm_description">"OSM editore osoa mahaigainerako. Hau ohiko parte-hartzaileen tresna ahaltsua da."</string>
+    <string name="link_vespucci_description">"OSM editore aurreratua Android plataformarako"</string>
+    <string name="link_ideditor_description">"OSM editore sinplea nabigatzailearentzat. Mahaigainerako edo tablet handientzako optimizatua"</string>
+    <string name="link_umap_description">"Sortu azkar mapak datu propioekin eta txertatu zure gunean"</string>
+    <string name="link_opnvkarte_description">"Garraio publikoaren ibilbide eta geltokien mapa"</string>
+    <string name="link_pic4review_description">"Parte-hartu OSM-n zure hiriko irudiak begiratuz"</string>
+    <string name="link_wiki_description">"Wiki hau OpenStreetMap-ekin zerikusia duen guztiarentzako hasiera puntu bat da"</string>
+    <string name="link_learnosm_description">"Berria OpenStreetMap-en? Hau hasberrien gida bat da"</string>
+    <string name="link_neis_one_description">"OpenStreetMap parte-hartzaileen estatistiken bilduma erraldoi bat, non eta nola parte-hartu duzun, beste nortzuk daude inguruan eta sailkapen taulak"</string>
+    <string name="link_welcome_mat_description">"OpenStreetMap-i buruzko informazio orokorra eta nola lan egon OSM-rekin erakunde gisa"</string>
+    <string name="link_mapillary_description">"Kale mailako argazkiak partekatzeko zerbitzu eta aplikazioa, OSM-n laguntzeko erabiltzeko baimen esplizituarekin"</string>
+    <string name="link_openstreetcam_description">"Kale mailako argazkiak partekatzeko zerbitzu eta aplikazioa, OSM-n laguntzeko erabiltzeko baimen esplizituarekin"</string>
+    <string name="link_openrouteservice_wheelchair_description">"Biraz birako nabigazioa gurpildun aulkia darabiltenentzako"</string>
+    <string name="link_nominatim_description">"OSM datuen geokodetzailea, zerbitzu askok erabilia"</string>
+    <string name="link_city_roads_description">"Marraztu hiri bateko bide guztiak, kamisetetan, katiluetan... inprimatzeko"</string>
+    <string name="link_myosmatic_description">"Sortu inprimatzeko moduko hiriko mapak urrats gutxi batzuekin, aukeran kale aurkibidearekin"</string>
+    <string name="link_brouter_description">"Agian, txirrindularientzako ibilbide motor onena"</string>
+    <string name="link_show_me_the_way_description">"Ikusi OSM edizioak gertatu ahala"</string>
+    <string name="link_osrm_description">"Inguruko ibilbide motor azkarrena"</string>
+    <string name="link_openrouteservice_description">"Hainbat ibilgailu eta oinezkoentzako ibilbide kalkulua, bakoitza bere hobespenekin. Isokronoak ere erakutsi ditzake (Abiapuntu batetik denbora batean irisgarriak den eremua)"</string>
+    <string name="link_osm_haiku_description">"Erabili OSM datuak haiku bat sortzeko (Japoniako poesia forma bat)"</string>
+    <string name="link_openinframap_description">"Argindarra, telekomunikazioak, gasa eta olio azpiegitura erakusten dituen mapa"</string>
+    <string name="link_openorienteeringmap_description">"Sortu inprimatzeko moduko mapak orientazio kirolarentzat"</string>
+    <string name="link_openstreetbrowser_description">"OpenStreetMap ezaugarriak kategoriako arakatzeko mapa"</string>
+    <string name="link_weeklyosm_description">"OpenStreetMap munduan gertatzen ari denaren asteroko berri bloga"</string>
+    <string name="link_figuregrounder_description">"Sortu hiri edo auzoetako diagrama posterrak"</string>
+    <string name="achievement_first_edit_title">"Lehen erroka ebatzita"</string>
+    <string name="achievement_first_edit_description">"Ongi etorri OpenStreetMap komunitatera! Zure profilaren pantailan, ebatzi duzun erronka mota bakoitzaren informazio gehiago aurkitu dezakezu."</string>
+    <string name="achievement_surveyor_title">"Neurtzailea"</string>
+    <string name="achievement_surveyor_solved_X">"%d erronka ebatzi dituzu! Ekin lorpen gehiago eskuratzeko, OSM eta mapekin zerikusia duten beste proiektuen estekekin!"</string>
+    <string name="achievement_regular_title">"Ohikoa"</string>
+    <string name="achievement_regular_description">"%d egunez hartu duzu parte aplikazio honekin! Ohiko parte-hartzaileak OSM-ren bizkarrezurra dira, eskerrik asko zure laguntzagatik!"</string>
+    <string name="achievement_bicyclist_title">"Txirrindularia"</string>
+    <string name="achievement_bicyclist_solved_X">"Txirrindularientzako lagungarriak diren %d erronka ebatzi dituzu!"</string>
+    <string name="achievement_wheelchair_title">"Higikortasuna"</string>
+    <string name="achievement_wheelchair_solved_X">"Gurpildun aulkia darabilenenei hirian mugitzeko lagungarriak zaizkien %d erronka ebatzi dituzu!"</string>
+    <string name="achievement_postman_title">"Postaria"</string>
+    <string name="achievement_postman_solved_X">"%d helbide aurkitzen lagundu duzu! Datu hauek ezinbestekoak dira, ez bakarrik postarientzat, baizik eta edozein nabigazio sistemarentzat."</string>
+    <string name="achievement_building_title">"Etxe-orratza"</string>
+    <string name="achievement_building_solved_X">"Eraikinekin zerikusia duten %d erronka ebatzi dituzu.
+Kontuan izan aplikazio honek eraikin baten zenbakia, behin zein motakoa denean jakin eta gero eskatzen duela."</string>
+    <string name="achievement_blind_title">"Seigarren zentzumena"</string>
+    <string name="achievement_blind_solved_X">"Ikusmen ezintasunak dituztenentzako lagungarriak diren %d erronka ebatzi dituzu"</string>
+    <string name="achievement_pedestrian_title">"Korrikalaria"</string>
+    <string name="achievement_pedestrian_solved_X">"Oinezkoentzako interesgarriak diren %d erronka ebatzi dituzu!"</string>
+    <string name="achievement_veg_title">"Animaliekin adeitsua"</string>
+    <string name="achievement_veg_solved_X">"Haragirik jaten ez dituztenentzako %d erronka ebatzi dituzu!"</string>
+    <string name="achievement_car_title">"Errepidean"</string>
+    <string name="achievement_car_solved_X">"Bide azpiegituraren xehetasuna hobetzen duten %d erronka ebatzi dituzu. OpenStreetMap-eko street!"</string>
+    <string name="unread_messages_message">"Irakurri gabeko %d mezu dituzu sarrera-ontzian"</string>
+    <string name="unread_messages_button">"Ireki sarrera ontzia"</string>
 </resources>

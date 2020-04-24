@@ -74,6 +74,10 @@
             "name": "Waste Transfer Station",
             "terms": "dump,garbage,recycling,rubbish,scrap,trash"
         },
+        "railway/monorail/hanging": {
+            "name": "Hanging Monorail Track",
+            "terms": "suspension railway"
+        },
         "building/ruins": {
             "name": "Building Ruins",
             "terms": ""
@@ -255,6 +259,9 @@
             "name": "Emergency Phone",
             "terms": ""
         },
+        "disused/shop": {
+            "name": "Disused Shop"
+        },
         "golf/bunker": {
             "name": "Sand Trap",
             "terms": "hazard,bunker"
@@ -357,6 +364,10 @@
             "name": "Driving Range",
             "terms": ""
         },
+        "highway/path/boardwalk": {
+            "name": "Boardwalk",
+            "terms": "pier,plank walkway,wooden raised foot path"
+        },
         "leisure/fishing": {
             "name": "Fishing Spot",
             "terms": "angler"
@@ -405,7 +416,7 @@
             "terms": ""
         },
         "aerialway/gondola": {
-            "name": "Gondola",
+            "name": "Gondola Lift",
             "terms": "aerial cable,lift,skiing,snowboarding"
         },
         "shop/window_blind": {
@@ -553,7 +564,7 @@
             "terms": "drilling rig,oil derrick,oil drill,oil horse,oil rig,oil pump,petroleum well,pumpjack"
         },
         "railway/rail/highspeed": {
-            "name": "High-Speed Rail",
+            "name": "High-Speed Train Track",
             "terms": "bullet train,fast rail,high speed rail,highspeed rail,HSR"
         },
         "shop/clothes/second_hand": {
@@ -900,7 +911,7 @@
             "terms": "coffee"
         },
         "landuse/military/training_area": {
-            "name": "Training Area",
+            "name": "Military Training Area",
             "terms": "air force,army,base,fight,fire,force,guard,gun,marine,navy,rifle,shoot*,snip*,train,troop,war"
         },
         "playground/horizontal_bar": {
@@ -920,8 +931,8 @@
             "terms": ""
         },
         "railway/tram": {
-            "name": "Tram",
-            "terms": "light rail,streetcar,tram,trolley"
+            "name": "Tram Track",
+            "terms": "electric street railway,light rail,streetcar,tramway,trolley"
         },
         "power/minor_line": {
             "name": "Minor Power Line",
@@ -1073,7 +1084,7 @@
             "terms": ""
         },
         "shop/frozen_food": {
-            "name": "Frozen Food",
+            "name": "Frozen Food Store",
             "terms": ""
         },
         "attraction/drop_tower": {
@@ -1452,8 +1463,8 @@
             "terms": "burial ground,cemetary,cemetery,churchyard,columbarium,grave yard,graveyard,mausoleum,tomb"
         },
         "railway/rail": {
-            "name": "Rail",
-            "terms": "rail line,railroad track,train track"
+            "name": "Train Track",
+            "terms": "permanent way,rail line,railroad track,railway track,track,train track"
         },
         "amenity/vending_machine/newspapers": {
             "name": "Newspaper Vending Machine",
@@ -1486,6 +1497,10 @@
         "historic/monument": {
             "name": "Monument",
             "terms": ""
+        },
+        "natural/shrub": {
+            "name": "Shrub",
+            "terms": "bush,scrub"
         },
         "amenity/place_of_worship/shinto": {
             "name": "Shinto Shrine",
@@ -1751,8 +1766,8 @@
             "terms": "games"
         },
         "landuse/allotments": {
-            "name": "Community Garden",
-            "terms": "allotment,garden"
+            "name": "Garden Allotments",
+            "terms": "allotment,community garden,garden"
         },
         "highway/passing_place": {
             "name": "Passing Place",
@@ -1792,7 +1807,7 @@
         },
         "amenity/parking_space": {
             "name": "Parking Space",
-            "terms": ""
+            "terms": "parking spot,parking stall"
         },
         "healthcare/birthing_center": {
             "name": "Birthing Center",
@@ -2908,6 +2923,9 @@
             "name": "Healthcare Facility",
             "terms": "clinic,doctor,disease,health,institution,sick,surgery,wellness"
         },
+        "power/cable": {
+            "name": "Power Cable"
+        },
         "seamark/beacon_lateral": {
             "name": "Channel Beacon",
             "terms": "lateral beacon,beacon lateral,cevni,channel marker,iala,lateral mark"
@@ -2956,7 +2974,7 @@
             "terms": ""
         },
         "railway/narrow_gauge": {
-            "name": "Narrow Gauge Rail",
+            "name": "Narrow Gauge Track",
             "terms": "narrow gauge railway,narrow gauge railroad"
         },
         "shop/curtain": {
@@ -2996,7 +3014,7 @@
             "terms": "book repair"
         },
         "man_made/groyne": {
-            "name": "Groyne",
+            "name": "Groin",
             "terms": ""
         },
         "shop/country_store": {
@@ -3059,7 +3077,7 @@
             "terms": "speed,slow"
         },
         "railway/funicular": {
-            "name": "Funicular",
+            "name": "Funicular Track",
             "terms": "venicular,cliff railway,cable car,cable railway,funicular railway"
         },
         "power/generator": {
@@ -3296,6 +3314,10 @@
             "name": "Mural",
             "terms": "fresco,wall painting"
         },
+        "railway/preserved": {
+            "name": "Heritage Railway Track",
+            "terms": "historic train,preserved rail,steam train,tourist train"
+        },
         "man_made/chimney": {
             "name": "Chimney",
             "terms": ""
@@ -3315,6 +3337,10 @@
         "landuse/vineyard": {
             "name": "Vineyard",
             "terms": "grape,wine"
+        },
+        "leisure/garden/community": {
+            "name": "Community Garden",
+            "terms": "co-op garden,collective garden,communal garden"
         },
         "traffic_calming/rumble_strip": {
             "name": "Rumble Strip",
@@ -3351,6 +3377,10 @@
         "highway/crossing": {
             "name": "Crossing"
         },
+        "leisure/garden/botanical": {
+            "name": "Botanical Garden",
+            "terms": "botanic garden,plant collection,rare plants"
+        },
         "place/isolated_dwelling": {
             "name": "Isolated Dwelling",
             "terms": ""
@@ -3372,7 +3402,7 @@
             "terms": "ferris wheel,theme park,amusement ride"
         },
         "landuse/military/obstacle_course": {
-            "name": "Obstacle Course",
+            "name": "Military Obstacle Course",
             "terms": "army,base,force,guard,marine,navy,troop,war"
         },
         "natural/spring": {
@@ -3821,7 +3851,7 @@
         },
         "leisure/garden": {
             "name": "Garden",
-            "terms": ""
+            "terms": "flowers,fruits,herbs,plants,vegetables"
         },
         "type/restriction/only_u_turn": {
             "name": "Only U-turn",
@@ -3848,7 +3878,7 @@
             "terms": ""
         },
         "railway/monorail": {
-            "name": "Monorail",
+            "name": "Monorail Track",
             "terms": ""
         },
         "tourism/apartment": {
@@ -4032,7 +4062,7 @@
             "terms": "burial ground,cemetary,cemetery,churchyard,columbarium,grave yard,graveyard,mausoleum,tomb"
         },
         "railway/light_rail": {
-            "name": "Light Rail",
+            "name": "Light Rail Track",
             "terms": "light rail,streetcar,trolley"
         },
         "office/lawyer/notary": {
@@ -4192,6 +4222,10 @@
         },
         "power/pole": {
             "name": "Power Pole",
+            "terms": ""
+        },
+        "type/route/trolleybus": {
+            "name": "Trolleybus Route",
             "terms": ""
         },
         "natural/peak": {
@@ -4923,6 +4957,10 @@
             "name": "Wilderness Hut",
             "terms": "alpine hut,cabin,backcountry hut,bothy,lodge,lodging,overnight accommodations,sleeping shelter,wilderness hut"
         },
+        "amenity/parking_space/disabled": {
+            "name": "Accessible Parking Space",
+            "terms": "disability,disabled parking stall,handicap parking spot,wheelchair"
+        },
         "shop/clothes": {
             "name": "Clothing Store",
             "terms": "blouses,boutique,bras,clothes,dresses,fashion,pants,shirts,shorts,skirts,slacks,socks,suits,underwear"
@@ -4981,11 +5019,11 @@
             "terms": "dive,water,aquatics"
         },
         "railway/subway": {
-            "name": "Subway",
-            "terms": "metro,transit"
+            "name": "Subway Track",
+            "terms": "metro,transit,underground railway"
         },
         "railway/miniature": {
-            "name": "Miniature Railway",
+            "name": "Miniature Train Track",
             "terms": "rideable miniature railway,narrow gauge railway,minimum gauge railway"
         },
         "public_transport/station_bus": {
