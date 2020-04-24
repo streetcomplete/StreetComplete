@@ -109,7 +109,7 @@ class QuestStatisticsFragment :
 
             emptyText.visibility = if (totalSolvedQuests == 0) View.VISIBLE else View.GONE
 
-            var areaInMeters = ONE_QUEST_SIZE_IN_M2 * totalSolvedQuests / QUESTS_FILL_FACTOR
+            var areaInMeters = ONE_QUEST_SIZE_IN_M3 * totalSolvedQuests / QUESTS_FILL_FACTOR
             if (areaInMeters == 0f) areaInMeters = 1f
             setupScene(areaInMeters)
 
@@ -157,7 +157,7 @@ class QuestStatisticsFragment :
         // because they are added later. So, they will still be clickable
         val sortedBySolvedQuestTypes = solvedQuestsByQuestType.toList().sortedByDescending { it.second }
         for ((questType, amountSolved) in sortedBySolvedQuestTypes) {
-            val radius = sqrt((amountSolved * ONE_QUEST_SIZE_IN_M2)/PI).toFloat()
+            val radius = (3.0 * amountSolved * ONE_QUEST_SIZE_IN_M3 / 4.0 / PI).pow(1.0 / 3.0).toFloat()
             val spawnPos = Vec2(
                 radius + Math.random().toFloat() * (worldBounds.width() - 2 * radius),
                 radius + Math.random().toFloat() * (worldBounds.height() - 2 * radius))
@@ -184,8 +184,8 @@ class QuestStatisticsFragment :
     private suspend fun addQuestType(questType: QuestType<*>, amountSolved: Int, position: Vec2) {
         val ctx = requireContext()
 
-        val radius = sqrt((amountSolved * ONE_QUEST_SIZE_IN_M2)/PI)
-        val body = createQuestBody(position, radius.toFloat())
+        val radius = (3.0 * amountSolved * ONE_QUEST_SIZE_IN_M3 / 4.0 / PI).pow(1.0 / 3.0).toFloat()
+        val body = createQuestBody(position, radius)
         val questView = ImageView(ctx)
         questView.id = View.generateViewId()
         questView.layoutParams = ViewGroup.LayoutParams(MATCH_PARENT, MATCH_PARENT)
@@ -268,7 +268,7 @@ class QuestStatisticsFragment :
     }
 
     companion object {
-        private const val ONE_QUEST_SIZE_IN_M2 = 0.01f
+        private const val ONE_QUEST_SIZE_IN_M3 = 0.01f
         private const val QUESTS_FILL_FACTOR = 0.55f
         private const val FLING_SPEED_FACTOR = 0.3f
     }
