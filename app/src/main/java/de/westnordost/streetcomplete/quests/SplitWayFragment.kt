@@ -68,9 +68,10 @@ class SplitWayFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        osmQuestId = arguments!!.getLong(ARG_QUEST_ID)
-        way = arguments!!.getSerializable(ARG_WAY) as Way
-        val elementGeometry = arguments!!.getSerializable(ARG_ELEMENT_GEOMETRY) as ElementPolylinesGeometry
+        val args = requireArguments()
+        osmQuestId = args.getLong(ARG_QUEST_ID)
+        way = args.getSerializable(ARG_WAY) as Way
+        val elementGeometry = args.getSerializable(ARG_ELEMENT_GEOMETRY) as ElementPolylinesGeometry
         positions = elementGeometry.polylines.single().map { OsmLatLon(it.latitude, it.longitude) }
         soundFx.prepare(R.raw.snip)
         soundFx.prepare(R.raw.plop2)

@@ -63,7 +63,7 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
 
     // passed in parameters
     override var questId: Long = 0L
-    override lateinit var questGroup: QuestGroup
+    override var questGroup: QuestGroup = QuestGroup.OSM
     protected lateinit var elementGeometry: ElementGeometry private set
     private lateinit var questType: QuestType<T>
     private var initialMapRotation = 0f
