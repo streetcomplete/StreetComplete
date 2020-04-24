@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.user
 
+import android.util.Log
 import de.westnordost.osmapi.OsmConnection
 import de.westnordost.streetcomplete.data.UserApi
 import de.westnordost.streetcomplete.data.osmnotes.OsmAvatarsDownloader
@@ -31,9 +32,7 @@ import javax.inject.Singleton
     fun logIn(consumer: OAuthConsumer) {
         oAuthStore.oAuthConsumer = consumer
         osmConnection.oAuth = consumer
-        launch(Dispatchers.IO) {
-            updateUser()
-        }
+        updateUser()
         loginStatusListeners.forEach { it.onLoggedIn() }
     }
 
@@ -47,21 +46,29 @@ import javax.inject.Singleton
         loginStatusListeners.forEach { it.onLoggedOut() }
     }
 
-    fun updateUser() {
-        launch(Dispatchers.IO) {
+    fun updateUser() = launch(Dispatchers.IO) {
+        try {
             val userDetails = userApi.getMine()
+
             userStore.setDetails(userDetails)
             val profileImageUrl = userDetails.profileImageUrl
             if (profileImageUrl != null) {
-                launch {
-                    avatarsDownloader.download(userDetails.id, profileImageUrl)
-                    userAvatarListeners.forEach { it.onUserAvatarUpdated() }
-                }
+                updateAvatar(userDetails.id, profileImageUrl)
             }
-            launch {
-                statisticsUpdater.updateFromBackend(userDetails.id)
-            }
+            updateStatistics(userDetails.id)
         }
+        catch (e: Exception) {
+            Log.w(TAG, "Unable to download user details", e)
+        }
+    }
+
+    private fun updateAvatar(userId: Long, imageUrl: String) = launch(Dispatchers.IO) {
+        avatarsDownloader.download(userId, imageUrl)
+        userAvatarListeners.forEach { it.onUserAvatarUpdated() }
+    }
+
+    private fun updateStatistics(userId: Long) = launch(Dispatchers.IO) {
+        statisticsUpdater.updateFromBackend(userId)
     }
 
     fun addLoginStatusListener(listener: UserLoginStatusListener) {
@@ -75,6 +82,10 @@ import javax.inject.Singleton
     }
     fun removeUserAvatarListener(listener: UserAvatarListener) {
         userAvatarListeners.remove(listener)
+    }
+
+    companion object {
+        const val TAG = "UserController"
     }
 }
 

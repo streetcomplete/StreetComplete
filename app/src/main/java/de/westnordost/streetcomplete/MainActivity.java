@@ -8,6 +8,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -139,7 +141,7 @@ public class MainActivity extends AppCompatActivity implements
 		if(savedInstanceState == null)
 		{
 			questController.cleanUp();
-			if (userController.isLoggedIn()) {
+			if (userController.isLoggedIn() && isConnected()) {
 				userController.updateUser();
 			}
 		}
@@ -260,6 +262,14 @@ public class MainActivity extends AppCompatActivity implements
 				}
 			}
 		}
+	}
+
+	private boolean isConnected()
+	{
+		ConnectivityManager connectivityManager = ((ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE));
+		if (connectivityManager == null) return false;
+		NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+		return activeNetworkInfo != null && activeNetworkInfo.isConnected();
 	}
 
 	/* ------------------------------ Upload progress listener ---------------------------------- */

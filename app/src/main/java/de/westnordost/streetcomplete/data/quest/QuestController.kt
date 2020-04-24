@@ -186,15 +186,13 @@ import javax.inject.Singleton
     }
 
     /** Delete old unsolved quests as well as long already uploaded quests */
-    fun cleanUp() {
-        launch(Dispatchers.IO) {
-            var deleted = osmQuestController.cleanUp()
-            deleted += osmNoteQuestController.cleanUp()
+    fun cleanUp() = launch(Dispatchers.IO) {
+        var deleted = osmQuestController.cleanUp()
+        deleted += osmNoteQuestController.cleanUp()
 
-            if (deleted > 0) {
-                Log.d(TAG, "Deleted $deleted old unsolved quests")
-                osmElementDB.deleteUnreferenced()
-            }
+        if (deleted > 0) {
+            Log.d(TAG, "Deleted $deleted old unsolved quests")
+            osmElementDB.deleteUnreferenced()
         }
     }
 
