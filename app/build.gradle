@@ -33,8 +33,8 @@ android {
         applicationId "de.westnordost.streetcomplete"
         minSdkVersion 17
         targetSdkVersion 28
-        versionCode 1900
-        versionName "19.0-alpha1"
+        versionCode 1901
+        versionName "19.0-alpha2"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField "String", "MAPZEN_API_KEY", MAPZEN_API_KEY
     }
@@ -174,7 +174,7 @@ import groovy.json.JsonOutput
 task downloadPresets {
     doLast {
         def targetDir = "app/src/main/assets/osmfeatures"
-        def presetsUrl = new URL("https://raw.githubusercontent.com/openstreetmap/iD/master/data/presets/presets.json")
+        def presetsUrl = new URL("https://raw.githubusercontent.com/openstreetmap/iD/develop/data/presets/presets.json")
         def contentsUrl = new URL("https://api.github.com/repos/openstreetmap/iD/contents/dist/locales")
         new File("$targetDir/presets.json").withOutputStream { it << presetsUrl.openStream() }
 
