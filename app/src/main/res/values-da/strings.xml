@@ -2,15 +2,11 @@
 <resources>
     <string name="action_settings">"Indstillinger"</string>
     <string name="oauth_communication_error">"Kan ikke tilgå loginserver"</string>
-    <string name="loading">"Henter"</string>
     <string name="retry">"Prøv igen"</string>
-    <string name="oauth_cancelled">"Login afbrudt"</string>
     <string name="oauth_failed_permissions">"Login afbrudt: alle de beskrevne tilladelser skal gives"</string>
     <string name="title_activity_settings">"Indstillinger"</string>
     <string name="pref_category_communication">"Kommunikation"</string>
     <string name="pref_category_display">"Visning"</string>
-    <string name="pref_title_authorization">"Autoriser OSM adgang"</string>
-    <string name="pref_title_not_authorized_summary">"Er endnu ikke autoriseret"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
     <string name="pref_tilecache_size_message">"Plads i megabytes reserveret på den eksterne hukommelse til at gemme kortfliser"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Vis alle noter"</string>
@@ -63,10 +59,8 @@
     <string name="download_area_too_big">"Zoom venligst længere ind"</string>
     <string name="confirmation_cancel_prev_download_title">"Afbrud den nuværende søgning og skan her i stedet?"</string>
     <string name="notification_downloading">"Skanner efter opgaver…"</string>
-    <string name="now_downloading_toast">"Skanner efter flere opgaver…"</string>
     <string name="turn_on_location_request">"Lokation er fra. Gå til indstillinger og tænd nu?"</string>
     <string name="no_location_permission_warning">"Din lokation er nødvendig for at skanne efter opgaver i dit nærområde."</string>
-    <string name="action_about">"Om StreetComplete"</string>
 
     <!-- Fuzzy -->
     <string name="about_title_authors">"Kreditering"</string>
@@ -361,7 +355,6 @@ Ellers kan du downloade et andet keyboard i Forretning. Populære keyboards der 
     <string name="quest_way_lit_road_title">"Er denne sektion af vejen belyst?"</string>
     <string name="quest_way_lit_automatic">"Der bruges bevægelsessensorer"</string>
     <string name="quest_way_lit_24_7">"Det er oplyst nat og dag"</string>
-    <string name="pref_title_authorized_username_summary">"Godkendt konto: %s"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Kan ikke skanne her. Prøv at zoome yderligere ind eller vip kortet mindre."</string>
     <string name="quest_crossing_type_title">"Hvilken type overgang er dette?"</string>
     <string name="quest_crossing_type_signals">"Overgang med traffiklys"</string>
@@ -390,13 +383,11 @@ Ellers kan du downloade et andet keyboard i Forretning. Populære keyboards der 
     <string name="quest_address_house_name_label">"Husnavn:"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"etager i taget"</string>
     <string name="quest_buildingLevels_levelsLabel2">"normale etager (eksl. taget)"</string>
-    <string name="pref_title_authorized_summary">"Godkendt"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingLevels_answer_multipleLevels">"forskellig per bygningsdel"</string>
     <string name="quest_buildingLevels_answer_description">"I dette tilfælde skal værdien for den højeste bygningsdel angives."</string>
     <string name="unglue_hint">"Tryk for at frigøre skærm fra position"</string>
-    <string name="pref_title_not_authorized_summary2">"Log ind fra din webbrowser for at godkende"</string>
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Er vejbanerne på denne vej opdelt fysisk (f.eks. med en barriere)? Standard  hastigheden afhænger af om dette er tilfældet eller ej."</string>
     <string name="about_category_feedback">"Feedback"</string>
     <string name="quest_leave_new_note_photo">"Vedhæft foto"</string>
@@ -700,11 +691,6 @@ F.eks. 1,3 eller 2-6."</string>
     <string name="quest_leave_new_note_photos_are_useful">"Tilføjelse af et foto vil gøre denne note ekstra værdifuld."</string>
     <string name="quest_postboxCollectionTimes_name_title">"Hvornår tømmes denne %s postkasse?"</string>
     <string name="create_new_note_hint">"Det er bedst at skrive en note på det lokale sprog ellers skriv noten på engelsk."</string>
-    <string name="about_contributing">"Dine svar forbedrer OpenStreetMap direkte. Bidrag af data er åbne og alle kan bruge dem. Mange gode projekter bruger dem allerede."</string>
-    <string name="about_missing_stars">"I øjeblikket deles stjernetallet ikke på tværs af enheder, men besvarelserne tilføjes direkte til OpenStreetMap databasen."</string>
-    <string name="how_to_get_stars">"Vælg en af markørerne på kortet, og besvar spørgsmålet. På denne måde forbedrer du OpenStreetMap data og får stjerner. Hvis du ikke ser nogen markører, skal du muligvis zoome ud på kortet."</string>
-    <string name="oauth_remove_authorization_dialog_message">"Vil du fjerne autorisationen til din OSM-konto?"</string>
-    <string name="oauth_remove_authorization_confirmation">"Fjern"</string>
     <string name="quest_leafType_title">"Har træerne nåle eller løvblade?"</string>
     <string name="quest_leaf_type_needles">"Nåle"</string>
     <string name="quest_leaf_type_broadleaved">"Løvblade"</string>
@@ -726,7 +712,6 @@ Del det nu?"</string>
     <string name="quest_maxweight_unusualInput_confirmation_description">"Denne vægtangivelse ser upålidelig ud. Er du sikker på, at det er korrekt?"</string>
     <string name="quest_maxweight_answer_other_sign">"Skilt ser anderledes ud"</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"Ønsker du at efterlade en note? En note med et foto gør det lettere for andre kortlæggere at tage sig af det."</string>
-    <string name="confirmation_authorize_now_note">"Du kan senere ændre disse indstillinger i indstillingsmenuen."</string>
     <string name="quest_generalFee_title">"Koster det entré for at komme ind her hos %s?"</string>
     <string name="quest_laundrySelfService_title">"Er dette vaskeri et møntvaskeri?"</string>
     <string name="quest_handrail_title">"Har denne trappe et gelænder?"</string>

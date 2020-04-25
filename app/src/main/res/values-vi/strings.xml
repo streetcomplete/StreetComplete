@@ -2,15 +2,11 @@
 <resources>
     <string name="action_settings">"Cài đặt"</string>
     <string name="oauth_communication_error">"Không thể kết nối đến máy chủ xác thực"</string>
-    <string name="loading">"Đang tải"</string>
     <string name="retry">"Thử lại"</string>
-    <string name="oauth_cancelled">"Đã hủy bỏ xác thực"</string>
     <string name="oauth_failed_permissions">"Thất bại khi xác thực: Cần phải cấp phép tất cả các khả năng được yêu cầu"</string>
     <string name="title_activity_settings">"Cài đặt"</string>
     <string name="pref_category_communication">"Liên lạc"</string>
     <string name="pref_category_display">"Giao diện"</string>
-    <string name="pref_title_authorization">"Cho phép OSM truy cập"</string>
-    <string name="pref_title_not_authorized_summary">"Chưa xác thực"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Hiển thị tất cả các ghi chú"</string>
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Bao gồm các ghi chú hỏi câu hỏi"</string>
@@ -50,7 +46,6 @@
     <string name="close">"đóng"</string>
     <string name="upload_error">"Lỗi khi tải lên câu trả lời"</string>
     <string name="download_area_too_big">"Hãy phóng to hơn"</string>
-    <string name="action_about">"Giới thiệu về StreetComplete"</string>
     <string name="about_title_authors">"Ghi công"</string>
 
     <!-- Fuzzy -->
@@ -242,7 +237,6 @@
     <string name="quest_way_lit_road_title">"Khúc đường này có đèn sáng?"</string>
     <string name="quest_way_lit_automatic">"Có hệ thống phát hiện chuyển động"</string>
     <string name="quest_way_lit_24_7">"Sáng suốt ngày đem"</string>
-    <string name="pref_title_authorized_username_summary">"Tài khoản được xác thực: %s"</string>
     <string name="quest_crossing_type_title">"Lối băng qua đường tại đây là kiểu lối băng qua đường nào?"</string>
     <string name="action_undo">"Hoàn tác"</string>
     <string name="produce_mangosteen">"Măng cụt"</string>
@@ -264,9 +258,7 @@
     <string name="quest_address_house_name_label">"Tên nhà:"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"số lầu trong mái nhà"</string>
     <string name="quest_buildingLevels_levelsLabel2">"số lầu thường (không kể trong mái nhà)"</string>
-    <string name="pref_title_authorized_summary">"Đã xác thực"</string>
     <string name="quest_buildingLevels_answer_multipleLevels">"Tùy phần tòa nhà"</string>
-    <string name="pref_title_not_authorized_summary2">"Đăng nhập từ trình duyệt để xác thực"</string>
     <string name="about_category_feedback">"Phản hồi"</string>
     <string name="quest_leave_new_note_photo">"Đính kèm hình"</string>
     <string name="quest_leave_new_note_photo_delete_title">"Bạn có muốn xóa hình này?"</string>
@@ -396,8 +388,6 @@
     <string name="quest_placeName_title_name">"Nơi này tên gì? (%s)"</string>
     <string name="action_open_location">"Mở địa điểm trong ứng dụng khác"</string>
     <string name="map_application_missing">"Chưa cài đặt ứng dụng bản đồ khác"</string>
-    <string name="oauth_remove_authorization_dialog_message">"Bạn có muốn hủy xác thực tài khoản OSM của bạn?"</string>
-    <string name="oauth_remove_authorization_confirmation">"Loại bỏ"</string>
     <string name="quest_leafType_title">"Cây cối ở đây có loại lá gì?"</string>
     <string name="quest_leaf_type_needles">"Lá hình kim"</string>
     <string name="quest_leaf_type_broadleaved">"Lá hình quạt"</string>
@@ -409,7 +399,6 @@
     <string name="quest_wheelchairAccess_toiletsPart_title">"Phòng vệ sinh tại %s có đi xe lăn được?"</string>
     <string name="quest_maxweight_title">"Trọng lượng tối đa bao nhiêu?"</string>
     <string name="quest_maxweight_answer_noSign">"Không có bảng"</string>
-    <string name="confirmation_authorize_now_note">"Bạn có thể xác thực sau từ màn hình cài đặt."</string>
     <string name="quest_generalFee_title">"Có cần trả phí để vào %s?"</string>
     <string name="quest_handrail_title">"Cầu thang này có lan can?"</string>
     <string name="quest_openingHours_no_name_title">"Nơi này mở cửa mấy giờ? (%s)"</string>

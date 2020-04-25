@@ -1,53 +1,51 @@
 package de.westnordost.streetcomplete.data.osmnotes
 
-import android.annotation.SuppressLint
 import android.util.Log
-
+import de.westnordost.streetcomplete.data.UserApi
+import de.westnordost.streetcomplete.ktx.saveToFile
 import java.io.File
 import java.io.IOException
 import java.net.URL
-
 import javax.inject.Inject
+import javax.inject.Named
 
-import de.westnordost.osmapi.user.UserDao
-import de.westnordost.streetcomplete.ktx.saveToFile
-
+/** Downloads and stores the OSM avatars of users */
 class OsmAvatarsDownloader @Inject constructor(
-    private val userDao: UserDao,
-    private val cacheDir: File
+    private val userApi: UserApi,
+    @Named("AvatarsCacheDirectory") private val cacheDir: File
 ) {
 
     fun download(userIds: Collection<Long>) {
-        val userAvatars = downloadUserAvatarUrls(userIds)
-
-        downloadUserAvatars(userAvatars)
-    }
-
-    private fun downloadUserAvatars(userAvatars: Map<Long, String>) {
-        if (!cacheDir.exists() && !cacheDir.mkdirs()) {
-            Log.w("OsmAvatarsDownload", "Unable to create directories for avatars")
+        if (!ensureCacheDirExists()) {
+            Log.w(TAG, "Unable to create directories for avatars")
             return
         }
 
-        for ((userId, avatarUrl) in userAvatars) {
-            try {
-                val avatarFile = File(cacheDir, "$userId")
-                URL(avatarUrl).saveToFile(avatarFile)
-                Log.i("OsmAvatarsDownload", "Saved file: ${avatarFile.path}")
-            } catch (e: IOException) {
-                Log.w("OsmAvatarsDownload", "Unable to download avatar for user id $userId")
+        for (userId in userIds) {
+            val avatarUrl = userApi.get(userId)?.profileImageUrl
+            if (avatarUrl != null) {
+                download(userId, avatarUrl)
             }
         }
     }
 
-    private fun downloadUserAvatarUrls(userIds: Collection<Long>): Map<Long, String> {
-        @SuppressLint("UseSparseArrays")
-        val userAvatars = HashMap<Long, String>()
-        for (userId in userIds) {
-            userDao.get(userId)?.profileImageUrl?.let {
-                userAvatars[userId] = it
-            }
+    /** download avatar for the given user and a known avatar url */
+    fun download(userId: Long, avatarUrl: String) {
+        if (!ensureCacheDirExists()) return
+        try {
+            val avatarFile = File(cacheDir, "$userId")
+            URL(avatarUrl).saveToFile(avatarFile)
+            Log.i(TAG, "Saved file: ${avatarFile.path}")
+        } catch (e: IOException) {
+            Log.w(TAG, "Unable to download avatar for user id $userId")
         }
-        return userAvatars
+    }
+
+    private fun ensureCacheDirExists(): Boolean {
+        return cacheDir.exists() || cacheDir.mkdirs()
+    }
+
+    companion object {
+        private const val TAG = "OsmAvatarsDownload"
     }
 }

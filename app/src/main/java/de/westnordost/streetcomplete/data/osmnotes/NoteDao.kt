@@ -4,6 +4,8 @@ package de.westnordost.streetcomplete.data.osmnotes
 import android.database.Cursor
 import android.database.sqlite.SQLiteOpenHelper
 import androidx.core.content.contentValuesOf
+import de.westnordost.osmapi.map.data.BoundingBox
+import de.westnordost.osmapi.map.data.LatLon
 
 import java.util.ArrayList
 import java.util.Date
@@ -15,6 +17,7 @@ import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.osmapi.notes.Note
 import de.westnordost.osmapi.notes.NoteComment
 import de.westnordost.streetcomplete.data.ObjectRelationalMapping
+import de.westnordost.streetcomplete.data.WhereSelectionBuilder
 import de.westnordost.streetcomplete.data.osmnotes.NoteTable.Columns.CLOSED
 import de.westnordost.streetcomplete.data.osmnotes.NoteTable.Columns.COMMENTS
 import de.westnordost.streetcomplete.data.osmnotes.NoteTable.Columns.CREATED
@@ -23,8 +26,10 @@ import de.westnordost.streetcomplete.data.osmnotes.NoteTable.Columns.LATITUDE
 import de.westnordost.streetcomplete.data.osmnotes.NoteTable.Columns.LONGITUDE
 import de.westnordost.streetcomplete.data.osmnotes.NoteTable.Columns.STATUS
 import de.westnordost.streetcomplete.data.osmnotes.NoteTable.NAME
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestTable
 import de.westnordost.streetcomplete.ktx.*
 
+/** Stores OSM notes */
 class NoteDao @Inject constructor(
     private val dbHelper: SQLiteOpenHelper,
     private val mapping: NoteMapping
@@ -51,6 +56,13 @@ class NoteDao @Inject constructor(
         return db.delete(NAME, "$ID = $id", null) == 1
     }
 
+    fun getAllPositions(bbox: BoundingBox): List<LatLon> {
+        val cols = arrayOf(LATITUDE, LONGITUDE)
+        val builder = WhereSelectionBuilder()
+        builder.appendBounds(bbox)
+        return db.query(NAME, cols, builder.where, builder.args) { OsmLatLon(it.getDouble(0), it.getDouble(1)) }
+    }
+
     fun deleteUnreferenced(): Int {
         val where = ID + " NOT IN ( " +
                 "SELECT " + OsmNoteQuestTable.Columns.NOTE_ID + " FROM " + OsmNoteQuestTable.NAME +
@@ -58,6 +70,18 @@ class NoteDao @Inject constructor(
 
         return db.delete(NAME, where, null)
     }
+}
+
+private fun WhereSelectionBuilder.appendBounds(bbox: BoundingBox) {
+    add("($LATITUDE BETWEEN ? AND ?)",
+        bbox.minLatitude.toString(),
+        bbox.maxLatitude.toString()
+    )
+    add(
+        "($LONGITUDE BETWEEN ? AND ?)",
+        bbox.minLongitude.toString(),
+        bbox.maxLongitude.toString()
+    )
 }
 
 class NoteMapping @Inject constructor(private val serializer: Serializer)

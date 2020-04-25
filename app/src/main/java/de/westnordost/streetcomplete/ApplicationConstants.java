@@ -1,18 +1,11 @@
 package de.westnordost.streetcomplete;
 
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-
 public class ApplicationConstants
 {
 	public final static String
 		NAME = "StreetComplete",
 		USER_AGENT = NAME + " " + BuildConfig.VERSION_NAME,
 		QUESTTYPE_TAG_KEY = NAME + ":quest_type";
-
-	// date of birth of StreetComplete ;-) (first Google Play version)
-	public final static Date DATE_OF_BIRTH = new GregorianCalendar(2017,Calendar.FEBRUARY,20).getTime();
 
 	public final static double
 		MAX_DOWNLOADABLE_AREA_IN_SQKM = 20,

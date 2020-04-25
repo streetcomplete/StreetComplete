@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.ktx
 
 import de.westnordost.osmapi.map.data.*
-import de.westnordost.streetcomplete.data.osm.tql.FiltersParser
+import de.westnordost.streetcomplete.data.tagfilters.FiltersParser
 import java.util.ArrayList
 
 fun Element.copy(newId: Long = id, newVersion: Int = version): Element {

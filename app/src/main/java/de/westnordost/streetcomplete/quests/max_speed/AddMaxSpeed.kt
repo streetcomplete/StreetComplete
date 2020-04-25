@@ -1,25 +1,26 @@
 package de.westnordost.streetcomplete.quests.max_speed
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.OsmTaggings
-import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.meta.ANYTHING_UNPAVED
+import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
-import de.westnordost.streetcomplete.data.osm.AllCountriesExcept
+import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
+import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 
-class AddMaxSpeed(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<MaxSpeedAnswer>(o) {
+class AddMaxSpeed(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<MaxSpeedAnswer>(o) {
 
     override val tagFilters = """
         ways with highway ~ motorway|trunk|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential
          and !maxspeed and !maxspeed:forward and !maxspeed:backward
          and !source:maxspeed and !zone:maxspeed and !maxspeed:type and !zone:traffic
-         and surface !~ ${OsmTaggings.ANYTHING_UNPAVED.joinToString("|")}
+         and surface !~ ${ANYTHING_UNPAVED.joinToString("|")}
          and motor_vehicle !~ private|no
          and vehicle !~ private|no
          and area != yes
          and (access !~ private|no or (foot and foot !~ private|no))
     """
     override val commitMessage = "Add speed limits"
+    override val wikiLink = "Key:maxspeed"
     override val icon = R.drawable.ic_quest_max_speed
     override val hasMarkersAtEnds = true
     override val isSplitWayEnabled = true

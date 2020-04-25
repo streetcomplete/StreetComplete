@@ -1,11 +1,11 @@
 package de.westnordost.streetcomplete.quests.building_type
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
+import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 
-class AddBuildingType (o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<String>(o) {
+class AddBuildingType (o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<String>(o) {
 
     // in the case of man_made, historic, military and power, these tags already contain
     // information about the purpose of the building, so no need to force asking it
@@ -19,6 +19,7 @@ class AddBuildingType (o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestTy
          and ruins != yes
     """
     override val commitMessage = "Add building types"
+    override val wikiLink = "Key:building"
     override val icon = R.drawable.ic_quest_building
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_buildingType_title

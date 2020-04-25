@@ -3,25 +3,26 @@ package de.westnordost.streetcomplete.quests.localized_name
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
-import de.westnordost.streetcomplete.data.osm.AllCountriesExcept
-import de.westnordost.streetcomplete.data.osm.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.data.osm.tql.FiltersParser
-import de.westnordost.streetcomplete.data.osm.tql.getQuestPrintStatement
-import de.westnordost.streetcomplete.data.osm.tql.toGlobalOverpassBBox
+import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
+import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.data.tagfilters.FiltersParser
+import de.westnordost.streetcomplete.data.tagfilters.getQuestPrintStatement
+import de.westnordost.streetcomplete.data.tagfilters.toGlobalOverpassBBox
 import de.westnordost.streetcomplete.quests.localized_name.data.RoadNameSuggestionsDao
 import java.util.regex.Pattern
 
 class AddRoadName(
-    private val overpassServer: OverpassMapDataAndGeometryDao,
+    private val overpassApi: OverpassMapDataAndGeometryApi,
     private val roadNameSuggestionsDao: RoadNameSuggestionsDao
 ) : OsmElementQuestType<RoadNameAnswer> {
 
     override val enabledInCountries = AllCountriesExcept("JP")
     override val commitMessage = "Determine road names and types"
+    override val wikiLink = "Key:name"
     override val icon = R.drawable.ic_quest_street_name
     override val hasMarkersAtEnds = true
     override val isSplitWayEnabled = true
@@ -35,8 +36,8 @@ class AddRoadName(
     override fun isApplicableTo(element: Element) = ROADS_WITHOUT_NAMES_TFE.matches(element)
 
     override fun download(bbox: BoundingBox, handler: (element: Element, geometry: ElementGeometry?) -> Unit): Boolean {
-        if (!overpassServer.query(getOverpassQuery(bbox), handler)) return false
-        if (!overpassServer.query(getStreetNameSuggestionsOverpassQuery(bbox), this::putRoadNameSuggestion)) return false
+        if (!overpassApi.query(getOverpassQuery(bbox), handler)) return false
+        if (!overpassApi.query(getStreetNameSuggestionsOverpassQuery(bbox), this::putRoadNameSuggestion)) return false
         return true
     }
 

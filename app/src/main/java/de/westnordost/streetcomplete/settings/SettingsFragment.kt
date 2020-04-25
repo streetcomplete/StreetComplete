@@ -3,65 +3,51 @@ package de.westnordost.streetcomplete.settings
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-
-import androidx.appcompat.app.AppCompatDelegate
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceManager
-import android.widget.Toast
-
-import javax.inject.Provider
-
-import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao
-import de.westnordost.streetcomplete.data.tiles.DownloadedTilesDao
-import de.westnordost.streetcomplete.oauth.OAuthPrefs
+import de.westnordost.streetcomplete.BuildConfig
+import de.westnordost.streetcomplete.Injector
+import de.westnordost.streetcomplete.Prefs
+import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestController
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestController
+import de.westnordost.streetcomplete.data.user.UserController
 import de.westnordost.streetcomplete.ktx.toast
-import de.westnordost.streetcomplete.oauth.OsmOAuthDialogFragment
-import de.westnordost.streetcomplete.settings.questselection.QuestSelectionFragment
+import kotlinx.coroutines.*
 import javax.inject.Inject
-import de.westnordost.streetcomplete.*
 
-
+/** Shows the settings screen */
 class SettingsFragment : PreferenceFragmentCompat(),
-    SharedPreferences.OnSharedPreferenceChangeListener, IntentListener {
+    SharedPreferences.OnSharedPreferenceChangeListener,
+    CoroutineScope by CoroutineScope(Dispatchers.Main) {
 
     @Inject internal lateinit var prefs: SharedPreferences
-    @Inject internal lateinit var oAuth: OAuthPrefs
-    @Inject internal lateinit var applyNoteVisibilityChangedTask: Provider<ApplyNoteVisibilityChangedTask>
+    @Inject internal lateinit var userController: UserController
     @Inject internal lateinit var downloadedTilesDao: DownloadedTilesDao
-    @Inject internal lateinit var osmQuestDao: OsmQuestDao
+    @Inject internal lateinit var osmQuestController: OsmQuestController
+    @Inject internal lateinit var osmNoteQuestController: OsmNoteQuestController
 
-    private val fragmentActivity: FragmentContainerActivity?
-        get() = activity as FragmentContainerActivity?
+    interface Listener {
+        fun onClickedQuestSelection()
+    }
+    private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
     init {
         Injector.instance.applicationComponent.inject(this)
     }
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
-        PreferenceManager.setDefaultValues(context!!, R.xml.preferences, false)
+        PreferenceManager.setDefaultValues(requireContext(), R.xml.preferences, false)
         addPreferencesFromResource(R.xml.preferences)
 
-        findPreference<Preference>("oauth")?.setOnPreferenceClickListener {
-            if (oAuth.isAuthorized) {
-                context?.let {
-                    AlertDialog.Builder(it)
-                        .setMessage(R.string.oauth_remove_authorization_dialog_message)
-                        .setPositiveButton(R.string.oauth_remove_authorization_confirmation) { _, _ ->
-                            oAuth.saveConsumer(null)
-                        }
-                        .setNegativeButton(android.R.string.cancel, null)
-                        .show()
-                }
-            } else {
-                fragmentManager?.let { OsmOAuthDialogFragment().show(it, OsmOAuthDialogFragment.TAG) }
-            }
-            true
-        }
-
         findPreference<Preference>("quests")?.setOnPreferenceClickListener {
-            fragmentActivity?.setCurrentFragment(QuestSelectionFragment())
+            listener?.onClickedQuestSelection()
             true
         }
 
@@ -79,7 +65,7 @@ class SettingsFragment : PreferenceFragmentCompat(),
         }
 
         findPreference<Preference>("quests.restore.hidden")?.setOnPreferenceClickListener {
-            val hidden = osmQuestDao.unhideAll()
+            val hidden = osmQuestController.unhideAll()
             context?.toast(getString(R.string.restore_hidden_success, hidden), Toast.LENGTH_LONG)
             true
         }
@@ -94,19 +80,7 @@ class SettingsFragment : PreferenceFragmentCompat(),
 
     override fun onStart() {
         super.onStart()
-        updateOsmAuthSummary()
         activity?.setTitle(R.string.action_settings)
-    }
-
-    private fun updateOsmAuthSummary() {
-        val oauth = preferenceScreen?.findPreference<Preference>("oauth")
-        val username = prefs.getString(Prefs.OSM_USER_NAME, null)
-        oauth?.summary = if (oAuth.isAuthorized) {
-            if (username != null) resources.getString(R.string.pref_title_authorized_username_summary, username)
-            else resources.getString(R.string.pref_title_authorized_summary)
-        } else {
-            resources.getString(R.string.pref_title_not_authorized_summary2)
-        }
     }
 
     override fun onResume() {
@@ -119,15 +93,20 @@ class SettingsFragment : PreferenceFragmentCompat(),
         prefs.unregisterOnSharedPreferenceChangeListener(this)
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        coroutineContext.cancel()
+    }
+
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String) {
         when(key) {
-            Prefs.OAUTH_ACCESS_TOKEN_SECRET -> {
-                updateOsmAuthSummary()
-            }
             Prefs.SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS -> {
-                val task = applyNoteVisibilityChangedTask.get()
-                task.setPreference(preferenceScreen.findPreference(Prefs.SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS))
-                task.execute()
+                val preference = preferenceScreen.findPreference<Preference>(Prefs.SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS) ?: return
+                launch {
+                    preference.isEnabled = false
+                    applyNoteVisibility()
+                    preference.isEnabled = true
+                }
             }
             Prefs.AUTOSYNC -> {
                 if (Prefs.Autosync.valueOf(prefs.getString(Prefs.AUTOSYNC, "ON")!!) != Prefs.Autosync.ON) {
@@ -163,8 +142,18 @@ class SettingsFragment : PreferenceFragmentCompat(),
         }
     }
 
-    override fun onNewIntent(intent: Intent) {
-        val oauthFragment = fragmentManager?.findFragmentByTag(OsmOAuthDialogFragment.TAG) as OsmOAuthDialogFragment?
-        oauthFragment?.onNewIntent(intent)
+    private suspend fun applyNoteVisibility() = withContext(Dispatchers.IO) {
+        val showNonQuestionNotes = prefs.getBoolean(Prefs.SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS, false)
+        if (showNonQuestionNotes) {
+            osmNoteQuestController.makeAllInvisibleVisible()
+        } else {
+            val hideQuests = mutableListOf<OsmNoteQuest>()
+            for (quest in osmNoteQuestController.getAllVisible()) {
+                if (!quest.probablyContainsQuestion()) {
+                    hideQuests.add(quest)
+                }
+            }
+            osmNoteQuestController.makeAllInvisible(hideQuests)
+        }
     }
 }

@@ -3,20 +3,21 @@ package de.westnordost.streetcomplete.quests.leaf_detail
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
-import de.westnordost.streetcomplete.data.osm.tql.getQuestPrintStatement
-import de.westnordost.streetcomplete.data.osm.tql.toGlobalOverpassBBox
+import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
+import de.westnordost.streetcomplete.data.tagfilters.getQuestPrintStatement
+import de.westnordost.streetcomplete.data.tagfilters.toGlobalOverpassBBox
 
-class AddForestLeafType(private val overpassServer: OverpassMapDataAndGeometryDao) : OsmElementQuestType<String> {
+class AddForestLeafType(private val overpassApi: OverpassMapDataAndGeometryApi) : OsmElementQuestType<String> {
     override val commitMessage = "Add leaf type"
+    override val wikiLink = "Key:leaf_type"
     override val icon = R.drawable.ic_quest_leaf
     override val isSplitWayEnabled = true
 
     override fun download(bbox: BoundingBox, handler: (element: Element, geometry: ElementGeometry?) -> Unit): Boolean {
-        return overpassServer.query(getOverpassQuery(bbox), handler)
+        return overpassApi.query(getOverpassQuery(bbox), handler)
     }
 
     private fun getOverpassQuery(bbox: BoundingBox) = """

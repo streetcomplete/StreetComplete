@@ -34,11 +34,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.4142136"
-     inkscape:cx="162.49596"
-     inkscape:cy="118.92516"
+     inkscape:zoom="0.50000001"
+     inkscape:cx="529.65943"
+     inkscape:cy="123.90975"
      inkscape:document-units="px"
-     inkscape:current-layer="house"
+     inkscape:current-layer="layer1"
      showgrid="true"
      inkscape:pagecheckerboard="false"
      showguides="true"
@@ -46,11 +46,11 @@
      inkscape:measure-end="0,0"
      inkscape:guide-bbox="true"
      inkscape:lockguides="true"
-     inkscape:window-width="1611"
-     inkscape:window-height="867"
-     inkscape:window-x="62"
-     inkscape:window-y="74"
-     inkscape:window-maximized="1"
+     inkscape:window-width="1097"
+     inkscape:window-height="1073"
+     inkscape:window-x="1302"
+     inkscape:window-y="141"
+     inkscape:window-maximized="0"
      units="px">
     <inkscape:grid
        type="xygrid"
@@ -3214,7 +3214,8 @@
          style="fill:#a7b2b1;fill-opacity:1;stroke-width:0.54131544" />
     </g>
     <g
-       id="g8514">
+       id="semi-detached"
+       inkscape:label="#g8514">
       <g
          id="semi_detached"
          inkscape:label="#g8540">

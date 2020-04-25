@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -13,10 +12,8 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.getYamlObject
 import org.sufficientlysecure.htmltextview.HtmlTextView
 
-class CreditsFragment : Fragment() {
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-        inflater.inflate(R.layout.fragment_credits, container, false)
+/** Shows the credits of this app */
+class CreditsFragment : Fragment(R.layout.fragment_credits) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val contributorCredits = view.findViewById<LinearLayout>(R.id.contributorCredits)

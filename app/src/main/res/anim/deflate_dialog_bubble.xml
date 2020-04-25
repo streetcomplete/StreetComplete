@@ -2,6 +2,7 @@
 <set xmlns:android="http://schemas.android.com/apk/res/android"
      android:shareInterpolator="true"
      android:interpolator="@android:anim/accelerate_interpolator"
+     android:fillAfter="true"
      android:duration="200">
     <translate android:fromYDelta="0" android:toYDelta="20%"/>
     <alpha

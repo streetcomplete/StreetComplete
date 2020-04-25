@@ -27,18 +27,18 @@ import de.westnordost.osmapi.map.data.Way
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.Quest
-import de.westnordost.streetcomplete.data.QuestGroup
-import de.westnordost.streetcomplete.data.QuestType
-import de.westnordost.streetcomplete.data.QuestTypeRegistry
+import de.westnordost.streetcomplete.data.quest.Quest
+import de.westnordost.streetcomplete.data.quest.QuestGroup
+import de.westnordost.streetcomplete.data.quest.QuestType
+import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.meta.CountryInfos
-import de.westnordost.streetcomplete.data.osm.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.ktx.isArea
 import kotlinx.android.synthetic.main.fragment_quest_answer.*
 import java.util.concurrent.FutureTask
 
-/** Abstract base class for any dialog with which the user answers a specific quest(ion)  */
+/** Abstract base class for any bottom sheet with which the user answers a specific quest(ion)  */
 abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), IsShowingQuestDetails {
 
     // dependencies
@@ -63,7 +63,7 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
 
     // passed in parameters
     override var questId: Long = 0L
-    override lateinit var questGroup: QuestGroup
+    override var questGroup: QuestGroup = QuestGroup.OSM
     protected lateinit var elementGeometry: ElementGeometry private set
     private lateinit var questType: QuestType<T>
     private var initialMapRotation = 0f
@@ -78,7 +78,7 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
         get() {
             val conf = Configuration(resources.configuration)
             conf.setLocale(Locale.ENGLISH)
-            val localizedContext = super.getContext()!!.createConfigurationContext(conf)
+            val localizedContext = super.requireContext().createConfigurationContext(conf)
             return localizedContext.resources
         }
 
@@ -117,7 +117,7 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val args = arguments!!
+        val args = requireArguments()
         questId = args.getLong(ARG_QUEST_ID)
         questGroup = QuestGroup.valueOf(args.getString(ARG_QUEST_GROUP)!!)
         osmElement = args.getSerializable(ARG_ELEMENT) as OsmElement?
@@ -165,7 +165,7 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
         } else {
             otherAnswersButton.setText(R.string.quest_generic_otherAnswers)
             otherAnswersButton.setOnClickListener {
-                val popup = PopupMenu(activity, otherAnswersButton)
+                val popup = PopupMenu(requireContext(), otherAnswersButton)
                 for (i in answers.indices) {
                     val otherAnswer = answers[i]
                     val order = answers.size - i
@@ -304,18 +304,18 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
         content.setPadding(0, 0, 0, 0)
     }
 
-    protected fun setButtonsView(resourceId: Int): View {
+    protected fun setButtonsView(resourceId: Int) {
         // if other buttons are present, the other answers button should have a weight so that it
         // can be squeezed if there is not enough space for everything
         otherAnswersButton.layoutParams = LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT, 1f)
-        return activity!!.layoutInflater.inflate(resourceId, buttonPanel)
+        activity?.layoutInflater?.inflate(resourceId, buttonPanel)
     }
 
     @AnyThread open fun onMapOrientation(rotation: Float, tilt: Float) {
         // default empty implementation
     }
 
-    internal class InjectedFields {
+    class InjectedFields {
         @Inject internal lateinit var countryInfos: CountryInfos
         @Inject internal lateinit var questTypeRegistry: QuestTypeRegistry
         @Inject internal lateinit var featureDictionaryFuture: FutureTask<FeatureDictionary>

@@ -99,20 +99,24 @@ abstract class AGroupedImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnsw
         val itemValue = item.value
 
         if (itemValue == null) {
-            AlertDialog.Builder(context!!)
+            context?.let {
+                AlertDialog.Builder(it)
                 .setMessage(R.string.quest_generic_item_invalid_value)
                 .setPositiveButton(android.R.string.ok, null)
                 .show()
+            }
         } else {
             if (item.isGroup) {
-                AlertDialog.Builder(context!!)
-                    .setMessage(R.string.quest_generic_item_confirmation)
-                    .setNegativeButton(R.string.quest_generic_confirmation_no, null)
-                    .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ ->
-                        favs.add(javaClass.simpleName, itemValue)
-                        onClickOk(item.value)
-                    }
-                    .show()
+                context?.let {
+                    AlertDialog.Builder(it)
+                        .setMessage(R.string.quest_generic_item_confirmation)
+                        .setNegativeButton(R.string.quest_generic_confirmation_no, null)
+                        .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ ->
+                            favs.add(javaClass.simpleName, itemValue)
+                            onClickOk(item.value)
+                        }
+                        .show()
+                }
             }
             else {
                 favs.add(javaClass.simpleName, itemValue)

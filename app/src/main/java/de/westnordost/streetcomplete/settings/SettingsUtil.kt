@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.settings
 
 import android.view.View
-import de.westnordost.streetcomplete.data.QuestType
+import de.westnordost.streetcomplete.data.quest.QuestType
 
 fun genericQuestTitle(resourceProvider: View, type: QuestType<*>): String {
     // all parameters are replaced by generic three dots

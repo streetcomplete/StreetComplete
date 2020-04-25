@@ -1,11 +1,11 @@
 package de.westnordost.streetcomplete.quests.wheelchair_access
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
+import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 
-class AddWheelchairAccessBusiness(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<String>(o)
+class AddWheelchairAccessBusiness(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<String>(o)
 {
     override val tagFilters = """
         nodes, ways, relations with
@@ -79,6 +79,7 @@ class AddWheelchairAccessBusiness(o: OverpassMapDataAndGeometryDao) : SimpleOver
         "\n) and !wheelchair and name"
 
     override val commitMessage = "Add wheelchair access"
+    override val wikiLink = "Key:wheelchair"
     override val icon = R.drawable.ic_quest_wheelchair_shop
     override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
 

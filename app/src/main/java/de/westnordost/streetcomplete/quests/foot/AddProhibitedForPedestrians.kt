@@ -1,13 +1,13 @@
 package de.westnordost.streetcomplete.quests.foot
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.OsmTaggings
-import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.meta.ANYTHING_PAVED
+import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
+import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.*
 
-class AddProhibitedForPedestrians(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<ProhibitedForPedestriansAnswer>(o) {
+class AddProhibitedForPedestrians(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<ProhibitedForPedestriansAnswer>(o) {
 
     override val tagFilters = """
         ways with (
@@ -25,11 +25,12 @@ class AddProhibitedForPedestrians(o: OverpassMapDataAndGeometryDao) : SimpleOver
         "and motorroad != yes " +
         "and highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified " +
         // road probably not developed enough to issue a prohibition for pedestrians
-        "and surface ~ ${OsmTaggings.ANYTHING_PAVED.joinToString("|")} " +
+        "and surface ~ ${ANYTHING_PAVED.joinToString("|")} " +
         // fuzzy filter for above mentioned situations + developed-enough / non-rural roads
         "and ( oneway~yes|-1 or bridge=yes or tunnel=yes or bicycle~no|use_sidepath or lit=yes )"
 
     override val commitMessage = "Add whether roads are prohibited for pedestrians"
+    override val wikiLink = "Key:foot"
     override val icon = R.drawable.ic_quest_no_pedestrians
     override val isSplitWayEnabled = true
 

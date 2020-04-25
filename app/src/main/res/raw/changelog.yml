@@ -1,3 +1,33 @@
+v19.0-alpha2: |
+  <p>I am sorry about this, by accident the alpha test version of v19 ended up on F-Droid. If you do not like to be an alpha tester, you should reinstall v18.<br/>Usually, only stable versions are published on F-Droid. If you like to be on the cutting edge in the future whenever I do not botch this up, you can watch releases for <a href="https://github.com/westnordost/StreetComplete/releases/">StreetComplete</a></p>
+  <h3>Fixes</h3>
+  <ul>
+  <li><strong>fix crash on startup if user has no OSM profile image</strong></li>
+  <li><strong>fix crash when displaying the link to osmweekly</strong></li>
+  <li><strong>fix crash when showing main screen while being offline</strong></li>
+  <li>fix keyboard would hide input form when the form was not visible compeletely before</li>
+  <li>fix rare crash that occurs when opening a quest while downloading</li>
+  <li>for auto-sync on: do not try and thus fail to upload when offline</li>
+  <li>fix undo button was not enabled again after one undo</li>
+  <li>fix star count not being immediately updated after login</li>
+  <li>fix crash when opening vegetarian quest on Albanian locale</li>
+  <li>fix incorrect display of how many quests were needed to unlock an achievement</li>
+  <li>if no more quests are available when trying to download, show message</li>
+  <li>correct text color in tab bar for profile screen on tablets</li>
+  <li>correct layout for achievements and link screen</li>
+  <li>screen should follow current location by default</li>
+  <li>fix clipping problem during the star counter animation</li>
+  <li>don't animate star counter when simply returning to the main screen</li>
+  </ul>
+  <h3>More</h3>
+  <ul>
+  <li>update translations</li>
+  <li>on stats screen, make the difference in bubble size smaller</li>
+  </ul>
+
+v19.0-alpha1: |
+  <h3>TODO</h3>
+
 v18.0: |
   <h3>New Quests</h3>
   <ul>

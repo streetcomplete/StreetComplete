@@ -2,15 +2,11 @@
 <resources>
     <string name="action_settings">"设置"</string>
     <string name="oauth_communication_error">"无法连接验证服务器"</string>
-    <string name="loading">"载入中"</string>
     <string name="retry">"重试"</string>
-    <string name="oauth_cancelled">"验证已取消"</string>
     <string name="oauth_failed_permissions">"验证失败：必须允许所有列出的权限请求"</string>
     <string name="title_activity_settings">"设置"</string>
     <string name="pref_category_communication">"通讯"</string>
     <string name="pref_category_display">"显示"</string>
-    <string name="pref_title_authorization">"OpenStreetMap 账号认证"</string>
-    <string name="pref_title_not_authorized_summary">"帐号未验证"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
     <string name="pref_tilecache_size_message">"地图缓存的大小，单位为 MB"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"显示所有笔记"</string>
@@ -61,10 +57,8 @@
     <string name="download_area_too_big">"请进一步放大"</string>
     <string name="confirmation_cancel_prev_download_title">"取消目前的搜寻并以搜寻取代？"</string>
     <string name="notification_downloading">"搜寻任务"</string>
-    <string name="now_downloading_toast">"搜寻更多任务"</string>
     <string name="turn_on_location_request">"处已关闭。到设定中开启它？"</string>
     <string name="no_location_permission_warning">"你的位置会被用在搜寻身边的任务上"</string>
-    <string name="action_about">"关于"</string>
 
     <!-- Fuzzy -->
     <string name="about_title_authors">"作者"</string>
@@ -375,7 +369,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_way_lit_road_title">"这条路上有照明设施吗？"</string>
     <string name="quest_way_lit_automatic">"它使用动态侦测照明"</string>
     <string name="quest_way_lit_24_7">"不分日夜照明"</string>
-    <string name="pref_title_authorized_username_summary">"认证帐号：%s"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"无法在这里扫描。请进一步放大，或者减少地图的倾斜程度。"</string>
     <string name="quest_crossing_type_title">"这是哪一种交叉口？"</string>
     <string name="quest_crossing_type_signals">"有红绿灯的路口"</string>
@@ -404,13 +397,11 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_address_house_name_label">"房屋名称："</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"屋顶楼层数"</string>
     <string name="quest_buildingLevels_levelsLabel2">"常规楼层数（屋顶不计）"</string>
-    <string name="pref_title_authorized_summary">"验证"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingLevels_answer_multipleLevels">"建筑物各个部分的不同"</string>
     <string name="quest_buildingLevels_answer_description">"在这种情况下，简单填写建筑部分最高楼层的数值。"</string>
     <string name="unglue_hint">"从位置点取消界限视图"</string>
-    <string name="pref_title_not_authorized_summary2">"通过浏览器登录并验证您的帐号"</string>
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"这条路的车道间是否有实体分隔（例如有障碍物）？这会决定采用哪种预设的速度限制。"</string>
     <string name="about_category_feedback">"反馈"</string>
     <string name="quest_leave_new_note_photo">"附加照片"</string>
@@ -681,10 +672,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_leave_new_note_photos_are_useful">"添加一张照片会使这条笔记更有帮助一些。"</string>
     <string name="quest_postboxCollectionTimes_name_title">"邮箱 %s 的收信时间是在什么时候？"</string>
     <string name="create_new_note_hint">"最好用使用当地人使用的语言撰写笔记。否则，最好用英文。"</string>
-    <string name="about_contributing">"您的答案将直接改善 OpenStreetMap。贡献的数据是开放的，每个人都可以使用。许多了不起的项目已经在使用它。"</string>
-    <string name="about_missing_stars">"当前，星星数量尚未能在设备之间共享，但是答案会直接添加到 OpenStreetMap 数据库中。"</string>
-    <string name="how_to_get_stars">"选择一个地图上的标记，然后回答问题。这样，就能改善 OpenStreetMap 数据并获得星星。如果看不到标记，可以试试缩小地图。"</string>
-    <string name="oauth_remove_authorization_confirmation">"移除"</string>
     <string name="quest_leafType_title">"这些树是针叶树还是阔叶树？"</string>
     <string name="quest_leaf_type_needles">"针叶"</string>
     <string name="quest_leaf_type_broadleaved">"阔叶"</string>
@@ -699,7 +686,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
     <string name="quest_maxweight_unusualInput_confirmation_description">"这个承重量似乎不太现实。确定是这个数字吗？"</string>
     <string name="quest_maxweight_answer_other_sign">"标志看起来不太对"</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"您想留一条笔记吗？照片笔记可以允许其他图客帮忙识别标志。"</string>
-    <string name="confirmation_authorize_now_note">"之后，你可以在设置中执行这一步骤。"</string>
     <string name="quest_generalFee_title">"是否需要付费才能进入 %s？"</string>
     <string name="about_summary_current_version">"当前版本：%s"</string>
     <string name="quest_postboxRef_title">"这个邮箱的参考编号是多少？"</string>

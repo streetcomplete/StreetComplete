@@ -144,7 +144,7 @@ abstract class AAddLocalizedNameForm<T> : AbstractQuestFormAnswerFragment<T>() {
             && adapter.localizedNames.all { it.name.trim().isNotEmpty() }
 
 
-    internal class InjectedFields {
+    class InjectedFields {
         @Inject internal lateinit var serializer: Serializer
     }
 

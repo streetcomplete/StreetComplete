@@ -1,9 +1,9 @@
 package de.westnordost.streetcomplete.quests.handrail
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
+import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
 /**
@@ -13,7 +13,7 @@ import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
  * The details would only slow down the answering in a survey by requiring more thought and a more
  * complex GUI (interpreting the direction of the OSM way for example).
  */
-class AddHandrail(overpassServer: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<Boolean>(overpassServer) {
+class AddHandrail(overpassApi: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<Boolean>(overpassApi) {
     // Do not include nodes and relations, even though these exist with the right tags, because
     // according to the wiki page for `highway=steps` [1] it can only be applied to ways. It also
     // does not make much sense for other types of elements and it is more likely to be a tagging
@@ -34,6 +34,7 @@ class AddHandrail(overpassServer: OverpassMapDataAndGeometryDao) : SimpleOverpas
          and !handrail and !handrail:left and !handrail:center and !handrail:right
     """
     override val commitMessage = "Add whether steps have a handrail"
+    override val wikiLink = "Key:handrail"
 
     override val icon = R.drawable.ic_quest_handrail
 

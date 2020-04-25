@@ -3,19 +3,20 @@ package de.westnordost.streetcomplete.quests.construction
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.OsmTaggings
-import de.westnordost.streetcomplete.data.osm.ElementGeometry
+import de.westnordost.streetcomplete.data.meta.SURVEY_MARK_KEY
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
-import de.westnordost.streetcomplete.data.osm.tql.getQuestPrintStatement
-import de.westnordost.streetcomplete.data.osm.tql.toGlobalOverpassBBox
-import de.westnordost.streetcomplete.quests.DateUtil
+import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
+import de.westnordost.streetcomplete.data.tagfilters.getQuestPrintStatement
+import de.westnordost.streetcomplete.data.tagfilters.toGlobalOverpassBBox
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
-open class MarkCompletedBuildingConstruction(private val overpass: OverpassMapDataAndGeometryDao)
-    : AMarkCompletedConstruction<Boolean>() {
+open class MarkCompletedBuildingConstruction(private val overpass: OverpassMapDataAndGeometryApi)
+    : OsmElementQuestType<Boolean> {
 
     override val commitMessage = "Determine whether construction is now completed"
+    override val wikiLink = "Tag:building=construction"
     override val icon = R.drawable.ic_quest_building_construction
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_construction_building_title
@@ -31,25 +32,30 @@ open class MarkCompletedBuildingConstruction(private val overpass: OverpassMapDa
      * - recently edited (includes adding/updating check_date tags)
      */
     private fun getOverpassQuery(bbox: BoundingBox): String {
-        val groupName = ".buildings_under_construction"
-        val wayGroupName = groupName + "_ways"
-        val relationGroupName = groupName + "_relations"
-        return bbox.toGlobalOverpassBBox() + "\n" +
-            "way" + getQueryPart("building", wayGroupName, 180) +
-            "relation" + getQueryPart("building", relationGroupName, 180) +
-            "($wayGroupName; $relationGroupName;);\n" +
-            getQuestPrintStatement()
+        val tagFilter = "building = construction"
+
+        // TODO as soon as all used overpass servers are on 0.7.56, this can be simplified, using "wr"
+        return bbox.toGlobalOverpassBBox() + """
+            way[$tagFilter]${isNotInFuture("opening_date")} -> .ways_with_unknown_state;
+            way[$tagFilter]${hasRecentlyBeenEdited(180)} -> .recently_edited_ways;
+            relation[$tagFilter]${isNotInFuture("opening_date")} -> .relations_with_unknown_state;
+            relation[$tagFilter]${hasRecentlyBeenEdited(180)} -> .recently_edited_relations;
+            (
+                (.ways_with_unknown_state; - .recently_edited_ways;);
+                (.relations_with_unknown_state; - .recently_edited_relations;);
+            );
+        """.trimIndent() + "\n" + getQuestPrintStatement()
     }
 
     override fun createForm() = YesNoQuestAnswerFragment()
 
     override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
         if (answer) {
-            val constructionValue = changes.getPreviousValue("construction") ?: "yes"
-            changes.modify("building", constructionValue)
-            removeTagsDescribingConstruction(changes)
+            val value = changes.getPreviousValue("construction") ?: "yes"
+            changes.modify("building", value)
+            deleteTagsDescribingConstruction(changes)
         } else {
-            changes.addOrModify(OsmTaggings.SURVEY_MARK_KEY, DateUtil.getCurrentDateString())
+            changes.addOrModify(SURVEY_MARK_KEY, getCurrentDateString())
         }
     }
 }

@@ -1,11 +1,11 @@
 package de.westnordost.streetcomplete.quests.orchard_produce
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
+import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 
-class AddOrchardProduce(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<List<String>>(o) {
+class AddOrchardProduce(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<List<String>>(o) {
 
     override val tagFilters = """
         ways, relations with landuse = orchard
@@ -13,6 +13,7 @@ class AddOrchardProduce(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestT
         and orchard != meadow_orchard
     """
     override val commitMessage = "Add orchard produces"
+    override val wikiLink = "Tag:landuse=orchard"
     override val icon = R.drawable.ic_quest_apple
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_orchard_produce_title

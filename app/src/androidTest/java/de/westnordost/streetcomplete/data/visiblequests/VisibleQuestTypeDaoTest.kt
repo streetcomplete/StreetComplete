@@ -4,8 +4,8 @@ import org.junit.Before
 import org.junit.Test
 
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
-import de.westnordost.streetcomplete.data.osm.persist.test.DisabledTestQuestType
-import de.westnordost.streetcomplete.data.osm.persist.test.TestQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.DisabledTestQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.TestQuestType
 
 import org.junit.Assert.*
 

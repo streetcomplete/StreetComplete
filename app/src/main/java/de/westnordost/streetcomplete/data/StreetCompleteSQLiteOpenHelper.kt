@@ -3,23 +3,26 @@ package de.westnordost.streetcomplete.data
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import de.westnordost.streetcomplete.data.user.achievements.UserAchievementsTable
+import de.westnordost.streetcomplete.data.user.achievements.UserLinksTable
 
 import javax.inject.Singleton
 
-import de.westnordost.streetcomplete.data.changesets.OpenChangesetsTable
-import de.westnordost.streetcomplete.data.osm.persist.ElementGeometryTable
-import de.westnordost.streetcomplete.data.osm.persist.NodeTable
-import de.westnordost.streetcomplete.data.osm.persist.OsmQuestTable
-import de.westnordost.streetcomplete.data.osm.persist.OsmQuestSplitWayTable
-import de.westnordost.streetcomplete.data.osm.persist.UndoOsmQuestTable
-import de.westnordost.streetcomplete.data.osmnotes.CreateNoteTable
+import de.westnordost.streetcomplete.data.osm.upload.changesets.OpenChangesetsTable
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryTable
+import de.westnordost.streetcomplete.data.osm.mapdata.NodeTable
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestTable
+import de.westnordost.streetcomplete.data.osm.splitway.OsmQuestSplitWayTable
+import de.westnordost.streetcomplete.data.osm.osmquest.undo.UndoOsmQuestTable
+import de.westnordost.streetcomplete.data.osmnotes.createnotes.CreateNoteTable
 import de.westnordost.streetcomplete.data.osmnotes.NoteTable
-import de.westnordost.streetcomplete.data.osm.persist.RelationTable
-import de.westnordost.streetcomplete.data.osm.persist.WayTable
-import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestTable
+import de.westnordost.streetcomplete.data.osm.mapdata.RelationTable
+import de.westnordost.streetcomplete.data.osm.mapdata.WayTable
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestTable
 import de.westnordost.streetcomplete.data.visiblequests.QuestVisibilityTable
-import de.westnordost.streetcomplete.data.statistics.QuestStatisticsTable
-import de.westnordost.streetcomplete.data.tiles.DownloadedTilesTable
+import de.westnordost.streetcomplete.data.user.QuestStatisticsTable
+import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesTable
+import de.westnordost.streetcomplete.data.notifications.NewUserAchievementsTable
 import de.westnordost.streetcomplete.ktx.hasColumn
 import de.westnordost.streetcomplete.quests.localized_name.data.RoadNamesTable
 import de.westnordost.streetcomplete.quests.oneway.AddOneway
@@ -43,6 +46,9 @@ import de.westnordost.streetcomplete.quests.oneway.data.WayTrafficFlowTable
         db.execSQL(CreateNoteTable.CREATE)
 
         db.execSQL(QuestStatisticsTable.CREATE)
+        db.execSQL(UserAchievementsTable.CREATE)
+        db.execSQL(UserLinksTable.CREATE)
+        db.execSQL(NewUserAchievementsTable.CREATE)
 
         db.execSQL(DownloadedTilesTable.CREATE)
 
@@ -156,9 +162,15 @@ import de.westnordost.streetcomplete.quests.oneway.data.WayTrafficFlowTable
             db.execSQL(UndoOsmQuestTable.CREATE)
             db.execSQL(UndoOsmQuestTable.MERGED_VIEW_CREATE)
         }
+
+        if (oldVersion < 13 && newVersion >= 13) {
+            db.execSQL(UserAchievementsTable.CREATE)
+            db.execSQL(UserLinksTable.CREATE)
+            db.execSQL(NewUserAchievementsTable.CREATE)
+        }
         // for later changes to the DB
         // ...
     }
 }
 
-private const val DB_VERSION = 12
+private const val DB_VERSION = 13

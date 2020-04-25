@@ -15,7 +15,7 @@ open class ApplicationDbTestCase {
 
     @Before fun setUpHelper() {
         serializer = KryoSerializer()
-        dbHelper = DbModule.sqliteOpenHelper(
+        dbHelper = DbModule.sqLiteOpenHelper(
             InstrumentationRegistry.getInstrumentation().targetContext,
             DATABASE_NAME
         )

@@ -6,13 +6,17 @@ import androidx.core.content.edit
 import javax.inject.Inject
 
 import de.westnordost.streetcomplete.Prefs
-import de.westnordost.streetcomplete.data.QuestType
-import de.westnordost.streetcomplete.data.QuestTypeRegistry
+import de.westnordost.streetcomplete.data.quest.QuestType
+import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
+import javax.inject.Singleton
 
-class QuestTypeOrderList @Inject constructor(
+/** List of quest types with user-applied order */
+@Singleton class QuestTypeOrderList @Inject constructor(
     private val prefs: SharedPreferences,
     private val questTypeRegistry: QuestTypeRegistry
 ) {
+    /* Is a singleton because it has a in-memory cache that is synchronized with changes made on
+       the DB */
 
     private val orderLists: MutableList<MutableList<String>> by lazy { load() }
 

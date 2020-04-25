@@ -1,15 +1,16 @@
 package de.westnordost.streetcomplete.quests.wheelchair_access
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
+import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 
-class AddWheelchairAccessToiletsPart(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<String>(o) {
+class AddWheelchairAccessToiletsPart(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<String>(o) {
     override val tagFilters = """
         nodes, ways, relations with name and toilets = yes and !toilets:wheelchair
     """
     override val commitMessage = "Add wheelchair access to toilets"
+    override val wikiLink = "Key:toilets:wheelchair"
     override val icon = R.drawable.ic_quest_toilets_wheelchair
     override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
 

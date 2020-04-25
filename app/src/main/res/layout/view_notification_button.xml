@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:parentTag="android.widget.RelativeLayout">
+
+    <ImageView
+        android:id="@+id/iconView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:src="@drawable/ic_notifications_black_24dp"/>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/notification_background"
+        android:gravity="center"
+        android:textColor="@color/button_white"
+        android:textSize="12dp"
+        android:layout_alignTop="@id/iconView"
+        android:layout_alignEnd="@id/iconView"
+        android:minWidth="16dp"
+        android:layout_marginTop="-10dp"
+        android:layout_marginEnd="-10dp"
+        tools:ignore="SpUsage"
+        tools:text="1" />
+
+</merge>

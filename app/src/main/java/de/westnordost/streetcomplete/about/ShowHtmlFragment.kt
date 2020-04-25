@@ -10,19 +10,17 @@ import androidx.core.os.bundleOf
 import de.westnordost.streetcomplete.R
 import org.sufficientlysecure.htmltextview.HtmlTextView
 
-class ShowHtmlFragment : Fragment() {
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-        inflater.inflate(R.layout.fragment_show_html, container, false)
+/** Shows a simple html without using a WebView */
+class ShowHtmlFragment : Fragment(R.layout.fragment_show_html) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val textView = view.findViewById<HtmlTextView>(R.id.text)
-        textView.setHtml(arguments!!.getString(TEXT)!!)
+        textView.setHtml(requireArguments().getString(TEXT)!!)
     }
 
     override fun onStart() {
         super.onStart()
-        activity?.setTitle(arguments!!.getInt(TITLE_STRING_RESOURCE_ID))
+        activity?.setTitle(requireArguments().getInt(TITLE_STRING_RESOURCE_ID))
     }
 
     companion object {

@@ -1,10 +1,12 @@
 package de.westnordost.streetcomplete.data.download
 
+import de.westnordost.streetcomplete.data.quest.QuestType
+
 interface QuestDownloadProgressListener {
-    fun onStarted()
-    fun onProgress(progress: Float)
-    fun onError(e: Exception)
-    fun onSuccess()
-    fun onFinished()
-    fun onNotStarted()
+    fun onStarted() {}
+    fun onStarted(questType: QuestType<*>) {}
+    fun onFinished(questType: QuestType<*>) {}
+    fun onError(e: Exception) {}
+    fun onFinished() {}
+    fun onSuccess() {}
 }

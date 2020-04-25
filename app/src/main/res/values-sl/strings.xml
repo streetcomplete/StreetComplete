@@ -2,15 +2,11 @@
 <resources>
     <string name="action_settings">"Nastavitve"</string>
     <string name="oauth_communication_error">"Pooblastitveni strežnik ni dostopen"</string>
-    <string name="loading">"Nalaganje"</string>
     <string name="retry">"Poskusi ponovno"</string>
-    <string name="oauth_cancelled">"Pooblastitev preklicana"</string>
     <string name="oauth_failed_permissions">"Avtorizacija ni uspela: Odobriti je potrebno vsa našteta dovoljenja"</string>
     <string name="title_activity_settings">"Nastavitve"</string>
     <string name="pref_category_communication">"Komunikacija"</string>
     <string name="pref_category_display">"Prikaz"</string>
-    <string name="pref_title_authorization">"Pooblastilo za OSM"</string>
-    <string name="pref_title_not_authorized_summary">"Pooblastila še ni"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
     <string name="pref_tilecache_size_message">"Prostor v megabajtih, rezerviran za predpomnjenje podatkov zemljevida"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Prikaži vse opombe"</string>
@@ -62,9 +58,7 @@
     <string name="download_area_too_big">"Bolj približajte, prosim"</string>
     <string name="confirmation_cancel_prev_download_title">"Prekinem trenutno iskanje in raje poiščem tu?"</string>
     <string name="notification_downloading">"Iščem naloge..."</string>
-    <string name="now_downloading_toast">"Iščem dodatne naloge..."</string>
     <string name="no_location_permission_warning">"Za iskanje nalog v vaši bližini potrebujem podatek o lokaciji."</string>
-    <string name="action_about">"O programu StreetComplete"</string>
     <string name="about_title_authors">"Zasluge"</string>
 
     <!-- Fuzzy -->
@@ -294,7 +288,6 @@ Podatki, ki jih vnesete tu, bodo dodani v OpenStreetMap v vašem imenu, brez pot
     <string name="quest_way_lit_road_title">"Ali je ta del ceste osvetljen?"</string>
     <string name="quest_way_lit_automatic">"Se vklaplja samodejno s senzorji gibanja"</string>
     <string name="quest_way_lit_24_7">"Je osvetljen(a) noč in dan"</string>
-    <string name="pref_title_authorized_username_summary">"Pooblaščen račun: %s"</string>
     <string name="quest_crossing_type_title">"Kakšne vrste prehod je to?"</string>
     <string name="quest_crossing_type_signals">"Prehod s semaforjem"</string>
     <string name="quest_crossing_type_uncontrolled">"Samo zebra"</string>
@@ -318,12 +311,10 @@ Podatki, ki jih vnesete tu, bodo dodani v OpenStreetMap v vašem imenu, brez pot
     <string name="quest_address_house_name_label">"Ime zgradbe:"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"Nadstropij v podstrešju"</string>
     <string name="quest_buildingLevels_levelsLabel2">"Običajnih nadstropij (ne podstrešnih)"</string>
-    <string name="pref_title_authorized_summary">"Pooblaščen"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingLevels_answer_multipleLevels">"Različno glede na del stavbe"</string>
     <string name="unglue_hint">"Tapnite, da pogled odpnete od trenutne lokacije"</string>
-    <string name="pref_title_not_authorized_summary2">"Za pooblastilo se prijavite preko spletnega brskalnika"</string>
     <string name="about_category_feedback">"Povratne informacije"</string>
     <string name="quest_leave_new_note_photo">"Priloži fotografijo"</string>
     <string name="quest_leave_new_note_photo_delete_title">"Ali želite izbrisati to sliko?"</string>
@@ -495,13 +486,10 @@ Na primer 1,3 ali 2-6."</string>
     <string name="pref_title_overpass_url_select">"Spremeni strežnik Overpass"</string>
     <string name="label_housenumber">"hišna številka"</string>
     <string name="quest_busStopShelter_covered">"Celotno postajališče je pokrito"</string>
-    <string name="oauth_remove_authorization_dialog_message">"Ali želite odstraniti pooblastilo za račun OSM?"</string>
-    <string name="oauth_remove_authorization_confirmation">"Odstrani"</string>
     <string name="quest_leafType_title">"Ali so drevesa tu iglavci ali listavci?"</string>
     <string name="quest_leaf_type_needles">"Iglavci"</string>
     <string name="quest_leaf_type_broadleaved">"Listavci"</string>
     <string name="quest_leaf_type_mixed">"Mešani gozd"</string>
     <string name="quest_maxweight_answer_noSign">"Ni znaka"</string>
     <string name="quest_maxweight_answer_other_sign">"Znak izgleda drugače…"</string>
-    <string name="confirmation_authorize_now_note">"To lahko naredite pozneje v nastavitvah."</string>
 </resources>

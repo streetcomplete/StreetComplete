@@ -3,24 +3,25 @@ package de.westnordost.streetcomplete.quests.sidewalk
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.OsmTaggings
-import de.westnordost.streetcomplete.data.osm.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
+import de.westnordost.streetcomplete.data.meta.ANYTHING_UNPAVED
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
-import de.westnordost.streetcomplete.data.osm.tql.getQuestPrintStatement
-import de.westnordost.streetcomplete.data.osm.tql.toGlobalOverpassBBox
+import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
+import de.westnordost.streetcomplete.data.tagfilters.getQuestPrintStatement
+import de.westnordost.streetcomplete.data.tagfilters.toGlobalOverpassBBox
 
-class AddSidewalk(private val overpassServer: OverpassMapDataAndGeometryDao) : OsmElementQuestType<SidewalkAnswer> {
+class AddSidewalk(private val overpassApi: OverpassMapDataAndGeometryApi) : OsmElementQuestType<SidewalkAnswer> {
 
     override val commitMessage = "Add whether there are sidewalks"
+    override val wikiLink = "Key:sidewalk"
     override val icon = R.drawable.ic_quest_sidewalk
     override val isSplitWayEnabled = true
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_sidewalk_title
 
     override fun download(bbox: BoundingBox, handler: (element: Element, geometry: ElementGeometry?) -> Unit): Boolean {
-        return overpassServer.query(getOverpassQuery(bbox), handler)
+        return overpassApi.query(getOverpassQuery(bbox), handler)
     }
 
     /** returns overpass query string to get streets without sidewalk info not near separately mapped
@@ -40,7 +41,7 @@ class AddSidewalk(private val overpassServer: OverpassMapDataAndGeometryDao) : O
             // not any with very low speed limit because they not very likely to have sidewalks
             "[maxspeed !~ '^(8|7|6|5|5 mph|walk)$']" +
             // not any unpaved because of the same reason
-            "[surface !~ '^(" + OsmTaggings.ANYTHING_UNPAVED.joinToString("|") + ")$']" +
+            "[surface !~ '^(" + ANYTHING_UNPAVED.joinToString("|") + ")$']" +
             "[lit = yes]" +
             // not any explicitly tagged as no pedestrians
             "[foot != no]" +

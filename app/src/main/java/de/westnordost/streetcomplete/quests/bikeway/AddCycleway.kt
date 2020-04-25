@@ -3,20 +3,21 @@ package de.westnordost.streetcomplete.quests.bikeway
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.OsmTaggings
-import de.westnordost.streetcomplete.data.osm.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
+import de.westnordost.streetcomplete.data.meta.ANYTHING_UNPAVED
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.NoCountriesExcept
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
-import de.westnordost.streetcomplete.data.osm.tql.getQuestPrintStatement
-import de.westnordost.streetcomplete.data.osm.tql.toGlobalOverpassBBox
+import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
+import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
+import de.westnordost.streetcomplete.data.tagfilters.getQuestPrintStatement
+import de.westnordost.streetcomplete.data.tagfilters.toGlobalOverpassBBox
 
 import de.westnordost.streetcomplete.quests.bikeway.Cycleway.*
 
-class AddCycleway(private val overpassServer: OverpassMapDataAndGeometryDao) : OsmElementQuestType<CyclewayAnswer> {
+class AddCycleway(private val overpassApi: OverpassMapDataAndGeometryApi) : OsmElementQuestType<CyclewayAnswer> {
 
     override val commitMessage = "Add whether there are cycleways"
+    override val wikiLink = "Key:cycleway"
     override val icon = R.drawable.ic_quest_bicycleway
 
     // See overview here: https://ent8r.github.io/blacklistr/?streetcomplete=bikeway/AddCycleway.kt
@@ -25,26 +26,26 @@ class AddCycleway(private val overpassServer: OverpassMapDataAndGeometryDao) : O
     // https://en.wikivoyage.org/wiki/Cycling
     // http://peopleforbikes.org/get-local/ (US)
     override val enabledInCountries = NoCountriesExcept(
-        // all of Northern and Western Europe, most of Central Europe, some of Southern Europe
-        "NO","SE","FI","IS","DK",
-        "GB","IE","NL","BE","FR","LU",
-        "DE","PL","CZ","HU","AT","CH","LI",
-        "ES","IT",
-        // East Asia
-        "JP","KR","TW",
-        // some of China (East Coast)
-        "CN-BJ","CN-TJ","CN-SD","CN-JS","CN-SH",
-        "CN-ZJ","CN-FJ","CN-GD","CN-CQ",
-        // Australia etc
-        "NZ","AU",
-        // some of Canada
-        "CA-BC","CA-QC","CA-ON","CA-NS","CA-PE",
-        // some of the US
-        // West Coast, East Coast, Center, South
-        "US-WA","US-OR","US-CA",
-        "US-MA","US-NJ","US-NY","US-DC","US-CT","US-FL",
-        "US-MN","US-MI","US-IL","US-WI","US-IN",
-        "US-AZ","US-TX"
+            // all of Northern and Western Europe, most of Central Europe, some of Southern Europe
+            "NO", "SE", "FI", "IS", "DK",
+            "GB", "IE", "NL", "BE", "FR", "LU",
+            "DE", "PL", "CZ", "HU", "AT", "CH", "LI",
+            "ES", "IT",
+            // East Asia
+            "JP", "KR", "TW",
+            // some of China (East Coast)
+            "CN-BJ", "CN-TJ", "CN-SD", "CN-JS", "CN-SH",
+            "CN-ZJ", "CN-FJ", "CN-GD", "CN-CQ",
+            // Australia etc
+            "NZ", "AU",
+            // some of Canada
+            "CA-BC", "CA-QC", "CA-ON", "CA-NS", "CA-PE",
+            // some of the US
+            // West Coast, East Coast, Center, South
+            "US-WA", "US-OR", "US-CA",
+            "US-MA", "US-NJ", "US-NY", "US-DC", "US-CT", "US-FL",
+            "US-MN", "US-MI", "US-IL", "US-WI", "US-IN",
+            "US-AZ", "US-TX"
     )
 
     override val isSplitWayEnabled = true
@@ -54,7 +55,7 @@ class AddCycleway(private val overpassServer: OverpassMapDataAndGeometryDao) : O
     override fun isApplicableTo(element: Element):Boolean? = null
 
     override fun download(bbox: BoundingBox, handler: (element: Element, geometry: ElementGeometry?) -> Unit): Boolean {
-        return overpassServer.query(getOverpassQuery(bbox), handler)
+        return overpassApi.query(getOverpassQuery(bbox), handler)
     }
 
     /** returns overpass query string to get streets without cycleway info not near paths for
@@ -74,7 +75,7 @@ class AddCycleway(private val overpassServer: OverpassMapDataAndGeometryDao) : O
             // not any with low speed limit because they not very likely to have cycleway infrastructure
             "[maxspeed !~ '^(20|15|10|8|7|6|5|10 mph|5 mph|walk)$']" +
             // not any unpaved because of the same reason
-            "[surface !~ '^(" + OsmTaggings.ANYTHING_UNPAVED.joinToString("|") + ")$']" +
+            "[surface !~ '^(" + ANYTHING_UNPAVED.joinToString("|") + ")$']" +
             // not any explicitly tagged as no bicycles
             "[bicycle != no]" +
             "[access !~ '^(private|no)$']" +

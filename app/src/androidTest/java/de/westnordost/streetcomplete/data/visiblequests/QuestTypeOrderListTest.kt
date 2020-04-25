@@ -6,13 +6,13 @@ import android.content.Context
 import org.junit.Before
 import org.junit.Test
 
-import de.westnordost.streetcomplete.data.QuestType
-import de.westnordost.streetcomplete.data.QuestTypeRegistry
-import de.westnordost.streetcomplete.data.osm.persist.test.TestQuestType
-import de.westnordost.streetcomplete.data.osm.persist.test.TestQuestType2
-import de.westnordost.streetcomplete.data.osm.persist.test.TestQuestType3
-import de.westnordost.streetcomplete.data.osm.persist.test.TestQuestType4
-import de.westnordost.streetcomplete.data.osm.persist.test.TestQuestType5
+import de.westnordost.streetcomplete.data.quest.QuestType
+import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
+import de.westnordost.streetcomplete.data.osm.osmquest.TestQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.TestQuestType2
+import de.westnordost.streetcomplete.data.osm.osmquest.TestQuestType3
+import de.westnordost.streetcomplete.data.osm.osmquest.TestQuestType4
+import de.westnordost.streetcomplete.data.osm.osmquest.TestQuestType5
 
 import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
 import org.assertj.core.api.Assertions.*
@@ -33,7 +33,7 @@ class QuestTypeOrderListTest {
 
         questTypeOrderList = QuestTypeOrderList(
             getInstrumentation().context.getSharedPreferences("Test", Context.MODE_PRIVATE),
-            QuestTypeRegistry(list)
+                QuestTypeRegistry(list)
         )
         questTypeOrderList.clear()
     }
