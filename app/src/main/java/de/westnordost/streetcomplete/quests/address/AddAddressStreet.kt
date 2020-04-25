@@ -46,7 +46,8 @@ class AddAddressStreet(
 
             way["highway" ~ "^(${OsmTaggings.ALL_ROADS.joinToString("|")})$"]["name"] -> .named_roads;
 
-            nwr["addr:street"!~".*"]["addr:housenumber"]["addr:place"!~".*"](around.named_roads:150) -> .missing_data;
+            nwr["addr:street"!~".*"]["addr:housenumber"]["addr:place"!~".*"]
+                (around.named_roads:$MAX_DIST_FOR_ROAD_NAME_SUGGESTION_IN_METERS) -> .missing_data;
 
             (.missing_data; - .inStreetRelation;);""" +
                     getQuestPrintStatement()
