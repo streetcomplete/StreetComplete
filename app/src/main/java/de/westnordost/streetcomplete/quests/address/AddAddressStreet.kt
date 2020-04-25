@@ -4,19 +4,19 @@ import android.util.Log
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.OsmTaggings
-import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
+import de.westnordost.streetcomplete.data.meta.ALL_ROADS
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
-import de.westnordost.streetcomplete.data.osm.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.data.osm.tql.getQuestPrintStatement
-import de.westnordost.streetcomplete.data.osm.tql.toGlobalOverpassBBox
+import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.data.tagfilters.getQuestPrintStatement
+import de.westnordost.streetcomplete.data.tagfilters.toGlobalOverpassBBox
 import de.westnordost.streetcomplete.quests.localized_name.data.RoadNameSuggestionsDao
 import java.util.regex.Pattern
 
 class AddAddressStreet(
-        private val overpassServer: OverpassMapDataAndGeometryDao,
+        private val overpassApi: OverpassMapDataAndGeometryApi,
         private val roadNameSuggestionsDao: RoadNameSuggestionsDao
 ) : OsmElementQuestType<AddressStreetAnswer> {
     override val commitMessage = "Add street/place names to address"
@@ -34,8 +34,8 @@ class AddAddressStreet(
     override fun isApplicableTo(element: Element): Boolean? = null
 
     override fun download(bbox: BoundingBox, handler: (element: Element, geometry: ElementGeometry?) -> Unit): Boolean {
-        if (!overpassServer.query(getOverpassQuery(bbox), handler)) return false
-        if (!overpassServer.query(getStreetNameSuggestionsOverpassQuery(bbox), this::putRoadNameSuggestion)) return false
+        if (!overpassApi.query(getOverpassQuery(bbox), handler)) return false
+        if (!overpassApi.query(getStreetNameSuggestionsOverpassQuery(bbox), this::putRoadNameSuggestion)) return false
         return true
     }
 
@@ -44,7 +44,7 @@ class AddAddressStreet(
             relation["type"="associatedStreet"];
             > -> .inStreetRelation;
 
-            way["highway" ~ "^(${OsmTaggings.ALL_ROADS.joinToString("|")})$"]["name"] -> .named_roads;
+            way["highway" ~ "^(${ALL_ROADS.joinToString("|")})$"]["name"] -> .named_roads;
 
             nwr["addr:street"!~".*"]["addr:housenumber"]["addr:place"!~".*"]
                 (around.named_roads:$MAX_DIST_FOR_ROAD_NAME_SUGGESTION_IN_METERS) -> .missing_data;
@@ -58,7 +58,7 @@ class AddAddressStreet(
      * */
     private fun getStreetNameSuggestionsOverpassQuery(bbox: BoundingBox) =
             bbox.toGlobalOverpassBBox() + "\n" + """
-        way[highway ~ "^(${OsmTaggings.ALL_ROADS.joinToString("|")})$"][name];
+        way[highway ~ "^(${ALL_ROADS.joinToString("|")})$"][name];
         out body geom;""".trimIndent()
 
     override fun applyAnswerTo(answer: AddressStreetAnswer, changes: StringMapChangesBuilder) {
