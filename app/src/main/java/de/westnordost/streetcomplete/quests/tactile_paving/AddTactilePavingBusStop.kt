@@ -15,7 +15,7 @@ class AddTactilePavingBusStop(o: OverpassMapDataAndGeometryApi) : SimpleOverpass
           or 
           (highway = bus_stop and public_transport != stop_position)
         )
-        and !tactile_paving
+        and !tactile_paving and physically_present != no
     """
     override val commitMessage = "Add tactile pavings on bus stops"
     override val wikiLink = "Key:tactile_paving"

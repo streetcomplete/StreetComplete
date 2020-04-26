@@ -15,7 +15,7 @@ class AddBusStopShelter(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestT
           or
           (highway = bus_stop and public_transport != stop_position)
         )
-        and !shelter and !covered
+        and !shelter and !covered and physically_present != no
     """
     override val commitMessage = "Add bus stop shelter"
     override val wikiLink = "Key:shelter"
