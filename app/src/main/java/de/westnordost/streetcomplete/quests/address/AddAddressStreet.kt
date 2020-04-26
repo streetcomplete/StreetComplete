@@ -94,7 +94,7 @@ class AddAddressStreet(
                 """nwr["addr:housenumber"][!"addr:street"][!"addr:place"]"""
         // this must be the same as above but in tag filter expression syntax
         private val ADDRESSES_WITHOUT_STREETS_TFE by lazy { FiltersParser().parse(
-                "nwr with addr:housenumber and !addr:street and !addr:place"
+                "nodes, ways, relations with addr:housenumber and !addr:street and !addr:place"
         )}
 
         private val ROADS_WITH_NAMES =
