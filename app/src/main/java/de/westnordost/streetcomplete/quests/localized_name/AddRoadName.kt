@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.localized_name
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.ALL_ROADS
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
@@ -113,15 +114,19 @@ class AddRoadName(
     companion object {
         const val MAX_DIST_FOR_ROAD_NAME_SUGGESTION = 30.0 //m
 
-        private const val ROADS =
-            "primary|secondary|tertiary|unclassified|residential|living_street|pedestrian"
-        private const val ROADS_WITH_NAMES = "way[highway ~ \"^($ROADS)$\"][name]"
+        // to avoid spam, only ask for names on a limited set of roads
+        private const val NAMEABLE_ROADS =
+                "primary|secondary|tertiary|unclassified|residential|living_street|pedestrian"
         private const val ROADS_WITHOUT_NAMES =
-            "way[highway ~ \"^($ROADS)$\"][!name][!ref][noname != yes][!junction][area != yes]"
+                "way[highway ~ \"^($NAMEABLE_ROADS)$\"][!name][!ref][noname != yes][!junction][area != yes]"
         // this must be the same as above but in tag filter expression syntax
         private val ROADS_WITHOUT_NAMES_TFE by lazy { FiltersParser().parse(
-            "ways with highway ~ $ROADS and !name and !ref and noname != yes and !junction and area != yes"
+                "ways with highway ~ $NAMEABLE_ROADS and !name and !ref and noname != yes and !junction and area != yes"
         )}
+
+        // but we can find name suggestions on any type of already-named road
+        private val ROADS_WITH_NAMES =
+                "way[highway ~ \"^(${ALL_ROADS.joinToString("|")})$\"][name]"
     }
 }
 

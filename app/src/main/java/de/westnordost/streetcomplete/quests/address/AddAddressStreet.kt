@@ -44,21 +44,22 @@ class AddAddressStreet(
             relation["type"="associatedStreet"];
             > -> .inStreetRelation;
 
-            way["highway" ~ "^(${ALL_ROADS.joinToString("|")})$"]["name"] -> .named_roads;
+            $ROADS_WITH_NAMES -> .named_roads;
 
-            nwr["addr:street"!~".*"]["addr:housenumber"]["addr:place"!~".*"]
-                (around.named_roads:$MAX_DIST_FOR_ROAD_NAME_SUGGESTION_IN_METERS) -> .missing_data;
+            $ADDRESSES_WITHOUT_STREETS
+                (around.named_roads:$MAX_DIST_FOR_ROAD_NAME_SUGGESTION) -> .missing_data;
 
             (.missing_data; - .inStreetRelation;);""" +
                     getQuestPrintStatement()
 
-    // TODO: probably either this should be modified to match AddRoadName with custom set of roads  with config array migrated to OsmTaggings
-    // TODO: or AddRoadName can use something like that
-    /** return overpass query string to get roads with names
+    /** return overpass query string to get roads with names around addresses without streets
      * */
     private fun getStreetNameSuggestionsOverpassQuery(bbox: BoundingBox) =
             bbox.toGlobalOverpassBBox() + "\n" + """
-        way[highway ~ "^(${ALL_ROADS.joinToString("|")})$"][name];
+        $ADDRESSES_WITHOUT_STREETS -> .address_missing_street
+        $ROADS_WITH_NAMES -> .named_roads;
+        way.named_roads(
+            around.address_missing_street: $MAX_DIST_FOR_ROAD_NAME_SUGGESTION);
         out body geom;""".trimIndent()
 
     override fun applyAnswerTo(answer: AddressStreetAnswer, changes: StringMapChangesBuilder) {
@@ -86,7 +87,13 @@ class AddAddressStreet(
     companion object {
         //TODO: this only appears to pick up nodes, so street-name suggestions don't appear
         // in the middle of a long straight-stretch. There might need to be a better way.
-        const val MAX_DIST_FOR_ROAD_NAME_SUGGESTION_IN_METERS = 250.0
+        const val MAX_DIST_FOR_ROAD_NAME_SUGGESTION = 250.0
+
+        private const val ADDRESSES_WITHOUT_STREETS =
+                """nwr["addr:street"!~".*"]["addr:housenumber"]["addr:place"!~".*"]"""
+
+        private val ROADS_WITH_NAMES =
+                "way[highway ~ \"^(${ALL_ROADS.joinToString("|")})$\"][name]"
     }
 }
 
