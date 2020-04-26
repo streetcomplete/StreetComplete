@@ -6,3 +6,4 @@ officialLanguages: [ne]
 orchardProduces: [guava, mango, mangosteen, banana, orange, chilli_pepper, sweet_pepper, lemon, lime,
   pear, apple, tea, areca_nut, papaya, pineapple, peach, plum, walnut, nutmeg]
 popularReligions: [hindu, buddhist]
+workweekDays: 6
