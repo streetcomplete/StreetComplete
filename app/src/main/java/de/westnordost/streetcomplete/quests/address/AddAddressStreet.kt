@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.data.tagfilters.FiltersParser
 import de.westnordost.streetcomplete.data.tagfilters.getQuestPrintStatement
 import de.westnordost.streetcomplete.data.tagfilters.toGlobalOverpassBBox
 import de.westnordost.streetcomplete.quests.localized_name.data.RoadNameSuggestionsDao
@@ -30,7 +31,8 @@ class AddAddressStreet(
 
     override fun createForm() = AddAddressStreetForm()
 
-    override fun isApplicableTo(element: Element): Boolean? = null
+    override fun isApplicableTo(element: Element): Boolean? =
+            ADDRESSES_WITHOUT_STREETS_TFE.matches(element)
 
     override fun download(bbox: BoundingBox, handler: (element: Element, geometry: ElementGeometry?) -> Unit): Boolean {
         if (!overpassApi.query(getOverpassQuery(bbox), handler)) return false
@@ -89,7 +91,11 @@ class AddAddressStreet(
         const val MAX_DIST_FOR_ROAD_NAME_SUGGESTION = 250.0
 
         private const val ADDRESSES_WITHOUT_STREETS =
-                """nwr["addr:street"!~".*"]["addr:housenumber"]["addr:place"!~".*"]"""
+                """nwr["addr:housenumber"][!"addr:street"][!"addr:place"]"""
+        // this must be the same as above but in tag filter expression syntax
+        private val ADDRESSES_WITHOUT_STREETS_TFE by lazy { FiltersParser().parse(
+                "nwr with addr:housenumber and !addr:street and !addr:place"
+        )}
 
         private val ROADS_WITH_NAMES =
                 "way[highway ~ \"^(${ALL_ROADS.joinToString("|")})$\"][name]"
