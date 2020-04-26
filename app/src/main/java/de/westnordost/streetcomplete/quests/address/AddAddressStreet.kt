@@ -57,7 +57,7 @@ class AddAddressStreet(
      * */
     private fun getStreetNameSuggestionsOverpassQuery(bbox: BoundingBox) =
             bbox.toGlobalOverpassBBox() + "\n" + """
-        $ADDRESSES_WITHOUT_STREETS -> .address_missing_street
+        $ADDRESSES_WITHOUT_STREETS -> .address_missing_street;
         $ROADS_WITH_NAMES -> .named_roads;
         way.named_roads(
             around.address_missing_street: $MAX_DIST_FOR_ROAD_NAME_SUGGESTION);
