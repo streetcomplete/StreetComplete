@@ -333,6 +333,9 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="credits_translations">"See the &lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;project on POEditor&lt;/a&gt; for a complete list."</string>
     <string name="credits_translations_title">Translations</string>
     <string name="credits_contributors_title">Code contributors</string>
+    <string name="credits_art_contributors_title">Art contributors</string>
+    <string name="credits_projects_contributors_title">Projects made for StreetComplete</string>
+    <string name="credits_main_contributors_title">Main contributors</string>
     <string name="credits_author_title">Author and maintainer</string>
     <string name="credits_and_more">and more…</string>
     <string name="quest_maxspeed_answer_living_street">It is a living street</string>
