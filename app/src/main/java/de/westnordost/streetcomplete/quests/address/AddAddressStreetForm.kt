@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.quests.address
 
-import android.os.Bundle
 import android.view.Menu
 import android.view.View
 import android.widget.EditText

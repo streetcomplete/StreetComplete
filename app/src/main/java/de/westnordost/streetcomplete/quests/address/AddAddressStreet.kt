@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.quests.address
 
-import android.util.Log
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
