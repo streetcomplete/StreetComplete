@@ -12,6 +12,10 @@ textures:
         density: 5
 
 styles:
+    quest-selection:
+        base: points
+        blend: overlay
+        blend_order: 2
     quest-icons:
         base: points
         texture: quests
