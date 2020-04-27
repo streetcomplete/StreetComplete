@@ -2,9 +2,10 @@ package de.westnordost.streetcomplete.data.user.achievements
 
 import javax.inject.Inject
 import javax.inject.Named
+import javax.inject.Singleton
 
 /** Provides the user's granted achievements and their level */
-class UserAchievementsSource @Inject constructor(
+@Singleton class UserAchievementsSource @Inject constructor(
     private val achievementsDao: UserAchievementsDao,
     @Named("Achievements") private val allAchievements: List<Achievement>
 ) {

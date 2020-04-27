@@ -2,9 +2,10 @@ package de.westnordost.streetcomplete.data.user.achievements
 
 import javax.inject.Inject
 import javax.inject.Named
+import javax.inject.Singleton
 
 /** Provides the user's unlocked links */
-class UserLinksSource @Inject constructor(
+@Singleton class UserLinksSource @Inject constructor(
     private val userLinksDao: UserLinksDao,
     @Named("Links") allLinks: List<Link>
 ) {
