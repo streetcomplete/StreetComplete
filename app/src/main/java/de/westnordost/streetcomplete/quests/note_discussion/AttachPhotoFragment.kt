@@ -81,7 +81,7 @@ class AttachPhotoFragment : Fragment() {
             currentImagePath = null
         }
 
-        noteImageAdapter = NoteImageAdapter(paths, context!!)
+        noteImageAdapter = NoteImageAdapter(paths, requireContext())
         gridView.layoutManager = LinearLayoutManager(
             context,
             LinearLayoutManager.HORIZONTAL,

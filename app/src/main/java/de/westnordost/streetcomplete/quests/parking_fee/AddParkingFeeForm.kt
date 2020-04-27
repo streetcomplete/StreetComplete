@@ -58,7 +58,7 @@ class AddParkingFeeForm : AbstractQuestFormAnswerFragment<FeeAnswer>() {
         super.onCreate(savedInstanceState)
 
         val viewData = loadOpeningHoursData(savedInstanceState)
-        openingHoursAdapter = AddOpeningHoursAdapter(viewData, activity!!, countryInfo)
+        openingHoursAdapter = AddOpeningHoursAdapter(viewData, requireContext(), countryInfo)
         openingHoursAdapter.registerAdapterDataObserver( AdapterDataChangedWatcher { checkIsFormComplete() })
     }
 
@@ -86,7 +86,7 @@ class AddParkingFeeForm : AbstractQuestFormAnswerFragment<FeeAnswer>() {
             getString(R.string.quest_fee_only_at_hours),
             getString(R.string.quest_fee_not_at_hours)
         )
-        selectFeeOnlyAtHours.adapter = ArrayAdapter(activity!!, R.layout.spinner_item_centered, spinnerItems)
+        selectFeeOnlyAtHours.adapter = ArrayAdapter(requireContext(), R.layout.spinner_item_centered, spinnerItems)
         selectFeeOnlyAtHours.setSelection(if (isFeeOnlyAtHours) 0 else 1)
         selectFeeOnlyAtHours.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {

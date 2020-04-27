@@ -52,7 +52,7 @@ class AddOpeningHoursForm : AbstractQuestFormAnswerFragment<OpeningHoursAnswer>(
         val isAlsoAddingMonths = savedInstanceState?.getBoolean(IS_ADD_MONTHS_MODE) == true
         val viewData = loadOpeningHoursData(savedInstanceState)
 
-        openingHoursAdapter = AddOpeningHoursAdapter(viewData, activity!!, countryInfo)
+        openingHoursAdapter = AddOpeningHoursAdapter(viewData, requireContext(), countryInfo)
         openingHoursAdapter.isDisplayMonths = isAlsoAddingMonths
         openingHoursAdapter.registerAdapterDataObserver(AdapterDataChangedWatcher { checkIsFormComplete() })
     }
