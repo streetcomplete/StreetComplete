@@ -794,7 +794,7 @@ Zu guter letzt, vergiss nicht dich nicht in Gefahr zu begeben: Achte auf deine U
     <string name="link_weeklyosm_description">"Blog mit wöchentlichen Neuigkeiten über alles aus der OpenStreetMap-Welt"</string>
     <string name="link_figuregrounder_description">"Figur-Grund-Diagrammposter einer Stadt oder Umgebung erstellen"</string>
     <string name="achievement_first_edit_title">"Erste Aufgabe gelöst"</string>
-    <string name="achievement_first_edit_description">"Willkomen bei der OpenStreetMap-Gemeinschaft! Im Profilbereich kannst du mehr zu dienen gelösten Aufgaben einsehen."</string>
+    <string name="achievement_first_edit_description">"Willkomen bei der OpenStreetMap-Gemeinschaft! Im Profilbereich kannst du mehr zu deinen gelösten Aufgaben einsehen."</string>
     <string name="achievement_surveyor_title">"Gutachter"</string>
     <string name="achievement_surveyor_solved_X">"Du hast %d der Aufgaben gelöst, weiter so! Es winken weitere Errungenschaften und Links zu OSM und anderen Apps und Projekten!"</string>
     <string name="achievement_regular_title">"Stammgast"</string>
@@ -823,4 +823,7 @@ Beachte, dass diese App nur Hausnummern bereits klassifizierter Gebäude abfragt
     <string name="map_btn_menu">"Menü"</string>
     <string name="privacy_html_statistics">"&lt;p&gt;Die Daten die in deinem Profil angezeigt werden, werden aus der öffentlich zugreifbaren Historie deiner Beiträge an der OpenStreetMap generiert und diese dann auch auf meinem Server gehostet.&lt;/p&gt;"</string>
     <string name="confirmation_authorize_now_note2">"Du kannst dich auch später auf der Profilseite einloggen."</string>
+    <string name="credits_art_contributors_title">"Grafik-Beiträge"</string>
+    <string name="credits_projects_contributors_title">"Begleitprojekte"</string>
+    <string name="credits_main_contributors_title">"Hauptmitwirkende"</string>
 </resources>
