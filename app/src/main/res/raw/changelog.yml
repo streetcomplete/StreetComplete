@@ -20,7 +20,6 @@ v19.0: |
     <li><strong>⭐ Added statistics of your solved quests</strong> and links with more information for each quest type (#80, #1294). Try rotating it!</li>
     <li><strong>🏆 You can now earn achievements</strong> which in turn unlock interesting OpenStreetMap related links and add them to your collection! (#1715, #1749, #1009)</li>
   </ul>
-  <ul>
   <h3>Fixes and Enhancements</h3>
   <ul>
     <li>Fix quest download at 180th meridian (#1767)</li>
