@@ -12,6 +12,7 @@ import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.quest.QuestGroup
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
+import de.westnordost.streetcomplete.data.quest.Quest
 import de.westnordost.streetcomplete.ktx.toDp
 import de.westnordost.streetcomplete.ktx.toPx
 import de.westnordost.streetcomplete.map.QuestPinLayerManager.Companion.MARKER_QUEST_GROUP
@@ -40,7 +41,7 @@ class QuestsMapFragment : LocationAwareMapFragment() {
     private var questsLayer: MapData? = null
     private var geometryLayer: MapData? = null
 
-    private var questSelectionMarker: Marker? = null
+    private val questSelectionMarkers: MutableList<Marker> = mutableListOf()
 
     // markers: LatLon -> Marker Id
     private val markerIds: MutableMap<LatLon, Long> = HashMap()
@@ -71,7 +72,6 @@ class QuestsMapFragment : LocationAwareMapFragment() {
         geometryLayer = controller?.addDataLayer(GEOMETRY_LAYER)
         questsLayer = controller?.addDataLayer(QUESTS_LAYER)
         questPinLayerManager.questsLayer = questsLayer
-        questSelectionMarker = createQuestSelectionMarker()
         super.onMapReady()
     }
 
@@ -84,7 +84,7 @@ class QuestsMapFragment : LocationAwareMapFragment() {
         super.onDestroy()
         geometryLayer = null
         questsLayer = null
-        questSelectionMarker = null
+        questSelectionMarkers.clear()
     }
 
     /* ------------------------------------- Map setup ------------------------------------------ */
@@ -125,16 +125,16 @@ class QuestsMapFragment : LocationAwareMapFragment() {
 
     /* --------------------------------- Focusing on quest -------------------------------------- */
 
-    fun startFocusQuest(geometry: ElementGeometry, offset: RectF) {
-        zoomAndMoveToContain(geometry, offset)
-        showQuestSelectionMarker(geometry.center)
-        putQuestGeometry(geometry)
+    fun startFocusQuest(quest: Quest, offset: RectF) {
+        zoomAndMoveToContain(quest.geometry, offset)
+        showQuestSelectionMarkers(quest.markerLocations)
+        putQuestGeometry(quest.geometry)
     }
 
     fun endFocusQuest() {
         removeQuestGeometry()
         clearMarkersForCurrentQuest()
-        hideQuestSelectionMarker()
+        hideQuestSelectionMarkers()
         restoreCameraPosition()
         followPosition()
     }
@@ -148,21 +148,26 @@ class QuestsMapFragment : LocationAwareMapFragment() {
 
         val marker = controller?.addMarker() ?: return null
         marker.setStylingFromString(
-            "{ style: 'quest-selection', color: 'white', size: [${w}px, ${h}px], flat: false, collide: false, offset: ['0px', '-77px'] }"
+            "{ style: 'quest-selection', color: 'white', size: [${w}px, ${h}px], flat: false, collide: false, offset: ['0px', '-78px'] }"
         )
         marker.setDrawable(frame)
         return marker
     }
 
-    private fun showQuestSelectionMarker(pos: LatLon) {
-        questSelectionMarker?.let {
-            it.setPoint(pos)
-            it.isVisible = true
+    private fun showQuestSelectionMarkers(positions: Collection<LatLon>) {
+        while (positions.size > questSelectionMarkers.size) {
+            val marker = createQuestSelectionMarker() ?: return
+            questSelectionMarkers.add(marker)
+        }
+        positions.forEachIndexed { index, pos ->
+            val marker = questSelectionMarkers[index]
+            marker.setPoint(pos)
+            marker.isVisible = true
         }
     }
 
-    private fun hideQuestSelectionMarker() {
-        questSelectionMarker?.isVisible = false
+    private fun hideQuestSelectionMarkers() {
+        questSelectionMarkers.forEach { it.isVisible = false }
     }
 
     private fun zoomAndMoveToContain(g: ElementGeometry, offset: RectF) {

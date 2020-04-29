@@ -625,7 +625,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
             closeBottomSheet()
         }
 
-        mapFragment.startFocusQuest(quest.geometry, mapOffsetWithOpenBottomSheet)
+        mapFragment.startFocusQuest(quest, mapOffsetWithOpenBottomSheet)
         freezeMap()
         locationWhenOpenedQuest = mapFragment.displayedLocation
 

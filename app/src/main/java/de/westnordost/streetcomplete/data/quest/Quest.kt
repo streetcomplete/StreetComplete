@@ -9,7 +9,7 @@ interface Quest {
     var id: Long?
 
     val center: LatLon
-    val markerLocations: Array<LatLon>
+    val markerLocations: Collection<LatLon>
     val geometry: ElementGeometry
 
     val type: QuestType<*>

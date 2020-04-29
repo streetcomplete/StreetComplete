@@ -36,18 +36,18 @@ data class OsmQuest(
     override val type: QuestType<*> get() = osmElementQuestType
     override val position: LatLon get() = center
 
-    override val markerLocations: Array<LatLon> get() {
+    override val markerLocations: Collection<LatLon> get() {
         if (osmElementQuestType.hasMarkersAtEnds && geometry is ElementPolylinesGeometry) {
             val polyline = geometry.polylines[0]
             val length = polyline.measuredLength()
             if (length > 15 * 4) {
-                return arrayOf(
+                return listOf(
                     polyline.pointOnPolylineFromStart(15.0)!!,
                     polyline.pointOnPolylineFromEnd(15.0)!!
                 )
             }
         }
-        return arrayOf(center)
+        return listOf(center)
     }
 
     override fun isApplicableTo(element: Element) = osmElementQuestType.isApplicableTo(element)
