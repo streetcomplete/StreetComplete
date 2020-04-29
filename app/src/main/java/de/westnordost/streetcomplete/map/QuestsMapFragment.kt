@@ -148,7 +148,7 @@ class QuestsMapFragment : LocationAwareMapFragment() {
 
         val marker = controller?.addMarker() ?: return null
         marker.setStylingFromString(
-            "{ style: 'quest-selection', color: 'white', size: [${w}px, ${h}px], flat: false, collide: false }"
+            "{ style: 'quest-selection', color: 'white', size: [${w}px, ${h}px], flat: false, collide: false, offset: ['3px', '-78px'] }"
         )
         marker.setDrawable(frame)
         return marker
