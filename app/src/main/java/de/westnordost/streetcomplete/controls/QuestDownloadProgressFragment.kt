@@ -45,7 +45,7 @@ class QuestDownloadProgressFragment : Fragment(R.layout.fragment_quest_download_
         }
 
         override fun onFinished() {
-            mainHandler.postDelayed(this@QuestDownloadProgressFragment::animateOutProgressView, 600)
+            mainHandler.postDelayed(this@QuestDownloadProgressFragment::animateOutProgressView, 1000)
         }
 
         override fun onSuccess() {

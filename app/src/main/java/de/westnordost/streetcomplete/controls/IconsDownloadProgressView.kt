@@ -20,7 +20,6 @@ class IconsDownloadProgressView @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : CircularMaskFrameLayout(context, attrs, defStyleAttr)  {
 
-    private val mainHandler = Handler(Looper.getMainLooper())
     private var currentView: IconProgressView? = null
     private val iconQueue: Queue<Drawable> = LinkedList()
 
@@ -28,14 +27,8 @@ class IconsDownloadProgressView @JvmOverloads constructor(
         inflate(context, R.layout.view_icons_download_progress, this)
     }
 
-    override fun onDetachedFromWindow() {
-        super.onDetachedFromWindow()
-        mainHandler.removeCallbacksAndMessages(null)
-    }
-
     /** set the given icon and resets the queue */
     fun setIcon(icon: Drawable) = synchronized(this) {
-        mainHandler.removeCallbacksAndMessages(null)
         iconQueue.clear()
         currentView?.let { iconProgressViewContainer.removeView(it) }
         val newView = createProgressView(icon)
@@ -54,8 +47,9 @@ class IconsDownloadProgressView @JvmOverloads constructor(
     /** executes a finished-animation on the current icon, animates it out and animates in the next
      *  icon, if there is one. */
     fun pollIcon() {
-        currentView?.showFinishedAnimation()
-        mainHandler.postDelayed(this::animateToNextIcon, 650)
+        currentView?.showFinishedAnimation(onFinished = {
+            animateToNextIcon()
+        })
     }
 
     private fun animateToNextIcon() = synchronized(this) {
