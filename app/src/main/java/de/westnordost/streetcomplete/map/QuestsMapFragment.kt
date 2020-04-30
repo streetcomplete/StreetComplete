@@ -7,6 +7,7 @@ import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import com.mapzen.tangram.MapData
 import com.mapzen.tangram.SceneUpdate
+import com.mapzen.tangram.geometry.Point
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
@@ -19,6 +20,7 @@ import de.westnordost.streetcomplete.map.QuestPinLayerManager.Companion.MARKER_Q
 import de.westnordost.streetcomplete.map.QuestPinLayerManager.Companion.MARKER_QUEST_ID
 import de.westnordost.streetcomplete.map.tangram.CameraPosition
 import de.westnordost.streetcomplete.map.tangram.Marker
+import de.westnordost.streetcomplete.map.tangram.toLngLat
 import de.westnordost.streetcomplete.map.tangram.toTangramGeometry
 import de.westnordost.streetcomplete.util.BitmapUtil
 import de.westnordost.streetcomplete.util.distanceTo
@@ -40,6 +42,7 @@ class QuestsMapFragment : LocationAwareMapFragment() {
     // layers
     private var questsLayer: MapData? = null
     private var geometryLayer: MapData? = null
+    private var selectedQuestPinsLayer: MapData? = null
 
     private val questSelectionMarkers: MutableList<Marker> = mutableListOf()
 
@@ -71,6 +74,7 @@ class QuestsMapFragment : LocationAwareMapFragment() {
         controller?.setPickRadius(1f)
         geometryLayer = controller?.addDataLayer(GEOMETRY_LAYER)
         questsLayer = controller?.addDataLayer(QUESTS_LAYER)
+        selectedQuestPinsLayer = controller?.addDataLayer(SELECTED_QUESTS_LAYER)
         questPinLayerManager.questsLayer = questsLayer
         super.onMapReady()
     }
@@ -84,6 +88,7 @@ class QuestsMapFragment : LocationAwareMapFragment() {
         super.onDestroy()
         geometryLayer = null
         questsLayer = null
+        selectedQuestPinsLayer = null
         questSelectionMarkers.clear()
     }
 
@@ -128,6 +133,7 @@ class QuestsMapFragment : LocationAwareMapFragment() {
     fun startFocusQuest(quest: Quest, offset: RectF) {
         zoomAndMoveToContain(quest.geometry, offset)
         showQuestSelectionMarkers(quest.markerLocations)
+        putSelectedQuestPins(quest)
         putQuestGeometry(quest.geometry)
     }
 
@@ -135,39 +141,9 @@ class QuestsMapFragment : LocationAwareMapFragment() {
         removeQuestGeometry()
         clearMarkersForCurrentQuest()
         hideQuestSelectionMarkers()
+        removeSelectedQuestPins()
         restoreCameraPosition()
         followPosition()
-    }
-
-    private fun createQuestSelectionMarker(): Marker? {
-        val ctx = context ?: return null
-
-        val frame = BitmapUtil.createBitmapDrawableFrom(ctx.resources, R.drawable.quest_selection_ring)
-        val w = frame.intrinsicWidth.toFloat().toDp(ctx)
-        val h = frame.intrinsicHeight.toFloat().toDp(ctx)
-
-        val marker = controller?.addMarker() ?: return null
-        marker.setStylingFromString(
-            "{ style: 'quest-selection', color: 'white', size: [${w}px, ${h}px], flat: false, collide: false, offset: ['1px', '-78px'] }"
-        )
-        marker.setDrawable(frame)
-        return marker
-    }
-
-    private fun showQuestSelectionMarkers(positions: Collection<LatLon>) {
-        while (positions.size > questSelectionMarkers.size) {
-            val marker = createQuestSelectionMarker() ?: return
-            questSelectionMarkers.add(marker)
-        }
-        positions.forEachIndexed { index, pos ->
-            val marker = questSelectionMarkers[index]
-            marker.setPoint(pos)
-            marker.isVisible = true
-        }
-    }
-
-    private fun hideQuestSelectionMarkers() {
-        questSelectionMarkers.forEach { it.isVisible = false }
     }
 
     private fun zoomAndMoveToContain(g: ElementGeometry, offset: RectF) {
@@ -213,6 +189,56 @@ class QuestsMapFragment : LocationAwareMapFragment() {
         get() = questPinLayerManager.isVisible
         set(value) { questPinLayerManager.isVisible = value }
 
+    /* ---------------------------------  Selected quest pins ----------------------------------- */
+
+    private fun createQuestSelectionMarker(): Marker? {
+        val ctx = context ?: return null
+
+        val frame = BitmapUtil.createBitmapDrawableFrom(ctx.resources, R.drawable.quest_selection_ring)
+        val w = frame.intrinsicWidth.toFloat().toDp(ctx)
+        val h = frame.intrinsicHeight.toFloat().toDp(ctx)
+
+        val marker = controller?.addMarker() ?: return null
+        marker.setStylingFromString(
+            "{ style: 'quest-selection', color: 'white', size: [${w}px, ${h}px], flat: false, collide: false, offset: ['1px', '-78px'] }"
+        )
+        marker.setDrawable(frame)
+        return marker
+    }
+
+    private fun showQuestSelectionMarkers(positions: Collection<LatLon>) {
+        while (positions.size > questSelectionMarkers.size) {
+            val marker = createQuestSelectionMarker() ?: return
+            questSelectionMarkers.add(marker)
+        }
+        positions.forEachIndexed { index, pos ->
+            val marker = questSelectionMarkers[index]
+            marker.setPoint(pos)
+            marker.isVisible = true
+        }
+    }
+
+    private fun hideQuestSelectionMarkers() {
+        questSelectionMarkers.forEach { it.isVisible = false }
+    }
+
+    private fun putSelectedQuestPins(quest: Quest) {
+        val questIconName = resources.getResourceEntryName(quest.type.icon)
+        val positions = quest.markerLocations
+        val points = positions.map { position ->
+            val properties = mapOf(
+                "type" to "point",
+                "kind" to questIconName
+            )
+            Point(position.toLngLat(), properties)
+        }
+        selectedQuestPinsLayer?.setFeatures(points)
+    }
+
+    private fun removeSelectedQuestPins() {
+        selectedQuestPinsLayer?.clear()
+    }
+
     /* ------------------------------  Geometry for current quest ------------------------------- */
 
     private fun putQuestGeometry(geometry: ElementGeometry) {
@@ -255,8 +281,10 @@ class QuestsMapFragment : LocationAwareMapFragment() {
     }
 
     companion object {
+        // see streetcomplete.yaml for the definitions of the below layers
         private const val GEOMETRY_LAYER = "streetcomplete_geometry"
         private const val QUESTS_LAYER = "streetcomplete_quests"
+        private const val SELECTED_QUESTS_LAYER = "streetcomplete_selected_quests"
         private const val CLICK_AREA_SIZE_IN_DP = 48
     }
 }
