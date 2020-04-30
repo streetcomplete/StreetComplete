@@ -19,6 +19,7 @@
     <string name="achievements_empty">You have no achievements yet</string>
     <string name="links_empty">You have no links yet</string>
     <string name="quests_empty">You published no quest answers yet</string>
+    <string name="stats_are_syncing">Your statistics are still syncing. Check this screen later.</string>
     <string name="unsynced_quests_description">plus %d not yet published changes.</string>
     <string name="unsynced_quests_not_logged_in_description">You have %d not yet published changes. You need to login to have them uploaded.</string>
     <string name="title_activity_settings">"Settings"</string>

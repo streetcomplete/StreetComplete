@@ -43,6 +43,7 @@ import javax.inject.Singleton
         statisticsDao.clear()
         userAchievementsDao.clear()
         userLinksDao.clear()
+        userStore.clear()
         loginStatusListeners.forEach { it.onLoggedOut() }
     }
 

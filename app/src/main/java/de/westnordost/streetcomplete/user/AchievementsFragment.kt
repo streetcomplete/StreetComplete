@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.user.UserStore
 import de.westnordost.streetcomplete.data.user.achievements.Achievement
 import de.westnordost.streetcomplete.data.user.achievements.UserAchievementsSource
 import de.westnordost.streetcomplete.ktx.awaitLayout
@@ -33,6 +34,7 @@ class AchievementsFragment : Fragment(R.layout.fragment_achievements),
     CoroutineScope by CoroutineScope(Dispatchers.Main) {
 
     @Inject internal lateinit var userAchievementsSource: UserAchievementsSource
+    @Inject internal lateinit var userStore: UserStore
 
     private var actualCellWidth: Int = 0
 
@@ -65,10 +67,21 @@ class AchievementsFragment : Fragment(R.layout.fragment_achievements),
             achievementsList.layoutManager = layoutManager
             achievementsList.addItemDecoration(GridLayoutSpacingItemDecoration(itemSpacing))
             achievementsList.clipToPadding = false
+
             val achievements = userAchievementsSource.getAchievements()
             achievementsList.adapter = AchievementsAdapter(achievements)
 
             emptyText.visibility = if (achievements.isEmpty()) View.VISIBLE else View.GONE
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        if (userStore.isSynchronizingStatistics) {
+            emptyText.setText(R.string.stats_are_syncing)
+        } else {
+            emptyText.setText(R.string.achievements_empty)
         }
     }
 

@@ -38,6 +38,13 @@ import javax.inject.Singleton
         prefs.edit(true) { putString(Prefs.USER_LAST_DATE_ACTIVE, dateFormat.format(value)) }
     }
 
+    var isSynchronizingStatistics: Boolean
+        // default true because if it is not set yet, the first thing that is done is to synchronize it
+        get() = prefs.getBoolean(Prefs.IS_SYNCHRONIZING_STATISTICS, true)
+        set(value) {
+            prefs.edit(true) { putBoolean(Prefs.IS_SYNCHRONIZING_STATISTICS, value) }
+        }
+
     var unreadMessagesCount: Int
     get() = prefs.getInt(Prefs.OSM_UNREAD_MESSAGES, 0)
     set(value) {
@@ -60,6 +67,7 @@ import javax.inject.Singleton
             remove(Prefs.OSM_USER_NAME)
             remove(Prefs.OSM_UNREAD_MESSAGES)
             remove(Prefs.USER_DAYS_ACTIVE)
+            remove(Prefs.IS_SYNCHRONIZING_STATISTICS)
         }
     }
 

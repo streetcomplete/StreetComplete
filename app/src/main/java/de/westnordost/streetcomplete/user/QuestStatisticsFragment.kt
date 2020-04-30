@@ -25,6 +25,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.user.QuestStatisticsDao
+import de.westnordost.streetcomplete.data.user.UserStore
 import de.westnordost.streetcomplete.ktx.awaitLayout
 import de.westnordost.streetcomplete.ktx.toDp
 import de.westnordost.streetcomplete.view.CircularOutlineProvider
@@ -47,6 +48,7 @@ class QuestStatisticsFragment :
     SensorEventListener
 {
     @Inject internal lateinit var questStatisticsDao: QuestStatisticsDao
+    @Inject internal lateinit var userStore: UserStore
     @Inject internal lateinit var questTypeRegistry: QuestTypeRegistry
 
     private val mainHandler = Handler(Looper.getMainLooper())
@@ -114,6 +116,16 @@ class QuestStatisticsFragment :
             setupScene(areaInMeters)
 
             addQuestsToScene()
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        if (userStore.isSynchronizingStatistics) {
+            emptyText.setText(R.string.stats_are_syncing)
+        } else {
+            emptyText.setText(R.string.quests_empty)
         }
     }
 
