@@ -6,6 +6,7 @@
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"
                 xmlns:tools="http://schemas.android.com/tools"
+                android:background="@color/background"
                 tools:ignore="RtlSymmetry">
 
     <ImageView
