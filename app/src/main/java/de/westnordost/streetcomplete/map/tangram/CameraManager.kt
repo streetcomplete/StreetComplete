@@ -89,13 +89,13 @@ class CameraManager(private val c: MapController, private val contentResolver: C
     }
 
     @AnyThread fun cancelAllCameraAnimations() {
-        synchronized(currentAnimations) {
-            mainHandler.post {
+        mainHandler.post {
+            synchronized(currentAnimations) {
                 for (animator in currentAnimations.values.toSet()) {
                     animator.cancel()
                 }
+                currentAnimations.clear()
             }
-            currentAnimations.clear()
         }
     }
 
