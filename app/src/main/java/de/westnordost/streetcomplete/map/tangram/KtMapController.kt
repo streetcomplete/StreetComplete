@@ -4,6 +4,8 @@ import android.content.ContentResolver
 import android.graphics.Bitmap
 import android.graphics.PointF
 import android.graphics.RectF
+import android.os.Handler
+import android.os.Looper
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.Interpolator
 import com.mapzen.tangram.*
@@ -46,6 +48,7 @@ class KtMapController(private val c: MapController, contentResolver: ContentReso
     private val pickLabelContinuations = ConcurrentLinkedQueue<Continuation<LabelPickResult?>>()
     private val featurePickContinuations = ConcurrentLinkedQueue<Continuation<FeaturePickResult?>>()
 
+    private val mainHandler = Handler(Looper.getMainLooper())
     private var mapChangeListener: MapChangeListener? = null
 
     init {
@@ -87,15 +90,24 @@ class KtMapController(private val c: MapController, contentResolver: ContentReso
             }
 
             override fun onRegionWillChange(animated: Boolean) {
-                if (!cameraManager.isAnimating) mapChangeListener?.onRegionWillChange(false)
+                // workaround for https://github.com/tangrams/tangram-es/issues/2157 : explicitly post on main thread
+                mainHandler.post {
+                    if (!cameraManager.isAnimating) mapChangeListener?.onRegionWillChange(false)
+                }
             }
 
             override fun onRegionIsChanging() {
-                if (!cameraManager.isAnimating) mapChangeListener?.onRegionIsChanging()
+                // workaround for https://github.com/tangrams/tangram-es/issues/2157
+                mainHandler.post {
+                    if (!cameraManager.isAnimating) mapChangeListener?.onRegionIsChanging()
+                }
             }
 
             override fun onRegionDidChange(animated: Boolean) {
-                if (!cameraManager.isAnimating) mapChangeListener?.onRegionDidChange(false)
+                // workaround for https://github.com/tangrams/tangram-es/issues/2157
+                mainHandler.post {
+                    if (!cameraManager.isAnimating) mapChangeListener?.onRegionDidChange(false)
+                }
             }
         })
     }
