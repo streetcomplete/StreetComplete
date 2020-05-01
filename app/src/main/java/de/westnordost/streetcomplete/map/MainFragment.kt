@@ -219,6 +219,8 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
     override fun onStop() {
         super.onStop()
+        wasFollowingPosition = mapFragment?.isFollowingPosition ?: true
+        wasCompassMode = mapFragment?.isCompassMode ?: false
         visibleQuestsSource.removeListener(this)
         requireContext().unregisterReceiver(locationAvailabilityReceiver)
         LocalBroadcastManager.getInstance(requireContext()).unregisterReceiver(locationRequestFinishedReceiver)
@@ -416,7 +418,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
     private fun onLocationIsEnabled() {
         gpsTrackingButton.state = LocationState.SEARCHING
         mapFragment!!.startPositionTracking()
-        setIsFollowingPosition(true)
+        setIsFollowingPosition(wasFollowingPosition)
         locationManager.requestSingleUpdate()
     }
 
