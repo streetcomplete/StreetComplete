@@ -442,7 +442,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
     /* --------------------------------- Map control buttons------------------------------------- */
 
-    private fun onClickMainMenu() {
+    fun onClickMainMenu() {
         context?.let { MainMenuDialog(it, this::onClickDownload).show() }
     }
 

@@ -21,6 +21,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceManager;
 import android.text.method.LinkMovementMethod;
 import android.text.util.Linkify;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
@@ -216,6 +217,15 @@ public class MainActivity extends AppCompatActivity implements
 			if (!mainFragment.onBackPressed()) super.onBackPressed();
 		}
 	}
+
+	@Override
+	public boolean dispatchKeyEvent(KeyEvent event) {
+		final int keyCode = event.getKeyCode();
+		if (keyCode == KeyEvent.KEYCODE_MENU && mainFragment != null) {
+			mainFragment.onClickMainMenu();
+			return true;
+		}
+		return super.dispatchKeyEvent(event);
 	}
 
 	@Override public void onPause()
