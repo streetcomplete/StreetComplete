@@ -153,7 +153,7 @@ class QuestsMapFragment : LocationAwareMapFragment() {
         val currentPos = controller.cameraPosition
         cameraPositionBeforeShowingQuest = currentPos
 
-        val zoomTime = max(300L, (abs(currentPos.zoom - pos.zoom) * 300).roundToLong())
+        val zoomTime = max(450L, (abs(currentPos.zoom - pos.zoom) * 300).roundToLong())
 
         controller.updateCameraPosition(zoomTime, DecelerateInterpolator()) {
             position = pos.position
