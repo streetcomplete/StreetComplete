@@ -879,4 +879,8 @@
     <string name="achievement_car_solved_X">"شما %d جُستاری که جزئیات خیابان را تکمیل می‌کند را حل نموده‌اید، خیابان را در osm ثبت کنید !"</string>
     <string name="unread_messages_message">"شما %d پیام ناخوانده در صندوق پیام دارید"</string>
     <string name="unread_messages_button">"گشودن صندوق پیام"</string>
+    <string name="action_about2">"درباره"</string>
+    <string name="map_btn_menu">"منو"</string>
+    <string name="privacy_html_statistics">"&lt;p&gt; داده های قابل مشاهده در نمایه شما از تاریخچه همکاری عمومی شما در OpenStreetMap جمع آوری شده و سپس روی سرور ما میزبانی می شود. &lt;/p&gt;"</string>
+    <string name="confirmation_authorize_now_note2">"همچنین می توانید این کار را بعداً در صفحه نمایه انجام دهید."</string>
 </resources>

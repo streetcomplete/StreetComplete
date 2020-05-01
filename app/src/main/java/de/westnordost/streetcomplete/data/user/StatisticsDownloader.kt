@@ -40,7 +40,8 @@ class StatisticsDownloader(private val baseUrl: String) {
             questTypes[questType] = questTypesJson.getInt(questType)
         }
         val daysActive = obj.getInt("daysActive")
+        val isAnalyzing = obj.getBoolean("isAnalyzing")
         val lastUpdate = lastActivityDateFormat.parse(obj.getString("lastUpdate"))
-        return Statistics(questTypes, daysActive, lastUpdate)
+        return Statistics(questTypes, daysActive, lastUpdate, isAnalyzing)
     }
 }

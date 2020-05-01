@@ -42,6 +42,13 @@ class StatisticsUpdater @Inject constructor(
     fun updateFromBackend(userId: Long) {
         try {
             val statistics = statisticsDownloader.download(userId)
+            val backendIsStillAnalyzing = statistics.isAnalyzing
+            userStore.isSynchronizingStatistics = backendIsStillAnalyzing
+            if (backendIsStillAnalyzing) {
+                Log.i(TAG, "Backend is still analyzing changeset history")
+                return
+            }
+
             val backendDataIsUpToDate = statistics.lastUpdate.time / 1000 >= userStore.lastStatisticsUpdate.time / 1000
             if (!backendDataIsUpToDate) {
                 Log.i(TAG, "Backend data is not up-to-date")

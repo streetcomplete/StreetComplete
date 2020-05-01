@@ -119,7 +119,7 @@ class CollectionTimesAdapter(
         if (isFirst) {
             val firstWorkDayIdx = Weekdays.getWeekdayIndex(countryInfo.firstDayOfWorkweek)
             val result = BooleanArray(7)
-            for (i in 0 until countryInfo.regularShoppingDays) {
+            for (i in 0 until countryInfo.workweekDays) {
                 result[(i + firstWorkDayIdx) % 7] = true
             }
             return Weekdays(result)

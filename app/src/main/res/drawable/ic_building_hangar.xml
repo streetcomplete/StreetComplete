@@ -4,11 +4,11 @@
         android:fillColor="#5878b7"
         android:pathData="M116,108V60c-20,-40 -84,-40 -104,0V108Z"/>
     <path
-        android:fillColor="#aaaaaa"
+        android:fillColor="#aaa"
         android:pathData="M24,66h80v42h-80z"/>
     <path
         android:pathData="m12,60c20,-40 84,-40 104,0"
-        android:strokeColor="#333333"
+        android:strokeColor="#333"
         android:strokeWidth="12"/>
     <path
         android:fillColor="#808080"

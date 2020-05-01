@@ -24,7 +24,7 @@ data class OsmNoteQuest(
         : this(null, note, QuestStatus.NEW, null, Date(), osmNoteQuestType, null)
 
     override val type: QuestType<*> get() = questType
-    override val markerLocations: Array<LatLon> get() = arrayOf(note.position)
+    override val markerLocations: Collection<LatLon> get() = listOf(note.position)
     override val geometry: ElementGeometry get() = ElementPointGeometry(center)
     override val center: LatLon get() = note.position
 

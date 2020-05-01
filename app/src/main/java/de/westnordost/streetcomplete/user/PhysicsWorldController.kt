@@ -9,6 +9,7 @@ import org.jbox2d.common.Vec2
 import org.jbox2d.dynamics.Body
 import org.jbox2d.dynamics.BodyDef
 import org.jbox2d.dynamics.World
+import java.lang.Runnable
 import kotlin.math.max
 
 /** Contains the physics simulation world and the physics simulation loop */
@@ -17,6 +18,8 @@ class PhysicsWorldController(gravity: Vec2) : CoroutineScope by CoroutineScope(D
     private val world: World = World(gravity)
     private val thread: HandlerThread = HandlerThread("Physics thread")
     private val handler: Handler
+
+    private val loopRunnable = Runnable { loop() }
 
     private var isRunning = false
 
@@ -45,14 +48,14 @@ class PhysicsWorldController(gravity: Vec2) : CoroutineScope by CoroutineScope(D
     fun resume() {
         if (!isRunning) {
             isRunning = true
-            handler.postDelayed(this::loop, DELAY.toLong())
+            handler.postDelayed(loopRunnable, DELAY.toLong())
         }
     }
 
     fun pause() {
         if (isRunning) {
             isRunning = false
-            handler.removeCallbacks(this::loop)
+            handler.removeCallbacks(loopRunnable)
         }
     }
 

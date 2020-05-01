@@ -1,32 +1,35 @@
-v19.0-alpha2: |
-  <p>I am sorry about this, by accident the alpha test version of v19 ended up on F-Droid. If you do not like to be an alpha tester, you should reinstall v18.<br/>Usually, only stable versions are published on F-Droid. If you like to be on the cutting edge in the future whenever I do not botch this up, you can watch releases for <a href="https://github.com/westnordost/StreetComplete/releases/">StreetComplete</a></p>
-  <h3>Fixes</h3>
+v19.0: |
+  <p>This one is a huge release, maybe the biggest one yet! But don't get used to it, I have been
+  working on it full-time for a few months but must soon return to work life as my savings are running low.
+  That being said, you <strong>can</strong> donate, check the about screen 😛.<br/>
+  You can also read this list of changes later in that screen if you are impatient now.</p>
+  <h3>🗺️ Reworked main screen UI</h3>
   <ul>
-  <li><strong>fix crash on startup if user has no OSM profile image</strong></li>
-  <li><strong>fix crash when displaying the link to osmweekly</strong></li>
-  <li><strong>fix crash when showing main screen while being offline</strong></li>
-  <li>fix keyboard would hide input form when the form was not visible compeletely before</li>
-  <li>fix rare crash that occurs when opening a quest while downloading</li>
-  <li>for auto-sync on: do not try and thus fail to upload when offline</li>
-  <li>fix undo button was not enabled again after one undo</li>
-  <li>fix star count not being immediately updated after login</li>
-  <li>fix crash when opening vegetarian quest on Albanian locale</li>
-  <li>fix incorrect display of how many quests were needed to unlock an achievement</li>
-  <li>if no more quests are available when trying to download, show message</li>
-  <li>correct text color in tab bar for profile screen on tablets</li>
-  <li>correct layout for achievements and link screen</li>
-  <li>screen should follow current location by default</li>
-  <li>fix clipping problem during the star counter animation</li>
-  <li>don't animate star counter when simply returning to the main screen</li>
+    <li><strong>👨‍🏫 Added small tutorial</strong>, only shown when the app is first installed (#178, #1552)</li>
+    <li>Removed app bar, map now expands over status and navigation bar</li>
+    <li>New main menu with bigger icons</li>
+    <li>More informative <strong>download indicator</strong></li>
+    <li><strong>Notifications button</strong> shows news, like this changelog or new mail in your OpenStreetMap inbox (#1690, #1751)</li>
+    <li>Notes are now created via long-press</li>
   </ul>
-  <h3>More</h3>
+  <h3>Added profile screen</h3>
   <ul>
-  <li>update translations</li>
-  <li>on stats screen, make the difference in bubble size smaller</li>
+    <li>Login to OSM now happens within the app and not the browser, solves login problems for some users (#1760, #413, #804)</li>
+    <li>Your solved <strong>quest count is now synchronized</strong> across your devices and when you reinstall the app</li>
+    <li>Undone quest answers are now correctly counted as -1 to your quest count, so after synchronization your count may be a little lower than before</li>
+    <li><strong>⭐ Added statistics of your solved quests</strong> and links with more information for each quest type (#80, #1294). Try rotating it!</li>
+    <li><strong>🏆 You can now earn achievements</strong> which in turn unlock interesting OpenStreetMap related links and add them to your collection! (#1715, #1749, #1009)</li>
   </ul>
-
-v19.0-alpha1: |
-  <h3>TODO</h3>
+  <h3>Fixes and Enhancements</h3>
+  <ul>
+    <li>Fix quest download at 180th meridian (#1767)</li>
+    <li>Disable photo upload for Android 4.4 and below (#1768)</li>
+    <li>Improve the postbox collection time form (#1776, #1789), thanks @peternewman</li>
+    <li>Exclude hail & ride bus stops from questions about bus stops (#1784, #1793), thanks @peternewman</li>
+    <li>Correct tagging for small electrical appliances when asked what can be recycled at a container (#1783)</li>
+    <li>Slightly improved the credits screen</li>
+    <li>Add a selection marker to the currently selected quest (#1792)</li>
+  </ul>
 
 v18.0: |
   <h3>New Quests</h3>

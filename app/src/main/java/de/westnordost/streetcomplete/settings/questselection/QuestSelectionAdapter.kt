@@ -139,7 +139,7 @@ class QuestSelectionAdapter @Inject constructor(
 
         override fun onBind(with: QuestVisibility) {
             this.item = with
-            val colorResId = if (item.isInteractionEnabled) android.R.color.transparent else R.color.greyed_out
+            val colorResId = if (item.isInteractionEnabled) R.color.background else R.color.greyed_out
             itemView.setBackgroundResource(colorResId)
             questIcon.setImageResource(item.questType.icon)
             questTitle.text = genericQuestTitle(questTitle, item.questType)

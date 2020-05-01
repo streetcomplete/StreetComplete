@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.quests.note_discussion
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
-import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import android.text.format.DateUtils
@@ -146,9 +145,7 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment<NoteAnswer>() {
                 commentInfo.text = getString(R.string.quest_noteDiscussion_comment2, userName, dateDescription)
 
                 val bitmap = comment.user?.avatar ?: anonAvatar
-                val avatarDrawable = RoundedBitmapDrawableFactory.create(resources, bitmap)
-                avatarDrawable.isCircular = true
-                commentAvatar.setImageDrawable(avatarDrawable)
+                commentAvatar.setImageBitmap(bitmap)
             } else {
                 commentContainer.visibility = View.GONE
             }

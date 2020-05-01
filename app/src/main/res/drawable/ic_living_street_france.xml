@@ -23,7 +23,6 @@
       android:strokeLineCap="round"/>
   <path
       android:pathData="m7.6862,14.8313c-0.2427,0.9203 -0.4397,3.7372 -0.4397,3.7372"
-      android:strokeLineJoin="miter"
       android:strokeWidth="1.5"
       android:strokeColor="#fff"/>
   <path

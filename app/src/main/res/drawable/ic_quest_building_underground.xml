@@ -12,18 +12,17 @@
       android:fillColor="#c5a787"/>
   <path
       android:pathData="m64,108 l24,-24v-28h-16v20h-16v-20h-16v28z"
-      android:fillColor="#000000"
-      android:fillType="evenOdd"
+      android:fillColor="#000"
       android:fillAlpha="0.2"/>
   <path
       android:pathData="m94,88 l-30,30 -30,-30"
       android:strokeAlpha="0.2"
       android:strokeWidth="8"
-      android:strokeColor="#000000"
+      android:strokeColor="#000"
       android:strokeLineCap="square"/>
   <path
       android:pathData="m64,104 l24,-24v-28h-16v20h-16v-20h-16v28z"
-      android:fillColor="#ffffff"/>
+      android:fillColor="#fff"/>
   <path
       android:pathData="m94,84 l-30,30 -30,-30"
       android:strokeWidth="8"

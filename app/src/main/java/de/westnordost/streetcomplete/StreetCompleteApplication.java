@@ -37,7 +37,7 @@ public class StreetCompleteApplication extends Application
 		Injector.instance.getApplicationComponent().inject(this);
 		preload();
 
-		Prefs.Theme theme = Prefs.Theme.valueOf(prefs.getString(Prefs.THEME_SELECT, "LIGHT"));
+		Prefs.Theme theme = Prefs.Theme.valueOf(prefs.getString(Prefs.THEME_SELECT, "AUTO"));
 		AppCompatDelegate.setDefaultNightMode(theme.appCompatNightMode);
 	}
 

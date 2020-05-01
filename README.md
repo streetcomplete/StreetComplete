@@ -13,7 +13,8 @@ To make the app easy to use, quests are limited to those answerable by asking si
 
 ## Screenshots
 <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot01.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot02.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot03.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot04.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot05.png" width="170"/>
-<img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot06.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot07.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot08.png" width="170"/> <a href="http://www.youtube.com/watch?v=l6DGcmvtya4"><img src="http://img.youtube.com/vi/l6DGcmvtya4/0.jpg" width="340"/></a>
+<img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot06.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot07.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot08.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot09.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot10.png" width="170"/>
+<img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot11.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot12.png" width="170"/> <img src="http://www.westnordost.de/streetcomplete/phoneScreenshots/screenshot13.png" width="170"/> <a href="http://www.youtube.com/watch?v=lcPuL7nj7e0"><img src="http://img.youtube.com/vi/lcPuL7nj7e0/0.jpg" width="340"/></a>
 
 ## Download
 

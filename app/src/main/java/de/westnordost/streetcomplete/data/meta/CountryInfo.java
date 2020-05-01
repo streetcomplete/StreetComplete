@@ -21,6 +21,7 @@ public class CountryInfo implements Serializable, Cloneable
 	List<String> popularReligions;
 	String firstDayOfWorkweek;
 	Integer regularShoppingDays;
+	Integer workweekDays;
 	String additionalValidHousenumberRegex;
 	List<String> officialLanguages;
 	List<String> additionalStreetsignLanguages;
@@ -66,6 +67,11 @@ public class CountryInfo implements Serializable, Cloneable
 	public Integer getRegularShoppingDays()
 	{
 		return regularShoppingDays;
+	}
+
+	public Integer getWorkweekDays()
+	{
+		return workweekDays;
 	}
 
 	public boolean isSlowZoneKnown()

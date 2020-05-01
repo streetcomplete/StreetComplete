@@ -9,27 +9,19 @@
   <path
       android:pathData="m39.989,120.003v-16h24v-16h24v-16h24"
       android:strokeAlpha="0.2"
-      android:strokeLineJoin="miter"
       android:strokeWidth="8"
-      android:strokeColor="#000"
-      android:strokeLineCap="butt"/>
+      android:strokeColor="#000"/>
   <path
       android:pathData="m39.989,116.003v-16h24v-16h24v-16h24"
-      android:strokeLineJoin="miter"
       android:strokeWidth="8"
-      android:strokeColor="#fff"
-      android:strokeLineCap="butt"/>
+      android:strokeColor="#fff"/>
   <path
       android:pathData="m24,85.284 l80,-48"
       android:strokeAlpha="0.2"
-      android:strokeLineJoin="miter"
       android:strokeWidth="8"
-      android:strokeColor="#000"
-      android:strokeLineCap="butt"/>
+      android:strokeColor="#000"/>
   <path
       android:pathData="m24,80.003 l80,-48"
-      android:strokeLineJoin="miter"
       android:strokeWidth="8"
-      android:strokeColor="#fff"
-      android:strokeLineCap="butt"/>
+      android:strokeColor="#fff"/>
 </vector>

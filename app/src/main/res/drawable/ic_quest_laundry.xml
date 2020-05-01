@@ -42,8 +42,6 @@
       android:fillColor="#5b5b5b"/>
   <path
       android:pathData="m32,92c64,0 64,0 64,0"
-      android:strokeLineJoin="miter"
       android:strokeWidth="4"
-      android:strokeColor="#ccd6dd"
-      android:strokeLineCap="butt"/>
+      android:strokeColor="#ccd6dd"/>
 </vector>

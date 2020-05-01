@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.controls
 
 import android.os.Handler
 import android.os.Looper
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
@@ -26,6 +25,7 @@ class QuestDownloadProgressFragment : Fragment(R.layout.fragment_quest_download_
 
     private val progressView get() = view as IconsDownloadProgressView
 
+    private val animateOutRunnable = Runnable { animateOutProgressView() }
 
     private val downloadProgressListener = object : QuestDownloadProgressListener {
         private var startedButNoQuestsYet = false
@@ -45,7 +45,7 @@ class QuestDownloadProgressFragment : Fragment(R.layout.fragment_quest_download_
         }
 
         override fun onFinished() {
-            mainHandler.postDelayed(this@QuestDownloadProgressFragment::animateOutProgressView, 600)
+            mainHandler.postDelayed(animateOutRunnable, 1000)
         }
 
         override fun onSuccess() {
@@ -77,8 +77,7 @@ class QuestDownloadProgressFragment : Fragment(R.layout.fragment_quest_download_
     }
 
     private fun animateInProgressView() {
-        mainHandler.removeCallbacks(this::animateOutProgressView)
-        hideProgressView()
+        mainHandler.removeCallbacks(animateOutRunnable)
         progressView.animate()
             .translationY(0f)
             .alpha(1f)

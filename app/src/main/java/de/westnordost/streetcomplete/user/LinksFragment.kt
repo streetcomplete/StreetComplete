@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.user.UserStore
 import de.westnordost.streetcomplete.data.user.achievements.UserLinksSource
 import de.westnordost.streetcomplete.ktx.awaitLayout
 import de.westnordost.streetcomplete.ktx.toDp
@@ -26,6 +27,7 @@ class LinksFragment : Fragment(R.layout.fragment_links),
     CoroutineScope by CoroutineScope(Dispatchers.Main) {
 
     @Inject internal lateinit var userLinksSource: UserLinksSource
+    @Inject internal lateinit var userStore: UserStore
 
     init {
         Injector.instance.applicationComponent.inject(this)
@@ -64,6 +66,16 @@ class LinksFragment : Fragment(R.layout.fragment_links),
             linksList.clipToPadding = false
 
             emptyText.visibility = if (links.isEmpty()) View.VISIBLE else View.GONE
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        if (userStore.isSynchronizingStatistics) {
+            emptyText.setText(R.string.stats_are_syncing)
+        } else {
+            emptyText.setText(R.string.links_empty)
         }
     }
 

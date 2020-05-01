@@ -40,7 +40,7 @@ class AddCollectionTimesForm : AbstractQuestFormAnswerFragment<CollectionTimesAn
         super.onCreate(savedInstanceState)
 
         val viewData = loadCollectionTimesData(savedInstanceState)
-        collectionTimesAdapter = CollectionTimesAdapter(viewData, context!!, countryInfo)
+        collectionTimesAdapter = CollectionTimesAdapter(viewData, requireContext(), countryInfo)
         collectionTimesAdapter.registerAdapterDataObserver( AdapterDataChangedWatcher { checkIsFormComplete() })
     }
 

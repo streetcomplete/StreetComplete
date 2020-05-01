@@ -23,7 +23,8 @@ public class Prefs
 		OSM_USER_NAME = "osm.username",
 		OSM_UNREAD_MESSAGES = "osm.unread_messages",
 		USER_DAYS_ACTIVE = "days_active",
-		USER_LAST_DATE_ACTIVE = "last_date_active";
+		USER_LAST_DATE_ACTIVE = "last_date_active",
+		IS_SYNCHRONIZING_STATISTICS = "is_synchronizing_statistics";
 
 	// not shown anywhere directly
 	public static final String

@@ -12,6 +12,15 @@ textures:
         density: 5
 
 styles:
+    quest-selection:
+        base: points
+        blend: overlay
+        blend_order: 3
+    selected-quest-icons:
+        base: points
+        texture: quests
+        blend: overlay
+        blend_order: 2
     quest-icons:
         base: points
         texture: quests
@@ -33,6 +42,15 @@ styles:
         blend: overlay
 
 layers:
+    streetcomplete_selected_quests:
+        data: { source: streetcomplete_selected_quests }
+        draw:
+            selected-quest-icons:
+                size: 66px
+                sprite: function() { return feature.kind }
+                sprite_default: quest
+                collide: false
+                offset: [-17px, -66px]
     streetcomplete_quests:
         data: { source: streetcomplete_quests }
         pins:

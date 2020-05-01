@@ -29,31 +29,26 @@
       android:fillColor="#8c7570"/>
   <path
       android:pathData="M42,42h16v8h-16z"
-      android:fillColor="#ff0000"/>
+      android:fillColor="#f00"/>
   <path
       android:pathData="M58,42h16v8h-16z"
-      android:fillColor="#ffffff"
-      android:fillAlpha="1"/>
+      android:fillColor="#fff"/>
   <path
       android:pathData="M10,42h16v8h-16z"
-      android:fillColor="#ff0000"/>
+      android:fillColor="#f00"/>
   <path
       android:pathData="M26,42h16v8h-16z"
-      android:fillColor="#ffffff"
-      android:fillAlpha="1"/>
+      android:fillColor="#fff"/>
   <path
       android:pathData="M10,42h64v8h-64z"
-      android:strokeAlpha="1"
-      android:strokeLineJoin="miter"
       android:strokeWidth="2"
-      android:fillColor="#00000000"
       android:strokeColor="#727272"
       android:fillAlpha="0.2"
       android:strokeLineCap="round"/>
   <path
       android:pathData="M39,5l-8,0l-0,4l8,0z"
       android:strokeWidth="0.49999997"
-      android:fillColor="#ff0000"/>
+      android:fillColor="#f00"/>
   <path
       android:pathData="M26,14V3h-5v11z"
       android:strokeWidth="0.4996666"
@@ -61,23 +56,18 @@
   <path
       android:pathData="M31,5l-8,0l-0,4l8,0z"
       android:strokeWidth="0.49999997"
-      android:fillColor="#ffffff"
-      android:fillAlpha="1"/>
+      android:fillColor="#fff"/>
   <path
       android:pathData="M55,5l-8,0l-0,4l8,0z"
       android:strokeWidth="0.49999997"
-      android:fillColor="#ff0000"/>
+      android:fillColor="#f00"/>
   <path
       android:pathData="M47,5l-8,0l-0,4l8,0z"
       android:strokeWidth="0.49999997"
-      android:fillColor="#ffffff"
-      android:fillAlpha="1"/>
+      android:fillColor="#fff"/>
   <path
       android:pathData="M55.1132,4.8873l-32.2264,0l-0,4.2254l32.2264,0z"
-      android:strokeAlpha="1"
-      android:strokeLineJoin="miter"
       android:strokeWidth="1"
-      android:fillColor="#00000000"
       android:strokeColor="#727272"
       android:fillAlpha="0.2"
       android:strokeLineCap="round"/>

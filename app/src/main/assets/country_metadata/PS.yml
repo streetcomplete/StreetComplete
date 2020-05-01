@@ -5,3 +5,4 @@ officialLanguages: [ar]
 orchardProduces: [tomato, olive, grape, chilli_pepper, sweet_pepper, lemon, lime, orange, almond, date,
   fig, strawberry, banana, peach, plum, guava, mango, mangosteen, cherry]
 popularReligions: [muslim, jewish]
+workweekDays: 6
