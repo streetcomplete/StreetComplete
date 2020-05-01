@@ -52,7 +52,8 @@ open class MapFragment : Fragment(),
     TapResponder, DoubleTapResponder, LongPressResponder,
     PanResponder, ScaleResponder, ShoveResponder, RotateResponder {
 
-    private lateinit var mapView: MapView
+    protected lateinit var mapView: MapView
+    private set
 
     protected var controller: KtMapController? = null
 
@@ -333,12 +334,6 @@ open class MapFragment : Fragment(),
     fun getPositionAt(point: PointF): LatLon? = controller?.screenPositionToLatLon(point)
 
     fun getPointOf(pos: LatLon): PointF? = controller?.latLonToScreenPosition(pos)
-
-    fun isPositionInView(pos: LatLon): Boolean {
-        val controller = controller ?: return false
-        val p = controller.latLonToScreenPosition(pos)
-        return p.x >= 0 && p.y >= 0 && p.x < mapView.width && p.y < mapView.height
-    }
 
     val cameraPosition: CameraPosition?
         get() = controller?.cameraPosition

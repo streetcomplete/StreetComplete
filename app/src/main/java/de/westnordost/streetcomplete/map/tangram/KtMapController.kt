@@ -218,7 +218,7 @@ class KtMapController(private val c: MapController, contentResolver: ContentReso
         val zoomDeltaX = log10(screenWidth / objectWidth) / log10(2.0)
         val zoomDeltaY = log10(screenHeight / objectHeight) / log10(2.0)
         val zoomDelta = min(zoomDeltaX, zoomDeltaY)
-        return max( 1.0, min(currentZoom + zoomDelta, 19.0)).toFloat()
+        return max( 1.0, min(currentZoom + zoomDelta, 21.0)).toFloat()
     }
 
     fun getLatLonThatCentersLatLon(position: LatLon, padding: RectF, zoom: Float = cameraPosition.zoom): LatLon? {
