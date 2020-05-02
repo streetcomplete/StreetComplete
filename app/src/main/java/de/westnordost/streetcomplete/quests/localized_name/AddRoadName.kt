@@ -38,7 +38,7 @@ class AddRoadName(
 
     override fun download(bbox: BoundingBox, handler: (element: Element, geometry: ElementGeometry?) -> Unit): Boolean {
         if (!overpassApi.query(getOverpassQuery(bbox), handler)) return false
-        if (!overpassApi.query(getStreetNameSuggestionsOverpassQuery(bbox), this::putRoadNameSuggestion)) return false
+        if (!overpassApi.query(getStreetNameSuggestionsOverpassQuery(bbox), roadNameSuggestionsDao::putRoadNameSuggestion)) return false
         return true
     }
 
@@ -103,14 +103,6 @@ class AddRoadName(
         roadNameSuggestionsDao.putRoad( answer.wayId, roadNameByLanguage, points)
     }
 
-    private fun putRoadNameSuggestion(element: Element, geometry: ElementGeometry?) {
-        if (element.type != Element.Type.WAY) return
-        if (geometry !is ElementPolylinesGeometry) return
-        val namesByLanguage = element.tags?.toRoadNameByLanguage() ?: return
-
-        roadNameSuggestionsDao.putRoad(element.id, namesByLanguage, geometry.polylines.first())
-    }
-
     companion object {
         const val MAX_DIST_FOR_ROAD_NAME_SUGGESTION = 30.0 //m
 
@@ -132,17 +124,3 @@ class AddRoadName(
 
 private fun LocalizedName.isRef() =
     languageCode.isEmpty() && name.matches("[A-Z]{0,3}[ -]?[0-9]{0,5}".toRegex())
-
-/** OSM tags (i.e. name:de=Bäckergang) to map of language code -> name (i.e. de=Bäckergang) */
-private fun Map<String,String>.toRoadNameByLanguage(): Map<String, String>? {
-    val result = mutableMapOf<String,String>()
-    val namePattern = Pattern.compile("name(:(.*))?")
-    for ((key, value) in this) {
-        val m = namePattern.matcher(key)
-        if (m.matches()) {
-            val languageCode = m.group(2) ?: ""
-            result[languageCode] = value
-        }
-    }
-    return if (result.isEmpty()) null else result
-}

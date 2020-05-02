@@ -36,7 +36,7 @@ class AddAddressStreet(
 
     override fun download(bbox: BoundingBox, handler: (element: Element, geometry: ElementGeometry?) -> Unit): Boolean {
         if (!overpassApi.query(getOverpassQuery(bbox), handler)) return false
-        if (!overpassApi.query(getStreetNameSuggestionsOverpassQuery(bbox), this::putRoadNameSuggestion)) return false
+        if (!overpassApi.query(getStreetNameSuggestionsOverpassQuery(bbox), roadNameSuggestionsDao::putRoadNameSuggestion)) return false
         return true
     }
 
@@ -77,14 +77,6 @@ class AddAddressStreet(
         }
     }
 
-    private fun putRoadNameSuggestion(element: Element, geometry: ElementGeometry?) {
-        if (element.type != Element.Type.WAY) return
-        if (geometry !is ElementPolylinesGeometry) return
-        val namesByLanguage = element.tags?.toRoadNameByLanguage() ?: return
-
-        roadNameSuggestionsDao.putRoad(element.id, namesByLanguage, geometry.polylines.first())
-    }
-
     companion object {
         //TODO: this only appears to pick up nodes, so street-name suggestions don't appear
         // in the middle of a long straight-stretch. There might need to be a better way.
@@ -100,18 +92,4 @@ class AddAddressStreet(
         private val ROADS_WITH_NAMES =
                 "way[highway ~ \"^(${ALL_ROADS.joinToString("|")})$\"][name]"
     }
-}
-
-/** OSM tags (i.e. name:de=Bäckergang) to map of language code -> name (i.e. de=Bäckergang) */
-private fun Map<String,String>.toRoadNameByLanguage(): Map<String, String>? {
-    val result = mutableMapOf<String,String>()
-    val namePattern = Pattern.compile("name(:(.*))?")
-    for ((key, value) in this) {
-        val m = namePattern.matcher(key)
-        if (m.matches()) {
-            val languageCode = m.group(2) ?: ""
-            result[languageCode] = value
-        }
-    }
-    return if (result.isEmpty()) null else result
 }

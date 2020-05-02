@@ -2,10 +2,13 @@ package de.westnordost.streetcomplete.quests.localized_name.data
 
 import android.database.sqlite.SQLiteOpenHelper
 import androidx.core.content.contentValuesOf
+import de.westnordost.osmapi.map.data.Element
 
 import javax.inject.Inject
 
 import de.westnordost.osmapi.map.data.LatLon
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.ktx.getBlob
 import de.westnordost.streetcomplete.ktx.query
 import de.westnordost.streetcomplete.quests.localized_name.data.RoadNamesTable.Columns.GEOMETRY
@@ -20,6 +23,7 @@ import de.westnordost.streetcomplete.util.Serializer
 import de.westnordost.streetcomplete.ktx.toObject
 import de.westnordost.streetcomplete.util.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.isWithinDistanceOf
+import java.util.regex.Pattern
 
 class RoadNameSuggestionsDao @Inject constructor(
     private val dbHelper: SQLiteOpenHelper,
@@ -74,4 +78,27 @@ class RoadNameSuggestionsDao @Inject constructor(
         }
         return result
     }
+
+    fun putRoadNameSuggestion(element: Element, geometry: ElementGeometry?) {
+        if (element.type != Element.Type.WAY) return
+        if (geometry !is ElementPolylinesGeometry) return
+        val namesByLanguage = element.tags?.toRoadNameByLanguage() ?: return
+
+        putRoad(element.id, namesByLanguage, geometry.polylines.first())
+    }
+
+    /** OSM tags (i.e. name:de=Bäckergang) to map of language code -> name (i.e. de=Bäckergang) */
+    private fun Map<String,String>.toRoadNameByLanguage(): Map<String, String>? {
+        val result = mutableMapOf<String,String>()
+        val namePattern = Pattern.compile("name(:(.*))?")
+        for ((key, value) in this) {
+            val m = namePattern.matcher(key)
+            if (m.matches()) {
+                val languageCode = m.group(2) ?: ""
+                result[languageCode] = value
+            }
+        }
+        return if (result.isEmpty()) null else result
+    }
+
 }
