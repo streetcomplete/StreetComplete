@@ -21,6 +21,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceManager;
 import android.text.method.LinkMovementMethod;
 import android.text.util.Linkify;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
@@ -88,7 +89,7 @@ public class MainActivity extends AppCompatActivity implements
 	private static boolean hasAskedForLocation = false;
 	private static boolean dontShowRequestAuthorizationAgain = false;
 
-	private MainFragment mapFragment;
+	private MainFragment mainFragment;
 
 	private final BroadcastReceiver locationAvailabilityReceiver = new BroadcastReceiver()
 	{
@@ -136,7 +137,7 @@ public class MainActivity extends AppCompatActivity implements
 
 		setContentView(R.layout.activity_main);
 
-		mapFragment = (MainFragment) getSupportFragmentManager().findFragmentById(R.id.map_fragment);
+		mainFragment = (MainFragment) getSupportFragmentManager().findFragmentById(R.id.map_fragment);
 
 		if(savedInstanceState == null)
 		{
@@ -167,7 +168,7 @@ public class MainActivity extends AppCompatActivity implements
 			zoom = geoLocation.getZoom();
 		}
 		LatLon pos = new OsmLatLon(geoLocation.getLatitude(), geoLocation.getLongitude());
-		mapFragment.setCameraPosition(pos, zoom);
+		mainFragment.setCameraPosition(pos, zoom);
 	}
 
 	@Override public void onStart()
@@ -211,14 +212,27 @@ public class MainActivity extends AppCompatActivity implements
 
 	@Override public void onBackPressed()
 	{
-		if(!mapFragment.onBackPressed()) super.onBackPressed();
+		if (mainFragment != null)
+		{
+			if (!mainFragment.onBackPressed()) super.onBackPressed();
+		}
+	}
+
+	@Override
+	public boolean dispatchKeyEvent(KeyEvent event) {
+		final int keyCode = event.getKeyCode();
+		if (keyCode == KeyEvent.KEYCODE_MENU && mainFragment != null) {
+			mainFragment.onClickMainMenu();
+			return true;
+		}
+		return super.dispatchKeyEvent(event);
 	}
 
 	@Override public void onPause()
 	{
 		super.onPause();
-		if (mapFragment != null) {
-			CameraPosition camera = mapFragment.getCameraPosition();
+		if (mainFragment != null) {
+			CameraPosition camera = mainFragment.getCameraPosition();
 			if (camera != null)
 			{
 				LatLon pos = camera.getPosition();

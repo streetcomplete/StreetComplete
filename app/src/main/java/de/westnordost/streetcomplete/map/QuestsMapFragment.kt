@@ -13,6 +13,8 @@ import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.quest.QuestGroup
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolygonsGeometry
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.quest.Quest
 import de.westnordost.streetcomplete.ktx.toDp
 import de.westnordost.streetcomplete.ktx.toPx
@@ -31,6 +33,7 @@ import java.util.*
 import javax.inject.Inject
 import kotlin.math.abs
 import kotlin.math.max
+import kotlin.math.min
 import kotlin.math.roundToLong
 
 /** Manages a map that shows the quest pins, quest geometry */
@@ -149,17 +152,34 @@ class QuestsMapFragment : LocationAwareMapFragment() {
     private fun zoomAndMoveToContain(g: ElementGeometry, offset: RectF) {
         val controller = controller ?: return
         val pos = controller.getEnclosingCameraPosition(g.getBounds(), offset) ?: return
-
         val currentPos = controller.cameraPosition
+        val targetZoom = min(pos.zoom, 20f)
+
+        // do not zoom in if the element is already nicely in the view
+        if (screenAreaContains(g, RectF()) && targetZoom - currentPos.zoom < 2) return
+
         cameraPositionBeforeShowingQuest = currentPos
 
-        val zoomTime = max(300L, (abs(currentPos.zoom - pos.zoom) * 300).roundToLong())
+        val zoomTime = max(450L, (abs(currentPos.zoom - targetZoom) * 300).roundToLong())
 
         controller.updateCameraPosition(zoomTime, DecelerateInterpolator()) {
             position = pos.position
         }
         controller.updateCameraPosition(zoomTime, AccelerateDecelerateInterpolator()) {
-            zoom = pos.zoom
+            zoom = targetZoom
+        }
+    }
+
+    private fun screenAreaContains(g: ElementGeometry, offset: RectF): Boolean {
+        val controller = controller ?: return false
+        return when (g) {
+            is ElementPolylinesGeometry -> g.polylines
+            is ElementPolygonsGeometry -> g.polygons
+            else -> listOf(listOf(g.center))
+        }.flatten().all {
+            val p = controller.latLonToScreenPosition(it)
+            p.x >= offset.left && p.x <= mapView.width - offset.right
+              && p.y >= offset.top  && p.y <= mapView.height - offset.bottom
         }
     }
 
