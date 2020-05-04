@@ -43,12 +43,13 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/dialogContainer"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_max="640dp"
         android:layout_margin="16dp"
         android:orientation="horizontal"
         android:gravity="center_vertical"
@@ -65,7 +66,7 @@
             app:layout_constraintBottom_toBottomOf="@id/dialogContentContainer"
             android:background="@drawable/speech_bubble_none"/>
 
-        <ImageView
+        <de.westnordost.streetcomplete.user.AchievementIconView
             android:id="@+id/achievementIconView"
             android:layout_width="@dimen/achievement_icon_size"
             android:layout_height="@dimen/achievement_icon_size"
@@ -75,16 +76,12 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintVertical_chainStyle="packed"
-            android:src="@drawable/ic_quest_max_height"
-            android:scaleType="fitCenter"
-            android:textAlignment="center"
             android:elevation="24dp"/>
 
         <LinearLayout
             android:id="@+id/dialogContentContainer"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintWidth_max="360dp"
             android:orientation="vertical"
             android:gravity="center_horizontal"
             android:divider="@drawable/space_8dp"
@@ -96,13 +93,12 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/achievementIconView"
->
+            app:layout_constraintEnd_toEndOf="parent">
 
             <TextView
                 android:id="@+id/achievementTitleText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.Title"
                 tools:text="@string/achievement_wheelchair_title" />
 
@@ -110,7 +106,6 @@
                 android:id="@+id/achievementDescriptionText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.Body"
                 tools:text="@string/achievement_wheelchair_solved_X" />
 
@@ -134,17 +129,6 @@
                 tools:listitem="@layout/row_link_item" />
 
         </LinearLayout>
-
-        <TextView
-            android:id="@+id/levelText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="@id/achievementIconView"
-            app:layout_constraintStart_toStartOf="@id/achievementIconView"
-            app:layout_constraintEnd_toEndOf="@id/achievementIconView"
-            android:textAppearance="@style/TextAppearance.Title"
-            tools:text="34"
-            android:elevation="24dp"/>
 
         <Space
             android:id="@+id/spacer"

@@ -66,9 +66,6 @@ class AchievementInfoFragment : Fragment(R.layout.fragment_achievement_info) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         dialogAndBackgroundContainer.setOnClickListener { dismiss() }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            achievementIconView.outlineProvider = CircularOutlineProvider
-        }
         // in order to not show the scroll indicators
         unlockedLinksList.isNestedScrollingEnabled = false
         unlockedLinksList.layoutManager = object : LinearLayoutManager(requireContext(), VERTICAL, false) {
@@ -112,7 +109,8 @@ class AchievementInfoFragment : Fragment(R.layout.fragment_achievement_info) {
     /* ----------------------------------- Animating in and out --------------------------------- */
 
     private fun bind(achievement: Achievement, level: Int, showLinks: Boolean) {
-        achievementIconView.setImageResource(achievement.icon)
+        achievementIconView.icon = resources.getDrawable(achievement.icon)
+        achievementIconView.level = level
         achievementTitleText.setText(achievement.title)
 
         if (achievement.description != null) {
@@ -137,14 +135,6 @@ class AchievementInfoFragment : Fragment(R.layout.fragment_achievement_info) {
             )
             unlockedLinksList.visibility = View.VISIBLE
             unlockedLinksList.adapter = LinksAdapter(unlockedLinks, this::openUrl)
-        }
-
-        if (level > 1) {
-            levelText.text = level.toString()
-            levelText.visibility = View.VISIBLE
-        } else {
-            levelText.text = ""
-            levelText.visibility = View.GONE
         }
     }
 
