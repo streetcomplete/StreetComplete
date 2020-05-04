@@ -834,4 +834,7 @@
     <string name="achievement_car_solved_X">"Вы решили %d квестов, улучшающих данные об уличной инфраструктуре!"</string>
     <string name="unread_messages_message">"У вас %d непрочитанных входящих сообщений"</string>
     <string name="unread_messages_button">"Перейти во Входящие"</string>
+    <string name="action_about2">"О приложении"</string>
+    <string name="map_btn_menu">"Меню"</string>
+    <string name="credits_projects_contributors_title">"Проекты, сделанные для StreetComplete"</string>
 </resources>

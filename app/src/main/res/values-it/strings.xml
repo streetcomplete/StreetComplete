@@ -830,4 +830,8 @@ Questa app chiede il numero civico di un edificio solo dopo che è stato determi
     <string name="map_btn_menu">"Menu"</string>
     <string name="privacy_html_statistics">"&lt;p&gt;I dati mostrati sul tuo profilo sono aggregati dalla tua cronologia contributiva accessibile pubblicamente su OpenStreetMap e poi ospitata sul mio server&lt;/p&gt;"</string>
     <string name="confirmation_authorize_now_note2">"Puoi farlo più tardi nella schermata del profilo."</string>
+    <string name="credits_art_contributors_title">"Tutti i contributori"</string>
+    <string name="credits_projects_contributors_title">"Progetti creati per StreetComplete"</string>
+    <string name="credits_main_contributors_title">"Contributori principali"</string>
+    <string name="stats_are_syncing">"Le tue statistiche si stanno sincronizzando. Controlla più tardi."</string>
 </resources>

@@ -830,4 +830,11 @@ Ten en conta que esta aplicación pregunta polo número de enderezo dun edificio
     <string name="achievement_car_solved_X">"Resolviches %d tarefas que melloran os detalles das infraestruturas viarias, engadindo estradas no OpenStreetMap!"</string>
     <string name="unread_messages_message">"Tes %d mensaxes non lidas na caixa de entrada"</string>
     <string name="unread_messages_button">"Abrir caixa de entrada"</string>
+    <string name="action_about2">"Acerca de"</string>
+    <string name="map_btn_menu">"Menú"</string>
+    <string name="privacy_html_statistics">"&lt;p&gt;Os datos que se amosan no teu perfil son engadidos do teu historial de contribucións dispoñíbel de xeito público ó OpenStreetMap e despois son aloxados no servidor.&lt;/p&gt;"</string>
+    <string name="confirmation_authorize_now_note2">"Tamén podes facer isto máis tarde na pantalla de perfil."</string>
+    <string name="credits_art_contributors_title">"Contribucións artísticas"</string>
+    <string name="credits_projects_contributors_title">"Proxectos realizados para o StreetComplete"</string>
+    <string name="credits_main_contributors_title">"Contribucións principais"</string>
 </resources>

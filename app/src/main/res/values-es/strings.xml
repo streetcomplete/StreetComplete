@@ -864,4 +864,12 @@ Tenga en cuenta que esta aplicación solicita el número de portal de un edifici
     <string name="achievement_car_solved_X">"¡Has resuelto %d misiones que mejoran los detalles de la infraestructura de la calle, colocando la calle en OpenStreetMap!"</string>
     <string name="unread_messages_message">"Tienes %d mensajes no leídos en tu bandeja de entrada"</string>
     <string name="unread_messages_button">"Abrir bandeja de entrada"</string>
+    <string name="action_about2">"Acerca de"</string>
+    <string name="map_btn_menu">"Menu"</string>
+    <string name="privacy_html_statistics">"&lt;p&gt; Los datos que se muestran en su perfil se agregan de su historial de contribuciones disponible públicamente a OpenStreetMap y luego se alojan en mi servidor. &lt;/p&gt;"</string>
+    <string name="confirmation_authorize_now_note2">"También puedes hacer esto más tarde en la pantalla de perfil."</string>
+    <string name="credits_art_contributors_title">"Contribuyentes de arte"</string>
+    <string name="credits_projects_contributors_title">"Proyectos realizados para StreetComplete"</string>
+    <string name="credits_main_contributors_title">"Principales contribuyentes"</string>
+    <string name="stats_are_syncing">"Tus estadísticas aún se están sincronizando. Verifique esta pantalla más tarde."</string>
 </resources>
