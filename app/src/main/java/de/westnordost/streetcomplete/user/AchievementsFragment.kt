@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.user
 
-import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,9 +14,7 @@ import de.westnordost.streetcomplete.data.user.UserStore
 import de.westnordost.streetcomplete.data.user.achievements.Achievement
 import de.westnordost.streetcomplete.data.user.achievements.UserAchievementsSource
 import de.westnordost.streetcomplete.ktx.awaitLayout
-import de.westnordost.streetcomplete.ktx.toDp
 import de.westnordost.streetcomplete.ktx.toPx
-import de.westnordost.streetcomplete.view.CircularOutlineProvider
 import de.westnordost.streetcomplete.view.GridLayoutSpacingItemDecoration
 import de.westnordost.streetcomplete.view.ListAdapter
 import kotlinx.android.synthetic.main.cell_achievement.view.*
@@ -108,19 +105,9 @@ class AchievementsFragment : Fragment(R.layout.fragment_achievements),
             override fun onBind(with: Pair<Achievement, Int>) {
                 val achievement = with.first
                 val level = with.second
-                itemView.achievementIconView.setImageResource(achievement.icon)
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    itemView.outlineProvider = CircularOutlineProvider
-                    itemView.elevation = 4f.toDp(itemView.context)
-                }
-                if (level == 1) {
-                    itemView.achievementLevelText.visibility = View.INVISIBLE
-                    itemView.achievementLevelText.text = ""
-                } else {
-                    itemView.achievementLevelText.visibility = View.VISIBLE
-                    itemView.achievementLevelText.text = level.toString()
-                }
-                itemView.setOnClickListener {
+                itemView.achievementIconView.icon = resources.getDrawable(achievement.icon)
+                itemView.achievementIconView.level = level
+                itemView.achievementIconView.setOnClickListener {
                     listener?.onClickedAchievement(achievement, level, itemView.achievementIconView)
                 }
             }

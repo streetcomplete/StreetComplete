@@ -739,7 +739,7 @@ Du kannst dann sofort anfangen, diese zu lösen. Später kannst du dich einlogge
 
 Zu guter letzt, vergiss nicht dich nicht in Gefahr zu begeben: Achte auf deine Umgebung und betritt kein Privatgelände."</string>
     <string name="tutorial_happy_mapping">"Viel Spaß beim Kartieren!"</string>
-    <string name="achievements_empty">"Sie haben noch nichts erreicht"</string>
+    <string name="achievements_empty">"Du hast bisher noch keine Erfolge"</string>
     <string name="links_empty">"Du hast noch keine Links"</string>
     <string name="quests_empty">"Du hast noch keine Antworten veröffentlicht"</string>
     <string name="unsynced_quests_description">"plus %d noch nicht veröffentlichte Antworten"</string>
@@ -752,7 +752,7 @@ Zu guter letzt, vergiss nicht dich nicht in Gefahr zu begeben: Achte auf deine U
     <string name="achievements_unlocked_link">"Freigegebener Link:"</string>
     <string name="achievements_unlocked_links">"Freigegebene Links:"</string>
     <string name="link_category_intro_title">"Einführung"</string>
-    <string name="link_category_intro_description">"Erfahren Sie mehr über OSM und seine Gemeinschaft"</string>
+    <string name="link_category_intro_description">"Erfahre mehr über OSM und seine Gemeinschaft"</string>
     <string name="link_category_editors_title">"Mitwirkende"</string>
     <string name="link_category_editors_description">"Redakteure und andere Möglichkeiten, zu OpenStreetMap beizutragen"</string>
     <string name="link_category_maps_title">"Karten"</string>
@@ -775,15 +775,15 @@ Zu guter letzt, vergiss nicht dich nicht in Gefahr zu begeben: Achte auf deine U
     <string name="link_pic4review_description">"Durch Ansehen von Bildern deiner Stadt zu OSM beitragen"</string>
     <string name="link_wiki_description">"Das Wiki ist dein Startpunkt für alles Relevante zu OpenStreetMap"</string>
     <string name="link_learnosm_description">"Neu bei OpenStreetMap? Hier ist eine Einführung"</string>
-    <string name="link_neis_one_description">"Umfangreiche Statistiken für OpenStreetMap-Beitragende, zB. wo und wie Änderungen gemacht wurden, über Editoren in der Nähe und Bestenlisten"</string>
+    <string name="link_neis_one_description">"Umfangreiche Statistiken für OpenStreetMap-Beitragende, z.B. wo und wie Änderungen gemacht wurden, über Editoren in der Nähe und Bestenlisten"</string>
     <string name="link_welcome_mat_description">"Grundsätzliche Informationen über OpenStreetMap und die Zusammenarbeit mit der Organisation dahinter"</string>
     <string name="link_mapillary_description">"Ein Crowdsourcing-Dienst bzw. -App für das Erstellen von Straßenfotos mit expliziter OSM-Nutzungsfreigabe"</string>
     <string name="link_openstreetcam_description">"Ein Crowdsourcing-Dienst bzw. -App für das Erstellen von Straßenfotos mit expliziter OSM-Nutzungsfreigabe"</string>
     <string name="link_openrouteservice_wheelchair_description">"Turn-by-Turn-Navigation für Rollstuhlfahrer"</string>
     <string name="link_nominatim_description">"Geocoder für OSM-Daten, genutzt von vielen Diensten"</string>
-    <string name="link_city_roads_description">"Renderung aller Straßen einer Stadt, zum Druck auf T-Shirts, Tassen"</string>
+    <string name="link_city_roads_description">"Renderung aller Straßen einer Stadt, zum Druck auf T-Shirts, Tassen, ..."</string>
     <string name="link_myosmatic_description">"In wenigen Schritten zur ausdruckbaren Stadtkarte, optional mit Straßenverzeichnis"</string>
-    <string name="link_brouter_description">"Die vermutlichst beste Routing-Engine für Radfahrer"</string>
+    <string name="link_brouter_description">"Die vermutlich beste Routing-Engine für Radfahrer"</string>
     <string name="link_show_me_the_way_description">"OSM-Editierungen in Echtzeit verfolgen"</string>
     <string name="link_osrm_description">"Die derzeit schnellste Routing-Engine"</string>
     <string name="link_openrouteservice_description">"Einstellbarer Routendienst für diverse Fahrzeuge und Fußgänger inklusive Erreichbarkeitskarte (Fläche die in X Minuten von einem Punkt aus erreicht werden kann)."</string>
@@ -798,11 +798,11 @@ Zu guter letzt, vergiss nicht dich nicht in Gefahr zu begeben: Achte auf deine U
     <string name="achievement_surveyor_title">"Gutachter"</string>
     <string name="achievement_surveyor_solved_X">"Du hast %d der Aufgaben gelöst, weiter so! Es winken weitere Errungenschaften und Links zu OSM und anderen Apps und Projekten!"</string>
     <string name="achievement_regular_title">"Stammgast"</string>
-    <string name="achievement_regular_description">"Du hast %d Tage lang mit dieser App zu OSM beigetragen! Stammnutzer sind das Rückgrat von OSM, vielen Dank für dein Eingagement!"</string>
+    <string name="achievement_regular_description">"Du hast %d Tage lang mit dieser App zu OSM beigetragen! Stammnutzer sind das Rückgrat von OSM, vielen Dank für dein Engagement! ❤"</string>
     <string name="achievement_bicyclist_title">"Fahrradfahrer"</string>
     <string name="achievement_bicyclist_solved_X">"Du hast %d der Radfahrer-Aufgaben gelöst!"</string>
     <string name="achievement_wheelchair_title">"Mobilität"</string>
-    <string name="achievement_wheelchair_solved_X">"Du hast %d der Aufgaben gelöst um Rollstuhlfahrern in der Stadt zu helfen"</string>
+    <string name="achievement_wheelchair_solved_X">"Du hast %d der Aufgaben gelöst um Rollstuhlfahrern in der Stadt zu helfen!"</string>
     <string name="achievement_postman_title">"Postbote"</string>
     <string name="achievement_postman_solved_X">"Du hast geholfen %d der Adressen einzutragen!
 Diese Daten sind unentbehrlich für Postboten und Navigationssysteme."</string>
@@ -812,7 +812,7 @@ Beachte, dass diese App nur Hausnummern bereits klassifizierter Gebäude abfragt
     <string name="achievement_blind_title">"Sechster Sinn"</string>
     <string name="achievement_blind_solved_X">"Du hast %d der Aufgaben mit Relevanz für Sehbehinderte gelöst."</string>
     <string name="achievement_pedestrian_title">"Läufer"</string>
-    <string name="achievement_pedestrian_solved_X">"Du hast %d der Aufgaben mit Relevanz für Füßgänger gelöst."</string>
+    <string name="achievement_pedestrian_solved_X">"Du hast %d der Aufgaben mit Relevanz für Fußgänger gelöst."</string>
     <string name="achievement_veg_title">"Tierliebhaber"</string>
     <string name="achievement_veg_solved_X">"Du hast %d der Aufgaben mit Relevanz für Vegetarier/Veganer gelöst."</string>
     <string name="achievement_car_title">"Autofahrer"</string>
@@ -826,4 +826,5 @@ Beachte, dass diese App nur Hausnummern bereits klassifizierter Gebäude abfragt
     <string name="credits_art_contributors_title">"Grafik-Beiträge"</string>
     <string name="credits_projects_contributors_title">"Begleitprojekte"</string>
     <string name="credits_main_contributors_title">"Hauptmitwirkende"</string>
+    <string name="stats_are_syncing">"Deine Statistiken synchronisieren noch. Schau später nochmal vorbei."</string>
 </resources>

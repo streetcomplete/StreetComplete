@@ -20,7 +20,7 @@
     <color name="indicator_dot">#888</color>
     <color name="indicator_dot_selected">@color/accent</color>
 
-    <color name="hint_text">#999</color>
+    <color name="hint_text">#666</color>
 
     <color name="disabled_text">#6666</color>
 

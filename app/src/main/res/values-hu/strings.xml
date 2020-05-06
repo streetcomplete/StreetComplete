@@ -822,4 +822,8 @@ Vedd figyelembe, hogy ez az alkalmazás csak akkor kérdezi meg egy épület há
     <string name="map_btn_menu">"Menü"</string>
     <string name="privacy_html_statistics">"&lt;p&gt;A profilodon szereplő adatok a nyilvánosan elérhető OpenStreetMap szerkesztési előzményeidből származnak és a szerveremen találhatóak.&lt;/p&gt;"</string>
     <string name="confirmation_authorize_now_note2">"Később is megteheted a profil menüben"</string>
+    <string name="credits_art_contributors_title">"Grafikai közreműködők"</string>
+    <string name="credits_projects_contributors_title">"StreetComplete-hez felhasznált projektek"</string>
+    <string name="credits_main_contributors_title">"Fő közreműködők"</string>
+    <string name="stats_are_syncing">"A statisztikáid még frissítés alatt állnak. Nézz vissza később."</string>
 </resources>

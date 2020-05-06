@@ -13,6 +13,16 @@ appicon_fancy.svg               elegant themes
 
 appicon_flat.svg                elegant themes
 
+achievements/
+    achievement_frame           Sanja Dimitrijevic, License: CC-BY-SA 4.0
+    ic_achievement_bicyclist    Sanja Dimitrijevic, License: CC-BY-SA 4.0
+    ic_achievement_car          Sanja Dimitrijevic, License: CC-BY-SA 4.0
+    ic_achievement_first_edit   mashup with https://github.com/openstreetmap/openstreetmap-website/blob/master/app/assets/images/sign-up-illustration.svg
+                                probably (c) Saman Bemel-Benrud, license apparently GPLv2.0
+    ic_achievement_pedestrian   Sanja Dimitrijevic, License: CC-BY-SA 4.0
+    ic_achievement_surveyor     mashup with https://wiki.openstreetmap.org/wiki/File:Public-images-osm_logo.svg
+                                (c) 2011 Ken Vermette, License: CC-BY.SA 3.0
+
 building_icons.svg
     apartments
     barn

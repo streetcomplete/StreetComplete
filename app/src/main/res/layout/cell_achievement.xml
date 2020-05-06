@@ -2,14 +2,12 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="?attr/selectableItemBackgroundBorderless"
     android:gravity="center_horizontal"
     android:orientation="vertical">
 
-    <ImageView
+    <de.westnordost.streetcomplete.user.AchievementIconView
         android:id="@+id/achievementIconView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -18,17 +16,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:src="@drawable/ic_quest_max_height" />
-
-    <TextView
-        android:id="@+id/achievementLevelText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="@id/achievementIconView"
-        app:layout_constraintStart_toStartOf="@id/achievementIconView"
-        app:layout_constraintBottom_toBottomOf="@id/achievementIconView"
-        android:textAppearance="@style/TextAppearance.Title"
-        tools:text="33"
+        android:background="?attr/selectableItemBackground"
+        android:elevation="4dp"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

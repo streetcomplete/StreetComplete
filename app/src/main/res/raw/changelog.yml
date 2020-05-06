@@ -1,3 +1,10 @@
+v19.1: |
+  <ul>
+    <li>add some achievement graphics by Sanja Dimitrijevic (<a href='https://www.artstation.com/modesty031'>modesty031</a>)</li>
+    <li>selected quest is displayed always on top (#1801, #1805, #1810)</li>
+    <li>More minor fixes and improvements (#1799, #1802, #1803, #1808, #1806, #1812), updated translations</li>
+  </ul>
+
 v19.0: |
   <p>This one is a huge release, maybe the biggest one yet! But don't get used to it, I have been
   working on it full-time for a few months but must soon return to work life as my savings are running low.

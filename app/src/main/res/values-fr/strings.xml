@@ -924,4 +924,12 @@ Ces données sont essentielles non seulement pour le facteur mais aussi pour tou
     <string name="achievement_car_solved_X">"Vous avez résolu %d quêtes qui enrichissent la voirie d'OpenStreetMap et lui permet d'avoir pignon sur rue !"</string>
     <string name="unread_messages_message">"Vous avez %d messages non-lus dans votre boîte de réception"</string>
     <string name="unread_messages_button">"Ouvrir la boîte de réception"</string>
+    <string name="action_about2">"À propos"</string>
+    <string name="map_btn_menu">"Menu"</string>
+    <string name="privacy_html_statistics">"Les données figurant dans votre profil sont agrégées à partir de l'historique de vos contributions sur OpenStreetMap accessibles publiquement, puis hébergées sur mon serveur."</string>
+    <string name="confirmation_authorize_now_note2">"Vous pouvez aussi faire cela plus tard, dans la page de votre profil."</string>
+    <string name="credits_art_contributors_title">"Graphistes"</string>
+    <string name="credits_projects_contributors_title">"Autres projets réalisés dans le cadre de StreetComplete"</string>
+    <string name="credits_main_contributors_title">"Contributeurs principaux"</string>
+    <string name="stats_are_syncing">"Vos statistiques sont en train de se synchroniser. Vérifiez cette page plus tard."</string>
 </resources>
