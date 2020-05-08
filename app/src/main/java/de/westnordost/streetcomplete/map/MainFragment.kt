@@ -256,10 +256,15 @@ class MainFragment : Fragment(R.layout.fragment_main),
     override fun onLongPress(x: Float, y: Float) {
         val point = PointF(x, y)
         val position = mapFragment?.getPositionAt(point) ?: return
+        if (bottomSheetFragment != null) return
 
         contextMenuView.translationX = x
         contextMenuView.translationY = y
 
+        showMapContextMenu(position)
+    }
+
+    private fun showMapContextMenu(position: LatLon) {
         val popupMenu = PopupMenu(requireContext(), contextMenuView)
         popupMenu.inflate(R.menu.menu_map_context)
         popupMenu.setOnMenuItemClickListener { item ->
