@@ -3,7 +3,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/background">
+    android:background="?android:attr/colorBackground">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -155,7 +155,7 @@
 
         <FrameLayout
             android:id="@+id/tutorialTextContainer"
-            android:background="@color/background"
+            android:background="?android:attr/colorBackground"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintStart_toStartOf="parent"
