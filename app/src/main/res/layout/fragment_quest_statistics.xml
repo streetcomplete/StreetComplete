@@ -6,8 +6,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <de.westnordost.streetcomplete.user.PhysicsWorldView
-        android:id="@+id/physicsView"
+    <de.westnordost.streetcomplete.user.BallPitView
+        android:id="@+id/ballPitView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:visibility="invisible"/>
