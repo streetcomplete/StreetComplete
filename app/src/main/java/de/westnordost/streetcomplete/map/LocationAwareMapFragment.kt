@@ -9,7 +9,6 @@ import android.location.Location
 import android.view.animation.DecelerateInterpolator
 import android.location.LocationManager
 import android.view.WindowManager
-import android.view.animation.AccelerateDecelerateInterpolator
 import androidx.core.content.edit
 import com.mapzen.tangram.*
 import de.westnordost.osmapi.map.data.LatLon
@@ -218,7 +217,6 @@ open class LocationAwareMapFragment : MapFragment() {
 
         displayedLocation = null
         zoomedYet = false
-        isShowingDirection = false
 
         locationManager.removeUpdates()
     }
@@ -252,14 +250,16 @@ open class LocationAwareMapFragment : MapFragment() {
     private fun onCompassRotationChanged(rot: Float, tilt: Float) {
         // we received an event from the compass, so compass is working - direction can be displayed on screen
         isShowingDirection = true
-        directionMarker?.let {
-            if (!it.isVisible) it.isVisible = true
-            val angle = rot * 180 / PI
-            val size = directionMarkerSize
-            if (size != null) {
-                it.setStylingFromString(
-                    "{ style: 'points', color: '#cc536dfe', size: [${size.x}px, ${size.y}px], order: 2000, collide: false, flat: true, angle: $angle}"
-                )
+        if (displayedLocation != null) {
+            directionMarker?.let {
+                if (!it.isVisible) it.isVisible = true
+                val angle = rot * 180 / PI
+                val size = directionMarkerSize
+                if (size != null) {
+                    it.setStylingFromString(
+                        "{ style: 'points', color: '#cc536dfe', size: [${size.x}px, ${size.y}px], order: 2000, collide: false, flat: true, angle: $angle}"
+                    )
+                }
             }
         }
 
