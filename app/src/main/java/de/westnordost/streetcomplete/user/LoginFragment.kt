@@ -100,9 +100,12 @@ class LoginFragment : Fragment(R.layout.fragment_login),
 
     suspend fun hasRequiredPermissions(consumer: OAuthConsumer): Boolean {
         return withContext(Dispatchers.IO) {
-            val permissionsApi = PermissionsApi( OsmApiModule.osmConnection(consumer))
-            permissionsApi.get().containsAll(REQUIRED_OSM_PERMISSIONS)
-        }
+            try {
+                val permissionsApi = PermissionsApi( OsmApiModule.osmConnection(consumer))
+                permissionsApi.get().containsAll(REQUIRED_OSM_PERMISSIONS)
+            }
+            catch (e: Exception) { false }
+            }
     }
 
     /* ------------------------------------------------------------------------------------------ */
