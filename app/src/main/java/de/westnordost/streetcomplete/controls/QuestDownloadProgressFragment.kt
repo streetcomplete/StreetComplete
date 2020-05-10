@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.controls
 
 import android.os.Handler
 import android.os.Looper
+import android.view.View
 import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
@@ -78,6 +79,7 @@ class QuestDownloadProgressFragment : Fragment(R.layout.fragment_quest_download_
 
     private fun animateInProgressView() {
         mainHandler.removeCallbacks(animateOutRunnable)
+        view?.visibility = View.VISIBLE
         progressView.animate()
             .translationY(0f)
             .alpha(1f)
@@ -92,6 +94,7 @@ class QuestDownloadProgressFragment : Fragment(R.layout.fragment_quest_download_
             .alpha(INITIAL_ALPHA)
             .scaleX(INITIAL_SCALE).scaleY(INITIAL_SCALE)
             .setDuration(IN_OUT_DURATION)
+            .withEndAction { view?.visibility = View.GONE }
             .start()
     }
 
@@ -108,6 +111,7 @@ class QuestDownloadProgressFragment : Fragment(R.layout.fragment_quest_download_
     }
 
     private fun showProgressView() {
+        view?.visibility = View.VISIBLE
         progressView.scaleX = 1f
         progressView.scaleY = 1f
         progressView.alpha = 1f
@@ -115,6 +119,7 @@ class QuestDownloadProgressFragment : Fragment(R.layout.fragment_quest_download_
     }
 
     private fun hideProgressView() {
+        view?.visibility = View.GONE
         progressView.scaleX = INITIAL_SCALE
         progressView.scaleY = INITIAL_SCALE
         progressView.alpha = INITIAL_ALPHA

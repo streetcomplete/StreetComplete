@@ -67,6 +67,13 @@ open class LocationAwareMapFragment : MapFragment() {
             }
         }
 
+    interface Listener {
+        /** Called after the map fragment updated its displayed location */
+        fun onLocationDidChange()
+    }
+    private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
+
+
     /* ------------------------------------ Lifecycle ------------------------------------------- */
 
     override fun onAttach(context: Context) {
@@ -243,6 +250,7 @@ open class LocationAwareMapFragment : MapFragment() {
         compass.setLocation(location)
         showLocation()
         followPosition()
+        listener?.onLocationDidChange()
     }
 
     /* --------------------------------- Rotation tracking -------------------------------------- */
