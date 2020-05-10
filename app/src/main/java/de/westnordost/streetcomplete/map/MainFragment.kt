@@ -454,13 +454,6 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
         setIsFollowingPosition(wasFollowingPosition)
         locationManager.requestSingleUpdate()
-/*======= TODO
-        singleLocationRequest?.startRequest(LocationRequest.PRIORITY_HIGH_ACCURACY) {
-            gpsTrackingButton.visibility = View.INVISIBLE
-            gpsTrackingButton.state = LocationState.UPDATING
-            updateLocationPointerPin()
-        }
->>>>>>> pointer_pin*/
     }
 
     private fun onLocationIsDisabled() {
@@ -481,7 +474,9 @@ class MainFragment : Fragment(R.layout.fragment_main),
     }
 
     private fun onLocationChanged(location: Location) {
+        gpsTrackingButton?.visibility = View.INVISIBLE
         gpsTrackingButton?.state = LocationState.UPDATING
+        updateLocationPointerPin()
     }
 
     /* --------------------------------- Map control buttons------------------------------------- */
