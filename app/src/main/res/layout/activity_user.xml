@@ -30,4 +30,12 @@
         tools:visibility="gone"
         />
 
+    <fragment
+        android:name="de.westnordost.streetcomplete.user.CountryInfoFragment"
+        android:id="@+id/countryDetailsFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:visibility="gone"
+        />
+
 </RelativeLayout>

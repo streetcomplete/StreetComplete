@@ -827,5 +827,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
 
     <string name="unread_messages_message">You have %d unread messages in your inbox</string>
     <string name="unread_messages_button">Open Inbox</string>
+    <string name="user_statistics_filter_by_country">by country</string>
+    <string name="user_statistics_filter_by_quest_type">by quest type</string>
 
 </resources>

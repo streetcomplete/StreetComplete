@@ -41,7 +41,6 @@ class NumberPickerPreference @JvmOverloads constructor(
             maxValue = getInt(R.styleable.NumberPickerPreference_maxValue, DEFAULT_MAX_VALUE)
             step = getInt(R.styleable.NumberPickerPreference_step, STEP)
         }
-
     }
 
     override fun createDialog() = NumberPickerPreferenceDialog()

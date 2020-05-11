@@ -6,11 +6,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <de.westnordost.streetcomplete.user.BallPitView
-        android:id="@+id/ballPitView"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/questStatisticsFragmentContainer"
+        android:name="de.westnordost.streetcomplete.user.QuestStatisticsByQuestTypeFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:visibility="invisible"/>
+        android:layout_height="match_parent"/>
 
     <TextView
         android:id="@+id/emptyText"
@@ -26,5 +26,36 @@
         android:textColor="@color/hint_text"
         android:gravity="center"
         android:text="@string/quests_empty"/>
+
+    <com.google.android.material.button.MaterialButtonToggleGroup
+        android:id="@+id/selectorButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        app:elevation="4dp"
+        app:checkedButton="@id/byQuestTypeButton"
+        android:background="@drawable/background_button_toggle_group"
+        app:singleSelection="true">
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/byQuestTypeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/user_statistics_filter_by_quest_type"
+            style="?attr/materialButtonOutlinedStyle"
+            />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/byCountryButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/user_statistics_filter_by_country"
+            style="?attr/materialButtonOutlinedStyle"
+            />
+
+    </com.google.android.material.button.MaterialButtonToggleGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

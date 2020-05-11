@@ -7,8 +7,7 @@
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/primary"
-        app:tabTextColor="@color/text_on_primary"
+        style="@style/Widget.MaterialComponents.TabLayout.PrimarySurface"
         app:elevation="4dp"/>
 
     <androidx.viewpager2.widget.ViewPager2

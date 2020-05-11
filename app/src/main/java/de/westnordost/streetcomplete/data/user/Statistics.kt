@@ -4,6 +4,7 @@ import java.util.Date
 
 data class Statistics(
     val questTypes: Map<String, Int>,
+    val countries: Map<String, Int>,
     val daysActive: Int,
     val lastUpdate: Date,
     val isAnalyzing: Boolean
