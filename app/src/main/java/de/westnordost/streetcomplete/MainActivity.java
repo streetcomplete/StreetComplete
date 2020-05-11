@@ -222,7 +222,9 @@ public class MainActivity extends AppCompatActivity implements
 	public boolean dispatchKeyEvent(KeyEvent event) {
 		final int keyCode = event.getKeyCode();
 		if (keyCode == KeyEvent.KEYCODE_MENU && mainFragment != null) {
-			mainFragment.onClickMainMenu();
+			if (event.getAction() == KeyEvent.ACTION_UP) {
+				mainFragment.onClickMainMenu();
+			}
 			return true;
 		}
 		return super.dispatchKeyEvent(event);
