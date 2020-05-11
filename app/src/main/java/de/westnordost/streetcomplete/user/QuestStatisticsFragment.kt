@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.user
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction.TRANSIT_FRAGMENT_FADE
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.quest.QuestType
@@ -59,6 +60,7 @@ class QuestStatisticsFragment : Fragment(R.layout.fragment_quest_statistics),
 
     private fun replaceFragment(fragment: Fragment) {
         childFragmentManager.beginTransaction()
+            .setTransition(TRANSIT_FRAGMENT_FADE)
             .replace(R.id.questStatisticsFragmentContainer, fragment)
             .commit()
     }
