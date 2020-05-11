@@ -2,12 +2,19 @@ package de.westnordost.streetcomplete.user
 
 import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
+import android.graphics.Outline
+import android.os.Build
 import android.view.View
+import android.view.ViewOutlineProvider
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import androidx.core.animation.doOnStart
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.ktx.toPx
 import kotlinx.android.synthetic.main.fragment_country_info_dialog.*
+import kotlinx.android.synthetic.main.fragment_country_info_dialog.solvedQuestsContainer
+import kotlinx.android.synthetic.main.fragment_country_info_dialog.solvedQuestsText
+import kotlinx.android.synthetic.main.fragment_country_info_dialog.titleView
 import java.util.*
 import kotlin.math.min
 import kotlin.math.pow
@@ -38,7 +45,21 @@ class CountryInfoFragment : AbstractInfoFakeDialogFragment(R.layout.fragment_cou
         revealAnim.start()
         circularRevealAnimator = revealAnim
 
-        titleImageView.setImageResource(getFlagResId(countryCode))
+        val flag = resources.getDrawable(getFlagResId(countryCode))
+        titleImageView.setImageDrawable(flag)
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            titleView.outlineProvider = object : ViewOutlineProvider() {
+                override fun getOutline(view: View, outline: Outline) {
+                    val xDiff = view.width - flag.intrinsicWidth
+                    val yDiff = view.height - flag.intrinsicHeight
+                    // oval because the shadow is there during the whole animation, rect would look very odd
+                    // (an oval less so)
+                    outline.setOval(xDiff/2, yDiff/2, view.width - xDiff, view.height - yDiff)
+                }
+            }
+        }
+
         countryNameText.text = Locale("", countryCode).displayCountry
         solvedQuestsText.text = ""
         val scale = (0.4 + min( questCount / 100.0, 1.0)*0.6).toFloat()
