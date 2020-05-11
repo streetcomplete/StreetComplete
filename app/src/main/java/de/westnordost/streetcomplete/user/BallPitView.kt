@@ -166,7 +166,7 @@ class BallPitView @JvmOverloads constructor(
 
     @SuppressLint("ClickableViewAccessibility")
     private suspend fun addBubble(view: View, size: Int, position: Vec2) {
-        val radius = min(getBubbleRadius(size), min(worldBounds.width(), worldBounds.height())/2 )
+        val radius = min(getBubbleRadius(size), min(worldBounds.width(), worldBounds.height())/3 )
         val body = createBubbleBody(position, radius)
 
         startInflatingAnimation(view, size, position.y)
