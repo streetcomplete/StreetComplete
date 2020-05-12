@@ -33,7 +33,7 @@ class MarkerManager(private val c: MapController) {
             if (tangramMarkerId != null) {
                 val marker = markers.values.find { it.tangramMarker?.markerId == tangramMarkerId }
                 if (marker != null) {
-                    markerPickResult = MarkerPickResult(marker, tangramMarkerPickResult.coordinates)
+                    markerPickResult = MarkerPickResult(marker, tangramMarkerPickResult.coordinates.toLatLon())
                 }
             }
             markerPickContinuations.poll()?.resume(markerPickResult)
@@ -189,5 +189,5 @@ class Marker(val markerId: Long, tangramMarker: com.mapzen.tangram.Marker) {
 
 class MarkerPickResult internal constructor(
     val marker: Marker,
-    val coordinates: LngLat
+    val coordinates: LatLon
 )

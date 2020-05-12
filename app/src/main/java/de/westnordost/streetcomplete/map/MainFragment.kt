@@ -328,6 +328,10 @@ class MainFragment : Fragment(R.layout.fragment_main),
         }
     }
 
+    override fun onClickedLocationMarker() {
+        setIsFollowingPosition(true)
+    }
+
     /* -------------------------- AbstractQuestAnswerFragment.Listener -------------------------- */
 
     override fun onAnsweredQuest(questId: Long, group: QuestGroup, answer: Any) {
