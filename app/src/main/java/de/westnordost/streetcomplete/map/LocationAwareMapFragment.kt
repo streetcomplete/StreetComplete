@@ -29,9 +29,12 @@ open class LocationAwareMapFragment : MapFragment() {
     private lateinit var locationManager: FineLocationManager
 
     // markers showing the user's location, direction and accuracy of location
-    private var locationMarker: Marker? = null
-    private var accuracyMarker: Marker? = null
-    private var directionMarker: Marker? = null
+    protected var locationMarker: Marker? = null
+    private set
+    protected var accuracyMarker: Marker? = null
+    private set
+    protected var directionMarker: Marker? = null
+    private set
 
     /** The location of the GPS location dot on the map. Null if none (yet) */
     var displayedLocation: Location? = null
@@ -66,6 +69,13 @@ open class LocationAwareMapFragment : MapFragment() {
                 controller?.updateCameraPosition(300, interpolator) { tilt = PI.toFloat() / 5f }
             }
         }
+
+    interface Listener {
+        /** Called after the map fragment updated its displayed location */
+        fun onLocationDidChange()
+    }
+    private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
+
 
     /* ------------------------------------ Lifecycle ------------------------------------------- */
 
@@ -139,7 +149,7 @@ open class LocationAwareMapFragment : MapFragment() {
 
         val marker = controller?.addMarker() ?: return null
         marker.setStylingFromString(
-            "{ style: 'points', color: 'white', size: [${dotWidth}px, ${dotHeight}px], order: 2000, flat: true, collide: false }"
+            "{ style: 'points', color: 'white', size: [${dotWidth}px, ${dotHeight}px], order: 2000, flat: true, collide: false, interactive: true }"
         )
         marker.setDrawable(dot)
         marker.setDrawOrder(9)
@@ -243,6 +253,7 @@ open class LocationAwareMapFragment : MapFragment() {
         compass.setLocation(location)
         showLocation()
         followPosition()
+        listener?.onLocationDidChange()
     }
 
     /* --------------------------------- Rotation tracking -------------------------------------- */

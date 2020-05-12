@@ -61,6 +61,7 @@ class BallPitView @JvmOverloads constructor(
 
         override fun onSensorChanged(event: SensorEvent?) {
             if (event == null) return
+            if (display == null) return
             if (event.accuracy < SensorManager.SENSOR_STATUS_ACCURACY_LOW) return
             val x = event.values[0]
             val y = event.values[1]

@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Spinner
+import androidx.core.view.children
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.numberOrNull
@@ -115,8 +116,8 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
 
     private fun switchToAdvisorySpeedLimit() {
         speedTypeSelect.clearCheck()
-        for (i in 0 until speedTypeSelect.childCount) {
-            speedTypeSelect.getChildAt(i).isEnabled = false
+        for (child in speedTypeSelect.children) {
+            child.isEnabled = false
         }
         setSpeedType(ADVISORY)
     }
