@@ -61,7 +61,7 @@
     <string name="no_location_permission_warning">"Din plats är nödvändigt för att söka efter uppdrag i din närhet."</string>
 
     <!-- Fuzzy -->
-    <string name="about_title_authors">"Erkännande"</string>
+    <string name="about_title_authors">"Tack till"</string>
 
     <!-- Fuzzy -->
     <string name="about_summary_authors">"© 2016–2020 Tobias Zwick och bidragsgivare"</string>
@@ -76,7 +76,7 @@
     <!-- Fuzzy -->
     <string name="confirmation_authorize_now">"Du måste ge programmet tillåtelse att använda ditt OpenStreetMap-konto för att publicera dina svar. Vill du ge tillåtelse nu?"</string>
     <string name="not_authorized">"Inte godkänd"</string>
-    <string name="version_banned_message">"Denna version av StreetComplete har förbjudits från att överföra några svar! Vänligen uppdatera din version!"</string>
+    <string name="version_banned_message">"Denna version av StreetComplete är för gammal. Vänligen uppdatera!"</string>
     <string name="no_gps_no_quests">"För att söka efter uppdrag runt omkring dig automatiskt, slå på plats"</string>
     <string name="nothing_more_to_download">"Det finns inga fler uppdrag här"</string>
     <string name="later">"Senare"</string>
@@ -744,7 +744,7 @@ Dela den nu?"</string>
     <string name="quest_recycling_type_any_glass">"Vilka glaser som helst"</string>
     <string name="quest_recycling_glass_title">"Kan bara glasflaskor och burkar återvinnas här eller alla typer av glas?"</string>
     <string name="quest_determineRecyclingGlass_description_any_glass">"Exempel på glas som ofta inte accepteras: härdat glas, fönsterrutor, glasvaror, glödlampor eller speglar."</string>
-    <string name="about_title_changelog">"Versionshistorik"</string>
+    <string name="about_title_changelog">"Versionsanteckningar"</string>
     <string name="title_whats_new">"Vad är nytt?"</string>
     <string name="about_title_rate">"Betygsätt denna app"</string>
     <string name="about_summary_rate">"på Google Play"</string>
@@ -865,4 +865,12 @@ Observera att den här appen ber om husnummer av en byggnad först efter att des
     <string name="achievement_car_solved_X">"Du löste %d uppdrag som förbättrar detaljer på gatuinfrastrukturen och sätter gatan i OpenStreetMap!"</string>
     <string name="unread_messages_message">"Du har %d olästa meddelanden i inkorgen"</string>
     <string name="unread_messages_button">"Öppna inkorgen"</string>
+    <string name="action_about2">"Om"</string>
+    <string name="map_btn_menu">"Meny"</string>
+    <string name="privacy_html_statistics">"&lt;p&gt;Uppgifterna som visas i din profil samlas från din offentligt tillgängliga bidragshistoria till OpenStreetMap och finns sedan på min server.&lt;/p&gt;"</string>
+    <string name="confirmation_authorize_now_note2">"Du kan också göra detta senare på profilskärmen."</string>
+    <string name="credits_art_contributors_title">"Konstbidragsgivare"</string>
+    <string name="credits_projects_contributors_title">"Projekt som gjorts för StreetComplete"</string>
+    <string name="credits_main_contributors_title">"Huvudsakliga bidragsgivare"</string>
+    <string name="stats_are_syncing">"Din statistik synkroniseras fortfarande. Kontrollera denna skärm senare."</string>
 </resources>
