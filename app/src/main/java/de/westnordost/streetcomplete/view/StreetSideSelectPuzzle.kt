@@ -14,6 +14,7 @@ import android.widget.RelativeLayout
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.util.BitmapUtil
 import kotlinx.android.synthetic.main.side_select_puzzle.view.*
+import kotlin.math.*
 
 class StreetSideSelectPuzzle @JvmOverloads constructor(
     context: Context,
@@ -38,8 +39,8 @@ class StreetSideSelectPuzzle @JvmOverloads constructor(
         LayoutInflater.from(context).inflate(R.layout.side_select_puzzle, this, true)
 
         addOnLayoutChangeListener { _, left, top, right, bottom, _, _, _, _ ->
-            val width = Math.min(bottom - top, right - left)
-            val height = Math.max(bottom - top, right - left)
+            val width = min(bottom - top, right - left)
+            val height = max(bottom - top, right - left)
             val params = rotateContainer.layoutParams
             if(width != params.width || height != params.height) {
                 params.width = width
@@ -61,7 +62,7 @@ class StreetSideSelectPuzzle @JvmOverloads constructor(
 
     fun setStreetRotation(rotation: Float) {
         rotateContainer.rotation = rotation
-        val scale = Math.abs(Math.cos(rotation * Math.PI / 180)).toFloat()
+        val scale = abs(cos(rotation * PI / 180)).toFloat()
         rotateContainer.scaleX = 1 + scale * 2 / 3f
         rotateContainer.scaleY = 1 + scale * 2 / 3f
     }

@@ -69,7 +69,7 @@ open class MapFragment : Fragment(),
         /** Called during camera animation and while the map is being controlled by a user */
         fun onMapIsChanging(position: LatLon, rotation: Float, tilt: Float, zoom: Float)
         /** Called after camera animation or after the map was controlled by a user */
-        fun onMapDidChange(position: LatLon, rotation: Float, tilt: Float, zoom: Float, animated: Boolean)
+        fun onMapDidChange(position: LatLon, rotation: Float, tilt: Float, zoom: Float)
         /** Called when the user begins to pan the map */
         fun onPanBegin()
         /** Called when the user long-presses the map */
@@ -180,18 +180,17 @@ open class MapFragment : Fragment(),
         controller?.setShoveResponder(this)
 
 
-        controller?.setMapChangeListener(object : MapChangeListener {
-            override fun onViewComplete() {}
-            override fun onRegionWillChange(animated: Boolean) {}
-            override fun onRegionIsChanging() {
+        controller?.setMapChangingListener(object : MapChangingListener {
+            override fun onMapWillChange() {}
+            override fun onMapIsChanging() {
                 val camera = cameraPosition ?: return
                 onMapIsChanging(camera.position, camera.rotation, camera.tilt, camera.zoom)
                 listener?.onMapIsChanging(camera.position, camera.rotation, camera.tilt, camera.zoom)
             }
-            override fun onRegionDidChange(animated: Boolean) {
+            override fun onMapDidChange() {
                 val camera = cameraPosition ?: return
-                onMapDidChange(camera.position, camera.rotation, camera.tilt, camera.zoom, animated)
-                listener?.onMapDidChange(camera.position, camera.rotation, camera.tilt, camera.zoom, animated)
+                onMapDidChange(camera.position, camera.rotation, camera.tilt, camera.zoom)
+                listener?.onMapDidChange(camera.position, camera.rotation, camera.tilt, camera.zoom)
             }
         })
     }
@@ -247,7 +246,7 @@ open class MapFragment : Fragment(),
 
     protected open fun onMapIsChanging(position: LatLon, rotation: Float, tilt: Float, zoom: Float) {}
 
-    protected open fun onMapDidChange(position: LatLon, rotation: Float, tilt: Float, zoom: Float, animated: Boolean) {}
+    protected open fun onMapDidChange(position: LatLon, rotation: Float, tilt: Float, zoom: Float) {}
 
     /* ---------------------- Overrideable callbacks for map interaction ------------------------ */
 

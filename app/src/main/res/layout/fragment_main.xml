@@ -147,6 +147,12 @@
 
         </LinearLayout>
 
+        <de.westnordost.streetcomplete.map.PointerPinView
+            android:id="@+id/locationPointerPin"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:visibility="gone" />
+
         <fragment
             android:id="@+id/quest_download_progress_fragment"
             android:name="de.westnordost.streetcomplete.controls.QuestDownloadProgressFragment"
@@ -155,7 +161,7 @@
             tools:layout="@layout/fragment_quest_download_progress"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="40dp"
+            android:layout_marginBottom="32dp"
             />
 
         <View
