@@ -149,7 +149,12 @@ class CameraManager(private val c: MapController, private val contentResolver: C
         animator.setValues(*propValues.toTypedArray())
         animator.duration = duration
         animator.interpolator = interpolator
-        animator.addListener(onEnd = this::unassignAnimation)
+        animator.addListener(onEnd = {
+            // for some reason, the ObjectAnimator does not properly animate to the end value, so
+            // we need to set it to the end value on finish manually
+            applyCameraUpdate(update)
+            unassignAnimation(animator)
+        })
 
         val endTime = System.currentTimeMillis() + duration
         if (lastAnimatorEndTime < endTime) {
