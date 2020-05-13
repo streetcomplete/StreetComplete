@@ -91,7 +91,6 @@ class MainFragment : Fragment(R.layout.fragment_main),
     private lateinit var locationManager: FineLocationManager
     private val mainHandler = Handler(Looper.getMainLooper())
 
-    private var isShowingControls = true
     private var wasFollowingPosition = false
     private var wasCompassMode = false
 
@@ -157,16 +156,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
         zoomOutButton.setOnClickListener { onClickZoomOut() }
         mainMenuButton.setOnClickListener { onClickMainMenu() }
 
-        isShowingControls = savedInstanceState?.getBoolean(SHOW_CONTROLS) ?: true
-
         updateMapQuestOffsets()
-
-        view.doOnLayout {
-            if (!isShowingControls) {
-                hideAll(leftSideContainer, -1)
-                hideAll(rightSideContainer, +1)
-            }
-        }
     }
 
     private fun setupFittingToSystemWindowInsets() {
@@ -229,11 +219,6 @@ class MainFragment : Fragment(R.layout.fragment_main),
             IntentFilter(LocationRequestFragment.ACTION_FINISHED)
         )
         updateLocationAvailability()
-    }
-
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        outState.putBoolean(SHOW_CONTROLS, isShowingControls)
     }
 
     override fun onStop() {
@@ -805,7 +790,6 @@ class MainFragment : Fragment(R.layout.fragment_main),
         wasCompassMode = mapFragment.isCompassMode
         mapFragment.isFollowingPosition = false
         mapFragment.isCompassMode = false
-        hideMapControls()
     }
 
     private fun unfreezeMap() {
@@ -814,36 +798,8 @@ class MainFragment : Fragment(R.layout.fragment_main),
         mapFragment.isFollowingPosition = wasFollowingPosition
         mapFragment.isCompassMode = wasCompassMode
         mapFragment.endFocusQuest()
-        showMapControls()
         mapFragment.show3DBuildings = true
         mapFragment.isShowingQuestPins = true
-    }
-
-    private fun hideMapControls() {
-        isShowingControls = false
-        animateAll(rightSideContainer, +1, false, 120, 200)
-        animateAll(leftSideContainer, -1, false, 120, 200)
-    }
-
-    private fun showMapControls() {
-        isShowingControls = true
-        animateAll(rightSideContainer, 0, true, 120, 200)
-        animateAll(leftSideContainer, 0, true, 120, 200)
-    }
-
-    private fun animateAll(parent: ViewGroup, dir: Int, animateIn: Boolean, minDuration: Int, maxDuration: Int) {
-        val childCount = parent.childCount
-        val w = parent.width
-        for (i in 0 until childCount) {
-            val v = parent.getChildAt(i)
-            val order = if (animateIn) childCount - 1 - i else i
-            val duration = minDuration + (maxDuration - minDuration) / max(1, childCount - 1) * order
-            val animator = v.animate().translationX(w * dir.toFloat())
-            animator.duration = duration.toLong()
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1) {
-                animator.interpolator = if (dir != 0) AccelerateInterpolator() else DecelerateInterpolator()
-            }
-        }
     }
 
     private fun hideAll(parent: ViewGroup, dir: Int) {
@@ -876,7 +832,6 @@ class MainFragment : Fragment(R.layout.fragment_main),
     }
 
     companion object {
-        private const val SHOW_CONTROLS = "ShowControls"
         private const val BOTTOM_SHEET = "bottom_sheet"
     }
 }
