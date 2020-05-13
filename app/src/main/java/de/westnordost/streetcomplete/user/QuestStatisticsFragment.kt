@@ -23,7 +23,7 @@ class QuestStatisticsFragment : Fragment(R.layout.fragment_quest_statistics),
 
     interface Listener {
         fun onClickedQuestType(questType: QuestType<*>, solvedCount: Int, questBubbleView: View)
-        fun onClickedCountryFlag(country: String, solvedCount: Int, countryBubbleView: View)
+        fun onClickedCountryFlag(country: String, solvedCount: Int, rank: Int?, countryBubbleView: View)
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
@@ -69,8 +69,8 @@ class QuestStatisticsFragment : Fragment(R.layout.fragment_quest_statistics),
         listener?.onClickedQuestType(questType, solvedCount, questBubbleView)
     }
 
-    override fun onClickedCountryFlag(countryCode: String, solvedCount: Int, countryBubbleView: View) {
-        listener?.onClickedCountryFlag(countryCode, solvedCount, countryBubbleView)
+    override fun onClickedCountryFlag(countryCode: String, solvedCount: Int, rank: Int?, countryBubbleView: View) {
+        listener?.onClickedCountryFlag(countryCode, solvedCount, rank, countryBubbleView)
     }
 }
 

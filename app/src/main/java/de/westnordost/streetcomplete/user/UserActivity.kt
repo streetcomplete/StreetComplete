@@ -109,8 +109,8 @@ class UserActivity : FragmentContainerActivity(R.layout.activity_user),
         questTypeDetailsFragment?.show(questType, solvedCount, questBubbleView)
     }
 
-    override fun onClickedCountryFlag(country: String, solvedCount: Int, countryBubbleView: View) {
-        countryDetailsFragment?.show(country, solvedCount, countryBubbleView)
+    override fun onClickedCountryFlag(country: String, solvedCount: Int, rank: Int?, countryBubbleView: View) {
+        countryDetailsFragment?.show(country, solvedCount, rank, countryBubbleView)
     }
 
     /* ------------------------------------------------------------------------------------------ */

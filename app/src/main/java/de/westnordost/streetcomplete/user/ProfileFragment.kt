@@ -14,16 +14,15 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osmnotes.OsmNotesModule
 import de.westnordost.streetcomplete.data.quest.UnsyncedChangesCountListener
 import de.westnordost.streetcomplete.data.quest.UnsyncedChangesCountSource
-import de.westnordost.streetcomplete.data.user.QuestStatisticsDao
-import de.westnordost.streetcomplete.data.user.UserAvatarListener
-import de.westnordost.streetcomplete.data.user.UserController
-import de.westnordost.streetcomplete.data.user.UserStore
+import de.westnordost.streetcomplete.data.user.*
+import de.westnordost.streetcomplete.data.user.achievements.UserAchievementsDao
 import de.westnordost.streetcomplete.util.BitmapUtil
 import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.io.File
+import java.util.*
 import javax.inject.Inject
 
 /** Shows the user profile: username, avatar, star count and a hint regarding unpublished changes */
@@ -33,6 +32,8 @@ class ProfileFragment : Fragment(R.layout.fragment_profile),
     @Inject internal lateinit var userController: UserController
     @Inject internal lateinit var userStore: UserStore
     @Inject internal lateinit var questStatisticsDao: QuestStatisticsDao
+    @Inject internal lateinit var countryStatisticsDao: CountryStatisticsDao
+    @Inject internal lateinit var userAchievementsDao: UserAchievementsDao
     @Inject internal lateinit var unsyncedChangesCountSource: UnsyncedChangesCountSource
 
     private lateinit var anonAvatar: Bitmap
@@ -86,6 +87,11 @@ class ProfileFragment : Fragment(R.layout.fragment_profile),
 
         updateUnpublishedQuestsText()
         unsyncedChangesCountSource.addListener(unsyncedChangesCountListener)
+
+        updateDaysActiveText()
+        updateGlobalRankText()
+        updateLocalRankText()
+        updateAchievementLevelsText()
     }
 
     override fun onStop() {
@@ -115,6 +121,37 @@ class ProfileFragment : Fragment(R.layout.fragment_profile),
         val unsyncedChanges = unsyncedChangesCountSource.count
         unpublishedQuestsText.text = getString(R.string.unsynced_quests_description, unsyncedChanges)
         unpublishedQuestsText.visibility = if (unsyncedChanges > 0) View.VISIBLE else View.GONE
+    }
+
+    private fun updateDaysActiveText() {
+        val daysActive = userStore.daysActive
+        daysActiveContainer.visibility = if (daysActive > 0) View.VISIBLE else View.GONE
+        daysActiveText.text = daysActive.toString()
+    }
+
+    private fun updateGlobalRankText() {
+        val rank = userStore.rank
+        val shouldShow = rank > 0 && questStatisticsDao.getTotalAmount() > 100
+        globalRankContainer.visibility = if (shouldShow) View.VISIBLE else View.GONE
+        globalRankText.text = "#$rank"
+    }
+
+    private fun updateLocalRankText() {
+        val statistics = countryStatisticsDao.getCountryWithBiggestSolvedCount()
+        if (statistics == null) localRankContainer.visibility = View.GONE
+        else {
+            val shouldShow = statistics.rank != null && statistics.rank > 0 && statistics.solvedCount > 50
+            val countryLocale = Locale("", statistics.countryCode)
+            localRankContainer.visibility = if (shouldShow) View.VISIBLE else View.GONE
+            localRankText.text = "#${statistics.rank}"
+            localRankLabel.text = getString(R.string.user_profile_local_rank, countryLocale.displayCountry)
+        }
+    }
+
+    private fun updateAchievementLevelsText() {
+        val levels = userAchievementsDao.getAll().values.sum()
+        achievementLevelsContainer.visibility = if (levels > 0) View.VISIBLE else View.GONE
+        achievementLevelsText.text = "$levels"
     }
 
     private fun openUrl(url: String): Boolean {

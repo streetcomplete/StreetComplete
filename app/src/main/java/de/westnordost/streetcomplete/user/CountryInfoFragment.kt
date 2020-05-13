@@ -2,7 +2,9 @@ package de.westnordost.streetcomplete.user
 
 import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
+import android.content.Intent
 import android.graphics.Outline
+import android.net.Uri
 import android.os.Build
 import android.view.View
 import android.view.ViewOutlineProvider
@@ -10,7 +12,7 @@ import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import androidx.core.animation.doOnStart
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.ktx.toPx
+import de.westnordost.streetcomplete.ktx.tryStartActivity
 import kotlinx.android.synthetic.main.fragment_country_info_dialog.*
 import kotlinx.android.synthetic.main.fragment_country_info_dialog.solvedQuestsContainer
 import kotlinx.android.synthetic.main.fragment_country_info_dialog.solvedQuestsText
@@ -38,7 +40,7 @@ class CountryInfoFragment : AbstractInfoFakeDialogFragment(R.layout.fragment_cou
 
     /* ---------------------------------------- Interface --------------------------------------- */
 
-    fun show(countryCode: String, questCount: Int, countryFlagBubbleView: View) {
+    fun show(countryCode: String, questCount: Int, rank: Int?, countryFlagBubbleView: View) {
         show(countryFlagBubbleView)
         circularRevealAnimator?.cancel()
         val revealAnim = createCircularRevealAnimator()
@@ -60,12 +62,26 @@ class CountryInfoFragment : AbstractInfoFakeDialogFragment(R.layout.fragment_cou
             }
         }
 
-        countryNameText.text = Locale("", countryCode).displayCountry
+        val countryLocale = Locale("", countryCode)
+
         solvedQuestsText.text = ""
         val scale = (0.4 + min( questCount / 100.0, 1.0)*0.6).toFloat()
         solvedQuestsContainer.visibility = View.INVISIBLE
         solvedQuestsContainer.scaleX = scale
         solvedQuestsContainer.scaleY = scale
+
+        val shouldShowRank = rank != null && rank < 500 && questCount > 100
+        countryRankTextView.visibility = if (shouldShowRank) View.VISIBLE else View.GONE
+        if (shouldShowRank) {
+            countryRankTextView.text = resources.getString(
+                R.string.user_statistics_country_rank, rank, countryLocale.displayCountry
+            )
+        }
+
+        wikiLinkButton.text = resources.getString(R.string.user_statistics_country_wiki_link, countryLocale.displayCountry)
+        wikiLinkButton.setOnClickListener {
+            openUrl("https://wiki.openstreetmap.org/wiki/${countryLocale.getDisplayCountry(Locale.UK)}")
+        }
 
         counterAnimation?.cancel()
         val anim = ValueAnimator.ofInt(0, questCount)
@@ -104,5 +120,10 @@ class CountryInfoFragment : AbstractInfoFakeDialogFragment(R.layout.fragment_cou
         anim.interpolator = DecelerateInterpolator()
         anim.duration = ANIMATION_TIME_OUT_MS
         return anim
+    }
+
+    private fun openUrl(url: String): Boolean {
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+        return tryStartActivity(intent)
     }
 }

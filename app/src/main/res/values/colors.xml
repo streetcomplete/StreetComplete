@@ -5,6 +5,8 @@
     <color name="accent">#ff6600</color>
 
     <color name="text_on_primary">#fff</color>
+    <color name="text">#000</color>
+    <color name="inverted_background">#666</color>
 
     <color name="selection">#66ff6600</color>
     <color name="selection_frame">#bbff6600</color>

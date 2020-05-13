@@ -825,9 +825,17 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="achievement_car_title">On the Road</string>
     <string name="achievement_car_solved_X">You solved %d quests that improve detail on the street infrastructure, putting the "street" in OpenStreetMap!</string>
 
+    <string name="user_statistics_country_rank">Rank in %2$s: %1$d</string>
+    <string name="user_statistics_country_wiki_link">Mapping Portal %s</string>
+
     <string name="unread_messages_message">You have %d unread messages in your inbox</string>
     <string name="unread_messages_button">Open Inbox</string>
     <string name="user_statistics_filter_by_country">by country</string>
     <string name="user_statistics_filter_by_quest_type">by quest type</string>
+
+    <string name="user_profile_global_rank">Global\nrank</string>
+    <string name="user_profile_local_rank">Rank in\n%s</string>
+    <string name="user_profile_days_active">Days\nactive</string>
+    <string name="user_profile_achievement_levels">Achievement\nlevels</string>
 
 </resources>

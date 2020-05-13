@@ -17,6 +17,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:background="?attr/selectableItemBackground"
+        android:padding="8dp"
         android:elevation="4dp"
         />
 

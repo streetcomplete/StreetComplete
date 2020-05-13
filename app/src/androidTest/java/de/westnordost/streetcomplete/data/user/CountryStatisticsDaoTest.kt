@@ -21,13 +21,13 @@ class CountryStatisticsDaoTest  : ApplicationDbTestCase() {
     }
 
     @Test fun getAllReplaceAll() {
-        dao.replaceAll(mapOf(
-            "DE" to 4,
-            "NL" to 1
+        dao.replaceAll(listOf(
+            CountryStatistics("DE", 4, null),
+            CountryStatistics("NL", 1, 123)
         ))
-        assertEquals(mapOf(
-            "DE" to 4,
-            "NL" to 1
-        ),dao.getAll())
+        assertEquals(listOf(
+            CountryStatistics("DE", 4, null),
+            CountryStatistics("NL", 1, 123)
+        ), dao.getAll())
     }
 }

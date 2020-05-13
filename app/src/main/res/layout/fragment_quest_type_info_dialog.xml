@@ -62,7 +62,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center_horizontal"
-            android:divider="@drawable/space_8dp"
+            android:divider="@drawable/space_16dp"
             android:showDividers="beginning|middle|end"
             android:layout_marginStart="@dimen/dialog_horizontal_margin"
             android:layout_marginEnd="@dimen/dialog_horizontal_margin"
@@ -110,7 +110,7 @@
                 android:id="@+id/wikiLinkButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_open_in_browser_24dp"
+                android:drawableLeft="@drawable/ic_open_in_browser_primary_24dp"
                 android:drawablePadding="8dp"
                 android:text="@string/user_statistics_quest_wiki_link"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>

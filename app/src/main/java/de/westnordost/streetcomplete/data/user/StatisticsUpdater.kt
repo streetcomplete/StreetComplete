@@ -70,6 +70,7 @@ class StatisticsUpdater @Inject constructor(
             mergeQuestAliases(newQuestTypeStatistics)
             questStatisticsDao.replaceAll(newQuestTypeStatistics)
             countryStatisticsDao.replaceAll(statistics.countries)
+            userStore.rank = statistics.rank
             userStore.daysActive = statistics.daysActive
             userStore.lastStatisticsUpdate = statistics.lastUpdate
             // when syncing statistics from server, any granted achievements should be

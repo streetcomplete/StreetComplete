@@ -44,9 +44,16 @@ class StatisticsDownloader(private val baseUrl: String) {
         for (country in countriesJson.keys()) {
             countries[country] = countriesJson.getInt(country)
         }
+        val countryRanksJson = obj.getJSONObject("countryRanks")
+        val countryRanks: MutableMap<String, Int> = mutableMapOf()
+        for (country in countryRanksJson.keys()) {
+            countryRanks[country] = countryRanksJson.getInt(country)
+        }
+        val countriesStatistics = countries.map { CountryStatistics(it.key, it.value, countryRanks[it.key]) }
+        val rank = obj.getInt("rank")
         val daysActive = obj.getInt("daysActive")
         val isAnalyzing = obj.getBoolean("isAnalyzing")
         val lastUpdate = lastActivityDateFormat.parse(obj.getString("lastUpdate"))
-        return Statistics(questTypes, countries, daysActive, lastUpdate, isAnalyzing)
+        return Statistics(questTypes, countriesStatistics, rank, daysActive, lastUpdate, isAnalyzing)
     }
 }

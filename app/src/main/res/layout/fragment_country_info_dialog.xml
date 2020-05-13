@@ -70,19 +70,11 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center_horizontal"
-            android:divider="@drawable/space_8dp"
+            android:divider="@drawable/space_16dp"
             android:layout_marginStart="@dimen/dialog_horizontal_margin"
             android:layout_marginEnd="@dimen/dialog_horizontal_margin"
             android:showDividers="beginning|middle|end"
             app:layout_constraintTop_toBottomOf="@id/titleView">
-
-            <TextView
-                android:id="@+id/countryNameText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:textAppearance="@style/TextAppearance.Title"
-                tools:text="India" />
 
             <LinearLayout
                 android:id="@+id/solvedQuestsContainer"
@@ -113,6 +105,23 @@
                     tools:text="1021" />
 
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/countryRankTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:textAppearance="@style/TextAppearance.BigBody"
+                android:text="@string/user_statistics_country_rank"/>
+
+            <Button
+                android:id="@+id/wikiLinkButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_open_in_browser_primary_24dp"
+                android:drawablePadding="8dp"
+                android:text="@string/user_statistics_country_wiki_link"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
 
         </LinearLayout>
 

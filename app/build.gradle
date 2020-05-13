@@ -42,12 +42,13 @@ android {
 
         release {
             minifyEnabled true
-            useProguard false
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
         }
         debug {
-            minifyEnabled false
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             applicationIdSuffix ".debug"
         }
@@ -147,6 +148,7 @@ dependencies {
     implementation 'me.grantland:autofittextview:0.2.1'
     implementation 'org.sufficientlysecure:html-textview:3.9'
     implementation 'com.duolingo.open:rtl-viewpager:1.0.2'
+    implementation 'com.google.android:flexbox:2.0.1'
 
     // box2d view
     implementation 'org.jbox2d:jbox2d-library:2.2.1.1'
