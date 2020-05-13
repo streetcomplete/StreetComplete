@@ -239,7 +239,7 @@ open class LocationAwareMapFragment : MapFragment() {
         if (!shouldCenterCurrentPosition()) return
         val controller = controller ?: return
         val targetPosition = displayedPosition ?: return
-        controller.updateCameraPosition {
+        controller.updateCameraPosition(600) {
             position = targetPosition
             if (!zoomedYet) {
                 zoomedYet = true
