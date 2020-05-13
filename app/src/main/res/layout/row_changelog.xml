@@ -21,6 +21,7 @@
     <org.sufficientlysecure.htmltextview.HtmlTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.Body"
         android:id="@+id/descriptionLabel"/>
 
 </LinearLayout>
