@@ -117,7 +117,7 @@ class Marker(val markerId: Long, tangramMarker: com.mapzen.tangram.Marker) {
 
     var isVisible: Boolean
         set(value) { _isVisible = value }
-        get() = _isVisible != true
+        get() = _isVisible != false
 
     // this construct is necessary because isVisible is not initialized to its initial value yet
     // when tangramMarker is set in the constructor. But in the constructor, tangramMarker.isVisible
@@ -125,7 +125,7 @@ class Marker(val markerId: Long, tangramMarker: com.mapzen.tangram.Marker) {
     private var _isVisible: Boolean? = null
         set(value) {
             field = value
-            tangramMarker?.isVisible = value != true
+            tangramMarker?.isVisible = value != false
         }
 
     var userData: Any? = null
