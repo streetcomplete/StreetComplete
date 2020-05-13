@@ -88,7 +88,7 @@ class Marker(val markerId: Long, tangramMarker: com.mapzen.tangram.Marker) {
         set(value) {
             field = value
             if (value != null) {
-                isVisible = value.isVisible
+                value.isVisible = isVisible
                 drawOrder?.let { value.setDrawOrder(it) }
                 stylingFromPath?.let { value.setStylingFromPath(it) }
                 stylingFromString?.let { value.setStylingFromString(it) }
