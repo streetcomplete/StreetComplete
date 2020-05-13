@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.quests.postbox_collection_times
 
-import android.app.TimePickerDialog
 import android.content.Context
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
@@ -12,6 +11,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.quests.opening_hours.model.Weekdays
 import de.westnordost.streetcomplete.quests.opening_hours.WeekdaysPickerDialog
+import de.westnordost.streetcomplete.view.dialogs.TimePickerDialog
 
 data class WeekdaysTimesRow(var weekdays: Weekdays, var minutes: Int)
 
@@ -132,8 +132,8 @@ class CollectionTimesAdapter(
     }
 
     private fun openSetTimeDialog(minutes: Int, callback: (minutes: Int) -> Unit) {
-        TimePickerDialog(context, R.style.Theme_Bubble_Dialog, { _, hourOfDay, minute ->
+        TimePickerDialog(context, minutes / 60, minutes % 60, true) { hourOfDay, minute ->
             callback(hourOfDay * 60 + minute)
-        }, minutes / 60, minutes % 60, true).show()
+        }.show()
     }
 }
