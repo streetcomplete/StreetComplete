@@ -1,3 +1,26 @@
+v20.0-beta1: |
+  <h3>📈 New Statistics</h3>
+  <ul>
+    <li>🌍 See your solved quests grouped by country</li>
+    <li>See how you rank amongst other StreetComplete users</li>
+    <li>See how many days you contributed and the sum of your achievement levels</li>
+    <li>Access the mapping portal for each country you contributed to, with useful infos about local mapping efforts and for connecting with the local community</li>
+  </ul>
+  <h3>Enhancements</h3>
+  <ul>
+    <li>A pointer pin at the edge of the screen replaces the GPS button and points to your current location</li>
+    <li>📱 The app is now optimized to look great on tablets and phablets as well! (#1794)</li>
+    <li>Text in note discussions is now selectable</li>
+  </ul>
+  <h3>Fixes</h3>
+  <ul>
+    <li>on pressing the hardware menu button, don't open the menu twice (#1806)</li>
+    <li>bubbles in the statistics view shouldn't grow too large anymore (#1818)</li>
+    <li>Previous quest selection was still displayed when creating a note (#1820)</li>
+    <li>On splitting a way, require the user to zoom in far enough to use the scissors</li>
+    <li>More minor / technical fixes</li>
+  </ul>
+
 v19.2: |
   <p>Maybe the announced end of new (big) features for StreetComplete is not over yet! I applied to two microgrants at the OpenStreetMap Foundation, you can endorse them if you like these ideas:</p>
   <ol>
