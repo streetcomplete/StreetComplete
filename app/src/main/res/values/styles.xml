@@ -99,6 +99,7 @@
         <item name="android:background">@drawable/round_colored_button</item>
         <item name="android:textColor">#fff</item>
         <item name="android:clickable">true</item>
+        <item name="android:gravity">center</item>
         <item name="android:elevation" tools:targetApi="21">4dp</item>
     </style>
 
@@ -146,10 +147,8 @@
 
     <!-- +++++++++++++++++++++++++++++++++++ Bottom sheet ++++++++++++++++++++++++++++++++++++++ -->
 
-    <style name="BottomSheetButtonBarItem">
-        <item name="android:background">?android:attr/selectableItemBackground</item>
+    <style name="BottomSheetButtonBarItem" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
         <item name="android:textColor">@color/button_bar_button_text</item>
-        <item name="android:padding">16dp</item>
     </style>
 
     <!-- ++++++++++++++++++++++++++++++++++ Note discussion ++++++++++++++++++++++++++++++++++++ -->

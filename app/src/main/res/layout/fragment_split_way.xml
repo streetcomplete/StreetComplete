@@ -97,7 +97,7 @@
 
         </RelativeLayout>
 
-        <Button
+        <TextView
             android:id="@+id/okButton"
             android:text="@android:string/ok"
             style="@style/RoundAccentButton"
