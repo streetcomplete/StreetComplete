@@ -70,7 +70,7 @@ class CountryInfoFragment : AbstractInfoFakeDialogFragment(R.layout.fragment_cou
         solvedQuestsContainer.scaleX = scale
         solvedQuestsContainer.scaleY = scale
 
-        val shouldShowRank = rank != null && rank < 500 && questCount > 100
+        val shouldShowRank = rank != null && rank < 500 && questCount > 50
         countryRankTextView.visibility = if (shouldShowRank) View.VISIBLE else View.GONE
         if (shouldShowRank) {
             countryRankTextView.text = resources.getString(
