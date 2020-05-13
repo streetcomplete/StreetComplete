@@ -124,7 +124,6 @@ class SplitWayFragment
         // see rant comment in AbstractBottomSheetFragment
         resources.updateConfiguration(newConfig, resources.displayMetrics)
 
-        bottomSheetContainer.setBackgroundResource(R.drawable.speechbubbles_gradient_background)
         bottomSheetContainer.updateLayoutParams { width = resources.getDimensionPixelSize(R.dimen.quest_form_width) }
     }
 

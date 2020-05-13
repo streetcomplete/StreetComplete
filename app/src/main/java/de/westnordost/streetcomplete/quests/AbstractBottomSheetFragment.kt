@@ -107,7 +107,6 @@ abstract class AbstractBottomSheetFragment : Fragment(), IsCloseableBottomSheet 
 
         bottomSheetBehavior.peekHeight = resources.getDimensionPixelSize(R.dimen.quest_form_peekHeight)
         bottomSheetContainer?.let {
-            it.setBackgroundResource(R.drawable.speechbubbles_gradient_background)
             it.updateLayoutParams { width = resources.getDimensionPixelSize(R.dimen.quest_form_width) }
         }
     }
