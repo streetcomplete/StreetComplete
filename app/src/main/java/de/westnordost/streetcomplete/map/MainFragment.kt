@@ -17,7 +17,6 @@ import android.os.Looper
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AccelerateInterpolator
-import android.view.animation.DecelerateInterpolator
 import android.view.animation.OvershootInterpolator
 import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
@@ -31,7 +30,6 @@ import androidx.core.graphics.minus
 import androidx.core.graphics.toPointF
 import androidx.core.graphics.toRectF
 import androidx.core.view.children
-import androidx.core.view.doOnLayout
 import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE
@@ -69,7 +67,6 @@ import javax.inject.Inject
 import kotlin.math.PI
 import de.westnordost.streetcomplete.util.initialBearingTo
 import kotlin.math.cos
-import kotlin.math.max
 import kotlin.math.sin
 
 /** Contains the quests map and the controls for it. */
@@ -638,7 +635,6 @@ class MainFragment : Fragment(R.layout.fragment_main),
             return
         }
         val displayedPosition = OsmLatLon(location.latitude, location.longitude)
-        val angle = position.initialBearingTo(displayedPosition)
 
         var target = mapFragment.getPointOf(displayedPosition) ?: return
         windowInsets?.let {
@@ -646,17 +642,24 @@ class MainFragment : Fragment(R.layout.fragment_main),
         }
         val intersection = findClosestIntersection(mapControls, target)
 
-        if (intersection == null) {
-            locationPointerPin.visibility = View.GONE
-        } else {
-            locationPointerPin.visibility = View.VISIBLE
-            locationPointerPin.pinRotation = angle.toFloat() + (180 * rotation / PI).toFloat()
+        if (intersection != null) {
+            val intersectionPosition = mapFragment.getPositionAt(intersection)
+            if (intersectionPosition != null) {
+                locationPointerPin.visibility = View.VISIBLE
 
-            val a = angle * PI / 180f + rotation
-            val offsetX = (sin(a)/2.0 + 0.5) * locationPointerPin.width
-            val offsetY = (-cos(a)/2.0 + 0.5) * locationPointerPin.height
-            locationPointerPin.x = intersection.x - offsetX.toFloat()
-            locationPointerPin.y = intersection.y - offsetY.toFloat()
+                val angleAtIntersection = position.initialBearingTo(intersectionPosition)
+                locationPointerPin.pinRotation = angleAtIntersection.toFloat() + (180 * rotation / PI).toFloat()
+
+                val a = angleAtIntersection * PI / 180f + rotation
+                val offsetX = (sin(a) / 2.0 + 0.5) * locationPointerPin.width
+                val offsetY = (-cos(a) / 2.0 + 0.5) * locationPointerPin.height
+                locationPointerPin.x = intersection.x - offsetX.toFloat()
+                locationPointerPin.y = intersection.y - offsetY.toFloat()
+            } else {
+                locationPointerPin.visibility = View.GONE
+            }
+        } else {
+            locationPointerPin.visibility = View.GONE
         }
     }
 
