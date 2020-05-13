@@ -168,6 +168,7 @@ class SplitWayFragment
         // show toast only if it is possible to zoom in further
         if (splitWayCandidates.size > 1 && clickAreaSizeInMeters > CLICK_AREA_SIZE_AT_MAX_ZOOM) {
             context?.toast(R.string.quest_split_way_too_imprecise)
+            return true
         }
         val splitWay = splitWayCandidates.minBy { it.pos.distanceTo(position) }!!
         val splitPosition = splitWay.pos
