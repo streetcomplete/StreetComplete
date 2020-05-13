@@ -163,6 +163,7 @@
 
     <style name="NoteDiscussion.Comment">
         <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:textIsSelectable">true</item>
     </style>
 
     <style name="NoteDiscussion.Info"/>
