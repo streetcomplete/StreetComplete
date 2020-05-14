@@ -59,6 +59,7 @@
                 android:drawablePadding="8dp"
                 android:layout_marginTop="16dp"
                 android:layout_below="@id/unreadMessagesTextView"
+                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
                 android:text="@string/unread_messages_button"/>
 
         </RelativeLayout>
