@@ -13,16 +13,13 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.user.UserStore
 import de.westnordost.streetcomplete.data.user.achievements.Achievement
 import de.westnordost.streetcomplete.data.user.achievements.UserAchievementsSource
-import de.westnordost.streetcomplete.ktx.awaitLayout
+import de.westnordost.streetcomplete.ktx.awaitPreDraw
 import de.westnordost.streetcomplete.ktx.toPx
 import de.westnordost.streetcomplete.view.GridLayoutSpacingItemDecoration
 import de.westnordost.streetcomplete.view.ListAdapter
 import kotlinx.android.synthetic.main.cell_achievement.view.*
 import kotlinx.android.synthetic.main.fragment_achievements.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.cancel
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import javax.inject.Inject
 
 /** Shows the icons for all achieved achievements and opens a AchievementInfoFragment to show the
@@ -53,7 +50,7 @@ class AchievementsFragment : Fragment(R.layout.fragment_achievements),
         val itemSpacing = ctx.resources.getDimensionPixelSize(R.dimen.achievements_item_margin)
 
         launch {
-            view.awaitLayout()
+            view.awaitPreDraw()
 
             emptyText.visibility = View.GONE
 
@@ -65,7 +62,9 @@ class AchievementsFragment : Fragment(R.layout.fragment_achievements),
             achievementsList.addItemDecoration(GridLayoutSpacingItemDecoration(itemSpacing))
             achievementsList.clipToPadding = false
 
-            val achievements = userAchievementsSource.getAchievements()
+            val achievements = withContext(Dispatchers.IO) {
+                userAchievementsSource.getAchievements()
+            }
             achievementsList.adapter = AchievementsAdapter(achievements)
 
             emptyText.visibility = if (achievements.isEmpty()) View.VISIBLE else View.GONE

@@ -20,7 +20,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.ktx.awaitLayout
+import de.westnordost.streetcomplete.ktx.awaitPreDraw
 import de.westnordost.streetcomplete.ktx.sumByFloat
 import kotlinx.android.synthetic.main.view_ball_pit.view.*
 import kotlinx.coroutines.CoroutineScope
@@ -123,7 +123,7 @@ class BallPitView @JvmOverloads constructor(
     /* --------------------------------- Set up physics layout  --------------------------------- */
 
     private suspend fun setupScene(areaInMeters: Float) {
-        physicsView.awaitLayout()
+        physicsView.awaitPreDraw()
 
         val width = physicsView.width.toFloat()
         val height = physicsView.height.toFloat()

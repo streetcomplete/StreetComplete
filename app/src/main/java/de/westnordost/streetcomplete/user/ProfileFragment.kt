@@ -21,6 +21,7 @@ import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.io.File
 import java.util.*
 import javax.inject.Inject
@@ -76,22 +77,22 @@ class ProfileFragment : Fragment(R.layout.fragment_profile),
 
     override fun onStart() {
         super.onStart()
-        updateUserName()
-        userStore.addListener(userStoreUpdateListener)
 
-        updateAvatar()
-        userController.addUserAvatarListener(userAvatarListener)
+        launch {
+            userStore.addListener(userStoreUpdateListener)
+            userController.addUserAvatarListener(userAvatarListener)
+            questStatisticsDao.addListener(questStatisticsDaoListener)
+            unsyncedChangesCountSource.addListener(unsyncedChangesCountListener)
 
-        updateSolvedQuestsText()
-        questStatisticsDao.addListener(questStatisticsDaoListener)
-
-        updateUnpublishedQuestsText()
-        unsyncedChangesCountSource.addListener(unsyncedChangesCountListener)
-
-        updateDaysActiveText()
-        updateGlobalRankText()
-        updateLocalRankText()
-        updateAchievementLevelsText()
+            updateUserName()
+            updateAvatar()
+            updateSolvedQuestsText()
+            updateUnpublishedQuestsText()
+            updateDaysActiveText()
+            updateGlobalRankText()
+            updateLocalRankText()
+            updateAchievementLevelsText()
+        }
     }
 
     override fun onStop() {
@@ -113,12 +114,12 @@ class ProfileFragment : Fragment(R.layout.fragment_profile),
         userAvatarImageView.setImageBitmap(avatar)
     }
 
-    private fun updateSolvedQuestsText() {
-        solvedQuestsText.text = questStatisticsDao.getTotalAmount().toString()
+    private suspend fun updateSolvedQuestsText() {
+        solvedQuestsText.text = withContext(Dispatchers.IO) { questStatisticsDao.getTotalAmount().toString() }
     }
 
-    private fun updateUnpublishedQuestsText() {
-        val unsyncedChanges = unsyncedChangesCountSource.count
+    private suspend fun updateUnpublishedQuestsText() {
+        val unsyncedChanges = withContext(Dispatchers.IO) { unsyncedChangesCountSource.count }
         unpublishedQuestsText.text = getString(R.string.unsynced_quests_description, unsyncedChanges)
         unpublishedQuestsText.visibility = if (unsyncedChanges > 0) View.VISIBLE else View.GONE
     }
@@ -136,8 +137,10 @@ class ProfileFragment : Fragment(R.layout.fragment_profile),
         globalRankText.text = "#$rank"
     }
 
-    private fun updateLocalRankText() {
-        val statistics = countryStatisticsDao.getCountryWithBiggestSolvedCount()
+    private suspend fun updateLocalRankText() {
+        val statistics = withContext(Dispatchers.IO) {
+            countryStatisticsDao.getCountryWithBiggestSolvedCount()
+        }
         if (statistics == null) localRankContainer.visibility = View.GONE
         else {
             val shouldShow = statistics.rank != null && statistics.rank > 0 && statistics.solvedCount > 50
@@ -148,8 +151,8 @@ class ProfileFragment : Fragment(R.layout.fragment_profile),
         }
     }
 
-    private fun updateAchievementLevelsText() {
-        val levels = userAchievementsDao.getAll().values.sum()
+    private suspend fun updateAchievementLevelsText() {
+        val levels = withContext(Dispatchers.IO) { userAchievementsDao.getAll().values.sum() }
         achievementLevelsContainer.visibility = if (levels > 0) View.VISIBLE else View.GONE
         achievementLevelsText.text = "$levels"
     }

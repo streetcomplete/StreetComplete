@@ -11,15 +11,12 @@ import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.user.UserStore
 import de.westnordost.streetcomplete.data.user.achievements.UserLinksSource
-import de.westnordost.streetcomplete.ktx.awaitLayout
+import de.westnordost.streetcomplete.ktx.awaitPreDraw
 import de.westnordost.streetcomplete.ktx.toDp
 import de.westnordost.streetcomplete.ktx.tryStartActivity
 import de.westnordost.streetcomplete.view.GridLayoutSpacingItemDecoration
 import kotlinx.android.synthetic.main.fragment_links.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.cancel
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import javax.inject.Inject
 
 /** Shows the user's unlocked links */
@@ -40,14 +37,16 @@ class LinksFragment : Fragment(R.layout.fragment_links),
         val itemSpacing = ctx.resources.getDimensionPixelSize(R.dimen.links_item_margin)
 
         launch {
-            view.awaitLayout()
+            view.awaitPreDraw()
 
             emptyText.visibility = View.GONE
 
             val viewWidth = view.width.toFloat().toDp(ctx)
             val spanCount = (viewWidth / minCellWidth).toInt()
 
-            val links = userLinksSource.getLinks()
+            val links = withContext(Dispatchers.IO) {
+                userLinksSource.getLinks()
+            }
             val adapter = GroupedLinksAdapter(links, this@LinksFragment::openUrl)
             // headers should span the whole width
             val spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
