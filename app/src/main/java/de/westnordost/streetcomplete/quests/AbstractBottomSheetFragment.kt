@@ -161,8 +161,7 @@ abstract class AbstractBottomSheetFragment : Fragment(), IsCloseableBottomSheet 
     private fun updateCloseButtonVisibility() {
         // this is called asynchronously. It may happen that the activity is already gone when this
         // method is finally called
-        val speechBubbleTopMargin = resources.getDimension(R.dimen.quest_form_speech_bubble_top_margin)
-        val coversToolbar = bottomSheet.top < speechBubbleTopMargin
+        val coversToolbar = bottomSheet.top <= 0
         closeButton.visibility = if (coversToolbar) View.VISIBLE else View.INVISIBLE
     }
 
