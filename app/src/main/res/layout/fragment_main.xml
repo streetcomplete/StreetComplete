@@ -151,6 +151,8 @@
             android:id="@+id/locationPointerPin"
             android:layout_width="48dp"
             android:layout_height="48dp"
+            app:iconSrc="@drawable/location_dot_small"
+            android:elevation="4dp"
             android:visibility="gone" />
 
         <fragment

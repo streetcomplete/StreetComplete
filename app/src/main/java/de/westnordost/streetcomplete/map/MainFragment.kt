@@ -144,7 +144,6 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
         setupFittingToSystemWindowInsets()
 
-        locationPointerPin.setPinIcon(R.drawable.location_dot_small)
         locationPointerPin.setOnClickListener { onClickLocationPointer() }
 
         compassView.setOnClickListener { onClickCompassButton() }
