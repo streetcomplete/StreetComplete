@@ -2,12 +2,12 @@ package de.westnordost.streetcomplete.quests
 
 import android.content.Context
 import android.os.Bundle
-import android.preference.PreferenceManager
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import android.view.View
 import androidx.core.view.postDelayed
+import androidx.preference.PreferenceManager
 
 import javax.inject.Inject
 

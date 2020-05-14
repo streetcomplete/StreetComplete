@@ -122,7 +122,7 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
         questGroup = QuestGroup.valueOf(args.getString(ARG_QUEST_GROUP)!!)
         osmElement = args.getSerializable(ARG_ELEMENT) as OsmElement?
         elementGeometry = args.getSerializable(ARG_GEOMETRY) as ElementGeometry
-        questType = questTypeRegistry.getByName(args.getString(ARG_QUESTTYPE)) as QuestType<T>
+        questType = questTypeRegistry.getByName(args.getString(ARG_QUESTTYPE)!!) as QuestType<T>
         initialMapRotation = args.getFloat(ARG_MAP_ROTATION)
         initialMapTilt = args.getFloat(ARG_MAP_TILT)
         _countryInfo = null // reset lazy field

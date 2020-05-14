@@ -5,10 +5,10 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
-import android.preference.PreferenceManager;
 
 import javax.inject.Singleton;
 
+import androidx.preference.PreferenceManager;
 import dagger.Module;
 import dagger.Provides;
 import de.westnordost.streetcomplete.location.LocationRequestFragment;
