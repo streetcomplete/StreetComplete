@@ -42,9 +42,9 @@
     <dimen name="quest_statistics_quest_type_icon_size">192dp</dimen>
     <dimen name="quest_statistics_quest_type_icon_offset">96dp</dimen>
 
-    <dimen name="quest_statistics_country_icon_width">240dp</dimen>
-    <dimen name="quest_statistics_country_icon_height">160dp</dimen>
-    <dimen name="quest_statistics_country_icon_offset">100dp</dimen>
+    <dimen name="quest_statistics_country_icon_width">320dp</dimen>
+    <dimen name="quest_statistics_country_icon_height">220dp</dimen>
+    <dimen name="quest_statistics_country_icon_offset">120dp</dimen>
 
     <dimen name="achievement_icon_size">320dp</dimen>
     <dimen name="achievement_icon_offset">220dp</dimen>
