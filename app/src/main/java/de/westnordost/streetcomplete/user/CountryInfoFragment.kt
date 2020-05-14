@@ -68,7 +68,7 @@ class CountryInfoFragment : AbstractInfoFakeDialogFragment(R.layout.fragment_cou
                     val yDiff = view.height - flagHeight
                     // oval because the shadow is there during the whole animation, rect would look very odd
                     // (an oval less so)
-                    outline.setOval(xDiff/2, yDiff/2, view.width + xDiff/2, view.height + yDiff/2)
+                    outline.setOval(xDiff/2, yDiff/2, flagWidth + xDiff/2, flagHeight + yDiff/2)
                 }
             }
         }
