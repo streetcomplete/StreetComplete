@@ -32,6 +32,7 @@ import de.westnordost.streetcomplete.sound.SoundFx
 import de.westnordost.streetcomplete.util.alongTrackDistanceTo
 import de.westnordost.streetcomplete.util.crossTrackDistanceTo
 import de.westnordost.streetcomplete.util.distanceTo
+import de.westnordost.streetcomplete.view.RoundRectOutlineProvider
 import kotlinx.android.synthetic.main.fragment_split_way.*
 import javax.inject.Inject
 
@@ -93,6 +94,14 @@ class SplitWayFragment
 
         undoButton.visibility = if (hasChanges) View.VISIBLE else View.INVISIBLE
         okButton.visibility = if (isFormComplete) View.VISIBLE else View.INVISIBLE
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            val cornerRadius = resources.getDimension(R.dimen.speech_bubble_rounded_corner_radius)
+            val margin = resources.getDimensionPixelSize(R.dimen.horizontal_speech_bubble_margin)
+            speechbubbleContentContainer.outlineProvider = RoundRectOutlineProvider(
+                cornerRadius, margin, margin, margin, margin
+            )
+        }
 
         if (savedInstanceState == null) {
             view.findViewById<View>(R.id.speechbubbleContentContainer).startAnimation(

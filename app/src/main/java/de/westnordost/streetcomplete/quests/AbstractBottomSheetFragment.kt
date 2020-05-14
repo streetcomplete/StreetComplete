@@ -12,6 +12,7 @@ import android.view.WindowInsets
 import android.view.animation.AnimationUtils
 import androidx.annotation.UiThread
 import androidx.appcompat.app.AlertDialog
+import androidx.core.view.marginBottom
 import androidx.core.view.updateLayoutParams
 import androidx.core.view.updateMargins
 import androidx.core.view.updatePadding
@@ -23,6 +24,7 @@ import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.toDp
 import de.westnordost.streetcomplete.ktx.toPx
+import de.westnordost.streetcomplete.view.RoundRectOutlineProvider
 import kotlinx.android.synthetic.main.fragment_quest_answer.*
 
 /** Abstract base class for (quest) bottom sheets
@@ -60,6 +62,19 @@ abstract class AbstractBottomSheetFragment : Fragment(), IsCloseableBottomSheet 
         setupFittingToSystemWindowInsets()
 
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            val cornerRadius = resources.getDimension(R.dimen.speech_bubble_rounded_corner_radius)
+            val margin = resources.getDimensionPixelSize(R.dimen.horizontal_speech_bubble_margin)
+            val topMargin = -resources.getDimensionPixelSize(R.dimen.quest_form_speech_bubble_top_margin)
+            speechBubbleTitleContainer.outlineProvider = RoundRectOutlineProvider(
+                cornerRadius, margin, topMargin, margin, margin
+            )
+
+            speechbubbleContentContainer.outlineProvider = RoundRectOutlineProvider(
+                cornerRadius, margin, margin, margin, margin
+            )
+        }
 
         speechBubbleTitleContainer.setOnClickListener {
             bottomSheetBehavior.apply {
