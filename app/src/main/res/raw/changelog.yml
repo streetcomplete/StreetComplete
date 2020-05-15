@@ -11,6 +11,7 @@ v20.0-beta1: |
     <li>A pointer pin at the edge of the screen replaces the GPS button and points to your current location</li>
     <li>📱 The app is now optimized to look great on tablets and phablets as well! (#1794)</li>
     <li>Text in note discussions is now selectable</li>
+    <li>Add proper shadows for all the speech bubble forms</li>
   </ul>
   <h3>Fixes</h3>
   <ul>
@@ -18,6 +19,8 @@ v20.0-beta1: |
     <li>bubbles in the statistics view shouldn't grow too large anymore (#1818)</li>
     <li>Previous quest selection was still displayed when creating a note (#1820)</li>
     <li>On splitting a way, require the user to zoom in far enough to use the scissors</li>
+    <li>Fix link collection sometimes appearing empty</li>
+    <li>Fix close-button was not shown when bottom sheet was pulled up completely</li>
     <li>More minor / technical fixes</li>
   </ul>
 
