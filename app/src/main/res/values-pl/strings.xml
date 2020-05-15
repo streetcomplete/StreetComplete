@@ -750,7 +750,7 @@ Na koniec: pamiętaj o bezpieczeństwie! Uważaj na otoczenie i nie wchodź na t
     <string name="quests_empty">"Nie masz jeszcze żadnych zakończonych zadań"</string>
 
     <!-- Potrzebny kontekst -->
-    <string name="unsynced_quests_description">"%d nieopublikowanych zmian."</string>
+    <string name="unsynced_quests_description">"oraz %d nieopublikowanych zmian."</string>
     <string name="unsynced_quests_not_logged_in_description">"Masz %d nieopublikowanych zmian. Zaloguj się by je wysłać."</string>
     <string name="user_quests_title">"Rozwiązane Zadania"</string>
     <string name="user_achievements_title">"Osiągnięcia"</string>
@@ -773,12 +773,26 @@ Na koniec: pamiętaj o bezpieczeństwie! Uważaj na otoczenie i nie wchodź na t
     <string name="link_wheelmap_description">"Mapa miejsc przyjaznych dla niepełnosprawnych"</string>
     <string name="link_osm_buildings_description">"Mapa ukazująca budynki w 3D"</string>
     <string name="link_openvegemap_description">"Odkryj wegetariańskie i wegańskie restauracje w okolicy"</string>
+    <string name="link_touch_mapper_description">"Tworzenie map dotykowych dla dowolnego adresu"</string>
+    <string name="link_mapy_tactile_description">"Dotykowe mapy dla niewidomych w różnych skalach"</string>
     <string name="link_josm_description">"W pełni wyposażony edytor OSM. To potężne narzędzie dla zaawansowanych maperów."</string>
     <string name="link_vespucci_description">"Zaawansowany edytor OSM na Androida"</string>
     <string name="link_ideditor_description">"Prosty edytor OSM dla przeglądarek. Zoptymalizowany pod komputery osobiste lub duże tablety."</string>
     <string name="link_umap_description">"Tworzy napy z własnymi danymi do umieszczenia na swojej stronie www."</string>
     <string name="link_opnvkarte_description">"Mapa tras transportu publicznego i przystanków."</string>
     <string name="link_pic4review_description">"Współtwórz OSM poprzez oglądanie zdjęć z Twojego miasta"</string>
+    <string name="link_wiki_description">"Wiki jest Twoim punktem początkowym do wszystkiego co jest związane z OpenStreetMap"</string>
+    <string name="link_learnosm_description">"Jesteś nowicjuszem w OpenStreetMap? Tu jest podręcznik dla początkujących"</string>
+    <string name="link_neis_one_description">"Ogromna kolekcja statystyk dla autorów OpenStreetMap takich jak gdzie i jak edytujesz, kto jeszcze edytuje w okolicy oraz rankingi użytkowników"</string>
+    <string name="link_welcome_mat_description">"Ogólne informacje o OpenStreetMap i jak pracować z OSM jako organizacją"</string>
+    <string name="link_mapillary_description">"Usługa i aplikacja do dzielenia się zdjęciami z poziomu ulicy z możliwością użycia ich do edycji OSM"</string>
+    <string name="link_openstreetcam_description">"Usługa i aplikacja do dzielenia się zdjęciami z poziomu ulicy z możliwością użycia ich do edycji OSM"</string>
+    <string name="link_openrouteservice_wheelchair_description">"Nawigacja dla użytkowników wózków dla niepełnosprawnych"</string>
+    <string name="link_nominatim_description">"Wyszukiwarka adresów w danych OSM wykorzystywana przez wiele serwisów"</string>
+    <string name="link_city_roads_description">"Rysowanie wszystkich dróg miasta do wydruku na koszulkach, kubkach, ..."</string>
+    <string name="link_myosmatic_description">"Tworzenie w kilku prostych krokach map miejskich do drukowania z opcją katalogu ulic"</string>
+    <string name="link_brouter_description">"Prawdopodobnie najlepsze narzędzie do wyznaczania tras dla rowerzystów"</string>
+    <string name="link_show_me_the_way_description">"Obserwacja edycji OSM w czasie rzeczywistym"</string>
     <string name="link_osrm_description">"Najszybszy mechanizm wytyczający drogę"</string>
     <string name="link_openrouteservice_description">"Wytyczanie drogi dla ruchu pojazdami i pieszego. Pokazuje także izochrony (punkty na mapie osiągalne w zadanym czasie)."</string>
     <string name="link_osm_haiku_description">"Tworzenie haiku (rodzaj japońskiej poezji) z danych OSM"</string>
@@ -800,5 +814,25 @@ Na koniec: pamiętaj o bezpieczeństwie! Uważaj na otoczenie i nie wchodź na t
     <string name="achievement_postman_title">"Listonosz"</string>
     <string name="achievement_postman_solved_X">"Zlokalizowałeś %d adresów!
 Te informacje są niezbędne nie tylko listonoszom ale także narzędziom nawigującym."</string>
+    <string name="achievement_building_title">"Wieżowiec"</string>
+    <string name="achievement_building_solved_X">"Rozwiązałeś %d zadań związanych z budynkami.
+Pamiętaj, że ta aplikacja pyta o numer budynku tylko po tym, jak zostanie określony typ budynku."</string>
+    <string name="achievement_blind_title">"Szósty Zmysł"</string>
+    <string name="achievement_blind_solved_X">"Rozwiązałeś %d zadań, które są ważne dla osób niedowidzących."</string>
+    <string name="achievement_pedestrian_title">"Biegacz"</string>
+    <string name="achievement_pedestrian_solved_X">"Rozwiązałeś %d zadań, które interesują spacerowiczów!"</string>
+    <string name="achievement_veg_title">"Miłośnik Zwierząt"</string>
+    <string name="achievement_veg_solved_X">"Rozwiązałeś %d zadań ważnych dla osób na diecie bezmięsnej!"</string>
+    <string name="achievement_car_title">"Na Drodze"</string>
+    <string name="achievement_car_solved_X">"Rozwiązałeś %d zadań ulepszających drogową infrastrukturę dodając ulicę w OpenStreetMap!"</string>
+    <string name="unread_messages_message">"Masz %d nieprzeczytanych wiadomości w skrzynce odbiorczej"</string>
+    <string name="unread_messages_button">"Otwórz skrzynkę odbiorczą"</string>
     <string name="action_about2">"O aplikacji"</string>
+    <string name="map_btn_menu">"Menu"</string>
+    <string name="privacy_html_statistics">"&lt;p&gt;Dane pokazane w Twoim profilu są agregowane z publicznie dostępnej historii w OpenStreetMap, a następnie udostępniane na moim serwerze.&lt;/p&gt;"</string>
+    <string name="confirmation_authorize_now_note2">"Możesz to również zrobić później na ekranie profilu użytkownika"</string>
+    <string name="credits_art_contributors_title">"Autorzy grafiki"</string>
+    <string name="credits_projects_contributors_title">"Projekty utworzone dla StreetComplete"</string>
+    <string name="credits_main_contributors_title">"Autorzy główni"</string>
+    <string name="stats_are_syncing">"Twoje statystyki są w trakcie synchronizacji. Sprawdź ten ekran później."</string>
 </resources>

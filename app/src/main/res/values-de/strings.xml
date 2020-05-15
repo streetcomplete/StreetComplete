@@ -827,4 +827,16 @@ Beachte, dass diese App nur Hausnummern von Gebäuden abfrafgt, deren Typ bereit
     <string name="credits_projects_contributors_title">"Begleitprojekte"</string>
     <string name="credits_main_contributors_title">"Hauptmitwirkende"</string>
     <string name="stats_are_syncing">"Deine Statistiken synchronisieren noch. Schau später nochmal vorbei."</string>
+    <string name="user_statistics_country_rank">"Rang in %2$s: %1$d"</string>
+    <string name="user_statistics_country_wiki_link">"Mapping-Portal %s"</string>
+    <string name="user_statistics_filter_by_country">"nach Land"</string>
+    <string name="user_statistics_filter_by_quest_type">"nach Aufgabentyp"</string>
+    <string name="user_profile_global_rank">"Globaler
+Rang"</string>
+    <string name="user_profile_local_rank">"Rang in
+%s"</string>
+    <string name="user_profile_days_active">"Tage
+aktiv"</string>
+    <string name="user_profile_achievement_levels">"Level aller
+Erfolge"</string>
 </resources>
