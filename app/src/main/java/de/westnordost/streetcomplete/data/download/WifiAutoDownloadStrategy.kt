@@ -22,10 +22,10 @@ class WifiAutoDownloadStrategy @Inject constructor(
      * However, Overpass is as limited as always, so the number of quest types we download is
      * limited as before  */
 
-    override val questTypeDownloadCount = 8
+    override val questTypeDownloadCount = 5
     override val minQuestsInActiveRadiusPerKm2 = 12
 
-    // checks if either in 600 or 300m radius, there are enough quests.
-    override val activeRadii = intArrayOf(600, 300)
+    // checks if either in 600 or 200m radius, there are enough quests.
+    override val activeRadii = intArrayOf(600, 200)
     override val downloadRadius = 1200
 }
