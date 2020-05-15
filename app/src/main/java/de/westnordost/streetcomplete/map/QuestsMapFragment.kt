@@ -171,8 +171,6 @@ class QuestsMapFragment : LocationAwareMapFragment() {
 
         controller.updateCameraPosition(zoomTime, DecelerateInterpolator()) {
             position = pos.position
-        }
-        controller.updateCameraPosition(zoomTime, AccelerateDecelerateInterpolator()) {
             zoom = targetZoom
         }
     }
@@ -200,8 +198,6 @@ class QuestsMapFragment : LocationAwareMapFragment() {
 
             controller.updateCameraPosition(zoomTime, AccelerateDecelerateInterpolator()) {
                 position = pos.position
-            }
-            controller.updateCameraPosition(zoomTime, DecelerateInterpolator()) {
                 zoom = pos.zoom
                 tilt = pos.tilt
                 rotation = pos.rotation
