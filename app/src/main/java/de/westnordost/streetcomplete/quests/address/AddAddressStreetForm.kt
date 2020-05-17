@@ -72,16 +72,20 @@ class AddAddressStreetForm : AAddLocalizedNameForm<AddressStreetAnswer>() {
 
         return AddLocalizedNameAdapter(
                 data, activity!!, getPossibleStreetsignLanguages(),
-                abbreviationsByLocale, getRoadNameSuggestions(), addLanguageButton,
+                abbreviationsByLocale, getNameSuggestions(), addLanguageButton,
                 defaultName
         )
     }
 
-    private fun getRoadNameSuggestions(): List<MutableMap<String, String>> {
-        return roadNameSuggestionsDao.getNames(
-                geometryToMajorPoints(elementGeometry),
-                AddAddressStreet.MAX_DIST_FOR_ROAD_NAME_SUGGESTION
-        )
+    private fun getNameSuggestions(): List<MutableMap<String, String>> {
+        return if (isPlaceName) {
+            emptyList<MutableMap<String, String>>()
+        } else {
+            roadNameSuggestionsDao.getNames(
+                    geometryToMajorPoints(elementGeometry),
+                    AddAddressStreet.MAX_DIST_FOR_ROAD_NAME_SUGGESTION
+            )
+        }
     }
 
     private fun geometryToMajorPoints(geometry: ElementGeometry): List<LatLon> {
