@@ -53,7 +53,6 @@ class AddAddressStreetForm : AAddLocalizedNameForm<AddressStreetAnswer>() {
             }
         }
 
-        // TODO, not sure if I should be saving all the names (is there every going to be more than one?)
         favs.add(javaClass.simpleName,
                 names.first().name, max = 1)
 
