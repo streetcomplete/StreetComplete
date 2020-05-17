@@ -118,8 +118,4 @@ class AddAddressStreetForm : AAddLocalizedNameForm<AddressStreetAnswer>() {
         initLocalizedNameAdapter(null)
     }
 
-    companion object {
-        private const val NAMES_DATA = "names_data"
-    }
-
 }
