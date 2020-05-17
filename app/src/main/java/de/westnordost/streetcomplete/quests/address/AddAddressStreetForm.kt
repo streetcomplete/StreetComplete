@@ -71,8 +71,10 @@ class AddAddressStreetForm : AAddLocalizedNameForm<AddressStreetAnswer>() {
             }
         }
 
-        favs.add(javaClass.simpleName,
-                names.first().name, max = 1)
+        if (!isPlaceName) {
+            favs.add(javaClass.simpleName,
+                    names.first().name, max = 1)
+        }
 
         confirmPossibleAbbreviationsIfAny(possibleAbbreviations) {
             if(isPlaceName) {
