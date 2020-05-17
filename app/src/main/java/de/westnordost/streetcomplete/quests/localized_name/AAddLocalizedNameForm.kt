@@ -41,7 +41,7 @@ abstract class AAddLocalizedNameForm<T> : AbstractQuestFormAnswerFragment<T>() {
         initLocalizedNameAdapter(savedInstanceState)
     }
 
-    private fun initLocalizedNameAdapter(savedInstanceState: Bundle?) {
+    protected fun initLocalizedNameAdapter(savedInstanceState: Bundle?) {
         val data: ArrayList<LocalizedName> = if (savedInstanceState != null) {
             serializer.toObject(savedInstanceState.getByteArray(LOCALIZED_NAMES_DATA)!!)
         } else {
@@ -55,6 +55,10 @@ abstract class AAddLocalizedNameForm<T> : AbstractQuestFormAnswerFragment<T>() {
         namesList.adapter = adapter
         namesList.isNestedScrollingEnabled = false
         checkIsFormComplete()
+    }
+
+    protected fun changeDescriptionLabel(label : String) {
+        descriptionLabel.setText(label)
     }
 
     protected open fun setupNameAdapter(data: List<LocalizedName>, addLanguageButton: View) =

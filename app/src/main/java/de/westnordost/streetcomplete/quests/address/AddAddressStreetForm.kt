@@ -24,7 +24,6 @@ import java.util.*
 import javax.inject.Inject
 
 class AddAddressStreetForm : AAddLocalizedNameForm<AddressStreetAnswer>() {
-    private var textField: EditText? = null
     private var isPlaceName = false
     private var defaultName = ""
 
@@ -110,49 +109,9 @@ class AddAddressStreetForm : AAddLocalizedNameForm<AddressStreetAnswer>() {
 
     private fun switchToPlaceNameLayout() {
         isPlaceName = true
-        setLayout(R.layout.quest_streetname_place)
-    }
-
-    private fun setLayout(layoutResourceId: Int) {
-        val view = setContentView(layoutResourceId)
-        val buttonNameSuggestions : View = view.findViewById(R.id.nameSuggestionsButton)
-        textField = view.findViewById(R.id.name)
-
-        //TODO - use actual place names
-        val nameSuggestionsMap = getRoadNameSuggestions()
-        val nameSuggestionsList = mutableListOf<String>()
-        for (NameSuggestion in nameSuggestionsMap) {
-            val name = NameSuggestion[""] ?: continue // just default language names
-            nameSuggestionsList += name
-        }
-
-        buttonNameSuggestions.setOnClickListener { v ->
-            showNameSuggestionsMenu(v, nameSuggestionsList) { selected -> ;
-                textField!!.setText(selected)
-            }
-        }
-        textField!!.addTextChangedListener(TextChangedWatcher { checkIsFormComplete() })
-    }
-
-    /** Show a context menu above the given [view] where the user can select one key from the
-     * [nameSuggestionList]. The value of the selected key will be passed to the
-     * [callback] */
-    private fun showNameSuggestionsMenu(
-            view: View,
-            nameSuggestionList: List<String>,
-            callback: (String) -> Unit
-    ) {
-        val popup = PopupMenu(activity!!, view)
-
-        for ((i, key) in nameSuggestionList.withIndex()) {
-            popup.menu.add(Menu.NONE, i, Menu.NONE, key)
-        }
-
-        popup.setOnMenuItemClickListener { item ->
-            callback(item.title.toString())
-            true
-        }
-        popup.show()
+        changeDescriptionLabel(resources.getString(R.string.quest_address_street_place_name_label))
+        defaultName = ""
+        initLocalizedNameAdapter(null)
     }
 
     companion object {
