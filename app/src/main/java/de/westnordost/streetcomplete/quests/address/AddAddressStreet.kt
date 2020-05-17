@@ -45,10 +45,7 @@ class AddAddressStreet(
             relation["type"="associatedStreet"];
             > -> .inStreetRelation;
 
-            $ROADS_WITH_NAMES -> .named_roads;
-
-            $ADDRESSES_WITHOUT_STREETS
-                (around.named_roads:$MAX_DIST_FOR_ROAD_NAME_SUGGESTION) -> .missing_data;
+            $ADDRESSES_WITHOUT_STREETS -> .missing_data;
 
             (.missing_data; - .inStreetRelation;);""".trimIndent() +
                     getQuestPrintStatement()
