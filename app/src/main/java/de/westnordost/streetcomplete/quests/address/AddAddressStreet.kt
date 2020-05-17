@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.tagfilters.FiltersParser
 import de.westnordost.streetcomplete.data.tagfilters.getQuestPrintStatement
 import de.westnordost.streetcomplete.data.tagfilters.toGlobalOverpassBBox
@@ -19,8 +20,11 @@ class AddAddressStreet(
         private val overpassApi: OverpassMapDataAndGeometryApi,
         private val roadNameSuggestionsDao: RoadNameSuggestionsDao
 ) : OsmElementQuestType<AddressStreetAnswer> {
+
     override val commitMessage = "Add street/place names to address"
     override val icon = R.drawable.ic_quest_housenumber_street
+    // In Japan, housenumbers usually have block numbers, not streets
+    override val enabledInCountries = AllCountriesExcept("JP")
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_address_street_title
 
