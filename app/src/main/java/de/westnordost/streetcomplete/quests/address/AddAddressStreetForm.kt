@@ -12,7 +12,6 @@ import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.quests.LastPickedValuesStore
 import de.westnordost.streetcomplete.quests.localized_name.AAddLocalizedNameForm
 import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.quests.localized_name.AddLocalizedNameAdapter
@@ -23,18 +22,17 @@ import javax.inject.Inject
 
 class AddAddressStreetForm : AAddLocalizedNameForm<AddressStreetAnswer>() {
     private var isPlaceName = false
-    private var defaultName = ""
 
     @Inject internal lateinit var abbreviationsByLocale: AbbreviationsByLocale
     @Inject internal lateinit var roadNameSuggestionsDao: RoadNameSuggestionsDao
 
-    @Inject internal lateinit var favs: LastPickedValuesStore<String>
-
     init {
         Injector.instance.applicationComponent.inject(this)
-        val lastPickedNames = favs.get(javaClass.simpleName)
-        defaultName = if (lastPickedNames.isEmpty()) "" else lastPickedNames.first
     }
+
+    override val otherAnswers = listOf(
+        OtherAnswer(R.string.quest_address_street_no_named_streets) { switchToPlaceNameLayout() }
+    )
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         isPlaceName = savedInstanceState?.getBoolean(IS_PLACENAME) ?: false
@@ -59,10 +57,6 @@ class AddAddressStreetForm : AAddLocalizedNameForm<AddressStreetAnswer>() {
             }
         }
 
-        if (!isPlaceName) {
-            favs.add(javaClass.simpleName, names.first().name, max = 1)
-        }
-
         confirmPossibleAbbreviationsIfAny(possibleAbbreviations) {
             if(isPlaceName) {
                 applyAnswer(PlaceName(names))
@@ -72,16 +66,11 @@ class AddAddressStreetForm : AAddLocalizedNameForm<AddressStreetAnswer>() {
         }
     }
 
-    override val otherAnswers = listOf(
-            OtherAnswer(R.string.quest_address_street_no_named_streets) { switchToPlaceNameLayout() }
-    )
-
     override fun createLocalizedNameAdapter(data: List<LocalizedName>, addLanguageButton: View) =
         AddLocalizedNameAdapter(
             data, activity!!, getPossibleStreetsignLanguages(),
             abbreviationsByLocale, getNameSuggestions(), addLanguageButton,
-            if (isPlaceName) R.layout.quest_localized_name_place_row else R.layout.quest_localizedname_row,
-            defaultName
+            if (isPlaceName) R.layout.quest_localized_name_place_row else R.layout.quest_localizedname_row
         )
 
     private fun getNameSuggestions(): List<MutableMap<String, String>> {
@@ -118,7 +107,6 @@ class AddAddressStreetForm : AAddLocalizedNameForm<AddressStreetAnswer>() {
 
     private fun switchToPlaceNameLayout() {
         isPlaceName = true
-        defaultName = ""
         setLayout(R.layout.quest_localized_name_place)
     }
 
