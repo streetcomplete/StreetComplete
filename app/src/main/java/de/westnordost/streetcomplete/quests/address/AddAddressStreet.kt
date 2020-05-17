@@ -89,9 +89,11 @@ class AddAddressStreet(
                     nwr["addr:streetnumber"][!"addr:street"];
                 );""".trimIndent()
         // this must be the same as above but in tag filter expression syntax
-        private val ADDRESSES_WITHOUT_STREETS_TFE by lazy { FiltersParser().parse(
-                "nodes, ways, relations with addr:housenumber and !addr:street and !addr:place"
-        )}
+        private val ADDRESSES_WITHOUT_STREETS_TFE by lazy { FiltersParser().parse("""
+                nodes, ways, relations with 
+                  addr:housenumber and !addr:street and !addr:place and !addr:block_number
+                  or addr:streetnumber and !addr:street
+        """)}
 
         private val ROADS_WITH_NAMES =
                 "way[highway ~ \"^(${ALL_ROADS.joinToString("|")})$\"][name]"
