@@ -83,8 +83,11 @@ class AddAddressStreet(
         // enough that I don't think it is a concern.
         const val MAX_DIST_FOR_ROAD_NAME_SUGGESTION = 250.0
 
-        private const val ADDRESSES_WITHOUT_STREETS =
-                """nwr["addr:housenumber"][!"addr:street"][!"addr:place"]"""
+        private const val ADDRESSES_WITHOUT_STREETS = """
+                (
+                    nwr["addr:housenumber"][!"addr:street"][!"addr:place"][!"addr:block_number"];
+                    nwr["addr:streetnumber"][!"addr:street"];
+                );""".trimIndent()
         // this must be the same as above but in tag filter expression syntax
         private val ADDRESSES_WITHOUT_STREETS_TFE by lazy { FiltersParser().parse(
                 "nodes, ways, relations with addr:housenumber and !addr:street and !addr:place"
