@@ -837,4 +837,5 @@ Ten en conta que esta aplicación pregunta polo número de enderezo dun edificio
     <string name="credits_art_contributors_title">"Contribucións artísticas"</string>
     <string name="credits_projects_contributors_title">"Proxectos realizados para o StreetComplete"</string>
     <string name="credits_main_contributors_title">"Contribucións principais"</string>
+    <string name="stats_are_syncing">"As túas estatísticas aínda están a sincronizarse. Volve máis tarde."</string>
 </resources>

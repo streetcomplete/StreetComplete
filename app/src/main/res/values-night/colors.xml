@@ -4,7 +4,10 @@
 
     <color name="hint_text">#999</color>
 
+    <color name="inverted_background">#aaa</color>
     <color name="background">#000</color>
     <color name="background_transparent">#0000</color>
+    <color name="text">#fff</color>
 
+    <color name="quest_selection_frame">#bbFF5722</color>
 </resources>

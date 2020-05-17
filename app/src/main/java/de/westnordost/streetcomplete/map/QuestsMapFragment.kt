@@ -58,6 +58,7 @@ class QuestsMapFragment : LocationAwareMapFragment() {
     interface Listener {
         fun onClickedQuest(questGroup: QuestGroup, questId: Long)
         fun onClickedMapAt(position: LatLon, clickAreaSizeInMeters: Double)
+        fun onClickedLocationMarker()
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
@@ -113,7 +114,13 @@ class QuestsMapFragment : LocationAwareMapFragment() {
             if (pickedQuestId != null && pickedQuestGroup != null) {
                 listener?.onClickedQuest(pickedQuestGroup, pickedQuestId)
             } else {
-                onClickedMap(x, y)
+                val pickMarkerResult = controller?.pickMarker(x,y)
+
+                if (pickMarkerResult != null && pickMarkerResult.marker == locationMarker) {
+                    listener?.onClickedLocationMarker()
+                } else {
+                    onClickedMap(x, y)
+                }
             }
         }
         return true
@@ -164,8 +171,6 @@ class QuestsMapFragment : LocationAwareMapFragment() {
 
         controller.updateCameraPosition(zoomTime, DecelerateInterpolator()) {
             position = pos.position
-        }
-        controller.updateCameraPosition(zoomTime, AccelerateDecelerateInterpolator()) {
             zoom = targetZoom
         }
     }
@@ -193,8 +198,6 @@ class QuestsMapFragment : LocationAwareMapFragment() {
 
             controller.updateCameraPosition(zoomTime, AccelerateDecelerateInterpolator()) {
                 position = pos.position
-            }
-            controller.updateCameraPosition(zoomTime, DecelerateInterpolator()) {
                 zoom = pos.zoom
                 tilt = pos.tilt
                 rotation = pos.rotation

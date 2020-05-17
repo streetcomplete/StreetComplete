@@ -33,7 +33,7 @@ class MarkerManager(private val c: MapController) {
             if (tangramMarkerId != null) {
                 val marker = markers.values.find { it.tangramMarker?.markerId == tangramMarkerId }
                 if (marker != null) {
-                    markerPickResult = MarkerPickResult(marker, tangramMarkerPickResult.coordinates)
+                    markerPickResult = MarkerPickResult(marker, tangramMarkerPickResult.coordinates.toLatLon())
                 }
             }
             markerPickContinuations.poll()?.resume(markerPickResult)
@@ -88,7 +88,7 @@ class Marker(val markerId: Long, tangramMarker: com.mapzen.tangram.Marker) {
         set(value) {
             field = value
             if (value != null) {
-                isVisible = value.isVisible
+                value.isVisible = isVisible
                 drawOrder?.let { value.setDrawOrder(it) }
                 stylingFromPath?.let { value.setStylingFromPath(it) }
                 stylingFromString?.let { value.setStylingFromString(it) }
@@ -115,10 +115,17 @@ class Marker(val markerId: Long, tangramMarker: com.mapzen.tangram.Marker) {
         this.tangramMarker = tangramMarker
     }
 
-    var isVisible: Boolean = true
+    var isVisible: Boolean
+        set(value) { _isVisible = value }
+        get() = _isVisible != false
+
+    // this construct is necessary because isVisible is not initialized to its initial value yet
+    // when tangramMarker is set in the constructor. But in the constructor, tangramMarker.isVisible
+    // is set to isVisible.
+    private var _isVisible: Boolean? = null
         set(value) {
             field = value
-            tangramMarker?.isVisible = value
+            tangramMarker?.isVisible = value != false
         }
 
     var userData: Any? = null
@@ -189,5 +196,5 @@ class Marker(val markerId: Long, tangramMarker: com.mapzen.tangram.Marker) {
 
 class MarkerPickResult internal constructor(
     val marker: Marker,
-    val coordinates: LngLat
+    val coordinates: LatLon
 )

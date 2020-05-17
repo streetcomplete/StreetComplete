@@ -22,6 +22,7 @@ import javax.inject.Singleton
     private val avatarsDownloader: OsmAvatarsDownloader,
     private val statisticsUpdater: StatisticsUpdater,
     private val statisticsDao: QuestStatisticsDao,
+    private val countryStatisticsDao: CountryStatisticsDao,
     private val osmConnection: OsmConnection
 ): CoroutineScope by CoroutineScope(Dispatchers.Default) {
     private val loginStatusListeners: MutableList<UserLoginStatusListener> = CopyOnWriteArrayList()
@@ -41,6 +42,7 @@ import javax.inject.Singleton
         oAuthStore.oAuthConsumer = null
         osmConnection.oAuth = null
         statisticsDao.clear()
+        countryStatisticsDao.clear()
         userAchievementsDao.clear()
         userLinksDao.clear()
         userStore.clear()

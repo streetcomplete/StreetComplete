@@ -32,6 +32,7 @@ import de.westnordost.streetcomplete.sound.SoundFx
 import de.westnordost.streetcomplete.util.alongTrackDistanceTo
 import de.westnordost.streetcomplete.util.crossTrackDistanceTo
 import de.westnordost.streetcomplete.util.distanceTo
+import de.westnordost.streetcomplete.view.RoundRectOutlineProvider
 import kotlinx.android.synthetic.main.fragment_split_way.*
 import javax.inject.Inject
 
@@ -94,6 +95,14 @@ class SplitWayFragment
         undoButton.visibility = if (hasChanges) View.VISIBLE else View.INVISIBLE
         okButton.visibility = if (isFormComplete) View.VISIBLE else View.INVISIBLE
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            val cornerRadius = resources.getDimension(R.dimen.speech_bubble_rounded_corner_radius)
+            val margin = resources.getDimensionPixelSize(R.dimen.horizontal_speech_bubble_margin)
+            speechbubbleContentContainer.outlineProvider = RoundRectOutlineProvider(
+                cornerRadius, margin, margin, margin, margin
+            )
+        }
+
         if (savedInstanceState == null) {
             view.findViewById<View>(R.id.speechbubbleContentContainer).startAnimation(
                 AnimationUtils.loadAnimation(context, R.anim.inflate_answer_bubble)
@@ -124,7 +133,6 @@ class SplitWayFragment
         // see rant comment in AbstractBottomSheetFragment
         resources.updateConfiguration(newConfig, resources.displayMetrics)
 
-        bottomSheetContainer.setBackgroundResource(R.drawable.speechbubbles_gradient_background)
         bottomSheetContainer.updateLayoutParams { width = resources.getDimensionPixelSize(R.dimen.quest_form_width) }
     }
 
@@ -169,6 +177,7 @@ class SplitWayFragment
         // show toast only if it is possible to zoom in further
         if (splitWayCandidates.size > 1 && clickAreaSizeInMeters > CLICK_AREA_SIZE_AT_MAX_ZOOM) {
             context?.toast(R.string.quest_split_way_too_imprecise)
+            return true
         }
         val splitWay = splitWayCandidates.minBy { it.pos.distanceTo(position) }!!
         val splitPosition = splitWay.pos

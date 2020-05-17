@@ -31,6 +31,9 @@ class UserActivity : FragmentContainerActivity(R.layout.activity_user),
 
     @Inject internal lateinit var userController: UserController
 
+    private val countryDetailsFragment: CountryInfoFragment?
+        get() = supportFragmentManager.findFragmentById(R.id.countryDetailsFragment) as CountryInfoFragment
+
     private val questTypeDetailsFragment: QuestTypeInfoFragment?
         get() = supportFragmentManager.findFragmentById(R.id.questTypeDetailsFragment) as QuestTypeInfoFragment
 
@@ -56,6 +59,11 @@ class UserActivity : FragmentContainerActivity(R.layout.activity_user),
     }
 
     override fun onBackPressed() {
+        val countryDetailsFragment = countryDetailsFragment
+        if (countryDetailsFragment != null && countryDetailsFragment.isShowing) {
+            countryDetailsFragment.dismiss()
+            return
+        }
         val questTypeDetailsFragment = questTypeDetailsFragment
         if (questTypeDetailsFragment != null && questTypeDetailsFragment.isShowing) {
             questTypeDetailsFragment.dismiss()
@@ -99,6 +107,10 @@ class UserActivity : FragmentContainerActivity(R.layout.activity_user),
 
     override fun onClickedQuestType(questType: QuestType<*>, solvedCount: Int, questBubbleView: View) {
         questTypeDetailsFragment?.show(questType, solvedCount, questBubbleView)
+    }
+
+    override fun onClickedCountryFlag(country: String, solvedCount: Int, rank: Int?, countryBubbleView: View) {
+        countryDetailsFragment?.show(country, solvedCount, rank, countryBubbleView)
     }
 
     /* ------------------------------------------------------------------------------------------ */

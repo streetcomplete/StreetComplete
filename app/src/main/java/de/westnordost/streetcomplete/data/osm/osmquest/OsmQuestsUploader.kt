@@ -39,7 +39,7 @@ class OsmQuestsUploader @Inject constructor(
 
     override fun onUploadSuccessful(quest: OsmQuest) {
         osmQuestController.success(quest)
-        statisticsUpdater.addOne(quest.osmElementQuestType.javaClass.simpleName)
+        statisticsUpdater.addOne(quest.osmElementQuestType.javaClass.simpleName, quest.center)
         Log.d(TAG, "Uploaded osm quest ${quest.toLogString()}")
     }
 

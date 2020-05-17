@@ -2,16 +2,15 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- See https://github.com/material-components/material-components-android/blob/master/docs/theming/Color.md -->
         <item name="colorPrimary">@color/primary</item>
-        <item name="colorPrimaryDark">@color/primary_dark</item>
+        <item name="colorPrimaryVariant">@color/primary_variant</item>
+        <item name="colorSecondary">@color/accent</item>
+        <item name="colorSecondaryVariant">@color/accent_variant</item>
+        <item name="colorOnPrimary">@color/on_primary</item>
+        <item name="colorOnSecondary">@color/on_secondary</item>
         <item name="colorAccent">@color/accent</item>
-        <item name="colorControlActivated">@color/accent</item>
-        <!-- to workaround a bug in Android (AppCompat?), see
-             https://stackoverflow.com/questions/41727729/fatal-exception-java-lang-unsupportedoperationexception-failed-to-resolve-attr -->
-        <item name="android:colorPrimary" tools:targetApi="lollipop">@color/primary</item>
-        <item name="android:colorPrimaryDark" tools:targetApi="lollipop">@color/primary_dark</item>
-        <item name="android:colorAccent" tools:targetApi="lollipop">@color/accent</item>
 
         <item name="alertDialogTheme">@style/Theme.Bubble.Dialog.Alert</item>
         <item name="dialogTheme">@style/Theme.Bubble.Dialog</item>
@@ -26,15 +25,28 @@
         <item name="popupMenuStyle">@style/Theme.Bubble.Popup</item>
     </style>
 
-    <style name="Theme.Bubble.ToolbarPopup"  parent="Theme.AppCompat.DayNight.NoActionBar"/>
+    <style name="Theme.Bubble.ToolbarPopup"  parent="Theme.MaterialComponents.DayNight.NoActionBar"/>
 
     <style name="Theme.Bubble.Popup" parent="Widget.AppCompat.Light.PopupMenu">
         <item name="android:popupBackground">@drawable/speech_bubble_none</item>
         <item name="android:popupAnimationStyle">@style/Animation.Popup.Bubble</item>
     </style>
 
-    <style name="Theme.Bubble.Dialog" parent="Theme.AppCompat.DayNight.Dialog">
+    <style name="Theme.Bubble.Dialog" parent="Theme.MaterialComponents.DayNight.Dialog">
+        <!-- The colors need to be set another time here because this theme does not inherit
+             from AppTheme, but the material components theme. Not sure if there is an easier way -->
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryVariant">@color/primary_variant</item>
+        <item name="colorSecondary">@color/accent</item>
+        <item name="colorSecondaryVariant">@color/accent_variant</item>
+        <item name="colorOnPrimary">@color/on_primary</item>
+        <item name="colorOnSecondary">@color/on_secondary</item>
         <item name="colorAccent">@color/accent</item>
+
+        <item name="buttonBarPositiveButtonStyle">@style/Dialog.Button</item>
+        <item name="buttonBarNegativeButtonStyle">@style/Dialog.Button</item>
+        <item name="buttonBarNeutralButtonStyle">@style/Dialog.Button</item>
+
         <item name="android:windowTitleStyle">@style/DialogWindowTitle.Bubble</item>
         <item name="buttonBarStyle">@style/ButtonBar</item>
         <item name="android:windowBackground">@drawable/speech_bubble_none</item>
@@ -45,7 +57,7 @@
 
     <style name="Theme.Bubble.Dialog.Alert"/>
 
-    <style name="Theme.CustomDialog" parent="Theme.AppCompat.DayNight.Dialog">
+    <style name="Theme.CustomDialog" parent="Theme.MaterialComponents.DayNight.Dialog">
         <item name="android:windowBackground">@color/background_transparent</item>
         <item name="android:windowAnimationStyle">@style/Animation.Dialog.Custom</item>
     </style>

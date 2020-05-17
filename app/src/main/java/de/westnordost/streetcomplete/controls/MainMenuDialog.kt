@@ -2,13 +2,10 @@ package de.westnordost.streetcomplete.controls
 
 import android.content.Context
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import androidx.appcompat.app.AlertDialog
-import androidx.core.view.doOnLayout
 import androidx.core.view.doOnPreDraw
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.ktx.toPx
 import de.westnordost.streetcomplete.settings.AboutActivity
 import de.westnordost.streetcomplete.settings.SettingsActivity
 import de.westnordost.streetcomplete.user.UserActivity

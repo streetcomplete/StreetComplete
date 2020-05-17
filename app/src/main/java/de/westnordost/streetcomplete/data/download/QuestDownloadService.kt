@@ -105,12 +105,12 @@ class QuestDownloadService : SingleIntentService(TAG) {
             isPriorityDownload = intent.hasExtra(ARG_IS_PRIORITY)
             isDownloading = true
             dl.download(tiles, maxQuestTypes, cancelState)
-            isPriorityDownload = false
-            isDownloading = false
         } catch (e: Exception) {
             Log.e(TAG, "Unable to download quests", e)
             progressListenerRelay.onError(e)
         }
+        isPriorityDownload = false
+        isDownloading = false
     }
 
     /** Public interface to classes that are bound to this service  */

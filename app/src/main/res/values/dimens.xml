@@ -24,9 +24,14 @@
 
     <dimen name="quest_form_speech_bubble_top_margin">-27dp</dimen>
 
+    <dimen name="speech_bubble_rounded_corner_radius">10.5dp</dimen>
+    <dimen name="speech_bubble_margin">2.5dp</dimen>
+
+    <dimen name="speech_bubble_elevation">16dp</dimen>
+
     <!-- Tables -->
-    <dimen name="table_icon_size">64dp</dimen>
-    <dimen name="horizontal_speechbubble_margin">4dp</dimen>
+    <dimen name="table_icon_size">32dp</dimen>
+    <dimen name="horizontal_speech_bubble_margin">4dp</dimen>
 
     <!-- button -->
     <dimen name="round_button_radius">96dp</dimen>
@@ -42,6 +47,10 @@
     <dimen name="quest_statistics_quest_type_icon_size">192dp</dimen>
     <dimen name="quest_statistics_quest_type_icon_offset">96dp</dimen>
 
+    <dimen name="quest_statistics_country_icon_width">320dp</dimen>
+    <dimen name="quest_statistics_country_icon_height">220dp</dimen>
+    <dimen name="quest_statistics_country_icon_offset">120dp</dimen>
+
     <dimen name="achievement_icon_size">320dp</dimen>
     <dimen name="achievement_icon_offset">220dp</dimen>
 
@@ -52,6 +61,6 @@
 
     <!-- tutorial screen -->
 
-    <dimen name="textbox_width">320dp</dimen>
+    <dimen name="tutorial_textbox_width">320dp</dimen>
 
 </resources>

@@ -23,6 +23,7 @@ import de.westnordost.streetcomplete.data.visiblequests.QuestVisibilityTable
 import de.westnordost.streetcomplete.data.user.QuestStatisticsTable
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesTable
 import de.westnordost.streetcomplete.data.notifications.NewUserAchievementsTable
+import de.westnordost.streetcomplete.data.user.CountryStatisticsTable
 import de.westnordost.streetcomplete.ktx.hasColumn
 import de.westnordost.streetcomplete.quests.localized_name.data.RoadNamesTable
 import de.westnordost.streetcomplete.quests.oneway.AddOneway
@@ -46,6 +47,7 @@ import de.westnordost.streetcomplete.quests.oneway.data.WayTrafficFlowTable
         db.execSQL(CreateNoteTable.CREATE)
 
         db.execSQL(QuestStatisticsTable.CREATE)
+        db.execSQL(CountryStatisticsTable.CREATE)
         db.execSQL(UserAchievementsTable.CREATE)
         db.execSQL(UserLinksTable.CREATE)
         db.execSQL(NewUserAchievementsTable.CREATE)
@@ -168,9 +170,13 @@ import de.westnordost.streetcomplete.quests.oneway.data.WayTrafficFlowTable
             db.execSQL(UserLinksTable.CREATE)
             db.execSQL(NewUserAchievementsTable.CREATE)
         }
+
+        if (oldVersion < 14 && newVersion >= 14) {
+            db.execSQL(CountryStatisticsTable.CREATE)
+        }
         // for later changes to the DB
         // ...
     }
 }
 
-private const val DB_VERSION = 13
+private const val DB_VERSION = 14

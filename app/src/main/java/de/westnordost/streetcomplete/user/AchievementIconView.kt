@@ -11,7 +11,6 @@ import android.view.ViewOutlineProvider
 import androidx.annotation.RequiresApi
 import androidx.constraintlayout.widget.ConstraintLayout
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.ktx.forEachPair
 import kotlinx.android.synthetic.main.view_achievement_icon.view.*
 
 /** Shows an achievement icon with its frame and level indicator */

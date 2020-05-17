@@ -475,6 +475,7 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_busStopShelter_tram_title">"Má tato tramvajová zastávka střechu?"</string>
     <string name="quest_bench_backrest_title">"Má tato lavička opěrák?"</string>
     <string name="quest_bench_answer_picnic_table">"Je to stůl pro piknik"</string>
+    <string name="quest_religion_for_place_of_worship_title">"Jaké náboženství je tu praktikováno?"</string>
     <string name="quest_religion_christian">"Křesťanství"</string>
     <string name="quest_religion_muslim">"Islám"</string>
     <string name="quest_religion_hindu">"Hinduismus"</string>
@@ -778,6 +779,8 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_tourism_information_terminal">"Elektronický informační kiosek"</string>
     <string name="quest_tourism_information_map">"Tabule s mapou"</string>
     <string name="quest_tourism_information_guidepost">"Rozcestník"</string>
+    <string name="quest_recycling_materials_answer_waste">"Je to pro směsný odpad"</string>
+    <string name="quest_recycling_materials_answer_waste_description">"Takže je tohle kontejner pro jakýkoliv odpad, např. zabalený domácí nebo komerční odpad?"</string>
     <string name="quest_accepts_cash_title">"Přijímá %s platbu v hotovosti?"</string>
     <string name="user_profile">"Můj profil"</string>
     <string name="user_login">"Přihlásit se"</string>
@@ -799,6 +802,7 @@ A nakonec, nezapomeňte na bezpečnost - všímejte si vašeho okolí a nevstupu
     <string name="links_empty">"Zatím nemáte žádné odkazy"</string>
     <string name="quests_empty">"Zatím jste nepublikovali žádné odpovědi na úkoly"</string>
     <string name="unsynced_quests_description">"plus %d zatím nepublikovaných změn."</string>
+    <string name="unsynced_quests_not_logged_in_description">"Máte %d zatím nepublikovaných změn.Musíte se přihlásit, abyste je mohli nahrát."</string>
     <string name="user_quests_title">"Vyřešené úkoly"</string>
     <string name="user_achievements_title">"Úspěchy"</string>
     <string name="user_links_title">"Kolekce odkazů"</string>
@@ -827,7 +831,9 @@ A nakonec, nezapomeňte na bezpečnost - všímejte si vašeho okolí a nevstupu
     <string name="link_ideditor_description">"Jednoduchý OSM editor v prohlížeči optimalizovaný pro počítače nebo velké tablety"</string>
     <string name="link_umap_description">"Rychle vytvořte mapu s vlastními daty a vložte ji na váš web"</string>
     <string name="link_opnvkarte_description">"Mapa s linkami a zastávkami veřejné dopravy"</string>
+    <string name="link_pic4review_description">"Přispějte do OSM jednoduše tak, že se podíváte na obrázky vašeho města"</string>
     <string name="link_wiki_description">"Wiki je váš výchozí bod pro vše týkající se OpenStreetMap"</string>
+    <string name="link_learnosm_description">"Neznáte OpenStreetMap? Toto je průvodce pro začátečníky"</string>
     <string name="link_neis_one_description">"Obrovská kolekce statistik pro OpenStreetMap přispěvatele s informacemi o tom, kde a jak jste přispěli, kdo další je ve vašem okolí plus žebříčky přispěvatelů"</string>
     <string name="link_welcome_mat_description">"Obecné informace o OpenStreetMap a jak pracovat s OSM jako organizace"</string>
     <string name="link_mapillary_description">"Služba a aplikace pro sdílení crowdsourcovaných fotek ulic s výslovným oprávněním pro jejich použití pro přispívání do OSM"</string>
@@ -835,18 +841,33 @@ A nakonec, nezapomeňte na bezpečnost - všímejte si vašeho okolí a nevstupu
     <string name="link_openrouteservice_wheelchair_description">"Postupná navigace pro vozíčkáře"</string>
     <string name="link_nominatim_description">"Geokóder pro OSM data používaný spoustou dalších služeb"</string>
     <string name="link_city_roads_description">"Vyrendrujte si všechny cesty ve městě pro tisk na trička, hrnky atd."</string>
+    <string name="link_myosmatic_description">"Jednoduše si vygenerujte vytisknutelné mapy měst, volitelně i se seznamem ulic"</string>
     <string name="link_brouter_description">"Pravděpodobně nejlepší navigační engine pro cyklisty"</string>
+    <string name="link_show_me_the_way_description">"Podívejte se, jak se dějí úpravy OSM v reálném čase"</string>
     <string name="link_osrm_description">"Nejrychlejší navigační engine"</string>
+    <string name="link_openrouteservice_description">"Navigace pro různá vozidla a pro pěší s možností nastavení preferencí. Můžete zobrazit také isochrony (oblast dosažitelnou za X minut z výchozího místa)."</string>
     <string name="link_osm_haiku_description">"Použít OSM data k vygenerování haiku (forma japonské poezie)"</string>
     <string name="link_openinframap_description">"Mapa zobrazující energetickou, telekomunikační, plynovou a ropnou infrastrukturu"</string>
+    <string name="link_openorienteeringmap_description">"Vytvořte si vytisknutelnou mapu pro orientační sport"</string>
+    <string name="link_openstreetbrowser_description">"Mapa umožňující procházení OpenStreetMap mapy podle kategorií"</string>
     <string name="link_weeklyosm_description">"Novinkový blog s týdenními zprávami o tom, co se děje v OpenStreetMap světě"</string>
+    <string name="link_figuregrounder_description">"Vytvořte obrázek zjednodušeného plánu města nebo okolí"</string>
     <string name="achievement_first_edit_title">"Vyřešili jste první úkol"</string>
+    <string name="achievement_first_edit_description">"Vítejte v  OpenStreetMap komunitě! Na vaší profilové obrazovce naleznete více informací týkajících se všech vámi vyřešených typů úkolů."</string>
     <string name="achievement_surveyor_title">"Topograf"</string>
+    <string name="achievement_surveyor_solved_X">"Vyřešili jste %d úkolů! Pokračujte dál, abyste odemkli další úspěchy, které obsahují odkazy na OSM a další map se týkající aplikace a projekty!"</string>
     <string name="achievement_regular_title">"Pravidelný přispěvatel"</string>
+    <string name="achievement_regular_description">"Pomocí této aplikace jste přispívali do OSM po dobu %d dní! Pravidelní přispěvatelé jsou pro OSM velmi důležití. Děkujeme vám za vaše odhodlání!"</string>
     <string name="achievement_bicyclist_title">"Cyklista"</string>
     <string name="achievement_bicyclist_solved_X">"Vyřešili jste %d úkolů, které pomůžou cyklistům!"</string>
+    <string name="achievement_wheelchair_title">"Mobilnost"</string>
+    <string name="achievement_wheelchair_solved_X">"Vyřešili jste %d úkolů, které zjednoduší vozíčkářům pohyb po městě!"</string>
     <string name="achievement_postman_title">"Pošťák"</string>
+    <string name="achievement_postman_solved_X">"Pomohli jste lokalizovat %d  adres!
+Tato data jsou důležitá nejen pro pošťáky, ale i pro navigační systémy."</string>
     <string name="achievement_building_title">"Výškáč"</string>
+    <string name="achievement_building_solved_X">"Vyřešili jste %d úkolů, které se týkají budov.
+Pamatujte, že tato aplikace se zeptá na popisné číslo budovy až po určení jejího druhu."</string>
     <string name="achievement_blind_title">"Šestý smysl"</string>
     <string name="achievement_blind_solved_X">"Vyřešili jste %d úkolů, které můžou pomoci zrakově postiženým."</string>
     <string name="achievement_pedestrian_title">"Běžec"</string>
@@ -854,6 +875,7 @@ A nakonec, nezapomeňte na bezpečnost - všímejte si vašeho okolí a nevstupu
     <string name="achievement_veg_title">"Milovník zvířat"</string>
     <string name="achievement_veg_solved_X">"Vyřešili jste %d úkolů, které by mohly zajímat lidi na bezmasé dietě!"</string>
     <string name="achievement_car_title">"Cesťák"</string>
+    <string name="achievement_car_solved_X">"Vyřešili jste %d úkolů, které vylepšují informace o infrastruktuře ulic."</string>
     <string name="unread_messages_message">"Máte %d  nepřečtené příchozí zprávy"</string>
     <string name="unread_messages_button">"Otevřít příchozí zprávy"</string>
     <string name="action_about2">"O aplikaci"</string>

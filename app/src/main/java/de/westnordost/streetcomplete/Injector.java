@@ -6,7 +6,6 @@ import de.westnordost.streetcomplete.data.download.DownloadModule;
 import de.westnordost.streetcomplete.data.meta.MetadataModule;
 import de.westnordost.streetcomplete.data.osmnotes.OsmNotesModule;
 import de.westnordost.streetcomplete.data.upload.UploadModule;
-import de.westnordost.streetcomplete.data.upload.UploadModule2;
 import de.westnordost.streetcomplete.data.user.UserModule;
 import de.westnordost.streetcomplete.data.user.achievements.AchievementsModule;
 import de.westnordost.streetcomplete.quests.QuestModule;

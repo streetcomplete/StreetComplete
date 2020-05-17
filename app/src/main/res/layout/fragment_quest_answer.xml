@@ -4,7 +4,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="@dimen/quest_form_width"
     android:layout_height="match_parent"
-    android:background="@drawable/speechbubbles_gradient_background"
     android:id="@+id/bottomSheetContainer"
     >
 
@@ -34,9 +33,10 @@
                 android:background="@drawable/speech_bubble_top"
                 android:orientation="horizontal"
                 android:layoutDirection="locale"
-                android:layout_marginStart="@dimen/horizontal_speechbubble_margin"
-                android:layout_marginEnd="@dimen/horizontal_speechbubble_margin"
-                android:layout_marginBottom="4dp">
+                android:layout_marginStart="@dimen/horizontal_speech_bubble_margin"
+                android:layout_marginEnd="@dimen/horizontal_speech_bubble_margin"
+                android:layout_marginBottom="4dp"
+                android:elevation="@dimen/speech_bubble_elevation">
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -80,13 +80,18 @@
             <androidx.core.widget.NestedScrollView
                 android:id="@+id/scrollView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:elevation="@dimen/speech_bubble_elevation">
 
                 <LinearLayout
                     android:id="@+id/scrollViewChild"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:clipChildren="false"
+                    android:clipToPadding="false">
 
                     <FrameLayout
                         android:id="@+id/speechbubbleContentContainer"
@@ -95,7 +100,8 @@
                         android:background="@drawable/speech_bubble_none"
                         android:layout_marginStart="-2.5dp"
                         android:layout_marginEnd="-2.5dp"
-                        android:layout_marginBottom="4dp">
+                        android:layout_marginBottom="4dp"
+                        android:elevation="@dimen/speech_bubble_elevation">
 
                         <de.westnordost.streetcomplete.view.MaskSpeechbubbleCornersFrameLayout
                             android:layout_width="match_parent"
@@ -149,7 +155,7 @@
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-    <Button
+    <TextView
         android:id="@+id/okButton"
         android:text="@android:string/ok"
         style="@style/RoundAccentButton"

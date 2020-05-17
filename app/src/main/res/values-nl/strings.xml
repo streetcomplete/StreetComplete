@@ -139,8 +139,8 @@ Om de kaart te tonen worden vector tegels van de &lt;a href=\"https://mapzen.com
     <string name="autosync_only_on_wifi">"Alleen met wifi"</string>
     <string name="autosync_off">"Uit"</string>
     <string name="quest_streetSurface_title">"Welke wegbeddeking heeft dit stuk weg?"</string>
-    <string name="quest_surface_value_paved">"Geplaveid (algemeen)"</string>
-    <string name="quest_surface_value_unpaved">"Ongeplaveid (algemeen)"</string>
+    <string name="quest_surface_value_paved">"Verhard (algemeen)"</string>
+    <string name="quest_surface_value_unpaved">"Onverhard (algemeen)"</string>
     <string name="quest_surface_value_ground">"Grond (algemeen)"</string>
     <string name="quest_surface_value_asphalt">"Asfalt"</string>
 
@@ -152,7 +152,7 @@ Om de kaart te tonen worden vector tegels van de &lt;a href=\"https://mapzen.com
     <string name="quest_surface_value_grass">"Gras"</string>
     <string name="quest_surface_value_grass_paver">"Open plavei"</string>
     <string name="quest_surface_value_gravel">"Grind"</string>
-    <string name="quest_surface_value_paving_stones">"Plaveistenen"</string>
+    <string name="quest_surface_value_paving_stones">"Straatstenen"</string>
     <string name="quest_surface_value_pebblestone">"Kiezel"</string>
     <string name="quest_surface_value_sand">"Zand"</string>
     <string name="quest_surface_value_sett">"Kassei"</string>
@@ -900,6 +900,10 @@ Let op dat deze app alleen naar het huisnummer van een gebouw vraagt nadat zijn 
     <string name="map_btn_menu">"Menu"</string>
     <string name="privacy_html_statistics">"&lt;p&gt; De gegevens die in je profiel worden weergegeven, worden samengevoegd uit je openbaar beschikbare bijdragegeschiedenis aan OpenStreetMap en vervolgens gehost op mijn server. &lt;/p&gt;"</string>
     <string name="confirmation_authorize_now_note2">"Je kunt dit ook later op het profielscherm doen"</string>
+
+    <!-- Can i think with Art, contributors about those whom made the illustrations? -->
+    <string name="credits_art_contributors_title">"Grafische bijdragers"</string>
     <string name="credits_projects_contributors_title">"Projecten gemaakt voor StreetComplete"</string>
     <string name="credits_main_contributors_title">"Belangrijkste bijdragers"</string>
+    <string name="stats_are_syncing">"Je statistieken worden nog gesynchroniseerd. Probeer het later opnieuw."</string>
 </resources>

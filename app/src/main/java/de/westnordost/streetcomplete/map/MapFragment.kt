@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.map
 
 import android.app.Activity
 import android.content.res.Configuration
-import android.graphics.Point
 import android.graphics.PointF
 import android.graphics.RectF
 import android.os.Build
@@ -18,7 +17,8 @@ import androidx.core.content.edit
 import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
 import androidx.preference.PreferenceManager
-import com.mapzen.tangram.*
+import com.mapzen.tangram.MapView
+import com.mapzen.tangram.SceneUpdate
 import com.mapzen.tangram.TouchInput.*
 import com.mapzen.tangram.networking.DefaultHttpHandler
 import com.mapzen.tangram.networking.HttpHandler
@@ -32,8 +32,6 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.awaitLayout
 import de.westnordost.streetcomplete.ktx.containsAll
 import de.westnordost.streetcomplete.map.tangram.*
-import de.westnordost.streetcomplete.map.tangram.CameraPosition
-import de.westnordost.streetcomplete.map.tangram.CameraUpdate
 import kotlinx.android.synthetic.main.fragment_map.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -44,7 +42,6 @@ import okhttp3.internal.Version
 import java.io.File
 import java.util.*
 import java.util.concurrent.TimeUnit
-import kotlin.Exception
 
 /** Manages a map that remembers its last location*/
 open class MapFragment : Fragment(),
@@ -69,7 +66,7 @@ open class MapFragment : Fragment(),
         /** Called during camera animation and while the map is being controlled by a user */
         fun onMapIsChanging(position: LatLon, rotation: Float, tilt: Float, zoom: Float)
         /** Called after camera animation or after the map was controlled by a user */
-        fun onMapDidChange(position: LatLon, rotation: Float, tilt: Float, zoom: Float, animated: Boolean)
+        fun onMapDidChange(position: LatLon, rotation: Float, tilt: Float, zoom: Float)
         /** Called when the user begins to pan the map */
         fun onPanBegin()
         /** Called when the user long-presses the map */
@@ -180,18 +177,17 @@ open class MapFragment : Fragment(),
         controller?.setShoveResponder(this)
 
 
-        controller?.setMapChangeListener(object : MapChangeListener {
-            override fun onViewComplete() {}
-            override fun onRegionWillChange(animated: Boolean) {}
-            override fun onRegionIsChanging() {
+        controller?.setMapChangingListener(object : MapChangingListener {
+            override fun onMapWillChange() {}
+            override fun onMapIsChanging() {
                 val camera = cameraPosition ?: return
                 onMapIsChanging(camera.position, camera.rotation, camera.tilt, camera.zoom)
                 listener?.onMapIsChanging(camera.position, camera.rotation, camera.tilt, camera.zoom)
             }
-            override fun onRegionDidChange(animated: Boolean) {
+            override fun onMapDidChange() {
                 val camera = cameraPosition ?: return
-                onMapDidChange(camera.position, camera.rotation, camera.tilt, camera.zoom, animated)
-                listener?.onMapDidChange(camera.position, camera.rotation, camera.tilt, camera.zoom, animated)
+                onMapDidChange(camera.position, camera.rotation, camera.tilt, camera.zoom)
+                listener?.onMapDidChange(camera.position, camera.rotation, camera.tilt, camera.zoom)
             }
         })
     }
@@ -247,7 +243,7 @@ open class MapFragment : Fragment(),
 
     protected open fun onMapIsChanging(position: LatLon, rotation: Float, tilt: Float, zoom: Float) {}
 
-    protected open fun onMapDidChange(position: LatLon, rotation: Float, tilt: Float, zoom: Float, animated: Boolean) {}
+    protected open fun onMapDidChange(position: LatLon, rotation: Float, tilt: Float, zoom: Float) {}
 
     /* ---------------------- Overrideable callbacks for map interaction ------------------------ */
 

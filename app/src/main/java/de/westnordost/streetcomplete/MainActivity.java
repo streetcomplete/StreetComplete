@@ -222,7 +222,9 @@ public class MainActivity extends AppCompatActivity implements
 	public boolean dispatchKeyEvent(KeyEvent event) {
 		final int keyCode = event.getKeyCode();
 		if (keyCode == KeyEvent.KEYCODE_MENU && mainFragment != null) {
-			mainFragment.onClickMainMenu();
+			if (event.getAction() == KeyEvent.ACTION_UP) {
+				mainFragment.onClickMainMenu();
+			}
 			return true;
 		}
 		return super.dispatchKeyEvent(event);
@@ -295,7 +297,7 @@ public class MainActivity extends AppCompatActivity implements
 
 		@Override public void onProgress(boolean success){}
 
-		@AnyThread @Override public void onError(final Exception e)
+		@AnyThread @Override public void onError(@NonNull final Exception e)
 		{
 			runOnUiThread(() ->
 			{
@@ -317,7 +319,7 @@ public class MainActivity extends AppCompatActivity implements
 
 					// Makes links in the alert dialog clickable
 					View messageView = dialog.findViewById(android.R.id.message);
-					if(messageView != null && messageView instanceof TextView)
+					if(messageView instanceof TextView)
 					{
 						TextView messageText = (TextView) messageView;
 						messageText.setMovementMethod(LinkMovementMethod.getInstance());

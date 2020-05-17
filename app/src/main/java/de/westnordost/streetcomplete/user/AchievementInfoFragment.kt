@@ -6,7 +6,6 @@ import android.animation.LayoutTransition.DISAPPEARING
 import android.animation.TimeAnimator
 import android.content.Intent
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
@@ -24,7 +23,6 @@ import de.westnordost.streetcomplete.util.Transforms
 import de.westnordost.streetcomplete.util.animateFrom
 import de.westnordost.streetcomplete.util.animateTo
 import de.westnordost.streetcomplete.util.applyTransforms
-import de.westnordost.streetcomplete.view.CircularOutlineProvider
 import kotlinx.android.synthetic.main.fragment_achievement_info.*
 
 

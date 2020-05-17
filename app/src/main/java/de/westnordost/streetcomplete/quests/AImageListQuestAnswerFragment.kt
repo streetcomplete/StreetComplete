@@ -2,9 +2,9 @@ package de.westnordost.streetcomplete.quests
 
 import android.content.Context
 import android.os.Bundle
-import android.preference.PreferenceManager
 import androidx.recyclerview.widget.GridLayoutManager
 import android.view.View
+import androidx.preference.PreferenceManager
 
 import java.util.ArrayList
 import java.util.LinkedList

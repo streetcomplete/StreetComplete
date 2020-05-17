@@ -2,8 +2,6 @@ package de.westnordost.streetcomplete.controls
 
 import android.content.Context
 import android.graphics.drawable.Drawable
-import android.os.Handler
-import android.os.Looper
 import android.util.AttributeSet
 import android.widget.RelativeLayout
 import de.westnordost.streetcomplete.R

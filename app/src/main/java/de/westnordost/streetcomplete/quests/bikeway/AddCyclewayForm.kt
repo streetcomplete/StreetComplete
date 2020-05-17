@@ -32,7 +32,7 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
 
     private val likelyNoBicycleContraflow = FiltersParser().parse("""
             ways with oneway:bicycle != no and
-            (oneway ~ yes|-1 and highway ~ primary|secondary|tertiary or junction=roundabout)
+            (oneway ~ yes|-1 and highway ~ primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified or junction=roundabout)
         """)
 
     private var streetSideRotater: StreetSideRotater? = null

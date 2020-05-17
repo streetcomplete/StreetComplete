@@ -749,8 +749,8 @@ Zu guter letzt, vergiss nicht dich nicht in Gefahr zu begeben: Achte auf deine U
     <string name="user_links_title">"Link-Sammlung"</string>
     <string name="user_profile_title">"Profil"</string>
     <string name="user_statistics_quest_wiki_link">"Dokumentation"</string>
-    <string name="achievements_unlocked_link">"Freigegebener Link:"</string>
-    <string name="achievements_unlocked_links">"Freigegebene Links:"</string>
+    <string name="achievements_unlocked_link">"Freigeschalteter Link:"</string>
+    <string name="achievements_unlocked_links">"Freigeschaltete Links:"</string>
     <string name="link_category_intro_title">"Einführung"</string>
     <string name="link_category_intro_description">"Erfahre mehr über OSM und seine Gemeinschaft"</string>
     <string name="link_category_editors_title">"Mitwirkende"</string>
@@ -794,29 +794,29 @@ Zu guter letzt, vergiss nicht dich nicht in Gefahr zu begeben: Achte auf deine U
     <string name="link_weeklyosm_description">"Blog mit wöchentlichen Neuigkeiten über alles aus der OpenStreetMap-Welt"</string>
     <string name="link_figuregrounder_description">"Figur-Grund-Diagrammposter einer Stadt oder Umgebung erstellen"</string>
     <string name="achievement_first_edit_title">"Erste Aufgabe gelöst"</string>
-    <string name="achievement_first_edit_description">"Willkomen bei der OpenStreetMap-Gemeinschaft! Im Profilbereich kannst du mehr zu deinen gelösten Aufgaben einsehen."</string>
-    <string name="achievement_surveyor_title">"Gutachter"</string>
-    <string name="achievement_surveyor_solved_X">"Du hast %d der Aufgaben gelöst, weiter so! Es winken weitere Errungenschaften und Links zu OSM und anderen Apps und Projekten!"</string>
+    <string name="achievement_first_edit_description">"Willkomen in der OpenStreetMap-Community! Im Profilbereich kannst du mehr zu deinen gelösten Aufgaben einsehen."</string>
+    <string name="achievement_surveyor_title">"Landvermesser"</string>
+    <string name="achievement_surveyor_solved_X">"Du hast %d Aufgaben gelöst, weiter so! Es winken weitere Erfolge mit Links zu OSM und anderen kartenbezogenen Apps und Projekten!"</string>
     <string name="achievement_regular_title">"Stammgast"</string>
     <string name="achievement_regular_description">"Du hast %d Tage lang mit dieser App zu OSM beigetragen! Stammnutzer sind das Rückgrat von OSM, vielen Dank für dein Engagement! ❤"</string>
     <string name="achievement_bicyclist_title">"Fahrradfahrer"</string>
-    <string name="achievement_bicyclist_solved_X">"Du hast %d der Radfahrer-Aufgaben gelöst!"</string>
+    <string name="achievement_bicyclist_solved_X">"Du hast %d Aufgaben gelöst, die Radfahrern helfen!"</string>
     <string name="achievement_wheelchair_title">"Mobilität"</string>
-    <string name="achievement_wheelchair_solved_X">"Du hast %d der Aufgaben gelöst um Rollstuhlfahrern in der Stadt zu helfen!"</string>
+    <string name="achievement_wheelchair_solved_X">"Du hast %d Aufgaben gelöst, die Rollstuhlfahrern helfen, sich in der Stadt zu zurechtzufinden!"</string>
     <string name="achievement_postman_title">"Postbote"</string>
-    <string name="achievement_postman_solved_X">"Du hast geholfen %d der Adressen einzutragen!
-Diese Daten sind unentbehrlich für Postboten und Navigationssysteme."</string>
-    <string name="achievement_building_title">"Hochhaus"</string>
-    <string name="achievement_building_solved_X">"Du hast %d der Gebäude-relevanten Aufgaben gelöst.
-Beachte, dass diese App nur Hausnummern bereits klassifizierter Gebäude abfragt."</string>
+    <string name="achievement_postman_solved_X">"Du hast geholfen, %d Adressen zu lokalisieren!
+Diese Daten sind unentbehrlich nicht nur für Postboten sondern auch für  Navigationssysteme."</string>
+    <string name="achievement_building_title">"Hoch hinaus"</string>
+    <string name="achievement_building_solved_X">"Du hast %d Gebäude-relevante Aufgaben gelöst.
+Beachte, dass diese App nur Hausnummern von Gebäuden abfrafgt, deren Typ bereits bestimmt wurde."</string>
     <string name="achievement_blind_title">"Sechster Sinn"</string>
-    <string name="achievement_blind_solved_X">"Du hast %d der Aufgaben mit Relevanz für Sehbehinderte gelöst."</string>
+    <string name="achievement_blind_solved_X">"Du hast %d Aufgaben die relevant für Sehbehinderte sind gelöst."</string>
     <string name="achievement_pedestrian_title">"Läufer"</string>
-    <string name="achievement_pedestrian_solved_X">"Du hast %d der Aufgaben mit Relevanz für Fußgänger gelöst."</string>
-    <string name="achievement_veg_title">"Tierliebhaber"</string>
-    <string name="achievement_veg_solved_X">"Du hast %d der Aufgaben mit Relevanz für Vegetarier/Veganer gelöst."</string>
+    <string name="achievement_pedestrian_solved_X">"Du hast %d Aufgaben die relevant für Fußgänger gelöst sind gelöst."</string>
+    <string name="achievement_veg_title">"Tierlieb"</string>
+    <string name="achievement_veg_solved_X">"Du hast %d der Aufgaben die relevant für Vegetarier und Veganer sind gelöst"</string>
     <string name="achievement_car_title">"Autofahrer"</string>
-    <string name="achievement_car_solved_X">"Du hast %d der Aufgaben rund um fehlende Straßeninfrastrukturdaten gelöst!"</string>
+    <string name="achievement_car_solved_X">"Du hast %d Aufgaben gelöst, die Details zu Straßeninfrastrukturdaten hinzufügen!"</string>
     <string name="unread_messages_message">"Du hast %d ungelesene Nachrichten in deinem Posteingang"</string>
     <string name="unread_messages_button">"Posteingang öffnen"</string>
     <string name="action_about2">"Über"</string>
@@ -827,4 +827,16 @@ Beachte, dass diese App nur Hausnummern bereits klassifizierter Gebäude abfragt
     <string name="credits_projects_contributors_title">"Begleitprojekte"</string>
     <string name="credits_main_contributors_title">"Hauptmitwirkende"</string>
     <string name="stats_are_syncing">"Deine Statistiken synchronisieren noch. Schau später nochmal vorbei."</string>
+    <string name="user_statistics_country_rank">"Rang in %2$s: %1$d"</string>
+    <string name="user_statistics_country_wiki_link">"Mapping-Portal %s"</string>
+    <string name="user_statistics_filter_by_country">"nach Land"</string>
+    <string name="user_statistics_filter_by_quest_type">"nach Aufgabentyp"</string>
+    <string name="user_profile_global_rank">"Globaler
+Rang"</string>
+    <string name="user_profile_local_rank">"Rang in
+%s"</string>
+    <string name="user_profile_days_active">"Tage
+aktiv"</string>
+    <string name="user_profile_achievement_levels">"Level aller
+Erfolge"</string>
 </resources>

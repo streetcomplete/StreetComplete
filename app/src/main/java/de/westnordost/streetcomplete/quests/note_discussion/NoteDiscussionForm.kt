@@ -2,35 +2,33 @@ package de.westnordost.streetcomplete.quests.note_discussion
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.os.Build
 import android.os.Bundle
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import android.text.format.DateUtils
+import android.text.format.DateUtils.MINUTE_IN_MILLIS
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
-
-import java.io.File
-import java.util.Date
-
-import javax.inject.Inject
-
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import de.westnordost.osmapi.notes.NoteComment
+import de.westnordost.osmapi.user.User
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
-import de.westnordost.osmapi.notes.NoteComment
-import de.westnordost.streetcomplete.util.BitmapUtil
-import de.westnordost.streetcomplete.util.TextChangedWatcher
-import de.westnordost.streetcomplete.view.ListAdapter
-
-import android.text.format.DateUtils.MINUTE_IN_MILLIS
-import de.westnordost.osmapi.user.User
 import de.westnordost.streetcomplete.data.osmnotes.OsmNotesModule
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestController
+import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
+import de.westnordost.streetcomplete.util.BitmapUtil
+import de.westnordost.streetcomplete.util.TextChangedWatcher
+import de.westnordost.streetcomplete.view.CircularOutlineProvider
+import de.westnordost.streetcomplete.view.ListAdapter
+import de.westnordost.streetcomplete.view.RoundRectOutlineProvider
 import kotlinx.android.synthetic.main.fragment_quest_answer.*
 import kotlinx.android.synthetic.main.quest_buttonpanel_note_discussion.*
 import kotlinx.android.synthetic.main.quest_note_discussion_content.*
+import kotlinx.android.synthetic.main.quest_note_discussion_item.view.*
+import java.io.File
+import java.util.*
+import javax.inject.Inject
 
 class NoteDiscussionForm : AbstractQuestAnswerFragment<NoteAnswer>() {
 
@@ -109,7 +107,7 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment<NoteAnswer>() {
     private inner class NoteCommentListAdapter(list: List<NoteComment>) :
         ListAdapter<NoteComment>(list) {
 
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListAdapter.ViewHolder<NoteComment> {
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder<NoteComment> {
             return NoteCommentViewHolder(
                 layoutInflater.inflate(R.layout.quest_note_discussion_item, parent, false)
             )
@@ -119,35 +117,45 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment<NoteAnswer>() {
     private inner class NoteCommentViewHolder(itemView: View) :
         ListAdapter.ViewHolder<NoteComment>(itemView) {
 
-        private val commentContainer: ViewGroup = itemView.findViewById(R.id.commentView)
-        private val commentAvatar: ImageView = itemView.findViewById(R.id.commentAvatarImage)
-        private val commentText: TextView = itemView.findViewById(R.id.commentText)
-        private val commentInfo: TextView = itemView.findViewById(R.id.commentInfoText)
-        private val commentStatusText: TextView = itemView.findViewById(R.id.commentStatusText)
+        init {
 
-        override fun onBind(with: NoteComment) {
-            val comment = with
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                val cornerRadius = resources.getDimension(R.dimen.speech_bubble_rounded_corner_radius)
+                val margin = resources.getDimensionPixelSize(R.dimen.horizontal_speech_bubble_margin)
+                val marginStart = -resources.getDimensionPixelSize(R.dimen.quest_form_speech_bubble_top_margin)
+                itemView.commentStatusText.outlineProvider = RoundRectOutlineProvider(cornerRadius)
 
+                val isRTL = itemView.resources.configuration.layoutDirection == View.LAYOUT_DIRECTION_RTL
+                val marginLeft = if (isRTL) 0 else marginStart
+                val marginRight = if (isRTL) marginStart else 0
+                itemView.commentBubble.outlineProvider = RoundRectOutlineProvider(
+                    cornerRadius, marginLeft, margin, marginRight, margin
+                )
+                itemView.commentAvatarImageContainer.outlineProvider = CircularOutlineProvider
+            }
+        }
+
+        override fun onBind(comment: NoteComment) {
             val dateDescription = DateUtils.getRelativeTimeSpanString(comment.date.time, Date().time, MINUTE_IN_MILLIS)
             val userName = if (comment.user != null) comment.user.displayName else getString(R.string.quest_noteDiscussion_anonymous)
 
             val commentActionResourceId = comment.action.actionResourceId
             if (commentActionResourceId != 0) {
-                commentStatusText.visibility = View.VISIBLE
-                commentStatusText.text = getString(commentActionResourceId, userName, dateDescription)
+                itemView.commentStatusText.visibility = View.VISIBLE
+                itemView.commentStatusText.text = getString(commentActionResourceId, userName, dateDescription)
             } else {
-                commentStatusText.visibility = View.GONE
+                itemView.commentStatusText.visibility = View.GONE
             }
 
             if (!comment.text.isNullOrEmpty()) {
-                commentContainer.visibility = View.VISIBLE
-                commentText.text = comment.text
-                commentInfo.text = getString(R.string.quest_noteDiscussion_comment2, userName, dateDescription)
+                itemView.commentView.visibility = View.VISIBLE
+                itemView.commentText.text = comment.text
+                itemView.commentInfoText.text = getString(R.string.quest_noteDiscussion_comment2, userName, dateDescription)
 
                 val bitmap = comment.user?.avatar ?: anonAvatar
-                commentAvatar.setImageBitmap(bitmap)
+                itemView.commentAvatarImage.setImageBitmap(bitmap)
             } else {
-                commentContainer.visibility = View.GONE
+                itemView.commentView.visibility = View.GONE
             }
         }
 

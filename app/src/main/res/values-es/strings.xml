@@ -872,4 +872,12 @@ Tenga en cuenta que esta aplicación solicita el número de portal de un edifici
     <string name="credits_projects_contributors_title">"Proyectos realizados para StreetComplete"</string>
     <string name="credits_main_contributors_title">"Principales contribuyentes"</string>
     <string name="stats_are_syncing">"Tus estadísticas aún se están sincronizando. Verifique esta pantalla más tarde."</string>
+    <string name="user_statistics_country_rank">"Ranking en %2$s: %1$d"</string>
+    <string name="user_statistics_country_wiki_link">"Portal de mapeo %s"</string>
+    <string name="user_statistics_filter_by_country">"por país"</string>
+    <string name="user_statistics_filter_by_quest_type">"por tipo de pregunta"</string>
+    <string name="user_profile_global_rank">"Ranking"</string>
+    <string name="user_profile_local_rank">"Ranking en"</string>
+    <string name="user_profile_days_active">"Dias activo"</string>
+    <string name="user_profile_achievement_levels">"Logro niveles"</string>
 </resources>

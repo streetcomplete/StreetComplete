@@ -173,7 +173,7 @@
                 android:visibility="visible">
 
                 <RelativeLayout
-                    android:layout_width="@dimen/textbox_width"
+                    android:layout_width="@dimen/tutorial_textbox_width"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:paddingTop="24dp"
@@ -220,7 +220,7 @@
                 android:visibility="gone">
 
                 <FrameLayout
-                    android:layout_width="@dimen/textbox_width"
+                    android:layout_width="@dimen/tutorial_textbox_width"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:paddingTop="24dp"
@@ -246,7 +246,7 @@
                 android:visibility="gone">
 
                 <RelativeLayout
-                    android:layout_width="@dimen/textbox_width"
+                    android:layout_width="@dimen/tutorial_textbox_width"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:paddingTop="24dp"

@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.map.tangram
 
+import android.animation.TimeAnimator
 import android.content.ContentResolver
 import android.graphics.Bitmap
 import android.graphics.PointF
@@ -49,7 +50,9 @@ class KtMapController(private val c: MapController, contentResolver: ContentReso
     private val featurePickContinuations = ConcurrentLinkedQueue<Continuation<FeaturePickResult?>>()
 
     private val mainHandler = Handler(Looper.getMainLooper())
-    private var mapChangeListener: MapChangeListener? = null
+    private var mapChangingListener: MapChangingListener? = null
+
+    private val flingAnimator: TimeAnimator = TimeAnimator()
 
     init {
         c.setSceneLoadListener { sceneId, sceneError ->
@@ -70,43 +73,51 @@ class KtMapController(private val c: MapController, contentResolver: ContentReso
             featurePickContinuations.poll()?.resume(featurePickResult)
         }
 
+        flingAnimator.setTimeListener { _, _, _ ->
+            mapChangingListener?.onMapIsChanging()
+        }
+
         cameraManager.listener = object : CameraManager.AnimationsListener {
             override fun onAnimationsStarted() {
-                mapChangeListener?.onRegionWillChange(true)
+                mapChangingListener?.onMapWillChange()
             }
 
             override fun onAnimating() {
-                mapChangeListener?.onRegionIsChanging()
+                mapChangingListener?.onMapIsChanging()
             }
 
             override fun onAnimationsEnded() {
-                mapChangeListener?.onRegionDidChange(true)
+                mapChangingListener?.onMapDidChange()
             }
         }
 
         c.setMapChangeListener(object : MapChangeListener {
-            override fun onViewComplete() {
-                mapChangeListener?.onViewComplete()
-            }
+            override fun onViewComplete() { /* not interested*/ }
 
             override fun onRegionWillChange(animated: Boolean) {
                 // workaround for https://github.com/tangrams/tangram-es/issues/2157 : explicitly post on main thread
                 mainHandler.post {
-                    if (!cameraManager.isAnimating) mapChangeListener?.onRegionWillChange(false)
+                    if (!cameraManager.isAnimating) {
+                        mapChangingListener?.onMapWillChange()
+                        if (animated) flingAnimator.start()
+                    }
                 }
             }
 
             override fun onRegionIsChanging() {
                 // workaround for https://github.com/tangrams/tangram-es/issues/2157
                 mainHandler.post {
-                    if (!cameraManager.isAnimating) mapChangeListener?.onRegionIsChanging()
+                    if (!cameraManager.isAnimating) mapChangingListener?.onMapIsChanging()
                 }
             }
 
             override fun onRegionDidChange(animated: Boolean) {
                 // workaround for https://github.com/tangrams/tangram-es/issues/2157
                 mainHandler.post {
-                    if (!cameraManager.isAnimating) mapChangeListener?.onRegionDidChange(false)
+                    if (!cameraManager.isAnimating) {
+                        mapChangingListener?.onMapDidChange()
+                        if (animated) flingAnimator.end()
+                    }
                 }
             }
         })
@@ -282,7 +293,7 @@ class KtMapController(private val c: MapController, contentResolver: ContentReso
         c.pickFeature(posX, posY)
     }
 
-    fun setMapChangeListener(listener: MapChangeListener?) { mapChangeListener = listener }
+    fun setMapChangingListener(listener: MapChangingListener?) { mapChangingListener = listener }
 
     /* -------------------------------------- Touch input --------------------------------------- */
 
@@ -346,4 +357,10 @@ suspend fun MapView.initMap(
             })
         }, glViewHolderFactory, httpHandler)
     }
+
+interface MapChangingListener {
+    fun onMapWillChange()
+    fun onMapIsChanging()
+    fun onMapDidChange()
+}
 

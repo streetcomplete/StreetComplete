@@ -1,29 +1,40 @@
 package de.westnordost.streetcomplete.data.user
 
 import android.util.Log
+import de.westnordost.countryboundaries.CountryBoundaries
+import de.westnordost.countryboundaries.getIds
+import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.data.user.achievements.AchievementGiver
 import java.util.*
+import java.util.concurrent.FutureTask
 import javax.inject.Inject
 import javax.inject.Named
 
 /** Manages the updating of statistics, locally and pulling a complete update from backend  */
 class StatisticsUpdater @Inject constructor(
     private val questStatisticsDao: QuestStatisticsDao,
+    private val countryStatisticsDao: CountryStatisticsDao,
     private val achievementGiver: AchievementGiver,
     private val userStore: UserStore,
     private val statisticsDownloader: StatisticsDownloader,
+    private val countryBoundaries: FutureTask<CountryBoundaries>,
     @Named("QuestAliases") private val questAliases: List<Pair<String, String>>
 ){
-    fun addOne(questType: String) {
+    fun addOne(questType: String, position: LatLon) {
         updateDaysActive()
 
         questStatisticsDao.addOne(questType)
+        val countryCode = countryBoundaries.get().getIds(position).firstOrNull()
+        countryCode?.let { countryStatisticsDao.addOne(it) }
+
         achievementGiver.updateQuestTypeAchievements(questType)
     }
 
-    fun subtractOne(questType: String) {
+    fun subtractOne(questType: String, position: LatLon) {
         updateDaysActive()
         questStatisticsDao.subtractOne(questType)
+        val countryCode = countryBoundaries.get().getIds(position).firstOrNull()
+        countryCode?.let { countryStatisticsDao.subtractOne(it) }
     }
 
     private fun updateDaysActive() {
@@ -55,9 +66,11 @@ class StatisticsUpdater @Inject constructor(
                 return
             }
 
-            val newStatistics = statistics.questTypes.toMutableMap()
-            mergeQuestAliases(newStatistics)
-            questStatisticsDao.replaceAll(newStatistics)
+            val newQuestTypeStatistics = statistics.questTypes.toMutableMap()
+            mergeQuestAliases(newQuestTypeStatistics)
+            questStatisticsDao.replaceAll(newQuestTypeStatistics)
+            countryStatisticsDao.replaceAll(statistics.countries)
+            userStore.rank = statistics.rank
             userStore.daysActive = statistics.daysActive
             userStore.lastStatisticsUpdate = statistics.lastUpdate
             // when syncing statistics from server, any granted achievements should be

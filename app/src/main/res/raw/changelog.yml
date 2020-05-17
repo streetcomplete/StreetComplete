@@ -1,3 +1,46 @@
+v20.0-beta1: |
+  <h3>📈 New Statistics</h3>
+  <ul>
+    <li>🌍 See your solved quests grouped by country</li>
+    <li>See how you rank amongst other StreetComplete users</li>
+    <li>See how many days you contributed and the sum of your achievement levels</li>
+    <li>Access the mapping portal for each country you contributed to, with useful infos about local mapping efforts and for connecting with the local community</li>
+  </ul>
+  <h3>Enhancements</h3>
+  <ul>
+    <li>A pointer pin at the edge of the screen replaces the GPS button and points to your current location</li>
+    <li>📱 The app is now optimized to look great on tablets and phablets as well! (#1794)</li>
+    <li>Text in note discussions is now selectable</li>
+    <li>Add proper shadows for all the speech bubble forms</li>
+  </ul>
+  <h3>Fixes</h3>
+  <ul>
+    <li>on pressing the hardware menu button, don't open the menu twice (#1806)</li>
+    <li>bubbles in the statistics view shouldn't grow too large anymore (#1818)</li>
+    <li>Previous quest selection was still displayed when creating a note (#1820)</li>
+    <li>On splitting a way, require the user to zoom in far enough to use the scissors</li>
+    <li>Fix link collection sometimes appearing empty</li>
+    <li>Fix close-button was not shown when bottom sheet was pulled up completely</li>
+    <li>More minor / technical fixes</li>
+  </ul>
+
+v19.2: |
+  <p>Maybe the announced end of new (big) features for StreetComplete is not over yet! I applied to two microgrants at the OpenStreetMap Foundation, you can endorse them if you like these ideas:</p>
+  <ol>
+    <li><a href="https://wiki.openstreetmap.org/wiki/Microgrants/Microgrants_2020/Proposal/StreetComplete_as_an_entry_point_to_OpenStreetMap">StreetComplete as an entry point to OpenStreetMap</a></li>
+    <li><a href="https://wiki.openstreetmap.org/wiki/Microgrants/Microgrants_2020/Proposal/Map_Maintenance_with_StreetComplete">Map maintenance with StreetComplete</a></li>
+  </ol>
+  <h3>Fixes</h3>
+  <ul>
+    <li>updated translations</li>
+    <li>don't show map context menu while bottom sheet is open (#1820)</li>
+    <li>cycleway type quest: for oneway roads, always only ask for the traffic flow direction side of the road (#1822, thanks @peternewman)</li>
+    <li>fix problem where the quest type bubbles in the statistics view would not have enough space (#1818)</li>
+    <li>when turning off GPS, also do not show the compass direction (#1823)</li>
+    <li>fix download icon would get stuck if the app was disconnected during download (#1821)</li>
+    <li>fix crash when app was disconnected directly after login</li>
+  </ul>
+
 v19.1: |
   <ul>
     <li>add some achievement graphics by Sanja Dimitrijevic (<a href='https://www.artstation.com/modesty031'>modesty031</a>)</li>

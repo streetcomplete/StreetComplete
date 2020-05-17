@@ -43,7 +43,7 @@
             android:background="@drawable/speech_bubble_none"/>
 
         <ImageView
-            android:id="@+id/questIconView"
+            android:id="@+id/titleView"
             android:layout_width="@dimen/quest_statistics_quest_type_icon_size"
             android:layout_height="@dimen/quest_statistics_quest_type_icon_size"
             android:layout_marginTop="8dp"
@@ -54,7 +54,6 @@
             app:layout_constraintVertical_chainStyle="packed"
             android:src="@drawable/ic_quest_max_height"
             android:scaleType="fitCenter"
-            android:textAlignment="center"
             android:elevation="24dp"/>
 
         <LinearLayout
@@ -62,12 +61,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:divider="@drawable/space_16dp"
+            android:showDividers="beginning|middle|end"
             android:layout_marginStart="@dimen/dialog_horizontal_margin"
             android:layout_marginEnd="@dimen/dialog_horizontal_margin"
-            android:gravity="center_horizontal"
-            android:divider="@drawable/space_8dp"
-            android:showDividers="beginning|middle|end"
-            app:layout_constraintTop_toBottomOf="@id/questIconView">
+            app:layout_constraintTop_toBottomOf="@id/titleView">
 
             <TextView
                 android:id="@+id/questTitleText"
@@ -111,10 +110,10 @@
                 android:id="@+id/wikiLinkButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableStart="@drawable/ic_open_in_browser_24dp"
+                android:drawableLeft="@drawable/ic_open_in_browser_primary_24dp"
                 android:drawablePadding="8dp"
                 android:text="@string/user_statistics_quest_wiki_link"
-                android:textColor="@color/accent" />
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
 
         </LinearLayout>
 

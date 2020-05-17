@@ -60,8 +60,6 @@
     <string name="notification_downloading">"Iščem naloge..."</string>
     <string name="no_location_permission_warning">"Za iskanje nalog v vaši bližini potrebujem podatek o lokaciji."</string>
     <string name="about_title_authors">"Zasluge"</string>
-
-    <!-- Fuzzy -->
     <string name="about_summary_authors">"© 2016–2020 Tobias Zwick s sodelavci"</string>
     <string name="about_title_repository">"Izvorna koda"</string>
     <string name="about_summary_repository">"na GitHub-u"</string>
@@ -473,6 +471,8 @@ Na primer 1,3 ali 2-6."</string>
     <string name="quest_building_underground_name_title">"Ali je %s v celoti pod zemljo?"</string>
     <string name="quest_building_underground_title">"Ali je ta zgradba v celoti pod zemljo?"</string>
     <string name="quest_traffic_signals_sound_title">"Ali so tu zvočni signali za slepe?"</string>
+    <string name="pref_title_quests_restore_hidden">"Ponastavi skrivanje nalog"</string>
+    <string name="restore_hidden_success">"Ponastavljenih %d skritih nalog"</string>
     <string name="quest_sidewalk_value_yes">"pločnik"</string>
     <string name="quest_sidewalk_value_no">"brez pločnika"</string>
     <string name="quest_buildingType_title">"Kakšne vrste zgradba je to?"</string>
@@ -492,4 +492,15 @@ Na primer 1,3 ali 2-6."</string>
     <string name="quest_leaf_type_mixed">"Mešani gozd"</string>
     <string name="quest_maxweight_answer_noSign">"Ni znaka"</string>
     <string name="quest_maxweight_answer_other_sign">"Znak izgleda drugače…"</string>
+    <string name="about_summary_current_version">"Trenutna verzija: %s"</string>
+    <string name="about_title_changelog">"Zgodovina verzij"</string>
+    <string name="about_title_rate">"Oceni aplikacijo"</string>
+    <string name="about_summary_rate">"v trgovini Google Play"</string>
+    <string name="about_title_donate">"Donacija"</string>
+    <string name="about_summary_donate">"Pokažite svojo hvaležnost! ❤️"</string>
+    <string name="about_description_donate">"Hvala, ker želite podpreti to aplikacijo! Za ogled trenutnih donacij in vaš prispevek izberite ustrezno platformo:"</string>
+    <string name="user_profile">"Moj profil"</string>
+    <string name="osm_profile">"OSM profil"</string>
+    <string name="user_profile_title">"Profil"</string>
+    <string name="action_about2">"O aplikaciji"</string>
 </resources>
