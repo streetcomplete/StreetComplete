@@ -32,7 +32,7 @@ class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
         Injector.instance.applicationComponent.inject(this)
     }
 
-    override fun setupNameAdapter(data: List<LocalizedName>, addLanguageButton: View): AddLocalizedNameAdapter {
+    override fun createLocalizedNameAdapter(data: List<LocalizedName>, addLanguageButton: View): AddLocalizedNameAdapter {
         return AddLocalizedNameAdapter(
             data, activity!!, getPossibleStreetsignLanguages(),
             abbreviationsByLocale, getRoadNameSuggestions(), addLanguageButton

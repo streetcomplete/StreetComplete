@@ -31,6 +31,7 @@ class AddLocalizedNameAdapter(
     private val abbreviationsByLocale: AbbreviationsByLocale?,
     private val localizedNameSuggestions: List<MutableMap<String, String>>?,
     private val addLanguageButton: View,
+    private val layoutResId: Int = R.layout.quest_localizedname_row,
     private val defaultName: String = ""
 ) : RecyclerView.Adapter<AddLocalizedNameAdapter.ViewHolder>() {
 
@@ -83,7 +84,7 @@ class AddLocalizedNameAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        return ViewHolder(inflater.inflate(R.layout.quest_localizedname_row, parent, false))
+        return ViewHolder(inflater.inflate(layoutResId, parent, false))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

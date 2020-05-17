@@ -2,12 +2,8 @@ package de.westnordost.streetcomplete.quests.address
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
-import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.widget.PopupMenu
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
@@ -22,7 +18,6 @@ import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.quests.localized_name.AddLocalizedNameAdapter
 import de.westnordost.streetcomplete.quests.localized_name.LocalizedName
 import de.westnordost.streetcomplete.quests.localized_name.data.RoadNameSuggestionsDao
-import de.westnordost.streetcomplete.util.TextChangedWatcher
 import java.util.*
 import javax.inject.Inject
 
@@ -38,18 +33,13 @@ class AddAddressStreetForm : AAddLocalizedNameForm<AddressStreetAnswer>() {
     init {
         Injector.instance.applicationComponent.inject(this)
         val lastPickedNames = favs.get(javaClass.simpleName)
-        defaultName = if (lastPickedNames.isEmpty()) {""} else {lastPickedNames.first}
+        defaultName = if (lastPickedNames.isEmpty()) "" else lastPickedNames.first
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = super.onCreateView(inflater, container, savedInstanceState)
-
         isPlaceName = savedInstanceState?.getBoolean(IS_PLACENAME) ?: false
-        if (isPlaceName) {
-            switchToPlaceNameLayout()
-        }
-
-        return view
+        contentLayoutResId = if (isPlaceName) R.layout.quest_localized_name_place else R.layout.quest_localizedname
+        return super.onCreateView(inflater, container, savedInstanceState)
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -86,14 +76,13 @@ class AddAddressStreetForm : AAddLocalizedNameForm<AddressStreetAnswer>() {
             OtherAnswer(R.string.quest_address_street_no_named_streets) { switchToPlaceNameLayout() }
     )
 
-    override fun setupNameAdapter(data: List<LocalizedName>, addLanguageButton: View): AddLocalizedNameAdapter {
-
-        return AddLocalizedNameAdapter(
-                data, activity!!, getPossibleStreetsignLanguages(),
-                abbreviationsByLocale, getNameSuggestions(), addLanguageButton,
-                defaultName
+    override fun createLocalizedNameAdapter(data: List<LocalizedName>, addLanguageButton: View) =
+        AddLocalizedNameAdapter(
+            data, activity!!, getPossibleStreetsignLanguages(),
+            abbreviationsByLocale, getNameSuggestions(), addLanguageButton,
+            if (isPlaceName) R.layout.quest_localized_name_place_row else R.layout.quest_localizedname_row,
+            defaultName
         )
-    }
 
     private fun getNameSuggestions(): List<MutableMap<String, String>> {
         return if (isPlaceName) {
@@ -129,10 +118,8 @@ class AddAddressStreetForm : AAddLocalizedNameForm<AddressStreetAnswer>() {
 
     private fun switchToPlaceNameLayout() {
         isPlaceName = true
-        changeLayout(resources.getString(R.string.quest_address_street_place_name_label),
-            R.drawable.background_placename)
         defaultName = ""
-        initLocalizedNameAdapter(null)
+        setLayout(R.layout.quest_localized_name_place)
     }
 
     companion object {
