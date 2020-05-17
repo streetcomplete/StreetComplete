@@ -134,7 +134,8 @@ class AddAddressStreetForm : AAddLocalizedNameForm<AddressStreetAnswer>() {
 
     private fun switchToPlaceNameLayout() {
         isPlaceName = true
-        changeDescriptionLabel(resources.getString(R.string.quest_address_street_place_name_label))
+        changeLayout(resources.getString(R.string.quest_address_street_place_name_label),
+            R.drawable.background_placename)
         defaultName = ""
         initLocalizedNameAdapter(null)
     }

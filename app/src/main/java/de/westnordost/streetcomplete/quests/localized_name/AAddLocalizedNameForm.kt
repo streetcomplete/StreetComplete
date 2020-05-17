@@ -57,8 +57,9 @@ abstract class AAddLocalizedNameForm<T> : AbstractQuestFormAnswerFragment<T>() {
         checkIsFormComplete()
     }
 
-    protected fun changeDescriptionLabel(label : String) {
+    protected fun changeLayout(label : String, background_resource : Int) {
         descriptionLabel.setText(label)
+        namesList.setBackgroundResource(background_resource)
     }
 
     protected open fun setupNameAdapter(data: List<LocalizedName>, addLanguageButton: View) =
