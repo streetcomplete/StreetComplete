@@ -28,6 +28,19 @@ class AddAddressStreetForm : AAddLocalizedNameForm<AddressStreetAnswer>() {
     private var isPlaceName = false
     private var defaultName = ""
 
+    @Inject
+    internal lateinit var abbreviationsByLocale: AbbreviationsByLocale
+    @Inject
+    internal lateinit var roadNameSuggestionsDao: RoadNameSuggestionsDao
+
+    @Inject internal lateinit var favs: LastPickedValuesStore<String>
+
+    init {
+        Injector.instance.applicationComponent.inject(this)
+        val lastPickedNames = favs.get(javaClass.simpleName)
+        defaultName = if (lastPickedNames.isEmpty()) {""} else {lastPickedNames.first}
+    }
+
     override fun onClickOk(names: List<LocalizedName>) {
         val possibleAbbreviations = LinkedList<String>()
         for ((languageCode, name) in adapter.localizedNames) {
@@ -56,19 +69,6 @@ class AddAddressStreetForm : AAddLocalizedNameForm<AddressStreetAnswer>() {
     override val otherAnswers = listOf(
             OtherAnswer(R.string.quest_address_street_no_named_streets) { switchToPlaceName() }
     )
-
-    @Inject
-    internal lateinit var abbreviationsByLocale: AbbreviationsByLocale
-    @Inject
-    internal lateinit var roadNameSuggestionsDao: RoadNameSuggestionsDao
-
-    @Inject internal lateinit var favs: LastPickedValuesStore<String>
-
-    init {
-        Injector.instance.applicationComponent.inject(this)
-        val lastPickedNames = favs.get(javaClass.simpleName)
-        defaultName = if (lastPickedNames.isEmpty()) {""} else {lastPickedNames.first}
-    }
 
     override fun setupNameAdapter(data: List<LocalizedName>, addLanguageButton: View): AddLocalizedNameAdapter {
 
