@@ -143,10 +143,6 @@ class AddAddressStreetForm : AAddLocalizedNameForm<AddressStreetAnswer>() {
         textField!!.addTextChangedListener(TextChangedWatcher { checkIsFormComplete() })
     }
 
-    companion object {
-        private const val NAMES_DATA = "names_data"
-    }
-
     /** Show a context menu above the given [view] where the user can select one key from the
      * [nameSuggestionList]. The value of the selected key will be passed to the
      * [callback] */
@@ -166,6 +162,10 @@ class AddAddressStreetForm : AAddLocalizedNameForm<AddressStreetAnswer>() {
             true
         }
         popup.show()
+    }
+
+    companion object {
+        private const val NAMES_DATA = "names_data"
     }
 
 }
