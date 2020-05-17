@@ -50,7 +50,7 @@ class AddAddressStreet(
             $ADDRESSES_WITHOUT_STREETS
                 (around.named_roads:$MAX_DIST_FOR_ROAD_NAME_SUGGESTION) -> .missing_data;
 
-            (.missing_data; - .inStreetRelation;);""" +
+            (.missing_data; - .inStreetRelation;);""".trimIndent() +
                     getQuestPrintStatement()
 
     /** return overpass query string to get roads with names around addresses without streets
