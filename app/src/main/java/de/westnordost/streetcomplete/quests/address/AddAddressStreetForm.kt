@@ -100,10 +100,6 @@ class AddAddressStreetForm : AAddLocalizedNameForm<AddressStreetAnswer>() {
         }
     }
 
-    override fun isRejectingClose() : Boolean {
-        // if the form is complete, we will reject close, unless it is still has only the default name
-        return isFormComplete() && !(adapter.localizedNames.size == 1 && adapter.localizedNames.first().name == defaultName)
-    }
 
     private fun switchToPlaceNameLayout() {
         isPlaceName = true
