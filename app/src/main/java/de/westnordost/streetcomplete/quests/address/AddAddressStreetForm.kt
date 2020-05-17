@@ -30,10 +30,8 @@ class AddAddressStreetForm : AAddLocalizedNameForm<AddressStreetAnswer>() {
     private var isPlaceName = false
     private var defaultName = ""
 
-    @Inject
-    internal lateinit var abbreviationsByLocale: AbbreviationsByLocale
-    @Inject
-    internal lateinit var roadNameSuggestionsDao: RoadNameSuggestionsDao
+    @Inject internal lateinit var abbreviationsByLocale: AbbreviationsByLocale
+    @Inject internal lateinit var roadNameSuggestionsDao: RoadNameSuggestionsDao
 
     @Inject internal lateinit var favs: LastPickedValuesStore<String>
 
@@ -72,8 +70,7 @@ class AddAddressStreetForm : AAddLocalizedNameForm<AddressStreetAnswer>() {
         }
 
         if (!isPlaceName) {
-            favs.add(javaClass.simpleName,
-                    names.first().name, max = 1)
+            favs.add(javaClass.simpleName, names.first().name, max = 1)
         }
 
         confirmPossibleAbbreviationsIfAny(possibleAbbreviations) {
@@ -100,11 +97,11 @@ class AddAddressStreetForm : AAddLocalizedNameForm<AddressStreetAnswer>() {
 
     private fun getNameSuggestions(): List<MutableMap<String, String>> {
         return if (isPlaceName) {
-            emptyList<MutableMap<String, String>>()
+            emptyList()
         } else {
             roadNameSuggestionsDao.getNames(
-                    geometryToMajorPoints(elementGeometry),
-                    AddAddressStreet.MAX_DIST_FOR_ROAD_NAME_SUGGESTION
+                geometryToMajorPoints(elementGeometry),
+                AddAddressStreet.MAX_DIST_FOR_ROAD_NAME_SUGGESTION
             )
         }
     }
@@ -123,8 +120,6 @@ class AddAddressStreetForm : AAddLocalizedNameForm<AddressStreetAnswer>() {
                 listOf(geometry.center)
             }
         }
-
-
     }
 
     override fun isRejectingClose() : Boolean {
