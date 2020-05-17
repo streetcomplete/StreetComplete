@@ -84,7 +84,7 @@ class AddAddressStreet(
                 (
                     nwr["addr:housenumber"][!"addr:street"][!"addr:place"][!"addr:block_number"];
                     nwr["addr:streetnumber"][!"addr:street"];
-                );""".trimIndent()
+                )""".trimIndent()
         // this must be the same as above but in tag filter expression syntax
         private val ADDRESSES_WITHOUT_STREETS_TFE by lazy { FiltersParser().parse("""
                 nodes, ways, relations with 
