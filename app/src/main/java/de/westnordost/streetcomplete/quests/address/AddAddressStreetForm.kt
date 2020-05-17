@@ -1,7 +1,10 @@
 package de.westnordost.streetcomplete.quests.address
 
+import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.Menu
 import android.view.View
+import android.view.ViewGroup
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.PopupMenu
@@ -38,6 +41,22 @@ class AddAddressStreetForm : AAddLocalizedNameForm<AddressStreetAnswer>() {
         Injector.instance.applicationComponent.inject(this)
         val lastPickedNames = favs.get(javaClass.simpleName)
         defaultName = if (lastPickedNames.isEmpty()) {""} else {lastPickedNames.first}
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val view = super.onCreateView(inflater, container, savedInstanceState)
+
+        isPlaceName = savedInstanceState?.getBoolean(IS_PLACENAME) ?: false
+        if (isPlaceName) {
+            switchToPlaceNameLayout()
+        }
+
+        return view
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putBoolean(IS_PLACENAME, isPlaceName)
     }
 
     override fun onClickOk(names: List<LocalizedName>) {
@@ -118,4 +137,7 @@ class AddAddressStreetForm : AAddLocalizedNameForm<AddressStreetAnswer>() {
         initLocalizedNameAdapter(null)
     }
 
+    companion object {
+        private const val IS_PLACENAME = "is_placename"
+    }
 }
