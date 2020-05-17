@@ -46,7 +46,7 @@ class AddAddressStreet(
 
     private fun getOverpassQuery(bbox: BoundingBox) =
             bbox.toGlobalOverpassBBox() + """
-            relation["type"="associatedStreet"]; >; -> .inStreetRelation;
+            relation["type"="associatedStreet"]; > -> .inStreetRelation;
             $ADDRESSES_WITHOUT_STREETS -> .missing_data;
             (.missing_data; - .inStreetRelation;);
             """.trimIndent() + getQuestPrintStatement()
