@@ -66,7 +66,7 @@ class AddAddressStreetForm : AAddLocalizedNameForm<AddressStreetAnswer>() {
     }
 
     override val otherAnswers = listOf(
-            OtherAnswer(R.string.quest_address_street_no_named_streets) { switchToPlaceName() }
+            OtherAnswer(R.string.quest_address_street_no_named_streets) { switchToPlaceNameLayout() }
     )
 
     override fun setupNameAdapter(data: List<LocalizedName>, addLanguageButton: View): AddLocalizedNameAdapter {
@@ -106,14 +106,6 @@ class AddAddressStreetForm : AAddLocalizedNameForm<AddressStreetAnswer>() {
     override fun isRejectingClose() : Boolean {
         // if the form is complete, we will reject close, unless it is still has only the default name
         return isFormComplete() && !(adapter.localizedNames.size == 1 && adapter.localizedNames.first().name == defaultName
-    }
-
-    private fun switchToPlaceName() {
-        AlertDialog.Builder(activity!!)
-                .setTitle(R.string.quest_address_street_noStreet_confirmation_title)
-                .setPositiveButton(R.string.quest_address_street_noStreet_confirmation_positive) {_, _ -> switchToPlaceNameLayout() } //
-                .setNegativeButton(R.string.quest_generic_confirmation_no, null)
-                .show()
     }
 
     private fun switchToPlaceNameLayout() {
