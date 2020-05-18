@@ -7,6 +7,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import android.text.Html
 import android.view.View
+import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
 import java.util.ArrayList
@@ -20,15 +21,16 @@ import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.util.AdapterDataChangedWatcher
 import de.westnordost.streetcomplete.util.Serializer
 import de.westnordost.streetcomplete.ktx.toObject
-import kotlinx.android.synthetic.main.quest_localizedname.*
 
 abstract class AAddLocalizedNameForm<T> : AbstractQuestFormAnswerFragment<T>() {
 
-    override val contentLayoutResId = R.layout.quest_localizedname
+    override var contentLayoutResId: Int = R.layout.quest_localizedname
 
     private val serializer: Serializer
 
     protected lateinit var adapter: AddLocalizedNameAdapter
+    private lateinit var namesList: RecyclerView
+    private lateinit var addLanguageButton: View
 
     init {
         val fields = InjectedFields()
@@ -38,26 +40,34 @@ abstract class AAddLocalizedNameForm<T> : AbstractQuestFormAnswerFragment<T>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initLocalizedNameAdapter(savedInstanceState)
-    }
 
-    private fun initLocalizedNameAdapter(savedInstanceState: Bundle?) {
-        val data: ArrayList<LocalizedName> = if (savedInstanceState != null) {
+        val data: ArrayList<LocalizedName>? = if (savedInstanceState != null) {
             serializer.toObject(savedInstanceState.getByteArray(LOCALIZED_NAMES_DATA)!!)
         } else {
-            ArrayList()
+            null
         }
 
-        adapter = setupNameAdapter(data, addLanguageButton)
+        initLocalizedNameAdapter(view as ViewGroup, data)
+    }
+
+    protected fun setLayout(resId: Int) {
+        val view = setContentView(resId)
+        initLocalizedNameAdapter(view as ViewGroup)
+    }
+
+    private fun initLocalizedNameAdapter(view: ViewGroup, data: MutableList<LocalizedName>? = null) {
+        addLanguageButton = view.findViewById(R.id.addLanguageButton)
+        adapter = createLocalizedNameAdapter(data.orEmpty(), addLanguageButton)
         adapter.addOnNameChangedListener { checkIsFormComplete() }
         adapter.registerAdapterDataObserver(AdapterDataChangedWatcher { checkIsFormComplete() })
+        namesList = view.findViewById(R.id.namesList)
         namesList.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
         namesList.adapter = adapter
         namesList.isNestedScrollingEnabled = false
         checkIsFormComplete()
     }
 
-    protected open fun setupNameAdapter(data: List<LocalizedName>, addLanguageButton: View) =
+    protected open fun createLocalizedNameAdapter(data: List<LocalizedName>, addLanguageButton: View) =
         AddLocalizedNameAdapter(data, activity!!, getPossibleStreetsignLanguages(), null, null, addLanguageButton)
 
     protected fun getPossibleStreetsignLanguages(): List<String> {

@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:minHeight="48dp"
         android:layout_toEndOf="@id/languageButton"
-        android:layout_toStartOf="@+id/deleteButton"
+        android:layout_toStartOf="@+id/nameSuggestionsButton"
         android:layout_centerVertical="true"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
@@ -41,7 +41,8 @@
             android:maxLines="1"
             android:textColor="#ffffff"
             android:background="#000000ff"
-            tools:ignore="SpUsage" />
+            tools:text="Sesame Street"
+            tools:ignore="RtlCompat,SpUsage" />
 
     </me.grantland.widget.AutofitLayout>
 

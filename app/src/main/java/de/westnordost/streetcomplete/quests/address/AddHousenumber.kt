@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.housenumber
+package de.westnordost.streetcomplete.quests.address
 
 import android.util.Log
 
