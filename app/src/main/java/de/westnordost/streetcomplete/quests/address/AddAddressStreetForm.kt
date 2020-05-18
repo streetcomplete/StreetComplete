@@ -70,7 +70,7 @@ class AddAddressStreetForm : AAddLocalizedNameForm<AddressStreetAnswer>() {
         AddLocalizedNameAdapter(
             data, activity!!, getPossibleStreetsignLanguages(),
             abbreviationsByLocale, getNameSuggestions(), addLanguageButton,
-            if (isPlaceName) R.layout.quest_localized_name_place_row else R.layout.quest_localizedname_row
+            getRowLayoutResId()
         )
 
     private fun getNameSuggestions(): List<MutableMap<String, String>> {
@@ -78,28 +78,16 @@ class AddAddressStreetForm : AAddLocalizedNameForm<AddressStreetAnswer>() {
             emptyList()
         } else {
             roadNameSuggestionsDao.getNames(
-                geometryToMajorPoints(elementGeometry),
+                listOf(elementGeometry.center),
                 AddAddressStreet.MAX_DIST_FOR_ROAD_NAME_SUGGESTION
-            )
+            ).take(4)
+            /* taking the four closest streets because in the worst case, the building is located
+               on an island surrounded on every side by a street */
         }
     }
 
-    private fun geometryToMajorPoints(geometry: ElementGeometry): List<LatLon> {
-        return when(geometry) {
-            is ElementPolylinesGeometry -> {
-                val polyline = geometry.polylines.first()
-                listOf(polyline.first(), polyline.last())
-            }
-            is ElementPolygonsGeometry -> {
-                // return center and one of nodes from the way constructing area
-                listOf(geometry.center, geometry.polygons.first().last())
-            }
-            is ElementPointGeometry -> {
-                listOf(geometry.center)
-            }
-        }
-    }
-
+    private fun getRowLayoutResId(): Int =
+        if (isPlaceName) R.layout.quest_localized_name_place_row else R.layout.quest_localizedname_row
 
     private fun switchToPlaceNameLayout() {
         isPlaceName = true

@@ -8,13 +8,12 @@ import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.tagfilters.FiltersParser
 import de.westnordost.streetcomplete.data.tagfilters.getQuestPrintStatement
 import de.westnordost.streetcomplete.data.tagfilters.toGlobalOverpassBBox
 import de.westnordost.streetcomplete.quests.localized_name.data.RoadNameSuggestionsDao
-import java.util.regex.Pattern
+import de.westnordost.streetcomplete.quests.localized_name.data.putRoadNameSuggestion
 
 class AddAddressStreet(
         private val overpassApi: OverpassMapDataAndGeometryApi,
@@ -76,10 +75,7 @@ class AddAddressStreet(
     }
 
     companion object {
-        // This only picks up nodes, so street-name suggestions don't appear
-        // in the middle of a long straight-stretch (longer than 0.5km). This happens rarely
-        // enough that I don't think it is a concern.
-        const val MAX_DIST_FOR_ROAD_NAME_SUGGESTION = 250.0
+        const val MAX_DIST_FOR_ROAD_NAME_SUGGESTION = 100.0
 
         private val ADDRESSES_WITHOUT_STREETS = """
                 (
