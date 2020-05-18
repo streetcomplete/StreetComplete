@@ -773,7 +773,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="link_category_goodies_title">Goodies</string>
     <string name="link_category_goodies_description">Interesting map-related stuff for you to try out</string>
 
-    <string name="link_cyclosm_description">A map for bicyclists</string>
+    <string name="link_cyclosm_description">A map for cyclists</string>
     <string name="link_wheelmap_description">A map for finding wheelchair accessible places</string>
     <string name="link_osm_buildings_description">A map that shows the buildings in 3D</string>
     <string name="link_openvegemap_description">Discover vegetarian and vegan restaurants in your city</string>
@@ -795,7 +795,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="link_nominatim_description">The geocoder for OSM data, used by many other services</string>
     <string name="link_city_roads_description">Render all roads of a city, for printing on T-Shirts, mugs, …</string>
     <string name="link_myosmatic_description">"Generate printable city maps in a few easy steps, optionally with a street directory"</string>
-    <string name="link_brouter_description">Probably the best routing engine for bicyclists</string>
+    <string name="link_brouter_description">Probably the best routing engine for cyclists</string>
     <string name="link_show_me_the_way_description">Watch OSM edits happen in real time</string>
     <string name="link_osrm_description">The fastest routing engine around</string>
     <string name="link_openrouteservice_description">Routing for a variety of vehicles and on foot, each with preferences. Can also show isochrones (reachable area in X minutes from a starting point).</string>
@@ -812,8 +812,8 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="achievement_surveyor_solved_X">You solved %d quests! Keep going to unlock more achievements that contain links to OSM and other map-related apps and projects!</string>
     <string name="achievement_regular_title">Regular</string>
     <string name="achievement_regular_description">You contributed %d days to OSM with this app! Regular contributors are the backbone of OSM, thanks for your dedication! ❤</string>
-    <string name="achievement_bicyclist_title">Bicyclist</string>
-    <string name="achievement_bicyclist_solved_X">You solved %d quests that help bicyclists!</string>
+    <string name="achievement_bicyclist_title">Cyclist</string>
+    <string name="achievement_bicyclist_solved_X">You solved %d quests that help cyclists!</string>
     <string name="achievement_wheelchair_title">Mobility</string>
     <string name="achievement_wheelchair_solved_X">You solved %d quests that help wheelchair users get around town!</string>
     <string name="achievement_postman_title">Postman</string>
