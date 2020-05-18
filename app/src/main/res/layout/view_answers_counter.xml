@@ -46,7 +46,6 @@
         android:shadowRadius="8"
         android:shadowDy="2"
         tools:text=" 1234 "
-        tools:ignore="RtlHardcoded"
-        android:elevation="4dp"/>
+        tools:ignore="RtlHardcoded"/>
 
 </merge>
