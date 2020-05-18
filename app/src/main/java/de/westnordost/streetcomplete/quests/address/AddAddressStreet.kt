@@ -65,13 +65,7 @@ class AddAddressStreet(
             is StreetName -> "addr:street"
             is PlaceName -> "addr:place"
         }
-        for ((languageCode, name) in answer.localizedNames) {
-            if (languageCode.isEmpty()) {
-                changes.addOrModify(key, name)
-            } else {
-                changes.addOrModify("$key:$languageCode", name)
-            }
-        }
+        changes.add(key, answer.name)
     }
 
     companion object {

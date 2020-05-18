@@ -48,7 +48,6 @@ class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
     }
 
     override fun onClickOk(names: List<LocalizedName>) {
-
         val possibleAbbreviations = LinkedList<String>()
         for ((languageCode, name) in adapter.localizedNames) {
             val locale = if(languageCode.isEmpty()) countryInfo.locale else Locale(languageCode)
