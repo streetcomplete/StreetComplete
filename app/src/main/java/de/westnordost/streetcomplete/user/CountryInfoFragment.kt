@@ -98,7 +98,7 @@ class CountryInfoFragment : AbstractInfoFakeDialogFragment(R.layout.fragment_cou
         val anim = ValueAnimator.ofInt(0, questCount)
 
         anim.doOnStart { solvedQuestsContainer.visibility = View.VISIBLE }
-        anim.duration = (questCount * 150.0).pow(0.75).toLong()
+        anim.duration = 300 + (questCount * 500.0).pow(0.6).toLong()
         anim.addUpdateListener { solvedQuestsText?.text = it.animatedValue.toString() }
         anim.interpolator = DecelerateInterpolator()
         anim.startDelay = ANIMATION_TIME_IN_MS
