@@ -46,6 +46,7 @@ class CreditsFragment : Fragment(R.layout.fragment_credits) {
         val items = contributors.map { "<li>$it</li>" }.joinToString("")
         val textView = HtmlTextView(activity)
         textView.setTextAppearance(activity, R.style.TextAppearance_Body)
+        textView.setTextIsSelectable(true)
         textView.setHtml("<ul>$items</ul>")
         view.addView(textView, LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT))
     }
