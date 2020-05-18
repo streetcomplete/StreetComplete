@@ -41,7 +41,7 @@ class CountryInfoFragment : AbstractInfoFakeDialogFragment(R.layout.fragment_cou
     /* ---------------------------------------- Interface --------------------------------------- */
 
     fun show(countryCode: String, questCount: Int, rank: Int?, countryFlagBubbleView: View) {
-        show(countryFlagBubbleView)
+        if(!show(countryFlagBubbleView)) return
         circularRevealAnimator?.cancel()
         val revealAnim = createCircularRevealAnimator()
         revealAnim.start()
@@ -106,12 +106,14 @@ class CountryInfoFragment : AbstractInfoFakeDialogFragment(R.layout.fragment_cou
         counterAnimation = anim
     }
 
-    override fun dismiss() {
-        super.dismiss()
+    override fun dismiss(): Boolean {
+        if (!super.dismiss()) return false
+
         circularRevealAnimator?.cancel()
         val revealAnim = createCircularHideAnimator()
         revealAnim.start()
         circularRevealAnimator = revealAnim
+        return true
     }
 
     private fun getFlagResId(countryCode: String): Int {

@@ -83,25 +83,31 @@ class AchievementInfoFragment : Fragment(R.layout.fragment_achievement_info) {
     /* ---------------------------------------- Interface --------------------------------------- */
 
     /** Show as details of a tapped view */
-    fun show(achievement: Achievement, level: Int, achievementBubbleView: View) {
+    fun show(achievement: Achievement, level: Int, achievementBubbleView: View): Boolean {
+        if (currentAnimators.isNotEmpty()) return false
         isShowing = true
         this.achievementIconBubble = achievementBubbleView
 
         bind(achievement, level, false)
         animateInFromView(achievementBubbleView)
+        return true
     }
 
     /** Show as new achievement achieved/unlocked */
-    fun showNew(achievement: Achievement, level: Int) {
+    fun showNew(achievement: Achievement, level: Int): Boolean {
+        if (currentAnimators.isNotEmpty()) return false
         isShowing = true
 
         bind(achievement, level, true)
         animateIn()
+        return true
     }
 
-    fun dismiss() {
+    fun dismiss(): Boolean {
+        if (currentAnimators.isNotEmpty()) return false
         isShowing = false
         animateOut(achievementIconBubble)
+        return true
     }
 
     /* ----------------------------------- Animating in and out --------------------------------- */
@@ -168,7 +174,6 @@ class AchievementInfoFragment : Fragment(R.layout.fragment_achievement_info) {
         shineView1.visibility = View.GONE
         shineView2.visibility = View.GONE
 
-        clearAnimators()
         currentAnimators.addAll(createDialogPopInAnimations() + listOf(
             createFadeInBackgroundAnimation(),
             createAchievementIconFlingInAnimation(questBubbleView)
@@ -179,8 +184,6 @@ class AchievementInfoFragment : Fragment(R.layout.fragment_achievement_info) {
     private fun animateOut(questBubbleView: View?) {
 
         dialogContainer.layoutTransition = null
-
-        clearAnimators()
 
         val iconAnimator = if (questBubbleView != null) {
             createAchievementIconFlingOutAnimation(questBubbleView)
@@ -203,6 +206,7 @@ class AchievementInfoFragment : Fragment(R.layout.fragment_achievement_info) {
         sourceView.visibility = View.INVISIBLE
         val root = sourceView.rootView as ViewGroup
         achievementIconView.applyTransforms(Transforms.IDENTITY)
+        achievementIconView.alpha = 1f
         return achievementIconView.animateFrom(sourceView, root)
             .setDuration(ANIMATION_TIME_IN_MS)
             .setInterpolator(OvershootInterpolator())
@@ -310,6 +314,7 @@ class AchievementInfoFragment : Fragment(R.layout.fragment_achievement_info) {
             .alpha(1f)
             .setDuration(ANIMATION_TIME_IN_MS)
             .setInterpolator(DecelerateInterpolator())
+            .withEndAction { currentAnimators.clear() }
     }
 
     private fun createFadeOutBackgroundAnimation(): ViewPropertyAnimator {
@@ -319,6 +324,7 @@ class AchievementInfoFragment : Fragment(R.layout.fragment_achievement_info) {
             .setInterpolator(AccelerateInterpolator())
             .withEndAction {
                 dialogAndBackgroundContainer.visibility = View.INVISIBLE
+                currentAnimators.clear()
             }
     }
 

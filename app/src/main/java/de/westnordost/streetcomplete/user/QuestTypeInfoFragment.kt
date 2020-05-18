@@ -41,7 +41,7 @@ class QuestTypeInfoFragment : AbstractInfoFakeDialogFragment(R.layout.fragment_q
     /* ---------------------------------------- Interface --------------------------------------- */
 
     fun show(questType: QuestType<*>, questCount: Int, questBubbleView: View) {
-        show(questBubbleView)
+        if (!show(questBubbleView)) return
         titleView.setImageResource(questType.icon)
         questTitleText.text = resources.getString(questType.title, *Array(10){"…"})
         solvedQuestsText.text = ""
