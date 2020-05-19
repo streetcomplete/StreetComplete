@@ -81,6 +81,9 @@ class AddAddressStreetForm : AbstractQuestFormAnswerFragment<AddressStreetAnswer
                 streetNameInput?.setText(namesByLocale[""])
             }
             selectedStreetName = namesByLocale[""]
+        } else {
+            // did not click on a street, so do normal behaviour
+            return super.onClickMapAt(position, clickAreaSizeInMeters)
         }
 
         return true
