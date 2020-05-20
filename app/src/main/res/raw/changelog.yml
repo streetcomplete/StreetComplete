@@ -1,3 +1,19 @@
+v20.0-beta2: |
+  <h3>New Quests</h3>
+  <ul>
+  <li>What street does the (house) number ... belong to? (#1782, #213), by @dbdean, @matkoniecz and me</li>
+  </ul>
+  <h3>Fixes and Enhancements</h3>
+  <ul>
+    <li>bubbles in ball pit now display with shadow (#1840)</li>
+    <li>fix achievement icons would sometimes vanish (and other oddities) (#1834)</li>
+    <li>text is selectable now in changelog, credits and privacy statement (#1833)</li>
+    <li>move pointer pin below other map buttons (#1838)</li>
+    <li>buttons in bottom sheet button bar are a bit slimmer now (#1839)</li>
+    <li>smaller animation time for quest counter in statistics (#1832)</li>
+  </ul>
+
+
 v20.0-beta1: |
   <h3>📈 New Statistics</h3>
   <ul>
