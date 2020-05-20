@@ -101,7 +101,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/profileContainer"
@@ -143,7 +143,8 @@
                     android:labelFor="@id/localRankText"
                     android:layout_below="@+id/localRankText"
                     android:layout_marginTop="4dp"
-                    android:text="@string/user_profile_local_rank"/>
+                    android:text="@string/user_profile_local_rank"
+                    tools:text="Rank in\nUnited States of America"/>
 
             </RelativeLayout>
 
@@ -252,7 +253,6 @@
             android:id="@+id/buttonsContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent">
