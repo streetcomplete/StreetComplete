@@ -808,7 +808,7 @@ Zu guter letzt, vergiss nicht dich nicht in Gefahr zu begeben: Achte auf deine U
 Diese Daten sind unentbehrlich nicht nur für Postboten sondern auch für  Navigationssysteme."</string>
     <string name="achievement_building_title">"Hoch hinaus"</string>
     <string name="achievement_building_solved_X">"Du hast %d Gebäude-relevante Aufgaben gelöst.
-Beachte, dass diese App nur Hausnummern von Gebäuden abfrafgt, deren Typ bereits bestimmt wurde."</string>
+Beachte, dass diese App nur Hausnummern von Gebäuden abfragt, deren Typ bereits bestimmt wurde."</string>
     <string name="achievement_blind_title">"Sechster Sinn"</string>
     <string name="achievement_blind_solved_X">"Du hast %d Aufgaben die relevant für Sehbehinderte sind gelöst."</string>
     <string name="achievement_pedestrian_title">"Läufer"</string>
@@ -839,4 +839,8 @@ Rang"</string>
 aktiv"</string>
     <string name="user_profile_achievement_levels">"Level aller
 Erfolge"</string>
+    <string name="quest_address_street_title">"What street does the (house) number %s belong to?"</string>
+    <string name="quest_address_street_no_named_streets">"It does not belong to a named street"</string>
+    <string name="quest_address_street_place_name_label">"Place name:"</string>
+    <string name="quest_address_street_description">"Tap the road it belongs to on the map or enter it without abbreviations in the field below:"</string>
 </resources>

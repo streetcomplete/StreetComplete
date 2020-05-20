@@ -1,688 +1,1922 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!-- Fuzzy -->
     <string name="action_settings">"설정"</string>
+
+    <!-- Fuzzy -->
     <string name="oauth_communication_error">"인증 서버에 접속할 수 없습니다"</string>
+
+    <!-- Fuzzy -->
     <string name="retry">"재시도"</string>
+
+    <!-- Fuzzy -->
     <string name="oauth_failed_permissions">"인증 실패: 목록에 있는 모든 권한을 허가해야 합니다"</string>
+
+    <!-- Fuzzy -->
     <string name="title_activity_settings">"설정"</string>
+
+    <!-- Fuzzy -->
     <string name="pref_category_communication">"연결"</string>
+
+    <!-- Fuzzy -->
     <string name="pref_category_display">"화면"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
+
+    <!-- Fuzzy -->
     <string name="pref_tilecache_size_message">"지정한 용량(MB)만큼 지도 타일 캐시가 외부 저장소에 할당됩니다"</string>
+
+    <!-- Fuzzy -->
     <string name="pref_title_show_notes_not_phrased_as_questions">"모든 참고 띄우기"</string>
+
+    <!-- Fuzzy -->
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"질문 형식이 아닌 참고도 띄웁니다"</string>
+
+    <!-- Fuzzy -->
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"질문 형식이 아닌 참고는 무시합니다"</string>
+
+    <!-- Fuzzy -->
     <string name="pref_title_map_cache">"지도 캐시 크기"</string>
+
+    <!-- Fuzzy -->
     <string name="map_btn_gps_tracking">"나를 따라다니기"</string>
     <string name="map_attribution_mapzen">"%s에서 제공받음"</string>
+
+    <!-- Fuzzy -->
     <string name="map_attribution_osm">"© OpenStreetMap 기여자"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_generic_otherAnswers">"다른 답변..."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_generic_answer_notApplicable">"대답할 수 없음…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_generic_confirmation_title">"확실합니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_generic_confirmation_yes">"네, 확실합니다"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_generic_confirmation_no">"확인해 보겠습니다"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_generic_error_field_empty">"이 칸이 비었습니다"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_leave_new_note_title">"대신 참고를 남기시겠습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_leave_new_note_description">"이 위치에 참고를 남기면 다른 기여자들이 참고에 댓글을 달면서 이 지물의 문제를 해결할 수 있습니다."</string>
     <string name="quest_leave_new_note_yes">"예"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_leave_new_note_no">"아니오, 숨김 처리만 합니다"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetName_title">"이 도로의 이름은 무엇입니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetName_description">"도로명 표지판에 표기된 명칭 그대로 입력해야 합니다."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetName_answer_noName_confirmation_description">"도로명 표지판은 도로의 끝 지점에만 있는 경우가 많이 있습니다. 또한 더 큰 도로에 속한 주변 도로의 경우에는 도로명 표지판이 없을 수도 있다는 점을 상기하세요. 건물이 주변에 있는 도로의 대다수는 이름이 있습니다."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"만약 이름에 약어가 없다면 넣어 줘야 합니다. 일반적인 약어 대부분은 당신이 입력할 때 자동으로 추가되지만, 항상 그렇지는 않습니다."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"약어 없음"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_name_title">"%s의 개점 시간은 언제입니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_start_time">"개점 시각"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_end_time">"폐점 시각"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_add_months">"월 추가"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_add_hours">"시 추가"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_add_weekdays">"요일 추가"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_chooseMonthsTitle">"월 선택"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_chooseWeekdaysTitle">"요일 선택"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_24_7_confirmation">"정말 24시간 내내 쉬는 날 없이 열려 있습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_noteDiscussion_title">"이 참고에 기여할 수 있습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_noteDiscussion_no">"아니오, 숨깁니다"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_noteDiscussion_anonymous">"익명"</string>
+
+    <!-- Fuzzy -->
     <string name="confirmation_discard_title">"값을 버리시겠습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="confirmation_discard_positive">"버리기"</string>
+
+    <!-- Fuzzy -->
     <string name="confirmation_discard_negative">"취소"</string>
+
+    <!-- Fuzzy -->
     <string name="action_download">"이 구역의 퀘스트 스캔"</string>
+
+    <!-- Fuzzy -->
     <string name="action_upload">"답변 업로드"</string>
+
+    <!-- Fuzzy -->
     <string name="no_changes">"어떤 답변도 하지 않았습니다"</string>
+
+    <!-- Fuzzy -->
     <string name="close">"닫기"</string>
+
+    <!-- Fuzzy -->
     <string name="download_error">"퀘스트를 찾는 중 오류가 발생했습니다"</string>
+
+    <!-- Fuzzy -->
     <string name="upload_error">"답변을 업로드하는 중 오류가 발생했습니다"</string>
+
+    <!-- Fuzzy -->
     <string name="download_area_too_big">"더 확대해 주세요"</string>
+
+    <!-- Fuzzy -->
     <string name="confirmation_cancel_prev_download_title">"지금 하는 검색을 멈추고 대신 여기를 스캔하시겠습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="notification_downloading">"퀘스트를 찾는 중..."</string>
+
+    <!-- Fuzzy -->
     <string name="turn_on_location_request">"위치 탐색이 꺼져 있습니다. 설정 화면을 여시겠습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="no_location_permission_warning">"주변에 있는 퀘스트를 찾으려면 현재 위치가 필요합니다."</string>
+
+    <!-- Fuzzy -->
     <string name="about_title_authors">"제작자들"</string>
 
     <!-- Fuzzy -->
     <string name="about_summary_authors">"© 2016–2020 Tobias Zwick와 기여자들"</string>
+
+    <!-- Fuzzy -->
     <string name="about_title_repository">"소스 레포지토리"</string>
+
+    <!-- Fuzzy -->
     <string name="about_summary_repository">"GitHub으로 열기"</string>
+
+    <!-- Fuzzy -->
     <string name="about_title_report_error">"오류 보고"</string>
+
+    <!-- Fuzzy -->
     <string name="about_title_feedback">"피드백 주기"</string>
+
+    <!-- Fuzzy -->
     <string name="about_title_license">"라이선스"</string>
     <string name="about_summary_license">"GNU 일반 공중 사용권"</string>
+
+    <!-- Fuzzy -->
     <string name="offline">"현재 오프라인입니다"</string>
+
+    <!-- Fuzzy -->
     <string name="confirmation_authorize_now">"답변을 올리려면 OSM 계정으로 인증해야 합니다. 지금 인증하시겠습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="not_authorized">"인증되지 않음"</string>
+
+    <!-- Fuzzy -->
     <string name="version_banned_message">"StreetComplete의 버전이 너무 오래되었습니다. 업데이트해 주세요!"</string>
+
+    <!-- Fuzzy -->
     <string name="no_gps_no_quests">"주변에 있는 퀘스트를 자동으로 찾도록 하려면 위치 탐색을 켜세요"</string>
+
+    <!-- Fuzzy -->
     <string name="nothing_more_to_download">"해결할 수 있는 퀘스트가 없습니다"</string>
+
+    <!-- Fuzzy -->
     <string name="later">"나중에"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetName_answer_noProperStreet_link">"이 도로는 두 도로의 연결로일 뿐입니다"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"그 외(참고 남기기)"</string>
+
+    <!-- Fuzzy -->
     <string name="about_title_privacy_statement">"개인정보 진술서"</string>
+
+    <!-- Fuzzy -->
     <string name="about_summary_privacy_statement">"및 데이터 사용"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_public_holidays">"공휴일"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_public_holidays_short">"휴일"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_open_end">"유동적임"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_answer_247">"24시간·7일"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_answer_seasonal_opening_hours">"월별로 다름…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_answer_no_regular_opening_hours">"개점 시간이 불규칙적임…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_comment_title">"영업 시간 설명"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_comment_description">"정확하게 표지판에 써 있는 그대로 입력하세요(예를 들어 \"약속에 따라서\"). 표지판이 없는 것과 개점 시간이 불규칙적인 것은 별개입니다."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingLevels_title">"몇 층짜리 건물입니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingLevels_title_buildingPart">"이 부분에는 몇 층까지 있습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_roofShape_title">"건물의 지붕은 기본적으로 어떤 모양입니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_roofShape_select_one">"한 개만 선택하세요"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_roofShape_show_more">"더 보기..."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_roofShape_answer_many">"다양한 모양을 가지고 있습니다"</string>
+
+    <!-- Fuzzy -->
     <string name="pref_title_sync">"자동 동기화"</string>
+
+    <!-- Fuzzy -->
     <string name="map_btn_zoom_out">"축소"</string>
+
+    <!-- Fuzzy -->
     <string name="map_btn_zoom_in">"확대"</string>
+
+    <!-- Fuzzy -->
     <string name="privacy_html">"&lt;p&gt;아, 개인정보에 신경을 쓰는 분이시네요. 좋습니다! 저는 당신에게 좋은 소식만 전달하고 있다고 생각하고 있습니다.&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;직접 기여&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 먼저, 이 앱으로 당신은 실제로, 그리고 직접적으로 OpenStreetMap에 기여한다는 것을 이해하세요.&lt;br/&gt;
 당신이 이 앱으로 기여하는 모든 것은 직접 지도에 추가됩니다. &lt;a href=\"https://wheelmap.org\"&gt;wheelmap.org&lt;/a&gt; or &lt;a href=\"http://www.kort.ch\"&gt;Kort&lt;/a&gt;이 앱과 OSM 인프라에 껴 있는 제3자 프로그램은 없습니다."</string>
+
+    <!-- Fuzzy -->
     <string name="autosync_on">"켜기"</string>
+
+    <!-- Fuzzy -->
     <string name="autosync_only_on_wifi">"Wi-Fi에서만"</string>
+
+    <!-- Fuzzy -->
     <string name="autosync_off">"끄기"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetSurface_title">"이 도로 조각의 포장재는 무엇입니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_value_paved">"포장(전체적으로)"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_value_unpaved">"비포장(전체적으로)"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_value_ground">"토양(전체적으로)"</string>
     <string name="quest_surface_value_asphalt">"아스팔트"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_value_compacted">"다져짐"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_value_concrete">"콘크리트"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_value_dirt">"흙"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_value_fine_gravel">"작은 자갈"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_value_grass">"잔디·풀"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_value_grass_paver">"잔디로 포장됨"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_value_gravel">"자갈"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_value_paving_stones">"돌 포장"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_value_pebblestone">"조약돌"</string>
     <string name="quest_surface_value_sand">"모래"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_value_sett">"포석"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_value_wood">"목재"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_placeName_title">"이 장소의 이름은 무엇입니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sidewalk_title">"이 도로에 인도가 있습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"이 도로는 어디에 있습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cyclewaySurface_title">"자전거 도로의 포장재는 무엇입니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_serviceType_title">"여기는 이면 도로 중에서 어디에 속합니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetLanes_title">"이 도로의 차로 수는 얼마입니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetLanes_description">"차선 표시가 없으면 차로가 없다는 뜻입니다."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetLanes_answer_noLanes">"차선 표시가 없습니다"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetLanes_noLanes_estWidth">"이 도로의 양쪽 가장자리에서 시작해서 몇 대의 차가 들어갈지 추정해 주세요."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_oneway_title">"일방통행 도로입니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_title">"이 건물의 건물번호는 무엇입니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="store_listing_short_description">"OpenStreetMap 측량사 앱"</string>
+
+    <!-- Fuzzy -->
     <string name="store_listing_full_description">"StreetComplete로 OpenStreetMap을 개선하는 데 도움을 주세요!
 
 이 앱으로 당신 주변에 있는 불완전하고 추가할 수 있는 데이터를 찾고 지도에 띄울 수 있습니다. 간단한 질문에 대답해 현장의 정보를 완성시켜 문제를 해결할 수 있습니다.
 
 당신이 입력한 정보는 다른 편집기를 사용할 필요 없이 OpenStreetMap에 당신의 이름을 걸어 직접적으로 추가됩니다."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_name_answer_noName">"이름이 없습니다…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_name_answer_noName_confirmation_title">"정말로 이름이 없습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_name_noName_confirmation_positive">"네, 이름이 없습니다"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_add_times">"개점 시간 추가"</string>
+
+    <!-- Fuzzy -->
     <string name="crash_message">"오류 보고서를 개발자에게 보내 주실 수 있으신가요?"</string>
+
+    <!-- Fuzzy -->
     <string name="crash_title">"마지막에 StreetComplete에서 오류가 발생했습니다!"</string>
+
+    <!-- Fuzzy -->
     <string name="crash_compose_email">"이메일 보내기"</string>
+
+    <!-- Fuzzy -->
     <string name="no_email_client">"설치된 이메일 클라이언트가 없습니다."</string>
+
+    <!-- Fuzzy -->
     <string name="pref_title_keep_screen_on">"화면 꺼짐 방지"</string>
+
+    <!-- Fuzzy -->
     <string name="download_server_error">"퀘스트를 찾는 도중 연결 오류가 발생했습니다. 나중에 다시 시도해 주세요."</string>
+
+    <!-- Fuzzy -->
     <string name="upload_server_error">"답변을 업로드하는 도중 연결 오류가 발생했습니다. 나중에 다시 시도해 주세요."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_generic_hasFeature_yes">"예"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_generic_hasFeature_no">"아니오"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopShelter_title">"버스 정류장에 지붕이 있습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_bikeParkingCapacity_title">"여기에 자전거를 몇 대까지 주차할 수 있습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_unusualHousenumber_confirmation_description">"이 건물번호는 일반적이지 않습니다."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sport_title">"여기서 어떤 스포츠를 합니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sport_answer_multi">"특정한 스포츠가 아님"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sport_soccer">"축구"</string>
     <string name="quest_sport_tennis">"테니스"</string>
     <string name="quest_sport_baseball">"야구"</string>
     <string name="quest_sport_basketball">"농구"</string>
     <string name="quest_sport_golf">"골프"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sport_equestrian">"승마"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sport_athletics">"육상 경기"</string>
     <string name="quest_sport_volleyball">"배구"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sport_beachvolleyball">"비치 발리볼"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sport_american_football">"미식축구"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sport_skateboard">"스케이트보드"</string>
     <string name="quest_sport_bowls">"볼링"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sport_boules">"불 게임"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sport_shooting">"사격"</string>
     <string name="quest_sport_cricket">"크리켓"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sport_table_tennis">"탁구"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sport_gymnastics">"체조"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sport_archery">"활쏘기"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sport_australian_football">"오스트레일리안 풋볼"</string>
     <string name="quest_sport_badminton">"배드민턴"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sport_canadian_football">"캐나디안 풋볼"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sport_field_hockey">"필드 하키"</string>
     <string name="quest_sport_handball">"핸드볼"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sport_ice_hockey">"아이스 하키"</string>
     <string name="quest_sport_netball">"네트볼"</string>
     <string name="quest_sport_rugby">"럭비"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_select_hint">"선택하세요"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sport_manySports_confirmation_description">"선택한 스포츠용(줄 표시와 장비가 제공됨)으로 명확하게 설계되었거나 모든 종류의 게임을 할 수 있는 일반적인 구역입니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_manySports_confirmation_specific">"명확하게 설계됨"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_manySports_confirmation_generic">"일반적인 구역"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sport_manySports_confirmation_title">"많은 스포츠를 선택했습니다"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopShelter_name_title">"%s 정류장에 지붕이 있습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_toiletsFee_title">"화장실 요금이 있습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_bus">"이 버스 정류장에 점자 타일이 있습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"이 횡단보도의 양쪽에 점자 타일이 있습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_source_dialog_title">"정말 현장에서 확인했습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_name_bus">"%s 정류장에 점자 타일이 있습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_source_dialog_note">"현장 조사로 얻은 정보만 입력해야 합니다."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_bicycleParkingCoveredStatus_title">"자전거 주차장에 (비를 막아주는) 지붕이 있습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="dialog_session_dont_show_again">"다시 켤 때까지 다시 보지 않기"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetSurface_name_title">"%s의 포장재는 무엇입니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_unusualInput_confirmation_description">"이 속도 제한은 믿기 어렵습니다."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"정말 속도 제한이 없습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_confirmation">"도로의 끝 부분은 확인해 보았습니까?
 강조된 부분에 적용할 표지판이 도로 전체에 없다면 기본 속도 제한이 적용됩니다."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"네, 표지판이 없습니다"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"도시(인구 밀집 지역)에 있는 도로는 시골 도로에 비해 속도 제한이 다양하게 적용됩니다."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_urbanOk">"도시"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_ruralOk">"시골"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_info_zone">"주요 도로 교차로에 이 같은 표지판이 있다면, 주요 도로에 적용된 속도 제한이 모든 영역에 적용되기 때문에 이 영역에서 개별 표지판을 찾을 수 없을 것입니다."</string>
     <string name="quest_sport_softball">"소프트볼"</string>
     <string name="quest_sport_racquet">"라켓볼"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sport_ice_skating">"빙상 스케이트"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sport_paddle_tennis">"패들 테니스"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sport_gaelic_games">"아일랜드 전통놀이"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sport_sepak_takraw">"세팍타크로"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_name_title">"%s에 휠체어가 들어갈 수 있습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited">"제한 있음"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_bikeParkingCapacity_hint">"일반적으로 자전거 한 대를 주차할 때 양 쪽에서 사용할 수 있다는 점을 주의하세요."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sport_roller_skating">"롤러스케이팅"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_bus_station_title">"이 버스 정류장에 휠체어가 접근할 수 있습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_subway_entrance_title">"이 지하철 입구에 휠체어가 접근할 수 있습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_railway_station_title">"이 기차역에 휠체어가 접근할 수 있습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_location_title">"이 위치에 휠체어가 접근할 수 있습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_bus_station_name_title">"%s 정류장에 휠체어가 접근할 수 있습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_subway_entrance_name_title">"지하철 입구 %s에 휠체어가 접근할 수 있습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_railway_station_name_title">"기차역 %s에 휠체어가 접근할 수 있습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_location_name_title">"위치 %s에 휠체어가 접근할 수 있습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_business">"부분적으로 이 장소에 접근할 때 계단 하나만 있고, 대부분의 방에 휠체어가 들어갈 수 있다는 것을 의미합니다."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_public_transport">"부분적으로 이곳에 접근할 때 계단 하나만 있다는 것을 의미합니다."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"이름 %s의 축약형이 무엇입니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_baby_changing_table_toilets_title">"이 화장실에 아기 기저기 교환대가 있습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_baby_changing_table_title">"%s에 아기 기저귀 교환대가 있습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_recycling_type_title">"이 재활용 시설은 어떻게 생겼습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="recycling_centre">"센터"</string>
     <string name="overground_recycling_container">"컨테이너"</string>
+
+    <!-- Fuzzy -->
     <string name="underground_recycling_container">"지하 컨테이너"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_generic_error_a_field_empty">"빈 칸으로 남겨 놓았습니다"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetName_menuItem_language_simple">"%1$s - %2$s"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetName_menuItem_language_native">"%1$s - %2$s (%3$s)"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetName_answer_cantType">"표지판에 나와 있는 문자를 입력할 수 없습니다"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetName_cantType_title">"키보드 레이아웃이 없습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetName_cantType_open_settings">"설정 열기"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetName_cantType_open_store">"앱 스토어로 이동"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetName_cantType_description">"기본 키보드를 사용하고 있다면, 키보드 설정에서 원하는 언어의 키보드를 간단하게 활성화할 수 있습니다.
 
 기본 키보드를 사용하고 있지 않다면, 앱 스토어에서 많은 언어를 지원하는 키보드를 다운로드하세요. 대표적으로 구글 지보드, SwiftKey Keyboard, Multiling O Keyboard가 있습니다."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetName_menuItem_nolanguage">"(미지정)"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_type_title">"이 소화전은 어떻게 생겼습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_type_pillar">"기둥형"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_type_underground">"지하에 박혀 있음"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_type_wall">"벽에 있음"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_type_pond">"호수형"</string>
+
+    <!-- Fuzzy -->
     <string name="credits_contributors">"Github에서 &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;전체 목록&lt;/a&gt;을 확인하세요."</string>
+
+    <!-- Fuzzy -->
     <string name="credits_translations">"&lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;POEditor 프로젝트&lt;/a&gt;에 들어가서 전체 목록을 확인하세요."</string>
+
+    <!-- Fuzzy -->
     <string name="credits_translations_title">"번역"</string>
+
+    <!-- Fuzzy -->
     <string name="credits_contributors_title">"코드 기여"</string>
+
+    <!-- Fuzzy -->
     <string name="credits_author_title">"제작자·유지보수자"</string>
+
+    <!-- Fuzzy -->
     <string name="credits_and_more">"기타 등등..."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_living_street">"주택가 거리입니다"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"그러면, 이렇게 생긴 표지판이 있습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_orchard_produce_title">"여기에서 무엇을 재배하고 있습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_grapes">"포도"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_agaves">"용설란"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_almonds">"아몬드"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_apples">"사과"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_apricots">"살구"</string>
     <string name="produce_avocados">"아보카도"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_bananas">"바나나"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_blueberries">"블루베리"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_cacao">"카카오"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_cashew_nuts">"캐슈넛"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_cherries">"체리"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_chestnuts">"밤"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_coconuts">"코코넛"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_coffee">"커피"</string>
     <string name="produce_cranberries">"크랜베리"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_dates">"대추"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_figs">"무화과"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_grapefruits">"그레이프프루트"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_guavas">"구아바"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_hazelnuts">"개암"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_hops">"홉"</string>
     <string name="produce_jojoba">"호호바"</string>
     <string name="produce_kiwis">"키위"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_kola_nuts">"콜라 나무"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_lemons">"레몬"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_limes">"라임"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_mangos">"망고"</string>
     <string name="produce_mate">"마테나무"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_nutmeg">"육두구"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_oil_palms">"기름야자나무"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_olives">"올리브"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_oranges">"오렌지"</string>
     <string name="produce_papayas">"파파야"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_peaches">"복숭아"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_pears">"배"</string>
     <string name="produce_chili">"고추"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_persimmons">"감"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_pineapples">"파인애플"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_pepper">"후추"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_pistachios">"피스타치오"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_plums">"자두"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_raspberries">"라즈베리"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_rubber">"고무나무"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_strawberries">"딸기"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_tea">"차"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_vanilla">"바닐라"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_walnuts">"호두"</string>
     <string name="produce_sisal">"사이잘"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_way_lit_title">"이 길에 조명이 있습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_way_lit_named_title">"%s에 조명이 있습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_way_lit_road_title">"이 도로에 조명이 있습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_way_lit_automatic">"동작 감지 기능을 사용합니다"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_way_lit_24_7">"24시간 가동됩니다"</string>
+
+    <!-- Fuzzy -->
     <string name="cannot_find_bbox_or_reduce_tilt">"이 장소를 스캔할 수 없습니다. 더 확대하거나 지도를 똑바로 세워 보세요."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_crossing_type_title">"이 횡단보도는 다음 중 어떤 횡단보도입니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_crossing_type_signals">"신호등 있는 횡단보도"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_crossing_type_uncontrolled">"신호등 없는 횡단보도"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"도로에 표시가 없는 횡단보도"</string>
     <string name="compass_north_one_letter">"북"</string>
+
+    <!-- Fuzzy -->
     <string name="action_undo">"되돌리기"</string>
+
+    <!-- Fuzzy -->
     <string name="undo_confirm_title">"마지막 답변을 되돌리시겠습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_mangosteen">"망고스틴"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_tomatoes">"토마토"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_areca_nuts">"빈랑"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_sweet_peppers">"피망"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_brazil_nuts">"브라질 땅콩"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_tung_nuts">"캔들넛"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_parkingType_title">"이 주차장은 어떻게 생겼습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_parkingType_surface">"지상 주차장"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_parkingType_underground">"지하 주차장"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_parkingType_multiStorage">"주차장 건물"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_toiletAvailability_name_title">"%s에 화장실이 있습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_powerPolesMaterial_title">"이 전봇대의 재질은 무엇입니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_powerPolesMaterial_wood">"나무"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_powerPolesMaterial_metal">"철"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_powerPolesMaterial_concrete">"콘크리트"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_advisory_speed_limit">"권장 속도만 있음…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_answer_house_name">"건물번호 없이 이름만 있음…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_house_name_label">"건물 명칭:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingLevels_roofLevelsLabel2">"지붕 층수"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingLevels_levelsLabel2">"기본 층수(지붕 층수는 제외)"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingLevels_answer_multipleLevels">"건물 부분별로 다름"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingLevels_answer_description">"부분별로 층수가 다르다면 가장 높은 부분의 값을 입력하세요."</string>
+
+    <!-- Fuzzy -->
     <string name="unglue_hint">"고정을 해제하려면 탭하세요"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"이 도로의 중앙선이 물리적(장벽 등)으로 분리되어 있습니까? 기본 속도 제한은 이 경우에 해당하는지 아닌지에 따라 다릅니다."</string>
     <string name="about_category_feedback">"피드백"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_leave_new_note_photo">"사진 첨부"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_leave_new_note_photo_delete_title">"이 사진을 삭제하시겠습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_value_track">"자전거 도로"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_value_lane">"자전거 차로"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_value_none">"없음"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_value_shared">"다른 차량과 차로를 공유함"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_value_bus_lane">"버스 차로에 있음"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_value_sidewalk">"인도 역할도 같이 함"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_leave_new_note_create_image_error">"사진 파일을 생성할 수 없습니다"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_value_lane_dual">"양방향 자전거 차로"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_value_track_dual">"양방향 자전거 도로"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_value_sidewalk_allowed">"없지만 인도를 이용할 수 있음"</string>
+
+    <!-- Fuzzy -->
     <string name="pref_category_advanced">"상세"</string>
+
+    <!-- Fuzzy -->
     <string name="pref_title_quests">"퀘스트 선택"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_enabled">"활성화됨"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_type">"퀘스트 유형"</string>
+
+    <!-- Fuzzy -->
     <string name="action_reset">"초기화"</string>
+
+    <!-- Fuzzy -->
     <string name="reorder_quest_priority_hint">"다운로드하고 지도에 띄울 항목의 우선순위를 다시 정렬하려면 길게 눌러 퀘스트를 움직이세요."</string>
+
+    <!-- Fuzzy -->
     <string name="undo_confirm_positive">"되돌리기"</string>
+
+    <!-- Fuzzy -->
     <string name="undo_confirm_negative">"취소"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_dietType_vegetarian_name_title">"%s의 메뉴에 채식주의자 식단이 있습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_dietType_vegan_name_title">"%s의 메뉴에 비건 식단이 있습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_hasFeature_only">"이것만 가능"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_dietType_explanation_vegan">"비건 식단에는 동물에서 나온 것들이 없어야 합니다(고기, 생선, 우유, 계란, ...)."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_dietType_explanation_vegetarian">"채식주의자 식단에는 고기, 생선이 없어야 합니다."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_dietType_explanation">"해당하는 식단에 맞추기 위해 이 장소에서 (전채 요리를 제외하는 등) 적절한 옵션을 제공한다면 \"예\"라고 답하세요."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_carWashType_title">"이 세차기는 어떤 종류입니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_carWashType_automated">"자동"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_carWashType_selfService">"셀프 서비스"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_carWashType_service">"직원이 세차를 해줌"</string>
+
+    <!-- Fuzzy -->
     <string name="enable_quest_confirmation_title">"이 유형의 퀘스트를 활성화하시겠습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="default_disabled_msg_go_inside">"이 유형의 퀘스트에 대한 답을 얻으려면 해당 장소에 직접 들어가야 하기 때문에 이 유형의 퀘스트는 기본적으로 비활성화되어 있습니다."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_housenumber_conscription_number">"징병 번호"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_housenumber_street_number_optional">"방위각(선택)"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_answer_contraflow_cycleway">"반대쪽에도 자전거 도로가 있음…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_emptyAnswer">"표지판에 적혀 있는 내용을 적어야 합니다. 표지판이 없다면 안에 들어가서 영업 시간을 물어보아야 합니다."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_value_none_but_no_oneway">"없음, 그렇지만 자전거 이용자들은 양방향에서 도로를 이용할 수 있음"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetName_answer_noName_question">"왜 이름이 없습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetName_answer_noProperStreet_service2">"진입로거나 주차장 통로이기 때문에"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetName_answer_noProperStreet_track2">"농로거나 임도이기 때문에"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetName_answer_noName_noname">"위에서 고를 수 없음, 그냥 이름이 없음"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_toilets_title">"이 화장실에 휠체어가 들어갈 수 있습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_toilets_name_title">"화장실 %s에 휠체어가 들어갈 수 있습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_description_toilets">"화장실에 휠체어가 들어갈 수 있다면 이렇게 생긴 휠체어 표지판이 있을 수도 있습니다.
     휠체어를 타면서 화장실에 들어가 화장실을 이용할 수 있다는 것을 의미하지만, 세면대 옆에 손잡이는 없을 수도 있습니다."</string>
+
+    <!-- Fuzzy -->
     <string name="map_btn_create_note">"새 참고 만들기"</string>
+
+    <!-- Fuzzy -->
     <string name="create_new_note_unprecise">"참고를 만들려면 더 확대하세요"</string>
+
+    <!-- Fuzzy -->
     <string name="create_new_note_description">"참고를 남기면 이 곳의 문제를 다른 기여자들이 알 수 있습니다. 지도를 움직여서 참고의 위치를 조정하세요."</string>
+
+    <!-- Fuzzy -->
     <string name="pref_title_quests_invalidation">"퀘스트 캐시 삭제"</string>
+
+    <!-- Fuzzy -->
     <string name="pref_title_quests_invalidation_summary">"너무 오래된 퀘스트가 많다고 생각할 때 사용하세요"</string>
+
+    <!-- Fuzzy -->
     <string name="invalidate_confirmation">"삭제"</string>
+
+    <!-- Fuzzy -->
     <string name="invalidation_dialog_message">"캐시를 삭제하면 다음 번에 퀘스트를 다운로드할 때 퀘스트가 업데이트됩니다. 퀘스트 캐시는 1주일마다 자동으로 삭제되며, 당신이 해결한 퀘스트가 이미 다른 사람이 해결한 퀘스트라는 응답을 받았을 때에도 삭제됩니다."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_generic_looks_like_this">"주로 다음과 같이 생겼습니다."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_value_metal">"금속"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_title2">"여기에 자전거 도로가 있습니까? 어떻게 생겼습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_bridge_structure_title">"이 다리는 어떻게 생겼습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_internet_access_name_title">"%s에서 어떤 종류의 인터넷을 제공하고 있습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_internet_access_wlan">"Wi-Fi"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_internet_access_wired">"유선(LAN)"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_internet_access_terminal">"인터넷 연결이 되는 컴퓨터"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_internet_access_no">"인터넷 불가"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopShelter_tram_name_title">"트램 정류장 %s에 지붕이 있습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopShelter_tram_title">"이 트램 정류장에 지붕이 있습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_bench_backrest_title">"이 벤치에 등받이가 있습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_bench_answer_picnic_table">"소풍 테이블입니다"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_religion_christian">"기독교"</string>
     <string name="quest_religion_muslim">"이슬람교"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_religion_hindu">"힌두교"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_religion_buddhist">"불교"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_religion_shinto">"신토"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_religion_jewish">"유대교"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_religion_taoist">"도교"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_religion_for_place_of_worship_answer_multi">"어떤 종교든 상관없이 이용함"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_religion_sikh">"시크교"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_religion_jain">"자이나교"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_religion_bahai">"바하이 신앙"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_religion_caodaist">"까오다이교"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_religion_chinese_folk">"중국 민간 종교"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_religion_for_wayside_shrine_title">"이 성지는 어떤 종교의 성지입니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_parking_fee_title">"여기에 주차하는 데 필요한 요금이 있습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_value_lane_soft">"자전거 차로(점선으로 표시)"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_value_unhewn_cobblestone">"거친 조약돌"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_parking_access_title">"여기에 주차할 수 있는 사람이 제한됩니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_parking_access_private">"개인용"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_parking_access_yes">"누구나 가능(요금 유무에 상관 없이)"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_parking_access_customers">"고객만 가능"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetName_pedestrian_title">"이 보행자 도로의 이름은 무엇입니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetSurface_square_title">"이 광장의 포장재는 무엇입니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetSurface_square_name_title">"사각형 %s의 포장재는 무엇입니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fee_answer_hours">"시간과 날짜에 따라 다름…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fee_add_times">"시간 추가"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fee_only_at_hours">"예, 그러나 다음만 해당..."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fee_not_at_hours">"예, 그러나 다음은 해당하지 않음..."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fee_hours_title">"다음 시간에만:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopName_title">"이 버스 정류장의 이름은 무엇입니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tramStopName_title">"이 트램 정류장의 이름은 무엇입니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_housenumber_multiple_numbers">"건물번호가 여러 개 있음"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_housenumber_multiple_numbers_description">"쉼표로 건물번호를 분리하거나 범위로 표시할 수 있습니다(예를 들어 1,3 또는 2-6)."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_stand">"스탠드(자전거 프레임에 걸침)"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_wheelbender">"바퀴 거치대(바퀴만 넣어야 함)"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_shed">"보관소"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_locker">"보관함"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_building">"건물"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_title">"이 자전거 주차장은 어떻게 생겼습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_value_suggestion_lane">"자전거 유도로"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_title">"이 우체통에서 우편물을 언제 수거해 갑니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_collectionTimes_add_times">"수집 시각 추가"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_collectionTimes_answer_no_times_specified">"특정한 시간대 없음"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_construction_road_title">"이 도로가 공사 중이 아닙니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_construction_cycleway_title">"이 자전거 도로가 공사 중이 아닙니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_construction_footway_title">"이 인도가 공사 중이 아닙니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_construction_generic_title">"이 선이 공사 중이 아닙니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_construction_building_title">"이 건물이 공사 중이 아닙니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="questList_disabled_in_country">"%s에서는 띄우지 않기"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_toiletAvailability_rest_area_title">"이 화장실에 휴식 공간이 있습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_pathSurface_title_steps">"이 계단의 포장재는 무엇입니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_pathSurface_title_bridleway">"이 도로의 포장재는 무엇입니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_pathSurface_title">"이 길의 포장재는 무엇입니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_select_hint_most_specific">"가장 맞는 답변을 선택해 주세요."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_generic_item_confirmation">"정말 더 구체적으로 결정할 수 없습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="privacy_html_tileserver">"&lt;p&gt;지도를 띄우려면 &lt;a href=\"https://tiles.map-data.de\"&gt;map-data.de&lt;/a&gt;에서 벡터 타일을 가져와야 합니다. 이 서비스를 이용하면 타일 요청 로그를 익명으로 남기게 됩니다. 이 로그는 문제 해결에 사용되며, 수일 후에 로그는 삭제됩니다.&lt;/p&gt;"</string>
+
+    <!-- Fuzzy -->
     <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;일부 퀘스트에서는 제3자 앱에서 추가 데이터를 가져오기도 합니다. 특히 일방통행 퀘스트에서는 westnordost.de의 API를 호출해서 일방통행로 후보를 가져옵니다.&lt;/p&gt;"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_generic_hasFeature_no_leave_note">"아니오(참고 남기기)"</string>
+
+    <!-- Fuzzy -->
     <string name="pref_quests_reset">"퀘스트 활성화 여부를 초기화하고 기본값으로 되돌리시겠습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_title2">"이 건물은 어떤 용도로 지어졌습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_generic_item_invalid_value">"더 구체적인 값을 선택해 주세요."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_answer_multiple_types">"다용도 건물입니다"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_answer_multiple_types_description">"이 건물의 핵심 용도를 선택해 주세요. 예를 들어 1층에 상점이 있는 아파트라면 주로 아파트로 간주합니다."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_answer_construction_site">"아직 공사 중입니다"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_residential">"주거용"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_residential_description">"사람이 거주하는 건물"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_house">"주택"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_house_description">"1가구가 사는 주택"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_apartments_description">"다수의 가족이 사는 집, 1층에 소매 시설이 있음"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_apartments">"아파트"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_detached">"외딴 집"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_detached_description">"1가구가 사는 단독주택"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_semi_detached">"한쪽 벽면이 옆집과 붙어 있는 주택"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_semi_detached_description">"2가구가 함께 사는 주택"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_terrace">"단층형 연립주택"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_terrace_description">"비슷하게 생긴 1가구 집이 줄지어 있는 주택"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_hotel">"호텔 건물"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_dormitory">"기숙사"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_houseboat">"선상 가옥"</string>
     <string name="quest_buildingType_bungalow">"방갈로"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow_description">"작게 따로 떨어져 있는 집(여름 별장, 휴가용 별장, ...)"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_static_caravan">"고정된 이동식 주택"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_commercial">"상업 건물"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_commercial_generic_description">"사람들이 일하거나 물건을 파는 등의 상업 활동을 하는 건물"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_industrial">"산업 건물"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_industrial_description">"예를 들어 공장, 작업장, 자동차 수리점, ..."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_office">"오피스 건물"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_retail">"상점"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"창고"</string>
     <string name="quest_buildingType_kiosk">"키오스크"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_storage_tank">"저장 탱크"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_religious">"종교 건물"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_church">"교회"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_chapel">"예배당"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_cathedral">"대성당"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_mosque">"모스크"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_temple">"사원"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_pagoda">"사찰 탑"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_synagogue">"유대교 회당"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_civic">"공공 건물"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_civic_description">"대개 편의시설을 갖춘 공공 건물"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_kindergarten">"유치원 건물"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_school">"학교 건물"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_college">"단과대학 건물"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_hospital">"병원 건물"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_stadium">"경기장"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_train_station">"철도역"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_transportation">"대중교통용 건물"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_university">"종합대학 건물"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_government">"정부 건물"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_cars">"자동차용"</string>
     <string name="quest_buildingType_carport">"간이 차고"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_carport_description">"자동차용 지붕"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_garage">"단일 차고"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_garages">"다중 차고"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_parking">"주차장 건물"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_farm">"농장 안에 있음"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_farmhouse">"농가"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_farmhouse_description">"농장 안에 있는 주거 건물"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_farm_auxiliary">"농장 건물"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_farm_auxiliary_description">"주거 건물을 제외한 농장 안에 있는 모든 건물"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_greenhouse">"온실"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_other">"기타"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_shed">"헛간"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_hut">"헛간"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_hut_description">"작고 단순한 주택이나 쉼터"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_roof">"지붕"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_service">"발전소 건물"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_service_description">"펌프나 변압기 같은 기계가 있는 건물"</string>
     <string name="quest_buildingType_hangar">"격납고"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_hangar_description">"비행기, 헬리콥터, 우주선을 두는 창고"</string>
     <string name="quest_buildingType_bunker">"벙커"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_answer_no_housenumber">"건물번호가 없음…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_answer_no_housenumber_message1">"이 건물의 태그는 다음과 같습니다."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_answer_no_housenumber_message2">"이 지물이 단순히 건물의 일부가 아니라서 건물번호가 없는 것입니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"성지"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_title_short2">"이 거리의 속도 제한은 얼마입니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_sign">"표지판"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_zone2">"저속 구간에 위치해 있음"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign2">"표지판이 없음, 기본값을 적용"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_no_sign">"영업 시간 표지판이 없음"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_name_title2">"여기에서는 %s의 속도 제한이 얼마입니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_sports_centre">"스포츠 센터"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_toilets">"화장실"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_sign_question">"속도 제한이 어떤 수단으로 정의되어 있습니까?"</string>
     <string name="notification_channel_download">"다운로드"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_playground_access_title">"누구나 이 놀이터에 갈 수 있습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_segregated_title">"인도와 자전거 도로가 여기에 어떻게 놓여 있습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="dialog_tutorial_upload">"변경한 내용을 수동으로 업로드하려면 툴바에서 이렇게 생긴 버튼을 사용하세요."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_segregated_separated">"서로 분리됨"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_segregated_mixed">"자전거와 사람이 같은 공간을 공유함"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxheight_title">"여기의 높이 제한은 얼마입니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxheight_parking_entrance_title">"이 주차장 입구의 높이 제한은 얼마입니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxheight_height_restrictor_title">"이 높이 제한 봉의 높이 제한은 얼마입니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxheight_tunnel_title">"이 터널의 높이 제한은 얼마입니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign">"표지판이 없음…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question">"대형 트럭(최소 4.5미터/15피트 이상)이 통과하기에 넉넉한 공간이 있습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxheight_unusualInput_confirmation_description">"이 높이 제한은 비현실적입니다. 정말 이 높이가 맞습니까?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_noteDiscussion_closed2">"%1$s, %2$s에 닫힘"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_noteDiscussion_reopen2">"%1$s, %2$s에 다시 열림"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_noteDiscussion_hide2">"%1$s, %2$s가 숨김"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_railway_crossing_barrier_title">"이 철도 건널목이 어떻게 보호되고 있습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_railway_crossing_barrier_none">"보호되지 않음"</string>
+
+    <!-- Fuzzy -->
     <string name="privacy_html_image_upload2">"&lt;p&gt;참고에 첨부한 사진은 StreetComplete 서버로 업로드되며, 참고가 해결되면 수일 후에 삭제됩니다. 사진의 메타데이터는 업로드하기 전에 삭제됩니다.&lt;/p&gt;"</string>
+
+    <!-- Fuzzy -->
     <string name="action_deselect_all">"모두 선택 해제"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_retail_description">"식당, 카페 등을 위한 건물을 포함"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_timeSelect_next">"다음"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tracktype_title">"이 농로는 얼마나 단단합니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tracktype_grade1">"단단함"</string>
 
     <!-- Fuzzy -->
     <string name="quest_tracktype_grade2">"거의 단단함"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tracktype_grade3">"혼합"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tracktype_grade4">"거의 부드러움"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tracktype_grade5">"부드러움"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_building_underground_name_title">"%s 건물이 완전히 지하에 있습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_building_underground_title">"이 건물이 완전히 지하에 있습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_traffic_signals_sound_title">"여기에 시각 장애인을 위한 음성 신호가 있습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_outside">"접근하려면 외길로 가야 한다는 것을 부분적으로 의미합니다."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_outside_title">"이 장소에 휠체어가 접근할 수 있습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_traffic_signals_button_title">"이 신호등에 녹색 등을 요청하는 버튼이 달려 있습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_motorcycleParkingCapacity_title">"여기에 오토바이가 얼마나 주차할 수 있습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_motorcycleParkingCoveredStatus_title">"이 오토바이 주차장에 지붕이 있습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="default_disabled_msg_maxspeed">"이 유형의 퀘스트를 해결하려면 속도 제한 표지판을 찾아 도로 전체를 뒤져야 하기 때문에 기본적으로 비활성화되어 있습니다. 보통 이 작업을 하려면 많은 노력이 필요합니다."</string>
+
+    <!-- Fuzzy -->
     <string name="pref_title_quests_restore_hidden">"숨겨진 퀘스트 복원"</string>
+
+    <!-- Fuzzy -->
     <string name="restore_hidden_success">"숨겨진 퀘스트 %d개가 복원되었습니다"</string>
 
     <!-- caution: This is not necessarily the floor and level=0 is not necessarily at street level
     as it may follow the numbering scheme of the building operator. Try to use a generic wording
     that does not carry an implicit meaning of where it is located in respect to the ground floor.
     The context is usually shopping centres, train stations or airport terminals -->
+    <!-- Fuzzy -->
     <string name="on_level">"%s층에 있음:"</string>
 
     <!-- as in: "Where is the metro station?" - "It is underground" -->
+    <!-- Fuzzy -->
     <string name="underground">"지하:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sidewalk_value_yes">"인도"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sidewalk_value_no">"인도 없음"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_accessible_for_pedestrians_title_prohibited">"법적으로, 보행자가 이 도로를 걸을 수 없습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"이 도로의 양쪽에는 모두 인도가 없다고 나와 있습니다. 실제로 인도가 있지만 차도와 분리되어 있다면, \"인도\"라고 답하세요."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_title">"이 건물은 다음 중 어떤 건물입니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="pref_title_theme_select">"테마 선택"</string>
     <string name="theme_automatic">"자동"</string>
+
+    <!-- Fuzzy -->
     <string name="theme_light">"밝음"</string>
+
+    <!-- Fuzzy -->
     <string name="theme_dark">"어두움"</string>
+
+    <!-- Fuzzy -->
     <string name="theme_system_default">"시스템 기본값"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_placeName_title_name">"이 장소의 명칭은 무엇입니까? (%s)"</string>
+
+    <!-- Fuzzy -->
     <string name="action_open_location">"다른 앱에서 위치 열기"</string>
+
+    <!-- Fuzzy -->
     <string name="map_application_missing">"설치된 다른 지도 앱이 없습니다"</string>
+
+    <!-- Fuzzy -->
     <string name="pref_title_overpass_url_select">"Overpass 서버 변경"</string>
+
+    <!-- Fuzzy -->
     <string name="pref_title_overpass_url_info">"설정을 적용하려면 앱을 다시 시작해야 합니다. 러시아 등의 국가에서는 검열을 우회할 수도 있습니다."</string>
+
+    <!-- Fuzzy -->
     <string name="label_housenumber">"건물 번호"</string>
+
+    <!-- Fuzzy -->
     <string name="label_blocknumber">"거리 블록 번호"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopShelter_covered">"모든 정류장에 지붕에 있음"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_ferry_pedestrian_name_title">"사람이 %s을(를) 이용할 수 있습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_ferry_pedestrian_title">"사람이 이 페리 노선을 이용할 수 있습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_ferry_motor_vehicle_name_title">"자동차가 %s을(를) 이용할 수 있습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_ferry_motor_vehicle_title">"자동차가 이 페리 노선을 이용할 수 있습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_leave_new_note_photos_are_useful">"사진을 추가하면 참고를 읽는 다른 사람들에게 도움이 됩니다."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_name_title">"이 %s 우체통에서는 우편물을 언제 가져갑니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="create_new_note_hint">"참고는 현지어나 영어로 작성하는 것이 좋습니다."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_leafType_title">"여기 있는 나무에 솔잎이나 잎이 있습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_leaf_type_needles">"솔잎"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_leaf_type_broadleaved">"활엽수"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_leaf_type_mixed">"둘 다 존재함"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cyclewayPartSurface_title">"이 자전거 도로의 포장재가 무엇입니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_generic_answer_differs_along_the_way">"각 부분마다 다름"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_split_way_description">"구간마다 특성이 다르다면, 먼저 길을 분할하세요. 그런 다음, 각 부분을 터치해 질문에 답을 하세요. 길을 분할하고 나서도, 퀘스트가 분할되려면 시간이 오래 걸릴 수 있습니다. 이 길을 분할하시겠습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_split_way_tutorial">"분할할 길을 선택하세요. 최대한 정확히 나눠 주세요. 지도 확대도 가능합니다."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_split_way_too_imprecise">"더 확대해 주세요"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_split_way_many_splits_confirmation_description">"이미 분할된 길입니다. 더 분할하려면 시간이 지나야 합니다."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_footwayPartSurface_title">"이 보도의 포장재가 무엇입니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_toiletsPart_title">"%s의 화장실에 휠체어가 들어갈 수 있습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_tram">"이 전차 정류장에 점자 블록이 있습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_name_tram">"전차 정류장 %s에 점자 블록이 있습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxweight_title">"여기의 하중 제한이 얼마입니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxweight_answer_noSign">"표지판이 없음"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxweight_unusualInput_confirmation_description">"이 중량은 비현실적입니다. 정말 이 값이 맞습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxweight_answer_other_sign">"표지판이 다르게 생겼음..."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxweight_unsupported_sign_request_photo">"참고를 남기고 싶으신가요? 사진과 함께 참고를 남기면 다른 매퍼가 이를 대신 처리해 줄 수 있습니다."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_generalFee_title">"%s의 입장료가 얼마입니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_laundrySelfService_title">"이 세탁소는 셀프 빨래방입니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_handrail_title">"이 계단에 난간이 있습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_no_name_title">"이 장소의 영업 시각이 언제입니까?(%s)"</string>
+
+    <!-- Fuzzy -->
     <string name="about_summary_current_version">"현재 버전: %s"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_postboxRef_title">"이 우체통에 부여된 번호가 얼마입니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_postboxRef_name_title">"이 우체통 %s에 부여된 번호가 얼마입니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"번호를 찾을 수 없음..."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_street_side_puzzle_tutorial">"질문 표시를 터치하고 도로의 주어진 부분에 해당하는 답변을 선택하세요"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_recycling_materials_title">"이 수거함에 무엇을 넣을 수 있습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_recycling_materials_note">"이 중에 원하는 답이 없다면, 대신 참고를 남겨 주세요."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_recycling_type_batteries">"배터리"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_recycling_type_cans">"캔"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_recycling_type_clothes">"의류"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_recycling_type_green_waste">"정원 폐기물"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_recycling_type_glass_bottles">"유리병"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_recycling_type_glass_bottles_short">"병"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_recycling_type_paper">"종이"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_recycling_type_plastic_generic">"플라스틱"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_recycling_type_plastic">"모든 플라스틱"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_recycling_type_shoes">"신발"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_recycling_type_electric_appliances">"전자제품"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_recycling_type_plastic_bottles">"플라스틱 병만"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_recycling_type_plastic_packaging">"비닐봉투만"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_recycling_type_scrap_metal">"고철류"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_recycling_type_any_glass">"모든 유리"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_recycling_glass_title">"오로지 유리병만 넣을 수 있습니까, 아니면 모든 종류의 유리를 넣을 수 있습니까?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_determineRecyclingGlass_description_any_glass">"넣을 수 없는 유리의 예시: 강화유리, 창문, 유리 제품(그릇 등), 전구, 거울 등."</string>
+
+    <!-- Fuzzy -->
     <string name="about_title_changelog">"버전 역사"</string>
+
+    <!-- Fuzzy -->
     <string name="title_whats_new">"업데이트 내역"</string>
+
+    <!-- Fuzzy -->
     <string name="about_title_rate">"이 앱 평가하기"</string>
+
+    <!-- Fuzzy -->
     <string name="about_summary_rate">"구글 플레이에서"</string>
+
+    <!-- Fuzzy -->
     <string name="about_title_donate">"기부"</string>
+
+    <!-- Fuzzy -->
     <string name="about_summary_donate">"감사하는 마음을 보여주세요 ❤️"</string>
+
+    <!-- Fuzzy -->
     <string name="about_description_donate">"이 앱을 지원하기로 결정해 주셔서 감사합니다! 기부 현황을 보거나 기부하고 싶으시다면, 각 플랫폼을 터치해 주세요:"</string>
 </resources>
