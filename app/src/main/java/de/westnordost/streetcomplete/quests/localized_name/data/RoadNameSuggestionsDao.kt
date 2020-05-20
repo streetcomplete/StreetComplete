@@ -21,7 +21,7 @@ import de.westnordost.streetcomplete.quests.localized_name.data.RoadNamesTable.C
 import de.westnordost.streetcomplete.quests.localized_name.data.RoadNamesTable.NAME
 import de.westnordost.streetcomplete.util.Serializer
 import de.westnordost.streetcomplete.ktx.toObject
-import de.westnordost.streetcomplete.util.crossTrackDistanceTo
+import de.westnordost.streetcomplete.util.distanceToArcs
 import de.westnordost.streetcomplete.util.enclosingBoundingBox
 import java.util.regex.Pattern
 
@@ -74,7 +74,7 @@ class RoadNameSuggestionsDao @Inject constructor(
             val geometry: ArrayList<LatLon> = serializer.toObject(cursor.getBlob(GEOMETRY))
             var minDistanceToRoad = Double.MAX_VALUE
             for (point in points) {
-                val dist = point.crossTrackDistanceTo(geometry)
+                val dist = point.distanceToArcs(geometry)
                 if (dist < minDistanceToRoad) minDistanceToRoad = dist
             }
             if (minDistanceToRoad <= maxDistance) {
