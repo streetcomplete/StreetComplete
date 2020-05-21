@@ -37,6 +37,7 @@
 
     <style name="Dialog.Button" parent="Widget.MaterialComponents.Button.TextButton">
         <item name="android:textColor">@color/accent</item>
+        <item name="android:letterSpacing" tools:targetApi="lollipop">-0.01</item>
     </style>
 
     <!-- +++++++++++++++++++++++++++++ Opening hours input +++++++++++++++++++++++++++++++++++++ -->
@@ -147,7 +148,7 @@
 
     <style name="BottomSheetButtonBarItem" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
         <item name="android:textColor">@color/button_bar_button_text</item>
-        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:letterSpacing" tools:targetApi="lollipop">-0.01</item>
     </style>
 
     <!-- ++++++++++++++++++++++++++++++++++ Note discussion ++++++++++++++++++++++++++++++++++++ -->
