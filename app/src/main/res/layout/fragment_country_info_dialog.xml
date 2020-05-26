@@ -118,7 +118,7 @@
                 android:id="@+id/wikiLinkButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/ic_open_in_browser_primary_24dp"
+                app:icon="@drawable/ic_open_in_browser_primary_24dp"
                 android:drawablePadding="8dp"
                 android:text="@string/user_statistics_country_wiki_link"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
