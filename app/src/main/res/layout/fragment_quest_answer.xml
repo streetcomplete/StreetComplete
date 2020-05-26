@@ -124,13 +124,22 @@
                                     android:paddingTop="@dimen/quest_form_vertical_padding"
                                     android:paddingBottom="@dimen/quest_form_vertical_padding"/>
 
-                                <LinearLayout
+                                <com.google.android.flexbox.FlexboxLayout
                                     android:id="@+id/buttonPanel"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:orientation="horizontal"
                                     android:layoutDirection="locale"
-                                    style="@style/ButtonBar">
+                                    android:gravity="center"
+                                    app:flexWrap="wrap"
+                                    app:justifyContent="space_between"
+                                    app:showDividerHorizontal="middle"
+                                    app:showDividerVertical="middle"
+                                    android:paddingStart="8dp"
+                                    android:paddingEnd="8dp"
+                                    app:dividerDrawableVertical="@drawable/button_bar_divider_with_vertical_padding"
+                                    app:dividerDrawableHorizontal="@drawable/button_bar_divider_with_horizontal_padding"
+                                    >
 
                                     <Button
                                         android:id="@+id/otherAnswersButton"
@@ -139,7 +148,7 @@
                                         android:text="@string/quest_generic_otherAnswers"
                                         style="@style/BottomSheetButtonBarItem"/>
 
-                                </LinearLayout>
+                                </com.google.android.flexbox.FlexboxLayout>
 
                             </LinearLayout>
 
