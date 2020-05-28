@@ -29,7 +29,8 @@ class AddRecyclingContainerMaterialsForm : AImageListQuestAnswerFragment<String,
         Item("small_electrical_appliances", R.drawable.ic_recycling_electric_appliances, R.string.quest_recycling_type_electric_appliances),
         Item("batteries",           R.drawable.ic_recycling_batteries,           R.string.quest_recycling_type_batteries),
         Item("green_waste",         R.drawable.ic_recycling_garden_waste,        R.string.quest_recycling_type_green_waste),
-        Item("oil",                 R.drawable.ic_recycling_oil,                 R.string.quest_recycling_type_oil)
+        Item("cooking_oil",         R.drawable.ic_recycling_cooking_oil,         R.string.quest_recycling_type_cooking_oil),
+        Item("engine_oil",          R.drawable.ic_recycling_engine_oil,          R.string.quest_recycling_type_engine_oil)
     )
 
     private val plasticItems = listOf(
