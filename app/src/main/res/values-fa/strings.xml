@@ -31,30 +31,14 @@
 
     <!-- Fuzzy -->
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"و همچنین نمایش یادداشت‌هایی که به عنوان سوال تعریف نشده‌اند"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"نادیده گرفتن یادداشت‌هایی که به عنوان سوال تعریف نشده است"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_title_map_cache">"مقدار حافظه پنهان"</string>
-
-    <!-- Fuzzy -->
     <string name="map_btn_gps_tracking">"من را دنبال کن"</string>
     <string name="map_attribution_mapzen">"طراحی شده توسط %s"</string>
-
-    <!-- Fuzzy -->
     <string name="map_attribution_osm">"© همکاران OpenStreetMap"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_otherAnswers">"دیگر پاسخ‌ها ..."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_answer_notApplicable">"نمی‌توان اظهار نظر کرد…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_confirmation_title">"شما مطمئن هستید؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_confirmation_yes">"بله مطمئنم"</string>
 
     <!-- Fuzzy -->
@@ -73,17 +57,9 @@
 
     <!-- Fuzzy -->
     <string name="quest_leave_new_note_no">"نه، فقط پنهان کن"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_title">"نام این مسیر چیست؟"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_description">"همان گونه که در تابلو خیابان نوشته شده، کلمات اختصاری را هم وارد نمایید:"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_answer_noName_confirmation_description">"گاهی علائم خیابان تنها در یک سوی خیابان است. همچنین توجه داشته باشید که ممکن است علائم تکمیلی برای معابر فرعی که به خیابان اصلی متصل هستند، وجود نداشته باشد. معمولا هر خیابان یا خانه دارای یک نام است."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"اگر نام را بدون اختصار می‌نویسید، باید آن را توضیح دهید. بسیاری از کلمات اختصاری اغلب در حالی که شما می‌نویسید، به طور خودکار توسط صفحه کلید هوشمند به کلمه اصلی باز می‌گردند، البته نه همه آنها."</string>
 
     <!-- Fuzzy -->
@@ -94,8 +70,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_openingHours_start_time">"زمان شروع کار"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_end_time">"زمان اتمام کار"</string>
 
     <!-- Fuzzy -->
@@ -156,8 +130,6 @@
 
     <!-- Fuzzy -->
     <string name="download_area_too_big">"لطفا بیشتر بزرگنمایی کنید"</string>
-
-    <!-- Fuzzy -->
     <string name="confirmation_cancel_prev_download_title">"درعوض، جستجوی فعلی را لغو کنید و اینجا را جستجو کنید"</string>
 
     <!-- Fuzzy -->
@@ -2280,4 +2252,20 @@
 
     <!-- Fuzzy -->
     <string name="confirmation_authorize_now_note2">"همچنین می توانید این کار را بعداً در صفحه نمایه انجام دهید."</string>
+    <string name="credits_art_contributors_title">"کارشناسان همکار"</string>
+    <string name="credits_projects_contributors_title">"پروژه های ساخته شده برای StreetComplete"</string>
+    <string name="credits_main_contributors_title">"همکاران اصلی"</string>
+    <string name="stats_are_syncing">"آمار شما همچنان در حال همگام سازی است. بعداً این صفحه را بررسی کنید."</string>
+    <string name="user_statistics_country_rank">"رتبه بندی در %2$s: %1$d"</string>
+    <string name="user_statistics_country_wiki_link">"نقشه برداری پویا %s"</string>
+    <string name="user_statistics_filter_by_country">"براساس کشور"</string>
+    <string name="user_statistics_filter_by_quest_type">"براساس نوع جُستار"</string>
+    <string name="user_profile_global_rank">"رتبه‌بندی جهانی"</string>
+    <string name="user_profile_local_rank">"رتبه بندی در %s"</string>
+    <string name="user_profile_days_active">"روزهای فعالیت"</string>
+    <string name="user_profile_achievement_levels">"سطح پیشرفت"</string>
+    <string name="quest_address_street_title">"شماره (خانه) %s به کدام خیابان تعلق دارد؟"</string>
+    <string name="quest_address_street_no_named_streets">"وابسته به خیابانی که نامگذاری نشده است"</string>
+    <string name="quest_address_street_place_name_label">"نام مکان:"</string>
+    <string name="quest_address_street_description">"روی جاده ای که به آن تعلق دارد ضربه بزنید یا در بخش ذیل آن را بطور کامل وارد نمایید:"</string>
 </resources>

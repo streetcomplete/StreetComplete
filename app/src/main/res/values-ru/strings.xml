@@ -1522,7 +1522,7 @@
     <string name="quest_buildingType_shed">"Сарай"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_hut">"хижина"</string>
+    <string name="quest_buildingType_hut">"Хижина"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_hut_description">"маленькое, простое жилье или укрытие"</string>
@@ -2263,7 +2263,14 @@
 
     <!-- Fuzzy -->
     <string name="map_btn_menu">"Меню"</string>
+    <string name="privacy_html_statistics">"
+&lt;p&gt;Данные, показываемые в вашем профиле, собираются из публично доступной истории правок OpenStreetMap и затем размещаются на моем сервере.&lt;/p&gt;
+"</string>
 
     <!-- Fuzzy -->
     <string name="credits_projects_contributors_title">"Проекты, сделанные для StreetComplete"</string>
+    <string name="stats_are_syncing">"Ваша статистика синхронизируется. Проверьте ее тут позднее."</string>
+    <string name="user_statistics_filter_by_country">"по стране"</string>
+    <string name="user_statistics_filter_by_quest_type">"по типу квеста"</string>
+    <string name="user_profile_days_active">"Активных дней"</string>
 </resources>

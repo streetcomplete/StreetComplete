@@ -2021,7 +2021,7 @@ Podzielić?"</string>
 Możesz zacząć je rozwiązywać od razu, a później zalogować się by je opublikować."</string>
 
     <!-- Fuzzy -->
-    <string name="tutorial_stay_safe">"Gdy nie masz pewności, możesz zaznaczyć \"Trudno powiedzieć\" i dodać notkę.
+    <string name="tutorial_stay_safe">"Gdy nie masz pewności, możesz zaznaczyć \"Odpowiedź niemożliwa…\" i dodać notkę.
 
 Na koniec: pamiętaj o bezpieczeństwie! Uważaj na otoczenie i nie wchodź na teren prywatny."</string>
 
@@ -2289,6 +2289,7 @@ Pamiętaj, że ta aplikacja pyta o numer budynku tylko po tym, jak zostanie okre
 
     <!-- Fuzzy -->
     <string name="user_statistics_country_rank">"Pozycja w %2$s: %1$d"</string>
+    <string name="user_statistics_country_wiki_link">"Portal %s"</string>
 
     <!-- Fuzzy -->
     <string name="user_statistics_filter_by_country">"Według państwa"</string>
@@ -2308,4 +2309,6 @@ Pamiętaj, że ta aplikacja pyta o numer budynku tylko po tym, jak zostanie okre
 
     <!-- Fuzzy -->
     <string name="user_profile_achievement_levels">"Poziom osiągnięcia"</string>
+    <string name="quest_address_street_no_named_streets">"Nie należy do nazwanej ulicy"</string>
+    <string name="quest_address_street_place_name_label">"Nazwa miejscowości/miejsca:"</string>
 </resources>
