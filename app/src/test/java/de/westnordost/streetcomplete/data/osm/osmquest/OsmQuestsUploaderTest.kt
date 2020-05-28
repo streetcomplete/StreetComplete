@@ -14,6 +14,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MergedElementDao
 import de.westnordost.streetcomplete.data.osm.upload.changesets.OpenQuestChangesetsManager
 import de.westnordost.streetcomplete.data.osm.upload.ChangesetConflictException
 import de.westnordost.streetcomplete.data.osm.upload.ElementConflictException
+import de.westnordost.streetcomplete.data.user.StatisticsUpdater
 import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.on
 import org.junit.Before
@@ -31,6 +32,7 @@ class OsmQuestsUploaderTest {
     private lateinit var questGiver: OsmQuestGiver
     private lateinit var elementGeometryCreator: OsmApiElementGeometryCreator
     private lateinit var singleChangeUploader: SingleOsmElementTagChangesUploader
+    private lateinit var statisticsUpdater: StatisticsUpdater
     private lateinit var uploader: OsmQuestsUploader
 
     @Before fun setUp() {
@@ -42,9 +44,10 @@ class OsmQuestsUploaderTest {
         elementGeometryDB = mock()
         questGiver = mock()
         elementGeometryCreator = mock()
+        statisticsUpdater = mock()
         on(elementGeometryCreator.create(any())).thenReturn(mock())
         uploader = OsmQuestsUploader(elementDB, elementGeometryDB, changesetManager, questGiver,
-                elementGeometryCreator, osmQuestController, singleChangeUploader)
+                elementGeometryCreator, osmQuestController, singleChangeUploader, statisticsUpdater)
     }
 
     @Test fun `cancel upload works`() {
@@ -101,6 +104,7 @@ class OsmQuestsUploaderTest {
         verify(elementDB, times(2)).put(any())
         verify(elementGeometryDB, times(2)).put(any())
         verify(questGiver, times(2)).updateQuests(any(), any())
+        verify(statisticsUpdater, times(2)).addOne(any(), any())
     }
 
     @Test fun `delete each unsuccessful upload from local DB and call listener`() {
@@ -115,7 +119,7 @@ class OsmQuestsUploaderTest {
 
         verify(osmQuestController, times(2)).fail(any())
         verify(uploader.uploadedChangeListener,times(2))?.onDiscarded(any(), any())
-        verifyZeroInteractions(questGiver, elementGeometryCreator)
+        verifyZeroInteractions(questGiver, elementGeometryCreator, statisticsUpdater)
     }
 
     @Test fun `delete unreferenced elements and clean metadata at the end`() {

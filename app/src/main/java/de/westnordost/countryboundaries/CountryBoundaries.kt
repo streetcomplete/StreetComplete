@@ -36,5 +36,5 @@ fun CountryBoundaries.isInAny(pos: LatLon, ids: Collection<String>) = isInAny(
 
 fun CountryBoundaries.isIn(pos: LatLon, id: String) = isIn(pos.longitude, pos.latitude, id)
 
-fun CountryBoundaries.getIds(pos: LatLon) = getIds(pos.longitude, pos.latitude)
+fun CountryBoundaries.getIds(pos: LatLon): MutableList<String> = getIds(pos.longitude, pos.latitude)
 

@@ -32,7 +32,7 @@ layers:
     buildings:
         data: { source: mapzen}
         address-labels:
-            filter: { $zoom: { min: 19 }, kind: address }
+            filter: { $zoom: { min: 18 }, kind: address }
             draw:
                 text:
                     text_source: addr_housenumber

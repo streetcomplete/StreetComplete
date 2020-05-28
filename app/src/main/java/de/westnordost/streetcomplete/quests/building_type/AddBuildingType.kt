@@ -9,12 +9,16 @@ class AddBuildingType (o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestTy
 
     // in the case of man_made, historic, military and power, these tags already contain
     // information about the purpose of the building, so no need to force asking it
+    // same goes (more or less) for tourism, amenity, leisure. See #1854
     override val tagFilters = """
         ways, relations with building = yes
          and !man_made
          and !historic
          and !military
          and !power
+         and !tourism
+         and !amenity
+         and !leisure
          and location != underground
          and ruins != yes
     """
@@ -22,7 +26,16 @@ class AddBuildingType (o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestTy
     override val wikiLink = "Key:building"
     override val icon = R.drawable.ic_quest_building
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_buildingType_title
+    override fun getTitle(tags: Map<String, String>) =
+        if (tags.containsKey("addr:housenumber"))
+            R.string.quest_buildingType_address_title
+        else
+            R.string.quest_buildingType_title
+
+    override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> {
+        val addr = tags["addr:housenumber"]
+        return if (addr != null) arrayOf(addr) else arrayOf()
+    }
 
     override fun createForm() = AddBuildingTypeForm()
 

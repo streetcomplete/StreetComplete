@@ -15,7 +15,16 @@ class AddRoofShape(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<S
     override val wikiLink = "Key:roof:shape"
     override val icon = R.drawable.ic_quest_roof_shape
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_roofShape_title
+    override fun getTitle(tags: Map<String, String>) =
+        if (tags.containsKey("addr:housenumber"))
+            R.string.quest_roofShape_address_title
+        else
+            R.string.quest_roofShape_title
+
+    override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> {
+        val addr = tags["addr:housenumber"]
+        return if (addr != null) arrayOf(addr) else arrayOf()
+    }
 
     override fun createForm() = AddRoofShapeForm()
 

@@ -57,15 +57,19 @@ abstract class AbstractInfoFakeDialogFragment(layoutId: Int) : Fragment(layoutId
 
     /* ---------------------------------------- Interface --------------------------------------- */
 
-    open fun dismiss() {
+    open fun dismiss(): Boolean {
+        if (currentAnimators.isNotEmpty()) return false
         isShowing = false
         animateOut(sharedTitleView)
+        return true
     }
 
-    protected fun show(sharedView: View) {
+    protected fun show(sharedView: View): Boolean {
+        if (currentAnimators.isNotEmpty()) return false
         isShowing = true
         this.sharedTitleView = sharedView
         animateIn(sharedView)
+        return true
     }
 
     /* ----------------------------------- Animating in and out --------------------------------- */
@@ -73,7 +77,6 @@ abstract class AbstractInfoFakeDialogFragment(layoutId: Int) : Fragment(layoutId
     private fun animateIn(sharedView: View) {
         dialogAndBackgroundContainer.visibility = View.VISIBLE
 
-        clearAnimators()
         currentAnimators.addAll(
             createDialogPopInAnimations() + listOf(
                 createTitleImageFlingInAnimation(sharedView),
@@ -84,7 +87,6 @@ abstract class AbstractInfoFakeDialogFragment(layoutId: Int) : Fragment(layoutId
     }
 
     private fun animateOut(sharedView: View?) {
-        clearAnimators()
         currentAnimators.addAll(createDialogPopOutAnimations())
         if (sharedView != null) currentAnimators.add(createTitleImageFlingOutAnimation(sharedView))
         currentAnimators.add(createFadeOutBackgroundAnimation())
@@ -97,6 +99,7 @@ abstract class AbstractInfoFakeDialogFragment(layoutId: Int) : Fragment(layoutId
             .alpha(1f)
             .setDuration(ANIMATION_TIME_IN_MS)
             .setInterpolator(DecelerateInterpolator())
+            .withEndAction { currentAnimators.clear() }
     }
 
     private fun createFadeOutBackgroundAnimation(): ViewPropertyAnimator {
@@ -106,6 +109,7 @@ abstract class AbstractInfoFakeDialogFragment(layoutId: Int) : Fragment(layoutId
             .setInterpolator(AccelerateInterpolator())
             .withEndAction {
                 dialogAndBackgroundContainer.visibility = View.INVISIBLE
+                currentAnimators.clear()
             }
     }
 

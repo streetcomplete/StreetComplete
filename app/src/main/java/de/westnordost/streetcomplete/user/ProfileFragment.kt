@@ -18,10 +18,7 @@ import de.westnordost.streetcomplete.data.user.*
 import de.westnordost.streetcomplete.data.user.achievements.UserAchievementsDao
 import de.westnordost.streetcomplete.util.BitmapUtil
 import kotlinx.android.synthetic.main.fragment_profile.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 import java.io.File
 import java.util.*
 import javax.inject.Inject
@@ -101,6 +98,11 @@ class ProfileFragment : Fragment(R.layout.fragment_profile),
         questStatisticsDao.removeListener(questStatisticsDaoListener)
         userStore.removeListener(userStoreUpdateListener)
         userController.removeUserAvatarListener(userAvatarListener)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        coroutineContext.cancel()
     }
 
     private fun updateUserName() {

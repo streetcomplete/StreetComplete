@@ -35,6 +35,7 @@ import de.westnordost.streetcomplete.util.distanceTo
 import de.westnordost.streetcomplete.view.RoundRectOutlineProvider
 import kotlinx.android.synthetic.main.fragment_split_way.*
 import javax.inject.Inject
+import kotlin.math.abs
 
 /** Fragment that lets the user split an OSM way */
 class SplitWayFragment
@@ -236,7 +237,7 @@ class SplitWayFragment
     private fun createSplitsForLines(clickPosition: LatLon, clickAreaSizeInMeters: Double): Set<SplitAtLinePosition> {
         val result = mutableSetOf<SplitAtLinePosition>()
         positions.forEachPair { first, second ->
-            val crossTrackDistance = clickPosition.crossTrackDistanceTo(first, second)
+            val crossTrackDistance = abs(clickPosition.crossTrackDistanceTo(first, second))
             if (clickAreaSizeInMeters > crossTrackDistance) {
                 val alongTrackDistance = clickPosition.alongTrackDistanceTo(first, second)
                 val distance = first.distanceTo(second)

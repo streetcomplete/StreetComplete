@@ -30,7 +30,8 @@ class AddLocalizedNameAdapter(
     private val languages: List<String>,
     private val abbreviationsByLocale: AbbreviationsByLocale?,
     private val localizedNameSuggestions: List<MutableMap<String, String>>?,
-    private val addLanguageButton: View
+    private val addLanguageButton: View,
+    private val rowLayoutResId: Int = R.layout.quest_localizedname_row
 ) : RecyclerView.Adapter<AddLocalizedNameAdapter.ViewHolder>() {
 
     var localizedNames: MutableList<LocalizedName>
@@ -82,7 +83,7 @@ class AddLocalizedNameAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        return ViewHolder(inflater.inflate(R.layout.quest_localizedname_row, parent, false))
+        return ViewHolder(inflater.inflate(rowLayoutResId, parent, false))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -114,9 +115,9 @@ class AddLocalizedNameAdapter(
     /** Show a context menu above the given [view] where the user can select one language from the
      * [languageList], which will be passed to the [callback] */
     private fun showLanguageSelectMenu(
-        view: View,
-        languageList: List<String>,
-        callback: (String) -> Unit
+            view: View,
+            languageList: List<String>,
+            callback: (String) -> Unit
     ) {
         if (languageList.isEmpty()) return
 
@@ -141,13 +142,13 @@ class AddLocalizedNameAdapter(
         val nativeDisplayLanguage = locale.getDisplayLanguage(locale)
         return if (displayLanguage == nativeDisplayLanguage) {
             String.format(
-                context.getString(R.string.quest_streetName_menuItem_language_simple),
-                languageCode, displayLanguage
+                    context.getString(R.string.quest_streetName_menuItem_language_simple),
+                    languageCode, displayLanguage
             )
         } else {
             String.format(
-                context.getString(R.string.quest_streetName_menuItem_language_native),
-                languageCode, nativeDisplayLanguage, displayLanguage
+                    context.getString(R.string.quest_streetName_menuItem_language_native),
+                    languageCode, nativeDisplayLanguage, displayLanguage
             )
         }
     }
@@ -156,9 +157,9 @@ class AddLocalizedNameAdapter(
      * [localizedNameSuggestionsMap]. The value of the selected key will be passed to the
      * [callback] */
     private fun showNameSuggestionsMenu(
-        view: View,
-        localizedNameSuggestionsMap: Map<String, Map<String, String>>,
-        callback: (Map<String, String>) -> Unit
+            view: View,
+            localizedNameSuggestionsMap: Map<String, Map<String, String>>,
+            callback: (Map<String, String>) -> Unit
     ) {
         val popup = PopupMenu(context, view)
 
@@ -280,10 +281,10 @@ class AddLocalizedNameAdapter(
         private fun updateNameSuggestions() {
             val localizedNameSuggestionsMap = getLocalizedNameSuggestionsByLanguageCode(localizedName.languageCode)
 
-            val nameInputNotEmpty = autoCorrectInput.text.toString().trim().isNotEmpty()
-            val hasNoNameSuggestions = localizedNameSuggestionsMap.isEmpty()
+            val nameInputEmpty = autoCorrectInput.text.toString().trim().isEmpty()
+            val hasNameSuggestions = localizedNameSuggestionsMap.isNotEmpty()
             buttonNameSuggestions.visibility =
-                if (hasNoNameSuggestions || nameInputNotEmpty) View.GONE else View.VISIBLE
+                    if (nameInputEmpty && hasNameSuggestions) View.VISIBLE else View.GONE
 
             buttonNameSuggestions.setOnClickListener { v ->
                 showNameSuggestionsMenu(v, localizedNameSuggestionsMap) { selection ->

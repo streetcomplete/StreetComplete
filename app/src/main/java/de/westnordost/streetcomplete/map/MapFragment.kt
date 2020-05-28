@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.map
 
 import android.app.Activity
 import android.content.res.Configuration
-import android.graphics.Point
 import android.graphics.PointF
 import android.graphics.RectF
 import android.os.Build
@@ -18,7 +17,8 @@ import androidx.core.content.edit
 import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
 import androidx.preference.PreferenceManager
-import com.mapzen.tangram.*
+import com.mapzen.tangram.MapView
+import com.mapzen.tangram.SceneUpdate
 import com.mapzen.tangram.TouchInput.*
 import com.mapzen.tangram.networking.DefaultHttpHandler
 import com.mapzen.tangram.networking.HttpHandler
@@ -32,8 +32,6 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.awaitLayout
 import de.westnordost.streetcomplete.ktx.containsAll
 import de.westnordost.streetcomplete.map.tangram.*
-import de.westnordost.streetcomplete.map.tangram.CameraPosition
-import de.westnordost.streetcomplete.map.tangram.CameraUpdate
 import kotlinx.android.synthetic.main.fragment_map.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -44,7 +42,6 @@ import okhttp3.internal.Version
 import java.io.File
 import java.util.*
 import java.util.concurrent.TimeUnit
-import kotlin.Exception
 
 /** Manages a map that remembers its last location*/
 open class MapFragment : Fragment(),

@@ -4,37 +4,31 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Build
 import android.os.Bundle
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import android.text.format.DateUtils
+import android.text.format.DateUtils.MINUTE_IN_MILLIS
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
-
-import java.io.File
-import java.util.Date
-
-import javax.inject.Inject
-
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import de.westnordost.osmapi.notes.NoteComment
+import de.westnordost.osmapi.user.User
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
-import de.westnordost.osmapi.notes.NoteComment
-import de.westnordost.streetcomplete.util.BitmapUtil
-import de.westnordost.streetcomplete.util.TextChangedWatcher
-import de.westnordost.streetcomplete.view.ListAdapter
-
-import android.text.format.DateUtils.MINUTE_IN_MILLIS
-import de.westnordost.osmapi.user.User
 import de.westnordost.streetcomplete.data.osmnotes.OsmNotesModule
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestController
+import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
+import de.westnordost.streetcomplete.util.BitmapUtil
+import de.westnordost.streetcomplete.util.TextChangedWatcher
 import de.westnordost.streetcomplete.view.CircularOutlineProvider
+import de.westnordost.streetcomplete.view.ListAdapter
 import de.westnordost.streetcomplete.view.RoundRectOutlineProvider
 import kotlinx.android.synthetic.main.fragment_quest_answer.*
 import kotlinx.android.synthetic.main.quest_buttonpanel_note_discussion.*
 import kotlinx.android.synthetic.main.quest_note_discussion_content.*
 import kotlinx.android.synthetic.main.quest_note_discussion_item.view.*
+import java.io.File
+import java.util.*
+import javax.inject.Inject
 
 class NoteDiscussionForm : AbstractQuestAnswerFragment<NoteAnswer>() {
 

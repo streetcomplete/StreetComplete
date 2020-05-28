@@ -30,6 +30,16 @@ class CircularFlagView @JvmOverloads constructor(
         updateCountryCode(value)
     }
 
+    init {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            outlineProvider = object : ViewOutlineProvider() {
+                override fun getOutline(view: View, outline: Outline) {
+                    outline.setOval(0,0,view.width,view.height)
+                }
+            }
+        }
+    }
+
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         // make it square
         val width = MeasureSpec.getSize(widthMeasureSpec)
@@ -67,18 +77,6 @@ class CircularFlagView @JvmOverloads constructor(
             d.draw(canvas)
         }
         super.onDraw(canvas)
-    }
-
-    override fun getOutlineProvider(): ViewOutlineProvider {
-        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            object : ViewOutlineProvider() {
-                override fun getOutline(view: View, outline: Outline) {
-                    outline.setOval(0,0,view.width,view.height)
-                }
-            }
-        } else {
-            return super.getOutlineProvider()
-        }
     }
 
     private fun updateCountryCode(countryCode: String?) {

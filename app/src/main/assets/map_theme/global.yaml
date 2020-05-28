@@ -19,7 +19,9 @@ global:
 
     earth_color: '#f3eacc'
     water_color: '#68d'
-    landuse_color: '#c6ddaa'
+    green_color: '#c6ddaa'
+    forest_color: '#a8c884'
+    town_color: '#f3dacd'
 
     building_color: rgb(204,214,238)
     building_outline_color: rgb(185,195,217)

@@ -17,6 +17,14 @@
         android:layout_height="match_parent"
         tools:ignore="RtlHardcoded">
 
+        <de.westnordost.streetcomplete.map.PointerPinView
+            android:id="@+id/locationPointerPin"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            app:iconSrc="@drawable/location_dot_small"
+            android:elevation="4dp"
+            android:visibility="gone" />
+
         <fragment
             android:id="@+id/answers_counter_fragment"
             android:name="de.westnordost.streetcomplete.controls.AnswersCounterFragment"
@@ -146,14 +154,6 @@
                 />
 
         </LinearLayout>
-
-        <de.westnordost.streetcomplete.map.PointerPinView
-            android:id="@+id/locationPointerPin"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            app:iconSrc="@drawable/location_dot_small"
-            android:elevation="4dp"
-            android:visibility="gone" />
 
         <fragment
             android:id="@+id/quest_download_progress_fragment"

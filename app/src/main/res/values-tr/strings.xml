@@ -1,65 +1,169 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!-- Fuzzy -->
     <string name="action_settings">"Ayarlar"</string>
+
+    <!-- Fuzzy -->
     <string name="oauth_communication_error">"Yetkilendirme sunucusuna erişilemiyor"</string>
+
+    <!-- Fuzzy -->
     <string name="retry">"Yeniden dene"</string>
+
+    <!-- Fuzzy -->
     <string name="oauth_failed_permissions">"Yetkilendirme başarısız oldu: Listelenen tüm izinlerin verilmesi gerekiyor"</string>
+
+    <!-- Fuzzy -->
     <string name="title_activity_settings">"Ayarlar"</string>
+
+    <!-- Fuzzy -->
     <string name="pref_category_communication">"İletişim"</string>
+
+    <!-- Fuzzy -->
     <string name="pref_category_display">"Görüntüle"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
+
+    <!-- Fuzzy -->
     <string name="pref_tilecache_size_message">"Harita döşemelerini önbelleğe almak için harici depolamaya ayrılan megabayt alan"</string>
+
+    <!-- Fuzzy -->
     <string name="pref_title_show_notes_not_phrased_as_questions">"Tüm notları göster"</string>
+
+    <!-- Fuzzy -->
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Sorularla ifade edilmeyen notları da gösteriliyor"</string>
+
+    <!-- Fuzzy -->
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Sorularla ifade edilmeyen notları yoksayma"</string>
+
+    <!-- Fuzzy -->
     <string name="pref_title_map_cache">"Harita Önbellek Boyutu"</string>
+
+    <!-- Fuzzy -->
     <string name="map_btn_gps_tracking">"Beni takip et"</string>
     <string name="map_attribution_mapzen">"%s tarafından desteklenmektedir"</string>
+
+    <!-- Fuzzy -->
     <string name="map_attribution_osm">"© OpenStreetMap katkıda bulunan kullanıcılar"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_generic_otherAnswers">"Diğer cevaplar…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_generic_answer_notApplicable">"Söyleyemem…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_generic_confirmation_title">"Emin misin?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_generic_confirmation_yes">"Evet eminim"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_generic_confirmation_no">"Kontrol edeceğim"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_generic_error_field_empty">"Bu alanı boş bıraktın"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_leave_new_note_title">"Bunun yerine bir not bırakmak istermisin?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_leave_new_note_description">"Bu noktada diğer haritacıların yorum yazabileceği, umarım çözebileceği veya alternatif olarak sadece arayışı gizleyebileceğin bir not bırakabilirsin."</string>
     <string name="quest_leave_new_note_yes">"Tamam"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_leave_new_note_no">"Hayır, sadece gizle"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetName_title">"Bu yolun adı ne?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetName_description">"Sokak işaretinde yazıldığı gibi kısaltmalar genişletilir:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetName_answer_noName_confirmation_description">"Bazen sokak levhası yalnızca sokağın bir ucundadır. Ayrıca, daha büyük bir sokağa ait yan sokaklar için ilave sokak işaretleri olmayabileceğini unutmayın. Genellikle evlerin bulunduğu sokakların bir adı vardır."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"İsim kısaltma olmaksızın hecele ediliyorsa, genişletilmelidir. Birçok yaygın kısaltma siz yazarken otomatik olarak genişletilir, ancak muhtemelen hepsi değil."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Kısaltma yok"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_name_title">"%s mekanının çalışma saatleri nedir?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_start_time">"Açılış zamanı"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_end_time">"Kapanış saati"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_add_months">"Ay ekle"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_add_hours">"Saat ekle"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_add_weekdays">"Hafta içi gün ekle"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_chooseMonthsTitle">"Ay seçin"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_chooseWeekdaysTitle">"Hafta içi seç"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_24_7_confirmation">"Bir başka deyişle, her gün herzaman açık mı?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_noteDiscussion_title">"Bu nota katkıda bulunabilir misiniz?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_noteDiscussion_no">"Hayır, saklan"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_noteDiscussion_anonymous">"Anonim"</string>
+
+    <!-- Fuzzy -->
     <string name="confirmation_discard_title">"Girdi silinsin mi?"</string>
+
+    <!-- Fuzzy -->
     <string name="confirmation_discard_positive">"Terket"</string>
+
+    <!-- Fuzzy -->
     <string name="confirmation_discard_negative">"İptal"</string>
+
+    <!-- Fuzzy -->
     <string name="action_download">"Buradaki görevleri tara"</string>
+
+    <!-- Fuzzy -->
     <string name="action_upload">"Yanıtları Yükle"</string>
 
     <!-- Fuzzy -->
     <string name="no_changes">"Cevap vermedin"</string>
+
+    <!-- Fuzzy -->
     <string name="close">"kapat"</string>
+
+    <!-- Fuzzy -->
     <string name="download_error">"Görevler için tarama yapılırken hata oluştu"</string>
+
+    <!-- Fuzzy -->
     <string name="upload_error">"Yanıtlar yüklenirken hata oluştu"</string>
+
+    <!-- Fuzzy -->
     <string name="download_area_too_big">"Lütfen yakınlaştırın."</string>
+
+    <!-- Fuzzy -->
     <string name="confirmation_cancel_prev_download_title">"Geçerli arama durdurulup burada tarama yapılsın mı?"</string>
+
+    <!-- Fuzzy -->
     <string name="notification_downloading">"Görevler aranıyor…"</string>
+
+    <!-- Fuzzy -->
     <string name="turn_on_location_request">"Yer bulma kapalı. Açmak için Ayarlar'a gidilsin mi?"</string>
+
+    <!-- Fuzzy -->
     <string name="no_location_permission_warning">"Çevrenizdeki görevleri taramak için konumunuz gerekiyor."</string>
 
     <!-- Fuzzy -->
@@ -67,43 +171,105 @@
 
     <!-- Fuzzy -->
     <string name="about_summary_authors">"© 2016–2020 Tobias Zwick ve katkıda bulunan kişiler"</string>
+
+    <!-- Fuzzy -->
     <string name="about_title_repository">"Kaynak Deposu"</string>
+
+    <!-- Fuzzy -->
     <string name="about_summary_repository">"GitHub'da"</string>
+
+    <!-- Fuzzy -->
     <string name="about_title_report_error">"Hata bildir"</string>
+
+    <!-- Fuzzy -->
     <string name="about_title_feedback">"Geri bildirim ver"</string>
+
+    <!-- Fuzzy -->
     <string name="about_title_license">"Lisans"</string>
     <string name="about_summary_license">"GNU Genel Kamu Lisansı"</string>
+
+    <!-- Fuzzy -->
     <string name="offline">"Çevrimdışısınız"</string>
 
     <!-- Fuzzy -->
     <string name="confirmation_authorize_now">"Verdiğiniz cevaplardan herhangi birisini uygulamak için OSM kullanıcı hesabınızla yetkilendirmeniz gerekir. Şimdi yetkilendirilsin mi?"</string>
+
+    <!-- Fuzzy -->
     <string name="not_authorized">"Yetkilendirilmedi"</string>
 
     <!-- Fuzzy -->
     <string name="version_banned_message">"StreetComplete’in bu sürümü çok eski.  Lütfen güncelle!"</string>
+
+    <!-- Fuzzy -->
     <string name="no_gps_no_quests">"Çevrenizdeki görevleri otomatik olarak taramak için, konumu açın"</string>
+
+    <!-- Fuzzy -->
     <string name="nothing_more_to_download">"Başka görev yok"</string>
+
+    <!-- Fuzzy -->
     <string name="later">"Sonra"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetName_answer_noProperStreet_link">"Sadece iki yolu birbirine bağlıyor"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetName_answer_noProperStreet_leaveNote">"Başka bir şey (not bırak)"</string>
+
+    <!-- Fuzzy -->
     <string name="about_title_privacy_statement">"Gizlilik Beyanı"</string>
+
+    <!-- Fuzzy -->
     <string name="about_summary_privacy_statement">"ve veri kullanımı"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_public_holidays">"Resmi tatil"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_public_holidays_short">"RT"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_open_end">"Açık uç"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_answer_247">"7/24 açık"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_answer_seasonal_opening_hours">"Aya göre farklılık gösteriyor..."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_answer_no_regular_opening_hours">"Düzenli açılış saatleri yok…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_comment_title">"Çalışma saatlerini açıkla"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_comment_description">"Özlü olun, ideal olarak işaretten gelen ifadeyi kullanın. Ben. \"randevu ile\". İşaretin olmaması, mutlaka düzenli bir çalışma saatinin olmadığı anlamına gelmez."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingLevels_title">"Bu binanın kaç katı var?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingLevels_title_buildingPart">"Bu bina katmanı kaç katlıdır?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_roofShape_title">"Bu bina çatısının temel şekli nedir?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_roofShape_select_one">"Birini seç:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_roofShape_show_more">"Daha fazla göster…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_roofShape_answer_many">"Birkaç farklı şekli var"</string>
+
+    <!-- Fuzzy -->
     <string name="pref_title_sync">"Otomatik Senkronizasyon"</string>
+
+    <!-- Fuzzy -->
     <string name="map_btn_zoom_out">"Uzaklaştır"</string>
+
+    <!-- Fuzzy -->
     <string name="map_btn_zoom_in">"Yakınlaştır"</string>
 
     <!-- Fuzzy -->
@@ -133,115 +299,269 @@ Haritayı görüntülemek için vektör karoları, anonim olan &lt;a href=\"http
 &lt;P&gt;
 (&lt;I&gt; Bu henüz gerçekleştirilmedi, yalnızca size neyin geleceğini size bildirmek istiyoruz! &lt;/ I&gt;) Afiş tablosunda ve profilde gösterilen veriler, OpenStreetMap'ten halka açık bilgilerden toplandı. Veriler bu uygulamadan değil, temelde OSM kullanıcılarının kamusal taahhüt geçmişinden gelmektedir.
 &lt;/ P&gt;"</string>
+
+    <!-- Fuzzy -->
     <string name="autosync_on">"Açık"</string>
+
+    <!-- Fuzzy -->
     <string name="autosync_only_on_wifi">"Sadece Wifi'de"</string>
+
+    <!-- Fuzzy -->
     <string name="autosync_off">"Kapalı"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetSurface_title">"Bu yol hangi yüzeye sahip?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_value_paved">"Döşeli (genel)"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_value_unpaved">"Asfaltsız (genel)"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_value_ground">"Zemin (genel)"</string>
     <string name="quest_surface_value_asphalt">"Asfalt"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_value_compacted">"Sert toprak"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_value_concrete">"Beton"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_value_dirt">"Toprak"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_value_fine_gravel">"İnce çakıl"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_value_grass">"Çim"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_value_grass_paver">"Çim"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_value_gravel">"Çakıl"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_value_paving_stones">"Parke taşı"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_value_pebblestone">"Çakıl Taşı"</string>
     <string name="quest_surface_value_sand">"Kum"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_value_sett">"Kaldırım taşı"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_value_wood">"Ahşap"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_placeName_title">"Buranın adı ne?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_sidewalk_title">"Bu caddede kaldırım var mı?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Bu sokak nerde?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cyclewaySurface_title">"Burada bisiklet yolunun yüzeyi nedir?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_serviceType_title">"Burası nasıl bir servis yolu?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetLanes_title">"Bu yolda kaç şerit var?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetLanes_description">"Yol işareti yoksa şeritte yoktur."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetLanes_answer_noLanes">"Hiçbir belirgin şeritleri yok"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetLanes_noLanes_estWidth">"Lütfen bu yolda kaç araba birbirine uyacağını tahmin edin."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_oneway_title">"Burası tek yönlü cadde mi?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_title">"Bu binanın kapı numarası kaç?"</string>
+
+    <!-- Fuzzy -->
     <string name="store_listing_short_description">"OpenStreetMap anketör"</string>
+
+    <!-- Fuzzy -->
     <string name="store_listing_full_description">"StreetComplete ile OpenStreetMap'in geliştirilmesine yardım edin!
 
 Bu uygulama, çevrenizdeki tamamlanmamış ve genişletilebilir verileri bulur ve bir harita üzerinde işaretleyiciler olarak görüntüler. Her biri, sitedeki bilgiyi tamamlamak için basit bir soruyu yanıtlayarak çözülebilir.
 
 Girdiğiniz bilgiler daha sonra başka bir editör kullanmak zorunda kalmadan adınıza doğrudan OpenStreetMap'a eklenir."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_name_answer_noName">"Adı yok.…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_name_answer_noName_confirmation_title">"Gerçekten adı yok mu?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_name_noName_confirmation_positive">"Evet, isim yok"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_add_times">"Açılış saatlerini ekle"</string>
+
+    <!-- Fuzzy -->
     <string name="crash_message">"Hata raporunu geliştiriciye gönderir misin?"</string>
+
+    <!-- Fuzzy -->
     <string name="crash_title">"Oh hayır, StreetComplete son kez düştü!"</string>
+
+    <!-- Fuzzy -->
     <string name="crash_compose_email">"E-posta oluştur"</string>
+
+    <!-- Fuzzy -->
     <string name="no_email_client">"e-posta istemcisi kurulu değil."</string>
+
+    <!-- Fuzzy -->
     <string name="pref_title_keep_screen_on">"Ekranı açık tut"</string>
+
+    <!-- Fuzzy -->
     <string name="download_server_error">"Görevler taranırken bağlantı hatası oluştu. Tekrar deneyin."</string>
+
+    <!-- Fuzzy -->
     <string name="upload_server_error">"Yanıtlar yüklenirken bağlantı hatası. Daha sonra tekrar deneyin."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_generic_hasFeature_yes">"Evet"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_generic_hasFeature_no">"Hayır"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopShelter_title">"Bu otobüs durağının üstü kapalı mı?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_bikeParkingCapacity_title">"Burada kaç bisiklet park edilebilir?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_unusualHousenumber_confirmation_description">"Bu numara çok sıradışı gözüküyor."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sport_title">"Burada hangi spor yapılıyor?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sport_answer_multi">"Spesifik bir spor değil"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sport_soccer">"Futbol"</string>
     <string name="quest_sport_tennis">"Tenis"</string>
     <string name="quest_sport_baseball">"Beyzbol"</string>
     <string name="quest_sport_basketball">"Basketbol"</string>
     <string name="quest_sport_golf">"Golf"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sport_equestrian">"Binicilik sporları"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sport_athletics">"Atletizm"</string>
     <string name="quest_sport_volleyball">"Voleybol"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sport_beachvolleyball">"Plaj Voleybolu"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sport_american_football">"Amerikan Futbolu"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sport_skateboard">"Kaykay"</string>
     <string name="quest_sport_bowls">"Çim Topu"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sport_shooting">"Atış"</string>
     <string name="quest_sport_cricket">"Kriket"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sport_table_tennis">"Masa Tenisi"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sport_gymnastics">"Jimnastik"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sport_archery">"Okçuluk"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sport_australian_football">"Avustralya Futbolu"</string>
     <string name="quest_sport_badminton">"Badminton"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sport_canadian_football">"Kanada Futbolu"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sport_field_hockey">"Çim Hokeyi"</string>
     <string name="quest_sport_handball">"Hentbol"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sport_ice_hockey">"Buz Hokeyi"</string>
     <string name="quest_sport_netball">"Netbol"</string>
     <string name="quest_sport_rugby">"Rugby"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_select_hint">"Seçin:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sport_manySports_confirmation_description">"Bu spor sahası tam olarak bu sporlar için özel olarak mı tasarlandı (işaretler ve donanımlar var) veya her türlü oyun için genel amaçlı bir spor alanı mı?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_manySports_confirmation_specific">"Özellikle bunlar"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_manySports_confirmation_generic">"Genel amaçlı"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sport_manySports_confirmation_title">"Birçok spor seçtin"</string>
 
     <!-- Fuzzy -->
     <string name="quest_busStopShelter_name_title">"%s otobüs durağının üstü kapalı mı?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_toiletsFee_title">"Bu tuvalet ücretli mi?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_bus">"Bu otobüs durağında dokunmatik kaplamalar var mı?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"Bu geçit dokunsal kaplamalara sahip mi?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_source_dialog_title">"Bu yeri kontrol ettiğinden emin misin?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_name_bus">"%s otobüs durağının dokunsal döşemeleri var mı?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_source_dialog_note">"Sadece bir inceleme ile bulunan bilgiler girilmelidir."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_bicycleParkingCoveredStatus_title">"Burası kapalı bisiklet park yeri mi(yağmurdan korunuyor)?"</string>
+
+    <!-- Fuzzy -->
     <string name="dialog_session_dont_show_again">"Bu oturum için tekrar gösterme"</string>
 
     <!-- Fuzzy -->
     <string name="quest_streetSurface_name_title">"%s yolunun yüzeyi nedir?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Bu hız limiti mantıksız gözüküyor."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Hız limiti belirtilmediğine emin misin?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_confirmation">"Sokağın sonuna baktın mı?
 Tüm cadde boyunca vurgulanan bölüm için geçerli hiçbir işaret yoksa, varsayılan hız limitleri uygulanır."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Evet, işaret yok"</string>
 
     <!-- Fuzzy -->
@@ -249,21 +569,43 @@ Tüm cadde boyunca vurgulanan bölüm için geçerli hiçbir işaret yoksa, vars
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_urbanOk">"Yerleşim yeri"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_ruralOk">"Kırsal"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_info_zone">"Eğer ana kavşakta bunun gibi bir işaret varsa farklı tabelalara gerek yoktur, bu işaret tüm alandaki hız sınırı için geçerlidir."</string>
     <string name="quest_sport_softball">"Bi çeşit beyzbol"</string>
     <string name="quest_sport_racquet">"Raketbol"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sport_ice_skating">"Buz Pateni"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sport_sepak_takraw">"Ayak voleybolu"</string>
 
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_name_title">"%s tekerlekli sandalye ile erişilebilir mi?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited">"Kısmen"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_bikeParkingCapacity_hint">"Çoğu normal standın, her iki taraftan da bisiklet park etmek için kullanılabileceğini unutmayın."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sport_roller_skating">"Tekerlekli paten"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_bus_station_title">"Bu otobüs durağı, terlekli sandalye ile erişilebilir mi?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_subway_entrance_title">"Bu metro girişi, tekerlekli sandalye ile erişilebilir mi?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_railway_station_title">"Bu demiryolu istasyonuna tekerlekli sandalye erişilebilir mi?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_location_title">"Bu yer tekerlekli sandalye ile erişilebilir mi?"</string>
 
     <!-- Fuzzy -->
@@ -277,402 +619,1111 @@ Tüm cadde boyunca vurgulanan bölüm için geçerli hiçbir işaret yoksa, vars
 
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_location_name_title">"%s tekerlekli sandalye ile erişilebilir mi?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_business">"Kısmen, yere erişmek için tek bir adımdan daha fazlası olmadığı ve içerideki odaların çoğunun tekerlekli sandalye erişimine uygun olduğu anlamına gelir."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_public_transport">"Kısmen, erişmek için tek bir adımdan daha fazlası olmadığı anlamına gelir."</string>
 
     <!-- Fuzzy -->
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"%s isminin kısaltması nedir?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_baby_changing_table_toilets_title">"Bu tuvalette bebek bezi değiştirilebilir mi?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_baby_changing_table_title">"%s mekanında bebek bezi değiştirme imkanı var mı?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_recycling_type_title">"Ne tür bir geri dönüşüm tesisi?"</string>
+
+    <!-- Fuzzy -->
     <string name="recycling_centre">"Merkez"</string>
     <string name="overground_recycling_container">"Konteyner"</string>
+
+    <!-- Fuzzy -->
     <string name="underground_recycling_container">"Yeraltı Konteyneri"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_generic_error_a_field_empty">"Alanı boş bıraktın"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetName_menuItem_language_simple">"%1$s - %2$s"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetName_menuItem_language_native">"%1$s - %2$s (%3$s)"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetName_answer_cantType">"Tabeladaki karakterleri yazamıyorum"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetName_cantType_title">"Klavye düzeni eksik mi?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetName_cantType_open_settings">"Ayarları Aç"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetName_cantType_open_store">"Mağazayı Aç"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetName_cantType_description">"Varsayılan klavye kullanıyorsanız, giriş yöntemi ayarlarında ihtiyacınız olan dil için klavye düzenini kolayca etkinleştirebilme ihtimaliniz vardır.
 
  Aksi takdirde, başka bir klavyeyi uygulama mağazasından indirebilirsiniz.  Birçok dili destekleyen popüler klavyeler Google Gboard, SwiftKey ve Anysoft Klavye'dir."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetName_menuItem_nolanguage">"(belirtilmemiş)"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_type_title">"Bu ne tür bir yangın musluğu?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_type_pillar">"Sütun"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_type_underground">"Yeraltı"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_type_wall">"Duvar"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_type_pond">"Gölet"</string>
+
+    <!-- Fuzzy -->
     <string name="credits_contributors">"Tüm listeyi &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;GitHub'da görebilirsin&lt;/a&gt;. "</string>
+
+    <!-- Fuzzy -->
     <string name="credits_translations">"Tüm liste için &lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;POEditor'de projeye bak&lt;/a&gt;."</string>
+
+    <!-- Fuzzy -->
     <string name="credits_translations_title">"Çeviriler"</string>
+
+    <!-- Fuzzy -->
     <string name="credits_contributors_title">"Kod Katkıcıları"</string>
+
+    <!-- Fuzzy -->
     <string name="credits_author_title">"Hazırlayan ve Sürdüren"</string>
+
+    <!-- Fuzzy -->
     <string name="credits_and_more">"ve dahası..."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_living_street">"Bu yaşayan bir sokak"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_living_street_confirmation_title">"Peki böyle bir tabela var mı?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_orchard_produce_title">"Burada ne yetişiyor?"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_grapes">"Üzüm"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_agaves">"Sabır otu"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_almonds">"Badem"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_apples">"Elma"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_apricots">"Kayısı"</string>
     <string name="produce_avocados">"Avokado"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_bananas">"Muz"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_blueberries">"Yaban mersini"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_cacao">"Kakao"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_cashew_nuts">"Kaju fıstığı"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_cherries">"Kiraz"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_chestnuts">"Kestane"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_coconuts">"Hindistan Cevizi"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_coffee">"Kahve"</string>
     <string name="produce_cranberries">"Kızılcık"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_dates">"Hurma"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_figs">"İncir"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_grapefruits">"Greyfurt"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_guavas">"Guava"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_hazelnuts">"Fındık"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_hops">"Şerbetçiotu"</string>
     <string name="produce_jojoba">"Jojoba"</string>
     <string name="produce_kiwis">"Kivi"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_kola_nuts">"Kola cevizi"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_lemons">"Limon"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_limes">"Misket limonu"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_mangos">"Mango"</string>
     <string name="produce_mate">"Mate otu"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_nutmeg">"Muskat"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_oil_palms">"Palmiye"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_olives">"Zeytin"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_oranges">"Portakal"</string>
     <string name="produce_papayas">"Papaya"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_peaches">"Şeftali"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_pears">"Armut"</string>
     <string name="produce_chili">"Kırmızı biber"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_persimmons">"Cennet elması"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_pineapples">"Ananas"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_pepper">"Yeşil biber"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_pistachios">"Fıstık"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_plums">"Erik"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_raspberries">"Ahududu"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_rubber">"Kauçuk"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_strawberries">"Çilek"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_tea">"Çay"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_vanilla">"Vanilya"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_walnuts">"Ceviz"</string>
     <string name="produce_sisal">"Sisal"</string>
 
     <!-- Fuzzy -->
     <string name="quest_way_lit_title">"Bu yol aydınlatılmış mı?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_way_lit_named_title">"Burada %s yanıyor mu?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_way_lit_road_title">"Yolun bu bölümü aydınlatılmış mı?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_way_lit_automatic">"Harekete duyarlı"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_way_lit_24_7">"Gece gündüz yanıyor"</string>
+
+    <!-- Fuzzy -->
     <string name="cannot_find_bbox_or_reduce_tilt">"Burada tarama yapamıyorum.  Daha fazla yakınlaştırmayı deneyin veya haritayı daha az eğin."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_crossing_type_title">"Bu ne tür bir geçiş?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_crossing_type_signals">"Trafik ışıklı geçiş"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_crossing_type_uncontrolled">"Kontrolsüz geçiş"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_crossing_type_unmarked">"Yol işaretleri olmayan geçiş"</string>
     <string name="compass_north_one_letter">"K"</string>
+
+    <!-- Fuzzy -->
     <string name="action_undo">"Geri al"</string>
+
+    <!-- Fuzzy -->
     <string name="undo_confirm_title">"Son cevabı geri almak istiyor musun?"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_mangosteen">"Mangostan"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_tomatoes">"Domates"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_sweet_peppers">"Tatlı biber"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_brazil_nuts">"Brezilya fındığı"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_parkingType_title">"Bu ne tür bir park alanı?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_parkingType_surface">"Otopark"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_parkingType_underground">"Yeraltı otoparkı"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_parkingType_multiStorage">"Kapalı Otopark"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_toiletAvailability_name_title">"%s alanında tuvalet var mı?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_powerPolesMaterial_title">"Bu elektrik direğinin malzemesi ne?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_powerPolesMaterial_wood">"Ahşap"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_powerPolesMaterial_metal">"Çelik"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_powerPolesMaterial_concrete">"Beton"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_advisory_speed_limit">"Tavsiye niteliğinde hız limiti…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_answer_house_name">"Kapı numarası yok ama ismi var…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_house_name_label">"Ev ismi:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingLevels_roofLevelsLabel2">"Çatı katı sayısı"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingLevels_levelsLabel2">"Kat sayısı (çatı katı hariç)"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingLevels_answer_multipleLevels">"Binanın bölümüne göre değişiyor"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingLevels_answer_description">"Bu durumda en yüksek bölümün değerlerini girin"</string>
+
+    <!-- Fuzzy -->
     <string name="unglue_hint">"Görüntüyü konumdan ayırmak için dokun"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Buradaki taşıt yollara fiziksel olarak birbirinden ayrı mi (Bariyer vb. aracılıgı ile)? Varsayılan azami hiz buna göre hesaplanmaktadır. "</string>
     <string name="about_category_feedback">"Geri bildirim"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_leave_new_note_photo">"Fotoğraf ekle"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_leave_new_note_photo_delete_title">"Bu resmi silmek istiyor musun?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_value_track">"Bisiklet parkuru"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_value_lane">"bisiklet şeridi"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_value_none">"yok"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_value_shared">"trafikteki diğer araçlarla paylaşılıyor"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_value_bus_lane">"otobüs yolunda"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_value_sidewalk">"kaldırım ile paylaşılıyor"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_leave_new_note_create_image_error">"Fotoğraf için dosya oluşturulamıyor"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_value_lane_dual">"iki yönde de bisiklet şeridi"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_value_track_dual">"iki yönde de bisiklet parkuru"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_value_sidewalk_allowed">"Yok, ama bisikletliler kaldırımda sürebilir"</string>
+
+    <!-- Fuzzy -->
     <string name="pref_category_advanced">"Gelişmiş"</string>
+
+    <!-- Fuzzy -->
     <string name="pref_title_quests">"Görev seçimi"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_enabled">"Açık"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_type">"Görev tipi"</string>
+
+    <!-- Fuzzy -->
     <string name="action_reset">"Sıfırla"</string>
+
+    <!-- Fuzzy -->
     <string name="reorder_quest_priority_hint">"Bir görevi indirme ve haritada görüntüleme sırasında önceliklendirmek için uzun basın ve sürükleyin."</string>
+
+    <!-- Fuzzy -->
     <string name="undo_confirm_positive">"Geri al"</string>
+
+    <!-- Fuzzy -->
     <string name="undo_confirm_negative">"İptal"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_dietType_vegetarian_name_title">"\"%s\" mekanının mönüsünde vejetaryen gıdalar var mı?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_dietType_vegan_name_title">"\"%s\" mekanının mönüsünde vegan gıdalar var mı?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_hasFeature_only">"Sadece"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_dietType_explanation_vegan">"Vegan gıdalarda hayvan ürünü bulunmaz (et, süt ürünleri, yumurta...)"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_dietType_explanation_vegetarian">"Vejetaryen gıdalarda et türleri bulunmaz."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_dietType_explanation">"Sadece bu mekan bu beslenme şekli için uygun gıdalar sunuyorsa eveti işaretleyin. Başlangıçları yoksayabilirsiniz."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_carWashType_title">"Bu ne tür bir araba yıkama?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_carWashType_automated">"Otomatik"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_carWashType_selfService">"Kendin yıka"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_carWashType_service">"Görevli yıkıyor"</string>
+
+    <!-- Fuzzy -->
     <string name="enable_quest_confirmation_title">"Bu görevi aç"</string>
+
+    <!-- Fuzzy -->
     <string name="default_disabled_msg_go_inside">"Bu görev varsayılan olarak kapalı çünkü tamamlamak için mekan ismi girmeniz gerekir."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_housenumber_conscription_number">"Kapı numarası"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_housenumber_street_number_optional">"Oryantasyon numarası (isteğe bağlı)"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_answer_contraflow_cycleway">"Ayrıca karşı tarafta bisiklet yolu var…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_emptyAnswer">"Tabelada ne olduğunu açıklaman gerekiyor.  İşareti yoksa, içerideki açılış saatlerini sormalısınız."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_value_none_but_no_oneway">"Yok ama bisikletliler bu yolu çift yönlü kullanabilir"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetName_answer_noName_question">"Neden ismi yok?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetName_answer_noProperStreet_service2">"Bir araba yolu veya park koridoru gibi bir şey"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetName_answer_noProperStreet_track2">"Bir tarım veya orman yolu"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetName_answer_noName_noname">"Hiçbiri, sadece ismi yok"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_toilets_title">"Bu tuvaleti tekerli sandalye ile kullanmak mümkün mü?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_toilets_name_title">"Bu tuvaleti %s tekerli sandalye ile kullanmak mümkün mü?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_description_toilets">"Tuvalet erişilebilir ise, bunun gibi bir tekerlekli sandalye işareti görülebilir.
      Kısmen tekerlekli sandalyenin tuvalete girip kullanabileceği anlamına gelir, ancak parmaklık veya adapte edilmiş el havzası yoktur."</string>
+
+    <!-- Fuzzy -->
     <string name="map_btn_create_note">"Yeni not oluştur"</string>
+
+    <!-- Fuzzy -->
     <string name="create_new_note_unprecise">"Bir not oluşturmak için yakınlaştır"</string>
+
+    <!-- Fuzzy -->
     <string name="create_new_note_description">"Diğer haritacıların burada bir sorundan haberdar olmalarını sağlamak için bir not bırakabilirsiniz.  Haritayı hareket ettirerek notun konumunu ayarlayın:"</string>
+
+    <!-- Fuzzy -->
     <string name="pref_title_quests_invalidation_summary">"Eger bazi maceralarin tarihinin gecmis oldugunu duşunuyorsan ise yararlİ"</string>
+
+    <!-- Fuzzy -->
     <string name="invalidate_confirmation">"Geçersiz"</string>
+
+    <!-- Fuzzy -->
     <string name="invalidation_dialog_message">"Önbelleğin geçersiz kılınması, görevlerin bir sonraki indirilmesinde güncellenmelerine neden olur.  Görev önbelleği bir hafta sonra otomatik olarak geçersiz kılınır ve çözdüğünüz bir görev daha önce başkası tarafından cevaplandığında ortaya çıkar."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_generic_looks_like_this">"Genellikle şöyle gözükür:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_value_metal">"Metal"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_title2">"Burada bisiklet yolu var mı? Hangi tip?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_bridge_structure_title">"Bu köprünün yapısı nedir?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_internet_access_name_title">"%s ne tür bir internet bağlantısı sunuyor?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_internet_access_wlan">"Wifi"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_internet_access_wired">"Kablolu (LAN)"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_internet_access_terminal">"İnternet erişimli bilgisayar"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_internet_access_no">"Bağlantı yok"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopShelter_tram_name_title">"%s tramvay durağında bir sığınak var mı?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopShelter_tram_title">"Bu tramvay durağında bir sığınak var mı?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_bench_backrest_title">"Bu bankın sırtlığı var mı?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_bench_answer_picnic_table">"Piknik masası var mı?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_religion_for_place_of_worship_title">"Bu mekanda hangi din uygulanmaktadır?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_religion_christian">"Hristiyanlık"</string>
     <string name="quest_religion_muslim">"İslam"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_religion_hindu">"Hinduizm"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_religion_buddhist">"Budizm"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_religion_shinto">"Şinto"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_religion_jewish">"Musevilik"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_religion_taoist">"Taoculuk"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_religion_for_place_of_worship_answer_multi">"herhangi bir dinin kullanımı için"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_religion_bahai">"Bahai Dini"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_religion_caodaist">"Kaodaizm"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_religion_chinese_folk">"Çin halk dini"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_religion_for_wayside_shrine_title">"Bu tapınakta hangi din temsil ediliyor?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_parking_fee_title">"Park ücreti var mı?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_value_lane_soft">"bisiklet şeridi (kesik işaretler)"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_parking_access_title">"Buraya kimlerin park edebileceği sınırlandırılmış mı?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_parking_access_private">"Özel"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_parking_access_yes">"Halka açık (ücretli veya ücretsiz)"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_parking_access_customers">"Müşterilere ait otopark"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetName_pedestrian_title">"Bu yaya caddesinin adı ne?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fee_answer_hours">"Zamana ve güne bağlı…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fee_add_times">"Zaman ekle"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fee_only_at_hours">"Evet, ama sadece…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fee_not_at_hours">"Evet, ama hayır…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fee_hours_title">"aşağıdaki zamanlarda:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopName_title">"Bu otobüs durağının adı nedir?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tramStopName_title">"Bu tramvay durağının adı nedir?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_housenumber_multiple_numbers">"Birden fazla ev numarasına sahip"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_housenumber_multiple_numbers_description">"Virgülle ayrılmış ev numaralarını veya aralıklarını girebilirsiniz. Örneğin 1,3 veya 2-6."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_stand">"Stand (bisiklet çerçevesini destekler)"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_wheelbender">"Jant Çamurluk (sadece jantları destekler)"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_locker">"Kilitlenebilir"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_building">"Yapı"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_title">"Burasi ne tarz bir bisiklet park alani ?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_title">"Bu posta kutusunun, posta toplama sureleri ne zaman?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_collectionTimes_add_times">"Toplama Zamanı Ekle"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_collectionTimes_answer_no_times_specified">"Zaman belirtilmedi"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_construction_road_title">"Bu yol tamamlandımı?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_construction_cycleway_title">"Bu bisiklet yolu tamamlandı mı?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_construction_footway_title">"Bu kaldırım tamamlanmış mı?
 "</string>
+
+    <!-- Fuzzy -->
     <string name="quest_construction_generic_title">"Bu yol tamamlandı mı?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_construction_building_title">"Bu bina tamamlandı mı?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_toiletAvailability_rest_area_title">"Bu dinlenme yerinde tuvalet bulunmakta midir?"</string>
+
+    <!-- Fuzzy -->
     <string name="privacy_html_tileserver">"&lt;p&gt; Haritayı görüntülemek için, vektör döşemeleri &lt;a href=\"https://tiles.map-data.de\"&gt; map-data.de &lt;/a&gt; adresinden alınır.  Hizmet, isimsiz istatistikler ve sorunları tespit etmek için döşeme isteklerini günlüğe kaydeder ancak birkaç gün sonra günlükleri siler. &lt;/p&gt;"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_generic_hasFeature_no_leave_note">"Hayır (not bırak)"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_title2">"Bu bina ne olarak inşa edilmişti ?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_generic_item_invalid_value">"Lütfen daha spesifik bir değer seçin."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_answer_multiple_types_description">"Basitçe bu binanın ana amacını seçin.  Örneğin.  Zemin katında, üstünde daire bulunan bir dükkan varsa, hala esas olarak bir apartman binasıdır."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_answer_construction_site">"Hala inşa ediliyor"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_residential_description">"insanların yaşadığı bina"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_house">"Ev"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_house_description">"tek aile evi"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_apartments_description">"Birden fazla aile için ev, zemin katta perakende satış mağazaları olabilir."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_apartments">"Apartman"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_detached">"Müstakil ev"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_semi_detached">"Yarı müstakil ev"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_terrace">"Şehir evi"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_hotel">"Hotel"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_dormitory">"Yurt"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_houseboat">"Yüzer ev"</string>
     <string name="quest_buildingType_bungalow">"Bungalow"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_bungalow_description">"küçük müstakil ev (yazlık ev, yazlık,…)"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_commercial">"Ticari bina"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_commercial_generic_description">"insanların çalıştığı veya başka ticari faaliyetlerde bulundukları bina"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_industrial">"Endüstriyel yapı"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_industrial_description">"Örneğin.  bir fabrika, atölye, araba tamir garajı,…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_office">"Ofis binası"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_retail">"Mağaza(lar)"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"Depo"</string>
     <string name="quest_buildingType_kiosk">"Kiosk"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_storage_tank">"Depolama tankı"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_religious">"Dini yapı"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_church">"Kilise"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_chapel">"Tapınak"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_cathedral">"Katedral"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_mosque">"Camii"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_synagogue">"Sinagog"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_civic">"Sivil yapı"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_civic_description">"genellikle bir mülk barındıran kamu binası"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_kindergarten">"Anaokulu Binası"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_school">"Okul Binası"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_college">"Üniversite Binası"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_hospital">"Hastane Binası"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_stadium">"Stadyum Binası"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_train_station">"Tren istasyonu"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_transportation">"Toplu taşıma binası"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_university">"Üniversite binası"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_government">"Hükümet binası"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_cars">"Arabalar için"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_carport_description">"bir araba için çatı"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_garage">"Tek garaj"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_garages">"Birden fazla garaj"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_parking">"Otopark binası"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_farmhouse">"Çiftlik Evi"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_farm_auxiliary">"Çiftlik binası"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_greenhouse">"Yeşil Ev"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_other">"Diğer"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_hut">"Kulübe"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_roof">"Çatı"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_service">"Servis Binası"</string>
     <string name="quest_buildingType_hangar">"Hangar"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_answer_no_housenumber_message1">"Bina şu şekilde etiketlendi:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"Türbe"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_title_short2">"Bu caddenin hız sınırı nedir?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_sign">"Bir işaret"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_zone2">"(Yavaş) bölgesi içinde"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign2">"İmza yok, varsayılanlar geçerlidir"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_no_sign">"Çalışma saatleri yok"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_name_title2">"%s için hız sınırı nedir?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_sports_centre">"Spor Merkezi
 "</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_toilets">"Tuvaletler"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_sign_question">"Hiz sinirini ne belirlemektedir ?"</string>
     <string name="notification_channel_download">"İndir"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_playground_access_title">"Bu oyun alanı halka açık mı?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_segregated_title">"Yaya kaldirimi ve bisiklet nasil ayrilmaktadir?"</string>
+
+    <!-- Fuzzy -->
     <string name="dialog_tutorial_upload">"Değişikliklerinizi manuel olarak yüklemek için, bunun gibi görünen araç çubuğundaki düğmeyi kullanın."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_segregated_mixed">"Bisikletçiler ve yayalar aynı alanı paylaşıyor"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxheight_title">"Burada yükseklik sınırı nedir?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxheight_parking_entrance_title">"Bu park girişinin yükseklik sınırı nedir?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxheight_height_restrictor_title">"Bu yükseklik sınırlayıcısının yükseklik sınırı nedir?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxheight_tunnel_title">"Bu tünelin yükseklik sınırı nedir?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign">"İşaret Yok…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign_question">"En yüksek kamyonların bile (en az yaklaşık 4,5 metre / 15 yükseklik) geçmesi için yeterince yer var mı?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxheight_unusualInput_confirmation_description">"Bu yükseklik mantıksız görünüyor. Bunun doğru olduğundan emin misin?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_noteDiscussion_closed2">"%1$s, %2$s tarafından kapatıldı"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_noteDiscussion_reopen2">"%1$s, %2$s tarafından yeniden açıldı"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_noteDiscussion_hide2">"%1$s, %2$s tarafından gizlenmiş"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_railway_crossing_barrier_title">"Bu demiryolu geçidi nasıl korunuyor?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_railway_crossing_barrier_none">"Değil"</string>
+
+    <!-- Fuzzy -->
     <string name="action_deselect_all">"Hiçbirini seçme"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_timeSelect_next">"İleri"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tracktype_grade1">"Katı"</string>
 
     <!-- Fuzzy -->
     <string name="quest_tracktype_grade2">"Çoğunlukla katı"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tracktype_grade3">"Karışık"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tracktype_grade4">"Çoğunlukla yumuşak"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_tracktype_grade5">"Yumuşak"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_building_underground_name_title">"%s tamamen yeraltında mı?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_building_underground_title">"Bu bina tamamen yer altında mı?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_traffic_signals_sound_title">"Burada kör için ses sinyalleri var mı?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited_description_outside">"Kısmen, erişmek için tek bir adımdan daha fazlası olmadığı anlamına gelir."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_outside_title">"Burası tekerlekli sandalyeye uygun mu?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_traffic_signals_button_title">"Bu trafik ışıklarında yürüyüş sinyali istemek için bir düğme var mı?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_motorcycleParkingCapacity_title">"Buraya kaç motosiklet park edilebilir?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_motorcycleParkingCoveredStatus_title">"Bu motosiklet park yeri kapalı mı (yağmurdan korunuyor)?"</string>
+
+    <!-- Fuzzy -->
     <string name="default_disabled_msg_maxspeed">"Bu görev türü varsayılan olarak devre dışı bırakılmıştır, çünkü yalnızca vurgulanan bölümü değil, tüm caddeyi hız sınırı işaretleri için kontrol etmeniz gerekir.  Bu bazen sadece tek bir görevi çözmek için zor olabilir."</string>
+
+    <!-- Fuzzy -->
     <string name="pref_title_quests_restore_hidden">"Gizli görevleri geri yükle"</string>
 
     <!-- as in: "Where is the metro station?" - "It is underground" -->
+    <!-- Fuzzy -->
     <string name="underground">"Yer alti"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sidewalk_value_yes">"Kaldırım var"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sidewalk_value_no">"Kaldırım yok"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_title">"Bu nasıl bir bina?"</string>
     <string name="theme_automatic">"Otomatik"</string>
+
+    <!-- Fuzzy -->
     <string name="theme_light">"Işık"</string>
+
+    <!-- Fuzzy -->
     <string name="theme_dark">"Koyu"</string>
+
+    <!-- Fuzzy -->
     <string name="theme_system_default">"Varsayılan"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_placeName_title_name">"Bu yerin adı ne?  (%s)"</string>
+
+    <!-- Fuzzy -->
     <string name="action_open_location">"Konumu başka bir uygulamada aç"</string>
+
+    <!-- Fuzzy -->
     <string name="map_application_missing">"Yüklenmiş başka harita uygulaması yok"</string>
+
+    <!-- Fuzzy -->
     <string name="pref_title_overpass_url_info">"Uygulamak için uygulamanın yeniden başlatılmasını gerektirir.  Örneğin Rusya’da sansürü atlayabilir."</string>
+
+    <!-- Fuzzy -->
     <string name="label_housenumber">"ev numarası"</string>
+
+    <!-- Fuzzy -->
     <string name="label_blocknumber">"blok numarası"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_ferry_pedestrian_name_title">"%s yayaları taşıyor mu?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_ferry_pedestrian_title">"Bu feribot yayaları taşıyor mu?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_ferry_motor_vehicle_name_title">"%s motorlu taşıtları taşıyor mu?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_ferry_motor_vehicle_title">"Bu feribot motorlu taşıtları taşıyor mu?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_leave_new_note_photos_are_useful">"Bir fotoğraf eklemek notu çok daha kullanışlı hale getirecektir."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_name_title">"%s posta kutusunun toplanma zamanı nedir?"</string>
+
+    <!-- Fuzzy -->
     <string name="create_new_note_hint">"Notu en iyi konuşulan yerel dilde veya İngilizce yazınız."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_leaf_type_mixed">"Her ikisi de mevcuttur. "</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxweight_answer_noSign">"İşaret yok"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxweight_answer_other_sign">"İşaret farklı görünüyor…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxweight_unsupported_sign_request_photo">"Not bırakmak ister misiniz?  Fotoğraflı bir not, diğer haritacıların onu görmesini sağlar."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_generalFee_title">"%s giriş ücretli mi?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_laundrySelfService_title">"Bu çamaşırhane self servis mi?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_handrail_title">"Bu basamaklarda parmaklık var mı?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_no_name_title">"Bu yerin çalışma saatleri?  (%s)"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_ref_answer_noRef">"Görünen referans numarası yok…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_street_side_puzzle_tutorial">"Soru işaretlerine dokunun ve yolun belirli bir yanı için bir cevap seçin."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_recycling_materials_title">"Buraya geri dönüşüm için neler bırakılabilir?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_recycling_materials_note">"Listelenenlerden farklı bir şey geri dönüştürülüyorsa, seçmek yerine lütfen bir not bırakın."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_recycling_type_batteries">"Pil"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_recycling_type_cans">"Kutu"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_recycling_type_clothes">"Çamaşır"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_recycling_type_green_waste">"Bahçe atıkları"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_recycling_type_glass_bottles">"Cam şişe ve kavanozlar"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_recycling_type_glass_bottles_short">"Şişe ve kavanozlar"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_recycling_type_paper">"Kağıt"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_recycling_type_plastic_generic">"Plastik"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_recycling_type_plastic">"Herhangi plastik"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_recycling_type_shoes">"Ayakkabı"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_recycling_type_electric_appliances">"Elektronik"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_recycling_type_plastic_bottles">"Sadece plastik şişeler"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_recycling_type_plastic_packaging">"Sadece plastik ambalaj"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_recycling_type_scrap_metal">"Hurda metal"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_recycling_type_any_glass">"Herhangi bir cam"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_recycling_glass_title">"Burada sadece cam şişeler, kavanozlar veya herhangi bir cam türü geri dönüştürülebilir mi?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_determineRecyclingGlass_description_any_glass">"Genellikle kabul edilmeyen cam örnekleri: temperli cam, pencere camları, cam eşyalar, ampuller veya aynalar."</string>
+
+    <!-- Fuzzy -->
     <string name="about_title_changelog">"Sürüm geçmişi"</string>
+
+    <!-- Fuzzy -->
     <string name="title_whats_new">"Neler yeni?"</string>
+
+    <!-- Fuzzy -->
     <string name="about_description_donate">"Uygulamamızı desteklemeyi düşündüğünüz için teşekkür ederiz! Mevcut bağışları görmek ve bağışyapmak için ilgili platforma dokunun:"</string>
 </resources>

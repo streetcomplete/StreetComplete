@@ -15,6 +15,7 @@ import de.westnordost.streetcomplete.data.osm.osmquest.SingleOsmElementTagChange
 import de.westnordost.streetcomplete.data.osm.upload.ChangesetConflictException
 import de.westnordost.streetcomplete.data.osm.upload.ElementConflictException
 import de.westnordost.streetcomplete.data.osm.upload.changesets.OpenQuestChangesetsManager
+import de.westnordost.streetcomplete.data.user.StatisticsUpdater
 import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.on
 import org.junit.Before
@@ -31,6 +32,7 @@ class UndoOsmQuestsUploaderTest {
     private lateinit var questGiver: OsmQuestGiver
     private lateinit var elementGeometryCreator: OsmApiElementGeometryCreator
     private lateinit var singleChangeUploader: SingleOsmElementTagChangesUploader
+    private lateinit var statisticsUpdater: StatisticsUpdater
     private lateinit var uploader: UndoOsmQuestsUploader
 
     @Before fun setUp() {
@@ -42,9 +44,10 @@ class UndoOsmQuestsUploaderTest {
         elementGeometryDB = mock()
         questGiver = mock()
         elementGeometryCreator = mock()
+        statisticsUpdater = mock()
         on(elementGeometryCreator.create(any())).thenReturn(mock())
         uploader = UndoOsmQuestsUploader(elementDB, elementGeometryDB, changesetManager, questGiver,
-                elementGeometryCreator, undoQuestDB, singleChangeUploader)
+                elementGeometryCreator, undoQuestDB, singleChangeUploader, statisticsUpdater)
     }
 
     @Test fun `cancel upload works`() {
@@ -105,6 +108,7 @@ class UndoOsmQuestsUploaderTest {
         verify(elementDB, times(1)).put(any())
         verify(elementGeometryDB, times(1)).put(any())
         verify(questGiver, times(1)).updateQuests(any(), any())
+        verify(statisticsUpdater).subtractOne(any(), any())
         verifyNoMoreInteractions(questGiver)
     }
 

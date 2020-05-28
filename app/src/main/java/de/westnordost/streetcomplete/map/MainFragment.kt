@@ -88,7 +88,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
     private lateinit var locationManager: FineLocationManager
     private val mainHandler = Handler(Looper.getMainLooper())
 
-    private var wasFollowingPosition = false
+    private var wasFollowingPosition = true
     private var wasCompassMode = false
 
     private var locationWhenOpenedQuest: Location? = null

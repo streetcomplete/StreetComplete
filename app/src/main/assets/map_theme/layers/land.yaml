@@ -71,12 +71,82 @@ layers:
                 extrude: true
 
     landuse:
-        data: { source: mapzen}
+        data: { source: mapzen }
         draw:
             polygons:
                 order: global.sort_rank
-                color: global.landuse_color
-
+        town:
+            filter:
+                kind:
+                    - residential
+                    - industrial
+                    - railway
+                    - religious
+                    - commercial
+                    - retail
+                    - garages
+                    - farmyard
+                    - construction
+                    # all the below are not really landuses but sometimes drawn outside of residential/commercial landuses
+                    - university
+                    - school
+                    - college
+                    - kindergarten
+                    - hospital
+                    - nursing_home
+                    - social_facility
+                    - clinic
+                    - parking
+                    - conference_centre
+                    - theme_park
+            draw:
+                polygons:
+                    color: global.town_color
+        green:
+            filter:
+                kind:
+                    - meadow
+                    - farmland
+                    - grassland
+                    - heath
+                    - grass
+                    - greenfield
+                    - village_green
+                    - dog_park
+                    - park
+                    - graveyard
+                    - cemetery
+                    - golf_course
+                    - miniature_golf
+                    - sports_centre
+                    - recreation_ground
+                    - pitch
+                    - playground
+                    - garden
+                    - allotments
+                    - petting_zoo
+                    - zoo
+                    - wildlife_park
+                    - maze
+                    - resort
+            draw:
+                polygons:
+                    color: global.green_color
+        trees:
+            filter:
+                kind:
+                    - scrub
+                    - orchard
+                    - plant_nursery
+                    - vineyard
+                    - forest
+                    - wood
+                    - natural_wood
+                    - natural_forest
+                    - natural_park
+            draw:
+                polygons:
+                    color: global.forest_color
         city_walls:
             filter: { kind: [city_wall, dam] }
             draw:
