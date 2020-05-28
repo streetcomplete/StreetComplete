@@ -1683,4 +1683,14 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_title">"Aký je to typ budovy?"</string>
+    <string name="quest_cyclewayPartSurface_title">"Aký povrch má táto cyklotrasa?"</string>
+    <string name="quest_wheelchairAccess_toiletsPart_title">"Sú záchody v %s dostupné pre vozičkárov?"</string>
+    <string name="quest_maxweight_answer_other_sign">"Značka vyzerá ináč…"</string>
+    <string name="quest_openingHours_no_name_title">"Aké otváracie hodiny má toto miesto? (%s)"</string>
+    <string name="quest_recycling_type_batteries">"Batérie"</string>
+    <string name="quest_recycling_type_paper">"Papier"</string>
+    <string name="quest_recycling_type_plastic_generic">"Plasty"</string>
+    <string name="quest_recycling_type_shoes">"Topánky"</string>
+    <string name="quest_recycling_type_electric_appliances">"Elektrické zariadenia"</string>
+    <string name="quest_recycling_type_plastic_bottles">"Len plastové fľaše"</string>
 </resources>

@@ -2258,4 +2258,6 @@ Kontuan izan aplikazio honek eraikin baten zenbakia, behin zein motakoa denean j
 
     <!-- Fuzzy -->
     <string name="unread_messages_button">"Ireki sarrera ontzia"</string>
+    <string name="action_about2">"Honi buruz"</string>
+    <string name="map_btn_menu">"Menua"</string>
 </resources>

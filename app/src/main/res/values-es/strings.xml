@@ -2311,4 +2311,8 @@ Tenga en cuenta que esta aplicación solicita el número de portal de un edifici
 
     <!-- Fuzzy -->
     <string name="user_profile_achievement_levels">"Logro niveles"</string>
+    <string name="quest_address_street_title">"¿A qué calle pertenece el número (casa) %s?"</string>
+    <string name="quest_address_street_no_named_streets">"No pertenece a una calle con nombre"</string>
+    <string name="quest_address_street_place_name_label">"Poner nombre:"</string>
+    <string name="quest_address_street_description">"Toque la carretera a la que pertenece en el mapa o ingrésela sin abreviaturas en el siguiente campo:"</string>
 </resources>

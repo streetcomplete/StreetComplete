@@ -2283,4 +2283,19 @@ Observera att den här appen ber om husnummer av en byggnad först efter att des
 
     <!-- Fuzzy -->
     <string name="stats_are_syncing">"Din statistik synkroniseras fortfarande. Kontrollera denna skärm senare."</string>
+    <string name="user_statistics_country_rank">"Rang i %2$s: %1$d"</string>
+    <string name="user_statistics_country_wiki_link">"Kartläggningsportal %s"</string>
+    <string name="user_statistics_filter_by_country">"efter land"</string>
+    <string name="user_statistics_filter_by_quest_type">"efter uppdragstyp"</string>
+    <string name="user_profile_global_rank">"Global"</string>
+    <string name="user_profile_local_rank">"Rang i
+%s"</string>
+    <string name="user_profile_days_active">"Dagar
+aktiv"</string>
+    <string name="user_profile_achievement_levels">"Prestations-
+nivåer"</string>
+    <string name="quest_address_street_title">"Vilken gata hör (hus) numret %s till?"</string>
+    <string name="quest_address_street_no_named_streets">"Det hör inte till en namngiven gata"</string>
+    <string name="quest_address_street_place_name_label">"Platsnamn:"</string>
+    <string name="quest_address_street_description">"Tryck på vägen den tillhör på kartan eller ange den utan förkortningar i fältet nedan:"</string>
 </resources>

@@ -2307,4 +2307,8 @@ attivo"</string>
     <!-- Fuzzy -->
     <string name="user_profile_achievement_levels">"Livelli di
 riconoscimento"</string>
+    <string name="quest_address_street_title">"A quale strada appartiene il numero civico %s?"</string>
+    <string name="quest_address_street_no_named_streets">"Non appartiene a una strada nota"</string>
+    <string name="quest_address_street_place_name_label">"Nome del luogo:"</string>
+    <string name="quest_address_street_description">"Premi la strada sulla mappa a cui appartiene o inseriscila senza abbreviazioni qui sotto:"</string>
 </resources>
