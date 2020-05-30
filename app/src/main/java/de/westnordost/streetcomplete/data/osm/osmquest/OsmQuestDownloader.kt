@@ -77,7 +77,7 @@ class OsmQuestDownloader @Inject constructor(
         // invalid geometry -> can't show this quest, so skip it
         if (geometry == null) {
             // classified as warning because it might very well be a bug on the geometry creation on our side
-            Log.w(TAG, "$questTypeName: Not adding a quest for ${element.toLogString()} because the element ${element.toLogString()} has no valid geometry")
+            Log.w(TAG, "$questTypeName: Not adding a quest because the element ${element.toLogString()} has no valid geometry")
             return false
         }
         val pos = geometry.center
