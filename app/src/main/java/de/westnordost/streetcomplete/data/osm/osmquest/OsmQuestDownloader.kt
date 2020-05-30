@@ -77,7 +77,7 @@ class OsmQuestDownloader @Inject constructor(
         // invalid geometry -> can't show this quest, so skip it
         if (geometry == null) {
             // classified as warning because it might very well be a bug on the geometry creation on our side
-            Log.w(TAG, "$questTypeName: Not adding a quest because the element ${element.toLogString()} has no valid geometry")
+            Log.w(TAG, "$questTypeName: Not adding a quest ${element.toLogString()} because the element ${element.toLogString()} has no valid geometry")
             return false
         }
         val pos = geometry.center
@@ -86,21 +86,21 @@ class OsmQuestDownloader @Inject constructor(
         if (geometry is ElementPolylinesGeometry) {
             val totalLength = geometry.polylines.sumByDouble { it.measuredLength() }
             if (totalLength > MAX_GEOMETRY_LENGTH_IN_METERS) {
-                Log.d(TAG, "$questTypeName: Not adding a quest at ${pos.toLogString()} because the geometry is too long")
+                Log.d(TAG, "$questTypeName: Not adding a quest for ${element.toLogString()} at ${pos.toLogString()} because the geometry is too long")
                 return false
             }
         }
 
         // do not create quests whose marker is at/near a blacklisted position
         if (blacklistedPositions.contains(pos.truncateTo5Decimals())) {
-            Log.d(TAG, "$questTypeName: Not adding a quest at ${pos.toLogString()} because there is a note at that position")
+            Log.d(TAG, "$questTypeName: Not adding a quest for ${element.toLogString()} at ${pos.toLogString()} because there is a note at that position")
             return false
         }
 
         // do not create quests in countries where the quest is not activated
         val countries = questType.enabledInCountries
         if (!countryBoundaries.isInAny(pos, countries)) {
-            Log.d(TAG, "$questTypeName: Not adding a quest at ${pos.toLogString()} because the quest is disabled in this country")
+            Log.d(TAG, "$questTypeName: Not adding a quest for ${element.toLogString()} at ${pos.toLogString()} because the quest is disabled in this country")
             return false
         }
 
@@ -121,6 +121,6 @@ private fun LatLon.truncateTo5Decimals() = OsmLatLon(latitude.truncateTo5Decimal
 
 private fun Double.truncateTo5Decimals() = (this * 1e5).toInt().toDouble() / 1e5
 
-private fun Element.toLogString() = "${type.name.toLowerCase(Locale.US)} #$id"
+private fun Element.toLogString() = "https://www.openstreetmap.org/${type.name.toLowerCase(Locale.US)}/$id"
 
 private fun LatLon.toLogString() = "$latitude, $longitude"
