@@ -121,6 +121,6 @@ private fun LatLon.truncateTo5Decimals() = OsmLatLon(latitude.truncateTo5Decimal
 
 private fun Double.truncateTo5Decimals() = (this * 1e5).toInt().toDouble() / 1e5
 
-private fun Element.toLogString() = "https://www.openstreetmap.org/${type.name.toLowerCase(Locale.US)}/$id"
+private fun Element.toLogString() = "${type.name.toLowerCase(Locale.US)} #$id"
 
 private fun LatLon.toLogString() = "$latitude, $longitude"
