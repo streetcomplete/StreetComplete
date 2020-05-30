@@ -233,6 +233,14 @@ object AchievementsModule {
             R.drawable.ic_link_heigit,
             R.string.link_openrouteservice_description
         ),
+        Link(
+            "graphhopper",
+            "https://graphhopper.com/maps/",
+            "GraphHopper",
+            LinkCategory.SHOWCASE,
+            R.drawable.ic_link_graphhopper,
+            R.string.link_graphhopper_description
+        ),
 
 
         /* -------------------------------------- Goodies ----------------------------------------*/
@@ -387,7 +395,8 @@ object AchievementsModule {
 
 
                 5 to links("osrm"), // routing engines are not that interesting for end users
-                6 to links("openrouteservice")
+                6 to links("openrouteservice"),
+                7 to links("graphhopper")
             )
         ),
 

@@ -803,6 +803,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="link_brouter_description">Probably the best routing engine for cyclists</string>
     <string name="link_show_me_the_way_description">Watch OSM edits happen in real time</string>
     <string name="link_osrm_description">The fastest routing engine around</string>
+    <string name="link_graphhopper_description">A flexible routing engine</string>
     <string name="link_openrouteservice_description">Routing for a variety of vehicles and on foot, each with preferences. Can also show isochrones (reachable area in X minutes from a starting point).</string>
     <string name="link_osm_haiku_description">Using OSM data to generate a haiku (a form of Japanese poetry)</string>
     <string name="link_openinframap_description">A map showing power, telecoms, gas, and oil infrastructure</string>
