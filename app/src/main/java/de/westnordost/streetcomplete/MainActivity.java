@@ -141,6 +141,17 @@ public class MainActivity extends AppCompatActivity implements
 
 		if(savedInstanceState == null)
 		{
+			String lastVersion = prefs.getString(Prefs.LAST_VERSION, null);
+			boolean hasShownTutorial = prefs.getBoolean(Prefs.HAS_SHOWN_TUTORIAL, false);
+
+			if (!hasShownTutorial) {
+				if (lastVersion == null) {
+					getSupportFragmentManager().beginTransaction()
+							.setCustomAnimations(R.anim.fade_in_from_bottom, R.anim.fade_out_to_bottom)
+							.add(R.id.fragment_container, new TutorialFragment())
+							.commit();
+				}
+			}
 			questController.cleanUp();
 			if (userController.isLoggedIn() && isConnected()) {
 				userController.updateUser();
@@ -174,19 +185,6 @@ public class MainActivity extends AppCompatActivity implements
 	@Override public void onStart()
 	{
 		super.onStart();
-
-		String lastVersion = prefs.getString(Prefs.LAST_VERSION, null);
-		boolean hasShownTutorial = prefs.getBoolean(Prefs.HAS_SHOWN_TUTORIAL, false);
-
-		if (!hasShownTutorial) {
-			prefs.edit().putBoolean(Prefs.HAS_SHOWN_TUTORIAL, true).apply();
-			if (lastVersion == null) {
-				getSupportFragmentManager().beginTransaction()
-						.setCustomAnimations(R.anim.fade_in_from_bottom, R.anim.fade_out_to_bottom)
-						.add(R.id.fragment_container, new TutorialFragment())
-						.commit();
-			}
-		}
 
 		registerReceiver(locationAvailabilityReceiver, LocationUtil.createLocationAvailabilityIntentFilter());
 
@@ -414,6 +412,7 @@ public class MainActivity extends AppCompatActivity implements
 
 	@Override public void onFinishedTutorial()
 	{
+		prefs.edit().putBoolean(Prefs.HAS_SHOWN_TUTORIAL, true).apply();
 		Fragment tutorialFragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
 		if (tutorialFragment != null)
 		{
