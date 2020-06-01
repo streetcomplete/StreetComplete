@@ -42,4 +42,4 @@ private val BUILDINGS_WITH_LEVELS = arrayOf(
     "semidetached_house","bungalow","school","civic","college","university","public",
     "hospital","kindergarten","transportation","train_station", "hotel","retail",
     "commercial","office","warehouse","industrial","manufacture","parking","farm",
-    "farm_auxiliary","barn","cabin")
+    "farm_auxiliary","barn","cabin","yes")

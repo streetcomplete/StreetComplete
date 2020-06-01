@@ -9,8 +9,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometry
 class AddRoadSurface(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<String>(o) {
 
     override val tagFilters = """
-        ways with highway ~ ${ROADS_WITH_SURFACES.joinToString("|")} and !surface
-        and (access !~ private|no or (foot and foot !~ private|no))
+        ways with highway ~ ${ROADS_WITH_SURFACES.joinToString("|")} and !surface 
     """
     override val commitMessage = "Add road surfaces"
     override val wikiLink = "Key:surface"
@@ -43,9 +42,8 @@ class AddRoadSurface(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType
         // well, all roads have surfaces, what I mean is that not all ways with highway key are
         // "something with a surface"
         private val ROADS_WITH_SURFACES = arrayOf(
-            // "trunk","trunk_link","motorway","motorway_link", // too much, motorways are almost by definition asphalt (or concrete)
             "primary", "primary_link", "secondary", "secondary_link", "tertiary", "tertiary_link",
-            "unclassified", "residential", "living_street", "pedestrian", "track", "road"
-        )/*"service", */// this is too much, and the information value is very low
+            "unclassified", "residential", "living_street", "pedestrian", "track", "road", "trunk", "trunk_link", "motorway", "motorway_link", "service"
+        )
     }
 }

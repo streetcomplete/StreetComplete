@@ -12,7 +12,6 @@ class AddPathSurface(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType
         and !surface
         and segregated != yes
         and (!conveying or conveying = no) and (!indoor or indoor = no)
-        and access !~ private|no
     """
     override val commitMessage = "Add path surfaces"
     override val wikiLink = "Key:surface"
