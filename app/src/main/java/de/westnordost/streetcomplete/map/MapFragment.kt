@@ -193,7 +193,11 @@ open class MapFragment : Fragment(),
     }
 
     protected open suspend fun getSceneUpdates(): List<SceneUpdate> {
-        return listOf(SceneUpdate("global.language", Locale.getDefault().language))
+        val textScale = getResources().getConfiguration().fontScale;
+        return listOf(
+                SceneUpdate("global.language", Locale.getDefault().language),
+                SceneUpdate("global.text_size", "${12 * textScale}px")
+        )
     }
 
     protected open fun getSceneFilePath(): String {
@@ -338,7 +342,7 @@ open class MapFragment : Fragment(),
         duration: Long = 0,
         interpolator: Interpolator = defaultCameraInterpolator,
         builder: CameraUpdate.() -> Unit) {
-        
+
         controller?.updateCameraPosition(duration, interpolator, builder)
     }
 
