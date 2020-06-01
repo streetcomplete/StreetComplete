@@ -34,12 +34,13 @@ class AddAddressStreet(
 
     override fun createForm() = AddAddressStreetForm()
 
-    override fun isApplicableTo(element: Element): Boolean? =
-            ADDRESSES_WITHOUT_STREETS_TFE.matches(element)
+    /* cannot be determined offline because the quest kinda needs the street name suggestions
+       to work conveniently (see #1856) */
+    override fun isApplicableTo(element: Element): Boolean? = null
 
     override fun download(bbox: BoundingBox, handler: (element: Element, geometry: ElementGeometry?) -> Unit): Boolean {
-        if (!overpassApi.query(getOverpassQuery(bbox), handler)) return false
         if (!overpassApi.query(getStreetNameSuggestionsOverpassQuery(bbox), roadNameSuggestionsDao::putRoadNameSuggestion)) return false
+        if (!overpassApi.query(getOverpassQuery(bbox), handler)) return false
         return true
     }
 
@@ -76,13 +77,6 @@ class AddAddressStreet(
                     nwr["addr:housenumber"][!"addr:street"][!"addr:place"][!"addr:block_number"];
                     nwr["addr:streetnumber"][!"addr:street"];
                 )""".trimIndent()
-        // this must be the same as above but in tag filter expression syntax
-        private val ADDRESSES_WITHOUT_STREETS_TFE by lazy { FiltersParser().parse("""
-                nodes, ways, relations with 
-                  addr:housenumber and !addr:street and !addr:place and !addr:block_number
-                  or addr:streetnumber and !addr:street
-        """)}
-
         private val ROADS_WITH_NAMES =
                 "way[highway ~ \"^(${ALL_ROADS.joinToString("|")})$\"][name]"
     }
