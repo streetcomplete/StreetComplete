@@ -196,7 +196,7 @@ open class MapFragment : Fragment(),
         val textScale = getResources().getConfiguration().fontScale;
         return listOf(
                 SceneUpdate("global.language", Locale.getDefault().language),
-                SceneUpdate("global.text_size", "${12 * textScale}px")
+                SceneUpdate("global.text_size", "[[1, ${13 * textScale}px], [16, ${13 * textScale}px], [17, ${14 * textScale}px], [18, ${17 * textScale}px], [19, ${19 * textScale}px]]")
         )
     }
 
