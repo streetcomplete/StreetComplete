@@ -31,12 +31,13 @@ class AddRailwayCrossingBarrier(private val overpassMapDataApi: OverpassMapDataA
 
     private fun getOverpassQuery(bbox: BoundingBox) =
         bbox.toGlobalOverpassBBox() + "\n" + """
-        way[highway][access ~ '^(private|no)$'];
-        node(w) -> .private_roads;
-        way[railway ~ '^(tram|abandoned)$'];
-        node(w) -> .excluded_railways;
-        node[railway = level_crossing][!'crossing:barrier'];
-        (._; - .private_roads; );
-        (._; - .excluded_railways; );""".trimIndent() + "\n" +
+        
+        way[highway][access ~ '^(private|no)$']; node(w) -> .private_road_nodes;
+        way[railway ~ '^(tram|abandoned)$']; node(w) -> .excluded_railways_nodes;
+        
+        node[railway = level_crossing][!'crossing:barrier'] -> .crossings;
+
+        ((.crossings; - .private_road_nodes; ); - .excluded_railways_nodes;);
+        """.trimIndent() + "\n" +
         getQuestPrintStatement()
 }
