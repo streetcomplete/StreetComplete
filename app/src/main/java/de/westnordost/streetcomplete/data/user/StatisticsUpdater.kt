@@ -24,8 +24,7 @@ class StatisticsUpdater @Inject constructor(
         updateDaysActive()
 
         questStatisticsDao.addOne(questType)
-        val countryCode = countryBoundaries.get().getIds(position).firstOrNull()
-        countryCode?.let { countryStatisticsDao.addOne(it) }
+        getRealCountryCode(position)?.let { countryStatisticsDao.addOne(it) }
 
         achievementGiver.updateQuestTypeAchievements(questType)
     }
@@ -33,9 +32,16 @@ class StatisticsUpdater @Inject constructor(
     fun subtractOne(questType: String, position: LatLon) {
         updateDaysActive()
         questStatisticsDao.subtractOne(questType)
-        val countryCode = countryBoundaries.get().getIds(position).firstOrNull()
-        countryCode?.let { countryStatisticsDao.subtractOne(it) }
+        getRealCountryCode(position)?.let { countryStatisticsDao.subtractOne(it) }
     }
+
+    private fun getRealCountryCode(position: LatLon): String? =
+        countryBoundaries.get().getIds(position).firstOrNull {
+            // skip non-countries
+            it != "FX" && it != "EU" &&
+            // skip country subdivisions (f.e. US-TX)
+            !it.contains('-')
+        }
 
     private fun updateDaysActive() {
         val now = Date()
