@@ -198,7 +198,7 @@ open class MapFragment : Fragment(),
                 SceneUpdate("global.language", Locale.getDefault().language),
                 SceneUpdate("global.text_size", "[[1, ${13 * textScale}px], " +
                         "[16, ${13 * textScale}px], [17, ${14 * textScale}px], " +
-                        "[18, ${17 * textScale}px], [19, ${19 * textScale}px]]")
+                        "[18, ${16 * textScale}px], [19, ${18 * textScale}px]]")
         )
     }
 
