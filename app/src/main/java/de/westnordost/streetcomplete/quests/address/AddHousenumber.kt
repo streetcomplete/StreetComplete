@@ -180,8 +180,8 @@ private fun getNonBuildingAreasWithAddressesOverpassQuery(bbox: BoundingBox): St
             """.trimIndent()
 }
 
-/** Query that returns all buildings that neither have an address node on their outline, nor
- * on itself  */
+/** Query that returns all buildings that don't have an address node on their outline, nor are
+ *  part of a relation that has a housenumber */
 private fun getBuildingsWithoutAddressesOverpassQuery(bbox: BoundingBox): String {
     val bboxFilter = bbox.toOverpassBboxFilter()
     return """
@@ -189,9 +189,14 @@ private fun getBuildingsWithoutAddressesOverpassQuery(bbox: BoundingBox): String
               way$BUILDINGS_WITHOUT_ADDRESS_FILTER$bboxFilter;
               rel$BUILDINGS_WITHOUT_ADDRESS_FILTER$bboxFilter;
             ) -> .buildings;
+            
+            .buildings << -> .relations_containing_buildings;
+            rel.relations_containing_buildings$ANY_ADDRESS_FILTER; >> -> .elements_contained_in_relations_with_addr;
+
             .buildings > -> .building_nodes;
             node.building_nodes$ANY_ADDRESS_FILTER; < -> .buildings_with_addr_nodes;
-            (.buildings; - .buildings_with_addr_nodes;);
+            
+            ((.buildings; - .buildings_with_addr_nodes;); - .elements_contained_in_relations_with_addr; );
             out meta geom;
             """.trimIndent()
 }
