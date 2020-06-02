@@ -193,12 +193,9 @@ open class MapFragment : Fragment(),
     }
 
     protected open suspend fun getSceneUpdates(): List<SceneUpdate> {
-        val textScale = resources.configuration.fontScale;
         return listOf(
                 SceneUpdate("global.language", Locale.getDefault().language),
-                SceneUpdate("global.text_size", "[[1, ${13 * textScale}px], " +
-                        "[17, ${13 * textScale}px], [18, ${15 * textScale}px], " +
-                        "[19, ${17 * textScale}px]]")
+                SceneUpdate("global.text_size_scaling", "${resources.configuration.fontScale}")
         )
     }
 
