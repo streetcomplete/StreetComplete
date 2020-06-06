@@ -210,9 +210,9 @@ class AddLocalizedNameAdapter(
             autoCorrectInput.addTextChangedListener(object : DefaultTextWatcher() {
                 override fun afterTextChanged(s: Editable) {
                     val name = s.toString()
-                    localizedName.name = name
+                    localizedName.name = name.trim()
                     if (name.isEmpty()) {
-                        val hasSuggestions = !getLocalizedNameSuggestionsByLanguageCode(localizedName.languageCode).isEmpty()
+                        val hasSuggestions = getLocalizedNameSuggestionsByLanguageCode(localizedName.languageCode).isNotEmpty()
                         buttonNameSuggestions.visibility = if (hasSuggestions) View.VISIBLE else View.GONE
                     } else {
                         buttonNameSuggestions.visibility = View.GONE
