@@ -671,7 +671,7 @@ Jetzt aufspalten?"</string>
     <string name="quest_tactilePaving_title_name_tram">"Hat die Straßenbahnhaltestelle %s eine spezielle Pflasterung für Blinde?"</string>
     <string name="quest_maxweight_title">"Was ist das Maximalgewicht hier?"</string>
     <string name="quest_maxweight_answer_noSign">"Da ist kein Schild"</string>
-    <string name="quest_maxweight_unusualInput_confirmation_description">"Diese Höhe sieht ungewöhnlich aus. Bist du sicher, dass sie korrekt ist?"</string>
+    <string name="quest_maxweight_unusualInput_confirmation_description">"Dieses Gewicht sieht ungewöhnlich aus. Bist du sicher, dass es korrekt ist?"</string>
     <string name="quest_maxweight_answer_other_sign">"Schild sieht anders aus…"</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"Willst du stattdessen eine Notiz hinterlassen? Mit Hilfe eines Fotos können andere Mapper sich darum kümmern, es einzutragen."</string>
     <string name="quest_generalFee_title">"Kostet %s Eintritt?"</string>

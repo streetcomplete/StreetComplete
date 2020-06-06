@@ -945,7 +945,7 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_buildingLevels_levelsLabel2">"vanliga våningar (räknar inte takvåningar)"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingLevels_answer_multipleLevels">"varierar mellan olika husdelar"</string>
+    <string name="quest_buildingLevels_answer_multipleLevels">"Varierar mellan olika husdelar"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingLevels_answer_description">"I sådana fall, fyll i värdet för den högsta husdelen"</string>
@@ -2298,4 +2298,7 @@ nivåer"</string>
     <string name="quest_address_street_no_named_streets">"Det hör inte till en namngiven gata"</string>
     <string name="quest_address_street_place_name_label">"Platsnamn:"</string>
     <string name="quest_address_street_description">"Tryck på vägen den tillhör på kartan eller ange den utan förkortningar i fältet nedan:"</string>
+    <string name="quest_buildingLevels_address_title">"Hur många nivåer har byggnaden med numret %s?"</string>
+    <string name="quest_roofShape_address_title">"Vilken grundform har byggnadens tak med numret %s?"</string>
+    <string name="quest_buildingType_address_title">"Vilken typ av byggnad är nummer %s?"</string>
 </resources>
