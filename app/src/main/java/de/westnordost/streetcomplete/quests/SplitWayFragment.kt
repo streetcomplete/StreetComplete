@@ -28,19 +28,23 @@ import de.westnordost.streetcomplete.data.osm.splitway.SplitAtLinePosition
 import de.westnordost.streetcomplete.data.osm.splitway.SplitAtPoint
 import de.westnordost.streetcomplete.data.osm.splitway.SplitPolylineAtPosition
 import de.westnordost.streetcomplete.ktx.*
-import de.westnordost.streetcomplete.sound.SoundFx
+import de.westnordost.streetcomplete.util.SoundFx
 import de.westnordost.streetcomplete.util.alongTrackDistanceTo
 import de.westnordost.streetcomplete.util.crossTrackDistanceTo
 import de.westnordost.streetcomplete.util.distanceTo
 import de.westnordost.streetcomplete.view.RoundRectOutlineProvider
 import kotlinx.android.synthetic.main.fragment_split_way.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 import kotlin.math.abs
 
 /** Fragment that lets the user split an OSM way */
-class SplitWayFragment
-    : Fragment(R.layout.fragment_split_way), IsCloseableBottomSheet, IsShowingQuestDetails {
-
+class SplitWayFragment : Fragment(R.layout.fragment_split_way),
+    IsCloseableBottomSheet, IsShowingQuestDetails,
+    CoroutineScope by CoroutineScope(Dispatchers.Main) {
 
     private val splits: MutableList<Pair<SplitPolylineAtPosition, LatLon>> = mutableListOf()
 
@@ -75,8 +79,6 @@ class SplitWayFragment
         way = args.getSerializable(ARG_WAY) as Way
         val elementGeometry = args.getSerializable(ARG_ELEMENT_GEOMETRY) as ElementPolylinesGeometry
         positions = elementGeometry.polylines.single().map { OsmLatLon(it.latitude, it.longitude) }
-        soundFx.prepare(R.raw.snip)
-        soundFx.prepare(R.raw.plop2)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -137,6 +139,11 @@ class SplitWayFragment
         bottomSheetContainer.updateLayoutParams { width = resources.getDimensionPixelSize(R.dimen.quest_form_width) }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        coroutineContext.cancel()
+    }
+
     private fun onClickOk() {
         if (splits.size > 2) {
             confirmManySplits { onSplittedWayConfirmed() }
@@ -164,7 +171,7 @@ class SplitWayFragment
         if (splits.isNotEmpty()) {
             val item = splits.removeAt(splits.lastIndex)
             animateButtonVisibilities()
-            soundFx.play(R.raw.plop2)
+            launch { soundFx.play(R.raw.plop2) }
             listener?.onRemoveSplit(item.second)
         }
     }
@@ -212,7 +219,7 @@ class SplitWayFragment
         animator.setTarget(scissors)
         animator.start()
 
-        soundFx.play(R.raw.snip)
+        launch { soundFx.play(R.raw.snip) }
     }
 
     private fun createSplits(clickPosition: LatLon, clickAreaSizeInMeters: Double): Set<SplitPolylineAtPosition> {

@@ -12,7 +12,7 @@ import androidx.preference.PreferenceManager;
 import dagger.Module;
 import dagger.Provides;
 import de.westnordost.streetcomplete.location.LocationRequestFragment;
-import de.westnordost.streetcomplete.sound.SoundFx;
+import de.westnordost.streetcomplete.util.SoundFx;
 import de.westnordost.streetcomplete.tools.CrashReportExceptionHandler;
 
 @Module

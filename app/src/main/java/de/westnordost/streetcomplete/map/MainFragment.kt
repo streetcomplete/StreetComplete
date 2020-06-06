@@ -59,13 +59,17 @@ import de.westnordost.streetcomplete.location.LocationState
 import de.westnordost.streetcomplete.location.LocationUtil
 import de.westnordost.streetcomplete.map.tangram.CameraPosition
 import de.westnordost.streetcomplete.quests.*
-import de.westnordost.streetcomplete.sound.SoundFx
+import de.westnordost.streetcomplete.util.SoundFx
 import de.westnordost.streetcomplete.util.*
 import kotlinx.android.synthetic.main.fragment_main.*
 import java.util.*
 import javax.inject.Inject
 import kotlin.math.PI
 import de.westnordost.streetcomplete.util.initialBearingTo
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.launch
 import kotlin.math.cos
 import kotlin.math.sin
 
@@ -74,7 +78,8 @@ class MainFragment : Fragment(R.layout.fragment_main),
     MapFragment.Listener, LocationAwareMapFragment.Listener, QuestsMapFragment.Listener,
     AbstractQuestAnswerFragment.Listener,
     SplitWayFragment.Listener, LeaveNoteInsteadFragment.Listener, CreateNoteFragment.Listener,
-    VisibleQuestListener {
+    VisibleQuestListener,
+    CoroutineScope by CoroutineScope(Dispatchers.Main) {
 
     @Inject internal lateinit var questController: QuestController
     @Inject internal lateinit var questDownloadController: QuestDownloadController
@@ -127,11 +132,6 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-
-        soundFx.prepare(R.raw.plop0)
-        soundFx.prepare(R.raw.plop1)
-        soundFx.prepare(R.raw.plop2)
-        soundFx.prepare(R.raw.plop3)
 
         locationManager = FineLocationManager(
             context.getSystemService(Context.LOCATION_SERVICE) as LocationManager,
@@ -230,6 +230,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
     override fun onDestroy() {
         super.onDestroy()
         mainHandler.removeCallbacksAndMessages(null)
+        coroutineContext.cancel()
     }
 
     /* ---------------------------------- MapFragment.Listener ---------------------------------- */
@@ -749,7 +750,9 @@ class MainFragment : Fragment(R.layout.fragment_main),
         val activity = activity ?: return
         val view = view ?: return
 
-        soundFx.play(resources.getIdentifier("plop" + random.nextInt(4), "raw", ctx.packageName))
+        launch {
+            soundFx.play(resources.getIdentifier("plop" + random.nextInt(4), "raw", ctx.packageName))
+        }
 
         val root = activity.window.decorView as ViewGroup
         val img = layoutInflater.inflate(R.layout.effect_quest_plop, root, false) as ImageView
