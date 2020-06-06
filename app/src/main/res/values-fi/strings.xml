@@ -1014,7 +1014,7 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
     <string name="action_reset">"Nollaa"</string>
 
     <!-- Fuzzy -->
-    <string name="reorder_quest_priority_hint">"Paina pitkään ja samalla liikuta kysely uudelleen järjestääksesi sen ensisijaisuuden lataukselle ja näytölle kartalla."</string>
+    <string name="reorder_quest_priority_hint">"Järjestä kysymysten lataus ja kysely järjestystä painamalla pitkään ja liikuttamalla kysymystä ylös tai alas."</string>
 
     <!-- Fuzzy -->
     <string name="undo_confirm_positive">"Kumoa"</string>
@@ -1108,13 +1108,13 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
     <string name="pref_title_quests_invalidation">"Viallinen kysymys välimuistissa"</string>
 
     <!-- Fuzzy -->
-    <string name="pref_title_quests_invalidation_summary">"Hyödyllisiä, jos ajattelet osan kysymyksistä vanhentuneen"</string>
+    <string name="pref_title_quests_invalidation_summary">"Hyödyllinen, jos ajattelet osan kysymyksistä vanhentuneen"</string>
 
     <!-- Fuzzy -->
-    <string name="invalidate_confirmation">"Mitätöidä"</string>
+    <string name="invalidate_confirmation">"Tyhjennä"</string>
 
     <!-- Fuzzy -->
-    <string name="invalidation_dialog_message">"Välimuistin tyhjennys johtaa siihen, että seuraavalla kerralla kysymykset ladataan uudelleen. Kysymysten välimuuisti tyhjennetään automaattisestiviikon välein ja välittömästi, kun valittavissa olevaan kysymykseen on joku toinen jo vastannut. "</string>
+    <string name="invalidation_dialog_message">"Välimuistin tyhjennys johtaa siihen, että seuraavalla kerralla kysymykset ladataan uudelleen. Kysymysten välimuisti tyhjennetään automaattisesti viikon välein ja välittömästi, kun valittavissa olevaan kysymykseen on joku toinen jo vastannut. "</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_looks_like_this">"Normaalisti näyttää suunnilleen tältä: "</string>
@@ -1777,7 +1777,7 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
     <string name="quest_leave_new_note_photos_are_useful">"Kuvan lisääminen tekee huomautuksesta paljon käyttökelpoisemman."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_postboxCollectionTimes_name_title">"Mitkä ovattämän %s postilaatikon tyhjennysajat?"</string>
+    <string name="quest_postboxCollectionTimes_name_title">"Mitkä ovat tämän %s postilaatikon tyhjennysajat?"</string>
 
     <!-- Fuzzy -->
     <string name="create_new_note_hint">"Paras on kirjoittaa huomautus paikallisella kielellä, tai toisena vaihtoehtona englanniksi. "</string>
@@ -1850,7 +1850,7 @@ Jaetaanko nyt?"</string>
     <string name="quest_handrail_title">"Onko näissä portaissa kaidetta?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_openingHours_no_name_title">"Paikan aukioloajat? (s%)"</string>
+    <string name="quest_openingHours_no_name_title">"Paikan aukioloajat? (%s)"</string>
 
     <!-- Fuzzy -->
     <string name="about_summary_current_version">"Nykyinen versio: %s"</string>
@@ -1920,7 +1920,7 @@ Jaetaanko nyt?"</string>
     <string name="quest_recycling_type_any_glass">"Kaikki lasit"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_recycling_glass_title">"Voiko"</string>
+    <string name="quest_recycling_glass_title">"Voiko vain lasipullot ja -purkit kierrättää tänne, vai mitä tahansa lasia?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_determineRecyclingGlass_description_any_glass">"Esimerkkejä lasista, jota usein ei hyväksytä: karkaistu lasi, ikkunaikkunat, lasitavara, hehkulamput tai peilit."</string>
@@ -1947,7 +1947,7 @@ Jaetaanko nyt?"</string>
     <string name="about_description_donate">"Kiitos harkinasta ohjelman tulemiseen! Nähdäksesi nykyiset lahjoitukset ja lahjoittaaksesi klikkaa haluamaasi lahjoitusalustaa:"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_religion_for_place_of_worship_name_title">"Mitä uskontoa täällä s% harjoitetaan?"</string>
+    <string name="quest_religion_for_place_of_worship_name_title">"Mitä uskontoa täällä %s harjoitetaan?"</string>
 
     <!-- Fuzzy -->
     <string name="confirmation_cancel_prev_download_confirmed">"Hae täältä uudestaan"</string>
@@ -1962,7 +1962,7 @@ Jaetaanko nyt?"</string>
     <string name="quest_tourism_information_title">"Millainen turisti-info tämä on?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_tourism_information_name_title">"Millainen turisti-info tämä s% on?"</string>
+    <string name="quest_tourism_information_name_title">"Millainen turisti-info tämä %s on?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_tourism_information_office">"Turisti-info toimisto"</string>
@@ -2072,7 +2072,7 @@ Lopulta, muista turvallisuus: huomio ympäristösi ja elä mene yksityisalueille
     <string name="link_category_intro_description">"Opi lisää OSM:stä ja OSM yhteisöstä"</string>
 
     <!-- Fuzzy -->
-    <string name="link_category_editors_title">"Avustaa"</string>
+    <string name="link_category_editors_title">"Paranna OMS karttoja"</string>
 
     <!-- Fuzzy -->
     <string name="link_category_editors_description">"Editorit ja muut tavat edistää OpenStreetMap:siä."</string>
@@ -2127,7 +2127,7 @@ Lopulta, muista turvallisuus: huomio ympäristösi ja elä mene yksityisalueille
     <string name="link_opnvkarte_description">"Julkisen liikenteen reittien ja pysäkkien kartta"</string>
 
     <!-- Fuzzy -->
-    <string name="link_pic4review_description">"Avusta OSM karttoja yksinkertaisesti katsomalla kaupunkisi kuvia"</string>
+    <string name="link_pic4review_description">"Tuota OSM karttoja yksinkertaisesti katsomalla kaupunkisi kuvia"</string>
 
     <!-- Fuzzy -->
     <string name="link_wiki_description">"Wiki on aloituspiste kaikelle liittyen OpenStreetMap:iin"</string>
@@ -2289,7 +2289,7 @@ Lopulta, muista turvallisuus: huomio ympäristösi ja elä mene yksityisalueille
     <string name="user_statistics_country_rank">"Taso %2$s: %1$d"</string>
 
     <!-- Fuzzy -->
-    <string name="user_statistics_country_wiki_link">"Kartoitusprortaali s%"</string>
+    <string name="user_statistics_country_wiki_link">"Kartoitusprortaali %s"</string>
 
     <!-- Fuzzy -->
     <string name="user_statistics_filter_by_country">"maittain"</string>
@@ -2315,4 +2315,8 @@ päiviä"</string>
     <string name="quest_address_street_no_named_streets">"Se ei kuulu nimetylle kadulle"</string>
     <string name="quest_address_street_place_name_label">"Paikan nimi:"</string>
     <string name="quest_address_street_description">"Napauta kartalla tietä, jolle se kuuluu tai kirjoitta ilman lyhenteitä alla olevaan kenttään:"</string>
+    <string name="quest_buildingLevels_address_title">"Kuinka monta kerrosta on tässä %s talonumerossa?"</string>
+    <string name="quest_roofShape_address_title">"Millainen perusmuoto katolla on talonumerossa %s?
+"</string>
+    <string name="quest_buildingType_address_title">"Minkä tyyppinen rakennus on numero %s sä?"</string>
 </resources>

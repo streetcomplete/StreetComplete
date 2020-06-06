@@ -2188,7 +2188,7 @@ Galų gale visada būkite atidūs: stebėkite aplinką ir neikite į privačias 
     <string name="achievement_surveyor_title">"Matininkas"</string>
 
     <!-- Fuzzy -->
-    <string name="achievement_surveyor_solved_X">"Jūs išsprendėte %s užduočių! Tęskite, kad atrakintumėte daugiau pasiekimų, kuriuos yra nuorodos į OSM ir kitas su žemėlapiais susijusias aplikacijas ir projektus!"</string>
+    <string name="achievement_surveyor_solved_X">"Jūs išsprendėte %d užduočių! Tęskite, kad atrakintumėte daugiau pasiekimų, kuriuos yra nuorodos į OSM ir kitas su žemėlapiais susijusias aplikacijas ir projektus!"</string>
 
     <!-- Fuzzy -->
     <string name="achievement_regular_title">"Pastovus"</string>

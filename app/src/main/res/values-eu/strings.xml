@@ -1960,7 +1960,7 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_tourism_information_title">"Ze motako turismo informazioa da hau?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_tourism_information_name_title">"Ze motako turismo informazioa da %s? "</string>
+    <string name="quest_tourism_information_name_title">"Ze motako turismo informazioa da %s?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_tourism_information_office">"Turistentzako informazio bulegoa"</string>
