@@ -1,43 +1,41 @@
 layers:
-    roads:
-        data: { source: mapzen}
-        roads-labels:
-            filter: { $zoom: { min: 14 } }
-            draw:
-                text:
-                    text_source: global.name_source
-                    buffer: 8px
-                    text_wrap: 25
-                    max_lines: 3
-                    font:
-                        family: global.text_font_family
-                        weight: normal
-                        fill: global.text_fill_color
-                        size: global.text_size
-                        stroke: global.text_stroke
+    road-labels:
+        data: { source: mapzen, layer: roads }
+        filter: { $zoom: { min: 14 } }
+        draw:
+            text:
+                text_source: global.name_source
+                buffer: 8px
+                text_wrap: 25
+                max_lines: 3
+                font:
+                    family: global.text_font_family
+                    fill: global.text_fill_color
+                    size: global.text_size
+                    stroke: global.text_stroke
+                    weight: normal
 
-    places:
-        data: { source: mapzen}
-        places-labels:
-            filter: {name: true, not: {source: [whosonfirst.org]}}
-            draw:
-                text:
-                    text_source: global.name_source
-                    buffer: 12px
-                    font:
-                        fill: global.text_fill_color
-                        family: global.text_font_family
-                        stroke: global.text_places_stroke
+    place-labels:
+        data: { source: mapzen, layer: places }
+        filter: {name: true, not: {source: [whosonfirst.org]}}
+        draw:
+            text:
+                text_source: global.name_source
+                buffer: 12px
+                font:
+                    family: global.text_font_family
+                    fill: global.text_fill_color
+                    size: global.text_size
+                    stroke: global.text_places_stroke
 
-    buildings:
-        data: { source: mapzen}
-        address-labels:
-            filter: { $zoom: { min: 18 }, kind: address }
-            draw:
-                text:
-                    text_source: addr_housenumber
-                    font:
-                        fill: global.text_fill_color
-                        family: global.text_font_family
-                        size: global.text_size
-                        stroke: global.text_stroke
+    housenumber-labels:
+        data: { source: mapzen, layer: buildings }
+        filter: { $zoom: { min: 19 }, kind: address }
+        draw:
+            text:
+                text_source: addr_housenumber
+                font:
+                    family: global.text_font_family
+                    fill: global.text_fill_color
+                    size: global.text_size
+                    stroke: global.text_stroke

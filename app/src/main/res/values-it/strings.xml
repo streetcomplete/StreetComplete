@@ -2311,4 +2311,7 @@ riconoscimento"</string>
     <string name="quest_address_street_no_named_streets">"Non appartiene a una strada nota"</string>
     <string name="quest_address_street_place_name_label">"Nome del luogo:"</string>
     <string name="quest_address_street_description">"Premi la strada sulla mappa a cui appartiene o inseriscila senza abbreviazioni qui sotto:"</string>
+    <string name="quest_buildingLevels_address_title">"Quanti piani ha l'edificio al numero %s?"</string>
+    <string name="quest_roofShape_address_title">"Quale forma base ha il tetto dell'edificio al numero %s?"</string>
+    <string name="quest_buildingType_address_title">"Che tipo di edificio è il numero %s?"</string>
 </resources>
