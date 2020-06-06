@@ -16,8 +16,8 @@ import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osmnotes.OsmNotesModule
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestController
+import de.westnordost.streetcomplete.ktx.createBitmap
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
-import de.westnordost.streetcomplete.util.BitmapUtil
 import de.westnordost.streetcomplete.util.TextChangedWatcher
 import de.westnordost.streetcomplete.view.CircularOutlineProvider
 import de.westnordost.streetcomplete.view.ListAdapter
@@ -60,7 +60,7 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment<NoteAnswer>() {
 
         updateDoneButtonEnablement()
 
-        anonAvatar = BitmapUtil.createBitmapFrom(resources.getDrawable(R.drawable.ic_osm_anon_avatar))
+        anonAvatar = resources.getDrawable(R.drawable.ic_osm_anon_avatar).createBitmap()
 
         inflateNoteDiscussion(osmNoteQuestController.get(questId)!!.note.comments)
 

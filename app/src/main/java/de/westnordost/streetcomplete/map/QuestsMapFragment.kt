@@ -16,6 +16,7 @@ import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.quest.Quest
+import de.westnordost.streetcomplete.ktx.getBitmapDrawable
 import de.westnordost.streetcomplete.ktx.toDp
 import de.westnordost.streetcomplete.ktx.toPx
 import de.westnordost.streetcomplete.map.QuestPinLayerManager.Companion.MARKER_QUEST_GROUP
@@ -24,7 +25,6 @@ import de.westnordost.streetcomplete.map.tangram.CameraPosition
 import de.westnordost.streetcomplete.map.tangram.Marker
 import de.westnordost.streetcomplete.map.tangram.toLngLat
 import de.westnordost.streetcomplete.map.tangram.toTangramGeometry
-import de.westnordost.streetcomplete.util.BitmapUtil
 import de.westnordost.streetcomplete.util.distanceTo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -217,7 +217,7 @@ class QuestsMapFragment : LocationAwareMapFragment() {
     private fun createQuestSelectionMarker(): Marker? {
         val ctx = context ?: return null
 
-        val frame = BitmapUtil.createBitmapDrawableFrom(ctx.resources, R.drawable.quest_selection_ring)
+        val frame = ctx.resources.getBitmapDrawable(R.drawable.quest_selection_ring)
         val w = frame.intrinsicWidth.toFloat().toDp(ctx)
         val h = frame.intrinsicHeight.toFloat().toDp(ctx)
 
