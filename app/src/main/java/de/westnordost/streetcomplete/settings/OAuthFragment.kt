@@ -51,7 +51,7 @@ class OAuthFragment : Fragment(R.layout.fragment_oauth),
     private var oAuthVerifier: String? = null
 
     init {
-        Injector.instance.applicationComponent.inject(this)
+        Injector.applicationComponent.inject(this)
     }
 
     /* --------------------------------------- Lifecycle --------------------------------------- */

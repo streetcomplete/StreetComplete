@@ -33,7 +33,7 @@ class AchievementsFragment : Fragment(R.layout.fragment_achievements),
     private var actualCellWidth: Int = 0
 
     init {
-        Injector.instance.applicationComponent.inject(this)
+        Injector.applicationComponent.inject(this)
     }
 
     interface Listener {

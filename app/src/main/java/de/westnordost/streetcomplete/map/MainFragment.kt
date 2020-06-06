@@ -127,7 +127,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
     /* --------------------------------------- Lifecycle ---------------------------------------- */
 
     init {
-        Injector.instance.applicationComponent.inject(this)
+        Injector.applicationComponent.inject(this)
     }
 
     override fun onAttach(context: Context) {

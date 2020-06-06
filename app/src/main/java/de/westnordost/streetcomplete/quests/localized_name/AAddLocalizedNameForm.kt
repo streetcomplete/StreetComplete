@@ -34,7 +34,7 @@ abstract class AAddLocalizedNameForm<T> : AbstractQuestFormAnswerFragment<T>() {
 
     init {
         val fields = InjectedFields()
-        Injector.instance.applicationComponent.inject(fields)
+        Injector.applicationComponent.inject(fields)
         serializer = fields.serializer
     }
 

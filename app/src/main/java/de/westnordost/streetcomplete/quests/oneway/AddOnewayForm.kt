@@ -24,7 +24,7 @@ class AddOnewayForm : AYesNoQuestAnswerFragment<OnewayAnswer>() {
     @Inject internal lateinit var db: WayTrafficFlowDao
 
     init {
-        Injector.instance.applicationComponent.inject(this)
+        Injector.applicationComponent.inject(this)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

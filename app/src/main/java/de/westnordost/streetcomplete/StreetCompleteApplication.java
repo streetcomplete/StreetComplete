@@ -33,8 +33,8 @@ public class StreetCompleteApplication extends Application
 		}
 		LeakCanary.install(this);
 
-		Injector.instance.initializeApplicationComponent(this);
-		Injector.instance.getApplicationComponent().inject(this);
+		Injector.INSTANCE.initializeApplicationComponent(this);
+		Injector.INSTANCE.getApplicationComponent().inject(this);
 		preload();
 
 		Prefs.Theme theme = Prefs.Theme.valueOf(prefs.getString(Prefs.THEME_SELECT, "AUTO"));

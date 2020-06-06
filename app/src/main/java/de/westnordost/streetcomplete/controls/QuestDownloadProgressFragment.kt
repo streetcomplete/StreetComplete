@@ -57,7 +57,7 @@ class QuestDownloadProgressFragment : Fragment(R.layout.fragment_quest_download_
     }
 
     init {
-        Injector.instance.applicationComponent.inject(this)
+        Injector.applicationComponent.inject(this)
     }
 
     override fun onStart() {

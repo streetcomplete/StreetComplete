@@ -68,7 +68,7 @@ class UndoButtonFragment : Fragment(R.layout.fragment_undo_button),
     /* --------------------------------------- Lifecycle ---------------------------------------- */
 
     init {
-        Injector.instance.applicationComponent.inject(this)
+        Injector.applicationComponent.inject(this)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

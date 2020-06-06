@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests
 
 import android.animation.AnimatorInflater
+import android.annotation.SuppressLint
 import android.content.res.Configuration
 import android.graphics.PointF
 import android.graphics.drawable.Animatable
@@ -69,7 +70,7 @@ class SplitWayFragment : Fragment(R.layout.fragment_split_way),
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
     init {
-        Injector.instance.applicationComponent.inject(this)
+        Injector.applicationComponent.inject(this)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -81,6 +82,7 @@ class SplitWayFragment : Fragment(R.layout.fragment_split_way),
         positions = elementGeometry.polylines.single().map { OsmLatLon(it.latitude, it.longitude) }
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

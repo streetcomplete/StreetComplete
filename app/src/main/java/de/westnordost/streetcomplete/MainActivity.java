@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity implements
 	{
 		super.onCreate(savedInstanceState);
 
-		Injector.instance.getApplicationComponent().inject(this);
+		Injector.INSTANCE.getApplicationComponent().inject(this);
 
 		getLifecycle().addObserver(questAutoSyncer);
 

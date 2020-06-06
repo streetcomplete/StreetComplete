@@ -58,7 +58,7 @@ class AnswersCounterFragment : Fragment(R.layout.fragment_answers_counter),
     /* --------------------------------------- Lifecycle ---------------------------------------- */
 
     init {
-        Injector.instance.applicationComponent.inject(this)
+        Injector.applicationComponent.inject(this)
     }
 
     override fun onStart() {

@@ -31,7 +31,7 @@ class OsmUnreadMessagesFragment : DialogFragment(),
     @Inject lateinit var soundFx: SoundFx
 
     init {
-        Injector.instance.applicationComponent.inject(this)
+        Injector.applicationComponent.inject(this)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -29,7 +29,7 @@ class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
     @Inject internal lateinit var roadNameSuggestionsDao: RoadNameSuggestionsDao
 
     init {
-        Injector.instance.applicationComponent.inject(this)
+        Injector.applicationComponent.inject(this)
     }
 
     override fun createLocalizedNameAdapter(data: List<LocalizedName>, addLanguageButton: View): AddLocalizedNameAdapter {

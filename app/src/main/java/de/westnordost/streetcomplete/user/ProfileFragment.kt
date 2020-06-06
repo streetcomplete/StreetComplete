@@ -53,7 +53,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile),
     }
 
     init {
-        Injector.instance.applicationComponent.inject(this)
+        Injector.applicationComponent.inject(this)
     }
 
     override fun onAttach(context: Context) {

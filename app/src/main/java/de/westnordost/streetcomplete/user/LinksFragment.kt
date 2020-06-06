@@ -27,7 +27,7 @@ class LinksFragment : Fragment(R.layout.fragment_links),
     @Inject internal lateinit var userStore: UserStore
 
     init {
-        Injector.instance.applicationComponent.inject(this)
+        Injector.applicationComponent.inject(this)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

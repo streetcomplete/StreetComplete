@@ -44,7 +44,7 @@ class QuestSelectionFragment
     override val title: String get() = getString(R.string.pref_title_quests)
 
     init {
-        Injector.instance.applicationComponent.inject(this)
+        Injector.applicationComponent.inject(this)
         questSelectionAdapter.list = createQuestTypeVisibilityList()
         questSelectionAdapter.listener = this
     }

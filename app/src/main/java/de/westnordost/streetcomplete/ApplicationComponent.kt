@@ -36,7 +36,6 @@ import de.westnordost.streetcomplete.settings.SettingsFragment
 import de.westnordost.streetcomplete.settings.ShowQuestFormsActivity
 import de.westnordost.streetcomplete.settings.questselection.QuestSelectionFragment
 import de.westnordost.streetcomplete.user.*
-import de.westnordost.streetcomplete.util.SerializedSavedState
 import javax.inject.Singleton
 
 @Singleton
@@ -58,7 +57,6 @@ interface ApplicationComponent {
     fun inject(app: StreetCompleteApplication)
     fun inject(mainActivity: MainActivity)
     fun inject(noteDiscussionForm: NoteDiscussionForm)
-    fun inject(tSerializedSavedState: SerializedSavedState)
     fun inject(uploadService: UploadService)
     fun inject(questChangesDownloadService: QuestDownloadService)
     fun inject(settingsFragment: SettingsFragment)

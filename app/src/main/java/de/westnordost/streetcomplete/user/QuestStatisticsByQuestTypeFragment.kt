@@ -32,7 +32,7 @@ class QuestStatisticsByQuestTypeFragment : Fragment(R.layout.fragment_quest_stat
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
     init {
-        Injector.instance.applicationComponent.inject(this)
+        Injector.applicationComponent.inject(this)
     }
 
     /* --------------------------------------- Lifecycle ---------------------------------------- */

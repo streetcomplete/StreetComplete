@@ -41,7 +41,7 @@ class UserActivity : FragmentContainerActivity(R.layout.activity_user),
         get() = supportFragmentManager.findFragmentById(R.id.achievementDetailsFragment) as AchievementInfoFragment
 
     init {
-        Injector.instance.applicationComponent.inject(this)
+        Injector.applicationComponent.inject(this)
     }
 
     /* --------------------------------------- Lifecycle --------------------------------------- */

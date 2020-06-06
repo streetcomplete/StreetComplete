@@ -16,7 +16,7 @@ class ChangesetAutoCloserWorker(context: Context, workerParams: WorkerParameters
     @Inject internal lateinit var openQuestChangesetsManager: OpenQuestChangesetsManager
 
     init {
-        Injector.instance.applicationComponent.inject(this)
+        Injector.applicationComponent.inject(this)
     }
 
     override fun doWork(): Result {

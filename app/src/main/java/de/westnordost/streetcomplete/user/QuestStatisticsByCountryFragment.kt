@@ -23,7 +23,7 @@ class QuestStatisticsByCountryFragment : Fragment(R.layout.fragment_quest_statis
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
     init {
-        Injector.instance.applicationComponent.inject(this)
+        Injector.applicationComponent.inject(this)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

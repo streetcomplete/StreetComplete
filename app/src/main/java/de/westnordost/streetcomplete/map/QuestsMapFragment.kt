@@ -65,7 +65,7 @@ class QuestsMapFragment : LocationAwareMapFragment() {
     /* ------------------------------------ Lifecycle ------------------------------------------- */
 
     init {
-        Injector.instance.applicationComponent.inject(this)
+        Injector.applicationComponent.inject(this)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -108,7 +108,7 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
 
     init {
         val fields = InjectedFields()
-        Injector.instance.applicationComponent.inject(fields)
+        Injector.applicationComponent.inject(fields)
         countryInfos = fields.countryInfos
         featureDictionaryFuture = fields.featureDictionaryFuture
         questTypeRegistry = fields.questTypeRegistry
