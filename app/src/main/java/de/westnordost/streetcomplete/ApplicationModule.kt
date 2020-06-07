@@ -9,7 +9,7 @@ import androidx.preference.PreferenceManager
 import dagger.Module
 import dagger.Provides
 import de.westnordost.streetcomplete.location.LocationRequestFragment
-import de.westnordost.streetcomplete.tools.CrashReportExceptionHandler
+import de.westnordost.streetcomplete.util.CrashReportExceptionHandler
 import de.westnordost.streetcomplete.util.SoundFx
 import javax.inject.Singleton
 
@@ -32,5 +32,9 @@ import javax.inject.Singleton
     @Provides @Singleton fun soundFx(): SoundFx = SoundFx(appContext())
 
     @Provides @Singleton fun exceptionHandler(ctx: Context): CrashReportExceptionHandler =
-        CrashReportExceptionHandler(ctx)
+        CrashReportExceptionHandler(
+            ctx,
+            "osm@westnordost.de",
+            "crashreport.txt"
+        )
 }

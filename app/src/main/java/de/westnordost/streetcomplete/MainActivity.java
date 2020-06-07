@@ -58,7 +58,7 @@ import de.westnordost.streetcomplete.location.LocationUtil;
 import de.westnordost.streetcomplete.map.MainFragment;
 import de.westnordost.streetcomplete.notifications.NotificationsContainerFragment;
 import de.westnordost.streetcomplete.map.tangram.CameraPosition;
-import de.westnordost.streetcomplete.tools.CrashReportExceptionHandler;
+import de.westnordost.streetcomplete.util.CrashReportExceptionHandler;
 import de.westnordost.streetcomplete.tutorial.TutorialFragment;
 import de.westnordost.streetcomplete.util.GeoLocation;
 import de.westnordost.streetcomplete.util.GeoUriKt;
