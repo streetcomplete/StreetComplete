@@ -916,7 +916,7 @@
             "name": "Gasòmetre"
         },
         "shop/hardware": {
-            "name": "Drogueria"
+            "name": "Ferreteria"
         },
         "shop/funeral_directors": {
             "name": "Tanatori"
@@ -975,9 +975,6 @@
         },
         "craft/stonemason": {
             "name": "Manobra"
-        },
-        "aerialway": {
-            "name": "Transport per cable"
         },
         "amenity/nightclub": {
             "name": "Club nocturn"
@@ -2305,9 +2302,6 @@
         },
         "craft/handicraft": {
             "name": "Botiga d'artesà"
-        },
-        "aeroway": {
-            "name": "Infraestructura aeroportuària"
         },
         "aeroway/terminal": {
             "name": "Terminal d'aeroport"

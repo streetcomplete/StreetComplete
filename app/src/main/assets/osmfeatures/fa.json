@@ -1083,9 +1083,6 @@
         "craft/stonemason": {
             "name": "سنگ تراش"
         },
-        "aerialway": {
-            "name": "راه هوایی"
-        },
         "amenity/nightclub": {
             "name": "کلوپ شبانه"
         },
@@ -2674,9 +2671,6 @@
         },
         "shop/motorcycle_repair": {
             "name": "تعمیرگاه موتورسیکلت"
-        },
-        "aeroway": {
-            "name": "راه پروازی"
         },
         "aeroway/terminal": {
             "name": "پایانه فرودگاه",

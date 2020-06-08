@@ -496,8 +496,8 @@
             "terms": "单人转门"
         },
         "landuse/recreation_ground": {
-            "name": "绿地",
-            "terms": "绿地"
+            "name": "康体场地",
+            "terms": "绿地,康体,游乐场,康乐"
         },
         "office/newspaper": {
             "name": "报社",
@@ -1571,7 +1571,7 @@
             "terms": "石匠"
         },
         "aerialway": {
-            "name": "缆车线路"
+            "name": "缆车要素"
         },
         "amenity/nightclub": {
             "name": "夜总会",
@@ -1733,6 +1733,10 @@
         "barrier/retaining_wall": {
             "name": "挡土墙",
             "terms": "挡土墙"
+        },
+        "amenity/bar/lgbtq": {
+            "name": "LGBTQ+ 酒吧",
+            "terms": "lgb,lgbt,lgbtq,同性恋,双性恋,双性,跨性别,酷儿,同性恋酒吧"
         },
         "amenity/love_hotel": {
             "name": "爱情宾馆",
@@ -2477,6 +2481,10 @@
         "waterway/dock": {
             "name": "干船坞/湿船坞",
             "terms": "干船坞,湿船坞,干坞,湿坞"
+        },
+        "amenity/community_centre/lgbtq": {
+            "name": "LGBTQ+ 社区中心",
+            "terms": "lgb,lgbt,lgbtq,同性恋,双性恋,双性,跨性别,酷儿,同性恋活动,同性恋大厅"
         },
         "waterway/boatyard": {
             "name": "船舶库",
@@ -3828,6 +3836,9 @@
             "name": "幼儿园场地",
             "terms": "幼儿园,幼稚园,学前班,学龄前,托儿所,学校,校园"
         },
+        "man_made/tower/observation": {
+            "name": "瞭望塔"
+        },
         "waterway/weir": {
             "name": "堰",
             "terms": "坝,堰坝,拦河坝"
@@ -3916,7 +3927,7 @@
             "terms": "摩托车修理店"
         },
         "aeroway": {
-            "name": "机场路径"
+            "name": "机场要素"
         },
         "aeroway/terminal": {
             "name": "航站楼",

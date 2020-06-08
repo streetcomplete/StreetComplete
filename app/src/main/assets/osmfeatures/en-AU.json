@@ -69,6 +69,12 @@
         "highway/crossing/zebra": {
             "name": "Marked Crossing"
         },
+        "highway/construction": {
+            "name": "Road Under Construction"
+        },
+        "highway/cycleway/bicycle_foot": {
+            "name": "Shared Path"
+        },
         "highway/crossing/marked-raised": {
             "name": "Marked Crossing (Raised)"
         },

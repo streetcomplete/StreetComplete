@@ -1277,9 +1277,6 @@
             "name": "石匠",
             "terms": "石工"
         },
-        "aerialway": {
-            "name": "纜車路線"
-        },
         "amenity/nightclub": {
             "name": "夜總會",
             "terms": "夜店"
@@ -2982,9 +2979,6 @@
         "craft/handicraft": {
             "name": "手工藝",
             "terms": "手工藝,手作"
-        },
-        "aeroway": {
-            "name": "航空設施"
         },
         "aeroway/terminal": {
             "name": "機場客運大樓",

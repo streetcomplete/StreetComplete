@@ -184,7 +184,7 @@
             "terms": "Volleyballplatz, Volleyballfeld"
         },
         "amenity/veterinary": {
-            "name": "Tierarzt",
+            "name": "Tierarzt, Tierärztin",
             "terms": "Tierarzt, Tierärztin, Veterinär, Tierklinik, Tierarztpraxis"
         },
         "craft/pottery": {
@@ -523,6 +523,10 @@
         "shop/video_games": {
             "name": "Videospielgeschäft",
             "terms": "Videospielladen,Videospielgeschäft,Computerspieleladen"
+        },
+        "highway/cycleway/crossing/bicycle_foot": {
+            "name": "Rad- und Fußübergang",
+            "terms": "Rad- und Fußübergang, Fahrradübergang und Fußgängerübergang"
         },
         "traffic_calming/dip": {
             "name": "Bodensenke",
@@ -1061,8 +1065,8 @@
             "terms": "Mehrstöckige Parkgarage,Parkhaus"
         },
         "amenity/doctors": {
-            "name": "Arzt",
-            "terms": "Arzt, Ärztin, Mediziner, Medizinerin"
+            "name": "Arzt, Ärztin",
+            "terms": "Arzt, Ärztin, Mediziner, Medizinerin, Doktor, Doktorin"
         },
         "attraction/kiddie_ride": {
             "name": "Kinder-Fahrautomat",
@@ -1372,6 +1376,10 @@
         "amenity/ranger_station": {
             "name": "Ranger-Station",
             "terms": "Ranger-Station"
+        },
+        "historic/pillory": {
+            "name": "Pranger",
+            "terms": "Pranger, Schandpfahl, Schandbühne"
         },
         "office/quango": {
             "name": "Quasi-NGO-Büro",
@@ -1927,6 +1935,10 @@
             "name": "Bergsattel",
             "terms": "Bergsattel, Scharte, Sattel, Col"
         },
+        "amenity/kneipp_water_cure": {
+            "name": "Kneippanlage",
+            "terms": "Kneippanlage"
+        },
         "natural/water/basin": {
             "name": "Rückhaltebecken",
             "terms": "Rückhaltebecken, Basin"
@@ -2157,7 +2169,7 @@
         },
         "natural/wood": {
             "name": "Wald ohne forstwirtschafliche Nutzung",
-            "terms": "Baum, Bäume"
+            "terms": "Wald, Naturwald, Urwald, Baum, Bäume"
         },
         "amenity/restaurant/chinese": {
             "name": "Chinesisches Restaurant",
@@ -2254,9 +2266,17 @@
             "name": "drehender Korb",
             "terms": "drehender Korb"
         },
+        "amenity/exhibition_centre": {
+            "name": "Messezentrum",
+            "terms": "Messezentrum,Messegelände,Messe"
+        },
         "shop/fabric": {
             "name": "Stoffgeschäft",
             "terms": "Stoffgeschäft,Textilgeschäft"
+        },
+        "barrier/spikes": {
+            "name": "Nagelstreifen",
+            "terms": "Nagelstreifen, Nagelsperre, Nagelband, Nagelstreifen, Nagelkette Nagelgurt, Reifenkiller"
         },
         "shop/coffee": {
             "name": "Kaffeegeschäft",
@@ -2299,7 +2319,7 @@
             "terms": "Haus"
         },
         "addr/interpolation": {
-            "name": "Address-Interpolation"
+            "name": "Adress-Interpolation"
         },
         "craft/tailor": {
             "name": "Herrenschneider/in"
@@ -2425,6 +2445,10 @@
         "healthcare/podiatrist": {
             "name": "Fußpflege",
             "terms": "Podologe, Fußheilerin, Fußpflege"
+        },
+        "emergency/mountain_rescue": {
+            "name": "Bergrettung",
+            "terms": "Bergrettung, Rettung am Berg,"
         },
         "amenity/kindergarten": {
             "name": "Kindergartengrundstück",
@@ -2837,7 +2861,7 @@
             "terms": "Münz-Souvenir-Präge-Automat"
         },
         "type/waterway": {
-            "name": "Wasserwege",
+            "name": "Wasserweg",
             "terms": "Strom, Fluss, Bach, Graben, Damm, Wehr"
         },
         "emergency/destination": {
@@ -3535,7 +3559,7 @@
             "terms": "Zisterne, Wasserturm"
         },
         "aerialway": {
-            "name": "Seilbahn"
+            "name": "Lifte ..."
         },
         "amenity/bicycle_parking/lockers": {
             "name": "Fahrradschließfächer",
@@ -4540,7 +4564,7 @@
             "terms": "Hubschrauberlandeplatz, Helikopterlandeplatz, Heliport"
         },
         "amenity/dentist": {
-            "name": "Zahnarzt",
+            "name": "Zahnarzt, Zahnärztin",
             "terms": "Zahnarzt, Dentist, Stomatologe"
         },
         "landuse/residential/apartments": {
@@ -4611,7 +4635,7 @@
         },
         "landuse/forest": {
             "name": "Bewirtschafteter Wald",
-            "terms": "Bewirtschafteter Wald"
+            "terms": "Bewirtschafteter Wald, Forst, Forstwald, Nutzwald, Wald"
         },
         "leisure/bandstand": {
             "name": "Musikpavillon",
@@ -5129,7 +5153,7 @@
             "terms": "Diplomatische und konsularische Vertretung"
         },
         "aeroway": {
-            "name": "Luftfahrt"
+            "name": "Flugverkehr ..."
         },
         "aeroway/terminal": {
             "name": "Flughafenterminal",

@@ -732,4 +732,17 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="about_summary_donate">"Mostra il tuo apprezzamento! ❤️"</string>
     <string name="about_description_donate">"Grazie per aver dato supporto all'app! Per vedere le donazioni attuali e per donare tu stesso, premi sulle rispettive piattaforme:"</string>
     <string name="quest_religion_for_place_of_worship_name_title">"Quale religione è praticata a %s?"</string>
+    <string name="confirmation_cancel_prev_download_confirmed">"Scansiona qui invece"</string>
+    <string name="confirmation_cancel_prev_download_cancel">"Continua la scansione corrente"</string>
+    <string name="quest_buildingType_garages_description">"Separa gli spazi per proprietari differenti"</string>
+    <string name="quest_tourism_information_title">"Che tipo di informazioni turistiche dà?"</string>
+    <string name="quest_tourism_information_name_title">"Che tipo di informazioni turistiche dà %s?"</string>
+    <string name="quest_tourism_information_office">"Ufficio informazioni turistiche"</string>
+    <string name="quest_tourism_information_board">"Bacheca informazioni"</string>
+    <string name="quest_tourism_information_terminal">"Terminale informazioni"</string>
+    <string name="quest_tourism_information_map">"Mappa"</string>
+    <string name="quest_tourism_information_guidepost">"Cartello"</string>
+    <string name="quest_recycling_materials_answer_waste">"È per rifiuti generici"</string>
+    <string name="quest_recycling_materials_answer_waste_description">"Quindi, questo è un contenitore per qualsiasi rifiuto, come rifiuti domestici o commerciali?"</string>
+    <string name="quest_accepts_cash_title">"%s accetta pagamenti in denaro?"</string>
 </resources>

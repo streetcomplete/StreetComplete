@@ -399,6 +399,9 @@
         "shop/video_games": {
             "name": "Продавница за видеоигри"
         },
+        "highway/cycleway/crossing/bicycle_foot": {
+            "name": "Велосипедско-пешачки премин"
+        },
         "traffic_calming/dip": {
             "name": "Улична бразда"
         },
@@ -1045,6 +1048,9 @@
         "amenity/ranger_station": {
             "name": "Шумарска куќарка"
         },
+        "historic/pillory": {
+            "name": "Историски срамен столб"
+        },
         "office/quango": {
             "name": "Квази-НВО"
         },
@@ -1471,6 +1477,9 @@
         "natural/saddle": {
             "name": "Седло"
         },
+        "amenity/kneipp_water_cure": {
+            "name": "Водотерапија Кнајп"
+        },
         "natural/water/basin": {
             "name": "Слив"
         },
@@ -1720,8 +1729,14 @@
         "playground/basket_spinner": {
             "name": "Вртелешка-кошница"
         },
+        "amenity/exhibition_centre": {
+            "name": "Изложбен центар"
+        },
         "shop/fabric": {
             "name": "Продавница за ткаенини"
+        },
+        "barrier/spikes": {
+            "name": "бодликава пречка"
         },
         "shop/coffee": {
             "name": "Продавница за кафе"
@@ -1851,6 +1866,9 @@
         },
         "healthcare/podiatrist": {
             "name": "Ножен лекар"
+        },
+        "emergency/mountain_rescue": {
+            "name": "Планинарска спасителна служба"
         },
         "amenity/kindergarten": {
             "name": "Двор на детска градинка"
@@ -2696,7 +2714,7 @@
             "name": "Резервоар за вода"
         },
         "aerialway": {
-            "name": "Жичница"
+            "name": "Жичнички елемент"
         },
         "amenity/bicycle_parking/lockers": {
             "name": "Велосипедски шкафови"
@@ -3912,7 +3930,7 @@
             "name": "Дипломатска служба"
         },
         "aeroway": {
-            "name": "Воздухопловна постројка"
+            "name": "Воздухопловен елемент"
         },
         "aeroway/terminal": {
             "name": "Аеродромски терминал"

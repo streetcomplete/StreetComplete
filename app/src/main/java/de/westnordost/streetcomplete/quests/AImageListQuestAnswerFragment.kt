@@ -20,7 +20,7 @@ import kotlinx.android.synthetic.main.quest_generic_list.*
  * I is the type of each item in the image list (a simple model object). In MVC, this would
  * be the view model.
  *
- * T is the type of the answer object (also a simple model object) created by the quest 
+ * T is the type of the answer object (also a simple model object) created by the quest
  * form and consumed by the quest type. In MVC, this would be the model.
  */
 abstract class AImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnswerFragment<T>() {
@@ -34,8 +34,6 @@ abstract class AImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnswerFragm
     protected open val itemsPerRow = 4
     /** return -1 for any number. Default: 1  */
     protected open val maxSelectableItems = 1
-    /** return -1 for showing all items at once. Default: -1  */
-    protected open val maxNumberOfInitiallyShownItems = -1
     /** return true to move last picked items to the front. On by default. Only respected if the
      *  items do not all fit into one line */
     protected open val moveFavoritesToFront = true
@@ -70,20 +68,12 @@ abstract class AImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnswerFragm
             }
         })
 
-        showMoreButton.setOnClickListener {
-            imageSelector.items = moveFavouritesToFront(items)
-            showMoreButton.visibility = View.GONE
-        }
-
-        var initiallyShow = maxNumberOfInitiallyShownItems
+        showMoreButton.visibility = View.GONE
+        
+        imageSelector.items = moveFavouritesToFront(items)
         if (savedInstanceState != null) {
-            if (savedInstanceState.getBoolean(EXPANDED)) initiallyShow = -1
-            showItems(initiallyShow)
-
             val selectedIndices = savedInstanceState.getIntegerArrayList(SELECTED_INDICES)!!
             imageSelector.select(selectedIndices)
-        } else {
-            showItems(initiallyShow)
         }
         list.adapter = imageSelector
     }
@@ -102,19 +92,9 @@ abstract class AImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnswerFragm
         super.onSaveInstanceState(outState)
         // note: the view might be not available anymore at this point!
         outState.putIntegerArrayList(SELECTED_INDICES, ArrayList(imageSelector.selectedIndices))
-        outState.putBoolean(EXPANDED, showMoreButton?.visibility == View.GONE)
     }
 
     override fun isFormComplete() = imageSelector.selectedIndices.isNotEmpty()
-
-    private fun showItems(initiallyShow: Int) {
-        val allItems = items
-        val showAll = initiallyShow == -1 || initiallyShow >= allItems.size
-
-        showMoreButton.visibility = if(showAll) View.GONE else View.VISIBLE
-        val sortedItems = moveFavouritesToFront(allItems)
-        imageSelector.items = if(showAll) sortedItems else sortedItems.subList(0, initiallyShow)
-    }
 
     private fun moveFavouritesToFront(originalList: List<Item<I>>): List<Item<I>> {
         val result: LinkedList<Item<I>> = LinkedList(originalList)
@@ -127,6 +107,5 @@ abstract class AImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnswerFragm
 
     companion object {
         private const val SELECTED_INDICES = "selected_indices"
-        private const val EXPANDED = "expanded"
     }
 }

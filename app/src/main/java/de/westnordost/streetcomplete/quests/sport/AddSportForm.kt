@@ -57,7 +57,6 @@ class AddSportForm : AImageListQuestAnswerFragment<String, List<String>>() {
     ).sortedBy(countryInfo.popularSports)
 
     override val maxSelectableItems = -1
-    override val maxNumberOfInitiallyShownItems = 8
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -384,6 +384,10 @@
             "name": "Akvarium",
             "terms": "Akvarium, fisk, hav, vatten"
         },
+        "man_made/manhole": {
+            "name": "Gatubrunn",
+            "terms": "Gatubrunn, brunn, dagvattenbrunn, dagvatten, avlopp, telekom, telefoni, manhålslucka, Brunnslock, manlucka, manhål, avloppsbrunn, a-brunn, Brandpost, Rensbrunn"
+        },
         "type/site": {
             "name": "Plats",
             "terms": "Plats, ställe, läge, anläggning"
@@ -431,6 +435,10 @@
         "shop/dry_cleaning": {
             "name": "Kemtvätt",
             "terms": "Kemtvättar, kemisk tvätt"
+        },
+        "indoor/elevator": {
+            "name": "Innomhushisschakt",
+            "terms": "innomhushisschakt, hisschakt, hiss, schakt"
         },
         "tourism/caravan_site": {
             "name": "Ställplats",
@@ -836,6 +844,10 @@
         "shop/beverages": {
             "name": "Dryckaffär",
             "terms": "Dryck, alkohol, läsk, dricka, läskedryck"
+        },
+        "entrance": {
+            "name": "Entré / utgång",
+            "terms": "Ingång, utgång, entré, dörr, huvudentré"
         },
         "emergency/fire_alarm": {
             "name": "Nödtelefon",
@@ -1421,6 +1433,10 @@
             "name": "Butik för skrivarbläck",
             "terms": "Butik för skrivarbläck, kopieringsbläck, skrivarbläck, faxbläck, bläck, skrivartoner, toner, skrivare, kopiator, fax"
         },
+        "attraction/pirate_ship": {
+            "name": "Båtgunga",
+            "terms": "Båtgunga, piratskepp, vikingaskepp, gunga, gungande båt, roterande båt, Åkattraktion, karusell, nöjeskarusell, nöjespark, temapark, tivoli"
+        },
         "healthcare/alternative/chiropractic": {
             "name": "Kiropraktik (rygg)",
             "terms": "Kiropraktor, Kiropraktik, ryggbesvär, ryggen, smärta, ryggsmärta, ryggrad, Kotknackare"
@@ -1769,6 +1785,9 @@
             "name": "Klockaffär",
             "terms": "Klockaffär, klockbutik, urbutik, uraffär, ur, klocka , klockor"
         },
+        "landuse": {
+            "name": "Markanvändning"
+        },
         "waterway/riverbank": {
             "name": "Flodbank"
         },
@@ -1803,9 +1822,6 @@
         "craft/stonemason": {
             "name": "Stenhuggare",
             "terms": "Stenhuggare, stenbrott"
-        },
-        "aerialway": {
-            "name": "Linbana"
         },
         "amenity/bicycle_parking/lockers": {
             "name": "Cykellås",
@@ -1920,6 +1936,10 @@
         "craft/electrician": {
             "name": "Elektriker",
             "terms": "Elektriker, elmontör, elreparatör, montör, el, elmontör, starkströmsmontör, systembyggare, kabeldragning, elkraft"
+        },
+        "attraction/drop_tower": {
+            "name": "Fritt fall",
+            "terms": "Fritt fall, åkattraktion, karusell, nöjeskarusell, nöjespark, temapark, tivoli"
         },
         "historic/archaeological_site": {
             "name": "Arkeologisk plats",
@@ -2271,6 +2291,10 @@
             "name": "Gångfartsområde",
             "terms": "Gångfartsområde, gårdsgata, torg"
         },
+        "attraction/bumper_car": {
+            "name": "Radiobilar",
+            "terms": "Radiobilar, radiobil, nöjespark, temapark, tivoli, åkattraktion"
+        },
         "attraction/roller_coaster": {
             "name": "Berg- och dalbana",
             "terms": "berg- och dalbana, berg-och-dalbana, bergochdalbana, bergodalbana, berg-och-dal-bana, dalbana, åkattraktion, temapark, nöjespark, tivoli"
@@ -2375,6 +2399,10 @@
         "attraction/bungee_jumping": {
             "name": "Bungyjump",
             "terms": "Bungyjump,  bungee jump, nöjespark, temapark, tivoli, hopplattform"
+        },
+        "piste/piste": {
+            "name": "Vintersportspår / Pist",
+            "terms": "Vintersportspår, skidor, skida, off-pist, offpist, utförsåkning, utför, alpint, snowboard, skidtur, skidåkning, släde, häst, vintervandring, snöskor, is, isåkning, skridsko, skridskoåkning, pist, längdskidor, längdskidspår, alpint, alpin"
         },
         "railway/signal": {
             "name": "Järnvägssignal",
@@ -2541,6 +2569,9 @@
         "waterway/fuel": {
             "name": "Sjömack",
             "terms": "Sjömack, båtmack, bränslestation, tankstation båtbensninmack, båtmensinstation"
+        },
+        "highway": {
+            "name": "Vägobjekt"
         },
         "shop/pastry": {
             "name": "Konditori",
@@ -2728,6 +2759,10 @@
         "healthcare/optometrist": {
             "name": "Optometri (ögon)",
             "terms": "Optometri, Optometrier , ögon, glasögon, ögonlaser, linser, syn, synfel, korrektionsglas, synhjälpmedel"
+        },
+        "building/kindergarten": {
+            "name": "Förskolebyggnad",
+            "terms": "Förskola, dagis, daghem, lekskola, kindergarten, lekis,  förskolebyggnad, dagisbyggnad, dagishus, förskolehus, barnomsorg"
         },
         "indoor/room": {
             "name": "Rum",
@@ -2934,6 +2969,10 @@
         "amenity/bicycle_parking/shed": {
             "name": "Cykelskydd",
             "terms": "Cykelskydd, cykel, cykelparkering, cykelparkeringsskydd, cykeltak, tak, cykelparkeringstak"
+        },
+        "entrance/emergency": {
+            "name": "Nödutgång",
+            "terms": "Nödutgång, branddörr, brandutgång, dörr, utgång"
         },
         "highway/services": {
             "name": "Rastplats med försäljning",
@@ -3776,6 +3815,10 @@
             "name": "Hybridlift (Telemixlift)",
             "terms": "Telemixlift, hybridlift, gondol, gondolbana, lift, linbana, skidlift, lift, stollift, stolslift, expresslift"
         },
+        "piste/nordic": {
+            "name": "Längdskidspår",
+            "terms": "Längdskidåkning, off-pist, längdskidor, Längdskidåkning, off-pist, skidspår, skidor, skating, pist, längdåkning,"
+        },
         "shop/paint": {
             "name": "Färgbutik",
             "terms": "Färgbutik, färg, målarfärg, målning"
@@ -4025,6 +4068,10 @@
             "name": "Mast",
             "terms": "Mast, antenn, sändarmast, mobiltelefonmast, mobilmast, kommunikationsmast, kommunikationstorn, stagas torn, mobiltelefon torn, radiomast, tv-torn, tv-mast, överföringsmast, överföringstorn, antennbärare, sändarstation, slavsändare"
         },
+        "attraction/river_rafting": {
+            "name": "Forsränning",
+            "terms": "Forsränning, forsbana, Vattenbana, fors, Åkattraktion, karusell, nöjeskarusell, nöjespark, temapark, tivoli"
+        },
         "leisure/disc_golf_course": {
             "name": "Frisbeegolfbana"
         },
@@ -4160,6 +4207,10 @@
             "name": "Enfamiljshus",
             "terms": "Villa, hus, småhus, enfamiljshus, enbostadshus, kåk, egnahem, radhus, parhus, bostadshus"
         },
+        "piste/sleigh": {
+            "name": "Slädspår",
+            "terms": "Släde, slädspår, hundsläde, häst, hästsläde, pist, slädpist, hundspann, husky, kälke"
+        },
         "addr/interpolation": {
             "name": "Adressinterpolering"
         },
@@ -4173,6 +4224,10 @@
         "amenity/restaurant/american": {
             "name": "Amerikansk restaurang",
             "terms": "Restaurang, matservering, matställe, servering, restauration, näringsställe, grillbar, bar, krog, värdshus, pub, bodega, brasserie, rotisseri, pizzeria, kafé, cafeteria, sylta, café. matsal, kaffe, lunch, amerikansk restaurang, amerikansk mat, USA"
+        },
+        "piste/sled": {
+            "name": "Pulkabacke",
+            "terms": "pulka, pulkabacke, bob, rodel, pist, släde, kälke, snowracer"
         },
         "public_transport/platform/bus": {
             "name": "Bussplattform",
@@ -4318,6 +4373,10 @@
             "name": "Serviceväg",
             "terms": "Uppfart, industriväg, bakgård, parkeringsväg, campinggata,"
         },
+        "piste/ice_skate": {
+            "name": "Skridskoled",
+            "terms": "Skridskoled, skridskor, skridskobana, isbana, skridskorink, rink, is, skridskoåkning, pist"
+        },
         "waterway/drain": {
             "name": "Dränering",
             "terms": "dränering, avrinning, dagvatten, dagvattenavrinning"
@@ -4426,6 +4485,9 @@
             "name": "Turistattraktion",
             "terms": "Turistattraktion, sevärdhet, sevärdighet"
         },
+        "man_made": {
+            "name": "Människoskapat objekt"
+        },
         "barrier/kerb/lowered": {
             "name": "Nedsänkt trottoarkant",
             "terms": "trottoarkant, kant, kantsten, nedsänkt kant, nedsänkt trottoar, kantstensskärning, kantstensramp, trottoarsramp, sluttande,kantsten, rullstolsramp, barnvagnsramp"
@@ -4474,6 +4536,10 @@
             "name": "Hantverk",
             "terms": "Hantverkare, hantverk, konsthantverk, slöjd, handarbete, hantverk, snideri, sömnad, hemslöjd, vävning, textil, vävstuga, snickeri"
         },
+        "landuse/construction": {
+            "name": "Byggarbetsplats",
+            "terms": "Byggarbetsplats, bygge, Byggnad under konstruktion, Byggnad under uppförande, byggarbete,  byggnation, byggnadsplats"
+        },
         "shop/trade": {
             "name": "Proffshandel",
             "terms": "Proffshandel, proffsmarknad, proffs, byggnadsmaterial, byggmaterial, brädgård, brädor, Trähandel, trävaror, VVS-specialist, VVS, jordbruksprodukter, jordbruk, lantmannaföreningen, granngården, kakel, fönster"
@@ -4481,9 +4547,6 @@
         "shop/motorcycle_repair": {
             "name": "Motorcykelverkstad",
             "terms": "Motorcykelverkstad, motorcykel, motorcyklar, verkstad, reparation, service, motorcykelservice, cykel, moped, mopedverkstad, reparatör, motorcykelreparatör"
-        },
-        "aeroway": {
-            "name": "Flygtrafik"
         },
         "aeroway/terminal": {
             "name": "Flygterminal",

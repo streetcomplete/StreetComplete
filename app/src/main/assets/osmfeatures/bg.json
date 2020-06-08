@@ -779,9 +779,6 @@
         },
         "natural/glacier": {
             "name": "Ледник"
-        },
-        "aeroway": {
-            "name": "Въздухоплаване"
         }
     }
 }

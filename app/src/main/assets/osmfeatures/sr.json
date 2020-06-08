@@ -1990,9 +1990,6 @@
         "leisure/fitness_centre/yoga": {
             "name": "Јога студио"
         },
-        "aeroway": {
-            "name": "Авио-пут"
-        },
         "aeroway/terminal": {
             "name": "Аеродромски терминал"
         },

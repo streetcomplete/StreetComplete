@@ -663,6 +663,10 @@
             "name": "運河",
             "terms": "運河"
         },
+        "power/plant/source/nuclear": {
+            "name": "原子力発電所",
+            "terms": "原子力発電所, 原発, 発電, 電力, 発電所"
+        },
         "barrier/kerb/raised": {
             "name": "高位縁石(3cm以上)",
             "terms": "高位縁石, 縁石, カッセル縁石, 高くなった縁石"
@@ -762,6 +766,10 @@
         "place/quarter": {
             "name": "大字 / (市内の)町",
             "terms": "大字, 字, 町, 地名"
+        },
+        "power/plant/source/hydro": {
+            "name": "水力発電所",
+            "terms": "水力発電所, 水力, 発電, 発電所, 電力"
         },
         "shop/perfumery": {
             "name": "香水店",
@@ -1096,6 +1104,10 @@
             "name": "補聴器店",
             "terms": "補聴器店"
         },
+        "power/plant/source/wind": {
+            "name": "風力発電所",
+            "terms": "風力発電所, 風力, 発電所, 電力"
+        },
         "public_transport/platform/trolleybus_point": {
             "name": "トロリーバスのりば",
             "terms": "トロリーバス乗り場, トロリーバス, のりば, ホーム, プラットホーム, バス停, バス乗り場, バスのりば, バス, バスターミナル, バスステーション, バスストップ, BS, のりば, ホーム, プラットホーム, 停留所, トロリーバスプラットホーム, トロリーバスのりば"
@@ -1201,6 +1213,10 @@
         "leisure/fitness_centre/yoga": {
             "name": "ヨガスタジオ",
             "terms": "ヨガスタジオ, スポーツ, トレーニング, 訓練, 教室, 習い事, 教習, 稽古, 体操, 運動"
+        },
+        "power/plant/source/coal": {
+            "name": "石炭発電所",
+            "terms": "石炭発電所, 火力発電所, 発電所, 電力, 石炭"
         },
         "aerialway/t-bar": {
             "name": "Tバーリフト",
@@ -1353,6 +1369,10 @@
         "amenity/ranger_station": {
             "name": "レンジャーの詰所",
             "terms": "レンジャーの詰所, レンジャーステーション, 救命"
+        },
+        "historic/pillory": {
+            "name": "さらし台",
+            "terms": "さらし台, 処刑, 歴史, 史跡"
         },
         "office/quango": {
             "name": "準非政府機関",
@@ -1908,6 +1928,10 @@
             "name": "鞍部",
             "terms": "鞍部"
         },
+        "amenity/kneipp_water_cure": {
+            "name": "足浴場（ヨーロッパ）",
+            "terms": "足浴場（ヨーロッパ）, 足浴, 水浴, 足湯"
+        },
         "natural/water/basin": {
             "name": "遊水地",
             "terms": "遊水地, 遊水池, 集水地域, 水, 貯水池"
@@ -2235,6 +2259,10 @@
             "name": "回転かご",
             "terms": "回転かご, 遊具"
         },
+        "amenity/exhibition_centre": {
+            "name": "展示場",
+            "terms": "展示場, エキシビジョンセンター, 会場, 展示会場, 見本市"
+        },
         "shop/fabric": {
             "name": "生地屋",
             "terms": "布地, 織物, 反物, ファブリック店, 生地, 裏地, 衣料, 服, 裁縫, 衣類, 生地店, 布地店, お店"
@@ -2402,6 +2430,10 @@
         "healthcare/podiatrist": {
             "name": "足病医",
             "terms": "足病医, 医療"
+        },
+        "emergency/mountain_rescue": {
+            "name": "山岳救助",
+            "terms": "山岳救助, 緊急, 遭難"
         },
         "amenity/kindergarten": {
             "name": "幼稚園/保育園（代表点または敷地）",
@@ -2610,6 +2642,10 @@
         },
         "railway/station": {
             "name": "鉄道駅"
+        },
+        "amenity/lavoir": {
+            "name": "共同洗い場",
+            "terms": "共同洗い場, 洗濯, 食器洗い"
         },
         "office/therapist": {
             "name": "セラピスト（オフィス）",
@@ -3509,7 +3545,7 @@
             "terms": "水槽, タンク, 水タンク"
         },
         "aerialway": {
-            "name": "索道"
+            "name": "索道の地物"
         },
         "amenity/bicycle_parking/lockers": {
             "name": "駐輪場(ロッカー)",
@@ -3550,6 +3586,10 @@
         "tourism/artwork/graffiti": {
             "name": "落書きアート",
             "terms": "落書きアート, 落書き, アート, 屋外アート, 美術, 芸術, 作品"
+        },
+        "power/plant/source/gas": {
+            "name": "ガス発電所",
+            "terms": "ガス発電所, 火力発電所, 発電, 発電所, ガス, 電力"
         },
         "landuse/churchyard": {
             "name": "教会（土地区画）"
@@ -3864,6 +3904,10 @@
         "shop/shoes": {
             "name": "靴店",
             "terms": "靴店"
+        },
+        "power/plant/source/solar": {
+            "name": "太陽光発電所",
+            "terms": "原子力発電所, ソーラー, 電力, 発電所"
         },
         "shop/laundry/self_service": {
             "name": "コインランドリー(セルフ)",
@@ -5087,7 +5131,7 @@
             "terms": "外交施設, 外交"
         },
         "aeroway": {
-            "name": "航空施設"
+            "name": "空路の地物"
         },
         "aeroway/terminal": {
             "name": "空港ターミナル",

@@ -613,8 +613,6 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_openingHours_timeSelect_next">"Weiter"</string>
     <string name="quest_tracktype_title">"Wie gut ist dieser Weg befestigt?"</string>
     <string name="quest_tracktype_grade1">"Befestigt"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tracktype_grade2">"Größtenteils befestigt"</string>
     <string name="quest_tracktype_grade3">"Gemischt"</string>
     <string name="quest_tracktype_grade4">"Größtenteils unbefestigt"</string>
@@ -738,6 +736,6 @@ Jetzt aufspalten?"</string>
     <string name="quest_tourism_information_map">"Karte"</string>
     <string name="quest_tourism_information_guidepost">"Wegweiser"</string>
     <string name="quest_recycling_materials_answer_waste">"Ist für allgemeinen Müll"</string>
-    <string name="quest_recycling_materials_answer_waste_description">"Das ist also ein Müllcontainer, wie etwa für Haus- oder Industriemüll?"</string>
+    <string name="quest_recycling_materials_answer_waste_description">"Das ist also ein Müllcontainer, wie etwa für Haus- oder Gewerbemüll?"</string>
     <string name="quest_accepts_cash_title">"Aktzeptiert %s Bargeld?"</string>
 </resources>

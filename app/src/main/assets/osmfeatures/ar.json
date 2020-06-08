@@ -47,6 +47,9 @@
             "name": "منشرة",
             "terms": "منشرة"
         },
+        "emergency/yes": {
+            "name": "وصول الطوارئ نعم"
+        },
         "healthcare/audiologist": {
             "name": "أخصائي السمع",
             "terms": "أخصائي السمع"
@@ -82,6 +85,9 @@
         "shop/seafood": {
             "name": "متجر مأكولات بحرية",
             "terms": "مأكولات بحرية, مسمكة, سمك"
+        },
+        "railway/milestone": {
+            "name": "معلم السكك الحديدية"
         },
         "waterway/sanitary_dump_station": {
             "name": "التخلص من مرحاض البحر",
@@ -295,6 +301,9 @@
             "name": "موقف تاكسي",
             "terms": "موقف أجرة"
         },
+        "amenity/vending_machine/excrement_bags": {
+            "name": "موزع حقائب الفضلات"
+        },
         "amenity/smoking_area": {
             "name": "منطقة مخصصة للتدخين"
         },
@@ -330,6 +339,9 @@
         "emergency/phone": {
             "name": "هاتف طوارئ",
             "terms": "هاتف طوارئ"
+        },
+        "golf/bunker": {
+            "name": "فخ الرمال"
         },
         "shop/houseware": {
             "name": "متجر الأدوات المنزلية",
@@ -394,6 +406,9 @@
             "name": "مياه شرب",
             "terms": "ماء الشرب"
         },
+        "amenity/pharmacy": {
+            "name": "شباك صيدلية"
+        },
         "barrier/kissing_gate": {
             "name": "بوابة منع الماشية",
             "terms": "بوابة منع الماشية"
@@ -428,6 +443,9 @@
             "name": "حاجز دراجات هوائية",
             "terms": "حاجز دراجات هوائية; حاجز; ممر; حاجز مرور; حاجز دراجات"
         },
+        "embankment": {
+            "name": "سد"
+        },
         "shop/sports": {
             "name": "متجر أدوات رياضية",
             "terms": "محل بيع أدوات رياضية"
@@ -438,6 +456,9 @@
         "type/waterway": {
             "name": "مجرى مائي",
             "terms": "مجرى مائي، ممر مائي"
+        },
+        "emergency/destination": {
+            "name": "وجهة وصول الطوارئ"
         },
         "public_transport/stop_position_train": {
             "name": "موقف وقوف قطارات"
@@ -496,6 +517,12 @@
         "aeroway/gate": {
             "name": "بوابة المطار",
             "terms": "بوابة المطار"
+        },
+        "aerialway/gondola": {
+            "name": "جندول"
+        },
+        "shop/window_blind": {
+            "name": "متجر ستائر نوافذ"
         },
         "advertising/column": {
             "name": "عمود إعلاني"
@@ -573,6 +600,9 @@
         "shop/beverages": {
             "name": "محل مشروبات",
             "terms": "محل مشروبات"
+        },
+        "entrance": {
+            "name": "مدخل / مخرج"
         },
         "amenity/place_of_worship/jewish": {
             "name": "كنيس يهودي"
@@ -660,6 +690,9 @@
             "name": "محل متعدد الأقسام",
             "terms": "محل متعدد الأقسام"
         },
+        "historic/wayside_cross": {
+            "name": "تقاطع جانب الطريق"
+        },
         "man_made/petroleum_well": {
             "name": "بئر نفط",
             "terms": "بئر نفط، بترول"
@@ -683,6 +716,9 @@
         "natural/glacier": {
             "name": "كتلة جليدية",
             "terms": "كتلة جليدية"
+        },
+        "shop/storage_rental": {
+            "name": "تأجير أماكن التخزين"
         },
         "shop/fashion": {
             "name": "متجر موضة"
@@ -729,6 +765,9 @@
         "leisure/dance": {
             "name": "قاعة الرقص",
             "terms": "قاعة الرقص"
+        },
+        "traffic_calming/hump": {
+            "name": "مطب سرعة"
         },
         "building/chapel": {
             "name": "مبنى معبد"
@@ -879,6 +918,9 @@
             "name": "مزرعة العنب",
             "terms": "مزرعة عنب"
         },
+        "traffic_calming/rumble_strip": {
+            "name": "شريط قرقعة للطرقات"
+        },
         "leisure/pitch/badminton": {
             "name": "تنس الريشة",
             "terms": "تنس,كرة,ريشة"
@@ -925,6 +967,9 @@
         "attraction/big_wheel": {
             "name": "دولاب هواء",
             "terms": "دولاب هواء; العجلة الكبيرة"
+        },
+        "landuse/military/obstacle_course": {
+            "name": "مضمار حواجز"
         },
         "natural/spring": {
             "name": "نبع",
@@ -989,6 +1034,9 @@
             "name": "محل إلكترونيات",
             "terms": "محل إلكترونيات"
         },
+        "waterway": {
+            "name": "ميزة الممر المائي"
+        },
         "amenity/clinic": {
             "name": "عيادة",
             "terms": "عيادة; مستوصف"
@@ -1006,6 +1054,9 @@
         },
         "amenity/language_school": {
             "name": "مدرسة لغات"
+        },
+        "amenity/crematorium": {
+            "name": "محرقة فرن لاحراق الجث"
         },
         "building/farm_auxiliary": {
             "name": "مبنى مزرعة",
@@ -1043,9 +1094,18 @@
             "name": "محل بيع أجهزة عالية الدقة",
             "terms": "محل بيع أجهزة عالية الدقة"
         },
+        "craft/window_construction": {
+            "name": "بناء النوافذ"
+        },
         "shop/appliance": {
             "name": "متجر الأجهزة المنزلية",
             "terms": "متجر الأجهزة المنزلية"
+        },
+        "craft/tinsmith": {
+            "name": "سمكري"
+        },
+        "golf/green": {
+            "name": "وضع الأخضر"
         },
         "man_made/windmill": {
             "name": "طاحونة هوائية",
@@ -1106,6 +1166,9 @@
             "name": "دار التمريض",
             "terms": "دار التمريض"
         },
+        "building/train_station": {
+            "name": "مبنى محطة القطار"
+        },
         "amenity/restaurant/thai": {
             "name": "مطعم تايلاندي"
         },
@@ -1128,9 +1191,18 @@
             "name": "مسار دراجات",
             "terms": "طريق دراجات; مسار دراجات"
         },
+        "man_made/gasometer": {
+            "name": "مقياس الغاز"
+        },
         "shop/hardware": {
             "name": "محل أجهزة",
             "terms": "محل بيع عتاد"
+        },
+        "amenity/car_sharing": {
+            "name": "محطة مشاركة السيارات"
+        },
+        "shop/funeral_directors": {
+            "name": "بيت الدفن"
         },
         "tourism/zoo": {
             "name": "حديقة حيوانات",
@@ -1158,8 +1230,14 @@
             "name": "إشارة توقف",
             "terms": "إشارة توقف، ممنوع الوقوف، قف"
         },
+        "emergency/no": {
+            "name": "وصول الطوارئ لا"
+        },
         "public_transport/stop_position_ferry": {
             "name": "موقع وقوف عبّارات"
+        },
+        "tourism": {
+            "name": "ميزة سياحية"
         },
         "amenity/public_bath": {
             "name": "حمام عام"
@@ -1179,6 +1257,9 @@
         "shop/watches": {
             "name": "متجر الساعات اليدوية",
             "terms": "متجر الساعات اليدوية"
+        },
+        "landuse": {
+            "name": "ميزة استخدام الأراضي"
         },
         "waterway/riverbank": {
             "name": "ضفة نهر"
@@ -1202,8 +1283,11 @@
             "name": "كشك التحصيل",
             "terms": "كشك التحصيل , مكتب رسوم العبور"
         },
+        "craft/stonemason": {
+            "name": "مهنة البناء"
+        },
         "aerialway": {
-            "name": "كابلات معلقة في الهواء"
+            "name": "ميزة طيران"
         },
         "amenity/nightclub": {
             "name": "ملهى ليلي",
@@ -1227,6 +1311,9 @@
         "office/forestry": {
             "name": "إدارة الغابات",
             "terms": "إدارة الغابات"
+        },
+        "building/static_caravan": {
+            "name": "منزل متحرك ثابت"
         },
         "leisure/pitch/skateboard": {
             "name": "حديقة تزلج",
@@ -1307,6 +1394,9 @@
             "name": "متجر مياه شرب",
             "terms": "مياه صحية, مياه, ماء"
         },
+        "public_transport/platform": {
+            "name": "منصة العبور"
+        },
         "craft/confectionery": {
             "name": "حلواني",
             "terms": "حلواني"
@@ -1318,6 +1408,9 @@
         "aerialway/goods": {
             "name": "نقل البضائع بالكابلات ",
             "terms": "نقل البضائع بالكابلات"
+        },
+        "railway/platform": {
+            "name": "منصة القطار"
         },
         "barrier/retaining_wall": {
             "name": "جدار تثبيت",
@@ -1390,6 +1483,9 @@
             "name": "مأوى حيوانات",
             "terms": "مأوى حيوانات; ملجأ"
         },
+        "emergency/private": {
+            "name": "وصول الطوارئ خاص"
+        },
         "craft/sailmaker": {
             "name": "صانع أشرعة",
             "terms": "صانع أشرعة"
@@ -1412,6 +1508,9 @@
             "name": "محل بيع أجزاء السيارة",
             "terms": "محل بيع قطع السيارات"
         },
+        "shop/jewelry": {
+            "name": "محل مجوهرات"
+        },
         "office/lawyer": {
             "name": "مكتب قانوني ",
             "terms": "مكتب محاماة، اﻹدارة القانونية، المحكمة،"
@@ -1425,6 +1524,9 @@
         },
         "shop/bookmaker": {
             "name": "مكتب رهانات"
+        },
+        "leisure/fitness_centre/yoga": {
+            "name": "استوديو يوجا"
         },
         "historic/boundary_stone": {
             "name": "صخرة حدودية",
@@ -1461,6 +1563,9 @@
             "name": "مجرى",
             "terms": "مجرى، جدول مائي"
         },
+        "railway": {
+            "name": "ميزة سكة حديد"
+        },
         "building/university": {
             "name": "مبنى جامعي",
             "terms": "جامعة; كلية"
@@ -1492,8 +1597,17 @@
         "shop/copyshop": {
             "name": "متجر نسخ وتصوير"
         },
+        "leisure/firepit": {
+            "name": "حفرة نار"
+        },
         "public_transport/station_ferry": {
             "name": "محطة عبّارة"
+        },
+        "leisure/pitch/baseball": {
+            "name": "ملعب البيسبول"
+        },
+        "man_made/bridge": {
+            "name": "منطقة جسر"
         },
         "railway/monorail": {
             "name": "سكة حديدة مفردة",
@@ -1577,6 +1691,9 @@
             "name": "متجر ديني",
             "terms": "دين,متجر,"
         },
+        "golf/rough": {
+            "name": "الخام"
+        },
         "man_made/breakwater": {
             "name": "كاسر الأمواج",
             "terms": "كاسر الأمواج"
@@ -1595,6 +1712,9 @@
         },
         "amenity/parking": {
             "name": "ساحة انتظار سيارات"
+        },
+        "highway/bus_stop": {
+            "name": "موقف حافلة"
         },
         "office/energy_supplier": {
             "name": "شركة مرافق الكهرباء",
@@ -1645,6 +1765,9 @@
             "name": "موقع",
             "terms": "موقع"
         },
+        "traffic_calming/table": {
+            "name": "جدول السرعة"
+        },
         "amenity/courthouse": {
             "name": "محكمة",
             "terms": "مجمع محاكم, دار عدل, دار قضاء"
@@ -1672,6 +1795,9 @@
         "waterway/fuel": {
             "name": "محطة وقود بحري",
             "terms": "وقود بحري"
+        },
+        "highway": {
+            "name": "ميزة طريق سريع"
         },
         "shop/pastry": {
             "name": "متجر حلويات",
@@ -1736,6 +1862,9 @@
             "name": "عيادة الخصوبة",
             "terms": "عيادة الخصوبة"
         },
+        "leisure/fitness_station": {
+            "name": "محطة اللياقة البدنية في الهواء الطلق"
+        },
         "amenity/vending_machine/newspapers": {
             "name": "آلة بيع جرائد",
             "terms": "جرائد"
@@ -1747,6 +1876,9 @@
         "healthcare/speech_therapist": {
             "name": "معالج النطق",
             "terms": "معالج النطق، نطق"
+        },
+        "leisure/picnic_table": {
+            "name": "طاولة النزهة"
         },
         "man_made/cutline": {
             "name": "خط الفصل",
@@ -1806,6 +1938,9 @@
         "healthcare/optometrist": {
             "name": "أخصائي البصريات",
             "terms": "أخصائي البصريات"
+        },
+        "building/kindergarten": {
+            "name": "مبنى الحضانة / رياض الأطفال"
         },
         "amenity/fast_food/ice_cream": {
             "name": "أيس كريم وجبة سريعة"
@@ -1874,6 +2009,9 @@
         "tourism/artwork": {
             "name": "عمل فني",
             "terms": "عمل فني"
+        },
+        "amenity/vending_machine/sweets": {
+            "name": "آلة بيع الوجبات الخفيفة"
         },
         "landuse/retail": {
             "name": "منطقة بيع بالتجزئة",
@@ -1944,6 +2082,9 @@
         "public_transport/station_trolleybus": {
             "name": "محطة حافلة كهربائية"
         },
+        "leisure": {
+            "name": "ميزة الترفيه"
+        },
         "amenity/post_office": {
             "name": "مكتب البريد",
             "terms": "دائرة البريد, مكتب البريد, مكتب بريد"
@@ -2008,6 +2149,9 @@
         "power/cable/underground": {
             "name": "كابل كهرباء تحت الأرض"
         },
+        "golf/tee": {
+            "name": "مربع الإنطلاق"
+        },
         "office": {
             "name": "مكتب",
             "terms": "مكتب"
@@ -2037,6 +2181,9 @@
         "place/plot": {
             "name": "قطعة الأرض",
             "terms": "قطعة الأرض"
+        },
+        "attraction/water_slide": {
+            "name": "التزلق على الماء"
         },
         "shop/vacuum_cleaner": {
             "name": "متجر المكنسات الكهربائية",
@@ -2090,6 +2237,12 @@
         "shop/toys": {
             "name": "متجر ألعاب",
             "terms": "محل ألعاب"
+        },
+        "type/restriction/no_straight_on": {
+            "name": "لا على التوالي"
+        },
+        "landuse/allotments": {
+            "name": "حديقة المجتمع"
         },
         "office/water_utility": {
             "name": "شركة المياه",
@@ -2182,6 +2335,9 @@
             "name": "مبنى فندق",
             "terms": "فندق"
         },
+        "shop/anime": {
+            "name": "متجر أنيمي / مانغا"
+        },
         "route/ferry": {
             "name": "مسار عبّارة",
             "terms": "مسار عبّارة, مسار سفن"
@@ -2189,6 +2345,12 @@
         "shop/outdoor": {
             "name": "متجر ملابس ومعدات الأنشطة في الهواء الطلق",
             "terms": "متجر ملابس ومعدات الأنشطة في الهواء الطلق"
+        },
+        "highway/raceway": {
+            "name": "مضمار سباق السيارات"
+        },
+        "emergency/designated": {
+            "name": "محدد لدخول الطوارئ"
         },
         "highway/steps": {
             "name": "درج",
@@ -2243,6 +2405,9 @@
         "shop/supermarket": {
             "name": "سوبر ماركت",
             "terms": "سوبرماركت, متجر كبير"
+        },
+        "office/political_party": {
+            "name": "مكتب الحزب السياسي"
         },
         "shop/wholesale": {
             "name": "متجر بيع بالجملة",
@@ -2303,6 +2468,9 @@
             "name": "مكان التخييم",
             "terms": "مكان التخييم"
         },
+        "golf/hole": {
+            "name": "ثقب الجولف"
+        },
         "building/semidetached_house": {
             "name": "مبنى شبه منفصل"
         },
@@ -2320,8 +2488,14 @@
         "shop/beauty/tanning": {
             "name": "صالون تسمير"
         },
+        "amenity/water_point": {
+            "name": "RV مياه الشرب"
+        },
         "public_transport/station": {
             "name": "محطة عبور (ترانزيت)"
+        },
+        "landuse/forest": {
+            "name": "الغابات المدارة"
         },
         "amenity/food_court": {
             "name": "قاعة طعام",
@@ -2362,6 +2536,12 @@
         "type/route": {
             "name": "مسار",
             "terms": "مسار"
+        },
+        "amenity/vending_machine/public_transport_tickets": {
+            "name": "آلة بيع تذاكر العبور"
+        },
+        "man_made/embankment": {
+            "name": "سد"
         },
         "shop/tobacco": {
             "name": "محل بيع التبغ",
@@ -2528,6 +2708,9 @@
         "landuse/farm": {
             "name": "أرض زراعية"
         },
+        "natural/wood": {
+            "name": "خشب طبيعي"
+        },
         "amenity/restaurant/chinese": {
             "name": "مطعم صيني"
         },
@@ -2538,6 +2721,9 @@
         "aeroway/apron": {
             "name": "ساحة المطار",
             "terms": "ساحة المطار"
+        },
+        "shop/tattoo": {
+            "name": "صالون الوشم"
         },
         "shop/health_food": {
             "name": "متجر أغذية صحية"
@@ -2588,8 +2774,20 @@
             "name": "نتوء جبلي",
             "terms": "نتوء جبلي، قمة جبل"
         },
+        "natural": {
+            "name": "ميزة طبيعية"
+        },
+        "amenity/post_box": {
+            "name": "صندوق البريد"
+        },
         "public_transport/station_tram": {
             "name": "محطة ترام"
+        },
+        "emergency/official": {
+            "name": "وصول الطوارئ رسمي"
+        },
+        "railway/derail": {
+            "name": "قطار السكك الحديدية"
         },
         "leisure/bowling_alley": {
             "name": "بولينغ",
@@ -2663,6 +2861,9 @@
         },
         "place": {
             "name": "قصر"
+        },
+        "power": {
+            "name": "ميزة طاقة"
         },
         "building/house": {
             "name": "منزل",
@@ -2811,12 +3012,18 @@
             "name": "موقف دراجات نارية",
             "terms": "دراجة نارية, دراجة بخارية; موقف; مواقف; ركن"
         },
+        "shop/craft": {
+            "name": "متجر الفنون والحرف"
+        },
         "line": {
             "name": "طريق",
             "terms": "طريق"
         },
         "amenity/vehicle_inspection": {
             "name": "فحص مركبات"
+        },
+        "amenity/kindergarten": {
+            "name": "مرحلة ما قبل المدرسة / رياض الأطفال"
         },
         "waterway/weir": {
             "name": "هدار - سد صغير",
@@ -2840,6 +3047,12 @@
         "tourism/attraction": {
             "name": "معلم سياحي",
             "terms": "معلم سياحي, مكان سياحي"
+        },
+        "man_made": {
+            "name": "ميزة من صنع الانسان"
+        },
+        "golf/fairway": {
+            "name": "ممر مائي"
         },
         "public_transport/station_subway": {
             "name": "محطة مترو",
@@ -2865,11 +3078,14 @@
             "name": "حرفي",
             "terms": "حرفي"
         },
+        "landuse/construction": {
+            "name": "منطقة بناء"
+        },
         "shop/motorcycle_repair": {
             "name": "ورشة تصليح الدراجات النارية"
         },
         "aeroway": {
-            "name": "جوي"
+            "name": "ميزة Aeroway"
         },
         "aeroway/terminal": {
             "name": "محطة المطار",
