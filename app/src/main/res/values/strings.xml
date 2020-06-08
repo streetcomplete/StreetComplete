@@ -810,6 +810,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="link_openinframap_description">A map showing power, telecoms, gas, and oil infrastructure</string>
     <string name="link_openorienteeringmap_description">Create printable maps for the orienteering sport</string>
     <string name="link_openstreetbrowser_description">A map to browse OpenStreetMap map features by category</string>
+    <string name="link_qwant_maps_description">A map with searchable places and directions</string>
     <string name="link_weeklyosm_description">The weekly news blog about what\'s happening in the OpenStreetMap world</string>
     <string name="link_figuregrounder_description">Create figure-ground diagram posters of a city or neighbourhood</string>
 

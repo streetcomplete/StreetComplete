@@ -127,6 +127,14 @@ object AchievementsModule {
             R.string.link_openstreetbrowser_description
         ),
         Link(
+            "qwant_maps",
+            "https://www.qwant.com/maps/",
+            "Qwant Maps",
+            LinkCategory.MAPS,
+            R.drawable.ic_link_qwant,
+            R.string.link_qwant_maps_description
+        ),
+        Link(
             "cyclosm",
             "https://www.cyclosm.org",
             "CyclOSM",
@@ -345,7 +353,9 @@ object AchievementsModule {
 
                 6 to links("osm-haiku"),
 
-                8 to links("umap")
+                8 to links("umap"),
+
+                10 to links("qwant_maps")
             )
         ),
 
