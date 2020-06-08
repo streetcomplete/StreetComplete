@@ -798,6 +798,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="link_openstreetcam_description">A service and app for sharing crowdsourced street-level photos, with explicit permission to use them for contributing to OSM</string>
     <string name="link_openrouteservice_wheelchair_description">Turn by turn navigation for wheelchair users</string>
     <string name="link_nominatim_description">The geocoder for OSM data, used by many other services</string>
+    <string name="link_photon_description">A standalone extension to Nominatim, featuring fuzzy search and search-as-you-type</string>
     <string name="link_city_roads_description">Render all roads of a city, for printing on T-Shirts, mugs, …</string>
     <string name="link_myosmatic_description">"Generate printable city maps in a few easy steps, optionally with a street directory"</string>
     <string name="link_brouter_description">Probably the best routing engine for cyclists</string>

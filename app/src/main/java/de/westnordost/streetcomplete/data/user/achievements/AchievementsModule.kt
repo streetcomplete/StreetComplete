@@ -218,6 +218,14 @@ object AchievementsModule {
             R.string.link_nominatim_description
         ),
         Link(
+            "photon",
+            "http://photon.komoot.de/",
+            "Photon",
+            LinkCategory.SHOWCASE,
+            R.drawable.ic_link_photon,
+            R.string.link_photon_description
+        ),
+        Link(
             "osrm",
             "https://map.project-osrm.org",
             "OSRM",
@@ -490,7 +498,8 @@ object AchievementsModule {
             mapOf(
                 // Nominatim should not appear too early because it is a bit technical, the functionality
                 // itself is often integrated into other services
-                3 to links("nominatim")
+                3 to links("nominatim"),
+                5 to links("photon")
             )
         ),
 
