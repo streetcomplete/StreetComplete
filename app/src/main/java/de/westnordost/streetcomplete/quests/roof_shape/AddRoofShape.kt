@@ -8,8 +8,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometry
 class AddRoofShape(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<String>(o) {
 
     override val tagFilters = """
-        ways, relations with roof:levels
-        !3dr:type and !3dr:roof
+        ways, relations with roof:levels and
+        !3dr:type and !3dr:roof and !roof:shape
     """
     override val commitMessage = "Add roof shapes"
     override val wikiLink = "Key:roof:shape"
