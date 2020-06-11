@@ -9,7 +9,7 @@ class AddBuildingType (o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestTy
 
     // in the case of man_made, historic, military and power, these tags already contain
     // information about the purpose of the building, so no need to force asking it
-    // same goes (more or less) for tourism, amenity, leisure. See #1854
+    // same goes (more or less) for tourism, amenity, leisure. See #1854, #1891
     override val tagFilters = """
         ways, relations with building = yes
          and !man_made
@@ -17,6 +17,7 @@ class AddBuildingType (o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestTy
          and !military
          and !power
          and !tourism
+         and !attraction
          and !amenity
          and !leisure
          and location != underground
