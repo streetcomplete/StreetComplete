@@ -23,9 +23,9 @@ class WifiAutoDownloadStrategy @Inject constructor(
      * limited as before  */
 
     override val questTypeDownloadCount = 5
-    override val minQuestsInActiveRadiusPerKm2 = 12
+    override val minQuestsInActiveRadiusPerKm2 = 36
 
     // checks if either in 600 or 200m radius, there are enough quests.
     override val activeRadii = intArrayOf(600, 200)
-    override val downloadRadius = 1200
+    override val downloadRadius = 4800
 }
