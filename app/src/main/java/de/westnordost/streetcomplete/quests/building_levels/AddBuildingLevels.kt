@@ -9,7 +9,7 @@ class AddBuildingLevels(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestT
 
     // building:height is undocumented, but used the same way as height and currently over 50k times
     override val tagFilters = """
-        ways, relations with building ~ ${BUILDINGS_WITH_LEVELS.joinToString("|")}
+        nodes, ways, relations with building ~ ${BUILDINGS_WITH_LEVELS.joinToString("|")}
          and !building:levels and !height and !building:height
          and !man_made and location != underground and ruins != yes
     """
