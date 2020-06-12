@@ -7,10 +7,10 @@ import com.mapzen.tangram.geometry.Polygon
 import com.mapzen.tangram.geometry.Polyline
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.map.data.OsmLatLon
-import de.westnordost.streetcomplete.data.osm.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.ElementPointGeometry
-import de.westnordost.streetcomplete.data.osm.ElementPolygonsGeometry
-import de.westnordost.streetcomplete.data.osm.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPointGeometry
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolygonsGeometry
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
 
 fun ElementGeometry.toTangramGeometry(): List<Geometry> = when(this) {
     is ElementPolylinesGeometry -> {

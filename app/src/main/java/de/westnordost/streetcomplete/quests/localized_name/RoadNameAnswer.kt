@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.quests.localized_name
 
-import de.westnordost.streetcomplete.data.osm.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
 
 sealed class RoadNameAnswer
 

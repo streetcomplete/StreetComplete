@@ -6,24 +6,26 @@ import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
-import android.view.ViewGroup
+import de.westnordost.streetcomplete.HasTitle
 
 import javax.inject.Inject
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.QuestType
-import de.westnordost.streetcomplete.data.QuestTypeRegistry
+import de.westnordost.streetcomplete.data.quest.QuestType
+import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.download.QuestDownloadService
-import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestType
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestType
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderList
 import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeDao
 
-class QuestSelectionFragment : Fragment(), QuestSelectionAdapter.Listener {
+/** Shows a screen in which the user can enable and disable quests as well as re-order them */
+class QuestSelectionFragment
+    : Fragment(R.layout.fragment_quest_selection), HasTitle, QuestSelectionAdapter.Listener {
+
     @Inject internal lateinit var questSelectionAdapter: QuestSelectionAdapter
     @Inject internal lateinit var questTypeRegistry: QuestTypeRegistry
     @Inject internal lateinit var visibleQuestTypeDao: VisibleQuestTypeDao
@@ -39,19 +41,17 @@ class QuestSelectionFragment : Fragment(), QuestSelectionAdapter.Listener {
         cancelCurrentDownload()
     }
 
+    override val title: String get() = getString(R.string.pref_title_quests)
+
     init {
         Injector.instance.applicationComponent.inject(this)
         questSelectionAdapter.list = createQuestTypeVisibilityList()
         questSelectionAdapter.listener = this
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        setHasOptionsMenu(true)
-        return inflater.inflate(R.layout.fragment_quest_selection, container, false)
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setHasOptionsMenu(true)
         view.findViewById<RecyclerView>(R.id.questSelectionList).apply {
             addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
             layoutManager = LinearLayoutManager(context)
@@ -61,7 +61,6 @@ class QuestSelectionFragment : Fragment(), QuestSelectionAdapter.Listener {
 
     override fun onStart() {
         super.onStart()
-        activity?.title = getString(R.string.pref_title_quests)
         hasChangedSomething = false
     }
 

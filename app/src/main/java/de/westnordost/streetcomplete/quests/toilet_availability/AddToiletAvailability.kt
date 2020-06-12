@@ -1,12 +1,12 @@
 package de.westnordost.streetcomplete.quests.toilet_availability
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
+import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
-class AddToiletAvailability(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<Boolean>(o) {
+class AddToiletAvailability(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<Boolean>(o) {
 
     // only for malls, big stores and rest areas because users should not need to go inside a non-public
     // place to solve the quest. (Considering malls and department stores public enough)
@@ -19,6 +19,7 @@ class AddToiletAvailability(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQu
         and !toilets
     """
     override val commitMessage = "Add toilet availability"
+    override val wikiLink = "Key:toilets"
     override val icon = R.drawable.ic_quest_toilets
 
     override fun getTitle(tags: Map<String, String>) =

@@ -2,15 +2,11 @@
 <resources>
     <string name="action_settings">"Ajustes"</string>
     <string name="oauth_communication_error">"No se puede contactar con el servidor de autenticación"</string>
-    <string name="loading">"Cargando"</string>
     <string name="retry">"Reintentar"</string>
-    <string name="oauth_cancelled">"Autorización cancelada"</string>
     <string name="oauth_failed_permissions">"Autorización fallida: debes conceder todos los permisos"</string>
     <string name="title_activity_settings">"Ajustes"</string>
     <string name="pref_category_communication">"Conexión"</string>
     <string name="pref_category_display">"Pantalla"</string>
-    <string name="pref_title_authorization">"Autorizar el acceso a OSM"</string>
-    <string name="pref_title_not_authorized_summary">"Aún no autorizado"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
     <string name="pref_tilecache_size_message">"Espacio en megabytes reservado en el almacenamiento externo para guardar caché de las teselas del mapa"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Ver todas las notas"</string>
@@ -61,10 +57,8 @@
     <string name="download_area_too_big">"Acerca un poco más el mapa"</string>
     <string name="confirmation_cancel_prev_download_title">"¿Quieres cancelar la descarga actual y empezar a buscar tareas en este lugar?"</string>
     <string name="notification_downloading">"Descargando tareas…"</string>
-    <string name="now_downloading_toast">"Descargando más tareas…"</string>
     <string name="turn_on_location_request">"La ubicación esta desactivada. ¿Quieres ir a los ajustes para activarla?"</string>
     <string name="no_location_permission_warning">"Tu ubicación es necesaria para descargar tareas cercanas."</string>
-    <string name="action_about">"Acerca de StreetComplete"</string>
     <string name="about_title_authors">"Agradecimientos"</string>
 
     <!-- Fuzzy -->
@@ -366,7 +360,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
     <string name="quest_way_lit_road_title">"¿Está alumbrado este tramo de la calle?"</string>
     <string name="quest_way_lit_automatic">"Con sensores de movimiento"</string>
     <string name="quest_way_lit_24_7">"Está alumbrada de día y de noche"</string>
-    <string name="pref_title_authorized_username_summary">"Cuenta autorizada: %s"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Amplía el mapa un poco más para buscar tareas."</string>
     <string name="quest_crossing_type_title">"¿Qué tipo de cruce es?"</string>
     <string name="quest_crossing_type_signals">"Cruce señalizado con semáforo"</string>
@@ -395,13 +388,11 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
     <string name="quest_address_house_name_label">"Nombre de la casa:"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"plantas del tejado"</string>
     <string name="quest_buildingLevels_levelsLabel2">"plantas (sin contar el tejado)"</string>
-    <string name="pref_title_authorized_summary">"Autorizado"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingLevels_answer_multipleLevels">"el número de plantas no es uniforme"</string>
     <string name="quest_buildingLevels_answer_description">"En ese caso limítate a poner la planta de la parte más alta del edificio."</string>
     <string name="unglue_hint">"Toca la pantalla para soltar la vista de la posición"</string>
-    <string name="pref_title_not_authorized_summary2">"Inicia sesión a través del navegador para dar tu autorización"</string>
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"¿Sabes si las calzadas están separadas entre sí? (ejemplo: por una barrera) El límite de velocidad estándar es distinto si es el caso."</string>
     <string name="about_category_feedback">"Sugerencias"</string>
     <string name="quest_leave_new_note_photo">"Adjuntar foto"</string>
@@ -688,7 +679,7 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
 
     <!-- @riccot Yo iría más por «Predeterminada», por defecto está mal dicho, aunque sea común. -->
     <string name="theme_system_default">"Predeterminada"</string>
-    <string name="quest_placeName_title_name">"¿Qué es él nombré dé éste lugar? (%s)"</string>
+    <string name="quest_placeName_title_name">"¿Cuál es el nombre de este lugar? (%s)"</string>
     <string name="action_open_location">"Abrir lugar en otra app"</string>
     <string name="map_application_missing">"No hay otra aplicación para mapas instalada"</string>
     <string name="pref_title_overpass_url_select">"Cambiar servidor Overpass"</string>
@@ -707,11 +698,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
     <string name="quest_leave_new_note_photos_are_useful">"Añadir una nota hará la nota mucho más útil."</string>
     <string name="quest_postboxCollectionTimes_name_title">"¿Cuáles son las horas de recogida del buzón %s?"</string>
     <string name="create_new_note_hint">"Mejor escribe la nota en el idioma local o si no, en inglés."</string>
-    <string name="about_contributing">"Tus respuestas están directamente mejorando OpenStreetMap. Los datos aportados son abiertos, todos el mundo puede usarlos. Muchos grandes proyectos están ya utilizándolos."</string>
-    <string name="about_missing_stars">"Actualmente, la cuenta de estrellas no es compartida a través de los dispositivos, sino que las respuestas son añadidas directamente a la base de datos OpenStreetMap."</string>
-    <string name="how_to_get_stars">"Escoge uno de los marcadores del mapa y responde la pregunta. De esta manera mejorarás los datos de OpenStreetMap y conseguirás estrellas. Si no ves marcadores, puede que tengas que hacer menos zoom al mapa."</string>
-    <string name="oauth_remove_authorization_dialog_message">"¿Quieres eliminar la autorización de tu cuenta OSM?"</string>
-    <string name="oauth_remove_authorization_confirmation">"Eliminar"</string>
     <string name="quest_leafType_title">"¿Tienen los árboles aquí agujas u hojas?"</string>
     <string name="quest_leaf_type_needles">"Agujas"</string>
     <string name="quest_leaf_type_broadleaved">"De hojas anchas"</string>
@@ -733,7 +719,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
     <string name="quest_maxweight_unusualInput_confirmation_description">"Este peso parece inverosímil. ¿Estás seguro de que es correcto?"</string>
     <string name="quest_maxweight_answer_other_sign">"La señal se ve diferente..."</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"¿Te gustaría dejar una nota? Una nota con una foto permitirá que otros mapeadores se encarguen de ello."</string>
-    <string name="confirmation_authorize_now_note">"Puedes hacerlo más tarde en la pantalla de configuración."</string>
     <string name="quest_generalFee_title">"¿Tiene coste entrar en %s?"</string>
     <string name="quest_laundrySelfService_title">"¿Esta lavandería es una lavandería de autoservicio?"</string>
     <string name="quest_handrail_title">"¿Estas escaleras tienen barandilla?"</string>
@@ -783,4 +768,108 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
     <string name="quest_recycling_materials_answer_waste">"Es para desperdicio general"</string>
     <string name="quest_recycling_materials_answer_waste_description">"Entonces, ¿este es un contenedor para cualquier desperdicio, como desperdicios domésticos o comerciales en bolsas?"</string>
     <string name="quest_accepts_cash_title">"¿%s acepta pagos en efectivo?"</string>
+    <string name="user_profile">"Mi perfil"</string>
+    <string name="user_login">"Login"</string>
+    <string name="user_logout">"Cerrar sesión"</string>
+    <string name="osm_profile">"Perfil OSM"</string>
+    <string name="next">"Siguiente"</string>
+    <string name="letsgo">"¡Vamos!"</string>
+    <string name="tutorial_welcome_to_osm">"Bienvenido/a a OpenStreetMap"</string>
+    <string name="tutorial_welcome_to_osm_subtitle">"El mapa del mundo wiki libre"</string>
+    <string name="tutorial_intro">"SteetComplete hace más fácil contribuir a OpenStreetMap. Automáticamente buscar detalles faltantes en tu vecindario: carriles bici, números de portal, horarios de apertura y mucho más"</string>
+    <string name="tutorial_solving_quests">"Una vez encontrado, los detalles faltantes aparecerán en tu mapa como objetivos.
+
+Puedes empezar resolviéndolos inmediatamente e iniciar sesión más tarde para publicar tus respuestas."</string>
+    <string name="tutorial_stay_safe">"Cuando estés inseguro, puedes responder siempre \"No puedo decirlo\" y dejar una nota.
+
+Finalmente, recuerda permanecer seguro: Sé consciente de tu alrededor y no entres en propiedad privada."</string>
+    <string name="tutorial_happy_mapping">"Feliz mapeo!"</string>
+    <string name="achievements_empty">"No tienes logros todavía"</string>
+    <string name="links_empty">"No tienes enlaces todavía"</string>
+    <string name="quests_empty">"No has publicado respuestas a objetivos todavía"</string>
+    <string name="unsynced_quests_description">"más de %d cambios no publicados todavía."</string>
+    <string name="unsynced_quests_not_logged_in_description">"Tienes %d cambios no publicados. Necesitas iniciar sesión para tenerlos subidos."</string>
+    <string name="user_quests_title">"Objetivos completados"</string>
+    <string name="user_achievements_title">"Logros"</string>
+    <string name="user_links_title">"Colección de enlaces"</string>
+    <string name="user_profile_title">"Perfil"</string>
+    <string name="user_statistics_quest_wiki_link">"Documentación"</string>
+    <string name="achievements_unlocked_link">"Enlace desbloqueado:"</string>
+    <string name="achievements_unlocked_links">"Enlaces desbloqueados:"</string>
+    <string name="link_category_intro_title">"Introducción"</string>
+    <string name="link_category_intro_description">"Aprende más sobre OSM y su comunidad"</string>
+    <string name="link_category_editors_title">"Contribuir"</string>
+    <string name="link_category_editors_description">"Editores y otras formas de contribuir a OpenStreetMap"</string>
+    <string name="link_category_maps_title">"Mapas"</string>
+    <string name="link_category_maps_description">"Mapas basados en OpenStreetMap"</string>
+    <string name="link_category_showcase_title">"Exhibición"</string>
+    <string name="link_category_showcase_description">"Servicios y aplicaciones basados en OpenStreetMap"</string>
+    <string name="link_category_goodies_title">"Dulces"</string>
+    <string name="link_category_goodies_description">"Cosas interesantes relacionadas con el mapa para que pruebes"</string>
+    <string name="link_cyclosm_description">"Un mapa para ciclistas"</string>
+    <string name="link_wheelmap_description">"Un mapa para encontrar lugares accesibles para silla de ruedas"</string>
+    <string name="link_osm_buildings_description">"Un mapa que muestra los edificios en 3D"</string>
+    <string name="link_openvegemap_description">"Descubre restaurantes veganos y vegetarianos en tu ciudad"</string>
+    <string name="link_touch_mapper_description">"Crea mapas táctiles fácilmente para cualquier dirección"</string>
+    <string name="link_mapy_tactile_description">"Mapas táctiles para personas con discapacidad visual en varias escalas"</string>
+    <string name="link_josm_description">"Editor OSM con todas las funciones para el escritorio. Esta es la poderosa herramienta para contribuyentes habituales."</string>
+    <string name="link_vespucci_description">"Editor avanzado de OSM para Android"</string>
+    <string name="link_ideditor_description">"Editor OSM simple para el navegador. Optimizado para escritorio o tabletas grandes"</string>
+    <string name="link_umap_description">"Cree mapas con datos personalizados rápidamente e incrústelos en su sitio"</string>
+    <string name="link_opnvkarte_description">"Un mapa de paradas y rutas de transporte público"</string>
+    <string name="link_pic4review_description">"Contribuya a OSM simplemente mirando fotos de su ciudad"</string>
+    <string name="link_wiki_description">"La wiki es tu punto de partida para todo lo relacionado con OpenStreetMap"</string>
+    <string name="link_learnosm_description">"¿Nuevo en OpenStreetMap? Esta es una guía para principiantes"</string>
+    <string name="link_neis_one_description">"Una gran colección de estadísticas para los contribuyentes de OpenStreetMap, como dónde y cómo contribuiste, quién más está a tu alrededor, más tablas de clasificación"</string>
+    <string name="link_welcome_mat_description">"Información general sobre OpenStreetMap y cómo trabajar con OSM como organización"</string>
+    <string name="link_mapillary_description">"Un servicio y una aplicación crowdsourcing para compartir fotos callejeras, con permiso explícito para usarlas para contribuir a OSM"</string>
+    <string name="link_openstreetcam_description">"Un servicio y una aplicación crowdsourcing para compartir fotos callejeras, con permiso explícito para usarlas para contribuir a OSM"</string>
+    <string name="link_openrouteservice_wheelchair_description">"Navegación paso a paso para usuarios de sillas de ruedas"</string>
+    <string name="link_nominatim_description">"El geocodificador para datos OSM, utilizado por muchos otros servicios"</string>
+    <string name="link_city_roads_description">"Renderice todos las carreteras de una ciudad, para imprimir en camisetas, tazas, ..."</string>
+    <string name="link_myosmatic_description">"Genere mapas de ciudades imprimibles en unos sencillos pasos, opcionalmente con un directorio de calles"</string>
+    <string name="link_brouter_description">"Probablemente el mejor motor de enrutamiento para ciclistas"</string>
+    <string name="link_show_me_the_way_description">"Vea las ediciones de OSM en tiempo real"</string>
+    <string name="link_osrm_description">"El motor de enrutamiento más rápido"</string>
+    <string name="link_openrouteservice_description">"Enrutamiento para una variedad de vehículos y a pie, cada uno con preferencias. También puede mostrar isócronas (área accesible en X minutos desde un punto de partida)."</string>
+    <string name="link_osm_haiku_description">"Usando datos OSM para generar un haiku (un tipo de poesía japonesa)"</string>
+    <string name="link_openinframap_description">"Un mapa que muestra infraestructuras de energía, telecomunicaciones, gas y petróleo."</string>
+    <string name="link_openorienteeringmap_description">"Crea mapas imprimibles para el deporte de orientación"</string>
+    <string name="link_openstreetbrowser_description">"Un mapa para explorar las características del mapa de OpenStreetMap por categoría"</string>
+    <string name="link_weeklyosm_description">"El blog de noticias semanal sobre lo que está sucediendo en el mundo de OpenStreetMap"</string>
+    <string name="link_figuregrounder_description">"Crear carteles de diagramas de figuras y fondo de una ciudad o barrio"</string>
+    <string name="achievement_first_edit_title">"Primera misión resuelta"</string>
+    <string name="achievement_first_edit_description">"¡Bienvenido a la comunidad OpenStreetMap! En la pantalla de tu perfil, puedes ver más información para cada tipo de misión que resolviste."</string>
+    <string name="achievement_surveyor_title">"Topógrafo"</string>
+    <string name="achievement_surveyor_solved_X">"¡Has resuelto %d misiones! ¡Sigue desbloqueando más logros que contienen enlaces a OSM y otras aplicaciones y proyectos relacionados con mapas!"</string>
+    <string name="achievement_regular_title">"Habitual"</string>
+    <string name="achievement_regular_description">"¡Contribuiste %d días a OSM con esta aplicación! Los contribuyentes habituales son la columna vertebral de OSM, ¡gracias por su dedicación! ❤"</string>
+    <string name="achievement_bicyclist_title">"Ciclista"</string>
+    <string name="achievement_bicyclist_solved_X">"¡Has resuelto %d misiones que ayudan a los ciclistas!"</string>
+    <string name="achievement_wheelchair_title">"Movilidad"</string>
+    <string name="achievement_wheelchair_solved_X">"¡Has resuelto %d misiones que ayudan a los usuarios de sillas de ruedas a moverse por la ciudad!"</string>
+    <string name="achievement_postman_title">"Cartero"</string>
+    <string name="achievement_postman_solved_X">"¡Ayudaste a localizar %d direcciones!
+Estos datos son esenciales no solo para el cartero sino también para cualquier sistema de navegación."</string>
+    <string name="achievement_building_title">"Rascacielos"</string>
+    <string name="achievement_building_solved_X">"Resolviste %d misiones relacionadas con edificios.
+Tenga en cuenta que esta aplicación solicita el número de portal de un edificio solo después de que se haya determinado su tipo."</string>
+    <string name="achievement_blind_title">"Sexto sentido"</string>
+    <string name="achievement_blind_solved_X">"Resolviste %d misiones que son interesantes para personas con discapacidad visual."</string>
+    <string name="achievement_pedestrian_title">"Corredor"</string>
+    <string name="achievement_pedestrian_solved_X">"¡Has resuelto %d misiones que son interesantes para las personas a pie!"</string>
+    <string name="achievement_veg_title">"Amable con los animales"</string>
+    <string name="achievement_veg_solved_X">"¡Has resuelto %d misiones que son interesantes para las personas que viven con una dieta sin carne!"</string>
+    <string name="achievement_car_title">"En el camino"</string>
+    <string name="achievement_car_solved_X">"¡Has resuelto %d misiones que mejoran los detalles de la infraestructura de la calle, colocando la calle en OpenStreetMap!"</string>
+    <string name="unread_messages_message">"Tienes %d mensajes no leídos en tu bandeja de entrada"</string>
+    <string name="unread_messages_button">"Abrir bandeja de entrada"</string>
+    <string name="action_about2">"Acerca de"</string>
+    <string name="map_btn_menu">"Menu"</string>
+    <string name="privacy_html_statistics">"&lt;p&gt; Los datos que se muestran en su perfil se agregan de su historial de contribuciones disponible públicamente a OpenStreetMap y luego se alojan en mi servidor. &lt;/p&gt;"</string>
+    <string name="confirmation_authorize_now_note2">"También puedes hacer esto más tarde en la pantalla de perfil."</string>
+    <string name="credits_art_contributors_title">"Contribuyentes de arte"</string>
+    <string name="credits_projects_contributors_title">"Proyectos realizados para StreetComplete"</string>
+    <string name="credits_main_contributors_title">"Principales contribuyentes"</string>
+    <string name="stats_are_syncing">"Tus estadísticas aún se están sincronizando. Verifique esta pantalla más tarde."</string>
 </resources>

@@ -1,3 +1,60 @@
+v19.2: |
+  <p>Maybe the announced end of new (big) features for StreetComplete is not over yet! I applied to two microgrants at the OpenStreetMap Foundation, you can endorse them if you like these ideas:</p>
+  <ol>
+    <li><a href="https://wiki.openstreetmap.org/wiki/Microgrants/Microgrants_2020/Proposal/StreetComplete_as_an_entry_point_to_OpenStreetMap">StreetComplete as an entry point to OpenStreetMap</a></li>
+    <li><a href="https://wiki.openstreetmap.org/wiki/Microgrants/Microgrants_2020/Proposal/Map_Maintenance_with_StreetComplete">Map maintenance with StreetComplete</a></li>
+  </ol>
+  <h3>Fixes</h3>
+  <ul>
+    <li>updated translations</li>
+    <li>don't show map context menu while bottom sheet is open (#1820)</li>
+    <li>cycleway type quest: for oneway roads, always only ask for the traffic flow direction side of the road (#1822, thanks @peternewman)</li>
+    <li>fix problem where the quest type bubbles in the statistics view would not have enough space (#1818)</li>
+    <li>when turning off GPS, also do not show the compass direction (#1823)</li>
+    <li>fix download icon would get stuck if the app was disconnected during download (#1821)</li>
+    <li>fix crash when app was disconnected directly after login</li>
+  </ul>
+
+v19.1: |
+  <ul>
+    <li>add some achievement graphics by Sanja Dimitrijevic (<a href='https://www.artstation.com/modesty031'>modesty031</a>)</li>
+    <li>selected quest is displayed always on top (#1801, #1805, #1810)</li>
+    <li>More minor fixes and improvements (#1799, #1802, #1803, #1808, #1806, #1812), updated translations</li>
+  </ul>
+
+v19.0: |
+  <p>This one is a huge release, maybe the biggest one yet! But don't get used to it, I have been
+  working on it full-time for a few months but must soon return to work life as my savings are running low.
+  That being said, you <strong>can</strong> donate, check the about screen 😛.<br/>
+  You can also read this list of changes later in that screen if you are impatient now.</p>
+  <h3>🗺️ Reworked main screen UI</h3>
+  <ul>
+    <li><strong>👨‍🏫 Added small tutorial</strong>, only shown when the app is first installed (#178, #1552)</li>
+    <li>Removed app bar, map now expands over status and navigation bar</li>
+    <li>New main menu with bigger icons</li>
+    <li>More informative <strong>download indicator</strong></li>
+    <li><strong>Notifications button</strong> shows news, like this changelog or new mail in your OpenStreetMap inbox (#1690, #1751)</li>
+    <li>Notes are now created via long-press</li>
+  </ul>
+  <h3>Added profile screen</h3>
+  <ul>
+    <li>Login to OSM now happens within the app and not the browser, solves login problems for some users (#1760, #413, #804)</li>
+    <li>Your solved <strong>quest count is now synchronized</strong> across your devices and when you reinstall the app</li>
+    <li>Undone quest answers are now correctly counted as -1 to your quest count, so after synchronization your count may be a little lower than before</li>
+    <li><strong>⭐ Added statistics of your solved quests</strong> and links with more information for each quest type (#80, #1294). Try rotating it!</li>
+    <li><strong>🏆 You can now earn achievements</strong> which in turn unlock interesting OpenStreetMap related links and add them to your collection! (#1715, #1749, #1009)</li>
+  </ul>
+  <h3>Fixes and Enhancements</h3>
+  <ul>
+    <li>Fix quest download at 180th meridian (#1767)</li>
+    <li>Disable photo upload for Android 4.4 and below (#1768)</li>
+    <li>Improve the postbox collection time form (#1776, #1789), thanks @peternewman</li>
+    <li>Exclude hail & ride bus stops from questions about bus stops (#1784, #1793), thanks @peternewman</li>
+    <li>Correct tagging for small electrical appliances when asked what can be recycled at a container (#1783)</li>
+    <li>Slightly improved the credits screen</li>
+    <li>Add a selection marker to the currently selected quest (#1792)</li>
+  </ul>
+
 v18.0: |
   <h3>New Quests</h3>
   <ul>

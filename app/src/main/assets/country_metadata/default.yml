@@ -12,3 +12,4 @@ popularSports: []
 regularShoppingDays: 6
 speedUnits: [kilometers per hour]
 weightLimitUnits: [ton]
+workweekDays: 5

@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.data.osmnotes
 
+import de.westnordost.osmapi.map.data.BoundingBox
+import de.westnordost.osmapi.map.data.LatLon
 import org.junit.Before
 import org.junit.Test
 
@@ -10,6 +12,10 @@ import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.osmapi.notes.Note
 import de.westnordost.osmapi.notes.NoteComment
 import de.westnordost.osmapi.user.User
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestDao
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestMapping
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestType
 
 import org.junit.Assert.*
 
@@ -79,6 +85,14 @@ class NoteDaoTest : ApplicationDbTestCase() {
         assertTrue(dao.delete(note.id))
         assertNull(dao.get(note.id))
     }
+
+    @Test fun getAllPositions() {
+        dao.put(createNote(1, OsmLatLon(0.5, 0.5)))
+        dao.put(createNote(2, OsmLatLon(-0.5, 0.5)))
+
+        val positions = dao.getAllPositions(BoundingBox(0.0, 0.0, 1.0, 1.0))
+        assertEquals(OsmLatLon(0.5, 0.5), positions.single())
+    }
 }
 
 private fun checkEqual(note: Note, dbNote: Note) {
@@ -105,9 +119,9 @@ private fun checkEqual(note: Note, dbNote: Note) {
     }
 }
 
-private fun createNote(id: Long = 5): Note {
+private fun createNote(id: Long = 5, position: LatLon = OsmLatLon(1.0, 1.0)): Note {
     val note = Note()
-    note.position = OsmLatLon(1.0, 1.0)
+    note.position = position
     note.status = Note.Status.OPEN
     note.id = id
     note.dateCreated = Date(5000)

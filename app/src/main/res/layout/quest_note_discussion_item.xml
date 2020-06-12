@@ -14,13 +14,19 @@
         android:layout_marginBottom="4dp"
         android:layout_marginTop="4dp">
 
-        <ImageView
-            android:id="@+id/commentAvatarImage"
-            tools:src="@drawable/ic_osm_anon_avatar"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:scaleType="fitXY"
-            android:background="@drawable/background_avatar"/>
+        <de.westnordost.streetcomplete.view.CircularMaskFrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/commentAvatarImage"
+                tools:src="@drawable/ic_osm_anon_avatar"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:scaleType="fitCenter"
+                android:background="@drawable/background_avatar"/>
+
+        </de.westnordost.streetcomplete.view.CircularMaskFrameLayout>
 
         <FrameLayout
             android:layout_width="match_parent"

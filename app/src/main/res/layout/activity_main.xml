@@ -12,116 +12,18 @@
         android:id="@+id/map_fragment"
         android:name="de.westnordost.streetcomplete.map.MainFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/topPanel"
-        android:layout_marginTop="-8dp"/>
+        android:layout_height="match_parent"/>
 
-    <LinearLayout
+    <FrameLayout
+        android:id="@+id/fragment_container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/topPanel"
-        android:orientation="vertical">
-        <!-- the toolbar somehow always wants to be in front in its layout, so let's ban it into
-             a sub frame layout -->
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            android:elevation="4dp"
-            app:theme="@style/ThemeOverlay.AppCompat.Dark"
-            app:popupTheme="@style/Theme.Bubble.ToolbarPopup">
+        android:layout_height="match_parent"/>
 
-            <RelativeLayout
-                android:id="@+id/uploadedAnswersContainer"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:paddingStart="0dp"
-                android:paddingEnd="12dp"
-                android:clipChildren="false"
-                android:minWidth="84dp"
-                android:gravity="center_vertical"
-                android:clickable="true">
-
-                <ProgressBar
-                    android:id="@+id/uploadedAnswersProgress"
-                    android:layout_width="42dp"
-                    android:layout_height="42dp"
-                    android:indeterminate="true"
-                    android:layout_centerVertical="true"
-                    android:visibility="invisible"
-                    tools:visibility="visible"/>
-
-                <ImageView
-                    android:id="@+id/uploadedAnswersIcon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="8dp"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/ic_star_white_24dp"/>
-
-                <TextView
-                    android:id="@+id/uploadedAnswersCounter"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_toEndOf="@id/uploadedAnswersIcon"
-                    tools:text="8888"
-                    />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/unsyncedAnswersContainer"
-                android:background="?android:attr/actionBarItemBackground"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:paddingStart="0dp"
-                android:paddingEnd="12dp"
-                android:clipChildren="false"
-                android:minWidth="68dp"
-                android:gravity="center_vertical">
-
-                <ProgressBar
-                    android:id="@+id/unsyncedAnswersProgress"
-                    android:layout_width="42dp"
-                    android:layout_height="42dp"
-                    android:indeterminate="true"
-                    android:layout_centerVertical="true"
-                    android:visibility="invisible"
-                    tools:visibility="visible"/>
-
-                <ImageView
-                    android:id="@+id/unsyncedAnswersIcon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="8dp"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/ic_file_upload_24dp"/>
-
-                <TextView
-                    android:id="@+id/unsyncedAnswersCounter"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_toEndOf="@id/unsyncedAnswersIcon"
-                    android:minWidth="16dp"
-                    tools:text="88"/>
-
-            </RelativeLayout>
-
-        </androidx.appcompat.widget.Toolbar>
-
-        <ProgressBar
-            android:id="@+id/download_progress"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/MapProgressBar.Horizontal"
-            android:visibility="visible"
-            android:progress="50"
-            android:max = "100"
-            android:indeterminate="false"/>
-
-    </LinearLayout>
+    <fragment
+        android:id="@+id/notifications_container_fragment"
+        android:name="de.westnordost.streetcomplete.notifications.NotificationsContainerFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:visibility="gone"/>
 
  </RelativeLayout >

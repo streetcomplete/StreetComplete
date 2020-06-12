@@ -26,11 +26,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/credits_author_title"
-                android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
+                android:textAppearance="@style/TextAppearance.Title"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.Body"
+                android:textStyle="bold"
                 android:text="Tobias Zwick"/>
 
         </LinearLayout>
@@ -45,11 +47,74 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/credits_contributors_title"
-                android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
+                android:text="@string/credits_main_contributors_title"
+                android:textAppearance="@style/TextAppearance.Title"/>
 
             <LinearLayout
-                android:id="@+id/contributorCredits"
+                android:id="@+id/mainCredits"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:showDividers="middle"
+            android:divider="@drawable/space_8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/credits_projects_contributors_title"
+                android:textAppearance="@style/TextAppearance.Title"/>
+
+            <LinearLayout
+                android:id="@+id/projectsCredits"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:showDividers="middle"
+            android:divider="@drawable/space_8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/credits_art_contributors_title"
+                android:textAppearance="@style/TextAppearance.Title"/>
+
+            <LinearLayout
+                android:id="@+id/artCredits"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:showDividers="middle"
+            android:divider="@drawable/space_8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/credits_contributors_title"
+                android:textAppearance="@style/TextAppearance.Title"/>
+
+            <LinearLayout
+                android:id="@+id/codeCredits"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"/>
@@ -58,6 +123,7 @@
                 android:id="@+id/contributorMore"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.Body"
                 />
 
         </LinearLayout>
@@ -73,7 +139,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/credits_translations_title"
-                android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
+                android:textAppearance="@style/TextAppearance.Title"/>
 
             <LinearLayout
                 android:id="@+id/translationCredits"
@@ -84,7 +150,8 @@
             <org.sufficientlysecure.htmltextview.HtmlTextView
                 android:id="@+id/translationCreditsMore"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.Body"/>
 
         </LinearLayout>
 

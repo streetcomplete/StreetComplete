@@ -26,7 +26,7 @@ class AddRecyclingContainerMaterialsForm : AImageListQuestAnswerFragment<String,
         Item("scrap_metal",         R.drawable.ic_recycling_scrap_metal,         R.string.quest_recycling_type_scrap_metal),
         Item("clothes",             R.drawable.ic_recycling_clothes,             R.string.quest_recycling_type_clothes),
         Item("shoes",               R.drawable.ic_recycling_shoes,               R.string.quest_recycling_type_shoes),
-        Item("electric_appliances", R.drawable.ic_recycling_electric_appliances, R.string.quest_recycling_type_electric_appliances),
+        Item("small_electrical_appliances", R.drawable.ic_recycling_electric_appliances, R.string.quest_recycling_type_electric_appliances),
         Item("batteries",           R.drawable.ic_recycling_batteries,           R.string.quest_recycling_type_batteries),
         Item("green_waste",         R.drawable.ic_recycling_garden_waste,        R.string.quest_recycling_type_green_waste)
     )

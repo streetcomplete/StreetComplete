@@ -1,14 +1,15 @@
 package de.westnordost.streetcomplete.quests.bike_parking_type
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
+import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 
-class AddBikeParkingType(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<String>(o) {
+class AddBikeParkingType(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<String>(o) {
 
     override val tagFilters = "nodes, ways with amenity = bicycle_parking and access !~ private|no and !bicycle_parking"
     override val commitMessage = "Add bicycle parking type"
+    override val wikiLink = "Key:bicycle_parking"
     override val icon = R.drawable.ic_quest_bicycle_parking
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_bicycle_parking_type_title

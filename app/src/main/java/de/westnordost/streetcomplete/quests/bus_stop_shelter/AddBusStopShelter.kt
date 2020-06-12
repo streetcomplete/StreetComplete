@@ -1,12 +1,12 @@
 package de.westnordost.streetcomplete.quests.bus_stop_shelter
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
+import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 import de.westnordost.streetcomplete.quests.bus_stop_shelter.BusStopShelterAnswer.*
 
-class AddBusStopShelter(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<BusStopShelterAnswer>(o) {
+class AddBusStopShelter(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<BusStopShelterAnswer>(o) {
 
     override val tagFilters = """
         nodes with 
@@ -15,9 +15,10 @@ class AddBusStopShelter(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestT
           or
           (highway = bus_stop and public_transport != stop_position)
         )
-        and !shelter and !covered
+        and !shelter and !covered and physically_present != no and naptan:BusStopType != HAR
     """
     override val commitMessage = "Add bus stop shelter"
+    override val wikiLink = "Key:shelter"
     override val icon = R.drawable.ic_quest_bus_stop_shelter
 
     override fun getTitle(tags: Map<String, String>): Int {

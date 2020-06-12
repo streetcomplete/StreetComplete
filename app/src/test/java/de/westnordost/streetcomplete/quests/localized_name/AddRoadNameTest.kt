@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.quests.localized_name
 
 import de.westnordost.osmapi.map.data.OsmLatLon
-import de.westnordost.streetcomplete.data.osm.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryModify
 import de.westnordost.streetcomplete.mock

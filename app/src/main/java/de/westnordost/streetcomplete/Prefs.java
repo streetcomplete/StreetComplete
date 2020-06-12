@@ -10,8 +10,6 @@ public class Prefs
 			OAUTH_ACCESS_TOKEN = "oauth.accessToken",
 			OAUTH_ACCESS_TOKEN_SECRET = "oauth.accessTokenSecret",
 			MAP_TILECACHE_IN_MB = "map.tilecache",
-			OSM_USER_ID = "osm.userid",
-			OSM_USER_NAME = "osm.username",
 			SHOW_NOTES_NOT_PHRASED_AS_QUESTIONS = "display.nonQuestionNotes",
 			AUTOSYNC = "autosync",
 			KEEP_SCREEN_ON = "display.keepScreenOn",
@@ -19,6 +17,14 @@ public class Prefs
 			THEME_SELECT = "theme.select",
 			OVERPASS_URL = "overpass_url";
 
+
+	public static final String
+		OSM_USER_ID = "osm.userid",
+		OSM_USER_NAME = "osm.username",
+		OSM_UNREAD_MESSAGES = "osm.unread_messages",
+		USER_DAYS_ACTIVE = "days_active",
+		USER_LAST_DATE_ACTIVE = "last_date_active",
+		IS_SYNCHRONIZING_STATISTICS = "is_synchronizing_statistics";
 
 	// not shown anywhere directly
 	public static final String
@@ -29,7 +35,8 @@ public class Prefs
 			MAP_LONGITUDE = "map.longitude",
 			LAST_PICKED_PREFIX = "imageListLastPicked.",
 			LAST_LOCATION_REQUEST_DENIED = "location.denied",
-			LAST_VERSION = "lastVersion";
+			LAST_VERSION = "lastVersion",
+			HAS_SHOWN_TUTORIAL = "hasShownTutorial";
 
 	public static final String HAS_SHOWN_UNDO_FUCKUP_WARNING = "alert.undo_fuckup_warning";
 

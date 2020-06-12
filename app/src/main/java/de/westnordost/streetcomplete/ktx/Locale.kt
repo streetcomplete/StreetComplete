@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.ktx
 
-//import android.os.Build
 import java.util.Locale
 
 /**

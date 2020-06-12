@@ -5,11 +5,11 @@ import android.view.View
 import androidx.core.os.bundleOf
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.QuestGroup
-import de.westnordost.streetcomplete.data.osmnotes.AbstractCreateNoteFragment
+import de.westnordost.streetcomplete.data.quest.QuestGroup
 import kotlinx.android.synthetic.main.form_leave_note.*
 import kotlinx.android.synthetic.main.fragment_quest_answer.*
 
+/** Bottom sheet fragment with which the user can leave a note instead of solving the quest */
 class LeaveNoteInsteadFragment : AbstractCreateNoteFragment(), IsShowingQuestDetails {
 
     interface Listener {
@@ -21,13 +21,14 @@ class LeaveNoteInsteadFragment : AbstractCreateNoteFragment(), IsShowingQuestDet
 
     private lateinit var questTitle: String
     override var questId: Long = 0L
-    override lateinit var questGroup: QuestGroup
+    override var questGroup: QuestGroup = QuestGroup.OSM
 
     override fun onCreate(inState: Bundle?) {
         super.onCreate(inState)
-        questTitle = arguments!!.getString(ARG_QUEST_TITLE)!!
-        questId = arguments!!.getLong(ARG_QUEST_ID)
-        questGroup = QuestGroup.valueOf(arguments!!.getString(ARG_QUEST_GROUP)!!)
+        val args = requireArguments()
+        questTitle = args.getString(ARG_QUEST_TITLE)!!
+        questId = args.getLong(ARG_QUEST_ID)
+        questGroup = QuestGroup.valueOf(args.getString(ARG_QUEST_GROUP)!!)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

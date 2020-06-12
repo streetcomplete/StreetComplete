@@ -2,15 +2,11 @@
 <resources>
     <string name="action_settings">"Параметри"</string>
     <string name="oauth_communication_error">"Неможливо зв'язатися з сервером для авторизації"</string>
-    <string name="loading">"Завантаження"</string>
     <string name="retry">"Повторити"</string>
-    <string name="oauth_cancelled">"Авторизацію скасовано"</string>
     <string name="oauth_failed_permissions">"Помилка авторизації: вам потрібні всі перелічені дозволи"</string>
     <string name="title_activity_settings">"Параметри"</string>
     <string name="pref_category_communication">"Зв'язок"</string>
     <string name="pref_category_display">"Відображення"</string>
-    <string name="pref_title_authorization">"Авторизація в OSM"</string>
-    <string name="pref_title_not_authorized_summary">"Ви не авторизовані"</string>
     <string name="pref_tilecache_size_summary">"%d МБ"</string>
     <string name="pref_tilecache_size_message">"Розмір сховища на зовнішньому носії для збереження тайлів мапи"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Показувати всі нотатки"</string>
@@ -63,10 +59,8 @@
     <string name="download_area_too_big">"Збільшіть масштаб"</string>
     <string name="confirmation_cancel_prev_download_title">"Скасувати попередній пошук та спробувати пошукати тут?"</string>
     <string name="notification_downloading">"Пошук завдань…"</string>
-    <string name="now_downloading_toast">"Пошук нових завдань…"</string>
     <string name="turn_on_location_request">"Позиціювання вимкнене. Перейти до налаштувань, щоб увімкнути?"</string>
     <string name="no_location_permission_warning">"Позиціювання потрібне для пошуку завдань поруч з вами."</string>
-    <string name="action_about">"Про StreetComplete"</string>
     <string name="about_title_authors">"Автори"</string>
 
     <!-- Fuzzy -->
@@ -379,7 +373,6 @@
     <string name="quest_way_lit_road_title">"Чи освітлена ця ділянка дороги?"</string>
     <string name="quest_way_lit_automatic">"Є датчики руху"</string>
     <string name="quest_way_lit_24_7">"Освітлена вдень і вночі"</string>
-    <string name="pref_title_authorized_username_summary">"Авторизований акаунт: %s"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Не можу знайти квести. Спробуйте приблизити або зменшити нахил карти."</string>
     <string name="quest_crossing_type_title">"Якого типу цей перехід?"</string>
     <string name="quest_crossing_type_signals">"Перехід зі світлофором"</string>
@@ -408,13 +401,11 @@
     <string name="quest_address_house_name_label">"Назва дому"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"поверхи у складі даху"</string>
     <string name="quest_buildingLevels_levelsLabel2">"звичайні поверхи (без даху)"</string>
-    <string name="pref_title_authorized_summary">"Авторизовано"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingLevels_answer_multipleLevels">"По-різному для різних частин будівлі"</string>
     <string name="quest_buildingLevels_answer_description">"У цьому випадку просто введіть значення найвищої частини будівлі."</string>
     <string name="unglue_hint">"Відв'язати карту від моєї геомітки"</string>
-    <string name="pref_title_not_authorized_summary2">"Увійти через браузер і авторизувати"</string>
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Чи відокремлені фізично проїзні шляхи цієї дороги (наприклад, бар'єром)? Від цього залежить значення швидкості за замовчуванням."</string>
     <string name="about_category_feedback">"Зворотній зв'язок"</string>
     <string name="quest_leave_new_note_photo">"Прикріпити фото"</string>

@@ -2,8 +2,10 @@ package de.westnordost.streetcomplete.map
 
 import android.app.Activity
 import android.content.res.Configuration
+import android.graphics.Point
 import android.graphics.PointF
 import android.graphics.RectF
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -13,6 +15,7 @@ import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.Interpolator
 import androidx.annotation.CallSuper
 import androidx.core.content.edit
+import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
 import androidx.preference.PreferenceManager
 import com.mapzen.tangram.*
@@ -31,6 +34,7 @@ import de.westnordost.streetcomplete.ktx.containsAll
 import de.westnordost.streetcomplete.map.tangram.*
 import de.westnordost.streetcomplete.map.tangram.CameraPosition
 import de.westnordost.streetcomplete.map.tangram.CameraUpdate
+import kotlinx.android.synthetic.main.fragment_map.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
@@ -48,7 +52,8 @@ open class MapFragment : Fragment(),
     TapResponder, DoubleTapResponder, LongPressResponder,
     PanResponder, ScaleResponder, ShoveResponder, RotateResponder {
 
-    private lateinit var mapView: MapView
+    protected lateinit var mapView: MapView
+    private set
 
     protected var controller: KtMapController? = null
 
@@ -67,6 +72,8 @@ open class MapFragment : Fragment(),
         fun onMapDidChange(position: LatLon, rotation: Float, tilt: Float, zoom: Float, animated: Boolean)
         /** Called when the user begins to pan the map */
         fun onPanBegin()
+        /** Called when the user long-presses the map */
+        fun onLongPress(x: Float, y: Float)
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
@@ -80,7 +87,26 @@ open class MapFragment : Fragment(),
         super.onViewCreated(view, savedInstanceState)
         mapView = view.findViewById(R.id.map)
         mapView.onCreate(savedInstanceState)
+
+        setupFittingToSystemWindowInsets()
+
         launch { initMap() }
+    }
+
+    private fun setupFittingToSystemWindowInsets() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            view?.setOnApplyWindowInsetsListener { _, insets ->
+                openstreetmapLink.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                    setMargins(
+                        insets.systemWindowInsetLeft,
+                        insets.systemWindowInsetTop,
+                        insets.systemWindowInsetRight,
+                        insets.systemWindowInsetBottom
+                    )
+                }
+                insets
+            }
+        }
     }
 
     override fun onStart() {
@@ -251,9 +277,20 @@ open class MapFragment : Fragment(),
 
     override fun onSingleTapConfirmed(x: Float, y: Float): Boolean { return false }
 
-    override fun onDoubleTap(x: Float, y: Float): Boolean { return false }
+    override fun onDoubleTap(x: Float, y: Float): Boolean {
+        val pos = controller?.screenPositionToLatLon(PointF(x, y))
+        if (pos != null) {
+            controller?.updateCameraPosition(300L) {
+                zoomBy = 1f
+                position = pos
+            }
+        }
+        return true
+    }
 
-    override fun onLongPress(x: Float, y: Float) { }
+    override fun onLongPress(x: Float, y: Float) {
+        listener?.onLongPress(x, y)
+    }
 
     /* -------------------------------- Save and Restore State ---------------------------------- */
 
@@ -297,12 +334,6 @@ open class MapFragment : Fragment(),
     fun getPositionAt(point: PointF): LatLon? = controller?.screenPositionToLatLon(point)
 
     fun getPointOf(pos: LatLon): PointF? = controller?.latLonToScreenPosition(pos)
-
-    fun isPositionInView(pos: LatLon): Boolean {
-        val controller = controller ?: return false
-        val p = controller.latLonToScreenPosition(pos)
-        return p.x >= 0 && p.y >= 0 && p.x < mapView.width && p.y < mapView.height
-    }
 
     val cameraPosition: CameraPosition?
         get() = controller?.cameraPosition

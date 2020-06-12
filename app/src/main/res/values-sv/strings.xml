@@ -2,15 +2,11 @@
 <resources>
     <string name="action_settings">"Inställningar"</string>
     <string name="oauth_communication_error">"Ingen åtkomst till servern för godkännande"</string>
-    <string name="loading">"Läser in"</string>
     <string name="retry">"Försök igen"</string>
-    <string name="oauth_cancelled">"Godkännandet avbrutet"</string>
     <string name="oauth_failed_permissions">"Godkännandet misslyckades: alla listade behörigheter måste tillåtas"</string>
     <string name="title_activity_settings">"Inställningar"</string>
     <string name="pref_category_communication">"Kommunikation"</string>
     <string name="pref_category_display">"Visa"</string>
-    <string name="pref_title_authorization">"Ge tillgång till OSM"</string>
-    <string name="pref_title_not_authorized_summary">"Du är ännu inte godkänd"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
     <string name="pref_tilecache_size_message">"Utrymme i megabyte som reserveras på yttre lagring för att cacha kartdelar"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Visa alla anteckningar"</string>
@@ -61,13 +57,11 @@
     <string name="download_area_too_big">"Vänligen zooma in ytterligare"</string>
     <string name="confirmation_cancel_prev_download_title">"Avbryt den aktuella sökningen och sök här i stället?"</string>
     <string name="notification_downloading">"Söker efter uppdrag…"</string>
-    <string name="now_downloading_toast">"Söker efter fler uppdrag…"</string>
     <string name="turn_on_location_request">"Positionshämtning är avstängd. Öppna inställningar för att slå på det nu?"</string>
     <string name="no_location_permission_warning">"Din plats är nödvändigt för att söka efter uppdrag i din närhet."</string>
-    <string name="action_about">"Om StreetComplete"</string>
 
     <!-- Fuzzy -->
-    <string name="about_title_authors">"Erkännande"</string>
+    <string name="about_title_authors">"Tack till"</string>
 
     <!-- Fuzzy -->
     <string name="about_summary_authors">"© 2016–2020 Tobias Zwick och bidragsgivare"</string>
@@ -82,7 +76,7 @@
     <!-- Fuzzy -->
     <string name="confirmation_authorize_now">"Du måste ge programmet tillåtelse att använda ditt OpenStreetMap-konto för att publicera dina svar. Vill du ge tillåtelse nu?"</string>
     <string name="not_authorized">"Inte godkänd"</string>
-    <string name="version_banned_message">"Denna version av StreetComplete har förbjudits från att överföra några svar! Vänligen uppdatera din version!"</string>
+    <string name="version_banned_message">"Denna version av StreetComplete är för gammal. Vänligen uppdatera!"</string>
     <string name="no_gps_no_quests">"För att söka efter uppdrag runt omkring dig automatiskt, slå på plats"</string>
     <string name="nothing_more_to_download">"Det finns inga fler uppdrag här"</string>
     <string name="later">"Senare"</string>
@@ -375,7 +369,6 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_way_lit_road_title">"Har den här delen av vägen belysning?"</string>
     <string name="quest_way_lit_automatic">"Den använder rörelsedetektion"</string>
     <string name="quest_way_lit_24_7">"Det är belyst dygnet runt."</string>
-    <string name="pref_title_authorized_username_summary">"Godkänt konto: %s"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Kan inte söka här. Försök att zooma in ytterligare eller minska kartans lutning."</string>
     <string name="quest_crossing_type_title">"Vilken typ av övergångsställe är det här?"</string>
     <string name="quest_crossing_type_signals">"Övergångsställe med trafikljus"</string>
@@ -404,13 +397,11 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_address_house_name_label">"Husnamn:"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"takvåningar"</string>
     <string name="quest_buildingLevels_levelsLabel2">"vanliga våningar (räknar inte takvåningar)"</string>
-    <string name="pref_title_authorized_summary">"Godkänd"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingLevels_answer_multipleLevels">"varierar mellan olika husdelar"</string>
     <string name="quest_buildingLevels_answer_description">"I sådana fall, fyll i värdet för den högsta husdelen"</string>
     <string name="unglue_hint">"Tryck för att lossa vy från position"</string>
-    <string name="pref_title_not_authorized_summary2">"Logga in med din webbläsare för att ge programmet tillåtelse"</string>
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Är körbanorna fysiskt separerade (till exempel genom en barriär)? Bashastigheten beror på om så är fallet eller inte."</string>
     <string name="about_category_feedback">"Återkoppling"</string>
     <string name="quest_leave_new_note_photo">"Bifoga foto"</string>
@@ -704,11 +695,6 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_leave_new_note_photos_are_useful">"Genom att lägga till ett foto gör du anteckningen mycket mer användbar."</string>
     <string name="quest_postboxCollectionTimes_name_title">"Vilka är tömningstiderna för denna %s postlåda?"</string>
     <string name="create_new_note_hint">"Det är bäst att skriva anteckningen på det lokalt talade språket eller på engelska."</string>
-    <string name="about_contributing">"Dina svar förbättrar OpenStreetMap direkt. Bidragsuppgifter är öppna, alla kan använda dem. Många fantastiska projekt använder redan det."</string>
-    <string name="about_missing_stars">"För närvarande delas inte stjärnantalet över enheter, men svar läggs direkt till OpenStreetMap-databasen."</string>
-    <string name="how_to_get_stars">"Välj en av markörerna på kartan och svara på frågan. På så sätt förbättrar du OpenStreetMap-data och får stjärnor. Om du inte ser några markörer kan du behöva zooma ut kartan."</string>
-    <string name="oauth_remove_authorization_dialog_message">"Vill du ta bort behörighet till ditt OSM-konto?"</string>
-    <string name="oauth_remove_authorization_confirmation">"Ta bort"</string>
     <string name="quest_leafType_title">"Har träden här barr eller blad?"</string>
     <string name="quest_leaf_type_needles">"Barr"</string>
     <string name="quest_leaf_type_broadleaved">"Bredbladig"</string>
@@ -730,7 +716,6 @@ Dela den nu?"</string>
     <string name="quest_maxweight_unusualInput_confirmation_description">"Denna vikt ser osannolikt ut. Är du säker på att det är korrekt?"</string>
     <string name="quest_maxweight_answer_other_sign">"Skylten ser annorlunda ut…"</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"Vill du lämna en anteckning? En anteckning med ett foto gör att andra kartläggare kan ta hand om det."</string>
-    <string name="confirmation_authorize_now_note">"Du kan göra detta senare på inställningsskärmen."</string>
     <string name="quest_generalFee_title">"Kostar inträde till %s?"</string>
     <string name="quest_laundrySelfService_title">"Är denna tvätt en självbetjäningstvätt?"</string>
     <string name="quest_handrail_title">"Har dessa steg ett ledstång?"</string>
@@ -759,7 +744,7 @@ Dela den nu?"</string>
     <string name="quest_recycling_type_any_glass">"Vilka glaser som helst"</string>
     <string name="quest_recycling_glass_title">"Kan bara glasflaskor och burkar återvinnas här eller alla typer av glas?"</string>
     <string name="quest_determineRecyclingGlass_description_any_glass">"Exempel på glas som ofta inte accepteras: härdat glas, fönsterrutor, glasvaror, glödlampor eller speglar."</string>
-    <string name="about_title_changelog">"Versionshistorik"</string>
+    <string name="about_title_changelog">"Versionsanteckningar"</string>
     <string name="title_whats_new">"Vad är nytt?"</string>
     <string name="about_title_rate">"Betygsätt denna app"</string>
     <string name="about_summary_rate">"på Google Play"</string>
@@ -782,4 +767,110 @@ Dela den nu?"</string>
     <string name="quest_recycling_materials_answer_waste">"Den är för restavfall."</string>
     <string name="quest_recycling_materials_answer_waste_description">"Så det här kärlet är för alla sorters avfall, t.ex. hushålls- och kommersiellt avfall?"</string>
     <string name="quest_accepts_cash_title">"Tar %s emot kontanter?"</string>
+    <string name="user_profile">"Min profil"</string>
+    <string name="user_login">"Logga in"</string>
+    <string name="user_logout">"Logga ut"</string>
+    <string name="osm_profile">"OSM-profil"</string>
+    <string name="next">"Nästa"</string>
+    <string name="letsgo">"Nu kör vi!"</string>
+    <string name="tutorial_welcome_to_osm">"Välkommen till OpenStreetMap"</string>
+    <string name="tutorial_welcome_to_osm_subtitle">"den fria wiki-världskartan"</string>
+    <string name="tutorial_intro">"StreetComplete gör det enkelt att bidra till OpenStreetMap.
+Den söker automatiskt efter saknade detaljer i din närhet: cykelbanor, husnummer, öppettider och mycket mer…"</string>
+    <string name="tutorial_solving_quests">"När du hittat, kommer de saknade detaljerna att visas på din karta som uppdrag.
+
+Du kan börja lösa dem direkt och senare logga in för att publicera dina svar."</string>
+    <string name="tutorial_stay_safe">"När du är osäker kan du alltid svara \"Kan inte säga\" och lämna en anteckning.
+
+Slutligen, kom ihåg att vara säker: var medveten om din omgivning och gå inte in på privat egendom.
+"</string>
+    <string name="tutorial_happy_mapping">"Glad kartläggning!"</string>
+    <string name="achievements_empty">"Du har inga prestationer ännu"</string>
+    <string name="links_empty">"Du har inga länkar ännu"</string>
+    <string name="quests_empty">"Du har inte publicerat några uppdragssvar ännu"</string>
+    <string name="unsynced_quests_description">"plus %d ännu inte publicerade ändringar."</string>
+    <string name="unsynced_quests_not_logged_in_description">"Du har %d ännu inte publicerade ändringar. Du måste logga in för att få dem skickade."</string>
+    <string name="user_quests_title">"Lösta uppdrag"</string>
+    <string name="user_achievements_title">"Prestationer"</string>
+    <string name="user_links_title">"Länksamling"</string>
+    <string name="user_profile_title">"Profil"</string>
+    <string name="user_statistics_quest_wiki_link">"Dokumentation"</string>
+    <string name="achievements_unlocked_link">"Olåst länk:"</string>
+    <string name="achievements_unlocked_links">"Olåsta länkar:"</string>
+    <string name="link_category_intro_title">"Introduktion"</string>
+    <string name="link_category_intro_description">"Lär dig mer om OSM och dess gemenskap"</string>
+    <string name="link_category_editors_title">"Bidragande"</string>
+    <string name="link_category_editors_description">"Redaktörer och andra sätt att bidra till OpenStreetMap"</string>
+    <string name="link_category_maps_title">"Kartor"</string>
+    <string name="link_category_maps_description">"OpenStreetMap-baserade kartor"</string>
+    <string name="link_category_showcase_title">"Presentation"</string>
+    <string name="link_category_showcase_description">"OpenStreetMap-baserade tjänster och appar"</string>
+    <string name="link_category_goodies_title">"Godbitar"</string>
+    <string name="link_category_goodies_description">"Intressanta kartrelaterade saker för dig att prova"</string>
+    <string name="link_cyclosm_description">"En karta för cyklister"</string>
+    <string name="link_wheelmap_description">"En karta för att hitta rullstolsanpassade platser"</string>
+    <string name="link_osm_buildings_description">"En karta som visar byggnaderna i 3D"</string>
+    <string name="link_openvegemap_description">"Upptäck vegetariska och veganska restauranger i din stad"</string>
+    <string name="link_touch_mapper_description">"Skapa taktila kartor enkelt för vilken adress som helst"</string>
+    <string name="link_mapy_tactile_description">"Taktila kartor för synskadade i olika skalor"</string>
+    <string name="link_josm_description">"Fullfjädrad OSM-redigerare för skrivbordet. Detta är kraftverktyget för vanliga bidragsgivare."</string>
+    <string name="link_vespucci_description">"Avancerad OSM-redigerare för Android"</string>
+    <string name="link_ideditor_description">"Enkel OSM-redigerare för webbläsaren. Optimerad för skrivbordet eller stora surfplattor"</string>
+    <string name="link_umap_description">"Skapa kartor med anpassade data snabbt och bädda in dem i din webbplats"</string>
+    <string name="link_opnvkarte_description">"En karta över allmänna transportvägar och hållplatser"</string>
+    <string name="link_pic4review_description">"Bidra till OSM helt enkelt genom att titta på bilder av din stad"</string>
+    <string name="link_wiki_description">"Wikin är din utgångspunkt för allt relaterat OpenStreetMap"</string>
+    <string name="link_learnosm_description">"Är du ny på OpenStreetMap? Detta är en nybörjarguide"</string>
+    <string name="link_neis_one_description">"En enorm samling av statistik för bidragsgivare av OpenStreetMap, som var och hur du bidragit, vem som är runt omkring dig plus topplistor"</string>
+    <string name="link_welcome_mat_description">"Allmän information om OpenStreetMap och hur man arbetar med OSM som organisation"</string>
+    <string name="link_mapillary_description">"En tjänst och app för att dela gatunivå-bilder genom crowdsourcing, med uttryckligt tillstånd att använda dem för att bidra till OSM"</string>
+    <string name="link_openstreetcam_description">"En tjänst och app för att dela gatunivå-bilder genom crowdsourcing, med uttryckligt tillstånd att använda dem för att bidra till OSM"</string>
+    <string name="link_openrouteservice_wheelchair_description">"Sväng för sväng navigering för rullstolsanvändare"</string>
+    <string name="link_nominatim_description">"Geokodern för OSM-data, som används av många andra tjänster"</string>
+    <string name="link_city_roads_description">"Gör alla vägar i en stad, för utskrift på t-tröjor, muggar, …"</string>
+    <string name="link_myosmatic_description">"Generera utskrivbara stadskartor med några enkla steg, eventuellt med en gatukatalog"</string>
+    <string name="link_brouter_description">"Förmodligen den bästa dirigeringsmotorn för cyklister"</string>
+    <string name="link_show_me_the_way_description">"Titta på redigeringar i OSM hända i realtid"</string>
+    <string name="link_osrm_description">"Den snabbaste dirigeringsmotorn som finns"</string>
+    <string name="link_openrouteservice_description">"Dirigering för en mängd olika fordon och till fots, var och en med preferenser. Kan också visa isokroner (nå område på X minuter från en utgångspunkt)."</string>
+    <string name="link_osm_haiku_description">"Använda OSM-data för att generera en haiku (en form av Japansk poesi)"</string>
+    <string name="link_openinframap_description">"En karta som visar kraft-, telekommunikation-, gas- och oljeinfrastruktur"</string>
+    <string name="link_openorienteeringmap_description">"Skapa utskrivbara kartor för orienteringssporten"</string>
+    <string name="link_openstreetbrowser_description">"En karta för att bläddra i OpenStreetMap-kartfunktioner efter kategori"</string>
+    <string name="link_weeklyosm_description">"Blogg med nyheter varje vecka om vad som händer i OpenStreetMap-världen"</string>
+    <string name="link_figuregrounder_description">"Skapa affischer med markfigursdiagram av en stad eller stadsdel"</string>
+    <string name="achievement_first_edit_title">"Första uppdraget löst"</string>
+    <string name="achievement_first_edit_description">"Välkommen till gemenskapen  av OpenStreetMap! På din profilskärm kan du se mer information för varje uppdragstyp du har löst."</string>
+    <string name="achievement_surveyor_title">"Inspektör"</string>
+    <string name="achievement_surveyor_solved_X">"Du löste %d uppdrag! Fortsätt att låsa upp fler prestationer som innehåller länkar till OSM och andra kartrelaterade appar och projekt!"</string>
+    <string name="achievement_regular_title">"Regelbunden"</string>
+    <string name="achievement_regular_description">"Du bidrog %d dagar till OSM med denna app! Regelbundna bidragsgivare är ryggraden i OSM, tack för ditt engagemang! ❤"</string>
+    <string name="achievement_bicyclist_title">"Cyklist"</string>
+    <string name="achievement_bicyclist_solved_X">"Du löste %d uppdrag som hjälper cyklister!"</string>
+    <string name="achievement_wheelchair_title">"Rörlighet"</string>
+    <string name="achievement_wheelchair_solved_X">"Du löste %d uppdrag som hjälper rullstolsanvändare komma runt staden!"</string>
+    <string name="achievement_postman_title">"Brevbärare"</string>
+    <string name="achievement_postman_solved_X">"Du hjälpte till att hitta %d adresser!
+Denna information är inte bara nödvändig för postmästaren utan också för alla navigationssystem."</string>
+    <string name="achievement_building_title">"Höghus"</string>
+    <string name="achievement_building_solved_X">"Du löste %d byggrelaterade uppdrag.
+Observera att den här appen ber om husnummer av en byggnad först efter att dess typ har fastställts."</string>
+    <string name="achievement_blind_title">"Sjätte sinne"</string>
+    <string name="achievement_blind_solved_X">"Du löste %d uppdrag som är intressanta för synskadade."</string>
+    <string name="achievement_pedestrian_title">"Löpare"</string>
+    <string name="achievement_pedestrian_solved_X">"Du löste %d uppdrag som är intressanta för människor till fots!"</string>
+    <string name="achievement_veg_title">"Snäll mot djur"</string>
+    <string name="achievement_veg_solved_X">"Du löste %d uppdrag som är intressanta för människor som lever på en köttfri diet!"</string>
+    <string name="achievement_car_title">"På vägen"</string>
+    <string name="achievement_car_solved_X">"Du löste %d uppdrag som förbättrar detaljer på gatuinfrastrukturen och sätter gatan i OpenStreetMap!"</string>
+    <string name="unread_messages_message">"Du har %d olästa meddelanden i inkorgen"</string>
+    <string name="unread_messages_button">"Öppna inkorgen"</string>
+    <string name="action_about2">"Om"</string>
+    <string name="map_btn_menu">"Meny"</string>
+    <string name="privacy_html_statistics">"&lt;p&gt;Uppgifterna som visas i din profil samlas från din offentligt tillgängliga bidragshistoria till OpenStreetMap och finns sedan på min server.&lt;/p&gt;"</string>
+    <string name="confirmation_authorize_now_note2">"Du kan också göra detta senare på profilskärmen."</string>
+    <string name="credits_art_contributors_title">"Konstbidragsgivare"</string>
+    <string name="credits_projects_contributors_title">"Projekt som gjorts för StreetComplete"</string>
+    <string name="credits_main_contributors_title">"Huvudsakliga bidragsgivare"</string>
+    <string name="stats_are_syncing">"Din statistik synkroniseras fortfarande. Kontrollera denna skärm senare."</string>
 </resources>

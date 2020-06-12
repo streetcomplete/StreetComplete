@@ -2,15 +2,11 @@
 <resources>
     <string name="action_settings">"സജ്ജീകരണങ്ങള്‍"</string>
     <string name="oauth_communication_error">"അംഗീകാരമുള്ള സെർവറിലേക്ക് എത്തിച്ചേരാനാകുന്നില്ല"</string>
-    <string name="loading">"ലോഡിംഗ്"</string>
     <string name="retry">"വീണ്ടും ശ്രമിക്കൂ"</string>
-    <string name="oauth_cancelled">"അംഗീകാരം റദ്ദാക്കി"</string>
     <string name="oauth_failed_permissions">"അംഗീകാരം പരാജയപ്പെട്ടു: ലിസ്റ്റുചെയ്ത എല്ലാ അനുമതികളും നൽകേണ്ടതുണ്ട്"</string>
     <string name="title_activity_settings">"സജ്ജീകരണങ്ങള്‍"</string>
     <string name="pref_category_communication">"ആശയവിനിമയം"</string>
     <string name="pref_category_display">"ഡിസ്പ്ലേ"</string>
-    <string name="pref_title_authorization">"OSM ആക്സസ്സ് അംഗീകരിക്കുക"</string>
-    <string name="pref_title_not_authorized_summary">"ഇതുവരെ അംഗീകരിച്ചിട്ടില്ല"</string>
     <string name="pref_tilecache_size_summary">"%d മെഗാബൈറ്റുകൾ"</string>
     <string name="pref_tilecache_size_message">"പുറം സ്റ്റോറേജിൽ റിസേർവ് ചെയ്തിരിക്കുന്ന മെഗാബിറ്റ് സ്പേസ്  സ്പെയ്സ് കാഷെ ടൈലുകളിലേക് "</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"എല്ലാ കുറിപ്പുകളും കാണിക്കുക"</string>
@@ -66,10 +62,8 @@
     <string name="download_area_too_big">"കൂടുതൽ സൂം ഇൻ ചെയ്യുക"</string>
     <string name="confirmation_cancel_prev_download_title">"നിലവിലുള്ള തിരയൽ റദ്ദാക്കി പകരം ഇവിടെ സ്കാൻ ചെയ്യുക"</string>
     <string name="notification_downloading">"അന്വേഷണങ്ങൾക്കായി സ്കാൻ ചെയ്യുന്നു"</string>
-    <string name="now_downloading_toast">"കൂടുതൽ അന്വേഷണങ്ങൾക്കായി സ്കാൻ ചെയ്യുന്നു"</string>
     <string name="turn_on_location_request">"ലൊക്കേഷൻ ഓഫാണ്. അത് ഇപ്പോൾ ചെയ്യാനുള്ള ക്രമീകരണങ്ങളിൽ പോകണോ?"</string>
     <string name="no_location_permission_warning">"നിങ്ങളുടെ സമീപത്തായുള്ള അന്വേഷണങ്ങൾക്കായി സ്കാൻ ചെയ്യാൻ നിങ്ങളുടെ ലൊക്കേഷൻ ആവശ്യമാണ്."</string>
-    <string name="action_about">"StreetComplete എന്നതിനെക്കുറിച്ച്"</string>
 
     <!-- Fuzzy -->
     <string name="about_title_authors">"രചയിതാക്കൾ"</string>
@@ -337,7 +331,6 @@
     <string name="quest_way_lit_road_title">"ഈ നീളത്തിനുള്ള റോഡിൽ വെളിച്ചമുണ്ടോ?"</string>
     <string name="quest_way_lit_automatic">"ഇത് ചലനത്തെ തിരിച്ചറിയാൻ ഉപയോഗിക്കുന്നു"</string>
     <string name="quest_way_lit_24_7">"ഇത് രാവും പകലും കത്തിക്കുന്നു"</string>
-    <string name="pref_title_authorized_username_summary">"അംഗീകൃത അക്കൗണ്ട്:%s"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"ഇവിടെ സ്കാൻ ചെയ്യാൻ കഴിയില്ല. സൂം ഇൻ ചെയ്യാൻ ശ്രമിക്കുക അല്ലെങ്കിൽ മാപ്പ് കുറച്ച് ചെരിച്ച് ചെയ്യുക."</string>
     <string name="quest_crossing_type_title">"ഇത് ഏതുതരം ക്രോസിംഗ് ആണ്?"</string>
     <string name="quest_crossing_type_signals">"ട്രാഫിക് ലൈറ്റുകൾ ഉപയോഗിച്ചുള്ള ക്രോസിംഗ്"</string>
@@ -366,11 +359,9 @@
     <string name="quest_address_house_name_label">"വീട്ടുപേര്:"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"മേൽക്കൂര എത്ര നിലകളുണ്ട്"</string>
     <string name="quest_buildingLevels_levelsLabel2">"കെട്ടിടത്തിൻ്റെ നിലകൾ (മേൽക്കൂര കൂട്ടാതെ) "</string>
-    <string name="pref_title_authorized_summary">"അംഗീകരിക്കപ്പെട്ട"</string>
     <string name="quest_buildingLevels_answer_multipleLevels">"ഓരോ കെട്ടിട ഭാഗത്തിനും വ്യത്യാസമുണ്ട്"</string>
     <string name="quest_buildingLevels_answer_description">"ഈ സാഹചര്യത്തിൽ, കെട്ടിടത്തിന്റെ ഉയർന്ന ഭാഗത്തെ മൂല്യങ്ങൾ നൽകുക."</string>
     <string name="unglue_hint">"തൽസ്ഥാനത്ത് നിന്ന് കാഴ്ച മാറ്റാൻ ടാപ് ചെയ്യുക"</string>
-    <string name="pref_title_not_authorized_summary2">"അംഗീകരിക്കുന്നതിനായി  നിങ്ങളുടെ വെബ് ബ്രൗസറിൽ നിന്ന്  ലോഗ്ഗിൻ ചെയ്യുക."</string>
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"ഈ റോഡുകൾ പ്രത്യക്ഷമായി വേർതിരിക്കപ്പെട്ടിട്ടുണ്ടോ (അതായത് എന്തെങ്കിലും തടസ്സത്തിലൂടെ)? സ്ഥിരസ്ഥിതി വേഗത പരിധി ഇങ്ങനെയാണോ അല്ലയോ എന്നതിനെ ആശ്രയിച്ചിരിക്കുന്നു. "</string>
     <string name="about_category_feedback">"പ്രതികരണം"</string>
     <string name="quest_leave_new_note_photo">"ഫോട്ടോ കൂട്ടിചേർക്കുക"</string>
@@ -657,11 +648,6 @@
     <string name="quest_leave_new_note_photos_are_useful">"കുറിപ്പിൻ്റെ കൂടെ ചിത്രം കൂടി ചേർത്താൽ വളരെ ഉപകാരപ്രദമായിരിക്കും"</string>
     <string name="quest_postboxCollectionTimes_name_title">"ഈ %s പോസ്റ്റ്ബോക്സിൽ നിന്ന് കത്തുകൾ എടുക്കുന്ന സമയങ്ങൾ എപ്പോഴാണ്?"</string>
     <string name="create_new_note_hint">"നോട്ട് പ്രാദേശിക ഭാഷയിൽ എഴുതുന്നതാണ് ഏറ്റവും ഉചിതം അതുമല്ലെങ്കിൾ ഇംഗ്ലീഷിൽ എഴുതുകയോ ചെയ്യുക"</string>
-    <string name="about_contributing">"നിങ്ങളുടെ ഉത്തരങ്ങൾ ഓപ്പൺസ്ട്രീറ്റ്മാപ്പിനെ നേരിട്ട് മെച്ചപ്പെടുത്തുന്നു. നൽകിയ ഡേറ്റയെല്ലാം സ്വതന്ത്ര ഡേറ്റയാണ്, ആർക്കുവേണമെങ്കിലും അത് ഉപയോഗിക്കാം. ധാരാളം നല്ല പ്രൊജെക്ടുകളിൽ അത് ഇപ്പോഴേ ഉപയോഗിക്കുന്നുണ്ട്."</string>
-    <string name="about_missing_stars">"നിലവിൽ കിട്ടുന്ന സ്റ്റാറുകളുടെ എണ്ണം മറ്റൊരു ഡിവൈസിലേക്ക് പങ്കുവെയ്ക്കാൻ കഴിയില്ല. പക്ഷേ നിങ്ങളുടെ ഉത്തരങ്ങൾ നേരിട്ട് ഓപ്പൺസ്ട്രീറ്റ്മാപ്പ് ഡേറ്റബേസിലേക്ക്‌ ഉൾക്കൊള്ളിക്കുന്നതായിരിക്കും. "</string>
-    <string name="how_to_get_stars">"മാപ്പിലുള്ള ഏതെങ്കിലും സൂചകങ്ങൾ തിരെഞ്ഞടുത്ത് അതിലെ ചോദ്യങ്ങൾക്ക് ഉത്തരം നൽകുക. ഇത് വഴി നിങ്ങൾക്ക് ഓപ്പൺസ്ട്രീറ്റ്മാപ്പ് വിവരങ്ങൾ മെച്ചപ്പെടുത്താനും നിങ്ങൾക്ക് സ്റ്റാറുകൾ ലഭിക്കാനും സാധിക്കും. നിങ്ങൾ ഒരു സൂചകങ്ങളും മാപ്പിൽ കാണുന്നില്ലെങ്കിള്‍ മാപ്പ് സൂം ചെയ്യുക."</string>
-    <string name="oauth_remove_authorization_dialog_message">"നിങ്ങളുടെ ഒഎസ്എം അക്കൗണ്ടുമായുള്ള ബന്ധം നീക്കം ചെയ്യണോ ?"</string>
-    <string name="oauth_remove_authorization_confirmation">"ഒഴിവാക്കുക"</string>
     <string name="quest_leafType_title">"മരങ്ങൾക്ക് ഇലകളാണോ സൂചികളാണോ ഉള്ളത്?"</string>
     <string name="quest_leaf_type_needles">"സൂചികൾ"</string>
     <string name="quest_leaf_type_broadleaved">"വീതിയേറിയ"</string>
@@ -683,7 +669,6 @@
     <string name="quest_maxweight_unusualInput_confirmation_description">"ഈ ഭാരം അസംഭവ്യമായി തോന്നുന്നു, താങ്കൾക്ക് ഇത് ശരിയാണെന്ന് ഉറപ്പാണോ?"</string>
     <string name="quest_maxweight_answer_other_sign">"ചിഹ്നം വ്യത്യസ്‌തമായി തോന്നുന്നു…"</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"ഒരു കുറിപ്പ് ഇടാൻ നിങ്ങൾ ആഗ്രഹിക്കുന്നുണ്ടോ? ഒരു ഫോട്ടോയുള്ള കുറിപ്പ് മറ്റ് മാപ്പർമാരെ പരിപാലിക്കാൻ പ്രാപ്തമാക്കും."</string>
-    <string name="confirmation_authorize_now_note">"നിങ്ങൾക്കിത് പിന്നീട് ക്രമീകരണം സ്ക്രീനിൽ നിന്നും ചെയ്യാം"</string>
     <string name="quest_laundrySelfService_title">"ഈ അലക്കൽ ഒരു സ്വയം സേവന അലക്കുമാണോ?"</string>
     <string name="quest_handrail_title">"ഈ പടികൾക്ക് കൈവരി ഉണ്ടോ?"</string>
     <string name="quest_openingHours_no_name_title">"ഈ സ്ഥലത്തിന്റെ പ്രവർത്തനാരംഭസമയം എപ്പോഴാണ്? (%s)"</string>

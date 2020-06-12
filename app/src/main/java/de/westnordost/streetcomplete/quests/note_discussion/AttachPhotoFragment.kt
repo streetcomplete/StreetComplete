@@ -46,7 +46,10 @@ class AttachPhotoFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_attach_photo, container, false)
 
-        if (!activity!!.packageManager.hasSystemFeature(PackageManager.FEATURE_CAMERA)) {
+        // see #1768: Android KitKat and below do not recognize letsencrypt certificates
+        val isPreLollipop = Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP
+        val hasCamera = requireActivity().packageManager.hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY)
+        if (isPreLollipop || !hasCamera) {
             view.visibility = View.GONE
         }
         photosListView = view.findViewById(R.id.gridView)
@@ -78,7 +81,7 @@ class AttachPhotoFragment : Fragment() {
             currentImagePath = null
         }
 
-        noteImageAdapter = NoteImageAdapter(paths, context!!)
+        noteImageAdapter = NoteImageAdapter(paths, requireContext())
         gridView.layoutManager = LinearLayoutManager(
             context,
             LinearLayoutManager.HORIZONTAL,

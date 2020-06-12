@@ -3,21 +3,20 @@ package de.westnordost.streetcomplete.data.download
 import android.util.Log
 
 import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.data.QuestStatus
-import de.westnordost.streetcomplete.data.osm.persist.OsmQuestDao
-import de.westnordost.streetcomplete.data.tiles.DownloadedTilesDao
+import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
 import de.westnordost.streetcomplete.data.visiblequests.OrderedVisibleQuestTypesProvider
-import de.westnordost.streetcomplete.util.SlippyMapMath
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.LatLon
+import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
 import de.westnordost.streetcomplete.util.area
 import de.westnordost.streetcomplete.util.enclosingBoundingBox
+import de.westnordost.streetcomplete.util.enclosingTilesRect
 import kotlin.math.max
 
 /** Quest auto download strategy that observes that a minimum amount of quests in a predefined
  * radius around the user is not undercut  */
 abstract class AActiveRadiusStrategy(
-    private val osmQuestDB: OsmQuestDao,
+    private val visibleQuestsSource: VisibleQuestsSource,
     private val downloadedTilesDao: DownloadedTilesDao,
     private val questTypesProvider: OrderedVisibleQuestTypesProvider
 ) : QuestAutoDownloadStrategy {
@@ -30,7 +29,7 @@ abstract class AActiveRadiusStrategy(
         val bbox = pos.enclosingBoundingBox(radius.toDouble())
 
         // nothing more to download
-        val tiles = SlippyMapMath.enclosingTiles(bbox, ApplicationConstants.QUEST_TILE_ZOOM)
+        val tiles = bbox.enclosingTilesRect(ApplicationConstants.QUEST_TILE_ZOOM)
         val questExpirationTime = ApplicationConstants.REFRESH_QUESTS_AFTER
         val ignoreOlderThan = max(0, System.currentTimeMillis() - questExpirationTime)
         val alreadyDownloaded = downloadedTilesDao.get(tiles, ignoreOlderThan).toSet()
@@ -47,11 +46,7 @@ abstract class AActiveRadiusStrategy(
         if (alreadyDownloaded.isNotEmpty()) {
             val areaInKm2 = bbox.area() / 1000.0 / 1000.0
             // got enough quests in vicinity
-            val visibleQuests = osmQuestDB.getCount(
-                statusIn = listOf(QuestStatus.NEW),
-                bounds = bbox,
-                questTypes = alreadyDownloaded
-            )
+            val visibleQuests = visibleQuestsSource.getAllVisibleCount(bbox, alreadyDownloaded)
             if (visibleQuests / areaInKm2 > minQuestsInActiveRadiusPerKm2) {
                 Log.i(TAG, "Not downloading quests because there are enough quests in ${radius}m radius")
                 return false

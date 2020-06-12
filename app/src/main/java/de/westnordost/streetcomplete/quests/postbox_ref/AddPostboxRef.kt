@@ -1,22 +1,23 @@
 package de.westnordost.streetcomplete.quests.postbox_ref
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.NoCountriesExcept
-import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
+import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
+import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 import de.westnordost.streetcomplete.ktx.containsAny
 
-class AddPostboxRef(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<PostboxRefAnswer>(o) {
+class AddPostboxRef(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<PostboxRefAnswer>(o) {
 
     override val tagFilters = "nodes with amenity = post_box and !ref and !ref:signed"
 
     override val icon = R.drawable.ic_quest_mail_ref
     override val commitMessage = "Add postbox refs"
+    override val wikiLink = "Tag:amenity=post_box"
 
     // source: https://commons.wikimedia.org/wiki/Category:Post_boxes_by_country
     override val enabledInCountries = NoCountriesExcept(
-        "FR","GB","GG","IM","JE","MT","IE","SG","CZ","SK","CH","US"
+            "FR", "GB", "GG", "IM", "JE", "MT", "IE", "SG", "CZ", "SK", "CH", "US"
     )
 
     override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> {

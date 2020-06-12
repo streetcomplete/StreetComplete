@@ -1,0 +1,79 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dialogContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mailContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:layout_centerInParent="true">
+
+        <ImageView
+            android:id="@+id/mailOpenImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_animated_open_mail"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <RelativeLayout
+            android:id="@+id/speechbubbleContentContainer"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/speech_bubble_none"
+            android:layout_centerHorizontal="true"
+            android:paddingTop="@dimen/dialog_vertical_margin"
+            android:paddingBottom="@dimen/dialog_vertical_margin"
+            android:paddingLeft="@dimen/dialog_horizontal_margin"
+            android:paddingRight="@dimen/dialog_horizontal_margin"
+            android:scaleX="1.0"
+            android:scaleY="1.0"
+            app:layout_constraintTop_toTopOf="@id/mailOpenImageView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:gravity="center"
+            android:visibility="invisible"
+            tools:visibility="visible">
+
+            <TextView
+                android:id="@+id/unreadMessagesTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                style="@style/TextAppearance.Body"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:text="@string/unread_messages_message"/>
+
+            <Button
+                android:id="@+id/readMailButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:drawableStart="@drawable/ic_open_in_browser_24dp"
+                android:drawablePadding="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_below="@id/unreadMessagesTextView"
+                android:text="@string/unread_messages_button"/>
+
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/mailFrontImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_mail_front"
+            app:layout_constraintBottom_toBottomOf="@id/mailOpenImageView"
+            app:layout_constraintEnd_toEndOf="@id/mailOpenImageView"
+            app:layout_constraintStart_toStartOf="@id/mailOpenImageView"
+            app:layout_constraintTop_toTopOf="@id/mailOpenImageView"
+            android:alpha="0"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</RelativeLayout>

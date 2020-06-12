@@ -2,15 +2,11 @@
 <resources>
     <string name="action_settings">"Instellingen"</string>
     <string name="oauth_communication_error">"Niet mogelijk de autorisatieserver te bereiken"</string>
-    <string name="loading">"Laden"</string>
     <string name="retry">"Probeer opnieuw"</string>
-    <string name="oauth_cancelled">"Autorisatie verlopen"</string>
     <string name="oauth_failed_permissions">"Autorisatie mislukt: Alle genoemde rechten moeten worden toegekend"</string>
     <string name="title_activity_settings">"Instellingen"</string>
     <string name="pref_category_communication">"Communicatie"</string>
     <string name="pref_category_display">"Beeld"</string>
-    <string name="pref_title_authorization">"Autorisatie OSM-toegang"</string>
-    <string name="pref_title_not_authorized_summary">"U heeft nog geen autorisatie"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
     <string name="pref_tilecache_size_message">"Ruimte gereserveerd in megabytes op externe opslag waar kaarttegels worden bijgehouden"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Toon alle opmerkingen"</string>
@@ -65,10 +61,8 @@
     <string name="download_area_too_big">"Zoom verder in a.u.b."</string>
     <string name="confirmation_cancel_prev_download_title">"Annuleer de huidige zoekopdracht en scan in plaats daarvan hier."</string>
     <string name="notification_downloading">"Scannen van vragen…"</string>
-    <string name="now_downloading_toast">"Scannen van meer vragen…"</string>
     <string name="turn_on_location_request">"Locatie is uitgeschakeld. Instellingen openen om het aan te zetten?"</string>
     <string name="no_location_permission_warning">"Je locatie is nodig om in je omgeving vragen te downloaden."</string>
-    <string name="action_about">"Over StreetComplete"</string>
 
     <!-- Fuzzy -->
     <string name="about_title_authors">"Auteurs"</string>
@@ -297,9 +291,9 @@ De informatie die je ingeeft wordt meteen toegevoegd aan OpenStreetMap in jouw n
     <string name="quest_wheelchairAccess_location_name_title">"Is de locatie %s toegankelijk voor rolstoelen?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_limited_description_business">"\"Gedeeltelijk\" betekent dat er maar 1 enkele opstap is om het gebouw te betreden en dat de meeste ruimtes binnen rolstoel toegankelijk zijn. 
+    <string name="quest_wheelchairAccess_limited_description_business">"\"Gedeeltelijk\" betekent dat er maar één enkele opstap is om het gebouw te betreden en dat de meeste ruimtes binnen rolstoel toegankelijk zijn.
 "</string>
-    <string name="quest_wheelchairAccess_limited_description_public_transport">"\"Gedeeltelijk\" betekent dat er maar 1 enkele opstap moet genomen worden om naar binnen te gaan."</string>
+    <string name="quest_wheelchairAccess_limited_description_public_transport">"\"Gedeeltelijk\" betekent dat er maar één enkele opstap moet genomen worden om naar binnen te gaan."</string>
 
     <!-- Fuzzy -->
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"Afkorting in de naam %s?"</string>
@@ -312,8 +306,8 @@ De informatie die je ingeeft wordt meteen toegevoegd aan OpenStreetMap in jouw n
     <string name="overground_recycling_container">"Container bovengronds"</string>
     <string name="underground_recycling_container">"Container ondergronds"</string>
     <string name="quest_generic_error_a_field_empty">"Je hebt een veld leeg gelaten."</string>
-    <string name="quest_streetName_menuItem_language_simple">"%1$s - %2$s"</string>
-    <string name="quest_streetName_menuItem_language_native">"%1$s - %2$s (%3$s)"</string>
+    <string name="quest_streetName_menuItem_language_simple">"%1$s – %2$s"</string>
+    <string name="quest_streetName_menuItem_language_native">"%1$s – %2$s (%3$s)"</string>
     <string name="quest_streetName_answer_cantType">"Ik kan de karakters op het bord niet typen."</string>
     <string name="quest_streetName_cantType_title">"Niet de juiste toetsenbordlayout?"</string>
     <string name="quest_streetName_cantType_open_settings">"Open instellingen"</string>
@@ -395,7 +389,6 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetse
     <string name="quest_way_lit_road_title">"Is dit deel van de straat verlicht?"</string>
     <string name="quest_way_lit_automatic">"Het gebruikt bewegingsdetectie"</string>
     <string name="quest_way_lit_24_7">"Het is dag en nacht vericht"</string>
-    <string name="pref_title_authorized_username_summary">"Geautoriseerd account: %s"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Niet mogelijk hier te scannen. Probeer meer in te zoomen, of tilt de kaart minder."</string>
     <string name="quest_crossing_type_title">"Wat voor kruispunt is dit?"</string>
     <string name="quest_crossing_type_signals">"Kruispunt met verkeerslichten"</string>
@@ -424,13 +417,11 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetse
     <string name="quest_address_house_name_label">"Naam van het gebouw"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"aantal etages in het dak"</string>
     <string name="quest_buildingLevels_levelsLabel2">"aantal etages (in het dak niet mee gerekend)"</string>
-    <string name="pref_title_authorized_summary">"Toegestaan"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingLevels_answer_multipleLevels">"Verschilt per gebouwdeel"</string>
     <string name="quest_buildingLevels_answer_description">"Vul in dit geval gewoon de waarde  van het hoogste gebouwdeel in."</string>
     <string name="unglue_hint">"Tik hier om de kaart los te maken van je positie"</string>
-    <string name="pref_title_not_authorized_summary2">"Log in via je web browser om toegang te krijgen"</string>
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Zijn de rijbanen van deze weg fysiek gescheiden (door bijvoorbeeld een vangrail of andere barrière)? De standaard maximum snelheid hangt af of dit het geval is of niet."</string>
     <string name="about_category_feedback">"Feedback"</string>
     <string name="quest_leave_new_note_photo">"Maak een foto om toe te voegen"</string>
@@ -736,13 +727,6 @@ Bijvoorbeeld 1m3 of 2-6."</string>
     <string name="quest_leave_new_note_photos_are_useful">"Het toevoegen van een foto maakt de notitie duidelijker."</string>
     <string name="quest_postboxCollectionTimes_name_title">"Wat zijn de ophaaltijden van deze %s brievenbus."</string>
     <string name="create_new_note_hint">"Het beste is de notitie in de lokaal gesproken taal of anders in het Engels te schrijven. "</string>
-    <string name="about_contributing">"Jou antwoorden verbeteren direct Open StreetMap. Bijgedragen data is open, iedereen kan er gebruik van maken. Vele grote projecten gebruiken het al."</string>
-    <string name="about_missing_stars">"Momenteel wordt het aantal sterren niet gedeeld tussen apparaten, maar antwoorden worden direct toegevoegd aan de OpenStreetMap-database."</string>
-    <string name="how_to_get_stars">"Kies een van de markeringen op de kaart en beantwoord de vraag. Op deze manier verbetert u OpenStreetMap-gegevens en krijgt u sterren. Als u geen markeringen ziet, moet u mogelijk uitzoomen op de kaart."</string>
-
-    <!-- I think it might be better to change the text to: Do you want to remove the connection with your OSM account? -->
-    <string name="oauth_remove_authorization_dialog_message">"Wil je de autorisatiekoppeling met je OSM-account verwijderen?"</string>
-    <string name="oauth_remove_authorization_confirmation">"Verwijderen"</string>
     <string name="quest_leafType_title">"Hebben de bomen hier bladeren of naalden?"</string>
     <string name="quest_leaf_type_needles">"Naalden"</string>
     <string name="quest_leaf_type_broadleaved">"Breedbladig"</string>
@@ -764,7 +748,6 @@ Bijvoorbeeld 1m3 of 2-6."</string>
     <string name="quest_maxweight_unusualInput_confirmation_description">"Dit gewicht lijkt niet waarschijnlijk, weet je zeker dat dit correct is?"</string>
     <string name="quest_maxweight_answer_other_sign">"borden geven iets anders aan..."</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"Wil je een notitie maken? Met een notitie en een foto kunnen andere mappers dit verwerken."</string>
-    <string name="confirmation_authorize_now_note">"Je kan dit later in het instellingenscherm doen."</string>
     <string name="quest_generalFee_title">"Kost het geld om %s binnen te gaan?"</string>
     <string name="quest_laundrySelfService_title">"Is deze wasserij een zelfservice wasserij?"</string>
     <string name="quest_handrail_title">"Heeft deze trap een leuning?"</string>
@@ -818,4 +801,105 @@ Bijvoorbeeld 1m3 of 2-6."</string>
     <string name="quest_recycling_materials_answer_waste">"Is voor restafval"</string>
     <string name="quest_recycling_materials_answer_waste_description">"Dus, is deze container voor alle afval, zoals vuilniszakken en commercieel afval?"</string>
     <string name="quest_accepts_cash_title">"Accepteert %s contant geld als betaling?"</string>
+    <string name="user_profile">"Mijn profiel"</string>
+    <string name="user_login">"Log in"</string>
+    <string name="user_logout">"Log uit"</string>
+    <string name="osm_profile">"OSM-profiel"</string>
+    <string name="next">"Volgende"</string>
+    <string name="letsgo">"Aan de slag!"</string>
+    <string name="tutorial_welcome_to_osm">"Welkom bij OpenStreetMap"</string>
+    <string name="tutorial_welcome_to_osm_subtitle">"de vrije wiki wereldkaart"</string>
+    <string name="tutorial_intro">"StreetComplete maakt het makkelijk om bij te dragen aan OpenSreetMap. Het zoekt automatisch missende details op in jou omgeving: Fietspaden, huisnummers, openingtijden en veel meer......"</string>
+    <string name="tutorial_solving_quests">"Eenmaal gevonden, de missende details verscheinen op je kaart als vragen. 
+
+Je kan meteen de vragen oplossen en later inloggen om je antwoorden te publiceren."</string>
+    <string name="tutorial_stay_safe">"Wanneer je niet zeker bent, kan je altijd het antwoord, \"Weet ik niet\" aanklikken en een opmerking achterlaten. 
+
+Tenslotte, zorg altijd voor je eigen veiligheid. Wees bewust van je omgeving en betreed geen privé terreinen. "</string>
+    <string name="tutorial_happy_mapping">"Veel plezier met Kaartmaken!"</string>
+    <string name="achievements_empty">"Je hebt nog geen bijdragen."</string>
+    <string name="links_empty">"We hebben nog geen links"</string>
+    <string name="quests_empty">"Je hebt nog geen antwoorden gepubliceerd."</string>
+    <string name="unsynced_quests_description">"Plus %d nog niet gepubliceerde antwoorden."</string>
+    <string name="unsynced_quests_not_logged_in_description">"Je hebt %d nog niet gepubliceerde antwoorden. Je moet inloggen om ze te kunnen uploaden."</string>
+    <string name="user_quests_title">"Opgeloste vragen"</string>
+    <string name="user_achievements_title">"Bijdragen"</string>
+    <string name="user_links_title">"Linkverzameling"</string>
+    <string name="user_profile_title">"Profiel"</string>
+    <string name="user_statistics_quest_wiki_link">"Documentatie"</string>
+    <string name="achievements_unlocked_link">"Ontgrendelde link"</string>
+    <string name="achievements_unlocked_links">"Ontgrendelde links"</string>
+    <string name="link_category_intro_title">"Introductie"</string>
+    <string name="link_category_intro_description">"Leer meer over OSM en zijn community"</string>
+    <string name="link_category_editors_title">"Bijdragen"</string>
+    <string name="link_category_editors_description">"Editors en andere manieren om bij te dragen aan OpenStreetMap"</string>
+    <string name="link_category_maps_title">"Kaarten"</string>
+    <string name="link_category_maps_description">"Op OpenStreetMaps gebaseerde kaarten"</string>
+    <string name="link_category_showcase_description">"OpenStreetmap gebaseerde services en apps"</string>
+    <string name="link_category_goodies_title">"Goodies"</string>
+    <string name="link_category_goodies_description">"Interessante kaartgerelateerde dingen die je kunt uitproberen"</string>
+    <string name="link_cyclosm_description">"Een kaart voor fietsers"</string>
+    <string name="link_wheelmap_description">"Een kaart voor het vinden vzn roelstoeltoegankelijke plaatsen"</string>
+    <string name="link_osm_buildings_description">"Een kaart dat gebouwen in 3D toont"</string>
+    <string name="link_openvegemap_description">"Ontdek vegetarische en vagan restaurants in je woonplaats"</string>
+    <string name="link_touch_mapper_description">"Maak voelbare kaarten voor ieder adres"</string>
+    <string name="link_mapy_tactile_description">"Voelbare kaarten voor slechtzienden in verschillende schalen"</string>
+    <string name="link_josm_description">"Volledig uitgeruste OSM-editor voor de desktop. Dit is het krachtige gereedschap voor vaste bijdragers."</string>
+    <string name="link_vespucci_description">"Gevorderde OSM editor voor Android"</string>
+    <string name="link_ideditor_description">"Eenvoudige OSM-editor voor de browser. Geoptimaliseerd voor de desktop of grote tablets"</string>
+    <string name="link_umap_description">"Maak snel kaarten met aangepaste gegevens en sluit ze in op uw site"</string>
+    <string name="link_opnvkarte_description">"Een kaart met routes en haltes van het openbaar vervoer"</string>
+    <string name="link_pic4review_description">"Draag bij aan OSM door simpelweg naar foto's van uw stad te kijken"</string>
+    <string name="link_wiki_description">"De wiki is je startpunt voor alles wat met OpenStreetMap te maken heeft"</string>
+    <string name="link_learnosm_description">"Nieuw bij OpenStreetMap? Dit is een beginnershandleiding"</string>
+    <string name="link_neis_one_description">"Een enorme verzameling statistieken voor OpenStreetMap-bijdragers, zoals waar en hoe je hebt bijgedragen, wie er nog meer om je heen is plus scoreborden"</string>
+    <string name="link_welcome_mat_description">"Algemene informatie over OpenStreetMap en hoe u als organisatie met OSM kunt werken"</string>
+    <string name="link_mapillary_description">"Een service en App voor het delen van door vrijwilligers gemaakte foto's op straatnivevau met expliciete toestemming voor gebruik als bijdrage aan OSM."</string>
+    <string name="link_openstreetcam_description">"Een service en App voor het delen van door vrijwilligers gemaakte foto's op straatnivevau met expliciete toestemming voor gebruik als bijdrage aan OSM"</string>
+    <string name="link_openrouteservice_wheelchair_description">"Stap voor stap navigatie voor Rolstoelgebruikers"</string>
+    <string name="link_nominatim_description">"de geocoder voor OSM data, gebruikt door veel andere diensten"</string>
+    <string name="link_city_roads_description">"Geef alle wegen van een stad weer voor het printen op t-shirts, mokken, ..."</string>
+    <string name="link_myosmatic_description">"Genereer te printen kaarten in een paar eenvoudige stappen, optioneel met een stratengids."</string>
+    <string name="link_brouter_description">"Waarschijnlijk de beste routeplanner voor fietsers"</string>
+    <string name="link_show_me_the_way_description">"Bekijk OSM wijzigingen real time"</string>
+    <string name="link_osrm_description">"De snelste routeplanner die er is"</string>
+    <string name="link_openrouteservice_description">"Routebepaling voor verschillende voertuigen en te voet, elk met voorkeuren. Kan ook isochronen tonen (bereikbaar gebied in X minuten vanaf een startpunt)."</string>
+    <string name="link_osm_haiku_description">"OSM-gegevens gebruiken om een haiku te genereren (een vorm van Japanse poëzie)"</string>
+    <string name="link_openinframap_description">"Een kaart met infrastructuur voor energie, telecommunicatie, gas en olie"</string>
+    <string name="link_openorienteeringmap_description">"Maak afdrukbare kaarten voor een oriëntatieloop"</string>
+    <string name="link_openstreetbrowser_description">"Een kaart om per categorie door de OpenStreetMap-kaartfuncties te bladeren"</string>
+    <string name="link_weeklyosm_description">"De wekelijkse nieuwsblog over wat er in de OpenStreetMap-wereld gebeurt"</string>
+    <string name="link_figuregrounder_description">"Maak figuurgronddiagramposters van een stad of buurt"</string>
+    <string name="achievement_first_edit_title">"Eersye vraag opgelost"</string>
+    <string name="achievement_first_edit_description">"Welkom bij de OpenStreetMap-community! In je profielscherm kun je meer informatie zien over elk vraagtype dat je hebt opgelost."</string>
+    <string name="achievement_surveyor_title">"Landmeter"</string>
+    <string name="achievement_surveyor_solved_X">"Je heb %d vragen opgelost! Blijf doorgaan met het ontgrendelen van meer prestaties die links bevatten naar OSM en andere kaartgerelateerde apps en projecten!"</string>
+    <string name="achievement_regular_title">"Normaal"</string>
+    <string name="achievement_regular_description">"Je hebt %d dagen bijgedragen aan OSM met deze app! Vaste bijdragers zijn de ruggengraat van OSM, bedankt voor uw toewijding! ❤"</string>
+    <string name="achievement_bicyclist_title">"Fietser"</string>
+    <string name="achievement_bicyclist_solved_X">"Je hebt %d vragen opgelost die fietsers helpen!"</string>
+    <string name="achievement_wheelchair_title">"Mobiliteit"</string>
+    <string name="achievement_wheelchair_solved_X">"Je hebt %d vragen opgelost waarmee rolstoelgebruikers de stad kunnen verkennen!"</string>
+    <string name="achievement_postman_title">"Postbezorger"</string>
+    <string name="achievement_postman_solved_X">"Je hebt geholpen %d adressen te lokaliseren!
+Deze gegevens zijn niet alleen essentieel voor de postbode, maar ook voor elk navigatiesysteem"</string>
+    <string name="achievement_building_title">"Hoogbouw"</string>
+    <string name="achievement_building_solved_X">"Je hebt %d gebouw gerelateerde vragen opgelost.
+Let op dat deze app alleen naar het huisnummer van een gebouw vraagt nadat zijn gebouwtype is bepaald."</string>
+    <string name="achievement_blind_title">"Zesde zintuig"</string>
+    <string name="achievement_blind_solved_X">"You solved %d quests that are interesting for visually impaired."</string>
+    <string name="achievement_pedestrian_title">"Wandelaar"</string>
+    <string name="achievement_pedestrian_solved_X">"Je hebt %d vragen opgelost die interessant zijn voor mensen te voet!"</string>
+    <string name="achievement_veg_title">"Vriendelijk voor dieren"</string>
+    <string name="achievement_veg_solved_X">"Je hebt %d vragen opgelost die interessant zijn voor mensen die geen vlees eten!"</string>
+    <string name="achievement_car_title">"Op de weg"</string>
+    <string name="achievement_car_solved_X">"Je hebt %d vragen opgelost die de details van de straatkaarten verbeteren, door de straat in OpenStreet te plaatsen!"</string>
+    <string name="unread_messages_message">"Je hebt %d ongelezen berichten in je inbox"</string>
+    <string name="unread_messages_button">"Open inbox"</string>
+    <string name="action_about2">"Over"</string>
+    <string name="map_btn_menu">"Menu"</string>
+    <string name="privacy_html_statistics">"&lt;p&gt; De gegevens die in je profiel worden weergegeven, worden samengevoegd uit je openbaar beschikbare bijdragegeschiedenis aan OpenStreetMap en vervolgens gehost op mijn server. &lt;/p&gt;"</string>
+    <string name="confirmation_authorize_now_note2">"Je kunt dit ook later op het profielscherm doen"</string>
+    <string name="credits_projects_contributors_title">"Projecten gemaakt voor StreetComplete"</string>
+    <string name="credits_main_contributors_title">"Belangrijkste bijdragers"</string>
 </resources>

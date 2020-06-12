@@ -2,15 +2,11 @@
 <resources>
     <string name="action_settings">"Parametrat"</string>
     <string name="oauth_communication_error">"E pamundur të kontaktohet shërbyesi për autorizim"</string>
-    <string name="loading">"Duke u ngarkuar"</string>
     <string name="retry">"Provo përsëri"</string>
-    <string name="oauth_cancelled">"Autorizimi u anulua"</string>
     <string name="oauth_failed_permissions">"Autorizimi dështoj: Të gjitha lejet duhet të jepen"</string>
     <string name="title_activity_settings">"Rregullimet"</string>
     <string name="pref_category_communication">"Komunikimi"</string>
     <string name="pref_category_display">"Shfaq"</string>
-    <string name="pref_title_authorization">"Autorizo qasjen në OSM"</string>
-    <string name="pref_title_not_authorized_summary">"Ende pa autorizuar"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
     <string name="pref_tilecache_size_message">"Hapësira në megabajt e rezervuar në memorje të jashtme për të ruajtur hartën"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Trego të gjitha shënimet"</string>
@@ -65,10 +61,8 @@
     <string name="download_area_too_big">"Ju lutemi afrohuni më shumë"</string>
     <string name="confirmation_cancel_prev_download_title">"Anuloni kërkimin aktual dhe skanoni këtu?"</string>
     <string name="notification_downloading">"Po skanohet për Gjurmime…"</string>
-    <string name="now_downloading_toast">"Po skanohet për më shumë gjurmime…"</string>
     <string name="turn_on_location_request">"Vendndodhja është ndalur. Shko në Rregullime për ta aktivizuar?"</string>
     <string name="no_location_permission_warning">"Duhet vendndodhja për të gjurmuar në afërsinë tuaj."</string>
-    <string name="action_about">"Për StreetComplete"</string>
 
     <!-- Fuzzy -->
     <string name="about_title_authors">"Autorët"</string>
@@ -388,7 +382,6 @@ Përndryshe, mund të shkarkoni një tastierë tjetër në dyqanin e aplikacione
     <string name="quest_way_lit_road_title">"A është kjo pjesë e rrugës e ndriçuar?"</string>
     <string name="quest_way_lit_automatic">"Përdor detekim të lëvizjes"</string>
     <string name="quest_way_lit_24_7">"Ndriçohet ditën e natën"</string>
-    <string name="pref_title_authorized_username_summary">"Llogaria e autorizuar: %s"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Nuk mund të skanohet këtu. Zmadhoni më tutje ose anoni hartën më pak."</string>
     <string name="quest_crossing_type_title">"Çfar lloj kalimi është ky?"</string>
     <string name="quest_crossing_type_signals">"Kalim me drita trafiku"</string>
@@ -417,13 +410,11 @@ Përndryshe, mund të shkarkoni një tastierë tjetër në dyqanin e aplikacione
     <string name="quest_address_house_name_label">"Emri i shtëpisë:"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"nivelet në kulm"</string>
     <string name="quest_buildingLevels_levelsLabel2">"nivelet e rregullta (pa numruar kulmin)"</string>
-    <string name="pref_title_authorized_summary">"Autorizuar"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingLevels_answer_multipleLevels">"ndryshon për pjesën e ndërtesës"</string>
     <string name="quest_buildingLevels_answer_description">"Në këtë rast, thjesht jepni vlerat e pjesës më të lartë të ndërtesës."</string>
     <string name="unglue_hint">"Shtypni për të zhbllokuar pamjen nga pozicioni"</string>
-    <string name="pref_title_not_authorized_summary2">"Kyçu nga shfletuesi për auutorizim"</string>
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"A janë anët e kësaj rruge fizikisht të ndara (d.m.th. përmes një pengese)? Kufiri i shpejtësisë së parazgjedhur varet nëse është kështu apo jo."</string>
     <string name="about_category_feedback">"Përshtypjet"</string>
     <string name="quest_leave_new_note_photo">"Ngjit foto"</string>
@@ -447,7 +438,7 @@ Përndryshe, mund të shkarkoni një tastierë tjetër në dyqanin e aplikacione
     <string name="undo_confirm_positive">"Zhbëj"</string>
     <string name="undo_confirm_negative">"Anulo"</string>
     <string name="quest_dietType_vegetarian_name_title">"A ka %s ushqime vegjetariane në meny?"</string>
-    <string name="quest_dietType_vegan_name_title">"A ka %ushqime vegane në meny?"</string>
+    <string name="quest_dietType_vegan_name_title">"A ka %s ushqime vegane në meny?"</string>
     <string name="quest_hasFeature_only">"Vetëm"</string>
     <string name="quest_dietType_explanation_vegan">"Ushqimi vegan nuk përmban produkte shtazore (mish, produkte qumështi, vezë, ...)."</string>
     <string name="quest_dietType_explanation_vegetarian">"Ushqimet vegjetariane nuk përmbajnë mish."</string>

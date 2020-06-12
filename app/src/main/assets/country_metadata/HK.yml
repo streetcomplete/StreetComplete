@@ -4,3 +4,4 @@ mobileCountryCode: 454
 officialLanguages: [en, zh]
 orchardProduces: [tomato]
 popularReligions: [chinese_folk, taoist, buddhist]
+workweekDays: 6

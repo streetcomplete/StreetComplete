@@ -7,7 +7,6 @@ class AddOpeningHoursForm : OpeningHoursForm() {
         Injector.instance.applicationComponent.inject(this)
     }
 
-
     override fun onClickOk() {
         applyAnswer(RegularOpeningHours(openingHoursAdapter.createOpeningMonthsRows()))
     }

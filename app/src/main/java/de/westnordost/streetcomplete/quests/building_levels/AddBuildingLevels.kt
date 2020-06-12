@@ -1,11 +1,11 @@
 package de.westnordost.streetcomplete.quests.building_levels
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
+import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 
-class AddBuildingLevels(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<BuildingLevelsAnswer>(o) {
+class AddBuildingLevels(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<BuildingLevelsAnswer>(o) {
 
     // building:height is undocumented, but used the same way as height and currently over 50k times
     override val tagFilters = """
@@ -14,6 +14,7 @@ class AddBuildingLevels(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestT
          and !man_made and location != underground and ruins != yes
     """
     override val commitMessage = "Add building and roof levels"
+    override val wikiLink = "Key:building:levels"
     override val icon = R.drawable.ic_quest_building_levels
 
     override fun getTitle(tags: Map<String, String>) =

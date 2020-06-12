@@ -14,6 +14,7 @@
         android:maxLines="2"
         android:textStyle="bold"
         android:id="@+id/language"
+        android:textAppearance="@style/TextAppearance.Body"
         tools:ignore="RtlSymmetry"/>
 
     <TextView
@@ -21,6 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_toEndOf="@+id/language"
+        android:textAppearance="@style/TextAppearance.Body"
         android:id="@+id/contributors"/>
 
 </RelativeLayout>

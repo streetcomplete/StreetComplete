@@ -2,15 +2,11 @@
 <resources>
     <string name="action_settings">"Настройки"</string>
     <string name="oauth_communication_error">"Не удалось соединиться с сервером авторизации"</string>
-    <string name="loading">"Загрузка"</string>
     <string name="retry">"Повторить"</string>
-    <string name="oauth_cancelled">"Авторизация отменена"</string>
     <string name="oauth_failed_permissions">"Авторизация не удалась: все указаннные разрешения должны быть предоставлены"</string>
     <string name="title_activity_settings">"Настройки"</string>
     <string name="pref_category_communication">"Связь"</string>
     <string name="pref_category_display">"Вид"</string>
-    <string name="pref_title_authorization">"Авторизовать доступ к OSM"</string>
-    <string name="pref_title_not_authorized_summary">"Пока не авторизовано"</string>
     <string name="pref_tilecache_size_summary">"%d МБ"</string>
     <string name="pref_tilecache_size_message">"Резерв для тайлов на внешнем накопителе (MB)"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Показывать все заметки"</string>
@@ -29,7 +25,7 @@
     <string name="quest_leave_new_note_title">"Оставить заметку взамен?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_leave_new_note_description">"Можно оставить в этой точке заметку, о которой смогут позаботиться другие пользователи, либо просто сделать, чтобы этот квест вам больше не показывался"</string>
+    <string name="quest_leave_new_note_description">"Можно оставить в этой точке заметку, которую увидят другие пользователи, либо просто скрыть этот квест для вас"</string>
     <string name="quest_leave_new_note_yes">"OK"</string>
     <string name="quest_leave_new_note_no">"Нет, просто скрыть"</string>
     <string name="quest_streetName_title">"Как называется эта дорога?"</string>
@@ -56,8 +52,6 @@
     <string name="confirmation_discard_negative">"Отмена"</string>
     <string name="action_download">"Найти квесты здесь"</string>
     <string name="action_upload">"Отправить ответы"</string>
-
-    <!-- Fuzzy -->
     <string name="no_changes">"Вы оставили поле пустым"</string>
     <string name="close">"закрыть"</string>
     <string name="download_error">"Не удалось найти квесты"</string>
@@ -65,13 +59,9 @@
     <string name="download_area_too_big">"Приблизьте ещё"</string>
     <string name="confirmation_cancel_prev_download_title">"Завершить текущее сканирование и сканировать здесь?"</string>
     <string name="notification_downloading">"Поиск квестов…"</string>
-    <string name="now_downloading_toast">"Поиск дополнительных квестов…"</string>
     <string name="turn_on_location_request">"Определение местоположения выключено. Перейти в настройки, чтобы включить?"</string>
     <string name="no_location_permission_warning">"Местоположение нужно для поиска квестов поблизости."</string>
-    <string name="action_about">"О приложении"</string>
     <string name="about_title_authors">"Участники"</string>
-
-    <!-- Fuzzy -->
     <string name="about_summary_authors">"© 2016–2020 Тобиас Цвик и другие"</string>
     <string name="about_title_repository">"Исходный код"</string>
     <string name="about_summary_repository">"на GitHub"</string>
@@ -111,14 +101,14 @@
     <string name="map_btn_zoom_in">"Приблизить"</string>
 
     <!-- Fuzzy -->
-    <string name="privacy_html">"&lt;p&gt;Ага, кто-то, кто заботится о конфиденциальности, отлично! Надеюсь, у меня для вас только хорошие новости:&lt;/p&gt;
+    <string name="privacy_html">"&lt;p&gt;Ага, кто-то, кто заботится о конфиденциальности, отлично! У меня для вас только хорошие новости:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Внесение вклада напрямую&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
 Прежде всего, с помощью этого приложения вы отправляете все улучшения и заметки в OpenStreetMap напрямую.&lt;br/&gt;
 Все данные добавляются прямо на карту, между этим приложением и инфраструктурой OSM нет посредников (как происходит в случае с &lt;a href=\"https://wheelmap.org\"&gt;wheelmap.org&lt;/a&gt; или &lt;a href=\"http://www.kort.ch\"&gt;Kort&lt;/a&gt;).
 &lt;/p&gt;
 &lt;p&gt;
-Анонимное редактирование OpenStreetMap невозможно, поэтому для отправки изменений из этого приложения необходим аккаунт в OSM. Это значит, что дата, содержание и местоположение ваших изменений видны всем на сайте openstreetmap.org и связаны с вашим аккаунтом.
+Анонимное редактирование OpenStreetMap невозможно, поэтому для отправки изменений из этого приложения необходим аккаунт в OSM. Это значит, что дата, содержание и местоположение ваших правок видны всем на сайте openstreetmap.org и связаны с вашим аккаунтом.
 &lt;/p&gt;
 
 &lt;b&gt;Местоположение&lt;/b&gt;&lt;br/&gt;
@@ -128,14 +118,8 @@
 
 &lt;p&gt;&lt;b&gt;Использование данных&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
-Как уже было сказано, приложение использует инфраструктуру OSM напрямую. А именно, &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;Overpass API&lt;/a&gt; для загрузки квестов (анонимно) и &lt;a href=\"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM API&lt;/a&gt; для отправки изменений.&lt;br/&gt;
-Однако перед отправкой изменений приложение проверяет &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;простой текстовый файл&lt;/a&gt; на моём сервере, чтобы определить, не было ли запрещено этой версии приложения отправлять изменения. Это позволит избежать возможного повреждения данных OSM теми версиями приложения, в которых обнаружены критические ошибки.&lt;br/&gt;
-&lt;/p&gt;
-&lt;p&gt;
-Векторные изображения для отображения карты анонимно загружаются с &lt;a href=\"https://mapzen.com/projects/vector-tiles/\"&gt;сервиса векторных карт Mapzen&lt;/a&gt;. Данный сервис запоминает запросы, чтобы оценить популярность определённых районов для кэширования и повышения скорости работы. Платформа Mapzen также запоминает IP-адреса и полностью находится на Amazon, поэтому подчиняется условиям использования хостинга этой компании.
-&lt;/p&gt;
-&lt;p&gt;
-(&lt;i&gt;Это на самом деле ещё не реализовано, просто хочу вам сообщить, что грядёт!:&lt;/i&gt;) Данные, отображающиеся в топе лидеров и профилях, агрегируются из публично доступной информации проекта OpenStreetMap. Данные поступают не из этого приложения, а из публичной истории изменений пользователей OSM.
+Как уже было сказано, приложение использует инфраструктуру OSM напрямую. А именно, &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;Overpass API&lt;/a&gt; для загрузки квестов (анонимно) и &lt;a href=\"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM API&lt;/a&gt; для отправки правок.&lt;br/&gt;
+Однако перед отправкой изменений приложение проверяет &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;простой текстовый файл&lt;/a&gt; на моём сервере, чтобы определить, не было ли запрещено этой версии приложения отправлять изменения. Это позволит избежать возможной порчи данных OSM версиями приложения, в которых обнаружены критические ошибки.&lt;br/&gt;
 &lt;/p&gt;"</string>
     <string name="autosync_on">"Включена"</string>
     <string name="autosync_only_on_wifi">"Только по Wi-Fi"</string>
@@ -158,8 +142,6 @@
     <string name="quest_surface_value_sett">"Брусчатка"</string>
     <string name="quest_surface_value_wood">"Дерево"</string>
     <string name="quest_placeName_title">"Как называется этот населенный пункт?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sidewalk_title">"На этой улице есть тротуар?"</string>
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Где находится эта улица?"</string>
     <string name="quest_cyclewaySurface_title">"Какое покрытие у этой велодорожки?"</string>
@@ -225,13 +207,9 @@
     <string name="quest_manySports_confirmation_specific">"Именно для этих"</string>
     <string name="quest_manySports_confirmation_generic">"Общего назначения"</string>
     <string name="quest_sport_manySports_confirmation_title">"Вы выбрали несколько видов спорта"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_busStopShelter_name_title">"Имеет ли автобусная остановка %s укрытие от дождя?"</string>
     <string name="quest_toiletsFee_title">"Это платные туалеты?"</string>
     <string name="quest_tactilePaving_title_bus">"Есть ли на этой автобусной остановке тактильная разметка?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"Есть ли на этом пешеходном переходе тактильная разметка с обеих сторон?"</string>
     <string name="quest_source_dialog_title">"Вы точно проверили это на месте?"</string>
 
@@ -240,8 +218,6 @@
     <string name="quest_source_dialog_note">"Нужно вводить только то, что вы видели своими глазами."</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Эта велосипедная парковка крытая (защищена от дождя)?"</string>
     <string name="dialog_session_dont_show_again">"Не показывать снова в текущей сессии"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetSurface_name_title">"Какое покрытие у этого участка дороги %s?"</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Это ограничение скорости выглядит неправдоподобно."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Ограничение точно не установлено?"</string>
@@ -249,8 +225,9 @@
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Да, знаков нет"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"На дорогах в городе и вне города по умолчанию действуют разные скоростные ограничения."</string>
+    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"На дорогах в городе и вне города по умолчанию действуют разные скоростные режимы."</string>
 
+    <!-- What is this? -->
     <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_urbanOk">"В городе"</string>
     <string name="quest_maxspeed_answer_noSign_ruralOk">"Вне города"</string>
@@ -261,8 +238,6 @@
     <string name="quest_sport_paddle_tennis">"Паддл-теннис"</string>
     <string name="quest_sport_gaelic_games">"Гэльские игры"</string>
     <string name="quest_sport_sepak_takraw">"Сепактакрау"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_name_title">"Доступно ли %s для инвалидных колясок?"</string>
     <string name="quest_wheelchairAccess_limited">"Частично"</string>
     <string name="quest_bikeParkingCapacity_hint">"Учтите, что к большинству обычных стоек можно закрепить по велосипеду с каждой стороны."</string>
@@ -271,26 +246,16 @@
     <string name="quest_wheelchairAccess_subway_entrance_title">"Этот вход в метро оборудован для инвалидных колясок?"</string>
     <string name="quest_wheelchairAccess_railway_station_title">"Доступна ли эта железнодорожная станция для инвалидных колясок?"</string>
     <string name="quest_wheelchairAccess_location_title">"Доступно ли это место для инвалидных колясок?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_bus_station_name_title">"Доступна ли автобусная остановка %s для инвалидных колясок?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_subway_entrance_name_title">"Этот вход в метро на станцию %s оборудован для инвалидных колясок?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_railway_station_name_title">"Доступна ли железнодорожная станция %s для инвалидных колясок?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_location_name_title">"Доступно ли место %s для инвалидных колясок?"</string>
     <string name="quest_wheelchairAccess_limited_description_business">"«Частично» означает, что нужно преодолеть не более одной ступеньки для доступа в заведение и что все комнаты внутри доступны для инвалидных колясок."</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">"«Частично» значит, что нужно преодолеть не более одной ступеньки."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">"В названии %s есть сокращение?"</string>
     <string name="quest_baby_changing_table_toilets_title">"В этом туалете есть пеленальный столик?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_baby_changing_table_title">"В %s есть пеленальный столик?"</string>
     <string name="quest_recycling_type_title">"Какого типа этот пункт переработки отходов?"</string>
     <string name="recycling_centre">"Центр"</string>
@@ -369,18 +334,11 @@
     <string name="produce_vanilla">"Ваниль"</string>
     <string name="produce_walnuts">"Грецкие орехи"</string>
     <string name="produce_sisal">"Сизаль"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_way_lit_title">"Освещена ли эта часть пути?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_way_lit_named_title">"Освещается ли %s?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_way_lit_road_title">"Освещена ли эта часть дороги?"</string>
     <string name="quest_way_lit_automatic">"Используется датчик движения"</string>
     <string name="quest_way_lit_24_7">"Освещается днём и ночью"</string>
-    <string name="pref_title_authorized_username_summary">"Авторизованная учётная запись: %s"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Поиск невозможен. Попробуйте приблизить ещё или повернуть карту под меньшим углом."</string>
     <string name="quest_crossing_type_title">"Какого типа этот пешеходный переход?"</string>
     <string name="quest_crossing_type_signals">"Регулируемый переход со светофором"</string>
@@ -411,15 +369,11 @@
     <string name="quest_address_house_name_label">"Название дома:"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"этажи в составе крыши"</string>
     <string name="quest_buildingLevels_levelsLabel2">"обычные этажи (исключая крышу)"</string>
-    <string name="pref_title_authorized_summary">"Авторизовано"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingLevels_answer_multipleLevels">"По-разному для разных частей здания"</string>
     <string name="quest_buildingLevels_answer_description">"В этом случае просто введите значения для самой высокой части здания."</string>
 
     <!-- s/position/location/ for consistency? -->
     <string name="unglue_hint">"Коснитесь чтобы отвязать карту от местоположения"</string>
-    <string name="pref_title_not_authorized_summary2">"Войти через браузер и авторизовать"</string>
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Разделены ли полосы противоположных направлений физически (барьером или островком безопасности)? От этого зависит ограничение скорости по умолчанию."</string>
     <string name="about_category_feedback">"Обратная связь"</string>
     <string name="quest_leave_new_note_photo">"Прикрепить фото"</string>
@@ -469,7 +423,7 @@
     <string name="quest_streetName_answer_noName_noname">"Ничего из выше перечисленных, просто у неё нет названия."</string>
     <string name="quest_wheelchairAccess_toilets_title">"Эти туалеты доступны для инвалидных колясок?"</string>
     <string name="quest_wheelchairAccess_toilets_name_title">"Туалет %s доступен для инвалидных колясок?"</string>
-    <string name="quest_wheelchairAccess_description_toilets">"Подобный знак инвалидной коляски может быть виден только если туалет свободен. Обычно такое означает, что инвалид-колясочник может вкатиться и воспользоваться туалетом, но туалет не оборудован поручнями и пониженной раковиной."</string>
+    <string name="quest_wheelchairAccess_description_toilets">"Подобный знак инвалидной коляски означает, что туалет доступен для инвалидов-колясочников. \"Частично\" означает, что инвалид может вкатиться и воспользоваться туалетом, но туалет не оборудован поручнями и пониженной раковиной."</string>
     <string name="map_btn_create_note">"Создать новую заметку"</string>
     <string name="create_new_note_unprecise">"Увеличьте масштаб для создания заметки"</string>
     <string name="create_new_note_description">"Вы можете оставить заметку, указывающую картографам на ошибку в этой точке. Двигая карту, отрегулируйте точное размещение оставляемой заметки:"</string>
@@ -489,9 +443,8 @@
     <string name="quest_busStopShelter_tram_name_title">"Имеет ли трамвайная остановка %s крышу от дождя?"</string>
     <string name="quest_busStopShelter_tram_title">"Имеет ли эта трамвайная остановка крышу от дождя?"</string>
     <string name="quest_bench_backrest_title">"Есть ли у этой скамейки спинка?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bench_answer_picnic_table">"Это стол для пикника"</string>
+    <string name="quest_religion_for_place_of_worship_title">"К какой религии относится это место?"</string>
     <string name="quest_religion_christian">"Христианство"</string>
     <string name="quest_religion_muslim">"Ислам"</string>
     <string name="quest_religion_hindu">"Индуизм"</string>
@@ -509,15 +462,11 @@
     <string name="quest_parking_fee_title">"Эта парковка платная?"</string>
     <string name="quest_cycleway_value_lane_soft">"велосипедная полоса (пунктирная разметка)"</string>
     <string name="quest_surface_value_unhewn_cobblestone">"Необработанный булыжник"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_parking_access_title">"Имеются ли здесь ограничения на парковку?"</string>
     <string name="quest_parking_access_private">"Это частное"</string>
     <string name="quest_parking_access_yes">"Открыта для всех (платно или бесплатно)"</string>
     <string name="quest_parking_access_customers">"Только для клиентов"</string>
     <string name="quest_streetName_pedestrian_title">"Как называется эта пешеходная улица?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetSurface_square_title">"Какой тип покрытия у этой площади?"</string>
     <string name="quest_streetSurface_square_name_title">"Какой тип покрытия у площади %s?"</string>
     <string name="quest_fee_answer_hours">"Зависит от времени суток и дня…"</string>
@@ -646,7 +595,7 @@
     <string name="notification_channel_download">"Скачать"</string>
     <string name="quest_playground_access_title">"Эта детская площадка доступна для всех?"</string>
     <string name="quest_segregated_title">"Как здесь расположены пешеходная и велосипедная дорожки?"</string>
-    <string name="dialog_tutorial_upload">"Чтобы загрузить изменения вручную, используйте кнопку на панели инструментов, которая выглядит так."</string>
+    <string name="dialog_tutorial_upload">"Чтобы отправить правки вручную, используйте кнопку на панели инструментов, которая выглядит так."</string>
     <string name="quest_segregated_separated">"Отделены друг от друга"</string>
     <string name="quest_segregated_mixed">"Велосипедисты и пешеходы движутся по одной дороге"</string>
     <string name="quest_maxheight_title">"Какой здесь ограничение по высоте?"</string>
@@ -655,7 +604,7 @@
     <string name="quest_maxheight_tunnel_title">"Какое ограничение по высоте у этого туннеля?"</string>
     <string name="quest_maxheight_answer_noSign">"Здесь нет знака…"</string>
     <string name="quest_maxheight_answer_noSign_question">"Достаточно ли высоты для даже самых больших грузовиков (минимум 4.5 метра)?"</string>
-    <string name="quest_maxheight_unusualInput_confirmation_description">"Эта высота выглядит неправдоподобной. Вы уверены, что это правильно?"</string>
+    <string name="quest_maxheight_unusualInput_confirmation_description">"Эта высота выглядит неправдоподобной. Вы уверены, что это верное число?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_closed2">"Закрыл %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_reopen2">"Переоткрыл %1$s, %2$s"</string>
@@ -670,7 +619,7 @@
     <string name="quest_tracktype_grade1">"Твёрдая"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_tracktype_grade2">"Преимущественно твердая"</string>
+    <string name="quest_tracktype_grade2">"Преимущественно твёрдая"</string>
     <string name="quest_tracktype_grade3">"Средне"</string>
     <string name="quest_tracktype_grade4">"Преимущественно мягкая"</string>
     <string name="quest_tracktype_grade5">"Мягкая"</string>
@@ -719,11 +668,6 @@
     <string name="quest_leave_new_note_photos_are_useful">"Фото сделает вашу заметку намного информативнее"</string>
     <string name="quest_postboxCollectionTimes_name_title">"Когда из этого почтового ящика %s забирают корреспонденцию?"</string>
     <string name="create_new_note_hint">"В заметке используйте либо местный язык этой территории, либо английский."</string>
-    <string name="about_contributing">"Ваши ответы делают карту OpenStreetMap точнее и лучше. Все данные в OSM свободны и открыты, ими могут пользоваться все. Многие крупные проекты уже используют OSM."</string>
-    <string name="about_missing_stars">"В настоящее время количество полученных очков не переносится с одного устройства на другое, так как ваши ответы записываются напрямую в базу данных OpenStreetMap."</string>
-    <string name="how_to_get_stars">"Выберите один из маркеров на карте и ответьте на вопрос. Таким образом, вы улучшите OpenStreetMap и получите очки. Если вы не видите маркеров, попробуйте приблизить карту."</string>
-    <string name="oauth_remove_authorization_dialog_message">"Выйти из аккаунта OSM?"</string>
-    <string name="oauth_remove_authorization_confirmation">"Выйти"</string>
     <string name="quest_leafType_title">"Здесь растут хвойные деревья или лиственные?"</string>
     <string name="quest_leaf_type_needles">"Хвойные"</string>
     <string name="quest_leaf_type_broadleaved">"Лиственные
@@ -747,7 +691,6 @@
     <string name="quest_maxweight_unusualInput_confirmation_description">"Этот вес выглядит неправдоподобным. Вы уверены, что это правильно?"</string>
     <string name="quest_maxweight_answer_other_sign">"Знак выглядит по-другому ..."</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"Хотите оставить заметку? Заметка с фотографией позволит другим картографам позаботиться об этом."</string>
-    <string name="confirmation_authorize_now_note">"Вы можете сделать это позже на экране настроек."</string>
     <string name="quest_generalFee_title">"Нужно ли платить за вход в %s?"</string>
     <string name="quest_laundrySelfService_title">"Это прачечная самообслуживания?"</string>
     <string name="quest_handrail_title">"Есть ли у этой лестницы поручень?"</string>
@@ -784,4 +727,114 @@
     <string name="about_summary_donate">"Выразите свою признательность! ❤️"</string>
     <string name="about_description_donate">"Спасибо, что решили поддержать это приложение! Чтобы увидеть текущие пожертвования и внести свое, выберите подходящую платформу:"</string>
     <string name="quest_religion_for_place_of_worship_name_title">"К какой религии относится %s?"</string>
+    <string name="confirmation_cancel_prev_download_confirmed">"Сканировать здесь"</string>
+    <string name="confirmation_cancel_prev_download_cancel">"Продолжить текущее сканирование"</string>
+    <string name="quest_buildingType_garages_description">"У каждого владельца/арендатора отдельное помещение"</string>
+    <string name="quest_tourism_information_title">"Какая именно здесь туристическая информация?"</string>
+    <string name="quest_tourism_information_name_title">"Какая именно здесь туристическая информация %s?"</string>
+    <string name="quest_tourism_information_office">"туристско-информационный центр"</string>
+    <string name="quest_tourism_information_board">"Информационная доска"</string>
+    <string name="quest_tourism_information_terminal">"Информационный терминал"</string>
+    <string name="quest_tourism_information_map">"карта"</string>
+    <string name="quest_tourism_information_guidepost">"указатель"</string>
+    <string name="quest_recycling_materials_answer_waste">"для общих отходов"</string>
+    <string name="quest_recycling_materials_answer_waste_description">"Это контейнер для любых отходов, таких как мешки с бытовыми или коммерческими отходами?"</string>
+    <string name="quest_accepts_cash_title">"Принимают ли в %s оплату наличными?"</string>
+    <string name="user_profile">"Мой Профиль"</string>
+    <string name="user_login">"Войти"</string>
+    <string name="user_logout">"Выйти"</string>
+    <string name="osm_profile">"Профиль OSM"</string>
+    <string name="next">"Дальше"</string>
+    <string name="letsgo">"Поехали!"</string>
+    <string name="tutorial_welcome_to_osm">"Добро пожаловать в OpenStreetMap"</string>
+    <string name="tutorial_welcome_to_osm_subtitle">"бесплатные карты всего мира на wiki-принципе"</string>
+    <string name="tutorial_intro">"StreetComplete позволяет дополнять карты OpenStreetMap. Приложение  ищет пропуски в данных объектов рядом с вами: неотмеченные велосипедные дорожки, дома без номера, неуказанные часы работы и т.д."</string>
+    <string name="tutorial_solving_quests">"Найденные пропуски в данных отображаются на карте в виде квестов.
+
+Вы можете начать выполнять квесты сразу, а позже залогиниться и опубликовать свои дополнения."</string>
+    <string name="tutorial_stay_safe">"Если вы не уверены, то отвечайте \"Не знаю\" и оставьте комментарий.
+
+И наконец, всегда будьте осторожны на улице: смотрите по сторонам и не заходите на запрещённые территории."</string>
+    <string name="tutorial_happy_mapping">"Удачи в картах!"</string>
+    <string name="achievements_empty">"У вас пока нет достижений"</string>
+    <string name="links_empty">"У вас пока нет ссылок"</string>
+    <string name="quests_empty">"Вы не опубликовали ни одного ответа на квест"</string>
+    <string name="unsynced_quests_description">"а также %d неотправленных изменений."</string>
+    <string name="unsynced_quests_not_logged_in_description">"У вас есть %d неопубликованных дополнений. Вам нужно залогиниться, чтобы их отправить."</string>
+    <string name="user_quests_title">"Решённые квесты"</string>
+    <string name="user_achievements_title">"Достижения"</string>
+    <string name="user_links_title">"Коллекция ссылок"</string>
+    <string name="user_profile_title">"Профиль"</string>
+    <string name="user_statistics_quest_wiki_link">"Документация"</string>
+    <string name="achievements_unlocked_link">"Открытая ссылка"</string>
+    <string name="achievements_unlocked_links">"Открытые ссылки"</string>
+    <string name="link_category_intro_title">"Введение"</string>
+    <string name="link_category_intro_description">"Узнать больше об OSM и сообществе"</string>
+    <string name="link_category_editors_title">"Как внести вклад"</string>
+    <string name="link_category_editors_description">"Редакторы и другие способы помогать OpenStreetMap"</string>
+    <string name="link_category_maps_title">"Карты"</string>
+    <string name="link_category_maps_description">"Карты на основе OpenStreetMap"</string>
+    <string name="link_category_showcase_title">"Примеры применения"</string>
+    <string name="link_category_showcase_description">"Сервисы и приложения на основе OpenStreetMap"</string>
+    <string name="link_category_goodies_title">"Полезности"</string>
+    <string name="link_category_goodies_description">"Интересные штуки про карты, которые вы можете попробовать"</string>
+    <string name="link_cyclosm_description">"Карта для велосипедистов"</string>
+    <string name="link_wheelmap_description">"Карта мест, доступных на инвалидной коляске"</string>
+    <string name="link_osm_buildings_description">"Карта с трёхмерными зданиями"</string>
+    <string name="link_openvegemap_description">"Найти вегетарианские и веганские рестораны в вашем городе"</string>
+    <string name="link_touch_mapper_description">"Создание тактильных карт для любых адресов"</string>
+    <string name="link_mapy_tactile_description">"Тактильные карты в разных масштабах для людей с ограничениями по зрению"</string>
+    <string name="link_josm_description">"Полнофункциональный редактор OSM для компьютеров. Мощный инструмент для регулярных правок."</string>
+    <string name="link_vespucci_description">"Продвинутый редактор OSM для Android"</string>
+    <string name="link_ideditor_description">"Простой редактор OSM, работающий в браузере. Оптимизирован для компьютеров и больших планшетов"</string>
+    <string name="link_umap_description">"Быстрое создание карт на основе пользовательских данных с возможностью вставить их на веб-сайт"</string>
+    <string name="link_opnvkarte_description">"Карта общественного транспорта с остановками"</string>
+    <string name="link_pic4review_description">"Вносите вклад в OSM, просматривая фотографии из вашего города"</string>
+    <string name="link_wiki_description">"Эта вики -- ваш портал во всё, что связано с OpenStreetMap"</string>
+    <string name="link_learnosm_description">"Вы новичок в OpenStreetMap? Эта инструкция для вас"</string>
+    <string name="link_neis_one_description">"Огромная база данных со статистикой по участникам OpenStreetMap. Где и какие правки вы вносили, кто ещё работает рядом с вами, а также топы"</string>
+    <string name="link_welcome_mat_description">"Общая информация об OpenStreetMap и о том, как работать с организацией OSM"</string>
+    <string name="link_mapillary_description">"Сервис и приложение для загрузки уличных фотографий, которые могут быть использованы в OSM"</string>
+    <string name="link_openstreetcam_description">"Сервис и приложение для загрузки уличных фотографий, которые могут быть использованы в OSM"</string>
+    <string name="link_openrouteservice_wheelchair_description">"Пошаговая навигация для передвигающихся на инвалидной коляске"</string>
+    <string name="link_nominatim_description">"Геокодер для данных OSM, используемый во многих других сервисах"</string>
+    <string name="link_city_roads_description">"Отрисовка схемы дорог города для печати на футболках, кружках и т. д."</string>
+    <string name="link_myosmatic_description">"Простая генерация карты города для печати, в том числе с перечнем улиц"</string>
+    <string name="link_brouter_description">"Вероятно, лучший маршрутизатор для велосипедистов"</string>
+    <string name="link_show_me_the_way_description">"Наблюдайте за правками OSM в реальном времени"</string>
+    <string name="link_osrm_description">"Самый быстрый маршрутизатор"</string>
+    <string name="link_openrouteservice_description">"Маршрутизация с тонкими настройками для пешеходов и разных видов транспорта. Также может показывать изохроны (участки местности, до которых можно добраться за определённое время)"</string>
+    <string name="link_osm_haiku_description">"Создание хайку (жанр японской поэзии) на основе данных OSM"</string>
+    <string name="link_openinframap_description">"Карта объектов электрической, коммуникационной, газовой и нефтяной инфраструктуры"</string>
+    <string name="link_openorienteeringmap_description">"Создание бумажных карт для ориентирования на местности"</string>
+    <string name="link_openstreetbrowser_description">"Карта для просмотра объектов по категориям"</string>
+    <string name="link_weeklyosm_description">"Еженедельные новости о происходящем в мире OpenStreetMap"</string>
+    <string name="link_figuregrounder_description">"Создание постеров с силуэтными диаграммами городов или районов (figure-ground diagram) "</string>
+    <string name="achievement_first_edit_title">"Первый квест решён!"</string>
+    <string name="achievement_first_edit_description">"Добро пожаловать в сообщество OpenStreetMap! Вы сможете найти информацию про все решённые квесты на странице вашего профиля."</string>
+    <string name="achievement_surveyor_title">"Геодезист"</string>
+    <string name="achievement_surveyor_solved_X">"Вы решили %d квестов! Продолжайте в том же духе и сможете открыть новые достижения и ссылки на приложения и проекты, использующие OSM и другие карты!"</string>
+    <string name="achievement_regular_title">"Завсегдатай"</string>
+    <string name="achievement_regular_description">"Вы отправляли правки в OSM %d дней! OSM держится на постоянных участниках. Спасибо за вашу приверженность! ❤"</string>
+    <string name="achievement_bicyclist_title">"Велосипедист"</string>
+    <string name="achievement_bicyclist_solved_X">"Вы решили %d квестов для помощи велосипедистам!"</string>
+    <string name="achievement_wheelchair_title">"Свобода передвижения"</string>
+    <string name="achievement_wheelchair_solved_X">"Вы решили %d квестов для помощи передвигающимся на инвалидных колясках!"</string>
+    <string name="achievement_postman_title">"Почтальон"</string>
+    <string name="achievement_postman_solved_X">"Вы помогли уточнить %d адресов! Эти данные необходимы не только почтальонам, но и системам навигации!"</string>
+    <string name="achievement_building_title">"Высотка"</string>
+    <string name="achievement_building_solved_X">"Вы решили %d квестов про здания. Обратите внимание, что мы спрашиваем про номер дома только для зданий с известным типом."</string>
+    <string name="achievement_blind_title">"Шестое чувство"</string>
+    <string name="achievement_blind_solved_X">"Вы решили %d квестов для помощи людям с ограничениями по зрению."</string>
+    <string name="achievement_pedestrian_title">"Бегун"</string>
+    <string name="achievement_pedestrian_solved_X">"Вы решили %d квестов для помощи людям, передвигающимся на своих двоих!"</string>
+    <string name="achievement_veg_title">"Друг животных"</string>
+    <string name="achievement_veg_solved_X">"Вы решили %d квестов, помогающих людям на не-мясной диете."</string>
+    <string name="achievement_car_title">"В пути"</string>
+    <string name="achievement_car_solved_X">"Вы решили %d квестов, улучшающих данные об уличной инфраструктуре!"</string>
+    <string name="unread_messages_message">"У вас %d непрочитанных входящих сообщений"</string>
+    <string name="unread_messages_button">"Перейти во Входящие"</string>
+    <string name="action_about2">"О приложении"</string>
+    <string name="map_btn_menu">"Меню"</string>
+    <string name="credits_projects_contributors_title">"Проекты, сделанные для StreetComplete"</string>
 </resources>

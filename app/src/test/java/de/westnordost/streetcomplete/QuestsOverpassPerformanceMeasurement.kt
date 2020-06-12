@@ -1,13 +1,13 @@
 package de.westnordost.streetcomplete
 
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
+import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 import de.westnordost.osmapi.overpass.OverpassStatus
 import de.westnordost.osmapi.overpass.OverpassStatusParser
 import de.westnordost.osmapi.ApiRequestWriter
 import de.westnordost.osmapi.OsmConnection
 import de.westnordost.osmapi.common.errors.OsmApiException
 import de.westnordost.osmapi.map.data.BoundingBox
-import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.quests.QuestModule
 import java.io.OutputStream
 import java.lang.Thread.sleep
@@ -18,7 +18,7 @@ fun main() {
 
     val overpassMapDataDao = TestOverpassMapDataDao()
 
-    val overpassMock: OverpassMapDataAndGeometryDao = mock()
+    val overpassMock: OverpassMapDataAndGeometryApi = mock()
     on(overpassMock.query(any(), any())).then { invocation ->
         overpassMapDataDao.get(invocation.getArgument(0) as String)
         true

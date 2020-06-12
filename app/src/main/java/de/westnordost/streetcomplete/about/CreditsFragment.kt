@@ -11,22 +11,18 @@ import android.widget.TextView
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.getYamlObject
+import kotlinx.android.synthetic.main.fragment_credits.*
 import org.sufficientlysecure.htmltextview.HtmlTextView
 
-class CreditsFragment : Fragment() {
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-        inflater.inflate(R.layout.fragment_credits, container, false)
+/** Shows the credits of this app */
+class CreditsFragment : Fragment(R.layout.fragment_credits) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val contributorCredits = view.findViewById<LinearLayout>(R.id.contributorCredits)
-        for (contributor in readContributors()) {
-            val textView = TextView(activity)
-            textView.text = contributor
-            contributorCredits.addView(textView, LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT))
-        }
+        addContributorsTo(readMainContributors(), mainCredits)
+        addContributorsTo(readProjectsContributors(), projectsCredits)
+        addContributorsTo(readCodeContributors(), codeCredits)
+        addContributorsTo(readArtContributors(), artCredits)
 
-        val translationCredits = view.findViewById<LinearLayout>(R.id.translationCredits)
         val inflater = LayoutInflater.from(view.context)
         for ((language, translators) in readTranslators()) {
             val item = inflater.inflate(R.layout.row_credits_translators, translationCredits, false)
@@ -46,8 +42,22 @@ class CreditsFragment : Fragment() {
         activity?.setTitle(R.string.about_title_authors)
     }
 
-    private fun readContributors() =
-        resources.getYamlObject<List<String>>(R.raw.credits_contributors) + getString(R.string.credits_and_more)
+    private fun addContributorsTo(contributors: List<String>, view: ViewGroup) {
+        val items = contributors.map { "<li>$it</li>" }.joinToString("")
+        val textView = HtmlTextView(activity)
+        textView.setTextAppearance(activity, R.style.TextAppearance_Body)
+        textView.setHtml("<ul>$items</ul>")
+        view.addView(textView, LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT))
+    }
+
+    private fun readMainContributors() = resources.getYamlObject<List<String>>(R.raw.credits_main)
+
+    private fun readProjectsContributors() = resources.getYamlObject<List<String>>(R.raw.credits_projects)
+
+    private fun readCodeContributors() =
+        resources.getYamlObject<List<String>>(R.raw.credits_code) + getString(R.string.credits_and_more)
+
+    private fun readArtContributors() = resources.getYamlObject<List<String>>(R.raw.credits_art)
 
     private fun readTranslators() =
         resources.getYamlObject<LinkedHashMap<String, String>>(R.raw.credits_translations)

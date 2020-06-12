@@ -2,15 +2,11 @@
 <resources>
     <string name="action_settings">"Ρυθμίσεις"</string>
     <string name="oauth_communication_error">"Αδύνατη η πρόσβαση στον διακομιστή της εξουσιοδότησης"</string>
-    <string name="loading">"Φόρτωση"</string>
     <string name="retry">"Επαναπροσπάθεια"</string>
-    <string name="oauth_cancelled">"Η εξουσιοδότηση ακυρώθηκε"</string>
     <string name="oauth_failed_permissions">"Η εξουσιοδότηση απέτυχε: Πρέπει να παραχωρηθούν όλες οι καταχωρημένες άδειες"</string>
     <string name="title_activity_settings">"Ρυθμίσεις"</string>
     <string name="pref_category_communication">"Επικοινωνία"</string>
     <string name="pref_category_display">"Απεικόνιση"</string>
-    <string name="pref_title_authorization">"Εξουσιοδότηση πρόσβασης στο OSM"</string>
-    <string name="pref_title_not_authorized_summary">"Χωρίς εξουσιοδότηση ακόμα"</string>
     <string name="pref_tilecache_size_summary">"%d ΜΒ"</string>
     <string name="pref_tilecache_size_message">"Ο χώρος σε megabytes είναι δεσμευμένος σε εξωτερικό σκληρό δίσκο για την αποθήκευση σε κρυφή μνήμη πλακιδίων του χάρτη"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Εμφάνιση όλων των σημειώσεων"</string>
@@ -61,10 +57,8 @@
     <string name="download_area_too_big">"Παρακαλούμε μεγεθύνετε επιπλέον"</string>
     <string name="confirmation_cancel_prev_download_title">"Σταμάτημα της τρέχουσας αναζήτησης και αντ' αυτού σάρωση εδώ;"</string>
     <string name="notification_downloading">"Σάρωση για αναζητήσεις..."</string>
-    <string name="now_downloading_toast">"Σάρωση για περισσότερες αναζητήσεις..."</string>
     <string name="turn_on_location_request">"Η τοποθεσία είναι κλειστή. Άνοιγμα των Ρυθμίσεων για ενεργοποίηση τώρα;"</string>
     <string name="no_location_permission_warning">"Η τοποθεσία σας είναι απαραίτητη για την σάρωση αναζητήσεων στην περιοχή σας."</string>
-    <string name="action_about">"Σχετικά με το StreetComplete"</string>
     <string name="about_title_authors">"Ευχαριστίες"</string>
 
     <!-- Fuzzy -->
@@ -341,7 +335,6 @@
     <string name="quest_way_lit_road_title">"Είναι αυτό το άνοιγμα του δρόμου φωτισμένο;"</string>
     <string name="quest_way_lit_automatic">"Χρησιμοποιεί αισθητήρα κίνησης"</string>
     <string name="quest_way_lit_24_7">"Είναι φωτισμένο νύχτα και μέρα"</string>
-    <string name="pref_title_authorized_username_summary">"Εγκεκριμένος λογαριασμός: %s"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Δεν είναι δυνατή η σάρωση εδώ. Προσπαθήστε να μεγενθύνετε κι άλλο ή γύρτε τον χάρτη λιγότερο."</string>
     <string name="quest_crossing_type_title">"Τι είδους διασταύρωση είναι αυτή;"</string>
     <string name="quest_crossing_type_signals">"Διασταύρωση με φανάρια"</string>
@@ -372,13 +365,11 @@
 "</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"επίπεδα στην οροφή"</string>
     <string name="quest_buildingLevels_levelsLabel2">"κανονικά επίπεδα (χωρίς να υπολογίζουμε την οροφή)"</string>
-    <string name="pref_title_authorized_summary">"Εξουσιοδοτημένο"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingLevels_answer_multipleLevels">"διαφέρει ανά τμήμα κτιρίου"</string>
     <string name="quest_buildingLevels_answer_description">"Σε αυτή την περίπτωση, απλώς εισάγετε τις τιμές του υψηλότερου μέρους του κτιρίου."</string>
     <string name="unglue_hint">"Πατήστε για απεμπλοκή προβολής από την τοποθεσία"</string>
-    <string name="pref_title_not_authorized_summary2">"Συνδεθείτε από το πρόγραμμα περιήγησης ιστού για να εξουσιοδοτήσετε"</string>
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Είναι οι λωρίδες αυτού του δρόμου χωρισμένες φυσικά (π.χ. μέσα από ένα φράγμα); Το προεπιλεγμένο όριο ταχύτητας εξαρτάται από το αν αυτό συμβαίνει ή όχι."</string>
     <string name="about_category_feedback">"Αναφορά"</string>
     <string name="quest_leave_new_note_photo">"Επισύναψη φωτογραφίας"</string>
@@ -671,11 +662,6 @@
     <string name="quest_leave_new_note_photos_are_useful">"Η προσθήκη μιας φωτογραφίας θα κάνει τη σημείωση πολύ πιο χρήσιμη."</string>
     <string name="quest_postboxCollectionTimes_name_title">"Ποιοί είναι οι χρόνοι συλλογής αυτού του %s γραμματοκιβωτίου;"</string>
     <string name="create_new_note_hint">"Καλύτερα γράψτε τη σημείωση στην τοπική γλώσσα ή αλλιώς στην Αγγλική."</string>
-    <string name="about_contributing">"Οι απαντήσεις σας βελτιώνουν άμεσα το OpenStreetMap. Τα εισερχόμενα δεδομένα είναι ανοιχτά, ο καθένας μπορεί να τα χρησιμοποιήσει. Πολλά μεγάλα έργα τα χρησιμοποιούν ήδη."</string>
-    <string name="about_missing_stars">"Επί του παρόντος, ο μετρητής αστεριών δεν είναι κοινόχρηστος σε όλες τις συσκευές, αλλά οι απαντήσεις προστίθενται απευθείας στη βάση δεδομένων του OpenStreetMap."</string>
-    <string name="how_to_get_stars">"Επιλέξτε έναν από τους δείκτες στο χάρτη και απαντήστε στην ερώτηση. Με αυτόν τον τρόπο θα βελτιώσετε τα δεδομένα του OpenStreetMap και θα λάβετε αστέρια. Εάν δεν εμφανίζονται δείκτες, ίσως χρειαστεί να σμικρύνετε τον χάρτη."</string>
-    <string name="oauth_remove_authorization_dialog_message">"Θέλετε να καταργήσετε την εξουσιοδότηση του λογαριασμό σας στο OSM;"</string>
-    <string name="oauth_remove_authorization_confirmation">"Αφαίρεση"</string>
     <string name="quest_leafType_title">"Τα δέντρα εδώ έχουν βελόνες ή φύλλα;"</string>
     <string name="quest_leaf_type_needles">"Βελόνες"</string>
     <string name="quest_leaf_type_broadleaved">"Πλατύφυλλα"</string>
@@ -696,7 +682,6 @@
     <string name="quest_maxweight_unusualInput_confirmation_description">"Αυτό το βάρος φαίνεται παράλογο. Είστε βέβαιος ότι είναι σωστό;"</string>
     <string name="quest_maxweight_answer_other_sign">"Το σήμα φαίνεται διαφορετικό..."</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"Θα θέλατε να αφήσετε μια σημείωση; Μια σημείωση με μια φωτογραφία θα επιτρέψει σε άλλους χαρτογράφους να την προσέξουν."</string>
-    <string name="confirmation_authorize_now_note">"Μπορείτε να το κάνετε αργότερα αυτό στην οθόνη ρυθμίσεων."</string>
     <string name="quest_generalFee_title">"Υπάρχει κόστος για την είσοδο %s?"</string>
     <string name="quest_laundrySelfService_title">"Λειτουργεί αυτό το πλυντήριο με αυτοεξυπηρέτηση;"</string>
     <string name="quest_handrail_title">"Έχουν αυτά τα σκαλιά κουπαστή;"</string>

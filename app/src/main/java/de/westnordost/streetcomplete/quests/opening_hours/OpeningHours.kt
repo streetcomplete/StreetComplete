@@ -1,8 +1,7 @@
 package de.westnordost.streetcomplete.quests.opening_hours
 
-import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmfeatures.FeatureDictionary
-import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.ktx.containsAny
 import java.util.concurrent.FutureTask
 

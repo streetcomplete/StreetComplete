@@ -2,15 +2,11 @@
 <resources>
     <string name="action_settings">"Ayarlar"</string>
     <string name="oauth_communication_error">"Yetkilendirme sunucusuna erişilemiyor"</string>
-    <string name="loading">"Yükleniyor"</string>
     <string name="retry">"Yeniden dene"</string>
-    <string name="oauth_cancelled">"Yetkilendirme iptal edildi"</string>
     <string name="oauth_failed_permissions">"Yetkilendirme başarısız oldu: Listelenen tüm izinlerin verilmesi gerekiyor"</string>
     <string name="title_activity_settings">"Ayarlar"</string>
     <string name="pref_category_communication">"İletişim"</string>
     <string name="pref_category_display">"Görüntüle"</string>
-    <string name="pref_title_authorization">"OSM erişimine izin ver"</string>
-    <string name="pref_title_not_authorized_summary">"Henüz yetkili değil"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
     <string name="pref_tilecache_size_message">"Harita döşemelerini önbelleğe almak için harici depolamaya ayrılan megabayt alan"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Tüm notları göster"</string>
@@ -63,10 +59,8 @@
     <string name="download_area_too_big">"Lütfen yakınlaştırın."</string>
     <string name="confirmation_cancel_prev_download_title">"Geçerli arama durdurulup burada tarama yapılsın mı?"</string>
     <string name="notification_downloading">"Görevler aranıyor…"</string>
-    <string name="now_downloading_toast">"Daha fazla görev için taranıyor…"</string>
     <string name="turn_on_location_request">"Yer bulma kapalı. Açmak için Ayarlar'a gidilsin mi?"</string>
     <string name="no_location_permission_warning">"Çevrenizdeki görevleri taramak için konumunuz gerekiyor."</string>
-    <string name="action_about">"StreetComplete Hakkında"</string>
 
     <!-- Fuzzy -->
     <string name="about_title_authors">"Yazarlar"</string>
@@ -172,6 +166,7 @@ Haritayı görüntülemek için vektör karoları, anonim olan &lt;a href=\"http
     <string name="quest_streetLanes_noLanes_estWidth">"Lütfen bu yolda kaç araba birbirine uyacağını tahmin edin."</string>
     <string name="quest_oneway_title">"Burası tek yönlü cadde mi?"</string>
     <string name="quest_address_title">"Bu binanın kapı numarası kaç?"</string>
+    <string name="store_listing_short_description">"OpenStreetMap anketör"</string>
     <string name="store_listing_full_description">"StreetComplete ile OpenStreetMap'in geliştirilmesine yardım edin!
 
 Bu uygulama, çevrenizdeki tamamlanmamış ve genişletilebilir verileri bulur ve bir harita üzerinde işaretleyiciler olarak görüntüler. Her biri, sitedeki bilgiyi tamamlamak için basit bir soruyu yanıtlayarak çözülebilir.
@@ -377,7 +372,6 @@ Tüm cadde boyunca vurgulanan bölüm için geçerli hiçbir işaret yoksa, vars
     <string name="quest_way_lit_road_title">"Yolun bu bölümü aydınlatılmış mı?"</string>
     <string name="quest_way_lit_automatic">"Harekete duyarlı"</string>
     <string name="quest_way_lit_24_7">"Gece gündüz yanıyor"</string>
-    <string name="pref_title_authorized_username_summary">"İzin verilen hesap: %s"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Burada tarama yapamıyorum.  Daha fazla yakınlaştırmayı deneyin veya haritayı daha az eğin."</string>
     <string name="quest_crossing_type_title">"Bu ne tür bir geçiş?"</string>
     <string name="quest_crossing_type_signals">"Trafik ışıklı geçiş"</string>
@@ -404,13 +398,12 @@ Tüm cadde boyunca vurgulanan bölüm için geçerli hiçbir işaret yoksa, vars
     <string name="quest_address_house_name_label">"Ev ismi:"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"Çatı katı sayısı"</string>
     <string name="quest_buildingLevels_levelsLabel2">"Kat sayısı (çatı katı hariç)"</string>
-    <string name="pref_title_authorized_summary">"İzin verildi"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingLevels_answer_multipleLevels">"Binanın bölümüne göre değişiyor"</string>
     <string name="quest_buildingLevels_answer_description">"Bu durumda en yüksek bölümün değerlerini girin"</string>
     <string name="unglue_hint">"Görüntüyü konumdan ayırmak için dokun"</string>
-    <string name="pref_title_not_authorized_summary2">"İzin vermek için tarayıcınızdan giriş yapın"</string>
+    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Buradaki taşıt yollara fiziksel olarak birbirinden ayrı mi (Bariyer vb. aracılıgı ile)? Varsayılan azami hiz buna göre hesaplanmaktadır. "</string>
     <string name="about_category_feedback">"Geri bildirim"</string>
     <string name="quest_leave_new_note_photo">"Fotoğraf ekle"</string>
     <string name="quest_leave_new_note_photo_delete_title">"Bu resmi silmek istiyor musun?"</string>
@@ -460,6 +453,7 @@ Tüm cadde boyunca vurgulanan bölüm için geçerli hiçbir işaret yoksa, vars
     <string name="map_btn_create_note">"Yeni not oluştur"</string>
     <string name="create_new_note_unprecise">"Bir not oluşturmak için yakınlaştır"</string>
     <string name="create_new_note_description">"Diğer haritacıların burada bir sorundan haberdar olmalarını sağlamak için bir not bırakabilirsiniz.  Haritayı hareket ettirerek notun konumunu ayarlayın:"</string>
+    <string name="pref_title_quests_invalidation_summary">"Eger bazi maceralarin tarihinin gecmis oldugunu duşunuyorsan ise yararlİ"</string>
     <string name="invalidate_confirmation">"Geçersiz"</string>
     <string name="invalidation_dialog_message">"Önbelleğin geçersiz kılınması, görevlerin bir sonraki indirilmesinde güncellenmelerine neden olur.  Görev önbelleği bir hafta sonra otomatik olarak geçersiz kılınır ve çözdüğünüz bir görev daha önce başkası tarafından cevaplandığında ortaya çıkar."</string>
     <string name="quest_generic_looks_like_this">"Genellikle şöyle gözükür:"</string>
@@ -475,6 +469,7 @@ Tüm cadde boyunca vurgulanan bölüm için geçerli hiçbir işaret yoksa, vars
     <string name="quest_busStopShelter_tram_title">"Bu tramvay durağında bir sığınak var mı?"</string>
     <string name="quest_bench_backrest_title">"Bu bankın sırtlığı var mı?"</string>
     <string name="quest_bench_answer_picnic_table">"Piknik masası var mı?"</string>
+    <string name="quest_religion_for_place_of_worship_title">"Bu mekanda hangi din uygulanmaktadır?"</string>
     <string name="quest_religion_christian">"Hristiyanlık"</string>
     <string name="quest_religion_muslim">"İslam"</string>
     <string name="quest_religion_hindu">"Hinduizm"</string>
@@ -507,14 +502,20 @@ Tüm cadde boyunca vurgulanan bölüm için geçerli hiçbir işaret yoksa, vars
     <string name="quest_bicycle_parking_type_wheelbender">"Jant Çamurluk (sadece jantları destekler)"</string>
     <string name="quest_bicycle_parking_type_locker">"Kilitlenebilir"</string>
     <string name="quest_bicycle_parking_type_building">"Yapı"</string>
+    <string name="quest_bicycle_parking_type_title">"Burasi ne tarz bir bisiklet park alani ?"</string>
+    <string name="quest_postboxCollectionTimes_title">"Bu posta kutusunun, posta toplama sureleri ne zaman?"</string>
     <string name="quest_collectionTimes_add_times">"Toplama Zamanı Ekle"</string>
     <string name="quest_collectionTimes_answer_no_times_specified">"Zaman belirtilmedi"</string>
     <string name="quest_construction_road_title">"Bu yol tamamlandımı?"</string>
     <string name="quest_construction_cycleway_title">"Bu bisiklet yolu tamamlandı mı?"</string>
+    <string name="quest_construction_footway_title">"Bu kaldırım tamamlanmış mı?
+"</string>
     <string name="quest_construction_generic_title">"Bu yol tamamlandı mı?"</string>
     <string name="quest_construction_building_title">"Bu bina tamamlandı mı?"</string>
+    <string name="quest_toiletAvailability_rest_area_title">"Bu dinlenme yerinde tuvalet bulunmakta midir?"</string>
     <string name="privacy_html_tileserver">"&lt;p&gt; Haritayı görüntülemek için, vektör döşemeleri &lt;a href=\"https://tiles.map-data.de\"&gt; map-data.de &lt;/a&gt; adresinden alınır.  Hizmet, isimsiz istatistikler ve sorunları tespit etmek için döşeme isteklerini günlüğe kaydeder ancak birkaç gün sonra günlükleri siler. &lt;/p&gt;"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"Hayır (not bırak)"</string>
+    <string name="quest_buildingType_title2">"Bu bina ne olarak inşa edilmişti ?"</string>
     <string name="quest_generic_item_invalid_value">"Lütfen daha spesifik bir değer seçin."</string>
     <string name="quest_buildingType_answer_multiple_types_description">"Basitçe bu binanın ana amacını seçin.  Örneğin.  Zemin katında, üstünde daire bulunan bir dükkan varsa, hala esas olarak bir apartman binasıdır."</string>
     <string name="quest_buildingType_answer_construction_site">"Hala inşa ediliyor"</string>
@@ -525,8 +526,11 @@ Tüm cadde boyunca vurgulanan bölüm için geçerli hiçbir işaret yoksa, vars
     <string name="quest_buildingType_apartments">"Apartman"</string>
     <string name="quest_buildingType_detached">"Müstakil ev"</string>
     <string name="quest_buildingType_semi_detached">"Yarı müstakil ev"</string>
+    <string name="quest_buildingType_terrace">"Şehir evi"</string>
     <string name="quest_buildingType_hotel">"Hotel"</string>
     <string name="quest_buildingType_dormitory">"Yurt"</string>
+    <string name="quest_buildingType_houseboat">"Yüzer ev"</string>
+    <string name="quest_buildingType_bungalow">"Bungalow"</string>
     <string name="quest_buildingType_bungalow_description">"küçük müstakil ev (yazlık ev, yazlık,…)"</string>
     <string name="quest_buildingType_commercial">"Ticari bina"</string>
     <string name="quest_buildingType_commercial_generic_description">"insanların çalıştığı veya başka ticari faaliyetlerde bulundukları bina"</string>
@@ -578,8 +582,10 @@ Tüm cadde boyunca vurgulanan bölüm için geçerli hiçbir işaret yoksa, vars
     <string name="quest_buildingType_sports_centre">"Spor Merkezi
 "</string>
     <string name="quest_buildingType_toilets">"Tuvaletler"</string>
+    <string name="quest_maxspeed_sign_question">"Hiz sinirini ne belirlemektedir ?"</string>
     <string name="notification_channel_download">"İndir"</string>
     <string name="quest_playground_access_title">"Bu oyun alanı halka açık mı?"</string>
+    <string name="quest_segregated_title">"Yaya kaldirimi ve bisiklet nasil ayrilmaktadir?"</string>
     <string name="dialog_tutorial_upload">"Değişikliklerinizi manuel olarak yüklemek için, bunun gibi görünen araç çubuğundaki düğmeyi kullanın."</string>
     <string name="quest_segregated_mixed">"Bisikletçiler ve yayalar aynı alanı paylaşıyor"</string>
     <string name="quest_maxheight_title">"Burada yükseklik sınırı nedir?"</string>
@@ -614,10 +620,14 @@ Tüm cadde boyunca vurgulanan bölüm için geçerli hiçbir işaret yoksa, vars
     <string name="quest_motorcycleParkingCoveredStatus_title">"Bu motosiklet park yeri kapalı mı (yağmurdan korunuyor)?"</string>
     <string name="default_disabled_msg_maxspeed">"Bu görev türü varsayılan olarak devre dışı bırakılmıştır, çünkü yalnızca vurgulanan bölümü değil, tüm caddeyi hız sınırı işaretleri için kontrol etmeniz gerekir.  Bu bazen sadece tek bir görevi çözmek için zor olabilir."</string>
     <string name="pref_title_quests_restore_hidden">"Gizli görevleri geri yükle"</string>
+
+    <!-- as in: "Where is the metro station?" - "It is underground" -->
+    <string name="underground">"Yer alti"</string>
     <string name="quest_sidewalk_value_yes">"Kaldırım var"</string>
     <string name="quest_sidewalk_value_no">"Kaldırım yok"</string>
     <string name="quest_buildingType_title">"Bu nasıl bir bina?"</string>
     <string name="theme_automatic">"Otomatik"</string>
+    <string name="theme_light">"Işık"</string>
     <string name="theme_dark">"Koyu"</string>
     <string name="theme_system_default">"Varsayılan"</string>
     <string name="quest_placeName_title_name">"Bu yerin adı ne?  (%s)"</string>
@@ -633,10 +643,10 @@ Tüm cadde boyunca vurgulanan bölüm için geçerli hiçbir işaret yoksa, vars
     <string name="quest_leave_new_note_photos_are_useful">"Bir fotoğraf eklemek notu çok daha kullanışlı hale getirecektir."</string>
     <string name="quest_postboxCollectionTimes_name_title">"%s posta kutusunun toplanma zamanı nedir?"</string>
     <string name="create_new_note_hint">"Notu en iyi konuşulan yerel dilde veya İngilizce yazınız."</string>
+    <string name="quest_leaf_type_mixed">"Her ikisi de mevcuttur. "</string>
     <string name="quest_maxweight_answer_noSign">"İşaret yok"</string>
     <string name="quest_maxweight_answer_other_sign">"İşaret farklı görünüyor…"</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"Not bırakmak ister misiniz?  Fotoğraflı bir not, diğer haritacıların onu görmesini sağlar."</string>
-    <string name="confirmation_authorize_now_note">"Bu daha sonra ayarlar ekranından yapılabilir."</string>
     <string name="quest_generalFee_title">"%s giriş ücretli mi?"</string>
     <string name="quest_laundrySelfService_title">"Bu çamaşırhane self servis mi?"</string>
     <string name="quest_handrail_title">"Bu basamaklarda parmaklık var mı?"</string>

@@ -33,8 +33,8 @@ android {
         applicationId "de.westnordost.streetcomplete"
         minSdkVersion 17
         targetSdkVersion 28
-        versionCode 1801
-        versionName "18.0"
+        versionCode 1904
+        versionName "19.2"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField "String", "MAPZEN_API_KEY", MAPZEN_API_KEY
     }
@@ -111,15 +111,16 @@ dependencies {
     implementation 'com.google.android.material:material:1.1.0'
     implementation 'androidx.core:core:1.2.0'
     implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation 'androidx.annotation:annotation:1.1.0'
-    implementation 'androidx.fragment:fragment:1.2.2'
+    implementation 'androidx.fragment:fragment:1.2.4'
     implementation 'androidx.preference:preference:1.1.0'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'androidx.viewpager:viewpager:1.0.0'
     implementation 'androidx.localbroadcastmanager:localbroadcastmanager:1.0.0'
 
     // photos
-    implementation 'androidx.exifinterface:exifinterface:1.1.0'
+    implementation 'androidx.exifinterface:exifinterface:1.2.0'
 
     // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -133,7 +134,7 @@ dependencies {
     // finding in which country we are for country-specific logic
     implementation 'de.westnordost:countryboundaries:1.5'
     // finding a name for a feature without a name tag
-    implementation 'de.westnordost:osmfeatures-android:1.0'
+    implementation 'de.westnordost:osmfeatures-android:1.1'
     // talking with the OSM API
     implementation 'de.westnordost:osmapi-overpass:1.0'
     implementation 'de.westnordost:osmapi-map:1.1'
@@ -142,10 +143,13 @@ dependencies {
     implementation 'de.westnordost:osmapi-user:1.0'
 
     // widgets
+    implementation "androidx.viewpager2:viewpager2:1.0.0"
     implementation 'me.grantland:autofittextview:0.2.1'
     implementation 'org.sufficientlysecure:html-textview:3.9'
     implementation 'com.duolingo.open:rtl-viewpager:1.0.2'
-    implementation 'androidx.exifinterface:exifinterface:1.1.0'
+
+    // box2d view
+    implementation 'org.jbox2d:jbox2d-library:2.2.1.1'
 
     // serialization
     implementation 'com.esotericsoftware:kryo:4.0.2'
@@ -173,7 +177,7 @@ import groovy.json.JsonOutput
 task downloadPresets {
     doLast {
         def targetDir = "app/src/main/assets/osmfeatures"
-        def presetsUrl = new URL("https://raw.githubusercontent.com/openstreetmap/iD/master/data/presets/presets.json")
+        def presetsUrl = new URL("https://raw.githubusercontent.com/openstreetmap/iD/develop/data/presets/presets.json")
         def contentsUrl = new URL("https://api.github.com/repos/openstreetmap/iD/contents/dist/locales")
         new File("$targetDir/presets.json").withOutputStream { it << presetsUrl.openStream() }
 

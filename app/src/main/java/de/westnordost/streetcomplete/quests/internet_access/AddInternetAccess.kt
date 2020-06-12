@@ -1,11 +1,11 @@
 package de.westnordost.streetcomplete.quests.internet_access
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
+import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 
-class AddInternetAccess(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<String>(o) {
+class AddInternetAccess(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<String>(o) {
 
     override val tagFilters = """
         nodes, ways, relations with
@@ -16,6 +16,7 @@ class AddInternetAccess(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestT
         and !internet_access and !wifi and name
     """
     override val commitMessage = "Add internet access"
+    override val wikiLink = "Key:internet_access"
     override val icon = R.drawable.ic_quest_wifi
     override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
 

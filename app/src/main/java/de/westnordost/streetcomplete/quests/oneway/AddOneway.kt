@@ -7,19 +7,19 @@ import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.map.data.Way
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
-import de.westnordost.streetcomplete.data.osm.tql.FiltersParser
+import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
+import de.westnordost.streetcomplete.data.tagfilters.FiltersParser
 import de.westnordost.streetcomplete.quests.oneway.data.TrafficFlowSegment
-import de.westnordost.streetcomplete.quests.oneway.data.TrafficFlowSegmentsDao
+import de.westnordost.streetcomplete.quests.oneway.data.TrafficFlowSegmentsApi
 import de.westnordost.streetcomplete.quests.oneway.data.WayTrafficFlowDao
 
 class AddOneway(
-    private val overpassMapDataDao: OverpassMapDataAndGeometryDao,
-    private val trafficFlowSegmentsDao: TrafficFlowSegmentsDao,
+    private val overpassMapDataApi: OverpassMapDataAndGeometryApi,
+    private val trafficFlowSegmentsApi: TrafficFlowSegmentsApi,
     private val db: WayTrafficFlowDao
 ) : OsmElementQuestType<OnewayAnswer> {
 
@@ -31,6 +31,7 @@ class AddOneway(
 
     override val commitMessage =
         "Add whether this road is a one-way road, this road was marked as likely oneway by improveosm.org"
+    override val wikiLink = "Key:oneway"
     override val icon = R.drawable.ic_quest_oneway
     override val hasMarkersAtEnds = true
     override val isSplitWayEnabled = true
@@ -45,7 +46,7 @@ class AddOneway(
     override fun download(bbox: BoundingBox, handler: (element: Element, geometry: ElementGeometry?) -> Unit): Boolean {
         val trafficDirectionMap: Map<Long, List<TrafficFlowSegment>>
         try {
-            trafficDirectionMap = trafficFlowSegmentsDao.get(bbox)
+            trafficDirectionMap = trafficFlowSegmentsApi.get(bbox)
         } catch (e: Exception) {
             Log.e("AddOneway", "Unable to download traffic metadata", e)
             return false
@@ -54,7 +55,7 @@ class AddOneway(
         if (trafficDirectionMap.isEmpty()) return true
 
         val query = "way(id:${trafficDirectionMap.keys.joinToString(",")}); out meta geom;"
-        overpassMapDataDao.query(query) { element, geometry ->
+        overpassMapDataApi.query(query) { element, geometry ->
             fun checkValidAndHandle(element: Element, geometry: ElementGeometry?) {
                 if (geometry == null) return
                 if (geometry !is ElementPolylinesGeometry) return

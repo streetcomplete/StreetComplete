@@ -23,10 +23,8 @@
       android:fillColor="#c08268"/>
   <path
       android:pathData="M20,92 L60,56 104,92"
-      android:strokeLineJoin="miter"
       android:strokeWidth="12"
-      android:strokeColor="#c84747"
-      android:strokeLineCap="butt"/>
+      android:strokeColor="#c84747"/>
   <path
       android:pathData="M104,64h16v16h-16zM104,100h16v16h-16z"
       android:fillColor="#88706b"/>

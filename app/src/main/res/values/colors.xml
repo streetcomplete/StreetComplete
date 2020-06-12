@@ -4,18 +4,31 @@
     <color name="primary_dark">#3939a3</color>
     <color name="accent">#ff6600</color>
 
+    <color name="text_on_primary">#fff</color>
+
     <color name="selection">#66ff6600</color>
     <color name="selection_frame">#bbff6600</color>
 
     <color name="location_dot">#536dfe</color>
+    <color name="quest_selection_frame">#536dfe</color>
     <color name="location_accuracy_fill">#22536dfe</color>
     <color name="location_accuracy_stroke">#88536dfe</color>
+
+    <color name="background">#fff</color>
+    <color name="background_transparent">#0fff</color>
+
+    <color name="indicator_dot">#888</color>
+    <color name="indicator_dot_selected">@color/accent</color>
+
+    <color name="hint_text">#666</color>
 
     <color name="disabled_text">#6666</color>
 
     <color name="button_white">#fff</color>
 
     <color name="greyed_out">#66999999</color>
+
+    <color name="dialog_shadow">#99000000</color>
 
     <color name="divider">#66999999</color>
 

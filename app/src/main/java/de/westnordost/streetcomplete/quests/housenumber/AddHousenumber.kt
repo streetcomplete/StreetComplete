@@ -7,28 +7,32 @@ import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
-import de.westnordost.streetcomplete.data.osm.*
-import de.westnordost.streetcomplete.data.osm.tql.DEFAULT_MAX_QUESTS
-import de.westnordost.streetcomplete.data.osm.tql.toGlobalOverpassBBox
-import de.westnordost.streetcomplete.data.osm.tql.toOverpassBboxFilter
+import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolygonsGeometry
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
+import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
+import de.westnordost.streetcomplete.data.tagfilters.DEFAULT_MAX_QUESTS
+import de.westnordost.streetcomplete.data.tagfilters.toGlobalOverpassBBox
+import de.westnordost.streetcomplete.data.tagfilters.toOverpassBboxFilter
 import de.westnordost.streetcomplete.util.FlattenIterable
 import de.westnordost.streetcomplete.util.LatLonRaster
 import de.westnordost.streetcomplete.util.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.isInMultipolygon
 
-class AddHousenumber(private val overpass: OverpassMapDataAndGeometryDao) : OsmElementQuestType<HousenumberAnswer> {
+class AddHousenumber(private val overpass: OverpassMapDataAndGeometryApi) : OsmElementQuestType<HousenumberAnswer> {
 
     override val commitMessage = "Add housenumbers"
+    override val wikiLink = "Key:addr"
     override val icon = R.drawable.ic_quest_housenumber
 
     // See overview here: https://ent8r.github.io/blacklistr/?streetcomplete=housenumber/AddHousenumber.kt
     override val enabledInCountries = AllCountriesExcept(
-        "NL", // https://forum.openstreetmap.org/viewtopic.php?id=60356
-        "DK", // https://lists.openstreetmap.org/pipermail/talk-dk/2017-November/004898.html
-        "NO", // https://forum.openstreetmap.org/viewtopic.php?id=60357
-        "CZ", // https://lists.openstreetmap.org/pipermail/talk-cz/2017-November/017901.html
-        "IT"  // https://lists.openstreetmap.org/pipermail/talk-it/2018-July/063712.html
+            "NL", // https://forum.openstreetmap.org/viewtopic.php?id=60356
+            "DK", // https://lists.openstreetmap.org/pipermail/talk-dk/2017-November/004898.html
+            "NO", // https://forum.openstreetmap.org/viewtopic.php?id=60357
+            "CZ", // https://lists.openstreetmap.org/pipermail/talk-cz/2017-November/017901.html
+            "IT"  // https://lists.openstreetmap.org/pipermail/talk-it/2018-July/063712.html
     )
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_address_title

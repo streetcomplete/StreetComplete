@@ -17,8 +17,8 @@ import javax.inject.Inject
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.*
-import de.westnordost.streetcomplete.data.osm.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.data.quest.*
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
 import de.westnordost.streetcomplete.view.ListAdapter
 import kotlinx.android.synthetic.main.fragment_show_quest_forms.*
@@ -26,6 +26,7 @@ import kotlinx.android.synthetic.main.row_quest_display.view.*
 import kotlinx.android.synthetic.main.toolbar.*
 import java.util.*
 
+/** activity only used in debug, to show all the different forms for the different quests. */
 class ShowQuestFormsActivity : AppCompatActivity(), AbstractQuestAnswerFragment.Listener {
 
     @Inject internal lateinit var questTypeRegistry: QuestTypeRegistry
@@ -97,7 +98,7 @@ class ShowQuestFormsActivity : AppCompatActivity(), AbstractQuestAnswerFragment.
         val quest = object : Quest {
             override var id: Long? = 1L
             override val center = firstPos
-            override val markerLocations = arrayOf<LatLon>(firstPos)
+            override val markerLocations = listOf<LatLon>(firstPos)
             override val geometry = elementGeometry
             override val type = questType
             override var status = QuestStatus.NEW

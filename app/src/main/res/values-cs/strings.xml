@@ -2,15 +2,11 @@
 <resources>
     <string name="action_settings">"Nastavení"</string>
     <string name="oauth_communication_error">"Nepodařilo se připojit k autorizačnímu serveru"</string>
-    <string name="loading">"Načítání"</string>
     <string name="retry">"Zkusit znovu"</string>
-    <string name="oauth_cancelled">"Autorizace zrušena"</string>
     <string name="oauth_failed_permissions">"Autorizace se nezdařila: Všechna uvedená oprávnění musí být udělena"</string>
     <string name="title_activity_settings">"Nastavení"</string>
     <string name="pref_category_communication">"Komunikace"</string>
     <string name="pref_category_display">"Zobrazení"</string>
-    <string name="pref_title_authorization">"Autorizovat přístup k OSM"</string>
-    <string name="pref_title_not_authorized_summary">"Zatím neautorizováno"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
     <string name="pref_tilecache_size_message">"Místo v megabytech vyčleněné na externím úložišti sloužící jako mezipaměť pro mapové dlaždice"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Zobrazit všechny poznámky"</string>
@@ -64,11 +60,9 @@
     <string name="upload_error">"Během nahrávání odpovědí došlo k chybě"</string>
     <string name="download_area_too_big">"Přibližte, prosím, více mapu"</string>
     <string name="confirmation_cancel_prev_download_title">"Zrušit aktuální vyhledávání a hledat místo toho zde?"</string>
-    <string name="notification_downloading">"Vyhledávám úkoly ...."</string>
-    <string name="now_downloading_toast">"Vyhledávám další úkoly .…"</string>
+    <string name="notification_downloading">"Vyhledávám úkoly..."</string>
     <string name="turn_on_location_request">"Určování polohy je vypnuté. Chcete přejít na nastavení, abyste ho mohli zapnout?"</string>
     <string name="no_location_permission_warning">"Vaše poloha se používá pro vyhledávání úkolů ve vašem okolí."</string>
-    <string name="action_about">"O StreetComplete"</string>
     <string name="about_title_authors">"Autoři"</string>
 
     <!-- Fuzzy -->
@@ -164,7 +158,7 @@ Nicméně před nahráním vašich změn aplikace zkontroluje pomocí &lt;a href
     <string name="quest_streetLanes_noLanes_estWidth">"Odhadněte, kolik průběžných jízdních pruhů je na této silnici. (V obou směrech dohromady)"</string>
     <string name="quest_oneway_title">"Je to jednosměrka?"</string>
     <string name="quest_address_title">"Jaké číslo má tato budova?"</string>
-    <string name="store_listing_short_description">"Aplikace pro OpenStreetMap průzkumníky v češtině"</string>
+    <string name="store_listing_short_description">"Aplikace pro OpenStreetMap topografy v češtině"</string>
     <string name="store_listing_full_description">"Se StreetComplete můžete pomoci vylepšit mapové podklady OpenStreetMap!
 
 Tato aplikace vyhledá data ve Vašem okolí, která nejsou kompletní, a která lze rozšířit a zobrazí je na mapě jako „úkoly“. Každý z těchto „úkolů“ lze snadno vyřešit na místě odpovědí na jednoduchou otázku a doplnit tak informace do mapy.
@@ -372,7 +366,6 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_way_lit_road_title">"Je tato část silnice osvětlena?"</string>
     <string name="quest_way_lit_automatic">"Používá detektory pohybu"</string>
     <string name="quest_way_lit_24_7">"Je osvětlena nepřetržitě"</string>
-    <string name="pref_title_authorized_username_summary">"Autorizovaný účet: %s"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"Nelze vyhledat úkoly. Zkuste mapu ještě více přiblížit nebo zkuste zmenšit naklonění."</string>
     <string name="quest_crossing_type_title">"Jaký je tento přechod?"</string>
     <string name="quest_crossing_type_signals">"Přechod řízený semaforem"</string>
@@ -401,14 +394,12 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_address_house_name_label">"Jméno budovy:"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"patra ve střeše"</string>
     <string name="quest_buildingLevels_levelsLabel2">"normální patra (bez střechy)"</string>
-    <string name="pref_title_authorized_summary">"Autorizováno"</string>
 
     <!-- Could you write example, how is this used, plese? -->
     <!-- Fuzzy -->
     <string name="quest_buildingLevels_answer_multipleLevels">"liší se podle části budovy"</string>
     <string name="quest_buildingLevels_answer_description">"V tom případě vložte hodnoty pro nejvyšší část budovy."</string>
     <string name="unglue_hint">"Klepněte pro zrušení propojení obrazovky a polohy"</string>
-    <string name="pref_title_not_authorized_summary2">"Autorizujte se přihlášením přes váš webový prohlížeč"</string>
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Jsou vozovky na této cestě fyzicky oddělené (např. svodidly)? Omezení rychlosti může být v každém směru jiné."</string>
     <string name="about_category_feedback">"Zpětná vazba"</string>
     <string name="quest_leave_new_note_photo">"Připojit fotku"</string>
@@ -484,6 +475,7 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_busStopShelter_tram_title">"Má tato tramvajová zastávka střechu?"</string>
     <string name="quest_bench_backrest_title">"Má tato lavička opěrák?"</string>
     <string name="quest_bench_answer_picnic_table">"Je to stůl pro piknik"</string>
+    <string name="quest_religion_for_place_of_worship_title">"Jaké náboženství je tu praktikováno?"</string>
     <string name="quest_religion_christian">"Křesťanství"</string>
     <string name="quest_religion_muslim">"Islám"</string>
     <string name="quest_religion_hindu">"Hinduismus"</string>
@@ -719,11 +711,6 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_leave_new_note_photos_are_useful">"Přidáním fotografie uděláte poznámku mnohem užitečnější."</string>
     <string name="quest_postboxCollectionTimes_name_title">"Kdy se tato %s poštovní schránka vybírá?"</string>
     <string name="create_new_note_hint">"Nejlepší je napsat poznámku v jazyku, kterým se tu mluví, nebo jinak v angličtině."</string>
-    <string name="about_contributing">"Vaše odpovědi přímo vylepšují OpenStreetMap. Vložená data jsou otevřená a každý je může použít. Mnoho skvělých projektů je již používá."</string>
-    <string name="about_missing_stars">"Počet hvězdiček není momentálně sdílen mezi různými zařízeními, ale odpovědi jsou přímo přidány do OpenStreetMap databáze."</string>
-    <string name="how_to_get_stars">"Vyberte jeden z bodů na mapě a odpovězte na otázku, která se pod ním nachází. Tím vylepšíte data na OpenStreetMap a dostanete hvězdičku. Pokud žádné body nevidíte, zkuste odzoomovat mapu."</string>
-    <string name="oauth_remove_authorization_dialog_message">"Chcete odstranit propojení s vaším OSM účtem?"</string>
-    <string name="oauth_remove_authorization_confirmation">"Odstranit"</string>
     <string name="quest_leafType_title">"Jsou zde jehličnaté nebo listnaté stromy?"</string>
     <string name="quest_leaf_type_needles">"Jehličnany"</string>
     <string name="quest_leaf_type_broadleaved">"Listnáče"</string>
@@ -745,7 +732,6 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_maxweight_unusualInput_confirmation_description">"Tato hmotnost vypadá nepravděpodobně. jste si jistí, že je správná?"</string>
     <string name="quest_maxweight_answer_other_sign">"Značka vypadá jinak..."</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"Chcete zde nechat poznámku? Poznámka s fotografií umožní dalším mapujícím, aby ji vyřešili."</string>
-    <string name="confirmation_authorize_now_note">"Můžete to udělat později v nastavení."</string>
     <string name="quest_generalFee_title">"Je zde poplatek pro vstup do  %s?"</string>
     <string name="quest_laundrySelfService_title">"Je tato prádelna samoobslužná?"</string>
     <string name="quest_handrail_title">"Mají tyto schody zábradlí?"</string>
@@ -776,13 +762,15 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_determineRecyclingGlass_description_any_glass">"Příklady skla, které často není akceptováno: tvrzené sklo, okenní tabule, skleničky, žárovky, nebo zrcadla."</string>
     <string name="about_title_changelog">"Historie verzí"</string>
     <string name="title_whats_new">"Co je nového?"</string>
-    <string name="about_title_rate">"Ohodnoťte tuto aplikaci"</string>
+    <string name="about_title_rate">"Ohodnotit tuto aplikaci"</string>
     <string name="about_summary_rate">"na Google Play"</string>
     <string name="about_title_donate">"Přispět"</string>
     <string name="about_summary_donate">"Ukažte své uznání! ❤️
 "</string>
     <string name="about_description_donate">"Děkuji Vám, že jste uvážili podporu této aplikace! Pro zobrazení aktuálních darů a pro poslání Vašeho daru, klepněte na jednu z následujících platforem:"</string>
     <string name="quest_religion_for_place_of_worship_name_title">"Jaké náboženství je praktikováno v %s?"</string>
+    <string name="confirmation_cancel_prev_download_confirmed">"Vyhledat úkoly raději tady"</string>
+    <string name="confirmation_cancel_prev_download_cancel">"Pokračovat v aktuálním vyhledávání úkolů"</string>
     <string name="quest_buildingType_garages_description">"Samostatné prostory pro různé majitele/nájemníky"</string>
     <string name="quest_tourism_information_title">"Jaký je tohle druh turistických informací?"</string>
     <string name="quest_tourism_information_name_title">"Jaký druh turistických informací je %s?"</string>
@@ -791,5 +779,111 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_tourism_information_terminal">"Elektronický informační kiosek"</string>
     <string name="quest_tourism_information_map">"Tabule s mapou"</string>
     <string name="quest_tourism_information_guidepost">"Rozcestník"</string>
+    <string name="quest_recycling_materials_answer_waste">"Je to pro směsný odpad"</string>
+    <string name="quest_recycling_materials_answer_waste_description">"Takže je tohle kontejner pro jakýkoliv odpad, např. zabalený domácí nebo komerční odpad?"</string>
     <string name="quest_accepts_cash_title">"Přijímá %s platbu v hotovosti?"</string>
+    <string name="user_profile">"Můj profil"</string>
+    <string name="user_login">"Přihlásit se"</string>
+    <string name="user_logout">"Odhlásit se"</string>
+    <string name="osm_profile">"OSM Profil"</string>
+    <string name="next">"Další"</string>
+    <string name="letsgo">"Pojďme na to!"</string>
+    <string name="tutorial_welcome_to_osm">"Vítejte v OpenStreetMap"</string>
+    <string name="tutorial_welcome_to_osm_subtitle">"svobodné wiki mapy světa"</string>
+    <string name="tutorial_intro">"StreetComplete umožňuje jednoduché přispívání do OpenStreetMap tak, že automaticky vyhledává chybějící údaje ve vašem okolí: cyklostezky, popisná čísla domů, otevírací hodiny a další..."</string>
+    <string name="tutorial_solving_quests">"Jakmile je nalezne, budou tyto chybějící údaje na vaší mapě zobrazeny jako úkoly.
+
+Můžete je hned začít řešit a později se přihlásit a publikovat vaše odpovědi."</string>
+    <string name="tutorial_stay_safe">"Když si nejste jistí, můžete odpovědět „Nedá se to určit“ a nechat poznámku.
+
+A nakonec, nezapomeňte na bezpečnost - všímejte si vašeho okolí a nevstupujte na soukromé pozemky."</string>
+    <string name="tutorial_happy_mapping">"Užijte si mapování!"</string>
+    <string name="achievements_empty">"Zatím jste nedosáhli na žádný úspěch"</string>
+    <string name="links_empty">"Zatím nemáte žádné odkazy"</string>
+    <string name="quests_empty">"Zatím jste nepublikovali žádné odpovědi na úkoly"</string>
+    <string name="unsynced_quests_description">"plus %d zatím nepublikovaných změn."</string>
+    <string name="unsynced_quests_not_logged_in_description">"Máte %d zatím nepublikovaných změn.Musíte se přihlásit, abyste je mohli nahrát."</string>
+    <string name="user_quests_title">"Vyřešené úkoly"</string>
+    <string name="user_achievements_title">"Úspěchy"</string>
+    <string name="user_links_title">"Kolekce odkazů"</string>
+    <string name="user_profile_title">"Profil"</string>
+    <string name="user_statistics_quest_wiki_link">"Dokumentace"</string>
+    <string name="achievements_unlocked_link">"Odemčený odkaz:"</string>
+    <string name="achievements_unlocked_links">"Odemčené odkazy:"</string>
+    <string name="link_category_intro_title">"Úvod"</string>
+    <string name="link_category_intro_description">"Zjistěte více o OSM a komunitě kolem"</string>
+    <string name="link_category_editors_title">"Přispívání"</string>
+    <string name="link_category_editors_description">"Editory a další způsoby přispívání do OpenStreetMap"</string>
+    <string name="link_category_maps_title">"Mapy"</string>
+    <string name="link_category_maps_description">"Mapy založené na OpenStreetMap"</string>
+    <string name="link_category_showcase_title">"Vitrína"</string>
+    <string name="link_category_showcase_description">"Služby a aplikace založené na OpenStreetMap"</string>
+    <string name="link_category_goodies_title">"Vychytávky"</string>
+    <string name="link_category_goodies_description">"Zajímavé funkce související s mapou, které můžete zkusit"</string>
+    <string name="link_cyclosm_description">"Mapa pro cyklisty"</string>
+    <string name="link_wheelmap_description">"Mapa pro nalezení míst s bezbariérovým přístupem"</string>
+    <string name="link_osm_buildings_description">"Mapa, která zobrazí budovy ve 3D"</string>
+    <string name="link_openvegemap_description">"Objevte vegetariánské a vegánské restaurace ve vašem městě"</string>
+    <string name="link_touch_mapper_description">"Vytvořte si hmatovou mapu pro jakoukoliv adresu"</string>
+    <string name="link_mapy_tactile_description">"Hmatové mapy v různých měřítkách pro zrakově postižené"</string>
+    <string name="link_josm_description">"Plně vybavený OSM editor pro počítače. Je to výkonný nástroj pro pravidelné přispěvatele."</string>
+    <string name="link_vespucci_description">"Pokročilý OSM editor pro Android"</string>
+    <string name="link_ideditor_description">"Jednoduchý OSM editor v prohlížeči optimalizovaný pro počítače nebo velké tablety"</string>
+    <string name="link_umap_description">"Rychle vytvořte mapu s vlastními daty a vložte ji na váš web"</string>
+    <string name="link_opnvkarte_description">"Mapa s linkami a zastávkami veřejné dopravy"</string>
+    <string name="link_pic4review_description">"Přispějte do OSM jednoduše tak, že se podíváte na obrázky vašeho města"</string>
+    <string name="link_wiki_description">"Wiki je váš výchozí bod pro vše týkající se OpenStreetMap"</string>
+    <string name="link_learnosm_description">"Neznáte OpenStreetMap? Toto je průvodce pro začátečníky"</string>
+    <string name="link_neis_one_description">"Obrovská kolekce statistik pro OpenStreetMap přispěvatele s informacemi o tom, kde a jak jste přispěli, kdo další je ve vašem okolí plus žebříčky přispěvatelů"</string>
+    <string name="link_welcome_mat_description">"Obecné informace o OpenStreetMap a jak pracovat s OSM jako organizace"</string>
+    <string name="link_mapillary_description">"Služba a aplikace pro sdílení crowdsourcovaných fotek ulic s výslovným oprávněním pro jejich použití pro přispívání do OSM"</string>
+    <string name="link_openstreetcam_description">"Služba a aplikace pro sdílení crowdsourcovaných fotek ulic s výslovným oprávněním pro jejich použití pro přispívání do OSM"</string>
+    <string name="link_openrouteservice_wheelchair_description">"Postupná navigace pro vozíčkáře"</string>
+    <string name="link_nominatim_description">"Geokóder pro OSM data používaný spoustou dalších služeb"</string>
+    <string name="link_city_roads_description">"Vyrendrujte si všechny cesty ve městě pro tisk na trička, hrnky atd."</string>
+    <string name="link_myosmatic_description">"Jednoduše si vygenerujte vytisknutelné mapy měst, volitelně i se seznamem ulic"</string>
+    <string name="link_brouter_description">"Pravděpodobně nejlepší navigační engine pro cyklisty"</string>
+    <string name="link_show_me_the_way_description">"Podívejte se, jak se dějí úpravy OSM v reálném čase"</string>
+    <string name="link_osrm_description">"Nejrychlejší navigační engine"</string>
+    <string name="link_openrouteservice_description">"Navigace pro různá vozidla a pro pěší s možností nastavení preferencí. Můžete zobrazit také isochrony (oblast dosažitelnou za X minut z výchozího místa)."</string>
+    <string name="link_osm_haiku_description">"Použít OSM data k vygenerování haiku (forma japonské poezie)"</string>
+    <string name="link_openinframap_description">"Mapa zobrazující energetickou, telekomunikační, plynovou a ropnou infrastrukturu"</string>
+    <string name="link_openorienteeringmap_description">"Vytvořte si vytisknutelnou mapu pro orientační sport"</string>
+    <string name="link_openstreetbrowser_description">"Mapa umožňující procházení OpenStreetMap mapy podle kategorií"</string>
+    <string name="link_weeklyosm_description">"Novinkový blog s týdenními zprávami o tom, co se děje v OpenStreetMap světě"</string>
+    <string name="link_figuregrounder_description">"Vytvořte obrázek zjednodušeného plánu města nebo okolí"</string>
+    <string name="achievement_first_edit_title">"Vyřešili jste první úkol"</string>
+    <string name="achievement_first_edit_description">"Vítejte v  OpenStreetMap komunitě! Na vaší profilové obrazovce naleznete více informací týkajících se všech vámi vyřešených typů úkolů."</string>
+    <string name="achievement_surveyor_title">"Topograf"</string>
+    <string name="achievement_surveyor_solved_X">"Vyřešili jste %d úkolů! Pokračujte dál, abyste odemkli další úspěchy, které obsahují odkazy na OSM a další map se týkající aplikace a projekty!"</string>
+    <string name="achievement_regular_title">"Pravidelný přispěvatel"</string>
+    <string name="achievement_regular_description">"Pomocí této aplikace jste přispívali do OSM po dobu %d dní! Pravidelní přispěvatelé jsou pro OSM velmi důležití. Děkujeme vám za vaše odhodlání!"</string>
+    <string name="achievement_bicyclist_title">"Cyklista"</string>
+    <string name="achievement_bicyclist_solved_X">"Vyřešili jste %d úkolů, které pomůžou cyklistům!"</string>
+    <string name="achievement_wheelchair_title">"Mobilnost"</string>
+    <string name="achievement_wheelchair_solved_X">"Vyřešili jste %d úkolů, které zjednoduší vozíčkářům pohyb po městě!"</string>
+    <string name="achievement_postman_title">"Pošťák"</string>
+    <string name="achievement_postman_solved_X">"Pomohli jste lokalizovat %d  adres!
+Tato data jsou důležitá nejen pro pošťáky, ale i pro navigační systémy."</string>
+    <string name="achievement_building_title">"Výškáč"</string>
+    <string name="achievement_building_solved_X">"Vyřešili jste %d úkolů, které se týkají budov.
+Pamatujte, že tato aplikace se zeptá na popisné číslo budovy až po určení jejího druhu."</string>
+    <string name="achievement_blind_title">"Šestý smysl"</string>
+    <string name="achievement_blind_solved_X">"Vyřešili jste %d úkolů, které můžou pomoci zrakově postiženým."</string>
+    <string name="achievement_pedestrian_title">"Běžec"</string>
+    <string name="achievement_pedestrian_solved_X">"Vyřešili jste %d úkolů, které jsou zajímavé pro běžce a chodce!"</string>
+    <string name="achievement_veg_title">"Milovník zvířat"</string>
+    <string name="achievement_veg_solved_X">"Vyřešili jste %d úkolů, které by mohly zajímat lidi na bezmasé dietě!"</string>
+    <string name="achievement_car_title">"Cesťák"</string>
+    <string name="achievement_car_solved_X">"Vyřešili jste %d úkolů, které vylepšují informace o infrastruktuře ulic."</string>
+    <string name="unread_messages_message">"Máte %d  nepřečtené příchozí zprávy"</string>
+    <string name="unread_messages_button">"Otevřít příchozí zprávy"</string>
+    <string name="action_about2">"O aplikaci"</string>
+    <string name="map_btn_menu">"Nabídka"</string>
+    <string name="privacy_html_statistics">"&lt;p&gt;Data zobrazená ve vašem profilu jsou získaná z vaší veřejně dostupné historie přispěvatele do OpenStreetMap a následně hostovaná na mém serveru.&lt;/p&gt;"</string>
+    <string name="confirmation_authorize_now_note2">"Můžete to udělat i později ve vašem profilu."</string>
+    <string name="credits_art_contributors_title">"Ilustrátoři"</string>
+    <string name="credits_projects_contributors_title">"Projekty pro StreetComplete"</string>
+    <string name="credits_main_contributors_title">"Hlavní přispěvatelé"</string>
+    <string name="stats_are_syncing">"Vaše statistiky se stále synchronizují. Vraťte se sem později."</string>
 </resources>

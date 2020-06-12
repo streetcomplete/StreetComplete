@@ -1,68 +1,63 @@
 package de.westnordost.streetcomplete.data.download
 
-import android.content.SharedPreferences
-import android.graphics.Rect
 import android.util.Log
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.Prefs
-import de.westnordost.streetcomplete.data.QuestType
-import de.westnordost.streetcomplete.data.QuestTypeRegistry
-import de.westnordost.streetcomplete.data.VisibleQuestListener
-import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
-import de.westnordost.streetcomplete.data.osm.download.OsmQuestDownloader
-import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestDao
-import de.westnordost.streetcomplete.data.osmnotes.OsmNoteQuestType
+import de.westnordost.streetcomplete.data.quest.QuestType
+import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestDownloader
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestType
 import de.westnordost.streetcomplete.data.osmnotes.OsmNotesDownloader
-import de.westnordost.streetcomplete.data.tiles.DownloadedTilesDao
+import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesDao
+import de.westnordost.streetcomplete.data.osmnotes.NotePositionsSource
+import de.westnordost.streetcomplete.data.user.UserStore
 import de.westnordost.streetcomplete.data.visiblequests.OrderedVisibleQuestTypesProvider
-import de.westnordost.streetcomplete.util.SlippyMapMath
+import de.westnordost.streetcomplete.util.TilesRect
 import java.util.concurrent.atomic.AtomicBoolean
 import javax.inject.Inject
 import javax.inject.Provider
 import kotlin.math.max
-import kotlin.math.min
 
+/** Takes care of downloading all note and osm quests */
 class QuestDownloader @Inject constructor(
     private val osmNotesDownloaderProvider: Provider<OsmNotesDownloader>,
     private val osmQuestDownloaderProvider: Provider<OsmQuestDownloader>,
     private val downloadedTilesDao: DownloadedTilesDao,
-    private val osmNoteQuestDb: OsmNoteQuestDao,
+    private val notePositionsSource: NotePositionsSource,
     private val questTypeRegistry: QuestTypeRegistry,
-    private val prefs: SharedPreferences,
-    private val questTypesProvider: OrderedVisibleQuestTypesProvider
+    private val questTypesProvider: OrderedVisibleQuestTypesProvider,
+    private val userStore: UserStore
 ) {
-    // listeners
-    var questListener: VisibleQuestListener? = null
     var progressListener: QuestDownloadProgressListener? = null
 
-    // state
-    private var downloadedQuestTypes = 0
-    private var totalQuestTypes = 0
-
-    @Synchronized fun download(tiles: Rect, maxQuestTypes: Int?, cancelState: AtomicBoolean) {
+    @Synchronized fun download(tiles: TilesRect, maxQuestTypes: Int?, cancelState: AtomicBoolean) {
         if (cancelState.get()) return
 
+        progressListener?.onStarted()
         val questTypes = getQuestTypesToDownload(tiles, maxQuestTypes)
         if (questTypes.isEmpty()) {
-            progressListener?.onNotStarted()
+            progressListener?.onSuccess()
+            progressListener?.onFinished()
             return
         }
 
-        totalQuestTypes = questTypes.size
-        downloadedQuestTypes = 0
-
-        val bbox = SlippyMapMath.asBoundingBox(tiles, ApplicationConstants.QUEST_TILE_ZOOM)
+        val bbox = tiles.asBoundingBox(ApplicationConstants.QUEST_TILE_ZOOM)
 
         Log.i(TAG, "(${bbox.asLeftBottomRightTopString}) Starting")
         Log.i(TAG, "Quest types to download: ${questTypes.joinToString { it.javaClass.simpleName }}")
 
-        progressListener?.onStarted()
         try {
-            val notesPositions =
-                if (questTypes.contains(getOsmNoteQuestType())) downloadNotes(bbox, tiles)
-                else osmNoteQuestDb.getAllPositions(bbox).toSet()
+            // always first download notes, because note positions are blockers for creating other
+            // quests
+            val noteQuestType = getOsmNoteQuestType()
+            if (questTypes.contains(noteQuestType)) {
+                downloadNotes(bbox, tiles)
+
+            }
+
+            val notesPositions = notePositionsSource.getAllPositions(bbox).toSet()
 
             for (questType in questTypes) {
                 if (cancelState.get()) break
@@ -78,7 +73,7 @@ class QuestDownloader @Inject constructor(
     private fun getOsmNoteQuestType() =
         questTypeRegistry.getByName(OsmNoteQuestType::class.java.simpleName)!!
 
-    private fun getQuestTypesToDownload(tiles: Rect, maxQuestTypes: Int?): List<QuestType<*>> {
+    private fun getQuestTypesToDownload(tiles: TilesRect, maxQuestTypes: Int?): List<QuestType<*>> {
         val result = questTypesProvider.get().toMutableList()
         val questExpirationTime = ApplicationConstants.REFRESH_QUESTS_AFTER
         val ignoreOlderThan = max(0, System.currentTimeMillis() - questExpirationTime)
@@ -94,31 +89,27 @@ class QuestDownloader @Inject constructor(
             result
     }
 
-    private fun downloadNotes(bbox: BoundingBox, tiles: Rect): Set<LatLon> {
+    private fun downloadNotes(bbox: BoundingBox, tiles: TilesRect) {
         val notesDownload = osmNotesDownloaderProvider.get()
-        notesDownload.questListener = questListener
-        val userId: Long? = prefs.getLong(Prefs.OSM_USER_ID, -1L).takeIf { it != -1L }
+        val userId: Long = userStore.userId.takeIf { it != -1L } ?: return
+        // do not download notes if not logged in because notes shall only be downloaded if logged in
+        val noteQuestType = getOsmNoteQuestType()
+        progressListener?.onStarted(noteQuestType)
         val maxNotes = 10000
-        val result = notesDownload.download(bbox, userId, maxNotes)
+        notesDownload.download(bbox, userId, maxNotes)
         downloadedTilesDao.put(tiles, OsmNoteQuestType::class.java.simpleName)
-        onProgress()
-        return result
+        progressListener?.onFinished(noteQuestType)
     }
 
-    private fun downloadQuestType(bbox: BoundingBox, tiles: Rect, questType: QuestType<*>, notesPositions: Set<LatLon>) {
+    private fun downloadQuestType(bbox: BoundingBox, tiles: TilesRect, questType: QuestType<*>, notesPositions: Set<LatLon>) {
         if (questType is OsmElementQuestType<*>) {
+            progressListener?.onStarted(questType)
             val questDownload = osmQuestDownloaderProvider.get()
-            questDownload.questListener = questListener
             if (questDownload.download(questType, bbox, notesPositions)) {
                 downloadedTilesDao.put(tiles, questType.javaClass.simpleName)
             }
-            onProgress()
+            progressListener?.onFinished(questType)
         }
-    }
-
-    private fun onProgress() {
-        downloadedQuestTypes++
-        progressListener?.onProgress(min(1f, downloadedQuestTypes.toFloat() / totalQuestTypes))
     }
 
     companion object {

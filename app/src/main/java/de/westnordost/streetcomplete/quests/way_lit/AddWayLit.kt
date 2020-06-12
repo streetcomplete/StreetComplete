@@ -1,11 +1,11 @@
 package de.westnordost.streetcomplete.quests.way_lit
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
+import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 
-class AddWayLit(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<String>(o) {
+class AddWayLit(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<String>(o) {
 
     /* Using sidewalk as a tell-tale tag for (urban) streets which reached a certain level of
        development. I.e. non-urban streets will usually not even be lit in industrialized
@@ -31,6 +31,7 @@ class AddWayLit(o: OverpassMapDataAndGeometryDao) : SimpleOverpassQuestType<Stri
     """
 
     override val commitMessage = "Add whether way is lit"
+    override val wikiLink = "Key:lit"
     override val icon = R.drawable.ic_quest_lantern
     override val isSplitWayEnabled = true
 

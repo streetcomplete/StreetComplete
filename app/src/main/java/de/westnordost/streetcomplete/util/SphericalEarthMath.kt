@@ -21,10 +21,10 @@ const val EARTH_CIRCUMFERENCE = 40000000.0
  * other words, it is a square centered at the given position and with a side length of radius*2.
  */
 fun LatLon.enclosingBoundingBox(radius: Double, globeRadius: Double = EARTH_RADIUS): BoundingBox {
-	val distance = sqrt(2.0) * radius
-	val min = translate(distance, 225.0, globeRadius)
-	val max = translate(distance, 45.0, globeRadius)
-	return BoundingBox(min, max)
+    val distance = sqrt(2.0) * radius
+    val min = translate(distance, 225.0, globeRadius)
+    val max = translate(distance, 45.0, globeRadius)
+    return BoundingBox(min, max)
 }
 
 /**
@@ -34,16 +34,16 @@ fun LatLon.enclosingBoundingBox(radius: Double, globeRadius: Double = EARTH_RADI
  *  line that connects this point and the given one, this is the angle between those two lines
  */
 fun LatLon.initialBearingTo(pos: LatLon): Double {
-	var bearing = initialBearing(
-		latitude.toRadians(),
-		longitude.toRadians(),
-		pos.latitude.toRadians(),
-		pos.longitude.toRadians()
-	).toDegrees()
+    var bearing = initialBearing(
+        latitude.toRadians(),
+        longitude.toRadians(),
+        pos.latitude.toRadians(),
+        pos.longitude.toRadians()
+    ).toDegrees()
 
-	if (bearing < 0) bearing += 360.0
-	if (bearing >= 360) bearing -= 360.0
-	return bearing
+    if (bearing < 0) bearing += 360.0
+    if (bearing >= 360) bearing -= 360.0
+    return bearing
 }
 
 /**
@@ -54,63 +54,63 @@ fun LatLon.initialBearingTo(pos: LatLon): Double {
  * is the angle between those two lines
  */
 fun LatLon.finalBearingTo(pos: LatLon): Double {
-	var bearing = finalBearing(
-		latitude.toRadians(),
-		longitude.toRadians(),
-		pos.latitude.toRadians(),
-		pos.longitude.toRadians()
-	).toDegrees()
+    var bearing = finalBearing(
+        latitude.toRadians(),
+        longitude.toRadians(),
+        pos.latitude.toRadians(),
+        pos.longitude.toRadians()
+    ).toDegrees()
 
-	if (bearing < 0) bearing += 360.0
-	if (bearing >= 360) bearing -= 360.0
-	return bearing
+    if (bearing < 0) bearing += 360.0
+    if (bearing >= 360) bearing -= 360.0
+    return bearing
 }
 
 /** Returns the distance from this point to the other point */
 fun LatLon.distanceTo(pos: LatLon, globeRadius: Double = EARTH_RADIUS): Double =
-	measuredLength(
-		latitude.toRadians(),
-		longitude.toRadians(),
-		pos.latitude.toRadians(),
-		pos.longitude.toRadians(),
+    measuredLength(
+        latitude.toRadians(),
+        longitude.toRadians(),
+        pos.latitude.toRadians(),
+        pos.longitude.toRadians(),
         globeRadius
-	)
+    )
 
 /** Returns a new point in the given distance and angle from the this point */
 fun LatLon.translate(distance: Double, angle: Double, globeRadius: Double = EARTH_RADIUS): LatLon {
-	val pair = translate(
-		latitude.toRadians(),
-		longitude.toRadians(),
-		angle.toRadians(),
-		distance,
+    val pair = translate(
+        latitude.toRadians(),
+        longitude.toRadians(),
+        angle.toRadians(),
+        distance,
         globeRadius
-	)
-	return createTranslated(pair.first.toDegrees(), pair.second.toDegrees())
+    )
+    return createTranslated(pair.first.toDegrees(), pair.second.toDegrees())
 }
 
 /** Returns the shortest distance between this point and the arc between the given points */
 fun LatLon.crossTrackDistanceTo(start: LatLon, end: LatLon, globeRadius: Double = EARTH_RADIUS): Double =
-	crossTrackDistance(
-		start.latitude.toRadians(),
-		start.longitude.toRadians(),
-		end.latitude.toRadians(),
-		end.longitude.toRadians(),
-		latitude.toRadians(),
-		longitude.toRadians(),
+    crossTrackDistance(
+        start.latitude.toRadians(),
+        start.longitude.toRadians(),
+        end.latitude.toRadians(),
+        end.longitude.toRadians(),
+        latitude.toRadians(),
+        longitude.toRadians(),
         globeRadius
-	)
+    )
 
 /** Returns the shortest distance between this point and the arcs between the given points */
 fun LatLon.crossTrackDistanceTo(polyLine: List<LatLon>, globeRadius: Double = EARTH_RADIUS): Double {
-	require(polyLine.isNotEmpty()) { "Polyline must not be empty" }
-	if (polyLine.size == 1) return distanceTo(polyLine[0])
+    require(polyLine.isNotEmpty()) { "Polyline must not be empty" }
+    if (polyLine.size == 1) return distanceTo(polyLine[0])
 
-	var shortestDistance = Double.MAX_VALUE
-	polyLine.forEachPair { first, second ->
-		val distance = crossTrackDistanceTo(first, second, globeRadius)
-		if (distance < shortestDistance) shortestDistance = distance
-	}
-	return shortestDistance
+    var shortestDistance = Double.MAX_VALUE
+    polyLine.forEachPair { first, second ->
+        val distance = crossTrackDistanceTo(first, second, globeRadius)
+        if (distance < shortestDistance) shortestDistance = distance
+    }
+    return shortestDistance
 }
 
 /**
@@ -118,44 +118,44 @@ fun LatLon.crossTrackDistanceTo(polyLine: List<LatLon>, globeRadius: Double = EA
  * on the arc that is closest to this point
  */
 fun LatLon.alongTrackDistanceTo(start: LatLon, end: LatLon, globeRadius: Double = EARTH_RADIUS): Double =
-	alongTrackDistance(
-		start.latitude.toRadians(),
-		start.longitude.toRadians(),
-		end.latitude.toRadians(),
-		end.longitude.toRadians(),
-		latitude.toRadians(),
-		longitude.toRadians(),
+    alongTrackDistance(
+        start.latitude.toRadians(),
+        start.longitude.toRadians(),
+        end.latitude.toRadians(),
+        end.longitude.toRadians(),
+        latitude.toRadians(),
+        longitude.toRadians(),
         globeRadius
-	)
+    )
 
 
 /* -------------------------------- Polyline extension functions -------------------------------- */
 
 /** Returns a bounding box that contains all points */
 fun Iterable<LatLon>.enclosingBoundingBox(): BoundingBox {
-	val it = iterator()
-	require(it.hasNext()) { "positions is empty" }
-	val origin = it.next()
-	var minLatOffset = 0.0
-	var minLonOffset = 0.0
-	var maxLatOffset = 0.0
-	var maxLonOffset = 0.0
-	while (it.hasNext()) {
-		val pos = it.next()
-		// calculate with offsets here to properly handle 180th meridian
-		val lat = pos.latitude - origin.latitude
-		val lon = normalizeLongitude(pos.longitude - origin.longitude)
-		if (lat < minLatOffset) minLatOffset = lat
-		if (lon < minLonOffset) minLonOffset = lon
-		if (lat > maxLatOffset) maxLatOffset = lat
-		if (lon > maxLonOffset) maxLonOffset = lon
-	}
-	return BoundingBox(
-		origin.latitude + minLatOffset,
-		normalizeLongitude(origin.longitude + minLonOffset),
-		origin.latitude + maxLatOffset,
-		normalizeLongitude(origin.longitude + maxLonOffset)
-	)
+    val it = iterator()
+    require(it.hasNext()) { "positions is empty" }
+    val origin = it.next()
+    var minLatOffset = 0.0
+    var minLonOffset = 0.0
+    var maxLatOffset = 0.0
+    var maxLonOffset = 0.0
+    while (it.hasNext()) {
+        val pos = it.next()
+        // calculate with offsets here to properly handle 180th meridian
+        val lat = pos.latitude - origin.latitude
+        val lon = normalizeLongitude(pos.longitude - origin.longitude)
+        if (lat < minLatOffset) minLatOffset = lat
+        if (lon < minLonOffset) minLonOffset = lon
+        if (lat > maxLatOffset) maxLatOffset = lat
+        if (lon > maxLonOffset) maxLonOffset = lon
+    }
+    return BoundingBox(
+        origin.latitude + minLatOffset,
+        normalizeLongitude(origin.longitude + minLonOffset),
+        origin.latitude + maxLatOffset,
+        normalizeLongitude(origin.longitude + maxLonOffset)
+    )
 }
 
 /** Returns the distance covered by this polyline */
@@ -355,41 +355,41 @@ fun List<LatLon>.isRingDefinedClockwise(): Boolean {
 
 /** Returns the area enclosed by this bbox */
 fun BoundingBox.area(globeRadius: Double = EARTH_RADIUS): Double {
-	val minLatMaxLon = OsmLatLon(min.latitude, max.longitude)
-	val maxLatMinLon = OsmLatLon(max.latitude, min.longitude)
-	return min.distanceTo(minLatMaxLon, globeRadius) * min.distanceTo(maxLatMinLon, globeRadius)
+    val minLatMaxLon = OsmLatLon(min.latitude, max.longitude)
+    val maxLatMinLon = OsmLatLon(max.latitude, min.longitude)
+    return min.distanceTo(minLatMaxLon, globeRadius) * min.distanceTo(maxLatMinLon, globeRadius)
 }
 
 
 
 fun createTranslated(latitude: Double, longitude: Double): LatLon {
-	var lat = latitude
-	var lon = longitude
-	lon = normalizeLongitude(lon)
-	var crossedPole = false
-	// north pole
-	if (lat > 90) {
-		lat = 180 - lat
-		crossedPole = true
-	} else if (lat < -90) {
-		lat = -180 - lat
-		crossedPole = true
-	}
-	if (crossedPole) {
-		lon += 180.0
-		if (lon > 180) lon -= 360.0
-	}
-	return OsmLatLon(lat, lon)
+    var lat = latitude
+    var lon = longitude
+    lon = normalizeLongitude(lon)
+    var crossedPole = false
+    // north pole
+    if (lat > 90) {
+        lat = 180 - lat
+        crossedPole = true
+    } else if (lat < -90) {
+        lat = -180 - lat
+        crossedPole = true
+    }
+    if (crossedPole) {
+        lon += 180.0
+        if (lon > 180) lon -= 360.0
+    }
+    return OsmLatLon(lat, lon)
 }
 
 private fun Double.toRadians() = this / 180.0 * PI
 private fun Double.toDegrees() = this / PI * 180.0
 
 fun normalizeLongitude(lon: Double): Double {
-	var lon = lon
-	while (lon > 180) lon -= 360.0
-	while (lon < -180) lon += 360.0
-	return lon
+    var lon = lon
+    while (lon > 180) lon -= 360.0
+    while (lon < -180) lon += 360.0
+    return lon
 }
 
 
@@ -402,46 +402,46 @@ fun normalizeLongitude(lon: Double): Double {
 
 /** Return a new point translated in the given angle and distance on a sphere with the given radius */
 private fun translate(φ1: Double, λ1: Double, α1: Double, distance: Double, radius: Double): Pair<Double, Double> {
-	val σ12 = distance / radius
-	val y = sin(φ1) * cos(σ12) + cos(φ1) * sin(σ12) * cos(α1)
-	val a = cos(φ1) * cos(σ12) - sin(φ1) * sin(σ12) * cos(α1)
-	val b = sin(σ12) * sin(α1)
-	val x = sqrt(a.pow(2) + b.pow(2))
-	val φ2 = atan2(y, x)
-	val λ2 = λ1 + atan2(b, a)
-	return Pair(φ2, λ2)
+    val σ12 = distance / radius
+    val y = sin(φ1) * cos(σ12) + cos(φ1) * sin(σ12) * cos(α1)
+    val a = cos(φ1) * cos(σ12) - sin(φ1) * sin(σ12) * cos(α1)
+    val b = sin(σ12) * sin(α1)
+    val x = sqrt(a.pow(2) + b.pow(2))
+    val φ2 = atan2(y, x)
+    val λ2 = λ1 + atan2(b, a)
+    return Pair(φ2, λ2)
 }
 
 /** Returns the distance of two points on a sphere with the given radius */
 private fun measuredLength(φ1: Double, λ1: Double, φ2: Double, λ2: Double, r: Double): Double {
-	// see https://mathforum.org/library/drmath/view/51879.html for derivation
-	val Δλ = λ2 - λ1
-	val Δφ = φ2 - φ1
-	val a = sin(Δφ / 2).pow(2) + cos(φ1) * cos(φ2) * sin(Δλ / 2).pow(2)
-	val c = 2 * atan2(sqrt(a), sqrt(1 - a))
-	return c * r
+    // see https://mathforum.org/library/drmath/view/51879.html for derivation
+    val Δλ = λ2 - λ1
+    val Δφ = φ2 - φ1
+    val a = sin(Δφ / 2).pow(2) + cos(φ1) * cos(φ2) * sin(Δλ / 2).pow(2)
+    val c = 2 * atan2(sqrt(a), sqrt(1 - a))
+    return c * r
 }
 
 /** Returns the initial bearing from one point to another */
 private fun initialBearing(φ1: Double, λ1: Double, φ2: Double, λ2: Double): Double {
-	// see https://mathforum.org/library/drmath/view/55417.html for derivation
-	val Δλ = λ2 - λ1
-	return atan2(sin(Δλ) * cos(φ2), cos(φ1) * sin(φ2) - sin(φ1) * cos(φ2) * cos(Δλ))
+    // see https://mathforum.org/library/drmath/view/55417.html for derivation
+    val Δλ = λ2 - λ1
+    return atan2(sin(Δλ) * cos(φ2), cos(φ1) * sin(φ2) - sin(φ1) * cos(φ2) * cos(Δλ))
 }
 
 /** Returns the final bearing from one point to another */
 private fun finalBearing(φ1: Double, λ1: Double, φ2: Double, λ2: Double): Double {
-	val Δλ = λ2 - λ1
-	return atan2(sin(Δλ) * cos(φ1), -cos(φ2) * sin(φ1) + sin(φ2) * cos(φ1) * cos(Δλ))
+    val Δλ = λ2 - λ1
+    return atan2(sin(Δλ) * cos(φ1), -cos(φ2) * sin(φ1) + sin(φ2) * cos(φ1) * cos(Δλ))
 }
 
 /** Returns the shortest distance between point three and the arc between point one and two */
 private fun crossTrackDistance(φ1: Double, λ1: Double, φ2: Double, λ2: Double, φ3: Double, λ3: Double, r: Double): Double {
-	val θ12 = initialBearing(φ1, λ1, φ2, λ2)
-	val θ13 = initialBearing(φ1, λ1, φ3, λ3)
-	val δ13 = measuredLength(φ1, λ1, φ3, λ3, r) / r
-	val δxt = asin(sin(δ13) * sin(θ13 - θ12))
-	return abs(δxt * r)
+    val θ12 = initialBearing(φ1, λ1, φ2, λ2)
+    val θ13 = initialBearing(φ1, λ1, φ3, λ3)
+    val δ13 = measuredLength(φ1, λ1, φ3, λ3, r) / r
+    val δxt = asin(sin(δ13) * sin(θ13 - θ12))
+    return abs(δxt * r)
 }
 
 /**
@@ -449,11 +449,11 @@ private fun crossTrackDistance(φ1: Double, λ1: Double, φ2: Double, λ2: Doubl
  * arc that is closest to point three.
  */
 private fun alongTrackDistance(φ1: Double, λ1: Double, φ2: Double, λ2: Double, φ3: Double, λ3: Double, r: Double): Double {
-	val θ12 = initialBearing(φ1, λ1, φ2, λ2)
-	val θ13 = initialBearing(φ1, λ1, φ3, λ3)
-	val δ13 = measuredLength(φ1, λ1, φ3, λ3, r) / r
-	val δxt = asin(sin(δ13) * sin(θ13 - θ12))
-	val δat = acos(cos(δ13) / abs(cos(δxt)))
-	return δat * sign(cos(θ12 - θ13)) * r
+    val θ12 = initialBearing(φ1, λ1, φ2, λ2)
+    val θ13 = initialBearing(φ1, λ1, φ3, λ3)
+    val δ13 = measuredLength(φ1, λ1, φ3, λ3, r) / r
+    val δxt = asin(sin(δ13) * sin(θ13 - θ12))
+    val δat = acos(cos(δ13) / abs(cos(δxt)))
+    return δat * sign(cos(θ12 - θ13)) * r
 }
 

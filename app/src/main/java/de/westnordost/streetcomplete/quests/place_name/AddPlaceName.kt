@@ -4,17 +4,17 @@ import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
-import de.westnordost.streetcomplete.data.osm.tql.FiltersParser
-import de.westnordost.streetcomplete.data.osm.tql.getQuestPrintStatement
-import de.westnordost.streetcomplete.data.osm.tql.toGlobalOverpassBBox
+import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
+import de.westnordost.streetcomplete.data.tagfilters.FiltersParser
+import de.westnordost.streetcomplete.data.tagfilters.getQuestPrintStatement
+import de.westnordost.streetcomplete.data.tagfilters.toGlobalOverpassBBox
 import java.util.concurrent.FutureTask
 
 class AddPlaceName(
-    private val overpassServer: OverpassMapDataAndGeometryDao,
+    private val overpassApi: OverpassMapDataAndGeometryApi,
     private val featureDictionaryFuture: FutureTask<FeatureDictionary>
 ) : OsmElementQuestType<PlaceNameAnswer> {
 
@@ -100,6 +100,7 @@ class AddPlaceName(
     )}
 
     override val commitMessage = "Determine place names"
+    override val wikiLink = "Key:name"
     override val icon = R.drawable.ic_quest_label
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_placeName_title_name
@@ -108,7 +109,7 @@ class AddPlaceName(
         featureName.value?.let { arrayOf(it) } ?: arrayOf()
 
     override fun download(bbox: BoundingBox, handler: (element: Element, geometry: ElementGeometry?) -> Unit): Boolean {
-        return overpassServer.query(getOverpassQuery(bbox)) { element, geometry ->
+        return overpassApi.query(getOverpassQuery(bbox)) { element, geometry ->
             // only show places without names as quests for which a feature name is available
             if (hasFeatureName(element.tags)) handler(element, geometry)
         }

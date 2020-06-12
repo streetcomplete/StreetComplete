@@ -5,15 +5,20 @@ import androidx.core.content.contentValuesOf
 
 import javax.inject.Inject
 
-import de.westnordost.streetcomplete.data.QuestType
+import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.visiblequests.QuestVisibilityTable.Columns.QUEST_TYPE
 import de.westnordost.streetcomplete.data.visiblequests.QuestVisibilityTable.Columns.VISIBILITY
 import de.westnordost.streetcomplete.data.visiblequests.QuestVisibilityTable.NAME
 import de.westnordost.streetcomplete.ktx.getInt
 import de.westnordost.streetcomplete.ktx.getString
 import de.westnordost.streetcomplete.ktx.query
+import javax.inject.Singleton
 
-class VisibleQuestTypeDao @Inject constructor(private val dbHelper: SQLiteOpenHelper) {
+/** Stores which quest types are visible by user selection and which are not */
+@Singleton class VisibleQuestTypeDao @Inject constructor(private val dbHelper: SQLiteOpenHelper) {
+
+    /* Is a singleton because it has a in-memory cache that is synchronized with changes made on
+       the DB */
 
     private val cache: MutableMap<String, Boolean> by lazy { loadQuestTypeVisibilities() }
 

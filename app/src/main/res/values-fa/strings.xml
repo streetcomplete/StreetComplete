@@ -2,15 +2,11 @@
 <resources>
     <string name="action_settings">"تنظیمات"</string>
     <string name="oauth_communication_error">"امکان دسترسی به شبکه وجود ندارد"</string>
-    <string name="loading">"در حال بارگیری"</string>
     <string name="retry">"دوباره سعی کنید"</string>
-    <string name="oauth_cancelled">"اجازه دسترسی لغو شد"</string>
     <string name="oauth_failed_permissions">"خطای مجوز: مجوز دسترسی‌های ذکر شده باید داده شود"</string>
     <string name="title_activity_settings">"تنظیمات"</string>
     <string name="pref_category_communication">"ارتباطات"</string>
     <string name="pref_category_display">"نمایش"</string>
-    <string name="pref_title_authorization">"اجازه دسترسی به OSM"</string>
-    <string name="pref_title_not_authorized_summary">"هنوز مجاز نیست"</string>
     <string name="pref_tilecache_size_summary">"%d مگابایت"</string>
     <string name="pref_tilecache_size_message">"میزان فضای اشغال شده (مگابایت) روی حافظه خارجی برای ذخیره جزئیات نقشه"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"نمایش تمام یاداشت‌ها"</string>
@@ -69,10 +65,8 @@
     <string name="download_area_too_big">"لطفا بیشتر بزرگنمایی کنید"</string>
     <string name="confirmation_cancel_prev_download_title">"درعوض، جستجوی فعلی را لغو کنید و اینجا را جستجو کنید"</string>
     <string name="notification_downloading">"جستجو برای جُستارها..."</string>
-    <string name="now_downloading_toast">"جستجو برای جُستارهای دیگر..."</string>
     <string name="turn_on_location_request">"موقعیت مکانی خاموش است. آیا منوی تنظیمات را برای روشن کردن آن باز می‌کنید؟"</string>
     <string name="no_location_permission_warning">"موقعیت مکانی شما برای کاوش جُستارهای اطرافتان مورد نیاز می باشد."</string>
-    <string name="action_about">"درباره برنامه"</string>
     <string name="about_title_authors">"اعتبار"</string>
 
     <!-- Fuzzy -->
@@ -389,7 +383,6 @@
     <string name="quest_way_lit_road_title">"آیا این مسیر روشنایی دارد؟"</string>
     <string name="quest_way_lit_automatic">"از ردیاب حرکت برای روشنایی استفاده می‌شود"</string>
     <string name="quest_way_lit_24_7">"شب و روز روشنایی دارد"</string>
-    <string name="pref_title_authorized_username_summary">"حساب مجاز: %s"</string>
     <string name="cannot_find_bbox_or_reduce_tilt">"اگر نمی توانید اینجا را بررسی کنید با بزرگنمایی و کوچک نمایی نقشه سعی نمایید."</string>
     <string name="quest_crossing_type_title">"این تقاطع از چه نوعی چیست؟"</string>
     <string name="quest_crossing_type_signals">"تقاطع با چراغ های راهنمایی"</string>
@@ -418,13 +411,11 @@
     <string name="quest_address_house_name_label">"اسم خانه"</string>
     <string name="quest_buildingLevels_roofLevelsLabel2">"طبقات دارای پشت بام"</string>
     <string name="quest_buildingLevels_levelsLabel2">"طبقات بدون پشت بام"</string>
-    <string name="pref_title_authorized_summary">"اختیاری"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingLevels_answer_multipleLevels">"متفاوت در هر بخش از ساختمان"</string>
     <string name="quest_buildingLevels_answer_description">"در این بخش ، ارتفاع این قسمت از ساختمان را وارد نمایید"</string>
     <string name="unglue_hint">"یک نما را برای این مکان انتخاب کنید"</string>
-    <string name="pref_title_not_authorized_summary2">"برای ورود به سامانه با مرورگر خود وارد شوید."</string>
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"آیا مسیر پیاده روی این راه به صورت فیزیکی مجزا شده است (یعنی از طریق یک مانع)؟ محدودیت سرعت پیشفرض بستگی به این دارد که آیا این مورد وجود دارد یا خیر"</string>
     <string name="about_category_feedback">"بازخورد"</string>
     <string name="quest_leave_new_note_photo">"پیوست کردن تصویر"</string>
@@ -494,6 +485,7 @@
     <string name="quest_busStopShelter_tram_title">"آیا این ایستگاه تراموا سایبان دارد؟"</string>
     <string name="quest_bench_backrest_title">"آیا این نیمکت دارای پشتی می‌باشد؟"</string>
     <string name="quest_bench_answer_picnic_table">"این میز پیک‌نیک است"</string>
+    <string name="quest_religion_for_place_of_worship_title">"این مکان عبادتگاه چه مذهبی است؟"</string>
     <string name="quest_religion_christian">"مسیحیت"</string>
     <string name="quest_religion_muslim">"اسلام"</string>
     <string name="quest_religion_hindu">"هندوئسم"</string>
@@ -723,11 +715,6 @@
     <string name="quest_postboxCollectionTimes_name_title">"زمان جمع آوری صندوق پستی %s را می‌دانید؟
 "</string>
     <string name="create_new_note_hint">"بهترین یادداشت را به زبان محلی بنگارید یا در غیر این صورت به زبان انگلیسی بنویسید."</string>
-    <string name="about_contributing">"پاسخ های شما به طور مستقیم در حال ارتقا OpenStreetMap است. داده های به اشتراک گذاشته شده متن‌باز است، همه می‌توانند از آن استفاده کنند. بسیاری از پروژه های بزرگ قبلاً از آن استفاده کرده‌اند."</string>
-    <string name="about_missing_stars">"در حال حاضر، تعداد امتیاز‌ها در گوشی‌های همراه به اشتراک گذاشته نمی شود، اما پاسخ ها به صورت مستقیم به پایگاه داده OpenStreetMap اضافه می‌شوند."</string>
-    <string name="how_to_get_stars">"یکی از نشانگرهای موجود در نقشه را انتخاب کنید و به پرسش آن پاسخ دهید. به این ترتیب داده های OpenStreetMap را بهبود می بخشید و ستاره می‌گیرید. در صورت عدم وجود نشانگر ، لازم است نقشه را بزرگنمایی کنید."</string>
-    <string name="oauth_remove_authorization_dialog_message">"آیا می‌خواهید مجوز ورود به حساب کاربری OSM خود را حذف نمایید؟"</string>
-    <string name="oauth_remove_authorization_confirmation">"حذف کردن"</string>
     <string name="quest_leafType_title">"درختان اینجا برگ‌سوزنی هستند یا پهن‌برگ؟"</string>
     <string name="quest_leaf_type_needles">"سوزنی"</string>
     <string name="quest_leaf_type_broadleaved">"پهن‌برگ"</string>
@@ -748,7 +735,6 @@
     <string name="quest_maxweight_answer_other_sign">"با علائم تفاوت دارد ..."</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"آیا می خواهید یک یادداشت بگذارید؟ یک یادداشت با یک عکس 
  نقشه‌کش‌های دیگر را مجاب به نگهداری اطلاعات می‌کند."</string>
-    <string name="confirmation_authorize_now_note">"می توانید این کار را بعداً در صفحه تنظیمات انجام دهید."</string>
     <string name="quest_generalFee_title">"آیا برای ورود به %s هزینه پرداخت می‌شود؟"</string>
     <string name="quest_laundrySelfService_title">"آیا این خشکشویی یک خشکشویی مشتری محور (کار بوسیله شخص) است؟"</string>
     <string name="quest_handrail_title">"آیا این راه‌پله نرده جان‌پناه دارد؟"</string>
@@ -785,4 +771,116 @@
     <string name="about_summary_donate">"قدردانی خود را نشان دهید! ❤️"</string>
     <string name="about_description_donate">"با سپاس از تصمیم شما جهت حمایت از این برنامه! برای مشاهده کمکهای فعلی و کمک مالی خود، روی مکان مربوطه ضربه بزنید:"</string>
     <string name="quest_religion_for_place_of_worship_name_title">"چه مذهبی در %s اجرا می‌شود؟"</string>
+    <string name="confirmation_cancel_prev_download_confirmed">"در عوض اینجا را کاوش کنید"</string>
+    <string name="confirmation_cancel_prev_download_cancel">"کاوش فعلی را ادامه دهید"</string>
+    <string name="quest_buildingType_garages_description">"فضاهای جداگانه برای مالکان/مشتریان مختلف"</string>
+    <string name="quest_tourism_information_title">"این اطلاعات گردشگری از چه نوعی است؟"</string>
+    <string name="quest_tourism_information_name_title">"چه نوع اطلاعات گردشگری در %s موجود است؟"</string>
+    <string name="quest_tourism_information_office">"دفتر اطلاعات گردشگری"</string>
+    <string name="quest_tourism_information_board">"صفحه اطلاعات"</string>
+    <string name="quest_tourism_information_terminal">"پایانه اطلاعات"</string>
+    <string name="quest_tourism_information_map">"نقشه"</string>
+    <string name="quest_tourism_information_guidepost">"صفحه راهنما"</string>
+    <string name="quest_recycling_materials_answer_waste">"اینجا برای زباله عمومی است"</string>
+    <string name="quest_recycling_materials_answer_waste_description">"بنابراین، آیا این سطل که در آنجا قرار دارد برای هرگونه ضایعات، مانند زباله های خانگی یا تجاری می‌باشد؟"</string>
+    <string name="quest_accepts_cash_title">"آیا %s پرداخت نقدی را می پذیرد؟"</string>
+    <string name="user_profile">"نمایه من"</string>
+    <string name="user_login">"ورود"</string>
+    <string name="user_logout">"خروج"</string>
+    <string name="osm_profile">"نمایه osm"</string>
+    <string name="next">"بعدی"</string>
+    <string name="letsgo">"بزن بریم!"</string>
+    <string name="tutorial_welcome_to_osm">"به نقشه متن باز خوش‌آمدید."</string>
+    <string name="tutorial_welcome_to_osm_subtitle">"نقشه جهانی ویکی رایگان"</string>
+    <string name="tutorial_intro">"StreetComplete همکاری در OpenStreetMap را آسان می کند.
+به طور خودکار به دنبال جزئیات گمشده در پیرامون شما می باشد: خطوط دوچرخه، شماره خانه، ساعات کار و موارد دیگر ..."</string>
+    <string name="tutorial_solving_quests">"پس از کاوش جزئیات گمشده به عنوان جُستار در نقشه شما ظاهر می شود.
+
+می توانید بلافاصله پاسخگویی به آنها را شروع کرده و بعداً وارد نمایه خود شوید تا پاسخ های خود را منتشر کنید."</string>
+    <string name="tutorial_stay_safe">"هر زمان که اطمینان ندارید، می توانید گزینه \"نمی توان بیان کرد\" را انتخاب نماید و یادداشت بگذارید.
+
+در آخر، به یاد داشته باشید که مطمئن باشید: از محیط پیرامون خود مطلع باشید و به مکان‌های خصوصی وارد نشوید."</string>
+    <string name="tutorial_happy_mapping">"نقشه‌کشی مبارک!"</string>
+    <string name="achievements_empty">"شما هنوز دستاوردی ندارید"</string>
+    <string name="links_empty">"شما هنوز پیوندی ندارید"</string>
+    <string name="quests_empty">"شما پاسخ هیچ جُستاری را نداده‌اید"</string>
+    <string name="unsynced_quests_description">"%d جُستار ویرایش شده هنوز منتشر نشده است."</string>
+    <string name="unsynced_quests_not_logged_in_description">"شما هنوز %d تغییر را منتشر نکرده اید. برای بارگذاری آنها باید وارد سامانه شوید."</string>
+    <string name="user_quests_title">"پاسخ به جُستارها"</string>
+    <string name="user_achievements_title">"دستاوردها"</string>
+    <string name="user_links_title">"پیوند مجموعه"</string>
+    <string name="user_profile_title">"نمایه"</string>
+    <string name="user_statistics_quest_wiki_link">"مستندات"</string>
+    <string name="achievements_unlocked_link">"پیوند بازنشده:"</string>
+    <string name="achievements_unlocked_links">"پیوندهای بازنشده:"</string>
+    <string name="link_category_intro_title">"مقدمه"</string>
+    <string name="link_category_intro_description">"کسب اطلاعات بیشتر در مورد OSM و جامعه آن"</string>
+    <string name="link_category_editors_title">"همکاری"</string>
+    <string name="link_category_editors_description">"ویرایشگرها و روش‌های دیگر همکاری با OpenStreetMap"</string>
+    <string name="link_category_maps_title">"نقشه‌ها"</string>
+    <string name="link_category_maps_description">"نقشه های بر پایه osm"</string>
+    <string name="link_category_showcase_title">"ويترين"</string>
+    <string name="link_category_showcase_description">"خدمات و برنامه های مبتنی بر OpenStreetMap"</string>
+    <string name="link_category_goodies_title">"موارد کاربردی"</string>
+    <string name="link_category_goodies_description">"مطالب سرگرم کننده مربوط به نقشه برای شما، امتحان کنید"</string>
+    <string name="link_cyclosm_description">"نقشه دوچرخه سواری"</string>
+    <string name="link_wheelmap_description">"نقشه ای جستجوی مکان های قابل دسترسی صندلی چرخدار"</string>
+    <string name="link_osm_buildings_description">"نقشه ای که ساختمان ها را به صورت سه بعدی نشان می دهد"</string>
+    <string name="link_openvegemap_description">"رستوران های خوراک گیاهی و گیاه خواری را در شهر خود بشناسید"</string>
+    <string name="link_touch_mapper_description">"نقشه های لمسی را به راحتی برای هر نشانی ترسیم کنید."</string>
+    <string name="link_mapy_tactile_description">"نقشه های لمسی برای کم بیناییان در مقیاس های مختلف"</string>
+    <string name="link_josm_description">"ویرایشگر کاملاً حرفه ای OSM برای رایانه. این ابزار قدرتمند برای همکاران فعال است."</string>
+    <string name="link_vespucci_description">"ویرایشگر پیشرفته OSM برای Android"</string>
+    <string name="link_ideditor_description">"ویرایشگر ساده OSM به عنوان مرورگر. برای رایانه‌های شخصی یا رایانه های لوحی بزرگ بهینه‌سازی شده است"</string>
+    <string name="link_umap_description">"نقشه ها را با داده های سفارشی به سرعت ایجاد کرده و آنها را در وبگاه خود وارد نمایید"</string>
+    <string name="link_opnvkarte_description">"نقشه مسیرها و ایستگاه های حمل و نقل عمومی"</string>
+    <string name="link_pic4review_description">"با مشاهده تصاویر از شهر خود به OSM کمک کنید"</string>
+    <string name="link_wiki_description">"ویکی نقطه شروع شما برای ویرایش همه موارد OpenStreetMap است"</string>
+    <string name="link_learnosm_description">"از نقشه متن باز چه می دانید؟ این یک راهنمای برای مبتدی ها است"</string>
+    <string name="link_neis_one_description">"فهرستی بزرگ از مشخصات و تعداد مشارکت کنندگان در OpenStreetMap ، مانند مکان و چگونگی مشارکت شما و اینکه چه کسی در نزدیکی شماست مانند یک صفحه راهنما"</string>
+    <string name="link_welcome_mat_description">"اطلاعات کلی در مورد OpenStreetMap و نحوه کار با OSM به عنوان یک مجموعه"</string>
+    <string name="link_mapillary_description">"سامانه و برنامه ای برای به اشتراک گذاری تصاویر سطح خیابان، با اجازه صریح استفاده از آنها برای مشارکت در OSM"</string>
+    <string name="link_openstreetcam_description">"سامانه و برنامه ای برای به اشتراک گذاری تصاویر سطح خیابان، با اجازه صریح استفاده از آنها برای مشارکت در OSM"</string>
+    <string name="link_openrouteservice_wheelchair_description">"ناوبری چرخشی برای معلولان دارای صندلی چرخدار"</string>
+    <string name="link_nominatim_description">"کد جغرافیایی داده های OSM که توسط بسیاری از سامانه های دیگر استفاده می شود"</string>
+    <string name="link_city_roads_description">"ارائه همه جاده های یک شهر برای چاپ روی پیراهن، لیوان، لیوان و ..."</string>
+    <string name="link_myosmatic_description">"نقشه های قابل چاپ شهری را در چند گام ساده، به صورت انتخابی با فهرست راهنمای خیابانی ایجاد کنید"</string>
+    <string name="link_brouter_description">"احتمالاً بهترین سامانه مسیریابی برای دوچرخه سواران"</string>
+    <string name="link_show_me_the_way_description">"مشاهده ویرایش های OSM به صورت لحظه‌ای می‌باشد"</string>
+    <string name="link_osrm_description">"سریعترین سامانه مسیریابی اطراف"</string>
+    <string name="link_openrouteservice_description">"مسیریابی انواع وسایل نقلیه و پیاده به صورت دلخواه ارائه می شود. همچنین بطور همزمان زمان نیز قابل مشاهده است (نمایش زمان دستیابی از نقطه شروع)"</string>
+    <string name="link_osm_haiku_description">"استفاده از داده های OSM برای تولید یک هایکو (شعر بی قافیه سه سطری ژاپنی)"</string>
+    <string name="link_openinframap_description">"نقشه ای که زیرساخت های برق، مخابرات، گاز و نفت را نشان می دهد"</string>
+    <string name="link_openorienteeringmap_description">"نقشه های قابل چاپ برای جهت یابی ورزشی بسازید"</string>
+    <string name="link_openstreetbrowser_description">"یک نقشه برای جستجوی عوارض نقشه osm بوسیله راهنما"</string>
+    <string name="link_weeklyosm_description">"تارنمای اخبار هفتگی درباره اتفاقات رخ داده در کل osm "</string>
+    <string name="link_figuregrounder_description">"پوسترهای شماتیک کوچک یک شهر یا محله را ایجاد کنید"</string>
+    <string name="achievement_first_edit_title">"اولین جُستار حل شد"</string>
+    <string name="achievement_first_edit_description">"به انجمن OpenStreetMap خوش آمدید! در نمایه خود، می توانید اطلاعات بیشتری را جهت هر گونه جُستاری که حل کرده اید، مشاهده کنید."</string>
+    <string name="achievement_surveyor_title">"نقشه‌کش"</string>
+    <string name="achievement_surveyor_solved_X">"شما %d جُستار را حل نموده‌اید! به کارتان ادامه دهید تا دستاوردهای بیشتری را که حاوی پیوندهایی به OSM و سایر برنامه ها و پروژه های مربوط به نقشه هستند، مشکل‌گشایی کنید!"</string>
+    <string name="achievement_regular_title">"منظم"</string>
+    <string name="achievement_regular_description">"شما %d روز با این برنامه به OSM یاری رسانده اید! همکاران فعال ستون اصلی OSM هستند، با تشکر از فداکاری شما! ❤"</string>
+    <string name="achievement_bicyclist_title">"دوچرخه سوار"</string>
+    <string name="achievement_bicyclist_solved_X">"شما %d جُستار که به دوچرخه‌سواران کمک می‌کند را حل نموده‌اید!"</string>
+    <string name="achievement_wheelchair_title">"پویا"</string>
+    <string name="achievement_wheelchair_solved_X">"شما %d جُستار که به زندگی معلولین با صندلی چرخدار کمک می‌کند حل نموده‌اید!"</string>
+    <string name="achievement_postman_title">"نامه‌رسان"</string>
+    <string name="achievement_postman_solved_X">"شما برای کاوش تعداد %d نشانی کمک کردید! این داده ها نه تنها برای نامه‌رسان‌ها بلکه برای هر سامانه ناوبری ضروری است."</string>
+    <string name="achievement_building_title">"مرتفع"</string>
+    <string name="achievement_building_solved_X">"شما %d جُستار مربوط به ساختمان‌ها را حل کردید. دقت نمایید که این برنامه فقط پس از مشخص شدن نوع آن، جُستار شماره ساختمان را مطرح می‌کند."</string>
+    <string name="achievement_blind_title">"حس ششم"</string>
+    <string name="achievement_blind_solved_X">"شما %d جُستار موردنیاز افراد کم بینا را پاسخ داده‌اید."</string>
+    <string name="achievement_pedestrian_title">"دونده"</string>
+    <string name="achievement_pedestrian_solved_X">"شما %d جُستار مورد نیاز افراد پیاده را پاسخ داده‌اید!"</string>
+    <string name="achievement_veg_title">"گونه حیوانات"</string>
+    <string name="achievement_veg_solved_X">"شما %d جُستار مورد نیاز افراد با رژیم غذایی بدون گوشت را پاسخ داده‌اید!"</string>
+    <string name="achievement_car_title">"در جاده"</string>
+    <string name="achievement_car_solved_X">"شما %d جُستاری که جزئیات خیابان را تکمیل می‌کند را حل نموده‌اید، خیابان را در osm ثبت کنید !"</string>
+    <string name="unread_messages_message">"شما %d پیام ناخوانده در صندوق پیام دارید"</string>
+    <string name="unread_messages_button">"گشودن صندوق پیام"</string>
+    <string name="action_about2">"درباره"</string>
+    <string name="map_btn_menu">"منو"</string>
+    <string name="privacy_html_statistics">"&lt;p&gt; داده های قابل مشاهده در نمایه شما از تاریخچه همکاری عمومی شما در OpenStreetMap جمع آوری شده و سپس روی سرور ما میزبانی می شود. &lt;/p&gt;"</string>
+    <string name="confirmation_authorize_now_note2">"همچنین می توانید این کار را بعداً در صفحه نمایه انجام دهید."</string>
 </resources>

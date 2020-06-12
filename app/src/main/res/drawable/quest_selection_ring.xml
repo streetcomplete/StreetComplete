@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<inset xmlns:android="http://schemas.android.com/apk/res/android">
+    <shape android:shape="oval">
+        <stroke
+            android:width="5dp"
+            android:color="@color/quest_selection_frame"/>
+        <size
+            android:width="51dp"
+            android:height="51dp"/>
+    </shape>
+</inset>

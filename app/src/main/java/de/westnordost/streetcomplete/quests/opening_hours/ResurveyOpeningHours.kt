@@ -5,19 +5,19 @@ import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.meta.OsmTaggings
-import de.westnordost.streetcomplete.data.osm.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
+import de.westnordost.streetcomplete.data.meta.SURVEY_MARK_KEY
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataAndGeometryDao
-import de.westnordost.streetcomplete.data.osm.tql.getQuestPrintStatement
-import de.westnordost.streetcomplete.data.osm.tql.toGlobalOverpassBBox
-import de.westnordost.streetcomplete.ktx.containsAny
-import de.westnordost.streetcomplete.quests.DateUtil
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
+import de.westnordost.streetcomplete.data.tagfilters.getQuestPrintStatement
+import de.westnordost.streetcomplete.data.tagfilters.toGlobalOverpassBBox
+import de.westnordost.streetcomplete.quests.construction.getCurrentDateString
+import java.text.SimpleDateFormat
+import java.util.*
 import java.util.concurrent.FutureTask
 
 class ResurveyOpeningHours(
-        private val overpassServer: OverpassMapDataAndGeometryDao,
+        private val overpass: OverpassMapDataAndGeometryApi,
         featureDictionaryFuture: FutureTask<FeatureDictionary>,
         private val parser: OpeningHoursTagParser
 ) : OpeningHours(featureDictionaryFuture) {
@@ -30,7 +30,7 @@ class ResurveyOpeningHours(
                 R.string.resurvey_opening_hours_no_name_title
 
     override fun download(bbox: BoundingBox, handler: (element: Element, geometry: ElementGeometry?) -> Unit): Boolean {
-        return overpassServer.query(getOverpassQuery(bbox)) { element, geometry ->
+        return overpass.query(getOverpassQuery(bbox)) { element, geometry ->
             // only show places that can be named somehow
             if (hasName(element.tags)) {
                 if (parser.parse(element.tags["opening_hours"]!!) != null) {
@@ -51,8 +51,8 @@ class ResurveyOpeningHours(
      */
     private fun getOverpassQuery(bbox: BoundingBox): String {
         val reviewIntervalInDays = 380
-        val resurveyCutoff = "'${DateUtil.getOffsetDateString(-reviewIntervalInDays)}T00:00:00Z'"
-        val repeatedResurveyCutoff = "'${DateUtil.getOffsetDateString(-reviewIntervalInDays * 3)}T00:00:00Z'"
+        val resurveyCutoff = "'${getOffsetDateString(-reviewIntervalInDays)}T00:00:00Z'"
+        val repeatedResurveyCutoff = "'${getOffsetDateString(-reviewIntervalInDays * 3)}T00:00:00Z'"
         return bbox.toGlobalOverpassBBox() + """
             nwr[opening_hours]['opening_hours:signed'!='no']
                 (if:
@@ -83,7 +83,7 @@ class ResurveyOpeningHours(
     override fun createForm() = ResurveyOpeningHoursForm(parser)
 
     override fun applyAnswerTo(answer: OpeningHoursAnswer, changes: StringMapChangesBuilder) {
-        val checkTag = OsmTaggings.SURVEY_MARK_KEY + ":opening_hours"
+        val checkTag = SURVEY_MARK_KEY + ":opening_hours"
         changes.deleteIfExists("opening_hours:lastcheck")
         when (answer) {
             is AlwaysOpen -> {
@@ -96,7 +96,7 @@ class ResurveyOpeningHours(
                 changes.add("opening_hours:signed", "no")
             }
             is UnmodifiedOpeningHours -> {
-                changes.addOrModify(checkTag, DateUtil.getCurrentDateString())
+                changes.addOrModify(checkTag, getCurrentDateString())
             }
             is RegularOpeningHours -> {
                 changes.deleteIfExists(checkTag)
@@ -105,4 +105,22 @@ class ResurveyOpeningHours(
             else -> throw AssertionError()
         }
     }
+
+    private val DATE_FORMAT = SimpleDateFormat("yyyy-MM-dd", Locale.US)
+
+    /**
+     * negative offsetInDays returns dates from past, positive from future
+     */
+    private fun getOffsetDateStringFromDate(offsetInDays: Int, date: Date): String {
+        val modifiedCalendar = Calendar.getInstance()
+        modifiedCalendar.time = date
+        modifiedCalendar.add(Calendar.DAY_OF_MONTH, offsetInDays)
+        return DATE_FORMAT.format(modifiedCalendar.time)
+    }
+
+    /**
+     * negative offsetInDays returns dates from past, positive from future
+     */
+    private fun getOffsetDateString(offsetInDays: Int) =
+            getOffsetDateStringFromDate(offsetInDays, Calendar.getInstance().time)
 }
