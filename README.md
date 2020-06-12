@@ -1,3 +1,10 @@
+# CompleteStreet
+
+CompleteStreet is a fork of StreetComplete aiming to unrestrict some quests (such as adding surfaces to service roads). It's a personal project and will most probably not be released in package form.
+
+
+# Original README
+
 ![StreetComplete](http://www.westnordost.de/streetcomplete/featureGraphic.png)
 
 StreetComplete is an easy to use editor of OpenStreetMap data available for Android. It can be used without any OpenStreetMap-specific knowledge. It asks simple questions, with answers directly used to edit and improve OpenStreetMap data. The app is aimed at users who do not know anything about OSM tagging schemes but still want to contribute to OpenStreetMap.

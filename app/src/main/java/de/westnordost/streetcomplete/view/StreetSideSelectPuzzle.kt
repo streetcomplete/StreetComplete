@@ -12,7 +12,7 @@ import android.widget.ImageView
 import android.widget.RelativeLayout
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.util.BitmapUtil
+import de.westnordost.streetcomplete.ktx.getBitmapDrawable
 import kotlinx.android.synthetic.main.side_select_puzzle.view.*
 import kotlin.math.*
 
@@ -122,7 +122,7 @@ class StreetSideSelectPuzzle @JvmOverloads constructor(
     }
 
     private fun setStreetDrawable(resId: Int, width: Int, imageView: ImageView, flip180Degrees: Boolean) {
-        val drawable = scaleToWidth(BitmapUtil.asBitmapDrawable(resources, resId), width, flip180Degrees)
+        val drawable = scaleToWidth(resources.getBitmapDrawable(resId), width, flip180Degrees)
         drawable.tileModeY = Shader.TileMode.REPEAT
         imageView.setImageDrawable(drawable)
     }

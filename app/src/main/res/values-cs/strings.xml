@@ -249,10 +249,10 @@
     <string name="quest_openingHours_comment_description">"Buďte struční a v ideálním případě použijte slova z cedulky s otevírací dobou. Např.  „Otevřeno po dohodě“. Chybějící cedulka nemusí znamenat, že tu není pravidelná otevírací doba."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingLevels_title">"Kolik pater má tato budova?"</string>
+    <string name="quest_buildingLevels_title">"Kolik podlaží má tato budova?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingLevels_title_buildingPart">"Kolik pater má tato část budovy?"</string>
+    <string name="quest_buildingLevels_title_buildingPart">"Kolik podlaží má tato část budovy?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_roofShape_title">"Jaký základní tvar má střecha této budovy?"</string>
@@ -2324,4 +2324,7 @@ It is not big issue, but it would be nice to have it correctly. -->
     <string name="quest_address_street_no_named_streets">"Nepatří k žádné pojmenované ulici"</string>
     <string name="quest_address_street_place_name_label">"Název místa:"</string>
     <string name="quest_address_street_description">"Klepněte na mapě na ulici, ke které patří, nebo ji zadejte bez zkratek do pole níže:"</string>
+    <string name="quest_buildingLevels_address_title">"Kolik podlaží má budova s číslem %s?"</string>
+    <string name="quest_roofShape_address_title">"Jaký základní tvar střechy má budova s číslem %s?"</string>
+    <string name="quest_buildingType_address_title">"Jaký typ budovy je číslo %s?"</string>
 </resources>

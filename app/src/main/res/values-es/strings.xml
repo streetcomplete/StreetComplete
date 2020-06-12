@@ -1777,7 +1777,7 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
     <string name="quest_ferry_motor_vehicle_title">"¿Transporta vehículos motorizados?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_leave_new_note_photos_are_useful">"Añadir una nota hará la nota mucho más útil."</string>
+    <string name="quest_leave_new_note_photos_are_useful">"Añadir una foto hará la nota mucho más útil."</string>
 
     <!-- Fuzzy -->
     <string name="quest_postboxCollectionTimes_name_title">"¿Cuáles son las horas de recogida del buzón %s?"</string>
@@ -2315,4 +2315,7 @@ Tenga en cuenta que esta aplicación solicita el número de portal de un edifici
     <string name="quest_address_street_no_named_streets">"No pertenece a una calle con nombre"</string>
     <string name="quest_address_street_place_name_label">"Poner nombre:"</string>
     <string name="quest_address_street_description">"Toque la carretera a la que pertenece en el mapa o ingrésela sin abreviaturas en el siguiente campo:"</string>
+    <string name="quest_buildingLevels_address_title">"¿Cuántos niveles tiene el edificio con el número %s?"</string>
+    <string name="quest_roofShape_address_title">"¿Qué forma básica tiene el tejado del edificio con el número %s?"</string>
+    <string name="quest_buildingType_address_title">"¿Qué tipo de edificio es el número %s?"</string>
 </resources>

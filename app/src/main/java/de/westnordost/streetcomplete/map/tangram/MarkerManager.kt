@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.map.tangram
 
-import android.graphics.drawable.Drawable
+import android.graphics.drawable.BitmapDrawable
 import com.mapzen.tangram.LngLat
 import com.mapzen.tangram.MapController
 import com.mapzen.tangram.geometry.Polygon
@@ -141,7 +141,7 @@ class Marker(val markerId: Long, tangramMarker: com.mapzen.tangram.Marker) {
     private var polyline: Polyline? = null
     private var polygon: Polygon? = null
 
-    private var drawable: Drawable? = null
+    private var drawable: BitmapDrawable? = null
     private var drawableId: Int? = null
 
     fun setStylingFromPath(stylingFromPath: String) {
@@ -188,7 +188,7 @@ class Marker(val markerId: Long, tangramMarker: com.mapzen.tangram.Marker) {
         tangramMarker?.setDrawable(drawableId)
     }
 
-    fun setDrawable(drawable: Drawable) {
+    fun setDrawable(drawable: BitmapDrawable) {
         this.drawable = drawable
         tangramMarker?.setDrawable(drawable)
     }

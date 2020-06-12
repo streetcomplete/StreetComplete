@@ -2311,4 +2311,7 @@ szintek"</string>
     <string name="quest_address_street_no_named_streets">"Egyetlen elnevezett utcához sem tartozik"</string>
     <string name="quest_address_street_place_name_label">"Helynév:"</string>
     <string name="quest_address_street_description">"Koppints a térképen a hozzátartozó útra vagy add meg rövidítések nélkül az alábbi mezőben:"</string>
+    <string name="quest_buildingLevels_address_title">"Hány szintes a(z) %s-s számú épület?"</string>
+    <string name="quest_roofShape_address_title">"Milyen alapformájú a(z) %s-s számú épületnek a teteje?"</string>
+    <string name="quest_buildingType_address_title">"Milyen épület a(z) %s-s számú?"</string>
 </resources>

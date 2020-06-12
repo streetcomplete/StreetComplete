@@ -14,9 +14,9 @@ import com.mapzen.tangram.*
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.ktx.getBitmapDrawable
 import de.westnordost.streetcomplete.ktx.toDp
 import de.westnordost.streetcomplete.location.FineLocationManager
-import de.westnordost.streetcomplete.util.BitmapUtil
 import de.westnordost.streetcomplete.map.tangram.Marker
 import de.westnordost.streetcomplete.util.EARTH_CIRCUMFERENCE
 import kotlin.math.*
@@ -143,7 +143,7 @@ open class LocationAwareMapFragment : MapFragment() {
     private fun createLocationMarker(): Marker? {
         val ctx = context ?: return null
 
-        val dot = BitmapUtil.createBitmapDrawableFrom(ctx.resources, R.drawable.location_dot)
+        val dot = ctx.resources.getBitmapDrawable(R.drawable.location_dot)
         val dotWidth = dot.intrinsicWidth.toFloat().toDp(ctx)
         val dotHeight = dot.intrinsicHeight.toFloat().toDp(ctx)
 
@@ -159,7 +159,7 @@ open class LocationAwareMapFragment : MapFragment() {
     private fun createDirectionMarker(): Marker? {
         val ctx = context ?: return null
 
-        val directionImg = BitmapUtil.createBitmapDrawableFrom(ctx.resources, R.drawable.location_direction)
+        val directionImg = ctx.resources.getBitmapDrawable(R.drawable.location_direction)
         directionMarkerSize = PointF(
             directionImg.intrinsicWidth.toFloat().toDp(ctx),
             directionImg.intrinsicHeight.toFloat().toDp(ctx)
@@ -173,7 +173,7 @@ open class LocationAwareMapFragment : MapFragment() {
 
     private fun createAccuracyMarker(): Marker? {
         val ctx = context ?: return null
-        val accuracyImg = BitmapUtil.createBitmapDrawableFrom(ctx.resources, R.drawable.accuracy_circle)
+        val accuracyImg = ctx.resources.getBitmapDrawable(R.drawable.accuracy_circle)
 
         val marker = controller?.addMarker() ?: return null
         marker.setDrawable(accuracyImg)

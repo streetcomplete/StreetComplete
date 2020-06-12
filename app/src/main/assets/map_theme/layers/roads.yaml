@@ -43,11 +43,22 @@ layers:
                         cap: butt
                         order: 400
 
+    aeroways:
+        data: { source: mapzen, layer: roads }
+        filter: { kind: aeroway }
+        draw:
+            lines:
+                order: global.sort_rank
+                join: round
+                cap: round
+                color: global.road_color
+                width: 80m
+
     roads:
         data: { source: mapzen }
         filter:
             not:
-                - kind: [rail, ferry, aerialway, piste]
+                - kind: [rail, ferry, aerialway, piste, aeroway]
                 - kind_detail: [sidewalk]
                 - { kind: highway, is_link: false }
         draw:
@@ -57,13 +68,6 @@ layers:
                 cap: round
                 color: global.road_color
                 width: [[5, 1px], [12, 2px], [16, 5px], [17, 8m]]
-
-        aeroway:
-            filter: { kind: aeroway }
-            draw:
-                lines:
-                    order: global.sort_rank
-                    width: 80m
 
         major_road:
             filter: { kind: major_road }

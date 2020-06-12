@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.map
 
 import android.content.Context
+import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Outline
 import android.graphics.drawable.Drawable
@@ -27,6 +28,7 @@ class PointerPinView @JvmOverloads constructor(
 ) : View(context, attrs, defStyleAttr) {
 
     private val pointerPin: Drawable = context.resources.getDrawable(R.drawable.quest_pin_pointer)
+    private var pointerPinBitmap: Bitmap? = null
 
     /** rotation of the pin in degrees. Similar to rotation, only that the pointy end of the pin
      *  is always located at the edge of the view */
@@ -91,15 +93,25 @@ class PointerPinView @JvmOverloads constructor(
         setMeasuredDimension(width, height)
     }
 
+    override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
+        pointerPinBitmap?.recycle()
+
+        val size = min(width, height)
+        val bmp = Bitmap.createBitmap(size, size, Bitmap.Config.ARGB_8888)
+        val canvas = Canvas(bmp)
+        pointerPin.setBounds(0,0, size, size)
+        pointerPin.draw(canvas)
+        pointerPinBitmap = bmp
+    }
+
     override fun onDraw(canvas: Canvas?) {
         val c = canvas ?: return
 
         val size = min(width, height)
         val r = pinRotation
 
-        pointerPin.setBounds(0,0, size, size)
         c.withRotation(r, width/2f, height/2f) {
-            pointerPin.draw(c)
+            pointerPinBitmap?.let { canvas.drawBitmap(it, 0f, 0f, null) }
         }
 
         val icon = pinIconDrawable

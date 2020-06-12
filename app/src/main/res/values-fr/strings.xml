@@ -2339,4 +2339,16 @@ Ces données sont essentielles non seulement pour le facteur mais aussi pour tou
 
     <!-- Fuzzy -->
     <string name="stats_are_syncing">"Vos statistiques sont en train de se synchroniser. Vérifiez cette page plus tard."</string>
+    <string name="user_statistics_filter_by_country">"par pays"</string>
+    <string name="user_statistics_filter_by_quest_type">"par type de quête"</string>
+    <string name="user_profile_global_rank">"Classement global"</string>
+    <string name="user_profile_days_active">"jours d'activité"</string>
+    <string name="user_profile_achievement_levels">"Niveaux d'accomplissement"</string>
+    <string name="quest_address_street_title">"A quelle rue appartient le bâtiment portant le numéro %s ?"</string>
+    <string name="quest_address_street_no_named_streets">"Cela n'appartient pas à une rue précise"</string>
+    <string name="quest_address_street_place_name_label">"Nom du lieu:"</string>
+    <string name="quest_address_street_description">"Sélectionnez la rue à laquelle cela appartient ou indiquez le nom de la rue sans abréviations dans le champ ci-dessous:"</string>
+    <string name="quest_buildingLevels_address_title">"Combien d'étages possède le bâtiment portant le numéro %s ?"</string>
+    <string name="quest_roofShape_address_title">"Quelle forme a le toit du bâtiment portant le numéro %s ?"</string>
+    <string name="quest_buildingType_address_title">"Quel est le type de bâtiment du numéro %s?"</string>
 </resources>

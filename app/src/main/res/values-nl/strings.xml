@@ -2292,9 +2292,18 @@ Let op dat deze app alleen naar het huisnummer van een gebouw vraagt nadat zijn 
     <!-- Fuzzy -->
     <string name="stats_are_syncing">"Je statistieken worden nog gesynchroniseerd. Probeer het later opnieuw."</string>
     <string name="user_statistics_country_rank">"Rang in %2$s: %1$d"</string>
+    <string name="user_statistics_country_wiki_link">"Mappers portaal %s"</string>
     <string name="user_statistics_filter_by_country">"per land"</string>
     <string name="user_statistics_filter_by_quest_type">"per vraagtype"</string>
     <string name="user_profile_global_rank">"Wereldwijde rang"</string>
     <string name="user_profile_local_rank">"Rang in %s"</string>
     <string name="user_profile_days_active">"Dagen actief"</string>
+    <string name="user_profile_achievement_levels">"voltooiingsniveaus"</string>
+    <string name="quest_address_street_title">"Bij welke straat hoort het huisnummer %s ?"</string>
+    <string name="quest_address_street_no_named_streets">"Het hoort niet tot een straat met een naam."</string>
+    <string name="quest_address_street_place_name_label">"Plaatsnaam"</string>
+    <string name="quest_address_street_description">"Tik op de weg waartoe deze behoort op de kaart of voer deze in zonder afkortingen in het onderstaande veld:"</string>
+    <string name="quest_buildingLevels_address_title">"Hoeveel etages heeft het gebouw met huisnummer %s ?"</string>
+    <string name="quest_roofShape_address_title">"Welke vorm heeft het dak met huisnummer %s ?"</string>
+    <string name="quest_buildingType_address_title">"Wat voor soort gebouw is huisnummer %s ?"</string>
 </resources>
