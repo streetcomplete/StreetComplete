@@ -141,16 +141,12 @@ public class MainActivity extends AppCompatActivity implements
 
 		if(savedInstanceState == null)
 		{
-			String lastVersion = prefs.getString(Prefs.LAST_VERSION, null);
 			boolean hasShownTutorial = prefs.getBoolean(Prefs.HAS_SHOWN_TUTORIAL, false);
-
-			if (!hasShownTutorial) {
-				if (lastVersion == null) {
-					getSupportFragmentManager().beginTransaction()
-							.setCustomAnimations(R.anim.fade_in_from_bottom, R.anim.fade_out_to_bottom)
-							.add(R.id.fragment_container, new TutorialFragment())
-							.commit();
-				}
+			if (!hasShownTutorial && !userController.isLoggedIn()) {
+				getSupportFragmentManager().beginTransaction()
+						.setCustomAnimations(R.anim.fade_in_from_bottom, R.anim.fade_out_to_bottom)
+						.add(R.id.fragment_container, new TutorialFragment())
+						.commit();
 			}
 			questController.cleanUp();
 			if (userController.isLoggedIn() && isConnected()) {

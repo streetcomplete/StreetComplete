@@ -54,6 +54,9 @@ import javax.inject.Singleton
         val hasUnreadMessages = userStore.unreadMessagesCount > 0
         val lastVersion = prefs.getString(Prefs.LAST_VERSION, null)
         val hasNewVersion = lastVersion != null && BuildConfig.VERSION_NAME != lastVersion
+        if (lastVersion == null) {
+            prefs.edit().putString(Prefs.LAST_VERSION, BuildConfig.VERSION_NAME).apply()
+        }
 
         var notifications = 0
         if (hasUnreadMessages) notifications++
