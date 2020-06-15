@@ -1,3 +1,23 @@
+v21.0-beta1: |
+  <h3>🗺️ New Map Provider</h3>
+  <p>Big thanks to <a href="https://www.jawg.io">JawgMaps</a>, a provider of online
+   custom maps, geocoding, routing and elevation data. They are helping OpenStreetMap by providing
+   their map service to StreetComplete for free! <br/>
+   Their maps are also quite excellent:
+   You can look forward to <strong>daily map updates</strong> and <strong>map loading
+   times cut in half</strong>, as their map data is very lightweight.</p>
+  <p>But let's not forget to thank @Akasch for hosting the previous solution with zero budget over
+   the last years and maintaining it in his free time. Without his endeavor, there likely wouldn't
+   have been a map at all in this time.</p>
+  <h3>Enhancements</h3>
+  <ul>
+    <li>The text on the map now scales up when zooming and when increasing the font size in the Android settings (#1877), by @matkoniecz</li>
+    <li>Labels for countries and big cities stand out more, so they are better distinguishable from smaller places</li>
+    <li>Recycling type: Added cooking and motor oil options (#1830)</li>
+    <li>Building type: Don't ask for (theme park) attractions (#1891)</li>
+    <li>Added some achievement links</li>
+  </ul>
+
 v20.1: |
   <h3>Fixes and Enhancements</h3>
   <ul>

@@ -1,11 +1,3 @@
-# for online testing (e.g. Tangram Play)
-#import:
-#    - https://raw.githubusercontent.com/ENT8R/streetcomplete-mapstyle/master/global.yaml
-#    - https://raw.githubusercontent.com/ENT8R/streetcomplete-mapstyle/master/layers/land.yaml
-#    - https://raw.githubusercontent.com/ENT8R/streetcomplete-mapstyle/master/layers/labels.yaml
-#    - https://raw.githubusercontent.com/ENT8R/streetcomplete-mapstyle/master/layers/roads.yaml
-
-# for local testing and the final release (e.g. using an emulator)
 import:
     - global.yaml
     - layers/land.yaml

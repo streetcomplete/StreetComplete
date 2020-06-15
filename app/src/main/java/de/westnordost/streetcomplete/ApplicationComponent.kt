@@ -15,6 +15,8 @@ import de.westnordost.streetcomplete.data.upload.UploadService
 import de.westnordost.streetcomplete.data.user.UserModule
 import de.westnordost.streetcomplete.data.user.achievements.AchievementsModule
 import de.westnordost.streetcomplete.map.MainFragment
+import de.westnordost.streetcomplete.map.MapFragment
+import de.westnordost.streetcomplete.map.MapModule
 import de.westnordost.streetcomplete.map.QuestsMapFragment
 import de.westnordost.streetcomplete.notifications.OsmUnreadMessagesFragment
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
@@ -30,10 +32,7 @@ import de.westnordost.streetcomplete.quests.oneway.data.TrafficFlowSegmentsModul
 import de.westnordost.streetcomplete.quests.opening_hours.AddOpeningHoursForm
 import de.westnordost.streetcomplete.quests.parking_fee.AddParkingFeeForm
 import de.westnordost.streetcomplete.quests.postbox_collection_times.AddCollectionTimesForm
-import de.westnordost.streetcomplete.settings.OAuthFragment
-import de.westnordost.streetcomplete.settings.SettingsActivity
-import de.westnordost.streetcomplete.settings.SettingsFragment
-import de.westnordost.streetcomplete.settings.ShowQuestFormsActivity
+import de.westnordost.streetcomplete.settings.*
 import de.westnordost.streetcomplete.settings.questselection.QuestSelectionFragment
 import de.westnordost.streetcomplete.user.*
 import javax.inject.Singleton
@@ -51,11 +50,13 @@ import javax.inject.Singleton
     DbModule::class,
     MetadataModule::class,
     UserModule::class,
-    AchievementsModule::class
+    AchievementsModule::class,
+    MapModule::class
 ])
 interface ApplicationComponent {
     fun inject(app: StreetCompleteApplication)
     fun inject(mainActivity: MainActivity)
+    fun inject(mapFragment: MapFragment)
     fun inject(noteDiscussionForm: NoteDiscussionForm)
     fun inject(uploadService: UploadService)
     fun inject(questChangesDownloadService: QuestDownloadService)
@@ -91,4 +92,5 @@ interface ApplicationComponent {
     fun inject(questDownloadProgressFragment: QuestDownloadProgressFragment)
     fun inject(questStatisticsByCountryFragment: QuestStatisticsByCountryFragment)
     fun inject(questStatisticsByQuestTypeFragment: QuestStatisticsByQuestTypeFragment)
+    fun inject(aboutActivity: AboutActivity)
 }

@@ -1,31 +1,21 @@
 layers:
     railway:
-        filter: { kind: rail, not: { is_tunnel: true } }
-        data: { source: mapzen , layer: roads}
+        data: { source: jawg, layer: road }
+        filter: { class: [major_rail, minor_rail], not: { tunnel: 1 }}
         draw:
             lines-railway-style:
-                order: global.sort_rank
+                order: 50
                 color: global.railway_color
                 join: round
                 width: [[10, 0.5px], [12, 1.0px], [13, 2px], [18, 3m]]
-        service:
-            filter: { service: true }
-            draw:
-                lines-railway-style:
-                    width: [[10, 0.2px], [12, 0.5px], [13, 1px], [18, 1.5m]]
-        tram:
-            filter: { kind_detail: tram }
-            draw:
-                lines-railway-style:
-                    order: function() { return feature.sort_rank+100; }
-
+        # jawg: no filtering between service rail and other possible
 
     highway:
-        data: { source: mapzen, layer: roads }
-        filter: { kind: highway, is_link: false }
+        data: { source: jawg, layer: road }
+        filter: [ class: motorway, { class: main, type: trunk } ]
         draw:
             lines-highway-style:
-                order: global.sort_rank
+                order: 60
                 join: round
                 cap: round
                 color: global.highway_color
@@ -33,110 +23,101 @@ layers:
                 outline:
                     color: global.highway_outline_color
                     width: function () { return 1/4 * Math.log($zoom); }
-                    order: 200
+                    order: 61
 
         bridges:
-            filter: { is_bridge: true }
+            filter: { bridge: 1 }
             draw:
                 lines:
                     outline:
                         cap: butt
-                        order: 400
+                        order: 70
 
     aeroways:
-        data: { source: mapzen, layer: roads }
-        filter: { kind: aeroway }
+        data: { source: jawg, layer: aeroway }
+        filter: { type: [runway, taxiway] }
         draw:
             lines:
-                order: global.sort_rank
-                join: round
+                order: 20
+                join: miter
                 cap: round
                 color: global.road_color
                 width: 80m
 
     roads:
-        data: { source: mapzen }
-        filter:
-            not:
-                - kind: [rail, ferry, aerialway, piste, aeroway]
-                - kind_detail: [sidewalk]
-                - { kind: highway, is_link: false }
+        data: { source: jawg, layer: road }
+        filter: { class: [main, street, motorway_link, street_limited, service, driveway, path], not: { type: trunk } }
         draw:
             lines:
-                order: global.sort_rank
+                order: 30
                 join: round
                 cap: round
                 color: global.road_color
                 width: [[5, 1px], [12, 2px], [16, 5px], [17, 8m]]
 
         major_road:
-            filter: { kind: major_road }
+            filter: { class: main, type: [primary, secondary] }
             draw:
                 lines:
                     width: [[9, 1px], [14, 2px], [16, 6px], [19, 12m]]
 
         minor_road:
-            filter: { kind: minor_road, not: { kind_detail: service } }
+            filter: [ class: street, {class: main, type: tertiary} ]
             draw:
                 lines:
                     width: [[11, 0.5px], [12, 0.75px], [13, 1.0px], [14, 1.2px], [15, 2.5px], [16, 8m]]
 
         service_road:
-            filter: { kind: minor_road, kind_detail: service }
+            filter: { class: [service, driveway] } # jawg: tracks are in service
             draw:
                 lines:
                     width: [[13, 0.5px], [17, 3px], [18, 4m]]
 
         path:
-            filter: { kind: [path, portage_way] }
+            # jawg: not possible to filter out indoor paths
+            filter: { class: path }
             draw:
                 lines:
                     color: global.path_color
                     width: [[14, 0.5px], [15, 1px], [19, 2m]]
-
-        steps:
-            filter: { kind_detail: steps }
-            draw:
-                step_dashes:
-                    order: function() { return feature.sort_rank+1; }
-                    cap: butt
-                    color: global.path_color
-                    width: [[14, 0.5px], [15, 1px], [19, 2m]]
+            steps:
+                filter: { type: steps }
+                draw:
+                    step_dashes:
+                        order: 31
+                        cap: butt
+                        color: global.path_color
+                        width: [[14, 0.5px], [15, 1px], [19, 2m]]
 
         road-outline:
-            filter: { $zoom: { min: 15 }, not: { kind: [path, portage_way] } }
+            filter: { $zoom: { min: 15 } }
             draw:
                 lines:
                     outline:
                         color: global.road_outline_color
                         width: function () { return 1/4 * Math.log($zoom); }
-                        order: 200
+                        order: 31
             bridges:
-                filter: { is_bridge: true }
+                filter: { bridge: 1 }
                 draw:
                     lines:
                         outline:
                             cap: butt
-                            order: 400
+                            order: 40
 
         path-outline:
-            filter: { $zoom: { min: 17 }, kind: [path, portage_way] }
+            filter: { $zoom: { min: 17 }, class: path }
             draw:
                 lines:
                     outline:
                         color: global.path_outline_color
                         width: function () { return 1/4 * Math.log($zoom); }
-                        order: 200
+                        order: 31
 
-        private:
-            filter: { access: [no, private, destination, customers, delivery] }
-            draw:
-                lines:
-                    outline:
-                        style: private-way
+        # jawg: no property for private roads
 
         oneway:
-            filter: { oneway: yes, $zoom: { min: 17 } }
+            filter: { not: { oneway: 0 }, $zoom: { min: 17 } }
             draw:
                 oneway-arrow:
                     flat: true
@@ -150,16 +131,17 @@ layers:
                         visible: false
 
         tunnel:
-            filter: { is_tunnel: true }
+            filter: { tunnel: 1 }
             draw:
                 lines:
                     style: tunnel-way
                     color: global.tunnel_color
 
     pois:
-        data: { source: mapzen }
+        # jawg: these do not exist
+        data: { source: jawg , layer: poi }
         barrier:
-            filter: { kind: [gate, bollard, lift_gate, cycle_barrier, stile, block, toll_booth, kissing_gate, swing_gate, chain, cattle_grid, border_control], $zoom: { min: 17 }}
+            filter: { type: [gate, bollard, lift_gate, cycle_barrier, stile, block, toll_booth, kissing_gate, swing_gate, chain, cattle_grid, border_control], $zoom: { min: 17 }}
             draw:
                 points:
                     buffer: 2px
@@ -167,7 +149,8 @@ layers:
                     color: global.barrier_color
                     size: [[17, 2px], [20, 16px]]
         roundabout:
-            filter: { kind: [mini_roundabout, turning_loop, turning_circle] }
+            # jawg these do not seem to exist
+            filter: { type: [mini_roundabout, turning_loop, turning_circle] }
             draw:
                 points:
                     buffer: 2px

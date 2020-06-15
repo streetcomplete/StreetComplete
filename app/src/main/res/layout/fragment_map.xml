@@ -10,16 +10,38 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <TextView
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:id="@+id/attributionContainer"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/openstreetmapLink"
-        android:textColor="@color/attribution_text"
-        android:textSize="12sp"
-        android:text="@string/map_attribution_osm"
-        android:padding="8dp"
-        android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        tools:ignore="RtlHardcoded" />
+        android:padding="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/openstreetmapLink"
+            android:textColor="@color/attribution_text"
+            android:textSize="12sp"
+            android:shadowColor="@color/background"
+            android:shadowRadius="6"
+            android:text="@string/map_attribution_osm"
+            android:layout_alignParentRight="true"
+            tools:ignore="RtlHardcoded" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/mapTileProviderLink"
+            android:textColor="@color/attribution_text"
+            android:textSize="12sp"
+            android:shadowColor="@color/background"
+            android:shadowRadius="6"
+            tools:text="© JawgMaps"
+            android:paddingRight="8dp"
+            android:layout_toLeftOf="@id/openstreetmapLink"
+            tools:ignore="RtlHardcoded,RtlSymmetry" />
+
+    </RelativeLayout>
 
 </RelativeLayout>

@@ -1,6 +1,6 @@
-- Nils Rokita maintains the map tileserver
 - Jannik Vieten created the photo upload service for StreetComplete
 - ENT8R created an API to query oneway data from improveOSM
 - ENT8R created the map stylesheets for StreetComplete
 - rugk maintains wiki pages for StreetComplete
 - Richard Finegold maintains the taginfo metadata for StreetComplete
+- Nils Rokita maintained the map tileserver used till v20, map-data.de

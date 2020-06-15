@@ -1,9 +1,11 @@
 package de.westnordost.streetcomplete.map
 
 import android.app.Activity
+import android.content.Intent
 import android.content.res.Configuration
 import android.graphics.PointF
 import android.graphics.RectF
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -26,11 +28,12 @@ import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.BuildConfig.MAPZEN_API_KEY
+import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.awaitLayout
 import de.westnordost.streetcomplete.ktx.containsAll
+import de.westnordost.streetcomplete.ktx.tryStartActivity
 import de.westnordost.streetcomplete.map.tangram.*
 import kotlinx.android.synthetic.main.fragment_map.*
 import kotlinx.coroutines.CoroutineScope
@@ -42,6 +45,7 @@ import okhttp3.internal.Version
 import java.io.File
 import java.util.*
 import java.util.concurrent.TimeUnit
+import javax.inject.Inject
 
 /** Manages a map that remembers its last location*/
 open class MapFragment : Fragment(),
@@ -60,6 +64,8 @@ open class MapFragment : Fragment(),
 
     private var isMapInitialized: Boolean = false
 
+    @Inject internal lateinit var vectorTileProvider: VectorTileProvider
+
     interface Listener {
         /** Called when the map has been completely initialized */
         fun onMapInitialized()
@@ -76,6 +82,10 @@ open class MapFragment : Fragment(),
 
     /* ------------------------------------ Lifecycle ------------------------------------------- */
 
+    init {
+        Injector.applicationComponent.inject(this)
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_map, container, false)
     }
@@ -85,15 +95,24 @@ open class MapFragment : Fragment(),
         mapView = view.findViewById(R.id.map)
         mapView.onCreate(savedInstanceState)
 
+        openstreetmapLink.setOnClickListener { openUrl("https://www.openstreetmap.org/copyright") }
+        mapTileProviderLink.text = vectorTileProvider.copyrightText
+        mapTileProviderLink.setOnClickListener { openUrl(vectorTileProvider.copyrightLink) }
+
         setupFittingToSystemWindowInsets()
 
         launch { initMap() }
     }
 
+    private fun openUrl(url: String): Boolean {
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+        return tryStartActivity(intent)
+    }
+
     private fun setupFittingToSystemWindowInsets() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             view?.setOnApplyWindowInsetsListener { _, insets ->
-                openstreetmapLink.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                attributionContainer.updateLayoutParams<ViewGroup.MarginLayoutParams> {
                     setMargins(
                         insets.systemWindowInsetLeft,
                         insets.systemWindowInsetTop,
@@ -195,7 +214,8 @@ open class MapFragment : Fragment(),
     protected open suspend fun getSceneUpdates(): List<SceneUpdate> {
         return listOf(
                 SceneUpdate("global.language", Locale.getDefault().language),
-                SceneUpdate("global.text_size_scaling", "${resources.configuration.fontScale}")
+                SceneUpdate("global.text_size_scaling", "${resources.configuration.fontScale}"),
+                SceneUpdate("global.api_key", vectorTileProvider.apiKey)
         )
     }
 
@@ -203,12 +223,12 @@ open class MapFragment : Fragment(),
         val currentNightMode = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
         val isNightMode = currentNightMode == Configuration.UI_MODE_NIGHT_YES
         val scene = if (isNightMode) "scene-dark.yaml" else "scene-light.yaml"
-        return "map_theme/$scene"
+        return "${vectorTileProvider.sceneFilePath}/$scene"
     }
 
     private fun createHttpHandler(): HttpHandler {
         val cacheSize = PreferenceManager.getDefaultSharedPreferences(context).getInt(Prefs.MAP_TILECACHE_IN_MB, 50)
-        val cacheDir = context!!.externalCacheDir
+        val cacheDir = requireContext().externalCacheDir
         val tileCacheDir: File?
         if (cacheDir != null) {
             tileCacheDir = File(cacheDir, "tile_cache")
@@ -228,9 +248,6 @@ open class MapFragment : Fragment(),
             }
 
             override fun configureRequest(url: HttpUrl, builder: Request.Builder) {
-                if (MAPZEN_API_KEY != null)
-                    builder.url(url.newBuilder().addQueryParameter("api_key", MAPZEN_API_KEY).build())
-
                 builder
                     .cacheControl(cacheControl)
                     .header("User-Agent", ApplicationConstants.USER_AGENT + " / " + Version.userAgent())

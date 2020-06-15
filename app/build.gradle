@@ -3,8 +3,6 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
-def MAPZEN_API_KEY = hasProperty('mapzenApiKey') ? '"' + mapzenApiKey + '"' : "null"
-
 android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -36,7 +34,6 @@ android {
         versionCode 2003
         versionName "20.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        buildConfigField "String", "MAPZEN_API_KEY", MAPZEN_API_KEY
     }
     buildTypes {
 

@@ -1,0 +1,197 @@
+layers:
+
+    boundaries:
+        data: { source: jawg, layer: admin }
+        filter: { admin_level: 2, not: { maritime: 1 }}
+        draw:
+            boundary_dashes:
+                order: 80
+                color: global.boundary_color
+                width: 1px
+
+    waterareas:
+        data: { source: jawg , layer: waterarea }
+        filter: { not: { tunnel: 1 }}
+        draw:
+            polygons:
+                order: 4
+                color: global.water_color
+
+        shore_lines:
+            filter: { $zoom: { min: 16 } }
+            draw:
+                lines-coast:
+                    order: 5
+                    width: [[16,20px],[18,10m]] # actually visually 1/3
+                    color: global.water_color
+
+    water:
+        data: { source: jawg }
+        filter: { not: { tunnel: 1 }}
+        draw:
+            polygons:
+                order: 4
+                color: global.water_color
+
+        shore_lines:
+            filter: { $zoom: { min: 16 } }
+            draw:
+                lines-coast:
+                    order: 5
+                    width: [[16,20px],[18,10m]] # actually visually 1/3
+                    color: global.water_color
+
+    waterways:
+        data: { source: jawg, layer: waterway }
+        filter: { not: { tunnel: 1 }}
+        draw:
+            lines:
+                order: 5
+                join: round
+                cap: square
+
+        river_lines:
+            filter: { class: [river, canal, river_intermittent] }
+            draw:
+                lines:
+                    color: global.water_color
+                    width: [[10, 1px], [17, 6px], [18, 12m]]
+
+        stream_lines:
+            filter: { class: [stream, stream_intermittent, ditch, drain], $zoom: { min: 15 }}
+            draw:
+                lines:
+                    color: global.water_color
+                    width: [[15, 1px], [17, 2px], [18, 5m]]
+
+    buildings:
+        data: { source: jawg, layer: building }
+        # jawg: there are no 3d building parts
+        filter: { $zoom: { min: 16 } }
+        draw:
+            buildings-style:
+                order: 100
+                color: global.building_color
+                extrude: true
+            buildings-outline-style:
+                order: 101
+                color: global.building_outline_color
+                width: [[16, 1px], [18,2px], [19,4px]]
+                extrude: true
+
+    landuse:
+        data: { source: jawg }
+        draw:
+            polygons:
+                order: 1
+                color: global.town_color
+        green:
+            filter:
+                class:
+                    - grass
+                    - park
+                    - cemetery
+                    - pitch
+            draw:
+                polygons:
+                    order: 2
+                    color: global.green_color
+        trees:
+            filter:
+                class:
+                    - scrub
+                    - wood
+            draw:
+                polygons:
+                    order: 3
+                    color: global.forest_color
+
+    barriers:
+        data: { source: jawg , layer: barrier_line }
+        city_walls:
+            # jawg: doesn't work, city walls are transformed into fences
+            filter: { class: [city_wall, dam] }
+            draw:
+                buildings-outline-style:
+                    order: 100
+                    color: global.building_outline_color
+                    width: [[12, 4px], [18, 8m]]
+        walls:
+            filter: { class: [wall, retaining_wall, fence] }
+            draw:
+                buildings-outline-style:
+                    order: 100
+                    color: global.building_outline_color
+                    width: [[15, 1px], [18, 2m]]
+        hedge:
+            filter: { class: [hedge, hedge_bank] }
+            draw:
+                buildings-outline-style:
+                    order: 100
+                    color: global.forest_color
+                    width: [[15, 1px], [18, 2m]]
+
+    pedestrian-areas:
+        data: { source: jawg , layer: road }
+        squares:
+            filter: { class: street_limited, type: pedestrian , $zoom: { min: 17 } }
+            draw:
+                lines:
+                    color: global.square_outline_color
+                    width: function () { return 1/4 * Math.log($zoom); }
+                    order: 30
+                polygons:
+                    color: global.square_color
+                    order: 31
+
+    hillshade:
+        data: { source: jawg , layer: hillshade }
+        highlights:
+            filter: { highlight: true }
+            draw:
+                hillshade-light-style:
+                    order: 100
+                    color: '#040404'
+        shadows:
+            filter: { shadow: true }
+            draw:
+                hillshade-shadow-style:
+                    order: 100
+                    color: '#f9f9f9'
+
+
+styles:
+    hillshade-light-style:
+        base: polygons
+        blend: add
+    hillshade-shadow-style:
+        base: polygons
+        blend: multiply
+    boundary_dashes:
+        base: lines
+        dash: [1, 2]
+    buildings-style:
+        base: polygons
+        blend: opaque
+    buildings-outline-style:
+        base: lines
+        blend: inlay
+    lines-coast:
+        base: lines
+        texcoords: true
+        blend: inlay
+        shaders:
+            uniforms:
+                u_waves: 1.5
+                u_speed: 0.08
+                u_color: [1.,1.,1.0,0.4]
+            blocks:
+                color: |
+                    float x = (v_texcoord.x - 0.495) * 2.;
+                    if(x > 0.0) {
+                        float opacity = 1.-x;
+                        float waves = fract(u_waves*(1.-x)-u_time*u_speed);
+                        color = mix(color, u_color, opacity * waves * u_color.a);
+                    } else {
+                        color.a = 0.0;
+                    }

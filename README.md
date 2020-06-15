@@ -46,3 +46,13 @@ Also, if you like StreetComplete, **spread the word**! ❤️
 ## License
 
 This software is released under the terms of the [GNU General Public License](http://www.gnu.org/licenses/gpl-3.0.html).
+
+## Sponsors
+
+<a href="https://www.jawg.io"><img src=".github/images/logo_jawgmaps.png" width="320"/></a><br/><a href="https://www.jawg.io">JawgMaps</a> is a provider of online custom maps, geocoding and routing based on OpenStreetMap data. They are providing their vector map tiles service to StreetComplete for free. The app is using these tiles since v21.
+
+<a href="https://nlnet.nl/discovery/"><img src=".github/images/logo_nlnet.svg" height="60"/><img src=".github/images/logo_ngi0.svg" height="60"/></a><br/>
+The <a href="https://nlnet.nl/discovery/">NGI Zero Discovery</a> is a thematic grant program organized by the NLnet foundation with focus on search and discovery. The grant allowed <a href="https://www.openstreetmap.org/user/Mateusz%20Konieczny/diary/368849">Mateusz Konieczny to work on StreetComplete</a> for about three months in 2019.
+
+<a href="https://github.com/sponsors/westnordost"><img src=".github/images/logo_github.png" width="100"/></a><a href="https://liberapay.com/westnordost"><img src=".github/images/logo_liberapay.svg" width="100"/></a><a href="https://www.patreon.com/westnordost"><img src=".github/images/logo_patreon.png" width="100"/></a><br/>
+Many people are currently supporting this app through <a href="https://github.com/sponsors/westnordost">GitHub sponsors</a>, <a href="https://liberapay.com/westnordost">Liberapay</a> and <a href="https://www.patreon.com/westnordost">Patreon</a>. If you like the app, you can join them to show your appreciation. ☺️

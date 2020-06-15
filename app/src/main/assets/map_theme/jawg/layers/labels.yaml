@@ -1,0 +1,101 @@
+layers:
+    road-labels:
+        data: { source: jawg, layer: road_label }
+        filter: { $zoom: { min: 14 } }
+        draw:
+            text:
+                text_source: global.name_source
+                buffer: 8px
+                text_wrap: 25
+                max_lines: 3
+                priority: 25
+                font:
+                    family: global.text_font_family
+                    fill: global.text_fill_color
+                    size: global.text_size
+                    stroke: global.text_stroke
+                    weight: normal
+
+    # jawg: state_label, mountain_peak, poi_label (w/ type=, zoomrank=) exists
+
+    water-labels:
+        data: { source: jawg, layer: [waterway_label, waterarea_label] }
+        filter: { $zoom: { min: 14 } }
+        draw:
+            text:
+                text_source: global.name_source
+                buffer: 12px
+                priority: function() { return feature.scalerank }
+                font:
+                    family: global.text_font_family
+                    fill: global.text_water_color
+                    size: global.text_size
+                    stroke: global.text_water_stroke
+    marine-labels:
+        data: { source: jawg, layer: marine_label }
+        draw:
+            text:
+                text_source: global.name_source
+                buffer: 12px
+                priority: function() { return feature.scalerank }
+                font:
+                    family: global.text_font_family
+                    fill: global.text_water_color
+                    size: global.text_size
+                    stroke: global.text_water_stroke
+                    transform: uppercase
+
+    country-labels:
+        data: { source: jawg, layer: country_label }
+        draw:
+            text:
+                text_source: global.name_source
+                buffer: 12px
+                priority: function() { return feature.scalerank }
+                font:
+                    family: global.text_font_family
+                    fill: global.text_fill_color
+                    size: global.text_size
+                    stroke: global.text_countries_stroke
+                    transform: uppercase
+                    weight: bold
+
+    place-labels:
+        data: { source: jawg, layer: place_label }
+        draw:
+            text:
+                text_source: global.name_source
+                buffer: 4px
+                priority: function() { return 10 + feature.scalerank }
+                font:
+                    family: global.text_font_family
+                    fill: global.text_fill_color
+                    size: global.text_size
+                    stroke: global.text_places_stroke
+
+        city:
+            filter: { type: city, $zoom: { min: 6 } }
+            draw:
+                text:
+                    font:
+                        weight: bold
+
+    housenumber-labels:
+        data: { source: jawg, layer: housenum_label }
+        filter: { $zoom: { min: 19 } }
+        draw:
+            text:
+                text_source: house_num
+                priority: 30
+                font:
+                    family: global.text_font_family
+                    fill: global.text_fill_color
+                    size: global.text_size
+                    stroke: global.text_stroke
+
+global:
+    name_source: |
+        function() {
+            // Use preferred language label if available
+            return (global.language && feature['name_'+global.language]) || feature.name;
+        }

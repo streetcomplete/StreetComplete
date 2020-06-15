@@ -1,9 +1,13 @@
 global:
+    api_key: false # intended to be overwritten by StreetComplete
     language: false # intended to be overwritten by StreetComplete
     text_font_family: 'Roboto'
     text_stroke_color: 'white'
+    text_water_color: '#fff'
     text_stroke: { color: global.text_stroke_color, width: 2.5px }
     text_places_stroke: { color: global.text_stroke_color, width: 2.5px }
+    text_countries_stroke: { color: global.text_stroke_color, width: 2.5px }
+    text_water_stroke: { color: global.water_color, width: 2.5px }
     text_fill_color: '#124'
     text_size_scaling: 1 # intended to be overwritten by StreetComplete
     text_size: |
@@ -78,10 +82,13 @@ lights:
         ambient: 0.7
 
 sources:
-    mapzen:
+    jawg:
         type: MVT
-        url: https://tiles.map-data.de/vector/v1/512/all/{z}/{x}/{y}.mvt
+        url: https://{s}.tile.jawg.io/streets-v1/{z}/{x}/{y}.pbf
+        url_subdomains: [a, b, c]
         max_zoom: 16
+        url_params:
+            access-token: global.api_key
 
 textures:
     oneway-arrow:
