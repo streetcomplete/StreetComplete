@@ -72,7 +72,7 @@ class QuestDownloadService : SingleIntentService(TAG) {
     private var currentQuestType: QuestType<*>? = null
 
     init {
-        Injector.instance.applicationComponent.inject(this)
+        Injector.applicationComponent.inject(this)
     }
 
     override fun onCreate() {

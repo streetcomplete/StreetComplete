@@ -14,7 +14,7 @@
         android:layout_centerHorizontal="true"
         android:columnCount="2">
 
-        <Button
+        <TextView
             android:id="@+id/profileButton"
             android:layout_width="144dp"
             android:layout_height="wrap_content"
@@ -23,9 +23,9 @@
             android:text="@string/user_profile"
             android:layout_gravity="center"
             android:drawableTop="@drawable/ic_profile_48dp"
-            style="?android:attr/borderlessButtonStyle" />
+            style="?android:attr/borderlessButtonStyle"/>
 
-        <Button
+        <TextView
             android:id="@+id/settingsButton"
             android:layout_width="144dp"
             android:layout_height="wrap_content"
@@ -36,7 +36,7 @@
             android:drawableTop="@drawable/ic_settings_48dp"
             style="?android:attr/borderlessButtonStyle" />
 
-        <Button
+        <TextView
             android:id="@+id/aboutButton"
             android:layout_width="144dp"
             android:layout_height="wrap_content"

@@ -1,12 +1,25 @@
 global:
-    language: false
-    text_font_family: 'Montserrat'
+    language: false # intended to be overwritten by StreetComplete
+    text_font_family: 'Roboto'
     text_stroke_color: 'white'
     text_stroke: { color: global.text_stroke_color, width: 2.5px }
     text_places_stroke: { color: global.text_stroke_color, width: 2.5px }
     text_fill_color: '#124'
-    text_size: 12px
+    text_size_scaling: 1 # intended to be overwritten by StreetComplete
+    text_size: |
+      function() {
+        var size = 13;
+        if ($zoom >= 18 && $zoom < 19) {
+          size = 15;
+        } else if ($zoom >= 19) {
+          size = 17;
+        }
+        return (size * global.text_size_scaling) + "px";
+      }
 
+    # The following colors are in most cases overwritten
+    # ones that are used are defined in streetcomplete-light-style.yaml
+    # and streetcomplete-dark-style.yaml files
     railway_color: '#99a'
     road_color: '#fff'
     highway_color: '#fa8'
@@ -19,7 +32,9 @@ global:
 
     earth_color: '#f3eacc'
     water_color: '#68d'
-    landuse_color: '#c6ddaa'
+    green_color: '#c6ddaa'
+    forest_color: '#a8c884'
+    town_color: '#f3dacd'
 
     building_color: rgb(204,214,238)
     building_outline_color: rgb(185,195,217)
@@ -67,15 +82,6 @@ sources:
         type: MVT
         url: https://tiles.map-data.de/vector/v1/512/all/{z}/{x}/{y}.mvt
         max_zoom: 16
-
-fonts:
-    Montserrat:
-        - weight: normal
-          url: fonts/Montserrat-Regular.woff
-        - weight: 500
-          url: fonts/Montserrat-Medium.woff
-        - weight: 700
-          url: fonts/Montserrat-Bold.woff
 
 textures:
     oneway-arrow:

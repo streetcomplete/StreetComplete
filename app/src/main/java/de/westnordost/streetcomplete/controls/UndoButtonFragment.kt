@@ -68,7 +68,7 @@ class UndoButtonFragment : Fragment(R.layout.fragment_undo_button),
     /* --------------------------------------- Lifecycle ---------------------------------------- */
 
     init {
-        Injector.instance.applicationComponent.inject(this)
+        Injector.applicationComponent.inject(this)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -125,7 +125,7 @@ class UndoButtonFragment : Fragment(R.layout.fragment_undo_button),
     }
 
     private fun updateUndoButtonVisibility() {
-        undoButton.visibility = if (undoableOsmQuestsSource.count > 0) View.VISIBLE else View.INVISIBLE
+        view?.visibility = if (undoableOsmQuestsSource.count > 0) View.VISIBLE else View.GONE
     }
 
     private fun updateUndoButtonEnablement(enable: Boolean) {

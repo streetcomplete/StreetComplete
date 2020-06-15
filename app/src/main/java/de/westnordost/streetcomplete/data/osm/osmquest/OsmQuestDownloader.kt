@@ -86,21 +86,21 @@ class OsmQuestDownloader @Inject constructor(
         if (geometry is ElementPolylinesGeometry) {
             val totalLength = geometry.polylines.sumByDouble { it.measuredLength() }
             if (totalLength > MAX_GEOMETRY_LENGTH_IN_METERS) {
-                Log.d(TAG, "$questTypeName: Not adding a quest at ${pos.toLogString()} because the geometry is too long")
+                Log.d(TAG, "$questTypeName: Not adding a quest for ${element.toLogString()} at ${pos.toLogString()} because the geometry is too long")
                 return false
             }
         }
 
         // do not create quests whose marker is at/near a blacklisted position
         if (blacklistedPositions.contains(pos.truncateTo5Decimals())) {
-            Log.d(TAG, "$questTypeName: Not adding a quest at ${pos.toLogString()} because there is a note at that position")
+            Log.d(TAG, "$questTypeName: Not adding a quest for ${element.toLogString()} at ${pos.toLogString()} because there is a note at that position")
             return false
         }
 
         // do not create quests in countries where the quest is not activated
         val countries = questType.enabledInCountries
         if (!countryBoundaries.isInAny(pos, countries)) {
-            Log.d(TAG, "$questTypeName: Not adding a quest at ${pos.toLogString()} because the quest is disabled in this country")
+            Log.d(TAG, "$questTypeName: Not adding a quest for ${element.toLogString()} at ${pos.toLogString()} because the quest is disabled in this country")
             return false
         }
 

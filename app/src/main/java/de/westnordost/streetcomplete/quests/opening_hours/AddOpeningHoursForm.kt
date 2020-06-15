@@ -4,7 +4,7 @@ import de.westnordost.streetcomplete.Injector
 
 class AddOpeningHoursForm : OpeningHoursForm() {
     init {
-        Injector.instance.applicationComponent.inject(this)
+        Injector.applicationComponent.inject(this)
     }
 
     override fun onClickOk() {

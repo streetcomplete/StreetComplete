@@ -34,9 +34,9 @@
     <string name="quest_openingHours_name_title">"Was sind die Öffnungszeiten von %s?"</string>
     <string name="quest_openingHours_start_time">"öffnet um"</string>
     <string name="quest_openingHours_end_time">"schließt um"</string>
-    <string name="quest_openingHours_add_months">"➕ Monate"</string>
-    <string name="quest_openingHours_add_hours">"➕ Zeiten"</string>
-    <string name="quest_openingHours_add_weekdays">"➕ Wochentage"</string>
+    <string name="quest_openingHours_add_months">"Monate hinzufügen"</string>
+    <string name="quest_openingHours_add_hours">"Zeiten hinzufügen"</string>
+    <string name="quest_openingHours_add_weekdays">"Wochentage hinzufügen"</string>
     <string name="quest_openingHours_chooseMonthsTitle">"Monate auswählen"</string>
     <string name="quest_openingHours_chooseWeekdaysTitle">"Wochentage auswählen"</string>
     <string name="quest_openingHours_24_7_confirmation">"Mit anderen Worten, es hat einfach immer, jeden Tag, auf?"</string>
@@ -155,7 +155,7 @@ Die von dir eingegebenen Informationen werden dann direkt in deinem Namen zu Ope
     <string name="quest_name_answer_noName">"Sie hat keinen Namen…"</string>
     <string name="quest_name_answer_noName_confirmation_title">"Wirklich kein Name?"</string>
     <string name="quest_name_noName_confirmation_positive">"Ja, kein Name"</string>
-    <string name="quest_openingHours_add_times">"➕ Öffnungszeiten"</string>
+    <string name="quest_openingHours_add_times">"Öffnungszeiten hinzufügen"</string>
     <string name="crash_message">"Würdest du dem Entwickler bitte den Fehlerbericht senden?"</string>
     <string name="crash_title">"Oh nein, StreetComplete ist letztes Mal abgestürzt!"</string>
     <string name="crash_compose_email">"E-Mail verfassen"</string>
@@ -457,7 +457,7 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_streetSurface_square_title">"Welche Oberfläche hat dieser Platz?"</string>
     <string name="quest_streetSurface_square_name_title">"Welche Oberfläche hat der Platz %s hier?"</string>
     <string name="quest_fee_answer_hours">"Abhängig von Tag und Uhrzeit…"</string>
-    <string name="quest_fee_add_times">"➕ Zeiten"</string>
+    <string name="quest_fee_add_times">"Zeiten hinzufügen"</string>
     <string name="quest_fee_only_at_hours">"Ja, aber nur…"</string>
     <string name="quest_fee_not_at_hours">"Ja, aber nicht…"</string>
     <string name="quest_fee_hours_title">"zu den folgenden Zeiten:"</string>
@@ -473,7 +473,7 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_bicycle_parking_type_title">"Was für eine Art von Fahrradabstellplatz ist das hier?"</string>
     <string name="quest_cycleway_value_suggestion_lane">"Mehrzweckstreifen"</string>
     <string name="quest_postboxCollectionTimes_title">"Wann wird dieser Postkasten geleert?"</string>
-    <string name="quest_collectionTimes_add_times">"➕ Leerungszeit"</string>
+    <string name="quest_collectionTimes_add_times">"Leerungszeit hinzufügen"</string>
     <string name="quest_collectionTimes_answer_no_times_specified">"Keine Zeiten angegeben"</string>
     <string name="quest_construction_road_title">"Ist diese Straße fertig gebaut?"</string>
     <string name="quest_construction_cycleway_title">"Ist dieser Fahrradweg fertig gebaut?"</string>
@@ -671,7 +671,7 @@ Jetzt aufspalten?"</string>
     <string name="quest_tactilePaving_title_name_tram">"Hat die Straßenbahnhaltestelle %s eine spezielle Pflasterung für Blinde?"</string>
     <string name="quest_maxweight_title">"Was ist das Maximalgewicht hier?"</string>
     <string name="quest_maxweight_answer_noSign">"Da ist kein Schild"</string>
-    <string name="quest_maxweight_unusualInput_confirmation_description">"Diese Höhe sieht ungewöhnlich aus. Bist du sicher, dass sie korrekt ist?"</string>
+    <string name="quest_maxweight_unusualInput_confirmation_description">"Dieses Gewicht sieht ungewöhnlich aus. Bist du sicher, dass es korrekt ist?"</string>
     <string name="quest_maxweight_answer_other_sign">"Schild sieht anders aus…"</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">"Willst du stattdessen eine Notiz hinterlassen? Mit Hilfe eines Fotos können andere Mapper sich darum kümmern, es einzutragen."</string>
     <string name="quest_generalFee_title">"Kostet %s Eintritt?"</string>
@@ -682,7 +682,7 @@ Jetzt aufspalten?"</string>
     <string name="quest_postboxRef_title">"Was ist die Referenznummer dieses Briefkastens?"</string>
     <string name="quest_postboxRef_name_title">"Was ist die Referenznummer dieses %s Briefkastens?"</string>
     <string name="quest_ref_answer_noRef">"Keine Referenznummer sichtbar…"</string>
-    <string name="quest_street_side_puzzle_tutorial">"Tippe auf die Fragezeichen um die Antwort für die jeweilige Seite der Straße auszuwählen."</string>
+    <string name="quest_street_side_puzzle_tutorial">"Tippe auf die Fragezeichen auf der Abbildung um die Antwort für die jeweilige Seite der Straße auszuwählen. Die Straße auf der Abbildung ist genauso gedreht wie auf der Karte an der Position des Pins."</string>
     <string name="quest_recycling_materials_title">"Was kann hier entsorgt werden?"</string>
     <string name="quest_recycling_materials_note">"Wenn noch Anderes entsorgt werden kann als man hier angeben kann, bitte hinterlasse stattdessen eine Notiz."</string>
     <string name="quest_recycling_type_batteries">"Batterien"</string>
@@ -722,7 +722,7 @@ Jetzt aufspalten?"</string>
     <string name="quest_tourism_information_guidepost">"Wegweiser"</string>
     <string name="quest_recycling_materials_answer_waste">"Ist für allgemeinen Müll"</string>
     <string name="quest_recycling_materials_answer_waste_description">"Das ist also ein Müllcontainer, wie etwa für Haus- oder Gewerbemüll?"</string>
-    <string name="quest_accepts_cash_title">"Aktzeptiert %s Bargeld?"</string>
+    <string name="quest_accepts_cash_title">"Akzeptiert %s Bargeld?"</string>
     <string name="user_profile">"Mein Profil"</string>
     <string name="user_login">"Anmelden"</string>
     <string name="user_logout">"Abmelden"</string>
@@ -808,13 +808,13 @@ Zu guter letzt, vergiss nicht dich nicht in Gefahr zu begeben: Achte auf deine U
 Diese Daten sind unentbehrlich nicht nur für Postboten sondern auch für  Navigationssysteme."</string>
     <string name="achievement_building_title">"Hoch hinaus"</string>
     <string name="achievement_building_solved_X">"Du hast %d Gebäude-relevante Aufgaben gelöst.
-Beachte, dass diese App nur Hausnummern von Gebäuden abfrafgt, deren Typ bereits bestimmt wurde."</string>
+Beachte, dass diese App nur Hausnummern von Gebäuden abfragt, deren Typ bereits bestimmt wurde."</string>
     <string name="achievement_blind_title">"Sechster Sinn"</string>
-    <string name="achievement_blind_solved_X">"Du hast %d Aufgaben die relevant für Sehbehinderte sind gelöst."</string>
+    <string name="achievement_blind_solved_X">"Du hast %d Aufgaben gelöst, die relevant für Sehbehinderte sind."</string>
     <string name="achievement_pedestrian_title">"Läufer"</string>
-    <string name="achievement_pedestrian_solved_X">"Du hast %d Aufgaben die relevant für Fußgänger gelöst sind gelöst."</string>
+    <string name="achievement_pedestrian_solved_X">"Du hast %d Aufgaben gelöst, die relevant für Fußgänger sind."</string>
     <string name="achievement_veg_title">"Tierlieb"</string>
-    <string name="achievement_veg_solved_X">"Du hast %d der Aufgaben die relevant für Vegetarier und Veganer sind gelöst"</string>
+    <string name="achievement_veg_solved_X">"Du hast %d Aufgaben gelöst, die Vegetariern und Veganen am Herzen liegen."</string>
     <string name="achievement_car_title">"Autofahrer"</string>
     <string name="achievement_car_solved_X">"Du hast %d Aufgaben gelöst, die Details zu Straßeninfrastrukturdaten hinzufügen!"</string>
     <string name="unread_messages_message">"Du hast %d ungelesene Nachrichten in deinem Posteingang"</string>
@@ -827,4 +827,23 @@ Beachte, dass diese App nur Hausnummern von Gebäuden abfrafgt, deren Typ bereit
     <string name="credits_projects_contributors_title">"Begleitprojekte"</string>
     <string name="credits_main_contributors_title">"Hauptmitwirkende"</string>
     <string name="stats_are_syncing">"Deine Statistiken synchronisieren noch. Schau später nochmal vorbei."</string>
+    <string name="user_statistics_country_rank">"Rang in %2$s: %1$d"</string>
+    <string name="user_statistics_country_wiki_link">"Mapping-Portal %s"</string>
+    <string name="user_statistics_filter_by_country">"nach Land"</string>
+    <string name="user_statistics_filter_by_quest_type">"nach Aufgabentyp"</string>
+    <string name="user_profile_global_rank">"Globaler
+Rang"</string>
+    <string name="user_profile_local_rank">"Rang in
+%s"</string>
+    <string name="user_profile_days_active">"Tage
+aktiv"</string>
+    <string name="user_profile_achievement_levels">"Level aller
+Erfolge"</string>
+    <string name="quest_address_street_title">"Zu welcher Straße gehört die Hausnummer %s?"</string>
+    <string name="quest_address_street_no_named_streets">"Zu keiner mit Namen"</string>
+    <string name="quest_address_street_place_name_label">"Ortsname:"</string>
+    <string name="quest_address_street_description">"Tippe die entsprechende Straße auf der Karte an oder gib den Straßennamen ohne Abkürzungen im Feld unten ein:"</string>
+    <string name="quest_buildingLevels_address_title">"Wie viele Stockwerke hat das Gebäude mit der Hausnummer %s?"</string>
+    <string name="quest_roofShape_address_title">"Welche grundlegende Dachform hat das Gebäude mit der Hausnummer %s?"</string>
+    <string name="quest_buildingType_address_title">"Was für ein Gebäude ist die Hausnummer %s?"</string>
 </resources>

@@ -14,7 +14,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/namesList"
-        android:background="@drawable/background_roadname"
+        android:background="@drawable/background_roadname_indented"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"

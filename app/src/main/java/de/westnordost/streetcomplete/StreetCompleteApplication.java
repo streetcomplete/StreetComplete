@@ -13,11 +13,13 @@ import javax.inject.Inject;
 import androidx.appcompat.app.AppCompatDelegate;
 import de.westnordost.countryboundaries.CountryBoundaries;
 import de.westnordost.osmfeatures.FeatureDictionary;
+import de.westnordost.streetcomplete.util.CrashReportExceptionHandler;
 
 public class StreetCompleteApplication extends Application
 {
 	@Inject FutureTask<CountryBoundaries> countryBoundariesFuture;
 	@Inject FutureTask<FeatureDictionary> featuresDictionaryFuture;
+	@Inject CrashReportExceptionHandler crashReportExceptionHandler;
 	@Inject SharedPreferences prefs;
 
 	private static final String PRELOAD_TAG = "Preload";
@@ -33,8 +35,11 @@ public class StreetCompleteApplication extends Application
 		}
 		LeakCanary.install(this);
 
-		Injector.instance.initializeApplicationComponent(this);
-		Injector.instance.getApplicationComponent().inject(this);
+		Injector.INSTANCE.initializeApplicationComponent(this);
+		Injector.INSTANCE.getApplicationComponent().inject(this);
+
+		crashReportExceptionHandler.install();
+
 		preload();
 
 		Prefs.Theme theme = Prefs.Theme.valueOf(prefs.getString(Prefs.THEME_SELECT, "AUTO"));

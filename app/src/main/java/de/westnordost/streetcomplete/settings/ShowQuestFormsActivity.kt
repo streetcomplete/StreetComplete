@@ -35,7 +35,7 @@ class ShowQuestFormsActivity : AppCompatActivity(), AbstractQuestAnswerFragment.
     private val showQuestFormAdapter: ShowQuestFormAdapter = ShowQuestFormAdapter()
 
     init {
-        Injector.instance.applicationComponent.inject(this)
+        Injector.applicationComponent.inject(this)
         showQuestFormAdapter.list = questTypeRegistry.all.toMutableList()
     }
 

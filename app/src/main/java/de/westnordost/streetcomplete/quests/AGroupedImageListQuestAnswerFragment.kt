@@ -2,12 +2,12 @@ package de.westnordost.streetcomplete.quests
 
 import android.content.Context
 import android.os.Bundle
-import android.preference.PreferenceManager
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import android.view.View
 import androidx.core.view.postDelayed
+import androidx.preference.PreferenceManager
 
 import javax.inject.Inject
 
@@ -17,6 +17,7 @@ import de.westnordost.streetcomplete.view.Item
 import kotlinx.android.synthetic.main.fragment_quest_answer.*
 import kotlinx.android.synthetic.main.quest_generic_list.*
 import java.util.*
+import kotlin.math.max
 
 /**
  * Abstract class for quests with a grouped list of images and one to select.
@@ -75,7 +76,7 @@ abstract class AGroupedImageListQuestAnswerFragment<I,T> : AbstractQuestFormAnsw
     }
 
     private fun scrollTo(index: Int) {
-        val item = imageSelector.gridLayoutManager.getChildAt(Math.max(0, index - 1))
+        val item = imageSelector.gridLayoutManager.getChildAt(max(0, index - 1))
         if (item != null) {
             val itemPos = IntArray(2)
             item.getLocationInWindow(itemPos)

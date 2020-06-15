@@ -10,102 +10,272 @@
     android:paddingEnd="@dimen/activity_horizontal_margin"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <RelativeLayout
-        android:id="@+id/userContainer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_max="400dp">
 
-        <ImageView
-            android:id="@+id/userAvatarImageView"
-            android:layout_width="128dp"
-            android:layout_height="128dp"
-            android:layout_marginEnd="16dp"
-            android:scaleType="fitCenter"
-            tools:src="@drawable/ic_osm_anon_avatar" />
-
-        <TextView
-            android:id="@+id/userNameTextView"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:id="@+id/profileContainer"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_toEndOf="@id/userAvatarImageView"
-            android:maxLines="1"
-            android:textAppearance="@style/TextAppearance.Title"
-            android:textSize="32dp"
-            app:autoSizeMaxTextSize="32dp"
-            app:autoSizeTextType="uniform"
-            tools:text="westnordost" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
-            android:id="@+id/solvedQuestsContainer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/userNameTextView"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="8dp"
-            android:layout_toEndOf="@id/userAvatarImageView"
-            android:divider="@drawable/space_4dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:showDividers="middle">
-
-            <ImageView
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:src="@drawable/ic_star_48dp" />
-
-            <TextView
-                android:id="@+id/solvedQuestsText"
+            <RelativeLayout
+                android:id="@+id/avatarAndButtonContainer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
+                android:layout_marginEnd="16dp">
+
+                <ImageView
+                    android:id="@+id/userAvatarImageView"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:scaleType="fitCenter"
+                    tools:src="@drawable/ic_osm_anon_avatar"
+                    android:layout_centerHorizontal="true"/>
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/userNameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:maxLines="1"
-                android:textAlignment="gravity"
+                android:gravity="center_vertical"
                 android:textAppearance="@style/TextAppearance.Title"
-                android:textSize="24dp"
-                tools:text="1021" />
+                android:textSize="32dp"
+                app:autoSizeMaxTextSize="32dp"
+                app:autoSizeTextType="uniform"
+                android:layout_toEndOf="@id/avatarAndButtonContainer"
+                tools:text="westnordost" />
 
-        </LinearLayout>
+            <LinearLayout
+                android:id="@+id/solvedQuestsContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/userNameTextView"
+                android:layout_marginTop="8dp"
+                android:layout_toEndOf="@id/avatarAndButtonContainer"
+                android:divider="@drawable/space_4dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:showDividers="middle">
 
-        <TextView
-            android:id="@+id/unpublishedQuestsText"
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/ic_star_48dp" />
+
+                <TextView
+                    android:id="@+id/solvedQuestsText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:maxLines="1"
+                    android:textAlignment="gravity"
+                    android:textAppearance="@style/TextAppearance.Title"
+                    android:textSize="24dp"
+                    tools:text="1021" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/unpublishedQuestsText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/solvedQuestsContainer"
+                android:layout_marginTop="8dp"
+                android:layout_toEndOf="@id/avatarAndButtonContainer"
+                tools:text="@string/unsynced_quests_description" />
+
+        </RelativeLayout>
+
+        <com.google.android.flexbox.FlexboxLayout
+            android:id="@+id/badgesContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/solvedQuestsContainer"
-            android:layout_toEndOf="@id/userAvatarImageView"
-            android:layout_marginTop="8dp"
-            tools:text="@string/unsynced_quests_description"/>
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/profileContainer"
+            app:flexWrap="wrap"
+            app:showDivider="middle"
+            app:dividerDrawableHorizontal="@drawable/space_16dp"
+            app:dividerDrawableVertical="@drawable/space_8dp"
+            app:showDividerVertical="middle"
+            app:showDividerHorizontal="middle"
+            app:alignContent="stretch">
 
-    </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/localRankContainer"
+                android:layout_width="84dp"
+                android:layout_height="wrap_content">
 
-    <RelativeLayout
-        android:id="@+id/buttonsContainer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/userContainer">
+                <TextView
+                    android:id="@+id/localRankText"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:background="@drawable/background_inverted_text_circle"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:maxLines="1"
+                    android:textAppearance="@style/TextAppearance.Title"
+                    android:layout_centerHorizontal="true"
+                    app:autoSizeTextType="uniform"
+                    app:autoSizeMaxTextSize="22dp"
+                    android:textColor="@color/background"
+                    tools:text="#1"/>
 
-        <Button
-            android:id="@+id/profileButton"
-            android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/localRankLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:textAppearance="@style/TextAppearance.Body"
+                    android:labelFor="@id/localRankText"
+                    android:layout_below="@+id/localRankText"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/user_profile_local_rank"
+                    tools:text="Rank in\nUnited States of America"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/globalRankContainer"
+                android:layout_width="84dp"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/globalRankText"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:background="@drawable/background_inverted_text_circle"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:maxLines="1"
+                    android:textAppearance="@style/TextAppearance.Title"
+                    android:layout_centerHorizontal="true"
+                    app:autoSizeTextType="uniform"
+                    app:autoSizeMaxTextSize="22dp"
+                    android:textColor="@color/background"
+                    tools:text="#882"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:textAppearance="@style/TextAppearance.Body"
+                    android:labelFor="@id/globalRankText"
+                    android:layout_below="@id/globalRankText"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/user_profile_global_rank"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/daysActiveContainer"
+                android:layout_width="84dp"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/daysActiveText"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:background="@drawable/background_inverted_text_circle"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:maxLines="1"
+                    android:textAppearance="@style/TextAppearance.Title"
+                    android:layout_centerHorizontal="true"
+                    app:autoSizeTextType="uniform"
+                    app:autoSizeMaxTextSize="22dp"
+                    android:textColor="@color/background"
+                    tools:text="82"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:textAppearance="@style/TextAppearance.Body"
+                    android:labelFor="@id/daysActiveText"
+                    android:layout_below="@id/daysActiveText"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/user_profile_days_active"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/achievementLevelsContainer"
+                android:layout_width="84dp"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/achievementLevelsText"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:background="@drawable/background_inverted_text_circle"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:maxLines="1"
+                    android:textAppearance="@style/TextAppearance.Title"
+                    android:layout_centerHorizontal="true"
+                    app:autoSizeTextType="uniform"
+                    app:autoSizeMaxTextSize="22dp"
+                    android:textColor="@color/background"
+                    tools:text="123"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:textAppearance="@style/TextAppearance.Body"
+                    android:labelFor="@+id/achievementLevelsText"
+                    android:layout_below="@id/achievementLevelsText"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/user_profile_achievement_levels"/>
+
+            </RelativeLayout>
+
+        </com.google.android.flexbox.FlexboxLayout>
+
+        <RelativeLayout
+            android:id="@+id/buttonsContainer"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:drawableStart="@drawable/ic_open_in_browser_24dp"
-            android:drawablePadding="8dp"
-            android:text="@string/osm_profile" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
 
-        <Button
-            android:id="@+id/logoutButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:text="@string/user_logout" />
+            <Button
+                android:id="@+id/profileButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                app:icon="@drawable/ic_open_in_browser_24dp"
+                android:layout_centerHorizontal="true"
+                android:text="@string/osm_profile" />
 
-    </RelativeLayout>
+            <Button
+                android:id="@+id/logoutButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="@string/user_logout"
+                style="@style/Widget.MaterialComponents.Button"/>
+
+        </RelativeLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

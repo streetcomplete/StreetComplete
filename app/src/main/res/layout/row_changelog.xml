@@ -16,11 +16,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="@style/TextAppearance.Title"
+        android:textIsSelectable="true"
         android:id="@+id/titleLabel"/>
 
     <org.sufficientlysecure.htmltextview.HtmlTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.Body"
+        android:textIsSelectable="true"
         android:id="@+id/descriptionLabel"/>
 
 </LinearLayout>

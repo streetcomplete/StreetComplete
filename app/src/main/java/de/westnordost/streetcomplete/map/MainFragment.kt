@@ -17,7 +17,6 @@ import android.os.Looper
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AccelerateInterpolator
-import android.view.animation.DecelerateInterpolator
 import android.view.animation.OvershootInterpolator
 import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
@@ -27,9 +26,10 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.UiThread
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.PopupMenu
+import androidx.core.graphics.minus
 import androidx.core.graphics.toPointF
 import androidx.core.graphics.toRectF
-import androidx.core.view.doOnLayout
+import androidx.core.view.children
 import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE
@@ -37,6 +37,7 @@ import androidx.fragment.app.FragmentTransaction
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.LatLon
+import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.osmapi.map.data.Way
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Injector
@@ -58,19 +59,27 @@ import de.westnordost.streetcomplete.location.LocationState
 import de.westnordost.streetcomplete.location.LocationUtil
 import de.westnordost.streetcomplete.map.tangram.CameraPosition
 import de.westnordost.streetcomplete.quests.*
-import de.westnordost.streetcomplete.sound.SoundFx
+import de.westnordost.streetcomplete.util.SoundFx
 import de.westnordost.streetcomplete.util.*
 import kotlinx.android.synthetic.main.fragment_main.*
 import java.util.*
 import javax.inject.Inject
 import kotlin.math.PI
-import kotlin.math.max
+import de.westnordost.streetcomplete.util.initialBearingTo
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.launch
+import kotlin.math.cos
+import kotlin.math.sin
 
 /** Contains the quests map and the controls for it. */
 class MainFragment : Fragment(R.layout.fragment_main),
-    MapFragment.Listener, QuestsMapFragment.Listener, AbstractQuestAnswerFragment.Listener,
+    MapFragment.Listener, LocationAwareMapFragment.Listener, QuestsMapFragment.Listener,
+    AbstractQuestAnswerFragment.Listener,
     SplitWayFragment.Listener, LeaveNoteInsteadFragment.Listener, CreateNoteFragment.Listener,
-    VisibleQuestListener {
+    VisibleQuestListener,
+    CoroutineScope by CoroutineScope(Dispatchers.Main) {
 
     @Inject internal lateinit var questController: QuestController
     @Inject internal lateinit var questDownloadController: QuestDownloadController
@@ -84,11 +93,12 @@ class MainFragment : Fragment(R.layout.fragment_main),
     private lateinit var locationManager: FineLocationManager
     private val mainHandler = Handler(Looper.getMainLooper())
 
-    private var isShowingControls = true
-    private var wasFollowingPosition = false
+    private var wasFollowingPosition = true
     private var wasCompassMode = false
 
     private var locationWhenOpenedQuest: Location? = null
+
+    private var windowInsets: Rect? = null
 
     private var mapFragment: QuestsMapFragment? = null
     private val bottomSheetFragment: Fragment? get() = childFragmentManagerOrNull?.findFragmentByTag(BOTTOM_SHEET)
@@ -117,16 +127,11 @@ class MainFragment : Fragment(R.layout.fragment_main),
     /* --------------------------------------- Lifecycle ---------------------------------------- */
 
     init {
-        Injector.instance.applicationComponent.inject(this)
+        Injector.applicationComponent.inject(this)
     }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-
-        soundFx.prepare(R.raw.plop0)
-        soundFx.prepare(R.raw.plop1)
-        soundFx.prepare(R.raw.plop2)
-        soundFx.prepare(R.raw.plop3)
 
         locationManager = FineLocationManager(
             context.getSystemService(Context.LOCATION_SERVICE) as LocationManager,
@@ -139,22 +144,15 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
         setupFittingToSystemWindowInsets()
 
+        locationPointerPin.setOnClickListener { onClickLocationPointer() }
+
         compassView.setOnClickListener { onClickCompassButton() }
         gpsTrackingButton.setOnClickListener { onClickTrackingButton() }
         zoomInButton.setOnClickListener { onClickZoomIn() }
         zoomOutButton.setOnClickListener { onClickZoomOut() }
         mainMenuButton.setOnClickListener { onClickMainMenu() }
 
-        isShowingControls = savedInstanceState?.getBoolean(SHOW_CONTROLS) ?: true
-
         updateMapQuestOffsets()
-
-        view.doOnLayout {
-            if (!isShowingControls) {
-                hideAll(leftSideContainer, -1)
-                hideAll(rightSideContainer, +1)
-            }
-        }
     }
 
     private fun setupFittingToSystemWindowInsets() {
@@ -168,6 +166,12 @@ class MainFragment : Fragment(R.layout.fragment_main),
                         insets.systemWindowInsetBottom
                     )
                 }
+                windowInsets = Rect(
+                    insets.systemWindowInsetLeft,
+                    insets.systemWindowInsetTop,
+                    insets.systemWindowInsetRight,
+                    insets.systemWindowInsetBottom
+                )
                 insets
             }
         }
@@ -196,6 +200,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
         } else {
             updateMapQuestOffsets()
         }
+        updateLocationPointerPin()
     }
 
     override fun onStart() {
@@ -212,11 +217,6 @@ class MainFragment : Fragment(R.layout.fragment_main),
         updateLocationAvailability()
     }
 
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        outState.putBoolean(SHOW_CONTROLS, isShowingControls)
-    }
-
     override fun onStop() {
         super.onStop()
         wasFollowingPosition = mapFragment?.isFollowingPosition ?: true
@@ -230,18 +230,21 @@ class MainFragment : Fragment(R.layout.fragment_main),
     override fun onDestroy() {
         super.onDestroy()
         mainHandler.removeCallbacksAndMessages(null)
+        coroutineContext.cancel()
     }
 
     /* ---------------------------------- MapFragment.Listener ---------------------------------- */
 
     override fun onMapInitialized() {
         gpsTrackingButton.isActivated = mapFragment?.isFollowingPosition ?: false
-        gpsTrackingButton.isCompassMode = mapFragment?.isCompassMode ?: false
+        updateLocationPointerPin()
     }
 
     override fun onMapIsChanging(position: LatLon, rotation: Float, tilt: Float, zoom: Float) {
         compassNeedleView.rotation = (180 * rotation / Math.PI).toFloat()
         compassNeedleView.rotationX = (180 * tilt / Math.PI).toFloat()
+
+        updateLocationPointerPin()
 
         val f = bottomSheetFragment
         if (f is AbstractQuestAnswerFragment<*>) f.onMapOrientation(rotation, tilt)
@@ -251,7 +254,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
         setIsFollowingPosition(false)
     }
 
-    override fun onMapDidChange(position: LatLon, rotation: Float, tilt: Float, zoom: Float, animated: Boolean) { }
+    override fun onMapDidChange(position: LatLon, rotation: Float, tilt: Float, zoom: Float) { }
 
     override fun onLongPress(x: Float, y: Float) {
         val point = PointF(x, y)
@@ -277,6 +280,12 @@ class MainFragment : Fragment(R.layout.fragment_main),
         popupMenu.show()
     }
 
+    /* --------------------------- LocationAwareMapFragment.Listener ---------------------------- */
+
+    override fun onLocationDidChange() {
+        updateLocationPointerPin()
+    }
+
     /* ------------------------------- QuestsMapFragment.Listener ------------------------------- */
 
     override fun onClickedQuest(questGroup: QuestGroup, questId: Long) {
@@ -299,6 +308,10 @@ class MainFragment : Fragment(R.layout.fragment_main),
             if (!f.onClickMapAt(position, clickAreaSizeInMeters))
                 f.onClickClose { closeBottomSheet() }
         }
+    }
+
+    override fun onClickedLocationMarker() {
+        setIsFollowingPosition(true)
     }
 
     /* -------------------------- AbstractQuestAnswerFragment.Listener -------------------------- */
@@ -421,20 +434,25 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
     @SuppressLint("MissingPermission")
     private fun onLocationIsEnabled() {
+        gpsTrackingButton.visibility = View.VISIBLE
         gpsTrackingButton.state = LocationState.SEARCHING
         mapFragment!!.startPositionTracking()
+
         setIsFollowingPosition(wasFollowingPosition)
         locationManager.requestSingleUpdate()
     }
 
     private fun onLocationIsDisabled() {
+        gpsTrackingButton.visibility = View.VISIBLE
         gpsTrackingButton.state = if (LocationUtil.hasLocationPermission(activity)) LocationState.ALLOWED else LocationState.DENIED
+        locationPointerPin.visibility = View.GONE
         mapFragment!!.stopPositionTracking()
         locationManager.removeUpdates()
     }
 
     private fun onLocationRequestFinished(state: LocationState) {
         if (activity == null) return
+        gpsTrackingButton.visibility = View.VISIBLE
         gpsTrackingButton.state = state
         if (state.isEnabled) {
             updateLocationAvailability()
@@ -442,7 +460,9 @@ class MainFragment : Fragment(R.layout.fragment_main),
     }
 
     private fun onLocationChanged(location: Location) {
+        gpsTrackingButton?.visibility = View.INVISIBLE
         gpsTrackingButton?.state = LocationState.UPDATING
+        updateLocationPointerPin()
     }
 
     /* --------------------------------- Map control buttons------------------------------------- */
@@ -556,7 +576,6 @@ class MainFragment : Fragment(R.layout.fragment_main),
     private fun setIsCompassMode(compassMode: Boolean) {
         val mapFragment = mapFragment ?: return
         mapFragment.isCompassMode = compassMode
-        gpsTrackingButton.isCompassMode = compassMode
     }
 
     private fun downloadDisplayedArea() {
@@ -600,6 +619,52 @@ class MainFragment : Fragment(R.layout.fragment_main),
             }
         }
         questDownloadController.download(bbox, ApplicationConstants.MANUAL_DOWNLOAD_QUEST_TYPE_COUNT, true)
+    }
+
+    /* ---------------------------------- Location Pointer Pin  --------------------------------- */
+
+    private fun updateLocationPointerPin() {
+        val mapFragment = mapFragment ?: return
+        val camera = mapFragment.cameraPosition ?: return
+        val position = camera.position
+        val rotation = camera.rotation
+
+        val location = mapFragment.displayedLocation
+        if (location == null) {
+            locationPointerPin.visibility = View.GONE
+            return
+        }
+        val displayedPosition = OsmLatLon(location.latitude, location.longitude)
+
+        var target = mapFragment.getPointOf(displayedPosition) ?: return
+        windowInsets?.let {
+            target -= PointF(it.left.toFloat(), it.top.toFloat())
+        }
+        val intersection = findClosestIntersection(mapControls, target)
+
+        if (intersection != null) {
+            val intersectionPosition = mapFragment.getPositionAt(intersection)
+            if (intersectionPosition != null) {
+                locationPointerPin.visibility = View.VISIBLE
+
+                val angleAtIntersection = position.initialBearingTo(intersectionPosition)
+                locationPointerPin.pinRotation = angleAtIntersection.toFloat() + (180 * rotation / PI).toFloat()
+
+                val a = angleAtIntersection * PI / 180f + rotation
+                val offsetX = (sin(a) / 2.0 + 0.5) * locationPointerPin.width
+                val offsetY = (-cos(a) / 2.0 + 0.5) * locationPointerPin.height
+                locationPointerPin.x = intersection.x - offsetX.toFloat()
+                locationPointerPin.y = intersection.y - offsetY.toFloat()
+            } else {
+                locationPointerPin.visibility = View.GONE
+            }
+        } else {
+            locationPointerPin.visibility = View.GONE
+        }
+    }
+
+    private fun onClickLocationPointer() {
+        setIsFollowingPosition(true)
     }
 
     /* --------------------------------- Managing bottom sheet  --------------------------------- */
@@ -685,7 +750,9 @@ class MainFragment : Fragment(R.layout.fragment_main),
         val activity = activity ?: return
         val view = view ?: return
 
-        soundFx.play(resources.getIdentifier("plop" + random.nextInt(4), "raw", ctx.packageName))
+        launch {
+            soundFx.play(resources.getIdentifier("plop" + random.nextInt(4), "raw", ctx.packageName))
+        }
 
         val root = activity.window.decorView as ViewGroup
         val img = layoutInflater.inflate(R.layout.effect_quest_plop, root, false) as ImageView
@@ -728,7 +795,6 @@ class MainFragment : Fragment(R.layout.fragment_main),
         wasCompassMode = mapFragment.isCompassMode
         mapFragment.isFollowingPosition = false
         mapFragment.isCompassMode = false
-        hideMapControls()
     }
 
     private fun unfreezeMap() {
@@ -737,43 +803,14 @@ class MainFragment : Fragment(R.layout.fragment_main),
         mapFragment.isFollowingPosition = wasFollowingPosition
         mapFragment.isCompassMode = wasCompassMode
         mapFragment.endFocusQuest()
-        showMapControls()
         mapFragment.show3DBuildings = true
         mapFragment.isShowingQuestPins = true
     }
 
-    private fun hideMapControls() {
-        isShowingControls = false
-        animateAll(rightSideContainer, +1, false, 120, 200)
-        animateAll(leftSideContainer, -1, false, 120, 200)
-    }
-
-    private fun showMapControls() {
-        isShowingControls = true
-        animateAll(rightSideContainer, 0, true, 120, 200)
-        animateAll(leftSideContainer, 0, true, 120, 200)
-    }
-
-    private fun animateAll(parent: ViewGroup, dir: Int, animateIn: Boolean, minDuration: Int, maxDuration: Int) {
-        val childCount = parent.childCount
-        val w = parent.width
-        for (i in 0 until childCount) {
-            val v = parent.getChildAt(i)
-            val order = if (animateIn) childCount - 1 - i else i
-            val duration = minDuration + (maxDuration - minDuration) / max(1, childCount - 1) * order
-            val animator = v.animate().translationX(w * dir.toFloat())
-            animator.duration = duration.toLong()
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1) {
-                animator.interpolator = if (dir != 0) AccelerateInterpolator() else DecelerateInterpolator()
-            }
-        }
-    }
-
     private fun hideAll(parent: ViewGroup, dir: Int) {
         val w = parent.width
-        for (i in 0 until parent.childCount) {
-            val v = parent.getChildAt(i)
-            v.translationX = w * dir.toFloat()
+        for (child in parent.children) {
+            child.translationX = w * dir.toFloat()
         }
     }
 
@@ -800,7 +837,6 @@ class MainFragment : Fragment(R.layout.fragment_main),
     }
 
     companion object {
-        private const val SHOW_CONTROLS = "ShowControls"
         private const val BOTTOM_SHEET = "bottom_sheet"
     }
 }

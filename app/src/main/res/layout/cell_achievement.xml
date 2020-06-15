@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center_horizontal"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="6dp"
+    android:clipToPadding="false">
 
     <de.westnordost.streetcomplete.user.AchievementIconView
         android:id="@+id/achievementIconView"

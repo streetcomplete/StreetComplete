@@ -22,7 +22,7 @@ import java.util.*
 
 class ResurveyOpeningHoursForm(val parser : OpeningHoursTagParser) : OpeningHoursForm() {
     init {
-        Injector.instance.applicationComponent.inject(this)
+        Injector.applicationComponent.inject(this)
     }
 
     internal lateinit var readOnlyOpeningHoursAdapter: AddOpeningHoursAdapter

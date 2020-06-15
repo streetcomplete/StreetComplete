@@ -20,7 +20,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.ktx.awaitLayout
+import de.westnordost.streetcomplete.ktx.awaitPreDraw
 import de.westnordost.streetcomplete.ktx.sumByFloat
 import kotlinx.android.synthetic.main.view_ball_pit.view.*
 import kotlinx.coroutines.CoroutineScope
@@ -61,6 +61,7 @@ class BallPitView @JvmOverloads constructor(
 
         override fun onSensorChanged(event: SensorEvent?) {
             if (event == null) return
+            if (display == null) return
             if (event.accuracy < SensorManager.SENSOR_STATUS_ACCURACY_LOW) return
             val x = event.values[0]
             val y = event.values[1]
@@ -112,8 +113,7 @@ class BallPitView @JvmOverloads constructor(
             isSceneSetup = true
         }
 
-        var areaInMeters = viewsAndSizes.map { it.second }.sumByFloat { getBubbleArea(it) }
-        if (areaInMeters == 0f) areaInMeters = 1f
+        val areaInMeters = max(1f, viewsAndSizes.map { it.second }.sumByFloat { getBubbleArea(it) })
         launch {
             setupScene(areaInMeters / BALLPIT_FILL_FACTOR)
             addBubblesToScene(viewsAndSizes)
@@ -123,7 +123,7 @@ class BallPitView @JvmOverloads constructor(
     /* --------------------------------- Set up physics layout  --------------------------------- */
 
     private suspend fun setupScene(areaInMeters: Float) {
-        physicsView.awaitLayout()
+        physicsView.awaitPreDraw()
 
         val width = physicsView.width.toFloat()
         val height = physicsView.height.toFloat()
@@ -167,7 +167,7 @@ class BallPitView @JvmOverloads constructor(
 
     @SuppressLint("ClickableViewAccessibility")
     private suspend fun addBubble(view: View, size: Int, position: Vec2) {
-        val radius = getBubbleRadius(size)
+        val radius = min(getBubbleRadius(size), min(worldBounds.width(), worldBounds.height())/3 )
         val body = createBubbleBody(position, radius)
 
         startInflatingAnimation(view, size, position.y)
@@ -230,7 +230,7 @@ class BallPitView @JvmOverloads constructor(
 
     companion object {
         private const val BUBBLE_BASE_SIZE_IN_M3 = 0.01f
-        private const val BALLPIT_FILL_FACTOR = 0.6f
+        private const val BALLPIT_FILL_FACTOR = 0.55f
         private const val FLING_SPEED_FACTOR = 0.3f
     }
 }

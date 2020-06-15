@@ -17,14 +17,12 @@ layers:
                 width: 1px
 
     water:
-        data: { source: mapzen}
+        data: { source: mapzen, layer: water }
         filter: {not: {is_tunnel: true}}
-
         draw:
-            lines:
+            polygons:
                 order: global.sort_rank
-                join: round
-                cap: square
+                color: global.water_color
 
         shore_lines:
             filter: { boundary: true, $zoom: { min: 16 } }
@@ -33,6 +31,15 @@ layers:
                     order: 220
                     width: [[16,20px],[18,10m]] # actually visually 1/3
                     color: global.water_color
+                    
+    waterways:
+        data: { source: mapzen, layer: water }
+        filter: {not: {is_tunnel: true}}
+        draw:
+            lines:
+                order: global.sort_rank
+                join: round
+                cap: square
 
         river_lines:
             filter: { kind: [river, canal] }
@@ -47,13 +54,6 @@ layers:
                 lines:
                     color: global.water_color
                     width: [[15, 1px], [17, 2px], [18, 5m]]
-
-        water_areas:
-            draw:
-                polygons:
-                    order: global.sort_rank
-                    color: global.water_color
-
 
     buildings:
         data: { source: mapzen}
@@ -71,12 +71,85 @@ layers:
                 extrude: true
 
     landuse:
-        data: { source: mapzen}
+        data: { source: mapzen }
         draw:
             polygons:
                 order: global.sort_rank
-                color: global.landuse_color
-
+        town:
+            filter:
+                kind:
+                    - residential
+                    - industrial
+                    - railway
+                    - bus_station
+                    - religious
+                    - commercial
+                    - retail
+                    - garages
+                    - farmyard
+                    - construction
+                    # all the below are not really landuses but sometimes drawn outside of residential/commercial landuses
+                    - university
+                    - school
+                    - college
+                    - kindergarten
+                    - library
+                    - hospital
+                    - nursing_home
+                    - social_facility
+                    - clinic
+                    - parking
+                    - conference_centre
+                    - theme_park
+            draw:
+                polygons:
+                    color: global.town_color
+        green:
+            filter:
+                kind:
+                    - meadow
+                    - farmland
+                    - grassland
+                    - heath
+                    - grass
+                    - greenfield
+                    - village_green
+                    - dog_park
+                    - park
+                    - graveyard
+                    - cemetery
+                    - golf_course
+                    - miniature_golf
+                    - sports_centre
+                    - recreation_ground
+                    - pitch
+                    - track
+                    - playground
+                    - garden
+                    - allotments
+                    - petting_zoo
+                    - zoo
+                    - wildlife_park
+                    - maze
+                    - resort
+            draw:
+                polygons:
+                    color: global.green_color
+        trees:
+            filter:
+                kind:
+                    - scrub
+                    - orchard
+                    - plant_nursery
+                    - vineyard
+                    - forest
+                    - wood
+                    - natural_wood
+                    - natural_forest
+                    - natural_park
+            draw:
+                polygons:
+                    color: global.forest_color
         city_walls:
             filter: { kind: [city_wall, dam] }
             draw:

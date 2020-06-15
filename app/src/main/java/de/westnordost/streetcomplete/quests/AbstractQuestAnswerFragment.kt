@@ -13,9 +13,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.Button
-import android.widget.LinearLayout
 import android.widget.PopupMenu
 import androidx.core.os.bundleOf
+import com.google.android.flexbox.FlexboxLayout
 
 import java.lang.ref.WeakReference
 import java.util.Locale
@@ -58,7 +58,7 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
 
     // views
     private lateinit var content: ViewGroup
-    private lateinit var buttonPanel: ViewGroup
+    private lateinit var buttonPanel: FlexboxLayout
     private lateinit var otherAnswersButton: Button
 
     // passed in parameters
@@ -108,7 +108,7 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
 
     init {
         val fields = InjectedFields()
-        Injector.instance.applicationComponent.inject(fields)
+        Injector.applicationComponent.inject(fields)
         countryInfos = fields.countryInfos
         featureDictionaryFuture = fields.featureDictionaryFuture
         questTypeRegistry = fields.questTypeRegistry
@@ -122,7 +122,7 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
         questGroup = QuestGroup.valueOf(args.getString(ARG_QUEST_GROUP)!!)
         osmElement = args.getSerializable(ARG_ELEMENT) as OsmElement?
         elementGeometry = args.getSerializable(ARG_GEOMETRY) as ElementGeometry
-        questType = questTypeRegistry.getByName(args.getString(ARG_QUESTTYPE)) as QuestType<T>
+        questType = questTypeRegistry.getByName(args.getString(ARG_QUESTTYPE)!!) as QuestType<T>
         initialMapRotation = args.getFloat(ARG_MAP_ROTATION)
         initialMapTilt = args.getFloat(ARG_MAP_TILT)
         _countryInfo = null // reset lazy field
@@ -305,9 +305,7 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
     }
 
     protected fun setButtonsView(resourceId: Int) {
-        // if other buttons are present, the other answers button should have a weight so that it
-        // can be squeezed if there is not enough space for everything
-        otherAnswersButton.layoutParams = LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT, 1f)
+        otherAnswersButton.layoutParams = FlexboxLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT)
         activity?.layoutInflater?.inflate(resourceId, buttonPanel)
     }
 

@@ -112,7 +112,7 @@
         },
         "barrier/height_restrictor": {
             "name": "Height Restrictor",
-            "terms": ""
+            "terms": "height barrier,height restriction barrier,maxheight,maximum height measurer"
         },
         "place/suburb": {
             "name": "Borough / Suburb",
@@ -170,10 +170,7 @@
             "terms": "bar,breakfast,cafe,café,canteen,dine,dining,dinner,drive-in,eat,grill,lunch,table"
         },
         "amenity/ferry_terminal": {
-            "name": "Ferry Station / Terminal"
-        },
-        "shop/furnace": {
-            "name": "Furnace Store"
+            "name": "Ferry Terminal"
         },
         "type/route/hiking": {
             "name": "Hiking Route",
@@ -372,6 +369,10 @@
             "name": "Fishing Spot",
             "terms": "angler"
         },
+        "building/sty": {
+            "name": "Pigsty",
+            "terms": "hog parlor,hog pen,pig ark,pig barn,pig parlor,pig pen,pig shed,pig shelter,pig-cote,piggery,pigpen,pigshed,sty"
+        },
         "building/boathouse": {
             "name": "Boathouse",
             "terms": ""
@@ -472,8 +473,8 @@
             "terms": "jewish"
         },
         "highway/construction": {
-            "name": "Road Closed",
-            "terms": "closed,closure,construction"
+            "name": "Closed Road",
+            "terms": "closure,construction,road closed,road work,roadwork"
         },
         "power/tower": {
             "name": "High-Voltage Tower",
@@ -717,6 +718,10 @@
         "building/grandstand": {
             "name": "Grandstand",
             "terms": "tribune,stand,stands,bleachers"
+        },
+        "building/office": {
+            "name": "Office Building",
+            "terms": "business center,office block"
         },
         "aeroway/hangar": {
             "name": "Hangar",
@@ -1292,7 +1297,7 @@
             "terms": "bonfire,campfire,fire circle,fire hole,fire place,fire ring,firepit,fireplace,firering"
         },
         "public_transport/station_ferry": {
-            "name": "Ferry Station / Terminal",
+            "name": "Ferry Terminal",
             "terms": "boat,dock,ferry,pier,public transit,public transportation,station,terminal,transit,transportation"
         },
         "man_made/bridge": {
@@ -1604,6 +1609,10 @@
             "name": "Bicycle Shed",
             "terms": "cycle shed,cycling,Bike Shed"
         },
+        "amenity/give_box": {
+            "name": "Free Box",
+            "terms": "donations,free box,free table,freebox,give box,give shelf,givebox,library,share shelf"
+        },
         "office/consulting": {
             "name": "Consultancy Office",
             "terms": "consulting firm office"
@@ -1615,6 +1624,10 @@
         "tourism/chalet": {
             "name": "Holiday Cottage",
             "terms": "chalet,holiday cabin,holiday cottage,holiday home,lodge,lodging,overnight accommodations,vacation cabin,vacation home"
+        },
+        "building/cowshed": {
+            "name": "Cowshed",
+            "terms": "byre,cow barn,cow house,cow shed,cowbarn,cowhouse,dairy barn,milking barn"
         },
         "leisure": {
             "name": "Leisure Feature"
@@ -1816,9 +1829,6 @@
         "shop/pet": {
             "name": "Pet Store",
             "terms": "animal,cat,dog,fish,kitten,puppy,reptile"
-        },
-        "amenity/scrapyard": {
-            "name": "Scrap Yard"
         },
         "highway/service/alley": {
             "name": "Alley",
@@ -2188,8 +2198,8 @@
             "terms": "bar,breakfast,cafe,café,canteen,dine,dining,dinner,drive-in,eat,grill,lunch,table"
         },
         "aeroway/apron": {
-            "name": "Apron",
-            "terms": "ramp"
+            "name": "Airport Apron",
+            "terms": "aircraft parking,flight line,hardstand,ramp,tarmac,taxiway"
         },
         "historic/castle/fortress": {
             "name": "Historic Fortress",
@@ -2384,7 +2394,7 @@
             "terms": "auto mechanic,automechanic,automobile,automotive,garage,inspection,oil change,service"
         },
         "craft/hvac": {
-            "name": "HVAC",
+            "name": "HVAC Workplace",
             "terms": "heat*,vent*,air conditioning"
         },
         "leisure/water_park": {
@@ -2502,7 +2512,7 @@
             "terms": "fireplace,stove,masonry heater"
         },
         "craft/handicraft": {
-            "name": "Handicraft",
+            "name": "Handicraft Workspace",
             "terms": ""
         },
         "piste/downhill/halfpipe": {
@@ -2542,7 +2552,7 @@
         },
         "barrier/lift_gate": {
             "name": "Lift Gate",
-            "terms": ""
+            "terms": "boom barrier,boom gate,boom lift,hinged bar,pivoted pole"
         },
         "public_transport/platform/light_rail_point": {
             "name": "Light Rail Stop / Platform"
@@ -2808,6 +2818,10 @@
             "name": "Ice Cream Vending Machine",
             "terms": "chocolate,ice cream,frozen,popsicle,vanilla"
         },
+        "leisure/trampoline_park": {
+            "name": "Trampoline Park",
+            "terms": "bounce,jump,spring"
+        },
         "public_transport/stop_position_monorail": {
             "name": "Monorail Stopping Location",
             "terms": "monorail,public transit,public transportation,rail,transit,transportation"
@@ -3041,6 +3055,10 @@
             "name": "Underwear Store",
             "terms": "boutique,bras,brassieres,briefs,boxers,fashion,lingerie,panties,slips,socks,stockings,underclothes,undergarments,underpants,undies"
         },
+        "shop/household_linen": {
+            "name": "Household Linen Shop",
+            "terms": "bedspreads,blankets,domestic cloths,curtains,handkerchieves,napkins,pillow cases,robes,sheets,towels"
+        },
         "craft/boatbuilder": {
             "name": "Boat Builder",
             "terms": ""
@@ -3095,6 +3113,10 @@
         "shop/camera": {
             "name": "Camera Equipment Store",
             "terms": "camera,film,lens,photo"
+        },
+        "healthcare/dentist/orthodontics": {
+            "name": "Orthodontist",
+            "terms": "braces,dentistry,dentofacial orthopedics,headgear,jaw alignment,teeth,tooth"
         },
         "healthcare/alternative": {
             "name": "Alternative Medicine",
@@ -3258,9 +3280,6 @@
         "landuse/farmland": {
             "name": "Farmland",
             "terms": "crop,grow,plant"
-        },
-        "shop/fishmonger": {
-            "name": "Fishmonger"
         },
         "shop/baby_goods": {
             "name": "Baby Goods Store",
@@ -3791,9 +3810,6 @@
             "name": "Tree",
             "terms": ""
         },
-        "amenity/register_office": {
-            "name": "Register Office"
-        },
         "indoor/wall": {
             "name": "Indoor Wall",
             "terms": "indoor barrier,room divider,room partition"
@@ -3973,9 +3989,6 @@
         "traffic_sign_vertex": {
             "name": "Traffic Sign",
             "terms": "road,highway"
-        },
-        "amenity/swimming_pool": {
-            "name": "Swimming Pool"
         },
         "natural/stone": {
             "name": "Unattached Stone / Boulder",
@@ -4637,6 +4650,10 @@
             "name": "Transportation Building",
             "terms": ""
         },
+        "shop/shoe_repair": {
+            "name": "Shoe Repair Shop",
+            "terms": "cobbler"
+        },
         "amenity/public_bookcase": {
             "name": "Public Bookcase",
             "terms": "library,bookcrossing"
@@ -4848,6 +4865,10 @@
             "name": "Solar Panel",
             "terms": "photovoltaic module,PV module,sunlight"
         },
+        "shop/collector": {
+            "name": "Collectibles Shop",
+            "terms": "antiques,coins,collection,collectors,comics,dolls,figurines,numismatics,philately,stamps,thrift"
+        },
         "type/route/foot": {
             "name": "Foot Route",
             "terms": ""
@@ -4893,6 +4914,10 @@
         },
         "emergency/official": {
             "name": "Emergency Access Official"
+        },
+        "man_made/reservoir_covered": {
+            "name": "Covered Reservoir",
+            "terms": "underground reservoir,water tank"
         },
         "railway/derail": {
             "name": "Railway Derailer",
@@ -4997,6 +5022,10 @@
         "man_made/manhole/water": {
             "name": "Water Utility Manhole",
             "terms": "cover,drinking,hole,utility,water"
+        },
+        "man_made/courtyard": {
+            "name": "Courtyard",
+            "terms": "court,enclosed open air,quadrangle,yard"
         },
         "barrier/gate": {
             "name": "Gate",
@@ -5137,7 +5166,7 @@
             "terms": "low-head dam,low-rise dam,wier"
         },
         "craft/metal_construction": {
-            "name": "Metal Construction",
+            "name": "Metalworker",
             "terms": ""
         },
         "craft/painter": {

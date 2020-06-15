@@ -2,33 +2,29 @@ package de.westnordost.streetcomplete.data.quest
 
 import android.content.SharedPreferences
 import android.util.Log
-
-import javax.inject.Inject
-
+import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.map.data.OsmElement
 import de.westnordost.streetcomplete.Prefs
-import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuest
-import de.westnordost.streetcomplete.data.osm.splitway.OsmQuestSplitWay
-import de.westnordost.streetcomplete.data.osm.osmquest.undo.UndoOsmQuest
-import de.westnordost.streetcomplete.data.osm.splitway.SplitPolylineAtPosition
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.MergedElementDao
-import de.westnordost.streetcomplete.data.osm.splitway.OsmQuestSplitWayDao
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuest
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestController
+import de.westnordost.streetcomplete.data.osm.osmquest.undo.UndoOsmQuest
 import de.westnordost.streetcomplete.data.osm.osmquest.undo.UndoOsmQuestDao
+import de.westnordost.streetcomplete.data.osm.splitway.OsmQuestSplitWay
+import de.westnordost.streetcomplete.data.osm.splitway.OsmQuestSplitWayDao
+import de.westnordost.streetcomplete.data.osm.splitway.SplitPolylineAtPosition
 import de.westnordost.streetcomplete.data.osmnotes.createnotes.CreateNote
 import de.westnordost.streetcomplete.data.osmnotes.createnotes.CreateNoteDao
-import de.westnordost.streetcomplete.quests.note_discussion.NoteAnswer
-import de.westnordost.osmapi.map.data.Element
-
-import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestController
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestController
+import de.westnordost.streetcomplete.quests.note_discussion.NoteAnswer
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import javax.inject.Inject
 import javax.inject.Singleton
 
 /** Controls the workflow of quests: Solving them, hiding them instead, splitting the way instead,

@@ -1,3 +1,98 @@
+v20.1: |
+  <h3>Fixes and Enhancements</h3>
+  <ul>
+    <li>Workaround drawing problem with the location pin in Android 6 (#1879), thanks @matkoniecz</li>
+    <li>Fix crashy country bubble in statistics screen (#1886)</li>
+    <li>Road name and bus name: Trim whitespaces at start and end of user input (#1861)</li>
+    <li>Crossing type: Don't ask for crossings that are not for pedestrians (#1868), by @matkoniecz</li>
+    <li>Tactile paving on crossing: Don't ask for crossings that are not for pedestrians (#1875)</li>
+    <li>House numbers: Don't ask the housenumber of buildings which are in a relation that already has a housenumber (#1860)</li>
+    <li>Show tutorial again if user exits the app before finishing it (#1867)</li>
+    <li>Max weight: Correct German translation (#1884)</li>
+    <li>Address street: Do not show immediately after answering the housenumber quest but only after next download (#1856). Selecting the street by tapping on it would not work otherwise. </li>
+  </ul>
+
+v20.0: |
+  <h3>📈 New Statistics</h3>
+  <ul>
+    <li>🌍 See your solved quests grouped by country</li>
+    <li>See how you rank amongst other StreetComplete users</li>
+    <li>See how many days you contributed and the sum of your achievement levels</li>
+    <li>Access the mapping portal for each country you contributed to, with useful infos about local mapping efforts and for connecting with the local community</li>
+  </ul>
+  <h3>New Quests</h3>
+  <ul>
+    <li>What street does the (house) number ... belong to? (#1782, #213), by @dbdean, @matkoniecz and me</li>
+  </ul>
+  <h3>Enhancements</h3>
+  <ul>
+    <li>A pointer pin at the edge of the screen replaces the GPS button and points to your current location</li>
+    <li>📱 The app is now optimized to look great on tablets and phablets as well! (#1794)</li>
+    <li>On map, use different colors to differentiate town, green and trees</li>
+    <li>Text in note discussions is now selectable</li>
+    <li>Add proper shadows for all the speech bubble forms</li>
+    <li>bubbles in ball pit now display with shadow (#1840)</li>
+    <li>text is selectable now in changelog, credits and privacy statement (#1833)</li>
+    <li>smaller animation time for quest counter in statistics (#1832)</li>
+    <li>Distribute answer buttons over several lines if it does not fit into one (#1372)</li>
+    <li>Do not ask for the type of building for places where it is known for what the building is used (#1854)</li>
+  </ul>
+  <h3>Fixes</h3>
+  <ul>
+    <li>on pressing the hardware menu button, don't open the menu twice (#1806)</li>
+    <li>bubbles in the statistics view shouldn't grow too large anymore (#1818)</li>
+    <li>Previous quest selection was still displayed when creating a note (#1820)</li>
+    <li>On splitting a way, require the user to zoom in far enough to use the scissors</li>
+    <li>Fix link collection sometimes appearing empty</li>
+    <li>Fix close-button was not shown when bottom sheet was pulled up completely</li>
+    <li>fix achievement icons would sometimes vanish (and other oddities) (#1834)</li>
+    <li>if the text on the buttons in the button bar is too long, use several lines (#1372)</li>
+    <li>More minor / technical fixes</li>
+  </ul>
+
+
+v20.0-beta2: |
+  <h3>New Quests</h3>
+  <ul>
+  <li>What street does the (house) number ... belong to? (#1782, #213), by @dbdean, @matkoniecz and me</li>
+  </ul>
+  <h3>Fixes and Enhancements</h3>
+  <ul>
+    <li>bubbles in ball pit now display with shadow (#1840)</li>
+    <li>fix achievement icons would sometimes vanish (and other oddities) (#1834)</li>
+    <li>text is selectable now in changelog, credits and privacy statement (#1833)</li>
+    <li>move pointer pin below other map buttons (#1838)</li>
+    <li>buttons in bottom sheet button bar are a bit slimmer now (#1839)</li>
+    <li>smaller animation time for quest counter in statistics (#1832)</li>
+  </ul>
+
+
+v20.0-beta1: |
+  <h3>📈 New Statistics</h3>
+  <ul>
+    <li>🌍 See your solved quests grouped by country</li>
+    <li>See how you rank amongst other StreetComplete users</li>
+    <li>See how many days you contributed and the sum of your achievement levels</li>
+    <li>Access the mapping portal for each country you contributed to, with useful infos about local mapping efforts and for connecting with the local community</li>
+  </ul>
+  <h3>Enhancements</h3>
+  <ul>
+    <li>A pointer pin at the edge of the screen replaces the GPS button and points to your current location</li>
+    <li>📱 The app is now optimized to look great on tablets and phablets as well! (#1794)</li>
+    <li>Text in note discussions is now selectable</li>
+    <li>Add proper shadows for all the speech bubble forms</li>
+  </ul>
+  <h3>Fixes</h3>
+  <ul>
+    <li>on pressing the hardware menu button, don't open the menu twice (#1806)</li>
+    <li>bubbles in the statistics view shouldn't grow too large anymore (#1818)</li>
+    <li>Previous quest selection was still displayed when creating a note (#1820)</li>
+    <li>On splitting a way, require the user to zoom in far enough to use the scissors</li>
+    <li>Fix link collection sometimes appearing empty</li>
+    <li>Fix close-button was not shown when bottom sheet was pulled up completely</li>
+    <li>More minor / technical fixes</li>
+  </ul>
+
 v19.2: |
   <p>Maybe the announced end of new (big) features for StreetComplete is not over yet! I applied to two microgrants at the OpenStreetMap Foundation, you can endorse them if you like these ideas:</p>
   <ol>

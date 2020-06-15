@@ -1,418 +1,1154 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!-- Fuzzy -->
     <string name="action_settings">"Cài đặt"</string>
+
+    <!-- Fuzzy -->
     <string name="oauth_communication_error">"Không thể kết nối đến máy chủ xác thực"</string>
+
+    <!-- Fuzzy -->
     <string name="retry">"Thử lại"</string>
+
+    <!-- Fuzzy -->
     <string name="oauth_failed_permissions">"Thất bại khi xác thực: Cần phải cấp phép tất cả các khả năng được yêu cầu"</string>
+
+    <!-- Fuzzy -->
     <string name="title_activity_settings">"Cài đặt"</string>
+
+    <!-- Fuzzy -->
     <string name="pref_category_communication">"Liên lạc"</string>
+
+    <!-- Fuzzy -->
     <string name="pref_category_display">"Giao diện"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
+
+    <!-- Fuzzy -->
     <string name="pref_title_show_notes_not_phrased_as_questions">"Hiển thị tất cả các ghi chú"</string>
+
+    <!-- Fuzzy -->
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Bao gồm các ghi chú hỏi câu hỏi"</string>
+
+    <!-- Fuzzy -->
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Bỏ qua các ghi chú hỏi câu hỏi"</string>
+
+    <!-- Fuzzy -->
     <string name="pref_title_map_cache">"Kích thước vùng nhớ đệm bản đồ"</string>
+
+    <!-- Fuzzy -->
     <string name="map_btn_gps_tracking">"Theo dõi tôi"</string>
     <string name="map_attribution_mapzen">"Hình bản đồ do %s cung cấp"</string>
+
+    <!-- Fuzzy -->
     <string name="map_attribution_osm">"© những người đóng góp vào OpenStreetMap"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_generic_otherAnswers">"Câu trả lời khác…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_generic_answer_notApplicable">"Chẳng biết"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_generic_confirmation_title">"Bạn có chắc chắn?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_generic_confirmation_yes">"Chắc chắn"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_generic_confirmation_no">"Để tôi xem lại"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_generic_error_field_empty">"Bạn để trống hộp này"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_leave_new_note_title">"Có muốn để lại một ghi chú thay thế?"</string>
     <string name="quest_leave_new_note_yes">"OK"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_leave_new_note_no">"Thôi, ẩn đi"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetName_title">"Con đường này tên gì?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetName_description">"theo bảng tên đường, không viết tắt:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Không viết tắt"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_name_title">"%s mở cửa mấy giờ?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_start_time">"giờ mở cửa"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_end_time">"giờ đóng cửa"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_add_months">"Thêm tháng"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_add_hours">"Thêm giờ"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_add_weekdays">"Thêm ngày thường"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_chooseMonthsTitle">"Chọn tháng"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_chooseWeekdaysTitle">"Chọn ngày thường"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_24_7_confirmation">"Có lúc nào cũng mở cửa 24 giờ, 7 ngày một tuần?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_noteDiscussion_no">"Không, ẩn đi"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_noteDiscussion_anonymous">"Vô danh"</string>
+
+    <!-- Fuzzy -->
     <string name="confirmation_discard_title">"Loại bỏ lời đáp?"</string>
+
+    <!-- Fuzzy -->
     <string name="confirmation_discard_positive">"Loại bỏ"</string>
+
+    <!-- Fuzzy -->
     <string name="confirmation_discard_negative">"Hủy bỏ"</string>
+
+    <!-- Fuzzy -->
     <string name="action_upload">"Tải lên câu trả lời"</string>
+
+    <!-- Fuzzy -->
     <string name="no_changes">"Bạn chưa trả lời"</string>
+
+    <!-- Fuzzy -->
     <string name="close">"đóng"</string>
+
+    <!-- Fuzzy -->
     <string name="upload_error">"Lỗi khi tải lên câu trả lời"</string>
+
+    <!-- Fuzzy -->
     <string name="download_area_too_big">"Hãy phóng to hơn"</string>
+
+    <!-- Fuzzy -->
     <string name="about_title_authors">"Ghi công"</string>
 
     <!-- Fuzzy -->
     <string name="about_summary_authors">"© 2016–2020 Tobias Zwick và những người đóng góp"</string>
+
+    <!-- Fuzzy -->
     <string name="about_title_repository">"Kho mã nguồn"</string>
+
+    <!-- Fuzzy -->
     <string name="about_summary_repository">"tại GitHub"</string>
+
+    <!-- Fuzzy -->
     <string name="about_title_report_error">"Báo cáo lỗi"</string>
+
+    <!-- Fuzzy -->
     <string name="about_title_feedback">"Gửi phần hồi"</string>
+
+    <!-- Fuzzy -->
     <string name="about_title_license">"Giấy phép"</string>
     <string name="about_summary_license">"Giấy phép Công cộng GNU"</string>
+
+    <!-- Fuzzy -->
     <string name="offline">"Đang ngoại tuyến"</string>
+
+    <!-- Fuzzy -->
     <string name="confirmation_authorize_now">"Bạn phải xác thực tài khoản người dùng OSM để đăng lên các câu trả lời của bạn. Bạn có muốn xác thực bây giờ?"</string>
+
+    <!-- Fuzzy -->
     <string name="not_authorized">"Chưa xác thực"</string>
+
+    <!-- Fuzzy -->
     <string name="later">"Lát nữa"</string>
+
+    <!-- Fuzzy -->
     <string name="about_title_privacy_statement">"Tuyên bố về quyền riêng tư"</string>
+
+    <!-- Fuzzy -->
     <string name="about_summary_privacy_statement">"và mức sử dụng dữ liệu"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_public_holidays">"Ngày nghỉ công cộng"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_public_holidays_short">"Ngày nghỉ"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_open_end">"giờ đóng không cố định"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_answer_247">"Mở cửa 24/7"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_answer_seasonal_opening_hours">"Tùy tháng…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_answer_no_regular_opening_hours">"Không có giờ giấc cố định…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_comment_title">"Miêu tả giờ mở cửa"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingLevels_title">"Tòa nhà này có bao nhiêu lầu?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingLevels_title_buildingPart">"Phần tòa nhà này có bao nhiêu lầu?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_roofShape_title">"Mái nhà này đại khái có hình dạng nào?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_roofShape_select_one">"Chọn một:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_roofShape_show_more">"Hiện thêm…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_roofShape_answer_many">"Có nhiều hình dạng"</string>
+
+    <!-- Fuzzy -->
     <string name="pref_title_sync">"Tự động đồng bộ"</string>
+
+    <!-- Fuzzy -->
     <string name="map_btn_zoom_out">"Thu nhỏ"</string>
+
+    <!-- Fuzzy -->
     <string name="map_btn_zoom_in">"Phóng to"</string>
+
+    <!-- Fuzzy -->
     <string name="autosync_on">"Bật"</string>
+
+    <!-- Fuzzy -->
     <string name="autosync_only_on_wifi">"Chỉ khi có Wi-Fi"</string>
+
+    <!-- Fuzzy -->
     <string name="autosync_off">"Tắt"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetSurface_title">"Con đường này có loại mặt đường nào?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_value_paved">"Lát (chung)"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_value_unpaved">"Không lát (chung)"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_value_ground">"Đất (chung)"</string>
     <string name="quest_surface_value_asphalt">"Nhựa"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_value_concrete">"Bê tông"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_value_dirt">"Đất"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_value_fine_gravel">"Sỏi mịn"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_value_grass">"Cỏ"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_value_gravel">"Sỏi thô"</string>
     <string name="quest_surface_value_sand">"Cát"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_value_sett">"Gạch lát"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_value_wood">"Gỗ"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_placeName_title">"Nơi này tên gì?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sidewalk_title">"Con đường này có lề đi bộ không?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Con đường này ở loại vùng nào?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cyclewaySurface_title">"Đường xe đạp này có loại mặt đường gì?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetLanes_title">"Con đường này có bao nhiêu làn?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetLanes_description">"Nếu con đường không có vạch thì không có làn."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetLanes_answer_noLanes">"Không có vạch kẻ làn"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_oneway_title">"Đây có phải là con đường một chiều?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_title">"Tòa nhà này là số bao nhiêu?"</string>
+
+    <!-- Fuzzy -->
     <string name="store_listing_short_description">"Ứng dụng khảo sát OpenStreetMap"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_name_answer_noName">"Không có tên…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_name_answer_noName_confirmation_title">"Chắc chắn không có tên?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_name_noName_confirmation_positive">"Chắc chắn, không có tên"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_add_times">"Thêm giờ mở cửa"</string>
+
+    <!-- Fuzzy -->
     <string name="crash_compose_email">"Biên soạn thư điện tử"</string>
+
+    <!-- Fuzzy -->
     <string name="no_email_client">"Thiết bị này chưa cài đặt ứng dụng thư điện tử."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_generic_hasFeature_yes">"Có"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_generic_hasFeature_no">"Không có"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopShelter_title">"Trạm dừng xe buýt này có nhà chờ không?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_bikeParkingCapacity_title">"Có thể đậu bao nhiêu xe đạp tại đây?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_unusualHousenumber_confirmation_description">"Số nhà này có vẻ lạ."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sport_title">"Sân này dành cho môn thể thao gì?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sport_answer_multi">"Không dành cho môn thể thao cụ thể"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sport_soccer">"Bóng đá"</string>
     <string name="quest_sport_tennis">"Quần vợt"</string>
     <string name="quest_sport_baseball">"Bóng chày"</string>
     <string name="quest_sport_basketball">"Bóng rổ"</string>
     <string name="quest_sport_golf">"Gôn"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sport_equestrian">"Cưỡi ngựa"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sport_athletics">"Điền kinh"</string>
     <string name="quest_sport_volleyball">"Bóng chuyền"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sport_beachvolleyball">"Bóng chuyền bãi biển"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sport_american_football">"Bóng bầu dục Mỹ"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sport_skateboard">"Trượt ván"</string>
     <string name="quest_sport_bowls">"Bóng gỗ"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sport_boules">"Boules (bi sắt)"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sport_shooting">"Bắn súng"</string>
     <string name="quest_sport_cricket">"Bóng gậy"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sport_table_tennis">"Bóng bàn"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sport_gymnastics">"Thể dục dụng cụ"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sport_archery">"Bắn cung"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sport_australian_football">"Bóng bầu dục Úc"</string>
     <string name="quest_sport_badminton">"Cầu lông"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sport_canadian_football">"Bóng bầu dục Canada"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sport_field_hockey">"Khúc côn cầu trên cỏ"</string>
     <string name="quest_sport_handball">"Bóng ném"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sport_ice_hockey">"Khúc côn cầu trên băng"</string>
     <string name="quest_sport_netball">"Bóng lưới"</string>
     <string name="quest_sport_rugby">"Bóng bầu dục rugby"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_select_hint">"Chọn:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_manySports_confirmation_generic">"Đa năng"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sport_manySports_confirmation_title">"Bạn đã chọn nhiều môn thể thao"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopShelter_name_title">"Trạm dừng xe buýt %s có nhà chờ?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_toiletsFee_title">"Có phải trả phí để sử dụng phòng vệ sinh này?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_bicycleParkingCoveredStatus_title">"Chỗ đậu xe đạp này có mái che (khỏi bị mưa)?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_urbanOk">"Thành thị"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_ruralOk">"Nông thôn"</string>
     <string name="quest_sport_softball">"Bóng mềm"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sport_ice_skating">"Trượt băng"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sport_sepak_takraw">"Cầu mây"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_name_title">"%s có đi xe lăn được?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited">"Có nhưng hạn chế"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sport_roller_skating">"Patanh"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_bus_station_title">"Ga xe buýt có đi xe lăn được?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_subway_entrance_title">"Cửa vào nhà ga tàu điện ngầm này có đi xe lăn được?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_railway_station_title">"Nhà ga có đi xe lăn được?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_location_title">"Nơi này có đi xe lăn được?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_bus_station_name_title">"Ga xe buýt %s có đi xe lăn được?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_subway_entrance_name_title">"Cửa vào nhà ga tàu điện ngầm %s có đi xe lăn được?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_railway_station_name_title">"Nhà ga %s có đi xe lăn được?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_location_name_title">"%s có đi xe lăn được?"</string>
+
+    <!-- Fuzzy -->
     <string name="recycling_centre">"Trung tâm"</string>
     <string name="overground_recycling_container">"Thùng"</string>
+
+    <!-- Fuzzy -->
     <string name="underground_recycling_container">"Thùng hầm"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_generic_error_a_field_empty">"Bạn để trống một hộp"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetName_answer_cantType">"Không biết cách nhập các chữ trên bảng"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetName_cantType_title">"Có thiếu bố trí bàn phím?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetName_cantType_open_settings">"Mở cài đặt"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetName_cantType_open_store">"Mở cửa hàng ứng dụng"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetName_menuItem_nolanguage">"(không rõ)"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_type_title">"Thiết bị cấp nước cứu hỏa này có hình dạng nào?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_type_pillar">"Trụ"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_type_underground">"Hầm"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_type_wall">"Tường"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_fireHydrant_type_pond">"Ao"</string>
+
+    <!-- Fuzzy -->
     <string name="credits_translations_title">"Bản dịch"</string>
+
+    <!-- Fuzzy -->
     <string name="credits_contributors_title">"Người đóng góp mã nguồn"</string>
+
+    <!-- Fuzzy -->
     <string name="credits_author_title">"Tác giả và người bảo quản"</string>
+
+    <!-- Fuzzy -->
     <string name="credits_and_more">"và người thêm…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_orchard_produce_title">"Sân này trồng gì?"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_grapes">"Nho"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_agaves">"Thùa"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_almonds">"Hạnh"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_apples">"Táo"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_apricots">"Mơ"</string>
     <string name="produce_avocados">"Quả bơ"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_bananas">"Chuối"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_blueberries">"Việt quất xanh"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_cacao">"Ca cao"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_cashew_nuts">"Quả điều"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_cherries">"Anh đào"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_chestnuts">"Dẻ"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_coconuts">"Dừa"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_coffee">"Cà phê"</string>
     <string name="produce_cranberries">"Mạn việt quất"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_dates">"Chà là"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_figs">"Vả tây"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_grapefruits">"Bưởi đắng"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_guavas">"Ổi"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_hazelnuts">"Hạt phỉ"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_hops">"Hoa bia"</string>
     <string name="produce_jojoba">"Jojoba"</string>
     <string name="produce_kiwis">"Dương đào"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_kola_nuts">"Hạt côla"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_lemons">"Chanh"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_limes">"Chanh xanh"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_mangos">"Xoài"</string>
     <string name="produce_mate">"Cô ca"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_nutmeg">"Nhục đậu khấu"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_oil_palms">"Cọ dầu"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_olives">"Ô liu"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_oranges">"Cam"</string>
     <string name="produce_papayas">"Đu đủ"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_peaches">"Đào"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_pears">"Lê"</string>
     <string name="produce_chili">"Ớt"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_persimmons">"Hồng vàng"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_pineapples">"Dứa"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_pepper">"Ớt (chung)"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_pistachios">"Hồ trăn"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_plums">"Mận"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_raspberries">"Mâm xôi"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_rubber">"Cao su"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_strawberries">"Dâu tay"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_tea">"Trà"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_vanilla">"Va ni"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_walnuts">"Óc chó"</string>
     <string name="produce_sisal">"Thùa sợi"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_way_lit_title">"Khúc đường này có đèn sáng?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_way_lit_named_title">"%s có đèn sáng?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_way_lit_road_title">"Khúc đường này có đèn sáng?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_way_lit_automatic">"Có hệ thống phát hiện chuyển động"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_way_lit_24_7">"Sáng suốt ngày đem"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_crossing_type_title">"Lối băng qua đường tại đây là kiểu lối băng qua đường nào?"</string>
+
+    <!-- Fuzzy -->
     <string name="action_undo">"Hoàn tác"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_mangosteen">"Măng cụt"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_tomatoes">"Cà chua"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_areca_nuts">"Cau"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_sweet_peppers">"Ớt ngọt"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_brazil_nuts">"Đều Brasil"</string>
+
+    <!-- Fuzzy -->
     <string name="produce_tung_nuts">"Trẩu trơn"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_parkingType_title">"Bãi đậu xe này là kiểu bãi nào?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_parkingType_surface">"Bãi ngoài trời"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_parkingType_underground">"Bãi hầm"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_parkingType_multiStorage">"Bãi cao tầng"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_toiletAvailability_name_title">"%s có phòng vệ sinh?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_powerPolesMaterial_title">"Cột điện này làm bằng gì?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_powerPolesMaterial_wood">"Gỗ"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_powerPolesMaterial_metal">"Thép"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_powerPolesMaterial_concrete">"Bê tông"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_answer_house_name">"Nhà có tên thay vì số…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_house_name_label">"Tên nhà:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingLevels_roofLevelsLabel2">"số lầu trong mái nhà"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingLevels_levelsLabel2">"số lầu thường (không kể trong mái nhà)"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingLevels_answer_multipleLevels">"Tùy phần tòa nhà"</string>
     <string name="about_category_feedback">"Phản hồi"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_leave_new_note_photo">"Đính kèm hình"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_leave_new_note_photo_delete_title">"Bạn có muốn xóa hình này?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_value_lane">"làn xe đạp"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_value_none">"không có"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cycleway_value_bus_lane">"trên làn xe buýt"</string>
+
+    <!-- Fuzzy -->
     <string name="pref_category_advanced">"Nâng cao"</string>
+
+    <!-- Fuzzy -->
     <string name="action_reset">"Đặt lại"</string>
+
+    <!-- Fuzzy -->
     <string name="undo_confirm_positive">"Hoàn tác"</string>
+
+    <!-- Fuzzy -->
     <string name="undo_confirm_negative">"Hủy bỏ"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_dietType_vegetarian_name_title">"%s có bán đồ chay?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_dietType_vegan_name_title">"%s có bán đồ thuần chay?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_hasFeature_only">"Chỉ có"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_dietType_explanation_vegan">"Đồ ăn thuần chay không có thực phẩm có nguồn gốc từ thực vật (thịt, hải sản, sữa, trứng, …)."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_dietType_explanation_vegetarian">"Đồ ăn chay không có thịt hoặc hải sản."</string>
+
+    <!-- Fuzzy -->
     <string name="quest_carWashType_title">"Tiệm rửa xe này phục vụ như thế nào?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_carWashType_automated">"Tự động"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_carWashType_selfService">"Tự phục vụ"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_carWashType_service">"Nhân viên rửa xe"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_streetName_answer_noName_question">"Tại sao nó không có tên?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_toilets_title">"Phòng vệ sinh này có đi xe lăn được?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_toilets_name_title">"Phòng vệ sinh %s có đi xe lăn được?"</string>
+
+    <!-- Fuzzy -->
     <string name="map_btn_create_note">"Tạo ghi chú mới"</string>
+
+    <!-- Fuzzy -->
     <string name="create_new_note_unprecise">"Phóng to hơn để tạo ghi chú"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_surface_value_metal">"Kim loại"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_internet_access_name_title">"%s cho phép truy cập Internet làm sao?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_internet_access_wlan">"Wi-Fi"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_internet_access_terminal">"Máy tính có truy cập Internet"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_internet_access_no">"Không có truy cập"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_religion_christian">"Kitô giáo (Thiên Chúa giáo, Cơ Đốc giáo)"</string>
     <string name="quest_religion_muslim">"Hồi giáo"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_religion_hindu">"Ấn Độ giáo"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_religion_buddhist">"Phật giáo"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_religion_shinto">"Thần đạo"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_religion_jewish">"Do Thái giáo"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_religion_taoist">"Đạo giáo"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_religion_for_place_of_worship_answer_multi">"không hạn chế tôn giáo"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_religion_sikh">"Sikh giáo"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_religion_jain">"Kỳ Na giáo"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_religion_bahai">"Bahá'í giáo"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_religion_caodaist">"Đạo Cao Đài"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_religion_chinese_folk">"tín ngưỡng truyền thống Trung Hoa"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_religion_for_wayside_shrine_title">"Đền thánh này thuộc tôn giáo nào?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_busStopName_title">"Trạm dừng xe buýt này có tên gì?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_housenumber_multiple_numbers">"Có nhiều số nhà"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_shed">"Lán"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_title2">"Tòa nhà được xây nhằm mục đích nào?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_answer_construction_site">"Vẫn đang xây"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_residential">"Dân cư"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_house">"Nhà ở"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_house_description">"nhà ở riêng"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_apartments">"Chung cư"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_detached">"Căn nhà tách biệt"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_detached_description">"nhà ở tách biệt dành cho một gia đình"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_semi_detached">"Căn nhà cách bức tường"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_hotel">"Khách sạn"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_dormitory">"Ký túc xá"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_houseboat">"Nhà thuyền"</string>
     <string name="quest_buildingType_bungalow">"Bungalow"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_office">"Văn phòng"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_retail">"Tiệm"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_warehouse">"Nhà kho"</string>
     <string name="quest_buildingType_kiosk">"Gian hàng"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_storage_tank">"Thùng chứa"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_religious">"Tòa nhà tôn giáo"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_church">"Nhà thờ Kitô giáo"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_chapel">"Nhà nguyện"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_cathedral">"Nhà thờ chính tòa"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_mosque">"Thánh đường Hồi giáo"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_temple">"Đền"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_pagoda">"Chùa"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_synagogue">"Hội đường Do Thái giáo"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_kindergarten">"Nhà trẻ"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_school">"Nhà trường"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_college">"Nhà trường cao đẳng"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_hospital">"Nhà thương"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_stadium">"Sân vận động"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_train_station">"Nhà ga"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_university">"Nhà trường đại học"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_cars">"Dành cho xe hơi"</string>
     <string name="quest_buildingType_carport">"Nhà xe"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_carport_description">"mái che xe hơi"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_garage">"Ga ra riêng"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_garages">"Nhiều ga ra"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_greenhouse">"Nhà kính"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_other">"Khác"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_shed">"Lán"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_hut">"Túp lều"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_roof">"Mái che"</string>
     <string name="quest_buildingType_hangar">"Nhà máy bay"</string>
     <string name="quest_buildingType_bunker">"Boong ke"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_address_answer_no_housenumber">"Không có số nhà…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_shrine">"Đền thánh"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_title_short2">"Con đường này có tốc độ tối đa gì?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_sign">"Có bảng"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign2">"Không có bảng, tốc độ mặc định có hiệu lực"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_no_sign">"Không có bảng giờ mở cửa?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxspeed_name_title2">"%s có tốc độ tối đa gì?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_sports_centre">"Trung tâm thể thao"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_buildingType_toilets">"Nhà vệ sinh"</string>
     <string name="notification_channel_download">"Tải về"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxheight_title">"Chiều cao tối đa la gì?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxheight_parking_entrance_title">"Lối ra vào ga ra này có chiều cao tối đa gì?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxheight_tunnel_title">"Đường hầm này có chiều cao tối đa gì?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxheight_answer_noSign">"Không có bảng…"</string>
+
+    <!-- Fuzzy -->
     <string name="action_deselect_all">"Bỏ chọn tất cả"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_timeSelect_next">"Sau"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_outside_title">"Nơi này có đi xe lăn được?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_motorcycleParkingCapacity_title">"Có thể đậu bao nhiêu xe máy tại đây?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_motorcycleParkingCoveredStatus_title">"Chỗ đậu xe máy này có mái che (khỏi bị mưa)?"</string>
 
     <!-- caution: This is not necessarily the floor and level=0 is not necessarily at street level
     as it may follow the numbering scheme of the building operator. Try to use a generic wording
     that does not carry an implicit meaning of where it is located in respect to the ground floor.
     The context is usually shopping centres, train stations or airport terminals -->
+    <!-- Fuzzy -->
     <string name="on_level">"trên lầu %s:"</string>
 
     <!-- as in: "Where is the metro station?" - "It is underground" -->
+    <!-- Fuzzy -->
     <string name="underground">"hầm:"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sidewalk_value_yes">"có lê đường"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_sidewalk_value_no">"không có lê đường"</string>
+
+    <!-- Fuzzy -->
     <string name="pref_title_theme_select">"Chọn giao diện"</string>
     <string name="theme_automatic">"Tự động"</string>
+
+    <!-- Fuzzy -->
     <string name="theme_light">"Sáng"</string>
+
+    <!-- Fuzzy -->
     <string name="theme_dark">"Tối"</string>
+
+    <!-- Fuzzy -->
     <string name="theme_system_default">"Mặc định hệ thống"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_placeName_title_name">"Nơi này tên gì? (%s)"</string>
+
+    <!-- Fuzzy -->
     <string name="action_open_location">"Mở địa điểm trong ứng dụng khác"</string>
+
+    <!-- Fuzzy -->
     <string name="map_application_missing">"Chưa cài đặt ứng dụng bản đồ khác"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_leafType_title">"Cây cối ở đây có loại lá gì?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_leaf_type_needles">"Lá hình kim"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_leaf_type_broadleaved">"Lá hình quạt"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_leaf_type_mixed">"Có cả hai"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_cyclewayPartSurface_title">"Đường xe đạp này có loại mặt đường nào?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_generic_answer_differs_along_the_way">"Tùy khúc đường…"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_split_way_too_imprecise">"Hãy phóng to hơn"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_footwayPartSurface_title">"Đường đi bộ này có loại mặt đường nào?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_toiletsPart_title">"Phòng vệ sinh tại %s có đi xe lăn được?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxweight_title">"Trọng lượng tối đa bao nhiêu?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_maxweight_answer_noSign">"Không có bảng"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_generalFee_title">"Có cần trả phí để vào %s?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_handrail_title">"Cầu thang này có lan can?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_openingHours_no_name_title">"Nơi này mở cửa mấy giờ? (%s)"</string>
+
+    <!-- Fuzzy -->
     <string name="about_summary_current_version">"Phiên bản hiện tại: %s"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_recycling_materials_title">"Nơi này nhận gì để tái chế?"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_recycling_type_batteries">"Pin"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_recycling_type_cans">"Chai nhôm"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_recycling_type_clothes">"Quần áo"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_recycling_type_paper">"Giấy"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_recycling_type_plastic_generic">"Nhựa"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_recycling_type_plastic">"Đồ nhựa nào"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_recycling_type_shoes">"Giầy"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_recycling_type_electric_appliances">"Đồ điện gia dụng"</string>
+
+    <!-- Fuzzy -->
     <string name="quest_recycling_type_any_glass">"Đồ thủy tinh nào"</string>
+
+    <!-- Fuzzy -->
     <string name="about_title_changelog">"Lịch sử phiên bản"</string>
+
+    <!-- Fuzzy -->
     <string name="title_whats_new">"Có gì mới?"</string>
 </resources>

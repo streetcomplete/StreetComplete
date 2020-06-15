@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.quests.add_housenumber
 
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
 import de.westnordost.streetcomplete.mock
-import de.westnordost.streetcomplete.quests.housenumber.*
+import de.westnordost.streetcomplete.quests.address.*
 import de.westnordost.streetcomplete.quests.verifyAnswer
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue

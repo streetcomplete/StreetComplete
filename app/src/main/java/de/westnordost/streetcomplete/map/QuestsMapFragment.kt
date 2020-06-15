@@ -16,6 +16,7 @@ import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.quest.Quest
+import de.westnordost.streetcomplete.ktx.getBitmapDrawable
 import de.westnordost.streetcomplete.ktx.toDp
 import de.westnordost.streetcomplete.ktx.toPx
 import de.westnordost.streetcomplete.map.QuestPinLayerManager.Companion.MARKER_QUEST_GROUP
@@ -24,7 +25,6 @@ import de.westnordost.streetcomplete.map.tangram.CameraPosition
 import de.westnordost.streetcomplete.map.tangram.Marker
 import de.westnordost.streetcomplete.map.tangram.toLngLat
 import de.westnordost.streetcomplete.map.tangram.toTangramGeometry
-import de.westnordost.streetcomplete.util.BitmapUtil
 import de.westnordost.streetcomplete.util.distanceTo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -58,13 +58,14 @@ class QuestsMapFragment : LocationAwareMapFragment() {
     interface Listener {
         fun onClickedQuest(questGroup: QuestGroup, questId: Long)
         fun onClickedMapAt(position: LatLon, clickAreaSizeInMeters: Double)
+        fun onClickedLocationMarker()
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
     /* ------------------------------------ Lifecycle ------------------------------------------- */
 
     init {
-        Injector.instance.applicationComponent.inject(this)
+        Injector.applicationComponent.inject(this)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -113,7 +114,13 @@ class QuestsMapFragment : LocationAwareMapFragment() {
             if (pickedQuestId != null && pickedQuestGroup != null) {
                 listener?.onClickedQuest(pickedQuestGroup, pickedQuestId)
             } else {
-                onClickedMap(x, y)
+                val pickMarkerResult = controller?.pickMarker(x,y)
+
+                if (pickMarkerResult != null && pickMarkerResult.marker == locationMarker) {
+                    listener?.onClickedLocationMarker()
+                } else {
+                    onClickedMap(x, y)
+                }
             }
         }
         return true
@@ -164,8 +171,6 @@ class QuestsMapFragment : LocationAwareMapFragment() {
 
         controller.updateCameraPosition(zoomTime, DecelerateInterpolator()) {
             position = pos.position
-        }
-        controller.updateCameraPosition(zoomTime, AccelerateDecelerateInterpolator()) {
             zoom = targetZoom
         }
     }
@@ -193,8 +198,6 @@ class QuestsMapFragment : LocationAwareMapFragment() {
 
             controller.updateCameraPosition(zoomTime, AccelerateDecelerateInterpolator()) {
                 position = pos.position
-            }
-            controller.updateCameraPosition(zoomTime, DecelerateInterpolator()) {
                 zoom = pos.zoom
                 tilt = pos.tilt
                 rotation = pos.rotation
@@ -214,7 +217,7 @@ class QuestsMapFragment : LocationAwareMapFragment() {
     private fun createQuestSelectionMarker(): Marker? {
         val ctx = context ?: return null
 
-        val frame = BitmapUtil.createBitmapDrawableFrom(ctx.resources, R.drawable.quest_selection_ring)
+        val frame = ctx.resources.getBitmapDrawable(R.drawable.quest_selection_ring)
         val w = frame.intrinsicWidth.toFloat().toDp(ctx)
         val h = frame.intrinsicHeight.toFloat().toDp(ctx)
 

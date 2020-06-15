@@ -16,7 +16,6 @@
     <de.westnordost.streetcomplete.view.SlidingRelativeLayout
         android:layout_width="@dimen/quest_form_width"
         android:layout_height="match_parent"
-        android:background="@drawable/speechbubbles_gradient_background"
         android:id="@+id/bottomSheetContainer"
         >
 
@@ -35,19 +34,23 @@
                 android:layout_marginEnd="32dp"
                 android:layout_marginStart="32dp"/>
 
+
             <FrameLayout
                 android:id="@+id/speechbubbleContentContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/speech_bubble_none"
                 android:layout_marginStart="-2.5dp"
                 android:layout_marginEnd="-2.5dp"
-                android:layout_marginBottom="4dp"
-                android:layout_below="@id/undoButton">
+                android:paddingBottom="4dp"
+                android:layout_below="@id/undoButton"
+                android:clipChildren="false"
+                android:clipToPadding="false">
 
                 <de.westnordost.streetcomplete.view.MaskSpeechbubbleCornersFrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/speech_bubble_none"
+                    android:elevation="@dimen/speech_bubble_elevation">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -97,7 +100,7 @@
 
         </RelativeLayout>
 
-        <Button
+        <TextView
             android:id="@+id/okButton"
             android:text="@android:string/ok"
             style="@style/RoundAccentButton"

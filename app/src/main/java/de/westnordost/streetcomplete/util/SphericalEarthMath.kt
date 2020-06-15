@@ -68,13 +68,12 @@ fun LatLon.finalBearingTo(pos: LatLon): Double {
 
 /** Returns the distance from this point to the other point */
 fun LatLon.distanceTo(pos: LatLon, globeRadius: Double = EARTH_RADIUS): Double =
-    measuredLength(
+    angularDistance(
         latitude.toRadians(),
         longitude.toRadians(),
         pos.latitude.toRadians(),
-        pos.longitude.toRadians(),
-        globeRadius
-    )
+        pos.longitude.toRadians()
+    ) * globeRadius
 
 /** Returns a new point in the given distance and angle from the this point */
 fun LatLon.translate(distance: Double, angle: Double, globeRadius: Double = EARTH_RADIUS): LatLon {
@@ -88,46 +87,56 @@ fun LatLon.translate(distance: Double, angle: Double, globeRadius: Double = EART
     return createTranslated(pair.first.toDegrees(), pair.second.toDegrees())
 }
 
-/** Returns the shortest distance between this point and the arc between the given points */
+/** Returns the shortest distance between this point and the great arc spanned by the two points.
+ *  The sign tells on which side of the great arc this point is */
 fun LatLon.crossTrackDistanceTo(start: LatLon, end: LatLon, globeRadius: Double = EARTH_RADIUS): Double =
-    crossTrackDistance(
+    crossTrackAngularDistance(
         start.latitude.toRadians(),
         start.longitude.toRadians(),
         end.latitude.toRadians(),
         end.longitude.toRadians(),
         latitude.toRadians(),
-        longitude.toRadians(),
-        globeRadius
-    )
+        longitude.toRadians()
+    ) * globeRadius
+
+/**
+ * Given the great arc spanned by the two given points, returns the distance of the start point to
+ * the point on the great arc that is closest to this point.
+ * The sign tells the direction of that point on the great arc seen from the start point.
+ */
+fun LatLon.alongTrackDistanceTo(start: LatLon, end: LatLon, globeRadius: Double = EARTH_RADIUS): Double =
+    alongTrackAngularDistance(
+        start.latitude.toRadians(),
+        start.longitude.toRadians(),
+        end.latitude.toRadians(),
+        end.longitude.toRadians(),
+        latitude.toRadians(),
+        longitude.toRadians()
+    ) * globeRadius
+
+/** Returns the shortest distance between this point and the arc between the given points */
+fun LatLon.distanceToArc(start: LatLon, end: LatLon, globeRadius: Double = EARTH_RADIUS): Double =
+    abs(angularDistanceToArc(
+        start.latitude.toRadians(),
+        start.longitude.toRadians(),
+        end.latitude.toRadians(),
+        end.longitude.toRadians(),
+        latitude.toRadians(),
+        longitude.toRadians()
+    )) * globeRadius
 
 /** Returns the shortest distance between this point and the arcs between the given points */
-fun LatLon.crossTrackDistanceTo(polyLine: List<LatLon>, globeRadius: Double = EARTH_RADIUS): Double {
+fun LatLon.distanceToArcs(polyLine: List<LatLon>, globeRadius: Double = EARTH_RADIUS): Double {
     require(polyLine.isNotEmpty()) { "Polyline must not be empty" }
     if (polyLine.size == 1) return distanceTo(polyLine[0])
 
     var shortestDistance = Double.MAX_VALUE
     polyLine.forEachPair { first, second ->
-        val distance = crossTrackDistanceTo(first, second, globeRadius)
+        val distance = distanceToArc(first, second, globeRadius)
         if (distance < shortestDistance) shortestDistance = distance
     }
     return shortestDistance
 }
-
-/**
- * Given an arc between the two given points, returns the distance of the start point to the point
- * on the arc that is closest to this point
- */
-fun LatLon.alongTrackDistanceTo(start: LatLon, end: LatLon, globeRadius: Double = EARTH_RADIUS): Double =
-    alongTrackDistance(
-        start.latitude.toRadians(),
-        start.longitude.toRadians(),
-        end.latitude.toRadians(),
-        end.longitude.toRadians(),
-        latitude.toRadians(),
-        longitude.toRadians(),
-        globeRadius
-    )
-
 
 /* -------------------------------- Polyline extension functions -------------------------------- */
 
@@ -166,21 +175,6 @@ fun List<LatLon>.measuredLength(globeRadius: Double = EARTH_RADIUS): Double {
         length += first.distanceTo(second, globeRadius)
     }
     return length
-}
-
-/**
- * Returns whether any point on this polyline is within the given distance of a point on the other
- * line
- */
-fun List<LatLon>.isWithinDistanceOf(distance: Double, line: List<LatLon>, globeRadius: Double = EARTH_RADIUS): Boolean {
-    for (linePoint1 in this) {
-        for (linePoint2 in line) {
-            if (linePoint1.distanceTo(linePoint2, globeRadius) <= distance) {
-                return true
-            }
-        }
-    }
-    return false
 }
 
 /** Returns the line around the center point of this polyline
@@ -386,10 +380,10 @@ private fun Double.toRadians() = this / 180.0 * PI
 private fun Double.toDegrees() = this / PI * 180.0
 
 fun normalizeLongitude(lon: Double): Double {
-    var lon = lon
-    while (lon > 180) lon -= 360.0
-    while (lon < -180) lon += 360.0
-    return lon
+	var lon = lon % 360 // lon is now -360..360
+    lon = (lon + 360) % 360 // lon is now 0..360
+    if (lon > 180) lon -= 360 // lon is now -180..180
+	return lon
 }
 
 
@@ -412,14 +406,13 @@ private fun translate(φ1: Double, λ1: Double, α1: Double, distance: Double, r
     return Pair(φ2, λ2)
 }
 
-/** Returns the distance of two points on a sphere with the given radius */
-private fun measuredLength(φ1: Double, λ1: Double, φ2: Double, λ2: Double, r: Double): Double {
+/** Returns the distance of two points on a sphere */
+private fun angularDistance(φ1: Double, λ1: Double, φ2: Double, λ2: Double): Double {
     // see https://mathforum.org/library/drmath/view/51879.html for derivation
     val Δλ = λ2 - λ1
     val Δφ = φ2 - φ1
     val a = sin(Δφ / 2).pow(2) + cos(φ1) * cos(φ2) * sin(Δλ / 2).pow(2)
-    val c = 2 * atan2(sqrt(a), sqrt(1 - a))
-    return c * r
+    return 2 * atan2(sqrt(a), sqrt(1 - a))
 }
 
 /** Returns the initial bearing from one point to another */
@@ -435,25 +428,42 @@ private fun finalBearing(φ1: Double, λ1: Double, φ2: Double, λ2: Double): Do
     return atan2(sin(Δλ) * cos(φ1), -cos(φ2) * sin(φ1) + sin(φ2) * cos(φ1) * cos(Δλ))
 }
 
-/** Returns the shortest distance between point three and the arc between point one and two */
-private fun crossTrackDistance(φ1: Double, λ1: Double, φ2: Double, λ2: Double, φ3: Double, λ3: Double, r: Double): Double {
+/** Returns the shortest distance between point three and the great arc spanned by one and two.
+ *  The sign tells on which side point three is on */
+private fun crossTrackAngularDistance(φ1: Double, λ1: Double, φ2: Double, λ2: Double, φ3: Double, λ3: Double): Double {
     val θ12 = initialBearing(φ1, λ1, φ2, λ2)
     val θ13 = initialBearing(φ1, λ1, φ3, λ3)
-    val δ13 = measuredLength(φ1, λ1, φ3, λ3, r) / r
-    val δxt = asin(sin(δ13) * sin(θ13 - θ12))
-    return abs(δxt * r)
+    val δ13 = angularDistance(φ1, λ1, φ3, λ3)
+    return asin(sin(δ13) * sin(θ13 - θ12))
 }
 
 /**
- * Given an arc between point one and two, returns the distance of point one from the point on the
+ * Given the great arc spanned by point one and two, returns the distance of point one from the point on the
  * arc that is closest to point three.
  */
-private fun alongTrackDistance(φ1: Double, λ1: Double, φ2: Double, λ2: Double, φ3: Double, λ3: Double, r: Double): Double {
+private fun alongTrackAngularDistance(φ1: Double, λ1: Double, φ2: Double, λ2: Double, φ3: Double, λ3: Double): Double {
     val θ12 = initialBearing(φ1, λ1, φ2, λ2)
     val θ13 = initialBearing(φ1, λ1, φ3, λ3)
-    val δ13 = measuredLength(φ1, λ1, φ3, λ3, r) / r
-    val δxt = asin(sin(δ13) * sin(θ13 - θ12))
-    val δat = acos(cos(δ13) / abs(cos(δxt)))
-    return δat * sign(cos(θ12 - θ13)) * r
+    val δ13 = angularDistance(φ1, λ1, φ3, λ3)
+    val δxt = asin(sin(δ13) * sin(θ13 - θ12)) // <- crossTrackAngularDistance
+    return acos(cos(δ13) / abs(cos(δxt))) * sign(cos(θ12 - θ13))
 }
 
+/** Returns the shortest distance between point three and the arc between point one and two.
+ *  The sign tells on which side point three is on */
+private fun angularDistanceToArc(φ1: Double, λ1: Double, φ2: Double, λ2: Double, φ3: Double, λ3: Double): Double {
+    val θ12 = initialBearing(φ1, λ1, φ2, λ2)
+    val θ13 = initialBearing(φ1, λ1, φ3, λ3)
+
+    val δ13 = angularDistance(φ1, λ1, φ3, λ3)
+    val δ12 = angularDistance(φ1, λ1, φ2, λ2)
+
+    val δxt = asin(sin(δ13) * sin(θ13 - θ12)) // <- crossTrackAngularDistance
+    val δat = acos(cos(δ13) / abs(cos(δxt))) * sign(cos(θ12 - θ13)) // <- alongTrackAngularDistance
+
+    // shortest distance to great arc is before point one -> shortest distance is distance to point one
+    if (δat < 0) return δ13
+    // shortest distance to great arc is after point two -> shortest distance is distance to point two
+    if (δat > δ12) return angularDistance(φ2, λ2, φ3, λ3)
+    return δxt
+}

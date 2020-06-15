@@ -23,6 +23,7 @@ import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.toDp
 import de.westnordost.streetcomplete.ktx.toPx
+import de.westnordost.streetcomplete.view.RoundRectOutlineProvider
 import kotlinx.android.synthetic.main.fragment_quest_answer.*
 
 /** Abstract base class for (quest) bottom sheets
@@ -60,6 +61,19 @@ abstract class AbstractBottomSheetFragment : Fragment(), IsCloseableBottomSheet 
         setupFittingToSystemWindowInsets()
 
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            val cornerRadius = resources.getDimension(R.dimen.speech_bubble_rounded_corner_radius)
+            val margin = resources.getDimensionPixelSize(R.dimen.horizontal_speech_bubble_margin)
+            val topMargin = -resources.getDimensionPixelSize(R.dimen.quest_form_speech_bubble_top_margin)
+            speechBubbleTitleContainer.outlineProvider = RoundRectOutlineProvider(
+                cornerRadius, margin, topMargin, margin, margin
+            )
+
+            speechbubbleContentContainer.outlineProvider = RoundRectOutlineProvider(
+                cornerRadius, margin, margin, margin, margin
+            )
+        }
 
         speechBubbleTitleContainer.setOnClickListener {
             bottomSheetBehavior.apply {
@@ -107,7 +121,6 @@ abstract class AbstractBottomSheetFragment : Fragment(), IsCloseableBottomSheet 
 
         bottomSheetBehavior.peekHeight = resources.getDimensionPixelSize(R.dimen.quest_form_peekHeight)
         bottomSheetContainer?.let {
-            it.setBackgroundResource(R.drawable.speechbubbles_gradient_background)
             it.updateLayoutParams { width = resources.getDimensionPixelSize(R.dimen.quest_form_width) }
         }
     }
@@ -147,8 +160,7 @@ abstract class AbstractBottomSheetFragment : Fragment(), IsCloseableBottomSheet 
     private fun updateCloseButtonVisibility() {
         // this is called asynchronously. It may happen that the activity is already gone when this
         // method is finally called
-        val speechBubbleTopMargin = resources.getDimension(R.dimen.quest_form_speech_bubble_top_margin)
-        val coversToolbar = bottomSheet.top < speechBubbleTopMargin
+        val coversToolbar = bottomSheet.top <= 0
         closeButton.visibility = if (coversToolbar) View.VISIBLE else View.INVISIBLE
     }
 

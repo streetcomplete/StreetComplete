@@ -39,7 +39,7 @@ class SplitWaysUploader @Inject constructor(
 
     override fun onUploadSuccessful(quest: OsmQuestSplitWay) {
         splitWayDB.delete(quest.questId)
-        statisticsUpdater.addOne(quest.osmElementQuestType.javaClass.simpleName)
+        statisticsUpdater.addOne(quest.osmElementQuestType.javaClass.simpleName, quest.position)
         Log.d(TAG, "Uploaded split way #${quest.wayId}")
     }
 

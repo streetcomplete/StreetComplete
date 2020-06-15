@@ -48,7 +48,7 @@ class UploadService : IntentService(TAG) {
     private val bannedInfo: BannedInfo by lazy { versionIsBannedChecker.get() }
 
     init {
-        Injector.instance.applicationComponent.inject(this)
+        Injector.applicationComponent.inject(this)
     }
 
     override fun onCreate() {

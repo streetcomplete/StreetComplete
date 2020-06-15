@@ -1,0 +1,6 @@
+<resources>
+    <!-- quest forms are slimmer again on tablet-sized (portrait) devices so that right of it, there
+         is still usable space -->
+    <dimen name="quest_form_width">360dp</dimen>
+
+</resources>

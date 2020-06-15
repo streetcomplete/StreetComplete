@@ -7,9 +7,4 @@
     <dimen name="quest_form_bottomOffset">0dp</dimen>
 
     <dimen name="quest_form_peekHeight">540dp</dimen>
-
-    <dimen name="quest_form_width">352dp</dimen>
-
-    <!-- Tables -->
-    <dimen name="table_icon_size">48dp</dimen>
 </resources>

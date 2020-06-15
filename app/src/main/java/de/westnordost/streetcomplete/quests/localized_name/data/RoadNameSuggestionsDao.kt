@@ -2,10 +2,13 @@ package de.westnordost.streetcomplete.quests.localized_name.data
 
 import android.database.sqlite.SQLiteOpenHelper
 import androidx.core.content.contentValuesOf
+import de.westnordost.osmapi.map.data.Element
 
 import javax.inject.Inject
 
 import de.westnordost.osmapi.map.data.LatLon
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.ktx.getBlob
 import de.westnordost.streetcomplete.ktx.query
 import de.westnordost.streetcomplete.quests.localized_name.data.RoadNamesTable.Columns.GEOMETRY
@@ -18,8 +21,9 @@ import de.westnordost.streetcomplete.quests.localized_name.data.RoadNamesTable.C
 import de.westnordost.streetcomplete.quests.localized_name.data.RoadNamesTable.NAME
 import de.westnordost.streetcomplete.util.Serializer
 import de.westnordost.streetcomplete.ktx.toObject
+import de.westnordost.streetcomplete.util.distanceToArcs
 import de.westnordost.streetcomplete.util.enclosingBoundingBox
-import de.westnordost.streetcomplete.util.isWithinDistanceOf
+import java.util.regex.Pattern
 
 class RoadNameSuggestionsDao @Inject constructor(
     private val dbHelper: SQLiteOpenHelper,
@@ -43,6 +47,7 @@ class RoadNameSuggestionsDao @Inject constructor(
 
     /** returns something like [{"": "17th Street", "de": "17. Straße", "en": "17th Street" }, ...] */
     fun getNames(points: List<LatLon>, maxDistance: Double): List<MutableMap<String, String>> {
+        if (points.isEmpty()) return emptyList()
 
         // preselection via intersection check of bounding boxes
         val query = Array(points.size) {
@@ -63,15 +68,51 @@ class RoadNameSuggestionsDao @Inject constructor(
 
         val cols = arrayOf(GEOMETRY, NAMES)
 
-        val result = mutableListOf<MutableMap<String, String>>()
+        val result = mutableListOf<Pair<MutableMap<String, String>, Double>>()
 
         db.query(NAME, cols, query, args.requireNoNulls()) { cursor ->
             val geometry: ArrayList<LatLon> = serializer.toObject(cursor.getBlob(GEOMETRY))
-            if (points.isWithinDistanceOf(maxDistance, geometry)) {
-                val map: HashMap<String,String> = serializer.toObject(cursor.getBlob(NAMES))
-                result.add(map)
+            var minDistanceToRoad = Double.MAX_VALUE
+            for (point in points) {
+                val dist = point.distanceToArcs(geometry)
+                if (dist < minDistanceToRoad) minDistanceToRoad = dist
+            }
+            if (minDistanceToRoad <= maxDistance) {
+                val namesByLocale: HashMap<String,String> = serializer.toObject(cursor.getBlob(NAMES))
+                result.add(namesByLocale to minDistanceToRoad)
             }
         }
-        return result
+        // eliminate duplicates (same road, different segments)
+        val distancesByRoad: MutableMap<MutableMap<String, String>, Double> = mutableMapOf()
+        for ((namesByLocale, distance) in result) {
+            val previousDistance = distancesByRoad[namesByLocale]
+            if (previousDistance == null || previousDistance > distance) {
+                distancesByRoad[namesByLocale] = distance
+            }
+        }
+        // return only the road names, sorted by distance ascending
+        return distancesByRoad.entries.sortedBy { it.value }.map { it.key }
     }
+}
+
+fun RoadNameSuggestionsDao.putRoadNameSuggestion(element: Element, geometry: ElementGeometry?) {
+    if (element.type != Element.Type.WAY) return
+    if (geometry !is ElementPolylinesGeometry) return
+    val namesByLanguage = element.tags?.toRoadNameByLanguage() ?: return
+
+    putRoad(element.id, namesByLanguage, geometry.polylines.first())
+}
+
+/** OSM tags (i.e. name:de=Bäckergang) to map of language code -> name (i.e. de=Bäckergang) */
+private fun Map<String,String>.toRoadNameByLanguage(): Map<String, String>? {
+    val result = mutableMapOf<String,String>()
+    val namePattern = Pattern.compile("name(:(.*))?")
+    for ((key, value) in this) {
+        val m = namePattern.matcher(key)
+        if (m.matches()) {
+            val languageCode = m.group(2) ?: ""
+            result[languageCode] = value
+        }
+    }
+    return if (result.isEmpty()) null else result
 }

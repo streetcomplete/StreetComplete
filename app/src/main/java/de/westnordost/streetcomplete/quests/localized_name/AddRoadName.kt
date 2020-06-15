@@ -3,17 +3,17 @@ package de.westnordost.streetcomplete.quests.localized_name
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.ALL_ROADS
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.tagfilters.FiltersParser
 import de.westnordost.streetcomplete.data.tagfilters.getQuestPrintStatement
 import de.westnordost.streetcomplete.data.tagfilters.toGlobalOverpassBBox
 import de.westnordost.streetcomplete.quests.localized_name.data.RoadNameSuggestionsDao
-import java.util.regex.Pattern
+import de.westnordost.streetcomplete.quests.localized_name.data.putRoadNameSuggestion
 
 class AddRoadName(
     private val overpassApi: OverpassMapDataAndGeometryApi,
@@ -37,7 +37,7 @@ class AddRoadName(
 
     override fun download(bbox: BoundingBox, handler: (element: Element, geometry: ElementGeometry?) -> Unit): Boolean {
         if (!overpassApi.query(getOverpassQuery(bbox), handler)) return false
-        if (!overpassApi.query(getStreetNameSuggestionsOverpassQuery(bbox), this::putRoadNameSuggestion)) return false
+        if (!overpassApi.query(getStreetNameSuggestionsOverpassQuery(bbox), roadNameSuggestionsDao::putRoadNameSuggestion)) return false
         return true
     }
 
@@ -102,42 +102,24 @@ class AddRoadName(
         roadNameSuggestionsDao.putRoad( answer.wayId, roadNameByLanguage, points)
     }
 
-    private fun putRoadNameSuggestion(element: Element, geometry: ElementGeometry?) {
-        if (element.type != Element.Type.WAY) return
-        if (geometry !is ElementPolylinesGeometry) return
-        val namesByLanguage = element.tags?.toRoadNameByLanguage() ?: return
-
-        roadNameSuggestionsDao.putRoad(element.id, namesByLanguage, geometry.polylines.first())
-    }
-
     companion object {
         const val MAX_DIST_FOR_ROAD_NAME_SUGGESTION = 30.0 //m
 
-        private const val ROADS =
-            "primary|secondary|tertiary|unclassified|residential|living_street|pedestrian"
-        private const val ROADS_WITH_NAMES = "way[highway ~ \"^($ROADS)$\"][name]"
+        // to avoid spam, only ask for names on a limited set of roads
+        private const val NAMEABLE_ROADS =
+                "primary|secondary|tertiary|unclassified|residential|living_street|pedestrian"
         private const val ROADS_WITHOUT_NAMES =
-            "way[highway ~ \"^($ROADS)$\"][!name][!ref][noname != yes][!junction][area != yes]"
+                "way[highway ~ \"^($NAMEABLE_ROADS)$\"][!name][!ref][noname != yes][!junction][area != yes]"
         // this must be the same as above but in tag filter expression syntax
         private val ROADS_WITHOUT_NAMES_TFE by lazy { FiltersParser().parse(
-            "ways with highway ~ $ROADS and !name and !ref and noname != yes and !junction and area != yes"
+                "ways with highway ~ $NAMEABLE_ROADS and !name and !ref and noname != yes and !junction and area != yes"
         )}
+
+        // but we can find name suggestions on any type of already-named road
+        private val ROADS_WITH_NAMES =
+                "way[highway ~ \"^(${ALL_ROADS.joinToString("|")})$\"][name]"
     }
 }
 
 private fun LocalizedName.isRef() =
     languageCode.isEmpty() && name.matches("[A-Z]{0,3}[ -]?[0-9]{0,5}".toRegex())
-
-/** OSM tags (i.e. name:de=Bäckergang) to map of language code -> name (i.e. de=Bäckergang) */
-private fun Map<String,String>.toRoadNameByLanguage(): Map<String, String>? {
-    val result = mutableMapOf<String,String>()
-    val namePattern = Pattern.compile("name(:(.*))?")
-    for ((key, value) in this) {
-        val m = namePattern.matcher(key)
-        if (m.matches()) {
-            val languageCode = m.group(2) ?: ""
-            result[languageCode] = value
-        }
-    }
-    return if (result.isEmpty()) null else result
-}

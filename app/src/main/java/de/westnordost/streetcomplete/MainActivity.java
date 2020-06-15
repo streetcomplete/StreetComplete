@@ -58,7 +58,7 @@ import de.westnordost.streetcomplete.location.LocationUtil;
 import de.westnordost.streetcomplete.map.MainFragment;
 import de.westnordost.streetcomplete.notifications.NotificationsContainerFragment;
 import de.westnordost.streetcomplete.map.tangram.CameraPosition;
-import de.westnordost.streetcomplete.tools.CrashReportExceptionHandler;
+import de.westnordost.streetcomplete.util.CrashReportExceptionHandler;
 import de.westnordost.streetcomplete.tutorial.TutorialFragment;
 import de.westnordost.streetcomplete.util.GeoLocation;
 import de.westnordost.streetcomplete.util.GeoUriKt;
@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity implements
 	{
 		super.onCreate(savedInstanceState);
 
-		Injector.instance.getApplicationComponent().inject(this);
+		Injector.INSTANCE.getApplicationComponent().inject(this);
 
 		getLifecycle().addObserver(questAutoSyncer);
 
@@ -141,6 +141,17 @@ public class MainActivity extends AppCompatActivity implements
 
 		if(savedInstanceState == null)
 		{
+			String lastVersion = prefs.getString(Prefs.LAST_VERSION, null);
+			boolean hasShownTutorial = prefs.getBoolean(Prefs.HAS_SHOWN_TUTORIAL, false);
+
+			if (!hasShownTutorial) {
+				if (lastVersion == null) {
+					getSupportFragmentManager().beginTransaction()
+							.setCustomAnimations(R.anim.fade_in_from_bottom, R.anim.fade_out_to_bottom)
+							.add(R.id.fragment_container, new TutorialFragment())
+							.commit();
+				}
+			}
 			questController.cleanUp();
 			if (userController.isLoggedIn() && isConnected()) {
 				userController.updateUser();
@@ -174,19 +185,6 @@ public class MainActivity extends AppCompatActivity implements
 	@Override public void onStart()
 	{
 		super.onStart();
-
-		String lastVersion = prefs.getString(Prefs.LAST_VERSION, null);
-		boolean hasShownTutorial = prefs.getBoolean(Prefs.HAS_SHOWN_TUTORIAL, false);
-
-		if (!hasShownTutorial) {
-			prefs.edit().putBoolean(Prefs.HAS_SHOWN_TUTORIAL, true).apply();
-			if (lastVersion == null) {
-				getSupportFragmentManager().beginTransaction()
-						.setCustomAnimations(R.anim.fade_in_from_bottom, R.anim.fade_out_to_bottom)
-						.add(R.id.fragment_container, new TutorialFragment())
-						.commit();
-			}
-		}
 
 		registerReceiver(locationAvailabilityReceiver, LocationUtil.createLocationAvailabilityIntentFilter());
 
@@ -222,7 +220,9 @@ public class MainActivity extends AppCompatActivity implements
 	public boolean dispatchKeyEvent(KeyEvent event) {
 		final int keyCode = event.getKeyCode();
 		if (keyCode == KeyEvent.KEYCODE_MENU && mainFragment != null) {
-			mainFragment.onClickMainMenu();
+			if (event.getAction() == KeyEvent.ACTION_UP) {
+				mainFragment.onClickMainMenu();
+			}
 			return true;
 		}
 		return super.dispatchKeyEvent(event);
@@ -295,7 +295,7 @@ public class MainActivity extends AppCompatActivity implements
 
 		@Override public void onProgress(boolean success){}
 
-		@AnyThread @Override public void onError(final Exception e)
+		@AnyThread @Override public void onError(@NonNull final Exception e)
 		{
 			runOnUiThread(() ->
 			{
@@ -317,7 +317,7 @@ public class MainActivity extends AppCompatActivity implements
 
 					// Makes links in the alert dialog clickable
 					View messageView = dialog.findViewById(android.R.id.message);
-					if(messageView != null && messageView instanceof TextView)
+					if(messageView instanceof TextView)
 					{
 						TextView messageText = (TextView) messageView;
 						messageText.setMovementMethod(LinkMovementMethod.getInstance());
@@ -412,6 +412,7 @@ public class MainActivity extends AppCompatActivity implements
 
 	@Override public void onFinishedTutorial()
 	{
+		prefs.edit().putBoolean(Prefs.HAS_SHOWN_TUTORIAL, true).apply();
 		Fragment tutorialFragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
 		if (tutorialFragment != null)
 		{

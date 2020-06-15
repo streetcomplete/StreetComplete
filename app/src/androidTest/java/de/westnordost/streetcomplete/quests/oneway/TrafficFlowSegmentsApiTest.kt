@@ -4,8 +4,8 @@ import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.quests.oneway.data.TrafficFlowSegment
 import de.westnordost.streetcomplete.quests.oneway.data.TrafficFlowSegmentsApi
+import de.westnordost.streetcomplete.quests.oneway.data.TrafficFlowSegmentsModule.ONEWAY_API_URL
 
-import de.westnordost.streetcomplete.data.upload.UploadModule2.ONEWAY_API_URL
 import org.assertj.core.api.Assertions.*
 import org.junit.Assert.assertTrue
 import org.junit.Test

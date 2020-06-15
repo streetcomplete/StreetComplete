@@ -41,7 +41,7 @@ class UndoOsmQuestsUploader @Inject constructor(
 
     override fun onUploadSuccessful(quest: UndoOsmQuest) {
         undoQuestDB.delete(quest.id!!)
-        statisticsUpdater.subtractOne(quest.osmElementQuestType.javaClass.simpleName)
+        statisticsUpdater.subtractOne(quest.osmElementQuestType.javaClass.simpleName, quest.position)
         Log.d(TAG, "Uploaded undo osm quest ${quest.toLogString()}")
 
     }

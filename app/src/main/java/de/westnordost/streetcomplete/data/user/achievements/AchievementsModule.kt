@@ -127,6 +127,14 @@ object AchievementsModule {
             R.string.link_openstreetbrowser_description
         ),
         Link(
+            "qwant_maps",
+            "https://www.qwant.com/maps/",
+            "Qwant Maps",
+            LinkCategory.MAPS,
+            R.drawable.ic_link_qwant,
+            R.string.link_qwant_maps_description
+        ),
+        Link(
             "cyclosm",
             "https://www.cyclosm.org",
             "CyclOSM",
@@ -218,6 +226,14 @@ object AchievementsModule {
             R.string.link_nominatim_description
         ),
         Link(
+            "photon",
+            "http://photon.komoot.de/",
+            "Photon",
+            LinkCategory.SHOWCASE,
+            R.drawable.ic_link_photon,
+            R.string.link_photon_description
+        ),
+        Link(
             "osrm",
             "https://map.project-osrm.org",
             "OSRM",
@@ -232,6 +248,14 @@ object AchievementsModule {
             LinkCategory.SHOWCASE,
             R.drawable.ic_link_heigit,
             R.string.link_openrouteservice_description
+        ),
+        Link(
+            "graphhopper",
+            "https://graphhopper.com/maps/",
+            "GraphHopper",
+            LinkCategory.SHOWCASE,
+            R.drawable.ic_link_graphhopper,
+            R.string.link_graphhopper_description
         ),
 
 
@@ -329,7 +353,9 @@ object AchievementsModule {
 
                 6 to links("osm-haiku"),
 
-                8 to links("umap")
+                8 to links("umap"),
+
+                10 to links("qwant_maps")
             )
         ),
 
@@ -387,7 +413,8 @@ object AchievementsModule {
 
 
                 5 to links("osrm"), // routing engines are not that interesting for end users
-                6 to links("openrouteservice")
+                6 to links("openrouteservice"),
+                7 to links("graphhopper")
             )
         ),
 
@@ -481,7 +508,8 @@ object AchievementsModule {
             mapOf(
                 // Nominatim should not appear too early because it is a bit technical, the functionality
                 // itself is often integrated into other services
-                3 to links("nominatim")
+                3 to links("nominatim"),
+                5 to links("photon")
             )
         ),
 

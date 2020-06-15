@@ -14,9 +14,9 @@ import com.mapzen.tangram.*
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.ktx.getBitmapDrawable
 import de.westnordost.streetcomplete.ktx.toDp
 import de.westnordost.streetcomplete.location.FineLocationManager
-import de.westnordost.streetcomplete.util.BitmapUtil
 import de.westnordost.streetcomplete.map.tangram.Marker
 import de.westnordost.streetcomplete.util.EARTH_CIRCUMFERENCE
 import kotlin.math.*
@@ -29,9 +29,12 @@ open class LocationAwareMapFragment : MapFragment() {
     private lateinit var locationManager: FineLocationManager
 
     // markers showing the user's location, direction and accuracy of location
-    private var locationMarker: Marker? = null
-    private var accuracyMarker: Marker? = null
-    private var directionMarker: Marker? = null
+    protected var locationMarker: Marker? = null
+    private set
+    protected var accuracyMarker: Marker? = null
+    private set
+    protected var directionMarker: Marker? = null
+    private set
 
     /** The location of the GPS location dot on the map. Null if none (yet) */
     var displayedLocation: Location? = null
@@ -66,6 +69,13 @@ open class LocationAwareMapFragment : MapFragment() {
                 controller?.updateCameraPosition(300, interpolator) { tilt = PI.toFloat() / 5f }
             }
         }
+
+    interface Listener {
+        /** Called after the map fragment updated its displayed location */
+        fun onLocationDidChange()
+    }
+    private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
+
 
     /* ------------------------------------ Lifecycle ------------------------------------------- */
 
@@ -133,13 +143,13 @@ open class LocationAwareMapFragment : MapFragment() {
     private fun createLocationMarker(): Marker? {
         val ctx = context ?: return null
 
-        val dot = BitmapUtil.createBitmapDrawableFrom(ctx.resources, R.drawable.location_dot)
+        val dot = ctx.resources.getBitmapDrawable(R.drawable.location_dot)
         val dotWidth = dot.intrinsicWidth.toFloat().toDp(ctx)
         val dotHeight = dot.intrinsicHeight.toFloat().toDp(ctx)
 
         val marker = controller?.addMarker() ?: return null
         marker.setStylingFromString(
-            "{ style: 'points', color: 'white', size: [${dotWidth}px, ${dotHeight}px], order: 2000, flat: true, collide: false }"
+            "{ style: 'points', color: 'white', size: [${dotWidth}px, ${dotHeight}px], order: 2000, flat: true, collide: false, interactive: true }"
         )
         marker.setDrawable(dot)
         marker.setDrawOrder(9)
@@ -149,7 +159,7 @@ open class LocationAwareMapFragment : MapFragment() {
     private fun createDirectionMarker(): Marker? {
         val ctx = context ?: return null
 
-        val directionImg = BitmapUtil.createBitmapDrawableFrom(ctx.resources, R.drawable.location_direction)
+        val directionImg = ctx.resources.getBitmapDrawable(R.drawable.location_direction)
         directionMarkerSize = PointF(
             directionImg.intrinsicWidth.toFloat().toDp(ctx),
             directionImg.intrinsicHeight.toFloat().toDp(ctx)
@@ -163,7 +173,7 @@ open class LocationAwareMapFragment : MapFragment() {
 
     private fun createAccuracyMarker(): Marker? {
         val ctx = context ?: return null
-        val accuracyImg = BitmapUtil.createBitmapDrawableFrom(ctx.resources, R.drawable.accuracy_circle)
+        val accuracyImg = ctx.resources.getBitmapDrawable(R.drawable.accuracy_circle)
 
         val marker = controller?.addMarker() ?: return null
         marker.setDrawable(accuracyImg)
@@ -229,7 +239,7 @@ open class LocationAwareMapFragment : MapFragment() {
         if (!shouldCenterCurrentPosition()) return
         val controller = controller ?: return
         val targetPosition = displayedPosition ?: return
-        controller.updateCameraPosition {
+        controller.updateCameraPosition(600) {
             position = targetPosition
             if (!zoomedYet) {
                 zoomedYet = true
@@ -243,6 +253,7 @@ open class LocationAwareMapFragment : MapFragment() {
         compass.setLocation(location)
         showLocation()
         followPosition()
+        listener?.onLocationDidChange()
     }
 
     /* --------------------------------- Rotation tracking -------------------------------------- */

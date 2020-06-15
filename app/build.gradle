@@ -17,7 +17,7 @@ android {
     signingConfigs {
         release
     }
-    compileSdkVersion 28
+    compileSdkVersion 29
     testOptions {
         unitTests {
             returnDefaultValues = true
@@ -32,9 +32,9 @@ android {
     defaultConfig {
         applicationId "de.westnordost.streetcomplete"
         minSdkVersion 17
-        targetSdkVersion 28
-        versionCode 1904
-        versionName "19.2"
+        targetSdkVersion 29
+        versionCode 2003
+        versionName "20.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField "String", "MAPZEN_API_KEY", MAPZEN_API_KEY
     }
@@ -42,12 +42,13 @@ android {
 
         release {
             minifyEnabled true
-            useProguard false
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
         }
         debug {
-            minifyEnabled false
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             applicationIdSuffix ".debug"
         }
@@ -114,7 +115,7 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation 'androidx.annotation:annotation:1.1.0'
     implementation 'androidx.fragment:fragment:1.2.4'
-    implementation 'androidx.preference:preference:1.1.0'
+    implementation 'androidx.preference:preference:1.1.1'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'androidx.viewpager:viewpager:1.0.0'
     implementation 'androidx.localbroadcastmanager:localbroadcastmanager:1.0.0'
@@ -147,6 +148,7 @@ dependencies {
     implementation 'me.grantland:autofittextview:0.2.1'
     implementation 'org.sufficientlysecure:html-textview:3.9'
     implementation 'com.duolingo.open:rtl-viewpager:1.0.2'
+    implementation 'com.google.android:flexbox:2.0.1'
 
     // box2d view
     implementation 'org.jbox2d:jbox2d-library:2.2.1.1'
@@ -242,6 +244,7 @@ task pullTranslations {
                 "uk","vi","zh-cn","zh-tw"
         ].toSet()
         def languageToAndroidResCode = [
+                "id": "in",
                 "nb": "no",
                 "zh-cn": "zh",
                 "en-gb": "en-rGB",

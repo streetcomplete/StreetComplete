@@ -26,6 +26,12 @@ import javax.inject.Singleton
     val userId: Long get() = prefs.getLong(Prefs.OSM_USER_ID, -1)
     val userName: String? get() = prefs.getString(Prefs.OSM_USER_NAME, null)
 
+    var rank: Int
+        get() = prefs.getInt(Prefs.USER_GLOBAL_RANK, -1)
+        set(value) {
+            prefs.edit(true) { putInt(Prefs.USER_GLOBAL_RANK, value) }
+        }
+
     var daysActive: Int
         get() = prefs.getInt(Prefs.USER_DAYS_ACTIVE, 0)
         set(value) {

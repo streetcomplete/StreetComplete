@@ -21,12 +21,6 @@
         <item name="android:gravity">center_vertical</item>
     </style>
 
-    <style name="ButtonBottomBar">
-        <item name="android:background">?android:attr/selectableItemBackground</item>
-        <item name="android:textColor">@color/accent</item>
-        <item name="android:padding">16dp</item>
-    </style>
-
     <style name="Animation.Dialog.Bubble" parent="android:Animation">
         <item name="android:windowEnterAnimation">@anim/inflate_dialog_bubble</item>
         <item name="android:windowExitAnimation">@anim/deflate_dialog_bubble</item>
@@ -39,6 +33,11 @@
 
     <style name="Animation.Dialog.Custom" parent="android:Animation">
         <item name="android:windowExitAnimation">@anim/deflate_popup_bubble</item>
+    </style>
+
+    <style name="Dialog.Button" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textColor">@color/accent</item>
+        <item name="android:letterSpacing" tools:targetApi="lollipop">-0.01</item>
     </style>
 
     <!-- +++++++++++++++++++++++++++++ Opening hours input +++++++++++++++++++++++++++++++++++++ -->
@@ -99,6 +98,7 @@
         <item name="android:background">@drawable/round_colored_button</item>
         <item name="android:textColor">#fff</item>
         <item name="android:clickable">true</item>
+        <item name="android:gravity">center</item>
         <item name="android:elevation" tools:targetApi="21">4dp</item>
     </style>
 
@@ -146,10 +146,9 @@
 
     <!-- +++++++++++++++++++++++++++++++++++ Bottom sheet ++++++++++++++++++++++++++++++++++++++ -->
 
-    <style name="BottomSheetButtonBarItem">
-        <item name="android:background">?android:attr/selectableItemBackground</item>
+    <style name="BottomSheetButtonBarItem" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
         <item name="android:textColor">@color/button_bar_button_text</item>
-        <item name="android:padding">16dp</item>
+        <item name="android:letterSpacing" tools:targetApi="lollipop">-0.01</item>
     </style>
 
     <!-- ++++++++++++++++++++++++++++++++++ Note discussion ++++++++++++++++++++++++++++++++++++ -->
@@ -160,6 +159,7 @@
 
     <style name="NoteDiscussion.Comment">
         <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:textIsSelectable">true</item>
     </style>
 
     <style name="NoteDiscussion.Info"/>
