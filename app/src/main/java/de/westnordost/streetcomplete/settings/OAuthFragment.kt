@@ -10,6 +10,7 @@ import android.webkit.WebViewClient
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.*
+import de.westnordost.streetcomplete.ktx.toBcp47LanguageTag
 import de.westnordost.streetcomplete.ktx.toast
 import kotlinx.android.synthetic.main.fragment_oauth.*
 import kotlinx.coroutines.*
@@ -17,6 +18,7 @@ import oauth.signpost.OAuthConsumer
 import oauth.signpost.OAuthProvider
 import oauth.signpost.exception.OAuthCommunicationException
 import oauth.signpost.exception.OAuthExpectationFailedException
+import java.util.*
 import javax.inject.Inject
 import javax.inject.Named
 import javax.inject.Provider
@@ -122,7 +124,10 @@ class OAuthFragment : Fragment(R.layout.fragment_oauth),
             }
             if (authorizeUrl != null && oAuthVerifier == null) {
                 webView.visibility = View.VISIBLE
-                webView.loadUrl(authorizeUrl)
+                webView.loadUrl(
+                    authorizeUrl,
+                    mutableMapOf("Accept-Language" to Locale.getDefault().toBcp47LanguageTag())
+                )
                 oAuthVerifier = webViewClient.awaitOAuthCallback()
                 webView.visibility = View.INVISIBLE
             }
