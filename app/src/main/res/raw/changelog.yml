@@ -11,8 +11,10 @@ v21.0-beta1: |
    have been a map at all in this time.</p>
   <h3>Enhancements</h3>
   <ul>
-    <li>The text on the map now scales up when zooming and when increasing the font size in the Android settings (#1877), by @matkoniecz</li>
+    <li>The app can now be moved to SD card in the Android settings (#1787), thanks @Mortein and @Atrate</li>
     <li>Labels for countries and big cities stand out more, so they are better distinguishable from smaller places</li>
+    <li>Accessibility: The text on the map now scales up when zooming and when increasing the font size in the Android settings (#1877), by @matkoniecz</li>
+    <li>Accessibility: Increase contrast for orange text (#1899), by @matkoniecz</li>
     <li>Recycling type: Added cooking and motor oil options (#1830)</li>
     <li>Building type: Don't ask for (theme park) attractions (#1891)</li>
     <li>Added some achievement links</li>
