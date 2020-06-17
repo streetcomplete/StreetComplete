@@ -6,8 +6,10 @@ import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.osmapi.map.data.OsmNode
 import de.westnordost.streetcomplete.any
+import de.westnordost.streetcomplete.data.MapDataApi
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryCreator
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.MergedElementDao
 import de.westnordost.streetcomplete.data.quest.AllCountries
@@ -26,6 +28,8 @@ class OsmQuestDownloaderTest {
     private lateinit var elementDb: MergedElementDao
     private lateinit var osmQuestController: OsmQuestController
     private lateinit var countryBoundaries: CountryBoundaries
+    private lateinit var mapDataApi: MapDataApi
+    private lateinit var elementGeometryCreator: ElementGeometryCreator
     private lateinit var downloader: OsmQuestDownloader
 
     @Before fun setUp() {
@@ -33,9 +37,11 @@ class OsmQuestDownloaderTest {
         osmQuestController = mock()
         on(osmQuestController.replaceInBBox(any(), any(), any())).thenReturn(OsmQuestController.UpdateResult(0,0))
         countryBoundaries = mock()
+        elementGeometryCreator = mock()
+        mapDataApi = mock()
         val countryBoundariesFuture = FutureTask { countryBoundaries }
         countryBoundariesFuture.run()
-        downloader = OsmQuestDownloader(elementDb, osmQuestController, countryBoundariesFuture)
+        downloader = OsmQuestDownloader(elementDb, osmQuestController, countryBoundariesFuture, mapDataApi, elementGeometryCreator)
     }
 
     @Test fun `ignore element with invalid geometry`() {
