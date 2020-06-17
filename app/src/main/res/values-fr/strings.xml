@@ -41,7 +41,6 @@
 
     <!-- Fuzzy -->
     <string name="map_btn_gps_tracking">"Me suivre"</string>
-    <string name="map_attribution_mapzen">"Propulsé par %s"</string>
 
     <!-- Fuzzy -->
     <string name="map_attribution_osm">"© Contributeurs OpenStreetMap"</string>
@@ -1353,9 +1352,6 @@ Sinon, vous pouvez télécharger un autre clavier dans le magasin d'applications
 
     <!-- Fuzzy -->
     <string name="quest_generic_item_confirmation">"Êtes-vous sûr que vous ne pouvez pas le déterminer plus précisément ?"</string>
-
-    <!-- Fuzzy -->
-    <string name="privacy_html_tileserver">"&lt;p&gt;Pour afficher la carte, les tuiles vectorielles sont téléchargées depuis &lt;a href=\"https://tiles.map-data.de\"&gt;map-data.de&lt;/a&gt;. Ce service enregistre les demandes de tuiles à des fins de statistiques anonymes et de détection d’erreurs. Les registres de demandes sont supprimés après quelques jours.&lt;/p&gt;"</string>
 
     <!-- Fuzzy -->
     <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Pour certaines quêtes, des données supplémentaires provenant de tiers sont téléchargées. En particulier, les quêtes relatives aux voies à sens unique interrogent une API, hébergée sur westnordost.de, afin de détecter les voies à sens uniques probables.&lt;/p&gt;"</string>

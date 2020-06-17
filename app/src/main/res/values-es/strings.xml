@@ -40,7 +40,6 @@
 
     <!-- Fuzzy -->
     <string name="map_btn_gps_tracking">"Sígueme"</string>
-    <string name="map_attribution_mapzen">"Usa %s"</string>
 
     <!-- Fuzzy -->
     <string name="map_attribution_osm">"© Colaboradores de OpenStreetMap"</string>
@@ -1322,9 +1321,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
 
     <!-- Fuzzy -->
     <string name="quest_generic_item_confirmation">"¿Estas seguro que no puedes determinarlo mas específicamente?"</string>
-
-    <!-- Fuzzy -->
-    <string name="privacy_html_tileserver">"&lt;p&gt;Para poder mostrar el mapa cargamos las distintas porciones en formato vectorial de &lt;a href=\"https://tiles.map-data.de\"&gt;map-data.de&lt;/a&gt;. El servicio lleva un registro anónimo de las peticiones con fines estadísticos y de corrección de errores pero los borramos al cabo de unos días.&lt;/p&gt;"</string>
 
     <!-- Fuzzy -->
     <string name="privacy_html_third_party_quest_sources">"&lt;p&gt; En algunas misiones, se descargan datos adicionales de terceros. En particular, la búsqueda de calles de sentido único consulta una API, que esta alojada en westnordost.de, sobre posibles calles de sentido único. &lt;/ p&gt;"</string>

@@ -40,7 +40,6 @@
 
     <!-- Fuzzy -->
     <string name="map_btn_gps_tracking">"Siga-me"</string>
-    <string name="map_attribution_mapzen">"Funciona com %s"</string>
 
     <!-- Fuzzy -->
     <string name="map_attribution_osm">"© Contribuidores do OpenStreetMap"</string>
@@ -1313,9 +1312,6 @@ Caso contrário, pode descarregar outro teclado na loja de apps. Alguns dos tecl
 
     <!-- Fuzzy -->
     <string name="quest_generic_item_confirmation">"Tem a certeza que não consegue determinar de forma precisa?"</string>
-
-    <!-- Fuzzy -->
-    <string name="privacy_html_tileserver">"&lt;p&gt;Para mostrar o mapa, os mosaicos vetoriais são provenientes de &lt;a href=\"https://tiles.map-data.de\"&gt;map-data.de&lt;/a&gt;. O serviço regista os pedidos de mosaicos para estatísticas anónimas e para detetar problemas, no entanto elimina os registos após alguns dias.&lt;/p&gt;"</string>
 
     <!-- Fuzzy -->
     <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Para alguns desafios, são descarregados dados de terceiros. Em particular, o desafio de sentido único faz consultas a uma API, também alojada em westnordost.de, sobre candidatos possíveis de sentido único.&lt;/p&gt;"</string>

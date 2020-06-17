@@ -40,7 +40,6 @@
 
     <!-- Fuzzy -->
     <string name="map_btn_gps_tracking">"Följ mig"</string>
-    <string name="map_attribution_mapzen">"Tillgänglig från %s"</string>
 
     <!-- Fuzzy -->
     <string name="map_attribution_osm">"© OpenStreetMap-bidragsgivare"</string>
@@ -1317,9 +1316,6 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_generic_item_confirmation">"Är du säker på att du inte kan svara mer specifikt?"</string>
 
     <!-- Fuzzy -->
-    <string name="privacy_html_tileserver">"&lt;p&gt;För att visa kartan hämtas vektorkartor från &lt;a href=\"https://tiles.map-data.de\"&gt;map-data.de&lt;/a&gt;. Tjänsten loggar begäran av kartan för anonym statistik och för att hitta eventuella fel, men tar bort loggarna efter några dagar. &lt;/p&gt;"</string>
-
-    <!-- Fuzzy -->
     <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;För några uppdrag kommer tilläggsdata från tredje part att hämtas. Sökningen efter uppdrag om enkelriktade gator använder ett API på westnordost.de för att hitta kandidater för enkelriktad körning.&lt;/p&gt;"</string>
 
     <!-- Fuzzy -->
@@ -2301,4 +2297,9 @@ nivåer"</string>
     <string name="quest_buildingLevels_address_title">"Hur många nivåer har byggnaden med numret %s?"</string>
     <string name="quest_roofShape_address_title">"Vilken grundform har byggnadens tak med numret %s?"</string>
     <string name="quest_buildingType_address_title">"Vilken typ av byggnad är nummer %s?"</string>
+    <string name="quest_recycling_type_cooking_oil">"Matlagningsolja"</string>
+    <string name="quest_recycling_type_engine_oil">"Motorolja"</string>
+    <string name="link_photon_description">"En fristående tillägg till Nominatim med luddig sökning och sök-medan-du-skriver"</string>
+    <string name="link_graphhopper_description">"En flexibel dirigeringsmotor"</string>
+    <string name="link_qwant_maps_description">"En karta med sökbara platser och vägbeskrivningar"</string>
 </resources>

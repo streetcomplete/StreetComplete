@@ -40,7 +40,6 @@
 
     <!-- Fuzzy -->
     <string name="map_btn_gps_tracking">"Më ndiq"</string>
-    <string name="map_attribution_mapzen">"Fuqizuar nga %s"</string>
 
     <!-- Fuzzy -->
     <string name="map_attribution_osm">"© Kontribuesit e OpenStreetMap"</string>

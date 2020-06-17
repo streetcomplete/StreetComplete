@@ -40,7 +40,6 @@
 
     <!-- Fuzzy -->
     <string name="map_btn_gps_tracking">"Beni takip et"</string>
-    <string name="map_attribution_mapzen">"%s tarafından desteklenmektedir"</string>
 
     <!-- Fuzzy -->
     <string name="map_attribution_osm">"© OpenStreetMap katkıcıları"</string>
@@ -1258,9 +1257,6 @@ Tüm cadde boyunca vurgulanan bölüm için geçerli hiçbir işaret yoksa, vars
     <string name="quest_pathSurface_title">"Bu yolun buradaki yüzeyi nasıl?"</string>
     <string name="quest_select_hint_most_specific">"En uygun olanı seçin:"</string>
     <string name="quest_generic_item_confirmation">"Daha spesifik olarak belirleyemediğinizden emin misiniz?"</string>
-
-    <!-- Fuzzy -->
-    <string name="privacy_html_tileserver">"&lt;p&gt; Haritayı görüntülemek için, vektör döşemeleri &lt;a href=\"https://tiles.map-data.de\"&gt; map-data.de &lt;/a&gt; adresinden alınır.  Hizmet, isimsiz istatistikler ve sorunları tespit etmek için döşeme isteklerini günlüğe kaydeder ancak birkaç gün sonra günlükleri siler. &lt;/p&gt;"</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_hasFeature_no_leave_note">"Hayır (not bırak)"</string>

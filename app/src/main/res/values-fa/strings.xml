@@ -14,7 +14,6 @@
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"نادیده گرفتن یادداشت‌هایی که به عنوان سوال تعریف نشده است"</string>
     <string name="pref_title_map_cache">"مقدار حافظه پنهان"</string>
     <string name="map_btn_gps_tracking">"من را دنبال کن"</string>
-    <string name="map_attribution_mapzen">"طراحی شده توسط %s"</string>
     <string name="map_attribution_osm">"© همکاران OpenStreetMap"</string>
     <string name="quest_generic_otherAnswers">"دیگر پاسخ‌ها ..."</string>
     <string name="quest_generic_answer_notApplicable">"نمی‌توان اظهار نظر کرد…"</string>
@@ -1279,11 +1278,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_generic_item_confirmation">"آیا مطمئن هستید که نمی‌توانید دقیقاً آن را مشخص کنید؟"</string>
-
-    <!-- Fuzzy -->
-    <string name="privacy_html_tileserver">"
-&lt;p&gt;برای نمایش نقشه ، قطعات نقشه پس زمینه بازیابی می شوند &lt;a href=\"https://tiles.map-data.de\"&gt;map-data.de&lt;/a&gt;. سامانه ثبت درخواست برای بازیابی قطعات نقشه به صورت ناشناس فعالیت می کند و برای تشخیص خطاها بعد از چند روز فهرست ذخیره سازی  حذف می شود.&lt;/p&gt;
-"</string>
 
     <!-- Fuzzy -->
     <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;برای برخی از جستارها، برخی از اطلاعات اضافی از طرف شخص ثالث دریافت می شود. به طور خاص یکی از روش های جستجوی جستارها یک API را نیز نمایش می دهد، همچنین در Westnordost.de  میزبانی می‌شود، درباره پاسخ های احتمالی یک روش.  .&lt;/p&gt;"</string>

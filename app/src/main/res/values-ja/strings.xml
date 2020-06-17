@@ -40,7 +40,6 @@
 
     <!-- Fuzzy -->
     <string name="map_btn_gps_tracking">"フォローしてださい"</string>
-    <string name="map_attribution_mapzen">"Powered by %s"</string>
 
     <!-- Fuzzy -->
     <string name="map_attribution_osm">"© OpenStreetMap 貢献者"</string>
@@ -192,13 +191,13 @@
     <string name="offline">"オフラインです"</string>
 
     <!-- Fuzzy -->
-    <string name="confirmation_authorize_now">"OSM ユーザーアカウントで認証して、正しい回答を適用する必要があります。 今すぐ認証しますか?"</string>
+    <string name="confirmation_authorize_now">"あなたの回答を公開するには OSM ユーザーアカウントで認証する必要があります。 今すぐ認証しますか?"</string>
 
     <!-- Fuzzy -->
     <string name="not_authorized">"認証されていません"</string>
 
     <!-- Fuzzy -->
-    <string name="version_banned_message">"このバージョンの StreetComplete は、回答のアップロードが禁止されています。 バージョンを更新してください!"</string>
+    <string name="version_banned_message">"このバージョンの StreetComplete は古すぎます。 更新してください!"</string>
 
     <!-- Fuzzy -->
     <string name="no_gps_no_quests">"周囲の探索を自動的にスキャンするには、位置情報をオンにしてください"</string>
@@ -243,7 +242,7 @@
     <string name="quest_openingHours_comment_title">"営業時間の説明"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_openingHours_comment_description">"簡潔に、理想的には標識からの文言を使用してください。 例えば、\"予約で\"。 標識がない場合も、必ずしも定期的な営業時間がないわけではありません。"</string>
+    <string name="quest_openingHours_comment_description">"簡潔に、理想的には看板からの文言を使用してください。 例えば、\"予約で\"。 看板がない場合も、必ずしも定期的な営業時間がないわけではありません。"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingLevels_title">"この建物は何階建てですか?"</string>
@@ -439,7 +438,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_generic_hasFeature_no">"いいえ"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_busStopShelter_title">"このバス停は避難所がありますか?"</string>
+    <string name="quest_busStopShelter_title">"このバス停には屋根がありますか?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_bikeParkingCapacity_title">"ここに何台のバイクを駐車できますか?"</string>
@@ -543,7 +542,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_tactilePaving_title_name_bus">"バス停 %s には点字ブロックがありますか?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_source_dialog_note">"調査で見つかった情報のみを入力する必要があります。"</string>
+    <string name="quest_source_dialog_note">"調査で見つかった情報のみを入力してください。"</string>
 
     <!-- Fuzzy -->
     <string name="quest_bicycleParkingCoveredStatus_title">"この駐輪場は屋根がありますか (雨から守られていますか)?"</string>
@@ -594,7 +593,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_sport_sepak_takraw">"セパタクロー"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_wheelchairAccess_name_title">"%s 車椅子にアクセスできますか?"</string>
+    <string name="quest_wheelchairAccess_name_title">"%s は車椅子でアクセスできますか?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_limited">"部分的"</string>
@@ -699,7 +698,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_fireHydrant_type_pond">"池"</string>
 
     <!-- Fuzzy -->
-    <string name="credits_contributors">"&lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;GitHub のすべてのリスト&lt;/a&gt; を参照してください。"</string>
+    <string name="credits_contributors">"すべてのリストは &lt;a href=\"https://github.com/westnordost/StreetComplete/graphs/contributors\"&gt;GitHub&lt;/a&gt; を参照してください。"</string>
 
     <!-- Fuzzy -->
     <string name="credits_translations">"すべてのリストは &lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;POEditor のプロジェクト&lt;/a&gt; を参照してください。"</string>
@@ -711,7 +710,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="credits_contributors_title">"コードの貢献"</string>
 
     <!-- Fuzzy -->
-    <string name="credits_author_title">"作者とメンテナンス"</string>
+    <string name="credits_author_title">"作者と開発者"</string>
 
     <!-- Fuzzy -->
     <string name="credits_and_more">"その他 …"</string>
@@ -1057,7 +1056,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="enable_quest_confirmation_title">"この探求タイプを有効にしますか?"</string>
 
     <!-- Fuzzy -->
-    <string name="default_disabled_msg_go_inside">"このタイプの探求に答えるためには場所を入力する必要があるため、この探求タイプはデフォルトで無効になっています。"</string>
+    <string name="default_disabled_msg_go_inside">"このタイプの質問に答えるためにはその場所に入る必要があるため、質問はデフォルトで無効になっています。"</string>
 
     <!-- Fuzzy -->
     <string name="quest_housenumber_conscription_number">"徴収番号"</string>
@@ -1106,16 +1105,16 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="create_new_note_description">"ここにメモを残して、他のマッパーに問題を知らせることができます。 地図を移動してノートの位置を調整してください:"</string>
 
     <!-- Fuzzy -->
-    <string name="pref_title_quests_invalidation">"探索キャッシュを無効にする"</string>
+    <string name="pref_title_quests_invalidation">"探索キャッシュを削除する"</string>
 
     <!-- Fuzzy -->
     <string name="pref_title_quests_invalidation_summary">"一部の探索が古くなっていると思われる場合に役立ちます"</string>
 
     <!-- Fuzzy -->
-    <string name="invalidate_confirmation">"無効にする"</string>
+    <string name="invalidate_confirmation">"削除する"</string>
 
     <!-- Fuzzy -->
-    <string name="invalidation_dialog_message">"キャッシュを無効にすると、次にダウンロードされる探索が更新されます。 探索キャッシュは1週間後に自動的に無効になります。解決した探索が他の誰かによってすでに回答されていると判明したときにすぐに無効になります。"</string>
+    <string name="invalidation_dialog_message">"キャッシュを削除すると、次回ダウンロード時に探索が更新されます。 探索キャッシュは1週間後に自動的に削除されます。解決した探索が他の誰かによってすでに回答されていると判明した場合にもすぐに削除されます。"</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_looks_like_this">"通常はこのように見えます:"</string>
@@ -1155,6 +1154,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
 
     <!-- Fuzzy -->
     <string name="quest_bench_answer_picnic_table">"ピクニックテーブルです"</string>
+    <string name="quest_religion_for_place_of_worship_title">"この場所はどの宗教に関係しますか?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_religion_christian">"キリスト教"</string>
@@ -1246,6 +1246,8 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
 
     <!-- Fuzzy -->
     <string name="quest_tramStopName_title">"この路面電車の停留所の名前は何ですか?"</string>
+    <string name="quest_housenumber_multiple_numbers_description">"カンマ区切りの住居番号か範囲で入力できます。
+たとえば 1,3 あるいは 2-6"</string>
 
     <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_shed">"小屋"</string>
@@ -1255,24 +1257,28 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
 
     <!-- Fuzzy -->
     <string name="quest_bicycle_parking_type_building">"建物"</string>
+    <string name="quest_postboxCollectionTimes_title">"このポストの収集時刻は何時ですか?"</string>
+    <string name="quest_collectionTimes_add_times">"収集時刻を追加"</string>
+    <string name="quest_collectionTimes_answer_no_times_specified">"時間は決まっていない"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_construction_road_title">"この道路はできあがるか。"</string>
+    <string name="quest_construction_road_title">"この道路は完成していますか?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_construction_cycleway_title">"この自転車道はできあがるか。"</string>
+    <string name="quest_construction_cycleway_title">"この自転車道は完成していますか?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_construction_footway_title">"この歩道はできあがるか。"</string>
+    <string name="quest_construction_footway_title">"この歩道は完成していますか?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_construction_generic_title">"この道はできあがるか。"</string>
+    <string name="quest_construction_generic_title">"この道は完成していますか?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_construction_building_title">"この建物はできあがるか。"</string>
+    <string name="quest_construction_building_title">"この建物は完成していますか?"</string>
 
     <!-- Fuzzy -->
-    <string name="questList_disabled_in_country">"%sに見せない。"</string>
+    <string name="questList_disabled_in_country">"%s では非表示"</string>
+    <string name="quest_toiletAvailability_rest_area_title">"この休憩所にトイレはありますか?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_pathSurface_title_steps">"この段はどんな表面ですか?"</string>
@@ -1281,9 +1287,162 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_pathSurface_title_bridleway">"この馬の道はどんな表面ですか?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_pathSurface_title">"ここに小道はどんな表面ですか?"</string>
+    <string name="quest_pathSurface_title">"この小道はどんな表面ですか?"</string>
+    <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;一部の探索ではサードパーティから追加のデータをダウンロードします。特に一方通行の探索では westnordost.de にもホストされているAPIに一方通行の候補を問い合わせます。&lt;/p&gt;"</string>
+    <string name="quest_generic_item_invalid_value">"より具体的な値を選択してください。"</string>
+    <string name="quest_buildingType_answer_multiple_types">"複数の用途で利用されている"</string>
+    <string name="quest_buildingType_answer_multiple_types_description">"この建物の主な利用を選択してください。例えば1階に店舗があって2階以上がアパートになっているならその建物はアパートです。"</string>
+    <string name="quest_buildingType_answer_construction_site">"現在も建設中"</string>
+    <string name="quest_buildingType_residential">"住居"</string>
+    <string name="quest_buildingType_residential_description">"人が住んでいる建物"</string>
+    <string name="quest_buildingType_house">"住宅"</string>
+    <string name="quest_buildingType_house_description">"1つの世帯が住んでいる住まい"</string>
+    <string name="quest_buildingType_apartments_description">"複数の世帯が住んでいる建物。1階に店舗があることもあります。"</string>
+    <string name="quest_buildingType_apartments">"集合住宅(アパートやマンション)"</string>
+    <string name="quest_buildingType_hotel">"宿泊施設"</string>
+    <string name="quest_buildingType_dormitory">"寮"</string>
+    <string name="quest_buildingType_houseboat">"ハウスボート"</string>
+    <string name="quest_buildingType_static_caravan">"トレーラーハウス"</string>
+    <string name="quest_buildingType_commercial">"商業施設"</string>
+    <string name="quest_buildingType_industrial">"工業施設"</string>
+    <string name="quest_buildingType_industrial_description">"(工場や町工場、自動車整備工場など)"</string>
+    <string name="quest_buildingType_office">"オフィス"</string>
+    <string name="quest_buildingType_retail">"店舗"</string>
+    <string name="quest_buildingType_warehouse">"倉庫"</string>
+    <string name="quest_buildingType_kiosk">"キオスク"</string>
+    <string name="quest_buildingType_storage_tank">"貯蔵タンク"</string>
+    <string name="quest_buildingType_religious">"宗教施設"</string>
+    <string name="quest_buildingType_church">"教会"</string>
+    <string name="quest_buildingType_chapel">"礼拝所"</string>
+    <string name="quest_buildingType_cathedral">"聖堂"</string>
+    <string name="quest_buildingType_mosque">"モスク"</string>
+    <string name="quest_buildingType_temple">"寺院"</string>
+    <string name="quest_buildingType_synagogue">"シナゴーグ"</string>
+    <string name="quest_buildingType_civic">"市民活動施設"</string>
+    <string name="quest_buildingType_hospital">"病院"</string>
+    <string name="quest_buildingType_stadium">"スタジアム"</string>
+    <string name="quest_buildingType_train_station">"鉄道の駅"</string>
+    <string name="quest_buildingType_transportation">"公共交通施設"</string>
+    <string name="quest_buildingType_university">"大学"</string>
+    <string name="quest_buildingType_government">"政府施設"</string>
+    <string name="quest_buildingType_carport">"カーポート"</string>
+    <string name="quest_buildingType_carport_description">"車のための屋根"</string>
+    <string name="quest_buildingType_garage">"車庫"</string>
+    <string name="quest_buildingType_garages">"共用車庫"</string>
+    <string name="quest_buildingType_greenhouse">"温室"</string>
+    <string name="quest_buildingType_other">"その他"</string>
+    <string name="quest_buildingType_shed">"小屋"</string>
+    <string name="quest_buildingType_hut">"避難小屋"</string>
+    <string name="quest_buildingType_hut_description">"小さく粗末な避難所"</string>
+    <string name="quest_buildingType_roof">"屋根"</string>
+    <string name="quest_buildingType_service">"機械室"</string>
+    <string name="quest_buildingType_service_description">"ポンプやトランスのような機械を設置している建物"</string>
+    <string name="quest_buildingType_hangar">"ハンガー"</string>
+    <string name="quest_buildingType_hangar_description">"航空機やヘリコプター、宇宙船の格納庫"</string>
+    <string name="quest_address_answer_no_housenumber">"住居番号は無い..."</string>
+    <string name="quest_address_answer_no_housenumber_message1">"建物は次のようにタグ付けされています:"</string>
+    <string name="quest_address_answer_no_housenumber_message2">"この情報は正しいですか? そして住居番号が無いのは建物の一部だけではありませんか?"</string>
+    <string name="quest_buildingType_shrine">"神社"</string>
+    <string name="quest_maxspeed_title_short2">"この通りの速度制限は何ですか?"</string>
+    <string name="quest_maxspeed_answer_sign">"標識"</string>
+    <string name="quest_maxspeed_answer_noSign2">"標識は無く法定速度を適用"</string>
+    <string name="quest_openingHours_no_sign">"営業時間の看板はない"</string>
+    <string name="quest_maxspeed_name_title2">"%s の速度制限は何ですか?"</string>
+    <string name="quest_buildingType_sports_centre">"スポーツセンター"</string>
+    <string name="quest_buildingType_toilets">"トイレ"</string>
+    <string name="notification_channel_download">"ダウンロード"</string>
+    <string name="quest_playground_access_title">"この遊び場は誰でも利用できますか?"</string>
+    <string name="quest_segregated_title">"歩道と自転車道はどのように割り当てられていますか?"</string>
+    <string name="dialog_tutorial_upload">"手動で変更をアップロードするには、ツールバーにあるこのボタンを使ってください。"</string>
+    <string name="quest_segregated_separated">"分離されている"</string>
+    <string name="quest_segregated_mixed">"歩行者と自転車は同じ部分を通る"</string>
+    <string name="quest_maxheight_title">"この場所の高さ制限は何ですか?"</string>
+    <string name="quest_maxheight_parking_entrance_title">"この駐車場の入り口の高さ制限は何ですか?"</string>
+    <string name="quest_maxheight_height_restrictor_title">"この高さ制限バーの高さ制限は何ですか?"</string>
+    <string name="quest_maxheight_tunnel_title">"このトンネルの高さ制限は何ですか?"</string>
+    <string name="quest_maxheight_answer_noSign">"標識は無い..."</string>
+    <string name="quest_maxheight_answer_noSign_question">"この場所には高いトラック(少なくとも4.5メートル / 15フィート)が通る余裕がありますか?"</string>
+    <string name="quest_maxheight_unusualInput_confirmation_description">"その高さは変です。本当に正しいですか?"</string>
     <string name="quest_noteDiscussion_comment2">"— %1$s, %2$s"</string>
+    <string name="privacy_html_image_upload2">"&lt;p&gt;ノートに添付した写真は開発者のサーバにアップロードされ、ノートが解決すればその数日後に削除されます。写真のメタデータはアップロードの前に除去されます。&lt;/p&gt;"</string>
+    <string name="action_deselect_all">"全て選択解除"</string>
+    <string name="quest_buildingType_retail_description">"レストランやカフェなどの建物を含む"</string>
+    <string name="quest_openingHours_timeSelect_next">"次"</string>
+    <string name="quest_building_underground_name_title">"%s は建物全体が地下にありますか?"</string>
+    <string name="quest_building_underground_title">"この建物は全体が地下にありますか?"</string>
+    <string name="quest_traffic_signals_sound_title">"この信号に視覚障害者のための音響装置はありますか?"</string>
+    <string name="quest_wheelchairAccess_outside_title">"この場所は車椅子でアクセスできますか?"</string>
+    <string name="quest_traffic_signals_button_title">"この信号には歩行者用の押ボタンがありますか?"</string>
+    <string name="default_disabled_msg_maxspeed">"このタイプの質問に答えるためには強調表示されている部分だけではなく、通り全域の速度制限標識を確認する必要があるためデフォルトで無効になっています。場合によっては1つの探索を完了するのに非常に労力がかかるでしょう。"</string>
+    <string name="pref_title_quests_restore_hidden">"非表示にした探索を戻す"</string>
+
+    <!-- as in: "Where is the metro station?" - "It is underground" -->
+    <string name="underground">"地下"</string>
+    <string name="quest_sidewalk_value_yes">"歩道"</string>
+    <string name="quest_accessible_for_pedestrians_title_prohibited">"この道路では歩行者の通行が禁止されていますか?"</string>
+    <string name="quest_accessible_for_pedestrians_separate_sidewalk_explanation">"この道には両脇に歩道が無いとタグ付けされています。もし実際には歩道があるものの別の道として表示されているなら、\"歩道\"と答えてください。"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_title">"これはどんな建物ですか?"</string>
+    <string name="pref_title_theme_select">"テーマを選択"</string>
+    <string name="theme_automatic">"自動"</string>
+    <string name="theme_light">"ライト"</string>
+    <string name="theme_dark">"ダーク"</string>
+    <string name="quest_placeName_title_name">"この場所の名前は何ですか? (%s)"</string>
+    <string name="action_open_location">"他のアプリでこの場所を開く"</string>
+    <string name="map_application_missing">"他の地図アプリがインストールされていません"</string>
+    <string name="pref_title_overpass_url_select">"Overpass サーバを変更"</string>
+    <string name="pref_title_overpass_url_info">"アプリの再起動が必要です。ロシアなどで検閲を回避できる場合があります。"</string>
+    <string name="label_housenumber">"住居番号"</string>
+    <string name="quest_busStopShelter_covered">"バス停全体が屋根で覆われている"</string>
+    <string name="quest_leave_new_note_photos_are_useful">"写真を追加するとノートがより役に立ちます。"</string>
+    <string name="quest_postboxCollectionTimes_name_title">"%s ポストの収集時刻は何時ですか?"</string>
+    <string name="create_new_note_hint">"ノートは現地で話されている言語で書くのが最善ですが、そうでなければ英語で書いてください。"</string>
+    <string name="quest_leafType_title">"ここの樹木の葉の種類は何ですか?"</string>
+    <string name="quest_leaf_type_broadleaved">"広葉樹"</string>
+    <string name="quest_leaf_type_mixed">"広葉樹と針葉樹"</string>
+    <string name="quest_split_way_too_imprecise">"拡大してください"</string>
+    <string name="quest_footwayPartSurface_title">"この歩道の路面は何ですか?"</string>
+    <string name="about_summary_current_version">"現在のバージョン: %s"</string>
+    <string name="quest_recycling_type_batteries">"電池"</string>
+    <string name="quest_recycling_type_cans">"缶"</string>
+    <string name="quest_recycling_type_clothes">"衣類"</string>
+    <string name="quest_recycling_type_glass_bottles">"ガラス瓶"</string>
+    <string name="quest_recycling_type_glass_bottles_short">"ガラス瓶"</string>
+    <string name="quest_recycling_type_paper">"紙"</string>
+    <string name="quest_recycling_type_plastic_generic">"プラスチック"</string>
+    <string name="quest_recycling_type_plastic">"あらゆるプラスチック"</string>
+    <string name="quest_recycling_type_shoes">"靴"</string>
+    <string name="quest_recycling_type_electric_appliances">"電気製品"</string>
+    <string name="quest_recycling_type_plastic_bottles">"ペットボトル"</string>
+    <string name="quest_recycling_type_plastic_packaging">"プラスチック包装"</string>
+    <string name="quest_recycling_type_scrap_metal">"くず鉄"</string>
+    <string name="quest_recycling_type_any_glass">"あらゆるガラス"</string>
+    <string name="quest_recycling_glass_title">"リサイクルできるのはガラス瓶だけですか、それともあらゆるガラス製品を含みますか?"</string>
+    <string name="quest_determineRecyclingGlass_description_any_glass">"たいていの場合、強化ガラス、窓ガラス、ガラス器具、電球、鏡は回収されません。"</string>
+    <string name="about_title_changelog">"バージョン履歴"</string>
+    <string name="title_whats_new">"新着情報"</string>
+    <string name="about_title_rate">"アプリを評価"</string>
+    <string name="about_summary_rate">"Google Playで"</string>
+    <string name="about_title_donate">"寄付"</string>
+    <string name="about_description_donate">"アプリの支援を検討してくれてありがとうございます! 現在の寄付を確認したり、寄付をするには各プラットフォームをタップしてください:"</string>
+    <string name="quest_religion_for_place_of_worship_name_title">"%s に関係のある宗教は何ですか?"</string>
+    <string name="quest_tourism_information_title">"ここはどんなタイプの観光案内ですか?"</string>
+    <string name="quest_tourism_information_name_title">"%s はどんなタイプの観光案内ですか?"</string>
+    <string name="quest_tourism_information_office">"観光案内所"</string>
+    <string name="quest_tourism_information_board">"情報掲示板"</string>
+    <string name="quest_tourism_information_terminal">"情報端末"</string>
+    <string name="quest_tourism_information_map">"地図"</string>
+    <string name="user_profile">"自分のプロフィール"</string>
+    <string name="user_login">"ログイン"</string>
+    <string name="user_logout">"ログアウト"</string>
+    <string name="osm_profile">"OSM プロフィール"</string>
+    <string name="tutorial_intro">"StreetComplete で簡単に OpenStreetMap に貢献できます。
+このアプリはあなたの周りで不足している情報(自転車レーン、住居表示、営業時間など...)を自動で探します。"</string>
+    <string name="achievement_first_edit_description">"OpenStreetMap コミュニティへようこそ! プロフィール画面では解決した探索タイプについての詳しい情報を確認することが出来ます。"</string>
+    <string name="achievement_bicyclist_solved_X">"サイクリストのための探索を %d 件解決しました!"</string>
+    <string name="achievement_building_solved_X">"建物に関する探索を %d 件解決しました。このアプリは建物の種類が分かっている場合のみ住居番号について質問することを留意してください。"</string>
+    <string name="achievement_blind_solved_X">"視覚障害者のための探索を %d 件解決しました。"</string>
+    <string name="achievement_pedestrian_solved_X">"歩行者のための探索を %d 件解決しました!"</string>
+    <string name="confirmation_authorize_now_note2">"後でプロフィール画面から行うことも出来ます。"</string>
 </resources>

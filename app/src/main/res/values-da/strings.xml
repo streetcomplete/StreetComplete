@@ -40,7 +40,6 @@
 
     <!-- Fuzzy -->
     <string name="map_btn_gps_tracking">"Følg mig"</string>
-    <string name="map_attribution_mapzen">"Drevet af %s"</string>
 
     <!-- Fuzzy -->
     <string name="map_attribution_osm">"© OpenStreetMap bidragsydere"</string>
@@ -1325,9 +1324,6 @@ F.eks. 1,3 eller 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_item_confirmation">"Er du sikker på at du ikke kan bestemme den mere specifikt?"</string>
-
-    <!-- Fuzzy -->
-    <string name="privacy_html_tileserver">"&lt;p&gt;For at vise kortet hentes vektor fliser fra &lt;a href=\"https://tiles.map-data.de\"&gt;map-data.de&lt;/a&gt;. Servicen logger flise hentninger til anonym statistik og at opdage problemer, men sletter loggen efter et par dage&lt;/p&gt;"</string>
 
     <!-- Fuzzy -->
     <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Nogle opgaver har brug for at hente ekstra data fra tredjeparter. Specielt bruger envejs opgaven en API, også fra westnordost.de, for mulige envejs kandidater.&lt;/p&gt;"</string>

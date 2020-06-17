@@ -40,7 +40,6 @@
 
     <!-- Fuzzy -->
     <string name="map_btn_gps_tracking">"Ségueme"</string>
-    <string name="map_attribution_mapzen">"Desenvolvido por %s"</string>
 
     <!-- Fuzzy -->
     <string name="map_attribution_osm">"© contribuíntes do OpenStreetMap"</string>
@@ -1322,9 +1321,6 @@ Por exemplo 1,3 ou 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_item_confirmation">"Estás na certeza de que non podes determinalo máis específicamente?"</string>
-
-    <!-- Fuzzy -->
-    <string name="privacy_html_tileserver">"&lt;p&gt;Para poder amosa-lo mapa carregamos os distintos anacos no formato vectorial de &lt;a href=\"https://tiles.map-data.de\"&gt;map-data.de&lt;/a&gt;. O servizo leva un rexostro anónimo das peticións con fins estatísticos e de correción de erros pero os eliminamos ó cabo duns días.&lt;/p&gt;"</string>
 
     <!-- Fuzzy -->
     <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Nalgunhas misión, descarréganse datos adicionais de terceiros. No particular, a procura das rúas dun só sentido consulta unha API, que está aloxada no westnordost.de, sobre posíbeis rúas dun só sentido.&lt;/p&gt;"</string>

@@ -40,7 +40,6 @@
 
     <!-- Fuzzy -->
     <string name="map_btn_gps_tracking">"Jarraitu nazazu"</string>
-    <string name="map_attribution_mapzen">"%s -(e)k produzitua"</string>
 
     <!-- Fuzzy -->
     <string name="map_attribution_osm">"© OpenStreetMap laguntzaileak"</string>
@@ -1323,9 +1322,6 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_generic_item_confirmation">"Ziur ez duzula gehiago zehaztu nahi?"</string>
 
     <!-- Fuzzy -->
-    <string name="privacy_html_tileserver">"&lt;p&gt;Mapa bistaratzeko, lauza bektorialak &lt;a href=\"https://tiles.map-data.de\"&gt;map-data.de&lt;/a&gt; helbidetik eskuratzen dira. Zerbitzu honek lauzen eskarien egunkari bat gordetzen du estatistika anonimoetarako eta arazoakantzemateko, baina egunbatzuetara ezabatzen ditu.&lt;/p&gt;"</string>
-
-    <!-- Fuzzy -->
     <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Erronka batzuetarako, hirugarrengoen datu gehigarriak deskargatzen da. Hain zuzen, norabide bakarraren erronkarako, bide bakarrekoak izateko aukera handiena duten bideak zeintzu diren westnordost.de helbidean ostatatutako API bati galdetzen zaio&lt;/p&gt;"</string>
 
     <!-- Fuzzy -->
@@ -1725,7 +1721,7 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_buildingType_title">"Ze motako eraikina da hau?"</string>
 
     <!-- Fuzzy -->
-    <string name="pref_title_theme_select">"Hautatu itxura"</string>
+    <string name="pref_title_theme_select">"Hautatu azala"</string>
     <string name="theme_automatic">"Automatikoa"</string>
 
     <!-- Fuzzy -->

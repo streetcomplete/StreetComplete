@@ -40,7 +40,6 @@
 
     <!-- Fuzzy -->
     <string name="map_btn_gps_tracking">"나를 따라다니기"</string>
-    <string name="map_attribution_mapzen">"%s에서 제공받음"</string>
 
     <!-- Fuzzy -->
     <string name="map_attribution_osm">"© OpenStreetMap 기여자"</string>
@@ -1297,9 +1296,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_generic_item_confirmation">"정말 더 구체적으로 결정할 수 없습니까?"</string>
-
-    <!-- Fuzzy -->
-    <string name="privacy_html_tileserver">"&lt;p&gt;지도를 띄우려면 &lt;a href=\"https://tiles.map-data.de\"&gt;map-data.de&lt;/a&gt;에서 벡터 타일을 가져와야 합니다. 이 서비스를 이용하면 타일 요청 로그를 익명으로 남기게 됩니다. 이 로그는 문제 해결에 사용되며, 수일 후에 로그는 삭제됩니다.&lt;/p&gt;"</string>
 
     <!-- Fuzzy -->
     <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;일부 퀘스트에서는 제3자 앱에서 추가 데이터를 가져오기도 합니다. 특히 일방통행 퀘스트에서는 westnordost.de의 API를 호출해서 일방통행로 후보를 가져옵니다.&lt;/p&gt;"</string>

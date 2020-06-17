@@ -582,7 +582,7 @@
         },
         "shop/storage_rental": {
             "name": "Storage Rental",
-            "terms": "garages"
+            "terms": "device storage,garages,self storage,self-service storage,storage lockers,storage rental,storage units"
         },
         "shop/fashion": {
             "name": "Fashion Store"
@@ -603,9 +603,13 @@
             "name": "Pipeline Route",
             "terms": ""
         },
+        "amenity/vacuum_cleaner": {
+            "name": "Vacuum Cleaning Station",
+            "terms": "car vacuum cleaner,car wash,carvac,suction"
+        },
         "aeroway/jet_bridge": {
-            "name": "Jet Bridge",
-            "terms": "aerobridge,air jetty,airbridge,finger,gangway,jet way,jetway,passenger boarding bridge,PBB,portal,skybridge,terminal gate connector"
+            "name": "Jetway",
+            "terms": "aerobridge,air jetty,airbridge,airtube,finger,gangway,jet bridge,jetbridge,jet way,jetway,passenger boarding bridge,PBB,portal,skybridge,terminal gate connector"
         },
         "natural/reef": {
             "name": "Reef",
@@ -1265,6 +1269,10 @@
         "waterway/stream": {
             "name": "Stream",
             "terms": "beck,branch,brook,burn,course,creek,current,drift,flood,flow,freshet,race,rill,rindle,rivulet,run,runnel,rush,spate,spritz,surge,tide,torrent,tributary,watercourse"
+        },
+        "shop/trophy": {
+            "name": "Trophy Shop",
+            "terms": "awards,engravings,medals,plaques,trophy store"
         },
         "railway": {
             "name": "Railway Feature"
@@ -2178,7 +2186,7 @@
             "terms": "rail,train,track"
         },
         "man_made/cross": {
-            "name": "Summit Cross",
+            "name": "Cross",
             "terms": ""
         },
         "amenity/cinema": {
@@ -2388,6 +2396,10 @@
         "shop/electrical": {
             "name": "Electrical Equipment Store",
             "terms": "cable,electric,fan,LED,lighting,power,wire"
+        },
+        "highway/road/bridge": {
+            "name": "Unknown Road Bridge",
+            "terms": ""
         },
         "shop/car_repair": {
             "name": "Car Repair Shop",
@@ -3063,6 +3075,10 @@
             "name": "Boat Builder",
             "terms": ""
         },
+        "amenity/refugee_site": {
+            "name": "Refugee Camp",
+            "terms": "displaced people,evacuees,migrants,ngo,refugee site"
+        },
         "shop/interior_decoration": {
             "name": "Interior Decoration Store",
             "terms": ""
@@ -3085,6 +3101,10 @@
         "craft/gardener": {
             "name": "Gardener",
             "terms": "landscaper,grounds keeper"
+        },
+        "man_made/goods_conveyor": {
+            "name": "Goods Conveyor",
+            "terms": "belt conveyor,chain conveyor,conveyor belt,roller conveyor"
         },
         "indoor/stairs": {
             "name": "Indoor Stairwell",
@@ -3388,6 +3408,10 @@
         "healthcare/midwife": {
             "name": "Midwife",
             "terms": "baby,childbirth,delivery,labour,labor,pregnancy"
+        },
+        "amenity/cafe/bubble_tea": {
+            "name": "Bubble Tea Cafe",
+            "terms": "boba,bubble milk tea,pearl milk tea,taiwanese tea drink,tapioca"
         },
         "amenity/social_facility/ambulatory_care": {
             "name": "Ambulatory Care",
@@ -4736,7 +4760,11 @@
         },
         "highway/cycleway/bicycle_foot": {
             "name": "Cycle & Foot Path",
-            "terms": "bicycle and foot path,bike and pedestrian path,green way,greenway,mixed-use trail,multi-use trail,segregated trail,rail trail"
+            "terms": "bicycle and foot path,bike and pedestrian path,green way,greenway,mixed-use trail,multi-use trail,segregated trail,shared path,shared use path,rail trail"
+        },
+        "amenity/cafe/coffee_shop": {
+            "name": "Coffeehouse",
+            "terms": "americano,brew,cafe,café,caffe,caffè,cappuccino,cocoa,coffee shop,drip,espresso,hot drinks,latte,macchiato,tea"
         },
         "landuse/plant_nursery": {
             "name": "Plant Nursery",

@@ -40,7 +40,6 @@
 
     <!-- Fuzzy -->
     <string name="map_btn_gps_tracking">"Podążaj za mną"</string>
-    <string name="map_attribution_mapzen">"Wspierane przez %s"</string>
 
     <!-- Fuzzy -->
     <string name="map_attribution_osm">"© Współautorzy OpenStreetMap"</string>
@@ -1317,9 +1316,6 @@ Na przykład 1,3 lub 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_item_confirmation">"Czy jesteś pewien, że nie da się określić bardziej szczegółowo?"</string>
-
-    <!-- Fuzzy -->
-    <string name="privacy_html_tileserver">"&lt;p&gt;Aby wyświetlić mapę kafelki wektorowe są pobierane z serwera &lt;a href=\"https://tiles.map-data.de\"&gt;map-data.de&lt;/a&gt;. Serwis zbiera dane dotyczące pobranych kafelków w celach statystycznych oraz w celu wykrywania błędów ale dane te są usuwane po kilku dniach.&lt;/p&gt;"</string>
 
     <!-- Fuzzy -->
     <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Dla niektórych zadań, pobrane są dodatkowe dane udostępnione przez innych. W szczególności, zadanie sprawdzania jednokierunkowości dróg korzysta z API, również utrzymywane na westnordost.de, by uzyskać informacje które drogi mogą być jednokierunkowe.&lt;/p&gt;"</string>

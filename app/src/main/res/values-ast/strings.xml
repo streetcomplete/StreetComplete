@@ -40,7 +40,6 @@
 
     <!-- Fuzzy -->
     <string name="map_btn_gps_tracking">"Síguime"</string>
-    <string name="map_attribution_mapzen">"Emplega %s"</string>
 
     <!-- Fuzzy -->
     <string name="map_attribution_osm">"© Collaboradores d'OpenStreetMap"</string>
@@ -1319,9 +1318,6 @@ Por exemplu: 1,3 o 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_item_confirmation">"¿De xuru que nun pues ser más específicu/a?"</string>
-
-    <!-- Fuzzy -->
-    <string name="privacy_html_tileserver">"&lt;p&gt;Pa poder amosar el mapa cargamos les distintes porciones en formatu vectorial de &lt;a href=\"https://tiles.map-data.de\"&gt;map-data.de&lt;/a&gt;. El serviciu lleva un rexistru anónimu de los pidimientos con fines estadísticos y de correición d'errores pero esborrámoslos en pasando unos díes.&lt;/p&gt;"</string>
 
     <!-- Fuzzy -->
     <string name="privacy_html_third_party_quest_sources">"&lt;p&gt; En dalgunes misiones, descárguense datos adicionales de terceros. En particular, la busca de cais de sentíu únicu consulta una API, que ta agospiada en westnordost.de, sobre posibles cais de sentíu únicu. &lt;/ p&gt;"</string>

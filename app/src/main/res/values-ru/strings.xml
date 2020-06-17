@@ -11,7 +11,7 @@
     <string name="retry">"Повторить"</string>
 
     <!-- Fuzzy -->
-    <string name="oauth_failed_permissions">"Авторизация не удалась: все указаннные разрешения должны быть предоставлены"</string>
+    <string name="oauth_failed_permissions">"Авторизация не удалась: все указанные разрешения должны быть предоставлены"</string>
 
     <!-- Fuzzy -->
     <string name="title_activity_settings">"Настройки"</string>
@@ -40,7 +40,6 @@
 
     <!-- Fuzzy -->
     <string name="map_btn_gps_tracking">"Следовать за мной"</string>
-    <string name="map_attribution_mapzen">"Работает на %s"</string>
 
     <!-- Fuzzy -->
     <string name="map_attribution_osm">"© Участники OpenStreetMap"</string>
@@ -92,7 +91,7 @@
     <string name="quest_openingHours_name_title">"Какое время работы у %s?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_openingHours_start_time">"Время отрытия"</string>
+    <string name="quest_openingHours_start_time">"Время открытия"</string>
 
     <!-- Fuzzy -->
     <string name="quest_openingHours_end_time">"Время закрытия"</string>
@@ -482,7 +481,7 @@
     <string name="quest_sport_table_tennis">"Настольный теннис"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_sport_gymnastics">"Гимнaстика"</string>
+    <string name="quest_sport_gymnastics">"Гимнастика"</string>
 
     <!-- Fuzzy -->
     <string name="quest_sport_archery">"Стрельба из лука"</string>
@@ -1320,9 +1319,6 @@
     <string name="quest_generic_item_confirmation">"Вы уверены, что не можете дать более точное описание?"</string>
 
     <!-- Fuzzy -->
-    <string name="privacy_html_tileserver">"&lt;p&gt; Чтобы отобразить карту, векторные тайлы запрашиваются с сайта из &lt;a href=\"https://tiles.map-data.de\"&gt; map-data.de &lt;/a&gt;. Этот сервис собирает информацию о том, какие тайлы запрашиваются для сбора анонимной статистики и выявления проблем. Журналы удаляются через несколько дней. &lt;/ P&gt;"</string>
-
-    <!-- Fuzzy -->
     <string name="privacy_html_third_party_quest_sources">"&lt;p&gt; Для некоторых квестов загружаются дополнительные данные из прочих источников. В частности, квест \"эта улица односторонняя?\" запрашивает сервис westnordost.de на предмет вероятно односторонних улиц. &lt;/ P&gt;"</string>
 
     <!-- Fuzzy -->
@@ -1359,7 +1355,7 @@
     <string name="quest_buildingType_house_description">"для проживания одной, реже двух, семей"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_apartments_description">"многоквартирный жилой дом, иногда есть магазин на первом этаже.	
+    <string name="quest_buildingType_apartments_description">"многоквартирный жилой дом, иногда есть магазин на первом этаже.
 "</string>
 
     <!-- Fuzzy -->
@@ -1600,7 +1596,7 @@
     <string name="quest_maxheight_title">"Какой здесь ограничение по высоте?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_maxheight_parking_entrance_title">"Какое ограничение по высоте на этом вьезде в парковку?"</string>
+    <string name="quest_maxheight_parking_entrance_title">"Какое ограничение по высоте на этом въезде в парковку?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxheight_height_restrictor_title">"Какая максимальная допустимая высота у этого ограничителя высоты?"</string>
@@ -1870,7 +1866,7 @@
     <string name="quest_recycling_materials_title">"Что здесь можно оставить на переработку?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_recycling_materials_note">"Если здесь можно оставить на пераработку что-то, чего нет в нашем списке, тогда, пожалуйста, оставьте об этом заметку."</string>
+    <string name="quest_recycling_materials_note">"Если здесь можно оставить на переработку что-то, чего нет в нашем списке, тогда, пожалуйста, оставьте об этом заметку."</string>
 
     <!-- Fuzzy -->
     <string name="quest_recycling_type_batteries">"батарейки"</string>
@@ -1918,7 +1914,7 @@
     <string name="quest_recycling_type_any_glass">"Любое стекло"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_recycling_glass_title">"Здесь можно оставлять на перераработку только стеклянные бутылки и банки или принимают и любой другой вид стекла?"</string>
+    <string name="quest_recycling_glass_title">"Здесь можно оставлять на переработку только стеклянные бутылки и банки или принимают и любой другой вид стекла?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_determineRecyclingGlass_description_any_glass">"Примеры стекла, которые часто не принимаются: закаленное стекло, оконные стекла, стеклянная посуда, лампочки или зеркала."</string>
@@ -2270,7 +2266,12 @@
     <!-- Fuzzy -->
     <string name="credits_projects_contributors_title">"Проекты, сделанные для StreetComplete"</string>
     <string name="stats_are_syncing">"Ваша статистика синхронизируется. Проверьте ее тут позднее."</string>
+    <string name="user_statistics_country_rank">"Рейтинг в %2$s: %1$d"</string>
     <string name="user_statistics_filter_by_country">"по стране"</string>
     <string name="user_statistics_filter_by_quest_type">"по типу квеста"</string>
+    <string name="user_profile_global_rank">"Общий рейтинг"</string>
+    <string name="user_profile_local_rank">"Рейтинг в %s"</string>
     <string name="user_profile_days_active">"Активных дней"</string>
+    <string name="quest_recycling_type_cooking_oil">"масло для приготовления пищи"</string>
+    <string name="quest_recycling_type_engine_oil">"моторное масло"</string>
 </resources>

@@ -40,7 +40,6 @@
 
     <!-- Fuzzy -->
     <string name="map_btn_gps_tracking">"Følg meg"</string>
-    <string name="map_attribution_mapzen">"Drevet av %s"</string>
 
     <!-- Fuzzy -->
     <string name="map_attribution_osm">"© OpenStreetMap-bidragsyterne"</string>
@@ -1291,9 +1290,6 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk som for ekse
 
     <!-- Fuzzy -->
     <string name="quest_generic_item_confirmation">"Er du sikker på at det ikke kan fastsettes mer presist?"</string>
-
-    <!-- Fuzzy -->
-    <string name="privacy_html_tileserver">"&lt;p&gt;For å vise kartet blir vektorbaserte kartfliser lastet ned fra &lt;a href=\"https://tiles.map-data.de\"&gt;map-data.de&lt;/a&gt;. Denne tjenesten logger forespørseler om kartfliser for å lage anonym statistikk og for å oppdage eventuelle problemer, men sletter loggfilene etter få dager.&lt;/p&gt;"</string>
 
     <!-- Fuzzy -->
     <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;For noen oppdrag blir tilleggsdata lastet ned fra tredjeparter. Søket etter oppdrag om enveiskjørte veier bruker et API på westnordost.de for å finne kandidater for enveiskjøring.&lt;/p&gt;"</string>

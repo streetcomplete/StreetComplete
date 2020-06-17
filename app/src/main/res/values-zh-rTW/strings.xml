@@ -40,7 +40,6 @@
 
     <!-- Fuzzy -->
     <string name="map_btn_gps_tracking">"跟隨我"</string>
-    <string name="map_attribution_mapzen">"%s 協力"</string>
 
     <!-- Fuzzy -->
     <string name="map_attribution_osm">"© OpenStreetMap 開放街圖貢獻者們"</string>
@@ -1319,9 +1318,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_generic_item_confirmation">"你確定無法更精確描述嗎？"</string>
-
-    <!-- Fuzzy -->
-    <string name="privacy_html_tileserver">"&lt;p&gt;要顯示地圖，向量圖磚由 &lt;a href=\"https://tiles.map-data.de\"&gt;map-data.de&lt;/a&gt; 取得。服務 log 用在暱名統計之用，找出可能的問題，過幾天就會刪除。&lt;/p&gt;"</string>
 
     <!-- Fuzzy -->
     <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;對一些任務來說，需要從第三方下載額外的資料。通常來說，單行道任務需要連線 API，同樣放在 westnordost.de，儲存可能的單行道。&lt;/p&gt;"</string>

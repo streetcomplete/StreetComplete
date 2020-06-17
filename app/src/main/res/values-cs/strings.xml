@@ -40,7 +40,6 @@
 
     <!-- Fuzzy -->
     <string name="map_btn_gps_tracking">"Sledovat mě"</string>
-    <string name="map_attribution_mapzen">"Powered by %s"</string>
 
     <!-- Fuzzy -->
     <string name="map_attribution_osm">"© přispěvatelé OpenStreetMap"</string>
@@ -1326,9 +1325,6 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_generic_item_confirmation">"Opravdu ji nemůžete určit konkrétněji?"</string>
 
     <!-- Fuzzy -->
-    <string name="privacy_html_tileserver">"&lt;p&gt;Pro zobrazení mapy se načítají vektorové čtverce z webu &lt;a href=\"https://tiles.map-data.de\"&gt;map-data.de&lt;/a&gt;. Tato služba zaznamenává žádosti o mapové čtverce pro anonymní statistiky a pro zjišťování problémů, ale po pár dnech tyto záznamy maže.&lt;/p&gt;"</string>
-
-    <!-- Fuzzy -->
     <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Pro některé úkoly se stahují i další data ze třetích stran. Např. úkol týkající se jednosměrek se dotazuje rozhraní API, uloženého na westnordost.de, na pravděpodobné kandidáty na jednosměrky.&lt;/p&gt;
 "</string>
 
@@ -2327,4 +2323,9 @@ It is not big issue, but it would be nice to have it correctly. -->
     <string name="quest_buildingLevels_address_title">"Kolik podlaží má budova s číslem %s?"</string>
     <string name="quest_roofShape_address_title">"Jaký základní tvar střechy má budova s číslem %s?"</string>
     <string name="quest_buildingType_address_title">"Jaký typ budovy je číslo %s?"</string>
+    <string name="quest_recycling_type_cooking_oil">"Olej na smažení "</string>
+    <string name="quest_recycling_type_engine_oil">"Motorový olej "</string>
+    <string name="link_photon_description">"Samostatné rozšíření pro Nominatim, umožňující vyhledávání s opravami (fuzzy search) a našeptáváním"</string>
+    <string name="link_graphhopper_description">"Flexibilní navigační engine"</string>
+    <string name="link_qwant_maps_description">"Mapa s vyhledáváním míst a cest k cíli."</string>
 </resources>

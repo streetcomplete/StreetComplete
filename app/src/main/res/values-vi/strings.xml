@@ -37,7 +37,6 @@
 
     <!-- Fuzzy -->
     <string name="map_btn_gps_tracking">"Theo dõi tôi"</string>
-    <string name="map_attribution_mapzen">"Hình bản đồ do %s cung cấp"</string>
 
     <!-- Fuzzy -->
     <string name="map_attribution_osm">"© những người đóng góp vào OpenStreetMap"</string>

@@ -40,7 +40,6 @@
 
     <!-- Fuzzy -->
     <string name="map_btn_gps_tracking">"Segueix-me"</string>
-    <string name="map_attribution_mapzen">"Funciona amb %s"</string>
 
     <!-- Fuzzy -->
     <string name="map_attribution_osm">"© Col·laboradors de l'OpenStreetMap"</string>
@@ -1317,10 +1316,6 @@ Per example 1,3 o 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_item_confirmation">"Esteu segur que no podeu determinar-ho de forma més concreta?"</string>
-
-    <!-- Fuzzy -->
-    <string name="privacy_html_tileserver">"&lt;p&gt;Per a mostrar el mapa, s'obtenen tessel·les vectorials des de &lt;a href=\"https://tiles.map-data.de\"&gt;map-data.de&lt;/a&gt;. El servei enregistra les peticions de tessel·les per a estadístiques anònimes i per a detectar problemes, però suprimeix els registres pocs dies després.&lt;/p&gt;
-"</string>
 
     <!-- Fuzzy -->
     <string name="privacy_html_third_party_quest_sources">"&lt;p&gt; Per a algunes missions, es baixen dades addicionals de tercers. En concret, la consulta de «oneway» consulta una API, també allotjada a westnordost.de, sobre possibles candidats per a «oneways». &lt;/ P&gt;"</string>

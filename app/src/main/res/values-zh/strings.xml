@@ -40,7 +40,6 @@
 
     <!-- Fuzzy -->
     <string name="map_btn_gps_tracking">"跟踪当前位置"</string>
-    <string name="map_attribution_mapzen">"由 %s 提供"</string>
 
     <!-- Fuzzy -->
     <string name="map_attribution_osm">"© OpenStreetMap 贡献者"</string>
@@ -1313,9 +1312,6 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
 
     <!-- Fuzzy -->
     <string name="quest_generic_item_confirmation">"你确定无法更精确描述吗？"</string>
-
-    <!-- Fuzzy -->
-    <string name="privacy_html_tileserver">"&lt;p&gt;要显示地图，向量图砖由 &lt;a href=\"https://tiles.map-data.de\"&gt;map-data.de&lt;/a&gt; 取得。服务 log 用在暱名统计之用，找出可能的问题，过几天就会删除。&lt;/p&gt;"</string>
 
     <!-- Fuzzy -->
     <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;对一些任务来说，需要从第三方下载额外的资料。通常来说，单行道任务需要连线 API，同样放在 westnordost.de，储存可能的单行道。&lt;/p&gt;"</string>

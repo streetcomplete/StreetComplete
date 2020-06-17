@@ -40,7 +40,6 @@
 
     <!-- Fuzzy -->
     <string name="map_btn_gps_tracking">"Супроводжувати мене"</string>
-    <string name="map_attribution_mapzen">"За підтримки %s"</string>
 
     <!-- Fuzzy -->
     <string name="map_attribution_osm">"© учасники OpenStreetMap"</string>

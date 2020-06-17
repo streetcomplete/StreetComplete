@@ -40,7 +40,6 @@
 
     <!-- Fuzzy -->
     <string name="map_btn_gps_tracking">"Følg meg"</string>
-    <string name="map_attribution_mapzen">"Driven av %s"</string>
 
     <!-- Fuzzy -->
     <string name="map_attribution_osm">"© OpenStreetMap-bidragsytarane"</string>
@@ -1295,9 +1294,6 @@ som intervall skilde med bindestrek: «1,3» eller «2-6»."</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_item_confirmation">"Er du sikker på at du ikkje kan fastsetja det meir presist?"</string>
-
-    <!-- Fuzzy -->
-    <string name="privacy_html_tileserver">"&lt;p&gt;For å visa kartet vert vektorbaserte kartfliser lasta ned frå &lt;a href=\"https://tiles.map-data.de\"&gt;map-data.de&lt;/a&gt;. Denne tenesta loggar førespurnadar om kartfliser for å laga anonym statistikk og for å oppdaga eventuelle problem, men slettar loggfilene etter få dagar.&lt;/p&gt;"</string>
 
     <!-- Fuzzy -->
     <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;For nokre oppdrag vert tilleggsdata frå tredjepartar lasta ned. Søket etter oppdrag om einvegskøyrde gater brukar eit API på westnordost.de for å finna kandidatar for einvegskøyring.&lt;/p&gt;"</string>

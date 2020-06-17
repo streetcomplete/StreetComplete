@@ -40,7 +40,6 @@
 
     <!-- Fuzzy -->
     <string name="map_btn_gps_tracking">"Kövess"</string>
-    <string name="map_attribution_mapzen">"Működteti a %s"</string>
 
     <!-- Fuzzy -->
     <string name="map_attribution_osm">"© OpenStreetMap-közreműködők"</string>
@@ -868,9 +867,7 @@ Vagy le is tölthetsz egy másik billentyűzetet az áruházból. Népszerű bil
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_title">"Ez milyen típusú gyalogátkelő?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_crossing_type_signals">"Lámpás"</string>
+    <string name="quest_crossing_type_signals">"Jelzőlámpás"</string>
 
     <!-- Fuzzy -->
     <string name="quest_crossing_type_uncontrolled">"Lámpa nélküli"</string>
@@ -1317,10 +1314,6 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
 
     <!-- Fuzzy -->
     <string name="quest_generic_item_confirmation">"Biztos, hogy nem tudod pontosabban meghatározni?"</string>
-
-    <!-- Fuzzy -->
-    <string name="privacy_html_tileserver">"&lt;p&gt;A térkép megjelenítéséhez a vektoros csempék a &lt;a href=\"https://tiles.map-data.de\"&gt;map-data.de&lt;/a&gt; oldalról származnak. A szolgáltatás naplózza a csempelekéréseket, hogy névtelen statisztikát készítsen és problémákat észleljen. A naplók pár napon belül törlésre kerülnek.&lt;/p&gt;
-"</string>
 
     <!-- Fuzzy -->
     <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Egyes kérdésekhez más, harmadik féltől származó adatok is letöltésre kerülnek. Különösen az egyirányú utcák lekérése egy (szintén a westnordost.de kiszolgálóján lévő) API-n keresztül zajlik.&lt;/p&gt;"</string>
@@ -2301,8 +2294,8 @@ helyezés"</string>
 %s"</string>
 
     <!-- Fuzzy -->
-    <string name="user_profile_days_active">"Napok
-aktív"</string>
+    <string name="user_profile_days_active">"Aktív
+napok"</string>
 
     <!-- Fuzzy -->
     <string name="user_profile_achievement_levels">"Kitüntetés
@@ -2314,4 +2307,11 @@ szintek"</string>
     <string name="quest_buildingLevels_address_title">"Hány szintes a(z) %s-s számú épület?"</string>
     <string name="quest_roofShape_address_title">"Milyen alapformájú a(z) %s-s számú épületnek a teteje?"</string>
     <string name="quest_buildingType_address_title">"Milyen épület a(z) %s-s számú?"</string>
+    <string name="quest_recycling_type_cooking_oil">"Sütőolaj"</string>
+    <string name="quest_recycling_type_engine_oil">"Motorolaj"</string>
+    <string name="link_photon_description">"Egy önálló kiegészítő a Nominatimhoz, mely rugalmas és gépelés közbeni keresést biztosít"</string>
+    <string name="link_graphhopper_description">"Egy rugalmas útvonaltervező"</string>
+    <string name="link_qwant_maps_description">"Egy térkép kereshető helyekkel és útvonaltervezéssel"</string>
+    <string name="privacy_html_tileserver2">"&lt;p&gt;A térkép megjelenítéséhez a vektorcsempék innen származnak: %1$s. Bővebb információért tekintsd meg az &lt;a href=\"%2$s\"&gt;adatvédelmi nyilatkozatukat&lt;/a&gt;.&lt;/p&gt;"</string>
+    <string name="about_title_sponsors">"Szponzorok"</string>
 </resources>

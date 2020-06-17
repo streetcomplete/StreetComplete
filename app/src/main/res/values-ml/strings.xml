@@ -40,7 +40,6 @@
 
     <!-- Fuzzy -->
     <string name="map_btn_gps_tracking">"എന്നെ പിന്തുടരുക"</string>
-    <string name="map_attribution_mapzen">"%s അധികാരപ്പെടുത്തിയത്"</string>
 
     <!-- Fuzzy -->
     <string name="map_attribution_osm">"© OpenStreetMap സംഭാവന ചെയ്യുന്നവർ"</string>
@@ -1293,9 +1292,6 @@
 
     <!-- Fuzzy -->
     <string name="quest_generic_item_confirmation">"നിങ്ങൾക്ക് ഇത് കൂടുതൽ വ്യക്തമായി നിർണ്ണയിക്കാൻ കഴിയില്ലെന്ന് ഉറപ്പാണോ?"</string>
-
-    <!-- Fuzzy -->
-    <string name="privacy_html_tileserver">"&lt;p&gt;മാപ്പ് പ്രദർശിപ്പിക്കുന്നതിന്, വെക്റ്റർ ടൈലുകൾ ഇതിൽ നിന്ന് വീണ്ടെടുക്കുന്നു &lt;a href=\"https://tiles.map-data.de\"&gt;map-data.de &lt;/a&gt;.സേവനം അജ്ഞാത സ്ഥിതിവിവരക്കണക്കുകളും പ്രശ്നങ്ങൾ കണ്ടെത്തുന്നതിനുമുള്ള ടൈൽ അഭ്യർത്ഥനകൾ രേഖപ്പെടുത്തുന്നു, പക്ഷേ കുറച്ച് ദിവസങ്ങൾക്ക് ശേഷം ലോഗുകൾ ഇല്ലാതാക്കുന്നു.&lt;/p&gt;"</string>
 
     <!-- Fuzzy -->
     <string name="privacy_html_third_party_quest_sources">"&lt;p&gt; ചില അന്വേഷണങ്ങൾക്കായി, മൂന്നാം കക്ഷികൾ അധികമായി ദത്തം ഡൗൺലോഡ് ചെയ്യുന്നു. പ്രത്യേകിച്ച് API യിലെ ഒരേ വഴിയിലുള്ള സംശയങ്ങൾ, 

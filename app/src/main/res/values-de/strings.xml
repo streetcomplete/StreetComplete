@@ -14,7 +14,6 @@
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Nicht als Fragen formulierte Notizen ignorieren"</string>
     <string name="pref_title_map_cache">"Größe des Kartencaches"</string>
     <string name="map_btn_gps_tracking">"Mir folgen"</string>
-    <string name="map_attribution_mapzen">"Powered by %s"</string>
     <string name="map_attribution_osm">"© OpenStreetMap-Mitwirkende"</string>
     <string name="quest_generic_otherAnswers">"Weitere Antworten..."</string>
     <string name="quest_generic_answer_notApplicable">"Nicht beantwortbar…"</string>
@@ -487,7 +486,6 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_pathSurface_title">"Welche Oberfläche hat dieser Weg?"</string>
     <string name="quest_select_hint_most_specific">"Wähle die zutreffendste Art aus:"</string>
     <string name="quest_generic_item_confirmation">"Bist du sicher, dass es nicht genauer bestimmt werden kann?"</string>
-    <string name="privacy_html_tileserver">"&lt;p&gt;Um die Karte anzuzeigen werden Vektorkacheln von &lt;a href=\"https://tiles.map-data.de\"&gt;map-data.de&lt;/a&gt; abgerufen. Der Dienst protokolliert Kachelanfragen für anonyme Statistiken und für das Erkennen von Problemen, löscht diese Protokolle jedoch nach einigen Tagen.&lt;/p&gt;"</string>
     <string name="privacy_html_third_party_quest_sources">"&lt;p&gt;Bei einigen Quests werden einige zusätzliche Daten von Dritten heruntergeladen. Insbesondere fragt der Oneway-Quest eine API an, die ebenfalls auf westnordost.de gehostet wird, nach möglichen Kandidaten für Einbahnstrassen.&lt;/p&gt;"</string>
     <string name="quest_generic_hasFeature_no_leave_note">"Nein (Notiz hinterlassen)"</string>
     <string name="pref_quests_reset">"Sowohl die Aktivierung als auch die Priorität zurücksetzen?"</string>
@@ -846,4 +844,9 @@ Erfolge"</string>
     <string name="quest_buildingLevels_address_title">"Wie viele Stockwerke hat das Gebäude mit der Hausnummer %s?"</string>
     <string name="quest_roofShape_address_title">"Welche grundlegende Dachform hat das Gebäude mit der Hausnummer %s?"</string>
     <string name="quest_buildingType_address_title">"Was für ein Gebäude ist die Hausnummer %s?"</string>
+    <string name="quest_recycling_type_cooking_oil">"Speiseöl"</string>
+    <string name="quest_recycling_type_engine_oil">"Motoröl"</string>
+    <string name="link_photon_description">"Eine eigenständige Erweiterung zu Nominatim, mit fuzzy Suche und Suche während der Eingabe"</string>
+    <string name="link_graphhopper_description">"Eine flexible Routing-Engine"</string>
+    <string name="link_qwant_maps_description">"Eine Karte mit suchbaren POIs und Routenplaner"</string>
 </resources>
