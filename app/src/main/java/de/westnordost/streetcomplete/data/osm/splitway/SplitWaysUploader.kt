@@ -3,8 +3,9 @@ package de.westnordost.streetcomplete.data.osm.splitway
 import android.util.Log
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.Way
+import de.westnordost.streetcomplete.data.MapDataApi
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryCreator
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestGiver
-import de.westnordost.streetcomplete.data.osm.elementgeometry.OsmApiElementGeometryCreator
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryDao
 import de.westnordost.streetcomplete.data.osm.mapdata.MergedElementDao
 import de.westnordost.streetcomplete.data.osm.upload.changesets.OpenQuestChangesetsManager
@@ -19,12 +20,13 @@ class SplitWaysUploader @Inject constructor(
         elementGeometryDB: ElementGeometryDao,
         changesetManager: OpenQuestChangesetsManager,
         questGiver: OsmQuestGiver,
-        osmApiElementGeometryCreator: OsmApiElementGeometryCreator,
+        elementGeometryCreator: ElementGeometryCreator,
+        mapDataApi: MapDataApi,
         private val splitWayDB: OsmQuestSplitWayDao,
         private val splitSingleOsmWayUploader: SplitSingleWayUploader,
         private val statisticsUpdater: StatisticsUpdater
 ) : OsmInChangesetsUploader<OsmQuestSplitWay>(elementDB, elementGeometryDB, changesetManager,
-    questGiver, osmApiElementGeometryCreator) {
+    questGiver, elementGeometryCreator, mapDataApi) {
 
     @Synchronized override fun upload(cancelled: AtomicBoolean) {
         Log.i(TAG, "Splitting ways")

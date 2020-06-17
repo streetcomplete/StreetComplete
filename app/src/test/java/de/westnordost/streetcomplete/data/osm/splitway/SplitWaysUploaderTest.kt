@@ -4,8 +4,9 @@ import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.osmapi.map.data.OsmWay
 import de.westnordost.streetcomplete.on
 import de.westnordost.streetcomplete.any
+import de.westnordost.streetcomplete.data.MapDataApi
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryCreator
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestGiver
-import de.westnordost.streetcomplete.data.osm.elementgeometry.OsmApiElementGeometryCreator
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryDao
 import de.westnordost.streetcomplete.data.osm.mapdata.MergedElementDao
 import de.westnordost.streetcomplete.data.osm.upload.ChangesetConflictException
@@ -25,7 +26,8 @@ class SplitWaysUploaderTest {
     private lateinit var changesetManager: OpenQuestChangesetsManager
     private lateinit var elementGeometryDB: ElementGeometryDao
     private lateinit var questGiver: OsmQuestGiver
-    private lateinit var elementGeometryCreator: OsmApiElementGeometryCreator
+    private lateinit var elementGeometryCreator: ElementGeometryCreator
+    private lateinit var mapDataApi: MapDataApi
     private lateinit var splitSingleOsmWayUploader: SplitSingleWayUploader
     private lateinit var statisticsUpdater: StatisticsUpdater
     private lateinit var uploader: SplitWaysUploader
@@ -39,10 +41,11 @@ class SplitWaysUploaderTest {
         elementGeometryDB = mock()
         questGiver = mock()
         elementGeometryCreator = mock()
+        mapDataApi = mock()
         statisticsUpdater = mock()
         on(elementGeometryCreator.create(any())).thenReturn(mock())
         uploader = SplitWaysUploader(elementDB, elementGeometryDB, changesetManager, questGiver,
-                elementGeometryCreator, splitWayDB, splitSingleOsmWayUploader, statisticsUpdater)
+                elementGeometryCreator, mapDataApi, splitWayDB, splitSingleOsmWayUploader, statisticsUpdater)
     }
 
     @Test fun `cancel upload works`() {

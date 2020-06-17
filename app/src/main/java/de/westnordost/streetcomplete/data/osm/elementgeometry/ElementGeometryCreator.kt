@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.elementgeometry
 
+import de.westnordost.osmapi.map.MapData
 import de.westnordost.osmapi.map.data.*
 import de.westnordost.streetcomplete.ktx.isArea
 import de.westnordost.streetcomplete.util.centerPointOfPolygon
@@ -10,6 +11,31 @@ import kotlin.collections.ArrayList
 
 /** Creates an ElementGeometry from an element and a collection of positions. */
 class ElementGeometryCreator @Inject constructor() {
+
+    /** Create an ElementGeometry from any element, using the given MapData to find the positions
+     *  of the nodes.
+     *
+     *  @param element the element to create the geometry for
+     *  @param mapData the MapData that contains the elements with the necessary
+     *
+     *  @return an ElementGeometry or null if any necessary element to create the geometry is not
+     *          in the given MapData */
+    fun create(element: Element, mapData: MapData): ElementGeometry? {
+        when(element) {
+            is Node -> {
+                return create(element)
+            }
+            is Way -> {
+                val positions = mapData.getNodePositions(element) ?: return null
+                return create(element, positions)
+            }
+            is Relation -> {
+                val positionsByWayId = mapData.getWaysNodePositions(element) ?: return null
+                return create(element, positionsByWayId)
+            }
+            else -> return null
+        }
+    }
 
     /** Create an ElementPointGeometry for a node. */
     fun create(node: Node) = ElementPointGeometry(node.position)
@@ -202,5 +228,24 @@ private fun MutableList<LatLon>.eliminateDuplicates() {
         } else {
             it.remove()
         }
+    }
+}
+
+private fun MapData.getNodePositions(way: Way): List<LatLon>? {
+    return way.nodeIds.map { nodeId ->
+        val node = nodes[nodeId] ?: return null
+        node.position
+    }
+}
+
+private fun MapData.getWaysNodePositions(relation: Relation): Map<Long, List<LatLon>>? {
+    val wayMembers = relation.members.filter { it.type == Element.Type.WAY }
+    return wayMembers.associate { wayMember ->
+        val way = ways[wayMember.ref] ?: return null
+        val wayPositions = way.nodeIds.map { nodeId ->
+            val node = nodes[nodeId] ?: return null
+            node.position
+        }
+        way.id to wayPositions
     }
 }

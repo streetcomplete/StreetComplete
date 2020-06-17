@@ -2,8 +2,9 @@ package de.westnordost.streetcomplete.data.osm.osmquest.undo
 
 import android.util.Log
 import de.westnordost.osmapi.map.data.Element
+import de.westnordost.streetcomplete.data.MapDataApi
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryCreator
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestGiver
-import de.westnordost.streetcomplete.data.osm.elementgeometry.OsmApiElementGeometryCreator
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryDao
 import javax.inject.Inject
 
@@ -21,12 +22,13 @@ class UndoOsmQuestsUploader @Inject constructor(
         elementGeometryDB: ElementGeometryDao,
         changesetManager: OpenQuestChangesetsManager,
         questGiver: OsmQuestGiver,
-        osmApiElementGeometryCreator: OsmApiElementGeometryCreator,
+        elementGeometryCreator: ElementGeometryCreator,
+        mapDataApi: MapDataApi,
         private val undoQuestDB: UndoOsmQuestDao,
         private val singleChangeUploader: SingleOsmElementTagChangesUploader,
         private val statisticsUpdater: StatisticsUpdater
 ) : OsmInChangesetsUploader<UndoOsmQuest>(elementDB, elementGeometryDB, changesetManager, questGiver,
-    osmApiElementGeometryCreator) {
+    elementGeometryCreator, mapDataApi) {
 
     @Synchronized override fun upload(cancelled: AtomicBoolean) {
         Log.i(TAG, "Undoing quest changes")

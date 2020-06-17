@@ -4,10 +4,11 @@ import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.osmapi.map.data.OsmNode
 import de.westnordost.streetcomplete.any
+import de.westnordost.streetcomplete.data.MapDataApi
 import de.westnordost.streetcomplete.data.quest.QuestStatus
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
-import de.westnordost.streetcomplete.data.osm.elementgeometry.OsmApiElementGeometryCreator
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryCreator
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryDao
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.MergedElementDao
@@ -30,7 +31,8 @@ class OsmQuestsUploaderTest {
     private lateinit var changesetManager: OpenQuestChangesetsManager
     private lateinit var elementGeometryDB: ElementGeometryDao
     private lateinit var questGiver: OsmQuestGiver
-    private lateinit var elementGeometryCreator: OsmApiElementGeometryCreator
+    private lateinit var elementGeometryCreator: ElementGeometryCreator
+    private lateinit var mapDataApi: MapDataApi
     private lateinit var singleChangeUploader: SingleOsmElementTagChangesUploader
     private lateinit var statisticsUpdater: StatisticsUpdater
     private lateinit var uploader: OsmQuestsUploader
@@ -43,11 +45,12 @@ class OsmQuestsUploaderTest {
         singleChangeUploader = mock()
         elementGeometryDB = mock()
         questGiver = mock()
+        mapDataApi = mock()
         elementGeometryCreator = mock()
         statisticsUpdater = mock()
         on(elementGeometryCreator.create(any())).thenReturn(mock())
         uploader = OsmQuestsUploader(elementDB, elementGeometryDB, changesetManager, questGiver,
-                elementGeometryCreator, osmQuestController, singleChangeUploader, statisticsUpdater)
+                elementGeometryCreator, mapDataApi, osmQuestController, singleChangeUploader, statisticsUpdater)
     }
 
     @Test fun `cancel upload works`() {

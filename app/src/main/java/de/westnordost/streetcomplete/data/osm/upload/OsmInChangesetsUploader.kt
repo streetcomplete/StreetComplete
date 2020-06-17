@@ -1,13 +1,19 @@
 package de.westnordost.streetcomplete.data.osm.upload
 
 import androidx.annotation.CallSuper
+import de.westnordost.osmapi.common.errors.OsmNotFoundException
+import de.westnordost.osmapi.map.MapData
 import de.westnordost.osmapi.map.data.Element
+import de.westnordost.osmapi.map.data.Node
+import de.westnordost.osmapi.map.data.Relation
+import de.westnordost.osmapi.map.data.Way
+import de.westnordost.osmapi.map.getRelationComplete
+import de.westnordost.osmapi.map.getWayComplete
+import de.westnordost.streetcomplete.data.MapDataApi
+import de.westnordost.streetcomplete.data.osm.elementgeometry.*
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuestGiver
-import de.westnordost.streetcomplete.data.osm.elementgeometry.OsmApiElementGeometryCreator
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryDao
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometryEntry
 import de.westnordost.streetcomplete.data.osm.mapdata.MergedElementDao
 import de.westnordost.streetcomplete.data.osm.upload.changesets.OpenQuestChangesetsManager
 import de.westnordost.streetcomplete.data.upload.OnUploadedChangeListener
@@ -22,7 +28,8 @@ abstract class OsmInChangesetsUploader<T : UploadableInChangeset>(
         private val elementGeometryDB: ElementGeometryDao,
         private val changesetManager: OpenQuestChangesetsManager,
         private val questGiver: OsmQuestGiver,
-        private val osmApiElementGeometryCreator: OsmApiElementGeometryCreator
+        private val elementGeometryCreator: ElementGeometryCreator,
+        private val mapDataApi: MapDataApi
     ): Uploader {
 
     override var uploadedChangeListener: OnUploadedChangeListener? = null
@@ -75,7 +82,7 @@ abstract class OsmInChangesetsUploader<T : UploadableInChangeset>(
      *
      * This will remove the dependencies to  elementGeometryDB, questGiver etc */
     private fun updateElement(newElement: Element) {
-        val geometry = osmApiElementGeometryCreator.create(newElement)
+        val geometry = createGeometry(newElement)
         if (geometry != null) {
             elementGeometryDB.put(ElementGeometryEntry(newElement.type, newElement.id, geometry))
             elementDB.put(newElement)
@@ -96,6 +103,33 @@ abstract class OsmInChangesetsUploader<T : UploadableInChangeset>(
         // must be after unreferenced elements have been deleted
         for (questType in questTypes) {
             questType.cleanMetadata()
+        }
+    }
+
+    private fun createGeometry(element: Element): ElementGeometry? {
+        when(element) {
+            is Node -> {
+                return elementGeometryCreator.create(element)
+            }
+            is Way -> {
+                val mapData: MapData
+                try {
+                    mapData = mapDataApi.getWayComplete(element.id)
+                } catch (e: OsmNotFoundException) {
+                    return null
+                }
+                return elementGeometryCreator.create(element, mapData)
+            }
+            is Relation -> {
+                val mapData: MapData
+                try {
+                    mapData = mapDataApi.getRelationComplete(element.id)
+                } catch (e: OsmNotFoundException) {
+                    return null
+                }
+                return elementGeometryCreator.create(element, mapData)
+            }
+            else -> return null
         }
     }
 
