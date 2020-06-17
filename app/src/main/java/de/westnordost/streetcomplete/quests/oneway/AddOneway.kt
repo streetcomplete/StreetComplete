@@ -40,8 +40,7 @@ class AddOneway(
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_oneway_title
 
-    override fun isApplicableTo(element: Element) =
-        filter.matches(element) && db.isForward(element.id) != null
+    override fun isApplicableTo(element: Element): Boolean? = null
 
     override fun download(bbox: BoundingBox, handler: (element: Element, geometry: ElementGeometry?) -> Unit): Boolean {
         val trafficDirectionMap: Map<Long, List<TrafficFlowSegment>>
