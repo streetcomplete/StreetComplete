@@ -55,7 +55,7 @@ class OsmQuestDownloader @Inject constructor(
         // elements must be put into DB first because quests have foreign keys on it
         elementDB.putAll(elements)
 
-        val replaceResult = osmQuestController.replaceInBBox(quests, bbox, questTypeName)
+        val replaceResult = osmQuestController.replaceInBBox(quests, bbox, listOf(questTypeName))
 
         // note: this could be done after ALL osm quest types have been downloaded if this
         // turns out to be slow if done for every quest type

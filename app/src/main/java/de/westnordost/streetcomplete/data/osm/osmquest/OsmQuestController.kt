@@ -92,14 +92,14 @@ import javax.inject.Singleton
 
     /** Replace all quests of the given type in the given bounding box with the given quests,
      *  including their geometry. Called on download of a quest type for a bounding box. */
-    fun replaceInBBox(quests: List<OsmQuest>, bbox: BoundingBox, questType: String): UpdateResult {
+    fun replaceInBBox(quests: List<OsmQuest>, bbox: BoundingBox, questTypes: List<String>): UpdateResult {
         /* All quests in the given bounding box and of the given type should be replaced by the
         *  input list. So, there may be 1. new quests that are added and 2. there may be previous
         *  quests that have been there before but now not anymore, these need to be removed. */
 
         val previousQuestIdsByElement = dao.getAll(
             bounds = bbox,
-            questTypes = listOf(questType)
+            questTypes = questTypes
         ).associate { ElementKey(it.elementType, it.elementId)  to it.id!! }.toMutableMap()
         val addedQuests = mutableListOf<OsmQuest>()
 
