@@ -1,3 +1,10 @@
+v20.2: |
+  <ul>
+    <li>The app can now be moved to SD card in the Android settings (#1787), thanks @Mortein and @Atrate</li>
+    <li>Building type: Don't ask for (theme park) attractions (#1891)</li>
+    <li>Fix this changelog wouldn't show up for some users</li>
+  </ul>
+
 v20.1: |
   <h3>Fixes and Enhancements</h3>
   <ul>
