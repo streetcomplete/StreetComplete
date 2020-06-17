@@ -48,6 +48,20 @@ class TagFilterExpressionTest {
         assertTrue(expr.matches(relation))
     }
 
+    @Test fun `matches nw`() {
+        val expr = createMatchExpression(ElementsTypeFilter.WAYS, ElementsTypeFilter.NODES)
+
+        assertTrue(expr.matches(node))
+        assertTrue(expr.matches(way))
+    }
+
+    @Test fun `matches wr`() {
+        val expr = createMatchExpression(ElementsTypeFilter.WAYS, ElementsTypeFilter.RELATIONS)
+
+        assertTrue(expr.matches(way))
+        assertTrue(expr.matches(relation))
+    }
+
     @Test fun `matches filter`() {
         val tagFilter: TagFilter = mock()
         val expr = TagFilterExpression(listOf(ElementsTypeFilter.NODES), Leaf(tagFilter))

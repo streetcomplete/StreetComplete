@@ -14,8 +14,12 @@ class TagFilterExpression(
     private val overpassQuery: String
 
     init {
-        val isNwr = elementsTypes.size == 3 && elementsTypes.containsAll(ElementsTypeFilter.values().asList())
-        val oqlElementNames = if (isNwr) listOf("nwr") else elementsTypes.map { it.oqlName }
+        val oqlElementNames = when {
+            elementsTypes.containsExactlyInAnyOrder(listOf(NODES, WAYS)) ->            listOf("nw")
+            elementsTypes.containsExactlyInAnyOrder(listOf(WAYS, RELATIONS)) ->        listOf("wr")
+            elementsTypes.containsExactlyInAnyOrder(listOf(NODES, WAYS, RELATIONS)) -> listOf("nwr")
+            else -> elementsTypes.map { it.oqlName }
+        }
         overpassQuery = OverpassQueryCreator(oqlElementNames, tagExprRoot).create()
     }
 
@@ -34,3 +38,6 @@ class TagFilterExpression(
     }
 
 }
+
+fun <T> Collection<T>.containsExactlyInAnyOrder(other: Collection<T>): Boolean =
+    other.size == size && containsAll(other)

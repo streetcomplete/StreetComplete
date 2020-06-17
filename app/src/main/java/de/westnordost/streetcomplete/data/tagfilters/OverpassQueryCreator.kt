@@ -114,8 +114,8 @@ class OverpassQueryCreator(
             "node" -> "n"
             "way" -> "w"
             "rel" -> "r"
-            "nwr" -> "e"
-            else -> throw IllegalArgumentException("Expected element to be any of 'node', 'way', 'rel' or 'nwr'")
+            "nwr", "nw", "wr" -> "e"
+            else -> throw IllegalArgumentException("Expected element to be any of 'node', 'way', 'rel', 'nw', 'wr' or 'nwr'")
         }
         return ".$prefix$id"
     }

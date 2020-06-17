@@ -172,10 +172,7 @@ private fun getNonBuildingAreasWithAddressesOverpassQuery(bbox: BoundingBox): St
     val globalBbox = bbox.toGlobalOverpassBBox()
     return """
             $globalBbox
-            (
-              way[!building] $ANY_ADDRESS_FILTER;
-              rel[!building] $ANY_ADDRESS_FILTER;
-            );
+            wr[!building] $ANY_ADDRESS_FILTER;
             out geom;
             """.trimIndent()
 }
@@ -208,7 +205,7 @@ private fun getFreeFloatingAddressesOverpassQuery(bbox: BoundingBox): String {
             $globalBbox
             (
               node$ANY_ADDRESS_FILTER;
-               - ((way[building]; relation[building];);>;);
+               - (wr[building];>;);
             );
             out skel;
             """.trimIndent()
