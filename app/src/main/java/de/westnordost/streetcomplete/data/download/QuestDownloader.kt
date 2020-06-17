@@ -103,13 +103,13 @@ class QuestDownloader @Inject constructor(
 
     private fun downloadQuestType(bbox: BoundingBox, tiles: TilesRect, questType: QuestType<*>, notesPositions: Set<LatLon>) {
         if (questType is OsmElementQuestType<*>) {
+            progressListener?.onStarted(questType.toDownloadItem())
             val questDownload = osmQuestDownloaderProvider.get()
             if (questDownload.download(questType, bbox, notesPositions)) {
                 downloadedTilesDao.put(tiles, questType.javaClass.simpleName)
             }
-        progressListener?.onStarted(questType.toDownloadItem())
+            progressListener?.onFinished(questType.toDownloadItem())
         }
-        progressListener?.onFinished(questType.toDownloadItem())
     }
 
     companion object {
