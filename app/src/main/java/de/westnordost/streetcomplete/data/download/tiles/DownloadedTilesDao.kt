@@ -20,19 +20,32 @@ class DownloadedTilesDao @Inject constructor(private val dbHelper: SQLiteOpenHel
 
     private val db get() = dbHelper.writableDatabase
 
+    /** Persist that the given quest types have been downloaded in every tile in the given tile range  */
+    fun putAll(tilesRect: TilesRect, questTypeNames: List<String>) {
+        db.transaction {
+            for (questTypeName in questTypeNames) {
+                putQuestType(tilesRect, questTypeName)
+            }
+        }
+    }
+
     /** Persist that the given quest type has been downloaded in every tile in the given tile range  */
     fun put(tilesRect: TilesRect, questTypeName: String) {
         db.transaction {
-            val time = System.currentTimeMillis()
-            for (tile in tilesRect.asTileSequence()) {
-                val values = contentValuesOf(
-                    X to tile.x,
-                    Y to tile.y,
-                    QUEST_TYPE to questTypeName,
-                    DATE to time
-                )
-                db.replaceOrThrow(NAME, null, values)
-            }
+            putQuestType(tilesRect, questTypeName)
+        }
+    }
+
+    private fun putQuestType(tilesRect: TilesRect, questTypeName: String) {
+        val time = System.currentTimeMillis()
+        for (tile in tilesRect.asTileSequence()) {
+            val values = contentValuesOf(
+                X to tile.x,
+                Y to tile.y,
+                QUEST_TYPE to questTypeName,
+                DATE to time
+            )
+            db.replaceOrThrow(NAME, null, values)
         }
     }
 
