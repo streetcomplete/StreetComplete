@@ -39,12 +39,13 @@ import de.westnordost.osmapi.common.errors.OsmConnectionException;
 import de.westnordost.osmapi.map.data.LatLon;
 import de.westnordost.osmapi.map.data.OsmLatLon;
 import de.westnordost.streetcomplete.controls.NotificationButtonFragment;
+import de.westnordost.streetcomplete.data.download.DownloadItem;
 import de.westnordost.streetcomplete.data.notifications.Notification;
 import de.westnordost.streetcomplete.data.notifications.NotificationsSource;
 import de.westnordost.streetcomplete.data.quest.Quest;
 import de.westnordost.streetcomplete.data.quest.QuestAutoSyncer;
 import de.westnordost.streetcomplete.data.quest.QuestController;
-import de.westnordost.streetcomplete.data.download.QuestDownloadProgressListener;
+import de.westnordost.streetcomplete.data.download.DownloadProgressListener;
 import de.westnordost.streetcomplete.data.download.QuestDownloadController;
 import de.westnordost.streetcomplete.data.quest.QuestType;
 import de.westnordost.streetcomplete.data.quest.UnsyncedChangesCountSource;
@@ -192,7 +193,7 @@ public class MainActivity extends AppCompatActivity implements
 		questDownloadController.setShowNotification(false);
 
 		uploadController.addUploadProgressListener(uploadProgressListener);
-		questDownloadController.addQuestDownloadProgressListener(downloadProgressListener);
+		questDownloadController.addDownloadProgressListener(downloadProgressListener);
 
 		if(!hasAskedForLocation && !prefs.getBoolean(Prefs.LAST_LOCATION_REQUEST_DENIED, false))
 		{
@@ -252,7 +253,7 @@ public class MainActivity extends AppCompatActivity implements
 		questDownloadController.setShowNotification(true);
 
 		uploadController.removeUploadProgressListener(uploadProgressListener);
-		questDownloadController.removeQuestDownloadProgressListener(downloadProgressListener);
+		questDownloadController.removeDownloadProgressListener(downloadProgressListener);
 	}
 
 	@Override public void onConfigurationChanged(@NonNull Configuration newConfig) {
@@ -345,14 +346,14 @@ public class MainActivity extends AppCompatActivity implements
 
 	/* ----------------------------- Download Progress listener  -------------------------------- */
 
-	private final QuestDownloadProgressListener downloadProgressListener
-			= new QuestDownloadProgressListener()
+	private final DownloadProgressListener downloadProgressListener
+			= new DownloadProgressListener()
 	{
 		@AnyThread @Override public void onStarted() {}
 
-		@Override public void onFinished(@NotNull QuestType<?> questType) {}
+		@Override public void onFinished(@NonNull DownloadItem item) {}
 
-		@Override public void onStarted(@NotNull QuestType<?> questType) {}
+		@Override public void onStarted(@NonNull DownloadItem item) {}
 
 		@AnyThread @Override public void onError(@NonNull final Exception e)
 		{

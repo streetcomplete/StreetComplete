@@ -37,7 +37,7 @@ import javax.inject.Singleton
     private val context: Context,
     private val visibleQuestsSource: VisibleQuestsSource,
     private val unsyncedChangesCountSource: UnsyncedChangesCountSource,
-    private val downloadProgressSource: QuestDownloadProgressSource,
+    private val downloadProgressSource: DownloadProgressSource,
     private val prefs: SharedPreferences,
     private val userController: UserController
 ) : LifecycleObserver, CoroutineScope by CoroutineScope(Dispatchers.Default) {
@@ -81,7 +81,7 @@ import javax.inject.Singleton
     }
 
     // on download finished, should recheck conditions for download
-    private val downloadProgressListener = object : QuestDownloadProgressListener {
+    private val downloadProgressListener = object : DownloadProgressListener {
         override fun onSuccess() {
             triggerAutoDownload()
         }
@@ -98,7 +98,7 @@ import javax.inject.Singleton
     init {
         visibleQuestsSource.addListener(visibleQuestListener)
         unsyncedChangesCountSource.addListener(unsyncedChangesListener)
-        downloadProgressSource.addQuestDownloadProgressListener(downloadProgressListener)
+        downloadProgressSource.addDownloadProgressListener(downloadProgressListener)
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_RESUME) fun onResume() {
@@ -118,7 +118,7 @@ import javax.inject.Singleton
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY) fun onDestroy() {
         visibleQuestsSource.removeListener(visibleQuestListener)
         unsyncedChangesCountSource.removeListener(unsyncedChangesListener)
-        downloadProgressSource.removeQuestDownloadProgressListener(downloadProgressListener)
+        downloadProgressSource.removeDownloadProgressListener(downloadProgressListener)
         coroutineContext.cancel()
     }
 

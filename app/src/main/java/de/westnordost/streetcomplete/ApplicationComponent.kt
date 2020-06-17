@@ -89,7 +89,7 @@ interface ApplicationComponent {
     fun inject(undoButtonFragment: UndoButtonFragment)
     fun inject(uploadButtonFragment: UploadButtonFragment)
     fun inject(answersCounterFragment: AnswersCounterFragment)
-    fun inject(questDownloadProgressFragment: QuestDownloadProgressFragment)
+    fun inject(downloadProgressFragment: DownloadProgressFragment)
     fun inject(questStatisticsByCountryFragment: QuestStatisticsByCountryFragment)
     fun inject(questStatisticsByQuestTypeFragment: QuestStatisticsByQuestTypeFragment)
     fun inject(aboutActivity: AboutActivity)

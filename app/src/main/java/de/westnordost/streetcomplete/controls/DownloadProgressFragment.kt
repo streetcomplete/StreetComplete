@@ -6,9 +6,9 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.download.QuestDownloadProgressListener
-import de.westnordost.streetcomplete.data.download.QuestDownloadProgressSource
-import de.westnordost.streetcomplete.data.quest.QuestType
+import de.westnordost.streetcomplete.data.download.DownloadItem
+import de.westnordost.streetcomplete.data.download.DownloadProgressListener
+import de.westnordost.streetcomplete.data.download.DownloadProgressSource
 import de.westnordost.streetcomplete.ktx.toPx
 import de.westnordost.streetcomplete.ktx.toast
 import kotlinx.coroutines.CoroutineScope
@@ -17,10 +17,10 @@ import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class QuestDownloadProgressFragment : Fragment(R.layout.fragment_quest_download_progress),
+class DownloadProgressFragment : Fragment(R.layout.fragment_download_progress),
     CoroutineScope by CoroutineScope(Dispatchers.Main) {
 
-    @Inject internal lateinit var downloadProgressSource: QuestDownloadProgressSource
+    @Inject internal lateinit var downloadProgressSource: DownloadProgressSource
 
     private val mainHandler = Handler(Looper.getMainLooper())
 
@@ -28,7 +28,7 @@ class QuestDownloadProgressFragment : Fragment(R.layout.fragment_quest_download_
 
     private val animateOutRunnable = Runnable { animateOutProgressView() }
 
-    private val downloadProgressListener = object : QuestDownloadProgressListener {
+    private val downloadProgressListener = object : DownloadProgressListener {
         private var startedButNoQuestsYet = false
 
         override fun onStarted() {
@@ -36,12 +36,12 @@ class QuestDownloadProgressFragment : Fragment(R.layout.fragment_quest_download_
             launch(Dispatchers.Main) { animateInProgressView() }
         }
 
-        override fun onStarted(questType: QuestType<*>) {
+        override fun onStarted(item: DownloadItem) {
             startedButNoQuestsYet = false
-            launch(Dispatchers.Main) { progressView.enqueueIcon(resources.getDrawable(questType.icon)) }
+            launch(Dispatchers.Main) { progressView.enqueueIcon(resources.getDrawable(item.iconResId)) }
         }
 
-        override fun onFinished(questType: QuestType<*>) {
+        override fun onFinished(item: DownloadItem) {
             launch(Dispatchers.Main) { progressView.pollIcon() }
         }
 
@@ -63,12 +63,12 @@ class QuestDownloadProgressFragment : Fragment(R.layout.fragment_quest_download_
     override fun onStart() {
         super.onStart()
         updateDownloadProgress()
-        downloadProgressSource.addQuestDownloadProgressListener(downloadProgressListener)
+        downloadProgressSource.addDownloadProgressListener(downloadProgressListener)
     }
 
     override fun onStop() {
         super.onStop()
-        downloadProgressSource.removeQuestDownloadProgressListener(downloadProgressListener)
+        downloadProgressSource.removeDownloadProgressListener(downloadProgressListener)
     }
 
     override fun onDestroy() {
@@ -101,9 +101,9 @@ class QuestDownloadProgressFragment : Fragment(R.layout.fragment_quest_download_
     private fun updateDownloadProgress() {
         if (downloadProgressSource.isDownloadInProgress) {
             showProgressView()
-            val questType = downloadProgressSource.currentDownloadingQuestType
-            if (questType != null) {
-                progressView.setIcon(resources.getDrawable(questType.icon))
+            val item = downloadProgressSource.currentDownloadItem
+            if (item != null) {
+                progressView.setIcon(resources.getDrawable(item.iconResId))
             }
         } else {
             hideProgressView()

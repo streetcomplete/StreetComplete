@@ -7,7 +7,6 @@ import android.os.IBinder
 import android.util.Log
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.Injector
-import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.util.TilesRect
 import java.util.concurrent.atomic.AtomicBoolean
 import javax.inject.Inject
@@ -37,21 +36,21 @@ class QuestDownloadService : SingleIntentService(TAG) {
     private val binder: IBinder = Interface()
 
     // listener
-    private var progressListenerRelay = object : QuestDownloadProgressListener {
+    private var progressListenerRelay = object : DownloadProgressListener {
         override fun onStarted() { progressListener?.onStarted() }
         override fun onError(e: Exception) { progressListener?.onError(e) }
         override fun onSuccess() { progressListener?.onSuccess() }
         override fun onFinished() { progressListener?.onFinished() }
-        override fun onStarted(questType: QuestType<*>) {
-            currentQuestType = questType
-            progressListener?.onStarted(questType)
+        override fun onStarted(item: DownloadItem) {
+            currentDownloadItem = item
+            progressListener?.onStarted(item)
         }
-        override fun onFinished(questType: QuestType<*>) {
-            currentQuestType = null
-            progressListener?.onFinished(questType)
+        override fun onFinished(item: DownloadItem) {
+            currentDownloadItem = null
+            progressListener?.onFinished(item)
         }
     }
-    private var progressListener: QuestDownloadProgressListener? = null
+    private var progressListener: DownloadProgressListener? = null
 
     // state
     private var isPriorityDownload: Boolean = false
@@ -69,7 +68,7 @@ class QuestDownloadService : SingleIntentService(TAG) {
         else notificationController.show()
     }
 
-    private var currentQuestType: QuestType<*>? = null
+    private var currentDownloadItem: DownloadItem? = null
 
     init {
         Injector.applicationComponent.inject(this)
@@ -115,7 +114,7 @@ class QuestDownloadService : SingleIntentService(TAG) {
 
     /** Public interface to classes that are bound to this service  */
     inner class Interface : Binder() {
-        fun setProgressListener(listener: QuestDownloadProgressListener?) {
+        fun setProgressListener(listener: DownloadProgressListener?) {
             progressListener = listener
         }
 
@@ -123,7 +122,7 @@ class QuestDownloadService : SingleIntentService(TAG) {
 
         val isDownloadInProgress: Boolean get() = isDownloading
 
-        val currentDownloadingQuestType: QuestType<*>? get() = currentQuestType
+        val currentDownloadItem: DownloadItem? get() = this@QuestDownloadService.currentDownloadItem
 
         var showDownloadNotification: Boolean
             get() = showNotification

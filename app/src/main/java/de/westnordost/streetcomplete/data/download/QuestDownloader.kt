@@ -30,7 +30,7 @@ class QuestDownloader @Inject constructor(
     private val questTypesProvider: OrderedVisibleQuestTypesProvider,
     private val userStore: UserStore
 ) {
-    var progressListener: QuestDownloadProgressListener? = null
+    var progressListener: DownloadProgressListener? = null
 
     @Synchronized fun download(tiles: TilesRect, maxQuestTypes: Int?, cancelState: AtomicBoolean) {
         if (cancelState.get()) return
@@ -94,26 +94,27 @@ class QuestDownloader @Inject constructor(
         val userId: Long = userStore.userId.takeIf { it != -1L } ?: return
         // do not download notes if not logged in because notes shall only be downloaded if logged in
         val noteQuestType = getOsmNoteQuestType()
-        progressListener?.onStarted(noteQuestType)
+        progressListener?.onStarted(noteQuestType.toDownloadItem())
         val maxNotes = 10000
         notesDownload.download(bbox, userId, maxNotes)
         downloadedTilesDao.put(tiles, OsmNoteQuestType::class.java.simpleName)
-        progressListener?.onFinished(noteQuestType)
+        progressListener?.onFinished(noteQuestType.toDownloadItem())
     }
 
     private fun downloadQuestType(bbox: BoundingBox, tiles: TilesRect, questType: QuestType<*>, notesPositions: Set<LatLon>) {
         if (questType is OsmElementQuestType<*>) {
-            progressListener?.onStarted(questType)
             val questDownload = osmQuestDownloaderProvider.get()
             if (questDownload.download(questType, bbox, notesPositions)) {
                 downloadedTilesDao.put(tiles, questType.javaClass.simpleName)
             }
-            progressListener?.onFinished(questType)
+        progressListener?.onStarted(questType.toDownloadItem())
         }
+        progressListener?.onFinished(questType.toDownloadItem())
     }
 
     companion object {
         private const val TAG = "QuestDownload"
     }
-
 }
+
+private fun QuestType<*>.toDownloadItem(): DownloadItem = DownloadItem(icon, javaClass.simpleName)

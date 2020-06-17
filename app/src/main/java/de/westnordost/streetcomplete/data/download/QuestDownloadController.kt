@@ -7,7 +7,6 @@ import android.content.ServiceConnection
 import android.os.IBinder
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.util.enclosingTilesRect
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -15,7 +14,7 @@ import javax.inject.Singleton
 /** Controls quest downloading */
 @Singleton class QuestDownloadController @Inject constructor(
     private val context: Context
-): QuestDownloadProgressSource {
+): DownloadProgressSource {
 
     private var downloadServiceIsBound: Boolean = false
     private var downloadService: QuestDownloadService.Interface? = null
@@ -29,7 +28,7 @@ import javax.inject.Singleton
             downloadService = null
         }
     }
-    private val downloadProgressRelay = QuestDownloadProgressRelay()
+    private val downloadProgressRelay = DownloadProgressRelay()
 
     /** @return true if a quest download triggered by the user is running */
     override val isPriorityDownloadInProgress: Boolean get() =
@@ -39,9 +38,9 @@ import javax.inject.Singleton
     override val isDownloadInProgress: Boolean get() =
         downloadService?.isDownloadInProgress == true
 
-    /** @return the quest type that is currently being downloaded or null if nothing is downloaded */
-    override val currentDownloadingQuestType: QuestType<*>? get() =
-        downloadService?.currentDownloadingQuestType
+    /** @return the item that is currently being downloaded or null if nothing is downloaded */
+    override val currentDownloadItem: DownloadItem? get() =
+        downloadService?.currentDownloadItem
 
     var showNotification: Boolean
         get() = downloadService?.showDownloadNotification == true
@@ -77,10 +76,10 @@ import javax.inject.Singleton
         downloadServiceIsBound = false
     }
 
-    override fun addQuestDownloadProgressListener(listener: QuestDownloadProgressListener) {
+    override fun addDownloadProgressListener(listener: DownloadProgressListener) {
         downloadProgressRelay.addListener(listener)
     }
-    override fun removeQuestDownloadProgressListener(listener: QuestDownloadProgressListener) {
+    override fun removeDownloadProgressListener(listener: DownloadProgressListener) {
         downloadProgressRelay.removeListener(listener)
     }
 }
