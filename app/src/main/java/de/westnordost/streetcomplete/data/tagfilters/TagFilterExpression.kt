@@ -4,11 +4,12 @@ import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.data.tagfilters.ElementsTypeFilter.NODES
 import de.westnordost.streetcomplete.data.tagfilters.ElementsTypeFilter.WAYS
 import de.westnordost.streetcomplete.data.tagfilters.ElementsTypeFilter.RELATIONS
+import java.util.*
 
 /** Represents a parse result of a string in filter syntax, i.e.
  *  "ways with (highway = residential or highway = tertiary) and !name"  */
 class TagFilterExpression(
-    private val elementsTypes: List<ElementsTypeFilter>,
+    private val elementsTypes: EnumSet<ElementsTypeFilter>,
     private val tagExprRoot: BooleanExpression<TagFilter, Tags>?
 ) {
     private val overpassQuery: String

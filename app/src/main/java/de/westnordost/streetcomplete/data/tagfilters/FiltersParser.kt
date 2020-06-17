@@ -1,8 +1,7 @@
 package de.westnordost.streetcomplete.data.tagfilters
 
 import java.text.ParseException
-import java.util.ArrayList
-import java.util.Locale
+import java.util.*
 import kotlin.math.min
 
 /**
@@ -32,7 +31,7 @@ private val OPERATORS = arrayOf("=", "!=", "~", "!~")
 
 private fun String.stripQuotes() = replace("^[\"']|[\"']$".toRegex(), "")
 
-private fun StringWithCursor.parseElementsDeclaration(): List<ElementsTypeFilter> {
+private fun StringWithCursor.parseElementsDeclaration(): EnumSet<ElementsTypeFilter> {
     val result = ArrayList<ElementsTypeFilter>()
     result.add(parseElementDeclaration())
     while (nextIsAndAdvance(',')) {
@@ -42,7 +41,15 @@ private fun StringWithCursor.parseElementsDeclaration(): List<ElementsTypeFilter
         }
         result.add(element)
     }
-    return result
+    result.toSet()
+
+    // a little odd interface of EnumSet here
+    return when(result.size) {
+        1 -> EnumSet.of(result[0])
+        2 -> EnumSet.of(result[0], result[1])
+        3 -> EnumSet.of(result[0], result[1], result[2])
+        else -> throw IllegalStateException()
+    }
 }
 
 private fun StringWithCursor.parseElementDeclaration(): ElementsTypeFilter {
