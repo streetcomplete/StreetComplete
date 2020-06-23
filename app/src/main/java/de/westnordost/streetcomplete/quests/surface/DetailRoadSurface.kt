@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.quests.surface
 
-import android.util.Log
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
@@ -8,20 +7,15 @@ import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
-import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
-import de.westnordost.streetcomplete.data.quest.QuestStatus
 import de.westnordost.streetcomplete.data.tagfilters.FiltersParser
 import de.westnordost.streetcomplete.data.tagfilters.getQuestPrintStatement
 import de.westnordost.streetcomplete.data.tagfilters.toGlobalOverpassBBox
-import de.westnordost.streetcomplete.quests.address.PlaceName
-import de.westnordost.streetcomplete.quests.address.StreetName
-import de.westnordost.streetcomplete.quests.localized_name.AddRoadName
 
 
 class DetailRoadSurface(private val overpassMapDataApi: OverpassMapDataAndGeometryApi) : OsmElementQuestType<DetailSurfaceAnswer> {
     override val commitMessage = "Add more detailed surfaces"
     override val wikiLink = "Key:surface"
-    override val icon = R.drawable.ic_quest_street_surface_paved_detail // TODO: consider changing icon name or restricting to surface=paved
+    override val icon = R.drawable.ic_quest_street_surface_detail
 
     override fun getTitle(tags: Map<String, String>): Int {
         val hasName = tags.containsKey("name")
