@@ -115,14 +115,14 @@ object QuestModule
         AddRecyclingType(o),
         AddRecyclingContainerMaterials(o),
         AddSport(o),
-        AddRoadSurface(o),
+        AddRoadSurface(o), // used by BRouter, OsmAnd, OSRM, graphhopper, HOT map style
         AddMaxSpeed(o), // should best be after road surface because it excludes unpaved roads
-        AddMaxHeight(o),
+        AddMaxHeight(o), // OSRM and other routing engines
         AddRailwayCrossingBarrier(o), // useful for routing
         AddPostboxCollectionTimes(o),
         AddOpeningHours(o, featureDictionaryFuture),
-        DetailRoadSurface(o), // BRouter, OsmAnd, OSRM, graphhopper
-        AddBikeParkingCapacity(o), // cycle map layer on osm.org
+        DetailRoadSurface(o), // used by BRouter, OsmAnd, OSRM, graphhopper
+        AddBikeParkingCapacity(o), // used by cycle map layer on osm.org, OsmAnd
         AddOrchardProduce(o),
         AddBuildingType(o), // because housenumber, building levels etc. depend on it
         AddCycleway(o), // SLOW QUERY
@@ -133,12 +133,12 @@ object QuestModule
         AddBusStopShelter(o), // at least OsmAnd
         AddVegetarian(o),
         AddVegan(o),
-        AddInternetAccess(o),
-        AddParkingFee(o),
+        AddInternetAccess(o), // used by OsmAnd
+        AddParkingFee(o), // used by OsmAnd
         AddMotorcycleParkingCapacity(o),
-        AddPathSurface(o),
-        AddTracktype(o),
-        AddMaxWeight(o),
+        AddPathSurface(o), // used by OSM Carto, OsmAnd
+        AddTracktype(o), // widely used in map rendering - OSM Carto, OsmAnd...
+        AddMaxWeight(o), // used by OSRM and other routing engines
         AddForestLeafType(o), // used by OSM Carto
         AddBikeParkingType(o), // used by OsmAnd
         AddWheelchairAccessToilets(o), // used by wheelmap, OsmAnd, MAPS.ME
