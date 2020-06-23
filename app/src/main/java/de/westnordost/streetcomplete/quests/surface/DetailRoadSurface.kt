@@ -61,16 +61,17 @@ class DetailRoadSurface(private val overpassMapDataApi: OverpassMapDataAndGeomet
           way[surface~"^(${UNDETAILED_SURFACE_TAG_MATCH})${'$'}"][segregated!="yes"][highway ~ "^${ HIGHWAY_TAG_MATCH }${'$'}"] -> .surface_without_detail;
           // https://taginfo.openstreetmap.org//search?q=%3Asurface
           // https://taginfo.openstreetmap.org//search?q=surface:
-          way[~"(:surface|surface:)"~"."] -> .extra_tags;
-
-          (.surface_without_detail; - .extra_tags;);
+          way[surface~"^(${UNDETAILED_SURFACE_TAG_MATCH})${'$'}"][~"(:surface|surface:)" ~ "."] -> .extra_tags;
+          way.surface_without_detail[surface ~ "^(${UNDETAILED_SURFACE_TAG_MATCH})${'$'}"][access !~ "^(private|no)${'$'}"] -> .not_private;
+          way.surface_without_detail[surface ~ "^(${UNDETAILED_SURFACE_TAG_MATCH})${'$'}"][foot][foot !~ "^(private|no)${'$'}"] -> .foot_access;
+          ((.not_private; .foot_access;); - .extra_tags;);
         """.trimIndent() + "\n" +
         getQuestPrintStatement()
 
     private val HIGHWAY_TAG_MATCH = ROADS_WITH_SURFACES_BROADLY_DEFINED.joinToString("|")
     private val UNDETAILED_SURFACE_TAG_MATCH = "paved|unpaved"
     private val REQUIRED_MINIMAL_MATCH_TFE by lazy { FiltersParser().parse(
-            "ways with surface ~ ${UNDETAILED_SURFACE_TAG_MATCH} and segregated!=yes and highway ~ ${HIGHWAY_TAG_MATCH}"
+            "ways with surface ~ ${UNDETAILED_SURFACE_TAG_MATCH} and segregated!=yes and highway ~ ${HIGHWAY_TAG_MATCH} and (access !~ private|no or (foot and foot !~ private|no))"
     )}
 
     override val isSplitWayEnabled = true
