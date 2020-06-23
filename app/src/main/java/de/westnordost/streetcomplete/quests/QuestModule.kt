@@ -61,9 +61,6 @@ import de.westnordost.streetcomplete.quests.localized_name.data.RoadNameSuggesti
 import de.westnordost.streetcomplete.quests.segregated.AddCyclewaySegregation
 import de.westnordost.streetcomplete.quests.self_service.AddSelfServiceLaundry
 import de.westnordost.streetcomplete.quests.sidewalk.AddSidewalk
-import de.westnordost.streetcomplete.quests.surface.AddCyclewayPartSurface
-import de.westnordost.streetcomplete.quests.surface.AddFootwayPartSurface
-import de.westnordost.streetcomplete.quests.surface.AddPathSurface
 import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingBusStop
 import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingCrosswalk
 import de.westnordost.streetcomplete.quests.toilet_availability.AddToiletAvailability
@@ -74,7 +71,6 @@ import de.westnordost.streetcomplete.quests.address.AddHousenumber
 import de.westnordost.streetcomplete.quests.max_speed.AddMaxSpeed
 import de.westnordost.streetcomplete.quests.opening_hours.AddOpeningHours
 import de.westnordost.streetcomplete.quests.localized_name.AddRoadName
-import de.westnordost.streetcomplete.quests.surface.AddRoadSurface
 import de.westnordost.streetcomplete.quests.roof_shape.AddRoofShape
 import de.westnordost.streetcomplete.quests.sport.AddSport
 import de.westnordost.streetcomplete.quests.traffic_signals_sound.AddTrafficSignalsSound
@@ -87,6 +83,7 @@ import de.westnordost.streetcomplete.quests.bench_backrest.AddBenchBackrest
 import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAccessOutside
 import de.westnordost.streetcomplete.quests.ferry.AddFerryAccessMotorVehicle
 import de.westnordost.streetcomplete.quests.ferry.AddFerryAccessPedestrian
+import de.westnordost.streetcomplete.quests.surface.*
 import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAccessToiletsPart
 
 @Module
@@ -124,6 +121,7 @@ object QuestModule
         AddRailwayCrossingBarrier(o), // useful for routing
         AddPostboxCollectionTimes(o),
         AddOpeningHours(o, featureDictionaryFuture),
+        DetailRoadSurface(o), // BRouter, OsmAnd, OSRM, graphhopper
         AddBikeParkingCapacity(o), // cycle map layer on osm.org
         AddOrchardProduce(o),
         AddBuildingType(o), // because housenumber, building levels etc. depend on it
