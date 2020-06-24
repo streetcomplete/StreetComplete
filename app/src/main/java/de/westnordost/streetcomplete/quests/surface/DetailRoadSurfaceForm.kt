@@ -23,18 +23,9 @@ class DetailRoadSurfaceForm  : AGroupedImageListQuestAnswerFragment<String, Deta
 
     // note that for unspecific groups null is used as a value, it makes them unselecteable
     override val allItems = listOf(
-            Item(null, R.drawable.panorama_surface_paved, R.string.quest_surface_value_paved, null, listOf(
-                    ASPHALT, CONCRETE, PAVING_STONES,
-                    SETT, UNHEWN_COBBLESTONE, GRASS_PAVER,
-                    WOOD, METAL
-            ).toItems()),
-            Item(null, R.drawable.panorama_surface_unpaved, R.string.quest_surface_value_unpaved, null, listOf(
-                    COMPACTED, FINE_GRAVEL, GRAVEL,
-                    PEBBLES
-            ).toItems()),
-            Item(null, R.drawable.panorama_surface_ground, R.string.quest_surface_value_ground, null, listOf(
-                    DIRT, GRASS, SAND
-            ).toItems())
+            Item(null, R.drawable.panorama_surface_paved, R.string.quest_surface_value_paved, null, pavedSurfaces().toItems()),
+            Item(null, R.drawable.panorama_surface_unpaved, R.string.quest_surface_value_unpaved, null, unpavedSurfaces().toItems()),
+            Item(null, R.drawable.panorama_surface_ground, R.string.quest_surface_value_ground, null, groundSurfaces().toItems())
     )
 
     private var isInExplanationMode = false;

@@ -15,18 +15,9 @@ class AddRoadSurfaceForm : AGroupedImageListQuestAnswerFragment<String,String>()
             listOf(ASPHALT, CONCRETE, SETT, PAVING_STONES, COMPACTED, DIRT).toItems()
 
     override val allItems = listOf(
-        Item("paved", R.drawable.panorama_surface_paved, R.string.quest_surface_value_paved, null, listOf(
-            ASPHALT, CONCRETE, PAVING_STONES,
-            SETT, UNHEWN_COBBLESTONE, GRASS_PAVER,
-            WOOD, METAL
-        ).toItems()),
-        Item("unpaved", R.drawable.panorama_surface_unpaved, R.string.quest_surface_value_unpaved, null, listOf(
-            COMPACTED, FINE_GRAVEL, GRAVEL,
-            PEBBLES
-        ).toItems()),
-        Item("ground", R.drawable.panorama_surface_ground, R.string.quest_surface_value_ground, null, listOf(
-            DIRT, GRASS, SAND
-        ).toItems())
+        Item("paved", R.drawable.panorama_surface_paved, R.string.quest_surface_value_paved, null, pavedSurfaces().toItems()),
+        Item("unpaved", R.drawable.panorama_surface_unpaved, R.string.quest_surface_value_unpaved, null, unpavedSurfaces().toItems()),
+        Item("ground", R.drawable.panorama_surface_ground, R.string.quest_surface_value_ground, null, groundSurfaces().toItems())
     )
 
     override fun onClickOk(value: String) {
