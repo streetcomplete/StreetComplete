@@ -16,9 +16,9 @@ class DetailRoadSurfaceForm  : AImageListQuestAnswerFragment<String, DetailSurfa
 
     override val items: List<Item<String>>
         get() = if (osmElement!!.tags["surface"] == "paved")
-            (pavedSurfaces() + unpavedSurfaces() + groundSurfaces()).toItems()
+            (PAVED_SURFACES + UNPAVED_SURFACES + GROUND_SURFACES).toItems()
         else
-            (unpavedSurfaces() + groundSurfaces() + pavedSurfaces()).toItems()
+            (UNPAVED_SURFACES + GROUND_SURFACES + PAVED_SURFACES).toItems()
 
     override val itemsPerRow = 3
 
