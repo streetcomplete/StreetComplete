@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.surface
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.view.Item
+import de.westnordost.streetcomplete.quests.surface.Surface.*
 
 enum class Surface(val item:Item<String>) {
     ASPHALT       (Item("asphalt",        R.drawable.surface_asphalt,       R.string.quest_surface_value_asphalt)),
@@ -26,21 +27,21 @@ fun List<Surface>.toItems() = this.map { it.item }
 
 fun pavedSurfaces(): List<Surface> {
     return listOf(
-            Surface.ASPHALT, Surface.CONCRETE, Surface.PAVING_STONES,
-            Surface.SETT, Surface.UNHEWN_COBBLESTONE, Surface.GRASS_PAVER,
-            Surface.WOOD, Surface.METAL
+            ASPHALT, CONCRETE, PAVING_STONES,
+            SETT, UNHEWN_COBBLESTONE, GRASS_PAVER,
+            WOOD, METAL
     )
 }
 
 fun unpavedSurfaces(): List<Surface> {
     return listOf(
-            Surface.COMPACTED, Surface.FINE_GRAVEL, Surface.GRAVEL,
-            Surface.PEBBLES
+            COMPACTED, FINE_GRAVEL, GRAVEL,
+            PEBBLES
     )
 }
 
 fun groundSurfaces(): List<Surface> {
     return listOf(
-            Surface.DIRT, Surface.GRASS, Surface.SAND
+            DIRT, GRASS, SAND
     )
 }
