@@ -856,6 +856,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_surface_detailed_name_title">"What surface does the road %s have here? Please, select a specific one."</string>
     <string name="quest_surface_detailed_square_name_title">"What surface does the square %s have here? Please, select a specific one."</string>
     <string name="quest_surface_detailed_title">"What surface does this piece of road have? Please, select a specific one."</string>
-    <string name="quest_surface_detailed_square_title">"What surface does the square %s have here? Please, select a specific one."</string>
+    <string name="quest_surface_detailed_square_title">"What surface does this square have here? Please, select a specific one."</string>
     <string name="quest_generic_cancel">Cancel</string>
 </resources>
