@@ -58,7 +58,8 @@ layers:
             draw:
                 quest-icons:
                     interactive: true
-                    priority: function() { return feature.order }
+                    priority: 1
+                    order: function() { return feature.order }
                     size: 66px
                     sprite: function() { return feature.kind }
                     sprite_default: quest
