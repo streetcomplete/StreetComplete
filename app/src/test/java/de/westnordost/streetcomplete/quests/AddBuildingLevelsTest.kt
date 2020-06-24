@@ -1,16 +1,14 @@
 package de.westnordost.streetcomplete.quests
 
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.quests.building_levels.AddBuildingLevels
 import de.westnordost.streetcomplete.quests.building_levels.BuildingLevelsAnswer
 import org.junit.Test
 
-import org.mockito.Mockito.mock
-
 class AddBuildingLevelsTest {
 
-    private val questType = AddBuildingLevels(mock(OverpassMapDataDao::class.java))
+    private val questType = AddBuildingLevels(mock())
 
     @Test fun `apply building levels answer`() {
         questType.verifyAnswer(

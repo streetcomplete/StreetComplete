@@ -3,7 +3,7 @@ All assets made by and (c) Tobias Zwick unless explicitly stated otherwise. Lice
 URLs to other sources used:
  - Twemoji 2 (MIT license)      https://github.com/twitter/twemoji/
  - EmojiOne 2 (CC-BY 4 license) https://github.com/emojione/emojione/tree/2.2.7
- - elegant themes (GPL)         https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free
+ - elegant themes (GPL 2.0)     https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free
 
 
 File                            Author if not Tobias Zwick / Source
@@ -13,10 +13,21 @@ appicon_fancy.svg               elegant themes
 
 appicon_flat.svg                elegant themes
 
+achievements/
+    achievement_frame           Sanja Dimitrijevic, License: CC-BY-SA 4.0
+    ic_achievement_bicyclist    Sanja Dimitrijevic, License: CC-BY-SA 4.0
+    ic_achievement_car          Sanja Dimitrijevic, License: CC-BY-SA 4.0
+    ic_achievement_first_edit   mashup with https://github.com/openstreetmap/openstreetmap-website/blob/master/app/assets/images/sign-up-illustration.svg
+                                probably (c) Saman Bemel-Benrud, license apparently GPLv2.0
+    ic_achievement_pedestrian   Sanja Dimitrijevic, License: CC-BY-SA 4.0
+    ic_achievement_surveyor     mashup with https://wiki.openstreetmap.org/wiki/File:Public-images-osm_logo.svg
+                                (c) 2011 Ken Vermette, License: CC-BY.SA 3.0
+
 building_icons.svg
     apartments
     barn
     bungalow
+    bunker
     car                         modified from Twemoji: U+1F698
     carport                     parts taken from Twemoji: U+1F698
     civic
@@ -25,10 +36,10 @@ building_icons.svg
     detached
     dormitory
     farm
-    farm2
     garage                      parts taken from Twemoji: U+1F698
     garages                     parts taken from Twemoji: U+1F698
     greenhouse
+    hangar
     hospital
     hotel
     house
@@ -50,6 +61,7 @@ building_icons.svg
     storage_tank
     temple
     terrace
+    toilets
     train_station               modified from Twemoji: U+1F689
     transportation              modified from Twemoji: U+1F68D
     university
@@ -57,7 +69,40 @@ building_icons.svg
 
 building_levels_illustration.svg
 
+cycleways.svg
+
+cycleway_segregation.svg
+
+feature_graphic.xcf             parts taken from https://commons.wikimedia.org/wiki/File:M%C3%BCnchen_-_Westend.JPG
+
+ic_axleload.svg
+
+ic_bogieweight.svg
+
+ic_building_levels_illustration.svg
+
+ic_create_note_black_24dp.svg
+
 living_street.svg
+living_street_australia.svg
+living_street_france.svg
+living_street_russian.svg
+living_street_sadc.svg
+
+osm_anon_avatar.svg
+
+logo_osm_magnifier.svg              modified from https://wiki.openstreetmap.org/wiki/File:Public-images-osm_logo.svg
+                                              (c) 2011 Ken Vermette, License: CC-BY.SA 3.0
+logo_osm_magnifier_perspective.svg  modified from https://wiki.openstreetmap.org/wiki/File:Public-images-osm_logo.svg
+                                              (c) 2011 Ken Vermette, License: CC-BY.SA 3.0
+logo_osm_map.svg                    modified from https://wiki.openstreetmap.org/wiki/File:Public-images-osm_logo.svg
+                                              (c) 2011 Ken Vermette, License: CC-BY.SA 3.0
+logo_osm_map_lighting.svg           modified from https://wiki.openstreetmap.org/wiki/File:Public-images-osm_logo.svg
+                                              (c) 2011 Ken Vermette, License: CC-BY.SA 3.0
+
+maxheight_sign.svg
+
+osm_anon_avatar.svg
 
 roof_shape_icons.svg
 
@@ -150,6 +195,8 @@ quest_icons.svg
     wheelchair
     wheelchair_shop
 
+quest_pin.xcf
+
 railway_crossing_double_half.svg (c) 2018 ServusWorld - License: CC0
 railway_crossing_full.svg        (c) 2018 ServusWorld - License: CC0
 railway_crossing_half.svg        (c) 2018 ServusWorld - License: CC0
@@ -158,13 +205,19 @@ railway_crossing_none.svg        (c) 2018 ServusWorld - License: CC0
 recycling_icons.svg
     batteries
     cans
+    carton
     clothes                      by Adrien Pavie, modified from EmojiOne 2: U+1F456, U+1F455
     glass_bottles
-    green_waste                  Twemoji: U+1F33F
+    green_waste                  modified from Twemoji: U+1F33F
+    lego
     newspaper                    modified from EmojiOne 2: U+1F4F0
+    paper_only
+    paper_and_cartons
+    plastic
     plastic_bottles
-    shoes                        EmojiOne 2: U+1F45F
-    small_appliances             EmojiOne 2: U+1F50C
+    shoes                        modified from EmojiOne 2: U+1F45F
+    small_electrical_appliances  EmojiOne 2: U+1F50C
+    tetra
 
 religion_icons.svg
     hindu                        https://commons.wikimedia.org/wiki/File:Om_symbol.svg
@@ -181,9 +234,21 @@ religion_icons.svg
     chinese                      https://commons.wikimedia.org/wiki/File:Chinese_lu_symbol_-_%E7%A6%84.svg
     caodai
 
+roadtype_dual_carriageway.svg
+roadtype_lit.svg
+roadtype_lit_no.svg
+roadtype_urban.svg
+
+scissors.svg
+
 slow_zone.svg
 
 slow_zone_us.svg
+
+speech_bubble_left.9.svg
+speech_bubble_none.9.png
+speech_bubble_none.9.svg
+speech_bubble_top.9.svg
 
 sport_icons.svg
     american_football

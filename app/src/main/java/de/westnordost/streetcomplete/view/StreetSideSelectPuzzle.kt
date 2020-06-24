@@ -6,15 +6,15 @@ import android.graphics.Matrix
 import android.graphics.Shader
 import android.graphics.drawable.BitmapDrawable
 import android.util.AttributeSet
-import android.view.LayoutInflater
-import android.view.View
+import android.view.*
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.RelativeLayout
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.util.BitmapUtil
+import de.westnordost.streetcomplete.ktx.getBitmapDrawable
 import kotlinx.android.synthetic.main.side_select_puzzle.view.*
+import kotlin.math.*
 
 class StreetSideSelectPuzzle @JvmOverloads constructor(
     context: Context,
@@ -25,8 +25,8 @@ class StreetSideSelectPuzzle @JvmOverloads constructor(
     var listener: ((isRight:Boolean) -> Unit)? = null
     set(value) {
         field = value
-        leftSide.setOnClickListener { listener?.invoke(false) }
-        rightSide.setOnClickListener { listener?.invoke(true) }
+        leftSideContainer.setOnClickListener { listener?.invoke(false) }
+        rightSideContainer.setOnClickListener { listener?.invoke(true) }
     }
 
     private var leftImageResId: Int = 0
@@ -39,8 +39,8 @@ class StreetSideSelectPuzzle @JvmOverloads constructor(
         LayoutInflater.from(context).inflate(R.layout.side_select_puzzle, this, true)
 
         addOnLayoutChangeListener { _, left, top, right, bottom, _, _, _, _ ->
-            val width = Math.min(bottom - top, right - left)
-            val height = Math.max(bottom - top, right - left)
+            val width = min(bottom - top, right - left)
+            val height = max(bottom - top, right - left)
             val params = rotateContainer.layoutParams
             if(width != params.width || height != params.height) {
                 params.width = width
@@ -62,7 +62,7 @@ class StreetSideSelectPuzzle @JvmOverloads constructor(
 
     fun setStreetRotation(rotation: Float) {
         rotateContainer.rotation = rotation
-        val scale = Math.abs(Math.cos(rotation * Math.PI / 180)).toFloat()
+        val scale = abs(cos(rotation * PI / 180)).toFloat()
         rotateContainer.scaleX = 1 + scale * 2 / 3f
         rotateContainer.scaleY = 1 + scale * 2 / 3f
     }
@@ -122,7 +122,7 @@ class StreetSideSelectPuzzle @JvmOverloads constructor(
     }
 
     private fun setStreetDrawable(resId: Int, width: Int, imageView: ImageView, flip180Degrees: Boolean) {
-        val drawable = scaleToWidth(BitmapUtil.asBitmapDrawable(resources, resId), width, flip180Degrees)
+        val drawable = scaleToWidth(resources.getBitmapDrawable(resId), width, flip180Degrees)
         drawable.tileModeY = Shader.TileMode.REPEAT
         imageView.setImageDrawable(drawable)
     }

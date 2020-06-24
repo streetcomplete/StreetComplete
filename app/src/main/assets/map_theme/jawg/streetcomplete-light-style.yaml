@@ -1,0 +1,37 @@
+import:
+    - global.yaml
+    - layers/land.yaml
+    - layers/labels.yaml
+    - layers/roads.yaml
+
+global:
+    railway_color: '#99a'
+    road_color: '#fff'
+    road_outline_color: '#c99'
+    path_color: global.road_color
+    path_outline_color: '#e0c9b3'
+    square_color: global.road_color
+
+    earth_color: '#f3eacc'
+    water_color: '#68d'
+    green_color: '#c6ddaa'
+    forest_color: '#a8c884'
+    town_color: '#f3dacd'
+
+    building_color: rgba(204, 214, 238, .75)
+    building_outline_color: rgba(185, 195, 217, .75)
+
+    boundary_color: '#f3c'
+
+    oneway_arrow_color: '#888'
+    barrier_color: '#888'
+
+    tunnel_color: [1., 1., 1., 0.2]
+
+styles:
+    buildings-style:
+        base: polygons
+        blend: translucent
+    buildings-outline-style:
+        base: lines
+        blend: translucent

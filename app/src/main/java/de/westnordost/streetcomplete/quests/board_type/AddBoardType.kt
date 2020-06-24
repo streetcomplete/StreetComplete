@@ -1,11 +1,11 @@
 package de.westnordost.streetcomplete.quests.board_type
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
+import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 
-class AddBoardType(o: OverpassMapDataDao) : SimpleOverpassQuestType<String>(o) {
+class AddBoardType(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<String>(o) {
 
     override val tagFilters = "nodes with information=board and access !~ private|no and !board_type"
     override val commitMessage = "Add board type"

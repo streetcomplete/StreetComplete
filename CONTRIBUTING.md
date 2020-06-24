@@ -3,19 +3,22 @@ Thanks for your interest in contributing to StreetComplete! 👍 There are many 
 Even if you do not find something to do in this list, using StreetComplete, testing it and giving constructive feedback is always a valuable contribution too.
 
 Content:
-* [Translating the app](#translating-the-app)
-* [Solving notes](#solving-notes)
-* [Testing and reporting issues](#testing-and-reporting-issues)
+
+   * [Translating the app](#translating-the-app)
+   * [Solving notes](#solving-notes)
+   * [Testing and reporting issues](#testing-and-reporting-issues)
    * [Issues of dependencies](#issues-of-dependencies)
    * [Suggesting new quests](#suggesting-new-quests)
-* [Improving documentation](#improving-documentation)
-* [Development](#development)
+   * [Improving documentation](#improving-documentation)
+   * [Development](#development)
    * [Developing new quests](#developing-new-quests)
    * [StreetComplete-related projects](#streetcomplete-related-projects).
 
 ## Translating the app
 
-You can translate StreetComplete at POEditor. You can add a translation in your own language or improve other translations. Note that manual translations as Pull Requests will not be merged and do not help the project.
+You can translate StreetComplete at POEditor. You can add missing translations and improve existing ones.
+
+The only required skills here are ability to read English text and write in your own language.
 
 Follow [**this link** to improve the translations](https://poeditor.com/join/project/IE4GC127Ki):
 
@@ -23,7 +26,7 @@ Follow [**this link** to improve the translations](https://poeditor.com/join/pro
 
 After joining [main site of the POEditor](https://poeditor.com/projects/) should list StreetComplete for logged in users.
 
-Before each release, translations are pulled in from POEditor.
+Before each release, translations are pulled in from POEditor. Please, use POEditor for translating. Manual changes submitted as Pull Requests will not be merged and do not help the project.
 
 ## Solving notes
 
@@ -75,6 +78,8 @@ Note that StreetComplete also uses [some dependencies](#issues-of-dependencies),
 
 If you need to find things where help is especially appreciated [have a look at the issues tagged with "help wanted"](https://github.com/westnordost/StreetComplete/labels/help%20wanted).
 
+To build and test StreetComplete [download and install Android Studio](https://developer.android.com/studio/) which comes bundled with all tools needed, checkout and open the project in this application and click on the green play button on the top.
+
 See also a [documentation of program architecture](ARCHITECTURE.md).
 
 ### Developing new quests
@@ -106,6 +111,7 @@ Always remember to pay attention to [the quest guidelines](https://github.com/we
 * [streetcomplete-quest-svgs](https://github.com/rugk/streetcomplete-quest-svgs) by [@rugk](https://github.com/rugk) for having minified versions of all StreetComplete quest icons for the OSM wiki
 * [streetcomplete-ad-c3](https://github.com/rugk/streetcomplete-ad-c3) by [@rugk](https://github.com/rugk) as a banner advertisement
 * [sc-photo-service](https://github.com/exploide/sc-photo-service) by [@exploide](https://github.com/exploide) allows StreetComplete to upload photos associated with OSM Notes
+* [sc-statistics-service](https://github.com/westnordost/sc-statistics-service) by [@westnordost](https://github.com/westnordost) aggregates and provides StreetComplete-related statistics about users.
 
 You may find more projects under [the StreetComplete tag](https://github.com/topics/streetcomplete) on GitHub.
 

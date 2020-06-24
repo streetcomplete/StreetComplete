@@ -4,3 +4,4 @@ mobileCountryCode: 641
 officialLanguages: [sw, en]
 orchardProduces: [banana, coffee, tea, tomato, cacao, pineapple, chilli_pepper, sweet_pepper, pepper,
   vanilla, sisal]
+workweekDays: 6

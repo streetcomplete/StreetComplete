@@ -1,16 +1,14 @@
 package de.westnordost.streetcomplete.quests
 
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.quests.opening_hours.model.*
 import de.westnordost.streetcomplete.quests.parking_fee.*
 import org.junit.Test
 
-import org.mockito.Mockito.mock
-
 class AddParkingFeeTest {
 
-    private val questType = AddParkingFee(mock(OverpassMapDataDao::class.java))
+    private val questType = AddParkingFee(mock())
 
     private val openingHours = listOf(
         OpeningMonths(CircularSection(0,11), listOf(

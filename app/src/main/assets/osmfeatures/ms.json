@@ -30,9 +30,6 @@
         "office/notary": {
             "name": "Pejabat Penyaksi Awam"
         },
-        "railway": {
-            "name": "Jalan Kereta Api"
-        },
         "building/university": {
             "name": "Bangunan Universiti"
         },
@@ -44,9 +41,6 @@
         },
         "building/chapel": {
             "name": "Bangunan Gereja Kecil"
-        },
-        "power/sub_station": {
-            "name": "Pencawang"
         },
         "office/research": {
             "name": "Pejabat Penyelidikan"
@@ -295,14 +289,8 @@
         "shop/electronics": {
             "name": "Kedai Elektronik"
         },
-        "waterway": {
-            "name": "Jalan Air"
-        },
         "amenity/place_of_worship/buddhist": {
             "name": "Tokong Buddha"
-        },
-        "building/kindergarten": {
-            "name": "Bangunan Prasekolah/Tadika"
         },
         "building/construction": {
             "name": "Bangunan Dalam Pembinaan"
@@ -340,9 +328,6 @@
         },
         "power/pole": {
             "name": "Tiang Elektrik"
-        },
-        "amenity/post_box": {
-            "name": "Peti Surat"
         },
         "highway/tertiary": {
             "name": "Jalan Tertiari"
@@ -384,9 +369,6 @@
             "name": "Kedai Rokok Elektronik",
             "terms": "Kedai E-Rokok, Vape"
         },
-        "tourism": {
-            "name": "Pelancongan"
-        },
         "building/residential": {
             "name": "Bangunan Kediaman"
         },
@@ -402,9 +384,6 @@
         "place": {
             "name": "Tempat"
         },
-        "power": {
-            "name": "Tenaga Elektrik"
-        },
         "shop/music": {
             "name": "Kedai Muzik"
         },
@@ -417,9 +396,6 @@
         },
         "building/house": {
             "name": "Rumah"
-        },
-        "aerialway": {
-            "name": "Jalan Udara"
         },
         "amenity/vending_machine": {
             "name": "Mesin Layan Diri"
@@ -447,9 +423,6 @@
         },
         "railway/narrow_gauge": {
             "name": "Rel Landasan Sempit"
-        },
-        "area/highway": {
-            "name": "Permukaaan Jalan"
         },
         "waterway/river": {
             "name": "Sungai"

@@ -20,6 +20,7 @@
         android:id="@+id/showMoreButton"
         android:text="@string/quest_roofShape_show_more"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"/>
 
 </LinearLayout>

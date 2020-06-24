@@ -3,18 +3,19 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
-def MAPZEN_API_KEY = hasProperty('mapzenApiKey') ? '"' + mapzenApiKey + '"' : "null"
-
 android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
 
     signingConfigs {
         release
     }
-    compileSdkVersion 28
+    compileSdkVersion 29
     testOptions {
         unitTests {
             returnDefaultValues = true
@@ -29,22 +30,22 @@ android {
     defaultConfig {
         applicationId "de.westnordost.streetcomplete"
         minSdkVersion 17
-        targetSdkVersion 28
-        versionCode 1301
-        versionName "13.0"
+        targetSdkVersion 29
+        versionCode 2100
+        versionName "21.0-beta1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        buildConfigField "String", "MAPZEN_API_KEY", MAPZEN_API_KEY
     }
     buildTypes {
 
         release {
             minifyEnabled true
-            useProguard false
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
         }
         debug {
-            minifyEnabled false
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             applicationIdSuffix ".debug"
         }
@@ -72,6 +73,16 @@ repositories {
     maven { url "https://jitpack.io" }
 }
 
+configurations {
+    // it's already included in Android
+    all*.exclude group: 'net.sf.kxml', module: 'kxml2'
+
+    cleanedAnnotations
+    compile.exclude group: 'org.jetbrains', module:'annotations'
+    compile.exclude group: 'com.intellij', module:'annotations'
+    compile.exclude group: 'org.intellij', module:'annotations'
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
@@ -81,13 +92,13 @@ dependencies {
 
     // tests
     testImplementation 'junit:junit:4.12'
-    testImplementation 'org.mockito:mockito-core:2.23.4'
+    testImplementation 'org.mockito:mockito-core:2.28.2'
+    testImplementation 'org.mockito:mockito-inline:2.28.2'
     testImplementation 'org.assertj:assertj-core:2.8.0'
 
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test:rules:1.2.0'
-    // KotlinX Jetifier can't cope with bytebuddy-1.9 which is a dependency of mockito-android 2.23.+
-    androidTestImplementation 'org.mockito:mockito-android:2.22.0'
+    androidTestImplementation 'org.mockito:mockito-android:2.28.2'
     androidTestImplementation 'org.assertj:assertj-core:2.8.0'
 
     // dependency injection
@@ -95,52 +106,56 @@ dependencies {
     kapt 'com.google.dagger:dagger-compiler:2.14.1'
 
     // Android stuff
-    implementation 'com.google.android.material:material:1.0.0'
-    implementation 'androidx.core:core:1.0.2'
-    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'com.google.android.material:material:1.1.0'
+    implementation 'androidx.core:core:1.3.0'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation 'androidx.annotation:annotation:1.1.0'
-    implementation 'androidx.fragment:fragment:1.0.0'
-    implementation 'androidx.preference:preference:1.0.0'
-    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation 'androidx.fragment:fragment:1.2.5'
+    implementation 'androidx.preference:preference:1.1.1'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'androidx.viewpager:viewpager:1.0.0'
     implementation 'androidx.localbroadcastmanager:localbroadcastmanager:1.0.0'
 
     // photos
-    implementation 'androidx.exifinterface:exifinterface:1.0.0'
+    implementation 'androidx.exifinterface:exifinterface:1.2.0'
 
     // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation "androidx.core:core-ktx:1.0.2"
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.2.1'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.1.1'
+    implementation "androidx.core:core-ktx:1.3.0"
 
     // scheduling background jobs
     implementation 'android.arch.work:work-runtime:1.0.1'
 
-    // geometry
+    // finding in which country we are for country-specific logic
     implementation 'de.westnordost:countryboundaries:1.5'
-
-    implementation 'de.westnordost:osmfeatures-android:1.0'
-
-    // talking with OSM Api
-    implementation 'oauth.signpost:signpost-core:1.2.1.2'
-    implementation ('de.westnordost:osmapi:3.3') {
-        // it's already included in Android
-        exclude group: 'net.sf.kxml', module: 'kxml2'
-    }
+    // finding a name for a feature without a name tag
+    implementation 'de.westnordost:osmfeatures-android:1.1'
+    // talking with the OSM API
+    implementation 'de.westnordost:osmapi-overpass:1.0'
+    implementation 'de.westnordost:osmapi-map:1.1'
+    implementation 'de.westnordost:osmapi-changesets:1.1'
+    implementation 'de.westnordost:osmapi-notes:1.0'
+    implementation 'de.westnordost:osmapi-user:1.0'
 
     // widgets
+    implementation "androidx.viewpager2:viewpager2:1.0.0"
     implementation 'me.grantland:autofittextview:0.2.1'
+    implementation 'org.sufficientlysecure:html-textview:3.9'
     implementation 'com.duolingo.open:rtl-viewpager:1.0.2'
-    // versions above 1.1.0 (i.e. 1.1.3) have unsolved crash issues
-    implementation 'com.github.florent37:viewtooltip:1.1.0'
-    implementation 'androidx.exifinterface:exifinterface:1.0.0'
+    implementation 'com.google.android:flexbox:2.0.1'
+
+    // box2d view
+    implementation 'org.jbox2d:jbox2d-library:2.2.1.1'
 
     // serialization
     implementation 'com.esotericsoftware:kryo:4.0.2'
     implementation 'org.objenesis:objenesis:2.6'
 
     // map and location
-    implementation 'com.mapzen.tangram:tangram:0.9.6'
-    implementation 'com.mapzen.android:lost:3.0.4'
+    implementation 'com.mapzen.tangram:tangram:0.12.0'
 
     // config files
     implementation 'com.esotericsoftware.yamlbeans:yamlbeans:1.13'
@@ -157,10 +172,9 @@ import groovy.json.JsonOutput
 
 task downloadPresets {
     doLast {
-        def targetDir = "src/main/assets/osmfeatures"
-        def presetsUrl = new URL("https://raw.githubusercontent.com/openstreetmap/iD/master/data/presets/presets.json")
+        def targetDir = "app/src/main/assets/osmfeatures"
+        def presetsUrl = new URL("https://raw.githubusercontent.com/openstreetmap/iD/develop/data/presets/presets.json")
         def contentsUrl = new URL("https://api.github.com/repos/openstreetmap/iD/contents/dist/locales")
-
         new File("$targetDir/presets.json").withOutputStream { it << presetsUrl.openStream() }
 
         def slurper = new JsonSlurper()
@@ -214,6 +228,61 @@ static def unescapeUnicode(String str) {
     return out.toString()
 }
 
+task pullTranslations {
+    doLast {
+        def baseUrl = "https://api.poeditor.com/v2"
+        def baseParams = "api_token=$POEditorAPIToken&id=97843"
+        def exportLanguages = [
+                "ast","ca","cs","da","de","el","en-gb","es","eu","fa","fi","fr","gl","hu","id","it",
+                "ja","ko","lt","ml","nb","nl","nn","pl","pt","pt-br","ru","sk","sl","sq","sv","tr",
+                "uk","vi","zh-cn","zh-tw"
+        ].toSet()
+        def languageToAndroidResCode = [
+                "id": "in",
+                "nb": "no",
+                "zh-cn": "zh",
+                "en-gb": "en-rGB",
+                "pt-br": "pt-rBR",
+                "zh-tw": "zh-rTW"
+        ]
+
+        def languageListConnection = new URL("$baseUrl/languages/list").openConnection()
+        def languageCodeToPercentage = []
+        languageListConnection.with {
+            doOutput = true
+            requestMethod = "POST"
+            outputStream.withWriter { it << baseParams }
+            def result = new JsonSlurper().parse(inputStream).result
+            languageCodeToPercentage = result.languages.collectEntries {
+                [(it.code.toLowerCase()): it.percentage]
+            }
+        }
+
+        languageCodeToPercentage.each { language, percentage ->
+            if (!exportLanguages.contains(language)) {
+                println("$language (translated $percentage%) SKIPPED")
+            } else {
+                println("$language (translated $percentage%)")
+
+                def connection = new URL("$baseUrl/projects/export").openConnection()
+                def fileUrl
+                connection.with {
+                    doOutput = true
+                    requestMethod = "POST"
+                    outputStream.withWriter {
+                        it << "$baseParams&language=${language.toLowerCase()}&type=android_strings&filters=translated"
+                    }
+                    fileUrl = new JsonSlurper().parse(inputStream).result.url
+                }
+                def androidResCode = languageToAndroidResCode[language] ?: language
+                def targetFile = "app/src/main/res/values-$androidResCode/strings.xml"
+                new File(targetFile).newWriter().withWriter {
+                    it << new URL(fileUrl).openStream()
+                }
+            }
+        }
+    }
+}
 
 // rather not, otherwise all contributors that want to build need to have installed python and the
 // dependencies I use for these scripts.

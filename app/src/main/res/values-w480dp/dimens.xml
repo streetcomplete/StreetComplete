@@ -1,0 +1,5 @@
+<resources>
+    <!-- quest forms should never be broader than 480p -->
+    <dimen name="quest_form_width">480dp</dimen>
+
+</resources>

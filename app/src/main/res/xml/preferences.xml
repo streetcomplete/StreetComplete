@@ -16,14 +16,6 @@
             android:persistent="true"
             />
 
-        <Preference
-            android:key="oauth"
-            android:title="@string/pref_title_authorization"
-            android:summary="@string/pref_title_not_authorized_summary2"
-            android:persistent="true"
-            android:widgetLayout="@layout/widget_image_open_in_browser"
-            />
-
     </PreferenceCategory>
 
     <PreferenceCategory
@@ -102,6 +94,17 @@
             android:persistent="true"
             />
       
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="debug"
+        android:title="Debug">
+
+        <Preference
+            android:key="debug.quests"
+            android:title="Show Quest Forms"
+            />
+
     </PreferenceCategory>
 
 </PreferenceScreen>

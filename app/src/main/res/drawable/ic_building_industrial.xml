@@ -1,17 +1,17 @@
 <vector android:height="48dp" android:viewportHeight="128"
     android:viewportWidth="128" android:width="48dp" xmlns:android="http://schemas.android.com/apk/res/android">
     <path
-        android:fillColor="#aaaaaa"
+        android:fillColor="#aaa"
         android:pathData="M80,24h16l4,88H76ZM32,24h16l4,88h-24Z"/>
     <path
         android:fillColor="#b75858"
         android:pathData="m16,112h96V52L64,72V52L16,72Z"/>
     <path
         android:pathData="M12,76 l56,-24M64,72 L116,52"
-        android:strokeColor="#333333"
+        android:strokeColor="#333"
         android:strokeWidth="12"/>
     <path
-        android:fillColor="#aaaaaa"
+        android:fillColor="#aaa"
         android:pathData="M24,84h12v16h-12zM42,84h12v16h-12zM60,84h12v16h-12zM80,80h24v32h-24z"/>
     <path
         android:fillColor="#808080"

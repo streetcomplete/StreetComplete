@@ -2,20 +2,29 @@
 <resources>
     <string name="action_settings">"Settings"</string>
     <string name="oauth_communication_error">"Unable to reach the authorization server"</string>
-    <string name="oauth_remove_authorization_dialog_message">"Do you want to remove the authorization for your OSM account?"</string>
-    <string name="oauth_remove_authorization_confirmation">"Remove"</string>
-    <string name="loading">"Loading"</string>
+    <string name="user_profile">My Profile</string>
+    <string name="user_login">Login</string>
+    <string name="user_logout">Logout</string>
+    <string name="osm_profile">OSM Profile</string>
+    <string name="next">Next</string>
+    <string name="letsgo">Let\'s go!</string>
+    <string name="tutorial_welcome_to_osm">Welcome to OpenStreetMap</string>
+    <string name="tutorial_welcome_to_osm_subtitle">the free wiki world map</string>
+    <string name="tutorial_intro">StreetComplete makes it easy to contribute to OpenStreetMap.\nIt automatically looks for missing details in your vicinity: bicycle lanes, house numbers, opening hours and much more…</string>
+    <string name="tutorial_solving_quests">Once found, the missing details will appear on your map as quests.\n\nYou can start solving them right away and later login to publish your answers.</string>
+    <string name="tutorial_stay_safe">Whenever you are uncertain, you can always reply \"Can\'t Say\" and leave a note.\n\nFinally, remember to stay safe: Be aware of your surroundings and don\'t enter private property.</string>
+    <string name="tutorial_happy_mapping">Happy Mapping!</string>
     <string name="retry">"Retry"</string>
-    <string name="oauth_cancelled">"Authorization canceled"</string>
     <string name="oauth_failed_permissions">"Authorization failed: All listed permissions need to be granted"</string>
+    <string name="achievements_empty">You have no achievements yet</string>
+    <string name="links_empty">You have no links yet</string>
+    <string name="quests_empty">You published no quest answers yet</string>
+    <string name="stats_are_syncing">Your statistics are still syncing. Check this screen later.</string>
+    <string name="unsynced_quests_description">plus %d not yet published changes.</string>
+    <string name="unsynced_quests_not_logged_in_description">You have %d not yet published changes. You need to login to have them uploaded.</string>
     <string name="title_activity_settings">"Settings"</string>
     <string name="pref_category_communication">"Communication"</string>
     <string name="pref_category_display">"Display"</string>
-    <string name="pref_title_authorization">"Authorize OSM access"</string>
-    <string name="pref_title_authorized_username_summary">"Authorized account: %s"</string>
-    <string name="pref_title_authorized_summary">"Authorized"</string>
-    <string name="pref_title_not_authorized_summary">"Not yet authorized"</string>
-    <string name="pref_title_not_authorized_summary2">"Log in from your web browser to authorize"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
     <string name="pref_tilecache_size_message">"Space in megabytes reserved on external storage to cache map tiles"</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">"Show all notes"</string>
@@ -23,7 +32,6 @@
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Ignoring notes not phrased as questions"</string>
     <string name="pref_title_map_cache">"Map cache size"</string>
     <string name="map_btn_gps_tracking">"Follow me"</string>
-    <string name="map_attribution_mapzen">"Powered by %s"</string>
     <string name="map_attribution_osm">"© OpenStreetMap contributors"</string>
     <string name="quest_generic_otherAnswers">"Other answers…"</string>
     <string name="quest_generic_answer_notApplicable">"Can’t say…"</string>
@@ -45,6 +53,7 @@
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"If the name can be spelled without an abbreviation, then it should be expanded. Many common abbreviations are expanded automatically while you type, but probably not all."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"No abbreviation"</string>
     <string name="quest_openingHours_name_title">"What are the opening hours of %s?"</string>
+    <string name="quest_openingHours_no_name_title">"What are the opening hours of this place? (%s)"</string>
     <string name="quest_openingHours_start_time">"opening time"</string>
     <string name="quest_openingHours_end_time">"closing time"</string>
     <string name="quest_openingHours_timeSelect_next">Next</string>
@@ -73,14 +82,15 @@
     <string name="cannot_find_bbox_or_reduce_tilt">"Can’t scan here. Try to zoom in further or tilt the map less."</string>
     <string name="download_area_too_big">"Please zoom in further"</string>
     <string name="confirmation_cancel_prev_download_title">"Stop the current search and scan here instead?"</string>
+    <string name="confirmation_cancel_prev_download_confirmed">"Scan here instead"</string>
+    <string name="confirmation_cancel_prev_download_cancel">"Continue current scan"</string>
     <string name="notification_downloading">"Scanning for quests…"</string>
-    <string name="now_downloading_toast">"Scanning for more quests…"</string>
     <string name="turn_on_location_request">"Location is off. Open Settings to turn it on now?"</string>
     <string name="no_location_permission_warning">"Your location is needed to scan for quests in your vicinity."</string>
-    <string name="action_about">"About StreetComplete"</string>
-    <string name="about_title_version">"Version"</string>
+    <string name="action_about2">"About"</string>
+    <string name="about_summary_current_version">"Current version: %s"</string>
     <string name="about_title_authors">"Credits"</string>
-    <string name="about_summary_authors">"© 2016–2019 Tobias Zwick and contributors"</string>
+    <string name="about_summary_authors">"© 2016–2020 Tobias Zwick and contributors"</string>
     <string name="about_title_repository">"Source Repository"</string>
     <string name="about_summary_repository">"on GitHub"</string>
     <string name="about_title_report_error">"Report error"</string>
@@ -111,8 +121,10 @@
     <string name="quest_openingHours_comment_title">"Describe opening hours"</string>
     <string name="quest_openingHours_comment_description">"Be concise, ideally use the wording from the sign, e.g. “by appointment”. The absence of a sign does not necessarily mean that there are no regular opening hours."</string>
     <string name="quest_buildingLevels_title">"How many levels does this building have?"</string>
+    <string name="quest_buildingLevels_address_title">"How many levels does the building with the number %s have?"</string>
     <string name="quest_buildingLevels_title_buildingPart">"How many levels does this building part have?"</string>
     <string name="quest_roofShape_title">"What basic shape does this building’s roof have?"</string>
+    <string name="quest_roofShape_address_title">"What basic shape does the roof of the building with the number %s have?"</string>
     <string name="quest_roofShape_select_one">"Select one:"</string>
     <string name="quest_roofShape_show_more">"Show more…"</string>
     <string name="quest_roofShape_answer_many">"It has several different shapes"</string>
@@ -148,6 +160,7 @@
     <string name="pref_title_sync">"Auto-sync"</string>
     <string name="map_btn_zoom_out">"Zoom out"</string>
     <string name="map_btn_zoom_in">"Zoom in"</string>
+    <string name="map_btn_menu">"Menu"</string>
     <string name="privacy_html">"&lt;p&gt;Ah, someone who cares about privacy, nice! I think I have only good news for you:&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;Direct Contributions&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
@@ -167,9 +180,11 @@ The app does not share your GPS location with anyone. It is used to automaticall
 &lt;p&gt;
 As mentioned, the app directly communicates with OSM infrastructure. That is, with the &lt;a href=\"https://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;Overpass API&lt;/a&gt; for downloading quests  (which is anonymous) and with the &lt;a href=\"https://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM API&lt;/a&gt; for uploading changes.&lt;br/&gt;
 However, before uploading your changes, the app checks with a &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;simple text file&lt;/a&gt; on my server whether it has been banned from uploading any changes. This is a precautionary measure to be able to keep versions of the app that turn out to have critical bugs from possibly corrupting OSM data.&lt;/p&gt;"</string>
-    <string name="privacy_html_tileserver">"&lt;p&gt;To display the map, vector tiles are retrieved from &lt;a href=\"https://tiles.map-data.de\"&gt;map-data.de&lt;/a&gt;. The service logs tile requests for anonymous statistics and for detecting issues but deletes the logs after a few days.&lt;/p&gt;"</string>
+    <string name="privacy_html_tileserver2">"&lt;p&gt;To display the map, vector tiles are retrieved from %1$s. See their &lt;a href=\"%2$s\"&gt;privacy statement&lt;/a&gt; for more information.&lt;/p&gt;"</string>
     <string name="privacy_html_image_upload2">&lt;p&gt;Photos you attach to a note are uploaded to my server and deleted some days after that note has been resolved. Their meta-data is stripped before upload.&lt;/p&gt;</string>
     <string name="privacy_html_third_party_quest_sources">&lt;p&gt;For some quests, some additional data from third parties is downloaded. In particular, the oneway quest queries an API, also hosted on westnordost.de, about likely candidates for oneways.&lt;/p&gt;</string>
+    <string name="privacy_html_statistics">&lt;p&gt;The data shown in your profile is aggregated from your publicly available contribution history to OpenStreetMap and then hosted on my server.&lt;/p&gt;</string>
+
     <string name="autosync_on">"On"</string>
     <string name="autosync_only_on_wifi">"Only on Wi-Fi"</string>
     <string name="autosync_off">"Off"</string>
@@ -263,10 +278,12 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
     <string name="quest_way_lit_automatic">"It uses motion detection"</string>
     <string name="quest_way_lit_24_7">"It’s lit night and day"</string>
     <string name="quest_tactilePaving_title_bus">"Does this bus stop have tactile pavings?"</string>
+    <string name="quest_tactilePaving_title_tram">"Does this streetcar stop have tactile pavings?"</string>
     <string name="quest_tactilePaving_title_crosswalk">"Does this crosswalk have tactile pavings on both sides?"</string>
     <string name="quest_source_dialog_title">Are you sure you checked this on-site?</string>
     <string name="quest_source_dialog_note">Only information that was found on a survey should be entered.</string>
     <string name="quest_tactilePaving_title_name_bus">"Does the bus stop %s have tactile pavings?"</string>
+    <string name="quest_tactilePaving_title_name_tram">"Does the streetcar stop %s have tactile pavings?"</string>
     <string name="quest_bicycleParkingCoveredStatus_title">"Is this bicycle parking covered (protected from rain)?"</string>
     <string name="dialog_session_dont_show_again">Don’t show again for this session</string>
     <string name="quest_sport_softball">Softball</string>
@@ -284,6 +301,7 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
     <string name="quest_wheelchairAccess_location_title">Is this location wheelchair accessible?</string>
     <string name="quest_wheelchairAccess_bus_station_name_title">Is the bus station %s wheelchair accessible?</string>
     <string name="quest_wheelchairAccess_toilets_name_title">Is the restroom %s wheelchair accessible?</string>
+    <string name="quest_wheelchairAccess_toiletsPart_title">Is the restroom at %s wheelchair accessible?</string>
     <string name="quest_wheelchairAccess_subway_entrance_name_title">Is the subway entrance %s wheelchair accessible?</string>
     <string name="quest_wheelchairAccess_railway_station_name_title">Is the train station %s wheelchair accessible?</string>
     <string name="quest_wheelchairAccess_location_name_title">Is the location %s wheelchair accessible?</string>
@@ -291,8 +309,8 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
     <string name="quest_wheelchairAccess_limited_description_business">Partially means that there is no more than a single step to access the place and that most rooms inside are wheelchair accessible.</string>
     <string name="quest_wheelchairAccess_limited_description_outside">Partially means that there is no more than a single step to access it.</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">Partially means that there is no more than a single step to access it.</string>
-    <string name="quest_wheelchairAccess_description_toilets">A wheelchair sign like this might be visible if the restroom is accessible.
-    Partially means that a wheelchair can enter and use the restroom, but no handrail or adapted hand basin is present.</string>
+    <string name="quest_wheelchairAccess_description_toilets">"A wheelchair sign like this might be visible if the restroom is accessible.
+Partially means that a wheelchair can enter and use the restroom, but no handrail or adapted hand basin is present."</string>
     <string name="quest_recycling_type_title">What type of recycling facility is this?</string>
     <string name="recycling_centre">Center</string>
     <string name="overground_recycling_container">Container</string>
@@ -317,6 +335,9 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="credits_translations">"See the &lt;a href=\"https://poeditor.com/projects/view?id=97843\"&gt;project on POEditor&lt;/a&gt; for a complete list."</string>
     <string name="credits_translations_title">Translations</string>
     <string name="credits_contributors_title">Code contributors</string>
+    <string name="credits_art_contributors_title">Art contributors</string>
+    <string name="credits_projects_contributors_title">Projects made for StreetComplete</string>
+    <string name="credits_main_contributors_title">Main contributors</string>
     <string name="credits_author_title">Author and maintainer</string>
     <string name="credits_and_more">and more…</string>
     <string name="quest_maxspeed_answer_living_street">It is a living street</string>
@@ -327,7 +348,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_crossing_type_unmarked">Crossing without road markings</string>
     <string name="compass_north_one_letter">N</string>
     <string name="action_undo">Undo</string>
-    <string name="no_changes_to_undo">Nothing to undo</string>
     <string name="undo_confirm_title">Undo the following last answer?</string>
     <string name="quest_orchard_produce_title">What is being cultivated here?</string>
     <string name="produce_grapes">Grapes</string>
@@ -409,7 +429,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_cycleway_value_lane_soft">cycle lane (dashed markings)</string>
     <string name="quest_cycleway_value_none">none</string>
     <string name="quest_cycleway_value_shared">lane shared explicitly with other traffic</string>
-    <string name="quest_buildingLevels_answer_multipleLevels">differs per building part</string>
+    <string name="quest_buildingLevels_answer_multipleLevels">Differs per building part</string>
     <string name="quest_buildingLevels_answer_description">In this case, simply input the values of the highest building part.</string>
     <string name="unglue_hint">Tap to unglue view from position</string>
     <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">Are the roadways of this road here physically separated (i.e. through a barrier)? The default speed limit depends on whether this is the case or not.</string>
@@ -460,7 +480,8 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_busStopShelter_tram_title">"Does this streetcar stop have a shelter?"</string>
     <string name="quest_bench_backrest_title">Does this bench have a backrest?</string>
     <string name="quest_bench_answer_picnic_table">It’s a picnic table</string>
-    <string name="quest_religion_for_place_of_worship_title">What religion is practiced at %s?</string>
+    <string name="quest_religion_for_place_of_worship_name_title">What religion is practiced at %s?</string>
+    <string name="quest_religion_for_place_of_worship_title">What religion is practiced at this place?</string>
     <string name="quest_religion_christian">Christianity</string>
     <string name="quest_religion_muslim">Islam</string>
     <string name="quest_religion_hindu">Hinduism</string>
@@ -479,7 +500,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_surface_value_unhewn_cobblestone">Unhewn cobblestone</string>
     <string name="quest_parking_access_title">Is it restricted who may park here?</string>
     <string name="quest_parking_access_private">It is private</string>
-    <string name="quest_parking_access_yes">It is public (with or without fee)</string>
+    <string name="quest_parking_access_yes">It is open to the public (with or without fee)</string>
     <string name="quest_parking_access_customers">It is only for customers</string>
     <string name="quest_streetName_pedestrian_title">What is the name of this pedestrian street?</string>
     <string name="quest_streetSurface_square_title">"What surface does this square have?"</string>
@@ -500,6 +521,9 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_cycleway_value_suggestion_lane">bicycle suggestion lane</string>
     <string name="quest_postboxCollectionTimes_title">What are the collection times of this postbox?</string>
     <string name="quest_postboxCollectionTimes_name_title">What are the collection times of this %s postbox?</string>
+    <string name="quest_postboxRef_title">What is the reference number of this postbox?</string>
+    <string name="quest_postboxRef_name_title">What is the reference number of this %s postbox?</string>
+    <string name="quest_ref_answer_noRef">"No reference number visible…"</string>
     <string name="quest_collectionTimes_add_times">Add collection time</string>
     <string name="quest_collectionTimes_answer_no_times_specified">No times specified</string>
     <string name="quest_construction_road_title">Is this road completed?</string>
@@ -513,6 +537,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="pref_quests_reset">Reset both quest enablement and order to the default?</string>
 
     <string name="quest_buildingType_title">"What kind of building is this?"</string>
+    <string name="quest_buildingType_address_title">"What kind of building is number %s?"</string>
     <string name="quest_buildingType_title2">"What was this building constructed as?"</string>
     <string name="quest_generic_item_invalid_value">Please select a more specific value.</string>
     <string name="quest_buildingType_answer_multiple_types">It has multiple purposes</string>
@@ -577,6 +602,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_buildingType_carport_description">roof for a car</string>
     <string name="quest_buildingType_garage">Single garage</string>
     <string name="quest_buildingType_garages">Multiple garages</string>
+    <string name="quest_buildingType_garages_description">Separate spaces for different owners/tenants</string>
     <string name="quest_buildingType_parking">Parking building</string>
 
 
@@ -609,7 +635,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_segregated_title">How are the footway and cycleway laid out here?</string>
     <string name="dialog_tutorial_upload">To upload your changes manually, use the button in the toolbar that looks like this.</string>
     <string name="quest_segregated_separated">Segregated from one another</string>
-    <string name="quest_segregated_mixed">Cyclists and pedestrians share same space</string>
+    <string name="quest_segregated_mixed">Cyclists and pedestrians share the same space</string>
     <string name="quest_maxheight_title">"What is the height limit here?"</string>
     <string name="quest_maxheight_parking_entrance_title">What is the height limit of this parking entrance?</string>
     <string name="quest_maxheight_height_restrictor_title">What is the height limit of this height restrictor?</string>
@@ -621,7 +647,11 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_railway_crossing_barrier_none">It\'s not</string>
     <string name="action_deselect_all">Deselect all</string>
     <string name="quest_buildingType_retail_description">including buildings for restaurants, cafés, …</string>
-
+    <string name="quest_maxweight_title">"What is the weight limit here?"</string>
+    <string name="quest_maxweight_answer_noSign">There is no sign</string>
+    <string name="quest_maxweight_unusualInput_confirmation_description">This weight looks implausible. Are you sure that it is correct?</string>
+    <string name="quest_maxweight_answer_other_sign">Sign looks different…</string>
+    <string name="quest_maxweight_unsupported_sign_request_photo">Would you like to leave a note? A note with a photo will enable other mappers to take care of it.</string>
     <string name="quest_tracktype_title">What is the surface firmness of this track?</string>
     <string name="quest_tracktype_grade1">Solid</string>
     <string name="quest_tracktype_grade2">Mostly solid</string>
@@ -668,9 +698,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_leaf_type_broadleaved">Broadleaved</string>
     <string name="quest_leaf_type_mixed">Both are present</string>
     <string name="create_new_note_hint">Best write the note in the locally spoken language or otherwise in English.</string>
-    <string name="about_contributing">Your answers are directly improving OpenStreetMap. Contributed data is open, everyone can use it. Many great projects are already using it.</string>
-    <string name="about_missing_stars">Currently, the star count is not shared across devices, but answers are added directly to the OpenStreetMap database.</string>
-    <string name="how_to_get_stars">Choose one of the markers on the map and answer the question. This way you will improve OpenStreetMap data and get stars. If you see no markers you may need to zoom out the map.</string>
     <string name="quest_cyclewayPartSurface_title">What\'s the surface of the cycleway here?</string>
     <string name="quest_footwayPartSurface_title">What\'s the surface of the footway here?</string>
     <string name="quest_board_type_history">History</string>
@@ -681,4 +708,153 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_board_type_notice_board">It is a notice board</string>
     <string name="quest_board_type_public_transport">Public transport</string>
     <string name="quest_board_type_title">What is the topic of this information board?</string>
+    <string name="quest_generic_answer_differs_along_the_way">"Differs along the way…"</string>
+    <string name="quest_split_way_description">If it differs along the way, the first step is to split up the way. After that, the quest can be answered for each split part separately.\nNote that the quests for the split parts may appear much later.\nSplit it now?</string>
+    <string name="quest_split_way_tutorial">Tap on the way to split it at the point(s) where the answer differs. Try to be as precise as possible, you can zoom in as usual.</string>
+    <string name="quest_split_way_too_imprecise">"Please zoom in further"</string>
+    <string name="quest_split_way_many_splits_confirmation_description">These are quite a few splits. You can always further split up the way later.</string>
+    <string name="confirmation_authorize_now_note2">You can also do this later on the profile screen.</string>
+    <string name="quest_generalFee_title">Does it cost a fee to enter %s?</string>
+    <string name="quest_laundrySelfService_title">Is this laundry a self service laundry?</string>
+    <string name="quest_handrail_title">Do these steps have a handrail?</string>
+    <string name="quest_address_street_title">What street does the (house) number %s belong to?</string>
+    <string name="quest_address_street_no_named_streets">It does not belong to a named street</string>
+    <string name="quest_address_street_place_name_label">Place name:</string>
+    <string name="quest_address_street_description">Tap the road it belongs to on the map or enter it without abbreviations in the field below:</string>
+    <string name="quest_street_side_puzzle_tutorial">Tap the question marks on the illustration below to select an answer for the given side of the road. The road in the illustration is rotated the same as on the map at the location of the pin. </string>
+    <string name="quest_recycling_materials_title">What can be left here for recycling?</string>
+    <string name="quest_recycling_materials_note">If anything different can be recycled than selectable here, please leave a note instead.</string>
+    <string name="quest_recycling_type_batteries">Batteries</string>
+    <string name="quest_recycling_type_cans">Cans</string>
+    <string name="quest_recycling_type_clothes">Clothes</string>
+    <string name="quest_recycling_type_green_waste">Garden waste</string>
+    <string name="quest_recycling_type_glass_bottles">Glass bottles and jars</string>
+    <string name="quest_recycling_type_glass_bottles_short">Bottles and jars</string>
+    <string name="quest_recycling_type_paper">Paper</string>
+    <string name="quest_recycling_type_plastic_generic">Plastic</string>
+    <string name="quest_recycling_type_plastic">Any plastic</string>
+    <string name="quest_recycling_type_shoes">Shoes</string>
+    <string name="quest_recycling_type_electric_appliances">Electric appliances</string>
+    <string name="quest_recycling_type_plastic_bottles">Plastic bottles only</string>
+    <string name="quest_recycling_type_plastic_packaging">Plastic packaging only</string>
+    <string name="quest_recycling_type_scrap_metal">Scrap metal</string>
+    <string name="quest_recycling_type_any_glass">Any glass</string>
+    <string name="quest_recycling_type_cooking_oil">Cooking Oil</string>
+    <string name="quest_recycling_type_engine_oil">Engine Oil</string>
+    <string name="quest_recycling_glass_title">Can only glass bottles and jars be recycled here, or any type of glass?</string>
+    <string name="quest_determineRecyclingGlass_description_any_glass">Examples of glass that is often not accepted: tempered glass, window panes, glassware, light bulbs or mirrors.</string>
+
+    <string name="quest_tourism_information_title">What type of tourist information is this?</string>
+    <string name="quest_tourism_information_name_title">What type of tourist information is %s?</string>
+    <string name="quest_tourism_information_office">Tourist information office</string>
+    <string name="quest_tourism_information_board">Information board</string>
+    <string name="quest_tourism_information_terminal">Information terminal</string>
+    <string name="quest_tourism_information_map">Map</string>
+    <string name="quest_tourism_information_guidepost">Guidepost</string>
+
+    <string name="about_title_changelog">Version history</string>
+    <string name="title_whats_new">What\'s New?</string>
+    <string name="about_title_rate">Rate this app</string>
+    <string name="about_summary_rate">on Google Play</string>
+    <string name="about_title_donate">Donate</string>
+    <string name="about_title_sponsors">Sponsors</string>
+    <string name="about_summary_donate">Show your appreciation! ❤️</string>
+    <string name="about_description_donate">Thank you for considering to support this app! To see current donations and to donate yourself, tap on the respective platform:</string>
+
+    <string name="quest_recycling_materials_answer_waste">It\'s for general waste</string>
+    <string name="quest_recycling_materials_answer_waste_description">So, this is a container for any waste, such as bagged up household or commercial waste?</string>
+
+    <string name="quest_accepts_cash_title">"Does %s accept cash payment?"</string>
+    <string name="user_quests_title">Solved Quests</string>
+    <string name="user_achievements_title">Achievements</string>
+    <string name="user_links_title">Link Collection</string>
+    <string name="user_profile_title">Profile</string>
+
+    <string name="user_statistics_quest_wiki_link">Documentation</string>
+
+    <string name="achievements_unlocked_link">Unlocked link:</string>
+    <string name="achievements_unlocked_links">Unlocked links:</string>
+
+    <string name="link_category_intro_title">Introduction</string>
+    <string name="link_category_intro_description">Learning more about OSM and its community</string>
+    <string name="link_category_editors_title">Contributing</string>
+    <string name="link_category_editors_description">Editors and other ways to contribute to OpenStreetMap</string>
+    <string name="link_category_maps_title">Maps</string>
+    <string name="link_category_maps_description">OpenStreetMap-based maps</string>
+    <string name="link_category_showcase_title">Showcase</string>
+    <string name="link_category_showcase_description">OpenStreetMap-based services and apps</string>
+    <string name="link_category_goodies_title">Goodies</string>
+    <string name="link_category_goodies_description">Interesting map-related stuff for you to try out</string>
+
+    <string name="link_cyclosm_description">A map for cyclists</string>
+    <string name="link_wheelmap_description">A map for finding wheelchair accessible places</string>
+    <string name="link_osm_buildings_description">A map that shows the buildings in 3D</string>
+    <string name="link_openvegemap_description">Discover vegetarian and vegan restaurants in your city</string>
+    <string name="link_touch_mapper_description">Create tactile maps easily for any address</string>
+    <string name="link_mapy_tactile_description">Tactile maps for the visually impaired in various scales</string>
+    <string name="link_josm_description">Fully-featured OSM editor for the desktop. This is the power tool for regular contributors.</string>
+    <string name="link_vespucci_description">Advanced OSM editor for Android</string>
+    <string name="link_ideditor_description">Simple OSM editor for the browser. Optimized for the desktop or large tablets</string>
+    <string name="link_umap_description">Create maps with custom data quickly and embed them in your site</string>
+    <string name="link_opnvkarte_description">A map of public transport routes and stops</string>
+    <string name="link_pic4review_description">Contribute to OSM simply by looking at pictures of your city</string>
+    <string name="link_wiki_description">The wiki is your starting point to everything related OpenStreetMap</string>
+    <string name="link_learnosm_description">New to OpenStreetMap? This is a beginner\'s guide</string>
+    <string name="link_neis_one_description">A huge collection of statistics for OpenStreetMap contributors, like where and how you contributed, who else is around you plus leaderboards</string>
+    <string name="link_welcome_mat_description">General information about OpenStreetMap and how to work with OSM as an organization</string>
+    <string name="link_mapillary_description">A service and app for sharing crowdsourced street-level photos, with explicit permission to use them for contributing to OSM</string>
+    <string name="link_openstreetcam_description">A service and app for sharing crowdsourced street-level photos, with explicit permission to use them for contributing to OSM</string>
+    <string name="link_openrouteservice_wheelchair_description">Turn by turn navigation for wheelchair users</string>
+    <string name="link_nominatim_description">The geocoder for OSM data, used by many other services</string>
+    <string name="link_photon_description">A standalone extension to Nominatim, featuring fuzzy search and search-as-you-type</string>
+    <string name="link_city_roads_description">Render all roads of a city, for printing on T-Shirts, mugs, …</string>
+    <string name="link_myosmatic_description">"Generate printable city maps in a few easy steps, optionally with a street directory"</string>
+    <string name="link_brouter_description">Probably the best routing engine for cyclists</string>
+    <string name="link_show_me_the_way_description">Watch OSM edits happen in real time</string>
+    <string name="link_osrm_description">The fastest routing engine around</string>
+    <string name="link_graphhopper_description">A flexible routing engine</string>
+    <string name="link_openrouteservice_description">Routing for a variety of vehicles and on foot, each with preferences. Can also show isochrones (reachable area in X minutes from a starting point).</string>
+    <string name="link_osm_haiku_description">Using OSM data to generate a haiku (a form of Japanese poetry)</string>
+    <string name="link_openinframap_description">A map showing power, telecoms, gas, and oil infrastructure</string>
+    <string name="link_openorienteeringmap_description">Create printable maps for the orienteering sport</string>
+    <string name="link_openstreetbrowser_description">A map to browse OpenStreetMap map features by category</string>
+    <string name="link_qwant_maps_description">A map with searchable places and directions</string>
+    <string name="link_weeklyosm_description">The weekly news blog about what\'s happening in the OpenStreetMap world</string>
+    <string name="link_figuregrounder_description">Create figure-ground diagram posters of a city or neighbourhood</string>
+
+    <string name="achievement_first_edit_title">First Quest Solved</string>
+    <string name="achievement_first_edit_description">Welcome to the OpenStreetMap community! In your profile screen, you can see more info for each quest type you solved.</string>
+    <string name="achievement_surveyor_title">Surveyor</string>
+    <string name="achievement_surveyor_solved_X">You solved %d quests! Keep going to unlock more achievements that contain links to OSM and other map-related apps and projects!</string>
+    <string name="achievement_regular_title">Regular</string>
+    <string name="achievement_regular_description">You contributed %d days to OSM with this app! Regular contributors are the backbone of OSM, thanks for your dedication! ❤</string>
+    <string name="achievement_bicyclist_title">Cyclist</string>
+    <string name="achievement_bicyclist_solved_X">You solved %d quests that help cyclists!</string>
+    <string name="achievement_wheelchair_title">Mobility</string>
+    <string name="achievement_wheelchair_solved_X">You solved %d quests that help wheelchair users get around town!</string>
+    <string name="achievement_postman_title">Postman</string>
+    <string name="achievement_postman_solved_X">You helped to locate %d addresses!\nThis data is essential not only for the postman but also for any navigation system.</string>
+    <string name="achievement_building_title">High-Rise</string>
+    <string name="achievement_building_solved_X">You solved %d building related quests.\nNote that this app asks for the housenumber of a building only after its type has been determined.</string>
+    <string name="achievement_blind_title">Sixth Sense</string>
+    <string name="achievement_blind_solved_X">You solved %d quests that are interesting for visually impaired.</string>
+    <string name="achievement_pedestrian_title">Runner</string>
+    <string name="achievement_pedestrian_solved_X">You solved %d quests that are interesting for people on foot!</string>
+    <string name="achievement_veg_title">Kind to Animals</string>
+    <string name="achievement_veg_solved_X">You solved %d quests that are interesting for people living on a no-meat diet!</string>
+    <string name="achievement_car_title">On the Road</string>
+    <string name="achievement_car_solved_X">You solved %d quests that improve detail on the street infrastructure, putting the "street" in OpenStreetMap!</string>
+
+    <string name="user_statistics_country_rank">Rank in %2$s: %1$d</string>
+    <string name="user_statistics_country_wiki_link">Mapping Portal %s</string>
+
+    <string name="unread_messages_message">You have %d unread messages in your inbox</string>
+    <string name="unread_messages_button">Open Inbox</string>
+    <string name="user_statistics_filter_by_country">by country</string>
+    <string name="user_statistics_filter_by_quest_type">by quest type</string>
+
+    <string name="user_profile_global_rank">Global\nrank</string>
+    <string name="user_profile_local_rank">Rank in\n%s</string>
+    <string name="user_profile_days_active">Days\nactive</string>
+    <string name="user_profile_achievement_levels">Achievement\nlevels</string>
 </resources>

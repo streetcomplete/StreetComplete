@@ -12,9 +12,6 @@
         "highway/elevator": {
             "name": "Ashensor"
         },
-        "tourism": {
-            "name": "Turizëm"
-        },
         "place/city": {
             "name": "Qytet"
         },
@@ -35,12 +32,6 @@
         },
         "power/transformer": {
             "name": "Transformator"
-        },
-        "railway": {
-            "name": "Hekurudhë"
-        },
-        "highway": {
-            "name": "Hekurudhë"
         },
         "tourism/information/map": {
             "name": "Hartë"
