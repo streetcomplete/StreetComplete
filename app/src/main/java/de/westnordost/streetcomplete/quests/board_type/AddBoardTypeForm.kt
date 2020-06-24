@@ -1,24 +1,33 @@
 package de.westnordost.streetcomplete.quests.board_type
 
+import android.os.Bundle
+import android.view.View
+
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AGroupedImageListQuestAnswerFragment
-import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
-import de.westnordost.streetcomplete.view.Item
+import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
+import kotlinx.android.synthetic.main.quest_parking_access.*
 
-class AddBoardTypeForm : AImageListQuestAnswerFragment<String, String>() {
-    override val items: List<Item<String>> = listOf(
-        Item("history", R.drawable.bicycle_parking_type_stand, R.string.quest_board_type_history),
-        Item("geology", R.drawable.bicycle_parking_type_stand, R.string.quest_board_type_geology),
-        Item("plants", R.drawable.bicycle_parking_type_stand, R.string.quest_board_type_plants),
-        Item("wildlife", R.drawable.bicycle_parking_type_stand, R.string.quest_board_type_wildlife),
-        Item("nature", R.drawable.bicycle_parking_type_stand, R.string.quest_board_type_nature),
-        Item("public_transport", R.drawable.bicycle_parking_type_stand, R.string.quest_board_type_public_transport),
-        Item("notice", R.drawable.bicycle_parking_type_stand, R.string.quest_board_type_notice_board)
-    )
+class AddBoardTypeForm : AbstractQuestFormAnswerFragment<String>() {
 
-    //override val itemsPerRow = 3
+    override val contentLayoutResId = R.layout.quest_board_type
 
-    override fun onClickOk(selectedItems: List<String>) {
-        applyAnswer(selectedItems.single())
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        radioButtonGroup.setOnCheckedChangeListener { _, _ -> checkIsFormComplete() }
     }
+
+    override fun onClickOk() {
+        applyAnswer(when (radioButtonGroup.checkedRadioButtonId) {
+            R.id.history            -> "history"
+            R.id.geology      -> "geology"
+            R.id.plants -> "plants"
+            R.id.wildlife -> "wildlife"
+            R.id.nature -> "nature"
+            R.id.public_transport -> "public_transport"
+            R.id.notice -> "public_transport"
+            else -> throw NullPointerException()
+        })
+    }
+
+    override fun isFormComplete() = radioButtonGroup.checkedRadioButtonId != -1
 }

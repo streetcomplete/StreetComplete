@@ -9,7 +9,7 @@ class AddBoardType(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<S
 
     override val tagFilters = "nodes with information=board and access !~ private|no and !board_type"
     override val commitMessage = "Add board type"
-    override val icon = R.drawable.ic_quest_apple
+    override val icon = R.drawable.ic_quest_information // TODO: reusing icon - is it OK? Or maybe I should change at least colors? Or maybe @westnordost would make an icon even for such quest?
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_board_type_title
 
