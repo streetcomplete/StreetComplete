@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.surface
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.ALL_ROADS
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
@@ -57,10 +58,10 @@ class DetailRoadSurface(private val overpassMapDataApi: OverpassMapDataAndGeomet
         """.trimIndent() + "\n" +
         getQuestPrintStatement()
 
-    private val HIGHWAY_TAG_MATCH = ROADS_WITH_SURFACES_BROADLY_DEFINED.joinToString("|")
+    private val HIGHWAY_TAG_MATCH = ALL_ROADS.joinToString("|")
     private val UNDETAILED_SURFACE_TAG_MATCH = "paved|unpaved"
     private val REQUIRED_MINIMAL_MATCH_TFE by lazy { FiltersParser().parse(
-            "ways with surface ~ ${UNDETAILED_SURFACE_TAG_MATCH} and segregated!=yes and highway ~ ${HIGHWAY_TAG_MATCH} and (access !~ private|no or (foot and foot !~ private|no))"
+            "ways with surface ~ ${UNDETAILED_SURFACE_TAG_MATCH} and segregated!=yes and highway ~ $HIGHWAY_TAG_MATCH and (access !~ private|no or (foot and foot !~ private|no))"
     )}
 
     override val isSplitWayEnabled = true
@@ -74,17 +75,5 @@ class DetailRoadSurface(private val overpassMapDataApi: OverpassMapDataAndGeomet
                 changes.add("surface:note", answer.value)
             }
         }
-    }
-
-    companion object {
-        // well, all roads have surfaces, what I mean is that not all ways with highway key are
-        // "something with a surface"
-        // see https://github.com/westnordost/StreetComplete/pull/327#discussion_r121937808
-        private val ROADS_WITH_SURFACES_BROADLY_DEFINED = arrayOf(
-                "trunk","trunk_link","motorway","motorway_link",
-                "primary", "primary_link", "secondary", "secondary_link", "tertiary", "tertiary_link",
-                "unclassified", "residential", "living_street", "pedestrian", "track", "road",
-                "service"
-        )
     }
 }
