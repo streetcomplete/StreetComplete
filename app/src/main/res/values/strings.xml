@@ -853,9 +853,9 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="ic_quest_surface_detailed_answer_impossible">Multiple surfaces at once…</string>
     <string name="ic_quest_surface_detailed_answer_impossible_confirmation">Are you sure that it is impossible to specify the surface? Note the \"Differs along the way\" answer option that allows to handle different surface sections. Please use \"Can\'t say\" if there is a single surface but it is not available as an answer.</string>
     <string name="ic_quest_surface_detailed_answer_impossible_description">Why specifying single surface is impossible? Text length is limited to 255 characters.</string>
-    <string name="ic_quest_surface_detailed_name_title">"What surface does the road %s have here? Please, select specific one."</string>
-    <string name="ic_quest_surface_detailed_square_name_title">"What surface does the road %s have here? Please, select specific one."</string>
-    <string name="ic_quest_surface_detailed_title">"What surface does this piece of road have? Please, select specific one."</string>
-    <string name="ic_quest_surface_detailed_square_title">"What surface does the square %s have here? Please, select specific one."</string>
+    <string name="quest_surface_detailed_name_title">"What surface does the road %s have here? Please, select specific one."</string>
+    <string name="quest_surface_detailed_square_name_title">"What surface does the road %s have here? Please, select specific one."</string>
+    <string name="quest_surface_detailed_title">"What surface does this piece of road have? Please, select specific one."</string>
+    <string name="quest_surface_detailed_square_title">"What surface does the square %s have here? Please, select specific one."</string>
     <string name="quest_generic_cancel">Cancel</string>
 </resources>

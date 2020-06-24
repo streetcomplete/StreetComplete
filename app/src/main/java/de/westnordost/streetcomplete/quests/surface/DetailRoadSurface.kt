@@ -23,14 +23,14 @@ class DetailRoadSurface(private val overpassMapDataApi: OverpassMapDataAndGeomet
 
         return if (hasName) {
             if (isSquare)
-                R.string.ic_quest_surface_detailed_square_name_title
+                R.string.quest_surface_detailed_square_name_title
             else
-                R.string.ic_quest_surface_detailed_name_title
+                R.string.quest_surface_detailed_name_title
         } else {
             if (isSquare)
-                R.string.ic_quest_surface_detailed_square_title
+                R.string.quest_surface_detailed_square_title
             else
-                R.string.ic_quest_surface_detailed_title
+                R.string.quest_surface_detailed_title
         }
     }
 
