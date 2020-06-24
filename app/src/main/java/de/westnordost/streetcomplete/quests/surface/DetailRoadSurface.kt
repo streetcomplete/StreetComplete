@@ -47,12 +47,12 @@ class DetailRoadSurface(private val overpassMapDataApi: OverpassMapDataAndGeomet
     private fun getOverpassQuery(bbox: BoundingBox) =
         bbox.toGlobalOverpassBBox() + "\n" + """
 
-          way[surface~"^(${UNDETAILED_SURFACE_TAG_MATCH})${'$'}"][segregated!="yes"][highway ~ "^${ HIGHWAY_TAG_MATCH }${'$'}"] -> .surface_without_detail;
+          way[surface~"^($UNDETAILED_SURFACE_TAG_MATCH)$"][segregated!="yes"][highway ~ "^$HIGHWAY_TAG_MATCH$"] -> .surface_without_detail;
           // https://taginfo.openstreetmap.org//search?q=%3Asurface
           // https://taginfo.openstreetmap.org//search?q=surface:
-          way[surface~"^(${UNDETAILED_SURFACE_TAG_MATCH})${'$'}"][~"(:surface|surface:)" ~ "."] -> .extra_tags;
-          way.surface_without_detail[surface ~ "^(${UNDETAILED_SURFACE_TAG_MATCH})${'$'}"][access !~ "^(private|no)${'$'}"] -> .not_private;
-          way.surface_without_detail[surface ~ "^(${UNDETAILED_SURFACE_TAG_MATCH})${'$'}"][foot][foot !~ "^(private|no)${'$'}"] -> .foot_access;
+          way[surface~"^($UNDETAILED_SURFACE_TAG_MATCH)$"][~"(:surface|surface:)" ~ "."] -> .extra_tags;
+          way.surface_without_detail[access !~ "^(private|no)$"] -> .not_private;
+          way.surface_without_detail[foot][foot !~ "^(private|no)$"] -> .foot_access;
           ((.not_private; .foot_access;); - .extra_tags;);
         """.trimIndent() + "\n" +
         getQuestPrintStatement()
