@@ -182,18 +182,21 @@ class QuestPinLayerManager @Inject constructor(
     }
 
     private fun getQuestDrawOrder(quest: Quest): Int {
-        /* priority is decided by
+        /* order is decided by
+           - minimalValue - minimum to ensure that quest labels will be placed in
+             preference to street labels etc
            - primarily by quest type to allow quest prioritization
            - for quests of the same type - influenced by quest id,
              this is done to reduce chance that as user zoom in a quest disappears,
              especially in case where disappearing quest is one that user selected to solve
              main priority part - values fit into Integer, but with as large steps as possible */
+        val minimalValue = 99999;
         val questTypeOrder = questTypeOrders[quest.type] ?: 0
-        val freeValuesForEachQuest = Int.MAX_VALUE / questTypeOrders.size
+        val freeValuesForEachQuest = (Int.MAX_VALUE - minimalValue) / questTypeOrders.size
         /* quest ID is used to add values unique to each quest to make ordering consistent
            freeValuesForEachQuest is an int, so % freeValuesForEachQuest will fit into int */
         val hopefullyUniqueValueForQuest = (quest.id!! % freeValuesForEachQuest).toInt()
-        return questTypeOrder * freeValuesForEachQuest + hopefullyUniqueValueForQuest
+        return minimalValue + questTypeOrder * freeValuesForEachQuest + hopefullyUniqueValueForQuest
     }
 
     companion object {
