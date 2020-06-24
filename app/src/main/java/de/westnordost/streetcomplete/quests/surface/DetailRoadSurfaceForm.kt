@@ -8,25 +8,27 @@ import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AGroupedImageListQuestAnswerFragment
+import de.westnordost.streetcomplete.quests.AImageListQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.util.TextChangedWatcher
 import de.westnordost.streetcomplete.view.Item
 import de.westnordost.streetcomplete.quests.surface.Surface.*
 
-class DetailRoadSurfaceForm  : AGroupedImageListQuestAnswerFragment<String, DetailSurfaceAnswer>() {
+class DetailRoadSurfaceForm  : AImageListQuestAnswerFragment<String, DetailSurfaceAnswer>() {
 
-    override val topItems get() =
-        if (osmElement!!.tags["surface"] == "paved")
-            listOf(ASPHALT, CONCRETE, SETT, PAVING_STONES, WOOD, GRASS_PAVER).toItems()
+    override val items: List<Item<String>>
+        get() = if (osmElement!!.tags["surface"] == "paved")
+            (pavedSurfaces() + unpavedSurfaces() + groundSurfaces()).toItems()
         else
-            listOf(DIRT, GRASS, PEBBLES, FINE_GRAVEL, SAND, COMPACTED).toItems()
+            (unpavedSurfaces() + groundSurfaces() + pavedSurfaces()).toItems()
 
-    // note that for unspecific groups null is used as a value, it makes them unselecteable
-    override val allItems = listOf(
-            Item(null, R.drawable.panorama_surface_paved, R.string.quest_surface_value_paved, null, pavedSurfaces().toItems()),
-            Item(null, R.drawable.panorama_surface_unpaved, R.string.quest_surface_value_unpaved, null, unpavedSurfaces().toItems()),
-            Item(null, R.drawable.panorama_surface_ground, R.string.quest_surface_value_ground, null, groundSurfaces().toItems())
-    )
+    override val itemsPerRow = 3
+
+    override fun onClickOk(selectedItems: List<String>) {
+        // must not happen in isInExplanationMode
+        // must contain exactly 1 item (maxSelectableItems is set to 1 and isFormComplete requires selection)
+        applyAnswer(SurfaceAnswer(selectedItems[0]))
+    }
 
     private var isInExplanationMode = false;
     private var explanationInput: EditText? = null
@@ -61,11 +63,6 @@ class DetailRoadSurfaceForm  : AGroupedImageListQuestAnswerFragment<String, Deta
         } else {
             super.onClickOk();
         }
-    }
-
-    override fun onClickOk(value: String) {
-        // must not happen in isInExplanationMode
-        applyAnswer(SurfaceAnswer(value))
     }
 
     private fun confirmSwitchToNoDetailedTagPossible() {
