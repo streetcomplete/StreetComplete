@@ -41,7 +41,7 @@ class DetailRoadSurface(private val overpassMapDataApi: OverpassMapDataAndGeomet
     }
 
     override fun isApplicableTo(element: Element) =
-        REQUIRED_MINIMAL_MATCH_TFE.matches(element) && 
+        REQUIRED_MINIMAL_MATCH_TFE.matches(element) &&
         element.tags.keys.none { it.contains("surface:") || it.contains(":surface") }
 
     private fun getOverpassQuery(bbox: BoundingBox) =
