@@ -41,27 +41,22 @@ class DetailRoadSurface(private val overpassMapDataApi: OverpassMapDataAndGeomet
         return overpassMapDataApi.query(getOverpassQuery(bbox), handler)
     }
 
-    override fun isApplicableTo(element: Element) =
-        REQUIRED_MINIMAL_MATCH_TFE.matches(element) &&
-        element.tags.keys.none { it.contains("surface:") || it.contains(":surface") }
+    override fun isApplicableTo(element: Element) = REQUIRED_MATCH_TFE.matches(element)
 
     private fun getOverpassQuery(bbox: BoundingBox) =
         bbox.toGlobalOverpassBBox() + "\n" + """
 
-          way[surface~"^($UNDETAILED_SURFACE_TAG_MATCH)$"][segregated!="yes"][highway ~ "^$HIGHWAY_TAG_MATCH$"] -> .surface_without_detail;
-          // https://taginfo.openstreetmap.org//search?q=%3Asurface
-          // https://taginfo.openstreetmap.org//search?q=surface:
-          way[surface~"^($UNDETAILED_SURFACE_TAG_MATCH)$"][~"(:surface|surface:)" ~ "."] -> .extra_tags;
+          way[surface ~ "^($UNDETAILED_SURFACE_TAG_MATCH)$"][segregated != "yes"]["surface:note" !~ ".*"][highway ~ "^$HIGHWAY_TAG_MATCH$"] -> .surface_without_detail;
           way.surface_without_detail[access !~ "^(private|no)$"] -> .not_private;
           way.surface_without_detail[foot][foot !~ "^(private|no)$"] -> .foot_access;
-          ((.not_private; .foot_access;); - .extra_tags;);
+          (.not_private; .foot_access;);
         """.trimIndent() + "\n" +
         getQuestPrintStatement()
 
     private val HIGHWAY_TAG_MATCH = ALL_ROADS.joinToString("|")
     private val UNDETAILED_SURFACE_TAG_MATCH = "paved|unpaved"
-    private val REQUIRED_MINIMAL_MATCH_TFE by lazy { FiltersParser().parse(
-            "ways with surface ~ ${UNDETAILED_SURFACE_TAG_MATCH} and segregated!=yes and highway ~ $HIGHWAY_TAG_MATCH and (access !~ private|no or (foot and foot !~ private|no))"
+    private val REQUIRED_MATCH_TFE by lazy { FiltersParser().parse(
+            "ways with surface ~ ${UNDETAILED_SURFACE_TAG_MATCH} and !surface:note and segregated!=yes and highway ~ $HIGHWAY_TAG_MATCH and (access !~ private|no or (foot and foot !~ private|no))"
     )}
 
     override val isSplitWayEnabled = true
@@ -70,6 +65,7 @@ class DetailRoadSurface(private val overpassMapDataApi: OverpassMapDataAndGeomet
         when(answer) {
             is SurfaceAnswer -> {
                 changes.modify("surface", answer.value)
+                changes.deleteIfExists("source:surface")
             }
             is DetailingImpossibleAnswer -> {
                 changes.add("surface:note", answer.value)
