@@ -11,28 +11,29 @@ import de.westnordost.streetcomplete.quests.AGroupedImageListQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.util.TextChangedWatcher
 import de.westnordost.streetcomplete.view.Item
+import de.westnordost.streetcomplete.quests.surface.Surface.*
 
 class DetailRoadSurfaceForm  : AGroupedImageListQuestAnswerFragment<String, DetailSurfaceAnswer>() {
 
     override val topItems get() =
         if (osmElement!!.tags["surface"] == "paved")
-            listOf(Surface.ASPHALT, Surface.CONCRETE, Surface.SETT, Surface.PAVING_STONES, Surface.WOOD, Surface.GRASS_PAVER).toItems()
+            listOf(ASPHALT, CONCRETE, SETT, PAVING_STONES, WOOD, GRASS_PAVER).toItems()
         else
-            listOf(Surface.DIRT, Surface.GRASS, Surface.PEBBLES, Surface.FINE_GRAVEL, Surface.SAND, Surface.COMPACTED).toItems()
+            listOf(DIRT, GRASS, PEBBLES, FINE_GRAVEL, SAND, COMPACTED).toItems()
 
     // note that for unspecific groups null is used as a value, it makes them unselecteable
     override val allItems = listOf(
             Item(null, R.drawable.panorama_surface_paved, R.string.quest_surface_value_paved, null, listOf(
-                    Surface.ASPHALT, Surface.CONCRETE, Surface.PAVING_STONES,
-                    Surface.SETT, Surface.UNHEWN_COBBLESTONE, Surface.GRASS_PAVER,
-                    Surface.WOOD, Surface.METAL
+                    ASPHALT, CONCRETE, PAVING_STONES,
+                    SETT, UNHEWN_COBBLESTONE, GRASS_PAVER,
+                    WOOD, METAL
             ).toItems()),
             Item(null, R.drawable.panorama_surface_unpaved, R.string.quest_surface_value_unpaved, null, listOf(
-                    Surface.COMPACTED, Surface.FINE_GRAVEL, Surface.GRAVEL,
-                    Surface.PEBBLES
+                    COMPACTED, FINE_GRAVEL, GRAVEL,
+                    PEBBLES
             ).toItems()),
             Item(null, R.drawable.panorama_surface_ground, R.string.quest_surface_value_ground, null, listOf(
-                    Surface.DIRT, Surface.GRASS, Surface.SAND
+                    DIRT, GRASS, SAND
             ).toItems())
     )
 
