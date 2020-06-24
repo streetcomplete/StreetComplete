@@ -13,7 +13,7 @@ import de.westnordost.streetcomplete.data.tagfilters.toGlobalOverpassBBox
 
 
 class DetailRoadSurface(private val overpassMapDataApi: OverpassMapDataAndGeometryApi) : OsmElementQuestType<DetailSurfaceAnswer> {
-    override val commitMessage = "More detailed surfaces"
+    override val commitMessage = "More detailed road surfaces"
     override val wikiLink = "Key:surface"
     override val icon = R.drawable.ic_quest_street_surface_detail
 
