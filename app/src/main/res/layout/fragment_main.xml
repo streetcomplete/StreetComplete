@@ -81,6 +81,7 @@
                 android:layout_alignParentTop="true"
                 android:text="@string/compass_north_one_letter"
                 android:textColor="#000"
+                android:textSize="12dp"
             />
 
             <ImageView
