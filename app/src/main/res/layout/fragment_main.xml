@@ -63,6 +63,7 @@
             android:layout_toLeftOf="@id/upload_button_fragment"
             />
 
+        <!-- note the other compass in quest_street_side_puzzle -->
         <RelativeLayout
             android:id="@+id/compassView"
             android:layout_width="@dimen/map_button_size"
