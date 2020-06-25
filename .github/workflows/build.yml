@@ -28,13 +28,8 @@ jobs:
     - name: Build Android
       run: |
         ./gradlew lint
-    - name: Upload lint report HTML
+    - name: Upload lint reports
       uses: actions/upload-artifact@v2
       with:
-        name: lint-report-html
-        path: app/build/reports/lint-results.html
-    - name: Upload lint report XML
-      uses: actions/upload-artifact@v2
-      with:
-        name: lint-report-xml
-        path: app/build/reports/lint-results.xml
+        name: lint-report
+        path: app/build/reports/
