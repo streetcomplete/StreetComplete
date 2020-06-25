@@ -28,7 +28,8 @@ jobs:
     - name: Build Android
       run: |
         ./gradlew lint
-    - uses: actions/upload-artifact@v2
+    - name: Upload lint reports
+      uses: actions/upload-artifact@v2
       with:
         name: lint-report
         path: app/build/reports/
