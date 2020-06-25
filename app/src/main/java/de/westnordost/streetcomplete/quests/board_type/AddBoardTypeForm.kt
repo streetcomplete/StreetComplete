@@ -18,13 +18,13 @@ class AddBoardTypeForm : AbstractQuestFormAnswerFragment<String>() {
 
     override fun onClickOk() {
         applyAnswer(when (radioButtonGroup.checkedRadioButtonId) {
-            R.id.history            -> "history"
-            R.id.geology      -> "geology"
+            R.id.history -> "history"
+            R.id.geology -> "geology"
             R.id.plants -> "plants"
             R.id.wildlife -> "wildlife"
             R.id.nature -> "nature"
             R.id.public_transport -> "public_transport"
-            R.id.notice -> "public_transport"
+            R.id.notice -> "notice"
             else -> throw NullPointerException()
         })
     }
