@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:parentTag="android.widget.FrameLayout">
 
     <RelativeLayout
         android:id="@+id/rotateContainer"
@@ -19,7 +20,7 @@
             android:layout_centerHorizontal="true"/>
 
         <RelativeLayout
-            android:id="@+id/leftSide"
+            android:id="@+id/leftSideContainer"
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true"
             android:focusable="true"
@@ -42,7 +43,7 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/rightSide"
+            android:id="@+id/rightSideContainer"
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true"
             android:focusable="true"

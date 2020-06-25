@@ -18,9 +18,9 @@
             android:layout_alignEnd="@+id/deleteButton"
             style="@style/TimesField"/>
 
-        <TextView
+        <ImageView
             android:id="@+id/deleteButton"
-            android:text="❌"
+            android:src="@drawable/ic_close_24dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"

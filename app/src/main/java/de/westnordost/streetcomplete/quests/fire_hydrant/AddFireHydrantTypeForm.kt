@@ -14,7 +14,6 @@ class AddFireHydrantTypeForm : AImageListQuestAnswerFragment<String, String>() {
     )
 
     override val itemsPerRow = 2
-    override val maxNumberOfInitiallyShownItems = 2
 
     override fun onClickOk(selectedItems: List<String>) {
         applyAnswer(selectedItems.single())

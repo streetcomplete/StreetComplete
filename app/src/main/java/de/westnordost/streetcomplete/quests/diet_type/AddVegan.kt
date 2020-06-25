@@ -1,17 +1,22 @@
 package de.westnordost.streetcomplete.quests.diet_type
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 
-class AddVegan(o: OverpassMapDataDao) : SimpleOverpassQuestType<String>(o) {
+class AddVegan(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<String>(o) {
 
     override val tagFilters = """
-        nodes, ways with amenity ~ restaurant|cafe|fast_food
-        and name and diet:vegetarian ~ yes|only and !diet:vegan
+        nodes, ways with 
+        (
+          amenity ~ restaurant|cafe|fast_food and diet:vegetarian ~ yes|only 
+          or amenity = ice_cream
+        )
+        and name and !diet:vegan
     """
     override val commitMessage = "Add vegan diet type"
+    override val wikiLink = "Key:diet"
     override val icon = R.drawable.ic_quest_restaurant_vegan
     override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
 

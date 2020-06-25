@@ -16,6 +16,8 @@ class AddTracktypeForm : AImageListQuestAnswerFragment<String, String>() {
 
     override val itemsPerRow = 3
 
+    override val moveFavoritesToFront = false
+
     override fun onClickOk(selectedItems: List<String>) {
         applyAnswer(selectedItems.single())
     }

@@ -3,7 +3,8 @@
 
     <Preference
         android:key="version"
-        android:title="@string/about_title_version"/>
+        android:title="@string/about_title_changelog"
+        android:widgetLayout="@layout/widget_image_next"/>
 
     <Preference
         android:key="authors"
@@ -12,10 +13,10 @@
         android:widgetLayout="@layout/widget_image_next"/>
 
     <Preference
-        android:key="privacy"
-        android:title="@string/about_title_privacy_statement"
-        android:summary="@string/about_summary_privacy_statement"
-        android:widgetLayout="@layout/widget_image_next"/>
+        android:key="donate"
+        android:title="@string/about_title_donate"
+        android:summary="@string/about_summary_donate"
+        />
 
     <Preference
         android:key="license"
@@ -29,9 +30,22 @@
         android:summary="@string/about_summary_repository"
         android:widgetLayout="@layout/widget_image_open_in_browser"/>
 
+    <Preference
+        android:key="privacy"
+        android:title="@string/about_title_privacy_statement"
+        android:summary="@string/about_summary_privacy_statement"
+        android:widgetLayout="@layout/widget_image_next"/>
+
     <PreferenceCategory
         android:key="feedback"
         android:title="@string/about_category_feedback">
+
+        <Preference
+            android:key="rate"
+            android:title="@string/about_title_rate"
+            android:summary="@string/about_summary_rate"
+            android:widgetLayout="@layout/widget_image_open_in_browser"
+            />
 
         <Preference
             android:key="report_error"
@@ -47,4 +61,5 @@
             />
 
     </PreferenceCategory>
+
 </PreferenceScreen>

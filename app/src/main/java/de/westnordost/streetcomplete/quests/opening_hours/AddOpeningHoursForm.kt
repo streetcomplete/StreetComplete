@@ -43,7 +43,7 @@ class AddOpeningHoursForm : AbstractQuestFormAnswerFragment<OpeningHoursAnswer>(
     @Inject internal lateinit var serializer: Serializer
 
     init {
-        Injector.instance.applicationComponent.inject(this)
+        Injector.applicationComponent.inject(this)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,7 +52,7 @@ class AddOpeningHoursForm : AbstractQuestFormAnswerFragment<OpeningHoursAnswer>(
         val isAlsoAddingMonths = savedInstanceState?.getBoolean(IS_ADD_MONTHS_MODE) == true
         val viewData = loadOpeningHoursData(savedInstanceState)
 
-        openingHoursAdapter = AddOpeningHoursAdapter(viewData, activity!!, countryInfo)
+        openingHoursAdapter = AddOpeningHoursAdapter(viewData, requireContext(), countryInfo)
         openingHoursAdapter.isDisplayMonths = isAlsoAddingMonths
         openingHoursAdapter.registerAdapterDataObserver(AdapterDataChangedWatcher { checkIsFormComplete() })
     }
@@ -116,7 +116,7 @@ class AddOpeningHoursForm : AbstractQuestFormAnswerFragment<OpeningHoursAnswer>(
                 if (txt.isEmpty()) {
                     AlertDialog.Builder(context!!)
                         .setMessage(R.string.quest_openingHours_emptyAnswer)
-                        .setPositiveButton(R.string.ok, null)
+                        .setPositiveButton(android.R.string.ok, null)
                         .show()
                 } else {
                     applyAnswer(DescribeOpeningHours(txt))

@@ -1,7 +1,8 @@
 # Do not edit. Source files are in /res/country_metadata
 isLeftHandTraffic: true
-measurementSystem: [imperial, metric]
+lengthUnits: [foot and inch, meter]
 mobileCountryCode: 344
 officialLanguages: [en]
 orchardProduces: [guava, mango, mangosteen, tomato, pineapple, lemon, lime, banana, chilli_pepper,
   sweet_pepper]
+speedUnits: [miles per hour, kilometers per hour]

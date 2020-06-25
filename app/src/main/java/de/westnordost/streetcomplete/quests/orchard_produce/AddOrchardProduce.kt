@@ -1,24 +1,29 @@
 package de.westnordost.streetcomplete.quests.orchard_produce
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 
-class AddOrchardProduce(o: OverpassMapDataDao) : SimpleOverpassQuestType<String>(o) {
+class AddOrchardProduce(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<List<String>>(o) {
 
-    override val tagFilters = "ways, relations with landuse = orchard and !trees and !produce and !crop"
+    override val tagFilters = """
+        ways, relations with landuse = orchard
+        and !trees and !produce and !crop
+        and orchard != meadow_orchard
+    """
     override val commitMessage = "Add orchard produces"
+    override val wikiLink = "Tag:landuse=orchard"
     override val icon = R.drawable.ic_quest_apple
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_orchard_produce_title
 
     override fun createForm() = AddOrchardProduceForm()
 
-    override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {
-        changes.add("produce", answer)
+    override fun applyAnswerTo(answer: List<String>, changes: StringMapChangesBuilder) {
+        changes.add("produce", answer.joinToString(";"))
 
-        when(answer) {
+        when(answer.singleOrNull()) {
             "grape" -> changes.modify("landuse", "vineyard")
             "sisal" -> changes.modify("landuse", "farmland")
         }

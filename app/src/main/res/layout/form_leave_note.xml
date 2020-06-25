@@ -10,8 +10,14 @@
         android:id="@+id/descriptionLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:text="@string/create_new_note_description"
-        android:labelFor="@+id/noteInput"/>
+        tools:text="@string/create_new_note_description"/>
+
+    <TextView
+        android:id="@+id/hintLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/create_new_note_hint"
+        />
 
     <EditText
         android:id="@+id/noteInput"
@@ -20,7 +26,7 @@
         android:inputType="textMultiLine"
         android:gravity="top|start"
         android:minLines="3"
-        android:hint="@string/create_new_note_hint"
+
         />
 
     <FrameLayout

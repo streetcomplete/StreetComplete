@@ -1,17 +1,21 @@
 package de.westnordost.streetcomplete.quests.surface
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 
-class AddPathSurface(o: OverpassMapDataDao) : SimpleOverpassQuestType<String>(o) {
+class AddPathSurface(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<String>(o) {
 
     override val tagFilters = """
         ways with highway ~ path|footway|cycleway|bridleway|steps
-        and !surface and access !~ private|no
+        and !surface
+        and segregated != yes
+        and (!conveying or conveying = no) and (!indoor or indoor = no)
+        and access !~ private|no
     """
     override val commitMessage = "Add path surfaces"
+    override val wikiLink = "Key:surface"
     override val icon = R.drawable.ic_quest_way_surface
     override val isSplitWayEnabled = true
 

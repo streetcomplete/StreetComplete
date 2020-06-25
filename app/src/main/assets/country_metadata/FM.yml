@@ -1,5 +1,6 @@
 # Do not edit. Source files are in /res/country_metadata
-measurementSystem: [imperial, metric]
+lengthUnits: [foot and inch, meter]
 mobileCountryCode: 550
 officialLanguages: [en, chk, pon]
 orchardProduces: [coconut, banana, cacao]
+speedUnits: [miles per hour, kilometers per hour]

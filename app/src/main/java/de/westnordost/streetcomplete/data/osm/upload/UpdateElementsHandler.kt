@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.data.osm.upload
 import de.westnordost.osmapi.common.Handler
 import de.westnordost.osmapi.map.changes.DiffElement
 import de.westnordost.osmapi.map.data.*
-import de.westnordost.streetcomplete.data.osm.ElementKey
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 
 /** Reads the answer of an update map call on the OSM API. */
 class UpdateElementsHandler : Handler<DiffElement> {

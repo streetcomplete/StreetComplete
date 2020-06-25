@@ -1,16 +1,14 @@
 package de.westnordost.streetcomplete.quests
 
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.quests.bikeway.*
 import de.westnordost.streetcomplete.quests.bikeway.Cycleway.*
 import org.junit.Test
 
-import org.mockito.Mockito.mock
-
 class AddCyclewayTest {
 
-    private val questType = AddCycleway(mock(OverpassMapDataDao::class.java))
+    private val questType = AddCycleway(mock())
 
     @Test fun `apply cycleway lane answer`() {
         questType.verifyAnswer(

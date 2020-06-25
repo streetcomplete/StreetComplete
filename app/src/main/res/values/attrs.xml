@@ -13,6 +13,12 @@
         <attr name="state_enabled" format="boolean"/>
         <attr name="state_searching" format="boolean"/>
         <attr name="state_updating" format="boolean"/>
-        <attr name="compass_mode" format="boolean"/>
+    </declare-styleable>
+    <declare-styleable name="CircularMaskFrameLayout">
+        <attr name="circularity" format="float"/>
+    </declare-styleable>
+    <declare-styleable name="PointerPinView">
+        <attr name="pinRotation" format="float"/>
+        <attr name="iconSrc" format="reference"/>
     </declare-styleable>
 </resources>

@@ -1,11 +1,11 @@
 package de.westnordost.streetcomplete.quests.sport
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.SimpleOverpassQuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
+import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 
-class AddSport(o: OverpassMapDataDao) : SimpleOverpassQuestType<List<String>>(o) {
+class AddSport(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<List<String>>(o) {
 
     private val ambiguousSportValues = listOf(
         "team_handball", // -> not really ambiguous but same as handball
@@ -15,11 +15,12 @@ class AddSport(o: OverpassMapDataDao) : SimpleOverpassQuestType<List<String>>(o)
     )
 
     override val tagFilters = """
-        nodes, ways with leisure=pitch and
+        nodes, ways with leisure = pitch and
         (!sport or sport ~ ${ambiguousSportValues.joinToString("|")} )
         and (access !~ private|no)
     """
     override val commitMessage = "Add pitches sport"
+    override val wikiLink = "Key:sport"
     override val icon = R.drawable.ic_quest_sport
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_sport_title

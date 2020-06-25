@@ -37,7 +37,6 @@
         android:layout_centerHorizontal="true"
         style="@style/ImageSelectLabel"
         tools:text="@string/quest_surface_value_asphalt"
-        android:maxLines="3"
         android:padding="8dp"
         />
 

@@ -7,7 +7,7 @@ class OpeningMonths(var months: CircularSection, var weekdaysClusters: List<List
 
     private val isWholeYear: Boolean
         get() {
-            val aYear = NumberSystem(0, OpeningMonths.MAX_MONTH_INDEX)
+            val aYear = NumberSystem(0, MAX_MONTH_INDEX)
             return aYear.complemented(listOf(months)).isEmpty()
         }
 

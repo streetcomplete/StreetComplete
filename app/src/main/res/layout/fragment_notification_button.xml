@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<de.westnordost.streetcomplete.controls.NotificationButton
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/notificationButton"
+    android:layout_width="@dimen/map_button_size"
+    android:layout_height="@dimen/map_button_size"
+    style="@style/RoundWhiteButton"
+    />

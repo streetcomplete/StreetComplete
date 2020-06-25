@@ -12,7 +12,7 @@
         android:fillColor="#000"/>
     <path
         android:pathData="M21.1,6.35L25.46,6.35A2.05,2.12 0,0 1,27.52 8.47L27.52,20.11A2.05,2.12 0,0 1,25.46 22.22L21.1,22.22A2.05,2.12 0,0 1,19.05 20.11L19.05,8.47A2.05,2.12 0,0 1,21.1 6.35z"
-        android:fillColor="#888888"/>
+        android:fillColor="#888"/>
     <path
         android:pathData="M20.56,18a2.64,2.66 0,1 0,5.28 0a2.64,2.66 0,1 0,-5.28 0z"
         android:strokeColor="#555"

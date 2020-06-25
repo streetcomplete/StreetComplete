@@ -1,0 +1,14 @@
+# use app/generateCountryMetadata.py to generate files used by StreetComplete
+# the number of days in a workweek
+# Source: https://en.wikipedia.org/wiki/Workweek_and_weekend#Around_the_world (retrieved 2020-04-25)
+default: 5
+AF: 6
+DJ: 6
+GQ: 6
+HK: 6
+IN: 6
+MX: 6
+NP: 6
+PS: 6
+SO: 6
+UG: 6

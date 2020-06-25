@@ -5,10 +5,10 @@
         android:pathData="M12,100H116l0,-36 -52,-28 -52,24z"/>
     <path
         android:pathData="M8,64 L64,36 120,64"
-        android:strokeColor="#333333"
+        android:strokeColor="#333"
         android:strokeWidth="12"/>
     <path
-        android:fillColor="#aaaaaa"
+        android:fillColor="#aaa"
         android:pathData="M48,72h32v28h-32zM24,72h12v16h-12zM92,72h12v16h-12z" />
     <path
         android:fillColor="#808080"
