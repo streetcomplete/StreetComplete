@@ -9,7 +9,6 @@
     <path
         android:pathData="m12,64 l92,-24 8,20"
         android:strokeColor="#c84747"
-        android:strokeLineCap="butt"
         android:strokeWidth="12"/>
     <path
         android:fillColor="#95685e"

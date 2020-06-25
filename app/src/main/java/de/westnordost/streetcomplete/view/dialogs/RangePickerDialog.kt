@@ -6,11 +6,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.NumberPicker
+import androidx.core.view.children
 
 import de.westnordost.streetcomplete.R
 
 typealias RangePickedCallback = (startIndex: Int, endIndex: Int) -> Unit
 
+/** A dialog in which you can select a range of values  */
 class RangePickerDialog(
     context: Context,
     values: Array<String>,
@@ -54,9 +56,7 @@ class RangePickerDialog(
     }
 
     private fun ViewGroup.disableEditTextsFocus() {
-        val count = childCount
-        for (i in 0 until count) {
-            val child = getChildAt(i)
+        for (child in children) {
             if (child is ViewGroup) {
                 child.disableEditTextsFocus()
             } else if (child is EditText) {

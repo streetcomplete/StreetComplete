@@ -23,26 +23,27 @@ class RoadNameSuggestionsDaoTest : ApplicationDbTestCase() {
             "de" to "Große Straße",
             "en" to "Big Street"
         )
-        dao.putRoad(1, names, createRoadPositions())
+        dao.putRoad(1, names, listOf(OsmLatLon(0.0, 0.0), OsmLatLon(0.0, 0.0001)))
 
-        val result = dao.getNames(createPosOnRoad(), 1000.0)
+        val result = dao.getNames(listOf(OsmLatLon(0.0, 0.00005)), 1000.0)
 
         assertEquals(listOf(names), result)
     }
 
-    @Test fun getMultipleNames() {
-        val names1 = mapOf("en" to "Big Street")
-        dao.putRoad(1, names1, createRoadPositions())
+    @Test fun getMultipleNamesSortedByDistance() {
+        val middle = mapOf("en" to "Middle Street")
+        dao.putRoad(1, middle, listOf(OsmLatLon(0.0, 0.0001), OsmLatLon(0.0, 0.0002)))
 
-        val names2 = mapOf("es" to "Calle Pequena")
-        dao.putRoad(2, names2, createRoadPositions())
+        val far = mapOf("en" to "Far Street")
+        dao.putRoad(2, far, listOf(OsmLatLon(0.0, 0.0002), OsmLatLon(0.0, 0.0003)))
 
-        val result = dao.getNames(createPosOnRoad(), 1000.0)
-        assertEquals(2, result.size)
-        assertTrue(result.containsAll(listOf(names1, names2)))
+        val near = mapOf("en" to "Near Street")
+        dao.putRoad(3, near, listOf(OsmLatLon(0.0, 0.0000), OsmLatLon(0.0, 0.0001)))
+
+        val tooFar = mapOf("en" to "Too Far Street")
+        dao.putRoad(4, tooFar, listOf(OsmLatLon(10.0, 0.0002), OsmLatLon(10.0, 0.0003)))
+
+        val result = dao.getNames(listOf(OsmLatLon(0.0, 0.0)), 1000.0)
+        assertEquals(listOf(near, middle, far), result)
     }
-
-    private fun createRoadPositions() = listOf(OsmLatLon(0.0, 0.0), OsmLatLon(0.0, 0.0001))
-
-    private fun createPosOnRoad() = listOf(OsmLatLon(0.0, 0.00005))
 }

@@ -35,8 +35,6 @@ class AddRoofShapeForm : AImageListQuestAnswerFragment<String, String>() {
         Item("cone", R.drawable.ic_roof_cone)
     )
 
-    override val maxNumberOfInitiallyShownItems = 8
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         imageSelector.cellLayoutId = R.layout.cell_labeled_icon_select

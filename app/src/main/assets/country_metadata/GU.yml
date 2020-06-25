@@ -1,4 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
-measurementSystem: [imperial, metric]
+lengthUnits: [foot and inch, meter]
 officialLanguages: [en, ch]
 orchardProduces: [coconut, banana, tomato, guava, mango, mangosteen, orange]
+speedUnits: [miles per hour, kilometers per hour]

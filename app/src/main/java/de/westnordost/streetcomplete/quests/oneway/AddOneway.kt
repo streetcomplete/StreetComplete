@@ -7,19 +7,19 @@ import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.map.data.Way
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import de.westnordost.streetcomplete.data.osm.download.MapDataWithGeometryHandler
-import de.westnordost.streetcomplete.data.osm.download.OverpassMapDataDao
-import de.westnordost.streetcomplete.data.osm.tql.FiltersParser
+import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
+import de.westnordost.streetcomplete.data.tagfilters.FiltersParser
 import de.westnordost.streetcomplete.quests.oneway.data.TrafficFlowSegment
-import de.westnordost.streetcomplete.quests.oneway.data.TrafficFlowSegmentsDao
+import de.westnordost.streetcomplete.quests.oneway.data.TrafficFlowSegmentsApi
 import de.westnordost.streetcomplete.quests.oneway.data.WayTrafficFlowDao
 
 class AddOneway(
-    private val overpassMapDataDao: OverpassMapDataDao,
-    private val trafficFlowSegmentsDao: TrafficFlowSegmentsDao,
+    private val overpassMapDataApi: OverpassMapDataAndGeometryApi,
+    private val trafficFlowSegmentsApi: TrafficFlowSegmentsApi,
     private val db: WayTrafficFlowDao
 ) : OsmElementQuestType<OnewayAnswer> {
 
@@ -31,6 +31,7 @@ class AddOneway(
 
     override val commitMessage =
         "Add whether this road is a one-way road, this road was marked as likely oneway by improveosm.org"
+    override val wikiLink = "Key:oneway"
     override val icon = R.drawable.ic_quest_oneway
     override val hasMarkersAtEnds = true
     override val isSplitWayEnabled = true
@@ -42,10 +43,10 @@ class AddOneway(
     override fun isApplicableTo(element: Element) =
         filter.matches(element) && db.isForward(element.id) != null
 
-    override fun download(bbox: BoundingBox, handler: MapDataWithGeometryHandler): Boolean {
+    override fun download(bbox: BoundingBox, handler: (element: Element, geometry: ElementGeometry?) -> Unit): Boolean {
         val trafficDirectionMap: Map<Long, List<TrafficFlowSegment>>
         try {
-            trafficDirectionMap = trafficFlowSegmentsDao.get(bbox)
+            trafficDirectionMap = trafficFlowSegmentsApi.get(bbox)
         } catch (e: Exception) {
             Log.e("AddOneway", "Unable to download traffic metadata", e)
             return false
@@ -54,9 +55,10 @@ class AddOneway(
         if (trafficDirectionMap.isEmpty()) return true
 
         val query = "way(id:${trafficDirectionMap.keys.joinToString(",")}); out meta geom;"
-        overpassMapDataDao.getAndHandleQuota(query) { element, geometry ->
-            fun handle(element: Element, geometry: ElementGeometry?) {
-                if(geometry == null) return
+        overpassMapDataApi.query(query) { element, geometry ->
+            fun checkValidAndHandle(element: Element, geometry: ElementGeometry?) {
+                if (geometry == null) return
+                if (geometry !is ElementPolylinesGeometry) return
                 // filter the data as ImproveOSM data may be outdated or catching too much
                 if (!filter.matches(element)) return
 
@@ -68,16 +70,16 @@ class AddOneway(
                    not is less valuable information (for routing) and many times such a ring will
                    actually be a roundabout. Oneway information on roundabouts is superfluous.
                    See #1320 */
-                if(way.nodeIds.last() == way.nodeIds.first()) return
+                if (way.nodeIds.last() == way.nodeIds.first()) return
                 /* only create quest if direction can be clearly determined and is the same
                    direction for all segments belonging to one OSM way (because StreetComplete
                    cannot split ways up) */
-                val isForward = isForward(geometry.polylines[0], segments) ?: return
+                val isForward = isForward(geometry.polylines.first(), segments) ?: return
 
                 db.put(way.id, isForward)
-                handler.handle(element, geometry)
+                handler(element, geometry)
             }
-            handle(element, geometry)
+            checkValidAndHandle(element, geometry)
         }
 
         return true

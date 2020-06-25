@@ -32,6 +32,7 @@
         android:layout_height="56dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        tools:text="ABC"/>
+        tools:text="ABC"
+        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"/>
 
 </RelativeLayout>

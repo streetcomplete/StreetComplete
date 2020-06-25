@@ -25,17 +25,7 @@ public class LocationStateButton extends androidx.appcompat.widget.AppCompatImag
 			R.attr.state_updating,
 	};
 
-	// must also be defined in the same order as LocationState enum (but minus the first)
-	private static final int[] STYLEABLES = {
-			R.styleable.LocationStateButton_state_allowed,
-			R.styleable.LocationStateButton_state_enabled,
-			R.styleable.LocationStateButton_state_searching,
-			R.styleable.LocationStateButton_state_updating,
-			R.styleable.LocationStateButton_compass_mode
-	};
-
 	private LocationState state;
-	private boolean compassMode;
 
 	private ColorStateList tint;
 
@@ -56,16 +46,15 @@ public class LocationStateButton extends androidx.appcompat.widget.AppCompatImag
 		TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.LocationStateButton);
 		state = determineStateFrom(a);
 		tint = a.getColorStateList(R.styleable.LocationStateButton_tint);
-		compassMode = a.getBoolean(R.styleable.LocationStateButton_compass_mode, false);
 		a.recycle();
 	}
 
 	private LocationState determineStateFrom(TypedArray a)
 	{
-		for(int i=LocationState.values().length-1; i>=0; --i)
-		{
-			if(a.getBoolean(STYLEABLES[i], false)) return LocationState.values()[i+1];
-		}
+		if (a.getBoolean(R.styleable.LocationStateButton_state_updating, false)) return LocationState.UPDATING;
+		if (a.getBoolean(R.styleable.LocationStateButton_state_searching, false)) return LocationState.SEARCHING;
+		if (a.getBoolean(R.styleable.LocationStateButton_state_enabled, false)) return LocationState.ENABLED;
+		if (a.getBoolean(R.styleable.LocationStateButton_state_allowed, false)) return LocationState.ALLOWED;
 		return LocationState.DENIED;
 	}
 
@@ -97,17 +86,6 @@ public class LocationStateButton extends androidx.appcompat.widget.AppCompatImag
 		return state;
 	}
 
-	public boolean isCompassMode()
-	{
-		return compassMode;
-	}
-
-	public void setCompassMode(boolean compassMode)
-	{
-		this.compassMode = compassMode;
-		refreshDrawableState();
-	}
-
 	@Override
 	public int[] onCreateDrawableState(int extraSpace)
 	{
@@ -115,10 +93,6 @@ public class LocationStateButton extends androidx.appcompat.widget.AppCompatImag
 		final int[] drawableState = super.onCreateDrawableState(extraSpace + additionalLength);
 		int arrPos = getState().ordinal();
 		int[] additionalArray = Arrays.copyOf(Arrays.copyOf(STATES, arrPos), additionalLength);
-		if(compassMode)
-		{
-			additionalArray[STATES.length] = R.attr.compass_mode;
-		}
 		mergeDrawableStates(drawableState, additionalArray);
 		return drawableState;
 	}
@@ -139,7 +113,6 @@ public class LocationStateButton extends androidx.appcompat.widget.AppCompatImag
 		SavedState ss = (SavedState) s;
 		super.onRestoreInstanceState(ss.getSuperState());
 		this.state = ss.state;
-		this.compassMode = ss.compassMode;
 		setActivated(ss.activated);
 		requestLayout();
 	}
@@ -147,7 +120,6 @@ public class LocationStateButton extends androidx.appcompat.widget.AppCompatImag
 	static class SavedState extends BaseSavedState
 	{
 		LocationState state;
-		boolean compassMode;
 		boolean activated;
 
 		SavedState(Parcelable superState) {
@@ -159,14 +131,12 @@ public class LocationStateButton extends androidx.appcompat.widget.AppCompatImag
 			super(in);
 			state = LocationState.valueOf(in.readString());
 			activated = in.readInt() == 1;
-			compassMode = in.readInt() == 1;
 		}
 
 		@Override public void writeToParcel(Parcel out, int flags) {
 			super.writeToParcel(out, flags);
 			out.writeString(state.name());
 			out.writeInt(activated ? 1 : 0);
-			out.writeInt(compassMode ? 1 : 0);
 		}
 
 		public static final Parcelable.Creator<SavedState> CREATOR

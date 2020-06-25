@@ -1,0 +1,98 @@
+global:
+    api_key: false # intended to be overwritten by StreetComplete
+    language: false # intended to be overwritten by StreetComplete
+    text_font_family: 'Roboto'
+    text_stroke_color: 'white'
+    text_water_color: '#fff'
+    text_stroke: { color: global.text_stroke_color, width: 2.5px }
+    text_places_stroke: { color: global.text_stroke_color, width: 2.5px }
+    text_countries_stroke: { color: global.text_stroke_color, width: 2.5px }
+    text_water_stroke: { color: global.water_color, width: 2.5px }
+    text_fill_color: '#124'
+    text_size_scaling: 1 # intended to be overwritten by StreetComplete
+    text_size: |
+      function() {
+        var size = 13;
+        if ($zoom >= 18 && $zoom < 19) {
+          size = 15;
+        } else if ($zoom >= 19) {
+          size = 17;
+        }
+        return (size * global.text_size_scaling) + "px";
+      }
+
+    # The following colors are in most cases overwritten
+    # ones that are used are defined in streetcomplete-light-style.yaml
+    # and streetcomplete-dark-style.yaml files
+    railway_color: '#99a'
+    road_color: '#fff'
+    highway_color: '#fa8'
+    highway_outline_color: global.road_outline_color
+    road_outline_color: '#cc9999'
+    path_color: global.road_color
+    path_outline_color: '#e0c9b3'
+    square_color: global.road_color
+    square_outline_color: global.path_outline_color
+
+    earth_color: '#f3eacc'
+    water_color: '#68d'
+    green_color: '#c6ddaa'
+    forest_color: '#a8c884'
+    town_color: '#f3dacd'
+
+    building_color: rgb(204,214,238)
+    building_outline_color: rgb(185,195,217)
+
+    boundary_color: '#e39'
+
+    oneway_arrow_color: '#888'
+    barrier_color: '#888'
+    roundabout_color: global.road_outline_color
+
+    tunnel_color: [1., 1., 1., 0.2]
+
+    name_source: |
+        function() {
+            // Use preferred language label if available
+            return (global.language && feature['name:'+global.language]) || feature.name;
+        }
+
+    suggested_min_zoom: |
+        function() {
+            return feature.min_zoom <= $zoom
+        }
+
+    sort_rank: function() { return feature.sort_rank; }
+
+scene:
+    animated: false
+    background:
+        color: global.earth_color
+
+camera:
+    type: perspective
+    max_tilt: 60
+    fov: 80
+
+lights:
+    cameralight:
+        type: point
+        diffuse: 0.3
+        origin: camera
+        ambient: 0.7
+
+sources:
+    jawg:
+        type: MVT
+        url: https://{s}.tile.jawg.io/streets-v1/{z}/{x}/{y}.pbf
+        url_subdomains: [a, b, c]
+        max_zoom: 16
+        url_params:
+            access-token: global.api_key
+
+textures:
+    oneway-arrow:
+        url: images/oneway_arrow@2x.png
+        # url: https://raw.githubusercontent.com/ENT8R/streetcomplete-mapstyle/master/images/oneway_arrow@2x.png
+        filtering: mipmap
+        density: 5

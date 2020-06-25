@@ -14,5 +14,6 @@
         android:id="@+id/addTimesButton"
         android:text="@string/quest_openingHours_add_times"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"/>
 </LinearLayout>

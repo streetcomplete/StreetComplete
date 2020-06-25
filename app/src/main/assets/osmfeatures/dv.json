@@ -51,9 +51,6 @@
         "place/town": {
             "name": "އަވަށް"
         },
-        "highway": {
-            "name": "ހައިވޭ"
-        },
         "landuse/commercial": {
             "name": "ވިޔަފާރި ސަރަޙައްދު"
         },
@@ -107,9 +104,6 @@
         },
         "amenity/place_of_worship": {
             "name": "އަޅުކަންކުރާ ތަންތަން"
-        },
-        "man_made/bridge": {
-            "name": "ފާލަން"
         },
         "aeroway/runway": {
             "name": "އެއާރޕޯޓް ރަންވޭ"
@@ -186,9 +180,6 @@
         "leisure/marina": {
             "name": "ޔޮޓު މެރީނާ"
         },
-        "waterway": {
-            "name": "ކަނޑުމަގު"
-        },
         "amenity/cinema": {
             "name": "ސިނަމާ"
         },
@@ -204,9 +195,6 @@
         "amenity/bar": {
             "name": "ބާރ"
         },
-        "natural/wood": {
-            "name": "ޖަންގަލި"
-        },
         "natural/coastline": {
             "name": "އައްސޭރިފަށް"
         },
@@ -218,9 +206,6 @@
         },
         "amenity/hospital": {
             "name": "ހޮސްޕިޓަލް"
-        },
-        "area/highway": {
-            "name": "މަގު"
         },
         "aeroway/terminal": {
             "name": "އެއާރޕޯޓް ގިމަތަ"

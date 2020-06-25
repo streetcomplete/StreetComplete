@@ -1,0 +1,14 @@
+<!-- This is the civil flag, which does not have the national coat of arms in the centre -->
+<!-- without the national coat of arms, it is very similar to the nicaraguan flag without coat of arms-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="240dp"
+    android:height="135.33834586466165dp"
+    android:viewportWidth="1064"
+    android:viewportHeight="600">
+  <path
+      android:pathData="M0,0h1064v600H0z"
+      android:fillColor="#0f47af"/>
+  <path
+      android:pathData="M0,200h1064v200H0z"
+      android:fillColor="#fff"/>
+</vector>

@@ -6,4 +6,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:paddingStart="4dp"
     android:paddingEnd="4dp"
+    android:clipChildren="false"
+    android:clipToPadding="false"
     tools:listitem="@layout/quest_note_discussion_item"/>

@@ -21,9 +21,6 @@ import javax.inject.Inject
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.OsmElementQuestType
-import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderList
-import de.westnordost.streetcomplete.data.visiblequests.VisibleQuestTypeDao
 import de.westnordost.streetcomplete.view.ListAdapter
 
 
@@ -31,20 +28,31 @@ import androidx.recyclerview.widget.ItemTouchHelper.ACTION_STATE_DRAG
 import androidx.recyclerview.widget.ItemTouchHelper.ACTION_STATE_IDLE
 import androidx.recyclerview.widget.ItemTouchHelper.DOWN
 import androidx.recyclerview.widget.ItemTouchHelper.UP
+import de.westnordost.streetcomplete.data.quest.QuestType
+import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
+import de.westnordost.streetcomplete.data.quest.AllCountries
+import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
+import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
+import de.westnordost.streetcomplete.ktx.containsAny
+import de.westnordost.streetcomplete.settings.genericQuestTitle
 import kotlinx.android.synthetic.main.row_quest_selection.view.*
 
 class QuestSelectionAdapter @Inject constructor(
-    private val visibleQuestTypeDao: VisibleQuestTypeDao,
-    private val questTypeOrderList: QuestTypeOrderList,
     countryBoundaries: FutureTask<CountryBoundaries>,
     prefs: SharedPreferences
 ) : ListAdapter<QuestVisibility>() {
     private val currentCountryCodes: List<String>
 
+    interface Listener {
+        fun onReorderedQuests(before: QuestType<*>, after: QuestType<*>)
+        fun onChangedQuestVisibility(questType: QuestType<*>, visible: Boolean)
+    }
+    var listener: Listener? = null
+
     init {
         val lat = Double.fromBits(prefs.getLong(Prefs.MAP_LATITUDE, 0.0.toBits()))
         val lng = Double.fromBits(prefs.getLong(Prefs.MAP_LONGITUDE, 0.0.toBits()))
-	    currentCountryCodes = countryBoundaries.get().getIds(lng, lat)
+        currentCountryCodes = countryBoundaries.get().getIds(lng, lat)
     }
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
@@ -96,7 +104,7 @@ class QuestSelectionAdapter @Inject constructor(
                 val before = list[pos - 1].questType
                 val after = list[pos].questType
 
-                questTypeOrderList.apply(before, after)
+                listener?.onReorderedQuests(before, after)
 
                 draggedFrom = -1
                 draggedTo = draggedFrom
@@ -112,31 +120,29 @@ class QuestSelectionAdapter @Inject constructor(
         ListAdapter.ViewHolder<QuestVisibility>(itemView), CompoundButton.OnCheckedChangeListener {
 
         private val questIcon: ImageView = itemView.questIcon
-	    private val questTitle: TextView = itemView.questTitle
-	    private val visibilityCheckBox: CheckBox = itemView.visibilityCheckBox
-	    private val countryDisabledText: TextView = itemView.countryDisabledText
-	    lateinit var item: QuestVisibility
+        private val questTitle: TextView = itemView.questTitle
+        private val visibilityCheckBox: CheckBox = itemView.visibilityCheckBox
+        private val countryDisabledText: TextView = itemView.countryDisabledText
+        lateinit var item: QuestVisibility
 
         private val isEnabledInCurrentCountry: Boolean
             get() {
-	            (item.questType as? OsmElementQuestType<*>)?.let { questType ->
-		            val countries = questType.enabledForCountries
-		            for (currentCountryCode in currentCountryCodes) {
-			            if (countries.exceptions.contains(currentCountryCode)) {
-				            return !countries.isAllExcept
-			            }
-		            }
-		            return countries.isAllExcept
-	            }
+                (item.questType as? OsmElementQuestType<*>)?.let { questType ->
+                    return when(val countries = questType.enabledInCountries) {
+                        is AllCountries -> true
+                        is AllCountriesExcept -> !countries.exceptions.containsAny(currentCountryCodes)
+                        is NoCountriesExcept -> countries.exceptions.containsAny(currentCountryCodes)
+                    }
+                }
                 return true
             }
 
-	    override fun onBind(with: QuestVisibility) {
+        override fun onBind(with: QuestVisibility) {
             this.item = with
-            val colorResId = if (item.isInteractionEnabled) android.R.color.transparent else R.color.greyed_out
+            val colorResId = if (item.isInteractionEnabled) R.color.background else R.color.greyed_out
             itemView.setBackgroundResource(colorResId)
             questIcon.setImageResource(item.questType.icon)
-            questTitle.text = questTitle.resources.getString(item.questType.title, "…")
+            questTitle.text = genericQuestTitle(questTitle, item.questType)
             visibilityCheckBox.setOnCheckedChangeListener(null)
             visibilityCheckBox.isChecked = item.visible
             visibilityCheckBox.isEnabled = item.isInteractionEnabled
@@ -145,7 +151,7 @@ class QuestSelectionAdapter @Inject constructor(
             if (!isEnabledInCurrentCountry) {
                 val cc = if (currentCountryCodes.isEmpty()) "Atlantis" else currentCountryCodes[0]
                 countryDisabledText.text =  countryDisabledText.resources.getString(
-	                R.string.questList_disabled_in_country, Locale("", cc).displayCountry
+                    R.string.questList_disabled_in_country, Locale("", cc).displayCountry
                 )
                 countryDisabledText.visibility = View.VISIBLE
             } else {
@@ -167,7 +173,7 @@ class QuestSelectionAdapter @Inject constructor(
         override fun onCheckedChanged(compoundButton: CompoundButton, b: Boolean) {
             item.visible = b
             updateSelectionStatus()
-            visibleQuestTypeDao.setVisible(item.questType, item.visible)
+            listener?.onChangedQuestVisibility(item.questType, item.visible)
             if (b && item.questType.defaultDisabledMessage > 0) {
                 AlertDialog.Builder(compoundButton.context)
                     .setTitle(R.string.enable_quest_confirmation_title)

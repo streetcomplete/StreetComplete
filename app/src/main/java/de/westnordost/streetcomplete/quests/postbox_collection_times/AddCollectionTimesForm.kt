@@ -33,14 +33,14 @@ class AddCollectionTimesForm : AbstractQuestFormAnswerFragment<CollectionTimesAn
     @Inject internal lateinit var serializer: Serializer
 
     init {
-        Injector.instance.applicationComponent.inject(this)
+        Injector.applicationComponent.inject(this)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         val viewData = loadCollectionTimesData(savedInstanceState)
-        collectionTimesAdapter = CollectionTimesAdapter(viewData, context!!, countryInfo)
+        collectionTimesAdapter = CollectionTimesAdapter(viewData, requireContext(), countryInfo)
         collectionTimesAdapter.registerAdapterDataObserver( AdapterDataChangedWatcher { checkIsFormComplete() })
     }
 

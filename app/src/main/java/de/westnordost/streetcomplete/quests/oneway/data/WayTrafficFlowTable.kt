@@ -7,4 +7,10 @@ object WayTrafficFlowTable {
         const val WAY_ID = "way_id"
         const val IS_FORWARD = "is_forward"
     }
+
+    const val CREATE = """
+        CREATE TABLE $NAME (
+            ${Columns.WAY_ID} int PRIMARY KEY,
+            ${Columns.IS_FORWARD} int NOT NULL
+        );"""
 }

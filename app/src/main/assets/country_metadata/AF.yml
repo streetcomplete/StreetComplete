@@ -4,3 +4,4 @@ mobileCountryCode: 412
 officialLanguages: [fa, ps]
 orchardProduces: [grape, apple, apricot, peach, almond, plum, olive, pear, walnut, fig, orange, pistachio]
 popularReligions: [muslim]
+workweekDays: 6

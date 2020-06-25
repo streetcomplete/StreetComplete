@@ -40,9 +40,6 @@
         "landuse/garages": {
             "name": "Garāžu zeme"
         },
-        "railway": {
-            "name": "Vilciens"
-        },
         "building/university": {
             "name": "Universitātes Ēka"
         },
@@ -71,9 +68,6 @@
             "name": "Amerikāņu Kalniņi",
             "terms": "atrakcija,brauciens,ātrs"
         },
-        "power/sub_station": {
-            "name": "Metro stacija"
-        },
         "shop/copyshop": {
             "name": "Printēšanas veikals"
         },
@@ -83,15 +77,9 @@
         "natural/bay": {
             "name": "Līcis"
         },
-        "leisure/firepit": {
-            "name": "Ugunskura vieta"
-        },
         "building/terrace": {
             "name": "Rindumājas",
             "terms": "rindu mājas,mājas"
-        },
-        "man_made/bridge": {
-            "name": "Tilts"
         },
         "aeroway/runway": {
             "name": "Skrejceļš"
@@ -256,9 +244,6 @@
         "amenity/recycling_centre": {
             "name": "Šķirošanas centrs"
         },
-        "craft/pottery": {
-            "name": "Podnieks"
-        },
         "club": {
             "name": "Klubs"
         },
@@ -267,9 +252,6 @@
         },
         "office/private_investigator": {
             "name": "Privātizmeklētēja birojs"
-        },
-        "highway": {
-            "name": "Šoseja"
         },
         "shop/massage": {
             "name": "Masāžu veikals"
@@ -383,9 +365,6 @@
         "historic/monument": {
             "name": "Piemineklis"
         },
-        "manhole": {
-            "name": "Kanalizācijas lūka"
-        },
         "emergency/phone": {
             "name": "Ārkārtas telefons"
         },
@@ -409,9 +388,6 @@
         },
         "healthcare/optometrist": {
             "name": "Optometrists"
-        },
-        "building/kindergarten": {
-            "name": "Bērnudārza / Pirmskolas ēka"
         },
         "leisure/playground": {
             "name": "Spēļlaukums"
@@ -566,9 +542,6 @@
         "public_transport/station_trolleybus": {
             "name": "Trolejbusu stacija / Terminālis"
         },
-        "leisure": {
-            "name": "Brīvā laika"
-        },
         "amenity/post_office": {
             "name": "Pasta nodaļa",
             "terms": "vēstule, pasts, paciņa"
@@ -617,9 +590,6 @@
         },
         "shop/curtain": {
             "name": "Aizkaru veikals"
-        },
-        "area/highway": {
-            "name": "Ceļa segums"
         },
         "amenity/vending_machine/parking_tickets": {
             "name": "Stāvvietu Atļauju Tirdzniecības automāts",
@@ -671,9 +641,6 @@
         },
         "shop/vacuum_cleaner": {
             "name": "Putekļusūcēju veikals"
-        },
-        "entrance": {
-            "name": "Ieeja/Izeja"
         },
         "shop/chemist": {
             "name": "Aptieka"
@@ -893,9 +860,6 @@
         "shop/tea": {
             "name": "Tējas veikals"
         },
-        "craft/jeweler": {
-            "name": "Juvelieris"
-        },
         "landuse/industrial/slaughterhouse": {
             "name": "Kautuve"
         },
@@ -1015,9 +979,6 @@
         "aeroway/taxiway": {
             "name": "Manevrēšanas ceļš"
         },
-        "craft/optician": {
-            "name": "Optiķis"
-        },
         "waterway/waterfall": {
             "name": "Ūdenskritums"
         },
@@ -1113,9 +1074,6 @@
         "building/commercial": {
             "name": "Komerciāla Ēka"
         },
-        "attraction/pirate_ship": {
-            "name": "Pirātu kuģis"
-        },
         "amenity/childcare": {
             "name": "Bērnistaba / Bērnu aprūpe"
         },
@@ -1148,9 +1106,6 @@
         "shop/electronics": {
             "name": "Elektronikas veikals"
         },
-        "waterway": {
-            "name": "Ūdensceļš"
-        },
         "amenity/clinic": {
             "name": "Klīnika",
             "terms": "medicīna,neatliekama"
@@ -1171,9 +1126,6 @@
         },
         "building/farm_auxiliary": {
             "name": "Fermas Ēka"
-        },
-        "natural/wood": {
-            "name": "Koks"
         },
         "amenity/waste_basket": {
             "name": "Atkritumu grozs",
@@ -1227,13 +1179,6 @@
         "amenity/vending_machine/coffee": {
             "name": "Kafijas Tirdzniecības automāts",
             "terms": "kafija, kofeīns, ekspresso"
-        },
-        "natural": {
-            "name": "Dabisks"
-        },
-        "amenity/post_box": {
-            "name": "Pasta kastīte",
-            "terms": "vēstule, pasts, kaste"
         },
         "natural/water/lake": {
             "name": "Ezers"
@@ -1314,9 +1259,6 @@
         "shop/e-cigarette": {
             "name": "E-Cigarešu veikals"
         },
-        "tourism": {
-            "name": "Tūrisms"
-        },
         "amenity/car_wash": {
             "name": "Automazgātuve"
         },
@@ -1346,13 +1288,6 @@
         "shop/watches": {
             "name": "Pulksteņu Veikals"
         },
-        "amenity/parking_entrance": {
-            "name": "Daudzlīmeņu Stāvvietas Ieeja/Izeja",
-            "terms": "daudzstāvu stāvvieta, ieeja, izeja, iebrauktuve, izbrauktuve"
-        },
-        "landuse": {
-            "name": "Zemes izmantojums"
-        },
         "shop/gift": {
             "name": "Dāvanu veikals"
         },
@@ -1367,9 +1302,6 @@
         },
         "place": {
             "name": "Vieta"
-        },
-        "power": {
-            "name": "Enerģija"
         },
         "shop/music": {
             "name": "Mūzikas veikals"
@@ -1475,9 +1407,6 @@
         "craft/electrician": {
             "name": "Elektriķis"
         },
-        "manhole/telecom": {
-            "name": "Telekomunikāciju lūka"
-        },
         "shop/car_repair": {
             "name": "Auto remontdarbnīca",
             "terms": "remonts, serviss, garāža"
@@ -1570,18 +1499,11 @@
         "amenity/motorcycle_parking": {
             "name": "Motociklu stāvvieta"
         },
-        "shop/craft": {
-            "name": "Mākslas piederumu veikals",
-            "terms": "māksla, resursi, krāsas, rāmji, zīmēt"
-        },
         "line": {
             "name": "Līnija"
         },
         "shop/lottery": {
             "name": "Loterijas veikals"
-        },
-        "amenity/kindergarten": {
-            "terms": "bēŗnudārzs,pirmskola"
         },
         "leisure/dog_park": {
             "name": "Suņu parks"
@@ -1618,9 +1540,6 @@
         "tourism/attraction": {
             "name": "Tūrisma objekts"
         },
-        "man_made": {
-            "name": "Cilvēka radīts"
-        },
         "shop/car_parts": {
             "name": "Auto rezerves daļu veikals"
         },
@@ -1633,9 +1552,6 @@
         "tourism/viewpoint": {
             "name": "Skatu punkts"
         },
-        "landuse/construction": {
-            "name": "Būvlaukums"
-        },
         "emergency/lifeguard": {
             "name": "Glābējs"
         },
@@ -1644,9 +1560,6 @@
         },
         "leisure/fitness_centre/yoga": {
             "name": "Jogas studija"
-        },
-        "aeroway": {
-            "name": "Skrejceļš"
         },
         "aeroway/terminal": {
             "name": "Lidostas Terminālis"

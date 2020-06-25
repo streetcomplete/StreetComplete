@@ -7,21 +7,18 @@
         android:fillColor="#f2eeee"
         android:pathData="m4.498,8.996 l1.323,3.704v5.292l-4.498,-4.498 -0,-5.556 1.058,-1.587z"
         android:strokeColor="#916f6f"
-        android:strokeLineCap="square"
         android:strokeLineJoin="bevel"
         android:strokeWidth=".132292"/>
     <path
         android:fillColor="#e0d8d8"
         android:pathData="m5.821,12.7 l11.113,-3.704v5.292l-11.113,3.704v-5.292"
         android:strokeColor="#916f6f"
-        android:strokeLineCap="square"
         android:strokeLineJoin="bevel"
         android:strokeWidth=".132292"/>
     <path
         android:fillColor="#fb6d6d"
         android:pathData="m17.462,8.996 l-1.058,-3.704 -3.704,-3.175 -7.144,2.381 -1.058,4.762 1.058,3.704z"
         android:strokeColor="#a00"
-        android:strokeLineCap="square"
         android:strokeLineJoin="bevel"
         android:strokeWidth=".132292"/>
     <path

@@ -14,11 +14,14 @@ public class CountryInfo implements Serializable, Cloneable
 	// i.e. US for US-TX.yml
 	String countryCode;
 
-	List<String> measurementSystem;
+	List<String> lengthUnits;
+	List<String> speedUnits;
+	List<String> weightLimitUnits;
 	List<String> popularSports;
 	List<String> popularReligions;
 	String firstDayOfWorkweek;
 	Integer regularShoppingDays;
+	Integer workweekDays;
 	String additionalValidHousenumberRegex;
 	List<String> officialLanguages;
 	List<String> additionalStreetsignLanguages;
@@ -29,9 +32,19 @@ public class CountryInfo implements Serializable, Cloneable
 	Boolean isLeftHandTraffic;
 	Integer mobileCountryCode;
 
-	public List<String> getMeasurementSystem()
+	public List<String> getLengthUnits()
 	{
-		return measurementSystem;
+		return lengthUnits;
+	}
+
+	public List<String> getSpeedUnits()
+	{
+		return speedUnits;
+	}
+
+	public List<String> getWeightLimitUnits()
+	{
+		return weightLimitUnits;
 	}
 
 	public List<String> getPopularSports()
@@ -54,6 +67,11 @@ public class CountryInfo implements Serializable, Cloneable
 	public Integer getRegularShoppingDays()
 	{
 		return regularShoppingDays;
+	}
+
+	public Integer getWorkweekDays()
+	{
+		return workweekDays;
 	}
 
 	public boolean isSlowZoneKnown()
