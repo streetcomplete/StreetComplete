@@ -186,6 +186,8 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
 
         val cantSay = OtherAnswer(R.string.quest_generic_answer_notApplicable) { onClickCantSay() }
         answers.add(cantSay)
+        val notExistingAnymore = OtherAnswer(R.string.quest_generic_answer_notExisting) { onClickNotExisting() }
+        answers.add(notExistingAnymore)
 
         val way = osmElement as? Way
         if (way != null) {
@@ -267,6 +269,15 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
         }
     }
 
+    protected fun onClickNotExisting() {
+        context?.let { AlertDialog.Builder(it)
+                .setTitle(R.string.quest_leave_new_note_title)
+                .setMessage(R.string.quest_leave_new_note_about_nonexisting_object_description)
+                .setNegativeButton(R.string.quest_leave_new_note_no) { _, _ -> skipQuest() }
+                .setPositiveButton(R.string.quest_leave_new_note_yes) { _, _ -> composeNote() }
+                .show()
+        }
+    }
     protected fun composeNote() {
         val questTitle = englishResources.getQuestTitle(questType, osmElement, featureDictionaryFuture)
         listener?.onComposeNote(questId, questGroup, questTitle)
