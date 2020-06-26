@@ -542,6 +542,8 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_generic_item_invalid_value">Please select a more specific value.</string>
     <string name="quest_buildingType_answer_multiple_types">It has multiple purposes</string>
     <string name="quest_buildingType_answer_multiple_types_description">Simply select the main purpose of this building. E.g. if there is a shop on the ground floor with apartments above it, it is still mainly an apartment building.</string>
+    <string name="quest_buildingType_answer_types_change_over_time">Purpose changed over time</string>
+    <string name="quest_buildingType_answer_types_change_over_time_description">Select the purpose defining the building. The question is about the current building form. It is not about its historical form, it is not about how building is used.\n\nChurch building used as a warehouse is still a church building.\nTrain station building that is now abandoned or housing a museum should be still marked as a train station.\nBut rebuilding may erase original form, for example factory may be rebuilt so extensively that the current form is now a residential building.</string>
     <string name="quest_buildingType_answer_construction_site">It is still being constructed</string>
 
 

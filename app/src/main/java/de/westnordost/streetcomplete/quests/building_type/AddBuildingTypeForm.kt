@@ -11,6 +11,7 @@ import de.westnordost.streetcomplete.quests.building_type.BuildingType.*
 class AddBuildingTypeForm : AGroupedImageListQuestAnswerFragment<String,String>() {
 
     override val otherAnswers = listOf(
+        OtherAnswer(R.string.quest_buildingType_answer_types_change_over_time) { showChangedPurposeHint() },
         OtherAnswer(R.string.quest_buildingType_answer_multiple_types) { showMultipleTypesHint() },
         OtherAnswer(R.string.quest_buildingType_answer_construction_site) { applyAnswer("construction") }
     )
@@ -40,6 +41,14 @@ class AddBuildingTypeForm : AGroupedImageListQuestAnswerFragment<String,String>(
             .setMessage(R.string.quest_buildingType_answer_multiple_types_description)
             .setPositiveButton(android.R.string.ok, null)
             .show()
+        }
+    }
+
+    private fun showChangedPurposeHint() {
+        activity?.let { AlertDialog.Builder(it)
+                .setMessage(R.string.quest_buildingType_answer_types_change_over_time_description)
+                .setPositiveButton(android.R.string.ok, null)
+                .show()
         }
     }
 }
