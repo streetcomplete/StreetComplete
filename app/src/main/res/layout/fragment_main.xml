@@ -103,37 +103,47 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             android:layout_marginBottom="22dp"
-            android:orientation="vertical"
             android:clipToPadding="false"
             tools:ignore="RtlHardcoded,RtlSymmetry">
-
-            <ImageButton
-                android:id="@+id/zoomInButton"
-                android:layout_width="@dimen/map_button_size"
-                android:layout_height="@dimen/map_button_size"
-                android:scaleType="center"
-                style="@style/RoundWhiteButton"
-                android:src="@drawable/ic_zoom_plus_black_24dp"
-                android:contentDescription="@string/map_btn_zoom_in"/>
-
-            <ImageButton
-                android:id="@+id/zoomOutButton"
-                android:layout_width="@dimen/map_button_size"
-                android:layout_height="@dimen/map_button_size"
-                android:scaleType="center"
-                style="@style/RoundWhiteButton"
-                android:src="@drawable/ic_zoom_minus_black_24dp"
-                android:contentDescription="@string/map_btn_zoom_out"/>
 
             <de.westnordost.streetcomplete.location.LocationStateButton
                 android:id="@+id/gpsTrackingButton"
                 android:layout_width="@dimen/map_button_size"
                 android:layout_height="@dimen/map_button_size"
+                android:layout_gravity="bottom"
                 android:scaleType="center"
                 style="@style/RoundWhiteButton"
                 android:src="@drawable/ic_location_24dp"
                 app:tint="@color/activated_tint"
                 android:contentDescription="@string/map_btn_gps_tracking"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:orientation="vertical"
+                android:clipToPadding="false"
+                >
+
+                <ImageButton
+                    android:id="@+id/zoomInButton"
+                    android:layout_width="@dimen/map_button_size"
+                    android:layout_height="@dimen/map_button_size"
+                    android:scaleType="center"
+                    style="@style/RoundWhiteButton"
+                    android:src="@drawable/ic_zoom_plus_black_24dp"
+                    android:contentDescription="@string/map_btn_zoom_in"/>
+
+                <ImageButton
+                    android:id="@+id/zoomOutButton"
+                    android:layout_width="@dimen/map_button_size"
+                    android:layout_height="@dimen/map_button_size"
+                    android:scaleType="center"
+                    style="@style/RoundWhiteButton"
+                    android:src="@drawable/ic_zoom_minus_black_24dp"
+                    android:contentDescription="@string/map_btn_zoom_out"/>
+
+            </LinearLayout>
 
         </LinearLayout>
 
