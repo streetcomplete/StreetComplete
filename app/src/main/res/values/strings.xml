@@ -857,4 +857,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="user_profile_local_rank">Rank in\n%s</string>
     <string name="user_profile_days_active">Days\nactive</string>
     <string name="user_profile_achievement_levels">Achievement\nlevels</string>
+    <string name="quest_board_type_map">It is a map</string>
+    <string name="quest_board_type_map_title">It is only a map?</string>
+    <string name="quest_board_type_map_description">Boards with some specific topic may include also maps. For example a public transport board may have a bus route map. Boards with topics not covered by any available answer should be solved by creating a note with \"Can\'t say\" . Is it just a map and only a map?</string>
 </resources>

@@ -16,6 +16,10 @@ class AddBoardType(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<S
     override fun createForm() = AddBoardTypeForm()
 
     override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {
-        changes.add("board_type", answer)
+        if(answer == "map") {
+            changes.modify("information", "map")
+        } else {
+            changes.add("board_type", answer)
+        }
     }
 }
