@@ -69,7 +69,7 @@ class DetailRoadSurfaceForm  : AImageListQuestAnswerFragment<String, DetailSurfa
                 .setPositiveButton(R.string.quest_generic_confirmation_yes) {
                     _, _ -> switchToExplanationLayout()
                 }
-                .setNegativeButton(R.string.quest_generic_cancel, null)
+                .setNegativeButton(android.R.string.cancel, null)
                 .show()
 
     }
