@@ -24,8 +24,7 @@ class DetailRoadSurfaceForm  : AImageListQuestAnswerFragment<String, DetailSurfa
 
     override fun onClickOk(selectedItems: List<String>) {
         // must not happen in isInExplanationMode
-        // must contain exactly 1 item (maxSelectableItems is set to 1 and isFormComplete requires selection)
-        applyAnswer(SurfaceAnswer(selectedItems[0]))
+        applyAnswer(SurfaceAnswer(selectedItems.single()))
     }
 
     private var isInExplanationMode = false;
