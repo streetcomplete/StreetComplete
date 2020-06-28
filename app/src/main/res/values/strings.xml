@@ -859,5 +859,5 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="user_profile_achievement_levels">Achievement\nlevels</string>
     <string name="quest_board_type_map">It is a map</string>
     <string name="quest_board_type_map_title">Is it just a map and only a map?</string>
-    <string name="quest_board_type_map_description">If the board is about a specific topic, please specify it, regardless whether it also includes a map. For example a public transport board may have a bus route map. If the topic is not listed among the available answers, please consider leaving a note instead.</string>
+    <string name="quest_board_type_map_description">If the board is about a particular topic, please specify it, regardless of whether it also includes a map. For example a public transport board may have a bus route map. If the topic is not listed among the available answers, please consider leaving a note instead.</string>
 </resources>
