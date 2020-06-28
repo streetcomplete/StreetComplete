@@ -17,10 +17,9 @@ class AnswersCounterView @JvmOverloads constructor(
 ) : RelativeLayout(context, attrs, defStyleAttr)  {
 
     var uploadedCount: Int = 0
-        @SuppressLint("SetTextI18n")
         set(value) {
             field = value
-            textView.text = " $value "
+            textView.text = value.toString()
         }
 
     var showProgress: Boolean = false
