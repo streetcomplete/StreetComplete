@@ -43,7 +43,7 @@
     <string name="quest_leave_new_note_title">"Leave a note instead?"</string>
     <string name="quest_leave_new_note_description">"You can leave a public note at this location which other mappers can comment on and hopefully resolve or alternatively just hide the quest for yourself only"</string>
     <string name="quest_leave_new_note_request">"Please, leave a note"</string>
-    <string name="quest_leave_new_note_about_nonexisting_object_description">"Questions may be asked about objects that no longer exist. It happens when OpenStreetMap contains incorrect or outdated info. You can leave a public note at this location with an explanation of what is wrong or alternatively just hide the quest for yourself only."</string>
+    <string name="quest_leave_new_note_about_nonexisting_object_description">"Questions may be asked about objects that are not existing. It happens when OpenStreetMap contains incorrect or outdated info. You can leave a public note at this location with an explanation of what is wrong or alternatively just hide the quest for yourself only."</string>
     <string name="quest_leave_new_note_yes">"OK"</string>
     <string name="quest_leave_new_note_no">"No, just hide"</string>
     <string name="quest_leave_new_note_photo">Attach photo</string>
