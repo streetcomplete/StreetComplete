@@ -2310,4 +2310,11 @@ riconoscimento"</string>
     <string name="quest_buildingLevels_address_title">"Quanti piani ha l'edificio al numero %s?"</string>
     <string name="quest_roofShape_address_title">"Quale forma base ha il tetto dell'edificio al numero %s?"</string>
     <string name="quest_buildingType_address_title">"Che tipo di edificio è il numero %s?"</string>
+    <string name="quest_recycling_type_cooking_oil">"Oli alimentari"</string>
+    <string name="quest_recycling_type_engine_oil">"Oli lubrificanti"</string>
+    <string name="link_photon_description">"Un’estensione stand-alone di Nominatim con funzioni di ricerca fuzzy e cerca-mentre-scrivi"</string>
+    <string name="link_graphhopper_description">"Un motore di navigazione flessibile"</string>
+    <string name="link_qwant_maps_description">"Una mappa con luoghi da cercare e navigazione"</string>
+    <string name="privacy_html_tileserver2">"&lt;p&gt;I tasselli vettoriali per mostrare la mappa sono presi da %1$s. Leggi la loro &lt;a href=\"%2$s\"&gt;informativa sulla privacy&lt;/a&gt;per maggiori informazioni.&lt;/p&gt;"</string>
+    <string name="about_title_sponsors">"Sponsor"</string>
 </resources>

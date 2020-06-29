@@ -849,4 +849,6 @@ Erfolge"</string>
     <string name="link_photon_description">"Eine eigenständige Erweiterung zu Nominatim, mit fuzzy Suche und Suche während der Eingabe"</string>
     <string name="link_graphhopper_description">"Eine flexible Routing-Engine"</string>
     <string name="link_qwant_maps_description">"Eine Karte mit suchbaren POIs und Routenplaner"</string>
+    <string name="privacy_html_tileserver2">"&lt;p&gt;Um die Karte anzuzeigen werden Vektordaten von %1$s heruntergeladen. Sie deren &lt;a href=\"%2$s\"&gt;Datenschutzbestimmungen&lt;/a&gt; für weitere Informationen ein.&lt;/p&gt;"</string>
+    <string name="about_title_sponsors">"Sponsoren"</string>
 </resources>

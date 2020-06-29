@@ -2314,4 +2314,11 @@ Tenga en cuenta que esta aplicación solicita el número de portal de un edifici
     <string name="quest_buildingLevels_address_title">"¿Cuántos niveles tiene el edificio con el número %s?"</string>
     <string name="quest_roofShape_address_title">"¿Qué forma básica tiene el tejado del edificio con el número %s?"</string>
     <string name="quest_buildingType_address_title">"¿Qué tipo de edificio es el número %s?"</string>
+    <string name="quest_recycling_type_cooking_oil">"Aceite de cocina"</string>
+    <string name="quest_recycling_type_engine_oil">"Aceite de motor"</string>
+    <string name="link_photon_description">"Una extensión independiente para Nominatim, con búsqueda difusa y búsqueda mientras escribe"</string>
+    <string name="link_graphhopper_description">"Un motor de enrutamiento flexible"</string>
+    <string name="link_qwant_maps_description">"Un mapa con lugares de búsqueda y direcciones"</string>
+    <string name="privacy_html_tileserver2">"&lt;p&gt;Para mostrar el mapa, los mosaicos vectoriales se recuperan de %1$s. Consulte su &lt;a href=\"%2$s\"&gt;declaración de privacidad&lt;/a&gt; para obtener más información.&lt;/p&gt;"</string>
+    <string name="about_title_sponsors">"Patrocinadores"</string>
 </resources>

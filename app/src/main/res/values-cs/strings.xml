@@ -2328,4 +2328,9 @@ It is not big issue, but it would be nice to have it correctly. -->
     <string name="link_photon_description">"Samostatné rozšíření pro Nominatim, umožňující vyhledávání s opravami (fuzzy search) a našeptáváním"</string>
     <string name="link_graphhopper_description">"Flexibilní navigační engine"</string>
     <string name="link_qwant_maps_description">"Mapa s vyhledáváním míst a cest k cíli."</string>
+
+    <!-- I guess here should be "privacy statement" instead of  "privacy satement". -->
+    <string name="privacy_html_tileserver2">"&lt;p&gt;Pro zobrazení mapy musí být staženy vektorové dlaždice z %1$s. Pro další informace se podívejte na jejich &lt;a href=\"%2$s\"&gt;prohlášení o ochraně soukromí&lt;/a&gt; .&lt;/p&gt;
+"</string>
+    <string name="about_title_sponsors">"Sponzoři"</string>
 </resources>

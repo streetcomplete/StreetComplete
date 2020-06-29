@@ -2302,4 +2302,6 @@ nivåer"</string>
     <string name="link_photon_description">"En fristående tillägg till Nominatim med luddig sökning och sök-medan-du-skriver"</string>
     <string name="link_graphhopper_description">"En flexibel dirigeringsmotor"</string>
     <string name="link_qwant_maps_description">"En karta med sökbara platser och vägbeskrivningar"</string>
+    <string name="privacy_html_tileserver2">"&lt;p&gt;För att visa kartan hämtas vektordelar från %1$s. Se deras &lt;a href=\"%2$s\"&gt;integritetsförklaring&lt;/a&gt; för mer information.&lt;/p&gt;"</string>
+    <string name="about_title_sponsors">"Sponsorer"</string>
 </resources>

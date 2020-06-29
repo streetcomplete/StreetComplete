@@ -2335,9 +2335,18 @@ Ces données sont essentielles non seulement pour le facteur mais aussi pour tou
 
     <!-- Fuzzy -->
     <string name="stats_are_syncing">"Vos statistiques sont en train de se synchroniser. Vérifiez cette page plus tard."</string>
+
+    <!-- Fuzzy -->
+    <string name="user_statistics_country_rank">"Classement (%2$s) : %1$d"</string>
     <string name="user_statistics_filter_by_country">"par pays"</string>
     <string name="user_statistics_filter_by_quest_type">"par type de quête"</string>
     <string name="user_profile_global_rank">"Classement global"</string>
+
+    <!-- Entre parenthèses pour éviter les problèmes comme :
+"en France"
+"aux États-Unis" -->
+    <!-- Fuzzy -->
+    <string name="user_profile_local_rank">"Classement (%s)"</string>
     <string name="user_profile_days_active">"jours d'activité"</string>
     <string name="user_profile_achievement_levels">"Niveaux d'accomplissement"</string>
     <string name="quest_address_street_title">"A quelle rue appartient le bâtiment portant le numéro %s ?"</string>
@@ -2347,4 +2356,16 @@ Ces données sont essentielles non seulement pour le facteur mais aussi pour tou
     <string name="quest_buildingLevels_address_title">"Combien d'étages possède le bâtiment portant le numéro %s ?"</string>
     <string name="quest_roofShape_address_title">"Quelle forme a le toit du bâtiment portant le numéro %s ?"</string>
     <string name="quest_buildingType_address_title">"Quel est le type de bâtiment du numéro %s?"</string>
+    <string name="quest_recycling_type_cooking_oil">"Huile de friture"</string>
+    <string name="quest_recycling_type_engine_oil">"Huile moteur"</string>
+
+    <!-- Fuzzy -->
+    <string name="link_graphhopper_description">"Un moteur de recherche d'itinéraire"</string>
+
+    <!-- Fuzzy -->
+    <string name="link_qwant_maps_description">"Une carte qui permet de cherche des lieux et des itinéraires"</string>
+
+    <!-- Fuzzy -->
+    <string name="privacy_html_tileserver2">"&lt;p&gt;Les tuiles vectorielles utilisées pour afficher la carte sont récupérées depuis %1s. Lisez leur &lt;a href=\"%2$s\"&gt;politique de confidentialité&lt;/a&gt; pour plus d'information."</string>
+    <string name="about_title_sponsors">"Sponsors"</string>
 </resources>

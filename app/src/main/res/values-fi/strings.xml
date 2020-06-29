@@ -808,7 +808,7 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
     <string name="quest_buildingLevels_answer_multipleLevels">"vaihtelee rakennuksen osan mukaan"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingLevels_answer_description">"Tässä tapauksessa, syötä yksinkertaisesti korkeimman rakennuksen arvot"</string>
+    <string name="quest_buildingLevels_answer_description">"Siinä tapauksessa syötä korkeimman osan mukaan."</string>
 
     <!-- Fuzzy -->
     <string name="unglue_hint">"Täppää irroittaaksesi näkymä kohdasta"</string>
@@ -1834,7 +1834,7 @@ Jaetaanko nyt?"</string>
     <string name="quest_recycling_materials_answer_waste_description">"Joten tämä on kaikille jätteille, kuten kotitalousjätteille tai kaupallisille jätteille?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_accepts_cash_title">"Hyväksyykö s% käteismaksun?"</string>
+    <string name="quest_accepts_cash_title">"Hyväksyykö %s käteismaksun?"</string>
 
     <!-- Fuzzy -->
     <string name="user_profile">"Profiilini"</string>

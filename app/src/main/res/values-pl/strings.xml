@@ -2307,4 +2307,12 @@ Pamiętaj, że ta aplikacja pyta o numer budynku tylko po tym, jak zostanie okre
     <string name="user_profile_achievement_levels">"Poziom osiągnięcia"</string>
     <string name="quest_address_street_no_named_streets">"Nie należy do nazwanej ulicy"</string>
     <string name="quest_address_street_place_name_label">"Nazwa miejscowości/miejsca:"</string>
+    <string name="quest_buildingLevels_address_title">"Ile kondygnacji ma budynek o niumerze %s?"</string>
+    <string name="quest_roofShape_address_title">"Jaki ogólny kształt dachu ma ten budynek o numerze %s?"</string>
+    <string name="quest_recycling_type_cooking_oil">"Olej jadalny"</string>
+    <string name="quest_recycling_type_engine_oil">"Olej silnikowy"</string>
+    <string name="link_graphhopper_description">"Elastyczne wyszukiwanie tras"</string>
+    <string name="link_qwant_maps_description">"Mapa umożliwiająca wyszukiwanie miejsc i tras"</string>
+    <string name="privacy_html_tileserver2">"&lt;p&gt;By wyświetlić mapę przygotowane dane pobierane są z %1$s. Zobacz ich &lt;a href=\"%2$s\"&gt;politykę prywatności&lt;/a&gt; by uzyskać pełne informacje.&lt;/p&gt;"</string>
+    <string name="about_title_sponsors">"Sponsorzy"</string>
 </resources>
