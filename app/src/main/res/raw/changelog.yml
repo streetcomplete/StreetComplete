@@ -1,8 +1,8 @@
-v21.0-beta1: |
+v21.0: |
   <h3>🗺️ New Map Provider</h3>
   <p>Big thanks to <a href="https://www.jawg.io">JawgMaps</a>, a provider of online
-   custom maps, geocoding, routing and elevation data. They are helping OpenStreetMap by providing
-   their map service to StreetComplete for free! <br/>
+   custom maps, geocoding and routing based on OpenStreetMap data. They are providing their vector
+   map tiles service to StreetComplete for free! <br/>
    Their maps are also quite excellent:
    You can look forward to <strong>daily map updates</strong> and <strong>map loading
    times cut in half</strong>, as their map data is very lightweight.</p>
@@ -11,6 +11,7 @@ v21.0-beta1: |
    have been a map at all in this time.</p>
   <h3>Enhancements</h3>
   <ul>
+    <li>Use adaptive launcher icon (#1928), by @pstorch</li>
     <li>The app can now be moved to SD card in the Android settings (#1787), thanks @Mortein and @Atrate</li>
     <li>Labels for countries and big cities stand out more, so they are better distinguishable from smaller places</li>
     <li>Accessibility: The text on the map now scales up when zooming and when increasing the font size in the Android settings (#1877), by @matkoniecz</li>
@@ -18,6 +19,14 @@ v21.0-beta1: |
     <li>Recycling type: Added cooking and motor oil options (#1830)</li>
     <li>Building type: Don't ask for (theme park) attractions (#1891)</li>
     <li>Added some achievement links</li>
+  </ul>
+  <h3>Fixes</h3>
+  <ul>
+  <li>Fix a crash for Finnish users (#1911), by @matkoniecz</li>
+  <li>Quest pins are not occluded by street names and other labels (#1905, #1906, #1908), by @matkoniecz</li>
+  <li>Fix display of compass rose for people with a larger system font size (#1916), by @matkoniecz</li>
+  <li>Fix animation of solved quest was cut off (#1910)</li>
+  <li>Fix country flag for Costa Rica was missing</li>
   </ul>
 
 v20.1: |
