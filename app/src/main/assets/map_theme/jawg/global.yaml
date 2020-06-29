@@ -71,7 +71,7 @@ scene:
 
 camera:
     type: perspective
-    max_tilt: 60
+    max_tilt: 40
     fov: 80
 
 lights:
