@@ -58,7 +58,7 @@ layers:
             draw:
                 quest-icons:
                     interactive: true
-                    priority: 10 #hack, but having priority 2 here and 1 for dots causes icons to be blocked by dots displayed for the same object (despite "collide: false")
+                    priority: 0
                     order: function() { return feature.order }
                     size: 66px
                     sprite: function() { return feature.kind }
@@ -69,6 +69,7 @@ layers:
             draw:
                 quest-dots:
                     priority: 1
+                    order: 1
                     size: 16px
                     collide: false
                     offset: [-2.5px, -22px]
