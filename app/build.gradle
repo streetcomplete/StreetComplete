@@ -275,9 +275,9 @@ task pullTranslations {
                     fileUrl = new JsonSlurper().parse(inputStream).result.url
                 }
                 def androidResCodes = languageToAndroidResCodes[language] ?: [language]
+                def text = new URL(fileUrl).openStream().getText()
                 for (androidResCode in androidResCodes) {
                     def targetFile = "app/src/main/res/values-$androidResCode/strings.xml"
-                    def text = new URL(fileUrl).openStream().getText()
                     new File(targetFile).newWriter().withWriter { it << text }
                 }
             }
