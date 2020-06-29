@@ -237,13 +237,13 @@ task pullTranslations {
                 "ja","ko","lt","ml","nb","nl","nn","pl","pt","pt-br","ru","sk","sl","sq","sv","tr",
                 "uk","vi","zh-cn","zh-tw"
         ].toSet()
-        def languageToAndroidResCode = [
-                "id": "in",
-                "nb": "no",
-                "zh-cn": "zh",
-                "en-gb": "en-rGB",
-                "pt-br": "pt-rBR",
-                "zh-tw": "zh-rTW"
+        def languageToAndroidResCodes = [
+                "id": ["in"],
+                "nb": ["no", "nb"],
+                "zh-cn": ["zh"],
+                "en-gb": ["en-rGB"],
+                "pt-br": ["pt-rBR"],
+                "zh-tw": ["zh-rTW"]
         ]
 
         def languageListConnection = new URL("$baseUrl/languages/list").openConnection()
@@ -274,10 +274,11 @@ task pullTranslations {
                     }
                     fileUrl = new JsonSlurper().parse(inputStream).result.url
                 }
-                def androidResCode = languageToAndroidResCode[language] ?: language
-                def targetFile = "app/src/main/res/values-$androidResCode/strings.xml"
-                new File(targetFile).newWriter().withWriter {
-                    it << new URL(fileUrl).openStream()
+                def androidResCodes = languageToAndroidResCodes[language] ?: [language]
+                for (androidResCode in androidResCodes) {
+                    def targetFile = "app/src/main/res/values-$androidResCode/strings.xml"
+                    def text = new URL(fileUrl).openStream().getText()
+                    new File(targetFile).newWriter().withWriter { it << text }
                 }
             }
         }
