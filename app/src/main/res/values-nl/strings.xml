@@ -2302,4 +2302,11 @@ Let op dat deze app alleen naar het huisnummer van een gebouw vraagt nadat zijn 
     <string name="quest_buildingLevels_address_title">"Hoeveel etages heeft het gebouw met huisnummer %s ?"</string>
     <string name="quest_roofShape_address_title">"Welke vorm heeft het dak met huisnummer %s ?"</string>
     <string name="quest_buildingType_address_title">"Wat voor soort gebouw is huisnummer %s ?"</string>
+    <string name="quest_recycling_type_cooking_oil">"Kookolie"</string>
+    <string name="quest_recycling_type_engine_oil">"Motorolie"</string>
+    <string name="link_photon_description">"Een zoekopdracht naar Nomatim met algemeen zoeken en zoeken terwijl u typt"</string>
+    <string name="link_graphhopper_description">"Een flexibele routering machine"</string>
+    <string name="link_qwant_maps_description">"Een kaart met doorzoekbare plaatsen en routebeschrijvingen"</string>
+    <string name="privacy_html_tileserver2">"&lt;p&gt; Om de kaart weer te geven, worden vectortegels opgehaald uit %1$s. Zie hun &lt;a href=\"%2$s\"&gt; privacy-verklaring &lt;/a&gt; voor meer informatie. &lt;/p&gt;"</string>
+    <string name="about_title_sponsors">"Sponsors"</string>
 </resources>
