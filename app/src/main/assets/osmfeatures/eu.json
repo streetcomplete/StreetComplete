@@ -243,9 +243,6 @@
         "amenity/parking/multi-storey": {
             "name": "Maila anitzeko aparkaleku"
         },
-        "amenity/swimming_pool": {
-            "name": "Igerileku"
-        },
         "barrier/wall": {
             "name": "Pareta"
         },
@@ -266,9 +263,6 @@
         },
         "amenity/shelter": {
             "name": "Aterpetxe"
-        },
-        "amenity/ferry_terminal": {
-            "name": "Ferry geltoki / Terminala"
         },
         "amenity/courthouse": {
             "name": "Epaitegi"
@@ -405,14 +399,8 @@
         "amenity/place_of_worship/shinto": {
             "name": "Xintoismo Santutegia"
         },
-        "amenity/scrapyard": {
-            "name": "Txatarra metaketa"
-        },
         "amenity/social_facility/homeless_shelter": {
             "name": "Etxegabeentzako aterpetxe"
-        },
-        "amenity/register_office": {
-            "name": "Erregistro bulegoa"
         },
         "amenity/clinic": {
             "name": "Erietxe"

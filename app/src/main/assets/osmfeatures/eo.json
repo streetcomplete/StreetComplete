@@ -24,7 +24,7 @@
             "terms": "konstruajho,konstruajxo,konstruo,domo"
         },
         "amenity/restaurant/indian": {
-            "name": "Restoracio (Barata kuirarto)",
+            "name": "Restoracio (hinda kuirarto)",
             "terms": "barata restoracio,hinda restoracio"
         },
         "craft/dressmaker": {
@@ -44,6 +44,10 @@
         },
         "railway/halt": {
             "name": "Stacio fervoja (laŭpete)"
+        },
+        "amenity/vending_machine/eggs": {
+            "name": "Vendilo de ovoj",
+            "terms": "ovoj"
         },
         "shop/agrarian": {
             "name": "Terkultur-investaĵa vendejo",
@@ -70,8 +74,12 @@
             "terms": "ĉasado,kaptado,bestoĉasado,armiloj,pafiloj,fusiloj"
         },
         "amenity/waste_disposal": {
-            "name": "Rubujego",
+            "name": "Rubujego (miksita)",
             "terms": "rubejo,rubo,rubujo,balaaĵujo,forĵetaĵujo"
+        },
+        "amenity/post_depot": {
+            "name": "Poŝta disspecigejo",
+            "terms": "poŝto,disordigejo,laŭspecigejo,disspecigejo,ordigejo"
         },
         "amenity/toilets/disposal/pitlatrine": {
             "name": "Necesejo ter‑trua (latrino)",
@@ -117,8 +125,8 @@
             "terms": "envica domo,ŝtondomo,brikdomo,envicdomo,vica domo,sekvenca domo"
         },
         "aeroway/runway": {
-            "name": "Avia dromo",
-            "terms": "kurejo,dromo"
+            "name": "Aviokurejo",
+            "terms": "kurejo,dromo,aviakurejo,avikurejo"
         },
         "amenity/studio": {
             "name": "Studio",
@@ -137,7 +145,7 @@
             "terms": "mejloŝtono,cipo"
         },
         "waterway/sanitary_dump_station": {
-            "name": "Stacio de forigado de fekaĵoj (por jaĥtoj)",
+            "name": "Stacio de forigo de fekaĵoj (por jaĥtoj)",
             "terms": "malpruaĵo,fekaĵo"
         },
         "barrier/city_wall": {
@@ -224,12 +232,16 @@
             "name": "Terfrukta vendotablo",
             "terms": "terfruktoj,farmbutiko,farmobutiko,stando,vendbudo,legomejo,legombutiko,legomvendejo"
         },
+        "aeroway/spaceport": {
+            "name": "Kosmodromo",
+            "terms": "spacoŝippafejo,kosmoŝipo,raketo"
+        },
         "waterway/stream_intermittent": {
             "name": "Perioda rivereto",
             "terms": "rivereto,akvofluo,perioda rivereto,neĉiama rivereto,neregula rivereto,sezona rivereto"
         },
         "highway/road": {
-            "name": "Nekonata vojo",
+            "name": "Nekonatspeca vojo",
             "terms": "nekonata vojo"
         },
         "address": {
@@ -254,6 +266,10 @@
         "aerialway/rope_tow": {
             "name": "Skitelfero ŝnur-tira",
             "terms": "shnurtira skitelfero,sxnurtira skitelfero,skilifto ŝnur-tira"
+        },
+        "amenity/lavoir": {
+            "name": "Vestaĵ-lavejo (ĉe rivero)",
+            "terms": "eksterdoma lavejo,lavejo,vestaĵlavejo"
         },
         "office/therapist": {
             "name": "Kabineto de terapiisto",
@@ -291,6 +307,9 @@
             "name": "Vina vendejo",
             "terms": "vinvendejo,vinovendejo,vindejo,alkoholaĵoj"
         },
+        "demolished/building": {
+            "name": "Antaŭnelonge malkonstruita konstruaĵo"
+        },
         "shop/hairdresser": {
             "name": "Frizejo",
             "terms": "frizisto,haristo,hararisto,barbisto,hartondisto,tondisto"
@@ -305,17 +324,14 @@
         },
         "tourism/information/board": {
             "name": "Inform-tabulo",
-            "terms": "informtabulo,mesaĝtabulo,anonctabulo"
+            "terms": "informtabulo,mesaĝtabulo,anonctabulo,afiŝejo,afishejo,afisxejo,,tabulo de informoj,afiŝtabulo"
         },
         "amenity/restaurant/french": {
-            "name": "Restoracio (Franca kuirarto)",
+            "name": "Restoracio (franca kuirarto)",
             "terms": "franca restoracio"
         },
         "amenity/ferry_terminal": {
-            "name": "Pram-stacio"
-        },
-        "shop/furnace": {
-            "name": "Hejtila vendejo"
+            "name": "Pramstacio"
         },
         "landuse/industrial": {
             "name": "Industria tereno",
@@ -345,6 +361,10 @@
             "name": "Salono de ludoj",
             "terms": "ludejo,amuzaparatoj,videoludoj,paĉinko,flipero,bilardo"
         },
+        "craft/pottery": {
+            "name": "Laborejo de potfaristo",
+            "terms": "potfaristo,portfarado,ceramikado"
+        },
         "craft/roofer": {
             "name": "Tegmentista oficejo",
             "terms": "tegmentisto,tegolisto,ardeztegisto"
@@ -354,7 +374,7 @@
             "terms": "fotaŭtomato,fotoaŭtomato,fotobudo,fotilo"
         },
         "amenity/restaurant/mexican": {
-            "name": "Restoracio (Meksika kuirarto)",
+            "name": "Restoracio (meksika kuirarto)",
             "terms": "meksika restoracio"
         },
         "shop/massage": {
@@ -384,6 +404,10 @@
         "tourism/aquarium": {
             "name": "Akvario",
             "terms": "akvario"
+        },
+        "man_made/manhole": {
+            "name": "Stratkanala kovrilo",
+            "terms": "stratkanalo,kanalo,kloako,kablokanalo,pluvkanalo,kovrilo,homtruo"
         },
         "type/site": {
             "name": "Grupiga rilato",
@@ -433,6 +457,10 @@
             "name": "Vest-lavejo (nepolara solvilo)",
             "terms": "blankigejo,lavejo,lavbutiko"
         },
+        "indoor/elevator": {
+            "name": "Ŝakto de lifto (enkonstruaĵa)",
+            "terms": "levmaŝino,levmashino,levmasxino,ŝakto"
+        },
         "tourism/caravan_site": {
             "name": "Kampad-veturila parkumejo",
             "terms": "kampadveturilo,kampveturilo"
@@ -453,8 +481,11 @@
             "name": "Mebla vendejo",
             "terms": "mebloj,meblovendejo,meblaĵoj"
         },
+        "disused/railway": {
+            "name": "Neuzata relvoja objekto"
+        },
         "advertising/billboard": {
-            "name": "Reklam‑tabulego",
+            "name": "Reklam-tabulego",
             "terms": "anonctabulo,reklamo,spamo,afiŝo,afisho,afisxo,reklamtabulo,reklamtabulego,anonctabulego"
         },
         "shop/bakery": {
@@ -468,6 +499,9 @@
         "emergency/phone": {
             "name": "Alarma telefono",
             "terms": "alarmo,vivsava telefono,telefono"
+        },
+        "disused/shop": {
+            "name": "Neuzata vendejo"
         },
         "golf/bunker": {
             "name": "Sabla malhelpaĵo",
@@ -511,6 +545,10 @@
             "name": "Vendilo de glaciaĵoj",
             "terms": "glaciaĵo"
         },
+        "leisure/trampoline_park": {
+            "name": "Parko de saltadtukoj",
+            "terms": "saltadtukoj,saltadotukoj,saltadtukoj,saltotabuloj,trampolinoj"
+        },
         "man_made/tower/defensive": {
             "name": "Turo defenda",
             "terms": "defendturo"
@@ -546,6 +584,10 @@
         "highway/speed_camera": {
             "name": "Rapid-kontrolilo",
             "terms": "rapidkontrolo,rapidkamerao,fotoradaro,rapidmezurilo"
+        },
+        "amenity/studio/radio": {
+            "name": "Radi-studio",
+            "terms": "radiostudio,sonregistrejo,studio,radistudio"
         },
         "public_transport/station_monorail": {
             "name": "Stacio de unurela fervojo",
@@ -622,6 +664,10 @@
             "name": "Akvovojo",
             "terms": "akvovojo,kanalo"
         },
+        "barrier/swing_gate": {
+            "name": "Bariero turnebla",
+            "terms": "vojbarilo,movebla barilo"
+        },
         "emergency/destination": {
             "name": "Vivsav-serva aliro: nur al celloko"
         },
@@ -649,9 +695,17 @@
             "name": "Bankejo",
             "terms": "banko"
         },
+        "highway/path/informal": {
+            "name": "Vojeto neoficiala",
+            "terms": "vojeto,pado,piedvojeto,irejo"
+        },
         "shop/outpost": {
             "name": "Ricevejo de aĉetaĵoj (per interreto)",
             "terms": "enreta aĉeto,reta aĉeto"
+        },
+        "highway/path/boardwalk": {
+            "name": "Trotuaro ligna tra malsekejo/sablo",
+            "terms": "tramalsekejo,irejo,ligna irejo,tabula irejo,lignotabula irejo,ponteto"
         },
         "amenity/prison": {
             "name": "Mallibereja tereno",
@@ -660,6 +714,10 @@
         "leisure/fishing": {
             "name": "Loko por fiŝhokado",
             "terms": "fiŝhokado,hokfiŝado,fiŝkaptado,fisxejo,fishejo"
+        },
+        "building/sty": {
+            "name": "Pork-stalo",
+            "terms": "porkstalo,stalo,porkostalo,porkejo"
         },
         "building/boathouse": {
             "name": "Boat-garaĝo",
@@ -734,7 +792,7 @@
         },
         "aerialway/gondola": {
             "name": "Telfero plur-vagoneta",
-            "terms": "telfero,kablovojo,gondolo,aertelfero"
+            "terms": "plurvagoneta telfero,nacela telfero,vagoneta telfero"
         },
         "shop/window_blind": {
             "name": "Fenestr-kovrila vendejo",
@@ -745,7 +803,7 @@
             "terms": "reklamkolono,kolumno,afiŝkolono"
         },
         "amenity/restaurant/italian": {
-            "name": "Restoracio (Itala kuirarto)",
+            "name": "Restoracio iItala kuirarto)",
             "terms": "itala restoracio"
         },
         "barrier/turnstile": {
@@ -753,7 +811,7 @@
             "terms": "rotacia barilpordo,turnebla barilpordo"
         },
         "building/temple": {
-            "name": "Templa konstruaĵo",
+            "name": "Konstruaĵo de templo",
             "terms": "templo,sanktejo"
         },
         "landuse/military/barracks": {
@@ -766,6 +824,10 @@
         },
         "amenity/coworking_space": {
             "name": "Loko por samloka laborado (ang. coworking)"
+        },
+        "craft/cleaning": {
+            "name": "Oficejo de balaisto",
+            "terms": "balaisto,purigisto"
         },
         "natural/water/wastewater": {
             "name": "Baseno de akvopurigejo",
@@ -795,16 +857,12 @@
             "name": "Oficejo de kamenpurigisto",
             "terms": "kamenisto,kamenpurigisto,kamentubisto"
         },
-        "railway/narrow_gauge": {
-            "name": "Relvojo etŝpura",
-            "terms": "etŝpura fervojo,etshpura fervojo,etsxpura fervojo,mallarĝŝpura fervojo,erlvojo,relparo,trako"
-        },
         "shop/curtain": {
             "name": "Kurtena vendejo",
             "terms": "kurtenoj,fenestroj"
         },
         "amenity/recycling_container": {
-            "name": "Centro de recikligo",
+            "name": "Rubujego (recikligo)",
             "terms": "rubujo,balaaĵujo,rubujego,recikligujo"
         },
         "healthcare/hospice": {
@@ -844,7 +902,7 @@
             "terms": "bestoĝardeno,kaĝo,leono,,tigro,elefanto,zoologia ĝardeno,zoo"
         },
         "amenity/restaurant/asian": {
-            "name": "Restoracio (Azia kuirarto)",
+            "name": "Restoracio (azia kuirarto)",
             "terms": "azia restoracio"
         },
         "craft/bookbinder": {
@@ -867,6 +925,10 @@
             "name": "Trinkaĵa vendejo",
             "terms": "trinkaĵoj,trinkajhoj,trinkajxoj,sukoj,drinkaĵoj"
         },
+        "entrance": {
+            "name": "Enirejo/elirejo",
+            "terms": "eniro,eliro,pordo"
+        },
         "emergency/fire_alarm": {
             "name": "Alarmilo kontraŭfajra",
             "terms": "fajro,alarmbudo,budo"
@@ -880,8 +942,8 @@
             "terms": "juda preĝejo,judismo,judaismo"
         },
         "highway/construction": {
-            "name": "Vojo fermita (dum konstruado)",
-            "terms": "farmita vojo"
+            "name": "Fermita vojo",
+            "terms": "vojo fermita,dumkonstruado,riparata vojo"
         },
         "power/tower": {
             "name": "Elektrofosto (alttensia)",
@@ -889,7 +951,7 @@
         },
         "aerialway/cable_car": {
             "name": "Telfero unu-vagoneta (alterna)",
-            "terms": "telfero,kablovojo,aertelfero"
+            "terms": "telfero,kablovojo,aertelfero,vagoneta telfero,nacela telfero"
         },
         "craft/floorer": {
             "name": "Oficejo de plank-metisto",
@@ -906,6 +968,10 @@
         "craft/shoemaker": {
             "name": "Ŝuista laborejo",
             "terms": "ŝuisto,shuisto,sxuisto,botisto"
+        },
+        "amenity/refugee_site": {
+            "name": "Kampadejo por rifuĝantoj",
+            "terms": "rifuĝantoj,rifughantoj,rifugxantoj,enmigrantoj"
         },
         "shop/interior_decoration": {
             "name": "Ensembla (meblara) vendejo",
@@ -939,6 +1005,10 @@
             "name": "Laborejo de sign-faristo",
             "terms": "signfaristo,signofaristo,emblemfaristo,ŝildofaristo"
         },
+        "amenity/vending_machine/bread": {
+            "name": "Vendilo de panoj",
+            "terms": "panoj,bulkoj,bakaĵo"
+        },
         "boundary": {
             "name": "Limo"
         },
@@ -946,9 +1016,21 @@
             "name": "Diet-suplementa vendejo",
             "terms": "dietsuplementoj,nutraĵoj"
         },
+        "amenity/studio/video": {
+            "name": "Film-studio",
+            "terms": "filmejo,filmfarejo,filmostudio,filmstudio,televidstudio"
+        },
         "craft/gardener": {
             "name": "Ĝardenista oficejo",
             "terms": "ĝardenisto,ghardenisto,gxardenisto"
+        },
+        "man_made/goods_conveyor": {
+            "name": "Transporta bendo",
+            "terms": "rultapiŝo,rultapisho,rultapisxo,ruliĝanta transportilo"
+        },
+        "indoor/stairs": {
+            "name": "Enkonstruaĵa ŝtuparejo",
+            "terms": "ŝtuparejo,sxtuparejo,shtuparejo"
         },
         "building/church": {
             "name": "Kirko",
@@ -962,6 +1044,10 @@
             "name": "Videoluda vendejo",
             "terms": "videoludoj,komputilaj ludoj,elektronikaj ludoj"
         },
+        "highway/cycleway/crossing/bicycle_foot": {
+            "name": "Stratpasejo por biciklistoj k piedirantoj",
+            "terms": "biciklvojo,biciklovojo,pasejo,zebro"
+        },
         "traffic_calming/dip": {
             "name": "Kaveto",
             "terms": "stratmalĝibo"
@@ -969,10 +1055,6 @@
         "traffic_calming/choker": {
             "name": "Mallarĝigo",
             "terms": "mallarghigo,mallargxigo"
-        },
-        "railway/funicular": {
-            "name": "Funikularo",
-            "terms": "kablovojo,fervojeto,trajneto,kablotramo,telfero"
         },
         "power/transformer": {
             "name": "Transformilo",
@@ -990,10 +1072,6 @@
             "name": "Konsultejo pri sano",
             "terms": "konsultejo,sankonsultejo,konsilejo"
         },
-        "leisure/track/cycling_point": {
-            "name": "Kurejo bicikla",
-            "terms": "dromo,biciklado,biciklkonkursejo,konkursejo"
-        },
         "landuse/military/naval_base": {
             "name": "Marbazo armea",
             "terms": "haveno armea,ŝiparo milita"
@@ -1001,6 +1079,10 @@
         "shop/department_store": {
             "name": "Ĉiovendejo",
             "terms": "chiovendejo,cxiovendejo,butikego,grandmagazeno,superbazaro,vendejego"
+        },
+        "healthcare/dentist/orthodontics": {
+            "name": "Kabineto de dent-ĝustigisto",
+            "terms": "dentisto,dentĝustigisto,dentgxustigisto,dentghustigisto,ortodencio,dentortopedio"
         },
         "historic/wayside_cross": {
             "name": "Krucifikso apudvoja",
@@ -1018,10 +1100,6 @@
             "name": "Du paralelaj stangoj",
             "terms": "paralelaj stangoj,rekoj"
         },
-        "railway/rail/highspeed": {
-            "name": "Fervojo altrapida",
-            "terms": "grandrapida trajno,rapidega trajno,altrapida trajno"
-        },
         "highway/footway": {
             "name": "Trotuaro",
             "terms": "irejo,piedirejo,pavimo"
@@ -1038,6 +1116,10 @@
             "name": "Remburisteja laborejo",
             "terms": "remburado,remburisto,tepetisto,ledlaboristo"
         },
+        "man_made/manhole/sewer": {
+            "name": "Stratkanala (kloakakvo) kovrilo",
+            "terms": "stratkanalo,homtruo,kloako,kloakakvo,malpura akvo,fekaĵoj"
+        },
         "natural/glacier": {
             "name": "Glacirivero",
             "terms": "glaĉero,glaciejo,glacifluo"
@@ -1045,6 +1127,10 @@
         "shop/storage_rental": {
             "name": "Magazena spaco por lui",
             "terms": "konservejo,magazeno privata"
+        },
+        "barrier/bollard_line": {
+            "name": "Vico de palisoj",
+            "terms": "palisaro,palisetoj,fostoj,palisoj"
         },
         "shop/fashion": {
             "name": "Mod-butiko"
@@ -1061,6 +1147,10 @@
             "name": "Konduktubo",
             "terms": "dukto,tubaro,tubolinio,tubkondukilo,naftodukto,gasoduto,akvodukto"
         },
+        "amenity/vacuum_cleaner": {
+            "name": "Polvosuĉilo",
+            "terms": "polvosuchilo,polvosucxilo,polvsuĉilo,senpolvigilo"
+        },
         "landuse/religious": {
             "name": "Religia tereno",
             "terms": "preĝejo,monaĥejo"
@@ -1076,6 +1166,10 @@
         "tourism/motel": {
             "name": "Aŭt-hotelo",
             "terms": "aŭtohotelo,autohotelo,auxtohotelo,motelo,gastejo"
+        },
+        "amenity/vending_machine/bottle_return": {
+            "name": "Aŭtomato por kolekti botelojn",
+            "terms": "boteloj,reciklado"
         },
         "building/cathedral": {
             "name": "Katedralo",
@@ -1260,9 +1354,6 @@
             "name": "Bebaĵa vendejo",
             "terms": "bebo,suĉinfano"
         },
-        "shop/fishmonger": {
-            "name": "Fiŝa vendejo"
-        },
         "place/square": {
             "name": "Placo",
             "terms": "urboplaco"
@@ -1323,6 +1414,10 @@
             "name": "Murpentraĵo",
             "terms": "murskribaĵo,grafitio"
         },
+        "highway/raceway/motocross": {
+            "name": "Vojo aŭtokonkursada (motokroso)",
+            "terms": "aŭtokonkursejo,aŭtodromo,kurejo,dromo,motocross,motokroso,speedway,spidvejo"
+        },
         "man_made/chimney": {
             "name": "Kamentubo",
             "terms": "kameno,fumtubo"
@@ -1350,6 +1445,14 @@
         "building/grandstand": {
             "name": "Spektejo ĉefa",
             "terms": "tribuno,podio,estrado,spektoteraso,spektantejo"
+        },
+        "leisure/garden/community": {
+            "name": "Komuna ĝardeno",
+            "terms": "ĝardeno,ghardeno,gxardeno,najbara ĝardeno"
+        },
+        "building/office": {
+            "name": "Oficeja konstruaĵo",
+            "terms": "oficejoj,ĉielskrapanto"
         },
         "traffic_calming/rumble_strip": {
             "name": "Trembruaj strietoj",
@@ -1379,6 +1482,10 @@
             "name": "Akuŝisto",
             "terms": "akuŝistino,naskiĝcentro,naskiĝdomo,gravedeco"
         },
+        "amenity/cafe/bubble_tea": {
+            "name": "Kafejo (bobelteo)",
+            "terms": "bubble tea,aervezikteo,aerveziketteo,boba"
+        },
         "amenity/social_facility/ambulatory_care": {
             "name": "Flegejo",
             "terms": "ambulatorio,dispensario"
@@ -1403,8 +1510,16 @@
             "name": "Aŭtovoja ligilo",
             "terms": "enveturejo,elveturejo,aŭtoŝoseo,nodo"
         },
+        "amenity/car_pooling": {
+            "name": "Haltejo aŭtomobila (carpooling)",
+            "terms": "carpooling,petveturado,kunveturado"
+        },
         "highway/crossing": {
             "name": "Trapasejo"
+        },
+        "leisure/garden/botanical": {
+            "name": "Botanika ĝardeno",
+            "terms": "ghardeno,gxardeno,plantejo"
         },
         "place/isolated_dwelling": {
             "name": "Solstaranta domo",
@@ -1443,8 +1558,8 @@
             "terms": "religia oficejo"
         },
         "landuse/military/obstacle_course": {
-            "name": "Obstakl-kurejo",
-            "terms": "dromo,soldatkurejo"
+            "name": "Obstakl-kurejo armea",
+            "terms": "obstaklkurejo,soldatkurejo,termilitistoj"
         },
         "natural/spring": {
             "name": "Akvofonto",
@@ -1462,9 +1577,17 @@
             "name": "Presil-inka vendejo",
             "terms": "presilinko,inko,kartoĉo,farbopulvoro"
         },
+        "attraction/pirate_ship": {
+            "name": "Balancilego pirata ŝipo",
+            "terms": "pirata ŝipo,balancilo"
+        },
         "healthcare/alternative/chiropractic": {
             "name": "Ĥiropraktikisto",
             "terms": "kiropraktikisto"
+        },
+        "amenity/townhall/city": {
+            "name": "Urbodomo",
+            "terms": "urbdomo,magistrato,magistratejo,urba registaro"
         },
         "attraction/summer_toboggan": {
             "name": "Somera tobogano",
@@ -1503,12 +1626,12 @@
             "terms": "parfumoj,parfumejo,bonodorejo"
         },
         "amenity/restaurant/vietnamese": {
-            "name": "Restoracio (Vjetnama kuirarto)",
+            "name": "Restoracio (vjetnama kuirarto)",
             "terms": "vjetnama restoracio"
         },
         "highway/service/drive-through": {
-            "name": "Sen-elaŭtiga servo (drive-through)",
-            "terms": "drive-through,drivethrough,senelaŭtiga servo"
+            "name": "Strateto por sen-elaŭtiĝa servo",
+            "terms": "drive-through,drivethrough,senelaŭtiĝa servo,transveturejo"
         },
         "shop/kiosk": {
             "name": "Gazetbudo",
@@ -1664,7 +1787,11 @@
         },
         "landuse/military/training_area": {
             "name": "Ekzercejo armea",
-            "terms": "testejo,armea spaco"
+            "terms": "armea testejo,testejo,armea spaco"
+        },
+        "leisure/pitch/chess": {
+            "name": "Grandega ŝaktabulo",
+            "terms": "ŝakludejo,ŝaktabulo,sxktabulo,shaktabulo,ĝardenaj ŝakoj"
         },
         "playground/horizontal_bar": {
             "name": "Horizontala stango (por infanoj)",
@@ -1686,10 +1813,6 @@
             "name": "Magazeno",
             "terms": "provizejo,stokejo"
         },
-        "railway/tram": {
-            "name": "Relvojo trama",
-            "terms": "tramo,tramvojo,urbofervojo"
-        },
         "power/minor_line": {
             "name": "Elektra kondukilo (mez- kaj malalttensia)",
             "terms": "lineo,kablo,kurento"
@@ -1702,7 +1825,7 @@
             "name": "Fervoj-stacia konstruaĵo"
         },
         "amenity/restaurant/thai": {
-            "name": "Restoracio (Taja kuirarto)",
+            "name": "Restoracio (taja kuirarto)",
             "terms": "taja restoracio,tajlanda restoracio"
         },
         "public_transport/station_light_rail": {
@@ -1732,6 +1855,10 @@
         "shop/hardware": {
             "name": "Laborila vendejo",
             "terms": "iloj,ilovendejo,il-vendejo,memfaradiloj,faru vin mem"
+        },
+        "amenity/car_sharing": {
+            "name": "Aŭtomobil-pruntejo komunuma (organizita kunveturado)",
+            "terms": "automobilpruntejo,auxtumobilpruntejo,carsharing,car-sharing,aŭtopruntejo"
         },
         "shop/funeral_directors": {
             "name": "Tombistejo",
@@ -1768,6 +1895,10 @@
         "emergency/no": {
             "name": "Vivsav-serva aliro: ne"
         },
+        "man_made/manhole/drain": {
+            "name": "Stratkanala (pluvakvo) kovrilo",
+            "terms": "stratkanalo,kloako,kanalo,pluvakvo,homtruo"
+        },
         "public_transport/stop_position_ferry": {
             "name": "Haltejo prama (haltloko - akvo)",
             "terms": "pramo,śnurfiksejo"
@@ -1781,7 +1912,7 @@
             "terms": "banejo,lavejo,naĝejo,termofonto,varmofonto,baseno"
         },
         "amenity/car_wash": {
-            "name": "Aŭtopurigejo",
+            "name": "Aŭtomobil-purigejo",
             "terms": "purigejo,aŭtomobilpurigejo,autopurigejo,auxtopurigejo,aŭtolavejo,lavejo"
         },
         "highway/street_lamp": {
@@ -1811,6 +1942,13 @@
         "shop/watches": {
             "name": "Horloĝa vendejo",
             "terms": "horloĝoj,horloghoj,horlogxoj,poŝhorloĝoj"
+        },
+        "amenity/parking_entrance": {
+            "name": "Parkumeja en-/el-veturejo",
+            "terms": "elveturejo,enveturejo,parkumejo,parkejo"
+        },
+        "landuse": {
+            "name": "Utilkampo"
         },
         "waterway/riverbank": {
             "name": "Riverbordo"
@@ -1846,6 +1984,9 @@
         "craft/stonemason": {
             "name": "Ŝton-tranĉista laborejo",
             "terms": "ŝtontranĉisto,shtontranchisto,sxtontrancxisto,ŝtonisto,shtonisto,sxtonisto"
+        },
+        "aerialway": {
+            "name": "Kablovoja objekto"
         },
         "amenity/bicycle_parking/lockers": {
             "name": "Bicikla parkumejo: ŝranketoj",
@@ -1919,6 +2060,10 @@
             "name": "Kabineto de kuracisto",
             "terms": "kuracistejo,sanigejo,doktoro"
         },
+        "attraction/kiddie_ride": {
+            "name": "Infana rajdeto",
+            "terms": "rajdo,rajdeto,ĉevaleto,aŭteto,balancilo"
+        },
         "barrier/ditch": {
             "name": "Tranĉeo",
             "terms": "trancheo,trancxeo,foso,fosaĵo"
@@ -1929,10 +2074,6 @@
         "amenity/shelter": {
             "name": "Ŝirmejo",
             "terms": "shirmejo,sxirmejo,ŝedo,budo,ŝirmo"
-        },
-        "shop/frozen_food": {
-            "name": "Frostigit-manĝaĵo vendejo",
-            "terms": "frostigita manĝaĵo,fridigita manĝaĵo"
         },
         "tourism/picnic_site": {
             "name": "Piknika ejo",
@@ -1961,6 +2102,10 @@
         "craft/electrician": {
             "name": "Elektrista oficejo",
             "terms": "elektristo"
+        },
+        "attraction/drop_tower": {
+            "name": "Defala turo (allogaĵo)",
+            "terms": "turo,drop tower,libera falo"
         },
         "historic/archaeological_site": {
             "name": "Arĥeologia ejo",
@@ -1994,8 +2139,12 @@
             "name": "Ekzerca skatolo (por salti)",
             "terms": "gimnastika skatolo,ĉevalo gimnastika"
         },
+        "amenity/fast_food/hot_dog": {
+            "name": "Rapidmanĝejo (kolbasbulkoj)",
+            "terms": "kolbasbulko,kolbasobulko,hotdogo,sandviĉo"
+        },
         "amenity/sanitary_dump_station": {
-            "name": "Stacio de forigado de fekaĵoj (kampado)",
+            "name": "Stacio de forigo de fekaĵoj (kampado)",
             "terms": "kampadejo,malpruaĵo"
         },
         "shop/hearing_aids": {
@@ -2084,6 +2233,10 @@
             "name": "Ĝenerala vendejo",
             "terms": "ghenerala vendejo,gxenerala vendejo,ĉiovendejo,butiko oportuna,vilaĝa vendejo"
         },
+        "amenity/studio/audio": {
+            "name": "Muzik-studio",
+            "terms": "muzikstudio,studio muzika,sonregistrejo"
+        },
         "building_part": {
             "name": "Parto de konstruaĵo",
             "terms": "konstruaĵparto,tegmento"
@@ -2125,7 +2278,7 @@
             "terms": "templo,daŭismo,taismo"
         },
         "building/mosque": {
-            "name": "Moskea konstruaĵo",
+            "name": "Konstruaĵo de moskeo",
             "terms": "moskeo,islamo,minareto"
         },
         "building/cabin": {
@@ -2174,9 +2327,6 @@
         "natural/tree": {
             "name": "Arbo",
             "terms": "arbo"
-        },
-        "amenity/register_office": {
-            "name": "Oficejo de civila stato"
         },
         "highway/crossing/marked-raised": {
             "name": "Stratpasejo zebrostria (kun stratĝibo longa)",
@@ -2245,6 +2395,10 @@
         "leisure/track/running": {
             "name": "Kurejo",
             "terms": "dromo,kurado"
+        },
+        "aerialway/t-bar": {
+            "name": "Skitelfero du-persona (T-forma)",
+            "terms": "aertelfero,seĝa telfero,segha telfero,segxa telfero"
         },
         "historic/boundary_stone": {
             "name": "Limŝtono",
@@ -2316,6 +2470,10 @@
             "name": "Ĉedoma strato",
             "terms": "loka vojo,chedoma vojo,cxedoma vojo,strateto"
         },
+        "attraction/bumper_car": {
+            "name": "Karambolaj aŭtetoj (allogaĵo)",
+            "terms": "koliziaj aŭtetoj,aŭtetoj,dodgem"
+        },
         "attraction/roller_coaster": {
             "name": "Onda fervojo",
             "terms": "reltobogano"
@@ -2324,17 +2482,17 @@
             "name": "Fotokopiilejo",
             "terms": "fotokopiilo,lumkopiilo,kopiilo,ksero,xero"
         },
-        "public_transport/station_ferry": {
-            "name": "Stacio prama",
-            "terms": "pramŝipo,pramterminalo,terminalo,pramstacio"
+        "leisure/firepit": {
+            "name": "Lignofajrejo",
+            "terms": "fajrejo,lignfajrejo,tendarfajro"
         },
         "leisure/pitch/baseball": {
             "name": "Basbala ludkampo",
             "terms": "basbalo,bazpilkado,bazbalo"
         },
-        "railway/monorail": {
-            "name": "Relvojo unurela",
-            "terms": "unurela fervojo,unurelvojo,fervojo"
+        "man_made/bridge": {
+            "name": "Ponto",
+            "terms": "viadukto"
         },
         "office/physician": {
             "name": "Kabineto de kuracisto"
@@ -2421,6 +2579,10 @@
             "name": "Insulo",
             "terms": "insulo"
         },
+        "amenity/karaoke_box": {
+            "name": "Karaokeejo",
+            "terms": "karaokeo,kantado"
+        },
         "attraction/bungee_jumping": {
             "name": "Saltado sur ŝnuro",
             "terms": "ŝnur-saltado,ŝnursaltado,bungee"
@@ -2436,10 +2598,6 @@
         "craft/rigger": {
             "name": "Rigilarista laborejo",
             "terms": "rigo,rigisto,rigilaristo,mastoj,veloj,ŝnuregoj"
-        },
-        "military/checkpoint": {
-            "name": "Kontrolejo armea",
-            "terms": "armea kontrolejo,kontrolpunkto"
         },
         "man_made/water_works": {
             "name": "Akvotrinkebligejo",
@@ -2480,6 +2638,10 @@
             "name": "Naturrezerveja oficejo/impostbudo",
             "terms": "naturrezervejo,naturprotektejo,impostbudo,konservejo,arbaristejo,nacia parko,gardistejo"
         },
+        "historic/pillory": {
+            "name": "Kolono malhonora",
+            "terms": "malhonora kolono,punkolono,pilorio,punpilorio"
+        },
         "office/quango": {
             "name": "Oficejo de duon-registara organizaĵo",
             "terms": "organizaĵo"
@@ -2510,9 +2672,6 @@
         "aerialway/platter": {
             "name": "Skitelfero unu-persona (teler-forma)",
             "terms": "telfero telera,skilifto telerforma,aertelfero,seĝa telfero,segha telfero,segxa telfero"
-        },
-        "amenity/swimming_pool": {
-            "name": "Naĝejo"
         },
         "amenity/vending_machine/condoms": {
             "name": "Vendilo de kondomoj",
@@ -2604,6 +2763,9 @@
             "name": "Benzinejo (por jaĥtoj)",
             "terms": "akvobenzinejo,jaĥto benzinejo"
         },
+        "highway": {
+            "name": "Vojo / privoja objekto"
+        },
         "shop/pastry": {
             "name": "Kukejo",
             "terms": "panejo,bakejo,sukeraĵejo"
@@ -2632,10 +2794,6 @@
             "name": "Tombejo",
             "terms": "tombarejo,mortintejo,enterigejo,sepultejo,nekropolo"
         },
-        "railway/rail": {
-            "name": "Relvojo normalŝpura",
-            "terms": "erlvojo,relparo,trako,normalŝpura,larĝŝpura"
-        },
         "natural/scree": {
             "name": "Rokfalaĵo",
             "terms": "rokfalajho,rokfalajxo,rulŝtonoj,roko,rokaro"
@@ -2655,10 +2813,6 @@
         "amenity/grave_yard": {
             "name": "Tombejo (ĉirkaŭpreĝeja)",
             "terms": "enterigejo,tombarejo,mortintejo,sepultejo"
-        },
-        "railway/light_rail": {
-            "name": "Fervojo malpeza",
-            "terms": "malpeza fervojo,malpeza trajno,suburba fervojo,tramo"
         },
         "office/lawyer/notary": {
             "name": "Oficejo de notario"
@@ -2706,6 +2860,10 @@
         "man_made/cutline": {
             "name": "Senarba strio",
             "terms": "malarbigita strio,kontraŭbrula strio"
+        },
+        "advertising/poster_box": {
+            "name": "Reklam-panelo",
+            "terms": "reklamafiŝo,citylight,afiŝejo,afishejo,afisxejo"
         },
         "craft/scaffolder": {
             "name": "Skafaldista oficejo",
@@ -2763,6 +2921,10 @@
             "name": "Historia ejo",
             "terms": "historiejo,antikvaĵo,memorigaĵo"
         },
+        "aeroway/holding_position": {
+            "name": "Aviadila atendejo",
+            "terms": "aŭtokurejo"
+        },
         "type/enforcement": {
             "name": "Kontrolo",
             "terms": "rapidkontrolo,radaro,kamerao,fotilo,pesilo,pezkontrolo"
@@ -2794,6 +2956,14 @@
         "healthcare/optometrist": {
             "name": "Optometriisto",
             "terms": "okulisto"
+        },
+        "man_made/manhole/power": {
+            "name": "Stratkanala (elektrokabloj) kovrilo",
+            "terms": "stratkanalo,homtruo,elektrokabloj,kabloj,kurentkabloj"
+        },
+        "building/kindergarten": {
+            "name": "Konstruaĵo de infanvartejo",
+            "terms": "infanghardeno,infangxardeno,infanoĝardeno,antaŭlernejo,kindergarteno,infanĝardeno,infanvartejo"
         },
         "indoor/room": {
             "name": "Enkostruaĵa ĉambro (kun muroj)",
@@ -2913,6 +3083,10 @@
             "name": "Artverko",
             "terms": "artaĵo,monumento,statuo,artoverko,pentraĵo,skulptaĵo,murpentraĵo,grafitio"
         },
+        "attraction/swing_carousel": {
+            "name": "Karuselo ĉenseĝa",
+            "terms": "ĉena karuselo,chena karuselo,cxena karuselo,karuselo,flugantaj seĝoj,rotacia balancilo"
+        },
         "amenity/vending_machine/sweets": {
             "name": "Vendilo de dolĉaĵoj",
             "terms": "dolĉaĵoj,dolchajhoj,dolcxajxoj,sukeraĵoj,sukerajhoj,sukerajxoj,"
@@ -2926,8 +3100,8 @@
             "terms": "komercejo"
         },
         "leisure/picnic_table/chess": {
-            "name": "Tablo ŝakluda",
-            "terms": "ŝakludejo,sxakludejo,shakludejo"
+            "name": "Ŝaktabulo",
+            "terms": "ŝakludejo,sxakludejo,shakludejo,tablo ŝakluda"
         },
         "leisure/sauna": {
             "name": "Ŝvitbanejo",
@@ -3005,9 +3179,17 @@
             "name": "Bicikla parkumejo: budoj",
             "terms": "garaĝbudoj,budoj"
         },
+        "entrance/emergency": {
+            "name": "Elirejo je danĝero",
+            "terms": "eliro,evakua eliro,pordo"
+        },
         "highway/services": {
             "name": "Servejo de vojaĝantoj (kun vendejo)",
             "terms": "benzinstacio,ripozejo,apudvoja restoracio,"
+        },
+        "amenity/give_box": {
+            "name": "Kesto de senpaga interŝanĝo",
+            "terms": "publika libroŝranko,senpaga interŝanĝo,interŝanĝejo,intershanghejo,intersxangxejo,givebox,freebox,brokantaĵoj"
         },
         "amenity/bureau_de_change": {
             "name": "Monŝanĝejo",
@@ -3016,6 +3198,10 @@
         "tourism/chalet": {
             "name": "Dometo feria",
             "terms": "feria dometo,hoteleto,loĝejo feria,apartamento"
+        },
+        "building/cowshed": {
+            "name": "Bov-stalo",
+            "terms": "bovostalo,bovejo,stalo,bovdomo,brutejo,bovinoj,bovstalo"
         },
         "office/diplomatic/embassy": {
             "name": "Ambasadejo",
@@ -3028,6 +3214,9 @@
         "public_transport/station_trolleybus": {
             "name": "Stacio trolebusa",
             "terms": "trolebushaltejo,troleo"
+        },
+        "leisure": {
+            "name": "Ripozejo"
         },
         "amenity/post_office": {
             "name": "Poŝtoficejo",
@@ -3120,6 +3309,10 @@
             "name": "Galanteria (vestaj akcesoraĵoj) vendejo",
             "terms": "galanterio,galanteriejo,akcesoraĵoj,saketoj,mansakoj,ombreloj"
         },
+        "area/highway": {
+            "name": "Areo de vojo",
+            "terms": "vojareo,ŝoseo,pavimo,randŝtono,veturejo"
+        },
         "amenity/vending_machine/parcel_pickup_dropoff": {
             "name": "Poŝt-aŭtomato (sendo kaj ricevo)",
             "terms": "poŝtmaŝino,poshtmashino,posxtmasxino,poŝtkesto,pakaĵo,ekspedaĵo"
@@ -3154,6 +3347,10 @@
         "shop/cannabis": {
             "name": "Mariĥuana vendejo",
             "terms": "marihhuano,marihxuano,kanabo,haŝiŝo"
+        },
+        "cycleway/asl": {
+            "name": "Etendita haltzono por biciklistoj",
+            "terms": "haltzono,haltlinio,bicikla kluzo,kluzo"
         },
         "leisure/pitch/boules": {
             "name": "Globludo grunda (Boules)",
@@ -3218,9 +3415,17 @@
             "name": "Akva glitejo",
             "terms": "akvoglitejo,glitejo,akvoparko"
         },
+        "landuse/flowerbed": {
+            "name": "Florbedo",
+            "terms": "florĝardeno,florejo,herbejo"
+        },
         "shop/vacuum_cleaner": {
             "name": "Polvosuĉila vendejo",
             "terms": "polvosuĉiloj,polvosochiloj,polvosucxiloj,senpolvigiloj"
+        },
+        "attraction/log_flume": {
+            "name": "Deglito sur ŝtipo (allogaĵo)",
+            "terms": "ŝtipo,shtipo,sxtipo,defluigo,deglitejo,tobogano"
         },
         "shop/chemist": {
             "name": "Kosmetikaĵa (ankaŭ purigaĵoj) vendejo",
@@ -3231,7 +3436,7 @@
             "terms": "mapo"
         },
         "building/hospital": {
-            "name": "Malsanuleja konstruaĵo",
+            "name": "Konstruaĵo de malsanulejo",
             "terms": "malsanulejo,hospitalo"
         },
         "amenity/marketplace": {
@@ -3243,7 +3448,7 @@
             "terms": "industrio,fabriko"
         },
         "amenity/restaurant/german": {
-            "name": "Restoracio (Germana kuirarto)",
+            "name": "Restoracio (germana kuirarto)",
             "terms": "germana restoracio"
         },
         "public_transport/platform/aerialway_point": {
@@ -3254,7 +3459,7 @@
             "terms": "universitato,altgrada lernejo,instruejo,politeĥniko,politekniko,altlernejo,studejo"
         },
         "building/public": {
-            "name": "Publika konstruaĵo (ofica)",
+            "name": "Publika konstruaĵo",
             "terms": "administrejo"
         },
         "highway/crossing/zebra-raised": {
@@ -3327,6 +3532,10 @@
             "name": "Ŝtonamaso",
             "terms": "shtonamaso,sxtonamaso,kairno,amasaĵo"
         },
+        "advertising/totem": {
+            "name": "Reklam-tabulo staranta",
+            "terms": "reklamtabulo,reklamtotemo,totemo"
+        },
         "amenity/cafe": {
             "name": "Kafejo",
             "terms": "kafo,teo,trinkejo,cafe"
@@ -3374,9 +3583,6 @@
             "name": "Dombesta vendejo",
             "terms": "dombestoj,hejmbestoj,bestoj,kobajo,kuniklo,papago"
         },
-        "amenity/scrapyard": {
-            "name": "Ferrubejo"
-        },
         "man_made/survey_point": {
             "name": "Geodezia vertico",
             "terms": "geodezio,termezurado,referencpunkto"
@@ -3400,6 +3606,10 @@
         "amenity/restaurant/seafood": {
             "name": "Restoracio (marfruktoj)",
             "terms": "marfruktoj,mariskoj,moluskoj,krustuloj,kalmaroj,salikokoj,franca restoracio"
+        },
+        "amenity/recycling/container/electrical_items": {
+            "name": "Rubujego (por elektronikaĵoj)",
+            "terms": "rubujo,elektronika rubo"
         },
         "tourism/information/terminal": {
             "name": "Terminalo (informejo)",
@@ -3436,6 +3646,10 @@
             "name": "Marbordo",
             "terms": "marlimo"
         },
+        "amenity/studio/television": {
+            "name": "Televid-studio",
+            "terms": "televidstudio,filmostudio,filmstudio,studio"
+        },
         "building/carport": {
             "name": "Tegmenta parkumejo",
             "terms": "aŭtejo,garaĝo,garaĝaro,parkumejo,budo,ŝedo"
@@ -3451,6 +3665,10 @@
         "shop/outdoor": {
             "name": "Vojaĝila vendejo",
             "terms": "vojaĝiloj,vojaghiloj,vojagxiloj,ekipaĵo,tendoj"
+        },
+        "highway/raceway": {
+            "name": "Vojo aŭtokonkursada",
+            "terms": "aŭtokonkursejo,aŭtodromo,kurejo,dromo,formulo 1,nascar"
         },
         "emergency/designated": {
             "name": "Vivsav-serva aliro: adaptita"
@@ -3548,6 +3766,10 @@
             "name": "Tea vendejo",
             "terms": "teo,teejo"
         },
+        "emergency/landing_site": {
+            "name": "Surteriĝejo kriokaza",
+            "terms": "surterighejo,surterigxejo,helikopterejo"
+        },
         "aerialway/chair_lift": {
             "name": "Telfero seĝa",
             "terms": "telfero seĝa,telfero segha,telfero segxa,kablovojo,aertelfero,seĝa lifto, segha lifto, segxa lifto,skiada lifto"
@@ -3563,8 +3785,12 @@
             "name": "Pogranda vendejo",
             "terms": "magazeno, staplo"
         },
+        "amenity/loading_dock": {
+            "name": "Ŝarĝ-kajo",
+            "terms": "ŝarĝkajo,sharghkajo,sxargxkajo,ŝarĝadkajo,doko,magazena kajo,kamionoj,kargokajo,kargadkajo,pordego"
+        },
         "building/stadium": {
-            "name": "Stadiona konstruaĵo",
+            "name": "Konstruaĵo de stadiono",
             "terms": "stadiono,sportejo"
         },
         "leisure/slipway_point": {
@@ -3586,6 +3812,10 @@
             "name": "Supergarda kamerao",
             "terms": "kamerao,gvatkamerao,gardado,monitorado"
         },
+        "amenity/gambling": {
+            "name": "Hazardludejo",
+            "terms": "enĵetmaŝinoj,enjxetmasxinoj,enjhetmashinoj,pachinko,paĉinko,unubrakaj banditoj,salono de ludoj,ludsalono,loterio,pokero"
+        },
         "building/hut": {
             "name": "Ĥato (ligna, nemasonita)",
             "terms": "hhato,hxato,kabano,dometo,ĉaledo"
@@ -3597,6 +3827,10 @@
         "natural/saddle": {
             "name": "Sela punkto (intermonto)",
             "terms": "intermonto,montpasejo,selo"
+        },
+        "amenity/kneipp_water_cure": {
+            "name": "Naĝejeto",
+            "terms": "nahgejeto,nagxejeto,piedbano,banejo,baseneto"
         },
         "natural/water/basin": {
             "name": "Baseno (artefarita lageto)",
@@ -3626,8 +3860,8 @@
             "terms": "aŭtomobiloj,aŭtoj,autoj,auxtoj,salono de aŭtoj"
         },
         "building/stable": {
-            "name": "Ĉevalejo",
-            "terms": "chevalejo,cxevalejo,ĉevaldomo,stalo"
+            "name": "Ĉeval-stalo",
+            "terms": "chevalejo,cxevalejo,ĉevaldomo,stalo,ĉevalstalo"
         },
         "amenity/public_bookcase": {
             "name": "Publika libroŝranko",
@@ -3640,6 +3874,14 @@
         "barrier/fence/railing": {
             "name": "Gard-relo",
             "terms": "gardrelo,palisaro,balustro,balustrado,barilo,bariero,apogrelo"
+        },
+        "amenity/vending_machine/ice_cubes": {
+            "name": "Vendilo de glacikuboj",
+            "terms": "glacikuboj,glacikloketoj"
+        },
+        "highway/footway/access_aisle": {
+            "name": "Trotuaro en parkumejo",
+            "terms": "parkumejo,trotuaro,irejo,stratpasejo,pasejo"
         },
         "golf/hole": {
             "name": "Truo",
@@ -3749,6 +3991,10 @@
             "name": "Vendilo de biletoj publik‑transportaj",
             "terms": "biletoj,publika transporto,aŭtobusaj biletoj,tramaj biletoj"
         },
+        "man_made/manhole/gas": {
+            "name": "Stratkanala (gaso) kovrilo",
+            "terms": "stratkanalo,gaso,tergaso,homtruo,metano"
+        },
         "man_made/embankment": {
             "name": "Surŝutaĵo",
             "terms": "surshutajho,sursxutajxo,taluso,maltranĉeo,digo,remparo,altaĵo"
@@ -3756,6 +4002,10 @@
         "shop/tobacco": {
             "name": "Tabaka vendejo",
             "terms": "tabako,cigaredoj,cigaroj"
+        },
+        "aerialway/j-bar": {
+            "name": "Skitelfero unu-persona (J-forma)",
+            "terms": "aertelfero,seĝa telfero,segha telfero,segxa telfero,telfero"
         },
         "building/shed": {
             "name": "Budo",
@@ -3788,6 +4038,10 @@
         "man_made/wastewater_plant": {
             "name": "Akvopurigejo",
             "terms": "akvpurigejo,purigejo"
+        },
+        "amenity/cafe/coffee_shop": {
+            "name": "Kafejo (precipe kafo)",
+            "terms": "kaftrinkaĵoj,espreso,kapuĉino,mokao,mokha,moretta"
         },
         "landuse/plant_nursery": {
             "name": "Arb-plantejo",
@@ -3866,6 +4120,10 @@
             "name": "Alpa herbejo",
             "terms": "tundro,roko,alpherbejo,montara herbejo"
         },
+        "amenity/research_institute": {
+            "name": "Esplorada instituto",
+            "terms": "esplorado,scienco,patentoj,laboratorio"
+        },
         "barrier/kerb/rolled": {
             "name": "Rondigita trotuar‑randaĵo",
             "terms": "trotuarrando,trotuarlimo,irejlimo,irejrandaĵo,randŝtono,randaĵo"
@@ -3875,12 +4133,16 @@
             "terms": "sandviĉoj,sandvichoj,sandvicxoj"
         },
         "amenity/restaurant/japanese": {
-            "name": "Restoracio (Japana kuirarto)",
+            "name": "Restoracio (japana kuirarto)",
             "terms": "japana restoracio"
         },
         "natural/heath": {
             "name": "Erikejo",
             "terms": "arbustaro,herbejo"
+        },
+        "aeroway/parking_position": {
+            "name": "Aviadil-parkumejo (detala pozicio)",
+            "terms": "dromo,aerodromo,flugkampo,surteriĝejo,aŭtokurejo,autokurejo,auxtokurejo"
         },
         "amenity/fast_food/kebab": {
             "name": "Rapidmanĝejo (kebabo)",
@@ -3902,7 +4164,7 @@
             "terms": "galanterio,ledo,ledaĵoj,ledajhoj,ledajxoj"
         },
         "building/commercial": {
-            "name": "Oficeja konstruaĵo",
+            "name": "Oficeja/komerca konstruaĵo",
             "terms": "oficejo,administrejo"
         },
         "historic/wreck": {
@@ -3929,10 +4191,6 @@
             "name": "Puto akva",
             "terms": "puto,akvoputo"
         },
-        "shop/organic": {
-            "name": "Ekologi-manĝaĵa vendejo",
-            "terms": "ekologia manĝaĵo,organika manĝaĵo"
-        },
         "waterway/ditch": {
             "name": "Fosaĵeto defluiga",
             "terms": "fosajheto,fosajxeto,foso,fosakvo"
@@ -3954,8 +4212,8 @@
             "terms": "fervojo,vagonaro,trako"
         },
         "man_made/cross": {
-            "name": "Kruco montpinta",
-            "terms": "kruco,monto,montopinto"
+            "name": "Kruco (nereligia)",
+            "terms": "kruco,monto,montopinto,montpinto"
         },
         "amenity/cinema": {
             "name": "Kinejo",
@@ -3977,7 +4235,7 @@
             "terms": "urbobloko,bloko,stratkvadrato"
         },
         "amenity/restaurant/chinese": {
-            "name": "Restoracio (Ĉina kuirarto)",
+            "name": "Restoracio (ĉina kuirarto)",
             "terms": "ĉina restoracio,china restoracio,cxina restoracio"
         },
         "leisure/pitch/rugby_union": {
@@ -4020,10 +4278,6 @@
             "name": "Optikbutiko",
             "terms": "okulvitristejo,okulvitroj,vitrokuloj,optikisto"
         },
-        "leisure/track/running_point": {
-            "name": "Kurejo",
-            "terms": "dromo,kurado,konkursejo"
-        },
         "type/route/foot": {
             "name": "Piedirada kurso",
             "terms": "turisma kurso,vojo turisma,marŝada kurso"
@@ -4061,7 +4315,7 @@
             "terms": "herbhokeo,herbohokeo,gazonhokeo"
         },
         "building/hangar": {
-            "name": "Hangara konstruaĵo",
+            "name": "Konstruaĵo de hangaro",
             "terms": "hangaro,aeroplanejo,aviadilejo"
         },
         "amenity/recycling": {
@@ -4087,6 +4341,10 @@
             "name": "Ŝtuparlifto skiada",
             "terms": "shtuparlifto skiada,sxtuparliftoskiada,skitelfero tapiŝa,magia tapiŝo,magia tapisxo,magia tapisho"
         },
+        "amenity/post_box": {
+            "name": "Poŝtkesto (senda)",
+            "terms": "poshtkesto,posxtkesto,leterkesto,leterskatolo,leterujo"
+        },
         "public_transport/station_tram": {
             "name": "Stacio trama",
             "terms": "trama haltejo,tramhaltejo"
@@ -4109,6 +4367,10 @@
         "man_made/mast": {
             "name": "Masto",
             "terms": "signalmasto,anteno"
+        },
+        "attraction/river_rafting": {
+            "name": "Deglito sur flosoj (allogaĵo)",
+            "terms": "flosoj,pontonoj,rapidakva sporto,raftoj,ŝvelboatoj"
         },
         "leisure/disc_golf_course": {
             "name": "Ludkampo por golfdisko",
@@ -4134,9 +4396,9 @@
             "name": "Kahel-metista oficejo",
             "terms": "kahelisto,kahelaro,kahelmetisto,glazurado,terakoto"
         },
-        "leisure/track/horse_racing_point": {
-            "name": "Kurejo ĉevala",
-            "terms": "ĉevalkurejo,chevalkurejo,cxevalkurejo,hipodromo"
+        "historic/building": {
+            "name": "Konstruaĵo historia",
+            "terms": "historia konstruaĵo,memorigaĵo,antikvaĵo"
         },
         "indoor": {
             "name": "Enkonstruaĵa objekto"
@@ -4144,6 +4406,10 @@
         "shop/frame": {
             "name": "Bild-kadra vendejo",
             "terms": "kadroj,kadraĵoj,pentraĵkadroj,bildkadroj"
+        },
+        "amenity/weighbridge": {
+            "name": "Pesilo por aŭtomobiloj",
+            "terms": "aŭtomobila pesilo,kamiona pesilo,pezilo"
         },
         "barrier/kerb": {
             "name": "Trotuar-randaĵo",
@@ -4161,6 +4427,10 @@
             "name": "Korba turniĝilo (infanludilo)",
             "terms": "karuselo"
         },
+        "amenity/exhibition_centre": {
+            "name": "Centro de ekspozicioj kaj foiroj",
+            "terms": "ekspoziciejo,ekspozicia centro,eksponejo,ekspona centro,konferencejo,kongresejo"
+        },
         "shop/fabric": {
             "name": "Teksaĵa vendejo",
             "terms": "teksaĵoj,teksajhoj,teksajxoj,ŝtofoj"
@@ -4168,6 +4438,10 @@
         "craft/brewery": {
             "name": "Bierfarejo",
             "terms": "biero"
+        },
+        "barrier/spikes": {
+            "name": "Pikila strio",
+            "terms": "pikiloj,dornoj,erinaco,kontraŭveturila,kontraŭaŭtomobila,polico trafika"
         },
         "highway/turning_circle": {
             "name": "Loko por turniĝi malantaŭen",
@@ -4192,6 +4466,14 @@
         "amenity/dive_centre": {
             "name": "Centro de subakva naĝado",
             "terms": "plonĝado,plonghado,plongxado,naĝado subakva,subakva naĝado,"
+        },
+        "highway/raceway/karting": {
+            "name": "Vojo aŭtokonkursada (karting)",
+            "terms": "aŭtokonkursejo,aŭtodromo,kurejo,dromo,karting,gokartoj"
+        },
+        "amenity/parking_space/disabled": {
+            "name": "Parkumeja loko por malkapabluloj",
+            "terms": "rulseĝo,malkapabluloj,handikakuloj"
         },
         "amenity/vending_machine/feminine_hygiene": {
             "name": "Vendilo de virinaj higienaĵoj",
@@ -4222,7 +4504,7 @@
             "terms": "suveniroj,memoraĵoj,vojaĝmemoraĵoj,donacoj,donaĵoj"
         },
         "craft/locksmith": {
-            "name": "Serurejo"
+            "name": "Laborejo de seruristo"
         },
         "leisure/sports_centre": {
             "name": "Sporta centro",
@@ -4253,8 +4535,12 @@
         "craft/tailor": {
             "name": "Tajlora laborejo (ĉefe viraj vestoj)"
         },
+        "man_made/courtyard": {
+            "name": "Korto",
+            "terms": "interdomejo,interkonstruaĵo"
+        },
         "amenity/restaurant/american": {
-            "name": "Restoracio (Amerika kuirarto)",
+            "name": "Restoracio (amerika kuirarto)",
             "terms": "amerika restoracio,usona restoracio"
         },
         "public_transport/platform/bus": {
@@ -4285,10 +4571,6 @@
             "name": "Naĝejo natura",
             "terms": "strando,sablobordo,plaĝo,banloko,naghejo,nagxejo"
         },
-        "railway/subway": {
-            "name": "Metroo",
-            "terms": "subtera fervojo"
-        },
         "amenity/money_transfer": {
             "name": "Centro de mon-transigo",
             "terms": "monsendo,montransigo"
@@ -4296,10 +4578,6 @@
         "highway/elevator": {
             "name": "Lifto",
             "terms": "levmaŝino,levmashino,levmasxino,levilo,leviĝilo,ŝtuparlifto"
-        },
-        "railway/miniature": {
-            "name": "Miniatura fervojo",
-            "terms": "fervojeto,maketo,trajneto,vagonareto"
         },
         "shop/carpet": {
             "name": "Tapiŝa vendejo",
@@ -4322,7 +4600,7 @@
             "terms": "viandejo,viandobutiko,viandovendejo"
         },
         "barrier/bollard": {
-            "name": "Paliseto",
+            "name": "Paliso",
             "terms": "fosteto,barilo,stango,fosto"
         },
         "public_transport/platform/ferry_point": {
@@ -4335,6 +4613,10 @@
         "barrier": {
             "name": "Barilo",
             "terms": "barilo,baro,obstaklo,malhelpilo,baraĵo,blokado,bariero"
+        },
+        "highway/road/bridge": {
+            "name": "Ponto sur nekonatspeca vojo",
+            "terms": "nekonata vojo"
         },
         "historic/castle": {
             "name": "Kastelo",
@@ -4349,7 +4631,7 @@
             "terms": "aŭtoriparejo,riparejo,aŭtoservejo,aŭtejo,autoriparejo,auxtoriparejo,meĥanisto,mekanisto,meĥanikisto,mekanikisto"
         },
         "craft/hvac": {
-            "name": "Specialisto pri hejtado, aerumado kaj klimatizado",
+            "name": "Oficejo de isto pri hejtado, aerumado, klimatizado",
             "terms": "hejtado,varmigado,hejtilo,aerumado,klimatizado,aerkondiĉado"
         },
         "highway/path": {
@@ -4395,7 +4677,7 @@
         },
         "highway/steps/conveying": {
             "name": "Rulŝtuparo",
-            "terms": "rulshtuparo,rulsxtuparo,movŝtuparo,eskalatoro"
+            "terms": "rulshtuparo,rulsxtuparo,movŝtuparo,eskalatoro,ŝtuparlifto,lifto"
         },
         "shop/books": {
             "name": "Libra vendejo",
@@ -4438,7 +4720,7 @@
             "terms": "adorejo,krucifikso,kruco"
         },
         "amenity/restaurant/turkish": {
-            "name": "Restoracio (Turka kuirarto)",
+            "name": "Restoracio (turka kuirarto)",
             "terms": "turka kuirarto"
         },
         "type/boundary/administrative": {
@@ -4461,6 +4743,10 @@
             "name": "Ambulanca stacio",
             "terms": "ambulanco,rapida sanservo,rapidservo"
         },
+        "barrier/wall/noise_barrier": {
+            "name": "Bru-ŝirmilo",
+            "terms": "bruŝirmilo,brushirmilo,srusxirmilo,sonŝirmilo,sonŝirmilo,kontraŭbrua,kontraŭsona,"
+        },
         "healthcare/podiatrist": {
             "name": "Pied-kuracisto",
             "terms": "piedisto"
@@ -4473,9 +4759,21 @@
             "name": "Linio",
             "terms": "linio"
         },
+        "emergency/mountain_rescue": {
+            "name": "Stacio de montara savservo",
+            "terms": "savisto,savanto,vivsavisto,montara savservo"
+        },
         "amenity/vehicle_inspection": {
             "name": "Aŭtomobil-kontrolejo",
             "terms": "kontrolstacio,inspektejo"
+        },
+        "amenity/recycling/container/green_waste": {
+            "name": "Rubujego (por bioruboj)",
+            "terms": "rubujo,bioruboj,mulĉo,komposto"
+        },
+        "amenity/kindergarten": {
+            "name": "Infanvartejo (ISCED 0)",
+            "terms": "infanoghardeno,infanogxardeno,antaŭlernejo,kindergarteno,infanĝardeno,infanghardeno,infangxardeno,infanvartejo,lernludejo"
         },
         "man_made/tower/observation": {
             "name": "Turo observada",
@@ -4490,7 +4788,7 @@
             "terms": "akvobaraĵo,digo,akvosojlo,sojlo,vejro"
         },
         "craft/metal_construction": {
-            "name": "Metal-konstruaĵista laborejo",
+            "name": "Laborejo de metal-konstruaĵisto",
             "terms": "metalkonstruaĵo,metalkonstruajxo,metalkonstruajho"
         },
         "craft/painter": {
@@ -4516,6 +4814,13 @@
         "tourism/attraction": {
             "name": "Turisma vidindaĵo",
             "terms": "vidindaĵo,vidindajho,vidindajxo,atrakcio,vizitindaĵo"
+        },
+        "advertising/board": {
+            "name": "Tabulo de reklamoj/anoncoj",
+            "terms": "anonctabulo,reklamtabulo,afiŝtabulo,afiŝejo"
+        },
+        "man_made": {
+            "name": "Artefarita objekto"
         },
         "barrier/kerb/lowered": {
             "name": "Trotuar-randaĵo malalta (≈3cm)",
@@ -4562,8 +4867,12 @@
             "terms": "videjo,vidindaĵo,rigardejo"
         },
         "craft/handicraft": {
-            "name": "Manmetistejo",
-            "terms": "manlaboristo,braklaboristo,manufakturo"
+            "name": "Laborejo de manmetisto",
+            "terms": "manlaboristo,braklaboristo,manufakturo,manmetisto,"
+        },
+        "landuse/construction": {
+            "name": "Konstruejo",
+            "terms": "konstruado,buldozoj"
         },
         "shop/trade": {
             "name": "Pogranda vendejo (konstruaĵ‑materialoj)",
@@ -4576,6 +4885,9 @@
         "shop/motorcycle_repair": {
             "name": "Motorcikl-riparejo",
             "terms": "motocikloj,motorcikloj,riparejo"
+        },
+        "aeroway": {
+            "name": "Aertransporta objekto"
         },
         "aeroway/terminal": {
             "name": "Flugstacio",

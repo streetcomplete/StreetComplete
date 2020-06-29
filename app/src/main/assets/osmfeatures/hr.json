@@ -390,10 +390,6 @@
         "traffic_calming/island": {
             "name": "Prometni otok"
         },
-        "aerialway/gondola": {
-            "name": "Kabinska žičara",
-            "terms": "Gondola"
-        },
         "amenity/restaurant/italian": {
             "name": "Talijanski restoran"
         },
@@ -417,9 +413,6 @@
         },
         "craft/chimney_sweeper": {
             "name": "Dimnjačar"
-        },
-        "railway/narrow_gauge": {
-            "name": "Uskotračna željeznica"
         },
         "shop/curtain": {
             "name": "Trgovina za zastore"
@@ -461,6 +454,10 @@
             "name": "Trgovina s pićima",
             "terms": "podrum pića,trgovina za piće"
         },
+        "entrance": {
+            "name": "Ulaz / izlaz",
+            "terms": "vrata"
+        },
         "power/tower": {
             "name": "Visokonaponski stup",
             "terms": "električni stup,stup dalekovoda,dalekovod"
@@ -497,9 +494,6 @@
             "name": "Prodavaonica video igara",
             "terms": "računalne igre, igrice"
         },
-        "railway/funicular": {
-            "name": "Uspinjača"
-        },
         "power/transformer": {
             "name": "Transformator",
             "terms": "transformator, transformator el. energije,transformator struje"
@@ -522,9 +516,6 @@
         },
         "man_made/petroleum_well": {
             "name": "Izvor nafte"
-        },
-        "railway/rail/highspeed": {
-            "name": "Brza željeznica"
         },
         "highway/footway": {
             "name": "Pješačka staza"
@@ -658,9 +649,6 @@
         "shop/baby_goods": {
             "name": "Trgovina za bebe",
             "terms": "Baby, bebe, dojenčad, kolica, pelene"
-        },
-        "shop/fishmonger": {
-            "name": "Ribarnica"
         },
         "amenity/shelter/gazebo": {
             "name": "Sjenica"
@@ -854,10 +842,6 @@
         "building/warehouse": {
             "name": "Skladište"
         },
-        "railway/tram": {
-            "name": "Tramvaj",
-            "terms": "tramvaj,tramvajska pruga,električni tramvaj,pruga za tramvaj"
-        },
         "power/minor_line": {
             "name": "Mali dalekovod"
         },
@@ -929,6 +913,9 @@
         },
         "shop/watches": {
             "name": "Trgovina Satovima"
+        },
+        "amenity/parking_entrance": {
+            "name": "Ulaz/izlaz iz garaže za automobile"
         },
         "waterway/riverbank": {
             "name": "Riječna obala"
@@ -1124,9 +1111,6 @@
             "name": "Drvo",
             "terms": "stablo,drvo,deblo"
         },
-        "amenity/register_office": {
-            "name": "Matični ured"
-        },
         "highway/crossing/marked-raised": {
             "name": "Uzdignuti pješački prijelaz"
         },
@@ -1211,13 +1195,6 @@
         "shop/copyshop": {
             "name": "Fotokopiraona",
             "terms": "Copy dućan, trgovina za kopiranje, kopiraonica"
-        },
-        "public_transport/station_ferry": {
-            "name": "Trajektna stanica"
-        },
-        "railway/monorail": {
-            "name": "Jednotračna željeznička pruga",
-            "terms": "monorail željeznička pruga,pruga sa jednim kolosjekom"
         },
         "office/physician": {
             "name": "Liječnička praksa"
@@ -1314,9 +1291,6 @@
         "aerialway/platter": {
             "name": "Tanjurić"
         },
-        "amenity/swimming_pool": {
-            "name": "Sportski bazen"
-        },
         "amenity/vending_machine/condoms": {
             "name": "Automat za kondome"
         },
@@ -1398,10 +1372,6 @@
         "landuse/cemetery": {
             "name": "Groblje"
         },
-        "railway/rail": {
-            "name": "Željeznička pruga",
-            "terms": "željeznička pruga,pruga pune širine,željeznica pune veličine"
-        },
         "natural/scree": {
             "name": "Sipar",
             "terms": "hrpa gruha,sip,plazina,kršlje,krš,sitno kamenje na strmini,kamenje na strmini,kamenjar,kamen,osulina,sipar"
@@ -1416,9 +1386,6 @@
         "amenity/grave_yard": {
             "name": "Groblje uz crkvu",
             "terms": "groblje"
-        },
-        "railway/light_rail": {
-            "name": "Laka željeznica"
         },
         "leisure/fitness_station": {
             "name": "Vanjski prostor za vježbanje"
@@ -1469,6 +1436,9 @@
         },
         "man_made/tower/communication": {
             "name": "Komunikacijski toranj"
+        },
+        "building/kindergarten": {
+            "name": "Zgrada vrtića"
         },
         "indoor/room": {
             "name": "Soba"
@@ -2029,9 +1999,6 @@
             "name": "Zdenac",
             "terms": "bunar"
         },
-        "shop/organic": {
-            "name": "Trgovina za organsku hranu"
-        },
         "waterway/ditch": {
             "name": "Jarak",
             "terms": "jarak,rov,prokop,šanac,jama,kanal"
@@ -2057,10 +2024,6 @@
         "craft/distillery": {
             "name": "Destilerija"
         },
-        "aeroway/apron": {
-            "name": "Pristanišna platforma",
-            "terms": "pristanišna platforma,platforma,avionska platforma,avionska pristanišna platforma,zrakoplovna platforma,zrakoplovna pristanišna platforma,stajanka"
-        },
         "historic/castle/fortress": {
             "name": "Povijesna tvrđava",
             "terms": "Utvrda,kaštel,zamak,citadela,fort,gradina"
@@ -2072,9 +2035,6 @@
         "shop/optician": {
             "name": "Optičar",
             "terms": "optičar"
-        },
-        "leisure/track/running_point": {
-            "name": "Staza za trčanje"
         },
         "type/route/foot": {
             "name": "Pješačka ruta",
@@ -2102,6 +2062,9 @@
         },
         "landuse/commercial": {
             "name": "Poslovna zona"
+        },
+        "seamark/mooring": {
+            "name": "Brodski vez"
         },
         "natural/ridge": {
             "name": "Greben"
@@ -2199,13 +2162,6 @@
         "office/architect": {
             "name": "Arhitektonski ured"
         },
-        "railway/subway": {
-            "name": "Podzemna željeznica",
-            "terms": "podzemna željeznica,željeznica ispod zemlje,metro,gradska željeznica,gradska podzemna željeznica"
-        },
-        "railway/miniature": {
-            "name": "Minijaturna željeznica"
-        },
         "shop/carpet": {
             "name": "Prodavaonica tepiha"
         },
@@ -2235,10 +2191,6 @@
         "shop/car_repair": {
             "name": "Automehaničar",
             "terms": "automehaničar,auto-servis,auto servis"
-        },
-        "craft/hvac": {
-            "name": "HVAC",
-            "terms": "rashladni sustav,klimatizacija,ventilacija,klima,vanjski rashladni sustav,vanjski sustav za grijanje,klimatizacijsko grijaći sustav"
         },
         "highway/path": {
             "name": "Staza"
@@ -2311,6 +2263,10 @@
         "amenity/vehicle_inspection": {
             "name": "Tehnički pregled vozila"
         },
+        "amenity/kindergarten": {
+            "name": "Zemljište dječjeg vrtića",
+            "terms": "dječji vrtić,vrtić"
+        },
         "man_made/tower/observation": {
             "name": "Toranj za promatranje"
         },
@@ -2320,9 +2276,6 @@
         "waterway/weir": {
             "name": "Ustava",
             "terms": "ustava,brana,vrša"
-        },
-        "craft/metal_construction": {
-            "name": "Željezar"
         },
         "craft/painter": {
             "name": "Slikar"
@@ -2359,9 +2312,6 @@
         "tourism/viewpoint": {
             "name": "Vidikovac",
             "terms": "gledište,stajalište,vidikovac"
-        },
-        "craft/handicraft": {
-            "name": "Ručni rad"
         },
         "shop/motorcycle_repair": {
             "name": "Ormarići za bicikle"

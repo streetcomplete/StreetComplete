@@ -15,6 +15,9 @@
         "craft/dressmaker": {
             "name": "Dressmaker"
         },
+        "military/nuclear_explosion_site": {
+            "name": "Nuclear Explosion Site"
+        },
         "barrier/lift_gate": {
             "name": "Lift Gate"
         },
@@ -186,12 +189,6 @@
         "tourism/information/board": {
             "name": "Information Board"
         },
-        "amenity/ferry_terminal": {
-            "name": "Ferry Station / Terminal"
-        },
-        "shop/furnace": {
-            "name": "Furnace Shop"
-        },
         "landuse/industrial": {
             "name": "Industrial Area"
         },
@@ -228,6 +225,9 @@
         "tourism/aquarium": {
             "name": "Aquarium"
         },
+        "man_made/manhole": {
+            "name": "Manhole"
+        },
         "type/site": {
             "name": "Site"
         },
@@ -260,6 +260,9 @@
         },
         "tourism/caravan_site": {
             "name": "Caravan Park"
+        },
+        "natural/valley": {
+            "name": "Valley"
         },
         "craft/clockmaker": {
             "name": "Clockmaker"
@@ -391,6 +394,9 @@
         "amenity/prison": {
             "name": "Prison Grounds"
         },
+        "leisure/fishing": {
+            "name": "Fishing Spot"
+        },
         "building/boathouse": {
             "name": "Boathouse"
         },
@@ -427,15 +433,14 @@
         "aeroway/gate": {
             "name": "Airport Gate"
         },
+        "man_made/mast/communication/mobile_phone": {
+            "name": "Mobile Phone Mast"
+        },
         "traffic_calming/island": {
             "name": "Traffic Island"
         },
         "playground/cushion": {
             "name": "Bouncy Cushion"
-        },
-        "aerialway/gondola": {
-            "name": "Gondola",
-            "terms": "Dangleway"
         },
         "shop/window_blind": {
             "name": "Window Blind Shop"
@@ -461,14 +466,14 @@
         "railway/buffer_stop": {
             "name": "Buffer Stop"
         },
+        "leisure/escape_game": {
+            "name": "Escape Room"
+        },
         "aerialway/pylon": {
             "name": "Aerialway Pylon"
         },
         "craft/chimney_sweeper": {
             "name": "Chimney Sweeper"
-        },
-        "railway/narrow_gauge": {
-            "name": "Narrow Gauge Rail"
         },
         "shop/curtain": {
             "name": "Curtain Shop"
@@ -557,9 +562,6 @@
         "traffic_calming/choker": {
             "name": "Traffic Choker"
         },
-        "railway/funicular": {
-            "name": "Funicular"
-        },
         "power/transformer": {
             "name": "Transformer"
         },
@@ -635,6 +637,9 @@
         "craft/photographic_laboratory": {
             "name": "Photographic Laboratory"
         },
+        "man_made/tower/minaret": {
+            "name": "Minaret"
+        },
         "amenity/waste/dog_excrement": {
             "name": "Dog Excrement Bin"
         },
@@ -676,6 +681,9 @@
         },
         "amenity/vending_machine/electronics": {
             "name": "Electronics Vending Machine"
+        },
+        "leisure/pitch/netball": {
+            "name": "Netball Court"
         },
         "waterway/water_point": {
             "name": "Marine Drinking Water"
@@ -728,9 +736,6 @@
         "shop/baby_goods": {
             "name": "Baby Goods Shop"
         },
-        "shop/fishmonger": {
-            "name": "Fishmonger"
-        },
         "place/square": {
             "name": "Square"
         },
@@ -751,6 +756,9 @@
         },
         "highway/footway/marked-raised": {
             "name": "Marked Crossing (Raised)"
+        },
+        "man_made/tunnel": {
+            "name": "Tunnel Area"
         },
         "public_transport/stop_position_aerialway": {
             "name": "Aerialway Stopping Location"
@@ -781,6 +789,9 @@
         },
         "traffic_calming/rumble_strip": {
             "name": "Rumble Strip"
+        },
+        "leisure/pitch/badminton": {
+            "name": "Badminton Court"
         },
         "office/tax_advisor": {
             "name": "Tax Advisor Office"
@@ -820,9 +831,6 @@
         },
         "attraction/big_wheel": {
             "name": "Big Wheel"
-        },
-        "landuse/military/obstacle_course": {
-            "name": "Obstacle Course"
         },
         "natural/spring": {
             "name": "Spring"
@@ -941,6 +949,9 @@
         "place/town": {
             "name": "Town"
         },
+        "man_made/obelisk": {
+            "name": "Obelisk"
+        },
         "highway/tertiary_link": {
             "name": "Tertiary Link"
         },
@@ -950,8 +961,8 @@
         "amenity/vending_machine/coffee": {
             "name": "Coffee Vending Machine"
         },
-        "landuse/military/training_area": {
-            "name": "Training Area"
+        "leisure/pitch/chess": {
+            "name": "Giant Chess Board"
         },
         "playground/horizontal_bar": {
             "name": "Play Horizontal Bar"
@@ -967,9 +978,6 @@
         },
         "building/warehouse": {
             "name": "Warehouse"
-        },
-        "railway/tram": {
-            "name": "Tram"
         },
         "power/minor_line": {
             "name": "Minor Power Line"
@@ -1084,6 +1092,9 @@
         },
         "playground/rocker": {
             "name": "Spring Rider"
+        },
+        "waterway/milestone": {
+            "name": "Waterway Milestone"
         },
         "leisure/pitch/skateboard": {
             "name": "Skate Park"
@@ -1232,6 +1243,9 @@
         "highway/bus_guideway": {
             "name": "Bus Guideway"
         },
+        "highway/footway/sidewalk": {
+            "name": "Pavement"
+        },
         "amenity/animal_shelter": {
             "name": "Animal Shelter"
         },
@@ -1252,9 +1266,6 @@
         },
         "natural/tree": {
             "name": "Tree"
-        },
-        "amenity/register_office": {
-            "name": "Register Office"
         },
         "highway/crossing/marked-raised": {
             "name": "Marked Crossing (Raised)"
@@ -1288,6 +1299,9 @@
         },
         "amenity/internet_cafe": {
             "name": "Internet Cafe"
+        },
+        "landuse/reservoir": {
+            "name": "Reservoir"
         },
         "leisure/garden": {
             "name": "Garden"
@@ -1331,17 +1345,17 @@
         "shop/copyshop": {
             "name": "Copyshop"
         },
-        "public_transport/station_ferry": {
-            "name": "Ferry Station / Terminal"
-        },
-        "railway/monorail": {
-            "name": "Monorail"
+        "leisure/firepit": {
+            "name": "Fire Pit"
         },
         "office/physician": {
             "name": "Physician"
         },
         "shop/bicycle": {
             "name": "Bicycle Shop"
+        },
+        "military/bunker": {
+            "name": "Military Bunker"
         },
         "public_transport/stop_position_subway": {
             "name": "Subway Stopping Location"
@@ -1377,6 +1391,9 @@
         "type/route/tram": {
             "name": "Tram Route"
         },
+        "man_made/mast/communication/television": {
+            "name": "Television Broadcast Mast"
+        },
         "shop/second_hand": {
             "name": "Second Hand Shop"
         },
@@ -1391,6 +1408,9 @@
         },
         "craft/rigger": {
             "name": "Rigger"
+        },
+        "military/checkpoint": {
+            "name": "Military Checkpoint"
         },
         "man_made/water_works": {
             "name": "Water Works"
@@ -1431,11 +1451,11 @@
         "amenity/place_of_worship/hindu": {
             "name": "Hindu Temple"
         },
+        "waterway/canal/lock": {
+            "name": "Canal Lock"
+        },
         "aerialway/platter": {
             "name": "Platter Lift"
-        },
-        "amenity/swimming_pool": {
-            "name": "Swimming Pool"
         },
         "amenity/vending_machine/condoms": {
             "name": "Condom Vending Machine"
@@ -1448,6 +1468,9 @@
         },
         "man_made/tower": {
             "name": "Tower"
+        },
+        "natural/stone": {
+            "name": "Unattached Stone / Boulder"
         },
         "shop/florist": {
             "name": "Florist"
@@ -1515,9 +1538,6 @@
         "landuse/cemetery": {
             "name": "Cemetery"
         },
-        "railway/rail": {
-            "name": "Rail"
-        },
         "natural/scree": {
             "name": "Scree"
         },
@@ -1532,9 +1552,6 @@
         },
         "amenity/grave_yard": {
             "name": "Graveyard"
-        },
-        "railway/light_rail": {
-            "name": "Light Rail"
         },
         "office/lawyer/notary": {
             "name": "Notary Office"
@@ -1580,6 +1597,9 @@
         },
         "historic/monument": {
             "name": "Monument"
+        },
+        "natural/shrub": {
+            "name": "Shrub"
         },
         "type/route/bicycle": {
             "name": "Cycle Route"
@@ -1634,6 +1654,9 @@
         },
         "waterway/boatyard": {
             "name": "Boatyard"
+        },
+        "man_made/mineshaft": {
+            "name": "Mineshaft"
         },
         "power/line": {
             "name": "Power Line"
@@ -1758,6 +1781,9 @@
         "shop/boutique": {
             "name": "Boutique"
         },
+        "waterway/lock_gate": {
+            "name": "Lock Gate"
+        },
         "amenity/vending_machine/parking_tickets": {
             "name": "Parking Ticket Vending Machine"
         },
@@ -1848,9 +1874,6 @@
         "type/restriction/no_straight_on": {
             "name": "No Straight On"
         },
-        "landuse/allotments": {
-            "name": "Allotments"
-        },
         "office/water_utility": {
             "name": "Water Utility Office"
         },
@@ -1868,6 +1891,9 @@
         },
         "amenity/vending_machine/food": {
             "name": "Food Vending Machine"
+        },
+        "man_made/cairn": {
+            "name": "Cairn"
         },
         "amenity/cafe": {
             "name": "Cafe"
@@ -1902,9 +1928,6 @@
         "shop/pet": {
             "name": "Pet Shop"
         },
-        "amenity/scrapyard": {
-            "name": "Scrap Yard"
-        },
         "man_made/survey_point": {
             "name": "Survey Point"
         },
@@ -1913,6 +1936,9 @@
         },
         "highway/service/alley": {
             "name": "Alley"
+        },
+        "man_made/mast/communication/radio": {
+            "name": "Radio Broadcast Mast"
         },
         "public_transport/station_train": {
             "name": "Train Station"
@@ -1946,6 +1972,9 @@
         },
         "emergency/designated": {
             "name": "Emergency Access Designated"
+        },
+        "man_made/beehive": {
+            "name": "Beehive"
         },
         "highway/steps": {
             "name": "Steps"
@@ -1992,6 +2021,9 @@
         "aerialway/chair_lift": {
             "name": "Chair Lift"
         },
+        "landuse/pond": {
+            "name": "Pond"
+        },
         "shop/supermarket": {
             "name": "Supermarket"
         },
@@ -2000,6 +2032,9 @@
         },
         "building/stadium": {
             "name": "Stadium Building"
+        },
+        "leisure/slipway_point": {
+            "name": "Slipway"
         },
         "landuse/military/range": {
             "name": "Military Range"
@@ -2015,6 +2050,9 @@
         },
         "natural/saddle": {
             "name": "Saddle"
+        },
+        "natural/water/basin": {
+            "name": "Basin"
         },
         "building/transportation": {
             "name": "Transportation Building"
@@ -2124,6 +2162,9 @@
         "man_made/wastewater_plant": {
             "name": "Wastewater Plant"
         },
+        "shop/catalogue": {
+            "name": "Catalogue Shop"
+        },
         "landuse/plant_nursery": {
             "name": "Plant Nursery"
         },
@@ -2202,9 +2243,6 @@
         "man_made/water_well": {
             "name": "Water Well"
         },
-        "shop/organic": {
-            "name": "Organic Goods Store"
-        },
         "waterway/ditch": {
             "name": "Ditch"
         },
@@ -2231,9 +2269,6 @@
         },
         "craft/distillery": {
             "name": "Distillery"
-        },
-        "aeroway/apron": {
-            "name": "Apron"
         },
         "shop/tattoo": {
             "name": "Tattoo Parlor"
@@ -2276,6 +2311,9 @@
         },
         "aerialway/magic_carpet": {
             "name": "Magic Carpet Lift"
+        },
+        "amenity/post_box": {
+            "name": "Post Box"
         },
         "public_transport/station_tram": {
             "name": "Tram Station"
@@ -2388,14 +2426,8 @@
         "office/architect": {
             "name": "Architect Office"
         },
-        "railway/subway": {
-            "name": "Subway"
-        },
         "highway/elevator": {
             "name": "Lift"
-        },
-        "railway/miniature": {
-            "name": "Miniature Railway"
         },
         "shop/carpet": {
             "name": "Carpet Shop"
@@ -2430,9 +2462,6 @@
         "shop/car_repair": {
             "name": "Car Repair Shop"
         },
-        "craft/hvac": {
-            "name": "HVAC"
-        },
         "highway/path": {
             "name": "Path"
         },
@@ -2444,6 +2473,9 @@
         },
         "landuse/meadow": {
             "name": "Meadow"
+        },
+        "military/office": {
+            "name": "Military Office"
         },
         "shop/convenience": {
             "name": "Convenience Store"
@@ -2490,11 +2522,11 @@
         "line": {
             "name": "Line"
         },
+        "man_made/tower/observation": {
+            "name": "Observation Tower"
+        },
         "waterway/weir": {
             "name": "Weir"
-        },
-        "craft/metal_construction": {
-            "name": "Metal Construction"
         },
         "craft/painter": {
             "name": "Painter"
@@ -2534,9 +2566,6 @@
         },
         "tourism/viewpoint": {
             "name": "Viewpoint"
-        },
-        "craft/handicraft": {
-            "name": "Handicraft"
         },
         "shop/trade": {
             "name": "Trade Shop"

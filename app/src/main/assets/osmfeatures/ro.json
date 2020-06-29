@@ -61,9 +61,6 @@
         "building/terrace": {
             "name": "Case în Rând"
         },
-        "railway/monorail": {
-            "name": "Monoșină"
-        },
         "amenity/studio": {
             "name": "Studio"
         },
@@ -181,9 +178,6 @@
         "shop/hairdresser": {
             "name": "Frizer"
         },
-        "amenity/swimming_pool": {
-            "name": "Piscină"
-        },
         "man_made/tower": {
             "name": "Turn"
         },
@@ -264,9 +258,6 @@
         },
         "landuse/cemetery": {
             "name": "Cimitir"
-        },
-        "railway/rail": {
-            "name": "Șină"
         },
         "type/site": {
             "name": "Sit"
@@ -493,9 +484,6 @@
         "natural/volcano": {
             "name": "Vulcan"
         },
-        "aerialway/gondola": {
-            "name": "Gondolă"
-        },
         "landuse/military/barracks": {
             "name": "Baraci"
         },
@@ -513,9 +501,6 @@
         },
         "shop/boutique": {
             "name": "Boutique"
-        },
-        "railway/narrow_gauge": {
-            "name": "Cale Ferată Îngustă"
         },
         "shop/curtain": {
             "name": "Magazin de Perdele"
@@ -610,9 +595,6 @@
         "leisure/pitch/table_tennis": {
             "name": "Masă de Ping Pong"
         },
-        "landuse/allotments": {
-            "name": "Grădină Comunitară"
-        },
         "amenity/place_of_worship/sikh": {
             "name": "Templu Sikh"
         },
@@ -639,9 +621,6 @@
         },
         "building/greenhouse": {
             "name": "Seră"
-        },
-        "railway/funicular": {
-            "name": "Frânghie"
         },
         "landuse/harbour": {
             "name": "Port"
@@ -952,9 +931,6 @@
         "natural/heath": {
             "name": "Landă"
         },
-        "landuse/military/obstacle_course": {
-            "name": "Curs cu Obstacole"
-        },
         "man_made/pipeline": {
             "name": "Condunctă"
         },
@@ -981,9 +957,6 @@
         },
         "place/quarter": {
             "name": "Cartier"
-        },
-        "shop/organic": {
-            "name": "Magazin de Bunuri Organice"
         },
         "shop/perfumery": {
             "name": "Magazin de Parfum"
@@ -1072,9 +1045,6 @@
         "natural/ridge": {
             "name": "Creastă"
         },
-        "landuse/military/training_area": {
-            "name": "Zonă de Training"
-        },
         "natural/water/lake": {
             "name": "Lac"
         },
@@ -1086,9 +1056,6 @@
         },
         "leisure/bowling_alley": {
             "name": "Alee de Bowling"
-        },
-        "railway/tram": {
-            "name": "Tranvai"
         },
         "power/minor_line": {
             "name": "Linie de Alimentare Minoră"
@@ -1216,9 +1183,6 @@
         "amenity/doctors": {
             "name": "Doctor"
         },
-        "railway/subway": {
-            "name": "Metrou"
-        },
         "highway/elevator": {
             "name": "Lift"
         },
@@ -1342,9 +1306,6 @@
         "building/cabin": {
             "name": "Cabină"
         },
-        "craft/metal_construction": {
-            "name": "Construcție de Metal"
-        },
         "craft/painter": {
             "name": "Pictor"
         },
@@ -1359,9 +1320,6 @@
         },
         "tourism/attraction": {
             "name": "Atracție Turistică"
-        },
-        "amenity/register_office": {
-            "name": "Oficiu de Registrare"
         },
         "golf/fairway": {
             "name": "Drum Maritim"
@@ -1378,9 +1336,6 @@
         },
         "tourism/viewpoint": {
             "name": "Punct de Vedere"
-        },
-        "craft/handicraft": {
-            "name": "Manufactură"
         },
         "office/lawyer": {
             "name": "Cabinet de Avocatură"

@@ -78,9 +78,6 @@
         "aeroway/runway": {
             "name": "Летателна писта"
         },
-        "railway/monorail": {
-            "name": "Монорелсов път"
-        },
         "shop/supermarket": {
             "name": "Супермаркет"
         },
@@ -122,9 +119,6 @@
         },
         "place/island": {
             "name": "Остров"
-        },
-        "shop/fishmonger": {
-            "name": "Магазин за риба"
         },
         "man_made/pier": {
             "name": "Кей"
@@ -182,9 +176,6 @@
         },
         "shop/mall": {
             "name": "Мол"
-        },
-        "amenity/swimming_pool": {
-            "name": "Плувен басейн"
         },
         "barrier/wall": {
             "name": "Стена"
@@ -254,9 +245,6 @@
         },
         "landuse/cemetery": {
             "name": "Гробищен парк"
-        },
-        "railway/rail": {
-            "name": "ЖП линия"
         },
         "highway/motorway_link": {
             "name": "Автомагистрална връзка"
@@ -393,9 +381,6 @@
         "amenity/telephone": {
             "name": "Телефон"
         },
-        "aeroway/apron": {
-            "name": "Стоянка за самолети"
-        },
         "leisure/stadium": {
             "name": "Стадион"
         },
@@ -479,9 +464,6 @@
         },
         "amenity/bank": {
             "name": "Банка"
-        },
-        "railway/tram": {
-            "name": "Трамвайни релси"
         },
         "landuse/farmyard": {
             "name": "Селскостопански двор"
@@ -605,9 +587,6 @@
         },
         "highway/trunk": {
             "name": "Скоростен път"
-        },
-        "railway/subway": {
-            "name": "Метро"
         },
         "shop/butcher": {
             "name": "Колбаси"

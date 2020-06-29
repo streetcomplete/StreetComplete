@@ -233,12 +233,6 @@
         "amenity/restaurant/french": {
             "name": "Fransız Restoranı"
         },
-        "amenity/ferry_terminal": {
-            "name": "Feribot Terminali"
-        },
-        "shop/furnace": {
-            "name": "Soba Mağazası"
-        },
         "landuse/industrial": {
             "name": "Sanayi Bölgesi",
             "terms": "Sanayi Bölgesi, Sanayi Alanı"
@@ -553,10 +547,6 @@
             "name": "Refüj",
             "terms": "Refüj"
         },
-        "aerialway/gondola": {
-            "name": "Gondol Teleferik",
-            "terms": "Gondol Teleferik"
-        },
         "shop/window_blind": {
             "name": "Jaluzi Mağazası",
             "terms": "Jaluzi Mağazası, Perde Mağazası"
@@ -589,10 +579,6 @@
         },
         "craft/chimney_sweeper": {
             "name": "Baca Temizleyicisi"
-        },
-        "railway/narrow_gauge": {
-            "name": "Dar Demiryolu Geçidi",
-            "terms": "Dar Demiryolu Geçidi"
         },
         "shop/curtain": {
             "name": "Perde Mağazası",
@@ -637,10 +623,6 @@
         "craft/bookbinder": {
             "name": "Ciltçi",
             "terms": "Ciltçi"
-        },
-        "man_made/groyne": {
-            "name": "Kıyı Koruyucu Direk Şeridi",
-            "terms": "Kıyı Koruyucu Direk Şeridi"
         },
         "shop/pawnbroker": {
             "name": "İkinciel Alım Satım Mağazası",
@@ -715,10 +697,6 @@
         "traffic_calming/choker": {
             "name": "Yapay Darboğaz",
             "terms": "Yapay Darboğaz"
-        },
-        "railway/funicular": {
-            "name": "Kablolu Tren",
-            "terms": "Kablolu Tren, Füniküler"
         },
         "power/transformer": {
             "name": "Transformatör",
@@ -929,9 +907,6 @@
             "name": "Bebek Malzemeleri Mağazası",
             "terms": "Bebek Malzemeleri Mağazası"
         },
-        "shop/fishmonger": {
-            "name": "Balıkçı"
-        },
         "place/square": {
             "name": "Meydan",
             "terms": "Meydan"
@@ -1046,10 +1021,6 @@
         "attraction/big_wheel": {
             "name": "Dönme Dolap",
             "terms": "Dönme Dolap"
-        },
-        "landuse/military/obstacle_course": {
-            "name": "Engelli Antreman Sahası",
-            "terms": "Engelli Antreman Sahası"
         },
         "natural/spring": {
             "name": "Memba",
@@ -1212,10 +1183,6 @@
             "name": "Bilgi",
             "terms": "Bilgi"
         },
-        "landuse/military/training_area": {
-            "name": "Antreman Sahası",
-            "terms": "Antreman Sahası"
-        },
         "natural/water/lake": {
             "name": "Göl",
             "terms": "Göl"
@@ -1231,10 +1198,6 @@
         "building/warehouse": {
             "name": "Depo",
             "terms": "Ambar"
-        },
-        "railway/tram": {
-            "name": "Tramvay",
-            "terms": "Tramvay"
         },
         "power/minor_line": {
             "name": "Elektrik Hattı",
@@ -1609,9 +1572,6 @@
             "name": "Ağaç",
             "terms": "Ağaç"
         },
-        "amenity/register_office": {
-            "name": "Nüfus Dairesi"
-        },
         "highway/crossing/marked-raised": {
             "name": "İşaretli Yaya Geçidi (Kasisli)"
         },
@@ -1713,19 +1673,11 @@
             "name": "Kırtasiye",
             "terms": "Kırtasiye"
         },
-        "public_transport/station_ferry": {
-            "name": "Feribot Terminali",
-            "terms": "Feribot İstasyonu"
-        },
         "leisure/pitch/baseball": {
             "name": "Beysbol Sahası"
         },
         "man_made/bridge": {
             "name": "Köprü Alanı"
-        },
-        "railway/monorail": {
-            "name": "Tekray",
-            "terms": "Tekray, Monoray"
         },
         "office/physician": {
             "name": "Hekim"
@@ -1792,9 +1744,6 @@
             "name": "Kablocu",
             "terms": "Kablocu"
         },
-        "military/checkpoint": {
-            "name": "Kontrol Noktası"
-        },
         "man_made/water_works": {
             "name": "Su Şebekesi",
             "terms": "Su Şebekesi, Su Dağıtım İstasyonu, İçme Suyu Tesisleri"
@@ -1850,9 +1799,6 @@
         "aerialway/platter": {
             "name": "Tabaklı Teleferik",
             "terms": "Tabaklı Teleferik"
-        },
-        "amenity/swimming_pool": {
-            "name": "Yüzme Havuzu"
         },
         "amenity/vending_machine/condoms": {
             "name": "Prezervatif Otomatı",
@@ -1954,10 +1900,6 @@
         "landuse/cemetery": {
             "name": "Mezarlık",
             "terms": "Mezarlık"
-        },
-        "railway/rail": {
-            "name": "Demiryolu",
-            "terms": "Demiryolu"
         },
         "natural/scree": {
             "name": "Dağ Eteği",
@@ -2374,10 +2316,6 @@
             "name": "Devam Etmek Yasak",
             "terms": "Devam Etmek Yasak"
         },
-        "landuse/allotments": {
-            "name": "Hobi Bahçesi",
-            "terms": "Hobi Bahçesi"
-        },
         "office/water_utility": {
             "name": "Su Müdürlüğü",
             "terms": "Su ve Kanalizasyon Müdürlüğü"
@@ -2424,9 +2362,6 @@
         "shop/pet": {
             "name": "Evcil Hayvan Mağazası",
             "terms": "Evcil Hayvan Mağazası, Petşop"
-        },
-        "amenity/scrapyard": {
-            "name": "Hurdalık"
         },
         "man_made/survey_point": {
             "name": "Ölçüm Kontrol Noktası",
@@ -2815,10 +2750,6 @@
             "name": "Su Kuyusu",
             "terms": "Su Kuyusu"
         },
-        "shop/organic": {
-            "name": "Organik Ürün Mağazası",
-            "terms": "Organik Ürün Mağazası"
-        },
         "waterway/ditch": {
             "name": "Suyolu",
             "terms": "Suyolu, Kanal"
@@ -2852,10 +2783,6 @@
         "craft/distillery": {
             "name": "İçki İmalathanesi",
             "terms": "İçki İmalathanesi, İçki Fabrikası"
-        },
-        "aeroway/apron": {
-            "name": "Uçak Park Alanı",
-            "terms": "Uçak Park Alanı, Hangar Önü"
         },
         "historic/castle/fortress": {
             "name": "Tarihi Kale"
@@ -3043,10 +2970,6 @@
             "name": "Mimarlık Ofisi",
             "terms": "Mimar"
         },
-        "railway/subway": {
-            "name": "Metro",
-            "terms": "Metro"
-        },
         "amenity/money_transfer": {
             "name": "Para Transfer İstasyonu"
         },
@@ -3097,10 +3020,6 @@
         "shop/car_repair": {
             "name": "Tamirci",
             "terms": "Tamirci"
-        },
-        "craft/hvac": {
-            "name": "Isıtma - Soğutma",
-            "terms": "Isıtma - Soğutma"
         },
         "highway/path": {
             "name": "Patika",
@@ -3186,10 +3105,6 @@
             "name": "Su Bendi",
             "terms": "Su Bendi, Su Seddi"
         },
-        "craft/metal_construction": {
-            "name": "Metal Yapı",
-            "terms": "Metal Yapı"
-        },
         "craft/painter": {
             "name": "Boyacı",
             "terms": "Boyacı"
@@ -3236,10 +3151,6 @@
         "tourism/viewpoint": {
             "name": "Görüş Noktası",
             "terms": "Görüş Noktası, Bakış Noktası"
-        },
-        "craft/handicraft": {
-            "name": "El Sanatı",
-            "terms": "El Sanatı"
         },
         "landuse/construction": {
             "name": "İnşaat Alanı"

@@ -175,9 +175,6 @@
         "waterway/river": {
             "name": "ನದಿ"
         },
-        "amenity/swimming_pool": {
-            "name": "ಈಜುಕೊಳ"
-        },
         "barrier/wall": {
             "name": "‍ಗೋಡೆ"
         },
@@ -321,9 +318,6 @@
         },
         "shop/alcohol": {
             "name": " ಸಾರಾಯಿ ಅಂಗಡಿ"
-        },
-        "craft/handicraft": {
-            "name": "ಕರಕುಶಲ ವಸ್ತು"
         },
         "building/garage": {
             "name": "ಮೋಟಾರುಖಾನೆ"

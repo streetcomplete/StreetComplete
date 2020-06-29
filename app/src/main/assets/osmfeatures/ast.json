@@ -153,12 +153,6 @@
         "tourism/information/board": {
             "name": "Panel informativu"
         },
-        "amenity/ferry_terminal": {
-            "name": "Estación / Terminal de ferry"
-        },
-        "shop/furnace": {
-            "name": "Fornos"
-        },
         "landuse/industrial": {
             "name": "Área industrial"
         },
@@ -376,10 +370,6 @@
             "name": "Refuxu de tráficu",
             "terms": "Islla de tráficu"
         },
-        "aerialway/gondola": {
-            "name": "Telecabina",
-            "terms": "cabina"
-        },
         "shop/window_blind": {
             "name": "Venta de persianes"
         },
@@ -399,10 +389,6 @@
         "aerialway/pylon": {
             "name": "Poste de tresporte per cable",
             "terms": "poste, torre, sofitu"
-        },
-        "railway/narrow_gauge": {
-            "name": "Ferrocarril de vía estrecha",
-            "terms": "FEVE,Vía estrecha"
         },
         "shop/curtain": {
             "name": "Tienda de cortines"
@@ -425,9 +411,6 @@
         "craft/bookbinder": {
             "name": "Encuadernador",
             "terms": "Encuadernación"
-        },
-        "man_made/groyne": {
-            "name": "Espigón"
         },
         "shop/pawnbroker": {
             "name": "Casa d'empeños",
@@ -486,10 +469,6 @@
         },
         "traffic_calming/choker": {
             "name": "Estrechamientu de tráficu"
-        },
-        "railway/funicular": {
-            "name": "Funicular",
-            "terms": "Cremallera,Cable"
         },
         "power/transformer": {
             "name": "Tresformador"
@@ -642,9 +621,6 @@
         "landuse/farmland": {
             "name": "Tierra de llabor"
         },
-        "shop/fishmonger": {
-            "name": "Pescadería"
-        },
         "place/square": {
             "name": "Plaza"
         },
@@ -715,9 +691,6 @@
         "attraction/big_wheel": {
             "name": "Noria",
             "terms": "rueda,atracciones"
-        },
-        "landuse/military/obstacle_course": {
-            "name": "Recorríu d'obstáculos"
         },
         "natural/spring": {
             "name": "Fonte natural"
@@ -821,9 +794,6 @@
         "tourism/information": {
             "name": "Información"
         },
-        "landuse/military/training_area": {
-            "name": "Campu de maniobres"
-        },
         "natural/water/lake": {
             "name": "Llagu"
         },
@@ -836,10 +806,6 @@
         "building/warehouse": {
             "name": "Almacén",
             "terms": "Nave d'almacenamientu"
-        },
-        "railway/tram": {
-            "name": "Tranvía",
-            "terms": "Tranvía, tresporte, trole"
         },
         "power/minor_line": {
             "name": "Llinia eléctrica secundaria",
@@ -1081,9 +1047,6 @@
         "natural/tree": {
             "name": "Árbol"
         },
-        "amenity/register_office": {
-            "name": "Oficina de rexistru"
-        },
         "leisure/adult_gaming_centre": {
             "name": "Centru de xuegos p'adultos"
         },
@@ -1153,12 +1116,6 @@
         },
         "shop/copyshop": {
             "name": "Copistería"
-        },
-        "public_transport/station_ferry": {
-            "name": "Estación / Terminal de ferry"
-        },
-        "railway/monorail": {
-            "name": "Monocarril"
         },
         "office/physician": {
             "name": "Médicu"
@@ -1237,9 +1194,6 @@
         "aerialway/platter": {
             "name": "Telesquí de placa"
         },
-        "amenity/swimming_pool": {
-            "name": "Piscina"
-        },
         "amenity/vending_machine/condoms": {
             "name": "Máquina de venta de preservativos"
         },
@@ -1313,9 +1267,6 @@
         },
         "landuse/cemetery": {
             "name": "Cementeriu"
-        },
-        "railway/rail": {
-            "name": "Carril"
         },
         "natural/scree": {
             "name": "Llera"
@@ -1595,9 +1546,6 @@
         "type/restriction/no_straight_on": {
             "name": "Nun siguir de frente"
         },
-        "landuse/allotments": {
-            "name": "Xardín acomuñáu"
-        },
         "shop/tiles": {
             "name": "Tienda d'azulexos"
         },
@@ -1633,9 +1581,6 @@
         "shop/pet": {
             "name": "Tienda de mascotes",
             "terms": "paxarería"
-        },
-        "amenity/scrapyard": {
-            "name": "Chatarrería"
         },
         "man_made/survey_point": {
             "name": "Vértiz xeodésicu"
@@ -1905,9 +1850,6 @@
         "man_made/water_well": {
             "name": "Pozu d'agua"
         },
-        "shop/organic": {
-            "name": "Tienda de productos ecolóxicos"
-        },
         "waterway/ditch": {
             "name": "Riega"
         },
@@ -1929,9 +1871,6 @@
         },
         "craft/distillery": {
             "name": "Destilería"
-        },
-        "aeroway/apron": {
-            "name": "Aparcamientu d'aviones"
         },
         "shop/tattoo": {
             "name": "Tatuaxes",
@@ -2054,9 +1993,6 @@
             "name": "Ríu",
             "terms": "Ríu, regatu"
         },
-        "railway/subway": {
-            "name": "Metro"
-        },
         "highway/elevator": {
             "name": "Ascensor"
         },
@@ -2090,9 +2026,6 @@
         },
         "shop/car_repair": {
             "name": "Taller d'automóviles"
-        },
-        "craft/hvac": {
-            "name": "Calefactor"
         },
         "highway/path": {
             "name": "Camín"
@@ -2148,10 +2081,6 @@
             "name": "Ñora",
             "terms": "ñora, presa, banzáu"
         },
-        "craft/metal_construction": {
-            "name": "Construcciones metáliques",
-            "terms": "Forxa,ferreru"
-        },
         "craft/painter": {
             "name": "Pintor"
         },
@@ -2183,9 +2112,6 @@
         },
         "tourism/viewpoint": {
             "name": "Mirador"
-        },
-        "craft/handicraft": {
-            "name": "Manualidaes"
         },
         "aeroway/terminal": {
             "name": "Terminal d'aeropuertu"

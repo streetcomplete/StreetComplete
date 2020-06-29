@@ -181,12 +181,6 @@
             "name": "Restaurant francès",
             "terms": "cuina francesa"
         },
-        "amenity/ferry_terminal": {
-            "name": "Moll per Ferry"
-        },
-        "shop/furnace": {
-            "name": "Botiga de forns i calderes"
-        },
         "landuse/industrial": {
             "name": "Zona Industrial"
         },
@@ -325,6 +319,10 @@
             "name": "Aigua apta per al consum",
             "terms": "Aigua potable, Aigua apta per al consum humà, Aigua per beure, Font"
         },
+        "amenity/pharmacy": {
+            "name": "Farmàcia",
+            "terms": "dispensari farmacèutic, fórmules magistrals, medicaments"
+        },
         "barrier/kissing_gate": {
             "name": "Porta giratòria",
             "terms": "Porta giratòria, Porta sense retorn, Accés giratori, Porta de no retorn"
@@ -410,10 +408,6 @@
         "traffic_calming/island": {
             "name": "Refugi viari"
         },
-        "aerialway/gondola": {
-            "name": "Telecabina",
-            "terms": "Góndola"
-        },
         "shop/window_blind": {
             "name": "Botiga de persianes"
         },
@@ -446,9 +440,6 @@
         "craft/chimney_sweeper": {
             "name": "Escura-xemeneies"
         },
-        "railway/narrow_gauge": {
-            "name": "Ferrocarril de via estreta"
-        },
         "shop/curtain": {
             "name": "Botiga de cortines",
             "terms": "Botiga de roba de la llar, Cortines, Coixins"
@@ -471,9 +462,6 @@
         },
         "craft/bookbinder": {
             "name": "Enquadernador"
-        },
-        "man_made/groyne": {
-            "name": "Dic"
         },
         "shop/pawnbroker": {
             "name": "Botiga d'empenyoraments"
@@ -528,9 +516,6 @@
         },
         "traffic_calming/choker": {
             "name": "Reductor d'amplada"
-        },
-        "railway/funicular": {
-            "name": "Funicular"
         },
         "power/transformer": {
             "name": "Transformador",
@@ -694,9 +679,6 @@
         "shop/baby_goods": {
             "name": "Botiga per a nadons"
         },
-        "shop/fishmonger": {
-            "name": "Peixateria"
-        },
         "place/square": {
             "name": "Plaça"
         },
@@ -759,9 +741,6 @@
         "shop": {
             "name": "Botiga",
             "terms": "Botiga, Comerç"
-        },
-        "landuse/military/obstacle_course": {
-            "name": "Cursa d'obstacles"
         },
         "natural/spring": {
             "name": "Font"
@@ -866,9 +845,6 @@
         "amenity/vending_machine/coffee": {
             "name": "Expenedora de cafè"
         },
-        "landuse/military/training_area": {
-            "name": "Àrea d'entrenament"
-        },
         "natural/water/lake": {
             "name": "Llac",
             "terms": "Llac, Estany"
@@ -882,10 +858,6 @@
         },
         "building/warehouse": {
             "name": "Magatzem"
-        },
-        "railway/tram": {
-            "name": "Tramvia ",
-            "terms": "Tranvia, Tram"
         },
         "power/minor_line": {
             "name": "Línia elèctrica de baixa tensió"
@@ -1155,9 +1127,6 @@
             "name": "Arbre",
             "terms": "Arbre"
         },
-        "amenity/register_office": {
-            "name": "Oficina de registre"
-        },
         "leisure/adult_gaming_centre": {
             "name": "Centre d'oci adult"
         },
@@ -1244,10 +1213,6 @@
         "leisure/pitch/baseball": {
             "name": "Camp de beisbol"
         },
-        "railway/monorail": {
-            "name": "Monocarril",
-            "terms": "Monoraíl"
-        },
         "office/physician": {
             "name": "Metge"
         },
@@ -1324,9 +1289,6 @@
         "aerialway/platter": {
             "name": "Teleesquí individual"
         },
-        "amenity/swimming_pool": {
-            "name": "Piscina"
-        },
         "amenity/vending_machine/condoms": {
             "name": "Expenedor de preservatius"
         },
@@ -1400,9 +1362,6 @@
         "landuse/cemetery": {
             "name": "Cementiri",
             "terms": "Cementiri, Camp Sant"
-        },
-        "railway/rail": {
-            "name": "Via fèrria"
         },
         "natural/scree": {
             "name": "Tartera"
@@ -1551,6 +1510,9 @@
             "name": "Agència de viatges",
             "terms": "Agència de viatges"
         },
+        "tourism/artwork/statue": {
+            "name": "Estàtua"
+        },
         "amenity/restaurant": {
             "name": "Restaurant",
             "terms": "Restaurant, Lloc per menjar, Bistro, Wok, Trattoria, Pizzeria"
@@ -1679,6 +1641,9 @@
         "office/estate_agent": {
             "name": "Oficina d'agència immobiliària"
         },
+        "man_made/watermill": {
+            "name": "Molí d'aigua"
+        },
         "amenity/college": {
             "name": "Escola professional"
         },
@@ -1689,9 +1654,6 @@
         "type/restriction/no_straight_on": {
             "name": "Prohibició de seguir recte",
             "terms": "Prohibit continuar recte"
-        },
-        "landuse/allotments": {
-            "name": "Jardí comunitari"
         },
         "amenity/cafe": {
             "name": "Cafè",
@@ -1715,9 +1677,6 @@
         },
         "shop/pet": {
             "name": "Botiga d'animals"
-        },
-        "amenity/scrapyard": {
-            "name": "Escorxador"
         },
         "man_made/survey_point": {
             "name": "Punt referencial",
@@ -1765,6 +1724,9 @@
         "highway/steps": {
             "name": "Escales",
             "terms": "esgraons, graons, escalinata, escala, escalons"
+        },
+        "tourism/artwork/sculpture": {
+            "name": "Escultura"
         },
         "amenity/vending_machine/drinks": {
             "name": "Màquina de vènding de begudes"
@@ -2001,9 +1963,6 @@
         "man_made/water_well": {
             "name": "Pou"
         },
-        "shop/organic": {
-            "name": "Botiga de menjar orgànic"
-        },
         "waterway/ditch": {
             "name": "Séquia",
             "terms": "Séquia, Sèquia, Rara, Canal, Aigua, Via aqüífera, Torrent, Conducció d'aigua, Aqüífer, Rierol"
@@ -2030,10 +1989,6 @@
         },
         "craft/distillery": {
             "name": "Destil·leria"
-        },
-        "aeroway/apron": {
-            "name": "Àrea d'aparcament",
-            "terms": "Àrea d'embarcament d'avions, Àrea d'aparcament d'avions"
         },
         "shop/tattoo": {
             "name": "Centre de tatuatges"
@@ -2159,10 +2114,6 @@
         "office/architect": {
             "name": "Oficina d'arquitectura"
         },
-        "railway/subway": {
-            "name": "Metro",
-            "terms": "Metro, Transport metropolità"
-        },
         "shop/carpet": {
             "name": "Botiga de catifes"
         },
@@ -2196,9 +2147,6 @@
         },
         "shop/car_repair": {
             "name": "Taller d'automòbils"
-        },
-        "craft/hvac": {
-            "name": "Empresa d'instal·lacions climàtiques"
         },
         "highway/path": {
             "name": "Camí",
@@ -2269,9 +2217,6 @@
         "waterway/weir": {
             "name": "Assut"
         },
-        "craft/metal_construction": {
-            "name": "Construccions metàliques"
-        },
         "craft/painter": {
             "name": "Pintor"
         },
@@ -2299,9 +2244,6 @@
         },
         "tourism/viewpoint": {
             "name": "Mirador"
-        },
-        "craft/handicraft": {
-            "name": "Botiga d'artesà"
         },
         "aeroway/terminal": {
             "name": "Terminal d'aeroport"

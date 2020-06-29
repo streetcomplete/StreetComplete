@@ -75,9 +75,6 @@
         "aeroway/runway": {
             "name": "跑道"
         },
-        "railway/monorail": {
-            "name": "单轨铁路"
-        },
         "shop/supermarket": {
             "name": "超级市场"
         },
@@ -119,9 +116,6 @@
         },
         "place/island": {
             "name": "岛屿"
-        },
-        "shop/fishmonger": {
-            "name": "海产店"
         },
         "man_made/pier": {
             "name": "码头"
@@ -170,9 +164,6 @@
         },
         "shop/mall": {
             "name": "商场"
-        },
-        "amenity/swimming_pool": {
-            "name": "游泳池"
         },
         "barrier/wall": {
             "name": "墙"
@@ -242,9 +233,6 @@
         },
         "landuse/cemetery": {
             "name": "墓地"
-        },
-        "railway/rail": {
-            "name": "铁轨"
         },
         "highway/motorway_link": {
             "name": "高速公路匝道"
@@ -369,9 +357,6 @@
         "amenity/telephone": {
             "name": "电话"
         },
-        "aeroway/apron": {
-            "name": "停机坪"
-        },
         "leisure/stadium": {
             "name": "体育场"
         },
@@ -449,9 +434,6 @@
         },
         "amenity/bank": {
             "name": "银行"
-        },
-        "railway/tram": {
-            "name": "电车"
         },
         "landuse/farmyard": {
             "name": "农庄"
@@ -572,9 +554,6 @@
         },
         "highway/trunk": {
             "name": "干线道路"
-        },
-        "railway/subway": {
-            "name": "地铁"
         },
         "shop/butcher": {
             "name": "肉贩"

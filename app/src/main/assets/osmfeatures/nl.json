@@ -272,12 +272,6 @@
         "amenity/restaurant/french": {
             "name": "Frans restaurant"
         },
-        "amenity/ferry_terminal": {
-            "name": "Veerbootterminal"
-        },
-        "shop/furnace": {
-            "name": "Verwarmingswinkel"
-        },
         "landuse/industrial": {
             "name": "Industriegebied",
             "terms": "industriepark,industriezone,industrieel gebied,industriële zone"
@@ -444,6 +438,9 @@
             "name": "Minigolf",
             "terms": "golf,midgetgolf,miniatuurgolf,hole"
         },
+        "tourism/zoo/petting": {
+            "name": "Kinderboerderij"
+        },
         "amenity/vending_machine/ice_cream": {
             "name": "IJs-automaat",
             "terms": "friscoautomaat,ijsjesautomaat"
@@ -478,6 +475,9 @@
         "highway/speed_camera": {
             "name": "Flitspaal",
             "terms": "snelheidscamera,flitser,flitskast,vogelkotje,nestkastje,vogelkastje"
+        },
+        "amenity/studio/radio": {
+            "name": "Radiozender"
         },
         "public_transport/station_monorail": {
             "name": "Monorailstation",
@@ -647,10 +647,6 @@
             "name": "Rolband",
             "terms": "loopband,rolbaan,rollend trottoir,lopende band"
         },
-        "aerialway/gondola": {
-            "name": "Kabelbaan met gondeltjes",
-            "terms": "gondellift,gondola,skilift"
-        },
         "shop/window_blind": {
             "name": "Jaloeziewinkel",
             "terms": "zonwering,luiken,jaloezieën"
@@ -694,10 +690,6 @@
         "craft/chimney_sweeper": {
             "name": "Schoorsteenveger",
             "terms": "schouwveger"
-        },
-        "railway/narrow_gauge": {
-            "name": "Smalspoor",
-            "terms": "smal spoor,normaalspoor,spoor"
         },
         "shop/curtain": {
             "name": "Gordijnenwinkel",
@@ -748,10 +740,6 @@
             "name": "Boekbinder",
             "terms": "boekbinderij,inbinder"
         },
-        "man_made/groyne": {
-            "name": "Strandhoofd",
-            "terms": "golfbreker"
-        },
         "shop/country_store": {
             "name": "Outdoorzaak",
             "terms": "kampeerzaak,landelijk,scoutingwinkel,jacht,ruiter,paardrijden,tuinmachines"
@@ -770,9 +758,6 @@
         },
         "amenity/place_of_worship/jewish": {
             "name": "Joodse synagoge"
-        },
-        "highway/construction": {
-            "name": "Weg gesloten"
         },
         "power/tower": {
             "name": "Hoogspanningsmast",
@@ -848,10 +833,6 @@
             "name": "Vernauwing",
             "terms": "wegversmalling,versmalling,wegvernauwing"
         },
-        "railway/funicular": {
-            "name": "Kabelspoorweg",
-            "terms": "kabelbaan,teleferiek,funiculaire"
-        },
         "power/transformer": {
             "name": "Transformator",
             "terms": "trafo,omvormer"
@@ -888,11 +869,8 @@
             "name": "Gymnastische brug",
             "terms": "brug met gelijke leggers,brug met ongelijke leggers,damesbrug,herenbrug,dipstangen,fitness"
         },
-        "railway/rail/highspeed": {
-            "name": "Hogesnelheidslijn"
-        },
         "highway/footway": {
-            "name": "Wandelpad",
+            "name": "Voetpad",
             "terms": "voetpad"
         },
         "building/roof": {
@@ -998,6 +976,9 @@
         "highway/footway/unmarked-raised": {
             "name": "Ongemarkeerde oversteekplaats (op drempel)"
         },
+        "amenity/toy_library": {
+            "name": "Spelotheek"
+        },
         "landuse/industrial/slaughterhouse": {
             "name": "Slachthuis",
             "terms": "slachterij,abattoir,veeslachterij"
@@ -1091,9 +1072,6 @@
             "name": "Babyartikelenwinkel",
             "terms": "kledijwinkel,fopspeenwinkel,tutters,knuffels,babyspullenwinkel,babykledijwinkel"
         },
-        "shop/fishmonger": {
-            "name": "Visboer"
-        },
         "place/square": {
             "name": "Plein",
             "terms": "open plein,open plaats"
@@ -1185,6 +1163,9 @@
             "name": "Ski-sleeplift",
             "terms": "skilift,stoeltjeslift,babyliftje"
         },
+        "amenity/letter_box": {
+            "name": "Brievenbus"
+        },
         "bridge/support/pier": {
             "name": "Brugpijler",
             "terms": "draagelement van brug,brugfundament,brugtoren"
@@ -1241,10 +1222,6 @@
         "office/religion": {
             "name": "Religieus kantoor"
         },
-        "landuse/military/obstacle_course": {
-            "name": "Militair hindernissenparcours",
-            "terms": "oefenterrein,leger"
-        },
         "natural/spring": {
             "name": "Bron"
         },
@@ -1259,6 +1236,9 @@
         "healthcare/alternative/chiropractic": {
             "name": "Chiropractor",
             "terms": "chiropraxie,chiropraxis,ruggewervel,wervelkolom"
+        },
+        "amenity/townhall/city": {
+            "name": "Stadhuis"
         },
         "attraction/summer_toboggan": {
             "name": "Zomerrodelbaan"
@@ -1435,10 +1415,6 @@
             "name": "Koffieautomaat",
             "terms": "koffiezetmachine"
         },
-        "landuse/military/training_area": {
-            "name": "Militair oefenterrein",
-            "terms": "oefenterrein,leger,opleiding,training,soldaten"
-        },
         "playground/horizontal_bar": {
             "name": "Rekstok als speeltuig"
         },
@@ -1457,10 +1433,6 @@
         "building/warehouse": {
             "name": "Opslagplaats",
             "terms": "magazijn,warenhuis"
-        },
-        "railway/tram": {
-            "name": "Tramspoor",
-            "terms": "tramlijn,spoor"
         },
         "power/minor_line": {
             "name": "Kleine elektriciteitslijn",
@@ -1584,6 +1556,9 @@
         "amenity/fast_food/fish_and_chips": {
             "name": "Fish-and-chipsfastfoodzaak"
         },
+        "amenity/bicycle_parking/building": {
+            "name": "Fietsenstalling garage"
+        },
         "barrier/toll_booth": {
             "name": "Tolhuisje",
             "terms": "tol,betalen,heffing,tolkantoor"
@@ -1670,9 +1645,6 @@
         "amenity/shelter": {
             "name": "Beschutting",
             "terms": "afdak,schuilplaats,bescherming,beschutting,wachthuisje,wachthokje,bushokje,buskotje"
-        },
-        "shop/frozen_food": {
-            "name": "Ingevrorenvoedselzaak"
         },
         "tourism/picnic_site": {
             "name": "Picknickplek",
@@ -1809,6 +1781,9 @@
         "shop/lottery": {
             "name": "Loterij"
         },
+        "amenity/dressing_room": {
+            "name": "Kleedkamer"
+        },
         "leisure/dog_park": {
             "name": "Hondenpark",
             "terms": "losloopgebied voor honden"
@@ -1879,9 +1854,6 @@
         },
         "natural/tree": {
             "name": "Boom"
-        },
-        "amenity/register_office": {
-            "name": "Burgerlijke Stand"
         },
         "highway/crossing/marked-raised": {
             "name": "Voetgangersoversteekplaats (op drempel)"
@@ -1999,17 +1971,9 @@
             "name": "Copyshop",
             "terms": "kopieshop,kopieerwinkel"
         },
-        "public_transport/station_ferry": {
-            "name": "Veerbootstation",
-            "terms": "ferrystation"
-        },
         "leisure/pitch/baseball": {
             "name": "Honkbalveld",
             "terms": "baseballveld,baseballterrein"
-        },
-        "railway/monorail": {
-            "name": "Monorail",
-            "terms": "magneetzweefbaan,enkelspoor,spoor"
         },
         "office/physician": {
             "name": "Arts"
@@ -2159,9 +2123,6 @@
             "name": "Stoeltjeslift met zitschijven in plaats van stoeltjes",
             "terms": "skilift"
         },
-        "amenity/swimming_pool": {
-            "name": "Zwembad"
-        },
         "amenity/vending_machine/condoms": {
             "name": "Condoomautomaat",
             "terms": "automaat"
@@ -2261,10 +2222,6 @@
             "name": "Begraafplaats",
             "terms": "begraafplaats,kerkhof"
         },
-        "railway/rail": {
-            "name": "Spoorweg",
-            "terms": "treinspoor,tramspoor,spoorlijn,normaalspoor,spoor"
-        },
         "natural/scree": {
             "name": "Puinhelling",
             "terms": "ravijn,talud"
@@ -2284,10 +2241,6 @@
         "amenity/grave_yard": {
             "name": "Begraafplaats",
             "terms": "kerkhof"
-        },
-        "railway/light_rail": {
-            "name": "Lightrail",
-            "terms": "lichtspoor,lichte spoorweg"
         },
         "office/lawyer/notary": {
             "name": "Notariaat"
@@ -2391,6 +2344,9 @@
             "name": "Toerskipad",
             "terms": "ski-alpinismepad,ski mountaineering,skilooppad,langlaufpiste"
         },
+        "amenity/events_venue": {
+            "name": "Evenementenlocatie"
+        },
         "healthcare/optometrist": {
             "name": "Optometrist",
             "terms": "oogarts,opticien"
@@ -2422,6 +2378,9 @@
         "amenity/monastery": {
             "name": "Kloostergebied",
             "terms": "abdijgebied"
+        },
+        "amenity/polling_station": {
+            "name": "Permanent stembureau"
         },
         "highway/service/parking_aisle": {
             "name": "Rijbaan in parkeergelegenheid",
@@ -2647,6 +2606,9 @@
         "shop/boutique": {
             "name": "Boetiek"
         },
+        "waterway/lock_gate": {
+            "name": "Sluisdeur"
+        },
         "amenity/vending_machine/parcel_pickup_dropoff": {
             "name": "Pakketautomaat",
             "terms": "pakjesautomaat,pakketafhaalautomaat,pakjesafhaalautomaat,postpakketjes"
@@ -2795,10 +2757,6 @@
             "name": "Niet rechtdoor",
             "terms": "rechtdoor verboden,rechtdoor gaan verboden,niet rechtdoorgaan,afslaan verplicht"
         },
-        "landuse/allotments": {
-            "name": "Volkstuin",
-            "terms": "tuin,moestuin,aparte tuin"
-        },
         "office/water_utility": {
             "name": "Kantoor van watermaatschappij",
             "terms": "watermaatschappij*,waterleidingsmaatschappij*"
@@ -2864,9 +2822,6 @@
         "shop/pet": {
             "name": "Dierenwinkel",
             "terms": "dierenzaak,dierenwinkel,huisdieren"
-        },
-        "amenity/scrapyard": {
-            "name": "Sloperij"
         },
         "man_made/survey_point": {
             "name": "Landmeetkundig referentiepunt",
@@ -3042,6 +2997,9 @@
         },
         "man_made/surveillance/camera": {
             "name": "Bewakingscamera"
+        },
+        "amenity/gambling": {
+            "name": "Gokhal"
         },
         "building/hut": {
             "name": "Hut",
@@ -3339,9 +3297,6 @@
             "name": "Waterbron",
             "terms": "waterput"
         },
-        "shop/organic": {
-            "name": "Winkel met Organische Koopwaar"
-        },
         "waterway/ditch": {
             "name": "Sloot",
             "terms": "sloot,gracht"
@@ -3390,10 +3345,6 @@
         "craft/distillery": {
             "name": "Destilleerderij",
             "terms": "stokerij,distillerij,distilleerderij,destillerij,destillatie,whisky,gin,alcohol,jenever,brandewijn"
-        },
-        "aeroway/apron": {
-            "name": "Platform",
-            "terms": "taxibaan,apron,vliegveld"
         },
         "shop/tattoo": {
             "name": "Tattoozetter",
@@ -3626,19 +3577,11 @@
             "name": "Architectenbureau",
             "terms": "gebouwenontwerper,tekenaar,bouwmeester,architectenkantoor"
         },
-        "railway/subway": {
-            "name": "Metrospoor",
-            "terms": "metrolijn,spoor"
-        },
         "amenity/money_transfer": {
             "name": "Wisselkantoor"
         },
         "highway/elevator": {
             "name": "Lift"
-        },
-        "railway/miniature": {
-            "name": "Berijdbare minispoorweg",
-            "terms": "miniatuurspoorweg,minispoorweg,smalspoor"
         },
         "shop/carpet": {
             "name": "Tapijtwinkel",
@@ -3682,10 +3625,6 @@
         "shop/car_repair": {
             "name": "Autogarage (herstel)",
             "terms": "garage,autohersteller"
-        },
-        "craft/hvac": {
-            "name": "HVAC",
-            "terms": "airco,verwarming,ventilatie,koeling,airconditioning,cv,loodgieter"
         },
         "highway/path": {
             "name": "Pad",
@@ -3742,6 +3681,9 @@
             "name": "Straat",
             "terms": "woonstraat,residentiële weg,gemeenteweg,gemeentelijke weg,kleine openbare weg"
         },
+        "public_transport/platform/tram": {
+            "name": "Tramperron"
+        },
         "historic/wayside_shrine": {
             "name": "Wegschrijn",
             "terms": "bermmonument,kapelletje,veldschrijn,mariaschrijn,wegkapelletje"
@@ -3793,10 +3735,6 @@
         "waterway/weir": {
             "name": "Stuw",
             "terms": "waterkering,stuwdam,keerdam"
-        },
-        "craft/metal_construction": {
-            "name": "Metaalbewerker",
-            "terms": "metaalbewerking,staalbewerking,smid,lassers,lassen"
         },
         "craft/painter": {
             "name": "Schilder",
@@ -3856,10 +3794,6 @@
         "tourism/viewpoint": {
             "name": "Uitzichtpunt",
             "terms": "zicht,uitkijkpunt"
-        },
-        "craft/handicraft": {
-            "name": "Handwerkatelier",
-            "terms": "nijverheidsatelier,handenarbeid,handgemaakt,handvaardigheid,artisanaal atelier,brei-atelier"
         },
         "shop/trade": {
             "name": "Bouwmaterialenhandel",

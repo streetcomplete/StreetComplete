@@ -74,6 +74,10 @@
             "name": "垃圾清運站",
             "terms": "垃圾轉運站"
         },
+        "railway/monorail/hanging": {
+            "name": "懸掛式單軌列車",
+            "terms": "懸掛式單軌列車"
+        },
         "building/ruins": {
             "name": "建築廢墟",
             "terms": "建築廢墟"
@@ -166,10 +170,7 @@
             "terms": "法式餐廳"
         },
         "amenity/ferry_terminal": {
-            "name": "水運碼頭"
-        },
-        "shop/furnace": {
-            "name": "火爐店"
+            "name": "渡輪碼頭"
         },
         "type/route/hiking": {
             "name": "遠足路線",
@@ -254,6 +255,9 @@
         "emergency/phone": {
             "name": "緊急電話",
             "terms": "緊急電話"
+        },
+        "disused/shop": {
+            "name": "廢棄商店"
         },
         "golf/bunker": {
             "name": "沙坑",
@@ -356,9 +360,17 @@
             "name": "高爾夫球練習場",
             "terms": "高爾夫球練習場,練習場"
         },
+        "highway/path/boardwalk": {
+            "name": "木板路",
+            "terms": "木板路"
+        },
         "leisure/fishing": {
             "name": "釣魚點",
             "terms": "釣魚熱點,釣魚處"
+        },
+        "building/sty": {
+            "name": "豬圈",
+            "terms": "豬圈"
         },
         "building/boathouse": {
             "name": "船屋",
@@ -404,8 +416,8 @@
             "terms": "彈力靠墊"
         },
         "aerialway/gondola": {
-            "name": "空中纜車",
-            "terms": "吊車"
+            "name": "貢多拉纜車",
+            "terms": "貢多拉纜車"
         },
         "shop/window_blind": {
             "name": "窗廉店",
@@ -459,8 +471,8 @@
             "terms": "猶太會堂"
         },
         "highway/construction": {
-            "name": "道路封閉",
-            "terms": "道路封閉"
+            "name": "封閉道路",
+            "terms": "封閉道路"
         },
         "power/tower": {
             "name": "高壓電塔",
@@ -533,10 +545,6 @@
             "name": "變壓器",
             "terms": "變壓器"
         },
-        "leisure/track/cycling_point": {
-            "name": "自行車道",
-            "terms": "自行車道"
-        },
         "landuse/military/naval_base": {
             "name": "海軍基地",
             "terms": "軍港,海軍基地"
@@ -554,8 +562,8 @@
             "terms": "油井"
         },
         "railway/rail/highspeed": {
-            "name": "高速鐵路",
-            "terms": "高速鐵路,高鐵"
+            "name": "高鐵軌道",
+            "terms": "高鐵軌道"
         },
         "shop/clothes/second_hand": {
             "name": "二手服飾店",
@@ -592,8 +600,13 @@
             "name": "管道路線",
             "terms": "管線路線"
         },
+        "amenity/vacuum_cleaner": {
+            "name": "吸塵器站",
+            "terms": "吸塵器站"
+        },
         "aeroway/jet_bridge": {
-            "name": "空橋"
+            "name": "空橋",
+            "terms": "空橋"
         },
         "natural/reef": {
             "name": "暗礁",
@@ -706,6 +719,10 @@
         "building/grandstand": {
             "name": "正面看臺",
             "terms": "正面看臺,看臺"
+        },
+        "building/office": {
+            "name": "辦公室建築物",
+            "terms": "辦公室建築物,辦公大樓"
         },
         "aeroway/hangar": {
             "name": "機庫",
@@ -898,8 +915,8 @@
             "terms": "咖啡販賣機,咖啡自動販賣機"
         },
         "landuse/military/training_area": {
-            "name": "訓練場地",
-            "terms": "教練場,訓練場"
+            "name": "軍事訓練區域",
+            "terms": "軍事訓練區域"
         },
         "playground/horizontal_bar": {
             "name": "單槓",
@@ -918,8 +935,8 @@
             "terms": "倉庫"
         },
         "railway/tram": {
-            "name": "電車",
-            "terms": "電車"
+            "name": "路面電車軌道",
+            "terms": "路面電車軌道"
         },
         "power/minor_line": {
             "name": "次要電纜",
@@ -1070,8 +1087,8 @@
             "terms": "溝"
         },
         "shop/frozen_food": {
-            "name": "冷凍食品",
-            "terms": "冷凍食品"
+            "name": "冷凍食品商店",
+            "terms": "冷凍食品商店"
         },
         "attraction/drop_tower": {
             "name": "大怒神",
@@ -1246,6 +1263,10 @@
             "name": "溪流",
             "terms": "小溪"
         },
+        "shop/trophy": {
+            "name": "獎盃商店",
+            "terms": "獎盃商店"
+        },
         "railway": {
             "name": "鐵路圖徽"
         },
@@ -1277,12 +1298,16 @@
             "terms": "篝火"
         },
         "public_transport/station_ferry": {
-            "name": "船運站",
-            "terms": "船運站,渡輪站"
+            "name": "渡輪碼頭",
+            "terms": "渡輪碼頭"
         },
         "man_made/bridge": {
             "name": "橋樑區域",
             "terms": "橋樑區域"
+        },
+        "shop/supermarket/organic": {
+            "name": "有機超市",
+            "terms": "有機超市"
         },
         "office/physician": {
             "name": "醫務所"
@@ -1448,8 +1473,8 @@
             "terms": "公墓、墓地、墓園、納骨塔、墳墓"
         },
         "railway/rail": {
-            "name": "鐵軌",
-            "terms": "路軌"
+            "name": "火車軌道",
+            "terms": "火車軌道"
         },
         "amenity/vending_machine/newspapers": {
             "name": "報紙自動販賣機",
@@ -1483,6 +1508,10 @@
             "name": "纪念建築物",
             "terms": "纪念碑,紀念塔,古蹟"
         },
+        "natural/shrub": {
+            "name": "灌木",
+            "terms": "灌木"
+        },
         "amenity/place_of_worship/shinto": {
             "name": "神社",
             "terms": "神社,日本神社"
@@ -1500,7 +1529,7 @@
             "terms": "無線通訊塔"
         },
         "building/kindergarten": {
-            "name": "幼稚園建築物",
+            "name": "幼兒園建築物",
             "terms": "幼稚園建築物,幼兒園建築物"
         },
         "indoor/room": {
@@ -1585,6 +1614,10 @@
             "name": "自行車棚",
             "terms": "自行車棚,腳踏車棚"
         },
+        "amenity/give_box": {
+            "name": "禮物盒",
+            "terms": "禮物盒"
+        },
         "office/consulting": {
             "name": "諮詢處",
             "terms": "諮詢處"
@@ -1596,6 +1629,10 @@
         "tourism/chalet": {
             "name": "假日小屋",
             "terms": "假日小屋"
+        },
+        "building/cowshed": {
+            "name": "牛棚",
+            "terms": "牛棚,牛舍"
         },
         "leisure": {
             "name": "休閒娛樂圖徽"
@@ -1747,8 +1784,8 @@
             "terms": "玩具店"
         },
         "landuse/allotments": {
-            "name": "社區農園",
-            "terms": "社區田圃,城市農園,社區園圃,社區農地,都市農園"
+            "name": "社群花園",
+            "terms": "社群花園"
         },
         "highway/passing_place": {
             "name": "避車彎",
@@ -1797,9 +1834,6 @@
         "shop/pet": {
             "name": "寵物店",
             "terms": "寵物用品店"
-        },
-        "amenity/scrapyard": {
-            "name": "汽車廢料場"
         },
         "highway/service/alley": {
             "name": "巷弄",
@@ -2135,10 +2169,6 @@
             "name": "壓縮空氣",
             "terms": "冷氣,冷氣機"
         },
-        "shop/organic": {
-            "name": "有機產品店",
-            "terms": "有機食品店"
-        },
         "leisure/fitness_station/stairs": {
             "name": "運動椅",
             "terms": "運動椅"
@@ -2148,8 +2178,8 @@
             "terms": "鐵路通道"
         },
         "man_made/cross": {
-            "name": "峰頂十字架",
-            "terms": "峰頂十字架"
+            "name": "十字架",
+            "terms": "十字架"
         },
         "amenity/cinema": {
             "name": "電影院",
@@ -2168,8 +2198,8 @@
             "terms": "中國餐廳"
         },
         "aeroway/apron": {
-            "name": "停機坪",
-            "terms": "停機坪"
+            "name": "機場停機坪",
+            "terms": "停機坪,機場停機坪"
         },
         "historic/castle/fortress": {
             "name": "歷史城堡",
@@ -2186,10 +2216,6 @@
         "shop/optician": {
             "name": "眼鏡行",
             "terms": "眼鏡行"
-        },
-        "leisure/track/running_point": {
-            "name": "跑道",
-            "terms": "跑道"
         },
         "barrier/block": {
             "name": "阻礙物",
@@ -2241,10 +2267,6 @@
         "historic/building": {
             "name": "歷史建築",
             "terms": "歷史建築"
-        },
-        "leisure/track/horse_racing_point": {
-            "name": "賽馬道",
-            "terms": "賽馬道"
         },
         "shop/frame": {
             "name": "表框店",
@@ -2367,13 +2389,17 @@
             "name": "電氣材料行",
             "terms": "電氣材料行"
         },
+        "highway/road/bridge": {
+            "name": "未知路橋",
+            "terms": "未知路橋"
+        },
         "shop/car_repair": {
             "name": "汽車維修店",
             "terms": "汽車保養店"
         },
         "craft/hvac": {
-            "name": "空調工程",
-            "terms": "空調工程"
+            "name": "暖通空調工作區",
+            "terms": "暖通空調工作區"
         },
         "leisure/water_park": {
             "name": "水上樂園",
@@ -2443,7 +2469,7 @@
             "terms": "山區救援站"
         },
         "amenity/kindergarten": {
-            "name": "幼稚園",
+            "name": "幼兒園範圍",
             "terms": "幼稚園,幼兒園"
         },
         "craft/carpet_layer": {
@@ -2490,8 +2516,8 @@
             "terms": "壁爐店"
         },
         "craft/handicraft": {
-            "name": "手工藝",
-            "terms": "手工藝"
+            "name": "手工藝品工作區",
+            "terms": "手工藝品工作區"
         },
         "piste/downhill/halfpipe": {
             "name": "半管道滑雪",
@@ -2794,6 +2820,10 @@
             "name": "冰淇淋販賣機",
             "terms": "冰淇淋販賣機,冰淇淋自動販賣機"
         },
+        "leisure/trampoline_park": {
+            "name": "彈簧床公園",
+            "terms": "彈簧床公園"
+        },
         "public_transport/stop_position_monorail": {
             "name": "單軌電車停車位置",
             "terms": "單軌電車停車點"
@@ -2819,8 +2849,8 @@
             "terms": "飲水,水源,活水,飲處,取水處"
         },
         "amenity/pharmacy": {
-            "name": "藥房櫃臺",
-            "terms": "藥房櫃臺"
+            "name": "藥局",
+            "terms": "藥房櫃臺,藥房,藥店"
         },
         "barrier/kissing_gate": {
             "name": "單人轉門",
@@ -2908,6 +2938,9 @@
             "name": "醫療設施",
             "terms": "醫療設施"
         },
+        "power/cable": {
+            "name": "電纜"
+        },
         "seamark/beacon_lateral": {
             "name": "航道標誌"
         },
@@ -2954,8 +2987,8 @@
             "terms": "掃煙囪"
         },
         "railway/narrow_gauge": {
-            "name": "窄軌鐵路",
-            "terms": "窄軌鐵路"
+            "name": "窄軌軌道",
+            "terms": "窄軌軌道"
         },
         "shop/curtain": {
             "name": "窗廉店",
@@ -2994,8 +3027,8 @@
             "terms": "書籍釘裝"
         },
         "man_made/groyne": {
-            "name": "堤防",
-            "terms": "河堤,海堤"
+            "name": "防波堤",
+            "terms": "防波堤"
         },
         "shop/country_store": {
             "name": "鄉村商店",
@@ -3021,9 +3054,17 @@
             "name": "內衣店",
             "terms": "內衣店"
         },
+        "shop/household_linen": {
+            "name": "家用亞麻布商店",
+            "terms": "家用亞麻布商店"
+        },
         "craft/boatbuilder": {
             "name": "造船匠",
             "terms": "造船廠"
+        },
+        "amenity/refugee_site": {
+            "name": "難民營",
+            "terms": "難民營"
         },
         "shop/interior_decoration": {
             "name": "室內設計店",
@@ -3047,6 +3088,10 @@
             "name": "園藝師",
             "terms": "園藝師"
         },
+        "man_made/goods_conveyor": {
+            "name": "貨物輸送機",
+            "terms": "貨物輸送機"
+        },
         "indoor/stairs": {
             "name": "室內樓梯間",
             "terms": "室內樓梯間"
@@ -3056,8 +3101,8 @@
             "terms": "交通阻塞"
         },
         "railway/funicular": {
-            "name": "纜車",
-            "terms": "纜車"
+            "name": "纜車軌道",
+            "terms": "纜車軌道"
         },
         "power/generator": {
             "name": "發電機",
@@ -3074,6 +3119,10 @@
         "shop/camera": {
             "name": "相機配件店",
             "terms": "相機配件店"
+        },
+        "healthcare/dentist/orthodontics": {
+            "name": "齒顎矯正醫生",
+            "terms": "齒顎矯正醫生,齒顎矯正師"
         },
         "healthcare/alternative": {
             "name": "替代療法",
@@ -3241,9 +3290,6 @@
             "name": "嬰兒用品店",
             "terms": "嬰兒用品商店"
         },
-        "shop/fishmonger": {
-            "name": "魚販"
-        },
         "place/square": {
             "name": "廣場",
             "terms": "徒步廣場,人行廣場"
@@ -3291,6 +3337,10 @@
             "name": "壁畫",
             "terms": "Mural"
         },
+        "railway/preserved": {
+            "name": "觀光鐵路",
+            "terms": "觀光鐵路"
+        },
         "man_made/chimney": {
             "name": "煙囪",
             "terms": "煙筒"
@@ -3310,6 +3360,10 @@
         "landuse/vineyard": {
             "name": "酒莊",
             "terms": "酒莊"
+        },
+        "leisure/garden/community": {
+            "name": "社區花園",
+            "terms": "社區花園"
         },
         "traffic_calming/rumble_strip": {
             "name": "跳動路面",
@@ -3339,11 +3393,19 @@
             "name": "助產士",
             "terms": "助產士"
         },
+        "amenity/cafe/bubble_tea": {
+            "name": "珍珠奶茶店",
+            "terms": "珍珠奶茶店"
+        },
         "amenity/social_facility/ambulatory_care": {
             "name": "日間護理服務"
         },
         "highway/crossing": {
             "name": "穿越道"
+        },
+        "leisure/garden/botanical": {
+            "name": "植物園",
+            "terms": "植物園"
         },
         "place/isolated_dwelling": {
             "name": "獨立聚落",
@@ -3366,12 +3428,12 @@
             "terms": "摩天輪"
         },
         "landuse/military/obstacle_course": {
-            "name": "障礙課程場地",
-            "terms": "障礙課程場地,障礙課程"
+            "name": "軍事障礙課程",
+            "terms": "軍事障礙課程"
         },
         "natural/spring": {
-            "name": "溫泉",
-            "terms": "溫泉"
+            "name": "泉水",
+            "terms": "泉水"
         },
         "man_made/observatory": {
             "name": "天文台",
@@ -3644,6 +3706,10 @@
             "name": "飲用水商店",
             "terms": "飲用水商店"
         },
+        "telecom/exchange": {
+            "name": "電信交換",
+            "terms": "電信交換"
+        },
         "public_transport/platform": {
             "name": "轉運月台",
             "terms": "轉運月台"
@@ -3750,9 +3816,6 @@
             "name": "樹木",
             "terms": "樹"
         },
-        "amenity/register_office": {
-            "name": "戶政事務所"
-        },
         "indoor/wall": {
             "name": "室內牆壁",
             "terms": "屋內牆壁"
@@ -3836,8 +3899,8 @@
             "terms": "棒球場"
         },
         "railway/monorail": {
-            "name": "單軌電車",
-            "terms": "畢軌電車"
+            "name": "單軌軌道",
+            "terms": "單軌軌道"
         },
         "tourism/apartment": {
             "name": "假日公寓",
@@ -3886,8 +3949,8 @@
             "terms": "吊運服務"
         },
         "military/checkpoint": {
-            "name": "檢查站",
-            "terms": "檢查站"
+            "name": "軍方檢查站",
+            "terms": "軍方檢查站"
         },
         "man_made/water_works": {
             "name": "淨水廠",
@@ -3930,9 +3993,6 @@
         "traffic_sign_vertex": {
             "name": "交通號誌",
             "terms": "交通號誌"
-        },
-        "amenity/swimming_pool": {
-            "name": "游泳池"
         },
         "natural/stone": {
             "name": "孤石"
@@ -4018,8 +4078,8 @@
             "terms": "墳場,墓地"
         },
         "railway/light_rail": {
-            "name": "輕軌",
-            "terms": "輕軌鐵路"
+            "name": "輕軌軌道",
+            "terms": "輕軌軌道"
         },
         "office/lawyer/notary": {
             "name": "公證機構"
@@ -4178,6 +4238,10 @@
         "power/pole": {
             "name": "電線桿",
             "terms": "電線桿"
+        },
+        "type/route/trolleybus": {
+            "name": "無軌電車路線",
+            "terms": "無軌電車路線"
         },
         "natural/peak": {
             "name": "山頂",
@@ -4586,6 +4650,10 @@
             "name": "大眾運輸建築物",
             "terms": "轉運站、車站"
         },
+        "shop/shoe_repair": {
+            "name": "修鞋店",
+            "terms": "修鞋店"
+        },
         "amenity/public_bookcase": {
             "name": "漂書站",
             "terms": "可以自由取用、放置書籍的書架, 開放書架,公共書架"
@@ -4668,6 +4736,10 @@
         "highway/cycleway/bicycle_foot": {
             "name": "單車或步道",
             "terms": "自行車及人行步道"
+        },
+        "amenity/cafe/coffee_shop": {
+            "name": "咖啡廳",
+            "terms": "咖啡廳"
         },
         "landuse/plant_nursery": {
             "name": "育苗場",
@@ -4795,6 +4867,10 @@
             "name": "太陽能板",
             "terms": "太陽能板"
         },
+        "shop/collector": {
+            "name": "收藏品商店",
+            "terms": "收藏品商店"
+        },
         "type/route/foot": {
             "name": "步行路線",
             "terms": "步行路線"
@@ -4840,6 +4916,10 @@
         },
         "emergency/official": {
             "name": "供官方緊急通行"
+        },
+        "man_made/reservoir_covered": {
+            "name": "有蓋水庫",
+            "terms": "有蓋水庫"
         },
         "railway/derail": {
             "name": "鐵路脫軌器",
@@ -4904,6 +4984,10 @@
             "name": "野外小屋",
             "terms": "野外小屋"
         },
+        "amenity/parking_space/disabled": {
+            "name": "無障礙停車位",
+            "terms": "無障礙停車位"
+        },
         "shop/clothes": {
             "name": "服飾店",
             "terms": "衣服店,賣衣店"
@@ -4940,6 +5024,10 @@
             "name": "自來水人孔",
             "terms": "自來水人孔"
         },
+        "man_made/courtyard": {
+            "name": "庭院",
+            "terms": "庭院,天井"
+        },
         "barrier/gate": {
             "name": "閘門",
             "terms": "閘門"
@@ -4961,12 +5049,12 @@
             "terms": "自然游泳區域"
         },
         "railway/subway": {
-            "name": "捷運",
-            "terms": "地鐵,地下鐵,管子"
+            "name": "地下鐵軌道",
+            "terms": "地下鐵軌道"
         },
         "railway/miniature": {
-            "name": "微型鐵路",
-            "terms": "微型鐵路,微型鐵軌"
+            "name": "微型火車軌道",
+            "terms": "微型火車軌道"
         },
         "public_transport/station_bus": {
             "name": "轉運站",
@@ -5078,8 +5166,8 @@
             "terms": "堰堤"
         },
         "craft/metal_construction": {
-            "name": "鐵工工程",
-            "terms": "鐵工工程"
+            "name": "金工",
+            "terms": "金工"
         },
         "craft/painter": {
             "name": "油漆工程",

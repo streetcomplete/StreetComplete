@@ -76,9 +76,6 @@
         "aeroway/runway": {
             "name": "Landas pacu"
         },
-        "railway/monorail": {
-            "name": "Monorel"
-        },
         "amenity/studio": {
             "name": "Studio"
         },
@@ -181,9 +178,6 @@
         "shop/hairdresser": {
             "name": "Salon"
         },
-        "amenity/swimming_pool": {
-            "name": "Kolam Renang"
-        },
         "man_made/tower": {
             "name": "Menara"
         },
@@ -201,9 +195,6 @@
         },
         "ford": {
             "name": "Ford"
-        },
-        "shop/furnace": {
-            "name": "Toko Perapian"
         },
         "landuse/industrial": {
             "name": "Kawasan Industri",
@@ -262,9 +253,6 @@
         "landuse/cemetery": {
             "name": "Pemakaman",
             "terms": "Kuburan, Makam, TPU, Tempat Pemakaman Umum"
-        },
-        "railway/rail": {
-            "name": "Rel Kereta"
         },
         "office/government": {
             "name": "Kantor Pemerintah"
@@ -409,6 +397,9 @@
         "power/pole": {
             "name": "Tiang Listrik"
         },
+        "type/waterway": {
+            "name": "Jalur Air"
+        },
         "craft/winery": {
             "name": "Penghasil Anggur",
             "terms": "Minuman Keras, Miras, Alkohol"
@@ -486,9 +477,6 @@
             "name": "Gunung Api",
             "terms": "Gunung Berapi"
         },
-        "aerialway/gondola": {
-            "name": "Gondola"
-        },
         "shop/window_blind": {
             "name": "Toko Kerai",
             "terms": "Jendela, Krey, Bidai, Tirai"
@@ -505,10 +493,6 @@
         },
         "shop/boutique": {
             "name": "Butik"
-        },
-        "railway/narrow_gauge": {
-            "name": "Sepur Sempit",
-            "terms": "Narrow Gauge Rail, Trek, Trak, Lebar Jalur Kereta Api"
         },
         "shop/curtain": {
             "name": "Toko Gorden",
@@ -799,9 +783,6 @@
         "shop/baby_goods": {
             "name": "Toko Perlengkapan Bayi"
         },
-        "shop/fishmonger": {
-            "name": "Penjual Ikan"
-        },
         "landuse/orchard": {
             "name": "Kebun Buah"
         },
@@ -862,6 +843,9 @@
         "traffic_calming/rumble_strip": {
             "name": "Pita Kejut",
             "terms": "Marka Kejut, Pita Penggaduh, Garis Kejut, Rumble Strip"
+        },
+        "waterway/waterfall": {
+            "name": "Air terjun"
         },
         "type/route": {
             "name": "Rute"
@@ -973,9 +957,6 @@
             "name": "Sumur",
             "terms": "Perigi"
         },
-        "shop/organic": {
-            "name": "Toko Barang Organik"
-        },
         "waterway/ditch": {
             "name": "Selokan"
         },
@@ -984,6 +965,9 @@
         },
         "shop/electronics": {
             "name": "Toko Elektronik"
+        },
+        "waterway": {
+            "name": "Fitur Jalur Air"
         },
         "amenity/clinic": {
             "name": "Klinik"
@@ -1007,10 +991,6 @@
         },
         "building/construction": {
             "name": "Bangunan sedang dalam konstruksi"
-        },
-        "aeroway/apron": {
-            "name": "Pelataran pesawat",
-            "terms": "Apron, Parkir Pesawat"
         },
         "shop/tattoo": {
             "name": "Jasa Pembuatan Tato"
@@ -1078,9 +1058,6 @@
         "leisure/bowling_alley": {
             "name": "Tempat Boling",
             "terms": "Bowling"
-        },
-        "railway/tram": {
-            "name": "Tram"
         },
         "power/minor_line": {
             "name": "Jalur listrik lainya"
@@ -1217,9 +1194,6 @@
             "name": "Sungai",
             "terms": "Kali"
         },
-        "railway/subway": {
-            "name": "Jalur Bawah Tanah"
-        },
         "shop/carpet": {
             "name": "Toko Karpet"
         },
@@ -1255,9 +1229,6 @@
         },
         "shop/car_repair": {
             "name": "Bengkel Mobil"
-        },
-        "craft/hvac": {
-            "name": "HVAC"
         },
         "highway/path": {
             "name": "Jalur"
@@ -1373,9 +1344,6 @@
         "building/cabin": {
             "name": "Kabin"
         },
-        "craft/metal_construction": {
-            "name": "Konstruksi Metal"
-        },
         "craft/painter": {
             "name": "Tukang Cat"
         },
@@ -1396,9 +1364,6 @@
             "name": "Objek Wisata",
             "terms": "Atraksi Wisata"
         },
-        "amenity/register_office": {
-            "name": "Dinas Catatan Sipil"
-        },
         "golf/fairway": {
             "name": "Jalan damai"
         },
@@ -1413,9 +1378,6 @@
         },
         "tourism/viewpoint": {
             "name": "Titik Pandang"
-        },
-        "craft/handicraft": {
-            "name": "Kerajinan Tangan"
         },
         "office/lawyer": {
             "name": "Kantor Hukum"

@@ -1312,6 +1312,10 @@
             "name": "Bridge Area",
             "terms": ""
         },
+        "shop/supermarket/organic": {
+            "name": "Organic Supermarket",
+            "terms": "natural foods"
+        },
         "office/physician": {
             "name": "Physician"
         },
@@ -2017,6 +2021,10 @@
             "name": "Semi-Detached House",
             "terms": "home,double,duplex,twin,family,residence,dwelling"
         },
+        "type/destination_sign": {
+            "name": "Destination Sign",
+            "terms": "exit sign"
+        },
         "shop/clothes/wedding": {
             "name": "Wedding Clothes Store",
             "terms": "boutique,bridal,bride,bridegroom,bridesmaid,groom,groomsman,tuxedo,wedding dress,wedding gown"
@@ -2173,10 +2181,6 @@
             "name": "Compressed Air",
             "terms": ""
         },
-        "shop/organic": {
-            "name": "Organic Goods Store",
-            "terms": ""
-        },
         "leisure/fitness_station/stairs": {
             "name": "Exercise Stairs",
             "terms": "exercise,fitness,gym,steps,trim trail"
@@ -2257,8 +2261,8 @@
             "terms": "drop box,dropbox,letter drop,mail box,mail collection box,mail drop,mail dropoff,mailbox,package drop,pillar box,pillarbox,post box,postal box,postbox"
         },
         "playground/sandpit": {
-            "name": "Sandpit",
-            "terms": "sandbox"
+            "name": "Play Sandbox",
+            "terms": "sandbox,sandpit"
         },
         "leisure/bowling_alley": {
             "name": "Bowling Alley",
@@ -3346,8 +3350,8 @@
             "terms": "bore,dig,shaft,underground passage,underpass"
         },
         "playground/climbing_frame": {
-            "name": "Climbing Frame",
-            "terms": ""
+            "name": "Play Climbing Frame",
+            "terms": "jungle gym,monkey bars"
         },
         "tourism/artwork/mural": {
             "name": "Mural",
@@ -3584,8 +3588,8 @@
             "terms": "road,highway"
         },
         "playground/zipwire": {
-            "name": "Zip Wire",
-            "terms": ""
+            "name": "Play Zip Line",
+            "terms": "zipline,zip wire,zipwire"
         },
         "tourism/theme_park": {
             "name": "Theme Park",
@@ -4754,6 +4758,10 @@
             "name": "Detached House",
             "terms": "home,single,family,residence,dwelling"
         },
+        "entrance/emergency_ward_entrance": {
+            "name": "Emergency Room Entrance",
+            "terms": "accident & emergency department,casualty department,ed,emergency department,emergency room,emergency ward,er,ew"
+        },
         "healthcare/occupational_therapist": {
             "name": "Occupational Therapist",
             "terms": "therapist,therapy"
@@ -5045,7 +5053,7 @@
         },
         "leisure/marina": {
             "name": "Marina",
-            "terms": "boat"
+            "terms": "boats,docks,harbor,harbour,moorings,yachts"
         },
         "man_made/manhole/water": {
             "name": "Water Utility Manhole",

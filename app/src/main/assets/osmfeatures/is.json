@@ -185,7 +185,8 @@
             "name": "Fjármálafyrirtæki"
         },
         "highway/track": {
-            "name": "Vegslóði án viðhalds"
+            "name": "Vegslóði án viðhalds",
+            "terms": "vegslóði án þjónustu,skógarvegur,aðkoma slökkviliðs,bændaslóðar,virkjanavegir,fjórhjóladrifs,4x4,utanvegaslóð"
         },
         "attraction/dark_ride": {
             "name": "Draugahús"
@@ -204,12 +205,6 @@
         },
         "amenity/restaurant/french": {
             "name": "Franskt veitingahús"
-        },
-        "amenity/ferry_terminal": {
-            "name": "Ferjustöð / Umferðarmiðstöð"
-        },
-        "shop/furnace": {
-            "name": "Arinvöruverslun"
         },
         "landuse/industrial": {
             "name": "Iðnaðarsvæði"
@@ -481,9 +476,6 @@
         "playground/cushion": {
             "name": "Hoppkoddi"
         },
-        "aerialway/gondola": {
-            "name": "Eggjalyfta"
-        },
         "shop/window_blind": {
             "name": "Verslun með rimlagluggatjöld"
         },
@@ -513,9 +505,6 @@
         },
         "craft/chimney_sweeper": {
             "name": "Sótari"
-        },
-        "railway/narrow_gauge": {
-            "name": "Mjótt lestarspor"
         },
         "shop/curtain": {
             "name": "Gluggatjaldaverslun"
@@ -549,9 +538,6 @@
         },
         "craft/bookbinder": {
             "name": "Bókbindari"
-        },
-        "man_made/groyne": {
-            "name": "Öldubrjótur"
         },
         "shop/pawnbroker": {
             "name": "Veðlánari"
@@ -618,9 +604,6 @@
         },
         "traffic_calming/choker": {
             "name": "Umferðarþrenging"
-        },
-        "railway/funicular": {
-            "name": "Toglest"
         },
         "power/transformer": {
             "name": "Straumbreytir"
@@ -796,9 +779,6 @@
         "shop/baby_goods": {
             "name": "Barnavöruverslun"
         },
-        "shop/fishmonger": {
-            "name": "Fisksali"
-        },
         "place/square": {
             "name": "Torg"
         },
@@ -831,6 +811,9 @@
         },
         "tourism/artwork/mural": {
             "name": "Veggmynd"
+        },
+        "highway/raceway/motocross": {
+            "name": "Mótocrossbraut"
         },
         "man_made/chimney": {
             "name": "Skorsteinn"
@@ -900,9 +883,6 @@
         },
         "attraction/big_wheel": {
             "name": "Parísarhjól"
-        },
-        "landuse/military/obstacle_course": {
-            "name": "Hindrunarhlaupabraut"
         },
         "natural/spring": {
             "name": "Uppspretta"
@@ -1042,9 +1022,6 @@
         "amenity/vending_machine/coffee": {
             "name": "Kaffisjálfsali"
         },
-        "landuse/military/training_area": {
-            "name": "Æfingasvæði"
-        },
         "playground/horizontal_bar": {
             "name": "Leikþverslá"
         },
@@ -1059,9 +1036,6 @@
         },
         "building/warehouse": {
             "name": "Vöruhús"
-        },
-        "railway/tram": {
-            "name": "Sporvagn"
         },
         "power/minor_line": {
             "name": "Minni raflína"
@@ -1219,9 +1193,6 @@
         "amenity/shelter": {
             "name": "Skýli"
         },
-        "shop/frozen_food": {
-            "name": "Frosin matvæli"
-        },
         "tourism/picnic_site": {
             "name": "Áningarstaður"
         },
@@ -1254,6 +1225,9 @@
         },
         "craft/beekeeper": {
             "name": "Býflugnahirðir"
+        },
+        "leisure/track/horse_racing": {
+            "name": "Kappreiðabraut"
         },
         "amenity/toilets": {
             "name": "Salerni"
@@ -1294,6 +1268,9 @@
         },
         "amenity/embassy": {
             "name": "Sendiráð"
+        },
+        "leisure/track/cycling": {
+            "name": "Hjólreiðabraut"
         },
         "place/islet": {
             "name": "Hólmi"
@@ -1371,9 +1348,6 @@
         },
         "natural/tree": {
             "name": "Tré"
-        },
-        "amenity/register_office": {
-            "name": "Skráningarskrifstofa"
         },
         "highway/crossing/marked-raised": {
             "name": "Merkt gangbraut (upphækkuð)"
@@ -1459,14 +1433,8 @@
         "shop/copyshop": {
             "name": "Ljósritunarstofa"
         },
-        "public_transport/station_ferry": {
-            "name": "Ferjustöð / Umferðarmiðstöð"
-        },
         "leisure/pitch/baseball": {
             "name": "Hafnaboltavöllur"
-        },
-        "railway/monorail": {
-            "name": "Einteinungur"
         },
         "office/physician": {
             "name": "Læknir"
@@ -1573,9 +1541,6 @@
         "aerialway/platter": {
             "name": "Diskalyfta"
         },
-        "amenity/swimming_pool": {
-            "name": "Sundlaug"
-        },
         "amenity/vending_machine/condoms": {
             "name": "Smokkasjálfsali"
         },
@@ -1654,9 +1619,6 @@
         "landuse/cemetery": {
             "name": "Kirkjugarður"
         },
-        "railway/rail": {
-            "name": "Lestarteinar"
-        },
         "natural/scree": {
             "name": "Skriða"
         },
@@ -1671,9 +1633,6 @@
         },
         "amenity/grave_yard": {
             "name": "Grafreitur"
-        },
-        "railway/light_rail": {
-            "name": "Léttlest"
         },
         "office/lawyer/notary": {
             "name": "Skrifstofa lögbókanda"
@@ -2038,9 +1997,6 @@
         "type/restriction/no_straight_on": {
             "name": "Ekki beint áfram"
         },
-        "landuse/allotments": {
-            "name": "Samfélagsgarður"
-        },
         "office/water_utility": {
             "name": "Skrifstofa vatnsveitu"
         },
@@ -2093,9 +2049,6 @@
         "shop/pet": {
             "name": "Dýrabúð"
         },
-        "amenity/scrapyard": {
-            "name": "Brotajárnshaugur"
-        },
         "man_made/survey_point": {
             "name": "Útsýnisstaður"
         },
@@ -2146,6 +2099,9 @@
         },
         "shop/outdoor": {
             "name": "Útivistarbúð"
+        },
+        "highway/raceway": {
+            "name": "Kappakstursbraut"
         },
         "emergency/designated": {
             "name": "Ætlað sem neyðaraðgangur"
@@ -2448,9 +2404,6 @@
         "man_made/water_well": {
             "name": "Brunnur"
         },
-        "shop/organic": {
-            "name": "Verslun með lífrænar vörur"
-        },
         "waterway/ditch": {
             "name": "Skurður"
         },
@@ -2487,9 +2440,6 @@
         },
         "craft/distillery": {
             "name": "Eimingarhús"
-        },
-        "aeroway/apron": {
-            "name": "Flughlað"
         },
         "shop/tattoo": {
             "name": "Húðflúrstofa"
@@ -2660,14 +2610,8 @@
         "office/architect": {
             "name": "Arkitektastofa"
         },
-        "railway/subway": {
-            "name": "Neðanjarðarlest"
-        },
         "highway/elevator": {
             "name": "Lyfta"
-        },
-        "railway/miniature": {
-            "name": "Smájárnbraut"
         },
         "shop/carpet": {
             "name": "Gólfteppaverslun"
@@ -2701,9 +2645,6 @@
         },
         "shop/car_repair": {
             "name": "Bílaverkstæði"
-        },
-        "craft/hvac": {
-            "name": "Loftræsting, upphitun og loftkæling"
         },
         "highway/path": {
             "name": "Stígur"
@@ -2777,9 +2718,6 @@
         "waterway/weir": {
             "name": "Yfirfall"
         },
-        "craft/metal_construction": {
-            "name": "Málmsmíði (byggingar)"
-        },
         "craft/painter": {
             "name": "Málari"
         },
@@ -2821,9 +2759,6 @@
         },
         "tourism/viewpoint": {
             "name": "Útsýnisstaður"
-        },
-        "craft/handicraft": {
-            "name": "Handverk"
         },
         "shop/trade": {
             "name": "Iðnaðarvörusala"

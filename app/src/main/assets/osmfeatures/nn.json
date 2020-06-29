@@ -3,9 +3,6 @@
         "amenity/atm": {
             "name": "Minibank"
         },
-        "railway/tram": {
-            "name": "Trikk"
-        },
         "waterway/river": {
             "name": "Elv"
         },

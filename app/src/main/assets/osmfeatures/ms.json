@@ -51,9 +51,6 @@
         "office/telecommunication": {
             "name": "Pejabat Telekom"
         },
-        "railway/monorail": {
-            "name": "Monorel"
-        },
         "amenity/studio": {
             "name": "Studio"
         },
@@ -160,9 +157,6 @@
         "amenity/food_court": {
             "name": "Medan Selera"
         },
-        "amenity/swimming_pool": {
-            "name": "Kolam Renang"
-        },
         "barrier/wall": {
             "name": "Tembok"
         },
@@ -222,9 +216,6 @@
         "tourism/aquarium": {
             "name": "Akuarium"
         },
-        "railway/rail": {
-            "name": "Kereta Api"
-        },
         "office/government": {
             "name": "Pejabat Kerajaan"
         },
@@ -243,9 +234,6 @@
         },
         "amenity/taxi": {
             "name": "Tempat Menunggu Teksi"
-        },
-        "railway/light_rail": {
-            "name": "Rel Ringan"
         },
         "shop/paint": {
             "name": "Kedai Cat"
@@ -335,9 +323,6 @@
         "building/warehouse": {
             "name": "Gudang"
         },
-        "railway/tram": {
-            "name": "Tram"
-        },
         "power/minor_line": {
             "name": "Talian Elektrik Kecil"
         },
@@ -400,9 +385,6 @@
         "amenity/vending_machine": {
             "name": "Mesin Layan Diri"
         },
-        "aerialway/gondola": {
-            "name": "Gondola"
-        },
         "amenity/nightclub": {
             "name": "Kelab Malam"
         },
@@ -421,9 +403,6 @@
         "office/moving_company": {
             "name": "Pejabat Syarikat Pemindahan"
         },
-        "railway/narrow_gauge": {
-            "name": "Rel Landasan Sempit"
-        },
         "waterway/river": {
             "name": "Sungai"
         },
@@ -432,9 +411,6 @@
         },
         "highway/trunk": {
             "name": "Jalan Batang"
-        },
-        "railway/subway": {
-            "name": "Kereta Api Bawah Tanah"
         },
         "office": {
             "name": "Pejabat"
@@ -535,9 +511,6 @@
         "building/greenhouse": {
             "name": "Rumah Tanaman"
         },
-        "railway/funicular": {
-            "name": "Funikulus"
-        },
         "power/transformer": {
             "name": "Transformer"
         },
@@ -546,9 +519,6 @@
         },
         "power/generator": {
             "name": "Penjana Tenaga Elektrik"
-        },
-        "amenity/register_office": {
-            "name": "Pejabat Pendaftar"
         },
         "shop/tailor": {
             "name": "Kedai Tukang Jahit"

@@ -77,10 +77,6 @@
             "name": "跑道",
             "terms": "Runway,跑道"
         },
-        "railway/monorail": {
-            "name": "單軌",
-            "terms": "Monorail,單軌,單軌鐵路,單軌電車"
-        },
         "landuse/military": {
             "name": "軍地"
         },
@@ -206,9 +202,6 @@
             "name": "吊盤",
             "terms": "Platter Lift,吊盤"
         },
-        "amenity/swimming_pool": {
-            "name": "游水池"
-        },
         "man_made/tower": {
             "name": "塔",
             "terms": "Tower,塔"
@@ -281,10 +274,6 @@
         "landuse/cemetery": {
             "name": "墳場",
             "terms": "Cemetery,墓地,墳場"
-        },
-        "railway/rail": {
-            "name": "路軌",
-            "terms": "Rail,火車軌,路軌,軌,鐵軌"
         },
         "natural/scree": {
             "name": "碎石坡",
@@ -524,10 +513,6 @@
             "name": "火山",
             "terms": "Volcano,火山"
         },
-        "aerialway/gondola": {
-            "name": "吊船",
-            "terms": "Gondola,吊船"
-        },
         "amenity/bar": {
             "name": "酒吧",
             "terms": "Bar,吧,酒吧"
@@ -546,10 +531,6 @@
         "aerialway/pylon": {
             "name": "吊車塔",
             "terms": "Areialway Pylon,吊車塔,纜車纜塔"
-        },
-        "railway/narrow_gauge": {
-            "name": "窄軌火車",
-            "terms": "Narrow Gauge Rails,窄軌火車,窄軌,窄軌鐵路"
         },
         "leisure/pitch/tennis": {
             "name": "網球場",
@@ -776,9 +757,6 @@
         "landuse/farmland": {
             "name": "田地"
         },
-        "shop/fishmonger": {
-            "name": "魚檔"
-        },
         "landuse/orchard": {
             "name": "菓園",
             "terms": "Orchard,果園,菓園"
@@ -959,10 +937,6 @@
         "highway/unclassified": {
             "name": "道仔／無類道"
         },
-        "aeroway/apron": {
-            "name": "停機坪",
-            "terms": "Apron,停機坪"
-        },
         "shop/optician": {
             "name": "眼鏡鋪",
             "terms": "Optician,眼鏡店,眼鏡行,眼鏡鋪"
@@ -1027,10 +1001,6 @@
         },
         "playground/sandpit": {
             "name": "砂池"
-        },
-        "railway/tram": {
-            "name": "電車",
-            "terms": "Tram,電車"
         },
         "power/minor_line": {
             "name": "細供電綫",
@@ -1161,10 +1131,6 @@
         "amenity/doctors": {
             "name": "醫生",
             "terms": "Doctor,醫生"
-        },
-        "railway/subway": {
-            "name": "地下鐵路",
-            "terms": "MTR,Mass Transit Railway,Subway,地下鐵,地下鐵路,地鐵"
         },
         "barrier/ditch": {
             "name": "坑"

@@ -105,9 +105,6 @@
             "name": "Pakilimo takas",
             "terms": "pakilimo takas"
         },
-        "railway/monorail": {
-            "name": "Vienbėgis geležinkelis"
-        },
         "amenity/studio": {
             "name": "Studija",
             "terms": "studija"
@@ -260,9 +257,6 @@
             "name": "Kirpykla",
             "terms": "kirpykla"
         },
-        "amenity/swimming_pool": {
-            "name": "Baseinas"
-        },
         "man_made/tower": {
             "name": "Bokštas",
             "terms": "bokštas"
@@ -287,9 +281,6 @@
         "ford": {
             "name": "Brasta",
             "terms": "brasta"
-        },
-        "shop/furnace": {
-            "name": "Krosnių parduotuvė"
         },
         "landuse/industrial": {
             "name": "Pramoninė zona",
@@ -371,10 +362,6 @@
         "landuse/cemetery": {
             "name": "Kapinės",
             "terms": "kapinės"
-        },
-        "railway/rail": {
-            "name": "Gelžkelis",
-            "terms": "geležinkelis,gelžkelis"
         },
         "type/route/subway": {
             "name": "Metro maršrutas"
@@ -698,10 +685,6 @@
         "amenity/vending_machine": {
             "name": "Prekybos automatas"
         },
-        "aerialway/gondola": {
-            "name": "Gondola",
-            "terms": "Gondola"
-        },
         "advertising/column": {
             "name": "Reklaminis stovas"
         },
@@ -731,10 +714,6 @@
         },
         "craft/chimney_sweeper": {
             "name": "Kaminų valytojas"
-        },
-        "railway/narrow_gauge": {
-            "name": "Siaurukas",
-            "terms": "siaurukas"
         },
         "shop/curtain": {
             "name": "Užuolaidų parduotuvė"
@@ -870,9 +849,6 @@
         "attraction/maze": {
             "name": "Labirintas"
         },
-        "landuse/allotments": {
-            "name": "Bendruomenės sodas"
-        },
         "amenity/place_of_worship/sikh": {
             "name": "Sikhizmo šventykla"
         },
@@ -914,10 +890,6 @@
             "name": "Šiltnamis",
             "terms": "šiltnamis"
         },
-        "railway/funicular": {
-            "name": "Keltuvas",
-            "terms": "Funikulierius"
-        },
         "landuse/harbour": {
             "name": "Uostas"
         },
@@ -931,9 +903,6 @@
         },
         "shop/pet": {
             "name": "Augintinių parduotuvė"
-        },
-        "amenity/scrapyard": {
-            "name": "Metalo laužas"
         },
         "natural/wetland": {
             "name": "Drėgna žemė"
@@ -1140,9 +1109,6 @@
         },
         "shop/baby_goods": {
             "name": "Vaikų prekių parduotuvė"
-        },
-        "shop/fishmonger": {
-            "name": "Žuvų pardavėjas"
         },
         "landuse/orchard": {
             "name": "Vaismedžių sodas",
@@ -1352,10 +1318,6 @@
         "man_made/water_well": {
             "name": "Vandens šulinys"
         },
-        "shop/organic": {
-            "name": "Ekologiškų prekių parduotuvė",
-            "terms": "Organinių prekių parduotuvė"
-        },
         "waterway/ditch": {
             "name": "Griovys",
             "terms": "Griovys"
@@ -1490,10 +1452,6 @@
         "building/warehouse": {
             "name": "Sandėlis",
             "terms": "sandėlys"
-        },
-        "railway/tram": {
-            "name": "Tramvajus",
-            "terms": "tramvajus"
         },
         "power/minor_line": {
             "name": "Maža elektros linija"
@@ -1670,10 +1628,6 @@
         "office/architect": {
             "name": "Architekto biuras"
         },
-        "railway/subway": {
-            "name": "Metro",
-            "terms": "metro"
-        },
         "barrier/ditch": {
             "name": "Tranšelis"
         },
@@ -1719,10 +1673,6 @@
         },
         "shop/car_repair": {
             "name": "Auto taisykla"
-        },
-        "craft/hvac": {
-            "name": "HVAC",
-            "terms": "hvac"
         },
         "highway/path": {
             "name": "Takas",
@@ -1884,9 +1834,6 @@
         "tourism/attraction": {
             "name": "Turistų traukos vieta"
         },
-        "amenity/register_office": {
-            "name": "Registravimo biūras"
-        },
         "leisure/adult_gaming_centre": {
             "name": "Suaugusiųjų lošimų vieta"
         },
@@ -1903,9 +1850,6 @@
         },
         "tourism/viewpoint": {
             "name": "Apžvalgos taškas"
-        },
-        "craft/handicraft": {
-            "name": "Rankdarbių meistras"
         },
         "office/lawyer": {
             "name": "Advokatų kontora"

@@ -84,9 +84,6 @@
         "aeroway/runway": {
             "name": "Skrejceļš"
         },
-        "railway/monorail": {
-            "name": "Viensliežu vilciens"
-        },
         "amenity/studio": {
             "name": "Studija"
         },
@@ -193,9 +190,6 @@
         "shop/hairdresser": {
             "name": "Frizieris"
         },
-        "amenity/swimming_pool": {
-            "name": "Peldbaseins"
-        },
         "amenity/vending_machine/condoms": {
             "name": "Prezervatīvu Tirdzniecības automāts"
         },
@@ -217,9 +211,6 @@
         },
         "tourism/information/board": {
             "name": "Informācijas stends"
-        },
-        "amenity/ferry_terminal": {
-            "name": "Prāmju stacija / Terminālis"
         },
         "natural/sand": {
             "name": "Smiltis"
@@ -280,9 +271,6 @@
         },
         "landuse/cemetery": {
             "name": "Kapsēta"
-        },
-        "railway/rail": {
-            "name": "Sliedes"
         },
         "amenity/vending_machine/fuel": {
             "name": "Degvielas sūknis",
@@ -584,9 +572,6 @@
         "craft/chimney_sweeper": {
             "name": "Skursteņslauķis",
             "terms": "Skursteņu slaucītājs"
-        },
-        "railway/narrow_gauge": {
-            "name": "Šaursliežu dzelzceļš"
         },
         "shop/curtain": {
             "name": "Aizkaru veikals"
@@ -1198,9 +1183,6 @@
         "man_made/mast": {
             "name": "Masts"
         },
-        "railway/tram": {
-            "name": "Tramvajs"
-        },
         "amenity/vending_machine/cigarettes": {
             "name": "Cigarešu Tirdzniecības automāts",
             "terms": "cigrarete, tabaka"
@@ -1356,18 +1338,12 @@
         "office/architect": {
             "name": "Arhitekta birojs"
         },
-        "railway/subway": {
-            "name": "Metro"
-        },
         "barrier/ditch": {
             "name": "Tranšeja",
             "terms": "trenča, bedre"
         },
         "highway/elevator": {
             "name": "Lifts"
-        },
-        "railway/miniature": {
-            "name": "Miniātura dzelzceļš"
         },
         "shop/carpet": {
             "name": "Paklāju veikals"

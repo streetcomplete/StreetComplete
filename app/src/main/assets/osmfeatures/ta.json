@@ -85,9 +85,6 @@
         "office/telecommunication": {
             "name": "தொலைத்தொடர்பு அலுவலகம்"
         },
-        "railway/monorail": {
-            "name": "மோனோ இரயில்"
-        },
         "landuse/military": {
             "name": "இராணுவப் பகுதி"
         },
@@ -204,9 +201,6 @@
         "shop/mall": {
             "name": "பேரங்காடி"
         },
-        "amenity/swimming_pool": {
-            "name": "நீச்சல் குளம்"
-        },
         "barrier/wall": {
             "name": "சுவர்"
         },
@@ -286,9 +280,6 @@
         "tourism/aquarium": {
             "name": "மீன் காட்சியகம்"
         },
-        "railway/rail": {
-            "name": "இரயில்"
-        },
         "natural/water/reservoir": {
             "name": "நீர்த் தேக்கம்"
         },
@@ -303,9 +294,6 @@
         },
         "amenity/grave_yard": {
             "name": "இடுகாடு"
-        },
-        "railway/light_rail": {
-            "name": "இலகு இரயில்"
         },
         "office/lawyer/notary": {
             "name": "ஆயத்துறை எழுத்துபதிவாளர் அலுவலகம்"
@@ -405,9 +393,6 @@
         "emergency/water_tank": {
             "name": "அவசர நீர் தொட்டி"
         },
-        "aeroway/apron": {
-            "name": "காப்புத் தளம்"
-        },
         "type/restriction/only_left_turn": {
             "name": "இடது வளைவு மட்டும்"
         },
@@ -472,9 +457,6 @@
         },
         "amenity/bank": {
             "name": "வங்கி"
-        },
-        "railway/tram": {
-            "name": "அமிழ் தண்டூர்தி"
         },
         "public_transport/station_light_rail": {
             "name": "இலகு இரயில் நிலையம்"
@@ -621,9 +603,6 @@
         "amenity/doctors": {
             "name": "மருத்துவர் ",
             "terms": "மருத்துவர்"
-        },
-        "railway/subway": {
-            "name": "சுரங்கப்பாதை"
         },
         "highway/elevator": {
             "name": "மின்தூக்கி"
@@ -784,9 +763,6 @@
         },
         "type/route/power": {
             "name": "மின் பாதை"
-        },
-        "amenity/register_office": {
-            "name": "பதிவு அலுவலகம்"
         },
         "man_made/petroleum_well": {
             "name": "எண்ணெய் கிணறு"

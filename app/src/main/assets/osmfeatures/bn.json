@@ -51,9 +51,6 @@
         "office/telecommunication": {
             "name": "টেলিকম অফিস"
         },
-        "railway/monorail": {
-            "name": "মনোরেল"
-        },
         "shop/supermarket": {
             "name": "সুপারমার্কেট"
         },
@@ -87,9 +84,6 @@
         "place/island": {
             "name": "দ্বীপ"
         },
-        "shop/fishmonger": {
-            "name": "মৎস্য ব্যবসায়ী"
-        },
         "man_made/pier": {
             "name": "জাহাজঘাটা"
         },
@@ -116,9 +110,6 @@
         },
         "shop/mall": {
             "name": "মল"
-        },
-        "amenity/swimming_pool": {
-            "name": "সাঁতার কাটার পুকুর"
         },
         "barrier/wall": {
             "name": "দেয়াল"
@@ -164,9 +155,6 @@
         },
         "landuse/cemetery": {
             "name": "কবরখানা"
-        },
-        "railway/rail": {
-            "name": "রেল"
         },
         "natural/water/reservoir": {
             "name": "জলাধার"
@@ -297,9 +285,6 @@
         "amenity/bank": {
             "name": "ব্যাংক"
         },
-        "railway/tram": {
-            "name": "ট্রাম"
-        },
         "landuse/farmyard": {
             "name": "খামার"
         },
@@ -386,9 +371,6 @@
         },
         "highway/trunk": {
             "name": "ট্রাঙ্ক রোড"
-        },
-        "railway/subway": {
-            "name": "ভূতলপথ"
         },
         "shop/butcher": {
             "name": "কসাই"

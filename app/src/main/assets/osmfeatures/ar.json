@@ -224,9 +224,6 @@
         "amenity/restaurant/french": {
             "name": "مطعم فرنسي"
         },
-        "amenity/ferry_terminal": {
-            "name": "المحطة البحرية"
-        },
         "landuse/industrial": {
             "name": "منطقة صناعية",
             "terms": "صناعية; صناعي; صناعات; منطقة صناعات; منطقة صناعة; صناعة; صنع"
@@ -518,9 +515,6 @@
             "name": "بوابة المطار",
             "terms": "بوابة المطار"
         },
-        "aerialway/gondola": {
-            "name": "جندول"
-        },
         "shop/window_blind": {
             "name": "متجر ستائر نوافذ"
         },
@@ -556,9 +550,6 @@
         "aerialway/pylon": {
             "name": "برج التلفريك / المصعد التزلج",
             "terms": "برج التلفريك ; المصعد التزلج"
-        },
-        "railway/narrow_gauge": {
-            "name": "سكك حديد ضيقة"
         },
         "shop/curtain": {
             "name": "محل بيع الستائر",
@@ -665,10 +656,6 @@
         "shop/video_games": {
             "name": "متجر العاب الفيديو",
             "terms": "متجر العاب الفيديو"
-        },
-        "railway/funicular": {
-            "name": "قطار جبلي مائل",
-            "terms": "قطار جبلي مائل"
         },
         "power/transformer": {
             "name": "محول كهربائي",
@@ -872,9 +859,6 @@
         "shop/baby_goods": {
             "name": "متجر سلع أطفال"
         },
-        "shop/fishmonger": {
-            "name": "محل بيع أسماك"
-        },
         "place/square": {
             "name": "ساحة",
             "terms": "ساحة; باحة; ممشى"
@@ -967,9 +951,6 @@
         "attraction/big_wheel": {
             "name": "دولاب هواء",
             "terms": "دولاب هواء; العجلة الكبيرة"
-        },
-        "landuse/military/obstacle_course": {
-            "name": "مضمار حواجز"
         },
         "natural/spring": {
             "name": "نبع",
@@ -1135,10 +1116,6 @@
             "name": "آلة بيع قهوة",
             "terms": "قهوة"
         },
-        "landuse/military/training_area": {
-            "name": "منطقة تدريب",
-            "terms": "منطقة تمرين; تدريب; تمرين"
-        },
         "natural/water/lake": {
             "name": "بحيرة",
             "terms": "بحيرة"
@@ -1153,10 +1130,6 @@
         "building/warehouse": {
             "name": "مستودع",
             "terms": "مستودع; مخزن"
-        },
-        "railway/tram": {
-            "name": "ترام",
-            "terms": "ترام,قطار,مترو,سكك حديد"
         },
         "power/minor_line": {
             "name": "خط كهربائي ثانوي",
@@ -1501,9 +1474,6 @@
             "name": "شجرة",
             "terms": "شجرة"
         },
-        "amenity/register_office": {
-            "name": "مكتب السجل المدني"
-        },
         "shop/car_parts": {
             "name": "محل بيع أجزاء السيارة",
             "terms": "محل بيع قطع السيارات"
@@ -1600,18 +1570,11 @@
         "leisure/firepit": {
             "name": "حفرة نار"
         },
-        "public_transport/station_ferry": {
-            "name": "محطة عبّارة"
-        },
         "leisure/pitch/baseball": {
             "name": "ملعب البيسبول"
         },
         "man_made/bridge": {
             "name": "منطقة جسر"
-        },
-        "railway/monorail": {
-            "name": "سكة حديدة مفردة",
-            "terms": "سكة حديدة مفردة"
         },
         "office/physician": {
             "name": "طبيب"
@@ -1723,9 +1686,6 @@
         "amenity/place_of_worship/hindu": {
             "name": "معبد هندوسي"
         },
-        "amenity/swimming_pool": {
-            "name": "حوض سباحة"
-        },
         "amenity/vending_machine/condoms": {
             "name": "آلة بيع واقي ذكري"
         },
@@ -1827,10 +1787,6 @@
             "name": "مقبرة",
             "terms": "مقبرة, مدفن, جبانة"
         },
-        "railway/rail": {
-            "name": "قطار",
-            "terms": "قطار"
-        },
         "natural/scree": {
             "name": "ركام حجارة",
             "terms": "ركام حجارة، تلة، مجموعة صخور، تلة حصاة"
@@ -1850,10 +1806,6 @@
         "amenity/grave_yard": {
             "name": "مقبرة",
             "terms": "مقبرة, مدفن"
-        },
-        "railway/light_rail": {
-            "name": "قطار خفيف",
-            "terms": "قطار خفيف"
         },
         "office/lawyer/notary": {
             "name": "كاتب عدل / موثق"
@@ -2241,9 +2193,6 @@
         "type/restriction/no_straight_on": {
             "name": "لا على التوالي"
         },
-        "landuse/allotments": {
-            "name": "حديقة المجتمع"
-        },
         "office/water_utility": {
             "name": "شركة المياه",
             "terms": "شركة المياه"
@@ -2288,9 +2237,6 @@
         "shop/pet": {
             "name": "محل حيوانات أليفة",
             "terms": "محل حيوانات أليفة"
-        },
-        "amenity/scrapyard": {
-            "name": "مقبرة السيارات"
         },
         "man_made/survey_point": {
             "name": "نقطة مسح",
@@ -2677,10 +2623,6 @@
             "name": "بئر ماء",
             "terms": "بئر ماء"
         },
-        "shop/organic": {
-            "name": "متجر المنتجات العضوية",
-            "terms": "منتجات عضوية"
-        },
         "waterway/ditch": {
             "name": "خندق",
             "terms": "خندق"
@@ -2717,10 +2659,6 @@
         "leisure/pitch/rugby_union": {
             "name": "ملعب دوري الرغبي",
             "terms": "ملعب دوري الرغبي، رجبي"
-        },
-        "aeroway/apron": {
-            "name": "ساحة المطار",
-            "terms": "ساحة المطار"
         },
         "shop/tattoo": {
             "name": "صالون الوشم"
@@ -2895,10 +2833,6 @@
             "name": " مهندس معماري ",
             "terms": "بناء، مباني، مدينة، تعمير"
         },
-        "railway/subway": {
-            "name": "مترو الأنفاق",
-            "terms": "مترو الأنفاق"
-        },
         "highway/elevator": {
             "name": "مصعد",
             "terms": "مصعد"
@@ -3029,10 +2963,6 @@
             "name": "هدار - سد صغير",
             "terms": "هدار، سد صغير"
         },
-        "craft/metal_construction": {
-            "name": "البناء المعدني",
-            "terms": "البناء المعدني"
-        },
         "craft/painter": {
             "name": "دهّان",
             "terms": "دهّان"
@@ -3073,10 +3003,6 @@
         "tourism/viewpoint": {
             "name": "منظر سياحي",
             "terms": "منظر سياحي"
-        },
-        "craft/handicraft": {
-            "name": "حرفي",
-            "terms": "حرفي"
         },
         "landuse/construction": {
             "name": "منطقة بناء"

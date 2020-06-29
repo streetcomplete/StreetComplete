@@ -182,9 +182,6 @@
             "name": "Infotahvel",
             "terms": "informatsioonitahvel,infopost"
         },
-        "shop/furnace": {
-            "name": "Küttepood"
-        },
         "landuse/industrial": {
             "name": "Tööstuspiirkond",
             "terms": "Tööstusala"
@@ -373,6 +370,10 @@
             "name": "Konsulaat",
             "terms": "saatkond"
         },
+        "barrier/swing_gate": {
+            "name": "Tiib-tõkkepuu",
+            "terms": "tõkkepuu,käsitsi,manuaalne,värav,auto"
+        },
         "craft/winery": {
             "name": "Veinitehas"
         },
@@ -384,6 +385,10 @@
         },
         "amenity/bank": {
             "name": "Pank"
+        },
+        "highway/path/boardwalk": {
+            "name": "Laudtee",
+            "terms": "puidust tee"
         },
         "amenity/prison": {
             "name": "Vangla",
@@ -417,6 +422,9 @@
             "name": "Kogukonna keskus",
             "terms": "keskus,üritused,hall,rahvamaja,kultuurikeskus,külakeskus,spordikeskus,külamaja"
         },
+        "power/cable": {
+            "name": "Elektrikaabel"
+        },
         "shop/tyres": {
             "name": "Rehvipood",
             "terms": "rehvid,kummid,autorehvid"
@@ -425,9 +433,17 @@
             "name": "Eraldussaarega kitsendus",
             "terms": "kitsendus,liikluskitsendus,aeglustus,saar,ohutussaar,kitsendussaar"
         },
+        "aerialway/gondola": {
+            "name": "Gondeltõstuk",
+            "terms": "suusalift"
+        },
         "shop/window_blind": {
             "name": "Aknakatete kauplus",
             "terms": "rulood,ribikardinad,lamellkardinad"
+        },
+        "barrier/turnstile": {
+            "name": "Turnikee",
+            "terms": "pöördvärav,kolmeharuline"
         },
         "building/temple": {
             "name": "Templihoone",
@@ -487,10 +503,6 @@
             "name": "Juudi sünagoog",
             "terms": "sünagoog,juudi,juut,judaism"
         },
-        "highway/construction": {
-            "name": "Suletud tee",
-            "terms": "teesulg,teeehitus"
-        },
         "power/tower": {
             "name": "Kõrgepingetorn"
         },
@@ -542,7 +554,8 @@
             "terms": "sümmeetriline teekitsendus,kitsendus,sümmeetriline kitsendus,aeglustus"
         },
         "railway/funicular": {
-            "name": "Köisraudtee"
+            "name": "Köisraudtee",
+            "terms": "funikulöör,furnikulaar"
         },
         "power/transformer": {
             "name": "Trafo",
@@ -715,9 +728,6 @@
             "name": "Beebipood",
             "terms": "Lastepood, tita pood,"
         },
-        "shop/fishmonger": {
-            "name": "Kalakauplus"
-        },
         "man_made/storage_tank": {
             "name": "Mahuti"
         },
@@ -743,6 +753,10 @@
         "landuse/vineyard": {
             "name": "Viinapuuaed"
         },
+        "leisure/garden/community": {
+            "name": "Kogukondlik aed",
+            "terms": "ühiskasutatav aed,ühisaed,linnaaed"
+        },
         "traffic_calming/rumble_strip": {
             "name": "Täristi",
             "terms": "põristi,põrin,tärin,värin,väristaja,müra,triibud,risti jooned,jooned"
@@ -762,6 +776,9 @@
         },
         "highway/crossing": {
             "name": "Ülekäik"
+        },
+        "leisure/garden/botanical": {
+            "name": "Botaanikaaed"
         },
         "shop/bed": {
             "name": "Magamistoa kauba pood",
@@ -909,7 +926,7 @@
             "name": "Laohoone"
         },
         "railway/tram": {
-            "name": "Tramm"
+            "name": "Trammitee"
         },
         "power/minor_line": {
             "name": "Elektriliin",
@@ -1081,6 +1098,10 @@
         "shop/water": {
             "name": "Joogivee pood"
         },
+        "telecom/exchange": {
+            "name": "Telekomisõlmpunkt",
+            "terms": "sidesõlm,telefonisõlm"
+        },
         "amenity/place_of_worship": {
             "name": "Pühakoda",
             "terms": "Pühapaik, palvekoht"
@@ -1170,9 +1191,6 @@
         "natural/tree": {
             "name": "Puu"
         },
-        "amenity/register_office": {
-            "name": "Perekonnaseisu osakond"
-        },
         "shop/car_parts": {
             "name": "Autoosade pood"
         },
@@ -1240,8 +1258,7 @@
             "name": "Koopiateenuse kauplus"
         },
         "railway/monorail": {
-            "name": "Monorelss",
-            "terms": "üherööpmeline"
+            "name": "Monorelss"
         },
         "shop/bicycle": {
             "name": "Rattapood",
@@ -1325,9 +1342,6 @@
         "highway/bus_stop": {
             "name": "Bussipeatus"
         },
-        "amenity/swimming_pool": {
-            "name": "Ujumisbassein"
-        },
         "man_made/adit": {
             "name": "Stoll",
             "terms": "suue,kaevandus,sissepääs,horisontaalne,kaeveõõne,rõhtkaeve,koobas"
@@ -1401,7 +1415,7 @@
         },
         "railway/rail": {
             "name": "Raudtee",
-            "terms": "rongitee"
+            "terms": "rööbastee,rongitee,rööpad"
         },
         "natural/scree": {
             "name": "Rusukalle",
@@ -1417,6 +1431,9 @@
         "amenity/grave_yard": {
             "name": "Surnuaed",
             "terms": "kalmistu"
+        },
+        "railway/light_rail": {
+            "name": "Kergraudtee"
         },
         "amenity/clinic/fertility": {
             "name": "Viljakuskliinik"
@@ -1452,6 +1469,10 @@
         "historic/monument": {
             "name": "Monument",
             "terms": "Mälestis, ausammas"
+        },
+        "natural/shrub": {
+            "name": "Põõsas",
+            "terms": "puhmas"
         },
         "type/route/bicycle": {
             "name": "Jalgrattamarsruut",
@@ -1524,6 +1545,9 @@
         "power/pole": {
             "name": "Elektripost",
             "terms": "õhuliinipost"
+        },
+        "type/route/trolleybus": {
+            "name": "Trollimarsruut"
         },
         "natural/peak": {
             "name": "Mäetipp",
@@ -1709,9 +1733,6 @@
         "type/restriction/no_straight_on": {
             "name": "Edasisõit keelatud"
         },
-        "landuse/allotments": {
-            "name": "Ühisaed"
-        },
         "highway/passing_place": {
             "name": "Möödasõidukoht"
         },
@@ -1800,6 +1821,10 @@
             "name": "Trepp",
             "terms": "astmed"
         },
+        "tourism/artwork/sculpture": {
+            "name": "Skulptuur",
+            "terms": "kuju,postament,kunstiteos,installatsioon"
+        },
         "leisure/beach_resort": {
             "name": "Rannakuurort"
         },
@@ -1854,6 +1879,10 @@
         },
         "building/stadium": {
             "name": "Staadionihoone"
+        },
+        "leisure/slipway_point": {
+            "name": "Slipp",
+            "terms": "vettelaskmise,paadi,laeva,merre"
         },
         "highway/footway/crossing": {
             "name": "Jalakäia ülekäik"
@@ -2054,10 +2083,6 @@
             "name": "Veekaev",
             "terms": "Kaev"
         },
-        "shop/organic": {
-            "name": "Mahetoodete kauplus",
-            "terms": "mahekaup,ökoloogiline,mahepõllunduskaup"
-        },
         "waterway/ditch": {
             "name": "Kraav"
         },
@@ -2241,7 +2266,8 @@
             "name": "Jõgi"
         },
         "railway/subway": {
-            "name": "Metroo"
+            "name": "Metrootee",
+            "terms": "maaalune raudtee"
         },
         "shop/carpet": {
             "name": "Vaibapood"
@@ -2279,10 +2305,6 @@
         "shop/car_repair": {
             "name": "Autoremont",
             "terms": "autoparandus, auto hooldus"
-        },
-        "craft/hvac": {
-            "name": "Ventilatsioon",
-            "terms": "kliima, sisekliima, kütteseadmed"
         },
         "highway/path": {
             "name": "Rada"
@@ -2344,10 +2366,6 @@
             "name": "Ülevoolupais",
             "terms": "tamm"
         },
-        "craft/metal_construction": {
-            "name": "Metallikoda",
-            "terms": "metallitööd"
-        },
         "craft/painter": {
             "name": "Maaler",
             "terms": "värvija"
@@ -2380,9 +2398,6 @@
         "tourism/viewpoint": {
             "name": "Vaatekoht",
             "terms": "kaunis vaade,vaade"
-        },
-        "craft/handicraft": {
-            "name": "Käsitöö"
         },
         "landuse/construction": {
             "name": "Ehitusala"

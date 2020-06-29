@@ -74,6 +74,10 @@
             "name": "ゴミ集積場",
             "terms": "ゴミ集積場, ゴミ積替所, 廃棄物, ごみ, 廃棄物処理施設, 廃棄物保管施設"
         },
+        "railway/monorail/hanging": {
+            "name": "モノレール（懸垂式）",
+            "terms": "モノレール（懸垂式）, モノレール, 懸垂"
+        },
         "building/ruins": {
             "name": "廃墟（建物）",
             "terms": "廃墟, 廃屋, あばら家, 空き家"
@@ -166,10 +170,7 @@
             "terms": "レストラン, フランス料理, フレンチ, フレンチレストラン, 飲食店, 食事, 食べる, 料理, フランス, ランチ"
         },
         "amenity/ferry_terminal": {
-            "name": "フェリー乗り場 / ターミナル"
-        },
-        "shop/furnace": {
-            "name": "釜戸屋"
+            "name": "フェリー乗り場"
         },
         "type/route/hiking": {
             "name": "ハイキングルート",
@@ -254,6 +255,9 @@
         "emergency/phone": {
             "name": "緊急電話",
             "terms": "緊急電話, 救命"
+        },
+        "disused/shop": {
+            "name": "使用終了店舗"
         },
         "golf/bunker": {
             "name": "サンドトラップ",
@@ -357,9 +361,17 @@
             "name": "打ちっぱなし",
             "terms": "打ちっぱなし, ゴルフ, ゴルフ練習場, ゴルフ場, スポーツ, 打ちっ放し"
         },
+        "highway/path/boardwalk": {
+            "name": "木道",
+            "terms": "木道, ボードウォーク, 遊歩道, 歩道"
+        },
         "leisure/fishing": {
             "name": "釣りスポット",
             "terms": "釣りスポット, 魚釣り, 釣, 海釣り公園, 海釣り, 川釣り, 釣り, フィッシング, 釣りポイント"
+        },
+        "building/sty": {
+            "name": "豚小屋",
+            "terms": "豚小屋, 豚舎, 家畜, 小屋"
         },
         "building/boathouse": {
             "name": "ボートハウス",
@@ -405,8 +417,8 @@
             "terms": "クッション, 遊具"
         },
         "aerialway/gondola": {
-            "name": "循環式ロープウェイ",
-            "terms": "ゴンドラ, ロープウェイ, ロープウェー, ゴンドラリフト, 索道"
+            "name": "ゴンドラ",
+            "terms": "ゴンドラ"
         },
         "shop/window_blind": {
             "name": "ブラインドカーテン専門店",
@@ -457,8 +469,8 @@
             "terms": "ユダヤ教のシナゴーグ, ユダヤ教, シナゴーグ, ユダヤ教徒, 宗教, 宗教施設, 礼拝所, 教会"
         },
         "highway/construction": {
-            "name": "建設中の道路（通行止）",
-            "terms": "建設中の道路, 通行止め, 通行止, 道路, 閉鎖"
+            "name": "閉鎖道路（建設中）",
+            "terms": "建設中の道路, 通行止め, 通行止, 道路, 閉鎖, 閉鎖道路（建設中）"
         },
         "power/tower": {
             "name": "送電塔",
@@ -528,10 +540,6 @@
             "name": "変圧器",
             "terms": "変圧器"
         },
-        "leisure/track/cycling_point": {
-            "name": "自転車競技場",
-            "terms": "自転車競技場, 自転車, 自転車トラック, 自転車レース場"
-        },
         "landuse/military/naval_base": {
             "name": "海軍基地",
             "terms": "海軍, 軍事基地"
@@ -586,10 +594,6 @@
         "type/route/pipeline": {
             "name": "パイプラインルート",
             "terms": "パイプラインルート"
-        },
-        "aeroway/jet_bridge": {
-            "name": "ボーディング・ブリッジ",
-            "terms": "ボーディング・ブリッジ, 搭乗橋, 空港, 飛行機"
         },
         "natural/reef": {
             "name": "礁",
@@ -702,6 +706,10 @@
         "building/grandstand": {
             "name": "メインスタンド",
             "terms": "メインスタンド, 正面スタンド"
+        },
+        "building/office": {
+            "name": "オフィスビル",
+            "terms": "オフィスビル"
         },
         "aeroway/hangar": {
             "name": "航空機格納庫",
@@ -896,8 +904,7 @@
             "terms": "コーヒー, 珈琲, 自販機, 自動販売機"
         },
         "landuse/military/training_area": {
-            "name": "訓練場",
-            "terms": "練習場, トレーニングエリア, 訓練場"
+            "name": "軍事演習場"
         },
         "playground/horizontal_bar": {
             "name": "鉄棒（子供用）",
@@ -928,7 +935,7 @@
             "terms": "ホビーショップ, ホビー店, プラモデル, フィギュア, マンガ, ミリタリー, 模型"
         },
         "amenity/social_facility/nursing_home": {
-            "name": "介護施設",
+            "name": "介護付き老人ホーム",
             "terms": "介護施設, 老人ホーム, 福祉"
         },
         "building/train_station": {
@@ -1246,6 +1253,10 @@
             "name": "小川",
             "terms": "小川, せせらぎ, 川"
         },
+        "shop/trophy": {
+            "name": "徽章店",
+            "terms": "トロフィー, 賞状, 勲章, メダル, 徽章, 店舗, お店, 記念品"
+        },
         "railway": {
             "name": "鉄道関連"
         },
@@ -1277,8 +1288,8 @@
             "terms": "焚き火場, キャンプファイア, 焚き火"
         },
         "public_transport/station_ferry": {
-            "name": "旅客船ターミナル/旅客港",
-            "terms": "フェリーターミナル, フェリー"
+            "name": "フェリー乗り場",
+            "terms": "フェリー乗り場, フェリー, 乗船場, ターミナル, 渡船場, 渡し船"
         },
         "man_made/bridge": {
             "name": "橋（エリア）",
@@ -1448,8 +1459,8 @@
             "terms": "墓地, 霊園, 墓場, お墓, 墓苑, 墓所"
         },
         "railway/rail": {
-            "name": "線路",
-            "terms": "線路"
+            "name": "鉄道",
+            "terms": "鉄道, レイルウェイ, 鉄道軌道"
         },
         "amenity/vending_machine/newspapers": {
             "name": "新聞販売機",
@@ -1482,6 +1493,10 @@
         "historic/monument": {
             "name": "記念堂",
             "terms": "記念堂, 記念建造物, 歴史"
+        },
+        "natural/shrub": {
+            "name": "低木",
+            "terms": "低木, 藪, ヤブ, 木, 樹木"
         },
         "amenity/place_of_worship/shinto": {
             "name": "神社",
@@ -1558,8 +1573,8 @@
             "terms": "ゴルフカート用の道, ゴルフ, ゴルフカート, ゴルフ場"
         },
         "landuse/retail": {
-            "name": "商業地区",
-            "terms": "商業地, ショッピング地区, ショッピング街, 商店街"
+            "name": "店舗用地",
+            "terms": "店舗用地,商業地, ショッピング地区, ショッピング街, 商店街"
         },
         "leisure/picnic_table/chess": {
             "name": "チェス台",
@@ -1585,6 +1600,10 @@
             "name": "駐輪場(屋根付き)",
             "terms": "駐輪場(屋根付き), 駐輪場, 自転車"
         },
+        "amenity/give_box": {
+            "name": "ギブボックス",
+            "terms": "ギブボックス, 自由持ち帰り箱, 無料, 物品無料提供所, ご自由にお持ち帰りください, 無料持ち帰り箱, 無料提供箱"
+        },
         "office/consulting": {
             "name": "コンサルティング事務所",
             "terms": "コンサルティング事務所, コンサルタント"
@@ -1596,6 +1615,10 @@
         "tourism/chalet": {
             "name": "貸別荘（戸建て）",
             "terms": "別荘, リゾートマンション, リゾート, 保養"
+        },
+        "building/cowshed": {
+            "name": "牛小屋",
+            "terms": "牛小屋, 牛舎, 家畜, 小屋"
         },
         "leisure": {
             "name": "レジャー関連"
@@ -1641,7 +1664,7 @@
             "terms": "スキールート"
         },
         "waterway/lock_gate": {
-            "name": "水門",
+            "name": "閘門",
             "terms": "水門, 扉, 閘門"
         },
         "amenity/vending_machine/parcel_pickup_dropoff": {
@@ -1748,7 +1771,7 @@
         },
         "landuse/allotments": {
             "name": "市民農園",
-            "terms": "市民菜園, 市民農園, コミュニティガーデン, ガーデン, 農業, 畑, 農園"
+            "terms": "市民農園, 市民菜園, 貸し農園"
         },
         "highway/passing_place": {
             "name": "待避所",
@@ -1797,9 +1820,6 @@
         "shop/pet": {
             "name": "ペットショップ",
             "terms": "ペット売り場, ペット, 家禽, ペットショップ, 動物, 愛玩動物, ペット用品店"
-        },
-        "amenity/scrapyard": {
-            "name": "自動車解体場"
         },
         "highway/service/alley": {
             "name": "路地",
@@ -2136,10 +2156,6 @@
             "name": "空気入れ",
             "terms": "空気入れ, エアー調整, 自転車"
         },
-        "shop/organic": {
-            "name": "オーガニック商品店",
-            "terms": "オーガニック商品店, 有機野菜, オーガニック, 有機, 食品, 食べ物"
-        },
         "leisure/fitness_station/stairs": {
             "name": "階段（トレーニング用）",
             "terms": "階段, 運動器具, トレーニング, エクササイズ, 健康遊具"
@@ -2149,8 +2165,8 @@
             "terms": "鉄道用地, 鉄道敷地"
         },
         "man_made/cross": {
-            "name": "十字架（山頂）",
-            "terms": "十字架（山頂）, 十字架, 歴史的建造物"
+            "name": "十字架（山頂など）",
+            "terms": "十字架, 山頂, 十字架（山頂など）"
         },
         "amenity/cinema": {
             "name": "映画館",
@@ -2169,8 +2185,8 @@
             "terms": "レストラン, 中華料理, 中華, 中華レストラン, 飲食店, 食事, 食べる, 料理, ランチ"
         },
         "aeroway/apron": {
-            "name": "エプロン",
-            "terms": "エプロン"
+            "name": "駐機場",
+            "terms": "駐機場, エプロン"
         },
         "historic/castle/fortress": {
             "name": "要塞（中世）",
@@ -2187,10 +2203,6 @@
         "shop/optician": {
             "name": "メガネ店",
             "terms": "メガネ, 眼鏡, メガネ屋, 眼鏡屋, めがね"
-        },
-        "leisure/track/running_point": {
-            "name": "トラック（周回走路）",
-            "terms": "ランニングトラック, ランニング用周回走路"
         },
         "barrier/block": {
             "name": "車止めブロック",
@@ -2243,10 +2255,6 @@
             "name": "歴史的建築物",
             "terms": "歴史的建築物, 歴史的家屋, 史跡, 保存家屋"
         },
-        "leisure/track/horse_racing_point": {
-            "name": "競馬トラック",
-            "terms": "競馬トラック, 競馬場, 競馬, レース, トラック, 馬場, ギャンブル"
-        },
         "shop/frame": {
             "name": "額縁店",
             "terms": "額縁店"
@@ -2266,6 +2274,10 @@
         "shop/fabric": {
             "name": "生地屋",
             "terms": "布地, 織物, 反物, ファブリック店, 生地, 裏地, 衣料, 服, 裁縫, 衣類, 生地店, 布地店, お店"
+        },
+        "barrier/spikes": {
+            "name": "スパイクストリップ",
+            "terms": "スパイクストリップ, 交通安全, 交通静穏化, 道路設備, 減速, スパイク"
         },
         "shop/coffee": {
             "name": "コーヒー豆販売店",
@@ -2360,13 +2372,17 @@
             "name": "電気店",
             "terms": "電気店, 電気工具, 電子部品, 検査機器"
         },
+        "highway/road/bridge": {
+            "name": "道路橋（区分不明）",
+            "terms": "道路橋（区分不明）, 道路, 橋, 不明な道路"
+        },
         "shop/car_repair": {
             "name": "自動車修理工場",
             "terms": "自動車修理工場"
         },
         "craft/hvac": {
-            "name": "空調設計",
-            "terms": "空調設計, 職人"
+            "name": "空調施工業",
+            "terms": "空調施工業, 空調, エアコン"
         },
         "leisure/water_park": {
             "name": "ウォーターパーク",
@@ -2484,7 +2500,7 @@
         },
         "craft/handicraft": {
             "name": "手工芸品店",
-            "terms": "手工芸品, 職人, 工房, 雑貨, 工芸, 民芸, こけし, 人形"
+            "terms": "手工芸品, 職人, 工房, 雑貨, 工芸, 民芸, こけし, 人形, 土産物"
         },
         "piste/downhill/halfpipe": {
             "name": "ハーフパイプ",
@@ -2789,6 +2805,10 @@
             "name": "アイスクリーム自販機",
             "terms": "アイスクリーム, 自販機, 自動販売機"
         },
+        "leisure/trampoline_park": {
+            "name": "トランポリンパーク",
+            "terms": "トランポリンパーク, トランポリン施設, 運動, スポーツ, トランポリン"
+        },
         "public_transport/stop_position_monorail": {
             "name": "モノレール（停止位置）",
             "terms": "モノレール停止位置, モノレール"
@@ -2904,6 +2924,9 @@
             "name": "医療",
             "terms": "医療, 健康管理, ヘルスケア, 保健医療"
         },
+        "power/cable": {
+            "name": "地下ケーブル"
+        },
         "seamark/beacon_lateral": {
             "name": "水路用ビーコン",
             "terms": "水路用ビーコン"
@@ -2992,8 +3015,8 @@
             "terms": "製本所, 職人, 工房"
         },
         "man_made/groyne": {
-            "name": "水制",
-            "terms": "水制, ケレップ水制, 防波堤, 突堤"
+            "name": "ケレップ水制",
+            "terms": "ケレップ水制"
         },
         "shop/country_store": {
             "name": "よろずや",
@@ -3019,9 +3042,17 @@
             "name": "下着店",
             "terms": "下着店, 衣料, 服, 衣類, 買い物, 店舗, 下着, アンダーウェア"
         },
+        "shop/household_linen": {
+            "name": "家庭用布製品店",
+            "terms": "家庭用布製品店,布製品, リネン, タオル, ハンカチ, 店舗, お店, 寝具, シーツ, ナプキン, カーテン, ローブ, パジャマ"
+        },
         "craft/boatbuilder": {
             "name": "ボート製造所",
             "terms": "ボート製造所, 職人, 工房, 船大工"
+        },
+        "amenity/refugee_site": {
+            "name": "難民キャンプ",
+            "terms": "難民キャンプ, キャンプ, 避難, 災害, テント"
         },
         "shop/interior_decoration": {
             "name": "インテリアショップ",
@@ -3046,6 +3077,10 @@
             "name": "造園業",
             "terms": "庭師, 職人, 工房, 造園, 造園業, 樹木"
         },
+        "man_made/goods_conveyor": {
+            "name": "コンベア（屋外）",
+            "terms": "コンベア, ベルコン, ベルトコンベア, 搬送, コンベア（屋外）"
+        },
         "indoor/stairs": {
             "name": "階段（インドア）",
             "terms": "階段（インドア）, 階段, インドア"
@@ -3053,10 +3088,6 @@
         "traffic_calming/choker": {
             "name": "チョーカー",
             "terms": "チョーカー, 交通安全, 交通静穏化, 道路設備, 減速"
-        },
-        "railway/funicular": {
-            "name": "ケーブルカー",
-            "terms": "ケーブルカー"
         },
         "power/generator": {
             "name": "発電機",
@@ -3073,6 +3104,10 @@
         "shop/camera": {
             "name": "カメラ店",
             "terms": "カメラ店, カメラ用品, レンズ, 写真"
+        },
+        "healthcare/dentist/orthodontics": {
+            "name": "矯正歯科医",
+            "terms": "矯正歯科, 歯医者"
         },
         "healthcare/alternative": {
             "name": "代替医療",
@@ -3104,7 +3139,7 @@
         },
         "power/substation": {
             "name": "変電所",
-            "terms": "変電所, 変圧所"
+            "terms": "変電所, 変圧所, 周波数変換所, 開閉所"
         },
         "landuse/religious": {
             "name": "宗教施設（敷地）",
@@ -3234,15 +3269,12 @@
             "terms": "道場, スポーツ, 訓練, 稽古, 練習, 習い事, 教習, トレーニング, 教室, 体操, 運動"
         },
         "landuse/farmland": {
-            "name": "農地",
+            "name": "耕作地",
             "terms": "農地, 畑, 田, 茶畑, 田んぼ, 田畑, 耕作地, 農業"
         },
         "shop/baby_goods": {
             "name": "赤ちゃん用品店",
             "terms": "赤ちゃん用品店, ベビー用品店"
-        },
-        "shop/fishmonger": {
-            "name": "魚屋（非推奨）"
         },
         "place/square": {
             "name": "広場（都心部）",
@@ -3292,6 +3324,10 @@
             "name": "壁画",
             "terms": "壁画, フレスコ"
         },
+        "railway/preserved": {
+            "name": "保存鉄道",
+            "terms": "観光鉄道, 保存鉄道"
+        },
         "man_made/chimney": {
             "name": "煙突",
             "terms": "煙突"
@@ -3311,6 +3347,10 @@
         "landuse/vineyard": {
             "name": "ぶどう畑",
             "terms": "ぶどう畑, 果樹園, 森林, 樹木, 植物, ブドウ, 農業"
+        },
+        "leisure/garden/community": {
+            "name": "コミュニティ庭園",
+            "terms": "コミュニティ庭園, コミュニティ・ガーデニング, 庭園, 共同花壇, 花壇"
         },
         "traffic_calming/rumble_strip": {
             "name": "ランブルストリップ",
@@ -3340,12 +3380,20 @@
             "name": "助産婦",
             "terms": "助産婦, 産婆, 医療"
         },
+        "amenity/cafe/bubble_tea": {
+            "name": "タピオカティー店",
+            "terms": "タピオカティー店, 喫茶店, カフェ, パールミルクティー, タピオカ"
+        },
         "amenity/social_facility/ambulatory_care": {
             "name": "訪問介護事業所",
             "terms": "訪問介護事業所, 訪問介護, 訪問看護, 介護, 看護"
         },
         "highway/crossing": {
             "name": "横断歩道"
+        },
+        "leisure/garden/botanical": {
+            "name": "植物園",
+            "terms": "植物園, ボタニカルガーデン"
         },
         "place/isolated_dwelling": {
             "name": "孤立した(2世帯以下の)居住区",
@@ -3366,10 +3414,6 @@
         "attraction/big_wheel": {
             "name": "大観覧車",
             "terms": "大観覧車, アトラクション"
-        },
-        "landuse/military/obstacle_course": {
-            "name": "障害物コース",
-            "terms": "障害物コース, アスレチックコース"
         },
         "natural/spring": {
             "name": "泉",
@@ -3646,6 +3690,9 @@
             "name": "飲料水店",
             "terms": "飲料水店, 水, ミネラルウォーター, 店舗, お店, ペットボトル, 飲み水, 飲水"
         },
+        "telecom/exchange": {
+            "name": "通信用交換設備"
+        },
         "public_transport/platform": {
             "name": "交通機関のプラットホーム",
             "terms": "プラットホーム, 待合所, 乗り場, ホーム, 駅, 乗降所, 停車場, 停留所, のりば, 交通機関のプラットホーム"
@@ -3753,9 +3800,6 @@
             "name": "樹木",
             "terms": "樹木, 林, 木, 公園, 森林, 天然記念物, 植物"
         },
-        "amenity/register_office": {
-            "name": "登記所"
-        },
         "indoor/wall": {
             "name": "屋内の壁",
             "terms": "屋内の壁, 屋内壁, 壁, ウォール, インドア, 屋内"
@@ -3840,7 +3884,7 @@
             "terms": "野球場, 球場, スポーツ, 運動, 競技"
         },
         "railway/monorail": {
-            "name": "モノレール",
+            "name": "モノレールの軌道",
             "terms": "モノレール"
         },
         "tourism/apartment": {
@@ -3931,9 +3975,6 @@
         "traffic_sign_vertex": {
             "name": "交通標識",
             "terms": "交通標識, 道路標識"
-        },
-        "amenity/swimming_pool": {
-            "name": "遊泳プール（旧）"
         },
         "natural/stone": {
             "name": "岩(単独の巨石)",
@@ -4099,7 +4140,7 @@
             "terms": "分岐器, ポイント, 分岐機, 分岐点, 分岐, 転轍機, スイッチ"
         },
         "amenity/restaurant/sushi": {
-            "name": "レストラン・すし",
+            "name": "寿司屋",
             "terms": "レストラン, すし, 寿司, 鮨, 鮓, 飲食店, 食事, 食べる, 料理, ランチ"
         },
         "piste/skitour": {
@@ -4181,6 +4222,10 @@
         "power/pole": {
             "name": "電柱",
             "terms": "電柱, 電信柱"
+        },
+        "type/route/trolleybus": {
+            "name": "トロリーバス路線",
+            "terms": "トロリーバス路線, トロリーバス経路"
         },
         "natural/peak": {
             "name": "山頂",
@@ -4591,6 +4636,10 @@
             "name": "公共交通機関（建物）",
             "terms": "公共交通機関"
         },
+        "shop/shoe_repair": {
+            "name": "靴修理店",
+            "terms": "靴修理店, 靴屋, 靴"
+        },
         "amenity/public_bookcase": {
             "name": "公共の本棚",
             "terms": "公共の本棚, 図書, 本"
@@ -4740,7 +4789,7 @@
             "terms": "皮革洋品店, レザーショップ, 皮革, レザー"
         },
         "building/commercial": {
-            "name": "オフィスビル",
+            "name": "商業全般用の建物",
             "terms": "オフィスビル, ビジネスビル"
         },
         "historic/wreck": {
@@ -4802,6 +4851,10 @@
             "name": "ソーラーパネル",
             "terms": "ソーラーパネル, 太陽光パネル"
         },
+        "shop/collector": {
+            "name": "コレクター店",
+            "terms": "コレクター店, コレクターズショップ, コレクター, 収集, 蒐集, 店舗, お店, 玩具, ホビー"
+        },
         "type/route/foot": {
             "name": "徒歩ルート",
             "terms": "徒歩ルート"
@@ -4823,8 +4876,8 @@
             "terms": "ハンガー, 格納庫, 建物, 飛行機"
         },
         "landuse/commercial": {
-            "name": "オフィス街",
-            "terms": "オフィス街"
+            "name": "事務所用地",
+            "terms": "事務所用地,オフィス街"
         },
         "seamark/mooring": {
             "name": "係船",
@@ -4847,6 +4900,10 @@
         },
         "emergency/official": {
             "name": "公的な緊急車両"
+        },
+        "man_made/reservoir_covered": {
+            "name": "地下の貯水槽",
+            "terms": "地下の貯水槽, 貯水槽, 貯水池"
         },
         "railway/derail": {
             "name": "脱線器",
@@ -4911,6 +4968,10 @@
             "name": "避難小屋",
             "terms": "避難小屋, 山小屋"
         },
+        "amenity/parking_space/disabled": {
+            "name": "駐車区画（障害者用）",
+            "terms": "駐車区画（障害者用）, 障害者, 優先駐車区画, 車椅子, 駐車区画, 駐車場"
+        },
         "shop/clothes": {
             "name": "衣料品店",
             "terms": "衣料品店, 洋服店, 呉服店, 衣類, 服, スーツ, 和服, 着物, 古着"
@@ -4944,6 +5005,10 @@
             "name": "マンホール(水道)",
             "terms": "マンホール(水道), 水道, 上下水道, 上水, 下水"
         },
+        "man_made/courtyard": {
+            "name": "中庭",
+            "terms": "中庭, 建物"
+        },
         "barrier/gate": {
             "name": "門",
             "terms": "門, ゲート, 鳥居, 障害物, バリア"
@@ -4966,11 +5031,11 @@
         },
         "railway/subway": {
             "name": "地下鉄",
-            "terms": "地下鉄, 線路"
+            "terms": "地下鉄, サブウェイ"
         },
         "railway/miniature": {
             "name": "ミニチュア鉄道",
-            "terms": "ミニチュア鉄道"
+            "terms": "ミニチュア鉄道, ミニ鉄道, 遊園地, レジャー, 娯楽"
         },
         "public_transport/station_bus": {
             "name": "バスターミナル/バスの駅",
@@ -5083,8 +5148,8 @@
             "terms": "堰, 水域, 川, ダム, 河口, 河川"
         },
         "craft/metal_construction": {
-            "name": "金属加工",
-            "terms": "金属加工, 鋳造, 職人, 工房"
+            "name": "金属加工業",
+            "terms": "金属加工業"
         },
         "craft/painter": {
             "name": "塗装業",

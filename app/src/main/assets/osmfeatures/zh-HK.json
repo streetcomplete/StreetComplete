@@ -234,12 +234,6 @@
             "name": "法式餐廳",
             "terms": "法國餐廳"
         },
-        "amenity/ferry_terminal": {
-            "name": "客運碼頭"
-        },
-        "shop/furnace": {
-            "name": "暖氣爐店"
-        },
         "landuse/industrial": {
             "name": "工業區",
             "terms": "工業區, 工業村, 工業邨"
@@ -523,10 +517,6 @@
             "name": "交通島",
             "terms": "Traffic island, 分隔島, 安全島"
         },
-        "aerialway/gondola": {
-            "name": "吊艙",
-            "terms": "Gondola,吊籃,吊船,空中纜車"
-        },
         "shop/window_blind": {
             "name": "百葉簾店",
             "terms": "捲簾,遮光捲簾,陽光捲簾,百葉窗,百葉窗簾"
@@ -557,10 +547,6 @@
         "aerialway/pylon": {
             "name": "纜車纜塔",
             "terms": "纜塔,纜車塔,吊車塔"
-        },
-        "railway/narrow_gauge": {
-            "name": "窄軌鐵路",
-            "terms": "窄軌鐵路, 窄軌鐵道"
         },
         "shop/curtain": {
             "name": "窗簾店",
@@ -597,10 +583,6 @@
         "craft/bookbinder": {
             "name": "書籍釘裝",
             "terms": "釘裝"
-        },
-        "man_made/groyne": {
-            "name": "防波堤",
-            "terms": "防波堤,防波板"
         },
         "shop/pawnbroker": {
             "name": "當舖",
@@ -673,10 +655,6 @@
         "traffic_calming/choker": {
             "name": "道路收窄",
             "terms": "Traffic Choker, 道路收窄"
-        },
-        "railway/funicular": {
-            "name": "纜索鐵道",
-            "terms": "纜索鐵道, 索道, 纜車"
         },
         "power/transformer": {
             "name": "變壓器",
@@ -876,9 +854,6 @@
             "name": "嬰兒用品店",
             "terms": "嬰兒用品店, BB用品店"
         },
-        "shop/fishmonger": {
-            "name": "魚檔"
-        },
         "place/square": {
             "name": "廣場",
             "terms": "Square,廣場"
@@ -978,10 +953,6 @@
         "attraction/big_wheel": {
             "name": "摩天輪",
             "terms": "Big Wheel,Ferris wheel"
-        },
-        "landuse/military/obstacle_course": {
-            "name": "越障訓練場",
-            "terms": "Obstacle Course,越障訓練場"
         },
         "natural/spring": {
             "name": "水源",
@@ -1135,10 +1106,6 @@
             "name": "旅遊資訊",
             "terms": "Information,資訊,資訊處"
         },
-        "landuse/military/training_area": {
-            "name": "訓練場地",
-            "terms": "Training Area,訓練場, 練習場地, 練習場"
-        },
         "natural/water/lake": {
             "name": "湖泊",
             "terms": "Lake,湖,湖泊"
@@ -1154,10 +1121,6 @@
         "building/warehouse": {
             "name": "貨倉",
             "terms": "倉庫,稅倉,倉"
-        },
-        "railway/tram": {
-            "name": "電車",
-            "terms": "Tram,電車"
         },
         "power/minor_line": {
             "name": "次要電纜",
@@ -1485,9 +1448,6 @@
             "name": "樹木",
             "terms": "Tree,木,樹"
         },
-        "amenity/register_office": {
-            "name": "人事登記處"
-        },
         "leisure/adult_gaming_centre": {
             "name": "成人遊戲中心",
             "terms": "成人遊樂場"
@@ -1575,10 +1535,6 @@
         "shop/copyshop": {
             "name": "影印店",
             "terms": "影印店"
-        },
-        "railway/monorail": {
-            "name": "單軌鐵路",
-            "terms": "Monorail,單軌,單軌鐵路,單軌電車,單軌火車"
         },
         "office/physician": {
             "name": "醫生"
@@ -1685,9 +1641,6 @@
             "name": "吊盤",
             "terms": "吊盤"
         },
-        "amenity/swimming_pool": {
-            "name": "游泳池"
-        },
         "amenity/vending_machine/condoms": {
             "name": "避孕套售賣機",
             "terms": "保險套販賣機,安全套販賣機,避孕袋售賣機"
@@ -1779,10 +1732,6 @@
         "landuse/cemetery": {
             "name": "墳場",
             "terms": "Cemetery,墓地,墳場"
-        },
-        "railway/rail": {
-            "name": "路軌",
-            "terms": "Rail,火車軌,路軌,軌,鐵軌"
         },
         "natural/scree": {
             "name": "山石堆",
@@ -2177,10 +2126,6 @@
             "name": "不准直駛",
             "terms": "禁止進入"
         },
-        "landuse/allotments": {
-            "name": "社區園圃",
-            "terms": "社區園圃"
-        },
         "office/water_utility": {
             "name": "水上設施辦公室",
             "terms": "Water Utility Office,滑水"
@@ -2228,9 +2173,6 @@
         "shop/pet": {
             "name": "寵物舖",
             "terms": "Pet Store,寵物店,寵物舖"
-        },
-        "amenity/scrapyard": {
-            "name": "廢料場"
         },
         "man_made/survey_point": {
             "name": "測量點",
@@ -2583,10 +2525,6 @@
             "name": "水井",
             "terms": "水井, 井"
         },
-        "shop/organic": {
-            "name": "有機產品店",
-            "terms": "有機產品店"
-        },
         "waterway/ditch": {
             "name": "溝渠",
             "terms": "Ditch,溝,溝渠,明溝"
@@ -2621,10 +2559,6 @@
         "craft/distillery": {
             "name": "蒸餾酒廠",
             "terms": "Distillery, 蒸餾所"
-        },
-        "aeroway/apron": {
-            "name": "停機坪",
-            "terms": "Apron,停機坪"
         },
         "shop/tattoo": {
             "name": "紋身店",
@@ -2805,10 +2739,6 @@
             "name": "河流",
             "terms": "River,江,江河,河,河流,河川"
         },
-        "railway/subway": {
-            "name": "地下鐵",
-            "terms": "MTR,Mass Transit Railway,Subway,地下鐵,地下鐵路,地鐵,捷運"
-        },
         "amenity/money_transfer": {
             "name": "滙款中心",
             "terms": "滙款店,匯款"
@@ -2852,10 +2782,6 @@
         "shop/car_repair": {
             "name": "車房",
             "terms": "Car Repair Shop,汽車修理店,汽車維修店,車房"
-        },
-        "craft/hvac": {
-            "name": "空調工程",
-            "terms": "冷氣工程,暖氣工程,空調,空氣調節"
         },
         "highway/path": {
             "name": "路徑",
@@ -2932,10 +2858,6 @@
             "name": "塘堰",
             "terms": "Weir,堤堰,堤壩,堰,壩,塘堰,導流壩"
         },
-        "craft/metal_construction": {
-            "name": "金屬工程",
-            "terms": "金工"
-        },
         "craft/painter": {
             "name": "髹漆工",
             "terms": "油漆工人"
@@ -2975,10 +2897,6 @@
         "tourism/viewpoint": {
             "name": "觀景臺",
             "terms": "Viewpoint,景點,眺望,瞭望台,瞭望臺,觀景台,觀景臺,觀景點"
-        },
-        "craft/handicraft": {
-            "name": "手工藝",
-            "terms": "手工藝,手作"
         },
         "aeroway/terminal": {
             "name": "機場客運大樓",
