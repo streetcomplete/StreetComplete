@@ -23,7 +23,7 @@ v21.0: |
   <h3>Fixes</h3>
   <ul>
   <li>Fix a crash for Finnish users (#1911), by @matkoniecz</li>
-  <li>Quest pins are not occluded by street names and other labels (#1905, #1906, #1908), by @matkoniecz</li>
+  <li>Quest pins are not occluded by street names and other labels (#1905, #1906, #1908, #1927, #1930), by @matkoniecz</li>
   <li>Fix display of compass rose for people with a larger system font size (#1916), by @matkoniecz</li>
   <li>Fix animation of solved quest was cut off (#1910)</li>
   <li>Fix country flag for Costa Rica was missing</li>
