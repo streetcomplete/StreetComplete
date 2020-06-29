@@ -57,7 +57,7 @@ class NotificationButtonFragment : Fragment(R.layout.fragment_notification_butto
 
     override fun onStart() {
         super.onStart()
-        notificationButton.visibility = if (notificationsSource.getNumberOfNotifications() > 0) View.VISIBLE else View.GONE
+        notificationButton.notificationsCount = notificationsSource.getNumberOfNotifications()
         notificationsSource.addListener(notificationsSourceUpdateListener)
     }
 
