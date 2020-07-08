@@ -3784,8 +3784,8 @@
             "terms": "bail bond dealer,bail bond man,bail bondsman,bail bondsperson"
         },
         "craft/agricultural_engines": {
-            "name": "Argricultural Engines Mechanic",
-            "terms": ""
+            "name": "Agricultural Engines Mechanic",
+            "terms": "combines,farm equipment,harvesters,tractors"
         },
         "shop/lottery": {
             "name": "Lottery Shop",

@@ -395,7 +395,7 @@
   "craft": {"icon": "temaki-tools", "fields": ["name", "craft", "operator", "address", "building_area", "opening_hours", "opening_hours/covid19"], "moreFields": ["air_conditioning", "building/levels_building", "ele", "email", "fax", "gnis/feature_id", "height_building", "internet_access", "internet_access/fee", "internet_access/ssid", "level", "phone", "product", "ref/vatin", "website", "wheelchair"], "geometry": ["point", "area"], "tags": {"craft": "*"}, "terms": [], "name": "Craft"},
   "craft/locksmith": {"icon": "maki-marker-stroked", "geometry": ["point", "area"], "tags": {"craft": "locksmith"}, "reference": {"key": "shop", "value": "locksmith"}, "name": "Locksmith", "searchable": false},
   "craft/tailor": {"icon": "temaki-needle_and_spool", "geometry": ["point", "area"], "tags": {"craft": "tailor"}, "reference": {"key": "shop", "value": "tailor"}, "name": "Tailor", "searchable": false},
-  "craft/agricultural_engines": {"icon": "temaki-tools", "geometry": ["point", "area"], "tags": {"craft": "agricultural_engines"}, "name": "Argricultural Engines Mechanic"},
+  "craft/agricultural_engines": {"icon": "temaki-tools", "geometry": ["point", "area"], "tags": {"craft": "agricultural_engines"}, "terms": ["combines", "farm equipment", "harvesters", "tractors"], "name": "Agricultural Engines Mechanic"},
   "craft/basket_maker": {"icon": "temaki-vase", "geometry": ["point", "area"], "tags": {"craft": "basket_maker"}, "name": "Basket Maker"},
   "craft/beekeeper": {"icon": "maki-farm", "geometry": ["point", "area"], "tags": {"craft": "beekeeper"}, "name": "Beekeeper"},
   "craft/blacksmith": {"icon": "temaki-anvil_and_hammer", "geometry": ["point", "area"], "tags": {"craft": "blacksmith"}, "name": "Blacksmith"},
