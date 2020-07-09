@@ -1,6 +1,7 @@
 ---
 name: Quest suggestion
 about: Suggest a new question to ask the user about
+labels: new quest
 
 ---
 
