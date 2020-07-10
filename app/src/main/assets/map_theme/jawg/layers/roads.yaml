@@ -4,18 +4,23 @@ layers:
         filter: { class: [major_rail, minor_rail], not: { tunnel: 1 }}
         draw:
             lines-railway-style:
-                order: 50
+                order: 32
                 color: global.railway_color
                 join: round
                 width: [[10, 0.5px], [12, 1.0px], [13, 2px], [18, 3m]]
         # jawg: no filtering between service rail and other possible
+        bridges:
+            filter: { bridge: 1 }
+            draw:
+                lines:
+                    order: 42
 
     highway:
         data: { source: jawg, layer: road }
         filter: [ class: motorway, { class: main, type: trunk } ]
         draw:
             lines-highway-style:
-                order: 60
+                order: 34
                 join: round
                 cap: round
                 color: global.highway_color
@@ -23,22 +28,30 @@ layers:
                 outline:
                     color: global.highway_outline_color
                     width: function () { return 1/4 * Math.log($zoom); }
-                    order: 61
+                    order: 35
 
         bridges:
             filter: { bridge: 1 }
             draw:
                 lines:
+                    order: 44
                     outline:
                         cap: butt
-                        order: 70
+                        order: 45
+        tunnel:
+            filter: { tunnel: 1 }
+            draw:
+                lines-highway-style:
+                    order: 22
+                    outline:
+                        order: 23
 
     aeroways:
         data: { source: jawg, layer: aeroway }
         filter: { type: [runway, taxiway] }
         draw:
             lines:
-                order: 20
+                order: 30
                 join: miter
                 cap: round
                 color: global.road_color
@@ -97,13 +110,6 @@ layers:
                         color: global.road_outline_color
                         width: function () { return 1/4 * Math.log($zoom); }
                         order: 31
-            bridges:
-                filter: { bridge: 1 }
-                draw:
-                    lines:
-                        outline:
-                            cap: butt
-                            order: 40
 
         path-outline:
             filter: { $zoom: { min: 17 }, class: path }
@@ -130,12 +136,24 @@ layers:
                     text:
                         visible: false
 
+        bridges:
+            filter: { bridge: 1 }
+            draw:
+                lines:
+                    order: 40
+                    outline:
+                        cap: butt
+                        order: 41
+
         tunnel:
             filter: { tunnel: 1 }
             draw:
                 lines:
+                    order: 20
                     style: tunnel-way
                     color: global.tunnel_color
+                    outline:
+                        order: 21
 
     pois:
         # jawg: these do not exist
