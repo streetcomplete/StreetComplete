@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.util
 
 import android.net.Uri
+import java.util.*
 
 fun parseGeoUri(uri: Uri): GeoLocation? {
     if (uri.scheme != "geo") return null
@@ -21,7 +22,8 @@ fun parseGeoUri(uri: Uri): GeoLocation? {
 
 fun buildGeoUri(latitude: Double, longitude: Double, zoom: Float? = null): Uri {
     val zoomStr = if (zoom != null) "?z=$zoom" else ""
-    return Uri.parse("geo:$latitude,$longitude$zoomStr")
+    val geoUri = Formatter(Locale.US).format("geo:%.5f,%.5f%s", latitude, longitude, zoomStr).toString()
+    return Uri.parse(geoUri)
 }
 
 data class GeoLocation(
