@@ -28,6 +28,7 @@ class AddHousenumber(private val overpass: OverpassMapDataAndGeometryApi) : OsmE
 
     // See overview here: https://ent8r.github.io/blacklistr/?streetcomplete=housenumber/AddHousenumber.kt
     override val enabledInCountries = AllCountriesExcept(
+            "LU", // https://github.com/westnordost/StreetComplete/pull/1943
             "NL", // https://forum.openstreetmap.org/viewtopic.php?id=60356
             "DK", // https://lists.openstreetmap.org/pipermail/talk-dk/2017-November/004898.html
             "NO", // https://forum.openstreetmap.org/viewtopic.php?id=60357
