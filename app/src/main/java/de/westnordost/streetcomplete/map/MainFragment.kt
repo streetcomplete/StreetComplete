@@ -636,7 +636,13 @@ class MainFragment : Fragment(R.layout.fragment_main),
         }
         val displayedPosition = OsmLatLon(location.latitude, location.longitude)
 
-        var target = mapFragment.getPointOf(displayedPosition) ?: return
+        var target = mapFragment.getPointOf(displayedPosition)
+        // mitigation for https://github.com/tangrams/tangram-es/issues/2165 : Don't show if probably invalid
+        if (target == null || target.equals(0f,0f)) {
+            locationPointerPin.visibility = View.GONE
+            return
+        }
+
         windowInsets?.let {
             target -= PointF(it.left.toFloat(), it.top.toFloat())
         }
