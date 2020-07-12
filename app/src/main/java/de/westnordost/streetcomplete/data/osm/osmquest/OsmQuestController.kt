@@ -220,6 +220,15 @@ import javax.inject.Singleton
 
     /* ---------------------------------------- Getters ----------------------------------------- */
 
+    /** Get the quest types of all unsolved quests for the given element */
+    fun getAllUnsolvedQuestTypesForElement(elementType: Element.Type, elementId: Long): List<OsmElementQuestType<*>> {
+        return dao.getAll(
+            statusIn = listOf(QuestStatus.NEW),
+            element = ElementKey(elementType, elementId)
+        ).map { it.osmElementQuestType }
+    }
+
+
     /** Get count of all unanswered quests in given bounding box of given types */
     fun getAllVisibleInBBoxCount(bbox: BoundingBox, questTypes: Collection<String>) : Int =
         dao.getCount(

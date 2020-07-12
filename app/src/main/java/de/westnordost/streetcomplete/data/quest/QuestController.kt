@@ -75,7 +75,8 @@ import javax.inject.Singleton
         val q = osmQuestController.get(osmQuestId)
         if (q?.status != QuestStatus.NEW) return false
 
-        splitWayDB.add(OsmQuestSplitWay(osmQuestId, q.osmElementQuestType, q.elementId, source, splits))
+        val unsolvedQuestTypes = osmQuestController.getAllUnsolvedQuestTypesForElement(q.elementType, q.elementId)
+        splitWayDB.add(OsmQuestSplitWay(osmQuestId, q.osmElementQuestType, q.elementId, source, splits, unsolvedQuestTypes))
 
         removeUnsolvedQuestsForElement(q.elementType, q.elementId)
         return true

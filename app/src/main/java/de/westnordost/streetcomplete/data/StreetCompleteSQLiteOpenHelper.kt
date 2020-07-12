@@ -174,9 +174,17 @@ import de.westnordost.streetcomplete.quests.oneway.data.WayTrafficFlowTable
         if (oldVersion < 14 && newVersion >= 14) {
             db.execSQL(CountryStatisticsTable.CREATE)
         }
+
+        if (oldVersion < 15 && newVersion >= 15) {
+            db.execSQL("""
+                ALTER TABLE ${OsmQuestSplitWayTable.NAME}
+                ADD COLUMN ${OsmQuestSplitWayTable.Columns.QUEST_TYPES_ON_WAY} text;
+                """.trimIndent()
+            )
+        }
         // for later changes to the DB
         // ...
     }
 }
 
-private const val DB_VERSION = 14
+private const val DB_VERSION = 15

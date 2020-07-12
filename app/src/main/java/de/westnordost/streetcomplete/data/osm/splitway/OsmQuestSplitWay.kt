@@ -19,7 +19,8 @@ data class OsmQuestSplitWay(
         val questType: OsmElementQuestType<*>,
         val wayId: Long,
         override val source: String,
-        val splits: List<SplitPolylineAtPosition>) : UploadableInChangeset {
+        val splits: List<SplitPolylineAtPosition>,
+        val questTypesOnWay: List<OsmElementQuestType<*>>) : UploadableInChangeset {
 
     override val osmElementQuestType get() = questType
     override val elementType get() = Element.Type.WAY
