@@ -25,6 +25,19 @@ class OsmQuestGiver @Inject constructor(
     private val countryBoundariesFuture: FutureTask<CountryBoundaries>
 ) {
 
+    /** (Re)create quests for the given element, without making any eligibility checks */
+    fun recreateQuests(element: Element, geometry: ElementGeometry, recreateQuestTypes: List<OsmElementQuestType<*>>) {
+        val createdQuests: MutableList<OsmQuest> = ArrayList()
+        val createdQuestsLog = ArrayList<String>()
+        for (questType in recreateQuestTypes) {
+            val quest = OsmQuest(questType, element.type, element.id, geometry)
+            createdQuests.add(quest)
+            createdQuestsLog.add(questType.javaClass.simpleName)
+        }
+        val updates = osmQuestController.updateForElement(createdQuests, emptyList(), element.type, element.id)
+        Log.d(TAG, "Recreated ${updates.added} quests for ${element.type.name}#${element.id}: ${createdQuestsLog.joinToString()}")
+    }
+
     /** Update quests for the given element (assuming the element has just been updated) */
     fun updateQuests(element: Element, geometry: ElementGeometry) {
         val createdQuests: MutableList<OsmQuest> = ArrayList()

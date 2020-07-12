@@ -102,7 +102,7 @@ class SplitWaysUploaderTest {
 
         verify(elementDB, times(1)).put(any())
         verify(elementGeometryDB, times(1)).put(any())
-        verify(questGiver, times(1)).updateQuests(any(), any())
+        verify(questGiver, times(1)).recreateQuests(any(), any(), any())
         verify(statisticsUpdater).addOne(any(), any())
         verifyNoMoreInteractions(questGiver)
     }
@@ -121,6 +121,12 @@ class SplitWaysUploaderTest {
     }
 }
 
-private fun createOsmSplitWay() = OsmQuestSplitWay(1, mock(), 1, "survey", listOf(SplitAtPoint(OsmLatLon(1.0,0.1))))
+private fun createOsmSplitWay() = OsmQuestSplitWay(
+    1,
+    mock(),
+    1,
+    "survey",
+    listOf(SplitAtPoint(OsmLatLon(1.0,0.1))),
+    listOf(mock(), mock()))
 
 private fun createElement() = OsmWay(1,1, listOf(1,2,3), null)
