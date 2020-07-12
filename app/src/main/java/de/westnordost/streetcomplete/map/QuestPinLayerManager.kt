@@ -128,7 +128,7 @@ class QuestPinLayerManager @Inject constructor(
             val properties = mapOf(
                 "type" to "point",
                 "kind" to questIconName,
-                "order" to getQuestDrawOrder(quest).toString(),
+                "importance" to getQuestImportance(quest).toString(),
                 MARKER_QUEST_GROUP to group.name,
                 MARKER_QUEST_ID to quest.id!!.toString()
             )
@@ -181,22 +181,14 @@ class QuestPinLayerManager @Inject constructor(
         }
     }
 
-    private fun getQuestDrawOrder(quest: Quest): Int {
-        /* order is decided by
-           - minimalValue - minimum to ensure that quest labels will be placed in
-             preference to street labels etc
-           - primarily by quest type to allow quest prioritization
-           - for quests of the same type - influenced by quest id,
-             this is done to reduce chance that as user zoom in a quest disappears,
-             especially in case where disappearing quest is one that user selected to solve
-             main priority part - values fit into Integer, but with as large steps as possible */
-        val minimalValue = 99999;
+    /** returns values from 0 to 100000, the higher the number, the more important */
+    private fun getQuestImportance(quest: Quest): Int {
         val questTypeOrder = questTypeOrders[quest.type] ?: 0
-        val freeValuesForEachQuest = (Int.MAX_VALUE - minimalValue) / questTypeOrders.size
+        val freeValuesForEachQuest = 100000 / questTypeOrders.size
         /* quest ID is used to add values unique to each quest to make ordering consistent
            freeValuesForEachQuest is an int, so % freeValuesForEachQuest will fit into int */
-        val hopefullyUniqueValueForQuest = (quest.id!! % freeValuesForEachQuest).toInt()
-        return minimalValue + questTypeOrder * freeValuesForEachQuest + hopefullyUniqueValueForQuest
+        val hopefullyUniqueValueForQuest = ((quest.id?: 0) % freeValuesForEachQuest).toInt()
+        return questTypeOrder * freeValuesForEachQuest + hopefullyUniqueValueForQuest
     }
 
     companion object {

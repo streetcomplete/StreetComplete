@@ -58,8 +58,9 @@ layers:
             draw:
                 quest-icons:
                     interactive: true
-                    priority: 0
-                    order: function() { return feature.order }
+                    priority: function() { return 1.0 - feature.importance / 100000.0 }
+                    order: function() { return 100000 + feature.importance }
+                    repeat_group: quest_pin
                     size: 66px
                     sprite: function() { return feature.kind }
                     sprite_default: quest
@@ -79,6 +80,7 @@ layers:
                 quest-dots:
                     priority: 1
                     order: 1
+                    repeat_group: quest_dot
                     size: 16px
                     collide: true
                     offset: [-2.5px, -22px]
