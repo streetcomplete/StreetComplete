@@ -1148,6 +1148,7 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
 
     <!-- Fuzzy -->
     <string name="quest_bench_answer_picnic_table">"这是一个野餐桌"</string>
+    <string name="quest_religion_for_place_of_worship_title">"这个场所所属的宗教信仰是？"</string>
 
     <!-- Fuzzy -->
     <string name="quest_religion_christian">"基督教"</string>
@@ -1658,6 +1659,9 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
 
     <!-- Fuzzy -->
     <string name="quest_building_underground_title">"这座建筑是否完全位于地下？"</string>
+    <string name="quest_traffic_signals_sound_title">"这个交通灯带有声音，供盲人使用吗？"</string>
+    <string name="quest_wheelchairAccess_outside_title">"这个地方对轮椅使用者友善吗？"</string>
+    <string name="quest_traffic_signals_button_title">"这些交通灯有按钮供行人发送行走指示吗？"</string>
 
     <!-- Fuzzy -->
     <string name="quest_motorcycleParkingCapacity_title">"这里能够停放多少辆摩托车？"</string>
@@ -1667,10 +1671,14 @@ OpenStreetMap 不接受匿名编辑，您需要登录您的 OpenStreetMap 帐号
 
     <!-- Fuzzy -->
     <string name="default_disabled_msg_maxspeed">"默认情况下，此任务类型为禁用状态，因为这通常需要检查整条街道的限速标志，不只是突出显示的部分。有时，仅解决一个任务就可能会很困难。Ingress 可能对此类任务有一定帮助。"</string>
+    <string name="pref_title_quests_restore_hidden">"恢复隐藏任务"</string>
 
     <!-- as in: "Where is the metro station?" - "It is underground" -->
     <!-- Fuzzy -->
     <string name="underground">"地下："</string>
+    <string name="quest_sidewalk_value_yes">"人行道"</string>
+    <string name="quest_sidewalk_value_no">"没有人行道"</string>
+    <string name="quest_accessible_for_pedestrians_title_prohibited">"这里的路有禁止行人行走吗？"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_title">"这栋建筑物的类型是什么?"</string>

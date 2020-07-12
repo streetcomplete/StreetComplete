@@ -15,7 +15,7 @@
     <string name="pref_title_map_cache">"Größe des Kartencaches"</string>
     <string name="map_btn_gps_tracking">"Mir folgen"</string>
     <string name="map_attribution_osm">"© OpenStreetMap-Mitwirkende"</string>
-    <string name="quest_generic_otherAnswers">"Weitere Antworten..."</string>
+    <string name="quest_generic_otherAnswers">"Weitere Antworten…"</string>
     <string name="quest_generic_answer_notApplicable">"Nicht beantwortbar…"</string>
     <string name="quest_generic_confirmation_title">"Sicher?"</string>
     <string name="quest_generic_confirmation_yes">"Ja, sicher"</string>

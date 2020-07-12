@@ -292,7 +292,6 @@ task pullTranslations {
                 }
 
                 def javaLanguageTag = bcp47LanguageTagToJavaLanguageTag(language)
-                println("$javaLanguageTag")
                 def androidResCodes = languageToAndroidResCodes[javaLanguageTag] ?: [javaLanguageTag]
                 def text = new URL(fileUrl).openStream().getText()
                 for (androidResCode in androidResCodes) {

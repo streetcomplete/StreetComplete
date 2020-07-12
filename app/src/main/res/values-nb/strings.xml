@@ -1804,6 +1804,26 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk som for ekse
     <string name="quest_recycling_materials_note">"Hvis det kan resirkuleres noe her som ikke står som svaralternativ bør det legges til som en merknad."</string>
     <string name="quest_recycling_type_batteries">"Batteri"</string>
     <string name="quest_recycling_type_cans">"Metallemballasje"</string>
+    <string name="quest_recycling_type_clothes">"Klær"</string>
+    <string name="quest_recycling_type_green_waste">"Hageavfall"</string>
+    <string name="quest_recycling_type_glass_bottles">"Glassflasker og syltetøyglass"</string>
+    <string name="quest_recycling_type_glass_bottles_short">"Glassembalasje"</string>
+    <string name="quest_recycling_type_paper">"Papir"</string>
+    <string name="quest_recycling_type_plastic_generic">"Plast"</string>
+    <string name="quest_recycling_type_plastic">"Alle typer plast"</string>
+    <string name="quest_recycling_type_shoes">"Sko"</string>
+    <string name="quest_recycling_type_electric_appliances">"EE-avfall"</string>
+    <string name="quest_recycling_type_plastic_bottles">"Bare plastflasker"</string>
+    <string name="quest_recycling_type_plastic_packaging">"Bare plastemballasje"</string>
+    <string name="quest_recycling_type_scrap_metal">"Skrapmetall"</string>
+    <string name="quest_recycling_type_any_glass">"Alle typer glass"</string>
+    <string name="quest_recycling_glass_title">"Kan bare glassembalasje resirkulerers her, eller alle typer glass?"</string>
+    <string name="quest_determineRecyclingGlass_description_any_glass">"Eksempler på glasstyper som ofte ikke tas imot: herdet glass, glassruter, drikkeglass, lyspærer, speil..."</string>
+    <string name="about_title_changelog">"Versjonslogg"</string>
+    <string name="title_whats_new">"Nytt i denne utgaven"</string>
+    <string name="about_title_rate">"Vurder denne appen"</string>
+    <string name="about_summary_rate">"på Google Play"</string>
+    <string name="about_title_donate">"Gi pengegave"</string>
     <string name="about_summary_donate">"Vis din takknemlighet! ❤️"</string>
     <string name="about_description_donate">"Takk for at du vurderer å støtte denne appen! For å se tidligere pengegaver eller gi en gave selv, trykk på en plattform:"</string>
     <string name="quest_religion_for_place_of_worship_name_title">"Hvilen religion praktiseres ved %s?"</string>
@@ -1824,6 +1844,110 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk som for ekse
     <string name="user_login">"Logg inn"</string>
     <string name="user_logout">"Logg ut"</string>
     <string name="osm_profile">"OSM-profil"</string>
+    <string name="next">"Neste"</string>
+    <string name="letsgo">"Kom igjen!"</string>
+    <string name="tutorial_welcome_to_osm">"Velkommen til OpenStreetMap"</string>
+    <string name="tutorial_welcome_to_osm_subtitle">"det frie dugnadskartet"</string>
+    <string name="tutorial_intro">"StreetComplete gjør det svært enkelt å bidra til OpenStreetMap.
+Appen ser automatisk etter ting i nærheten som ikke er registrert
+på kartet - sykkelveier, husnummer, åpningstider og mye annet..."</string>
+    <string name="tutorial_solving_quests">"Dette blir vist på kartet som oppdrag til deg.
+
+Du kan løse noen oppdrag med en gang, for senere og logge inn og sende inn informasjonen du registerer."</string>
+    <string name="tutorial_stay_safe">"Hvis du er usikker kan du alltid svare \"Vanseklig å si\" og legge igjen
+en merknad til andre.
+
+Og husk å ta vare på egen sikkerhet: Pass på hvor du setter foten, og gå aldri inn på privat eigendom."</string>
+    <string name="tutorial_happy_mapping">"Kos deg med kartlegging!"</string>
+    <string name="achievements_empty">"Du har inne noen bradger enda"</string>
+    <string name="links_empty">"Du har ikke noen lenker enda"</string>
+    <string name="quests_empty">"Du har ikke offentliggjort noen svar på oppdrag enda"</string>
+    <string name="unsynced_quests_description">"og %d endringer som ikke er offentliggjort."</string>
+    <string name="unsynced_quests_not_logged_in_description">"Du har %d endringer som du ikke har offentliggjort enda. Du må logge inn for å offentliggjøre dem."</string>
+    <string name="user_quests_title">"Løste oppdrag"</string>
+    <string name="user_achievements_title">"Bradger"</string>
+    <string name="user_links_title">"Lenkesamling"</string>
+    <string name="user_profile_title">"Profil"</string>
+    <string name="user_statistics_quest_wiki_link">"Dokumentasjon"</string>
+    <string name="achievements_unlocked_link">"Opplåst lenke:"</string>
+    <string name="achievements_unlocked_links">"Opplåste lenker:"</string>
+    <string name="link_category_intro_title">"Innledning"</string>
+    <string name="link_category_intro_description">"Lær mer om OSM og OSM-fellesskapet"</string>
+    <string name="link_category_editors_title">"Bidrag"</string>
+    <string name="link_category_editors_description">"Redigeringsprogram og andre måter å bidra til OpenStreetMap"</string>
+    <string name="link_category_maps_title">"Kart"</string>
+    <string name="link_category_maps_description">"Kart bygget på OpenStreetMap"</string>
+    <string name="link_category_showcase_description">"Tjenester og apper bygget på OpenStreetMap"</string>
+    <string name="link_category_goodies_title">"Godbiter"</string>
+    <string name="link_category_goodies_description">"Interessante kart-relaterte ting du kan teste ut"</string>
+    <string name="link_cyclosm_description">"For syklister"</string>
+    <string name="link_wheelmap_description">"For å finne steder som er tilgjengelige med rullestol"</string>
+    <string name="link_osm_buildings_description">"Viser bygningene i 3D"</string>
+    <string name="link_openvegemap_description">"Viser vegetariske og veganske restauranter"</string>
+    <string name="link_touch_mapper_description">"Lag taktile kart"</string>
+    <string name="link_mapy_tactile_description">"Taktile kart i ulike skalaer - for brukere med synshemning"</string>
+    <string name="link_josm_description">"Funksjonsrikt kartredigeringsprogram for vanlige datamaskiner. Dette er et kraftig verktøy for brukere som bidrar mye."</string>
+    <string name="link_vespucci_description">"Avansert kartredigering for Android"</string>
+    <string name="link_ideditor_description">"Enkel kartredigering for nettlesere (tilpasset vanlige datamaskiner og store nettbrett)"</string>
+    <string name="link_umap_description">"Lag kjapt kart med egne data for framvisning på nettstedet ditt"</string>
+    <string name="link_opnvkarte_description">"Offentlige transportruter og holdeplasser"</string>
+    <string name="link_pic4review_description">"Bidra til OSM ved å se på bilder fra byen din"</string>
+    <string name="link_wiki_description">"Wikien er et godt utgangspunkt for alt relatert til
+OpenStreetMap"</string>
+    <string name="link_learnosm_description">"Uerfaren med OpenStreetMap? Her er en innføring."</string>
+    <string name="link_openinframap_description">"Et kart som viser strøm-, tele- og oljeinfrastruktur"</string>
+    <string name="link_openorienteeringmap_description">"Lag orienteringskart for utskrift"</string>
+    <string name="link_openstreetbrowser_description">"Et kart for å finne OpenStreetMap-oppføringer basert på kategorier"</string>
+    <string name="link_weeklyosm_description">"Ukentlig nyhetsblogg om hva som skjer i OpenStreetMap-verdenen"</string>
+    <string name="achievement_first_edit_title">"Første løste oppdrag"</string>
+    <string name="achievement_first_edit_description">"Velkommen til OpenStreetMap-felleskapet! På profilsiden kan du lese mer om de ulike oppdragstypene du har løst."</string>
+    <string name="achievement_surveyor_title">"Landmåler"</string>
+    <string name="achievement_surveyor_solved_X">"Du har løst %d oppdrag! Fortsett slik for å låse opp flere bragder som inneholder lenker til OSM og andre kartrelaterte apper og prosjekter."</string>
+    <string name="achievement_regular_title">"Stamgjest"</string>
+    <string name="achievement_regular_description">"Du har bidrat i %d dager til OSM med appen! Regelmessige bidragsytere utgjør ryggraden til OSM, så takk for at du er så engasjert! ❤"</string>
+    <string name="achievement_bicyclist_title">"Syklist"</string>
+    <string name="achievement_bicyclist_solved_X">"Du har løst %d oppdrag som helper syklister!"</string>
+    <string name="achievement_wheelchair_title">"Mobilitet"</string>
+    <string name="achievement_wheelchair_solved_X">"Du har løst %d oppdrag som hjelper rullestolbrukere!"</string>
+    <string name="achievement_postman_title">"Postmann"</string>
+    <string name="achievement_postman_solved_X">"Du har bekreftet %d adresser!
+Ikke bare postmannen har bruk for dette - det har alle navigasjonssystem."</string>
+    <string name="achievement_building_title">"Huseier"</string>
+    <string name="achievement_building_solved_X">"Du har løst %d bygningsoppdrag.
+Merk at appen bare ber om husnummeret etter at hustypen er angitt."</string>
+    <string name="achievement_blind_title">"Sjette sans"</string>
+    <string name="achievement_blind_solved_X">"Du har løst %d oppdrag som er nyttige for synshemmede."</string>
+    <string name="achievement_pedestrian_title">"Løper"</string>
+    <string name="achievement_pedestrian_solved_X">"Du har løst %d oppdrag som er nyttige for fotgjengere."</string>
+    <string name="achievement_veg_title">"Dyrevenn"</string>
+    <string name="achievement_veg_solved_X">"Du har løst %d oppdrag som er interessante for de som ikke spiser kjøtt."</string>
+    <string name="achievement_car_title">"På veien"</string>
+    <string name="achievement_car_solved_X">"Du har løst %d oppdrag som forbedrer detaljnivået på gateinformasjonen - slik at OpenStreetMap lever opp til navnet sitt!"</string>
+    <string name="unread_messages_message">"Du har %d uleste meldinger i innboksen"</string>
     <string name="action_about2">"Om"</string>
     <string name="map_btn_menu">"Meny"</string>
+    <string name="privacy_html_statistics">"&lt;p&gt;Data vist på profilen din blir samlet inn fra offentlig tilgjengelig informasjon fra bidragsloggen din i OpenStreetMap og så lastet opp til tjeneren min.&lt;/p&gt;"</string>
+    <string name="confirmation_authorize_now_note2">"Du kan også gjøre dette senere på profilsiden din."</string>
+    <string name="credits_art_contributors_title">"Bildebidrag"</string>
+    <string name="credits_projects_contributors_title">"Prosjekter laget for StreetComplete"</string>
+    <string name="credits_main_contributors_title">"Hovedbidragsyter"</string>
+    <string name="stats_are_syncing">"Synkroniserer statistikken. Kom tilbake senere."</string>
+    <string name="user_statistics_country_rank">"Plassering i %2$s: %1$d"</string>
+    <string name="user_statistics_filter_by_country">"pr land"</string>
+    <string name="user_statistics_filter_by_quest_type">"pr oppdragstype"</string>
+    <string name="user_profile_global_rank">"Global
+plassering"</string>
+    <string name="user_profile_local_rank">"Plassering i
+%s"</string>
+    <string name="user_profile_days_active">"Dager
+aktiv"</string>
+    <string name="quest_address_street_title">"Hvilken gate har husnummeret %s?"</string>
+    <string name="quest_address_street_no_named_streets">"Det hører ikke til en navngitt gate"</string>
+    <string name="quest_address_street_place_name_label">"Stedsnavn:"</string>
+    <string name="quest_address_street_description">"Trykk på gaten på kartet eller legg det til uten
+forkortelser i feltet nedenfor:"</string>
+    <string name="quest_buildingLevels_address_title">"Hvor mange etasjer har bygningen med nummer %s?"</string>
+    <string name="quest_recycling_type_cooking_oil">"Matolje"</string>
+    <string name="quest_recycling_type_engine_oil">"Motorolje"</string>
+    <string name="about_title_sponsors">"Sponsorer"</string>
 </resources>
