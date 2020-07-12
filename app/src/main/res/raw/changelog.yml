@@ -1,3 +1,22 @@
+v21.1: |
+  <p>
+  Good news everyone!
+  The microgrant proposal <a href="https://wiki.openstreetmap.org/wiki/Microgrants/Microgrants_2020/Proposal/Map_Maintenance_with_StreetComplete">Map maintenance with StreetComplete</a>
+  is one of the <a href="https://blog.openstreetmap.org/2020/07/01/osmf-microgrants-program-congratulations-to-selected-projects/">12 projects selected for funding by the OpenStreetMap Foundation</a>!
+  <br>
+  Work on this feature will commence this August, thank you for support and all those endorsements!
+  </p>
+  <h3>Fixes</h3>
+  <ul>
+  <li>fix quest pins would sometimes not show up (#1927), thanks @matkoniecz</li>
+  <li>added missing flag for the Canary Islands (for the statistics)</li>
+  <li>don't show location pointer pin if the position cannot be ascertained (#1842)</li>
+  <li>correct text color after change to dark mode (#1807)</li>
+  <li>display bridges above roads and tunnels below (#1941)</li>
+  <li>don't show notification button when there are no notifications</li>
+  <li>limit max tilt to 40° (#1932)</li>
+  </ul>
+
 v21.0: |
   <h3>🗺️ New Map Provider</h3>
   <p>Big thanks to <a href="https://www.jawg.io">JawgMaps</a>, a provider of online
