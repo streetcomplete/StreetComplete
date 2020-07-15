@@ -66,10 +66,15 @@ class AddSidewalk(private val overpassApi: OverpassMapDataAndGeometryApi) : OsmE
         changes.add("sidewalk", getSidewalkValue(answer))
     }
 
-    private fun getSidewalkValue(answer: SidewalkAnswer) = when {
-        answer.left && answer.right -> "both"
-        answer.left ->  "left"
-        answer.right ->  "right"
-        else -> "none"
+    private fun getSidewalkValue(answer: SidewalkAnswer) =
+        when (answer) {
+            is SeparatelyMapped -> "separate"
+            is SidewalkSides -> when {
+                answer.left && answer.right -> "both"
+                answer.left -> "left"
+                answer.right -> "right"
+                else -> "none"
+            }
+            else -> throw IllegalArgumentException("it should never happen")
+        }
     }
-}
