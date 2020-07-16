@@ -1,3 +1,10 @@
+v21.2: |
+  <h3>Fixes</h3>
+  <ul>
+  <li>fix another display issue with bridges (#1954)</li>
+  <li>fix least important quest pins would show up in front (#1927)</li>
+  </ul>
+
 v21.1: |
   <p>
   Good news everyone!
