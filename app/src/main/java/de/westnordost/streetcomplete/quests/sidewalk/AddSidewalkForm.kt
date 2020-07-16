@@ -3,15 +3,20 @@ package de.westnordost.streetcomplete.quests.sidewalk
 import android.os.Bundle
 import android.view.View
 import androidx.annotation.AnyThread
+import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
+import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.quests.StreetSideRotater
 import de.westnordost.streetcomplete.view.Item
 import de.westnordost.streetcomplete.view.dialogs.ImageListPickerDialog
 import kotlinx.android.synthetic.main.quest_street_side_puzzle.*
 
 class AddSidewalkForm : AbstractQuestFormAnswerFragment<SidewalkAnswer>() {
+    override val otherAnswers = listOf(
+            OtherAnswer(R.string.quest_sidewalk_separately_mapped) { confirmSeparatelyMappedSidewalk() }
+    )
 
     override val contentLayoutResId = R.layout.quest_street_side_puzzle
     override val contentPadding = false
@@ -58,10 +63,18 @@ class AddSidewalkForm : AbstractQuestFormAnswerFragment<SidewalkAnswer>() {
     }
 
     override fun onClickOk() {
-        applyAnswer(SidewalkAnswer(
+        applyAnswer(SidewalkSides(
             left = leftSide == Sidewalk.YES,
             right = rightSide == Sidewalk.YES
         ))
+    }
+
+    private fun confirmSeparatelyMappedSidewalk() {
+        AlertDialog.Builder(activity!!)
+                .setTitle(R.string.quest_generic_confirmation_title)
+                .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> applyAnswer(SeparatelyMapped) }
+                .setNegativeButton(R.string.quest_generic_confirmation_no, null)
+                .show()
     }
 
     override fun isFormComplete() = leftSide != null && rightSide != null

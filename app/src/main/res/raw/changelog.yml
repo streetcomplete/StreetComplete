@@ -1,3 +1,18 @@
+v22.0-beta1: |
+  <h3>New and enhanced Quests</h3>
+  <ul>
+  <li>Board Type: <i>What is the topic of this information board?</i> (#1226, #1920), by @matkoniecz</li>
+  <li>Detailed Road Surface: <i>What specific surface does the road ... have here?</i> (#279, #1915), by @matkoniecz</li>
+  <li>Sidewalks: Add answer that the sidewalk is already displayed separately on the map (#1958, #1925), by @matkoniecz</li>
+  </ul>
+
+v21.2: |
+  <h3>Fixes</h3>
+  <ul>
+  <li>fix another display issue with bridges (#1954)</li>
+  <li>fix least important quest pins would show up in front (#1927)</li>
+  </ul>
+
 v21.1: |
   <p>
   Good news everyone!

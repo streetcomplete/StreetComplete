@@ -193,6 +193,8 @@ However, before uploading your changes, the app checks with a &lt;a href=\"https
     <string name="quest_pathSurface_title">"What surface does this path have here?"</string>
     <string name="quest_streetSurface_title">"What surface does this piece of road have?"</string>
     <string name="quest_streetSurface_name_title">"What surface does the road %s have here?"</string>
+    <string name="quest_streetSurface_square_title">"What surface does this square have?"</string>
+    <string name="quest_streetSurface_square_name_title">"What surface does the square %s have here?"</string>
     <string name="quest_select_hint_most_specific">"Select the most specific one that fits:"</string>
     <string name="quest_surface_value_paved">"Paved (generic)"</string>
     <string name="quest_surface_value_unpaved">"Unpaved (generic)"</string>
@@ -503,8 +505,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_parking_access_yes">It is open to the public (with or without fee)</string>
     <string name="quest_parking_access_customers">It is only for customers</string>
     <string name="quest_streetName_pedestrian_title">What is the name of this pedestrian street?</string>
-    <string name="quest_streetSurface_square_title">"What surface does this square have?"</string>
-    <string name="quest_streetSurface_square_name_title">"What surface does the square %s have here?"</string>
     <string name="quest_fee_answer_hours">Depends on time and day…</string>
     <string name="quest_fee_add_times">"Add times"</string>
     <string name="quest_fee_only_at_hours">Yes, but only…</string>
@@ -700,6 +700,14 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="create_new_note_hint">Best write the note in the locally spoken language or otherwise in English.</string>
     <string name="quest_cyclewayPartSurface_title">What\'s the surface of the cycleway here?</string>
     <string name="quest_footwayPartSurface_title">What\'s the surface of the footway here?</string>
+    <string name="quest_board_type_history">History</string>
+    <string name="quest_board_type_geology">Geology</string>
+    <string name="quest_board_type_plants">Plants</string>
+    <string name="quest_board_type_wildlife">Wildlife</string>
+    <string name="quest_board_type_nature">Nature (multiple topics)</string>
+    <string name="quest_board_type_notice_board">It is a notice board</string>
+    <string name="quest_board_type_public_transport">Public transport</string>
+    <string name="quest_board_type_title">What is the topic of this information board?</string>
     <string name="quest_generic_answer_differs_along_the_way">"Differs along the way…"</string>
     <string name="quest_split_way_description">If it differs along the way, the first step is to split up the way. After that, the quest can be answered for each split part separately.\nNote that the quests for the split parts may appear much later.\nSplit it now?</string>
     <string name="quest_split_way_tutorial">Tap on the way to split it at the point(s) where the answer differs. Try to be as precise as possible, you can zoom in as usual.</string>
@@ -849,5 +857,16 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="user_profile_local_rank">Rank in\n%s</string>
     <string name="user_profile_days_active">Days\nactive</string>
     <string name="user_profile_achievement_levels">Achievement\nlevels</string>
+    <string name="quest_sidewalk_separately_mapped">Yes, displayed separately on map</string>
+    <string name="quest_board_type_map">It is a map</string>
+    <string name="quest_board_type_map_title">Is it just a map and only a map?</string>
+    <string name="quest_board_type_map_description">If the board is about a particular topic, please specify it, regardless of whether it also includes a map. For example a public transport board may have a bus route map. If the topic is not listed among the available answers, please consider leaving a note instead.</string>
+    <string name="quest_surface_detailed_answer_impossible">Multiple surfaces…</string>
+    <string name="quest_surface_detailed_answer_impossible_confirmation">Are you sure that it is impossible to specify the surface? Note the \"Differs along the way\" answer option that allows you to cut the way where the surface changes. Please use \"Can\'t say\" if there is a single surface but it is not available as an answer.</string>
+    <string name="quest_surface_detailed_answer_impossible_description">Please briefly specify the nature of the surface here, for example \"sandy with patches of cobblestone\". The text length is limited to 255 characters.</string>
+    <string name="quest_surface_detailed_name_title">"What specific surface does the road %s have here?"</string>
+    <string name="quest_surface_detailed_square_name_title">"What specific surface does the square %s have here?"</string>
+    <string name="quest_surface_detailed_title">"What specific surface does this piece of road have?"</string>
+    <string name="quest_surface_detailed_square_title">"What specific surface does this square have here?"</string>
 
 </resources>

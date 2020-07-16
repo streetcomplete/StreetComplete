@@ -1549,6 +1549,7 @@
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_toilets">"Туалети"</string>
+    <string name="notification_channel_download">"Завантажити"</string>
 
     <!-- Fuzzy -->
     <string name="quest_playground_access_title">"Чи є цей майданчик загальнодоступним?"</string>
@@ -1613,4 +1614,8 @@
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_title">"Якого типу ця будівля?"</string>
+    <string name="pref_title_theme_select">"Оберіть тему"</string>
+    <string name="theme_light">"Світла"</string>
+    <string name="theme_dark">"Темна"</string>
+    <string name="theme_system_default">"Системна"</string>
 </resources>

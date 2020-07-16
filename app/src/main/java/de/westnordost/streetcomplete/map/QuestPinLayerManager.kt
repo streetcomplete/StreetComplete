@@ -188,7 +188,7 @@ class QuestPinLayerManager @Inject constructor(
         /* quest ID is used to add values unique to each quest to make ordering consistent
            freeValuesForEachQuest is an int, so % freeValuesForEachQuest will fit into int */
         val hopefullyUniqueValueForQuest = ((quest.id?: 0) % freeValuesForEachQuest).toInt()
-        return questTypeOrder * freeValuesForEachQuest + hopefullyUniqueValueForQuest
+        return 100000 - questTypeOrder * freeValuesForEachQuest + hopefullyUniqueValueForQuest
     }
 
     companion object {
