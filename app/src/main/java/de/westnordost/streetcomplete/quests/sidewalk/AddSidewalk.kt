@@ -75,6 +75,5 @@ class AddSidewalk(private val overpassApi: OverpassMapDataAndGeometryApi) : OsmE
                 answer.right -> "right"
                 else -> "none"
             }
-            else -> throw IllegalArgumentException("it should never happen")
         }
     }
