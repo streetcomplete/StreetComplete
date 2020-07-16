@@ -849,5 +849,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="user_profile_local_rank">Rank in\n%s</string>
     <string name="user_profile_days_active">Days\nactive</string>
     <string name="user_profile_achievement_levels">Achievement\nlevels</string>
+    <string name="quest_sidewalk_separately_mapped">Yes, displayed separately on map</string>
 
 </resources>
