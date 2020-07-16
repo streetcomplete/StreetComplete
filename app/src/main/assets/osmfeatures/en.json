@@ -1378,6 +1378,10 @@
             "name": "Bungee Jumping",
             "terms": "theme park,bungy jumping,jumping platform"
         },
+        "shop/model": {
+            "name": "Model Shop",
+            "terms": "hobby,model building,model figures,model kits,model store,scale models"
+        },
         "railway/signal": {
             "name": "Railway Signal",
             "terms": "signal,lights"
