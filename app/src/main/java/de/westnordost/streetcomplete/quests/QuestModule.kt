@@ -67,10 +67,7 @@ import de.westnordost.streetcomplete.quests.segregated.AddCyclewaySegregation
 import de.westnordost.streetcomplete.quests.self_service.AddSelfServiceLaundry
 import de.westnordost.streetcomplete.quests.sidewalk.AddSidewalk
 import de.westnordost.streetcomplete.quests.sport.AddSport
-import de.westnordost.streetcomplete.quests.surface.AddCyclewayPartSurface
-import de.westnordost.streetcomplete.quests.surface.AddFootwayPartSurface
-import de.westnordost.streetcomplete.quests.surface.AddPathSurface
-import de.westnordost.streetcomplete.quests.surface.AddRoadSurface
+import de.westnordost.streetcomplete.quests.surface.*
 import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingBusStop
 import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingCrosswalk
 import de.westnordost.streetcomplete.quests.toilet_availability.AddToiletAvailability
@@ -83,6 +80,7 @@ import de.westnordost.streetcomplete.quests.way_lit.AddWayLit
 import de.westnordost.streetcomplete.quests.wheelchair_access.*
 import java.util.concurrent.FutureTask
 import javax.inject.Singleton
+
 
 @Module
 object QuestModule
@@ -113,13 +111,14 @@ object QuestModule
         AddRecyclingType(o),
         AddRecyclingContainerMaterials(o),
         AddSport(o),
-        AddRoadSurface(o),
+        AddRoadSurface(o), // used by BRouter, OsmAnd, OSRM, graphhopper, HOT map style
         AddMaxSpeed(o), // should best be after road surface because it excludes unpaved roads
-        AddMaxHeight(o),
+        AddMaxHeight(o), // OSRM and other routing engines
         AddRailwayCrossingBarrier(o), // useful for routing
         AddPostboxCollectionTimes(o),
         AddOpeningHours(o, featureDictionaryFuture),
-        AddBikeParkingCapacity(o), // cycle map layer on osm.org
+        DetailRoadSurface(o), // used by BRouter, OsmAnd, OSRM, graphhopper
+        AddBikeParkingCapacity(o), // used by cycle map layer on osm.org, OsmAnd
         AddOrchardProduce(o),
         AddBuildingType(o), // because housenumber, building levels etc. depend on it
         AddCycleway(o), // SLOW QUERY
@@ -130,12 +129,12 @@ object QuestModule
         AddBusStopShelter(o), // at least OsmAnd
         AddVegetarian(o),
         AddVegan(o),
-        AddInternetAccess(o),
-        AddParkingFee(o),
+        AddInternetAccess(o), // used by OsmAnd
+        AddParkingFee(o), // used by OsmAnd
         AddMotorcycleParkingCapacity(o),
-        AddPathSurface(o),
-        AddTracktype(o),
-        AddMaxWeight(o),
+        AddPathSurface(o), // used by OSM Carto, OsmAnd
+        AddTracktype(o), // widely used in map rendering - OSM Carto, OsmAnd...
+        AddMaxWeight(o), // used by OSRM and other routing engines
         AddForestLeafType(o), // used by OSM Carto
         AddBikeParkingType(o), // used by OsmAnd
         AddWheelchairAccessToilets(o), // used by wheelmap, OsmAnd, MAPS.ME
