@@ -1,4 +1,9 @@
 v22.0-beta1: |
+
+  <h3>Enhancements</h3>
+  <ul>
+    <li>When you split a way, all previous quests reappear on the split segments immediately after upload (#1950, #1951)</li>
+  </ul>
   <h3>New and enhanced Quests</h3>
   <ul>
   <li>Board Type: <i>What is the topic of this information board?</i> (#1226, #1920), by @matkoniecz</li>
