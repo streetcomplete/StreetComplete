@@ -1,6 +1,7 @@
 global:
     api_key: false # intended to be overwritten by StreetComplete
     language: false # intended to be overwritten by StreetComplete
+    language_script: Latn # intended to be overwritten by StreetComplete
     text_font_family: 'Roboto'
     text_stroke_color: 'white'
     text_water_color: '#fff'
@@ -53,8 +54,60 @@ global:
 
     name_source: |
         function() {
-            // Use preferred language label if available
-            return (global.language && feature['name:'+global.language]) || feature.name;
+            var userLang = global.language;
+            if (userLang) {
+                // Preference #1: Take name in own language (f.e. name:en used in Egypt a lot)
+                var nameInUserLang = feature['name:'+userLang];
+                if (nameInUserLang) return nameInUserLang;
+                
+                // find language of name of element
+                var elementLang;
+                var name = feature["name"];
+                var localizedNameRegex = /^name:([a-z]{2,3})$/;
+                for (key of Object.keys(feature)) {
+                    if (key == "name") continue;
+                    if (name == feature[key]) {
+                        var match = key.match(localizedNameRegex);
+                        if (match && match.length == 2) {
+                            elementLang = match[1];
+                            break;
+                        }
+                    }
+                }
+                
+                if (elementLang && elementLang != userLang) {
+                    var userScript = global.language_script;
+                    
+                    // Preference #2: Take international name (f.e. used in Greece a lot)
+                    var internationalName = feature["int_name"];
+                    if (internationalName) return internationalName;
+                    
+                    // Preference #3: Take name that is readable in user's script, usually romanized name. Used in Japan a lot
+                    var nameInUserScript = feature["name:" + elementLang + "-" + userScript];
+                    if (nameInUserScript) return nameInUserScript;
+                    // NOTE: more correct would be to check elementScript != userScript but the elementScript is hard to find out in pure JavaScript
+                    
+                    // Preference #4: Take name in English (cause it's kind of the "international") language
+                    if (userLang != "en") {
+                        var nameInEnglish = feature["name:en"]
+                        if (nameInEnglish) return nameInEnglish;
+                    }
+                    
+                    // Preference #5: Take name that is readable in Latin (cause it's kind of "international") script
+                    if (userScript != "Latn") {
+                        var nameInLatinScript = feature["name:" + elementLang + "-Latn"];
+                        if (nameInLatinScript) return nameInLatinScript;
+                    }
+                    
+                    // Preference #6: Take name of any other language whose script is the same as the user's script (f.e. French signs in Laos)
+                    // ... not implementable without a mapping of language code to script
+                    
+                    // Preference #7: Take name of any other language whose script is in Latin (cause it's kind of "international") script (f.e. French signs in Laos)
+                    // ... not implementable without a mapping of language code to script
+                }
+            }
+                    
+            return feature["name"];
         }
 
     suggested_min_zoom: |

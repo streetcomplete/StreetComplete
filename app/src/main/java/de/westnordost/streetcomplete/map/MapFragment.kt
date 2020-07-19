@@ -212,11 +212,15 @@ open class MapFragment : Fragment(),
     }
 
     protected open suspend fun getSceneUpdates(): List<SceneUpdate> {
-        return listOf(
-                SceneUpdate("global.language", Locale.getDefault().language),
-                SceneUpdate("global.text_size_scaling", "${resources.configuration.fontScale}"),
-                SceneUpdate("global.api_key", vectorTileProvider.apiKey)
+        val updates = mutableListOf(
+            SceneUpdate("global.language", Locale.getDefault().language),
+            SceneUpdate("global.text_size_scaling", "${resources.configuration.fontScale}"),
+            SceneUpdate("global.api_key", vectorTileProvider.apiKey)
         )
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            updates.add(SceneUpdate("global.language_script", Locale.getDefault().script))
+        }
+        return updates
     }
 
     protected open fun getSceneFilePath(): String {
