@@ -73,7 +73,7 @@ class AddCollectionTimesForm : AbstractQuestFormAnswerFragment<CollectionTimesAn
     }
 
     private fun confirmNoTimes() {
-        AlertDialog.Builder(context!!)
+        AlertDialog.Builder(requireContext())
             .setTitle(R.string.quest_generic_confirmation_title)
             .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> applyAnswer(NoCollectionTimesSign) }
             .setNegativeButton(R.string.quest_generic_confirmation_no, null)

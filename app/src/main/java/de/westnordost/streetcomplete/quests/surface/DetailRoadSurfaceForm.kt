@@ -60,7 +60,7 @@ class DetailRoadSurfaceForm  : AImageListQuestAnswerFragment<String, DetailSurfa
     }
 
     private fun confirmSwitchToNoDetailedTagPossible() {
-        AlertDialog.Builder(activity!!)
+        AlertDialog.Builder(requireContext())
                 .setMessage(R.string.quest_surface_detailed_answer_impossible_confirmation)
                 .setPositiveButton(R.string.quest_generic_confirmation_yes) {
                     _, _ -> switchToExplanationLayout()

@@ -20,7 +20,7 @@ class AddBoardTypeForm : AbstractQuestFormAnswerFragment<String>() {
     )
 
     private fun confirmOnMap() {
-        AlertDialog.Builder(activity!!)
+        AlertDialog.Builder(requireContext())
                 .setTitle(R.string.quest_board_type_map_title)
                 .setMessage(R.string.quest_board_type_map_description)
                 .setPositiveButton(R.string.quest_generic_hasFeature_yes) { _, _ -> applyAnswer("map") }

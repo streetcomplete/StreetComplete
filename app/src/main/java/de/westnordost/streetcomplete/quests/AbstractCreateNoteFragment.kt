@@ -54,7 +54,7 @@ abstract class AbstractCreateNoteFragment : AbstractBottomSheetFragment() {
 
         noteInput.addTextChangedListener(TextChangedWatcher { updateDoneButtonEnablement() })
 
-        cancelButton.setOnClickListener { activity!!.onBackPressed() }
+        cancelButton.setOnClickListener { activity?.onBackPressed() }
         doneButton.setOnClickListener { onClickOk() }
 
         updateDoneButtonEnablement()

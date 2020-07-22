@@ -79,7 +79,7 @@ class AddOpeningHoursForm : AbstractQuestFormAnswerFragment<OpeningHoursAnswer>(
         if (!openingHoursAdapter.isDisplayMonths) {
             openingHoursAdapter.addNewWeekdays()
         } else {
-            val popup = PopupMenu(activity!!, v)
+            val popup = PopupMenu(requireContext(), v)
             popup.menu.add(NONE, 0, NONE, R.string.quest_openingHours_add_weekdays)
             popup.menu.add(NONE, 1, NONE, R.string.quest_openingHours_add_months)
             popup.setOnMenuItemClickListener { item ->
@@ -108,13 +108,13 @@ class AddOpeningHoursForm : AbstractQuestFormAnswerFragment<OpeningHoursAnswer>(
         val view = LayoutInflater.from(activity).inflate(R.layout.quest_opening_hours_comment, null)
         val commentInput = view.findViewById<EditText>(R.id.commentInput)
 
-        AlertDialog.Builder(context!!)
+        AlertDialog.Builder(requireContext())
             .setTitle(R.string.quest_openingHours_comment_title)
             .setView(view)
             .setPositiveButton(android.R.string.ok) { _, _ ->
                 val txt = commentInput.text.toString().replace("\"","").trim()
                 if (txt.isEmpty()) {
-                    AlertDialog.Builder(context!!)
+                    AlertDialog.Builder(requireContext())
                         .setMessage(R.string.quest_openingHours_emptyAnswer)
                         .setPositiveButton(android.R.string.ok, null)
                         .show()
@@ -127,7 +127,7 @@ class AddOpeningHoursForm : AbstractQuestFormAnswerFragment<OpeningHoursAnswer>(
     }
 
     private fun showConfirm24_7Dialog() {
-        AlertDialog.Builder(activity!!)
+        AlertDialog.Builder(requireContext())
             .setMessage(R.string.quest_openingHours_24_7_confirmation)
             .setPositiveButton(android.R.string.yes) { _, _ -> applyAnswer(AlwaysOpen) }
             .setNegativeButton(android.R.string.no, null)
@@ -135,7 +135,7 @@ class AddOpeningHoursForm : AbstractQuestFormAnswerFragment<OpeningHoursAnswer>(
     }
 
     private fun confirmNoSign() {
-        AlertDialog.Builder(activity!!)
+        AlertDialog.Builder(requireContext())
             .setTitle(R.string.quest_generic_confirmation_title)
             .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> applyAnswer(NoOpeningHoursSign) }
             .setNegativeButton(R.string.quest_generic_confirmation_no, null)

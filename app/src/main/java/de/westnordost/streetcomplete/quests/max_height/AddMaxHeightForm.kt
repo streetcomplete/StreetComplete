@@ -61,7 +61,7 @@ class AddMaxHeightForm : AbstractQuestFormAnswerFragment<MaxHeightAnswer>() {
 
         heightUnitSelect = contentView.findViewById(R.id.heightUnitSelect)
         heightUnitSelect?.visibility = if (heightUnits.size == 1) View.GONE else View.VISIBLE
-        heightUnitSelect?.adapter = ArrayAdapter(context!!, R.layout.spinner_item_centered, heightUnits)
+        heightUnitSelect?.adapter = ArrayAdapter(requireContext(), R.layout.spinner_item_centered, heightUnits)
         heightUnitSelect?.setSelection(0)
         heightUnitSelect?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parentView: AdapterView<*>, selectedItemView: View?, position: Int, id: Long) {

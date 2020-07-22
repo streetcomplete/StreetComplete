@@ -106,7 +106,7 @@ class AttachPhotoFragment : Fragment() {
                     val photoFile = createImageFile()
                     val photoUri = if (Build.VERSION.SDK_INT > 21) {
                         //Use FileProvider for getting the content:// URI, see: https://developer.android.com/training/camera/photobasics.html#TaskPath
-                        FileProvider.getUriForFile(activity!!,getString(R.string.fileprovider_authority),photoFile)
+                        FileProvider.getUriForFile(requireContext(),getString(R.string.fileprovider_authority),photoFile)
                     } else {
                         Uri.fromFile(photoFile)
                     }
@@ -158,7 +158,7 @@ class AttachPhotoFragment : Fragment() {
     }
 
     private fun createImageFile(): File {
-        val directory = activity!!.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+        val directory = requireContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES)
         return File.createTempFile("photo", ".jpg", directory)
     }
 

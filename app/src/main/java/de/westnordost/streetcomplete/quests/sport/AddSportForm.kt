@@ -66,7 +66,7 @@ class AddSportForm : AImageListQuestAnswerFragment<String, List<String>>() {
 
     override fun onClickOk(selectedItems: List<String>) {
         if (selectedItems.size > 3) {
-            AlertDialog.Builder(activity!!)
+            AlertDialog.Builder(requireContext())
                 .setTitle(R.string.quest_sport_manySports_confirmation_title)
                 .setMessage(R.string.quest_sport_manySports_confirmation_description)
                 .setPositiveButton(R.string.quest_manySports_confirmation_specific) { _, _ -> applyAnswer(selectedItems) }

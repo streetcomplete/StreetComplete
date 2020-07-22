@@ -115,7 +115,7 @@ class AddAddressStreetForm : AbstractQuestFormAnswerFragment<AddressStreetAnswer
             )
         )
 
-        AlertDialog.Builder(activity!!)
+        AlertDialog.Builder(requireContext())
             .setTitle(title)
             .setMessage(R.string.quest_streetName_nameWithAbbreviations_confirmation_description)
             .setPositiveButton(R.string.quest_streetName_nameWithAbbreviations_confirmation_positive) { _, _ -> onConfirmed() }

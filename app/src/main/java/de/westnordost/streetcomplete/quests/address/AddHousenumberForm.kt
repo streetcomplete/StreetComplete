@@ -75,11 +75,11 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
         val buildingValue = osmElement!!.tags["building"]!!
         val buildingType = BuildingType.getByTag("building", buildingValue)
         if (buildingType != null) {
-            val inflater = LayoutInflater.from(activity)
+            val inflater = LayoutInflater.from(requireContext())
             val inner = inflater.inflate(R.layout.dialog_quest_address_no_housenumber, null, false)
             ItemViewHolder(inner.findViewById(R.id.item_view)).bind(buildingType.item)
 
-            AlertDialog.Builder(activity!!)
+            AlertDialog.Builder(requireContext())
                 .setView(inner)
                 .setPositiveButton(R.string.quest_generic_hasFeature_yes) { _, _ -> applyAnswer(NoHouseNumber) }
                 .setNegativeButton(R.string.quest_generic_hasFeature_no_leave_note) { _, _ -> composeNote() }
@@ -131,7 +131,7 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
         if (toggleKeyboardButton != null) {
             toggleKeyboardButton.text = "abc"
             toggleKeyboardButton.setOnClickListener {
-                val focus = activity!!.currentFocus
+                val focus = requireActivity().currentFocus
                 if (focus != null && focus is EditText) {
                     val start = focus.selectionStart
                     val end = focus.selectionEnd
@@ -155,7 +155,7 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
 
     private fun confirmHousenumber(isUnusual: Boolean, onConfirmed: () -> Unit) {
         if (isUnusual) {
-            AlertDialog.Builder(activity!!)
+            AlertDialog.Builder(requireContext())
                 .setTitle(R.string.quest_generic_confirmation_title)
                 .setMessage(R.string.quest_address_unusualHousenumber_confirmation_description)
                 .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> onConfirmed() }
