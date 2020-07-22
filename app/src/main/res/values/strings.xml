@@ -871,7 +871,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_surface_detailed_title">"What specific surface does this piece of road have?"</string>
     <string name="quest_surface_detailed_square_title">"What specific surface does this square have here?"</string>
     <string name="at_housename">house name %s:</string>
-    <string name="at_conscription_and_street_number">conscription number %1$s, street number %2$s:</string>
+    <string name="at_conscription_and_street_number">conscription number %1$s, orientation number %2$s:</string>
     <string name="at_conscription_number">conscription number %s:</string>
     <string name="at_housenumber">house number %s:</string>
 
