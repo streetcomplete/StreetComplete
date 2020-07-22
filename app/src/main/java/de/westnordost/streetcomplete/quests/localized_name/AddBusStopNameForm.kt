@@ -18,7 +18,7 @@ class AddBusStopNameForm : AAddLocalizedNameForm<BusStopNameAnswer>() {
     }
 
     private fun confirmNoName() {
-        AlertDialog.Builder(activity!!)
+        AlertDialog.Builder(requireContext())
             .setTitle(R.string.quest_name_answer_noName_confirmation_title)
             .setPositiveButton(R.string.quest_name_noName_confirmation_positive) { _, _ -> applyAnswer(NoBusStopName) }
             .setNegativeButton(R.string.quest_generic_confirmation_no, null)

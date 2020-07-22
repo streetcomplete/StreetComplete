@@ -68,9 +68,9 @@ abstract class AAddLocalizedNameForm<T> : AbstractQuestFormAnswerFragment<T>() {
     }
 
     protected open fun createLocalizedNameAdapter(data: List<LocalizedName>, addLanguageButton: View) =
-        AddLocalizedNameAdapter(data, activity!!, getPossibleStreetsignLanguages(), null, null, addLanguageButton)
+        AddLocalizedNameAdapter(data, requireContext(), getPossibleStreetsignLanguageTags(), null, null, addLanguageButton)
 
-    protected fun getPossibleStreetsignLanguages(): List<String> {
+    protected fun getPossibleStreetsignLanguageTags(): List<String> {
         val result = mutableListOf<String>()
         result.addAll(countryInfo.officialLanguages)
         result.addAll(countryInfo.additionalStreetsignLanguages)
@@ -91,11 +91,11 @@ abstract class AAddLocalizedNameForm<T> : AbstractQuestFormAnswerFragment<T>() {
         val data = adapter.localizedNames.toMutableList()
         // language is only specified explicitly in OSM (usually) if there is more than one name specified
         if(data.size == 1) {
-            data[0].languageCode = ""
+            data[0].languageTag = ""
         }
         // but if there is more than one language, ensure that a "main" name is also specified
         else {
-            val mainLanguageIsSpecified = data.indexOfFirst { it.languageCode == "" } >= 0
+            val mainLanguageIsSpecified = data.indexOfFirst { it.languageTag == "" } >= 0
             // use the name specified in the top row for that
             if(!mainLanguageIsSpecified) {
                 data.add(LocalizedName("", data[0].name))
@@ -125,7 +125,7 @@ abstract class AAddLocalizedNameForm<T> : AbstractQuestFormAnswerFragment<T>() {
             )
         )
 
-        AlertDialog.Builder(activity!!)
+        AlertDialog.Builder(requireContext())
             .setTitle(title)
             .setMessage(R.string.quest_streetName_nameWithAbbreviations_confirmation_description)
             .setPositiveButton(R.string.quest_streetName_nameWithAbbreviations_confirmation_positive) { _, _ -> onConfirmed() }
@@ -134,7 +134,7 @@ abstract class AAddLocalizedNameForm<T> : AbstractQuestFormAnswerFragment<T>() {
     }
 
     protected fun showKeyboardInfo() {
-        AlertDialog.Builder(activity!!)
+        AlertDialog.Builder(requireContext())
             .setTitle(R.string.quest_streetName_cantType_title)
             .setMessage(R.string.quest_streetName_cantType_description)
             .setPositiveButton(R.string.quest_streetName_cantType_open_settings) { _, _ ->

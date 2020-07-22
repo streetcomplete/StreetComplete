@@ -35,12 +35,13 @@ class AddBusStopName(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType
                 changes.add("noname", "yes")
             }
             is BusStopName -> {
-                for ((languageCode, name) in answer.localizedNames) {
-                    if (languageCode.isEmpty()) {
-                        changes.addOrModify("name", name)
-                    } else {
-                        changes.addOrModify("name:$languageCode", name)
+                for ((languageTag, name) in answer.localizedNames) {
+                    val key = when (languageTag) {
+                        "" -> "name"
+                        "international" -> "int_name"
+                        else -> "name:$languageTag"
                     }
+                    changes.addOrModify(key, name)
                 }
             }
         }

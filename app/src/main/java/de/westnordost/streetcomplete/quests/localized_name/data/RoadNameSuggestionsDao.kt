@@ -45,7 +45,7 @@ class RoadNameSuggestionsDao @Inject constructor(
         db.replaceOrThrow(NAME, null, v)
     }
 
-    /** returns something like [{"": "17th Street", "de": "17. Straße", "en": "17th Street" }, ...] */
+    /** returns something like [{"": "17th Street", "de": "17. Straße", "en": "17th Street", "international": "17 🛣 ️" }, ...] */
     fun getNames(points: List<LatLon>, maxDistance: Double): List<MutableMap<String, String>> {
         if (points.isEmpty()) return emptyList()
 
@@ -103,15 +103,18 @@ fun RoadNameSuggestionsDao.putRoadNameSuggestion(element: Element, geometry: Ele
     putRoad(element.id, namesByLanguage, geometry.polylines.first())
 }
 
-/** OSM tags (i.e. name:de=Bäckergang) to map of language code -> name (i.e. de=Bäckergang) */
+/** OSM tags (i.e. name:de=Bäckergang) to map of language code -> name (i.e. de=Bäckergang)
+ *  int_name becomes "international" */
 private fun Map<String,String>.toRoadNameByLanguage(): Map<String, String>? {
     val result = mutableMapOf<String,String>()
     val namePattern = Pattern.compile("name(:(.*))?")
     for ((key, value) in this) {
         val m = namePattern.matcher(key)
         if (m.matches()) {
-            val languageCode = m.group(2) ?: ""
-            result[languageCode] = value
+            val languageTag = m.group(2) ?: ""
+            result[languageTag] = value
+        } else if(key == "int_name") {
+            result["international"] = value
         }
     }
     return if (result.isEmpty()) null else result

@@ -26,7 +26,7 @@ for filename in sorted(os.listdir(sourceDir)):
 					targetFile = open(targetFileName, "w", encoding='utf8')
 					targetFile.write("# "+comment+"\n")
 				
-				dump = yaml.safe_dump(value)
+				dump = yaml.safe_dump(value, default_flow_style=True)
 				if dump.endswith("\n...\n"):
 					dump = dump[:-4]
 				targetFile.write(basename + ": " + dump)

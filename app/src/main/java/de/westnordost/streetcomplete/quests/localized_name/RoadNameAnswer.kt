@@ -1,12 +1,12 @@
 package de.westnordost.streetcomplete.quests.localized_name
 
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
+import de.westnordost.osmapi.map.data.LatLon
 
 sealed class RoadNameAnswer
 
 data class RoadName(
     val localizedNames: List<LocalizedName>,
-    val wayId: Long, val wayGeometry: ElementPolylinesGeometry)
+    val wayId: Long, val wayGeometry: List<LatLon>)
     : RoadNameAnswer()
 
 object NoRoadName : RoadNameAnswer()

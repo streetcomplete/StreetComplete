@@ -12,6 +12,8 @@ import javax.inject.Inject
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.AbbreviationsByLocale
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPointGeometry
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.quests.localized_name.data.RoadNameSuggestionsDao
@@ -34,13 +36,17 @@ class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
 
     override fun createLocalizedNameAdapter(data: List<LocalizedName>, addLanguageButton: View): AddLocalizedNameAdapter {
         return AddLocalizedNameAdapter(
-            data, activity!!, getPossibleStreetsignLanguages(),
+            data, requireContext(), getPossibleStreetsignLanguageTags(),
             abbreviationsByLocale, getRoadNameSuggestions(), addLanguageButton
         )
     }
 
     private fun getRoadNameSuggestions(): List<MutableMap<String, String>> {
-        val polyline = (elementGeometry as ElementPolylinesGeometry).polylines.first()
+        val polyline = when(val geom = elementGeometry) {
+            is ElementPolylinesGeometry -> geom.polylines.first()
+            is ElementPolygonsGeometry -> geom.polygons.first()
+            is ElementPointGeometry -> listOf(geom.center)
+        }
         return roadNameSuggestionsDao.getNames(
             listOf(polyline.first(), polyline.last()),
             AddRoadName.MAX_DIST_FOR_ROAD_NAME_SUGGESTION
@@ -49,18 +55,24 @@ class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
 
     override fun onClickOk(names: List<LocalizedName>) {
         val possibleAbbreviations = LinkedList<String>()
-        for ((languageCode, name) in adapter.localizedNames) {
-            val locale = if(languageCode.isEmpty()) countryInfo.locale else Locale(languageCode)
+        for ((languageTag, name) in adapter.localizedNames) {
+            // if Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP was, could use Locale.forLanguageTag
+            val locale = if (languageTag.isEmpty()) countryInfo.locale else Locale(languageTag)
             val abbr = abbreviationsByLocale.get(locale)
-            val containsAbbreviations = abbr?.containsAbbreviations(name) == true
+            val containsLocalizedAbbreviations = abbr?.containsAbbreviations(name) == true
 
-            if (name.contains(".") || containsAbbreviations) {
+            if (name.contains(".") || containsLocalizedAbbreviations) {
                 possibleAbbreviations.add(name)
             }
         }
 
         confirmPossibleAbbreviationsIfAny(possibleAbbreviations) {
-            applyAnswer(RoadName(names, osmElement!!.id, elementGeometry as ElementPolylinesGeometry))
+            val points = when(val g = elementGeometry) {
+                is ElementPolylinesGeometry -> g.polylines.first()
+                is ElementPolygonsGeometry -> g.polygons.first()
+                is ElementPointGeometry -> listOf(g.center)
+            }
+            applyAnswer(RoadName(names, osmElement!!.id, points))
         }
     }
 
@@ -112,7 +124,7 @@ class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
             }
         }
 
-        val dlg = AlertDialog.Builder(activity!!)
+        val dlg = AlertDialog.Builder(requireContext())
             .setSingleChoiceItems(answers.toTypedArray(), -1, onSelect)
             .setTitle(R.string.quest_streetName_answer_noName_question)
             .setPositiveButton(android.R.string.ok, onSelect)
@@ -123,7 +135,7 @@ class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
     }
 
     private fun confirmNoStreetName() {
-        AlertDialog.Builder(activity!!)
+        AlertDialog.Builder(requireContext())
             .setTitle(R.string.quest_name_answer_noName_confirmation_title)
             .setMessage(R.string.quest_streetName_answer_noName_confirmation_description)
             .setPositiveButton(R.string.quest_name_noName_confirmation_positive) { _, _ -> applyAnswer(NoRoadName) }

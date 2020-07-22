@@ -1,5 +1,6 @@
 # Do not edit. Source files are in /res/country_metadata
 lengthUnits: [foot and inch, meter]
 officialLanguages: [en, sm]
-orchardProduces: [coconut, banana, pineapple, tomato, cacao]
+orchardProduces: [coconut, banana, coconut, pineapple, guava, mango, mangosteen, papaya, avocado, banana,
+  pineapple, cacao, tomato, coffee, pepper, cacao]
 speedUnits: [miles per hour, kilometers per hour]
