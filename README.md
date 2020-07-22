@@ -52,6 +52,9 @@ This software is released under the terms of the [GNU General Public License](ht
 <a href="https://nlnet.nl/discovery/"><img src=".github/images/logo_nlnet.svg" height="60"/> <img src=".github/images/logo_ngi0.svg" height="60"/></a><br/>
 The <a href="https://nlnet.nl/discovery/">NGI Zero Discovery</a> is a grant program organized by the NLnet foundation. The grant enabled <a href="https://www.openstreetmap.org/user/Mateusz%20Konieczny/diary/368849">Mateusz Konieczny to work on StreetComplete</a> for about three months in 2019.
 
+<a href="https://osmfoundation.org/"><img src=".github/images/logo_osmf.png" height="60"/></a><br/>
+The <a href="https://osmfoundation.org/">OpenStreetMap foundation</a> is funding the development of doing <a href="https://wiki.openstreetmap.org/wiki/Microgrants/Microgrants_2020/Proposal/Map_Maintenance_with_StreetComplete">map maintenance with StreetComplete</a> in their <a href="https://blog.openstreetmap.org/2020/07/01/osmf-microgrants-program-congratulations-to-selected-projects/">first round</a> of the <a href="https://wiki.osmfoundation.org/wiki/Microgrants">microgrant program</a> in 2020.
+
 <a href="https://www.jawg.io"><img src=".github/images/logo_jawgmaps.png" width="320"/></a><br>
 <a href="https://www.jawg.io">JawgMaps</a> is a provider of online custom maps, geocoding and routing based on OpenStreetMap data. They are providing their vector map tiles service to StreetComplete for free.</td>
 
