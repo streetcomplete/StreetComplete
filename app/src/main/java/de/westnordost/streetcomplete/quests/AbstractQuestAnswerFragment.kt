@@ -145,12 +145,12 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
 
         titleLabel.text = resources.getHtmlQuestTitle(questType, osmElement, featureDictionaryFuture)
 
-        val levelLabelText = getLevelLabelText()
+        val levelLabelText = getLocationLabelText()
         if (levelLabelText != null) {
-            levelLabel.visibility = View.VISIBLE
-            levelLabel.text = levelLabelText
+            locationLabel.visibility = View.VISIBLE
+            locationLabel.text = levelLabelText
         } else {
-            levelLabel.visibility = View.GONE
+            locationLabel.visibility = View.GONE
         }
 
         // no content? -> hide the content container
@@ -206,6 +206,12 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
         return answers
     }
 
+    private fun getLocationLabelText(): String? {
+        // prefer to show the level if both are present because it is a more precise indication
+        // where it is supposed to be
+        return getLevelLabelText() ?: getHouseNumberLabelText()
+    }
+
     private fun getLevelLabelText(): String? {
         val tags = osmElement?.tags ?: return null
         /* prefer addr:floor etc. over level as level is rather an index than how the floor is
@@ -218,6 +224,30 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
         val tunnel = tags["tunnel"]
         if(tunnel != null && tunnel == "yes" || tags["location"] == "underground") {
             return resources.getString(R.string.underground)
+        }
+        return null
+    }
+
+    private fun getHouseNumberLabelText(): String? {
+        val tags = osmElement?.tags ?: return null
+
+        val houseName = tags["addr:housename"]
+        val conscriptionNumber = tags["addr:conscriptionnumber"]
+        val streetNumber = tags["addr:streetnumber"]
+        val houseNumber = tags["addr:housenumber"]
+
+        if (houseName != null) {
+            return resources.getString(R.string.at_housename, houseName)
+        }
+        if (conscriptionNumber != null) {
+            if (streetNumber != null) {
+                return resources.getString(R.string.at_conscription_and_street_number, conscriptionNumber, streetNumber)
+            } else {
+                return resources.getString(R.string.at_conscription_number, conscriptionNumber)
+            }
+        }
+        if (houseNumber != null) {
+            return resources.getString(R.string.at_housenumber, houseNumber)
         }
         return null
     }

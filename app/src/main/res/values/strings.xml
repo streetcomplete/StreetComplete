@@ -121,10 +121,8 @@
     <string name="quest_openingHours_comment_title">"Describe opening hours"</string>
     <string name="quest_openingHours_comment_description">"Be concise, ideally use the wording from the sign, e.g. “by appointment”. The absence of a sign does not necessarily mean that there are no regular opening hours."</string>
     <string name="quest_buildingLevels_title">"How many levels does this building have?"</string>
-    <string name="quest_buildingLevels_address_title">"How many levels does the building with the number %s have?"</string>
     <string name="quest_buildingLevels_title_buildingPart">"How many levels does this building part have?"</string>
     <string name="quest_roofShape_title">"What basic shape does this building’s roof have?"</string>
-    <string name="quest_roofShape_address_title">"What basic shape does the roof of the building with the number %s have?"</string>
     <string name="quest_roofShape_select_one">"Select one:"</string>
     <string name="quest_roofShape_show_more">"Show more…"</string>
     <string name="quest_roofShape_answer_many">"It has several different shapes"</string>
@@ -541,7 +539,6 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="pref_quests_reset">Reset both quest enablement and order to the default?</string>
 
     <string name="quest_buildingType_title">"What kind of building is this?"</string>
-    <string name="quest_buildingType_address_title">"What kind of building is number %s?"</string>
     <string name="quest_buildingType_title2">"What was this building constructed as?"</string>
     <string name="quest_generic_item_invalid_value">Please select a more specific value.</string>
     <string name="quest_buildingType_answer_multiple_types">It has multiple purposes</string>
@@ -873,5 +870,9 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_surface_detailed_square_name_title">"What specific surface does the square %s have here?"</string>
     <string name="quest_surface_detailed_title">"What specific surface does this piece of road have?"</string>
     <string name="quest_surface_detailed_square_title">"What specific surface does this square have here?"</string>
+    <string name="at_housename">house name %s:</string>
+    <string name="at_conscription_and_street_number">conscription number %1$s, street number %2$s:</string>
+    <string name="at_conscription_number">conscription number %s:</string>
+    <string name="at_housenumber">house number %s:</string>
 
 </resources>
