@@ -9,7 +9,11 @@ v22.0-beta1: |
   <ul>
   <li>Board Type: <i>What is the topic of this information board?</i> (#1226, #1920), by @matkoniecz</li>
   <li>Detailed Road Surface: <i>What specific surface does the road ... have here?</i> (#279, #1915), by @matkoniecz</li>
+  <li>Street Names: Allow to specify the romanized/international name of a street name in another script, such as Greek (#1765)</li>
   <li>Sidewalks: Add answer that the sidewalk is already displayed separately on the map (#1958, #1925), by @matkoniecz</li>
+  <li>Handrails: Do not ask for private stairways (#1976)</li>
+  <li>Oneways: Better fitting description text (#1975)</li>
+  <li>Building Type: Correctly refer to "row house<b>s</b>" and not "row house" (#1973)</li>
   </ul>
 
 v21.2: |
