@@ -8,7 +8,7 @@ enum class BuildingType(val item:Item<String>) {
     APARTMENTS    (Item("apartments", R.drawable.ic_building_apartments, R.string.quest_buildingType_apartments, R.string.quest_buildingType_apartments_description)),
     DETACHED      (Item("detached",   R.drawable.ic_building_detached,   R.string.quest_buildingType_detached, R.string.quest_buildingType_detached_description)),
     SEMI_DETACHED (Item("semidetached_house", R.drawable.ic_building_semi_detached, R.string.quest_buildingType_semi_detached, R.string.quest_buildingType_semi_detached_description)),
-    TERRACE       (Item("terrace",    R.drawable.ic_building_terrace,    R.string.quest_buildingType_terrace, R.string.quest_buildingType_terrace_description)),
+    TERRACE       (Item("terrace",    R.drawable.ic_building_terrace,    R.string.quest_buildingType_terrace2, R.string.quest_buildingType_terrace_description)),
     HOTEL         (Item("hotel",      R.drawable.ic_building_hotel,      R.string.quest_buildingType_hotel)),
     DORMITORY     (Item("dormitory",  R.drawable.ic_building_dormitory,  R.string.quest_buildingType_dormitory)),
     HOUSEBOAT     (Item("houseboat",  R.drawable.ic_building_houseboat,  R.string.quest_buildingType_houseboat)),
