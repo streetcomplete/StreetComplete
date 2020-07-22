@@ -11,7 +11,7 @@
         android:id="@+id/descriptionLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/quest_street_side_puzzle_tutorial"
+        android:text="@string/quest_oneway_tutorial"
         android:labelFor="@+id/nameInput"
         android:paddingStart="@dimen/quest_form_horizontal_padding"
         android:paddingEnd="@dimen/quest_form_horizontal_padding"

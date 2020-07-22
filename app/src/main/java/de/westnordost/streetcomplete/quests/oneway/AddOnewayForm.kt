@@ -13,10 +13,11 @@ import de.westnordost.streetcomplete.quests.AYesNoQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.StreetSideRotater
 import de.westnordost.streetcomplete.quests.oneway.data.WayTrafficFlowDao
 import kotlinx.android.synthetic.main.quest_street_side_puzzle.*
+import kotlinx.android.synthetic.main.view_little_compass.*
 
 class AddOnewayForm : AYesNoQuestAnswerFragment<OnewayAnswer>() {
 
-    override val contentLayoutResId = R.layout.quest_street_side_puzzle
+    override val contentLayoutResId = R.layout.quest_oneway
     override val contentPadding = false
 
     private var streetSideRotater: StreetSideRotater? = null
