@@ -32,6 +32,7 @@ class AddHandrail(overpassApi: OverpassMapDataAndGeometryApi) : SimpleOverpassQu
         ways with highway = steps
          and (!conveying or conveying = no)
          and !handrail and !handrail:left and !handrail:center and !handrail:right
+         and access !~ private|no
     """
     override val commitMessage = "Add whether steps have a handrail"
     override val wikiLink = "Key:handrail"
