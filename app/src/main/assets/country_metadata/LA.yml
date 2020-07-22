@@ -1,4 +1,5 @@
 # Do not edit. Source files are in /res/country_metadata
+additionalStreetsignLanguages: [en, fr]
 mobileCountryCode: 457
 officialLanguages: [lo]
 orchardProduces: [banana, coffee, pineapple, orange, chilli_pepper, sweet_pepper, tea, grapefruit,

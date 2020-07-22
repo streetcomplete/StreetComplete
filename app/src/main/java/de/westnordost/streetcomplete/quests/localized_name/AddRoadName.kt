@@ -88,18 +88,18 @@ class AddRoadName(
     }
 
     private fun applyAnswerRoadName(answer: RoadName, changes: StringMapChangesBuilder) {
-        for ((languageCode, name) in answer.localizedNames) {
-            if (languageCode.isEmpty()) {
-                changes.addOrModify("name", name)
-            } else {
-                changes.addOrModify("name:$languageCode", name)
+        for ((languageTag, name) in answer.localizedNames) {
+            val key = when (languageTag) {
+                "" -> "name"
+                "international" -> "int_name"
+                else -> "name:$languageTag"
             }
+            changes.addOrModify(key, name)
         }
         // these params are passed from the form only to update the road name suggestions so that
         // newly input street names turn up in the suggestions as well
-        val points = answer.wayGeometry.polylines.first()
-        val roadNameByLanguage = answer.localizedNames.associate { it.languageCode to it.name }
-        roadNameSuggestionsDao.putRoad( answer.wayId, roadNameByLanguage, points)
+        val roadNameByLanguage = answer.localizedNames.associate { it.languageTag to it.name }
+        roadNameSuggestionsDao.putRoad( answer.wayId, roadNameByLanguage, answer.wayGeometry)
     }
 
     companion object {
@@ -122,4 +122,4 @@ class AddRoadName(
 }
 
 private fun LocalizedName.isRef() =
-    languageCode.isEmpty() && name.matches("[A-Z]{0,3}[ -]?[0-9]{0,5}".toRegex())
+    languageTag.isEmpty() && name.matches("[A-Z]{0,3}[ -]?[0-9]{0,5}".toRegex())
