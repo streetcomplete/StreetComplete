@@ -6,6 +6,8 @@ import android.content.Context
 import android.content.res.Configuration
 import android.content.res.Resources
 import android.os.Bundle
+import android.text.Html
+import android.text.Spanned
 import androidx.appcompat.app.AlertDialog
 import android.view.LayoutInflater
 import android.view.Menu
@@ -206,13 +208,13 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
         return answers
     }
 
-    private fun getLocationLabelText(): String? {
+    private fun getLocationLabelText(): CharSequence? {
         // prefer to show the level if both are present because it is a more precise indication
         // where it is supposed to be
         return getLevelLabelText() ?: getHouseNumberLabelText()
     }
 
-    private fun getLevelLabelText(): String? {
+    private fun getLevelLabelText(): CharSequence? {
         val tags = osmElement?.tags ?: return null
         /* prefer addr:floor etc. over level as level is rather an index than how the floor is
            denominated in the building and thus may (sometimes) not coincide with it. E.g.
@@ -228,7 +230,7 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
         return null
     }
 
-    private fun getHouseNumberLabelText(): String? {
+    private fun getHouseNumberLabelText(): CharSequence? {
         val tags = osmElement?.tags ?: return null
 
         val houseName = tags["addr:housename"]
@@ -237,7 +239,7 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
         val houseNumber = tags["addr:housenumber"]
 
         if (houseName != null) {
-            return resources.getString(R.string.at_housename, houseName)
+            return Html.fromHtml(resources.getString(R.string.at_housename, "<i>" + Html.escapeHtml(houseName) + "</i>"))
         }
         if (conscriptionNumber != null) {
             if (streetNumber != null) {
