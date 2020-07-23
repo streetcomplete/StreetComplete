@@ -172,8 +172,8 @@ import groovy.json.JsonOutput
 
 def bcp47ExportLanguages = [
         "ast","ca","cs","da","de","el","en","en-AU","en-GB","es","eu","fa","fi","fr","gl","hu","id","it",
-        "ja","ko","lt","ml","nb","no","nl","nn","pl","pt","pt-BR","ru","sk","sl","sq","sv","tr",
-        "uk","vi","zh","zh-CN","zh-HK","zh-TW"
+        "ja","ko","lt","ml","nb","no","nl","nn","pl","pt","pt-BR","ru","sk","sv","tr",
+        "uk","zh","zh-CN","zh-HK","zh-TW"
 ].toSet()
 
 task downloadPresets {
