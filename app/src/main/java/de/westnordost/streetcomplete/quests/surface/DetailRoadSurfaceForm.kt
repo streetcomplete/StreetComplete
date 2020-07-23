@@ -27,7 +27,7 @@ class DetailRoadSurfaceForm  : AImageListQuestAnswerFragment<String, DetailSurfa
         applyAnswer(SurfaceAnswer(selectedItems.single()))
     }
 
-    private var isInExplanationMode = false;
+    private var isInExplanationMode = false
     private var explanationInput: EditText? = null
 
     override val otherAnswers = listOf(
@@ -55,7 +55,7 @@ class DetailRoadSurfaceForm  : AImageListQuestAnswerFragment<String, DetailSurfa
         if(isInExplanationMode) {
             applyAnswer(DetailingImpossibleAnswer(explanation))
         } else {
-            super.onClickOk();
+            super.onClickOk()
         }
     }
 

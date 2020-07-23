@@ -88,7 +88,7 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
 
         speedUnitSelect = rightSideContainer.findViewById(R.id.speedUnitSelect)
         speedUnitSelect?.visibility = if (speedUnits.size == 1) View.GONE else View.VISIBLE
-        speedUnitSelect?.adapter = ArrayAdapter(context!!, R.layout.spinner_item_centered, speedUnits)
+        speedUnitSelect?.adapter = ArrayAdapter(requireContext(), R.layout.spinner_item_centered, speedUnits)
         speedUnitSelect?.setSelection(0)
 
         checkIsFormComplete()

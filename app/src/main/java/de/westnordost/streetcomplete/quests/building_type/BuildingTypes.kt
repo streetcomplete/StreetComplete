@@ -87,7 +87,7 @@ enum class BuildingType(val item:Item<String>) {
             if (tag == "semi")        tag = "semidetached_house"
             else if (tag == "public") tag = "civic"
 
-            return BuildingType.values().find { it.item.value == tag }
+            return values().find { it.item.value == tag }
         }
     }
 }

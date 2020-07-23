@@ -7,7 +7,6 @@ import android.content.res.Configuration
 import android.content.res.Resources
 import android.os.Bundle
 import android.text.Html
-import android.text.Spanned
 import androidx.appcompat.app.AlertDialog
 import android.view.LayoutInflater
 import android.view.Menu

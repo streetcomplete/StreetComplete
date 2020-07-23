@@ -22,7 +22,7 @@ import de.westnordost.streetcomplete.notifications.OsmUnreadMessagesFragment
 import de.westnordost.streetcomplete.quests.AbstractQuestAnswerFragment
 import de.westnordost.streetcomplete.quests.QuestModule
 import de.westnordost.streetcomplete.quests.SplitWayFragment
-import de.westnordost.streetcomplete.quests.address.AddAddressStreetForm;
+import de.westnordost.streetcomplete.quests.address.AddAddressStreetForm
 import de.westnordost.streetcomplete.quests.building_levels.AddBuildingLevelsForm
 import de.westnordost.streetcomplete.quests.localized_name.AAddLocalizedNameForm
 import de.westnordost.streetcomplete.quests.localized_name.AddRoadNameForm

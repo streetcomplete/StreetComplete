@@ -25,19 +25,9 @@
 -keep class com.esotericsoftware.kryo.** { *; }
 
 # Lifecycle
--keep public class android.arch.lifecycle.** {
+-keep public class androidx.lifecycle.** {
     public protected *;
 }
 -keepclassmembers class ** {
-    @android.arch.lifecycle.OnLifecycleEvent public *;
+    @androidx.lifecycle.OnLifecycleEvent public *;
 }
-
-# evernote/android-job
--dontwarn com.evernote.android.job.gcm.**
--dontwarn com.evernote.android.job.GcmAvailableHelper
-
--keep public class com.evernote.android.job.v21.PlatformJobService
--keep public class com.evernote.android.job.v14.PlatformAlarmService
--keep public class com.evernote.android.job.v14.PlatformAlarmReceiver
--keep public class com.evernote.android.job.JobBootReceiver
--keep public class com.evernote.android.job.JobRescheduleService

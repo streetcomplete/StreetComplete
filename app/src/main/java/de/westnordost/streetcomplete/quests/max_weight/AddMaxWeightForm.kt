@@ -58,7 +58,7 @@ class AddMaxWeightForm : AbstractQuestFormAnswerFragment<MaxWeightAnswer>() {
 
         weightUnitSelect = contentView.findViewById(R.id.weightUnitSelect)
         weightUnitSelect?.visibility = if (weightLimitUnits.size == 1) View.GONE else View.VISIBLE
-        weightUnitSelect?.adapter = ArrayAdapter(context!!, R.layout.spinner_item_centered, weightLimitUnits)
+        weightUnitSelect?.adapter = ArrayAdapter(requireContext(), R.layout.spinner_item_centered, weightLimitUnits)
         weightUnitSelect?.setSelection(0)
         weightUnitSelect?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parentView: AdapterView<*>, selectedItemView: View?, position: Int, id: Long) {

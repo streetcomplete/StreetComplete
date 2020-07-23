@@ -1,16 +1,11 @@
 package de.westnordost.streetcomplete.quests.board_type
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
 import androidx.appcompat.app.AlertDialog
-
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.OtherAnswer
-import de.westnordost.streetcomplete.quests.address.NoHouseNumber
-import de.westnordost.streetcomplete.quests.building_type.BuildingType
-import de.westnordost.streetcomplete.view.ItemViewHolder
 import kotlinx.android.synthetic.main.quest_parking_access.*
 
 class AddBoardTypeForm : AbstractQuestFormAnswerFragment<String>() {

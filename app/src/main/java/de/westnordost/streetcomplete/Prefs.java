@@ -56,7 +56,7 @@ public class Prefs
 		AUTO(AppCompatDelegate.MODE_NIGHT_AUTO),
 		SYSTEM(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
 
-		public int appCompatNightMode;
+		public final int appCompatNightMode;
 		Theme(int appCompatNightMode) { this.appCompatNightMode = appCompatNightMode; }
 	}
 }
