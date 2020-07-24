@@ -8,10 +8,6 @@
 -dontnote org.apache.commons.codec.**
 -dontnote org.apache.http.**
 
-# JTS
-# (we don't use the AWT part of JTS)
--dontwarn java.awt.**
-
 # tangram
 # let's just keep everything
 -keep class com.mapzen.tangram.** { *; }
@@ -24,10 +20,5 @@
 # let's just keep everything
 -keep class com.esotericsoftware.kryo.** { *; }
 
-# Lifecycle
--keep public class androidx.lifecycle.** {
-    public protected *;
-}
--keepclassmembers class ** {
-    @androidx.lifecycle.OnLifecycleEvent public *;
-}
+# streetcomplete
+-keep class de.westnordost.streetcomplete.data.meta.CountryInfo { *; }
