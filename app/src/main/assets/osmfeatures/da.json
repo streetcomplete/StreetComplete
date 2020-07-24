@@ -275,6 +275,10 @@
             "name": "Tagdækker",
             "terms": "Tagdækker, Tagdækningsfirma"
         },
+        "amenity/photo_booth": {
+            "name": "Pasfotoautomat",
+            "terms": "maskine,automat,foto,billede,pas,kørekort,portræt"
+        },
         "amenity/restaurant/mexican": {
             "name": "Mexikansk restaurant"
         },
@@ -414,6 +418,10 @@
         "amenity/vending_machine/ice_cream": {
             "name": "Isautomat",
             "terms": "is,ispind"
+        },
+        "leisure/trampoline_park": {
+            "name": "Trampolinpark",
+            "terms": "hoppe,jump,hoppeborg,trampolin"
         },
         "man_made/tower/defensive": {
             "name": "Befæstningstårn",
@@ -762,6 +770,10 @@
             "name": "Vejindsnævring",
             "terms": "Vejindsnævring"
         },
+        "railway/funicular": {
+            "name": "Kabelbane",
+            "terms": "kabel,bjerg,klippe,kabelbane"
+        },
         "power/transformer": {
             "name": "Transformer",
             "terms": "Transformer"
@@ -961,8 +973,8 @@
             "terms": "Rugby station"
         },
         "shop/beauty": {
-            "name": "Parfumebutik",
-            "terms": "Parfumebutik, Skønhedsbutik"
+            "name": "Skønhedsforhandler",
+            "terms": "parfume,skønhed,negle,fødder,spa,solcenter"
         },
         "amenity/charging_station": {
             "name": "Opladerstation",
@@ -981,8 +993,8 @@
             "terms": "Kanal"
         },
         "leisure/common": {
-            "name": "Hyppig",
-            "terms": "Hyppig, Almindelig"
+            "name": "Fælled",
+            "terms": "fællesskab,landsby,park,græsning"
         },
         "amenity/parking/underground": {
             "name": "Underjordisk parkering"
@@ -1036,9 +1048,6 @@
         },
         "highway/footway/marked-raised": {
             "name": "Markeret fodgængerfelt (hævet)"
-        },
-        "playground/climbing_frame": {
-            "name": "Klatrevæg"
         },
         "tourism/artwork/mural": {
             "name": "Vægmaleri",
@@ -1249,6 +1258,10 @@
             "name": "Mindre offentlig vej udenfor byområde",
             "terms": "Mindre/Uspecificeret vej"
         },
+        "landuse/winter_sports": {
+            "name": "Vintersportsområde",
+            "terms": "ski,snowboard,vinter,ferie,rekreation,bakke,løjpe,kælk,sne"
+        },
         "amenity/social_facility": {
             "name": "Sociale faciliteter",
             "terms": "Sociale faciliteter"
@@ -1320,6 +1333,10 @@
         "building/warehouse": {
             "name": "Lager",
             "terms": "Lager, Lagerhotel, Varelager"
+        },
+        "railway/tram": {
+            "name": "Sporvognsspor",
+            "terms": "spor,jernbane,sporvogn,tram"
         },
         "power/minor_line": {
             "name": "Elledning",
@@ -1475,7 +1492,7 @@
         },
         "shop/photo": {
             "name": "Fotoforretning",
-            "terms": "Fotoforretning"
+            "terms": "foto,kamera,linse,film,billede,"
         },
         "office/forestry": {
             "name": "Skovbrugskontor",
@@ -1488,6 +1505,10 @@
         "leisure/pitch/skateboard": {
             "name": "Skateboardpark",
             "terms": "Skateboardpark, skateboardplads, skate board"
+        },
+        "office/government/tax": {
+            "name": "Skattekontor",
+            "terms": "skat,told,offentlig,moms,afgift"
         },
         "highway/bridleway": {
             "name": "Ridesti",
@@ -1558,6 +1579,10 @@
             "name": "Biavler",
             "terms": "Biavler"
         },
+        "leisure/track/horse_racing": {
+            "name": "Ridebane",
+            "terms": "bane,løb,hest,ridning"
+        },
         "amenity/toilets": {
             "name": "Toiletter",
             "terms": "Toiletter, WC"
@@ -1606,6 +1631,10 @@
         },
         "amenity/embassy": {
             "name": "Ambassade"
+        },
+        "leisure/track/cycling": {
+            "name": "Cykelbane",
+            "terms": "cykling,cyklist,løb,bane"
         },
         "place/islet": {
             "name": "Holm"
@@ -1750,6 +1779,10 @@
         "leisure/fitness_centre/yoga": {
             "name": "Yogastudio",
             "terms": "Yogastudio"
+        },
+        "leisure/track/running": {
+            "name": "Løbebane",
+            "terms": "løb,bane,atletik,motion"
         },
         "power/plant/source/coal": {
             "name": "Kulfyret kraftværk",
@@ -1929,6 +1962,10 @@
             "name": "Skobutik",
             "terms": "Skobutik, Skoforretning"
         },
+        "power/plant/source/solar": {
+            "name": "Solkraftværk",
+            "terms": "solcelle,solpanel,panel,kraftværk,strøm,elektricitet,el,solkraft,sol,fotovoltaik"
+        },
         "amenity/ranger_station": {
             "name": "Rangerstation",
             "terms": "Rangerstation"
@@ -2065,6 +2102,10 @@
             "name": "Gravplads",
             "terms": "Kirkegård"
         },
+        "railway/light_rail": {
+            "name": "Letbane",
+            "terms": "bane,jernbane,let"
+        },
         "office/lawyer/notary": {
             "name": "Notarkontor"
         },
@@ -2148,6 +2189,10 @@
         },
         "indoor/corridor": {
             "name": "Indendørskorridor"
+        },
+        "amenity/events_venue": {
+            "name": "Begivenhedsarena",
+            "terms": "koncert,musik,hal,fejring,spillested,fest,festival,arrangement,arena,kultur"
         },
         "healthcare/optometrist": {
             "name": "Optiker",
@@ -2263,7 +2308,7 @@
         },
         "leisure/resort": {
             "name": "Turistresort",
-            "terms": "Turistresort,"
+            "terms": "resort,ferie,rekreation"
         },
         "shop/pyrotechnics": {
             "name": "Fyrværkeributik",
@@ -2643,6 +2688,10 @@
         "tourism/artwork/sculpture": {
             "name": "Skulptur",
             "terms": "statue,figur,udskæring,kunst,buste"
+        },
+        "leisure/beach_resort": {
+            "name": "Strandresort",
+            "terms": "resort,ferie,strand,vand,hav,rekreation"
         },
         "amenity/vending_machine/drinks": {
             "name": "Drikkeautomat",
@@ -3026,6 +3075,10 @@
             "name": "Tatovør",
             "terms": "Tatovør, Tatovørforretning"
         },
+        "power/generator/method/photovoltaic": {
+            "name": "Solcelleanlæg",
+            "terms": "solcelle,solpanel,panel,strøm,elektricitet,el,solkraft,sol,fotovoltaik,anlæg"
+        },
         "amenity/shelter/public_transport": {
             "name": "Venteskur",
             "terms": "bus,tog,transport,offentlig,vente,læskur,læ,ly,halvtag"
@@ -3065,6 +3118,10 @@
             "name": "Kommercielt område",
             "terms": "Kommercielt område"
         },
+        "seamark/mooring": {
+            "name": "Fortøjning",
+            "terms": "båd,sømærke,bøje"
+        },
         "natural/ridge": {
             "name": "Højderyg",
             "terms": "Højderyg, Bjergryg, Bjergkam, Bakkekam"
@@ -3075,9 +3132,6 @@
         },
         "emergency/official": {
             "name": "Udrykningskørsel officielt"
-        },
-        "playground/sandpit": {
-            "name": "Sandkasse"
         },
         "railway/derail": {
             "name": "Afsporingsenhed"
@@ -3228,6 +3282,10 @@
         "leisure/swimming_area": {
             "name": "Åbentvandssvømningsområde",
             "terms": "svømning, åben,åbent, fri,frit,sø,å,hav,vand,bade,badning"
+        },
+        "railway/subway": {
+            "name": "Undergrundsspor",
+            "terms": "undergrundsbane,spor,jernbane,"
         },
         "highway/elevator": {
             "name": "Elevator",

@@ -4,6 +4,7 @@ v22.0-beta1: |
     <li>When you split a way, all previous quests reappear on the split segments immediately after upload (#1950, #1951)</li>
     <li>Better fallback for showing of (street) names in user language or script</li>
     <li>Always display the house number above the quest question if it is available (#1971)</li>
+    <li>For longer displays, show more of the quest forms initially (#1977)</li>
   </ul>
   <h3>New and enhanced Quests</h3>
   <ul>

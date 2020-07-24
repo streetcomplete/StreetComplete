@@ -1376,9 +1376,6 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_buildingType_semi_detached_description">"familia bakarreko etxebizitzen bikotea"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_terrace">"Ilarako etxea"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_terrace_description">"familia bakarreko etxebizitza berdintsuen errenkada bat"</string>
 
     <!-- Fuzzy -->
@@ -1797,7 +1794,7 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_generic_answer_differs_along_the_way">"Bidean zehar aldatzen da…"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_split_way_description">"Bidean zehar aldatzen bada, aurretik bidea zatitu behar da. Behin eginda, erronka zati bakoitzeko erantzun daiteke. Kontuan izan banatutako zatien erronkak askoz beranduago agertu daitezkeela. Orain zatitu?"</string>
+    <string name="quest_split_way_description">"Bidean zehar aldatzen bada, aurretik bidea zatitu behar da. Behin eginda, erronka zati bakoitzeko erantzun daiteke. Orain zatitu?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_split_way_tutorial">"Sakatu bidean erantzuna aldatzen den tokietan zatitzeko. Saiatu ahal bezain zehatza izaten, zooma erabili dezakezu."</string>
@@ -2256,4 +2253,10 @@ Kontuan izan aplikazio honek eraikin baten zenbakia, behin zein motakoa denean j
     <string name="unread_messages_button">"Ireki sarrera ontzia"</string>
     <string name="action_about2">"Honi buruz"</string>
     <string name="map_btn_menu">"Menua"</string>
+    <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
+    <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
+    <string name="at_housename">"Etxearen izena %s:"</string>
+    <string name="at_conscription_and_street_number">"Konskripzio zenbakia %1$s, orientazio zenbakia %2$s:"</string>
+    <string name="at_conscription_number">"Konskripzio zenbakia %s:"</string>
+    <string name="at_housenumber">"etxe zenbakia %s:"</string>
 </resources>

@@ -772,9 +772,6 @@
         "man_made/tunnel": {
             "name": "Tunell Område"
         },
-        "playground/climbing_frame": {
-            "name": "Klatrestativ"
-        },
         "tourism/artwork/mural": {
             "name": "Veggmaleri"
         },
@@ -2376,9 +2373,6 @@
         },
         "public_transport/station_tram": {
             "name": "Trikkestasjon"
-        },
-        "playground/sandpit": {
-            "name": "Sandkasse"
         },
         "leisure/bowling_alley": {
             "name": "Bowlingsenter"

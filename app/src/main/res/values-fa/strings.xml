@@ -1334,9 +1334,6 @@
     <string name="quest_buildingType_semi_detached_description">"یک جفت خانه مشابه هم"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_terrace">"خانه ردیفی"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_terrace_description">"ردیف خطی از خانه های مشابه هم"</string>
 
     <!-- Fuzzy -->
@@ -1756,7 +1753,7 @@
     <string name="quest_generic_answer_differs_along_the_way">"تناقض در طول مسیر..."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_split_way_description">"اگر در طول راه تناقض وجود داشته باشد، اولین گام تفکیک راه است. پس از آن می‌توان برای هر قسمت تفکیک شده به طور جداگانه پاسخ جُستار را ارائه نمود. توجه داشته باشید که جُستارهای بخش‌های تفکیک‌شده ممکن است بعداً ارائه شوند. اکنون تفکیک کنید؟"</string>
+    <string name="quest_split_way_description">"اگر در طول راه تناقض وجود داشته باشد، اولین گام تفکیک راه است. پس از آن می‌توان برای هر قسمت تفکیک شده به طور جداگانه پاسخ جُستار را ارائه نمود.  اکنون تفکیک کنید؟"</string>
 
     <!-- Fuzzy -->
     <string name="quest_split_way_tutorial">"روی مسیر ضربه بزنید و در نقطه ای (هایی) که چند پاسخ وجود دارد، آن مسیر را تفکیک کنید. سعی کنید تا حد ممکن دقیق باشید ، می توانید طبق معمول بزرگنمایی کنید."</string>
@@ -2242,7 +2239,30 @@
     <string name="quest_address_street_no_named_streets">"وابسته به خیابانی که نامگذاری نشده است"</string>
     <string name="quest_address_street_place_name_label">"نام مکان:"</string>
     <string name="quest_address_street_description">"روی جاده ای که به آن تعلق دارد ضربه بزنید یا در بخش ذیل آن را بطور کامل وارد نمایید:"</string>
-    <string name="quest_buildingLevels_address_title">"ساختمان شماره %s چند طبقه دارد؟"</string>
-    <string name="quest_roofShape_address_title">"شکل اصلی سقف ساختمان شماره %s چگونه است؟"</string>
-    <string name="quest_buildingType_address_title">"شماره %s چه نوع ساختمانی است؟"</string>
+    <string name="quest_recycling_type_cooking_oil">"روغن پخت و پز"</string>
+    <string name="quest_recycling_type_engine_oil">"روغن موتور"</string>
+    <string name="link_photon_description">"یک افزونه مستقل به نام Nominatim ، در برگیرنده جستجوی فازی و جستجو براساس نوشتار شما می باشد."</string>
+    <string name="link_graphhopper_description">"موتور مسیریابی بهینه"</string>
+    <string name="link_qwant_maps_description">"نقشه ای با مکانها و مسیرهای قابل جستجو"</string>
+    <string name="privacy_html_tileserver2">"&lt;p&gt;برای نمایش نقشه ، قطعات نقشه از %1$s ها بازیابی می شوند. برای اطلاعات بیشتر به &lt;a href=\"%2$s\"&gt;بیانیه حریم خصوصی&lt;/a&gt;مراجعه کنید.&lt;/p&gt;"</string>
+    <string name="about_title_sponsors">"حامیان مالی"</string>
+    <string name="quest_board_type_history">"تاریخچه"</string>
+    <string name="quest_board_type_geology">"زمین شناسی"</string>
+    <string name="quest_board_type_plants">"گیاهان"</string>
+    <string name="quest_board_type_wildlife">"حیات وحش"</string>
+    <string name="quest_board_type_nature">"طبیعت (چندین گزینه ای)"</string>
+    <string name="quest_board_type_notice_board">"این یک تابلوی اعلانات است"</string>
+    <string name="quest_board_type_public_transport">"حمل و نقل عمومی"</string>
+    <string name="quest_board_type_title">"موضوع این تابلو اطلاع رسانی چیست؟"</string>
+    <string name="quest_sidewalk_separately_mapped">"بله ، جداگانه روی نقشه نمایش داده می شود"</string>
+    <string name="quest_board_type_map">"این یک نقشه است."</string>
+    <string name="quest_board_type_map_title">"آیا این فقط یک نقشه است و تمام؟"</string>
+    <string name="quest_board_type_map_description">"اگر تابلودر مورد یک موضوع خاص است، لطفاً آن را مشخص کنید، صرف نظر از اینکه این نقشه نیز در آن قرار دارد یا خیر. برای مثال، تابلوی حمل و نقل عمومی می تواند نقشه مسیر اتوبوس را داشته باشد. اگر موضوع در میان پاسخ های موجود ذکر نشده است، لطفاً به جای آن یادداشت بگذارید."</string>
+    <string name="quest_surface_detailed_answer_impossible">"چندین سطح ..."</string>
+    <string name="quest_surface_detailed_answer_impossible_confirmation">"آیا مطمئن هستید که تعیین جنس سطوح ناممکن است؟ گزینه \"اختلاف جنس سطوح در طول مسیر\" را مدنظر قرار دهید، تا بتوانید با جدا کردن مسیر اختلاف جنس سطح را مشخص کنید. لطفاً اگر جنس یکسان وجود دارد از پاسخ  \"نمی توان بیان کرد\" استفاده کنید اما به عنوان یک پاسخ در دسترس نیست."</string>
+    <string name="quest_surface_detailed_answer_impossible_description">"لطفاً به طور خلاصه ماهیت جنس سطح را در اینجا مشخص کنید ، به عنوان مثال \"ماسه ای با قطعات سنگفرش\". طول متن به 255 نویسه محدود شده است."</string>
+    <string name="quest_surface_detailed_name_title">"چه جنس سطح مشخصی درجاده %s وجود دارد؟"</string>
+    <string name="quest_surface_detailed_square_name_title">"چه جنس سطح مشخصی در میدان %s وجود دارد؟"</string>
+    <string name="quest_surface_detailed_title">"جنس سطح این قسمت از جاده چیست؟"</string>
+    <string name="quest_surface_detailed_square_title">"جنس سطح این میدان چیست؟"</string>
 </resources>

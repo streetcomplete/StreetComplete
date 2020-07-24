@@ -366,9 +366,7 @@ Jika tidak ada tanda di sepanjang jalan yang berlaku untuk bagian yang disorot, 
     <!-- Fuzzy -->
     <string name="underground_recycling_container">"Wadah bawah tanah"</string>
     <string name="quest_generic_error_a_field_empty">"Kamu belum mengisi kolom"</string>
-    <string name="quest_streetName_menuItem_language_simple">"
-%1$s – %2$s
-"</string>
+    <string name="quest_streetName_menuItem_language_simple">"%1$s – %2$s"</string>
     <string name="quest_streetName_menuItem_language_native">"
 %1$s – %2$s (%3$s)
 "</string>
@@ -723,7 +721,6 @@ Sebagian berarti kursi roda dapat masuk dan menggunakannya, tapi tidak ada pegan
     <string name="quest_buildingType_detached_description">"Rumah berdiri sendiri satu keluarga"</string>
     <string name="quest_buildingType_semi_detached">"Rumah semi terpisah"</string>
     <string name="quest_buildingType_semi_detached_description">"Dua pasang rumah satu keluarga"</string>
-    <string name="quest_buildingType_terrace">"Rumah barisan(ruko)"</string>
     <string name="quest_buildingType_terrace_description">"Barisan rumah yang mirip untuk rumah satu keluarga"</string>
     <string name="quest_buildingType_hotel">"Bangunan hotel"</string>
     <string name="quest_buildingType_dormitory">"Asrama"</string>
@@ -882,7 +879,8 @@ Sebagian berarti kursi roda dapat masuk dan menggunakannya, tapi tidak ada pegan
     <string name="quest_leaf_type_mixed">"Ada keduanya"</string>
     <string name="quest_cyclewayPartSurface_title">"Apa permukaan di jalan sepeda ini?"</string>
     <string name="quest_generic_answer_differs_along_the_way">"Berbeda sepanjang jalan..."</string>
-    <string name="quest_split_way_description">"Jika berbeda, langkah pertama adalah membagi jalannya. Kemudian, pencarian bisa dijawab secara terpisah. Dengan catatan pencarian untuk jalan yang terbagi akan muncul lama kemudian. Pisah sekarang?"</string>
+    <string name="quest_split_way_description">"Jika berbeda, langkah pertama adalah membagi jalannya. Kemudian, pencarian bisa dijawab secara terpisah. 
+Pisah sekarang?"</string>
     <string name="quest_split_way_tutorial">"Sentuh pada titik jalan di mana jawabannya beda. Harap agar seakurat mungkin, kamu bisa memperbesar."</string>
     <string name="quest_split_way_too_imprecise">"Harap perbesar lagi"</string>
     <string name="quest_split_way_many_splits_confirmation_description">"Pembagian sudah cukup banyak. Kamu bisa membaginya lagi nanti."</string>
@@ -1094,9 +1092,6 @@ Cat: aplikasi ini menyanyakan nomor rumah pada bangunan setelah tipenya sudah di
     <string name="quest_address_street_no_named_streets">"Rumah ini jalannya tidak bernama"</string>
     <string name="quest_address_street_place_name_label">"Nama tempat:"</string>
     <string name="quest_address_street_description">"Tekan jalan di mana ia berada di peta atau masukkan tanpa singkatan pada kolom di bawah:"</string>
-    <string name="quest_buildingLevels_address_title">"Bangunan nomor %s ini ada berapa lantai?"</string>
-    <string name="quest_roofShape_address_title">"Apa bentuk dasar dari atap bangunan nomor %s ini?"</string>
-    <string name="quest_buildingType_address_title">"Jenis apakah bangunan bernomor %s?"</string>
     <string name="quest_recycling_type_cooking_oil">"Minyak Memasak"</string>
     <string name="quest_recycling_type_engine_oil">"Minyak Mesin"</string>
     <string name="link_photon_description">"Ekstensi tunggal untuk Nominatim, memiliki fitur pencarian fuzi dan cari-sembari-mengetik"</string>
@@ -1104,4 +1099,10 @@ Cat: aplikasi ini menyanyakan nomor rumah pada bangunan setelah tipenya sudah di
     <string name="link_qwant_maps_description">"Peta dengan tempat dan arah yang bisa dicari"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt;Untuk menampilkan peta, petak vektor akan diambil dari %1$s. Lihat &lt;a href=\"%2$s\"&gt;pernyataan privasi&lt;/a&gt; mereka untuk lebih lanjut.&lt;/p&gt;"</string>
     <string name="about_title_sponsors">"Sponsor"</string>
+    <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
+    <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
+    <string name="at_housename">"Nama rumah %s:"</string>
+    <string name="at_conscription_and_street_number">"Nomor rumah %1$s, nomor orientasi %2$s:"</string>
+    <string name="at_conscription_number">"Nomor rumah %s:"</string>
+    <string name="at_housenumber">"nomor rumah %s:"</string>
 </resources>

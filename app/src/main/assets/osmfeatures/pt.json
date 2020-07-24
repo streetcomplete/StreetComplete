@@ -1207,7 +1207,7 @@
             "terms": "Glaziery, Vidro, Vidraceiro, Vidraria"
         },
         "highway/motorway_junction": {
-            "name": "Saída de autoestrada",
+            "name": "Saída de autoestrada/via rápida",
             "terms": "junção, saída, autoestrada, auto-estrada, nó, entrada, sair, mudança, mudar,estrada,rodovia"
         },
         "highway/crossing/marked-raised": {
@@ -1312,6 +1312,10 @@
             "name": "Ponte (área)",
             "terms": "Viaduto,engenharia,estrada,pontes,estrutura,bridge"
         },
+        "shop/supermarket/organic": {
+            "name": "Supermercado de produtos biológicos",
+            "terms": "alimentos biológicos,produtos naturais,sem OGM"
+        },
         "office/physician": {
             "name": "Médico especialista"
         },
@@ -1373,6 +1377,10 @@
         "attraction/bungee_jumping": {
             "name": "Bungee jumping",
             "terms": "Bungee, Jumping, salto de elástico, salto, saltar"
+        },
+        "shop/model": {
+            "name": "Loja de modelismo",
+            "terms": "modelos,barcos,comboios,aviões,tanques,escala,kits,hobby,passatempo"
         },
         "railway/signal": {
             "name": "Sinal ferroviário",
@@ -2017,6 +2025,10 @@
             "name": "Casa semi-isolada",
             "terms": "Semi-Detached House,edifício,casa,destacada,habitação,residência"
         },
+        "type/destination_sign": {
+            "name": "Sinalização de destino",
+            "terms": "placa,sinal,saída"
+        },
         "shop/clothes/wedding": {
             "name": "Loja de vestuário de casamento",
             "terms": "roupa,roupas,noiva,noivo,vestidos,fatos,padrinhos,madrinhas"
@@ -2254,7 +2266,7 @@
         },
         "playground/sandpit": {
             "name": "Caixa de areia",
-            "terms": "Areia"
+            "terms": "areia,brincar,recreio,exercício,brincadeira"
         },
         "leisure/bowling_alley": {
             "name": "Pista de bólingue",
@@ -3343,7 +3355,7 @@
         },
         "playground/climbing_frame": {
             "name": "Estrutura de trepar",
-            "terms": "trepa-trepa, gaiola gínica, trepar,cordas,aranha"
+            "terms": "trepa-trepa, gaiola gínica, trepar,cordas,aranha,macaco,brincar,recreio,exercício,brincadeira"
         },
         "tourism/artwork/mural": {
             "name": "Mural",
@@ -3564,7 +3576,7 @@
             "terms": "Grassland,Verdes,Terra Verde,Prado,Pastoreio,gado,savana,área,zona,vegetação rasteira,gramíneas,erva,pasto"
         },
         "highway/stop": {
-            "name": "Sinal de stop",
+            "name": "Sinal de STOP",
             "terms": "Stop Sign,Paragem,obrigatória,cruzamento,entroncamento, Stop,parar"
         },
         "man_made/manhole/telecom": {
@@ -3776,8 +3788,8 @@
             "terms": "bail bond agent, agente de fianças, fianças"
         },
         "craft/agricultural_engines": {
-            "name": "Mecânico de máquinas agrícolas",
-            "terms": "argricultural engines mechanic, mecânico de máquinas agrícolas, máquinas agrícolas, máquina agrícola,motores,ferramentas,motor"
+            "name": "Mecânico de motores agrícolas",
+            "terms": "mecânico,equipamento agrícola,agricultura,tratores,ceifeiras,tractores,quinta,máquinas agrícolas"
         },
         "shop/lottery": {
             "name": "Loja de lotaria",
@@ -4749,6 +4761,10 @@
         "building/detached": {
             "name": "Casa isolada",
             "terms": "edifício,Detached,autónoma,unifamiliar,house,moradia,individual"
+        },
+        "entrance/emergency_ward_entrance": {
+            "name": "Entrada para urgências",
+            "terms": "emergências,urgências,hospital,ambulâncias"
         },
         "healthcare/occupational_therapist": {
             "name": "Terapeuta ocupacional",

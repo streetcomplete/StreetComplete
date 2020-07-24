@@ -31,7 +31,7 @@
             "name": "Sito esplosione nucleare"
         },
         "barrier/lift_gate": {
-            "name": "sbarra",
+            "name": "Sbarra",
             "terms": "Barriera a sollevamento"
         },
         "public_transport/platform/light_rail_point": {
@@ -296,6 +296,10 @@
         "building/houseboat": {
             "name": "Casa galleggiante"
         },
+        "office/government/prosecutor": {
+            "name": "Procura",
+            "terms": "ufficio del procuratore, procuratore"
+        },
         "building/school": {
             "name": "Edificio scolastico",
             "terms": "accademia,alma mater,lavagna,collegio,dipartimento,disciplina,classe,facoltà,aula,istituto,istituzione,riformatorio,scuola,edificio scolastico,seminario,università"
@@ -368,6 +372,9 @@
         "allotments/plot": {
             "name": "Orto pubblico",
             "terms": "orto pubblico,anziano,anziani,orti urbani,orto,orti,orto per anziani"
+        },
+        "shop/pottery": {
+            "name": "Negozio di ceramica"
         },
         "historic/castle/palace": {
             "name": "Palazzo"
@@ -572,6 +579,9 @@
         "amenity/townhall": {
             "name": "Municipio",
             "terms": "sala del comune,palazzo di governo,tribunale,municipio"
+        },
+        "shop/rental": {
+            "name": "Negozio di noleggio"
         },
         "public_transport/stop_position_bus": {
             "name": "Fermata autobus"
@@ -863,7 +873,7 @@
             "terms": "ebreo,ebrea,sinagoga,ebraismo,sionismo"
         },
         "highway/construction": {
-            "name": "Strada Chiusa"
+            "name": "Strada chiusa"
         },
         "power/tower": {
             "name": "Traliccio ad alta tensione",
@@ -884,6 +894,9 @@
         "craft/shoemaker": {
             "name": "Calzolaio",
             "terms": "scarpe,scarpino,calzature"
+        },
+        "amenity/refugee_site": {
+            "name": "Campo profughi"
         },
         "shop/interior_decoration": {
             "name": "Negozio di decorazioni per interni",
@@ -1024,6 +1037,10 @@
             "name": "Box a noleggio",
             "terms": "affitto magazzino, deposito"
         },
+        "barrier/bollard_line": {
+            "name": "Fila di colonnine",
+            "terms": "colonnine,riga di colonne, riga di colonnine"
+        },
         "shop/fashion": {
             "name": "Negozio di moda"
         },
@@ -1050,7 +1067,7 @@
             "terms": "paese,villaggio,case sparse,confine,bordo,strada,via"
         },
         "barrier/cattle_grid": {
-            "name": "grata blocca-bestiame",
+            "name": "Grata blocca bestiame",
             "terms": "Griglia"
         },
         "tourism/motel": {
@@ -1168,8 +1185,7 @@
             "terms": "nuoto,acqua,immersione,sub"
         },
         "barrier/hedge": {
-            "name": "Siepe",
-            "terms": "Siepe"
+            "name": "Siepe"
         },
         "shop/swimming_pool": {
             "name": "Negozio per rifornimenti per piscina"
@@ -1238,7 +1254,7 @@
             "terms": "piazza,piazze,piazzale,spiazzo,slargo,largo"
         },
         "barrier/kerb/raised": {
-            "name": "Marciapiede rialzato",
+            "name": "Cordolo rialzato",
             "terms": "rialzato,alzato,alto,marciapiedi,pedoni,pedonale"
         },
         "amenity/shelter/gazebo": {
@@ -1280,9 +1296,6 @@
         "public_transport/stop_position_aerialway": {
             "name": "Punto di stop del trasporto a fune"
         },
-        "playground/climbing_frame": {
-            "name": "Struttura da arrampicata"
-        },
         "tourism/artwork/mural": {
             "name": "Murale",
             "terms": "murale,muro,parete,arte muraria,decorazione"
@@ -1308,6 +1321,9 @@
         "craft/insulator": {
             "name": "Isolanti",
             "terms": "Isolante"
+        },
+        "man_made/water_tap": {
+            "name": "Rubinetto dell'acqua"
         },
         "shop/herbalist": {
             "name": "Erboristeria",
@@ -1388,8 +1404,7 @@
             "terms": "Negozio di materassi"
         },
         "natural/scrub": {
-            "name": "Macchia mediterranea",
-            "terms": "Boscaglia"
+            "name": "Boscaglia"
         },
         "craft/photographer": {
             "name": "Fotografo",
@@ -1445,7 +1460,7 @@
             "terms": "diurno,orfanotrofio,asilo"
         },
         "barrier/kerb/flush": {
-            "name": "Marciapiede a raso",
+            "name": "Cordolo a raso",
             "terms": "pari,livello,marciapiede,marciapiedi,terra,raso,tattile,ipovedenti,ciechi"
         },
         "office/educational_institution": {
@@ -1504,6 +1519,9 @@
         "shop/electronics": {
             "name": "Negozio di elettronica",
             "terms": "Negozio di elettronica"
+        },
+        "waterway": {
+            "name": "Elemento di un corso d'acqua"
         },
         "amenity/clinic": {
             "name": "Clinica medica",
@@ -1735,6 +1753,9 @@
         "emergency/no": {
             "name": "Nessun accesso di emergenza"
         },
+        "man_made/manhole/drain": {
+            "name": "Caditoia, Tombino"
+        },
         "man_made/manhole/telecom": {
             "name": "Tombino di una Società di Telecomunicazioni"
         },
@@ -1759,9 +1780,6 @@
         "highway/street_lamp": {
             "name": "Lampione stradale",
             "terms": "lampada,lampione,luce,neon,alogena,sodio"
-        },
-        "playground/zipwire": {
-            "name": "Teleferica"
         },
         "tourism/theme_park": {
             "name": "Parco a tema",
@@ -1952,6 +1970,9 @@
         "leisure/fitness_station/box": {
             "name": "Scatola per salti"
         },
+        "amenity/fast_food/hot_dog": {
+            "name": "Fast food di Hot Dog"
+        },
         "amenity/sanitary_dump_station": {
             "name": "Smaltimento reflui camper",
             "terms": "smaltimento,rifiuti,toilet,wc,camper,escrementi"
@@ -2043,9 +2064,6 @@
         "building_part": {
             "name": "Parte di edificio",
             "terms": "tetto,colonna,facciata,edifici 3d,3d"
-        },
-        "craft/agricultural_engines": {
-            "name": "Meccanico motori agricoli"
         },
         "shop/lottery": {
             "name": "Ricevitoria",
@@ -2159,7 +2177,7 @@
             "terms": "ufficio legale,legale,avvocato,avvocatura,magistrato,difensore,azzeccagarbugli"
         },
         "building/apartments": {
-            "name": "Appartamenti",
+            "name": "Condominio",
             "terms": "appartamenti,condomini,palazzi,palazzoni,casermoni,case popolari,abitazioni,case,edilizia popolare,peep,iacp,terreno,lotto,terreno condominiale, area condominiale"
         },
         "highway/trunk_link": {
@@ -2171,7 +2189,8 @@
             "terms": "bagnino,bagnini,salvataggio,salvamento,CPR,rianimazione,massaggio cardiaco,respirazione,soccorso,acqua,mare"
         },
         "office/financial_advisor": {
-            "name": "Consulente finanziario"
+            "name": "Consulente finanziario",
+            "terms": "Consulente finanziario"
         },
         "shop/bookmaker": {
             "name": "Agenzia di scommesse",
@@ -2206,7 +2225,7 @@
             "name": "Bacino idrico"
         },
         "leisure/garden": {
-            "name": "Giardino (fiorito)",
+            "name": "Giardino",
             "terms": "Giardino"
         },
         "historic/memorial": {
@@ -2283,6 +2302,10 @@
         },
         "railway/monorail": {
             "name": "Binario di Monorotaia"
+        },
+        "shop/supermarket/organic": {
+            "name": "Supermercato biologico",
+            "terms": "cibo biologico,biologico"
         },
         "office/physician": {
             "name": "Medico"
@@ -2612,6 +2635,9 @@
             "name": "Entrata di metropolitana",
             "terms": "Entrata metropolitana"
         },
+        "highway/emergency_bay": {
+            "name": "Piazzola di sosta"
+        },
         "aeroway/windsock": {
             "name": "Manica a vento",
             "terms": "manica,vento,anemoscopio,anemometro,aria,velocità,direzione"
@@ -2662,6 +2688,9 @@
         "historic/monument": {
             "name": "Monumento",
             "terms": "Monumento"
+        },
+        "natural/shrub": {
+            "name": "Arbusto"
         },
         "type/route/bicycle": {
             "name": "Itinerario ciclabile",
@@ -2753,6 +2782,9 @@
         "amenity/monastery": {
             "name": "Monastero",
             "terms": "monastero,abbazia,badia"
+        },
+        "amenity/polling_station": {
+            "name": "Sezione Elettorale permanente"
         },
         "amenity/toilets/disposal/flush": {
             "name": "Sciacquone",
@@ -2910,6 +2942,9 @@
         "office/association": {
             "name": "Ufficio associazione senza scopo di lucro"
         },
+        "amenity/bicycle_parking/shed": {
+            "name": "Rimessa per biciclette"
+        },
         "entrance/emergency": {
             "name": "Uscita di emergenza",
             "terms": "porta antincendio,antincendio,incendio,fuoco"
@@ -2917,6 +2952,10 @@
         "highway/services": {
             "name": "Area di servizio",
             "terms": "autogrill,servizio,stazione di servizio"
+        },
+        "office/consulting": {
+            "name": "Studio di consulenza",
+            "terms": "ditta di consulenza,consulenza"
         },
         "amenity/bureau_de_change": {
             "name": "Cambiavalute",
@@ -3285,7 +3324,7 @@
             "name": "Cassonetto per la raccolta di RAEE"
         },
         "tourism/information/terminal": {
-            "name": "Terminale informazioni\\"
+            "name": "Terminale informazioni"
         },
         "public_transport/station_train": {
             "name": "Stazione ferroviaria",
@@ -3532,6 +3571,9 @@
             "name": "Casa semi indipendente",
             "terms": "semi-indipendente,semiindipendente,semindipendente, abitazione semi indipendente"
         },
+        "type/destination_sign": {
+            "name": "Cartello di destinazione"
+        },
         "railway/abandoned": {
             "name": "Ferrovia abbandonata",
             "terms": "Ferrovia abbandonata"
@@ -3664,6 +3706,9 @@
         },
         "man_made/wastewater_plant": {
             "name": "Impianto di depurazione delle acque"
+        },
+        "amenity/cafe/coffee_shop": {
+            "name": "Caffetteria"
         },
         "landuse/plant_nursery": {
             "name": "Vivaio",
@@ -3936,9 +3981,15 @@
             "name": "Crinale",
             "terms": "cresta"
         },
+        "natural": {
+            "name": "Elemento naturale"
+        },
         "aerialway/magic_carpet": {
             "name": "Tapis roulant",
             "terms": "tappeto scorrevole"
+        },
+        "amenity/post_box": {
+            "name": "Buca delle lettere"
         },
         "public_transport/station_tram": {
             "name": "Stazione tram"
@@ -3948,9 +3999,6 @@
         },
         "man_made/reservoir_covered": {
             "name": "Serbatoio Coperto"
-        },
-        "playground/sandpit": {
-            "name": "Buca di sabbia"
         },
         "railway/derail": {
             "name": "Deragliatore ferroviario",
@@ -3995,7 +4043,8 @@
             "terms": "Corniceria"
         },
         "barrier/kerb": {
-            "name": "Cordolo"
+            "name": "Cordolo",
+            "terms": "bordo,marciapiede"
         },
         "leisure/nature_reserve": {
             "name": "Riserva naturale",
@@ -4113,8 +4162,7 @@
             "terms": "bus,autobus,piattaforma,banchina,trasporto pubblico,transito pubblico,transito,trasporto,fermata"
         },
         "barrier/gate": {
-            "name": "Cancello",
-            "terms": "Cancello"
+            "name": "Cancello"
         },
         "amenity/conference_centre": {
             "name": "Centro conferenze",
@@ -4184,7 +4232,7 @@
         },
         "barrier": {
             "name": "Barriera",
-            "terms": "barriera,sbarra,cancello"
+            "terms": "barriera,sbarra"
         },
         "historic/castle": {
             "name": "Castello",

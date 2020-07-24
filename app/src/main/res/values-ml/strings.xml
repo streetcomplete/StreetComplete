@@ -1349,9 +1349,6 @@
     <string name="quest_buildingType_semi_detached_description">"രണ്ട് കുടുംബങ്ങൾക്ക് വേണ്ടിയുള്ള ഒരു ജോഡി ആയി സ്ഥിതി ചെയ്യുന്ന വീട്"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_terrace">"വരിയായുള്ള വീട്"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_terrace_description">"അണു കുടുംബങ്ങൾക്കുള്ള ഒരേ വരിയിലുള്ള വീടുകൾ"</string>
 
     <!-- Fuzzy -->
@@ -1770,7 +1767,7 @@
     <string name="quest_generic_answer_differs_along_the_way">"ഉടനീളം വ്യത്യസ്തമാണ്."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_split_way_description">"പാതയിലുടനീളം വ്യത്യാസങ്ങൾ കാണുന്നു എങ്കിൽ, ആദ്യത്തെ ഘട്ടം പാതയെ വിഭജിക്കൽ ആണ്. അതിനു ശേഷം ഓരോ വിഭജിച്ച പാതയ്ക്കും ഉള്ള തിരയൽ വെവ്വേറെ ആയി ചെയ്യാവുന്നത് ആണ്. വിഭജിക്കപ്പെട്ട പാതകൾക് വേണ്ടിയുള്ള തിരയൽ കുറച്ചു നേരത്തിനു ശേഷമേ ലഭ്യം ആവൂ എന്നത് ശ്രെദ്ധിക്കുക. ഇപ്പോൾ വിഭജിക്കണോ?"</string>
+    <string name="quest_split_way_description">"പാതയിലുടനീളം വ്യത്യാസങ്ങൾ കാണുന്നു എങ്കിൽ, ആദ്യത്തെ ഘട്ടം പാതയെ വിഭജിക്കൽ ആണ്. അതിനു ശേഷം ഓരോ വിഭജിച്ച പാതയ്ക്കും ഉള്ള തിരയൽ വെവ്വേറെ ആയി ചെയ്യാവുന്നത് ആണ്. ഇപ്പോൾ വിഭജിക്കണോ?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_split_way_tutorial">"ഉത്തരം വ്യത്യാസപ്പെട്ടിരിക്കുന്ന സ്ഥല(ങ്ങൾ) വിഭജിക്കാൻ വഴിയിൽ ടാപ്പ് ചെയ്യുക. കഴിയുന്നത്ര കൃത്യമാക്കുവാൻ ശ്രമിക്കുക, നിങ്ങൾക്ക് ഇത് പതിവുപോലെ സൂം ഇൻ ചെയ്യാൻ കഴിയും."</string>
@@ -1909,4 +1906,9 @@
 
     <!-- Fuzzy -->
     <string name="quest_religion_for_place_of_worship_name_title">"%s ൽ ഏത് മതമാണ് പരിശീലിക്കുന്നത്?"</string>
+    <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
+    <string name="at_housename">"വീട്ടുപേര് %s:"</string>
+    <string name="at_conscription_and_street_number">"നിർബന്ധിത നമ്പർ %1$s, ക്രമീകരണ നമ്പർ %2$s:"</string>
+    <string name="at_conscription_number">"നിർബന്ധിത നമ്പർ %s:"</string>
+    <string name="at_housenumber">"വീട്ട് നമ്പർ %s:"</string>
 </resources>

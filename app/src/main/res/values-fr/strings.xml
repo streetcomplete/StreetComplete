@@ -1410,9 +1410,6 @@ Sinon, vous pouvez télécharger un autre clavier dans le magasin d'applications
     <string name="quest_buildingType_semi_detached_description">"ensemble de deux maisons unifamiliales"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_terrace">"Maison en rangée"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_terrace_description">"une ligne de maisons unifamiliales similaires"</string>
 
     <!-- Fuzzy -->
@@ -1844,7 +1841,8 @@ Sinon, vous pouvez télécharger un autre clavier dans le magasin d'applications
     <string name="quest_generic_answer_differs_along_the_way">"Varie en cours de route..."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_split_way_description">"S'il varie en cours de route, la première étape consiste à découper la piste en plusieurs tronçons. Ensuite, on peut répondre à la quête séparément pour chaque tronçon. Notez que les quêtes pour chaque tronçon peuvent apparaître beaucoup plus tard. Découper maintenant ?"</string>
+    <string name="quest_split_way_description">"S'il varie en cours de route, la première étape consiste à découper la piste en plusieurs tronçons. Ensuite, on peut répondre à la quête séparément pour chaque tronçon. 
+Découper maintenant ?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_split_way_tutorial">"Appuyez sur le chemin pour le découper au(x) point(s) où la réponse diffère. Essayez d'être aussi précis que possible, vous pouvez zoomer comme d'habitude."</string>
@@ -2353,9 +2351,6 @@ Ces données sont essentielles non seulement pour le facteur mais aussi pour tou
     <string name="quest_address_street_no_named_streets">"Cela n'appartient pas à une rue précise"</string>
     <string name="quest_address_street_place_name_label">"Nom du lieu:"</string>
     <string name="quest_address_street_description">"Sélectionnez la rue à laquelle cela appartient ou indiquez le nom de la rue sans abréviations dans le champ ci-dessous:"</string>
-    <string name="quest_buildingLevels_address_title">"Combien d'étages possède le bâtiment portant le numéro %s ?"</string>
-    <string name="quest_roofShape_address_title">"Quelle forme a le toit du bâtiment portant le numéro %s ?"</string>
-    <string name="quest_buildingType_address_title">"Quel est le type de bâtiment du numéro %s?"</string>
     <string name="quest_recycling_type_cooking_oil">"Huile de friture"</string>
     <string name="quest_recycling_type_engine_oil">"Huile moteur"</string>
 
@@ -2368,4 +2363,13 @@ Ces données sont essentielles non seulement pour le facteur mais aussi pour tou
     <!-- Fuzzy -->
     <string name="privacy_html_tileserver2">"&lt;p&gt;Les tuiles vectorielles utilisées pour afficher la carte sont récupérées depuis %1s. Lisez leur &lt;a href=\"%2$s\"&gt;politique de confidentialité&lt;/a&gt; pour plus d'information."</string>
     <string name="about_title_sponsors">"Sponsors"</string>
+    <string name="quest_board_type_history">"Histoire"</string>
+    <string name="quest_board_type_geology">"Géologie"</string>
+    <string name="quest_board_type_plants">"Plantes"</string>
+    <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
+    <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
+    <string name="at_housename">"Nom de la maison %s:"</string>
+    <string name="at_conscription_and_street_number">"Numéro de conscription %1$s, numéro d’orientation %2$s:"</string>
+    <string name="at_conscription_number">"Numéro de conscription %s:"</string>
+    <string name="at_housenumber">"Numéro de rue %s:"</string>
 </resources>

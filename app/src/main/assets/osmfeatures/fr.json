@@ -1419,10 +1419,6 @@
             "name": "Emplacement où s'arrête la remontée mécanique",
             "terms": "emplacement où s'arrête la remontée mécanique,arrêt de remontée mécanique,stop de remontée mécanique,remontée mécanique,remontées mécaniques"
         },
-        "playground/climbing_frame": {
-            "name": "Cage à poules ",
-            "terms": "portique, portique de jeux, jeux, jeux pour enfants"
-        },
         "tourism/artwork/mural": {
             "name": "Peinture ou fresque murale",
             "terms": "fresque,peinture murale,pixel art"
@@ -1944,10 +1940,6 @@
             "name": "Lampadaire",
             "terms": "Réverbère"
         },
-        "playground/zipwire": {
-            "name": "Tyrolienne",
-            "terms": "Tyrolienne"
-        },
         "tourism/theme_park": {
             "name": "Parc d'attraction",
             "terms": "Parc à thème, parc d'attractions"
@@ -2271,10 +2263,6 @@
         "office/bail_bond_agent": {
             "name": "Agent de cautionnement",
             "terms": "agent de cautionnement,cautionnement"
-        },
-        "craft/agricultural_engines": {
-            "name": "Mécaniciens pour engins agricoles",
-            "terms": "engins agricoles,mécanicien pour engins agricoles,agriculture,tracteur"
         },
         "shop/lottery": {
             "name": "Loterie",
@@ -2613,7 +2601,7 @@
         },
         "type/route/tram": {
             "name": "Itinéraire de tramway",
-            "terms": "Route de tramway"
+            "terms": "Voie de tramway"
         },
         "man_made/mast/communication/television": {
             "name": "Mât de télédiffusion",
@@ -3893,6 +3881,10 @@
             "name": "Bâtiment pour transports publics",
             "terms": "bâtiment pour transports publics,transports publics"
         },
+        "shop/shoe_repair": {
+            "name": "Cordonnier",
+            "terms": "cordonnerie, cordonnier réparation de chaussures"
+        },
         "landuse/orchard": {
             "name": "Verger",
             "terms": "Verger"
@@ -4389,10 +4381,6 @@
         },
         "emergency/official": {
             "name": "Accès d'urgence officiel"
-        },
-        "playground/sandpit": {
-            "name": "Bac à sable",
-            "terms": "Bac à sable, jeux pour enfants, sable"
         },
         "railway/derail": {
             "name": "Dérailleur Ferroviaire",

@@ -1377,9 +1377,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
     <string name="quest_buildingType_semi_detached_description">"par de viviendas unifamiliares"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_terrace">"Casa adosada"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_terrace_description">"una hilera de viviendas unifamiliares pegadas"</string>
 
     <!-- Fuzzy -->
@@ -1800,7 +1797,7 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
     <string name="quest_generic_answer_differs_along_the_way">"Difiere a lo largo de la vía..."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_split_way_description">"Si difiere a lo largo de la vía, el primer paso es dividir la vía. Tras eso, el objetivo puede ser respondido para cada parte por separado. Date cuenta que los objetivos para las partes divididas pueden aparecen mucho más tarde. ¿Dividirlas ahora?"</string>
+    <string name="quest_split_way_description">"Si difiere a lo largo de la vía, el primer paso es dividir la vía. Tras eso, el objetivo puede ser respondido para cada parte por separado. ¿Dividirlas ahora?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_split_way_tutorial">"Toca en la vía para dividirla en el(los) punto(s) donde la respuesta difiere. Intenta ser lo más preciso posible, puedes hacer más zoom como de costumbre."</string>
@@ -2311,9 +2308,6 @@ Tenga en cuenta que esta aplicación solicita el número de portal de un edifici
     <string name="quest_address_street_no_named_streets">"No pertenece a una calle con nombre"</string>
     <string name="quest_address_street_place_name_label">"Poner nombre:"</string>
     <string name="quest_address_street_description">"Toque la carretera a la que pertenece en el mapa o ingrésela sin abreviaturas en el siguiente campo:"</string>
-    <string name="quest_buildingLevels_address_title">"¿Cuántos niveles tiene el edificio con el número %s?"</string>
-    <string name="quest_roofShape_address_title">"¿Qué forma básica tiene el tejado del edificio con el número %s?"</string>
-    <string name="quest_buildingType_address_title">"¿Qué tipo de edificio es el número %s?"</string>
     <string name="quest_recycling_type_cooking_oil">"Aceite de cocina"</string>
     <string name="quest_recycling_type_engine_oil">"Aceite de motor"</string>
     <string name="link_photon_description">"Una extensión independiente para Nominatim, con búsqueda difusa y búsqueda mientras escribe"</string>
@@ -2321,4 +2315,10 @@ Tenga en cuenta que esta aplicación solicita el número de portal de un edifici
     <string name="link_qwant_maps_description">"Un mapa con lugares de búsqueda y direcciones"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt;Para mostrar el mapa, los mosaicos vectoriales se recuperan de %1$s. Consulte su &lt;a href=\"%2$s\"&gt;declaración de privacidad&lt;/a&gt; para obtener más información.&lt;/p&gt;"</string>
     <string name="about_title_sponsors">"Patrocinadores"</string>
+    <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
+    <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
+    <string name="at_housename">"Nombre de la casa %s:"</string>
+    <string name="at_conscription_and_street_number">"Número de «conscripción» %1$s, número de «orientación» %2$s:"</string>
+    <string name="at_conscription_number">"Número de «conscripción» %s:"</string>
+    <string name="at_housenumber">"número de casa %s:"</string>
 </resources>

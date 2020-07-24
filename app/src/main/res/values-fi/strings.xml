@@ -1230,9 +1230,6 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
     <string name="quest_buildingType_semi_detached_description">"Paritalo"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_terrace">"Rivitalo"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_terrace_description">"Rivissä erillisiä asuntoja"</string>
 
     <!-- Fuzzy -->
@@ -1651,7 +1648,7 @@ Muutoin, voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppä
     <string name="quest_generic_answer_differs_along_the_way">"Eroaa pitkin matkaa.."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_split_way_description">"Jos tiellä on eroja, niin ensimmäinen vaihe on jakaa tie osiin. Sen jälkeen voit vastata tien jaetuille osille erikseen. Huomioi, että kysymykset jaetuille tien osille voi tulla näkyviin paljon myöhemmin. 
+    <string name="quest_split_way_description">"Jos tiellä on eroja, niin ensimmäinen vaihe on jakaa tie osiin. Sen jälkeen voit vastata tien jaetuille osille erikseen.
 Jaetaanko nyt?"</string>
 
     <!-- Fuzzy -->
@@ -2161,10 +2158,12 @@ päiviä"</string>
     <string name="quest_address_street_no_named_streets">"Se ei kuulu nimetylle kadulle"</string>
     <string name="quest_address_street_place_name_label">"Paikan nimi:"</string>
     <string name="quest_address_street_description">"Napauta kartalla tietä, jolle se kuuluu tai kirjoitta ilman lyhenteitä alla olevaan kenttään:"</string>
-    <string name="quest_buildingLevels_address_title">"Kuinka monta kerrosta on tässä %s talonumerossa?"</string>
-    <string name="quest_roofShape_address_title">"Millainen perusmuoto katolla on talonumerossa %s?
-"</string>
-    <string name="quest_buildingType_address_title">"Minkä tyyppinen rakennus on numero %s sä?"</string>
     <string name="quest_recycling_type_cooking_oil">"Keittoöljy"</string>
     <string name="quest_recycling_type_engine_oil">"Moottoriöljy"</string>
+    <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
+    <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
+    <string name="at_housename">"Talon nimi %s:"</string>
+    <string name="at_conscription_and_street_number">"Rekisterinumero %1$s, suuntausnumero %2$s:"</string>
+    <string name="at_conscription_number">"Rekisterinumero %s:"</string>
+    <string name="at_housenumber">"talon numero %s:"</string>
 </resources>

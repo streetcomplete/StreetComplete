@@ -1370,9 +1370,6 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_buildingType_semi_detached_description">"ett hus delat i två, för två familjer"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_terrace">"Radhuslänga"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_terrace_description">"flera bredvid varandra liggande enfamiljshus"</string>
 
     <!-- Fuzzy -->
@@ -1793,7 +1790,6 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
 
     <!-- Fuzzy -->
     <string name="quest_split_way_description">"Om det skiljer sig längs vägen är det första steget att dela upp vägen. Därefter kan uppdraget besvaras för varje delad del separat.
-Observera att uppdrag för de delade delarna kan visas mycket senare.
 Dela den nu?"</string>
 
     <!-- Fuzzy -->
@@ -2294,9 +2290,6 @@ nivåer"</string>
     <string name="quest_address_street_no_named_streets">"Det hör inte till en namngiven gata"</string>
     <string name="quest_address_street_place_name_label">"Platsnamn:"</string>
     <string name="quest_address_street_description">"Tryck på vägen den tillhör på kartan eller ange den utan förkortningar i fältet nedan:"</string>
-    <string name="quest_buildingLevels_address_title">"Hur många nivåer har byggnaden med numret %s?"</string>
-    <string name="quest_roofShape_address_title">"Vilken grundform har byggnadens tak med numret %s?"</string>
-    <string name="quest_buildingType_address_title">"Vilken typ av byggnad är nummer %s?"</string>
     <string name="quest_recycling_type_cooking_oil">"Matlagningsolja"</string>
     <string name="quest_recycling_type_engine_oil">"Motorolja"</string>
     <string name="link_photon_description">"En fristående tillägg till Nominatim med luddig sökning och sök-medan-du-skriver"</string>
@@ -2304,4 +2297,29 @@ nivåer"</string>
     <string name="link_qwant_maps_description">"En karta med sökbara platser och vägbeskrivningar"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt;För att visa kartan hämtas vektordelar från %1$s. Se deras &lt;a href=\"%2$s\"&gt;integritetsförklaring&lt;/a&gt; för mer information.&lt;/p&gt;"</string>
     <string name="about_title_sponsors">"Sponsorer"</string>
+    <string name="quest_board_type_history">"Historia"</string>
+    <string name="quest_board_type_geology">"Geologi"</string>
+    <string name="quest_board_type_plants">"Växter"</string>
+    <string name="quest_board_type_wildlife">"Vilda djur och växter"</string>
+    <string name="quest_board_type_nature">"Natur (flera ämnen)"</string>
+    <string name="quest_board_type_notice_board">"Det är en anslagstavla"</string>
+    <string name="quest_board_type_public_transport">"Kollektivtrafik"</string>
+    <string name="quest_board_type_title">"Vad är ämnet för denna informationstavla?"</string>
+    <string name="quest_sidewalk_separately_mapped">"Ja, visas separat på kartan"</string>
+    <string name="quest_board_type_map">"Det är en karta"</string>
+    <string name="quest_board_type_map_title">"Är det bara en karta och endast en karta?"</string>
+    <string name="quest_board_type_map_description">"Om tavlan handlar om ett visst ämne, ange det, oavsett om det också innehåller en karta. Till exempel kan en kollektivtrafikstavla ha en bussruttkarta. Om ämnet inte är listat bland de tillgängliga svaren, överväg att lämna en anteckning istället."</string>
+    <string name="quest_surface_detailed_answer_impossible">"Flera ytor..."</string>
+    <string name="quest_surface_detailed_answer_impossible_confirmation">"Är du säker på att det är omöjligt att specificera ytan? Notera svaralternativet \"Skiljer sig längs vägen\" som gör att du kan klippa ut hur ytan förändras. Använd \"Kan inte säga\" om det finns en enda yta men den är inte tillgänglig som svar."</string>
+    <string name="quest_surface_detailed_answer_impossible_description">"Vänligen ange kort ytan här, till exempel \"sandig med stigar av kullersten\". Textens längd är begränsad till 255 tecken."</string>
+    <string name="quest_surface_detailed_name_title">"Vilken specifik yta har vägen %s här?"</string>
+    <string name="quest_surface_detailed_square_name_title">"Vilken specifik yta har torget %s här?"</string>
+    <string name="quest_surface_detailed_title">"Vilken specifik yta har denna väg?"</string>
+    <string name="quest_surface_detailed_square_title">"Vilken specifik yta har detta torg här?"</string>
+    <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
+    <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
+    <string name="at_housename">"Husnamn %s:"</string>
+    <string name="at_conscription_and_street_number">"Konskriptionsnummer %1$s, Orienteringsnummer %2$s:"</string>
+    <string name="at_conscription_number">"Konskriptionsnummer %s:"</string>
+    <string name="at_housenumber">"husnummer %s:"</string>
 </resources>

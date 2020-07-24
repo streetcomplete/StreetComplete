@@ -1377,9 +1377,6 @@ Por exemplo 1,3 ou 2-6."</string>
     <string name="quest_buildingType_semi_detached_description">"par de vivendas unifamiliares"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_terrace">"Casa adosada"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_terrace_description">"unha ringleira de vivendas adosadas unifamiliares"</string>
 
     <!-- Fuzzy -->
@@ -1799,7 +1796,7 @@ Por exemplo 1,3 ou 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_split_way_description">"Se cres que a vía ten distintos atributos en diferentes treitos, o primeiro paso é dividir a vía. Despois diso podes engadir diferentes atributos segundo o treito dividido que desexes.
-Ten en conta que as tarefas a escoller para eses treitos divididos poden aparecer moito máis tarde. Dividila agora?"</string>
+Dividila agora?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_split_way_tutorial">"Preme na vía para dividila nos puntos onde os atributos difiren do resto. Tenta ser o máis preciso posíbel, podes achegar o mapa coma de costume."</string>
@@ -2311,9 +2308,6 @@ Ten en conta que esta aplicación pregunta polo número de enderezo dun edificio
     <string name="quest_address_street_no_named_streets">"Non pertence a unha rúa con nome"</string>
     <string name="quest_address_street_place_name_label">"Nome:"</string>
     <string name="quest_address_street_description">"Preme a estrada á que pertence no mapa ou insírea sen abreviaturas no campo seguinte:"</string>
-    <string name="quest_buildingLevels_address_title">"Cantos andares ten o edificio co número %s?"</string>
-    <string name="quest_roofShape_address_title">"Que forma básica ten o tellado do edificio co número %s?"</string>
-    <string name="quest_buildingType_address_title">"Que tipo de edificio é o número %s?"</string>
     <string name="quest_recycling_type_cooking_oil">"Aceite de cociña"</string>
     <string name="quest_recycling_type_engine_oil">"Aceite de motor"</string>
     <string name="link_photon_description">"Unha extensión independente para Nominatim, con procura dinámica mentres escribes"</string>
@@ -2321,4 +2315,29 @@ Ten en conta que esta aplicación pregunta polo número de enderezo dun edificio
     <string name="link_qwant_maps_description">"Un mapa con lugares e enderezos que se poden procurar"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt;Para amosar o mapa, as teselas vectoriais son obtidas de %1$s. Ollar a súa &lt;a href=\"%2$s\"&gt;declaración de privacidade&lt;/a&gt; para máis información.&lt;/p&gt;"</string>
     <string name="about_title_sponsors">"Padroádegos"</string>
+    <string name="quest_board_type_history">"Historia"</string>
+    <string name="quest_board_type_geology">"Xeoloxía"</string>
+    <string name="quest_board_type_plants">"Botánica"</string>
+    <string name="quest_board_type_wildlife">"Fauna"</string>
+    <string name="quest_board_type_nature">"Natureza (varios temas)"</string>
+    <string name="quest_board_type_notice_board">"É un taboleiro de anuncios"</string>
+    <string name="quest_board_type_public_transport">"Transporte público"</string>
+    <string name="quest_board_type_title">"Cal é o tema deste taboleiro de información?"</string>
+    <string name="quest_sidewalk_separately_mapped">"Si, amósase por separado no mapa"</string>
+    <string name="quest_board_type_map">"É un mapa"</string>
+    <string name="quest_board_type_map_title">"É soamente un mapa?"</string>
+    <string name="quest_board_type_map_description">"Se o taboleiro é sobre un tema en particular, especifícao, independentemente de se tamén inclúe un mapa. Por exemplo, un taboleiro de transporte público pode ter un mapa de rutas de autobús. Se o tema non figura entre as respostas dispoñíbeis, coida deixar unha nota."</string>
+    <string name="quest_surface_detailed_answer_impossible">"Múltiples superficies..."</string>
+    <string name="quest_surface_detailed_answer_impossible_confirmation">"Estás seguro de que é imposíbel especificar a superficie? Ten en conta a opción de resposta \"Difire ó longo da vía\" que che permite dividir a vía por onde muda a superficie. Emprega \"Non podo dicilo\" se hai unha soa superficie pero non está dispoñíbel coma resposta."</string>
+    <string name="quest_surface_detailed_answer_impossible_description">"Especifica de xeito breve a natureza da superficie, por exemplo \"areoso con anacos de lastros\". A lonxitude do texto está limitada a 255 caracteres."</string>
+    <string name="quest_surface_detailed_name_title">"Que superficie específica ten a estrada %s?"</string>
+    <string name="quest_surface_detailed_square_name_title">"Que superficie específica ten a praza %s?"</string>
+    <string name="quest_surface_detailed_title">"Que superficie específica ten este treito de estrada?"</string>
+    <string name="quest_surface_detailed_square_title">"Que superficie específica ten esta praza?"</string>
+    <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
+    <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
+    <string name="at_housename">"Nome da casa %s:"</string>
+    <string name="at_conscription_and_street_number">"Número de «conscrición» %1$s, número de «orientación» %2$s:"</string>
+    <string name="at_conscription_number">"Número de «conscrición» %s:"</string>
+    <string name="at_housenumber">"número de edificio %s:"</string>
 </resources>

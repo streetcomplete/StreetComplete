@@ -1098,7 +1098,7 @@
   "shop/copyshop": {"icon": "fas-print", "geometry": ["point", "area"], "tags": {"shop": "copyshop"}, "terms": ["print", "scan"], "name": "Copy Store"},
   "shop/cosmetics": {"icon": "temaki-lipstick", "geometry": ["point", "area"], "tags": {"shop": "cosmetics"}, "terms": ["make-up", "makeup"], "name": "Cosmetics Store"},
   "shop/country_store": {"icon": "fas-hat-cowboy-side", "geometry": ["point", "area"], "tags": {"shop": "country_store"}, "name": "Country Store"},
-  "shop/craft": {"icon": "fas-cut", "geometry": ["point", "area"], "tags": {"shop": "craft"}, "terms": ["art*", "paint*", "frame"], "name": "Arts & Crafts Store"},
+  "shop/craft": {"icon": "fas-cut", "geometry": ["point", "area"], "tags": {"shop": "craft"}, "terms": ["art*", "paint*", "frame", "hobby"], "name": "Arts & Crafts Store"},
   "shop/curtain": {"icon": "temaki-curtains", "geometry": ["point", "area"], "terms": ["drape*", "window"], "tags": {"shop": "curtain"}, "name": "Curtain Store"},
   "shop/dairy": {"icon": "fas-cheese", "geometry": ["point", "area"], "terms": ["milk", "egg", "cheese"], "tags": {"shop": "dairy"}, "name": "Dairy Store"},
   "shop/deli": {"icon": "temaki-meat", "geometry": ["point", "area"], "terms": ["lunch", "meat", "sandwich"], "tags": {"shop": "deli"}, "name": "Deli"},

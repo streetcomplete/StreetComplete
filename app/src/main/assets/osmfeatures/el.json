@@ -1018,9 +1018,6 @@
         "public_transport/stop_position_aerialway": {
             "name": "Τοποθεσία Στάθμευσης Τελεφερίκ"
         },
-        "playground/climbing_frame": {
-            "name": "Αναρρίχηση"
-        },
         "tourism/artwork/mural": {
             "name": "Τοιχογραφία"
         },
@@ -1326,7 +1323,7 @@
             "name": "Σταθμός Ελαφρού Σιδηρόδρομου"
         },
         "landuse/farmyard": {
-            "name": "Αγροτεμάχιο",
+            "name": "Αγρόκτημα",
             "terms": "Χωράφι, Αγρός, Καλλιεργήσιμη Έκταση"
         },
         "man_made/works": {
@@ -1571,6 +1568,9 @@
         },
         "shop/water": {
             "name": "Κατάστημα Πόσης Νερού"
+        },
+        "power/plant/source/wind": {
+            "name": "Αιολική Φάρμα"
         },
         "public_transport/platform": {
             "name": "Αποβάθρα Διέλευσης"
@@ -1941,6 +1941,9 @@
         "shop/shoes": {
             "name": "Κατάστημα Υπόδησης",
             "terms": "Κατάστημα υποδημάτων, κατάστημα παπουτσιών"
+        },
+        "power/plant/source/solar": {
+            "name": "Ηλιακή Φάρμα"
         },
         "shop/laundry/self_service": {
             "name": "Πλυντήρια με Αυτοεξυπηρέτηση"

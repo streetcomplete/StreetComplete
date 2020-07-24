@@ -1176,6 +1176,10 @@
         "man_made/bridge": {
             "name": "Plocha mostu"
         },
+        "shop/supermarket/organic": {
+            "name": "Supermarket s bioprodukty",
+            "terms": "supermarket,obchod,přírodní produkty,bioprodukty,bio,eko,biopotraviny"
+        },
         "office/physician": {
             "name": "Praktický lékař"
         },
@@ -1811,6 +1815,10 @@
             "name": "Polovina dvojdomku",
             "terms": "dvojdomek,půldomek,dvojdům,půldům,polovina"
         },
+        "type/destination_sign": {
+            "name": "Směrová tabule",
+            "terms": "směrová tabule,směrová značka,značka směru,značka cíle,cedule se směrem,směrová cedule,směr výjezdu,označení exitu,směr,šipka"
+        },
         "shop/clothes/wedding": {
             "name": "obchod se stavebním oblečením"
         },
@@ -2021,7 +2029,8 @@
             "name": "Poštovní schránka"
         },
         "playground/sandpit": {
-            "name": "Pískoviště"
+            "name": "Pískoviště",
+            "terms": "pískoviště,písek,děti,hřiště,bábovičky,hřiště"
         },
         "leisure/bowling_alley": {
             "name": "Bowlingová dráha",
@@ -2997,7 +3006,8 @@
             "name": "plocha tunelu"
         },
         "playground/climbing_frame": {
-            "name": "Prolézačka"
+            "name": "Prolézačka",
+            "terms": "Prolézačka,prolejzačka,žebřík,síť,šplhání,pavučina,opičí dráha,prolízačka"
         },
         "tourism/artwork/mural": {
             "name": "Nástěnná malba"
@@ -3211,7 +3221,8 @@
             "terms": "dopravní značka,dopravní značení,značka,cedule,dopravní cedule,silniční značení,DZ,doprava"
         },
         "playground/zipwire": {
-            "name": "Lanový skluz"
+            "name": "Lanový skluz",
+            "terms": "lanový skluz,lanový sjezd,sjezd na laně,hřiště,dětský sjezd na laně"
         },
         "tourism/theme_park": {
             "name": "Zábavní park",
@@ -3386,7 +3397,8 @@
             "name": "zastavárna pro získání kauce"
         },
         "craft/agricultural_engines": {
-            "name": "Opravář zemědělských strojů"
+            "name": "Výrobce zemědělských strojů",
+            "terms": "kombajn,kombajny,farmářské stroje,sekačky,zemědělské stroje,výroba zemědělských strojů,návrh zemědělských strojů,mechanik,řemeslník,harvestery,traktory,konstruktér,konstrukce zemědělských strojů"
         },
         "shop/lottery": {
             "name": "Prodejna losů",
@@ -4246,6 +4258,10 @@
         "building/detached": {
             "name": "Samostatný rodinný dům",
             "terms": "rodinný dům,rodinný domek,vila,bungalov"
+        },
+        "entrance/emergency_ward_entrance": {
+            "name": "Vstup do pohotovostní místnosti",
+            "terms": "nouze,záchrana,nouzová místnost,záchranář,pohotovost,vchod"
         },
         "healthcare/occupational_therapist": {
             "name": "Ergoterapeut"

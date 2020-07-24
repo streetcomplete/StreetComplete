@@ -1371,6 +1371,10 @@
             "name": "高空彈跳",
             "terms": "高空彈跳"
         },
+        "shop/model": {
+            "name": "模型店",
+            "terms": "模型店"
+        },
         "railway/signal": {
             "name": "鐵道信號",
             "terms": "鐵道信號"
@@ -2014,6 +2018,10 @@
             "name": "半獨立式房屋",
             "terms": "半獨立式住宅,半獨立式房子"
         },
+        "type/destination_sign": {
+            "name": "目的地標誌",
+            "terms": "目的地標誌"
+        },
         "shop/clothes/wedding": {
             "name": "婚紗店",
             "terms": "婚紗店"
@@ -2249,8 +2257,8 @@
             "terms": "郵筒"
         },
         "playground/sandpit": {
-            "name": "沙坑",
-            "terms": "沙坑"
+            "name": "玩沙箱",
+            "terms": "沙箱,玩沙盒,沙盒"
         },
         "leisure/bowling_alley": {
             "name": "保齡球館",
@@ -3330,7 +3338,7 @@
             "terms": "隧道區域"
         },
         "playground/climbing_frame": {
-            "name": "攀爬架",
+            "name": "玩攀爬架",
             "terms": "攀爬架"
         },
         "tourism/artwork/mural": {
@@ -3567,8 +3575,8 @@
             "terms": "號誌"
         },
         "playground/zipwire": {
-            "name": "Zip Wire",
-            "terms": "Zip Wire"
+            "name": "玩拉鍊線",
+            "terms": "拉鍊線"
         },
         "tourism/theme_park": {
             "name": "主題公園",
@@ -3763,7 +3771,8 @@
             "terms": "保釋債券代理人"
         },
         "craft/agricultural_engines": {
-            "name": "農用機械工房"
+            "name": "農用機械工房",
+            "terms": "農用機械工房"
         },
         "shop/lottery": {
             "name": "彩券行",
@@ -3976,8 +3985,8 @@
             "terms": "自助洗衣"
         },
         "amenity/parking": {
-            "name": "平面停車場",
-            "terms": "停車場"
+            "name": "停車場",
+            "terms": "平面停車場"
         },
         "highway/bus_stop": {
             "name": "公車站"
@@ -4728,6 +4737,10 @@
         "building/detached": {
             "name": "獨立式房屋",
             "terms": "獨立式住宅,獨立式房子"
+        },
+        "entrance/emergency_ward_entrance": {
+            "name": "急診室入口",
+            "terms": "急診室入口"
         },
         "healthcare/occupational_therapist": {
             "name": "職能治療師",

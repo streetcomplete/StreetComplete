@@ -1377,6 +1377,10 @@
             "name": "Saldo de bungee",
             "terms": "salto, saltar, bungee, puenting, puente, benji, cuerda elástica, salto al vacío"
         },
+        "shop/model": {
+            "name": "Tienda de modelismo",
+            "terms": "modelismo, modelos a escala, escala, Juguetes, juegos, manualidades"
+        },
         "railway/signal": {
             "name": "Señal ferroviaria",
             "terms": "señal, señalización, luces, vía, via, férrea, ferroviaria, ferroviario, ferrocarril, tren"
@@ -2020,6 +2024,10 @@
             "name": "Casa adosada o duplex",
             "terms": "casa adosada, casa pareada, duplex"
         },
+        "type/destination_sign": {
+            "name": "Señal de destino",
+            "terms": "Señal de salida, salida, destino"
+        },
         "shop/clothes/wedding": {
             "name": "Tienda de ropa para bodas",
             "terms": "Boutique, novia, novia, novio, dama de honor, novio, padrino de boda, esmoquin, vestido de novia, vestido de novia"
@@ -2256,8 +2264,8 @@
             "terms": "correo, buzón, paquetes, honguito"
         },
         "playground/sandpit": {
-            "name": "Cajón de arena / Arenero",
-            "terms": "Arenero, cajón, cajon, arena"
+            "name": "Juego de arenero",
+            "terms": "arenero"
         },
         "leisure/bowling_alley": {
             "name": "Pista de bolos",
@@ -3345,8 +3353,8 @@
             "terms": "área, taladro, excavación, túnel, tunel"
         },
         "playground/climbing_frame": {
-            "name": "Estructura para trepar",
-            "terms": "Estructura para trepar, trepar"
+            "name": "Juego de trepar barras",
+            "terms": "barras de mono, arco, barras"
         },
         "tourism/artwork/mural": {
             "name": "Mural",
@@ -3583,8 +3591,8 @@
             "terms": "señal, cartel, señalización, tráfico, ruta, autopista, tránsito"
         },
         "playground/zipwire": {
-            "name": "Tirolesa",
-            "terms": "Tirolesa, soga, cable, colgarse"
+            "name": "Juego de tirolesa",
+            "terms": "tirolesa, tirolina, dosel, canopy, canopi, cable"
         },
         "tourism/theme_park": {
             "name": "Parque de atracciones",
@@ -3780,7 +3788,7 @@
         },
         "craft/agricultural_engines": {
             "name": "Mecánico de motores agrícolas",
-            "terms": "mecánico, motor, máquina, agrícola, agricola, agricultura, agro"
+            "terms": "cosechadoras, maquinaria agrícola, tractores"
         },
         "shop/lottery": {
             "name": "Lotería",
@@ -4752,6 +4760,10 @@
         "building/detached": {
             "name": "Casa independiente",
             "terms": "Casa independiente, chalet"
+        },
+        "entrance/emergency_ward_entrance": {
+            "name": "Entrada a la sala de emergencias",
+            "terms": "departamento de accidentes y emergencias, departamento de víctimas, ed, departamento de emergencias, sala de emergencias, er, ew, guardia, emergencia, accidente, auxilio"
         },
         "healthcare/occupational_therapist": {
             "name": "Terapeuta ocupacional",

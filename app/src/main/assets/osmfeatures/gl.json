@@ -65,6 +65,9 @@
             "name": "Oficina de clasificación de correos",
             "terms": "centro de procesamento, distribución de correo, depósito de correo, paquetería, paquetaría"
         },
+        "amenity/toilets/disposal/pitlatrine": {
+            "name": "Letrina de pozo"
+        },
         "type/restriction/only_right_turn": {
             "name": "Só cara a dereita"
         },
@@ -138,6 +141,9 @@
         },
         "amenity/waste_transfer_station": {
             "name": "Estación de bombeo de augas residuais"
+        },
+        "railway/monorail/hanging": {
+            "name": "Vía de monorraíl colgante"
         },
         "boundary/administrative": {
             "name": "Límite administrativo",
@@ -676,6 +682,9 @@
             "name": "Desenfeluxador",
             "terms": "feluxe, borra, borro, charrizo, cisco, parruma, sarrio, cheminea, chaminea, fumeira, fumeiro, fume, chimenea, fogón, hollín, limpiachimenea, limpeza de chemineas, deshollinador"
         },
+        "railway/narrow_gauge": {
+            "name": "Vía de tren estreita"
+        },
         "shop/curtain": {
             "name": "Tenda de cortinas"
         },
@@ -823,6 +832,9 @@
             "name": "Estreitamento",
             "terms": "estreitamento, camiño estreito"
         },
+        "railway/funicular": {
+            "name": "Vía de funicular"
+        },
         "power/transformer": {
             "name": "Transformador"
         },
@@ -850,6 +862,10 @@
         "healthcare/alternative": {
             "name": "Medicina alternativa",
             "terms": "medicina alternativa, acupuntura, antroposófico, kinesioloxía aplicada, aromaterapia, ayurveda, herbolario, homeopatía, hidroterapia, hipnosis, naturopatía, osteopatía, reflexoloxía, reiki, shiatsu, tradicional, tuina, unani, medicina alterna, herboristaría, herboristería"
+        },
+        "leisure/fitness_station/parallel_bars": {
+            "name": "Barras paralelas",
+            "terms": "barra, exercicio, ximnasio, barras"
         },
         "railway/rail/highspeed": {
             "name": "Ferrovía de alta velocidade",
@@ -1007,6 +1023,9 @@
             "name": "Sebe",
             "terms": "cobertura, sebe, liña de arbustos"
         },
+        "shop/swimming_pool": {
+            "name": "Tenda de subministracións para piscinas"
+        },
         "shop/kitchen": {
             "name": "Tenda de deseño de cociñas"
         },
@@ -1111,6 +1130,9 @@
         "highway/raceway/motocross": {
             "name": "Pista de carreiras de motocross"
         },
+        "railway/preserved": {
+            "name": "Vía de tren histórico"
+        },
         "man_made/chimney": {
             "name": "Cheminea"
         },
@@ -1177,6 +1199,9 @@
         "highway/motorway_link": {
             "name": "Ligazón da autoestrada",
             "terms": "autovía, autoestrada, ligazón, enlace, entrada, saída, acceso, autopista"
+        },
+        "amenity/car_pooling": {
+            "name": "Estación de automóbil compartido (Carpooling)"
         },
         "highway/crossing": {
             "name": "Paso de peóns"
@@ -1413,6 +1438,10 @@
         "building/warehouse": {
             "name": "Almacén"
         },
+        "railway/tram": {
+            "name": "Vía de tranvía",
+            "terms": "tranvía, tranvia, vía, via"
+        },
         "power/minor_line": {
             "name": "Liña eléctrica de media ou baixa tensión",
             "terms": "media tensión, baixa tensión, enerxía, electrica"
@@ -1512,10 +1541,6 @@
         },
         "highway/street_lamp": {
             "name": "Farol"
-        },
-        "playground/zipwire": {
-            "name": "Tirolina",
-            "terms": "tirolina, soga, cable, colgarse, pendurarse, tirolesa, corda"
         },
         "tourism/theme_park": {
             "name": "Parque de atraccións"
@@ -1652,6 +1677,9 @@
             "name": "Área de repouso",
             "terms": "área de descanso, apartadeiro, zona de descanso, área de asueto, área de repouso, descanso, asueto, repouso, apartadoiro, area de descanso, area de repouso"
         },
+        "leisure/pitch/horseshoes": {
+            "name": "Foxo de ferraduras (deporte)"
+        },
         "craft/electrician": {
             "name": "Electricista",
             "terms": "electricista, electricidade, eléctrico"
@@ -1674,6 +1702,9 @@
         "craft/beekeeper": {
             "name": "Apicultor",
             "terms": "apicultor, abellas, mel"
+        },
+        "leisure/track/horse_racing": {
+            "name": "Pista de carreiras de cabalos"
         },
         "amenity/toilets": {
             "name": "Aseos",
@@ -1734,6 +1765,9 @@
         },
         "amenity/embassy": {
             "name": "Embaixada"
+        },
+        "leisure/track/cycling": {
+            "name": "Circuíto de ciclismo"
         },
         "place/islet": {
             "name": "Illote",
@@ -1888,6 +1922,9 @@
             "name": "Estudio de ioga",
             "terms": "ioga, yoga"
         },
+        "public_transport/platform/aerialway": {
+            "name": "Plataforma de aeroporto"
+        },
         "leisure/track/running": {
             "name": "Pista de atletismo"
         },
@@ -1963,12 +2000,18 @@
         "shop/copyshop": {
             "name": "Copistaría"
         },
+        "leisure/firepit": {
+            "name": "Pozo de lume"
+        },
         "leisure/pitch/baseball": {
             "name": "Campo de béisbol"
         },
         "man_made/bridge": {
             "name": "Área da ponte",
             "terms": "área, ponte, zona, area"
+        },
+        "railway/monorail": {
+            "name": "Vía de monorraíl"
         },
         "office/physician": {
             "name": "Médico"
@@ -2183,6 +2226,9 @@
         "club": {
             "name": "Clube"
         },
+        "waterway/fish_pass": {
+            "name": "Paso de peixes"
+        },
         "office/private_investigator": {
             "name": "Oficina de investigador privado"
         },
@@ -2219,7 +2265,7 @@
             "name": "Cemiterio"
         },
         "railway/rail": {
-            "name": "Ferrovía",
+            "name": "Vía de tren",
             "terms": "raíl, carril, camiño de ferro, ferrocarril, ferrovía, liña férrea, riel, tren, rail, vía, vía permanente, vía férrea, via"
         },
         "natural/scree": {
@@ -2239,6 +2285,9 @@
         "amenity/grave_yard": {
             "name": "Camposanto",
             "terms": "cemitero, cementerio, tumbas, panteón"
+        },
+        "railway/light_rail": {
+            "name": "Vía de tren lixeiro"
         },
         "office/lawyer/notary": {
             "name": "Notaría"
@@ -2777,6 +2826,10 @@
         "type/restriction/no_straight_on": {
             "name": "Prohibido seguir de fronte"
         },
+        "landuse/allotments": {
+            "name": "Hortas comunitarias",
+            "terms": "predio, parcela, xardín comunitario, xardin, horta, horto, urbano, urbán, urbana, urbá, comunitaria, comunitario, leira"
+        },
         "office/water_utility": {
             "name": "Oficina de servizos públicos de auga",
             "terms": "servizo público, servicio público, publico, auga, agua, saneamento"
@@ -3059,6 +3112,10 @@
             "name": "Paso de montaña",
             "terms": "porto de montaña, paso de montaña"
         },
+        "amenity/kneipp_water_cure": {
+            "name": "Augas termais Kneipp",
+            "terms": "cura, kneipp, kneippiano, kneipp, auga, agua, hidroterapia, kneipp, termas, balneario, terma"
+        },
         "natural/water/basin": {
             "name": "Conca"
         },
@@ -3188,6 +3245,10 @@
         "building/shed": {
             "name": "Pendello",
             "terms": "galpón, alboio, alpendre, pendello, sobeira, cuberto, chapitel, caustra, cabanel, galpon, Galpón, Galpon, Alpendre"
+        },
+        "craft/parquet_layer": {
+            "name": "Colocador de parqué",
+            "terms": "parqué, parque, parquet"
         },
         "building/detached": {
             "name": "Casa illada"
@@ -3460,10 +3521,6 @@
         "emergency/official": {
             "name": "Acceso de emerxencia oficial"
         },
-        "playground/sandpit": {
-            "name": "Areeiro",
-            "terms": "areeiro, areal, area, caixón de area"
-        },
         "railway/derail": {
             "name": "Derailer Ferroviario"
         },
@@ -3487,7 +3544,7 @@
             "terms": "observatorio, aves, paxaros"
         },
         "shop/fishing": {
-            "name": "Lonxa ou tenda de pesca"
+            "name": "Tenda de pesca"
         },
         "amenity/vending_machine/cigarettes": {
             "name": "Expendedora de tabaco"
@@ -3626,6 +3683,9 @@
         "leisure/swimming_area": {
             "name": "Área de natación natural"
         },
+        "railway/subway": {
+            "name": "Vía de metro"
+        },
         "amenity/money_transfer": {
             "name": "Estación de transferencia de diñeiro",
             "terms": "xiro postal, cheque, factura, moeda, finanzas, transferencia bancaria, cable, cabo, persoa a persoa, efectivo a efectivo, intercambio, troco"
@@ -3633,6 +3693,9 @@
         "highway/elevator": {
             "name": "Ascensor",
             "terms": "montacargas, ascensor, elevador"
+        },
+        "railway/miniature": {
+            "name": "Vía de tren en miniatura"
         },
         "shop/carpet": {
             "name": "Tenda de alfombras"
@@ -3773,6 +3836,9 @@
         },
         "line": {
             "name": "Liña"
+        },
+        "emergency/mountain_rescue": {
+            "name": "Rescate de montaña"
         },
         "amenity/vehicle_inspection": {
             "name": "Inspección de vehículo"

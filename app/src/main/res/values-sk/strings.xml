@@ -1368,9 +1368,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="quest_buildingType_semi_detached_description">"pár rodinných domov"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_terrace">"Radový dom"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_terrace_description">"radová zástavba rodinných domov"</string>
 
     <!-- Fuzzy -->
@@ -1689,4 +1686,9 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="quest_recycling_type_shoes">"Topánky"</string>
     <string name="quest_recycling_type_electric_appliances">"Elektrické zariadenia"</string>
     <string name="quest_recycling_type_plastic_bottles">"Len plastové fľaše"</string>
+    <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
+    <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
+    <string name="at_housename">"Názov budovy %s:"</string>
+    <string name="at_conscription_and_street_number">"Súpisné číslo %1$s, orientačné číslo %2$s:"</string>
+    <string name="at_conscription_number">"Súpisné číslo %s:"</string>
 </resources>

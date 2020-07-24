@@ -432,6 +432,10 @@
             "name": "兵舎",
             "terms": "兵舎, 兵営"
         },
+        "craft/cleaning": {
+            "name": "Cleaning Service",
+            "terms": "Cleaning Service"
+        },
         "natural/water/wastewater": {
             "name": "下水沈殿池",
             "terms": "下水沈殿池, 下水処理施設, 汚水沈殿池"
@@ -532,6 +536,10 @@
             "name": "テレビゲーム販売店",
             "terms": "テレビゲーム店, ビデオゲーム, 娯楽, ゲーム, テレビゲーム販売店, ゲームソフト, テレビゲーム"
         },
+        "highway/cycleway/crossing/bicycle_foot": {
+            "name": "横断歩道（自転車道内）",
+            "terms": "横断歩道（自転車道内）, 横断歩道, 自転車道"
+        },
         "traffic_calming/dip": {
             "name": "ディップ",
             "terms": "ディップ, 交通安全, 交通静穏化, 道路設備, 減速"
@@ -594,6 +602,14 @@
         "type/route/pipeline": {
             "name": "パイプラインルート",
             "terms": "パイプラインルート"
+        },
+        "amenity/vacuum_cleaner": {
+            "name": "ゴミ吸取機",
+            "terms": "ゴミ吸取施設, ゴミ吸取機"
+        },
+        "aeroway/jet_bridge": {
+            "name": "ボーディング・ブリッジ",
+            "terms": "ボーディング・ブリッジ"
         },
         "natural/reef": {
             "name": "礁",
@@ -904,7 +920,8 @@
             "terms": "コーヒー, 珈琲, 自販機, 自動販売機"
         },
         "landuse/military/training_area": {
-            "name": "軍事演習場"
+            "name": "軍事演習場",
+            "terms": "練習場, トレーニングエリア, 訓練場"
         },
         "playground/horizontal_bar": {
             "name": "鉄棒（子供用）",
@@ -1295,6 +1312,10 @@
             "name": "橋（エリア）",
             "terms": "橋（エリア）, 橋, 橋エリア"
         },
+        "shop/supermarket/organic": {
+            "name": "スーパーマーケット（有機食品）",
+            "terms": "スーパーマーケット（有機食品）, 有機食品, オーガニック, 有機野菜, 店舗, お店, スーパー"
+        },
         "office/physician": {
             "name": "医者"
         },
@@ -1356,6 +1377,10 @@
         "attraction/bungee_jumping": {
             "name": "バンジー・ジャンプ",
             "terms": "バンジー・ジャンプ, アトラクション"
+        },
+        "shop/model": {
+            "name": "模型店",
+            "terms": "模型店, プラモデル, プラモ, 店舗, お店"
         },
         "railway/signal": {
             "name": "鉄道信号機",
@@ -2000,6 +2025,10 @@
             "name": "二世帯住宅",
             "terms": "セミデタッチドハウス, 二世帯住宅, 住居, 住宅, 民家"
         },
+        "type/destination_sign": {
+            "name": "行き先",
+            "terms": "行き先, 出口サイン"
+        },
         "shop/clothes/wedding": {
             "name": "衣料品店（婚礼）",
             "terms": "衣料品店（婚礼）, ウェディングドレス, 結婚, 衣料品店"
@@ -2237,7 +2266,7 @@
         },
         "playground/sandpit": {
             "name": "砂場",
-            "terms": "砂場, 遊具"
+            "terms": "砂場"
         },
         "leisure/bowling_alley": {
             "name": "ボウリング場",
@@ -2328,6 +2357,10 @@
         "amenity/restaurant/american": {
             "name": "レストラン・アメリカ料理",
             "terms": "レストラン, アメリカ料理, アメリカン, 飲食店, 食事, 食べる, 料理, ランチ"
+        },
+        "piste/sled": {
+            "name": "そり（小型）",
+            "terms": "そり, 橇, スキーコース, 小型そり, そり（小型）"
         },
         "public_transport/platform/bus": {
             "name": "バスプラットホーム",
@@ -3089,6 +3122,10 @@
             "name": "チョーカー",
             "terms": "チョーカー, 交通安全, 交通静穏化, 道路設備, 減速"
         },
+        "railway/funicular": {
+            "name": "ケーブルカー",
+            "terms": "ケーブルカー"
+        },
         "power/generator": {
             "name": "発電機",
             "terms": "発電機, 発電所"
@@ -3106,8 +3143,8 @@
             "terms": "カメラ店, カメラ用品, レンズ, 写真"
         },
         "healthcare/dentist/orthodontics": {
-            "name": "矯正歯科医",
-            "terms": "矯正歯科, 歯医者"
+            "name": "矯正歯科",
+            "terms": "矯正歯科, 歯医者, 矯正歯科医"
         },
         "healthcare/alternative": {
             "name": "代替医療",
@@ -3415,6 +3452,10 @@
             "name": "大観覧車",
             "terms": "大観覧車, アトラクション"
         },
+        "landuse/military/obstacle_course": {
+            "name": "障害物コース（軍用）",
+            "terms": "障害物コース, 障害物コース（軍用）"
+        },
         "natural/spring": {
             "name": "泉",
             "terms": "泉, 湧水"
@@ -3552,7 +3593,7 @@
         },
         "playground/zipwire": {
             "name": "ジップライン",
-            "terms": "ジップライン, 遊具"
+            "terms": "ジップライン, ロープ, アウトドア, 遊具"
         },
         "tourism/theme_park": {
             "name": "テーマパーク",
@@ -3691,7 +3732,8 @@
             "terms": "飲料水店, 水, ミネラルウォーター, 店舗, お店, ペットボトル, 飲み水, 飲水"
         },
         "telecom/exchange": {
-            "name": "通信用交換設備"
+            "name": "通信用交換設備",
+            "terms": "電話交換機, 電話交換器, 電話"
         },
         "public_transport/platform": {
             "name": "交通機関のプラットホーム",
@@ -3747,7 +3789,7 @@
         },
         "craft/agricultural_engines": {
             "name": "農機具工場",
-            "terms": "農機具工場, 農業用車両, 農機具事務所, 農機具工房, 農業, 職人, 農機具職人, 農具"
+            "terms": "農機具工場, 農業用車両, 農機具事務所, 農機具工房, 農業, 職人, 農機具職人, 農具, 農機具, 農機"
         },
         "shop/lottery": {
             "name": "宝くじ売り場",
@@ -3925,6 +3967,10 @@
         "shop/games": {
             "name": "ボードゲーム販売店",
             "terms": "ボードゲーム販売店, ボードゲーム, カードゲーム, ロールプレイングゲーム, トレーディングカード, ゲーム, 店舗, お店, 娯楽"
+        },
+        "piste/piste": {
+            "name": "スキーコースの種類",
+            "terms": "スキーコースの種類, スキーコース"
         },
         "craft/rigger": {
             "name": "艤装者",
@@ -4716,6 +4762,10 @@
             "name": "一戸建て住宅",
             "terms": "戸建て住宅, 住宅, 住居, 民家"
         },
+        "entrance/emergency_ward_entrance": {
+            "name": "救急外来入口",
+            "terms": "救急外来入口, 救急車搬送口, 急患, 救急車"
+        },
         "healthcare/occupational_therapist": {
             "name": "作業療法士",
             "terms": "作業療法士, 医療, 福祉"
@@ -4723,6 +4773,10 @@
         "highway/cycleway/bicycle_foot": {
             "name": "自転車歩行者道",
             "terms": "自転車歩行者道, 自歩道, 自転車, 歩道"
+        },
+        "amenity/cafe/coffee_shop": {
+            "name": "コーヒー専門店",
+            "terms": "コーヒー専門店, 珈琲専門店, 喫茶店, カフェ, 珈琲, コーヒー"
         },
         "landuse/plant_nursery": {
             "name": "育苗所",
@@ -4996,6 +5050,10 @@
         "natural/shingle": {
             "name": "小石浜",
             "terms": "小石浜, 河川敷, 小石"
+        },
+        "piste/sleigh": {
+            "name": "そり（中型）",
+            "terms": "そり, 橇, スキーコース, そり（中型）, 中型そり"
         },
         "leisure/marina": {
             "name": "マリーナ",

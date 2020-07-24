@@ -1038,10 +1038,6 @@
         "public_transport/stop_position_aerialway": {
             "name": "Место остановки канатной дороги"
         },
-        "playground/climbing_frame": {
-            "name": "Паутинка",
-            "terms": "конструкция для лазанья"
-        },
         "tourism/artwork/mural": {
             "name": "Монументальная живопись",
             "terms": "фреска, мазайка, граффити, ветраж, рисунок на стене"
@@ -1414,9 +1410,6 @@
         "highway/street_lamp": {
             "name": "Уличный фонарь",
             "terms": "фонарь, лампа, освещение"
-        },
-        "playground/zipwire": {
-            "name": "Зиплайн"
         },
         "tourism/theme_park": {
             "name": "Парк развлечений",
@@ -3155,9 +3148,6 @@
         },
         "emergency/official": {
             "name": "Доступ экстренных служб"
-        },
-        "playground/sandpit": {
-            "name": "Песочница"
         },
         "railway/derail": {
             "name": "Сбрасывающая стрелка"

@@ -1445,4 +1445,10 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="achievement_blind_solved_X">"視覚障害者のための探索を %d 件解決しました。"</string>
     <string name="achievement_pedestrian_solved_X">"歩行者のための探索を %d 件解決しました!"</string>
     <string name="confirmation_authorize_now_note2">"後でプロフィール画面から行うことも出来ます。"</string>
+    <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
+    <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
+    <string name="at_housename">"住居名 %s:"</string>
+    <string name="at_conscription_and_street_number">"徴収番号 %1$s, オリエンテーション番号 %2$s:"</string>
+    <string name="at_conscription_number">"徴収番号 %s:"</string>
+    <string name="at_housenumber">"住居番号 %s:"</string>
 </resources>

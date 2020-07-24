@@ -1313,8 +1313,8 @@
             "terms": "Brückenfläche"
         },
         "shop/supermarket/organic": {
-            "name": "Bio-Supermarket",
-            "terms": "natürliche Lebensmittel, biologische Lebensmittel"
+            "name": "Bio-Supermarkt",
+            "terms": "natürliche Lebensmittel, biologische Lebensmittel, Biomarkt, ökologisch"
         },
         "office/physician": {
             "name": "Arztpraxis"
@@ -1377,6 +1377,10 @@
         "attraction/bungee_jumping": {
             "name": "Bungee Jumping",
             "terms": "Bungee Jumping"
+        },
+        "shop/model": {
+            "name": "Modellbaugeschäft",
+            "terms": "Spielzeug, Spiele, Handwerk"
         },
         "railway/signal": {
             "name": "Eisenbahnsignal"
@@ -2020,6 +2024,10 @@
             "name": "Doppelhaushälfte",
             "terms": "Doppelhaushälfte"
         },
+        "type/destination_sign": {
+            "name": "Wegweiser an oder vor Kreuzungen",
+            "terms": "Ausfahrtsschild"
+        },
         "shop/clothes/wedding": {
             "name": "Hochzeitskleidungsgeschäft",
             "terms": "Hochzeit, Braut, Bräutigam, Brautkleidung, Brautbekleidung, Brautmode, Boutique, Trauung, Trauzeuge, Smoking"
@@ -2197,7 +2205,7 @@
             "terms": "Buslinie, Stadtbuslinie, Regionalbuslinie, Expressbuslinie, Fernbuslinie"
         },
         "natural/wood": {
-            "name": "Wald ohne forstwirtschafliche Nutzung",
+            "name": "Wald ohne forstwirtschaftliche Nutzung",
             "terms": "Wald, Naturwald, Urwald, Baum, Bäume"
         },
         "amenity/restaurant/chinese": {
@@ -2256,8 +2264,8 @@
             "terms": "Briefkasten, Postbox, Briefeinwurf, Postsammelstelle, Paketsammelstelle"
         },
         "playground/sandpit": {
-            "name": "Sandkasten",
-            "terms": "Sandkasten, Sandkiste"
+            "name": "Sandkiste",
+            "terms": "Sandkiste, Sandplatz"
         },
         "leisure/bowling_alley": {
             "name": "Bowlingbahn",
@@ -2532,7 +2540,7 @@
         },
         "shop/motorcycle_repair": {
             "name": "Motorradwerkstatt",
-            "terms": "Motorrad Reperaturwerkstatt, Motorrad Reperaturbetrieb"
+            "terms": "Motorrad Reparaturwerkstatt, Motorrad Reparaturbetrieb"
         },
         "shop/tool_hire": {
             "name": "Werkzeugverleih",
@@ -3344,8 +3352,8 @@
             "terms": "Untergrund, Passage, Unterführung"
         },
         "playground/climbing_frame": {
-            "name": "Klettergerüst / Seilspinne",
-            "terms": "Klettergerüst, Seilspinne, Raumnetz"
+            "name": "Klettergerüst",
+            "terms": "Klettergerüst, Kletterrahmen, Klettergerät"
         },
         "tourism/artwork/mural": {
             "name": "Wandmalerei",
@@ -3582,8 +3590,8 @@
             "terms": "Verkehrsschild, Verkehrszeichen"
         },
         "playground/zipwire": {
-            "name": "Seilbahn Spielplatz",
-            "terms": "Seilrutsche, Seilbahn, Spielplatz"
+            "name": "Spiel-Seilrutsche",
+            "terms": "Seilrutsche, Tyrolienne, Flying Fox, Seilbahn, Kinderseilbahn"
         },
         "tourism/theme_park": {
             "name": "Themenpark",
@@ -3779,7 +3787,7 @@
         },
         "craft/agricultural_engines": {
             "name": "Werkstatt für landwirtschaftliche Maschinen",
-            "terms": "Werkstatt für landwirtschaftliche Maschinen"
+            "terms": "Mähdrescher, landwirtschaftliche Geräte, Erntemaschinen, Traktoren"
         },
         "shop/lottery": {
             "name": "Lottoannahmestelle",
@@ -4324,8 +4332,8 @@
             "terms": "Umleitungsstrecke"
         },
         "amenity/bicycle_repair_station": {
-            "name": "Fahrradreperatur-Werkzeugkasten",
-            "terms": "Fahrradreperatur-Werkzeugkasten, Fahrradreperatur-Werkzeug-Standplatz"
+            "name": "Fahrradreparatur-Werkzeugkasten",
+            "terms": "Fahrradreparatur-Werkzeugkasten, Fahrradreparatur-Werkzeug-Standplatz"
         },
         "amenity/vending_machine/parcel_pickup": {
             "name": "Paketabholstation",
@@ -4751,6 +4759,10 @@
         "building/detached": {
             "name": "Freistehendes Einfamilienhaus",
             "terms": "alleinstehendes Haus, freistehendes Haus, Einfamilienhaus"
+        },
+        "entrance/emergency_ward_entrance": {
+            "name": "Eingang Notaufnahme",
+            "terms": "Notfallambulanz, Unfallambulanz, Notfallabteilung, Unfallabteilung, Unfallkrankenhaus, Notfallaufnahme, Unfallaufnahme"
         },
         "healthcare/occupational_therapist": {
             "name": "Beschäftigungstherapeut/in",

@@ -1352,9 +1352,6 @@
     <string name="quest_buildingType_semi_detached_description">"2가구가 함께 사는 주택"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_terrace">"단층형 연립주택"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_terrace_description">"비슷하게 생긴 1가구 집이 줄지어 있는 주택"</string>
 
     <!-- Fuzzy -->
@@ -1773,7 +1770,7 @@
     <string name="quest_generic_answer_differs_along_the_way">"각 부분마다 다름"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_split_way_description">"구간마다 특성이 다르다면, 먼저 길을 분할하세요. 그런 다음, 각 부분을 터치해 질문에 답을 하세요. 길을 분할하고 나서도, 퀘스트가 분할되려면 시간이 오래 걸릴 수 있습니다. 이 길을 분할하시겠습니까?"</string>
+    <string name="quest_split_way_description">"구간마다 특성이 다르다면, 먼저 길을 분할하세요. 그런 다음, 각 부분을 터치해 질문에 답을 하세요. 이 길을 분할하시겠습니까?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_split_way_tutorial">"분할할 길을 선택하세요. 최대한 정확히 나눠 주세요. 지도 확대도 가능합니다."</string>
@@ -1915,4 +1912,10 @@
 
     <!-- Fuzzy -->
     <string name="about_description_donate">"이 앱을 지원하기로 결정해 주셔서 감사합니다! 기부 현황을 보거나 기부하고 싶으시다면, 각 플랫폼을 터치해 주세요:"</string>
+    <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
+    <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
+    <string name="at_housename">"건물 명칭 %s:"</string>
+    <string name="at_conscription_and_street_number">"징병 번호 %1$s, 방위각 %2$s:"</string>
+    <string name="at_conscription_number">"징병 번호 %s:"</string>
+    <string name="at_housenumber">"건물 번호 %s:"</string>
 </resources>

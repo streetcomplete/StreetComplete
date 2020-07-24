@@ -1347,9 +1347,6 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk som for ekse
     <string name="quest_buildingType_semi_detached_description">"Frittstående bolig for to husholdninger"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_terrace">"Rekkehus"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_terrace_description">"En rekke med hus tett inntil hverandre"</string>
 
     <!-- Fuzzy -->
@@ -1768,7 +1765,7 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk som for ekse
     <string name="quest_generic_answer_differs_along_the_way">"Varierer..."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_split_way_description">"Hvis det endrer seg langs veien er første steg å dele opp veien der endringene skjer slik at oppdraget kan besvares for hvert veistrekk. Det kan ta tid før oppdrag for de nye veistrekkene vises. Vil du dele opp nå?"</string>
+    <string name="quest_split_way_description">"Hvis det endrer seg langs veien er første steg å dele opp veien der endringene skjer slik at oppdraget kan besvares for hvert veistrekk. Vil du dele opp nå?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_split_way_tutorial">"Trykk på veien for å splitte den ved stedet/stedene der svarene avviker. Prøv å være så presis som mulig (zoom inn)."</string>
@@ -1946,8 +1943,13 @@ aktiv"</string>
     <string name="quest_address_street_place_name_label">"Stedsnavn:"</string>
     <string name="quest_address_street_description">"Trykk på gaten på kartet eller legg det til uten
 forkortelser i feltet nedenfor:"</string>
-    <string name="quest_buildingLevels_address_title">"Hvor mange etasjer har bygningen med nummer %s?"</string>
     <string name="quest_recycling_type_cooking_oil">"Matolje"</string>
     <string name="quest_recycling_type_engine_oil">"Motorolje"</string>
     <string name="about_title_sponsors">"Sponsorer"</string>
+    <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
+    <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
+    <string name="at_housename">"Husnavn %s:"</string>
+    <string name="at_conscription_and_street_number">"Konskripsjonsnummer %1$s, Orienteringsnummer %2$s:"</string>
+    <string name="at_conscription_number">"Konskripsjonsnummer %s:"</string>
+    <string name="at_housenumber">"Husnummer %s:"</string>
 </resources>

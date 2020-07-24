@@ -1372,9 +1372,6 @@ Na przykład 1,3 lub 2-6."</string>
     <string name="quest_buildingType_semi_detached_description">"dom bliźniak"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_terrace">"Szeregowiec"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_terrace_description">"rząd podobnych budynków jednorodzinnych"</string>
 
     <!-- Fuzzy -->
@@ -1796,9 +1793,6 @@ Na przykład 1,3 lub 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_split_way_description">"Jeśli nawierzchnia jest różna w poszczególnych częściach to pierwszym krokiem jest podzielenie drogi na fragmenty. Gdy to się zrobi będzie możliwe odpowiedzenie na to pytanie dla każdego fragmentu z osobna.
-
-Pytania dla poszczególnych fragmentów mogą się pojawić z sporym opóźnieniem.
-
 Podzielić?"</string>
 
     <!-- Fuzzy -->
@@ -2309,9 +2303,6 @@ Pamiętaj, że ta aplikacja pyta o numer budynku tylko po tym, jak zostanie okre
     <string name="quest_address_street_no_named_streets">"Nie należy do nazwanej ulicy"</string>
     <string name="quest_address_street_place_name_label">"Nazwa miejscowości/miejsca:"</string>
     <string name="quest_address_street_description">"Dotkniej mapy na drodze do której należy lub wpisz pełną nazwę w polu poniżej:"</string>
-    <string name="quest_buildingLevels_address_title">"Ile kondygnacji ma budynek o niumerze %s?"</string>
-    <string name="quest_roofShape_address_title">"Jaki ogólny kształt dachu ma ten budynek o numerze %s?"</string>
-    <string name="quest_buildingType_address_title">"Jakim rodzajem budynku jest ten o numerze %s?"</string>
     <string name="quest_recycling_type_cooking_oil">"Olej jadalny"</string>
     <string name="quest_recycling_type_engine_oil">"Olej silnikowy"</string>
     <string name="link_photon_description">"Wyszukiwarka będąca ulepszoną wersją Nominatim z wsparciem dla podpowiedzi w czasie pisania i z autokorektą"</string>
@@ -2319,4 +2310,10 @@ Pamiętaj, że ta aplikacja pyta o numer budynku tylko po tym, jak zostanie okre
     <string name="link_qwant_maps_description">"Mapa umożliwiająca wyszukiwanie miejsc i tras"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt;By wyświetlić mapę przygotowane dane pobierane są z %1$s. Zobacz ich &lt;a href=\"%2$s\"&gt;politykę prywatności&lt;/a&gt; by uzyskać pełne informacje.&lt;/p&gt;"</string>
     <string name="about_title_sponsors">"Sponsorzy"</string>
+    <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
+    <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
+    <string name="at_housename">"Nazwa budynku %s:"</string>
+    <string name="at_conscription_and_street_number">"Numer konskrypcyjny %1$s, numer orientacyjny %2$s:"</string>
+    <string name="at_conscription_number">"Numer konskrypcyjny %s:"</string>
+    <string name="at_housenumber">"Numer domu %s:"</string>
 </resources>

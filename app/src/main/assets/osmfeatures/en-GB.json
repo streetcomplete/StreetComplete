@@ -763,9 +763,6 @@
         "public_transport/stop_position_aerialway": {
             "name": "Aerialway Stopping Location"
         },
-        "playground/climbing_frame": {
-            "name": "Climbing Frame"
-        },
         "man_made/chimney": {
             "name": "Chimney"
         },
@@ -1044,9 +1041,6 @@
         },
         "highway/street_lamp": {
             "name": "Street Light"
-        },
-        "playground/zipwire": {
-            "name": "Zip Wire"
         },
         "tourism/theme_park": {
             "name": "Theme Park"
@@ -2320,9 +2314,6 @@
         },
         "emergency/official": {
             "name": "Emergency Access Official"
-        },
-        "playground/sandpit": {
-            "name": "Sandpit"
         },
         "railway/derail": {
             "name": "Railway Derailer"

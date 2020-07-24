@@ -1302,9 +1302,7 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
 
     <!-- Fuzzy -->
     <string name="quest_construction_building_title">"Je stavba této budovy dokončená?"</string>
-
-    <!-- Fuzzy -->
-    <string name="questList_disabled_in_country">"Nezobrazuje se v %s (data jsou načtena z katastru)"</string>
+    <string name="questList_disabled_in_country">"Nezobrazuje se v %s"</string>
 
     <!-- Fuzzy -->
     <string name="quest_toiletAvailability_rest_area_title">"Má tato odpočívka toaletu?"</string>
@@ -1378,9 +1376,6 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_semi_detached_description">"pár dvou rodinných domů spojených zdí"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_terrace">"Řadový dům"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_terrace_description">"řada podobně vypadajících rodinných domů"</string>
@@ -1804,7 +1799,8 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_generic_answer_differs_along_the_way">"V různých částech různý..."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_split_way_description">"Pokud má cesta v různých částech různý povrch, je dobré ji nejdříve rozdělit a pak odpovědět na samostatné úkoly v každé její části. Vemte na vědomí, že úkoly pro jednotlivé části se mohou zobrazit mnohem později. Chcete cestu rozdělit?"</string>
+    <string name="quest_split_way_description">"Pokud má cesta v různých částech různý povrch, je dobré ji nejdříve rozdělit a pak odpovědět na samostatné úkoly v každé její části.
+Chcete cestu rozdělit?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_split_way_tutorial">"Klepněte na cestu pro její rozdělení v bodě(-ech), kde se odpovědi liší. Pokuste se být co nejpřesnější. Jako obvykle můžete použít zoom."</string>
@@ -2320,9 +2316,6 @@ It is not big issue, but it would be nice to have it correctly. -->
     <string name="quest_address_street_no_named_streets">"Nepatří k žádné pojmenované ulici"</string>
     <string name="quest_address_street_place_name_label">"Název místa:"</string>
     <string name="quest_address_street_description">"Klepněte na mapě na ulici, ke které patří, nebo ji zadejte bez zkratek do pole níže:"</string>
-    <string name="quest_buildingLevels_address_title">"Kolik podlaží má budova s číslem %s?"</string>
-    <string name="quest_roofShape_address_title">"Jaký základní tvar střechy má budova s číslem %s?"</string>
-    <string name="quest_buildingType_address_title">"Jaký typ budovy je číslo %s?"</string>
     <string name="quest_recycling_type_cooking_oil">"Olej na smažení "</string>
     <string name="quest_recycling_type_engine_oil">"Motorový olej "</string>
     <string name="link_photon_description">"Samostatné rozšíření pro Nominatim, umožňující vyhledávání s opravami (fuzzy search) a našeptáváním"</string>
@@ -2333,4 +2326,29 @@ It is not big issue, but it would be nice to have it correctly. -->
     <string name="privacy_html_tileserver2">"&lt;p&gt;Pro zobrazení mapy musí být staženy vektorové dlaždice z %1$s. Pro další informace se podívejte na jejich &lt;a href=\"%2$s\"&gt;prohlášení o ochraně soukromí&lt;/a&gt; .&lt;/p&gt;
 "</string>
     <string name="about_title_sponsors">"Sponzoři"</string>
+    <string name="quest_board_type_history">"O historii"</string>
+    <string name="quest_board_type_geology">"O geologii"</string>
+    <string name="quest_board_type_plants">"O rostlinách"</string>
+    <string name="quest_board_type_wildlife">"O zvířatech"</string>
+    <string name="quest_board_type_nature">"O přírodě (více témat)"</string>
+    <string name="quest_board_type_notice_board">"Je to místní nástěnka"</string>
+    <string name="quest_board_type_public_transport">"Veřejná doprava"</string>
+    <string name="quest_board_type_title">"Jaké informace jsou na této informační ceduli?"</string>
+    <string name="quest_sidewalk_separately_mapped">"Ano, zobrazen(á) samostatně na mapě"</string>
+    <string name="quest_board_type_map">"Je na ní mapa"</string>
+    <string name="quest_board_type_map_title">"Je na ní jen a pouze mapa?"</string>
+    <string name="quest_board_type_map_description">"Pokud se cedule týká konkrétního tématu, specifikujte ho, prosím, bez ohledu na to, jestli je na ní i mapa. Například na cedulích týkajících se veřejné dopravy bývá mapa s trasami autobusů. Pokud nenaleznete téma mezi odpověďmi, zvažte, prosím, jestli nezanecháte poznámku."</string>
+    <string name="quest_surface_detailed_answer_impossible">"Více povrchů..."</string>
+    <string name="quest_surface_detailed_answer_impossible_confirmation">"Jste si jisti, že nelze specifikovat povrch? Všimněte si odpovědi „V různých částech různý...“, pomocí které lze rozdělit cestu tam, kde se mění povrch. Odpověď „Nedá se to určit“ použijte tam, kde se jeden povrch, ale není mezi odpověďmi."</string>
+    <string name="quest_surface_detailed_answer_impossible_description">"Prosím v krátkosti specifikujte zdejší povrch, např. „Písečný se záplatami dlažebních kostek“. Maximální délka textu je 255 znaků."</string>
+    <string name="quest_surface_detailed_name_title">"Jaký konkrétní povrch má tady cesta %s?"</string>
+    <string name="quest_surface_detailed_square_name_title">"Jaký konkrétní povrch má tady náměstí %s?"</string>
+    <string name="quest_surface_detailed_title">"Jaký konkrétní povrch má tento kus cesty?"</string>
+    <string name="quest_surface_detailed_square_title">"Jaký konkrétní povrch má tady tohle náměstí?"</string>
+    <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
+    <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
+    <string name="at_housename">"Jméno budovy %s:"</string>
+    <string name="at_conscription_and_street_number">"Číslo popisné %1$s, orientační číslo %2$s:"</string>
+    <string name="at_conscription_number">"Číslo popisné %s:"</string>
+    <string name="at_housenumber">"číslo popisné %s:"</string>
 </resources>

@@ -1373,9 +1373,6 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="quest_buildingType_semi_detached_description">"coppia di due case unifamiliari"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_terrace">"Villa a schiera"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_terrace_description">"abitazioni simili e unifamiliari in fila"</string>
 
     <!-- Fuzzy -->
@@ -1794,7 +1791,8 @@ Altrimenti, è possibile scaricare un'altra tastiera nell'archivio di app. Le ta
     <string name="quest_generic_answer_differs_along_the_way">"Cambia lungo il tragitto..."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_split_way_description">"Se cambia lungo il tragitto la prima cosa da fare è suddividere il percorso. Dopo di che sarà possibile rispondere separatamente per ogni tratto. Tieni presente che le missioni per le parti divise potrebbero apparire dopo molto tempo. Suddividere?"</string>
+    <string name="quest_split_way_description">"Se cambia lungo il tragitto la prima cosa da fare è suddividere il percorso. Dopo di che sarà possibile rispondere separatamente per ogni tratto.
+Suddividere?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_split_way_tutorial">"Tocca il percorso da dividere dove la risposta cambia. Cerca di essere più preciso possibile; se necessario, come sempre, puoi ingrandire."</string>
@@ -2307,9 +2305,6 @@ riconoscimento"</string>
     <string name="quest_address_street_no_named_streets">"Non appartiene a una strada nota"</string>
     <string name="quest_address_street_place_name_label">"Nome del luogo:"</string>
     <string name="quest_address_street_description">"Premi la strada sulla mappa a cui appartiene o inseriscila senza abbreviazioni qui sotto:"</string>
-    <string name="quest_buildingLevels_address_title">"Quanti piani ha l'edificio al numero %s?"</string>
-    <string name="quest_roofShape_address_title">"Quale forma base ha il tetto dell'edificio al numero %s?"</string>
-    <string name="quest_buildingType_address_title">"Che tipo di edificio è il numero %s?"</string>
     <string name="quest_recycling_type_cooking_oil">"Oli alimentari"</string>
     <string name="quest_recycling_type_engine_oil">"Oli lubrificanti"</string>
     <string name="link_photon_description">"Un’estensione stand-alone di Nominatim con funzioni di ricerca fuzzy e cerca-mentre-scrivi"</string>
@@ -2317,4 +2312,10 @@ riconoscimento"</string>
     <string name="link_qwant_maps_description">"Una mappa con luoghi da cercare e navigazione"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt;I tasselli vettoriali per mostrare la mappa sono presi da %1$s. Leggi la loro &lt;a href=\"%2$s\"&gt;informativa sulla privacy&lt;/a&gt;per maggiori informazioni.&lt;/p&gt;"</string>
     <string name="about_title_sponsors">"Sponsor"</string>
+    <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
+    <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
+    <string name="at_housename">"Nome della casa %s:"</string>
+    <string name="at_conscription_and_street_number">"Numero di coscrizione %1$s, orientamento dei numero %2$s:"</string>
+    <string name="at_conscription_number">"Numero di coscrizione %s:"</string>
+    <string name="at_housenumber">"numero civico %s:"</string>
 </resources>

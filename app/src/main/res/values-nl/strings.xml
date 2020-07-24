@@ -942,7 +942,7 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetse
     <string name="quest_address_answer_house_name">"Geen huisnummer maar een naam…"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_address_house_name_label">"Naam van het gebouw"</string>
+    <string name="quest_address_house_name_label">"Naam van het gebouw:"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingLevels_roofLevelsLabel2">"aantal etages in het dak"</string>
@@ -1060,7 +1060,7 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetse
     <string name="default_disabled_msg_go_inside">"Dit type vraag is standaard uitgeschakeld omdat je voor het antwoord waarschijnlijk de locatie moet binnengaan. "</string>
 
     <!-- Fuzzy -->
-    <string name="quest_housenumber_conscription_number">"District- of conscriptiegetal (voor Tsjechië en Slovakije)"</string>
+    <string name="quest_housenumber_conscription_number">"District- of conscriptiegetal"</string>
 
     <!-- Fuzzy -->
     <string name="quest_housenumber_street_number_optional">"Oriëntatiegetal (voor Tsjechië en Slovakije)"</string>
@@ -1377,9 +1377,6 @@ Bijvoorbeeld 1m3 of 2-6."</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_semi_detached_description">"Twee eensgezinswoningen die een gemeenschappelijke muur hebben, maar voor de rest losstaan"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_buildingType_terrace">"Rijhuis"</string>
 
     <!-- Fuzzy -->
     <string name="quest_buildingType_terrace_description">"Een rij van gelijkaardige eensgezinswoningen"</string>
@@ -1802,7 +1799,7 @@ Bijvoorbeeld 1m3 of 2-6."</string>
     <string name="quest_generic_answer_differs_along_the_way">"Verschilt onderweg"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_split_way_description">"Als het onderweg verschilt is de eerste stap om de weg te splitsen. Nadat de weg gesplitst is kan de vraag voor ieder deel apart beantwoord worden. Le op! De vragen voor de gesplitste delen komen mogelijk pas veel later. Nu splitsen? "</string>
+    <string name="quest_split_way_description">"Als het onderweg verschilt is de eerste stap om de weg te splitsen. Nadat de weg gesplitst is kan de vraag voor ieder deel apart beantwoord worden. Nu splitsen?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_split_way_tutorial">"Tik op die punten van de weg waar het antwoord veranderd. Probeer zo precies mogelijk te zijn. Je kan als normaal inzoemen. "</string>
@@ -2299,9 +2296,6 @@ Let op dat deze app alleen naar het huisnummer van een gebouw vraagt nadat zijn 
     <string name="quest_address_street_no_named_streets">"Het hoort niet tot een straat met een naam."</string>
     <string name="quest_address_street_place_name_label">"Plaatsnaam"</string>
     <string name="quest_address_street_description">"Tik op de weg waartoe deze behoort op de kaart of voer deze in zonder afkortingen in het onderstaande veld:"</string>
-    <string name="quest_buildingLevels_address_title">"Hoeveel etages heeft het gebouw met huisnummer %s ?"</string>
-    <string name="quest_roofShape_address_title">"Welke vorm heeft het dak met huisnummer %s ?"</string>
-    <string name="quest_buildingType_address_title">"Wat voor soort gebouw is huisnummer %s ?"</string>
     <string name="quest_recycling_type_cooking_oil">"Kookolie"</string>
     <string name="quest_recycling_type_engine_oil">"Motorolie"</string>
     <string name="link_photon_description">"Een zoekopdracht naar Nomatim met algemeen zoeken en zoeken terwijl u typt"</string>
@@ -2309,4 +2303,31 @@ Let op dat deze app alleen naar het huisnummer van een gebouw vraagt nadat zijn 
     <string name="link_qwant_maps_description">"Een kaart met doorzoekbare plaatsen en routebeschrijvingen"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt; Om de kaart weer te geven, worden vectortegels opgehaald uit %1$s. Zie hun &lt;a href=\"%2$s\"&gt; privacy-verklaring &lt;/a&gt; voor meer informatie. &lt;/p&gt;"</string>
     <string name="about_title_sponsors">"Sponsors"</string>
+    <string name="quest_board_type_history">"Historie"</string>
+    <string name="quest_board_type_geology">"Geologie"</string>
+    <string name="quest_board_type_plants">"Planten"</string>
+    <string name="quest_board_type_wildlife">"Wild"</string>
+    <string name="quest_board_type_nature">"Natuur (verschillende onderwerpen)"</string>
+
+    <!-- what type of Notice Board is meant? a sign board, a pin-up board, a bill board? -->
+    <string name="quest_board_type_notice_board">"Het is een bord voor bekendmakingen"</string>
+    <string name="quest_board_type_public_transport">"Openbaar Vervoer"</string>
+    <string name="quest_board_type_title">"Wat is het onderwerp van dit informatiebord?"</string>
+    <string name="quest_sidewalk_separately_mapped">"ja, afzonderlijk op de kaart aangegeven."</string>
+    <string name="quest_board_type_map">"het is een kaart"</string>
+    <string name="quest_board_type_map_title">"Is het alleen een kaart"</string>
+    <string name="quest_board_type_map_description">"Als het bord over een bepaald onderwerp gaat, geef dit dan aan, ongeacht of het ook een kaart bevat. Zo kan een OV-bord een busroutekaart hebben. Als het onderwerp niet tussen de beschikbare antwoorden staat, overweeg dan om een notitie achter te laten."</string>
+    <string name="quest_surface_detailed_answer_impossible">"Meerdere soorten bedekkingen"</string>
+    <string name="quest_surface_detailed_answer_impossible_confirmation">"Weet u zeker dat het onmogelijk is om het bedekking te specificeren? Let op de antwoordoptie \"Verschilt onderweg\" waarmee u de weg kunt snijden waar de bedekking verandert. Gebruik a.u.b. \"Kan niet zeggen\" als er één bedekking is maar het is niet beschikbaar als antwoord."</string>
+    <string name="quest_surface_detailed_answer_impossible_description">"Geef hier in het kort de aard van het bedekking aan, bijvoorbeeld \"zanderig met geplaveide plekken\". De tekstlengte is beperkt tot 255 tekens."</string>
+    <string name="quest_surface_detailed_name_title">"Welk specifieke bedekking heeft de weg %s hier?"</string>
+    <string name="quest_surface_detailed_square_name_title">"Welk specifieke bedekking heeft het plein %s hier?"</string>
+    <string name="quest_surface_detailed_title">"Welk specifieke bedekking heeft dit stuk weg hier?"</string>
+    <string name="quest_surface_detailed_square_title">"Welk specifieke bedekking heeft dit plein?"</string>
+    <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
+    <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
+    <string name="at_housename">"Naam van het gebouw %s:"</string>
+    <string name="at_conscription_and_street_number">"District- of conscriptiegetal %1$s, oriëntatiegetal %2$s:"</string>
+    <string name="at_conscription_number">"District- of conscriptiegetal %s:"</string>
+    <string name="at_housenumber">"huisnummer %s:"</string>
 </resources>

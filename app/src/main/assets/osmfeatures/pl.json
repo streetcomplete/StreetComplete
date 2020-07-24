@@ -1,7 +1,7 @@
 {
     "presets": {
         "amenity/parking/park_ride": {
-            "name": "Parking \"parkuj i jedź\"",
+            "name": "Parking „Parkuj i Jedź”",
             "terms": "parking parkuj i jedź, park & ride, p&r"
         },
         "place/city": {
@@ -362,7 +362,7 @@
             "terms": "strzelnica golfowa"
         },
         "highway/path/boardwalk": {
-            "name": "Chodnik z desek",
+            "name": "Drewniany wyniesiony chodnik",
             "terms": "chodnik z desek, drewniany chodnik, mostek dla pieszych, ścieżka dla pieszych"
         },
         "leisure/fishing": {
@@ -573,7 +573,7 @@
             "terms": "odzież używana, lumpeks, ciuchland, ciucholand, ciuchy, ubrania"
         },
         "highway/footway": {
-            "name": "Droga/ścieżka dla pieszych",
+            "name": "Chodnik/ścieżka dla pieszych",
             "terms": "pobocze,bulwar,ścieżka,deptak,szosa,spacer,chodnik"
         },
         "natural/tree_row": {
@@ -1196,7 +1196,7 @@
         },
         "highway/footway/sidewalk": {
             "name": "Chodnik przy jezdni",
-            "terms": "chodnik, droga dla pieszych"
+            "terms": "chodnik"
         },
         "power/generator/source/hydro": {
             "name": "Turbina wodna",
@@ -1377,6 +1377,10 @@
         "attraction/bungee_jumping": {
             "name": "Skoki na bungee",
             "terms": "bungee"
+        },
+        "shop/model": {
+            "name": "Sklep modelarski",
+            "terms": "sklep modelarski, sklep z modelami, modelarstwo, modele, hobby, gry, zabawki"
         },
         "railway/signal": {
             "name": "Semafor",
@@ -2021,6 +2025,10 @@
             "name": "Bliźniak",
             "terms": "Dom bliźniaczy"
         },
+        "type/destination_sign": {
+            "name": "Tablica kierunku i miejscowości",
+            "terms": "tablica kierunku i miejscowości, znak kierunku i miejscowości, tablica kierunkowa, tablica szlaku drogowego, tablica przeddrogowskazowa, drogowskaz tablicowy, znak drogowy"
+        },
         "shop/clothes/wedding": {
             "name": "Salon sukien ślubnych",
             "terms": "salon sukien ślubnych, suknie ślubne, sukienki ślubne, odzież, ubrania"
@@ -2110,7 +2118,7 @@
         },
         "landuse/quarry": {
             "name": "Kamieniołom",
-            "terms": "kamieniołom, żwirownia, kruszywo,kopalnia odkrywkowa,kopalnia piasku"
+            "terms": "kamieniołom, żwirownia, kruszywo, kopalnia odkrywkowa, kopalnia piasku, kopalnia, odkrywka"
         },
         "public_transport/platform/subway_point": {
             "name": "Przystanek / Peron metra"
@@ -2258,7 +2266,7 @@
         },
         "playground/sandpit": {
             "name": "Piaskownica",
-            "terms": "piaskownica"
+            "terms": "piaskownica, piasek, plac zabaw"
         },
         "leisure/bowling_alley": {
             "name": "Kręgielnia",
@@ -2722,7 +2730,7 @@
         },
         "landuse/industrial": {
             "name": "Teren przemysłowy",
-            "terms": "Obszar przemysłowy"
+            "terms": "Obszar przemysłowy, kopalnia, huta, przemysł"
         },
         "tourism/hostel": {
             "name": "Schronisko lub hostel",
@@ -3347,7 +3355,7 @@
         },
         "playground/climbing_frame": {
             "name": "Drabinki",
-            "terms": "drabinki, wspinaczka, konstrukcja do wspinania"
+            "terms": "drabinki, wspinaczka, konstrukcja do wspinania, plac zabaw"
         },
         "tourism/artwork/mural": {
             "name": "Mural",
@@ -3585,7 +3593,7 @@
         },
         "playground/zipwire": {
             "name": "Zjazd linowy",
-            "terms": "zjazd linowy"
+            "terms": "zjazd linowy, plac zabaw"
         },
         "tourism/theme_park": {
             "name": "Park rozrywki",
@@ -4744,7 +4752,7 @@
         },
         "building/shed": {
             "name": "Szopa",
-            "terms": "wiata"
+            "terms": "szopa, wiata"
         },
         "craft/parquet_layer": {
             "name": "Kładzenie parkietów",
@@ -4753,6 +4761,10 @@
         "building/detached": {
             "name": "Dom wolnostojący",
             "terms": "dom jednorodzinny"
+        },
+        "entrance/emergency_ward_entrance": {
+            "name": "Wejście do oddziału ratunkowego",
+            "terms": "wejście do oddziału ratunkowego, oddział ratunkowy, szpitalny oddział ratunkowy, sor, pogotowie ratunkowe"
         },
         "healthcare/occupational_therapist": {
             "name": "Terapeuta zajęciowy",
@@ -4984,7 +4996,7 @@
         },
         "leisure/nature_reserve": {
             "name": "Rezerwat przyrody",
-            "terms": "rezerwat"
+            "terms": "rezerwat przyrody, park krajobrazowy"
         },
         "shop/antiques": {
             "name": "Antykwariat",
@@ -5116,7 +5128,7 @@
         },
         "landuse/meadow": {
             "name": "Łąka/pastwisko",
-            "terms": "łąka,pastwisko"
+            "terms": "łąka, pastwisko, rozłóg, wygon, nieużytki, polana, pole, zieleń"
         },
         "military/office": {
             "name": "Biuro wojskowe",

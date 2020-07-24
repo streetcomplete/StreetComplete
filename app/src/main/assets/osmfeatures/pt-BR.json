@@ -507,8 +507,8 @@
             "terms": "sikhi, religião, siquismo, sikhismo, templo sikhi,"
         },
         "amenity/social_facility/food_bank": {
-            "name": "Banco de Alimentos",
-            "terms": "Banco de Alimentos"
+            "name": "Banco de alimentos",
+            "terms": "Banco de alimentos"
         },
         "craft/signmaker": {
             "name": "Criador de sinais",
@@ -604,6 +604,10 @@
         "amenity/vacuum_cleaner": {
             "name": "Estação de aspiração",
             "terms": "Estação de aspiração"
+        },
+        "aeroway/jet_bridge": {
+            "name": "Jetway",
+            "terms": "Jetway"
         },
         "natural/reef": {
             "name": "Recife",
@@ -1219,8 +1223,8 @@
             "terms": "Joalheria"
         },
         "highway/trunk_link": {
-            "name": "Ligação de Via Expressa",
-            "terms": "Acesso a Via Expressa"
+            "name": "Ligação Troncal",
+            "terms": "Acesso Troncal, Acesso a Via Troncal"
         },
         "shop/bookmaker": {
             "name": "Casa de Apostas",
@@ -1303,6 +1307,10 @@
         "man_made/bridge": {
             "name": "Área da ponte",
             "terms": "Área da ponte"
+        },
+        "shop/supermarket/organic": {
+            "name": "Supermercado orgânico",
+            "terms": "Supermercado orgânico"
         },
         "office/physician": {
             "name": "Médico"
@@ -1440,7 +1448,7 @@
             "terms": "Lugarejo, vilarejo, vila, aldeia"
         },
         "club": {
-            "name": "Clube de interesses ou hobby",
+            "name": "Clube",
             "terms": "aeromodelismo, radioamador, filatelia, xadrez, astronomia, automobilismo, associação, fã-clube, fã, templo maçônico, maçonaria, maçom, caça, motociclismo, moto clube,nudismo, fotografia, escoteiro, escotismo, hobby, sociedade,"
         },
         "highway": {
@@ -1688,8 +1696,8 @@
             "terms": "Loja de Tiro, Loja de Equipamentos de Tiro"
         },
         "highway/trunk": {
-            "name": "Via Expressa",
-            "terms": "Via Expressa, Via rápida"
+            "name": "Via Troncal",
+            "terms": "Via Troncal"
         },
         "amenity/clock/sundial": {
             "name": "Relógio de sol",
@@ -2008,6 +2016,10 @@
             "name": "Casa Geminada",
             "terms": "Casa irmanada"
         },
+        "type/destination_sign": {
+            "name": "Sinal de destino",
+            "terms": "Sinal de destino"
+        },
         "shop/clothes/wedding": {
             "name": "Loja de roupas de casamento",
             "terms": "Loja de roupas de casamento"
@@ -2244,8 +2256,8 @@
             "terms": "Caixa de correio"
         },
         "playground/sandpit": {
-            "name": "Caixa de Areia",
-            "terms": "tabuleiro de areia"
+            "name": "Caixa de areia",
+            "terms": "Caixa de areia"
         },
         "leisure/bowling_alley": {
             "name": "Pista de Boliche",
@@ -2391,6 +2403,10 @@
         "shop/car_repair": {
             "name": "Oficina Mecânica",
             "terms": "Oficina Automotiva, Carros, Automóveis"
+        },
+        "craft/hvac": {
+            "name": "Ambiente de trabalho de AVAC",
+            "terms": "Ambiente de trabalho de AVAC, Ambiente de trabalho de Aquecimento, Ventilação e Ar Condicionado"
         },
         "leisure/water_park": {
             "name": "Parque Aquático",
@@ -3335,6 +3351,10 @@
             "name": "Mural",
             "terms": "Mural"
         },
+        "railway/preserved": {
+            "name": "Caminho de ferro histórico",
+            "terms": "Caminho de ferro histórico"
+        },
         "man_made/chimney": {
             "name": "Chaminé",
             "terms": "Lareira, Forno, Fábrica, Indústria, Gás"
@@ -3386,6 +3406,10 @@
         "healthcare/midwife": {
             "name": "Parteira",
             "terms": "obstetra, obstetrícia, parteira, parto, clínica de obstetrícia, gravidez, gestante, gestação"
+        },
+        "amenity/cafe/bubble_tea": {
+            "name": "Chá de cafe com bolhas",
+            "terms": "Chá de cafe com bolhas"
         },
         "amenity/social_facility/ambulatory_care": {
             "name": "Ambulatório",
@@ -4035,7 +4059,7 @@
             "terms": "Passe de pesca"
         },
         "office/private_investigator": {
-            "name": "Escritório de Detetive Particular",
+            "name": "Escritório de detetive particular",
             "terms": "detetive particular, investigador privado"
         },
         "waterway/fuel": {
@@ -4200,8 +4224,8 @@
             "name": "Jardins do mosteiro"
         },
         "amenity/toilets/disposal/flush": {
-            "name": "Descarga",
-            "terms": "Descarga"
+            "name": "Banheiros com Descarga",
+            "terms": "Banheiro"
         },
         "highway/service/parking_aisle": {
             "name": "Corredor de Estacionamento",
@@ -4723,6 +4747,10 @@
             "name": "Casa Separada",
             "terms": "Moradia Isolada, Casa Isolada"
         },
+        "entrance/emergency_ward_entrance": {
+            "name": "Entrada do quarto de emergência",
+            "terms": "Entrada do quarto de emergência"
+        },
         "healthcare/occupational_therapist": {
             "name": "Terapeuta Ocupacional",
             "terms": "terapia ocupacional, clínica de terapia ocupacional, terapeuta, terapia"
@@ -4898,7 +4926,7 @@
             "terms": "Serra, Tergo, cumeadas, crista, inha de festo, linha de cumeada, eixo de cordilheira"
         },
         "natural": {
-            "name": "Recurso natural"
+            "name": "Feição da Natureza"
         },
         "aerialway/magic_carpet": {
             "name": "Esteira de Ski",

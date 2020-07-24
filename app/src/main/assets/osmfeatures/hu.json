@@ -1213,10 +1213,6 @@
         "public_transport/stop_position_aerialway": {
             "name": "Felvonó megállási pont"
         },
-        "playground/climbing_frame": {
-            "name": "Mászóka",
-            "terms": "mászóka,játék"
-        },
         "tourism/artwork/mural": {
             "name": "Freskó"
         },
@@ -1652,10 +1648,6 @@
             "name": "Utcai lámpa",
             "terms": "Közvilágítás, lámpa, utcai világítás, villanyoszlop"
         },
-        "playground/zipwire": {
-            "name": "Kötélcsúszda",
-            "terms": "kötél,csúszda"
-        },
         "tourism/theme_park": {
             "name": "Vidámpark",
             "terms": "vidámpark,élménypark,vurstli"
@@ -1918,9 +1910,6 @@
         },
         "office/bail_bond_agent": {
             "name": "Óvadékiroda"
-        },
-        "craft/agricultural_engines": {
-            "name": "Mezőgazdasági-gép szerelő"
         },
         "shop/lottery": {
             "name": "Lottózó",
@@ -3461,7 +3450,7 @@
             "name": "Kerékpárút és gyalogút"
         },
         "man_made/wastewater_plant": {
-            "name": "Szennyvíztelep",
+            "name": "Szennyvíztisztító telep",
             "terms": "Szennyvíztisztító üzem"
         },
         "landuse/plant_nursery": {
@@ -3732,10 +3721,6 @@
         },
         "emergency/official": {
             "name": "Hivatalosan vészhelyzeti használatra"
-        },
-        "playground/sandpit": {
-            "name": "Homokozó",
-            "terms": "homok,játék"
         },
         "railway/derail": {
             "name": "Vasúti kitérő",

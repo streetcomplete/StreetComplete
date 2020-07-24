@@ -158,7 +158,7 @@ Die von dir eingegebenen Informationen werden dann direkt in deinem Namen zu Ope
     <string name="crash_message">"Würdest du dem Entwickler bitte den Fehlerbericht senden?"</string>
     <string name="crash_title">"Oh nein, StreetComplete ist letztes Mal abgestürzt!"</string>
     <string name="crash_compose_email">"E-Mail verfassen"</string>
-    <string name="no_email_client">"Du hast keine E-Mail App installiert."</string>
+    <string name="no_email_client">"Du hast keine E-Mail-App installiert."</string>
     <string name="pref_title_keep_screen_on">"Bildschirm immer an"</string>
     <string name="download_server_error">"Fehler beim Suchen nach Aufgaben. Versuche es später noch einmal."</string>
     <string name="upload_server_error">"Fehler beim Hochladen der Antworten. Versuche es später noch einmal."</string>
@@ -504,7 +504,6 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_buildingType_detached_description">"Einfamilienhaus mit Garten rundherum"</string>
     <string name="quest_buildingType_semi_detached">"Doppelhaus"</string>
     <string name="quest_buildingType_semi_detached_description">"zwei aneinandergebaute Einfamilienhäuser"</string>
-    <string name="quest_buildingType_terrace">"Reihenhaus"</string>
     <string name="quest_buildingType_terrace_description">"eine lange Reihe aus ähnlichen Einfamilienhäusern"</string>
     <string name="quest_buildingType_hotel">"Hotelgebäude"</string>
     <string name="quest_buildingType_dormitory">"Wohnheim"</string>
@@ -595,7 +594,7 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_noteDiscussion_reopen2">"Wieder geöffnet von %1$s, %2$s"</string>
     <string name="quest_noteDiscussion_hide2">"Verborgen von %1$s, %2$s"</string>
     <string name="quest_railway_crossing_barrier_title">"Wie ist dieser Bahnübergang beschrankt?"</string>
-    <string name="quest_railway_crossing_barrier_none">"Garnicht"</string>
+    <string name="quest_railway_crossing_barrier_none">"Gar nicht"</string>
     <string name="privacy_html_image_upload2">"&lt;p&gt;Fotos, die an Notizen angehängt werden, werden auf meinen Server hochgeladen und einige Tage nachdem die Notiz geschlossen wurde, gelöscht. Ihre Metadaten werden vor dem Hochladen entfernt.&lt;/p&gt;"</string>
     <string name="action_deselect_all">"Alle abwählen"</string>
     <string name="quest_buildingType_retail_description">"inklusive Gebäude für Restaurants, Cafés, …"</string>
@@ -658,7 +657,6 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_cyclewayPartSurface_title">"Welche Oberfläche hat der Fahrradweg hier?"</string>
     <string name="quest_generic_answer_differs_along_the_way">"Entlang des Weges unterschiedlich…"</string>
     <string name="quest_split_way_description">"Wenn es entlang des Weges unterschiedlich ist, ist der erste Schritt, den Weg aufzuspalten. Danach kann die Aufgabe für jeden Teil davon getrennt beantwortet werden.
-Beachte, dass die Aufgaben für die aufgespaltenen Teile möglicherweise erst viel später erscheinen.
 Jetzt aufspalten?"</string>
     <string name="quest_split_way_tutorial">"Drücke auf den Weg, um ihn an den Punkt(en), wo die Antwort unterschiedlich ist, aufzuspalten. Versuche, möglichst genau zu sein, Du kannst wie immer frei hereinzoomen."</string>
     <string name="quest_split_way_too_imprecise">"Bitte zoome weiter herein"</string>
@@ -735,7 +733,7 @@ Jetzt aufspalten?"</string>
 Du kannst dann sofort anfangen, diese zu lösen. Später kannst du dich einloggen, um deine Antworten zu veröffentlichen."</string>
     <string name="tutorial_stay_safe">"Immer wenn du dir unsicher bist, kannst du mit „Nicht beantwortbar“ antworten und stattdessen eine Notiz hinterlassen.
 
-Zu guter letzt, vergiss nicht dich nicht in Gefahr zu begeben: Achte auf deine Umgebung und betritt kein Privatgelände."</string>
+Zu guter Letzt, vergiss nicht, dich nicht in Gefahr zu begeben: Achte auf deine Umgebung und betritt kein Privatgelände."</string>
     <string name="tutorial_happy_mapping">"Viel Spaß beim Kartieren!"</string>
     <string name="achievements_empty">"Du hast bisher noch keine Erfolge"</string>
     <string name="links_empty">"Du hast noch keine Links"</string>
@@ -841,9 +839,6 @@ Erfolge"</string>
     <string name="quest_address_street_no_named_streets">"Zu keiner mit Namen"</string>
     <string name="quest_address_street_place_name_label">"Ortsname:"</string>
     <string name="quest_address_street_description">"Tippe die entsprechende Straße auf der Karte an oder gib den Straßennamen ohne Abkürzungen im Feld unten ein:"</string>
-    <string name="quest_buildingLevels_address_title">"Wie viele Stockwerke hat das Gebäude mit der Hausnummer %s?"</string>
-    <string name="quest_roofShape_address_title">"Welche grundlegende Dachform hat das Gebäude mit der Hausnummer %s?"</string>
-    <string name="quest_buildingType_address_title">"Was für ein Gebäude ist die Hausnummer %s?"</string>
     <string name="quest_recycling_type_cooking_oil">"Speiseöl"</string>
     <string name="quest_recycling_type_engine_oil">"Motoröl"</string>
     <string name="link_photon_description">"Eine eigenständige Erweiterung zu Nominatim, mit fuzzy Suche und Suche während der Eingabe"</string>
@@ -851,4 +846,33 @@ Erfolge"</string>
     <string name="link_qwant_maps_description">"Eine Karte mit suchbaren POIs und Routenplaner"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt;Um die Karte anzuzeigen werden Vektordaten von %1$s heruntergeladen. Sie deren &lt;a href=\"%2$s\"&gt;Datenschutzbestimmungen&lt;/a&gt; für weitere Informationen ein.&lt;/p&gt;"</string>
     <string name="about_title_sponsors">"Sponsoren"</string>
+    <string name="quest_board_type_history">"Geschichte"</string>
+    <string name="quest_board_type_geology">"Geologie"</string>
+    <string name="quest_board_type_plants">"Pflanzen"</string>
+    <string name="quest_board_type_wildlife">"Tierwelt"</string>
+    <string name="quest_board_type_nature">"Natur (allgemein)"</string>
+    <string name="quest_board_type_notice_board">"Es ist eine Anschlagtafel"</string>
+    <string name="quest_board_type_public_transport">"ÖPNV"</string>
+    <string name="quest_board_type_title">"Worum geht es auf dieser Tafel?"</string>
+    <string name="quest_sidewalk_separately_mapped">"Ja, auf Karte separat abgebildet"</string>
+    <string name="quest_board_type_map">"Es ist eine Karte"</string>
+    <string name="quest_board_type_map_title">"Ist es einzig eine Karte?"</string>
+    <string name="quest_board_type_map_description">"Wenn es auf der der Tafel um ein bestimmtes Thema geht, bitte gib es an, egal ob da auch eine Karte mit dabei ist. Zum Beispiel mag eine Tafel zum öffentlichen Nahverkehr auch eine Verkehrsnetzkarte beinhalten. Wenn das Thema nicht bei den zur Verfügung stehenden Antworten dabei ist, hinterlasse bitte stattdessen eine Notiz."</string>
+    <string name="quest_surface_detailed_answer_impossible">"Mehrere Oberflächen…"</string>
+    <string name="quest_surface_detailed_answer_impossible_confirmation">"Bist du dir sicher dass man die genaue Oberfläche nicht angeben kann? Du kannst auch \"Entlang des Weges unterschiedlich…\" antworten um den Weg dort aufzuspalten wo sich die Oberfläche ändert. Bitte nutze \"Nicht beantwortbar\" wenn es eine Oberfläche hat, die nicht als Antwort zur Verfügung steht."</string>
+    <string name="quest_surface_detailed_answer_impossible_description">"Bitte beschreibe kurz die Beschaffenheit der Oberfläche, zum Beispiel \"sandig mit vereinzeltem Kopfsteinpflaster\". Der Text hat eine maximale Länge von 255 Zeichen."</string>
+    <string name="quest_surface_detailed_name_title">"Welche Oberfläche hat die Straße %s hier genau?"</string>
+    <string name="quest_surface_detailed_square_name_title">"Welche Oberfläche hat der Platz %s hier genau?"</string>
+    <string name="quest_surface_detailed_title">"Welche Oberfläche hat dieser Straßenabschnitt hier genau?"</string>
+    <string name="quest_surface_detailed_square_title">"Welche Oberfläche hat dieser Platz hier genau?"</string>
+    <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
+    <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
+    <string name="quest_streetName_menuItem_international">"international"</string>
+    <string name="quest_streetName_menuItem_romanized">"in lateinischem Schriftsystem"</string>
+    <string name="quest_buildingType_terrace2">"Reihenhäuser"</string>
+    <string name="quest_oneway_tutorial">"Die Straße auf der Abbildung ist genauso gedreht wie auf der Karte an der Position des Pins. Beachte die gezeigte Richtung."</string>
+    <string name="at_housename">"Hausname %s:"</string>
+    <string name="at_conscription_and_street_number">"Konskriptionsnummer %1$s, Orientierungsnummer %2$s:"</string>
+    <string name="at_conscription_number">"Konskriptionsnummer %s:"</string>
+    <string name="at_housenumber">"Hausnummer %s:"</string>
 </resources>

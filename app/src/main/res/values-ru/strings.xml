@@ -1374,9 +1374,6 @@
     <string name="quest_buildingType_semi_detached_description">"для проживания двух семей"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_terrace">"Жилые дома блокированной застройки"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_terrace_description">"Расположенные в ряд однотипные жилые дома на 1 семью, блокированные друг с другом боковыми стенами"</string>
 
     <!-- Fuzzy -->
@@ -1796,7 +1793,7 @@
     <string name="quest_generic_answer_differs_along_the_way">"Отличается на разных участках (необходимо разбить линию на части)"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_split_way_description">"Если ответ отличается на разных участках этой дороги, тогда необходимо разбить её на части. После этого можно будет снова ответить на вопрос, уже для каждой из частей. Обратите внимание, в случае разделения линии на части, задание для каждой из частей может появиться несколько позже.
+    <string name="quest_split_way_description">"Если ответ отличается на разных участках этой дороги, тогда необходимо разбить её на части. После этого можно будет снова ответить на вопрос, уже для каждой из частей.
 Разбиваем на части?"</string>
 
     <!-- Fuzzy -->
@@ -2274,4 +2271,10 @@
     <string name="user_profile_days_active">"Активных дней"</string>
     <string name="quest_recycling_type_cooking_oil">"масло для приготовления пищи"</string>
     <string name="quest_recycling_type_engine_oil">"моторное масло"</string>
+    <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
+    <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
+    <string name="at_housename">"Название дома %s:"</string>
+    <string name="at_conscription_and_street_number">"Сквозная нумерация %1$s, Ориентировочный номер %2$s:"</string>
+    <string name="at_conscription_number">"Сквозная нумерация %s:"</string>
+    <string name="at_housenumber">"номер дома %s:"</string>
 </resources>

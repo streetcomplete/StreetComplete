@@ -1370,9 +1370,6 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="quest_buildingType_semi_detached_description">"Két családi ház egybeépítve"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_terrace">"Sorház"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_terrace_description">"hasonló, egybeépített családi házakból álló sor"</string>
 
     <!-- Fuzzy -->
@@ -1788,10 +1785,10 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="quest_cyclewayPartSurface_title">"Milyen a burkolata itt a kerékpárútnak?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_generic_answer_differs_along_the_way">"Az út mentén változik..."</string>
+    <string name="quest_generic_answer_differs_along_the_way">"Az út mentén változik…"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_split_way_description">"Ha az út mentén változik, akkor először fel kell osztani az utat. Utána a kérdést meg tudod válaszolni az egyes darabokra külön-külön. Lehet, hogy a darabokra vonatkozó új kérdések esetleg jóval később jelennek meg. Felosztod most?"</string>
+    <string name="quest_split_way_description">"Ha az út mentén változik, akkor először fel kell osztani az utat. Utána a kérdést meg tudod válaszolni az egyes darabokra külön-külön. Felosztod most?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_split_way_tutorial">"Koppints az út azon pontja(i)ra, ahol a válasz megváltozik. Próbálj meg a lehető legpontosabb lenni, ráközelíthetsz, mint mindig."</string>
@@ -2304,9 +2301,6 @@ szintek"</string>
     <string name="quest_address_street_no_named_streets">"Egyetlen elnevezett utcához sem tartozik"</string>
     <string name="quest_address_street_place_name_label">"Helynév:"</string>
     <string name="quest_address_street_description">"Koppints a térképen a hozzátartozó útra vagy add meg rövidítések nélkül az alábbi mezőben:"</string>
-    <string name="quest_buildingLevels_address_title">"Hány szintes a(z) %s-s számú épület?"</string>
-    <string name="quest_roofShape_address_title">"Milyen alapformájú a(z) %s-s számú épületnek a teteje?"</string>
-    <string name="quest_buildingType_address_title">"Milyen épület a(z) %s-s számú?"</string>
     <string name="quest_recycling_type_cooking_oil">"Sütőolaj"</string>
     <string name="quest_recycling_type_engine_oil">"Motorolaj"</string>
     <string name="link_photon_description">"Egy önálló kiegészítő a Nominatimhoz, mely rugalmas és gépelés közbeni keresést biztosít"</string>
@@ -2314,4 +2308,33 @@ szintek"</string>
     <string name="link_qwant_maps_description">"Egy térkép kereshető helyekkel és útvonaltervezéssel"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt;A térkép megjelenítéséhez a vektorcsempék innen származnak: %1$s. Bővebb információért tekintsd meg az &lt;a href=\"%2$s\"&gt;adatvédelmi nyilatkozatukat&lt;/a&gt;.&lt;/p&gt;"</string>
     <string name="about_title_sponsors">"Szponzorok"</string>
+    <string name="quest_board_type_history">"Történelem"</string>
+    <string name="quest_board_type_geology">"Földrajz"</string>
+    <string name="quest_board_type_plants">"Növények"</string>
+    <string name="quest_board_type_wildlife">"Vadvilág"</string>
+    <string name="quest_board_type_nature">"Természet (több téma)"</string>
+    <string name="quest_board_type_notice_board">"Ez egy figyelmeztető tábla"</string>
+    <string name="quest_board_type_public_transport">"Tömegközlekedés"</string>
+    <string name="quest_board_type_title">"Mi a témája ennek az információs táblának?"</string>
+    <string name="quest_sidewalk_separately_mapped">"Igen, a térképen külön szerepel"</string>
+    <string name="quest_board_type_map">"Ez egy térkép"</string>
+    <string name="quest_board_type_map_title">"Csak és kizálólag egy térkép?"</string>
+    <string name="quest_board_type_map_description">"Ha a tábla egy bizonyos témáról szól, akkor kérlek, azt add meg, függetlenül attól, hogy egy térkép is szerepel rajta. Például egy tömegközlekedési tábla tartalmazhat egy buszútvonalakat ábrázoló térképet. Ha a téma nem szerepel a lehetséges válaszok között, akkor kérlek inkább hagyj egy megjegyzést."</string>
+    <string name="quest_surface_detailed_answer_impossible">"Többféle felület…"</string>
+    <string name="quest_surface_detailed_answer_impossible_confirmation">"Biztos, hogy lehetetlen meghatározni a felületet? Ne feledd, az \"Az út mentén változik\" válasz esetén az utat elvághatod az útburkolat változásainál. Kérlek, akkor válaszd a \"Nem tudom\" lehetőséget, ha egyetlen útburkolat jellemzi, de az nem szerepel a válaszok között."</string>
+    <string name="quest_surface_detailed_answer_impossible_description">"Kérlek, röviden jellemezd az útburkolatot, például \"Homok, macskaköves részekkel\". A szöveg hossza legfeljebb 255 karakter lehet."</string>
+    <string name="quest_surface_detailed_name_title">"Mi ennek az útnak a pontos burkolata? %s"</string>
+    <string name="quest_surface_detailed_square_name_title">"Mi ennek a térnek a pontos burkolata? %s"</string>
+    <string name="quest_surface_detailed_title">"Mi ennek az útszakasznak a pontos burkolata?"</string>
+    <string name="quest_surface_detailed_square_title">"Mi ennek a térnek a pontos burkolata?"</string>
+    <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
+    <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
+    <string name="quest_streetName_menuItem_international">"nemzetközi"</string>
+    <string name="quest_streetName_menuItem_romanized">"latin betűkkel"</string>
+    <string name="quest_buildingType_terrace2">"Sorház"</string>
+    <string name="quest_oneway_tutorial">"Az illusztráción szereplő út úgy van elforgatva, mint a térképen a jelölő helyén. Vedd figyelembe a jelzett irányt."</string>
+    <string name="at_housename">"Ház neve %s:"</string>
+    <string name="at_conscription_and_street_number">"Helyrajzi szám %1$s, házszám %2$s:"</string>
+    <string name="at_conscription_number">"Helyrajzi szám %s:"</string>
+    <string name="at_housenumber">"házszám %s:"</string>
 </resources>

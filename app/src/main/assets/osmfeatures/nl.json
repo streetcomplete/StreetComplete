@@ -1112,9 +1112,6 @@
         "public_transport/stop_position_aerialway": {
             "name": "Kabelbaanstopplaats"
         },
-        "playground/climbing_frame": {
-            "name": "Klimrek"
-        },
         "tourism/artwork/mural": {
             "name": "Muurschildering",
             "terms": "fresco"
@@ -1528,9 +1525,6 @@
         "highway/street_lamp": {
             "name": "Straatlantaarn",
             "terms": "straatverlichting,straatlamp,lantaarnpaal"
-        },
-        "playground/zipwire": {
-            "name": "Tokkelbaan"
         },
         "tourism/theme_park": {
             "name": "Themapark",
@@ -3428,9 +3422,6 @@
         },
         "emergency/official": {
             "name": "Toegang voor hulpdiensten: officiële voorkeursweg"
-        },
-        "playground/sandpit": {
-            "name": "Zandbak"
         },
         "railway/derail": {
             "name": "Ontspoorblok",

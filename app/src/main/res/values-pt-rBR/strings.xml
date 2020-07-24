@@ -1370,9 +1370,6 @@ Parcialmente significa que um cadeirante pode entrar e usar o banheiro, mas barr
     <string name="quest_buildingType_semi_detached_description">"Par de casas para uma família"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_buildingType_terrace">"Casas enfileiradas"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_buildingType_terrace_description">"Uma fila linear de casas par uma família"</string>
 
     <!-- Fuzzy -->
@@ -1795,7 +1792,6 @@ Is "Altar" really fitting here? It is about a building type after all. -->
 
     <!-- Fuzzy -->
     <string name="quest_split_way_description">"Se difere ao longo do caminho, o primeiro passo é dividi-lo. Depois disso, a missão pode ser resolvida para cada parte separadamente.
-Note que as missões para partes divididas podem demorar a aparecer.
 Dividir agora?"</string>
 
     <!-- Fuzzy -->
@@ -2071,9 +2067,6 @@ Observe que este aplicativo solicita o número da casa de uma construção somen
     <string name="quest_address_street_no_named_streets">"Não pertence a uma rua nomeada"</string>
     <string name="quest_address_street_place_name_label">"Coloque o nome:"</string>
     <string name="quest_address_street_description">"Toque na estrada à qual pertence no mapa ou digite-a sem abreviações no campo abaixo:"</string>
-    <string name="quest_buildingLevels_address_title">"Quantos níveis tem o prédio com o número %s?"</string>
-    <string name="quest_roofShape_address_title">"Qual é a forma básica do telhado do edifício com o número %s?"</string>
-    <string name="quest_buildingType_address_title">"Que tipo de construção é o número %s?"</string>
     <string name="quest_recycling_type_cooking_oil">"Óleo de cozinha"</string>
     <string name="quest_recycling_type_engine_oil">"Óleo de motor"</string>
     <string name="link_photon_description">"Uma extensão autônoma do Nominatim, com pesquisa difusa e pesquisa ao digitar"</string>
@@ -2081,4 +2074,10 @@ Observe que este aplicativo solicita o número da casa de uma construção somen
     <string name="link_qwant_maps_description">"Um mapa com locais e direções pesquisáveis"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt; Para exibir o mapa, os blocos de vetor são recuperados de %1$s. Veja a&lt;a href=\"%2$s\"&gt;privacidade&gt;&lt;/a&gt;para obter mais informações.&lt;/p&gt;"</string>
     <string name="about_title_sponsors">"Patrocinadores"</string>
+    <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
+    <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
+    <string name="at_housename">"Nome da casa %s:"</string>
+    <string name="at_conscription_and_street_number">"Número da conscription %1$s, número de orientação %2$s:"</string>
+    <string name="at_conscription_number">"Número da conscription %s:"</string>
+    <string name="at_housenumber">"número da casa %s:"</string>
 </resources>
