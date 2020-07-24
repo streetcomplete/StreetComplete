@@ -161,7 +161,7 @@ abstract class AbstractBottomSheetFragment : Fragment(), IsCloseableBottomSheet 
         // this is called asynchronously. It may happen that the activity is already gone when this
         // method is finally called
         val coversToolbar = bottomSheet.top <= 0
-        closeButton.visibility = if (coversToolbar) View.VISIBLE else View.INVISIBLE
+        closeButton.visibility = if (coversToolbar) View.VISIBLE else View.GONE
     }
 
     @UiThread override fun onClickMapAt(position: LatLon, clickAreaSizeInMeters: Double): Boolean {
