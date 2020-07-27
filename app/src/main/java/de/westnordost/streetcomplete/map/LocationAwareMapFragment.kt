@@ -64,9 +64,11 @@ open class LocationAwareMapFragment : MapFragment() {
     private val interpolator = DecelerateInterpolator()
     var isCompassMode: Boolean = false
         set(value) {
-            field = value
-            controller?.updateCameraPosition(300, interpolator) {
-                tilt = if (value) PI.toFloat() / 5f else 0f
+            if (field != value) {
+                field = value
+                controller?.updateCameraPosition(300, interpolator) {
+                    tilt = if (value) PI.toFloat() / 5f else 0f
+                }
             }
         }
 
