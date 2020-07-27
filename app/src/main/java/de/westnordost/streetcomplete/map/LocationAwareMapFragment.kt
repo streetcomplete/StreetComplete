@@ -65,8 +65,8 @@ open class LocationAwareMapFragment : MapFragment() {
     var isCompassMode: Boolean = false
         set(value) {
             field = value
-            if (value) {
-                controller?.updateCameraPosition(300, interpolator) { tilt = PI.toFloat() / 5f }
+            controller?.updateCameraPosition(300, interpolator) {
+                tilt = if (value) PI.toFloat() / 5f else 0f
             }
         }
 
