@@ -111,7 +111,7 @@ class LocationStateButton @JvmOverloads constructor(
 
         companion object {
             @JvmField @Keep
-            val CREATOR: Parcelable.Creator<SavedState> = object : Parcelable.Creator<SavedState> {
+            val CREATOR = object : Parcelable.Creator<SavedState> {
                 override fun createFromParcel(parcel: Parcel) = SavedState(parcel)
                 override fun newArray(size: Int) = arrayOfNulls<SavedState?>(size)
             }
