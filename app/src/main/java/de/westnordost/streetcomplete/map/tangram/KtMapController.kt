@@ -92,11 +92,14 @@ class KtMapController(private val c: MapController, contentResolver: ContentReso
         }
 
         c.setMapChangeListener(object : MapChangeListener {
+            private var calledOnMapIsChangingOnce = false
+
             override fun onViewComplete() { /* not interested*/ }
 
             override fun onRegionWillChange(animated: Boolean) {
-                // workaround for https://github.com/tangrams/tangram-es/issues/2157 : explicitly post on main thread
+                // may not be called on ui thread, see https://github.com/tangrams/tangram-es/issues/2157
                 mainHandler.post {
+                    calledOnMapIsChangingOnce = false
                     if (!cameraManager.isAnimating) {
                         mapChangingListener?.onMapWillChange()
                         if (animated) flingAnimator.start()
@@ -105,19 +108,15 @@ class KtMapController(private val c: MapController, contentResolver: ContentReso
             }
 
             override fun onRegionIsChanging() {
-                // workaround for https://github.com/tangrams/tangram-es/issues/2157
-                mainHandler.post {
-                    if (!cameraManager.isAnimating) mapChangingListener?.onMapIsChanging()
-                }
+                if (!cameraManager.isAnimating) mapChangingListener?.onMapIsChanging()
+                calledOnMapIsChangingOnce = true
             }
 
             override fun onRegionDidChange(animated: Boolean) {
-                // workaround for https://github.com/tangrams/tangram-es/issues/2157
-                mainHandler.post {
-                    if (!cameraManager.isAnimating) {
-                        mapChangingListener?.onMapDidChange()
-                        if (animated) flingAnimator.end()
-                    }
+                if (!cameraManager.isAnimating) {
+                    if (!calledOnMapIsChangingOnce) mapChangingListener?.onMapIsChanging()
+                    mapChangingListener?.onMapDidChange()
+                    if (animated) flingAnimator.end()
                 }
             }
         })
@@ -181,6 +180,8 @@ class KtMapController(private val c: MapController, contentResolver: ContentReso
 
     fun screenPositionToLatLon(screenPosition: PointF): LatLon? = c.screenPositionToLngLat(screenPosition)?.toLatLon()
     fun latLonToScreenPosition(latLon: LatLon): PointF = c.lngLatToScreenPosition(latLon.toLngLat())
+    fun latLonToScreenPosition(latLon: LatLon, screenPositionOut: PointF, clipToViewport: Boolean) =
+        c.lngLatToScreenPosition(latLon.toLngLat(), screenPositionOut, clipToViewport)
 
     fun screenCenterToLatLon(padding: RectF): LatLon? {
         val view = glViewHolder?.view ?: return null

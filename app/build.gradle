@@ -155,7 +155,7 @@ dependencies {
     implementation 'org.objenesis:objenesis:2.6'
 
     // map and location
-    implementation 'com.mapzen.tangram:tangram:0.12.0'
+    implementation 'com.mapzen.tangram:tangram:0.13.0'
 
     // config files
     implementation 'com.esotericsoftware.yamlbeans:yamlbeans:1.13'

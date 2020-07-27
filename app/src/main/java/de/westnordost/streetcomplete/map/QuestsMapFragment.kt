@@ -177,13 +177,14 @@ class QuestsMapFragment : LocationAwareMapFragment() {
 
     private fun screenAreaContains(g: ElementGeometry, offset: RectF): Boolean {
         val controller = controller ?: return false
+        val p = PointF()
         return when (g) {
             is ElementPolylinesGeometry -> g.polylines
             is ElementPolygonsGeometry -> g.polygons
             else -> listOf(listOf(g.center))
         }.flatten().all {
-            val p = controller.latLonToScreenPosition(it)
-            p.x >= offset.left && p.x <= mapView.width - offset.right
+            val isContained = controller.latLonToScreenPosition(it, p, false)
+            isContained && p.x >= offset.left && p.x <= mapView.width - offset.right
               && p.y >= offset.top  && p.y <= mapView.height - offset.bottom
         }
     }

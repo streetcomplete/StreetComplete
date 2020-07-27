@@ -636,18 +636,11 @@ class MainFragment : Fragment(R.layout.fragment_main),
         }
         val displayedPosition = OsmLatLon(location.latitude, location.longitude)
 
-        var target = mapFragment.getPointOf(displayedPosition)
-        // mitigation for https://github.com/tangrams/tangram-es/issues/2165 : Don't show if probably invalid
-        if (target == null || target.equals(0f,0f)) {
-            locationPointerPin.visibility = View.GONE
-            return
-        }
-
+        var target = mapFragment.getClippedPointOf(displayedPosition) ?: return
         windowInsets?.let {
             target -= PointF(it.left.toFloat(), it.top.toFloat())
         }
         val intersection = findClosestIntersection(mapControls, target)
-
         if (intersection != null) {
             val intersectionPosition = mapFragment.getPositionAt(intersection)
             if (intersectionPosition != null) {
