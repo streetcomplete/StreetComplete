@@ -98,7 +98,7 @@ class LocationStateButton @JvmOverloads constructor(
         var activated = false
 
         constructor(superState: Parcelable?) : super(superState)
-        private constructor(parcel: Parcel) : super(parcel) {
+        constructor(parcel: Parcel) : super(parcel) {
             state = LocationState.valueOf(parcel.readString()!!)
             activated = parcel.readInt() == 1
         }
@@ -113,7 +113,7 @@ class LocationStateButton @JvmOverloads constructor(
             @JvmField @Keep
             val CREATOR = object : Parcelable.Creator<SavedState> {
                 override fun createFromParcel(parcel: Parcel) = SavedState(parcel)
-                override fun newArray(size: Int) = arrayOfNulls<SavedState?>(size)
+                override fun newArray(size: Int) = arrayOfNulls<SavedState>(size)
             }
         }
     }
