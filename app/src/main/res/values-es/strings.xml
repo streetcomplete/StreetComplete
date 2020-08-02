@@ -2315,8 +2315,21 @@ Tenga en cuenta que esta aplicación solicita el número de portal de un edifici
     <string name="link_qwant_maps_description">"Un mapa con lugares de búsqueda y direcciones"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt;Para mostrar el mapa, los mosaicos vectoriales se recuperan de %1$s. Consulte su &lt;a href=\"%2$s\"&gt;declaración de privacidad&lt;/a&gt; para obtener más información.&lt;/p&gt;"</string>
     <string name="about_title_sponsors">"Patrocinadores"</string>
+    <string name="quest_board_type_history">"Historia"</string>
+    <string name="quest_board_type_geology">"Geografía"</string>
+    <string name="quest_board_type_plants">"Plantas"</string>
+    <string name="quest_board_type_wildlife">"Fauna silvestre"</string>
+    <string name="quest_board_type_nature">"Naturaleza (temas múltiples)"</string>
+    <string name="quest_board_type_notice_board">"Es un tablón de anuncios"</string>
+    <string name="quest_board_type_public_transport">"Transporte público"</string>
+    <string name="quest_board_type_title">"¿Cuál es el tema de este panel de información?"</string>
+    <string name="quest_sidewalk_separately_mapped">"Sí, se muestra por separado en el mapa"</string>
+    <string name="quest_board_type_map">"Es un mapa"</string>
+    <string name="quest_surface_detailed_answer_impossible">"Múltiples superficies..."</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
+    <string name="quest_streetName_menuItem_international">"internacional"</string>
+    <string name="quest_streetName_menuItem_romanized">"en escritura Latina"</string>
     <string name="at_housename">"Nombre de la casa %s:"</string>
     <string name="at_conscription_and_street_number">"Número de «conscripción» %1$s, número de «orientación» %2$s:"</string>
     <string name="at_conscription_number">"Número de «conscripción» %s:"</string>

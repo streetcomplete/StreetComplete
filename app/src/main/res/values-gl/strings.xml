@@ -2336,6 +2336,10 @@ Ten en conta que esta aplicación pregunta polo número de enderezo dun edificio
     <string name="quest_surface_detailed_square_title">"Que superficie específica ten esta praza?"</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
+    <string name="quest_streetName_menuItem_international">"internacional"</string>
+    <string name="quest_streetName_menuItem_romanized">"en escrita latina"</string>
+    <string name="quest_buildingType_terrace2">"Liña de casas (adosados)"</string>
+    <string name="quest_oneway_tutorial">"A estrada na ilustración xira igual que no mapa na localización do pin. Ten en conta a dirección indicada. "</string>
     <string name="at_housename">"Nome da casa %s:"</string>
     <string name="at_conscription_and_street_number">"Número de «conscrición» %1$s, número de «orientación» %2$s:"</string>
     <string name="at_conscription_number">"Número de «conscrición» %s:"</string>

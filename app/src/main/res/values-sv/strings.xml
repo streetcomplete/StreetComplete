@@ -1853,7 +1853,7 @@ Dela den nu?"</string>
     <string name="quest_ref_answer_noRef">"Inget referensnummer syns..."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_street_side_puzzle_tutorial">"Tryck på frågetecknen och välj ett svar för den givna sidan av vägen."</string>
+    <string name="quest_street_side_puzzle_tutorial">"Tryck på frågetecknen på illustrationen nedan för att välja ett svar för den givna sidan av vägen. Vägen i illustrationen roteras på samma sätt som på kartan på stiftets plats. "</string>
 
     <!-- Fuzzy -->
     <string name="quest_recycling_materials_title">"Vad kan lämnas här för återvinning?"</string>
@@ -2318,6 +2318,10 @@ nivåer"</string>
     <string name="quest_surface_detailed_square_title">"Vilken specifik yta har detta torg här?"</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
+    <string name="quest_streetName_menuItem_international">"internationell"</string>
+    <string name="quest_streetName_menuItem_romanized">"i latinskript"</string>
+    <string name="quest_buildingType_terrace2">"Radhus"</string>
+    <string name="quest_oneway_tutorial">"Vägen i illustrationen roteras på samma sätt som på kartan på stiftets plats. Notera den angivna riktningen. "</string>
     <string name="at_housename">"Husnamn %s:"</string>
     <string name="at_conscription_and_street_number">"Konskriptionsnummer %1$s, Orienteringsnummer %2$s:"</string>
     <string name="at_conscription_number">"Konskriptionsnummer %s:"</string>

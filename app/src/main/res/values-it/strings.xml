@@ -1855,7 +1855,7 @@ Suddividere?"</string>
     <string name="quest_ref_answer_noRef">"Nessun numero di matricola visibile..."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_street_side_puzzle_tutorial">"Clicca il punto di domanda e seleziona una risposta per il lato della strada indicato."</string>
+    <string name="quest_street_side_puzzle_tutorial">"Clicca il punto di domanda e seleziona una risposta per il lato della strada indicato. La strada nell'illustrazione è ruotata come sulla mappa alla posizione della puntina. "</string>
 
     <!-- Fuzzy -->
     <string name="quest_recycling_materials_title">"Cosa può essere lasciato qui per la raccolta differenziata?"</string>
@@ -2312,8 +2312,31 @@ riconoscimento"</string>
     <string name="link_qwant_maps_description">"Una mappa con luoghi da cercare e navigazione"</string>
     <string name="privacy_html_tileserver2">"&lt;p&gt;I tasselli vettoriali per mostrare la mappa sono presi da %1$s. Leggi la loro &lt;a href=\"%2$s\"&gt;informativa sulla privacy&lt;/a&gt;per maggiori informazioni.&lt;/p&gt;"</string>
     <string name="about_title_sponsors">"Sponsor"</string>
+    <string name="quest_board_type_history">"Storia"</string>
+    <string name="quest_board_type_geology">"Geologia"</string>
+    <string name="quest_board_type_plants">"Piante"</string>
+    <string name="quest_board_type_wildlife">"Natura"</string>
+    <string name="quest_board_type_nature">"Natura (più argomenti)"</string>
+    <string name="quest_board_type_notice_board">"È una bacheca informazioni"</string>
+    <string name="quest_board_type_public_transport">"Trasporto pubblico"</string>
+    <string name="quest_board_type_title">"Qual è lo scopo di questa bacheca informazioni?"</string>
+    <string name="quest_sidewalk_separately_mapped">"Sì, mostrata separatamente sulla mappa"</string>
+    <string name="quest_board_type_map">"È una mappa"</string>
+    <string name="quest_board_type_map_title">"È solo ed esclusivamente una mappa?"</string>
+    <string name="quest_board_type_map_description">"Se la bacheca è su un argomento particolare, specificalo, indipendentemente se include o meno una mappa. Per esempio una bacheca del trasporto pubblico può avere una mappa delle tratte. Se l'argomento non è tra le risposte disponibile, puoi lasciare una nota."</string>
+    <string name="quest_surface_detailed_answer_impossible">"Superfici multiple..."</string>
+    <string name="quest_surface_detailed_answer_impossible_confirmation">"Sei sicuro che è impossibile specificare la superficie? Ricorda che c'è l'opzione \"Cambia lungo la via\" che ti permette di tagliare la via dove la superficie cambia. Usa \"Non so\" se c'è una singola superficie ma nessuna risposta adatta."</string>
+    <string name="quest_surface_detailed_answer_impossible_description">"Specifica brevemente il tipo di superficie qui, per esempio \"sabbioso con zone in ciottolato\". La lunghezza del testo è limitata a 255 caratteri."</string>
+    <string name="quest_surface_detailed_name_title">"Che superficie ha la strada %s qui?"</string>
+    <string name="quest_surface_detailed_square_name_title">"Che superficie ha la piazza %s qui?"</string>
+    <string name="quest_surface_detailed_title">"Che superficie ha questo tratto di strada?"</string>
+    <string name="quest_surface_detailed_square_title">"Che superficie ha questa piazza qui?"</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
+    <string name="quest_streetName_menuItem_international">"Internazionale"</string>
+    <string name="quest_streetName_menuItem_romanized">"alfabeto latino"</string>
+    <string name="quest_buildingType_terrace2">"Case a schiera"</string>
+    <string name="quest_oneway_tutorial">"La strada nell'illustrazione è ruotata come sulla mappa alla posizione della puntina. Attento alla direzione indicata. "</string>
     <string name="at_housename">"Nome della casa %s:"</string>
     <string name="at_conscription_and_street_number">"Numero di coscrizione %1$s, orientamento dei numero %2$s:"</string>
     <string name="at_conscription_number">"Numero di coscrizione %s:"</string>

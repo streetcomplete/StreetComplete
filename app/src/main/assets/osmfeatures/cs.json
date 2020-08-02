@@ -1237,6 +1237,10 @@
         "attraction/bungee_jumping": {
             "name": "Bungee jumping"
         },
+        "shop/model": {
+            "name": "Modelářský obchod",
+            "terms": "modelářství,modelářský obchod,modelářské potřeby,modely,stavebnice,modely v měřítku,miniatury,modely letadel,modely aut,koníček,hobby,modely budov,stavebnice modelů,modelová železnice,mašinky"
+        },
         "railway/signal": {
             "name": "Proměnné návěstidlo",
             "terms": "semafor,světlo"
@@ -3957,7 +3961,8 @@
             "name": "Fyzioterapeut"
         },
         "bridge/support": {
-            "name": "opěra mostu"
+            "name": "Podpěra mostu",
+            "terms": "podpěra mostu,podpěry mostu,pilíř,pilíře,podepření mostu,konstrukce mostu"
         },
         "shop/cannabis": {
             "name": "Feťácká prodejna"

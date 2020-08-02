@@ -1905,8 +1905,37 @@
 
     <!-- Fuzzy -->
     <string name="title_whats_new">"最新功能？"</string>
+    <string name="about_title_donate">"捐獻"</string>
+    <string name="about_summary_donate">"顯示您的贊助！ ❤️"</string>
+    <string name="confirmation_cancel_prev_download_cancel">"繼續目前的掃描"</string>
+    <string name="quest_tourism_information_office">"觀光資訊辦公室"</string>
+    <string name="quest_tourism_information_board">"資訊板"</string>
+    <string name="quest_tourism_information_terminal">"資訊終端機"</string>
+    <string name="quest_tourism_information_map">"地圖"</string>
+    <string name="quest_tourism_information_guidepost">"指引路標"</string>
+    <string name="next">"下一個"</string>
+    <string name="tutorial_welcome_to_osm">"歡迎來到開放街圖"</string>
+    <string name="tutorial_happy_mapping">"祝繪製愉快！"</string>
+    <string name="user_quests_title">"解決的任務"</string>
+    <string name="user_achievements_title">"成就"</string>
+    <string name="user_profile_title">"個人檔案"</string>
+    <string name="link_category_showcase_title">"範例展示"</string>
+    <string name="achievement_surveyor_title">"調查者"</string>
+    <string name="achievement_veg_title">"動物的種類"</string>
+    <string name="action_about2">"關於"</string>
+    <string name="map_btn_menu">"選單"</string>
+    <string name="user_profile_global_rank">"全球排行"</string>
+    <string name="quest_recycling_type_cooking_oil">"食用油"</string>
+    <string name="quest_recycling_type_engine_oil">"機油"</string>
+    <string name="quest_board_type_history">"歷史"</string>
+    <string name="quest_board_type_plants">"植物"</string>
+    <string name="quest_board_type_wildlife">"野生"</string>
+    <string name="quest_board_type_map">"這是地圖"</string>
+    <string name="quest_surface_detailed_answer_impossible">"多種的表面材質"</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
+    <string name="quest_streetName_menuItem_international">"國際"</string>
+    <string name="quest_streetName_menuItem_romanized">"拉丁字母化"</string>
     <string name="at_housename">"房屋名稱 %s："</string>
     <string name="at_conscription_and_street_number">"徵兵號碼 %1$s, 定位號碼 %2$s:"</string>
     <string name="at_conscription_number">"徵兵號碼 %s:"</string>

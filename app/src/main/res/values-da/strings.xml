@@ -1160,6 +1160,7 @@ Delvist betyder at kørestolsbrugeren kan bruge toilettet men der mangler håndt
 
     <!-- Fuzzy -->
     <string name="quest_bench_answer_picnic_table">"Det er et picnicbord"</string>
+    <string name="quest_religion_for_place_of_worship_title">"Hvilken religion praktiseres på dette sted?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_religion_christian">"Kristendom"</string>
@@ -1944,6 +1945,26 @@ Del det nu?"</string>
 
     <!-- Fuzzy -->
     <string name="about_description_donate">"Tak, fordi du overvejer at støtte denne app! For at se aktuelle donationer og donere dig selv, tryk på den respektive platform:"</string>
+    <string name="confirmation_cancel_prev_download_confirmed">"Skan her i stedet"</string>
+    <string name="confirmation_cancel_prev_download_cancel">"Fortsæt igangværende skanning"</string>
+    <string name="quest_tourism_information_title">"Hvilken type turistinformation er dette?"</string>
+    <string name="quest_tourism_information_name_title">"Hvilken type turistinformation er %s?"</string>
+    <string name="quest_tourism_information_office">"Turistinformationskontor"</string>
+    <string name="quest_tourism_information_board">"Informationstavle"</string>
+    <string name="quest_tourism_information_map">"Kort"</string>
+    <string name="user_profile">"Min Profil"</string>
+    <string name="user_login">"Login"</string>
+    <string name="user_logout">"Logout"</string>
+    <string name="osm_profile">"OSM Profil"</string>
+    <string name="next">"Næste"</string>
+    <string name="tutorial_welcome_to_osm">"Velkommen til OpenStreetMap"</string>
+    <string name="user_links_title">"Linksamling"</string>
+    <string name="user_profile_title">"Profil"</string>
+    <string name="user_statistics_quest_wiki_link">"Dokumentation"</string>
+    <string name="link_category_intro_title">"Introduktion"</string>
+    <string name="link_category_maps_title">"Kort"</string>
+    <string name="link_category_maps_description">"OpenStreetMap-baserede kort"</string>
+    <string name="link_cyclosm_description">"Et kort for cyklister"</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="at_housename">"Husnavn %s:"</string>

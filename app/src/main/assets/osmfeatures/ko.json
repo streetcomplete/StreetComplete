@@ -249,10 +249,12 @@
             "terms": "로프 견인 리프트"
         },
         "office/therapist": {
-            "name": "치료사 사무소"
+            "name": "치료사 사무소",
+            "terms": "치료사 사무실"
         },
         "office/company": {
-            "name": "기업 사무소"
+            "name": "기업 사무소",
+            "terms": "기업 사무실"
         },
         "shop/dairy": {
             "name": "유제품 가게",
@@ -427,7 +429,8 @@
             "name": "RV 공원"
         },
         "natural/valley": {
-            "name": "골짜기"
+            "name": "골짜기",
+            "terms": "협곡"
         },
         "craft/clockmaker": {
             "name": "시계공",
@@ -459,6 +462,9 @@
             "name": "긴급 전화",
             "terms": "긴급 전화, 비상 전화"
         },
+        "disused/shop": {
+            "name": "폐점한 가게"
+        },
         "golf/bunker": {
             "name": "벙커",
             "terms": "벙커,샌드 트랩"
@@ -469,7 +475,7 @@
         },
         "leisure/pitch/soccer": {
             "name": "축구장",
-            "terms": "축구장"
+            "terms": "경기장,스타디움"
         },
         "natural/water/river": {
             "name": "강 구역"
@@ -553,7 +559,8 @@
             "terms": "레크리에이션 지역"
         },
         "office/newspaper": {
-            "name": "신문사 사무소"
+            "name": "신문사 사무소",
+            "terms": "신문사 사무실"
         },
         "type/restriction/no_u_turn": {
             "name": "유턴 금지",
@@ -999,7 +1006,7 @@
         },
         "natural/glacier": {
             "name": "빙하",
-            "terms": "빙하"
+            "terms": "얼음,눈"
         },
         "shop/storage_rental": {
             "name": "저장공간 대여소"
@@ -1296,7 +1303,8 @@
             "terms": "럼블스트립"
         },
         "leisure/pitch/badminton": {
-            "name": "배드민턴 코트"
+            "name": "배드민턴 코트",
+            "terms": "배드민턴장"
         },
         "office/tax_advisor": {
             "name": "세무사 사무소",
@@ -1367,7 +1375,8 @@
             "terms": "대관람차"
         },
         "office/religion": {
-            "name": "종교 사무소"
+            "name": "종교 사무소",
+            "terms": "종교 사무실"
         },
         "landuse/military/obstacle_course": {
             "name": "군용 장애물 코스"
@@ -1513,13 +1522,15 @@
             "terms": "비주요/미분류 도로"
         },
         "office/charity": {
-            "name": "자선 단체 사무소"
+            "name": "자선 단체 사무소",
+            "terms": "자선 단체 사무실"
         },
         "landuse/winter_sports": {
             "name": "동계 스포츠 지역"
         },
         "office/foundation": {
-            "name": "재단 사무소"
+            "name": "재단 사무소",
+            "terms": "재단 사무실"
         },
         "amenity/social_facility": {
             "name": "사회 복지 시설",
@@ -1579,6 +1590,9 @@
         },
         "amenity/vending_machine/coffee": {
             "name": "커피 자판기"
+        },
+        "landuse/military/training_area": {
+            "name": "군사 훈련 지역"
         },
         "leisure/pitch/chess": {
             "name": "대형 체스판"
@@ -2222,7 +2236,8 @@
             "name": "페리 터미널"
         },
         "leisure/pitch/baseball": {
-            "name": "야구장"
+            "name": "야구장",
+            "terms": "경기장,스타디움"
         },
         "man_made/bridge": {
             "name": "다리 구역"
@@ -2379,7 +2394,8 @@
             "terms": "관리소, 레인저 스테이션"
         },
         "office/quango": {
-            "name": "준정부조직 사무소"
+            "name": "준정부조직 사무소",
+            "terms": "준정부조직 사무실"
         },
         "amenity/parking": {
             "name": "주차장"
@@ -2843,7 +2859,8 @@
             "terms": "휴게소"
         },
         "office/consulting": {
-            "name": "컨설팅 사무소"
+            "name": "컨설팅 사무소",
+            "terms": "컨설팅 사무실"
         },
         "amenity/bureau_de_change": {
             "name": "환전소",
@@ -3346,13 +3363,17 @@
             "name": "바닥재 가게"
         },
         "office/political_party": {
-            "name": "정당 사무소"
+            "name": "정당 사무소",
+            "terms": "정당 사무실"
         },
         "shop/wholesale": {
             "name": "도매상"
         },
         "building/stadium": {
             "name": "경기장 건물"
+        },
+        "leisure/slipway_point": {
+            "name": "선가대"
         },
         "landuse/military/range": {
             "name": "군사 범위",
@@ -3518,7 +3539,8 @@
             "terms": "폭포"
         },
         "office/guide": {
-            "name": "여행 가이드 사무소"
+            "name": "여행 가이드 사무소",
+            "terms": "여행 가이드 사무실"
         },
         "type/route": {
             "name": "노선",
@@ -3669,7 +3691,8 @@
             "name": "미개발 부지"
         },
         "office/accountant": {
-            "name": "회계사 사무소"
+            "name": "회계사 사무소",
+            "terms": "회계사 사무실"
         },
         "seamark": {
             "name": "항해 표지"
@@ -4000,6 +4023,9 @@
         "craft/tailor": {
             "name": "남성복 재단사"
         },
+        "man_made/courtyard": {
+            "name": "안뜰"
+        },
         "amenity/restaurant/american": {
             "name": "미국 음식점",
             "terms": "미국 식당"
@@ -4026,7 +4052,8 @@
             "terms": "강"
         },
         "office/architect": {
-            "name": "건축가 사무소"
+            "name": "건축가 사무소",
+            "terms": "건축가 사무실"
         },
         "railway/subway": {
             "name": "지하철 선로"
@@ -4069,7 +4096,7 @@
         },
         "leisure/golf_course": {
             "name": "골프장",
-            "terms": "골프장"
+            "terms": "골프 코스"
         },
         "shop/electrical": {
             "name": "전기 기구 가게"
@@ -4083,11 +4110,16 @@
             "terms": "성"
         },
         "office/surveyor": {
-            "name": "측량기사 사무소"
+            "name": "측량기사 사무소",
+            "terms": "측량기사 사무실"
         },
         "shop/car_repair": {
             "name": "자동차 수리점",
             "terms": "자동차 정비소"
+        },
+        "craft/hvac": {
+            "name": "HVAC 작업장",
+            "terms": "난방,환기,에어컨"
         },
         "highway/path": {
             "name": "경로",
@@ -4290,6 +4322,9 @@
         },
         "tourism/viewpoint": {
             "name": "경승지"
+        },
+        "craft/handicraft": {
+            "name": "수공예 작업장"
         },
         "landuse/construction": {
             "name": "공사 중인 지역"

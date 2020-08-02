@@ -582,7 +582,7 @@
         },
         "shop/storage_rental": {
             "name": "Przechowalnia rzeczy (długoterminowa)",
-            "terms": "przechowalnia rzeczy, przechowalnia pojazdów,magazyn"
+            "terms": "przechowalnia rzeczy, magazyny samoobsługowe, wynajem magazynów"
         },
         "shop/fashion": {
             "name": "Sklep odzieżowy"
@@ -2333,12 +2333,12 @@
             "terms": "wypożyczalnia"
         },
         "shop/boat": {
-            "name": "Sklep z łodziami",
-            "terms": "łódź, łodzie, jachty, skutery wodne, sprzedaż łodzi, motorówek, jachtów, żeglarstwo, żeglarski"
+            "name": "Sklep żeglarski",
+            "terms": "sklep żeglarski, sklep motorowodny,  sklep żeglarsko-motorowodny, sklep z łodziami, łódź, łodzie, jachty, skutery wodne, sprzedaż łodzi, motorówek, jachtów, żeglarstwo, żeglarski"
         },
         "shop/gift": {
             "name": "Sklep z pamiątkami",
-            "terms": "sklep z prezentami,pamiątki,prezenty"
+            "terms": "sklep z pamiątkami, sklep z prezentami, pamiątki, prezenty, gadżety, pocztówki, magnesy, figurki"
         },
         "leisure/sports_centre": {
             "name": "Centrum sportowe",
@@ -4056,7 +4056,7 @@
         },
         "shop/art": {
             "name": "Sklep z dziełami sztuki",
-            "terms": "sklep z dziełami sztuki, dzieła sztuki, obrazy, rzeźby, porcelana, wyroby artystyczne, rzemiosło artystyczne, antykwariat, desa"
+            "terms": "sklep z dziełami sztuki, dzieła sztuki, obrazy, rzeźby, porcelana, wyroby artystyczne, rzemiosło artystyczne, antykwariat, desa, galeria"
         },
         "public_transport/platform/train": {
             "name": "Przystanek / Peron kolejowy",

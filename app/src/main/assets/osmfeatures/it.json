@@ -1799,6 +1799,10 @@
             "name": "Negozio di orologi",
             "terms": "orologio,orologi,negozio orologi,sveglia,sveglie,orologio a cipolla,cronografo,cronometro"
         },
+        "amenity/parking_entrance": {
+            "name": "Ingresso/uscita parcheggio sotterraneo",
+            "terms": "entrata parcheggio sotterraneo, uscita parcheggio sotterraneo, entrata parcheggio, uscita parcheggio"
+        },
         "waterway/riverbank": {
             "name": "Argine"
         },
@@ -1815,7 +1819,8 @@
             "terms": "colazione,caffè,cena,cenare,mangiare,grigliata,pranzo,tavolo,fritto,patatine,pesce,fast food"
         },
         "amenity/bicycle_parking/building": {
-            "name": "Garage parcheggio biciclette"
+            "name": "Garage parcheggio biciclette",
+            "terms": "parcheggio biciclette"
         },
         "barrier/toll_booth": {
             "name": "Casello",
@@ -4095,7 +4100,8 @@
             "name": "Circuito di Karting"
         },
         "amenity/parking_space/disabled": {
-            "name": "Spazio di Parcheggio per Disabili"
+            "name": "Spazio di Parcheggio per Disabili",
+            "terms": "parcheggio disabili, disabili, sedia a rotelle"
         },
         "amenity/vending_machine/feminine_hygiene": {
             "name": "Distributore automatico di prodotti per l'igiene femminile",

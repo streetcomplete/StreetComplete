@@ -828,8 +828,8 @@
             "terms": "Eletrónica de consumo, Aspirador, televisão, máquina de lavar, frigorífico, Eletrodoméstico, Eletro-doméstico"
         },
         "amenity/clinic": {
-            "name": "Posto médico",
-            "terms": "Clinic, Clínica, Centro de Saúde, Unidade de Saúde, Posto de Saúde, Unidade de Saúde Familiar, USF, Agrupamento de Centros de Saúde, ASF, Unidade Local de Saúde, Unidade Básica de Saúde, UBS,urgências"
+            "name": "Centro Clínico",
+            "terms": "Clinic, Clínica, Centro de Saúde, Unidade de Saúde, Posto de Saúde, Unidade de Saúde Familiar, USF, Agrupamento de Centros de Saúde, ASF, Unidade Local de Saúde, Unidade Básica de Saúde, UBS,urgências,posto médico,"
         },
         "public_transport/stop_position_light_rail": {
             "name": "Local de paragem de comboio ligeiro",
