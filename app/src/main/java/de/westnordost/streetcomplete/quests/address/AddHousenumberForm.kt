@@ -208,8 +208,8 @@ class AddHousenumberForm : AbstractQuestFormAnswerFragment<HousenumberAnswer>() 
 
     companion object {
         private const val IS_HOUSENAME = "is_housename"
-        // i.e. 9999/a, 9/a, 99/9, 99a, 99 a, 9 / a
-        const val VALID_HOUSENUMBER_REGEX = "\\p{N}{1,4}((\\s?/\\s?\\p{N})|(\\s?/?\\s?\\p{L}))?"
+        // i.e. 99999/a, 9/a, 99/9, 99a, 99 a, 9 / a
+        const val VALID_HOUSENUMBER_REGEX = "\\p{N}{1,5}((\\s?/\\s?\\p{N})|(\\s?/?\\s?\\p{L}))?"
         // i.e. 9, 99, 999, 999, 9A, 9 A
         const val VALID_BLOCKNUMBER_REGEX = "\\p{N}{1,4}(\\s?\\p{L})?"
 
