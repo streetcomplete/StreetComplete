@@ -10,6 +10,7 @@
 
 # tangram
 # let's just keep everything
+-keep class com.mapzen.tangram.** { *; }
 -keep class com.mapzen.tangram.* { *; }
 
 # kryo
@@ -18,6 +19,7 @@
 -dontwarn sun.misc.**
 -dontwarn java.lang.invoke.SerializedLambda
 # let's just keep everything
+-keep class com.esotericsoftware.kryo.** { *; }
 -keep class com.esotericsoftware.kryo.* { *; }
 
 # streetcomplete
