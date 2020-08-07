@@ -1,12 +1,12 @@
 package de.westnordost.streetcomplete.data.osm.osmquest
 
 import de.westnordost.osmapi.map.data.Element
-import de.westnordost.streetcomplete.data.tagfilters.FiltersParser
+import de.westnordost.streetcomplete.data.elementfilter.FiltersParser
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
-import de.westnordost.streetcomplete.data.tagfilters.getQuestPrintStatement
-import de.westnordost.streetcomplete.data.tagfilters.toGlobalOverpassBBox
+import de.westnordost.streetcomplete.data.elementfilter.getQuestPrintStatement
+import de.westnordost.streetcomplete.data.elementfilter.toGlobalOverpassBBox
 
 /** Quest type that simply makes a certain overpass query using tag filters and creates quests for
  * every element received  */

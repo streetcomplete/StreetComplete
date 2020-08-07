@@ -9,8 +9,8 @@ import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
-import de.westnordost.streetcomplete.data.tagfilters.getQuestPrintStatement
-import de.westnordost.streetcomplete.data.tagfilters.toGlobalOverpassBBox
+import de.westnordost.streetcomplete.data.elementfilter.getQuestPrintStatement
+import de.westnordost.streetcomplete.data.elementfilter.toGlobalOverpassBBox
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
 
 open class MarkCompletedHighwayConstruction(private val overpass: OverpassMapDataAndGeometryApi)
@@ -50,7 +50,7 @@ open class MarkCompletedHighwayConstruction(private val overpass: OverpassMapDat
 
         return bbox.toGlobalOverpassBBox() + """
             way[$tagFilter]${isNotInFuture("opening_date")} -> .with_unknown_state;
-            way[$tagFilter]${hasRecentlyBeenEdited(14)} -> .recently_edited;
+            way[$tagFilter]${hasRecentlyBeenEdited(14f)} -> .recently_edited;
             (.with_unknown_state; - .recently_edited;);
         """.trimIndent() + "\n" + getQuestPrintStatement()
     }

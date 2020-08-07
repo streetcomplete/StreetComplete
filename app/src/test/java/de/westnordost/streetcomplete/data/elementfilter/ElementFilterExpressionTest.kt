@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.data.tagfilters
+package de.westnordost.streetcomplete.data.elementfilter
 
 import org.junit.Test
 
@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.on
 
 import org.junit.Assert.*
 
-class TagFilterExpressionTest {
+class ElementFilterExpressionTest {
     // Tests for toOverpassQLString are in FiltersParserTest
 
     private val node = createElement(Element.Type.NODE)
@@ -63,8 +63,8 @@ class TagFilterExpressionTest {
     }
 
     @Test fun `matches filter`() {
-        val tagFilter: TagFilter = mock()
-        val expr = TagFilterExpression(listOf(ElementsTypeFilter.NODES), Leaf(tagFilter))
+        val tagFilter: ElementFilter = mock()
+        val expr = ElementFilterExpression(listOf(ElementsTypeFilter.NODES), Leaf(tagFilter))
 
         on(tagFilter.matches(any())).thenReturn(true)
         assertTrue(expr.matches(node))
@@ -78,9 +78,9 @@ class TagFilterExpressionTest {
         return element
     }
 
-    private fun createMatchExpression(vararg elementsTypeFilter: ElementsTypeFilter): TagFilterExpression {
-        val tagFilter: TagFilter = mock()
+    private fun createMatchExpression(vararg elementsTypeFilter: ElementsTypeFilter): ElementFilterExpression {
+        val tagFilter: ElementFilter = mock()
         on(tagFilter.matches(any())).thenReturn(true)
-        return TagFilterExpression(elementsTypeFilter.asList(), Leaf(tagFilter))
+        return ElementFilterExpression(elementsTypeFilter.asList(), Leaf(tagFilter))
     }
 }

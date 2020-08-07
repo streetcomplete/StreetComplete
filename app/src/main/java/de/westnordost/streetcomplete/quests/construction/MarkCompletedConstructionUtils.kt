@@ -2,12 +2,11 @@ package de.westnordost.streetcomplete.quests.construction
 
 import de.westnordost.streetcomplete.data.meta.SURVEY_MARK_KEY
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
-import java.text.SimpleDateFormat
+import de.westnordost.streetcomplete.data.meta.dateDaysAgo
+import de.westnordost.streetcomplete.data.meta.toLastCheckDateString
 import java.util.*
 
-private val DATE_FORMAT = SimpleDateFormat("yyyy-MM-dd", Locale.US)
-
-fun getCurrentDateString(): String = DATE_FORMAT.format(Date())
+fun getCurrentDateString(): String = Date().toLastCheckDateString()
 
 fun deleteTagsDescribingConstruction(changes: StringMapChangesBuilder) {
     changes.deleteIfExists("construction")
@@ -19,13 +18,11 @@ fun deleteTagsDescribingConstruction(changes: StringMapChangesBuilder) {
 }
 
 fun isNotInFuture(tagKey: String): String {
-    val today = DATE_FORMAT.format(Date()) + "T00:00:00Z"
+    val today = getCurrentDateString()
     return "(if:!is_date(t['$tagKey']) || date(t['$tagKey']) < date('$today'))"
 }
 
-fun hasRecentlyBeenEdited(daysAgo: Int): String {
-    val cal: Calendar = Calendar.getInstance()
-    cal.add(Calendar.DAY_OF_MONTH, -daysAgo)
-    val date = DATE_FORMAT.format(cal.time) + "T00:00:00Z"
+fun hasRecentlyBeenEdited(daysAgo: Float): String {
+    val date = dateDaysAgo(daysAgo).toLastCheckDateString()
     return "(newer: '$date')"
 }

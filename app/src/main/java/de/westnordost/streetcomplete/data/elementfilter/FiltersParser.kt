@@ -1,34 +1,66 @@
-package de.westnordost.streetcomplete.data.tagfilters
+package de.westnordost.streetcomplete.data.elementfilter
 
+import de.westnordost.osmapi.map.data.Element
+import de.westnordost.streetcomplete.data.meta.toLastCheckDate
+import java.lang.NumberFormatException
 import java.text.ParseException
 import java.util.ArrayList
 import java.util.Locale
 import kotlin.math.min
 
 /**
- * Compiles a string in filter syntax into a TagFilterExpression. A string in filter syntax is
+ * Compiles a string in filter syntax into a ElementFilterExpression. A string in filter syntax is
  * something like this:
  *
  * <tt>"ways with (highway = residential or highway = tertiary) and !name"</tt> (finds all
  * residential and tertiary roads that have no name)
  */
 class FiltersParser {
-    fun parse(input: String): TagFilterExpression {
+    fun parse(input: String): ElementFilterExpression {
         // convert all white-spacey things to whitespaces so we do not have to deal with them later
         val cursor = StringWithCursor(input.replace("\\s".toRegex(), " "), Locale.US)
 
-        return TagFilterExpression(cursor.parseElementsDeclaration(), cursor.parseTags())
+        return ElementFilterExpression(cursor.parseElementsDeclaration(), cursor.parseTags())
     }
 }
 
 private const val WITH = "with"
 private const val OR = "or"
 private const val AND = "and"
-private const val AROUND = "around"
 
-private val RESERVED_WORDS = arrayOf(WITH, OR, AND, AROUND)
+private const val YEARS = "years"
+private const val MONTHS = "months"
+private const val WEEKS = "weeks"
+private const val DAYS = "days"
+
+private const val EQUALS = "="
+private const val NOT_EQUALS = "!="
+private const val LIKE = "~"
+private const val NOT_LIKE = "!~"
+private const val GREATER_THAN = ">"
+private const val LESS_THAN = "<"
+private const val GREATER_OR_EQUAL_THAN = ">="
+private const val LESS_OR_EQUAL_THAN = "<="
+private const val OLDER = "older"
+
+private val RESERVED_WORDS = arrayOf(WITH, OR, AND)
 private val QUOTATION_MARKS = charArrayOf('"', '\'')
-private val OPERATORS = arrayOf("=", "!=", "~", "!~")
+private val COMPARISON_OPERATORS = arrayOf(
+    GREATER_THAN, GREATER_OR_EQUAL_THAN,
+    LESS_THAN, LESS_OR_EQUAL_THAN
+)
+// must be in that order because if ">=" would be after ">", parser would match ">" also when encountering ">="
+private val OPERATORS = arrayOf(
+    GREATER_OR_EQUAL_THAN,
+    LESS_OR_EQUAL_THAN,
+    GREATER_THAN,
+    LESS_THAN,
+    NOT_EQUALS,
+    EQUALS,
+    NOT_LIKE,
+    LIKE,
+    OLDER
+)
 
 private fun String.stripQuotes() = replace("^[\"']|[\"']$".toRegex(), "")
 
@@ -48,7 +80,12 @@ private fun StringWithCursor.parseElementsDeclaration(): List<ElementsTypeFilter
 private fun StringWithCursor.parseElementDeclaration(): ElementsTypeFilter {
     expectAnyNumberOfSpaces()
     for (t in ElementsTypeFilter.values()) {
-        if (nextIsAndAdvanceIgnoreCase(t.tqlName)) {
+        val name = when(t) {
+            ElementsTypeFilter.NODES -> "nodes"
+            ElementsTypeFilter.WAYS -> "ways"
+            ElementsTypeFilter.RELATIONS -> "relations"
+        }
+        if (nextIsAndAdvance(name)) {
             expectAnyNumberOfSpaces()
             return t
         }
@@ -59,16 +96,16 @@ private fun StringWithCursor.parseElementDeclaration(): ElementsTypeFilter {
     )
 }
 
-private fun StringWithCursor.parseTags(): BooleanExpression<TagFilter, Tags>? {
+private fun StringWithCursor.parseTags(): BooleanExpression<ElementFilter, Element>? {
     // tags are optional...
-    if (!nextIsAndAdvanceIgnoreCase(WITH)) {
+    if (!nextIsAndAdvance(WITH)) {
         if (!isAtEnd()) {
             throw ParseException("Expected end of string or 'with' keyword", cursorPos)
         }
         return null
     }
 
-    val builder = BooleanExpressionBuilder<TagFilter, Tags>()
+    val builder = BooleanExpressionBuilder<ElementFilter, Element>()
 
     do {
         // if it has no bracket, there must be at least one whitespace
@@ -90,9 +127,9 @@ private fun StringWithCursor.parseTags(): BooleanExpression<TagFilter, Tags>? {
             throw ParseException("Expected a whitespace or bracket after the tag", cursorPos)
         }
 
-        if (nextIsAndAdvanceIgnoreCase(OR)) {
+        if (nextIsAndAdvance(OR)) {
             builder.addOr()
-        } else if (nextIsAndAdvanceIgnoreCase(AND)) {
+        } else if (nextIsAndAdvance(AND)) {
             builder.addAnd()
         } else
             throw ParseException("Expected end of string, 'and' or 'or'", cursorPos)
@@ -127,7 +164,7 @@ private fun StringWithCursor.parseBrackets(bracket: Char, expr: BooleanExpressio
     return characterCount > 0
 }
 
-private fun StringWithCursor.parseTag(): TagFilter {
+private fun StringWithCursor.parseTag(): ElementFilter {
     if (nextIsAndAdvance('!')) {
         expectAnyNumberOfSpaces()
         return NotHasKey(parseKey())
@@ -138,30 +175,64 @@ private fun StringWithCursor.parseTag(): TagFilter {
         val key = parseKey()
         expectAnyNumberOfSpaces()
         val operator = parseOperator()
-        if ("~" != operator) {
+        if (operator == null) {
+            return HasKeyLike(key)
+        } else if ("~" == operator) {
+            expectAnyNumberOfSpaces()
+            return HasTagLike(key, parseValue())
+        } else {
             throw ParseException(
                 "Unexpected operator '$operator': The key prefix operator '~' must be used together with the binary operator '~'",
                 cursorPos
             )
         }
-        expectAnyNumberOfSpaces()
-        return HasTagLike(key, parseValue())
     }
 
     val key = parseKey()
     expectAnyNumberOfSpaces()
     val operator = parseOperator() ?: return HasKey(key)
 
-    expectAnyNumberOfSpaces()
-    val value = parseValue()
+    if (operator == OLDER) {
+        expectOneOrMoreSpaces()
+        val duration = parseDurationInDays()
+        return TagOlderThan(key, duration)
+    } else {
+        expectAnyNumberOfSpaces()
+        val value = parseValue()
 
-    when (operator) {
-        "=" -> return HasTag(key, value)
-        "!=" -> return NotHasTag(key, value)
-        "~" -> return HasTagValueLike(key, value)
-        "!~" -> return NotHasTagValueLike(key, value)
+        when (operator) {
+            EQUALS       -> return HasTag(key, value)
+            NOT_EQUALS   -> return NotHasTag(key, value)
+            LIKE         -> return HasTagValueLike(key, value)
+            NOT_LIKE     -> return NotHasTagValueLike(key, value)
+        }
+
+        if (COMPARISON_OPERATORS.contains(operator)) {
+            val floatValue = value.toFloatOrNull()
+            val dateValue = value.toLastCheckDate()
+            if (floatValue != null) {
+                return when(operator) {
+                    GREATER_THAN -> HasTagGreaterThan(key, floatValue)
+                    GREATER_OR_EQUAL_THAN -> HasTagGreaterOrEqualThan(key, floatValue)
+                    LESS_THAN -> HasTagLessThan(key, floatValue)
+                    LESS_OR_EQUAL_THAN -> HasTagLessOrEqualThan(key, floatValue)
+                    else -> throw ParseException("Unknown operator '$operator'", cursorPos)
+                }
+            } else if (dateValue != null) {
+                return when(operator) {
+                    GREATER_THAN -> HasDateTagGreaterThan(key, dateValue)
+                    GREATER_OR_EQUAL_THAN -> HasDateTagGreaterOrEqualThan(key, dateValue)
+                    LESS_THAN -> HasDateTagLessThan(key, dateValue)
+                    LESS_OR_EQUAL_THAN -> HasDateTagLessOrEqualThan(key, dateValue)
+                    else -> throw ParseException("Unknown operator '$operator'", cursorPos)
+                }
+            } else {
+                throw ParseException("$value must either be a number or a well-formed date (YYYY-MM-DD)", cursorPos)
+            }
+        }
+
+        throw ParseException("Unknown operator '$operator'", cursorPos)
     }
-    throw ParseException("Unknown operator '$operator'", cursorPos)
 }
 
 private fun StringWithCursor.parseKey(): String {
@@ -190,6 +261,27 @@ private fun StringWithCursor.parseValue(): String {
         throw ParseException("Missing value (dangling operator)", cursorPos)
     }
     return advanceBy(length).stripQuotes()
+}
+
+private fun StringWithCursor.parseDurationInDays(): Float {
+    val length = min(findNext(' '), findNext(')'))
+    if (length == 0) {
+        throw ParseException("Missing duration (dangling 'older')", cursorPos)
+    }
+    val duration: Float
+    try {
+        duration = advanceBy(length).toFloat()
+    } catch (e: NumberFormatException) {
+        throw ParseException("Expected a number", cursorPos)
+    }
+    expectOneOrMoreSpaces()
+    return when {
+        nextIsAndAdvance(YEARS) -> 365.25f * duration
+        nextIsAndAdvance(MONTHS) -> 30.5f * duration
+        nextIsAndAdvance(WEEKS) -> 7 * duration
+        nextIsAndAdvance(DAYS) -> duration
+        else -> throw ParseException("Expected years, months, weeks or days", cursorPos)
+    }
 }
 
 private fun StringWithCursor.expectAnyNumberOfSpaces(): Int {

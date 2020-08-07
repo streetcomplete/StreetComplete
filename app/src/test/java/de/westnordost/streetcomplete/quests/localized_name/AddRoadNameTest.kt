@@ -101,8 +101,7 @@ class AddRoadNameTest {
 
     // convenience method
     private fun roadName(vararg names:LocalizedName): RoadName {
-        val pointsList = listOf(listOf(OsmLatLon(0.0,0.0), OsmLatLon(1.0,1.0)))
-        val geometry = ElementPolylinesGeometry(pointsList, OsmLatLon(0.0, 0.0))
-        return RoadName(names.toList(), 1L, geometry)
+        val pointsList = listOf(OsmLatLon(0.0,0.0), OsmLatLon(1.0,1.0))
+        return RoadName(names.toList(), 1L, pointsList)
     }
 }

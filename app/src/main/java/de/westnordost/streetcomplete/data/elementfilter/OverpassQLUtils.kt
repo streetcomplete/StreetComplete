@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.data.tagfilters
+package de.westnordost.streetcomplete.data.elementfilter
 
 import de.westnordost.osmapi.map.data.BoundingBox
 import java.text.NumberFormat

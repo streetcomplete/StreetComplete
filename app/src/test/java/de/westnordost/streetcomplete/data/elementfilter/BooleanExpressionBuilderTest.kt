@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.data.tagfilters
+package de.westnordost.streetcomplete.data.elementfilter
 
 import org.junit.Test
 

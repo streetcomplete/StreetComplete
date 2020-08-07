@@ -1,11 +1,17 @@
-package de.westnordost.streetcomplete.data.tagfilters
+package de.westnordost.streetcomplete.data.elementfilter
 
+import de.westnordost.osmapi.map.data.Element
+import de.westnordost.streetcomplete.ktx.containsExactlyInAnyOrder
+import de.westnordost.streetcomplete.data.elementfilter.ElementsTypeFilter.*
+
+/** Create an overpass query from the given element filter expression */
 class OverpassQueryCreator(
-    private val elementTypes: List<String>,
-    private val expr: BooleanExpression<TagFilter, Tags>?)
+    elementTypes: List<ElementsTypeFilter>,
+    private val expr: BooleanExpression<ElementFilter, Element>?)
 {
+    private val elementTypes = elementTypes.toOqlNames()
     private var setIdCounter: Int = 1
-    private val dataSets: MutableMap<BooleanExpression<TagFilter, Tags>, Int> = mutableMapOf()
+    private val dataSets: MutableMap<BooleanExpression<ElementFilter, Element>, Int> = mutableMapOf()
 
     fun create(): String {
          if (elementTypes.size == 1) {
@@ -24,14 +30,24 @@ class OverpassQueryCreator(
             for (elementType in elementTypes) {
                 result.append(expr.toOverpassString(elementType, resultSetId))
             }
-            val unionChildren =
-                elementTypes.joinToString(" ") { getSetId(it, resultSetId) + ";" }
+            val unionChildren = elementTypes.joinToString(" ") { getSetId(it, resultSetId) + ";" }
             result.append("($unionChildren);\n")
             return result.toString()
         }
     }
 
-    private fun BooleanExpression<TagFilter, Tags>.toOverpassString(elementType: String, resultSetId: Int?): String {
+    private fun List<ElementsTypeFilter>.toOqlNames(): List<String> = when {
+        containsExactlyInAnyOrder(listOf(NODES, WAYS)) ->            listOf("nw")
+        containsExactlyInAnyOrder(listOf(WAYS, RELATIONS)) ->        listOf("wr")
+        containsExactlyInAnyOrder(listOf(NODES,WAYS, RELATIONS)) ->  listOf("nwr")
+        else -> map { when (it) {
+            NODES -> "node"
+            WAYS -> "way"
+            RELATIONS -> "rel"
+        } }
+    }
+
+    private fun BooleanExpression<ElementFilter, Element>.toOverpassString(elementType: String, resultSetId: Int?): String {
         return when (this) {
             is Leaf -> AllTagFilters(value).toOverpassString(elementType, null, resultSetId)
             is AnyOf -> toOverpassString(elementType, null, resultSetId)
@@ -40,9 +56,9 @@ class OverpassQueryCreator(
         }
     }
 
-    private fun AllOf<TagFilter, Tags>.childrenWithLeavesMerged(): List<BooleanExpression<TagFilter, Tags>> {
-        val consecutiveLeaves = mutableListOf<TagFilter>()
-        val mergedChildren = mutableListOf<BooleanExpression<TagFilter, Tags>>()
+    private fun AllOf<ElementFilter, Element>.childrenWithLeavesMerged(): List<BooleanExpression<ElementFilter, Element>> {
+        val consecutiveLeaves = mutableListOf<ElementFilter>()
+        val mergedChildren = mutableListOf<BooleanExpression<ElementFilter, Element>>()
         for (child in children) {
             when (child) {
                 is Leaf -> consecutiveLeaves.add(child.value)
@@ -62,7 +78,7 @@ class OverpassQueryCreator(
         return mergedChildren
     }
 
-    private fun AllOf<TagFilter, Tags>.toOverpassString(elementType: String, inputSetId: Int?, resultSetId: Int?): String {
+    private fun AllOf<ElementFilter, Element>.toOverpassString(elementType: String, inputSetId: Int?, resultSetId: Int?): String {
         val result = StringBuilder()
         val workingSet by lazy { assignResultSetId() }
 
@@ -79,7 +95,7 @@ class OverpassQueryCreator(
         return result.toString()
     }
 
-    private fun AnyOf<TagFilter, Tags>.toOverpassString(elementType: String, inputSetId: Int?, resultSetId: Int?): String {
+    private fun AnyOf<ElementFilter, Element>.toOverpassString(elementType: String, inputSetId: Int?, resultSetId: Int?): String {
         val childrenResultSetIds = mutableListOf<Int>()
         val result = StringBuilder()
         // first print every nested statement
@@ -104,7 +120,7 @@ class OverpassQueryCreator(
 
     private fun AllTagFilters.toOverpassString(elementType: String, inputSetId: Int?, resultSetId: Int?): String {
         val elementFilter = elementType + inputSetId?.let { getSetId(elementType,it) }.orEmpty()
-        val tagFilters = values.joinToString("") { "[${it.toOverpassQLString()}]" }
+        val tagFilters = values.joinToString("") { it.toOverpassQLString() }
         val resultStmt = resultSetId?.let { " -> " + getSetId(elementType,it) }.orEmpty()
         return "$elementFilter$tagFilters$resultStmt;\n"
     }
@@ -120,16 +136,16 @@ class OverpassQueryCreator(
         return ".$prefix$id"
     }
 
-    private fun BooleanExpression<TagFilter, Tags>.assignResultSetId(): Int {
+    private fun BooleanExpression<ElementFilter, Element>.assignResultSetId(): Int {
         if (!dataSets.containsKey(this)) {
             dataSets[this] = setIdCounter++
         }
         return dataSets[this]!!
     }
 
-    private class AllTagFilters(val values: List<TagFilter>) : BooleanExpression<TagFilter, Tags>() {
-        constructor(value: TagFilter) : this(listOf(value))
-        override fun matches(obj: Tags?) = values.all { it.matches(obj) }
+    private class AllTagFilters(val values: List<ElementFilter>) : BooleanExpression<ElementFilter, Element>() {
+        constructor(value: ElementFilter) : this(listOf(value))
+        override fun matches(obj: Element?) = values.all { it.matches(obj) }
         override fun toString() = values.joinToString(" and ")
     }
 }

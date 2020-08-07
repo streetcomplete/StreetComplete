@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.data.tagfilters
+package de.westnordost.streetcomplete.data.elementfilter
 
 import org.junit.Test
 
@@ -11,17 +11,14 @@ import java.text.ParseException
 class FiltersParserAndOverpassQueryCreatorTest {
     @Test fun node() {
         check("nodes", "node;")
-        check("NODES", "node;")
     }
 
     @Test fun way() {
         check("ways", "way;")
-        check("WAYS", "way;")
     }
 
     @Test fun relation() {
         check("relations", "rel;")
-        check("RELATIONS", "rel;")
     }
 
     @Test fun `multiple element types`() {
@@ -66,11 +63,9 @@ class FiltersParserAndOverpassQueryCreatorTest {
 
     @Test fun `fail if tag key is like reserved word`() {
         shouldFail("nodes with with")
-        shouldFail("nodes with around")
         shouldFail("nodes with or")
         shouldFail("nodes with and")
         shouldFail("nodes with with = abc")
-        shouldFail("nodes with around = abc")
         shouldFail("nodes with or = abc")
         shouldFail("nodes with and = abc")
     }
@@ -165,6 +160,21 @@ class FiltersParserAndOverpassQueryCreatorTest {
         check("nodes with highway~residential", "node[highway ~ '^(residential)$'];")
         check("nodes with ~highway~residential", "node[~'^(highway)$' ~ '^(residential)$'];")
         check("nodes with highway!~residential", "node[highway !~ '^(residential)$'];")
+        check("nodes with ~highway", "node[~'^(highway)$' ~ '.*'];")
+    }
+
+    @Test fun `tag value comparison operator`() {
+        check("nodes with width>5", "node[width](if:number(t['width']) > 5);")
+        check("nodes with width>=5", "node[width](if:number(t['width']) >= 5);")
+        check("nodes with width<5", "node[width](if:number(t['width']) < 5);")
+        check("nodes with width<=5", "node[width](if:number(t['width']) <= 5);")
+    }
+
+    @Test fun `tag date comparison operator`() {
+        check("nodes with check_date > 2000-11-11", "node[check_date](if:date(t['check_date']) > date('2000-11-11'));")
+        check("nodes with check_date >= 2000-11-11", "node[check_date](if:date(t['check_date']) >= date('2000-11-11'));")
+        check("nodes with check_date < 2000-11-11", "node[check_date](if:date(t['check_date']) < date('2000-11-11'));")
+        check("nodes with check_date <= 2000-11-11", "node[check_date](if:date(t['check_date']) <= date('2000-11-11'));")
     }
 
     @Test fun `tag negation not combinable with operator`() {

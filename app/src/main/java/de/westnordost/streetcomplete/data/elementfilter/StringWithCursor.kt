@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.data.tagfilters
+package de.westnordost.streetcomplete.data.elementfilter
 
 import java.util.*
 import kotlin.math.min
