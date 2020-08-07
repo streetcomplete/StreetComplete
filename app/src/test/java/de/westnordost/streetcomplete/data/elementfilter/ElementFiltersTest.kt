@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.data.elementfilter
 
 import de.westnordost.osmapi.map.data.OsmNode
 import de.westnordost.streetcomplete.data.meta.dateDaysAgo
-import de.westnordost.streetcomplete.data.meta.toLastCheckDateString
+import de.westnordost.streetcomplete.data.meta.toCheckDateString
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -337,53 +337,53 @@ class TagOlderThanTest {
     @Test fun `matches new element with tag and old check_date`() {
         assertTrue(c.matches( mapOf(
             "opening_hours" to "tag",
-            "opening_hours:check_date" to oldDate.toLastCheckDateString()
+            "opening_hours:check_date" to oldDate.toCheckDateString()
         ), newDate))
 
         assertTrue(c.matches( mapOf(
             "opening_hours" to "tag",
-            "check_date:opening_hours" to oldDate.toLastCheckDateString()
+            "check_date:opening_hours" to oldDate.toCheckDateString()
         ), newDate))
     }
 
     @Test fun `matches new element with tag and old lastcheck`() {
         assertTrue(c.matches( mapOf(
             "opening_hours" to "tag",
-            "opening_hours:lastcheck" to oldDate.toLastCheckDateString()
+            "opening_hours:lastcheck" to oldDate.toCheckDateString()
         ), newDate))
 
         assertTrue(c.matches( mapOf(
             "opening_hours" to "tag",
-            "lastcheck:opening_hours" to oldDate.toLastCheckDateString()
+            "lastcheck:opening_hours" to oldDate.toCheckDateString()
         ), newDate))
     }
 
     @Test fun `matches new element with tag and old last_checked`() {
         assertTrue(c.matches( mapOf(
             "opening_hours" to "tag",
-            "opening_hours:last_checked" to oldDate.toLastCheckDateString()
+            "opening_hours:last_checked" to oldDate.toCheckDateString()
         ), newDate))
 
         assertTrue(c.matches( mapOf(
             "opening_hours" to "tag",
-            "last_checked:opening_hours" to oldDate.toLastCheckDateString()
+            "last_checked:opening_hours" to oldDate.toCheckDateString()
         ), newDate))
     }
 
     @Test fun `matches new element with tag and different check date tags of which only one is old`() {
         assertTrue(c.matches( mapOf(
             "opening_hours" to "tag",
-            "opening_hours:last_checked" to newDate.toLastCheckDateString(),
-            "opening_hours:lastcheck" to newDate.toLastCheckDateString(),
-            "opening_hours:check_date" to newDate.toLastCheckDateString(),
-            "last_checked:opening_hours" to oldDate.toLastCheckDateString(),
-            "lastcheck:opening_hours" to newDate.toLastCheckDateString(),
-            "check_date:opening_hours" to newDate.toLastCheckDateString()
+            "opening_hours:last_checked" to newDate.toCheckDateString(),
+            "opening_hours:lastcheck" to newDate.toCheckDateString(),
+            "opening_hours:check_date" to newDate.toCheckDateString(),
+            "last_checked:opening_hours" to oldDate.toCheckDateString(),
+            "lastcheck:opening_hours" to newDate.toCheckDateString(),
+            "check_date:opening_hours" to newDate.toCheckDateString()
         ), newDate))
     }
 
     @Test fun `to string`() {
-        val date = dateDaysAgo(100f).toLastCheckDateString()
+        val date = dateDaysAgo(100f).toCheckDateString()
         assertEquals("[opening_hours]" +
                 "(if: date(timestamp()) < date('$date') || " +
                 "date(t['opening_hours:check_date']) < date('$date') || " +
@@ -413,7 +413,7 @@ class ElementOlderThanTest {
     }
 
     @Test fun `to string`() {
-        val date = dateDaysAgo(10f).toLastCheckDateString()
+        val date = dateDaysAgo(10f).toCheckDateString()
         assertEquals("(if: date(timestamp()) < date('$date'))", c.toOverpassQLString())
     }
 }

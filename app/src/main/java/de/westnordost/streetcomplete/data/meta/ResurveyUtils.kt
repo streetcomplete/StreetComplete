@@ -19,12 +19,12 @@ fun getLastCheckDateKeys(key: String): Sequence<String> = sequenceOf(
     "$key:last_checked", "last_checked:$key"
 )
 
-fun Date.toLastCheckDateString(): String = OSM_LASTCHECK_DATE_FORMAT.format(this)
-fun String.toLastCheckDate(): Date? = OSM_LASTCHECK_DATE_FORMAT.parseOrNull(this)
+fun Date.toCheckDateString(): String = OSM_CHECK_DATE_FORMAT.format(this)
+fun String.toCheckDate(): Date? = OSM_CHECK_DATE_FORMAT.parseOrNull(this)
 
 private fun SimpleDateFormat.parseOrNull(source: String): Date? =
     try { parse(source) } catch (e: ParseException) { null }
 
 /** Date format of the tags used for recording the date at which the element or tag with the given
  *  key should be checked again. */
-private val OSM_LASTCHECK_DATE_FORMAT = SimpleDateFormat("yyyy-MM-dd", Locale.US)
+private val OSM_CHECK_DATE_FORMAT = SimpleDateFormat("yyyy-MM-dd", Locale.US)

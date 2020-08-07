@@ -124,14 +124,14 @@ class HasTagLessOrEqualThan(key: String, value: Float): CompareTagValue(key, val
 
 sealed class CompareDateTagValue(val key: String, val date: Date): ElementFilter {
     override fun toOverpassQLString() : String {
-        val strVal = date.toLastCheckDateString()
+        val strVal = date.toCheckDateString()
         return "[" + key.quoteIfNecessary() + "](if: date(t[" + key.quote() + "]) " + operator + " date('" + strVal + "'))"
     }
 
     override fun toString() = toOverpassQLString()
 
     override fun matches(obj: Element?): Boolean {
-        val tagValue = obj?.tags?.get(key)?.toLastCheckDate() ?: return false
+        val tagValue = obj?.tags?.get(key)?.toCheckDate() ?: return false
         return compareTo(tagValue)
     }
 
@@ -167,7 +167,7 @@ class HasDateTagLessOrEqualThan(key: String, date: Date): CompareDateTagValue(ke
 class TagOlderThan(val key: String, val daysAgo: Float) : ElementFilter {
 
     override fun toOverpassQLString(): String {
-        val date = dateDaysAgo(daysAgo).toLastCheckDateString()
+        val date = dateDaysAgo(daysAgo).toCheckDateString()
         val datesToCheck = (listOf("timestamp()") + getLastCheckDateKeys(key).map { "t['$it']" })
         return "[" + key.quoteIfNecessary() + "](if: " + datesToCheck.joinToString(" || ") { "date($it) < date('$date')" } + ")"
     }
@@ -184,7 +184,7 @@ class TagOlderThan(val key: String, val daysAgo: Float) : ElementFilter {
         if (dateElementEdited < date) return true
 
         return getLastCheckDateKeys(key)
-            .mapNotNull { obj.tags[it]?.toLastCheckDate() }
+            .mapNotNull { obj.tags[it]?.toCheckDate() }
             .any { it < date }
     }
 }
@@ -192,7 +192,7 @@ class TagOlderThan(val key: String, val daysAgo: Float) : ElementFilter {
 /** older 4 years */
 class ElementOlderThan(val daysAgo: Float) : ElementFilter {
     override fun toOverpassQLString(): String {
-        val date = dateDaysAgo(daysAgo).toLastCheckDateString()
+        val date = dateDaysAgo(daysAgo).toCheckDateString()
         return "(if: date(timestamp()) < date('$date'))"
     }
 

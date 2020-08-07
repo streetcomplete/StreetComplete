@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.data.elementfilter
 
 import de.westnordost.streetcomplete.data.meta.dateDaysAgo
-import de.westnordost.streetcomplete.data.meta.toLastCheckDateString
+import de.westnordost.streetcomplete.data.meta.toCheckDateString
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -188,12 +188,12 @@ class FiltersParserAndOverpassQueryCreatorTest {
     }
 
     @Test fun `element older x days`() {
-        val date = dateDaysAgo(14f).toLastCheckDateString()
+        val date = dateDaysAgo(14f).toCheckDateString()
         check("nodes with older 14 days", "node(if: date(timestamp()) < date('$date'));")
     }
 
     @Test fun `tag older x days`() {
-        val date = dateDaysAgo(14f).toLastCheckDateString()
+        val date = dateDaysAgo(14f).toCheckDateString()
         check("nodes with surface older 14 days", "node[surface](if: " +
                 "date(timestamp()) < date('$date') ||" +
                 "date(t['surface:check_date']) < date('$date') ||" +

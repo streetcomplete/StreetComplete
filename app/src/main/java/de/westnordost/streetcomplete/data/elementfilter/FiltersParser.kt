@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.data.elementfilter
 
 import de.westnordost.osmapi.map.data.Element
-import de.westnordost.streetcomplete.data.meta.toLastCheckDate
+import de.westnordost.streetcomplete.data.meta.toCheckDate
 import java.lang.NumberFormatException
 import java.text.ParseException
 import java.util.ArrayList
@@ -215,7 +215,7 @@ private fun StringWithCursor.parseTag(): ElementFilter {
 
         if (COMPARISON_OPERATORS.contains(operator)) {
             val floatValue = value.toFloatOrNull()
-            val dateValue = value.toLastCheckDate()
+            val dateValue = value.toCheckDate()
             if (floatValue != null) {
                 return when(operator) {
                     GREATER_THAN -> HasTagGreaterThan(key, floatValue)
