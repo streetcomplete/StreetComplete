@@ -381,6 +381,41 @@ class TagOlderThanTest {
             "check_date:opening_hours" to newDate.toLastCheckDateString()
         ), newDate))
     }
+
+    @Test fun `to string`() {
+        val date = dateDaysAgo(100f).toLastCheckDateString()
+        assertEquals("[opening_hours]" +
+                "(if: date(timestamp()) < date('$date') || " +
+                "date(t['opening_hours:check_date']) < date('$date') || " +
+                "date(t['check_date:opening_hours']) < date('$date') || " +
+                "date(t['opening_hours:lastcheck']) < date('$date') || " +
+                "date(t['lastcheck:opening_hours']) < date('$date') || " +
+                "date(t['opening_hours:last_checked']) < date('$date') || " +
+                "date(t['last_checked:opening_hours']) < date('$date'))",
+            c.toOverpassQLString()
+        )
+    }
+}
+
+class ElementOlderThanTest {
+    val c = ElementOlderThan(10f)
+
+    @Test fun `matches older element`() {
+        assertTrue(c.matches(mapOf(), dateDaysAgo(11f)))
+    }
+
+    @Test fun `does not match newer element`() {
+        assertFalse(c.matches(mapOf(), dateDaysAgo(9f)))
+    }
+
+    @Test fun `does not match element from same day`() {
+        assertFalse(c.matches(mapOf(), dateDaysAgo(10f)))
+    }
+
+    @Test fun `to string`() {
+        val date = dateDaysAgo(10f).toLastCheckDateString()
+        assertEquals("(if: date(timestamp()) < date('$date'))", c.toOverpassQLString())
+    }
 }
 
 private fun ElementFilter.matches(tags: Map<String,String>, date: Date? = null): Boolean =

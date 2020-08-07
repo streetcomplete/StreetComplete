@@ -188,6 +188,12 @@ private fun StringWithCursor.parseTag(): ElementFilter {
         }
     }
 
+    if (nextIsAndAdvance(OLDER)) {
+        expectOneOrMoreSpaces()
+        val duration = parseDurationInDays()
+        return ElementOlderThan(duration)
+    }
+
     val key = parseKey()
     expectAnyNumberOfSpaces()
     val operator = parseOperator() ?: return HasKey(key)

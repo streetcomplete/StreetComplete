@@ -169,7 +169,7 @@ class TagOlderThan(val key: String, val daysAgo: Float) : ElementFilter {
     override fun toOverpassQLString(): String {
         val date = dateDaysAgo(daysAgo).toLastCheckDateString()
         val datesToCheck = (listOf("timestamp()") + getLastCheckDateKeys(key).map { "t['$it']" })
-        return "[" + key.quoteIfNecessary() + "](if: " + datesToCheck.joinToString(" || ") { "date($it) < date($date)" } + ")"
+        return "[" + key.quoteIfNecessary() + "](if: " + datesToCheck.joinToString(" || ") { "date($it) < date('$date')" } + ")"
     }
 
     override fun toString() = toOverpassQLString()
@@ -186,6 +186,22 @@ class TagOlderThan(val key: String, val daysAgo: Float) : ElementFilter {
         return getLastCheckDateKeys(key)
             .mapNotNull { obj.tags[it]?.toLastCheckDate() }
             .any { it < date }
+    }
+}
+
+/** older 4 years */
+class ElementOlderThan(val daysAgo: Float) : ElementFilter {
+    override fun toOverpassQLString(): String {
+        val date = dateDaysAgo(daysAgo).toLastCheckDateString()
+        return "(if: date(timestamp()) < date('$date'))"
+    }
+
+    override fun toString() = toOverpassQLString()
+
+    override fun matches(obj: Element?): Boolean {
+        val dateElementEdited = obj?.dateEdited ?: return false
+        val date = dateDaysAgo(daysAgo)
+        return dateElementEdited < date
     }
 }
 

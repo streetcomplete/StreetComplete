@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.data.elementfilter
 
+import de.westnordost.streetcomplete.data.meta.dateDaysAgo
+import de.westnordost.streetcomplete.data.meta.toLastCheckDateString
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -65,6 +67,7 @@ class FiltersParserAndOverpassQueryCreatorTest {
         shouldFail("nodes with with")
         shouldFail("nodes with or")
         shouldFail("nodes with and")
+        shouldFail("nodes with older")
         shouldFail("nodes with with = abc")
         shouldFail("nodes with or = abc")
         shouldFail("nodes with and = abc")
@@ -170,11 +173,36 @@ class FiltersParserAndOverpassQueryCreatorTest {
         check("nodes with width<=5", "node[width](if:number(t['width']) <= 5);")
     }
 
+    @Test fun `fail if neither a number nor a date is used for comparison`() {
+        shouldFail("nodes with width > x")
+        shouldFail("nodes with width >=x")
+        shouldFail("nodes with width < x")
+        shouldFail("nodes with width <=x")
+    }
+
     @Test fun `tag date comparison operator`() {
         check("nodes with check_date > 2000-11-11", "node[check_date](if:date(t['check_date']) > date('2000-11-11'));")
         check("nodes with check_date >= 2000-11-11", "node[check_date](if:date(t['check_date']) >= date('2000-11-11'));")
         check("nodes with check_date < 2000-11-11", "node[check_date](if:date(t['check_date']) < date('2000-11-11'));")
         check("nodes with check_date <= 2000-11-11", "node[check_date](if:date(t['check_date']) <= date('2000-11-11'));")
+    }
+
+    @Test fun `element older x days`() {
+        val date = dateDaysAgo(14f).toLastCheckDateString()
+        check("nodes with older 14 days", "node(if: date(timestamp()) < date('$date'));")
+    }
+
+    @Test fun `tag older x days`() {
+        val date = dateDaysAgo(14f).toLastCheckDateString()
+        check("nodes with surface older 14 days", "node[surface](if: " +
+                "date(timestamp()) < date('$date') ||" +
+                "date(t['surface:check_date']) < date('$date') ||" +
+                "date(t['check_date:surface']) < date('$date') ||" +
+                "date(t['surface:lastcheck']) < date('$date') ||" +
+                "date(t['lastcheck:surface']) < date('$date') ||" +
+                "date(t['surface:last_checked']) < date('$date') ||" +
+                "date(t['last_checked:surface']) < date('$date')" +
+                ");")
     }
 
     @Test fun `tag negation not combinable with operator`() {
