@@ -51,7 +51,7 @@ class AddTactilePavingCrosswalk(private val overpassMapDataApi: OverpassMapDataA
         bbox.toGlobalOverpassBBox() + "\n" + """
         
         way[highway = cycleway][foot !~ '^(yes|designated)$']; node(w) -> .exclusive_cycleway_nodes;
-        way[highway][access ~ '^(private|no)${'$'}']; node(w) -> .private_road_nodes;
+        way[highway][access ~ '^(private|no)$']; node(w) -> .private_road_nodes;
 
         node[highway = crossing][!tactile_paving][foot != no] -> .crossings;
         

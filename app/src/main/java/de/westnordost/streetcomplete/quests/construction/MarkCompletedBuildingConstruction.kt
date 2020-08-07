@@ -13,10 +13,9 @@ class MarkCompletedBuildingConstruction(o: OverpassMapDataAndGeometryApi) : Simp
 
     override val tagFilters = """
         ways with building = construction
-         and (!opening_date or opening_date > ${Date().toCheckDateString()})
+         and (!opening_date or opening_date < ${Date().toCheckDateString()})
          and older 6 months
     """
-
     override val commitMessage = "Determine whether construction is now completed"
     override val wikiLink = "Tag:building=construction"
     override val icon = R.drawable.ic_quest_building_construction
