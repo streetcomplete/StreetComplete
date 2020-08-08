@@ -185,6 +185,8 @@ class FiltersParserAndOverpassQueryCreatorTest {
         check("nodes with check_date >= 2000-11-11", "node[check_date](if:date(t['check_date']) >= date('2000-11-11'));")
         check("nodes with check_date < 2000-11-11", "node[check_date](if:date(t['check_date']) < date('2000-11-11'));")
         check("nodes with check_date <= 2000-11-11", "node[check_date](if:date(t['check_date']) <= date('2000-11-11'));")
+
+        check("nodes with check_date < 2000-11", "node[check_date](if:date(t['check_date']) < date('2000-11-01'));")
     }
 
     @Test fun `element older x days`() {

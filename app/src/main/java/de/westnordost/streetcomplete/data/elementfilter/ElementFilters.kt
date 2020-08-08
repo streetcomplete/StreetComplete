@@ -72,7 +72,7 @@ class HasTagLike(key: String, value: String) : ElementFilter {
     val key = key.toRegex()
     val value = value.toRegex()
 
-    override fun toOverpassQLString() =
+    override fun toOverpassQLString() = 
         "[" + "~" + "^(${key.pattern})$".quoteIfNecessary() + " ~ " + "^(${value.pattern})$".quoteIfNecessary() + "]"
 
     override fun toString() = toOverpassQLString()

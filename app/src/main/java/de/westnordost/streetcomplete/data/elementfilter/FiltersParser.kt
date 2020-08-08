@@ -180,12 +180,11 @@ private fun StringWithCursor.parseTag(): ElementFilter {
         } else if ("~" == operator) {
             expectAnyNumberOfSpaces()
             return HasTagLike(key, parseValue())
-        } else {
-            throw ParseException(
-                "Unexpected operator '$operator': The key prefix operator '~' must be used together with the binary operator '~'",
-                cursorPos
-            )
         }
+        throw ParseException(
+            "Unexpected operator '$operator': The key prefix operator '~' must be used together with the binary operator '~'",
+            cursorPos
+        )
     }
 
     if (nextIsAndAdvance(OLDER)) {
@@ -232,11 +231,9 @@ private fun StringWithCursor.parseTag(): ElementFilter {
                     LESS_OR_EQUAL_THAN -> HasDateTagLessOrEqualThan(key, dateValue)
                     else -> throw ParseException("Unknown operator '$operator'", cursorPos)
                 }
-            } else {
-                throw ParseException("$value must either be a number or a well-formed date (YYYY-MM-DD)", cursorPos)
             }
+            throw ParseException("$value must either be a number or a well-formed date (YYYY-MM-DD)", cursorPos)
         }
-
         throw ParseException("Unknown operator '$operator'", cursorPos)
     }
 }

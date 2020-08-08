@@ -1,8 +1,10 @@
 package de.westnordost.streetcomplete.data.meta
 
+import java.lang.Exception
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
+import java.util.Calendar.MILLISECOND
 
 /** Returns the date x days in the past */
 fun dateDaysAgo(daysAgo: Float): Date {
@@ -20,7 +22,22 @@ fun getLastCheckDateKeys(key: String): Sequence<String> = sequenceOf(
 )
 
 fun Date.toCheckDateString(): String = OSM_CHECK_DATE_FORMAT.format(this)
-fun String.toCheckDate(): Date? = OSM_CHECK_DATE_FORMAT.parseOrNull(this)
+fun String.toCheckDate(): Date? {
+    val groups = OSM_CHECK_DATE_REGEX.matchEntire(this)?.groupValues ?: return null
+    val year = groups[1].toIntOrNull() ?: return null
+    val month = groups[2].toIntOrNull() ?: 1
+    val day = groups[3].toIntOrNull() ?: 1
+
+    val calendar = Calendar.getInstance()
+    return try {
+        // -1 because this is the month index
+        calendar.set(year, month-1, day, 0, 0, 0)
+        calendar.set(MILLISECOND, 0)
+        calendar.time
+    } catch (e: Exception) {
+        null
+    }
+}
 
 private fun SimpleDateFormat.parseOrNull(source: String): Date? =
     try { parse(source) } catch (e: ParseException) { null }
@@ -28,3 +45,5 @@ private fun SimpleDateFormat.parseOrNull(source: String): Date? =
 /** Date format of the tags used for recording the date at which the element or tag with the given
  *  key should be checked again. */
 private val OSM_CHECK_DATE_FORMAT = SimpleDateFormat("yyyy-MM-dd", Locale.US)
+// not using date format because we want to be able to understand 2000 and 2000-11 as well
+private val OSM_CHECK_DATE_REGEX = Regex("([0-9]{4})(?:-([0-9]{2})(?:-([0-9]{2}))?)?")
