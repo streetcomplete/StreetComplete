@@ -24,3 +24,8 @@
 
 # streetcomplete
 -keep class de.westnordost.streetcomplete.data.meta.CountryInfo { *; }
+
+# see https://github.com/westnordost/StreetComplete/issues/2003
+-keepclassmembers class * implements android.os.Parcelable {
+        public static final ** CREATOR;
+}
