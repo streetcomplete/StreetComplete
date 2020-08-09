@@ -4,6 +4,7 @@ import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.data.elementfilter.ElementsTypeFilter.NODES
 import de.westnordost.streetcomplete.data.elementfilter.ElementsTypeFilter.WAYS
 import de.westnordost.streetcomplete.data.elementfilter.ElementsTypeFilter.RELATIONS
+import de.westnordost.streetcomplete.data.elementfilter.filters.ElementFilter
 
 /** Represents a parse result of a string in filter syntax, i.e.
  *  "ways with (highway = residential or highway = tertiary) and !name"  */

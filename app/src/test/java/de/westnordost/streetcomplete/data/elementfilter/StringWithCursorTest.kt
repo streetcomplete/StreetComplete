@@ -105,6 +105,16 @@ class StringWithCursorTest {
         assertFalse(x.nextIs("c"))
     }
 
+    @Test fun nextMatchesString() {
+        val x = StringWithCursor("abc123", Locale.US)
+        assertNotNull(x.nextMatches(Regex("abc[0-9]")))
+        assertNotNull(x.nextMatches(Regex("abc[0-9]{3}")))
+        assertNull(x.nextMatches(Regex("abc[0-9]{4}")))
+        assertNull(x.nextMatches(Regex("bc[0-9]")))
+        x.advance()
+        assertNotNull(x.nextMatches(Regex("bc[0-9]")))
+    }
+
     @Test fun nextIsStringIgnoreCase() {
         val x = StringWithCursor("abc", Locale.US)
         assertTrue(x.nextIsIgnoreCase("A"))

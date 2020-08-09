@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.elementfilter
 
 import de.westnordost.osmapi.map.data.Element
+import de.westnordost.streetcomplete.data.elementfilter.filters.*
 import de.westnordost.streetcomplete.data.meta.toCheckDate
 import java.lang.NumberFormatException
 import java.text.ParseException
@@ -42,9 +43,14 @@ private const val LESS_THAN = "<"
 private const val GREATER_OR_EQUAL_THAN = ">="
 private const val LESS_OR_EQUAL_THAN = "<="
 private const val OLDER = "older"
+private const val NEWER = "newer"
+private const val TODAY = "today"
+private const val PLUS = "+"
+private const val MINUS = "-"
 
 private val RESERVED_WORDS = arrayOf(WITH, OR, AND)
 private val QUOTATION_MARKS = charArrayOf('"', '\'')
+private val KEY_VALUE_OPERATORS = arrayOf( EQUALS, NOT_EQUALS, LIKE, NOT_LIKE )
 private val COMPARISON_OPERATORS = arrayOf(
     GREATER_THAN, GREATER_OR_EQUAL_THAN,
     LESS_THAN, LESS_OR_EQUAL_THAN
@@ -59,8 +65,11 @@ private val OPERATORS = arrayOf(
     EQUALS,
     NOT_LIKE,
     LIKE,
-    OLDER
+    OLDER,
+    NEWER
 )
+
+private val NUMBER_WORD_REGEX = Regex("(?:([0-9]+(?:\\.[0-9]*)?)|(\\.[0-9]+))(?:$| |\\))")
 
 private fun String.stripQuotes() = replace("^[\"']|[\"']$".toRegex(), "")
 
@@ -179,18 +188,18 @@ private fun StringWithCursor.parseTag(): ElementFilter {
             return HasKeyLike(key)
         } else if ("~" == operator) {
             expectAnyNumberOfSpaces()
-            return HasTagLike(key, parseValue())
+            return HasTagLike(key, parseQuotableWord())
         }
-        throw ParseException(
-            "Unexpected operator '$operator': The key prefix operator '~' must be used together with the binary operator '~'",
-            cursorPos
-        )
+        throw ParseException("Unexpected operator '$operator': The key prefix operator '~' must be used together with the binary operator '~'", cursorPos)
     }
 
     if (nextIsAndAdvance(OLDER)) {
         expectOneOrMoreSpaces()
-        val duration = parseDurationInDays()
-        return ElementOlderThan(duration)
+        return ElementOlderThan(parseDate())
+    }
+    if (nextIsAndAdvance(NEWER)) {
+        expectOneOrMoreSpaces()
+        return ElementNewerThan(parseDate())
     }
 
     val key = parseKey()
@@ -199,11 +208,16 @@ private fun StringWithCursor.parseTag(): ElementFilter {
 
     if (operator == OLDER) {
         expectOneOrMoreSpaces()
-        val duration = parseDurationInDays()
-        return TagOlderThan(key, duration)
-    } else {
+        return TagOlderThan(key, parseDate())
+    }
+    if (operator == NEWER) {
+        expectOneOrMoreSpaces()
+        return TagNewerThan(key, parseDate())
+    }
+
+    if (KEY_VALUE_OPERATORS.contains(operator)) {
         expectAnyNumberOfSpaces()
-        val value = parseValue()
+        val value = parseQuotableWord()
 
         when (operator) {
             EQUALS       -> return HasTag(key, value)
@@ -211,40 +225,36 @@ private fun StringWithCursor.parseTag(): ElementFilter {
             LIKE         -> return HasTagValueLike(key, value)
             NOT_LIKE     -> return NotHasTagValueLike(key, value)
         }
-
-        if (COMPARISON_OPERATORS.contains(operator)) {
-            val floatValue = value.toFloatOrNull()
-            val dateValue = value.toCheckDate()
-            if (floatValue != null) {
-                return when(operator) {
-                    GREATER_THAN -> HasTagGreaterThan(key, floatValue)
-                    GREATER_OR_EQUAL_THAN -> HasTagGreaterOrEqualThan(key, floatValue)
-                    LESS_THAN -> HasTagLessThan(key, floatValue)
-                    LESS_OR_EQUAL_THAN -> HasTagLessOrEqualThan(key, floatValue)
-                    else -> throw ParseException("Unknown operator '$operator'", cursorPos)
-                }
-            } else if (dateValue != null) {
-                return when(operator) {
-                    GREATER_THAN -> HasDateTagGreaterThan(key, dateValue)
-                    GREATER_OR_EQUAL_THAN -> HasDateTagGreaterOrEqualThan(key, dateValue)
-                    LESS_THAN -> HasDateTagLessThan(key, dateValue)
-                    LESS_OR_EQUAL_THAN -> HasDateTagLessOrEqualThan(key, dateValue)
-                    else -> throw ParseException("Unknown operator '$operator'", cursorPos)
-                }
-            }
-            throw ParseException("$value must either be a number or a well-formed date (YYYY-MM-DD)", cursorPos)
-        }
-        throw ParseException("Unknown operator '$operator'", cursorPos)
     }
+
+    if (COMPARISON_OPERATORS.contains(operator)) {
+        expectAnyNumberOfSpaces()
+        if (nextMatches(NUMBER_WORD_REGEX) != null) {
+            val value = parseNumber()
+            when(operator) {
+                GREATER_THAN          -> return HasTagGreaterThan(key, value)
+                GREATER_OR_EQUAL_THAN -> return HasTagGreaterOrEqualThan(key, value)
+                LESS_THAN             -> return HasTagLessThan(key, value)
+                LESS_OR_EQUAL_THAN    -> return HasTagLessOrEqualThan(key, value)
+            }
+        } else {
+            val value = parseDate()
+            when(operator) {
+                GREATER_THAN          -> return HasDateTagGreaterThan(key, value)
+                GREATER_OR_EQUAL_THAN -> return HasDateTagGreaterOrEqualThan(key, value)
+                LESS_THAN             -> return HasDateTagLessThan(key, value)
+                LESS_OR_EQUAL_THAN    -> return HasDateTagLessOrEqualThan(key, value)
+            }
+        }
+        throw ParseException("must either be a number or a (relative) date", cursorPos)
+    }
+    throw ParseException("Unknown operator '$operator'", cursorPos)
 }
 
 private fun StringWithCursor.parseKey(): String {
     val reserved = nextIsReservedWord()
     if(reserved != null) {
-        throw ParseException(
-            "A key cannot be named like the reserved word '$reserved', surround it with quotation marks",
-            cursorPos
-        )
+        throw ParseException("A key cannot be named like the reserved word '$reserved', surround it with quotation marks", cursorPos)
     }
 
     val length = findKeyLength()
@@ -258,25 +268,70 @@ private fun StringWithCursor.parseOperator(): String? {
     return OPERATORS.firstOrNull { nextIsAndAdvance(it) }
 }
 
-private fun StringWithCursor.parseValue(): String {
-    val length = findValueLength()
+private fun StringWithCursor.parseQuotableWord(): String {
+    val length = findQuotableWordLength()
     if (length == 0) {
         throw ParseException("Missing value (dangling operator)", cursorPos)
     }
     return advanceBy(length).stripQuotes()
 }
 
-private fun StringWithCursor.parseDurationInDays(): Float {
-    val length = min(findNext(' '), findNext(')'))
+private fun StringWithCursor.parseWord(): String {
+    val length = findWordLength()
     if (length == 0) {
-        throw ParseException("Missing duration (dangling 'older')", cursorPos)
+        throw ParseException("Missing value (dangling operator)", cursorPos)
     }
-    val duration: Float
+    return advanceBy(length)
+}
+
+private fun StringWithCursor.parseNumber(): Float {
+    val word = parseWord()
     try {
-        duration = advanceBy(length).toFloat()
+        return word.toFloat()
     } catch (e: NumberFormatException) {
         throw ParseException("Expected a number", cursorPos)
     }
+}
+
+private fun StringWithCursor.parseDate(): DateFilter {
+    val length = findWordLength()
+    if (length == 0) {
+        throw ParseException("Missing date", cursorPos)
+    }
+    val word = advanceBy(length)
+    if (word == TODAY) {
+        var deltaDays = 0f
+        if (nextIsAndAdvance(' ')) {
+            expectAnyNumberOfSpaces()
+            deltaDays = parseDeltaDurationInDays()
+        }
+        return RelativeDate(deltaDays)
+    }
+
+    val date = word.toCheckDate()
+    if (date != null) {
+        return FixedDate(date)
+    }
+
+    throw ParseException("Expected either a date (YYYY-MM-DD) or 'today'", cursorPos)
+}
+
+private fun StringWithCursor.parseDeltaDurationInDays(): Float {
+    return when {
+        nextIsAndAdvance(PLUS) -> {
+            expectAnyNumberOfSpaces()
+            +parseDurationInDays()
+        }
+        nextIsAndAdvance(MINUS) -> {
+            expectAnyNumberOfSpaces()
+            -parseDurationInDays()
+        }
+        else -> throw ParseException("Expected + or -", cursorPos)
+    }
+}
+
+private fun StringWithCursor.parseDurationInDays(): Float {
+    val duration = parseNumber()
     expectOneOrMoreSpaces()
     return when {
         nextIsAndAdvance(YEARS) -> 365.25f * duration
@@ -309,7 +364,7 @@ private fun StringWithCursor.findKeyLength(): Int {
     var length = findQuotationLength()
     if (length != null) return length
 
-    length = min(findNext(' '), findNext(')'))
+    length = findWordLength()
     for (o in OPERATORS) {
         val opLen = findNext(o)
         if (opLen < length!!) length = opLen
@@ -317,9 +372,11 @@ private fun StringWithCursor.findKeyLength(): Int {
     return length!!
 }
 
-private fun StringWithCursor.findValueLength(): Int {
-    return findQuotationLength() ?: min(findNext(' '), findNext(')'))
-}
+private fun StringWithCursor.findWordLength(): Int =
+    min(findNext(' '), findNext(')'))
+
+private fun StringWithCursor.findQuotableWordLength(): Int =
+    findQuotationLength() ?: findWordLength()
 
 private fun StringWithCursor.findQuotationLength(): Int? {
     for (quot in QUOTATION_MARKS) {

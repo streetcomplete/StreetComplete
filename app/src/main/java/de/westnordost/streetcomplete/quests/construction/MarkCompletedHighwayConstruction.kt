@@ -14,8 +14,8 @@ class MarkCompletedHighwayConstruction(o: OverpassMapDataAndGeometryApi) : Simpl
 
     override val tagFilters = """
         ways with highway = construction
-         and (!opening_date or opening_date < ${Date().toCheckDateString()})
-         and older 2 weeks
+         and (!opening_date or opening_date < today)
+         and older today -2 weeks
     """
     override val commitMessage = "Determine whether construction is now completed"
     override val wikiLink = "Tag:highway=construction"

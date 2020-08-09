@@ -4,6 +4,7 @@ import org.junit.Test
 
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.streetcomplete.any
+import de.westnordost.streetcomplete.data.elementfilter.filters.ElementFilter
 import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.on
 

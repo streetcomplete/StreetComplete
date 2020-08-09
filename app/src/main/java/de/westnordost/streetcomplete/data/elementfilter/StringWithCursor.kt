@@ -75,6 +75,12 @@ class StringWithCursor(private val string: String, private val locale: Locale) {
     fun nextIsIgnoreCase(str: String): Boolean =
         nextIs(str.toLowerCase(locale)) || nextIs(str.toUpperCase(locale))
 
+    fun nextMatches(regex: Regex): MatchResult? {
+        val match = regex.find(string, cursorPos) ?: return null
+        if (match.range.first != cursorPos) return null
+        return match
+    }
+
     private fun toDelta(index: Int): Int =
         if (index == -1) string.length - cursorPos else index - cursorPos
 

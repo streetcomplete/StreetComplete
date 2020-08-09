@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.data.elementfilter
 
-import de.westnordost.streetcomplete.data.meta.dateDaysAgo
 import de.westnordost.streetcomplete.data.meta.toCheckDateString
 import org.junit.Test
 
@@ -79,7 +78,7 @@ class FiltersParserAndOverpassQueryCreatorTest {
     }
 
     @Test fun `tag may start with reserved word`() {
-        check("nodes with widthdrawn = with", "node[widthdrawn = with];")
+        check("nodes with withdrawn = with", "node[withdrawn = with];")
         check("nodes with orchard = or", "node[orchard = or];")
         check("nodes with android = and", "node[android = and];")
     }
@@ -175,7 +174,7 @@ class FiltersParserAndOverpassQueryCreatorTest {
 
     @Test fun `fail if neither a number nor a date is used for comparison`() {
         shouldFail("nodes with width > x")
-        shouldFail("nodes with width >=x")
+        shouldFail("nodes with width >=x ")
         shouldFail("nodes with width < x")
         shouldFail("nodes with width <=x")
     }
@@ -185,18 +184,33 @@ class FiltersParserAndOverpassQueryCreatorTest {
         check("nodes with check_date >= 2000-11-11", "node[check_date](if:date(t['check_date']) >= date('2000-11-11'));")
         check("nodes with check_date < 2000-11-11", "node[check_date](if:date(t['check_date']) < date('2000-11-11'));")
         check("nodes with check_date <= 2000-11-11", "node[check_date](if:date(t['check_date']) <= date('2000-11-11'));")
+    }
 
+    @Test fun `tag date comparison variants`() {
         check("nodes with check_date < 2000-11", "node[check_date](if:date(t['check_date']) < date('2000-11-01'));")
+
+        val date = dateDaysAgo(0f).toCheckDateString()
+        check("nodes with check_date < today", "node[check_date](if:date(t['check_date']) < date('$date'));")
+
+        val twoDaysAgo = dateDaysAgo(2f).toCheckDateString()
+        check("nodes with check_date < today -2 days", "node[check_date](if:date(t['check_date']) < date('$twoDaysAgo'));")
+
+        val twoDaysInFuture = dateDaysAgo(-2f).toCheckDateString()
+        check("nodes with check_date < today + 0.3 weeks", "node[check_date](if:date(t['check_date']) < date('$twoDaysInFuture'));")
     }
 
     @Test fun `element older x days`() {
         val date = dateDaysAgo(14f).toCheckDateString()
-        check("nodes with older 14 days", "node(if: date(timestamp()) < date('$date'));")
+        check("nodes with older today -14 days", "node(if: date(timestamp()) < date('$date'));")
+    }
+    @Test fun `element newer x days`() {
+        val date = dateDaysAgo(-14f).toCheckDateString()
+        check("nodes with newer today + 14 days", "node(if: date(timestamp()) > date('$date'));")
     }
 
     @Test fun `tag older x days`() {
         val date = dateDaysAgo(14f).toCheckDateString()
-        check("nodes with surface older 14 days", "node[surface](if: " +
+        check("nodes with surface older today -14 days", "node[surface](if: " +
                 "date(timestamp()) < date('$date') ||" +
                 "date(t['surface:check_date']) < date('$date') ||" +
                 "date(t['check_date:surface']) < date('$date') ||" +
@@ -204,6 +218,19 @@ class FiltersParserAndOverpassQueryCreatorTest {
                 "date(t['lastcheck:surface']) < date('$date') ||" +
                 "date(t['surface:last_checked']) < date('$date') ||" +
                 "date(t['last_checked:surface']) < date('$date')" +
+                ");")
+    }
+
+    @Test fun `tag newer x days`() {
+        val date = dateDaysAgo(14f).toCheckDateString()
+        check("nodes with surface newer today - 14 days", "node[surface](if: " +
+                "date(timestamp()) > date('$date') ||" +
+                "date(t['surface:check_date']) > date('$date') ||" +
+                "date(t['check_date:surface']) > date('$date') ||" +
+                "date(t['surface:lastcheck']) > date('$date') ||" +
+                "date(t['lastcheck:surface']) > date('$date') ||" +
+                "date(t['surface:last_checked']) > date('$date') ||" +
+                "date(t['last_checked:surface']) > date('$date')" +
                 ");")
     }
 
