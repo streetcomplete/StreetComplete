@@ -1,3 +1,10 @@
+v22.1: |
+  <h3>Fixes</h3>
+  <ul>
+  <li>Fix login failing with the app crashing (#2007)</li>
+  <li>Fix some crashes when app comes into foreground again (#2003 and more)</li>
+  </ul>
+
 v22.0: |
   <h3>Enhancements</h3>
   <ul>
