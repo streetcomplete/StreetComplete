@@ -19,11 +19,16 @@
 -dontwarn sun.misc.**
 -dontwarn java.lang.invoke.SerializedLambda
 # let's just keep everything
+-keep class * implements java.io.Serializable { *; }
 -keep class com.esotericsoftware.kryo.** { *; }
 -keep class com.esotericsoftware.kryo.* { *; }
 
+
 # streetcomplete
 -keep class de.westnordost.streetcomplete.data.meta.CountryInfo { *; }
+
+# just leave my stuff alone
+-keep class de.westnordost.* { *; }
 
 # see https://github.com/westnordost/StreetComplete/issues/2003
 -keepclassmembers class * implements android.os.Parcelable {
