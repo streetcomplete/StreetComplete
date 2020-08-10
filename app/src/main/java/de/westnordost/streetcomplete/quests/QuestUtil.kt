@@ -22,10 +22,17 @@ fun Resources.getHtmlQuestTitle(questType: QuestType<*>, element: Element?, feat
     return Html.fromHtml(getString(getQuestTitleResId(questType, element), *spannedArguments))
 }
 
-private fun getTemplateArguments(questType: QuestType<*>, element: Element?, locale: Locale, featureDictionaryFuture: FutureTask<FeatureDictionary>?): Array<String> {
-    val tags = element?.tags
-    val typeName = lazy {featureDictionaryFuture?.get()?.let { it.byTags(tags).forLocale(locale).find()?.firstOrNull()?.name }}
-    return ((questType as? OsmElementQuestType<*>)?.getTitleArgs(tags ?: emptyMap(), typeName)) ?: emptyArray()
+private fun getTemplateArguments(
+    questType: QuestType<*>,
+    element: Element?,
+    locale: Locale,
+    featureDictionaryFuture: FutureTask<FeatureDictionary>?
+): Array<String> {
+    val tags = element?.tags ?: emptyMap()
+    val typeName = lazy { featureDictionaryFuture?.get()?.let { dict ->
+        dict.byTags(tags).forLocale(locale).find()?.firstOrNull()?.name
+    }}
+    return ((questType as? OsmElementQuestType<*>)?.getTitleArgs(tags, typeName)) ?: emptyArray()
 }
 
 
