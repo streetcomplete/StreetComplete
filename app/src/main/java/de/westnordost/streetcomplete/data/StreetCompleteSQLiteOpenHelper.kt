@@ -192,11 +192,11 @@ import de.westnordost.streetcomplete.quests.oneway.data.WayTrafficFlowTable
              */
             db.execSQL("""
                 DELETE FROM ${OsmQuestTable.NAME} 
-                WHERE ${OsmQuestTable.Columns.ELEMENT_TYPE} = ${Element.Type.RELATION.name}
+                WHERE ${OsmQuestTable.Columns.ELEMENT_TYPE} = "${Element.Type.RELATION.name}"
             """.trimIndent())
             db.execSQL("""
                 DELETE FROM ${UndoOsmQuestTable.NAME} 
-                WHERE ${UndoOsmQuestTable.Columns.ELEMENT_TYPE} = ${Element.Type.RELATION.name}
+                WHERE ${UndoOsmQuestTable.Columns.ELEMENT_TYPE} = "${Element.Type.RELATION.name}"
             """.trimIndent())
             db.execSQL("""
                 DELETE FROM ${RelationTable.NAME} 
