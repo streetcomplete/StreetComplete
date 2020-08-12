@@ -1,3 +1,6 @@
+v22.2: |
+  <p>Same as v22.1 only removing once all local data subject to a possible data corruption that happened in v22.0 (#2014)</p>
+
 v22.1: |
   <h3>Fixes</h3>
   <ul>
