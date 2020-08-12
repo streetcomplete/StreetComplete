@@ -25,6 +25,7 @@ class AddHousenumberTest {
         assertTrue("1234/9".matches(r))
         assertTrue("1234 / 9".matches(r))
 
+        assertTrue("12345".matches(r))
         assertFalse("123456".matches(r))
         assertFalse("1234 5".matches(r))
         assertFalse("1234/55".matches(r))

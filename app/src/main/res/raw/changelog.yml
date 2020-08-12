@@ -1,3 +1,13 @@
+v22.2: |
+  <p>Same as v22.1 only removing once all local data subject to a possible data corruption that happened in v22.0 (#2014)</p>
+
+v22.1: |
+  <h3>Fixes</h3>
+  <ul>
+  <li>Fix login failing with the app crashing (#2007)</li>
+  <li>Fix some crashes when app comes into foreground again (#2003 and more)</li>
+  </ul>
+
 v22.0: |
   <h3>Enhancements</h3>
   <ul>

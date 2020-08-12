@@ -275,8 +275,8 @@
     <string name="privacy_html">"&lt;p&gt;喔，有些人在意隱私，這樣很好！ 我想我只有好消息可告訴你：&lt;/p&gt;
 &lt;p&gt;&lt;b&gt;直接貢獻&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
-首先，通過此APP，你可直接向開放街圖做出貢獻。&lt;br/&gt;
-你在此APP上所有貢獻會直接加在地圖上，APP和開放街圖設施之間不會有任何第三方管道，像 &lt;a href=\"https://wheelmap.org\"&gt;輪椅地圖&lt;/a&gt; 或 &lt;a href=\"http://www.kort.ch\"&gt;Kort&lt;/a&gt;。
+首先，透過此app，你可直接向開放街圖做出貢獻。&lt;br/&gt;
+你在此app上所有貢獻會直接加到地圖上，和開放街圖設施之間不會有任何第三方管道，像 &lt;a href=\"https://wheelmap.org\"&gt;輪椅地圖&lt;/a&gt; 或 &lt;a href=\"http://www.kort.ch\"&gt;Kort&lt;/a&gt;。
 &lt;/p&gt;
 &lt;p&gt;
 開放街圖是不允許匿名編輯，所以你任何編輯都是藉由你的開放街圖帳號。這表示日期、內容和你改動後產生的間接地理資訊，都會公開於開放街圖網站並標示你的帳號。
@@ -284,19 +284,13 @@
 
 &lt;b&gt;定位&lt;/b&gt;&lt;br/&gt;
 &lt;p&gt;
-你的定位只用在搜尋你附近的任務。別擔心，你的定位此APP不會外傳。
+這個app不會分享給其他人你的GPS位置，你的定位只用在自動搜尋你附近的任務，以及專注(下載)你附近的地圖。
 &lt;/p&gt;
 
 &lt;p&gt;&lt;b&gt;資料使用&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;
-以上提到，此APP會直接和開放街圖的設施直接溝通，將使用 &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;Overpass API&lt;/a&gt; 下載任務(是匿名的)，且使用 &lt;a href=\"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM API&lt;/a&gt; 上傳資料。&lt;br/&gt;
-在上傳你的更變之前，此APP會在我的伺服器上確認 &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;簡單的文字檔&lt;/a&gt; 來確認APP是否被封鎖而無法上傳任何更變。這是一個防護措施，如果APP的版本更變後有嚴重的錯誤出現，開放街圖的資料不受汙染。&lt;br/&gt;
-&lt;/p&gt;
-&lt;p&gt;
-顯示地圖、向量圖磚皆從 &lt;a href=\"https://mapzen.com/projects/vector-tiles/\"&gt;Mapzen 向量圖磚服務&lt;/a&gt; 匿名下載取得。此服務會記錄圖磚請求，來了解哪個區域是熱門的，作為準備快取和改善效能之用。他們的平台同時也紀錄IP地址，且他們的所有服務全部託管在Amazon，所以它會觀察你的行為再決定動作。
-&lt;/p&gt;
-&lt;p&gt;
-(&lt;i&gt;目前尚未實作，只是告知即將要到來！&lt;/i&gt;) 顯示在設定檔和排行榜的資料，都是從開放街圖公開的可用資訊中統整出來。資料並不是來自APP，但基本上是從開放街圖用戶中的開放上傳歷史取用。
+以上提到，此app會直接和開放街圖的設施直接溝通，將使用 &lt;a href=\"http://wiki.openstreetmap.org/wiki/Overpass_API\"&gt;Overpass API&lt;/a&gt; 下載任務(是匿名的)，且使用 &lt;a href=\"http://wiki.openstreetmap.org/wiki/API_v0.6\"&gt;OSM API&lt;/a&gt; 上傳資料。&lt;br/&gt;
+在上傳你的變更之前，此app會在我的伺服器上確認 &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;簡單的文字檔&lt;/a&gt; 來確認app是否被封鎖而無法上傳任何變更。這是一個防護措施，如果app的版本變更後有嚴重的錯誤出現，開放街圖的資料不受汙染。&lt;br/&gt;
 &lt;/p&gt;"</string>
 
     <!-- Fuzzy -->
@@ -576,7 +570,7 @@
     <string name="quest_maxspeed_answer_noSign_ruralOk">"市區之外"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_maxspeed_answer_noSign_info_zone">"如果在幹道交匯處有指標，那麼你不會在這一間找到個別的速限牌，因此整區將用同一個預設速度。"</string>
+    <string name="quest_maxspeed_answer_noSign_info_zone">"如果在幹道交匯處有指標，那麼你不會在這一帶找到個別的速限牌，因此整區將用同一個預設速限。"</string>
     <string name="quest_sport_softball">"壘球"</string>
     <string name="quest_sport_racquet">"壁球"</string>
 
@@ -1035,7 +1029,7 @@
     <string name="quest_dietType_explanation_vegan">"維根料理不含動物產品 (沒有肉類、奶類產品，沒有蛋...)。"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_dietType_explanation_vegetarian">"素食料理不含肉類"</string>
+    <string name="quest_dietType_explanation_vegetarian">"素食料理不含肉類、魚類、家禽。"</string>
 
     <!-- Fuzzy -->
     <string name="quest_dietType_explanation">"只有這間餐廳的主餐有該選項，忽略前菜等，才回答是。"</string>
@@ -1154,6 +1148,7 @@
 
     <!-- Fuzzy -->
     <string name="quest_bench_answer_picnic_table">"這是野餐桌"</string>
+    <string name="quest_religion_for_place_of_worship_title">"在這裡所活動的宗教是？"</string>
 
     <!-- Fuzzy -->
     <string name="quest_religion_christian">"基督教"</string>
@@ -1752,15 +1747,18 @@
 
     <!-- Fuzzy -->
     <string name="quest_busStopShelter_covered">"整個站牌都有遮蓋"</string>
+    <string name="quest_ferry_pedestrian_name_title">"%s 是運送旅客嗎？"</string>
 
     <!-- Fuzzy -->
     <string name="quest_ferry_pedestrian_title">"這邊的輪船是行人可到達嗎？"</string>
+    <string name="quest_ferry_motor_vehicle_name_title">"%s 是運送機動車輛嗎？"</string>
 
     <!-- Fuzzy -->
     <string name="quest_ferry_motor_vehicle_title">"這邊的輪船是能載運機動車輛嗎？ "</string>
 
     <!-- Fuzzy -->
     <string name="quest_leave_new_note_photos_are_useful">"如果能加上照片會讓註解更有用。"</string>
+    <string name="quest_postboxCollectionTimes_name_title">"這個 %s 郵筒的收信時間是？"</string>
 
     <!-- Fuzzy -->
     <string name="create_new_note_hint">"最好用當地的語言撰寫註解，不然就請用英文。"</string>
@@ -1797,6 +1795,7 @@
 
     <!-- Fuzzy -->
     <string name="quest_footwayPartSurface_title">"人行步道的鋪面材質是什麼？"</string>
+    <string name="quest_wheelchairAccess_toiletsPart_title">"在 %s 的廁所能通行輪椅嗎？"</string>
 
     <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_tram">"街車停靠站有特殊舖面嗎？"</string>
@@ -1805,7 +1804,7 @@
     <string name="quest_tactilePaving_title_name_tram">"街車停靠站%s有特殊舖面嗎"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_maxweight_title">"這裡的承重有上線嗎？"</string>
+    <string name="quest_maxweight_title">"這裡的承重有上限嗎？"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxweight_answer_noSign">"這裡沒有指標"</string>
@@ -1814,10 +1813,11 @@
     <string name="quest_maxweight_unusualInput_confirmation_description">"重量的數量看來怪怪的，你確定輸入正確數值嗎？"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_maxweight_answer_other_sign">"指標看來不同…"</string>
+    <string name="quest_maxweight_answer_other_sign">"看來是不同的指標…"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_maxweight_unsupported_sign_request_photo">"你想要留下註解嗎？像是有留下留片的註解，能夠讓其他圖客接手處理。"</string>
+    <string name="quest_maxweight_unsupported_sign_request_photo">"你想要留下註解嗎？像是有留下有照片的註解，能夠讓其他圖客接手處理。"</string>
+    <string name="quest_generalFee_title">"進入 %s 需要支付費用嗎？"</string>
 
     <!-- Fuzzy -->
     <string name="quest_laundrySelfService_title">"這個洗衣店是自助服務嗎？"</string>
@@ -1841,7 +1841,7 @@
     <string name="quest_ref_answer_noRef">"看不到編號…"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_street_side_puzzle_tutorial">"按住問號，然後選擇道路那一側的答案。"</string>
+    <string name="quest_street_side_puzzle_tutorial">"按住問號，然後選擇道路那一側的答案。插圖中的道路與大頭針位置處的地圖相同方式旋轉..."</string>
 
     <!-- Fuzzy -->
     <string name="quest_recycling_materials_title">"這裡能拿過去那些回收物品？"</string>
@@ -1905,37 +1905,175 @@
 
     <!-- Fuzzy -->
     <string name="title_whats_new">"最新功能？"</string>
+    <string name="about_title_rate">"評價此應用程式"</string>
+    <string name="about_summary_rate">"在GooglePlay上"</string>
     <string name="about_title_donate">"捐獻"</string>
     <string name="about_summary_donate">"顯示您的贊助！ ❤️"</string>
+    <string name="about_description_donate">"感謝您考慮支援此應用程式！ 要檢視目前的捐款和你的捐獻，在相關的平台上點擊："</string>
+    <string name="quest_religion_for_place_of_worship_name_title">"在 %s 所活動的宗教是？"</string>
+    <string name="confirmation_cancel_prev_download_confirmed">"掃描這裡取代"</string>
     <string name="confirmation_cancel_prev_download_cancel">"繼續目前的掃描"</string>
-    <string name="quest_tourism_information_office">"觀光資訊辦公室"</string>
+    <string name="quest_buildingType_garages_description">"分離空間給不同的房東/租客"</string>
+    <string name="quest_tourism_information_title">"這是哪種觀光資訊？"</string>
+    <string name="quest_tourism_information_name_title">"%s 是哪種觀光資訊？"</string>
+    <string name="quest_tourism_information_office">"旅遊服務中心"</string>
     <string name="quest_tourism_information_board">"資訊板"</string>
     <string name="quest_tourism_information_terminal">"資訊終端機"</string>
     <string name="quest_tourism_information_map">"地圖"</string>
     <string name="quest_tourism_information_guidepost">"指引路標"</string>
+    <string name="quest_recycling_materials_answer_waste">"這是一般垃圾專用"</string>
+    <string name="quest_recycling_materials_answer_waste_description">"所以，這是可以放置任何垃圾的容器嗎，像是打包後的家庭或商業垃圾？"</string>
+    <string name="quest_accepts_cash_title">"%s 接受現金支付嗎？"</string>
+    <string name="user_profile">"我的檔案"</string>
+    <string name="user_login">"登入"</string>
+    <string name="user_logout">"登出"</string>
+    <string name="osm_profile">"OSM檔案"</string>
     <string name="next">"下一個"</string>
+    <string name="letsgo">"讓我們開始吧！"</string>
     <string name="tutorial_welcome_to_osm">"歡迎來到開放街圖"</string>
+    <string name="tutorial_welcome_to_osm_subtitle">"自由的 wiki 世界地圖"</string>
+    <string name="tutorial_intro">"StreetComplete讓貢獻開放街圖更為簡易。
+它會自動找到附近遺失的細節：自行車道、房屋門牌和營業時間等更多..."</string>
+    <string name="tutorial_solving_quests">"當找到後，遺失的細節將會以任務的形式出現在你的地圖上。
+
+你可以立刻開始解決它並在稍後登入之後發佈您的解答。"</string>
+    <string name="tutorial_stay_safe">"每當您不確定的時候，您可以總是回答「無法說明」並留下註記。
+
+最終，記住要保持安全：小心您的周遭並且不要輸入私人產權。"</string>
     <string name="tutorial_happy_mapping">"祝繪製愉快！"</string>
+    <string name="achievements_empty">"您尚未有任何的成就"</string>
+    <string name="links_empty">"您尚未有任何連結"</string>
+    <string name="quests_empty">"您尚未發佈任何任務的解答"</string>
+    <string name="unsynced_quests_description">"增加 %d 尚未發佈的更改。"</string>
+    <string name="unsynced_quests_not_logged_in_description">"您尚未發佈 %d 項變更。您必須登入來上傳它們。"</string>
     <string name="user_quests_title">"解決的任務"</string>
     <string name="user_achievements_title">"成就"</string>
+    <string name="user_links_title">"連結集合"</string>
     <string name="user_profile_title">"個人檔案"</string>
+    <string name="user_statistics_quest_wiki_link">"文件"</string>
+    <string name="achievements_unlocked_link">"未解鎖的連結："</string>
+    <string name="achievements_unlocked_links">"未解鎖的連結："</string>
+    <string name="link_category_intro_title">"介紹"</string>
+    <string name="link_category_intro_description">"學習更多有關OSM和它的社群"</string>
+    <string name="link_category_editors_title">"貢獻"</string>
+    <string name="link_category_editors_description">"編輯器或其他方法來貢獻開放街圖。"</string>
+    <string name="link_category_maps_title">"地圖"</string>
+    <string name="link_category_maps_description">"開放街圖為基礎的地圖"</string>
     <string name="link_category_showcase_title">"範例展示"</string>
+    <string name="link_category_showcase_description">"開放街圖為基礎的服務和應用程式"</string>
+    <string name="link_category_goodies_title">"好東西"</string>
+    <string name="link_category_goodies_description">"讓您嘗試感興趣的地圖相關物件。"</string>
+    <string name="link_cyclosm_description">"給自行車騎士的地圖"</string>
+    <string name="link_wheelmap_description">"用來找到方便進出輪椅的地點的地圖。"</string>
+    <string name="link_osm_buildings_description">"在3D顯示建築物的地圖"</string>
+    <string name="link_openvegemap_description">"在您的城市探索素食主義者和素食餐廳"</string>
+    <string name="link_touch_mapper_description">"簡易產生包含每一地址的觸感地圖。"</string>
+    <string name="link_mapy_tactile_description">"給予視覺失能者不同大小的觸感地圖。"</string>
+    <string name="link_josm_description">"全面性功能的桌面版OSM編輯器。一般使用者最強大的工具。"</string>
+    <string name="link_vespucci_description">"給Android的進階OSM編輯器"</string>
+    <string name="link_ideditor_description">"給瀏覽器的基本OSM編輯器。針對桌上型電腦和大型的平板電腦做最佳化"</string>
+    <string name="link_umap_description">"快速建立包含自訂資料的地圖並嵌入到您的網站。"</string>
+    <string name="link_opnvkarte_description">"大眾運輸路線和站牌地圖"</string>
+    <string name="link_pic4review_description">"藉由檢視您城市中的照片來貢獻OSM"</string>
+    <string name="link_wiki_description">"這個有關開放街圖的 wiki 是你的起點"</string>
+    <string name="link_learnosm_description">"開放街圖的新手？這是新使用者的導引"</string>
+    <string name="link_neis_one_description">"一個OSM統計的資料庫，包含像是你在哪和如何貢獻，周遭其他人在排行榜的增加。"</string>
+    <string name="link_welcome_mat_description">"有關於開放街圖的一般資訊和如何與OSM為組織般工作。"</string>
+    <string name="link_mapillary_description">"一個用來分享群眾提供的街景應用程式和服務，包含可用來貢獻OSM的明顯授權。"</string>
+    <string name="link_openstreetcam_description">"一個用來分享群眾提供的街景應用程式和服務，包含可用來貢獻OSM的明顯授權。"</string>
+    <string name="link_openrouteservice_wheelchair_description">"給輪椅使用者的方向導引導航。"</string>
+    <string name="link_nominatim_description">"用在其他服務上OSM的地址編碼"</string>
+    <string name="link_city_roads_description">"成像所有城市的道路，印在T恤或是馬克杯上"</string>
+    <string name="link_myosmatic_description">"產生可選擇地街道導引，只需幾個步驟就可列印的地圖。"</string>
+    <string name="link_brouter_description">"也許是自行車騎士最好的導航引擎"</string>
+    <string name="link_show_me_the_way_description">"即時監看OSM的編輯"</string>
+    <string name="link_osrm_description">"目前最快的導航引擎"</string>
+    <string name="link_openrouteservice_description">"可用不同的設定去導航多樣性的車輛和步行。
+也可顯示等時地圖（ Isochrones，從起點開始在X分鐘可到達的範圍）。"</string>
+    <string name="link_osm_haiku_description">"使用OSM資料產生俳句（日本詩的一種）"</string>
+    <string name="link_openinframap_description">"顯示電力、通訊、瓦斯和原油設施的地圖"</string>
+    <string name="link_openorienteeringmap_description">"產生可列印的地圖給定向運動"</string>
+    <string name="link_openstreetbrowser_description">"藉由分類來瀏覽開放街圖的地圖"</string>
+    <string name="link_weeklyosm_description">"報導開放街圖大小事的每周新聞部落格"</string>
+    <string name="link_figuregrounder_description">"產生城市或是鄰里的圖底圖（ Figure-ground diagram）海報。"</string>
+    <string name="achievement_first_edit_title">"已解決第一個任務"</string>
+    <string name="achievement_first_edit_description">"歡迎來到開放街圖社群！在你的檔案畫面中，你可以看到更多每個你解決的任務資訊。"</string>
     <string name="achievement_surveyor_title">"調查者"</string>
+    <string name="achievement_surveyor_solved_X">"您解決了 %d 項任務！持續解鎖更多包含OSM和其他有關地圖的應用程式、專案的成就。"</string>
+    <string name="achievement_regular_title">"一般"</string>
+    <string name="achievement_regular_description">"您已經藉由此應用程式貢獻OSM %d 天了！一般的貢獻者為OSM最大的支撐力量，感謝您的貢獻！❤"</string>
+    <string name="achievement_bicyclist_title">"自行車騎士"</string>
+    <string name="achievement_bicyclist_solved_X">"你幫助自行車騎士解決了 %d 項任務！"</string>
+    <string name="achievement_wheelchair_title">"機動"</string>
+    <string name="achievement_wheelchair_solved_X">"您已解決了 %d 項讓輪椅使用者暢通無阻的任務！"</string>
+    <string name="achievement_postman_title">"郵差"</string>
+    <string name="achievement_postman_solved_X">"您已幫助定位了 %d 地址！
+此資料除了郵差外也對任何的導航系統是相當必要的。"</string>
+    <string name="achievement_building_title">"高樓層"</string>
+    <string name="achievement_building_solved_X">"您已解決了 %d 建築物相關的任務。
+注意此應用程式會在確定類型後，詢問建築的門牌號碼。"</string>
+    <string name="achievement_blind_title">"第六感"</string>
+    <string name="achievement_blind_solved_X">"你解決了 %d 項視覺失能者有興趣的任務。"</string>
+    <string name="achievement_pedestrian_title">"跑者"</string>
+    <string name="achievement_pedestrian_solved_X">"您解決了 %d 項行人有興趣的任務！"</string>
     <string name="achievement_veg_title">"動物的種類"</string>
+    <string name="achievement_veg_solved_X">"您解決了 %d 項不吃肉的人有興趣的任務！"</string>
+    <string name="achievement_car_title">"在路上"</string>
+    <string name="achievement_car_solved_X">"您解決了 %d 項改善放在街道上描述設施細節的任務！"</string>
+    <string name="unread_messages_message">"你在收件匣中有 %d 封未讀訊息"</string>
+    <string name="unread_messages_button">"開啟收信匣"</string>
     <string name="action_about2">"關於"</string>
     <string name="map_btn_menu">"選單"</string>
+    <string name="privacy_html_statistics">"&lt;p&gt;在你的檔案中被顯示的資料，是從你可用的OSM公開貢獻歷史，並儲存在我的伺服器。&lt;/p&gt;"</string>
+    <string name="confirmation_authorize_now_note2">"你也可以晚點在檔案畫面中處理"</string>
+    <string name="credits_art_contributors_title">"美術貢獻者"</string>
+    <string name="credits_projects_contributors_title">"StreetComplete做成的專案"</string>
+    <string name="credits_main_contributors_title">"主要的貢獻者"</string>
+    <string name="stats_are_syncing">"你的統計依然同步中。請晚點檢查這個畫面。"</string>
+    <string name="user_statistics_country_rank">"在 %2$s: %1$d 的排名"</string>
+    <string name="user_statistics_country_wiki_link">"繪製導航 %s"</string>
+    <string name="user_statistics_filter_by_country">"依國家"</string>
+    <string name="user_statistics_filter_by_quest_type">"依任務類型"</string>
     <string name="user_profile_global_rank">"全球排行"</string>
+    <string name="user_profile_local_rank">"在 %s 的排名"</string>
+    <string name="user_profile_days_active">"天有效"</string>
+    <string name="user_profile_achievement_levels">"成就等級"</string>
+    <string name="quest_address_street_title">"房屋門牌 %s 是依靠在哪條街道上？"</string>
+    <string name="quest_address_street_no_named_streets">"它並沒有依靠在有名稱的街道上"</string>
+    <string name="quest_address_street_place_name_label">"地點名稱："</string>
+    <string name="quest_address_street_description">"點擊在地圖上的道路或是在下方輸入沒有縮寫的名稱："</string>
     <string name="quest_recycling_type_cooking_oil">"食用油"</string>
     <string name="quest_recycling_type_engine_oil">"機油"</string>
+    <string name="link_photon_description">"標準的Nominatim擴充，包含模糊搜尋和你自訂的搜尋。"</string>
+    <string name="link_graphhopper_description">"靈活的導航引擎"</string>
+    <string name="link_qwant_maps_description">"具有可搜尋地點和方向的地圖"</string>
+    <string name="privacy_html_tileserver2">"&lt;p&gt;要顯示此地圖，向量圖磚皆從 %1$s 取得。檢視它們的&lt;a href=\"%2$s\"&gt;隱私聲明&lt;/a&gt;取得更多資訊。&lt;/p&gt;"</string>
+    <string name="about_title_sponsors">"贊助者"</string>
     <string name="quest_board_type_history">"歷史"</string>
+    <string name="quest_board_type_geology">"地質學"</string>
     <string name="quest_board_type_plants">"植物"</string>
     <string name="quest_board_type_wildlife">"野生"</string>
+    <string name="quest_board_type_nature">"自然（多種議題）"</string>
+    <string name="quest_board_type_notice_board">"這是個公告欄"</string>
+    <string name="quest_board_type_public_transport">"大眾運輸"</string>
+    <string name="quest_board_type_title">"這個資訊板是什麼主題？"</string>
+    <string name="quest_sidewalk_separately_mapped">"是，在地圖上分開顯示"</string>
     <string name="quest_board_type_map">"這是地圖"</string>
+    <string name="quest_board_type_map_title">"這是地圖而且就只是地圖？"</string>
+    <string name="quest_board_type_map_description">"當此資訊看板是指特定主題的話請描述它，無論是否有包含地圖。例如大眾運輸的資訊看板也許會包含公車路線地圖。當包含解答的主題並沒被列出來，取而代之請考慮留下註記。"</string>
     <string name="quest_surface_detailed_answer_impossible">"多種的表面材質"</string>
+    <string name="quest_surface_detailed_answer_impossible_confirmation">"你確定描述此鋪面是不可能的嗎？註記「在線段上皆不同」允許你切斷鋪面改變的線段的解答選項。當這裡只有一種鋪面但不可作為解答的話，請使用「無法說明」。"</string>
+    <string name="quest_surface_detailed_answer_impossible_description">"在此請簡述此表面的自然材質，例如：包含鵝卵石補丁的砂質鋪面。此字串長度僅限255個字元。"</string>
+    <string name="quest_surface_detailed_name_title">"此道路 %s 是哪種特定的鋪面？"</string>
+    <string name="quest_surface_detailed_square_name_title">"此廣場 %s 是哪種特定的鋪面？"</string>
+    <string name="quest_surface_detailed_title">"此道路片段是哪種特定的鋪面？"</string>
+    <string name="quest_surface_detailed_square_title">"這個廣場的表面材質是哪種？"</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
     <string name="quest_streetName_menuItem_international">"國際"</string>
     <string name="quest_streetName_menuItem_romanized">"拉丁字母化"</string>
+    <string name="quest_buildingType_terrace2">"排屋"</string>
+    <string name="quest_oneway_tutorial">"此道路在繪製圖面上，倒轉成地圖中錨點的相同方向。須注意相對應的方向。"</string>
     <string name="at_housename">"房屋名稱 %s："</string>
     <string name="at_conscription_and_street_number">"徵兵號碼 %1$s, 定位號碼 %2$s:"</string>
     <string name="at_conscription_number">"徵兵號碼 %s:"</string>

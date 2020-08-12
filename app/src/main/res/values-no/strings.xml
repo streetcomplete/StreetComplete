@@ -1,25 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <!-- Fuzzy -->
     <string name="action_settings">"Innstillinger"</string>
-
-    <!-- Fuzzy -->
-    <string name="oauth_communication_error">"Kunne ikke nå godkjennelsestjeneren"</string>
-
-    <!-- Fuzzy -->
+    <string name="oauth_communication_error">"Kunne ikke koble til godkjennelseserveren"</string>
     <string name="retry">"Prøv igjen"</string>
-
-    <!-- Fuzzy -->
-    <string name="oauth_failed_permissions">"Godkjennelsen mislyktes: Alle oppgitte tillatelser må gis"</string>
-
-    <!-- Fuzzy -->
+    <string name="oauth_failed_permissions">"Godkjennelsen mislyktes: Alle oppgitte tillatelser må gitt"</string>
     <string name="title_activity_settings">"Innstillinger"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_category_communication">"Kommunikasjon"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_category_display">"Skjerm"</string>
     <string name="pref_tilecache_size_summary">"%d MB"</string>
 
@@ -52,11 +38,7 @@
 
     <!-- Fuzzy -->
     <string name="quest_generic_confirmation_title">"Er du sikker?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_confirmation_yes">"Ja, jeg er sikker"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_confirmation_no">"Jeg skal sjekke"</string>
 
     <!-- Fuzzy -->

@@ -3,6 +3,8 @@ package de.westnordost.streetcomplete.quests
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
 import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.quests.sidewalk.AddSidewalk
+import de.westnordost.streetcomplete.quests.sidewalk.SeparatelyMapped
+import de.westnordost.streetcomplete.quests.sidewalk.SidewalkAnswer
 import de.westnordost.streetcomplete.quests.sidewalk.SidewalkSides
 import org.junit.Test
 
@@ -35,6 +37,13 @@ class AddSidewalkTest {
         questType.verifyAnswer(
             SidewalkSides(left = true, right = true),
             StringMapEntryAdd("sidewalk", "both")
+        )
+    }
+
+    @Test fun `apply separate sidewalk answer`() {
+        questType.verifyAnswer(
+            SeparatelyMapped,
+            StringMapEntryAdd("sidewalk", "separate")
         )
     }
 }

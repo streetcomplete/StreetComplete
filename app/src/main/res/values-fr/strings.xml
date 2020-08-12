@@ -79,7 +79,7 @@
     <string name="quest_streetName_title">"Quel est le nom de cette voie ?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetName_description">"tel qu’écrit sur le panneau (les abréviations sont automatiquement développées) :"</string>
+    <string name="quest_streetName_description">"Tel qu’écrit sur le panneau (les abréviations sont automatiquement développées) :"</string>
 
     <!-- "Also, note that there may not be extra street signs for side streets that belong to a bigger street."
 That is not very clear to me. Any further explanations? -->
@@ -313,7 +313,7 @@ Toutefois, avant de télécharger vos modifications, l'application vérifie, à 
 
     <!-- Plus simple et plus court : "Quel est le revêtement de cette rue ?" -->
     <!-- Fuzzy -->
-    <string name="quest_streetSurface_title">"Quelle est le revêtement de ce tronçon ?"</string>
+    <string name="quest_streetSurface_title">"Quel est le revêtement de ce tronçon ?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_surface_value_paved">"Avec revêtement (générique)"</string>
@@ -567,7 +567,7 @@ Les informations que vous saisissez sont ensuite directement ajoutées à OpenSt
 
     <!-- Je remets "revêtement" car la "surface d'une route" ça ne veut rien dire. -->
     <!-- Fuzzy -->
-    <string name="quest_streetSurface_name_title">"Quelle est le revêtement de la voie %s à cet endroit ?"</string>
+    <string name="quest_streetSurface_name_title">"Quel est le revêtement de la voie %s à cet endroit ?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Cette limitation de vitesse semble peu plausible."</string>
@@ -1255,10 +1255,10 @@ Sinon, vous pouvez télécharger un autre clavier dans le magasin d'applications
     <string name="quest_streetName_pedestrian_title">"Quel est le nom de cette rue piétonne ?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetSurface_square_title">"Quelle est le revêtement de cette place ?"</string>
+    <string name="quest_streetSurface_square_title">"Quel est le revêtement de cette place ?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_streetSurface_square_name_title">"Quelle est le revêtement de la place %s ?"</string>
+    <string name="quest_streetSurface_square_name_title">"Quel est le revêtement de la place %s ?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_fee_answer_hours">"Dépend du jour et de l’heure…"</string>
@@ -1342,10 +1342,10 @@ Sinon, vous pouvez télécharger un autre clavier dans le magasin d'applications
     <string name="quest_pathSurface_title_steps">"Quel revêtement ces marches ont-elles ?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_pathSurface_title_bridleway">"Quelle revêtement ce sentier équestre a-t-il ?"</string>
+    <string name="quest_pathSurface_title_bridleway">"Quel revêtement ce sentier équestre a-t-il ?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_pathSurface_title">"Quelle revêtement ce chemin a-t-il ?"</string>
+    <string name="quest_pathSurface_title">"Quel revêtement ce chemin a-t-il ?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_select_hint_most_specific">"Sélectionnez celui qui convient le mieux :"</string>
@@ -1835,13 +1835,13 @@ Sinon, vous pouvez télécharger un autre clavier dans le magasin d'applications
     <string name="quest_leaf_type_mixed">"Les deux sont présents"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_cyclewayPartSurface_title">"Quelle est le revêtement de la piste cyclable ici ?"</string>
+    <string name="quest_cyclewayPartSurface_title">"Quel est le revêtement de la piste cyclable ici ?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_generic_answer_differs_along_the_way">"Varie en cours de route..."</string>
 
     <!-- Fuzzy -->
-    <string name="quest_split_way_description">"S'il varie en cours de route, la première étape consiste à découper la piste en plusieurs tronçons. Ensuite, on peut répondre à la quête séparément pour chaque tronçon. 
+    <string name="quest_split_way_description">"S'il varie en cours de route, la première étape consiste à découper la piste en plusieurs tronçons. Ensuite, il est possible de répondre à la quête séparément pour chaque tronçon. 
 Découper maintenant ?"</string>
 
     <!-- Fuzzy -->
@@ -1856,7 +1856,7 @@ Découper maintenant ?"</string>
 
     <!-- Je pense que le terme "surface" est trop ambigu : je trouve que "revêtement" est mieux. -->
     <!-- Fuzzy -->
-    <string name="quest_footwayPartSurface_title">"Quelle est le revêtement du chemin piéton ici ?"</string>
+    <string name="quest_footwayPartSurface_title">"Quel est le revêtement du chemin piéton ici ?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_wheelchairAccess_toiletsPart_title">"Les toilettes de %s sont-elles accessibles aux personnes en fauteuil roulant ?"</string>
@@ -1892,7 +1892,7 @@ Découper maintenant ?"</string>
     <string name="quest_handrail_title">"Ces marches ont-elles une main courante ?"</string>
 
     <!-- Fuzzy -->
-    <string name="quest_openingHours_no_name_title">"Quelles sont les horaires d'ouverture de ce lieu? (%s)"</string>
+    <string name="quest_openingHours_no_name_title">"Quelles sont les horaires d'ouverture de ce lieu ? (%s)"</string>
 
     <!-- Fuzzy -->
     <string name="about_summary_current_version">"Version actuelle: %s"</string>
@@ -2336,6 +2336,7 @@ Ces données sont essentielles non seulement pour le facteur mais aussi pour tou
 
     <!-- Fuzzy -->
     <string name="user_statistics_country_rank">"Classement (%2$s) : %1$d"</string>
+    <string name="user_statistics_country_wiki_link">"Portail cartographie %s"</string>
     <string name="user_statistics_filter_by_country">"par pays"</string>
     <string name="user_statistics_filter_by_quest_type">"par type de quête"</string>
     <string name="user_profile_global_rank">"Classement global"</string>
@@ -2349,16 +2350,17 @@ Ces données sont essentielles non seulement pour le facteur mais aussi pour tou
     <string name="user_profile_achievement_levels">"Niveaux d'accomplissement"</string>
     <string name="quest_address_street_title">"A quelle rue appartient le bâtiment portant le numéro %s ?"</string>
     <string name="quest_address_street_no_named_streets">"Cela n'appartient pas à une rue précise"</string>
-    <string name="quest_address_street_place_name_label">"Nom du lieu:"</string>
+    <string name="quest_address_street_place_name_label">"Nom du lieu :"</string>
     <string name="quest_address_street_description">"Sélectionnez la rue à laquelle cela appartient ou indiquez le nom de la rue sans abréviations dans le champ ci-dessous:"</string>
     <string name="quest_recycling_type_cooking_oil">"Huile de friture"</string>
-    <string name="quest_recycling_type_engine_oil">"Huile moteur"</string>
+    <string name="quest_recycling_type_engine_oil">"Huile de moteur"</string>
+    <string name="link_photon_description">"Une extension autonome à Nominatim, incluant une recherche floue et une recherche au fur et à mesure de la frappe"</string>
 
     <!-- Fuzzy -->
     <string name="link_graphhopper_description">"Un moteur de recherche d'itinéraire"</string>
 
     <!-- Fuzzy -->
-    <string name="link_qwant_maps_description">"Une carte qui permet de cherche des lieux et des itinéraires"</string>
+    <string name="link_qwant_maps_description">"Une carte qui permet de chercher des lieux et des itinéraires"</string>
 
     <!-- Fuzzy -->
     <string name="privacy_html_tileserver2">"&lt;p&gt;Les tuiles vectorielles utilisées pour afficher la carte sont récupérées depuis %1s. Lisez leur &lt;a href=\"%2$s\"&gt;politique de confidentialité&lt;/a&gt; pour plus d'information."</string>
@@ -2366,8 +2368,28 @@ Ces données sont essentielles non seulement pour le facteur mais aussi pour tou
     <string name="quest_board_type_history">"Histoire"</string>
     <string name="quest_board_type_geology">"Géologie"</string>
     <string name="quest_board_type_plants">"Plantes"</string>
+    <string name="quest_board_type_wildlife">"Vie sauvage"</string>
+    <string name="quest_board_type_nature">"Nature (thèmes multiples)"</string>
+    <string name="quest_board_type_notice_board">"C'est un panneau d'information"</string>
+    <string name="quest_board_type_public_transport">"Transport public"</string>
+    <string name="quest_board_type_title">"Quel est l'objet de ce panneau d'information ?"</string>
+    <string name="quest_sidewalk_separately_mapped">"Oui, affiché séparément sur la carte"</string>
+    <string name="quest_board_type_map">"C'est une carte"</string>
+    <string name="quest_board_type_map_title">"Est-ce seulement et uniquement une carte ?"</string>
+    <string name="quest_board_type_map_description">"Si le panneau ne concerne qu'un sujet particulier, merci de le spécifier, qu'une carte soit incluse ou non. Par exemple, un panneau d'information sur les transports peut inclure une carte des bus. Si le thème n'est pas listé dans la liste des réponses, pensez à laisser une note à la place."</string>
+    <string name="quest_surface_detailed_answer_impossible">"Surfaces multiples..."</string>
+    <string name="quest_surface_detailed_answer_impossible_confirmation">"Etes-vous sûr qu'il est impossible de préciser la surface ? Notez la réponse possible \"Change en cours de route\", qui vous permet de couper la voie à l'en,droit où la surface change. Veuillez utiliser \"Ne peux pas répondre\" s'il s'agit d'une surface unique non listée."</string>
+    <string name="quest_surface_detailed_answer_impossible_description">"Décrivez brièvement la nature du revêtement ici, par exemple \"sableux avec îlots pavés\". La longueur du texte est limitée à 255 caractères."</string>
+    <string name="quest_surface_detailed_name_title">"Quel est le revêtement précis de la route %s ?"</string>
+    <string name="quest_surface_detailed_square_name_title">"Quel est le revêtement précis de la place %s ?"</string>
+    <string name="quest_surface_detailed_title">"Quel est le revêtement précis de cette route ?"</string>
+    <string name="quest_surface_detailed_square_title">"Quel est le revêtement précis de cette place ?"</string>
     <string name="quest_streetName_menuItem_language_with_script_simple">"%1$s – %2$s, %3$s"</string>
     <string name="quest_streetName_menuItem_language_with_script_native">"%1$s – %2$s (%3$s), %4$s"</string>
+    <string name="quest_streetName_menuItem_international">"international"</string>
+    <string name="quest_streetName_menuItem_romanized">"en écriture Latine"</string>
+    <string name="quest_buildingType_terrace2">"Maisons mitoyennes"</string>
+    <string name="quest_oneway_tutorial">"La route en illustration est pivotée dans la même direction qu'indiquée sur la carte. La direction est indiquée. "</string>
     <string name="at_housename">"Nom de la maison %s:"</string>
     <string name="at_conscription_and_street_number">"Numéro de conscription %1$s, numéro d’orientation %2$s:"</string>
     <string name="at_conscription_number">"Numéro de conscription %s:"</string>

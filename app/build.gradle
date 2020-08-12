@@ -31,8 +31,8 @@ android {
         applicationId "de.westnordost.streetcomplete"
         minSdkVersion 17
         targetSdkVersion 29
-        versionCode 2201
-        versionName "22.0"
+        versionCode 2203
+        versionName "22.2"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -134,11 +134,11 @@ dependencies {
     // finding a name for a feature without a name tag
     implementation 'de.westnordost:osmfeatures-android:1.1'
     // talking with the OSM API
-    implementation 'de.westnordost:osmapi-overpass:1.0'
-    implementation 'de.westnordost:osmapi-map:1.1'
-    implementation 'de.westnordost:osmapi-changesets:1.1'
-    implementation 'de.westnordost:osmapi-notes:1.0'
-    implementation 'de.westnordost:osmapi-user:1.0'
+    implementation 'de.westnordost:osmapi-overpass:1.1'
+    implementation 'de.westnordost:osmapi-map:1.2'
+    implementation 'de.westnordost:osmapi-changesets:1.2'
+    implementation 'de.westnordost:osmapi-notes:1.1'
+    implementation 'de.westnordost:osmapi-user:1.1'
 
     // widgets
     implementation "androidx.viewpager2:viewpager2:1.0.0"

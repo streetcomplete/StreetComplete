@@ -108,15 +108,19 @@ class KtMapController(private val c: MapController, contentResolver: ContentReso
             }
 
             override fun onRegionIsChanging() {
-                if (!cameraManager.isAnimating) mapChangingListener?.onMapIsChanging()
-                calledOnMapIsChangingOnce = true
+                mainHandler.post {
+                    if (!cameraManager.isAnimating) mapChangingListener?.onMapIsChanging()
+                    calledOnMapIsChangingOnce = true
+                }
             }
 
             override fun onRegionDidChange(animated: Boolean) {
-                if (!cameraManager.isAnimating) {
-                    if (!calledOnMapIsChangingOnce) mapChangingListener?.onMapIsChanging()
-                    mapChangingListener?.onMapDidChange()
-                    if (animated) flingAnimator.end()
+                mainHandler.post {
+                    if (!cameraManager.isAnimating) {
+                        if (!calledOnMapIsChangingOnce) mapChangingListener?.onMapIsChanging()
+                        mapChangingListener?.onMapDidChange()
+                        if (animated) flingAnimator.end()
+                    }
                 }
             }
         })
