@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.osmquest
 
 import de.westnordost.osmapi.map.data.Element
-import de.westnordost.streetcomplete.data.elementfilter.FiltersParser
+import de.westnordost.streetcomplete.data.elementfilter.ElementFiltersParser
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi

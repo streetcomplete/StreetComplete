@@ -9,7 +9,7 @@ import java.text.ParseException
 /** Integration test for the filter parser, filter expression and creator, the whole way from parsing
  * the tag filters expression to returning it as a OQL string. More convenient this way since the
  * easiest way to create a filter expressions is to parse it from string.  */
-class FiltersParserAndOverpassQueryCreatorTest {
+class ElementFiltersParserAndOverpassQueryCreatorTest {
     @Test fun node() {
         check("nodes", "node;")
     }
@@ -383,14 +383,14 @@ class FiltersParserAndOverpassQueryCreatorTest {
 
     private fun shouldFail(input: String) {
         try {
-            FiltersParser().parse(input)
+            ElementFiltersParser().parse(input)
             fail()
         } catch (ignore: ParseException) {
         }
     }
 
     private fun check(input: String, output: String) {
-        val expr = FiltersParser().parse(input)
+        val expr = ElementFiltersParser().parse(input)
         assertEquals(
             output.replace("\n","").replace(" ",""),
             expr.toOverpassQLString().replace("\n","").replace(" ",""))

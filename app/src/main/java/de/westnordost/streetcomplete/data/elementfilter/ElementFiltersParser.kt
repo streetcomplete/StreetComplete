@@ -16,7 +16,7 @@ import kotlin.math.min
  * <tt>"ways with (highway = residential or highway = tertiary) and !name"</tt> (finds all
  * residential and tertiary roads that have no name)
  */
-class FiltersParser {
+class ElementFiltersParser {
     fun parse(input: String): ElementFilterExpression {
         // convert all white-spacey things to whitespaces so we do not have to deal with them later
         val cursor = StringWithCursor(input.replace("\\s".toRegex(), " "), Locale.US)

@@ -8,7 +8,7 @@ import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
-import de.westnordost.streetcomplete.data.elementfilter.FiltersParser
+import de.westnordost.streetcomplete.data.elementfilter.ElementFiltersParser
 import de.westnordost.streetcomplete.data.elementfilter.getQuestPrintStatement
 import de.westnordost.streetcomplete.data.elementfilter.toGlobalOverpassBBox
 import java.util.concurrent.FutureTask
@@ -18,7 +18,7 @@ class AddPlaceName(
     private val featureDictionaryFuture: FutureTask<FeatureDictionary>
 ) : OsmElementQuestType<PlaceNameAnswer> {
 
-    private val filter by lazy { FiltersParser().parse("""
+    private val filter by lazy { ElementFiltersParser().parse("""
         nodes, ways, relations with 
         (
           shop and shop !~ no|vacant
