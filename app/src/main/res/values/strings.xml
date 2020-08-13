@@ -449,6 +449,10 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_cycleway_value_track_dual">cycle track, both directions</string>
     <string name="quest_cycleway_value_sidewalk_allowed">none, but cyclists are allowed on sidewalk</string>
     <string name="pref_category_advanced">Advanced</string>
+    <string name="pref_title_resurvey_intervals">Resurvey intervals</string>
+    <string name="resurvey_intervals_less_often">Ask less often</string>
+    <string name="resurvey_intervals_default">Default</string>
+    <string name="resurvey_intervals_more_often">Ask more often</string>
     <string name="pref_title_quests">Quest selection</string>
     <string name="quest_enabled">Enabled</string>
     <string name="quest_type">Quest type</string>
