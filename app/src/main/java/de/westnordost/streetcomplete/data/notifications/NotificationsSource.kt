@@ -53,9 +53,9 @@ import javax.inject.Singleton
     fun getNumberOfNotifications(): Int {
         val hasUnreadMessages = userStore.unreadMessagesCount > 0
         val lastVersion = prefs.getString(Prefs.LAST_VERSION, null)
-        val hasNewVersion = lastVersion != null && BuildConfig.VERSION_NAME != lastVersion
+        val hasNewVersion = lastVersion != null && BuildConfig.VERSION != lastVersion
         if (lastVersion == null) {
-            prefs.edit().putString(Prefs.LAST_VERSION, BuildConfig.VERSION_NAME).apply()
+            prefs.edit().putString(Prefs.LAST_VERSION, BuildConfig.VERSION).apply()
         }
 
         var notifications = 0
@@ -68,8 +68,8 @@ import javax.inject.Singleton
     fun popNextNotification(): Notification? {
 
         val lastVersion = prefs.getString(Prefs.LAST_VERSION, null)
-        if (BuildConfig.VERSION_NAME != lastVersion) {
-            prefs.edit().putString(Prefs.LAST_VERSION, BuildConfig.VERSION_NAME).apply()
+        if (BuildConfig.VERSION != lastVersion) {
+            prefs.edit().putString(Prefs.LAST_VERSION, BuildConfig.VERSION).apply()
             if (lastVersion != null) {
                 onNumberOfNotificationsUpdated()
                 return NewVersionNotification("v$lastVersion")

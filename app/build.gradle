@@ -32,7 +32,9 @@ android {
         minSdkVersion 17
         targetSdkVersion 29
         versionCode 2203
-        versionName "22.2"
+        def version = "22.2"
+        versionName version
+        buildConfigField "String", "VERSION", "\"$version\""
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -48,6 +50,7 @@ android {
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             applicationIdSuffix ".debug"
+            versionNameSuffix '-DEBUG'
         }
     }
 
