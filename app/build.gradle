@@ -87,8 +87,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     // debugging
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
-    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.4'
 
     // tests
     testImplementation 'junit:junit:4.12'
