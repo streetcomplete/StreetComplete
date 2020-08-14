@@ -106,9 +106,9 @@ dependencies {
     kapt 'com.google.dagger:dagger-compiler:2.14.1'
 
     // Android stuff
-    implementation 'com.google.android.material:material:1.1.0'
+    implementation 'com.google.android.material:material:1.2.0'
     implementation 'androidx.core:core:1.3.1'
-    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation 'androidx.annotation:annotation:1.1.0'
     implementation 'androidx.fragment:fragment:1.2.5'
