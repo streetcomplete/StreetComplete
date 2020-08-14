@@ -11,13 +11,15 @@ class AddAcceptsCash(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType
     private val amenity = listOf(
         "bar", "cafe", "fast_food", "food_court", "ice_cream", "pub", "biergarten",
         "restaurant", "cinema", "nightclub", "planetarium", "theatre", "marketplace",
-        "internet_cafe", "car_wash", "fuel", "pharmacy"
+        "internet_cafe", "car_wash", "fuel", "pharmacy", "telephone", "vending_machine"
     )
     private val tourism = listOf(
-        "zoo", "aquarium", "theme_park", "museum"
+        "zoo", "aquarium", "theme_park", "museum", "hotel", "hostel", "motel", "guest_house",
+        "apartment", "camp_site", "attraction", "gallery"
     )
     private val leisure = listOf(
-        "tanning_salon"
+        "adult_gaming_centre", "amusement_arcade", "bowling_alley", "escape_game", "miniature_golf",
+        "sauna", "trampoline_park", "tanning_salon"
     )
     private val craft = listOf(
         "carpenter", "shoemaker", "tailor", "photographer", "dressmaker",
@@ -42,7 +44,7 @@ class AddAcceptsCash(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType
 
     override val enabledInCountries = NoCountriesExcept(
             // Europe
-            "SE"
+            "DE", "GB", "IE", "NL", "SE"
     )
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_accepts_cash_title
