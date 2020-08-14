@@ -8,7 +8,7 @@ import org.junit.Test
 
 class AddPostboxCollectionTimesTest {
 
-    private val questType = AddPostboxCollectionTimes(mock())
+    private val questType = AddPostboxCollectionTimes(mock(), mock())
 
     @Test fun `apply no signed times answer`() {
         questType.verifyAnswer(

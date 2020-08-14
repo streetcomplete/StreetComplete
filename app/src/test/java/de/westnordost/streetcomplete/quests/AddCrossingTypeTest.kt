@@ -8,7 +8,7 @@ import org.junit.Test
 
 class AddCrossingTypeTest {
 
-    private val questType = AddCrossingType(mock())
+    private val questType = AddCrossingType(mock(), mock())
 
     @Test fun `apply normal answer`() {
         questType.verifyAnswer(

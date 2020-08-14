@@ -1,11 +1,14 @@
 package de.westnordost.streetcomplete.quests.surface
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
+import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 
-class AddFootwayPartSurface(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<String>(o) {
+class AddFootwayPartSurface(o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStore)
+    : SimpleOverpassQuestType<String>(o) {
 
     override val tagFilters = """
         ways with
@@ -14,7 +17,7 @@ class AddFootwayPartSurface(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQu
           or (highway ~ path|cycleway|bridleway and foot != no)
         )
         and segregated = yes
-        and !footway:surface and !surface:footway
+        and (!footway:surface or footway:surface older today -${r * 8} years)
     """
     override val commitMessage = "Add path surfaces"
     override val wikiLink = "Key:surface"
@@ -26,6 +29,6 @@ class AddFootwayPartSurface(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQu
     override fun createForm() = AddPathSurfaceForm()
 
     override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {
-        changes.add("footway:surface", answer)
+        changes.updateWithCheckDate("footway:surface", answer)
     }
 }

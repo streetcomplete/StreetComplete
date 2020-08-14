@@ -14,7 +14,7 @@ abstract class SimpleOverpassQuestType<T>(
     private val overpassApi: OverpassMapDataAndGeometryApi
 ) : OsmElementQuestType<T> {
 
-    private val filter by lazy { FiltersParser().parse(tagFilters) }
+    private val filter by lazy { ElementFiltersParser().parse(tagFilters) }
 
     abstract val tagFilters: String
 

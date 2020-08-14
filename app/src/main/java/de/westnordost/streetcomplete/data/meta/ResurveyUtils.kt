@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.data.meta
 
+import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import java.lang.Exception
-import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.Calendar.MILLISECOND
@@ -29,6 +29,23 @@ fun String.toCheckDate(): Date? {
         calendar.time
     } catch (e: Exception) {
         null
+    }
+}
+
+/** adds or modifies the given tag. If the updated tag is the same as before, sets the check date
+ *  tag to today instead. */
+fun StringMapChangesBuilder.updateWithCheckDate(key: String, value: String) {
+    val previousValue = getPreviousValue(key)
+    if (previousValue == value) {
+        addOrModify("$key:$SURVEY_MARK_KEY", Date().toCheckDateString())
+        // remove old check date keys (except the one we want to set)
+        getLastCheckDateKeys(key).forEach {
+            if (it != "$key:$SURVEY_MARK_KEY") deleteIfExists(it)
+        }
+    } else {
+        addOrModify(key, value)
+        // remove all check date keys
+        getLastCheckDateKeys(key).forEach { deleteIfExists(it) }
     }
 }
 
