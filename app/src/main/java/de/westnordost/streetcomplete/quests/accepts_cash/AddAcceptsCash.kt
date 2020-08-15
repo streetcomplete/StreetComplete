@@ -44,7 +44,7 @@ class AddAcceptsCash(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType
 
     override val enabledInCountries = NoCountriesExcept(
             // Europe
-            "DE", "GB", "IE", "NL", "SE"
+            "SE"
     )
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_accepts_cash_title
