@@ -2,10 +2,10 @@ package de.westnordost.streetcomplete.data.user
 
 import android.content.SharedPreferences
 import androidx.core.content.edit
-import de.westnordost.osmapi.common.Iso8601CompatibleDateFormat
 import de.westnordost.osmapi.user.UserDetails
 import de.westnordost.streetcomplete.Prefs
-import java.util.*
+import java.time.Instant
+import java.time.format.DateTimeFormatter
 import java.util.concurrent.CopyOnWriteArrayList
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -20,8 +20,6 @@ import javax.inject.Singleton
         fun onUserDataUpdated()
     }
     private val listeners: MutableList<UpdateListener> = CopyOnWriteArrayList()
-
-    private val dateFormat = Iso8601CompatibleDateFormat("yyyy-MM-dd HH:mm:ss z")
 
     val userId: Long get() = prefs.getLong(Prefs.OSM_USER_ID, -1)
     val userName: String? get() = prefs.getString(Prefs.OSM_USER_NAME, null)
@@ -38,11 +36,16 @@ import javax.inject.Singleton
             prefs.edit(true) { putInt(Prefs.USER_DAYS_ACTIVE, value) }
         }
 
-    var lastStatisticsUpdate: Date
-    get() = prefs.getString(Prefs.USER_LAST_DATE_ACTIVE, null)?.let { dateFormat.parse(it) } ?: Date(0)
-    set(value) {
-        prefs.edit(true) { putString(Prefs.USER_LAST_DATE_ACTIVE, dateFormat.format(value)) }
-    }
+    var lastStatisticsUpdate: Instant
+        get() {
+            return prefs.getString(Prefs.USER_LAST_DATE_ACTIVE, null)?.let { Instant.parse(it) }
+                ?: Instant.ofEpochSecond(0)
+        }
+        set(value) {
+            prefs.edit(true) {
+                putString(Prefs.USER_LAST_DATE_ACTIVE, DateTimeFormatter.ISO_INSTANT.format(value))
+            }
+        }
 
     var isSynchronizingStatistics: Boolean
         // default true because if it is not set yet, the first thing that is done is to synchronize it

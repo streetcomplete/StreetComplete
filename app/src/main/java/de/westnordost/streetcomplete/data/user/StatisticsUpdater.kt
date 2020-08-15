@@ -5,7 +5,8 @@ import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.countryboundaries.getIds
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.streetcomplete.data.user.achievements.AchievementGiver
-import java.util.*
+import java.time.ZoneOffset
+import java.time.ZonedDateTime
 import java.util.concurrent.FutureTask
 import javax.inject.Inject
 import javax.inject.Named
@@ -44,13 +45,10 @@ class StatisticsUpdater @Inject constructor(
         }
 
     private fun updateDaysActive() {
-        val now = Date()
-        val cal1 = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
-        cal1.time = userStore.lastStatisticsUpdate
-        val cal2 = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
-        cal2.time = now
-        userStore.lastStatisticsUpdate = now
-        if (!cal1.isSameDay(cal2)) {
+        val now = ZonedDateTime.now(ZoneOffset.UTC)
+        val lastUpdate = ZonedDateTime.ofInstant(userStore.lastStatisticsUpdate, ZoneOffset.UTC)
+        userStore.lastStatisticsUpdate = now.toInstant()
+        if (!lastUpdate.isSameDay(now)) {
             userStore.daysActive++
             achievementGiver.updateDaysActiveAchievements()
         }
@@ -66,7 +64,8 @@ class StatisticsUpdater @Inject constructor(
                 return
             }
 
-            val backendDataIsUpToDate = statistics.lastUpdate.time / 1000 >= userStore.lastStatisticsUpdate.time / 1000
+            val backendDataIsUpToDate = statistics.lastUpdate.time / 1000 >=
+                userStore.lastStatisticsUpdate.toEpochMilli() / 1000
             if (!backendDataIsUpToDate) {
                 Log.i(TAG, "Backend data is not up-to-date")
                 return
@@ -78,7 +77,7 @@ class StatisticsUpdater @Inject constructor(
             countryStatisticsDao.replaceAll(statistics.countries)
             userStore.rank = statistics.rank
             userStore.daysActive = statistics.daysActive
-            userStore.lastStatisticsUpdate = statistics.lastUpdate
+            userStore.lastStatisticsUpdate = statistics.lastUpdate.toInstant()
             // when syncing statistics from server, any granted achievements should be
             // granted silently (without notification) because no user action was involved
             achievementGiver.updateAllAchievements(silent = true)
@@ -103,6 +102,4 @@ class StatisticsUpdater @Inject constructor(
     }
 }
 
-private fun Calendar.isSameDay(other: Calendar): Boolean =
-    get(Calendar.DAY_OF_YEAR) == other.get(Calendar.DAY_OF_YEAR) &&
-    get(Calendar.YEAR) == other.get(Calendar.YEAR)
+private fun ZonedDateTime.isSameDay(other: ZonedDateTime) = year == other.year && dayOfYear == other.year
