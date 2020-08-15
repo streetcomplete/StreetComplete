@@ -1,13 +1,13 @@
 package de.westnordost.streetcomplete.data.user
 
-import java.util.Date
+import java.time.Instant
 
 data class Statistics(
     val questTypes: Map<String, Int>,
     val countries: List<CountryStatistics>,
     val rank: Int,
     val daysActive: Int,
-    val lastUpdate: Date,
+    val lastUpdate: Instant,
     val isAnalyzing: Boolean
 )
 

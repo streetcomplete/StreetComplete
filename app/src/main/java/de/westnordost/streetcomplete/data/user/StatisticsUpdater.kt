@@ -64,7 +64,7 @@ class StatisticsUpdater @Inject constructor(
                 return
             }
 
-            val backendDataIsUpToDate = statistics.lastUpdate.time / 1000 >=
+            val backendDataIsUpToDate = statistics.lastUpdate.toEpochMilli() / 1000 >=
                 userStore.lastStatisticsUpdate.toEpochMilli() / 1000
             if (!backendDataIsUpToDate) {
                 Log.i(TAG, "Backend data is not up-to-date")
@@ -77,7 +77,7 @@ class StatisticsUpdater @Inject constructor(
             countryStatisticsDao.replaceAll(statistics.countries)
             userStore.rank = statistics.rank
             userStore.daysActive = statistics.daysActive
-            userStore.lastStatisticsUpdate = statistics.lastUpdate.toInstant()
+            userStore.lastStatisticsUpdate = statistics.lastUpdate
             // when syncing statistics from server, any granted achievements should be
             // granted silently (without notification) because no user action was involved
             achievementGiver.updateAllAchievements(silent = true)
