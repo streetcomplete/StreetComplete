@@ -1,10 +1,10 @@
 package de.westnordost.streetcomplete.data.download
 
 import android.app.*
-import android.content.Context
 import android.content.Intent
 import android.os.Build
 import androidx.annotation.RequiresApi
+import androidx.core.content.getSystemService
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.MainActivity
 import de.westnordost.streetcomplete.R
@@ -48,7 +48,7 @@ class QuestDownloadNotificationController(
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     private fun createNotificationChannel() {
-        val mgr = (service.application.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager)
+        val mgr = service.application.getSystemService<NotificationManager>()!!
         mgr.createNotificationChannel(
             NotificationChannel(
                 ApplicationConstants.NOTIFICATIONS_CHANNEL_DOWNLOAD,
