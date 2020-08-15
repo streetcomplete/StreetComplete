@@ -1,19 +1,20 @@
 package de.westnordost.streetcomplete;
 
-import android.app.Application;
 import android.content.SharedPreferences;
 import android.util.Log;
+
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.multidex.MultiDexApplication;
 
 import java.util.concurrent.FutureTask;
 
 import javax.inject.Inject;
 
-import androidx.appcompat.app.AppCompatDelegate;
 import de.westnordost.countryboundaries.CountryBoundaries;
 import de.westnordost.osmfeatures.FeatureDictionary;
 import de.westnordost.streetcomplete.util.CrashReportExceptionHandler;
 
-public class StreetCompleteApplication extends Application
+public class StreetCompleteApplication extends MultiDexApplication
 {
 	@Inject FutureTask<CountryBoundaries> countryBoundariesFuture;
 	@Inject FutureTask<FeatureDictionary> featuresDictionaryFuture;

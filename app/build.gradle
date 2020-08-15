@@ -5,6 +5,8 @@ apply plugin: 'kotlin-kapt'
 
 android {
     compileOptions {
+        coreLibraryDesugaringEnabled true
+
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
@@ -36,6 +38,7 @@ android {
         versionName version
         buildConfigField "String", "VERSION", "\"$version\""
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
     buildTypes {
 
@@ -106,6 +109,10 @@ dependencies {
     // dependency injection
     implementation 'com.google.dagger:dagger:2.14.1'
     kapt 'com.google.dagger:dagger-compiler:2.14.1'
+
+    // Java 8 API access
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.0.10'
+    implementation 'androidx.multidex:multidex:2.0.1'
 
     // Android stuff
     implementation 'com.google.android.material:material:1.2.0'
