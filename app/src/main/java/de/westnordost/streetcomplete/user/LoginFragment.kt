@@ -7,6 +7,7 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE
 import androidx.fragment.app.commit
+import androidx.fragment.app.replace
 import de.westnordost.osmapi.user.Permission
 import de.westnordost.streetcomplete.BackPressedListener
 import de.westnordost.streetcomplete.HasTitle
@@ -117,7 +118,7 @@ class LoginFragment : Fragment(R.layout.fragment_login),
                 R.anim.enter_from_right, R.anim.exit_to_left,
                 R.anim.enter_from_left, R.anim.exit_to_right
             )
-            replace(R.id.oauthFragmentContainer, OAuthFragment())
+            replace<OAuthFragment>(R.id.oauthFragmentContainer)
             addToBackStack("oauth")
         }
     }
