@@ -4,7 +4,6 @@ import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
@@ -15,6 +14,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.content.FileProvider
+import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -105,7 +105,7 @@ class AttachPhotoFragment : Fragment() {
                         //Use FileProvider for getting the content:// URI, see: https://developer.android.com/training/camera/photobasics.html#TaskPath
                         FileProvider.getUriForFile(requireContext(),getString(R.string.fileprovider_authority),photoFile)
                     } else {
-                        Uri.fromFile(photoFile)
+                        photoFile.toUri()
                     }
                     currentImagePath = photoFile.path
                     takePhotoIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoUri)

@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.about
 
 import android.content.ActivityNotFoundException
 import android.content.Intent
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,10 +9,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AlertDialog
+import androidx.core.net.toUri
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.recyclerview.widget.RecyclerView
-
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.R
@@ -88,13 +87,13 @@ class AboutFragment : PreferenceFragmentCompat() {
     }
 
     private fun openUrl(url: String): Boolean {
-        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+        val intent = Intent(Intent.ACTION_VIEW, url.toUri())
         return tryStartActivity(intent)
     }
 
     private fun sendFeedbackEmail(): Boolean {
         val intent = Intent(Intent.ACTION_SENDTO)
-        intent.data = Uri.parse("mailto:")
+        intent.data = "mailto:".toUri()
         intent.putExtra(Intent.EXTRA_EMAIL, arrayOf("osm@westnordost.de"))
         intent.putExtra(Intent.EXTRA_SUBJECT, ApplicationConstants.USER_AGENT + " Feedback")
         return tryStartActivity(intent)

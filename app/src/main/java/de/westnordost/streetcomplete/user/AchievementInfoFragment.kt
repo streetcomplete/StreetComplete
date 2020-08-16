@@ -5,7 +5,6 @@ import android.animation.LayoutTransition.APPEARING
 import android.animation.LayoutTransition.DISAPPEARING
 import android.animation.TimeAnimator
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +13,7 @@ import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import android.view.animation.OvershootInterpolator
+import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import de.westnordost.streetcomplete.R
@@ -336,7 +336,7 @@ class AchievementInfoFragment : Fragment(R.layout.fragment_achievement_info) {
     }
 
     private fun openUrl(url: String) {
-        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+        val intent = Intent(Intent.ACTION_VIEW, url.toUri())
         tryStartActivity(intent)
     }
 

@@ -2,15 +2,15 @@ package de.westnordost.streetcomplete.user
 
 import android.animation.ValueAnimator
 import android.content.Intent
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.view.animation.DecelerateInterpolator
 import androidx.core.animation.doOnStart
+import androidx.core.net.toUri
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
+import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.ktx.tryStartActivity
 import de.westnordost.streetcomplete.view.CircularOutlineProvider
 import kotlinx.android.synthetic.main.fragment_quest_type_info_dialog.*
@@ -71,7 +71,7 @@ class QuestTypeInfoFragment : AbstractInfoFakeDialogFragment(R.layout.fragment_q
     }
 
     private fun openUrl(url: String): Boolean {
-        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+        val intent = Intent(Intent.ACTION_VIEW, url.toUri())
         return tryStartActivity(intent)
     }
 }
