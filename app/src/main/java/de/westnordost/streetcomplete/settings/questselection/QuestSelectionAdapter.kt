@@ -11,6 +11,7 @@ import android.widget.CheckBox
 import android.widget.CompoundButton
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 
 import java.util.Collections
 import java.util.Locale
@@ -163,7 +164,7 @@ class QuestSelectionAdapter @Inject constructor(
 
         private fun updateSelectionStatus() {
             if (!item.visible) {
-                questIcon.setColorFilter(itemView.resources.getColor(R.color.greyed_out))
+                questIcon.setColorFilter(ContextCompat.getColor(itemView.context, R.color.greyed_out))
             } else {
                 questIcon.clearColorFilter()
             }
