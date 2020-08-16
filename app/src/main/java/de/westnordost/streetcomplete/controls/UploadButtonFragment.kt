@@ -5,6 +5,7 @@ import android.content.SharedPreferences
 import android.net.ConnectivityManager
 import android.os.Bundle
 import android.view.View
+import androidx.core.content.getSystemService
 import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.Prefs
@@ -114,7 +115,7 @@ class UploadButtonFragment : Fragment(R.layout.fragment_upload_button),
     /** Does not necessarily mean that the user has internet. But if he is not connected, he will
       * not have internet  */
     private fun isConnected(): Boolean {
-        val connectivityManager = context?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager?
+        val connectivityManager = context?.getSystemService<ConnectivityManager>()
         val activeNetworkInfo = connectivityManager?.activeNetworkInfo
         return activeNetworkInfo != null && activeNetworkInfo.isConnected
     }

@@ -1,28 +1,26 @@
 package de.westnordost.streetcomplete.data.quest
 
 import android.annotation.SuppressLint
-import android.content.BroadcastReceiver
-import android.content.Context
-import android.content.Intent
-import android.content.IntentFilter
-import android.content.SharedPreferences
+import android.content.*
 import android.location.LocationManager
 import android.net.ConnectivityManager
 import android.util.Log
+import androidx.core.content.getSystemService
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
-
-import javax.inject.Inject
-
 import de.westnordost.osmapi.map.data.LatLon
 import de.westnordost.osmapi.map.data.OsmLatLon
 import de.westnordost.streetcomplete.Prefs
 import de.westnordost.streetcomplete.data.download.*
 import de.westnordost.streetcomplete.data.upload.UploadController
-import de.westnordost.streetcomplete.location.FineLocationManager
 import de.westnordost.streetcomplete.data.user.UserController
-import kotlinx.coroutines.*
+import de.westnordost.streetcomplete.location.FineLocationManager
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 import javax.inject.Singleton
 
 /** Automatically downloads new quests around the user's location and uploads quests.
@@ -55,8 +53,7 @@ import javax.inject.Singleton
     }
 
     // new location is known -> check if downloading makes sense now
-    private val locationManager = FineLocationManager(
-        context.getSystemService(Context.LOCATION_SERVICE) as LocationManager) { location ->
+    private val locationManager = FineLocationManager(context.getSystemService<LocationManager>()!!) { location ->
         pos = OsmLatLon(location.latitude, location.longitude)
         triggerAutoDownload()
     }
@@ -173,7 +170,7 @@ import javax.inject.Singleton
     }
 
     private fun updateConnectionState(): Boolean {
-        val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val connectivityManager = context.getSystemService<ConnectivityManager>()!!
         val info = connectivityManager.activeNetworkInfo
 
         val newIsConnected = info?.isConnected ?: false
