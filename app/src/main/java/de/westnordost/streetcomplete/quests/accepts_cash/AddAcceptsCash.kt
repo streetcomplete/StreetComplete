@@ -13,9 +13,12 @@ class AddAcceptsCash(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType
         "restaurant", "cinema", "nightclub", "planetarium", "theatre", "marketplace",
         "internet_cafe", "car_wash", "fuel", "pharmacy", "telephone", "vending_machine"
     )
-    private val tourism = listOf(
-        "zoo", "aquarium", "theme_park", "museum", "hotel", "hostel", "motel", "guest_house",
-        "apartment", "camp_site", "attraction", "gallery"
+    private val tourismWithoutImpliedFees = listOf(
+        "zoo", "aquarium", "theme_park", "hotel", "hostel", "motel", "guest_house",
+        "apartment", "camp_site"
+    )
+    private val tourismWithImpliedFees = listOf(
+        "attraction", "museum", "gallery" 
     )
     private val leisure = listOf(
         "adult_gaming_centre", "amusement_arcade", "bowling_alley", "escape_game", "miniature_golf",
@@ -33,15 +36,10 @@ class AddAcceptsCash(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType
           or amenity ~ ${amenity.joinToString("|")}
           or leisure ~ ${leisure.joinToString("|")}
           or craft ~ ${craft.joinToString("|")}
-          or tourism ~ ${tourism.joinToString("|")}
+          or tourism ~ ${tourismWithoutImpliedFees.joinToString("|")}
+          or tourism ~ ${tourismWithImpliedFees.joinToString("|")} and fee = yes
         )
         and name and !payment:cash and !payment:coins and !payment:notes
-        and (
-          tourism !~ attraction|gallery|museum 
-          or (
-            tourism ~ attraction|gallery|museum and fee = yes
-          )
-        )
     """
     override val commitMessage = "Add whether this place accepts cash as payment"
     override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
