@@ -71,12 +71,7 @@ public class CountryInfos
 
 	private CountryInfo get(String countryCodeIso3166)
 	{
-		if(!countryInfoMap.containsKey(countryCodeIso3166))
-		{
-			CountryInfo info = load(countryCodeIso3166);
-			countryInfoMap.put(countryCodeIso3166, info);
-		}
-		return countryInfoMap.get(countryCodeIso3166);
+		return countryInfoMap.computeIfAbsent(countryCodeIso3166, this::load);
 	}
 
 	private CountryInfo load(String countryCodeIso3166)

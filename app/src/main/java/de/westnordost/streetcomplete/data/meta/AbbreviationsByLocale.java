@@ -26,12 +26,7 @@ public class AbbreviationsByLocale
 
 	public Abbreviations get(Locale locale)
 	{
-		String code = locale.toString();
-		if(!byLanguageAbbreviations.containsKey(code))
-		{
-			byLanguageAbbreviations.put(code, load(locale));
-		}
-		return byLanguageAbbreviations.get(code);
+		return byLanguageAbbreviations.computeIfAbsent(locale.toString(), key -> load(locale));
 	}
 
 	private Abbreviations load(Locale locale)

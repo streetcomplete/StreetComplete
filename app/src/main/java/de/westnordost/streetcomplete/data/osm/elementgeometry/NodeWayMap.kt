@@ -3,21 +3,15 @@ package de.westnordost.streetcomplete.data.osm.elementgeometry
 
 /** Knows which vertices connect which ways. T is the identifier of a vertex  */
 class NodeWayMap<T>(ways: List<List<T>>) {
-    private val wayEndpoints = LinkedHashMap<T, MutableList<List<T>>>()
+    private val wayEndpoints: MutableMap<T, MutableList<List<T>>> = LinkedHashMap()
 
     init {
         for (way in ways) {
             val firstNode = way.first()
             val lastNode = way.last()
 
-            if (!wayEndpoints.containsKey(firstNode)) {
-                wayEndpoints[firstNode] = ArrayList()
-            }
-            if (!wayEndpoints.containsKey(lastNode)) {
-                wayEndpoints[lastNode] = ArrayList()
-            }
-            wayEndpoints[firstNode]!!.add(way)
-            wayEndpoints[lastNode]!!.add(way)
+            wayEndpoints.computeIfAbsent(firstNode, { ArrayList() }).add(way)
+            wayEndpoints.computeIfAbsent(lastNode, { ArrayList() }).add(way)
         }
     }
 
