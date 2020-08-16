@@ -8,6 +8,7 @@ import android.view.View
 import android.view.animation.DecelerateInterpolator
 import androidx.core.animation.doOnStart
 import androidx.core.net.toUri
+import androidx.core.view.isInvisible
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.QuestType
@@ -49,13 +50,11 @@ class QuestTypeInfoFragment : AbstractInfoFakeDialogFragment(R.layout.fragment_q
         solvedQuestsContainer.visibility = View.INVISIBLE
         solvedQuestsContainer.scaleX = scale
         solvedQuestsContainer.scaleY = scale
+        wikiLinkButton.isInvisible = questType !is OsmElementQuestType || questType.wikiLink == null
         if (questType is OsmElementQuestType && questType.wikiLink != null) {
-            wikiLinkButton.visibility = View.VISIBLE
             wikiLinkButton.setOnClickListener {
                 openUrl("https://wiki.openstreetmap.org/wiki/${questType.wikiLink}")
             }
-        } else {
-            wikiLinkButton.visibility = View.INVISIBLE
         }
 
         counterAnimation?.cancel()

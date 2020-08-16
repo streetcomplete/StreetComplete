@@ -11,6 +11,7 @@ import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import androidx.core.animation.doOnStart
 import androidx.core.net.toUri
+import androidx.core.view.isGone
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.tryStartActivity
 import kotlinx.android.synthetic.main.fragment_country_info_dialog.*
@@ -79,7 +80,7 @@ class CountryInfoFragment : AbstractInfoFakeDialogFragment(R.layout.fragment_cou
         solvedQuestsContainer.scaleY = scale
 
         val shouldShowRank = rank != null && rank < 500 && questCount > 50
-        countryRankTextView.visibility = if (shouldShowRank) View.VISIBLE else View.GONE
+        countryRankTextView.isGone = !shouldShowRank
         if (shouldShowRank) {
             countryRankTextView.text = resources.getString(
                 R.string.user_statistics_country_rank, rank, countryLocale.displayCountry

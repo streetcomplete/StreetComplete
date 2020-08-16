@@ -12,6 +12,7 @@ import android.widget.CompoundButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import androidx.core.view.isGone
 
 import java.util.Collections
 import java.util.Locale
@@ -149,14 +150,12 @@ class QuestSelectionAdapter @Inject constructor(
             visibilityCheckBox.isEnabled = item.isInteractionEnabled
             visibilityCheckBox.setOnCheckedChangeListener(this)
 
+            countryDisabledText.isGone = isEnabledInCurrentCountry
             if (!isEnabledInCurrentCountry) {
                 val cc = if (currentCountryCodes.isEmpty()) "Atlantis" else currentCountryCodes[0]
                 countryDisabledText.text =  countryDisabledText.resources.getString(
                     R.string.questList_disabled_in_country, Locale("", cc).displayCountry
                 )
-                countryDisabledText.visibility = View.VISIBLE
-            } else {
-                countryDisabledText.visibility = View.GONE
             }
 
             updateSelectionStatus()

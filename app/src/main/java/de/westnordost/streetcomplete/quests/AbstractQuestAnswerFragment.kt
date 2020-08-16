@@ -16,6 +16,7 @@ import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.Button
 import android.widget.PopupMenu
 import androidx.core.os.bundleOf
+import androidx.core.view.isGone
 import com.google.android.flexbox.FlexboxLayout
 
 import java.lang.ref.WeakReference
@@ -147,11 +148,9 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
         titleLabel.text = resources.getHtmlQuestTitle(questType, osmElement, featureDictionaryFuture)
 
         val levelLabelText = getLocationLabelText()
+        locationLabel.isGone = levelLabelText == null
         if (levelLabelText != null) {
-            locationLabel.visibility = View.VISIBLE
             locationLabel.text = levelLabelText
-        } else {
-            locationLabel.visibility = View.GONE
         }
 
         // no content? -> hide the content container

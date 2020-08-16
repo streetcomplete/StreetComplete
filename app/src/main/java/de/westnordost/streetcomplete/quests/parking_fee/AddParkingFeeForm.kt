@@ -1,29 +1,27 @@
 package de.westnordost.streetcomplete.quests.parking_fee
 
 import android.os.Bundle
-import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import androidx.core.view.isGone
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-
-import java.util.ArrayList
-
-import javax.inject.Inject
-
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.ktx.toObject
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.AddOpeningHoursAdapter
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningMonthsRow
 import de.westnordost.streetcomplete.util.AdapterDataChangedWatcher
 import de.westnordost.streetcomplete.util.Serializer
-import de.westnordost.streetcomplete.ktx.toObject
 import kotlinx.android.synthetic.main.fragment_quest_answer.*
 import kotlinx.android.synthetic.main.quest_buttonpanel_yes_no.*
 import kotlinx.android.synthetic.main.quest_fee_hours.*
+import java.util.*
+import javax.inject.Inject
 
 class AddParkingFeeForm : AbstractQuestFormAnswerFragment<FeeAnswer>() {
 
@@ -42,9 +40,9 @@ class AddParkingFeeForm : AbstractQuestFormAnswerFragment<FeeAnswer>() {
     set(value) {
         field = value
 
-        content.visibility = if (value) View.VISIBLE else View.GONE
-        noButton?.visibility = if (value) View.GONE else View.VISIBLE
-        yesButton?.visibility = if (value) View.GONE else View.VISIBLE
+        content.isGone = !value
+        noButton?.isGone = value
+        yesButton?.isGone = value
     }
     private var isFeeOnlyAtHours: Boolean = false
 

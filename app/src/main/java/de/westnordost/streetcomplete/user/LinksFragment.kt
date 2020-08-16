@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.core.net.toUri
+import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -64,7 +65,7 @@ class LinksFragment : Fragment(R.layout.fragment_links),
             linksList.adapter = adapter
             linksList.clipToPadding = false
 
-            emptyText.visibility = if (links.isEmpty()) View.VISIBLE else View.GONE
+            emptyText.isGone = links.isNotEmpty()
         }
     }
 

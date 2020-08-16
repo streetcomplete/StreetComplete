@@ -8,6 +8,7 @@ import android.text.format.DateUtils
 import android.text.format.DateUtils.MINUTE_IN_MILLIS
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isGone
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -140,22 +141,20 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment<NoteAnswer>() {
             val userName = if (comment.user != null) comment.user.displayName else getString(R.string.quest_noteDiscussion_anonymous)
 
             val commentActionResourceId = comment.action.actionResourceId
-            if (commentActionResourceId != 0) {
-                itemView.commentStatusText.visibility = View.VISIBLE
+            val hasNoteAction = commentActionResourceId != 0
+            itemView.commentStatusText.isGone = !hasNoteAction
+            if (hasNoteAction) {
                 itemView.commentStatusText.text = getString(commentActionResourceId, userName, dateDescription)
-            } else {
-                itemView.commentStatusText.visibility = View.GONE
             }
 
-            if (!comment.text.isNullOrEmpty()) {
-                itemView.commentView.visibility = View.VISIBLE
+            val hasComment = !comment.text.isNullOrEmpty()
+            itemView.commentView.isGone = !hasComment
+            if (hasComment) {
                 itemView.commentText.text = comment.text
                 itemView.commentInfoText.text = getString(R.string.quest_noteDiscussion_comment2, userName, dateDescription)
 
                 val bitmap = comment.user?.avatar ?: anonAvatar
                 itemView.commentAvatarImage.setImageBitmap(bitmap)
-            } else {
-                itemView.commentView.visibility = View.GONE
             }
         }
 

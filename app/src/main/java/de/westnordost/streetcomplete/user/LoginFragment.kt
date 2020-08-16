@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.core.os.bundleOf
+import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE
 import androidx.fragment.app.commit
@@ -60,7 +61,7 @@ class LoginFragment : Fragment(R.layout.fragment_login),
 
         val unsyncedChanges = unsyncedChangesCountSource.count
         unpublishedQuestsText.text = getString(R.string.unsynced_quests_not_logged_in_description, unsyncedChanges)
-        unpublishedQuestsText.visibility = if (unsyncedChanges > 0) View.VISIBLE else View.GONE
+        unpublishedQuestsText.isGone = unsyncedChanges <= 0
     }
 
     override fun onBackPressed(): Boolean {

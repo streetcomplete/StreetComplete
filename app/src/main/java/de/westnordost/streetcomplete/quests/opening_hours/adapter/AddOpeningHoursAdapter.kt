@@ -1,28 +1,23 @@
 package de.westnordost.streetcomplete.quests.opening_hours.adapter
 
 import android.content.Context
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.view.isGone
 import androidx.core.view.updateLayoutParams
-
-import java.text.DateFormatSymbols
-import java.util.Locale
-
+import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.CountryInfo
-import de.westnordost.streetcomplete.quests.opening_hours.model.CircularSection
-import de.westnordost.streetcomplete.quests.opening_hours.model.NumberSystem
-import de.westnordost.streetcomplete.quests.opening_hours.model.OpeningMonths
-import de.westnordost.streetcomplete.quests.opening_hours.model.TimeRange
 import de.westnordost.streetcomplete.quests.opening_hours.TimeRangePickerDialog
-import de.westnordost.streetcomplete.quests.opening_hours.model.Weekdays
 import de.westnordost.streetcomplete.quests.opening_hours.WeekdaysPickerDialog
+import de.westnordost.streetcomplete.quests.opening_hours.model.*
 import de.westnordost.streetcomplete.view.dialogs.RangePickedCallback
 import de.westnordost.streetcomplete.view.dialogs.RangePickerDialog
+import java.text.DateFormatSymbols
+import java.util.*
 
 data class OpeningMonthsRow(var months: CircularSection = CircularSection(0, MAX_MONTH_INDEX)) {
 
@@ -190,7 +185,7 @@ class AddOpeningHoursAdapter(
         }
 
         private fun setVisibility(isVisible: Boolean) {
-            itemView.visibility = if (isVisible) View.VISIBLE else View.GONE
+            itemView.isGone = !isVisible
             itemView.updateLayoutParams {
                 height = if(isVisible) LinearLayout.LayoutParams.WRAP_CONTENT else 0
                 width = if(isVisible) LinearLayout.LayoutParams.MATCH_PARENT else 0
