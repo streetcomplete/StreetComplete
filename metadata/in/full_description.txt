@@ -1,0 +1,5 @@
+Bantu memperbaiki OpenStreetMap dengan StreetComplete!
+
+Aplikasi ini mencari data yang belum selesai atau yang bisa diperpanjang di sekitarmu dan menampilkannya di peta sebagai marka. Setiap marka bisa diselesaikan dengan menjawab pertanyaan sederhana untuk menambah informasi di tempat.
+
+Informasi yang dimasukkan lalu langsung ditambahkan ke OpenStreetMap atas namamu, tanpa memerlukan editor lainnya.

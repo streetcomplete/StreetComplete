@@ -138,10 +138,7 @@ class OverpassQueryCreator(
     }
 
     private fun BooleanExpression<ElementFilter, Element>.assignResultSetId(): Int {
-        if (!dataSets.containsKey(this)) {
-            dataSets[this] = setIdCounter++
-        }
-        return dataSets[this]!!
+        return dataSets.getOrPut(this) { setIdCounter++ }
     }
 
     private class AllTagFilters(val values: List<ElementFilter>) : BooleanExpression<ElementFilter, Element>() {

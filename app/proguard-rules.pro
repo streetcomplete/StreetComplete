@@ -23,8 +23,15 @@
 -keep class com.esotericsoftware.kryo.** { *; }
 -keep class com.esotericsoftware.kryo.* { *; }
 
+# Lifecycle
+-keep public class androidx.lifecycle.* {
+    public protected *;
+}
+-keepclassmembers class * {
+    @androidx.lifecycle.OnLifecycleEvent public *;
+}
 
-# streetcomplete
+# CountryInfo filled via reflection
 -keep class de.westnordost.streetcomplete.data.meta.CountryInfo { *; }
 
 # just leave my stuff alone

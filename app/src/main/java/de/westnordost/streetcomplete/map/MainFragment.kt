@@ -26,6 +26,7 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.UiThread
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.PopupMenu
+import androidx.core.content.getSystemService
 import androidx.core.graphics.minus
 import androidx.core.graphics.toPointF
 import androidx.core.graphics.toRectF
@@ -59,17 +60,15 @@ import de.westnordost.streetcomplete.location.LocationState
 import de.westnordost.streetcomplete.location.LocationUtil
 import de.westnordost.streetcomplete.map.tangram.CameraPosition
 import de.westnordost.streetcomplete.quests.*
-import de.westnordost.streetcomplete.util.SoundFx
 import de.westnordost.streetcomplete.util.*
 import kotlinx.android.synthetic.main.fragment_main.*
-import java.util.*
-import javax.inject.Inject
-import kotlin.math.PI
-import de.westnordost.streetcomplete.util.initialBearingTo
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
+import java.util.*
+import javax.inject.Inject
+import kotlin.math.PI
 import kotlin.math.cos
 import kotlin.math.sin
 
@@ -133,10 +132,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
     override fun onAttach(context: Context) {
         super.onAttach(context)
 
-        locationManager = FineLocationManager(
-            context.getSystemService(Context.LOCATION_SERVICE) as LocationManager,
-            this::onLocationChanged
-        )
+        locationManager = FineLocationManager(context.getSystemService<LocationManager>()!!, this::onLocationChanged)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -550,7 +546,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
     }
 
     private fun isConnected(): Boolean {
-        val connectivityManager = context?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager?
+        val connectivityManager = context?.getSystemService<ConnectivityManager>()
         val activeNetworkInfo = connectivityManager?.activeNetworkInfo
         return activeNetworkInfo != null && activeNetworkInfo.isConnected
     }
@@ -682,7 +678,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
         // manually close the keyboard before popping the fragment
         val view: View? = activity?.currentFocus
         if (view != null) {
-            val inputMethodManager = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
+            val inputMethodManager = context?.getSystemService<InputMethodManager>()
             inputMethodManager?.hideSoftInputFromWindow(view.windowToken, 0)
         }
         childFragmentManager.popBackStackImmediate(BOTTOM_SHEET, POP_BACK_STACK_INCLUSIVE)
