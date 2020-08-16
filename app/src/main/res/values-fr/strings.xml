@@ -1,54 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <!-- Fuzzy -->
     <string name="action_settings">"Paramètres"</string>
-
-    <!-- Fuzzy -->
     <string name="oauth_communication_error">"Impossible de se connecter au serveur d’autorisation"</string>
-
-    <!-- Fuzzy -->
     <string name="retry">"Réessayer"</string>
-
-    <!-- Fuzzy -->
     <string name="oauth_failed_permissions">"Autorisation échouée : toutes les permissions listées doivent être accordées"</string>
-
-    <!-- Fuzzy -->
     <string name="title_activity_settings">"Paramètres"</string>
 
     <!-- Fuzzy -->
     <string name="pref_category_communication">"Communication"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_category_display">"Affichage"</string>
     <string name="pref_tilecache_size_summary">"%d Mo"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_tilecache_size_message">"Espace en mégaoctets réservé à la mise en cache des tuiles de la carte sur le stockage externe"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_title_show_notes_not_phrased_as_questions">"Montrer toutes les notes"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">"Montrer également les notes qui ne ressemblent pas à des questions"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">"Ignorer les notes qui ne ressemblent pas à des questions"</string>
 
     <!-- "de la cache" or "du cache" ? -->
-    <!-- Fuzzy -->
     <string name="pref_title_map_cache">"Taille du cache de la carte"</string>
-
-    <!-- Fuzzy -->
     <string name="map_btn_gps_tracking">"Me suivre"</string>
-
-    <!-- Fuzzy -->
     <string name="map_attribution_osm">"© Contributeurs OpenStreetMap"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_otherAnswers">"Autres réponses…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_answer_notApplicable">"Ne sait pas…"</string>
 
     <!-- je me suis permis d'éviter de sous-entendre que l'utilisateur est un homme ou une femme, ce qui évite la forme un peu étrange avec le point médian -->
@@ -56,26 +27,15 @@
     <string name="quest_generic_confirmation_title">"Confirmez-vous ?"</string>
 
     <!-- cf commentaire sur "Are you sure?" -->
-    <!-- Fuzzy -->
     <string name="quest_generic_confirmation_yes">"Oui, je confirme"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_confirmation_no">"Je vais vérifier"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_error_field_empty">"Vous avez laissé ce champ vide"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_leave_new_note_title">"Laisser une note à la place ?"</string>
 
     <!-- Fuzzy -->
     <string name="quest_leave_new_note_description">"Vous pouvez laisser une note publique à cet endroit, que d'autres cartographes pourront commenter et, espérons-le, résoudre. Sinon, vous pouvez simplement cacher la quête de votre vue uniquement."</string>
     <string name="quest_leave_new_note_yes">"OK"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_leave_new_note_no">"Non, seulement cacher"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_title">"Quel est le nom de cette voie ?"</string>
 
     <!-- Fuzzy -->
@@ -88,23 +48,11 @@ That is not very clear to me. Any further explanations? -->
 
     <!-- Fuzzy -->
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"Si vous pouvez écrire le nom sans abréviation, faites-le. De nombreuses abréviations courantes sont automatiquement développées pendant que vous les tapez, mais probablement pas toutes."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"Pas d’abréviation"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_name_title">"Quelles sont les horaires d’ouverture de %s ?"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_openingHours_start_time">"heure d’ouverture"</string>
-
-    <!-- Fuzzy -->
-    <string name="quest_openingHours_end_time">"heure de fermeture"</string>
-
-    <!-- Fuzzy -->
+    <string name="quest_openingHours_start_time">"horaires d’ouverture"</string>
+    <string name="quest_openingHours_end_time">"horaires de fermeture"</string>
     <string name="quest_openingHours_add_months">"Ajouter des mois"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_add_hours">"Ajouter des heures"</string>
 
     <!-- Fuzzy -->
@@ -149,67 +97,31 @@ That is not very clear to me. Any further explanations? -->
 
     <!-- Fuzzy -->
     <string name="close">"fermer"</string>
-
-    <!-- Fuzzy -->
     <string name="download_error">"Erreur pendant la recherche de quêtes"</string>
-
-    <!-- Fuzzy -->
     <string name="upload_error">"Erreur pendant le téléversement des réponses"</string>
-
-    <!-- Fuzzy -->
     <string name="download_area_too_big">"Veuillez zoomer un peu plus"</string>
-
-    <!-- Fuzzy -->
     <string name="confirmation_cancel_prev_download_title">"Annuler la recherche en cours et rechercher ici à la place ?"</string>
-
-    <!-- Fuzzy -->
     <string name="notification_downloading">"Recherche de quêtes…"</string>
 
     <!-- Fuzzy -->
     <string name="turn_on_location_request">"La localisation est désactivée. Ouvrir Paramètres pour l'activer maintenant ?"</string>
-
-    <!-- Fuzzy -->
     <string name="no_location_permission_warning">"Votre position est nécessaire pour rechercher des quêtes autour de vous."</string>
-
-    <!-- Fuzzy -->
     <string name="about_title_authors">"Auteurs"</string>
-
-    <!-- Fuzzy -->
     <string name="about_summary_authors">"© 2016–2020 Tobias Zwick et contributeurs"</string>
-
-    <!-- Fuzzy -->
     <string name="about_title_repository">"Code Source"</string>
-
-    <!-- Fuzzy -->
     <string name="about_summary_repository">"sur GitHub"</string>
-
-    <!-- Fuzzy -->
     <string name="about_title_report_error">"Signaler une erreur"</string>
-
-    <!-- Fuzzy -->
     <string name="about_title_feedback">"Envoyer un commentaire"</string>
-
-    <!-- Fuzzy -->
     <string name="about_title_license">"Licence"</string>
     <string name="about_summary_license">"Licence publique générale GNU"</string>
-
-    <!-- Fuzzy -->
     <string name="offline">"Vous êtes hors ligne"</string>
 
     <!-- téléverser est horrible. On tend à préférer uploader et c'est souvent le mot choisi dans les GUI, que se soit dans Transmission ou dans LibreOffice -->
     <!-- Fuzzy -->
     <string name="confirmation_authorize_now">"Vous devez autoriser la publication de vos réponses avec votre compte d'utilisateur OSM. Autoriser maintenant ?"</string>
-
-    <!-- Fuzzy -->
     <string name="not_authorized">"Non autorisé"</string>
-
-    <!-- Fuzzy -->
     <string name="version_banned_message">"Cette version de StreetComplete est trop vielle. Veuillez la mettre à jour !"</string>
-
-    <!-- Fuzzy -->
     <string name="no_gps_no_quests">"Pour rechercher automatiquement des quêtes autour de vous, activer la localisation"</string>
-
-    <!-- Fuzzy -->
     <string name="nothing_more_to_download">"Pas d'autres quêtes disponibles"</string>
 
     <!-- Fuzzy -->
@@ -266,17 +178,9 @@ That is not very clear to me. Any further explanations? -->
 
     <!-- Fuzzy -->
     <string name="quest_roofShape_show_more">"Montrer d’avantage…"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_roofShape_answer_many">"Il a plusieurs formes différentes"</string>
-
-    <!-- Fuzzy -->
     <string name="pref_title_sync">"Synchronisation automatique"</string>
-
-    <!-- Fuzzy -->
     <string name="map_btn_zoom_out">"Zoom arrière"</string>
-
-    <!-- Fuzzy -->
     <string name="map_btn_zoom_in">"Zoom avant"</string>
 
     <!-- Google translated. -->
@@ -324,34 +228,22 @@ Toutefois, avant de télécharger vos modifications, l'application vérifie, à 
     <!-- Fuzzy -->
     <string name="quest_surface_value_ground">"Sol (générique)"</string>
     <string name="quest_surface_value_asphalt">"Asphalte"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_compacted">"Compacté"</string>
 
     <!-- en:concrete = fr:béton = de:Beton
 en:cement = fr:ciment = de:Zement -->
-    <!-- Fuzzy -->
     <string name="quest_surface_value_concrete">"Béton"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_dirt">"Terre"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_fine_gravel">"Gravillon"</string>
 
     <!-- Gazon est ce que l'on appelle pelouse ne conviennent pas car ils désignent des surfaces entretenues, souvent privées. -->
-    <!-- Fuzzy -->
     <string name="quest_surface_value_grass">"Herbe"</string>
 
     <!-- I don't know "Gazon pavé", I think in France it does not mean anything. Other French speakers elsewhere to explain this? -->
-    <!-- Fuzzy -->
     <string name="quest_surface_value_grass_paver">"Mélange d'herbe et de pavés"</string>
 
     <!-- Maybe "gravier" for roads ? -->
-    <!-- Fuzzy -->
     <string name="quest_surface_value_gravel">"Gravier"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_surface_value_paving_stones">"Pavés réguliers"</string>
 
     <!-- Fuzzy -->
@@ -394,12 +286,9 @@ en:cement = fr:ciment = de:Zement -->
 
     <!-- Fuzzy -->
     <string name="quest_streetLanes_noLanes_estWidth">"Veuillez estimer le nombre de voitures qui pourraient se côtoyer sur cette route."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_oneway_title">"S'agit-il d'une voie à sens unique ?"</string>
 
     <!-- "édifice" or "bâtiment" ? -->
-    <!-- Fuzzy -->
     <string name="quest_address_title">"Quel est le numéro de ce bâtiment ?"</string>
 
     <!-- Fuzzy -->
@@ -411,32 +300,16 @@ en:cement = fr:ciment = de:Zement -->
 Cette application recense les informations incomplètes et à améliorer autour de vous et les affiche sur une carte sous forme de marqueurs. L'information liée à chaque marqueur peut être complétée en répondant à une simple question.
 
 Les informations que vous saisissez sont ensuite directement ajoutées à OpenStreetMap, à votre nom, sans qu'il soit nécessaire d'utiliser un autre éditeur de carte."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_name_answer_noName">"Cela n'a pas de nom..."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_name_answer_noName_confirmation_title">"Vraiment aucun nom ?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_name_noName_confirmation_positive">"Oui, pas de nom"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_openingHours_add_times">"Ajouter des horaires d’ouverture"</string>
 
     <!-- Fuzzy -->
     <string name="crash_message">"Pourriez-vous envoyer le rapport d'erreur au développeur ?"</string>
-
-    <!-- Fuzzy -->
     <string name="crash_title">"Oh non, StreetComplete a planté la dernière fois !"</string>
-
-    <!-- Fuzzy -->
     <string name="crash_compose_email">"Rédiger un courriel"</string>
-
-    <!-- Fuzzy -->
     <string name="no_email_client">"Vous n'avez pas de client de messagerie installé."</string>
-
-    <!-- Fuzzy -->
     <string name="pref_title_keep_screen_on">"Conserver l’écran allumé"</string>
 
     <!-- Fuzzy -->
@@ -444,20 +317,10 @@ Les informations que vous saisissez sont ensuite directement ajoutées à OpenSt
 
     <!-- Fuzzy -->
     <string name="upload_server_error">"Erreur de connexion lors de l’envoi des réponses. Réessayez plus tard."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_hasFeature_yes">"Oui"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_generic_hasFeature_no">"Non"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_busStopShelter_title">"Cet arrêt de bus dispose-t-il d'un abri ?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bikeParkingCapacity_title">"Combien de vélos peuvent être garés ici ?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_address_unusualHousenumber_confirmation_description">"Ce numéro de rue semble inhabituel."</string>
 
     <!-- Fuzzy -->
@@ -512,17 +375,11 @@ Les informations que vous saisissez sont ensuite directement ajoutées à OpenSt
 
     <!-- Fuzzy -->
     <string name="quest_sport_canadian_football">"Football canadien"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_field_hockey">"Hockey sur gazon"</string>
     <string name="quest_sport_handball">"Handball"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_sport_ice_hockey">"Hockey sur glace"</string>
     <string name="quest_sport_netball">"Netball"</string>
     <string name="quest_sport_rugby">"Rugby"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_select_hint">"Choisissez :"</string>
 
     <!-- Fuzzy -->
@@ -538,19 +395,10 @@ Les informations que vous saisissez sont ensuite directement ajoutées à OpenSt
     <string name="quest_sport_manySports_confirmation_title">"Vous avez sélectionné plusieurs activités"</string>
 
     <!-- plus simple et plus court : L'arrêt de bus %s est-il abrité ? -->
-    <!-- Fuzzy -->
     <string name="quest_busStopShelter_name_title">"L’arrêt de bus %s a-t-il un abri ?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_toiletsFee_title">"Ces toilettes sont-elles payantes ?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_bus">"Cet arrêt de bus a-t-il un revêtement podotactile ?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_tactilePaving_title_crosswalk">"Ce passage piéton a-t-il un revêtement podotactile des deux côtés ?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_source_dialog_title">"Confirmez-vous avoir vérifié cela sur place ?"</string>
 
     <!-- Fuzzy -->
@@ -558,21 +406,13 @@ Les informations que vous saisissez sont ensuite directement ajoutées à OpenSt
 
     <!-- Fuzzy -->
     <string name="quest_source_dialog_note">"Seules les informations relevées sur place peuvent être saisies."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_bicycleParkingCoveredStatus_title">"Ce parking à vélos est-il couvert (protégé de la pluie) ?"</string>
-
-    <!-- Fuzzy -->
     <string name="dialog_session_dont_show_again">"Ne plus afficher pour cette session"</string>
 
     <!-- Je remets "revêtement" car la "surface d'une route" ça ne veut rien dire. -->
     <!-- Fuzzy -->
     <string name="quest_streetSurface_name_title">"Quel est le revêtement de la voie %s à cet endroit ?"</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_unusualInput_confirmation_description">"Cette limitation de vitesse semble peu plausible."</string>
-
-    <!-- Fuzzy -->
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Êtes-vous sûr(e) qu'aucune limite n'est indiquée ?"</string>
 
     <!-- Fuzzy -->
@@ -2363,7 +2203,7 @@ Ces données sont essentielles non seulement pour le facteur mais aussi pour tou
     <string name="link_qwant_maps_description">"Une carte qui permet de chercher des lieux et des itinéraires"</string>
 
     <!-- Fuzzy -->
-    <string name="privacy_html_tileserver2">"&lt;p&gt;Les tuiles vectorielles utilisées pour afficher la carte sont récupérées depuis %1s. Lisez leur &lt;a href=\"%2$s\"&gt;politique de confidentialité&lt;/a&gt; pour plus d'information."</string>
+    <string name="privacy_html_tileserver2">"&lt;p&gt;Les tuiles vectorielles utilisées pour afficher la carte sont récupérées depuis %1$s. Lisez leur &lt;a href=\"%2$s\"&gt;politique de confidentialité&lt;/a&gt; pour plus d'information."</string>
     <string name="about_title_sponsors">"Sponsors"</string>
     <string name="quest_board_type_history">"Histoire"</string>
     <string name="quest_board_type_geology">"Géologie"</string>

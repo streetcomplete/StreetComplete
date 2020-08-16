@@ -663,6 +663,10 @@
             "name": "Hedge",
             "terms": ""
         },
+        "railway/tram_crossing": {
+            "name": "Tram Crossing (Path)",
+            "terms": "crossing,grade crossing,level crossing,pedestrian crossing,streetcar crossing,tramway crossing,trolley crossing"
+        },
         "building/garages": {
             "name": "Garages",
             "terms": ""
@@ -4449,7 +4453,7 @@
         },
         "shop/scuba_diving": {
             "name": "Scuba Diving Shop",
-            "terms": "diving,scuba"
+            "terms": "diving,scuba,snorkel"
         },
         "leisure/sports_centre/climbing": {
             "name": "Climbing Gym",
@@ -4512,6 +4516,10 @@
         "shop/tiles": {
             "name": "Tile Shop",
             "terms": ""
+        },
+        "railway/tram_level_crossing": {
+            "name": "Tram Crossing (Road)",
+            "terms": "crossing,grade crossing,level crossing,pedestrian crossing,streetcar crossing,tramway crossing,trolley crossing"
         },
         "amenity/vending_machine/food": {
             "name": "Food Vending Machine",
