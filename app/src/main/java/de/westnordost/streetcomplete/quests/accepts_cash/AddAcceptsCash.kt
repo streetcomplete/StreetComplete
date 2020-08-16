@@ -13,11 +13,11 @@ class AddAcceptsCash(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType
         "restaurant", "cinema", "nightclub", "planetarium", "theatre", "marketplace",
         "internet_cafe", "car_wash", "fuel", "pharmacy", "telephone", "vending_machine"
     )
-    private val tourismWithoutImpliedFees = listOf(
+    private val tourismWithImpliedFees = listOf(
         "zoo", "aquarium", "theme_park", "hotel", "hostel", "motel", "guest_house",
         "apartment", "camp_site"
     )
-    private val tourismWithImpliedFees = listOf(
+    private val tourismWithoutImpliedFees = listOf(
         "attraction", "museum", "gallery" 
     )
     private val leisure = listOf(
@@ -36,8 +36,8 @@ class AddAcceptsCash(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType
           or amenity ~ ${amenity.joinToString("|")}
           or leisure ~ ${leisure.joinToString("|")}
           or craft ~ ${craft.joinToString("|")}
-          or tourism ~ ${tourismWithoutImpliedFees.joinToString("|")}
-          or tourism ~ ${tourismWithImpliedFees.joinToString("|")} and fee = yes
+          or tourism ~ ${tourismWithImpliedFees.joinToString("|")}
+          or tourism ~ ${tourismWithoutImpliedFees.joinToString("|")} and fee = yes
         )
         and name and !payment:cash and !payment:coins and !payment:notes
     """
