@@ -8,6 +8,7 @@ import android.text.format.DateUtils
 import android.text.format.DateUtils.MINUTE_IN_MILLIS
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.commit
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.osmapi.notes.NoteComment
@@ -65,9 +66,7 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment<NoteAnswer>() {
         inflateNoteDiscussion(osmNoteQuestController.get(questId)!!.note.comments)
 
         if (savedInstanceState == null) {
-            childFragmentManager.beginTransaction()
-                .add(R.id.attachPhotoFragment, AttachPhotoFragment())
-                .commit()
+            childFragmentManager.commit { add(R.id.attachPhotoFragment, AttachPhotoFragment()) }
         }
     }
 

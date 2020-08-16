@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE
+import androidx.fragment.app.commit
 import de.westnordost.osmapi.user.Permission
 import de.westnordost.streetcomplete.BackPressedListener
 import de.westnordost.streetcomplete.HasTitle
@@ -111,14 +112,14 @@ class LoginFragment : Fragment(R.layout.fragment_login),
     /* ------------------------------------------------------------------------------------------ */
 
     private fun pushOAuthFragment() {
-        childFragmentManager.beginTransaction()
-            .setCustomAnimations(
+        childFragmentManager.commit {
+            setCustomAnimations(
                 R.anim.enter_from_right, R.anim.exit_to_left,
                 R.anim.enter_from_left, R.anim.exit_to_right
             )
-            .replace(R.id.oauthFragmentContainer, OAuthFragment())
-            .addToBackStack("oauth")
-            .commit()
+            replace(R.id.oauthFragmentContainer, OAuthFragment())
+            addToBackStack("oauth")
+        }
     }
 
     companion object {

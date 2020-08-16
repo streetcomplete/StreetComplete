@@ -34,7 +34,7 @@ import androidx.core.view.children
 import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE
-import androidx.fragment.app.FragmentTransaction
+import androidx.fragment.app.commit
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.LatLon
@@ -708,11 +708,11 @@ class MainFragment : Fragment(R.layout.fragment_main),
     private fun showInBottomSheet(f: Fragment) {
         val appearAnim = if (bottomSheetFragment == null) R.animator.quest_answer_form_appear else 0
         val disappearAnim = R.animator.quest_answer_form_disappear
-        val ft: FragmentTransaction = childFragmentManager.beginTransaction()
-        ft.setCustomAnimations(appearAnim, disappearAnim, appearAnim, disappearAnim)
-        ft.replace(R.id.map_bottom_sheet_container, f, BOTTOM_SHEET)
-        ft.addToBackStack(BOTTOM_SHEET)
-        ft.commit()
+        childFragmentManager.commit {
+            setCustomAnimations(appearAnim, disappearAnim, appearAnim, disappearAnim)
+            replace(R.id.map_bottom_sheet_container, f, BOTTOM_SHEET)
+            addToBackStack(BOTTOM_SHEET)
+        }
     }
 
     private fun closeQuestDetailsFor(questId: Long, group: QuestGroup) {

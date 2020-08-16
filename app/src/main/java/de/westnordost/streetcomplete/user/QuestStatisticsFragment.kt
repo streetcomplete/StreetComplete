@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction.TRANSIT_FRAGMENT_FADE
+import androidx.fragment.app.commit
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.quest.QuestType
@@ -59,10 +60,10 @@ class QuestStatisticsFragment : Fragment(R.layout.fragment_quest_statistics),
     }
 
     private fun replaceFragment(fragment: Fragment) {
-        childFragmentManager.beginTransaction()
-            .setTransition(TRANSIT_FRAGMENT_FADE)
-            .replace(R.id.questStatisticsFragmentContainer, fragment)
-            .commit()
+        childFragmentManager.commit {
+            setTransition(TRANSIT_FRAGMENT_FADE)
+            replace(R.id.questStatisticsFragmentContainer, fragment)
+        }
     }
 
     override fun onClickedQuestType(questType: QuestType<*>, solvedCount: Int, questBubbleView: View) {
