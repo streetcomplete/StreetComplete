@@ -176,7 +176,11 @@ private fun StringWithCursor.parseBrackets(bracket: Char, expr: BooleanExpressio
 private fun StringWithCursor.parseTag(): ElementFilter {
     if (nextIsAndAdvance('!')) {
         expectAnyNumberOfSpaces()
-        return NotHasKey(parseKey())
+        if (nextIsAndAdvance('~')) {
+            return NotHasKeyLike(parseKey())
+        } else {
+            return NotHasKey(parseKey())
+        }
     }
 
     if (nextIsAndAdvance('~')) {

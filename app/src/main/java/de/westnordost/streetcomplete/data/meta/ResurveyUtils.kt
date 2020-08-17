@@ -37,16 +37,25 @@ fun String.toCheckDate(): Date? {
 fun StringMapChangesBuilder.updateWithCheckDate(key: String, value: String) {
     val previousValue = getPreviousValue(key)
     if (previousValue == value) {
-        addOrModify("$key:$SURVEY_MARK_KEY", Date().toCheckDateString())
-        // remove old check date keys (except the one we want to set)
-        getLastCheckDateKeys(key).forEach {
-            if (it != "$key:$SURVEY_MARK_KEY") deleteIfExists(it)
-        }
+        updateCheckDateForKey(key)
     } else {
         addOrModify(key, value)
-        // remove all check date keys
-        getLastCheckDateKeys(key).forEach { deleteIfExists(it) }
+        deleteCheckDatesForKey(key)
     }
+}
+
+/** Set/update solely the check date to today for the given key */
+fun StringMapChangesBuilder.updateCheckDateForKey(key: String) {
+    addOrModify("$key:$SURVEY_MARK_KEY", Date().toCheckDateString())
+    // remove old check date keys (except the one we want to set)
+    getLastCheckDateKeys(key).forEach {
+        if (it != "$key:$SURVEY_MARK_KEY") deleteIfExists(it)
+    }
+}
+
+/** Delete any check date keys for the given key */
+fun StringMapChangesBuilder.deleteCheckDatesForKey(key: String) {
+    getLastCheckDateKeys(key).forEach { deleteIfExists(it) }
 }
 
 /** Date format of the tags used for recording the date at which the element or tag with the given
