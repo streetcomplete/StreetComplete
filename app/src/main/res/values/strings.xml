@@ -875,4 +875,5 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="at_conscription_number">conscription number %s:</string>
     <string name="at_housenumber">house number %s:</string>
 
+    <string name="quest_pedestrian_crossing_island">"Does this pedestrian crossing have an island?"</string>
 </resources>

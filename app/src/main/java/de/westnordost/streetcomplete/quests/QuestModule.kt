@@ -25,6 +25,7 @@ import de.westnordost.streetcomplete.quests.car_wash_type.AddCarWashType
 import de.westnordost.streetcomplete.quests.construction.MarkCompletedBuildingConstruction
 import de.westnordost.streetcomplete.quests.construction.MarkCompletedHighwayConstruction
 import de.westnordost.streetcomplete.quests.crossing_type.AddCrossingType
+import de.westnordost.streetcomplete.quests.crossing_island.AddCrossingIsland
 import de.westnordost.streetcomplete.quests.diet_type.AddVegan
 import de.westnordost.streetcomplete.quests.diet_type.AddVegetarian
 import de.westnordost.streetcomplete.quests.ferry.AddFerryAccessMotorVehicle
@@ -125,6 +126,7 @@ object QuestModule
         AddSidewalk(o), // SLOW QUERY
         AddProhibitedForPedestrians(o), // uses info from AddSidewalk quest, should be after it
         AddCrossingType(o),
+        AddCrossingIsland(o),
         AddBuildingLevels(o),
         AddBusStopShelter(o), // at least OsmAnd
         AddVegetarian(o),
