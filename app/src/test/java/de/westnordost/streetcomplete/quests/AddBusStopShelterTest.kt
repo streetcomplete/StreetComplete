@@ -24,7 +24,7 @@ class AddBusStopShelterTest {
         questType.verifyAnswer(
             mapOf("shelter" to "yes"),
             BusStopShelterAnswer.SHELTER,
-            StringMapEntryAdd("shelter:check_date", Date().toCheckDateString())
+            StringMapEntryAdd("check_date:shelter", Date().toCheckDateString())
         )
     }
 
@@ -39,7 +39,7 @@ class AddBusStopShelterTest {
         questType.verifyAnswer(
             mapOf("shelter" to "no"),
             BusStopShelterAnswer.NO_SHELTER,
-            StringMapEntryAdd("shelter:check_date", Date().toCheckDateString())
+            StringMapEntryAdd("check_date:shelter", Date().toCheckDateString())
         )
     }
 

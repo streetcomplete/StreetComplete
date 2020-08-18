@@ -48,17 +48,17 @@ class ResurveyUtilsTest {
         val changes = builder.create().changes
 
         assertEquals(listOf(
-            StringMapEntryAdd("key:check_date", Date().toCheckDateString())
+            StringMapEntryAdd("check_date:key", Date().toCheckDateString())
         ), changes)
     }
 
     @Test fun `updateWithCheckDate modifies check date`() {
-        val builder = StringMapChangesBuilder(mapOf("key" to "value", "key:check_date" to "2000-11-11"))
+        val builder = StringMapChangesBuilder(mapOf("key" to "value", "check_date:key" to "2000-11-11"))
         builder.updateWithCheckDate("key", "value")
         val changes = builder.create().changes
 
         assertEquals(listOf(
-            StringMapEntryModify("key:check_date", "2000-11-11", Date().toCheckDateString())
+            StringMapEntryModify("check_date:key", "2000-11-11", Date().toCheckDateString())
         ), changes)
     }
 
@@ -112,8 +112,8 @@ class ResurveyUtilsTest {
     @Test fun `updateWithCheckDate removes old check dates on modifying check date`() {
         val builder = StringMapChangesBuilder(mapOf(
             "key" to "value",
-            "key:check_date" to "2000-11-01",
-            "check_date:key" to "2000-11-02",
+            "check_date:key" to "2000-11-01",
+            "key:check_date" to "2000-11-02",
             "key:lastcheck" to "2000-11-03",
             "lastcheck:key" to "2000-11-04",
             "key:last_checked" to "2000-11-05",
@@ -123,8 +123,8 @@ class ResurveyUtilsTest {
         val changes = builder.create().changes.toSet()
 
         assertTrue(changes.containsExactlyInAnyOrder(listOf(
-            StringMapEntryModify("key:check_date", "2000-11-01", Date().toCheckDateString()),
-            StringMapEntryDelete("check_date:key", "2000-11-02"),
+            StringMapEntryModify("check_date:key", "2000-11-01", Date().toCheckDateString()),
+            StringMapEntryDelete("key:check_date", "2000-11-02"),
             StringMapEntryDelete("key:lastcheck", "2000-11-03"),
             StringMapEntryDelete("lastcheck:key", "2000-11-04"),
             StringMapEntryDelete("key:last_checked", "2000-11-05"),
@@ -138,24 +138,24 @@ class ResurveyUtilsTest {
         val changes = builder.create().changes
 
         assertEquals(listOf(
-            StringMapEntryAdd("key:check_date", Date().toCheckDateString())
+            StringMapEntryAdd("check_date:key", Date().toCheckDateString())
         ), changes)
     }
 
     @Test fun `updateCheckDateForKey modifies check date`() {
-        val builder = StringMapChangesBuilder(mapOf("key:check_date" to "2000-11-11"))
+        val builder = StringMapChangesBuilder(mapOf("check_date:key" to "2000-11-11"))
         builder.updateCheckDateForKey("key")
         val changes = builder.create().changes
 
         assertEquals(listOf(
-            StringMapEntryModify("key:check_date", "2000-11-11", Date().toCheckDateString())
+            StringMapEntryModify("check_date:key", "2000-11-11", Date().toCheckDateString())
         ), changes)
     }
 
     @Test fun `updateCheckDateForKey removes old check dates on modifying check date`() {
         val builder = StringMapChangesBuilder(mapOf(
-            "key:check_date" to "2000-11-01",
-            "check_date:key" to "2000-11-02",
+            "check_date:key" to "2000-11-01",
+            "key:check_date" to "2000-11-02",
             "key:lastcheck" to "2000-11-03",
             "lastcheck:key" to "2000-11-04",
             "key:last_checked" to "2000-11-05",
@@ -165,8 +165,8 @@ class ResurveyUtilsTest {
         val changes = builder.create().changes.toSet()
 
         assertTrue(changes.containsExactlyInAnyOrder(listOf(
-            StringMapEntryModify("key:check_date", "2000-11-01", Date().toCheckDateString()),
-            StringMapEntryDelete("check_date:key", "2000-11-02"),
+            StringMapEntryModify("check_date:key", "2000-11-01", Date().toCheckDateString()),
+            StringMapEntryDelete("key:check_date", "2000-11-02"),
             StringMapEntryDelete("key:lastcheck", "2000-11-03"),
             StringMapEntryDelete("lastcheck:key", "2000-11-04"),
             StringMapEntryDelete("key:last_checked", "2000-11-05"),

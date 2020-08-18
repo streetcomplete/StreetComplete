@@ -46,10 +46,10 @@ fun StringMapChangesBuilder.updateWithCheckDate(key: String, value: String) {
 
 /** Set/update solely the check date to today for the given key */
 fun StringMapChangesBuilder.updateCheckDateForKey(key: String) {
-    addOrModify("$key:$SURVEY_MARK_KEY", Date().toCheckDateString())
+    addOrModify("$SURVEY_MARK_KEY:$key", Date().toCheckDateString())
     // remove old check date keys (except the one we want to set)
     getLastCheckDateKeys(key).forEach {
-        if (it != "$key:$SURVEY_MARK_KEY") deleteIfExists(it)
+        if (it != "$SURVEY_MARK_KEY:$key") deleteIfExists(it)
     }
 }
 

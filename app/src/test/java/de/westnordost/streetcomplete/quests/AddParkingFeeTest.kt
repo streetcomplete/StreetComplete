@@ -66,7 +66,7 @@ class AddParkingFeeTest {
             mapOf("fee" to "yes"),
             HasFeeExceptAtHours(openingHours),
             StringMapEntryAdd("fee:conditional", "no @ ($openingHoursString)"),
-            StringMapEntryAdd("fee:check_date", Date().toCheckDateString())
+            StringMapEntryAdd("check_date:fee", Date().toCheckDateString())
         )
     }
 }

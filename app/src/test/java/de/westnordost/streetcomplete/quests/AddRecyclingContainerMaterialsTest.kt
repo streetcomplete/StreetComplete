@@ -82,7 +82,7 @@ class AddRecyclingContainerMaterialsTest {
             RecyclingMaterials(listOf(SHOES, PAPER)),
             StringMapEntryAdd("recycling:shoes", "yes"),
             StringMapEntryAdd("recycling:paper", "yes"),
-            StringMapEntryAdd("recycling:check_date", Date().toCheckDateString())
+            StringMapEntryAdd("check_date:recycling", Date().toCheckDateString())
         )
     }
 
@@ -92,7 +92,7 @@ class AddRecyclingContainerMaterialsTest {
             StringMapEntryAdd("recycling:plastic_bottles", "yes"),
             StringMapEntryAdd("recycling:plastic_packaging", "no"),
             StringMapEntryAdd("recycling:plastic", "no"),
-            StringMapEntryAdd("recycling:check_date", Date().toCheckDateString())
+            StringMapEntryAdd("check_date:recycling", Date().toCheckDateString())
         )
     }
 
@@ -105,7 +105,7 @@ class AddRecyclingContainerMaterialsTest {
             StringMapEntryAdd("recycling:plastic_bottles", "yes"),
             StringMapEntryAdd("recycling:plastic_packaging", "no"),
             StringMapEntryModify("recycling:plastic", "yes", "no"),
-            StringMapEntryAdd("recycling:check_date", Date().toCheckDateString())
+            StringMapEntryAdd("check_date:recycling", Date().toCheckDateString())
         )
     }
 
@@ -119,7 +119,7 @@ class AddRecyclingContainerMaterialsTest {
             StringMapEntryModify("recycling:plastic", "no", "no"),
             StringMapEntryAdd("recycling:plastic_bottles", "yes"),
             StringMapEntryModify("recycling:plastic_packaging", "yes", "no"),
-            StringMapEntryAdd("recycling:check_date", Date().toCheckDateString())
+            StringMapEntryAdd("check_date:recycling", Date().toCheckDateString())
         )
     }
 
@@ -128,7 +128,7 @@ class AddRecyclingContainerMaterialsTest {
             RecyclingMaterials(listOf(PLASTIC_PACKAGING)),
             StringMapEntryAdd("recycling:plastic_packaging", "yes"),
             StringMapEntryAdd("recycling:plastic", "no"),
-            StringMapEntryAdd("recycling:check_date", Date().toCheckDateString())
+            StringMapEntryAdd("check_date:recycling", Date().toCheckDateString())
         )
     }
 
@@ -140,7 +140,7 @@ class AddRecyclingContainerMaterialsTest {
             RecyclingMaterials(listOf(PLASTIC_PACKAGING)),
             StringMapEntryAdd("recycling:plastic_packaging", "yes"),
             StringMapEntryModify("recycling:plastic", "yes", "no"),
-            StringMapEntryAdd("recycling:check_date", Date().toCheckDateString())
+            StringMapEntryAdd("check_date:recycling", Date().toCheckDateString())
         )
     }
 
@@ -155,7 +155,7 @@ class AddRecyclingContainerMaterialsTest {
             StringMapEntryModify("recycling:plastic_packaging", "no", "yes"),
             StringMapEntryDelete("recycling:plastic_bottles", "yes"),
             StringMapEntryModify("recycling:plastic", "no", "no"),
-            StringMapEntryAdd("recycling:check_date", Date().toCheckDateString())
+            StringMapEntryAdd("check_date:recycling", Date().toCheckDateString())
         )
     }
 
@@ -163,7 +163,7 @@ class AddRecyclingContainerMaterialsTest {
         questType.verifyAnswer(
             RecyclingMaterials(listOf(PLASTIC)),
             StringMapEntryAdd("recycling:plastic", "yes"),
-            StringMapEntryAdd("recycling:check_date", Date().toCheckDateString())
+            StringMapEntryAdd("check_date:recycling", Date().toCheckDateString())
         )
     }
 
@@ -178,7 +178,7 @@ class AddRecyclingContainerMaterialsTest {
             StringMapEntryModify("recycling:plastic", "no", "yes"),
             StringMapEntryDelete("recycling:plastic_bottles", "yes"),
             StringMapEntryDelete("recycling:plastic_packaging", "no"),
-            StringMapEntryAdd("recycling:check_date", Date().toCheckDateString())
+            StringMapEntryAdd("check_date:recycling", Date().toCheckDateString())
         )
     }
 
@@ -191,7 +191,7 @@ class AddRecyclingContainerMaterialsTest {
             RecyclingMaterials(listOf(PLASTIC)),
             StringMapEntryModify("recycling:plastic", "no", "yes"),
             StringMapEntryDelete("recycling:plastic_packaging", "yes"),
-            StringMapEntryAdd("recycling:check_date", Date().toCheckDateString())
+            StringMapEntryAdd("check_date:recycling", Date().toCheckDateString())
         )
     }
 
@@ -204,7 +204,7 @@ class AddRecyclingContainerMaterialsTest {
             RecyclingMaterials(listOf(CLOTHES, PAPER)),
             StringMapEntryModify("recycling:paper", "yes", "yes"),
             StringMapEntryModify("recycling:clothes", "yes", "yes"),
-            StringMapEntryAdd("recycling:check_date", Date().toCheckDateString())
+            StringMapEntryAdd("check_date:recycling", Date().toCheckDateString())
         )
     }
 
@@ -220,7 +220,7 @@ class AddRecyclingContainerMaterialsTest {
             StringMapEntryModify("recycling:paper", "yes", "yes"),
             StringMapEntryDelete("recycling:cooking_oil", "yes"),
             StringMapEntryDelete("recycling:green_waste", "yes"),
-            StringMapEntryAdd("recycling:check_date", Date().toCheckDateString())
+            StringMapEntryAdd("check_date:recycling", Date().toCheckDateString())
         )
     }
 
@@ -232,7 +232,7 @@ class AddRecyclingContainerMaterialsTest {
             ),
             RecyclingMaterials(listOf(PAPER)),
             StringMapEntryAdd("recycling:paper", "yes"),
-            StringMapEntryAdd("recycling:check_date", Date().toCheckDateString())
+            StringMapEntryAdd("check_date:recycling", Date().toCheckDateString())
         )
     }
 
@@ -262,7 +262,7 @@ class AddRecyclingContainerMaterialsTest {
             IsWasteContainer,
             StringMapEntryModify("amenity","recycling","waste_disposal"),
             StringMapEntryDelete("recycling_type", "container"),
-            StringMapEntryDelete("recycling:check_date", "2000-11-11"),
+            StringMapEntryDelete("check_date:recycling", "2000-11-11"),
             StringMapEntryDelete("recycling:check_date", "2000-11-11"),
             StringMapEntryDelete("recycling:lastcheck", "2000-11-11"),
             StringMapEntryDelete("lastcheck:recycling", "2000-11-11"),
