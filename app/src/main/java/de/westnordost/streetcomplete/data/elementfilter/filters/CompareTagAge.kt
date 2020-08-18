@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.data.elementfilter.filters
 
 import de.westnordost.osmapi.map.data.Element
-import de.westnordost.streetcomplete.data.elementfilter.quoteIfNecessary
 import de.westnordost.streetcomplete.data.meta.getLastCheckDateKeys
 import de.westnordost.streetcomplete.data.meta.toCheckDate
 import de.westnordost.streetcomplete.data.meta.toCheckDateString
@@ -11,17 +10,16 @@ abstract class CompareTagAge(val key: String, val dateFilter: DateFilter) : Elem
     val date: Date get() = dateFilter.date
 
     override fun toOverpassQLString(): String {
-        val date = date.toCheckDateString()
+        val dateStr = date.toCheckDateString()
         val datesToCheck = (listOf("timestamp()") + getLastCheckDateKeys(key).map { "t['$it']" })
-        val oqlEvaluators = datesToCheck.joinToString(" || ") { "date($it) $operator date('$date')" }
-        return "[" + key.quoteIfNecessary() + "](if: " + oqlEvaluators + ")"
+        val oqlEvaluators = datesToCheck.joinToString(" || ") { "date($it) $operator date('$dateStr')" }
+        return "(if: $oqlEvaluators)"
     }
 
     override fun toString() = toOverpassQLString()
 
     override fun matches(obj: Element?): Boolean {
         val dateElementEdited = obj?.dateEdited ?: return false
-        if (!obj.tags.containsKey(key)) return false
 
         if (compareTo(dateElementEdited)) return true
 

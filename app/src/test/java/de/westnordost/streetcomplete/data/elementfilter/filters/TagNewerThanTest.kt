@@ -12,10 +12,6 @@ class TagNewerThanTest {
 
     val c = TagNewerThan("opening_hours", RelativeDate(-100f))
 
-    @Test fun `does not match old element without tag`() {
-        assertFalse(c.matches(mapOf("other" to "tag"), oldDate))
-    }
-
     @Test fun `does not match old element with tag`() {
         assertFalse(c.matches(mapOf("opening_hours" to "tag"), oldDate))
     }
@@ -75,7 +71,6 @@ class TagNewerThanTest {
     @Test fun `to string`() {
         val date = dateDaysAgo(100f).toCheckDateString()
         assertEquals(
-            "[opening_hours]" +
             "(if: date(timestamp()) > date('$date') || " +
             "date(t['opening_hours:check_date']) > date('$date') || " +
             "date(t['check_date:opening_hours']) > date('$date') || " +

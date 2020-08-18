@@ -212,11 +212,11 @@ private fun StringWithCursor.parseTag(): ElementFilter {
 
     if (operator == OLDER) {
         expectOneOrMoreSpaces()
-        return TagOlderThan(key, parseDate())
+        return CombineFilters(HasKey(key), TagOlderThan(key, parseDate()))
     }
     if (operator == NEWER) {
         expectOneOrMoreSpaces()
-        return TagNewerThan(key, parseDate())
+        return CombineFilters(HasKey(key), TagNewerThan(key, parseDate()))
     }
 
     if (KEY_VALUE_OPERATORS.contains(operator)) {
