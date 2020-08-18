@@ -52,7 +52,7 @@ class StringMapChangesBuilder(private val source: Map<String, String>) {
         return source[key]
     }
 
-    fun getPreviousValues(): Map<String, String> {
+    fun getPreviousEntries(): Map<String, String> {
         return source.toMap()
     }
 

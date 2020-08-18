@@ -110,7 +110,7 @@ class AddRecyclingContainerMaterials(
         }
 
         // remove recycling:* taggings previously "yes" but now not any more
-        val materialsNotSelectedAnymore = changes.getPreviousValues().filter { (key, value) ->
+        val materialsNotSelectedAnymore = changes.getPreviousEntries().filter { (key, value) ->
             !selectedMaterials.contains(key)
             // don't touch any previous explicit recycling:*=no taggings
             && value == "yes"
@@ -130,7 +130,7 @@ class AddRecyclingContainerMaterials(
         changes.modify("amenity","waste_disposal")
         changes.delete("recycling_type")
 
-        val previousRecyclingKeys = changes.getPreviousValues().keys.filter { it.startsWith("recycling:") }
+        val previousRecyclingKeys = changes.getPreviousEntries().keys.filter { it.startsWith("recycling:") }
         for (previousRecyclingKey in previousRecyclingKeys) {
             changes.delete(previousRecyclingKey)
         }
