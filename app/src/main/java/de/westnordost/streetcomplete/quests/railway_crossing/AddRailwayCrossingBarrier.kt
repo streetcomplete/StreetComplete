@@ -16,7 +16,7 @@ import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 
 class AddRailwayCrossingBarrier(
     private val overpassMapDataApi: OverpassMapDataAndGeometryApi,
-    r: ResurveyIntervalsStore
+    private val r: ResurveyIntervalsStore
 ) : OsmElementQuestType<String> {
 
     override val commitMessage = "Add type of barrier for railway crossing"
@@ -37,9 +37,6 @@ class AddRailwayCrossingBarrier(
         changes.updateWithCheckDate("crossing:barrier", answer)
     }
 
-    // find all elements whose check_date:crossing:barrier is older 8 years
-    private val dateFilter = TagOlderThan("crossing:barrier", RelativeDate(-(r * 365 * 8).toFloat()))
-
     private fun getOverpassQuery(bbox: BoundingBox) = """
         ${bbox.toGlobalOverpassBBox()}
         
@@ -50,9 +47,14 @@ class AddRailwayCrossingBarrier(
         node[railway = level_crossing] -> .crossings;
 
         node.crossings[!'crossing:barrier'] -> .crossings_with_unknown_barrier;
-        node.crossings${dateFilter.toOverpassQLString()} -> .crossings_with_old_barrier;
+        node.crossings${olderThan(8).toOverpassQLString()} -> .crossings_with_old_barrier;
 
         ((.crossings_with_unknown_barrier; .crossings_with_old_barrier;); - .excluded;);
+        
         ${getQuestPrintStatement()}
         """.trimIndent()
+
+    private fun olderThan(years: Int) =
+        TagOlderThan("crossing:barrier", RelativeDate(-(r * 365 * years).toFloat()))
+
 }

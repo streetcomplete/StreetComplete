@@ -17,7 +17,7 @@ import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 
 class AddRecyclingContainerMaterials(
     private val overpassApi: OverpassMapDataAndGeometryApi,
-    r: ResurveyIntervalsStore
+    private val r: ResurveyIntervalsStore
 ) : OsmElementQuestType<RecyclingContainerMaterialsAnswer> {
 
     override val commitMessage = "Add recycled materials to container"
@@ -27,9 +27,6 @@ class AddRecyclingContainerMaterials(
     override fun download(bbox: BoundingBox, handler: (element: Element, geometry: ElementGeometry?) -> Unit): Boolean {
         return overpassApi.query(getOverpassQuery(bbox), handler)
     }
-
-    // find all elements whose check_date:recycling date is older 2 years
-    private val dateFilter = TagOlderThan("recycling", RelativeDate(-(r * 365 * 2).toFloat()))
 
     private val allKnownMaterials = RecyclingMaterial.values().map { "recycling:" + it.value }
 
@@ -46,7 +43,7 @@ class AddRecyclingContainerMaterials(
         node.with_recycling[~"^(${allKnownMaterials.joinToString("|")})$" ~ ".*" ] -> .with_known_recycling;
         (.with_recycling; - .with_known_recycling;) -> .with_unknown_recycling;
         
-        node.all${dateFilter.toOverpassQLString()} -> .old;
+        node.all${olderThan(2).toOverpassQLString()} -> .old;
         
         (.without_recycling; (.old; - .with_unknown_recycling;););
         ${getQuestPrintStatement()}
@@ -60,13 +57,16 @@ class AddRecyclingContainerMaterials(
             && (
                 tags.none { it.key.startsWith("recycling:") }
                 || (
-                    dateFilter.matches(element)
+                    olderThan(2).matches(element)
                     && tags.filter { (key, value) ->
                         key.startsWith("recycling:") && value == "yes"
                     }.all { allKnownMaterials.contains(it.key) }
                 )
             )
     }
+
+    private fun olderThan(years: Int) =
+        TagOlderThan("recycling", RelativeDate(-(r * 365 * years).toFloat()))
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_recycling_materials_title
 
