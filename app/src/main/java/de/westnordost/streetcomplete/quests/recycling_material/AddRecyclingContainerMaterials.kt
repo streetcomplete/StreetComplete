@@ -28,7 +28,7 @@ class AddRecyclingContainerMaterials(
         return overpassApi.query(getOverpassQuery(bbox), handler)
     }
 
-    // find all elements whose recycling:check date is older 2 years
+    // find all elements whose check_date:recycling date is older 2 years
     private val dateFilter = TagOlderThan("recycling", RelativeDate(-(r * 365 * 2).toFloat()))
 
     private val allKnownMaterials = RecyclingMaterial.values().map { "recycling:" + it.value }
