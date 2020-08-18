@@ -9,8 +9,10 @@ import de.westnordost.streetcomplete.quests.OtherAnswer
 import de.westnordost.streetcomplete.view.ImageSelectAdapter
 import de.westnordost.streetcomplete.view.Item
 import de.westnordost.streetcomplete.view.dialogs.ImageListPickerDialog
+import de.westnordost.streetcomplete.quests.recycling_material.RecyclingMaterial.*
 
-class AddRecyclingContainerMaterialsForm : AImageListQuestAnswerFragment<String, RecyclingContainerMaterialsAnswer>() {
+class AddRecyclingContainerMaterialsForm
+    : AImageListQuestAnswerFragment<RecyclingMaterial, RecyclingContainerMaterialsAnswer>() {
 
     override val contentLayoutResId = R.layout.quest_recycling_materials
 
@@ -19,24 +21,24 @@ class AddRecyclingContainerMaterialsForm : AImageListQuestAnswerFragment<String,
     )
 
     override val items = listOf(
-        Item("glass_bottles",       R.drawable.ic_recycling_glass_bottles,       R.string.quest_recycling_type_glass_bottles),
-        Item("paper",               R.drawable.ic_recycling_paper,               R.string.quest_recycling_type_paper),
-        Item("plastic",             R.drawable.ic_recycling_plastic,             R.string.quest_recycling_type_plastic_generic),
-        Item("cans",                R.drawable.ic_recycling_cans,                R.string.quest_recycling_type_cans),
-        Item("scrap_metal",         R.drawable.ic_recycling_scrap_metal,         R.string.quest_recycling_type_scrap_metal),
-        Item("clothes",             R.drawable.ic_recycling_clothes,             R.string.quest_recycling_type_clothes),
-        Item("shoes",               R.drawable.ic_recycling_shoes,               R.string.quest_recycling_type_shoes),
-        Item("small_electrical_appliances", R.drawable.ic_recycling_electric_appliances, R.string.quest_recycling_type_electric_appliances),
-        Item("batteries",           R.drawable.ic_recycling_batteries,           R.string.quest_recycling_type_batteries),
-        Item("green_waste",         R.drawable.ic_recycling_garden_waste,        R.string.quest_recycling_type_green_waste),
-        Item("cooking_oil",         R.drawable.ic_recycling_cooking_oil,         R.string.quest_recycling_type_cooking_oil),
-        Item("engine_oil",          R.drawable.ic_recycling_engine_oil,          R.string.quest_recycling_type_engine_oil)
+        Item(GLASS_BOTTLES, R.drawable.ic_recycling_glass_bottles, R.string.quest_recycling_type_glass_bottles),
+        Item(PAPER,         R.drawable.ic_recycling_paper,         R.string.quest_recycling_type_paper),
+        Item(PLASTIC,       R.drawable.ic_recycling_plastic,       R.string.quest_recycling_type_plastic_generic),
+        Item(CANS,          R.drawable.ic_recycling_cans,          R.string.quest_recycling_type_cans),
+        Item(SCRAP_METAL,   R.drawable.ic_recycling_scrap_metal,   R.string.quest_recycling_type_scrap_metal),
+        Item(CLOTHES,       R.drawable.ic_recycling_clothes,       R.string.quest_recycling_type_clothes),
+        Item(SHOES,         R.drawable.ic_recycling_shoes,         R.string.quest_recycling_type_shoes),
+        Item(SMALL_ELECTRICAL_APPLIANCES, R.drawable.ic_recycling_electric_appliances, R.string.quest_recycling_type_electric_appliances),
+        Item(BATTERIES,     R.drawable.ic_recycling_batteries,     R.string.quest_recycling_type_batteries),
+        Item(GREEN_WASTE,   R.drawable.ic_recycling_garden_waste,  R.string.quest_recycling_type_green_waste),
+        Item(COOKING_OIL,   R.drawable.ic_recycling_cooking_oil,   R.string.quest_recycling_type_cooking_oil),
+        Item(ENGINE_OIL,    R.drawable.ic_recycling_engine_oil,    R.string.quest_recycling_type_engine_oil)
     )
 
     private val plasticItems = listOf(
-        Item("plastic",             R.drawable.ic_recycling_plastic,             R.string.quest_recycling_type_plastic),
-        Item("plastic_packaging",   R.drawable.ic_recycling_plastic_packaging,   R.string.quest_recycling_type_plastic_packaging),
-        Item("plastic_bottles",     R.drawable.ic_recycling_plastic_bottles,     R.string.quest_recycling_type_plastic_bottles)
+        Item(PLASTIC,           R.drawable.ic_recycling_plastic,           R.string.quest_recycling_type_plastic),
+        Item(PLASTIC_PACKAGING, R.drawable.ic_recycling_plastic_packaging, R.string.quest_recycling_type_plastic_packaging),
+        Item(PLASTIC_BOTTLES,   R.drawable.ic_recycling_plastic_bottles,   R.string.quest_recycling_type_plastic_bottles)
     )
 
     override val maxSelectableItems = -1
@@ -48,7 +50,7 @@ class AddRecyclingContainerMaterialsForm : AImageListQuestAnswerFragment<String,
             override fun onIndexSelected(index: Int) {
                 val value = imageSelector.items[index].value!!
 
-                if (plasticItems.map { it.value!! }.contains(value)) {
+                if (value == PLASTIC) {
                     showPickItemForItemAtIndexDialog(index, plasticItems)
                 }
             }
@@ -57,7 +59,7 @@ class AddRecyclingContainerMaterialsForm : AImageListQuestAnswerFragment<String,
         })
     }
 
-    private fun showPickItemForItemAtIndexDialog(index: Int, items: List<Item<String>>) {
+    private fun showPickItemForItemAtIndexDialog(index: Int, items: List<Item<RecyclingMaterial>>) {
         val ctx = context ?: return
         ImageListPickerDialog(ctx, items, R.layout.cell_icon_select_with_label_below, 3) { selected ->
             val newList = imageSelector.items.toMutableList()
@@ -66,7 +68,7 @@ class AddRecyclingContainerMaterialsForm : AImageListQuestAnswerFragment<String,
         }.show()
     }
 
-    override fun onClickOk(selectedItems: List<String>) {
+    override fun onClickOk(selectedItems: List<RecyclingMaterial>) {
         applyAnswer(RecyclingMaterials(selectedItems))
     }
 
