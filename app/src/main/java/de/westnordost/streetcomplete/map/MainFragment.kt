@@ -10,7 +10,6 @@ import android.graphics.RectF
 import android.location.Location
 import android.location.LocationManager
 import android.net.ConnectivityManager
-import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -155,24 +154,22 @@ class MainFragment : Fragment(R.layout.fragment_main),
     }
 
     private fun setupFittingToSystemWindowInsets() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            view?.setOnApplyWindowInsetsListener { _, insets ->
-                mapControls.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-                    setMargins(
-                        insets.systemWindowInsetLeft,
-                        insets.systemWindowInsetTop,
-                        insets.systemWindowInsetRight,
-                        insets.systemWindowInsetBottom
-                    )
-                }
-                windowInsets = Rect(
+        view?.setOnApplyWindowInsetsListener { _, insets ->
+            mapControls.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                setMargins(
                     insets.systemWindowInsetLeft,
                     insets.systemWindowInsetTop,
                     insets.systemWindowInsetRight,
                     insets.systemWindowInsetBottom
                 )
-                insets
             }
+            windowInsets = Rect(
+                insets.systemWindowInsetLeft,
+                insets.systemWindowInsetTop,
+                insets.systemWindowInsetRight,
+                insets.systemWindowInsetBottom
+            )
+            insets
         }
     }
 

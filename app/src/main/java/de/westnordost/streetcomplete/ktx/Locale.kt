@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.ktx
 
-import java.util.Locale
+import java.util.*
 
 /**
  * Modified from: https://github.com/apache/cordova-plugin-globalization/blob/master/src/android/Globalization.java
@@ -11,10 +11,6 @@ import java.util.Locale
  * @return String: The BCP 47 language tag for the current locale
  */
 fun Locale.toBcp47LanguageTag(): String? {
-    //if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-    //    return toLanguageTag()
-    //}
-
     var language = language
     var region = country
     var variant = variant

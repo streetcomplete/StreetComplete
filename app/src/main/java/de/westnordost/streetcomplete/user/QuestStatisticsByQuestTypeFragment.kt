@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.user
 
 
-import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
@@ -63,10 +62,8 @@ class QuestStatisticsByQuestTypeFragment : Fragment(R.layout.fragment_quest_stat
         clickableContainer.layoutParams = ViewGroup.LayoutParams(256,256)
         // foreground attribute only exists on FrameLayout up until KITKAT
         clickableContainer.foreground = resources.getDrawable(R.drawable.round_pressed)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            clickableContainer.elevation = 6f.toPx(ctx)
-            clickableContainer.outlineProvider = CircularOutlineProvider
-        }
+        clickableContainer.elevation = 6f.toPx(ctx)
+        clickableContainer.outlineProvider = CircularOutlineProvider
         clickableContainer.addView(questView)
         clickableContainer.setOnClickListener { v ->
             listener?.onClickedQuestType(questType, solvedCount, v)

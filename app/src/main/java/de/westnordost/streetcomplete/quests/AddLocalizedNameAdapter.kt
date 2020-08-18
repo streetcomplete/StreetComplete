@@ -137,7 +137,6 @@ class AddLocalizedNameAdapter(
         if (languageTag == "international") return context.getString(R.string.quest_streetName_menuItem_international)
         val languageCode = languageTag.substringBefore('-')
         val isRomanization = languageTag.endsWith("Latn")
-        // if Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP was, could use Locale.forLanguageTag
         val locale = Locale(languageCode)
 
         val displayLanguage = locale.displayLanguage
