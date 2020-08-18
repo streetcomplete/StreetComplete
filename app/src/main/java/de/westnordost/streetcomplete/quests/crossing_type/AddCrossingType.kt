@@ -15,10 +15,20 @@ class AddCrossingType(o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStor
           and foot != no
           and (
             !crossing
-            or crossing = island
-            or crossing older today -${r * 8} years
+            or crossing ~ island|unknown|yes
+            or (
+              crossing ~ traffic_signals|uncontrolled|zebra|marked|unmarked
+              and crossing older today -${r * 8} years
+            )
           )
     """
+    /*
+       Always ask for deprecated/meaningless values (island, unknown, yes)
+
+       Only ask again for crossing types that are known to this quest so to be conservative with
+       existing data
+     */
+
     override val commitMessage = "Add crossing type"
     override val wikiLink = "Key:crossing"
     override val icon = R.drawable.ic_quest_pedestrian_crossing
@@ -28,11 +38,19 @@ class AddCrossingType(o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStor
     override fun createForm() = AddCrossingTypeForm()
 
     override fun applyAnswerTo(answer: String, changes: StringMapChangesBuilder) {
-        if(changes.getPreviousValue("crossing") == "island") {
+        val previous = changes.getPreviousValue("crossing")
+        if(previous == "island") {
             changes.modify("crossing", answer)
             changes.addOrModify("crossing:island", "yes")
         } else {
-            changes.updateWithCheckDate("crossing", answer)
+            if (answer == "uncontrolled") {
+                val unmarkedValueToUse = when(previous) {
+                    "zebra" -> "zebra"
+                    "marked" -> "marked"
+                    else -> "uncontrolled"
+                }
+                changes.updateWithCheckDate("crossing", unmarkedValueToUse)
+            }
         }
     }
 }
