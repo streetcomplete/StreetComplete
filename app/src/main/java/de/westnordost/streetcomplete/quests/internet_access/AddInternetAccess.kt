@@ -18,7 +18,8 @@ class AddInternetAccess(o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsSt
         )
         and name
         and (
-          !wifi and !internet_access
+          !internet_access
+          or internet_access = yes
           or internet_access older today -${r * 2} years
         )
     """
