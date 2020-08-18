@@ -45,7 +45,7 @@ private class TestOverpassMapDataDao {
     var totalWaitTime = 0L
 
     val osm = OsmConnection(
-            "https://overpass.maptime.in/api/",
+            "https://lz4.overpass-api.de/api/",
             "StreetComplete Overpass Query Performance Test",
             null,
             (180 + 4) * 1000)
