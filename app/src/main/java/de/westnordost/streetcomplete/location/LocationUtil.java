@@ -37,6 +37,5 @@ public class LocationUtil
 		return new IntentFilter(MODE_CHANGED);
 	}
 
-	// because LocationManager.MODE_CHANGED is not defined before KitKat
 	private static final String MODE_CHANGED = "android.location.MODE_CHANGED";
 }

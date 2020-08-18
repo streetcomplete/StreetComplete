@@ -44,7 +44,7 @@ class CountryInfoFragment : AbstractInfoFakeDialogFragment(R.layout.fragment_cou
         revealAnim.start()
         circularRevealAnimator = revealAnim
 
-        val flag = resources.getDrawable(getFlagResId(countryCode))
+        val flag = requireContext().getDrawable(getFlagResId(countryCode))!!
         titleImageView.setImageDrawable(flag)
 
         titleView.outlineProvider = object : ViewOutlineProvider() {

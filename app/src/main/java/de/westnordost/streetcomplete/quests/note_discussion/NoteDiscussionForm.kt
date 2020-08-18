@@ -63,7 +63,7 @@ class NoteDiscussionForm : AbstractQuestAnswerFragment<NoteAnswer>() {
 
         updateDoneButtonEnablement()
 
-        anonAvatar = resources.getDrawable(R.drawable.ic_osm_anon_avatar).createBitmap()
+        anonAvatar = requireContext().getDrawable(R.drawable.ic_osm_anon_avatar)!!.createBitmap()
 
         inflateNoteDiscussion(osmNoteQuestController.get(questId)!!.note.comments)
 

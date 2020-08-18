@@ -60,8 +60,7 @@ class QuestStatisticsByQuestTypeFragment : Fragment(R.layout.fragment_quest_stat
 
         val clickableContainer = FrameLayout(ctx)
         clickableContainer.layoutParams = ViewGroup.LayoutParams(256,256)
-        // foreground attribute only exists on FrameLayout up until KITKAT
-        clickableContainer.foreground = resources.getDrawable(R.drawable.round_pressed)
+        clickableContainer.foreground = requireContext().getDrawable(R.drawable.round_pressed)
         clickableContainer.elevation = 6f.toPx(ctx)
         clickableContainer.outlineProvider = CircularOutlineProvider
         clickableContainer.addView(questView)

@@ -84,7 +84,7 @@ class CircularFlagView @JvmOverloads constructor(
             if (resId == 0) {
                 drawable = null
             } else {
-                val d = resources.getDrawable(resId)
+                val d = context.getDrawable(resId)!!
                 val alignment = get(resources, countryCode)
                 boundsOffset = if (alignment != null) {
                     getBoundsOffset(d, alignment)
