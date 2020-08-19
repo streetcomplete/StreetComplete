@@ -44,12 +44,12 @@ class AddCrossingType(o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStor
             changes.addOrModify("crossing:island", "yes")
         } else {
             if (answer == "uncontrolled") {
-                val unmarkedValueToUse = when(previous) {
+                val markedValueToUse = when(previous) {
                     "zebra" -> "zebra"
                     "marked" -> "marked"
                     else -> "uncontrolled"
                 }
-                changes.updateWithCheckDate("crossing", unmarkedValueToUse)
+                changes.updateWithCheckDate("crossing", markedValueToUse)
             }
         }
     }
