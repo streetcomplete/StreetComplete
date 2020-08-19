@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.crossing_type
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.updateCheckDateForKey
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
@@ -43,13 +44,10 @@ class AddCrossingType(o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStor
             changes.modify("crossing", answer)
             changes.addOrModify("crossing:island", "yes")
         } else {
-            if (answer == "uncontrolled") {
-                val markedValueToUse = when(previous) {
-                    "zebra" -> "zebra"
-                    "marked" -> "marked"
-                    else -> "uncontrolled"
-                }
-                changes.updateWithCheckDate("crossing", markedValueToUse)
+            if (answer == "uncontrolled" && previous in listOf("zebra", "marked", "uncontrolled")) {
+                changes.updateCheckDateForKey("crossing")
+            } else {
+                changes.updateWithCheckDate("crossing", answer)
             }
         }
     }
