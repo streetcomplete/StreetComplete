@@ -12,9 +12,7 @@ import android.view.WindowInsets
 import android.view.animation.AnimationUtils
 import androidx.annotation.UiThread
 import androidx.appcompat.app.AlertDialog
-import androidx.core.view.updateLayoutParams
-import androidx.core.view.updateMargins
-import androidx.core.view.updatePadding
+import androidx.core.view.*
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_COLLAPSED
@@ -160,8 +158,7 @@ abstract class AbstractBottomSheetFragment : Fragment(), IsCloseableBottomSheet 
     private fun updateCloseButtonVisibility() {
         // this is called asynchronously. It may happen that the activity is already gone when this
         // method is finally called
-        val coversToolbar = bottomSheet.top <= 0
-        closeButton.visibility = if (coversToolbar) View.VISIBLE else View.GONE
+        closeButton.isGone = bottomSheet.top > 0
     }
 
     @UiThread override fun onClickMapAt(position: LatLon, clickAreaSizeInMeters: Double): Boolean {

@@ -5,7 +5,6 @@ import android.content.Intent
 import android.content.res.Configuration
 import android.graphics.PointF
 import android.graphics.RectF
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -16,6 +15,7 @@ import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.Interpolator
 import androidx.annotation.CallSuper
 import androidx.core.content.edit
+import androidx.core.net.toUri
 import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
 import androidx.preference.PreferenceManager
@@ -40,7 +40,10 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
-import okhttp3.*
+import okhttp3.Cache
+import okhttp3.CacheControl
+import okhttp3.HttpUrl
+import okhttp3.Request
 import okhttp3.internal.Version
 import java.io.File
 import java.util.*
@@ -105,7 +108,7 @@ open class MapFragment : Fragment(),
     }
 
     private fun openUrl(url: String): Boolean {
-        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+        val intent = Intent(Intent.ACTION_VIEW, url.toUri())
         return tryStartActivity(intent)
     }
 

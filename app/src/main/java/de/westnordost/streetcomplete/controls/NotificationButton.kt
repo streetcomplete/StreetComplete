@@ -2,8 +2,8 @@ package de.westnordost.streetcomplete.controls
 
 import android.content.Context
 import android.util.AttributeSet
-import android.view.View
 import android.widget.RelativeLayout
+import androidx.core.view.isInvisible
 import de.westnordost.streetcomplete.R
 import kotlinx.android.synthetic.main.view_notification_button.view.*
 
@@ -17,7 +17,7 @@ class NotificationButton @JvmOverloads constructor(
     set(value) {
         field = value
         textView.text = value.toString()
-        textView.visibility = if (value == 0) View.INVISIBLE else View.VISIBLE
+        textView.isInvisible = value == 0
     }
 
     init {
