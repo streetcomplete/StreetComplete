@@ -3,24 +3,21 @@ package de.westnordost.streetcomplete.quests.localized_name
 import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings
-import androidx.appcompat.app.AlertDialog
-import androidx.recyclerview.widget.LinearLayoutManager
 import android.text.Html
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
+import androidx.core.text.HtmlCompat
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-
-import java.util.ArrayList
-import java.util.Queue
-
-import javax.inject.Inject
-
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.ktx.toObject
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.util.AdapterDataChangedWatcher
 import de.westnordost.streetcomplete.util.Serializer
-import de.westnordost.streetcomplete.ktx.toObject
+import java.util.*
+import javax.inject.Inject
 
 abstract class AAddLocalizedNameForm<T> : AbstractQuestFormAnswerFragment<T>() {
 
@@ -118,11 +115,11 @@ abstract class AAddLocalizedNameForm<T> : AbstractQuestFormAnswerFragment<T>() {
     }
 
     protected fun confirmPossibleAbbreviation(name: String, onConfirmed: () -> Unit) {
-        val title = Html.fromHtml(
+        val title = HtmlCompat.fromHtml(
             resources.getString(
                 R.string.quest_streetName_nameWithAbbreviations_confirmation_title_name,
                 "<i>" + Html.escapeHtml(name) + "</i>"
-            )
+            ), HtmlCompat.FROM_HTML_MODE_LEGACY
         )
 
         AlertDialog.Builder(requireContext())

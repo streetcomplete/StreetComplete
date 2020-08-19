@@ -3,11 +3,11 @@ package de.westnordost.streetcomplete.quests
 import android.content.res.Resources
 import android.text.Html
 import android.text.Spanned
-
+import androidx.core.text.HtmlCompat
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmfeatures.FeatureDictionary
-import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
+import de.westnordost.streetcomplete.data.quest.QuestType
 import java.util.*
 import java.util.concurrent.FutureTask
 
@@ -19,7 +19,8 @@ fun Resources.getQuestTitle(questType: QuestType<*>, element: Element?, featureD
 fun Resources.getHtmlQuestTitle(questType: QuestType<*>, element: Element?, featureDictionaryFuture: FutureTask<FeatureDictionary>?): Spanned {
     val arguments = getTemplateArguments(questType, element, configuration.locale, featureDictionaryFuture)
     val spannedArguments = arguments.map {"<i>" + Html.escapeHtml(it) + "</i>"}.toTypedArray()
-    return Html.fromHtml(getString(getQuestTitleResId(questType, element), *spannedArguments))
+    return HtmlCompat.fromHtml(getString(getQuestTitleResId(questType, element), *spannedArguments),
+        HtmlCompat.FROM_HTML_MODE_LEGACY)
 }
 
 private fun getTemplateArguments(
