@@ -117,7 +117,7 @@ object QuestModule
         AddRoadSurface(o, r), // used by BRouter, OsmAnd, OSRM, graphhopper, HOT map style
         AddMaxSpeed(o), // should best be after road surface because it excludes unpaved roads
         AddMaxHeight(o), // OSRM and other routing engines
-        AddRailwayCrossingBarrier(o), // useful for routing
+        AddRailwayCrossingBarrier(o, r), // useful for routing
         AddPostboxCollectionTimes(o, r),
         AddOpeningHours(o, featureDictionaryFuture),
         DetailRoadSurface(o), // used by BRouter, OsmAnd, OSRM, graphhopper
@@ -160,7 +160,7 @@ object QuestModule
         AddToiletsFee(o), // used by OsmAnd in the object description
         AddBabyChangingTable(o), // used by OsmAnd in the object description
         AddBikeParkingCover(o), // used by OsmAnd in the object description
-        AddTactilePavingCrosswalk(o), // Paving can be completed while waiting to cross
+        AddTactilePavingCrosswalk(o, r), // Paving can be completed while waiting to cross
         AddTrafficSignalsSound(o, r), // Sound needs to be done as or after you're crossing
         AddRoofShape(o),
         AddWheelchairAccessPublicTransport(o, r),
