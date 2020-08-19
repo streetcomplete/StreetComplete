@@ -10,7 +10,7 @@ class AddTrafficSignalsSound(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQ
 
     override val tagFilters =
         "nodes with highway = crossing and crossing = traffic_signals and !traffic_signals:sound"
-    override val commitMessage = "add traffic_signals:sound tag"
+    override val commitMessage = "Add traffic_signals:sound tag"
     override val wikiLink = "Tag:highway=traffic_signals"
     override val icon = R.drawable.ic_quest_blind_traffic_lights
 
