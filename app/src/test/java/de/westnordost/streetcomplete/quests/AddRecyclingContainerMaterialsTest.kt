@@ -81,8 +81,7 @@ class AddRecyclingContainerMaterialsTest {
         questType.verifyAnswer(
             RecyclingMaterials(listOf(SHOES, PAPER)),
             StringMapEntryAdd("recycling:shoes", "yes"),
-            StringMapEntryAdd("recycling:paper", "yes"),
-            StringMapEntryAdd("check_date:recycling", Date().toCheckDateString())
+            StringMapEntryAdd("recycling:paper", "yes")
         )
     }
 
@@ -91,8 +90,7 @@ class AddRecyclingContainerMaterialsTest {
             RecyclingMaterials(listOf(PLASTIC_BOTTLES)),
             StringMapEntryAdd("recycling:plastic_bottles", "yes"),
             StringMapEntryAdd("recycling:plastic_packaging", "no"),
-            StringMapEntryAdd("recycling:plastic", "no"),
-            StringMapEntryAdd("check_date:recycling", Date().toCheckDateString())
+            StringMapEntryAdd("recycling:plastic", "no")
         )
     }
 
@@ -104,8 +102,7 @@ class AddRecyclingContainerMaterialsTest {
             RecyclingMaterials(listOf(PLASTIC_BOTTLES)),
             StringMapEntryAdd("recycling:plastic_bottles", "yes"),
             StringMapEntryAdd("recycling:plastic_packaging", "no"),
-            StringMapEntryModify("recycling:plastic", "yes", "no"),
-            StringMapEntryAdd("check_date:recycling", Date().toCheckDateString())
+            StringMapEntryModify("recycling:plastic", "yes", "no")
         )
     }
 
@@ -118,8 +115,7 @@ class AddRecyclingContainerMaterialsTest {
             RecyclingMaterials(listOf(PLASTIC_BOTTLES)),
             StringMapEntryModify("recycling:plastic", "no", "no"),
             StringMapEntryAdd("recycling:plastic_bottles", "yes"),
-            StringMapEntryModify("recycling:plastic_packaging", "yes", "no"),
-            StringMapEntryAdd("check_date:recycling", Date().toCheckDateString())
+            StringMapEntryModify("recycling:plastic_packaging", "yes", "no")
         )
     }
 
@@ -127,8 +123,7 @@ class AddRecyclingContainerMaterialsTest {
         questType.verifyAnswer(
             RecyclingMaterials(listOf(PLASTIC_PACKAGING)),
             StringMapEntryAdd("recycling:plastic_packaging", "yes"),
-            StringMapEntryAdd("recycling:plastic", "no"),
-            StringMapEntryAdd("check_date:recycling", Date().toCheckDateString())
+            StringMapEntryAdd("recycling:plastic", "no")
         )
     }
 
@@ -139,8 +134,7 @@ class AddRecyclingContainerMaterialsTest {
             ),
             RecyclingMaterials(listOf(PLASTIC_PACKAGING)),
             StringMapEntryAdd("recycling:plastic_packaging", "yes"),
-            StringMapEntryModify("recycling:plastic", "yes", "no"),
-            StringMapEntryAdd("check_date:recycling", Date().toCheckDateString())
+            StringMapEntryModify("recycling:plastic", "yes", "no")
         )
     }
 
@@ -154,16 +148,14 @@ class AddRecyclingContainerMaterialsTest {
             RecyclingMaterials(listOf(PLASTIC_PACKAGING)),
             StringMapEntryModify("recycling:plastic_packaging", "no", "yes"),
             StringMapEntryDelete("recycling:plastic_bottles", "yes"),
-            StringMapEntryModify("recycling:plastic", "no", "no"),
-            StringMapEntryAdd("check_date:recycling", Date().toCheckDateString())
+            StringMapEntryModify("recycling:plastic", "no", "no")
         )
     }
 
     @Test fun `apply answer with plastic`() {
         questType.verifyAnswer(
             RecyclingMaterials(listOf(PLASTIC)),
-            StringMapEntryAdd("recycling:plastic", "yes"),
-            StringMapEntryAdd("check_date:recycling", Date().toCheckDateString())
+            StringMapEntryAdd("recycling:plastic", "yes")
         )
     }
 
@@ -177,8 +169,7 @@ class AddRecyclingContainerMaterialsTest {
             RecyclingMaterials(listOf(PLASTIC)),
             StringMapEntryModify("recycling:plastic", "no", "yes"),
             StringMapEntryDelete("recycling:plastic_bottles", "yes"),
-            StringMapEntryDelete("recycling:plastic_packaging", "no"),
-            StringMapEntryAdd("check_date:recycling", Date().toCheckDateString())
+            StringMapEntryDelete("recycling:plastic_packaging", "no")
         )
     }
 
@@ -190,8 +181,7 @@ class AddRecyclingContainerMaterialsTest {
             ),
             RecyclingMaterials(listOf(PLASTIC)),
             StringMapEntryModify("recycling:plastic", "no", "yes"),
-            StringMapEntryDelete("recycling:plastic_packaging", "yes"),
-            StringMapEntryAdd("check_date:recycling", Date().toCheckDateString())
+            StringMapEntryDelete("recycling:plastic_packaging", "yes")
         )
     }
 
@@ -219,8 +209,29 @@ class AddRecyclingContainerMaterialsTest {
             StringMapEntryAdd("recycling:shoes", "yes"),
             StringMapEntryModify("recycling:paper", "yes", "yes"),
             StringMapEntryDelete("recycling:cooking_oil", "yes"),
-            StringMapEntryDelete("recycling:green_waste", "yes"),
-            StringMapEntryAdd("check_date:recycling", Date().toCheckDateString())
+            StringMapEntryDelete("recycling:green_waste", "yes")
+        )
+    }
+
+    @Test fun `apply answer removes previous check dates`() {
+        questType.verifyAnswer(
+            mapOf(
+                "recycling:paper" to "no",
+                "recycling:check_date" to "2000-11-01",
+                "check_date:recycling" to "2000-11-02",
+                "recycling:lastcheck" to "2000-11-03",
+                "lastcheck:recycling" to "2000-11-04",
+                "recycling:last_checked" to "2000-11-05",
+                "last_checked:recycling" to "2000-11-06"
+            ),
+            RecyclingMaterials(listOf(PAPER)),
+            StringMapEntryModify("recycling:paper", "no", "yes"),
+            StringMapEntryDelete("recycling:check_date", "2000-11-01"),
+            StringMapEntryDelete("check_date:recycling", "2000-11-02"),
+            StringMapEntryDelete("recycling:lastcheck", "2000-11-03"),
+            StringMapEntryDelete("lastcheck:recycling", "2000-11-04"),
+            StringMapEntryDelete("recycling:last_checked", "2000-11-05"),
+            StringMapEntryDelete("last_checked:recycling", "2000-11-06")
         )
     }
 
@@ -231,8 +242,7 @@ class AddRecyclingContainerMaterialsTest {
                 "recycling:green_waste" to "no"
             ),
             RecyclingMaterials(listOf(PAPER)),
-            StringMapEntryAdd("recycling:paper", "yes"),
-            StringMapEntryAdd("check_date:recycling", Date().toCheckDateString())
+            StringMapEntryAdd("recycling:paper", "yes")
         )
     }
 

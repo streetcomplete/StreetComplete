@@ -13,6 +13,8 @@ import de.westnordost.streetcomplete.data.elementfilter.getQuestPrintStatement
 import de.westnordost.streetcomplete.data.elementfilter.toGlobalOverpassBBox
 import de.westnordost.streetcomplete.data.meta.deleteCheckDatesForKey
 import de.westnordost.streetcomplete.data.meta.updateCheckDateForKey
+import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
+import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryModify
 import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 
 class AddRecyclingContainerMaterials(
@@ -121,9 +123,15 @@ class AddRecyclingContainerMaterials(
             changes.delete(notAcceptedMaterial)
         }
 
-        // always set the check date tag because it may already be set and this is about several
-        // tags, not one
-        changes.updateCheckDateForKey("recycling")
+        // only set the check date if nothing was changed
+        val isNotActuallyChangingAnything = changes.getChanges().all { change ->
+            change is StringMapEntryModify && change.value == change.valueBefore
+        }
+        if (isNotActuallyChangingAnything) {
+            changes.updateCheckDateForKey("recycling")
+        } else {
+            changes.deleteCheckDatesForKey("recycling")
+        }
     }
 
     private fun applyWasteContainerAnswer(changes: StringMapChangesBuilder) {

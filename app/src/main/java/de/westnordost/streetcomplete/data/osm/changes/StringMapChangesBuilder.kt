@@ -56,6 +56,8 @@ class StringMapChangesBuilder(private val source: Map<String, String>) {
         return source.toMap()
     }
 
+    fun getChanges(): List<StringMapEntryChange> = changes.values.toList()
+
     private fun checkDuplicate(key: String) {
         check(!changes.containsKey(key)) { "The key '$key' is already being modified." }
     }
