@@ -89,7 +89,7 @@ class AddWheelchairAccessBusiness(
     override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside
 
     override fun getTitle(tags: Map<String, String>) = 
-        if (hasProperName(tags) && !tags.containsKey("brand"))
+        if (hasFeatureName(tags) && !tags.containsKey("brand"))
             R.string.quest_wheelchairAccess_name_type_title
         else
             R.string.quest_wheelchairAccess_name_title
