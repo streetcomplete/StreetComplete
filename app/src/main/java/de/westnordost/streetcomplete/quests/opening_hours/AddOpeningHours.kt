@@ -92,7 +92,10 @@ class AddOpeningHours (
 
     override fun getTitle(tags: Map<String, String>) =
         if (hasProperName(tags))
-            R.string.quest_openingHours_name_title
+            if (hasFeatureName(tags) && !tags.containsKey("brand"))
+                R.string.quest_openingHours_name_type_title
+            else
+                R.string.quest_openingHours_name_title
         else
             R.string.quest_openingHours_no_name_title
 
