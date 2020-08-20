@@ -51,7 +51,7 @@ class AddAcceptsCash(
     )
 
     override fun getTitle(tags: Map<String, String>) = 
-        if (hasProperName(tags) && !tags.containsKey("brand"))
+        if (hasFeatureName(tags) && !tags.containsKey("brand"))
             R.string.quest_accepts_cash_type_title
         else
             R.string.quest_accepts_cash_title
