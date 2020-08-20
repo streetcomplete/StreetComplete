@@ -39,10 +39,10 @@ class AddRecyclingContainerMaterials(
         ${bbox.toGlobalOverpassBBox()}
         node[amenity = recycling][recycling_type = container] -> .all;
         
-        node.all[~"^recycling:.*$" ~ ".*"] -> .with_recycling;
+        node.all[~"^recycling:.*$" ~ "yes"] -> .with_recycling;
         (.all; - .with_recycling;) -> .without_recycling;
         
-        node.with_recycling[~"^(${allKnownMaterials.joinToString("|")})$" ~ ".*" ] -> .with_known_recycling;
+        node.with_recycling[~"^(${allKnownMaterials.joinToString("|")})$" ~ "yes" ] -> .with_known_recycling;
         (.with_recycling; - .with_known_recycling;) -> .with_unknown_recycling;
         
         node.all${olderThan(2).toOverpassQLString()} -> .old;
