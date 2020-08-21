@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.view.isGone
 import androidx.core.view.updateLayoutParams
 
 import java.text.DateFormatSymbols
@@ -33,7 +34,7 @@ data class OpeningMonthsRow(var months: CircularSection = CircularSection(0, MAX
     }
 
     companion object {
-        private val MAX_MONTH_INDEX = 11
+        private const val MAX_MONTH_INDEX = 11
     }
 }
 
@@ -49,8 +50,14 @@ class AddOpeningHoursAdapter(
         private set
 
     var isDisplayMonths = false
-        set(displayMonths) {
-            field = displayMonths
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
+
+    var isEnabled = true
+        set(value) {
+            field = value
             notifyDataSetChanged()
         }
 
@@ -68,11 +75,11 @@ class AddOpeningHoursAdapter(
         val om = monthsRows[p[0]]
 
         if (holder is MonthsViewHolder) {
-            holder.update(om)
+            holder.update(om, isEnabled)
         } else if (holder is WeekdayViewHolder) {
             val ow = om.weekdaysList[p[1]]
             val prevOw = if (p[1] > 0) om.weekdaysList[p[1] - 1] else null
-            holder.update(ow, prevOw)
+            holder.update(ow, prevOw, isEnabled)
         }
     }
 
@@ -99,6 +106,8 @@ class AddOpeningHoursAdapter(
     /* ------------------------------------------------------------------------------------------ */
 
     private fun remove(position: Int) {
+        if (!isEnabled) return
+
         val p = getHierarchicPosition(position)
         if (p.size != 2) throw IllegalArgumentException("May only directly remove weekdays, not months")
 
@@ -186,18 +195,18 @@ class AddOpeningHoursAdapter(
         private val deleteButton: View = itemView.findViewById(R.id.deleteButton)
 
         init {
-            deleteButton.visibility = View.GONE
+            deleteButton.isGone = true
         }
 
         private fun setVisibility(isVisible: Boolean) {
-            itemView.visibility = if (isVisible) View.VISIBLE else View.GONE
+            itemView.isGone = !isVisible
             itemView.updateLayoutParams {
                 height = if(isVisible) LinearLayout.LayoutParams.WRAP_CONTENT else 0
                 width = if(isVisible) LinearLayout.LayoutParams.MATCH_PARENT else 0
             }
         }
 
-        fun update(row: OpeningMonthsRow) {
+        fun update(row: OpeningMonthsRow, isEnabled: Boolean) {
             setVisibility(isDisplayMonths)
             monthsLabel.text = row.months.toStringUsing(DateFormatSymbols.getInstance().months, "–")
             monthsLabel.setOnClickListener {
@@ -206,6 +215,7 @@ class AddOpeningHoursAdapter(
                     notifyItemChanged(adapterPosition)
                 }
             }
+            monthsLabel.isEnabled = isEnabled
         }
     }
 
@@ -236,23 +246,21 @@ class AddOpeningHoursAdapter(
         init {
             deleteButton.setOnClickListener {
                 val index = adapterPosition
-                if (index != RecyclerView.NO_POSITION) remove(adapterPosition)
+                if (index != RecyclerView.NO_POSITION) remove(index)
             }
         }
 
-        fun update(row: OpeningWeekdaysRow, rowBefore: OpeningWeekdaysRow?) {
-            if (rowBefore != null && row.weekdays == rowBefore.weekdays) {
-                weekdaysLabel.text = ""
-            } else {
-                weekdaysLabel.text = row.weekdays.toLocalizedString(context.resources)
-            }
-
+        fun update(row: OpeningWeekdaysRow, rowBefore: OpeningWeekdaysRow?, isEnabled: Boolean) {
+            weekdaysLabel.text =
+                if (rowBefore != null && row.weekdays == rowBefore.weekdays) ""
+                else row.weekdays.toLocalizedString(context.resources)
             weekdaysLabel.setOnClickListener {
                 openSetWeekdaysDialog(row.weekdays) { weekdays ->
                     row.weekdays = weekdays
                     notifyItemChanged(adapterPosition)
                 }
             }
+
             hoursLabel.text = row.timeRange.toStringUsing(Locale.getDefault(), "–")
             hoursLabel.setOnClickListener {
                 openSetTimeRangeDialog(row.timeRange) { timeRange ->
@@ -260,6 +268,11 @@ class AddOpeningHoursAdapter(
                     notifyItemChanged(adapterPosition)
                 }
             }
+
+            deleteButton.isGone = !isEnabled
+            deleteButton.isEnabled = isEnabled
+            weekdaysLabel.isEnabled = isEnabled
+            hoursLabel.isEnabled = isEnabled
         }
     }
 
