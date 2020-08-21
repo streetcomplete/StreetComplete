@@ -15,13 +15,9 @@ import java.util.Locale
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.CountryInfo
-import de.westnordost.streetcomplete.quests.opening_hours.model.CircularSection
-import de.westnordost.streetcomplete.quests.opening_hours.model.NumberSystem
-import de.westnordost.streetcomplete.quests.opening_hours.model.OpeningMonths
-import de.westnordost.streetcomplete.quests.opening_hours.model.TimeRange
 import de.westnordost.streetcomplete.quests.opening_hours.TimeRangePickerDialog
-import de.westnordost.streetcomplete.quests.opening_hours.model.Weekdays
 import de.westnordost.streetcomplete.quests.opening_hours.WeekdaysPickerDialog
+import de.westnordost.streetcomplete.quests.opening_hours.model.*
 import de.westnordost.streetcomplete.view.dialogs.RangePickedCallback
 import de.westnordost.streetcomplete.view.dialogs.RangePickerDialog
 
@@ -161,7 +157,7 @@ class AddOpeningHoursAdapter(
         notifyItemInserted(insertIndex)
     }
 
-    fun createOpeningMonths() = monthsRows.toOpeningMonthsList()
+    fun createOpeningHours() = RegularOpeningHours(monthsRows.toOpeningMonthsList())
 
     fun changeToMonthsMode() {
         val om = monthsRows[0]

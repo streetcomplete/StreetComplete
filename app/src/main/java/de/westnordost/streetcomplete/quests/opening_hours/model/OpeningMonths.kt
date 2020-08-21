@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.quests.opening_hours.model
 import java.text.DateFormatSymbols
 import java.util.*
 
-class OpeningMonths(var months: CircularSection, var weekdaysClusters: List<List<OpeningWeekdays>>){
+data class OpeningMonths(val months: CircularSection, val weekdaysClusters: List<List<OpeningWeekdays>>){
 
     private val isWholeYear: Boolean
         get() {
@@ -34,16 +34,7 @@ class OpeningMonths(var months: CircularSection, var weekdaysClusters: List<List
         return false
     }
 
-    override fun equals(other: Any?): Boolean {
-        if (this === other) return true
-        if (other !is OpeningMonths) return false
-
-        return months == other.months && weekdaysClusters == other.weekdaysClusters
-    }
-
-    override fun hashCode() = 31 * months.hashCode() + weekdaysClusters.hashCode()
-
     companion object {
-        val MAX_MONTH_INDEX = 11
+        const val MAX_MONTH_INDEX = 11
     }
 }

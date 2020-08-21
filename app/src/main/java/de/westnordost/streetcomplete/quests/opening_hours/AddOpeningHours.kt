@@ -115,13 +115,8 @@ class AddOpeningHours (
 
     override fun applyAnswerTo(answer: OpeningHoursAnswer, changes: StringMapChangesBuilder) {
         when(answer) {
-            is RegularOpeningHours -> changes.add("opening_hours", answer.times.joinToString(";"))
-            is AlwaysOpen          -> changes.add("opening_hours", "24/7")
+            is HasOpeningHours     -> changes.add("opening_hours", answer.openingHours.toString())
             is NoOpeningHoursSign  -> changes.add("opening_hours:signed", "no")
-            is DescribeOpeningHours -> {
-                val text = answer.text.replace("\"","")
-                changes.add("opening_hours", "\"$text\"")
-            }
         }
     }
 

@@ -16,7 +16,8 @@ private fun List<OpeningWeekdaysRow>.toOpeningWeekdays(): List<OpeningWeekdays> 
     for ((weekdays, timeRange) in this) {
         // merging rows that have the same weekdays
         if (last != null && last.weekdays == weekdays) {
-            last.timeRanges.add(timeRange)
+            last = OpeningWeekdays(last.weekdays, last.timeRanges + timeRange)
+            result[result.size - 1] = last
         } else {
             val times = mutableListOf<TimeRange>()
             times.add(timeRange)
@@ -32,7 +33,7 @@ private fun List<OpeningWeekdays>.toWeekdaysClusters(): List<List<OpeningWeekday
 
     val clusters = mutableListOf<List<OpeningWeekdays>>()
 
-    while (!unsorted.isEmpty()) {
+    while (unsorted.isNotEmpty()) {
         val cluster = mutableListOf<OpeningWeekdays>()
         cluster.add(unsorted.removeAt(0))
         val it = unsorted.iterator()

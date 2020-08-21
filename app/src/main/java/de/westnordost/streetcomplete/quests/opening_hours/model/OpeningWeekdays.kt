@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.quests.opening_hours.model
 
-class OpeningWeekdays(var weekdays: Weekdays, var timeRanges: MutableList<TimeRange>) {
+data class OpeningWeekdays(val weekdays: Weekdays, val timeRanges: List<TimeRange>) {
 
     fun isSelfIntersecting(): Boolean {
         for (i in timeRanges.indices) {
@@ -69,12 +69,4 @@ class OpeningWeekdays(var weekdays: Weekdays, var timeRanges: MutableList<TimeRa
         }
         return Weekdays(result)
     }
-
-    override fun equals(other: Any?): Boolean {
-        if (this === other) return true
-        if (other !is OpeningWeekdays) return false
-        return weekdays == other.weekdays && timeRanges == other.timeRanges
-    }
-
-    override fun hashCode() = 31 * weekdays.hashCode() + timeRanges.hashCode()
 }

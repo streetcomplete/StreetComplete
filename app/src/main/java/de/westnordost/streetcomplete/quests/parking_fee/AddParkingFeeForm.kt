@@ -98,8 +98,8 @@ class AddParkingFeeForm : AbstractQuestFormAnswerFragment<FeeAnswer>() {
     }
 
     override fun onClickOk() {
-        val times = openingHoursAdapter.createOpeningMonths()
-        if (!times.isEmpty()) {
+        val times = openingHoursAdapter.createOpeningHours()
+        if (times.openingMonths.isNotEmpty()) {
             if(isFeeOnlyAtHours) {
                 applyAnswer(HasFeeAtHours(times))
             } else {
@@ -128,7 +128,8 @@ class AddParkingFeeForm : AbstractQuestFormAnswerFragment<FeeAnswer>() {
         outState.putBoolean(IS_FEE_ONLY_AT_HOURS, isFeeOnlyAtHours)
     }
 
-    override fun isFormComplete() = isDefiningHours && !openingHoursAdapter.createOpeningMonths().joinToString(";").isEmpty()
+    override fun isFormComplete() =
+        isDefiningHours && openingHoursAdapter.createOpeningHours().toString().isNotEmpty()
 
     companion object {
         private const val OPENING_HOURS_DATA = "oh_data"

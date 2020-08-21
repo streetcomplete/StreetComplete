@@ -13,7 +13,7 @@ class AddOpeningHoursTest {
 
     @Test fun `apply description answer`() {
         questType.verifyAnswer(
-            DescribeOpeningHours("my cool \"opening\" hours"),
+            HasOpeningHours(DescribedOpeningHours("my cool \"opening\" hours")),
             StringMapEntryAdd("opening_hours", "\"my cool opening hours\"")
         )
     }
@@ -27,14 +27,14 @@ class AddOpeningHoursTest {
 
     @Test fun `apply always open answer`() {
         questType.verifyAnswer(
-            AlwaysOpen,
+            HasOpeningHours(AlwaysOpen),
             StringMapEntryAdd("opening_hours", "24/7")
         )
     }
 
     @Test fun `apply opening hours answer`() {
         questType.verifyAnswer(
-            RegularOpeningHours(listOf(OpeningMonths(
+            HasOpeningHours(RegularOpeningHours(listOf(OpeningMonths(
                 CircularSection(0,11),
                 listOf(
                     listOf(
@@ -50,7 +50,7 @@ class AddOpeningHoursTest {
                         )
                     )
                 )
-            ))),
+            )))),
             StringMapEntryAdd("opening_hours", "Mo 00:00-12:00; Tu 12:00-24:00")
         )
     }

@@ -14,7 +14,7 @@ class AddParkingFeeTest {
 
     private val questType = AddParkingFee(mock(), mock())
 
-    private val openingHours = listOf(
+    private val openingHours = RegularOpeningHours(listOf(
         OpeningMonths(CircularSection(0,11), listOf(
             listOf(OpeningWeekdays(
                 Weekdays(booleanArrayOf(true)),
@@ -24,7 +24,7 @@ class AddParkingFeeTest {
                 Weekdays(booleanArrayOf(false, true)),
                 mutableListOf(TimeRange(12*60, 24*60))
             ))
-        ))
+        )))
     )
     private val openingHoursString = "Mo 00:00-12:00; Tu 12:00-24:00"
 
