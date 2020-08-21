@@ -7,7 +7,7 @@ import android.text.Html
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
-import androidx.core.text.HtmlCompat
+import androidx.core.text.parseAsHtml
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.Injector
@@ -115,12 +115,10 @@ abstract class AAddLocalizedNameForm<T> : AbstractQuestFormAnswerFragment<T>() {
     }
 
     protected fun confirmPossibleAbbreviation(name: String, onConfirmed: () -> Unit) {
-        val title = HtmlCompat.fromHtml(
-            resources.getString(
-                R.string.quest_streetName_nameWithAbbreviations_confirmation_title_name,
-                "<i>" + Html.escapeHtml(name) + "</i>"
-            ), HtmlCompat.FROM_HTML_MODE_LEGACY
-        )
+        val title = resources.getString(
+            R.string.quest_streetName_nameWithAbbreviations_confirmation_title_name,
+            "<i>" + Html.escapeHtml(name) + "</i>"
+        ).parseAsHtml()
 
         AlertDialog.Builder(requireContext())
             .setTitle(title)

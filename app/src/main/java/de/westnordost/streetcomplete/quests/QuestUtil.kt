@@ -5,7 +5,7 @@ import android.text.Html
 import android.text.Spanned
 import androidx.core.os.ConfigurationCompat
 import androidx.core.os.LocaleListCompat
-import androidx.core.text.HtmlCompat
+import androidx.core.text.parseAsHtml
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
@@ -23,8 +23,7 @@ fun Resources.getHtmlQuestTitle(questType: QuestType<*>, element: Element?, feat
     val localeList = ConfigurationCompat.getLocales(configuration)
     val arguments = getTemplateArguments(questType, element, localeList, featureDictionaryFuture)
     val spannedArguments = arguments.map {"<i>" + Html.escapeHtml(it) + "</i>"}.toTypedArray()
-    return HtmlCompat.fromHtml(getString(getQuestTitleResId(questType, element), *spannedArguments),
-        HtmlCompat.FROM_HTML_MODE_LEGACY)
+    return getString(getQuestTitleResId(questType, element), *spannedArguments).parseAsHtml()
 }
 
 private fun getTemplateArguments(
