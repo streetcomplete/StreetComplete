@@ -9,8 +9,8 @@ import de.westnordost.streetcomplete.quests.opening_hours.model.Weekdays
 
 object WeekdaysPickerDialog {
 
-    fun show(context: Context, weekdays: Weekdays, callback: (Weekdays) -> Unit): AlertDialog {
-        val selection = weekdays.selection
+    fun show(context: Context, weekdays: Weekdays?, callback: (Weekdays) -> Unit): AlertDialog {
+        val selection = weekdays?.selection ?: BooleanArray(Weekdays.OSM_ABBR_WEEKDAYS.size)
 
         val dlg = AlertDialog.Builder(context)
             .setTitle(R.string.quest_openingHours_chooseWeekdaysTitle)

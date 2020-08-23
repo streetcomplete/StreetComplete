@@ -1,5 +1,9 @@
 package de.westnordost.streetcomplete.quests.opening_hours
 
+import ch.poole.openinghoursparser.Rule
+import ch.poole.openinghoursparser.TimeSpan
+import ch.poole.openinghoursparser.WeekDay
+import ch.poole.openinghoursparser.WeekDayRange
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
 import de.westnordost.streetcomplete.mock
 import de.westnordost.streetcomplete.quests.opening_hours.model.*
@@ -9,11 +13,11 @@ import org.junit.Test
 
 class AddOpeningHoursTest {
 
-    private val questType = AddOpeningHours(mock(), mock())
+    private val questType = AddOpeningHours(mock(), mock(), mock())
 
     @Test fun `apply description answer`() {
         questType.verifyAnswer(
-            HasOpeningHours(DescribedOpeningHours("my cool \"opening\" hours")),
+            DescribeOpeningHours("my cool \"opening\" hours"),
             StringMapEntryAdd("opening_hours", "\"my cool opening hours\"")
         )
     }
@@ -27,31 +31,34 @@ class AddOpeningHoursTest {
 
     @Test fun `apply always open answer`() {
         questType.verifyAnswer(
-            HasOpeningHours(AlwaysOpen),
+            AlwaysOpen,
             StringMapEntryAdd("opening_hours", "24/7")
         )
     }
 
     @Test fun `apply opening hours answer`() {
         questType.verifyAnswer(
-            HasOpeningHours(RegularOpeningHours(listOf(OpeningMonths(
-                CircularSection(0,11),
-                listOf(
-                    listOf(
-                        OpeningWeekdays(
-                            Weekdays(booleanArrayOf(true)),
-                            mutableListOf(TimeRange(0, 12*60))
-                        )
-                    ),
-                    listOf(
-                        OpeningWeekdays(
-                            Weekdays(booleanArrayOf(false, true)),
-                            mutableListOf(TimeRange(12*60, 24*60))
-                        )
-                    )
-                )
-            )))),
-            StringMapEntryAdd("opening_hours", "Mo 00:00-12:00; Tu 12:00-24:00")
+            RegularOpeningHours(OpeningHoursRuleList(listOf(
+                Rule().apply {
+                    days = listOf(WeekDayRange().also {
+                        it.startDay = WeekDay.MO
+                    })
+                    times = listOf(TimeSpan().also {
+                        it.start = 60*10
+                        it.end = 60*12
+                    })
+                },
+                Rule().apply {
+                    days = listOf(WeekDayRange().also {
+                        it.startDay = WeekDay.TU
+                    })
+                    times = listOf(TimeSpan().also {
+                        it.start = 60*12
+                        it.end = 60*24
+                    })
+                })
+            )),
+            StringMapEntryAdd("opening_hours", "Mo 10:00-12:00; Tu 12:00-24:00")
         )
     }
 }

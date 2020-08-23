@@ -62,7 +62,7 @@ class Weekdays {
     }
 
     // section that goes until the end
-    private fun toCircularSections(): List<CircularSection> {
+    fun toCircularSections(): List<CircularSection> {
         val result = mutableListOf<CircularSection>()
         var currentStart: Int? = null
         for (i in 0..6) {
@@ -100,7 +100,7 @@ class Weekdays {
     companion object {
         // in ISO 8601 order
         val OSM_ABBR_WEEKDAYS = arrayOf("Mo", "Tu", "We", "Th", "Fr", "Sa", "Su", "PH")
-        private const val PUBLIC_HOLIDAY = 7
+        const val PUBLIC_HOLIDAY = 7
 
         private val WEEKDAY_NUMBER_SYSTEM = NumberSystem(0, 6)
 

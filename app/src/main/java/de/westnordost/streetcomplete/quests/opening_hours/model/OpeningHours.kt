@@ -1,20 +1,15 @@
 package de.westnordost.streetcomplete.quests.opening_hours.model
 
-sealed class OpeningHours {
-    abstract override fun toString(): String
+import ch.poole.openinghoursparser.Holiday
+import ch.poole.openinghoursparser.Rule
+import ch.poole.openinghoursparser.Util
+import ch.poole.openinghoursparser.WeekDayRange
+
+data class OpeningHoursRuleList(val rules: List<Rule>) {
+    override fun toString(): String = Util.rulesToOpeningHoursString(rules)
 }
 
-data class RegularOpeningHours(val openingMonths: List<OpeningMonths>): OpeningHours() {
-    override fun toString(): String = openingMonths.joinToString(";")
-}
-
-object AlwaysOpen : OpeningHours() {
-    override fun toString(): String = "24/7"
-}
-
-data class DescribedOpeningHours(val text:String): OpeningHours() {
-    override fun toString(): String {
-        val text = text.replace("\"","")
-        return "\"$text\""
-    }
-}
+data class WeekDayRangesAndHolidays(
+    val weekdayRanges: List<WeekDayRange>? = null,
+    val holidays: List<Holiday>? = null
+)
