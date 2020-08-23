@@ -36,15 +36,20 @@ fun main() = runBlocking {
     var timeEvents = 0
     var onlySomeMonthBased = 0
 
+    // or go to https://sophox.org/#select%20%3Fopening_hours%20where%20%7B%3Felement%20osmt%3Aopening_hours%20%3Fopening_hours%7D
+    // execute query, download as CSV and use
+    // File(path to downloaded CSV).bufferedReader().useLines { lines ->
+
     val limitStr = limit?.let { "%0D%0Alimit+$limit" } ?: ""
-    val url = URL("https://sophox.org/sparql?query=select+%3Fopening_hours+where+%7B%3Felement+osmt%3Aopening_hours+%3Fopening_hours%7D$limitStr")
+    val url = URL("https://sophox.org/sparql?query=select%20%3Fopening_hours%20where%20%7B%3Felement%20osmt%3Aopening_hours%20%3Fopening_hours%7D%20$limitStr")
     val connection = url.openConnection() as HttpURLConnection
     try {
         connection.setRequestProperty("Accept", "text/csv")
         connection.setRequestProperty("User-Agent", "StreetComplete opening hours test")
         connection.setRequestProperty("charset", StandardCharsets.UTF_8.name())
         connection.doOutput = true
-        connection.inputStream.bufferedReader().useLines { lines -> runBlocking {
+        connection.inputStream.bufferedReader().useLines { lines ->
+            runBlocking {
             for (line in lines) { launch {
                 total++
                 var oh = line
@@ -78,7 +83,7 @@ fun main() = runBlocking {
                         if (r.any { it.weeks != null }) {
                             containsWeeks++
                         }
-                        if(r.any { it.times == null }) {
+                        if(r.any { it.times == null && !it.isTwentyfourseven && it.modifier == null }) {
                             noHours++
                         }
                         if(r.any { it.dates != null && it.dates!!.size > 1 }) {
@@ -107,7 +112,7 @@ fun main() = runBlocking {
                         }
                     }
                 }
-                if (total % 1000 == 0) print(".")
+                if (total % 100000 == 0) print(".")
             } }
         } }
     } finally {
