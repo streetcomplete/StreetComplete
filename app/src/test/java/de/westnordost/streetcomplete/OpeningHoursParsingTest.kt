@@ -1,8 +1,7 @@
 package de.westnordost.streetcomplete
 
-import ch.poole.openinghoursparser.RuleModifier
 import ch.poole.openinghoursparser.YearRange
-import de.westnordost.streetcomplete.quests.opening_hours.parser.collidesWithItself
+import de.westnordost.streetcomplete.quests.opening_hours.parser.weekdaysCollideWithAnother
 import de.westnordost.streetcomplete.quests.opening_hours.parser.isSupported
 import de.westnordost.streetcomplete.quests.opening_hours.parser.toOpeningHoursRows
 import de.westnordost.streetcomplete.quests.opening_hours.parser.toOpeningHoursRules
@@ -74,7 +73,7 @@ fun main() = runBlocking {
                         if (r.any { it.isFallBack }) {
                             containsFallback++
                         }
-                        if (r.any { it.modifier != null && it.modifier!!.modifier != RuleModifier.Modifier.OPEN }) {
+                        if (r.any { it.modifier != null }) {
                             containingOff++
                         }
                         if (r.any { rule -> rule.years != null || rule.dates?.any { it.startDate.year != YearRange.UNDEFINED_YEAR } == true }) {
@@ -107,7 +106,7 @@ fun main() = runBlocking {
                         if (!r.all { it.dates != null } && !r.all { it.dates == null }) {
                             onlySomeMonthBased++
                         }
-                        if (r.all { it.isSupported() } && r.collidesWithItself()) {
+                        if (r.all { it.isSupported() } && r.weekdaysCollideWithAnother()) {
                             selfColliding++
                         }
                     }
@@ -132,7 +131,7 @@ fun main() = runBlocking {
     println("Of the unsupported opening hours, ")
     val unsupported = parsed - supported
     println("${percent(1.0 * containsTwentyfourseven / unsupported)} are \"24/7\"")
-    println("${percent(1.0 * containingOff / unsupported)} are with \"off\", \"closed\" etc. modifier")
+    println("${percent(1.0 * containingOff / unsupported)} are unsupported rules with \"off\", \"closed\" etc. modifier")
     println("${percent(1.0 * selfColliding / unsupported)} collide with themselves (likely an error)")
     println("${percent(1.0 * containsYears / unsupported)} contain years")
     println("${percent(1.0 * containsWeeks / unsupported)} contain week numbers")

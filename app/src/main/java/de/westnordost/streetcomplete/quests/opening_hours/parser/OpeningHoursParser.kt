@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.opening_hours.parser
 
 import ch.poole.openinghoursparser.*
+import de.westnordost.streetcomplete.quests.opening_hours.adapter.OffDaysRow
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningHoursRow
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningMonthsRow
 import de.westnordost.streetcomplete.quests.opening_hours.adapter.OpeningWeekdaysRow
@@ -43,7 +44,11 @@ fun OpeningHoursRuleList.toOpeningHoursRows(): List<OpeningHoursRow>? {
             }
             currentMonths = months
         }
-        result.addAll(rule.createOpeningWeekdays())
+        if (rule.modifier != null && rule.modifier!!.isSimpleOff()) {
+            result.add(rule.createOffDays())
+        } else {
+            result.addAll(rule.createOpeningWeekdays())
+        }
     }
 
     return result
@@ -65,7 +70,7 @@ fun List<Rule>.isSupported(): Boolean =
     (allAreMonthBased() || noneAreMonthBased()) &&
     // this kind of opening hours specification likely require fix
     // anyway, it is not representable directly by SC
-    (!collidesWithItself())
+    (!weekdaysCollideWithAnother())
 
 fun Rule.isSupported(): Boolean =
     !isEmpty &&
@@ -79,10 +84,12 @@ fun Rule.isSupported(): Boolean =
     years == null &&
     // "05-08 08:00-11:00" not supported
     weeks == null &&
-    // "off" specified explicitly is incompatible with SC, see #276
-    (modifier == null || modifier?.modifier == RuleModifier.Modifier.OPEN) &&
-    // just "Mo-Fr" not supported
-    !times.isNullOrEmpty() &&
+    (
+        // for normal rules, only "Mo-Fr" not supported. "open" modifier is ok as long as it does not have a comment
+        (modifier == null || modifier!!.isSimpleOpen()) && !times.isNullOrEmpty() ||
+        // "off"/"closed" only compatible without comment and no times
+        (modifier != null && times.isNullOrEmpty() && modifier!!.isSimpleOff())
+    ) &&
     // multiple ranges, like "Jan-Feb, Jun" not supported
     (dates?.size ?: 0) <= 1 &&
     // all sub-elements must be supported if specified
@@ -93,6 +100,12 @@ fun Rule.isSupported(): Boolean =
 
 fun DateRange.isSupported(): Boolean =
     startDate.isSupported() && (endDate?.isSupported() ?: true) && interval == 0
+
+fun RuleModifier.isSimpleOpen(): Boolean =
+    comment == null && modifier == RuleModifier.Modifier.OPEN
+
+fun RuleModifier.isSimpleOff(): Boolean =
+    comment == null && (modifier == RuleModifier.Modifier.OFF || modifier == RuleModifier.Modifier.CLOSED)
 
 fun DateWithOffset.isSupported(): Boolean =
     // "Jan+" not supported
@@ -138,13 +151,18 @@ private fun List<Rule>.noneAreMonthBased(): Boolean = all { it.dates == null }
 /** For example, "Mo-Fr 10:00-12:00; We 14:00-16:00" self-collides: Wednesday is overwritten
  *  to only be open 14:00 to 16:00. A rule collides with another whenever the days overlap. When
  *  non-additive rules and additive rules mix, it becomes a bit difficult to find it out */
-@JvmName("collidesRuleList")
-fun List<Rule>.collidesWithItself(): Boolean {
+@JvmName("weekdaysCollideWithAnotherInRuleList")
+fun List<Rule>.weekdaysCollideWithAnother(): Boolean {
     for (i in 0 until size) {
         val rule1 = get(i)
         var additive = true
         for (j in i+1 until size) {
             val rule2 = get(j)
+            // off/closed rules may collide because they overwrite their whole weekdays anyway
+            // (because we do not support times for off-rules in StreetComplete)
+            if (rule2.modifier?.isSimpleOff() == true) {
+                continue
+            }
             // additive rules do not collide
             if (!rule2.isAdditive) {
                 additive = false
@@ -221,6 +239,11 @@ private fun Rule.createOpeningWeekdays(): List<OpeningWeekdaysRow> {
     val weekdays = WeekDayRangesAndHolidays(days, holidays).toWeekdays()
     val timeRanges = times!!.map { it.toTimeRange() }
     return timeRanges.map { OpeningWeekdaysRow(weekdays, it) }
+}
+
+private fun Rule.createOffDays(): OffDaysRow {
+    val weekdays = WeekDayRangesAndHolidays(days, holidays).toWeekdays()
+    return OffDaysRow(weekdays)
 }
 
 private fun WeekDayRangesAndHolidays.toWeekdays(): Weekdays {

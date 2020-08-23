@@ -25,9 +25,11 @@ class OpeningHoursParserAndGeneratorTest {
         reject("week 01-51 Mo 06:00-11:30") // week range indexing
         reject("week 01-51/4 Mo 06:00-11:30") // week range with lap weeks
 
-        reject("Tu-Fr 08:00-10:00; Mo off") // off modifier
         reject("Tu-Fr 08:00-10:00; Mo unknown") // unknown modifier
-        reject("Tu-Fr 08:00-10:00; Mo closed") // closed modifier
+        reject("Mo 09:00-20:00; PH open") // open only accepted with times
+        reject("Mo 09:00-20:00 open \"a comment\"") // open only accepted with times
+        reject("Mo 09:00-20:00; PH off \"a comment\"") // no comments supported
+        reject("Mo 09:00-20:00; PH closed \"a comment\"") // no comments supported
 
         reject("Mo-Fr") // just weekdays
         reject("PH") // just holidays
@@ -74,7 +76,6 @@ class OpeningHoursParserAndGeneratorTest {
     @Test fun `reject rules that are currently not supported but can be reasonably added`() {
         reject("24/7")
         reject("\"some comment\"")
-        reject("Mo-Fr 08:00-18:00; PH off") // PH off rule
         reject("Mar,Oct: Mo-Su 7:00-18:00") // multiple month ranges not supported
     }
 
@@ -174,6 +175,16 @@ class OpeningHoursParserAndGeneratorTest {
         accept("Jun Th 17:30-19:30, Jun Th 10:30-14:30; Jul Mo 08:30-11:00", "Jun Th 17:30-19:30,10:30-14:30; Jul Mo 08:30-11:00")
         // looping into next day
         accept("Mo-We 20:00-02:00, Th 08:00-16:00")
+        // off rules
+        accept("Tu-Fr 08:00-10:00; Mo off")
+        accept("Tu-Fr 08:00-10:00; Sa-Mo off")
+        accept("Tu-Fr 08:00-10:00; Mo closed", "Tu-Fr 08:00-10:00; Mo off")
+        accept("Mo-Fr 08:00-18:00; PH off")
+        accept("Tu-Fr 08:00-10:00; Mo closed", "Tu-Fr 08:00-10:00; Mo off")
+        accept("Tu-Fr 08:00-10:00, We 12:00-18:00; Mo off")
+        accept("Tu-Fr 08:00-10:00; Sa 12:00-18:00; PH,Mo off")
+        accept("Tu-Fr 08:00-10:00; Mo off, We 12:00-18:00")
+        accept("Tu-Fr 08:00-10:00; Mo off, We 12:00-18:00; PH off")
     }
 
     private fun parseAndGenerate(oh: String): String? {

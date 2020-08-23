@@ -23,8 +23,9 @@ import de.westnordost.streetcomplete.view.dialogs.RangePickedCallback
 import de.westnordost.streetcomplete.view.dialogs.RangePickerDialog
 
 sealed class OpeningHoursRow
-data class OpeningMonthsRow(var months: CircularSection? = null): OpeningHoursRow()
-data class OpeningWeekdaysRow(var weekdays: Weekdays?, var timeRange: TimeRange) : OpeningHoursRow()
+data class OpeningMonthsRow(var months: CircularSection): OpeningHoursRow()
+data class OpeningWeekdaysRow(var weekdays: Weekdays, var timeRange: TimeRange) : OpeningHoursRow()
+data class OffDaysRow(var weekdays: Weekdays): OpeningHoursRow()
 
 class AddOpeningHoursAdapter(
     private val context: Context,
