@@ -5,25 +5,21 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.core.view.isGone
-import androidx.core.view.updateLayoutParams
+import androidx.core.view.isInvisible
 
-import java.text.DateFormatSymbols
 import java.util.Locale
 
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.CountryInfo
+import de.westnordost.streetcomplete.quests.opening_hours.MonthsPickerDialog
 import de.westnordost.streetcomplete.quests.opening_hours.TimeRangePickerDialog
 import de.westnordost.streetcomplete.quests.opening_hours.WeekdaysPickerDialog
 import de.westnordost.streetcomplete.quests.opening_hours.model.*
 import de.westnordost.streetcomplete.quests.opening_hours.parser.toOpeningHoursRules
-import de.westnordost.streetcomplete.view.dialogs.RangePickedCallback
-import de.westnordost.streetcomplete.view.dialogs.RangePickerDialog
 
 sealed class OpeningHoursRow
-data class OpeningMonthsRow(var months: CircularSection): OpeningHoursRow()
+data class OpeningMonthsRow(var months: Months): OpeningHoursRow()
 data class OpeningWeekdaysRow(var weekdays: Weekdays, var timeRange: TimeRange) : OpeningHoursRow()
 data class OffDaysRow(var weekdays: Weekdays): OpeningHoursRow()
 
@@ -49,6 +45,7 @@ class AddOpeningHoursAdapter(
         return when (viewType) {
             MONTHS   -> MonthsViewHolder(inflater.inflate(R.layout.quest_times_month_row, parent, false))
             WEEKDAYS -> WeekdayViewHolder(inflater.inflate(R.layout.quest_times_weekday_row, parent, false))
+            OFFDAYS  -> OffDaysViewHolder(inflater.inflate(R.layout.quest_times_offday_row, parent, false))
             else     -> throw IllegalArgumentException("Unknown viewType $viewType")
         }
     }
@@ -56,17 +53,24 @@ class AddOpeningHoursAdapter(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val row = rows[position]
 
-        if (holder is MonthsViewHolder) {
-            holder.update(row as OpeningMonthsRow, isEnabled)
-        } else if (holder is WeekdayViewHolder) {
-            val prevRow = if (position > 0) rows[position -1] as? OpeningWeekdaysRow else null
-            holder.update(row as OpeningWeekdaysRow, prevRow, isEnabled)
+        when (holder) {
+            is MonthsViewHolder -> {
+                holder.update(row as OpeningMonthsRow, isEnabled)
+            }
+            is WeekdayViewHolder -> {
+                val prevRow = if (position > 0) rows[position -1] as? OpeningWeekdaysRow else null
+                holder.update(row as OpeningWeekdaysRow, prevRow, isEnabled)
+            }
+            is OffDaysViewHolder -> {
+                holder.update(row as OffDaysRow, isEnabled)
+            }
         }
     }
 
     override fun getItemViewType(position: Int) = when(rows[position]) {
         is OpeningMonthsRow -> MONTHS
         is OpeningWeekdaysRow -> WEEKDAYS
+        is OffDaysRow -> OFFDAYS
     }
 
     override fun getItemCount() = rows.size
@@ -77,7 +81,7 @@ class AddOpeningHoursAdapter(
         if (!isEnabled) return
 
         val row = rows[position]
-        require (row !is OpeningWeekdaysRow) { "May only directly remove weekdays, not months" }
+        require (row !is OpeningMonthsRow) { "May only directly remove weekdays, not months" }
 
         rows.removeAt(position)
         notifyItemRemoved(position)
@@ -98,8 +102,7 @@ class AddOpeningHoursAdapter(
     }
 
     fun addNewMonths() {
-        openSetMonthsRangeDialog(getMonthsRangeSuggestion()) { startIndex, endIndex ->
-            val months = CircularSection(startIndex, endIndex)
+        openSetMonthsRangeDialog(getMonthsSuggestion()) { months ->
             openSetWeekdaysDialog(getWeekdaysSuggestion(true)) { weekdays ->
                 openSetTimeRangeDialog(getOpeningHoursSuggestion()) { timeRange ->
                     addMonths(months, weekdays, timeRange)
@@ -108,15 +111,14 @@ class AddOpeningHoursAdapter(
         }
     }
 
-    fun addNewMonthsAsFirstRow() {
-        openSetMonthsRangeDialog(getMonthsRangeSuggestion()) { startIndex, endIndex ->
-            val months = CircularSection(startIndex, endIndex)
+    private fun addNewMonthsAsFirstRow() {
+        openSetMonthsRangeDialog(getMonthsSuggestion()) { months ->
             rows.add(0, OpeningMonthsRow(months))
             notifyItemInserted(0)
         }
     }
 
-    private fun addMonths(months: CircularSection, weekdays: Weekdays, timeRange: TimeRange) {
+    private fun addMonths(months: Months, weekdays: Weekdays, timeRange: TimeRange) {
         val insertIndex = itemCount
         rows.add(OpeningMonthsRow(months))
         rows.add(OpeningWeekdaysRow(weekdays, timeRange))
@@ -132,9 +134,28 @@ class AddOpeningHoursAdapter(
         }
     }
 
+    fun addNewHours() {
+        val rowAbove = if (rows.size > 0) rows[rows.size - 1] else null
+        if (rowAbove !is OpeningWeekdaysRow) return
+        openSetTimeRangeDialog(getOpeningHoursSuggestion()) { timeRange ->
+            addWeekdays(rowAbove.weekdays, timeRange) }
+    }
+
     private fun addWeekdays(weekdays: Weekdays, timeRange: TimeRange) {
         val insertIndex = itemCount
         rows.add(OpeningWeekdaysRow(weekdays, timeRange))
+        notifyItemInserted(insertIndex)
+    }
+
+    fun addNewOffDays() {
+        openSetWeekdaysDialog(null) { weekdays -> addOffDays(weekdays) }
+    }
+
+    private fun addOffDays(weekdays: Weekdays) {
+        if (weekdays.isSelectionEmpty()) return
+
+        val insertIndex = itemCount
+        rows.add(OffDaysRow(weekdays))
         notifyItemInserted(insertIndex)
     }
 
@@ -143,7 +164,7 @@ class AddOpeningHoursAdapter(
     fun changeToMonthsMode() {
         if (rows.isEmpty()) {
             addNewMonths()
-        } else {
+        } else if (rows.first() !is OpeningMonthsRow){
             addNewMonthsAsFirstRow()
         }
     }
@@ -154,52 +175,39 @@ class AddOpeningHoursAdapter(
 
     private inner class MonthsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val monthsLabel: TextView = itemView.findViewById(R.id.monthsLabel)
-        private val deleteButton: View = itemView.findViewById(R.id.deleteButton)
-
-        init {
-            deleteButton.isGone = true
-        }
-
-        private fun setVisibility(isVisible: Boolean) {
-            itemView.isGone = !isVisible
-            itemView.updateLayoutParams {
-                height = if(isVisible) LinearLayout.LayoutParams.WRAP_CONTENT else 0
-                width = if(isVisible) LinearLayout.LayoutParams.MATCH_PARENT else 0
-            }
-        }
 
         fun update(row: OpeningMonthsRow, isEnabled: Boolean) {
-            val months = row.months
-            setVisibility(months != null)
-            if (months != null) {
-                monthsLabel.text = months.toStringUsing(DateFormatSymbols.getInstance().months, "–")
-                monthsLabel.setOnClickListener {
-                    openSetMonthsRangeDialog(months) { startIndex, endIndex ->
-                        row.months = CircularSection(startIndex, endIndex)
-                        notifyItemChanged(adapterPosition)
-                    }
+            monthsLabel.text =
+                if (row.months.isSelectionEmpty()) "("+context.resources.getString(R.string.quest_openingHours_unspecified_range)+")"
+                else row.months.toLocalizedString()
+            monthsLabel.setOnClickListener {
+                openSetMonthsRangeDialog(row.months) { months ->
+                    row.months = months
+                    notifyItemChanged(adapterPosition)
                 }
-                monthsLabel.isEnabled = isEnabled
             }
+            monthsLabel.isClickable = isEnabled
         }
     }
 
-    private fun getMonthsRangeSuggestion(): CircularSection {
-        val months = getUnmentionedMonths()
-        return if (months.isEmpty()) {
-            CircularSection(0, 11)
-        } else months[0]
+    private fun getMonthsSuggestion(): Months {
+        val mentionedMonths = BooleanArray(Months.MONTHS_COUNT)
+        for(row in rows) {
+            if (row is OpeningMonthsRow) {
+                row.months.selection.forEachIndexed { index, b ->
+                    if (b) mentionedMonths[index] = true
+                }
+            }
+        }
+        val unmentionedMonths = BooleanArray(Months.MONTHS_COUNT)
+        mentionedMonths.forEachIndexed { index, b ->
+            unmentionedMonths[index] = !b
+        }
+        return Months(unmentionedMonths)
     }
 
-    private fun getUnmentionedMonths(): List<CircularSection> {
-        val allTheMonths = rows.mapNotNull { (it as? OpeningMonthsRow)?.months }
-        return NumberSystem(0, 11).complemented(allTheMonths)
-    }
-
-    private fun openSetMonthsRangeDialog(months: CircularSection, callback: RangePickedCallback) {
-        val monthNames = DateFormatSymbols.getInstance().months
-        val title = context.resources.getString(R.string.quest_openingHours_chooseMonthsTitle)
-        RangePickerDialog(context, monthNames, months.start, months.end, title, callback).show()
+    private fun openSetMonthsRangeDialog(months: Months, callback: (Months) -> Unit) {
+        MonthsPickerDialog.show(context, months, callback)
     }
 
     /* ------------------------------------ weekdays select --------------------------------------*/
@@ -219,7 +227,8 @@ class AddOpeningHoursAdapter(
         fun update(row: OpeningWeekdaysRow, rowBefore: OpeningWeekdaysRow?, isEnabled: Boolean) {
             weekdaysLabel.text =
                 if (rowBefore != null && row.weekdays == rowBefore.weekdays) ""
-                else row.weekdays?.toLocalizedString(context.resources) ?: ""
+                else if (row.weekdays.isSelectionEmpty()) "("+context.resources.getString(R.string.quest_openingHours_unspecified_range)+")"
+                else row.weekdays.toLocalizedString(context.resources)
             weekdaysLabel.setOnClickListener {
                 openSetWeekdaysDialog(row.weekdays) { weekdays ->
                     row.weekdays = weekdays
@@ -235,10 +244,40 @@ class AddOpeningHoursAdapter(
                 }
             }
 
-            deleteButton.isGone = !isEnabled
-            deleteButton.isEnabled = isEnabled
-            weekdaysLabel.isEnabled = isEnabled
-            hoursLabel.isEnabled = isEnabled
+            deleteButton.isInvisible = !isEnabled
+            deleteButton.isClickable = isEnabled
+            weekdaysLabel.isClickable = isEnabled
+            hoursLabel.isClickable = isEnabled
+        }
+    }
+
+    /* ------------------------------------ offdays select --------------------------------------*/
+
+    private inner class OffDaysViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val weekdaysLabel: TextView = itemView.findViewById(R.id.weekdaysLabel)
+        private val deleteButton: View = itemView.findViewById(R.id.deleteButton)
+
+        init {
+            deleteButton.setOnClickListener {
+                val index = adapterPosition
+                if (index != RecyclerView.NO_POSITION) remove(index)
+            }
+        }
+
+        fun update(row: OffDaysRow, isEnabled: Boolean) {
+            weekdaysLabel.text = row.weekdays.toLocalizedString(context.resources)
+            weekdaysLabel.setOnClickListener {
+                openSetWeekdaysDialog(row.weekdays) { weekdays ->
+                    if (!weekdays.isSelectionEmpty()) {
+                        row.weekdays = weekdays
+                        notifyItemChanged(adapterPosition)
+                    }
+                }
+            }
+
+            deleteButton.isInvisible = !isEnabled
+            deleteButton.isClickable = isEnabled
+            weekdaysLabel.isClickable = isEnabled
         }
     }
 
@@ -268,6 +307,7 @@ class AddOpeningHoursAdapter(
     companion object {
         private const val MONTHS = 0
         private const val WEEKDAYS = 1
+        private const val OFFDAYS = 2
 
         /* ------------------------------------- times select ----------------------------------------*/
 

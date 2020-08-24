@@ -119,7 +119,7 @@ object QuestModule
         AddMaxHeight(o), // OSRM and other routing engines
         AddRailwayCrossingBarrier(o, r), // useful for routing
         AddPostboxCollectionTimes(o, r),
-        AddOpeningHours(o, featureDictionaryFuture),
+        AddOpeningHours(o, featureDictionaryFuture, r),
         DetailRoadSurface(o), // used by BRouter, OsmAnd, OSRM, graphhopper
         AddBikeParkingCapacity(o, r), // used by cycle map layer on osm.org, OsmAnd
         AddOrchardProduce(o),
