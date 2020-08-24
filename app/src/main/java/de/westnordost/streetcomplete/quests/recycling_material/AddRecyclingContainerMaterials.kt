@@ -9,11 +9,9 @@ import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
-import de.westnordost.streetcomplete.data.elementfilter.getQuestPrintStatement
 import de.westnordost.streetcomplete.data.elementfilter.toGlobalOverpassBBox
 import de.westnordost.streetcomplete.data.meta.deleteCheckDatesForKey
 import de.westnordost.streetcomplete.data.meta.updateCheckDateForKey
-import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.changes.StringMapEntryModify
 import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 
@@ -34,7 +32,9 @@ class AddRecyclingContainerMaterials(
 
     /* Return recycling containers that do either not have any recycling:* tag yet, or if they do,
     *  haven't been touched for 2 years and are exclusively recycling types selectable in
-    *  StreetComplete*/
+    *  StreetComplete.
+    *  Also, exclude recycling containers right next to another because the user can't know if
+    *  certain materials are already recycled in that other container */
     private fun getOverpassQuery(bbox: BoundingBox) = """
         ${bbox.toGlobalOverpassBBox()}
         node[amenity = recycling][recycling_type = container] -> .all;
@@ -47,8 +47,13 @@ class AddRecyclingContainerMaterials(
         
         node.all${olderThan(2).toOverpassQLString()} -> .old;
         
-        (.without_recycling; (.old; - .with_unknown_recycling;););
-        ${getQuestPrintStatement()}
+        (.without_recycling; (.old; - .with_unknown_recycling;);) -> .recyclings;
+        
+        foreach .recyclings (
+            node[amenity = recycling][recycling_type = container](around: 20);
+            node._(if:count(nodes) == 1);
+            out meta geom;
+        );
     """.trimIndent()
 
     override fun isApplicableTo(element: Element): Boolean {
