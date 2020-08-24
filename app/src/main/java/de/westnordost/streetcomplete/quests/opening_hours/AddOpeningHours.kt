@@ -157,8 +157,7 @@ class AddOpeningHours (
             }
             is NoOpeningHoursSign  -> {
                 changes.addOrModify("opening_hours:signed", "no")
-                changes.deleteIfExists("opening_hours")
-                changes.updateCheckDateForKey("opening_hours")
+                // don't delete current opening hours: these may be the correct hours, they are just not visible anywhere on the door
             }
         }
     }
