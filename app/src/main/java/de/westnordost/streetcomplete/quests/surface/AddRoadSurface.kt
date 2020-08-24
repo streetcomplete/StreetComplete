@@ -17,7 +17,7 @@ class AddRoadSurface(o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStore
          and (
            !surface
            or surface ~ ${ANYTHING_UNPAVED.joinToString("|")} and surface older today -${r * 4} years
-           or surface older today -${r * 8} years
+           or surface older today -${r * 12} years
          )
          and (access !~ private|no or (foot and foot !~ private|no))
     """
