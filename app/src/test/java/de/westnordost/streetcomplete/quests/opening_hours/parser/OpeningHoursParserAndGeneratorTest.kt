@@ -35,7 +35,6 @@ class OpeningHoursParserAndGeneratorTest {
         reject("PH") // just holidays
 
         reject("Jan-Dec") // month range, without hours range
-        reject("Jan-Feb, Nov-Dec: Mo 08:30-09:00") // multiple ranges for dates
         reject("Jun+: Mo 08:30-09:00") // extended ranges for dates
         reject("Jun +Fr: Mo 08:30-09:00") // and all that other stuff...
         reject("Jun -Fr: Mo 08:30-09:00")
@@ -67,8 +66,6 @@ class OpeningHoursParserAndGeneratorTest {
         reject("Jan-Feb Mo 08:30-08:31;Oct-Jan Mo 08:30-10:30")
         reject("Th 17:30-19:30, Th 20:00-22:00; Th 01:00-02:00")
 
-        reject("Th 17:30-19:30; Jul-Sep Mo 17:00-19:00") // partially month based
-
         // looping into next day
         reject("Mo-We 20:00-02:00; Th 08:00-16:00")
     }
@@ -76,7 +73,6 @@ class OpeningHoursParserAndGeneratorTest {
     @Test fun `reject rules that are currently not supported but can be reasonably added`() {
         reject("24/7")
         reject("\"some comment\"")
-        reject("Mar,Oct: Mo-Su 7:00-18:00") // multiple month ranges not supported
     }
 
     @Test fun `accepted valid and supported rule`() {
@@ -133,8 +129,18 @@ class OpeningHoursParserAndGeneratorTest {
         accept("Jul-Sep Mo 17:00-19:00")
         accept("Sep-Feb Mo 17:00-19:00")
         accept("Jan-Feb Mo 17:00-19:00")
+        // multiple date ranges
+        accept("Mar,Oct Mo-Su 07:00-18:00")
+        accept("Mar,Oct-Feb Mo-Su 7:00-18:00", "Oct-Mar Mo-Su 07:00-18:00")
+        accept("Apr,Oct-Feb Mo-Su 07:00-18:00")
+        accept("Jun-Jul,Nov-Dec Mo 08:30-09:00")
+        accept("Jan-Jul,Nov-Dec Mo 08:30-09:00", "Nov-Jul Mo 08:30-09:00")
+        // partially month based
+        accept("Th 17:30-19:30; Jul-Sep Mo 17:00-19:00")
+        accept("Jul-Sep Mo 17:00-19:00; Th 17:30-19:30")
+
         // alltogether now
-        accept("Sep-Feb PH,Mo-We,Fr,Sa 15:00-18:00,20:00-02:00+")
+        accept("Jun,Sep-Feb PH,Mo-We,Fr,Sa 15:00-18:00,20:00-02:00+")
     }
 
     @Test fun `accepted valid and supported rules`() {
@@ -185,6 +191,7 @@ class OpeningHoursParserAndGeneratorTest {
         accept("Tu-Fr 08:00-10:00; Sa 12:00-18:00; PH,Mo off")
         accept("Tu-Fr 08:00-10:00; Mo off, We 12:00-18:00")
         accept("Tu-Fr 08:00-10:00; Mo off, We 12:00-18:00; PH off")
+        accept("Mo-Fr 08:00-10:00; We off") // off rules do not collide
     }
 
     private fun parseAndGenerate(oh: String): String? {

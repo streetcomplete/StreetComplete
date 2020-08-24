@@ -47,7 +47,7 @@ class Weekdays {
         }
 
         // the rest (special days). Currently only "PH"
-        for (i in 7 until data.size) {
+        for (i in WEEKDAY_COUNT until data.size) {
             if (!data[i]) continue
 
             if (!first)
@@ -65,7 +65,7 @@ class Weekdays {
     fun toCircularSections(): List<CircularSection> {
         val result = mutableListOf<CircularSection>()
         var currentStart: Int? = null
-        for (i in 0..6) {
+        for (i in 0 until WEEKDAY_COUNT) {
             if (currentStart == null) {
                 if (data[i]) currentStart = i
             } else {
@@ -76,7 +76,7 @@ class Weekdays {
             }
         }
         if (currentStart != null) {
-            result.add(CircularSection(currentStart, 6))
+            result.add(CircularSection(currentStart, WEEKDAY_COUNT-1))
         }
 
         return WEEKDAY_NUMBER_SYSTEM.merged(result)
@@ -101,8 +101,9 @@ class Weekdays {
         // in ISO 8601 order
         val OSM_ABBR_WEEKDAYS = arrayOf("Mo", "Tu", "We", "Th", "Fr", "Sa", "Su", "PH")
         const val PUBLIC_HOLIDAY = 7
+        const val WEEKDAY_COUNT = 7
 
-        private val WEEKDAY_NUMBER_SYSTEM = NumberSystem(0, 6)
+        private val WEEKDAY_NUMBER_SYSTEM = NumberSystem(0, WEEKDAY_COUNT-1)
 
         fun getNames(r: Resources): Array<String> {
             val symbols = DateFormatSymbols.getInstance()

@@ -26,14 +26,12 @@ fun main() = runBlocking {
     var containsWeeks = 0
     var selfColliding = 0
     var containsTwentyfourseven = 0
-    var multipleMonthRanges = 0
     var complicatedTimes = 0
     var complicatedDates = 0
     var complicatedHolidays = 0
     var complicatedWeekdayRanges = 0
     var noHours = 0
     var timeEvents = 0
-    var onlySomeMonthBased = 0
 
     // or go to https://sophox.org/#select%20%3Fopening_hours%20where%20%7B%3Felement%20osmt%3Aopening_hours%20%3Fopening_hours%7D
     // execute query, download as CSV and use
@@ -85,9 +83,6 @@ fun main() = runBlocking {
                         if(r.any { it.times == null && !it.isTwentyfourseven && it.modifier == null }) {
                             noHours++
                         }
-                        if(r.any { it.dates != null && it.dates!!.size > 1 }) {
-                            multipleMonthRanges++
-                        }
                         if(r.any { rule -> rule.holidays?.any { !it.isSupported() } == true }) {
                             complicatedHolidays++
                         }
@@ -102,9 +97,6 @@ fun main() = runBlocking {
                         }
                         if(r.any { rule -> rule.dates?.any { !it.isSupported() } == true}) {
                             complicatedDates++
-                        }
-                        if (!r.all { it.dates != null } && !r.all { it.dates == null }) {
-                            onlySomeMonthBased++
                         }
                         if (r.all { it.isSupported() } && r.weekdaysCollideWithAnother()) {
                             selfColliding++
@@ -131,16 +123,14 @@ fun main() = runBlocking {
     println("Of the unsupported opening hours, ")
     val unsupported = parsed - supported
     println("${percent(1.0 * containsTwentyfourseven / unsupported)} are \"24/7\"")
-    println("${percent(1.0 * containingOff / unsupported)} are unsupported rules with \"off\", \"closed\" etc. modifier")
+    println("${percent(1.0 * containingOff / unsupported)} rules with \"off\", \"closed\" etc. modifier with additional comment")
     println("${percent(1.0 * selfColliding / unsupported)} collide with themselves (likely an error)")
     println("${percent(1.0 * containsYears / unsupported)} contain years")
     println("${percent(1.0 * containsWeeks / unsupported)} contain week numbers")
-    println("${percent(1.0 * multipleMonthRanges / unsupported)} contain multiple month ranges in same rule")
     println("${percent(1.0 * complicatedHolidays / unsupported)} contain unsupported holiday definitions")
     println("${percent(1.0 * complicatedWeekdayRanges / unsupported)} contain unsupported weekday ranges")
     println("${percent(1.0 * timeEvents / unsupported)} contain time events like sunset, sunrise, dusk, ...")
     println("${percent(1.0 * complicatedTimes / unsupported)} contain otherwise unsupported time ranges")
-    println("${percent(1.0 * onlySomeMonthBased / unsupported)} only some rules are month based")
     println("${percent(1.0 * complicatedDates / unsupported)} contain unsupported date ranges")
     println("${percent(1.0 * noHours / unsupported)} contain no hours")
     println("${percent(1.0 * containsFallback / unsupported)} contain fallback rules")

@@ -32,18 +32,17 @@ fun OpeningHoursRuleList.toOpeningHoursRows(): List<OpeningHoursRow>? {
 
     val result = mutableListOf<OpeningHoursRow>()
 
-    var currentMonths: CircularSection? = null
+    var currentMonths: Months? = null
 
     for (rule in rules) {
         val dates = rule.dates
-        if (dates != null) {
-            val date = dates.single()
-            val months = date.toCircularSection()
-            if (months != currentMonths) {
-                result.add(OpeningMonthsRow(months))
-            }
-            currentMonths = months
+
+        val months = dates?.toMonths()
+        if (months != currentMonths) {
+            result.add(OpeningMonthsRow(months ?: Months()))
         }
+        currentMonths = months
+
         if (rule.modifier != null && rule.modifier!!.isSimpleOff()) {
             result.add(rule.createOffDays())
         } else {
@@ -66,8 +65,6 @@ fun OpeningHoursRuleList.toOpeningHoursRows(): List<OpeningHoursRow>? {
 fun List<Rule>.isSupported(): Boolean =
     // all rules must be supported
     all { it.isSupported() } &&
-    // month based rules are supported, but only if all rules are month-based
-    (allAreMonthBased() || noneAreMonthBased()) &&
     // this kind of opening hours specification likely require fix
     // anyway, it is not representable directly by SC
     (!weekdaysCollideWithAnother())
@@ -90,8 +87,6 @@ fun Rule.isSupported(): Boolean =
         // "off"/"closed" only compatible without comment and no times
         (modifier != null && times.isNullOrEmpty() && modifier!!.isSimpleOff())
     ) &&
-    // multiple ranges, like "Jan-Feb, Jun" not supported
-    (dates?.size ?: 0) <= 1 &&
     // all sub-elements must be supported if specified
     holidays?.all { it.isSupported() } ?: true &&
     days?.all { it.isSupported() } ?: true &&
@@ -141,10 +136,6 @@ fun TimeSpan.isSupported(): Boolean =
     startEvent == null && endEvent == null &&
     interval == 0 &&
     start != TimeSpan.UNDEFINED_TIME
-
-private fun List<Rule>.allAreMonthBased(): Boolean = all { it.dates != null }
-private fun List<Rule>.noneAreMonthBased(): Boolean = all { it.dates == null }
-
 
 /* ------------------------------ Collision/Intersection checking ------------------------------- */
 
@@ -254,7 +245,7 @@ private fun WeekDayRangesAndHolidays.toWeekdays(): Weekdays {
             if (!range.loops) { // ranges like Tuesday-Saturday
                 for (i in range.start..range.end) dayData[i] = true
             } else { // ranges like Saturday-Tuesday
-                for (i in range.start..6) dayData[i] = true
+                for (i in range.start until Weekdays.WEEKDAY_COUNT) dayData[i] = true
                 for (i in 0..range.end) dayData[i] = true
             }
         }
@@ -263,6 +254,20 @@ private fun WeekDayRangesAndHolidays.toWeekdays(): Weekdays {
         dayData[PUBLIC_HOLIDAY] = true
     }
     return Weekdays(dayData)
+}
+
+private fun List<DateRange>.toMonths(): Months {
+    val monthsData = BooleanArray(Months.MONTHS_COUNT) { false }
+    for (dateRange in this) {
+        val range = dateRange.toCircularSection()
+        if (!range.loops) { // ranges like Jan-Feb
+            for (i in range.start..range.end) monthsData[i] = true
+        } else { // ranges like Oct-Jan
+            for (i in range.start until Months.MONTHS_COUNT) monthsData[i] = true
+            for (i in 0..range.end) monthsData[i] = true
+        }
+    }
+    return Months(monthsData)
 }
 
 private fun TimeSpan.toTimeRange() = TimeRange(

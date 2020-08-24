@@ -12,22 +12,22 @@ import de.westnordost.streetcomplete.quests.opening_hours.model.Weekdays.Compani
 fun List<OpeningHoursRow>.toOpeningHoursRules(): OpeningHoursRuleList {
     val rules = mutableListOf<Rule>()
 
-    var currentDateRange: DateRange? = null
+    var currentDateRanges: List<DateRange>? = null
     var currentWeekdays: WeekDayRangesAndHolidays? = null
     var currentTimeSpans: MutableList<TimeSpan> = mutableListOf()
 
     for (row in this) {
         if (row is OpeningMonthsRow) {
-            val dateRange = row.months.toDateRange()
+            val dateRanges = row.months.toDateRanges()
 
             // new rule if we were constructing one
             if (currentWeekdays != null) {
-                rules.add(createRule(currentDateRange, currentWeekdays.weekdayRanges, currentWeekdays.holidays, currentTimeSpans))
+                rules.add(createRule(currentDateRanges, currentWeekdays.weekdayRanges, currentWeekdays.holidays, currentTimeSpans))
                 currentWeekdays = null
                 currentTimeSpans = mutableListOf()
             }
 
-            currentDateRange = dateRange
+            currentDateRanges = dateRanges
         } else if (row is OpeningWeekdaysRow) {
             val timeSpan = row.timeRange.toTimeSpan()
             val weekdays =
@@ -36,7 +36,7 @@ fun List<OpeningHoursRow>.toOpeningHoursRules(): OpeningHoursRuleList {
 
             // new weekdays -> new rule
             if (currentWeekdays != null && weekdays != currentWeekdays) {
-                rules.add(createRule(currentDateRange, currentWeekdays.weekdayRanges, currentWeekdays.holidays, currentTimeSpans))
+                rules.add(createRule(currentDateRanges, currentWeekdays.weekdayRanges, currentWeekdays.holidays, currentTimeSpans))
                 currentTimeSpans = mutableListOf()
             }
 
@@ -45,17 +45,17 @@ fun List<OpeningHoursRow>.toOpeningHoursRules(): OpeningHoursRuleList {
         } else if (row is OffDaysRow) {
             // new rule if we were constructing one
             if (currentWeekdays != null) {
-                rules.add(createRule(currentDateRange, currentWeekdays.weekdayRanges, currentWeekdays.holidays, currentTimeSpans))
+                rules.add(createRule(currentDateRanges, currentWeekdays.weekdayRanges, currentWeekdays.holidays, currentTimeSpans))
                 currentWeekdays = null
                 currentTimeSpans = mutableListOf()
             }
 
             val weekdays = row.weekdays.toWeekDayRangesAndHolidays()
-            rules.add(createOffRule(currentDateRange, weekdays.weekdayRanges, weekdays.holidays))
+            rules.add(createOffRule(currentDateRanges, weekdays.weekdayRanges, weekdays.holidays))
         }
     }
     if (currentWeekdays != null) {
-        rules.add(createRule(currentDateRange, currentWeekdays.weekdayRanges, currentWeekdays.holidays, currentTimeSpans))
+        rules.add(createRule(currentDateRanges, currentWeekdays.weekdayRanges, currentWeekdays.holidays, currentTimeSpans))
     }
 
     // if any rule collides with another, f.e. "Mo-Fr 10:00-12:00; We 14:00-16:00", switch to
@@ -73,25 +73,25 @@ fun List<OpeningHoursRow>.toOpeningHoursRules(): OpeningHoursRuleList {
 }
 
 private fun createRule(
-    dateRange: DateRange?,
+    dateRanges: List<DateRange>?,
     weekDayRanges: List<WeekDayRange>?,
     holidays: List<Holiday>?,
     timeSpans: List<TimeSpan>) = Rule().also { r ->
 
     require(timeSpans.isNotEmpty())
 
-    r.dates = dateRange?.let { mutableListOf(it) }
+    r.dates = dateRanges?.toMutableList()
     r.days = weekDayRanges?.toMutableList()
     r.holidays = holidays?.toMutableList()
     r.times = timeSpans.toMutableList()
 }
 
 private fun createOffRule(
-    dateRange: DateRange?,
+    dateRanges: List<DateRange>?,
     weekDayRanges: List<WeekDayRange>?,
     holidays: List<Holiday>?) = Rule().also { r ->
 
-    r.dates = dateRange?.let { mutableListOf(it) }
+    r.dates = dateRanges?.toMutableList()
     r.days = weekDayRanges?.toMutableList()
     r.holidays = holidays?.toMutableList()
     r.modifier = RuleModifier().also { it.modifier = RuleModifier.Modifier.OFF }
@@ -115,7 +115,7 @@ private fun Weekdays.toWeekDayRangesAndHolidays(): WeekDayRangesAndHolidays {
 }
 
 private fun CircularSection.toWeekDayRanges(): List<WeekDayRange> {
-    val size = NumberSystem(0, 6).getSize(this)
+    val size = NumberSystem(0, Weekdays.WEEKDAY_COUNT-1).getSize(this)
     // if the range is very short (f.e. Mo-Tu), rather save it as Mo,Tu
     return if (size == 2) {
         listOf(
@@ -128,6 +128,10 @@ private fun CircularSection.toWeekDayRanges(): List<WeekDayRange> {
             it.endDay = if (start != end) WeekDay.values()[end] else null
         })
     }
+}
+
+private fun Months.toDateRanges(): List<DateRange> {
+    return toCircularSections().map { it.toDateRange() }
 }
 
 private fun CircularSection.toDateRange() = DateRange().also {
