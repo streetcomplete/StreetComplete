@@ -20,6 +20,8 @@ class Months {
 
     fun isSelectionEmpty() = data.all { !it }
 
+    override fun toString() = toStringUsing(OSM_ABBR_MONTHS, ",", "-")
+
     fun toLocalizedString() = toStringUsing(getNames(), ", ", "–")
 
     fun toStringUsing(names: Array<String>, separator: String, range: String): String {
@@ -63,6 +65,7 @@ class Months {
     companion object {
 
         const val MONTHS_COUNT = 12
+        val OSM_ABBR_MONTHS = arrayOf("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
         val MONTHS_NUMBER_SYSTEM = NumberSystem(0, MONTHS_COUNT-1)
 
         fun getNames(): Array<String> {

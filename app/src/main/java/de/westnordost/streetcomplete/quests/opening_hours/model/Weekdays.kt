@@ -82,13 +82,6 @@ class Weekdays {
         return WEEKDAY_NUMBER_SYSTEM.merged(result)
     }
 
-    fun intersects(other: Weekdays): Boolean {
-        for (i in data.indices) {
-            if (data[i] && other.data[i]) return true
-        }
-        return false
-    }
-
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (other !is Weekdays) return false
