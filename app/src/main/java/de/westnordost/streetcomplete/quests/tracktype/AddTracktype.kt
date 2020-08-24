@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.tracktype
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.ANYTHING_UNPAVED
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
@@ -15,6 +16,7 @@ class AddTracktype(o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStore)
         and (
           !tracktype
           or tracktype != grade1 and tracktype older today -${r * 4} years
+          or surface ~ ${ANYTHING_UNPAVED.joinToString("|")} and tracktype older today -${r * 4} years
           or tracktype older today -${r * 8} years
         )
         and (access !~ private|no or (foot and foot !~ private|no))
