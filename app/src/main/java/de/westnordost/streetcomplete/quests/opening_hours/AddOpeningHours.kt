@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.quests.opening_hours
 
-import android.util.Log
 import de.westnordost.osmapi.map.data.BoundingBox
 import de.westnordost.osmapi.map.data.Element
 import de.westnordost.osmfeatures.FeatureDictionary
@@ -12,7 +11,6 @@ import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.elementfilter.ElementFiltersParser
 import de.westnordost.streetcomplete.data.elementfilter.getQuestPrintStatement
 import de.westnordost.streetcomplete.data.elementfilter.toGlobalOverpassBBox
-import de.westnordost.streetcomplete.data.meta.updateCheckDateForKey
 import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.ktx.containsAny
 import de.westnordost.streetcomplete.quests.opening_hours.parser.toOpeningHoursRows
@@ -144,16 +142,16 @@ class AddOpeningHours (
         when(answer) {
             is RegularOpeningHours -> {
                 changes.updateWithCheckDate("opening_hours", answer.hours.toString())
-                changes.deleteIfExists("opening_hours:signed")
+                changes.deleteIfPreviously("opening_hours:signed", "no")
             }
             is AlwaysOpen          -> {
                 changes.updateWithCheckDate("opening_hours", "24/7")
-                changes.deleteIfExists("opening_hours:signed")
+                changes.deleteIfPreviously("opening_hours:signed", "no")
             }
             is DescribeOpeningHours -> {
                 val text = answer.text.replace("\"","")
                 changes.updateWithCheckDate("opening_hours", "\"$text\"")
-                changes.deleteIfExists("opening_hours:signed")
+                changes.deleteIfPreviously("opening_hours:signed", "no")
             }
             is NoOpeningHoursSign  -> {
                 changes.addOrModify("opening_hours:signed", "no")
@@ -172,4 +170,8 @@ class AddOpeningHours (
 
     private fun hasFeatureName(tags: Map<String, String>?): Boolean =
         tags?.let { featureDictionaryFuture.get().byTags(it).find().isNotEmpty() } ?: false
+}
+
+private fun StringMapChangesBuilder.deleteIfPreviously(key: String, previousValue: String) {
+    if (getPreviousValue(key) == previousValue) delete(key)
 }
