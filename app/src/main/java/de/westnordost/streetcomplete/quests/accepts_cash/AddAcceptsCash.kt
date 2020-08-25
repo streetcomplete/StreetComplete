@@ -57,7 +57,7 @@ class AddAcceptsCash(
             R.string.quest_accepts_cash_title
 
     override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> {
-        val name = tags["name"] ?: tags["brand"] ?: featureName.value
+        val name = tags["name"] ?: tags["brand"]
         return if (name != null) arrayOf(name,featureName.value.toString()) else arrayOf()
     }
     
