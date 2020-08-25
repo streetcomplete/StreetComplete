@@ -100,7 +100,7 @@ class AddOpeningHours (
             R.string.quest_openingHours_no_name_title
 
     override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> {
-        val name = tags["name"] ?: tags["brand"] ?: featureName.value
+        val name = tags["name"] ?: tags["brand"]
         return if (name != null) arrayOf(name,featureName.value.toString()) else arrayOf()
     }
 
