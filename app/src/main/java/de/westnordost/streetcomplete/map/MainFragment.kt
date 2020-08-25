@@ -51,10 +51,7 @@ import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementPolylinesGe
 import de.westnordost.streetcomplete.data.osm.osmquest.OsmQuest
 import de.westnordost.streetcomplete.data.osm.splitway.SplitPolylineAtPosition
 import de.westnordost.streetcomplete.data.quest.*
-import de.westnordost.streetcomplete.ktx.childFragmentManagerOrNull
-import de.westnordost.streetcomplete.ktx.getLocationInWindow
-import de.westnordost.streetcomplete.ktx.toPx
-import de.westnordost.streetcomplete.ktx.toast
+import de.westnordost.streetcomplete.ktx.*
 import de.westnordost.streetcomplete.location.FineLocationManager
 import de.westnordost.streetcomplete.location.LocationRequestFragment
 import de.westnordost.streetcomplete.location.LocationState
@@ -422,7 +419,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
     /* --------------------------------------- Location ----------------------------------------- */
 
     private fun updateLocationAvailability() {
-        if (LocationUtil.isLocationOn(activity)) {
+        if (requireContext().getSystemService<LocationManager>()!!.isLocationEnabledCompat) {
             onLocationIsEnabled()
         } else {
             onLocationIsDisabled()
