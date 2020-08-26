@@ -56,21 +56,8 @@ class AddRecyclingContainerMaterials(
         );
     """.trimIndent()
 
-    override fun isApplicableTo(element: Element): Boolean {
-        val tags = element.tags
-        return tags != null
-            && tags["amenity"] == "recycling"
-            && tags["recycling_type"] == "container"
-            && (
-                tags.none { it.key.startsWith("recycling:") }
-                || (
-                    olderThan(2).matches(element)
-                    && tags.filter { (key, value) ->
-                        key.startsWith("recycling:") && value == "yes"
-                    }.all { allKnownMaterials.contains(it.key) }
-                )
-            )
-    }
+    // can't determine by tags alone because we need info about geometry surroundings
+    override fun isApplicableTo(element: Element): Boolean? = null
 
     private fun olderThan(years: Int) =
         TagOlderThan("recycling", RelativeDate(-(r * 365 * years).toFloat()))
