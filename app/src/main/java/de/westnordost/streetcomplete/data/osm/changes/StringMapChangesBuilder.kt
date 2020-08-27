@@ -17,6 +17,12 @@ class StringMapChangesBuilder(private val source: Map<String, String>) {
         }
     }
 
+    fun deleteIfPreviously(key: String, valueBefore: String) {
+        if (source[key] == valueBefore) {
+            delete(key)
+        }
+    }
+
     fun add(key: String, value: String) {
         require(!source.containsKey(key)) { "The key '$key' already exists in the map." }
         val change = StringMapEntryAdd(key, value)
