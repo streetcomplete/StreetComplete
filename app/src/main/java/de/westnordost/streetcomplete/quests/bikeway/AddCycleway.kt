@@ -93,8 +93,9 @@ class AddCycleway(
             way
                 [highway ~ '^(primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified)$']
                 [motorroad != yes]
+                [bicycle_road != yes][cyclestreet != yes]
                 [area != yes]
-                [bicycle != no]
+                [bicycle != no][bicycle != designated]
                 [access !~ '^(private|no)$']
                 [bicycle != use_sidepath]
                 ['bicycle:backward' != use_sidepath]['bicycle:forward' != use_sidepath]
