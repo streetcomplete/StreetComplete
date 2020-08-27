@@ -1,13 +1,18 @@
 package de.westnordost.streetcomplete.quests.accepts_cash
 
+import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.osm.osmquest.SimpleOverpassQuestType
 import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.mapdata.OverpassMapDataAndGeometryApi
 import de.westnordost.streetcomplete.quests.YesNoQuestAnswerFragment
+import java.util.concurrent.FutureTask
 
-class AddAcceptsCash(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType<Boolean>(o) {
+class AddAcceptsCash(
+    o: OverpassMapDataAndGeometryApi,
+    private val featureDictionaryFuture: FutureTask<FeatureDictionary>
+) : SimpleOverpassQuestType<Boolean>(o) {
     private val amenity = listOf(
         "bar", "cafe", "fast_food", "food_court", "ice_cream", "pub", "biergarten",
         "restaurant", "cinema", "nightclub", "planetarium", "theatre", "marketplace",
@@ -51,11 +56,23 @@ class AddAcceptsCash(o: OverpassMapDataAndGeometryApi) : SimpleOverpassQuestType
             "SE"
     )
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_accepts_cash_title
+    override fun getTitle(tags: Map<String, String>) = 
+        if (hasFeatureName(tags) && !tags.containsKey("brand"))
+            R.string.quest_accepts_cash_type_title
+        else
+            R.string.quest_accepts_cash_title
 
+    override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> {
+        val name = tags["name"] ?: tags["brand"]
+        return if (name != null) arrayOf(name,featureName.value.toString()) else arrayOf()
+    }
+    
     override fun createForm() = YesNoQuestAnswerFragment()
 
     override fun applyAnswerTo(answer: Boolean, changes: StringMapChangesBuilder) {
         changes.add("payment:cash", if(answer) "yes" else "no")
     }
+    
+    private fun hasFeatureName(tags: Map<String, String>?): Boolean =
+        tags?.let { featureDictionaryFuture.get().byTags(it).find().isNotEmpty() } ?: false
 }
