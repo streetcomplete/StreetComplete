@@ -32,8 +32,10 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
     }
 
     private val likelyNoBicycleContraflow = ElementFiltersParser().parse("""
-            ways with oneway:bicycle != no and
-            (oneway ~ yes|-1 and highway ~ primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified or junction=roundabout)
+            ways with oneway:bicycle != no and (
+                oneway ~ yes|-1 and highway ~ primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified
+                or junction = roundabout
+            )
         """)
 
     private var streetSideRotater: StreetSideRotater? = null
@@ -163,7 +165,7 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
     }
 
     private fun getCyclewayItems(isRight: Boolean): List<Cycleway> {
-        val values = Cycleway.displayValues.toMutableList()
+        val values = CYCLEWAY_DISPLAY_VALUES.toMutableList()
         // different wording for a contraflow lane that is marked like a "shared" lane (just bicycle pictogram)
         if (isOneway && isReverseSideRight == isRight) {
             Collections.replaceAll(values, Cycleway.PICTOGRAMS, Cycleway.NONE_NO_ONEWAY)
@@ -196,3 +198,16 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
         private const val DEFINE_BOTH_SIDES = "define_both_sides"
     }
 }
+
+private val CYCLEWAY_DISPLAY_VALUES = listOf(
+    Cycleway.EXCLUSIVE_LANE,
+    Cycleway.ADVISORY_LANE,
+    Cycleway.TRACK,
+    Cycleway.NONE,
+    Cycleway.PICTOGRAMS,
+    Cycleway.BUSWAY,
+    Cycleway.SIDEWALK_EXPLICIT,
+    Cycleway.SIDEWALK_OK,
+    Cycleway.DUAL_LANE,
+    Cycleway.DUAL_TRACK
+)
