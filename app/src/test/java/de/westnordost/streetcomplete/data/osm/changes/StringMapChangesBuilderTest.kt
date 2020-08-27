@@ -25,6 +25,27 @@ class StringMapChangesBuilderTest {
         builder.deleteIfExists("does not exist")
     }
 
+    @Test fun `deleteIfPreviously non-existing does not fail`() {
+        val builder = StringMapChangesBuilder(mapOf("exists" to "like this"))
+        builder.deleteIfPreviously("does not exist", "a")
+        assertTrue(builder.create().isEmpty())
+    }
+
+    @Test fun `deleteIfPreviously key with different value does not fail`() {
+        val builder = StringMapChangesBuilder(mapOf("a" to "b"))
+        builder.deleteIfPreviously("a", "c")
+        assertTrue(builder.create().isEmpty())
+    }
+
+    @Test fun `deleteIfPreviously key with correct value deletes it`() {
+        val builder = StringMapChangesBuilder(mapOf("a" to "b"))
+        builder.deleteIfPreviously("a", "b")
+        assertEquals(
+            StringMapEntryDelete("a", "b"),
+            builder.create().changes.single()
+        )
+    }
+
     @Test fun add() {
         val builder = StringMapChangesBuilder(mapOf("exists" to "like this"))
         builder.add("does not exist", "but now")
