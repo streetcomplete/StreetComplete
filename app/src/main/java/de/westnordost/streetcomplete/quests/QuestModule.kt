@@ -124,7 +124,7 @@ object QuestModule
         AddBikeParkingCapacity(o, r), // used by cycle map layer on osm.org, OsmAnd
         AddOrchardProduce(o),
         AddBuildingType(o), // because housenumber, building levels etc. depend on it
-        AddCycleway(o), // SLOW QUERY
+        AddCycleway(o,r), // SLOW QUERY
         AddSidewalk(o), // SLOW QUERY
         AddProhibitedForPedestrians(o), // uses info from AddSidewalk quest, should be after it
         AddCrossingType(o, r),
