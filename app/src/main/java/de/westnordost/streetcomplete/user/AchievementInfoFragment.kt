@@ -19,6 +19,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.user.achievements.Achievement
+import de.westnordost.streetcomplete.ktx.getAppCompatDrawable
 import de.westnordost.streetcomplete.ktx.tryStartActivity
 import de.westnordost.streetcomplete.util.Transforms
 import de.westnordost.streetcomplete.util.animateFrom
@@ -113,7 +114,7 @@ class AchievementInfoFragment : Fragment(R.layout.fragment_achievement_info) {
     /* ----------------------------------- Animating in and out --------------------------------- */
 
     private fun bind(achievement: Achievement, level: Int, showLinks: Boolean) {
-        achievementIconView.icon = resources.getDrawable(achievement.icon)
+        achievementIconView.icon = requireContext().getAppCompatDrawable(achievement.icon)
         achievementIconView.level = level
         achievementTitleText.setText(achievement.title)
 
