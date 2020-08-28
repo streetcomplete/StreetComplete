@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:rotation="-45"
         android:alpha="0"
-        android:src="@drawable/scissors_animation"/>
+        app:srcCompat="@drawable/scissors_animation"/>
 
     <de.westnordost.streetcomplete.view.SlidingRelativeLayout
         android:layout_width="@dimen/quest_form_width"

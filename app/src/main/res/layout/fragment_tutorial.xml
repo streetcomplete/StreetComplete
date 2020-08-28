@@ -146,12 +146,12 @@
             android:id="@+id/checkmarkView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_animated_checkmark_circle"
-            app:layout_constraintTop_toTopOf="@id/mapImageView"
-            app:layout_constraintStart_toStartOf="@id/mapImageView"
-            app:layout_constraintEnd_toEndOf="@id/mapImageView"
+            android:alpha="0"
             app:layout_constraintBottom_toBottomOf="@id/mapImageView"
-            android:alpha="0"/>
+            app:layout_constraintEnd_toEndOf="@id/mapImageView"
+            app:layout_constraintStart_toStartOf="@id/mapImageView"
+            app:layout_constraintTop_toTopOf="@id/mapImageView"
+            app:srcCompat="@drawable/ic_animated_checkmark_circle" />
 
         <FrameLayout
             android:id="@+id/tutorialTextContainer"
