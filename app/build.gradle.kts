@@ -38,6 +38,7 @@ android {
         versionCode = 2800
         versionName = "28.0-beta1"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
     }
 
     buildTypes {
