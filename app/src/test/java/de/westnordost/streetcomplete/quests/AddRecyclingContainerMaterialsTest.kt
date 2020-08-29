@@ -31,52 +31,6 @@ class AddRecyclingContainerMaterialsTest {
 
     private lateinit var questType: AddRecyclingContainerMaterials
 
-    @Test fun `is not applicable to because it is not a container`() {
-        val element = OsmNode(1,1,0.0,0.0, mapOf(
-            "amenity" to "recycling",
-            "recycling_type" to "centre"
-        ))
-        assertFalse(questType.isApplicableTo(element))
-    }
-
-    @Test fun `is not applicable because a recycling material is already set`() {
-        val element = OsmNode(1,1,0.0,0.0, mapOf(
-            "amenity" to "recycling",
-            "recycling_type" to "container",
-            "recycling:paper" to "yes"
-        ))
-        assertFalse(questType.isApplicableTo(element))
-    }
-
-    @Test fun `is applicable`() {
-        val element = OsmNode(1,1,0.0,0.0, mapOf(
-            "amenity" to "recycling",
-            "recycling_type" to "container"
-        ))
-        assertTrue(questType.isApplicableTo(element))
-    }
-
-    @Test fun `is applicable because a recycling material is already set but its older than 2 years`() {
-        val element = OsmNode(1,1,0.0,0.0, mapOf(
-            "amenity" to "recycling",
-            "recycling_type" to "container",
-            "recycling:paper" to "yes",
-            "recycling:something_else" to "no",
-            "check_date:recycling" to "2007-11-11"
-        ), null, "2007-11-11".toCheckDate())
-        assertTrue(questType.isApplicableTo(element))
-    }
-
-    @Test fun `is not applicable because its older than 2 years but there is an unknown recycling material`() {
-        val element = OsmNode(1,1, 0.0,0.0, mapOf(
-            "amenity" to "recycling",
-            "recycling_type" to "container",
-            "recycling:something_unknown" to "yes",
-            "check_date:recycling" to "2007-11-11"
-        ), null, "2007-11-11".toCheckDate())
-        assertFalse(questType.isApplicableTo(element))
-    }
-
     @Test fun `apply normal answer`() {
         questType.verifyAnswer(
             RecyclingMaterials(listOf(SHOES, PAPER)),
