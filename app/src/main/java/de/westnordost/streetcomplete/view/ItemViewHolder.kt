@@ -1,10 +1,10 @@
 package de.westnordost.streetcomplete.view
 
-import androidx.recyclerview.widget.RecyclerView
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
-
+import androidx.core.view.isGone
+import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.R
 
 class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -41,7 +41,7 @@ class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             textView?.text = null
 
         val descriptionId = item.descriptionId
-        descriptionView?.visibility = if (descriptionId != null) View.VISIBLE else View.GONE
+        descriptionView?.isGone = descriptionId == null
         if (descriptionId != null)
             descriptionView?.setText(descriptionId)
         else

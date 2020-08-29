@@ -11,12 +11,17 @@ import de.westnordost.streetcomplete.data.osm.changes.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.elementfilter.ElementFiltersParser
 import de.westnordost.streetcomplete.data.elementfilter.getQuestPrintStatement
 import de.westnordost.streetcomplete.data.elementfilter.toGlobalOverpassBBox
+import de.westnordost.streetcomplete.data.meta.updateWithCheckDate
 import de.westnordost.streetcomplete.ktx.containsAny
+import de.westnordost.streetcomplete.quests.opening_hours.parser.toOpeningHoursRows
+import de.westnordost.streetcomplete.quests.opening_hours.parser.toOpeningHoursRules
+import de.westnordost.streetcomplete.settings.ResurveyIntervalsStore
 import java.util.concurrent.FutureTask
 
 class AddOpeningHours (
     private val overpassApi: OverpassMapDataAndGeometryApi,
-    private val featureDictionaryFuture: FutureTask<FeatureDictionary>
+    private val featureDictionaryFuture: FutureTask<FeatureDictionary>,
+    private val r: ResurveyIntervalsStore
 ) : OsmElementQuestType<OpeningHoursAnswer> {
 
     /* See also AddWheelchairAccessBusiness and AddPlaceName, which has a similar list and is/should
@@ -24,12 +29,14 @@ class AddOpeningHours (
     private val filter by lazy { ElementFiltersParser().parse("""
         nodes, ways, relations with
         (
-         shop and shop !~ no|vacant
-         or amenity = bicycle_parking and bicycle_parking = building
-         or amenity = parking and parking = multi-storey
-         or amenity = recycling and recycling_type = centre
-         or tourism = information and information = office
-         or """.trimIndent() +
+          (
+            (
+              shop and shop !~ no|vacant
+              or amenity = bicycle_parking and bicycle_parking = building
+              or amenity = parking and parking = multi-storey
+              or amenity = recycling and recycling_type = centre
+              or tourism = information and information = office
+              or """.trimIndent() +
 
         // The common list is shared by the name quest, the opening hours quest and the wheelchair quest.
         // So when adding other tags to the common list keep in mind that they need to be appropriate for all those quests.
@@ -79,10 +86,14 @@ class AddOpeningHours (
                 "electronics_repair", "key_cutter", "stonemason"
             )
         ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n or ") + "\n" + """
+            )
+            and !opening_hours
+          )
+          or opening_hours older today -${r * 1} years
         )
-         and (name or brand or noname = yes)
-         and !opening_hours and opening_hours:signed != no
-         and (access !~ private|no)
+        and (access !~ private|no)
+        and (name or brand or noname = yes)
+        and opening_hours:signed != no
         """.trimIndent()
     )}
 
@@ -90,37 +101,69 @@ class AddOpeningHours (
     override val wikiLink = "Key:opening_hours"
     override val icon = R.drawable.ic_quest_opening_hours
 
-    override fun getTitle(tags: Map<String, String>) =
-        if (hasProperName(tags))
-            R.string.quest_openingHours_name_title
-        else
-            R.string.quest_openingHours_no_name_title
+    override fun getTitle(tags: Map<String, String>): Int {
+        val hasProperName = hasProperName(tags)
+        val hasNonBrandFeatureName = hasFeatureName(tags) && !tags.containsKey("brand")
+        // treat invalid opening hours like it is not set at all
+        val hasValidOpeningHours = tags["opening_hours"]?.toOpeningHoursRules() != null
+        return if (hasValidOpeningHours) {
+            when {
+                !hasProperName          -> R.string.quest_openingHours_resurvey_no_name_title
+                !hasNonBrandFeatureName -> R.string.quest_openingHours_resurvey_name_title
+                else                    -> R.string.quest_openingHours_resurvey_name_type_title
+            }
+        } else {
+            when {
+                !hasProperName          -> R.string.quest_openingHours_no_name_title
+                !hasNonBrandFeatureName -> R.string.quest_openingHours_name_title
+                else                    -> R.string.quest_openingHours_name_type_title
+            }
+        }
+    }
 
     override fun getTitleArgs(tags: Map<String, String>, featureName: Lazy<String?>): Array<String> {
-        val name = tags["name"] ?: tags["brand"] ?: featureName.value
-        return if (name != null) arrayOf(name) else arrayOf()
+        val name = tags["name"] ?: tags["brand"]
+        return if (name != null) arrayOf(name,featureName.value.toString()) else arrayOf()
     }
 
     override fun download(bbox: BoundingBox, handler: (element: Element, geometry: ElementGeometry?) -> Unit): Boolean {
         return overpassApi.query(getOverpassQuery(bbox)) { element, geometry ->
-            // only show places that can be named somehow
-            if (hasName(element.tags)) handler(element, geometry)
+            if (isApplicableTo(element)) handler(element, geometry)
         }
     }
 
-    override fun isApplicableTo(element: Element) =
-        filter.matches(element) && hasName(element.tags)
+    override fun isApplicableTo(element: Element) : Boolean {
+        if (!filter.matches(element)) return false
+        // only show places that can be named somehow
+        if (!hasName(element.tags)) return false
+        // no opening_hours yet -> new survey
+        val oh = element.tags?.get("opening_hours") ?: return true
+        // invalid opening_hours rules -> applicable because we want to ask for opening hours again
+        val rules = oh.toOpeningHoursRules() ?: return true
+        // only display supported rules
+        return rules.toOpeningHoursRows() != null
+    }
 
     override fun createForm() = AddOpeningHoursForm()
 
     override fun applyAnswerTo(answer: OpeningHoursAnswer, changes: StringMapChangesBuilder) {
         when(answer) {
-            is RegularOpeningHours -> changes.add("opening_hours", answer.times.joinToString(";"))
-            is AlwaysOpen          -> changes.add("opening_hours", "24/7")
-            is NoOpeningHoursSign  -> changes.add("opening_hours:signed", "no")
+            is RegularOpeningHours -> {
+                changes.updateWithCheckDate("opening_hours", answer.hours.toString())
+                changes.deleteIfPreviously("opening_hours:signed", "no")
+            }
+            is AlwaysOpen          -> {
+                changes.updateWithCheckDate("opening_hours", "24/7")
+                changes.deleteIfPreviously("opening_hours:signed", "no")
+            }
             is DescribeOpeningHours -> {
                 val text = answer.text.replace("\"","")
-                changes.add("opening_hours", "\"$text\"")
+                changes.updateWithCheckDate("opening_hours", "\"$text\"")
+                changes.deleteIfPreviously("opening_hours:signed", "no")
+            }
+            is NoOpeningHoursSign  -> {
+                changes.addOrModify("opening_hours:signed", "no")
+                // don't delete current opening hours: these may be the correct hours, they are just not visible anywhere on the door
             }
         }
     }
@@ -135,4 +178,8 @@ class AddOpeningHours (
 
     private fun hasFeatureName(tags: Map<String, String>?): Boolean =
         tags?.let { featureDictionaryFuture.get().byTags(it).find().isNotEmpty() } ?: false
+}
+
+private fun StringMapChangesBuilder.deleteIfPreviously(key: String, previousValue: String) {
+    if (getPreviousValue(key) == previousValue) delete(key)
 }

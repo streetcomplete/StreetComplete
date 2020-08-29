@@ -1,13 +1,14 @@
 package de.westnordost.streetcomplete.settings
 
 import android.graphics.Bitmap
-import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.webkit.URLUtil.isValidUrl
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.Toast
+import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.*
 import de.westnordost.streetcomplete.ktx.toBcp47LanguageTag
@@ -163,8 +164,7 @@ class OAuthFragment : Fragment(R.layout.fragment_oauth),
         suspend fun awaitOAuthCallback(): String = suspendCoroutine {continutation = it }
 
         override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
-            if (url == null) return false
-            val uri = Uri.parse(url) ?: return false
+            val uri = url.takeIf(::isValidUrl)?.toUri() ?: return false
             if (!uri.isHierarchical) return false
             if (uri.scheme != callbackScheme || uri.host != callbackHost) return false
             val verifier = uri.getQueryParameter(OAUTH_VERIFIER)

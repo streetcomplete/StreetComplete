@@ -119,7 +119,7 @@ object QuestModule
         AddMaxHeight(o), // OSRM and other routing engines
         AddRailwayCrossingBarrier(o, r), // useful for routing
         AddPostboxCollectionTimes(o, r),
-        AddOpeningHours(o, featureDictionaryFuture),
+        AddOpeningHours(o, featureDictionaryFuture, r),
         DetailRoadSurface(o), // used by BRouter, OsmAnd, OSRM, graphhopper
         AddBikeParkingCapacity(o, r), // used by cycle map layer on osm.org, OsmAnd
         AddOrchardProduce(o),
@@ -142,11 +142,11 @@ object QuestModule
         AddBikeParkingType(o), // used by OsmAnd
         AddWheelchairAccessToilets(o, r), // used by wheelmap, OsmAnd, MAPS.ME
         AddPlaygroundAccess(o), //late as in many areas all needed access=private is already mapped
-        AddWheelchairAccessBusiness(o), // used by wheelmap, OsmAnd, MAPS.ME
+        AddWheelchairAccessBusiness(o, featureDictionaryFuture), // used by wheelmap, OsmAnd, MAPS.ME
         AddToiletAvailability(o), //OSM Carto, shown in OsmAnd descriptions
         AddFerryAccessPedestrian(o),
         AddFerryAccessMotorVehicle(o),
-        AddAcceptsCash(o),
+        AddAcceptsCash(o, featureDictionaryFuture),
 
         // ↓ 4. definitely shown as errors in QA tools
 

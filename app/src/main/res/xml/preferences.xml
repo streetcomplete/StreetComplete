@@ -28,7 +28,7 @@
             android:widgetLayout="@layout/widget_image_next"
             />
 
-        <Preference
+        <ListPreference
             android:key="quests.resurveyIntervals"
             android:title="@string/pref_title_resurvey_intervals"
             android:summary="%s"

@@ -1,25 +1,25 @@
 package de.westnordost.streetcomplete.quests.max_speed
 
 import android.os.Bundle
-import androidx.annotation.IdRes
-import androidx.appcompat.app.AlertDialog
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Spinner
+import androidx.annotation.IdRes
+import androidx.appcompat.app.AlertDialog
 import androidx.core.view.children
-
+import androidx.core.view.isGone
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.numberOrNull
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.OtherAnswer
-import de.westnordost.streetcomplete.util.TextChangedWatcher
+import de.westnordost.streetcomplete.quests.max_speed.SpeedMeasurementUnit.KILOMETERS_PER_HOUR
+import de.westnordost.streetcomplete.quests.max_speed.SpeedMeasurementUnit.MILES_PER_HOUR
 import de.westnordost.streetcomplete.quests.max_speed.SpeedType.*
-import de.westnordost.streetcomplete.quests.max_speed.SpeedMeasurementUnit.*
+import de.westnordost.streetcomplete.util.TextChangedWatcher
 import kotlinx.android.synthetic.main.quest_maxspeed.*
-import java.lang.IllegalStateException
 
 
 class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
@@ -49,10 +49,9 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
         super.onViewCreated(view, savedInstanceState)
 
         val couldBeSlowZone = countryInfo.isSlowZoneKnown && POSSIBLY_SLOWZONE_ROADS.contains(osmElement!!.tags["highway"]!!)
-        zone.visibility = if (couldBeSlowZone) View.VISIBLE else View.GONE
+        zone.isGone = !couldBeSlowZone
 
         speedTypeSelect.setOnCheckedChangeListener { _, checkedId -> setSpeedType(getSpeedType(checkedId)) }
-
     }
 
     override fun onClickOk() {
@@ -87,7 +86,7 @@ class AddMaxSpeedForm : AbstractQuestFormAnswerFragment<MaxSpeedAnswer>() {
         speedInput?.addTextChangedListener(TextChangedWatcher { checkIsFormComplete() })
 
         speedUnitSelect = rightSideContainer.findViewById(R.id.speedUnitSelect)
-        speedUnitSelect?.visibility = if (speedUnits.size == 1) View.GONE else View.VISIBLE
+        speedUnitSelect?.isGone = speedUnits.size == 1
         speedUnitSelect?.adapter = ArrayAdapter(requireContext(), R.layout.spinner_item_centered, speedUnits)
         speedUnitSelect?.setSelection(0)
 

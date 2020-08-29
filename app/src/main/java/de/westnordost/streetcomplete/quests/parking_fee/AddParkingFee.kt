@@ -38,11 +38,11 @@ class AddParkingFee(o: OverpassMapDataAndGeometryApi, r: ResurveyIntervalsStore)
             }
             is HasFeeAtHours -> {
                 changes.updateWithCheckDate("fee", "no")
-                changes.addOrModify("fee:conditional", "yes @ (${answer.hours.joinToString(";")})")
+                changes.addOrModify("fee:conditional", "yes @ (${answer.openingHours})")
             }
             is HasFeeExceptAtHours -> {
                 changes.updateWithCheckDate("fee", "yes")
-                changes.addOrModify("fee:conditional", "no @ (${answer.hours.joinToString(";")})")
+                changes.addOrModify("fee:conditional", "no @ (${answer.openingHours})")
             }
         }
     }

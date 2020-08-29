@@ -1,13 +1,11 @@
 package de.westnordost.streetcomplete.quests
 
-import android.content.ContextWrapper
-import androidx.annotation.AnyThread
 import android.content.Context
+import android.content.ContextWrapper
 import android.content.res.Configuration
 import android.content.res.Resources
 import android.os.Bundle
 import android.text.Html
-import androidx.appcompat.app.AlertDialog
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.View
@@ -15,29 +13,30 @@ import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.Button
 import android.widget.PopupMenu
+import androidx.annotation.AnyThread
+import androidx.appcompat.app.AlertDialog
 import androidx.core.os.bundleOf
+import androidx.core.text.parseAsHtml
+import androidx.core.view.isGone
 import com.google.android.flexbox.FlexboxLayout
-
-import java.lang.ref.WeakReference
-import java.util.Locale
-
-import javax.inject.Inject
-
 import de.westnordost.osmapi.map.data.OsmElement
 import de.westnordost.osmapi.map.data.Way
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.Injector
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.CountryInfo
+import de.westnordost.streetcomplete.data.meta.CountryInfos
+import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.data.quest.Quest
 import de.westnordost.streetcomplete.data.quest.QuestGroup
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
-import de.westnordost.streetcomplete.data.meta.CountryInfo
-import de.westnordost.streetcomplete.data.meta.CountryInfos
-import de.westnordost.streetcomplete.data.osm.elementgeometry.ElementGeometry
 import de.westnordost.streetcomplete.ktx.isArea
 import kotlinx.android.synthetic.main.fragment_quest_answer.*
+import java.lang.ref.WeakReference
+import java.util.*
 import java.util.concurrent.FutureTask
+import javax.inject.Inject
 
 /** Abstract base class for any bottom sheet with which the user answers a specific quest(ion)  */
 abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), IsShowingQuestDetails {
@@ -147,11 +146,9 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
         titleLabel.text = resources.getHtmlQuestTitle(questType, osmElement, featureDictionaryFuture)
 
         val levelLabelText = getLocationLabelText()
+        locationLabel.isGone = levelLabelText == null
         if (levelLabelText != null) {
-            locationLabel.visibility = View.VISIBLE
             locationLabel.text = levelLabelText
-        } else {
-            locationLabel.visibility = View.GONE
         }
 
         // no content? -> hide the content container
@@ -238,7 +235,8 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
         val houseNumber = tags["addr:housenumber"]
 
         if (houseName != null) {
-            return Html.fromHtml(resources.getString(R.string.at_housename, "<i>" + Html.escapeHtml(houseName) + "</i>"))
+            return resources.getString(R.string.at_housename, "<i>" + Html.escapeHtml(houseName) + "</i>")
+                .parseAsHtml()
         }
         if (conscriptionNumber != null) {
             if (streetNumber != null) {
@@ -337,7 +335,14 @@ abstract class AbstractQuestAnswerFragment<T> : AbstractBottomSheetFragment(), I
 
     protected fun setButtonsView(resourceId: Int) {
         otherAnswersButton.layoutParams = FlexboxLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT)
+        removeButtonsView()
         activity?.layoutInflater?.inflate(resourceId, buttonPanel)
+    }
+
+    protected fun removeButtonsView() {
+        if (buttonPanel.childCount > 1) {
+            buttonPanel.removeViews(1, buttonPanel.childCount - 1)
+        }
     }
 
     @AnyThread open fun onMapOrientation(rotation: Float, tilt: Float) {

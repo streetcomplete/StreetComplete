@@ -53,13 +53,20 @@
     <string name="quest_streetName_nameWithAbbreviations_confirmation_description">"If the name can be spelled without an abbreviation, then it should be expanded. Many common abbreviations are expanded automatically while you type, but probably not all."</string>
     <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">"No abbreviation"</string>
     <string name="quest_openingHours_name_title">"What are the opening hours of %s?"</string>
+    <string name="quest_openingHours_name_type_title">"What are the opening hours of %1$s (%2$s)?"</string>
     <string name="quest_openingHours_no_name_title">"What are the opening hours of this place? (%s)"</string>
+    <string name="quest_openingHours_resurvey_name_title">"Are these opening hours for %s still correct?"</string>
+    <string name="quest_openingHours_resurvey_name_type_title">"Are these opening hours for %1$s (%2$s) still correct?"</string>
+    <string name="quest_openingHours_resurvey_no_name_title">"Are these opening hours still correct (%s)?"</string>
     <string name="quest_openingHours_start_time">"opening time"</string>
     <string name="quest_openingHours_end_time">"closing time"</string>
     <string name="quest_openingHours_timeSelect_next">Next</string>
     <string name="quest_openingHours_add_months">"Add months"</string>
     <string name="quest_openingHours_add_hours">"Add hours"</string>
     <string name="quest_openingHours_add_weekdays">"Add weekdays"</string>
+    <string name="quest_openingHours_add_off_days">"Add off days"</string>
+    <string name="quest_openingHours_off_day">"Off day"</string>
+    <string name="quest_openingHours_unspecified_range">Not specified"</string>
     <string name="quest_openingHours_chooseMonthsTitle">"Select months"</string>
     <string name="quest_openingHours_chooseWeekdaysTitle">"Select weekdays"</string>
     <string name="quest_openingHours_24_7_confirmation">"In other words, is it open any time, every day?"</string>
@@ -295,6 +302,7 @@ The info you enter is then directly added to the OpenStreetMap in your name, wit
     <string name="quest_sport_sepak_takraw">Sepak takraw</string>
     <string name="quest_sport_roller_skating">Roller skating</string>
     <string name="quest_wheelchairAccess_name_title">Is %s wheelchair accessible?</string>
+    <string name="quest_wheelchairAccess_name_type_title">Is %1$s (%2$s) wheelchair accessible?</string>
     <string name="quest_wheelchairAccess_bus_station_title">Is this bus station wheelchair accessible?</string>
     <string name="quest_wheelchairAccess_toilets_title">Is this restroom wheelchair accessible?</string>
     <string name="quest_wheelchairAccess_subway_entrance_title">Is this subway entrance wheelchair accessible?</string>
@@ -772,6 +780,7 @@ Otherwise, you can download another keyboard in the app store. Popular keyboards
     <string name="quest_recycling_materials_answer_waste_description">So, this is a container for any waste, such as bagged up household or commercial waste?</string>
 
     <string name="quest_accepts_cash_title">"Does %s accept cash payment?"</string>
+    <string name="quest_accepts_cash_type_title">"Does %1$s (%2$s) accept cash payment?"</string>
     <string name="user_quests_title">Solved Quests</string>
     <string name="user_achievements_title">Achievements</string>
     <string name="user_links_title">Link Collection</string>
