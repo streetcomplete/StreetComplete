@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isGone
 import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
@@ -67,7 +68,7 @@ class AchievementsFragment : Fragment(R.layout.fragment_achievements),
             }
             achievementsList.adapter = AchievementsAdapter(achievements)
 
-            emptyText.visibility = if (achievements.isEmpty()) View.VISIBLE else View.GONE
+            emptyText.isGone = achievements.isNotEmpty()
         }
     }
 

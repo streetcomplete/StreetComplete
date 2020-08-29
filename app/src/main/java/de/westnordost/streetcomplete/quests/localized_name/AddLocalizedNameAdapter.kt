@@ -3,23 +3,22 @@ package de.westnordost.streetcomplete.quests.localized_name
 import android.content.Context
 import android.graphics.Typeface
 import android.os.AsyncTask
-import androidx.appcompat.widget.PopupMenu
-import androidx.recyclerview.widget.RecyclerView
 import android.text.Editable
 import android.view.LayoutInflater
+import android.view.Menu.NONE
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-
-import java.util.Locale
-
+import androidx.appcompat.widget.PopupMenu
+import androidx.core.view.isGone
+import androidx.core.view.isInvisible
+import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.Abbreviations
 import de.westnordost.streetcomplete.data.meta.AbbreviationsByLocale
 import de.westnordost.streetcomplete.util.DefaultTextWatcher
-
-import android.view.Menu.NONE
 import de.westnordost.streetcomplete.view.AutoCorrectAbbreviationsEditText
+import java.util.*
 
 /** Carries the data language tag + name in that language  */
 data class LocalizedName(var languageTag: String, var name: String)
@@ -93,7 +92,7 @@ class AddLocalizedNameAdapter(
     override fun getItemCount() = localizedNames.size
 
     private fun updateAddLanguageButtonVisibility() {
-        addLanguageButton.visibility = if (getNotAddedLanguageTags().isEmpty()) View.GONE else View.VISIBLE
+        addLanguageButton.isGone = getNotAddedLanguageTags().isEmpty()
     }
 
     private fun remove(index: Int) {
@@ -228,12 +227,8 @@ class AddLocalizedNameAdapter(
                 override fun afterTextChanged(s: Editable) {
                     val name = s.toString()
                     localizedName.name = name.trim()
-                    if (name.isEmpty()) {
-                        val hasSuggestions = getLocalizedNameSuggestionsByLanguageTag(localizedName.languageTag).isNotEmpty()
-                        buttonNameSuggestions.visibility = if (hasSuggestions) View.VISIBLE else View.GONE
-                    } else {
-                        buttonNameSuggestions.visibility = View.GONE
-                    }
+                    buttonNameSuggestions.isGone = name.isNotEmpty() ||
+                        getLocalizedNameSuggestionsByLanguageTag(localizedName.languageTag).isEmpty()
                     for (listener in listeners) {
                         listener(localizedName)
                     }
@@ -252,8 +247,8 @@ class AddLocalizedNameAdapter(
 
             val isFirst = index == 0
 
-            buttonDelete.visibility = if (isFirst) View.INVISIBLE else View.VISIBLE
-            buttonLanguage.visibility = if (languageTags.size > 1) View.VISIBLE else View.INVISIBLE
+            buttonDelete.isInvisible = isFirst
+            buttonLanguage.isInvisible = languageTags.size <= 1
 
             autoCorrectInput.setText(localizedName.name)
             autoCorrectInput.requestFocus()
@@ -301,8 +296,7 @@ class AddLocalizedNameAdapter(
 
             val nameInputEmpty = autoCorrectInput.text.toString().trim().isEmpty()
             val hasNameSuggestions = localizedNameSuggestionsMap.isNotEmpty()
-            buttonNameSuggestions.visibility =
-                    if (nameInputEmpty && hasNameSuggestions) View.VISIBLE else View.GONE
+            buttonNameSuggestions.isGone = !nameInputEmpty || !hasNameSuggestions
 
             buttonNameSuggestions.setOnClickListener { v ->
                 showNameSuggestionsMenu(v, localizedNameSuggestionsMap) { selection ->

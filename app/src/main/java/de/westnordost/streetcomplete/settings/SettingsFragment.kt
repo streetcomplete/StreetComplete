@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.os.bundleOf
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceManager
@@ -129,14 +130,10 @@ class SettingsFragment : PreferenceFragmentCompat(),
 
     override fun onDisplayPreferenceDialog(preference: Preference) {
         if (preference is DialogPreferenceCompat) {
-            fragmentManager?.let {
-                val fragment = preference.createDialog()
-                val bundle = Bundle(1)
-                bundle.putString("key", preference.getKey())
-                fragment.arguments = bundle
-                fragment.setTargetFragment(this, 0)
-                fragment.show(it, "androidx.preference.PreferenceFragment.DIALOG")
-            }
+            val fragment = preference.createDialog()
+            fragment.arguments = bundleOf("key" to preference.key)
+            fragment.setTargetFragment(this, 0)
+            fragment.show(parentFragmentManager, "androidx.preference.PreferenceFragment.DIALOG")
         } else {
             super.onDisplayPreferenceDialog(preference)
         }

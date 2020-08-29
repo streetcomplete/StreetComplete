@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.quests.max_height
 
 import android.os.Bundle
-import androidx.appcompat.app.AlertDialog
 import android.text.InputFilter
 import android.view.LayoutInflater
 import android.view.View
@@ -10,15 +9,16 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.Spinner
-
+import androidx.appcompat.app.AlertDialog
+import androidx.core.view.isGone
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.allowOnlyNumbers
 import de.westnordost.streetcomplete.ktx.numberOrNull
 import de.westnordost.streetcomplete.quests.AbstractQuestFormAnswerFragment
 import de.westnordost.streetcomplete.quests.OtherAnswer
+import de.westnordost.streetcomplete.quests.max_height.HeightMeasurementUnit.FOOT_AND_INCH
+import de.westnordost.streetcomplete.quests.max_height.HeightMeasurementUnit.METER
 import de.westnordost.streetcomplete.util.TextChangedWatcher
-
-import de.westnordost.streetcomplete.quests.max_height.HeightMeasurementUnit.*
 
 class AddMaxHeightForm : AbstractQuestFormAnswerFragment<MaxHeightAnswer>() {
 
@@ -60,7 +60,7 @@ class AddMaxHeightForm : AbstractQuestFormAnswerFragment<MaxHeightAnswer>() {
         feetInputSign = contentView.findViewById(R.id.feetInputSign)
 
         heightUnitSelect = contentView.findViewById(R.id.heightUnitSelect)
-        heightUnitSelect?.visibility = if (heightUnits.size == 1) View.GONE else View.VISIBLE
+        heightUnitSelect?.isGone = heightUnits.size == 1
         heightUnitSelect?.adapter = ArrayAdapter(requireContext(), R.layout.spinner_item_centered, heightUnits)
         heightUnitSelect?.setSelection(0)
         heightUnitSelect?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -85,8 +85,8 @@ class AddMaxHeightForm : AbstractQuestFormAnswerFragment<MaxHeightAnswer>() {
         val isMetric = unit == METER
         val isImperial = unit == FOOT_AND_INCH
 
-        meterInputSign?.visibility = if (isMetric) View.VISIBLE else View.GONE
-        feetInputSign?.visibility = if (isImperial) View.VISIBLE else View.GONE
+        meterInputSign?.isGone = !isMetric
+        feetInputSign?.isGone = !isImperial
 
         if (isMetric) meterInput?.requestFocus()
         if (isImperial) feetInput?.requestFocus()

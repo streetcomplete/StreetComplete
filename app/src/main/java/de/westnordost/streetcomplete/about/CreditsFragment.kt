@@ -1,14 +1,14 @@
 package de.westnordost.streetcomplete.about
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.LinearLayout
 import android.widget.TextView
-
+import androidx.core.widget.TextViewCompat
+import androidx.fragment.app.Fragment
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.ktx.getYamlObject
 import kotlinx.android.synthetic.main.fragment_credits.*
@@ -45,7 +45,7 @@ class CreditsFragment : Fragment(R.layout.fragment_credits) {
     private fun addContributorsTo(contributors: List<String>, view: ViewGroup) {
         val items = contributors.map { "<li>$it</li>" }.joinToString("")
         val textView = HtmlTextView(activity)
-        textView.setTextAppearance(activity, R.style.TextAppearance_Body)
+        TextViewCompat.setTextAppearance(textView, R.style.TextAppearance_Body)
         textView.setTextIsSelectable(true)
         textView.setHtml("<ul>$items</ul>")
         view.addView(textView, LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT))

@@ -32,9 +32,7 @@ android {
         minSdkVersion 17
         targetSdkVersion 29
         versionCode 2204
-        def version = "22.3"
-        versionName version
-        buildConfigField "String", "VERSION", "\"$version\""
+        versionName "22.3"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -51,7 +49,6 @@ android {
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             applicationIdSuffix ".debug"
-            versionNameSuffix '-DEBUG'
         }
     }
 
@@ -110,12 +107,12 @@ dependencies {
 
     // Android stuff
     implementation 'com.google.android.material:material:1.2.0'
-    implementation 'androidx.core:core:1.3.1'
+    implementation 'androidx.core:core-ktx:1.3.1'
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation 'androidx.annotation:annotation:1.1.0'
-    implementation 'androidx.fragment:fragment:1.2.5'
-    implementation 'androidx.preference:preference:1.1.1'
+    implementation 'androidx.fragment:fragment-ktx:1.2.5'
+    implementation 'androidx.preference:preference-ktx:1.1.1'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'androidx.viewpager:viewpager:1.0.0'
     implementation 'androidx.localbroadcastmanager:localbroadcastmanager:1.0.0'
@@ -124,10 +121,9 @@ dependencies {
     implementation 'androidx.exifinterface:exifinterface:1.2.0'
 
     // Kotlin
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.8'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.8'
-    implementation "androidx.core:core-ktx:1.3.1"
 
     // scheduling background jobs
     implementation "androidx.work:work-runtime:2.4.0"
@@ -147,7 +143,7 @@ dependencies {
     implementation "androidx.viewpager2:viewpager2:1.0.0"
     implementation 'me.grantland:autofittextview:0.2.1'
     implementation 'org.sufficientlysecure:html-textview:3.9'
-    implementation 'com.duolingo.open:rtl-viewpager:1.0.2'
+    implementation 'com.duolingo.open:rtl-viewpager:2.0.0'
     implementation 'com.google.android:flexbox:2.0.1'
 
     // box2d view
@@ -161,7 +157,7 @@ dependencies {
     implementation 'com.mapzen.tangram:tangram:0.13.0'
 
     // config files
-    implementation 'com.esotericsoftware.yamlbeans:yamlbeans:1.13'
+    implementation 'com.esotericsoftware.yamlbeans:yamlbeans:1.15'
 
     // opening hours parser
     implementation "ch.poole:OpeningHoursParser:0.22.0"
