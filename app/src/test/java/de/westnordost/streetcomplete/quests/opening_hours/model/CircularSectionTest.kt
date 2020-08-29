@@ -66,13 +66,6 @@ class CircularSectionTest {
         assertTrue(highStart > lowStartButHighEnd)
     }
 
-    @Test fun toStringUsing() {
-        val abc = arrayOf("a", "b", "c", "d")
-        assertEquals("a", CircularSection(0, 0).toStringUsing(abc, "-"))
-        assertEquals("a-d", CircularSection(0, 3).toStringUsing(abc, "-"))
-        assertEquals("a-b", CircularSection(0, 1).toStringUsing(abc, "-"))
-    }
-
     @Test fun equals() {
         val cs = CircularSection(0, 10)
         assertEquals(cs, cs)

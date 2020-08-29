@@ -15,21 +15,22 @@
         android:layout="@+id/hoursLabel"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/hoursLabel"
+        app:layout_constraintEnd_toStartOf="@id/offLabel"
         app:layout_constraintHorizontal_weight="1"
         android:gravity="end"
         tools:text="Mon - Tue"
         style="@style/TimesField"/>
 
     <TextView
-        android:id="@+id/hoursLabel"
+        android:id="@+id/offLabel"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toEndOf="@id/weekdaysLabel"
         app:layout_constraintEnd_toStartOf="@id/deleteButton"
         app:layout_constraintHorizontal_weight="1"
-        tools:text="18:00 - 22:00+"
+        android:text="@string/quest_openingHours_off_day"
+        android:clickable="false"
         style="@style/TimesField"/>
 
     <ImageView
@@ -39,7 +40,7 @@
         android:layout_height="wrap_content"
         android:src="@drawable/ic_close_24dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/hoursLabel"
+        app:layout_constraintStart_toEndOf="@id/offLabel"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
