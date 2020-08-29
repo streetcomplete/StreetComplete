@@ -8,7 +8,7 @@ import org.junit.Test
 
 class AddCyclewayTest {
 
-    private val questType = AddCycleway(mock())
+    private val questType = AddCycleway(mock(), mock())
 
     @Test fun `apply cycleway lane answer`() {
         questType.verifyAnswer(

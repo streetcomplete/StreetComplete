@@ -62,6 +62,7 @@ class AddCycleway(
 
     override fun getTitle(tags: Map<String, String>) : Int {
         val isCyclewayTagged = tags.keys.containsAny(KNOWN_CYCLEWAY_KEYS)
+        // TODO use parser instead
         val isCyclewayValueAmbiguous = tags.filterKeys { it in KNOWN_CYCLEWAY_KEYS }.values.any { it in AMBIGIOUS_CYCLEWAY_VALUES }
 
         return if (isCyclewayTagged && !isCyclewayValueAmbiguous)
@@ -113,18 +114,18 @@ class AddCycleway(
             way.untagged(around.cycleways: $minDistToCycleways) -> .untagged_near_cycleways;
             
             way.streets
-                [~'^(cycleway(:(left|right|both))?)$']
+                [~'^(cycleway(:(left|right|both))?)$' ~ '.*']
                 $olderThan8Years
             -> .old;
             
             (""" +
-                KNOWN_CYCLEWAY_KEYS.map { "way.old['$it']['$it' !~ '^($handledCycleways)$'];\n" } +
-                KNOWN_CYCLEWAY_LANES_KEYS.map { "way.old['$it']['$it' !~ '^($handledCyclewayLanes)$'];\n" } +
+                KNOWN_CYCLEWAY_KEYS.joinToString("") { "way.old['$it']['$it' !~ '^($handledCycleways)$'];\n" } +
+                KNOWN_CYCLEWAY_LANES_KEYS.joinToString("") { "way.old['$it']['$it' !~ '^($handledCyclewayLanes)$'];\n" } +
             """) -> .old_with_unknown_tags;
 
             (
                 (.untagged; - .untagged_near_cycleways;);
-                (old; .old_with_unknown_tags;);
+                (.old; - .old_with_unknown_tags;);
             );
             
             ${getQuestPrintStatement()}
@@ -315,12 +316,22 @@ class AddCycleway(
             "share_busway",
             "no",
             "none",
-            // TODO handle these when retagging? See what cyclosm-people have to say https://github.com/cyclosm/cyclosm-cartocss-style/issues/426
-            "opposite_lane",         // synonymous for oneway:bicycle=no + cycleway=lane
-            "opposite_track",        // synonymous for oneway:bicycle=no + cycleway=track
-            "opposite_share_busway", // synonymous for oneway:bicycle=no + cycleway=share_busway
-            "opposite"               // synonymous for oneway:bicycle=no + cycleway=no
+            // synonymous for oneway:bicycle=no + cycleway:right=no (if right hand traffic and oneway=yes)
+            "opposite_lane",         // + cycleway:left=lane
+            "opposite_track",        // + cycleway:left=track
+            "opposite_share_busway", // + cycleway:left=share_busway
+            "opposite"               // + cycleway:left=no
         )
+        /* Treat the opposite_* taggings as simple synonyms which will be overwritten by the new tagging.
+           Community seems to be rather in consensus that both methods are equivalent or even the
+           one without opposite_* being better/newer.
+
+            https://forum.openstreetmap.org/viewtopic.php?id=65612
+            https://forum.openstreetmap.org/viewtopic.php?id=63464
+            https://forum.openstreetmap.org/viewtopic.php?id=62668
+            https://wiki.openstreetmap.org/w/index.php?title=Tag:cycleway%3Dopposite_lane&oldid=1820887
+            https://github.com/cyclosm/cyclosm-cartocss-style/issues/426
+        */
 
         private val KNOWN_CYCLEWAY_LANE_VALUES = listOf(
             "exclusive",
@@ -329,7 +340,6 @@ class AddCycleway(
             "mandatory", "exclusive_lane",          // same as exclusive. Exclusive lanes are mandatory for bicyclists
             "soft_lane", "advisory_lane", "dashed"  // synonym for advisory lane
         )
-
 
         private val HANDLED_CYCLEWAY_VALUES =
             AMBIGIOUS_CYCLEWAY_VALUES + KNOWN_CYCLEWAY_VALUES

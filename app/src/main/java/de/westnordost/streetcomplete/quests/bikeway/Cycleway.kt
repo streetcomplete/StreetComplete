@@ -1,7 +1,5 @@
 package de.westnordost.streetcomplete.quests.bikeway
 
-import de.westnordost.streetcomplete.quests.bikeway.Cycleway.*
-
 enum class Cycleway {
     // some kind of cycle lane, not specified if with continuous or dashed lane markings
     LANE_UNSPECIFIED,
@@ -43,4 +41,19 @@ enum class Cycleway {
         this == DUAL_LANE
 
     val isOneway get() = this != DUAL_LANE && this != DUAL_TRACK
+
+    companion object {
+        fun displayValues(): List<Cycleway> = listOf(
+            EXCLUSIVE_LANE,
+            ADVISORY_LANE,
+            TRACK,
+            NONE,
+            PICTOGRAMS,
+            BUSWAY,
+            SIDEWALK_EXPLICIT,
+            SIDEWALK_OK,
+            DUAL_LANE,
+            DUAL_TRACK
+        )
+    }
 }

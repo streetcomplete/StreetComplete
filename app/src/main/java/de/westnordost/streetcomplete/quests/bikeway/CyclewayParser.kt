@@ -3,12 +3,10 @@ package de.westnordost.streetcomplete.quests.bikeway
 import de.westnordost.streetcomplete.ktx.containsAny
 import de.westnordost.streetcomplete.quests.bikeway.Cycleway.*
 
-data class CyclewaySides(val left: Cycleway?, val right: Cycleway?)
+data class LeftAndRightCycleway(val left: Cycleway?, val right: Cycleway?)
 
-/** Returns the Cycleway values for the left and right side using the given tags, first trying to
- *  read cycleway:left/cycleway:right if it is set, otherwise read cycleway:both if it is set and
- *  lastly read cycleway if it is set */
-fun createCyclewaySides(tags: Map<String, String>, isLeftHandTraffic: Boolean): CyclewaySides {
+/** Returns the Cycleway values for the left and right side using the given tags */
+fun createCyclewaySides(tags: Map<String, String>, isLeftHandTraffic: Boolean, countryCode: String): LeftAndRightCycleway? {
 
     val isForwardOneway = tags["oneway"] == "yes"
     val isReversedOneway = tags["oneway"] == "-1"
@@ -18,7 +16,7 @@ fun createCyclewaySides(tags: Map<String, String>, isLeftHandTraffic: Boolean): 
     val isAnyOppositeTagging = tags.filterKeys { it in KNOWN_CYCLEWAY_KEYS }.values.any { it.startsWith("opposite") }
     val isOnewayNotForCyclists = isOneway && (tags["oneway:bicycle"] == "no" || isAnyOppositeTagging)
 
-    if (!isOneway && isAnyOppositeTagging) return CyclewaySides(null, null)
+    if (!isOneway && isAnyOppositeTagging) return null
 
     var left: Cycleway?
     var right: Cycleway?
@@ -30,7 +28,7 @@ fun createCyclewaySides(tags: Map<String, String>, isLeftHandTraffic: Boolean): 
         /* Thus, there is the potential that this value will conflict with any cycleway:left/right
            tagging, so not both taggings may be analyzed in parallel */
         if (tags.keys.containsAny(listOf("cycleway:left", "cycleway:right" ,"cycleway:both"))) {
-            return CyclewaySides(null, null)
+            return null
         }
 
         val oppositeCycleway = createCyclewayForSide(tags, null)
@@ -58,7 +56,18 @@ fun createCyclewaySides(tags: Map<String, String>, isLeftHandTraffic: Boolean): 
         if (right == NONE && isReverseSideRight) right = NONE_NO_ONEWAY
     }
 
-    return CyclewaySides(left, right)
+    if (left == null && right == null) return null
+
+    /* suggestion lanes are only known in Belgium and Netherlands */
+    if (left == SUGGESTION_LANE || right == SUGGESTION_LANE) {
+        if (countryCode !in listOf("NL", "BE")) return null
+    }
+    /* unspecified lanes are only ok in Belgium (no distinction made, all lanes are dashed) */
+    if (left == LANE_UNSPECIFIED || right == LANE_UNSPECIFIED) {
+        if (countryCode != "BE") return null
+    }
+
+    return LeftAndRightCycleway(left, right)
 }
 
 /** Returns the Cycleway value using the given tags, for the given side (left or right).

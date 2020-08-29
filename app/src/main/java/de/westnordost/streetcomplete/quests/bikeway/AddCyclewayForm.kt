@@ -16,7 +16,6 @@ import de.westnordost.streetcomplete.view.dialogs.ImageListPickerDialog
 import kotlinx.android.synthetic.main.quest_street_side_puzzle.*
 import kotlinx.android.synthetic.main.view_little_compass.*
 
-
 class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
 
     override val contentLayoutResId = R.layout.quest_street_side_puzzle
@@ -60,11 +59,18 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        isDefiningBothSides = savedInstanceState?.getBoolean(DEFINE_BOTH_SIDES)
-                ?: !likelyNoBicycleContraflow.matches(osmElement!!)
+        if (savedInstanceState == null) {
+            val sides = createCyclewaySides(osmElement!!.tags, isLeftHandTraffic, countryInfo.countryCode)
+            leftSide = sides?.left
+            rightSide = sides?.right
 
-        savedInstanceState?.getString(CYCLEWAY_RIGHT)?.let { rightSide = Cycleway.valueOf(it) }
-        savedInstanceState?.getString(CYCLEWAY_LEFT)?.let { leftSide = Cycleway.valueOf(it) }
+            isDefiningBothSides = leftSide != null && rightSide != null || !likelyNoBicycleContraflow.matches(osmElement!!)
+
+        } else {
+            isDefiningBothSides = savedInstanceState.getBoolean(DEFINE_BOTH_SIDES)
+            savedInstanceState.getString(CYCLEWAY_RIGHT)?.let { rightSide = Cycleway.valueOf(it) }
+            savedInstanceState.getString(CYCLEWAY_LEFT)?.let { leftSide = Cycleway.valueOf(it) }
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -165,7 +171,7 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
     }
 
     private fun getCyclewayItems(isRight: Boolean): List<Cycleway> {
-        val values = CYCLEWAY_DISPLAY_VALUES.toMutableList()
+        val values = Cycleway.displayValues().toMutableList()
         // different wording for a contraflow lane that is marked like a "shared" lane (just bicycle pictogram)
         if (isOneway && isReverseSideRight == isRight) {
             Collections.replaceAll(values, Cycleway.PICTOGRAMS, Cycleway.NONE_NO_ONEWAY)
@@ -198,16 +204,3 @@ class AddCyclewayForm : AbstractQuestFormAnswerFragment<CyclewayAnswer>() {
         private const val DEFINE_BOTH_SIDES = "define_both_sides"
     }
 }
-
-private val CYCLEWAY_DISPLAY_VALUES = listOf(
-    Cycleway.EXCLUSIVE_LANE,
-    Cycleway.ADVISORY_LANE,
-    Cycleway.TRACK,
-    Cycleway.NONE,
-    Cycleway.PICTOGRAMS,
-    Cycleway.BUSWAY,
-    Cycleway.SIDEWALK_EXPLICIT,
-    Cycleway.SIDEWALK_OK,
-    Cycleway.DUAL_LANE,
-    Cycleway.DUAL_TRACK
-)
