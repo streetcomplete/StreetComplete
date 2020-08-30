@@ -135,8 +135,8 @@ class AddCycleway(
         val tags = element.tags ?: return false
         // can't determine for yet untagged roads by the tags alone because we need info about
         // surrounding geometry, but for already tagged ones, we can!
-        return tags.keys.containsAny(KNOWN_CYCLEWAY_KEYS)
-                && olderThan(4).matches(element)
+        if (!tags.keys.containsAny(KNOWN_CYCLEWAY_KEYS)) return null
+        return olderThan(4).matches(element)
                 && tags.filterKeys { it in KNOWN_CYCLEWAY_KEYS }.values.all { it in KNOWN_CYCLEWAY_VALUES }
                 && tags.filterKeys { it in KNOWN_CYCLEWAY_LANE_VALUES }.values.all { it in KNOWN_CYCLEWAY_LANE_VALUES }
     }
@@ -270,7 +270,7 @@ class AddCycleway(
             changes.deleteIfExists("$cyclewayKey:lane")
         }
         // clear previous cycleway:oneway=no value (if not about to set a new value)
-        if (!cycleway.isOneway && directionValue == null) {
+        if (cycleway.isOneway && directionValue == null) {
             changes.deleteIfPreviously("$cyclewayKey:oneway", "no")
         }
         // clear previous cycleway:segregated=no value
@@ -292,8 +292,10 @@ class AddCycleway(
         // for example cycleway:surface should only be cleared by a cycleway surface quest etc.
         changes.deleteIfExists(cyclewayKey)
         changes.deleteIfExists("$cyclewayKey:lane")
+        changes.deleteIfExists("$cyclewayKey:oneway")
         changes.deleteIfExists("$cyclewayKey:segregated")
         changes.deleteIfExists("sidewalk$sideVal:bicycle")
+
     }
 
     companion object {
