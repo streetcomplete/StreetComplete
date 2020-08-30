@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.quests.bikeway
 
-import de.westnordost.streetcomplete.ktx.containsAny
 import de.westnordost.streetcomplete.quests.bikeway.Cycleway.*
 
 data class LeftAndRightCycleway(val left: Cycleway?, val right: Cycleway?)
@@ -21,25 +20,33 @@ fun createCyclewaySides(tags: Map<String, String>, isLeftHandTraffic: Boolean): 
     var left: Cycleway?
     var right: Cycleway?
 
-    /* The opposite_* values have a special meaning that concern both sides differently:
-       f.e. cycleway=opposite_lane means that there is a lane in opposite traffic flow direction
-       AND nothing in the flow direction. */
-    if (tags["cycleway"]?.startsWith("opposite") == true) {
-        /* Thus, there is the potential that this value will conflict with any cycleway:left/right
-           tagging, so not both taggings may be analyzed in parallel */
-        if (tags.keys.containsAny(listOf("cycleway:left", "cycleway:right" ,"cycleway:both"))) {
-            return null
-        }
-
-        val oppositeCycleway = createCyclewayForSide(tags, null)
-
-        if (isReverseSideRight) {
-            left = NONE
-            right = oppositeCycleway
-        }
-        else {
-            left = oppositeCycleway
-            right = NONE
+    /* For oneways, the naked "cycleway"-keys should be interpreted differently:
+    *  F.e. a cycleway=lane in a oneway=yes probably means that only in the flow direction, there
+    *  is a lane. F.e. cycleway=opposite_lane means that there is a lane in opposite traffic flow
+    *  direction.
+    *  Whether there is anything each in the other direction, is not defined, so we have to treat
+    *  it that way. */
+    val cycleway = createCyclewayForSide(tags, null)
+    if (isOneway && cycleway != null && cycleway != NONE) {
+        val isOpposite = tags["cycleway"]?.startsWith("opposite") == true
+        if (isOpposite) {
+            if (isReverseSideRight) {
+                left = null
+                right = cycleway
+            }
+            else {
+                left = cycleway
+                right = null
+            }
+        } else {
+            if (isReverseSideRight) {
+                left = cycleway
+                right = null
+            }
+            else {
+                left = null
+                right = cycleway
+            }
         }
     } else {
         // first expand cycleway:both etc into cycleway:left + cycleway:right etc

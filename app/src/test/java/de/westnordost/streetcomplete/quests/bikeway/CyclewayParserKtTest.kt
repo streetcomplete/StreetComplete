@@ -19,12 +19,96 @@ class CyclewayParserKtTest {
         )
     }
 
+    @Test fun `invalid in oneway`() {
+        assertEquals(
+            LeftAndRightCycleway(null, UNKNOWN),
+            parse(
+                "cycleway" to "something",
+                "oneway" to "yes"
+            )
+        )
+    }
+
+    @Test fun `invalid in oneway (reversed)`() {
+        assertEquals(
+            LeftAndRightCycleway(UNKNOWN, null),
+            parse(
+                "cycleway" to "something",
+                "oneway" to "-1"
+            )
+        )
+    }
+
+    @Test fun `invalid in oneway (left hand traffic)`() {
+        assertEquals(
+            LeftAndRightCycleway(UNKNOWN, null),
+            parseForLeftHandTraffic(
+                "cycleway" to "something",
+                "oneway" to "yes"
+            )
+        )
+    }
+
+    @Test fun `invalid in oneway (reversed, left hand traffic)`() {
+        assertEquals(
+            LeftAndRightCycleway(null, UNKNOWN),
+            parseForLeftHandTraffic(
+                "cycleway" to "something",
+                "oneway" to "-1"
+            )
+        )
+    }
+
     @Test fun `invalid cycle lane`() {
         assertEquals(
             LeftAndRightCycleway(UNKNOWN_LANE, UNKNOWN_LANE),
             parse(
                 "cycleway" to "lane",
                 "cycleway:lane" to "something"
+            )
+        )
+    }
+
+    @Test fun `invalid cycle lane in oneway`() {
+        assertEquals(
+            LeftAndRightCycleway(null, UNKNOWN_LANE),
+            parse(
+                "cycleway" to "lane",
+                "cycleway:lane" to "something",
+                "oneway" to "yes"
+            )
+        )
+    }
+
+    @Test fun `invalid cycle lane in oneway (reversed)`() {
+        assertEquals(
+            LeftAndRightCycleway(UNKNOWN_LANE, null),
+            parse(
+                "cycleway" to "lane",
+                "cycleway:lane" to "something",
+                "oneway" to "-1"
+            )
+        )
+    }
+
+    @Test fun `invalid cycle lane in oneway (left hand traffic)`() {
+        assertEquals(
+            LeftAndRightCycleway(UNKNOWN_LANE, null),
+            parseForLeftHandTraffic(
+                "cycleway" to "lane",
+                "cycleway:lane" to "something",
+                "oneway" to "yes"
+            )
+        )
+    }
+
+    @Test fun `invalid cycle lane in oneway (reversed, left hand traffic)`() {
+        assertEquals(
+            LeftAndRightCycleway(null, UNKNOWN_LANE),
+            parseForLeftHandTraffic(
+                "cycleway" to "lane",
+                "cycleway:lane" to "something",
+                "oneway" to "-1"
             )
         )
     }
@@ -39,10 +123,94 @@ class CyclewayParserKtTest {
         )
     }
 
+    @Test fun `invalid shared lane in oneway`() {
+        assertEquals(
+            LeftAndRightCycleway(null, UNKNOWN_SHARED_LANE),
+            parse(
+                "cycleway" to "shared_lane",
+                "cycleway:lane" to "something",
+                "oneway" to "yes"
+            )
+        )
+    }
+
+    @Test fun `invalid shared lane in oneway (reversed)`() {
+        assertEquals(
+            LeftAndRightCycleway(UNKNOWN_SHARED_LANE, null),
+            parse(
+                "cycleway" to "shared_lane",
+                "cycleway:lane" to "something",
+                "oneway" to "-1"
+            )
+        )
+    }
+
+    @Test fun `invalid shared lane in oneway (left hand traffic)`() {
+        assertEquals(
+            LeftAndRightCycleway(UNKNOWN_SHARED_LANE, null),
+            parseForLeftHandTraffic(
+                "cycleway" to "shared_lane",
+                "cycleway:lane" to "something",
+                "oneway" to "yes"
+            )
+        )
+    }
+
+    @Test fun `invalid shared lane in oneway (reversed, left hand traffic)`() {
+        assertEquals(
+            LeftAndRightCycleway(null, UNKNOWN_SHARED_LANE),
+            parseForLeftHandTraffic(
+                "cycleway" to "shared_lane",
+                "cycleway:lane" to "something",
+                "oneway" to "-1"
+            )
+        )
+    }
+
     @Test fun `unspecified shared lane`() {
         assertEquals(
             LeftAndRightCycleway(UNSPECIFIED_SHARED_LANE, UNSPECIFIED_SHARED_LANE),
             parse("cycleway" to "shared_lane")
+        )
+    }
+
+    @Test fun `unspecified shared lane in oneway`() {
+        assertEquals(
+            LeftAndRightCycleway(null, UNSPECIFIED_SHARED_LANE),
+            parse(
+                "cycleway" to "shared_lane",
+                "oneway" to "yes"
+            )
+        )
+    }
+
+    @Test fun `unspecified shared lane in oneway (reversed)`() {
+        assertEquals(
+            LeftAndRightCycleway(UNSPECIFIED_SHARED_LANE, null),
+            parse(
+                "cycleway" to "shared_lane",
+                "oneway" to "-1"
+            )
+        )
+    }
+
+    @Test fun `unspecified shared lane in oneway (left hand traffic)`() {
+        assertEquals(
+            LeftAndRightCycleway(UNSPECIFIED_SHARED_LANE, null),
+            parseForLeftHandTraffic(
+                "cycleway" to "shared_lane",
+                "oneway" to "yes"
+            )
+        )
+    }
+
+    @Test fun `unspecified shared lane in oneway (reversed, left hand traffic)`() {
+        assertEquals(
+            LeftAndRightCycleway(null, UNSPECIFIED_SHARED_LANE),
+            parseForLeftHandTraffic(
+                "cycleway" to "shared_lane",
+                "oneway" to "-1"
+            )
         )
     }
 
@@ -53,12 +221,96 @@ class CyclewayParserKtTest {
         )
     }
 
+    @Test fun `track in oneway`() {
+        assertEquals(
+            LeftAndRightCycleway(null, TRACK),
+            parse(
+                "cycleway" to "track",
+                "oneway" to "yes"
+            )
+        )
+    }
+
+    @Test fun `track in oneway (reversed)`() {
+        assertEquals(
+            LeftAndRightCycleway(TRACK, null),
+            parse(
+                "cycleway" to "track",
+                "oneway" to "-1"
+            )
+        )
+    }
+
+    @Test fun `track in oneway (left hand traffic)`() {
+        assertEquals(
+            LeftAndRightCycleway(TRACK, null),
+            parseForLeftHandTraffic(
+                "cycleway" to "track",
+                "oneway" to "yes"
+            )
+        )
+    }
+
+    @Test fun `track in oneway (reversed, left hand traffic)`() {
+        assertEquals(
+            LeftAndRightCycleway(null, TRACK),
+            parseForLeftHandTraffic(
+                "cycleway" to "track",
+                "oneway" to "-1"
+            )
+        )
+    }
+
     @Test fun `explicitly on sidewalk`() {
         assertEquals(
             LeftAndRightCycleway(SIDEWALK_EXPLICIT, SIDEWALK_EXPLICIT),
             parse(
                 "cycleway" to "track",
                 "cycleway:segregated" to "no"
+            )
+        )
+    }
+
+    @Test fun `explicitly on sidewalk in oneway`() {
+        assertEquals(
+            LeftAndRightCycleway(null, SIDEWALK_EXPLICIT),
+            parse(
+                "cycleway" to "track",
+                "cycleway:segregated" to "no",
+                "oneway" to "yes"
+            )
+        )
+    }
+
+    @Test fun `explicitly on sidewalk in oneway (reversed)`() {
+        assertEquals(
+            LeftAndRightCycleway(SIDEWALK_EXPLICIT, null),
+            parse(
+                "cycleway" to "track",
+                "cycleway:segregated" to "no",
+                "oneway" to "-1"
+            )
+        )
+    }
+
+    @Test fun `explicitly on sidewalk in oneway (left hand traffic)`() {
+        assertEquals(
+            LeftAndRightCycleway(SIDEWALK_EXPLICIT, null),
+            parseForLeftHandTraffic(
+                "cycleway" to "track",
+                "cycleway:segregated" to "no",
+                "oneway" to "yes"
+            )
+        )
+    }
+
+    @Test fun `explicitly on sidewalk in oneway (reversed, left hand traffic)`() {
+        assertEquals(
+            LeftAndRightCycleway(null, SIDEWALK_EXPLICIT),
+            parseForLeftHandTraffic(
+                "cycleway" to "track",
+                "cycleway:segregated" to "no",
+                "oneway" to "-1"
             )
         )
     }
@@ -73,10 +325,94 @@ class CyclewayParserKtTest {
         )
     }
 
+    @Test fun `dual track in oneway`() {
+        assertEquals(
+            LeftAndRightCycleway(null, DUAL_TRACK),
+            parse(
+                "cycleway" to "track",
+                "cycleway:oneway" to "no",
+                "oneway" to "yes"
+            )
+        )
+    }
+
+    @Test fun `dual track in oneway (reversed)`() {
+        assertEquals(
+            LeftAndRightCycleway(DUAL_TRACK, null),
+            parse(
+                "cycleway" to "track",
+                "cycleway:oneway" to "no",
+                "oneway" to "-1"
+            )
+        )
+    }
+
+    @Test fun `dual track in oneway (left hand traffic)`() {
+        assertEquals(
+            LeftAndRightCycleway(DUAL_TRACK, null),
+            parseForLeftHandTraffic(
+                "cycleway" to "track",
+                "cycleway:oneway" to "no",
+                "oneway" to "yes"
+            )
+        )
+    }
+
+    @Test fun `dual track in oneway (reversed, left hand traffic)`() {
+        assertEquals(
+            LeftAndRightCycleway(null, DUAL_TRACK),
+            parseForLeftHandTraffic(
+                "cycleway" to "track",
+                "cycleway:oneway" to "no",
+                "oneway" to "-1"
+            )
+        )
+    }
+
     @Test fun `unspecified lane`() {
         assertEquals(
             LeftAndRightCycleway(UNSPECIFIED_LANE, UNSPECIFIED_LANE),
-            parse("BE", "cycleway" to "lane")
+            parse("cycleway" to "lane")
+        )
+    }
+
+    @Test fun `unspecified lane in oneway`() {
+        assertEquals(
+            LeftAndRightCycleway(null, UNSPECIFIED_LANE),
+            parse(
+                "cycleway" to "lane",
+                "oneway" to "yes"
+            )
+        )
+    }
+
+    @Test fun `unspecified lane in oneway (reversed)`() {
+        assertEquals(
+            LeftAndRightCycleway(UNSPECIFIED_LANE, null),
+            parse(
+                "cycleway" to "lane",
+                "oneway" to "-1"
+            )
+        )
+    }
+
+    @Test fun `unspecified lane in oneway (left hand traffic)`() {
+        assertEquals(
+            LeftAndRightCycleway(UNSPECIFIED_LANE, null),
+            parseForLeftHandTraffic(
+                "cycleway" to "lane",
+                "oneway" to "yes"
+            )
+        )
+    }
+
+    @Test fun `unspecified lane in oneway (reversed, left hand traffic)`() {
+        assertEquals(
+            LeftAndRightCycleway(null, UNSPECIFIED_LANE),
+            parseForLeftHandTraffic(
+                "cycleway" to "lane",
+                "oneway" to "-1"
+            )
         )
     }
 
@@ -96,6 +432,50 @@ class CyclewayParserKtTest {
             parse(
                 "cycleway" to "lane",
                 "cycleway:lane" to "exclusive"
+            )
+        )
+    }
+
+    @Test fun `exclusive lane in oneway`() {
+        assertEquals(
+            LeftAndRightCycleway(null, EXCLUSIVE_LANE),
+            parse(
+                "cycleway" to "lane",
+                "cycleway:lane" to "exclusive",
+                "oneway" to "yes"
+            )
+        )
+    }
+
+    @Test fun `exclusive lane in oneway (reversed)`() {
+        assertEquals(
+            LeftAndRightCycleway(EXCLUSIVE_LANE, null),
+            parse(
+                "cycleway" to "lane",
+                "cycleway:lane" to "exclusive",
+                "oneway" to "-1"
+            )
+        )
+    }
+
+    @Test fun `exclusive lane in oneway (left hand traffic)`() {
+        assertEquals(
+            LeftAndRightCycleway(EXCLUSIVE_LANE, null),
+            parseForLeftHandTraffic(
+                "cycleway" to "lane",
+                "cycleway:lane" to "exclusive",
+                "oneway" to "yes"
+            )
+        )
+    }
+
+    @Test fun `exclusive lane in oneway (reversed, left hand traffic)`() {
+        assertEquals(
+            LeftAndRightCycleway(null, EXCLUSIVE_LANE),
+            parseForLeftHandTraffic(
+                "cycleway" to "lane",
+                "cycleway:lane" to "exclusive",
+                "oneway" to "-1"
             )
         )
     }
@@ -124,6 +504,54 @@ class CyclewayParserKtTest {
                 "cycleway" to "lane",
                 "cycleway:lane" to "exclusive",
                 "cycleway:oneway" to "no"
+            )
+        )
+    }
+
+    @Test fun `exclusive dual lane in oneway`() {
+        assertEquals(
+            LeftAndRightCycleway(null, DUAL_LANE),
+            parse(
+                "cycleway" to "lane",
+                "cycleway:lane" to "exclusive",
+                "cycleway:oneway" to "no",
+                "oneway" to "yes"
+            )
+        )
+    }
+
+    @Test fun `exclusive dual lane in oneway (reversed)`() {
+        assertEquals(
+            LeftAndRightCycleway(DUAL_LANE, null),
+            parse(
+                "cycleway" to "lane",
+                "cycleway:lane" to "exclusive",
+                "cycleway:oneway" to "no",
+                "oneway" to "-1"
+            )
+        )
+    }
+
+    @Test fun `exclusive dual lane in oneway (left hand traffic)`() {
+        assertEquals(
+            LeftAndRightCycleway(DUAL_LANE, null),
+            parseForLeftHandTraffic(
+                "cycleway" to "lane",
+                "cycleway:lane" to "exclusive",
+                "cycleway:oneway" to "no",
+                "oneway" to "yes"
+            )
+        )
+    }
+
+    @Test fun `exclusive dual lane in oneway (reversed, left hand traffic)`() {
+        assertEquals(
+            LeftAndRightCycleway(null, DUAL_LANE),
+            parseForLeftHandTraffic(
+                "cycleway" to "lane",
+                "cycleway:lane" to "exclusive",
+                "cycleway:oneway" to "no",
+                "oneway" to "-1"
             )
         )
     }
@@ -157,6 +585,50 @@ class CyclewayParserKtTest {
         )
     }
 
+    @Test fun `advisory lane in oneway`() {
+        assertEquals(
+            LeftAndRightCycleway(null, ADVISORY_LANE),
+            parse(
+                "cycleway" to "lane",
+                "cycleway:lane" to "advisory",
+                "oneway" to "yes"
+            )
+        )
+    }
+
+    @Test fun `advisory lane in oneway (reversed)`() {
+        assertEquals(
+            LeftAndRightCycleway(ADVISORY_LANE, null),
+            parse(
+                "cycleway" to "lane",
+                "cycleway:lane" to "advisory",
+                "oneway" to "-1"
+            )
+        )
+    }
+
+    @Test fun `advisory lane in oneway (left hand traffic)`() {
+        assertEquals(
+            LeftAndRightCycleway(ADVISORY_LANE, null),
+            parseForLeftHandTraffic(
+                "cycleway" to "lane",
+                "cycleway:lane" to "advisory",
+                "oneway" to "yes"
+            )
+        )
+    }
+
+    @Test fun `advisory lane in oneway (reversed, left hand traffic)`() {
+        assertEquals(
+            LeftAndRightCycleway(null, ADVISORY_LANE),
+            parseForLeftHandTraffic(
+                "cycleway" to "lane",
+                "cycleway:lane" to "advisory",
+                "oneway" to "-1"
+            )
+        )
+    }
+
     @Test fun `advisory lane synonyms`() {
         assertEquals(
             LeftAndRightCycleway(ADVISORY_LANE, ADVISORY_LANE),
@@ -184,9 +656,53 @@ class CyclewayParserKtTest {
     @Test fun `suggestion lane`() {
         assertEquals(
             LeftAndRightCycleway(SUGGESTION_LANE, SUGGESTION_LANE),
-            parse("NL",
+            parse(
                 "cycleway" to "shared_lane",
                 "cycleway:lane" to "advisory"
+            )
+        )
+    }
+
+    @Test fun `suggestion lane in oneway`() {
+        assertEquals(
+            LeftAndRightCycleway(null, SUGGESTION_LANE),
+            parse(
+                "cycleway" to "shared_lane",
+                "cycleway:lane" to "advisory",
+                "oneway" to "yes"
+            )
+        )
+    }
+
+    @Test fun `suggestion lane in oneway (reversed)`() {
+        assertEquals(
+            LeftAndRightCycleway(SUGGESTION_LANE, null),
+            parse(
+                "cycleway" to "shared_lane",
+                "cycleway:lane" to "advisory",
+                "oneway" to "-1"
+            )
+        )
+    }
+
+    @Test fun `suggestion lane in oneway (left hand traffic)`() {
+        assertEquals(
+            LeftAndRightCycleway(SUGGESTION_LANE, null),
+            parseForLeftHandTraffic(
+                "cycleway" to "shared_lane",
+                "cycleway:lane" to "advisory",
+                "oneway" to "yes"
+            )
+        )
+    }
+
+    @Test fun `suggestion lane in oneway (reversed, left hand traffic)`() {
+        assertEquals(
+            LeftAndRightCycleway(null, SUGGESTION_LANE),
+            parseForLeftHandTraffic(
+                "cycleway" to "shared_lane",
+                "cycleway:lane" to "advisory",
+                "oneway" to "-1"
             )
         )
     }
@@ -194,21 +710,21 @@ class CyclewayParserKtTest {
     @Test fun `suggestion lane synonyms`() {
         assertEquals(
             LeftAndRightCycleway(SUGGESTION_LANE, SUGGESTION_LANE),
-            parse("NL",
+            parse(
                 "cycleway" to "shared_lane",
                 "cycleway:lane" to "advisory_lane"
             )
         )
         assertEquals(
             LeftAndRightCycleway(SUGGESTION_LANE, SUGGESTION_LANE),
-            parse("NL",
+            parse(
                 "cycleway" to "shared_lane",
                 "cycleway:lane" to "soft_lane"
             )
         )
         assertEquals(
             LeftAndRightCycleway(SUGGESTION_LANE, SUGGESTION_LANE),
-            parse("NL",
+            parse(
                 "cycleway" to "shared_lane",
                 "cycleway:lane" to "dashed"
             )
@@ -224,6 +740,51 @@ class CyclewayParserKtTest {
             )
         )
     }
+
+    @Test fun `pictograms in oneway`() {
+        assertEquals(
+            LeftAndRightCycleway(null, PICTOGRAMS),
+            parse(
+                "cycleway" to "shared_lane",
+                "cycleway:lane" to "pictogram",
+                "oneway" to "yes"
+            )
+        )
+    }
+
+    @Test fun `pictograms in oneway (reversed)`() {
+        assertEquals(
+            LeftAndRightCycleway(PICTOGRAMS, null),
+            parse(
+                "cycleway" to "shared_lane",
+                "cycleway:lane" to "pictogram",
+                "oneway" to "-1"
+            )
+        )
+    }
+
+    @Test fun `pictograms in oneway (left hand traffic)`() {
+        assertEquals(
+            LeftAndRightCycleway(PICTOGRAMS, null),
+            parseForLeftHandTraffic(
+                "cycleway" to "shared_lane",
+                "cycleway:lane" to "pictogram",
+                "oneway" to "yes"
+            )
+        )
+    }
+
+    @Test fun `pictograms in oneway (reversed, left hand traffic)`() {
+        assertEquals(
+            LeftAndRightCycleway(null, PICTOGRAMS),
+            parseForLeftHandTraffic(
+                "cycleway" to "shared_lane",
+                "cycleway:lane" to "pictogram",
+                "oneway" to "-1"
+            )
+        )
+    }
+
 
     @Test fun sidewalk() {
         assertEquals(
@@ -262,6 +823,34 @@ class CyclewayParserKtTest {
         assertEquals(
             LeftAndRightCycleway(BUSWAY, BUSWAY),
             parse( "cycleway" to "share_busway")
+        )
+    }
+
+    @Test fun `busway in oneway`() {
+        assertEquals(
+            LeftAndRightCycleway(null, BUSWAY),
+            parse( "cycleway" to "share_busway", "oneway" to "yes")
+        )
+    }
+
+    @Test fun `busway in oneway (reversed)`() {
+        assertEquals(
+            LeftAndRightCycleway(BUSWAY, null),
+            parse( "cycleway" to "share_busway", "oneway" to "-1")
+        )
+    }
+
+    @Test fun `busway in oneway (left hand traffic)`() {
+        assertEquals(
+            LeftAndRightCycleway(BUSWAY, null),
+            parseForLeftHandTraffic( "cycleway" to "share_busway", "oneway" to "yes")
+        )
+    }
+
+    @Test fun `busway in oneway (reversed, left hand traffic)`() {
+        assertEquals(
+            LeftAndRightCycleway(null, BUSWAY),
+            parseForLeftHandTraffic( "cycleway" to "share_busway", "oneway" to "-1")
         )
     }
 
@@ -353,7 +942,7 @@ class CyclewayParserKtTest {
 
     @Test fun `cycleway opposite track`() {
         assertEquals(
-            LeftAndRightCycleway(TRACK, NONE),
+            LeftAndRightCycleway(TRACK, null),
             parse(
                 "cycleway" to "opposite_track",
                 "oneway" to "yes"
@@ -363,7 +952,7 @@ class CyclewayParserKtTest {
 
     @Test fun `cycleway opposite track (reversed)`() {
         assertEquals(
-            LeftAndRightCycleway(NONE, TRACK),
+            LeftAndRightCycleway(null, TRACK),
             parse(
                 "cycleway" to "opposite_track",
                 "oneway" to "-1"
@@ -373,7 +962,7 @@ class CyclewayParserKtTest {
 
     @Test fun `cycleway opposite track (left hand traffic)`() {
         assertEquals(
-            LeftAndRightCycleway(NONE, TRACK),
+            LeftAndRightCycleway(null, TRACK),
             parseForLeftHandTraffic(
                 "cycleway" to "opposite_track",
                 "oneway" to "yes"
@@ -383,7 +972,7 @@ class CyclewayParserKtTest {
 
     @Test fun `cycleway opposite track (reversed + left hand traffic)`() {
         assertEquals(
-            LeftAndRightCycleway(TRACK, NONE),
+            LeftAndRightCycleway(TRACK, null),
             parseForLeftHandTraffic(
                 "cycleway" to "opposite_track",
                 "oneway" to "-1"
@@ -393,7 +982,7 @@ class CyclewayParserKtTest {
 
     @Test fun `cycleway opposite dual track`() {
         assertEquals(
-            LeftAndRightCycleway(DUAL_TRACK, NONE),
+            LeftAndRightCycleway(DUAL_TRACK, null),
             parse(
                 "cycleway" to "opposite_track",
                 "oneway" to "yes",
@@ -404,7 +993,7 @@ class CyclewayParserKtTest {
 
     @Test fun `cycleway opposite dual track (reversed)`() {
         assertEquals(
-            LeftAndRightCycleway(NONE, DUAL_TRACK),
+            LeftAndRightCycleway(null, DUAL_TRACK),
             parse(
                 "cycleway" to "opposite_track",
                 "oneway" to "-1",
@@ -415,7 +1004,7 @@ class CyclewayParserKtTest {
 
     @Test fun `cycleway opposite dual track (left hand traffic)`() {
         assertEquals(
-            LeftAndRightCycleway(NONE, DUAL_TRACK),
+            LeftAndRightCycleway(null, DUAL_TRACK),
             parseForLeftHandTraffic(
                 "cycleway" to "opposite_track",
                 "oneway" to "yes",
@@ -426,7 +1015,7 @@ class CyclewayParserKtTest {
 
     @Test fun `cycleway opposite dual track (reversed + left hand traffic)`() {
         assertEquals(
-            LeftAndRightCycleway(DUAL_TRACK, NONE),
+            LeftAndRightCycleway(DUAL_TRACK, null),
             parseForLeftHandTraffic(
                 "cycleway" to "opposite_track",
                 "oneway" to "-1",
@@ -437,7 +1026,7 @@ class CyclewayParserKtTest {
 
     @Test fun `cycleway opposite busway`() {
         assertEquals(
-            LeftAndRightCycleway(BUSWAY, NONE),
+            LeftAndRightCycleway(BUSWAY, null),
             parse(
                 "cycleway" to "opposite_share_busway",
                 "oneway" to "yes"
@@ -447,7 +1036,7 @@ class CyclewayParserKtTest {
 
     @Test fun `cycleway opposite busway (reversed)`() {
         assertEquals(
-            LeftAndRightCycleway(NONE, BUSWAY),
+            LeftAndRightCycleway(null, BUSWAY),
             parse(
                 "cycleway" to "opposite_share_busway",
                 "oneway" to "-1"
@@ -457,7 +1046,7 @@ class CyclewayParserKtTest {
 
     @Test fun `cycleway opposite busway (left hand traffic)`() {
         assertEquals(
-            LeftAndRightCycleway(NONE, BUSWAY),
+            LeftAndRightCycleway(null, BUSWAY),
             parseForLeftHandTraffic(
                 "cycleway" to "opposite_share_busway",
                 "oneway" to "yes"
@@ -467,7 +1056,7 @@ class CyclewayParserKtTest {
 
     @Test fun `cycleway opposite busway (reversed + left hand traffic)`() {
         assertEquals(
-            LeftAndRightCycleway(BUSWAY, NONE),
+            LeftAndRightCycleway(BUSWAY, null),
             parseForLeftHandTraffic(
                 "cycleway" to "opposite_share_busway",
                 "oneway" to "-1"
@@ -477,8 +1066,8 @@ class CyclewayParserKtTest {
 
     @Test fun `cycleway opposite unspecified lane`() {
         assertEquals(
-            LeftAndRightCycleway(UNSPECIFIED_LANE, NONE),
-            parse("BE",
+            LeftAndRightCycleway(UNSPECIFIED_LANE, null),
+            parse(
                 "cycleway" to "opposite_lane",
                 "oneway" to "yes"
             )
@@ -487,8 +1076,8 @@ class CyclewayParserKtTest {
 
     @Test fun `cycleway opposite unspecified lane (reversed)`() {
         assertEquals(
-            LeftAndRightCycleway(NONE, UNSPECIFIED_LANE),
-            parse("BE",
+            LeftAndRightCycleway(null, UNSPECIFIED_LANE),
+            parse(
                 "cycleway" to "opposite_lane",
                 "oneway" to "-1"
             )
@@ -497,8 +1086,8 @@ class CyclewayParserKtTest {
 
     @Test fun `cycleway opposite unspecified lane (left hand traffic)`() {
         assertEquals(
-            LeftAndRightCycleway(NONE, UNSPECIFIED_LANE),
-            parseForLeftHandTraffic("BE",
+            LeftAndRightCycleway(null, UNSPECIFIED_LANE),
+            parseForLeftHandTraffic(
                 "cycleway" to "opposite_lane",
                 "oneway" to "yes"
             )
@@ -507,8 +1096,8 @@ class CyclewayParserKtTest {
 
     @Test fun `cycleway opposite unspecified lane (reversed + left hand traffic)`() {
         assertEquals(
-            LeftAndRightCycleway(UNSPECIFIED_LANE, NONE),
-            parseForLeftHandTraffic("BE",
+            LeftAndRightCycleway(UNSPECIFIED_LANE, null),
+            parseForLeftHandTraffic(
                 "cycleway" to "opposite_lane",
                 "oneway" to "-1"
             )
@@ -517,7 +1106,7 @@ class CyclewayParserKtTest {
 
     @Test fun `cycleway opposite unspecified dual lane`() {
         assertEquals(
-            LeftAndRightCycleway(DUAL_LANE, NONE),
+            LeftAndRightCycleway(DUAL_LANE, null),
             parse(
                 "cycleway" to "opposite_lane",
                 "oneway" to "yes",
@@ -528,7 +1117,7 @@ class CyclewayParserKtTest {
 
     @Test fun `cycleway opposite unspecified dual lane (reversed)`() {
         assertEquals(
-            LeftAndRightCycleway(NONE, DUAL_LANE),
+            LeftAndRightCycleway(null, DUAL_LANE),
             parse(
                 "cycleway" to "opposite_lane",
                 "oneway" to "-1",
@@ -539,7 +1128,7 @@ class CyclewayParserKtTest {
 
     @Test fun `cycleway opposite unspecified dual lane (left hand traffic)`() {
         assertEquals(
-            LeftAndRightCycleway(NONE, DUAL_LANE),
+            LeftAndRightCycleway(null, DUAL_LANE),
             parseForLeftHandTraffic(
                 "cycleway" to "opposite_lane",
                 "oneway" to "yes",
@@ -550,7 +1139,7 @@ class CyclewayParserKtTest {
 
     @Test fun `cycleway opposite unspecified dual lane (reversed + left hand traffic)`() {
         assertEquals(
-            LeftAndRightCycleway(DUAL_LANE, NONE),
+            LeftAndRightCycleway(DUAL_LANE, null),
             parseForLeftHandTraffic(
                 "cycleway" to "opposite_lane",
                 "oneway" to "-1",
@@ -561,7 +1150,7 @@ class CyclewayParserKtTest {
 
     @Test fun `cycleway opposite advisory lane`() {
         assertEquals(
-            LeftAndRightCycleway(ADVISORY_LANE, NONE),
+            LeftAndRightCycleway(ADVISORY_LANE, null),
             parse(
                 "cycleway" to "opposite_lane",
                 "oneway" to "yes",
@@ -572,7 +1161,7 @@ class CyclewayParserKtTest {
 
     @Test fun `cycleway opposite advisory lane (reversed)`() {
         assertEquals(
-            LeftAndRightCycleway(NONE, ADVISORY_LANE),
+            LeftAndRightCycleway(null, ADVISORY_LANE),
             parse(
                 "cycleway" to "opposite_lane",
                 "oneway" to "-1",
@@ -583,7 +1172,7 @@ class CyclewayParserKtTest {
 
     @Test fun `cycleway opposite advisory lane (left hand traffic)`() {
         assertEquals(
-            LeftAndRightCycleway(NONE, ADVISORY_LANE),
+            LeftAndRightCycleway(null, ADVISORY_LANE),
             parseForLeftHandTraffic(
                 "cycleway" to "opposite_lane",
                 "oneway" to "yes",
@@ -594,7 +1183,7 @@ class CyclewayParserKtTest {
 
     @Test fun `cycleway opposite advisory lane (reversed + left hand traffic)`() {
         assertEquals(
-            LeftAndRightCycleway(ADVISORY_LANE, NONE),
+            LeftAndRightCycleway(ADVISORY_LANE, null),
             parseForLeftHandTraffic(
                 "cycleway" to "opposite_lane",
                 "oneway" to "-1",
@@ -605,7 +1194,7 @@ class CyclewayParserKtTest {
 
     @Test fun `cycleway opposite exclusive lane`() {
         assertEquals(
-            LeftAndRightCycleway(EXCLUSIVE_LANE, NONE),
+            LeftAndRightCycleway(EXCLUSIVE_LANE, null),
             parse(
                 "cycleway" to "opposite_lane",
                 "oneway" to "yes",
@@ -616,7 +1205,7 @@ class CyclewayParserKtTest {
 
     @Test fun `cycleway opposite exclusive lane (reversed)`() {
         assertEquals(
-            LeftAndRightCycleway(NONE, EXCLUSIVE_LANE),
+            LeftAndRightCycleway(null, EXCLUSIVE_LANE),
             parse(
                 "cycleway" to "opposite_lane",
                 "oneway" to "-1",
@@ -627,7 +1216,7 @@ class CyclewayParserKtTest {
 
     @Test fun `cycleway opposite exclusive lane (left hand traffic)`() {
         assertEquals(
-            LeftAndRightCycleway(NONE, EXCLUSIVE_LANE),
+            LeftAndRightCycleway(null, EXCLUSIVE_LANE),
             parseForLeftHandTraffic(
                 "cycleway" to "opposite_lane",
                 "oneway" to "yes",
@@ -638,7 +1227,7 @@ class CyclewayParserKtTest {
 
     @Test fun `cycleway opposite exclusive lane (reversed + left hand traffic)`() {
         assertEquals(
-            LeftAndRightCycleway(EXCLUSIVE_LANE, NONE),
+            LeftAndRightCycleway(EXCLUSIVE_LANE, null),
             parseForLeftHandTraffic(
                 "cycleway" to "opposite_lane",
                 "oneway" to "-1",
@@ -649,7 +1238,7 @@ class CyclewayParserKtTest {
 
     @Test fun `cycleway opposite exclusive dual lane`() {
         assertEquals(
-            LeftAndRightCycleway(DUAL_LANE, NONE),
+            LeftAndRightCycleway(DUAL_LANE, null),
             parse(
                 "cycleway" to "opposite_lane",
                 "oneway" to "yes",
@@ -661,7 +1250,7 @@ class CyclewayParserKtTest {
 
     @Test fun `cycleway opposite exclusive dual lane (reversed)`() {
         assertEquals(
-            LeftAndRightCycleway(NONE, DUAL_LANE),
+            LeftAndRightCycleway(null, DUAL_LANE),
             parse(
                 "cycleway" to "opposite_lane",
                 "oneway" to "-1",
@@ -673,7 +1262,7 @@ class CyclewayParserKtTest {
 
     @Test fun `cycleway opposite exclusive dual lane (left hand traffic)`() {
         assertEquals(
-            LeftAndRightCycleway(NONE, DUAL_LANE),
+            LeftAndRightCycleway(null, DUAL_LANE),
             parseForLeftHandTraffic(
                 "cycleway" to "opposite_lane",
                 "oneway" to "yes",
@@ -685,7 +1274,7 @@ class CyclewayParserKtTest {
 
     @Test fun `cycleway opposite exclusive dual lane (reversed + left hand traffic)`() {
         assertEquals(
-            LeftAndRightCycleway(DUAL_LANE, NONE),
+            LeftAndRightCycleway(DUAL_LANE, null),
             parseForLeftHandTraffic(
                 "cycleway" to "opposite_lane",
                 "oneway" to "-1",
@@ -773,7 +1362,7 @@ class CyclewayParserKtTest {
     @Test fun `unspecified lane on left side`() {
         assertEquals(
             LeftAndRightCycleway(UNSPECIFIED_LANE, null),
-            parse("BE", "cycleway:left" to "lane")
+            parse( "cycleway:left" to "lane")
         )
     }
 
@@ -945,7 +1534,7 @@ class CyclewayParserKtTest {
     @Test fun `suggestion lane on left side`() {
         assertEquals(
             LeftAndRightCycleway(SUGGESTION_LANE, null),
-            parse("NL",
+            parse(
                 "cycleway:left" to "shared_lane",
                 "cycleway:left:lane" to "advisory"
             )
@@ -955,21 +1544,21 @@ class CyclewayParserKtTest {
     @Test fun `suggestion lane synonyms on left side`() {
         assertEquals(
             LeftAndRightCycleway(SUGGESTION_LANE, null),
-            parse("NL",
+            parse(
                 "cycleway:left" to "shared_lane",
                 "cycleway:left:lane" to "advisory_lane"
             )
         )
         assertEquals(
             LeftAndRightCycleway(SUGGESTION_LANE, null),
-            parse("NL",
+            parse(
                 "cycleway:left" to "shared_lane",
                 "cycleway:left:lane" to "soft_lane"
             )
         )
         assertEquals(
             LeftAndRightCycleway(SUGGESTION_LANE, null),
-            parse("NL",
+            parse(
                 "cycleway:left" to "shared_lane",
                 "cycleway:left:lane" to "dashed"
             )
@@ -1139,7 +1728,7 @@ class CyclewayParserKtTest {
     @Test fun `unspecified lane on left side opposite`() {
         assertEquals(
             LeftAndRightCycleway(UNSPECIFIED_LANE, null),
-            parse("BE",
+            parse(
                 "cycleway:left" to "opposite_lane",
                 "oneway" to "yes"
             )
@@ -1435,7 +2024,7 @@ class CyclewayParserKtTest {
     @Test fun `unspecified lane on right side`() {
         assertEquals(
             LeftAndRightCycleway(null, UNSPECIFIED_LANE),
-            parse("BE", "cycleway:right" to "lane")
+            parse( "cycleway:right" to "lane")
         )
     }
 
@@ -1592,7 +2181,7 @@ class CyclewayParserKtTest {
     @Test fun `suggestion lane on right side`() {
         assertEquals(
             LeftAndRightCycleway(null, SUGGESTION_LANE),
-            parse("NL",
+            parse(
                 "cycleway:right" to "shared_lane",
                 "cycleway:right:lane" to "advisory"
             )
@@ -1602,21 +2191,21 @@ class CyclewayParserKtTest {
     @Test fun `suggestion lane synonyms on right side`() {
         assertEquals(
             LeftAndRightCycleway(null, SUGGESTION_LANE),
-            parse("NL",
+            parse(
                 "cycleway:right" to "shared_lane",
                 "cycleway:right:lane" to "advisory_lane"
             )
         )
         assertEquals(
             LeftAndRightCycleway(null, SUGGESTION_LANE),
-            parse("NL",
+            parse(
                 "cycleway:right" to "shared_lane",
                 "cycleway:right:lane" to "soft_lane"
             )
         )
         assertEquals(
             LeftAndRightCycleway(null, SUGGESTION_LANE),
-            parse("NL",
+            parse(
                 "cycleway:right" to "shared_lane",
                 "cycleway:right:lane" to "dashed"
             )
@@ -1788,7 +2377,7 @@ class CyclewayParserKtTest {
     @Test fun `unspecified lane on right side opposite`() {
         assertEquals(
             LeftAndRightCycleway(null, UNSPECIFIED_LANE),
-            parse("BE",
+            parse(
                 "cycleway:right" to "opposite_lane",
                 "oneway" to "yes"
             )
@@ -2051,7 +2640,7 @@ class CyclewayParserKtTest {
     @Test fun `unspecified lane on both sides`() {
         assertEquals(
             LeftAndRightCycleway(UNSPECIFIED_LANE, UNSPECIFIED_LANE),
-            parse("BE", "cycleway:both" to "lane")
+            parse( "cycleway:both" to "lane")
         )
     }
 
@@ -2193,7 +2782,7 @@ class CyclewayParserKtTest {
     @Test fun `suggestion lane on both sides`() {
         assertEquals(
             LeftAndRightCycleway(SUGGESTION_LANE, SUGGESTION_LANE),
-            parse("NL",
+            parse(
                 "cycleway:both" to "shared_lane",
                 "cycleway:both:lane" to "advisory"
             )
@@ -2203,21 +2792,21 @@ class CyclewayParserKtTest {
     @Test fun `suggestion lane synonyms on both sides`() {
         assertEquals(
             LeftAndRightCycleway(SUGGESTION_LANE, SUGGESTION_LANE),
-            parse("NL",
+            parse(
                 "cycleway:both" to "shared_lane",
                 "cycleway:both:lane" to "advisory_lane"
             )
         )
         assertEquals(
             LeftAndRightCycleway(SUGGESTION_LANE, SUGGESTION_LANE),
-            parse("NL",
+            parse(
                 "cycleway:both" to "shared_lane",
                 "cycleway:both:lane" to "soft_lane"
             )
         )
         assertEquals(
             LeftAndRightCycleway(SUGGESTION_LANE, SUGGESTION_LANE),
-            parse("NL",
+            parse(
                 "cycleway:both" to "shared_lane",
                 "cycleway:both:lane" to "dashed"
             )
@@ -2388,7 +2977,7 @@ class CyclewayParserKtTest {
     @Test fun `unspecified lane on both side opposite`() {
         assertEquals(
             LeftAndRightCycleway(UNSPECIFIED_LANE, UNSPECIFIED_LANE),
-            parse("BE",
+            parse(
                 "cycleway:both" to "opposite_lane",
                 "oneway" to "yes"
             )
@@ -2577,11 +3166,5 @@ class CyclewayParserKtTest {
 private fun parse(vararg pairs: Pair<String, String>) =
     createCyclewaySides(mapOf(*pairs), false)
 
-private fun parse(country: String, vararg pairs: Pair<String, String>) =
-    createCyclewaySides(mapOf(*pairs), false)
-
 private fun parseForLeftHandTraffic(vararg pairs: Pair<String, String>) =
-    createCyclewaySides(mapOf(*pairs), true)
-
-private fun parseForLeftHandTraffic(country: String, vararg pairs: Pair<String, String>) =
     createCyclewaySides(mapOf(*pairs), true)
