@@ -60,6 +60,12 @@ class StreetSideSelectPuzzle @JvmOverloads constructor(
         }
     }
 
+    override fun setEnabled(enabled: Boolean) {
+        super.setEnabled(enabled)
+        leftSideContainer.isEnabled = enabled
+        rightSideContainer.isEnabled = enabled
+    }
+
     fun setStreetRotation(rotation: Float) {
         rotateContainer.rotation = rotation
         val scale = abs(cos(rotation * PI / 180)).toFloat()
@@ -83,6 +89,14 @@ class StreetSideSelectPuzzle @JvmOverloads constructor(
     fun replaceRightSideImageResource(resId: Int) {
         rightImageResId = resId
         replaceAnimated(resId, rightSideImage, false)
+    }
+
+    fun setLeftSideText(text: String?) {
+        leftSideTextView.setText(text)
+    }
+
+    fun setRightSideText(text: String?) {
+        rightSideTextView.setText(text)
     }
 
     fun showOnlyRightSide() {

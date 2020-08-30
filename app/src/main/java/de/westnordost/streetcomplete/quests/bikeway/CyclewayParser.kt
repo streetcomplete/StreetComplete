@@ -6,7 +6,7 @@ import de.westnordost.streetcomplete.quests.bikeway.Cycleway.*
 data class LeftAndRightCycleway(val left: Cycleway?, val right: Cycleway?)
 
 /** Returns the Cycleway values for the left and right side using the given tags */
-fun createCyclewaySides(tags: Map<String, String>, isLeftHandTraffic: Boolean, countryCode: String): LeftAndRightCycleway? {
+fun createCyclewaySides(tags: Map<String, String>, isLeftHandTraffic: Boolean): LeftAndRightCycleway? {
 
     val isForwardOneway = tags["oneway"] == "yes"
     val isReversedOneway = tags["oneway"] == "-1"
@@ -58,15 +58,6 @@ fun createCyclewaySides(tags: Map<String, String>, isLeftHandTraffic: Boolean, c
 
     if (left == null && right == null) return null
 
-    /* suggestion lanes are only known in Belgium and Netherlands */
-    if (left == SUGGESTION_LANE || right == SUGGESTION_LANE) {
-        if (countryCode !in listOf("NL", "BE")) return null
-    }
-    /* unspecified lanes are only ok in Belgium (no distinction made, all lanes are dashed) */
-    if (left == LANE_UNSPECIFIED || right == LANE_UNSPECIFIED) {
-        if (countryCode != "BE") return null
-    }
-
     return LeftAndRightCycleway(left, right)
 }
 
@@ -78,13 +69,6 @@ private fun createCyclewayForSide(tags: Map<String, String>, side: String?): Cyc
 
     val cycleway = tags[cyclewayKey]
     val cyclewayLane = tags["$cyclewayKey:lane"]
-
-    val isForwardOneway = tags["oneway"] == "yes"
-    val isReversedOneway = tags["oneway"] == "-1"
-    val isOneway = isReversedOneway || isForwardOneway
-    val isOppositeTagging = cycleway?.startsWith("opposite") == true
-    // oneway is required for opposite_* taggings
-    if (isOppositeTagging && !isOneway) return null
 
     val isDual = tags["$cyclewayKey:oneway"] == "no"
     val isSegregated = tags["$cyclewayKey:segregated"] != "no"
@@ -99,17 +83,18 @@ private fun createCyclewayForSide(tags: Map<String, String>, side: String?): Cyc
                 }
                 null -> {
                     if (isDual) DUAL_LANE
-                    else        LANE_UNSPECIFIED
+                    else        UNSPECIFIED_LANE
                 }
                 "advisory", "advisory_lane", "soft_lane", "dashed" -> ADVISORY_LANE
-                else                                               -> null
+                else                                               -> UNKNOWN_LANE
             }
         }
         "shared_lane" -> {
             when (cyclewayLane) {
                 "advisory", "advisory_lane", "soft_lane", "dashed" -> SUGGESTION_LANE
                 "pictogram"                                        -> PICTOGRAMS
-                else                                               -> null
+                null                                               -> UNSPECIFIED_SHARED_LANE
+                else                                               -> UNKNOWN_SHARED_LANE
             }
         }
         "track", "opposite_track" -> {
@@ -119,14 +104,10 @@ private fun createCyclewayForSide(tags: Map<String, String>, side: String?): Cyc
                 else          -> TRACK
             }
         }
-        "no", "none" -> NONE
-        "opposite" -> {
-            // opposite value is ambiguous/possibly incorrect for cycleway:*, so better reject it
-            if (side != null) null
-            else              NONE
-        }
+        "no", "none", "opposite" -> NONE
         "share_busway", "opposite_share_busway" -> BUSWAY
-        else -> null
+        null -> null
+        else -> UNKNOWN
     }
 
     if (result == null || result == NONE) {

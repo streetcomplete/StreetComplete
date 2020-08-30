@@ -35,7 +35,7 @@ class AddCyclewayTest {
 
     @Test fun `apply unspecified cycle lane answer`() {
         questType.verifyAnswer(
-            bothSidesAnswer(LANE_UNSPECIFIED),
+            bothSidesAnswer(UNSPECIFIED_LANE),
             StringMapEntryAdd("cycleway:both", "lane")
         )
     }

@@ -10,7 +10,7 @@
         android:layout_width="280dp"
         android:layout_height="280dp"
         android:layout_gravity="center"
-        tools:rotation="20"
+        tools:rotation="0"
         >
 
         <View
@@ -19,7 +19,7 @@
             android:layout_height="0dp"
             android:layout_centerHorizontal="true"/>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <RelativeLayout
             android:id="@+id/leftSideContainer"
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true"
@@ -35,25 +35,26 @@
                 android:id="@+id/leftSideImage"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                app:layout_constraintStart_toStartOf="parent"
+                android:layout_alignParentLeft="true"
                 android:scaleType="fitXY"
                 tools:ignore="RtlHardcoded"
-                tools:src="@drawable/ic_cycleway_none"
+                tools:src="@drawable/ic_cycleway_track"
                 tools:rotation="180"/>
 
-            <de.westnordost.streetcomplete.view.VerticalTextView
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:text="lane (with dashed markings"
-                android:textSize="20dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:gravity="center"
-                />
+            <de.westnordost.streetcomplete.view.VerticalLabelView
+                android:id="@+id/leftSideTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:textSize="10sp"
+                android:textColor="#404040"
+                app:orientationRight="true"
+                tools:text="Sidewalk"/>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/rightSideContainer"
@@ -74,6 +75,17 @@
                 android:scaleType="fitXY"
                 tools:ignore="RtlHardcoded"
                 tools:src="@drawable/ic_cycleway_sidewalk"/>
+
+            <de.westnordost.streetcomplete.view.VerticalLabelView
+                android:id="@+id/rightSideTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:textSize="10sp"
+                android:textColor="#404040"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                tools:text="Sidewalk"/>
 
         </RelativeLayout>
 

@@ -24,7 +24,7 @@
         <de.westnordost.streetcomplete.view.StreetSideSelectPuzzle
             android:id="@+id/puzzleView"
             android:layout_width="match_parent"
-            android:layout_height="112dp"
+            android:layout_height="@dimen/street_side_puzzle_height"
             android:clipChildren="false"
             android:clipToPadding="false"/>
 

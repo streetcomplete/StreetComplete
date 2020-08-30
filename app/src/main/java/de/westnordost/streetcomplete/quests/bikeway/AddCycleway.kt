@@ -61,11 +61,8 @@ class AddCycleway(
     override val isSplitWayEnabled = true
 
     override fun getTitle(tags: Map<String, String>) : Int {
-        val isCyclewayTagged = tags.keys.containsAny(KNOWN_CYCLEWAY_KEYS)
-        // TODO use parser instead
-        val isCyclewayValueAmbiguous = tags.filterKeys { it in KNOWN_CYCLEWAY_KEYS }.values.any { it in AMBIGIOUS_CYCLEWAY_VALUES }
-
-        return if (isCyclewayTagged && !isCyclewayValueAmbiguous)
+        val sides = createCyclewaySides(tags, false)
+        return if (sides != null)
             R.string.quest_cycleway_resurvey_title
         else
             R.string.quest_cycleway_title2
@@ -79,9 +76,9 @@ class AddCycleway(
         val minDistToCycleways = 15 //m
 
         val anythingUnpaved = ANYTHING_UNPAVED.joinToString("|")
-        val olderThan8Years = olderThan(8).toOverpassQLString()
-        val handledCycleways = HANDLED_CYCLEWAY_VALUES.joinToString("|")
-        val handledCyclewayLanes = HANDLED_CYCLEWAY_LANE_VALUES.joinToString("|")
+        val olderThan4Years = olderThan(4).toOverpassQLString()
+        val handledCycleways = KNOWN_CYCLEWAY_VALUES.joinToString("|")
+        val handledCyclewayLanes = KNOWN_CYCLEWAY_LANE_VALUES.joinToString("|")
 
         /* Excluded is
            - anything explicitly tagged as no bicycles or having to use separately mapped sidepath
@@ -92,7 +89,7 @@ class AddCycleway(
          */
         return bbox.toGlobalOverpassBBox() + """
             way
-                [highway ~ '^(primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified)$']
+                [highway ~ '^(primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|service)$']
                 [motorroad != yes]
                 [bicycle_road != yes][cyclestreet != yes]
                 [area != yes]
@@ -103,6 +100,7 @@ class AddCycleway(
             -> .streets;
             
             way.streets
+                [highway ~ '^(primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified)$']
                 [!cycleway]
                 [!'cycleway:left'][!'cycleway:right'][!'cycleway:both']
                 [!'sidewalk:bicycle']
@@ -110,12 +108,13 @@ class AddCycleway(
                 [maxspeed !~ '^(20|15|10|8|7|6|5|10 mph|5 mph|walk)$']
                 [surface !~ '^($anythingUnpaved)$']
             -> .untagged;
+            
             way[highway ~ '^(path|footway|cycleway)$'](around.streets: $minDistToCycleways) -> .cycleways;
             way.untagged(around.cycleways: $minDistToCycleways) -> .untagged_near_cycleways;
             
             way.streets
                 [~'^(cycleway(:(left|right|both))?)$' ~ '.*']
-                $olderThan8Years
+                $olderThan4Years
             -> .old;
             
             (""" +
@@ -137,9 +136,9 @@ class AddCycleway(
         // can't determine for yet untagged roads by the tags alone because we need info about
         // surrounding geometry, but for already tagged ones, we can!
         return tags.keys.containsAny(KNOWN_CYCLEWAY_KEYS)
-                && olderThan(8).matches(element)
-                && tags.filterKeys { it in KNOWN_CYCLEWAY_KEYS }.values.all { it in HANDLED_CYCLEWAY_VALUES }
-                && tags.filterKeys { it in KNOWN_CYCLEWAY_LANE_VALUES }.values.all { it in HANDLED_CYCLEWAY_LANE_VALUES }
+                && olderThan(4).matches(element)
+                && tags.filterKeys { it in KNOWN_CYCLEWAY_KEYS }.values.all { it in KNOWN_CYCLEWAY_VALUES }
+                && tags.filterKeys { it in KNOWN_CYCLEWAY_LANE_VALUES }.values.all { it in KNOWN_CYCLEWAY_LANE_VALUES }
     }
 
     private fun olderThan(years: Int) =
@@ -215,7 +214,7 @@ class AddCycleway(
             NONE, NONE_NO_ONEWAY -> {
                 changes.addOrModify(cyclewayKey, "no")
             }
-            EXCLUSIVE_LANE, ADVISORY_LANE, LANE_UNSPECIFIED -> {
+            EXCLUSIVE_LANE, ADVISORY_LANE, UNSPECIFIED_LANE -> {
                 changes.addOrModify(cyclewayKey, "lane")
                 if (directionValue != null) {
                     changes.addOrModify("$cyclewayKey:oneway", directionValue)
@@ -261,6 +260,9 @@ class AddCycleway(
             BUSWAY -> {
                 changes.addOrModify(cyclewayKey, "share_busway")
             }
+            else -> {
+                throw IllegalArgumentException("Invalid cycleway")
+            }
         }
 
         // clear previous cycleway:lane value
@@ -302,13 +304,6 @@ class AddCycleway(
             "cycleway:lane", "cycleway:left:lane", "cycleway:right:lane", "cycleway:both:lane"
         )
 
-        private val AMBIGIOUS_CYCLEWAY_VALUES = listOf(
-            "yes",   // unclear what type
-            "left",  // unclear what type; wrong tagging scheme (sidewalk=left)
-            "right", // unclear what type; wrong tagging scheme
-            "both",  // unclear what type; wrong tagging scheme
-            "shared" // unclear if it is shared_lane or share_busway (or shared with pedestrians)
-        )
         private val KNOWN_CYCLEWAY_VALUES = listOf(
             "lane",
             "track",
@@ -320,7 +315,13 @@ class AddCycleway(
             "opposite_lane",         // + cycleway:left=lane
             "opposite_track",        // + cycleway:left=track
             "opposite_share_busway", // + cycleway:left=share_busway
-            "opposite"               // + cycleway:left=no
+            "opposite",              // + cycleway:left=no
+            // ambiguous:
+            "yes",   // unclear what type
+            "left",  // unclear what type; wrong tagging scheme (sidewalk=left)
+            "right", // unclear what type; wrong tagging scheme
+            "both",  // unclear what type; wrong tagging scheme
+            "shared" // unclear if it is shared_lane or share_busway (or shared with pedestrians)
         )
         /* Treat the opposite_* taggings as simple synonyms which will be overwritten by the new tagging.
            Community seems to be rather in consensus that both methods are equivalent or even the
@@ -340,11 +341,6 @@ class AddCycleway(
             "mandatory", "exclusive_lane",          // same as exclusive. Exclusive lanes are mandatory for bicyclists
             "soft_lane", "advisory_lane", "dashed"  // synonym for advisory lane
         )
-
-        private val HANDLED_CYCLEWAY_VALUES =
-            AMBIGIOUS_CYCLEWAY_VALUES + KNOWN_CYCLEWAY_VALUES
-
-        private val HANDLED_CYCLEWAY_LANE_VALUES = KNOWN_CYCLEWAY_LANE_VALUES
     }
 }
 
